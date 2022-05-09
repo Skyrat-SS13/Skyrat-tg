@@ -132,7 +132,7 @@
 	..()
 
 /datum/reagent/drug/opium/heroin
-	name = "Heroin"
+	name = "heroin"
 	description = "She's like heroin to me, she's like heroin to me! She cannot... miss a vein!"
 	reagent_state = LIQUID
 	color = "#ffe669"
@@ -151,7 +151,7 @@
 	..()
 
 /datum/reagent/drug/opium/blacktar
-	name = "Black Tar Heroin"
+	name = "black tar heroin"
 	description = "An impure, freebase form of heroin. Probably not a good idea to take this..."
 	reagent_state = LIQUID
 	color = "#242423"
@@ -170,6 +170,7 @@
 	..()
 
 /datum/reagent/drug/opium/blacktar/liquid //prevents self-duplication by going one step down when mixed
+	name - "liquid black tar heroin"
 
 /datum/chemical_reaction/blacktar
 	required_reagents = list(/datum/reagent/drug/opium/blacktar/liquid = 5)

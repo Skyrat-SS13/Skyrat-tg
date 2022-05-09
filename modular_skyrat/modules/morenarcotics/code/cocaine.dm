@@ -23,7 +23,7 @@
 		new /obj/item/reagent_containers/crack(location)
 
 /datum/reagent/drug/cocaine
-	name = "Cocaine"
+	name = "cocaine"
 	description = "A powerful stimulant extracted from coca leaves. Reduces stun times, but causes drowsiness and severe brain damage if overdosed."
 	reagent_state = LIQUID
 	color = "#ffffff"
