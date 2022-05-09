@@ -1,4 +1,3 @@
-/** SKYRAT EDIT - MODULARIZATION - SEE SKYRAT_MODULAR/MODULES/MATERIALS_GLASS
 /* Glass stack types
  * Contains:
  * Glass sheets
@@ -16,7 +15,7 @@ GLOBAL_LIST_INIT(glass_recipes, list ( \
 	new/datum/stack_recipe("glass tile", /obj/item/stack/tile/glass, 1, 4, 20) \
 ))
 
-/obj/item/stack/sheet/glass//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
+/obj/item/stack/sheet/glass
 	name = "glass"
 	desc = "HOLY SHEET! That is a lot of glass."
 	singular_name = "glass sheet"
@@ -81,7 +80,7 @@ GLOBAL_LIST_INIT(pglass_recipes, list ( \
 	new/datum/stack_recipe("plasma glass shard", /obj/item/shard/plasma, time = 20, on_floor = TRUE) \
 ))
 
-/obj/item/stack/sheet/plasmaglass//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
+/obj/item/stack/sheet/plasmaglass
 	name = "plasma glass"
 	desc = "A glass sheet made out of a plasma-silicate alloy. It looks extremely tough and heavily fire resistant."
 	singular_name = "plasma glass sheet"
@@ -136,7 +135,7 @@ GLOBAL_LIST_INIT(reinforced_glass_recipes, list ( \
 ))
 
 
-/obj/item/stack/sheet/rglass//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
+/obj/item/stack/sheet/rglass
 	name = "reinforced glass"
 	desc = "Glass which seems to have rods or something stuck in them."
 	singular_name = "reinforced glass sheet"
@@ -188,7 +187,7 @@ GLOBAL_LIST_INIT(prglass_recipes, list ( \
 	new/datum/stack_recipe("plasma glass shard", /obj/item/shard/plasma, time = 40, on_floor = TRUE) \
 ))
 
-/obj/item/stack/sheet/plasmarglass//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
+/obj/item/stack/sheet/plasmarglass
 	name = "reinforced plasma glass"
 	desc = "A glass sheet made out of a plasma-silicate alloy and a rod matrix. It looks hopelessly tough and nearly fire-proof!"
 	singular_name = "reinforced plasma glass sheet"
@@ -225,6 +224,9 @@ GLOBAL_LIST_INIT(titaniumglass_recipes, list(
 	resistance_flags = ACID_PROOF
 	merge_type = /obj/item/stack/sheet/titaniumglass
 	tableVariant = /obj/structure/table/reinforced/titaniumglass
+
+/obj/item/stack/sheet/titaniumglass/fifty
+	amount = 50
 
 /obj/item/stack/sheet/titaniumglass/get_main_recipes()
 	. = ..()
@@ -380,9 +382,6 @@ GLOBAL_LIST_INIT(plastitaniumglass_recipes, list(
 	custom_materials = list(/datum/material/alloy/plasmaglass=MINERAL_MATERIAL_AMOUNT)
 	icon_prefix = "plasma"
 	weld_material = /obj/item/stack/sheet/plasmaglass
-<<<<<<< HEAD
-**/
-=======
 	shiv_type = /obj/item/knife/shiv/plasma
 	craft_time = 7 SECONDS
 
@@ -410,4 +409,3 @@ GLOBAL_LIST_INIT(plastitaniumglass_recipes, list(
 	weld_material = /obj/item/stack/sheet/plastitaniumglass
 	shiv_type = /obj/item/knife/shiv/plastitanium
 	craft_time = 14 SECONDS
->>>>>>> b525e9162af (Titanium and plastitanium shards and weapons + missing textures. (#66544))
