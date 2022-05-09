@@ -357,3 +357,131 @@
   - bugfix: adds back the xenoarch base
   theOOZ:
   - imageadd: Adds a roomba model to the peacekeeper cyborg line
+2022-05-09:
+  Fikou, sounds by Floyd:
+  - rscadd: Maintenance now contains an ancient altar.
+  Gandalf2k15 for porting, DarthSidiousPalpatine for their original contribution on TauCeti:
+  - imageadd: Mob fire sprites have been updated!
+  - refactor: The way mobs update fire has been refactored. If you spot any anomalies,
+      please report them.
+  Melbert:
+  - refactor: Refactored the wizard spell Charge
+  RandomGamer123, some ideas from the-orange-cow & cacogen:
+  - balance: The explosive mutation for kudzu is now classified as a severe instead
+      of just above average mutation
+  - balance: Venus human trap vine throw cooldown increased to 4 seconds
+  - balance: Kudzu's maximum mutation severity in general has been increased
+  - balance: Event-spawned kudzu's maximum mutation severity has been further increased
+  - balance: Kudzu now mutates twice as often in general
+  - balance: Event-spawned kudzu now has its minimum spread rate tripled
+  - balance: 'Newly spawned kudzu in general has its starting spread rate buffed expansion:
+      New temperature stabilisation mutation for kudzu as a semi-alternative to cold
+      proof and being a beneficial kudzu mutation in general, effectively functions
+      as a space heater with the target temperature being 20C'
+  SkyratBot:
+  - balance: Change how opening a hole in the chamber will affect the SM, increasing
+      the dangers it will have by having more damage dealt, increase the power of
+      the SM by 250 and stopping the SM healing from low moles/cold.
+  - balance: Increased the heat released by lowering the THERMAL_RELEASE_MODIFIER
+      from 5 to 4
+  - balance: Increased the plasma released by lowering the PLASMA_RELEASE_MODIFIER
+      from 750 to 650
+  - balance: Lowered the oxygen released by increasing the OXYGEN_RELEASE_MODIFIER  from
+      325 to 340
+  - balance: Increased the REACTION_POWER_MODIFIER  from 0.55 to 0.65 increasing the
+      power generated
+  - bugfix: Spamming the start compression test button will not make the anomaly refinery
+      eject a live TTV.
+  - rscadd: That's what the emag is for.
+  - bugfix: Briefcase launchpads now work again.
+  - bugfix: Briefcase launchpads now don't drain power from the station.
+  - balance: Printing surgery tools from the autolathe now requires silver
+  - balance: some items may protect more or less against diseases now
+  - qol: removes redundant access requirements from some airlocks
+  - refactor: changed how whether a mech equipment is attachable is determined, please
+      report if any previously attachable equipments are bugged
+  - bugfix: PDA/Tablets are now made from a realistic amount of iron.
+  - bugfix: fixed export prices of computer parts being overwritten by a "miscellaneous
+      computer part"
+  - bugfix: fixed missing export datums for various computer parts
+  - code_imp: improved code of computer part exports
+  - qol: supermatter zaps now change color based on the power generated, starting
+      from red and going toward blue the higher the power emitted
+  - bugfix: fixed extraneous wiring under a few windows in Kilo maint.
+  - balance: improved freon production with a ratio of 6 moles of plasma, 1 mole of
+      bz and 3 moles of co2. At 800 K there is a minor peak of production to have
+      a fast way to generate freon, but at over 5000 K the rate starts to increase
+      up to three times the rate at 800 K.
+  - bugfix: Changes the succumb screen to work for both tgui and standard inputs.
+  - rscadd: Adds 7 new foods! The power of chefs continues to grow.
+  - rscadd: Updated pierogi and stuffed cabbage sprites.
+  - spellcheck: Clarifies the explanation of the new turbine some, and fixes some
+      grammar for the parts too.
+  - bugfix: Fixed some door accesses being overridden on MetaStation
+  - rscadd: On the mapping end, mappers are now able to add a wide range of funky
+      new colors to maps. Keep an eye out, for they might just be coming to a station
+      near you sometime soon.
+  - rscadd: New clever mutation, allowing some mobs such as monkeys to use consoles.
+  - rscadd: adds the supermatter cascade round-ender, it can be triggered when the
+      SM chamber is filled with hypernoblium and antinoblium at over 40% each, when
+      the total moles are high enough to trigger a singulo and only when the SM integrity
+      is over 80% (if the gases don't reach the requirement during the delamination
+      for a moment, the whole thing will stop and need to restart)
+  - rscadd: Heterochromia Quirk, try it out!
+  - refactor: Eyes now support having two different colors for each eye; become your
+      own disco!
+  - bugfix: When holding plasma glass, the sprite of normal glass was shown in hand
+      since plasma glass in hand didn't exist.
+  - rscadd: Added titanium and plastitanium glass shards as well as spears and shivs
+      for their types, including plasma glass shivs.
+  - imageadd: Sprites for plasma, titanium and plastitanium glass shards when hold
+      in hand.
+  - qol: titanium and plastitanium glass having their own shards makes sense, and
+      is a quality feature.
+  - balance: The resulting changes to smoke and foam have effected their balance.
+      In which direction is currently unclear.
+  - code_imp: Minor code improvements to smoke, foam, and... _wizard spells?_.
+  - balance: Lower the amount of anomalies spawned from the SM delamination
+  - balance: Lower the probability of getting a flux anomaly from the SM delamination
+  - balance: Flux anomalies spawned by the SM in this way will have the explosion
+      size reduced by 4
+  - balance: Off-station lathes no longer you pay a tax.
+  Wallem:
+  - imageadd: The food cart & ice cream cart have been given new coats of paint
+  softcerv:
+  - rscadd: Sabres are now order-able through cargo as a cargo goodie for 1.5k credits.
+      The cargo sabres feature a lower block chance compared to the standard sabre,
+      and come in a black sheath.
+  timothymtorres, TheBonded:
+  - balance: Decreased the amount of credits an approved manifest grants. (was +80,
+      it's now +70)
+  - code_imp: Improve nearsighted code to be more robust
+  timothymtorres, san7890, axietheaxolotl:
+  - rscadd: Adds haunted tarot deck that allows the user the ability to see and communicate
+      with the dead.  Can be found in maint loot as a rare item.
+  - rscadd: Adds blank card decks to games vendor.  These can be written on with a
+      pen or crayon.
+  - soundadd: Adds a public domain cardflip.ogg from freesound.org that is used when
+      drawing a card.
+  - qol: Cards, decks, and cardhands have new hotkeys.  Decks are now a 2 handed wielded
+      object.
+  - qol: Add card ruleset to Wiz-Off at the top of the deck.
+  - bugfix: Holodeck card decks are now spawned as syndicate deck to convey that they
+      can do damage if safeties are overridden.
+  - bugfix: Any holodeck items have their force and throwforce damage nerfed to zero
+      while the safeties are on.
+  - bugfix: 'Fix xray trait to appear on mobs that equip xray glasses or have xray
+      eye augmentation. expansion: Playing cards with other people gives a mood event
+      and is added to memory expansion: Syndicate card decks can be shuffled faster
+      than normal decks. expansion: People with the supernatural phobia will now be
+      terrified of tarot card decks. expansion: NT has outlawed the use of x-ray vision,
+      science goggles combined with invisible ink, or using pens or crayons to gain
+      an unfair advantage while playing card games during recreational time.'
+  - code_imp: Moved the card deck code to it's own files and folder.
+  - rscdel: Remove CAS decks from random deck spawner (you need both decks to play
+      so only having one spawn was bleh)
+  - refactor: Cards have been refactored and a lot of deprecated code has been removed.
+  - imagedel: Remove old cardhand icons that were unused.
+  - imageadd: Add some new blank/scribble card icons.
+  - imageadd: Add new clown and mime joker cards to standard decks curtesy of axietheaxolotl
+      (Viro on discord)
