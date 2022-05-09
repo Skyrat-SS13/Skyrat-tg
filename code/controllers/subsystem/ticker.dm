@@ -616,6 +616,8 @@ SUBSYSTEM_DEF(ticker)
 			news_message = "The company would like to state that any rumors of criminal organizing on board stations such as [decoded_station_name] are falsehoods, and not to be emulated."
 		if(GANG_DESTROYED)
 			news_message = "The crew of [decoded_station_name] would like to thank the Spinward Stellar Coalition Police Department for quickly resolving a minor terror threat to the station."
+		if(SUPERMATTER_CASCADE)
+			news_message = "Universal reboot initiated on [decoded_station_name] following a major supermatter cascade."
 
 	//SKYRAT EDIT - START
 	if(SSblackbox.first_death)
