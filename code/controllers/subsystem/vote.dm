@@ -55,41 +55,7 @@ SUBSYSTEM_DEF(vote)
 
 	generated_actions.Cut()
 
-<<<<<<< HEAD
-/datum/controller/subsystem/vote/proc/result()
-	. = announce_result()
-	var/restart = FALSE
-	if(.)
-		switch(mode)
-			if("restart")
-				if(. == "Restart Round")
-					restart = TRUE
-			if("map")
-				SSmapping.changemap(global.config.maplist[.])
-				SSmapping.map_voted = TRUE
-			//SKYRAT EDIT ADDITION BEGIN
-			if("transfer")
-				if(. == "Initiate Crew Transfer")
-					SSshuttle.autoEnd()
-					var/obj/machinery/computer/communications/C = locate() in GLOB.machines
-					if(C)
-						C.post_status("shuttle")
-			//SKYRAT EDIT ADDITION END
-	if(restart)
-		var/active_admins = FALSE
-		for(var/client/C in GLOB.admins + GLOB.deadmins)
-			if(!C.is_afk() && check_rights_for(C, R_SERVER))
-				active_admins = TRUE
-				break
-		if(!active_admins)
-			// No delay in case the restart is due to lag
-			SSticker.Reboot("Restart vote successful.", "restart vote", 1)
-		else
-			to_chat(world, span_boldannounce("Notice: Restart vote will not restart the server automatically because there are active admins on."))
-			message_admins("A restart vote has passed, but there are active admins on with +server, so it has been canceled. If you wish, you may restart the server.")
-=======
 	SStgui.update_uis(src)
->>>>>>> 6e098e2dbaa (Refactors SSvote, makes votes into datums, also makes vote ui Typescript (#66772))
 
 /**
  * Process the results of the vote.
@@ -171,77 +137,10 @@ SUBSYSTEM_DEF(vote)
 	// if voting is on cooldown, or regardless if a vote is config disabled (in some cases)
 	var/unlimited_vote_power = forced || !!GLOB.admin_datums[vote_initiator?.ckey]
 
-<<<<<<< HEAD
-		reset()
-		switch(vote_type)
-			if("restart")
-				choices.Add("Restart Round","Continue Playing")
-			if("map")
-				if(!lower_admin && SSmapping.map_voted)
-					to_chat(usr, span_warning("The next map has already been selected."))
-					return FALSE
-				// Randomizes the list so it isn't always METASTATION
-				var/list/maps = list()
-				for(var/map in global.config.maplist)
-					var/datum/map_config/VM = config.maplist[map]
-					if(!VM.votable || (VM.map_name in SSpersistence.blocked_maps) || GLOB.clients.len >= VM.config_max_users || GLOB.clients.len <= VM.config_min_users) //SKYRAT EDIT CHANGE - ORIGINAL: if(!VM.votable || (VM.map_name in SSpersistence.blocked_maps))
-						continue
-					if (VM.config_min_users > 0 && GLOB.clients.len < VM.config_min_users)
-						continue
-					if (VM.config_max_users > 0 && GLOB.clients.len > VM.config_max_users)
-						continue
-					maps += VM.map_name
-					shuffle_inplace(maps)
-				for(var/valid_map in maps)
-					choices.Add(valid_map)
-			if("custom")
-				question = tgui_input_text(usr, "What is the vote for?", "Custom Vote")
-				if(!question)
-					return FALSE
-				for(var/i in 1 to 10)
-					var/option = tgui_input_text(usr, "Please enter an option or hit cancel to finish", "Options", max_length = MAX_NAME_LEN)
-					if(!option || mode || !usr.client)
-						break
-					choices.Add(capitalize(option))
-			//SKYRAT EDIT ADDITION BEGIN - AUTOTRANSFER
-			if("transfer")
-				choices.Add("Initiate Crew Transfer", "Continue Playing")
-			//SKYRAT EDIT ADDITION END - AUTOTRANSFER
-			else
-				return FALSE
-		mode = vote_type
-		initiator = initiator_key
-		started_time = world.time
-		var/text = "[capitalize(mode)] vote started by [initiator || "CentCom"]."
-		if(mode == "custom")
-			text += "\n[question]"
-		log_vote(text)
-		var/vp = CONFIG_GET(number/vote_period)
-		to_chat(world, "\n<span class='infoplain'><font color='purple'><b>[text]</b>\nType <b>vote</b> or click <a href='byond://winset?command=vote'>here</a> to place your votes.\nYou have [DisplayTimeText(vp)] to vote.</font></span>")
-		time_remaining = round(vp/10)
-		for(var/c in GLOB.clients)
-			var/client/C = c
-			var/datum/action/vote/V = new
-			if(question)
-				V.name = "Vote: [question]"
-			C.player_details.player_actions += V
-			V.Grant(C.mob)
-			generated_actions += V
-			if(C.prefs.toggles & SOUND_ANNOUNCEMENTS)
-			//SKYRAT EDIT START
-			/*
-				SEND_SOUND(C, sound('sound/misc/bloop.ogg'))
-			*/
-				SEND_SOUND(C, sound('sound/misc/announce_dig.ogg'))
-			//SKYRAT EDIT END
-		return TRUE
-	return FALSE
-=======
 	if(current_vote && !unlimited_vote_power)
 		if(vote_initiator)
 			to_chat(vote_initiator, span_warning("There is already a vote in progress! Please wait for it to finish."))
 		return FALSE
->>>>>>> 6e098e2dbaa (Refactors SSvote, makes votes into datums, also makes vote ui Typescript (#66772))
 
 	// Get our actual datum
 	var/datum/vote/to_vote
@@ -372,43 +271,8 @@ SUBSYSTEM_DEF(vote)
 
 	switch(action)
 		if("cancel")
-<<<<<<< HEAD
-			if(usr.client.holder)
-				usr.log_message("[key_name_admin(usr)] cancelled a vote.", LOG_ADMIN)
-				message_admins("[key_name_admin(usr)] has cancelled the current vote.")
-				reset()
-		if("toggle_restart")
-			if(usr.client.holder && upper_admin)
-				CONFIG_SET(flag/allow_vote_restart, !CONFIG_GET(flag/allow_vote_restart))
-		if("toggle_map")
-			if(usr.client.holder && upper_admin)
-				CONFIG_SET(flag/allow_vote_map, !CONFIG_GET(flag/allow_vote_map))
-		if("restart")
-			if(CONFIG_GET(flag/allow_vote_restart) || usr.client.holder)
-				initiate_vote("restart",usr.key)
-		if("map")
-			if(CONFIG_GET(flag/allow_vote_map) || usr.client.holder)
-				initiate_vote("map",usr.key)
-		//SKYRAT EDIT ADDITION
-		if("mining_map")
-			if(CONFIG_GET(flag/allow_vote_map) || usr.client.holder)
-				initiate_vote("mining_map",usr.key)
-		//SKYRAT EDIT END
-		if("custom")
-			if(usr.client.holder)
-				initiate_vote("custom",usr.key)
-		//SKYRAT EDIT ADDITION BEGIN - autotransfer
-		if("transfer")
-			if(usr.client.holder && upper_admin)
-				initiate_vote("transfer",usr.key)
-		//SKYRAT EDIT ADDITION END
-		if("vote")
-			submit_vote(round(text2num(params["index"])))
-	return TRUE
-=======
 			if(!voter.client?.holder)
 				return
->>>>>>> 6e098e2dbaa (Refactors SSvote, makes votes into datums, also makes vote ui Typescript (#66772))
 
 			voter.log_message("[key_name_admin(voter)] cancelled a vote.", LOG_ADMIN)
 			message_admins("[key_name_admin(voter)] has cancelled the current vote.")
