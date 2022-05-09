@@ -43,5 +43,5 @@
 
 	CRASH("[type] wasn't passed a valid winning choice. (Got: [winning_option || "null"])")
 
-#undef CHOICE_RESTART
+#undef CHOICE_TRANSFER
 #undef CHOICE_CONTINUE
