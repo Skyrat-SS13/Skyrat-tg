@@ -195,7 +195,7 @@
 	export_types = list(/obj/item/reagent_containers/heroinbrick)
 	include_subtypes = FALSE
 
-/datum/export/freebase_blacktar
+/datum/export/blacktar
 	cost = CARGO_CRATE_VALUE * 0.4
 	unit_name = "black tar heroin"
 	export_types = list(/obj/item/reagent_containers/blacktar)
