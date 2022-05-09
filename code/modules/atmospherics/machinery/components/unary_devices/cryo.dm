@@ -70,13 +70,8 @@
 	icon_state = "pod-off"
 	density = TRUE
 	max_integrity = 350
-<<<<<<< HEAD
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 100, BOMB = 0, BIO = 100, FIRE = 30, ACID = 30)
-	layer = MOB_LAYER - 0.2 //SKYRAT EDIT - Fixing the opacity of cryo cells - ORIGINAL: layer = MOB_LAYER
-=======
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 100, BOMB = 0, BIO = 0, FIRE = 30, ACID = 30)
-	layer = MOB_LAYER
->>>>>>> a6ae1fb78a2 (removes permeability, rolling it into bio armor (#66742))
+	layer = MOB_LAYER - 0.2 //SKYRAT EDIT - Fixing the opacity of cryo cells - ORIGINAL: layer = MOB_LAYER
 	state_open = FALSE
 	circuit = /obj/item/circuitboard/machine/cryo_tube
 	pipe_flags = PIPING_ONE_PER_TURF | PIPING_DEFAULT_LAYER_ONLY

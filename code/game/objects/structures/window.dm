@@ -400,12 +400,7 @@
 	icon_state = "rwindow"
 	reinf = TRUE
 	heat_resistance = 1600
-<<<<<<< HEAD
-	//armor = list(MELEE = 80, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 25, BIO = 100, FIRE = 80, ACID = 100) //ORIGINAL
-	armor = list(MELEE = 50, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 25, BIO = 100, FIRE = 80, ACID = 100)
-=======
-	armor = list(MELEE = 80, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 25, BIO = 0, FIRE = 80, ACID = 100)
->>>>>>> a6ae1fb78a2 (removes permeability, rolling it into bio armor (#66742))
+	armor = list(MELEE = 50, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 25, BIO = 0, FIRE = 80, ACID = 100) // SKYRAT EDIT CHANGE
 	max_integrity = 75
 	explosion_block = 1
 	damage_deflection = 11

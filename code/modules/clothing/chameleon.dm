@@ -380,13 +380,10 @@
 	random_sensor = FALSE
 	resistance_flags = NONE
 	can_adjust = FALSE
-<<<<<<< HEAD
+	armor = list(MELEE = 10, BULLET = 10, LASER = 10, ENERGY = 0, BOMB = 0, BIO = 10, FIRE = 50, ACID = 50)
+
 	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // SKYRAT EDIT
 	special_desc = "A chameleon jumpsuit employed by the Syndicate in infiltration operations." // SKYRAT EDIT
-	armor = list(MELEE = 10, BULLET = 10, LASER = 10, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 50)
-=======
-	armor = list(MELEE = 10, BULLET = 10, LASER = 10, ENERGY = 0, BOMB = 0, BIO = 10, FIRE = 50, ACID = 50)
->>>>>>> a6ae1fb78a2 (removes permeability, rolling it into bio armor (#66742))
 
 	var/datum/action/item_action/chameleon/change/chameleon_action
 
