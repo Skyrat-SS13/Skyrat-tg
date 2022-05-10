@@ -16,7 +16,7 @@
 	bare_wound_bonus = 20
 
   
-  /obj/item/storage/belt/sabre/bowie
+  /obj/item/storage/bag/bowiesheathe
 	name = "Bowie Knife sheathe"
 	desc = "A dressed up leather sheathe, featuring a bass tip, and a large pocket clip right in the center, for ease of carrying an otherwise burdersome knife."
 	icon = 'modular_skyrat/modules/knives/icons/bowie.dmi'
@@ -24,8 +24,17 @@
 	slot_flags = ITEM_SLOT_POCKETS
 	w_class = WEIGHT_CLASS_BULKY
 	resistance_flags = FLAMMABLE
+	
+/obj/item/storage/bag/bowiesheathe/ComponentInitialize()
+	. = ..()
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+	STR.max_items = 1
+	STR.max_w_class = WEIGHT_CLASS_BULKY
+	STR.set_holdable(list(
+		/obj/item/melee/knife/bowie
+		))
 
-/obj/item/storage/belt/sabre/bowie/PopulateContents()
+  /obj/item/storage/bag/bowiesheathe/PopulateContents()
 	new /obj/item/melee/knife/bowie(src)
 	update_appearance()
 
