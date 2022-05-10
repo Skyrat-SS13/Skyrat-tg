@@ -5,10 +5,10 @@
 	name = "Bowie Knife"
 	desc = "A frontierman's classic, closer to a shortsword then a knife, with a full-tanged build, brass handguard and pommel, a wicked sharp point, and a large, heavy blade, it's almost everything you could want in a knife, besides portability."
 	icon = 'modular_skyrat/modules/knives/icons/bowie.dmi'
-  iconstate = 'bowie'
+  	iconstate = 'bowie'
 	lefthand_file = 'modular_skyrat/modules/knives/icons/bowie_lefthand.dmi'
 	righthand_file = 'modular_skyrat/modules/knives/icons/bowie_righthand.dmi'
-  worn_icon_state = "knife"
+  	worn_icon_state = "knife"
 	force = 20 // Zoowee Momma!
 	w_class = WEIGHT_CLASS_NORMAL
 	throwforce = 15
