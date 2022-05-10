@@ -1,7 +1,6 @@
 /datum/species/mammal
 	name = "Anthromorph" //Called so because the species is so much more universal than just mammals
 	id = SPECIES_MAMMAL
-	default_color = "#4B4B4B"
 	species_traits = list(
 		MUTCOLORS,
 		EYECOLOR,
