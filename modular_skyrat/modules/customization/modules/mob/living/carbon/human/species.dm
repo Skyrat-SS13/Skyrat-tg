@@ -155,7 +155,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 						if(FACEHAIR)
 							accessory_overlay.color = H.facial_hair_color
 						if(EYECOLOR)
-							accessory_overlay.color = H.eye_color
+							accessory_overlay.color = H.eye_color_left
 			else
 				accessory_overlay.color = override_color
 			if (accessories)
@@ -210,7 +210,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 					if(FACEHAIR)
 						extra_accessory_overlay.color = H.facial_hair_color
 					if(EYECOLOR)
-						extra_accessory_overlay.color = H.eye_color
+						extra_accessory_overlay.color = H.eye_color_left
 
 				standing += extra_accessory_overlay
 
@@ -441,7 +441,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 			if(eyes?.is_emissive)
 				eye_emissive = emissive_appearance_copy(eye_overlay)
 			if((EYECOLOR in species_traits) && eyes)
-				eye_overlay.color = species_human.eye_color
+				eye_overlay.color = species_human.eye_color_left
 			if(OFFSET_FACE in species_human.dna.species.offset_features)
 				eye_overlay.pixel_x += species_human.dna.species.offset_features[OFFSET_FACE][1]
 				eye_overlay.pixel_y += species_human.dna.species.offset_features[OFFSET_FACE][2]

@@ -31,6 +31,9 @@
 	. += "<br>You can fire the underbarrel device with [span_bold("right click")]."
 	. += "<br>You can unload the underbarrel device by [span_bold("right clicking with an empty hand")]."
 
+	for(var/obj/item/reagent_containers/syringe/dart as anything in underbarrel.syringes)
+		. += "There is a [dart] loaded."
+
 /obj/item/gun/syringe/smartdart/underbarrel
 	name = "SmartDart underbarrel device"
 	desc = "An underbarrel attachment for a pistol that fits a SmartDart."

@@ -52,6 +52,8 @@ GLOBAL_LIST_EMPTY(all_loadout_datums)
 	var/list/restricted_roles
 	/// Whether the item is restricted to supporters
 	var/donator_only
+	/// Whether the item requires a specific season in order to be available
+	var/required_season = null
 
 /*
  * Place our [var/item_path] into [outfit].

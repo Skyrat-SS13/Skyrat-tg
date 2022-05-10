@@ -191,7 +191,7 @@
 	to_chat(target, span_warning("You feel strange..."))
 	sleep(6 SECONDS)
 	to_chat(target, span_warning("That pod did something to you..."))
-	target.Dizzy(35)
+	target.set_timed_status_effect(70 SECONDS, /datum/status_effect/dizziness)
 	sleep(6 SECONDS)
 	to_chat(target, span_warning("Your head pounds... It feels like it's going to burst out your skull!"))
 	target.flash_act()
@@ -206,7 +206,7 @@
 				we thank you for providing them. Your value is expended, and you will be ransomed back to your station. We always get paid, \
 				so it's only a matter of time before we ship you back...\"</i>")))
 	target.blur_eyes(10)
-	target.Dizzy(15)
+	target.set_timed_status_effect(30 SECONDS, /datum/status_effect/dizziness, only_if_higher = TRUE)
 	target.add_confusion(20)
 
 /// We're returning the victim
@@ -246,7 +246,7 @@
 
 		target.flash_act()
 		target.blur_eyes(30)
-		target.Dizzy(35)
+		target.set_timed_status_effect(70 SECONDS, /datum/status_effect/dizziness, only_if_higher = TRUE)
 		target.add_confusion(20)
 
 		new /obj/effect/pod_landingzone(possible_drop_loc[pod_rand_loc], return_pod)
