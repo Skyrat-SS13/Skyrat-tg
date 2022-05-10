@@ -451,12 +451,8 @@
 		//Paralyze(60) - SKYRAT EDIT REMOVAL
 		StaminaKnockdown(10, TRUE) //SKYRAT EDIT ADDITION
 
-<<<<<<< HEAD
-/mob/living/carbon/proc/help_shake_act(mob/living/carbon/M)
-	var/nosound = FALSE //SKYRAT EDIT ADDITION - EMOTES
-=======
 /mob/living/carbon/proc/help_shake_act(mob/living/carbon/helper)
->>>>>>> a020e28305a (Removes "strandling" status effect from a bunch of random places / refactors it (#66711))
+	var/nosound = FALSE //SKYRAT EDIT ADDITION - EMOTES
 	if(on_fire)
 		to_chat(helper, span_warning("You can't put [p_them()] out with just your bare hands!"))
 		return
@@ -484,41 +480,31 @@
 
 		if(HAS_TRAIT(src, TRAIT_BADTOUCH))
 			to_chat(helper, span_warning("[src] looks visibly upset as you pat [p_them()] on the head."))
-
-<<<<<<< HEAD
 		//SKYRAT EDIT ADDITION BEGIN - EMOTES
 		if(HAS_TRAIT(src, TRAIT_EXCITABLE))
 			if(!src.dna.species.is_wagging_tail(src))
 				src.emote("wag")
 		//SKYRAT EDIT ADDITION END
-
-	else if ((M.zone_selected == BODY_ZONE_PRECISE_GROIN) && !isnull(src.getorgan(/obj/item/organ/tail)))
-		M.visible_message(span_notice("[M] pulls on [src]'s tail!"), \
-					null, span_hear("You hear a soft patter."), DEFAULT_MESSAGE_RANGE, list(M, src))
-		to_chat(M, span_notice("You pull on [src]'s tail!"))
-		to_chat(src, span_notice("[M] pulls on your tail!"))
-=======
 	else if ((helper.zone_selected == BODY_ZONE_PRECISE_GROIN) && !isnull(src.getorgan(/obj/item/organ/tail)))
 		helper.visible_message(span_notice("[helper] pulls on [src]'s tail!"), \
 					null, span_hear("You hear a soft patter."), DEFAULT_MESSAGE_RANGE, list(helper, src))
 		to_chat(helper, span_notice("You pull on [src]'s tail!"))
 		to_chat(src, span_notice("[helper] pulls on your tail!"))
->>>>>>> a020e28305a (Removes "strandling" status effect from a bunch of random places / refactors it (#66711))
 		if(HAS_TRAIT(src, TRAIT_BADTOUCH)) //How dare they!
 			to_chat(helper, span_warning("[src] makes a grumbling noise as you pull on [p_their()] tail."))
 		else
 			SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "tailpulled", /datum/mood_event/tailpulled)
 
 	//SKYRAT EDIT ADDITION BEGIN - EMOTES -- SENSITIVE SNOUT TRAIT ADDITION
-	else if(M.zone_selected == BODY_ZONE_PRECISE_MOUTH)
+	else if(helper.zone_selected == BODY_ZONE_PRECISE_MOUTH)
 		nosound = TRUE
 		playsound(src, 'modular_skyrat/modules/emotes/sound/emotes/Nose_boop.ogg', 50, 0)
 		if(HAS_TRAIT(src, TRAIT_SENSITIVESNOUT) && get_location_accessible(src, BODY_ZONE_PRECISE_MOUTH))
-			to_chat(src, "<span class='warning'>[M] boops you on your sensitive nose, sending you to the ground!</span>")
+			to_chat(src, span_warning("[helper] boops you on your sensitive nose, sending you to the ground!"))
 			src.Knockdown(20)
 			src.apply_damage(30, STAMINA, BODY_ZONE_CHEST)
-		M.visible_message("<span class='notice'>[M] boops [src]'s nose.", \
-		"<span class='notice'>You boop [src] on the nose.</span>")
+		helper.visible_message(span_notice("[helper] boops [src]'s nose."), \
+		span_notice("You boop [src] on the nose."))
 	//SKYRAT EDIT ADDITION END
 
 	else
