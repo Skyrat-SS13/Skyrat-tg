@@ -1,4 +1,4 @@
-/datum/map_template/shuttle/labour/expedition_shuttle
+/datum/map_template/shuttle/ruin/expedition_shuttle
 	prefix = "_maps/skyrat/expeditionary_corps/"
 	suffix = "expedition_shuttle"
 	name = "Expedition Shuttle"
@@ -23,4 +23,3 @@
 /obj/item/circuitboard/computer/expedition_shuttle
 	name = "Expedition Shuttle Control Console (Computer Board)"
 	build_path = /obj/machinery/computer/shuttle/expedition_shuttle
-
