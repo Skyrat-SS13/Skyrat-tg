@@ -35,11 +35,11 @@
 /datum/reagent/drug/cocaine/on_mob_metabolize(mob/living/containing_mob)
 	..()
 	containing_mob.add_movespeed_modifier(/datum/movespeed_modifier/reagent/stimulants)
-	ADD_TRAIT(containing_mob, TRAIT_STUNRESISTANCE, type)
+	ADD_TRAIT(containing_mob, TRAIT_BATON_RESISTANCE, type)
 
 /datum/reagent/drug/cocaine/on_mob_end_metabolize(mob/living/containing_mob)
 	containing_mob.remove_movespeed_modifier(/datum/movespeed_modifier/reagent/stimulants)
-	REMOVE_TRAIT(containing_mob, TRAIT_STUNRESISTANCE, type)
+	REMOVE_TRAIT(containing_mob, TRAIT_BATON_RESISTANCE, type)
 	..()
 
 /datum/reagent/drug/cocaine/on_mob_life(mob/living/carbon/M, delta_time, times_fired)
