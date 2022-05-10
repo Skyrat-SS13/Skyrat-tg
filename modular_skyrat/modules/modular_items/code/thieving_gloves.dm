@@ -3,7 +3,6 @@
 	special_desc_requirement = EXAMINE_CHECK_SYNDICATE
 	clothing_traits = list(TRAIT_STICKY_FINGERS)
 	siemens_coefficient = 0
-	permeability_coefficient = 0.05
 	cut_type = null
 
 /datum/uplink_item/stealthy_tools/thieving_gloves

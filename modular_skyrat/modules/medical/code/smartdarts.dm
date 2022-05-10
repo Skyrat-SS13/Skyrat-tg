@@ -60,6 +60,12 @@
 		to_chat(user, span_notice("The [container] is unable to fit inside of the [src]! Try using a <b>SmartDart</b> instead."))
 		return FALSE
 
+/obj/item/gun/syringe/smartdart/examine(mob/user)
+	. = ..()
+
+	for(var/obj/item/reagent_containers/syringe/dart as anything in syringes)
+		. += "There is a [dart] loaded."
+
 //Rapid Smartdart Revolver
 /obj/item/gun/syringe/smartdart/revolver
 	name = "Rapid SmartDart Revolver"
