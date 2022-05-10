@@ -34,7 +34,7 @@
 		/obj/item/melee/knife/bowie
 		))
 
-  /obj/item/storage/bag/bowiesheathe/PopulateContents()
+  /obj/item/storage/bag/bowiesheath/PopulateContents()
 	new /obj/item/melee/knife/bowie(src)
 	update_appearance()
 
