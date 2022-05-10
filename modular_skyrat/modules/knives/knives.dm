@@ -8,7 +8,7 @@
   	iconstate = 'bowie'
 	lefthand_file = 'modular_skyrat/modules/knives/icons/bowie_lefthand.dmi'
 	righthand_file = 'modular_skyrat/modules/knives/icons/bowie_righthand.dmi'
-  	worn_icon_state = "knife"
+  worn_icon_state = "knife"
 	force = 20 // Zoowee Momma!
 	w_class = WEIGHT_CLASS_NORMAL
 	throwforce = 15
