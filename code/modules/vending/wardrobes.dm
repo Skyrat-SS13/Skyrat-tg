@@ -24,11 +24,7 @@
 					/obj/item/clothing/shoes/jackboots = 3,
 					/obj/item/clothing/head/beret/sec = 3,
 					/obj/item/clothing/head/soft/sec = 3,
-<<<<<<< HEAD
-					/obj/item/clothing/mask/bandana/red = 3,
-=======
 					/obj/item/clothing/mask/bandana/striped/security = 3,
->>>>>>> e5909ce7388 (Bandana GAGS follow-up (#66605))
 					/obj/item/clothing/gloves/color/black = 3,
 					/obj/item/clothing/under/rank/security/officer/skirt = 3,
 					/obj/item/clothing/under/rank/security/officer/grey = 3,
@@ -99,10 +95,7 @@
 					/obj/item/clothing/suit/hazardvest = 3,
 					/obj/item/clothing/shoes/workboots = 3,
 					/obj/item/clothing/head/beret/engi = 3,
-<<<<<<< HEAD
-=======
 					/obj/item/clothing/mask/bandana/striped/engineering = 3,
->>>>>>> e5909ce7388 (Bandana GAGS follow-up (#66605))
 					/obj/item/clothing/head/hardhat = 3,
 					/obj/item/clothing/head/hardhat/weldhat = 3)
 	refill_canister = /obj/item/vending_refill/wardrobe/engi_wardrobe
@@ -177,11 +170,7 @@
 					/obj/item/clothing/shoes/sneakers/black = 2,
 					/obj/item/clothing/gloves/fingerless = 2,
 					/obj/item/clothing/head/soft/black = 2,
-<<<<<<< HEAD
-					/obj/item/clothing/mask/bandana/color/skull = 2)
-=======
 					/obj/item/clothing/mask/bandana/skull/black = 2)
->>>>>>> e5909ce7388 (Bandana GAGS follow-up (#66605))
 	contraband = list(/obj/item/clothing/suit/hooded/techpriest = 2,
 					  /obj/item/clothing/under/costume/mech_suit = 2,
 					  /obj/item/organ/tongue/robot = 2)
@@ -203,10 +192,7 @@
 					/obj/item/storage/backpack/duffelbag/science = 3,
 					/obj/item/clothing/head/beret/science = 3,
 					/obj/item/clothing/head/beret/science/fancy = 3,
-<<<<<<< HEAD
-=======
 					/obj/item/clothing/mask/bandana/striped/science = 3,
->>>>>>> e5909ce7388 (Bandana GAGS follow-up (#66605))
 					/obj/item/clothing/suit/hooded/wintercoat/science = 3,
 					/obj/item/clothing/under/rank/rnd/scientist = 3,
 					/obj/item/clothing/under/rank/rnd/scientist/skirt = 3,
@@ -234,11 +220,7 @@
 					/obj/item/clothing/suit/apron/waders = 3,
 					/obj/item/clothing/under/rank/civilian/hydroponics = 3,
 					/obj/item/clothing/under/rank/civilian/hydroponics/skirt = 3,
-<<<<<<< HEAD
-					/obj/item/clothing/mask/bandana = 3,
-=======
 					/obj/item/clothing/mask/bandana/striped/botany = 3,
->>>>>>> e5909ce7388 (Bandana GAGS follow-up (#66605))
 					/obj/item/clothing/accessory/armband/hydro = 3)
 	refill_canister = /obj/item/vending_refill/wardrobe/hydro_wardrobe
 	payment_department = ACCOUNT_SRV
@@ -343,10 +325,7 @@
 					/obj/item/clothing/suit/hooded/wintercoat/janitor = 2,
 					/obj/item/clothing/gloves/color/black = 2,
 					/obj/item/clothing/head/soft/purple = 2,
-<<<<<<< HEAD
-=======
 					/obj/item/clothing/mask/bandana/purple = 2,
->>>>>>> e5909ce7388 (Bandana GAGS follow-up (#66605))
 					/obj/item/pushbroom = 2,
 					/obj/item/paint/paint_remover = 2,
 					/obj/item/melee/flyswatter = 2,

@@ -112,11 +112,8 @@
 		new /obj/item/clothing/shoes/sneakers/white(src)
 	for(var/i in 1 to 3)
 		new /obj/item/clothing/head/soft/mime(src)
-<<<<<<< HEAD
-=======
 	new /obj/item/clothing/mask/bandana/white(src)
 	new /obj/item/clothing/mask/bandana/white(src)
->>>>>>> e5909ce7388 (Bandana GAGS follow-up (#66605))
 	return
 
 /obj/structure/closet/wardrobe/pjs

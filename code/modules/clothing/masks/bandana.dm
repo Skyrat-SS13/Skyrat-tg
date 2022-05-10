@@ -7,45 +7,6 @@
 	slot_flags = ITEM_SLOT_MASK
 	adjusted_flags = ITEM_SLOT_HEAD
 	species_exception = list(/datum/species/golem)
-<<<<<<< HEAD
-
-/obj/item/clothing/mask/bandana/attack_self(mob/user)
-	adjustmask(user)
-	//SKYRAT EDIT START: BANDANA HATS FOR MUTANTS
-	if(slot_flags & ITEM_SLOT_HEAD)
-		supports_variations_flags = NONE
-	if(slot_flags & ITEM_SLOT_MASK)
-		supports_variations_flags = initial(supports_variations_flags)
-	//SKYRAT EDIT END
-
-/obj/item/clothing/mask/bandana/AltClick(mob/user)
-	. = ..()
-	if(iscarbon(user) && user.is_holding(src))
-		var/mob/living/carbon/C = user
-		if((C.get_item_by_slot(ITEM_SLOT_HEAD == src)) || (C.get_item_by_slot(ITEM_SLOT_MASK) == src))
-			to_chat(user, span_warning("You can't tie [src] while wearing it!"))
-			return
-		if(slot_flags & ITEM_SLOT_HEAD)
-			to_chat(user, span_warning("You must undo [src] before you can tie it into a neckerchief!"))
-			return
-		if(slot_flags & ITEM_SLOT_NECK)
-			name = initial(name)
-			desc = initial(desc)
-			slot_flags = initial(slot_flags)
-			worn_y_offset = initial(worn_y_offset)
-			user.visible_message(span_notice("[user] unties the neckercheif back into a [name]."), span_notice("You untie the neckercheif back into a [name]."))
-		else
-			name = "[name] neckerchief"
-			desc = "[desc] It's tied up like a neckerchief."
-			slot_flags = ITEM_SLOT_NECK
-			worn_y_offset = -3
-			user.visible_message(span_notice("[user] ties [src] up like a neckerchief."), span_notice("You tie [src] up like a neckerchief."))
-	else
-		to_chat(user, span_warning("You must be holding [src] in order to tie it!"))
-
-/obj/item/clothing/mask/bandana/color
-=======
->>>>>>> e5909ce7388 (Bandana GAGS follow-up (#66605))
 	dying_key = DYE_REGISTRY_BANDANA
 	flags_1 = IS_PLAYER_COLORABLE_1
 	name = "bandana"
@@ -54,14 +15,21 @@
 	worn_icon_state = "bandana_worn"
 	greyscale_config = /datum/greyscale_config/bandana
 	greyscale_config_worn = /datum/greyscale_config/bandana_worn
-	greyscale_config_up = /datum/greyscale_config/bandana_up // SKYRAT EDIT
-	greyscale_config_worn_up = /datum/greyscale_config/bandana_worn_up // SKYRAT EDIT
+	var/greyscale_config_up = /datum/greyscale_config/bandana_up
+	var/greyscale_config_worn_up = /datum/greyscale_config/bandana_worn_up
 	greyscale_colors = "#2e2e2e"
 
 /obj/item/clothing/mask/bandana/attack_self(mob/user)
 	if(slot_flags & ITEM_SLOT_NECK)
 		to_chat(user, span_warning("You must undo [src] in order to push it into a hat!"))
 		return
+	//SKYRAT EDIT START: BANDANA HATS FOR MUTANTS
+	if(slot_flags & ITEM_SLOT_HEAD)
+		supports_variations_flags = NONE
+	if(slot_flags & ITEM_SLOT_MASK)
+		supports_variations_flags = initial(supports_variations_flags)
+	//SKYRAT EDIT END
+
 	adjustmask(user)
 	if(greyscale_config == initial(greyscale_config) && greyscale_config_worn == initial(greyscale_config_worn))
 		worn_icon_state += "_up"
