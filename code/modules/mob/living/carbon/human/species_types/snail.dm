@@ -1,8 +1,12 @@
 /datum/species/snail
 	name = "Snailperson"
 	id = SPECIES_SNAIL
+<<<<<<< HEAD
 	default_color = "336600" //vomit green
 	species_traits = list(MUTCOLORS, EYECOLOR, HAS_FLESH, HAS_BONE, HAIR, FACEHAIR) //SKYRAT EDIT - Roundstart Snails - Customization
+=======
+	species_traits = list(MUTCOLORS, NO_UNDERWEAR, HAS_FLESH, HAS_BONE)
+>>>>>>> 6f58040394f (Fixes mulligan not randomizing ethereal color, removes default_color for every race except ethereals (#66229))
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_CAN_STRIP,
