@@ -96,6 +96,7 @@
 /datum/sprite_accessory/snouts/mammal/bug
 	name = "Bug"
 	icon_state = "bug"
+	flags_for_organ = NONE
 	color_src = USE_ONE_COLOR
 	extra2 = TRUE
 	extra2_color_src = MUTCOLORS3
@@ -240,6 +241,7 @@
 /datum/sprite_accessory/snouts/mammal/fbug
 	name = "Bug (Top)"
 	icon_state = "fbug"
+	flags_for_organ = NONE
 	color_src = USE_ONE_COLOR
 	extra2 = TRUE
 	extra2_color_src = MUTCOLORS3
