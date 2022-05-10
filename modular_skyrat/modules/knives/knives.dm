@@ -16,7 +16,7 @@
 	bare_wound_bonus = 20
 
   
-  /obj/item/storage/bag/bowiesheathe
+  /obj/item/storage/bag/bowiesheath
 	name = "Bowie Knife sheathe"
 	desc = "A dressed up leather sheathe, featuring a bass tip, and a large pocket clip right in the center, for ease of carrying an otherwise burdersome knife."
 	icon = 'modular_skyrat/modules/knives/icons/bowie.dmi'
