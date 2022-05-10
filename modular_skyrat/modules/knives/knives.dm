@@ -3,7 +3,7 @@
 
 /obj/item/melee/knife/bowie
 	name = "Bowie Knife"
-	desc = "A frontierman's classic, closer to a shortsword then a knife, with a full-tanged build, wicked sharp point, and a large, heavy blade, it's almost everything you could want in a knife, besides portability."
+	desc = "A frontierman's classic, closer to a shortsword then a knife, with a full-tanged build, brass handguard and pommel, a wicked sharp point, and a large, heavy blade, it's almost everything you could want in a knife, besides portability."
 	icon = 'modular_skyrat/modules/knives/icons/bowie.dmi'
   iconstate = 'bowie'
 	lefthand_file = 'modular_skyrat/modules/knives/icons/bowie_lefthand.dmi'
@@ -18,7 +18,7 @@
   
   /obj/item/storage/belt/sabre/bowie
 	name = "Bowie Knife sheathe"
-	desc = "A dressed up leather sheathe, featuring bass tips and a large pocket clip right in the center, for ease of carrying an otherwise burdersome knife."
+	desc = "A dressed up leather sheathe, featuring a bass tip, and a large pocket clip right in the center, for ease of carrying an otherwise burdersome knife."
 	icon = 'modular_skyrat/modules/knives/icons/bowie.dmi'
 	icon_state = "bowiesheathe2"
 	slot_flags = ITEM_SLOT_POCKETS
