@@ -25,7 +25,7 @@
 	w_class = WEIGHT_CLASS_BULKY
 	resistance_flags = FLAMMABLE
 	
-/obj/item/storage/bag/bowiesheathe/ComponentInitialize()
+/obj/item/storage/bag/bowiesheath/ComponentInitialize()
 	. = ..()
 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
 	STR.max_items = 1
