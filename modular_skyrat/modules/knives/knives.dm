@@ -17,7 +17,7 @@
 
   
   /obj/item/storage/bag/bowiesheath
-	name = "Bowie Knife sheathe"
+	name = "Bowie knife sheath"
 	desc = "A dressed-up leather sheath featuring a brass tip. It has a large pocket clip right in the center, for ease of carrying an otherwise burdensome knife."
 	icon = 'modular_skyrat/modules/knives/icons/bowie.dmi'
 	icon_state = "bowiesheathe2"
