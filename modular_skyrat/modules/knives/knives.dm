@@ -3,7 +3,7 @@
 
 /obj/item/melee/knife/bowie
 	name = "Bowie knife"
-	desc = "A frontierman's classic, closer to a shortsword then a knife, with a full-tanged build, brass handguard and pommel, a wicked sharp point, and a large, heavy blade, it's almost everything you could want in a knife, besides portability."
+	desc = "A frontiersman's classic, closer to a shortsword than a knife. It boasts a full-tanged build, a brass handguard and pommel, a wicked sharp point, and a large, heavy blade, It's almost everything you could want in a knife, besides portability."
 	icon = 'modular_skyrat/modules/knives/icons/bowie.dmi'
   	iconstate = 'bowie'
 	lefthand_file = 'modular_skyrat/modules/knives/icons/bowie_lefthand.dmi'
