@@ -314,8 +314,6 @@
 
 	apply_overlay(BODYPARTS_LAYER)
 
-<<<<<<< HEAD
-=======
 
 /**
  * Here we update the legs separately from the other bodyparts. Thanks BYOND for so little support for dir layering.
@@ -355,7 +353,6 @@
 	return legs_need_redrawn
 
 
->>>>>>> a3c8013b45c (Refactors how legs are displayed so they no longer appear above one-another when looking EAST or WEST (#66607))
 /////////////////////////
 // Limb Icon Cache 2.0 //
 /////////////////////////
