@@ -190,23 +190,15 @@
 	icon_prefix = "bone_spear"
 	name = "bone spear"
 	desc = "A haphazardly-constructed yet still deadly weapon. The pinnacle of modern technology."
-<<<<<<< HEAD
 	force = 8 //SKYRAT EDIT
-=======
-
->>>>>>> e8f24416304 (Minor twohanded component refactor (#66791))
 	throwforce = 22
 	reach = 2 // SKYRAT EDIT
 	armour_penetration = 15 //Enhanced armor piercing
-<<<<<<< HEAD
+
 
 /obj/item/spear/bonespear/ComponentInitialize()
 	. = ..()
 	AddComponent(/datum/component/two_handed, force_unwielded=8, force_wielded=16, icon_wielded="[icon_prefix]1") //SKYRAT EDIT
-=======
-	force_unwielded = 12
-	force_wielded = 20
->>>>>>> e8f24416304 (Minor twohanded component refactor (#66791))
 
 /*
  * Bamboo Spear
