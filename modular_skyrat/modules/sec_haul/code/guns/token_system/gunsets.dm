@@ -161,7 +161,7 @@
 
 //ZETA
 /obj/item/storage/box/gunset/zeta
-	name = "10mm Auto revolver supply box"
+	name = "10mm Magnum revolver supply box"
 	desc = "Ideally contains a slow-firing revolver that packs a punch."
 
 /obj/item/storage/box/gunset/zeta/PopulateContents()
@@ -170,7 +170,7 @@
 	new /obj/item/ammo_box/revolver/zeta(src) //These start empty.
 	new /obj/item/ammo_box/revolver/zeta(src)
 	new /obj/item/ammo_box/revolver/zeta(src)
-	new /obj/item/ammo_box/advanced/b10mm(src)
+	new /obj/item/ammo_box/c10mm(src)
 
 //REVOLUTION
 /obj/item/storage/box/gunset/revolution
@@ -193,9 +193,16 @@
 	name = "9mm SMG supply box"
 	desc = "Ideally contains a 9x19mm SMG with decent firerate."
 
+/obj/item/gun/ballistic/automatic/pcr/nomag
+	spawnwithmagazine = FALSE
+
 /obj/item/storage/box/gunset/pcr/PopulateContents()
 	. = ..()
-	new /obj/item/gun/energy/pcr(src)
+	new /obj/item/gun/ballistic/automatic/pcr/nomag(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/pcr(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/pcr(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/pcr(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/pcr(src)
 
 ////M112
 
@@ -203,9 +210,16 @@
 	name = "12.7x30mm DMR supply box."
 	desc = "Ideally contains an unwieldy rifle that hits like a truck."
 
+/obj/item/gun/ballistic/automatic/norwind/nomag
+	spawnwithmagazine = FALSE
+
 /obj/item/storage/box/gunset/norwind/PopulateContents()
 	. = ..()
-	new /obj/item/gun/energy/norwind(src)
+	new /obj/item/gun/ballistic/automatic/norwind/nomag(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/norwind(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/norwind(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/norwind(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/norwind(src)
 
 //////DTR-6
 
@@ -213,18 +227,33 @@
 	name = "6mm SPR box."
 	desc = "Ideally contains an all-around balanced special purpose rifle."
 
+/obj/item/gun/ballistic/automatic/ostwind/nomag
+	spawnwithmagazine = FALSE
+
 /obj/item/storage/box/gunset/ostwind/PopulateContents()
 	. = ..()
-	new /obj/item/gun/energy/ostwind(src)
+	new /obj/item/gun/ballistic/automatic/ostwind/nomag(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/ostwind(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/ostwind(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/ostwind(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/ostwind(src)
+
 ////////PITBULL
 
 /obj/item/storage/box/gunset/pitbull
 	name = "10mm PDW supply box"
 	desc = "Ideally contains a slow-firing 10mm Auto PDW that packs a punch."
 
+/obj/item/gun/ballistic/automatic/pitbull/nomag
+	spawnwithmagazine = FALSE
+
 /obj/item/storage/box/gunset/pitbull/PopulateContents()
 	. = ..()
-	new /obj/item/gun/energy/pitbull(src)
+	new /obj/item/gun/ballistic/automatic/pitbull/nomag(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/pitbull(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/pitbull(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/pitbull(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/pitbull(src)
 
 /////////////////
 //JOB SPECIFIC GUNSETS

@@ -56,11 +56,11 @@
 	restricted = TRUE
 
 /datum/armament_entry/cargo_gun/armadyne/rifle/norwind
-	item_type = /obj/item/gun/energy/norwind
+	item_type = /obj/item/gun/ballistic/automatic/norwind
 	lower_cost = CARGO_CRATE_VALUE * 10
 	upper_cost = CARGO_CRATE_VALUE * 14
 
 /datum/armament_entry/cargo_gun/armadyne/rifle/ostwind
-	item_type = /obj/item/gun/energy/ostwind
+	item_type = /obj/item/gun/ballistic/automatic/ostwind
 	lower_cost = CARGO_CRATE_VALUE * 10
 	upper_cost = CARGO_CRATE_VALUE * 14

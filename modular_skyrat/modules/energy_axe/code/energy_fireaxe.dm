@@ -26,7 +26,6 @@
 /obj/item/fireaxe/energy/proc/energy_wield(obj/item/source, mob/living/carbon/user)
 	SIGNAL_HANDLER
 
-	wielded = TRUE
 	hitsound = 'sound/weapons/blade1.ogg'
 	START_PROCESSING(SSobj, src)
 	set_light_on(TRUE)
@@ -36,7 +35,6 @@
 /obj/item/fireaxe/energy/proc/energy_unwield(obj/item/source, mob/living/carbon/user)
 	SIGNAL_HANDLER
 
-	wielded = FALSE
 	hitsound = SFX_SWING_HIT
 	STOP_PROCESSING(SSobj, src)
 	set_light_on(FALSE)

@@ -8,5 +8,5 @@
 
 /obj/item/storage/belt/military/assault/full/cmg/PopulateContents()
 	generate_items_inside(list(
-		/obj/item/ammo_box/magazine/cmgm45/lethal = 6,
+		/obj/item/ammo_box/magazine/multi_sprite/cmg/lethal = 6,
 	), src)
