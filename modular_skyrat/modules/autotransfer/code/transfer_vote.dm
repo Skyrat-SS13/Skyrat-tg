@@ -2,7 +2,7 @@
 #define CHOICE_CONTINUE "Continue Playing"
 
 /datum/vote/transfer_vote
-	name = "Restart"
+	name = "Transfer"
 	default_choices = list(
 		CHOICE_TRANSFER,
 		CHOICE_CONTINUE,
