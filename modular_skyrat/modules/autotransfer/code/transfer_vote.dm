@@ -23,7 +23,7 @@
 	if(!.)
 		return FALSE
 
-	if(!forced && by_who && !is_admin(by_who.client))
+	if(!forced && !CONFIG_GET(flag/autotransfer))
 		to_chat(by_who, span_warning("Restart voting is disabled."))
 		return FALSE
 
