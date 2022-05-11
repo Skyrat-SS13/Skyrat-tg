@@ -52,7 +52,7 @@
 				affected_mob.AdjustSleeping(100)
 			if(DT_PROB(5, delta_time))
 				to_chat(affected_mob, span_userdanger("You feel your mind relax and your thoughts drift!"))
-				affected_mob.set_confusion(min(100, affected_mob.get_confusion() + 8))
+				affected_mob.adjust_timed_status_effect(10 SECONDS, /datum/status_effect/confusion)
 				affected_mob.adjustOrganLoss(ORGAN_SLOT_BRAIN, 10)
 			if(DT_PROB(10, delta_time))
 				to_chat(affected_mob, span_danger("[pick("You feel uncomfortably hot...", "You feel like unzipping your jumpsuit", "You feel like taking off some clothes...")]"))
