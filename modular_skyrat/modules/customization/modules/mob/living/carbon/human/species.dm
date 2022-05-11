@@ -360,7 +360,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 			var/add_pixel_x = 0
 			var/add_pixel_y = 0
 			//cut any possible vis overlays
-			if(body_vis_overlays.len)
+			if(length(body_vis_overlays))
 				SSvis_overlays.remove_vis_overlay(species_human, body_vis_overlays)
 
 			if(OFFSET_FACE in species_human.dna.species.offset_features)
