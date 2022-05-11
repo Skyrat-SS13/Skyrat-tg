@@ -1,4 +1,4 @@
-/datum/id_trim/expeditionary_corps/
+/datum/id_trim/expeditionary_corps
 	trim_icon = 'modular_skyrat/modules/expeditionary-corps/icons/card.dmi'
 
 /datum/id_trim/expeditionary_corps/expedition_commander
