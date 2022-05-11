@@ -7,7 +7,6 @@
 	spawn_positions = 1
 	supervisors = "the quartermaster"
 	selection_color = "#d7b088"
-	//minimal_player_age = 40
 	exp_requirements = 400
 	exp_required_type = EXP_TYPE_CREW
 	exp_required_type_department = EXP_TYPE_SUPPLY
@@ -67,7 +66,6 @@
 	spawn_positions = 1
 	supervisors = "the quartermaster"
 	selection_color = "#d7b088"
-	//minimal_player_age = 40
 	exp_requirements = 400
 	exp_required_type = EXP_TYPE_CREW
 	exp_required_type_department = EXP_TYPE_SUPPLY
@@ -125,7 +123,6 @@
 	spawn_positions = 1
 	supervisors = "the quartermaster"
 	selection_color = "#d7b088"
-	//minimal_player_age = 40
 	exp_requirements = 400
 	exp_required_type = EXP_TYPE_CREW
 	exp_required_type_department = EXP_TYPE_SUPPLY
@@ -184,7 +181,6 @@
 	spawn_positions = 1
 	supervisors = "the quartermaster"
 	selection_color = "#d7b088"
-	//minimal_player_age = 40
 	exp_requirements = 400
 	exp_required_type = EXP_TYPE_CREW
 	exp_required_type_department = EXP_TYPE_SUPPLY
@@ -246,7 +242,6 @@
 	spawn_positions = 1
 	supervisors = "the quartermaster"
 	selection_color = "#d7b088"
-	//minimal_player_age = 40
 	exp_requirements = 400
 	exp_required_type = EXP_TYPE_CREW
 	exp_required_type_department = EXP_TYPE_SUPPLY
