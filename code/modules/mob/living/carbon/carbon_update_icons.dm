@@ -410,6 +410,11 @@
 			continue
 		. += "[external_organ.generate_icon_cache()]"
 
+	// SKYRAT EDIT START - Caching digitigrade leg masks
+	if(limb_id == "digitigrade")
+		. += "digitigrade"
+	// SKYRAT EDIT END
+
 	return .
 
 ///Generates a cache key specifically for husks
