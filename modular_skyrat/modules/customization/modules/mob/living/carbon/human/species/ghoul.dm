@@ -88,7 +88,6 @@
 /datum/species/ghoul/set_ghoul_color(mob/living/carbon/human/H)
 	// Called on Assign, or on Color Change (or any time proof_ghoul_features() is used)
 	fixed_mut_color = H.dna.features["ghoulcolor"]
-	default_color = fixed_mut_color
 
 /mob/living/carbon/proc/ReassignForeignBodyparts()
 	var/obj/item/bodypart/head = get_bodypart(BODY_ZONE_HEAD)
