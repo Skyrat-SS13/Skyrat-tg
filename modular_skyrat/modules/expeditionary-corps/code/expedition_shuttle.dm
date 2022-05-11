@@ -6,7 +6,7 @@
 
 /obj/machinery/computer/shuttle/expedition_shuttle
 	name = "Expedition Shuttle Control"
-	desc = "Used to control the Expedition Shuttle."
+	desc = "Used to control the expedition shuttle."
 	circuit = /obj/item/circuitboard/computer/expedition_shuttle
 	shuttleId = "expedition_shuttle"
 	possible_destinations = "expedition_shuttle_custom;expedition_shuttle_post;expedition_shuttle_home"
