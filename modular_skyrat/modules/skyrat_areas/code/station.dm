@@ -81,6 +81,11 @@
 /area/station/maintenance/abandon_exam/cat
 	name = "Abandoned Cat Exam"
 
+/area/station/maintenance/abandon_wrestle
+	name = "Abandoned Wrestle Arena"
+	icon = 'modular_skyrat/modules/skyrat_areas/icons/areas_station.dmi'
+	icon_state = "abandon_wrestle"
+
 /area/station/maintenance/abandon_surgery
 	name = "Abandoned Surgery"
 	icon = 'modular_skyrat/modules/skyrat_areas/icons/areas_station.dmi'
@@ -106,11 +111,6 @@
 	name = "Gamer Lair"
 	icon = 'modular_skyrat/modules/skyrat_areas/icons/areas_station.dmi'
 	icon_state = "gamer_lair"
-
-/area/station/maintenance/wrestling
-	name = "Old Wrestling Room"
-	icon = 'modular_skyrat/modules/skyrat_areas/icons/areas_station.dmi'
-	icon_state = "wrestle"
 
 /area/station/maintenance/xenobio_disposals
 	name = "Xenobiology Disposals"
@@ -177,10 +177,52 @@
 	icon = 'modular_skyrat/modules/skyrat_areas/icons/areas_station.dmi'
 	icon_state = "cryopods"
 
-/area/station/common/wrestling_arena
-	name = "Wrestling Arena"
+// Wrestling areas for BlueShift
+/area/station/common/wrestling
+	name = "Wrestling"
 	icon = 'modular_skyrat/modules/skyrat_areas/icons/areas_station.dmi'
 	icon_state = "wrestle"
+
+/area/station/common/wrestling/arena
+	name = "Wrestling Arena"
+	icon_state = "wrestle_arena"
+
+/area/station/common/wrestling/lobby
+	name = "Wrestling Arena Lobby"
+	icon_state = "wrestle_lobby"
+
+/area/station/common/wrestling/locker
+	name = "Wrestling Arena Locker Room"
+	icon_state = "wrestle_locker"
+
+// BlueShift Night Club
+/area/station/common/night_club
+	name = "Night Club"
+	icon = 'modular_skyrat/modules/skyrat_areas/icons/areas_station.dmi'
+	icon_state = "nightclub"
+
+/area/station/common/night_club/back_stage
+	name = "Night Club Backstage"
+	icon_state = "nightclub_backstage"
+
+/area/station/common/night_club/changing_room
+	name = "Night Club Chaning Room"
+	icon_state = "nightclub_changing_room"
+
+/area/station/common/laser_tag
+	name = "Laser Tag"
+	icon = 'modular_skyrat/modules/skyrat_areas/icons/areas_station.dmi'
+	icon_state = "laser_tag"
+
+/area/station/common/arcade
+	name = "Arcade"
+	icon = 'modular_skyrat/modules/skyrat_areas/icons/areas_station.dmi'
+	icon_state = "arcade"
+
+/area/station/common/locker_room_shower
+	name = "Locker Room Shower"
+	icon = 'modular_skyrat/modules/skyrat_areas/icons/areas_station.dmi'
+	icon_state = "locker_room_shower"
 
 // Medical Areas
 /area/station/medical/aslyum
