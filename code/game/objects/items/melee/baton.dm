@@ -562,13 +562,8 @@
  * After a period of time, we then check to see what stun duration we give.
  */
 /obj/item/melee/baton/security/additional_effects_non_cyborg(mob/living/target, mob/living/user)
-<<<<<<< HEAD
-	target.Jitter(20)
-	//target.set_timed_status_effect(10 SECONDS, /datum/status_effect/confusion, only_if_higher = TRUE) SKYRAT EDIT REMOVAL
-=======
 	target.set_timed_status_effect(40 SECONDS, /datum/status_effect/jitter, only_if_higher = TRUE)
-	target.set_timed_status_effect(10 SECONDS, /datum/status_effect/confusion, only_if_higher = TRUE)
->>>>>>> 29bfa42779d (Converts jittering to status effect, striking yet another mob level status value (#66852))
+	//target.set_timed_status_effect(10 SECONDS, /datum/status_effect/confusion, only_if_higher = TRUE) SKYRAT EDIT REMOVAL
 	target.set_timed_status_effect(16 SECONDS, /datum/status_effect/speech/stutter, only_if_higher = TRUE)
 
 	SEND_SIGNAL(target, COMSIG_LIVING_MINOR_SHOCK)
