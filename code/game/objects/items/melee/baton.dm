@@ -563,11 +563,7 @@
  */
 /obj/item/melee/baton/security/additional_effects_non_cyborg(mob/living/target, mob/living/user)
 	target.Jitter(20)
-<<<<<<< HEAD
-	//target.set_confusion(max(10, target.get_confusion())) SKYRAT EDIT REMOVAL
-=======
-	target.set_timed_status_effect(10 SECONDS, /datum/status_effect/confusion, only_if_higher = TRUE)
->>>>>>> e63d556d83d (Confusion status effect is now duration based instead of magic number based (#66801))
+	//target.set_timed_status_effect(10 SECONDS, /datum/status_effect/confusion, only_if_higher = TRUE) SKYRAT EDIT REMOVAL
 	target.set_timed_status_effect(16 SECONDS, /datum/status_effect/speech/stutter, only_if_higher = TRUE)
 
 	SEND_SIGNAL(target, COMSIG_LIVING_MINOR_SHOCK)
