@@ -1,10 +1,20 @@
 //Modular areas for mapping that don't exist on /TG/ already
 
 // Department/Area specific maints
+/area/station/maintenance/port/upper
+	name = "Upper Port Maintenance"
+	icon = 'modular_skyrat/modules/skyrat_areas/icons/areas_station.dmi'
+	icon_state = "port_maint_upper"
+
 /area/station/maintenance/department/science/ordnance_maint
 	name = "Ordnance Maintenance"
 	icon = 'modular_skyrat/modules/skyrat_areas/icons/areas_station.dmi'
-	icon_state ="ord_maint"
+	icon_state = "ord_maint"
+
+/area/station/maintenance/department/science/ordnance_maint_lesser
+	name = "Lesser Ordnance Maintenace"
+	icon = 'modular_skyrat/modules/skyrat_areas/icons/areas_station.dmi'
+	icon_state = "lesser_ord_maint"
 
 /area/station/maintenance/department/science/lower
 	name = "Lower Science Maintenance"
@@ -62,6 +72,20 @@
 	icon = 'modular_skyrat/modules/skyrat_areas/icons/areas_station.dmi'
 	icon_state = "abadn_arcade"
 
+/area/station/maintenance/abandon_exam
+	name = "Abandoned Exam"
+	icon = 'modular_skyrat/modules/skyrat_areas/icons/areas_station.dmi'
+	icon_state = "abadn_exam"
+
+// Subtype used for Blueshift
+/area/station/maintenance/abandon_exam/cat
+	name = "Abandoned Cat Exam"
+
+/area/station/maintenance/abandon_surgery
+	name = "Abandoned Surgery"
+	icon = 'modular_skyrat/modules/skyrat_areas/icons/areas_station.dmi'
+	icon_state = "abandon_surgery"
+
 // Regular maint rooms
 /area/station/maintenance/clown_chamber
 	name = "Clown Chamber"
@@ -84,7 +108,7 @@
 	icon_state = "gamer_lair"
 
 /area/station/maintenance/wrestling
-	name = "Wrestling Room"
+	name = "Old Wrestling Room"
 	icon = 'modular_skyrat/modules/skyrat_areas/icons/areas_station.dmi'
 	icon_state = "wrestle"
 
@@ -92,6 +116,25 @@
 	name = "Xenobiology Disposals"
 	icon = 'modular_skyrat/modules/skyrat_areas/icons/areas_station.dmi'
 	icon_state = "xenobio_dispose"
+
+/area/station/maintenance/coffin_supply
+	name = "Coffin Supplies Room"
+	icon = 'modular_skyrat/modules/skyrat_areas/icons/areas_station.dmi'
+	icon_state = "coffin_supply"
+
+// EVA Sheds used on BlueShift
+/area/station/maintenance/eva_shed
+	name = "EVA Shed"
+	icon = 'modular_skyrat/modules/skyrat_areas/icons/areas_station.dmi'
+	icon_state = "eva_shed"
+
+/area/station/maintenance/eva_shed/port
+	name = "Port EVA Shed"
+	icon_state = "eva_shed_port"
+
+/area/station/maintenance/eva_shed/starboard
+	name = "Starboard EVA Shed"
+	icon_state = "eva_shed_sb"
 
 // Thruster rooms
 /area/station/maintenance/thruster_room
@@ -133,3 +176,20 @@
 	name = "Cryopods Room"
 	icon = 'modular_skyrat/modules/skyrat_areas/icons/areas_station.dmi'
 	icon_state = "cryopods"
+
+/area/station/common/wrestling_arena
+	name = "Wrestling Arena"
+	icon = 'modular_skyrat/modules/skyrat_areas/icons/areas_station.dmi'
+	icon_state = "wrestle"
+
+// Medical Areas
+/area/station/medical/aslyum
+	name = "Aslyum"
+	icon = 'modular_skyrat/modules/skyrat_areas/icons/areas_station.dmi'
+	icon_state = "aslyum"
+
+// Science Areas
+/area/station/science/tele_sci
+	name = "Tele Sci Room"
+	icon = 'modular_skyrat/modules/skyrat_areas/icons/areas_station.dmi'
+	icon_state = "tele_sci"
