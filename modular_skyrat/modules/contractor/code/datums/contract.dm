@@ -247,7 +247,7 @@
 		target.flash_act()
 		target.blur_eyes(30)
 		target.set_timed_status_effect(70 SECONDS, /datum/status_effect/dizziness, only_if_higher = TRUE)
-		target.add_confusion(20)
+		target.adjust_timed_status_effect(20 SECONDS, /datum/status_effect/confusion)
 
 		new /obj/effect/pod_landingzone(possible_drop_loc[pod_rand_loc], return_pod)
 	else
