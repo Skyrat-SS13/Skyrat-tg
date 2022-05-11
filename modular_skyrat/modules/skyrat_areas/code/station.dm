@@ -26,15 +26,117 @@
 	icon = 'modular_skyrat/modules/skyrat_areas/icons/areas_station.dmi'
 	icon_state = "upper_sci_maint"
 
+/area/station/maintenance/department/engineering/atmos_aux_port
+	name = "Port Atmospherics Auxiliary"
+	icon = 'modular_skyrat/modules/skyrat_areas/icons/areas_station.dmi'
+	icon_state = "atmos_aux_port"
+
+/area/station/maintenance/department/engineering/engie_aft_starboard
+	name = "Aft Starboard Engineering Maintenance"
+	icon = 'modular_skyrat/modules/skyrat_areas/icons/areas_station.dmi'
+	icon_state = "engie_maint_as"
+
+/area/station/maintenance/department/engineering/engine_aft_port
+	name = "Aft Port Engine Maintenance"
+	icon = 'modular_skyrat/modules/skyrat_areas/icons/areas_station.dmi'
+	icon_state = "engine_maint_ap"
+
+/area/station/maintenance/department/engineering/engine_aft_starboard
+	name = "Aft Starboard Engine Maintenance"
+	icon = 'modular_skyrat/modules/skyrat_areas/icons/areas_station.dmi'
+	icon_state = "engine_maint_as"
+
+/area/station/maintenance/department/engineering/central
+	name = "Central Engineering Maintenance"
+	icon = 'modular_skyrat/modules/skyrat_areas/icons/areas_station.dmi'
+	icon_state = "engie_maint_cent"
+
+/area/station/maintenance/department/engineering/lesser
+	name = "Lesser Engineering Maintenance"
+	icon = 'modular_skyrat/modules/skyrat_areas/icons/areas_station.dmi'
+	icon_state = "engie_maint_lesser"
+
+/area/station/maintenance/department/security/lesser
+	name = "Lesser Security Maintenance"
+	icon = 'modular_skyrat/modules/skyrat_areas/icons/areas_station.dmi'
+	icon_state = "sec_maint_lesser"
+
+/area/station/maintenance/department/security/greater
+	name = "Greater Security Maintenance"
+	icon = 'modular_skyrat/modules/skyrat_areas/icons/areas_station.dmi'
+	icon_state = "sec_maint_greater"
+
+/area/station/maintenance/department/security/prison_lower
+	name = "Lower Prison Maintenance"
+	icon = 'modular_skyrat/modules/skyrat_areas/icons/areas_station.dmi'
+	icon_state = "prison_maint_lower"
+
+/area/station/maintenance/department/security/prison_upper
+	name = "Upper Prison Maintenance"
+	icon = 'modular_skyrat/modules/skyrat_areas/icons/areas_station.dmi'
+	icon_state = "prison_maint_upper"
+
+/area/station/maintenance/department/security/lower
+	name = "Lower Security Maintenance"
+	icon = 'modular_skyrat/modules/skyrat_areas/icons/areas_station.dmi'
+	icon_state = "sec_maint_lower"
+
+/area/station/maintenance/department/security/upper
+	name = "Upper Security Maintenance"
+	icon = 'modular_skyrat/modules/skyrat_areas/icons/areas_station.dmi'
+	icon_state = "sec_maint_upper"
+
 /area/station/maintenance/pool_maintenance
 	name = "Pool Maintenance"
 	icon = 'modular_skyrat/modules/skyrat_areas/icons/areas_station.dmi'
 	icon_state = "pool_maint"
 
-/area/station/maintenance/department/engineering/atmos_aux_port
-	name = "Port Atmospherics Auxiliary"
+// Salon maints used for BlueShift
+/area/station/maintenance/salon
+	name = "Salon Maintenance"
 	icon = 'modular_skyrat/modules/skyrat_areas/icons/areas_station.dmi'
-	icon_state = "atmos_aux_port"
+	icon_state = "salon_maint"
+
+/area/station/maintenance/salon/upper
+	name = "Upper Salon Maintenance"
+	icon_state = "salon_maint_upper"
+
+/area/station/maintenance/salon/lower
+	name = "Lower Salon Maintenance"
+	icon_state = "salon_maint_lower"
+
+/area/station/maintenance/night_club
+	name = "Night Club Maintenance"
+	icon = 'modular_skyrat/modules/skyrat_areas/icons/areas_station.dmi'
+	icon_state = "nightclub_maint"
+
+/area/station/maintenance/library
+	name = "Library Maintenance"
+	icon = 'modular_skyrat/modules/skyrat_areas/icons/areas_station.dmi'
+	icon_state = "library_maint"
+
+/area/station/maintenance/library/lower
+	name = "Lower Library Maintenance"
+	icon_state = "library_maint_lower"
+
+/area/station/maintenance/library/upper
+	name = "Upper Library Maintenance"
+	icon_state = "library_maint_upper"
+
+/area/station/maintenance/law
+	name = "Law Office Maintenance"
+	icon = 'modular_skyrat/modules/skyrat_areas/icons/areas_station.dmi'
+	icon_state = "law_maint"
+
+/area/station/maintenance/court
+	name = "Courtroom Maintenance"
+	icon = 'modular_skyrat/modules/skyrat_areas/icons/areas_station.dmi'
+	icon_state = "court_maint"
+
+/area/station/maintenance/wrestle
+	name = "Wrestling Arena Lobby Maintenance"
+	icon = 'modular_skyrat/modules/skyrat_areas/icons/areas_station.dmi'
+	icon_state = "wrestle_maint"
 
 // Abandon rooms
 /area/station/maintenance/abandon_art_studio
@@ -122,6 +224,16 @@
 	icon = 'modular_skyrat/modules/skyrat_areas/icons/areas_station.dmi'
 	icon_state = "coffin_supply"
 
+/area/station/maintenance/dorm_room
+	name = "Maintenance Dorm Room"
+	icon = 'modular_skyrat/modules/skyrat_areas/icons/areas_station.dmi'
+	icon_state = "dorm_room_maint"
+
+/area/station/maintenance/aux_eva
+	name = "Auxiliary EVA Room"
+	icon = 'modular_skyrat/modules/skyrat_areas/icons/areas_station.dmi'
+	icon_state = "aux_eva"
+
 // EVA Sheds used on BlueShift
 /area/station/maintenance/eva_shed
 	name = "EVA Shed"
@@ -135,6 +247,16 @@
 /area/station/maintenance/eva_shed/starboard
 	name = "Starboard EVA Shed"
 	icon_state = "eva_shed_sb"
+
+/area/station/maintenance/rus_gambling
+	name = "Russian Gambling Den"
+	icon = 'modular_skyrat/modules/skyrat_areas/icons/areas_station.dmi'
+	icon_state = "russ_gambling"
+
+/area/station/maintenance/rus_surgery
+	name = "Russian Organ Extraction Room"
+	icon = 'modular_skyrat/modules/skyrat_areas/icons/areas_station.dmi'
+	icon_state = "russ_surgery"
 
 // Thruster rooms
 /area/station/maintenance/thruster_room
@@ -194,6 +316,11 @@
 /area/station/common/wrestling/locker
 	name = "Wrestling Arena Locker Room"
 	icon_state = "wrestle_locker"
+
+/area/station/common/tailoring
+	name = "Tailoring Shop"
+	icon = 'modular_skyrat/modules/skyrat_areas/icons/areas_station.dmi'
+	icon_state = "tailoring"
 
 // BlueShift Night Club
 /area/station/common/night_club
