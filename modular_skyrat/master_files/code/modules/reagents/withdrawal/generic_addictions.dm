@@ -19,7 +19,7 @@
 		if(8)
 			if(strength >= 2)
 				to_chat(affected_carbon, span_warning("You feel a little dizzy."))
-				affected_carbon.Dizzy(3 * strength)
+				affected_carbon.set_timed_status_effect(strength * 6 SECONDS, /datum/status_effect/dizziness)
 		if(8 to 10)
 			to_chat(affected_carbon, span_warning("You feel tired."))
 			affected_carbon.adjustStaminaLoss(6 * strength)

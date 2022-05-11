@@ -312,7 +312,7 @@
 	sac_target.flash_act()
 	sac_target.blur_eyes(15)
 	sac_target.Jitter(10)
-	sac_target.Dizzy(10)
+	sac_target.set_timed_status_effect(20 SECONDS, /datum/status_effect/dizziness, only_if_higher = TRUE)
 	sac_target.hallucination += 12
 	sac_target.emote("scream")
 
@@ -431,10 +431,10 @@
 
 	// Oh god where are we?
 	sac_target.flash_act()
-	sac_target.add_confusion(60)
+	sac_target.adjust_timed_status_effect(60 SECONDS, /datum/status_effect/confusion)
 	sac_target.Jitter(60)
 	sac_target.blur_eyes(50)
-	sac_target.Dizzy(30)
+	sac_target.set_timed_status_effect(1 MINUTES, /datum/status_effect/dizziness, only_if_higher = TRUE)
 	sac_target.AdjustKnockdown(80)
 	sac_target.adjustStaminaLoss(120)
 

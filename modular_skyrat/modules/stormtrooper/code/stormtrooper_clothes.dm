@@ -24,7 +24,6 @@
 	strip_delay = 30
 	equip_delay_other = 50
 	resistance_flags = NONE
-	permeability_coefficient = 0.05 //Thick soles, and covers the ankle
 	can_be_tied = FALSE
 	supports_variations_flags = NONE
 

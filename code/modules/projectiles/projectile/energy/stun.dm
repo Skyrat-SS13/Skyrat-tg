@@ -20,7 +20,7 @@
 		do_sparks(1, TRUE, src)
 	else if(iscarbon(target))
 		var/mob/living/carbon/C = target
-		C.set_confusion(max(C.get_confusion(), confused_amount)) //SKYRAT EDIT ADDITION
+		C.adjust_timed_status_effect(15 SECONDS, /datum/status_effect/confusion) //SKYRAT EDIT ADDITION
 		SEND_SIGNAL(C, COMSIG_ADD_MOOD_EVENT, "tased", /datum/mood_event/tased)
 		SEND_SIGNAL(C, COMSIG_LIVING_MINOR_SHOCK)
 		if(C.dna && C.dna.check_mutation(/datum/mutation/human/hulk))

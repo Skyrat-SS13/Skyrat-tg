@@ -1,7 +1,6 @@
 /datum/species/vulpkanin
 	name = "Vulpkanin"
 	id = SPECIES_VULP
-	default_color = "#4B4B4B"
 	species_traits = list(
 		MUTCOLORS,
 		EYECOLOR,

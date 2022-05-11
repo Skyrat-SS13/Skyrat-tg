@@ -104,9 +104,7 @@
 	width = 9;
 	port_direction = 4
 	},
-/obj/machinery/door/airlock/titanium{
-	name = "Labor Shuttle Airlock"
-	},
+/obj/effect/spawner/structure/window/reinforced/shuttle,
 /turf/open/floor/plating,
 /area/shuttle/labor)
 "r" = (
@@ -121,15 +119,21 @@
 /obj/structure/shuttle/engine/propulsion,
 /turf/open/floor/plating/airless,
 /area/shuttle/labor)
+"W" = (
+/obj/machinery/door/airlock/titanium{
+	name = "Labor Shuttle Airlock"
+	},
+/turf/open/floor/mineral/titanium,
+/area/shuttle/labor)
 
 (1,1,1) = {"
 a
 a
-b
+i
 a
 a
 b
-b
+W
 a
 a
 "}
@@ -169,7 +173,7 @@ s
 (5,1,1) = {"
 a
 a
-i
+b
 a
 a
 a

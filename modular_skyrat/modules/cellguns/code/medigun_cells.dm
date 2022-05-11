@@ -575,7 +575,7 @@
 	/// A list of areas that the effect works in, if area_locked is set to true
 	var/list/teleport_areas
 	/// Where the target will be teleported to.
-	var/destination_area = /area/medical/medbay/lobby
+	var/destination_area = /area/station/medical/medbay/lobby
 
 	/// Is there a grace period before someone is teleported
 	var/grace_period = FALSE
@@ -589,7 +589,7 @@
 
 /obj/projectile/energy/medical/utility/relocation/standard
 	area_locked = TRUE
-	teleport_areas = list(/area/medical/surgery, /area/medical/treatment_center, /area/medical/storage, /area/medical/patients_rooms)
+	teleport_areas = list(/area/station/medical/surgery, /area/station/medical/treatment_center, /area/station/medical/storage, /area/station/medical/patients_rooms)
 	grace_period = TRUE
 	access_teleporting = TRUE
 
