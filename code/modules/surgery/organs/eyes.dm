@@ -117,8 +117,8 @@
 
 	var/eye_icon = parent.dna?.species.eyes_icon || 'icons/mob/human_face.dmi' // SKYRAT EDIT ADDITION
 
-	var/mutable_appearance/eye_left = mutable_appearance(eye_icon, "[eye_icon_state]_l", -BODY_LAYER) // SKYRAT EDIT CHANGE
-	var/mutable_appearance/eye_right = mutable_appearance(eye_icon, "[eye_icon_state]_r", -BODY_LAYER) // SKYRAT EDIT CHANGE
+	var/mutable_appearance/eye_left = mutable_appearance(eye_icon, "[eye_icon_state]_l", -eye_left.eyes_layer) // SKYRAT EDIT CHANGE
+	var/mutable_appearance/eye_right = mutable_appearance(eye_icon, "[eye_icon_state]_r", -eye_right.eyes_layer) // SKYRAT EDIT CHANGE
 
 	if(EYECOLOR in parent.dna?.species.species_traits)
 		eye_right.color = eye_color_right
