@@ -16,22 +16,14 @@
 /obj/item/organ/external/snout
 	mutantpart_key = "snout"
 	mutantpart_info = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_COLOR_LIST = list("#FFFFFF", "#FFFFFF", "#FFFFFF"))
+	external_bodytypes = NONE // We don't actually want this to have BODYTYPE_SNOUTED by default, since some of them don't apply that.
 
 /obj/item/organ/external/snout/Insert(mob/living/carbon/reciever, special, drop_if_replaced)
 	if(sprite_accessory_flags & SPRITE_ACCESSORY_USE_MUZZLED_SPRITE)
-		var/obj/item/bodypart/limb = reciever.get_bodypart(zone)
-
-		if(limb)
-			limb.bodytype |= BODYTYPE_SNOUTED
-			limb.synchronize_bodytypes(reciever)
+		external_bodytypes |= BODYTYPE_SNOUTED
 
 	return ..()
 
-
-/obj/item/organ/external/snout/Remove(mob/living/carbon/organ_owner, special)
-	if(ownerlimb)
-		ownerlimb.bodytype &= ~BODYTYPE_SNOUTED
-	return ..()
 
 /datum/sprite_accessory/snouts/none
 	name = "None"
