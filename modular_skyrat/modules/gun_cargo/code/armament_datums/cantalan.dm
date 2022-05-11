@@ -26,8 +26,9 @@
 
 /datum/armament_entry/cargo_gun/cantalan/pistol/ruby
 	item_type = /obj/item/gun/ballistic/automatic/pistol/cfa_ruby
-	lower_cost = CARGO_CRATE_VALUE * 8
-	upper_cost = CARGO_CRATE_VALUE * 9
+	lower_cost = CARGO_CRATE_VALUE * 10
+	upper_cost = CARGO_CRATE_VALUE * 16
+	interest_required = PASSED_INTEREST
 
 /datum/armament_entry/cargo_gun/cantalan/smg
 	subcategory = ARMAMENT_SUBCATEGORY_SUBMACHINEGUN
