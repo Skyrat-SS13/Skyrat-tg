@@ -29,6 +29,9 @@
 /mob/living/carbon/human/species/vox
 	race = /datum/species/vox
 
+/mob/living/carbon/human/species/vox_primalis
+	race = /datum/species/vox_primalis
+
 /mob/living/carbon/human/species/ipc
 	race = /datum/species/robotic/ipc
 
