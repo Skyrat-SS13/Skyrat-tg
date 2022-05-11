@@ -1,6 +1,5 @@
 /datum/species/robotic
 	say_mod = "beeps"
-	default_color = "#00FF00"
 	inherent_biotypes = MOB_ROBOTIC|MOB_HUMANOID
 	inherent_traits = list(
 		TRAIT_CAN_STRIP,
