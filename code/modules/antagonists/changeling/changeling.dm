@@ -793,8 +793,9 @@
 
 	user.regenerate_icons()
 	
-	// SKYRAT EDIT. transfer_identity has to run at the beginning and the end in order for the transformation to finish.
+	// SKYRAT EDIT. transfer_identity has to run at the beginning and the end for everything to update properly.
 	chosen_dna.transfer_identity(user, TRUE)
+	user.updateappearance(mutcolor_update = TRUE)
 
 // Changeling profile themselves. Store a data to store what every DNA instance looked like.
 /datum/changeling_profile
