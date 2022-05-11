@@ -23,8 +23,8 @@
 	if(!.)
 		return FALSE
 
-	if(!forced && !CONFIG_GET(flag/autotransfer))
-		to_chat(by_who, span_warning("Restart voting is disabled."))
+	if(!forced && !CONFIG_GET(flag/autotransfer) && !by_who && !check_rights_for(by_who.client, R_ADMIN))
+		to_chat(by_who, span_warning("Transfer voting is disabled."))
 		return FALSE
 
 	return TRUE
