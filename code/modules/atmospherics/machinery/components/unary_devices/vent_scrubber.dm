@@ -265,12 +265,6 @@
 	if(air_contents.return_pressure() >= 50 * ONE_ATMOSPHERE)
 		return FALSE
 
-	// SKYRAT EDIT ADDITION
-	if(isopenturf(tile))
-		var/turf/open/floor_turf = tile
-		floor_turf.pollution.ScrubAmount(1)
-	// SKYRAT EDIT END
-
 	if(scrubbing == SCRUBBING)
 		if(length(env_gases & filter_types))
 			///contains all of the gas we're sucking out of the tile, gets put into our parent pipenet
@@ -298,6 +292,12 @@
 				env_gases[gas][MOLES] -= transfered_moles
 
 			environment.garbage_collect()
+
+			// SKYRAT EDIT ADDITION
+			if(isopenturf(tile))
+				var/turf/open/floor_turf = tile
+				floor_turf.pollution?.ScrubAmount(1)
+			// SKYRAT EDIT END
 
 			//Remix the resulting gases
 			air_contents.merge(filtered_out)
