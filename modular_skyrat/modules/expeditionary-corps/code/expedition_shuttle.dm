@@ -13,7 +13,7 @@
 
 /obj/machinery/computer/camera_advanced/shuttle_docker/expedition_shuttle
 	name = "Expedition Shuttle Navigation Computer"
-	desc = "The Navigation console for the Expedition Shuttle. A broken \"Engage Drill\" button seems to dimly blink in a yellow colour"
+	desc = "The navigation console for the expedition shuttle."
 	shuttleId = "expedition_shuttle"
 	lock_override = NONE
 	shuttlePortId = "expedition_shuttle_custom"
