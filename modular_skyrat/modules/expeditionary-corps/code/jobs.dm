@@ -35,7 +35,7 @@
 	jobtype = /datum/job/expedition_commander
 
 	shoes = /obj/item/clothing/shoes/jackboots
-	ears = /obj/item/radio/headset/expedition_headset_commander
+	ears = /obj/item/radio/headset/expedition/commander
 	gloves = /obj/item/clothing/gloves/fingerless
 	uniform = /obj/item/clothing/under/rank/cargo/tech/skyrat/utility
 	accessory = /obj/item/clothing/accessory/armband/cargo
@@ -91,7 +91,7 @@
 	jobtype = /datum/job/expedition_sci
 
 	shoes = /obj/item/clothing/shoes/jackboots
-	ears = /obj/item/radio/headset/expedition_headset_sci
+	ears = /obj/item/radio/headset/expedition/sci
 	gloves = /obj/item/clothing/gloves/fingerless
 	uniform = /obj/item/clothing/under/rank/cargo/tech/skyrat/utility
 	accessory = /obj/item/clothing/accessory/armband/science
@@ -146,7 +146,7 @@
 	jobtype = /datum/job/expedition_medic
 
 	shoes = /obj/item/clothing/shoes/jackboots
-	ears = /obj/item/radio/headset/expedition_headset_med
+	ears = /obj/item/radio/headset/expedition/med
 	gloves = /obj/item/clothing/gloves/fingerless
 	uniform = /obj/item/clothing/under/rank/cargo/tech/skyrat/utility
 	accessory = /obj/item/clothing/accessory/armband/medblue
@@ -202,7 +202,7 @@
 	jobtype = /datum/job/expedition_sec
 
 	shoes = /obj/item/clothing/shoes/jackboots
-	ears = /obj/item/radio/headset/expedition_headset_med
+	ears = /obj/item/radio/headset/expedition/sec
 	gloves = /obj/item/clothing/shoes/jackboots/security
 	uniform = /obj/item/clothing/under/rank/cargo/tech/skyrat/utility
 	suit = /obj/item/clothing/suit/armor/vest/security
@@ -261,7 +261,7 @@
 	jobtype = /datum/job/expedition_eng
 
 	shoes = /obj/item/clothing/shoes/jackboots
-	ears = /obj/item/radio/headset/expedition_headset_med
+	ears = /obj/item/radio/headset/expedition/eng
 	gloves = /obj/item/clothing/gloves/fingerless
 	uniform = /obj/item/clothing/under/rank/cargo/tech/skyrat/utility
 	accessory = /obj/item/clothing/accessory/armband/engine
