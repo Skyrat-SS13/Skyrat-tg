@@ -45,16 +45,8 @@
 	name = "Expeditionary Post Restroom"
 	icon_state = "toilet"
 
-/area/ruin/space/has_grav/skyrat/expeditionary_post/first_dorm_room
-	name = "Expeditionary Post First Dorm Room"
-	icon_state = "dorms"
-
-/area/ruin/space/has_grav/skyrat/expeditionary_post/second_dorm_room
-	name = "Expeditionary Post Second Dorm Room"
-	icon_state = "dorms"
-
-/area/ruin/space/has_grav/skyrat/expeditionary_post/third_dorm_room
-	name = "Expeditionary Post Third Dorm Room"
+/area/ruin/space/has_grav/skyrat/expeditionary_post/dormitories
+	name = "Expeditionary Post Dormitories"
 	icon_state = "dorms"
 
 /area/ruin/space/has_grav/skyrat/expeditionary_post/backroom
