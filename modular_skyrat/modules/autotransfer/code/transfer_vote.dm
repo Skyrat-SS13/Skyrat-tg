@@ -16,16 +16,15 @@
 	return TRUE
 
 /datum/vote/transfer_vote/is_config_enabled()
-	return CONFIG_GET(flag/allow_vote_restart)
+	return CONFIG_GET(flag/autotransfer)
 
 /datum/vote/transfer_vote/can_be_initiated(mob/by_who, forced)
 	. = ..()
 	if(!.)
 		return FALSE
 
-	if(!forced && !CONFIG_GET(flag/allow_vote_restart))
-		if(by_who)
-			to_chat(by_who, span_warning("Restart voting is disabled."))
+	if(!forced && by_who && !is_admin(by_who.client))
+		to_chat(by_who, span_warning("Restart voting is disabled."))
 		return FALSE
 
 	return TRUE
