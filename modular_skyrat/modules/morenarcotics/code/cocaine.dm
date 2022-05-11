@@ -64,7 +64,7 @@
 /datum/reagent/drug/cocaine/overdose_process(mob/living/M, delta_time, times_fired)
 	M.adjustToxLoss(1 * REM * delta_time, 0)
 	M.adjustOrganLoss(ORGAN_SLOT_HEART, (rand(10, 20) / 10) * REM * delta_time)
-	M.Jitter(2 * REM * delta_time)
+	M.set_timed_status_effect(5 SECONDS, /datum/status_effect/jitter, only_if_higher = TRUE)
 	if(DT_PROB(2.5, delta_time))
 		M.emote(pick("twitch","drool"))
 	if(!HAS_TRAIT(M, TRAIT_FLOORED))

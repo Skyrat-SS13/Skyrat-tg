@@ -424,5 +424,9 @@
 	name = "Obscene Sergal Plushie"
 	item_path = /obj/item/toy/plush/roselia
 	ckeywhitelist = list("ultimarifox")
-
+	
+/datum/loadout_item/accessory/mercbadge
+	name = "Jade Badge"
+	item_path = /obj/item/clothing/accessory/badge/holo/jade
+	ckeywhitelist = list("konstyantyn")
 

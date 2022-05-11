@@ -9,7 +9,6 @@
 /datum/species/teshari
 	name = "Teshari"
 	id = SPECIES_TESHARI
-	default_color = "6060FF"
 	eyes_icon = 'modular_skyrat/master_files/icons/mob/species/teshari_eyes.dmi'
 	species_traits = list(MUTCOLORS,
 		EYECOLOR,
