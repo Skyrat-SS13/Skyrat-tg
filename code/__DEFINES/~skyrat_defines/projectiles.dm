@@ -4,6 +4,7 @@
 #define CALIBER_473MM "473mm"
 #define CALIBER_6MM "6mm"
 #define CALIBER_10MMAUTO "10x25mm"
+#define CALIBER_9MMPEACE "9x19mm"
 
 /// The caliber used by the Automag.
 #define CALIBER_44 ".44 AMP"
