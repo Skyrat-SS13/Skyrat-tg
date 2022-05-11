@@ -464,10 +464,12 @@
 	new_profile.undershirt = target.undershirt
 	new_profile.socks = target.socks
 	
-	// SKYRAT EDIT. Colors for underwear and eye emissives.
+	// SKYRAT EDIT. Colors for underwear and eyes.
 	new_profile.underwear_color = target.underwear_color
 	new_profile.undershirt_color = target.undershirt_color
 	new_profile.socks_color = target.socks_color
+	new_profile.eye_color_left = target.eye_color_left
+	new_profile.eye_color_right = target.eye_color_right
 	new_profile.emissive_eyes = target.emissive_eyes
 
 	// Grab skillchips they have
@@ -690,10 +692,12 @@
 	user.undershirt = chosen_profile.undershirt
 	user.socks = chosen_profile.socks
 	
-	// SKYRAT EDIT. Colors for underwear and eye emissives as well as two lines for updating mutant parts and body markings.
+	// SKYRAT EDIT. Colors for underwear and eyes as well as two lines for updating mutant parts and body markings.
 	user.underwear_color = chosen_profile.underwear_color
 	user.undershirt_color = chosen_profile.undershirt_color
 	user.socks_color = chosen_profile.socks_color
+	user.eye_color_left = chosen_profile.eye_color_left
+	user.eye_color_right = chosen_profile.eye_color_right
 	user.emissive_eyes = chosen_profile.emissive_eyes
 	user.dna.mutant_bodyparts = chosen_dna.mutant_bodyparts.Copy()
 	user.dna.body_markings = chosen_dna.body_markings.Copy()
@@ -837,10 +841,12 @@
 	/// ID HUD icon associated with the profile
 	var/id_icon
 	
-	/// SKYRAT EDIT. Colors for underwear and eye emissives.
+	/// SKYRAT EDIT. Colors for underwear and eyes.
 	var/underwear_color
 	var/undershirt_color
 	var/socks_color
+	var/eye_color_left
+	var/eye_color_right
 	var/emissive_eyes
 
 /datum/changeling_profile/Destroy()
@@ -874,10 +880,12 @@
 	new_profile.profile_snapshot = profile_snapshot
 	new_profile.id_icon = id_icon
 	
-	// SKYRAT EDIT. Colors for underwear and eye emissives.
+	// SKYRAT EDIT. Colors for underwear and eyes.
 	new_profile.underwear_color = underwear_color
 	new_profile.undershirt_color = undershirt_color
 	new_profile.socks_color = socks_color
+	new_profile.eye_color_left = eye_color_left
+	new_profile.eye_color_right = eye_color_right
 	new_profile.emissive_eyes = emissive_eyes
 
 /datum/antagonist/changeling/roundend_report()
