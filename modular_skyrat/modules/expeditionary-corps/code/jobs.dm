@@ -28,8 +28,6 @@
 
 	family_heirlooms = list(/obj/item/binoculars)
 
-	veteran_only = FALSE
-
 	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS
 
 /datum/outfit/job/expedition_commander
@@ -86,8 +84,6 @@
 
 	family_heirlooms = list(/obj/item/binoculars)
 
-	veteran_only = FALSE
-
 	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS
 
 /datum/outfit/job/expedition_sci
@@ -142,8 +138,6 @@
 	bounty_types = CIV_JOB_RANDOM
 
 	family_heirlooms = list(/obj/item/binoculars)
-
-	veteran_only = FALSE
 
 	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS
 
@@ -200,8 +194,6 @@
 	bounty_types = CIV_JOB_RANDOM
 
 	family_heirlooms = list(/obj/item/binoculars)
-
-	veteran_only = FALSE
 
 	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS
 
@@ -261,8 +253,6 @@
 	bounty_types = CIV_JOB_RANDOM
 
 	family_heirlooms = list(/obj/item/binoculars)
-
-	veteran_only = FALSE
 
 	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS
 
