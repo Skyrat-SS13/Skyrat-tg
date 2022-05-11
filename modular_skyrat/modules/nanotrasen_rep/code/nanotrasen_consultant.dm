@@ -147,7 +147,7 @@
 	new /obj/item/pet_carrier(src)
 	new /obj/item/clothing/shoes/sneakers/brown(src)
 	new /obj/item/clothing/suit/armor/vest(src)
-	new /obj/item/computer_hardware/hard_drive/role/captain(src)
+	new /obj/item/computer_hardware/hard_drive/portable/command/captain(src)
 	new /obj/item/radio/headset/heads/nanotrasen_consultant/alt(src)
 	new /obj/item/radio/headset/heads/nanotrasen_consultant(src)
 	new /obj/item/clothing/glasses/sunglasses/gar/giga(src)
