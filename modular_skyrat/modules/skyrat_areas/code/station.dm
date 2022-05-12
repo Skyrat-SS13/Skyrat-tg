@@ -107,6 +107,15 @@
 	icon = 'modular_skyrat/modules/skyrat_areas/icons/areas_station.dmi'
 	icon_state = "pool_maint"
 
+/area/station/maintenance/evac_maintenance
+	name = "Departures Maintenance"
+	icon = 'modular_skyrat/modules/skyrat_areas/icons/areas_station.dmi'
+	icon_state = "evac_maint"
+
+/area/station/maintenance/evac_maintenance/upper
+	name = "Upper Departures Maintenance"
+	icon_state = "evac_maint_upper"
+
 // Salon maints used for BlueShift
 /area/station/maintenance/salon
 	name = "Salon Maintenance"
@@ -208,6 +217,19 @@
 	name = "Abandoned Surgery"
 	icon = 'modular_skyrat/modules/skyrat_areas/icons/areas_station.dmi'
 	icon_state = "abandon_surgery"
+
+/area/station/maintenance/abandon_cafeteria
+	name = "Abandoned Cafeteria"
+	icon = 'modular_skyrat/modules/skyrat_areas/icons/areas_station.dmi'
+	icon_state = "abandon_cafe"
+
+/area/station/maintenance/abandon_cafeteria/hydro
+	name = "Abandoned Cafeteria Hydroponics"
+	icon_state = "abandon_cafe_hydro"
+
+/area/station/maintenance/abandon_cafeteria/hydro_walk
+	name = "Abandoned Cafeteria Hydroponics"
+	icon_state = "abandon_cafe_hydro_walk"
 
 // Regular maint rooms
 /area/station/maintenance/clown_chamber
