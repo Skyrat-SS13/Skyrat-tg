@@ -1,6 +1,6 @@
 /obj/item/modular_computer/tablet/syndicate_contract_uplink/preset/uplink/Initialize(mapload)
 	. = ..()
-	var/obj/item/computer_hardware/hard_drive/small/syndicate/hard_drive = new
+	var/obj/item/computer_hardware/hard_drive/portable/syndicate/hard_drive = new
 	var/datum/computer_file/program/contract_uplink/uplink = new
 
 	active_program = uplink
