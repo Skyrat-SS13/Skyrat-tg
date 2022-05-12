@@ -68,10 +68,11 @@
 		"Shovel" = /obj/item/forging/incomplete/shovel,
 		"Arrowhead" = /obj/item/forging/incomplete/arrowhead,
 	)
-	var/static/list/cooking_choice = list(
-		"Oven",
-		"Microwave",
-	)
+	///radial buttons for cooking food
+	var/static/radial_oven = image(icon = 'modular_skyrat/modules/reagent_forging/icons/hud/forge_radials.dmi', icon_state = "oven")
+	var/static/radial_microwave = image(icon = 'modular_skyrat/modules/reagent_forging/icons/hud/forge_radials.dmi', icon_state = "microwave")
+
+	var/static/list/radial_options = list("oven" = radial_oven, "microwave" = radial_microwave)
 
 /obj/structure/reagent_forge/examine(mob/user)
 	. = ..()
@@ -476,7 +477,7 @@
 		if(forge_temperature < MIN_FORGE_TEMP)
 			fail_message(user, "The [src] is not hot enough to start cooking [thing_to_cook]!")
 			return
-		var/datum/user_input = tgui_input_list(user, "Select a machine to emulate the cooking effects of.", "Cooking Selection", cooking_choice)
+		var/user_input = show_radial_menu(user, src, radial_options)
 		var/obj/item_to_spawn
 		if(!user_input)
 			fail_message(user, "No choice made")
@@ -486,13 +487,13 @@
 			fail_message(user, "You stop trying to cook [thing_to_cook]!")
 			return
 		switch(user_input)
-			if("Oven")
+			if("oven")
 				var/datum/component/bakeable/item_bakeable_component = thing_to_cook.GetComponent(/datum/component/bakeable)
 				if(item_bakeable_component.bake_result)
 					item_to_spawn = item_bakeable_component.bake_result
 				else
 					item_to_spawn = /obj/item/food/badrecipe
-			if("Microwave")
+			if("microwave")
 				if(thing_to_cook.microwaved_type)
 					item_to_spawn = thing_to_cook.microwaved_type
 				else
