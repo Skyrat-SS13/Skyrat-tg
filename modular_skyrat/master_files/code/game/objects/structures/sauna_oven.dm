@@ -114,14 +114,12 @@
 	if(particles)
 		if(lit && water_amount)
 			return
-		else
-			QDEL_NULL(particles)
-			return
-	if(!particles)
-		if(lit && water_amount)
-			particles = new /particles/smoke/steam/mild
-			particles.position = list(0, 6, 0)
-			return
+		QDEL_NULL(particles)
+		return
+
+	if(lit && water_amount)
+		particles = new /particles/smoke/steam/mild
+		particles.position = list(0, 6, 0)
 
 #undef SAUNA_H2O_TEMP
 #undef SAUNA_LOG_FUEL
