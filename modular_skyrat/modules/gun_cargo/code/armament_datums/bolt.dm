@@ -51,11 +51,11 @@
 	restricted = TRUE
 
 /datum/armament_entry/cargo_gun/bolt/smg/pcr
-	item_type = /obj/item/gun/energy/pcr
+	item_type = /obj/item/gun/ballistic/automatic/pcr
 	lower_cost = CARGO_CRATE_VALUE * 16
 	upper_cost = CARGO_CRATE_VALUE * 20
 
 /datum/armament_entry/cargo_gun/bolt/smg/pitbull
-	item_type = /obj/item/gun/energy/pitbull
+	item_type = /obj/item/gun/ballistic/automatic/pitbull
 	lower_cost = CARGO_CRATE_VALUE * 16
 	upper_cost = CARGO_CRATE_VALUE * 20

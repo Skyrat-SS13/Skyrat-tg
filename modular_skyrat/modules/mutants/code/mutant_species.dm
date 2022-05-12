@@ -6,7 +6,6 @@
 	say_mod = "moans"
 	meat = /obj/item/food/meat/slab/human/mutant/zombie
 	eyes_icon = 'modular_skyrat/modules/mutants/icons/mutant_eyes.dmi'
-	default_color = "#ffffff"
 	species_traits = list(
 		NOBLOOD,
 		NOZOMBIE,
