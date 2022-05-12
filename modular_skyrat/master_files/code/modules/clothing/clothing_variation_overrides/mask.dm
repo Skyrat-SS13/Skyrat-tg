@@ -17,9 +17,6 @@
 /obj/item/clothing/mask/void_mask
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/mask/changeling
-	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
-
 /**
  * NONE(Squash)
  * Clothing that does not have a digitigrade version, and thus will squash legs to fit.
