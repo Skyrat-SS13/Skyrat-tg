@@ -122,7 +122,6 @@
 			particles = new /particles/smoke/steam/mild
 			particles.position = list(0, 6, 0)
 			return
-		return
 
 #undef SAUNA_H2O_TEMP
 #undef SAUNA_LOG_FUEL
