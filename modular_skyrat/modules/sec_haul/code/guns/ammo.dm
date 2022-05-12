@@ -143,7 +143,7 @@
 	item_flags = NO_MAT_REDEMPTION
 	var/round_type = AMMO_TYPE_LETHAL
 	var/base_name = ""
-	var/list/possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_HOLLOWPOINT, AMMO_TYPE_RUBBER, AMMO_TYPE_IHDF)
+	var/list/possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_HOLLOWPOINT, AMMO_TYPE_RUBBER, AMMO_TYPE_IHDF, AMMO_TYPE_INCENDIARY, AMMO_TYPE_AP)
 
 /obj/item/ammo_box/magazine/multi_sprite/Initialize()
 	. = ..()

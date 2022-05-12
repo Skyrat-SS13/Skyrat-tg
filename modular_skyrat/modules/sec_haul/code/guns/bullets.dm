@@ -67,7 +67,7 @@
 	desc = "A 9x19mm bullet casing with a low powder load to prevent breaches."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
 	icon_state = "sl-casing"
-	caliber = CALIBER_9MM
+	caliber = CALIBER_9MMPEACE
 	projectile_type = /obj/projectile/bullet/advanced/b9mm
 
 /obj/projectile/bullet/advanced/b9mm
@@ -80,7 +80,6 @@
 	desc = "A 9x19mm jacketed hollowpoint casing."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
 	icon_state = "sh-casing"
-	caliber = CALIBER_9MM
 	projectile_type = /obj/projectile/bullet/advanced/b9mm/hp
 
 /obj/projectile/bullet/advanced/b9mm/hp
@@ -96,7 +95,6 @@
 	desc = "A 9mm intelligent high-impact dispersal foam bullet casing."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
 	icon_state = "si-casing"
-	caliber = CALIBER_9MM
 	projectile_type = /obj/projectile/bullet/advanced/b9mm/ihdf
 	harmful = FALSE
 
@@ -112,7 +110,6 @@
 	desc = "A 9mm rubber bullet casing."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
 	icon_state = "sr-casing"
-	caliber = CALIBER_9MM
 	projectile_type = /obj/projectile/bullet/advanced/b9mm/rubber
 	harmful = FALSE
 
