@@ -26,27 +26,27 @@ GLOBAL_LIST_INIT(loadout_masks, generate_loadout_items(/datum/loadout_item/mask)
 
 /datum/loadout_item/mask/black_bandana
 	name = "Black Bandana"
-	item_path = /obj/item/clothing/mask/bandana/color/black
+	item_path = /obj/item/clothing/mask/bandana/black
 
 /datum/loadout_item/mask/blue_bandana
 	name = "Blue Bandana"
-	item_path = /obj/item/clothing/mask/bandana/color/blue
+	item_path = /obj/item/clothing/mask/bandana/blue
 
 /datum/loadout_item/mask/gold_bandana
 	name = "Gold Bandana"
-	item_path = /obj/item/clothing/mask/bandana/color/gold
+	item_path = /obj/item/clothing/mask/bandana/gold
 
 /datum/loadout_item/mask/green_bandana
 	name = "Green Bandana"
-	item_path = /obj/item/clothing/mask/bandana/color/green
+	item_path = /obj/item/clothing/mask/bandana/green
 
 /datum/loadout_item/mask/red_bandana
 	name = "Red Bandana"
-	item_path = /obj/item/clothing/mask/bandana/color/red
+	item_path = /obj/item/clothing/mask/bandana/red
 
 /datum/loadout_item/mask/skull_bandana
 	name = "Skull Bandana"
-	item_path = /obj/item/clothing/mask/bandana/color/skull
+	item_path = /obj/item/clothing/mask/bandana/skull
 
 /*
 *	BALACLAVAS
