@@ -685,6 +685,7 @@
 	var/static/list/slot2slot = list(
 		"head" = ITEM_SLOT_HEAD,
 		"wear_mask" = ITEM_SLOT_MASK,
+		//"neck" = ITEM_SLOT_NECK,
 		"wear_neck" = ITEM_SLOT_NECK, // SKYRAT EDIT
 		"back" = ITEM_SLOT_BACK,
 		"wear_suit" = ITEM_SLOT_OCLOTHING,
