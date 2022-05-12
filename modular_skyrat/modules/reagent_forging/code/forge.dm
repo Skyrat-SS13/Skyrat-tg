@@ -68,6 +68,10 @@
 		"Shovel" = /obj/item/forging/incomplete/shovel,
 		"Arrowhead" = /obj/item/forging/incomplete/arrowhead,
 	)
+	var/static/list/cooking_choice = list(
+		"Oven",
+		"Microwave",
+	)
 
 /obj/structure/reagent_forge/examine(mob/user)
 	. = ..()
@@ -460,6 +464,40 @@
 		var/obj/item/glassblowing/molten_glass/spawned_glass = new /obj/item/glassblowing/molten_glass(get_turf(src))
 		user.mind.adjust_experience(/datum/skill/production, 10)
 		COOLDOWN_START(spawned_glass, remaining_heat, glassblowing_amount)
+		return TRUE
+
+	if(istype(attacking_item, /obj/item/food))
+		var/obj/item/food/thing_to_cook = attacking_item
+		if(in_use)
+			to_chat(user, span_warning("You cannot do multiple things at the same time!"))
+			return
+		in_use = TRUE
+		if(forge_temperature < MIN_FORGE_TEMP)
+			fail_message(user, "The [src] is not hot enough to start cooking [thing_to_cook]!")
+			return
+		var/datum/user_input = tgui_input_list(user, "Select a machine to emulate the cooking effects of.", "Cooking Selection", cooking_choice)
+		var/obj/item_to_spawn
+		if(!user_input)
+			fail_message(user, "No choice made")
+			return
+		balloon_alert_to_viewers("cooking...")
+		if(!do_after(user, 10 SECONDS, target = src))
+			fail_message(user, "You stop trying to cook [thing_to_cook]!")
+			return
+		switch(user_input)
+			if("Oven")
+				var/datum/component/bakeable/item_bakeable_component = thing_to_cook.GetComponent(/datum/component/bakeable)
+				if(item_bakeable_component.bake_result)
+					item_to_spawn = item_bakeable_component.bake_result
+				else
+					item_to_spawn = /obj/item/food/badrecipe
+			if("Microwave")
+				if(thing_to_cook.microwaved_type)
+					item_to_spawn = thing_to_cook.microwaved_type
+				else
+					item_to_spawn = /obj/item/food/badrecipe
+		qdel(thing_to_cook)
+		new item_to_spawn(get_turf(src))
 		return TRUE
 
 	return ..()
