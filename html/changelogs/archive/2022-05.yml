@@ -617,3 +617,52 @@
   - code_imp: Flags bug snout not to use muzzled sprites
   timothymtorres, TheBonded:
   - bugfix: Fix books to only give mood bonus when read the first time
+2022-05-12:
+  ErdinyoBarboza:
+  - rscadd: Vintorez, PCR-9, Pitbull and DTR-6 came back in ballistic flavor
+  - rscdel: Removed hardlight guns (modular_skyrat\modules\goofsec\code\projectiles.dm)
+  - balance: Dozer now uses 9x25mm for its namesake.
+  - balance: Zeta-6 now uses 10mm Magnum.
+  - bugfix: 9x19mm now is properly defined and cant be loaded to 9x25mm magazines
+      and vice versa.
+  - imageadd: Added AP and Incendiary  magazines for "croon" and "g11" subtype at
+      mags.dmi
+  - imagedel: Removed  a few duplicate icons from mags.dmi
+  - spellcheck: Gun descriptions clarify whether they use 9x19 or 9x25.
+  - refactor: Added support for AP and Incendiary Magazines to Multi-Sprite Magazines
+  Gandalf2k15:
+  - bugfix: Autotransfer votes now function again
+  GoldenAlpharex:
+  - refactor: Refactored how legs are rendered, using dynamically-generated masks
+      to avoid left legs always displaying over right ones, or right legs above left
+      ones.
+  Melbert:
+  - bugfix: The first stage of addiction now actually occurs.
+  - code_imp: 'The confusion status effect is now based on duration (seconds) instead
+      of magic numbers. Fun fact: When confusion was refactored 2 years ago, literally
+      all confusion effects had their durations halved. Pretty neat!'
+  - code_imp: Confusion also applies its effects via signal. Moved it out of move
+      code.
+  - code_imp: Flashing code is now slightly better.
+  - refactor: Jitterriness is now a status effect
+  Paxilmaniac:
+  - qol: stone walls can be made directly from stone without a girder, y'know, since
+      stone walls usually don't have metal in them
+  - bugfix: tiles made from stone will no longer just be metal tiles with no differences
+  SkyratBot:
+  - balance: Fireball no longer has a 3 tile wide hitbox.
+  - bugfix: fixes door access.
+  - bugfix: maintenance access returned to the library door on IceBox station
+  - qol: department signs have directional variants
+  - code_imp: sign paths are now in snake_case
+  - bugfix: varedited access reqs were removed from the service hallway on IceBox
+      so mapping helpers can function correctly
+  - spellcheck: Removes some erroneous "the" in some clown car messages
+  YakumoChen:
+  - rscdel: MODsuits with magnetic harnesses pre-installed no longer can carry guns
+      on them if the harness is removed.
+  Zonespace27:
+  - balance: Osprey is now harder to obtain via guncargo
+  - rscdel: Ruby removed from guncargo
+  mazzinsanity:
+  - rscadd: Adds a new audible *gnash emote which sounds like space carp bites.
