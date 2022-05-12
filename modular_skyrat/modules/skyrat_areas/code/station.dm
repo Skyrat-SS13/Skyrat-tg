@@ -56,6 +56,22 @@
 	icon = 'modular_skyrat/modules/skyrat_areas/icons/areas_station.dmi'
 	icon_state = "engie_maint_lesser"
 
+/area/station/maintenance/department/engineering/atmos/hfr_maint
+	name = "HFR Maintenance"
+	icon = 'modular_skyrat/modules/skyrat_areas/icons/areas_station.dmi'
+	icon_state = "hfr_maint"
+
+/area/station/maintenance/department/engineering/atmos/aft_maint
+	name = "Aft Atmospherics Maintenance"
+	icon = 'modular_skyrat/modules/skyrat_areas/icons/areas_station.dmi'
+	icon_state = "atmos_maint_aft"
+
+/area/station/maintenance/department/engineering/atmos/port_maint
+	name = "Port Atmospherics Maintenance"
+	icon = 'modular_skyrat/modules/skyrat_areas/icons/areas_station.dmi'
+	icon_state = "atmos_maint_port"
+
+
 /area/station/maintenance/department/security/lesser
 	name = "Lesser Security Maintenance"
 	icon = 'modular_skyrat/modules/skyrat_areas/icons/areas_station.dmi'
@@ -234,6 +250,16 @@
 	icon = 'modular_skyrat/modules/skyrat_areas/icons/areas_station.dmi'
 	icon_state = "aux_eva"
 
+/area/station/maintenance/cult_chapel
+	name = "Forbidden Chapel"
+	icon = 'modular_skyrat/modules/skyrat_areas/icons/areas_station.dmi'
+	icon_state = "cult_chapel"
+
+/area/station/maintenance/cult_chapel_maint
+	name = "Forbidden Chapel's Maintenance"
+	icon = 'modular_skyrat/modules/skyrat_areas/icons/areas_station.dmi'
+	icon_state = "cult_chapel_maint"
+
 // EVA Sheds used on BlueShift
 /area/station/maintenance/eva_shed
 	name = "EVA Shed"
@@ -272,6 +298,14 @@
 	name = "Central Thruster Room"
 	icon_state = "cent_thrust_room"
 
+/area/station/maintenance/thruster_room/port
+	name = "Port Thruster Room"
+	icon_state = "port_thrust_room"
+
+/area/station/maintenance/thruster_room/starboard
+	name = "Starboard Thruster Room"
+	icon_state = "sb_thrust_room"
+
 // Command areas
 /area/station/command/captain_kitchen
 	name = "Captain's Kitchen"
@@ -282,6 +316,11 @@
 	name = "Captain's Dining Room"
 	icon = 'modular_skyrat/modules/skyrat_areas/icons/areas_station.dmi'
 	icon_state = "capt_dining"
+
+/area/station/command/cc_dock
+	name = "Central Command Ferry Dock"
+	icon = 'modular_skyrat/modules/skyrat_areas/icons/areas_station.dmi'
+	icon_state = "cc_dock"
 
 /area/station/command/secure_bunker
 	name = "Secure Bunker"
@@ -351,6 +390,11 @@
 	icon = 'modular_skyrat/modules/skyrat_areas/icons/areas_station.dmi'
 	icon_state = "locker_room_shower"
 
+/area/station/common/cafeteria
+	name = "Cafeteria"
+	icon = 'modular_skyrat/modules/skyrat_areas/icons/areas_station.dmi'
+	icon_state = "cafeteria"
+
 // Medical Areas
 /area/station/medical/aslyum
 	name = "Aslyum"
@@ -362,3 +406,20 @@
 	name = "Tele Sci Room"
 	icon = 'modular_skyrat/modules/skyrat_areas/icons/areas_station.dmi'
 	icon_state = "tele_sci"
+
+// Engineering Areas
+/area/station/engineering/power_room
+	name = "Ship Power Storage Room"
+	icon = 'modular_skyrat/modules/skyrat_areas/icons/areas_station.dmi'
+	icon_state = "power_room"
+
+// Atmos Areas
+/area/station/engineering/atmos/hallway
+	name = "Atmos Hall"
+	icon = 'modular_skyrat/modules/skyrat_areas/icons/areas_station.dmi'
+	icon_state = "atmos_hall"
+
+/area/station/engineering/atmos/test_chambers
+	name = "Atmospherics Testing Chambers"
+	icon = 'modular_skyrat/modules/skyrat_areas/icons/areas_station.dmi'
+	icon_state = "atmos_test"
