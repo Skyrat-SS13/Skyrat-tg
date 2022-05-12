@@ -335,85 +335,6 @@ GLOBAL_LIST_EMPTY(customizable_races)
 /datum/species/proc/get_random_body_markings(list/features) //Needs features to base the colour off of
 	return list()
 
-/*
-/datum/species/proc/on_species_gain(mob/living/carbon/C, datum/species/old_species)
-	// Drop the items the new species can't wear
-	if((AGENDER in species_traits))
-		C.gender = PLURAL
-	for(var/slot_id in no_equip)
-		var/obj/item/thing = C.get_item_by_slot(slot_id)
-		if(thing && (!thing.species_exception || !is_type_in_list(src,thing.species_exception)))
-			C.dropItemToGround(thing)
-
-	if(C.hud_used)
-		C.hud_used.update_locked_slots()
-
-	C.mob_biotypes = inherent_biotypes
-
-	regenerate_organs(C,old_species)
-
-	if(exotic_bloodtype && C.dna.blood_type != exotic_bloodtype)
-		C.dna.blood_type = exotic_bloodtype
-
-	if(old_species.mutanthands)
-		for(var/obj/item/I in C.held_items)
-			if(istype(I, old_species.mutanthands))
-				qdel(I)
-
-	if(mutanthands)
-		// Drop items in hands
-		// If you're lucky enough to have a TRAIT_NODROP item, then it stays.
-		for(var/V in C.held_items)
-			var/obj/item/I = V
-			if(istype(I))
-				C.dropItemToGround(I)
-			else	//Entries in the list should only ever be items or null, so if it's not an item, we can assume it's an empty hand
-				INVOKE_ASYNC(C, /mob/living/carbon.proc/put_in_hands, new mutanthands())
-
-	if(ishuman(C))
-		var/mob/living/carbon/human/human = C
-		for(var/obj/item/organ/external/organ_path as anything in external_organs)
-			//Load a persons preferences from DNA
-			var/feature_key_name = human.dna.features[initial(organ_path.feature_key)]
-
-			var/obj/item/organ/external/new_organ = SSwardrobe.provide_type(organ_path)
-			new_organ.set_sprite(feature_key_name)
-			new_organ.Insert(human)
-
-	for(var/X in inherent_traits)
-		ADD_TRAIT(C, X, SPECIES_TRAIT)
-
-	if(TRAIT_VIRUSIMMUNE in inherent_traits)
-		for(var/datum/disease/A in C.diseases)
-			A.cure(FALSE)
-
-	if(TRAIT_TOXIMMUNE in inherent_traits)
-		C.setToxLoss(0, TRUE, TRUE)
-
-	if(TRAIT_OXYIMMUNE in inherent_traits)
-		C.setOxyLoss(0, TRUE, TRUE)
-
-	if(TRAIT_NOMETABOLISM in inherent_traits)
-		C.reagents.end_metabolization(C, keep_liverless = TRUE)
-
-	if(TRAIT_GENELESS in inherent_traits)
-		C.dna.remove_all_mutations() // Radiation immune mobs can't get mutations normally
-
-	if(inherent_factions)
-		for(var/i in inherent_factions)
-			C.faction += i //Using +=/-= for this in case you also gain the faction from a different source.
-
-	if(flying_species && isnull(fly))
-		fly = new
-		fly.Grant(C)
-
-	for(var/obj/item/bodypart/B in C.bodyparts)
-		B.alpha = specific_alpha
-
-	C.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/species, multiplicative_slowdown=speedmod)
-
-	SEND_SIGNAL(C, COMSIG_SPECIES_GAIN, src, old_species)
-*/
 /datum/species/proc/handle_body(mob/living/carbon/human/species_human)
 	species_human.remove_overlay(BODY_LAYER)
 
@@ -433,24 +354,34 @@ GLOBAL_LIST_EMPTY(customizable_races)
 
 		// eyes
 		if(!(NOEYESPRITES in species_traits))
-			var/obj/item/organ/eyes/eyes = species_human.getorganslot(ORGAN_SLOT_EYES)
-			var/mutable_appearance/eye_overlay
-			var/mutable_appearance/eye_emissive
-			var/eye_icon = eyes_icon || 'icons/mob/human_face.dmi'
-			eyes ? (eye_overlay = mutable_appearance(eye_icon, eyes.eye_icon_state, -eyes.eyes_layer)) : (eye_overlay = mutable_appearance(eye_icon, "eyes_missing", -eyes?.eyes_layer))
-			if(eyes?.is_emissive)
-				eye_emissive = emissive_appearance_copy(eye_overlay)
-			if((EYECOLOR in species_traits) && eyes)
-				eye_overlay.color = species_human.eye_color_left
+			var/obj/item/organ/eyes/eye_organ = species_human.getorganslot(ORGAN_SLOT_EYES)
+			var/mutable_appearance/no_eyeslay
+
+			var/add_pixel_x = 0
+			var/add_pixel_y = 0
+			//cut any possible vis overlays
+			if(length(body_vis_overlays))
+				SSvis_overlays.remove_vis_overlay(species_human, body_vis_overlays)
+
 			if(OFFSET_FACE in species_human.dna.species.offset_features)
-				eye_overlay.pixel_x += species_human.dna.species.offset_features[OFFSET_FACE][1]
-				eye_overlay.pixel_y += species_human.dna.species.offset_features[OFFSET_FACE][2]
-				if (eye_emissive)
-					eye_emissive.pixel_x += species_human.dna.species.offset_features[OFFSET_FACE][1]
-					eye_emissive.pixel_y += species_human.dna.species.offset_features[OFFSET_FACE][2]
-			standing += eye_overlay
-			if (eye_emissive)
-				standing += eye_emissive
+				add_pixel_x = species_human.dna.species.offset_features[OFFSET_FACE][1]
+				add_pixel_y = species_human.dna.species.offset_features[OFFSET_FACE][2]
+
+			if(!eye_organ)
+				no_eyeslay = mutable_appearance('icons/mob/human_face.dmi', "eyes_missing", -BODY_LAYER)
+				no_eyeslay.pixel_x += add_pixel_x
+				no_eyeslay.pixel_y += add_pixel_y
+				standing += no_eyeslay
+
+			if(!no_eyeslay)
+				for(var/eye_overlay in eye_organ.generate_body_overlay(species_human))
+					standing += eye_overlay
+					if(eye_organ.is_emissive)
+						var/mutable_appearance/eye_emissive = emissive_appearance_copy(eye_overlay)
+						eye_emissive.pixel_x += species_human.dna.species.offset_features[OFFSET_FACE][1]
+						eye_emissive.pixel_y += species_human.dna.species.offset_features[OFFSET_FACE][2]
+						standing += eye_emissive
+
 
 	//Underwear, Undershirts & Socks
 	if(!(NO_UNDERWEAR in species_traits))
