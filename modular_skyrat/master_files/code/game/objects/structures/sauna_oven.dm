@@ -120,7 +120,7 @@
 	if(!particles)
 		if(lit && water_amount)
 			particles = new /particles/smoke/steam/mild
-			particles.position = list(-12, 6, 0)
+			particles.position = list(0, 6, 0)
 			return
 		return
 
