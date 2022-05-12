@@ -17,6 +17,16 @@
 	matter_amount = 0
 //	cost = 500
 	source = null
+	walltype = /turf/closed/wall/mineral/stone
+
+GLOBAL_LIST_INIT(stone_recipes, list ( \
+	new/datum/stack_recipe("stone brick wall", /turf/closed/wall/mineral/stone, 5, one_per_turf = 1, on_floor = 1, applies_mats = TRUE), \
+	new/datum/stack_recipe("stone brick tile", /obj/item/stack/tile/mineral/stone, 1, 4, 20),  \
+	))
+
+/obj/item/stack/sheet/mineral/uranium/get_main_recipes()
+	. = ..()
+	. += GLOB.stone_recipes
 
 /datum/material/stone
 	name = "stone"
@@ -40,6 +50,17 @@
 	scan_state = null
 	spreadChance = 20
 	merge_type = /obj/item/stack/ore/stone
+
+/obj/item/stack/tile/mineral/stone
+	name = "stone tile"
+	singular_name = "stone floor tile"
+	desc = "A tile made of stone bricks, for that fortress look."
+	icon_state = "tile_herringbone"
+	inhand_icon_state = "tile"
+	turf_type = /turf/open/floor/stone
+	mineralType = "stone"
+	mats_per_unit = list(/datum/material/stone=MINERAL_MATERIAL_AMOUNT*0.25)
+	merge_type = /obj/item/stack/tile/mineral/stone
 
 /turf/closed/wall/mineral/stone
 	name = "stone wall"

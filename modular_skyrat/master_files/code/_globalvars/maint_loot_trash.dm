@@ -106,7 +106,7 @@ GLOBAL_LIST_INIT(trash_loot, list(//junk: useless, very easy to get, or ghetto c
 		/obj/item/clothing/head/hardhat/red = 75,
 		/obj/item/clothing/mask/balaclava = 75,
 		/obj/item/clothing/mask/russian_balaclava = 75,
-		/obj/item/clothing/mask/bandana/color/black = 25,
+		/obj/item/clothing/mask/bandana/black = 25,
 		/obj/item/clothing/mask/breath = 100,
 		/obj/item/clothing/mask/fakemoustache = 25,
 		/obj/item/clothing/mask/gas = 200,

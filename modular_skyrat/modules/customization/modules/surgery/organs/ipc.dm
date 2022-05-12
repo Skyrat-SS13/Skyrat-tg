@@ -69,14 +69,14 @@
 		return
 	switch(severity)
 		if(1)
-			owner.Jitter(30)
-			owner.Dizzy(30)
+			owner.set_timed_status_effect(60 SECONDS, /datum/status_effect/jitter, only_if_higher = TRUE)
+			owner.set_timed_status_effect(60 SECONDS, /datum/status_effect/dizziness, only_if_higher = TRUE)
 			owner.Knockdown(80)
 			deaf = 30
 			to_chat(owner, span_warning("Your system reports a complete lack of input from your auditory sensors."))
 		if(2)
-			owner.Jitter(15)
-			owner.Dizzy(15)
+			owner.set_timed_status_effect(30 SECONDS, /datum/status_effect/jitter, only_if_higher = TRUE)
+			owner.set_timed_status_effect(30 SECONDS, /datum/status_effect/dizziness, only_if_higher = TRUE)
 			owner.Knockdown(40)
 			to_chat(owner, span_warning("Your system reports anomalous feedback from your auditory sensors."))
 

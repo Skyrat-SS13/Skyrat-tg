@@ -186,16 +186,16 @@
 	target.reagents.add_reagent(/datum/reagent/medicine/omnizine, 20)
 
 	target.flash_act()
-	target.add_confusion(10)
+	target.adjust_timed_status_effect(10 SECONDS, /datum/status_effect/confusion)
 	target.blur_eyes(5)
 	to_chat(target, span_warning("You feel strange..."))
 	sleep(6 SECONDS)
 	to_chat(target, span_warning("That pod did something to you..."))
-	target.Dizzy(35)
+	target.set_timed_status_effect(70 SECONDS, /datum/status_effect/dizziness)
 	sleep(6 SECONDS)
 	to_chat(target, span_warning("Your head pounds... It feels like it's going to burst out your skull!"))
 	target.flash_act()
-	target.add_confusion(20)
+	target.adjust_timed_status_effect(20 SECONDS, /datum/status_effect/confusion)
 	target.blur_eyes(3)
 	sleep(3 SECONDS)
 	to_chat(target, span_warning("Your head pounds..."))
@@ -206,8 +206,8 @@
 				we thank you for providing them. Your value is expended, and you will be ransomed back to your station. We always get paid, \
 				so it's only a matter of time before we ship you back...\"</i>")))
 	target.blur_eyes(10)
-	target.Dizzy(15)
-	target.add_confusion(20)
+	target.set_timed_status_effect(30 SECONDS, /datum/status_effect/dizziness, only_if_higher = TRUE)
+	target.adjust_timed_status_effect(20 SECONDS, /datum/status_effect/confusion)
 
 /// We're returning the victim
 /datum/syndicate_contract/proc/return_victim(mob/living/target)
@@ -246,8 +246,8 @@
 
 		target.flash_act()
 		target.blur_eyes(30)
-		target.Dizzy(35)
-		target.add_confusion(20)
+		target.set_timed_status_effect(70 SECONDS, /datum/status_effect/dizziness, only_if_higher = TRUE)
+		target.adjust_timed_status_effect(20 SECONDS, /datum/status_effect/confusion)
 
 		new /obj/effect/pod_landingzone(possible_drop_loc[pod_rand_loc], return_pod)
 	else

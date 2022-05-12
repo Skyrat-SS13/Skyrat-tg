@@ -34,12 +34,12 @@
 		if(1)
 			to_chat(owner, span_boldwarning("You feel [pick("like your brain is being fried", "a sharp pain in your head")]!"))
 			owner.adjustOrganLoss(ORGAN_SLOT_BRAIN, 20, 150)
-			owner.jitteriness += 30
+			owner.set_timed_status_effect(30 SECONDS, /datum/status_effect/jitter, only_if_higher = FALSE)
 			owner.adjust_timed_status_effect(30 SECONDS, /datum/status_effect/speech/stutter)
-			owner.add_confusion(10)
+			owner.adjust_timed_status_effect(10 SECONDS, /datum/status_effect/confusion)
 		if(2)
 			to_chat(owner, span_warning("You feel [pick("disoriented", "confused", "dizzy")]."))
 			owner.adjustOrganLoss(ORGAN_SLOT_BRAIN, 10, 150)
-			owner.jitteriness += 10
+			owner.set_timed_status_effect(30 SECONDS, /datum/status_effect/jitter, only_if_higher = FALSE)
 			owner.adjust_timed_status_effect(30 SECONDS, /datum/status_effect/speech/stutter)
-			owner.add_confusion(3)
+			owner.adjust_timed_status_effect(3 SECONDS, /datum/status_effect/confusion)

@@ -3,7 +3,6 @@
 	id = SPECIES_SYNTHMAMMAL
 	say_mod = "states"
 	inherent_biotypes = MOB_ROBOTIC|MOB_HUMANOID
-	default_color = "#4B4B4B"
 	species_traits = list(
 		ROBOTIC_DNA_ORGANS,
 		MUTCOLORS,EYECOLOR,
