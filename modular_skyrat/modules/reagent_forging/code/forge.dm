@@ -500,6 +500,7 @@
 					item_to_spawn = /obj/item/food/badrecipe
 		qdel(thing_to_cook)
 		new item_to_spawn(get_turf(src))
+		in_use = FALSE
 		return TRUE
 
 	return ..()
