@@ -72,7 +72,7 @@
 	desc = "An upgraded version of the standard SmartDart pistol that can chamber 6 SmartDarts."
 	icon_state = "revolver"
 	worn_icon_state = "gun"
-	max_syringes = 6
+	max_syringes = 4
 	has_syringe_overlay = FALSE
 
 //Smartdart projectiles
