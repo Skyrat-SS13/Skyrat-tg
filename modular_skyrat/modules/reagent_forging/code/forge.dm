@@ -76,6 +76,7 @@
 /obj/structure/reagent_forge/examine(mob/user)
 	. = ..()
 	. += span_warning("<br>Perhaps using your hand on [src] when skilled will do something...<br>")
+	. += span_notice("You could probably use [src] to bake and cook things...<br>")
 	switch(forge_level)
 		if(FORGE_LEVEL_ZERO)
 			. += span_notice("[src] has not yet been touched by a smithy.<br>")
