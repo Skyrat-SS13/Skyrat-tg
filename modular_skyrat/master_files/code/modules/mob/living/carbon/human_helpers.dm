@@ -5,6 +5,6 @@
 	var/t_is = p_are()
 	//This checks to see if the body is revivable
 	if(!HAS_TRAIT(src, TRAIT_DNR) && (key || !getorgan(/obj/item/organ/brain) || ghost?.can_reenter_corpse))
-		return span_deadsay("[t_He] [t_is] limp and unresponsive; there are no signs of life...")
+		return span_deadsay("[t_He] [t_is] limp and unresponsive... [t_his] may be some life...")
 	else
-		return span_deadsay("[t_He] [t_is] limp and unresponsive. [t_his] consciousness has degraded beyond revival.")
+		return span_deadsay("[t_He] [t_is] limp and unresponsive... [t_his] soul is not with [t_his] body...")
