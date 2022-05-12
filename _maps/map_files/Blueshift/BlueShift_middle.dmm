@@ -5929,16 +5929,6 @@
 /obj/structure/trash_pile,
 /turf/open/floor/plating,
 /area/station/maintenance/starboard/central)
-"bvB" = (
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/cable,
-/turf/open/floor/iron,
-/area/station/hallway/primary/port)
 "bvC" = (
 /obj/machinery/door/airlock/bathroom{
 	name = "Service Restroom"
@@ -8264,7 +8254,7 @@
 "cik" = (
 /obj/structure/grille/broken,
 /obj/effect/decal/cleanable/glass,
-/turf/open/floor/plating,
+/turf/open/floor/plating/airless,
 /area/space/nearstation)
 "ciu" = (
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
@@ -11852,11 +11842,6 @@
 	req_access_txt = "12"
 	},
 /obj/machinery/door/firedoor,
-/obj/structure/cable,
-/turf/open/floor/plating,
-/area/station/maintenance/department/security/prison_lower)
-"duh" = (
-/obj/effect/spawner/random/trash/mess,
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/station/maintenance/department/security/prison_lower)
@@ -21181,10 +21166,6 @@
 	},
 /turf/open/floor/iron,
 /area/station/hallway/primary/central/aft)
-"gMf" = (
-/obj/structure/cable,
-/turf/open/floor/plating,
-/area/station/maintenance/port/central)
 "gMh" = (
 /obj/machinery/light/directional/east,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
@@ -22482,14 +22463,6 @@
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
 /turf/open/openspace,
 /area/station/maintenance/central)
-"hmU" = (
-/obj/machinery/door/airlock/maintenance_hatch{
-	name = "Maintenance Hatch";
-	req_access_txt = "12"
-	},
-/obj/structure/cable,
-/turf/open/floor/plating,
-/area/station/maintenance/port/central)
 "hnc" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
@@ -24959,7 +24932,7 @@
 /turf/open/floor/wood,
 /area/station/service/library/artgallery)
 "ihI" = (
-/turf/open/floor/plating/airless{
+/turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
 /area/station/maintenance/department/security/lower)
@@ -25223,14 +25196,6 @@
 	},
 /turf/open/floor/iron,
 /area/station/cargo/qm)
-"imr" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/machinery/power/apc/auto_name/directional/north,
-/obj/structure/cable,
-/turf/open/floor/iron,
-/area/station/maintenance/department/crew_quarters/bar)
 "ims" = (
 /obj/effect/turf_decal/bot,
 /obj/structure/table/glass,
@@ -28634,10 +28599,13 @@
 /turf/open/floor/iron,
 /area/station/hallway/primary/aft)
 "jqD" = (
-/turf/open/floor/plating/airless{
-	icon_state = "platingdmg1"
+/obj/machinery/door/airlock/maintenance_hatch{
+	name = "Maintenance Hatch";
+	req_access_txt = "12"
 	},
-/area/station/maintenance/department/security/lower)
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/station/maintenance/port/central)
 "jrb" = (
 /obj/structure/chair{
 	dir = 1
@@ -32703,6 +32671,11 @@
 /obj/machinery/light/directional/south,
 /turf/open/floor/iron,
 /area/station/security/execution/transfer)
+"kJt" = (
+/obj/structure/cable,
+/obj/machinery/power/apc/auto_name/directional/north,
+/turf/open/floor/plating,
+/area/station/maintenance/port/central)
 "kJC" = (
 /obj/structure/decorative/shelf,
 /obj/item/perfume/amber{
@@ -34445,11 +34418,6 @@
 	},
 /turf/open/floor/iron,
 /area/station/maintenance/rus_surgery)
-"lqU" = (
-/obj/structure/cable,
-/obj/machinery/power/apc/auto_name/directional/north,
-/turf/open/floor/plating,
-/area/station/maintenance/port/central)
 "lqX" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
@@ -36562,9 +36530,8 @@
 	c_tag = "Security - Shuttle Bay East";
 	dir = 10
 	},
-/turf/open/floor/iron/stairs{
-	dir = 8;
-	initial_gas_mix = "TEMP=2.7"
+/turf/open/floor/iron/stairs/medium{
+	dir = 8
 	},
 /area/station/security/execution/transfer)
 "mgp" = (
@@ -39113,10 +39080,6 @@
 /obj/effect/spawner/structure/window/reinforced/plasma,
 /turf/open/floor/plating,
 /area/station/engineering/main)
-"naf" = (
-/obj/structure/cable,
-/turf/open/floor/plating,
-/area/station/maintenance/starboard/central)
 "naj" = (
 /obj/structure/table/wood,
 /obj/effect/turf_decal/siding/wood{
@@ -45499,6 +45462,16 @@
 /obj/item/weldingtool/mini,
 /turf/open/floor/plating,
 /area/station/maintenance/starboard/fore)
+"pjF" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/station/maintenance/department/crew_quarters/bar)
 "pjN" = (
 /obj/structure/window{
 	dir = 4
@@ -45813,6 +45786,10 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/maintenance/aux_eva)
+"ppn" = (
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/station/maintenance/starboard/central)
 "ppx" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 1
@@ -51779,6 +51756,16 @@
 	dir = 8
 	},
 /area/station/cargo/sorting)
+"rxI" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/station/hallway/primary/port)
 "rxK" = (
 /obj/machinery/light/directional/east,
 /obj/structure/flora/ausbushes/fullgrass,
@@ -51819,13 +51806,6 @@
 	},
 /turf/open/floor/iron/freezer,
 /area/station/command/heads_quarters/hos)
-"ryN" = (
-/obj/machinery/door/airlock/maintenance_hatch{
-	name = "Maintenance Hatch";
-	req_access_txt = "12"
-	},
-/turf/open/space/openspace,
-/area/space)
 "ryP" = (
 /obj/structure/table/reinforced,
 /obj/effect/turf_decal/siding/wood,
@@ -52384,6 +52364,11 @@
 "rFJ" = (
 /turf/open/floor/iron,
 /area/station/commons/fitness)
+"rFL" = (
+/obj/effect/spawner/random/trash/mess,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/station/maintenance/department/security/prison_lower)
 "rFN" = (
 /obj/structure/cable,
 /obj/effect/landmark/start/station_engineer,
@@ -52429,6 +52414,13 @@
 	},
 /turf/open/floor/iron,
 /area/station/hallway/primary/starboard)
+"rGx" = (
+/obj/machinery/door/airlock/maintenance_hatch{
+	name = "Maintenance Hatch";
+	req_access_txt = "12"
+	},
+/turf/open/space/openspace,
+/area/space)
 "rGR" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
@@ -61697,6 +61689,14 @@
 /obj/machinery/newscaster/directional/north,
 /turf/open/floor/eighties/red,
 /area/station/common/arcade)
+"uRO" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/power/apc/auto_name/directional/north,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/station/maintenance/department/crew_quarters/bar)
 "uRQ" = (
 /obj/machinery/door/window/left{
 	dir = 8;
@@ -62421,16 +62421,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/command/heads_quarters/hos)
-"vgO" = (
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
-	dir = 4
-	},
-/obj/structure/cable,
-/turf/open/floor/plating,
-/area/station/maintenance/department/crew_quarters/bar)
 "vgY" = (
 /obj/docking_port/stationary{
 	dheight = 4;
@@ -62444,6 +62434,10 @@
 	},
 /turf/open/floor/plating,
 /area/construction/mining/aux_base)
+"vhd" = (
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/station/maintenance/port/central)
 "vhh" = (
 /obj/structure/table/reinforced,
 /obj/machinery/computer/secure_data/laptop,
@@ -92239,7 +92233,7 @@ ylQ
 ylQ
 ylQ
 jDM
-ryN
+rGx
 jDM
 jDM
 jDM
@@ -93294,7 +93288,7 @@ nTy
 orh
 uoY
 mlC
-jqD
+ihI
 uoY
 uoY
 orh
@@ -100545,10 +100539,10 @@ eNd
 nMA
 xRw
 oTY
-gMf
-gMf
-hmU
-bvB
+vhd
+vhd
+jqD
+rxI
 sse
 tHi
 rOo
@@ -100801,8 +100795,8 @@ npo
 xRw
 xRw
 xRw
-lqU
-gMf
+kJt
+vhd
 fTu
 yfB
 fpF
@@ -112127,8 +112121,8 @@ gDB
 vzn
 jUm
 vVL
-imr
-vgO
+uRO
+pjF
 rLD
 aFO
 aFO
@@ -117790,9 +117784,9 @@ hNe
 hNe
 gjX
 lRY
-duh
+rFL
 dtN
-naf
+ppn
 bRa
 vOn
 bRa
