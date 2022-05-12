@@ -9,8 +9,9 @@
 
 /datum/armament_entry/cargo_gun/armadyne/pistol/osprey
 	item_type = /obj/item/gun/ballistic/automatic/pistol/pdh
-	lower_cost = CARGO_CRATE_VALUE * 8
-	upper_cost = CARGO_CRATE_VALUE * 14
+	lower_cost = CARGO_CRATE_VALUE * 9
+	upper_cost = CARGO_CRATE_VALUE * 15
+	interest_required = PASSED_INTEREST
 
 /datum/armament_entry/cargo_gun/armadyne/pistol/ladon
 	item_type = /obj/item/gun/ballistic/automatic/pistol/ladon
