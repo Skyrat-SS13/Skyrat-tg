@@ -1,4 +1,7 @@
+#define UNLOCK "unlock"
 #define LOCK "lock"
+#define FOLD "fold"
+#define STOP "stop"
 #define DRAIN "drain"
 #define PUMP "pump"
 
@@ -7,7 +10,7 @@
 
 // The grenade
 /obj/item/grenade/borg_action_pacifier_grenade
-	name = "B.A.P. module"
+	name = "B.A.P. grenade"
 	desc = "An inactivated device to constrain silicons with."
 	icon = 'modular_skyrat/modules/deployables/icons/deployable.dmi'
 	icon_state = "folded"
@@ -16,48 +19,177 @@
 	w_class = WEIGHT_CLASS_NORMAL
 
 	det_time = 3 SECONDS
+	// Amount of power drained from the cyborg, which we are now storing
+	var/power_storage = 0
 
 /obj/item/grenade/borg_action_pacifier_grenade/detonate(mob/living/lanced_by)
 	. = ..()
 	if(!.)
 		return
 
-	new /obj/structure/bed/borg_action_pacifier/undeployed(get_turf(src.loc))
+	var/obj/structure/bed/borg_action_pacifier/undeployed/deploying/deploying = new /obj/structure/bed/borg_action_pacifier/undeployed/deploying(get_turf(src.loc))
+	deploying.power_storage = power_storage
 	qdel(src)
 
+/obj/item/grenade/borg_action_pacifier_grenade/examine(mob/user)
+	. = ..()
+	. += span_notice("It's currently holding [power_storage] units worth of charge.")
 
-//	The item
+
+//	The item in its functional state
 /obj/structure/bed/borg_action_pacifier
 	name = "Deployed B.A.P. unit"
+	desc = "An inactivated device to constrain silicons with."
 	icon = 'modular_skyrat/modules/deployables/icons/deployable.dmi'
 	icon_state = "up"
 	anchored = FALSE
 	resistance_flags = FIRE_PROOF | FREEZE_PROOF
 	flags_1 = NODECONSTRUCT_1
+
+	bolts = FALSE
 	// The cyborg currently buckled to the BAP
 	var/mob/living/silicon/robot/buckled_cyborg
 	// If the BAP is deployed or not
 	var/deployed = TRUE
-	// The functions which are in use
-	var/list/enabled_function
+	// Wether or not the machine is locking the cyborg
+	var/locked = FALSE
+	// To distinguish if the machine is pumping or draining
+	var/enabled_function = NONE
 	// Amount of power drained from the cyborg, which we are now storing
-	var/power_storage
+	var/power_storage = 0
 
+/obj/structure/bed/borg_action_pacifier/Initialize(mapload)
+	. = ..()
+	RegisterSignal(src, COMSIG_CLICK_ALT, .proc/check_altclicked)
+
+/obj/structure/bed/borg_action_pacifier/Destroy()
+	. = ..()
+	UnregisterSignal(src, COMSIG_CLICK_ALT)
+
+/obj/structure/bed/borg_action_pacifier/examine(mob/user)
+	. = ..()
+	if(locked)
+		. += span_notice("It's locked.")
+	if(enabled_function != NONE)
+		. += span_notice("It's [enabled_function]ing power...")
+	. += span_notice("It's currently holding [power_storage] units worth of charge.")
+
+// The state after popping out of the grenade
+/obj/structure/bed/borg_action_pacifier/undeployed/deploying
+	name = "Deploying B.A.P. unit"
+
+/obj/structure/bed/borg_action_pacifier/undeployed/deploying/Initialize(mapload)
+	. = ..()
+	balloon_alert_to_viewers("Unfolding...")
+	addtimer(CALLBACK(src, .proc/deploy), 3 SECONDS)
+
+/obj/structure/bed/borg_action_pacifier/undeployed/deploying/proc/deploy()
+	var/obj/structure/bed/borg_action_pacifier/deployed = new /obj/structure/bed/borg_action_pacifier(get_turf(src))
+	deployed.balloon_alert_to_viewers("Deployed!")
+	deployed.power_storage = power_storage
+	qdel(src)
+
+// The item in its retrieval state
 /obj/structure/bed/borg_action_pacifier/undeployed
-	name = "B.A.P. unit"
+	name = "Undeployed B.A.P. unit"
 	icon_state = "down"
 	resistance_flags = NONE
 	deployed = FALSE
 
-/obj/structure/bed/borg_action_pacifier/undeployed/Initialize(mapload)
+/obj/structure/bed/borg_action_pacifier/undeployed/MouseDrop(over_object, src_location, over_location)
 	. = ..()
-	balloon_alert_to_viewers("Begins to unfold!")
-	addtimer(CALLBACK(src, .proc/deploy), 3 SECONDS)
+	if(over_object == usr && Adjacent(usr))
+		if(!ishuman(usr) || !usr.canUseTopic(src, BE_CLOSE))
+			return FALSE
+		if(has_buckled_mobs() || deployed)
+			return FALSE
 
-/obj/structure/bed/borg_action_pacifier/undeployed/proc/deploy()
-	var/obj/structure/bed/borg_action_pacifier/deployed = new /obj/structure/bed/borg_action_pacifier(get_turf(src))
-	deployed.balloon_alert_to_viewers("Deployed!")
-	qdel(src)
+	//	usr.visible_message(span_notice("[usr] collapses \the [src.name]."), span_notice("You collapse \the [src.name]."))
+		var/obj/item/grenade/borg_action_pacifier_grenade/BAPer = new /obj/item/grenade/borg_action_pacifier_grenade(get_turf(src))
+		usr.put_in_hands(BAPer)
+		BAPer.power_storage = power_storage
+		qdel(src)
+
+
+// Alt-click control
+/obj/structure/bed/borg_action_pacifier/proc/check_altclicked(datum/source, mob/living/clicker)
+	SIGNAL_HANDLER
+
+	if(!istype(clicker))
+		return
+	. = COMPONENT_CANCEL_CLICK_ALT
+	INVOKE_ASYNC(src, .proc/alt_clicked, clicker)
+
+/obj/structure/bed/borg_action_pacifier/proc/alt_clicked(mob/living/clicker)
+	var/icon/radial_indicator = 'modular_skyrat/modules/deployables/icons/deployable_indicator.dmi'
+	var/list/choices = list()
+
+	if(buckled_cyborg)
+		if(!locked)
+			choices += list(LOCK = image(icon = radial_indicator, icon_state = "lock"))
+		else
+			choices += list(UNLOCK = image(icon = radial_indicator, icon_state = "unlock"))
+
+		switch(enabled_function)
+			if(NONE)
+				if(!buckled_cyborg.low_power_mode)
+					choices += list(DRAIN = image(icon = radial_indicator, icon_state = "drain"))
+				if(power_storage > 0)
+					choices += list(PUMP = image(icon = radial_indicator, icon_state = "pump"))
+			else
+				choices += list(STOP = image(icon = radial_indicator, icon_state = "stop"))
+	else
+		set_mode(clicker, FOLD)
+		return
+
+	var/choice = show_radial_menu(clicker, src, choices, custom_check = CALLBACK(src, .proc/check_menu, clicker), tooltips = TRUE)
+	if(!choice || !check_menu(clicker))
+		return
+	set_mode(clicker, choice)
+
+/obj/structure/bed/borg_action_pacifier/proc/set_mode(mob/living/clicker, choice)
+	switch(choice)
+		if(LOCK)
+			balloon_alert(clicker, "Locked!")
+			locked = TRUE
+		if(UNLOCK)
+			balloon_alert(clicker, "Unlocked!")
+			locked = FALSE
+		if(STOP)
+			balloon_alert(clicker, "Stopped [enabled_function]ing.")
+			enabled_function = NONE
+		if(DRAIN)
+			balloon_alert(clicker, "Draining from [buckled_cyborg]...")
+			enabled_function = DRAIN
+		if(PUMP)
+			balloon_alert(clicker, "Pumping to [buckled_cyborg]...")
+			enabled_function = PUMP
+		if(FOLD)
+			balloon_alert(clicker, "Folding up...")
+			undeploy(clicker)
+
+/obj/structure/bed/borg_action_pacifier/proc/check_menu(mob/user)
+	if(!istype(user))
+		CRASH("A non-mob is trying to issue an order.")
+	if(user.incapacitated() || !can_see(user, src) || user == buckled_cyborg)
+		return FALSE
+	return TRUE
+
+// Functions
+
+
+
+/obj/structure/bed/borg_action_pacifier/proc/undeploy(mob/living/clicker)
+	var/obj/structure/bed/borg_action_pacifier/undeployed/undeployed
+
+	if(do_after(clicker, 3 SECONDS))
+		undeployed = new /obj/structure/bed/borg_action_pacifier/undeployed(get_turf(src))
+		undeployed.balloon_alert_to_viewers("Reset!")
+		undeployed.power_storage = power_storage
+		qdel(src)
+	else
+		return
+
 
 // Buckle overwrites
 /obj/structure/bed/borg_action_pacifier/buckle_mob(mob/living/target, force, check_loc)
@@ -95,9 +227,9 @@
 
 	if(buckled_mob)
 		if(buckled_mob != user)
-			if(LOCK in enabled_function)
+			if(locked)
 				user.visible_message(span_notice("[user] begins to overwrite the lock to unbuckle [buckled_mob] from [src]."),\
-					span_notice("[user] begins to free you from [src]."))
+					span_notice("You begin to free [buckled_mob] from [src]."))
 				if(!do_after(user, 6 SECONDS))
 					return
 			else
@@ -107,7 +239,7 @@
 					return
 
 		else
-			if(LOCK in enabled_function)
+			if(locked)
 				if(buckled_cyborg.low_power_mode)
 					to_chat(buckled_mob, span_notice("Without power, attempting to break free is hopeless..."))
 					return
@@ -134,28 +266,18 @@
 	target.pixel_y = target.base_pixel_y + target.body_position_pixel_y_offset
 
 	buckled_cyborg = null
-	QDEL_LIST(enabled_function)
+	enabled_function = NONE
+	locked = FALSE
 
-
-/obj/structure/bed/borg_action_pacifier/MouseDrop(over_object, src_location, over_location)
-	. = ..()
-	if(over_object == usr && Adjacent(usr))
-		if(!ishuman(usr) || !usr.canUseTopic(src, BE_CLOSE))
-			return FALSE
-		if(has_buckled_mobs())
-			return FALSE
-
-
-		usr.visible_message(span_notice("[usr] collapses \the [src.name]."), span_notice("You collapse \the [src.name]."))
-		var/obj/item/grenade/borg_action_pacifier_grenade/BAPer = new /obj/item/grenade/borg_action_pacifier_grenade(get_turf(src))
-		usr.put_in_hands(BAPer)
-		qdel(src)
-
+// Fluff
 /obj/structure/bed/borg_action_pacifier/Moved()
 	. = ..()
 	if(has_gravity() && deployed)
 		playsound(src, 'sound/effects/roll.ogg', 50, TRUE)
 
+#undef UNLOCK
 #undef LOCK
+#undef FOLD
+#undef STOP
 #undef DRAIN
 #undef PUMP
