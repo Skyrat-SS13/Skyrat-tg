@@ -1,40 +1,14 @@
+#define FOLD "fold"
+
 #define UNLOCK "unlock"
 #define LOCK "lock"
-#define FOLD "fold"
-#define STOP "stop"
-#define DRAIN "drain"
-#define PUMP "pump"
+
+#define STOP_MODE "stop"
+#define DRAIN_MODE "drain"
+#define PUMP_MODE "pump"
 
 ////
 //	BAP
-
-// The grenade
-/obj/item/grenade/borg_action_pacifier_grenade
-	name = "B.A.P. grenade"
-	desc = "An inactivated device to constrain silicons with."
-	icon = 'modular_skyrat/modules/deployables/icons/deployable.dmi'
-	icon_state = "folded"
-	inhand_icon_state = "folded"
-	worn_icon_state = "folded"
-	w_class = WEIGHT_CLASS_NORMAL
-
-	det_time = 3 SECONDS
-	// Amount of power drained from the cyborg, which we are now storing
-	var/power_storage = 0
-
-/obj/item/grenade/borg_action_pacifier_grenade/detonate(mob/living/lanced_by)
-	. = ..()
-	if(!.)
-		return
-
-	var/obj/structure/bed/borg_action_pacifier/undeployed/deploying/deploying = new /obj/structure/bed/borg_action_pacifier/undeployed/deploying(get_turf(src.loc))
-	deploying.power_storage = power_storage
-	qdel(src)
-
-/obj/item/grenade/borg_action_pacifier_grenade/examine(mob/user)
-	. = ..()
-	. += span_notice("It's currently holding [power_storage] units worth of charge.")
-
 
 //	The item in its functional state
 /obj/structure/bed/borg_action_pacifier
@@ -73,6 +47,37 @@
 	if(enabled_function != NONE)
 		. += span_notice("It's [enabled_function]ing power...")
 	. += span_notice("It's currently holding [power_storage] units worth of charge.")
+	if(power_storage == 40000)
+		. += span_warning("It cannot store any more power.")
+
+// The grenade
+/obj/item/grenade/borg_action_pacifier_grenade
+	name = "B.A.P. grenade"
+	desc = "An inactivated device to constrain silicons with."
+	icon = 'modular_skyrat/modules/deployables/icons/deployable.dmi'
+	icon_state = "folded"
+	inhand_icon_state = "folded"
+	worn_icon_state = "folded"
+	w_class = WEIGHT_CLASS_NORMAL
+
+	det_time = 3 SECONDS
+	// Amount of power drained from the cyborg, which we are now storing
+	var/power_storage = 0
+
+/obj/item/grenade/borg_action_pacifier_grenade/detonate(mob/living/lanced_by)
+	. = ..()
+	if(!.)
+		return
+
+	var/obj/structure/bed/borg_action_pacifier/undeployed/deploying/deploying = new /obj/structure/bed/borg_action_pacifier/undeployed/deploying(get_turf(src.loc))
+	deploying.power_storage = power_storage
+	qdel(src)
+
+/obj/item/grenade/borg_action_pacifier_grenade/examine(mob/user)
+	. = ..()
+	. += span_notice("It's currently holding [power_storage] units worth of charge.")
+	if(power_storage == 40000)
+		. += span_warning("It cannot store any more power.")
 
 // The state after popping out of the grenade
 /obj/structure/bed/borg_action_pacifier/undeployed/deploying
@@ -81,7 +86,8 @@
 /obj/structure/bed/borg_action_pacifier/undeployed/deploying/Initialize(mapload)
 	. = ..()
 	balloon_alert_to_viewers("Unfolding...")
-	addtimer(CALLBACK(src, .proc/deploy), 3 SECONDS)
+	playsound(src, 'modular_skyrat/master_files/sound/effects/robot_trap.ogg', 25, FALSE)
+	addtimer(CALLBACK(src, .proc/deploy), 1 SECONDS)
 
 /obj/structure/bed/borg_action_pacifier/undeployed/deploying/proc/deploy()
 	var/obj/structure/bed/borg_action_pacifier/deployed = new /obj/structure/bed/borg_action_pacifier(get_turf(src))
@@ -104,7 +110,7 @@
 		if(has_buckled_mobs() || deployed)
 			return FALSE
 
-	//	usr.visible_message(span_notice("[usr] collapses \the [src.name]."), span_notice("You collapse \the [src.name]."))
+		usr.visible_message(span_notice("[usr] collapses [src]."), span_notice("You collapse [src]."))
 		var/obj/item/grenade/borg_action_pacifier_grenade/BAPer = new /obj/item/grenade/borg_action_pacifier_grenade(get_turf(src))
 		usr.put_in_hands(BAPer)
 		BAPer.power_storage = power_storage
@@ -133,11 +139,11 @@
 		switch(enabled_function)
 			if(NONE)
 				if(buckled_cyborg.cell && !buckled_cyborg.low_power_mode)
-					choices += list(DRAIN = image(icon = radial_indicator, icon_state = "drain"))
+					choices += list(DRAIN_MODE = image(icon = radial_indicator, icon_state = "drain"))
 				if(buckled_cyborg.cell && power_storage > 0)
-					choices += list(PUMP = image(icon = radial_indicator, icon_state = "pump"))
+					choices += list(PUMP_MODE = image(icon = radial_indicator, icon_state = "pump"))
 			else
-				choices += list(STOP = image(icon = radial_indicator, icon_state = "stop"))
+				choices += list(STOP_MODE = image(icon = radial_indicator, icon_state = "stop"))
 	else
 		set_mode(clicker, FOLD)
 		return
@@ -150,20 +156,20 @@
 /obj/structure/bed/borg_action_pacifier/proc/set_mode(mob/living/clicker, choice)
 	switch(choice)
 		if(LOCK)
-			balloon_alert(clicker, "Locked!")
+			balloon_alert_to_viewers(clicker, "Locked!")
 			lock()
 		if(UNLOCK)
-			balloon_alert(clicker, "Unlocked!")
+			balloon_alert_to_viewers(clicker, "Unlocked!")
 			unlock()
-		if(STOP)
+		if(STOP_MODE)
 			balloon_alert(clicker, "Stopped [enabled_function]ing.")
-			stop()
-		if(DRAIN)
+			stop_mode()
+		if(DRAIN_MODE)
 			balloon_alert(clicker, "Draining from [buckled_cyborg]...")
-			drain()
-		if(PUMP)
+			drain_mode()
+		if(PUMP_MODE)
 			balloon_alert(clicker, "Pumping to [buckled_cyborg]...")
-			pump()
+			pump_mode()
 		if(FOLD)
 			balloon_alert(clicker, "Folding up...")
 			undeploy(clicker)
@@ -181,38 +187,55 @@
 		return
 
 	var/obj/item/stock_parts/cell/cell = buckled_cyborg.cell
-	var/transfer_inc = 200
-
+	var/transfer_inc = 500
 	switch(enabled_function)
-		if(DRAIN)
+		if(DRAIN_MODE)
 			if(cell.charge > 0)
-				cell.charge = cell.charge - transfer_inc
-				power_storage = power_storage + transfer_inc
-			else
+				drain_cell(cell, transfer_inc)
+			if(cell.charge < 0)
 				cell.charge = 0
-				stop()
-		if(PUMP)
+				stop_mode()
+			else if(power_storage > 40000)
+				power_storage = 40000
+				stop_mode()
+		if(PUMP_MODE)
 			if(power_storage > 0)
-				power_storage = power_storage - transfer_inc
-				cell.charge = cell.charge + transfer_inc
-			else
+				pump_cell(cell, transfer_inc)
+			if(power_storage < 0)
 				power_storage = 0
-				stop()
+				stop_mode()
+			else if(cell.charge > cell.maxcharge)
+				cell.charge = cell.maxcharge
+				stop_mode()
 		if(NONE)
 			return
 
-/obj/structure/bed/borg_action_pacifier/proc/drain()
-	enabled_function = DRAIN
+/obj/structure/bed/borg_action_pacifier/proc/drain_cell(obj/item/stock_parts/cell/cell, transfer_inc)
+	cell.charge = cell.charge - transfer_inc
+	power_storage = power_storage + transfer_inc
+	playsound(src, 'modular_skyrat/master_files/sound/effects/robot_drain.ogg', 50, FALSE)
+	do_sparks(2, TRUE, buckled_cyborg)
 
-/obj/structure/bed/borg_action_pacifier/proc/pump()
-	enabled_function = PUMP
+/obj/structure/bed/borg_action_pacifier/proc/pump_cell(obj/item/stock_parts/cell/cell, transfer_inc)
+	power_storage = power_storage - transfer_inc
+	cell.charge = cell.charge + transfer_inc
+	playsound(src, 'modular_skyrat/master_files/sound/effects/robot_pump.ogg', 50, FALSE)
+	do_sparks(2, TRUE, buckled_cyborg)
 
-/obj/structure/bed/borg_action_pacifier/proc/stop()
+/obj/structure/bed/borg_action_pacifier/proc/drain_mode()
+	enabled_function = DRAIN_MODE
+
+/obj/structure/bed/borg_action_pacifier/proc/pump_mode()
+	enabled_function = PUMP_MODE
+
+/obj/structure/bed/borg_action_pacifier/proc/stop_mode()
 	enabled_function = NONE
 
 /obj/structure/bed/borg_action_pacifier/proc/lock()
+	playsound(src, 'modular_skyrat/master_files/sound/effects/robot_lock.ogg', 50, FALSE)
 	locked = TRUE
 	buckled_cyborg.set_lockcharge(TRUE)
+
 
 /obj/structure/bed/borg_action_pacifier/proc/unlock()
 	locked = FALSE
@@ -251,7 +274,7 @@
 
 /obj/structure/bed/borg_action_pacifier/post_buckle_mob(mob/living/target)
 	set_density(TRUE)
-	target.pixel_y = (target.base_pixel_y + 12)
+	target.pixel_y = (target.base_pixel_y + 8)
 
 	buckled_cyborg = target
 	START_PROCESSING(SSobj, src)
@@ -285,7 +308,7 @@
 					return
 				buckled_mob.visible_message(span_notice("[buckled_mob] begins to break out of [buckled_mob.p_their()] restraints."),\
 					span_notice("You begin to free yourself from [src]."))
-				if(!do_after(buckled_mob, 12 SECONDS))
+				if(!do_after(buckled_mob, 20 SECONDS))
 					return
 			else
 				buckled_mob.visible_message(span_notice("[buckled_mob] begins to unbuckle [buckled_mob.p_them()]self from [src]."),\
@@ -314,12 +337,14 @@
 // Fluff
 /obj/structure/bed/borg_action_pacifier/Moved()
 	. = ..()
-	if(has_gravity() && deployed)
+	if(has_gravity())
 		playsound(src, 'sound/effects/roll.ogg', 50, TRUE)
+
+#undef FOLD
 
 #undef UNLOCK
 #undef LOCK
-#undef FOLD
-#undef STOP
-#undef DRAIN
-#undef PUMP
+
+#undef STOP_MODE
+#undef DRAIN_MODE
+#undef PUMP_MODE
