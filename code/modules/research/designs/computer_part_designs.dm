@@ -205,6 +205,7 @@
 	materials = list(/datum/material/iron = 400)
 	build_path = /obj/item/stock_parts/cell/computer/micro
 	category = list("Computer Parts")
+<<<<<<< HEAD
 	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE | DEPARTMENTAL_FLAG_ENGINEERING
 
 // Processor unit
@@ -252,3 +253,6 @@
 	build_path = /obj/item/computer_hardware/sensorpackage
 	category = list("Computer Parts")
 	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE | DEPARTMENTAL_FLAG_ENGINEERING
+=======
+	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE | DEPARTMENT_BITFLAG_ENGINEERING
+>>>>>>> c61d6dc3cb6 (Removes CPU, Sensors and Identify ModPC parts. (#66924))
