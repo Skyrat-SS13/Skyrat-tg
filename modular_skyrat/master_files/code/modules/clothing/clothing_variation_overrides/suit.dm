@@ -79,6 +79,9 @@
 /obj/item/clothing/suit/armor/vest/marine
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
+/obj/item/clothing/suit/changeling
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+
 /**
  * NONE(Squash)
  * Clothing that does not have a digitigrade version, and thus will squash legs to fit.
