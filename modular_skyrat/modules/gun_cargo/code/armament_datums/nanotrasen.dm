@@ -66,7 +66,7 @@
 	upper_cost = CARGO_CRATE_VALUE * 16
 	interest_required = PASSED_INTEREST
 	
-/datum/armament_entry/cargo_gun/nanotrasen/part/suppressor
-	item_type = /obj/item/suppressor
+/datum/armament_entry/cargo_gun/nanotrasen/part/suppressor/NT
+	item_type = /obj/item/suppressor/NT
 	lower_cost = CARGO_CRATE_VALUE * 10
 	upper_cost = CARGO_CRATE_VALUE * 15
