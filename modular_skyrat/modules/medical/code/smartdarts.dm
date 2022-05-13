@@ -139,7 +139,7 @@
 		if(!is_type_in_list(meds, allowed_medicine))
 			continue
 		if(is_type_in_list(meds, disallowed_medicine))
-			return
+			continue
 		if(is_type_in_list(meds, allergy_list))
 			prevention_used = TRUE
 		else
