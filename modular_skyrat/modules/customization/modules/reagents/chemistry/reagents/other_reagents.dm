@@ -19,6 +19,9 @@
 /datum/reagent/syndicateadrenals
 	process_flags = REAGENT_ORGANIC | REAGENT_SYNTHETIC
 
+/datum/reagent/carbondioxide
+	process_flags = REAGENT_ORGANIC | REAGENT_SYNTHETIC
+
 /datum/reagent/stable_plasma/on_mob_life(mob/living/carbon/C)
 	if(C.mob_biotypes & MOB_ROBOTIC)
 		C.nutrition = min(C.nutrition + 5, NUTRITION_LEVEL_FULL-1)
@@ -34,6 +37,10 @@
 		C.blood_volume += 0.5
 	..()
 
+/datum/reagent/carbondioxide/on_mob_life(mob/living/carbon/C)
+	if(C.mob_biotypes & MOB_ROBOTIC)
+		C.nutrition = min(C.nutrition + 5, NUTRITION_LEVEL_FULL-1)
+	..()
 // Catnip
 /datum/reagent/pax/catnip
 	name = "Catnip"
@@ -42,8 +49,11 @@
 	metabolization_rate = 1.75 * REAGENTS_METABOLISM
 
 /datum/reagent/pax/catnip/on_mob_life(mob/living/carbon/M)
-	if(prob(20))
-		M.emote("nya")
-	if(prob(20))
-		to_chat(M, span_notice("[pick("Headpats feel nice.", "The feeling of a hairball...", "Backrubs would be nice.", "Mew")]"))
+	if(isfelinid(M) || istajaran(M))
+		if(prob(20))
+			M.emote("nya")
+		if(prob(20))
+			to_chat(M, span_notice("[pick("Headpats feel nice.", "Backrubs would be nice.", "Mew")]"))
+	else
+		to_chat(M, span_notice("[pick("I feel oddly calm.", "I feel relaxed.", "Mew?")]"))
 	..()
