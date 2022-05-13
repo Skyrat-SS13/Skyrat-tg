@@ -517,6 +517,7 @@
 		new_profile.worn_icon_digi_list[slot] = clothing_item.worn_icon_digi
 		new_profile.worn_icon_teshari_list[slot] = clothing_item.worn_icon_teshari
 		new_profile.worn_icon_vox_list[slot] = clothing_item.worn_icon_vox
+		new_profile.supports_variations_flags_list[slot] = clothing_item.supports_variations_flags
 		// SKYRAT EDIT END
 
 	return new_profile
@@ -801,6 +802,7 @@
 		new_flesh_item.worn_icon_digi = chosen_profile.worn_icon_digi_list[slot]
 		new_flesh_item.worn_icon_teshari = chosen_profile.worn_icon_teshari_list[slot]
 		new_flesh_item.worn_icon_vox = chosen_profile.worn_icon_vox_list[slot]
+		new_flesh_item.supports_variations_flags = chosen_profile.supports_variations_flags_list[slot]
 		// SKYRAT EDIT END
 
 		if(istype(new_flesh_item, /obj/item/changeling/id) && chosen_profile.id_icon)
@@ -879,6 +881,7 @@
 	var/list/worn_icon_digi_list = list()
 	var/list/worn_icon_teshari_list = list()
 	var/list/worn_icon_vox_list = list()
+	var/list/supports_variations_flags_list = list()
 	/// SKYRAT EDIT END
 
 /datum/changeling_profile/Destroy()
@@ -925,6 +928,7 @@
 	new_profile.worn_icon_digi_list = worn_icon_digi_list.Copy()
 	new_profile.worn_icon_teshari_list = worn_icon_teshari_list.Copy()
 	new_profile.worn_icon_vox_list = worn_icon_vox_list.Copy()
+	new_profile.supports_variations_flags_list = supports_variations_flags_list.Copy()
 	// SKYRAT EDIT END
 
 /datum/antagonist/changeling/roundend_report()
