@@ -526,7 +526,7 @@
 	inhand_icon_state = "zeta"
 	mag_type = /obj/item/ammo_box/magazine/internal/cylinder/zeta
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/revolver_fire.ogg'
-	fire_delay = 8
+	fire_delay = 3
 	company_flag = COMPANY_BOLT
 
 /obj/item/ammo_box/magazine/internal/cylinder/zeta
