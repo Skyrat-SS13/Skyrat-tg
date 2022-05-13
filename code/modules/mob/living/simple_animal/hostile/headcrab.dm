@@ -83,8 +83,10 @@
 		if(changeling_datum.can_absorb_dna(owner))
 			changeling_datum.add_new_profile(owner)
 
-		var/datum/action/changeling/humanform/hf = new
+		//var/datum/action/changeling/humanform/hf = new
+		var/datum/action/changeling/humanform/hf = new() // SKYRAT EDIT
 		changeling_datum.purchased_powers += hf
+		hf.Grant(origin.current) // SKYRAT EDIT
 		changeling_datum.regain_powers()
 	owner.gib()
 
