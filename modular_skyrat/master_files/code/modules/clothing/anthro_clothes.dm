@@ -12,8 +12,6 @@
 //EARS>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 //EYES>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-/obj/item/clothing/glasses/changeling
-	supports_variations_flags = CLOTHING_SNOUTED_VOX_VARIATION
 
 //MASK>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 /obj/item/clothing/mask/gas/atmos
@@ -30,21 +28,11 @@
 
 /obj/item/clothing/mask/balaclava //Now has SHOWSPRITEEARS
 	flags_inv = HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT|SHOWSPRITEEARS
-	
-/obj/item/clothing/mask/changeling
-	supports_variations_flags = CLOTHING_SNOUTED_VARIATION | CLOTHING_SNOUTED_VOX_VARIATION
 
 //UNDER>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-/obj/item/clothing/under/changeling
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
 
 //SUIT>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 /obj/item/clothing/suit/fire
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
-	
-/obj/item/clothing/suit/changeling
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
 
 //FEET>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-/obj/item/clothing/shoes/changeling
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
