@@ -14,12 +14,32 @@
 	to_chat(user, span_warning("Our genes cry out!"))
 	..()
 
+	// SKYRAT EDIT START
+	var/datum/dna/current_dna = user.dna
+	for(var/key in current_dna.mutant_bodyparts)
+		LAZYSET(current_dna.mutant_bodyparts, key, "None")
+	for(var/key in current_dna.body_markings)
+		LAZYSET(current_dna.body_markings, key, null)
+	if(current_dna.features["legs"])
+		LAZYREMOVE(current_dna.features, "legs")
+	// SKYRAT EDIT END
+
 	user.monkeyize()
 
 	var/datum/antagonist/changeling/changeling = user.mind.has_antag_datum(/datum/antagonist/changeling)
 	var/datum/action/changeling/humanform/from_monkey/human_form_ability = new()
 	changeling.purchased_powers += human_form_ability
 	changeling.purchased_powers -= src
+	
+	// SKYRAT EDIT START
+	for(var/slot in changeling.slot2type)
+		if(istype(user.vars[slot], changeling.slot2type[slot]))
+			qdel(user.vars[slot])
+	for(var/i in user.all_scars)
+		var/datum/scar/iter_scar = i
+		if(iter_scar.fake)
+			qdel(iter_scar)
+	// SKYRAT EDIT END
 
 	Remove(user)
 	human_form_ability.Grant(user)
