@@ -132,9 +132,9 @@
 
 		switch(enabled_function)
 			if(NONE)
-				if(!buckled_cyborg.low_power_mode)
+				if(buckled_cyborg.cell && !buckled_cyborg.low_power_mode)
 					choices += list(DRAIN = image(icon = radial_indicator, icon_state = "drain"))
-				if(power_storage > 0)
+				if(buckled_cyborg.cell && power_storage > 0)
 					choices += list(PUMP = image(icon = radial_indicator, icon_state = "pump"))
 			else
 				choices += list(STOP = image(icon = radial_indicator, icon_state = "stop"))
@@ -151,19 +151,19 @@
 	switch(choice)
 		if(LOCK)
 			balloon_alert(clicker, "Locked!")
-			locked = TRUE
+			lock()
 		if(UNLOCK)
 			balloon_alert(clicker, "Unlocked!")
-			locked = FALSE
+			unlock()
 		if(STOP)
 			balloon_alert(clicker, "Stopped [enabled_function]ing.")
-			enabled_function = NONE
+			stop()
 		if(DRAIN)
 			balloon_alert(clicker, "Draining from [buckled_cyborg]...")
-			enabled_function = DRAIN
+			drain()
 		if(PUMP)
 			balloon_alert(clicker, "Pumping to [buckled_cyborg]...")
-			enabled_function = PUMP
+			pump()
 		if(FOLD)
 			balloon_alert(clicker, "Folding up...")
 			undeploy(clicker)
@@ -176,8 +176,47 @@
 	return TRUE
 
 // Functions
+/obj/structure/bed/borg_action_pacifier/process()
+	if(!buckled_cyborg)
+		return
 
+	var/obj/item/stock_parts/cell/cell = buckled_cyborg.cell
+	var/transfer_inc = 200
 
+	switch(enabled_function)
+		if(DRAIN)
+			if(cell.charge > 0)
+				cell.charge = cell.charge - transfer_inc
+				power_storage = power_storage + transfer_inc
+			else
+				cell.charge = 0
+				stop()
+		if(PUMP)
+			if(power_storage > 0)
+				power_storage = power_storage - transfer_inc
+				cell.charge = cell.charge + transfer_inc
+			else
+				power_storage = 0
+				stop()
+		if(NONE)
+			return
+
+/obj/structure/bed/borg_action_pacifier/proc/drain()
+	enabled_function = DRAIN
+
+/obj/structure/bed/borg_action_pacifier/proc/pump()
+	enabled_function = PUMP
+
+/obj/structure/bed/borg_action_pacifier/proc/stop()
+	enabled_function = NONE
+
+/obj/structure/bed/borg_action_pacifier/proc/lock()
+	locked = TRUE
+	buckled_cyborg.set_lockcharge(TRUE)
+
+/obj/structure/bed/borg_action_pacifier/proc/unlock()
+	locked = FALSE
+	buckled_cyborg.set_lockcharge(FALSE)
 
 /obj/structure/bed/borg_action_pacifier/proc/undeploy(mob/living/clicker)
 	var/obj/structure/bed/borg_action_pacifier/undeployed/undeployed
@@ -215,6 +254,7 @@
 	target.pixel_y = (target.base_pixel_y + 12)
 
 	buckled_cyborg = target
+	START_PROCESSING(SSobj, src)
 
 /obj/structure/bed/borg_action_pacifier/unbuckle_mob(mob/living/buckled_mob, force, can_fall)
 	if(!force)
@@ -265,9 +305,11 @@
 	set_density(FALSE)
 	target.pixel_y = target.base_pixel_y + target.body_position_pixel_y_offset
 
+	unlock() // Just in case
 	buckled_cyborg = null
 	enabled_function = NONE
-	locked = FALSE
+	STOP_PROCESSING(SSobj, src)
+
 
 // Fluff
 /obj/structure/bed/borg_action_pacifier/Moved()
