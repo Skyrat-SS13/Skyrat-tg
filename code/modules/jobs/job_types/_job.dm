@@ -128,18 +128,10 @@
 
 /datum/job/New()
 	. = ..()
-<<<<<<< HEAD
-	//SKYRAT ADDITION START
+	// SKYRAT EDIT START
 	if(!job_spawn_title)
 		job_spawn_title = title
-	//SKYRAT ADDITION END
-	var/list/jobs_changes = get_map_changes()
-	if(!jobs_changes)
-		return
-	if(isnum(jobs_changes["spawn_positions"]))
-		spawn_positions = jobs_changes["spawn_positions"]
-	if(isnum(jobs_changes["total_positions"]))
-		total_positions = jobs_changes["total_positions"]
+	// SKYRAT EDIT END
 
 /// Loads up map configs if necessary and returns job changes for this job.
 /datum/job/proc/get_map_changes()
@@ -147,8 +139,6 @@
 	var/list/splits = splittext(string_type, "/")
 	var/endpart = splits[splits.len]
 
-=======
->>>>>>> b0c8eb5a3a1 (Fixes Cook CQC + job change config fixes (#66876))
 	var/list/job_changes = SSmapping.config.job_changes
 	if(!job_changes[title])
 		return TRUE
