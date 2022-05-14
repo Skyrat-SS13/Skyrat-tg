@@ -83,7 +83,7 @@
 		/datum/reagent/medicine,
 		/datum/reagent/vaccine
 	)
-	var/list/disalloawed_medicine = list(
+	var/list/disallowed_medicine = list(
 		/datum/reagent/inverse/healing/tirimol,
 		/datum/reagent/medicine/morphine,
 	)
