@@ -86,8 +86,8 @@
 /obj/structure/bed/borg_action_pacifier/undeployed/deploying/Initialize(mapload)
 	. = ..()
 	balloon_alert_to_viewers("Unfolding...")
-	playsound(src, 'modular_skyrat/master_files/sound/effects/robot_trap.ogg', 25, FALSE)
-	addtimer(CALLBACK(src, .proc/deploy), 1 SECONDS)
+	playsound(src, 'modular_skyrat/master_files/sound/effects/robot_trap.ogg', 25, TRUE, falloff_exponent = 20)
+	addtimer(CALLBACK(src, .proc/deploy), 0.8 SECONDS)
 
 /obj/structure/bed/borg_action_pacifier/undeployed/deploying/proc/deploy()
 	var/obj/structure/bed/borg_action_pacifier/deployed = new /obj/structure/bed/borg_action_pacifier(get_turf(src))
@@ -138,7 +138,7 @@
 
 		switch(enabled_function)
 			if(NONE)
-				if(buckled_cyborg.cell && !buckled_cyborg.low_power_mode)
+				if(buckled_cyborg.cell && buckled_cyborg.cell.charge > 0)
 					choices += list(DRAIN_MODE = image(icon = radial_indicator, icon_state = "drain"))
 				if(buckled_cyborg.cell && power_storage > 0)
 					choices += list(PUMP_MODE = image(icon = radial_indicator, icon_state = "pump"))
@@ -156,10 +156,10 @@
 /obj/structure/bed/borg_action_pacifier/proc/set_mode(mob/living/clicker, choice)
 	switch(choice)
 		if(LOCK)
-			balloon_alert_to_viewers(clicker, "Locked!")
+			balloon_alert_to_viewers("Locked!")
 			lock()
 		if(UNLOCK)
-			balloon_alert_to_viewers(clicker, "Unlocked!")
+			balloon_alert_to_viewers("Unlocked!")
 			unlock()
 		if(STOP_MODE)
 			balloon_alert(clicker, "Stopped [enabled_function]ing.")
@@ -213,14 +213,14 @@
 /obj/structure/bed/borg_action_pacifier/proc/drain_cell(obj/item/stock_parts/cell/cell, transfer_inc)
 	cell.charge = cell.charge - transfer_inc
 	power_storage = power_storage + transfer_inc
-	playsound(src, 'modular_skyrat/master_files/sound/effects/robot_drain.ogg', 50, FALSE)
-	do_sparks(2, TRUE, buckled_cyborg)
+	playsound(src, 'modular_skyrat/master_files/sound/effects/robot_drain.ogg', 25, FALSE, falloff_exponent = 20)
+	do_sparks(1, TRUE, buckled_cyborg)
 
 /obj/structure/bed/borg_action_pacifier/proc/pump_cell(obj/item/stock_parts/cell/cell, transfer_inc)
 	power_storage = power_storage - transfer_inc
 	cell.charge = cell.charge + transfer_inc
-	playsound(src, 'modular_skyrat/master_files/sound/effects/robot_pump.ogg', 50, FALSE)
-	do_sparks(2, TRUE, buckled_cyborg)
+	playsound(src, 'modular_skyrat/master_files/sound/effects/robot_pump.ogg', 25, FALSE, falloff_exponent = 20)
+	do_sparks(1, TRUE, buckled_cyborg)
 
 /obj/structure/bed/borg_action_pacifier/proc/drain_mode()
 	enabled_function = DRAIN_MODE
@@ -229,17 +229,20 @@
 	enabled_function = PUMP_MODE
 
 /obj/structure/bed/borg_action_pacifier/proc/stop_mode()
+	playsound(src, 'sound/machines/ping.ogg', 50, FALSE, falloff_exponent = 10)
 	enabled_function = NONE
+	buckled_cyborg.regenerate_icons()
 
 /obj/structure/bed/borg_action_pacifier/proc/lock()
-	playsound(src, 'modular_skyrat/master_files/sound/effects/robot_lock.ogg', 50, FALSE)
+	playsound(src, 'modular_skyrat/master_files/sound/effects/robot_lock.ogg', 50, TRUE, falloff_exponent = 10)
 	locked = TRUE
-	buckled_cyborg.set_lockcharge(TRUE)
-
+	buckled_cyborg.SetLockdown(TRUE)
+	buckled_cyborg.cut_overlay(buckled_cyborg.eye_lights)
 
 /obj/structure/bed/borg_action_pacifier/proc/unlock()
 	locked = FALSE
-	buckled_cyborg.set_lockcharge(FALSE)
+	buckled_cyborg.SetLockdown(FALSE)
+	buckled_cyborg.regenerate_icons()
 
 /obj/structure/bed/borg_action_pacifier/proc/undeploy(mob/living/clicker)
 	var/obj/structure/bed/borg_action_pacifier/undeployed/undeployed
