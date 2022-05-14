@@ -8,8 +8,6 @@
 #define PUMP_MODE "pump"
 
 ////
-//	BAP
-
 //	The item in its functional state
 /obj/structure/bed/borg_action_pacifier
 	name = "Deployed B.A.P. unit"
@@ -34,7 +32,7 @@
 
 /obj/structure/bed/borg_action_pacifier/Initialize(mapload)
 	. = ..()
-	RegisterSignal(src, COMSIG_CLICK_ALT, .proc/check_altclicked)
+	RegisterSignal(src, COMSIG_CLICK_ALT, .proc/check_alt_clicked_radial)
 
 /obj/structure/bed/borg_action_pacifier/Destroy()
 	. = ..()
@@ -47,10 +45,11 @@
 	if(enabled_function != NONE)
 		. += span_notice("It's [enabled_function]ing power...")
 	. += span_notice("It's currently holding [power_storage] units worth of charge.")
-	if(power_storage == 40000)
+	if(power_storage == 40000)	// BS cell capacity, a potato battery would still outplay this
 		. += span_warning("It cannot store any more power.")
 
-// The grenade
+////
+//	The grenade
 /obj/item/grenade/borg_action_pacifier_grenade
 	name = "B.A.P. grenade"
 	desc = "An inactivated device to constrain silicons with."
@@ -61,8 +60,16 @@
 	w_class = WEIGHT_CLASS_NORMAL
 
 	det_time = 3 SECONDS
-	// Amount of power drained from the cyborg, which we are now storing
+	// Amount of power drained from the cyborg, from when we were still deployed
 	var/power_storage = 0
+
+/obj/item/grenade/borg_action_pacifier_grenade/Initialize(mapload)
+	. = ..()
+	RegisterSignal(src, COMSIG_CLICK_ALT, .proc/check_alt_clicked_grenade)
+
+/obj/item/grenade/borg_action_pacifier_grenade/Destroy()
+	. = ..()
+	UnregisterSignal(src, COMSIG_CLICK_ALT)
 
 /obj/item/grenade/borg_action_pacifier_grenade/detonate(mob/living/lanced_by)
 	. = ..()
@@ -79,23 +86,25 @@
 	if(power_storage == 40000)
 		. += span_warning("It cannot store any more power.")
 
-// The state after popping out of the grenade
+////
+//	The state after popping out of the grenade
 /obj/structure/bed/borg_action_pacifier/undeployed/deploying
 	name = "Deploying B.A.P. unit"
 
 /obj/structure/bed/borg_action_pacifier/undeployed/deploying/Initialize(mapload)
 	. = ..()
-	balloon_alert_to_viewers("Unfolding...")
+	balloon_alert_to_viewers("unfolding...")
 	playsound(src, 'modular_skyrat/master_files/sound/effects/robot_trap.ogg', 25, TRUE, falloff_exponent = 20)
 	addtimer(CALLBACK(src, .proc/deploy), 0.8 SECONDS)
 
 /obj/structure/bed/borg_action_pacifier/undeployed/deploying/proc/deploy()
 	var/obj/structure/bed/borg_action_pacifier/deployed = new /obj/structure/bed/borg_action_pacifier(get_turf(src))
-	deployed.balloon_alert_to_viewers("Deployed!")
+	deployed.balloon_alert_to_viewers("deployed")
 	deployed.power_storage = power_storage
 	qdel(src)
 
-// The item in its retrieval state
+////
+//	The item in its retrieval state
 /obj/structure/bed/borg_action_pacifier/undeployed
 	name = "Undeployed B.A.P. unit"
 	icon_state = "down"
@@ -117,16 +126,70 @@
 		qdel(src)
 
 
-// Alt-click control
-/obj/structure/bed/borg_action_pacifier/proc/check_altclicked(datum/source, mob/living/clicker)
+////
+//	Alt-click control
+
+// Venting the power out of the grenade-form
+/obj/item/grenade/borg_action_pacifier_grenade/proc/check_alt_clicked_grenade(datum/source, mob/living/clicker)
 	SIGNAL_HANDLER
 
 	if(!istype(clicker))
 		return
 	. = COMPONENT_CANCEL_CLICK_ALT
-	INVOKE_ASYNC(src, .proc/alt_clicked, clicker)
+	INVOKE_ASYNC(src, .proc/alt_clicked_grenade, clicker)
 
-/obj/structure/bed/borg_action_pacifier/proc/alt_clicked(mob/living/clicker)
+/obj/item/grenade/borg_action_pacifier_grenade/proc/alt_clicked_grenade(mob/living/clicker)
+
+	if(power_storage && clicker)
+		var/turf/open/pos = get_turf(clicker)
+		var/vent_scale // A factor of how big the fake vapor will be
+		vent_scale = clamp((power_storage / 4000), 0, 6)
+
+		if(istype(pos))
+			for(var/i in 1 to vent_scale)
+				ventilate_effect(pos, vent_scale)
+		clicker.visible_message(span_warning("[clicker] ventilates the power stored inside [src]..."))
+		playsound(src, 'sound/effects/spray.ogg', (vent_scale * 10), TRUE)
+		power_storage = 0
+
+// Bong code for fake vapor
+/obj/item/grenade/borg_action_pacifier_grenade/proc/ventilate_effect(turf/open/location, vent_scale)
+	var/list/turfs_affected = list(location)
+	var/list/turfs_to_spread = list(location)
+	var/spread_stage = vent_scale
+	for(var/i in 1 to vent_scale)
+		if(!turfs_to_spread.len)
+			break
+		var/list/new_spread_list = list()
+		for(var/turf/open/turf_to_spread as anything in turfs_to_spread)
+			if(isspaceturf(turf_to_spread))
+				continue
+			var/obj/effect/abstract/fake_steam/fake_steam = locate() in turf_to_spread
+			var/at_edge = FALSE
+			if(!fake_steam)
+				at_edge = TRUE
+				fake_steam = new(turf_to_spread)
+			fake_steam.stage_up(spread_stage)
+
+			if(!at_edge)
+				for(var/turf/open/open_turf as anything in turf_to_spread.atmos_adjacent_turfs)
+					if(!(open_turf in turfs_affected))
+						new_spread_list += open_turf
+						turfs_affected += open_turf
+
+		turfs_to_spread = new_spread_list
+		spread_stage--
+
+// Radial menu for the deployed model's function controls
+/obj/structure/bed/borg_action_pacifier/proc/check_alt_clicked_radial(datum/source, mob/living/clicker)
+	SIGNAL_HANDLER
+
+	if(!istype(clicker))
+		return
+	. = COMPONENT_CANCEL_CLICK_ALT
+	INVOKE_ASYNC(src, .proc/alt_clicked_radial, clicker)
+
+/obj/structure/bed/borg_action_pacifier/proc/alt_clicked_radial(mob/living/clicker)
 	var/icon/radial_indicator = 'modular_skyrat/modules/deployables/icons/deployable_indicator.dmi'
 	var/list/choices = list()
 
@@ -156,22 +219,22 @@
 /obj/structure/bed/borg_action_pacifier/proc/set_mode(mob/living/clicker, choice)
 	switch(choice)
 		if(LOCK)
-			balloon_alert_to_viewers("Locked!")
+			balloon_alert_to_viewers("locked")
 			lock()
 		if(UNLOCK)
-			balloon_alert_to_viewers("Unlocked!")
+			balloon_alert_to_viewers("unlocked")
 			unlock()
 		if(STOP_MODE)
-			balloon_alert(clicker, "Stopped [enabled_function]ing.")
+			balloon_alert(clicker, "stopped [enabled_function]ing")
 			stop_mode()
 		if(DRAIN_MODE)
-			balloon_alert(clicker, "Draining from [buckled_cyborg]...")
+			balloon_alert(clicker, "draining...")
 			drain_mode()
 		if(PUMP_MODE)
-			balloon_alert(clicker, "Pumping to [buckled_cyborg]...")
+			balloon_alert(clicker, "pumping...")
 			pump_mode()
 		if(FOLD)
-			balloon_alert(clicker, "Folding up...")
+			balloon_alert(clicker, "folding up...")
 			undeploy(clicker)
 
 /obj/structure/bed/borg_action_pacifier/proc/check_menu(mob/user)
@@ -181,13 +244,16 @@
 		return FALSE
 	return TRUE
 
-// Functions
+// Functions for the radial choices
 /obj/structure/bed/borg_action_pacifier/process()
 	if(!buckled_cyborg)
 		return
 
+	// The cyborg's current cell
 	var/obj/item/stock_parts/cell/cell = buckled_cyborg.cell
-	var/transfer_inc = 500
+	// How many power units per tick are transferred
+	var/transfer_inc = 1000
+
 	switch(enabled_function)
 		if(DRAIN_MODE)
 			if(cell.charge > 0)
@@ -237,7 +303,14 @@
 	playsound(src, 'modular_skyrat/master_files/sound/effects/robot_lock.ogg', 50, TRUE, falloff_exponent = 10)
 	locked = TRUE
 	buckled_cyborg.SetLockdown(TRUE)
+
+	// Emergency lights which are otherwise shamefully unused
 	buckled_cyborg.cut_overlay(buckled_cyborg.eye_lights)
+	buckled_cyborg.eye_lights = new()
+	buckled_cyborg.eye_lights.icon_state = "[buckled_cyborg.model.cyborg_base_icon]_e_r"
+	buckled_cyborg.eye_lights.plane = ABOVE_LIGHTING_PLANE
+	buckled_cyborg.eye_lights.icon = buckled_cyborg.icon
+	buckled_cyborg.add_overlay(buckled_cyborg.eye_lights)
 
 /obj/structure/bed/borg_action_pacifier/proc/unlock()
 	locked = FALSE
@@ -249,7 +322,7 @@
 
 	if(do_after(clicker, 3 SECONDS))
 		undeployed = new /obj/structure/bed/borg_action_pacifier/undeployed(get_turf(src))
-		undeployed.balloon_alert_to_viewers("Reset!")
+		undeployed.balloon_alert_to_viewers("reset")
 		undeployed.power_storage = power_storage
 		qdel(src)
 	else
@@ -261,7 +334,7 @@
 	if(!deployed)
 		return
 	if(!iscyborg(target))
-		balloon_alert_to_viewers("Only cyborgs can be buckled!")
+		balloon_alert_to_viewers("can't be buckled!")
 		return
 	..()
 
@@ -299,7 +372,7 @@
 				if(!do_after(user, 6 SECONDS))
 					return
 			else
-				user.visible_message(span_notice("[user] begins to unbuckle [buckled_mob] from [src]."),\
+				user.visible_message(span_notice("You begin to unbuckle [buckled_mob] from [src]."),\
 					span_notice("[user] begins to unbuckle you from [src]."))
 				if(!do_after(user, 3 SECONDS))
 					return
@@ -342,6 +415,7 @@
 	. = ..()
 	if(has_gravity())
 		playsound(src, 'sound/effects/roll.ogg', 50, TRUE)
+
 
 #undef FOLD
 
