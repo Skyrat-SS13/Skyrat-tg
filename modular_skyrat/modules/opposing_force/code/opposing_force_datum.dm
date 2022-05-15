@@ -555,7 +555,13 @@
 
 	SEND_SOUND(mind_reference.current, sound('modular_skyrat/modules/opposing_force/sound/approved.ogg'))
 	add_log(approver.ckey, "Approved application")
-	to_chat(mind_reference.current, examine_block(span_greentext("Your OPFOR application has been approved by [approver ? get_admin_ckey(approver) : "the OPFOR subsystem"]!")))
+	var/objective_denied = FALSE
+	for(var/datum/opposing_force_objective/opfor_obj as anything in objectives)
+		if(!(opfor_obj.status == OPFOR_OBJECTIVE_STATUS_DENIED))
+			continue
+		objective_denied = TRUE
+		break
+	to_chat(mind_reference.current, examine_block(span_greentext("Your OPFOR application has [objective_denied ? "partially approved (please view your OPFOR for details)" : "fullly approved"] by [approver ? get_admin_ckey(approver) : "the OPFOR subsystem"]!")))
 	send_system_message("[approver ? get_admin_ckey(approver) : "The OPFOR subsystem"] has approved the application")
 	send_admins_opfor_message("[span_green("APPROVED")]: [ADMIN_LOOKUPFLW(approver)] has approved [ckey]'s application")
 	ticket_counter_add_handled(approver.key, 1)
