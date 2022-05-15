@@ -60,3 +60,9 @@
 	item_type = /obj/item/weaponcrafting/gunkit/hellgun
 	lower_cost = CARGO_CRATE_VALUE * 5
 	upper_cost = CARGO_CRATE_VALUE * 8
+
+/datum/armament_entry/cargo_gun/allstar/gunkit/beam_rifle
+	item_type = /obj/item/weaponcrafting/gunkit/beam_rifle
+	lower_cost = CARGO_CRATE_VALUE * 6
+	upper_cost = CARGO_CRATE_VALUE * 9
+	interest_required = PASSED_INTEREST
