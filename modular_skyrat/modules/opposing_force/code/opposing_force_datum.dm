@@ -684,11 +684,13 @@
 	opposing_force_objective.denied_reason = deny_reason
 	add_log(user.ckey, "Denied objective([opposing_force_objective.title]) WITH REASON: [deny_reason]")
 	send_system_message("[user ? get_admin_ckey(user) : "The OPFOR subsystem"] has denied objective '[opposing_force_objective.title]' with the reason '[deny_reason]'")
+	to_chat(mind_reference?.current, span_warning("Your OPFOR objective [span_bold("[opposing_force_objective.title]")] has been denied."))
 
 /datum/opposing_force/proc/approve_objective(mob/user, datum/opposing_force_objective/opposing_force_objective)
 	opposing_force_objective.status = OPFOR_OBJECTIVE_STATUS_APPROVED
 	add_log(user.ckey, "Approved objective([opposing_force_objective.title])")
 	send_system_message("[user ? get_admin_ckey(user) : "The OPFOR subsystem"] has approved objective '[opposing_force_objective.title]'")
+	to_chat(mind_reference?.current, span_warning("Your OPFOR objective [span_bold("[opposing_force_objective.title]")] has been approved."))
 
 /**
  * System procs
