@@ -128,3 +128,65 @@
 	color_src = USE_ONE_COLOR
 	extra = TRUE
 	extra_color_src = MUTCOLORS2
+
+/datum/sprite_accessory/taur/tail
+	name = "Big Lizard Tail"
+	icon_state = "bigliz"
+	taur_mode = NONE
+	alt_taur_mode = NONE
+	hide_legs = FALSE
+	color_src = USE_ONE_COLOR
+	extra = TRUE
+	extra_color_src = MUTCOLORS2
+
+/datum/sprite_accessory/taur/tail/shade
+	name = "Shade"
+	icon_state = "shadekin"
+
+/datum/sprite_accessory/taur/tail/shadelong
+	name = "Long Shade"
+	icon_state = "shadekinlong"
+	extra = FALSE
+
+/datum/sprite_accessory/taur/shadelonger
+	name = "Longer Shade"
+	icon_state = "shadekinlong2"
+
+/datum/sprite_accessory/taur/chinesedragon
+	name = "Chinese Dragon"
+	icon_state = "noodle"
+	taur_mode = STYLE_TAUR_PAW
+	color_src = USE_ONE_COLOR
+	extra = TRUE
+	extra2 = TRUE
+	extra_color_src = MUTCOLORS2
+	extra2_color_src = MUTCOLORS3
+	hide_legs = TRUE
+
+/datum/sprite_accessory/taur/tentacle2
+	name = "Tentacle Alt"
+	icon_state = "tentaclealt"
+	taur_mode = STYLE_TAUR_SNAKE
+	color_src = USE_ONE_COLOR
+	hide_legs = TRUE
+
+/datum/sprite_accessory/taur/slug
+	name = "Slug"
+	icon_state = "slug"
+	taur_mode = STYLE_TAUR_SNAKE
+	color_src = USE_ONE_COLOR
+	hide_legs = TRUE
+
+/datum/sprite_accessory/taur/wasp
+	name = "Wasp"
+	icon_state = "wasp"
+	color_src = USE_ONE_COLOR
+	extra = TRUE
+	extra_color_src = MUTCOLORS2
+	hide_legs = TRUE
+
+/datum/sprite_accessory/taur/mantis
+	name = "Mantis"
+	icon_state = "mantis"
+	color_src = USE_ONE_COLOR
+	hide_legs = TRUE
