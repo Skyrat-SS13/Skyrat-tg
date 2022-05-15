@@ -200,6 +200,28 @@
 	if(has_gun_safety)
 		. += "<span>The safety is [safety ? "<font color='#00ff15'>ON</font>" : "<font color='#ff0000'>OFF</font>"].</span>"
 
+	switch(company_flag)
+		if(COMPANY_CANTALAN)
+			. += "<br>It has <b>[span_purple("Cantalan Federal Arms")]</b> etched into the grip."
+		if(COMPANY_ARMADYNE)
+			. += "<br>It has <b>[span_red("Armadyne Corporation")]</b> etched into the barrel."
+		if(COMPANY_SCARBOROUGH)
+			. += "<br>It has <b>[span_orange("Scarborough Arms")]</b> stamped onto the grip."
+		if(COMPANY_BOLT)
+			. += "<br>It has <b>[span_yellow("Bolt Fabrications")]</b> stamped onto the reciever."
+		if(COMPANY_OLDARMS)
+			. += "<br>It has <b><i>[span_red("Armadyne Oldarms")]</i></b> etched into the barrel."
+		if(COMPANY_IZHEVSK)
+			. += "<br>It has <b>[span_brown("Izhevsk Coalition")]</b> cut in above the magwell."
+		if(COMPANY_NANOTRASEN)
+			. += "<br>It has <b>[span_blue("Nanotrasen Armories")]</b> etched into the reciever."
+		if(COMPANY_ALLSTAR)
+			. += "<br>It has <b>[span_red("Allstar Lasers Inc.")]</b> stamped on the front grip."
+		if(COMPANY_MICRON)
+			. += "<br>It has <b>[span_cyan("Micron Control Sys.")]</b> cut in above the cell slot."
+		if(COMPANY_INTERDYNE)
+			. += "<br>It has <b>[span_cyan("Interdyne Pharmaceuticals")]</b> stamped onto the barrel."
+
 /obj/item/gun/proc/fire_select()
 	var/mob/living/carbon/human/user = usr
 
@@ -788,30 +810,6 @@
 //Happens before the actual projectile creation
 /obj/item/gun/proc/before_firing(atom/target, mob/user)
 	return
-
-/obj/item/gun/examine_more(mob/user)
-	. = ..()
-	switch(company_flag)
-		if(COMPANY_CANTALAN)
-			. += "<br>It has <b>[span_purple("Cantalan Federal Arms")]</b> etched into the grip."
-		if(COMPANY_ARMADYNE)
-			. += "<br>It has <b>[span_red("Armadyne Corporation")]</b> etched into the barrel."
-		if(COMPANY_SCARBOROUGH)
-			. += "<br>It has <b>[span_orange("Scarborough Arms")]</b> stamped onto the grip."
-		if(COMPANY_BOLT)
-			. += "<br>It has <b>[span_yellow("Bolt Fabrications")]</b> stamped onto the reciever."
-		if(COMPANY_OLDARMS)
-			. += "<br>It has <b><i>[span_red("Armadyne Oldarms")]</i></b> etched into the barrel."
-		if(COMPANY_IZHEVSK)
-			. += "<br>It has <b>[span_brown("Izhevsk Coalition")]</b> cut in above the magwell."
-		if(COMPANY_NANOTRASEN)
-			. += "<br>It has <b>[span_blue("Nanotrasen Armories")]</b> etched into the reciever."
-		if(COMPANY_ALLSTAR)
-			. += "<br>It has <b>[span_red("Allstar Lasers Inc.")]</b> stamped on the front grip."
-		if(COMPANY_MICRON)
-			. += "<br>It has <b>[span_cyan("Micron Control Sys.")]</b> cut in above the cell slot."
-		if(COMPANY_INTERDYNE)
-			. += "<br>It has <b>[span_cyan("Interdyne Pharmaceuticals")]</b> stamped onto the barrel."
 
 /obj/item/gun/emag_act(mob/user, obj/item/card/emag/emag_card)
 	. = ..()
