@@ -447,3 +447,28 @@
 /datum/sprite_accessory/tails/mammal/wagging/chameleon
 	name = "Chameleon Tail"
 	icon_state = "chameleon"
+
+/datum/sprite_accessory/tails/mammal/wagging/big
+	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/tails_big.dmi'
+	dimension_x = 64
+	center = TRUE
+
+/datum/sprite_accessory/tails/mammal/wagging/big/liztail
+	name = "Big Lizard Tail"
+	icon_state = "bigliz_large"
+	color_src = USE_MATRIXED_COLORS
+
+/datum/sprite_accessory/tails/mammal/wagging/big/shadetail
+	name = "Shade"
+	icon_state = "shadekin_large"
+	color_src = USE_MATRIXED_COLORS
+
+/datum/sprite_accessory/tails/mammal/wagging/big/shadelong
+	name = "Long Shade"
+	icon_state = "shadekinlong_large"
+	color_src = USE_MATRIXED_COLORS
+
+/datum/sprite_accessory/tails/mammal/wagging/big/shadelonger
+	name = "Longer Shade"
+	icon_state = "shadekinlong2_large"
+	color_src = USE_MATRIXED_COLORS

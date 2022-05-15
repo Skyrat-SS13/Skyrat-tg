@@ -180,9 +180,9 @@
 	name = "Curved Rabbit Ears (Large)"
 	icon_state = "rabbit_large"
 
-/datum/sprite_accessory/ears/mutant/big/sandfox
-	name = "Sandfox"
-	icon_state = "sandfox"
+/datum/sprite_accessory/ears/mutant/big/sandfox_large
+	name = "Sandfox (Large)"
+	icon_state = "sandfox_large"
 
 /datum/sprite_accessory/ears/mutant/pede
 	name = "Scolipede"
@@ -331,11 +331,6 @@
 	icon_state = "mouse"
 	color_src = USE_ONE_COLOR
 
-/datum/sprite_accessory/ears/mutant/mouse
-	name = "Mouse"
-	icon_state = "mouse"
-	color_src = USE_ONE_COLOR
-
 /datum/sprite_accessory/ears/mutant/elf/wide
 	name = "Wide Elf"
 	icon_state = "elfwide"
@@ -347,7 +342,3 @@
 /datum/sprite_accessory/ears/mutant/elf/longer
 	name = "Longer Elf"
 	icon_state = "elflonger"
-
-/datum/sprite_accessory/ears/mutant/big/sandfox
-	name = "Sandfox"
-	icon_state = "sandfox"
