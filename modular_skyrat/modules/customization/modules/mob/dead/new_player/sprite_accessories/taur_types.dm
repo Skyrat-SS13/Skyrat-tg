@@ -151,13 +151,9 @@
 /datum/sprite_accessory/taur/wasp
 	name = "Wasp"
 	icon_state = "wasp"
-	color_src = USE_ONE_COLOR
-	extra = TRUE
-	extra_color_src = MUTCOLORS2
-	hide_legs = TRUE
-
+	taur_mode = STYLE_TAUR_PAW
 /datum/sprite_accessory/taur/mantis
 	name = "Mantis"
 	icon_state = "mantis"
 	color_src = USE_ONE_COLOR
-	hide_legs = TRUE
+	taur_mode = STYLE_TAUR_PAW
