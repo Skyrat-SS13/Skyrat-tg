@@ -21,6 +21,7 @@
 		return
 
 	if(damaged_clothes)
+<<<<<<< HEAD
 		//SKYRAT EDIT CHANGE BEGIN
 		//. += mutable_appearance('icons/effects/item_damage.dmi', "damaged[blood_overlay_type]") //ORIGINAL
 		var/damagefile2use = (mutant_styles & STYLE_TAUR_ALL) ? 'modular_skyrat/master_files/icons/mob/64x32_item_damage.dmi' : 'icons/effects/item_damage.dmi'
@@ -32,6 +33,11 @@
 		var/bloodfile2use = (mutant_styles & STYLE_TAUR_ALL) ? 'modular_skyrat/master_files/icons/mob/64x32_blood.dmi' : 'icons/effects/blood.dmi'
 		. += mutable_appearance(bloodfile2use, "[blood_overlay_type]blood")
 		//SKYRAT EDIT CHANGE END
+=======
+		. += mutable_appearance('icons/effects/item_damage.dmi', "damaged[blood_overlay_type]")
+	if(GET_ATOM_BLOOD_DNA_LENGTH(src))
+		. += mutable_appearance('icons/effects/blood.dmi', "[blood_overlay_type]blood")
+>>>>>>> a3add376188 (Refactors the forensics component into a datum (#66809))
 
 	var/mob/living/carbon/human/M = loc
 	if(!ishuman(M) || !M.w_uniform)
