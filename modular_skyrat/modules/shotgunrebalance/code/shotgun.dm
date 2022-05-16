@@ -3,7 +3,7 @@
 	var/tile_dropoff_s = 0.25 */
 
 /obj/item/ammo_casing/shotgun
-	custom_materials = list(/datum/material/iron=100)
+	custom_materials = list(/datum/material/iron=500) //We will be using this to prefent refund scamming mats
 
 /obj/item/ammo_casing/shotgun/buckshot
 	name = "buckshot shell"
