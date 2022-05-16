@@ -2,7 +2,7 @@
 
 /datum/techweb_node/shotgunnery
 	id = "shotgunnery"
-	display_name = "Shotshell Delivery Production"
+	display_name = "Shotshell Basics"
 	description = "Wait a second this is not research, this is just how to manufacture shotshells more optimized."
 	prereq_ids = list("weaponry")
 	design_ids = list(

@@ -232,18 +232,18 @@
 	desc = "A 14 gauge  buckshot shell."
 	icon_state = "gshell"
 	projectile_type = /obj/projectile/bullet/pellet/s14gauge_buckshot
-	pellets = 5
-	variance = 25
+	pellets = 7
+	variance = 15
 
 /obj/item/ammo_casing/s14gauge/rubbershot
 	name = "14 gauge rubber shot"
 	desc = "A shotgun casing filled with densely-packed rubber balls, used to incapacitate crowds from a distance."
 	icon_state = "bshell"
 	projectile_type = /obj/projectile/bullet/pellet/s14gauge_rubbershot
-	pellets = 5
-	variance = 25
+	pellets = 7
+	variance = 15
 	custom_materials = list(/datum/material/iron=4000)
-	harmful = FALSE //SKYRAT EDIT ADDITION //What? This is our own file.
+	harmful = FALSE //SKYRAT EDIT ADDITION //What? This is our own file. //What is this a chatroom?
 
 /obj/item/ammo_casing/s14gauge/stunslug
 	name = "14 gauge taser slug"
