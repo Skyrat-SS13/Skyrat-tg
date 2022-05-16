@@ -2888,7 +2888,7 @@
 /obj/machinery/door/airlock/maintenance_hatch{
 	name = "Medbay Maintenance"
 	},
-/obj/effect/mapping_helpers/airlock/access/any/medical/maintenance,
+/obj/effect/mapping_helpers/airlock/access/all/medical/psychology,
 /turf/open/floor/plating,
 /area/station/maintenance/department/science/upper)
 "azu" = (
@@ -9584,7 +9584,7 @@
 /obj/machinery/door/airlock/maintenance_hatch{
 	name = "Medbay Maintenance"
 	},
-/obj/effect/mapping_helpers/airlock/access/any/medical/maintenance,
+/obj/effect/mapping_helpers/airlock/access/all/medical/surgery,
 /turf/open/floor/plating,
 /area/station/maintenance/abandon_surgery)
 "cKB" = (
@@ -12825,7 +12825,7 @@
 /obj/machinery/door/airlock/maintenance_hatch{
 	name = "Science Maintenance"
 	},
-/obj/effect/mapping_helpers/airlock/access/any/science/maintenance,
+/obj/effect/mapping_helpers/airlock/access/all/science/general,
 /turf/open/floor/plating,
 /area/station/maintenance/department/science/central)
 "dOk" = (
@@ -14934,11 +14934,11 @@
 /area/station/science/explab)
 "eEw" = (
 /obj/machinery/door/airlock/maintenance_hatch{
-	name = "Science Maintenance"
+	name = "Medbay Maintenance"
 	},
-/obj/effect/mapping_helpers/airlock/access/all/science/general,
+/obj/effect/mapping_helpers/airlock/access/all/medical/general,
 /turf/open/floor/plating,
-/area/station/maintenance/aft/upper)
+/area/station/maintenance/department/medical/central)
 "eEF" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cable,
@@ -23449,7 +23449,7 @@
 /obj/machinery/door/airlock/maintenance_hatch{
 	name = "Ward Maintenance"
 	},
-/obj/effect/mapping_helpers/airlock/access/any/medical/maintenance,
+/obj/effect/mapping_helpers/airlock/access/all/medical/psychology,
 /turf/open/floor/plating,
 /area/station/medical/aslyum)
 "hGt" = (
@@ -24856,12 +24856,12 @@
 /area/station/commons/toilet/restrooms)
 "iik" = (
 /obj/machinery/door/airlock/research/glass{
-	name = "Xenobiology Kill Room";
-	req_access_txt = "47"
+	name = "Xenobiology Kill Room"
 	},
 /obj/effect/turf_decal/stripes{
 	dir = 8
 	},
+/obj/effect/mapping_helpers/airlock/access/all/science/xenobio,
 /turf/open/floor/iron/freezer,
 /area/station/science/xenobiology)
 "iio" = (
@@ -27687,7 +27687,7 @@
 	name = "Medbay Maintenance"
 	},
 /obj/structure/cable,
-/obj/effect/mapping_helpers/airlock/access/any/medical/maintenance,
+/obj/effect/mapping_helpers/airlock/access/all/medical/chemistry,
 /turf/open/floor/plating,
 /area/station/maintenance/department/science/upper)
 "jbB" = (
@@ -29939,7 +29939,7 @@
 /obj/machinery/door/airlock/maintenance_hatch{
 	name = "Medbay Maintenance"
 	},
-/obj/effect/mapping_helpers/airlock/access/any/medical/maintenance,
+/obj/effect/mapping_helpers/airlock/access/all/medical/general,
 /turf/open/floor/plating,
 /area/station/maintenance/department/medical)
 "jSe" = (
@@ -33735,7 +33735,7 @@
 /obj/machinery/door/airlock/maintenance_hatch{
 	name = "Medbay Maintenance"
 	},
-/obj/effect/mapping_helpers/airlock/access/any/medical/maintenance,
+/obj/effect/mapping_helpers/airlock/access/all/medical/general,
 /turf/open/floor/plating,
 /area/station/maintenance/department/medical/central)
 "llO" = (
@@ -40278,7 +40278,7 @@
 /obj/machinery/door/airlock/maintenance_hatch{
 	name = "Ward Maintenance"
 	},
-/obj/effect/mapping_helpers/airlock/access/any/medical/maintenance,
+/obj/effect/mapping_helpers/airlock/access/all/medical/psychology,
 /turf/open/floor/plating,
 /area/station/maintenance/department/medical)
 "nvr" = (
@@ -42073,7 +42073,7 @@
 	name = "Science Maintenance"
 	},
 /obj/structure/cable,
-/obj/effect/mapping_helpers/airlock/access/any/science/maintenance,
+/obj/effect/mapping_helpers/airlock/access/all/science/general,
 /turf/open/floor/plating,
 /area/station/maintenance/department/science/central)
 "obM" = (
@@ -60001,6 +60001,13 @@
 /obj/effect/turf_decal/bot,
 /turf/open/floor/iron/dark,
 /area/station/hallway/primary/upper)
+"upH" = (
+/obj/machinery/door/airlock/maintenance_hatch{
+	name = "Science Maintenance"
+	},
+/obj/effect/mapping_helpers/airlock/access/all/science/general,
+/turf/open/floor/plating,
+/area/station/maintenance/aft/upper)
 "upM" = (
 /turf/open/floor/iron/white,
 /area/station/science/genetics)
@@ -97848,7 +97855,7 @@ ndm
 siE
 tbx
 siE
-eEw
+upH
 urm
 urm
 yic
@@ -114241,7 +114248,7 @@ nAP
 qOS
 qOS
 qOS
-dEH
+eEw
 qOS
 qOS
 qOS
