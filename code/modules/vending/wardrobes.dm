@@ -15,28 +15,7 @@
 	icon_state = "secdrobe"
 	product_ads = "Beat perps in style!;It's red so you can't see the blood!;You have the right to be fashionable!;Now you can be the fashion police you always wanted to be!"
 	vend_reply = "Thank you for using the SecDrobe!"
-<<<<<<< HEAD
 	/* SKYRAT EDIT - LISTS OVERRIDDEN IN 'modular_skyrat\modules\sec_haul\code\misc\vending.dm'
-	products = list(/obj/item/clothing/suit/hooded/wintercoat/security = 3,
-					/obj/item/storage/backpack/security = 3,
-					/obj/item/storage/backpack/satchel/sec = 3,
-					/obj/item/storage/backpack/duffelbag/sec = 3,
-					/obj/item/clothing/under/rank/security/officer = 3,
-					/obj/item/clothing/shoes/jackboots = 3,
-					/obj/item/clothing/head/beret/sec = 3,
-					/obj/item/clothing/head/soft/sec = 3,
-					/obj/item/clothing/mask/bandana/striped/security = 3,
-					/obj/item/clothing/gloves/color/black = 3,
-					/obj/item/clothing/under/rank/security/officer/skirt = 3,
-					/obj/item/clothing/under/rank/security/officer/grey = 3,
-					/obj/item/clothing/under/pants/khaki = 3,
-					/obj/item/clothing/under/rank/security/officer/blueshirt = 3)
-	premium = list(/obj/item/clothing/under/rank/security/officer/formal = 3,
-					/obj/item/clothing/suit/security/officer = 3,
-					/obj/item/clothing/head/beret/sec/navyofficer = 3)
-	*/
-
-=======
 	products = list(
 		/obj/item/clothing/suit/hooded/wintercoat/security = 3,
 		/obj/item/storage/backpack/security = 3,
@@ -58,7 +37,7 @@
 		/obj/item/clothing/suit/security/officer = 3,
 		/obj/item/clothing/head/beret/sec/navyofficer = 3,
 		)
->>>>>>> ac2b7a7be58 (Clean some small details on most vending machine product lists. (#66934))
+	*/
 	refill_canister = /obj/item/vending_refill/wardrobe/sec_wardrobe
 	payment_department = ACCOUNT_SEC
 	light_color = COLOR_MOSTLY_PURE_RED
