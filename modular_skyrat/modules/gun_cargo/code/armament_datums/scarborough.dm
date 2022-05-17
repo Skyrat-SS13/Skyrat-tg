@@ -52,8 +52,8 @@
 
 /datum/armament_entry/cargo_gun/scarborough/part/suppressor
 	item_type = /obj/item/suppressor
-	lower_cost = CARGO_CRATE_VALUE * 10
-	upper_cost = CARGO_CRATE_VALUE * 15
+	lower_cost = CARGO_CRATE_VALUE * 7 // Cheaper here because NT sells the same thing.
+	upper_cost = CARGO_CRATE_VALUE * 10
 
 /datum/armament_entry/cargo_gun/scarborough/ammo
 	subcategory = ARMAMENT_SUBCATEGORY_AMMO
