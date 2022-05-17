@@ -39,9 +39,9 @@
 	if(!user.canUseTopic(src, BE_CLOSE, NO_DEXTERITY, FALSE, TRUE))
 		return
 	if(length(contents))
-		var/obj/item/I = contents[1]
-		user.visible_message(span_notice("[user] takes [I] out of [src]."), span_notice("You take [I] out of [src]."))
-		user.put_in_hands(I)
+		var/obj/item/knife = contents[1]
+		user.visible_message(span_notice("[user] takes [knife] out of [src]."), span_notice("You take [knife] out of [src]."))
+		user.put_in_hands(knife)
 		update_appearance()
 	else
 		to_chat(user, span_warning("[src] is empty!"))
@@ -54,7 +54,7 @@
 		icon_state += "-knife"
 	return ..()
 
-  //obj/item/storage/belt/bowiesheath/PopulateContents()
+/obj/item/storage/belt/bowiesheath/PopulateContents()
 	new /obj/item/melee/knife/bowie(src)
 	update_appearance()
 
