@@ -33,12 +33,8 @@
 	materials = list(/datum/material/iron = 1000, /datum/material/glass = 500, /datum/material/plasma = 1500, /datum/material/uranium = 200)
 	build_path = /obj/item/weldingtool/experimental
 	category = list("Tool Designs")
-<<<<<<< HEAD
-	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE | DEPARTMENTAL_FLAG_ENGINEERING
-*/
-=======
 	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE | DEPARTMENT_BITFLAG_ENGINEERING
->>>>>>> 9ae3ef56a90 (Lathe taxes now checks departmental flags (#66896))
+*/
 
 /datum/design/rpd
 	name = "Rapid Pipe Dispenser (RPD)"
