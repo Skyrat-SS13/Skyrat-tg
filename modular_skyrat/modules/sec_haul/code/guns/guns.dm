@@ -727,7 +727,7 @@
 
 /obj/item/gun/ballistic/shotgun/m23
 	name = "\improper Model 23-37"
-	desc = "An outdated police shotgun sporting an eight-round tube."
+	desc = "A 14 gauge police shotgun sporting an eight-round tube and a choke."
 	icon_state = "riotshotgun"
 	inhand_icon_state = "shotgun"
 	mag_type = /obj/item/ammo_box/magazine/internal/shot/m23
@@ -737,8 +737,8 @@
 
 /obj/item/ammo_box/magazine/internal/shot/m23
 	name = "m23 shotgun internal magazine"
-	caliber = CALIBER_SHOTGUN
-	ammo_type = /obj/item/ammo_casing/shotgun/beanbag
+	caliber = CALIBER_14GAUGE
+	ammo_type = /obj/item/ammo_casing/s14gauge/rubbershot
 	max_ammo = 8
 
 /obj/item/gun/ballistic/shotgun/automatic/as2
