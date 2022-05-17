@@ -49,7 +49,6 @@
 	sharpness = NONE
 	embedding = null
 
-
 /obj/projectile/bullet/pellet/s14gauge
 	tile_dropoff = 0.3
 	tile_dropoff_s = 0.15
@@ -59,6 +58,14 @@
 	damage = 6
 	wound_bonus = 3
 	bare_wound_bonus = 3
+	wound_falloff_tile = -2.5 // low damage + additional dropoff will already curb wounding potential anything past point blank
+	weak_against_armour = TRUE
+
+/obj/projectile/bullet/pellet/s14gauge/buckshot/magnum
+	name = "magnum buckshot pellet"
+	damage = 9
+	wound_bonus = 4
+	bare_wound_bonus = 4
 	wound_falloff_tile = -2.5 // low damage + additional dropoff will already curb wounding potential anything past point blank
 	weak_against_armour = TRUE
 
