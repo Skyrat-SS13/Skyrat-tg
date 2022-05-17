@@ -5,7 +5,7 @@
 	name = "Bowie knife"
 	desc = "A frontiersman's classic, closer to a shortsword than a knife. It boasts a full-tanged build, a brass handguard and pommel, a wicked sharp point, and a large, heavy blade, It's almost everything you could want in a knife, besides portability."
 	icon = 'modular_skyrat/modules/knives/icons/bowie.dmi'
-	iconstate = 'bowie'
+	icon_state = 'bowie'
 	inhand_icon_state = 'bowiehand'
 	lefthand_file = 'modular_skyrat/modules/knives/icons/bowie_lefthand.dmi'
 	righthand_file = 'modular_skyrat/modules/knives/icons/bowie_righthand.dmi'
@@ -17,7 +17,7 @@
 	bare_wound_bonus = 20
 
   
- /obj/item/storage/bag/bowiesheath
+/obj/item/storage/bag/bowiesheath
 	name = "Bowie knife sheath"
 	desc = "A dressed-up leather sheath featuring a brass tip. It has a large pocket clip right in the center, for ease of carrying an otherwise burdensome knife."
 	icon = 'modular_skyrat/modules/knives/icons/bowie.dmi'
