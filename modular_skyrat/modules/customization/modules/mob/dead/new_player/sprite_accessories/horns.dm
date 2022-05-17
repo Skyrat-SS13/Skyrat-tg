@@ -60,3 +60,63 @@
 /datum/sprite_accessory/horns/broken_left
 	name = "Broken(left)"
 	icon_state = "lbroken"
+
+/datum/sprite_accessory/horns/dragon
+	name = "Dragon"
+	icon_state = "dragon"
+
+/datum/sprite_accessory/horns/lifted
+	name = "Lifted"
+	icon_state = "lifted"
+
+/datum/sprite_accessory/horns/curly
+	name = "Curly"
+	icon_state = "newcurly"
+
+/datum/sprite_accessory/horns/stabbers
+	name = "Stabbers"
+	icon_state = "stabbers"
+
+/datum/sprite_accessory/horns/upwards
+	name = "Upwards"
+	icon_state = "upwardshorns"
+
+/datum/sprite_accessory/horns/nubby
+	name = "Nubby"
+	icon_state = "cnubby"
+
+/datum/sprite_accessory/horns/herk
+	name = "Herk"
+	icon_state = "cherk"
+
+/datum/sprite_accessory/horns/bork
+	name = "Bork"
+	icon_state = "cbork"
+
+/datum/sprite_accessory/horns/bull
+	name = "Bull"
+	icon_state = "cbull"
+
+/datum/sprite_accessory/horns/ocean
+	name = "Ocean"
+	icon_state = "cocean"
+
+/datum/sprite_accessory/horns/bicarrot
+	name = "Bi-Carrot"
+	icon_state = "cbicarrot"
+
+/datum/sprite_accessory/horns/longcarrot
+	name = "Long Carrot"
+	icon_state = "clongcarrot"
+
+/datum/sprite_accessory/horns/shortcarrot
+	name = "Short Carrot"
+	icon_state = "cshortcarrot"
+
+/datum/sprite_accessory/horns/scorpion
+	name = "Scorpion"
+	icon_state = "cscorp"
+
+/datum/sprite_accessory/horns/chub
+	name = "Chubby"
+	icon_state = "chub"
