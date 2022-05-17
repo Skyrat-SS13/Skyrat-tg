@@ -123,7 +123,7 @@
 	materials = list(/datum/material/silver = 10000, /datum/material/gold = 10000, /datum/material/glass = 10000)
 	build_path = /obj/item/ammo_box/advanced/smartgun
 	category = list("Ammo")
-	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
+	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 
 /obj/item/ammo_box/advanced/smartgun
 	name = "5mm Shock-Rail box"
