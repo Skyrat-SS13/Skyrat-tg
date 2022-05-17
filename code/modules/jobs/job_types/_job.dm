@@ -132,13 +132,6 @@
 	if(!job_spawn_title)
 		job_spawn_title = title
 	// SKYRAT EDIT END
-
-/// Loads up map configs if necessary and returns job changes for this job.
-/datum/job/proc/get_map_changes()
-	var/string_type = "[type]"
-	var/list/splits = splittext(string_type, "/")
-	var/endpart = splits[splits.len]
-
 	var/list/job_changes = SSmapping.config.job_changes
 	if(!job_changes[title])
 		return TRUE
@@ -151,7 +144,6 @@
 		spawn_positions = job_positions_edits["spawn_positions"]
 	if(isnum(job_positions_edits["total_positions"]))
 		total_positions = job_positions_edits["total_positions"]
-
 
 /// Executes after the mob has been spawned in the map. Client might not be yet in the mob, and is thus a separate variable.
 /datum/job/proc/after_spawn(mob/living/spawned, client/player_client)
