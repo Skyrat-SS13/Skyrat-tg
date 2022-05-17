@@ -52,3 +52,6 @@
 
 /obj/item/gun/ballistic/rifle/boltaction/brand_new
 	company_flag = COMPANY_IZHEVSK
+
+/obj/item/melee/knife/bowie
+	company_flag = COMPANY_JARNS
