@@ -25,14 +25,6 @@
 		/obj/item/cardpack/series_one = 10,
 		/obj/item/cardpack/resin = 10,
 		/obj/item/storage/card_binder = 10,
-<<<<<<< HEAD
-		/obj/item/skillchip/basketweaving=2,
-		/obj/item/skillchip/bonsai=2,
-		/obj/item/skillchip/wine_taster=2,
-		/obj/item/skillchip/light_remover=2,
-		/obj/item/skillchip/useless_adapter=5,
-		/obj/item/razor=3,
-=======
 		/obj/item/skillchip/basketweaving = 2,
 		/obj/item/skillchip/bonsai = 2,
 		/obj/item/skillchip/wine_taster = 2,
@@ -40,7 +32,6 @@
 		/obj/item/skillchip/useless_adapter = 5,
 		/obj/item/dyespray = 3,
 		/obj/item/razor = 3,
->>>>>>> ac2b7a7be58 (Clean some small details on most vending machine product lists. (#66934))
 		/obj/item/canvas/nineteen_nineteen = 5,
 		/obj/item/canvas/twentythree_nineteen = 5,
 		/obj/item/canvas/twentythree_twentythree = 5,
