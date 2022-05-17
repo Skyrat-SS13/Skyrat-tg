@@ -1,7 +1,8 @@
 /* Read the main access_helpers.dm for more information on these mapping tools.
 TLDR:
-Any requires only ONE of the accesses for the door to be opened
-All requires ALL of the accesses for the door to be opened
+Any requires EITHER OR access defined on the ID
+All requires THAT specific access defined on the ID
+For mapping examples, look at /TG/s MetaStation
 */
 
 // Any
