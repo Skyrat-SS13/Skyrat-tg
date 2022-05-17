@@ -23,13 +23,8 @@
 	)
 	premium = list(
 		/obj/item/storage/belt/utility = 3,
-<<<<<<< HEAD
-		///obj/item/construction/rcd/loaded = 2, SKYRAT EDIT REMOVAL
-		/obj/item/storage/box/smart_metal_foam = 1
-=======
-		/obj/item/construction/rcd/loaded = 2,
+		///obj/item/construction/rcd/loaded = 2, // SKYRAT EDIT REMOVAL
 		/obj/item/storage/box/smart_metal_foam = 1,
->>>>>>> ac2b7a7be58 (Clean some small details on most vending machine product lists. (#66934))
 	)
 	refill_canister = /obj/item/vending_refill/engivend
 	default_price = PAYCHECK_CREW
