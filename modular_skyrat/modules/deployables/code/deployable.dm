@@ -39,7 +39,8 @@
 /obj/structure/bed/borg_action_pacifier/Destroy()
 	. = ..()
 	UnregisterSignal(src, COMSIG_CLICK_ALT)
-	unlock()
+	if(buckled_cyborg)
+		unlock()
 
 /obj/structure/bed/borg_action_pacifier/examine(mob/user)
 	. = ..()
@@ -147,7 +148,7 @@
 
 	var/turf/open/pos = get_turf(clicker)
 	var/vent_scale // A factor of how big the fake vapor will be
-	vent_scale = clamp((power_storage / (MAX_POWER / 6)), 0, 6)
+	vent_scale = (power_storage / (MAX_POWER / 6)) // Max tile-range of 6
 
 	if(istype(pos))
 		for(var/i in 1 to vent_scale)
