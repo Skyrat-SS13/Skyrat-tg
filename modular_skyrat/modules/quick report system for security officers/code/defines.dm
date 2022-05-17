@@ -1,0 +1,1 @@
+#define TRAIT_KNOW_SECURITY_REPORTS "know_security_reports"
