@@ -55,3 +55,9 @@
 
 /obj/item/melee/knife/bowie
 	company_flag = COMPANY_JARNS
+
+/obj/item/knife/combat/survival
+	company_flag = COMPANY_JARNS
+
+/obj/item/storage/belt/sabre/cargo
+	company_flag = COMPANY_JARNS
