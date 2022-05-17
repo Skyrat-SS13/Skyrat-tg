@@ -7,10 +7,12 @@
 #define DRAIN_MODE "drain"
 #define PUMP_MODE "pump"
 
+#define MAX_POWER 40000	// BS cell capacity, a potato battery would still outplay this
+
 ////
 //	The item in its functional state
 /obj/structure/bed/borg_action_pacifier
-	name = "Deployed B.A.P. unit"
+	name = "deployed B.A.P. unit"
 	desc = "An inactivated device to constrain silicons with."
 	icon = 'modular_skyrat/modules/deployables/icons/deployable.dmi'
 	icon_state = "up"
@@ -19,15 +21,15 @@
 	flags_1 = NODECONSTRUCT_1
 
 	bolts = FALSE
-	// The cyborg currently buckled to the BAP
+	/// The cyborg currently buckled to the BAP
 	var/mob/living/silicon/robot/buckled_cyborg
-	// If the BAP is deployed or not
+	/// If the BAP is deployed or not
 	var/deployed = TRUE
-	// Wether or not the machine is locking the cyborg
+	/// Wether or not the machine is locking the cyborg
 	var/locked = FALSE
-	// To distinguish if the machine is pumping or draining
+	/// To distinguish if the machine is pumping or draining
 	var/enabled_function = NONE
-	// Amount of power drained from the cyborg, which we are now storing
+	/// Amount of power drained from the cyborg, which we are now storing
 	var/power_storage = 0
 
 /obj/structure/bed/borg_action_pacifier/Initialize(mapload)
@@ -37,6 +39,7 @@
 /obj/structure/bed/borg_action_pacifier/Destroy()
 	. = ..()
 	UnregisterSignal(src, COMSIG_CLICK_ALT)
+	unlock()
 
 /obj/structure/bed/borg_action_pacifier/examine(mob/user)
 	. = ..()
@@ -45,14 +48,14 @@
 	if(enabled_function != NONE)
 		. += span_notice("It's [enabled_function]ing power...")
 	. += span_notice("It's currently holding [power_storage] units worth of charge.")
-	if(power_storage == 40000)	// BS cell capacity, a potato battery would still outplay this
+	if(power_storage == MAX_POWER)
 		. += span_warning("It cannot store any more power.")
 
 ////
 //	The grenade
 /obj/item/grenade/borg_action_pacifier_grenade
 	name = "B.A.P. grenade"
-	desc = "An inactivated device to constrain silicons with."
+	desc = "A deactivated device to restrain silicons with."
 	icon = 'modular_skyrat/modules/deployables/icons/deployable.dmi'
 	icon_state = "folded"
 	inhand_icon_state = "folded"
@@ -60,7 +63,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 
 	det_time = 3 SECONDS
-	// Amount of power drained from the cyborg, from when we were still deployed
+	/// Amount of power drained from the cyborg, from when we were still deployed
 	var/power_storage = 0
 
 /obj/item/grenade/borg_action_pacifier_grenade/Initialize(mapload)
@@ -76,18 +79,18 @@
 	if(!.)
 		return
 
-	var/obj/structure/bed/borg_action_pacifier/undeployed/deploying/deploying = new /obj/structure/bed/borg_action_pacifier/undeployed/deploying(get_turf(src.loc))
+	var/obj/structure/bed/borg_action_pacifier/undeployed/deploying/deploying = new (get_turf(src))
 	deploying.power_storage = power_storage
 	qdel(src)
 
 /obj/item/grenade/borg_action_pacifier_grenade/examine(mob/user)
 	. = ..()
 	. += span_notice("It's currently holding [power_storage] units worth of charge.")
-	if(power_storage == 40000)
+	if(power_storage == MAX_POWER)
 		. += span_warning("It cannot store any more power.")
 
 ////
-//	The state after popping out of the grenade
+//		// Subject to change
 /obj/structure/bed/borg_action_pacifier/undeployed/deploying
 	name = "Deploying B.A.P. unit"
 
@@ -106,21 +109,21 @@
 ////
 //	The item in its retrieval state
 /obj/structure/bed/borg_action_pacifier/undeployed
-	name = "Undeployed B.A.P. unit"
+	name = "undeployed B.A.P. unit"
 	icon_state = "down"
 	resistance_flags = NONE
 	deployed = FALSE
 
 /obj/structure/bed/borg_action_pacifier/undeployed/MouseDrop(over_object, src_location, over_location)
 	. = ..()
-	if(over_object == usr && Adjacent(usr))
+	if((over_object == usr) && Adjacent(usr))
 		if(!ishuman(usr) || !usr.canUseTopic(src, BE_CLOSE))
 			return FALSE
 		if(has_buckled_mobs() || deployed)
 			return FALSE
 
 		usr.visible_message(span_notice("[usr] collapses [src]."), span_notice("You collapse [src]."))
-		var/obj/item/grenade/borg_action_pacifier_grenade/BAPer = new /obj/item/grenade/borg_action_pacifier_grenade(get_turf(src))
+		var/obj/item/grenade/borg_action_pacifier_grenade/BAPer = new (get_turf(src))
 		usr.put_in_hands(BAPer)
 		BAPer.power_storage = power_storage
 		qdel(src)
@@ -139,18 +142,19 @@
 	INVOKE_ASYNC(src, .proc/alt_clicked_grenade, clicker)
 
 /obj/item/grenade/borg_action_pacifier_grenade/proc/alt_clicked_grenade(mob/living/clicker)
+	if(!power_storage || !clicker)
+		return
 
-	if(power_storage && clicker)
-		var/turf/open/pos = get_turf(clicker)
-		var/vent_scale // A factor of how big the fake vapor will be
-		vent_scale = clamp((power_storage / 4000), 0, 6)
+	var/turf/open/pos = get_turf(clicker)
+	var/vent_scale // A factor of how big the fake vapor will be
+	vent_scale = clamp((power_storage / (MAX_POWER / 6)), 0, 6)
 
-		if(istype(pos))
-			for(var/i in 1 to vent_scale)
-				ventilate_effect(pos, vent_scale)
-		clicker.visible_message(span_warning("[clicker] ventilates the power stored inside [src]..."))
-		playsound(src, 'sound/effects/spray.ogg', (vent_scale * 10), TRUE)
-		power_storage = 0
+	if(istype(pos))
+		for(var/i in 1 to vent_scale)
+			ventilate_effect(pos, vent_scale)
+	clicker.visible_message(span_warning("[clicker] ventilates the power stored inside [src]..."))
+	playsound(src, 'sound/effects/spray.ogg', (vent_scale * 10), TRUE)
+	power_storage = 0
 
 // Bong code for fake vapor
 /obj/item/grenade/borg_action_pacifier_grenade/proc/ventilate_effect(turf/open/location, vent_scale)
@@ -158,7 +162,7 @@
 	var/list/turfs_to_spread = list(location)
 	var/spread_stage = vent_scale
 	for(var/i in 1 to vent_scale)
-		if(!turfs_to_spread.len)
+		if(!length(turfs_to_spread))
 			break
 		var/list/new_spread_list = list()
 		for(var/turf/open/turf_to_spread as anything in turfs_to_spread)
@@ -173,9 +177,10 @@
 
 			if(!at_edge)
 				for(var/turf/open/open_turf as anything in turf_to_spread.atmos_adjacent_turfs)
-					if(!(open_turf in turfs_affected))
-						new_spread_list += open_turf
-						turfs_affected += open_turf
+					if(open_turf in turfs_affected)
+						continue
+					new_spread_list += open_turf
+					turfs_affected += open_turf
 
 		turfs_to_spread = new_spread_list
 		spread_stage--
@@ -249,30 +254,36 @@
 	if(!buckled_cyborg)
 		return
 
-	// The cyborg's current cell
+	/// The cyborg's current cell
 	var/obj/item/stock_parts/cell/cell = buckled_cyborg.cell
-	// How many power units per tick are transferred
+	/// How many power units per tick are transferred
 	var/transfer_inc = 1000
 
 	switch(enabled_function)
 		if(DRAIN_MODE)
 			if(cell.charge > 0)
 				drain_cell(cell, transfer_inc)
+
 			if(cell.charge < 0)
 				cell.charge = 0
 				stop_mode()
-			else if(power_storage > 40000)
-				power_storage = 40000
+
+			else if(power_storage > MAX_POWER)
+				power_storage = MAX_POWER
 				stop_mode()
+
 		if(PUMP_MODE)
 			if(power_storage > 0)
 				pump_cell(cell, transfer_inc)
+
 			if(power_storage < 0)
 				power_storage = 0
 				stop_mode()
+
 			else if(cell.charge > cell.maxcharge)
 				cell.charge = cell.maxcharge
 				stop_mode()
+
 		if(NONE)
 			return
 
@@ -318,13 +329,17 @@
 	buckled_cyborg.regenerate_icons()
 
 /obj/structure/bed/borg_action_pacifier/proc/undeploy(mob/living/clicker)
-	var/obj/structure/bed/borg_action_pacifier/undeployed/undeployed
+	if(!clicker)
+		return
 
 	if(do_after(clicker, 3 SECONDS))
+		var/obj/structure/bed/borg_action_pacifier/undeployed/undeployed
+
 		undeployed = new /obj/structure/bed/borg_action_pacifier/undeployed(get_turf(src))
 		undeployed.balloon_alert_to_viewers("reset")
 		undeployed.power_storage = power_storage
 		qdel(src)
+
 	else
 		return
 
@@ -339,13 +354,15 @@
 	..()
 
 /obj/structure/bed/borg_action_pacifier/user_buckle_mob(mob/living/target, mob/user, check_loc)
-	if(target)
-		if(target != user)
-			user.visible_message(span_warning("[user] starts buckling [target] to [src]!"))
-		else
-			target.visible_message(span_warning("[target] starts buckling [target.p_them()]self to [src]!"))
-			if(!do_after(target, 1.5 SECONDS)) // The added delay is to prevent accidental buckling
-				return
+	if(!target || !user)
+		return
+
+	if(target && (target != user))
+		user.visible_message(span_warning("[user] starts buckling [target] to [src]!"))
+	else
+		target.visible_message(span_warning("[target] starts buckling [target.p_them()]self to [src]!"))
+		if(!do_after(target, 1.5 SECONDS)) // The added delay is to prevent accidental buckling
+			return
 	..()
 
 /obj/structure/bed/borg_action_pacifier/post_buckle_mob(mob/living/target)
@@ -364,38 +381,37 @@
 	if(!(buckled_mob in buckled_mobs) || !user.CanReach(buckled_mob))
 		return
 
-	if(buckled_mob)
-		if(buckled_mob != user)
-			if(locked)
-				user.visible_message(span_notice("[user] begins to overwrite the lock to unbuckle [buckled_mob] from [src]."),\
-					span_notice("You begin to free [buckled_mob] from [src]."))
-				if(!do_after(user, 6 SECONDS))
-					return
-			else
-				user.visible_message(span_notice("You begin to unbuckle [buckled_mob] from [src]."),\
-					span_notice("[user] begins to unbuckle you from [src]."))
-				if(!do_after(user, 3 SECONDS))
-					return
-
+	if(buckled_mob && (buckled_mob != user))
+		if(locked)
+			user.visible_message(span_notice("[user] begins to overwrite the lock to unbuckle [buckled_mob] from [src]."),\
+				span_notice("You begin to free [buckled_mob] from [src]."))
+			if(!do_after(user, 6 SECONDS))
+				return
 		else
-			if(locked)
-				if(buckled_cyborg.low_power_mode)
-					to_chat(buckled_mob, span_notice("Without power, attempting to break free is hopeless..."))
-					return
-				buckled_mob.visible_message(span_notice("[buckled_mob] begins to break out of [buckled_mob.p_their()] restraints."),\
-					span_notice("You begin to free yourself from [src]."))
-				if(!do_after(buckled_mob, 20 SECONDS))
-					return
-			else
-				buckled_mob.visible_message(span_notice("[buckled_mob] begins to unbuckle [buckled_mob.p_them()]self from [src]."),\
-					span_notice("You begin to unbuckle yourself from [src]."))
-				if(!do_after(buckled_mob, 6 SECONDS))
-					return
+			user.visible_message(span_notice("You begin to unbuckle [buckled_mob] from [src]."),\
+				span_notice("You begin to unbuckle [buckled_mob] from [src]."))
+			if(!do_after(user, 3 SECONDS))
+				return
 
-		add_fingerprint(user)
-		if(isliving(buckled_mob.pulledby))
-			var/mob/living/living = buckled_mob.pulledby
-			living.set_pull_offsets(buckled_mob, living.grab_state)
+	else
+		if(locked)
+			if(buckled_cyborg.low_power_mode)
+				to_chat(buckled_mob, span_notice("Without power, attempting to break free is hopeless..."))
+				return
+			buckled_mob.visible_message(span_notice("[buckled_mob] begins to break out of [buckled_mob.p_their()] restraints."),\
+				span_notice("You begin to free yourself from [src]."))
+			if(!do_after(buckled_mob, 20 SECONDS))
+				return
+		else
+			buckled_mob.visible_message(span_notice("[buckled_mob] begins to unbuckle [buckled_mob.p_them()]self from [src]."),\
+				span_notice("You begin to unbuckle yourself from [src]."))
+			if(!do_after(buckled_mob, 6 SECONDS))
+				return
+
+	add_fingerprint(user)
+	if(isliving(buckled_mob.pulledby))
+		var/mob/living/living = buckled_mob.pulledby
+		living.set_pull_offsets(buckled_mob, living.grab_state)
 
 	var/mob/living/target = unbuckle_mob(buckled_mob, TRUE)
 	return target
@@ -425,3 +441,5 @@
 #undef STOP_MODE
 #undef DRAIN_MODE
 #undef PUMP_MODE
+
+#undef MAX_POWER
