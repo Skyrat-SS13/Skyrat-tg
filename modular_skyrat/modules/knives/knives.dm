@@ -52,9 +52,7 @@
 	inhand_icon_state = initial(inhand_icon_state)
 	worn_icon_state = initial(worn_icon_state)
 	if(contents.len)
-		icon_state += "2"
-		inhand_icon_state += "2"
-		worn_icon_state += "2"
+		icon_state += "-knife"
 	return ..()
 
   //obj/item/storage/belt/bowiesheath/PopulateContents()
