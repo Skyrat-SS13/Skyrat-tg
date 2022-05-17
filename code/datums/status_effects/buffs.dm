@@ -518,6 +518,11 @@
 	if(!length(blades))
 		return
 
+	if(HAS_TRAIT(source, TRAIT_BEING_BLADE_SHIELDED))
+		return
+
+	ADD_TRAIT(source, TRAIT_BEING_BLADE_SHIELDED, type)
+
 	var/obj/effect/floating_blade/to_remove = blades[1]
 
 	playsound(get_turf(source), 'sound/weapons/parry.ogg', 100, TRUE)
@@ -528,6 +533,8 @@
 	)
 
 	qdel(to_remove)
+
+	addtimer(TRAIT_CALLBACK_REMOVE(source, TRAIT_BEING_BLADE_SHIELDED, type), 1)
 
 	return SHIELD_BLOCK
 

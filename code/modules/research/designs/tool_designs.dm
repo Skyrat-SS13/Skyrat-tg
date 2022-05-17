@@ -64,7 +64,7 @@
 	materials = list(/datum/material/iron = 60000, /datum/material/glass = 5000)  // Costs the same as an RCD.
 	build_path = /obj/item/construction/plumbing/engineering
 	category = list("Tool Designs")
-	departmental_flags =  DEPARTMENTAL_FLAG_ENGINEERING
+	departmental_flags =  DEPARTMENT_BITFLAG_ENGINEERING
 //SKYRAT EDIT END//
 
 /datum/design/rcd_upgrade/frames

@@ -7,7 +7,7 @@
 	construction_time = 200
 	build_path = /obj/item/organ/cyberimp/arm/armblade
 	category = list("Misc", "Medical Designs")
-	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
+	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 
 /datum/design/cyberimp_hacker
 	name = "Hacking Hand Implant"
@@ -18,7 +18,7 @@
 	construction_time = 200
 	build_path = /obj/item/organ/cyberimp/arm/hacker
 	category = list("Misc", "Medical Designs")
-	departmental_flags = DEPARTMENTAL_FLAG_ENGINEERING
+	departmental_flags = DEPARTMENT_BITFLAG_ENGINEERING
 
 /datum/design/cyberimp_flash
 	name = "Photon Projector Implant"
@@ -29,7 +29,7 @@
 	construction_time = 200
 	build_path = /obj/item/organ/cyberimp/arm/flash
 	category = list("Misc", "Medical Designs")
-	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
+	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 
 /datum/design/cyberimp_botany
 	name = "Botany Arm Implant"
@@ -40,7 +40,7 @@
 	construction_time = 200
 	build_path = /obj/item/organ/cyberimp/arm/botany
 	category = list("Misc", "Medical Designs")
-	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL | DEPARTMENTAL_FLAG_SERVICE
+	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL | DEPARTMENT_BITFLAG_SERVICE
 
 /datum/design/cyberimp_nv
 	name = "Night Vision Eyes"
@@ -51,7 +51,7 @@
 	materials = list(/datum/material/iron = 600, /datum/material/glass = 600, /datum/material/silver = 600, /datum/material/gold = 600, /datum/material/uranium = 1000,)
 	build_path = /obj/item/organ/eyes/night_vision/cyber
 	category = list("Misc", "Medical Designs")
-	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
+	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/cyberimp_antisleep
 	name = "CNS Jumpstarter Implant"
@@ -62,7 +62,7 @@
 	materials = list(/datum/material/iron = 600, /datum/material/glass = 600, /datum/material/silver = 1000, /datum/material/gold = 500)
 	build_path = /obj/item/organ/cyberimp/brain/anti_sleep
 	category = list("Misc", "Medical Designs")
-	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
+	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/cyberimp_scanner
 	name = "Internal Medical Analyzer"
@@ -73,7 +73,7 @@
 	materials = list(/datum/material/iron = 5000, /datum/material/glass = 2500, /datum/material/silver = 2000, /datum/material/gold = 1500)
 	build_path = /obj/item/organ/cyberimp/chest/scanner
 	category = list("Misc", "Medical Designs")
-	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
+	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/cyberimp_janitor
 	name = "Janitor Arm Implant"
@@ -84,7 +84,7 @@
 	construction_time = 200
 	build_path = /obj/item/organ/cyberimp/arm/janitor
 	category = list("Misc", "Medical Designs")
-	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL | DEPARTMENTAL_FLAG_SERVICE
+	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL | DEPARTMENT_BITFLAG_SERVICE
 
 /datum/design/cyberimp_lighter
 	name = "Lighter Arm Implant"
@@ -95,4 +95,4 @@
 	construction_time = 100
 	build_path = /obj/item/organ/cyberimp/arm/lighter
 	category = list("Misc", "Medical Designs")
-	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL | DEPARTMENTAL_FLAG_SERVICE
+	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL | DEPARTMENT_BITFLAG_SERVICE

@@ -666,3 +666,149 @@
   - rscdel: Ruby removed from guncargo
   mazzinsanity:
   - rscadd: Adds a new audible *gnash emote which sounds like space carp bites.
+2022-05-13:
+  SkyratBot:
+  - bugfix: fixed dizziness causing hard crashes
+  - bugfix: Constable helmets no longer cause your hair to mysteriously disappear
+      when wearing one.
+2022-05-14:
+  Crumpaloo - Main Sprites, ErdinyoBarboza - Minor Sprite Fixes:
+  - rscadd: LubriCola, Welding Fizz are now available in Cola Vendors for synthetic
+      crew.
+  - rscadd: Synthanol Cans are available in BoozeOMat
+  - rscadd: Snailpeople take Mush Crush as their racial drink
+  - rscadd: Xeno Hybrids finally take abduction fruit as their racial drink
+  - rscadd: Anthros, Tajarans and Felinids now take Frisky Kitty as their racial
+  - code_imp: Only Tajarans and Felinids meow and nya when drinking catnip
+  - rscdel: Deleted unused skyrat milkshake code
+  - balance: Racial Drinks no longer make you puke your guts if you are not its preferred
+      race out. They instead taste good.
+  - imageadd: All Skyrat Drinks have been repsrited
+  - imageadd: Added sprites for Welding Fizz and LubriCola and Synthanol Soda Cans
+  - imagedel: Deleted skyrat milkshake sprites
+  - code_imp: Laid out groundwork for Skyrat Modular Soda Cans, New sodacans can be
+      added by using soda_cans/skyrat subtype.
+  Crumpaloo - Main Sprites, PestoVerde322 - Soda Cans, Vending Machines and Posters, ErdinyoBarboza - PR and Small Fixes:
+  - imageadd: All drinks and bottles have been resprited
+  ErdinyoBarboza:
+  - bugfix: MCR has finally updated their cell designs, allowing them to be loaded
+      while moving and overall load a lot faster
+  Guillaume Prata:
+  - bugfix: Surgery tools will now give silver back when recycled.
+  - balance: Tier 2 tools (Jaws of life/Laser scalpel/Experimental welder) are changed
+      from Small to Medium sized so now you can't carry 49 Jaws of life in your backpack.
+  - bugfix: Whistles are small now. Rejoice not having to carry a whistle that was
+      the size of a bucket while trying to be the referee for a match.
+  - qol: Removed Sutures/Ointment from the list of items you can hold in the exoslot
+      of your medical wintercoat as there is basically no reason for someone to carry
+      them on that slot and they kept getting placed there by the inventory shortcuts.
+  Jolly:
+  - rscadd: Added new areas to BlueShift (a lot, too many to count).
+  - rscadd: 'The following maintenance areas were added: Atmospherics maints, Departures
+      maints (near the escape PODS), salon and nightclub maints and many more.'
+  - rscadd: 'The following command areas were added: Captains kitchen and Dining rooms.'
+  - rscadd: The Asylum specific area and Tele Sci specific area were added.
+  - rscadd: BlueShifts maintenance has been made a lot dirtier. The bottom most layer
+      was also rusted more.
+  - rscdel: Removed the scrubber pipes for BlueShifts freezers (this functionality
+      was removed in a previous mirror).
+  - bugfix: 'Numerous wall-specific things on BlueShift to have been edited to fit
+      a more /TG/ standard (mapper lingo for: they''ve been var-edited where needed
+      OR directional variants have been used).'
+  - bugfix: Removed the random bit of open space at precisely 48, 181 on BlueShifts
+      upper most layer.
+  - bugfix: Some chairs on BlueShift have been properly rotated.
+  - bugfix: In BlueShifts diner, the corner booth has been replaced with an end booth.
+  - bugfix: Scrubber pipes and distro pipes randomly ending somewhere in BlueShifts
+      engines maints are now properly connected to the main network.
+  - bugfix: Blue Shifts atmospherics turbine interior airlock vent is now connected
+      to the main pipe network. The room can now be supplied with air.
+  - bugfix: Near station turf was applied to BlueShifts lowest grills and lattices.
+  - bugfix: Some of BlueShifts active turfs have been rectified. However, the Ordnance
+      Testing Area had their floor changed from indestructible to regular flooring.
+  - imageadd: Added icon turf icons for BlueShield and NT rep offices.
+  - imageadd: Added icon turf icons for the salon, pool, and cryopod areas.
+  - imageadd: Added icon turf icons for a slew of new areas.
+  Melbert:
+  - bugfix: Fixes some wonky vote formatting
+  - balance: Central Command's agency of supernatural structures have made it much
+      less likely for you to come across ancient altars
+  Paxilmaniac:
+  - rscadd: Sauna ovens now emit steam particles while they are on and emitting water
+      vapor
+  RatFromTheJungle:
+  - rscadd: NT Armories now carries suppressors, for all your indoor shooting needs.
+  SkyratBot:
+  - bugfix: Fixed several inconsistent or niche access requirements on TramStation
+  - qol: Replaced all access requirement vars on doors with mapping helpers on TramStation
+  - bugfix: Realigns the DeltaStation holodeck to fit universal templates
+  - bugfix: It is no longer possible to access cargo through maintenance without appropriate
+      access on MetaStation
+  - bugfix: On IceBoxStation, Ice Moon Ruins will no longer vent out all their atmospherics
+      out the top of the map, since they magically now have ceilings.
+  - rscadd: 'However, this dark magick to give Ice Moon Ruins ceilings come at a cost:
+      avalanches over certain chasms are now much more likely, and can decimate certain
+      infrastructure. Nanotrasen has ensured that anything vital shouldn''t be impacted
+      by this, but do expect to see certain "unmaintained" catwalk sections be swept
+      up in an avalanche of sorts.'
+  - bugfix: Cult's antag UI now works from the start, rather than having to close
+      and reopen the tab to see your objectives.
+  - bugfix: KiloStation maintenance airlock in EVA is properly named
+  - bugfix: Fix wizard modsuit not having antimagic protection
+  - bugfix: The new cult altar can't be spammed anymore.
+  - bugfix: The Captain's PDA now works, and their cartridge now spawns in their locker.
+  - bugfix: 'fix delimber anomaly from round removing you and other griefs remove:
+      delimber anomaly doesn''t change your organs anymore'
+  - balance: Mini-fridges can now hold slightly more things.
+  - bugfix: You can no longer use staff of storms to cheese the hell out of lavaland
+      bosses
+  Zonespace27:
+  - refactor: Split Black Mesa area into many smaller ones
+  fippe:
+  - bugfix: Botany and Service firelocks in Icebox moved around to stop fire alarm
+      spam
+  tf-4:
+  - bugfix: Joining sec no longer overrides your loadout with the default jumpsuit
+      in some cases
+  - bugfix: '"Move job to backpack" preference now indeed moves your job jumpsuit
+      to your backpack rather than deleting it.'
+2022-05-15:
+  SkyratBot:
+  - bugfix: Multiple orbiting blades will no longer be used to protect you from the
+      same attack in case you have multiple instances of the status effect
+  - balance: Hierophant trophy now deals damage that it was supposed to deal.
+  - qol: The bluespace gas sender can now be unwrenched in the same manner as a thermomachine.
+  - qol: The bluespace gas sender can now be turned on/off with ctrl-click.
+  - bugfix: suit_storage slot now shows the item it has equipped
+  - admin: Attack logs for stripping people and equipping items to them have been
+      reformatted to match all other attack logs, improving readability.
+  - bugfix: fixed the icon behaviour of the manual valve
+  - bugfix: If you ever chance upon Multi-Z Debug Station, rest assured that it now
+      uses the right kind of space.
+  - bugfix: Biogenerators don't take 1% of a power cell to grind a single melon
+  Zonespace27:
+  - bugfix: Readded baseturfs to black mesa
+2022-05-16:
+  SkyratBot:
+  - spellcheck: Boritos flavours have more flavour!
+2022-05-17:
+  PositiveEntropy, Azlan, Axietheaxolotl:
+  - imageadd: Resprites all the Engineering Jumpsuits and Jumpskirts!
+  - imageadd: Resprites the firesuit!
+  - imageadd: Resprites all the hard hats!
+  - imageadd: Resprites the insulated gloves and Chief Engineer gloves!
+  - imageadd: Resprites the hazard vest!
+  SkyratBot:
+  - bugfix: fixes broken admin ticket links
+  - balance: CPU, Sensor and Identify hardwares have all been removed from modular
+      PCs, this means AtmoZphere can run regardless of hardware, and running programs/updating
+      your PDA info, is no longer tied to hardware either.
+  - bugfix: Trying to fireman carry someone you can't fireman carry now properly makes
+      you not carry them permanently
+  - bugfix: Fixed the two primary traitor objectives calculating reputation incorrectly
+      at round end
+  - bugfix: Fixed the reputation value of objectives having a misplaced decimal point
+      in the round end report
+  - bugfix: Lightning bolt spell will give tesla shock immunity when granted by an
+      admin
+  - spellcheck: fixed an outdated quip about buying scipapers in the experiment status

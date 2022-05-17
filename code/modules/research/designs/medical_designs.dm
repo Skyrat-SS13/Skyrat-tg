@@ -237,7 +237,7 @@
 	materials = list(/datum/material/plastic = 2500)
 	build_path = /obj/item/clothing/suit/toggle/labcoat/hospitalgown
 	category = list("Medical Designs")
-	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL | DEPARTMENTAL_FLAG_SCIENCE	//SKYRAT EDIT ADDITION END
+	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL | DEPARTMENT_BITFLAG_SCIENCE	//SKYRAT EDIT ADDITION END
 
 /datum/design/laserscalpel
 	name = "Laser Scalpel"
