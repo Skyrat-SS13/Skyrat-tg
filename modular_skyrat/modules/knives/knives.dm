@@ -17,7 +17,7 @@
 	bare_wound_bonus = 20
 
   
-/obj/item/storage/bag/bowiesheath
+/obj/item/storage/belt/bowiesheath
 	name = "Bowie knife sheath"
 	desc = "A dressed-up leather sheath featuring a brass tip. It has a large pocket clip right in the center, for ease of carrying an otherwise burdensome knife."
 	icon = 'modular_skyrat/modules/knives/icons/bowie.dmi'
@@ -26,7 +26,7 @@
 	w_class = WEIGHT_CLASS_BULKY
 	resistance_flags = FLAMMABLE
 	
-/obj/item/storage/bag/bowiesheath/ComponentInitialize()
+/obj/item/storage/belt/bowiesheath/ComponentInitialize()
 	. = ..()
 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
 	STR.max_items = 1
@@ -35,23 +35,19 @@
 		/obj/item/melee/knife/bowie
 		))
 		
-/obj/item/storage/bag/bowiesheathexamine(mob/user)
-	. = ..()
-	if(length(contents))
-		. += span_notice("Alt-click it to quickly draw the blade.")
 
-/obj/item/storage/bag/bowiesheath/AltClick(mob/user)
+/obj/item/storage/belt/bowiesheath/AltClick(mob/user)
 	if(!user.canUseTopic(src, BE_CLOSE, NO_DEXTERITY, FALSE, TRUE))
 		return
 	if(length(contents))
-		var/obj/item/knife = contents[1]
+		var/obj/item/I = contents[1]
 		user.visible_message(span_notice("[user] takes [I] out of [src]."), span_notice("You take [I] out of [src]."))
 		user.put_in_hands(I)
 		update_appearance()
 	else
 		to_chat(user, span_warning("[src] is empty!"))
 
-/obj/item/storage/belt/sabre/update_icon_state()
+/obj/item/storage/belt/bowiesheath/update_icon_state()
 	icon_state = initial(inhand_icon_state)
 	inhand_icon_state = initial(inhand_icon_state)
 	worn_icon_state = initial(worn_icon_state)
@@ -61,7 +57,7 @@
 		worn_icon_state += "2"
 	return ..()
 
-  /obj/item/storage/bag/bowiesheath/PopulateContents()
+  //obj/item/storage/belt/bowiesheath/PopulateContents()
 	new /obj/item/melee/knife/bowie(src)
 	update_appearance()
 
