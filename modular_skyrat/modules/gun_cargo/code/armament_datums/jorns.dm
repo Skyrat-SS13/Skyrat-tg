@@ -8,7 +8,7 @@
 	subcategory = ARMAMENT_SUBCATEGORY_KNIFE
 
 /datum/armament_entry/cargo_gun/jorns/knife/bowie
-	item_type = /obj/item/melee/knife/bowie
+	item_type = /obj/item/storage/belt/bowiesheath
 	lower_cost = CARGO_CRATE_VALUE * 3
 	upper_cost = CARGO_CRATE_VALUE * 5
 	
