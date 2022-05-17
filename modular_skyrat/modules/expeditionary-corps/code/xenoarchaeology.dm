@@ -32,7 +32,7 @@
 //I was never able to get the scanner effect to work properly. If anyone can, I would be very grateful. Until then, I will leave the scanner code as a future project.
 /obj/item/t_scanner/archaeological_scanner
 	name = "archaeological scanner"
-	desc = "Archaeological scanner to quickly find excavation candidates... Wait, what!? Nanotrazen made a scanner out of our old PDAs!?"
+	desc = "Archaeological scanner to quickly find excavation candidates... Wait, what!? Nanotrasen made a scanner out of our old PDAs!?"
 	icon = 'modular_skyrat/modules/expeditionary-corps/icons/xenoarchaeology.dmi'
 	icon_state = "scanner"
 	on = FALSE
@@ -69,12 +69,13 @@
 			var/obj/effect/temp_visual/strange_rocks_overlay/old = locate(/obj/effect/temp_visual/strange_rocks_overlay) in R
 			if(old)
 				qdel(old)
-			new /obj/effect/temp_visual/mining_overlay(R)
+			new /obj/effect/temp_visual/strange_rocks_overlay(get_turf(R))
 
 /obj/effect/temp_visual/strange_rocks_overlay
 	plane = FULLSCREEN_PLANE
 	layer = FLASH_LAYER
 	icon = 'icons/obj/flora/rocks.dmi'
+	icon_state = "lavarocks3"
 	appearance_flags = 0
 	duration = 35
 
@@ -122,3 +123,5 @@
 /obj/item/artifact/codex/Initialize(mapload)
 	. = ..()
 	icon_state += num2text(rand(1,5))
+
+//obj/item/gun/energy/laser/artifact/
