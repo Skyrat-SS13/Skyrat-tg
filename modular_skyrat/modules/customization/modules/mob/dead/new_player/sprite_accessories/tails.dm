@@ -424,10 +424,6 @@
 	icon_state = "tiger2"
 	general_type = "feline"
 
-/datum/sprite_accessory/tails/mammal/wagging/kitsune/double
-	name = "Double Kitsune"
-	icon_state = "doublekitsune"
-
 /datum/sprite_accessory/tails/mammal/wagging/kitsune/triple
 	name = "Triple Kitsune"
 	icon_state = "triplekitsune"
