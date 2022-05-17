@@ -71,30 +71,6 @@
 		/obj/item/weldingtool,
 		/obj/item/wirecutters,
 		/obj/item/wrench,
-<<<<<<< HEAD
-		/obj/item/multitool,
-		/obj/item/flashlight,
-		/obj/item/stack/cable_coil,
-		/obj/item/t_scanner,
-		/obj/item/analyzer,
-		/obj/item/geiger_counter,
-		/obj/item/extinguisher/mini,
-		/obj/item/radio,
-		/obj/item/clothing/gloves,
-		/obj/item/holosign_creator/atmos,
-		/obj/item/holosign_creator/engineering,
-		/obj/item/forcefield_projector,
-		/obj/item/assembly/signaler,
-		/obj/item/lightreplacer,
-		/obj/item/construction/rcd,
-		/obj/item/pipe_dispenser,
-		/obj/item/inducer,
-		/obj/item/plunger,
-		/obj/item/airlock_painter,
-		/obj/item/pipe_painter,
-		/obj/item/weldingtool/electric // SKYRAT EDIT - original: /obj/item/weldingtool/experimental
-=======
->>>>>>> b500a5b188f (`belt.dm` lists are in alphabetical order now. (#66943))
 		))
 
 /obj/item/storage/belt/utility/chief
@@ -245,6 +221,7 @@
 		/obj/item/clothing/mask/breath,
 		/obj/item/clothing/mask/muzzle,
 		/obj/item/clothing/mask/surgical,
+		/obj/item/clothing/suit/toggle/labcoat/hospitalgown,	//SKYRAT EDIT ADDITION - adds surgery gowns to belts
 		/obj/item/construction/plumbing,
 		/obj/item/dnainjector,
 		/obj/item/extinguisher/mini,
@@ -254,6 +231,7 @@
 		/obj/item/healthanalyzer,
 		/obj/item/hemostat,
 		/obj/item/holosign_creator/medical,
+		/obj/item/hypospray/mkii, //SKYRAT EDIT HYPOSPRAYS
 		/obj/item/implant,
 		/obj/item/implantcase,
 		/obj/item/implanter,
@@ -266,6 +244,7 @@
 		/obj/item/reagent_containers/dropper,
 		/obj/item/reagent_containers/glass/beaker,
 		/obj/item/reagent_containers/glass/bottle,
+		/obj/item/reagent_containers/glass/vial, //SKYRAT EDIT HYPOSPRAYS
 		/obj/item/reagent_containers/hypospray,
 		/obj/item/reagent_containers/medigel,
 		/obj/item/reagent_containers/pill,
@@ -281,18 +260,9 @@
 		/obj/item/storage/fancy/cigarettes,
 		/obj/item/storage/pill_bottle,
 		/obj/item/surgical_drapes, //for true paramedics
-<<<<<<< HEAD
-		/obj/item/clothing/suit/toggle/labcoat/hospitalgown,	//SKYRAT EDIT ADDITION - adds surgery gowns to belts
-		/obj/item/weaponcell/medical, //SKYRAT EDIT MEDIGUNS
-		/obj/item/reagent_containers/glass/vial, //SKYRAT EDIT HYPOSPRAYS
-		/obj/item/hypospray/mkii, //SKYRAT EDIT HYPOSPRAYS
-		/obj/item/scalpel,
-		/obj/item/circular_saw,
-		/obj/item/bonesetter,
-=======
->>>>>>> b500a5b188f (`belt.dm` lists are in alphabetical order now. (#66943))
 		/obj/item/surgicaldrill,
 		/obj/item/tank/internals/emergency_oxygen,
+		/obj/item/weaponcell/medical, //SKYRAT EDIT MEDIGUNS
 		/obj/item/wrench/medical,
 		))
 
@@ -359,6 +329,7 @@
 		/obj/item/flashlight/seclite,
 		/obj/item/food/donut,
 		/obj/item/grenade,
+		/obj/item/gun, //SKYRAT EDIT ADDITION
 		/obj/item/holosign_creator/security,
 		/obj/item/knife/combat,
 		/obj/item/melee/baton,
@@ -366,12 +337,7 @@
 		/obj/item/reagent_containers/spray/pepper,
 		/obj/item/restraints/handcuffs,
 		/obj/item/restraints/legcuffs/bola,
-<<<<<<< HEAD
-		/obj/item/holosign_creator/security,
 		/obj/item/stock_parts/cell/microfusion, //SKYRAT EDIT ADDITION
-		/obj/item/gun, //SKYRAT EDIT ADDITION
-=======
->>>>>>> b500a5b188f (`belt.dm` lists are in alphabetical order now. (#66943))
 		))
 
 /obj/item/storage/belt/security/full/PopulateContents()
@@ -709,24 +675,13 @@
 		/obj/item/key/janitor,
 		/obj/item/lightreplacer,
 		/obj/item/melee/flyswatter,
-		/obj/item/paint/paint_remover,
-		/obj/item/pushbroom,
-		/obj/item/reagent_containers/spray,
-		/obj/item/soap,
-<<<<<<< HEAD
-		/obj/item/holosign_creator,
-		/obj/item/forcefield_projector,
-		/obj/item/key/janitor,
-		/obj/item/clothing/gloves,
-		/obj/item/melee/flyswatter,
-		/obj/item/assembly/mousetrap,
-		/obj/item/paint/paint_remover,
-		/obj/item/pushbroom, //SKYRAT EDIT - Comma.....
 		/obj/item/mop, //SKYRAT EDIT - For when you're lazy to use soap
 		/obj/item/mop/advanced, //SKYRAT EDIT For when you're lazy to use a bucket
-		/obj/item/reagent_containers/glass/bucket //SKYRAT EDIT - Bucket
-=======
->>>>>>> b500a5b188f (`belt.dm` lists are in alphabetical order now. (#66943))
+		/obj/item/paint/paint_remover,
+		/obj/item/pushbroom,
+		/obj/item/reagent_containers/glass/bucket, //SKYRAT EDIT - Bucket
+		/obj/item/reagent_containers/spray,
+		/obj/item/soap,
 		))
 
 /obj/item/storage/belt/janitor/full/PopulateContents()
