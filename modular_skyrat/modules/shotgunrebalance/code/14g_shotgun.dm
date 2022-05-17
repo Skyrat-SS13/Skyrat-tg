@@ -11,11 +11,12 @@
 	desc = "A break-action 14 gauge double-barrel shotgun. You need both hands to fire this."
 	mag_type = /obj/item/ammo_box/magazine/internal/shot/improvised/gauge14
 	sawn_desc = "A break-action 14 gauge double-barrel shotgun, but with most of the stock and some of the barrel removed. You still need both hands to fire this."
-	bolt_type = BOLT_TYPE_NO_BOLT
+//	bolt_type = BOLT_TYPE_NO_BOLT
+	semi_auto = TRUE
 
 /obj/item/ammo_box/magazine/internal/shot/improvised/gauge14
 	name = "improvised shotgun internal magazine"
-	ammo_type = /obj/item/ammo_casing/shotgun/improvised
+	ammo_type = /obj/item/ammo_casing/s14gauge/improvised
 	max_ammo = 2
 	caliber = CALIBER_14GAUGE
 

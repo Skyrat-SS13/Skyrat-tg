@@ -5,6 +5,31 @@
 /obj/item/ammo_casing/shotgun
 	custom_materials = list(/datum/material/iron=1000) //We will be using this to prevent refund scamming mats
 
+/obj/item/ammo_casing/shotgun/hp
+	name = "hollow point slug"
+	desc = "A 12 gauge hollow point slug purpose built for unarmored targets."
+	icon_state = "stunshell"
+	projectile_type = /obj/projectile/bullet/shotgun_slug/hp
+
+/obj/projectile/bullet/shotgun_slug/hp
+	name = "12g hollow point shotgun slug"
+	damage = 60
+	sharpness = SHARP_POINTY
+	wound_bonus = 0
+	bare_wound_bonus = 40
+	weak_against_armour = TRUE
+
+/obj/item/ammo_casing/shotgun/pt20
+	name = "PT-20 armor piercing slug"
+	desc = "A 12 gauge plastitanium slug purpose built to penetrate armored targets."
+	icon_state = "stunshell"
+	projectile_type = /obj/projectile/bullet/shotgun_slug/pt20
+
+/obj/projectile/bullet/shotgun_slug/pt20
+	name = "armor piercing shotgun slug"
+	damage = 40
+	armour_penetration = 50
+
 /obj/item/ammo_casing/shotgun/buckshot
 	name = "buckshot shell"
 	desc = "A 12 gauge buckshot shell."
@@ -22,39 +47,48 @@
 	weak_against_armour = TRUE // Did you knew shotguns are actually shit against armor?
 
 /obj/item/ammo_casing/shotgun/magnum
-	name = "buckshot shell"
-	desc = "A 12 gauge buckshot shell."
+	name = "magnum buckshot shell"
+	desc = "A 12 gauge buckshot shell that fires bigger pellets but has more spread."
 	icon_state = "gshell"
 	projectile_type = /obj/projectile/bullet/pellet/shotgun_buckshot/magnum
-	pellets = 6 //6 x 10 = 60 Damage Potential
+	pellets = 6 //6 x 10 = 60 Damage Potential, 27 Damage at 4 tile range
 	variance = 30
 
 /obj/projectile/bullet/pellet/shotgun_buckshot/magnum
+	name = "magnum buckshot pellet"
 	damage = 10
 	wound_bonus = 8
+	weak_against_armour = FALSE
 
 /obj/item/ammo_casing/shotgun/express
-	name = "buckshot shell"
-	desc = "A 12 gauge buckshot shell."
+	name = "express buckshot shell"
+	desc = "A 12 gauge buckshot shell that has tighter spread and smaller projectiles."
 	icon_state = "gshell"
 	projectile_type = /obj/projectile/bullet/pellet/shotgun_buckshot/express
-	pellets = 9 //6 x 10 = 60 Damage Potential
+	pellets = 9 //6 x 9 = 51 Damage Potential, 33 Damage at 4 tile range
 	variance = 20 //tighter spread
 
 /obj/projectile/bullet/pellet/shotgun_buckshot/express
-	damage = 5
+	name = "express buckshot pellet"
+	damage = 6
+	speed = 0.6
 
 /obj/item/ammo_casing/shotgun/flechette
-	name = "buckshot shell"
-	desc = "A 12 gauge buckshot shell."
+	name = "flechette shell"
+	desc = "A 12 gauge flechette shell that specializes in ripping through armor."
 	icon_state = "gshell"
 	projectile_type = /obj/projectile/bullet/pellet/shotgun_buckshot/flechette
-	pellets = 7 //7 x 7 = 49 Damage Potential
+	pellets = 8 //8 x 6 = 48 Damage Potential
 	variance = 25
 
 /obj/projectile/bullet/pellet/shotgun_buckshot/flechette
-	damage = 7
+	name = "flechette"
+	damage = 6
 	weak_against_armour = FALSE //Were here to rip armor
+	armour_penetration = 20
+	wound_bonus = 9
+	bare_wound_bonus = 0
+	sharpness = SHARP_EDGED
 
 /obj/projectile/bullet/pellet/shotgun_improvised
 	weak_against_armour = TRUE // We will not have Improvised are Better 2.0
