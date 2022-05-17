@@ -926,17 +926,14 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/clothing/mask/vape
 	name = "\improper E-Cigarette"
 	desc = "A classy and highly sophisticated electronic cigarette, for classy and dignified gentlemen. A warning label reads \"Warning: Do not fill with flammable materials.\""//<<< i'd vape to that.
-<<<<<<< HEAD
 	icon = 'icons/obj/clothing/masks.dmi'
 	worn_icon_muzzled = 'modular_skyrat/master_files/icons/mob/clothing/mask.dmi' //SKYRAT EDIT: ADDITION
-	icon_state = "red_vape"
-=======
 	icon_state = "vape"
 	worn_icon_state = "vape_worn"
 	greyscale_config = /datum/greyscale_config/vape
 	greyscale_config_worn = /datum/greyscale_config/vape/worn
+	greyscale_config_worn_digi = /datum/greyscale_config/vape/worn/digi
 	greyscale_colors = "#2e2e2e"
->>>>>>> da8934cbcb9 (Vape GAGS (#66859))
 	inhand_icon_state = null
 	w_class = WEIGHT_CLASS_TINY
 	flags_1 = IS_PLAYER_COLORABLE_1
