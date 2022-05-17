@@ -128,3 +128,33 @@
 	color_src = USE_ONE_COLOR
 	extra = TRUE
 	extra_color_src = MUTCOLORS2
+
+/datum/sprite_accessory/taur/chinesedragon
+	name = "Chinese Dragon"
+	icon_state = "noodle"
+	taur_mode = STYLE_TAUR_PAW
+
+/datum/sprite_accessory/taur/tentacle2
+	name = "Tentacle Alt"
+	icon_state = "tentaclealt"
+	taur_mode = STYLE_TAUR_SNAKE
+	color_src = USE_ONE_COLOR
+	hide_legs = TRUE
+
+/datum/sprite_accessory/taur/slug
+	name = "Slug"
+	icon_state = "slug"
+	taur_mode = STYLE_TAUR_SNAKE
+	color_src = USE_ONE_COLOR
+	hide_legs = TRUE
+
+/datum/sprite_accessory/taur/wasp
+	name = "Wasp"
+	icon_state = "wasp"
+	taur_mode = STYLE_TAUR_PAW
+
+/datum/sprite_accessory/taur/mantis
+	name = "Mantis"
+	icon_state = "mantis"
+	color_src = USE_ONE_COLOR
+	taur_mode = STYLE_TAUR_PAW
