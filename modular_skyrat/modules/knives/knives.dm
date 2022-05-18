@@ -12,8 +12,8 @@
 	force = 20 // Zoowee Momma!
 	w_class = WEIGHT_CLASS_NORMAL
 	throwforce = 15
-	wound_bonus = -15
-	bare_wound_bonus = 20
+	wound_bonus = 10 //scalpel tier
+	bare_wound_bonus = 20 // Very-bigly
 
   
 /obj/item/storage/belt/bowie_sheath
