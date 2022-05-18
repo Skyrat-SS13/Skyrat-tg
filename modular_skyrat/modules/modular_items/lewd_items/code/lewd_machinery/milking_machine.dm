@@ -22,26 +22,26 @@
 	/////////////////////////////
 	// Machine operating modes //
 	/////////////////////////////
-	var/pump_state_list = list("pump_off","pump_on")
+	var/pump_state_list = list("pump_off", "pump_on")
 	var/pump_state
-	var/mode_list = list("off","low","medium","hard")
+	var/mode_list = list("off", "low", "medium", "hard")
 	var/current_mode
 
 	/////////////////////////////////
 	// Return sensation parameters //
 	/////////////////////////////////
 	// Values are returned every tick, without additional modifiers
-	var/arousal_amounts = list("off" = 0, "low" = 1,"medium" = 2,"hard" = 3)
-	var/pleasure_amounts = list("off" = 0, "low" = 0.2,"medium" = 1,"hard" = 1.5)
-	var/pain_amounts = list("off" = 0, "low" = 0,"medium" = 0.2,"hard" = 0.5)
+	var/arousal_amounts = list("off" = 0, "low" = 1, "medium" = 2, "hard" = 3)
+	var/pleasure_amounts = list("off" = 0, "low" = 0.2, "medium" = 1, "hard" = 1.5)
+	var/pain_amounts = list("off" = 0, "low" = 0, "medium" = 0.2, "hard" = 0.5)
 
 	//////////////////////
 	// Fluid management //
 	//////////////////////
 	// Liquids are taken every tick, no additional modifiers
-	var/milk_retrive_amount = list("off" = 0, "low" = 1,"medium" = 2,"hard" = 3)
-	var/girlcum_retrive_amount = list("off" = 0, "low" = 1,"medium" = 2,"hard" = 3)
-	var/semen_retrive_amount = list("off" = 0, "low" = 1,"medium" = 2,"hard" = 3)
+	var/milk_retrive_amount = list("off" = 0, "low" = 1, "medium" = 2, "hard" = 3)
+	var/girlcum_retrive_amount = list("off" = 0, "low" = 1, "medium" = 2, "hard" = 3)
+	var/semen_retrive_amount = list("off" = 0, "low" = 1, "medium" = 2, "hard" = 3)
 	var/climax_retrive_multiplier = 2 // Climax intake volume multiplier
 
 	//////////////////////////
@@ -70,17 +70,17 @@
 	var/testicles_size = null
 
 	// Machine colors
-	var/machine_color_list = list("pink","teal") // Применить ссылки на список везде, где можно
+	var/machine_color_list = list("pink", "teal") // Применить ссылки на список везде, где можно
 	var/machine_color
 
 	//////////////////////////////////////////
 	// Stuff for visualizing machine states //
 	//////////////////////////////////////////
 	// Cell power capacity indicator
-	var/indicator_state_list = list("indicator_off","indicator_low","indicator_medium","indicator_high")
+	var/indicator_state_list = list("indicator_off", "indicator_low", "indicator_medium", "indicator_high")
 	var/indicator_state
 	// Vessel capacity indicator
-	var/vessel_state_list = list("liquid_empty","liquid_low","liquid_medium","liquid_high","liquid_full")
+	var/vessel_state_list = list("liquid_empty", "liquid_low", "liquid_medium", "liquid_high", "liquid_full")
 	var/vessel_state
 	// Organ types and sizes
 	var/organ_types = list()
@@ -167,11 +167,11 @@
 		"teal" = image(icon = src.icon, icon_state = "milking_teal_off"))
 
 // Radial menu handler for color selection by using multitool
-/obj/structure/chair/milking_machine/multitool_act(mob/living/user, obj/item/I)
+/obj/structure/chair/milking_machine/multitool_act(mob/living/user, obj/item/used_item)
 	. = ..()
 	if(.)
 		return FALSE
-	var/choice = show_radial_menu(user,src, milkingmachine_designs, custom_check = CALLBACK(src, .proc/check_menu, user, I), radius = 36, require_near = TRUE)
+	var/choice = show_radial_menu(user, src, milkingmachine_designs, custom_check = CALLBACK(src, .proc/check_menu, user, used_item), radius = 36, require_near = TRUE)
 	if(!choice)
 		return TRUE
 	machine_color = choice
@@ -196,18 +196,18 @@
 	return FALSE
 
 // Get the organs of the mob and visualize the change in machine
-/obj/structure/chair/milking_machine/post_buckle_mob(mob/living/M)
-	current_mob = M
+/obj/structure/chair/milking_machine/post_buckle_mob(mob/living/affected_mob)
+	current_mob = affected_mob
 
-	current_breasts = M.getorganslot(ORGAN_SLOT_BREASTS)
+	current_breasts = affected_mob.getorganslot(ORGAN_SLOT_BREASTS)
 	if(current_breasts)
 		breasts_size = current_breasts.genital_size
 
-	current_testicles = M.getorganslot(ORGAN_SLOT_TESTICLES)
+	current_testicles = affected_mob.getorganslot(ORGAN_SLOT_TESTICLES)
 	if(current_testicles)
 		testicles_size = current_testicles.genital_size
 
-	current_vagina = M.getorganslot(ORGAN_SLOT_VAGINA)
+	current_vagina = affected_mob.getorganslot(ORGAN_SLOT_VAGINA)
 	if(current_vagina)
 		vagina_size = current_vagina.genital_size
 
@@ -227,16 +227,16 @@
 		current_mob.update_abstract_handcuffed()
 
 	update_overlays()
-	M.layer = BELOW_MOB_LAYER
+	affected_mob.layer = BELOW_MOB_LAYER
 	update_all_visuals()
 
-	if(SStgui.try_update_ui(M, src))
-		var/datum/tgui/ui = SStgui.try_update_ui(M, src)
+	if(SStgui.try_update_ui(affected_mob, src))
+		var/datum/tgui/ui = SStgui.try_update_ui(affected_mob, src)
 		ui.close()
 	return
 
 // Clear the cache of the organs of the mob and update the state of the machine
-/obj/structure/chair/milking_machine/post_unbuckle_mob(mob/living/M)
+/obj/structure/chair/milking_machine/post_unbuckle_mob(mob/living/affected_mob)
 	cut_overlay(organ_overlay)
 	organ_overlay.icon_state = "none"
 
@@ -349,26 +349,26 @@
 	if(parented_struct)
 		parented_struct.unbuckle_all_mobs()
 
-/obj/structure/chair/milking_machine/user_unbuckle_mob(mob/living/carbon/human/M, mob/user)
+/obj/structure/chair/milking_machine/user_unbuckle_mob(mob/living/carbon/human/affected_mob, mob/user)
 
-	if(M)
-		if(M == user)
+	if(affected_mob)
+		if(affected_mob == user)
 			// Have difficulty unbuckling if overly aroused
-			if(M.arousal >= 60)
+			if(affected_mob.arousal >= 60)
 				if((current_mode != mode_list[1]) && (current_mode != mode_list[2]))
-					to_chat(M, span_purple("You are too horny to try to get out!"))
+					to_chat(affected_mob, span_purple("You are too horny to try to get out!"))
 					return
 				else
-					M.visible_message(span_notice("[M] unbuckles [M.p_them()]self from [src]."),\
+					affected_mob.visible_message(span_notice("[affected_mob] unbuckles [affected_mob.p_them()]self from [src]."),\
 						span_notice("You unbuckle yourself from [src]."),\
 						span_hear("You hear metal clanking."))
-					unbuckle_mob(M)
+					unbuckle_mob(affected_mob)
 					return
 			else
-				M.visible_message(span_notice("[M] unbuckles [M.p_them()]self from [src]."),\
+				affected_mob.visible_message(span_notice("[affected_mob] unbuckles [affected_mob.p_them()]self from [src]."),\
 					span_notice("You unbuckle yourself from [src]."),\
 					span_hear("You hear metal clanking."))
-				unbuckle_mob(M)
+				unbuckle_mob(affected_mob)
 				return
 	else
 		. = ..()
@@ -390,7 +390,7 @@
 	// Block the ability to open the interface of the machine if we are attached to it
 	if(LAZYLEN(buckled_mobs))
 		if(user == buckled_mobs[1])
-			user_unbuckle_mob(user,user)
+			user_unbuckle_mob(user, user)
 			return
 	// Standard processing, open the machine interface
 	. = ..()
@@ -399,22 +399,22 @@
 	return
 
 // Attack handler for various item
-/obj/structure/chair/milking_machine/attackby(obj/item/W, mob/user)
+/obj/structure/chair/milking_machine/attackby(obj/item/used_item, mob/user)
 	// Beaker attack check
-	if(istype(W, /obj/item/reagent_containers) && !(W.item_flags & ABSTRACT) && W.is_open_container())
+	if(istype(used_item, /obj/item/reagent_containers) && !(used_item.item_flags & ABSTRACT) && used_item.is_open_container())
 		. = TRUE // No afterattack
 		if(panel_open)
 			to_chat(user, span_warning("You can't use [src] while its panel is opened!"))
 			return
-		var/obj/item/reagent_containers/B = W
+		var/obj/item/reagent_containers/used_container = used_item
 		. = TRUE // No afterattack
-		if(!user.transferItemToLoc(B, src))
+		if(!user.transferItemToLoc(used_container, src))
 			return
-		replace_beaker(user, B)
+		replace_beaker(user, used_container)
 		updateUsrDialog()
 		return
 	// Cell attack check
-	if(istype(W, /obj/item/stock_parts/cell))
+	if(istype(used_item, /obj/item/stock_parts/cell))
 		if(panel_open)
 			if(!anchored)
 				to_chat(user, span_warning("[src] isn't attached to the ground!"))
@@ -423,16 +423,16 @@
 				to_chat(user, span_warning("There is already a cell in [src]!"))
 				return
 			else
-				var/area/a = loc.loc // Gets our locations location, like a dream within a dream
-				if(!isarea(a))
+				var/area/current_area = loc.loc // Gets our locations location, like a dream within a dream
+				if(!isarea(current_area))
 					return
-				if(!user.transferItemToLoc(W,src))
+				if(!user.transferItemToLoc(used_item, src))
 					cut_overlay(cell_overlay)
 					cell_overlay.icon_state = "milking_cell_empty"
 					update_all_visuals()
 					return
 
-				cell = W
+				cell = used_item
 				cut_overlay(cell_overlay)
 				cell_overlay.icon_state = "milking_cell"
 				add_overlay(cell_overlay)
@@ -443,11 +443,11 @@
 			to_chat(user, span_warning("[src]'s maintenance panel isn't opened!"))
 			return
 	else
-		if(screwdriver_action(user, icon_state, icon_state, W))
+		if(screwdriver_action(user, icon_state, icon_state, used_item))
 			return
-		if(crowbar_action(W))
+		if(crowbar_action(used_item))
 			return
-		if(!cell && wrench_act(user, W))
+		if(!cell && wrench_act(user, used_item))
 			return
 		return ..()
 
@@ -483,9 +483,9 @@
 		object.forceMove(drop_location())
 
 // Handler for opening the panel with a screwdriver for maintenance
-/obj/structure/chair/milking_machine/proc/screwdriver_action(mob/user, icon_state_open, icon_state_closed, obj/item/I)
-	if(I.tool_behaviour == TOOL_SCREWDRIVER)
-		I.play_tool_sound(src, 50)
+/obj/structure/chair/milking_machine/proc/screwdriver_action(mob/user, icon_state_open, icon_state_closed, obj/item/used_item)
+	if(used_item.tool_behaviour == TOOL_SCREWDRIVER)
+		used_item.play_tool_sound(src, 50)
 		if(!panel_open)
 			panel_open = TRUE
 			cut_overlay(indicator_overlay)
@@ -513,18 +513,18 @@
 	return FALSE
 
 // Object disassembly handler by crowbar
-/obj/structure/chair/milking_machine/proc/crowbar_action(obj/item/I, ignore_panel = 0)
+/obj/structure/chair/milking_machine/proc/crowbar_action(obj/item/used_item, ignore_panel = 0)
 
-	. = (panel_open || ignore_panel) && !(flags_1 & NODECONSTRUCT_1) && I.tool_behaviour == TOOL_CROWBAR
+	. = (panel_open || ignore_panel) && !(flags_1 & NODECONSTRUCT_1) && used_item.tool_behaviour == TOOL_CROWBAR
 	if(.)
-		I.play_tool_sound(src, 50)
+		used_item.play_tool_sound(src, 50)
 		deconstruct(TRUE)
 
 // // Object disassembly handler by wrench
-// /obj/structure/chair/milking_machine/default_unfasten_wrench(mob/user, obj/item/I, time = 20)
-// 	. = !(flags_1 & NODECONSTRUCT_1) && I.tool_behaviour == TOOL_WRENCH
+// /obj/structure/chair/milking_machine/default_unfasten_wrench(mob/user, obj/item/used_item, time = 20)
+// 	. = !(flags_1 & NODECONSTRUCT_1) && used_item.tool_behaviour == TOOL_WRENCH
 // 	if(.)
-// 		I.play_tool_sound(src, 50)
+// 		used_item.play_tool_sound(src, 50)
 // 		deconstruct(TRUE)
 
 // Machine Workflow Processor
@@ -546,19 +546,19 @@
 	if(current_selected_organ == null || current_mode == mode_list[1])
 		update_all_visuals()
 		return // Does not work if an organ is not connected OR the machine is not switched to On
-	if(istype(current_selected_organ,/obj/item/organ/genital/breasts))
+	if(istype(current_selected_organ, /obj/item/organ/genital/breasts))
 		if(milk_vessel.reagents.total_volume == max_vessel_capacity)
 			current_mode = mode_list[1]
 			pump_state = pump_state_list[1]
 			update_all_visuals()
 			return
-	if(istype(current_selected_organ,/obj/item/organ/genital/vagina))
+	if(istype(current_selected_organ, /obj/item/organ/genital/vagina))
 		if(girlcum_vessel.reagents.total_volume == max_vessel_capacity)
 			current_mode = mode_list[1]
 			pump_state = pump_state_list[1]
 			update_all_visuals()
 			return
-	if(istype(current_selected_organ,/obj/item/organ/genital/testicles))
+	if(istype(current_selected_organ, /obj/item/organ/genital/testicles))
 		if(semen_vessel.reagents.total_volume == max_vessel_capacity)
 			current_mode = mode_list[1]
 			pump_state = pump_state_list[1]
@@ -583,24 +583,24 @@
 // Liquid intake handler
 /obj/structure/chair/milking_machine/proc/retrive_liquids_from_selected_organ(delta_time)
 	// Climax check
-	var/X = 1
+	var/fluid_multiplier = 1
 	if(current_mob != null)
 		if(current_mob.has_status_effect(/datum/status_effect/climax))
-			X = climax_retrive_multiplier
+			fluid_multiplier = climax_retrive_multiplier
 
 	if(istype(current_selected_organ, /obj/item/organ/genital/breasts))
 		if(current_selected_organ.reagents.total_volume > 0)
-			current_selected_organ.internal_fluids.trans_to(milk_vessel, milk_retrive_amount[current_mode] * X * delta_time)
+			current_selected_organ.internal_fluids.trans_to(milk_vessel, milk_retrive_amount[current_mode] * fluid_multiplier * delta_time)
 		else
 			return
 	else if (istype(current_selected_organ, /obj/item/organ/genital/vagina))
 		if(current_selected_organ.reagents.total_volume > 0)
-			current_selected_organ.internal_fluids.trans_to(girlcum_vessel, girlcum_retrive_amount[current_mode] * X * delta_time)
+			current_selected_organ.internal_fluids.trans_to(girlcum_vessel, girlcum_retrive_amount[current_mode] * fluid_multiplier * delta_time)
 		else
 			return
 	else if (istype(current_selected_organ, /obj/item/organ/genital/testicles))
 		if(current_selected_organ.reagents.total_volume > 0)
-			current_selected_organ.internal_fluids.trans_to(semen_vessel, semen_retrive_amount[current_mode] * X * delta_time)
+			current_selected_organ.internal_fluids.trans_to(semen_vessel, semen_retrive_amount[current_mode] * fluid_multiplier * delta_time)
 		else
 			return
 	else
@@ -635,14 +635,14 @@
 	. = ..()
 	if(.)
 		if(istype(src, /mob/living/) && istype(over_object, /obj/structure/chair/milking_machine))
-			var/mob/living/M = src
-			var/obj/structure/chair/milking_machine/MM = over_object
-			if(M.getorganslot(ORGAN_SLOT_TESTICLES))
-				MM.current_testicles = M.getorganslot(ORGAN_SLOT_TESTICLES)
-			if(M.getorganslot(ORGAN_SLOT_VAGINA))
-				MM.current_vagina = M.getorganslot(ORGAN_SLOT_VAGINA)
-			if(M.getorganslot(ORGAN_SLOT_BREASTS))
-				MM.current_breasts = M.getorganslot(ORGAN_SLOT_BREASTS)
+			var/mob/living/affected_mob = src
+			var/obj/structure/chair/milking_machine/milking_machine = over_object
+			if(affected_mob.getorganslot(ORGAN_SLOT_TESTICLES))
+				milking_machine.current_testicles = affected_mob.getorganslot(ORGAN_SLOT_TESTICLES)
+			if(affected_mob.getorganslot(ORGAN_SLOT_VAGINA))
+				milking_machine.current_vagina = affected_mob.getorganslot(ORGAN_SLOT_VAGINA)
+			if(affected_mob.getorganslot(ORGAN_SLOT_BREASTS))
+				milking_machine.current_breasts = affected_mob.getorganslot(ORGAN_SLOT_BREASTS)
 			else
 				// A place for the handler when the mob doesn't have the genitals it needs
 				return
@@ -653,11 +653,11 @@
 		// The mob for some reason did not get buckled, we do nothing
 		return
 
-/obj/structure/chair/milking_machine/wrench_act(mob/living/user, obj/item/I)
-	if((flags_1 & NODECONSTRUCT_1) && I.tool_behaviour == TOOL_WRENCH)
+/obj/structure/chair/milking_machine/wrench_act(mob/living/user, obj/item/used_item)
+	if((flags_1 & NODECONSTRUCT_1) && used_item.tool_behaviour == TOOL_WRENCH)
 		to_chat(user, span_notice("You being to deconstruct [src]..."))
-		if(I.use_tool(src, user, 8 SECONDS, volume=50))
-			I.play_tool_sound(src, 50)
+		if(used_item.use_tool(src, user, 8 SECONDS, volume = 50))
+			used_item.play_tool_sound(src, 50)
 			deconstruct(TRUE)
 			to_chat(user, span_notice("You disassemble [src]."))
 		return TRUE
@@ -788,24 +788,24 @@
 
 	// Processing changes in the capacity overlay
 	cut_overlay(vessel_overlay)
-	var/T = (milk_vessel.reagents.total_volume + girlcum_vessel.reagents.total_volume + semen_vessel.reagents.total_volume)
-	if(T == 0 && T < 1)
+	var/total_reagents_volume = (milk_vessel.reagents.total_volume + girlcum_vessel.reagents.total_volume + semen_vessel.reagents.total_volume)
+	if(total_reagents_volume == 0 && total_reagents_volume < 1)
 		if(vessel_state != vessel_state_list[1])
 			vessel_overlay.icon_state = vessel_state_list[1]
 			vessel_state = vessel_state_list[1]
-	if((T >= 1) && (T < (max_vessel_capacity / 3)))
+	if((total_reagents_volume >= 1) && (total_reagents_volume < (max_vessel_capacity / 3)))
 		if(vessel_state != vessel_state_list[2])
 			vessel_overlay.icon_state = vessel_state_list[2]
 			vessel_state = vessel_state_list[2]
-	if((T >= (max_vessel_capacity / 3)) && (T < (2 * max_vessel_capacity / 3)))
+	if((total_reagents_volume >= (max_vessel_capacity / 3)) && (total_reagents_volume < (2 * max_vessel_capacity / 3)))
 		if(vessel_state != vessel_state_list[3])
 			vessel_overlay.icon_state = vessel_state_list[3]
 			vessel_state = vessel_state_list[3]
-	if((T >= (2 * max_vessel_capacity / 3)) && (T < max_vessel_capacity))
+	if((total_reagents_volume >= (2 * max_vessel_capacity / 3)) && (total_reagents_volume < max_vessel_capacity))
 		if(vessel_state != vessel_state_list[4])
 			vessel_overlay.icon_state = vessel_state_list[4]
 			vessel_state = vessel_state_list[4]
-	if(T == max_vessel_capacity)
+	if(total_reagents_volume == max_vessel_capacity)
 		if(vessel_state != vessel_state_list[5])
 			vessel_overlay.icon_state = vessel_state_list[5]
 			vessel_state = vessel_state_list[5]
@@ -813,20 +813,20 @@
 
 	// Indicator state control
 	if(cell != null)
-		var/X = round(cell.charge / cell.maxcharge, 0.01)*100
-		if(X >= 0 && X < 25)
+		var/charge_percentage = round(cell.charge / cell.maxcharge, 0.01)*100
+		if(charge_percentage >= 0 && charge_percentage < 25)
 			if(indicator_overlay.icon_state != indicator_state_list[2])
 				cut_overlay(indicator_overlay)
 				indicator_overlay.icon_state = indicator_state_list[2]
 				if(!panel_open)
 					add_overlay(indicator_overlay)
-		if(X >= 25 && X < 75)
+		if(charge_percentage >= 25 && charge_percentage < 75)
 			if(indicator_overlay.icon_state != indicator_state_list[3])
 				cut_overlay(indicator_overlay)
 				indicator_overlay.icon_state = indicator_state_list[3]
 				if(!panel_open)
 					add_overlay(indicator_overlay)
-		if(X >= 75 && X <= 100)
+		if(charge_percentage >= 75 && charge_percentage <= 100)
 			if(indicator_overlay.icon_state != indicator_state_list[4])
 				cut_overlay(indicator_overlay)
 				indicator_overlay.icon_state = indicator_state_list[4]
@@ -919,7 +919,7 @@
 		return
 	if(action == "ejectCreature")
 		unbuckle_mob(current_mob)
-		to_chat(usr,span_notice("You eject [current_mob] from [src]"))
+		to_chat(usr, span_notice("You eject [current_mob] from [src]"))
 		return TRUE
 
 	if(action == "ejectBeaker")
@@ -931,28 +931,28 @@
 		current_mode = mode_list[1]
 		pump_state = pump_state_list[1]
 		update_all_visuals()
-		to_chat(usr,span_notice("You turn off [src]"))
+		to_chat(usr, span_notice("You turn off [src]"))
 		return TRUE
 
 	if(action == "setLowMode")
 		current_mode = mode_list[2]
 		pump_state = pump_state_list[2]
 		update_all_visuals()
-		to_chat(usr,span_notice("You switch [src] onto low mode"))
+		to_chat(usr, span_notice("You switch [src] onto low mode"))
 		return TRUE
 
 	if(action == "setMediumMode")
 		current_mode = mode_list[3]
 		pump_state = pump_state_list[2]
 		update_all_visuals()
-		to_chat(usr,span_notice("You switch [src] onto medium mode"))
+		to_chat(usr, span_notice("You switch [src] onto medium mode"))
 		return TRUE
 
 	if(action == "setHardMode")
 		current_mode = mode_list[4]
 		pump_state = pump_state_list[2]
 		update_all_visuals()
-		to_chat(usr,span_notice("You switch [src] onto hard mode"))
+		to_chat(usr, span_notice("You switch [src] onto hard mode"))
 		return TRUE
 
 	if(action == "unplug")
@@ -961,25 +961,25 @@
 		pump_state = pump_state_list[1]
 		current_selected_organ = null
 		update_all_visuals()
-		to_chat(usr,span_notice("You detach the liner."))
+		to_chat(usr, span_notice("You detach the liner."))
 		return TRUE
 
 	if(action == "setBreasts")
 		current_selected_organ = current_breasts
 		update_all_visuals()
-		to_chat(usr,span_notice("You attach the liner to [current_selected_organ]."))
+		to_chat(usr, span_notice("You attach the liner to [current_selected_organ]."))
 		return TRUE
 
 	if(action == "setVagina")
 		current_selected_organ = current_vagina
 		update_all_visuals()
-		to_chat(usr,span_notice("You attach the liner to [current_selected_organ]."))
+		to_chat(usr, span_notice("You attach the liner to [current_selected_organ]."))
 		return TRUE
 
 	if(action == "setTesticles")
 		current_selected_organ = current_testicles
 		update_all_visuals()
-		to_chat(usr,span_notice("You attach the liner to [current_selected_organ]."))
+		to_chat(usr, span_notice("You attach the liner to [current_selected_organ]."))
 		return TRUE
 
 	if(action == "setMilk")
@@ -1005,7 +1005,7 @@
 		current_vessel.reagents?.trans_to(beaker, amount)
 		current_vessel.reagents?.reagent_list[1].name
 		update_all_visuals()
-		to_chat(usr,span_notice("You transfer [amount] of [current_vessel.reagents?.reagent_list[1].name] to [beaker.name]"))
+		to_chat(usr, span_notice("You transfer [amount] of [current_vessel.reagents?.reagent_list[1].name] to [beaker.name]"))
 		return TRUE
 
 // Milking machine construction kit
@@ -1027,15 +1027,15 @@
 	icon_state = "[initial(icon_state)]_[current_color]"
 
 // Processor of the process of assembling a kit into a machine
-/obj/item/milking_machine/constructionkit/attackby(obj/item/I, mob/living/carbon/user, params)
+/obj/item/milking_machine/constructionkit/attackby(obj/item/used_item, mob/living/carbon/user, params)
 	if((item_flags & IN_INVENTORY) || (item_flags & IN_STORAGE))
 		return
-	if(I.tool_behaviour == TOOL_WRENCH)
+	if(used_item.tool_behaviour == TOOL_WRENCH)
 		if(user.get_held_items_for_side(LEFT_HANDS) == src || user.get_held_items_for_side(RIGHT_HANDS) == src)
 			return
 		if(get_turf(user) == get_turf(src))
 			return
-		else if(I.use_tool(src, user, 8 SECONDS, volume=50))
+		else if(used_item.use_tool(src, user, 8 SECONDS, volume = 50))
 			var/obj/structure/chair/milking_machine/new_milker = new(get_turf(user))
 			if(istype(src, /obj/item/milking_machine/constructionkit))
 				if(current_color == "pink")

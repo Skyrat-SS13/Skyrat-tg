@@ -28,7 +28,7 @@
 		return
 	var/clean_speedies = 1 * cleanspeed
 	if(user.mind)
-		clean_speedies = cleanspeed * min(user.mind.get_skill_modifier(/datum/skill/cleaning, SKILL_SPEED_MODIFIER)+0.1,1) //less scaling for soapies
+		clean_speedies = cleanspeed * min(user.mind.get_skill_modifier(/datum/skill/cleaning, SKILL_SPEED_MODIFIER)+0.1, 1) //less scaling for soapies
 
 	if((target in user?.client.screen) && !user.is_holding(target))
 		to_chat(user, span_warning("You need to take \the [target.name] off before cleaning it!"))
@@ -38,7 +38,7 @@
 		if(do_after(user, clean_speedies, target = target))
 			to_chat(user, span_notice("You clean \the [target.name] out."))
 			var/obj/effect/decal/cleanable/cleanies = target
-			user.mind?.adjust_experience(/datum/skill/cleaning, max(round(cleanies.beauty/CLEAN_SKILL_BEAUTY_ADJUSTMENT),0)) //again, intentional that this does NOT round but mops do.
+			user.mind?.adjust_experience(/datum/skill/cleaning, max(round(cleanies.beauty/CLEAN_SKILL_BEAUTY_ADJUSTMENT), 0)) //again, intentional that this does NOT round but mops do.
 			qdel(target)
 			qdel(src)
 			var/obj/item/serviette_used/used_serviette = new /obj/item/serviette_used
@@ -81,23 +81,23 @@
 	desc = "I wonder why LustWish makes them..."
 	icon_state = "serviettepack"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
-	///A count of how many serviettes are left in the pack
-	var/servleft = 4
+	/// A count of how many serviettes are left in the pack
+	var/number_remaining = 4
 	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/serviette_pack/update_icon_state()
 	. = ..()
-	icon_state = "[initial(icon_state)]_[servleft]"
+	icon_state = "[initial(icon_state)]_[number_remaining]"
 
 /obj/item/serviette_pack/Initialize()
 	. = ..()
 	update_icon_state()
 	update_icon()
 
-/obj/item/serviette_pack/attack_self(mob/user, obj/item/I)
-	if(servleft)
+/obj/item/serviette_pack/attack_self(mob/user)
+	if(number_remaining)
 		to_chat(user, span_notice("You take a serviette from [src]."))
-		servleft--
+		number_remaining--
 		var/obj/item/serviette/used_serviette = new /obj/item/serviette
 		user.put_in_hands(used_serviette)
 		update_icon()
