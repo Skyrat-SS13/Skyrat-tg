@@ -79,7 +79,7 @@
 	desc = "The circuit board that for a SUPERPACMAN-type portable generator."
 	id = "superpacman"
 	build_path = /obj/item/circuitboard/machine/pacman/super
-	departmental_flags = DEPARTMENTAL_FLAG_ENGINEERING
+	departmental_flags = DEPARTMENTAL_BITFLAG_ENGINEERING
 
 /datum/design/turbine_part_compressor
 	name = "Turbine Part - Compressor"
