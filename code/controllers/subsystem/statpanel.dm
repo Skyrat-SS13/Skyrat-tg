@@ -97,9 +97,16 @@ SUBSYSTEM_DEF(statpanels)
 				if(num_fires % default_wait == 0)
 					set_spells_tab(target, target_mob)
 
+<<<<<<< HEAD
 			if(target_mob?.listed_turf && num_fires % default_wait == 0)
 				if(!target_mob.TurfAdjacent(target_mob.listed_turf))
 					target << output("", "statbrowser:remove_listedturf")
+=======
+
+			if(target_mob?.listed_turf && num_fires % default_wait == 0)
+				if(!target_mob.TurfAdjacent(target_mob.listed_turf) || isnull(target_mob.listed_turf))
+					target.stat_panel.send_message("remove_listedturf")
+>>>>>>> 7bf9d4fe1fd ([NO GBP] changes the turf tab update speed (#67067))
 					target_mob.listed_turf = null
 
 				else if(target.stat_tab == target_mob?.listed_turf.name || !(target_mob?.listed_turf.name in target.panel_tabs))
