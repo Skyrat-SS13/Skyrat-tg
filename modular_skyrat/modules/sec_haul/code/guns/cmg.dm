@@ -37,6 +37,7 @@
 /obj/item/ammo_box/magazine/multi_sprite/cmg/inc
 	ammo_type = /obj/item/ammo_casing/c45/inc
 	round_type = AMMO_TYPE_INCENDIARY
+	possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_HOLLOWPOINT, AMMO_TYPE_INCENDIARY, AMMO_TYPE_AP)
 
 /obj/item/ammo_box/magazine/multi_sprite/cmg/ap
 	ammo_type = /obj/item/ammo_casing/c45/ap
