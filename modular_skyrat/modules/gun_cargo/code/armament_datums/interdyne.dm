@@ -20,11 +20,6 @@
 	lower_cost = CARGO_CRATE_VALUE * 8
 	upper_cost = CARGO_CRATE_VALUE * 12
 
-/datum/armament_entry/cargo_gun/interdyne/special/smartdart_gun
-	item_type = /obj/item/gun/syringe/smartdart
-	lower_cost = CARGO_CRATE_VALUE * 6
-	upper_cost = CARGO_CRATE_VALUE * 8
-
 /datum/armament_entry/cargo_gun/interdyne/special/smartdart_revolver
 	item_type = /obj/item/gun/syringe/smartdart/revolver
 	lower_cost = CARGO_CRATE_VALUE * 10
