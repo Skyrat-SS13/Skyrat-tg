@@ -86,7 +86,7 @@
 	var/sheet_name = ""
 	var/sheet_path = /obj/item/stack/sheet/mineral/plasma
 	var/sheet_left = 0 // How much is left of the sheet
-	var/time_per_sheet = 260
+	var/time_per_sheet = 50
 	var/current_heat = 0
 
 /obj/machinery/power/port_gen/pacman/Initialize(mapload)
