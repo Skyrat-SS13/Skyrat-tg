@@ -424,10 +424,6 @@
 	icon_state = "tiger2"
 	general_type = "feline"
 
-/datum/sprite_accessory/tails/mammal/wagging/kitsune/triple
-	name = "Triple Kitsune"
-	icon_state = "triplekitsune"
-
 /datum/sprite_accessory/tails/mammal/wagging/kitsune/septuple
 	name = "Septuple Kitsune"
 	icon_state = "sevenkitsune"
@@ -439,10 +435,6 @@
 /datum/sprite_accessory/tails/mammal/wagging/segmented
 	name = "Segmented Tail"
 	icon_state = "segmentedtail"
-
-/datum/sprite_accessory/tails/mammal/wagging/chameleon
-	name = "Chameleon Tail"
-	icon_state = "chameleon"
 
 /datum/sprite_accessory/tails/mammal/wagging/big
 	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/tails_big.dmi'
