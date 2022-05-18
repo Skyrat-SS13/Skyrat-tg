@@ -34,8 +34,8 @@
 	)
 
 /obj/structure/trash_pile/proc/do_search(mob/user)
-	if(contents.len) //There's something hidden
-		var/atom/hidden_atom = contents[contents.len] //Get the most recent hidden thing
+	if(contents.len) // There's something hidden
+		var/atom/hidden_atom = contents[contents.len] // Get the most recent hidden thing
 		if(istype(hidden_atom, /mob/living))
 			var/mob/living/hidden_mob = hidden_atom
 			to_chat(user, span_notice("You found someone in the trash!"))
@@ -45,28 +45,28 @@
 			to_chat(user, span_notice("You found something!"))
 			hidden_item.forceMove(src.loc)
 	else
-		//You already searched this one bruh
+		// You already searched this one bruh
 		if(user.ckey in searchedby)
 			to_chat(user, span_warning("There's nothing else for you in \the [src]!"))
-		//You found an item!
+		// You found an item!
 		else
 			produce_alpha_item()
 			to_chat(user, span_notice("You found something!"))
 			searchedby += user.ckey
 
 /obj/structure/trash_pile/attack_hand(mob/user)
-	//Human mob
+	// Human mob
 	if(ishuman(user))
 		var/mob/living/carbon/human/human_user = user
 		human_user.visible_message("[user] searches through \the [src].", span_notice("You search through \the [src]."))
-		//Do the searching
+		// Do the searching
 		if(do_after(user, rand(4 SECONDS, 6 SECONDS), target = src))
-			if(src.loc) //Let's check if the pile still exists
+			if(src.loc) // Let's check if the pile still exists
 				do_search(user)
 	else
 		return ..()
 
-//Random lists
+// Random lists
 /obj/structure/trash_pile/proc/produce_alpha_item()
 	var/lootspawn = pick_weight(GLOB.maintenance_loot)
 	while(islist(lootspawn))
@@ -100,11 +100,11 @@
 	user.visible_message(span_warning("[user] starts diving into [src]."), \
 								span_notice("You start diving into [src]..."))
 	var/adjusted_dive_time = hide_person_time
-	if(HAS_TRAIT(user, TRAIT_RESTRAINED)) //hiding takes twice as long when restrained.
+	if(HAS_TRAIT(user, TRAIT_RESTRAINED)) // hiding takes twice as long when restrained.
 		adjusted_dive_time *= 2
 
 	if(do_mob(user, user, adjusted_dive_time))
-		if(src.loc) //Checking if structure has been destroyed
+		if(src.loc) // Checking if structure has been destroyed
 			if(do_dive(user))
 				to_chat(user, span_notice("You hide in the trashpile."))
 				user.forceMove(src)

@@ -1,4 +1,4 @@
-//MODULAR ID TRIM ACCESS OVERRIDES GO HERE!!
+// MODULAR ID TRIM ACCESS OVERRIDES GO HERE!!
 
 /datum/id_trim/job/head_of_security
 	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'

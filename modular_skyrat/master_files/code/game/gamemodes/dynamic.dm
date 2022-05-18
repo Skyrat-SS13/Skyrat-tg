@@ -1,4 +1,4 @@
-//A lite version of the intercept, which only sends a paper with goals and a trait report (or a lack thereof)
+// A lite version of the intercept, which only sends a paper with goals and a trait report (or a lack thereof)
 /datum/game_mode/dynamic/proc/send_trait_report()
 	. = "<b><i>Central Command Status Summary</i></b><hr>"
 
@@ -8,7 +8,7 @@
 		if(ruleset.weight <= 0 || ruleset.cost <= 0)
 			continue
 		min_threat = min(ruleset.cost, min_threat)
-	var/greenshift = GLOB.dynamic_forced_extended || (threat_level < min_threat && shown_threat < min_threat) //if both shown and real threat are below any ruleset, its extended time
+	var/greenshift = GLOB.dynamic_forced_extended || (threat_level < min_threat && shown_threat < min_threat) // if both shown and real threat are below any ruleset, its extended time
 	generate_station_goals(greenshift)
 
 	if(!GLOB.station_goals.len)

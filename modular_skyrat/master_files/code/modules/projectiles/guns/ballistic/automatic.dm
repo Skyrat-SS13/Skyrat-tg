@@ -85,7 +85,7 @@
 	burst_size = 5
 	spread = 25
 	can_suppress = FALSE
-	projectile_damage_multiplier = 0.35 //It's like 10.5 damage per bullet, it's close enough to 10 shots
+	projectile_damage_multiplier = 0.35 // It's like 10.5 damage per bullet, it's close enough to 10 shots
 	mag_display = TRUE
 	empty_indicator = TRUE
 	fire_sound = 'sound/weapons/gun/smg/shot_alt.ogg'
@@ -169,7 +169,7 @@
 /obj/item/gun/ballistic/automatic/tommygun/therealtommy
 	name = "Tommy gun"
 	desc = "The classic 'Chicago Typewriter'."
-	company_flag = null //This is the real deal, you hear?
+	company_flag = null // This is the real deal, you hear?
 
 /obj/item/gun/ballistic/automatic/ar
 	name = "\improper NT-ARG 'Boarder'"
@@ -251,7 +251,7 @@
 		. = ..()
 		update_appearance()
 
-//ATTACK HAND IGNORING PARENT RETURN VALUE
+// ATTACK HAND IGNORING PARENT RETURN VALUE
 /obj/item/gun/ballistic/automatic/l6_saw/attack_hand(mob/user, list/modifiers)
 	if (loc != user)
 		..()
@@ -340,7 +340,7 @@
 	fire_delay = 2
 	can_suppress = FALSE
 	burst_size = 0
-	//actions_types = list() SKYRAT EDIT REMOVAL
+	// actions_types = list() SKYRAT EDIT REMOVAL
 	fire_select_modes = list(SELECT_SEMI_AUTOMATIC)
 	fire_sound = 'sound/weapons/laser.ogg'
 	casing_ejector = FALSE

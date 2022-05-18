@@ -1,4 +1,4 @@
-///SYNDICATE ID TRIMS
+/// SYNDICATE ID TRIMS
 /datum/id_trim/syndicom/skyrat
 	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
 
@@ -12,7 +12,7 @@
 	trim_state = "trim_syndicateshipcaptain"
 	access = list(ACCESS_SYNDICATE, ACCESS_ROBOTICS)
 
-///DS-2
+/// DS-2
 
 /datum/id_trim/syndicom/skyrat/assault
 	assignment = "DS-2 Operative"
@@ -64,7 +64,7 @@
 	trim_state = "trim_stationadmiral"
 	access = list(ACCESS_ENGINE_EQUIP, ACCESS_SYNDICATE, ACCESS_ROBOTICS, ACCESS_SYNDICATE_LEADER)
 
-///Interdyne
+/// Interdyne
 
 /datum/id_trim/syndicom/skyrat/interdyne
 	assignment = "Interdyne Operative"
@@ -79,12 +79,12 @@
 	trim_state = "trim_deckofficer"
 	access = list(ACCESS_SYNDICATE, ACCESS_ROBOTICS, ACCESS_SYNDICATE_LEADER)
 
-///Misc
+/// Misc
 
 /datum/id_trim/syndicom/skyrat/misc
-	assignment = "Nuclear Tech Support" //Hello? Yes? Nanotrasen? This is Gorlex, uhh. There seems to be an issue.. is your self-destruct running?
+	assignment = "Nuclear Tech Support" // Hello? Yes? Nanotrasen? This is Gorlex, uhh. There seems to be an issue.. is your self-destruct running?
 
-/datum/id_trim/syndicom/skyrat/misc/corporateliasion //Syndicate HoP
+/datum/id_trim/syndicom/skyrat/misc/corporateliasion // Syndicate HoP
 	assignment = "Corporate Liaison"
 	trim_state = "trim_corporateliaison"
 
@@ -112,11 +112,11 @@
 	assignment = "Sanitation Technician"
 	trim_state = "trim_sanitationtechnician"
 
-/datum/id_trim/syndicom/skyrat/misc/deckcrewman //Finally, an excuse to emag the supply console.
+/datum/id_trim/syndicom/skyrat/misc/deckcrewman // Finally, an excuse to emag the supply console.
 	assignment = "Deck Crewman"
 	trim_state = "trim_deckcrewman"
 
-///No Custom Icon
+/// No Custom Icon
 /datum/id_trim/syndicom/skyratnoicon/roboticstechnician
 	assignment = "Robotics Technician"
 	trim_state = "trim_roboticist"

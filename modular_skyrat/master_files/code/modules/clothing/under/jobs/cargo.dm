@@ -1,5 +1,5 @@
 /obj/item/clothing/under/rank/cargo
-	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/under/cargo_digi.dmi' //Anything that was in the cargo.dmi, should be in the cargo_digi.dmi
+	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/under/cargo_digi.dmi' // Anything that was in the cargo.dmi, should be in the cargo_digi.dmi
 
 /obj/item/clothing/under/rank/cargo/tech/skyrat
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/cargo.dmi'
@@ -9,7 +9,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/cargo.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/cargo.dmi'
 
-//Add a /obj/item/clothing/under/rank/cargo/miner/skyrat if you add miner uniforms
+// Add a /obj/item/clothing/under/rank/cargo/miner/skyrat if you add miner uniforms
 
 ////////////////////////////////////////
 ////////////// CARGO TECH //////////////
@@ -22,7 +22,7 @@
 	can_adjust = FALSE
 
 /obj/item/clothing/under/rank/cargo/tech/skyrat/utility/syndicate
-	armor = list(MELEE = 10, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 40) //Same stats as the tactical turtleneck.
+	armor = list(MELEE = 10, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 40) // Same stats as the tactical turtleneck.
 	has_sensor = NO_SENSORS
 
 /obj/item/clothing/under/rank/cargo/tech/skyrat/long
