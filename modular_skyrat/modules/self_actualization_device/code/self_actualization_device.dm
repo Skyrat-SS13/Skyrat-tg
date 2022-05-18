@@ -4,7 +4,7 @@
 	id = "self_actualization_device"
 	build_path = /obj/item/circuitboard/machine/self_actualization_device
 	category = list("Medical Machinery")
-	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
+	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /obj/item/circuitboard/machine/self_actualization_device
 	name = "Self-Actualization Device (Machine Board)"

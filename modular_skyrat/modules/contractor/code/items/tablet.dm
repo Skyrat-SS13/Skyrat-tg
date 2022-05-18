@@ -9,7 +9,6 @@
 
 	hard_drive.store_file(uplink)
 
-	install_component(new /obj/item/computer_hardware/processor_unit/small)
 	install_component(new /obj/item/computer_hardware/battery(src, /obj/item/stock_parts/cell/computer))
 	install_component(hard_drive)
 	install_component(new /obj/item/computer_hardware/network_card)
