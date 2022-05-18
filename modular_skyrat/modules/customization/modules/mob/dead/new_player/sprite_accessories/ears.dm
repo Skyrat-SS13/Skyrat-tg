@@ -120,6 +120,18 @@
 	color_src = USE_ONE_COLOR
 	default_color = DEFAULT_SKIN_OR_PRIMARY
 
+/datum/sprite_accessory/ears/mutant/elf/wide
+	name = "Wide Elf"
+	icon_state = "elfwide"
+
+/datum/sprite_accessory/ears/mutant/elf/broad
+	name = "Broad Elf"
+	icon_state = "elfbroad"
+
+/datum/sprite_accessory/ears/mutant/elf/longer
+	name = "Longer Elf"
+	icon_state = "elflonger"
+
 /datum/sprite_accessory/ears/mutant/elephant
 	name = "Elephant"
 	icon_state = "elephant"
@@ -330,15 +342,3 @@
 	name = "Mouse"
 	icon_state = "mouse"
 	color_src = USE_ONE_COLOR
-
-/datum/sprite_accessory/ears/mutant/elf/wide
-	name = "Wide Elf"
-	icon_state = "elfwide"
-
-/datum/sprite_accessory/ears/mutant/elf/broad
-	name = "Broad Elf"
-	icon_state = "elfbroad"
-
-/datum/sprite_accessory/ears/mutant/elf/longer
-	name = "Longer Elf"
-	icon_state = "elflonger"
