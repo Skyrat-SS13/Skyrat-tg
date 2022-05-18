@@ -12,7 +12,7 @@
 	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
 	mask = /obj/item/clothing/mask/gas/sechailer/swat
 	glasses = /obj/item/clothing/glasses/hud/toggle/thermal
-	l_pocket = /obj/item/crowbar/power //this is their "all access" pass lmao
+	l_pocket = /obj/item/flashlight
 	r_pocket = /obj/item/tank/internals/emergency_oxygen/double
 	belt = /obj/item/storage/belt/security/full
 	l_hand = /obj/item/gun/energy/pulse/carbine/loyalpin //if this is still bulky make it not bulky and storable on belt/back/bag/exosuit
@@ -23,8 +23,9 @@
 
 	backpack_contents = list(/obj/item/storage/box/survival/engineer = 1,\
 		/obj/item/storage/medkit/regular = 1,\
-		/obj/item/flashlight = 1,\
-		/obj/item/storage/box/handcuffs = 1)
+		/obj/item/storage/box/handcuffs = 1,\
+		/obj/item/crowbar/power = 1, //this is their "all access" pass lmao
+		)
 
 /datum/outfit/centcom/asset_protection/post_equip(mob/living/carbon/human/person, visualsOnly = FALSE)
 	if(visualsOnly)
