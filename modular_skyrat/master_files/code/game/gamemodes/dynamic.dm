@@ -23,6 +23,6 @@
 	. += "<hr>This concludes your shift-start evaluation. Have a secure shift!<hr>\
 	<p style=\"color: grey; text-align: justify;\">This label certifies an Intern has reviewed the above before sending. This document is the property of Nanotrasen Corporation.</p>"
 
-	print_command_report(., "Central Command Status Summary", announce=FALSE)
+	print_command_report(., "Central Command Status Summary", announce = FALSE)
 	priority_announce("Hello, crew of [station_name()]. Our intern has finished their shift-start divergency and goals evaluation, which has been sent to your communications console. Have a secure shift!", "Divergency Report", SSstation.announcer.get_rand_report_sound())
-	
+

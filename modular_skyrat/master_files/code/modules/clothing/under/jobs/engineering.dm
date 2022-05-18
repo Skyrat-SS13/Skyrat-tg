@@ -18,7 +18,7 @@
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 60, ACID = 20) //Same stats as default engineering jumpsuit
 
 /obj/item/clothing/under/rank/engineering/engineer/skyrat/utility/syndicate
-	armor = list(MELEE = 10, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 40) //Same stats as the tactical turtleneck.
+	armor = list(MELEE = 10, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 40) //Same stats as the tactical turtleneck.
 	has_sensor = NO_SENSORS
 
 /obj/item/clothing/under/rank/engineering/engineer/skyrat/hazard_chem

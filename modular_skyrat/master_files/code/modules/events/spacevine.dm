@@ -63,7 +63,7 @@
 	if(length(turfs))
 		var/turf/floor = pick(turfs)
 		//spawn a controller at turf with randomized stats and a single random mutation
-		new /datum/spacevine_controller(floor, list(pick(subtypesof(/datum/spacevine_mutation))), rand(10,100), rand(1,6), src)
+		new /datum/spacevine_controller(floor, list(pick(subtypesof(/datum/spacevine_mutation))), rand(10, 100), rand(1, 6), src)
 		for(var/spawn_venus in 1 to 2)
 			new /mob/living/simple_animal/hostile/venus_human_trap(floor)
 
