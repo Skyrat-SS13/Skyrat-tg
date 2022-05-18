@@ -36,13 +36,13 @@
 
 //Bullets
 /obj/projectile/bullet/s14gauge_slug
-	name = "12g shotgun slug"
+	name = "14g shotgun slug"
 	damage = 35
 	sharpness = SHARP_POINTY
 	wound_bonus = 0
 
 /obj/projectile/bullet/s14gauge_beanbag
-	name = "beanbag slug"
+	name = "14g beanbag slug"
 	damage = 5
 	stamina = 30
 	wound_bonus = 0
@@ -79,9 +79,9 @@
 /obj/projectile/bullet/s14gauge_stunslug
 	name = "stunslug"
 	damage = 5
-	knockdown = 100
-	stutter = 5
-	jitter = 20
+	paralyze = 100
+	stutter = 5 SECONDS
+	jitter = 10 SECONDS
 	range = 7
 	icon_state = "spark"
 	color = "#FFFF00"
