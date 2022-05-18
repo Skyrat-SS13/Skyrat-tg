@@ -871,7 +871,7 @@
 // Donation reward for CandleJax
 /obj/item/clothing/head/bio_hood/jax
 	name = "xuracorp biohazard hood"
-	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/head.dmi'
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
 	icon_state = "bio_hood_jax"
 	inhand_icon_state = "bio_hood_jax"
