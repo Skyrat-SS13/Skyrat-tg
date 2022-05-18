@@ -30,9 +30,6 @@
 	color_src = null
 	factual = FALSE
 
-/datum/sprite_accessory/ears/mutant/big
-	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/ears_big.dmi'
-
 /datum/sprite_accessory/ears/mutant/vulpkanin
 	recommended_species = list(SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_HUMAN, SPECIES_SYNTHHUMAN, SPECIES_FELINE, SPECIES_VULP, SPECIES_HUMANOID, SPECIES_GHOUL)
 
