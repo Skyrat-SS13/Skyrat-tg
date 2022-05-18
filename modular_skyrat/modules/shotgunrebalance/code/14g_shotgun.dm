@@ -41,6 +41,14 @@
 	sharpness = SHARP_POINTY
 	wound_bonus = 0
 
+/obj/projectile/bullet/s14gauge_slug_hp
+	name = "14g hollow point shotgun slug"
+	damage = 50
+	sharpness = SHARP_POINTY
+	wound_bonus = 0
+	bare_wound_bonus = 20
+	weak_against_armour = TRUE
+
 /obj/projectile/bullet/s14gauge_beanbag
 	name = "14g beanbag slug"
 	damage = 5
@@ -63,11 +71,11 @@
 
 /obj/projectile/bullet/pellet/s14gauge/buckshot/magnum
 	name = "magnum buckshot pellet"
-	damage = 9
+	damage = 8
 	wound_bonus = 4
 	bare_wound_bonus = 4
 	wound_falloff_tile = -2.5 // low damage + additional dropoff will already curb wounding potential anything past point blank
-	weak_against_armour = TRUE
+	weak_against_armour = FALSE
 
 /obj/projectile/bullet/pellet/s14gauge/rubbershot
 	name = "rubbershot pellet"
@@ -75,6 +83,16 @@
 	stamina = 8
 	sharpness = NONE
 	embedding = null
+
+/obj/projectile/bullet/pellet/s14gauge/beehive
+	name = "beehive pellet"
+	damage = 6
+	tile_dropoff = 0.3
+	tile_dropoff_s = 0.15
+	wound_bonus = 3
+	bare_wound_bonus = 3
+	wound_falloff_tile = -2.5 // low damage + additional dropoff will already curb wounding potential anything past point blank
+	weak_against_armour = TRUE
 
 /obj/projectile/bullet/s14gauge_stunslug
 	name = "stunslug"
@@ -113,6 +131,15 @@
 	custom_materials = list(/datum/material/iron=500)
 	projectile_type = /obj/projectile/bullet/s14gauge_slug
 
+/obj/item/ammo_casing/s14gauge/hp
+	name = "14 gauge hollow point shotgun slug"
+	desc = "A 14 gauge hollow point slug purpose built for unarmored targets."
+	icon_state = "blshell"
+	worn_icon_state = "shell"
+	caliber = CALIBER_14GAUGE
+	custom_materials = list(/datum/material/iron=500)
+	projectile_type = /obj/projectile/bullet/s14gauge_slug_hp
+
 /obj/item/ammo_casing/s14gauge/beanbag
 	name = "14 gauge beanbag slug"
 	desc = "A weak beanbag slug for riot control."
@@ -128,6 +155,14 @@
 	projectile_type = /obj/projectile/bullet/pellet/s14gauge/buckshot
 	pellets = 7 // 7 x 6 = 42 Damage potential
 	variance = 15
+
+/obj/item/ammo_casing/s14gauge/magnum
+	name = "14 gauge magnum buckshot shell"
+	desc = "A 14 gauge magnum buckshot shell with higher spread and bigger pellets. It is able to contend against armored targets."
+	icon_state = "gshell"
+	projectile_type = /obj/projectile/bullet/pellet/s14gauge/buckshot/magnum
+	pellets = 5 // 5 x 8 = 40 Damage potential
+	variance = 20
 
 /obj/item/ammo_casing/s14gauge/rubbershot
 	name = "14 gauge rubber shot"

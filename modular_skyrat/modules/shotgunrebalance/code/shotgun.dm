@@ -31,6 +31,18 @@
 	damage = 40
 	armour_penetration = 50
 
+/obj/item/ammo_casing/shotgun/rip
+	name = "RIP shotgun slug"
+	desc = "Radically Invasive Projectile Slug that is designed to cause massive damage against unarmored targets."
+	icon_state = "stunshell"
+	projectile_type = /obj/projectile/bullet/shotgun_slug/rip
+	custom_materials = list(/datum/material/iron=500,/datum/material/plasma=500,/datum/material/diamond=500)
+
+/obj/projectile/bullet/shotgun_slug/rip
+	name = "RIP shotgun slug"
+	damage = 50
+	weak_against_armour = TRUE
+	embedding = list(embed_chance=80, pain_chance=40, fall_chance=5, jostle_chance=5, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.5, pain_mult=5, rip_time=30)
 
 /obj/item/ammo_casing/shotgun/buckshot
 	name = "buckshot shell"
@@ -50,7 +62,7 @@
 
 /obj/item/ammo_casing/shotgun/magnum
 	name = "magnum buckshot shell"
-	desc = "A 12 gauge buckshot shell that fires bigger pellets but has more spread. It is able to content against armored targets."
+	desc = "A 12 gauge buckshot shell that fires bigger pellets but has more spread. It is able to contend against armored targets."
 	icon_state = "gshell"
 	projectile_type = /obj/projectile/bullet/pellet/shotgun_buckshot/magnum
 	pellets = 6 //6 x 10 = 60 Damage Potential, 27 Damage at 4 tile range
@@ -87,7 +99,7 @@
 	name = "flechette"
 	damage = 6
 	weak_against_armour = FALSE //Were here to rip armor
-	armour_penetration = 20
+	armour_penetration = 40
 	wound_bonus = 9
 	bare_wound_bonus = 0
 	sharpness = SHARP_EDGED //Did you knew flechettes fly sideways into people
