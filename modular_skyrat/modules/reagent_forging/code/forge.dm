@@ -68,16 +68,18 @@
 		"Shovel" = /obj/item/forging/incomplete/shovel,
 		"Arrowhead" = /obj/item/forging/incomplete/arrowhead,
 	)
-	///radial buttons for cooking food
+	///radial button for acting as an oven on a food object
 	var/static/radial_oven = image(icon = 'modular_skyrat/modules/reagent_forging/icons/hud/forge_radials.dmi', icon_state = "oven")
+	///radial button for acting as a microwave on a food object
 	var/static/radial_microwave = image(icon = 'modular_skyrat/modules/reagent_forging/icons/hud/forge_radials.dmi', icon_state = "microwave")
 
+	///list containing cooking radial buttons, for when anything of /obj/item/food is used on the forge
 	var/static/list/radial_options = list("oven" = radial_oven, "microwave" = radial_microwave)
 
 /obj/structure/reagent_forge/examine(mob/user)
 	. = ..()
 	. += span_warning("<br>Perhaps using your hand on [src] when skilled will do something...<br>")
-	. += span_notice("You could probably use [src] to bake and cook things...<br>")
+	. += span_notice("You could probably use [src] to <b>bake</b> or <b>cook</b> food...<br>")
 	switch(forge_level)
 		if(FORGE_LEVEL_ZERO)
 			. += span_notice("[src] has not yet been touched by a smithy.<br>")
