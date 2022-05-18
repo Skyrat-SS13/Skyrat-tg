@@ -24,11 +24,13 @@
 	desc = "A 12 gauge plastitanium slug purpose built to penetrate armored targets."
 	icon_state = "stunshell"
 	projectile_type = /obj/projectile/bullet/shotgun_slug/pt20
+	custom_materials = list(/datum/material/iron=500,/datum/material/plasma=500,/datum/material/titanium=500)
 
 /obj/projectile/bullet/shotgun_slug/pt20
 	name = "armor piercing shotgun slug"
 	damage = 40
 	armour_penetration = 50
+
 
 /obj/item/ammo_casing/shotgun/buckshot
 	name = "buckshot shell"
@@ -48,7 +50,7 @@
 
 /obj/item/ammo_casing/shotgun/magnum
 	name = "magnum buckshot shell"
-	desc = "A 12 gauge buckshot shell that fires bigger pellets but has more spread."
+	desc = "A 12 gauge buckshot shell that fires bigger pellets but has more spread. It is able to content against armored targets."
 	icon_state = "gshell"
 	projectile_type = /obj/projectile/bullet/pellet/shotgun_buckshot/magnum
 	pellets = 6 //6 x 10 = 60 Damage Potential, 27 Damage at 4 tile range
@@ -88,7 +90,7 @@
 	armour_penetration = 20
 	wound_bonus = 9
 	bare_wound_bonus = 0
-	sharpness = SHARP_EDGED
+	sharpness = SHARP_EDGED //Did you knew flechettes fly sideways into people
 
 /obj/projectile/bullet/pellet/shotgun_improvised
 	weak_against_armour = TRUE // We will not have Improvised are Better 2.0

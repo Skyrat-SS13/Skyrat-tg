@@ -126,7 +126,7 @@
 	desc = "A 14 gauge  buckshot shell."
 	icon_state = "gshell"
 	projectile_type = /obj/projectile/bullet/pellet/s14gauge/buckshot
-	pellets = 7 //
+	pellets = 7 // 7 x 6 = 42 Damage potential
 	variance = 15
 
 /obj/item/ammo_casing/s14gauge/rubbershot
