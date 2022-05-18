@@ -441,6 +441,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "vest_bulletproof"
 	body_parts_covered = CHEST|GROIN|ARMS // Our sprite has groin and arm protections, so we get it too.
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 //Warden's Vest
 /obj/item/clothing/suit/armor/vest/warden
@@ -560,23 +561,23 @@
 //
 // This code overrides security's jumpskirt preference, as we're not going to be giving them jumpskirts
 //
-/datum/outfit/job/security/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/security/pre_equip(mob/living/carbon/human/affected_mob)
+	if(affected_mob.jumpsuit_style == PREF_SKIRT)
+		to_chat(affected_mob, span_alertwarning("Lopland Peacekeeper uniforms don't include a skirt variant! You've been equipped with a jumpsuit instead."))
+		affected_mob.jumpsuit_style = PREF_SUIT
 	. = ..()
-	if(H.jumpsuit_style == PREF_SKIRT)
-		to_chat(H, span_alertwarning("Lopland Peacekeeper uniforms don't include a Skirt variant! You've been equipped with a jumpsuit instead."))
-		uniform = /obj/item/clothing/under/rank/security/officer
 
-/datum/outfit/job/hos/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/hos/pre_equip(mob/living/carbon/human/affected_mob)
+	if(affected_mob.jumpsuit_style == PREF_SKIRT)
+		to_chat(affected_mob, span_alertwarning("Lopland Peacekeeper uniforms don't include a skirt variant! You've been equipped with a jumpsuit instead."))
+		affected_mob.jumpsuit_style = PREF_SUIT
 	. = ..()
-	if(H.jumpsuit_style == PREF_SKIRT)
-		to_chat(H, span_alertwarning("Lopland Peacekeeper uniforms don't include a Skirt variant! You've been equipped with a jumpsuit instead."))
-		uniform = /obj/item/clothing/under/rank/security/head_of_security
 
-/datum/outfit/job/warden/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/warden/pre_equip(mob/living/carbon/human/affected_mob)
+	if(affected_mob.jumpsuit_style == PREF_SKIRT)
+		to_chat(affected_mob, span_alertwarning("Lopland Peacekeeper uniforms don't include a skirt variant! You've been equipped with a jumpsuit instead."))
+		affected_mob.jumpsuit_style = PREF_SUIT
 	. = ..()
-	if(H.jumpsuit_style == PREF_SKIRT)
-		to_chat(H, span_alertwarning("Lopland Peacekeeper uniforms don't include a Skirt variant! You've been equipped with a jumpsuit instead."))
-		uniform = /obj/item/clothing/under/rank/security/warden
 
 //PDA Greyscale Overrides
 /obj/item/modular_computer/tablet/pda/security

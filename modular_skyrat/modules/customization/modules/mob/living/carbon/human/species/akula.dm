@@ -1,7 +1,6 @@
 /datum/species/akula
 	name = "Akula"
 	id = SPECIES_AKULA
-	default_color = "#4B4B4B"
 	species_traits = list(
 		MUTCOLORS,
 		EYECOLOR,

@@ -1,7 +1,6 @@
 /datum/species/hemophage
 	name = "Hemophage"
 	id = SPECIES_HEMOPHAGE
-	default_color = "FFFFFF"
 	species_traits = list(
 		EYECOLOR,
 		HAIR,

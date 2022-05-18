@@ -1,7 +1,6 @@
 /datum/species/tajaran
 	name = "Tajaran"
 	id = SPECIES_TAJARAN
-	default_color = "#4B4B4B"
 	say_mod = "meows"
 	species_traits = list(
 		MUTCOLORS,

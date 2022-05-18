@@ -4,7 +4,6 @@
 	id = SPECIES_VOX
 	eyes_icon = 'modular_skyrat/master_files/icons/mob/species/vox_eyes.dmi'
 	say_mod = "skrees"
-	default_color = "#00FF00"
 	can_augment = FALSE
 	species_traits = list(
 		MUTCOLORS,

@@ -2,7 +2,7 @@
 #define CHOICE_CONTINUE "Continue Playing"
 
 /datum/vote/transfer_vote
-	name = "Restart"
+	name = "Transfer"
 	default_choices = list(
 		CHOICE_TRANSFER,
 		CHOICE_CONTINUE,
@@ -16,16 +16,15 @@
 	return TRUE
 
 /datum/vote/transfer_vote/is_config_enabled()
-	return CONFIG_GET(flag/allow_vote_restart)
+	return CONFIG_GET(flag/autotransfer)
 
 /datum/vote/transfer_vote/can_be_initiated(mob/by_who, forced)
 	. = ..()
 	if(!.)
 		return FALSE
 
-	if(!forced && !CONFIG_GET(flag/allow_vote_restart))
-		if(by_who)
-			to_chat(by_who, span_warning("Restart voting is disabled."))
+	if(!forced && !CONFIG_GET(flag/autotransfer) && !by_who && !check_rights_for(by_who.client, R_ADMIN))
+		to_chat(by_who, span_warning("Transfer voting is disabled."))
 		return FALSE
 
 	return TRUE

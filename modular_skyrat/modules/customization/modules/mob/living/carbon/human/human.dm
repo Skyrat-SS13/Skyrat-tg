@@ -100,38 +100,4 @@
 	to_chat(usr, span_notice("[try_hide_mutant_parts ? "You try and hide your mutant body parts under your clothes." : "You no longer try and hide your mutant body parts"]"))
 	update_mutant_bodyparts()
 
-/mob/living/carbon/human/verb/acting()
-	set category = "IC"
-	set name = "Feign Impairment"
-	set desc = "Slur, stutter or jitter for a short duration."
 
-	if(stat != CONSCIOUS)
-		to_chat(usr, span_warning("You can't do this right now..."))
-		return
-
-	var/list/choices = list("Drunkenness", "Stuttering", "Jittering")
-	if(jitteriness >= 10) //Give the option to end the impairment if there's one ongoing.
-		var/disable = tgui_input_list(src, "Stop performing existing impairment?", "Impairments", choices)
-		if(disable)
-			acting_expiry(disable)
-			return
-
-	var/impairment = tgui_input_list(src, "Select an impairment to perform:", "Impairments", choices)
-	if(!impairment)
-		return
-
-	var/duration = tgui_input_number(src, "How long would you like to feign [impairment] for?", "Duration in seconds", 25, 36000)
-	switch(impairment)
-		if("Jittering")
-			jitteriness = duration
-
-	if(duration)
-		addtimer(CALLBACK(src, .proc/acting_expiry, impairment), duration SECONDS)
-		to_chat(src, "You are now feigning [impairment].")
-
-/mob/living/carbon/human/proc/acting_expiry(var/impairment) //End only the impairment we're affected by.
-	if(impairment)
-		switch(impairment)
-			if("Jittering")
-				jitteriness = 0
-		to_chat(src, "You are no longer feigning [impairment].")

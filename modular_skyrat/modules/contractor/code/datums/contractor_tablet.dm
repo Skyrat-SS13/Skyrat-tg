@@ -29,7 +29,7 @@
 		return
 
 	var/mob/living/user = usr
-	var/obj/item/computer_hardware/hard_drive/small/syndicate/hard_drive = computer.all_components[MC_HDD]
+	var/obj/item/computer_hardware/hard_drive/portable/syndicate/hard_drive = computer.all_components[MC_HDD]
 
 	switch(action)
 		if("PRG_contract-accept")
@@ -127,7 +127,7 @@
 
 /datum/computer_file/program/contract_uplink/ui_data(mob/user)
 	var/list/data = list()
-	var/obj/item/computer_hardware/hard_drive/small/syndicate/hard_drive = computer.all_components[MC_HDD]
+	var/obj/item/computer_hardware/hard_drive/portable/syndicate/hard_drive = computer.all_components[MC_HDD]
 	var/screen_to_be = null
 
 	data["first_load"] = first_load
