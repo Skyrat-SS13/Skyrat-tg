@@ -812,3 +812,45 @@
   - bugfix: Lightning bolt spell will give tesla shock immunity when granted by an
       admin
   - spellcheck: fixed an outdated quip about buying scipapers in the experiment status
+2022-05-18:
+  Dorsidwarf:
+  - rscadd: Replaced table-crafting fried eggs with good old-fashioned frying on the
+      chef's griddle.
+  - bugfix: Changed the double-yolk sprite that only the fried-egg (And not foods
+      using it) had to a single.
+  Melbert:
+  - code_imp: Adds radial support to stack crafting.
+  - qol: Cult buildings are now made via radial, instead of stack window.
+  - qol: Stack craftingnow uses balloon alerts.
+  - bugfix: Fixes mind restoration causing dizziness instead of healing it
+  SkyratBot:
+  - balance: Sending PDA's to all is now configured by the WireCarp app, rather than
+      being tied to Law office access.
+  - qol: Security General access has been simplified
+  - bugfix: Detectives ability to brig crew has been moved to skeleton crew access
+      to fit the job function
+  - bugfix: Detectives now have general access to all general areas of security consistently
+      across all stations
+  - code_imp: pod cloning logging is now in investigate botany
+  - imageadd: Turned vapes into GAGS making them recolorable from vendors.
+  - imagedel: Removed the massive ammount of old icons for vapes.
+  - balance: Snowdin.dmm is now in line with the design doc
+  - bugfix: Tank compressors' icons now visibly update when being rotated
+  - bugfix: Tank compressors' rotation after reconstruction actually work properly
+  - code_imp: '`/obj/machinery/atmospherics/components/proc/connect_nodes()` actually
+      gets called on every node of the atmospheric component'
+  - qol: Change drunk blur effect to scale based on intoxication
+  - bugfix: Jobs that are in several departments (like HoP, who is charged for Supply
+      but not Service) won't get charged lathe tax for any departments they are in.
+  - bugfix: non-cultists can now enter the pride ruin
+  - config: In case you were really keen on using Virtual Reality Hub stuff in your
+      code, do keep in mind that we've removed references to it in config.
+  - qol: ethereals can now press the ghost button to cancel crystallization and permanently
+      vacate their body
+  - refactor: Turned the forensics component into a datum.
+  - code_imp: If you're looking into patching out Active Turfs, the logging message
+      that alerts you to said Active Turfs is now a bit more verbose to getting you
+      put on the right track.
+  - bugfix: Experiments now work on non-station z-levels
+  oranges:
+  - bugfix: Slimes will once again feed on monkeys
