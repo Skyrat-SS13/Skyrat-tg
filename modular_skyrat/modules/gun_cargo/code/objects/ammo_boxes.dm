@@ -57,7 +57,7 @@
 
 /obj/item/ammo_box/c32/fire
 	name = "ammo box (.32 incendiary)"
-	ammo_type = /obj/item/ammo_casing/c32_incendiarydiary
+	ammo_type = /obj/item/ammo_casing/c32_incendiary
 
 /obj/item/ammo_box/c34
 	name = "ammo box (.34)"
@@ -76,7 +76,7 @@
 
 /obj/item/ammo_box/c34/fire
 	name = "ammo box (.34 incendiary)"
-	ammo_type = /obj/item/ammo_casing/c34_incendiarydiary
+	ammo_type = /obj/item/ammo_casing/c34_incendiary
 
 /obj/item/ammo_box/c12mm
 	name = "ammo box (12mm)"
