@@ -46,7 +46,7 @@
 
 //milking machine
 /obj/item/storage/box/milking_kit
-	name = "DIY Milking machine kit"
+	name = "DIY milking machine kit"
 	desc = "Contains everything you need to build your own milking machine!"
 
 /obj/item/storage/box/milking_kit/PopulateContents()
@@ -56,7 +56,7 @@
 
 //X-Stand
 /obj/item/storage/box/xstand_kit
-	name = "DIY X-Stand kit"
+	name = "DIY x-stand kit"
 	desc = "Contains everything you need to build your own X-stand!"
 
 /obj/item/storage/box/xstand_kit/PopulateContents()
@@ -86,7 +86,7 @@
 
 //Shibari stand
 /obj/item/storage/box/shibari_stand
-	name = "DIY Shibari stand kit"
+	name = "DIY shibari stand kit"
 	desc = "Contains everything you need to build your own shibari stand!"
 
 /obj/item/storage/box/shibari_stand/PopulateContents()

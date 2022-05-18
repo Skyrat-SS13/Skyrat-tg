@@ -76,7 +76,7 @@
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/head/intern/developer
-	name = "\improper Intern beancap"
+	name = "intern beancap"
 
 /obj/item/clothing/head/sec/navywarden/syndicate
 	name = "master at arms' beret"

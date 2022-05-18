@@ -254,7 +254,7 @@
 	company_flag = COMPANY_ARMADYNE
 
 /obj/item/ammo_box/magazine/multi_sprite/ladon
-	name = "10mm Auto pistol magazine"
+	name = "10mm auto pistol magazine"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "pdh"
 	ammo_type = /obj/item/ammo_casing/b10mm
@@ -291,7 +291,7 @@
 	company_flag = COMPANY_IZHEVSK
 
 /obj/item/ammo_box/magazine/multi_sprite/makarov
-	name = "small 10mm Auto pistol magazine"
+	name = "small 10mm auto pistol magazine"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "pdh"
 	ammo_type = /obj/item/ammo_casing/b10mm
@@ -506,7 +506,7 @@
 	company_flag = COMPANY_ARMADYNE
 
 /obj/item/ammo_box/magazine/dmr
-	name = ".557 DMR Magazine"
+	name = ".557 DMR magazine"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "dmr"
 	ammo_type = /obj/item/ammo_casing/b577
@@ -529,7 +529,7 @@
 	company_flag = COMPANY_BOLT
 
 /obj/item/ammo_box/magazine/internal/cylinder/zeta
-	name = "10mm Auto revolver cylinder"
+	name = "10mm auto revolver cylinder"
 	ammo_type = /obj/item/ammo_casing/c10mm
 	caliber = CALIBER_10MM
 	max_ammo = 6
@@ -582,7 +582,7 @@
 
 /////////////////SMARTGUN 40x32
 /obj/item/gun/ballistic/automatic/smartgun
-	name = "\improper OP-15 'S.M.A.R.T.' Rifle"
+	name = "\improper OP-15 'S.M.A.R.T.' rifle"
 	desc = "Suppressive Manual Action Reciprocating Taser rifle. A modified version of an Armadyne heavy machine gun fitted to fire miniature shock-bolts."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/smartgun.dmi'
 	righthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/righthand40x32.dmi'
@@ -742,7 +742,7 @@
 	max_ammo = 8
 
 /obj/item/gun/ballistic/shotgun/automatic/as2
-	name = "\improper M2 Auto-Shotgun"
+	name = "\improper M2 auto-shotgun"
 	desc = "A semi-automatic shotgun with a four-round internal tube."
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
 	icon_state = "as2"
@@ -859,7 +859,7 @@
 	AddComponent(/datum/component/scope, range_modifier = 1.75)
 
 /obj/item/ammo_box/magazine/multi_sprite/norwind
-	name = "12.7x30mm DMR Magazine"
+	name = "12.7x30mm DMR magazine"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "norwind"
 	ammo_type = /obj/item/ammo_casing/b12mm
@@ -1054,7 +1054,7 @@
 	can_bayonet = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/ostwind
-	name = "6.3mm Rifle Magazine"
+	name = "6.3mm rifle magazine"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "pcr"
 	ammo_type = /obj/item/ammo_casing/b6mm
