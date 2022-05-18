@@ -630,6 +630,7 @@
 		"smes",
 		"super_capacitor",
 		"super_cell",
+		"superpacman",
 		"turbine_compressor",
 		"turbine_rotor",
 		"turbine_stator",
