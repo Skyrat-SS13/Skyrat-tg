@@ -73,7 +73,21 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 /atom/proc/log_message(message, message_type, color = null, log_globally = TRUE)
 	if(!log_globally)
 		return
-
+	//SKYRAT EDIT ADDITION BEGIN
+	#ifndef SPACEMAN_DMM
+	if(CONFIG_GET(flag/sql_game_log) && CONFIG_GET(flag/sql_enabled))
+		var/datum/db_query/query_sql_log_messages = SSdbcore.NewQuery({"
+			INSERT INTO [format_table_name("game_log")] (datetime, round_id, ckey, loc, type, message)
+			VALUES (:time, :round_id, :ckey, :loc, :type, :message)
+		"}, list("time" = SQLtime(), "round_id" = "[GLOB.round_id]", "ckey" = key_name(src), "loc" = loc_name(src), type = message_type, "message" = message))
+		if(!query_sql_log_messages.warn_execute())
+			qdel(query_sql_log_messages)
+			return
+		qdel(query_sql_log_messages)
+		if(!CONFIG_GET(flag/file_game_log))
+			return
+	#endif
+	//SKYRAT EDIT ADDITION END
 	var/log_text = "[key_name(src)] [message] [loc_name(src)]"
 	switch(message_type)
 		if(LOG_ATTACK)
@@ -84,6 +98,10 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 			log_whisper(log_text)
 		if(LOG_EMOTE)
 			log_emote(log_text)
+		//SKYRAT EDIT ADDITION BEGIN
+		if(LOG_SUBTLER)
+			log_subtler(log_text)
+		//SKYRAT EDIT ADDITION END
 		if(LOG_RADIO_EMOTE)
 			log_radio_emote(log_text)
 		if(LOG_DSAY)
