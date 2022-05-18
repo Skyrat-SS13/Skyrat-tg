@@ -1576,6 +1576,7 @@
 /atom/proc/connect_to_shuttle(obj/docking_port/mobile/port, obj/docking_port/stationary/dock)
 	return
 
+<<<<<<< HEAD
 /**
  * Generic logging helper
  *
@@ -1748,6 +1749,8 @@
 
 	victim.log_message(message, LOG_ATTACK, color="blue")
 
+=======
+>>>>>>> 6ff4d03ee0c (Split and Document Logging Procs (#67052))
 /atom/proc/add_filter(name,priority,list/params)
 	LAZYINITLIST(filter_data)
 	var/list/copied_parameters = params.Copy()

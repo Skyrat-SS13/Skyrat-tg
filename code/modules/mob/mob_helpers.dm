@@ -341,6 +341,7 @@
 		var/mob/living/T = pick(nearby_mobs)
 		ClickOn(T)
 
+<<<<<<< HEAD
 /// Logs a message in a mob's individual log, and in the global logs as well if log_globally is true
 /mob/log_message(message, message_type, color=null, log_globally = TRUE)
 	if(!LAZYLEN(message))
@@ -390,6 +391,8 @@
 
 	..()
 
+=======
+>>>>>>> 6ff4d03ee0c (Split and Document Logging Procs (#67052))
 ///Can the mob hear
 /mob/proc/can_hear()
 	. = TRUE
