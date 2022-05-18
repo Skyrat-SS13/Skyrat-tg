@@ -6,6 +6,7 @@
 	key = "turf"
 	key_third_person = "turf"
 	cooldown = 4 SECONDS
+	/// The current turf ID that the user selected in the radial menu.
 	var/current_turf
 
 /datum/emote/living/mark_turf/run_emote(mob/living/user, params, type_override, intentional)
