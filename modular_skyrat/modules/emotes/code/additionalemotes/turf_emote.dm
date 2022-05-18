@@ -1,5 +1,3 @@
-var/current_turf
-
 /mob/living
 	var/obj/owned_turf
 	var/list/allowed_turfs = list()
@@ -8,6 +6,7 @@ var/current_turf
 	key = "turf"
 	key_third_person = "turf"
 	cooldown = 4 SECONDS
+	var/current_turf
 
 /datum/emote/living/mark_turf/run_emote(mob/living/user, params, type_override, intentional)
 	. = ..()
@@ -94,8 +93,7 @@ var/current_turf
 	if(do_after(user,10))
 		current_turf = chosen_turf
 
-		var/obj/turf_icon = /obj/structure/mark_turf
-		user.owned_turf = new turf_icon(get_turf(user))
+		user.owned_turf = new /obj/structure/mark_turf(get_turf(user), current_turf)
 		user.owned_turf.dir = user.dir
 
 		if(ishuman(user))
