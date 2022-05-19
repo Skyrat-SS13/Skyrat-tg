@@ -114,11 +114,24 @@
 	weak_against_armour = TRUE
 	sharpness = NONE
 	range = 8
-	embedding = list(embed_chance=70, pain_chance=25, fall_chance=25, jostle_chance=80, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.9, pain_mult=5, rip_time=10)
+	embedding = list(embed_chance=70, pain_chance=25, fall_chance=15, jostle_chance=80, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.9, pain_mult=5, rip_time=10)
 
 /obj/projectile/bullet/pellet/s14gauge/antitide/on_range()
 	do_sparks(1, TRUE, src)
 	..()
+
+/obj/projectile/bullet/pellet/s14gauge/iceblox //see /obj/projectile/temp for the original code
+	name = "iceblox pellet"
+	tile_dropoff = 0.35
+	damage = 5
+	weak_against_armour = TRUE
+	var/temperature = 30
+
+/obj/projectile/bullet/pellet/s14gauge/iceblox/on_hit(atom/target, blocked = FALSE)
+	. = ..()
+	if(isliving(target))
+		var/mob/living/M = target
+		M.adjust_bodytemperature(((30-blocked)/30)*(temperature - M.bodytemperature))
 
 /obj/projectile/bullet/s14gauge_stunslug
 	name = "stunslug"
@@ -218,7 +231,7 @@
 	desc = "A highly experimental shell filled with smart nanite pellets that re-aim themselves when bouncing off from surfaces. However they are not able to make out friend from foe."
 	icon_state = "stunshell"
 	projectile_type = /obj/projectile/bullet/pellet/s14gauge/beehive
-	custom_materials = list(/datum/material/iron=500,/datum/material/plasma=500)
+	custom_materials = list(/datum/material/iron=500,/datum/material/silver=500,/datum/material/plasma=500)
 	pellets = 5
 	variance = 20
 
@@ -228,6 +241,15 @@
 	icon_state = "stunshell"
 	projectile_type = /obj/projectile/bullet/pellet/s14gauge/antitide
 	custom_materials = list(/datum/material/iron=500,/datum/material/gold=500,/datum/material/uranium=500)
+	pellets = 5
+	variance = 20
+
+/obj/item/ammo_casing/s14gauge/iceblox
+	name = "14 gauge Iceshot shell"
+	desc = "A highly experimental shell filled with nanites that will lower the body temperature of hit targets."
+	icon_state = "stunshell"
+	projectile_type = /obj/projectile/bullet/pellet/s14gauge/iceblox
+	custom_materials = list(/datum/material/iron=500,/datum/material/plasma=500)
 	pellets = 5
 	variance = 20
 

@@ -102,7 +102,132 @@
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
 	autolathe_exportable = FALSE
 
+/datum/design/buckshot_shell_flechette
+	name = "Flechette Shell"
+	id = "flechette_shell"
+	build_type = PROTOLATHE | AWAY_LATHE
+	materials = list(/datum/material/iron = 1500, /datum/material/titanium = 1000)
+	build_path = /obj/item/ammo_casing/shotgun/flechette
+	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
+	autolathe_exportable = FALSE
+
 //14 Gauge
+/datum/design/s14g_shell_slug
+	name = "14 Gauge Shotgun Slug"
+	id = "s14g_shell_slug"
+	build_type = AUTOLATHE
+	materials = list(/datum/material/iron = 2000)
+	build_path = /obj/item/ammo_casing/s14gauge
+	category = list("hacked", "Security")
+
+/datum/design/s14g_shell_slug/sec
+	id = "sec_s14g_shell_slug"
+	build_type = PROTOLATHE | AWAY_LATHE
+	materials = list(/datum/material/iron = 1500)
+	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
+	autolathe_exportable = FALSE
+
+/datum/design/s14g_shell_buckshot
+	name = "14 Gauge Shotgun Slug"
+	id = "s14g_shell_buckshot"
+	build_type = AUTOLATHE
+	materials = list(/datum/material/iron = 1500)
+	build_path = /obj/item/ammo_casing/s14gauge/buckshot
+	category = list("hacked", "Security")
+
+/datum/design/s14g_shell_buckshot/sec
+	name = "Buckshot Shell"
+	id = "sec_s14g_shell_buckshot"
+	build_type = PROTOLATHE | AWAY_LATHE
+	materials = list(/datum/material/iron = 1000)
+	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
+	autolathe_exportable = FALSE
+
+/datum/design/s14g_shell_rubber
+	name = "14 Gauge Shotgun Slug"
+	id = "s14g_shell_slug"
+	build_type = AUTOLATHE
+	materials = list(/datum/material/iron = 1500)
+	build_path = /obj/item/ammo_casing/s14gauge/rubbershot
+	category = list("initial", "Security")
+
+/datum/design/s14g_shell_rubber/sec
+	name = "Buckshot Shell"
+	id = "sec_s14g_shell_buckshot"
+	build_type = PROTOLATHE | AWAY_LATHE
+	materials = list(/datum/material/iron = 1000)
+	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
+	autolathe_exportable = FALSE
+
+/datum/design/s14g_shell_beanbag
+	name = "14 Gauge Shotgun Slug"
+	id = "s14g_shell_beanbag"
+	build_type = AUTOLATHE
+	materials = list(/datum/material/iron = 2000)
+	build_path = /obj/item/ammo_casing/s14gauge/beanbag
+	category = list("initial", "Security")
+
+/datum/design/s14g_shell_beanbag/sec
+	name = "Buckshot Shell"
+	id = "sec_s14g_shell_beanbag"
+	build_type = PROTOLATHE | AWAY_LATHE
+	materials = list(/datum/material/iron = 1500)
+	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
+	autolathe_exportable = FALSE
+
+/datum/design/s14g_shell_hp
+	name = "Flechette Shell"
+	id = "sec_s14g_shell_hp"
+	build_type = PROTOLATHE | AWAY_LATHE
+	materials = list(/datum/material/iron = 2000)
+	build_path = /obj/item/ammo_casing/s14gauge/hp
+	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
+	autolathe_exportable = FALSE
+
+/datum/design/s14g_shell_stunslug
+	name = "Flechette Shell"
+	id = "sec_s14g_shell_stunslug"
+	build_type = PROTOLATHE | AWAY_LATHE
+	materials = list(/datum/material/iron = 2000, /datum/material/gold = 1000)
+	build_path = /obj/item/ammo_casing/s14gauge/stunslug
+	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
+	autolathe_exportable = FALSE
+
+/datum/design/s14g_shell_pyro
+	name = "Flechette Shell"
+	id = "sec_s14g_shell_pyro"
+	build_type = PROTOLATHE | AWAY_LATHE
+	materials = list(/datum/material/iron = 2000, /datum/material/plasma = 1000)
+	build_path = /obj/item/ammo_casing/s14gauge/pyro
+	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
+	autolathe_exportable = FALSE
+
+/datum/design/s14g_shell_beehive
+	name = "Flechette Shell"
+	id = "sec_s14g_shell_beehive"
+	build_type = PROTOLATHE | AWAY_LATHE
+	materials = list(/datum/material/iron = 2000, /datum/material/silver = 1000, /datum/material/plasma = 1000)
+	build_path = /obj/item/ammo_casing/s14gauge/beehive
+	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
+	autolathe_exportable = FALSE
+
+/datum/design/s14g_shell_antitide
+	name = "Flechette Shell"
+	id = "sec_s14g_shell_antitide"
+	build_type = PROTOLATHE | AWAY_LATHE
+	materials = list(/datum/material/iron = 2000, /datum/material/silver = 1000, /datum/material/plasma = 1000)
+	build_path = /obj/item/ammo_casing/s14gauge/antitide
+	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
+	autolathe_exportable = FALSE
+
+/datum/design/s14g_shell_iceblox
+	name = "Flechette Shell"
+	id = "sec_s14g_shell_iceblox"
+	build_type = PROTOLATHE | AWAY_LATHE
+	materials = list(/datum/material/iron = 2000, /datum/material/plasma = 1000)
+	build_path = /obj/item/ammo_casing/s14gauge/iceblox
+	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
+	autolathe_exportable = FALSE
 
 //Existing Designs Discounting
 

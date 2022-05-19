@@ -33,7 +33,7 @@
 
 /obj/item/ammo_casing/shotgun/rip
 	name = "RIP shotgun slug"
-	desc = "Radically Invasive Projectile Slug that is designed to cause massive damage against unarmored targets."
+	desc = "Radically Invasive Projectile Slug that is designed to cause massive damage against unarmored targets by embedding inside them."
 	icon_state = "stunshell"
 	projectile_type = /obj/projectile/bullet/shotgun_slug/rip
 	custom_materials = list(/datum/material/iron=500,/datum/material/plasma=500,/datum/material/diamond=500)
@@ -94,6 +94,7 @@
 	projectile_type = /obj/projectile/bullet/pellet/shotgun_buckshot/flechette
 	pellets = 8 //8 x 6 = 48 Damage Potential
 	variance = 25
+	custom_materials = list(/datum/material/iron=500,/datum/material/titanium=500)
 
 /obj/projectile/bullet/pellet/shotgun_buckshot/flechette
 	name = "flechette"
