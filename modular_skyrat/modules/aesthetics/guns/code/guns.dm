@@ -238,7 +238,7 @@
 
 /obj/item/gun/ballistic/automatic/ar/modular
 	name = "\improper NT ARG-63"
-	desc = "Nanotrasen's prime ballistic option based on the Stoner design, fitted with a light polymer frame and other tactical furniture - nicknamed 'Boarder' by Special Operations teams."
+	desc = "Nanotrasen's prime ballistic option based on the Stoner design, fitted with a light polymer frame and other tactical furniture, and chambered in .277 Aestus - nicknamed 'Boarder' by Special Operations teams."
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns_gubman2.dmi'
 	icon_state = "arg"
 	inhand_icon_state = "arg"
@@ -251,7 +251,7 @@
 
 /obj/item/gun/ballistic/rifle/boltaction
 	name = "\improper Sportiv precision rifle"
-	desc = "A rather antique sporting rifle dating back to the 2400s. 'НРИ - Коллегия обороны' is etched on the bolt."
+	desc = "A rather antique sporting rifle dating back to the 2400s chambered for .244 Acia. 'НРИ - Коллегия обороны' is etched on the bolt."
 	sawn_desc = "An extremely sawn-off Sportiv rifle, popularly known as an \"obrez\". There was probably a reason it wasn't manufactured this short to begin with."
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
 
@@ -299,7 +299,7 @@
 
 /obj/item/gun/ballistic/automatic/ar/modular/model75
 	name = "\improper NT ARG-75"
-	desc = "A contemporary rifle manufactured by NT. It's equipped with a heavy duty integrally suppressed barrel, 1.4 times scope and a topmounted laser sight."
+	desc = "A contemporary rifle manufactured by NT chambered for .244 Acia. It's equipped with a heavy duty integrally suppressed barrel, CQB scope and a topmounted laser sight."
 	icon_state = "arg75"
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
 	fire_sound = 'sound/weapons/gun/pistol/shot_suppressed.ogg'
