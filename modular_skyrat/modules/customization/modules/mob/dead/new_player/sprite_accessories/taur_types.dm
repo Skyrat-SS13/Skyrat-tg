@@ -134,7 +134,7 @@
 	icon_state = "noodle"
 	taur_mode = STYLE_TAUR_PAW
 
-/datum/sprite_accessory/taur/tentacle2
+/datum/sprite_accessory/taur/tentacle_alt
 	name = "Tentacle Alt"
 	icon_state = "tentaclealt"
 	taur_mode = STYLE_TAUR_SNAKE
