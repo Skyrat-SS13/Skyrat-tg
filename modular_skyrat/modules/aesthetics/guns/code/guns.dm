@@ -490,3 +490,30 @@
 	
 /obj/projectile/bullet/a50ae
 	name = ".454 Trucidator bullet"
+	
+	
+// MAGAZINES UPDATED TO MATCH STUFF
+
+/obj/item/ammo_box/magazine/wt550m9
+	name = "\improper WT-550 magazine"
+	desc = "A 20-round toploaded 8mm Usurpator magazine that fits neatly in the WT-550."
+	
+/obj/item/ammo_box/magazine/wt550m9/wtap
+	name = "\improper WT-550 AP magazine"
+	
+/obj/item/ammo_box/magazine/wt550m9/wtic
+	name = "\improper WT-550 IND magazine"
+	
+/obj/item/ammo_box/magazine/smgm45
+	name = ".460 Ceres SMG magazine"
+	desc = "A magazine chambered for .460 meant to fit in submachine guns."
+	
+/obj/item/ammo_box/magazine/smgm45/ap
+	name = ".460 Ceres AP SMG magazine"
+	
+/obj/item/ammo_box/magazine/smgm45/incen
+	name = ".460 Ceres IND SMG magazine"
+	
+/obj/item/ammo_box/magazine/tommygunm45
+	name = "\improper Tommy Gun .460 Ceres drum"
+	desc = "A disc magazine chambered for .460 Ceres."
