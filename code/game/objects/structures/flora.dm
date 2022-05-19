@@ -365,7 +365,7 @@
 	// SKYRAT EDIT START - OOK CHEE
 	if(icon_state == "monkeyplant")
 		var/obj/item/food/grown/banana/banana = I
-		if(!istype(I))
+		if(!istype(banana))
 			return
 		if(!COOLDOWN_FINISHED(src, banana_consumption_cooldown))
 			balloon_alert(user, "not hungry!")
