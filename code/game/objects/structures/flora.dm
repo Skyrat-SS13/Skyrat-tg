@@ -346,6 +346,8 @@
 
 	var/random_state_cap = 43 //SKYRAT EDIT ADDITION - KEEP THIS TO THE HIGHEST POTTED PLANT ICON STATE
 
+	COOLDOWN_DECLARE(banana_consumption_cooldown) // SKYRAT EDIT ADD
+
 /obj/item/kirbyplants/ComponentInitialize()
 	. = ..()
 	AddComponent(/datum/component/tactical)
@@ -364,7 +366,11 @@
 		var/obj/item/food/grown/banana/banana = I
 		if(!istype(I))
 			return
-		var/obj/item/grown/bananapeel/peel = banana.trash_type
+		if(!COOLDOWN_FINISHED(src, banana_consumption_cooldown))
+			balloon_alert(user, "not hungry!")
+			return
+		var/obj/item/grown/bananapeel/peel = new banana.trash_type(src.loc)
+		qdel(banana)
 		to_chat(user, span_notice("[src] chews up [banana], spitting out [peel]!"))
 		playsound(src, pick(list('sound/creatures/monkey/monkey_screech_1.ogg',
 			'sound/creatures/monkey/monkey_screech_2.ogg',
@@ -373,9 +379,8 @@
 			'sound/creatures/monkey/monkey_screech_5.ogg',
 			'sound/creatures/monkey/monkey_screech_6.ogg',
 			'sound/creatures/monkey/monkey_screech_7.ogg',
-		)), 70)
-		new peel(src.loc)
-		qdel(banana)
+		)), 40)
+		COOLDOWN_START(src, banana_consumption_cooldown, 1 MINUTE)
 	// SKYRAT EDIT END
 
 /// Cycle basic plant visuals
