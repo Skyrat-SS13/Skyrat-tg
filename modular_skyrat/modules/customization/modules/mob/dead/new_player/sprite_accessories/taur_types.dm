@@ -129,7 +129,7 @@
 	extra = TRUE
 	extra_color_src = MUTCOLORS2
 
-/datum/sprite_accessory/taur/chinesedragon
+/datum/sprite_accessory/taur/chinese_dragon
 	name = "Chinese Dragon"
 	icon_state = "noodle"
 	taur_mode = STYLE_TAUR_PAW
