@@ -68,10 +68,18 @@
 		"Shovel" = /obj/item/forging/incomplete/shovel,
 		"Arrowhead" = /obj/item/forging/incomplete/arrowhead,
 	)
+	///radial button for acting as an oven on a food object
+	var/static/radial_oven = image(icon = 'modular_skyrat/modules/reagent_forging/icons/hud/forge_radials.dmi', icon_state = "oven")
+	///radial button for acting as a microwave on a food object
+	var/static/radial_microwave = image(icon = 'modular_skyrat/modules/reagent_forging/icons/hud/forge_radials.dmi', icon_state = "microwave")
+
+	///list containing cooking radial buttons, for when anything of /obj/item/food is used on the forge
+	var/static/list/radial_options = list("oven" = radial_oven, "microwave" = radial_microwave)
 
 /obj/structure/reagent_forge/examine(mob/user)
 	. = ..()
 	. += span_warning("<br>Perhaps using your hand on [src] when skilled will do something...<br>")
+	. += span_notice("You could probably use [src] to <b>bake</b> or <b>cook</b> food...<br>")
 	switch(forge_level)
 		if(FORGE_LEVEL_ZERO)
 			. += span_notice("[src] has not yet been touched by a smithy.<br>")
@@ -460,6 +468,44 @@
 		var/obj/item/glassblowing/molten_glass/spawned_glass = new /obj/item/glassblowing/molten_glass(get_turf(src))
 		user.mind.adjust_experience(/datum/skill/production, 10)
 		COOLDOWN_START(spawned_glass, remaining_heat, glassblowing_amount)
+		return TRUE
+
+	if(istype(attacking_item, /obj/item/food))
+		var/obj/item/food/thing_to_cook = attacking_item
+
+		if(in_use)
+			to_chat(user, span_warning("You cannot do multiple things at the same time!"))
+			return FALSE
+
+		in_use = TRUE
+	
+		if(forge_temperature < MIN_FORGE_TEMP)
+			fail_message(user, "The [src] is not hot enough to start cooking [thing_to_cook]!")
+			return FALSE
+
+		var/user_input = show_radial_menu(user, src, radial_options)
+		var/obj/item_to_spawn
+
+		if(!user_input)
+			fail_message(user, "No choice made")
+			return FALSE
+
+		balloon_alert_to_viewers("cooking...")
+
+		if(!do_after(user, 10 SECONDS, target = src))
+			fail_message(user, "You stop trying to cook [thing_to_cook]!")
+			return FALSE
+
+		switch(user_input)
+			if("oven")
+				var/datum/component/bakeable/item_bakeable_component = thing_to_cook.GetComponent(/datum/component/bakeable)
+				item_to_spawn = item_bakeable_component.bake_result ? item_bakeable_component.bake_result : /obj/item/food/badrecipe
+			if("microwave")
+				item_to_spawn = thing_to_cook.microwaved_type ? thing_to_cook.microwaved_type : /obj/item/food/badrecipe
+
+		qdel(thing_to_cook)
+		new item_to_spawn(get_turf(src))
+		in_use = FALSE
 		return TRUE
 
 	return ..()
