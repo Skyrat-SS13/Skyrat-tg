@@ -60,10 +60,20 @@
 	wound_falloff_tile = -2.5 // low damage + additional dropoff will already curb wounding potential anything past point blank
 	weak_against_armour = TRUE // Did you knew shotguns are actually shit against armor?
 
+/obj/item/ammo_casing/shotgun/rubbershot
+	name = "rubber shot"
+	desc = "A shotgun casing filled with densely-packed rubber balls, used to incapacitate crowds from a distance."
+	icon_state = "rshell"
+	projectile_type = /obj/projectile/bullet/pellet/shotgun_rubbershot
+	pellets = 7
+	variance = 20
+	custom_materials = list(/datum/material/iron=1000)
+	harmful = FALSE //SKYRAT EDIT ADDITION
+
 /obj/item/ammo_casing/shotgun/magnum
 	name = "magnum buckshot shell"
 	desc = "A 12 gauge buckshot shell that fires bigger pellets but has more spread. It is able to contend against armored targets."
-	icon_state = "gshell"
+	icon_state = "magshell"
 	projectile_type = /obj/projectile/bullet/pellet/shotgun_buckshot/magnum
 	pellets = 6 //6 x 10 = 60 Damage Potential, 27 Damage at 4 tile range
 	variance = 30
@@ -77,7 +87,7 @@
 /obj/item/ammo_casing/shotgun/express
 	name = "express buckshot shell"
 	desc = "A 12 gauge buckshot shell that has tighter spread and smaller projectiles."
-	icon_state = "gshell"
+	icon_state = "expshell"
 	projectile_type = /obj/projectile/bullet/pellet/shotgun_buckshot/express
 	pellets = 9 //6 x 9 = 51 Damage Potential, 33 Damage at 4 tile range
 	variance = 20 //tighter spread
@@ -108,10 +118,10 @@
 /obj/item/ammo_casing/shotgun/beehive
 	name = "B3-HVE 'Beehive' shell"
 	desc = "A highly experimental shell filled with smart nanite pellets that re-aim themselves when bouncing off from surfaces. However they are not able to make out friend from foe."
-	icon_state = "stunshell"
+	icon_state = "cnrshell"
 	projectile_type = /obj/projectile/bullet/pellet/shotgun_buckshot/beehive
 	custom_materials = list(/datum/material/iron=500,/datum/material/silver=500,/datum/material/plasma=500)
-	pellets = 5
+	pellets = 6
 	variance = 20
 
 /obj/projectile/bullet/pellet/shotgun_buckshot/beehive
@@ -136,11 +146,11 @@
 /obj/item/ammo_casing/shotgun/antitide
 	name = "4NT1-TD3 'Suppressor' shell"
 	desc = "A highly experimental shell filled with nanite electrodes that will embed themselves in soft targets. The electrodes are charged from kinetic movement which means moving targets will get punished more."
-	icon_state = "stunshell"
+	icon_state = "lasershell"
 	projectile_type = /obj/projectile/bullet/pellet/shotgun_buckshot/antitide
 	custom_materials = list(/datum/material/iron=500,/datum/material/gold=500,/datum/material/uranium=500)
 	pellets = 5
-	variance = 20
+	variance = 30
 	harmful = FALSE
 
 /obj/projectile/bullet/pellet/shotgun_buckshot/antitide
@@ -166,7 +176,7 @@
 /obj/item/ammo_casing/shotgun/iceblox
 	name = "Iceshot shell"
 	desc = "A highly experimental shell filled with nanites that will lower the body temperature of hit targets."
-	icon_state = "stunshell"
+	icon_state = "tshell"
 	projectile_type = /obj/projectile/bullet/pellet/shotgun_buckshot/iceblox
 	custom_materials = list(/datum/material/iron=500,/datum/material/plasma=500)
 	pellets = 5
@@ -188,9 +198,9 @@
 /obj/item/ammo_casing/shotgun/hunter
 	name = "hunter buckshot shell"
 	desc = "A 12 gauge buckshot shell that fires specially charged pellets that deal extra damage to simpler animals."
-	icon_state = "gshell"
+	icon_state = "fshell"
 	projectile_type = /obj/projectile/bullet/pellet/shotgun_buckshot/magnum
-	pellets = 6 //6 x 10 = 60 Damage Potential, 27 Damage at 4 tile range
+	pellets = 6 // 6 x 15 = 90 damage vs simples
 	variance = 30
 
 /obj/projectile/bullet/pellet/shotgun_buckshot/hunter
@@ -198,7 +208,7 @@
 	damage = 5
 	wound_bonus = 0
 	weak_against_armour = FALSE
-	var/faction_bonus_force = 20 //Bonus force dealt against certain factions
+	var/faction_bonus_force = 10 //Bonus force dealt against certain factions
 	var/list/nemesis_path = /mob/living/simple_animal //Any mob with a faction that exists in this list will take bonus damage/effects
 
 /obj/projectile/bullet/pellet/shotgun_buckshot/hunter/prehit_pierce(mob/living/target, mob/living/carbon/human/user)
