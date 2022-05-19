@@ -570,12 +570,8 @@
 	)
 	required_enemies = list(2,2,1,1,1,1,1,0,0,0)
 	required_candidates = 1
-<<<<<<< HEAD
-	weight = 0 //SKYRAT EDIT CHANGE
-=======
 	minimum_round_time = 40 MINUTES
 	weight = 5
->>>>>>> 09a6cdb4e01 (Dynamic 2022, Part 1 - Redesigning midround rolls (Midrounds happen far more frequently now, and scale their power over time) (#65997))
 	cost = 10
 	requirements = list(101,101,101,70,50,40,20,15,10,10)
 	repeatable = TRUE
