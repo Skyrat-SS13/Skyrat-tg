@@ -315,7 +315,7 @@
 	icon_state = "mantisarms"
 	color_src = USE_MATRIXED_COLORS
 
-/datum/sprite_accessory/wings/mammal/minibat
+/datum/sprite_accessory/wings/mammal/mini_bat
 	name = "Mini-Bat"
 	icon_state = "minibat"
 	color_src = USE_ONE_COLOR
