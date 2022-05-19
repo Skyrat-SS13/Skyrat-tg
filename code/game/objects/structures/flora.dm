@@ -328,7 +328,8 @@
 
 /obj/item/kirbyplants
 	name = "potted plant"
-	icon = 'icons/obj/flora/plants.dmi'
+	//icon = 'icons/obj/flora/plants.dmi' // ORIGINAL
+	icon = 'modular_skyrat/modules/aesthetics/plants/plants.dmi' // SKYRAT EDIT CHANGE
 	icon_state = "plant-01"
 	desc = "A little bit of nature contained in a pot."
 	layer = ABOVE_MOB_LAYER
@@ -397,7 +398,6 @@
 
 /obj/item/kirbyplants/random/Initialize(mapload)
 	. = ..()
-	icon = 'modular_skyrat/modules/aesthetics/plants/plants.dmi' //SKYRAT EDIT CHANGE
 	if(!random_plant_states)
 		generate_states()
 	icon_state = pick(random_plant_states)
