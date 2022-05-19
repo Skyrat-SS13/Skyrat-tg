@@ -370,7 +370,7 @@
 		if(!COOLDOWN_FINISHED(src, banana_consumption_cooldown))
 			balloon_alert(user, "not hungry!")
 			return
-		var/obj/item/grown/bananapeel/peel = new banana.trash_type(src.loc)
+		var/obj/item/grown/bananapeel/peel = new banana.trash_type(get_turf(src))
 		qdel(banana)
 		to_chat(user, span_notice("[src] chews up [banana], spitting out [peel]!"))
 		playsound(src, pick(list('sound/creatures/monkey/monkey_screech_1.ogg',
