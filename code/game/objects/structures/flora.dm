@@ -381,7 +381,7 @@
 			'sound/creatures/monkey/monkey_screech_6.ogg',
 			'sound/creatures/monkey/monkey_screech_7.ogg',
 		)), 40)
-		COOLDOWN_START(src, banana_consumption_cooldown, 1 MINUTE)
+		COOLDOWN_START(src, banana_consumption_cooldown, 1 MINUTES)
 	// SKYRAT EDIT END
 
 /// Cycle basic plant visuals
