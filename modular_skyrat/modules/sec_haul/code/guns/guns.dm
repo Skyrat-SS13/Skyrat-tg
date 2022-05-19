@@ -728,7 +728,7 @@
 
 /obj/item/gun/ballistic/shotgun/m23
 	name = "\improper Model 23-37"
-	desc = "An outdated police shotgun sporting an eight-round tube."
+	desc = "An outdated police shotgun sporting an eight-round tube, chambered in twelve-gauge."
 	icon_state = "riotshotgun"
 	inhand_icon_state = "shotgun"
 	mag_type = /obj/item/ammo_box/magazine/internal/shot/m23
@@ -744,7 +744,7 @@
 
 /obj/item/gun/ballistic/shotgun/automatic/as2
 	name = "\improper M2 Auto-Shotgun"
-	desc = "A semi-automatic shotgun with a four-round internal tube."
+	desc = "A semi-automatic twelve-gauge shotgun with a four-round internal tube."
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
 	icon_state = "as2"
 	worn_icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns_back.dmi'
