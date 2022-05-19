@@ -472,28 +472,37 @@
 
 	if(istype(attacking_item, /obj/item/food))
 		var/obj/item/food/thing_to_cook = attacking_item
+
 		if(in_use)
 			to_chat(user, span_warning("You cannot do multiple things at the same time!"))
-			return
+			return FALSE
+
 		in_use = TRUE
+	
 		if(forge_temperature < MIN_FORGE_TEMP)
 			fail_message(user, "The [src] is not hot enough to start cooking [thing_to_cook]!")
-			return
+			return FALSE
+
 		var/user_input = show_radial_menu(user, src, radial_options)
 		var/obj/item_to_spawn
+
 		if(!user_input)
 			fail_message(user, "No choice made")
-			return
+			return FALSE
+
 		balloon_alert_to_viewers("cooking...")
+
 		if(!do_after(user, 10 SECONDS, target = src))
 			fail_message(user, "You stop trying to cook [thing_to_cook]!")
-			return
+			return FALSE
+
 		switch(user_input)
 			if("oven")
 				var/datum/component/bakeable/item_bakeable_component = thing_to_cook.GetComponent(/datum/component/bakeable)
 				item_to_spawn = item_bakeable_component.bake_result ? item_bakeable_component.bake_result : /obj/item/food/badrecipe
 			if("microwave")
 				item_to_spawn = thing_to_cook.microwaved_type ? thing_to_cook.microwaved_type : /obj/item/food/badrecipe
+
 		qdel(thing_to_cook)
 		new item_to_spawn(get_turf(src))
 		in_use = FALSE
