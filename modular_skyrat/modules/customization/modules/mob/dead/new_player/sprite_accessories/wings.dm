@@ -330,7 +330,7 @@
 	icon_state = "tinybat"
 	color_src = USE_ONE_COLOR
 
-/datum/sprite_accessory/wings/mammal/tinyfeather
+/datum/sprite_accessory/wings/mammal/tiny_feather
 	name = "Tiny-Feathery"
 	icon_state = "tinyfeather"
 	color_src = USE_ONE_COLOR
