@@ -359,6 +359,24 @@
 		if(do_after(user,3 SECONDS,target=src))
 			to_chat(user,span_notice("You finish trimming [src]."))
 			change_visual()
+	// SKYRAT EDIT START - OOK CHEE
+	if(icon_state == "monkeyplant")
+		var/obj/item/food/grown/banana/banana = I
+		if(!istype(I))
+			return
+		var/obj/item/grown/bananapeel/peel = banana.trash_type
+		to_chat(user, span_notice("[src] chews up [banana], spitting out [peel]!"))
+		playsound(src, pick(list('sound/creatures/monkey/monkey_screech_1.ogg',
+			'sound/creatures/monkey/monkey_screech_2.ogg',
+			'sound/creatures/monkey/monkey_screech_3.ogg',
+			'sound/creatures/monkey/monkey_screech_4.ogg',
+			'sound/creatures/monkey/monkey_screech_5.ogg',
+			'sound/creatures/monkey/monkey_screech_6.ogg',
+			'sound/creatures/monkey/monkey_screech_7.ogg',
+		)), 70)
+		new peel(src.loc)
+		qdel(banana)
+	// SKYRAT EDIT END
 
 /// Cycle basic plant visuals
 /obj/item/kirbyplants/proc/change_visual()
@@ -384,7 +402,6 @@
 	for(var/i in 1 to random_state_cap) //SKYRAT EDIT CHANGE
 		random_plant_states += "plant-[i]" //SKYRAT EDIT CHANGE
 	random_plant_states += list("applebush", "monkeyplant") //SKYRAT EDIT CHANGE
-
 
 /obj/item/kirbyplants/dead
 	name = "RD's potted plant"
