@@ -300,7 +300,7 @@
 	icon_state = "dragonfly"
 	color_src = USE_ONE_COLOR
 
-/datum/sprite_accessory/wings/mammal/beealt
+/datum/sprite_accessory/wings/mammal/bee_alt
 	name = "Bee (Alt)"
 	icon_state = "beealt"
 	color_src = USE_ONE_COLOR
