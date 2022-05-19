@@ -441,22 +441,17 @@
 	dimension_x = 64
 	center = TRUE
 
-/datum/sprite_accessory/tails/mammal/wagging/big/liztail
-	name = "Big Lizard Tail"
-	icon_state = "bigliz_large"
-	color_src = USE_MATRIXED_COLORS
-
-/datum/sprite_accessory/tails/mammal/wagging/big/shadetail
+/datum/sprite_accessory/tails/mammal/wagging/big/shade
 	name = "Shade"
 	icon_state = "shadekin_large"
 	color_src = USE_MATRIXED_COLORS
 
-/datum/sprite_accessory/tails/mammal/wagging/big/shadelong
+/datum/sprite_accessory/tails/mammal/wagging/big/shade_long
 	name = "Long Shade"
 	icon_state = "shadekinlong_large"
 	color_src = USE_MATRIXED_COLORS
 
-/datum/sprite_accessory/tails/mammal/wagging/big/shadelonger
-	name = "Longer Shade"
-	icon_state = "shadekinlong2_large"
+/datum/sprite_accessory/tails/mammal/wagging/big/shade_striped
+	name = "Striped Shade"
+	icon_state = "shadekinlongstriped_large"
 	color_src = USE_MATRIXED_COLORS
