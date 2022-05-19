@@ -277,7 +277,7 @@
 /////////////////////MAKAROV
 /obj/item/gun/ballistic/automatic/pistol/makarov
 	name = "\improper R-C 'Makarov'"
-	desc = "A mediocre pocket-sized handgun of seemingly Russian origin, chambered in 10mm."
+	desc = "A mediocre pocket-sized handgun of seemingly Russian origin, chambered in 10mm Auto."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/makarov.dmi'
 	icon_state = "makarov"
 	w_class = WEIGHT_CLASS_SMALL
@@ -354,7 +354,7 @@
 //////////////////////FIREFLY
 /obj/item/gun/ballistic/automatic/pistol/firefly
 	name = "\improper P-92 'Firefly'"
-	desc = "A 9mm sidearm made by Armadyne's Medical Directive, with a heavy front for weak wrists. A small warning label on the back says it's not fit for surgical work."
+	desc = "A 9mm (Peacekeeper) sidearm made by Armadyne's Medical Directive, with a heavy front for weak wrists. A small warning label on the back says it's not fit for surgical work."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/firefly.dmi'
 	righthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/righthand.dmi'
 	lefthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/lefthand.dmi'
