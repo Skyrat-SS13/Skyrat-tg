@@ -105,5 +105,106 @@
 	bare_wound_bonus = 0
 	sharpness = SHARP_EDGED //Did you knew flechettes fly sideways into people
 
+/obj/item/ammo_casing/shotgun/beehive
+	name = "B3-HVE 'Beehive' shell"
+	desc = "A highly experimental shell filled with smart nanite pellets that re-aim themselves when bouncing off from surfaces. However they are not able to make out friend from foe."
+	icon_state = "stunshell"
+	projectile_type = /obj/projectile/bullet/pellet/shotgun_buckshot/beehive
+	custom_materials = list(/datum/material/iron=500,/datum/material/silver=500,/datum/material/plasma=500)
+	pellets = 5
+	variance = 20
+
+/obj/projectile/bullet/pellet/shotgun_buckshot/beehive
+	name = "beehive pellet"
+	damage = 5
+	stamina = 10
+	tile_dropoff = 0.1
+	tile_dropoff_s = 0.1
+	wound_bonus = -5
+	bare_wound_bonus = 5
+	wound_falloff_tile = 0
+	weak_against_armour = TRUE
+	sharpness = NONE
+	ricochets_max = 5
+	ricochet_chance = 200
+	ricochet_auto_aim_angle = 60
+	ricochet_auto_aim_range = 8
+	ricochet_decay_damage = 1
+	ricochet_decay_chance = 1
+	ricochet_incidence_leeway = 0 //nanomachines son
+
+/obj/item/ammo_casing/shotgun/antitide
+	name = "4NT1-TD3 'Suppressor' shell"
+	desc = "A highly experimental shell filled with nanite electrodes that will embed themselves in soft targets. The electrodes are charged from kinetic movement which means moving targets will get punished more."
+	icon_state = "stunshell"
+	projectile_type = /obj/projectile/bullet/pellet/shotgun_buckshot/antitide
+	custom_materials = list(/datum/material/iron=500,/datum/material/gold=500,/datum/material/uranium=500)
+	pellets = 5
+	variance = 20
+	harmful = FALSE
+
+/obj/projectile/bullet/pellet/shotgun_buckshot/antitide
+	name = "electrode"
+	damage = 4
+	stamina = 6
+	tile_dropoff = 0.2
+	tile_dropoff_s = 0.3
+	wound_bonus = 0
+	bare_wound_bonus = 0
+	stutter = 3 SECONDS
+	jitter = 5 SECONDS
+	eyeblur = 1 SECONDS
+	weak_against_armour = TRUE
+	sharpness = NONE
+	range = 8
+	embedding = list(embed_chance=70, pain_chance=25, fall_chance=15, jostle_chance=80, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.9, pain_mult=5, rip_time=10)
+
+/obj/projectile/bullet/pellet/shotgun_buckshot/antitide/on_range()
+	do_sparks(1, TRUE, src)
+	..()
+
+/obj/item/ammo_casing/shotgun/iceblox
+	name = "Iceshot shell"
+	desc = "A highly experimental shell filled with nanites that will lower the body temperature of hit targets."
+	icon_state = "stunshell"
+	projectile_type = /obj/projectile/bullet/pellet/shotgun_buckshot/iceblox
+	custom_materials = list(/datum/material/iron=500,/datum/material/plasma=500)
+	pellets = 5
+	variance = 20
+
+/obj/projectile/bullet/pellet/shotgun_buckshot/iceblox //see /obj/projectile/temp for the original code
+	name = "iceblox pellet"
+	tile_dropoff = 0.35
+	damage = 5
+	weak_against_armour = TRUE
+	var/temperature = 30
+
+/obj/projectile/bullet/pellet/shotgun_buckshot/iceblox/on_hit(atom/target, blocked = FALSE)
+	. = ..()
+	if(isliving(target))
+		var/mob/living/M = target
+		M.adjust_bodytemperature(((30-blocked)/30)*(temperature - M.bodytemperature))
+
+/obj/item/ammo_casing/shotgun/hunter
+	name = "hunter buckshot shell"
+	desc = "A 12 gauge buckshot shell that fires specially charged pellets that deal extra damage to simpler animals."
+	icon_state = "gshell"
+	projectile_type = /obj/projectile/bullet/pellet/shotgun_buckshot/magnum
+	pellets = 6 //6 x 10 = 60 Damage Potential, 27 Damage at 4 tile range
+	variance = 30
+
+/obj/projectile/bullet/pellet/shotgun_buckshot/hunter
+	name = "magnum buckshot pellet"
+	damage = 5
+	wound_bonus = 0
+	weak_against_armour = FALSE
+	var/faction_bonus_force = 20 //Bonus force dealt against certain factions
+	var/list/nemesis_path = /mob/living/simple_animal //Any mob with a faction that exists in this list will take bonus damage/effects
+
+/obj/projectile/bullet/pellet/shotgun_buckshot/hunter/prehit_pierce(mob/living/target, mob/living/carbon/human/user)
+	if(istype(target, nemesis_path))
+		damage += faction_bonus_force
+	.=..()
+
 /obj/projectile/bullet/pellet/shotgun_improvised
 	weak_against_armour = TRUE // We will not have Improvised are Better 2.0

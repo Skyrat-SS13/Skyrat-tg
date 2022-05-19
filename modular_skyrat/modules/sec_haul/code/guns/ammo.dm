@@ -206,7 +206,3 @@
 	if(stored_ammo.len)
 		. += "[initial(icon_state)]_[round_type]"
 
-////////////////////////////
-///////////14 GAUGE/////////
-////////////////////////////
-//Moved to shotgunrebalance/code/14g_shotgun.dm

@@ -1,14 +1,4 @@
-//Yoinked away from modular_weapons
-/datum/techweb_node/s14gauge
-	id = "s14gauge"
-	starting_node = TRUE
-	display_name = "14 Gauge Shotshells"
-	description = "Standardized 14 Gauge Peacekeeper Ammo."
-	design_ids = list(
-		"sec_s14g_shell_rubber",
-		"sec_s14g_shell_beanbag",
-	)
-
+/* Temp Disable
 /datum/techweb_node/shotgunnery
 	id = "shotgunnery"
 	display_name = "Basic Shotshells"
@@ -17,8 +7,6 @@
 	design_ids = list(
 		"sec_buckshot_shell",
 		"sec_shotgun_slug",
-		"sec_s14g_shell_slug",
-		"sec_s14g_shell_buckshot",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1000)
 
@@ -51,7 +39,7 @@
 		"sec_s14g_shell_antitide",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 10000)
-
+*/
 //12 Gauge
 /datum/design/shotgun_slug
 	name = "Shotgun Slug"
@@ -85,6 +73,7 @@
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
 	autolathe_exportable = FALSE
 
+/* Temp Disable
 /datum/design/shotgun_slug_hp
 	name = "Hollow Point Shotgun Slug"
 	id = "shotgun_slug_hp"
@@ -138,130 +127,7 @@
 	build_path = /obj/item/ammo_casing/shotgun/flechette
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
 	autolathe_exportable = FALSE
-
-//14 Gauge
-/datum/design/s14g_shell_slug
-	name = "14 Gauge Shotgun Slug"
-	id = "s14g_shell_slug"
-	build_type = AUTOLATHE
-	materials = list(/datum/material/iron = 2000)
-	build_path = /obj/item/ammo_casing/s14gauge
-	category = list("hacked", "Security")
-
-/datum/design/s14g_shell_slug/sec
-	id = "sec_s14g_shell_slug"
-	build_type = PROTOLATHE | AWAY_LATHE
-	materials = list(/datum/material/iron = 1500)
-	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
-	autolathe_exportable = FALSE
-
-/datum/design/s14g_shell_buckshot
-	name = "14 Gauge Buckshot Shell"
-	id = "s14g_shell_buckshot"
-	build_type = AUTOLATHE
-	materials = list(/datum/material/iron = 1500)
-	build_path = /obj/item/ammo_casing/s14gauge/buckshot
-	category = list("hacked", "Security")
-
-/datum/design/s14g_shell_buckshot/sec
-	id = "sec_s14g_shell_buckshot"
-	build_type = PROTOLATHE | AWAY_LATHE
-	materials = list(/datum/material/iron = 1000)
-	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
-	autolathe_exportable = FALSE
-
-/datum/design/s14g_shell_rubber
-	name = "14 Gauge Rubbershot Shell"
-	id = "s14g_shell_rubber"
-	build_type = AUTOLATHE
-	materials = list(/datum/material/iron = 1500)
-	build_path = /obj/item/ammo_casing/s14gauge/rubbershot
-	category = list("initial", "Security")
-
-/datum/design/s14g_shell_rubber/sec
-	id = "sec_s14g_shell_rubber"
-	build_type = PROTOLATHE | AWAY_LATHE
-	materials = list(/datum/material/iron = 1000)
-	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
-	autolathe_exportable = FALSE
-
-/datum/design/s14g_shell_beanbag
-	name = "14 Gauge Beanbag Slug"
-	id = "s14g_shell_beanbag"
-	build_type = AUTOLATHE
-	materials = list(/datum/material/iron = 2000)
-	build_path = /obj/item/ammo_casing/s14gauge/beanbag
-	category = list("initial", "Security")
-
-/datum/design/s14g_shell_beanbag/sec
-	id = "sec_s14g_shell_beanbag"
-	build_type = PROTOLATHE | AWAY_LATHE
-	materials = list(/datum/material/iron = 1500)
-	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
-	autolathe_exportable = FALSE
-
-/datum/design/s14g_shell_hp
-	name = "14 Gauge Hollow Point Shotgun Slug"
-	id = "sec_s14g_shell_hp"
-	build_type = PROTOLATHE | AWAY_LATHE
-	materials = list(/datum/material/iron = 2000)
-	build_path = /obj/item/ammo_casing/s14gauge/hp
-	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
-	autolathe_exportable = FALSE
-
-/datum/design/s14g_shell_magnum
-	name = "14 Gauge Magnum Buckshot Shell"
-	id = "sec_s14g_shell_magnum"
-	build_type = PROTOLATHE | AWAY_LATHE
-	materials = list(/datum/material/iron = 2000)
-	build_path = /obj/item/ammo_casing/s14gauge/magnum
-	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
-	autolathe_exportable = FALSE
-
-/datum/design/s14g_shell_stunslug
-	name = "14 Gauge Shotgun Stunslug"
-	id = "sec_s14g_shell_stunslug"
-	build_type = PROTOLATHE | AWAY_LATHE
-	materials = list(/datum/material/iron = 2000, /datum/material/gold = 1000)
-	build_path = /obj/item/ammo_casing/s14gauge/stunslug
-	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
-	autolathe_exportable = FALSE
-
-/datum/design/s14g_shell_pyro
-	name = "14 Gauge Pyrosium Slug"
-	id = "sec_s14g_shell_pyro"
-	build_type = PROTOLATHE | AWAY_LATHE
-	materials = list(/datum/material/iron = 2000, /datum/material/plasma = 1000)
-	build_path = /obj/item/ammo_casing/s14gauge/pyro
-	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
-	autolathe_exportable = FALSE
-
-/datum/design/s14g_shell_beehive
-	name = "14 gauge B3-HVE 'Beehive' shell"
-	id = "sec_s14g_shell_beehive"
-	build_type = PROTOLATHE | AWAY_LATHE
-	materials = list(/datum/material/iron = 2000, /datum/material/silver = 1000, /datum/material/plasma = 1000)
-	build_path = /obj/item/ammo_casing/s14gauge/beehive
-	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
-	autolathe_exportable = FALSE
-
-/datum/design/s14g_shell_antitide
-	name = "14 gauge 4NT1-TD3 'Suppressor' shell"
-	id = "sec_s14g_shell_antitide"
-	build_type = PROTOLATHE | AWAY_LATHE
-	materials = list(/datum/material/iron = 2000, /datum/material/silver = 1000, /datum/material/plasma = 1000)
-	build_path = /obj/item/ammo_casing/s14gauge/antitide
-	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
-	autolathe_exportable = FALSE
-
-/datum/design/s14g_shell_iceblox
-	name = "14 gauge Iceshot shell"
-	id = "sec_s14g_shell_iceblox"
-	build_type = PROTOLATHE | AWAY_LATHE
-	materials = list(/datum/material/iron = 2000, /datum/material/plasma = 1000)
-	build_path = /obj/item/ammo_casing/s14gauge/iceblox
-	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
-	autolathe_exportable = FALSE
+*/
 
 //Existing Designs Discounting
 
