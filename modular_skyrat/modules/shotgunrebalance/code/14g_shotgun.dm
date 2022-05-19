@@ -86,13 +86,21 @@
 
 /obj/projectile/bullet/pellet/s14gauge/beehive
 	name = "beehive pellet"
-	damage = 6
-	tile_dropoff = 0.3
-	tile_dropoff_s = 0.15
-	wound_bonus = 3
-	bare_wound_bonus = 3
-	wound_falloff_tile = -2.5 // low damage + additional dropoff will already curb wounding potential anything past point blank
+	damage = 5
+	stamina = 10
+	tile_dropoff = 0.1
+	tile_dropoff_s = 0.1
+	wound_bonus = -5
+	bare_wound_bonus = 5
+	wound_falloff_tile = 0
 	weak_against_armour = TRUE
+	ricochets_max = 5
+	ricochet_chance = 200
+	ricochet_auto_aim_angle = 60
+	ricochet_auto_aim_range = 8
+	ricochet_decay_damage = 1
+	ricochet_decay_chance = 1
+	ricochet_incidence_leeway = 0 //nanomachines son
 
 /obj/projectile/bullet/s14gauge_stunslug
 	name = "stunslug"
@@ -179,6 +187,22 @@
 	projectile_type = /obj/projectile/bullet/s14gauge_stunslug
 	custom_materials = list(/datum/material/iron=500,/datum/material/gold=100)
 	harmful = FALSE
+
+/obj/item/ammo_casing/s14gauge/pyro
+	name = "14 gauge pyrosium slug"
+	desc = "A 14 gauge slug that is filled with unstable plasma which ignited on contact with a target."
+	icon_state = "stunshell"
+	projectile_type = /obj/projectile/bullet/incendiary/shotgun/no_trail
+	custom_materials = list(/datum/material/iron=500,/datum/material/plasma=500)
+
+/obj/item/ammo_casing/s14gauge/beehive
+	name = "14 gauge B3-HVE 'Beehive' shell"
+	desc = "A highly experimental shell filled with smart nanite pellets that re-aim themselves when bouncing off from surfaces. However they are not able to make out friend from foe."
+	icon_state = "stunshell"
+	projectile_type = /obj/projectile/bullet/pellet/s14gauge/beehive
+	custom_materials = list(/datum/material/iron=500,/datum/material/plasma=500)
+	pellets = 5
+	variance = 20
 
 /obj/item/ammo_casing/s14gauge/improvised
 	name = "improvised 14 gauge shell"
