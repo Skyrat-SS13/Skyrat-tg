@@ -91,7 +91,7 @@
 	if(QDELETED(src) || QDELETED(user) || !chosen_turf)
 		return FALSE
 
-	if(do_after(user,10))
+	if(do_after(user, 1 SECONDS))
 		current_turf = chosen_turf
 
 		user.owned_turf = new /obj/structure/mark_turf(get_turf(user), current_turf)
