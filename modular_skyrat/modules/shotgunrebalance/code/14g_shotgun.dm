@@ -94,6 +94,7 @@
 	bare_wound_bonus = 5
 	wound_falloff_tile = 0
 	weak_against_armour = TRUE
+	sharpness = NONE
 	ricochets_max = 5
 	ricochet_chance = 200
 	ricochet_auto_aim_angle = 60
@@ -101,6 +102,23 @@
 	ricochet_decay_damage = 1
 	ricochet_decay_chance = 1
 	ricochet_incidence_leeway = 0 //nanomachines son
+
+/obj/projectile/bullet/pellet/s14gauge/antitide
+	name = "electrode"
+	damage = 4
+	stamina = 6
+	tile_dropoff = 0.2
+	tile_dropoff_s = 0.3
+	wound_bonus = 0
+	bare_wound_bonus = 0
+	weak_against_armour = TRUE
+	sharpness = NONE
+	range = 8
+	embedding = list(embed_chance=70, pain_chance=25, fall_chance=25, jostle_chance=80, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.9, pain_mult=5, rip_time=10)
+
+/obj/projectile/bullet/pellet/s14gauge/antitide/on_range()
+	do_sparks(1, TRUE, src)
+	..()
 
 /obj/projectile/bullet/s14gauge_stunslug
 	name = "stunslug"
@@ -201,6 +219,15 @@
 	icon_state = "stunshell"
 	projectile_type = /obj/projectile/bullet/pellet/s14gauge/beehive
 	custom_materials = list(/datum/material/iron=500,/datum/material/plasma=500)
+	pellets = 5
+	variance = 20
+
+/obj/item/ammo_casing/s14gauge/antitide
+	name = "14 gauge 4NT1-TD3 'Suppressor' shell"
+	desc = "A highly experimental shell filled with nanite electrodes that will embed themselves in soft targets. The electrodes are charged from kinetic movement which means moving targets will get punished more."
+	icon_state = "stunshell"
+	projectile_type = /obj/projectile/bullet/pellet/s14gauge/antitide
+	custom_materials = list(/datum/material/iron=500,/datum/material/gold=500,/datum/material/uranium=500)
 	pellets = 5
 	variance = 20
 
