@@ -52,7 +52,7 @@
 /obj/projectile/bullet/s14gauge_beanbag
 	name = "14g beanbag slug"
 	damage = 5
-	stamina = 30
+	stamina = 40
 	wound_bonus = 0
 	sharpness = NONE
 	embedding = null
@@ -111,6 +111,9 @@
 	tile_dropoff_s = 0.3
 	wound_bonus = 0
 	bare_wound_bonus = 0
+	stutter = 3 SECONDS
+	jitter = 5 SECONDS
+	eyeblur = 1 SECONDS
 	weak_against_armour = TRUE
 	sharpness = NONE
 	range = 8
@@ -210,6 +213,7 @@
 	projectile_type = /obj/projectile/bullet/pellet/s14gauge/rubbershot
 	pellets = 7
 	variance = 15
+	harmful = FALSE
 
 /obj/item/ammo_casing/s14gauge/stunslug
 	name = "14 gauge taser slug"
@@ -243,6 +247,7 @@
 	custom_materials = list(/datum/material/iron=500,/datum/material/gold=500,/datum/material/uranium=500)
 	pellets = 5
 	variance = 20
+	harmful = FALSE
 
 /obj/item/ammo_casing/s14gauge/iceblox
 	name = "14 gauge Iceshot shell"
