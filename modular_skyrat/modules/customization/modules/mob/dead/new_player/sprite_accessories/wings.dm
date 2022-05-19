@@ -320,7 +320,7 @@
 	icon_state = "minibat"
 	color_src = USE_ONE_COLOR
 
-/datum/sprite_accessory/wings/mammal/minifeather
+/datum/sprite_accessory/wings/mammal/mini_feather
 	name = "Mini-Feathery"
 	icon_state = "minifeather"
 	color_src = USE_ONE_COLOR
