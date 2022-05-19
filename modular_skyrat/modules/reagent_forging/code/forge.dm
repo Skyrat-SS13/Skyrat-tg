@@ -615,6 +615,9 @@
 		forge_item.in_use = FALSE
 		user.mind.adjust_experience(/datum/skill/smithing, 10) //creating an item gives you some experience, not a lot
 		to_chat(user, span_notice("You successfully heat up [search_rods], ready to forge a [user_choice]."))
+		search_rods = locate(/obj/item/stack/rods) in forge_item.contents
+		if(!search_rods)
+			forge_item.icon_state = "tong_empty"
 		return FALSE
 	in_use = FALSE
 	forge_item.in_use = FALSE
