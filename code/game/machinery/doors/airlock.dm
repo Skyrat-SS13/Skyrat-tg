@@ -147,20 +147,20 @@
 	network_id = NETWORK_DOOR_AIRLOCKS
 
 /obj/machinery/door/airlock/Initialize(mapload)
-	. = ..()
-	//SKYRAT EDIT ADDITION BEGIN
-	if(multi_tile)
-		SetBounds()
-	//overlay2
+	//SKYRAT EDIT ADDITION BEGIN - Door aesthetic overhaul
 	vis_overlay1 = new()
 	vis_overlay1.icon = overlays_file
-	//overlay1
 	vis_overlay2 = new()
 	vis_overlay2.icon = overlays_file
 	vis_overlay2.layer = layer
 	vis_overlay2.plane = 1
 	vis_contents += vis_overlay1
 	vis_contents += vis_overlay2
+	//SKYRAT EDIT END
+	. = ..()
+	//SKYRAT EDIT ADDITION BEGIN - Door aesthetic overhaul
+	if(multi_tile)
+		SetBounds()
 	if(multi_tile)
 		vis_overlay1.dir = src.dir
 		vis_overlay2.dir = src.dir
@@ -179,9 +179,11 @@
 		max_integrity = normal_integrity
 	if(damage_deflection == AIRLOCK_DAMAGE_DEFLECTION_N && security_level > AIRLOCK_SECURITY_IRON)
 		damage_deflection = AIRLOCK_DAMAGE_DEFLECTION_R
+
 	prepare_huds()
 	for(var/datum/atom_hud/data/diagnostic/diag_hud in GLOB.huds)
-		diag_hud.add_to_hud(src)
+		diag_hud.add_atom_to_hud(src)
+
 	diag_hud_set_electrified()
 
 	RegisterSignal(src, COMSIG_MACHINERY_BROKEN, .proc/on_break)
@@ -351,7 +353,7 @@
 	QDEL_NULL(note)
 	QDEL_NULL(seal)
 	for(var/datum/atom_hud/data/diagnostic/diag_hud in GLOB.huds)
-		diag_hud.remove_from_hud(src)
+		diag_hud.remove_atom_from_hud(src)
 	return ..()
 
 /obj/machinery/door/airlock/handle_atom_del(atom/A)
@@ -1129,11 +1131,9 @@
 		return
 
 	if(!operating)
-		if(istype(I, /obj/item/fireaxe)) //being fireaxe'd
-			var/obj/item/fireaxe/axe = I
-			if(axe && !axe.wielded)
-				to_chat(user, span_warning("You need to be wielding \the [axe] to do that!"))
-				return
+		if(istype(I, /obj/item/fireaxe) && !HAS_TRAIT(I, TRAIT_WIELDED)) //being fireaxe'd
+			to_chat(user, span_warning("You need to be wielding [I] to do that!"))
+			return
 		INVOKE_ASYNC(src, (density ? .proc/open : .proc/close), 2)
 
 /obj/machinery/door/airlock/open(forced=0)
@@ -1401,6 +1401,15 @@
 	if(atom_integrity < (0.75 * max_integrity))
 		update_appearance()
 
+/obj/machinery/door/airlock/proc/prepare_deconstruction_assembly(obj/structure/door_assembly/assembly)
+	assembly.heat_proof_finished = heat_proof //tracks whether there's rglass in
+	assembly.set_anchored(TRUE)
+	assembly.glass = glass
+	assembly.state = AIRLOCK_ASSEMBLY_NEEDS_ELECTRONICS
+	assembly.created_name = name
+	assembly.previous_assembly = previous_airlock
+	assembly.update_name()
+	assembly.update_appearance()
 
 /obj/machinery/door/airlock/deconstruct(disassembled = TRUE, mob/user)
 	if(!(flags_1 & NODECONSTRUCT_1))
@@ -1410,14 +1419,7 @@
 		else
 			A = new /obj/structure/door_assembly(loc)
 			//If you come across a null assemblytype, it will produce the default assembly instead of disintegrating.
-		A.heat_proof_finished = heat_proof //tracks whether there's rglass in
-		A.set_anchored(TRUE)
-		A.glass = glass
-		A.state = AIRLOCK_ASSEMBLY_NEEDS_ELECTRONICS
-		A.created_name = name
-		A.previous_assembly = previous_airlock
-		A.update_name()
-		A.update_appearance()
+		prepare_deconstruction_assembly(A)
 
 		if(!disassembled)
 			A?.update_integrity(A.max_integrity * 0.5)

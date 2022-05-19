@@ -29,6 +29,7 @@
 
 /datum/armament_entry/cargo_gun/scarborough/smg
 	subcategory = ARMAMENT_SUBCATEGORY_SUBMACHINEGUN
+	restricted = TRUE
 
 /datum/armament_entry/cargo_gun/scarborough/smg/c20r
 	item_type = /obj/item/gun/ballistic/automatic/c20r/unrestricted
@@ -37,6 +38,7 @@
 
 /datum/armament_entry/cargo_gun/scarborough/rifle
 	subcategory = ARMAMENT_SUBCATEGORY_ASSAULTRIFLE
+	restricted = TRUE
 
 /datum/armament_entry/cargo_gun/scarborough/rifle/m90gl // Fucking expensive as hell.
 	item_type = /obj/item/gun/ballistic/automatic/m90/unrestricted
@@ -50,12 +52,13 @@
 
 /datum/armament_entry/cargo_gun/scarborough/part/suppressor
 	item_type = /obj/item/suppressor
-	lower_cost = CARGO_CRATE_VALUE * 10
-	upper_cost = CARGO_CRATE_VALUE * 15
+	lower_cost = CARGO_CRATE_VALUE * 7 // Cheaper here because NT sells the same thing.
+	upper_cost = CARGO_CRATE_VALUE * 10
 
 /datum/armament_entry/cargo_gun/scarborough/ammo
 	subcategory = ARMAMENT_SUBCATEGORY_AMMO
 	interest_addition = COMPANY_INTEREST_AMMO
+	restricted = TRUE
 
 /datum/armament_entry/cargo_gun/scarborough/ammo/grenade
 	item_type = /obj/item/ammo_casing/a40mm

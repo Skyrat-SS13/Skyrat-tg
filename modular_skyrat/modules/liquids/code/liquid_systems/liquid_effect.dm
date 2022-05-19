@@ -35,6 +35,15 @@
 
 	var/no_effects = FALSE
 
+	/// State-specific message chunks for examine_turf()
+	var/static/list/liquid_state_messages = list(
+		"[LIQUID_STATE_PUDDLE]" = "a puddle of $",
+		"[LIQUID_STATE_ANKLES]" = "$ going [span_warning("up to your ankles")]",
+		"[LIQUID_STATE_WAIST]" = "$ going [span_warning("up to your waist")]",
+		"[LIQUID_STATE_SHOULDERS]" = "$ going [span_warning("up to your shoulders")]",
+		"[LIQUID_STATE_FULLTILE]" = "$ going [span_danger("over your head")]",
+	)
+
 /obj/effect/abstract/liquid_turf/onShuttleMove(turf/newT, turf/oldT, list/movement_force, move_dir, obj/docking_port/stationary/old_dock, obj/docking_port/mobile/moving_dock)
 	return
 
@@ -439,6 +448,7 @@
 		my_turf = loc
 		RegisterSignal(my_turf, COMSIG_ATOM_ENTERED, .proc/movable_entered)
 		RegisterSignal(my_turf, COMSIG_TURF_MOB_FALL, .proc/mob_fall)
+		RegisterSignal(my_turf, COMSIG_PARENT_EXAMINE, .proc/examine_turf)
 		SSliquids.add_active_turf(my_turf)
 
 		SEND_SIGNAL(my_turf, COMSIG_TURF_LIQUIDS_CREATION, src)
@@ -455,7 +465,7 @@
 
 /obj/effect/abstract/liquid_turf/Destroy(force)
 	if(force)
-		UnregisterSignal(my_turf, list(COMSIG_ATOM_ENTERED, COMSIG_TURF_MOB_FALL))
+		UnregisterSignal(my_turf, list(COMSIG_ATOM_ENTERED, COMSIG_TURF_MOB_FALL, COMSIG_PARENT_EXAMINE))
 		if(my_turf.lgroup)
 			my_turf.lgroup.remove_from_group(my_turf)
 		if(SSliquids.evaporation_queue[my_turf])
@@ -502,6 +512,52 @@
 	loc = NewT
 	RegisterSignal(my_turf, COMSIG_ATOM_ENTERED, .proc/movable_entered)
 	RegisterSignal(my_turf, COMSIG_TURF_MOB_FALL, .proc/mob_fall)
+
+/**
+ * Handles COMSIG_PARENT_EXAMINE for the turf.
+ *
+ * Adds reagent info to examine text.
+ * Arguments:
+ * * source - the turf we're peekin at
+ * * examiner - the user
+ * * examine_text - the examine list
+ *  */
+/obj/effect/abstract/liquid_turf/proc/examine_turf(turf/source, mob/examiner, list/examine_list)
+	SIGNAL_HANDLER
+
+	// This should always have reagents if this effect object exists, but as a sanity check...
+	if(!length(reagent_list))
+		return
+
+	var/liquid_state_template = liquid_state_messages["[liquid_state]"]
+
+	examine_list += EXAMINE_SECTION_BREAK
+
+	if(examiner.can_see_reagents())
+		examine_list += EXAMINE_SECTION_BREAK
+
+		if(length(reagent_list) == 1)
+			// Single reagent text.
+			var/datum/reagent/reagent_type = reagent_list[1]
+			var/reagent_name = initial(reagent_type.name)
+			var/volume = round(reagent_list[reagent_type], 0.01)
+
+			examine_list += span_notice("There is [replacetext(liquid_state_template, "$", "[volume] units of [reagent_name]")] here.")
+		else
+			// Show each individual reagent
+			examine_list += "There is [replacetext(liquid_state_template, "$", "the following")] here:"
+
+			for(var/datum/reagent/reagent_type as anything in reagent_list)
+				var/reagent_name = initial(reagent_type.name)
+				var/volume = round(reagent_list[reagent_type], 0.01)
+				examine_list += "&bull; [volume] units of [reagent_name]"
+
+		examine_list += span_notice("The solution has a temperature of [temp]K.")
+		examine_list += EXAMINE_SECTION_BREAK
+		return
+
+	// Otherwise, just show the total volume
+	examine_list += span_notice("There is [replacetext(liquid_state_template, "$", "liquid")] here.")
 
 /obj/effect/temp_visual/liquid_splash
 	icon = 'modular_skyrat/modules/liquids/icons/obj/effects/splash.dmi'
@@ -550,3 +606,5 @@
 	temp = starting_temp
 	calculate_height()
 	set_reagent_color_for_liquid()
+
+

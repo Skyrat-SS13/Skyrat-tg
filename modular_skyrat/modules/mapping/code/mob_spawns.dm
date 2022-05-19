@@ -1,4 +1,11 @@
 //SPAWNERS//
+
+/obj/effect/mob_spawn/ghost_role/human/ash_walker/special(mob/living/carbon/human/spawned_human)
+	. = ..()
+	if(SSmapping.level_trait(spawned_human.z, ZTRAIT_ICE_RUINS_UNDERGROUND) || SSmapping.level_trait(spawned_human.z, ZTRAIT_ICE_RUINS_UNDERGROUND))
+		ADD_TRAIT(spawned_human, TRAIT_NOBREATH, ROUNDSTART_TRAIT)
+		ADD_TRAIT(spawned_human, TRAIT_RESISTCOLD, ROUNDSTART_TRAIT)
+
 /obj/effect/mob_spawn/ghost_role/human/blackmarket
 	name = "cryogenics pod"
 	prompt_name = "a blackmarket dealer"

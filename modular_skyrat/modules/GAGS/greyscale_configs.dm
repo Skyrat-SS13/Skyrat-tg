@@ -103,6 +103,10 @@
 	name = "Colourable Clown Mask (Worn)"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/clown_mask/clown_mask_worn.json'
 
+// VAPE
+/datum/greyscale_config/vape/worn/digi
+	name = "Worn Vape - Digitigrade"
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/mask.dmi'
 
 /*
 *	NECK

@@ -19,6 +19,8 @@
 		armor plating being installed by default, and their actuators only lead to slightly greater speed than industrial suits."
 	/// Default skin of the MOD.
 	var/default_skin = "standard"
+	/// The slot this mod theme fits on
+	var/slot_flags = ITEM_SLOT_BACK
 	/// Armor shared across the MOD parts.
 	var/armor = list(MELEE = 10, BULLET = 5, LASER = 5, ENERGY = 5, BOMB = 0, BIO = 100, FIRE = 25, ACID = 25, WOUND = 5)
 	/// Resistance flags shared across the MOD parts.
@@ -29,8 +31,6 @@
 	var/max_heat_protection_temperature = SPACE_SUIT_MAX_TEMP_PROTECT
 	/// Max cold protection shared across the MOD parts.
 	var/min_cold_protection_temperature = SPACE_SUIT_MIN_TEMP_PROTECT
-	/// Permeability shared across the MOD parts.
-	var/permeability_coefficient = 0.01
 	/// Siemens shared across the MOD parts.
 	var/siemens_coefficient = 0.5
 	/// How much modules can the MOD carry without malfunctioning.
@@ -365,7 +365,6 @@
 	armor = list(MELEE = 15, BULLET = 5, LASER = 5, ENERGY = 5, BOMB = 10, BIO = 10, FIRE = 25, ACID = 25, WOUND = 10)
 	max_heat_protection_temperature = ARMOR_MAX_TEMP_PROTECT
 	min_cold_protection_temperature = ARMOR_MIN_TEMP_PROTECT
-	permeability_coefficient = 0.5
 	siemens_coefficient = 0.25
 	complexity_max = DEFAULT_MAX_COMPLEXITY - 5
 	slowdown_inactive = 0.5
@@ -621,7 +620,6 @@
 	slowdown_inactive = 1
 	slowdown_active = 0.5
 	allowed_suit_storage = list(
-		/obj/item/gun, // SKYRAT EDIT - GUN IN SUIT SLOT
 		/obj/item/flashlight,
 		/obj/item/tank/internals,
 		/obj/item/ammo_box,
@@ -678,7 +676,6 @@
 	slowdown_inactive = 0.75
 	slowdown_active = 0.25
 	allowed_suit_storage = list(
-		/obj/item/gun, // SKYRAT EDIT - GUN IN SUIT SLOT
 		/obj/item/flashlight,
 		/obj/item/tank/internals,
 		/obj/item/ammo_box,
@@ -737,7 +734,6 @@
 	slowdown_inactive = 0.75
 	slowdown_active = 0.25
 	allowed_suit_storage = list(
-		/obj/item/gun, // SKYRAT EDIT - GUN IN SUIT SLOT
 		/obj/item/flashlight,
 		/obj/item/tank/internals,
 		/obj/item/ammo_box,
@@ -844,7 +840,6 @@
 	ui_theme = "syndicate"
 	inbuilt_modules = list(/obj/item/mod/module/armor_booster)
 	allowed_suit_storage = list(
-		/obj/item/gun, // SKYRAT EDIT - GUN IN SUIT SLOT
 		/obj/item/flashlight,
 		/obj/item/tank/internals,
 		/obj/item/ammo_box,
@@ -928,7 +923,6 @@
 	ui_theme = "syndicate"
 	inbuilt_modules = list(/obj/item/mod/module/armor_booster)
 	allowed_suit_storage = list(
-		/obj/item/gun, // SKYRAT EDIT - GUN IN SUIT SLOT
 		/obj/item/flashlight,
 		/obj/item/tank/internals,
 		/obj/item/ammo_box,
@@ -998,13 +992,13 @@
 		"enchanted" = list(
 			HELMET_FLAGS = list(
 				UNSEALED_LAYER = null,
-				UNSEALED_CLOTHING = SNUG_FIT|THICKMATERIAL,
+				UNSEALED_CLOTHING = SNUG_FIT|THICKMATERIAL|CASTING_CLOTHES,
 				SEALED_CLOTHING = STOPSPRESSUREDAMAGE,
 				UNSEALED_INVISIBILITY = HIDEFACIALHAIR|HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDESNOUT,
 				UNSEALED_COVER = HEADCOVERSMOUTH|HEADCOVERSEYES|PEPPERPROOF,
 			),
 			CHESTPLATE_FLAGS = list(
-				UNSEALED_CLOTHING = THICKMATERIAL,
+				UNSEALED_CLOTHING = THICKMATERIAL|CASTING_CLOTHES,
 				SEALED_CLOTHING = STOPSPRESSUREDAMAGE,
 				SEALED_INVISIBILITY = HIDEJUMPSUIT,
 			),
@@ -1092,7 +1086,6 @@
 	slowdown_inactive = 0.5
 	slowdown_active = 0
 	allowed_suit_storage = list(
-		/obj/item/gun, // SKYRAT EDIT - GUN IN SUIT SLOT
 		/obj/item/flashlight,
 		/obj/item/tank/internals,
 		/obj/item/ammo_box,
@@ -1170,7 +1163,6 @@
 	siemens_coefficient = 0
 	complexity_max = DEFAULT_MAX_COMPLEXITY + 10
 	allowed_suit_storage = list(
-		/obj/item/gun, // SKYRAT EDIT - GUN IN SUIT SLOT
 		/obj/item/flashlight,
 		/obj/item/tank/internals,
 		/obj/item/ammo_box,
@@ -1226,7 +1218,6 @@
 	slowdown_inactive = 0.5
 	slowdown_active = 0
 	allowed_suit_storage = list(
-		/obj/item/gun, // SKYRAT EDIT - GUN IN SUIT SLOT
 		/obj/item/flashlight,
 		/obj/item/tank/internals,
 		/obj/item/ammo_box,

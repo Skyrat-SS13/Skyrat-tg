@@ -89,7 +89,7 @@
 		alert_sound_to_playing(sound, override_volume = override_volume, players = players)
 
 	if(alert)
-		alert_sound_to_playing(sound('modular_skyrat/modules/alerts/sound/alert1.ogg'), players = players)
+		alert_sound_to_playing(sound('modular_skyrat/modules/alerts/sound/alerts/alert1.ogg'), players = players)
 	else
 		alert_sound_to_playing(sound('sound/misc/notice2.ogg'), players = players)
 

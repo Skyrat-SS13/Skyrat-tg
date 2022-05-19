@@ -93,29 +93,18 @@
 	time = 20
 	category = CAT_CHEMISTRY
 
-/datum/chemical_reaction/blacktar
-	required_reagents = list(/datum/reagent/drug/opium/blacktar = 5)
-	required_temp = 480
-	reaction_flags = REACTION_INSTANT
-	reaction_tags = REACTION_TAG_EASY | REACTION_TAG_CHEMICAL
-
-/datum/chemical_reaction/blacktar/on_reaction(datum/reagents/holder, datum/equilibrium/reaction, created_volume)
-	var/location = get_turf(holder.my_atom)
-	for(var/i in 1 to created_volume)
-		new /obj/item/reagent_containers/blacktar(location)
-
 /atom/movable/screen/fullscreen/color_vision/heroin_color
 	color = "#444444"
 
 /datum/reagent/drug/opium
-	name = "Opium"
+	name = "opium"
 	description = "A extract from opium poppies. Puts the user in a slightly euphoric state."
 	reagent_state = LIQUID
 	color = "#ffe669"
 	overdose_threshold = 30
 	ph = 8
 	taste_description = "flowers"
-	addiction_types = list(/datum/addiction/opiods = 18)
+	addiction_types = list(/datum/addiction/opioids = 18)
 
 /datum/reagent/drug/opium/on_mob_life(mob/living/carbon/M, delta_time, times_fired)
 	var/high_message = pick("You feel euphoric.", "You feel on top of the world.")
@@ -143,7 +132,7 @@
 	..()
 
 /datum/reagent/drug/opium/heroin
-	name = "Heroin"
+	name = "heroin"
 	description = "She's like heroin to me, she's like heroin to me! She cannot... miss a vein!"
 	reagent_state = LIQUID
 	color = "#ffe669"
@@ -151,7 +140,7 @@
 	ph = 6
 	taste_description = "flowers"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
-	failed_chem = /datum/reagent/drug/opium/blacktar
+	failed_chem = /datum/reagent/drug/opium/blacktar/liquid
 
 /datum/reagent/drug/opium/heroin/on_mob_life(mob/living/carbon/M, delta_time, times_fired)
 	var/high_message = pick("You feel like nothing can stop you.", "You feel like God.")
@@ -162,7 +151,7 @@
 	..()
 
 /datum/reagent/drug/opium/blacktar
-	name = "Black Tar Heroin"
+	name = "black tar heroin"
 	description = "An impure, freebase form of heroin. Probably not a good idea to take this..."
 	reagent_state = LIQUID
 	color = "#242423"
@@ -179,6 +168,20 @@
 	M.set_timed_status_effect(20 SECONDS * REM * delta_time, /datum/status_effect/drugginess)
 	M.adjustToxLoss(0.5 * REM * delta_time, 0) //toxin damage
 	..()
+
+/datum/reagent/drug/opium/blacktar/liquid //prevents self-duplication by going one step down when mixed
+	name = "liquid black tar heroin"
+
+/datum/chemical_reaction/blacktar
+	required_reagents = list(/datum/reagent/drug/opium/blacktar/liquid = 5)
+	required_temp = 480
+	reaction_flags = REACTION_INSTANT
+	reaction_tags = REACTION_TAG_EASY | REACTION_TAG_CHEMICAL
+
+/datum/chemical_reaction/blacktar/on_reaction(datum/reagents/holder, datum/equilibrium/reaction, created_volume)
+	var/location = get_turf(holder.my_atom)
+	for(var/i in 1 to created_volume)
+		new /obj/item/reagent_containers/blacktar(location)
 
 //Exports
 /datum/export/heroin

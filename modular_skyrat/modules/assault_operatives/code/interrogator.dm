@@ -166,7 +166,7 @@
 	to_chat(human_occupant, span_userdanger("You feel something penetrating your brain, it feels as though your childhood memories are fading! Please, make it stop! After a moment of silence, you realize you can't remember what happened to you!"))
 	human_occupant.emote("scream")
 	human_occupant.apply_damage(20, BRUTE, BODY_ZONE_HEAD)
-	human_occupant.Jitter(3 MINUTES)
+	human_occupant.set_timed_status_effect(3 MINUTES, /datum/status_effect/jitter, only_if_higher = TRUE)
 	human_occupant.Unconscious(1 MINUTES)
 	playsound(src, 'sound/effects/dismember.ogg', 100)
 	playsound(src, 'sound/machines/ping.ogg', 100)
@@ -204,7 +204,7 @@
 
 	var/obj/structure/test_structure = new() // This is apparently the most intuative way to check if a turf is able to support entering.
 
-	for(var/area/maintenance/maint_area in world)
+	for(var/area/station/maintenance/maint_area in world)
 		for(var/turf/floor in maint_area)
 			if(!is_station_level(floor.z))
 				continue

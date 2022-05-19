@@ -1,4 +1,6 @@
-// --- Loadout item datums for accessories ---
+/*
+*	LOADOUT ITEM DATUMS FOR THE ACCESSORY SLOT
+*/
 
 /// Accessory Items (Moves overrided items to backpack)
 GLOBAL_LIST_INIT(loadout_accessory, generate_loadout_items(/datum/loadout_item/accessory))
@@ -23,7 +25,7 @@ GLOBAL_LIST_INIT(loadout_accessory, generate_loadout_items(/datum/loadout_item/a
 	item_path = /obj/item/clothing/accessory/waistcoat
 
 /datum/loadout_item/accessory/pocket_protector
-	name = "Pocket Protector"
+	name = "Pocket Protector (Empty)"
 	item_path = /obj/item/clothing/accessory/pocketprotector
 
 /datum/loadout_item/accessory/full_pocket_protector
@@ -39,6 +41,9 @@ GLOBAL_LIST_INIT(loadout_accessory, generate_loadout_items(/datum/loadout_item/a
 	name = "Pride Pin"
 	item_path = /obj/item/clothing/accessory/pride
 
+/*
+*	ARMBANDS
+*/
 
 /datum/loadout_item/accessory/armband_medblue
 	name = "Medical Armband (blue stripe)"
@@ -75,19 +80,21 @@ GLOBAL_LIST_INIT(loadout_accessory, generate_loadout_items(/datum/loadout_item/a
 	item_path = /obj/item/clothing/accessory/armband/science
 	restricted_roles = list(JOB_RESEARCH_DIRECTOR, JOB_SCIENTIST, JOB_ROBOTICIST, JOB_GENETICIST, JOB_VANGUARD_OPERATIVE, JOB_SCIENCE_GUARD)
 
-/* to do later
-/datum/loadout_item/accessory/dogtags
-	name = "Name-Inscribed Dogtags"
-	item_path = /obj/item/clothing/accessory/cosmetic_dogtag
-	additional_tooltip_contents = list("MATCHES NAME - The name inscribed on this item matches your character's name on spawn.")
+/*
+*	ARMOURLESS
+*/
 
 /datum/loadout_item/accessory/bone_charm
-	name = "Heirloom Bone Talismin"
-	item_path = /obj/item/clothing/accessory/armorless_talisman
+	name = "Heirloom Bone Talisman"
+	item_path = /obj/item/clothing/accessory/talisman/armourless
 	additional_tooltip_contents = list(TOOLTIP_NO_ARMOR)
 
 /datum/loadout_item/accessory/bone_codpiece
 	name = "Heirloom Skull Codpiece"
-	item_path = /obj/item/clothing/accessory/armorless_skullcodpiece
+	item_path = /obj/item/clothing/accessory/skullcodpiece/armourless
 	additional_tooltip_contents = list(TOOLTIP_NO_ARMOR)
-*/
+
+/datum/loadout_item/accessory/sinew_kilt
+	name = "Heirloom Sinew Skirt"
+	item_path = /obj/item/clothing/accessory/skilt/armourless
+	additional_tooltip_contents = list(TOOLTIP_NO_ARMOR)

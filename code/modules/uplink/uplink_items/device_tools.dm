@@ -104,13 +104,13 @@
 			when used cause the targeted tablet to become a new uplink with zero TCs, and immediately become unlocked. \
 			You will receive the unlock code upon activating the virus, and the new uplink may be charged with \
 			telecrystals normally."
-	item = /obj/item/computer_hardware/hard_drive/role/virus/frame
+	item = /obj/item/computer_hardware/hard_drive/portable/virus/frame
 	cost = 4
 	restricted = TRUE
 
 /datum/uplink_item/device_tools/frame/spawn_item(spawn_path, mob/user, datum/uplink_handler/uplink_handler, atom/movable/source)
 	. = ..()
-	var/obj/item/computer_hardware/hard_drive/role/virus/frame/target = .
+	var/obj/item/computer_hardware/hard_drive/portable/virus/frame/target = .
 	if(!target)
 		return
 	target.current_progression = uplink_handler.progression_points
@@ -151,6 +151,7 @@
 	cost = 3
 
 
+/* SKYRAT EDIT REMOVAL - It's laggy and doesn't really add much roleplay value
 /datum/uplink_item/device_tools/suspiciousphone
 	name = "Protocol CRAB-17 Phone"
 	desc = "The Protocol CRAB-17 Phone, a phone borrowed from an unknown third party, it can be used to crash the space market, funneling the losses of the crew to your bank account.\
@@ -159,6 +160,7 @@
 	restricted = TRUE
 	cost = 7
 	limited_stock = 1
+*/ // SKYRAT EDIT REMOVAL END
 
 /datum/uplink_item/device_tools/binary
 	name = "Binary Translator Key"

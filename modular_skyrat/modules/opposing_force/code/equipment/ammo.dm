@@ -42,9 +42,9 @@
 /datum/opposing_force_equipment/ammo/mg42
 	item_type = /obj/item/ammo_box/magazine/mg42
 
-/datum/opposing_force_equipment/ammo/cm762
-	item_type = /obj/item/ammo_box/magazine/cm762
-	description = "7.62 bullets in a ten round magazine for Cantanheim 7.62 rifle."
+/datum/opposing_force_equipment/ammo/cm68
+	item_type = /obj/item/ammo_box/magazine/cm68
+	description = "6.8mm bullets in a ten round magazine for a Cantanheim 6.8 rifle."
 
 /datum/opposing_force_equipment/ammo/makarov
 	item_type = /obj/item/ammo_box/magazine/m9mm
@@ -192,6 +192,38 @@
 /datum/opposing_force_equipment/ammo/g11hp
 	name = "G11 K-490 Magazine (HP)"
 	item_type = /obj/item/ammo_box/magazine/multi_sprite/g11/hp
+
+/datum/opposing_force_equipment/ammo/vintorez
+	name = "PCR Magazine"
+	item_type = /obj/item/ammo_box/magazine/multi_sprite/vintorez
+
+/datum/opposing_force_equipment/ammo/vintorezhp
+	name = "PCR Magazine (HP)"
+	item_type = /obj/item/ammo_box/magazine/multi_sprite/vintorez/hp
+
+/datum/opposing_force_equipment/ammo/pcr
+	name = "PCR Magazine"
+	item_type = /obj/item/ammo_box/magazine/multi_sprite/pcr
+
+/datum/opposing_force_equipment/ammo/pcrhp
+	name = "PCR Magazine (HP)"
+	item_type = /obj/item/ammo_box/magazine/multi_sprite/pcr/hp
+
+/datum/opposing_force_equipment/ammo/pitbull
+	name = "Pitbull PDW Magazine"
+	item_type = /obj/item/ammo_box/magazine/multi_sprite/pitbull
+
+/datum/opposing_force_equipment/ammo/pitbullhp
+	name = "Pitbull PDW Magazine (HP)"
+	item_type = /obj/item/ammo_box/magazine/multi_sprite/pitbull/hp
+
+/datum/opposing_force_equipment/ammo/ostwind
+	name = "DTR-6 Rifle Magazine"
+	item_type = /obj/item/ammo_box/magazine/multi_sprite/ostwind
+
+/datum/opposing_force_equipment/ammo/ostwindfrag
+	name = "DTR-6 Rifle Magazine (Frag)"
+	item_type = /obj/item/ammo_box/magazine/multi_sprite/ostwind/ihdf
 
 /datum/opposing_force_equipment/ammo/bulldog
 	name = "Bulldog Magazine"

@@ -6,16 +6,6 @@
 
 
 /**
- * Event subsystem
- *
- * Overriden min and max start times:
- * To accomodate for much longer rounds.
- */
-/datum/controller/subsystem/events
-	frequency_lower = 10 MINUTES
-	frequency_upper = 15 MINUTES
-
-/**
  * Brain truama
  *
  * Removed for:

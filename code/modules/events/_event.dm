@@ -109,6 +109,8 @@
 	SSblackbox.record_feedback("tally", "event_ran", 1, "[E]")
 	occurrences++
 
+	SSevents.previously_run += src //SKYRAT EDIT ADDITION
+
 	testing("[time2text(world.time, "hh:mm:ss")] [E.type]")
 	if(random)
 		log_game("Random Event triggering: [name] ([typepath])")

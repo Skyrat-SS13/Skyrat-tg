@@ -50,15 +50,61 @@
 /datum/armament_entry/cargo_gun/interdyne/chemical
 	subcategory = ARMAMENT_SUBCATEGORY_CHEMICAL
 	interest_addition = COMPANY_INTEREST_CHEMICAL
+
+/datum/armament_entry/cargo_gun/interdyne/chemical/atropine
+	item_type = /obj/item/reagent_containers/glass/bottle/atropine
+	lower_cost = CARGO_CRATE_VALUE * 1.5
+	upper_cost = CARGO_CRATE_VALUE * 2.5
+
+/datum/armament_entry/cargo_gun/interdyne/chemical/epinephrine
+	item_type = /obj/item/reagent_containers/glass/bottle/epinephrine
+	lower_cost = CARGO_CRATE_VALUE * 1
+	upper_cost = CARGO_CRATE_VALUE * 1.5
+
+/datum/armament_entry/cargo_gun/interdyne/chemical/saline
+	item_type = /obj/item/reagent_containers/glass/bottle/salglu_solution
+	lower_cost = CARGO_CRATE_VALUE * 1
+	upper_cost = CARGO_CRATE_VALUE * 1.5
+
+/datum/armament_entry/cargo_gun/interdyne/chemical/ephedrine
+	item_type = /obj/item/reagent_containers/glass/bottle/ephedrine
+	lower_cost = CARGO_CRATE_VALUE * 3
+	upper_cost = CARGO_CRATE_VALUE * 4
+
+/datum/armament_entry/cargo_gun/interdyne/chemical_contra
+	subcategory = ARMAMENT_SUBCATEGORY_CHEMICAL
+	interest_addition = COMPANY_INTEREST_CHEMICAL
 	contraband = TRUE
 
-/datum/armament_entry/cargo_gun/interdyne/chemical/toxin
+/datum/armament_entry/cargo_gun/interdyne/chemical_contra/toxin
 	item_type = /obj/item/reagent_containers/glass/bottle/toxin
 	lower_cost = CARGO_CRATE_VALUE * 2
 	upper_cost = CARGO_CRATE_VALUE * 4
 
-/datum/armament_entry/cargo_gun/interdyne/chemical/cyanide
+/datum/armament_entry/cargo_gun/interdyne/chemical_contra/chloralhydrate
+	item_type = /obj/item/reagent_containers/glass/bottle/chloralhydrate
+	lower_cost = CARGO_CRATE_VALUE * 2
+	upper_cost = CARGO_CRATE_VALUE * 4
+
+/datum/armament_entry/cargo_gun/interdyne/chemical_contra/histamine
+	item_type = /obj/item/reagent_containers/glass/bottle/histamine
+	lower_cost = CARGO_CRATE_VALUE * 2
+	upper_cost = CARGO_CRATE_VALUE * 3
+
+/datum/armament_entry/cargo_gun/interdyne/chemical_contra/cyanide
 	item_type = /obj/item/reagent_containers/glass/bottle/cyanide
-	lower_cost = CARGO_CRATE_VALUE * 4
-	upper_cost = CARGO_CRATE_VALUE * 6
+	lower_cost = CARGO_CRATE_VALUE * 3
+	upper_cost = CARGO_CRATE_VALUE * 4
 	interest_required = PASSED_INTEREST
+
+/datum/armament_entry/cargo_gun/interdyne/chemical_contra/amanitin
+	item_type = /obj/item/reagent_containers/glass/bottle/amanitin
+	lower_cost = CARGO_CRATE_VALUE * 3
+	upper_cost = CARGO_CRATE_VALUE * 4
+	interest_required = PASSED_INTEREST
+
+/datum/armament_entry/cargo_gun/interdyne/chemical_contra/pancuronium
+	item_type = /obj/item/reagent_containers/glass/bottle/pancuronium
+	lower_cost = CARGO_CRATE_VALUE * 6
+	upper_cost = CARGO_CRATE_VALUE * 7
+	interest_required = HIGH_INTEREST

@@ -34,7 +34,7 @@
 	else
 		species_name_string = ", [prefix_a_or_an(dna.species.name)] <EM>[dna.species.name]</EM>!"
 
-	. = list("<span class='info'>This is <EM>[!obscure_name ? name : "Unknown"]</EM>[species_name_string]<hr>") //SKYRAT EDIT CHANGE
+	. = list("<span class='info'>This is <EM>[!obscure_name ? name : "Unknown"]</EM>[species_name_string]", EXAMINE_SECTION_BREAK) //SKYRAT EDIT CHANGE
 	if(species_visible) //If they have a custom species shown, show the real one too
 		if(dna.features["custom_species"])
 			. += "[t_He] [t_is] [prefix_a_or_an(dna.species.name)] [dna.species.name]!"
@@ -47,13 +47,13 @@
 	if(dna?.species && !skipface)
 		apparent_species = ", \an [dna.species.name]"
 	. = list("<span class='info'>*---------*\nThis is <EM>[!obscure_name ? name : "Unknown"][apparent_species]</EM>!")
-	
+
 	. = list("<span class='info'>*---------*\nThis is <EM>[!obscure_name ? name : "Unknown"]</EM>!")
 
 	var/obscured = check_obscured_slots()
 	var/skipface = (wear_mask && (wear_mask.flags_inv & HIDEFACE)) || (head && (head.flags_inv & HIDEFACE))
 	*/ //SKYRAT EDIT END
-	
+
 	//uniform
 	if(w_uniform && !(obscured & ITEM_SLOT_ICLOTHING) && !(w_uniform.item_flags & EXAMINE_SKIP))
 		//accessory
@@ -82,11 +82,10 @@
 		if(!(I.item_flags & ABSTRACT) && !(I.item_flags & EXAMINE_SKIP))
 			. += "[t_He] [t_is] holding [I.get_examine_string(user)] in [t_his] [get_held_index_name(get_held_index_of_item(I))]."
 
-	var/datum/component/forensics/FR = GetComponent(/datum/component/forensics)
 	//gloves
 	if(gloves && !(obscured & ITEM_SLOT_GLOVES) && !(gloves.item_flags & EXAMINE_SKIP))
 		. += "[t_He] [t_has] [gloves.get_examine_string(user)] on [t_his] hands."
-	else if(FR && length(FR.blood_DNA))
+	else if(GET_ATOM_BLOOD_DNA_LENGTH(src))
 		if(num_hands)
 			. += span_warning("[t_He] [t_has] [num_hands > 1 ? "" : "a"] blood-stained hand[num_hands > 1 ? "s" : ""]!")
 
@@ -131,19 +130,12 @@
 
 		. += wear_id.get_id_examine_strings(user)
 
+	. += EXAMINE_SECTION_BREAK // SKYRAT EDIT ADDITION - hr sections
+
 	//Status effects
-	var/list/status_examines = status_effect_examines()
+	var/list/status_examines = get_status_effect_examinations()
 	if (length(status_examines))
 		. += status_examines
-
-	//Jitters
-	switch(jitteriness)
-		if(300 to INFINITY)
-			. += span_warning("<B>[t_He] [t_is] convulsing violently!</B>")
-		if(200 to 300)
-			. += span_warning("[t_He] [t_is] extremely jittery.")
-		if(100 to 200)
-			. += span_warning("[t_He] [t_is] twitching ever so slightly.")
 
 	var/appears_dead = FALSE
 	var/just_sleeping = FALSE
@@ -250,9 +242,9 @@
 				msg += "<b>[t_He] [t_has] severe cellular damage!</b>\n"
 
 
-	if(fire_stacks > 0)
+	if(has_status_effect(/datum/status_effect/fire_handler/fire_stacks))
 		msg += "[t_He] [t_is] covered in something flammable.\n"
-	if(fire_stacks < 0)
+	if(has_status_effect(/datum/status_effect/fire_handler/wet_stacks))
 		msg += "[t_He] look[p_s()] a little soaked.\n"
 
 
@@ -338,21 +330,6 @@
 		msg += "[t_He] [t_is]n't responding to anything around [t_him] and seem[p_s()] to be asleep.\n"
 
 	if(!appears_dead)
-		if(drunkenness && !skipface) //Drunkenness
-			switch(drunkenness)
-				if(11 to 21)
-					msg += "[t_He] [t_is] slightly flushed.\n"
-				if(21.01 to 41) //.01s are used in case drunkenness ends up to be a small decimal
-					msg += "[t_He] [t_is] flushed.\n"
-				if(41.01 to 51)
-					msg += "[t_He] [t_is] quite flushed and [t_his] breath smells of alcohol.\n"
-				if(51.01 to 61)
-					msg += "[t_He] [t_is] very flushed and [t_his] movements jerky, with breath reeking of alcohol.\n"
-				if(61.01 to 91)
-					msg += "[t_He] look[p_s()] like a drunken mess.\n"
-				if(91.01 to INFINITY)
-					msg += "[t_He] [t_is] a shitfaced, slobbering wreck.\n"
-
 		if(src != user)
 			if(HAS_TRAIT(user, TRAIT_EMPATH))
 				if (combat_mode)
@@ -526,18 +503,23 @@
 	//. += "*---------*</span>" SKYRAT EDIT REMOVAL
 	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, user, .)
 
-/mob/living/proc/status_effect_examines(pronoun_replacement) //You can include this in any mob's examine() to show the examine texts of status effects!
-	var/list/dat = list()
-	if(!pronoun_replacement)
-		pronoun_replacement = p_they(TRUE)
-	for(var/V in status_effects)
-		var/datum/status_effect/E = V
-		if(E.examine_text)
-			var/new_text = replacetext(E.examine_text, "SUBJECTPRONOUN", pronoun_replacement)
-			new_text = replacetext(new_text, "[pronoun_replacement] is", "[pronoun_replacement] [p_are()]") //To make sure something become "They are" or "She is", not "They are" and "She are"
-			dat += "[new_text]\n" //dat.Join("\n") doesn't work here, for some reason
-	if(dat.len)
-		return dat.Join()
+/**
+ * Shows any and all examine text related to any status effects the user has.
+ */
+/mob/living/proc/get_status_effect_examinations()
+	var/list/examine_list = list()
+
+	for(var/datum/status_effect/effect as anything in status_effects)
+		var/effect_text = effect.get_examine_text()
+		if(!effect_text)
+			continue
+
+		examine_list += effect_text
+
+	if(!length(examine_list))
+		return
+
+	return examine_list.Join("\n")
 
 /mob/living/carbon/human/examine_more(mob/user)
 	. = ..()

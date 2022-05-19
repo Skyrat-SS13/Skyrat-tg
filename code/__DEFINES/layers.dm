@@ -163,6 +163,9 @@
 
 ///---------------- MISC -----------------------
 
+///Pipecrawling images
+#define PIPECRAWL_IMAGES_PLANE 180
+
 ///AI Camera Static
 #define CAMERA_STATIC_PLANE 200
 
@@ -187,11 +190,6 @@
 /// Plane for balloon text (text that fades up)
 #define BALLOON_CHAT_PLANE 502
 
-//-------------------- Rendering ---------------------
-#define RENDER_PLANE_GAME 990
-#define RENDER_PLANE_NON_GAME 995
-#define RENDER_PLANE_MASTER 999
-
 //-------------------- HUD ---------------------
 //HUD layer defines
 #define HUD_PLANE 1000
@@ -203,15 +201,29 @@
 
 #define ADMIN_POPUP_LAYER 1
 
+///Layer for screentips
+#define SCREENTIP_LAYER 4
+
+///Plane of the "splash" icon used that shows on the lobby screen. only render plate planes should be above this
+#define SPLASHSCREEN_PLANE 9900
+
+//-------------------- Rendering ---------------------
+#define RENDER_PLANE_GAME 9990
+#define RENDER_PLANE_NON_GAME 9995
+#define RENDER_PLANE_MASTER 9999
+//----------------------------------------------------
+
+
 //SKYRAT EDIT: Lobby Cam
 ///Plane of the "splash" icon used that shows on the lobby screen. Nothing should ever be above this. (Except the logo)
 #define BLACK_FADE 9997
-#define SPLASHSCREEN_PLANE 9998 //Previous value: 9999
 #define SKYRAT_LOGO 9999
 //SKYRAT EDIT: Lobby Cam
 
-///Layer for screentips
-#define SCREENTIP_LAYER 4
+//SKYRAT EDIT: Chat Indicator
+#define CHAT_INDICATOR_LAYER 6 // 1 above BYOND's FLY_LAYER
+//SKYRAT EDIT: Chat Indicator
+
 
 #define LOBBY_BACKGROUND_LAYER 3
 #define LOBBY_BUTTON_LAYER 4

@@ -24,13 +24,6 @@ SUBSYSTEM_DEF(lobby_eye)
 	fading_screen = new()
 	fire()
 
-//fades out the skyrat logo in the bottom left
-/datum/controller/subsystem/lobby_eye/proc/fade_logo()
-	for(var/mob/checking_mob as anything in GLOB.new_player_list)
-		var/atom/movable/screen/skyrat_logo/logo_screen = locate() in checking_mob.client.screen
-		if(logo_screen?.alpha == 255)
-			animate(logo_screen, alpha = 0, time = 5 SECONDS)
-
 //gets everyone on the camera
 /datum/controller/subsystem/lobby_eye/proc/lock_eyes()
 	for(var/mob/checking_mob as anything in GLOB.new_player_list)
@@ -67,7 +60,6 @@ SUBSYSTEM_DEF(lobby_eye)
 	var/time_remaining = SSticker.GetTimeLeft()
 	if(time_remaining <= 20 SECONDS && SSticker.current_state == GAME_STATE_PREGAME)
 		unlock_eyes()
-		fade_logo()
 		return
 
 	//we should only work in pregame

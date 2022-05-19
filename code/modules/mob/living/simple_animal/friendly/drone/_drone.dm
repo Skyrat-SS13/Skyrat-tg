@@ -100,9 +100,9 @@
 	"<span class='warning'><u>If you do not have the regular drone laws, follow your laws to the best of your ability.</u></span>\n"+\
 	"<span class='notice'>Prefix your message with :b to speak in Drone Chat.</span>\n"
 	/// blacklisted drone areas, direct
-	var/list/drone_area_blacklist_flat = list(/area/engineering/atmos, /area/engineering/atmospherics_engine)
+	var/list/drone_area_blacklist_flat = list(/area/station/engineering/atmos, /area/station/engineering/atmospherics_engine)
 	/// blacklisted drone areas, recursive/includes descendants
-	var/list/drone_area_blacklist_recursive = list(/area/engineering/supermatter)
+	var/list/drone_area_blacklist_recursive = list(/area/station/engineering/supermatter)
 	/// blacklisted drone machines, direct
 	var/list/drone_machinery_blacklist_flat
 	/// blacklisted drone machines, recursive/includes descendants
@@ -182,7 +182,7 @@
 	alert_drones(DRONE_NET_CONNECT)
 
 	for(var/datum/atom_hud/data/diagnostic/diag_hud in GLOB.huds)
-		diag_hud.add_to_hud(src)
+		diag_hud.add_atom_to_hud(src)
 
 	ADD_TRAIT(src, TRAIT_VENTCRAWLER_ALWAYS, INNATE_TRAIT)
 	ADD_TRAIT(src, TRAIT_NEGATES_GRAVITY, INNATE_TRAIT)
@@ -249,7 +249,7 @@
 	dust()
 
 /mob/living/simple_animal/drone/examine(mob/user)
-	. = list("<span class='info'>This is [icon2html(src, user)] \a <b>[src]</b>!<hr>") //SKYRAT EDIT CHANGE
+	. = list("<span class='info'>This is [icon2html(src, user)] \a <b>[src]</b>!", EXAMINE_SECTION_BREAK) //SKYRAT EDIT CHANGE
 
 	//Hands
 	for(var/obj/item/I in held_items)

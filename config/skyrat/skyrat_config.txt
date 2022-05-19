@@ -51,6 +51,9 @@ CRYO_MIN_SSD_TIME 15
 ## log subtler emotes in game.txt
 #LOG_SUBTLER
 
+## Enables autotransfer voting.
+#AUTOTRANSFER
+
 ## autovote initial delay (deciseconds in real time) before first automatic transfer vote call (default 120 minutes)
 ## Set to 0 to disable the subsystem altogether.
 VOTE_AUTOTRANSFER_INITIAL 72000
@@ -102,3 +105,29 @@ SSDECAY_DISABLE_NESTS
 ## Lobby Camera Intro
 ## Put # in front to disable
 LOBBY_CAMERA
+
+## Toggles if the events system will use a vote or random choice to run events
+## Comment out to disable
+#EVENTS_USE_RANDOM
+
+## Toggles if the events system uses admin votes or public votes
+## Comment out for public votes
+#EVENTS_PUBLIC_VOTING
+
+## If we use admin votes, do we use chaos or all event vote?
+ADMIN_EVENT_USES_CHAOS
+
+## Runs a side timer for low chaos events
+LOW_CHAOS_EVENT_SYSTEM
+
+## Log event votes
+LOG_EVENT_VOTES
+
+## Do we allow consecutive catastrophic events?
+ALLOW_CONSECUTIVE_CATASTROPIC_EVENTS
+
+## What is the most amount of time the next event can run?
+EVENT_FREQUENCY_UPPER 12000
+
+## What is the least amount of time the next event can run?
+EVENT_FREQUENCY_LOWER 9000

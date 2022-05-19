@@ -107,7 +107,6 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "ert_ntrauma"
-	permeability_coefficient = 0.01
 	slowdown = 0.3
 	armor = list(MELEE = 10, BULLET = 10, LASER = 10,ENERGY = 10, BOMB = 10, BIO = 100, FIRE = 80, ACID = 80)
 	resistance_flags = ACID_PROOF

@@ -28,11 +28,11 @@
 /datum/armament_entry/cargo_gun/izhevsk/rifle
 	subcategory = ARMAMENT_SUBCATEGORY_ASSAULTRIFLE
 
-/datum/armament_entry/cargo_gun/izhevsk/rifle/akm
-	item_type = /obj/item/gun/ballistic/automatic/akm
-	lower_cost = CARGO_CRATE_VALUE * 40
-	upper_cost = CARGO_CRATE_VALUE * 45
-	interest_required = HIGH_INTEREST
+/datum/armament_entry/cargo_gun/izhevsk/rifle/ak25
+	item_type = /obj/item/gun/ballistic/automatic/ak25
+	lower_cost = CARGO_CRATE_VALUE * 12
+	upper_cost = CARGO_CRATE_VALUE * 15
+	interest_required = PASSED_INTEREST
 
 /datum/armament_entry/cargo_gun/izhevsk/rifle/surplus
 	item_type = /obj/item/gun/ballistic/automatic/surplus
@@ -43,6 +43,11 @@
 	item_type = /obj/item/gun/ballistic/rifle/boltaction
 	lower_cost = CARGO_CRATE_VALUE * 5
 	upper_cost = CARGO_CRATE_VALUE * 6
+	
+/datum/armament_entry/cargo_gun/izhevsk/rifle/mosin/brandnew
+	item_type = /obj/item/gun/ballistic/rifle/boltaction/brand_new
+	lower_cost = CARGO_CRATE_VALUE * 12
+	upper_cost = CARGO_CRATE_VALUE * 15
 
 /datum/armament_entry/cargo_gun/izhevsk/rifle/revrifle
 	item_type = /obj/item/gun/ballistic/revolver/rifle

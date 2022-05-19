@@ -196,7 +196,7 @@
 	target.dna.mutant_bodyparts[relevant_mutant_bodypart][MUTANT_INDEX_NAME] = value
 	var/obj/item/bodypart/head/our_head = target.get_bodypart(BODY_ZONE_HEAD)
 	our_head.bodytype |= BODYTYPE_SNOUTED
-	target.dna.species.bodytype |= BODYTYPE_SNOUTED // Snowflake code alert
+	our_head.synchronize_bodytypes(target)
 
 /datum/preference/choiced/snout/create_default_value()
 	var/datum/sprite_accessory/snouts/none/default = /datum/sprite_accessory/snouts/none
@@ -1252,57 +1252,3 @@
 	relevant_mutant_bodypart = "neck_acc"
 	type_to_check = /datum/preference/toggle/neck_acc
 
-/// Heterochromia
-
-/datum/preference/toggle/heterochromia
-	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
-	savefile_identifier = PREFERENCE_CHARACTER
-	savefile_key = "heterochromia_toggle"
-	relevant_mutant_bodypart = "heterochromia"
-	default_value = FALSE
-
-/datum/preference/toggle/heterochromia/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
-	return TRUE // we dont actually want this to do anything
-
-/datum/preference/toggle/heterochromia/is_accessible(datum/preferences/preferences)
-	var/passed_initial_check = ..(preferences)
-	var/allowed = preferences.read_preference(/datum/preference/toggle/allow_mismatched_parts)
-	return passed_initial_check || allowed
-
-/datum/preference/choiced/heterochromia
-	savefile_key = "feature_heterochromia"
-	savefile_identifier = PREFERENCE_CHARACTER
-	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
-	relevant_mutant_bodypart = "heterochromia"
-
-/datum/preference/choiced/heterochromia/is_accessible(datum/preferences/preferences)
-	var/passed_initial_check = ..(preferences)
-	var/allowed = preferences.read_preference(/datum/preference/toggle/allow_mismatched_parts)
-	var/part_enabled = preferences.read_preference(/datum/preference/toggle/heterochromia)
-	return ((passed_initial_check || allowed) && part_enabled)
-
-/datum/preference/choiced/heterochromia/init_possible_values()
-	return assoc_to_keys(GLOB.sprite_accessories["heterochromia"])
-
-/datum/preference/choiced/heterochromia/apply_to_human(mob/living/carbon/human/target, value)
-	if(!target.dna.mutant_bodyparts[relevant_mutant_bodypart])
-		target.dna.mutant_bodyparts[relevant_mutant_bodypart] = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_COLOR_LIST = list("#FFFFFF"), MUTANT_INDEX_EMISSIVE_LIST = list(FALSE))
-	target.dna.mutant_bodyparts[relevant_mutant_bodypart][MUTANT_INDEX_NAME] = value
-
-/datum/preference/choiced/heterochromia/create_default_value()
-	var/datum/sprite_accessory/heterochromia/none/default = /datum/sprite_accessory/heterochromia/none
-	return initial(default.name)
-
-/datum/preference/tri_color/heterochromia
-	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
-	savefile_identifier = PREFERENCE_CHARACTER
-	savefile_key = "heterochromia_color"
-	relevant_mutant_bodypart = "heterochromia"
-	type_to_check = /datum/preference/toggle/heterochromia
-
-/datum/preference/tri_bool/heterochromia
-	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
-	savefile_identifier = PREFERENCE_CHARACTER
-	savefile_key = "heterochromia_emissive"
-	relevant_mutant_bodypart = "heterochromia"
-	type_to_check = /datum/preference/toggle/heterochromia

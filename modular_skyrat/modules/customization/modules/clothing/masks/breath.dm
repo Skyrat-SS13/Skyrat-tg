@@ -80,8 +80,6 @@
 	icon_state = "swatclavam"
 	inhand_icon_state = "balaclava"
 
-
-
 /obj/item/clothing/mask/gas/german
 	name = "black gas mask"
 	desc = "A black gas mask. Are you my Mummy?"

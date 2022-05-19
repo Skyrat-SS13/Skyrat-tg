@@ -630,7 +630,6 @@
 		"smes",
 		"super_capacitor",
 		"super_cell",
-		"superpacman",
 		"turbine_compressor",
 		"turbine_rotor",
 		"turbine_stator",
@@ -1076,8 +1075,6 @@
 		"bat_normal",
 		"bat_super",
 		"cardslot",
-		"cpu_normal",
-		"cpu_small",
 		"hdd_advanced",
 		"hdd_basic",
 		"hdd_cluster",
@@ -1086,12 +1083,9 @@
 		"netcard_advanced",
 		"netcard_basic",
 		"netcard_wired",
-		"pcpu_normal",
-		"pcpu_small",
 		"portadrive_advanced",
 		"portadrive_basic",
 		"portadrive_super",
-		"sensorpackage",
 		"ssd_micro",
 		"ssd_small",
 	)
@@ -1617,6 +1611,7 @@
 		"mod_stealth",
 		"mod_mag_harness",
 		"mod_pathfinder",
+		"mod_holster",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 

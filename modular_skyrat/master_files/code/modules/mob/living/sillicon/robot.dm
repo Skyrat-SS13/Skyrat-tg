@@ -1,8 +1,8 @@
 ////
 //	Typing indicator icon change
 /mob/living/silicon/robot/set_typing_indicator(state, emote)
-	var/static/mutable_appearance/type_indicator = mutable_appearance('modular_skyrat/modules/indicators/icons/typing_indicator.dmi', "borg0", FLY_LAYER)
-	var/static/mutable_appearance/emote_indicator = mutable_appearance('modular_skyrat/modules/indicators/icons/emote_indicator.dmi', "borg0", FLY_LAYER)
+	var/static/mutable_appearance/type_indicator = mutable_appearance('modular_skyrat/modules/indicators/icons/typing_indicator.dmi', "borg0", CHAT_INDICATOR_LAYER)
+	var/static/mutable_appearance/emote_indicator = mutable_appearance('modular_skyrat/modules/indicators/icons/emote_indicator.dmi', "borg0", CHAT_INDICATOR_LAYER)
 	typing_indicator = state
 
 	if(typing_indicator)
