@@ -491,15 +491,9 @@
 		switch(user_input)
 			if("oven")
 				var/datum/component/bakeable/item_bakeable_component = thing_to_cook.GetComponent(/datum/component/bakeable)
-				if(item_bakeable_component.bake_result)
-					item_to_spawn = item_bakeable_component.bake_result
-				else
-					item_to_spawn = /obj/item/food/badrecipe
+				item_to_spawn = item_bakeable_component.bake_result ? item_bakeable_component.bake_result : /obj/item/food/badrecipe
 			if("microwave")
-				if(thing_to_cook.microwaved_type)
-					item_to_spawn = thing_to_cook.microwaved_type
-				else
-					item_to_spawn = /obj/item/food/badrecipe
+				item_to_spawn = thing_to_cook.microwaved_type ? thing_to_cook.microwaved_type : /obj/item/food/badrecipe
 		qdel(thing_to_cook)
 		new item_to_spawn(get_turf(src))
 		in_use = FALSE
