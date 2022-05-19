@@ -295,42 +295,22 @@
 	icon_state = "robowing"
 	color_src = USE_MATRIXED_COLORS
 
-/datum/sprite_accessory/wings/mammal/dragonfly
-	name = "Dragonfly"
-	icon_state = "dragonfly"
-	color_src = USE_ONE_COLOR
-
-/datum/sprite_accessory/wings/mammal/beealt
-	name = "Bee (Alt)"
-	icon_state = "beealt"
-	color_src = USE_ONE_COLOR
-
-/datum/sprite_accessory/wings/mammal/mantisarms
-	name = "Mantis Arms"
-	icon_state = "mantisarms"
-	color_src = USE_MATRIXED_COLORS
-
-/datum/sprite_accessory/wings/mammal/top/mantisarms
-	name = "Mantis Arms (Top)"
-	icon_state = "mantisarms"
-	color_src = USE_MATRIXED_COLORS
-
-/datum/sprite_accessory/wings/mammal/minibat
+/datum/sprite_accessory/wings/mammal/mini_bat
 	name = "Mini-Bat"
 	icon_state = "minibat"
 	color_src = USE_ONE_COLOR
 
-/datum/sprite_accessory/wings/mammal/minifeather
+/datum/sprite_accessory/wings/mammal/mini_feather
 	name = "Mini-Feathery"
 	icon_state = "minifeather"
 	color_src = USE_ONE_COLOR
 
-/datum/sprite_accessory/wings/mammal/tinybat
+/datum/sprite_accessory/wings/mammal/tiny_bat
 	name = "Tiny-Bat"
 	icon_state = "tinybat"
 	color_src = USE_ONE_COLOR
 
-/datum/sprite_accessory/wings/mammal/tinyfeather
+/datum/sprite_accessory/wings/mammal/tiny_feather
 	name = "Tiny-Feathery"
 	icon_state = "tinyfeather"
 	color_src = USE_ONE_COLOR
