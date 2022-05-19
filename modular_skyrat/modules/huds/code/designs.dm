@@ -6,7 +6,7 @@
 	materials = list(/datum/material/iron = 500, /datum/material/glass = 500, /datum/material/silver = 350)
 	build_path = /obj/item/clothing/glasses/hud/health/prescription
 	category = list("Equipment")
-	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
+	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/security_hud_prescription
 	name = "Prescription Security HUD"
@@ -16,7 +16,7 @@
 	materials = list(/datum/material/iron = 500, /datum/material/glass = 500, /datum/material/silver = 350)
 	build_path = /obj/item/clothing/glasses/hud/security/prescription
 	category = list("Equipment")
-	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
+	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 
 /datum/design/diagnostic_hud_prescription
 	name = "Prescription Diagnostic HUD"
@@ -26,7 +26,7 @@
 	materials = list(/datum/material/iron = 500, /datum/material/glass = 500, /datum/material/gold = 350)
 	build_path = /obj/item/clothing/glasses/hud/diagnostic/prescription
 	category = list("Equipment")
-	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE
+	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
 
 /datum/design/mesons_prescription
 	name = "Prescription Optical Meson Scanners"
@@ -36,7 +36,7 @@
 	materials = list(/datum/material/iron = 500, /datum/material/glass = 500, /datum/material/silver = 350)
 	build_path = /obj/item/clothing/glasses/meson/prescription
 	category = list("Equipment")
-	departmental_flags = DEPARTMENTAL_FLAG_CARGO | DEPARTMENTAL_FLAG_ENGINEERING
+	departmental_flags = DEPARTMENT_BITFLAG_CARGO | DEPARTMENT_BITFLAG_ENGINEERING
 
 /datum/design/engine_goggles_prescription
 	name = "Prescription Engineering Scanner Goggles"
@@ -46,7 +46,7 @@
 	materials = list(/datum/material/iron = 500, /datum/material/glass = 500, /datum/material/plasma = 100, /datum/material/silver = 350)
 	build_path = /obj/item/clothing/glasses/meson/engine/prescription
 	category = list("Equipment")
-	departmental_flags = DEPARTMENTAL_FLAG_ENGINEERING
+	departmental_flags = DEPARTMENT_BITFLAG_ENGINEERING
 
 /datum/design/tray_goggles_prescription
 	name = "Prescription Optical T-Ray Scanners"
@@ -56,4 +56,4 @@
 	materials = list(/datum/material/iron = 500, /datum/material/glass = 500, /datum/material/silver = 150)
 	build_path = /obj/item/clothing/glasses/meson/engine/tray/prescription
 	category = list("Equipment")
-	departmental_flags = DEPARTMENTAL_FLAG_ENGINEERING
+	departmental_flags = DEPARTMENT_BITFLAG_ENGINEERING
