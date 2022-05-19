@@ -517,3 +517,26 @@
 /obj/item/ammo_box/magazine/tommygunm45
 	name = "\improper Tommy Gun .460 Ceres drum"
 	desc = "A disc magazine chambered for .460 Ceres."
+	
+/obj/item/ammo_box/magazine/m556
+	name = ".277 Aestus toploading magazine"
+	desc = "A toploading magazine chambered for .277 Aestus."
+	
+/obj/item/ammo_box/magazine/m556/phasic
+	name = ".277 PHASE toploading magazine"
+	
+/obj/item/ammo_box/magazine/sniper_rounds
+	name = "anti-materiel rifle magazine"
+	desc = "A heavy magazine chambered for .416 Stabilis."
+	
+/obj/item/ammo_box/magazine/sniper_rounds/soporific
+	desc = "A magazine with soporific .416 Stabilis ammo, designed for happy days and dead quiet nights."
+	
+/obj/item/ammo_box/magazine/sniper_rounds/penetrator
+	name = "anti-materiel rifle ++P magazine"
+	desc = "A heavy magazine with over the top, overpressurized, and frankly over the top .416 penetrator ammo."
+	
+/obj/item/ammo_box/magazine/m50
+	name = ".454 Trucidator handcannon magazine"
+	desc = "An absurdly THICK magazine possibly meant for a heavy hitting pistol, if you can call it that."
+
