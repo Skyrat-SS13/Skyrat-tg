@@ -17,7 +17,7 @@
 //////////////////GLOCK
 /obj/item/gun/ballistic/automatic/pistol/g17
 	name = "\improper GK-17"
-	desc = "A weapon from bygone times, this has been made to look like an old, blocky firearm from the 21st century. Let's hope it's more reliable. Chambered in 9x19mm."
+	desc = "A weapon from bygone times, this has been made to look like an old, blocky firearm from the 21st century. Let's hope it's more reliable. Chambered in 9x19mm Peacekeeper."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/glock.dmi'
 	icon_state = "glock"
 	w_class = WEIGHT_CLASS_NORMAL
@@ -34,7 +34,7 @@
 	company_flag = COMPANY_CANTALAN
 
 /obj/item/ammo_box/magazine/multi_sprite/g17
-	name = "9x19mm double stack magazine"
+	name = "9x19mm peacekeeper double stack magazine"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "g17"
 	ammo_type = /obj/item/ammo_casing/b9mm
@@ -56,7 +56,7 @@
 
 /obj/item/gun/ballistic/automatic/pistol/g18
 	name = "\improper GK-18"
-	desc = "A CFA-made burst firing cheap polymer pistol chambered in 9x19mm. Its heavy duty barrel affects firerate."
+	desc = "A CFA-made burst firing cheap polymer pistol chambered in 9x19mm Peacekeeper. Its heavy duty barrel affects firerate."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/glock.dmi'
 	icon_state = "glock_spec"
 	w_class = WEIGHT_CLASS_NORMAL
@@ -98,7 +98,7 @@
 
 /obj/item/gun/ballistic/automatic/pistol/g17/mesa
 	name = "\improper Glock-17"
-	desc = "A weapon from bygone times, and this is the exact 21st century version. In fact, even more reliable. Chambered in 9x19mm."
+	desc = "A weapon from bygone times, and this is the exact 21st century version. In fact, even more reliable. Chambered in 9x19mm Peacekeeper."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/glock.dmi'
 	icon_state = "glock_mesa"
 	w_class = WEIGHT_CLASS_NORMAL
@@ -118,7 +118,7 @@
 ////////////////PDH 40x32
 /obj/item/gun/ballistic/automatic/pistol/pdh
 	name = "\improper PDH-6H 'Osprey'"
-	desc = "A modern ballistics sidearm, used primarily by the military, however this one has had a paintjob to match command. It's chambered in 12mm."
+	desc = "A modern ballistics sidearm, used primarily by the military, however this one has had a paintjob to match command. It's chambered in 12.7x30mm."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/pdh.dmi'
 	righthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/righthand40x32.dmi'
 	lefthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/lefthand40x32.dmi'
@@ -200,7 +200,7 @@
 ///////////////////////////PDH PEACEKEEPER
 /obj/item/gun/ballistic/automatic/pistol/pdh/peacekeeper
 	name = "\improper PDH-6B"
-	desc = "A modern ballistic sidearm, used primarily by law enforcement."
+	desc = "A modern ballistic sidearm, used primarily by law enforcement, chambered in 9x19mm Peacekeeper."
 	fire_delay = 1.95
 	icon_state = "pdh_peacekeeper"
 	mag_type = /obj/item/ammo_box/magazine/multi_sprite/pdh_peacekeeper
@@ -210,7 +210,7 @@
 	company_flag = COMPANY_ARMADYNE
 
 /obj/item/ammo_box/magazine/multi_sprite/pdh_peacekeeper
-	name = "9x19mm polymer magazine"
+	name = "9x19mm PDH-6B polymer magazine"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "pdh"
 	ammo_type = /obj/item/ammo_casing/b9mm
@@ -233,7 +233,7 @@
 ///////////////////////LADON 40x32
 /obj/item/gun/ballistic/automatic/pistol/ladon
 	name = "\improper Ladon pistol"
-	desc = "Modern handgun based off the PDH series, chambered in 10mm."
+	desc = "Modern handgun based off the PDH series, chambered in 10mm Auto."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ladon.dmi'
 	righthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/righthand40x32.dmi'
 	lefthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/lefthand40x32.dmi'
@@ -315,7 +315,7 @@
 
 /obj/item/gun/ballistic/automatic/pistol/mk58
 	name = "\improper MK-58"
-	desc = "A modern 9mm handgun with an olive polymer lower frame. Looks like a generic 21st century military sidearm."
+	desc = "A modern 9mm Peacekeeper handgun with an olive polymer lower frame. Looks like a generic 21st century military sidearm."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mk58.dmi'
 	icon_state = "mk58"
 	w_class = WEIGHT_CLASS_NORMAL
