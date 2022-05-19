@@ -73,10 +73,6 @@
 	name = "Curly"
 	icon_state = "newcurly"
 
-/datum/sprite_accessory/horns/stabbers
-	name = "Stabbers"
-	icon_state = "stabbers"
-
 /datum/sprite_accessory/horns/upwards
 	name = "Upwards"
 	icon_state = "upwardshorns"
