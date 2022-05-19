@@ -7,9 +7,9 @@
 	dir = WEST
 	port_direction = SOUTH
 
-	callTime = 30 SECONDS
+	callTime = 15 SECONDS
 	ignitionTime = 6 SECONDS
-	rechargeTime = 20 SECONDS
+	rechargeTime = 15 SECONDS
 
 	movement_force = list("KNOCKDOWN" = 3, "THROW" = 0)
 	can_be_called_in_transit = FALSE
