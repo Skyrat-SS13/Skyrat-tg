@@ -155,8 +155,8 @@
 	if(!hooman?.dna?.mutant_bodyparts["taur"])
 		slowdown = 0
 		return ..()
-	var/datum/sprite_accessory/taur/S = GLOB.sprite_accessories["taur"][hooman.dna.species.mutant_bodyparts["taur"][MUTANT_INDEX_NAME]]
-	if(S.hide_legs)
+	var/datum/sprite_accessory/taur/taur_accessory = GLOB.sprite_accessories["taur"][hooman.dna.species.mutant_bodyparts["taur"][MUTANT_INDEX_NAME]]
+	if(taur_accessory.hide_legs)
 		slowdown = 4
 	else
 		slowdown = 0

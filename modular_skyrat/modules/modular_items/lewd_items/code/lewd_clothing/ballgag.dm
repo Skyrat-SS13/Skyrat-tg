@@ -131,6 +131,6 @@
 		if("large")
 			wearer.adjustOxyLoss(rand(1, 4))
 	if(prob(10))
-		wearer.emote(pick("gasp","choke","moan"))
+		wearer.emote(pick("gasp", "choke", "moan"))
 	choke_timer = 0
 */

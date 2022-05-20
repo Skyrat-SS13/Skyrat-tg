@@ -22,11 +22,11 @@
 			if(!(target.is_bottomless()))
 				to_chat(user, span_danger("[target]'s groin is covered!"))
 				return
-			message = (user == target) ? pick("tickles [target.p_them()]self with [src]","gently teases [target.p_their()] belly with [src]") : pick("teases [target]'s belly with [src]", "uses [src] to tickle [target]'s belly","tickles [target] with [src]")
+			message = (user == target) ? pick("tickles [target.p_them()]self with [src]", "gently teases [target.p_their()] belly with [src]") : pick("teases [target]'s belly with [src]", "uses [src] to tickle [target]'s belly", "tickles [target] with [src]")
 			if(target.stat == DEAD)
 				return
 			if(prob(70))
-				target.emote(pick("laugh","giggle","twitch","twitch_s"))
+				target.emote(pick("laugh", "giggle", "twitch", "twitch_s"))
 
 		if(BODY_ZONE_CHEST)
 			targetedsomewhere = TRUE
@@ -34,11 +34,11 @@
 			if(!(target.is_topless() || badonkers.visibility_preference == GENITAL_ALWAYS_SHOW))
 				to_chat(user, span_danger("[target]'s chest is covered!"))
 				return
-			message = (user == target) ? pick("tickles [target.p_them()]self with [src]","gently teases [target.p_their()] own nipples with [src]") : pick("teases [target]'s nipples with [src]", "uses [src] to tickle [target]'s left nipple", "uses [src] to tickle [target]'s right nipple")
+			message = (user == target) ? pick("tickles [target.p_them()]self with [src]", "gently teases [target.p_their()] own nipples with [src]") : pick("teases [target]'s nipples with [src]", "uses [src] to tickle [target]'s left nipple", "uses [src] to tickle [target]'s right nipple")
 			if(target.stat == DEAD)
 				return
 			if(prob(70))
-				target.emote(pick("laugh","giggle","twitch","twitch_s","moan",))
+				target.emote(pick("laugh", "giggle", "twitch", "twitch_s", "moan", ))
 
 		if(BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
 			targetedsomewhere = TRUE
@@ -49,22 +49,22 @@
 			if(!target.is_barefoot())
 				to_chat(user, span_danger("[target]'s feet are covered!"))
 				return
-			message = (user == target) ? pick("tickles [target.p_them()]self with [src]","gently teases [target.p_their()] own feet with [src]") : pick("teases [target]'s feet with [src]", "uses [src] to tickle [target]'s [user.zone_selected == BODY_ZONE_L_LEG ? "left" : "right"] foot", "uses [src] to tickle [target]'s toes")
+			message = (user == target) ? pick("tickles [target.p_them()]self with [src]", "gently teases [target.p_their()] own feet with [src]") : pick("teases [target]'s feet with [src]", "uses [src] to tickle [target]'s [user.zone_selected == BODY_ZONE_L_LEG ? "left" : "right"] foot", "uses [src] to tickle [target]'s toes")
 			if(target.stat == DEAD)
 				return
 			if(prob(70))
-				target.emote(pick("laugh","giggle","twitch","twitch_s","moan",))
+				target.emote(pick("laugh", "giggle", "twitch", "twitch_s", "moan", ))
 
 		if(BODY_ZONE_R_ARM, BODY_ZONE_L_ARM)
 			targetedsomewhere = TRUE
 			if(!target.is_topless())
 				to_chat(user, span_danger("[target]'s armpits are covered!"))
 				return
-			message = (user == target) ? pick("tickles [target.p_them()]self with [src]","gently teases [target.p_their()] own armpit with [src]") : pick("teases [target]'s right armpit with [src]", "uses [src] to tickle [target]'s [user.zone_selected == BODY_ZONE_L_ARM ? "left" : "right"] armpit", "uses [src] to tickle [target]'s underarm")
+			message = (user == target) ? pick("tickles [target.p_them()]self with [src]", "gently teases [target.p_their()] own armpit with [src]") : pick("teases [target]'s right armpit with [src]", "uses [src] to tickle [target]'s [user.zone_selected == BODY_ZONE_L_ARM ? "left" : "right"] armpit", "uses [src] to tickle [target]'s underarm")
 			if(target.stat == DEAD)
 				return
 			if(prob(70))
-				target.emote(pick("laugh","giggle","twitch","twitch_s","moan",))
+				target.emote(pick("laugh", "giggle", "twitch", "twitch_s", "moan", ))
 	if(!targetedsomewhere)
 		return
 	target.do_jitter_animation()
@@ -72,9 +72,9 @@
 	SEND_SIGNAL(target, COMSIG_ADD_MOOD_EVENT, "tickled", /datum/mood_event/tickled)
 	target.adjustArousal(3)
 	user.visible_message(span_purple("[user] [message]!"))
-	playsound(loc, pick('sound/items/handling/cloth_drop.ogg', 					//i duplicate this part of code because im useless shitcoder that can't make it work properly without tons of repeating code blocks
-            			'sound/items/handling/cloth_pickup.ogg',				//if you can make it better - go ahead, modify it, please.
-        	       	    'sound/items/handling/cloth_pickup.ogg'), 70, 1, -1, ignore_walls = FALSE)	//selfdestruction - 100
+	playsound(loc, pick('sound/items/handling/cloth_drop.ogg', // I duplicate this part of code because im useless shitcoder that can't make it work properly without tons of repeating code blocks
+            			'sound/items/handling/cloth_pickup.ogg', // If you can make it better - go ahead, modify it, please.
+        	       	    'sound/items/handling/cloth_pickup.ogg'), 70, 1, -1, ignore_walls = FALSE)
 
 //Mood boost
 /datum/mood_event/tickled

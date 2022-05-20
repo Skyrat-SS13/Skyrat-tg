@@ -73,7 +73,7 @@
 	var/mob/living/carbon/human/vibrated = loc
 	if(!istype(vibrated))
 		return
-	//i tried using switch here, but it need static value, and u.arousal can't be it. So fuck switches. Reject it, embrace the IFs
+	// I tried using switch here, but it need static value, and u.arousal can't be it. So fuck switches. Reject it, embrace the IFs
 	if(vibration_mode == "low" && vibrated.arousal < 30)
 		vibrated.adjustArousal(0.6 * delta_time)
 		vibrated.adjustPleasure(0.7 * delta_time)
@@ -102,13 +102,13 @@
 			var/obj/item/organ/genital/vagina = target.getorganslot(ORGAN_SLOT_VAGINA)
 			if(vagina && penis)
 				if(target.is_bottomless() || vagina.visibility_preference == GENITAL_ALWAYS_SHOW && penis.visibility_preference == GENITAL_ALWAYS_SHOW)
-					message = (user == target) ? pick("massages their penis with the [src]","[vibration_mode == "low" ? "gently" : ""][vibration_mode = "hard" ? "roughly" : ""] teases their penis with [src]","massages their pussy with the [src]","[vibration_mode == "low" ? "gently" : ""][vibration_mode = "hard" ? "roughly" : ""] teases their pussy with [src]") : pick("[vibration_mode == "low" ? "delicately" : ""][vibration_mode = "hard" ? "aggressively" : ""] massages [target]'s penis with [src]", "uses [src] to [vibration_mode == "low" ? "gently" : ""][vibration_mode = "hard" ? "roughly" : ""] massage [target]'s penis","leans the vibrator against [target]'s penis","[vibration_mode == "low" ? "delicately" : ""][vibration_mode = "hard" ? "aggressively" : ""] massages [target]'s pussy with [src]", "uses [src] to [vibration_mode == "low" ? "gently" : ""][vibration_mode = "hard" ? "roughly" : ""] massage [target]'s pussy","leans the vibrator against [target]'s pussy")
+					message = (user == target) ? pick("massages their penis with the [src]", "[vibration_mode == "low" ? "gently" : ""][vibration_mode = "hard" ? "roughly" : ""] teases their penis with [src]", "massages their pussy with the [src]", "[vibration_mode == "low" ? "gently" : ""][vibration_mode = "hard" ? "roughly" : ""] teases their pussy with [src]") : pick("[vibration_mode == "low" ? "delicately" : ""][vibration_mode = "hard" ? "aggressively" : ""] massages [target]'s penis with [src]", "uses [src] to [vibration_mode == "low" ? "gently" : ""][vibration_mode = "hard" ? "roughly" : ""] massage [target]'s penis", "leans the vibrator against [target]'s penis", "[vibration_mode == "low" ? "delicately" : ""][vibration_mode = "hard" ? "aggressively" : ""] massages [target]'s pussy with [src]", "uses [src] to [vibration_mode == "low" ? "gently" : ""][vibration_mode = "hard" ? "roughly" : ""] massage [target]'s pussy", "leans the vibrator against [target]'s pussy")
 
 				else if(target.is_bottomless() || penis.visibility_preference == GENITAL_ALWAYS_SHOW)
-					message = (user == target) ? pick("massages their penis with the [src]","[vibration_mode == "low" ? "gently" : ""][vibration_mode = "hard" ? "roughly" : ""] teases their penis with [src]") : pick("[vibration_mode == "low" ? "delicately" : ""][vibration_mode = "hard" ? "aggressively" : ""] massages [target]'s penis with [src]", "uses [src] to [vibration_mode == "low" ? "gently" : ""][vibration_mode = "hard" ? "roughly" : ""] massage [target]'s penis","leans the vibrator against [target]'s penis")
+					message = (user == target) ? pick("massages their penis with the [src]", "[vibration_mode == "low" ? "gently" : ""][vibration_mode = "hard" ? "roughly" : ""] teases their penis with [src]") : pick("[vibration_mode == "low" ? "delicately" : ""][vibration_mode = "hard" ? "aggressively" : ""] massages [target]'s penis with [src]", "uses [src] to [vibration_mode == "low" ? "gently" : ""][vibration_mode = "hard" ? "roughly" : ""] massage [target]'s penis", "leans the vibrator against [target]'s penis")
 
 				else if(target.is_bottomless() || vagina.visibility_preference == GENITAL_ALWAYS_SHOW)
-					message = (user == target) ? pick("massages their pussy with the [src]","[vibration_mode == "low" ? "gently" : ""][vibration_mode = "hard" ? "roughly" : ""] teases their pussy with [src]") : pick("[vibration_mode == "low" ? "delicately" : ""][vibration_mode = "hard" ? "aggressively" : ""] massages [target]'s pussy with [src]", "uses [src] to [vibration_mode == "low" ? "gently" : ""][vibration_mode = "hard" ? "roughly" : ""] massage [target]'s pussy","leans the vibrator against [target]'s pussy")
+					message = (user == target) ? pick("massages their pussy with the [src]", "[vibration_mode == "low" ? "gently" : ""][vibration_mode = "hard" ? "roughly" : ""] teases their pussy with [src]") : pick("[vibration_mode == "low" ? "delicately" : ""][vibration_mode = "hard" ? "aggressively" : ""] massages [target]'s pussy with [src]", "uses [src] to [vibration_mode == "low" ? "gently" : ""][vibration_mode = "hard" ? "roughly" : ""] massage [target]'s pussy", "leans the vibrator against [target]'s pussy")
 
 				else
 					to_chat(user, span_danger("Looks like [target]'s groin is covered!"))
@@ -118,13 +118,13 @@
 				if(!(target.is_bottomless() || penis.visibility_preference == GENITAL_ALWAYS_SHOW))
 					to_chat(user, span_danger("Looks like [target]'s groin is covered!"))
 					return
-				message = (user == target) ? pick("massages their penis with the [src]","[vibration_mode == "low" ? "gently" : ""][vibration_mode = "hard" ? "roughly" : ""] teases their penis with [src]") : pick("[vibration_mode == "low" ? "delicately" : ""][vibration_mode = "hard" ? "aggressively" : ""] massages [target]'s penis with [src]", "uses [src] to [vibration_mode == "low" ? "gently" : ""][vibration_mode = "hard" ? "roughly" : ""] massage [target]'s penis","leans the vibrator against [target]'s penis")
+				message = (user == target) ? pick("massages their penis with the [src]", "[vibration_mode == "low" ? "gently" : ""][vibration_mode = "hard" ? "roughly" : ""] teases their penis with [src]") : pick("[vibration_mode == "low" ? "delicately" : ""][vibration_mode = "hard" ? "aggressively" : ""] massages [target]'s penis with [src]", "uses [src] to [vibration_mode == "low" ? "gently" : ""][vibration_mode = "hard" ? "roughly" : ""] massage [target]'s penis", "leans the vibrator against [target]'s penis")
 
 			else if(vagina)
 				if(!(target.is_bottomless() || vagina.visibility_preference == GENITAL_ALWAYS_SHOW))
 					to_chat(user, span_danger("Looks like [target]'s groin is covered!"))
 					return
-				message = (user == target) ? pick("massages their pussy with the [src]","[vibration_mode == "low" ? "gently" : ""][vibration_mode = "hard" ? "roughly" : ""] teases their pussy with [src]") : pick("[vibration_mode == "low" ? "delicately" : ""][vibration_mode = "hard" ? "aggressively" : ""] massages [target]'s pussy with [src]", "uses [src] to [vibration_mode == "low" ? "gently" : ""][vibration_mode = "hard" ? "roughly" : ""] massage [target]'s pussy","leans the vibrator against [target]'s pussy")
+				message = (user == target) ? pick("massages their pussy with the [src]", "[vibration_mode == "low" ? "gently" : ""][vibration_mode = "hard" ? "roughly" : ""] teases their pussy with [src]") : pick("[vibration_mode == "low" ? "delicately" : ""][vibration_mode = "hard" ? "aggressively" : ""] massages [target]'s pussy with [src]", "uses [src] to [vibration_mode == "low" ? "gently" : ""][vibration_mode = "hard" ? "roughly" : ""] massage [target]'s pussy", "leans the vibrator against [target]'s pussy")
 			target.adjustArousal((vibration_mode == "low" ? 4 : (vibration_mode == "hard" ? 8 : 5)))
 			target.adjustPleasure((vibration_mode == "low" ? 2 : (vibration_mode == "hard" ? 10 : 5)))
 
@@ -133,16 +133,16 @@
 			if(!(target.is_topless() || breasts.visibility_preference == GENITAL_ALWAYS_SHOW))
 				to_chat(user, span_danger("Looks like [target]'s chest is covered!"))
 				return
-			message = (user == target) ? pick("massages their [breasts ? "breasts" : "nipples"] with the [src]","[vibration_mode == "low" ? "gently" : ""][vibration_mode = "hard" ? "roughly" : ""] teases their [breasts ? "tits" : "nipples"] with [src]") : pick("[vibration_mode == "low" ? "delicately" : ""][vibration_mode = "hard" ? "aggressively" : ""] teases [target]'s [breasts ? "breasts" : "nipples"] with [src]", "uses [src] to[vibration_mode == "low" ? " slowly" : ""] massage [target]'s [breasts ? "tits" : "nipples"]", "uses [src] to tease [target]'s [breasts ? "boobs" : "nipples"]")
+			message = (user == target) ? pick("massages their [breasts ? "breasts" : "nipples"] with the [src]", "[vibration_mode == "low" ? "gently" : ""][vibration_mode = "hard" ? "roughly" : ""] teases their [breasts ? "tits" : "nipples"] with [src]") : pick("[vibration_mode == "low" ? "delicately" : ""][vibration_mode = "hard" ? "aggressively" : ""] teases [target]'s [breasts ? "breasts" : "nipples"] with [src]", "uses [src] to[vibration_mode == "low" ? " slowly" : ""] massage [target]'s [breasts ? "tits" : "nipples"]", "uses [src] to tease [target]'s [breasts ? "boobs" : "nipples"]")
 			target.adjustArousal((vibration_mode == "low" ? 3 : (vibration_mode == "hard" ? 7 : 4)))
 			target.adjustPleasure((vibration_mode == "low" ? 1 : (vibration_mode == "hard" ? 9 : 4)))
 
 	if(prob(30) && (target.stat != DEAD))
-		target.emote(pick("twitch_s","moan"))
+		target.emote(pick("twitch_s", "moan"))
 	user.visible_message(span_purple("[user] [message]!"))
 	playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/vibrate.ogg', (vibration_mode == "low" ? 10 : (vibration_mode == "hard" ? 30 : 20)), TRUE, ignore_walls = FALSE)
 
-/obj/item/clothing/sextoy/magic_wand/attack_self(mob/user, obj/item/I)
+/obj/item/clothing/sextoy/magic_wand/attack_self(mob/user)
 	toggle_mode()
 	switch(vibration_mode)
 		if("low")

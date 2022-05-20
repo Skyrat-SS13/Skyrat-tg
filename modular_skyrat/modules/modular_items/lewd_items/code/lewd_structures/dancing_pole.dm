@@ -40,11 +40,11 @@
         "white" = image(icon = src.icon, icon_state = "pole_white_on"))
 
 //using multitool on pole
-/obj/structure/pole/multitool_act(mob/living/user, obj/item/I)
+/obj/structure/pole/multitool_act(mob/living/user, obj/item/used_item)
     . = ..()
     if(.)
         return
-    var/choice = show_radial_menu(user,src, pole_designs, custom_check = CALLBACK(src, .proc/check_menu, user, I), radius = 50, require_near = TRUE)
+    var/choice = show_radial_menu(user, src, pole_designs, custom_check = CALLBACK(src, .proc/check_menu, user, used_item), radius = 50, require_near = TRUE)
     if(!choice)
         return FALSE
     current_pole_color = choice
@@ -114,25 +114,25 @@
 	if(user.loc != src.loc)
 		return
 	if(!QDELETED(src))
-		animate(user,pixel_x = -6, pixel_y = 0, time = 10)
+		animate(user, pixel_x = -6, pixel_y = 0, time = 10)
 		sleep(20)
 		user.dir = 4
 	if(!QDELETED(src))
-		animate(user,pixel_x = -6,pixel_y = 24, time = 10)
+		animate(user, pixel_x = -6, pixel_y = 24, time = 10)
 		sleep(12)
 		src.layer = 4.01 //move the pole infront for now. better to move the pole, because the character moved behind people sitting above otherwise
 	if(!QDELETED(src))
-		animate(user,pixel_x = 6,pixel_y = 12, time = 5)
+		animate(user, pixel_x = 6, pixel_y = 12, time = 5)
 		user.dir = 8
 		sleep(6)
 	if(!QDELETED(src))
-		animate(user,pixel_x = -6,pixel_y = 4, time = 5)
+		animate(user, pixel_x = -6, pixel_y = 4, time = 5)
 		user.dir = 4
 		src.layer = 4 // move it back.
 		sleep(6)
 	if(!QDELETED(src))
 		user.dir = 1
-		animate(user,pixel_x = 0, pixel_y = 0, time = 3)
+		animate(user, pixel_x = 0, pixel_y = 0, time = 3)
 		sleep(6)
 	if(!QDELETED(src))
 		user.do_jitter_animation()
@@ -157,12 +157,12 @@
 	var/unwrapped = 0
 	w_class = WEIGHT_CLASS_HUGE
 
-/obj/item/polepack/attackby(obj/item/P, mob/user, params) //erecting a pole here.
+/obj/item/polepack/attackby(obj/item/used_item, mob/user, params) //erecting a pole here.
 	add_fingerprint(user)
-	if(istype(P, /obj/item/wrench))
+	if(istype(used_item, /obj/item/wrench))
 		if (!(item_flags & IN_INVENTORY) && !(item_flags & IN_STORAGE))
 			to_chat(user, span_notice("You begin fastening the frame to the floor and ceiling..."))
-			if(P.use_tool(src, user, 8 SECONDS, volume=50))
+			if(used_item.use_tool(src, user, 8 SECONDS, volume = 50))
 				to_chat(user, span_notice("You assemble the stripper pole."))
 				new /obj/structure/pole(get_turf(user))
 				qdel(src)
@@ -170,11 +170,11 @@
 	else
 		return ..()
 
-/obj/structure/pole/attackby(obj/item/P, mob/user, params) //un-erecting a pole. :(
+/obj/structure/pole/attackby(obj/item/used_item, mob/user, params) //un-erecting a pole. :(
 	add_fingerprint(user)
-	if(istype(P, /obj/item/wrench))
+	if(istype(used_item, /obj/item/wrench))
 		to_chat(user, span_notice("You begin unfastening the frame from the floor and ceiling..."))
-		if(P.use_tool(src, user, 8 SECONDS, volume=50))
+		if(used_item.use_tool(src, user, 8 SECONDS, volume = 50))
 			to_chat(user, span_notice("You disassemble the stripper pole."))
 			new /obj/item/polepack(get_turf(user))
 			qdel(src)

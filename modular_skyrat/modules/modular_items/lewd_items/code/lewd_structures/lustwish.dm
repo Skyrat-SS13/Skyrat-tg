@@ -76,8 +76,8 @@
         "teal" = image(icon = src.icon, icon_state = "lustwish_teal"))
 
 //Changing special secret var
-/obj/machinery/vending/dorms/attackby(obj/item/I, mob/living/user, params)
-	if(istype(I, /obj/item/lustwish_discount))
+/obj/machinery/vending/dorms/attackby(obj/item/used_item, mob/living/user, params)
+	if(istype(used_item, /obj/item/lustwish_discount))
 		user.visible_message(span_boldnotice("Something changes in [src] with a loud clunk."))
 		card_used = !card_used
 		switch(card_used)
@@ -91,12 +91,12 @@
 		return ..()
 
 //using multitool on pole
-/obj/machinery/vending/dorms/multitool_act(mob/living/user, obj/item/I)
+/obj/machinery/vending/dorms/multitool_act(mob/living/user, obj/item/used_item)
 	. = ..()
 	if(.)
 		return
 	if(card_used == TRUE)
-		var/choice = show_radial_menu(user,src, vend_designs, custom_check = CALLBACK(src, .proc/check_menu, user, I), radius = 50, require_near = TRUE)
+		var/choice = show_radial_menu(user, src, vend_designs, custom_check = CALLBACK(src, .proc/check_menu, user, used_item), radius = 50, require_near = TRUE)
 		if(!choice)
 			return FALSE
 		current_color = choice

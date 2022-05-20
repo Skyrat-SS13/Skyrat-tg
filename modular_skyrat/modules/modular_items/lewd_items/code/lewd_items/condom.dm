@@ -32,16 +32,16 @@
 	if(!do_after(user, 1.5 SECONDS, target = user))
 		return
 	playsound(src.loc, 'sound/items/poster_ripped.ogg', 50, TRUE)
-	var/obj/item/clothing/sextoy/condom/C = new /obj/item/clothing/sextoy/condom
+	var/obj/item/clothing/sextoy/condom/removed_condom = new /obj/item/clothing/sextoy/condom
 
-	user.put_in_hands(C)
+	user.put_in_hands(removed_condom)
 	switch(current_color)
 		if("pink")
-			C.current_color = "pink"
+			removed_condom.current_color = "pink"
 		if("teal")
-			C.current_color = "teal"
-	C.update_icon_state()
-	C.update_icon()
+			removed_condom.current_color = "teal"
+	removed_condom.update_icon_state()
+	removed_condom.update_icon()
 	qdel(src)
 
 //Opened condom

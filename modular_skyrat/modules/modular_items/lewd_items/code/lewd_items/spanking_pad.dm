@@ -44,13 +44,13 @@
 	icon_state = "[initial(icon_state)]_[current_color]"
 	inhand_icon_state = "[initial(icon_state)]_[current_color]"
 
-/obj/item/spanking_pad/AltClick(mob/user, obj/item/I)
+/obj/item/spanking_pad/AltClick(mob/user)
 	if(color_changed)
 		return
 	. = ..()
 	if(.)
 		return
-	var/choice = show_radial_menu(user,src, spankpad_designs, custom_check = CALLBACK(src, .proc/check_menu, user, I), radius = 36, require_near = TRUE)
+	var/choice = show_radial_menu(user, src, spankpad_designs, custom_check = CALLBACK(src, .proc/check_menu, user), radius = 36, require_near = TRUE)
 	if(!choice)
 		return FALSE
 	current_color = choice
@@ -72,9 +72,9 @@
 			if(!target.is_bottomless())
 				to_chat(user, span_danger("[target]'s butt is covered!"))
 				return
-			message = (user == target) ? pick("spanks themselves with [src]","uses [src] to slap their hips") : pick("slaps [target]'s hips with [src]", "uses [src] to slap [target]'s butt","spanks [target] with [src], making a loud slapping noise","slaps [target]'s thighs with [src]")
+			message = (user == target) ? pick("spanks themselves with [src]", "uses [src] to slap their hips") : pick("slaps [target]'s hips with [src]", "uses [src] to slap [target]'s butt", "spanks [target] with [src], making a loud slapping noise", "slaps [target]'s thighs with [src]")
 			if(prob(40) && (target.stat != DEAD))
-				target.emote(pick("twitch_s","moan","blush","gasp"))
+				target.emote(pick("twitch_s", "moan", "blush", "gasp"))
 			target.adjustArousal(2)
 			target.adjustPain(4)
 			target.apply_status_effect(/datum/status_effect/spanked)

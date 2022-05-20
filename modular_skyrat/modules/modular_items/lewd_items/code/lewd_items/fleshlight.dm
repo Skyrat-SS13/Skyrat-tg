@@ -38,13 +38,13 @@
 	icon_state = "[initial(icon_state)]_[current_color]"
 	inhand_icon_state = "[initial(icon_state)]_[current_color]"
 
-/obj/item/clothing/sextoy/fleshlight/AltClick(mob/user, obj/item/object)
+/obj/item/clothing/sextoy/fleshlight/AltClick(mob/user)
 	if(color_changed)
 		return
 	. = ..()
 	if(.)
 		return
-	var/choice = show_radial_menu(user, src, fleshlight_designs, custom_check = CALLBACK(src, .proc/check_menu, user, object), radius = 36, require_near = TRUE)
+	var/choice = show_radial_menu(user, src, fleshlight_designs, custom_check = CALLBACK(src, .proc/check_menu, user), radius = 36, require_near = TRUE)
 	if(!choice)
 		return FALSE
 	current_color = choice
@@ -69,10 +69,10 @@
 			if(!(target.is_bottomless() || penis.visibility_preference == GENITAL_ALWAYS_SHOW))
 				to_chat(user, span_danger("[target]'s groin is covered!"))
 				return
-			message = (user == target) ? pick("moans in ecstasy as [target.p_they()] use the [src]","slowly moves [src] up and down on [target]'s penis, causing [target.p_them()] to bend in pleasure","slightly shivers in pleasure as [target.p_they()] use [src]") : pick("uses [src] on [target]'s penis","fucks [target] with [src]","masturbates [target] with [src], causing [target.p_them()] to moan in ecstasy")
+			message = (user == target) ? pick("moans in ecstasy as [target.p_they()] use the [src]", "slowly moves [src] up and down on [target]'s penis, causing [target.p_them()] to bend in pleasure", "slightly shivers in pleasure as [target.p_they()] use [src]") : pick("uses [src] on [target]'s penis", "fucks [target] with [src]", "masturbates [target] with [src], causing [target.p_them()] to moan in ecstasy")
 			if(!(prob(40) && (target.stat != DEAD)))
 				return
-			target.emote(pick("twitch_s","moan","blush"))
+			target.emote(pick("twitch_s", "moan", "blush"))
 			target.adjustArousal(6)
 			target.adjustPleasure(9)
 			user.visible_message(span_purple("[user] [message]!"))

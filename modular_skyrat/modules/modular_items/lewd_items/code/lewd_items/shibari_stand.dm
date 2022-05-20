@@ -203,13 +203,13 @@
 /obj/item/shibari_stand_kit/screwdriver_act(mob/living/user, obj/item/tool)
 	var/list/allowed_configs = list()
 	allowed_configs += "[greyscale_config]"
-	if(!tool.use_tool(src, user, 0, volume=40))
+	if(!tool.use_tool(src, user, 0, volume = 40))
 		return FALSE
 	var/datum/greyscale_modify_menu/menu = new(
 		src, usr, allowed_configs, null, \
-		starting_icon_state=icon_state, \
-		starting_config=greyscale_config, \
-		starting_colors=greyscale_colors
+		starting_icon_state = icon_state, \
+		starting_config = greyscale_config, \
+		starting_colors = greyscale_colors
 	)
 	menu.ui_interact(usr)
 	to_chat(user, span_notice("You switch the frame's plastic fittings color."))
@@ -218,7 +218,7 @@
 //Assembling shibari stand
 /obj/item/shibari_stand_kit/wrench_act(mob/living/user, obj/item/tool)
 	to_chat(user, span_notice("You begin fastening the frame to the floor."))
-	if(!tool.use_tool(src, user, 8 SECONDS, volume=50))
+	if(!tool.use_tool(src, user, 8 SECONDS, volume = 50))
 		return FALSE
 	to_chat(user, span_notice("You assemble the frame."))
 	var/obj/structure/chair/shibari_stand/stand = new(get_turf(src))
@@ -229,7 +229,7 @@
 //Disassembling shibari stand
 /obj/structure/chair/shibari_stand/wrench_act(mob/living/user, obj/item/tool)
 	to_chat(user, span_notice("You begin unfastening the frame of \the [src]..."))
-	if(!tool.use_tool(src, user, 8 SECONDS, volume=50))
+	if(!tool.use_tool(src, user, 8 SECONDS, volume = 50))
 		return FALSE
 	to_chat(user, span_notice("You disassemble \the [src]."))
 	var/obj/item/shibari_stand_kit/kit = new(get_turf(src))
@@ -242,13 +242,13 @@
 /obj/structure/chair/shibari_stand/screwdriver_act(mob/living/user, obj/item/tool)
 	var/list/allowed_configs = list()
 	allowed_configs += "[greyscale_config]"
-	if(!tool.use_tool(src, user, 0, volume=40))
+	if(!tool.use_tool(src, user, 0, volume = 40))
 		return FALSE
 	var/datum/greyscale_modify_menu/menu = new(
 		src, usr, allowed_configs, null, \
-		starting_icon_state=icon_state, \
-		starting_config=greyscale_config, \
-		starting_colors=greyscale_colors
+		starting_icon_state = icon_state, \
+		starting_config = greyscale_config, \
+		starting_colors = greyscale_colors
 	)
 	menu.ui_interact(usr)
 	to_chat(user, span_notice("You switch the frame's plastic fittings color."))
