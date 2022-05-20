@@ -123,7 +123,7 @@
 	materials = list(/datum/material/silver = 10000, /datum/material/gold = 10000, /datum/material/glass = 10000)
 	build_path = /obj/item/ammo_box/advanced/smartgun
 	category = list("Ammo")
-	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
+	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 
 /obj/item/ammo_box/advanced/smartgun
 	name = "5mm Shock-Rail box"
@@ -143,7 +143,7 @@
 	item_flags = NO_MAT_REDEMPTION
 	var/round_type = AMMO_TYPE_LETHAL
 	var/base_name = ""
-	var/list/possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_HOLLOWPOINT, AMMO_TYPE_RUBBER, AMMO_TYPE_IHDF, AMMO_TYPE_INCENDIARY, AMMO_TYPE_AP)
+	var/list/possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_HOLLOWPOINT, AMMO_TYPE_RUBBER, AMMO_TYPE_IHDF)
 
 /obj/item/ammo_box/magazine/multi_sprite/Initialize()
 	. = ..()

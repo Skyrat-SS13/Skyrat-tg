@@ -23,6 +23,15 @@
 /datum/armament_entry/cargo_gun/dynamics/ammo/c9mm_in
 	item_type = /obj/item/ammo_box/c9mm/fire
 
+/datum/armament_entry/cargo_gun/dynamics/ammo/b9mm
+	item_type = /obj/item/ammo_box/advanced/b9mm
+	
+/datum/armament_entry/cargo_gun/dynamics/ammo/b9mm_hp
+	item_type = /obj/item/ammo_box/advanced/b9mm/hp
+	
+/datum/armament_entry/cargo_gun/dynamics/ammo/b9mm_rub
+	item_type = /obj/item/ammo_box/advanced/b9mm/rubber
+
 /datum/armament_entry/cargo_gun/dynamics/ammo/c10mm
 	item_type = /obj/item/ammo_box/c10mm
 
@@ -97,6 +106,12 @@
 
 /datum/armament_entry/cargo_gun/dynamics/ammo/b10mm_rub
 	item_type = /obj/item/ammo_box/b10mm/rubber
+
+/datum/armament_entry/cargo_gun/dynamics/ammo/b6mm	
+	item_type = /obj/item/ammo_box/advanced/b6mm
+	
+/datum/armament_entry/cargo_gun/dynamics/ammo/b6mm_rub	
+	item_type = /obj/item/ammo_box/advanced/b6mm/rubber
 
 /datum/armament_entry/cargo_gun/dynamics/misc
 	subcategory = ARMAMENT_SUBCATEGORY_SPECIAL

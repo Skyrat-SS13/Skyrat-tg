@@ -25,7 +25,7 @@
 	materials = list(/datum/material/iron = 400, /datum/material/glass = 1000, /datum/material/uranium = 800, /datum/material/gold = 200, /datum/material/plastic = 200)
 	build_path = /obj/item/analyzer/ranged
 	category = list("Tool Designs")
-	departmental_flags =  DEPARTMENTAL_FLAG_SCIENCE | DEPARTMENTAL_FLAG_ENGINEERING
+	departmental_flags =  DEPARTMENT_BITFLAG_SCIENCE | DEPARTMENT_BITFLAG_ENGINEERING
 
 //Half-overwrites original tg proc for analyzer/attack_self()
 //(This is literally just the commented out portion of the old proc in scanners.dm; it needs to be seperate so we can call it at varying ranges, though)
