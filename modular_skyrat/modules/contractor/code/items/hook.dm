@@ -12,7 +12,7 @@
 	RegisterSignal(src, COMSIG_STORAGE_ENTERED, .proc/storage_undeploy)
 
 /obj/item/gun/magic/hook/contractor/Destroy()
-	if(hook_module.stored_hook)
+	if(hook_module?.stored_hook)
 		hook_module.stored_hook = null
 	if(hook_module)
 		hook_module = null
