@@ -396,7 +396,7 @@
 	inhand_icon_state = "plushie_sels"
 	attack_verb_continuous = list("hugs", "cackles at", "health analyzes")
 	attack_verb_simple = list("hugs", "cackles at", "health analyzes")
-	squeak_override = list('sound/creatures/venus_trap_hurt.ogg' = 1)
+	squeak_override = list('sound/effects/crunchybushwhack1.ogg' = 1)
 
 /obj/item/toy/plush/fox/mia
 	name = "Mia’s fox plushie"

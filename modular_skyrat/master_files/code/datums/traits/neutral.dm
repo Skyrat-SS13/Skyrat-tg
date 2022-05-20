@@ -92,11 +92,10 @@
 	if(flipped)
 		info = initial(info)
 		flipped = FALSE
-		to_chat(user, span_notice("You unflip the card."))
 	else
 		info = info2
 		flipped = TRUE
-		to_chat(user, span_notice("You flip the card."))
+	balloon_alert(user, "card flipped")
 
 /datum/quirk/item_quirk/joker/process()
 	if(pcooldown > world.time)
