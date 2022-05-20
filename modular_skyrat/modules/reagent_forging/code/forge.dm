@@ -477,8 +477,6 @@
 			to_chat(user, span_warning("You cannot do multiple things at the same time!"))
 			return FALSE
 
-		in_use = TRUE
-	
 		if(forge_temperature < MIN_FORGE_TEMP)
 			fail_message(user, "The [src] is not hot enough to start cooking [thing_to_cook]!")
 			return FALSE
@@ -490,10 +488,12 @@
 			fail_message(user, "No choice made")
 			return FALSE
 
+		in_use = TRUE
 		balloon_alert_to_viewers("cooking...")
 
 		if(!do_after(user, 10 SECONDS, target = src))
 			fail_message(user, "You stop trying to cook [thing_to_cook]!")
+			in_use = FALSE
 			return FALSE
 
 		switch(user_input)
