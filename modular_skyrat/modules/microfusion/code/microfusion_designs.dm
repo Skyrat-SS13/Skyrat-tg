@@ -2,7 +2,7 @@
 /datum/design/microfusion
 	name = "Microfusion Part"
 	build_type = PROTOLATHE | AWAY_LATHE
-	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
+	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 	construction_time = 10 SECONDS //dunno if this is for mechfabs or what but I'll keep this anyway
 	category = list("Weapons")
 

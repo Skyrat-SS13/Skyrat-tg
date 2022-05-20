@@ -18,3 +18,7 @@
 
 /// Determines if the autotransfer system runs or not.
 /datum/config_entry/flag/autotransfer
+
+
+/// Determines if the transfer vote can be started by anyone or not.
+/datum/config_entry/flag/allow_vote_transfer

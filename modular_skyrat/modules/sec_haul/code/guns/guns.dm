@@ -468,6 +468,7 @@
 	caliber = CALIBER_9MM
 	max_ammo = 8
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
+	possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_HOLLOWPOINT, AMMO_TYPE_INCENDIARY, AMMO_TYPE_AP)
 
 /obj/item/ammo_box/magazine/multi_sprite/dozer/hp
 	ammo_type = /obj/item/ammo_casing/c9mm/hp

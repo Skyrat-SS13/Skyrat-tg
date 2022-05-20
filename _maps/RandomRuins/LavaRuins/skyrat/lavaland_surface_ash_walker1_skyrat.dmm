@@ -14,7 +14,9 @@
 /turf/open/misc/asteroid/basalt/lava_land_surface,
 /area/ruin/unpowered/ash_walkers)
 "aV" = (
-/obj/machinery/griddle,
+/obj/structure/table/wood,
+/obj/item/forging/billow/primitive,
+/obj/item/stack/sheet/mineral/coal/ten,
 /turf/open/floor/iron/lavaland_atmos,
 /area/service/kitchen/ashwalker)
 "bc" = (
@@ -661,7 +663,10 @@
 /turf/open/lava/smooth/lava_land_surface,
 /area/ruin/unpowered/ash_walkers)
 "xl" = (
-/obj/machinery/oven,
+/obj/structure/bonfire/dense,
+/obj/item/stack/rods{
+	amount = 5
+	},
 /turf/open/floor/iron/lavaland_atmos,
 /area/service/kitchen/ashwalker)
 "xW" = (
@@ -1055,7 +1060,13 @@
 /area/ruin/unpowered/ash_walkers)
 "Mk" = (
 /obj/structure/table,
-/obj/machinery/microwave,
+/obj/item/reagent_containers/glass/bowl/mushroom_bowl,
+/obj/item/reagent_containers/glass/bowl/mushroom_bowl{
+	pixel_y = 4
+	},
+/obj/item/reagent_containers/glass/bowl/mushroom_bowl{
+	pixel_y = 8
+	},
 /turf/open/floor/iron/lavaland_atmos,
 /area/service/kitchen/ashwalker)
 "Mn" = (
@@ -1285,12 +1296,8 @@
 /turf/open/misc/asteroid/basalt/lava_land_surface,
 /area/ruin/unpowered/ash_walkers)
 "Pb" = (
-/obj/machinery/door/airlock{
-	name = "Abandoned Kitchen Storage"
-	},
-/turf/open/floor/iron{
-	initial_gas_mix = "LAVALAND_ATMOS"
-	},
+/obj/structure/curtain/bounty,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
 /area/service/kitchen/ashwalker)
 "Pc" = (
 /obj/structure/fermenting_barrel,
@@ -1612,9 +1619,7 @@
 /turf/open/misc/asteroid/basalt/lava_land_surface,
 /area/ruin/unpowered/ash_walkers)
 "Xe" = (
-/obj/machinery/door/airlock{
-	name = "Abandoned Kitchen"
-	},
+/obj/structure/reagent_forge,
 /turf/open/floor/iron/lavaland_atmos,
 /area/service/kitchen/ashwalker)
 "Xs" = (
@@ -1856,7 +1861,7 @@ mZ
 mZ
 mZ
 dw
-Xe
+Pb
 sS
 zV
 UL
@@ -1932,7 +1937,7 @@ mZ
 PK
 dw
 Vr
-aV
+Xe
 sS
 VT
 ab
