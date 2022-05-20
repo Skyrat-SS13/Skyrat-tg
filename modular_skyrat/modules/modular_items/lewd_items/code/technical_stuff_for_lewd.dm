@@ -1,5 +1,5 @@
 // Moved from my old interactions file 'cause skyrats already did interactions
-
+/*
 #define REQUIRE_NONE 0
 #define REQUIRE_EXPOSED 1
 #define REQUIRE_UNEXPOSED 2
@@ -1259,3 +1259,4 @@ GLOBAL_LIST_INIT(strippable_human_erp_items, create_erp_strippable_list(list(
 
 /obj/item/proc/is_in_genital(mob/living/carbon/human/the_guy)
 	return !!(src == the_guy.penis || src == the_guy.vagina || src == the_guy.anus || src == the_guy.nipples)
+*/
