@@ -69,7 +69,7 @@
 	pellets = 7
 	variance = 20
 	custom_materials = list(/datum/material/iron=1000)
-	harmful = FALSE //SKYRAT EDIT ADDITION
+	harmful = FALSE
 
 /obj/item/ammo_casing/shotgun/magnum
 	name = "magnum buckshot shell"
@@ -118,17 +118,18 @@
 
 /obj/item/ammo_casing/shotgun/beehive
 	name = "B3-HVE 'Beehive' shell"
-	desc = "A highly experimental shell filled with smart nanite pellets that re-aim themselves when bouncing off from surfaces. However they are not able to make out friend from foe."
+	desc = "A highly experimental non-lethal shell filled with smart nanite pellets that re-aim themselves when bouncing off from surfaces. However they are not able to make out friend from foe."
 	icon_state = "cnrshell"
 	projectile_type = /obj/projectile/bullet/pellet/shotgun_buckshot/beehive
 	custom_materials = list(/datum/material/iron=500,/datum/material/silver=500,/datum/material/plasma=500)
 	pellets = 6
 	variance = 20
 	fire_sound = 'sound/weapons/taser.ogg'
+	harmful = FALSE
 
 /obj/projectile/bullet/pellet/shotgun_buckshot/beehive
 	name = "beehive pellet"
-	damage = 5
+	damage = 4
 	stamina = 10
 	tile_dropoff = 0.1
 	tile_dropoff_s = 0.1
@@ -170,7 +171,13 @@
 	weak_against_armour = TRUE
 	sharpness = NONE
 	range = 8
-	embedding = list(embed_chance=70, pain_chance=25, fall_chance=15, jostle_chance=80, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.9, pain_mult=5, rip_time=10)
+	icon_state = "spark"
+	embedding = list(embed_chance=70, pain_chance=25, fall_chance=15, jostle_chance=80, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.9, pain_mult=2, rip_time=10)
+
+/obj/projectile/bullet/pellet/shotgun_buckshot/antitide/Initialize(mapload)
+	. = ..()
+	SpinAnimation()
+	transform *= 0.25
 
 /obj/projectile/bullet/pellet/shotgun_buckshot/antitide/on_range()
 	do_sparks(1, TRUE, src)
