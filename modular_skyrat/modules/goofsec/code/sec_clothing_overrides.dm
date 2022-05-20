@@ -3,10 +3,10 @@
 // (Also includes 'old' versions at the bottom of the file, for the purpose of crates/vendors/admin shenanigans. Can't remove them ENTIRELY after all!)
 /////////
 
-//////////////////////////
-//----- PLASMAMEN ------//
-//////////////////////////
-//This goes first due to simultaneously being easy to do, and complex to organize
+/*
+* PLASMAMEN
+* This goes first due to simultaneously being easy to do, and complex to organize
+*/
 /obj/item/clothing/under/plasmaman/security
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/plasmaman.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/plasmaman.dmi'
@@ -29,10 +29,9 @@
 /obj/item/clothing/head/helmet/space/plasmaman/security/head_of_security
 	icon_state = "hos_envirohelm_new"
 
-
-////////////////////////////
-//----- ACCESSORIES ------//
-////////////////////////////
+/*
+* ACCESSORIES
+*/
 /obj/item/clothing/accessory/armband/deputy
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/accessories.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/accessories.dmi'
@@ -41,9 +40,9 @@
 /obj/item/clothing/accessory/armband/deputy/lopland
 	desc = "A Peacekeeper Blue armband, showing the wearer to be certified by Lopland as a top-of-their-class Security Officer."
 
-//////////////////////////
-//----- BACKPACKS ------//
-//////////////////////////
+/*
+* BACKPACKS
+*/
 /obj/item/storage/backpack/security
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/backpacks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/back.dmi'
@@ -81,9 +80,9 @@
 		),
 	)
 
-//////////////////////
-//----- BELTS ------//
-//////////////////////
+/*
+* BELTS
+*/
 /obj/item/storage/belt/security
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/belts.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/belt.dmi'
@@ -143,9 +142,9 @@
 		else if(I && I.w_class >= 3) //Otherwise they can only see large or normal items from a distance...
 			viewing.show_message(span_notice("[M] puts [I] [insert_preposition]to [parent]."), MSG_VISUAL)
 
-////////////////////////
-//----- GLASSES ------//
-////////////////////////
+/*
+* GLASSES
+*/
 /obj/item/clothing/glasses/hud/security
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/glasses.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/eyes.dmi'
@@ -174,9 +173,9 @@
 	icon_state = "security_hud_nv"
 	glass_colour_type = /datum/client_colour/glass_colour/green
 
-/////////////////////
-//----- HEAD ------//
-/////////////////////
+/*
+* HEAD
+*/
 //Standard helmet (w/ visor)
 /obj/item/clothing/head/helmet/sec
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
@@ -307,9 +306,9 @@
 	icon_state = "hoscap"
 	current_skin = "hoscap" //Prevents reskinning
 
-/////////////////////
-//----- NECK ------//
-/////////////////////
+/*
+* NECK
+*/
 /obj/item/clothing/neck/cloak/hos
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/neck.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/neck.dmi'
@@ -376,9 +375,9 @@
 
 	usr.update_inv_neck()
 
-///////////////////////
-//----- GLOVES ------//
-///////////////////////
+/*
+* GLOVES
+*/
 /obj/item/clothing/gloves/color/black/security
 	name = "security gloves"
 	desc = "A pair of security gloves."
@@ -411,9 +410,9 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/hands.dmi'
 	icon_state = "fightgloves_blue"
 
-//////////////////////
-//----- SUITS ------//
-//////////////////////
+/*
+* SUITS
+*/
 //Not technically an override but oh well; it cant be, else everyone can randomly get the uniquely designed vest
 /obj/item/clothing/suit/armor/vest/security
 	name = "armored security vest"
@@ -488,9 +487,9 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "hosformal_blue"
 
-//////////////////////
-//----- UNDER ------//
-//////////////////////
+/*
+* UNDER
+*/
 //Officer
 /obj/item/clothing/under/rank/security/officer
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/security.dmi'
@@ -536,9 +535,9 @@
 /obj/item/clothing/under/rank/security/head_of_security/alt/skirt
 	icon_state = "hosalt_skirt_blue"
 
-/////////////////////
-//----- FEET ------//
-/////////////////////
+/*
+* FEET
+*/
 //Not technically an override but oh well; it cant be, security gets their special footstep noise from it
 /obj/item/clothing/shoes/jackboots/security
 	name = "security jackboots"
