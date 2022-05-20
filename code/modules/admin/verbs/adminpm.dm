@@ -214,10 +214,14 @@
 			type = MESSAGE_TYPE_ADMINPM,
 			html = span_notice("PM to-<b>Admins</b>: <span class='linkify'>[rawmsg]</span>"),
 			confidential = TRUE)
+<<<<<<< HEAD
 		var/datum/admin_help/AH = admin_ticket_log(src, "<font color='red'>Reply PM from-<b>[key_name(src, TRUE, TRUE)]</b> to <i>External</i>: [keywordparsedmsg]</font>")
 		AH.AddInteractionPlayer("<font color='red'>Reply PM from-<b>[key_name(src, TRUE, FALSE)]</b> to <i>External</i>: [keywordparsedmsg]</font>") // SKYRAT EDIT ADDITION -- Player ticket viewing
+=======
+		var/datum/admin_help/new_admin_help = admin_ticket_log(src, "<font color='red'>Reply PM from-<b>[key_name(src, TRUE, TRUE)]</b> to <i>External</i>: [keywordparsedmsg]</font>", player_message = "<font color='red'>Reply PM from-<b>[key_name(src, TRUE, FALSE)]</b> to <i>External</i>: [msg]</font>")
+>>>>>>> 2baeb1b635e (Ports the player ticket panel from skyrat (#66954))
 		externalreplyamount--
-		send2adminchat("[AH ? "#[AH.id] " : ""]Reply: [ckey]", rawmsg)
+		send2adminchat("[new_admin_help ? "#[new_admin_help.id] " : ""]Reply: [ckey]", rawmsg)
 	else
 		var/badmin = FALSE //Lets figure out if an admin is getting bwoinked.
 		if(holder && recipient.holder && !current_ticket) //Both are admins, and this is not a reply to our own ticket.
@@ -235,6 +239,7 @@
 					html = span_notice("Admin PM to-<b>[key_name(recipient, src, 1)]</b>: <span class='linkify'>[keywordparsedmsg]</span>"),
 					confidential = TRUE)
 				//omg this is dumb, just fill in both their tickets
+<<<<<<< HEAD
 				var/interaction_message = "<font color='purple'>PM from-<b>[key_name(src, recipient, 1)]</b> to-<b>[key_name(recipient, src, 1)]</b>: [keywordparsedmsg]</font>"
 				// admin_ticket_log(src, interaction_message, log_in_blackbox = FALSE) // SKYRAT EDIT ORIGINAL
 				admin_ticket_log(src, interaction_message, log_in_blackbox = FALSE, admin_only = FALSE) // SKYRAT EDIT CHANGE -- Player ticket viewing
@@ -246,6 +251,18 @@
 				var/replymsg = "Reply PM from-<b>[key_name(src, recipient, 1)]</b>: <span class='linkify'>[keywordparsedmsg]</span>"
 				// admin_ticket_log(src, "<font color='red'>[replymsg]</font>", log_in_blackbox = FALSE) // SKYRAT EDIT ORIGINAL
 				admin_ticket_log(src, "<font color='red'>[replymsg]</font>", log_in_blackbox = FALSE, admin_only = FALSE) // SKYRAT EDIT CHANGE -- Player ticket viewing
+=======
+				var/interaction_message = "<font color='purple'>PM from-<b>[key_name(src, recipient, TRUE)]</b> to-<b>[key_name(recipient, src, TRUE)]</b>: [keywordparsedmsg]</font>"
+				var/player_interaction_message = "<font color='purple'>PM from-<b>[key_name(src, recipient, FALSE)]</b> to-<b>[key_name(recipient, src, FALSE)]</b>: [msg]</font>"
+				admin_ticket_log(src, interaction_message, log_in_blackbox = FALSE, player_message = player_interaction_message)
+				if(recipient != src) //reeee
+					admin_ticket_log(recipient, interaction_message, log_in_blackbox = FALSE, player_message = player_interaction_message)
+				SSblackbox.LogAhelp(current_ticket.id, "Reply", msg, recipient.ckey, src.ckey)
+			else //recipient is an admin but sender is not
+				var/replymsg = "Reply PM from-<b>[key_name(src, recipient, TRUE)]</b>: <span class='linkify'>[keywordparsedmsg]</span>"
+				var/player_replymsg = "Reply PM from-<b>[key_name(src, recipient, FALSE)]</b>: <span class='linkify'>[msg]</span>"
+				admin_ticket_log(src, "<font color='red'>[replymsg]</font>", log_in_blackbox = FALSE, player_message = player_replymsg)
+>>>>>>> 2baeb1b635e (Ports the player ticket panel from skyrat (#66954))
 				to_chat(recipient,
 					type = MESSAGE_TYPE_ADMINPM,
 					html = span_danger("[replymsg]"),
@@ -291,8 +308,12 @@
 					html = span_notice("Admin PM to-<b>[key_name(recipient, src, 1)]</b>: <span class='linkify'>[msg]</span>"),
 					confidential = TRUE)
 
+<<<<<<< HEAD
 				// admin_ticket_log(recipient, "<font color='purple'>PM From [key_name_admin(src)]: [keywordparsedmsg]</font>", log_in_blackbox = FALSE) // SKYRAT EDIT ORIGINAL
 				admin_ticket_log(recipient, "<font color='purple'>PM From [key_name_admin(src, FALSE)]: [keywordparsedmsg]</font>", log_in_blackbox = FALSE, admin_only = FALSE) // SKYRAT EDIT CHANGE -- Player ticket viewing
+=======
+				admin_ticket_log(recipient, "<font color='purple'>PM From [key_name_admin(src)]: [keywordparsedmsg]</font>", log_in_blackbox = FALSE, player_message = "<font color='purple'>PM From [key_name_admin(src, include_name = FALSE)]: [msg]</font>")
+>>>>>>> 2baeb1b635e (Ports the player ticket panel from skyrat (#66954))
 
 				if(!already_logged) //Reply to an existing ticket
 					SSblackbox.LogAhelp(recipient.current_ticket.id, "Reply", msg, recipient.ckey, src.ckey)
