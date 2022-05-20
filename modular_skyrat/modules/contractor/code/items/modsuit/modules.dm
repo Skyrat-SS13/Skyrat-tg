@@ -104,7 +104,6 @@
 	complexity = 3
 	incompatible_modules = list(/obj/item/mod/module/scorpion_hook)
 	module_type = MODULE_USABLE
-	//allowed_inactive = TRUE
 	/// Ref to the hook
 	var/obj/item/gun/magic/hook/contractor/stored_hook
 	/// If the hook is out or not
