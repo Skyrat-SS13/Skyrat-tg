@@ -22,7 +22,7 @@
 /obj/item/ammo_casing/shotgun/pt20
 	name = "PT-20 armor piercing slug"
 	desc = "A 12 gauge plastitanium slug purpose built to penetrate armored targets."
-	icon_state = "stunshell"
+	icon_state = "apshell"
 	projectile_type = /obj/projectile/bullet/shotgun_slug/pt20
 	custom_materials = list(/datum/material/iron=500,/datum/material/plasma=500,/datum/material/titanium=500)
 
@@ -34,7 +34,7 @@
 /obj/item/ammo_casing/shotgun/rip
 	name = "RIP shotgun slug"
 	desc = "Radically Invasive Projectile Slug that is designed to cause massive damage against unarmored targets by embedding inside them."
-	icon_state = "stunshell"
+	icon_state = "ripshell"
 	projectile_type = /obj/projectile/bullet/shotgun_slug/rip
 	custom_materials = list(/datum/material/iron=500,/datum/material/plasma=500,/datum/material/diamond=500)
 
@@ -100,7 +100,7 @@
 /obj/item/ammo_casing/shotgun/flechette
 	name = "flechette shell"
 	desc = "A 12 gauge flechette shell that specializes in ripping through armor."
-	icon_state = "gshell"
+	icon_state = "fshell"
 	projectile_type = /obj/projectile/bullet/pellet/shotgun_buckshot/flechette
 	pellets = 8 //8 x 6 = 48 Damage Potential
 	variance = 25
@@ -123,6 +123,7 @@
 	custom_materials = list(/datum/material/iron=500,/datum/material/silver=500,/datum/material/plasma=500)
 	pellets = 6
 	variance = 20
+	fire_sound = 'sound/weapons/taser.ogg'
 
 /obj/projectile/bullet/pellet/shotgun_buckshot/beehive
 	name = "beehive pellet"
@@ -152,6 +153,7 @@
 	pellets = 5
 	variance = 30
 	harmful = FALSE
+	fire_sound = 'sound/weapons/taser.ogg'
 
 /obj/projectile/bullet/pellet/shotgun_buckshot/antitide
 	name = "electrode"
@@ -197,14 +199,14 @@
 
 /obj/item/ammo_casing/shotgun/hunter
 	name = "hunter buckshot shell"
-	desc = "A 12 gauge buckshot shell that fires specially charged pellets that deal extra damage to simpler animals."
-	icon_state = "fshell"
+	desc = "A 12 gauge buckshot shell that fires specially charged pellets that deal extra damage to simpler beings."
+	icon_state = "huntershell"
 	projectile_type = /obj/projectile/bullet/pellet/shotgun_buckshot/magnum
 	pellets = 6 // 6 x 15 = 90 damage vs simples
 	variance = 30
 
 /obj/projectile/bullet/pellet/shotgun_buckshot/hunter
-	name = "magnum buckshot pellet"
+	name = "hunter buckshot pellet"
 	damage = 5
 	wound_bonus = 0
 	weak_against_armour = FALSE
