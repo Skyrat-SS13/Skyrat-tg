@@ -16,8 +16,6 @@ SUBSYSTEM_DEF(statpanels)
 	var/status_wait = 6
 	///how many subsystem fires between updates of the MC tab
 	var/mc_wait = 5
-	/// how many subsystem fires between updates of the turf examine tab
-	var/turf_wait = 2
 	///how many full runs this subsystem has completed. used for variable rate refreshes.
 	var/num_fires = 0
 
@@ -25,12 +23,8 @@ SUBSYSTEM_DEF(statpanels)
 	if (!resumed)
 		num_fires++
 		var/datum/map_config/cached = SSmapping.next_map_config
-<<<<<<< HEAD
 		/* SKYRAT EDIT CHANGE
-		var/list/global_data = list(
-=======
 		global_data = list(
->>>>>>> bea93874587 (refactors statpanel to use tgui API (#66971))
 			"Map: [SSmapping.config?.map_name || "Loading..."]",
 			cached ? "Next Map: [cached.map_name]" : null,
 			"Round ID: [GLOB.round_id ? GLOB.round_id : "NULL"]",
@@ -103,7 +97,7 @@ SUBSYSTEM_DEF(statpanels)
 					set_spells_tab(target, target_mob)
 
 
-			if(target_mob?.listed_turf && num_fires % turf_wait == 0)
+			if(target_mob?.listed_turf && num_fires % default_wait == 0)
 				if(!target_mob.TurfAdjacent(target_mob.listed_turf) || isnull(target_mob.listed_turf))
 					target.stat_panel.send_message("remove_listedturf")
 					target_mob.listed_turf = null
