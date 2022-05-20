@@ -30,6 +30,17 @@
 	icon_state = "hos_envirohelm_new"
 
 
+////////////////////////////
+//----- ACCESSORIES ------//
+////////////////////////////
+/obj/item/clothing/accessory/armband/deputy
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/accessories.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/accessories.dmi'
+	icon_state = "armband_lopland"
+
+/obj/item/clothing/accessory/armband/deputy/lopland
+	desc = "A Peacekeeper Blue armband, showing the wearer to be certified by Lopland as a top-of-their-class Security Officer."
+
 //////////////////////////
 //----- BACKPACKS ------//
 //////////////////////////
