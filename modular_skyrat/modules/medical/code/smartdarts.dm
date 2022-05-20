@@ -85,7 +85,7 @@
 	)
         ///Blacklist that contains medicines that SmartDarts are unable to inject.
 	var/list/disallowed_medicine = list(
-		/datum/reagent/inverse/healing/tirimol,
+		/datum/reagent/inverse/
 		/datum/reagent/medicine/morphine,
 	)
 
