@@ -6025,6 +6025,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 5
 	},
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/station/cargo/sorting)
 "bvm" = (
@@ -12251,6 +12252,7 @@
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
 	dir = 5
 	},
+/obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/maintenance/department/crew_quarters/bar)
 "dxt" = (
@@ -14250,10 +14252,10 @@
 	req_access_txt = "13";
 	space_dir = 4
 	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 8
-	},
 /obj/structure/cable,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
+	cycle_id = "greater-sec-maint-cluster"
+	},
 /turf/open/floor/plating,
 /area/station/maintenance/department/security/greater)
 "eiT" = (
@@ -22179,6 +22181,7 @@
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
 /obj/structure/disposalpipe/segment,
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/station/maintenance/department/crew_quarters/bar)
 "gXx" = (
@@ -23375,7 +23378,6 @@
 	c_tag = " Prison - Custodial Closet";
 	network = list("ss13","prison")
 	},
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
 /turf/open/floor/iron/kitchen{
 	dir = 1
@@ -28104,6 +28106,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/station/cargo/sorting)
 "iTS" = (
@@ -28793,8 +28796,10 @@
 /obj/effect/mapping_helpers/airlock/unres{
 	dir = 1
 	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi,
 /obj/structure/cable,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
+	cycle_id = "greater-sec-maint-cluster"
+	},
 /turf/open/floor/plating,
 /area/station/maintenance/department/security/greater)
 "jhK" = (
@@ -39799,6 +39804,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 9
 	},
+/obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/cargo/sorting)
 "mSw" = (
@@ -40143,6 +40149,7 @@
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
 	dir = 4
 	},
+/obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/hallway/primary/central)
 "mZD" = (
@@ -40435,6 +40442,7 @@
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
 /obj/structure/disposalpipe/segment,
+/obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/hallway/secondary/service)
 "neq" = (
@@ -56555,6 +56563,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 5
 	},
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/station/maintenance/department/crew_quarters/bar)
 "szW" = (
@@ -67245,7 +67254,9 @@
 	req_access_txt = "13";
 	space_dir = 1
 	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
+	cycle_id = "greater-sec-maint-cluster"
+	},
 /turf/open/floor/plating,
 /area/station/maintenance/department/security/greater)
 "wcj" = (
@@ -68863,7 +68874,9 @@
 /obj/effect/mapping_helpers/airlock/unres{
 	dir = 4
 	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
+	cycle_id = "greater-sec-maint-cluster"
+	},
 /obj/structure/cable,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
@@ -69424,15 +69437,6 @@
 	},
 /turf/open/floor/carpet,
 /area/station/maintenance/rus_gambling)
-"wNy" = (
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
-	dir = 4
-	},
-/turf/open/floor/iron/dark,
-/area/station/hallway/secondary/service)
 "wNz" = (
 /obj/effect/landmark/event_spawn,
 /turf/open/misc/beach/sand,
@@ -70753,6 +70757,7 @@
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
 	dir = 4
 	},
+/obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/station/hallway/secondary/service)
 "xiw" = (
@@ -108428,7 +108433,7 @@ cMF
 kkj
 vJL
 iEl
-wNy
+giZ
 xCF
 pfv
 sLc
@@ -111772,7 +111777,7 @@ hge
 uQl
 vVL
 dtd
-lsP
+vGc
 tik
 bcq
 kQy
@@ -112029,7 +112034,7 @@ tGT
 pFO
 vVL
 rzN
-kQS
+pwn
 sWK
 utT
 eUj
