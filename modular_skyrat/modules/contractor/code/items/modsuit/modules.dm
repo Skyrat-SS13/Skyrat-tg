@@ -1,4 +1,3 @@
-
 /obj/item/mod/module/baton_holster
 	name = "MOD baton holster module"
 	desc = "A module installed into the chest of a MODSuit, this allows you \
@@ -93,3 +92,54 @@
 
 /obj/item/mod/module/springlock/on_suit_deactivation(deleting = FALSE)
 	return
+
+/obj/item/mod/module/scorpion_hook
+	name = "MOD SCORPION hook module"
+	desc = "A module installed in the wrist of a MODSuit, this highly \
+			illegal module uses a hardlight hook to forcefully pull \
+			a target towards you at high speed, knocking them down and \
+			partially exhausting them."
+	icon_state = "hook"
+	icon = 'modular_skyrat/modules/contractor/icons/modsuit_modules.dmi'
+	complexity = 3
+	incompatible_modules = list(/obj/item/mod/module/scorpion_hook)
+	module_type = MODULE_USABLE
+	//allowed_inactive = TRUE
+	/// Ref to the hook
+	var/obj/item/gun/magic/hook/contractor/stored_hook
+	/// If the hook is out or not
+	var/deployed = FALSE
+
+/obj/item/mod/module/scorpion_hook/Initialize(mapload)
+	. = ..()
+	if(!stored_hook)
+		stored_hook = new /obj/item/gun/magic/hook/contractor(src)
+		stored_hook.hook_module = src
+
+/obj/item/mod/module/scorpion_hook/Destroy()
+	if(stored_hook)
+		stored_hook.hook_module = null
+		QDEL_NULL(stored_hook)
+	. = ..()
+
+/obj/item/mod/module/scorpion_hook/on_use()
+	if(!deployed)
+		deploy(mod.wearer)
+	else
+		undeploy(mod.wearer)
+
+/obj/item/mod/module/scorpion_hook/proc/deploy(mob/living/user)
+	if(!(stored_hook in src))
+		return
+	if(!user.put_in_hands(stored_hook))
+		to_chat(user, span_warning("You need a free hand to hold [stored_hook]!"))
+		return
+	deployed = TRUE
+	balloon_alert(user, "[stored_hook] deployed")
+
+/obj/item/mod/module/scorpion_hook/proc/undeploy(mob/living/user)
+	if(QDELETED(stored_hook))
+		return
+	stored_hook.forceMove(src)
+	deployed = FALSE
+	balloon_alert(user, "[stored_hook] retracted")

@@ -28,6 +28,7 @@
 		/obj/item/mod/module/jetpack/advanced,
 		/obj/item/mod/module/springlock/contractor,
 		/obj/item/mod/module/baton_holster/preloaded,
+		/obj/item/mod/module/scorpion_hook,
 	)
 
 // For the prefs menu
