@@ -48,5 +48,5 @@
 
 /obj/item/gun/magic/hook/contractor/process_fire(atom/target, mob/living/user, message, params, zone_override, bonus_spread)
 	if(prob(1))
-		user.say("+GET OVER HERE!+")
+		user.say("+GET OVER HERE!+", forced = "scorpion hook")
 	. = ..()
