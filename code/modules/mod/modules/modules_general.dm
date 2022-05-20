@@ -108,6 +108,18 @@
 	QDEL_NULL(ion_trail)
 	return ..()
 
+<<<<<<< HEAD
+=======
+/obj/item/mod/module/jetpack/proc/refresh_jetpack()
+	AddComponent(/datum/component/jetpack, stabilizers, COMSIG_MODULE_TRIGGERED, COMSIG_MODULE_DEACTIVATED, MOD_ABORT_USE, get_mover, check_on_move, /datum/effect_system/trail_follow/ion/grav_allowed)
+
+/obj/item/mod/module/jetpack/proc/set_stabilizers(new_stabilizers)
+	if(stabilizers == new_stabilizers)
+		return
+	stabilizers = new_stabilizers
+	refresh_jetpack()
+
+>>>>>>> 1f591864e5b (Fixes jetpack modules not properly disabling (#67154))
 /obj/item/mod/module/jetpack/on_activation()
 	. = ..()
 	if(!.)
