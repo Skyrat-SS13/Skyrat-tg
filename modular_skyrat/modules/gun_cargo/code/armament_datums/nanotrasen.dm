@@ -21,9 +21,10 @@
 	subcategory = ARMAMENT_SUBCATEGORY_SHOTGUN
 
 /datum/armament_entry/cargo_gun/nanotrasen/shotgun/riot
-	item_type = /obj/item/gun/ballistic/shotgun/riot
-	lower_cost = CARGO_CRATE_VALUE * 8
-	upper_cost = CARGO_CRATE_VALUE * 12
+	item_type = /obj/item/gun/ballistic/shotgun/riot //Its a reskin of /shotgun
+	lower_cost = CARGO_CRATE_VALUE * 5
+	upper_cost = CARGO_CRATE_VALUE * 8
+	stock_mult = 2
 
 /datum/armament_entry/cargo_gun/nanotrasen/shotgun/doublebarrel
 	item_type = /obj/item/gun/ballistic/shotgun/doublebarrel
