@@ -14250,10 +14250,10 @@
 	req_access_txt = "13";
 	space_dir = 4
 	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 8
-	},
 /obj/structure/cable,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
+	cycle_id = "greater-sec-maint-cluster"
+	},
 /turf/open/floor/plating,
 /area/station/maintenance/department/security/greater)
 "eiT" = (
@@ -23376,7 +23376,6 @@
 	network = list("ss13","prison")
 	},
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
 /turf/open/floor/iron/kitchen{
 	dir = 1
 	},
@@ -28793,8 +28792,10 @@
 /obj/effect/mapping_helpers/airlock/unres{
 	dir = 1
 	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi,
 /obj/structure/cable,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
+	cycle_id = "greater-sec-maint-cluster"
+	},
 /turf/open/floor/plating,
 /area/station/maintenance/department/security/greater)
 "jhK" = (
@@ -67245,7 +67246,9 @@
 	req_access_txt = "13";
 	space_dir = 1
 	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
+	cycle_id = "greater-sec-maint-cluster"
+	},
 /turf/open/floor/plating,
 /area/station/maintenance/department/security/greater)
 "wcj" = (
@@ -68863,7 +68866,9 @@
 /obj/effect/mapping_helpers/airlock/unres{
 	dir = 4
 	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
+	cycle_id = "greater-sec-maint-cluster"
+	},
 /obj/structure/cable,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,

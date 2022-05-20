@@ -92,9 +92,11 @@
  * Returns whether we are still processing.
  */
 /obj/machinery/crossing_signal/proc/update_operating()
+
 	//emagged crossing signals dont update
 	if(obj_flags & EMAGGED)
 		return
+
 	// Immediately process for snappy feedback
 	var/should_process = process() != PROCESS_KILL
 	if(should_process)
