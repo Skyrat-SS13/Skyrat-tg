@@ -38,7 +38,7 @@ GLOBAL_LIST_EMPTY(flora_uprooting_tools_typepaths)
 	var/uprooting_tools = list(/obj/item/shovel)
 	var/uprooted = FALSE
 	var/previous_rotation = 0
-	
+
 	/// If false, the flora won't be able to be harvested at all. If it's true, go through checks normally to determine if the flora is able to be harvested
 	var/harvestable = TRUE
 	/// The low end of how many product_type items you get
@@ -74,7 +74,7 @@ GLOBAL_LIST_EMPTY(flora_uprooting_tools_typepaths)
 			required_tools += FLORA_HARVEST_WOOD_TOOLS
 		if(flora_flags & FLORA_STONE)
 			required_tools += FLORA_HARVEST_STONE_TOOLS
-	
+
 	//ugly-looking performance optimization. what the glob bro
 	if(!GLOB.flora_required_tools_typepaths[type])
 		GLOB.flora_required_tools_typepaths[type] = typecacheof(required_tools)
@@ -82,7 +82,7 @@ GLOBAL_LIST_EMPTY(flora_uprooting_tools_typepaths)
 		GLOB.flora_disallowed_tools_typepaths[type] = typecacheof(disallowed_tools)
 	if(!GLOB.flora_uprooting_tools_typepaths[type])
 		GLOB.flora_uprooting_tools_typepaths[type] = typecacheof(uprooting_tools)
-	
+
 	required_tools = GLOB.flora_required_tools_typepaths[type]
 	disallowed_tools = GLOB.flora_disallowed_tools_typepaths[type]
 	uprooting_tools = GLOB.flora_uprooting_tools_typepaths[type]
@@ -114,7 +114,7 @@ GLOBAL_LIST_EMPTY(flora_uprooting_tools_typepaths)
 
 	if(!can_harvest(user, W))
 		return ..()
-	
+
 	user.visible_message(span_notice("[user] starts to [harvest_verb] [src]..."),
 		span_notice("You start to [harvest_verb] [src] with [W]..."))
 	play_attack_sound(W.force)
@@ -123,7 +123,7 @@ GLOBAL_LIST_EMPTY(flora_uprooting_tools_typepaths)
 	visible_message(span_notice("[user] [harvest_verb][harvest_verb_suffix] [src]."),
 		ignored_mobs = list(user))
 	play_attack_sound(W.force)
-	
+
 	if(harvest(user))
 		after_harvest(user)
 
@@ -142,7 +142,7 @@ GLOBAL_LIST_EMPTY(flora_uprooting_tools_typepaths)
 	visible_message(span_notice("[user] [harvest_verb][harvest_verb_suffix] [src]."),
 		ignored_mobs = list(user))
 	play_attack_sound()
-	
+
 	if(harvest(user))
 		after_harvest(user)
 
@@ -160,7 +160,7 @@ GLOBAL_LIST_EMPTY(flora_uprooting_tools_typepaths)
 	if(use_default_sound)
 		return ..()
 
-/* 
+/*
  * A helper proc for getting a random amount of products, associated with the flora's product list.
  * Returns: A list where each value is (product_type = amount_of_products)
  */
@@ -185,7 +185,7 @@ GLOBAL_LIST_EMPTY(flora_uprooting_tools_typepaths)
 	. = FALSE
 	if(harvested || !harvestable)
 		return null
-	
+
 	if(harvesting_item)
 		if(!is_type_in_typecache(harvesting_item, required_tools))
 			return
@@ -203,7 +203,7 @@ GLOBAL_LIST_EMPTY(flora_uprooting_tools_typepaths)
 	. = FALSE
 	if(harvested && !LAZYLEN(product_types))
 		return
-	
+
 	var/list/products_to_create = get_products_list()
 	if(!products_to_create.len)
 		return
@@ -534,291 +534,6 @@ GLOBAL_LIST_EMPTY(flora_uprooting_tools_typepaths)
 /obj/structure/flora/grass/both/style_random/Initialize(mapload)
 	. = ..()
 	icon_state = "snowgrassall[rand(1, 3)]"
-<<<<<<< HEAD
-	. = ..()
-
-
-//bushes
-/obj/structure/flora/bush
-	name = "bush"
-	desc = "Some type of shrub."
-	icon = 'icons/obj/flora/snowflora.dmi'
-	icon_state = "snowbush1"
-	anchored = TRUE
-	herbage = TRUE
-
-/obj/structure/flora/bush/Initialize(mapload)
-	icon_state = "snowbush[rand(1, 6)]"
-	. = ..()
-
-//newbushes
-
-/obj/structure/flora/ausbushes
-	name = "bush"
-	desc = "Some kind of plant."
-	icon = 'icons/obj/flora/ausflora.dmi'
-	icon_state = "firstbush_1"
-	herbage = TRUE
-
-/obj/structure/flora/ausbushes/Initialize(mapload)
-	if(icon_state == "firstbush_1")
-		icon_state = "firstbush_[rand(1, 4)]"
-	. = ..()
-
-/obj/structure/flora/ausbushes/reedbush
-	icon_state = "reedbush_1"
-
-/obj/structure/flora/ausbushes/reedbush/Initialize(mapload)
-	icon_state = "reedbush_[rand(1, 4)]"
-	. = ..()
-
-/obj/structure/flora/ausbushes/leafybush
-	icon_state = "leafybush_1"
-
-/obj/structure/flora/ausbushes/leafybush/Initialize(mapload)
-	icon_state = "leafybush_[rand(1, 3)]"
-	. = ..()
-
-/obj/structure/flora/ausbushes/palebush
-	icon_state = "palebush_1"
-
-/obj/structure/flora/ausbushes/palebush/Initialize(mapload)
-	icon_state = "palebush_[rand(1, 4)]"
-	. = ..()
-
-/obj/structure/flora/ausbushes/stalkybush
-	icon_state = "stalkybush_1"
-
-/obj/structure/flora/ausbushes/stalkybush/Initialize(mapload)
-	icon_state = "stalkybush_[rand(1, 3)]"
-	. = ..()
-
-/obj/structure/flora/ausbushes/grassybush
-	icon_state = "grassybush_1"
-
-/obj/structure/flora/ausbushes/grassybush/Initialize(mapload)
-	icon_state = "grassybush_[rand(1, 4)]"
-	. = ..()
-
-/obj/structure/flora/ausbushes/fernybush
-	icon_state = "fernybush_1"
-
-/obj/structure/flora/ausbushes/fernybush/Initialize(mapload)
-	icon_state = "fernybush_[rand(1, 3)]"
-	. = ..()
-
-/obj/structure/flora/ausbushes/sunnybush
-	icon_state = "sunnybush_1"
-
-/obj/structure/flora/ausbushes/sunnybush/Initialize(mapload)
-	icon_state = "sunnybush_[rand(1, 3)]"
-	. = ..()
-
-/obj/structure/flora/ausbushes/genericbush
-	icon_state = "genericbush_1"
-
-/obj/structure/flora/ausbushes/genericbush/Initialize(mapload)
-	icon_state = "genericbush_[rand(1, 4)]"
-	. = ..()
-
-/obj/structure/flora/ausbushes/pointybush
-	icon_state = "pointybush_1"
-
-/obj/structure/flora/ausbushes/pointybush/Initialize(mapload)
-	icon_state = "pointybush_[rand(1, 4)]"
-	. = ..()
-
-/obj/structure/flora/ausbushes/lavendergrass
-	icon_state = "lavendergrass_1"
-
-/obj/structure/flora/ausbushes/lavendergrass/Initialize(mapload)
-	icon_state = "lavendergrass_[rand(1, 4)]"
-	. = ..()
-
-/obj/structure/flora/ausbushes/ywflowers
-	icon_state = "ywflowers_1"
-
-/obj/structure/flora/ausbushes/ywflowers/Initialize(mapload)
-	icon_state = "ywflowers_[rand(1, 3)]"
-	. = ..()
-
-/obj/structure/flora/ausbushes/brflowers
-	icon_state = "brflowers_1"
-
-/obj/structure/flora/ausbushes/brflowers/Initialize(mapload)
-	icon_state = "brflowers_[rand(1, 3)]"
-	. = ..()
-
-/obj/structure/flora/ausbushes/ppflowers
-	icon_state = "ppflowers_1"
-
-/obj/structure/flora/ausbushes/ppflowers/Initialize(mapload)
-	icon_state = "ppflowers_[rand(1, 3)]"
-	. = ..()
-
-/obj/structure/flora/ausbushes/sparsegrass
-	icon_state = "sparsegrass_1"
-
-/obj/structure/flora/ausbushes/sparsegrass/Initialize(mapload)
-	icon_state = "sparsegrass_[rand(1, 3)]"
-	. = ..()
-
-/obj/structure/flora/ausbushes/fullgrass
-	icon_state = "fullgrass_1"
-
-/obj/structure/flora/ausbushes/fullgrass/Initialize(mapload)
-	icon_state = "fullgrass_[rand(1, 3)]"
-	. = ..()
-
-/obj/item/kirbyplants
-	name = "potted plant"
-	icon = 'icons/obj/flora/plants.dmi'
-	icon_state = "plant-01"
-	desc = "A little bit of nature contained in a pot."
-	layer = ABOVE_MOB_LAYER
-	plane = GAME_PLANE_UPPER
-	w_class = WEIGHT_CLASS_HUGE
-	force = 10
-	throwforce = 13
-	throw_speed = 2
-	throw_range = 4
-	item_flags = NO_PIXEL_RANDOM_DROP
-
-	/// Can this plant be trimmed by someone with TRAIT_BONSAI
-	var/trimmable = TRUE
-	var/list/static/random_plant_states
-
-	var/random_state_cap = 43 //SKYRAT EDIT ADDITION - KEEP THIS TO THE HIGHEST POTTED PLANT ICON STATE
-
-/obj/item/kirbyplants/ComponentInitialize()
-	. = ..()
-	AddComponent(/datum/component/tactical)
-	AddComponent(/datum/component/two_handed, require_twohands=TRUE, force_unwielded=10, force_wielded=10)
-	AddElement(/datum/element/beauty, 500)
-
-/obj/item/kirbyplants/attackby(obj/item/I, mob/living/user, params)
-	. = ..()
-	if(trimmable && HAS_TRAIT(user,TRAIT_BONSAI) && isturf(loc) && I.get_sharpness())
-		to_chat(user,span_notice("You start trimming [src]."))
-		if(do_after(user,3 SECONDS,target=src))
-			to_chat(user,span_notice("You finish trimming [src]."))
-			change_visual()
-
-/// Cycle basic plant visuals
-/obj/item/kirbyplants/proc/change_visual()
-	if(!random_plant_states)
-		generate_states()
-	var/current = random_plant_states.Find(icon_state)
-	var/next = WRAP(current+1,1,length(random_plant_states))
-	icon_state = random_plant_states[next]
-
-/obj/item/kirbyplants/random
-	icon = 'icons/obj/flora/_flora.dmi'
-	icon_state = "random_plant"
-
-/obj/item/kirbyplants/random/Initialize(mapload)
-	. = ..()
-	icon = 'modular_skyrat/modules/aesthetics/plants/plants.dmi' //SKYRAT EDIT CHANGE
-	if(!random_plant_states)
-		generate_states()
-	icon_state = pick(random_plant_states)
-
-/obj/item/kirbyplants/proc/generate_states()
-	random_plant_states = list()
-	for(var/i in 1 to random_state_cap) //SKYRAT EDIT CHANGE
-		random_plant_states += "plant-[i]" //SKYRAT EDIT CHANGE
-	random_plant_states += list("applebush", "monkeyplant") //SKYRAT EDIT CHANGE
-
-
-/obj/item/kirbyplants/dead
-	name = "RD's potted plant"
-	desc = "A gift from the botanical staff, presented after the RD's reassignment. There's a tag on it that says \"Y'all come back now, y'hear?\"\nIt doesn't look very healthy..."
-	icon_state = "plant-25"
-	trimmable = FALSE
-
-//SKYRAT EDIT START
-/obj/item/kirbyplants/monkey
-	name = "monkey plant"
-	desc = "Something that seems to have been made by the Nanotrasen science division, one might call it an abomination. It's heads seem... alive."
-	icon_state = "monkeyplant"
-	trimmable = FALSE
-//SKYRAT EDIT END
-
-/obj/item/kirbyplants/photosynthetic
-	name = "photosynthetic potted plant"
-	desc = "A bioluminescent plant."
-	icon_state = "plant-9" //SKYRAT EDIT CHANGE
-	light_color = COLOR_BRIGHT_BLUE
-	light_range = 3
-
-/obj/item/kirbyplants/fullysynthetic
-	name = "plastic potted plant"
-	desc = "A fake, cheap looking, plastic tree. Perfect for people who kill every plant they touch."
-	icon_state = "plant-26"
-	custom_materials = (list(/datum/material/plastic = 8000))
-	trimmable = FALSE
-
-/obj/item/kirbyplants/fullysynthetic/Initialize(mapload)
-	. = ..()
-	icon_state = "plant-[rand(26, 29)]"
-
-/obj/item/kirbyplants/potty
-	name = "Potty the Potted Plant"
-	desc = "A secret agent staffed in the station's bar to protect the mystical cakehat."
-	icon_state = "potty"
-	trimmable = FALSE
-
-/obj/item/kirbyplants/fern
-	name = "neglected fern"
-	desc = "An old botanical research sample collected on a long forgotten jungle planet."
-	icon_state = "fern"
-	trimmable = FALSE
-
-/obj/item/kirbyplants/fern/Initialize(mapload)
-	. = ..()
-	AddElement(/datum/element/swabable, CELL_LINE_TABLE_ALGAE, CELL_VIRUS_TABLE_GENERIC, rand(2,4), 5)
-
-//a rock is flora according to where the icon file is
-//and now these defines
-
-/obj/structure/flora/rock
-	icon_state = "basalt"
-	desc = "A volcanic rock. Pioneers used to ride these babies for miles."
-	icon = 'icons/obj/flora/rocks.dmi'
-	resistance_flags = FIRE_PROOF
-	density = TRUE
-	/// Itemstack that is dropped when a rock is mined with a pickaxe
-	var/obj/item/stack/mineResult = /obj/item/stack/ore/glass/basalt
-	/// Amount of the itemstack to drop
-	var/mineAmount = 20
-	rock = TRUE
-
-/obj/structure/flora/rock/Initialize(mapload)
-	. = ..()
-	icon_state = "[icon_state][rand(1,3)]"
-
-/obj/structure/flora/rock/attackby(obj/item/attacking_item, mob/user, params)
-	if(!mineResult || attacking_item.tool_behaviour != TOOL_MINING)
-		return ..()
-	if(flags_1 & NODECONSTRUCT_1)
-		return ..()
-	to_chat(user, span_notice("You start mining..."))
-	if(!attacking_item.use_tool(src, user, 40, volume=50))
-		return
-	to_chat(user, span_notice("You finish mining the rock."))
-	if(mineResult && mineAmount)
-		new mineResult(loc, mineAmount)
-	SSblackbox.record_feedback("tally", "pick_used_mining", 1, attacking_item.type)
-	qdel(src)
-
-/obj/structure/flora/rock/pile
-	icon_state = "lavarocks"
-	desc = "A pile of rocks."
-	density = FALSE //SKYRAT EDIT ADDITION
-
-//Jungle grass
-=======
->>>>>>> 89650214fd8 ([MDB Ignore] Refactoring Flora code (#66978))
 
 /obj/structure/flora/grass/jungle
 	name = "jungle grass"
