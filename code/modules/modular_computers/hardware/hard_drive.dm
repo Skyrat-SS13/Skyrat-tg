@@ -196,7 +196,15 @@
 	desc = "An efficient SSD for portable devices developed by a rival organisation."
 	power_usage = 8
 	max_capacity = 70
+	device_type = MC_HDD // SKYRAT EDIT
 	var/datum/opposing_force/opfor_data // Syndicate hard drive has the user's data baked directly into it on creation //SKYRAT EDIT - OPFOR, NOT TRAITOR
+
+/obj/item/computer_hardware/hard_drive/portable/syndicate/install_default_programs()
+	. = ..()
+	store_file(new/datum/computer_file/program/computerconfig(src))
+	store_file(new/datum/computer_file/program/ntnetdownload/syndicate(src))
+	store_file(new/datum/computer_file/program/filemanager(src))
+	store_file(new/datum/computer_file/program/radar/fission360(src))
 
 /// For tablets given to nuke ops
 /obj/item/computer_hardware/hard_drive/small/nukeops

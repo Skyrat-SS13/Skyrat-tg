@@ -43,12 +43,12 @@
 
 	RegisterSignal(victim, COMSIG_HUMAN_EARLY_UNARMED_ATTACK, .proc/attack_with_hurt_hand)
 	if(limb.held_index && victim.get_item_for_held_index(limb.held_index) && (disabling || prob(30 * severity)))
-		var/obj/item/I = victim.get_item_for_held_index(limb.held_index)
-		if(istype(I, /obj/item/offhand))
-			I = victim.get_inactive_held_item()
+		var/obj/item/held_item = victim.get_item_for_held_index(limb.held_index)
+		if(istype(held_item, /obj/item/offhand))
+			held_item = victim.get_inactive_held_item()
 
-		if(I && victim.dropItemToGround(I))
-			victim.visible_message(span_danger("[victim] drops [I] in shock!"), span_warning("<b>The force on your [parse_zone(limb.body_zone)] causes you to drop [I]!</b>"), vision_distance=COMBAT_MESSAGE_RANGE)
+		if(held_item && victim.dropItemToGround(held_item))
+			victim.visible_message(span_danger("[victim] drops [held_item] in shock!"), span_warning("<b>The force on your [parse_zone(limb.body_zone)] causes you to drop [held_item]!</b>"), vision_distance=COMBAT_MESSAGE_RANGE)
 
 	update_inefficiencies()
 
@@ -360,21 +360,21 @@
 	. = ..()
 
 /// if someone is using bone gel on our wound
-/datum/wound/blunt/proc/gel(obj/item/stack/medical/bone_gel/I, mob/user)
+/datum/wound/blunt/proc/gel(obj/item/stack/medical/bone_gel/gel, mob/user)
 	if(gelled)
 		to_chat(user, span_warning("[user == victim ? "Your" : "[victim]'s"] [parse_zone(limb.body_zone)] is already coated with bone gel!"))
 		return
 
-	user.visible_message(span_danger("[user] begins hastily applying [I] to [victim]'s' [parse_zone(limb.body_zone)]..."), span_warning("You begin hastily applying [I] to [user == victim ? "your" : "[victim]'s"] [parse_zone(limb.body_zone)], disregarding the warning label..."))
+	user.visible_message(span_danger("[user] begins hastily applying [gel] to [victim]'s' [parse_zone(limb.body_zone)]..."), span_warning("You begin hastily applying [gel] to [user == victim ? "your" : "[victim]'s"] [parse_zone(limb.body_zone)], disregarding the warning label..."))
 
 	if(!do_after(user, base_treat_time * 1.5 * (user == victim ? 1.5 : 1), target = victim, extra_checks=CALLBACK(src, .proc/still_exists)))
 		return
 
-	I.use(1)
+	gel.use(1)
 	victim.emote("scream")
 	if(user != victim)
-		user.visible_message(span_notice("[user] finishes applying [I] to [victim]'s [parse_zone(limb.body_zone)], emitting a fizzing noise!"), span_notice("You finish applying [I] to [victim]'s [parse_zone(limb.body_zone)]!"), ignored_mobs=victim)
-		to_chat(victim, span_userdanger("[user] finishes applying [I] to your [parse_zone(limb.body_zone)], and you can feel the bones exploding with pain as they begin melting and reforming!"))
+		user.visible_message(span_notice("[user] finishes applying [gel] to [victim]'s [parse_zone(limb.body_zone)], emitting a fizzing noise!"), span_notice("You finish applying [gel] to [victim]'s [parse_zone(limb.body_zone)]!"), ignored_mobs=victim)
+		to_chat(victim, span_userdanger("[user] finishes applying [gel] to your [parse_zone(limb.body_zone)], and you can feel the bones exploding with pain as they begin melting and reforming!"))
 	else
 		var/painkiller_bonus = 0
 		if(victim.get_drunk_amount() > 10)
@@ -389,25 +389,25 @@
 			painkiller_bonus += 20
 
 		if(prob(25 + (20 * (severity - 2)) - painkiller_bonus)) // 25%/45% chance to fail self-applying with severe and critical wounds, modded by painkillers
-			victim.visible_message(span_danger("[victim] fails to finish applying [I] to [victim.p_their()] [parse_zone(limb.body_zone)], passing out from the pain!"), span_notice("You pass out from the pain of applying [I] to your [parse_zone(limb.body_zone)] before you can finish!"))
+			victim.visible_message(span_danger("[victim] fails to finish applying [gel] to [victim.p_their()] [parse_zone(limb.body_zone)], passing out from the pain!"), span_notice("You pass out from the pain of applying [gel] to your [parse_zone(limb.body_zone)] before you can finish!"))
 			victim.AdjustUnconscious(5 SECONDS)
 			return
-		victim.visible_message(span_notice("[victim] finishes applying [I] to [victim.p_their()] [parse_zone(limb.body_zone)], grimacing from the pain!"), span_notice("You finish applying [I] to your [parse_zone(limb.body_zone)], and your bones explode in pain!"))
+		victim.visible_message(span_notice("[victim] finishes applying [gel] to [victim.p_their()] [parse_zone(limb.body_zone)], grimacing from the pain!"), span_notice("You finish applying [gel] to your [parse_zone(limb.body_zone)], and your bones explode in pain!"))
 
 	limb.receive_damage(25, stamina=100, wound_bonus=CANT_WOUND)
 	if(!gelled)
 		gelled = TRUE
 
 /// if someone is using surgical tape on our wound
-/datum/wound/blunt/proc/tape(obj/item/stack/sticky_tape/surgical/I, mob/user)
+/datum/wound/blunt/proc/tape(obj/item/stack/sticky_tape/surgical/tape, mob/user)
 	if(!gelled)
 		to_chat(user, span_warning("[user == victim ? "Your" : "[victim]'s"] [parse_zone(limb.body_zone)] must be coated with bone gel to perform this emergency operation!"))
 		return
 	if(taped)
-		to_chat(user, span_warning("[user == victim ? "Your" : "[victim]'s"] [parse_zone(limb.body_zone)] is already wrapped in [I.name] and reforming!"))
+		to_chat(user, span_warning("[user == victim ? "Your" : "[victim]'s"] [parse_zone(limb.body_zone)] is already wrapped in [tape.name] and reforming!"))
 		return
 
-	user.visible_message(span_danger("[user] begins applying [I] to [victim]'s' [parse_zone(limb.body_zone)]..."), span_warning("You begin applying [I] to [user == victim ? "your" : "[victim]'s"] [parse_zone(limb.body_zone)]..."))
+	user.visible_message(span_danger("[user] begins applying [tape] to [victim]'s' [parse_zone(limb.body_zone)]..."), span_warning("You begin applying [tape] to [user == victim ? "your" : "[victim]'s"] [parse_zone(limb.body_zone)]..."))
 
 	if(!do_after(user, base_treat_time * (user == victim ? 1.5 : 1), target = victim, extra_checks=CALLBACK(src, .proc/still_exists)))
 		return
@@ -415,21 +415,21 @@
 	if(victim == user)
 		regen_ticks_needed *= 1.5
 
-	I.use(1)
+	tape.use(1)
 	if(user != victim)
-		user.visible_message(span_notice("[user] finishes applying [I] to [victim]'s [parse_zone(limb.body_zone)], emitting a fizzing noise!"), span_notice("You finish applying [I] to [victim]'s [parse_zone(limb.body_zone)]!"), ignored_mobs=victim)
-		to_chat(victim, span_green("[user] finishes applying [I] to your [parse_zone(limb.body_zone)], you immediately begin to feel your bones start to reform!"))
+		user.visible_message(span_notice("[user] finishes applying [tape] to [victim]'s [parse_zone(limb.body_zone)], emitting a fizzing noise!"), span_notice("You finish applying [tape] to [victim]'s [parse_zone(limb.body_zone)]!"), ignored_mobs=victim)
+		to_chat(victim, span_green("[user] finishes applying [tape] to your [parse_zone(limb.body_zone)], you immediately begin to feel your bones start to reform!"))
 	else
-		victim.visible_message(span_notice("[victim] finishes applying [I] to [victim.p_their()] [parse_zone(limb.body_zone)], !"), span_green("You finish applying [I] to your [parse_zone(limb.body_zone)], and you immediately begin to feel your bones start to reform!"))
+		victim.visible_message(span_notice("[victim] finishes applying [tape] to [victim.p_their()] [parse_zone(limb.body_zone)], !"), span_green("You finish applying [tape] to your [parse_zone(limb.body_zone)], and you immediately begin to feel your bones start to reform!"))
 
 	taped = TRUE
 	processes = TRUE
 
-/datum/wound/blunt/treat(obj/item/I, mob/user)
-	if(istype(I, /obj/item/stack/medical/bone_gel))
-		gel(I, user)
-	else if(istype(I, /obj/item/stack/sticky_tape/surgical))
-		tape(I, user)
+/datum/wound/blunt/treat(obj/item/used_item, mob/user)
+	if(istype(used_item, /obj/item/stack/medical/bone_gel))
+		gel(used_item, user)
+	else if(istype(used_item, /obj/item/stack/sticky_tape/surgical))
+		tape(used_item, user)
 
 /datum/wound/blunt/get_scanner_description(mob/user)
 	. = ..()

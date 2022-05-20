@@ -295,3 +295,32 @@
 	icon_state = "robowing"
 	color_src = USE_MATRIXED_COLORS
 
+/datum/sprite_accessory/wings/mammal/mini_bat
+	name = "Mini-Bat"
+	icon_state = "minibat"
+	color_src = USE_ONE_COLOR
+
+/datum/sprite_accessory/wings/mammal/mini_feather
+	name = "Mini-Feathery"
+	icon_state = "minifeather"
+	color_src = USE_ONE_COLOR
+
+/datum/sprite_accessory/wings/mammal/tiny_bat
+	name = "Tiny-Bat"
+	icon_state = "tinybat"
+	color_src = USE_ONE_COLOR
+
+/datum/sprite_accessory/wings/mammal/tiny_feather
+	name = "Tiny-Feathery"
+	icon_state = "tinyfeather"
+	color_src = USE_ONE_COLOR
+
+/datum/sprite_accessory/wings/mammal/insect
+	name = "Insectoid"
+	icon_state = "insect"
+	color_src = USE_ONE_COLOR
+
+/datum/sprite_accessory/wings/mammal/beetle
+	name = "Beetle"
+	icon_state = "beetle"
+	color_src = USE_ONE_COLOR

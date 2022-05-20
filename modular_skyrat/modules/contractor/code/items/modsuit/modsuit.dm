@@ -30,16 +30,6 @@
 		/obj/item/mod/module/baton_holster/preloaded,
 	)
 
-/obj/item/mod/control/update_appearance(updates)
-	for(var/obj/item/mod/module/chameleon/module as anything in modules)
-		if(!istype(module))
-			continue
-		if(!module)
-			return ..()
-		if(module.on)
-			return
-	return ..()
-
 // For the prefs menu
 /obj/item/mod/control/pre_equipped/syndicate_empty/contractor
 	theme = /datum/mod_theme/contractor

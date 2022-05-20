@@ -42,8 +42,8 @@
 /obj/item/clothing/head/cowboyhat/sec
 	name = "security cowboy hat"
 	desc = "A security cowboy hat, perfect for any true lawman"
-	icon_state = "cowboyhat_sec"
-	inhand_icon_state = "cowboyhat_sec"
+	icon_state = "cowboyhat_black"
+	inhand_icon_state = "cowboyhat_black"
 
 /obj/item/clothing/head/kepi
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
@@ -112,8 +112,8 @@
 	desc = "A bandit turned sheriff, his enforcement is brutal but effective - whether out of fear or respect is unclear, though not many bodies hang high. A peaceful land, a quiet people."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "cowboy_black_sec"
-	inhand_icon_state= "cowboy_black_sec"
+	icon_state = "cowboy_black"
+	inhand_icon_state= "cowboy_black"
 
 
 /obj/item/clothing/head/ushanka/sec
