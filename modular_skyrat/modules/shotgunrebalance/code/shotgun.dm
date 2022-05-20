@@ -3,6 +3,7 @@
 	var/tile_dropoff_s = 0.25 */
 
 /obj/item/ammo_casing/shotgun
+	icon = 'modular_skyrat/modules/shotgunrebalance/icons/shotshells.dmi'
 	custom_materials = list(/datum/material/iron=1000) //We will be using this to prevent refund scamming mats
 
 /obj/item/ammo_casing/shotgun/hp
