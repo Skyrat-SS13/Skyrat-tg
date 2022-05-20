@@ -27,8 +27,8 @@
 
 /datum/armament_entry/cargo_gun/nanotrasen/shotgun/doublebarrel
 	item_type = /obj/item/gun/ballistic/shotgun/doublebarrel
-	lower_cost = CARGO_CRATE_VALUE * 10
-	upper_cost = CARGO_CRATE_VALUE * 12
+	lower_cost = CARGO_CRATE_VALUE * 3
+	upper_cost = CARGO_CRATE_VALUE * 6
 
 /datum/armament_entry/cargo_gun/nanotrasen/shotgun/combat
 	item_type = /obj/item/gun/ballistic/shotgun/automatic/combat
@@ -65,7 +65,7 @@
 	lower_cost = CARGO_CRATE_VALUE * 12
 	upper_cost = CARGO_CRATE_VALUE * 16
 	interest_required = PASSED_INTEREST
-	
+
 /datum/armament_entry/cargo_gun/nanotrasen/part/suppressor/nanotrasen
 	item_type = /obj/item/suppressor/nanotrasen
 	lower_cost = CARGO_CRATE_VALUE * 10
