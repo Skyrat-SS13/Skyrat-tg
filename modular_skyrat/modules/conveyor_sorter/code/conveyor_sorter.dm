@@ -132,7 +132,7 @@
 	build_path = /obj/item/conveyor_sorter
 	materials = list(/datum/material/iron = 500, /datum/material/plastic = 500)
 	category = list("Equipment")
-	departmental_flags = DEPARTMENTAL_FLAG_CARGO
+	departmental_flags = DEPARTMENT_BITFLAG_CARGO
 
 /datum/techweb_node/conveyor_sorter
 	id = "conveyorsorter"

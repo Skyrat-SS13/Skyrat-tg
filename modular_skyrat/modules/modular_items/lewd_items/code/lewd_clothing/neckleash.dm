@@ -83,12 +83,12 @@
 	AddElement(/datum/element/update_icon_updates_onmob)
 
 //to change color
-/obj/item/leash/AltClick(mob/user, obj/item/I)
+/obj/item/leash/AltClick(mob/user)
 	if(color_changed == FALSE)
 		. = ..()
 		if(.)
 			return
-		var/choice = show_radial_menu(user,src, leash_designs, custom_check = CALLBACK(src, .proc/check_menu, user, I), radius = 36, require_near = TRUE)
+		var/choice = show_radial_menu(user, src, leash_designs, custom_check = CALLBACK(src, .proc/check_menu, user, I), radius = 36, require_near = TRUE)
 		if(!choice)
 			return FALSE
 		current_color = choice
@@ -127,7 +127,7 @@
 		if(C.handcuffed)
 			leashtime = 5
 		if(do_mob(user, C, leashtime)) //do_mob adds a progress bar, but then we also check to see if they have a collar
-			log_combat(user, C, "leashed", addition="playfully")
+			log_combat(user, C, "leashed", addition = "playfully")
 			//TODO: Figure out how to make an easy breakout for leashed leash_pets
 			C.apply_status_effect(/datum/status_effect/leash_pet)//Has now been leashed
 			user.apply_status_effect(/datum/status_effect/leash_dom) //Is the leasher
@@ -136,7 +136,7 @@
 			RegisterSignal(leash_pet, COMSIG_MOVABLE_MOVED, .proc/on_pet_move)
 			RegisterSignal(leash_master, COMSIG_MOVABLE_MOVED, .proc/on_master_move)
 
-			var/datum/beam/new_leash = Beam(C, icon_state = "leash", maxdistance = 5, beam_type=/obj/effect/ebeam/leash)
+			var/datum/beam/new_leash = Beam(C, icon_state = "leash", maxdistance = 5, beam_type = /obj/effect/ebeam/leash)
 			RegisterSignal(new_leash, COMSIG_PARENT_QDELETING, .proc/remove_leash, new_leash)
 
 			if(!leash_pet.has_status_effect(/datum/status_effect/leash_dom)) //Add slowdown if the pet didn't leash themselves
@@ -500,12 +500,12 @@
 	AddElement(/datum/element/update_icon_updates_onmob)
 
 //to change color
-/obj/item/leash/AltClick(mob/user, obj/item/I)
+/obj/item/leash/AltClick(mob/user)
 	if(color_changed == FALSE)
 		. = ..()
 		if(.)
 			return
-		var/choice = show_radial_menu(user,src, leash_designs, custom_check = CALLBACK(src, .proc/check_menu, user, I), radius = 36, require_near = TRUE)
+		var/choice = show_radial_menu(user, src, leash_designs, custom_check = CALLBACK(src, .proc/check_menu, user, radius = 36, require_near = TRUE)
 		if(!choice)
 			return FALSE
 		current_color = choice
@@ -534,7 +534,7 @@
 	inhand_icon_state = "[initial(icon_state)]_[current_color]"
 
 //Called when someone is clicked with the leash
-/obj/item/leash/attack(mob/living/carbon/C, mob/living/user) //C is the target, user is the one with the leash
+/obj/item/leash/attack(mob/living/carbon/C, mob/living/user) // C is the target, user is the one with the leash
 	.=..()
 	if(C.has_status_effect(/datum/status_effect/leash_pet)) //If the pet is already leashed, do not leash them. For the love of god.
 		to_chat(user, span_notice("[C] has already been leashed."))
@@ -544,7 +544,7 @@
 		if(C.handcuffed)
 			leashtime = 5
 		if(do_mob(user, C, leashtime)) //do_mob adds a progress bar, but then we also check to see if they have a collar
-			log_combat(user, C, "leashed", addition="playfully")
+			log_combat(user, C, "leashed", addition = "playfully")
 			//TODO: Figure out how to make an easy breakout for leashed leash_pets
 			C.apply_status_effect(/datum/status_effect/leash_pet)//Has now been leashed
 			user.apply_status_effect(/datum/status_effect/leash_dom) //Is the leasher
@@ -553,7 +553,7 @@
 			RegisterSignal(leash_pet, COMSIG_MOVABLE_MOVED, .proc/on_pet_move)
 			RegisterSignal(leash_master, COMSIG_MOVABLE_MOVED, .proc/on_master_move)
 
-			leashrope = user.Beam(leash_pet, icon_state="leashrope", time = INFINITE, beam_type = /obj/effect/ebeam/leashrope)
+			leashrope = user.Beam(leash_pet, icon_state = "leashrope", time = INFINITE, beam_type = /obj/effect/ebeam/leashrope)
 			RegisterSignal(leashrope, COMSIG_PARENT_QDELETING)//this is a WAY better rangecheck than what was done before (process check)
 
 			leash_used = 1
@@ -645,7 +645,7 @@
 		return
 
 	//If the master moves, pull the pet in behind
-	sleep(2) //A small sleep so the pet kind of bounces back after they make the step
+	sleep(2) // A small sleep so the pet kind of bounces back after they make the step
 	//Also, the sleep means that the distance check for master happens before the pet, to prevent both from proccing.
 
 	if(leash_master == null) //Just to stop error messages
@@ -737,7 +737,7 @@
 		return
 
 	//If the pet gets too far away, they get tugged back
-	sleep(3)//A small sleep so the pet kind of bounces back after they make the step
+	sleep(3) // A small sleep so the pet kind of bounces back after they make the step
 	if(leash_master == null)
 		return
 	if(leash_pet == null)
