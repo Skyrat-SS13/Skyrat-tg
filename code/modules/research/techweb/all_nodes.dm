@@ -1611,6 +1611,7 @@
 		"mod_stealth",
 		"mod_mag_harness",
 		"mod_pathfinder",
+		"mod_holster",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 
