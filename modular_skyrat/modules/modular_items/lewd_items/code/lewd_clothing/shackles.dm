@@ -38,12 +38,12 @@
 	AddElement(/datum/element/update_icon_updates_onmob)
 
 //to change model
-/obj/item/clothing/suit/straight_jacket/shackles/AltClick(mob/user, obj/item/I)
+/obj/item/clothing/suit/straight_jacket/shackles/AltClick(mob/user)
 	if(color_changed == FALSE)
 		. = ..()
 		if(.)
 			return
-		var/choice = show_radial_menu(user,src, shackles_designs, custom_check = CALLBACK(src, .proc/check_menu, user, I), radius = 36, require_near = TRUE)
+		var/choice = show_radial_menu(user, src, shackles_designs, custom_check = CALLBACK(src, .proc/check_menu, user), radius = 36, require_near = TRUE)
 		if(!choice)
 			return FALSE
 		current_color = choice
@@ -75,8 +75,8 @@
 //message when equipping that thing
 /obj/item/clothing/suit/straight_jacket/shackles/equipped(mob/user, slot)
 	. = ..()
-	var/mob/living/carbon/human/C = user
-	if(src == C.wear_suit)
+	var/mob/living/carbon/human/affected_mob = user
+	if(src == affected_mob.wear_suit)
 		to_chat(user, span_purple("The shackles are restraining your body, though the lock appears to be made of... Plastic?"))
 	else
 		return
@@ -84,18 +84,18 @@
 //message when unequipping that thing
 /obj/item/clothing/suit/straight_jacket/shackles/dropped(mob/user)
 	. = ..()
-	var/mob/living/carbon/human/C = user
-	if(src == C.wear_suit)
+	var/mob/living/carbon/human/affected_mob = user
+	if(src == affected_mob.wear_suit)
 		to_chat(user, span_purple("The shackles are no longer restraining your body. It wasn't too hard, huh?"))
 
 //reinforcing normal version by using handcuffs on it.
-/obj/item/clothing/suit/straight_jacket/shackles/attackby(obj/item/I, mob/user, params) //That part allows reinforcing this item with normal straightjacket
-    if(istype(I, /obj/item/restraints/handcuffs))
-        var/obj/item/clothing/suit/straight_jacket/shackles/reinforced/W = new /obj/item/clothing/suit/straight_jacket/shackles/reinforced
+/obj/item/clothing/suit/straight_jacket/shackles/attackby(obj/item/used_item, mob/user, params) //That part allows reinforcing this item with normal straightjacket
+    if(istype(used_item, /obj/item/restraints/handcuffs))
+        var/obj/item/clothing/suit/straight_jacket/shackles/reinforced/shackles = new /obj/item/clothing/suit/straight_jacket/shackles/reinforced
         remove_item_from_storage(user)
-        user.put_in_hands(W)
-        to_chat(user, span_notice("You reinforced the locks on [src] with [I]."))
-        qdel(I)
+        user.put_in_hands(shackles)
+        to_chat(user, span_notice("You reinforced the locks on [src] with [used_item]."))
+        qdel(used_item)
         qdel(src)
         return
     . = ..()
@@ -123,15 +123,15 @@
 //message when equipping that thing
 /obj/item/clothing/suit/straight_jacket/shackles/reinforced/equipped(mob/user, slot)
 	. = ..()
-	var/mob/living/carbon/human/C = user
-	if(src == C.wear_suit)
+	var/mob/living/carbon/human/affected_mob = user
+	if(src == affected_mob.wear_suit)
 		to_chat(user, span_purple("The shackles are restraining your body!"))
 	else
 		return
 
 //message when unequipping that thing
 /obj/item/clothing/suit/straight_jacket/shackles/reinforced/dropped(mob/user)
-	var/mob/living/carbon/human/C = user
 	. = ..()
-	if(src == C.wear_suit)
+	var/mob/living/carbon/human/affected_mob = user
+	if(src == affected_mob.wear_suit)
 		to_chat(user, span_purple("The shackles are no longer restraining your body. You are free!"))
