@@ -924,7 +924,7 @@
 			LAZYREMOVE(mob_spell_list, S)
 			qdel(S)
 	if(client)
-		client << output(null, "statbrowser:check_spells")
+		client.stat_panel.send_message("check_spells")
 
 /**
  * Checks to see if the mob can cast normal magic spells.
@@ -1119,9 +1119,7 @@
 			var/obj/item/modular_computer/tablet/pda/PDA = A
 			if(PDA.saved_identification == oldname)
 				PDA.saved_identification = newname
-				var/obj/item/computer_hardware/identifier/display = PDA.all_components[MC_IDENTIFY]
-				if(display)
-					display.UpdateDisplay()
+				PDA.UpdateDisplay()
 				if(!search_id)
 					break
 				search_pda = 0
@@ -1170,6 +1168,10 @@
 **/
 /mob/proc/has_nightvision()
 	return see_in_dark >= NIGHTVISION_FOV_RANGE
+
+/// Is this mob affected by nearsight
+/mob/proc/is_nearsighted()
+	return HAS_TRAIT(src, TRAIT_NEARSIGHT)
 
 /// This mob is abile to read books
 /mob/proc/is_literate()
@@ -1361,9 +1363,6 @@
 			. = TRUE
 		if(NAMEOF(src, stat))
 			set_stat(var_value)
-			. = TRUE
-		if(NAMEOF(src, dizziness))
-			set_dizziness(var_value)
 			. = TRUE
 		if(NAMEOF(src, eye_blind))
 			set_blindness(var_value)

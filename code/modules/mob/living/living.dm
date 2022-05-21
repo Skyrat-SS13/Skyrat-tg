@@ -880,17 +880,13 @@
 	bodytemperature = get_body_temp_normal(apply_change=FALSE)
 	set_blindness(0)
 	set_blurriness(0)
-	set_dizziness(0)
 	cure_nearsighted()
 	cure_blind()
 	cure_husk()
 	hallucination = 0
 	heal_overall_damage(INFINITY, INFINITY, INFINITY, null, TRUE) //heal brute and burn dmg on both organic and robotic limbs, and update health right away.
 	extinguish_mob()
-	set_confusion(0)
-	dizziness = 0
 	set_drowsyness(0)
-	jitteriness = 0
 	stop_sound_channel(CHANNEL_HEARTBEAT)
 	SEND_SIGNAL(src, COMSIG_LIVING_POST_FULLY_HEAL, admin_revive)
 
@@ -1173,13 +1169,6 @@
 	else if(!src.mob_negates_gravity())
 		step_towards(src,S)
 
-/mob/living/proc/do_jitter_animation(jitteriness)
-	var/amplitude = min(4, (jitteriness/100) + 1)
-	var/pixel_x_diff = rand(-amplitude, amplitude)
-	var/pixel_y_diff = rand(-amplitude/3, amplitude/3)
-	animate(src, pixel_x = pixel_x_diff, pixel_y = pixel_y_diff , time = 2, loop = 6, flags = ANIMATION_RELATIVE|ANIMATION_PARALLEL)
-	animate(pixel_x = -pixel_x_diff , pixel_y = -pixel_y_diff , time = 2, flags = ANIMATION_RELATIVE)
-
 /mob/living/proc/get_temperature(datum/gas_mixture/environment)
 	var/loc_temp = environment ? environment.temperature : T0C
 	if(isobj(loc))
@@ -1218,10 +1207,6 @@
 	if(!near_camera(src))
 		return FALSE
 	return TRUE
-
-//used in datum/reagents/reaction() proc
-/mob/living/proc/get_permeability_protection(list/target_zones)
-	return 0
 
 /mob/living/proc/harvest(mob/living/user) //used for extra objects etc. in butchering
 	return
@@ -1729,10 +1714,11 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 	return result
 
 /mob/living/reset_perspective(atom/A)
-	if(..())
-		update_sight()
-		update_fullscreen()
-		update_pipe_vision()
+	if(!..())
+		return
+	update_sight()
+	update_fullscreen()
+	update_pipe_vision()
 
 /// Proc used to handle the fullscreen overlay updates, realistically meant for the reset_perspective() proc.
 /mob/living/proc/update_fullscreen()

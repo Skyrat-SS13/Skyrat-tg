@@ -20,7 +20,7 @@ GLOBAL_LIST_EMPTY(turret_id_refs)
 /obj/machinery/turretid
 	var/system_id //The ID system for turrets, will get any turrets with the same ID and put them in controlled turrets
 
-/obj/machinery/turretid/Initialize()
+/obj/machinery/turretid/LateInitialize()
 	. = ..()
 	if(system_id && GLOB.turret_id_refs[system_id])
 		for(var/i in GLOB.turret_id_refs[system_id])
