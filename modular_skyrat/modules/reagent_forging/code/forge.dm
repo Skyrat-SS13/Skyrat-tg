@@ -490,10 +490,12 @@
 			fail_message(user, "No choice made")
 			return FALSE
 
+		in_use = TRUE
 		balloon_alert_to_viewers("cooking...")
 
 		if(!do_after(user, 10 SECONDS, target = src))
 			fail_message(user, "You stop trying to cook [thing_to_cook]!")
+			in_use = FALSE
 			return FALSE
 
 		switch(user_input)

@@ -312,7 +312,7 @@
 	r_pocket = /obj/item/gun/ballistic/automatic/pistol
 	id = /obj/item/card/id/advanced/chameleon
 	implants = list(/obj/item/implant/weapons_auth)
-	id_trim = /datum/id_trim/chameleon/operative
+	id_trim = /datum/id_trim/syndicom/skyrat/interdyne //SKYRAT EDIT
 
 // SKYRAT EDIT REMOVAL BEGIN -- mapping
 /*

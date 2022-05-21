@@ -186,46 +186,46 @@
 */
 
 /// if someone is using ointment or mesh on our burns
-/datum/wound/burn/proc/ointmentmesh(obj/item/stack/medical/I, mob/user)
-	user.visible_message(span_notice("[user] begins applying [I] to [victim]'s [parse_zone(limb.body_zone)]..."), span_notice("You begin applying [I] to [user == victim ? "your" : "[victim]'s"] [parse_zone(limb.body_zone)]..."))
-	if(!do_after(user, (user == victim ? I.self_delay : I.other_delay), extra_checks = CALLBACK(src, .proc/still_exists)))
+/datum/wound/burn/proc/ointmentmesh(obj/item/stack/medical/treatment_item, mob/user)
+	user.visible_message(span_notice("[user] begins applying [treatment_item] to [victim]'s [parse_zone(limb.body_zone)]..."), span_notice("You begin applying [treatment_item] to [user == victim ? "your" : "[victim]'s"] [parse_zone(limb.body_zone)]..."))
+	if(!do_after(user, (user == victim ? treatment_item.self_delay : treatment_item.other_delay), extra_checks = CALLBACK(src, .proc/still_exists)))
 		return
 
-	limb.heal_damage(I.heal_brute, I.heal_burn)
-	user.visible_message(span_green("[user] applies [I] to [victim]."), span_green("You apply [I] to [user == victim ? "your" : "[victim]'s"] [parse_zone(limb.body_zone)]."))
-	I.use(1)
-	sanitization += I.sanitization
-	flesh_healing += I.flesh_regeneration
+	limb.heal_damage(treatment_item.heal_brute, treatment_item.heal_burn)
+	user.visible_message(span_green("[user] applies [treatment_item] to [victim]."), span_green("You apply [treatment_item] to [user == victim ? "your" : "[victim]'s"] [parse_zone(limb.body_zone)]."))
+	treatment_item.use(1)
+	sanitization += treatment_item.sanitization
+	flesh_healing += treatment_item.flesh_regeneration
 
 	if((infestation <= 0 || sanitization >= infestation) && (flesh_damage <= 0 || flesh_healing > flesh_damage))
-		to_chat(user, span_notice("You've done all you can with [I], now you must wait for the flesh on [victim]'s [parse_zone(limb.body_zone)] to recover."))
+		to_chat(user, span_notice("You've done all you can with [treatment_item], now you must wait for the flesh on [victim]'s [parse_zone(limb.body_zone)] to recover."))
 	else
-		try_treating(I, user)
+		try_treating(treatment_item, user)
 
 /// Paramedic UV penlights
-/datum/wound/burn/proc/uv(obj/item/flashlight/pen/paramedic/I, mob/user)
-	if(!COOLDOWN_FINISHED(I, uv_cooldown))
-		to_chat(user, span_notice("[I] is still recharging!"))
+/datum/wound/burn/proc/uv(obj/item/flashlight/pen/paramedic/penlight_used, mob/user)
+	if(!COOLDOWN_FINISHED(penlight_used, uv_cooldown))
+		to_chat(user, span_notice("[penlight_used] is still recharging!"))
 		return
 	if(infestation <= 0 || infestation < sanitization)
 		to_chat(user, span_notice("There's no infection to treat on [victim]'s [parse_zone(limb.body_zone)]!"))
 		return
 
-	user.visible_message(span_notice("[user] flashes the burns on [victim]'s [limb] with [I]."), span_notice("You flash the burns on [user == victim ? "your" : "[victim]'s"] [parse_zone(limb.body_zone)] with [I]."), vision_distance=COMBAT_MESSAGE_RANGE)
-	sanitization += I.uv_power
-	COOLDOWN_START(I, uv_cooldown, I.uv_cooldown_length)
+	user.visible_message(span_notice("[user] flashes the burns on [victim]'s [limb] with [penlight_used]."), span_notice("You flash the burns on [user == victim ? "your" : "[victim]'s"] [parse_zone(limb.body_zone)] with [penlight_used]."), vision_distance=COMBAT_MESSAGE_RANGE)
+	sanitization += penlight_used.uv_power
+	COOLDOWN_START(penlight_used, uv_cooldown, penlight_used.uv_cooldown_length)
 
-/datum/wound/burn/treat(obj/item/I, mob/user)
-	if(istype(I, /obj/item/stack/medical/ointment))
-		ointmentmesh(I, user)
-	else if(istype(I, /obj/item/stack/medical/mesh))
-		var/obj/item/stack/medical/mesh/mesh_check = I
+/datum/wound/burn/treat(obj/item/treatment_item, mob/user)
+	if(istype(treatment_item, /obj/item/stack/medical/ointment))
+		ointmentmesh(treatment_item, user)
+	else if(istype(treatment_item, /obj/item/stack/medical/mesh))
+		var/obj/item/stack/medical/mesh/mesh_check = treatment_item
 		if(!mesh_check.is_open)
 			to_chat(user, span_warning("You need to open [mesh_check] first."))
 			return
 		ointmentmesh(mesh_check, user)
-	else if(istype(I, /obj/item/flashlight/pen/paramedic))
-		uv(I, user)
+	else if(istype(treatment_item, /obj/item/flashlight/pen/paramedic))
+		uv(treatment_item, user)
 
 // people complained about burns not healing on stasis beds, so in addition to checking if it's cured, they also get the special ability to very slowly heal on stasis beds if they have the healing effects stored
 /datum/wound/burn/on_stasis()
