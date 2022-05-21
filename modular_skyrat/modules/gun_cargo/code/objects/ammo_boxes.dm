@@ -114,17 +114,3 @@
 	new /obj/item/stock_parts/cell/microfusion/bluespace(src)
 	new /obj/item/stock_parts/cell/microfusion/bluespace(src)
 
-/obj/item/ammo_box/b10mm
-	name = "ammo box (10mm Auto)"
-	ammo_type = /obj/item/ammo_casing/b10mm
-	max_ammo = 20
-
-/obj/item/ammo_box/b10mm/hp
-	name = "ammo box (10mm Auto HP)"
-	ammo_type = /obj/item/ammo_casing/b10mm/hp
-	max_ammo = 20
-
-/obj/item/ammo_box/b10mm/rubber
-	name = "ammo box (10mm Auto Rubber)"
-	ammo_type = /obj/item/ammo_casing/b10mm/rubber
-	max_ammo = 20

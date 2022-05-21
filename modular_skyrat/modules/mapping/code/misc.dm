@@ -31,5 +31,5 @@
 	desc = "A complex set of actuators, micro-seals and a simple guide on how to install it, This... \"Modification\" allows the plating around the joints to retract, giving minor protection and a bit better mobility."
 	removable = TRUE
 	complexity = 1
-	added_slowdown = -0.25
+	speed_added = 0.25
 	armor_values = list(MELEE = 20, BULLET = 25, LASER = 15, ENERGY = 20)
