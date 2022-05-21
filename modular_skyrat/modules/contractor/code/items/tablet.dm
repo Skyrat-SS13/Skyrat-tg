@@ -14,3 +14,6 @@
 	install_component(new /obj/item/computer_hardware/network_card)
 	install_component(new /obj/item/computer_hardware/card_slot)
 	install_component(new /obj/item/computer_hardware/printer/mini)
+
+/obj/item/modular_computer/tablet/syndicate_contract_uplink/UpdateDisplay()
+	return

@@ -105,12 +105,12 @@
 	open_flame()
 	update_brightness()
 
-/obj/item/bdsm_candle/AltClick(mob/user, obj/item/item)
+/obj/item/bdsm_candle/AltClick(mob/user)
 	. = ..()
 	if(!lit)
 		if(color_changed)
 			return
-		var/choice = show_radial_menu(user,src, candle_designs, custom_check = CALLBACK(src, .proc/check_menu, user, item), radius = 36, require_near = TRUE)
+		var/choice = show_radial_menu(user, src, candle_designs, custom_check = CALLBACK(src, .proc/check_menu, user), radius = 36, require_near = TRUE)
 		if(!choice)
 			return FALSE
 		current_color = choice
@@ -163,11 +163,11 @@
 				attacked.adjustPain(PAIN_DEFAULT)
 
 			else if(vagina && (attacked.is_bottomless() || vagina.visibility_preference == GENITAL_ALWAYS_SHOW))
-				message = (user == attacked) ? pick("drips some wax on themselves, letting it reach his vagina. He moans in pleasure.","drips some wax on the [attacked]'s pussy, he moans in pleasure") : pick("drips some wax on the [attacked]'s vagina, he moans in pleasure","tilts the candle. Wax slowly goes down, reaching the [attacked]'s vagina.","tilts the candle. Drops of wax, dripping right from [src] right on the [attacked]'s pussy, made him moan.")
+				message = (user == attacked) ? pick("drips some wax on themselves, letting it reach his vagina. He moans in pleasure.", "drips some wax on the [attacked]'s pussy, he moans in pleasure") : pick("drips some wax on the [attacked]'s vagina, he moans in pleasure", "tilts the candle. Wax slowly goes down, reaching the [attacked]'s vagina.", "tilts the candle. Drops of wax, dripping right from [src] right on the [attacked]'s pussy, made him moan.")
 				attacked.adjustPain(PAIN_DEFAULT)
 
 			else if(attacked.is_bottomless())
-				message = (user == attacked) ? pick("drips some wax on themselves, letting it reach his belly. He moans in pleasure.","drips some wax on the [attacked]'s tummy, he moans in pleasure") : pick("drips some wax on the [attacked]'s belly, he moans in pleasure","tilts the candle. Wax slowly goes down, reaching the [attacked]'s tummy.","tilts the candle. Drops of wax, dripping right from [src] right on the [attacked]'s groin, made him moan.")
+				message = (user == attacked) ? pick("drips some wax on themselves, letting it reach his belly. He moans in pleasure.", "drips some wax on the [attacked]'s tummy, he moans in pleasure") : pick("drips some wax on the [attacked]'s belly, he moans in pleasure", "tilts the candle. Wax slowly goes down, reaching the [attacked]'s tummy.", "tilts the candle. Drops of wax, dripping right from [src] right on the [attacked]'s groin, made him moan.")
 				attacked.adjustPain(PAIN_DEFAULT)
 
 			else
@@ -178,7 +178,7 @@
 			targeted_somewhere = TRUE
 			var/obj/item/organ/genital/breasts = attacked.getorganslot(ORGAN_SLOT_BREASTS)
 			if(attacked.is_topless() || breasts.visibility_preference == GENITAL_ALWAYS_SHOW)
-				message = (user == attacked) ? pick("drips some wax on [attacked.p_their()] [breasts ? "breasts" : "nipples"], releasing all [attacked.p_their()] lustness","drips some wax right on [attacked.p_their()] [breasts ? "tits" : "chest"], making [attacked.p_their()] feel faint.") : pick("pours the wax that is slowly dripping from [src] onto [attacked]'s [breasts ? "breasts" : "nipples"], [attacked.p_they()] shows pure enjoyment.","tilts the candle. Right in the moment when wax drips on [attacked]'s [breasts ? "breasts" : "nipples"], [attacked.p_they()] shivers","tilts the candle. Just when hot drops of wax fell on [attacked]'s [breasts ? "breasts" : "nipples"], [attacked.p_they()] quietly moans in pleasure")
+				message = (user == attacked) ? pick("drips some wax on [attacked.p_their()] [breasts ? "breasts" : "nipples"], releasing all [attacked.p_their()] lustness", "drips some wax right on [attacked.p_their()] [breasts ? "tits" : "chest"], making [attacked.p_their()] feel faint.") : pick("pours the wax that is slowly dripping from [src] onto [attacked]'s [breasts ? "breasts" : "nipples"], [attacked.p_they()] shows pure enjoyment.", "tilts the candle. Right in the moment when wax drips on [attacked]'s [breasts ? "breasts" : "nipples"], [attacked.p_they()] shivers", "tilts the candle. Just when hot drops of wax fell on [attacked]'s [breasts ? "breasts" : "nipples"], [attacked.p_they()] quietly moans in pleasure")
 				attacked.adjustPain(PAIN_DEFAULT * 0.66)
 
 			else
@@ -190,7 +190,7 @@
 	if(attacked.stat != DEAD)
 		attacked.do_jitter_animation()
 		if(prob(50))
-			attacked.emote(pick("twitch_s" ,"gasp","shiver"))
+			attacked.emote(pick("twitch_s" , "gasp", "shiver"))
 	user.visible_message(span_purple("[user] [message]!"))
 	playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/vax1.ogg',
 						'modular_skyrat/modules/modular_items/lewd_items/sounds/vax2.ogg'), 70, TRUE, ignore_walls = FALSE)

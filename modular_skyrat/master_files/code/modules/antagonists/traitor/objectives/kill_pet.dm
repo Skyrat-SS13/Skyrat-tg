@@ -72,13 +72,13 @@
 
 /obj/item/card/emag/one_shot/can_emag(atom/target, mob/user)
 	if(charges <= 0)
-		to_chat(user, span_warning("[src] is completely unresponsive."))
+		balloon_alert(user, "unresponsive!")
 		return FALSE
 	use_charge(user)
 	return TRUE
 
 /obj/item/card/emag/one_shot/proc/use_charge(mob/user)
-	to_chat(user, span_warning("[src] beeps softly as its charge runs out."))
+	balloon_alert(user, "out of charges!")
 	charges --
 
 

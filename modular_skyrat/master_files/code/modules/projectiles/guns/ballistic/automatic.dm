@@ -230,7 +230,7 @@
 	if(!user.canUseTopic(src))
 		return
 	cover_open = !cover_open
-	to_chat(user, span_notice("You [cover_open ? "open" : "close"] [src]'s cover."))
+	balloon_alert(user, "cover [cover_open ? "open" : "closed"]")
 	playsound(src, 'sound/weapons/gun/l6/l6_door.ogg', 60, TRUE)
 	update_appearance()
 
@@ -245,7 +245,7 @@
 
 /obj/item/gun/ballistic/automatic/l6_saw/afterattack(atom/target as mob|obj|turf, mob/living/user as mob|obj, flag, params)
 	if(cover_open)
-		to_chat(user, span_warning("[src]'s cover is open! Close it before firing!"))
+		balloon_alert(user, "cover open!")
 		return
 	else
 		. = ..()
@@ -257,13 +257,13 @@
 		..()
 		return
 	if (!cover_open)
-		to_chat(user, span_warning("[src]'s cover is closed! Open it before trying to remove the magazine!"))
+		balloon_alert(user, "cover closed!")
 		return
 	..()
 
 /obj/item/gun/ballistic/automatic/l6_saw/attackby(obj/item/attacking_item, mob/user, params)
 	if(!cover_open && istype(attacking_item, mag_type))
-		to_chat(user, span_warning("[src]'s dust cover prevents a magazine from being fit."))
+		balloon_alert(user, "dust closed!")
 		return
 	..()
 

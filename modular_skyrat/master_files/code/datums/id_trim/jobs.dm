@@ -70,7 +70,6 @@
 		ACCESS_RC_ANNOUNCE, ACCESS_HEADS, ACCESS_WEAPONS, ACCESS_ENTER_GENPOP, ACCESS_LEAVE_GENPOP
 		)
 	minimal_wildcard_access = list(ACCESS_CAPTAIN)
-	config_job = "blueshield"
 	template_access = list(ACCESS_CAPTAIN, ACCESS_CHANGE_IDS)
 
 /datum/id_trim/job/nanotrasen_consultant
@@ -87,7 +86,6 @@
 				ACCESS_THEATRE, ACCESS_CHAPEL_OFFICE, ACCESS_LIBRARY, ACCESS_RESEARCH, ACCESS_VAULT, ACCESS_MINING_STATION,
 				ACCESS_HOP, ACCESS_RC_ANNOUNCE, ACCESS_KEYCARD_AUTH, ACCESS_GATEWAY, ACCESS_MINERAL_STOREROOM, ACCESS_AUX_BASE, ACCESS_TELEPORTER, ACCESS_CENT_GENERAL)
 	minimal_wildcard_access = list(ACCESS_CAPTAIN, ACCESS_CENT_GENERAL)
-	config_job = "nanotrasen_consultant"
 	template_access = list(ACCESS_CAPTAIN, ACCESS_CHANGE_IDS)
 
 /datum/id_trim/job/security_medic
@@ -98,7 +96,6 @@
 	extra_access = list(ACCESS_FORENSICS)
 	minimal_access = list(ACCESS_SECURITY, ACCESS_BRIG_ENTRANCE, ACCESS_BRIG, ACCESS_COURT, ACCESS_WEAPONS, ACCESS_MECH_SECURITY, ACCESS_MINERAL_STOREROOM,
 	ACCESS_ENTER_GENPOP, ACCESS_LEAVE_GENPOP, ACCESS_MAINT_TUNNELS)
-	config_job = "security_medic"
 	template_access = list(ACCESS_CAPTAIN, ACCESS_HOS, ACCESS_CHANGE_IDS)
 
 /datum/id_trim/job/security_medic/New()
@@ -116,7 +113,6 @@
 	extra_access = list()
 	minimal_access = list(ACCESS_MAINT_TUNNELS, ACCESS_EVA, ACCESS_EXTERNAL_AIRLOCKS, ACCESS_TELEPORTER, ACCESS_GATEWAY, ACCESS_TECH_STORAGE,
 		ACCESS_CENT_GENERAL, ACCESS_RESEARCH, ACCESS_RND)
-	config_job = "expeditionary_trooper"
 
 /datum/id_trim/job/brigoff
 	assignment = "Corrections Officer"
@@ -126,7 +122,6 @@
 	extra_access = list()
 	minimal_access = list(ACCESS_SECURITY, ACCESS_BRIG_ENTRANCE, ACCESS_BRIG, ACCESS_COURT,
 				ACCESS_MAINT_TUNNELS, ACCESS_ENTER_GENPOP, ACCESS_LEAVE_GENPOP)
-	config_job = "brigoff"
 	template_access = list(ACCESS_CAPTAIN, ACCESS_HOS, ACCESS_CHANGE_IDS)
 	job = /datum/job/brigoff
 
@@ -137,6 +132,5 @@
 	sechud_icon_state = SECHUD_BARBER
 	extra_access = list()
 	minimal_access = list(ACCESS_THEATRE, ACCESS_MAINT_TUNNELS, ACCESS_BARBER, ACCESS_SERVICE)
-	config_job = "barber"
 	template_access = list(ACCESS_CAPTAIN, ACCESS_HOP, ACCESS_CHANGE_IDS)
 	job = /datum/job/barber
