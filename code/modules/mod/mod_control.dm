@@ -27,7 +27,6 @@
 	resistance_flags = NONE
 	max_heat_protection_temperature = SPACE_SUIT_MAX_TEMP_PROTECT
 	min_cold_protection_temperature = SPACE_SUIT_MIN_TEMP_PROTECT
-	permeability_coefficient = 0.01
 	siemens_coefficient = 0.5
 	alternate_worn_layer = HANDS_LAYER+0.1 //we want it to go above generally everything, but not hands
 	/// The MOD's theme, decides on some stuff like armor and statistics.
@@ -132,7 +131,6 @@
 		part.cold_protection = NONE
 		part.max_heat_protection_temperature = theme.max_heat_protection_temperature
 		part.min_cold_protection_temperature = theme.min_cold_protection_temperature
-		part.permeability_coefficient = theme.permeability_coefficient
 		part.siemens_coefficient = theme.siemens_coefficient
 	for(var/obj/item/part as anything in mod_parts)
 		RegisterSignal(part, COMSIG_ATOM_DESTRUCTION, .proc/on_part_destruction)
@@ -633,13 +631,12 @@
 		CRASH("[src] tried to set skin while active!")
 	skin = new_skin
 	var/list/used_skin = theme.skins[new_skin]
-	alternate_worn_layer = used_skin[CONTROL_LAYER]
+	if(used_skin[CONTROL_LAYER])
+		alternate_worn_layer = used_skin[CONTROL_LAYER]
 	var/list/skin_updating = mod_parts + src
 	for(var/obj/item/part as anything in skin_updating)
-		if(used_skin[MOD_ICON_OVERRIDE])
-			part.icon = used_skin[MOD_ICON_OVERRIDE]
-		if(used_skin[MOD_WORN_ICON_OVERRIDE])
-			part.worn_icon = used_skin[MOD_WORN_ICON_OVERRIDE]
+		part.icon = used_skin[MOD_ICON_OVERRIDE] || 'icons/obj/clothing/modsuit/mod_clothing.dmi'
+		part.worn_icon = used_skin[MOD_WORN_ICON_OVERRIDE] || 'icons/mob/clothing/modsuit/mod_clothing.dmi'
 		part.icon_state = "[skin]-[initial(part.icon_state)]"
 	for(var/obj/item/clothing/part as anything in mod_parts)
 		var/used_category

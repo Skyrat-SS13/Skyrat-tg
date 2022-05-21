@@ -423,3 +423,35 @@
 	name = "Servelyn Tails"
 	icon_state = "tiger2"
 	general_type = "feline"
+
+/datum/sprite_accessory/tails/mammal/wagging/kitsune/septuple
+	name = "Septuple Kitsune"
+	icon_state = "sevenkitsune"
+
+/datum/sprite_accessory/tails/mammal/wagging/kitsune/sabresune
+	name = "Sabresune"
+	icon_state = "sabresune"
+
+/datum/sprite_accessory/tails/mammal/wagging/segmented
+	name = "Segmented Tail"
+	icon_state = "segmentedtail"
+
+/datum/sprite_accessory/tails/mammal/wagging/big
+	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/tails_big.dmi'
+	dimension_x = 64
+	center = TRUE
+
+/datum/sprite_accessory/tails/mammal/wagging/big/shade
+	name = "Shade"
+	icon_state = "shadekin_large"
+	color_src = USE_MATRIXED_COLORS
+
+/datum/sprite_accessory/tails/mammal/wagging/big/shade_long
+	name = "Long Shade"
+	icon_state = "shadekinlong_large"
+	color_src = USE_MATRIXED_COLORS
+
+/datum/sprite_accessory/tails/mammal/wagging/big/shade_striped
+	name = "Striped Shade"
+	icon_state = "shadekinlongstriped_large"
+	color_src = USE_MATRIXED_COLORS

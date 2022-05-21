@@ -216,5 +216,4 @@
 /obj/item/clothing/under/costume/swagoutfit
 	supports_variations_flags = NONE
 
-/obj/item/clothing/under/rank/cargo/tech
-	supports_variations_flags = NONE
+

@@ -22,7 +22,7 @@
 		game_plane_master_controller.add_filter("quaalude_wave", 10, wave_filter(300, 300, 3, 0, WAVE_SIDEWAYS))
 	M.set_timed_status_effect(1 MINUTES * REM * delta_time, /datum/status_effect/drugginess)
 	M.adjust_timed_status_effect(1 MINUTES, /datum/status_effect/speech/slurring/drunk)
-	M.Dizzy(5 * REM * delta_time)
+	M.set_timed_status_effect(5 * REM * delta_time * 2 SECONDS, /datum/status_effect/dizziness, only_if_higher = TRUE)
 	M.adjustStaminaLoss(-5 * REM * delta_time, 0)
 	if(DT_PROB(3.5, delta_time))
 		M.emote(pick("laugh","drool"))

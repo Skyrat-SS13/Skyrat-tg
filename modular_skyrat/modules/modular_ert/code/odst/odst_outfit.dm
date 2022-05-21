@@ -5,7 +5,7 @@
 	glasses = /obj/item/clothing/glasses/hud/security/night
 	ears = /obj/item/radio/headset/headset_cent/alt
 	gloves = /obj/item/clothing/gloves/combat
-	l_hand = /obj/item/gun/energy/pitbull
+	l_hand = /obj/item/gun/ballistic/automatic/pitbull
 	belt = /obj/item/storage/belt/military/odst
 	back = /obj/item/mod/control/pre_equipped/responsory/security
 	backpack_contents = list(

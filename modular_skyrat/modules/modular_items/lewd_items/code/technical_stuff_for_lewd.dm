@@ -1,9 +1,4 @@
-//////////////////////////////////////////////////////////////////////////
-//THIS IS NOT HERESY, DO NOT TOUCH IT IN THE NAME OF GOD//////////////////
-//I made this file to prevent myself from touching normal files///////////
-//////////////////////////////////////////////////////////////////////////
-
-//moved from my old interactions file 'cause skyrats already did interactions
+// Moved from my old interactions file 'cause skyrats already did interactions
 
 #define REQUIRE_NONE 0
 #define REQUIRE_EXPOSED 1
@@ -16,9 +11,9 @@
 	var/has_breasts = FALSE
 	var/has_anus = FALSE
 
-/////////////////////////////////////
-//Looping sound for vibrating stuff//
-/////////////////////////////////////
+/*
+*	Looping sound for vibrating stuff
+*/
 
 /datum/looping_sound/vibrator
 	start_sound = 'modular_skyrat/modules/modular_items/lewd_items/sounds/bzzz-loop-1.ogg'
@@ -40,11 +35,11 @@
 /datum/looping_sound/vibrator/high
 	volume = 100
 
-////////////////////////////////////////////////////////////////////////////////
-//Boxes for vending machine, to spawn stuff with important cheap tools in pack//
-////////////////////////////////////////////////////////////////////////////////
+/*
+*	Boxes for vending machine, to spawn stuff with important cheap tools in pack
+*/
 
-//milking machine
+// Milking machine
 /obj/item/storage/box/milking_kit
 	name = "DIY Milking machine kit"
 	desc = "Contains everything you need to build your own milking machine!"
@@ -52,9 +47,9 @@
 /obj/item/storage/box/milking_kit/PopulateContents()
 	var/static/items_inside = list(
 		/obj/item/milking_machine/constructionkit = 1)
-	generate_items_inside(items_inside,src)
+	generate_items_inside(items_inside, src)
 
-//X-Stand
+// X-Stand
 /obj/item/storage/box/xstand_kit
 	name = "DIY X-Stand kit"
 	desc = "Contains everything you need to build your own X-stand!"
@@ -62,9 +57,9 @@
 /obj/item/storage/box/xstand_kit/PopulateContents()
 	var/static/items_inside = list(
 		/obj/item/x_stand_kit = 1)
-	generate_items_inside(items_inside,src)
+	generate_items_inside(items_inside, src)
 
-//BDSM bed
+// BDSM bed
 /obj/item/storage/box/bdsmbed_kit
 	name = "DIY BDSM bed kit"
 	desc = "Contains everything you need to build your own BDSM bed!"
@@ -72,9 +67,9 @@
 /obj/item/storage/box/bdsmbed_kit/PopulateContents()
 	var/static/items_inside = list(
 		/obj/item/bdsm_bed_kit = 1)
-	generate_items_inside(items_inside,src)
+	generate_items_inside(items_inside, src)
 
-//Striptease pole
+// Striptease pole
 /obj/item/storage/box/strippole_kit
 	name = "DIY stripper pole kit"
 	desc = "Contains everything you need to build your own stripper pole!"
@@ -82,9 +77,9 @@
 /obj/item/storage/box/strippole_kit/PopulateContents()
 	var/static/items_inside = list(
 		/obj/item/polepack = 1)
-	generate_items_inside(items_inside,src)
+	generate_items_inside(items_inside, src)
 
-//Shibari stand
+// Shibari stand
 /obj/item/storage/box/shibari_stand
 	name = "DIY Shibari stand kit"
 	desc = "Contains everything you need to build your own shibari stand!"
@@ -93,17 +88,17 @@
 	var/static/items_inside = list(
 		/obj/item/shibari_stand_kit = 1,
 		/obj/item/paper/shibari_kit_instructions = 1)
-	generate_items_inside(items_inside,src)
+	generate_items_inside(items_inside, src)
 
-//Paper instructions for shibari kit
+// Paper instructions for shibari kit
 
 /obj/item/paper/shibari_kit_instructions
 	info = "Hello! Congratulations on your purchase of the shibari kit by LustWish! Some newbies may get confused by our ropes, so we prepared a small instructions for you! First of all, you have to have a wrench to construct the stand itself. Secondly, you can use screwdrivers to change the color of your shibari stand. Just replace the plastic fittings! Thirdly, if you want to tie somebody to a bondage stand you need to fully tie their body, on both groin and chest!. To do that you need to use rope on body and then on groin of character, then you can just buckle them to the stand like any chair. Don't forget to have some ropes on your hand to actually tie them to the stand, as there's no ropes included with it! And that's it!"
-////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////This code is supposed to be placed in "code/modules/mob/living/carbon/human/inventory.dm"/////////////
-//If you are nice person you can transfer this part of code to it, but i didn't for modularisation reasons//
-//////////////////////////////////////////for ball mittens//////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+/*
+*	This code is supposed to be placed in "code/modules/mob/living/carbon/human/inventory.dm"
+*	If you are nice person you can transfer this part of code to it, but i didn't for modularisation reasons
+*/
 
 /mob/living/carbon/human/resist_restraints()
 	if(gloves?.breakouttime)
@@ -113,18 +108,16 @@
 	else
 		..()
 
-////////////////////////////////////////////////////////////////////////////////////////
-///////i needed this code for ballgag, because it doesn't muzzle, it kinda voxbox///////
-//wearer for moaning. So i really need it, don't touch or whole ballgag will be broken//
-/////////////////////////for ballgag mute audible emotes////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////
-
-//adding is_ballgagged() proc here. Hope won't break anything important.
-//This is kinda shitcode, but they said don't touch main code or they will break my knees.
-//i love my knees, please merge.
-
-//more shitcode can be found in code/datums/emotes.dm
-//in /datum/emote/proc/select_message_type(mob/user, intentional) proc. Sorry for that, i had no other choise.
+/*
+*	I needed this code for ballgag, because it doesn't muzzle, it kinda voxbox
+*	wearer for moaning. So i really need it, don't touch or whole ballgag will be broken
+*	for ballgag mute audible emotes
+*	adding is_ballgagged() proc here. Hope won't break anything important.
+*	This is kinda shitcode, but they said don't touch main code or they will break my knees.
+*	i love my knees, please merge.
+*	more shitcode can be found in code/datums/emotes.dm
+*	in /datum/emote/proc/select_message_type(mob/user, intentional) proc. Sorry for that, i had no other choise.
+*/
 
 //false for default
 /mob/proc/is_ballgagged()
@@ -145,10 +138,10 @@
 		return TRUE
 	return FALSE
 
-//////////////////////////////////////////////////////////////////////////////////
-/////////this shouldn't be put anywhere, get your dirty hands off!////////////////
-/////////////////////////////for dancing pole/////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////
+/*
+*	This shouldn't be put anywhere, get your dirty hands off!
+*	For dancing pole
+*/
 
 /atom
 	var/pseudo_z_axis
@@ -175,21 +168,21 @@
 		pseudo_z_axis = newloc.get_fake_z()
 		pixel_z = pseudo_z_axis
 
-//////////////////////////////////////////////////////////////////////////////////
-//this code needed to determine if human/m is naked in that part of body or not///
-//////////////You can you for your own stuff if you want, haha.///////////////////
-//////////////////////////////////////////////////////////////////////////////////
+/*
+*	This code needed to determine if the human is naked in that part of body or not
+*	You can you for your own stuff if you want, haha.
+*/
 
 
-///Are we wearing something that covers our chest?
+/// Are we wearing something that covers our chest?
 /mob/living/carbon/human/proc/is_topless()
 	return (!(wear_suit) || !(wear_suit.body_parts_covered & CHEST)) && (!(w_uniform) || !(w_uniform.body_parts_covered & CHEST))
 
-///Are we wearing something that covers our groin?
+/// Are we wearing something that covers our groin?
 /mob/living/carbon/human/proc/is_bottomless()
 	return (!(wear_suit) || !(wear_suit.body_parts_covered & GROIN)) && (!(w_uniform) || !(w_uniform.body_parts_covered & GROIN))
 
-///Are we wearing something that covers our shoes?
+/// Are we wearing something that covers our shoes?
 /mob/living/carbon/human/proc/is_barefoot()
 	return (!(wear_suit) || !(wear_suit.body_parts_covered & GROIN)) && (!(shoes) || !(shoes.body_parts_covered & FEET))
 
@@ -199,12 +192,12 @@
 /mob/living/carbon/human/proc/is_head_uncovered()
     return (head?.body_parts_covered & HEAD)
 
-/mob/living/carbon/human/proc/has_penis(nintendo = REQUIRE_ANY)
+/mob/living/carbon/human/proc/has_penis(required_state = REQUIRE_ANY)
 	if(issilicon(src) && has_penis)
 		return TRUE
 	var/obj/item/organ/genital/peepee = getorganslot(ORGAN_SLOT_PENIS)
 	if(peepee)
-		switch(nintendo)
+		switch(required_state)
 			if(REQUIRE_ANY)
 				return TRUE
 			if(REQUIRE_EXPOSED)
@@ -221,10 +214,10 @@
 				return TRUE
 	return FALSE
 
-/mob/living/carbon/human/proc/has_balls(nintendo = REQUIRE_ANY)
+/mob/living/carbon/human/proc/has_balls(required_state = REQUIRE_ANY)
 	var/obj/item/organ/genital/peepee = getorganslot(ORGAN_SLOT_TESTICLES)
 	if(peepee)
-		switch(nintendo)
+		switch(required_state)
 			if(REQUIRE_ANY)
 				return TRUE
 			if(REQUIRE_EXPOSED)
@@ -241,12 +234,12 @@
 				return TRUE
 	return FALSE
 
-/mob/living/carbon/human/proc/has_vagina(nintendo = REQUIRE_ANY)
+/mob/living/carbon/human/proc/has_vagina(required_state = REQUIRE_ANY)
 	if(issilicon(src) && has_vagina)
 		return TRUE
 	var/obj/item/organ/genital/peepee = getorganslot(ORGAN_SLOT_VAGINA)
 	if(peepee)
-		switch(nintendo)
+		switch(required_state)
 			if(REQUIRE_ANY)
 				return TRUE
 			if(REQUIRE_EXPOSED)
@@ -263,10 +256,10 @@
 				return TRUE
 	return FALSE
 
-/mob/living/carbon/human/proc/has_breasts(var/nintendo = REQUIRE_ANY)
+/mob/living/carbon/human/proc/has_breasts(required_state = REQUIRE_ANY)
 	var/obj/item/organ/genital/peepee = getorganslot(ORGAN_SLOT_BREASTS)
 	if(peepee)
-		switch(nintendo)
+		switch(required_state)
 			if(REQUIRE_ANY)
 				return TRUE
 			if(REQUIRE_EXPOSED)
@@ -283,12 +276,12 @@
 				return TRUE
 	return FALSE
 
-/mob/living/carbon/human/proc/has_anus(nintendo = REQUIRE_ANY)
+/mob/living/carbon/human/proc/has_anus(required_state = REQUIRE_ANY)
 	if(issilicon(src))
 		return TRUE
 	var/obj/item/organ/genital/peepee = getorganslot(ORGAN_SLOT_ANUS)
 	if(peepee)
-		switch(nintendo)
+		switch(required_state)
 			if(REQUIRE_ANY)
 				return TRUE
 			if(REQUIRE_EXPOSED)
@@ -304,71 +297,71 @@
 			else
 				return TRUE
 
-/mob/living/carbon/human/proc/has_arms(nintendo = REQUIRE_ANY)
-	var/handcount = 0
+/mob/living/carbon/human/proc/has_arms(required_state = REQUIRE_ANY)
+	var/hand_count = 0
 	var/covered = 0
-	var/iscovered = FALSE
-	for(var/obj/item/bodypart/l_arm/L in bodyparts)
-		handcount++
-	for(var/obj/item/bodypart/r_arm/R in bodyparts)
-		handcount++
+	var/is_covered = FALSE
+	for(var/obj/item/bodypart/l_arm/left_arm in bodyparts)
+		hand_count++
+	for(var/obj/item/bodypart/r_arm/right_arm in bodyparts)
+		hand_count++
 	if(get_item_by_slot(ITEM_SLOT_HANDS))
-		var/obj/item/clothing/gloves/G = get_item_by_slot(ITEM_SLOT_HANDS)
-		covered = G.body_parts_covered
+		var/obj/item/clothing/gloves/worn_gloves = get_item_by_slot(ITEM_SLOT_HANDS)
+		covered = worn_gloves.body_parts_covered
 	if(covered & HANDS)
-		iscovered = TRUE
-	switch(nintendo)
+		is_covered = TRUE
+	switch(required_state)
 		if(REQUIRE_ANY)
-			return handcount
+			return hand_count
 		if(REQUIRE_EXPOSED)
-			if(iscovered)
+			if(is_covered)
 				return FALSE
 			else
-				return handcount
+				return hand_count
 		if(REQUIRE_UNEXPOSED)
-			if(!iscovered)
+			if(!is_covered)
 				return FALSE
 			else
-				return handcount
+				return hand_count
 		else
-			return handcount
+			return hand_count
 
-/mob/living/carbon/human/proc/has_feet(nintendo = REQUIRE_ANY)
-	var/feetcount = 0
+/mob/living/carbon/human/proc/has_feet(required_state = REQUIRE_ANY)
+	var/feet_count = 0
 	var/covered = 0
-	var/iscovered = FALSE
-	for(var/obj/item/bodypart/l_leg/L in bodyparts)
-		feetcount++
-	for(var/obj/item/bodypart/r_leg/R in bodyparts)
-		feetcount++
+	var/is_covered = FALSE
+	for(var/obj/item/bodypart/l_leg/left_leg in bodyparts)
+		feet_count++
+	for(var/obj/item/bodypart/r_leg/right_leg in bodyparts)
+		feet_count++
 	if(!is_barefoot())
 		covered = TRUE
 	if(covered)
-		iscovered = TRUE
-	switch(nintendo)
+		is_covered = TRUE
+	switch(required_state)
 		if(REQUIRE_ANY)
-			return feetcount
+			return feet_count
 		if(REQUIRE_EXPOSED)
-			if(iscovered)
+			if(is_covered)
 				return FALSE
 			else
-				return feetcount
+				return feet_count
 		if(REQUIRE_UNEXPOSED)
-			if(!iscovered)
+			if(!is_covered)
 				return FALSE
 			else
-				return feetcount
+				return feet_count
 		else
-			return feetcount
+			return feet_count
 
 /mob/living/carbon/human/proc/get_num_feet()
 	return has_feet(REQUIRE_ANY)
 
-//weird procs go here
-/mob/living/carbon/human/proc/has_ears(nintendo = REQUIRE_ANY)
+// Weird procs go here
+/mob/living/carbon/human/proc/has_ears(required_state = REQUIRE_ANY)
 	var/obj/item/organ/peepee = getorganslot(ORGAN_SLOT_EARS)
 	if(peepee)
-		switch(nintendo)
+		switch(required_state)
 			if(REQUIRE_ANY)
 				return TRUE
 			if(REQUIRE_EXPOSED)
@@ -385,10 +378,10 @@
 				return TRUE
 	return FALSE
 
-/mob/living/carbon/human/proc/has_earsockets(nintendo = REQUIRE_ANY)
+/mob/living/carbon/human/proc/has_earsockets(required_state = REQUIRE_ANY)
 	var/obj/item/organ/peepee = getorganslot(ORGAN_SLOT_EARS)
 	if(!peepee)
-		switch(nintendo)
+		switch(required_state)
 			if(REQUIRE_ANY)
 				return TRUE
 			if(REQUIRE_EXPOSED)
@@ -405,10 +398,10 @@
 				return TRUE
 	return FALSE
 
-/mob/living/carbon/human/proc/has_eyes(nintendo = REQUIRE_ANY)
+/mob/living/carbon/human/proc/has_eyes(required_state = REQUIRE_ANY)
 	var/obj/item/organ/peepee = getorganslot(ORGAN_SLOT_EYES)
 	if(peepee)
-		switch(nintendo)
+		switch(required_state)
 			if(REQUIRE_ANY)
 				return TRUE
 			if(REQUIRE_EXPOSED)
@@ -425,10 +418,10 @@
 				return TRUE
 	return FALSE
 
-/mob/living/carbon/human/proc/has_eyesockets(nintendo = REQUIRE_ANY)
+/mob/living/carbon/human/proc/has_eyesockets(required_state = REQUIRE_ANY)
 	var/obj/item/organ/peepee = getorganslot(ORGAN_SLOT_EYES)
 	if(!peepee)
-		switch(nintendo)
+		switch(required_state)
 			if(REQUIRE_ANY)
 				return TRUE
 			if(REQUIRE_EXPOSED)
@@ -445,16 +438,16 @@
 				return TRUE
 	return FALSE
 
-//////////////////////////////////////////////////////////////////////////////////
-//////////////////////////This code needed for neckleash//////////////////////////
-//////////////////////////////////////////////////////////////////////////////////
+/*
+*	This code needed for neckleash
+*/
 
 /datum/component/redirect
 	dupe_mode = COMPONENT_DUPE_ALLOWED
 	var/list/signals
 	var/datum/callback/turfchangeCB
 
-/datum/component/redirect/Initialize(list/_signals, flags=NONE)
+/datum/component/redirect/Initialize(list/_signals, flags = NONE)
 	//It's not our job to verify the right signals are registered here, just do it.
 	if(!LAZYLEN(_signals))
 		return COMPONENT_INCOMPATIBLE
@@ -480,9 +473,9 @@
 	transfers += src
 	return turfchangeCB?.InvokeAsync(arglist(args))
 
-///////////////////////////////////////////////////////////////
-///This code needed for changing character's gender by chems///
-///////////////////////////////////////////////////////////////
+/*
+*	This code needed for changing character's gender by chems
+*/
 
 /mob/living/carbon/human/proc/set_gender(ngender = NEUTER, silent = FALSE, update_icon = TRUE, forced = FALSE)
 	if(forced || (!ckey || client?.prefs.read_preference(/datum/preference/toggle/erp/gender_change)))
@@ -506,24 +499,29 @@
 	if(update_icon)
 		update_body()
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////// INVENTORY SYSTEM EXTENTION //////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*
+*	INVENTORY SYSTEM EXTENTION
+*/
 
-//////////////////////////////
-// ERP INVENTORY ITEM SLOTS //
-//////////////////////////////
+/*
+*	ERP INVENTORY ITEM SLOTS
+*/
 
-// /// Vagina slot
-// #define ITEM_SLOT_VAGINA (1<<21)
-// /// Anus slot
-// #define ITEM_SLOT_ANUS (1<<22)
-// /// Nipples slot
-// #define ITEM_SLOT_NIPPLES (1<<23)
-// /// Penis slot
-// #define ITEM_SLOT_PENIS (1<<20)
+/*
+/// Vagina slot
+#define ITEM_SLOT_VAGINA (1<<21)
 
-//SLOT GROUP HELPERS
+/// Anus slot
+#define ITEM_SLOT_ANUS (1<<22)
+
+/// Nipples slot
+#define ITEM_SLOT_NIPPLES (1<<23)
+
+/// Penis slot
+#define ITEM_SLOT_PENIS (1<<20)
+*/
+
+// SLOT GROUP HELPERS
 #define ITEM_SLOT_ERP_INSERTABLE (ITEM_SLOT_VAGINA|ITEM_SLOT_ANUS)
 #define ITEM_SLOT_ERP_ATTACHABLE (ITEM_SLOT_NIPPLES|ITEM_SLOT_PENIS)
 
@@ -535,9 +533,9 @@
 #define STRIPPABLE_ITEM_NIPPLES "nipples"
 #define STRIPPABLE_ITEM_PEINS "penis"
 
-////////////////////////////////////
-// OUTFIT SYSTEM ERP SLOT SUPPORT //
-////////////////////////////////////
+/*
+*	OUTFIT SYSTEM ERP SLOT SUPPORT
+*/
 
 // Variables for ERP slots
 /datum/outfit
@@ -551,48 +549,48 @@
 	var/penis = null
 
 // Complementing the equipment procedure
-/datum/outfit/equip(mob/living/carbon/human/H, visualsOnly = FALSE)
+/datum/outfit/equip(mob/living/carbon/human/target, visualsOnly = FALSE)
 	. = ..()
 	if(.)
-		pre_equip(H, visualsOnly)
+		pre_equip(target, visualsOnly)
 		if(vagina)
-			H.equip_to_slot_or_del(new vagina(H),ITEM_SLOT_VAGINA, TRUE)
+			target.equip_to_slot_or_del(new vagina(target), ITEM_SLOT_VAGINA, TRUE)
 		if(anus)
-			H.equip_to_slot_or_del(new anus(H),ITEM_SLOT_ANUS, TRUE)
+			target.equip_to_slot_or_del(new anus(target), ITEM_SLOT_ANUS, TRUE)
 		if(nipples)
-			H.equip_to_slot_or_del(new nipples(H),ITEM_SLOT_NIPPLES, TRUE)
+			target.equip_to_slot_or_del(new nipples(target), ITEM_SLOT_NIPPLES, TRUE)
 		if(penis)
-			H.equip_to_slot_or_del(new penis(H),ITEM_SLOT_PENIS, TRUE)
-		post_equip(H, visualsOnly)
-		H.update_body()
-		H?.hud_used?.hidden_inventory_update(H)
+			target.equip_to_slot_or_del(new penis(target), ITEM_SLOT_PENIS, TRUE)
+		post_equip(target, visualsOnly)
+		target.update_body()
+		target?.hud_used?.hidden_inventory_update(target)
 	return TRUE
 
 
 // Support fingerprints when working with ERP slots
-/datum/outfit/apply_fingerprints(mob/living/carbon/human/H)
+/datum/outfit/apply_fingerprints(mob/living/carbon/human/target)
 	. = ..()
 	if(.)
-		if(!istype(H))
+		if(!istype(target))
 			return
-		if(H.vagina)
-			H.vagina.add_fingerprint(H,1)
-		if(H.anus)
-			H.anus.add_fingerprint(H,1)
-		if(H.nipples)
-			H.nipples.add_fingerprint(H,1)
-		if(H.penis)
-			H.penis.add_fingerprint(H,1)
+		if(target.vagina)
+			target.vagina.add_fingerprint(target, 1)
+		if(target.anus)
+			target.anus.add_fingerprint(target, 1)
+		if(target.nipples)
+			target.nipples.add_fingerprint(target, 1)
+		if(target.penis)
+			target.penis.add_fingerprint(target, 1)
 	return 1
 
 // Supplementing the data structure with ERP slot data
 /datum/outfit/get_json_data()
-	var/list/L = ..()
+	var/list/genital_list = ..()
 
-	L["vagina"] = vagina
-	L["anus"] = anus
-	L["nipples"] = nipples
-	L["penis"] = penis
+	genital_list["vagina"] = vagina
+	genital_list["anus"] = anus
+	genital_list["nipples"] = nipples
+	genital_list["penis"] = penis
 
 // Supplementing the data structure with ERP slot data
 /datum/outfit/load_from(list/outfit_data)
@@ -619,9 +617,9 @@
 	var/obj/item/nipples = null
 	var/obj/item/penis = null
 
-/////////////////////////////
-//    SEXTOY CLOTH TYPE    //
-/////////////////////////////
+/*
+* SEXTOY CLOTH TYPE
+*/
 
 /obj/item/clothing/sextoy
 	name = "sextoy"
@@ -654,9 +652,9 @@
 		return FALSE
 	return TRUE
 
-/////////////////////////////
-// ICON UPDATING EXTENTION //
-/////////////////////////////
+/*
+*	ICON UPDATING EXTENTION
+*/
 
 // Regenerate ERP icons to
 /mob/living/carbon/human/regenerate_icons()
@@ -683,19 +681,19 @@
 			update_observer_view(vagina)
 			hud_used.hidden_inventory_update(src)
 
-	//on_mob stuff
+	// on_mob stuff
 	remove_overlay(VAGINA_LAYER)
 
-	var/obj/item/clothing/sextoy/U = vagina
+	var/obj/item/clothing/sextoy/sex_toy = vagina
 
-	if(wear_suit && (wear_suit.flags_inv & HIDESEXTOY)) //you can add proper flags here if required
+	if(wear_suit && (wear_suit.flags_inv & HIDESEXTOY)) // You can add proper flags here if required
 		return
 
 	var/icon_file = vagina?.worn_icon
 	var/mutable_appearance/vagina_overlay
 
 	if(!vagina_overlay)
-		vagina_overlay = U?.build_worn_icon(default_layer = VAGINA_LAYER, default_icon_file = 'icons/mob/clothing/under/default.dmi', isinhands = FALSE, override_file = icon_file)
+		vagina_overlay = sex_toy?.build_worn_icon(default_layer = VAGINA_LAYER, default_icon_file = 'icons/mob/clothing/under/default.dmi', isinhands = FALSE, override_file = icon_file)
 
 	if(OFFSET_UNIFORM in dna.species.offset_features)
 		vagina_overlay?.pixel_x += dna.species.offset_features[OFFSET_UNIFORM][1]
@@ -722,19 +720,19 @@
 			update_observer_view(anus)
 			hud_used.hidden_inventory_update(src)
 
-	//on_mob stuff
+	// on_mob stuff
 	remove_overlay(ANUS_LAYER)
 
-	var/obj/item/clothing/sextoy/U = anus
+	var/obj/item/clothing/sextoy/sex_toy = anus
 
-	if(wear_suit && (wear_suit.flags_inv & HIDESEXTOY)) //you can add proper flags here if required
+	if(wear_suit && (wear_suit.flags_inv & HIDESEXTOY)) // You can add proper flags here if required
 		return
 
 	var/icon_file = anus?.worn_icon
 	var/mutable_appearance/anus_overlay
 
 	if(!anus_overlay)
-		anus_overlay = U?.build_worn_icon(default_layer = ANUS_LAYER, default_icon_file = 'icons/mob/clothing/under/default.dmi', isinhands = FALSE, override_file = icon_file)
+		anus_overlay = sex_toy?.build_worn_icon(default_layer = ANUS_LAYER, default_icon_file = 'icons/mob/clothing/under/default.dmi', isinhands = FALSE, override_file = icon_file)
 
 	if(OFFSET_UNIFORM in dna.species.offset_features)
 		anus_overlay?.pixel_x += dna.species.offset_features[OFFSET_UNIFORM][1]
@@ -761,19 +759,19 @@
 			update_observer_view(nipples)
 			hud_used.hidden_inventory_update(src)
 
-	//on_mob stuff
+	// on_mob stuff
 	remove_overlay(NIPPLES_LAYER)
 
-	var/obj/item/clothing/sextoy/U = nipples
+	var/obj/item/clothing/sextoy/sex_toy = nipples
 
-	if(wear_suit && (wear_suit.flags_inv & HIDESEXTOY)) //you can add proper flags here if required
+	if(wear_suit && (wear_suit.flags_inv & HIDESEXTOY)) // You can add proper flags here if required
 		return
 
 	var/icon_file = nipples?.worn_icon
 	var/mutable_appearance/nipples_overlay
 
 	if(!nipples_overlay)
-		nipples_overlay = U?.build_worn_icon(default_layer = NIPPLES_LAYER, default_icon_file = 'icons/mob/clothing/under/default.dmi', isinhands = FALSE, override_file = icon_file)
+		nipples_overlay = sex_toy?.build_worn_icon(default_layer = NIPPLES_LAYER, default_icon_file = 'icons/mob/clothing/under/default.dmi', isinhands = FALSE, override_file = icon_file)
 
 	if(OFFSET_UNIFORM in dna.species.offset_features)
 		nipples_overlay?.pixel_x += dna.species.offset_features[OFFSET_UNIFORM][1]
@@ -800,19 +798,19 @@
 			update_observer_view(penis)
 			hud_used.hidden_inventory_update(src)
 
-	//on_mob stuff
+	// on_mob stuff
 	remove_overlay(PENIS_LAYER)
 
-	var/obj/item/clothing/sextoy/U = penis
+	var/obj/item/clothing/sextoy/sex_toy = penis
 
-	if(wear_suit && (wear_suit.flags_inv & HIDESEXTOY)) //you can add proper flags here if required
+	if(wear_suit && (wear_suit.flags_inv & HIDESEXTOY)) // You can add proper flags here if required
 		return
 
 	var/icon_file = penis?.worn_icon
 	var/mutable_appearance/penis_overlay
 
 	if(!penis_overlay)
-		penis_overlay = U?.build_worn_icon(default_layer = PENIS_LAYER, default_icon_file = 'icons/mob/clothing/under/default.dmi', isinhands = FALSE, override_file = icon_file)
+		penis_overlay = sex_toy?.build_worn_icon(default_layer = PENIS_LAYER, default_icon_file = 'icons/mob/clothing/under/default.dmi', isinhands = FALSE, override_file = icon_file)
 
 	if(OFFSET_UNIFORM in dna.species.offset_features)
 		penis_overlay?.pixel_x += dna.species.offset_features[OFFSET_UNIFORM][1]
@@ -823,15 +821,15 @@
 	update_mutant_bodyparts()
 
 /*
-// Shoes update extention for supporting correctt removing shoe in sleepbag
+// Shoes update extention for supporting correct removing shoe in sleepbag
 /mob/living/carbon/human/update_inv_shoes()
 
 	if(istype(src.wear_suit, /obj/item/clothing/suit/straight_jacket/kinky_sleepbag))
 		remove_overlay(SHOES_LAYER)
 
 		if(dna.species.mutant_bodyparts["taur"])
-			var/datum/sprite_accessory/taur/S = GLOB.sprite_accessories["taur"][dna.species.mutant_bodyparts["taur"][MUTANT_INDEX_NAME]]
-			if(S.hide_legs)
+			var/datum/sprite_accessory/taur/taur_accessory = GLOB.sprite_accessories["taur"][dna.species.mutant_bodyparts["taur"][MUTANT_INDEX_NAME]]
+			if(taur_accessory.hide_legs)
 				return
 
 		if(num_legs<2)
@@ -846,7 +844,7 @@
 			if(client && hud_used && hud_used.hud_shown)
 				if(hud_used.inventory_shown)			//if the inventory is open
 					client.screen += shoes					//add it to client's screen
-			update_observer_view(shoes,1)
+			update_observer_view(shoes, 1)
 			var/icon_file = shoes.worn_icon
 			if((shoes.supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION) && (shoes.supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION))
 				icon_file = shoes.worn_icon_digi || 'modular_skyrat/master_files/icons/mob/clothing/feet_digi.dmi'
@@ -864,62 +862,65 @@
 	else
 		..()
 */
+
 // Updating vagina hud slot
-/mob/living/carbon/human/update_hud_vagina(obj/item/I)
-	I.screen_loc = ui_vagina
+/mob/living/carbon/human/update_hud_vagina(obj/item/contained_item)
+	contained_item.screen_loc = ui_vagina
 	if(client && src.hud_used?.hud_shown)
 		if(src.hud_used.inventory_shown)
-			client.screen += I
-	update_observer_view(I,1)
+			client.screen += contained_item
+	update_observer_view(contained_item, 1)
 
 // Updating anus hud slot
-/mob/living/carbon/human/update_hud_anus(obj/item/I)
-	I.screen_loc = ui_anus
+/mob/living/carbon/human/update_hud_anus(obj/item/contained_item)
+	contained_item.screen_loc = ui_anus
 	if(client && src.hud_used?.hud_shown)
 		if(src.hud_used.inventory_shown)
-			client.screen += I
-	update_observer_view(I,1)
+			client.screen += contained_item
+	update_observer_view(contained_item, 1)
 
 // Updating nipples hud slot
-/mob/living/carbon/human/update_hud_nipples(obj/item/I)
-	I.screen_loc = ui_nipples
+/mob/living/carbon/human/update_hud_nipples(obj/item/contained_item)
+	contained_item.screen_loc = ui_nipples
 	if(client && src.hud_used?.hud_shown)
 		if(src.hud_used.inventory_shown)
-			client.screen += I
-	update_observer_view(I,1)
+			client.screen += contained_item
+	update_observer_view(contained_item, 1)
 
 // Updating penis hud slot
-/mob/living/carbon/human/update_hud_penis(obj/item/I)
-	I.screen_loc = ui_penis
+/mob/living/carbon/human/update_hud_penis(obj/item/contained_item)
+	contained_item.screen_loc = ui_penis
 	if(client && src.hud_used?.hud_shown)
 		if(src.hud_used.inventory_shown)
-			client.screen += I
-	update_observer_view(I,1)
+			client.screen += contained_item
+	update_observer_view(contained_item, 1)
 
 // Update whether our back item appears on our hud.
-/mob/living/carbon/proc/update_hud_vagina(obj/item/I)
+/mob/living/carbon/proc/update_hud_vagina(obj/item/contained_item)
 	return
 
 // Update whether our back item appears on our hud.
-/mob/living/carbon/proc/update_hud_anus(obj/item/I)
+/mob/living/carbon/proc/update_hud_anus(obj/item/contained_item)
 	return
 
 // Update whether our back item appears on our hud.
-/mob/living/carbon/proc/update_hud_nipples(obj/item/I)
+/mob/living/carbon/proc/update_hud_nipples(obj/item/contained_item)
 	return
 
 // Update whether our back item appears on our hud.
-/mob/living/carbon/proc/update_hud_penis(obj/item/I)
+/mob/living/carbon/proc/update_hud_penis(obj/item/contained_item)
 	return
 
-//////////////////////////////////
-// UI CONSTRUCTION AND HANDLING //
-//////////////////////////////////
+/*
+*	UI CONSTRUCTION AND HANDLING
+*/
 
 // Add to hud class additional ERP variable boolean for check inventiry status (equipped or not)
 /datum/hud
-	var/list/erp_toggleable_inventory = list() //the screen ERP objects which can be hidden
-	var/ERP_inventory_shown = FALSE //Equipped item ERP inventory
+	/// The screen ERP objects which can be hidden
+	var/list/erp_toggleable_inventory = list()
+	/// Equipped item ERP inventory
+	var/ERP_inventory_shown = FALSE
 
 // Define additional button for ERP hud slots for expand/collapse like default inventory
 /atom/movable/screen/human/erp_toggle
@@ -929,25 +930,25 @@
 // ERP inventory button logic. Just expand/collapse
 /atom/movable/screen/human/erp_toggle/Click()
 
-	var/mob/targetmob = usr
+	var/mob/target_mob = usr
 
 	if(isobserver(usr))
 		if(ishuman(usr.client.eye) && (usr.client.eye != usr))
-			var/mob/M = usr.client.eye
-			targetmob = M
+			var/mob/target_eye = usr.client.eye
+			target_mob = target_eye
 
-	if(usr.hud_used.ERP_inventory_shown && targetmob.hud_used)
+	if(usr.hud_used.ERP_inventory_shown && target_mob.hud_used)
 		usr.hud_used.ERP_inventory_shown = FALSE
-		usr.client.screen -= targetmob.hud_used.erp_toggleable_inventory
+		usr.client.screen -= target_mob.hud_used.erp_toggleable_inventory
 	else
 		usr.hud_used.ERP_inventory_shown = TRUE
-		usr.client.screen += targetmob.hud_used.erp_toggleable_inventory
+		usr.client.screen += target_mob.hud_used.erp_toggleable_inventory
 
-	targetmob.hud_used.hidden_inventory_update(usr)
+	target_mob.hud_used.hidden_inventory_update(usr)
 
-////////////////////////////////////
-// STRIPPING ERP SYSTEM EXTENTION //
-////////////////////////////////////
+/*
+*	STRIPPING ERP SYSTEM EXTENTION
+*/
 
 // Extend stripping menus with ERP slots
 /datum/strippable_item/mob_item_slot/vagina
@@ -968,8 +969,8 @@
 
 // Obscuring for ERP slots
 /datum/strippable_item/mob_item_slot/vagina/get_obscuring(atom/source)
-	var/mob/M = source
-	if(M.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
+	var/mob/source_mob = source
+	if(source_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 		return isnull(get_item(source)) \
 			? STRIPPABLE_OBSCURING_NONE \
 			: STRIPPABLE_OBSCURING_HIDDEN
@@ -977,8 +978,8 @@
 		return STRIPPABLE_OBSCURING_COMPLETELY
 // Obscuring for ERP slots
 /datum/strippable_item/mob_item_slot/anus/get_obscuring(atom/source)
-	var/mob/M = source
-	if(M.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
+	var/mob/source_mob = source
+	if(source_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 		return isnull(get_item(source)) \
 			? STRIPPABLE_OBSCURING_NONE \
 			: STRIPPABLE_OBSCURING_HIDDEN
@@ -986,8 +987,8 @@
 		return STRIPPABLE_OBSCURING_COMPLETELY
 // Obscuring for ERP slots
 /datum/strippable_item/mob_item_slot/nipples/get_obscuring(atom/source)
-	var/mob/M = source
-	if(M.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
+	var/mob/source_mob = source
+	if(source_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 		return isnull(get_item(source)) \
 			? STRIPPABLE_OBSCURING_NONE \
 			: STRIPPABLE_OBSCURING_HIDDEN
@@ -995,8 +996,8 @@
 		return STRIPPABLE_OBSCURING_COMPLETELY
 // Obscuring for ERP slots
 /datum/strippable_item/mob_item_slot/penis/get_obscuring(atom/source)
-	var/mob/M = source
-	if(M.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
+	var/mob/source_mob = source
+	if(source_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 		return isnull(get_item(source)) \
 			? STRIPPABLE_OBSCURING_NONE \
 			: STRIPPABLE_OBSCURING_HIDDEN
@@ -1027,165 +1028,179 @@ GLOBAL_LIST_INIT(strippable_human_erp_items, create_erp_strippable_list(list(
 	if(CONFIG_GET(flag/disable_erp_preferences))
 		src.items -= GLOB.strippable_human_erp_items
 
-////////////////////////////////////////////////////////////////////
-// EXTENTIONS FOR SPRITE_ACCESSORY IS_HIDDEN CHECKS FOR ERP STUFF //
-////////////////////////////////////////////////////////////////////
+/*
+*	EXTENTIONS FOR SPRITE_ACCESSORY IS_HIDDEN CHECKS FOR ERP STUFF
+*/
 
 // Extends default proc check for hidden ears for supporting our sleepbag and catsuit to
-/datum/sprite_accessory/ears/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
-	// // Default proc code
-	// if(H.head && (H.head.flags_inv & HIDEHAIR) || (H.wear_mask && (H.wear_mask.flags_inv & HIDEHAIR)) || !HD)
-	// 	return TRUE
-	// return FALSE
+/datum/sprite_accessory/ears/is_hidden(mob/living/carbon/human/target_human, obj/item/bodypart/HD)
+	/*
+	// Default proc code
+	if(target_human.head && (target_human.head.flags_inv & HIDEHAIR) || (target_human.wear_mask && (target_human.wear_mask.flags_inv & HIDEHAIR)) || !HD)
+		//return TRUE
+	return FALSE
+	*/
 
 	// First lets proc default code
 	. = ..()
 	if(!.) // If true, ears already hidden
-		if(H.wear_suit && istype(H.wear_suit, /obj/item/clothing/suit/straight_jacket/kinky_sleepbag))
-			var/obj/item/clothing/suit/straight_jacket/kinky_sleepbag/S = H.wear_suit
-			if(S.state_thing == "inflated")
+		if(target_human.wear_suit && istype(target_human.wear_suit, /obj/item/clothing/suit/straight_jacket/kinky_sleepbag))
+			var/obj/item/clothing/suit/straight_jacket/kinky_sleepbag/sleeping_bag = target_human.wear_suit
+			if(sleeping_bag.state_thing == "inflated")
 				return TRUE
 			return FALSE
-		else if(H.w_uniform && istype(H.w_uniform, /obj/item/clothing/under/misc/latex_catsuit/))
+		else if(target_human.w_uniform && istype(target_human.w_uniform, /obj/item/clothing/under/misc/latex_catsuit/))
 			return FALSE
 		return FALSE
 	return TRUE // Return TRUE if superfuncitons already retuns TRUE
 
 // Extends default proc check for hidden frills for supporting our sleepbag and catsuit to
-/datum/sprite_accessory/frills/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
-	// // Default proc code
-	// if(H.head && (H.try_hide_mutant_parts || (H.head.flags_inv & HIDEEARS) || !HD || HD.status == BODYPART_ROBOTIC))
-	// 	return TRUE
-	// return FALSE
+/datum/sprite_accessory/frills/is_hidden(mob/living/carbon/human/target_human, obj/item/bodypart/HD)
+	/*
+	// Default proc code
+	if(target_human.head && (target_human.try_hide_mutant_parts || (target_human.head.flags_inv & HIDEEARS) || !HD || HD.status == BODYPART_ROBOTIC))
+		//return TRUE
+	return FALSE
+	*/
 
 	. = ..()
 	if(!.) // If true, frills already hidden
-		if(H.wear_suit && istype(H.wear_suit, /obj/item/clothing/suit/straight_jacket/kinky_sleepbag))
-			var/obj/item/clothing/suit/straight_jacket/kinky_sleepbag/S = H.wear_suit
-			if(S.state_thing == "inflated")
+		if(target_human.wear_suit && istype(target_human.wear_suit, /obj/item/clothing/suit/straight_jacket/kinky_sleepbag))
+			var/obj/item/clothing/suit/straight_jacket/kinky_sleepbag/sleeping_bag = target_human.wear_suit
+			if(sleeping_bag.state_thing == "inflated")
 				return TRUE
 			return FALSE
-		else if(H.w_uniform && istype(H.w_uniform, /obj/item/clothing/under/misc/latex_catsuit/))
+		else if(target_human.w_uniform && istype(target_human.w_uniform, /obj/item/clothing/under/misc/latex_catsuit/))
 			return FALSE
 		return FALSE
 	return TRUE // Return TRUE if superfuncitons already retuns TRUE
 
 // Extends default proc check for hidden head accessory for supporting our sleepbag and catsuit to
-/datum/sprite_accessory/head_accessory/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
-	// // Default proc code
-	// if(H.head && (H.head.flags_inv & HIDEHAIR) || (H.wear_mask && (H.wear_mask.flags_inv & HIDEHAIR)))
-	// 	return TRUE
-	// return FALSE
+/datum/sprite_accessory/head_accessory/is_hidden(mob/living/carbon/human/target_human, obj/item/bodypart/HD)
+	/*
+	// Default proc code
+	if(target_human.head && (target_human.head.flags_inv & HIDEHAIR) || (target_human.wear_mask && (target_human.wear_mask.flags_inv & HIDEHAIR)))
+		//return TRUE
+	return FALSE
+	*/
 
 	. = ..()
 	if(!.) // If true, head accessory already hidden
-		if(H.wear_suit && istype(H.wear_suit, /obj/item/clothing/suit/straight_jacket/kinky_sleepbag))
-			var/obj/item/clothing/suit/straight_jacket/kinky_sleepbag/S = H.wear_suit
-			if(S.state_thing == "inflated")
+		if(target_human.wear_suit && istype(target_human.wear_suit, /obj/item/clothing/suit/straight_jacket/kinky_sleepbag))
+			var/obj/item/clothing/suit/straight_jacket/kinky_sleepbag/sleeping_bag = target_human.wear_suit
+			if(sleeping_bag.state_thing == "inflated")
 				return TRUE
 			return FALSE
-		else if(H.w_uniform && istype(H.w_uniform, /obj/item/clothing/under/misc/latex_catsuit/))
+		else if(target_human.w_uniform && istype(target_human.w_uniform, /obj/item/clothing/under/misc/latex_catsuit/))
 			return FALSE
 		return FALSE
 	return TRUE // Return TRUE if superfuncitons already retuns TRUE
 
 // Extends default proc check for hidden horns for supporting our sleepbag and catsuit to
-/datum/sprite_accessory/horns/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
-	// // Default proc code
-	// if(H.head && (H.head.flags_inv & HIDEHAIR) || (H.wear_mask && (H.wear_mask.flags_inv & HIDEHAIR)) || !HD)
-	// 	return TRUE
-	// return FALSE
+/datum/sprite_accessory/horns/is_hidden(mob/living/carbon/human/target_human, obj/item/bodypart/HD)
+	/*
+	// Default proc code
+	if(target_human.head && (target_human.head.flags_inv & HIDEHAIR) || (target_human.wear_mask && (target_human.wear_mask.flags_inv & HIDEHAIR)) || !HD)
+		return TRUE
+	return FALSE
+	*/
 
 	. = ..()
 	if(!.) // If true, horns already hidden
-		if(H.wear_suit && istype(H.wear_suit, /obj/item/clothing/suit/straight_jacket/kinky_sleepbag))
-			var/obj/item/clothing/suit/straight_jacket/kinky_sleepbag/S = H.wear_suit
-			if(S.state_thing == "inflated")
+		if(target_human.wear_suit && istype(target_human.wear_suit, /obj/item/clothing/suit/straight_jacket/kinky_sleepbag))
+			var/obj/item/clothing/suit/straight_jacket/kinky_sleepbag/sleeping_bag = target_human.wear_suit
+			if(sleeping_bag.state_thing == "inflated")
 				return TRUE
 			return FALSE
-		else if(H.w_uniform && istype(H.w_uniform, /obj/item/clothing/under/misc/latex_catsuit/))
+		else if(target_human.w_uniform && istype(target_human.w_uniform, /obj/item/clothing/under/misc/latex_catsuit/))
 			return FALSE
 		return FALSE
 	return TRUE // Return TRUE if superfuncitons already retuns TRUE
 
 // Extends default proc check for hidden antenna for supporting our sleepbag and catsuit to
-/datum/sprite_accessory/antenna/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
-	// // Default proc code
-	// if(H.head && (H.head.flags_inv & HIDEHAIR) || (H.wear_mask && (H.wear_mask.flags_inv & HIDEHAIR)) || !HD)
-	// 	return TRUE
-	// return FALSE
+/datum/sprite_accessory/antenna/is_hidden(mob/living/carbon/human/target_human, obj/item/bodypart/HD)
+	/*
+	// Default proc code
+	if(target_human.head && (target_human.head.flags_inv & HIDEHAIR) || (target_human.wear_mask && (target_human.wear_mask.flags_inv & HIDEHAIR)) || !HD)
+		//return TRUE
+	return FALSE
+	*/
 
 	. = ..()
 	if(!.) // If true, antenna already hidden
-		if(H.wear_suit && istype(H.wear_suit, /obj/item/clothing/suit/straight_jacket/kinky_sleepbag))
-			var/obj/item/clothing/suit/straight_jacket/kinky_sleepbag/S = H.wear_suit
-			if(S.state_thing == "inflated")
+		if(target_human.wear_suit && istype(target_human.wear_suit, /obj/item/clothing/suit/straight_jacket/kinky_sleepbag))
+			var/obj/item/clothing/suit/straight_jacket/kinky_sleepbag/sleeping_bag = target_human.wear_suit
+			if(sleeping_bag.state_thing == "inflated")
 				return TRUE
 			return FALSE
-		else if(H.w_uniform && istype(H.w_uniform, /obj/item/clothing/under/misc/latex_catsuit/))
+		else if(target_human.w_uniform && istype(target_human.w_uniform, /obj/item/clothing/under/misc/latex_catsuit/))
 			return FALSE
 		return FALSE
 	return TRUE // Return TRUE if superfuncitons already retuns TRUE
 
 // Extends default proc check for hidden moth antenna for supporting our sleepbag and catsuit to
-/datum/sprite_accessory/moth_antennae/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
-	// // Default proc code
-	// if(H.head && (H.head.flags_inv & HIDEHAIR) || (H.wear_mask && (H.wear_mask.flags_inv & HIDEHAIR)) || !HD)
-	// 	return TRUE
-	// return FALSE
+/datum/sprite_accessory/moth_antennae/is_hidden(mob/living/carbon/human/target_human, obj/item/bodypart/HD)
+	/*
+	// Default proc code
+	if(target_human.head && (target_human.head.flags_inv & HIDEHAIR) || (target_human.wear_mask && (target_human.wear_mask.flags_inv & HIDEHAIR)) || !HD)
+		//return TRUE
+	return FALSE
+	*/
 
 	. = ..()
 	if(!.) // If true, moth antenna already hidden
-		if(H.wear_suit && istype(H.wear_suit, /obj/item/clothing/suit/straight_jacket/kinky_sleepbag))
-			var/obj/item/clothing/suit/straight_jacket/kinky_sleepbag/S = H.wear_suit
-			if(S.state_thing == "inflated")
+		if(target_human.wear_suit && istype(target_human.wear_suit, /obj/item/clothing/suit/straight_jacket/kinky_sleepbag))
+			var/obj/item/clothing/suit/straight_jacket/kinky_sleepbag/sleeping_bag = target_human.wear_suit
+			if(sleeping_bag.state_thing == "inflated")
 				return TRUE
 			return FALSE
-		else if(H.w_uniform && istype(H.w_uniform, /obj/item/clothing/under/misc/latex_catsuit/))
+		else if(target_human.w_uniform && istype(target_human.w_uniform, /obj/item/clothing/under/misc/latex_catsuit/))
 			return FALSE
 		return FALSE
 	return TRUE // Return TRUE if superfuncitons already retuns TRUE
 
 // Extends default proc check for hidden skrell hair for supporting our sleepbag and catsuit to
-/datum/sprite_accessory/skrell_hair/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
-	// // Default proc code
-	// if(H.head && (H.head.flags_inv & HIDEHAIR) || (H.wear_mask && (H.wear_mask.flags_inv & HIDEHAIR)))
-	// 	return TRUE
-	// return FALSE
+/datum/sprite_accessory/skrell_hair/is_hidden(mob/living/carbon/human/target_human, obj/item/bodypart/HD)
+	/*
+	// Default proc code
+	if(target_human.head && (target_human.head.flags_inv & HIDEHAIR) || (target_human.wear_mask && (target_human.wear_mask.flags_inv & HIDEHAIR)))
+		return TRUE
+	return FALSE
+	*/
 
 	. = ..()
 	if(!.) // If true, skrell hair already hidden
-		if(H.wear_suit && istype(H.wear_suit, /obj/item/clothing/suit/straight_jacket/kinky_sleepbag))
-			var/obj/item/clothing/suit/straight_jacket/kinky_sleepbag/S = H.wear_suit
-			if(S.state_thing == "inflated")
+		if(target_human.wear_suit && istype(target_human.wear_suit, /obj/item/clothing/suit/straight_jacket/kinky_sleepbag))
+			var/obj/item/clothing/suit/straight_jacket/kinky_sleepbag/sleeping_bag = target_human.wear_suit
+			if(sleeping_bag.state_thing == "inflated")
 				return TRUE
 			return FALSE
-		else if(H.w_uniform && istype(H.w_uniform, /obj/item/clothing/under/misc/latex_catsuit/))
+		else if(target_human.w_uniform && istype(target_human.w_uniform, /obj/item/clothing/under/misc/latex_catsuit/))
 			return FALSE
 		return FALSE
 	return TRUE // Return TRUE if superfuncitons already retuns TRUE
 
 // Extends default proc check for hidden skrell hair for supporting our sleepbag and catsuit to
-/datum/sprite_accessory/tails/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
+/datum/sprite_accessory/tails/is_hidden(mob/living/carbon/human/target_human, obj/item/bodypart/HD)
 
 	. = ..()
 	if(!.) // If true, tail already hidden
-		if(H.wear_suit && istype(H.wear_suit, /obj/item/clothing/suit/straight_jacket/kinky_sleepbag))
-			// var/obj/item/clothing/suit/straight_jacket/kinky_sleepbag/S = H.wear_suit
-			// if(S.state_thing == "inflated")
+		if(target_human.wear_suit && istype(target_human.wear_suit, /obj/item/clothing/suit/straight_jacket/kinky_sleepbag))
+			// var/obj/item/clothing/suit/straight_jacket/kinky_sleepbag/sleeping_bag = target_human.wear_suit
+			// if(sleeping_bag.state_thing == "inflated")
 			// 	return TRUE
 			return TRUE /* return FALSE */
-		else if(H.w_uniform && istype(H.w_uniform, /obj/item/clothing/under/misc/latex_catsuit/))
+		else if(target_human.w_uniform && istype(target_human.w_uniform, /obj/item/clothing/under/misc/latex_catsuit/))
 			return TRUE
 		return FALSE
 	return TRUE // Return TRUE if superfuncitons already retuns TRUE
 
 // Extends default proc check for hidden wings for supporting our sleepbag and catsuit to
-/datum/sprite_accessory/wings/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
+/datum/sprite_accessory/wings/is_hidden(mob/living/carbon/human/target_human, obj/item/bodypart/HD)
 	. = ..()
 	if(.)
 		return TRUE
-	if(H.wear_suit && istype(H.wear_suit, /obj/item/clothing/suit/straight_jacket/kinky_sleepbag))
+	if(target_human.wear_suit && istype(target_human.wear_suit, /obj/item/clothing/suit/straight_jacket/kinky_sleepbag))
 		return TRUE
 	return FALSE
 
@@ -1194,22 +1209,20 @@ GLOBAL_LIST_INIT(strippable_human_erp_items, create_erp_strippable_list(list(
 		return FALSE
 	..()
 
-//asdasda
-/datum/sprite_accessory/xenodorsal/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
-	if(H.wear_suit && istype(H.wear_suit, /obj/item/clothing/suit/straight_jacket/kinky_sleepbag))
+/datum/sprite_accessory/xenodorsal/is_hidden(mob/living/carbon/human/target_human, obj/item/bodypart/HD)
+	if(target_human.wear_suit && istype(target_human.wear_suit, /obj/item/clothing/suit/straight_jacket/kinky_sleepbag))
 		return TRUE
-	else if(H.w_uniform && istype(H.w_uniform, /obj/item/clothing/under/misc/latex_catsuit/))
+	else if(target_human.w_uniform && istype(target_human.w_uniform, /obj/item/clothing/under/misc/latex_catsuit/))
 		return TRUE
 	return FALSE
 
-//asdfasdfdasf
-/datum/sprite_accessory/xenohead/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
-	if(H.wear_suit && istype(H.wear_suit, /obj/item/clothing/suit/straight_jacket/kinky_sleepbag))
-		var/obj/item/clothing/suit/straight_jacket/kinky_sleepbag/S = H.wear_suit
-		if(S.state_thing == "inflated")
+/datum/sprite_accessory/xenohead/is_hidden(mob/living/carbon/human/target_human, obj/item/bodypart/HD)
+	if(target_human.wear_suit && istype(target_human.wear_suit, /obj/item/clothing/suit/straight_jacket/kinky_sleepbag))
+		var/obj/item/clothing/suit/straight_jacket/kinky_sleepbag/sleeping_bag = target_human.wear_suit
+		if(sleeping_bag.state_thing == "inflated")
 			return TRUE
 		return FALSE
-	else if(H.w_uniform && istype(H.w_uniform, /obj/item/clothing/under/misc/latex_catsuit/))
+	else if(target_human.w_uniform && istype(target_human.w_uniform, /obj/item/clothing/under/misc/latex_catsuit/))
 		return FALSE
 	return FALSE
 
@@ -1217,28 +1230,28 @@ GLOBAL_LIST_INIT(strippable_human_erp_items, create_erp_strippable_list(list(
 	. = ..()
 	if(client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 		if(client.mob.hud_used)
-			for(var/atom/movable/screen/human/erp_toggle/E in client.mob.hud_used.static_inventory)
-				if(istype(E, /atom/movable/screen/human/erp_toggle))
-					E.invisibility = 0
+			for(var/atom/movable/screen/human/erp_toggle/toggle in client.mob.hud_used.static_inventory)
+				if(istype(toggle, /atom/movable/screen/human/erp_toggle))
+					toggle.invisibility = 0
 	else
 		if(ishuman(client.mob))
-			var/mob/living/carbon/human/M = client.mob
-			if(M.vagina != null)
-				M.dropItemToGround(M.vagina, TRUE, M.loc, TRUE, FALSE, TRUE)
-			if(M.anus != null)
-				M.dropItemToGround(M.anus, TRUE, M.loc, TRUE, FALSE, TRUE)
-			if(M.nipples != null)
-				M.dropItemToGround(M.nipples, TRUE, M.loc, TRUE, FALSE, TRUE)
-			if(M.penis != null)
-				M.dropItemToGround(M.penis, TRUE, M.loc, TRUE, FALSE, TRUE)
+			var/mob/living/carbon/human/target = client.mob
+			if(target.vagina != null)
+				target.dropItemToGround(target.vagina, TRUE, target.loc, TRUE, FALSE, TRUE)
+			if(target.anus != null)
+				target.dropItemToGround(target.anus, TRUE, target.loc, TRUE, FALSE, TRUE)
+			if(target.nipples != null)
+				target.dropItemToGround(target.nipples, TRUE, target.loc, TRUE, FALSE, TRUE)
+			if(target.penis != null)
+				target.dropItemToGround(target.penis, TRUE, target.loc, TRUE, FALSE, TRUE)
 		if(client.mob.hud_used)
 			if(client.mob.hud_used.ERP_inventory_shown)
 				client.mob.hud_used.ERP_inventory_shown = FALSE
 				client.screen -= client.mob.hud_used.erp_toggleable_inventory
 
-			for(var/atom/movable/screen/human/erp_toggle/E in client.mob.hud_used.static_inventory)
-				if(istype(E, /atom/movable/screen/human/erp_toggle))
-					E.invisibility = 100
+			for(var/atom/movable/screen/human/erp_toggle/erp_button in client.mob.hud_used.static_inventory)
+				if(istype(erp_button, /atom/movable/screen/human/erp_toggle))
+					erp_button.invisibility = 100
 
 
 	client.mob.hud_used.hidden_inventory_update(client.mob)

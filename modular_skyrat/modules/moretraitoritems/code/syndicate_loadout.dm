@@ -131,7 +131,7 @@
 
 /obj/item/storage/box/syndie_kit/loadout/bee/PopulateContents()
 	new /obj/item/clothing/suit/hooded/bee_costume(src)
-	new /obj/item/clothing/mask/animal/rat/bee(src)
+	new /obj/item/clothing/mask/animal/small/bee(src)
 	new /obj/item/storage/belt/fannypack/yellow(src)
 	new /obj/item/grenade/spawnergrenade/buzzkill(src)
 	new /obj/item/grenade/spawnergrenade/buzzkill(src)
