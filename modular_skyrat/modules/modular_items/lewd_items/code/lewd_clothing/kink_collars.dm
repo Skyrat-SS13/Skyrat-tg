@@ -135,7 +135,7 @@
 	if(!istype(attack_item))
 		return
 	if(attack_item.key_id == REF(src))
-		IsLocked((locked ? FALSE : TRUE),user)
+		IsLocked((locked ? FALSE : TRUE), user)
 		return
 	to_chat(user, span_warning("This isn't the correct key!"))
 
@@ -210,7 +210,7 @@
 		return
 	var/obj/item/clothing/neck/kink_collar/locked/collar = target.wear_neck
 	if(REF(collar) == src.key_id)
-		collar.IsLocked((collar.locked ? FALSE : TRUE),user)
+		collar.IsLocked((collar.locked ? FALSE : TRUE), user)
 	else
 		to_chat(user, span_warning("This isn't the correct key!"))
 
@@ -231,7 +231,7 @@
 		collar.IsLocked(FALSE, user)
 		if(prob(33)) //chance to get damage
 			to_chat(user, span_warning("You successfully cut away the lock, but gave [target.name] several cuts in the process!"))
-			target.apply_damage(rand(1,4), BRUTE, BODY_ZONE_HEAD, wound_bonus=10)
+			target.apply_damage(rand(1, 4), BRUTE, BODY_ZONE_HEAD, wound_bonus = 10)
 		else
 			to_chat(user, span_warning("You successfully cut away the lock!"))
 	else
@@ -240,11 +240,11 @@
 		if(prob(33))
 			to_chat(user, span_warning("You successfully cut away the lock, but gave yourself several cuts in the process!"))
 			collar.broken = TRUE
-			collar.IsLocked(FALSE,user)
-			target.apply_damage(rand(2,4), BRUTE, BODY_ZONE_HEAD, wound_bonus=10)
+			collar.IsLocked(FALSE, user)
+			target.apply_damage(rand(2, 4), BRUTE, BODY_ZONE_HEAD, wound_bonus = 10)
 		else
 			to_chat(user, span_warning("You fail to cut away the lock, cutting yourself in the process!"))
-			target.apply_damage(rand(3,5), BRUTE, BODY_ZONE_HEAD, wound_bonus=30)
+			target.apply_damage(rand(3, 5), BRUTE, BODY_ZONE_HEAD, wound_bonus = 30)
 
 /////////////////////////
 ///MIND CONTROL COLLAR///
