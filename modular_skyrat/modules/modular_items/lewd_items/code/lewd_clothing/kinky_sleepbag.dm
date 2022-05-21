@@ -20,7 +20,7 @@
 	var/time = 2
 	var/tt
 	var/static/list/bag_colors
-	flags_inv = HIDEHEADGEAR|HIDENECK|HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDESUITSTORAGE|HIDEHAIR|HIDESEXTOY
+	flags_inv = HIDEHEADGEAR|HIDENECK|HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT|HIDESUITSTORAGE|HIDEHAIR|HIDESEXTOY|HIDETAIL // SKYRAT EDIT ADDITION - HIDETAIL
 	strip_delay = 300
 	breakouttime = 1200 //do not touch. First - It's contraband item, Second - It's damn expensive, Third - it's ERP item, so you can't legally use it on characters without enabled non-con or erp pref.
 	var/static/list/bag_inf_states
