@@ -56,34 +56,11 @@
 #define ACCESS_EXTERNAL_AIRLOCKS "external airlocks"
 #define ACCESS_CE "ce"
 
-<<<<<<< HEAD
 // SKYRAT EDIT: Start - Modular Access (See Blueshield module for theirs)
-#define ACCESS_ENTER_GENPOP 80
-#define ACCESS_LEAVE_GENPOP 81
+#define ACCESS_ENTER_GENPOP "enter_genpop"
+#define ACCESS_LEAVE_GENPOP "leave_genpop"
 // SKYRAT EDIT: End - Modular Access
 
-	//BEGIN CENTCOM ACCESS
-	/*Should leave plenty of room if we need to add more access levels.
-	Mostly for admin fun times.*/
-/// General facilities. CentCom ferry.
-#define ACCESS_CENT_GENERAL 101
-/// Thunderdome.
-#define ACCESS_CENT_THUNDER 102
-/// Special Ops. Captain's display case, Marauder and Seraph mechs.
-#define ACCESS_CENT_SPECOPS 103
-/// Medical/Research
-#define ACCESS_CENT_MEDICAL 104
-/// Living quarters.
-#define ACCESS_CENT_LIVING 105
-/// Generic storage areas.
-#define ACCESS_CENT_STORAGE 106
-/// Teleporter.
-#define ACCESS_CENT_TELEPORTER 107
-/// Captain's office/ID comp/AI.
-#define ACCESS_CENT_CAPTAIN 109
-/// The non-existent CentCom Bar
-#define ACCESS_CENT_BAR 110
-=======
 /// Medical general access
 #define ACCESS_MEDICAL "medical"
 #define ACCESS_MORGUE "morgue"
@@ -92,8 +69,6 @@
 #define ACCESS_SURGERY "surgery"
 ///Allows access to chemistry factory areas on compatible maps
 #define ACCESS_PLUMBING "plumbing"
->>>>>>> 8440d20981d ([MDB IGNORE] Reformats Access IDs for accessibility and futureproofing (#67002))
-
 #define ACCESS_CMO "cmo"
 #define ACCESS_VIROLOGY "virology"
 #define ACCESS_PSYCHOLOGY "psychology"
