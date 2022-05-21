@@ -260,7 +260,7 @@
 /obj/item/ammo_casing/b577
 	name = ".577 Snider bullet casing"
 	desc = "A .577 Snider bullet casing."
-	caliber = ".577 Snider"
+	caliber = CALIBER_B577
 	projectile_type = /obj/projectile/bullet/advanced/b577
 
 /obj/projectile/bullet/advanced/b577
