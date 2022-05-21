@@ -228,7 +228,7 @@
 	var/max_mode = fire_select_modes.len
 
 	if(max_mode <= 1)
-		to_chat(user, span_warning("[src] is not capable of switching firemodes!"))
+		balloon_alert(user, "only one firemode!")
 		return
 
 	fire_select_index = 1 + fire_select_index % max_mode //Magic math to cycle through this shit!
@@ -240,16 +240,16 @@
 			burst_size = 1
 			fire_delay = 0
 			SEND_SIGNAL(src, COMSIG_GUN_AUTOFIRE_DESELECTED, user)
-			to_chat(user, span_notice("You switch [src] to semi-automatic."))
+			balloon_alert(user, "semi-automatic")
 		if(SELECT_BURST_SHOT)
 			burst_size = initial(burst_size)
 			fire_delay = initial(fire_delay)
 			SEND_SIGNAL(src, COMSIG_GUN_AUTOFIRE_DESELECTED, user)
-			to_chat(user, span_notice("You switch [src] to [burst_size]-round burst."))
+			balloon_alert(user, "[burst_size]-round burst")
 		if(SELECT_FULLY_AUTOMATIC)
 			burst_size = 1
 			SEND_SIGNAL(src, COMSIG_GUN_AUTOFIRE_SELECTED, user)
-			to_chat(user, span_notice("You switch [src] to automatic."))
+			balloon_alert(user, "automatic")
 
 	playsound(user, 'sound/weapons/empty.ogg', 100, TRUE)
 	update_appearance()
@@ -273,9 +273,8 @@
 	return TRUE
 
 /obj/item/gun/proc/shoot_with_empty_chamber(mob/living/user as mob|obj)
-	to_chat(user, span_danger("*click*"))
+	balloon_alert(user, "*click*")
 	playsound(src, dry_fire_sound, 30, TRUE)
-
 
 /obj/item/gun/proc/shoot_live_shot(mob/living/user, pointblank = 0, atom/pbtarget = null, message = 1)
 	if(recoil)
@@ -310,10 +309,10 @@
 
 /obj/item/gun/attack_secondary(mob/living/victim, mob/living/user, params)
 	if(user.GetComponent(/datum/component/gunpoint))
-		to_chat(user, span_warning("You are already holding someone up!"))
+		balloon_alert(user, "already holding someone up!")
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	if(user == victim)
-		to_chat(user, span_warning("You can't hold yourself up!"))
+		balloon_alert(user, "can't hold yourself up!")
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 	user.AddComponent(/datum/component/gunpoint, victim, src)
@@ -362,7 +361,7 @@
 
 	var/obj/item/bodypart/other_hand = user.has_hand_for_held_index(user.get_inactive_hand_index()) //returns non-disabled inactive hands
 	if(weapon_weight == WEAPON_HEAVY && (user.get_inactive_held_item() || !other_hand))
-		to_chat(user, span_warning("You need two hands to fire [src]!"))
+		balloon_alert(user, "need two hands!")
 		return
 	//DUAL (or more!) WIELDING
 	var/bonus_spread = 0
@@ -395,7 +394,7 @@
 	if(!handle_pins(user))
 		return FALSE
 	if(has_gun_safety && safety)
-		to_chat(user, span_warning("The safety is on!"))
+		balloon_alert(user, "safety on!")
 		return FALSE
 
 /obj/item/gun/proc/toggle_safety(mob/user, override)
@@ -425,7 +424,7 @@
 			pin.auth_fail(user)
 			return FALSE
 	else
-		to_chat(user, span_warning("[src]'s trigger is locked. This weapon doesn't have a firing pin installed!"))
+		balloon_alert(user, "no firing pin!")
 	return FALSE
 
 /obj/item/gun/proc/recharge_newshot()
@@ -442,7 +441,7 @@
 	if(chambered?.loaded_projectile)
 		if(HAS_TRAIT(user, TRAIT_PACIFISM)) // If the user has the pacifist trait, then they won't be able to fire [src] if the round chambered inside of [src] is lethal.
 			if(chambered.harmful) // Is the bullet chambered harmful?
-				to_chat(user, span_warning("[src] is lethally chambered! You don't want to risk harming anyone..."))
+				balloon_alert(user, "lethally chambered!")
 				return
 		if(randomspread)
 			sprd = round((rand(0, 1) - 0.5) * DUALWIELD_PENALTY_EXTRA_MULTIPLIER * (randomized_gun_spread + randomized_bonus_spread))
@@ -501,7 +500,7 @@
 		if(chambered)
 			if(HAS_TRAIT(user, TRAIT_PACIFISM)) // If the user has the pacifist trait, then they won't be able to fire [src] if the round chambered inside of [src] is lethal.
 				if(chambered.harmful) // Is the bullet chambered harmful?
-					to_chat(user, span_warning("[src] is lethally chambered! You don't want to risk harming anyone..."))
+					balloon_alert(user, "lethally chambered!")
 					return
 			sprd = round((rand(0, 1) - 0.5) * DUALWIELD_PENALTY_EXTRA_MULTIPLIER * (randomized_gun_spread + randomized_bonus_spread))
 			before_firing(target, user)
@@ -558,7 +557,7 @@
 		if(!gun_light)
 			if(!user.transferItemToLoc(attacking_item, src))
 				return
-			to_chat(user, span_notice("You click [attaching_seclite] into place on [src]."))
+			balloon_alert(user, "[attaching_seclite] attached")
 			set_gun_light(attaching_seclite)
 			update_gunlight()
 			alight = new(src)
@@ -570,7 +569,7 @@
 			return ..()
 		if(!user.transferItemToLoc(attacking_item, src))
 			return
-		to_chat(user, span_notice("You attach [attaching_knife] to [src]'s bayonet lug."))
+		balloon_alert(user, "[attaching_knife] attached")
 		bayonet = attaching_knife
 		update_appearance()
 
@@ -600,7 +599,7 @@
 
 	else if(pin && user.is_holding(src))
 		if(!pin.can_remove)
-			to_chat(user, span_warning("You can't remove this firing pin!"))
+			balloon_alert(user, "pin can't be removed!")
 			return
 		user.visible_message(span_warning("[user] attempts to remove [pin] from [src] with [tool]."),
 		span_notice("You attempt to remove [pin] from [src]. (It will take [DisplayTimeText(FIRING_PIN_REMOVAL_DELAY)].)"), null, 3)
@@ -617,7 +616,7 @@
 	if(.)
 		return
 	if(!pin.can_remove)
-		to_chat(user, span_warning("You can't remove this firing pin!"))
+		balloon_alert(user, "pin can't be removed!")
 		return
 	if(!user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
 		return
@@ -639,7 +638,7 @@
 	if(!user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
 		return
 	if(!pin.can_remove)
-		to_chat(user, span_warning("You can't remove this firing pin!"))
+		balloon_alert(user, "pin can't be removed!")
 		return
 	if(pin && user.is_holding(src))
 		user.visible_message(span_warning("[user] attempts to remove [pin] from [src] with [tool]."),
@@ -655,7 +654,7 @@
 /obj/item/gun/proc/remove_gun_attachment(mob/living/user, obj/item/tool_item, obj/item/item_to_remove, removal_verb)
 	if(tool_item)
 		tool_item.play_tool_sound(src)
-	to_chat(user, span_notice("You [removal_verb ? removal_verb : "remove"] [item_to_remove] from [src]."))
+	balloon_alert(user, "[item_to_remove] removed")
 	item_to_remove.forceMove(drop_location())
 
 	if(Adjacent(user) && !issilicon(user))
@@ -725,7 +724,7 @@
 	var/mob/living/carbon/human/user = usr
 	gun_light.on = !gun_light.on
 	gun_light.update_brightness()
-	to_chat(user, span_notice("You toggle the gunlight [gun_light.on ? "on":"off"]."))
+	balloon_alert(user, "gunlight [gun_light.on ? "on" : "off"]")
 
 	playsound(user, 'sound/weapons/empty.ogg', 100, TRUE)
 	update_gunlight()
@@ -814,7 +813,7 @@
 /obj/item/gun/emag_act(mob/user, obj/item/card/emag/emag_card)
 	. = ..()
 	if(!pin.can_remove)
-		to_chat(user, span_notice("You short out the gun's firing pin, allowing it to be removed!"))
+		balloon_alert(user, "firing pin shorted!")
 		pin.can_remove = TRUE
 		if(!(pin.obj_flags & EMAGGED))
 			pin.obj_flags |= EMAGGED
