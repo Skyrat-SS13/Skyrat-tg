@@ -57,6 +57,17 @@
 	charge_sections = 5
 	has_gun_safety = FALSE
 
+/// Security Medic Disabler
+//This is just a disabler but it has the salve mode from the Medigun on it.
+
+/obj/item/gun/energy/disabler/secmed
+	name = "VeyMed field medic grade disabler"
+	desc = "A modified version of the disabler, outfitted to shoot healing salve projectiles in additon to having a standard disable mode."
+	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/guns/projectile.dmi'
+	icon_state = "secmed-disabler"
+	ammo_type = list(/obj/item/ammo_casing/energy/disabler/skyrat, /obj/item/ammo_casing/energy/medical/utility/salve/secmed)
+	modifystate = TRUE
+
 //////////////////////
 // Bounce Disabler  //
 //////////////////////

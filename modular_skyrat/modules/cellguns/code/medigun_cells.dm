@@ -410,6 +410,10 @@
 	select_name = "salve"
 	select_color = "#00af57"
 
+/// The special version of the projectile for the Sec Medic's disabler.
+/obj/item/ammo_casing/energy/medical/utility/salve/secmed
+	e_cost = 2000 //Twice as much as a disabler shot.
+
 /obj/projectile/energy/medical/utility/salve
 	name = "salve globule"
 	icon_state = "glob_projectile"
