@@ -25,3 +25,6 @@
 
 /// The caliber used by the AK-25
 #define CALIBER_732x29 "a732x29"
+
+/// The caliber used by the Ripper gen2
+#define CALIBER_B577 ".577 Snider"
