@@ -28,11 +28,6 @@
 	..()
 	changeling.purchased_powers -= src
 	Remove(user)
-
-	//var/newmob = user.humanize()
-
-	//changeling.transform(newmob, chosen_prof)
-	//return TRUE
 	
 	// SKYRAT EDIT START
 	var/datum/dna/chosen_dna = chosen_prof.dna
