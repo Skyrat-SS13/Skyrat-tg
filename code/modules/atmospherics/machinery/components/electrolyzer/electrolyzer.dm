@@ -138,24 +138,14 @@
 	update_appearance()
 	return TRUE
 
-/obj/machinery/electrolyzer/crowbar_act(mob/living/user, obj/item/tool)
-	return default_deconstruction_crowbar(tool)
-
-<<<<<<< HEAD
-/obj/machinery/electrolyzer/default_unfasten_wrench(mob/user, obj/item/wrench, time)
-	. = ..()
-	if(anchored)
-		update_use_power(ACTIVE_POWER_USE)
-	else
-		update_use_power(NO_POWER_USE)
-
 /obj/machinery/electrolyzer/wrench_act(mob/living/user, obj/item/tool)
 	. = ..()
 	default_unfasten_wrench(user, tool)
 	return TOOL_ACT_TOOLTYPE_SUCCESS
 
-=======
->>>>>>> 8dd0deb0e56 (Fix anchored crystallizer using power even when off (#66935))
+/obj/machinery/electrolyzer/crowbar_act(mob/living/user, obj/item/tool)
+	return default_deconstruction_crowbar(tool)
+
 /obj/machinery/electrolyzer/attackby(obj/item/I, mob/user, params)
 	add_fingerprint(user)
 	if(istype(I, /obj/item/stock_parts/cell))
