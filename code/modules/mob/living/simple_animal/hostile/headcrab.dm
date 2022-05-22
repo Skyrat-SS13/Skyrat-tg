@@ -81,11 +81,11 @@
 	if(current_dna.features["legs"])
 		LAZYREMOVE(current_dna.features, "legs")
 	spawned_monkey.set_species(/datum/species/monkey)
-	for(var/scar in user.all_scars)
+	for(var/scar in spawned_monkey.all_scars)
 		var/datum/scar/iter_scar = scar
 		if(iter_scar.fake)
 			qdel(iter_scar)
-	user.regenerate_icons()
+	spawned_monkey.regenerate_icons()
 	// SKYRAT EDIT END
 
 	for(var/obj/item/organ/I in src)
