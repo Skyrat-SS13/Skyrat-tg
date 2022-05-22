@@ -69,7 +69,24 @@
 		qdel(src)
 
 /obj/item/organ/body_egg/changeling_egg/proc/Pop()
-	var/mob/living/carbon/human/species/monkey/spawned_monkey = new(owner)
+	// SKYRAT EDIT START
+	var/mob/living/carbon/human/spawned_monkey = new(owner)
+	var/datum/dna/current_dna = spawned_monkey.dna
+	for(var/key in current_dna.mutant_bodyparts)
+		LAZYSET(current_dna.mutant_bodyparts, key, "None")
+	for(var/key in current_dna.body_markings)
+		LAZYSET(current_dna.body_markings, key, null)
+	if(current_dna.features["body_size"])
+		LAZYSET(current_dna.features, "body_size", 1)
+	if(current_dna.features["legs"])
+		LAZYREMOVE(current_dna.features, "legs")
+	spawned_monkey.set_species(/datum/species/monkey)
+	for(var/scar in user.all_scars)
+		var/datum/scar/iter_scar = scar
+		if(iter_scar.fake)
+			qdel(iter_scar)
+	user.regenerate_icons()
+	// SKYRAT EDIT END
 
 	for(var/obj/item/organ/I in src)
 		I.Insert(spawned_monkey, 1)
