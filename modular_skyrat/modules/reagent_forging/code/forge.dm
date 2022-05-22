@@ -530,7 +530,7 @@
 		return
 	var/src_turf = get_turf(src)
 	var/spawning_item = ore_item.refined_type
-	var/spawning_amount = max(1, round((1 + goliath_ore_improvement) * ore_item.amount * (HAS_TRAIT(user, TRAIT_PRIMITIVE) ? 1 : 0.5)))
+	var/spawning_amount = max(1, round((1 + goliath_ore_improvement) * ore_item.amount * (is_species(user, /datum/species/lizard/ashwalker) ? 1 : 0.5)))
 	var/experience_amount = spawning_amount * ore_item.mine_experience
 	for(var/spawn_ore in 1 to spawning_amount)
 		new spawning_item(src_turf)
