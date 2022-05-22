@@ -35,8 +35,8 @@
 	for(var/slot in changeling.slot2type)
 		if(istype(user.vars[slot], changeling.slot2type[slot]))
 			qdel(user.vars[slot])
-	for(var/i in user.all_scars)
-		var/datum/scar/iter_scar = i
+	for(var/scar in user.all_scars)
+		var/datum/scar/iter_scar = scar
 		if(iter_scar.fake)
 			qdel(iter_scar)
 	// SKYRAT EDIT END
