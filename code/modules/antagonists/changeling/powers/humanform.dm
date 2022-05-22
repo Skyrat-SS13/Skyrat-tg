@@ -35,6 +35,7 @@
 	user.humanize(chosen_species)
 
 	changeling.transform(user, chosen_prof)
+	user.regenerate_icons()
 	return TRUE
 	// SKYRAT EDIT END
 
