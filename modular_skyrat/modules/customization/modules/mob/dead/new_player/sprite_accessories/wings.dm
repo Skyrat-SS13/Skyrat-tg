@@ -1,11 +1,10 @@
-/*
-*	Wings!
+/**
+* Wings!
 *
-*	When adding or making new wing sprites, try to use matrixed colours!
-*	You can find a color palette to work with in modular_skyrat\modules\customization\icons\mob\sprite_accessory\wings.dmi as 'colorpalette matrixcolors'
-*	Check some of the wings that make use of them for examples on how to make it look decent
+* When adding or making new wing sprites, try to use matrixed colors!
+* You can find a color palette to work with in modular_skyrat\modules\customization\icons\mob\sprite_accessory\wings.dmi as 'colorpalette matrixcolors'
+* Check some of the wings that make use of them for examples on how to make it look decent.
 */
-
 /datum/sprite_accessory/wings
 	icon = 'icons/mob/clothing/wings.dmi'
 	generic = "Wings"
