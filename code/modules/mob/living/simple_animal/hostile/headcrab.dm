@@ -82,10 +82,6 @@
 			changeling_datum = origin.add_antag_datum(/datum/antagonist/changeling/headslug)
 		if(changeling_datum.can_absorb_dna(owner))
 			changeling_datum.add_new_profile(owner)
-
-		//var/datum/action/changeling/humanform/hf = new
-		//changeling_datum.purchased_powers += hf
-		//changeling_datum.regain_powers()
 		
 		// SKYRAT EDIT START
 		var/datum/action/changeling/humanform/hf = new()
