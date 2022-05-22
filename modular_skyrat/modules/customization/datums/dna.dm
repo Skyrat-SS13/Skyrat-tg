@@ -258,6 +258,8 @@ GLOBAL_LIST_EMPTY(total_uf_len_by_block)
 		var/obj/item/organ/eyes/eye_organ = getorganslot(ORGAN_SLOT_EYES)
 		eye_organ.eye_color_left = eye_color_left
 		eye_organ.eye_color_right = eye_color_right
+		eye_organ.old_eye_color_left = eye_color_left
+		eye_organ.old_eye_color_right = eye_color_right
 	facial_hairstyle = GLOB.facial_hairstyles_list[deconstruct_block(get_uni_identity_block(structure, DNA_FACIAL_HAIRSTYLE_BLOCK), GLOB.facial_hairstyles_list.len)]
 	hairstyle = GLOB.hairstyles_list[deconstruct_block(get_uni_identity_block(structure, DNA_HAIRSTYLE_BLOCK), GLOB.hairstyles_list.len)]
 	var/features = dna.unique_features
