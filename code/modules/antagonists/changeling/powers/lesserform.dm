@@ -20,8 +20,11 @@
 		LAZYSET(current_dna.mutant_bodyparts, key, "None")
 	for(var/key in current_dna.body_markings)
 		LAZYSET(current_dna.body_markings, key, null)
+	if(current_dna.features["body_size"])
+		LAZYSET(current_dna.features, "body_size", 1)
 	if(current_dna.features["legs"])
 		LAZYREMOVE(current_dna.features, "legs")
+	
 	// SKYRAT EDIT END
 
 	user.monkeyize()
