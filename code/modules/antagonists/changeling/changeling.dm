@@ -495,7 +495,6 @@
 	// Grab the target's sechut icon.
 	new_profile.id_icon = target.wear_id?.get_sechud_job_icon_state()
 
-	//var/list/slots = list("head", "wear_mask", "back", "wear_suit", "w_uniform", "shoes", "belt", "gloves", "glasses", "ears", "wear_id", "s_store")
 	var/list/slots = list("head", "wear_mask", "wear_neck", "back", "wear_suit", "w_uniform", "shoes", "belt", "gloves", "glasses", "ears", "wear_id", "s_store") // SKYRAT EDIT
 	for(var/slot in slots)
 		if(!(slot in target.vars))
@@ -686,7 +685,6 @@
 	var/static/list/slot2slot = list(
 		"head" = ITEM_SLOT_HEAD,
 		"wear_mask" = ITEM_SLOT_MASK,
-		//"neck" = ITEM_SLOT_NECK,
 		"wear_neck" = ITEM_SLOT_NECK, // SKYRAT EDIT
 		"back" = ITEM_SLOT_BACK,
 		"wear_suit" = ITEM_SLOT_OCLOTHING,
@@ -724,7 +722,6 @@
 		if(IS_ORGANIC_LIMB(limb))
 			limb.update_limb(is_creating = TRUE)
 
-	//user.updateappearance(mutcolor_update = TRUE)
 	user.updateappearance(mutcolor_update = TRUE, eyecolor_update = TRUE) // SKYRAT EDIT
 	user.domutcheck()
 
