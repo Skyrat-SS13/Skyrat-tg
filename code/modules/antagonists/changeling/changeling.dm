@@ -722,7 +722,7 @@
 		if(IS_ORGANIC_LIMB(limb))
 			limb.update_limb(is_creating = TRUE)
 
-	user.updateappearance(mutcolor_update = TRUE, eyecolor_update = TRUE) // SKYRAT EDIT
+	user.updateappearance(mutcolor_update = TRUE, eyeorgancolor_update = TRUE) // SKYRAT EDIT
 	user.domutcheck()
 
 	// Get rid of any scars from previous Changeling-ing
@@ -820,7 +820,7 @@
 	
 	// SKYRAT EDIT START
 	chosen_dna.transfer_identity(user, TRUE)
-	user.updateappearance(mutcolor_update = TRUE, eyecolor_update = TRUE)
+	user.updateappearance(mutcolor_update = TRUE, eyeorgancolor_update = TRUE)
 	user.regenerate_icons()
 	// SKYRAT EDIT END
 
