@@ -24,7 +24,6 @@
 		LAZYSET(current_dna.features, "body_size", 1)
 	if(current_dna.features["legs"])
 		LAZYREMOVE(current_dna.features, "legs")
-	
 	// SKYRAT EDIT END
 
 	user.monkeyize()
@@ -42,6 +41,7 @@
 		var/datum/scar/iter_scar = scar
 		if(iter_scar.fake)
 			qdel(iter_scar)
+	user.regenerate_icons()
 	// SKYRAT EDIT END
 
 	Remove(user)
