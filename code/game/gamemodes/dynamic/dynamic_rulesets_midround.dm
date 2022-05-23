@@ -775,7 +775,6 @@
 	requirements = list(101,101,101,80,60,50,30,20,10,10)
 	repeatable = TRUE
 	var/list/spawn_locs = list()
-	minimum_players = 999 //SKYRAT EDIT ADDITION - EVENTS
 
 /datum/dynamic_ruleset/midround/from_ghosts/space_ninja/execute()
 	for(var/obj/effect/landmark/carpspawn/carp_spawn in GLOB.landmarks_list)
@@ -899,7 +898,7 @@
 	return virus
 
 /// Space Pirates ruleset
-/datum/dynamic_ruleset/midround/from_ghosts/pirates
+/datum/dynamic_ruleset/midround/pirates
 	name = "Space Pirates"
 	midround_ruleset_style = MIDROUND_RULESET_STYLE_HEAVY
 	antag_flag = "Space Pirates"
@@ -911,13 +910,13 @@
 		JOB_SECURITY_OFFICER,
 	)
 	required_enemies = list(2,2,1,1,1,1,1,0,0,0)
-	required_candidates = 3
+	required_candidates = 0
 	weight = 4
 	cost = 8
 	requirements = list(101,101,101,80,60,50,30,20,10,10)
 	repeatable = TRUE
 
-/datum/dynamic_ruleset/midround/from_ghosts/pirates/acceptable(population=0, threat=0)
+/datum/dynamic_ruleset/midround/pirates/acceptable(population=0, threat=0)
 	if (!SSmapping.empty_space)
 		return FALSE
 	return ..()
