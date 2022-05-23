@@ -21,10 +21,10 @@ SUBSYSTEM_DEF(title)
 
 	for(var/screen in provisional_title_screens)
 		var/list/formatted_list = splittext(screen, "+")
-		if((formatted_list.len == 1 && (formatted_list[1] != "exclude" && formatted_list[1] != "blank.png" && formatted_list[1] != "startup_splash")))
+		if((LAZYLEN(formatted_list) == 1 && (formatted_list[1] != "exclude" && formatted_list[1] != "blank.png" && formatted_list[1] != "startup_splash")))
 			title_screens += screen
 
-		if(formatted_list.len > 1 && lowertext(formatted_list[1]) == "startup_splash")
+		if(LAZYLEN(formatted_list) > 1 && lowertext(formatted_list[1]) == "startup_splash")
 			var/file_path = "[global.config.directory]/title_screens/images/[screen]"
 			ASSERT(fexists(file_path))
 			startup_splash = new(fcopy_rsc(file_path))

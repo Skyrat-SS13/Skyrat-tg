@@ -59,7 +59,7 @@
 			ready = PLAYER_READY_TO_PLAY
 		else
 			ready = PLAYER_NOT_READY
-		client << output(ready, "lobbybrowser:toggleready") //SKYRAT EDIT ADDITION
+		client << output(ready, "lobbybrowser:toggleready")
 		return
 
 	if(href_list["late_join"])
@@ -177,14 +177,14 @@
 
 	//Determines Relevent Population Cap
 	var/relevant_cap
-	var/hpc = CONFIG_GET(number/hard_popcap)
-	var/epc = CONFIG_GET(number/extreme_popcap)
-	if(hpc && epc)
-		relevant_cap = min(hpc, epc)
+	var/hard_popcap = CONFIG_GET(number/hard_popcap)
+	var/extreme_popcap = CONFIG_GET(number/extreme_popcap)
+	if(hard_popcap && extreme_popcap)
+		relevant_cap = min(hard_popcap, extreme_popcap)
 	else
-		relevant_cap = max(hpc, epc)
+		relevant_cap = max(hard_popcap, extreme_popcap)
 
-	if(SSticker.queued_players.len && !(ckey(key) in GLOB.admin_datums))
+	if(LAZYLEN(SSticker.queued_players) && !(ckey(key) in GLOB.admin_datums))
 		if((living_player_count() >= relevant_cap) || (src != SSticker.queued_players[1]))
 			to_chat(usr, span_warning("Server is full."))
 			return
@@ -193,7 +193,7 @@
 
 /mob/dead/new_player/proc/server_swap()
 	var/list/servers = CONFIG_GET(keyed_list/cross_server)
-	if(servers.len == 1)
+	if(LAZYLEN(servers) == 1)
 		var/server_name = servers[1]
 		var/server_ip = servers[server_name]
 		var/confirm = tgui_alert(src, "Are you sure you want to swap to [server_name] ([server_ip])?", "Swapping server!", list("Send me there", "Stay here"))
@@ -213,35 +213,36 @@
 
 /mob/dead/new_player/proc/playerpolls()
 	var/output
-	if (SSdbcore.Connect())
-		var/isadmin = FALSE
-		if(client?.holder)
-			isadmin = TRUE
-		var/datum/db_query/query_get_new_polls = SSdbcore.NewQuery({"
-			SELECT id FROM [format_table_name("poll_question")]
-			WHERE (adminonly = 0 OR :isadmin = 1)
-			AND Now() BETWEEN starttime AND endtime
+	if (!SSdbcore.Connect())
+		return
+	var/isadmin = FALSE
+	if(client?.holder)
+		isadmin = TRUE
+	var/datum/db_query/query_get_new_polls = SSdbcore.NewQuery({"
+		SELECT id FROM [format_table_name("poll_question")]
+		WHERE (adminonly = 0 OR :isadmin = 1)
+		AND Now() BETWEEN starttime AND endtime
+		AND deleted = 0
+		AND id NOT IN (
+			SELECT pollid FROM [format_table_name("poll_vote")]
+			WHERE ckey = :ckey
 			AND deleted = 0
-			AND id NOT IN (
-				SELECT pollid FROM [format_table_name("poll_vote")]
-				WHERE ckey = :ckey
-				AND deleted = 0
-			)
-			AND id NOT IN (
-				SELECT pollid FROM [format_table_name("poll_textreply")]
-				WHERE ckey = :ckey
-				AND deleted = 0
-			)
-		"}, list("isadmin" = isadmin, "ckey" = ckey))
+		)
+		AND id NOT IN (
+			SELECT pollid FROM [format_table_name("poll_textreply")]
+			WHERE ckey = :ckey
+			AND deleted = 0
+		)
+	"}, list("isadmin" = isadmin, "ckey" = ckey))
 
-		if(!query_get_new_polls.Execute())
-			qdel(query_get_new_polls)
-			return
-		if(query_get_new_polls.NextRow())
-			output +={"<a class="menu_ab" href='?src=\ref[src];viewpoll=1'>POLLS (NEW)</a>"}
-		else
-			output +={"<a class="menu_a" href='?src=\ref[src];viewpoll=1'>POLLS</a>"}
+	if(!query_get_new_polls.Execute())
 		qdel(query_get_new_polls)
-		if(QDELETED(src))
-			return
-		return output
+		return
+	if(query_get_new_polls.NextRow())
+		output +={"<a class="menu_ab" href='?src=\ref[src];viewpoll=1'>POLLS (NEW)</a>"}
+	else
+		output +={"<a class="menu_a" href='?src=\ref[src];viewpoll=1'>POLLS</a>"}
+	qdel(query_get_new_polls)
+	if(QDELETED(src))
+		return
+	return output

@@ -2,6 +2,8 @@
 GLOBAL_LIST_EMPTY(startup_messages)
 // FOR MOR INFO ON HTML CUSTOMISATION, SEE: https://github.com/Skyrat-SS13/Skyrat-tg/pull/4783
 
+#define MAX_STARTUP_MESSAGES 27
+
 /mob/dead/new_player/proc/get_lobby_html()
 	var/dat = GLOB.lobby_html
 	if(SSticker.current_state == GAME_STATE_STARTUP)
@@ -12,7 +14,7 @@ GLOBAL_LIST_EMPTY(startup_messages)
 		"}
 		var/loop_index = 0
 		for(var/i in GLOB.startup_messages)
-			if(loop_index >= 27)
+			if(loop_index >= MAX_STARTUP_MESSAGES)
 				break
 			dat += i
 			loop_index++
