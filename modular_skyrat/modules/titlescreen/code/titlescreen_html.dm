@@ -97,10 +97,3 @@ GLOBAL_LIST_EMPTY(startup_messages)
 
 	return dat
 
-/proc/add_startupmessage(msg)
-	var/msg_dat = {"<p class="menu_b">[msg]</p>"}
-
-	GLOB.startup_messages.Insert(1, msg_dat)
-
-	for(var/mob/dead/new_player/iterating_new_player in GLOB.new_player_list)
-		INVOKE_ASYNC(iterating_new_player, /mob/dead/new_player.proc/update_titlescreen)
