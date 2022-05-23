@@ -144,5 +144,5 @@
 		CHECK_TICK
 
 	var/message = "[name] finished in [(REALTIMEOFDAY - start_time)/10]s!"
-	to_chat(world, span_boldannounce("[message]"))
+	add_startupmessage(message) //SKYRAT EDIT CHANGE
 	log_world(message)
