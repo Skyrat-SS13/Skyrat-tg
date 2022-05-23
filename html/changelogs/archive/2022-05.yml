@@ -954,3 +954,173 @@
   tf-4:
   - qol: The arrivals shuttle got new thrusters, cutting its travel time in half and
       its recharge time down by a quarter.
+2022-05-21:
+  Deek-Za:
+  - bugfix: Fixed Sec Off / Warden vests for digi.
+  - bugfix: Removed fire doors causing perpetual fire alarms on Meta/Delta station
+      server rooms.
+  GoldenAlpharex:
+  - bugfix: Fixed everyone being able to start transfer votes. Now, only admins will
+      be able to, if autotransfer is enabled.
+  - config: Added ALLOW_VOTE_TRANSFER config flag, defaults to false.
+  Jolly:
+  - bugfix: The APC in BlueShifts power bank room is connected to the right wire layer.
+  - bugfix: Replaced the areas of some of BlueShifts engines with nearstation.
+  - bugfix: Service area of Blueshift now has redundant wiring to prevent power issues.
+  - rscadd: Replaced the current arcade machines in the ghost cafe with random spawners.
+  - bugfix: Stools in the Interlink have been edited to not be var-edited anymore.
+  - bugfix: Stools in the Ghost Cafe have been edited to not be var-edited anymore.
+  MidoriWroth:
+  - code_imp: Changed the tree ferret plush sound to something even less threatening
+  OrionTheFox:
+  - bugfix: Lopland and Armadyne have snagged a few more straggling redsec items,
+      ensuring uniform standards are met.
+  Paxilmaniac:
+  - bugfix: you can no longer make stone walls out of uranium
+  - bugfix: you can now actually make stone walls with stone
+  - bugfix: moving away from a forge when making a selection to cook food will no
+      longer permanently lock everyone out of using the forge
+  PositiveEntropy, Retlaw34, PacifistDalek:
+  - imageadd: Resprites the fire extinguishers once more!
+  RatFromTheJungle:
+  - qol: Made the Makarov (traitor) magazine actually say the actual ammo, and clarified
+      the desc on a few previously 14 gauge shotguns, as well as clarifying auto and
+      peacekeeper ammo types on the R-C makarov.
+  - bugfix: Added a few bullets that were just whole-ass unobtainable for the guns
+      that used them.
+  - qol: All guns in the armadyne tab now clarify which ammotype they use,
+  - balance: Disablers have been dropped in stamina damage from 41>30.
+  SkyratBot:
+  - rscadd: Appraiser Skillchip is now available.
+  - rscadd: You can now emag tram crossing signals to disable their motion sensors
+  - config: adds config to allow for name links in adminwho
+  - refactor: Flora code is much more organized :)
+  - rscadd: Flora (trees, plants, etc) can be uprooted with a shovel, which can then
+      be dragged around.
+  - code_imp: Moved "kirbyplants" into their own .dm file, instead of just finding
+      a comfortable spot in flora code
+  - bugfix: Cook's CQC now properly works in the assigned areas outside the kitchen.
+  - bugfix: Cooks now properly get their Cook mail instead of just money.
+  - bugfix: Mapping configs can now once again set job position slots (and fully remove
+      jobs from maps that don't support them).
+  - rscadd: Added Spinward Smoothies Space Ruin
+  - rscadd: Added six types of smoothies
+  - rscdel: Removed some redundant cables in Kilo maints
+  - bugfix: Removes some stray wires in Tram med maintenance
+  - bugfix: Fixes missing eye icon
+  - rscadd: Tramstation now has crossing signals to help you not get hit by the tram
+      (or jump in front of it at the last minute for comedy value).
+  - refactor: Refactored how the analyzer's last gasmix ui thing works. No gameplay
+      changes expected.
+  - code_imp: Reorganized tool usage code a bit. Also no gameplay changes expected.
+  - bugfix: Jetpacking in space without stabalizers feels good now
+  - bugfix: If you're pulling something in space, and release the pull, it'll follow
+      behind you properly
+  - bugfix: circuit speech is now logged properly
+  - bugfix: Removes a duplicate table in the Laundry Room of IceboxStation
+  - bugfix: Fixed vendors qdeling brains of GODMODEd admemes upon rolling a crit squash
+  - rscadd: Charliestation now has a Supermatter and Gravity generator chamber.
+  - balance: Charliestation now requires the gravity generator to have functional
+      gravity. Its botany also has a biogenerator and nutriment vendor.
+  SmArtKar, SpadesSlick:
+  - imageadd: New sprites for xenobio shield wall generators
+  Tastyfish:
+  - bugfix: Fixes some airlock cycle links in Blueshift.
+  - bugfix: Fixed Tramstation's Supermatter Engine APC.
+  - rscdel: Took NSS Journey out of its misery.
+  Vladin, Professional Cleaner Association Representative:
+  - bugfix: Ceramic shards are no longer comically large, and can be fit inside trash
+      bags for cleanup.
+  YakumoChen:
+  - bugfix: Microfusions can be stored on MODsuits with a magnetic harness again
+  - qol: interdyne spawns with right id
+  Zenitheevee:
+  - bugfix: Fixes Tarkon's Access problem with the turbines being set to station accesses
+      that tarkonites don't have.
+  - bugfix: Fixes Tarkon's issue with the turbine not giving power
+  Zonespace27:
+  - qol: It is more apparent when OPFOR applications have denied objectives.
+  - bugfix: Synths no longer get inherent armor.
+  - bugfix: Armament Dynamics 10mm auto ammo boxes are not invisible anymore.
+  softcerv:
+  - code_imp: removes single letter variables from Skyrat modular wound code.
+  - bugfix: BlueShift medbay now has anesthetic canisters
+  tf-4:
+  - qol: An array of chat messages have been converted to balloon alerts.
+2022-05-22:
+  Melbert:
+  - bugfix: Rust and Blade ascension make you stun immune again
+  SkyratBot:
+  - bugfix: 'Snowy floors should be snowy instead of being... Counter-Strike: Source
+      Missing Textures.'
+  - bugfix: Fixed ethereal revive crystal bugging out when buckled
+  - bugfix: Restores Captains pen and QM survial pen in respective Pdas
+  - bugfix: proximity monitors now work on stuff that was created inside it
+  - refactor: Converted the airlock controller to TypeScript, added some visual effects
+  - bugfix: There are no longer two turfs on one tile in Hilbert's Research Facility.
+      In case you've stopped by and some portion of it has been oddly depressurized
+      (maybe? i dunno), you should be fine now.
+  - spellcheck: There is now a space between the Staff's name and the thing that declares
+      them to be Staff in deadsay.
+  - admin: Added a new Puzzgrid smite
+  - bugfix: Nanotrasen realized that intern they left to do announcements accidentally
+      obscured the location of where any potential blood cultists may be summoning
+      their eldritch deity, this should no longer happen whenever they tack this intern
+      on.
+  - bugfix: fix sm shards dusting when wrenching
+  - balance: Hitting someone in melee with the explosive lance now moves you to the
+      same tile as them before it sets off the grenade.
+  - bugfix: Electrolyzers that are anchored no longer consume 5kW even when turned
+      off
+  - bugfix: Cyborgs once again can't PDA people anymore.
+  - bugfix: Fixed 217-D Plasma Cutter and Exosuit PKA being uninstallable on ripley/clarke
+  tf-4:
+  - bugfix: The status tab works again
+2022-05-23:
+  Cenrus:
+  - bugfix: Fixed DMR box magazine and bullets not sharing the same caliber
+  Danger Kitten:
+  - balance: NanoTrasen has tinted the permabrig windows for the "safety" of their
+      prisoners.
+  Deek-Za:
+  - bugfix: Public airlock assembly has the proper icon again
+  Ghommie:
+  - bugfix: Replaces the space turfs under the resin walls at the ghost cafe with
+      dirt.
+  Melbert:
+  - bugfix: Fixes a rare hard-delete with queen bees.
+  - bugfix: Nuke cinematics should show up again, more often. Hopefully.
+  - bugfix: Malfunctioning AI's Doomsday cinematic also shows again.
+  - code_imp: Sorted, doc'd, and minorly improved the code of nuclear bombs.
+  - refactor: Refactored cinematics a teeny bit.
+  PK_Sonikal:
+  - rscadd: The Survivalist Bunker, occasionally found by space explorers, now has
+      a pharmacy for chemistry.
+  SkyratBot:
+  - bugfix: Nanotrasen's Reality Corrections Office has stumbled across an older station
+      with a bunch of abandoned spacemen abroad. Rather than rescue them, they elected
+      to fix the weird lighting issues their external portions had, and then flew
+      off. Those spaceman are still out there.
+  - rscadd: Cascade rift is now a portal that teleports you to centcom evac instead
+      of dusting you.
+  - balance: There are more crystal walls spawned around the station and the timing
+      of the cascade has been changed to start the one minute countdown after the
+      portal has been eaten.
+  - refactor: 'Improved UI for personal crafting: has category groups, better full-sized
+      UI, more space-efficient and readable compact mode.'
+  - rscadd: Adds a new random event -- Scrubber Clog! Scrubbers may now randomly be
+      clogged by mobs, which will result in them crawling out and getting all over
+      the place. This can be fixed by pumping the scrubber with a plunger, or by just
+      welding the scrubber shut and leaving it for a while.
+  - rscadd: The plunger has been integrated into the janitor's arsenal. You may now
+      purchase them from the Janidrobe and equip them into janibelts.
+  - rscadd: Smoke expands through newly opened airlocks if it hasn't finished spreading.
+  - bugfix: Petting 10 animals no longer counts as individual mood bonuses, and will
+      instead replace eachother.
+  - bugfix: fixes goliath not chasing people
+  Zonespace27:
+  - rscdel: Removed His Grace from Chaplain uplinks
+  - balance: Non-ashwalkers only obtain half the ore from forging
+  tf-4:
+  - bugfix: Cyborgs once again have access to the crew manifest.
+  - bugfix: Noses may once more be booped.

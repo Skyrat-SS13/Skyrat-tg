@@ -1,8 +1,8 @@
 // These COLORPIXEL defines indicate the pixel position on the base sprite of a clothing piece from which the color will be taken.
-#define GLASSES_COLORPIXEL_X_1 14
-#define GLASSES_COLORPIXEL_Y_1 26
-#define GLASSES_COLORPIXEL_X_2 17
-#define GLASSES_COLORPIXEL_Y_2 26
+#define GLASSES_COLORPIXEL_X_1 10
+#define GLASSES_COLORPIXEL_Y_1 16
+#define GLASSES_COLORPIXEL_X_2 18
+#define GLASSES_COLORPIXEL_Y_2 16
 
 #define GLOVES_COLORPIXEL_X_1 10
 #define GLOVES_COLORPIXEL_Y_1 13

@@ -88,8 +88,12 @@
 	icon_state = "magnet"
 	icon = 'modular_skyrat/modules/contractor/icons/modsuit_modules.dmi'
 
-/obj/item/mod/module/springlock/on_suit_activation() // This module is actually *not* a death trap
+/obj/item/mod/module/springlock/contractor/on_suit_activation() // This module is actually *not* a death trap
 	return
 
-/obj/item/mod/module/springlock/on_suit_deactivation(deleting = FALSE)
+/obj/item/mod/module/springlock/contractor/on_suit_deactivation(deleting = FALSE)
 	return
+
+/// This exists for the adminbus contractor modsuit. Do not use otherwise
+/obj/item/mod/module/springlock/contractor/no_complexity
+	complexity = 0

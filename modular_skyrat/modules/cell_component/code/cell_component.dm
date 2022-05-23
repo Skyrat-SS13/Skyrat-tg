@@ -95,8 +95,15 @@ component_cell_out_of_charge/component_cell_removed proc using loc where necessa
 		inserted_cell = null
 	return ..()
 
-/// This proc is the basic way of processing the cell, with included feedback. It will return a bitflag if it failed to use the power, or COMPONENT_POWER_SUCCESS if it succeeds.
-/// The user is sent the feedback, use_amount is an override, check_only will only return if it can use the cell and feedback relating to that.
+/**
+ * The basic way of processing the cell, with included feedback.
+ *
+ * This proc is the basic way of processing the cell, with included feedback.
+ * It will return a bitflag if it failed to use the power, or COMPONENT_POWER_SUCCESS if it succeeds.
+ * Arguments:
+ * * use_amount - an override
+ * * check_only - will only return if it can use the cell and feedback relating to that including any relevant detail
+ */
 /datum/component/cell/proc/simple_power_use(datum/source, use_amount, mob/user, check_only)
 	SIGNAL_HANDLER
 

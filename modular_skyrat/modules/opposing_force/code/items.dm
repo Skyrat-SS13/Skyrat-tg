@@ -16,7 +16,7 @@
 
 
 /obj/item/storage/box/syndie_kit/gunman_outfit
-	name = "Gunman Clothing Bundle"
+	name = "gunman clothing bundle"
 	desc = "A box filled with armored and stylish clothing for the aspiring gunmans."
 
 /obj/item/clothing/suit/armor/vest/leather/gunman
@@ -35,7 +35,7 @@
 	starting_organ = /obj/item/organ/cyberimp/arm/hacker
 
 /obj/item/storage/box/syndie_kit/insurgent
-	name = "Syndicate Insurgent Bundle"
+	name = "syndicate insurgent bundle"
 	desc = "A box containing everything you need to LARP as your favorite syndicate operative!"
 
 /obj/item/storage/box/syndie_kit/insurgent/PopulateContents()

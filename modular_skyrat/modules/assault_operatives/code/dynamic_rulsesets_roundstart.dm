@@ -1,8 +1,6 @@
-//////////////////////////////////////////////
-//                                          //
-//          ASSAULT OPERATIVES              //
-//                                          //
-//////////////////////////////////////////////
+/*
+*	ASSAULT OPERATIVES
+*/
 
 #define ASSAULT_OPERATIVES_COUNT 6
 

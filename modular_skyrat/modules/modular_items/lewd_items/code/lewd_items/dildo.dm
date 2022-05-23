@@ -1,7 +1,8 @@
 #define AROUSAL_REGULAR_THRESHOLD 25
-//////////////////
-///NORMAL DILDO///
-//////////////////
+
+/*
+*	NORMAL DILDO
+*/
 
 /obj/item/clothing/sextoy/dildo
 	name = "dildo"
@@ -157,9 +158,9 @@
 						'modular_skyrat/modules/modular_items/lewd_items/sounds/bang5.ogg',
 						'modular_skyrat/modules/modular_items/lewd_items/sounds/bang6.ogg'), 100, TRUE, ignore_walls = FALSE)
 
-///////////////////////
-///POLYCHROMIC DILDO///
-///////////////////////
+/*
+*	POLYCHROMIC // this doesn't even use polychromism I Want To Die
+*/
 
 GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 		"Cyan"		= "#00f9ff", //cyan
@@ -241,10 +242,9 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 	icon_state = "[initial(icon_state)]_[poly_size]"
 	inhand_icon_state = "[initial(icon_state)]_[poly_size]"
 
-
-//////////////////
-///DOUBLE DILDO///
-//////////////////
+/*
+*	DOUBLE DILDO
+*/
 
 /obj/item/clothing/sextoy/dildo/double_dildo
 	name = "double dildo"
@@ -307,8 +307,6 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 		to_chat(user, span_warning("You can't use [src] from this angle!"))
 	else
 		to_chat(user, span_warning("You need to equip [src] before you can use it!"))
-
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /// Code for taking out/putting away the other end of the toy when one end is in you
 /obj/item/clothing/sextoy/dildo/double_dildo/proc/toggle(mob/living/carbon/human/user)
