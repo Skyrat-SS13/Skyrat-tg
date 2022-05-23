@@ -109,9 +109,9 @@ GLOBAL_LIST_EMPTY(lobby_screens)
 							margin-right: 100%;
 							margin-top: 5px;
 							padding-left: 6px;
-							font-size: 5vmin;
-							line-height: 5vmin;
-							height: 5vmin;
+							font-size: 4vmin;
+							line-height: 4vmin;
+							height: 4vmin;
 							letter-spacing: 1px;
 							border: 2px solid white;
 							background-color: #0080ff;
