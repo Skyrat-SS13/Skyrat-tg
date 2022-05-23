@@ -1,4 +1,4 @@
-//We're lowering the power of light fixtures for **mood lighting**
+// We're lowering the power of light fixtures for **mood lighting**
 /obj/machinery/light
 	bulb_colour = "#FFEEDD"
 	bulb_power = 0.75

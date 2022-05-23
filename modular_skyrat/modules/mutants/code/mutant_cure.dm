@@ -353,7 +353,7 @@
 
 
 /obj/item/storage/briefcase/virology/hnz
-	name = "\improper HNZ-1 Biocontainer"
+	name = "\improper HNZ-1 biocontainer"
 	desc = "An airtight biosealed box containing the highly reactive substance, HNZ1. Authorised personnel only."
 	w_class = WEIGHT_CLASS_SMALL
 	max_integrity = 500
