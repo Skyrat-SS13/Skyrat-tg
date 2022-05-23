@@ -15,8 +15,9 @@
 
 // Add a 'rnd/geneticist/skyrat' if you make Geneticist uniforms
 
-///////////////////////////////////////
-////////////// SCIENTIST //////////////
+/*
+*	SCIENTIST
+*/
 
 /obj/item/clothing/under/rank/rnd/scientist/skyrat/utility
 	name = "science utility uniform"
@@ -35,8 +36,9 @@
 	icon_state = "hl_scientist"
 	can_adjust = FALSE
 
-////////////////////////////////////////
-////////////// ROBOTICIST //////////////
+/*
+*	ROBOTICIST
+*/
 
 /obj/item/clothing/under/rank/rnd/roboticist/skyrat/sleek
 	name = "sleek roboticst jumpsuit"
@@ -44,8 +46,9 @@
 	icon_state = "robosleek"
 	can_adjust = FALSE
 
-//////////////////////////////////////
-////////////// DIRECTOR //////////////
+/*
+*	RESEARCH DIRECTOR
+*/
 
 /obj/item/clothing/under/rank/rnd/research_director/skyrat/jumpsuit
 	name = "research director's jumpsuit"
@@ -63,10 +66,10 @@
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
-
-///////////////////////////////////////
-////////////// OVERRIDES //////////////
-// Remind Orion to look over these when TG finishes their science resprites
+/*
+*	OVERRIDES
+*	Remind Orion to look over these when TG finishes their science resprites
+*/
 
 /obj/item/clothing/under/rank/rnd/scientist
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/rnd.dmi'

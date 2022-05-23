@@ -79,9 +79,9 @@
 	. = ..()
 	AddComponent(/datum/component/squeak, list('modular_skyrat/modules/modular_items/lewd_items/sounds/highheel1.ogg' = 1, 'modular_skyrat/modules/modular_items/lewd_items/sounds/highheel2.ogg' = 1), 70)
 
-/////////////////
-///Latex socks///
-/////////////////
+/*
+*	LATEX SOCKS
+*/
 
 /obj/item/clothing/shoes/latex_socks
 	name = "latex socks"
@@ -100,9 +100,9 @@
 	affected_mob.update_inv_shoes()
 	affected_mob.hud_used.hidden_inventory_update()
 
-//////////////////
-///Domina heels///
-//////////////////
+/*
+*	DOMINA HEELS
+*/
 
 /obj/item/clothing/shoes/dominaheels //added for Kubic request
 	name = "dominant heels"

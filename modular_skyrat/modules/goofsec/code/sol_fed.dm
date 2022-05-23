@@ -299,6 +299,10 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 		ID_to_give.update_icon()
 		human_to_equip.sec_hud_set_ID()
 
+/*
+*	POLICE
+*/
+
 /datum/antagonist/ert/request_911/police
 	name = "Marshal"
 	role = "Marshal"
@@ -325,6 +329,10 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 
 	id_trim = /datum/id_trim/solfed
 
+/*
+*	BREACH CONTROL
+*/
+
 /datum/antagonist/ert/request_911/atmos
 	name = "Breach Control Technician"
 	role = "Breach Control Technician"
@@ -349,8 +357,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 		/obj/item/beamout_tool = 1)
 	id_trim = /datum/id_trim/solfed
 
-//////////////////////////////
-/// Breach Control MODsuit ///
+// Breach control MODsuit
 /obj/item/mod/control/pre_equipped/atmospheric/breach_control //Just a different kit as 811 wont be raiding Robotics; otherwise the same look (For now???)
 	theme = /datum/mod_theme/atmospheric/breach_control
 	applied_cell = /obj/item/stock_parts/cell/super
@@ -366,8 +373,10 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 
 /datum/mod_theme/atmospheric/breach_control	//Implement a unique skin for this eventually
 	ui_theme = "neutral"	//Le yellow Sol
-//////////////////////////////
-//////////////////////////////
+
+/*
+*	EMT
+*/
 
 /datum/antagonist/ert/request_911/emt
 	name = "Emergency Medical Technician"

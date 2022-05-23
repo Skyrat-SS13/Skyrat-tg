@@ -1,7 +1,3 @@
-///////////////
-///Vibroring///
-///////////////
-
 /obj/item/clothing/sextoy/vibroring
 	name = "vibrating ring"
 	desc = "A ring toy used to keep your erection going strong."
