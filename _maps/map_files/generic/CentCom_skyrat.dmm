@@ -307,7 +307,7 @@
 /turf/open/floor/mineral/titanium/tiled/blue,
 /area/centcom/syndicate_mothership/expansion_bombthreat)
 "bm" = (
-/obj/structure/flora/rock/pile/largejungle,
+/obj/structure/flora/rock/pile/jungle/large,
 /turf/open/misc/beach/sand,
 /area/centcom/central_command_areas/holding)
 "bn" = (
@@ -460,7 +460,7 @@
 "bG" = (
 /obj/machinery/door/airlock/centcom{
 	name = "CentCom Security";
-	req_access_txt = "101"
+	req_access = list("cent_general")
 	},
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/iron,
@@ -929,7 +929,7 @@
 /area/centcom/syndicate_mothership/control)
 "dd" = (
 /obj/machinery/door/airlock/external/ruin{
-	req_access_txt = "150"
+	req_access = list("syndicate")
 	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/general/hidden,
@@ -1100,7 +1100,7 @@
 "dy" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Administrative Office";
-	req_access_txt = "109"
+	req_access = list("cent_captain")
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
 /obj/effect/turf_decal/stripes/line,
@@ -1116,7 +1116,7 @@
 "dA" = (
 /obj/machinery/door/airlock/centcom{
 	name = "CentCom Security";
-	req_access_txt = "101"
+	req_access = list("cent_general")
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -1236,11 +1236,11 @@
 /turf/open/floor/catwalk_floor/iron_dark,
 /area/centcom/syndicate_mothership/control)
 "dT" = (
-/obj/structure/flora/ausbushes/lavendergrass,
-/obj/structure/flora/ausbushes/sparsegrass,
-/obj/structure/flora/ausbushes/ywflowers,
-/obj/structure/flora/ausbushes/grassybush,
-/obj/structure/flora/ausbushes/palebush,
+/obj/structure/flora/bush/lavendergrass,
+/obj/structure/flora/bush/sparsegrass,
+/obj/structure/flora/bush/flowers_yw,
+/obj/structure/flora/bush/grassy,
+/obj/structure/flora/bush/pale,
 /turf/open/misc/asteroid,
 /area/centcom/central_command_areas/fore)
 "dU" = (
@@ -1289,7 +1289,7 @@
 /turf/open/floor/mineral/plastitanium,
 /area/centcom/syndicate_mothership/expansion_chemicalwarfare)
 "eb" = (
-/obj/structure/flora/rock/pile/largejungle{
+/obj/structure/flora/rock/pile/jungle/large{
 	pixel_y = -3
 	},
 /turf/open/misc/ashplanet/wateryrock{
@@ -1841,7 +1841,7 @@
 "fU" = (
 /obj/machinery/door/airlock/centcom{
 	name = "CentCom Security";
-	req_access_txt = "101"
+	req_access = list("cent_general")
 	},
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/iron,
@@ -2153,7 +2153,7 @@
 /turf/open/floor/mineral/titanium,
 /area/centcom/syndicate_mothership/control)
 "gQ" = (
-/obj/structure/flora/ausbushes/brflowers,
+/obj/structure/flora/bush/flowers_br,
 /turf/open/floor/grass,
 /area/centcom/central_command_areas/holding)
 "gR" = (
@@ -2236,7 +2236,7 @@
 /area/centcom/central_command_areas/holding)
 "hj" = (
 /obj/machinery/door/airlock/external/ruin{
-	req_access_txt = "150"
+	req_access = list("syndicate")
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 8
@@ -3563,7 +3563,7 @@
 "kZ" = (
 /obj/machinery/door/airlock/centcom{
 	name = "CentCom Security";
-	req_access_txt = "101"
+	req_access = list("cent_general")
 	},
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/iron,
@@ -3572,7 +3572,7 @@
 /obj/machinery/door/window/brigdoor{
 	base_state = "rightsecure";
 	name = "CentCom Stand";
-	req_access_txt = "109"
+	req_access = list("cent_captain")
 	},
 /obj/machinery/light/directional/west,
 /obj/machinery/status_display/evac/directional/west,
@@ -3606,7 +3606,7 @@
 /obj/machinery/door/window/brigdoor{
 	base_state = "rightsecure";
 	name = "CentCom Stand";
-	req_access_txt = "109"
+	req_access = list("cent_captain")
 	},
 /turf/open/floor/iron/grimy,
 /area/centcom/central_command_areas/courtroom)
@@ -3623,7 +3623,7 @@
 /obj/machinery/door/window/brigdoor{
 	base_state = "rightsecure";
 	name = "CentCom Stand";
-	req_access_txt = "109"
+	req_access = list("cent_captain")
 	},
 /obj/machinery/light/directional/east,
 /obj/machinery/status_display/evac/directional/east,
@@ -3794,7 +3794,7 @@
 "lJ" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Shuttle Control Office";
-	req_access_txt = "109"
+	req_access = list("cent_captain")
 	},
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/iron,
@@ -3808,11 +3808,11 @@
 /turf/open/floor/iron,
 /area/centcom/central_command_areas/supply)
 "lL" = (
-/obj/structure/flora/ausbushes/lavendergrass,
-/obj/structure/flora/ausbushes/sparsegrass,
-/obj/structure/flora/ausbushes/ywflowers,
-/obj/structure/flora/ausbushes/grassybush,
-/obj/structure/flora/ausbushes/palebush,
+/obj/structure/flora/bush/lavendergrass,
+/obj/structure/flora/bush/sparsegrass,
+/obj/structure/flora/bush/flowers_yw,
+/obj/structure/flora/bush/grassy,
+/obj/structure/flora/bush/pale,
 /turf/open/misc/asteroid,
 /area/centcom/central_command_areas/control)
 "lM" = (
@@ -3821,9 +3821,9 @@
 /turf/open/floor/iron,
 /area/centcom/central_command_areas/fore)
 "lN" = (
-/obj/structure/flora/ausbushes/sparsegrass,
-/obj/structure/flora/ausbushes/grassybush,
-/obj/structure/flora/ausbushes/fernybush,
+/obj/structure/flora/bush/sparsegrass,
+/obj/structure/flora/bush/grassy,
+/obj/structure/flora/bush/ferny,
 /turf/open/floor/iron{
 	dir = 6;
 	icon_state = "asteroid8";
@@ -3875,7 +3875,7 @@
 "lT" = (
 /obj/machinery/door/airlock/centcom{
 	name = "CentCom Security";
-	req_access_txt = "101"
+	req_access = list("cent_general")
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -4254,11 +4254,11 @@
 /turf/open/floor/iron,
 /area/centcom/central_command_areas/fore)
 "mQ" = (
-/obj/structure/flora/ausbushes/lavendergrass,
-/obj/structure/flora/ausbushes/sparsegrass,
-/obj/structure/flora/ausbushes/fullgrass,
-/obj/structure/flora/ausbushes/brflowers,
-/obj/structure/flora/ausbushes/genericbush,
+/obj/structure/flora/bush/lavendergrass,
+/obj/structure/flora/bush/sparsegrass,
+/obj/structure/flora/bush/fullgrass,
+/obj/structure/flora/bush/flowers_br,
+/obj/structure/flora/bush/generic,
 /turf/open/floor/grass,
 /area/centcom/central_command_areas/control)
 "mR" = (
@@ -4638,7 +4638,7 @@
 /obj/machinery/door/window/brigdoor{
 	base_state = "rightsecure";
 	name = "CentCom Stand";
-	req_access_txt = "109"
+	req_access = list("cent_captain")
 	},
 /obj/machinery/firealarm/directional/west,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
@@ -4648,7 +4648,7 @@
 /obj/machinery/door/window/brigdoor{
 	base_state = "rightsecure";
 	name = "CentCom Stand";
-	req_access_txt = "109"
+	req_access = list("cent_captain")
 	},
 /obj/machinery/firealarm/directional/east,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
@@ -4986,7 +4986,7 @@
 "oJ" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Administrative Office";
-	req_access_txt = "109"
+	req_access = list("cent_captain")
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
 	dir = 4
@@ -5218,7 +5218,7 @@
 	dir = 4;
 	icon_state = "rightsecure";
 	name = "CentCom Customs";
-	req_access_txt = "109"
+	req_access = list("cent_captain")
 	},
 /obj/item/clipboard,
 /obj/item/folder/yellow,
@@ -5668,17 +5668,17 @@
 /turf/open/floor/iron,
 /area/centcom/central_command_areas/fore)
 "qv" = (
-/obj/structure/flora/ausbushes/lavendergrass,
-/obj/structure/flora/ausbushes/fullgrass,
-/obj/structure/flora/ausbushes/ywflowers,
-/obj/structure/flora/ausbushes/grassybush,
-/obj/structure/flora/ausbushes/palebush,
+/obj/structure/flora/bush/lavendergrass,
+/obj/structure/flora/bush/fullgrass,
+/obj/structure/flora/bush/flowers_yw,
+/obj/structure/flora/bush/grassy,
+/obj/structure/flora/bush/pale,
 /turf/open/misc/asteroid,
 /area/centcom/central_command_areas/control)
 "qw" = (
-/obj/structure/flora/ausbushes/sparsegrass,
-/obj/structure/flora/ausbushes/lavendergrass,
-/obj/structure/flora/ausbushes/fernybush,
+/obj/structure/flora/bush/sparsegrass,
+/obj/structure/flora/bush/lavendergrass,
+/obj/structure/flora/bush/ferny,
 /turf/open/floor/iron{
 	icon_state = "asteroid5";
 	name = "plating"
@@ -5688,47 +5688,47 @@
 /turf/closed/indestructible/riveted,
 /area/centcom/central_command_areas/evacuation)
 "qy" = (
-/obj/structure/flora/ausbushes/lavendergrass,
-/obj/structure/flora/ausbushes/sparsegrass,
-/obj/structure/flora/ausbushes/fullgrass,
-/obj/structure/flora/ausbushes/brflowers,
-/obj/structure/flora/ausbushes/genericbush,
+/obj/structure/flora/bush/lavendergrass,
+/obj/structure/flora/bush/sparsegrass,
+/obj/structure/flora/bush/fullgrass,
+/obj/structure/flora/bush/flowers_br,
+/obj/structure/flora/bush/generic,
 /turf/open/floor/grass,
 /area/centcom/central_command_areas/evacuation)
 "qz" = (
-/obj/structure/flora/ausbushes/lavendergrass,
-/obj/structure/flora/ausbushes/sparsegrass,
-/obj/structure/flora/ausbushes/fullgrass,
-/obj/structure/flora/ausbushes/grassybush,
-/obj/structure/flora/ausbushes/ppflowers,
-/obj/structure/flora/ausbushes/pointybush,
+/obj/structure/flora/bush/lavendergrass,
+/obj/structure/flora/bush/sparsegrass,
+/obj/structure/flora/bush/fullgrass,
+/obj/structure/flora/bush/grassy,
+/obj/structure/flora/bush/flowers_pp,
+/obj/structure/flora/bush/pointy,
 /turf/open/floor/grass,
 /area/centcom/central_command_areas/evacuation)
 "qA" = (
-/obj/structure/flora/ausbushes/lavendergrass,
-/obj/structure/flora/ausbushes/sparsegrass,
-/obj/structure/flora/ausbushes/fullgrass,
-/obj/structure/flora/ausbushes/grassybush,
-/obj/structure/flora/ausbushes/ppflowers,
-/obj/structure/flora/ausbushes/pointybush,
+/obj/structure/flora/bush/lavendergrass,
+/obj/structure/flora/bush/sparsegrass,
+/obj/structure/flora/bush/fullgrass,
+/obj/structure/flora/bush/grassy,
+/obj/structure/flora/bush/flowers_pp,
+/obj/structure/flora/bush/pointy,
 /obj/machinery/light/directional/north,
 /turf/open/floor/grass,
 /area/centcom/central_command_areas/evacuation)
 "qB" = (
-/obj/structure/flora/ausbushes/ppflowers,
-/obj/structure/flora/ausbushes/lavendergrass,
+/obj/structure/flora/bush/flowers_pp,
+/obj/structure/flora/bush/lavendergrass,
 /turf/open/floor/grass,
 /area/centcom/central_command_areas/evacuation)
 "qC" = (
-/obj/structure/flora/ausbushes/ywflowers,
-/obj/structure/flora/ausbushes/lavendergrass,
-/obj/structure/flora/ausbushes/brflowers,
+/obj/structure/flora/bush/flowers_yw,
+/obj/structure/flora/bush/lavendergrass,
+/obj/structure/flora/bush/flowers_br,
 /obj/machinery/light/directional/north,
 /turf/open/floor/grass,
 /area/centcom/central_command_areas/evacuation)
 "qD" = (
-/obj/structure/flora/ausbushes/brflowers,
-/obj/structure/flora/ausbushes/lavendergrass,
+/obj/structure/flora/bush/flowers_br,
+/obj/structure/flora/bush/lavendergrass,
 /turf/open/floor/grass,
 /area/centcom/central_command_areas/evacuation)
 "qE" = (
@@ -5763,7 +5763,7 @@
 "qQ" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Administrative Office";
-	req_access_txt = "109"
+	req_access = list("cent_captain")
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
 /obj/effect/turf_decal/stripes/line,
@@ -5776,7 +5776,7 @@
 "qS" = (
 /obj/machinery/door/airlock/centcom{
 	name = "CentCom Security";
-	req_access_txt = "101"
+	req_access = list("cent_general")
 	},
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
@@ -5791,11 +5791,11 @@
 /turf/open/floor/iron,
 /area/centcom/central_command_areas/control)
 "qU" = (
-/obj/structure/flora/ausbushes/lavendergrass,
-/obj/structure/flora/ausbushes/fullgrass,
-/obj/structure/flora/ausbushes/ywflowers,
-/obj/structure/flora/ausbushes/grassybush,
-/obj/structure/flora/ausbushes/palebush,
+/obj/structure/flora/bush/lavendergrass,
+/obj/structure/flora/bush/fullgrass,
+/obj/structure/flora/bush/flowers_yw,
+/obj/structure/flora/bush/grassy,
+/obj/structure/flora/bush/pale,
 /turf/open/misc/asteroid,
 /area/centcom/central_command_areas/evacuation)
 "qV" = (
@@ -5803,8 +5803,8 @@
 /turf/open/floor/plating,
 /area/centcom/central_command_areas/evacuation)
 "qW" = (
-/obj/structure/flora/ausbushes/lavendergrass,
-/obj/structure/flora/ausbushes/ywflowers,
+/obj/structure/flora/bush/lavendergrass,
+/obj/structure/flora/bush/flowers_yw,
 /turf/open/floor/grass,
 /area/centcom/central_command_areas/evacuation)
 "qX" = (
@@ -5812,8 +5812,8 @@
 /turf/open/floor/grass,
 /area/centcom/central_command_areas/evacuation)
 "qY" = (
-/obj/structure/flora/ausbushes/lavendergrass,
-/obj/structure/flora/ausbushes/brflowers,
+/obj/structure/flora/bush/lavendergrass,
+/obj/structure/flora/bush/flowers_br,
 /turf/open/floor/grass,
 /area/centcom/central_command_areas/evacuation)
 "qZ" = (
@@ -6034,9 +6034,9 @@
 /turf/open/floor/iron,
 /area/centcom/central_command_areas/admin/storage)
 "rF" = (
-/obj/structure/flora/ausbushes/sparsegrass,
-/obj/structure/flora/ausbushes/grassybush,
-/obj/structure/flora/ausbushes/fernybush,
+/obj/structure/flora/bush/sparsegrass,
+/obj/structure/flora/bush/grassy,
+/obj/structure/flora/bush/ferny,
 /turf/open/floor/iron{
 	dir = 6;
 	icon_state = "asteroid8";
@@ -6049,9 +6049,9 @@
 /turf/open/floor/iron/dark,
 /area/centcom/central_command_areas/supply)
 "rH" = (
-/obj/structure/flora/ausbushes/sparsegrass,
-/obj/structure/flora/ausbushes/lavendergrass,
-/obj/structure/flora/ausbushes/fernybush,
+/obj/structure/flora/bush/sparsegrass,
+/obj/structure/flora/bush/lavendergrass,
+/obj/structure/flora/bush/ferny,
 /obj/machinery/light/directional/east,
 /turf/open/floor/iron{
 	icon_state = "asteroid5";
@@ -6067,21 +6067,21 @@
 /turf/open/floor/iron,
 /area/centcom/central_command_areas/fore)
 "rJ" = (
-/obj/structure/flora/ausbushes/lavendergrass,
-/obj/structure/flora/ausbushes/sparsegrass,
-/obj/structure/flora/ausbushes/fullgrass,
-/obj/structure/flora/ausbushes/brflowers,
-/obj/structure/flora/ausbushes/genericbush,
+/obj/structure/flora/bush/lavendergrass,
+/obj/structure/flora/bush/sparsegrass,
+/obj/structure/flora/bush/fullgrass,
+/obj/structure/flora/bush/flowers_br,
+/obj/structure/flora/bush/generic,
 /obj/machinery/light/directional/west,
 /turf/open/floor/grass,
 /area/centcom/central_command_areas/fore)
 "rK" = (
-/obj/structure/flora/ausbushes/lavendergrass,
-/obj/structure/flora/ausbushes/sparsegrass,
-/obj/structure/flora/ausbushes/fullgrass,
-/obj/structure/flora/ausbushes/grassybush,
-/obj/structure/flora/ausbushes/ppflowers,
-/obj/structure/flora/ausbushes/pointybush,
+/obj/structure/flora/bush/lavendergrass,
+/obj/structure/flora/bush/sparsegrass,
+/obj/structure/flora/bush/fullgrass,
+/obj/structure/flora/bush/grassy,
+/obj/structure/flora/bush/flowers_pp,
+/obj/structure/flora/bush/pointy,
 /turf/open/floor/grass,
 /area/centcom/central_command_areas/control)
 "rL" = (
@@ -6146,20 +6146,20 @@
 /turf/open/floor/iron,
 /area/centcom/central_command_areas/prison)
 "rT" = (
-/obj/structure/flora/ausbushes/brflowers,
-/obj/structure/flora/ausbushes/lavendergrass,
+/obj/structure/flora/bush/flowers_br,
+/obj/structure/flora/bush/lavendergrass,
 /obj/structure/window/reinforced,
 /turf/open/floor/grass,
 /area/centcom/central_command_areas/evacuation)
 "rU" = (
-/obj/structure/flora/ausbushes/ppflowers,
-/obj/structure/flora/ausbushes/lavendergrass,
+/obj/structure/flora/bush/flowers_pp,
+/obj/structure/flora/bush/lavendergrass,
 /obj/structure/window/reinforced,
 /turf/open/floor/grass,
 /area/centcom/central_command_areas/evacuation)
 "rV" = (
-/obj/structure/flora/ausbushes/ywflowers,
-/obj/structure/flora/ausbushes/lavendergrass,
+/obj/structure/flora/bush/flowers_yw,
+/obj/structure/flora/bush/lavendergrass,
 /obj/structure/window/reinforced,
 /turf/open/floor/grass,
 /area/centcom/central_command_areas/evacuation)
@@ -6424,7 +6424,7 @@
 	dir = 8
 	},
 /obj/machinery/door/airlock/vault{
-	req_access_txt = "109"
+	req_access = list("cent_captain")
 	},
 /obj/machinery/door/poddoor/shutters/indestructible,
 /turf/open/floor/iron,
@@ -6455,7 +6455,7 @@
 "sL" = (
 /obj/machinery/door/airlock/centcom{
 	name = "CentCom Security";
-	req_access_txt = "101"
+	req_access = list("cent_general")
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -7070,11 +7070,11 @@
 /turf/open/floor/iron/dark,
 /area/centcom/central_command_areas/control)
 "uz" = (
-/obj/structure/flora/ausbushes/lavendergrass,
-/obj/structure/flora/ausbushes/sparsegrass,
-/obj/structure/flora/ausbushes/ywflowers,
-/obj/structure/flora/ausbushes/grassybush,
-/obj/structure/flora/ausbushes/palebush,
+/obj/structure/flora/bush/lavendergrass,
+/obj/structure/flora/bush/sparsegrass,
+/obj/structure/flora/bush/flowers_yw,
+/obj/structure/flora/bush/grassy,
+/obj/structure/flora/bush/pale,
 /obj/machinery/light/directional/south,
 /turf/open/misc/asteroid,
 /area/centcom/central_command_areas/evacuation)
@@ -7164,7 +7164,7 @@
 "uO" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Shuttle Control Office";
-	req_access_txt = "109"
+	req_access = list("cent_captain")
 	},
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/iron,
@@ -7240,37 +7240,37 @@
 /turf/open/floor/iron/dark,
 /area/centcom/central_command_areas/admin)
 "uY" = (
-/obj/structure/flora/ausbushes/lavendergrass,
-/obj/structure/flora/ausbushes/sparsegrass,
-/obj/structure/flora/ausbushes/fullgrass,
-/obj/structure/flora/ausbushes/grassybush,
-/obj/structure/flora/ausbushes/ppflowers,
-/obj/structure/flora/ausbushes/leafybush,
+/obj/structure/flora/bush/lavendergrass,
+/obj/structure/flora/bush/sparsegrass,
+/obj/structure/flora/bush/fullgrass,
+/obj/structure/flora/bush/grassy,
+/obj/structure/flora/bush/flowers_pp,
+/obj/structure/flora/bush/leafy,
 /turf/open/floor/grass,
 /area/centcom/central_command_areas/ferry)
 "uZ" = (
-/obj/structure/flora/ausbushes/lavendergrass,
-/obj/structure/flora/ausbushes/sparsegrass,
-/obj/structure/flora/ausbushes/fullgrass,
-/obj/structure/flora/ausbushes/brflowers,
-/obj/structure/flora/ausbushes/pointybush,
+/obj/structure/flora/bush/lavendergrass,
+/obj/structure/flora/bush/sparsegrass,
+/obj/structure/flora/bush/fullgrass,
+/obj/structure/flora/bush/flowers_br,
+/obj/structure/flora/bush/pointy,
 /turf/open/floor/grass,
 /area/centcom/central_command_areas/ferry)
 "va" = (
-/obj/structure/flora/ausbushes/lavendergrass,
-/obj/structure/flora/ausbushes/sparsegrass,
-/obj/structure/flora/ausbushes/fullgrass,
-/obj/structure/flora/ausbushes/brflowers,
-/obj/structure/flora/ausbushes/genericbush,
+/obj/structure/flora/bush/lavendergrass,
+/obj/structure/flora/bush/sparsegrass,
+/obj/structure/flora/bush/fullgrass,
+/obj/structure/flora/bush/flowers_br,
+/obj/structure/flora/bush/generic,
 /turf/open/floor/grass,
 /area/centcom/central_command_areas/ferry)
 "vb" = (
-/obj/structure/flora/ausbushes/lavendergrass,
-/obj/structure/flora/ausbushes/sparsegrass,
-/obj/structure/flora/ausbushes/fullgrass,
-/obj/structure/flora/ausbushes/grassybush,
-/obj/structure/flora/ausbushes/ppflowers,
-/obj/structure/flora/ausbushes/pointybush,
+/obj/structure/flora/bush/lavendergrass,
+/obj/structure/flora/bush/sparsegrass,
+/obj/structure/flora/bush/fullgrass,
+/obj/structure/flora/bush/grassy,
+/obj/structure/flora/bush/flowers_pp,
+/obj/structure/flora/bush/pointy,
 /turf/open/floor/grass,
 /area/centcom/central_command_areas/ferry)
 "vc" = (
@@ -7294,7 +7294,7 @@
 	dir = 1;
 	icon_state = "rightsecure";
 	name = "CentCom Customs";
-	req_access_txt = "109"
+	req_access = list("cent_captain")
 	},
 /obj/machinery/door/window,
 /obj/effect/turf_decal/bot,
@@ -7475,7 +7475,7 @@
 "vF" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Administrative Office";
-	req_access_txt = "109"
+	req_access = list("cent_captain")
 	},
 /obj/effect/turf_decal/stripes/line,
 /obj/structure/cable,
@@ -7512,7 +7512,7 @@
 	name = "Hanger Bay Shutters";
 	pixel_x = -8;
 	pixel_y = 24;
-	req_access_txt = "101"
+	req_access = list("cent_general")
 	},
 /obj/machinery/button/door/indestructible{
 	id = "XCCsec3";
@@ -7798,7 +7798,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/centcom{
 	name = "CentCom Security";
-	req_access_txt = "101"
+	req_access = list("cent_general")
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -7823,7 +7823,7 @@
 	id = "XCCFerry";
 	name = "Hanger Bay Shutters";
 	pixel_y = 24;
-	req_access_txt = "101"
+	req_access = list("cent_general")
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
@@ -7863,7 +7863,7 @@
 "wC" = (
 /obj/machinery/door/airlock/centcom{
 	name = "CentCom Customs";
-	req_access_txt = "109"
+	req_access = list("cent_captain")
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -8472,7 +8472,7 @@
 "yj" = (
 /obj/machinery/door/airlock/centcom{
 	name = "CentCom Security";
-	req_access_txt = "101"
+	req_access = list("cent_general")
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -8502,7 +8502,7 @@
 "yr" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Briefing Room";
-	req_access_txt = "101"
+	req_access = list("cent_general")
 	},
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/iron,
@@ -8689,8 +8689,8 @@
 /area/centcom/syndicate_mothership/control)
 "yR" = (
 /obj/structure/flora/rock/pile,
-/obj/structure/flora/ausbushes/grassybush,
-/obj/structure/flora/ausbushes/lavendergrass,
+/obj/structure/flora/bush/grassy,
+/obj/structure/flora/bush/lavendergrass,
 /obj/structure/railing{
 	dir = 8
 	},
@@ -9028,11 +9028,11 @@
 /turf/open/floor/iron/white,
 /area/centcom/central_command_areas/control)
 "zL" = (
-/obj/structure/flora/ausbushes/lavendergrass,
-/obj/structure/flora/ausbushes/fullgrass,
-/obj/structure/flora/ausbushes/ywflowers,
-/obj/structure/flora/ausbushes/grassybush,
-/obj/structure/flora/ausbushes/palebush,
+/obj/structure/flora/bush/lavendergrass,
+/obj/structure/flora/bush/fullgrass,
+/obj/structure/flora/bush/flowers_yw,
+/obj/structure/flora/bush/grassy,
+/obj/structure/flora/bush/pale,
 /obj/machinery/light/directional/north,
 /turf/open/misc/asteroid,
 /area/centcom/central_command_areas/evacuation)
@@ -9070,7 +9070,7 @@
 /turf/open/floor/grass,
 /area/centcom/wizard_station)
 "zR" = (
-/obj/structure/flora/ausbushes/ywflowers,
+/obj/structure/flora/bush/flowers_yw,
 /obj/machinery/light/directional/north,
 /turf/open/floor/grass,
 /area/centcom/central_command_areas/holding)
@@ -9781,7 +9781,7 @@
 "BM" = (
 /obj/machinery/door/airlock/centcom{
 	name = "CentCom Security";
-	req_access_txt = "101"
+	req_access = list("cent_general")
 	},
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/iron,
@@ -9795,7 +9795,7 @@
 	dir = 1;
 	icon_state = "rightsecure";
 	name = "CentCom Customs";
-	req_access_txt = "109"
+	req_access = list("cent_captain")
 	},
 /obj/effect/turf_decal/bot,
 /turf/open/floor/iron,
@@ -9819,7 +9819,7 @@
 	dir = 1;
 	icon_state = "rightsecure";
 	name = "CentCom Customs";
-	req_access_txt = "109"
+	req_access = list("cent_captain")
 	},
 /obj/effect/turf_decal/bot,
 /turf/open/floor/iron,
@@ -9902,11 +9902,11 @@
 /turf/open/floor/iron/dark,
 /area/centcom/central_command_areas/evacuation)
 "Cd" = (
-/obj/structure/flora/ausbushes/lavendergrass,
-/obj/structure/flora/ausbushes/sparsegrass,
-/obj/structure/flora/ausbushes/fullgrass,
-/obj/structure/flora/ausbushes/brflowers,
-/obj/structure/flora/ausbushes/genericbush,
+/obj/structure/flora/bush/lavendergrass,
+/obj/structure/flora/bush/sparsegrass,
+/obj/structure/flora/bush/fullgrass,
+/obj/structure/flora/bush/flowers_br,
+/obj/structure/flora/bush/generic,
 /obj/machinery/light/directional/south,
 /turf/open/floor/grass,
 /area/centcom/central_command_areas/evacuation)
@@ -10635,7 +10635,7 @@
 	dir = 4;
 	icon_state = "rightsecure";
 	name = "CentCom Customs";
-	req_access_txt = "109"
+	req_access = list("cent_captain")
 	},
 /obj/effect/turf_decal/bot,
 /turf/open/floor/iron,
@@ -10650,7 +10650,7 @@
 	dir = 8;
 	icon_state = "rightsecure";
 	name = "CentCom Customs";
-	req_access_txt = "109"
+	req_access = list("cent_captain")
 	},
 /obj/effect/turf_decal/bot,
 /turf/open/floor/iron,
@@ -10940,7 +10940,7 @@
 "EB" = (
 /obj/machinery/door/airlock/centcom{
 	name = "CentCom Security";
-	req_access_txt = "101"
+	req_access = list("cent_general")
 	},
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
@@ -10965,18 +10965,18 @@
 /turf/open/floor/iron/dark,
 /area/centcom/tdome/observation)
 "EG" = (
-/obj/structure/flora/ausbushes/sparsegrass,
-/obj/structure/flora/ausbushes/lavendergrass,
-/obj/structure/flora/ausbushes/fernybush,
+/obj/structure/flora/bush/sparsegrass,
+/obj/structure/flora/bush/lavendergrass,
+/obj/structure/flora/bush/ferny,
 /turf/open/floor/iron{
 	icon_state = "asteroid5";
 	name = "plating"
 	},
 /area/centcom/tdome/observation)
 "EH" = (
-/obj/structure/flora/ausbushes/sparsegrass,
-/obj/structure/flora/ausbushes/grassybush,
-/obj/structure/flora/ausbushes/fernybush,
+/obj/structure/flora/bush/sparsegrass,
+/obj/structure/flora/bush/grassy,
+/obj/structure/flora/bush/ferny,
 /turf/open/floor/iron{
 	dir = 6;
 	icon_state = "asteroid8";
@@ -11059,19 +11059,19 @@
 /turf/open/floor/iron,
 /area/centcom/tdome/observation)
 "ET" = (
-/obj/structure/flora/ausbushes/lavendergrass,
-/obj/structure/flora/ausbushes/sparsegrass,
-/obj/structure/flora/ausbushes/ywflowers,
-/obj/structure/flora/ausbushes/grassybush,
-/obj/structure/flora/ausbushes/palebush,
+/obj/structure/flora/bush/lavendergrass,
+/obj/structure/flora/bush/sparsegrass,
+/obj/structure/flora/bush/flowers_yw,
+/obj/structure/flora/bush/grassy,
+/obj/structure/flora/bush/pale,
 /turf/open/misc/asteroid,
 /area/centcom/tdome/observation)
 "EU" = (
-/obj/structure/flora/ausbushes/lavendergrass,
-/obj/structure/flora/ausbushes/fullgrass,
-/obj/structure/flora/ausbushes/ywflowers,
-/obj/structure/flora/ausbushes/grassybush,
-/obj/structure/flora/ausbushes/palebush,
+/obj/structure/flora/bush/lavendergrass,
+/obj/structure/flora/bush/fullgrass,
+/obj/structure/flora/bush/flowers_yw,
+/obj/structure/flora/bush/grassy,
+/obj/structure/flora/bush/pale,
 /turf/open/misc/asteroid,
 /area/centcom/tdome/observation)
 "EV" = (
@@ -11196,7 +11196,7 @@
 	base_state = "rightsecure";
 	icon_state = "rightsecure";
 	name = "Thunderdome Booth";
-	req_access_txt = "109"
+	req_access = list("cent_captain")
 	},
 /obj/effect/turf_decal/bot,
 /turf/open/floor/iron,
@@ -11615,7 +11615,7 @@
 "Gx" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Thunderdome";
-	req_access_txt = "101"
+	req_access = list("cent_general")
 	},
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/iron,
@@ -11779,12 +11779,12 @@
 /turf/open/floor/iron/dark,
 /area/centcom/tdome/observation)
 "GK" = (
-/obj/structure/flora/ausbushes/lavendergrass,
-/obj/structure/flora/ausbushes/sparsegrass,
-/obj/structure/flora/ausbushes/fullgrass,
-/obj/structure/flora/ausbushes/grassybush,
-/obj/structure/flora/ausbushes/ppflowers,
-/obj/structure/flora/ausbushes/pointybush,
+/obj/structure/flora/bush/lavendergrass,
+/obj/structure/flora/bush/sparsegrass,
+/obj/structure/flora/bush/fullgrass,
+/obj/structure/flora/bush/grassy,
+/obj/structure/flora/bush/flowers_pp,
+/obj/structure/flora/bush/pointy,
 /turf/open/floor/grass,
 /area/centcom/tdome/observation)
 "GL" = (
@@ -11817,11 +11817,11 @@
 /turf/open/floor/iron/grimy,
 /area/centcom/tdome/observation)
 "GP" = (
-/obj/structure/flora/ausbushes/lavendergrass,
-/obj/structure/flora/ausbushes/sparsegrass,
-/obj/structure/flora/ausbushes/fullgrass,
-/obj/structure/flora/ausbushes/brflowers,
-/obj/structure/flora/ausbushes/genericbush,
+/obj/structure/flora/bush/lavendergrass,
+/obj/structure/flora/bush/sparsegrass,
+/obj/structure/flora/bush/fullgrass,
+/obj/structure/flora/bush/flowers_br,
+/obj/structure/flora/bush/generic,
 /turf/open/floor/grass,
 /area/centcom/tdome/observation)
 "GQ" = (
@@ -12231,7 +12231,7 @@
 "HS" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Thunderdome Locker Room";
-	req_access_txt = "101"
+	req_access = list("cent_general")
 	},
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/iron,
@@ -12462,18 +12462,18 @@
 /turf/closed/indestructible/riveted,
 /area/centcom/tdome/administration)
 "Iw" = (
-/obj/structure/flora/ausbushes/lavendergrass,
-/obj/structure/flora/ausbushes/fullgrass,
-/obj/structure/flora/ausbushes/ywflowers,
-/obj/structure/flora/ausbushes/grassybush,
-/obj/structure/flora/ausbushes/palebush,
+/obj/structure/flora/bush/lavendergrass,
+/obj/structure/flora/bush/fullgrass,
+/obj/structure/flora/bush/flowers_yw,
+/obj/structure/flora/bush/grassy,
+/obj/structure/flora/bush/pale,
 /obj/machinery/light/directional/west,
 /turf/open/misc/asteroid,
 /area/centcom/tdome/administration)
 "Ix" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Thunderdome Administration";
-	req_access_txt = "102"
+	req_access = list("cent_thunder")
 	},
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
@@ -12639,9 +12639,9 @@
 /turf/open/floor/iron,
 /area/centcom/tdome/arena)
 "IQ" = (
-/obj/structure/flora/ausbushes/sparsegrass,
-/obj/structure/flora/ausbushes/grassybush,
-/obj/structure/flora/ausbushes/fernybush,
+/obj/structure/flora/bush/sparsegrass,
+/obj/structure/flora/bush/grassy,
+/obj/structure/flora/bush/ferny,
 /obj/machinery/light/directional/east,
 /turf/open/floor/iron{
 	dir = 6;
@@ -12725,9 +12725,9 @@
 /turf/open/floor/iron,
 /area/centcom/tdome/arena)
 "Jd" = (
-/obj/structure/flora/ausbushes/sparsegrass,
-/obj/structure/flora/ausbushes/lavendergrass,
-/obj/structure/flora/ausbushes/fernybush,
+/obj/structure/flora/bush/sparsegrass,
+/obj/structure/flora/bush/lavendergrass,
+/obj/structure/flora/bush/ferny,
 /turf/open/floor/iron{
 	icon_state = "asteroid5";
 	name = "plating"
@@ -12792,17 +12792,17 @@
 /turf/open/floor/iron,
 /area/centcom/tdome/arena)
 "Jm" = (
-/obj/structure/flora/ausbushes/lavendergrass,
-/obj/structure/flora/ausbushes/sparsegrass,
-/obj/structure/flora/ausbushes/ywflowers,
-/obj/structure/flora/ausbushes/grassybush,
-/obj/structure/flora/ausbushes/palebush,
+/obj/structure/flora/bush/lavendergrass,
+/obj/structure/flora/bush/sparsegrass,
+/obj/structure/flora/bush/flowers_yw,
+/obj/structure/flora/bush/grassy,
+/obj/structure/flora/bush/pale,
 /turf/open/misc/asteroid,
 /area/centcom/tdome/administration)
 "Jn" = (
-/obj/structure/flora/ausbushes/sparsegrass,
-/obj/structure/flora/ausbushes/grassybush,
-/obj/structure/flora/ausbushes/fernybush,
+/obj/structure/flora/bush/sparsegrass,
+/obj/structure/flora/bush/grassy,
+/obj/structure/flora/bush/ferny,
 /turf/open/floor/iron{
 	dir = 6;
 	icon_state = "asteroid8";
@@ -12828,11 +12828,11 @@
 /turf/open/floor/circuit/green,
 /area/centcom/tdome/arena)
 "Jr" = (
-/obj/structure/flora/ausbushes/lavendergrass,
-/obj/structure/flora/ausbushes/fullgrass,
-/obj/structure/flora/ausbushes/ywflowers,
-/obj/structure/flora/ausbushes/grassybush,
-/obj/structure/flora/ausbushes/palebush,
+/obj/structure/flora/bush/lavendergrass,
+/obj/structure/flora/bush/fullgrass,
+/obj/structure/flora/bush/flowers_yw,
+/obj/structure/flora/bush/grassy,
+/obj/structure/flora/bush/pale,
 /turf/open/misc/asteroid,
 /area/centcom/tdome/administration)
 "Js" = (
@@ -13116,7 +13116,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/centcom{
 	name = "Thunderdome Administration";
-	req_access_txt = "102"
+	req_access = list("cent_thunder")
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -13201,7 +13201,7 @@
 /obj/machinery/button/door/indestructible{
 	id = "thunderdomehea";
 	name = "Heavy Supply Control";
-	req_access_txt = "102"
+	req_access = list("cent_thunder")
 	},
 /obj/structure/table/reinforced,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
@@ -13211,7 +13211,7 @@
 /obj/machinery/button/door/indestructible{
 	id = "thunderdome";
 	name = "Main Blast Doors Control";
-	req_access_txt = "102"
+	req_access = list("cent_thunder")
 	},
 /obj/structure/table/reinforced,
 /obj/machinery/light/directional/south,
@@ -13223,7 +13223,7 @@
 /obj/machinery/button/door/indestructible{
 	id = "thunderdomegen";
 	name = "General Supply Control";
-	req_access_txt = "102"
+	req_access = list("cent_thunder")
 	},
 /obj/structure/table/reinforced,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
@@ -13265,20 +13265,20 @@
 /turf/open/floor/iron/dark,
 /area/centcom/tdome/administration)
 "KA" = (
-/obj/structure/flora/ausbushes/lavendergrass,
-/obj/structure/flora/ausbushes/sparsegrass,
-/obj/structure/flora/ausbushes/fullgrass,
-/obj/structure/flora/ausbushes/brflowers,
-/obj/structure/flora/ausbushes/genericbush,
+/obj/structure/flora/bush/lavendergrass,
+/obj/structure/flora/bush/sparsegrass,
+/obj/structure/flora/bush/fullgrass,
+/obj/structure/flora/bush/flowers_br,
+/obj/structure/flora/bush/generic,
 /turf/open/floor/grass,
 /area/centcom/tdome/administration)
 "KB" = (
-/obj/structure/flora/ausbushes/lavendergrass,
-/obj/structure/flora/ausbushes/sparsegrass,
-/obj/structure/flora/ausbushes/fullgrass,
-/obj/structure/flora/ausbushes/grassybush,
-/obj/structure/flora/ausbushes/ppflowers,
-/obj/structure/flora/ausbushes/pointybush,
+/obj/structure/flora/bush/lavendergrass,
+/obj/structure/flora/bush/sparsegrass,
+/obj/structure/flora/bush/fullgrass,
+/obj/structure/flora/bush/grassy,
+/obj/structure/flora/bush/flowers_pp,
+/obj/structure/flora/bush/pointy,
 /obj/machinery/light/directional/south,
 /turf/open/floor/grass,
 /area/centcom/tdome/administration)
@@ -13310,12 +13310,12 @@
 /turf/open/floor/iron,
 /area/centcom/central_command_areas/supplypod/loading/one)
 "KG" = (
-/obj/structure/flora/ausbushes/lavendergrass,
-/obj/structure/flora/ausbushes/sparsegrass,
-/obj/structure/flora/ausbushes/fullgrass,
-/obj/structure/flora/ausbushes/grassybush,
-/obj/structure/flora/ausbushes/ppflowers,
-/obj/structure/flora/ausbushes/pointybush,
+/obj/structure/flora/bush/lavendergrass,
+/obj/structure/flora/bush/sparsegrass,
+/obj/structure/flora/bush/fullgrass,
+/obj/structure/flora/bush/grassy,
+/obj/structure/flora/bush/flowers_pp,
+/obj/structure/flora/bush/pointy,
 /turf/open/floor/grass,
 /area/centcom/tdome/administration)
 "KH" = (
@@ -13514,7 +13514,7 @@
 /obj/machinery/door/window/right/directional/north{
 	dir = 4;
 	name = "Security Desk";
-	req_access_txt = "103"
+	req_access = list("cent_specops")
 	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/centcom/central_command_areas/evacuation/ship)
@@ -13587,7 +13587,7 @@
 "LD" = (
 /obj/machinery/door/airlock/titanium{
 	name = "Cockpit";
-	req_access_txt = "109"
+	req_access = list("cent_captain")
 	},
 /turf/open/floor/mineral/titanium,
 /area/centcom/central_command_areas/evacuation/ship)
@@ -14062,7 +14062,7 @@
 "Nk" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Thunderdome";
-	req_access_txt = "101"
+	req_access = list("cent_general")
 	},
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
@@ -14189,7 +14189,7 @@
 "NG" = (
 /obj/machinery/door/airlock/centcom{
 	name = "CentCom Security";
-	req_access_txt = "101"
+	req_access = list("cent_general")
 	},
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
@@ -14597,7 +14597,7 @@
 "OQ" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Briefing Room";
-	req_access_txt = "101"
+	req_access = list("cent_general")
 	},
 /obj/effect/turf_decal/stripes/line,
 /obj/structure/cable,
@@ -14811,7 +14811,7 @@
 /turf/open/floor/iron,
 /area/centcom/central_command_areas/supplypod)
 "PA" = (
-/obj/structure/flora/ausbushes/ywflowers,
+/obj/structure/flora/bush/flowers_yw,
 /obj/structure/flora/tree/jungle/small,
 /turf/open/floor/grass,
 /area/centcom/central_command_areas/holding)
@@ -15165,9 +15165,9 @@
 /turf/open/lava/plasma/ice_moon,
 /area/centcom/syndicate_mothership/control)
 "QL" = (
-/obj/structure/flora/ausbushes/fernybush,
-/obj/structure/flora/ausbushes/ppflowers,
-/obj/structure/flora/ausbushes/palebush,
+/obj/structure/flora/bush/ferny,
+/obj/structure/flora/bush/flowers_pp,
+/obj/structure/flora/bush/pale,
 /obj/structure/window/reinforced/fulltile,
 /turf/open/floor/grass,
 /area/centcom/central_command_areas/holding)
@@ -15288,11 +15288,11 @@
 /turf/open/floor/wood/large,
 /area/centcom/central_command_areas/holding)
 "QY" = (
-/obj/structure/flora/ausbushes/lavendergrass,
-/obj/structure/flora/ausbushes/sparsegrass,
-/obj/structure/flora/ausbushes/fullgrass,
-/obj/structure/flora/ausbushes/brflowers,
-/obj/structure/flora/ausbushes/genericbush,
+/obj/structure/flora/bush/lavendergrass,
+/obj/structure/flora/bush/sparsegrass,
+/obj/structure/flora/bush/fullgrass,
+/obj/structure/flora/bush/flowers_br,
+/obj/structure/flora/bush/generic,
 /turf/open/floor/grass,
 /area/centcom/central_command_areas/prison)
 "QZ" = (
@@ -16054,8 +16054,8 @@
 /turf/open/floor/iron,
 /area/centcom/central_command_areas/supplypod/loading/three)
 "TC" = (
-/obj/structure/flora/ausbushes/ywflowers,
-/obj/structure/flora/ausbushes/brflowers,
+/obj/structure/flora/bush/flowers_yw,
+/obj/structure/flora/bush/flowers_br,
 /turf/open/floor/grass,
 /area/centcom/central_command_areas/holding)
 "TE" = (
@@ -16276,7 +16276,7 @@
 "Un" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Thunderdome";
-	req_access_txt = "101"
+	req_access = list("cent_general")
 	},
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
@@ -16450,7 +16450,7 @@
 "UO" = (
 /obj/machinery/door/airlock/centcom{
 	name = "CentCom Security";
-	req_access_txt = "101"
+	req_access = list("cent_general")
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -16876,7 +16876,7 @@
 "Wc" = (
 /obj/machinery/door/airlock/centcom{
 	name = "CentCom Security";
-	req_access_txt = "101"
+	req_access = list("cent_general")
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -16933,7 +16933,7 @@
 /turf/open/floor/iron,
 /area/centcom/syndicate_mothership/control)
 "Wi" = (
-/obj/structure/flora/rock/jungle{
+/obj/structure/flora/rock/pile/jungle{
 	pixel_x = -12;
 	pixel_y = 15
 	},
@@ -16969,7 +16969,7 @@
 /turf/open/floor/mineral/titanium/yellow,
 /area/centcom/syndicate_mothership/control)
 "Wm" = (
-/obj/structure/flora/ausbushes/ywflowers,
+/obj/structure/flora/bush/flowers_yw,
 /turf/open/floor/grass,
 /area/centcom/central_command_areas/holding)
 "Wn" = (
@@ -17132,7 +17132,7 @@
 "WJ" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Thunderdome Administration";
-	req_access_txt = "102"
+	req_access = list("cent_thunder")
 	},
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
@@ -17184,7 +17184,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/centcom{
 	name = "CentCom Security";
-	req_access_txt = "101"
+	req_access = list("cent_general")
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -17356,7 +17356,7 @@
 "Xt" = (
 /obj/machinery/door/airlock/centcom{
 	name = "CentCom Security";
-	req_access_txt = "101"
+	req_access = list("cent_general")
 	},
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
@@ -17518,9 +17518,9 @@
 	},
 /area/centcom/syndicate_mothership/control)
 "XZ" = (
-/obj/structure/flora/ausbushes/sparsegrass,
-/obj/structure/flora/ausbushes/grassybush,
-/obj/structure/flora/ausbushes/fernybush,
+/obj/structure/flora/bush/sparsegrass,
+/obj/structure/flora/bush/grassy,
+/obj/structure/flora/bush/ferny,
 /turf/open/floor/iron{
 	dir = 6;
 	icon_state = "asteroid8";
@@ -17599,7 +17599,7 @@
 "Yt" = (
 /obj/machinery/door/airlock/centcom{
 	name = "CentCom Security";
-	req_access_txt = "101"
+	req_access = list("cent_general")
 	},
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
@@ -18042,7 +18042,7 @@
 "ZX" = (
 /obj/machinery/door/airlock/centcom{
 	name = "CentCom Security";
-	req_access_txt = "101"
+	req_access = list("cent_general")
 	},
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{

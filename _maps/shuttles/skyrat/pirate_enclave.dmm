@@ -47,7 +47,7 @@
 /turf/closed/wall/mineral/titanium/spaceship/nodiagonal,
 /area/shuttle/syndicate/slaver)
 "aG" = (
-/obj/structure/flora/rock/jungle,
+/obj/structure/flora/rock/pile/jungle,
 /turf/open/floor/grass,
 /area/shuttle/syndicate/slaver)
 "aT" = (
@@ -167,7 +167,7 @@
 "db" = (
 /obj/machinery/door/airlock/grunge{
 	name = "Captain's Bathroom";
-	req_access_txt = "150"
+	req_access = list("syndicate")
 	},
 /obj/effect/mapping_helpers/airlock/cutaiwire,
 /obj/effect/turf_decal/siding/wood,
@@ -398,7 +398,7 @@
 "ha" = (
 /obj/machinery/door/airlock/grunge{
 	name = "Bridge";
-	req_access_txt = "150"
+	req_access = list("syndicate")
 	},
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
 	dir = 4
@@ -417,7 +417,7 @@
 	name = "Bridge Blast Doors";
 	pixel_x = 0;
 	pixel_y = 24;
-	req_access_txt = "150"
+	req_access = list("syndicate")
 	},
 /turf/open/floor/iron/dark/brown,
 /area/shuttle/syndicate/slaver)
@@ -659,7 +659,7 @@
 	},
 /obj/machinery/door/airlock/engineering{
 	name = "Engineering";
-	req_access_txt = "150"
+	req_access = list("syndicate")
 	},
 /turf/open/floor/iron/dark/textured_large,
 /area/shuttle/syndicate/slaver)
@@ -721,7 +721,7 @@
 "mv" = (
 /obj/machinery/door/airlock/atmos{
 	name = "Atmospherics";
-	req_access_txt = "150"
+	req_access = list("syndicate")
 	},
 /obj/effect/mapping_helpers/airlock/cutaiwire,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
@@ -729,13 +729,13 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/shuttle/syndicate/slaver)
 "mx" = (
-/obj/structure/flora/ausbushes/ywflowers,
+/obj/structure/flora/bush/flowers_yw,
 /turf/open/floor/grass,
 /area/shuttle/syndicate/slaver)
 "mC" = (
 /obj/machinery/door/airlock/atmos{
 	name = "Atmospherics";
-	req_access_txt = "150"
+	req_access = list("syndicate")
 	},
 /obj/effect/mapping_helpers/airlock/cutaiwire,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
@@ -825,7 +825,7 @@
 /obj/structure/closet/secure_closet{
 	icon_state = "cargo";
 	name = "Crew Locker";
-	req_access_txt = "150"
+	req_access = list("syndicate")
 	},
 /obj/item/grenade/smokebomb,
 /obj/item/grenade/smokebomb,
@@ -982,7 +982,7 @@
 "rh" = (
 /obj/machinery/door/airlock/medical{
 	name = "Medbay";
-	req_access_txt = "150"
+	req_access = list("syndicate")
 	},
 /obj/effect/mapping_helpers/airlock/cutaiwire,
 /turf/open/floor/iron/dark/textured_large,
@@ -1198,7 +1198,7 @@
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
 "vO" = (
-/obj/structure/flora/junglebush/b,
+/obj/structure/flora/bush/jungle/b,
 /turf/open/floor/grass,
 /area/shuttle/syndicate/slaver)
 "vS" = (
@@ -1302,7 +1302,7 @@
 "xA" = (
 /obj/machinery/door/airlock/grunge{
 	name = "Captain's Quarters";
-	req_access_txt = "150"
+	req_access = list("syndicate")
 	},
 /obj/effect/mapping_helpers/airlock/cutaiwire,
 /obj/effect/turf_decal/siding/wood{
@@ -1439,7 +1439,7 @@
 /obj/structure/closet/secure_closet{
 	icon_state = "eng";
 	name = "Equipment Locker";
-	req_access_txt = "150"
+	req_access = list("syndicate")
 	},
 /obj/item/storage/belt,
 /obj/item/holosign_creator/atmos,
@@ -1616,7 +1616,7 @@
 "DA" = (
 /obj/machinery/door/airlock/grunge{
 	name = "Bridge";
-	req_access_txt = "150"
+	req_access = list("syndicate")
 	},
 /obj/effect/mapping_helpers/airlock/cutaiwire,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
@@ -1708,7 +1708,7 @@
 /obj/machinery/button/door/directional/south{
 	id = "privateerslavercellarealockdown";
 	name = "Brig Lockdown";
-	req_access_txt = "150"
+	req_access = list("syndicate")
 	},
 /obj/item/stack/cable_coil{
 	pixel_y = 7
@@ -1780,7 +1780,7 @@
 /obj/structure/closet/secure_closet{
 	icon_state = "qm";
 	name = "Captain's Locker";
-	req_access_txt = "150"
+	req_access = list("syndicate")
 	},
 /obj/item/grenade/c4/x4,
 /obj/item/storage/backpack/satchel/flat/empty,
@@ -1837,7 +1837,7 @@
 "II" = (
 /obj/machinery/door/airlock/grunge{
 	name = "Captain's Quarters";
-	req_access_txt = "150"
+	req_access = list("syndicate")
 	},
 /obj/effect/mapping_helpers/airlock/cutaiwire,
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
@@ -2067,7 +2067,7 @@
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
 /obj/machinery/door/airlock/engineering{
 	name = "Engineering";
-	req_access_txt = "150"
+	req_access = list("syndicate")
 	},
 /turf/open/floor/iron/dark/textured_large,
 /area/shuttle/syndicate/slaver)
@@ -2103,7 +2103,7 @@
 "Pl" = (
 /obj/machinery/door/airlock/grunge{
 	name = "Morgue";
-	req_access_txt = "150"
+	req_access = list("syndicate")
 	},
 /obj/effect/mapping_helpers/airlock/cutaiwire,
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
@@ -2228,7 +2228,7 @@
 /obj/structure/closet/secure_closet{
 	icon_state = "cargo";
 	name = "Crew Locker";
-	req_access_txt = "150"
+	req_access = list("syndicate")
 	},
 /obj/item/grenade/smokebomb,
 /obj/item/grenade/smokebomb,
@@ -2242,7 +2242,7 @@
 /turf/open/floor/iron/textured_large,
 /area/shuttle/syndicate/slaver)
 "Rm" = (
-/obj/structure/flora/junglebush/c,
+/obj/structure/flora/bush/jungle/a/style_3,
 /turf/open/floor/grass,
 /area/shuttle/syndicate/slaver)
 "Rn" = (
@@ -2257,7 +2257,7 @@
 "Rv" = (
 /obj/machinery/door/airlock/security/old{
 	name = "Security";
-	req_access_txt = "150"
+	req_access = list("syndicate")
 	},
 /obj/effect/mapping_helpers/airlock/cutaiwire,
 /obj/machinery/door/poddoor/shutters/window/preopen{
@@ -2291,7 +2291,7 @@
 "RH" = (
 /obj/machinery/door/airlock/grunge{
 	name = "Crew Quarters";
-	req_access_txt = "150"
+	req_access = list("syndicate")
 	},
 /obj/effect/mapping_helpers/airlock/cutaiwire,
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
@@ -2405,7 +2405,7 @@
 /turf/open/floor/pod/dark,
 /area/shuttle/syndicate/slaver)
 "TP" = (
-/obj/structure/flora/ausbushes/brflowers,
+/obj/structure/flora/bush/flowers_br,
 /turf/open/floor/grass,
 /area/shuttle/syndicate/slaver)
 "Ul" = (
@@ -2434,7 +2434,7 @@
 	desc = "Kinda sleek. Doesn't offer much privacy.";
 	dir = 8;
 	name = "Prison Cell Door";
-	req_access_txt = "150"
+	req_access = list("syndicate")
 	},
 /turf/open/floor/iron/shuttle/evac{
 	icon_state = "floorsec2"
@@ -2459,7 +2459,7 @@
 /obj/machinery/button/door/directional/north{
 	id = "privateerslavercellarealockdown";
 	name = "Brig Lockdown";
-	req_access_txt = "150"
+	req_access = list("syndicate")
 	},
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
 /turf/open/floor/pod,
@@ -2530,7 +2530,7 @@
 	locked = 0;
 	pixel_x = -27;
 	req_access = null;
-	req_access_txt = "150"
+	req_access = list("syndicate")
 	},
 /obj/structure/railing,
 /turf/open/floor/iron/dark,
@@ -2694,7 +2694,7 @@
 "YS" = (
 /obj/machinery/door/airlock/grunge{
 	name = "Canteen And Crew Supply";
-	req_access_txt = "150"
+	req_access = list("syndicate")
 	},
 /obj/effect/mapping_helpers/airlock/cutaiwire,
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{

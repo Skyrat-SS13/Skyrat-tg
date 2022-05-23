@@ -7,7 +7,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/door/airlock/hatch{
 	name = "EVA Preparation";
-	req_access_txt = "150"
+	req_access = list("syndicate")
 	},
 /turf/open/floor/iron/dark/textured_large,
 /area/shuttle/syndicate/cruiser/airlock)
@@ -164,7 +164,7 @@
 /obj/effect/turf_decal/delivery/white,
 /obj/machinery/door/airlock/command/glass{
 	name = "Bridge";
-	req_access_txt = "150"
+	req_access = list("syndicate")
 	},
 /obj/effect/mapping_helpers/airlock/cutaiwire,
 /obj/structure/cable,
@@ -206,21 +206,21 @@
 	id = "syndicatecruiserwindows";
 	name = "Window Blast Doors";
 	pixel_y = 7;
-	req_access_txt = "150";
+	req_access = list("syndicate");
 	pixel_x = -5
 	},
 /obj/machinery/button/door{
 	id = "syndicatecruiserarmory";
 	name = "Armory Blast Doors";
 	pixel_y = -6;
-	req_access_txt = "150";
+	req_access = list("syndicate");
 	pixel_x = -5
 	},
 /obj/machinery/button/door{
 	id = "syndicatecruiserhall";
 	name = "Hall Shutters";
 	pixel_x = 8;
-	req_access_txt = "150"
+	req_access = list("syndicate")
 	},
 /turf/open/floor/iron/dark/textured_large,
 /area/shuttle/syndicate/cruiser/bridge)
@@ -476,10 +476,10 @@
 	id = "syndicatecruiserhatches";
 	name = "hatches";
 	pixel_y = 32;
-	req_access_txt = "150"
+	req_access = list("syndicate")
 	},
 /obj/machinery/door/airlock/external/glass{
-	req_access_txt = "150"
+	req_access = list("syndicate")
 	},
 /obj/effect/mapping_helpers/airlock/cutaiwire,
 /obj/structure/cable,
@@ -563,7 +563,7 @@
 /obj/machinery/turretid{
 	name = "DANGER: Outer Turret Control";
 	req_access = null;
-	req_access_txt = "150";
+	req_access = list("syndicate");
 	system_id = "cruiser_turrets_outer";
 	pixel_x = -28
 	},
@@ -816,13 +816,13 @@
 	id = "syndicatecruiserbrig";
 	pixel_x = -23;
 	pixel_y = 8;
-	req_access_txt = "150"
+	req_access = list("syndicate")
 	},
 /obj/machinery/button/door{
 	id = "syndicatecruiserbrig";
 	name = "Brig Shutters";
 	pixel_x = -24;
-	req_access_txt = "150";
+	req_access = list("syndicate");
 	pixel_y = -6
 	},
 /turf/open/floor/iron/dark,
@@ -854,7 +854,7 @@
 	id = "syndicatecruiserhall";
 	name = "Hall Shutters";
 	pixel_x = -22;
-	req_access_txt = "150"
+	req_access = list("syndicate")
 	},
 /turf/open/floor/mineral/plastitanium,
 /area/shuttle/syndicate/cruiser/hallway)
@@ -876,7 +876,7 @@
 "ql" = (
 /obj/structure/closet/secure_closet{
 	name = "Secure Storage";
-	req_access_txt = "150"
+	req_access = list("syndicate")
 	},
 /obj/item/storage/box/handcuffs{
 	pixel_x = -4;
@@ -1036,7 +1036,7 @@
 /obj/structure/cable,
 /obj/machinery/door/airlock/engineering{
 	name = "Engine Bay";
-	req_access_txt = "150"
+	req_access = list("syndicate")
 	},
 /obj/effect/mapping_helpers/airlock/cutaiwire,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -1058,7 +1058,7 @@
 /obj/structure/fans/tiny,
 /obj/effect/turf_decal/delivery/white,
 /obj/machinery/door/airlock/external/glass{
-	req_access_txt = "150"
+	req_access = list("syndicate")
 	},
 /obj/effect/mapping_helpers/airlock/cutaiwire,
 /obj/machinery/door/poddoor{
@@ -1068,7 +1068,7 @@
 	id = "syndicatecruiserhatches";
 	name = "hatches";
 	pixel_y = 32;
-	req_access_txt = "150"
+	req_access = list("syndicate")
 	},
 /turf/open/floor/iron/dark/textured_large,
 /area/shuttle/syndicate/cruiser/airlock)
@@ -1184,7 +1184,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/door/airlock/atmos{
 	name = "Atmospherics Storage";
-	req_access_txt = "150"
+	req_access = list("syndicate")
 	},
 /turf/open/floor/iron/dark/textured_large,
 /area/shuttle/syndicate/cruiser/hallway)
@@ -1401,7 +1401,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/door/airlock/hatch{
 	name = "General Storage";
-	req_access_txt = "150"
+	req_access = list("syndicate")
 	},
 /turf/open/floor/iron/dark/textured_large,
 /area/shuttle/syndicate/cruiser/hallway)
@@ -1530,7 +1530,7 @@
 	id = "syndicatecruiserhall";
 	name = "Hall Shutters";
 	pixel_x = -22;
-	req_access_txt = "150"
+	req_access = list("syndicate")
 	},
 /obj/machinery/door/poddoor/shutters{
 	id = "syndicatecruiserhall";
@@ -1542,7 +1542,7 @@
 /obj/effect/turf_decal/delivery/white,
 /obj/machinery/door/airlock/security{
 	name = "Brig";
-	req_access_txt = "150"
+	req_access = list("syndicate")
 	},
 /obj/effect/mapping_helpers/airlock/cutaiwire,
 /obj/structure/cable,
@@ -1608,7 +1608,7 @@
 	name = "Internal Turret Control";
 	pixel_y = 30;
 	req_access = null;
-	req_access_txt = "150";
+	req_access = list("syndicate");
 	system_id = "cruiser_turrets_internal"
 	},
 /turf/open/floor/iron/dark/textured_large,
@@ -1717,7 +1717,7 @@
 "Jt" = (
 /obj/structure/closet/secure_closet{
 	name = "Prisoner Locker";
-	req_access_txt = "150"
+	req_access = list("syndicate")
 	},
 /obj/item/clothing/shoes/sneakers/crimson,
 /obj/item/clothing/shoes/sneakers/crimson,
@@ -1890,7 +1890,7 @@
 /obj/effect/turf_decal/delivery/white,
 /obj/machinery/door/airlock/medical{
 	name = "Medbay";
-	req_access_txt = "150"
+	req_access = list("syndicate")
 	},
 /obj/effect/mapping_helpers/airlock/cutaiwire,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -2212,7 +2212,7 @@
 /obj/effect/turf_decal/delivery/white,
 /obj/machinery/door/airlock/hatch{
 	name = "Armory";
-	req_access_txt = "150"
+	req_access = list("syndicate")
 	},
 /obj/effect/mapping_helpers/airlock/cutaiwire,
 /obj/structure/cable,
@@ -2380,7 +2380,7 @@
 /obj/effect/turf_decal/delivery/white,
 /obj/machinery/door/airlock/hatch{
 	name = "EVA Storage";
-	req_access_txt = "150"
+	req_access = list("syndicate")
 	},
 /obj/effect/mapping_helpers/airlock/cutaiwire,
 /obj/structure/cable,
@@ -2401,7 +2401,7 @@
 /obj/effect/turf_decal/delivery/white,
 /obj/machinery/door/airlock/command/glass{
 	name = "Bridge";
-	req_access_txt = "150"
+	req_access = list("syndicate")
 	},
 /obj/effect/mapping_helpers/airlock/cutaiwire,
 /obj/structure/cable,
@@ -2568,7 +2568,7 @@
 /obj/effect/turf_decal/delivery/white,
 /obj/machinery/door/airlock/medical{
 	name = "Medbay";
-	req_access_txt = "150"
+	req_access = list("syndicate")
 	},
 /obj/effect/mapping_helpers/airlock/cutaiwire,
 /obj/structure/cable,

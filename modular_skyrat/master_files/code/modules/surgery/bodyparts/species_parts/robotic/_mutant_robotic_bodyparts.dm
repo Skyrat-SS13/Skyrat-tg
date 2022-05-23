@@ -6,6 +6,8 @@
 	should_draw_greyscale = TRUE
 	uses_mutcolor = TRUE
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ROBOTIC
+	brute_reduction = 0
+	burn_reduction = 0
 
 /obj/item/bodypart/chest/robot/mutant
 	icon_greyscale = 'modular_skyrat/master_files/icons/mob/species/synthmammal_parts_greyscale.dmi'
@@ -13,22 +15,30 @@
 	should_draw_greyscale = TRUE
 	limb_id = SPECIES_SYNTHMAMMAL
 	is_dimorphic = TRUE
+	brute_reduction = 0
+	burn_reduction = 0
 
 /obj/item/bodypart/l_arm/robot/mutant
 	icon_greyscale = 'modular_skyrat/master_files/icons/mob/species/synthmammal_parts_greyscale.dmi'
 	limb_id = SPECIES_SYNTHMAMMAL
 	should_draw_greyscale = TRUE
+	brute_reduction = 0
+	burn_reduction = 0
 
 /obj/item/bodypart/r_arm/robot/mutant
 	icon_greyscale = 'modular_skyrat/master_files/icons/mob/species/synthmammal_parts_greyscale.dmi'
 	limb_id = SPECIES_SYNTHMAMMAL
 	should_draw_greyscale = TRUE
+	brute_reduction = 0
+	burn_reduction = 0
 
 /obj/item/bodypart/l_leg/robot/mutant
 	icon_greyscale = 'modular_skyrat/master_files/icons/mob/species/synthmammal_parts_greyscale.dmi'
 	limb_id = SPECIES_SYNTHMAMMAL
 	should_draw_greyscale = TRUE
 	digitigrade_type = /obj/item/bodypart/l_leg/robot/digitigrade
+	brute_reduction = 0
+	burn_reduction = 0
 
 /obj/item/bodypart/r_leg/robot/mutant
 	icon_greyscale = 'modular_skyrat/master_files/icons/mob/species/synthmammal_parts_greyscale.dmi'
@@ -36,6 +46,8 @@
 	should_draw_greyscale = TRUE
 	limb_id = SPECIES_SYNTHMAMMAL
 	digitigrade_type = /obj/item/bodypart/r_leg/robot/digitigrade
+	brute_reduction = 0
+	burn_reduction = 0
 
 /obj/item/bodypart/l_leg/robot/digitigrade
 	icon = 'modular_skyrat/master_files/icons/mob/species/synthmammal_parts_greyscale.dmi'
@@ -46,6 +58,8 @@
 	limb_id = "digitigrade"
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ROBOTIC | BODYTYPE_DIGITIGRADE
 	base_limb_id = SPECIES_SYNTHMAMMAL
+	brute_reduction = 0
+	burn_reduction = 0
 
 /obj/item/bodypart/l_leg/robot/digitigrade/update_limb(dropping_limb = FALSE, is_creating = FALSE)
 	. = ..()
@@ -60,6 +74,8 @@
 	limb_id = "digitigrade"
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ROBOTIC | BODYTYPE_DIGITIGRADE
 	base_limb_id = SPECIES_SYNTHMAMMAL
+	brute_reduction = 0
+	burn_reduction = 0
 
 /obj/item/bodypart/r_leg/robot/digitigrade/update_limb(dropping_limb = FALSE, is_creating = FALSE)
 	. = ..()
