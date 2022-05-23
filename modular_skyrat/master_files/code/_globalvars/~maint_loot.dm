@@ -1,4 +1,4 @@
-//Loot pool used by default maintenance loot spawners
+// Loot pool used by default maintenance loot spawners
 GLOBAL_LIST_INIT(maintenance_loot, list(
 	GLOB.trash_loot = MAINT_TRASH_WEIGHT,
 	GLOB.common_loot = MAINT_COMMON_WEIGHT,
@@ -6,7 +6,7 @@ GLOBAL_LIST_INIT(maintenance_loot, list(
 	GLOB.oddity_loot = MAINT_ODD_WEIGHT,
 ))
 
-GLOBAL_LIST_INIT(ratking_trash, list(//Garbage: used by the regal rat mob when spawning garbage.
+GLOBAL_LIST_INIT(ratking_trash, list(// Garbage: used by the regal rat mob when spawning garbage.
 	/obj/item/cigbutt,
 	/obj/item/trash/cheesie,
 	/obj/item/trash/candy,
@@ -18,7 +18,7 @@ GLOBAL_LIST_INIT(ratking_trash, list(//Garbage: used by the regal rat mob when s
 	/obj/item/trash/syndi_cakes
 ))
 
-GLOBAL_LIST_INIT(ratking_coins, list(//Coins: Used by the regal rat mob when spawning coins.
+GLOBAL_LIST_INIT(ratking_coins, list(// Coins: Used by the regal rat mob when spawning coins.
 	/obj/item/coin/iron,
 	/obj/item/coin/silver,
 	/obj/item/coin/plastic,
