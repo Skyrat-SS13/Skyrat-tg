@@ -253,7 +253,7 @@
 	hitsound = SFX_CLOWN_STEP
 	range = 12
 	icon_state = "guardian"
-	embedding = list(embed_chance=70, pain_chance=25, fall_chance=15, jostle_chance=80, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.9, pain_mult=2, rip_time=10)
+	harmful = FALSE
 
 /obj/projectile/bullet/pellet/shotgun_buckshot/honk/Initialize(mapload)
 	. = ..()
