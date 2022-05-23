@@ -11,8 +11,10 @@
 
 // Add a /obj/item/clothing/under/rank/cargo/miner/skyrat if you add miner uniforms
 
-////////////////////////////////////////
-////////////// CARGO TECH //////////////
+/*
+*	CARGO TECH
+*/
+
 /obj/item/clothing/under/rank/cargo/tech/skyrat/utility
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/cargo.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/cargo.dmi'
@@ -61,8 +63,9 @@
 	icon_state = "cargotechjean"
 	can_adjust = FALSE
 
-/////////////////////////////////////////
-///////////// QUARTERMASTER /////////////
+/*
+*	QUARTERMASTER
+*/
 
 /obj/item/clothing/under/rank/cargo/qm/skyrat/gorka
 	name = "quartermaster's gorka"

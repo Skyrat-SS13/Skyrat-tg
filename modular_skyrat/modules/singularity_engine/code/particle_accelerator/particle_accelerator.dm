@@ -152,10 +152,9 @@
 		return 1
 	return 0
 
-///////////
-// PARTS //
-///////////
-
+/*
+*	PARTS
+*/
 
 /obj/structure/particle_accelerator/end_cap
 	name = "alpha particle generation array"

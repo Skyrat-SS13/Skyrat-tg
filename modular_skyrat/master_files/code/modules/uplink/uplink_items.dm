@@ -1,6 +1,6 @@
-/////////////////////////////
-// SKYRAT MODULAR UPLINK ITEMS
-/////////////////////////////
+/*
+*	MODULAR UPLINK ITEMS
+*/
 
 // Place any new uplink items in this file, and explain what they do
 
@@ -11,6 +11,7 @@
 	item = /obj/item/storage/box/syndie_kit/spaceassassin
 	cost = 30 // 40 tc would have been better
 */ // To be balanced
+
 // DANGEROUS
 /datum/uplink_item/dangerous/aps_traitor
 	name = "Stechkin APS Machine Pistol"

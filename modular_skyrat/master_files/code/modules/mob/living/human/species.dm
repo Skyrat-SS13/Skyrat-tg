@@ -1,5 +1,8 @@
-/// Returns a list of strings representing features this species has.
-/// Used by the preferences UI to know what buttons to show.
+/**
+ * Returns a list of strings representing features this species has.
+ *
+ * Used by the preferences UI to know what buttons to show.
+ */
 /datum/species/proc/get_features()
 	var/cached_features = GLOB.features_by_species[type]
 	if (!isnull(cached_features))

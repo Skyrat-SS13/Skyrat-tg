@@ -1,6 +1,6 @@
-///////////////////
-///NORMAL COLLAR///
-///////////////////
+/*
+*	NORMAL COLLAR
+*/
 
 //To determine what kind of stuff we can put in collar.
 
@@ -80,9 +80,9 @@
 	tagname = stripped_input(user, "Would you like to change the name on the tag?", "Name your new pet", "Spot", MAX_NAME_LEN)
 	name = "[initial(name)] - [tagname]"
 
-////////////////////////
-///COLLAR WITH A LOCK///
-////////////////////////
+/*
+*	LOCKED COLLAR
+*/
 
 /obj/item/clothing/neck/kink_collar/locked
 	name = "locked collar"
@@ -246,9 +246,9 @@
 			to_chat(user, span_warning("You fail to cut away the lock, cutting yourself in the process!"))
 			target.apply_damage(rand(3, 5), BRUTE, BODY_ZONE_HEAD, wound_bonus = 30)
 
-/////////////////////////
-///MIND CONTROL COLLAR///
-/////////////////////////
+/*
+*	MIND CONTROL COLLAR
+*/
 
 //Ok, first - it's not mind control. Just forcing someone to do emotes that user added to remote thingy. Just a funny illegal ERP toy.
 

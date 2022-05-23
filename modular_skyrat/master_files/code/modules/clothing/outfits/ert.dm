@@ -1,7 +1,7 @@
-//////////////////////////////
-// SKYRAT MODULAR OUTFITS FILE
-// PUT ANY NEW ERT OUTFITS HERE
-//////////////////////////////
+/*
+*	SKYRAT MODULAR OUTFITS FILE
+*	PUT ANY NEW ERT OUTFITS HERE
+*/
 
 /datum/outfit/centcom/asset_protection
 	name = "Asset Protection"

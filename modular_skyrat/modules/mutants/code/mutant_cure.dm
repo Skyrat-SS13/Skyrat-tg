@@ -322,8 +322,11 @@
 #undef RECOMBINATION_STEP_TIME
 #undef RECOMBINATION_STEP_AMOUNT
 
+/*
+*	Infection stuff
+*	You didn't think I wouldn't include this did you?
+*/
 
-//////////////////////////////Infection stuff - You didn't think I wouldn't include this did you?
 /datum/reagent/hnz
 	name = "HNZ-1"
 	description = "HNZ-1 is a highly experimental viral bioterror agent \

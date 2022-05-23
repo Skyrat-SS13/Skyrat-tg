@@ -57,7 +57,10 @@
 	new /obj/item/stock_parts/cell/microfusion/advanced(src)
 	new /obj/item/stock_parts/cell/microfusion/advanced(src)
 
-//////////////MICROFUSION SPAWNERS
+/*
+*	MICROFUSION SPAWNERS
+*/
+
 /obj/effect/spawner/armory_spawn/microfusion
 	icon_state = "random_rifle"
 	gun_count = 4
