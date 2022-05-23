@@ -144,13 +144,9 @@
 		return
 	var/obj/item/stack/shibari_rope/split_rope = null
 	var/slow = 0
-	if(them?.dna?.mutant_bodyparts["taur"])
-		var/datum/sprite_accessory/taur/taur_accessory = GLOB.sprite_accessories["taur"][them.dna.species.mutant_bodyparts["taur"][MUTANT_INDEX_NAME]]
-		if(taur_accessory.hide_legs)
-			split_rope = split_stack(null, 2)
-			slow = 4
-		else
-			split_rope = split_stack(null, 1)
+	if(them.dna.species.bodytype & BODYTYPE_TAUR)
+		split_rope = split_stack(null, 2)
+		slow = 4
 	else
 		split_rope = split_stack(null, 1)
 	if(split_rope)
@@ -225,11 +221,9 @@
 	if(them.shoes)
 		to_chat(user, span_warning("They're already wearing something on this slot!"))
 		return
-	if(them?.dna?.mutant_bodyparts["taur"])
-		var/datum/sprite_accessory/taur/taur_accessory = GLOB.sprite_accessories["taur"][them.dna.species.mutant_bodyparts["taur"][MUTANT_INDEX_NAME]]
-		if(taur_accessory.hide_legs)
-			to_chat(user, span_warning("You can't tie their feet, they're a taur!"))
-			return
+	if(them.dna.species.bodytype & BODYTYPE_TAUR)
+		to_chat(user, span_warning("You can't tie their feet, they're a taur!"))
+		return
 	them.visible_message(span_warning("[user] starts tying [them]'s feet!"),\
 		span_userdanger("[user] starts tying your feet!"),\
 		span_hear("You hear ropes being tightened."))
@@ -259,10 +253,8 @@
 			if(!do_mob(user, them, HAS_TRAIT(user, TRAIT_RIGGER) ? 20 : 60))
 				return
 			var/slow = 0
-			if(them?.dna?.mutant_bodyparts["taur"])
-				var/datum/sprite_accessory/taur/taur_accessory = GLOB.sprite_accessories["taur"][them.dna.species.mutant_bodyparts["taur"][MUTANT_INDEX_NAME]]
-				if(taur_accessory.hide_legs)
-					slow = 4
+			if(them.dna.species.bodytype & BODYTYPE_TAUR)
+				slow = 4
 			var/obj/item/stack/shibari_rope/split_rope = split_stack(null, 1)
 			if(split_rope)
 				var/obj/item/clothing/under/shibari/body_rope = them.w_uniform
@@ -294,13 +286,9 @@
 				return
 			var/obj/item/stack/shibari_rope/split_rope = null
 			var/slow = 0
-			if(them?.dna?.mutant_bodyparts["taur"])
-				var/datum/sprite_accessory/taur/taur_accessory = GLOB.sprite_accessories["taur"][them.dna.species.mutant_bodyparts["taur"][MUTANT_INDEX_NAME]]
-				if(taur_accessory.hide_legs)
-					split_rope = split_stack(null, 2)
-					slow = 4
-				else
-					split_rope = split_stack(null, 1)
+			if(them.dna.species.bodytype & BODYTYPE_TAUR)
+				split_rope = split_stack(null, 2)
+				slow = 4
 			else
 				split_rope = split_stack(null, 1)
 			if(split_rope)
