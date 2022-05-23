@@ -12,7 +12,7 @@
 	force_opens = TRUE
 
 /obj/item/crowbar/freeman/ultimate
-	name = "\improper Freeman's Crowbar"
+	name = "\improper Freeman's crowbar"
 	desc = "A weapon wielded by an ancient physicist, the blood of hundreds seeps through this rod of iron and malice."
 	force = 45
 

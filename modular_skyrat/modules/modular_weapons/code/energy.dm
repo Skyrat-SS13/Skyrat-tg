@@ -213,7 +213,7 @@
 	projectile_type = /obj/projectile/beam/laser/double
 
 /obj/item/ammo_casing/caseless/laser/bounce
-	name = "type III reflective projectile (Lethal)"
+	name = "type III reflective projectile (lethal)"
 	desc = "A chemical mixture that once triggered, creates a deadly bouncing projectile, melting it's own casing in the process."
 	icon_state = "bounce_shell"
 	worn_icon_state = "shell"
@@ -222,7 +222,7 @@
 	projectile_type = /obj/projectile/beam/laser/bounce
 
 /obj/item/ammo_casing/caseless/laser/bounce/disabler
-	name = "type III reflective projectile (Disabler)"
+	name = "type III reflective projectile (disabler)"
 	desc = "A chemical mixture that once triggered, creates bouncing disabler projectile, melting it's own casing in the process."
 	icon_state = "disabler_shell"
 	projectile_type = /obj/projectile/beam/disabler/bounce

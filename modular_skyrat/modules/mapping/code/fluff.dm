@@ -3,12 +3,12 @@
 
 /* ----------------- ID Cards ----------------- */
 /obj/item/card/id/away/old/salvagepod	//Used for salvagepost ruin access	-- NOT WORKING YET REE
-	name = "Cutter's Pod Access Card"
+	name = "Cutter's Pod access card"
 	desc = "An ancient access card with the words \"Cutter's Pod\" printed on in big bold letters. It'll be a miracle if this still works."
 	trim = /datum/id_trim/away/old/eng
 
 /obj/item/card/id/away/tarkon
-	name = "Tarkon Visitor's Pass"
+	name = "Tarkon visitor's pass"
 	desc = "A dust-collected visitors pass, A small tagline reading \"Port Tarkon, The first step to Civilian Partnership in Space Homesteading\"."
 	trim = /datum/id_trim/away/old
 

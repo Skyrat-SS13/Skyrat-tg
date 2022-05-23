@@ -91,7 +91,7 @@
 		acc.attach(human_holder.w_uniform, human_holder)
 
 /obj/item/clothing/accessory/breathing
-	name = "Breathing dogtag"
+	name = "breathing dogtag"
 	desc = "Dogtag that lists what you breathe."
 	icon_state = "allergy"
 	above_suit = FALSE
