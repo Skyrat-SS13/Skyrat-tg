@@ -10,26 +10,31 @@
 
 	if(href_list["observe"])
 		make_me_an_observer()
+		SEND_SOUND(src, sound('modular_skyrat/master_files/sound/effects/save.ogg'))
 		return
 
 	if(href_list["server_swap"])
 		server_swap()
+		SEND_SOUND(src, sound('modular_skyrat/master_files/sound/effects/save.ogg'))
 		return
 
 	if(href_list["view_manifest"])
 		ViewManifest()
+		SEND_SOUND(src, sound('modular_skyrat/master_files/sound/effects/save.ogg'))
 		return
 
 	if(href_list["toggle_antag"])
+		SEND_SOUND(src, sound('modular_skyrat/master_files/sound/effects/save.ogg'))
 		var/datum/preferences/preferences = client.prefs
 		if(preferences.read_preference(/datum/preference/toggle/be_antag))
 			preferences.write_preference(GLOB.preference_entries[/datum/preference/toggle/be_antag], FALSE)
 		else
 			preferences.write_preference(GLOB.preference_entries[/datum/preference/toggle/be_antag], TRUE)
-		client << output(!preferences.read_preference(/datum/preference/toggle/be_antag), "lobbybrowser:beantag") //SKYRAT EDIT ADDITION
+		client << output(!preferences.read_preference(/datum/preference/toggle/be_antag), "lobbybrowser:beantag")
 		return
 
 	if(href_list["character_setup"])
+		SEND_SOUND(src, sound('modular_skyrat/master_files/sound/effects/save.ogg'))
 		var/datum/preferences/preferences = client.prefs
 		preferences.current_window = PREFERENCE_TAB_CHARACTER_PREFERENCES
 		preferences.update_static_data(src)
@@ -37,6 +42,7 @@
 		return
 
 	if(href_list["game_options"])
+		SEND_SOUND(src, sound('modular_skyrat/master_files/sound/effects/save.ogg'))
 		var/datum/preferences/preferences = client.prefs
 		preferences.current_window = PREFERENCE_TAB_GAME_PREFERENCES
 		preferences.update_static_data(usr)
@@ -44,6 +50,7 @@
 		return
 
 	if(href_list["toggle_ready"])
+		SEND_SOUND(src, sound('modular_skyrat/master_files/sound/effects/save.ogg'))
 		if(!is_admin(client) && length_char(client?.prefs?.read_preference(/datum/preference/text/flavor_text)) < FLAVOR_TEXT_CHAR_REQUIREMENT)
 			to_chat(src, span_notice("You need at least [FLAVOR_TEXT_CHAR_REQUIREMENT] characters of flavor text to ready up for the round. You have [length_char(client.prefs.read_preference(/datum/preference/text/flavor_text))] characters."))
 			return
@@ -56,6 +63,7 @@
 		return
 
 	if(href_list["late_join"])
+		SEND_SOUND(src, sound('modular_skyrat/master_files/sound/effects/save.ogg'))
 		if(!SSticker?.IsRoundInProgress())
 			to_chat(src, span_boldwarning("The round is either not ready, or has already finished..."))
 			return
@@ -99,6 +107,7 @@
 		return
 
 	if(href_list["viewpoll"])
+		SEND_SOUND(src, sound('modular_skyrat/master_files/sound/effects/save.ogg'))
 		var/datum/poll_question/poll = locate(href_list["viewpoll"]) in GLOB.polls
 		poll_player(poll)
 		return
