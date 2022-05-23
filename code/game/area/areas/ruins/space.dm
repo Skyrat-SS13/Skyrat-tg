@@ -179,7 +179,9 @@
 /area/ruin/space/has_grav/deepstorage/crusher
 	name = "\improper Deep Storage Recycler"
 
-
+/area/ruin/space/has_grav/deepstorage/pharmacy
+	name = "\improper Deep Storage Pharmacy"
+	
 //Ruin of Abandoned Zoo
 
 /area/ruin/space/has_grav/abandonedzoo
@@ -402,3 +404,8 @@
 /area/ruin/space/has_grav/hellfactoryoffice
 	name = "\improper Hell Factory Office"
 	area_flags = VALID_TERRITORY | BLOBS_ALLOWED | UNIQUE_AREA | NOTELEPORT
+
+//Ruin of Spinward Smoothies
+
+/area/ruin/space/has_grav/spinwardsmoothies
+	name = "Spinward Smoothies"

@@ -93,3 +93,7 @@
 
 /obj/item/mod/module/springlock/on_suit_deactivation(deleting = FALSE)
 	return
+
+/// This exists for the adminbus contractor modsuit. Do not use otherwise
+/obj/item/mod/module/springlock/contractor/no_complexity
+	complexity = 0

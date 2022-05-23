@@ -507,11 +507,11 @@
 	company_flag = COMPANY_ARMADYNE
 
 /obj/item/ammo_box/magazine/dmr
-	name = ".557 DMR Magazine"
+	name = ".577 DMR Magazine"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "dmr"
 	ammo_type = /obj/item/ammo_casing/b577
-	caliber = ".557 Snider"
+	caliber = CALIBER_B577
 	max_ammo = 25
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 

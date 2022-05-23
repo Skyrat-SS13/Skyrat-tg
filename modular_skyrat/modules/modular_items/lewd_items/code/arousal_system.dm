@@ -78,14 +78,14 @@
 	reagent_state = LIQUID
 	overdose_threshold = 10
 
-/datum/reagent/drug/dopamine/on_mob_add(mob/living/carbon/human/M)
-	SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "[type]_start", /datum/mood_event/orgasm, name)
+/datum/reagent/drug/dopamine/on_mob_add(mob/living/carbon/human/affected_mob)
+	SEND_SIGNAL(affected_mob, COMSIG_ADD_MOOD_EVENT, "[type]_start", /datum/mood_event/orgasm, name)
 	..()
 
-/datum/reagent/drug/dopamine/on_mob_life(mob/living/carbon/M, delta_time, times_fired)
-	M.set_timed_status_effect(2 SECONDS * REM * delta_time, /datum/status_effect/drugginess)
+/datum/reagent/drug/dopamine/on_mob_life(mob/living/carbon/affected_mob, delta_time, times_fired)
+	affected_mob.set_timed_status_effect(2 SECONDS * REM * delta_time, /datum/status_effect/drugginess)
 	if(prob(7))
-		M.emote(pick("shaking","moan"))
+		affected_mob.emote(pick("shaking", "moan"))
 	..()
 
 /datum/reagent/drug/dopamine/overdose_start(mob/living/carbon/human/human_mob)
@@ -94,12 +94,12 @@
 	to_chat(human_mob, span_userdanger("You don't want to cum anymore!"))
 	SEND_SIGNAL(human_mob, COMSIG_ADD_MOOD_EVENT, "[type]_overdose", /datum/mood_event/overgasm, name)
 
-/datum/reagent/drug/dopamine/overdose_process(mob/living/carbon/human/M)
-	M.adjustArousal(0.5)
-	M.adjustPleasure(0.3)
-	M.adjustPain(-0.5)
+/datum/reagent/drug/dopamine/overdose_process(mob/living/carbon/human/affected_mob)
+	affected_mob.adjustArousal(0.5)
+	affected_mob.adjustPleasure(0.3)
+	affected_mob.adjustPain(-0.5)
 	if(prob(2))
-		M.emote(pick("moan","twitch_s"))
+		affected_mob.emote(pick("moan", "twitch_s"))
 	return
 
 ///////////-----Initilaze------///////////
@@ -147,7 +147,7 @@
 
 /mob/living/carbon/human/Initialize()
 	. = ..()
-	if(!istype(src,/mob/living/carbon/human/species/monkey))
+	if(!istype(src, /mob/living/carbon/human/species/monkey))
 		apply_status_effect(/datum/status_effect/aroused)
 		apply_status_effect(/datum/status_effect/body_fluid_regen)
 
@@ -183,28 +183,28 @@
 	alert_type = null
 
 /datum/status_effect/body_fluid_regen/tick()
-	var/mob/living/carbon/human/H = owner
-	if(owner.stat != DEAD && H.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
+	var/mob/living/carbon/human/affected_mob = owner
+	if(owner.stat != DEAD && affected_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 		var/obj/item/organ/genital/testicles/balls = owner.getorganslot(ORGAN_SLOT_TESTICLES)
 		var/obj/item/organ/genital/breasts/breasts = owner.getorganslot(ORGAN_SLOT_BREASTS)
 		var/obj/item/organ/genital/vagina/vagina = owner.getorganslot(ORGAN_SLOT_VAGINA)
 
 		var/interval = 5
 		if(balls)
-			if(H.arousal >= AROUS_SYS_LITTLE)
-				var/regen = (H.arousal/25) * (balls.internal_fluids.maximum_volume/235) * interval
+			if(affected_mob.arousal >= AROUS_SYS_LITTLE)
+				var/regen = (affected_mob.arousal / 25) * (balls.internal_fluids.maximum_volume / 235) * interval
 				balls.internal_fluids.add_reagent(/datum/reagent/consumable/cum, regen)
 
 		if(breasts)
 			if(breasts.lactates == TRUE)
-				var/regen = ((owner.nutrition / (NUTRITION_LEVEL_WELL_FED/100))/100) * (breasts.internal_fluids.maximum_volume/11000) * interval
+				var/regen = ((owner.nutrition / (NUTRITION_LEVEL_WELL_FED / 100)) / 100) * (breasts.internal_fluids.maximum_volume / 11000) * interval
 				if(!breasts.internal_fluids.holder_full())
 					owner.adjust_nutrition(-regen / 2)
 					breasts.internal_fluids.add_reagent(/datum/reagent/consumable/breast_milk, regen)
 
 		if(vagina)
-			if(H.arousal >= AROUS_SYS_LITTLE)
-				var/regen = (H.arousal/25) * (vagina.internal_fluids.maximum_volume/250) * interval
+			if(affected_mob.arousal >= AROUS_SYS_LITTLE)
+				var/regen = (affected_mob.arousal / 25) * (vagina.internal_fluids.maximum_volume / 250) * interval
 				vagina.internal_fluids.add_reagent(/datum/reagent/consumable/girlcum, regen)
 				if(vagina.internal_fluids.holder_full() && regen >= 0.15)
 					regen = regen
@@ -229,19 +229,19 @@
 
 		if(arousal_status != arousal_flag) // Set organ arousal status
 			arousal_status = arousal_flag
-			if(istype(src,/mob/living/carbon/human))
-				var/mob/living/carbon/human/M = src
-				for(var/i=1,i<=M.internal_organs.len,i++)
-					if(istype(M.internal_organs[i],/obj/item/organ/genital))
-						var/obj/item/organ/genital/G = M.internal_organs[i]
-						if(!G.aroused == AROUSAL_CANT)
-							G.aroused = arousal_status
-							G.update_sprite_suffix()
-				M.update_body()
+			if(istype(src, /mob/living/carbon/human))
+				var/mob/living/carbon/human/target = src
+				for(var/i = 1, i <= target.internal_organs.len, i++)
+					if(istype(target.internal_organs[i], /obj/item/organ/genital))
+						var/obj/item/organ/genital/target_genital = target.internal_organs[i]
+						if(!target_genital.aroused == AROUSAL_CANT)
+							target_genital.aroused = arousal_status
+							target_genital.update_sprite_suffix()
+				target.update_body()
 	else
 		arousal -= abs(arous)
 
-		arousal = min(max(arousal,0),100)
+		arousal = min(max(arousal, 0), 100)
 
 /datum/status_effect/aroused
 	id = "aroused"
@@ -250,65 +250,65 @@
 	alert_type = null
 
 /datum/status_effect/aroused/tick()
-	var/mob/living/carbon/human/H = owner
+	var/mob/living/carbon/human/affected_mob = owner
 	var/temp_arousal = -0.1
 	var/temp_pleasure = -0.5
 	var/temp_pain = -0.5
-	if(H.stat != DEAD)
+	if(affected_mob.stat != DEAD)
 
-		var/obj/item/organ/genital/testicles/balls = H.getorganslot(ORGAN_SLOT_TESTICLES)
+		var/obj/item/organ/genital/testicles/balls = affected_mob.getorganslot(ORGAN_SLOT_TESTICLES)
 		if(balls)
 			if(balls.internal_fluids.holder_full())
 				temp_arousal += 0.08
 
-		if(HAS_TRAIT(H, TRAIT_MASOCHISM))
+		if(HAS_TRAIT(affected_mob, TRAIT_MASOCHISM))
 			temp_pain -= 0.5
-		if(HAS_TRAIT(H, TRAIT_NEVERBONER))
+		if(HAS_TRAIT(affected_mob, TRAIT_NEVERBONER))
 			temp_pleasure -= 50
 			temp_arousal -= 50
 
-		if(H.pain > H.pain_limit)
+		if(affected_mob.pain > affected_mob.pain_limit)
 			temp_arousal -= 0.1
-		if(H.arousal >= AROUS_SYS_STRONG && H.stat != DEAD)
+		if(affected_mob.arousal >= AROUS_SYS_STRONG && affected_mob.stat != DEAD)
 			if(prob(3))
-				H.emote(pick("moan","blush"))
+				affected_mob.emote(pick("moan", "blush"))
 			temp_pleasure += 0.1
 			//moan
-		if(H.pleasure >= PLEAS_SYS_EDGE && H.stat != DEAD)
+		if(affected_mob.pleasure >= PLEAS_SYS_EDGE && affected_mob.stat != DEAD)
 			if(prob(3))
-				H.emote(pick("moan","twitch_s"))
+				affected_mob.emote(pick("moan", "twitch_s"))
 			//moan x2
 
-	H.adjustArousal(temp_arousal)
-	H.adjustPleasure(temp_pleasure)
-	H.adjustPain(temp_pain)
+	affected_mob.adjustArousal(temp_arousal)
+	affected_mob.adjustPleasure(temp_pleasure)
+	affected_mob.adjustPain(temp_pain)
 
 ////Pain////
 /mob/living/carbon/human/proc/get_pain()
 	return pain
 
-/mob/living/carbon/human/proc/adjustPain(pn = 0)
+/mob/living/carbon/human/proc/adjustPain(change_amount = 0)
 	if(stat != DEAD && client?.prefs?.read_preference(/datum/preference/toggle/erp))
-		if(pain > pain_limit || pn > pain_limit / 10) // pain system // YOUR SYSTEM IS PAIN, WHY WE'RE GETTING AROUSED BY STEPPING ON ANTS?!
+		if(pain > pain_limit || change_amount > pain_limit / 10) // pain system // YOUR SYSTEM IS PAIN, WHY WE'RE GETTING AROUSED BY STEPPING ON ANTS?!
 			if(HAS_TRAIT(src, TRAIT_MASOCHISM))
-				var/p = pn - (pain_limit / 10)
-				if(p > 0)
-					adjustArousal(-p)
+				var/arousal_adjustment = change_amount - (pain_limit / 10)
+				if(arousal_adjustment > 0)
+					adjustArousal(-arousal_adjustment)
 			else
-				if(pn > 0)
-					adjustArousal(-pn)
-			if(prob(2) && pain > pain_limit && pn > pain_limit / 10)
-				emote(pick("scream","shiver")) //SCREAM!!!
+				if(change_amount > 0)
+					adjustArousal(-change_amount)
+			if(prob(2) && pain > pain_limit && change_amount > pain_limit / 10)
+				emote(pick("scream", "shiver")) //SCREAM!!!
 		else
-			if(pn > 0)
-				adjustArousal(pn)
+			if(change_amount > 0)
+				adjustArousal(change_amount)
 			if(HAS_TRAIT(src, TRAIT_MASOCHISM))
-				var/p = pn / 2
-				adjustPleasure(p)
-		pain += pn
+				var/pleasure_adjustment = change_amount / 2
+				adjustPleasure(pleasure_adjustment)
+		pain += change_amount
 	else
-		pain -= abs(pn)
-	pain = min(max(pain,0),100)
+		pain -= abs(change_amount)
+	pain = min(max(pain, 0), 100)
 
 ////Pleasure////
 /mob/living/carbon/human/proc/get_pleasure()
@@ -321,24 +321,24 @@
 			climax(FALSE)
 	else
 		pleasure -= abs(pleas)
-	pleasure = min(max(pleasure,0),100)
+	pleasure = min(max(pleasure, 0), 100)
 
-// get damage for pain system
-/datum/species/apply_damage(damage, damagetype, def_zone, blocked, mob/living/carbon/human/H, forced, spread_damage, wound_bonus, bare_wound_bonus, sharpness, attack_direction)
+// Get damage for pain system
+/datum/species/apply_damage(damage, damagetype, def_zone, blocked, mob/living/carbon/human/affected_mob, forced, spread_damage, wound_bonus, bare_wound_bonus, sharpness, attack_direction)
 	. = ..()
 	if(!.)
 		return
-	if(H.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
+	if(affected_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 		return
-	var/hit_percent = (100-(blocked+armor))/100
-	hit_percent = (hit_percent * (100-H.physiology.damage_resistance))/100
+	var/hit_percent = (100 - (blocked + armor)) / 100
+	hit_percent = (hit_percent * (100 - affected_mob.physiology.damage_resistance)) / 100
 	switch(damagetype)
 		if(BRUTE)
-			var/amount = forced ? damage : damage * hit_percent * brutemod * H.physiology.brute_mod
-			INVOKE_ASYNC(H, /mob/living/carbon/human/.proc/adjustPain, amount)
+			var/amount = forced ? damage : damage * hit_percent * brutemod * affected_mob.physiology.brute_mod
+			INVOKE_ASYNC(affected_mob, /mob/living/carbon/human/.proc/adjustPain, amount)
 		if(BURN)
-			var/amount = forced ? damage : damage * hit_percent * burnmod * H.physiology.burn_mod
-			INVOKE_ASYNC(H, /mob/living/carbon/human/.proc/adjustPain, amount)
+			var/amount = forced ? damage : damage * hit_percent * burnmod * affected_mob.physiology.burn_mod
+			INVOKE_ASYNC(affected_mob, /mob/living/carbon/human/.proc/adjustPain, amount)
 
 ////////////
 ///CLIMAX///
@@ -524,16 +524,16 @@
 	alert_type = null
 
 /datum/status_effect/masturbation_climax/tick() //this one should not leave decals on the floor. Used in case if character cumming on somebody's face or in beaker.
-	var/mob/living/carbon/human/H = owner
-	if(H.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
+	var/mob/living/carbon/human/affected_mob = owner
+	if(affected_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 		var/temp_arousal = -12
 		var/temp_pleasure = -12
 		var/temp_stamina = 8
 
 		owner.reagents.add_reagent(/datum/reagent/drug/dopamine, 0.3)
 		owner.adjustStaminaLoss(temp_stamina)
-		H.adjustArousal(temp_arousal)
-		H.adjustPleasure(temp_pleasure)
+		affected_mob.adjustArousal(temp_arousal)
+		affected_mob.adjustPleasure(temp_pleasure)
 
 /datum/status_effect/climax
 	id = "climax"
@@ -542,16 +542,16 @@
 	alert_type = null
 
 /datum/status_effect/climax/tick()
-	var/mob/living/carbon/human/H = owner
-	if(H.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
+	var/mob/living/carbon/human/affected_mob = owner
+	if(affected_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 		var/temp_arousal = -12
 		var/temp_pleasure = -12
 		var/temp_stamina = 15
 
 		owner.reagents.add_reagent(/datum/reagent/drug/dopamine, 0.5)
 		owner.adjustStaminaLoss(temp_stamina)
-		H.adjustArousal(temp_arousal)
-		H.adjustPleasure(temp_pleasure)
+		affected_mob.adjustArousal(temp_arousal)
+		affected_mob.adjustPleasure(temp_pleasure)
 
 ////////////////////////
 ///SPANKING PROCEDURE///
@@ -564,10 +564,9 @@
 	alert_type = null
 
 /mob/living/carbon/human/examine(mob/user)
-	.=..()
-	var/mob/living/U = user
-
-	if(stat != DEAD && !HAS_TRAIT(src, TRAIT_FAKEDEATH) && src != U)
+	. = ..()
+	var/mob/living/affected_mob = user
+	if(stat != DEAD && !HAS_TRAIT(src, TRAIT_FAKEDEATH) && src != affected_mob)
 		if(src != user)
 			if(has_status_effect(/datum/status_effect/spanked) && is_bottomless())
 				. += span_purple("[user.p_their(TRUE)] butt has a red tint to it.") + "\n"
@@ -618,7 +617,7 @@
 
 /datum/mood_event/ropebunny
 	description = span_purple("I'm tied! Cannot move! These ropes... Ah!~")
-	mood_change = 0 //I don't want to doom the station to sonic-speed perverts, but still want to keep this as mood modifier.
+	mood_change = 0 // I don't want to doom the station to sonic-speed perverts, but still want to keep this as mood modifier.
 
 ///////////////////////
 ///AROUSAL INDICATOR///
@@ -740,26 +739,26 @@
 	cumface = mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_decals/lewd_decals.dmi')
 
 	if(ishuman(parent))
-		var/mob/living/carbon/human/H = parent
-		if(H.dna.species.id == SPECIES_LIZARD)
+		var/mob/living/carbon/human/target = parent
+		if(target.dna.species.id == SPECIES_LIZARD)
 			cumface.icon_state = "cumface_lizard"
-		else if(H.dna.species.id == SPECIES_MONKEY)
+		else if(target.dna.species.id == SPECIES_MONKEY)
 			cumface.icon_state = "cumface_monkey"
-		else if(H.dna.species.id == SPECIES_VOX)
+		else if(target.dna.species.id == SPECIES_VOX)
 			cumface.icon_state = "cumface_vox"
-		else if(H.dna.species.mutant_bodyparts["snout"])
+		else if(target.dna.species.mutant_bodyparts["snout"])
 			cumface.icon_state = "cumface_lizard"
 		else
 			cumface.icon_state = "cumface_human"
 	else if(isAI(parent))
 		cumface.icon_state = "cumface_ai"
 
-	var/atom/A = parent
-	A.add_overlay(cumface)
+	var/atom/overlayed_atom = parent
+	overlayed_atom.add_overlay(cumface)
 
 /datum/component/cumfaced/Destroy(force, silent)
-	var/atom/A = parent
-	A.cut_overlay(cumface)
+	var/atom/overlayed_atom = parent
+	overlayed_atom.cut_overlay(cumface)
 	qdel(cumface)
 	return ..()
 
@@ -797,26 +796,26 @@
 	bigcumface = mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_decals/lewd_decals.dmi')
 
 	if(ishuman(parent))
-		var/mob/living/carbon/human/H = parent
-		if(H.dna.species.id == "lizard")
+		var/mob/living/carbon/human/target = parent
+		if(target.dna.species.id == "lizard")
 			bigcumface.icon_state = "bigcumface_lizard"
-		else if(H.dna.species.id == "monkey")
+		else if(target.dna.species.id == "monkey")
 			bigcumface.icon_state = "bigcumface_monkey"
-		else if(H.dna.species.id == "vox")
+		else if(target.dna.species.id == "vox")
 			bigcumface.icon_state = "bigcumface_vox"
-		else if(H.dna.species.mutant_bodyparts["snout"])
+		else if(target.dna.species.mutant_bodyparts["snout"])
 			bigcumface.icon_state = "bigcumface_lizard"
 		else
 			bigcumface.icon_state = "bigcumface_human"
 	else if(isAI(parent))
 		bigcumface.icon_state = "cumface_ai"
 
-	var/atom/A = parent
-	A.add_overlay(bigcumface)
+	var/atom/overlayed_atom = parent
+	overlayed_atom.add_overlay(bigcumface)
 
 /datum/component/cumfaced/big/Destroy(force, silent)
-	var/atom/A = parent
-	A.cut_overlay(bigcumface)
+	var/atom/overlayed_atom = parent
+	overlayed_atom.cut_overlay(bigcumface)
 	qdel(bigcumface)
 	return ..()
 
@@ -842,12 +841,12 @@
 
 
 	var/obj/item/coomer = new /obj/item/hand_item/coom(user)
-	var/mob/living/carbon/human/H = user
+	var/mob/living/carbon/human/target = user
 	var/obj/item/held = user.get_active_held_item()
 	var/obj/item/unheld = user.get_inactive_held_item()
-	if(user.put_in_hands(coomer) && H.dna.species.mutant_bodyparts["testicles"] && H.dna.species.mutant_bodyparts["penis"])
+	if(user.put_in_hands(coomer) && target.dna.species.mutant_bodyparts["testicles"] && target.dna.species.mutant_bodyparts["penis"])
 		if(held || unheld)
-			if(!((held.name=="cum" && held.item_flags == DROPDEL | ABSTRACT | HAND_ITEM) || (unheld.name=="cum" && unheld.item_flags == DROPDEL | ABSTRACT | HAND_ITEM)))
+			if(!((held.name == "cum" && held.item_flags == DROPDEL | ABSTRACT | HAND_ITEM) || (unheld.name == "cum" && unheld.item_flags == DROPDEL | ABSTRACT | HAND_ITEM)))
 				to_chat(user, span_notice("You mentally prepare yourself to masturbate."))
 			else
 				qdel(coomer)
@@ -864,51 +863,51 @@
 	icon_state = "eggplant"
 	inhand_icon_state = "nothing"
 
-/obj/item/hand_item/coom/attack(mob/living/M, mob/user, proximity)
+/obj/item/hand_item/coom/attack(mob/living/target, mob/user, proximity)
 	if (CONFIG_GET(flag/disable_erp_preferences))
 		return
 	if(!proximity)
 		return
-	if(!ishuman(M))
+	if(!ishuman(target))
 		return
 	if(user.stat == DEAD)
 		return
-	var/mob/living/carbon/human/human_cumvictim = M
+	var/mob/living/carbon/human/human_cumvictim = target
 	if(!human_cumvictim.client)
-		to_chat(user, span_warning("You can't cum onto [M]."))
+		to_chat(user, span_warning("You can't cum onto [target]."))
 		return
-	if(!(human_cumvictim.client.prefs.read_preference(/datum/preference/toggle/erp/cum_face))) //im just paranoid about runtime errors
-		to_chat(user, span_warning("You can't cum onto [M]."))
+	if(!(human_cumvictim.client.prefs.read_preference(/datum/preference/toggle/erp/cum_face))) // I'm just paranoid about runtime errors
+		to_chat(user, span_warning("You can't cum onto [target]."))
 		return
-	var/mob/living/carbon/human/H = user
-	var/obj/item/organ/genital/testicles/G = H.getorganslot(ORGAN_SLOT_TESTICLES)
-	var/obj/item/organ/genital/testicles/P = H.getorganslot(ORGAN_SLOT_PENIS)
-	var/datum/sprite_accessory/genital/spriteP = GLOB.sprite_accessories["penis"][H.dna.species.mutant_bodyparts["penis"][MUTANT_INDEX_NAME]]
-	if(spriteP.is_hidden(H))
+	var/mob/living/carbon/human/affected_human = user
+	var/obj/item/organ/genital/testicles/testicles = affected_human.getorganslot(ORGAN_SLOT_TESTICLES)
+	var/obj/item/organ/genital/penis/penis = affected_human.getorganslot(ORGAN_SLOT_PENIS)
+	var/datum/sprite_accessory/genital/penis_accessory = GLOB.sprite_accessories["penis"][affected_human.dna.species.mutant_bodyparts["penis"][MUTANT_INDEX_NAME]]
+	if(penis_accessory.is_hidden(affected_human))
 		to_chat(user, span_notice("You need to expose yourself in order to masturbate."))
 		return
-	else if(P.aroused != AROUSAL_FULL)
+	else if(penis.aroused != AROUSAL_FULL)
 		to_chat(user, span_notice("You need to be aroused in order to masturbate."))
 		return
-	var/cum_volume = G.genital_size*5+5
-	var/datum/reagents/R = new/datum/reagents(50)
-	R.add_reagent(/datum/reagent/consumable/cum, cum_volume)
-	if(M==user)
-		user.visible_message(span_warning("[user] starts masturbating onto [M.p_them()]self!"), span_danger("You start masturbating onto yourself!"))
+	var/cum_volume = testicles.genital_size * 5 + 5
+	var/datum/reagents/applied_reagents = new/datum/reagents(50)
+	applied_reagents.add_reagent(/datum/reagent/consumable/cum, cum_volume)
+	if(target == user)
+		user.visible_message(span_warning("[user] starts masturbating onto [target.p_them()]self!"), span_danger("You start masturbating onto yourself!"))
 	else
-		user.visible_message(span_warning("[user] starts masturbating onto [M]!"), span_danger("You start masturbating onto [M]!"))
-	if(do_after(user,60,M))
-		if(M==user)
-			user.visible_message(span_warning("[user] cums on [M.p_them()]self!"), span_danger("You cum on yourself!"))
+		user.visible_message(span_warning("[user] starts masturbating onto [target]!"), span_danger("You start masturbating onto [target]!"))
+	if(do_after(user, 60, target))
+		if(target == user)
+			user.visible_message(span_warning("[user] cums on [target.p_them()]self!"), span_danger("You cum on yourself!"))
 		else
-			user.visible_message(span_warning("[user] cums on [M]!"), span_danger("You cum on [M]!"))
-		R.expose(M, TOUCH)
-		log_combat(user, M, "came on")
+			user.visible_message(span_warning("[user] cums on [target]!"), span_danger("You cum on [target]!"))
+		applied_reagents.expose(target, TOUCH)
+		log_combat(user, target, "came on")
 		if(prob(40))
 			user.emote("moan")
 		qdel(src)
 
-//jerk off into bottles
+// Jerk off into bottles
 /obj/item/hand_item/coom/afterattack(obj/target, mob/user, proximity)
 	. = ..()
 	if (CONFIG_GET(flag/disable_erp_preferences))
@@ -919,38 +918,38 @@
 		return
 	if(user.stat == DEAD)
 		return
-	var/mob/living/carbon/human/H = user
-	var/obj/item/organ/genital/testicles/G = H.getorganslot(ORGAN_SLOT_TESTICLES)
-	var/obj/item/organ/genital/testicles/P = H.getorganslot(ORGAN_SLOT_PENIS)
-	var/datum/sprite_accessory/genital/spriteP = GLOB.sprite_accessories["penis"][H.dna.species.mutant_bodyparts["penis"][MUTANT_INDEX_NAME]]
-	if(spriteP.is_hidden(H))
+	var/mob/living/carbon/human/affected_human = user
+	var/obj/item/organ/genital/testicles/testicles = affected_human.getorganslot(ORGAN_SLOT_TESTICLES)
+	var/obj/item/organ/genital/penis/penis = affected_human.getorganslot(ORGAN_SLOT_PENIS)
+	var/datum/sprite_accessory/genital/spriteP = GLOB.sprite_accessories["penis"][affected_human.dna.species.mutant_bodyparts["penis"][MUTANT_INDEX_NAME]]
+	if(spriteP.is_hidden(affected_human))
 		to_chat(user, span_notice("You need to expose yourself in order to masturbate."))
 		return
-	else if(P.aroused != AROUSAL_FULL)
+	else if(penis.aroused != AROUSAL_FULL)
 		to_chat(user, span_notice("You need to be aroused in order to masturbate."))
 		return
 	if(target.is_refillable() && target.is_drainable())
-		var/cum_volume = G.genital_size*5+5
+		var/cum_volume = testicles.genital_size*5+5
 		if(target.reagents.holder_full())
 			to_chat(user, span_warning("[target] is full."))
 			return
-		var/datum/reagents/R = new/datum/reagents(50)
-		R.add_reagent(/datum/reagent/consumable/cum, cum_volume)
+		var/datum/reagents/applied_reagents = new/datum/reagents(50)
+		applied_reagents.add_reagent(/datum/reagent/consumable/cum, cum_volume)
 		user.visible_message(span_warning("[user] starts masturbating into [target]!"), span_danger("You start masturbating into [target]!"))
-		if(do_after(user,60))
+		if(do_after(user, 60))
 			user.visible_message(span_warning("[user] cums into [target]!"), span_danger("You cum into [target]!"))
 			playsound(target, SFX_DESECRATION, 50, TRUE, ignore_walls = FALSE)
-			R.trans_to(target, cum_volume)
+			applied_reagents.trans_to(target, cum_volume)
 			if(prob(40))
 				user.emote("moan")
 			qdel(src)
 	else
 		user.visible_message(span_warning("[user] starts masturbating onto [target]!"), span_danger("You start masturbating onto [target]!"))
-		if(do_after(user,60))
-			var/turf/T = get_turf(target)
+		if(do_after(user, 60))
+			var/turf/target_turf = get_turf(target)
 			user.visible_message(span_warning("[user] cums on [target]!"), span_danger("You cum on [target]!"))
 			playsound(target, SFX_DESECRATION, 50, TRUE, ignore_walls = FALSE)
-			new/obj/effect/decal/cleanable/cum(T)
+			new/obj/effect/decal/cleanable/cum(target_turf)
 			if(prob(40))
 				user.emote("moan")
 
