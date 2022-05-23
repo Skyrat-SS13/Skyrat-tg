@@ -19,7 +19,7 @@
 
 /obj/item/mod/module/baton_holster/attackby(obj/item/attacking_item, mob/user, params)
 	. = ..()
-	if(!istype(attacking_item, /obj/item/melee/baton/telescopic/contractor_baton) || !eaten_baton)
+	if(!istype(attacking_item, /obj/item/melee/baton/telescopic/contractor_baton) || eaten_baton)
 		return
 	balloon_alert(user, "[attacking_item] inserted")
 	eaten_baton = TRUE
