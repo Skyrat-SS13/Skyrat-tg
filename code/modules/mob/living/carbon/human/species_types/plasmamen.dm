@@ -3,7 +3,11 @@
 	plural_form = "Plasmamen"
 	id = SPECIES_PLASMAMAN
 	say_mod = "rattles"
-	sexes = 0
+	// SKYRAT CHANGE EDIT start
+	// Plasmamen sexes is true to enable players to choose pronouns.
+	// Players are able to select body type in character preferences as well.
+	sexes = TRUE
+	// SKYRAY CHANGE EDIT end
 	meat = /obj/item/stack/sheet/mineral/plasma
 	species_traits = list(NOBLOOD,NOTRANSSTING, HAS_BONE)
 	// plasmemes get hard to wound since they only need a severe bone wound to dismember, but unlike skellies, they can't pop their bones back into place
