@@ -52,7 +52,11 @@ INITIALIZE_IMMEDIATE(/mob/dead)
 	if(client.holder)
 		. += "Players Ready: [SSticker.totalPlayersReady]"
 		. += "Admins Ready: [SSticker.total_admins_ready] / [length(GLOB.admins)]"
-
+	//SKYRAT EDIT BEGIN: Round Timer Social Experiment
+	. += "Server Time: [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")]"
+	. += "Round Timer: [round_time > MIDNIGHT_ROLLOVER ? "[round(round_time/MIDNIGHT_ROLLOVER)]:[worldtime2text()]" : worldtime2text()]",
+	. += "Actual Round Timer: [time2text(real_round_time, "hh:mm:ss", 0)]"
+	//SKYRAT EDIT END
 /mob/dead/proc/server_hop()
 	set category = "OOC"
 	set name = "Server Hop!"
