@@ -6,3 +6,12 @@
 			popup.set_content(text("<HTML><HEAD><TITLE>[]</TITLE></HEAD><BODY><TT>[]</TT></BODY></HTML>", "[name]'s temporary flavor text", replacetext(temporary_flavor_text, "\n", "<BR>")))
 			popup.open()
 			return
+
+/mob/living/get_status_tab_items()
+	. = ..()
+	. += ""
+
+	if(client.holder)
+		. += "Server Time: [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")]"
+		. += "Round Timer: [round_time > MIDNIGHT_ROLLOVER ? "[round(round_time/MIDNIGHT_ROLLOVER)]:[worldtime2text()]" : worldtime2text()]"
+		. += "Actual Round Timer: [time2text(real_round_time, "hh:mm:ss", 0)]"

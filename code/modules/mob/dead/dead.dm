@@ -54,7 +54,7 @@ INITIALIZE_IMMEDIATE(/mob/dead)
 		. += "Admins Ready: [SSticker.total_admins_ready] / [length(GLOB.admins)]"
 	//SKYRAT EDIT BEGIN: Removing Round Timer
 	. += "Server Time: [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")]"
-	. += "Round Timer: [round_time > MIDNIGHT_ROLLOVER ? "[round(round_time/MIDNIGHT_ROLLOVER)]:[worldtime2text()]" : worldtime2text()]",
+	. += "Round Timer: [round_time > MIDNIGHT_ROLLOVER ? "[round(round_time/MIDNIGHT_ROLLOVER)]:[worldtime2text()]" : worldtime2text()]"
 	. += "Actual Round Timer: [time2text(real_round_time, "hh:mm:ss", 0)]"
 	//SKYRAT EDIT END
 /mob/dead/proc/server_hop()
