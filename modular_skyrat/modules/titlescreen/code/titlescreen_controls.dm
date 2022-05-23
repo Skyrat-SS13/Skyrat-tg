@@ -50,7 +50,7 @@
 	if(new_screen)
 		GLOB.current_lobby_screen = new_screen
 	else
-		if(GLOB.lobby_screens.len)
+		if(LAZYLEN(GLOB.lobby_screens))
 			GLOB.current_lobby_screen = pick(GLOB.lobby_screens)
 		else
 			GLOB.current_lobby_screen = 'modular_skyrat/modules/lobbyscreen/icons/skyrat_lobbyscreen.png'

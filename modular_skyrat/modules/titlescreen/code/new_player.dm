@@ -9,18 +9,18 @@
 		return FALSE
 
 	if(href_list["observe"])
-		make_me_an_observer()
 		SEND_SOUND(src, sound('modular_skyrat/master_files/sound/effects/save.ogg'))
+		make_me_an_observer()
 		return
 
 	if(href_list["server_swap"])
-		server_swap()
 		SEND_SOUND(src, sound('modular_skyrat/master_files/sound/effects/save.ogg'))
+		server_swap()
 		return
 
 	if(href_list["view_manifest"])
-		ViewManifest()
 		SEND_SOUND(src, sound('modular_skyrat/master_files/sound/effects/save.ogg'))
+		ViewManifest()
 		return
 
 	if(href_list["toggle_antag"])
