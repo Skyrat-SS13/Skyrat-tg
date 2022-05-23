@@ -52,7 +52,7 @@
 
 	var/datum/component/overlay_lighting/lighting_object = src.GetComponent(/datum/component/overlay_lighting)
 	var/image/cone = lighting_object.cone
-	cone.transform = cone.transform.Translate(0, -16) //adjust the little headlamp
+	cone.transform = cone.transform.Translate(0, -16) // adjust the little headlamp
 
 /mob/living/simple_animal/pet/poppy/death()
 	lose_area_sensitivity(INNATE_TRAIT)

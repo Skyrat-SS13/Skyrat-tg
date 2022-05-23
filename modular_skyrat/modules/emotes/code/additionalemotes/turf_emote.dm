@@ -1,5 +1,3 @@
-var/current_turf
-
 /mob/living
 	var/obj/owned_turf
 	var/list/allowed_turfs = list()
@@ -8,6 +6,8 @@ var/current_turf
 	key = "turf"
 	key_third_person = "turf"
 	cooldown = 4 SECONDS
+	/// The current turf ID that the user selected in the radial menu.
+	var/current_turf
 
 /datum/emote/living/mark_turf/run_emote(mob/living/user, params, type_override, intentional)
 	. = ..()
@@ -57,7 +57,7 @@ var/current_turf
 
 		//body parts
 		if(istype(user.getorganslot(ORGAN_SLOT_TAIL), /obj/item/organ/tail))
-			var/list/fluffy_tails = list("Tamamo Kitsune Tails", "Sergal", "Fox", "Fox (Alt 2)", "Fox (Alt 3)", "Fennec", "Red Panda", "Husky", "Skunk", "Lunasune", "Squirrel", "Wolf", "Stripe", "Kitsune", "Leopard", "Bat (Long)")
+			var/list/fluffy_tails = list("Tamamo Kitsune Tails", "Sergal", "Fox", "Fox (Alt 2)", "Fox (Alt 3)", "Fennec", "Red Panda", "Husky", "Skunk", "Lunasune", "Squirrel", "Wolf", "Stripe", "Kitsune", "Leopard", "Bat (Long)", "Triple Kitsune,", "Septuple Kitsune", "Sabresune")
 			if(human_user.dna.species.mutant_bodyparts["tail"][MUTANT_INDEX_NAME] in fluffy_tails)
 				user.allowed_turfs += "tails"
 
@@ -91,11 +91,10 @@ var/current_turf
 	if(QDELETED(src) || QDELETED(user) || !chosen_turf)
 		return FALSE
 
-	if(do_after(user,10))
+	if(do_after(user, 1 SECONDS))
 		current_turf = chosen_turf
 
-		var/obj/turf_icon = /obj/structure/mark_turf
-		user.owned_turf = new turf_icon(get_turf(user))
+		user.owned_turf = new /obj/structure/mark_turf(get_turf(user), current_turf)
 		user.owned_turf.dir = user.dir
 
 		if(ishuman(user))

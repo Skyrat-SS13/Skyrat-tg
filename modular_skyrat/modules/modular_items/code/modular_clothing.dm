@@ -1,6 +1,6 @@
-///////////////////
-//    Clothing   //
-///////////////////
+/*
+*	CLOTHING
+*/
 
 /obj/item/clothing/under/rank/civilian/linen
 	name = "linen shirt"

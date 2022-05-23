@@ -1,4 +1,4 @@
-#define OXY_CANDLE_RELEASE_TEMP  T20C + 10 //30 celsius, it's hot. Will be even hotter with hotspot expose
+#define OXY_CANDLE_RELEASE_TEMP  T20C + 10 // 30 celsius, it's hot. Will be even hotter with hotspot expose
 
 /obj/item/oxygen_candle
 	name = "oxygen candle"
@@ -6,7 +6,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/oxygen_candle.dmi'
 	icon_state = "oxycandle"
 	w_class = WEIGHT_CLASS_SMALL
-	light_color = LIGHT_COLOR_LAVA //Very warm chemical burn
+	light_color = LIGHT_COLOR_LAVA // Very warm chemical burn
 	var/pulled = FALSE
 	var/processing = FALSE
 	var/processes_left = 40
@@ -14,7 +14,7 @@
 /obj/item/oxygen_candle/attack_self(mob/user)
 	if(!pulled)
 		playsound(src, 'sound/effects/fuse.ogg', 75, 1)
-		to_chat(user, span_notice("You pull the cord and [src] ignites."))
+		balloon_alert(user, "cord pulled")
 		icon_state = "oxycandle_burning"
 		pulled = TRUE
 		processing = TRUE

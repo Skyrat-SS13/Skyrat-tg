@@ -101,11 +101,17 @@
 	item_path = /obj/item/clothing/glasses/welding/goldengoggles
 	ckeywhitelist = list("goldenalpharex")
 
-/datum/loadout_item/head/hephelmet
-	name = "HepUnit Standard Helmet"
-	item_path = /obj/item/clothing/head/helmet/sec/peacekeeper/jax
+/datum/loadout_item/head/bio_jax
+	name = "XuraCorp Biohazard Hood"
+	item_path = /obj/item/clothing/head/bio_hood/jax
 	ckeywhitelist = list("candlejax")
-	restricted_roles = list(JOB_VANGUARD_OPERATIVE,JOB_BLUESHIELD, JOB_HEAD_OF_SECURITY, JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_DETECTIVE, JOB_SECURITY_MEDIC, JOB_CORRECTIONS_OFFICER)
+	restricted_roles = list(JOB_RESEARCH_DIRECTOR, JOB_SCIENTIST, JOB_SCIENCE_GUARD, JOB_VIROLOGIST, JOB_GENETICIST)
+
+/datum/loadout_item/under/jumpsuit/plasmaman_jax
+	name = "XuraCorp Biohazard Underfitting"
+	item_path = /obj/item/clothing/under/plasmaman/jax2
+	ckeywhitelist = list("candlejax")
+	restricted_roles = list(JOB_RESEARCH_DIRECTOR, JOB_SCIENTIST, JOB_SCIENCE_GUARD, JOB_VIROLOGIST, JOB_GENETICIST)
 
 /datum/loadout_item/head/emissionhelm
 	name = "Emission's Helmet"
@@ -424,9 +430,12 @@
 	name = "Obscene Sergal Plushie"
 	item_path = /obj/item/toy/plush/roselia
 	ckeywhitelist = list("ultimarifox")
-	
+
 /datum/loadout_item/accessory/mercbadge
 	name = "Jade Badge"
 	item_path = /obj/item/clothing/accessory/badge/holo/jade
 	ckeywhitelist = list("konstyantyn")
 
+/datum/loadout_item/toys/plushe_winrow
+    name = "Dark and brooding lizard plushie"
+    item_path = /obj/item/toy/plush/donator/plushie_winrow

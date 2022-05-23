@@ -146,7 +146,7 @@
 		/obj/item/clothing/suit/armor/centcom_formal/nt_consultant = 1
 		)
 
-	access_lists["[ACCESS_HEADS]"] = list(
+	access_lists["[ACCESS_COMMAND]"] = list(
 		/obj/item/clothing/head/imperial = 5,
 		/obj/item/clothing/head/imperial/grey = 5,
 		/obj/item/clothing/head/imperial/red = 5,

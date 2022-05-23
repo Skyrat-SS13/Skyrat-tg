@@ -1,13 +1,8 @@
-////////////////////////
-//ID: MODULAR_WEAPONS //
-////////////////////////
-
-////////////////////////
-//  IMPROVISED RIFLE  //
-////////////////////////
-//		There was an improvised rifle on Cit/Skyrat, it's pretty cool so here it is too.
-//		We're using a slightly modified sprite designed around a Short Magazine Lee Enfield (SMLE) Mk.III
-//
+/*
+*	IMPROVISED RIFLE
+*	There was an improvised rifle on Cit/Skyrat, it's pretty cool so here it is too.
+*	We're using a slightly modified sprite designed around a Short Magazine Lee Enfield (SMLE) Mk.III
+*/
 
 /obj/item/ammo_box/magazine/internal/boltaction/improvised
 	max_ammo = 1
@@ -28,12 +23,12 @@
 	pixel_x = -8
 	weapon_weight = WEAPON_HEAVY	// It's big.
 
-////////////////////////
-// IMPROVISED SHOTGUN //
-////////////////////////
-//		We're using the rifle because we want the bolt action so we can pretend it's a break action gun.
-//		On Skyrat/Cit there was a need to tone improvised weapons down due to their incredible ease of access.
-//		This is the same nerf, but drastically more fun. We now need two hands to fire and we have a slightly slower action.
+/*
+*	IMPROVISED SHOTGUN
+*	We're using the rifle because we want the bolt action so we can pretend it's a break action gun.
+*	On Skyrat/Cit there was a need to tone improvised weapons down due to their incredible ease of access.
+*	This is the same nerf, but drastically more fun. We now need two hands to fire and we have a slightly slower action.
+*/
 
 /obj/item/gun/ballistic/rifle/ishotgun
 	name = "improvised shotgun"
@@ -113,9 +108,9 @@
 	sawn_off = TRUE
 	slot_flags = ITEM_SLOT_BELT
 
-////////////////////////
-//      CFA RIFLE     //
-////////////////////////
+/*
+*	CFA RIFLE
+*/
 
 /obj/item/gun/ballistic/automatic/cfa_rifle
 	name = "Cantanheim 6.8mm rifle"

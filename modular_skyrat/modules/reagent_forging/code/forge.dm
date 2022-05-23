@@ -68,10 +68,18 @@
 		"Shovel" = /obj/item/forging/incomplete/shovel,
 		"Arrowhead" = /obj/item/forging/incomplete/arrowhead,
 	)
+	///radial button for acting as an oven on a food object
+	var/static/radial_oven = image(icon = 'modular_skyrat/modules/reagent_forging/icons/hud/forge_radials.dmi', icon_state = "oven")
+	///radial button for acting as a microwave on a food object
+	var/static/radial_microwave = image(icon = 'modular_skyrat/modules/reagent_forging/icons/hud/forge_radials.dmi', icon_state = "microwave")
+
+	///list containing cooking radial buttons, for when anything of /obj/item/food is used on the forge
+	var/static/list/radial_options = list("oven" = radial_oven, "microwave" = radial_microwave)
 
 /obj/structure/reagent_forge/examine(mob/user)
 	. = ..()
 	. += span_warning("<br>Perhaps using your hand on [src] when skilled will do something...<br>")
+	. += span_notice("You could probably use [src] to <b>bake</b> or <b>cook</b> food...<br>")
 	switch(forge_level)
 		if(FORGE_LEVEL_ZERO)
 			. += span_notice("[src] has not yet been touched by a smithy.<br>")
@@ -462,6 +470,46 @@
 		COOLDOWN_START(spawned_glass, remaining_heat, glassblowing_amount)
 		return TRUE
 
+	if(istype(attacking_item, /obj/item/food))
+		var/obj/item/food/thing_to_cook = attacking_item
+
+		if(in_use)
+			to_chat(user, span_warning("You cannot do multiple things at the same time!"))
+			return FALSE
+
+		in_use = TRUE
+
+		if(forge_temperature < MIN_FORGE_TEMP)
+			fail_message(user, "The [src] is not hot enough to start cooking [thing_to_cook]!")
+			return FALSE
+
+		var/user_input = show_radial_menu(user, src, radial_options)
+		var/obj/item_to_spawn
+
+		if(!user_input)
+			fail_message(user, "No choice made")
+			return FALSE
+
+		in_use = TRUE
+		balloon_alert_to_viewers("cooking...")
+
+		if(!do_after(user, 10 SECONDS, target = src))
+			fail_message(user, "You stop trying to cook [thing_to_cook]!")
+			in_use = FALSE
+			return FALSE
+
+		switch(user_input)
+			if("oven")
+				var/datum/component/bakeable/item_bakeable_component = thing_to_cook.GetComponent(/datum/component/bakeable)
+				item_to_spawn = item_bakeable_component.bake_result ? item_bakeable_component.bake_result : /obj/item/food/badrecipe
+			if("microwave")
+				item_to_spawn = thing_to_cook.microwaved_type ? thing_to_cook.microwaved_type : /obj/item/food/badrecipe
+
+		qdel(thing_to_cook)
+		new item_to_spawn(get_turf(src))
+		in_use = FALSE
+		return TRUE
+
 	return ..()
 
 /obj/structure/reagent_forge/proc/smelt_ore(obj/item/stack/ore/ore_item, mob/living/user)
@@ -482,7 +530,7 @@
 		return
 	var/src_turf = get_turf(src)
 	var/spawning_item = ore_item.refined_type
-	var/spawning_amount = max(1, (1 + goliath_ore_improvement) * ore_item.amount)
+	var/spawning_amount = max(1, round((1 + goliath_ore_improvement) * ore_item.amount * (is_species(user, /datum/species/lizard/ashwalker) ? 1 : 0.5)))
 	var/experience_amount = spawning_amount * ore_item.mine_experience
 	for(var/spawn_ore in 1 to spawning_amount)
 		new spawning_item(src_turf)
@@ -569,6 +617,9 @@
 		forge_item.in_use = FALSE
 		user.mind.adjust_experience(/datum/skill/smithing, 10) //creating an item gives you some experience, not a lot
 		to_chat(user, span_notice("You successfully heat up [search_rods], ready to forge a [user_choice]."))
+		search_rods = locate(/obj/item/stack/rods) in forge_item.contents
+		if(!search_rods)
+			forge_item.icon_state = "tong_empty"
 		return FALSE
 	in_use = FALSE
 	forge_item.in_use = FALSE
