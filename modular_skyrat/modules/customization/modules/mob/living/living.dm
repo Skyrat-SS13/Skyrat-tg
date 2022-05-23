@@ -12,6 +12,8 @@
 	. += ""
 
 	if(client.holder)
+		var/round_time = world.time - SSticker.round_start_time
+		var/real_round_time = world.timeofday - SSticker.real_round_start_time
 		. += "Server Time: [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")]"
 		. += "Round Timer: [round_time > MIDNIGHT_ROLLOVER ? "[round(round_time/MIDNIGHT_ROLLOVER)]:[worldtime2text()]" : worldtime2text()]"
 		. += "Actual Round Timer: [time2text(real_round_time, "hh:mm:ss", 0)]"
