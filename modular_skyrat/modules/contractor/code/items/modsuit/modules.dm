@@ -29,7 +29,7 @@
 			device_baton.add_upgrade(new_upgrade)
 	qdel(attacking_item)
 
-/obj/item/mod/module/baton_holster/on_use()
+/obj/item/mod/module/baton_holster/on_activation()
 	if(!eaten_baton)
 		balloon_alert(mod.wearer, "no baton inserted")
 		return
