@@ -218,8 +218,10 @@
 	damage = 5
 	wound_bonus = 0
 	weak_against_armour = FALSE
-	var/faction_bonus_force = 10 //Bonus force dealt against certain factions
-	var/list/nemesis_path = /mob/living/simple_animal //Any mob with a faction that exists in this list will take bonus damage/effects
+        /// Bonus force dealt against certain factions
+	var/faction_bonus_force = 10 
+        /// Any mob with a faction that exists in this list will take bonus damage/effects
+	var/list/nemesis_path = /mob/living/simple_animal 
 
 /obj/projectile/bullet/pellet/shotgun_buckshot/hunter/prehit_pierce(mob/living/target, mob/living/carbon/human/user)
 	if(istype(target, nemesis_path))
