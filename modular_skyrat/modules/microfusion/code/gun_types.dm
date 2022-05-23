@@ -8,7 +8,7 @@
 
 /// Gun for cargo crates.
 /obj/item/gun/microfusion/mcr01/advanced
-	name = "Advanced MCR-01"
+	name = "advanced MCR-01"
 	cell_type = /obj/item/stock_parts/cell/microfusion/advanced
 	phase_emitter_type = /obj/item/microfusion_phase_emitter/advanced
 /* THESE ARE STILL UTTERLY BROKEN

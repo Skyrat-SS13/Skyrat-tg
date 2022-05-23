@@ -50,7 +50,7 @@
 	ammo_type = /obj/item/ammo_casing/b9mm/hp
 
 /obj/item/ammo_box/advanced/b9mm/rubber
-	name = "9x19mm Rubber box"
+	name = "9x19mm rubber box"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammoboxes.dmi'
 	icon_state = "pistol_r"
 	ammo_type = /obj/item/ammo_casing/b9mm/rubber
@@ -66,20 +66,20 @@
 //////////////////////
 
 /obj/item/ammo_box/advanced/b10mm
-	name = "10mm Auto box"
+	name = "10mm auto box"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammoboxes.dmi'
 	icon_state = "box50"
 	ammo_type = /obj/item/ammo_casing/b10mm
 	max_ammo = 30
 
 /obj/item/ammo_box/advanced/b10mm/hp
-	name = "10mm Auto JHP box"
+	name = "10mm auto JHP box"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammoboxes.dmi'
 	icon_state = "box50-lethal"
 	ammo_type = /obj/item/ammo_casing/b10mm/hp
 
 /obj/item/ammo_box/advanced/b10mm/rubber
-	name = "10mm Auto Rubber box"
+	name = "10mm auto rubber box"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammoboxes.dmi'
 	icon_state = "box50-rubber"
 	ammo_type = /obj/item/ammo_casing/b10mm/rubber
@@ -102,7 +102,7 @@
 	max_ammo = 15
 
 /obj/item/ammo_box/advanced/b12mm/rubber
-	name = "12.7x30mm Beanbag box"
+	name = "12.7x30mm beanbag box"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammoboxes.dmi'
 	icon_state = "magnum_r"
 	ammo_type = /obj/item/ammo_casing/b12mm/rubber
@@ -126,7 +126,7 @@
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 
 /obj/item/ammo_box/advanced/smartgun
-	name = "5mm Shock-Rail box"
+	name = "5mm shock-rail box"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammoboxes.dmi'
 	icon_state = "smartgun_chain"
 	ammo_type = /obj/item/ammo_casing/smartgun

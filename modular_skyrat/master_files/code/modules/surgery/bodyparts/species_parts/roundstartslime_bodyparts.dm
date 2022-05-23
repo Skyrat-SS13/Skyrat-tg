@@ -1,7 +1,7 @@
 // Roundstartslimes!
 
 /obj/item/bodypart/head/roundstartslime
-	limb_id = SPECIES_SLIMEPERSON //same icon state, no real reason to make a new define
+	limb_id = SPECIES_SLIMEPERSON // same icon state, no real reason to make a new define
 	is_dimorphic = TRUE
 	icon_greyscale = 'modular_skyrat/master_files/icons/mob/species/slime_parts_greyscale.dmi'
 

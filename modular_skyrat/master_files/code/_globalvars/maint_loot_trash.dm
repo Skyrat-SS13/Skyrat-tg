@@ -1,5 +1,5 @@
 
-GLOBAL_LIST_INIT(trash_loot, list(//junk: useless, very easy to get, or ghetto chemistry items
+GLOBAL_LIST_INIT(trash_loot, list(// junk: useless, very easy to get, or ghetto chemistry items
 	list(// literal trash
 		/obj/item/broken_bottle = 50,
 		/obj/item/cigbutt = 50,
@@ -42,7 +42,7 @@ GLOBAL_LIST_INIT(trash_loot, list(//junk: useless, very easy to get, or ghetto c
 		/obj/item/trash/tray = 25,
 		/obj/item/trash/waffles = 25
 	) = 100,
-	list(//not so literal trash
+	list(// not so literal trash
 		/obj/item/c_tube = 25,
 		/obj/item/candle = 50,
 		/obj/item/stack/pipe_cleaner_coil/random = 5,
@@ -87,7 +87,7 @@ GLOBAL_LIST_INIT(trash_loot, list(//junk: useless, very easy to get, or ghetto c
 		/obj/item/toner = 25,
 		/obj/item/wirerod = 100
 	) = 75,
-	list( //Common maint stuff. Stuff for the greytide.
+	list( // Common maint stuff. Stuff for the greytide.
 		/obj/item/airlock_painter = 25,
 		/obj/item/airlock_painter/decal = 25,
 		/obj/item/book/manual/random = 200,
@@ -218,7 +218,7 @@ GLOBAL_LIST_INIT(trash_loot, list(//junk: useless, very easy to get, or ghetto c
 		/obj/item/weaponcrafting/receiver = 50,
 		/obj/item/weaponcrafting/stock = 50
 	) = 300,
-	list( //Random meh items
+	list( // Random meh items
 		/obj/item/bouquet/poppy = 10,
 		/obj/item/bouquet/sunflower = 10,
 		/obj/item/bouquet = 10,
@@ -267,7 +267,7 @@ GLOBAL_LIST_INIT(trash_loot, list(//junk: useless, very easy to get, or ghetto c
 		/obj/item/storage/secure/briefcase = 50,
 		/obj/item/food/grown/random = 300
 	) = 100,
-	list( //Trash but I don't want to make so much of it.
+	list( // Trash but I don't want to make so much of it.
 		/obj/item/kirbyplants/random = 200,
 		/obj/item/flashlight/lamp = 200,
 		/obj/item/food/sausage/american = 50,
@@ -308,7 +308,7 @@ GLOBAL_LIST_INIT(trash_loot, list(//junk: useless, very easy to get, or ghetto c
 		/obj/item/storage/fancy/rollingpapers = 50,
 		/obj/item/wheelchair = 25
 	) = 50,
-	list( //Circuits
+	list( // Circuits
 		/obj/item/electronics/airalarm = 100,
 		/obj/item/electronics/airlock = 100,
 		/obj/item/electronics/apc = 100,
@@ -316,7 +316,7 @@ GLOBAL_LIST_INIT(trash_loot, list(//junk: useless, very easy to get, or ghetto c
 		/obj/item/electronics/firelock = 25,
 		/obj/item/electronics/tracker = 25
 	) = 50,
-	list( //Smoking
+	list( // Smoking
 		/obj/item/storage/fancy/cigarettes = 100,
 		/obj/item/storage/fancy/cigarettes/cigars = 50,
 		/obj/item/storage/fancy/cigarettes/cigars/cohiba = 25,
@@ -333,7 +333,7 @@ GLOBAL_LIST_INIT(trash_loot, list(//junk: useless, very easy to get, or ghetto c
 		/obj/item/storage/fancy/cigarettes/cigpack_xeno = 5,
 		/obj/item/storage/fancy/cigarettes/dromedaryco = 25
 	) = 10,
-	list( //Stock parts
+	list( // Stock parts
 		/obj/item/stock_parts/capacitor = 100,
 		/obj/item/stock_parts/capacitor/adv = 50,
 		/obj/item/stock_parts/cell = 100,

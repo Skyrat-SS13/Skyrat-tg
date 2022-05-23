@@ -47,7 +47,7 @@
 	regenerate_icons()
 
 /mob/living/simple_animal/pet/bumbles/bee_friendly()
-	return TRUE //treaty signed at the Beeneeva convention
+	return TRUE // treaty signed at the Beeneeva convention
 
 /mob/living/simple_animal/pet/bumbles/Life(delta_time = SSMOBS_DT, times_fired)
 	if(buckled || client || !DT_PROB(0.5, delta_time))

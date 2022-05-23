@@ -10,7 +10,7 @@
 //
 
 /obj/item/gun/ballistic/revolver/rifle
-	name = "\improper .38 Revolving Rifle"
+	name = "\improper .38 revolving rifle"
 	desc = "A revolving rifle chambered in .38. "
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/guns/projectile40x32.dmi'
 	icon_state = "revolving-rifle"
@@ -29,7 +29,7 @@
 	dirt_modifier = 0.75
 
 /obj/item/gun/ballistic/revolver/rifle/improvised
-	name = "\improper Improvised .38 Revolving Rifle"
+	name = "\improper improvised .38 revolving rifle"
 	desc = "A crudely made revolving rifle. It fires .38 rounds. The cylinder doesn't rotate very well."
 	icon_state = "revolving-rifle"
 	mag_type = /obj/item/ammo_box/magazine/internal/cylinder/rev38	//TAs far as improvised weapons go, this is fairly decent, this isn't half bad.
@@ -38,7 +38,7 @@
 	company_flag = null
 
 /obj/item/gun/ballistic/revolver/rifle/gold
-	name = "\improper .45 Revolving Rifle"
+	name = "\improper .45 revolving rifle"
 	desc = "A gold trimmed revolving rifle! It fires .45 bullets."
 	icon_state = "revolving-rifle-gold"
 	mag_type = /obj/item/ammo_box/magazine/internal/cylinder/rev45	//Gold! We're using .45 because TG's 10mm does 40 damage, this does 30.
