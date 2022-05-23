@@ -239,6 +239,7 @@
 	pellets = 12 //
 	variance = 35
 	fire_sound = 'sound/items/bikehorn.ogg'
+	harmful = FALSE
 
 /obj/projectile/bullet/pellet/shotgun_buckshot/honk
 	name = "confetti"
@@ -253,7 +254,6 @@
 	hitsound = SFX_CLOWN_STEP
 	range = 12
 	icon_state = "guardian"
-	harmful = FALSE
 
 /obj/projectile/bullet/pellet/shotgun_buckshot/honk/Initialize(mapload)
 	. = ..()
