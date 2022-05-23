@@ -214,6 +214,11 @@
 	description = "A box of 35 Incendiary Slugs. Warranty is void if set on fire."
 	stock_mult = 2
 
+/datum/armament_entry/cargo_gun/dynamics/ammo/shotgun/honk
+	item_type = /obj/item/ammo_box/advanced/s12gauge/honk
+	description = "A box of 35 Confetti Shots. Warranty is void if found funny."
+	stock_mult = 1
+
 /datum/armament_entry/cargo_gun/dynamics/misc
 	subcategory = ARMAMENT_SUBCATEGORY_SPECIAL
 

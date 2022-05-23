@@ -88,3 +88,9 @@
 	icon_state = "incendiary"
 	ammo_type = /obj/item/ammo_casing/shotgun/incendiary
 	max_ammo = 35
+
+/obj/item/ammo_box/advanced/s12gauge/honk
+	name = "Confetti Ammo Box"
+	icon_state = "honk"
+	ammo_type = /obj/item/ammo_casing/shotgun/incendiary
+	max_ammo = 35

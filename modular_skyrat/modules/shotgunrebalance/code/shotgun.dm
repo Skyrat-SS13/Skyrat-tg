@@ -219,9 +219,9 @@
 	wound_bonus = 0
 	weak_against_armour = FALSE
         /// Bonus force dealt against certain factions
-	var/faction_bonus_force = 10 
+	var/faction_bonus_force = 10
         /// Any mob with a faction that exists in this list will take bonus damage/effects
-	var/list/nemesis_path = /mob/living/simple_animal 
+	var/list/nemesis_path = /mob/living/simple_animal
 
 /obj/projectile/bullet/pellet/shotgun_buckshot/hunter/prehit_pierce(mob/living/target, mob/living/carbon/human/user)
 	if(istype(target, nemesis_path))
@@ -230,3 +230,44 @@
 
 /obj/projectile/bullet/pellet/shotgun_improvised
 	weak_against_armour = TRUE // We will not have Improvised are Better 2.0
+
+/obj/item/ammo_casing/shotgun/honk
+	name = "confetti shell"
+	desc = "A 12 gauge buckshot shell thats been filled to the brim with confetti. Who is making all these?"
+	icon_state = "honkshell"
+	projectile_type = /obj/projectile/bullet/pellet/shotgun_buckshot/honk
+	pellets = 12 //
+	variance = 35
+	fire_sound = 'sound/items/bikehorn.ogg'
+
+/obj/projectile/bullet/pellet/shotgun_buckshot/honk
+	name = "confetti"
+	damage = 0
+	stamina = 1
+	tile_dropoff_s = 0
+	wound_bonus = 0
+	bare_wound_bonus = 0
+	jitter = 1 SECONDS
+	eyeblur = 1 SECONDS
+	sharpness = NONE
+	hitsound = SFX_CLOWN_STEP
+	range = 12
+	icon_state = "guardian"
+	embedding = list(embed_chance=70, pain_chance=25, fall_chance=15, jostle_chance=80, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.9, pain_mult=2, rip_time=10)
+
+/obj/projectile/bullet/pellet/shotgun_buckshot/honk/Initialize(mapload)
+	. = ..()
+	SpinAnimation()
+	range = rand(6, 12)
+	color = pick(
+		COLOR_PRIDE_RED,
+		COLOR_PRIDE_ORANGE,
+		COLOR_PRIDE_YELLOW,
+		COLOR_PRIDE_GREEN,
+		COLOR_PRIDE_BLUE,
+		COLOR_PRIDE_PURPLE,
+	)
+
+/obj/projectile/bullet/pellet/shotgun_buckshot/honk/on_range()
+	do_sparks(1, TRUE, src)
+	..()
