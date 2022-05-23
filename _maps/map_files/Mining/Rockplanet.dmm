@@ -27,7 +27,7 @@
 "ap" = (
 /obj/machinery/door/airlock/highsecurity{
 	name = "Labor Camp Monitoring";
-	req_access_txt = "2"
+	req_access = list("brig")
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /turf/open/floor/plating,
@@ -185,7 +185,7 @@
 "cl" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Mining Station Communications";
-	req_access_txt = "48"
+	req_access = list("mining")
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -1249,7 +1249,7 @@
 "lm" = (
 /obj/machinery/door/airlock/highsecurity{
 	name = "Labor Camp Monitoring";
-	req_access_txt = "2"
+	req_access = list("brig")
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -1755,7 +1755,7 @@
 "py" = (
 /obj/machinery/door/airlock/mining/glass{
 	name = "Processing Area";
-	req_access_txt = "48"
+	req_access = list("mining")
 	},
 /obj/effect/turf_decal/trimline/brown/filled,
 /obj/structure/barricade/wooden/crude,
@@ -2291,7 +2291,7 @@
 /obj/structure/displaycase{
 	alert = 0;
 	desc = "A display case containing an expensive forgery, probably.";
-	req_access_txt = "48";
+	req_access = list("mining");
 	start_showpiece_type = /obj/item/fakeartefact
 	},
 /turf/open/floor/iron/brown/side{
@@ -2531,7 +2531,7 @@
 "wJ" = (
 /obj/machinery/door/airlock/highsecurity{
 	name = "Labor Camp Monitoring";
-	req_access_txt = "2"
+	req_access = list("brig")
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 1
@@ -2650,7 +2650,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/door/airlock/mining/glass{
 	name = "Processing Area";
-	req_access_txt = "48"
+	req_access = list("mining")
 	},
 /obj/effect/turf_decal/trimline/brown/filled,
 /obj/structure/barricade/wooden/crude,
@@ -3181,7 +3181,7 @@
 /obj/structure/displaycase{
 	alert = 0;
 	desc = "A display case containing an expensive forgery, probably.";
-	req_access_txt = "48";
+	req_access = list("mining");
 	start_showpiece_type = /obj/item/fakeartefact
 	},
 /turf/open/floor/iron/brown/side,
@@ -3776,7 +3776,7 @@
 	},
 /obj/machinery/door/airlock/security{
 	name = "Landing Zone Security Post";
-	req_access_txt = "2"
+	req_access = list("brig")
 	},
 /turf/open/floor/iron/dark,
 /area/security/checkpoint/auxiliary/has_gravity)
@@ -4377,7 +4377,7 @@
 "Kj" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Labor Camp Maintenance";
-	req_access_txt = "48"
+	req_access = list("mining")
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
@@ -5284,7 +5284,7 @@
 /obj/machinery/button/door{
 	id_tag = "lz_lockdown";
 	name = "Landing Zone Doors";
-	req_access_txt = "2"
+	req_access = list("brig")
 	},
 /obj/structure/table/reinforced,
 /obj/effect/turf_decal/tile/blue/darkblue,
@@ -5484,7 +5484,7 @@
 /obj/effect/turf_decal/tile/blue/darkblue,
 /obj/machinery/door/airlock/security{
 	name = "Landing Zone Security Post";
-	req_access_txt = "2"
+	req_access = list("brig")
 	},
 /turf/open/floor/iron/dark,
 /area/security/checkpoint/auxiliary/has_gravity)
@@ -5770,7 +5770,7 @@
 "UT" = (
 /obj/machinery/door/airlock/security/glass{
 	name = "Labor Camp Shuttle Security Airlock";
-	req_access_txt = "2"
+	req_access = list("brig")
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 4
@@ -5929,7 +5929,7 @@
 /obj/machinery/button/door/directional/north{
 	id = "labor";
 	name = "Labor Camp Lockdown";
-	req_access_txt = "2"
+	req_access = list("brig")
 	},
 /turf/open/floor/iron,
 /area/mine/laborcamp)
@@ -5943,7 +5943,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/door/airlock/maintenance{
 	name = "Mining Station Maintenance";
-	req_access_txt = "48"
+	req_access = list("mining")
 	},
 /obj/structure/cable,
 /turf/open/floor/iron,
@@ -5976,7 +5976,7 @@
 "WP" = (
 /obj/machinery/door/airlock/security/glass{
 	name = "Labor Camp Shuttle Security Airlock";
-	req_access_txt = "2"
+	req_access = list("brig")
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 8

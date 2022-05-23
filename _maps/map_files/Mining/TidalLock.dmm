@@ -240,7 +240,7 @@
 /obj/structure/cable,
 /obj/machinery/door/airlock/highsecurity{
 	name = "Labor Camp";
-	req_access_txt = "2"
+	req_access = list("brig")
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
 	dir = 4
@@ -549,7 +549,7 @@
 "jF" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Mining Station Maintenance";
-	req_access_txt = "48"
+	req_access = list("mining")
 	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/layer_manifold,
@@ -1374,7 +1374,7 @@
 	id = "labor";
 	name = "Labor Camp Lockdown";
 	pixel_y = 28;
-	req_access_txt = "2"
+	req_access = list("brig")
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/dark,
@@ -1840,7 +1840,7 @@
 /obj/structure/cable,
 /obj/machinery/door/airlock/highsecurity{
 	name = "Labor Camp Monitoring";
-	req_access_txt = "2"
+	req_access = list("brig")
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
 	dir = 4
@@ -2553,7 +2553,7 @@
 "Jw" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Mining Station Communications";
-	req_access_txt = "48"
+	req_access = list("mining")
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
@@ -2976,7 +2976,7 @@
 /obj/structure/cable,
 /obj/machinery/door/airlock/highsecurity{
 	name = "Labor Camp Maintenance";
-	req_access_txt = "2"
+	req_access = list("brig")
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
 	dir = 4
@@ -3051,7 +3051,7 @@
 /obj/structure/cable,
 /obj/machinery/door/airlock/highsecurity{
 	name = "Labor Camp Monitoring";
-	req_access_txt = "2"
+	req_access = list("brig")
 	},
 /turf/open/floor/iron/dark,
 /area/mine/laborcamp/security)
@@ -3399,7 +3399,7 @@
 	},
 /obj/machinery/door/airlock/security/glass{
 	name = "Labor Camp Shuttle Security Airlock";
-	req_access_txt = "2"
+	req_access = list("brig")
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/dark,
@@ -3616,7 +3616,7 @@
 	},
 /obj/machinery/door/airlock/security/glass{
 	name = "Labor Camp Shuttle Security Airlock";
-	req_access_txt = "2"
+	req_access = list("brig")
 	},
 /turf/open/floor/iron/dark,
 /area/mine/laborcamp/security)
