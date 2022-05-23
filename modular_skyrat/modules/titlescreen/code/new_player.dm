@@ -26,7 +26,7 @@
 			preferences.write_preference(GLOB.preference_entries[/datum/preference/toggle/be_antag], FALSE)
 		else
 			preferences.write_preference(GLOB.preference_entries[/datum/preference/toggle/be_antag], TRUE)
-		client << output(preferences.read_preference(/datum/preference/toggle/be_antag), "lobbybrowser:beantag") //SKYRAT EDIT ADDITION
+		client << output(!preferences.read_preference(/datum/preference/toggle/be_antag), "lobbybrowser:beantag") //SKYRAT EDIT ADDITION
 		return
 
 	if(href_list["character_setup"])
