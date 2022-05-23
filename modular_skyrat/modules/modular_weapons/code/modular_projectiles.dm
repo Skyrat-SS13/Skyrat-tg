@@ -1,9 +1,6 @@
-////////////////////////
-//ID: MODULAR_WEAPONS //
-////////////////////////
-
-////////////////////////
-//////   .32 ACP  //////
+/*
+*	.32 ACP
+*/
 
 /obj/item/ammo_casing/c32
 	name = ".32 bullet casing"
@@ -56,9 +53,9 @@
 	fire_stacks = 1
 	wound_bonus = -90
 
-//////   .32 ACP  //////
-////////////////////////
-/////  10mm Magnum /////
+/*
+*	10mm MAGNUM
+*/
 
 /obj/item/ammo_casing/c10mm/rubber
 	name = "10mm Magnum rubber bullet casing"
@@ -79,9 +76,9 @@
 	sharpness = NONE
 	embedding = null
 
-/////  10mm Magnum /////
-////////////////////////
-//////   .45 ACP  //////
+/*
+*	.45 ACP
+*/
 
 /obj/item/ammo_casing/c45/rubber
 	name = ".45 rubber bullet casing"
@@ -101,9 +98,9 @@
 	embedding = null
 	wound_bonus = -50
 
-//////   .45 ACP  //////
-////////////////////////
-/////  HK 4.6x30mm /////
+/*
+* HK 4.6x30mm
+*/
 
 /obj/projectile/bullet/c46x30mm_rubber
 	name = "4.6x30mm rubber bullet"
@@ -124,9 +121,10 @@
 	projectile_type = /obj/projectile/bullet/c46x30mm_rubber
 	harmful = FALSE
 
-/////  HK 4.6x30mm /////
-////////////////////////
-//// 5.56x30mm MARS ////
+/*
+*	5.56x30mm MARS
+*/
+
 
 /obj/item/ammo_casing/a556/rubber
 	name = "5.56mm rubber bullet casing"
@@ -159,9 +157,9 @@
 	name = "5.56mm AP bullet"
 	armour_penetration = 60
 
-//// 5.56x30mm MARS ////
-////////////////////////
-//////    7.62    //////
+/*
+*	7.62
+*/
 
 /obj/item/ammo_casing/a762/rubber
 	name = "7.62 rubber bullet casing"
@@ -183,10 +181,11 @@
 	sharpness = NONE
 	embedding = null
 
-//////    7.62    //////
-////////////////////////
-/////  5.56x45mm   /////
-// Very good at piercing armour at short range, not as good at going through armour at over 100m. But this is SS13...
+/*
+*	5.56x45mm
+*	Very good at piercing armour at short range
+*	Not as good at going through armour at over 100m. But this is SS13...
+*/
 
 /// The 5.56 you see pretty much everyone under NATO use.
 #define CALIBER_A556x45 "a556x45"
@@ -205,10 +204,11 @@
 	wound_bonus = 20
 	bare_wound_bonus = 10
 
-/////  5.56x45mm   /////
-////////////////////////
-//////   .34 ACP  //////
-// Why? Blame CFA, they want their bullets to be *proprietary*
+/*
+*	.34 ACP
+*	Why? Blame CFA, they want their bullets to be *proprietary*
+*/
+
 /obj/item/ammo_casing/c34
 	name = ".34 bullet casing"
 	desc = "A .34 bullet casing."
@@ -260,9 +260,9 @@
 	fire_stacks = 1
 	wound_bonus = -90
 
-//////   .34 ACP  //////
-////////////////////////
-//////  4.2x30mm  //////
+/*
+* 4.2x30mm
+*/
 
 /obj/item/ammo_casing/c42x30mm
 	name = "4.2x30mm bullet casing"
@@ -317,9 +317,9 @@
 	projectile_type = /obj/projectile/bullet/c42x30mm_rubber
 	harmful = FALSE
 
-//////  4.2x30mm  //////
-////////////////////////
-//////    12mm    //////
+/*
+*	12mm
+*/
 
 /obj/item/ammo_casing/c12mm
 	name = "12mm Magnum bullet casing"
@@ -379,10 +379,9 @@
 	sharpness = NONE
 	embedding = null
 
-//////    12mm    //////
-////////////////////////
-//////  6.8x43mm  //////
-
+/*
+*	6.8x43mm
+*/
 
 /obj/item/ammo_casing/a68
 	name = "6.8mm bullet casing"
@@ -397,5 +396,3 @@
 	armour_penetration = 10
 	wound_bonus = -45
 	wound_falloff_tile = 0
-
-//////  6.8x43mm  //////
