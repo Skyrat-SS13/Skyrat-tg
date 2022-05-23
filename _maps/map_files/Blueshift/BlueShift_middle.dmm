@@ -12522,7 +12522,7 @@
 "dBS" = (
 /obj/machinery/door/airlock/command{
 	name = "Auxiliary E.V.A. Storage";
-	req_access_txt = "18"
+	req_access = list("eva")
 	},
 /obj/structure/barricade/wooden,
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
@@ -17441,7 +17441,7 @@
 /area/station/engineering/main)
 "fqF" = (
 /obj/structure/fence/door{
-	req_access_txt = "42"
+	req_access = list("court")
 	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
@@ -20954,14 +20954,14 @@
 	name = "Kitchen Side Shutters";
 	pixel_x = -7;
 	pixel_y = -24;
-	req_access_txt = "28"
+	req_access = list("kitchen")
 	},
 /obj/machinery/button/door{
 	id = "kitchencounter";
 	name = "Kitchen Counter Shutters";
 	pixel_x = 8;
 	pixel_y = -24;
-	req_access_txt = "28"
+	req_access = list("kitchen")
 	},
 /obj/machinery/light/directional/south,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
@@ -21950,7 +21950,7 @@
 "gRq" = (
 /obj/machinery/door/airlock/maintenance_hatch{
 	name = "Law Office Maintenance";
-	req_access_txt = "38"
+	req_access = list("lawyer")
 	},
 /obj/structure/cable,
 /turf/open/floor/plating,
@@ -23131,7 +23131,7 @@
 	},
 /obj/machinery/door/airlock/hos{
 	name = "Head Of Security's Quarters";
-	req_access_txt = "58"
+	req_access = list("hos")
 	},
 /turf/open/floor/iron/dark,
 /area/station/command/heads_quarters/hos)
@@ -25594,7 +25594,7 @@
 "ihc" = (
 /obj/machinery/door/airlock/public/glass{
 	name = "Courtroom";
-	req_access_txt = "42"
+	req_access = list("court")
 	},
 /obj/machinery/door/firedoor,
 /turf/open/floor/carpet,
@@ -26243,7 +26243,7 @@
 /obj/effect/turf_decal/siding/wood,
 /obj/machinery/door/airlock{
 	name = "Jury Break Room";
-	req_access_txt = "42"
+	req_access = list("court")
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 1
@@ -26894,7 +26894,7 @@
 /obj/machinery/button/door/directional/east{
 	id = "hosroom";
 	name = "Privacy Control";
-	req_access_txt = "58"
+	req_access = list("hos")
 	},
 /obj/machinery/light/directional/east,
 /turf/open/floor/carpet/red,
@@ -27370,7 +27370,7 @@
 /obj/machinery/door/window{
 	dir = 8;
 	name = "Law Desk";
-	req_access_txt = "38"
+	req_access = list("lawyer")
 	},
 /obj/machinery/door/poddoor/shutters/preopen{
 	id = "lawyerprivacy";
@@ -30142,7 +30142,7 @@
 	id = "ceprivacy";
 	name = "Privacy Control";
 	pixel_y = -25;
-	req_access_txt = "56"
+	req_access = list("ce")
 	},
 /obj/structure/table/wood/fancy/orange,
 /turf/open/floor/wood,
@@ -30549,7 +30549,7 @@
 /obj/machinery/door/airlock/ce{
 	id_tag = "CEdoor";
 	name = "Chief Engineer's Office";
-	req_access_txt = "56"
+	req_access = list("ce")
 	},
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
 	dir = 4
@@ -32127,7 +32127,7 @@
 "kkW" = (
 /obj/machinery/door/airlock/bathroom{
 	name = "Restroom";
-	req_access_txt = "58"
+	req_access = list("hos")
 	},
 /turf/open/floor/iron/freezer,
 /area/station/command/heads_quarters/hos)
@@ -37326,7 +37326,7 @@
 	id = "custodialshutters";
 	name = "Custodial Shutters";
 	pixel_x = 26;
-	req_access_txt = "26"
+	req_access = list("janitor")
 	},
 /turf/open/floor/iron/dark,
 /area/station/service/janitor)
@@ -37541,7 +37541,7 @@
 "mgc" = (
 /obj/machinery/door/airlock/maintenance_hatch{
 	name = "Maintenance Hatch";
-	req_access_txt = "42"
+	req_access = list("court")
 	},
 /turf/open/floor/plating,
 /area/station/maintenance/port/central)
@@ -38125,7 +38125,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/ce{
 	name = "Chief Engineer's Quarters";
-	req_access_txt = "56"
+	req_access = list("ce")
 	},
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
@@ -39210,7 +39210,7 @@
 	},
 /obj/machinery/door/airlock{
 	name = "Law Office";
-	req_access_txt = "38"
+	req_access = list("lawyer")
 	},
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
 	dir = 4
@@ -44531,7 +44531,7 @@
 "oze" = (
 /obj/machinery/door/airlock/public/glass{
 	name = "Courtroom";
-	req_access_txt = "42"
+	req_access = list("court")
 	},
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
@@ -44906,7 +44906,7 @@
 	id = "ceblast";
 	name = "Lockdown Control";
 	pixel_y = 26;
-	req_access_txt = "56"
+	req_access = list("ce")
 	},
 /obj/effect/turf_decal/tile/yellow{
 	dir = 4
@@ -44960,7 +44960,7 @@
 /obj/effect/turf_decal/tile/blue,
 /obj/machinery/door/airlock{
 	name = "Service Laundry Room";
-	req_access_txt = "26"
+	req_access = list("janitor")
 	},
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
@@ -47977,7 +47977,7 @@
 /obj/structure/cable,
 /obj/machinery/door/airlock/service{
 	name = "Custodial Closet";
-	req_access_txt = "26"
+	req_access = list("janitor")
 	},
 /obj/effect/landmark/navigate_destination,
 /turf/open/floor/iron,
@@ -50867,7 +50867,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/service{
 	name = "Kitchen";
-	req_access_txt = "28"
+	req_access = list("kitchen")
 	},
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
@@ -50953,7 +50953,7 @@
 "qFb" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Custodial Maintenance";
-	req_access_txt = "26"
+	req_access = list("janitor")
 	},
 /turf/open/floor/iron,
 /area/station/service/abandoned_gambling_den)
@@ -55575,7 +55575,7 @@
 	normaldoorcontrol = 1;
 	pixel_x = -35;
 	pixel_y = -1;
-	req_access_txt = "56";
+	req_access = list("ce");
 	specialfunctions = 4
 	},
 /turf/open/floor/iron,
@@ -56513,7 +56513,7 @@
 /obj/effect/turf_decal/siding/wood,
 /obj/machinery/door/airlock{
 	name = "Defense Attorney Office";
-	req_access_txt = "38"
+	req_access = list("lawyer")
 	},
 /turf/open/floor/iron,
 /area/station/security/courtroom)
@@ -60157,20 +60157,20 @@
 	id = "hosspace";
 	name = "Space Shutters Control";
 	pixel_y = -6;
-	req_access_txt = "58"
+	req_access = list("hos")
 	},
 /obj/machinery/button/door/directional/east{
 	id = "hosprivacy";
 	name = "Privacy Control";
 	pixel_y = 6;
-	req_access_txt = "58"
+	req_access = list("hos")
 	},
 /obj/machinery/button/door/directional/east{
 	id = "HoSdoor";
 	name = "Door Lock";
 	normaldoorcontrol = 1;
 	pixel_x = 36;
-	req_access_txt = "58";
+	req_access = list("hos");
 	specialfunctions = 4
 	},
 /turf/open/floor/iron/dark,
@@ -60542,7 +60542,7 @@
 	},
 /obj/machinery/door/window/left{
 	name = "Kitchen Desk";
-	req_access_txt = "28"
+	req_access = list("kitchen")
 	},
 /obj/machinery/door/firedoor,
 /turf/open/floor/iron/dark,
@@ -65609,7 +65609,7 @@
 /obj/machinery/door/airlock/hos{
 	id_tag = "HoSdoor";
 	name = "Head Of Security's Office";
-	req_access_txt = "58"
+	req_access = list("hos")
 	},
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
@@ -69013,7 +69013,7 @@
 	},
 /obj/machinery/door/airlock{
 	name = "Jury Courtroom Acces";
-	req_access_txt = "42"
+	req_access = list("court")
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /turf/open/floor/wood,
@@ -70552,7 +70552,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/service{
 	name = "Custodial Closet";
-	req_access_txt = "26"
+	req_access = list("janitor")
 	},
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
 	dir = 4
@@ -70925,7 +70925,7 @@
 /obj/machinery/door/window/left{
 	dir = 1;
 	name = "Kitchen Delivery";
-	req_access_txt = "28"
+	req_access = list("kitchen")
 	},
 /obj/effect/turf_decal/delivery,
 /turf/open/floor/iron/freezer,
@@ -72345,7 +72345,7 @@
 /obj/structure/cable,
 /obj/machinery/door/airlock/service{
 	name = "Kitchen";
-	req_access_txt = "28"
+	req_access = list("kitchen")
 	},
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
 	dir = 4
@@ -72533,7 +72533,7 @@
 /obj/effect/turf_decal/delivery,
 /obj/machinery/door/window/left{
 	name = "Janitorial Delivery";
-	req_access_txt = "26"
+	req_access = list("janitor")
 	},
 /turf/open/floor/iron/dark,
 /area/station/service/janitor)
@@ -72549,7 +72549,7 @@
 /obj/machinery/door/window{
 	dir = 1;
 	name = "Interior Door";
-	req_access_txt = "38"
+	req_access = list("lawyer")
 	},
 /obj/effect/turf_decal/siding/wood{
 	dir = 9
@@ -74128,7 +74128,7 @@
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
 /obj/machinery/door/airlock/freezer{
-	req_access_txt = "28"
+	req_access = list("kitchen")
 	},
 /turf/open/floor/iron/cafeteria,
 /area/station/service/kitchen/coldroom)

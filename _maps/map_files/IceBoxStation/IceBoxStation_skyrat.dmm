@@ -1267,7 +1267,7 @@
 /obj/machinery/button/door/directional/north{
 	id = "kitchen";
 	name = "Counter Shutters Control";
-	req_access_txt = "28"
+	req_access = list("kitchen")
 	},
 /turf/open/floor/iron/cafeteria,
 /area/station/service/kitchen)
@@ -2166,7 +2166,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/medical{
 	name = "Break Room";
-	req_access_txt = "5"
+	req_access = list("medical")
 	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -2492,7 +2492,7 @@
 /obj/machinery/door/window/brigdoor/left/directional/south{
 	dir = 4;
 	name = "High-Risk Modules";
-	req_access_txt = "20"
+	req_access = list("captain")
 	},
 /turf/open/floor/circuit/red,
 /area/ai_monitored/turret_protected/ai_upload)
@@ -3115,7 +3115,7 @@
 	dir = 4;
 	icon_state = "rightsecure";
 	name = "Head of Personnel's Desk";
-	req_access_txt = "57"
+	req_access = list("hop")
 	},
 /obj/machinery/door/poddoor/shutters/preopen{
 	id = "hop";
@@ -5491,7 +5491,7 @@
 	dir = 8;
 	icon_state = "right";
 	name = "Core Modules";
-	req_access_txt = "20"
+	req_access = list("captain")
 	},
 /turf/open/floor/circuit,
 /area/ai_monitored/turret_protected/ai_upload)
@@ -5520,7 +5520,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/command{
 	name = "Gateway Access";
-	req_access_txt = "62"
+	req_access = list("gateway")
 	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -5535,7 +5535,7 @@
 	id = "kitchen_counter";
 	name = "Counter Shutters Control";
 	pixel_x = -25;
-	req_access_txt = "28"
+	req_access = list("kitchen")
 	},
 /turf/open/floor/iron/cafeteria,
 /area/station/service/kitchen)
@@ -7669,7 +7669,7 @@
 	dir = 8;
 	icon_state = "left";
 	name = "Pharmacy Desk";
-	req_access_txt = "69"
+	req_access = list("pharmacy")
 	},
 /turf/open/floor/iron,
 /area/station/medical/pharmacy)
@@ -7728,7 +7728,7 @@
 "cxU" = (
 /obj/machinery/door/airlock{
 	name = "Kitchen";
-	req_access_txt = "28"
+	req_access = list("kitchen")
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -9671,7 +9671,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/maintenance{
 	name = "Medbay Maintenance";
-	req_access_txt = "40"
+	req_access = list("cmo")
 	},
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -10995,7 +10995,7 @@
 "dxi" = (
 /obj/machinery/door/airlock/freezer{
 	name = "Kitchen";
-	req_access_txt = "28"
+	req_access = list("kitchen")
 	},
 /obj/machinery/door/firedoor,
 /turf/open/floor/iron/freezer,
@@ -11609,7 +11609,7 @@
 "dGU" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Captain's Office Maintenance";
-	req_access_txt = "20"
+	req_access = list("captain")
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /obj/structure/cable,
@@ -13003,7 +13003,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/command/glass{
 	name = "EVA Storage";
-	req_access_txt = "18"
+	req_access = list("eva")
 	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -14198,7 +14198,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/maintenance{
 	name = "EVA Maintenance";
-	req_access_txt = "18"
+	req_access = list("eva")
 	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -14974,7 +14974,7 @@
 "eNH" = (
 /obj/machinery/door/airlock/command{
 	name = "Chief Medical Officer";
-	req_access_txt = "40"
+	req_access = list("cmo")
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/dark,
@@ -15174,7 +15174,7 @@
 "eRJ" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Teleporter Maintenance";
-	req_access_txt = "17"
+	req_access = list("teleporter")
 	},
 /obj/structure/sign/warning/secure_area{
 	pixel_x = -32
@@ -16624,7 +16624,7 @@
 	id = "pharmacy_shutters";
 	name = "Pharmacy Shutter Controls";
 	pixel_y = 55;
-	req_access_txt = "69"
+	req_access = list("pharmacy")
 	},
 /turf/open/floor/iron/white,
 /area/station/medical/pharmacy)
@@ -16843,7 +16843,7 @@
 "fsR" = (
 /obj/machinery/door/morgue{
 	name = "Relic Closet";
-	req_access_txt = "22"
+	req_access = list("chapel_office")
 	},
 /turf/open/floor/cult,
 /area/station/service/chapel/office)
@@ -17303,7 +17303,7 @@
 /obj/machinery/button/door/directional/west{
 	id = "chemistry_access_shutters";
 	name = "Chemistry Access Shutter Control";
-	req_access_txt = "5"
+	req_access = list("medical")
 	},
 /obj/item/stack/medical/suture,
 /obj/effect/turf_decal/tile/blue/full,
@@ -17853,7 +17853,7 @@
 /obj/machinery/door/window/brigdoor{
 	dir = 8;
 	name = "Research Director Observation";
-	req_access_txt = "30"
+	req_access = list("rd")
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -18735,7 +18735,7 @@
 "fYC" = (
 /obj/machinery/door/airlock/command/glass{
 	name = "Server Room";
-	req_access_txt = "30"
+	req_access = list("rd")
 	},
 /turf/open/floor/iron/dark,
 /area/station/science/server)
@@ -19909,7 +19909,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/medical{
 	name = "Psychology";
-	req_access_txt = "70"
+	req_access = list("psychology")
 	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -20068,7 +20068,7 @@
 "gvC" = (
 /obj/machinery/door/window{
 	name = "Gateway Chamber";
-	req_access_txt = "62"
+	req_access = list("gateway")
 	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -20333,7 +20333,7 @@
 	name = "Antechamber Turret Control";
 	pixel_y = -24;
 	req_access = null;
-	req_access_txt = "65"
+	req_access = list("minisat")
 	},
 /obj/machinery/light/small/directional/south,
 /obj/machinery/camera/motion/directional/south{
@@ -20933,7 +20933,7 @@
 	},
 /obj/machinery/door/airlock/external{
 	name = "MiniSat External Access";
-	req_access_txt = "65"
+	req_access = list("minisat")
 	},
 /turf/open/floor/plating,
 /area/ai_monitored/turret_protected/aisat_interior)
@@ -21347,7 +21347,7 @@
 	},
 /obj/machinery/door/airlock/hatch{
 	name = "Morgue";
-	req_access_txt = "6"
+	req_access = list("moruge")
 	},
 /obj/machinery/door/firedoor,
 /turf/open/floor/iron/dark,
@@ -21375,7 +21375,7 @@
 /obj/machinery/door/window/right/directional/east{
 	dir = 8;
 	name = "Pharmacy Desk";
-	req_access_txt = "69"
+	req_access = list("pharmacy")
 	},
 /obj/item/folder/white,
 /obj/item/pen,
@@ -21524,7 +21524,7 @@
 "gQO" = (
 /obj/machinery/door/airlock/public/glass{
 	name = "Chapel Office";
-	req_access_txt = "22"
+	req_access = list("chapel_office")
 	},
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -21630,7 +21630,7 @@
 "gTi" = (
 /obj/machinery/door/airlock/medical/glass{
 	name = "Medbay Chemistry Access";
-	req_access_txt = "5"
+	req_access = list("medical")
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -22577,7 +22577,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/freezer{
 	name = "Cold Room";
-	req_access_txt = "28"
+	req_access = list("kitchen")
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/disposalpipe/segment,
@@ -23689,7 +23689,7 @@
 	dir = 2;
 	icon_state = "left";
 	name = "Chemistry Lab Access Hatch";
-	req_access_txt = "33"
+	req_access = list("pharmacy")
 	},
 /obj/structure/sign/departments/chemistry{
 	pixel_y = 32
@@ -24702,7 +24702,7 @@
 /obj/machinery/button/door/directional/east{
 	id = "pharmacy_shutters2";
 	name = "Pharmacy Shutter Control";
-	req_access_txt = "69"
+	req_access = list("pharmacy")
 	},
 /turf/open/floor/iron/white,
 /area/station/medical/pharmacy)
@@ -24983,7 +24983,7 @@
 /obj/machinery/door/window{
 	dir = 8;
 	name = "Mass Driver";
-	req_access_txt = "22"
+	req_access = list("chapel_office")
 	},
 /obj/machinery/mass_driver/chapelgun{
 	dir = 4
@@ -25262,7 +25262,7 @@
 "iaY" = (
 /obj/machinery/door/airlock/command{
 	name = "MiniSat Access";
-	req_access_txt = "65"
+	req_access = list("minisat")
 	},
 /obj/machinery/door/firedoor,
 /obj/structure/cable,
@@ -25650,7 +25650,7 @@
 	},
 /obj/machinery/door/airlock{
 	name = "Kitchen";
-	req_access_txt = "28"
+	req_access = list("kitchen")
 	},
 /turf/open/floor/plating,
 /area/station/maintenance/starboard/fore)
@@ -25694,7 +25694,7 @@
 	id = "pharmacy_shutters3";
 	name = "Pharmacy Shutter Controls";
 	pixel_y = 55;
-	req_access_txt = "69"
+	req_access = list("pharmacy")
 	},
 /turf/open/floor/iron/white,
 /area/station/medical/pharmacy)
@@ -25762,7 +25762,7 @@
 	},
 /obj/machinery/door/airlock/medical{
 	name = "Medbay";
-	req_access_txt = "5"
+	req_access = list("medical")
 	},
 /obj/effect/turf_decal/tile/blue/full,
 /turf/open/floor/iron/large,
@@ -26590,7 +26590,7 @@
 "ixZ" = (
 /obj/machinery/door/airlock/command/glass{
 	name = "Chief Engineer";
-	req_access_txt = "56"
+	req_access = list("ce")
 	},
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /obj/structure/cable,
@@ -27151,7 +27151,7 @@
 /obj/machinery/door/airlock/medical/glass{
 	id_tag = "MedbayFoyer";
 	name = "Medbay";
-	req_access_txt = "5"
+	req_access = list("medical")
 	},
 /obj/effect/mapping_helpers/airlock/unres,
 /obj/effect/turf_decal/tile/blue/full,
@@ -27551,7 +27551,7 @@
 	dir = 1;
 	icon_state = "left";
 	name = "Pharmacy Desk";
-	req_access_txt = "69"
+	req_access = list("pharmacy")
 	},
 /obj/item/folder/white,
 /obj/item/pen,
@@ -28205,7 +28205,7 @@
 /obj/machinery/button/door/directional/east{
 	id = "chemistry_access_shutters";
 	name = "Chemistry Access Shutter Control";
-	req_access_txt = "5"
+	req_access = list("medical")
 	},
 /obj/structure/cable,
 /obj/effect/turf_decal/stripes/corner,
@@ -28371,7 +28371,7 @@
 "jbx" = (
 /obj/machinery/door/airlock/medical/glass{
 	name = "Medbay Storage";
-	req_access_txt = "5"
+	req_access = list("medical")
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -28393,7 +28393,7 @@
 	},
 /obj/machinery/door/airlock/medical/glass{
 	name = "Medbay Chemistry Stair Access";
-	req_access_txt = "33"
+	req_access = list("pharmacy")
 	},
 /turf/open/floor/iron/dark,
 /area/station/medical/treatment_center)
@@ -28417,7 +28417,7 @@
 /obj/machinery/door/airlock/command/glass{
 	name = "Emergency EVA Storage";
 	red_alert_access = 1;
-	req_access_txt = "18"
+	req_access = list("eva")
 	},
 /turf/open/floor/iron/textured,
 /area/station/hallway/secondary/exit/departure_lounge)
@@ -28996,7 +28996,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/command/glass{
 	name = "AI Core";
-	req_access_txt = "65"
+	req_access = list("minisat")
 	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -29915,7 +29915,7 @@
 /obj/machinery/door/window/brigdoor/right/directional/north{
 	dir = 8;
 	name = "Medbay Access";
-	req_access_txt = "5"
+	req_access = list("medical")
 	},
 /obj/structure/railing/corner{
 	dir = 4
@@ -31328,7 +31328,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/command/glass{
 	name = "EVA Storage";
-	req_access_txt = "18"
+	req_access = list("eva")
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /obj/structure/cable,
@@ -33139,7 +33139,7 @@
 	},
 /obj/machinery/door/airlock/external{
 	name = "MiniSat External Access";
-	req_access_txt = "65"
+	req_access = list("minisat")
 	},
 /turf/open/floor/plating,
 /area/ai_monitored/turret_protected/aisat_interior)
@@ -33718,7 +33718,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/door/airlock/research{
 	name = "Chemical Storage";
-	req_access_txt = "69"
+	req_access = list("pharmacy")
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/effect/turf_decal/tile/yellow{
@@ -33864,7 +33864,7 @@
 "kOw" = (
 /obj/machinery/door/window/left/directional/west{
 	name = "Janitorial Delivery";
-	req_access_txt = "26"
+	req_access = list("janitor")
 	},
 /obj/effect/turf_decal/delivery,
 /obj/effect/spawner/random/trash/mess,
@@ -34140,7 +34140,7 @@
 "kRH" = (
 /obj/machinery/door/airlock/highsecurity{
 	name = "Chemistry Lab Exit";
-	req_access_txt = "33"
+	req_access = list("pharmacy")
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
 	cycle_id = "chem-airlock"
@@ -35320,7 +35320,7 @@
 	pixel_x = 32;
 	pixel_y = -24;
 	req_access = null;
-	req_access_txt = "65"
+	req_access = list("minisat")
 	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -35834,7 +35834,7 @@
 	icon_state = "right";
 	name = "First-Aid Supplies";
 	red_alert_access = 1;
-	req_access_txt = "5"
+	req_access = list("medical")
 	},
 /obj/effect/turf_decal/tile/blue/full,
 /turf/open/floor/iron/dark/smooth_large,
@@ -35960,7 +35960,7 @@
 /obj/machinery/door/window/left/directional/east{
 	dir = 2;
 	name = "Kitchen Window";
-	req_access_txt = "28"
+	req_access = list("kitchen")
 	},
 /obj/machinery/door/poddoor/shutters/preopen{
 	id = "kitchen_counter";
@@ -36427,7 +36427,7 @@
 	},
 /obj/machinery/door/window/brigdoor/right/directional/south{
 	name = "Research Director Observation";
-	req_access_txt = "30"
+	req_access = list("rd")
 	},
 /turf/open/floor/iron/cafeteria,
 /area/station/command/heads_quarters/rd)
@@ -37241,7 +37241,7 @@
 "lSj" = (
 /obj/machinery/door/window/brigdoor/right/directional/south{
 	name = "Research Director Observation";
-	req_access_txt = "30"
+	req_access = list("rd")
 	},
 /obj/structure/railing/corner,
 /obj/effect/turf_decal/stripes/line,
@@ -37318,7 +37318,7 @@
 /obj/machinery/door/airlock/medical/glass{
 	id_tag = "MedbayFoyer";
 	name = "Medbay";
-	req_access_txt = "5"
+	req_access = list("medical")
 	},
 /obj/effect/mapping_helpers/airlock/unres,
 /obj/structure/disposalpipe/segment,
@@ -38261,7 +38261,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/door/airlock/medical{
 	name = "Surgery B";
-	req_access_txt = "45"
+	req_access = list("surgery")
 	},
 /obj/structure/cable,
 /obj/structure/disposalpipe/segment{
@@ -38288,7 +38288,7 @@
 "mnd" = (
 /obj/machinery/door/airlock/public/glass{
 	name = "Courtroom";
-	req_access_txt = "42"
+	req_access = list("court")
 	},
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -39216,7 +39216,7 @@
 	id = "cmoprivacy";
 	name = "CMO Shutter Control";
 	pixel_y = 23;
-	req_access_txt = "40"
+	req_access = list("cmo")
 	},
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 4
@@ -39745,7 +39745,7 @@
 "mPv" = (
 /obj/machinery/door/airlock/medical/glass{
 	name = "Medbay Storage";
-	req_access_txt = "5"
+	req_access = list("medical")
 	},
 /obj/machinery/door/firedoor,
 /obj/effect/turf_decal/tile/blue/full,
@@ -40579,7 +40579,7 @@
 	name = "Service Bay Turret Control";
 	pixel_x = 27;
 	req_access = null;
-	req_access_txt = "65"
+	req_access = list("minisat")
 	},
 /obj/effect/turf_decal/tile/blue{
 	dir = 4
@@ -40952,7 +40952,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/command/glass{
 	name = "EVA Storage";
-	req_access_txt = "18"
+	req_access = list("eva")
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 1
@@ -42554,7 +42554,7 @@
 "nMN" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Chemistry Access Maintenance";
-	req_access_txt = "5"
+	req_access = list("medical")
 	},
 /turf/open/floor/plating,
 /area/station/maintenance/department/medical/central)
@@ -43264,7 +43264,7 @@
 "nVZ" = (
 /obj/machinery/door/airlock/command{
 	name = "Captain's Office";
-	req_access_txt = "20"
+	req_access = list("captain")
 	},
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable,
@@ -43871,7 +43871,7 @@
 "ofe" = (
 /obj/machinery/door/airlock/maintenance_hatch{
 	name = "MiniSat Maintenance";
-	req_access_txt = "65"
+	req_access = list("minisat")
 	},
 /obj/structure/cable,
 /turf/open/floor/plating,
@@ -43931,7 +43931,7 @@
 /obj/machinery/button/door/directional/east{
 	id = "aux_base_shutters";
 	name = "Public Shutters Control";
-	req_access_txt = "72"
+	req_access = list("aux_base")
 	},
 /turf/open/floor/iron,
 /area/construction/mining/aux_base)
@@ -44112,7 +44112,7 @@
 "oiB" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Chemistry Lab Utilities";
-	req_access_txt = "5"
+	req_access = list("medical")
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
@@ -44247,7 +44247,7 @@
 "olH" = (
 /obj/machinery/door/airlock/command{
 	name = "Captain's Quarters";
-	req_access_txt = "20"
+	req_access = list("captain")
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -44764,7 +44764,7 @@
 "osE" = (
 /obj/machinery/door/window/left/directional/east{
 	name = "Coffin Storage";
-	req_access_txt = "22"
+	req_access = list("chapel_office")
 	},
 /obj/machinery/firealarm/directional/south,
 /obj/effect/turf_decal/tile/neutral{
@@ -45830,7 +45830,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/freezer{
 	name = "Cold Room";
-	req_access_txt = "28"
+	req_access = list("kitchen")
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/disposalpipe/segment,
@@ -47320,7 +47320,7 @@
 "pkh" = (
 /obj/machinery/door/morgue{
 	name = "Confession Booth (Chaplain)";
-	req_access_txt = "22"
+	req_access = list("chapel_office")
 	},
 /turf/open/floor/iron/dark,
 /area/station/service/chapel)
@@ -48849,7 +48849,7 @@
 "pJN" = (
 /obj/machinery/door/airlock/command{
 	name = "Head of Personnel";
-	req_access_txt = "57"
+	req_access = list("hop")
 	},
 /obj/structure/cable,
 /obj/effect/landmark/navigate_destination,
@@ -51618,7 +51618,7 @@
 "qFX" = (
 /obj/machinery/door/airlock{
 	name = "Custodial Closet";
-	req_access_txt = "26"
+	req_access = list("janitor")
 	},
 /obj/structure/disposalpipe/segment,
 /obj/effect/landmark/event_spawn,
@@ -51985,7 +51985,7 @@
 	},
 /obj/machinery/door/airlock{
 	name = "Theater Stage";
-	req_access_txt = "46"
+	req_access = list("theatre")
 	},
 /obj/machinery/door/firedoor,
 /obj/structure/disposalpipe/segment{
@@ -53241,7 +53241,7 @@
 "reQ" = (
 /obj/machinery/door/window/brigdoor{
 	name = "Research Director Observation";
-	req_access_txt = "30"
+	req_access = list("rd")
 	},
 /obj/structure/railing/corner{
 	dir = 8
@@ -53786,7 +53786,7 @@
 	dir = 4;
 	name = "First-Aid Supplies";
 	red_alert_access = 1;
-	req_access_txt = "5"
+	req_access = list("medical")
 	},
 /obj/machinery/status_display/evac/directional/west,
 /obj/effect/turf_decal/tile/blue/full,
@@ -54208,7 +54208,7 @@
 "rzz" = (
 /obj/machinery/door/airlock/command{
 	name = "Server Room";
-	req_access_txt = "30"
+	req_access = list("rd")
 	},
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -54219,7 +54219,7 @@
 "rzA" = (
 /obj/machinery/door/airlock{
 	name = "Theater Backstage";
-	req_access_txt = "46"
+	req_access = list("theatre")
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -55621,7 +55621,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/command{
 	name = "Teleport Access";
-	req_access_txt = "17"
+	req_access = list("teleporter")
 	},
 /obj/structure/cable,
 /obj/effect/landmark/navigate_destination,
@@ -56296,7 +56296,7 @@
 "shP" = (
 /obj/machinery/door/airlock/command{
 	name = "Head of Personnel";
-	req_access_txt = "57"
+	req_access = list("hop")
 	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -57763,7 +57763,7 @@
 	dir = 4;
 	icon_state = "right";
 	name = "Captain's Desk Door";
-	req_access_txt = "20"
+	req_access = list("captain")
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -57786,7 +57786,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/machinery/door/airlock/medical/glass{
 	name = "Pharmacy";
-	req_access_txt = "69"
+	req_access = list("pharmacy")
 	},
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -58624,7 +58624,7 @@
 "sWl" = (
 /obj/machinery/door/airlock/command{
 	name = "Chief Medical Officer";
-	req_access_txt = "40"
+	req_access = list("cmo")
 	},
 /obj/machinery/door/firedoor,
 /obj/structure/disposalpipe/segment{
@@ -58850,7 +58850,7 @@
 "tai" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Chemistry Maintenance";
-	req_access_txt = "33"
+	req_access = list("pharmacy")
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/disposalpipe/segment{
@@ -58934,7 +58934,7 @@
 "tbH" = (
 /obj/machinery/door/airlock/maintenance_hatch{
 	name = "MiniSat Maintenance";
-	req_access_txt = "65"
+	req_access = list("minisat")
 	},
 /turf/open/floor/plating,
 /area/ai_monitored/turret_protected/aisat/atmos)
@@ -59555,7 +59555,7 @@
 "tnB" = (
 /obj/machinery/door/airlock{
 	name = "Theater Backstage";
-	req_access_txt = "46"
+	req_access = list("theatre")
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -60161,7 +60161,7 @@
 "tvv" = (
 /obj/machinery/door/airlock/command/glass{
 	name = "Research Director";
-	req_access_txt = "30"
+	req_access = list("rd")
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -60503,13 +60503,13 @@
 	id = "hopqueue";
 	name = "Queue Shutters Control";
 	pixel_x = -6;
-	req_access_txt = "57"
+	req_access = list("hop")
 	},
 /obj/machinery/button/door/directional/north{
 	id = "hop";
 	name = "Privacy Shutters Control";
 	pixel_x = 6;
-	req_access_txt = "57"
+	req_access = list("hop")
 	},
 /turf/open/floor/iron,
 /area/station/command/heads_quarters/hop)
@@ -63047,7 +63047,7 @@
 	icon_state = "right";
 	name = "First-Aid Supplies";
 	red_alert_access = 1;
-	req_access_txt = "5"
+	req_access = list("medical")
 	},
 /obj/structure/table/glass,
 /obj/item/mod/module/plasma_stabilizer,
@@ -63286,7 +63286,7 @@
 "uwO" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Custodial Maintenance";
-	req_access_txt = "26"
+	req_access = list("janitor")
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -65159,7 +65159,7 @@
 	name = "Atmospherics Turret Control";
 	pixel_x = -27;
 	req_access = null;
-	req_access_txt = "65"
+	req_access = list("minisat")
 	},
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
@@ -66142,7 +66142,7 @@
 "vsB" = (
 /obj/machinery/door/airlock/engineering{
 	name = "Tech Storage";
-	req_access_txt = "23"
+	req_access = list("tech_storage")
 	},
 /obj/structure/cable,
 /obj/effect/landmark/navigate_destination,
@@ -67852,7 +67852,7 @@
 "vUN" = (
 /obj/machinery/door/airlock/mining/glass{
 	name = "Cargo Warehouse";
-	req_access_txt = "54"
+	req_access = list("mining_station")
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -69040,7 +69040,7 @@
 /obj/machinery/door/window/left/directional/east{
 	dir = 1;
 	name = "Medbay Delivery";
-	req_access_txt = "5"
+	req_access = list("medical")
 	},
 /obj/structure/window/reinforced{
 	dir = 4
@@ -70326,7 +70326,7 @@
 "wHW" = (
 /obj/machinery/door/airlock{
 	name = "Kitchen";
-	req_access_txt = "28"
+	req_access = list("kitchen")
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -70686,7 +70686,7 @@
 "wNp" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Medbay Maintenance";
-	req_access_txt = "5"
+	req_access = list("medical")
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -70771,7 +70771,7 @@
 /obj/machinery/button/door/directional/west{
 	id = "chemistry_lower_shutters";
 	name = "Chemistry Exterior Shutter Control";
-	req_access_txt = "33"
+	req_access = list("pharmacy")
 	},
 /obj/effect/turf_decal/trimline/yellow/filled/line{
 	dir = 8
@@ -73231,7 +73231,7 @@
 /obj/effect/mapping_helpers/airlock/locked,
 /obj/machinery/door/airlock/vault{
 	name = "Vault";
-	req_access_txt = "53"
+	req_access = list("vault")
 	},
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /obj/structure/cable,
