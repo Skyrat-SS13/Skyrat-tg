@@ -7435,7 +7435,7 @@
 /area/station/medical/virology)
 "aXX" = (
 /obj/structure/closet/secure_closet/bar{
-	req_access_txt = "25"
+	req_access = list("bar")
 	},
 /obj/item/stack/spacecash/c100,
 /obj/item/stack/spacecash/c10,
@@ -11191,7 +11191,7 @@
 "cqF" = (
 /obj/machinery/door/airlock/engineering/glass{
 	name = "Server Room";
-	req_access_txt = "61"
+	req_access = list("tcomms")
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 1
@@ -15181,7 +15181,7 @@
 "dRs" = (
 /obj/machinery/door/airlock/engineering/glass{
 	name = "Server Room";
-	req_access_txt = "61"
+	req_access = list("tcomms")
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /obj/structure/cable,
@@ -16896,7 +16896,7 @@
 "erJ" = (
 /obj/machinery/door/airlock/mining/glass{
 	name = "Mailing Sorting Office";
-	req_access_txt = "50"
+	req_access = list("mail_sorting")
 	},
 /obj/machinery/door/firedoor,
 /obj/effect/turf_decal/trimline/brown/filled/line{
@@ -22301,7 +22301,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/door/airlock/engineering{
 	name = "Power Access Hatch";
-	req_access_txt = "50"
+	req_access = list("mail_sorting")
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cable,
@@ -23106,7 +23106,7 @@
 /obj/machinery/ore_silo,
 /obj/machinery/door/window/left/directional/south{
 	name = "Silo Access";
-	req_access_txt = "41"
+	req_access = list("qm")
 	},
 /turf/open/floor/iron/dark,
 /area/station/cargo/miningdock)
@@ -25153,7 +25153,7 @@
 /obj/machinery/door/window/left/directional/west{
 	dir = 1;
 	name = "Terminal Access";
-	req_access_txt = "41"
+	req_access = list("qm")
 	},
 /turf/open/floor/iron/dark,
 /area/station/cargo/miningdock)
@@ -28760,7 +28760,7 @@
 "iCz" = (
 /obj/machinery/door/airlock/security{
 	name = "Detective's Office";
-	req_access_txt = "4"
+	req_access = list("detective")
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -32239,7 +32239,7 @@
 	},
 /obj/machinery/door/airlock/engineering{
 	name = "Telecommunications";
-	req_access_txt = "61"
+	req_access = list("tcomms")
 	},
 /obj/structure/cable,
 /turf/open/floor/iron,
@@ -35117,7 +35117,7 @@
 "kRF" = (
 /obj/machinery/door/airlock{
 	name = "Bar Storage";
-	req_access_txt = "25"
+	req_access = list("bar")
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -35455,7 +35455,7 @@
 	},
 /obj/machinery/door/airlock/engineering{
 	name = "Telecommunications";
-	req_access_txt = "61"
+	req_access = list("tcomms")
 	},
 /obj/structure/cable,
 /turf/open/floor/iron,
@@ -37176,7 +37176,7 @@
 "lFJ" = (
 /obj/machinery/door/airlock/engineering{
 	name = "Power Access Hatch";
-	req_access_txt = "50"
+	req_access = list("mail_sorting")
 	},
 /obj/structure/cable,
 /turf/open/floor/catwalk_floor,
@@ -37776,7 +37776,7 @@
 /obj/machinery/door/window/left/directional/west{
 	dir = 1;
 	name = "Delivery Desk";
-	req_access_txt = "50"
+	req_access = list("mail_sorting")
 	},
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plating,
@@ -42350,7 +42350,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/engineering{
 	name = "Telecommunications";
-	req_access_txt = "61"
+	req_access = list("tcomms")
 	},
 /obj/effect/turf_decal/trimline/yellow/filled/line,
 /obj/effect/turf_decal/trimline/yellow/filled/line{
@@ -42546,7 +42546,7 @@
 	dir = 1;
 	icon_state = "right";
 	name = "Incoming Mail";
-	req_access_txt = "50"
+	req_access = list("mail_sorting")
 	},
 /turf/open/floor/plating,
 /area/station/cargo/sorting)
@@ -43492,7 +43492,7 @@
 	},
 /obj/machinery/door/airlock/vault{
 	name = "Bank of Cargo";
-	req_access_txt = "41"
+	req_access = list("qm")
 	},
 /obj/effect/mapping_helpers/airlock/locked,
 /obj/machinery/door/firedoor,
@@ -46029,7 +46029,7 @@
 /obj/effect/turf_decal/trimline/yellow/filled/line,
 /obj/machinery/door/airlock/engineering{
 	name = "Telecommunications";
-	req_access_txt = "61"
+	req_access = list("tcomms")
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
 	cycle_id = "tcomms-entrance"
@@ -46717,7 +46717,7 @@
 "pei" = (
 /obj/machinery/door/airlock/mining/glass{
 	name = "Quartermaster";
-	req_access_txt = "41"
+	req_access = list("qm")
 	},
 /obj/machinery/door/firedoor,
 /obj/effect/turf_decal/trimline/brown/filled/line{
@@ -54652,7 +54652,7 @@
 "scE" = (
 /obj/machinery/door/airlock/mining/glass{
 	name = "Quartermaster";
-	req_access_txt = "41"
+	req_access = list("qm")
 	},
 /obj/machinery/door/firedoor,
 /obj/effect/turf_decal/trimline/brown/filled/line{
@@ -60696,7 +60696,7 @@
 "ufF" = (
 /obj/machinery/door/airlock/mining/glass{
 	name = "Quartermaster";
-	req_access_txt = "41"
+	req_access = list("qm")
 	},
 /obj/machinery/door/firedoor,
 /obj/effect/turf_decal/trimline/brown/filled/line{

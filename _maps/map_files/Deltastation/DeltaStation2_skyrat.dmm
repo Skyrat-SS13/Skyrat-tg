@@ -7941,7 +7941,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/door/airlock/maintenance_hatch{
 	name = "Detective's Office Maintenance";
-	req_access_txt = "4"
+	req_access = list("detective")
 	},
 /obj/structure/cable,
 /turf/open/floor/iron,
@@ -8725,7 +8725,7 @@
 	id = "detectivewindows";
 	name = "Privacy Shutters";
 	pixel_x = -6;
-	req_access_txt = "4"
+	req_access = list("detective")
 	},
 /turf/open/floor/carpet,
 /area/station/security/detectives_office)
@@ -11775,7 +11775,7 @@
 "cqN" = (
 /obj/machinery/door/window/right/directional/west{
 	name = "Bar Delivery";
-	req_access_txt = "25"
+	req_access = list("bar")
 	},
 /obj/effect/turf_decal/delivery,
 /turf/open/floor/iron/grimy,
@@ -28936,7 +28936,7 @@
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /obj/machinery/door/airlock/command{
 	name = "Telecomms Server Room";
-	req_access_txt = "61"
+	req_access = list("tcomms")
 	},
 /obj/structure/cable,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
@@ -34922,7 +34922,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock{
 	name = "Bar Backroom";
-	req_access_txt = "25"
+	req_access = list("bar")
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -38716,7 +38716,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/qm{
 	name = "Quartermaster's Quarters";
-	req_access_txt = "41"
+	req_access = list("qm")
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -46992,7 +46992,7 @@
 "kGJ" = (
 /obj/machinery/door/airlock{
 	name = "Bar";
-	req_access_txt = "25"
+	req_access = list("bar")
 	},
 /obj/machinery/door/firedoor,
 /obj/effect/turf_decal/stripes/line{
@@ -47349,7 +47349,7 @@
 	},
 /obj/machinery/door/airlock/command{
 	name = "Telecomms Server Room";
-	req_access_txt = "61"
+	req_access = list("tcomms")
 	},
 /obj/structure/cable,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
@@ -48625,7 +48625,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/command{
 	name = "Telecomms Foyer";
-	req_access_txt = "61"
+	req_access = list("tcomms")
 	},
 /obj/structure/cable,
 /obj/effect/turf_decal/stripes/line,
@@ -70792,7 +70792,7 @@
 	},
 /obj/machinery/door/airlock/qm{
 	name = "Quartermaster's Office";
-	req_access_txt = "41"
+	req_access = list("qm")
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -71963,7 +71963,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/machinery/door/airlock/maintenance_hatch{
 	name = "Bar Maintenance";
-	req_access_txt = "25"
+	req_access = list("bar")
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -72957,7 +72957,7 @@
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /obj/machinery/door/airlock/command{
 	name = "Telecomms Server Room";
-	req_access_txt = "61"
+	req_access = list("tcomms")
 	},
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,
@@ -74204,7 +74204,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/security{
 	name = "Detective's Office";
-	req_access_txt = "4"
+	req_access = list("detective")
 	},
 /obj/structure/cable,
 /obj/effect/landmark/navigate_destination,
@@ -83052,7 +83052,7 @@
 /area/station/maintenance/port/aft)
 "vnH" = (
 /obj/structure/closet/secure_closet/bar{
-	req_access_txt = "25"
+	req_access = list("bar")
 	},
 /obj/item/storage/photo_album/bar,
 /obj/item/radio/intercom/directional/east,
@@ -84517,7 +84517,7 @@
 "vJd" = (
 /obj/machinery/door/airlock/security{
 	name = "Private Interrogation";
-	req_access_txt = "4"
+	req_access = list("detective")
 	},
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
@@ -88999,7 +88999,7 @@
 	},
 /obj/machinery/door/airlock/command{
 	name = "Telecomms Server Room";
-	req_access_txt = "61"
+	req_access = list("tcomms")
 	},
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark/telecomms,

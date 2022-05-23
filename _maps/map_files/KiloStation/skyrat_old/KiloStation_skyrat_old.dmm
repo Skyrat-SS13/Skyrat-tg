@@ -7553,7 +7553,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/engineering/glass{
 	name = "Server Room";
-	req_access_txt = "61"
+	req_access = list("tcomms")
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /obj/structure/cable,
@@ -7645,7 +7645,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/security{
 	name = "Autopsy";
-	req_access_txt = "4"
+	req_access = list("detective")
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -9474,7 +9474,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/engineering{
 	name = "Telecommunications";
-	req_access_txt = "61"
+	req_access = list("tcomms")
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -10326,7 +10326,7 @@
 "aOy" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "bar maintenance";
-	req_access_txt = "25"
+	req_access = list("bar")
 	},
 /turf/open/floor/iron/dark,
 /area/station/maintenance/central)
@@ -13678,7 +13678,7 @@
 "aYJ" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "bar maintenance";
-	req_access_txt = "25"
+	req_access = list("bar")
 	},
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
@@ -14032,7 +14032,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/engineering/glass{
 	name = "Server Room";
-	req_access_txt = "61"
+	req_access = list("tcomms")
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
@@ -22012,7 +22012,7 @@
 "bNF" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "security maintenance";
-	req_access_txt = "4"
+	req_access = list("detective")
 	},
 /turf/open/floor/iron/dark,
 /area/station/maintenance/port/aft)
@@ -29077,7 +29077,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/security{
 	name = "Detective's Office";
-	req_access_txt = "4"
+	req_access = list("detective")
 	},
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable,
@@ -39359,7 +39359,7 @@
 /obj/machinery/door/window/left/directional/south{
 	dir = 8;
 	name = "Bar Delivery Access";
-	req_access_txt = "25"
+	req_access = list("bar")
 	},
 /obj/effect/turf_decal/delivery,
 /turf/open/floor/iron/dark,
@@ -45138,7 +45138,7 @@
 /obj/machinery/door/window/left/directional/north{
 	dir = 2;
 	name = "Cargo Delivery Access";
-	req_access_txt = "50"
+	req_access = list("mail_sorting")
 	},
 /obj/structure/plasticflaps/opaque,
 /obj/effect/turf_decal/delivery,
@@ -45196,7 +45196,7 @@
 	dir = 4
 	},
 /obj/structure/closet/secure_closet/bar{
-	req_access_txt = "25"
+	req_access = list("bar")
 	},
 /obj/item/flashlight/lantern,
 /obj/machinery/firealarm/directional/east,
@@ -45422,7 +45422,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/mining/glass{
 	name = "Mailroom";
-	req_access_txt = "50"
+	req_access = list("mail_sorting")
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -47443,7 +47443,7 @@
 /obj/machinery/door/window/left/directional/west{
 	dir = 2;
 	name = "Cargo Desk";
-	req_access_txt = "50"
+	req_access = list("mail_sorting")
 	},
 /turf/open/floor/plating,
 /area/station/hallway/secondary/exit/departure_lounge)
@@ -50361,7 +50361,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/grunge{
 	name = "Bar Storage";
-	req_access_txt = "25"
+	req_access = list("bar")
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -51386,7 +51386,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/door/window/right/directional/south{
 	name = "Cargo Disposal";
-	req_access_txt = "50"
+	req_access = list("mail_sorting")
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/disposalpipe/segment{
@@ -53181,7 +53181,7 @@
 /obj/machinery/button/door/directional/north{
 	id = "bar_1";
 	name = "Bar Shutters Toggle";
-	req_access_txt = "25"
+	req_access = list("bar")
 	},
 /turf/open/floor/iron/dark,
 /area/station/service/bar)
@@ -53772,7 +53772,7 @@
 /obj/machinery/door/window/right/directional/south{
 	dir = 4;
 	name = "Mail Chute";
-	req_access_txt = "50"
+	req_access = list("mail_sorting")
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 6
@@ -56200,7 +56200,7 @@
 /obj/machinery/door/window/left/directional/west{
 	dir = 4;
 	name = "Cargo Desk";
-	req_access_txt = "50"
+	req_access = list("mail_sorting")
 	},
 /turf/open/floor/plating,
 /area/station/cargo/office)
@@ -59910,7 +59910,7 @@
 /obj/structure/sign/barsign{
 	pixel_y = 32;
 	req_access = null;
-	req_access_txt = "25"
+	req_access = list("bar")
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -61678,7 +61678,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/door/window/left/directional/south{
 	name = "Cargo Disposal";
-	req_access_txt = "50"
+	req_access = list("mail_sorting")
 	},
 /obj/machinery/conveyor_switch/oneway{
 	id = "packageSort2";
@@ -62516,7 +62516,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/door/airlock/qm/glass{
 	name = "Quartermaster";
-	req_access_txt = "41"
+	req_access = list("qm")
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -74469,7 +74469,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/mining/glass{
 	name = "Mailroom";
-	req_access_txt = "50"
+	req_access = list("mail_sorting")
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -76231,7 +76231,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/grunge{
 	name = "Bar Storage";
-	req_access_txt = "25"
+	req_access = list("bar")
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -76612,7 +76612,7 @@
 	id = "detective_shutters";
 	name = "Detective's Privacy Toggle";
 	pixel_y = 6;
-	req_access_txt = "4"
+	req_access = list("detective")
 	},
 /turf/open/floor/wood,
 /area/station/security/detectives_office)
@@ -76654,7 +76654,7 @@
 /obj/machinery/door/window/left/directional/north{
 	dir = 2;
 	name = "Cargo Delivery Access";
-	req_access_txt = "50"
+	req_access = list("mail_sorting")
 	},
 /turf/open/floor/plating,
 /area/station/hallway/secondary/exit/departure_lounge)
@@ -78478,7 +78478,7 @@
 /obj/machinery/door/window/right/directional/west{
 	dir = 4;
 	name = "Cargo Desk";
-	req_access_txt = "50"
+	req_access = list("mail_sorting")
 	},
 /turf/open/floor/plating,
 /area/station/cargo/office)
@@ -80401,7 +80401,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/door/airlock/engineering{
 	name = "Telecomms Storage";
-	req_access_txt = "61"
+	req_access = list("tcomms")
 	},
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
@@ -81491,7 +81491,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/qm/glass{
 	name = "Quartermaster";
-	req_access_txt = "41"
+	req_access = list("qm")
 	},
 /turf/open/floor/iron/dark,
 /area/station/cargo/qm)
