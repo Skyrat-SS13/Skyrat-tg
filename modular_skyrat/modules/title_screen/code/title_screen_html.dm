@@ -7,8 +7,8 @@ GLOBAL_LIST_EMPTY(startup_messages)
 /mob/dead/new_player/proc/get_title_html()
 	var/dat = GLOB.title_html
 	if(SSticker.current_state == GAME_STATE_STARTUP)
+		dat += {"<img src="loading_screen.gif" class="fone" alt="">"}
 		dat += {"
-		<img src="loading_screen.gif" class="fone" alt="">
 		<div class="container_terminal">
 			<p class="menu_b">SYSTEMS INITIALIZING:</p>
 		"}
@@ -81,7 +81,7 @@ GLOBAL_LIST_EMPTY(startup_messages)
 			var antag_int=0;
 			var antag_mark=document.getElementById("be_antag");
 			var antag_marks=new Array('BE ANTAG ☑', 'BE ANTAG ☒');
-			function be_antag(setAntag) {
+			function toggle_antag(setAntag) {
 				if(setAntag) {
 					antag_int = setAntag;
 					antag_mark.textContent = antag_marks\[antag_int\];
@@ -92,6 +92,7 @@ GLOBAL_LIST_EMPTY(startup_messages)
 						antag_int = 0;
 					antag_mark.textContent = antag_marks\[antag_int\];
 				}
+			}
 		</script>
 		"}
 	dat += "</body></html>"
