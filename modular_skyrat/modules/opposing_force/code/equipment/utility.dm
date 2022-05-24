@@ -178,6 +178,10 @@
 	item_type = /obj/item/mod/module/stealth/ninja
 	description = "An upgraded MODsuit cloaking module stolen from the Spider Clan's finest. Consumes less power than the standard, but is obviously illegal."
 
+/datum/opposing_force_equipment/gear/flamethrower_mod
+	item_type = /obj/item/mod/module/chameleon
+	description = "A module that enables the user to disguise their MODsuit as any other type. Only works while undeployed."
+
 /datum/opposing_force_equipment/gear/thermal_mod
 	item_type = /obj/item/mod/module/visor/thermal
 	description = "A visor module for a MODsuit that allows the user to see heat signatures through hard surfaces."
