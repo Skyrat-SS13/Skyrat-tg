@@ -215,7 +215,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	init_stage_completed = 0
 	var/mc_started = FALSE
 
-	add_startup_message("Initializing subsystems...") //SKYRAT EDIT CHANGE
+	add_startup_message("Initializing subsystems...") //SKYRAT EDIT CHANGE - Custom HTML Lobby Screen
 
 	var/list/stage_sorted_subsystems = new(INITSTAGE_MAX)
 	for (var/i in 1 to INITSTAGE_MAX)

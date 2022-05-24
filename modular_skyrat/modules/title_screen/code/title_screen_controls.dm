@@ -1,5 +1,7 @@
 
-
+/**
+ * Enables an admin to upload a new titlescreen image.
+ */
 /client/proc/change_title_screen()
 	set category = "Admin.Fun"
 	set name = "Title Screen: Change"
@@ -21,6 +23,9 @@
 		if("Cancel")
 			return
 
+/**
+ * Sets a titlescreen notice, a big red text on the main screen.
+ */
 /client/proc/change_title_screen_notice()
 	set category = "Admin.Fun"
 	set name = "Title Screen: Set Notice"
@@ -76,6 +81,9 @@
 	for(var/mob/dead/new_player/new_player in GLOB.new_player_list)
 		INVOKE_ASYNC(new_player, /mob/dead/new_player.proc/show_title_screen)
 
+/**
+ * Reloads the titlescreen if it is bugged for someone.
+ */
 /client/verb/fix_title_screen()
 	set name = "Fix Lobby Screen"
 	set desc = "Lobbyscreen broke? Press this."
@@ -87,6 +95,9 @@
 	else
 		winset(src, "title_browser", "is-disabled=true;is-visible=false")
 
+/**
+ * An admin debug command that enables you to change the HTML on the go.
+ */
 /client/proc/change_title_screen_html()
 	set category = "Admin.Fun"
 	set name = "Title Screen: Set HTML"
