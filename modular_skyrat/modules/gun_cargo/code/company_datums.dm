@@ -112,9 +112,8 @@
 
 /datum/gun_company/Jarnsmiour
 	name = "Jarnsmiour Blacksteel Foundation"
-	company_flag = COMPANY_JARNS
 	cost = 100
-	cost_mult = .9
+	cost_mult = 1
 	cost_change_lower = -50
 	cost_change_upper = 50
 	interest = 50
