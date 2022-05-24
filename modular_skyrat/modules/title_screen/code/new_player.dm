@@ -27,7 +27,7 @@
 		SEND_SOUND(src, sound('modular_skyrat/master_files/sound/effects/save.ogg'))
 		var/datum/preferences/preferences = client.prefs
 		preferences.write_preference(GLOB.preference_entries[/datum/preference/toggle/be_antag], !preferences.read_preference(/datum/preference/toggle/be_antag))
-		client << output(!preferences.read_preference(/datum/preference/toggle/be_antag), "title_browser:beantag")
+		client << output(!preferences.read_preference(/datum/preference/toggle/be_antag), "title_browser:toggle_antag")
 		return
 
 	if(href_list["character_setup"])
@@ -53,7 +53,7 @@
 			return
 
 		ready = !ready
-		client << output(ready, "title_browser:toggleready")
+		client << output(ready, "title_browser:toggle_ready")
 		return
 
 	if(href_list["late_join"])
