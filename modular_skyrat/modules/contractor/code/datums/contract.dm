@@ -182,23 +182,34 @@
 		return
 	// Heal them up - gets them out of crit/soft crit. If omnizine is removed in the future, this needs to be replaced with a
 	// method of healing them, consequence free, to a reasonable amount of health.
+	victim_stage_one(target)
+
+/datum/syndicate_contract/proc/victim_stage_one(mob/living/target)
 	target.reagents.add_reagent(/datum/reagent/medicine/omnizine, 20)
 
 	target.flash_act()
 	target.adjust_timed_status_effect(10 SECONDS, /datum/status_effect/confusion)
 	target.blur_eyes(5)
 	to_chat(target, span_warning("You feel strange..."))
-	sleep(6 SECONDS)
+	addtimer(CALLBACK(src, .proc/victim_stage_two, target), 6 SECONDS)
+
+/datum/syndicate_contract/proc/victim_stage_two(mob/living/target)
 	to_chat(target, span_warning("That pod did something to you..."))
 	target.set_timed_status_effect(70 SECONDS, /datum/status_effect/dizziness)
-	sleep(6 SECONDS)
+	addtimer(CALLBACK(src, .proc/victim_stage_three, target), 6 SECONDS)
+
+/datum/syndicate_contract/proc/victim_stage_three(mob/living/target)
 	to_chat(target, span_warning("Your head pounds... It feels like it's going to burst out your skull!"))
 	target.flash_act()
 	target.adjust_timed_status_effect(20 SECONDS, /datum/status_effect/confusion)
 	target.blur_eyes(3)
-	sleep(3 SECONDS)
+	addtimer(CALLBACK(src, .proc/victim_stage_four, target), 3 SECONDS)
+
+/datum/syndicate_contract/proc/victim_stage_four(mob/living/target)
 	to_chat(target, span_warning("Your head pounds..."))
-	sleep(10 SECONDS)
+	addtimer(CALLBACK(src, .proc/victim_stage_five, target), 10 SECONDS)
+
+/datum/syndicate_contract/proc/victim_stage_five(mob/living/target)
 	target.flash_act()
 	target.Unconscious(200)
 	to_chat(target, span_hypnophrase(span_reallybig("A million voices echo in your head... <i>\"Your mind held many valuable secrets - \
