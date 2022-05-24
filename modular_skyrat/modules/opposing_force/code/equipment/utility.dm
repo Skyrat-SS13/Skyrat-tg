@@ -162,6 +162,17 @@
 	description = "When screwed to wiring attached to a power grid and activated, this large device lights up and places excessive \
 			load on the grid, causing a station-wide blackout. The sink is large and cannot be stored in most \
 			traditional bags and boxes. Caution: Will explode if the powernet contains sufficient amounts of energy."
+	admin_note = "Drains power from the station, explodes if overloaded."
+
+/datum/opposing_force_equipment/gear/powerbeacon
+	name = "Power Beacon"
+	item_type = /obj/item/sbeacondrop
+	description = "Not to be confused with the <i>Power Sink</i>.\
+			When screwed to wiring attached to an electric grid and activated, this large device pulls any \
+			active gravitational singularities or tesla balls towards it. This will not work when the engine is still \
+			in containment. Because of its size, it cannot be carried. Ordering this \
+			sends you a small beacon that will teleport the larger beacon to your location upon activation."
+	admin_note = "Generally requires a Supermatter Delamination to be effective."
 
 /datum/opposing_force_equipment/gear/cloak_mod
 	item_type = /obj/item/mod/module/stealth/ninja
