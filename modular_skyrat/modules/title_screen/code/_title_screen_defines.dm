@@ -1,10 +1,13 @@
-GLOBAL_VAR(current_lobby_screen)
+GLOBAL_VAR(current_title_screen)
 
-GLOBAL_VAR(current_lobbyscreen_notice)
+GLOBAL_VAR(current_title_screen_notice)
 
-GLOBAL_VAR(lobby_html)
+GLOBAL_VAR(title_html)
 
-GLOBAL_LIST_EMPTY(lobby_screens)
+GLOBAL_LIST_EMPTY(title_screens)
+
+#define DEFAULT_TITLE_SCREEN_IMAGE 'modular_skyrat/modules/title_screen/icons/skyrat_title_screen.png'
+#define DEFAULT_TITLE_LOADING_SCREEN 'modular_skyrat/modules/title_screen/icons/loading_screen.gif'
 
 #define DEFAULT_TITLE_HTML {"
 			<html>

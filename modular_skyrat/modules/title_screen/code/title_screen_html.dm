@@ -4,11 +4,11 @@ GLOBAL_LIST_EMPTY(startup_messages)
 
 #define MAX_STARTUP_MESSAGES 27
 
-/mob/dead/new_player/proc/get_lobby_html()
-	var/dat = GLOB.lobby_html
+/mob/dead/new_player/proc/get_title_html()
+	var/dat = GLOB.title_html
 	if(SSticker.current_state == GAME_STATE_STARTUP)
-		dat += {"<img src="titlescreen.gif" class="fone" alt="">"}
 		dat += {"
+		<img src="loading_screen.gif" class="fone" alt="">
 		<div class="container_terminal">
 			<p class="menu_b">SYSTEMS INITIALIZING:</p>
 		"}
@@ -21,12 +21,12 @@ GLOBAL_LIST_EMPTY(startup_messages)
 		dat += "</div>"
 
 	else
-		dat += {"<img src="titlescreen.gif" class="fone" alt="">"}
+		dat += {"<img src="loading_screen.gif" class="fone" alt="">"}
 
-		if(GLOB.current_lobbyscreen_notice)
+		if(GLOB.current_title_screen_notice)
 			dat += {"
 			<div class="container_notice">
-				<p class="menu_c">[GLOB.current_lobbyscreen_notice]</p>
+				<p class="menu_c">[GLOB.current_title_screen_notice]</p>
 			</div>
 		"}
 
@@ -66,32 +66,16 @@ GLOBAL_LIST_EMPTY(startup_messages)
 			var ready_int=0;
 			var ready_mark=document.getElementById("ready");
 			var ready_marks=new Array('READY ☒', 'READY ☑');
-			function toggleready(setReady) {
-				if(setReady) {
-					ready_int = setReady;
-					ready_mark.textContent = ready_marks\[ready_int\];
-				}
-				else {
-					ready_int++;
-					if (ready_int == ready_marks.length)
-						ready_int = 0;
-					ready_mark.textContent = ready_marks\[ready_int\];
-				}
-			}
+			function toggle_ready() {
+                ready_int = !ready_int;
+                ready_mark.textContent = ready_marks\[ready_int\];
+            }
 			var antag_int=0;
 			var antag_mark=document.getElementById("be_antag");
 			var antag_marks=new Array('BE ANTAG ☑', 'BE ANTAG ☒');
-			function beantag(setAntag) {
-				if(setAntag) {
-					antag_int = setAntag;
-					antag_mark.textContent = antag_marks\[antag_int\];
-				}
-				else {
-					antag_int++;
-					if (antag_int == antag_marks.length)
-						antag_int = 0;
-					antag_mark.textContent = antag_marks\[antag_int\];
-				}
+			function be_antag() {
+                antag_int = !antag_int;
+                antag_mark.textContent = antag_marks\[antag_int\];
 			}
 		</script>
 		"}

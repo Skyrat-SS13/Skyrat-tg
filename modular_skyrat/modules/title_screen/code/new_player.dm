@@ -26,11 +26,8 @@
 	if(href_list["toggle_antag"])
 		SEND_SOUND(src, sound('modular_skyrat/master_files/sound/effects/save.ogg'))
 		var/datum/preferences/preferences = client.prefs
-		if(preferences.read_preference(/datum/preference/toggle/be_antag))
-			preferences.write_preference(GLOB.preference_entries[/datum/preference/toggle/be_antag], FALSE)
-		else
-			preferences.write_preference(GLOB.preference_entries[/datum/preference/toggle/be_antag], TRUE)
-		client << output(!preferences.read_preference(/datum/preference/toggle/be_antag), "lobbybrowser:beantag")
+		preferences.write_preference(GLOB.preference_entries[/datum/preference/toggle/be_antag], !preferences.read_preference(/datum/preference/toggle/be_antag))
+		client << output(!preferences.read_preference(/datum/preference/toggle/be_antag), "title_browser:beantag")
 		return
 
 	if(href_list["character_setup"])
@@ -55,11 +52,8 @@
 			to_chat(src, span_notice("You need at least [FLAVOR_TEXT_CHAR_REQUIREMENT] characters of flavor text to ready up for the round. You have [length_char(client.prefs.read_preference(/datum/preference/text/flavor_text))] characters."))
 			return
 
-		if(ready == PLAYER_NOT_READY)
-			ready = PLAYER_READY_TO_PLAY
-		else
-			ready = PLAYER_NOT_READY
-		client << output(ready, "lobbybrowser:toggleready")
+		ready = !ready
+		client << output(ready, "title_browser:toggleready")
 		return
 
 	if(href_list["late_join"])
@@ -90,7 +84,7 @@
 				to_chat(src, span_notice("You have been added to the queue to join the game. Your position in queue is [SSticker.queued_players.len]."))
 			return
 
-		if(length_char(src.client.prefs.read_preference(/datum/preference/text/flavor_text)) <= FLAVOR_TEXT_CHAR_REQUIREMENT)
+		if(length_char(src.client.prefs.read_preference(/datum/preference/text/flavor_text)) < FLAVOR_TEXT_CHAR_REQUIREMENT)
 			to_chat(src, span_notice("You need at least [FLAVOR_TEXT_CHAR_REQUIREMENT] characters of flavor text to join the round. You have [length_char(src.client.prefs.read_preference(/datum/preference/text/flavor_text))] characters."))
 			return
 
@@ -120,37 +114,40 @@
 
 /mob/dead/new_player/Login()
 	. = ..()
-	show_titlescreen()
+	show_title_screen()
 
 
 
-/mob/dead/new_player/proc/show_titlescreen()
+/mob/dead/new_player/proc/show_title_screen()
 	if (client?.interviewee)
 		return
 
-	winset(src, "lobbybrowser", "is-disabled=false;is-visible=true")
+	winset(src, "title_browser", "is-disabled=false;is-visible=true")
 
 	var/datum/asset/assets = get_asset_datum(/datum/asset/simple/lobby) //Sending pictures to the client
 	assets.send(src)
 
-	update_titlescreen()
+	update_title_screen()
 
 
-/mob/dead/new_player/proc/update_titlescreen()
-	var/dat = get_lobby_html()
+/mob/dead/new_player/proc/update_title_screen()
+	var/dat = get_title_html()
 
-	src << browse(GLOB.current_lobby_screen, "file=titlescreen.gif;display=0")
-	src << browse(dat, "window=lobbybrowser")
+	src << browse(GLOB.current_title_screen, "file=loading_screen.gif;display=0")
+	src << browse(dat, "window=title_browser")
 
 /datum/asset/simple/lobby
 	assets = list(
 		"FixedsysExcelsior3.01Regular.ttf" = 'html/browser/FixedsysExcelsior3.01Regular.ttf',
 	)
 
-/mob/dead/new_player/proc/hide_titlescreen()
-	if(client.mob)
-		winset(client, "lobbybrowser", "is-disabled=true;is-visible=false")
+/mob/dead/new_player/proc/hide_title_screen()
+	if(client?.mob)
+		winset(client, "title_browser", "is-disabled=true;is-visible=false")
 
+/**
+ * Selects a new job or gives random if unset.
+ */
 /mob/dead/new_player/proc/select_job(job)
 	if(job == "Random")
 		var/list/dept_data = list()

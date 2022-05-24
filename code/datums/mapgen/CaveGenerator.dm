@@ -144,5 +144,5 @@
 		CHECK_TICK
 
 	var/message = "[name] finished in [(REALTIMEOFDAY - start_time)/10]s!"
-	add_startupmessage(message) //SKYRAT EDIT CHANGE
+	add_startup_message(message) //SKYRAT EDIT CHANGE
 	log_world(message)

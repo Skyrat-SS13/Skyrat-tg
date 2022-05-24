@@ -8,13 +8,13 @@ SUBSYSTEM_DEF(title)
 
 /datum/controller/subsystem/title/Initialize()
 	var/dat
-	if(!fexists("[global.config.directory]/skyrat/lobby_html.txt"))
-		to_chat(world, span_boldwarning("CRITICAL ERROR: Unable to read lobby_html.txt, reverting to backup lobby html, please check your server config and ensure this file exists."))
+	if(!fexists("[global.config.directory]/skyrat/title_html.txt"))
+		to_chat(world, span_boldwarning("CRITICAL ERROR: Unable to read title_html.txt, reverting to backup title html, please check your server config and ensure this file exists."))
 		dat = DEFAULT_TITLE_HTML
 	else
-		dat = file2text("[global.config.directory]/skyrat/lobby_html.txt")
+		dat = file2text("[global.config.directory]/skyrat/title_html.txt")
 
-	GLOB.lobby_html = dat
+	GLOB.title_html = dat
 
 	var/list/provisional_title_screens = flist("[global.config.directory]/title_screens/images/")
 	var/list/title_screens = list()
@@ -30,16 +30,16 @@ SUBSYSTEM_DEF(title)
 			startup_splash = new(fcopy_rsc(file_path))
 
 	if(startup_splash)
-		change_lobbyscreen(startup_splash)
+		change_title_screen(startup_splash)
 	else
-		change_lobbyscreen('modular_skyrat/modules/lobbyscreen/icons/loading_screen.gif')
+		change_title_screen(DEFAULT_TITLE_LOADING_SCREEN)
 
 	if(length(title_screens))
 		for(var/i in title_screens)
 			var/file_path = "[global.config.directory]/title_screens/images/[i]"
 			ASSERT(fexists(file_path))
 			var/icon/title2use = new(fcopy_rsc(file_path))
-			GLOB.lobby_screens += title2use
+			GLOB.title_screens += title2use
 
 	return ..()
 

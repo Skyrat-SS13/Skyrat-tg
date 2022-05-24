@@ -127,7 +127,7 @@
 	var/this_is_like_playing_right = alert(usr, "Are you sure you wish to observe?[less_input_message]", "Observe", "Yes", "No") //SKYRAT EDIT CHANGE
 	if(QDELETED(src) || !src.client || this_is_like_playing_right != "Yes")
 		ready = PLAYER_NOT_READY
-		show_titlescreen() // SKYRAT EDIT ADDITION
+		show_title_screen() // SKYRAT EDIT ADDITION
 		return FALSE
 
 	var/mob/dead/observer/observer = new()
@@ -436,7 +436,7 @@
 
 
 /mob/dead/new_player/proc/close_spawn_windows()
-	hide_titlescreen() // SKYRAT EDIT ADDITION
+	hide_title_screen() // SKYRAT EDIT ADDITION
 	src << browse(null, "window=latechoices") //closes late choices window (Hey numbnuts go make this tgui)
 	src << browse(null, "window=randjob") //closes the random job window
 
