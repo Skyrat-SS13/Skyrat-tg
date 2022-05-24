@@ -185,7 +185,7 @@
 	return TRUE
 
 /obj/item/organ/external/horns/get_global_feature_list()
-	return GLOB.sprite_accessories["horns"]
+	return GLOB.sprite_accessories["horns"] // SKYRAT EDIT - Customization
 
 ///The frills of a lizard (like weird fin ears)
 /obj/item/organ/external/frills
@@ -204,7 +204,7 @@
 
 
 /obj/item/organ/external/frills/get_global_feature_list()
-	return GLOB.sprite_accessories["frills"]
+	return GLOB.sprite_accessories["frills"] // SKYRAT EDIT - Customization
 
 ///Guess what part of the lizard this is?
 /obj/item/organ/external/snout
@@ -223,7 +223,7 @@
 	return FALSE
 
 /obj/item/organ/external/snout/get_global_feature_list()
-	return GLOB.sprite_accessories["snouts"]
+	return GLOB.sprite_accessories["snouts"] // SKYRAT EDIT - Customization
 
 ///A moth's antennae
 /obj/item/organ/external/antennae
@@ -252,7 +252,7 @@
 	UnregisterSignal(organ_owner, list(COMSIG_HUMAN_BURNING, COMSIG_LIVING_POST_FULLY_HEAL))
 
 /obj/item/organ/external/antennae/get_global_feature_list()
-	return GLOB.sprite_accessories["moth_antennae"]
+	return GLOB.sprite_accessories["moth_antennae"] // SKYRAT EDIT - Customization
 
 /obj/item/organ/external/antennae/can_draw_on_bodypart(mob/living/carbon/human/human)
 	if(!(human.head?.flags_inv & HIDEHAIR) || (human.wear_mask?.flags_inv & HIDEHAIR))
