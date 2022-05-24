@@ -9,9 +9,9 @@
 	design_ids = list("smartgun")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 3000)
 
-//////////////////////
-//6mm
-//////////////////////
+/*
+*	6mm
+*/
 
 /obj/item/ammo_box/advanced/b6mm
 	name = "6.3mm ammo box"
@@ -32,9 +32,9 @@
 	icon_state = "box10mm-hv"
 	ammo_type = /obj/item/ammo_casing/b6mm/ihdf
 
-//////////////////////
-//9mm
-//////////////////////
+/*
+*	9mm
+*/
 
 /obj/item/ammo_box/advanced/b9mm
 	name = "9x19mm FMJ box"
@@ -61,9 +61,9 @@
 	icon_state = "pistol_hv"
 	ammo_type = /obj/item/ammo_casing/b9mm/ihdf
 
-//////////////////////
-//10mm
-//////////////////////
+/*
+*	10mm
+*/
 
 /obj/item/ammo_box/advanced/b10mm
 	name = "10mm auto box"
@@ -90,9 +90,9 @@
 	icon_state = "box50-hv"
 	ammo_type = /obj/item/ammo_casing/b10mm/ihdf
 
-//////////////////////
-//12mm
-//////////////////////
+/*
+*	12mm
+*/
 
 /obj/item/ammo_box/advanced/b12mm
 	name = "12.7x30mm FMJ box"
@@ -113,9 +113,10 @@
 	icon_state = "magnum_p"
 	ammo_type = /obj/item/ammo_casing/b12mm/hp
 
-//////////////////////
-//SMARTGUN
-//////////////////////
+/*
+*	S.M.A.R.T. RIFLE
+*/
+
 /datum/design/smartgun
 	name = "\improper S.M.A.R.T. Rifle Shock-Rails"
 	id = "smartgun"
@@ -133,9 +134,10 @@
 	multiple_sprites = AMMO_BOX_PER_BULLET
 	max_ammo = 4
 
-////////////////////
-//MULTI SPRITE MAGS
-///////////////////
+/*
+*	MULTI-SPRITE MAGS
+*/
+
 /obj/item/ammo_box/magazine/multi_sprite
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	desc = "An advanced magazine with smart type displays. Alt+click to reskin it."

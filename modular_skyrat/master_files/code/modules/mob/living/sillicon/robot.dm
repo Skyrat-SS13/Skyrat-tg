@@ -1,4 +1,3 @@
-////
 // 	Typing indicator icon change
 /mob/living/silicon/robot/set_typing_indicator(state, emote)
 	var/static/mutable_appearance/type_indicator = mutable_appearance('modular_skyrat/modules/indicators/icons/typing_indicator.dmi', "borg0", CHAT_INDICATOR_LAYER)
@@ -19,8 +18,6 @@
 	else
 		regenerate_icons()
 
-
-////
 // 	Smoke particle effect for heavy-duty cyborgs
 /datum/component/robot_smoke
 
@@ -117,8 +114,6 @@
 	pixel_y = -8
 	layer = ABOVE_MOB_LAYER
 
-
-////
 // 	Modular solution for alternative tipping visuals
 /datum/component/tippable/set_tipped_status(mob/living/tipped_mob, new_status = FALSE)
 	var/mob/living/silicon/robot/robot = tipped_mob

@@ -2,9 +2,11 @@
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/projectiles.dmi'
 	icon_state = "bullet"
 
-////////////6.3mm///////////
-//FLECHETTE | FRAGMENTING | DISSUASIVE//
-//////////////////////////
+/*
+*	6.3mm
+*	FLECHETTE | FRAGMENTING | DISSUASIVE
+*/
+
 /obj/item/ammo_casing/b6mm
 	name = "6.3mm flechette casing"
 	desc = "A spent flechette."
@@ -59,9 +61,11 @@
 	embedding = list(embed_chance=60, fall_chance=3, jostle_chance=4, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.4, pain_mult=5, jostle_pain_mult=6, rip_time=10)
 	weak_against_armour = TRUE
 
-///////////9x19mm/////////////////
-//FMJ | JHP | IHDF | RUBBER//
-///////////////////////////////
+/*
+*	9x19mm
+*	FMJ | JHP | IHDF | RUBBER
+*/
+
 /obj/item/ammo_casing/b9mm
 	name = "9x19mm peacekeeper FMJ casing"
 	desc = "A 9x19mm bullet casing with a low powder load to prevent breaches."
@@ -126,9 +130,11 @@
 	sharpness = NONE
 	embedding = null
 
-//////////10x25mm/////////////////
-//Auto | JHP | IHDF | RUBBER//
-///////////////////////////////
+/*
+*	10x25mm
+*	Auto | JHP | IHDF | RUBBER
+*/
+
 /obj/item/ammo_casing/b10mm
 	name = "10mm auto casing"
 	desc = "A 10mm Auto casing."
@@ -197,9 +203,11 @@
 	damage_type = STAMINA
 	embedding = list(embed_chance=0, fall_chance=3, jostle_chance=4, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.4, pain_mult=5, jostle_pain_mult=6, rip_time=10)
 
-///////////12.7x30mm/////////
-//FMJ | JHP | BEANBAG//
-////////////////////////
+/*
+*	12.7x30mm
+*	FMJ | JHP | BEANBAG
+*/
+
 /obj/item/ammo_casing/b12mm
 	name = "12.7x30mm FMJ casing"
 	desc = "A 12.7x30mm FMJ casing."
@@ -253,9 +261,10 @@
 	embedding = list(embed_chance=75, fall_chance=3, jostle_chance=4, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.4, pain_mult=5, jostle_pain_mult=6, rip_time=10)
 	weak_against_armour = TRUE
 
-///////////.577S/////////
-//         FMJ         //
-////////////////////////
+/*
+*	.577S
+*	FMJ
+*/
 
 /obj/item/ammo_casing/b577
 	name = ".577 Snider bullet casing"
@@ -309,9 +318,11 @@
 	icon_state = "smartgun_embed"
 	embedding = null
 
-///////4.73x33mm CASELESS//////
-//FMJ | JHP | IHDF | RUBBER//
-///////////////////////////////
+/*
+*	4.73x33mm CASELESS
+*	FMJ | JHP | IHDF | RUBBER
+*/
+
 /obj/item/ammo_casing/caseless/b473
 	name = "4.73x33mm FMJ bullet"
 	desc = "A 4.73x33mm FMJ bullet."

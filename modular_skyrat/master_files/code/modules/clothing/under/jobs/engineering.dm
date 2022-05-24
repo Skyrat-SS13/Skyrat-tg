@@ -7,8 +7,9 @@
 
 // Add a /obj/item/clothing/under/rank/engineering/chief_engineer/skyrat or /obj/item/clothing/under/rank/engineering/atmospheric_technician/skyrat if you add uniforms for either
 
-//////////////////////////////////////
-////////////// ENGINEER //////////////
+/*
+*	ENGINEER
+*/
 
 /obj/item/clothing/under/rank/engineering/engineer/skyrat/utility
 	name = "engineering utility uniform"

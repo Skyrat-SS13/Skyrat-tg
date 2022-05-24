@@ -14,7 +14,10 @@
 	if(!emp_damageable)
 		. += "It has an EMP prevention system."
 
-//////////////////GLOCK
+/*
+*	GLOCK
+*/
+
 /obj/item/gun/ballistic/automatic/pistol/g17
 	name = "\improper GK-17"
 	desc = "A weapon from bygone times, this has been made to look like an old, blocky firearm from the 21st century. Let's hope it's more reliable. Chambered in 9x19mm Peacekeeper."
@@ -114,8 +117,10 @@
 	emp_damageable = FALSE
 	fire_delay = 0.9
 	company_flag = null
+/*
+* PDH 40x32
+*/
 
-////////////////PDH 40x32
 /obj/item/gun/ballistic/automatic/pistol/pdh
 	name = "\improper PDH-6H 'Osprey'"
 	desc = "A modern ballistics sidearm, used primarily by the military, however this one has had a paintjob to match command. It's chambered in 12.7x30mm."
@@ -196,8 +201,10 @@
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 	possible_types = list("lethal" = AMMO_TYPE_LETHAL)
 
+/*
+*	PDH PEACEKEEPER
+*/
 
-///////////////////////////PDH PEACEKEEPER
 /obj/item/gun/ballistic/automatic/pistol/pdh/peacekeeper
 	name = "\improper PDH-6B"
 	desc = "A modern ballistic sidearm, used primarily by law enforcement, chambered in 9x19mm Peacekeeper."
@@ -230,7 +237,10 @@
 	ammo_type = /obj/item/ammo_casing/b9mm/rubber
 	round_type = AMMO_TYPE_RUBBER
 
-///////////////////////LADON 40x32
+/*
+*	LADON 40x32
+*/
+
 /obj/item/gun/ballistic/automatic/pistol/ladon
 	name = "\improper Ladon pistol"
 	desc = "Modern handgun based off the PDH series, chambered in 10mm Auto."
@@ -274,7 +284,10 @@
 	ammo_type = /obj/item/ammo_casing/b10mm/rubber
 	round_type = AMMO_TYPE_RUBBER
 
-/////////////////////MAKAROV
+/*
+*	MAKAROV
+*/
+
 /obj/item/gun/ballistic/automatic/pistol/makarov
 	name = "\improper R-C 'Makarov'"
 	desc = "A mediocre pocket-sized handgun of seemingly Russian origin, chambered in 10mm Auto."
@@ -311,7 +324,9 @@
 	ammo_type = /obj/item/ammo_casing/b10mm/rubber
 	round_type = AMMO_TYPE_RUBBER
 
-////////////////////////////MK58
+/*
+*	MK-58
+*/
 
 /obj/item/gun/ballistic/automatic/pistol/mk58
 	name = "\improper MK-58"
@@ -351,7 +366,10 @@
 	ammo_type = /obj/item/ammo_casing/b9mm/rubber
 	round_type = AMMO_TYPE_RUBBER
 
-//////////////////////FIREFLY
+/*
+*	FIREFLY
+*/
+
 /obj/item/gun/ballistic/automatic/pistol/firefly
 	name = "\improper P-92 'Firefly'"
 	desc = "A 9mm (Peacekeeper) sidearm made by Armadyne's Medical Directive, with a heavy front for weak wrists. A small warning label on the back says it's not fit for surgical work."
@@ -389,8 +407,10 @@
 /obj/item/ammo_box/magazine/multi_sprite/firefly/ihdf
 	ammo_type = /obj/item/ammo_casing/b9mm/ihdf
 	round_type = AMMO_TYPE_IHDF
+/*
+*	CROON 40x32
+*/
 
-/////////////////////CROON 40x32
 /obj/item/gun/ballistic/automatic/croon
 	name = "\improper DT-4 'Croon'"
 	desc = "A low-quality 6.3mm reproduction of a popular SMG model, jams like a bitch. Although crude and unofficial, it gets the job done."
@@ -435,7 +455,10 @@
 	ammo_type = /obj/item/ammo_casing/b6mm/ihdf
 	round_type = AMMO_TYPE_IHDF
 
-///////////////////////////Dozer
+/*
+*	DOZER
+*/
+
 /obj/item/gun/ballistic/automatic/dozer
 	name = "\improper DZR-9 'Dozer'"
 	desc = "The DZR-9, a notorious 9x25mm PDW that lives up to its nickname."
@@ -482,7 +505,10 @@
 	ammo_type = /obj/item/ammo_casing/c9mm/fire
 	round_type = AMMO_TYPE_INCENDIARY
 
-/////////////////DMR 40x32
+/*
+*	DMR 40x32
+*/
+
 /obj/item/gun/ballistic/automatic/dmr
 	name = "\improper M557 'Ripper' Gen-2"
 	desc = "An incredibly powerful marksman rifle with an internal stabilization gymbal. It's chambered in .577 Snider."
@@ -515,7 +541,10 @@
 	max_ammo = 25
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
-/////////////////////////////////////////////ZETA
+/*
+*	ZETA
+*/
+
 /obj/item/gun/ballistic/revolver/zeta
 	name = "\improper Zeta-6 'Spurchamber'"
 	desc = "A fairly common double-action six-shooter chambered for 10mm Magnum."
@@ -548,7 +577,10 @@
 /obj/item/ammo_box/revolver/zeta/full
 	start_empty = FALSE
 
-/////////////////////////////////////////////////////////REVOLUTION
+/*
+*	REVOLUTION
+*/
+
 /obj/item/gun/ballistic/revolver/revolution
 	name = "\improper Revolution-8 'Spurmaster'"
 	desc = "The Zeta 6's distant cousin, sporting an eight-round competition grade cylinder chambered for 9mm Peacekeeper."
@@ -581,7 +613,10 @@
 /obj/item/ammo_box/revolver/revolution/full
 	start_empty = FALSE
 
-/////////////////SMARTGUN 40x32
+/*
+*	S.M.A.R.T. RIFLE
+*/
+
 /obj/item/gun/ballistic/automatic/smartgun
 	name = "\improper OP-15 'S.M.A.R.T.' rifle"
 	desc = "Suppressive Manual Action Reciprocating Taser rifle. A modified version of an Armadyne heavy machine gun fitted to fire miniature shock-bolts."
@@ -674,9 +709,9 @@
 	new /obj/item/ammo_box/magazine/smartgun(src)
 	new /obj/item/ammo_box/magazine/smartgun(src)
 
-//////////////////////////////////////////////////////////
-/////////////////KRAUT SPACE MAGIC G11////////////////////
-//////////////////////////////////////////////////////////
+/*
+*	G11
+*/
 
 /obj/item/gun/ballistic/automatic/g11
 	name = "\improper G11 K-490"
@@ -722,9 +757,9 @@
 	ammo_type = /obj/item/ammo_casing/caseless/b473/ihdf
 	round_type = AMMO_TYPE_IHDF
 
-/////////////////////////////////////////////////
-//////////////////SHOTGUNS///////////////////////
-/////////////////////////////////////////////////
+/*
+*	SHOTGUNS
+*/
 
 /obj/item/gun/ballistic/shotgun/m23
 	name = "\improper Model 23-37"
@@ -773,8 +808,9 @@
 /////////////////////////////////////////////////
 ///////////////Un-Goofed Guns////////////////////
 /////////////////////////////////////////////////
-
-/////////////////////NORWIND
+/*
+*	NORWIND
+*/
 /obj/item/gun/ballistic/automatic/norwind
 	name = "\improper M112 'Norwind'"
 	desc = "A rare M112 DMR rechambered to 12.7x30mm for peacekeeping work, it comes with a scope for medium-long range engagements. A bayonet lug is visible."
@@ -828,7 +864,10 @@
 	ammo_type = /obj/item/ammo_casing/b12mm/rubber
 	round_type = AMMO_TYPE_RUBBER
 
-/////////////////////VINTOREZ
+/*
+*	VINTOREZ
+*/
+
 /obj/item/gun/ballistic/automatic/vintorez
 	name = "\improper VKC 'Vintorez'"
 	desc = "The VKC Vintorez is a lightweight integrally-suppressed scoped carbine usually employed in stealth operations. It was rechambered to 9x19mm for peacekeeping work."
@@ -882,7 +921,9 @@
 	ammo_type = /obj/item/ammo_casing/b9mm/rubber
 	round_type = AMMO_TYPE_RUBBER
 
-/////////////////////PCR
+/*
+*	PCR-9
+*/
 
 /obj/item/gun/ballistic/automatic/pcr
 	name = "\improper PCR-9 SMG"
@@ -978,7 +1019,10 @@
 	ammo_type = /obj/item/ammo_casing/b10mm/rubber
 	round_type = AMMO_TYPE_RUBBER
 
-/////////////////DTR
+/*
+*	DTR-6
+*/
+
 /obj/item/gun/ballistic/automatic/ostwind
 	name = "\improper DTR-6 Rifle"
 	desc = "A 6.3mm special-purpose rifle designed for specific situations."
