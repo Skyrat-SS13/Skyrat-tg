@@ -11,7 +11,7 @@
 	. = ..()
 	. += ""
 
-	if(client.holder)
+	if(client?.holder)
 		var/round_time = world.time - SSticker.round_start_time
 		var/real_round_time = world.timeofday - SSticker.real_round_start_time
 		. += "Server Time: [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")]"
