@@ -103,11 +103,13 @@
 
 //SKYRAT EDIT ADDITION: CUSTOM EAR TOGGLE FOR ANTHRO/ETC EAR SHOWING -
 /// Manually set this on items you want anthro ears to show on!
-#define SHOWSPRITEEARS (1<<13)
+#define SHOWSPRITEEARS (1<<14)
+/// Does this sprite hide the tail?
+#define HIDETAIL (1<<15)
 /// Does this sprite also hide the spine on tails? Realistically only useful for the clothes that have a special tail overlay, like MODsuits
-#define HIDESPINE (1<<14)
+#define HIDESPINE (1<<16)
 /// Does this sprite hide devious devices?
-#define HIDESEXTOY (1<<15)
+#define HIDESEXTOY (1<<17)
 //SKYRAT EDIT ADDITION END
 
 //bitflags for clothing coverage - also used for limbs

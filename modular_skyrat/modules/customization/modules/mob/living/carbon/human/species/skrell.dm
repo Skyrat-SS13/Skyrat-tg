@@ -82,7 +82,7 @@
 	))
 
 /obj/item/organ/heart/skrell
-	name = "Skrellian Heart"
+	name = "skrellian heart"
 	icon = 'modular_skyrat/master_files/icons/mob/species/skrell_organ.dmi'
 	icon_state = "heart"
 

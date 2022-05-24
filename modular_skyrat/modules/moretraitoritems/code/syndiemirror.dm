@@ -1,5 +1,5 @@
 /obj/item/hhmirror/syndie
-	name = "Handheld Mirror"
+	name = "handheld mirror"
 	desc = "A handheld mirror that allows you to change your looks. Reminds you of old times for some reason..."
 	icon = 'modular_skyrat/master_files/icons/obj/hhmirror.dmi'
 	icon_state = "hhmirror"

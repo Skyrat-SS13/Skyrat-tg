@@ -24,7 +24,7 @@
 	/obj/machinery/plumbing/tank = 20,
 	/obj/machinery/plumbing/buffer = 10,
 	/obj/machinery/plumbing/layer_manifold = 5,
-	//Above are the most common machinery which is shown on the first cycle. Keep new additions below THIS line, unless they're probably gonna be needed alot
+	// Above are the most common machinery which is shown on the first cycle. Keep new additions below THIS line, unless they're probably gonna be needed alot
 	/obj/machinery/plumbing/acclimator = 10,
 	/obj/machinery/plumbing/bottler = 50,
 	/obj/machinery/plumbing/disposer = 10,

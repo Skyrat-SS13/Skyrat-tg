@@ -1,5 +1,5 @@
 /obj/item/clothing/under/rank/rnd
-	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/under/rnd_digi.dmi'	//Anything that was in the rnd.dmi, should be in the rnd_digi.dmi
+	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/under/rnd_digi.dmi'	// Anything that was in the rnd.dmi, should be in the rnd_digi.dmi
 
 /obj/item/clothing/under/rank/rnd/scientist/skyrat
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/rnd.dmi'
@@ -13,10 +13,11 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/rnd.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/rnd.dmi'
 
-//Add a 'rnd/geneticist/skyrat' if you make Geneticist uniforms
+// Add a 'rnd/geneticist/skyrat' if you make Geneticist uniforms
 
-///////////////////////////////////////
-////////////// SCIENTIST //////////////
+/*
+*	SCIENTIST
+*/
 
 /obj/item/clothing/under/rank/rnd/scientist/skyrat/utility
 	name = "science utility uniform"
@@ -26,7 +27,7 @@
 
 /obj/item/clothing/under/rank/rnd/scientist/skyrat/utility/syndicate
 	desc = "A utility uniform worn by Science staff."
-	armor = list(MELEE = 10, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 40) //Same stats as the tactical turtleneck.
+	armor = list(MELEE = 10, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 40) // Same stats as the tactical turtleneck.
 	has_sensor = NO_SENSORS
 
 /obj/item/clothing/under/rank/rnd/scientist/skyrat/hlscience
@@ -35,8 +36,9 @@
 	icon_state = "hl_scientist"
 	can_adjust = FALSE
 
-////////////////////////////////////////
-////////////// ROBOTICIST //////////////
+/*
+*	ROBOTICIST
+*/
 
 /obj/item/clothing/under/rank/rnd/roboticist/skyrat/sleek
 	name = "sleek roboticst jumpsuit"
@@ -44,8 +46,9 @@
 	icon_state = "robosleek"
 	can_adjust = FALSE
 
-//////////////////////////////////////
-////////////// DIRECTOR //////////////
+/*
+*	RESEARCH DIRECTOR
+*/
 
 /obj/item/clothing/under/rank/rnd/research_director/skyrat/jumpsuit
 	name = "research director's jumpsuit"
@@ -55,7 +58,7 @@
 	can_adjust = TRUE
 	alt_covers_chest = TRUE
 
-/obj/item/clothing/under/rank/rnd/research_director/skyrat/jumpsuit/skirt //I know this seems wrong, but its for consistency sake; its the skirt version OF the jumpsuit
+/obj/item/clothing/under/rank/rnd/research_director/skyrat/jumpsuit/skirt // I know this seems wrong, but its for consistency sake; its the skirt version OF the jumpsuit
 	name = "research director's jumpskirt"
 	icon_state = "director_jumpskirt"
 	body_parts_covered = CHEST|GROIN|ARMS
@@ -63,10 +66,10 @@
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
-
-///////////////////////////////////////
-////////////// OVERRIDES //////////////
-//Remind Orion to look over these when TG finishes their science resprites
+/*
+*	OVERRIDES
+*	Remind Orion to look over these when TG finishes their science resprites
+*/
 
 /obj/item/clothing/under/rank/rnd/scientist
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/rnd.dmi'

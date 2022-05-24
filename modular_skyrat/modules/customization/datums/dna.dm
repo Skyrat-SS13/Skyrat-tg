@@ -246,7 +246,7 @@ GLOBAL_LIST_EMPTY(total_uf_len_by_block)
 				continue
 	dna.species.mutant_bodyparts = bodyparts_to_add.Copy()
 
-/mob/living/carbon/human/updateappearance(icon_update=1, mutcolor_update=0, mutations_overlay_update=0)
+/mob/living/carbon/human/updateappearance(icon_update=1, mutcolor_update=0, mutations_overlay_update=0, eyeorgancolor_update=0)
 	..()
 	var/structure = dna.unique_identity
 	hair_color = sanitize_hexcolor(get_uni_identity_block(structure, DNA_HAIR_COLOR_BLOCK))
@@ -254,6 +254,12 @@ GLOBAL_LIST_EMPTY(total_uf_len_by_block)
 	skin_tone = GLOB.skin_tones[deconstruct_block(get_uni_identity_block(structure, DNA_SKIN_TONE_BLOCK), GLOB.skin_tones.len)]
 	eye_color_left = sanitize_hexcolor(get_uni_identity_block(structure, DNA_EYE_COLOR_LEFT_BLOCK))
 	eye_color_right = sanitize_hexcolor(get_uni_identity_block(structure, DNA_EYE_COLOR_RIGHT_BLOCK))
+	if(eyeorgancolor_update)
+		var/obj/item/organ/eyes/eye_organ = getorganslot(ORGAN_SLOT_EYES)
+		eye_organ.eye_color_left = eye_color_left
+		eye_organ.eye_color_right = eye_color_right
+		eye_organ.old_eye_color_left = eye_color_left
+		eye_organ.old_eye_color_right = eye_color_right
 	facial_hairstyle = GLOB.facial_hairstyles_list[deconstruct_block(get_uni_identity_block(structure, DNA_FACIAL_HAIRSTYLE_BLOCK), GLOB.facial_hairstyles_list.len)]
 	hairstyle = GLOB.hairstyles_list[deconstruct_block(get_uni_identity_block(structure, DNA_HAIRSTYLE_BLOCK), GLOB.hairstyles_list.len)]
 	var/features = dna.unique_features

@@ -39,7 +39,10 @@
 /turf/closed/wall/mineral/titanium/shuttle_wall/window
 	opacity = FALSE
 
-///////////////////////////////////////////// POD //////////////////////////////////////////////////////////
+/*
+*	POD
+*/
+
 /turf/closed/wall/mineral/titanium/shuttle_wall/pod
 	icon = 'modular_skyrat/modules/advanced_shuttles/icons/pod.dmi'
 
@@ -47,7 +50,10 @@
 	icon = 'modular_skyrat/modules/advanced_shuttles/icons/pod.dmi'
 	icon_state = "3,1"
 
-///////////////////////////////////////////// FERRY //////////////////////////////////////////////////////////
+/*
+*	FERRY
+*/
+
 /turf/closed/wall/mineral/titanium/shuttle_wall/ferry
 	icon = 'modular_skyrat/modules/advanced_shuttles/icons/erokez.dmi'
 	icon_state = "18,2"
@@ -61,7 +67,10 @@
 	icon = 'modular_skyrat/modules/advanced_shuttles/icons/erokez.dmi'
 	icon_state = "floor1"
 
-///////////////////////////////////////////// EVAC //////////////////////////////////////////////////////////
+/*
+*	EVAC
+*/
+
 /turf/closed/wall/mineral/titanium/shuttle_wall/evac
 	icon = 'modular_skyrat/modules/advanced_shuttles/icons/evac_shuttle.dmi'
 	icon_state = "9,1"
@@ -75,7 +84,10 @@
 	icon = 'modular_skyrat/modules/advanced_shuttles/icons/evac_shuttle.dmi'
 	icon_state = "floor"
 
-///////////////////////////////////////////// ARRIVALS //////////////////////////////////////////////////////////
+/*
+*	ARRIVALS
+*/
+
 /turf/closed/wall/mineral/titanium/shuttle_wall/arrivals
 	icon = 'modular_skyrat/modules/advanced_shuttles/icons/wagon.dmi'
 	icon_state = "3,1"
@@ -89,7 +101,10 @@
 	icon = 'modular_skyrat/modules/advanced_shuttles/icons/wagon.dmi'
 	icon_state = "floor"
 
-///////////////////////////////////////////// CARGO //////////////////////////////////////////////////////////
+/*
+*	CARGO
+*/
+
 /turf/closed/wall/mineral/titanium/shuttle_wall/cargo
 	icon = 'modular_skyrat/modules/advanced_shuttles/icons/cargo.dmi'
 	icon_state = "3,1"
@@ -103,7 +118,10 @@
 	icon = 'modular_skyrat/modules/advanced_shuttles/icons/cargo.dmi'
 	icon_state = "floor"
 
-///////////////////////////////////////////// MINING //////////////////////////////////////////////////////////
+/*
+*	MINING
+*/
+
 /turf/closed/wall/mineral/titanium/shuttle_wall/mining
 	icon = 'modular_skyrat/modules/advanced_shuttles/icons/mining.dmi'
 
@@ -130,9 +148,10 @@
 	icon_state = "4,4"
 	dir = NORTH
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////// MINING/RND/EXPLORATION FLOORS //////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/*
+*	MINING/RND/EXPLORATION FLOORS
+*/
+
 /turf/open/floor/iron/shuttle/exploration
 	name = "shuttle floor"
 	icon = 'modular_skyrat/modules/advanced_shuttles/icons/exploration_floor.dmi'
