@@ -150,6 +150,8 @@
 			for rapid healing, a medical night vision HUD for quick identification of injured personnel, \
 			and other supplies helpful for a field medic."
 
+
+
 /datum/opposing_force_equipment/gear/cloak_mod
 	item_type = /obj/item/mod/module/stealth/ninja
 	description = "An upgraded MODsuit cloaking module stolen from the Spider Clan's finest. Consumes less power than the standard, but is obviously illegal."
