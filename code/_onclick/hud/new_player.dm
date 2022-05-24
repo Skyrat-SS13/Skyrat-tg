@@ -354,4 +354,4 @@
 		return
 	var/mob/dead/new_player/new_player = hud.mymob
 	new_player.handle_player_polling()
-*/
+*/ // SKYRAT EDIT END
