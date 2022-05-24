@@ -696,7 +696,7 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/splash)
 		icon = SStitle.previous_icon
 
 	holder.screen += src
-*/
+*/ // SKYRAT EDIT END
 /atom/movable/screen/splash/proc/Fade(out, qdel_after = TRUE)
 	if(QDELETED(src))
 		return
