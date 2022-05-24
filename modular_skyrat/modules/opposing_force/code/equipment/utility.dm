@@ -150,7 +150,18 @@
 			for rapid healing, a medical night vision HUD for quick identification of injured personnel, \
 			and other supplies helpful for a field medic."
 
+/datum/opposing_force_equipment/gear/ai_module
+	name = "Syndicate AI Law Module"
+	item_type = /obj/item/ai_module/syndicate
+	description = "When used with an upload console, this module allows you to upload priority laws to an artificial intelligence. \
+			Be careful with wording, as artificial intelligences may look for loopholes to exploit."
 
+/datum/opposing_force_equipment/gear/powersink
+	name = "Power Sink"
+	item_type = /obj/item/powersink
+	description = "When screwed to wiring attached to a power grid and activated, this large device lights up and places excessive \
+			load on the grid, causing a station-wide blackout. The sink is large and cannot be stored in most \
+			traditional bags and boxes. Caution: Will explode if the powernet contains sufficient amounts of energy."
 
 /datum/opposing_force_equipment/gear/cloak_mod
 	item_type = /obj/item/mod/module/stealth/ninja
