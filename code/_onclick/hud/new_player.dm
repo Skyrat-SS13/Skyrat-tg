@@ -1,4 +1,4 @@
-/* SKYRAT EDIT REMOVAL
+/* SKYRAT EDIT REMOVAL - Custom HTML Lobby Screen
 /datum/hud/new_player
 
 /datum/hud/new_player/New(mob/owner)
