@@ -2,6 +2,8 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 
 /// The flag to show that snouts should use the muzzled sprite.
 #define SPRITE_ACCESSORY_USE_MUZZLED_SPRITE (1<<0)
+/// The flag that controls whether or not this sprite accessory should force the wearer to hide its shoes.
+#define SPRITE_ACCESSORY_HIDE_SHOES (1<<1)
 
 /datum/sprite_accessory
 	///Unique key of an accessroy. All tails should have "tail", ears "ears" etc.
