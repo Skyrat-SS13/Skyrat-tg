@@ -114,7 +114,7 @@
 		if (opfor_data.contractor_hub.current_contract == src)
 			opfor_data.contractor_hub.current_contract = null
 
-	if (iscarbon(sent_mob))
+	if(iscarbon(sent_mob))
 		for(var/obj/item/sent_mob_item in sent_mob)
 			if (ishuman(sent_mob))
 				var/mob/living/carbon/human/sent_mob_human = sent_mob
@@ -156,11 +156,10 @@
 	priority_announce("One of your crew was captured by a rival organisation - we've needed to pay their ransom to bring them back. \
 					As is policy we've taken a portion of the station's funds to offset the overall cost.", null, null, null, "Nanotrasen Asset Protection")
 
-	INVOKE_ASYNC(src, .proc/finish_enter)
+	addtimer(CALLBACK(src, .proc/finish_enter), 3 SECONDS)
 
 /// Called when person is finished shoving in, awards ransome money
 /datum/syndicate_contract/proc/finish_enter()
-	sleep(3 SECONDS)
 
 	// Pay contractor their portion of ransom
 	if(!(status == CONTRACT_STATUS_COMPLETE))
@@ -202,7 +201,7 @@
 	sleep(10 SECONDS)
 	target.flash_act()
 	target.Unconscious(200)
-	to_chat(target, span_hypnophrase(span_reallybig(">A million voices echo in your head... <i>\"Your mind held many valuable secrets - \
+	to_chat(target, span_hypnophrase(span_reallybig("A million voices echo in your head... <i>\"Your mind held many valuable secrets - \
 				we thank you for providing them. Your value is expended, and you will be ransomed back to your station. We always get paid, \
 				so it's only a matter of time before we ship you back...\"</i>")))
 	target.blur_eyes(10)
@@ -214,12 +213,10 @@
 	var/list/possible_drop_loc = list()
 
 	for(var/turf/possible_drop in contract.dropoff.contents)
-		if(!(!isspaceturf(possible_drop) && !isclosedturf(possible_drop)))
-			continue
-		if(!possible_drop.is_blocked_turf())
-			possible_drop_loc.Add(possible_drop)
+		if(is_safe_turf(possible_drop))
+			possible_drop_loc += possible_drop
 
-	if (length(possible_drop_loc) > 0)
+	if (length(possible_drop_loc))
 		var/pod_rand_loc = rand(1, length(possible_drop_loc))
 
 		var/obj/structure/closet/supplypod/return_pod = new()
@@ -230,7 +227,7 @@
 		do_sparks(8, FALSE, target)
 		target.visible_message(span_notice("[target] vanishes..."))
 
-		for(var/obj/item/target_item in target)
+		for(var/obj/item/target_item as anything in target)
 			if(ishuman(target))
 				var/mob/living/carbon/human/human_target = target
 				if(target_item == human_target.w_uniform)
@@ -239,7 +236,7 @@
 					continue
 			target.dropItemToGround(target_item)
 
-		for(var/obj/item/target_item in victim_belongings)
+		for(var/obj/item/target_item as anything in victim_belongings)
 			target_item.forceMove(return_pod)
 
 		target.forceMove(return_pod)
@@ -251,11 +248,11 @@
 
 		new /obj/effect/pod_landingzone(possible_drop_loc[pod_rand_loc], return_pod)
 	else
-		to_chat(target, "<span class='reallybig hypnophrase'>A million voices echo in your head... <i>\"Seems where you got sent here from won't \
-					be able to handle our pod... You will die here instead.\"</i></span>")
-		if(!iscarbon(target))
+		to_chat(target, span_reallybig(span_hypnophrase("A million voices echo in your head... <i>\"Seems where you got sent here from won't \
+					be able to handle our pod... You will die here instead.\"</i>")))
+		if(!isliving(target))
 			return
-		var/mob/living/carbon/unlucky_fellow = target
+		var/mob/living/unlucky_fellow = target
 		unlucky_fellow.death()
 
 #undef RANSOM_LOWER
