@@ -57,16 +57,13 @@
 			to_chat(user, span_notice("You switch the health analyzer to report extra info on wounds."))
 
 /obj/item/healthanalyzer/attack(mob/living/M, mob/living/carbon/human/user)
-<<<<<<< HEAD
 	//SKYRAT EDIT ADDITION
 	if(!(item_use_power(power_use_amount, user, FALSE) & COMPONENT_POWER_SUCCESS))
 		return
 	//SKYRAT EDIT END
-=======
 	if(!user.can_read(src) || user.is_blind())
 		return
 
->>>>>>> 0c5b3ac1fd6 (New illiterate quirk (#66648))
 	flick("[icon_state]-scan", src) //makes it so that it plays the scan animation upon scanning, including clumsy scanning
 
 	// Clumsiness/brain damage check
