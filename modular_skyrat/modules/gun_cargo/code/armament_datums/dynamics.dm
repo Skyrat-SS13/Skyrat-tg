@@ -218,6 +218,7 @@
 	item_type = /obj/item/ammo_box/advanced/s12gauge/honk
 	description = "A box of 35 Confetti Shots. Warranty is void if found funny."
 	stock_mult = 1
+	contraband = TRUE
 
 /datum/armament_entry/cargo_gun/dynamics/misc
 	subcategory = ARMAMENT_SUBCATEGORY_SPECIAL
