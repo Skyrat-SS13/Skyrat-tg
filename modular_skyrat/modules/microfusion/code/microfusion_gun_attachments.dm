@@ -503,7 +503,7 @@ Allows for an official blue camo to be applied to the gun.
 Hail NanoTrasen.
 */
 /obj/item/microfusion_gun_attachment/nt_camo
-	name = "\improper NanoTrasen brand microfusion frame"
+	name = "\improper Nanotrasen brand microfusion frame"
 	desc = "A frame modification for the MCR-01, changing the color of the gun to blue."
 	icon_state = "attachment_nt_camo"
 	attachment_overlay_icon_state = "attachment_nt_camo"

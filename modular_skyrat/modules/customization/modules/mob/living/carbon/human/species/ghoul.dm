@@ -133,9 +133,9 @@
 	C.part_default_r_leg = /obj/item/bodypart/r_leg
 	C.ReassignForeignBodyparts()
 
-//////////////////
-// ATTACK PROCS //
-//////////////////
+/*
+*	ATTACK PROCS
+*/
 
 /datum/species/ghoul/disarm(mob/living/carbon/human/user, mob/living/carbon/human/target, datum/martial_art/attacker_style)
 	// Targeting Self? With "DISARM"
