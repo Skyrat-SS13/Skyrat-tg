@@ -2,7 +2,6 @@
 
 /datum/armament_entry/cargo_gun/jorns
 	category = ARMAMENT_CATEGORY_JORNS
-	company_bitflag = COMPANY_JORNS
 
 /datum/armament_entry/cargo_gun/jorns/knife
 	subcategory = ARMAMENT_SUBCATEGORY_KNIFE
