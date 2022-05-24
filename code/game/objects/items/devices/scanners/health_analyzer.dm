@@ -92,16 +92,9 @@
 	add_fingerprint(user)
 
 /obj/item/healthanalyzer/attack_secondary(mob/living/victim, mob/living/user, params)
-<<<<<<< HEAD
-	//SKYRAT EDIT ADDITION
-	if(!(item_use_power(power_use_amount, user) & COMPONENT_POWER_SUCCESS))
-		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
-	//SKYRAT EDIT END
-=======
-	if(!user.can_read(src) || user.is_blind())
+	if(!user.can_read(src) || user.is_blind() || !(item_use_power(power_use_amount, user) & COMPONENT_POWER_SUCCESS)) // SKYRAT EDIT CHANGE
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
->>>>>>> 0c5b3ac1fd6 (New illiterate quirk (#66648))
 	chemscan(user, victim)
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
