@@ -436,3 +436,6 @@
 	item_path = /obj/item/clothing/accessory/badge/holo/jade
 	ckeywhitelist = list("konstyantyn")
 
+/datum/loadout_item/toys/plushe_winrow
+    name = "Dark and brooding lizard plushie"
+    item_path = /obj/item/toy/plush/donator/plushie_winrow
