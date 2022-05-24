@@ -210,7 +210,7 @@
 	desc = "A 12 gauge buckshot shell that fires specially charged pellets that deal extra damage to simpler beings."
 	icon_state = "huntershell"
 	projectile_type = /obj/projectile/bullet/pellet/shotgun_buckshot/magnum
-	pellets = 6 // 6 x 15 = 90 damage vs simples
+	pellets = 6 // 6 x 30 = 180 damage vs simples
 	variance = 30
 
 /obj/projectile/bullet/pellet/shotgun_buckshot/hunter
@@ -219,7 +219,7 @@
 	wound_bonus = 0
 	weak_against_armour = FALSE
         /// Bonus force dealt against certain factions
-	var/faction_bonus_force = 10
+	var/faction_bonus_force = 25
         /// Any mob with a faction that exists in this list will take bonus damage/effects
 	var/list/nemesis_path = /mob/living/simple_animal
 
