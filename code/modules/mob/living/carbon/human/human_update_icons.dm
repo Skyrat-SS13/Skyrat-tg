@@ -411,6 +411,8 @@ There are several things that need to be remembered:
 			icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_SHOES, shoes)
 			if(icon_file)
 				mutant_override = TRUE
+		else if(dna.species.bodytype & BODYTYPE_HIDE_SHOES)
+			return // We just don't want shoes that float if we're not displaying legs (useful for taurs, for now)
 		// SKYRAT EDIT END
 
 		if(!(icon_exists(icon_file, RESOLVE_ICON_STATE(worn_item))))
