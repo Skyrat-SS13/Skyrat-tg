@@ -2,7 +2,7 @@
 /**
  * Enables an admin to upload a new titlescreen image.
  */
-/client/proc/change_title_screen()
+/client/proc/admin_change_title_screen()
 	set category = "Admin.Fun"
 	set name = "Title Screen: Change"
 
