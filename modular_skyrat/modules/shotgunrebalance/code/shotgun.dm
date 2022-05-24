@@ -209,7 +209,7 @@
 	name = "hunter buckshot shell"
 	desc = "A 12 gauge buckshot shell that fires specially charged pellets that deal extra damage to simpler beings."
 	icon_state = "huntershell"
-	projectile_type = /obj/projectile/bullet/pellet/shotgun_buckshot/magnum
+	projectile_type = /obj/projectile/bullet/pellet/shotgun_buckshot/hunter
 	pellets = 6 // 6 x 30 = 180 damage vs simples
 	variance = 30
 
