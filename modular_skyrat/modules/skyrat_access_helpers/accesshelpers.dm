@@ -1,8 +1,8 @@
-/* Read the main access_helpers.dm for more information on these mapping tools.
-TLDR:
-Any requires EITHER OR access defined on the ID
-All requires THAT specific access defined on the ID (so don't put more than one on a door at a time UNLESS ITS INTENTIONAL for a job to have all the access(es))
-For mapping examples, look at /TG/s MetaStation
+/** Read the main access_helpers.dm for more information on these mapping tools.
+ * TLDR:
+ * Any requires EITHER OR access defined on the ID
+ * All requires THAT specific access defined on the ID (so don't put more than one on a door at a time UNLESS ITS INTENTIONAL for a job to have all the access(es))
+ * For mapping examples, look at /TG/s MetaStation
 */
 
 // Any
