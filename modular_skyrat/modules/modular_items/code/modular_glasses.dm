@@ -1,27 +1,21 @@
-// Normal Aviators
-/obj/item/clothing/glasses/sunglasses/aviator
+/obj/item/clothing/glasses/hud/aviator
   name = "aviators"
   desc = "A pair of designer sunglasses."
-  icon_state = "aviator"
-  worn_icon = 'modular_skyrat/modules/modular_items/icons/modular_glasses_mob.dmi'
-  icon = 'modular_skyrat/modules/modular_items/icons/modular_glasses.dmi'
-
-// Fake-sunglasses Aviators
-/obj/item/clothing/glasses/fake_sunglasses/aviator
-  name = "aviators"
-  desc = "A pair of designer sunglasses. Doesn't seem like it'll block flashes."
-  icon_state = "aviator"
-  worn_icon = 'modular_skyrat/modules/modular_items/icons/modular_glasses_mob.dmi'
-  icon = 'modular_skyrat/modules/modular_items/icons/modular_glasses.dmi'
-
-/obj/item/clothing/glasses/hud/aviator
   worn_icon = 'modular_skyrat/modules/modular_items/icons/modular_glasses_mob.dmi'
   icon_state = "aviator"
   icon = 'modular_skyrat/modules/modular_items/icons/modular_glasses.dmi'
+  darkness_view = 1
+  flash_protect = FLASH_PROTECTION_FLASH
+  tint = 0
+  vision_correction = FALSE
   var/toggleable = FALSE
   var/activation_sound = 'sound/effects/pop.ogg'
   var/off_state
   var/on = TRUE
+
+/obj/item/clothing/glasses/hud/aviator/fake
+  desc = "A pair of designer sunglasses. Doesn't seem like it'll block flashes."
+  flash_protect = FLASH_PROTECTION_NONE
 
 /obj/item/clothing/glasses/hud/aviator/update_icon()
   if(on)
@@ -68,7 +62,6 @@
   darkness_view = 1
   flash_protect = FLASH_PROTECTION_NONE
   tint = 0
-  vision_correction = FALSE
   hud_type = DATA_HUD_SECURITY_ADVANCED
   hud_trait = TRAIT_SECURITY_HUD
   glass_colour_type = /datum/client_colour/glass_colour/red
@@ -103,6 +96,7 @@
   off_state = "aviator"
   toggleable = TRUE
   vision_correction = FALSE
+  flash_protect = FLASH_PROTECTION_NONE
   hud_type = DATA_HUD_MEDICAL_ADVANCED
   hud_trait = TRAIT_MEDICAL_HUD
   glass_colour_type = /datum/client_colour/glass_colour/lightblue
@@ -115,6 +109,7 @@
   off_state = "aviator"
   toggleable = TRUE
   vision_correction = FALSE
+  flash_protect = FLASH_PROTECTION_NONE
   clothing_traits = list(TRAIT_MADNESS_IMMUNE)
   darkness_view = 2
   vision_flags = SEE_TURFS
@@ -129,6 +124,7 @@
   off_state = "aviator"
   toggleable = TRUE
   vision_correction = FALSE
+  flash_protect = FLASH_PROTECTION_NONE
   hud_type = DATA_HUD_DIAGNOSTIC_BASIC
   hud_trait = TRAIT_DIAGNOSTIC_HUD
   glass_colour_type = /datum/client_colour/glass_colour/lightorange
@@ -141,7 +137,7 @@
   name = "prescription medical HUD aviators"
   desc = "A heads-up display that scans the humanoids in view and provides accurate data about their health status. This HUD has been fitted inside of a pair of sunglasses which has lenses that help correct eye sight."
   vision_correction = TRUE
-/obj/item/clothing/glasses/hud/aviator/meson/aviator
+/obj/item/clothing/glasses/hud/aviator/meson/prescription
   name = "prescription meson HUD aviators"
   desc = "Used by engineering and mining staff to see basic structural and terrain layouts through walls, regardless of lighting conditions. This HUD has been fitted inside of a pair of sunglasses which has lenses that help correct eye sight."
   vision_correction = TRUE
