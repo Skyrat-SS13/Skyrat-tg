@@ -149,13 +149,57 @@
   desc = "A heads-up display capable of analyzing the integrity and status of robotics and exosuits. This HUD has been fitted inside of a pair of sunglasses which has lenses that help correct eye sight."
   vision_correction = TRUE
 
-/*
-* Designs
-*/
+// Retinal projector
+/obj/item/clothing/glasses/hud/projector
+  worn_icon = 'modular_skyrat/modules/modular_items/icons/modular_glasses_mob.dmi'
+  icon = 'modular_skyrat/modules/modular_items/icons/modular_glasses.dmi'
+  var/toggleable = FALSE
+  var/activation_sound = 'sound/effects/pop.ogg'
+  var/off_state = "projector-off"
+  var/on = TRUE
 
-//
-// Aviators
-//
+/obj/item/clothing/glasses/hud/projector/update_icon()
+  if(on)
+    icon_state = initial(icon_state)
+  else
+    icon_state = off_state
+
+/obj/item/clothing/glasses/hud/projector/attack_self(mob/living/user)
+  if(toggleable)
+    if(on)
+      to_chat(usr, span_notice("You deactivate the optical meson matrix on the [src]."))
+      on = FALSE
+      icon_state = off_state
+      user.update_inv_glasses()
+      flash_protect = FLASH_PROTECTION_NONE
+      vision_flags = 0
+      hud_type = null
+      hud_trait = null
+      tint = 0
+    else
+      to_chat(usr, span_notice("You activate the optical meson matrix on the [src]."))
+      on = TRUE
+      icon_state = initial(icon_state)
+      user.update_inv_glasses()
+      flash_protect = initial(flash_protect)
+      tint = initial(tint)
+      vision_flags = initial(vision_flags)
+      hud_type = initial(hud_type)
+      hud_trait = initial(hud_trait)
+  update_icon()
+  playsound(src, activation_sound, 50, TRUE)
+  user.update_inv_glasses()
+  user.update_action_buttons()
+  user.update_sight()
+  ..()
+
+/obj/item/clothing/glasses/hud/projector/meson
+  name = "retinal projector meson HUD"
+  desc = "A headset equipped with a scanning lens and mounted retinal projector. It doesn't provide any eye protection, but it's less obtrusive than goggles."
+  icon_state = "projector"
+  lighting_alpha = NONE
+  vision_flags = SEE_TURFS 
+  darkness_view = 2
 
 // Designs
 /datum/design/health_hud_aviator
