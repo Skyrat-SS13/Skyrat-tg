@@ -78,9 +78,6 @@
 	else
 		qdel(src)
 
-<<<<<<< HEAD
-/obj/structure/reagent_dispensers/watertank//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
-=======
 /obj/structure/reagent_dispensers/wrench_act(mob/living/user, obj/item/tool)
 	. = ..()
 	if(!openable)
@@ -98,7 +95,6 @@
 		reagents.expose(get_turf(src), TOUCH, 10 / max(10, reagents.total_volume))
 
 /obj/structure/reagent_dispensers/watertank
->>>>>>> 9bf70b88d70 (Allows to open taps on water and fuel tanks (#67153))
 	name = "water tank"
 	desc = "A water tank."
 	icon_state = "water"
