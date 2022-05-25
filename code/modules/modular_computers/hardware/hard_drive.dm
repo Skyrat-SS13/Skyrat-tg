@@ -178,7 +178,7 @@
 	store_file(new /datum/computer_file/program/crew_manifest(src)) // SKYRAT EDIT ADD
 
 // For borg integrated tablets. No downloader.
-/obj/item/computer_hardware/hard_drive/small/integrated/install_default_programs() // SKYRAT EDIT ADDITION - Reverts TG Change breaking PDA's
+/obj/item/computer_hardware/hard_drive/small/integrated/install_default_programs() // SKYRAT EDIT ADDITION - cyborg PDA messenger
 	var/datum/computer_file/program/messenger/messenger = new(src)
 	messenger.is_silicon = TRUE
 	store_file(messenger)
