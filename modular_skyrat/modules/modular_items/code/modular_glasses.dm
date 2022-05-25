@@ -205,7 +205,7 @@
 /obj/item/clothing/glasses/hud/projector/health
   name = "retinal projector health HUD"
   desc = "A headset equipped with a scanning lens and mounted retinal projector. It doesn't provide any eye protection, but it's less obtrusive than a visor."
-  icon_state = "projector_health"
+  icon_state = "projector_med"
   hud_type = DATA_HUD_MEDICAL_ADVANCED
   hud_trait = TRAIT_MEDICAL_HUD
 
