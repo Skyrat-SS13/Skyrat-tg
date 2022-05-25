@@ -121,7 +121,7 @@
   glass_colour_type = /datum/client_colour/glass_colour/lightgreen
 
 // diagnostic Aviators
-/obj/item/clothing/glasses/hud/aviator/aviator/diagnostic
+/obj/item/clothing/glasses/hud/aviator/diagnostic
   name = "diagnostic HUD aviators"
   desc = "A heads-up display capable of analyzing the integrity and status of robotics and exosuits. This HUD has been fitted inside of a pair of sunglasses."
   icon_state = "aviator_diagnostic"
