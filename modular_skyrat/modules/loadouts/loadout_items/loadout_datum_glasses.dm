@@ -202,6 +202,11 @@ GLOBAL_LIST_INIT(loadout_glasses, generate_loadout_items(/datum/loadout_item/gla
 	item_path = /obj/item/clothing/glasses/hud/aviator/diagnostic
 	restricted_roles = list(JOB_RESEARCH_DIRECTOR,JOB_SCIENTIST, JOB_ROBOTICIST)
 
+/datum/loadout_item/glasses/aviator_science
+	name = "Science Aviators Sunglasses"
+	item_path = /obj/item/clothing/glasses/hud/aviator/science
+	restricted_roles = list(JOB_SCIENTIST, JOB_ROBOTICIST, JOB_GENETICIST, JOB_RESEARCH_DIRECTOR, JOB_CHEMIST, JOB_VANGUARD_OPERATIVE, JOB_SCIENCE_GUARD)
+
 
 /datum/loadout_item/glasses/prescription_aviator_security
 	name = "Prescription Security HUD Aviators Sunglasses"
@@ -223,6 +228,11 @@ GLOBAL_LIST_INIT(loadout_glasses, generate_loadout_items(/datum/loadout_item/gla
 	item_path = /obj/item/clothing/glasses/hud/aviator/diagnostic/prescription
 	restricted_roles = list(JOB_RESEARCH_DIRECTOR,JOB_SCIENTIST, JOB_ROBOTICIST)
 
+/datum/loadout_item/glasses/prescription_aviator_science
+	name = "Prescription Science Aviators Sunglasses"
+	item_path = /obj/item/clothing/glasses/hud/aviator/science/prescription
+	restricted_roles = list(JOB_SCIENTIST, JOB_ROBOTICIST, JOB_GENETICIST, JOB_RESEARCH_DIRECTOR, JOB_CHEMIST, JOB_VANGUARD_OPERATIVE, JOB_SCIENCE_GUARD)
+
 /datum/loadout_item/glasses/retinal_projector_security
 	name = "Retinal Projector Security HUD"
 	item_path = /obj/item/clothing/glasses/hud/projector/security
@@ -242,6 +252,11 @@ GLOBAL_LIST_INIT(loadout_glasses, generate_loadout_items(/datum/loadout_item/gla
 	name = "Retinal Projector Diagnostic HUD"
 	item_path = /obj/item/clothing/glasses/hud/projector/diagnostic
 	restricted_roles = list(JOB_RESEARCH_DIRECTOR,JOB_SCIENTIST, JOB_ROBOTICIST)
+
+/datum/loadout_item/glasses/retinal_projector_science
+	name = "Science Retinal Projector"
+	item_path = /obj/item/clothing/glasses/hud/projector/science
+	restricted_roles = list(JOB_SCIENTIST, JOB_ROBOTICIST, JOB_GENETICIST, JOB_RESEARCH_DIRECTOR, JOB_CHEMIST, JOB_VANGUARD_OPERATIVE, JOB_SCIENCE_GUARD)
 
 /*
 *	FAMILIES

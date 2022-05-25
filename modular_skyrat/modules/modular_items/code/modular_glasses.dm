@@ -13,6 +13,10 @@
   var/off_state
   var/on = TRUE
 
+/obj/item/clothing/glasses/hud/aviator/suicide_act(mob/living/carbon/user)
+  user.visible_message(span_suicide("[user] is posing rapidly with their [src] on... Clearly breathtaking. It looks like [user.p_theyre()] trying to commit suicide!"))
+  return OXYLOSS
+
 /obj/item/clothing/glasses/hud/aviator/fake
   desc = "A pair of designer sunglasses. Doesn't seem like it'll block flashes."
   flash_protect = FLASH_PROTECTION_NONE
@@ -35,6 +39,7 @@
       hud_type = null
       hud_trait = null
       tint = 0
+      clothing_traits = null
     else
       to_chat(usr, span_notice("You activate the optical matrix on the [src]."))
       on = TRUE
@@ -45,6 +50,7 @@
       vision_flags = initial(vision_flags)
       hud_type = initial(hud_type)
       hud_trait = initial(hud_trait)
+      clothing_traits = initial(clothing_traits)
     update_icon()
     playsound(src, activation_sound, 50, TRUE)
     user.update_inv_glasses()
@@ -129,6 +135,20 @@
   hud_trait = TRAIT_DIAGNOSTIC_HUD
   glass_colour_type = /datum/client_colour/glass_colour/lightorange
 
+// Science Aviators
+/obj/item/clothing/glasses/hud/aviator/science
+  name = "science aviators"
+  desc = "A pair of tacky purple aviator sunglasses that allow the wearer to recognize various chemical compounds with only a glance."
+  icon_state = "aviator_sci"
+  off_state = "aviator"
+  toggleable = TRUE
+  vision_correction = FALSE
+  flash_protect = FLASH_PROTECTION_NONE
+  glass_colour_type = /datum/client_colour/glass_colour/purple
+  resistance_flags = ACID_PROOF
+  armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 80, ACID = 100)
+  clothing_traits = list(TRAIT_REAGENT_SCANNER, TRAIT_RESEARCH_SCANNER)
+
 /obj/item/clothing/glasses/hud/aviator/security/prescription
   name = "prescription security HUD aviators"
   desc = "A heads-up display that scans the humanoids in view and provides accurate data about their ID status and security records. This HUD has been fitted inside of a pair of sunglasses with toggleable electrochromatic tinting which. Has lenses that help correct eye sight."
@@ -144,6 +164,10 @@
 /obj/item/clothing/glasses/hud/aviator/diagnostic/prescription
   name = "prescription diagnostic HUD aviators"
   desc = "A heads-up display capable of analyzing the integrity and status of robotics and exosuits. This HUD has been fitted inside of a pair of sunglasses which has lenses that help correct eye sight."
+  vision_correction = TRUE
+/obj/item/clothing/glasses/hud/aviator/science/prescription
+  name = "prescription science aviators"
+  desc = "A pair of tacky purple aviator sunglasses that allow the wearer to recognize various chemical compounds with only a glance, which has lenses that help correct eye sight."
   vision_correction = TRUE
 
 // Retinal projector
@@ -177,6 +201,7 @@
       hud_type = null
       hud_trait = null
       tint = 0
+      clothing_traits = null
     else
       to_chat(usr, span_notice("You activate the optical meson matrix on the [src]."))
       on = TRUE
@@ -187,6 +212,7 @@
       vision_flags = initial(vision_flags)
       hud_type = initial(hud_type)
       hud_trait = initial(hud_trait)
+      clothing_traits = initial(clothing_traits)
     update_icon()
     playsound(src, activation_sound, 50, TRUE)
     user.update_inv_glasses()
@@ -222,6 +248,12 @@
   icon_state = "projector_diagnostic"
   hud_type = DATA_HUD_DIAGNOSTIC_BASIC
   hud_trait = TRAIT_DIAGNOSTIC_HUD
+
+/obj/item/clothing/glasses/hud/projector/science
+  name = "science retinal projector"
+  desc = "A headset equipped with a scanning lens and mounted retinal projector. It doesn't provide any eye protection, but it's less obtrusive than a visor."
+  icon_state = "projector_sci"
+  clothing_traits = list(TRAIT_REAGENT_SCANNER, TRAIT_RESEARCH_SCANNER)
 
 // Designs
 /datum/design/health_hud_aviator
