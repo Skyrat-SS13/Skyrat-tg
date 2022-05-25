@@ -274,13 +274,13 @@
 	ammo_type = /obj/item/ammo_casing/energy/medical/utility/body_teleporter
 
 /obj/item/weaponcell/medical/utility/relocation
-	name = "Oppressive Force Relocation Medicell"
+	name = "Oppressive Force relocation medicell"
 	desc = "A medicell that safely relocates personnel"
 	icon_state =  "body"
 	ammo_type = /obj/item/ammo_casing/energy/medical/utility/relocation/standard
 
 /obj/item/weaponcell/medical/utility/relocation/upgraded
-	name = "Upgraded Oppressive Force Relocation Medicell"
+	name = "upgraded Oppressive Force relocation medicell"
 	desc = "An upgraded version of the Relocation Medicell. It has the access and area requirements removed, along with having the standard grace period disabled."
 	ammo_type = /obj/item/ammo_casing/energy/medical/utility/relocation
 

@@ -186,6 +186,6 @@
 	view_range = 0
 
 /obj/item/circuitboard/computer/tarkon_driver
-	name = "Chevvy Control Console (Computer Board)"
+	name = "Tarkon Driver Control Console (Computer Board)"
 	build_path = /obj/machinery/computer/shuttle/tarkon_driver
 /*----- End of Tarkon Shuttle Code -----*/

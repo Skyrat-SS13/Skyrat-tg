@@ -1,7 +1,6 @@
-
-//////////////////
-//TOKEN SYSTEM
-/////////////////
+/*
+*	GUN VENDOR
+*/
 
 /obj/machinery/gun_vendor
 	name = "Armadyne weapons dispensary"
@@ -60,9 +59,9 @@
 /obj/machinery/gun_vendor/no_alert
 	requires_alert = FALSE
 
-////////////////////
-//TOKENS
-////////////////////
+/*
+*	TOKENS
+*/
 
 /obj/item/armament_token
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi'
@@ -73,7 +72,10 @@
 /obj/item/armament_token/proc/get_available_gunsets()
 	return FALSE
 
-//Sidearm
+/*
+*	SIDEARMS
+*/
+
 /obj/item/armament_token/sidearm
 	name = "sidearm armament holochip"
 	desc = "A holochip used in any armament vendor, this is for sidearms. Do not bend."
@@ -107,7 +109,7 @@
 		),
 	)
 
-//BAD BOY!
+// BAD BOY!
 /obj/item/armament_token/sidearm_blackmarket
 	name = "blackmarket armament holochip"
 	desc = "A holochip used in any armament vendor, this is for |bad people|. Do not bend."
@@ -132,7 +134,10 @@
 	)
 
 
-//Primary
+/*
+*	PRIMARIES
+*/
+
 /obj/item/armament_token/primary
 	name = "primary armament holochip"
 	desc = "A holochip used in any armament vendor, this is for main arms. Do not bend."

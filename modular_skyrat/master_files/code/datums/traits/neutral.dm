@@ -1,6 +1,6 @@
-#define TRAIT_HYDRA_HEADS "hydrahead" //We still dont have a centralised trait file
+#define TRAIT_HYDRA_HEADS "hydrahead" // We still dont have a centralised trait file
 
-//SKYRAT NEUTRAL TRAITS
+// SKYRAT NEUTRAL TRAITS
 /datum/quirk/excitable
 	name = "Excitable!"
 	desc = "Head patting makes your tail wag! You're very excitable! WAG WAG."
@@ -31,7 +31,7 @@
 	mob_trait = TRAIT_DNR
 	icon = "skull-crossbones"
 
-//uncontrollable laughter
+// uncontrollable laughter
 /datum/quirk/item_quirk/joker
 	name = "Pseudobulbar Affect"
 	desc = "At random intervals, you suffer uncontrollable bursts of laughter."

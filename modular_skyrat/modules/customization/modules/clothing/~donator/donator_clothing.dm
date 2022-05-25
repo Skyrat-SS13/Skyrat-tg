@@ -1362,3 +1362,10 @@
     worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/custom_w.dmi'
     icon_state = "greenbadge"
 
+    // Donation reward for shyshadow
+/obj/item/toy/plush/donator/plushie_winrow
+	name = "dark and brooding lizard plush"
+	desc = "An almost intimidating black lizard plush, this one's got a little beret to come with it! Best not to separate the two. Its eyes shine with suggestion, no maidens?"
+	icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
+	icon_state = "plushie_winrow"
+

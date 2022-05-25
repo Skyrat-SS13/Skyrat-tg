@@ -61,3 +61,7 @@
 /mob/living/simple_animal/hostile/lizard/wags_his_tail
 	name = "Wags-His-Tail"
 	desc = "The janitorial department's trusty pet lizard."
+
+/mob/living/simple_animal/hostile/lizard/eats_the_roaches
+	name = "Eats-The-Roaches"
+	desc = "The janitorial department's less trusty pet lizard."

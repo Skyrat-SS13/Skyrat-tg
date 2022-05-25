@@ -1,15 +1,15 @@
-////////////////////////////////////
-//CME EVENT SYSTEM
-//SEE _CME_DEFINES.DM FOR SETTINGS.
-////////////////////////////////////
+/*
+*	CME EVENT SYSTEM
+*	SEE _CME_DEFINES.DM FOR SETTINGS.
+*/
 
 /* Welcome to the CME control system.
-
-This controls the CME event, or coronal mass ejection event, which causes multiple EMP bubbles to form around the station
-depending on conditons and time. There are currently 4 settings of CME, all of which have settings defined in the
-cme defines DM file. See that for more info
-
-Armageddon is truly going to fuck the station, use it sparingly.
+*
+*	This controls the CME event, or coronal mass ejection event, which causes multiple EMP bubbles to form around the station
+*	depending on conditons and time. There are currently 4 settings of CME, all of which have settings defined in the
+*	cme defines DM file. See that for more info
+*
+*	Armageddon is truly going to fuck the station, use it sparingly.
 */
 
 /datum/round_event_control/cme
@@ -170,9 +170,9 @@ Armageddon is truly going to fuck the station, use it sparingly.
 	minor_announce("The station has cleared the solar flare, please proceed to repair electronic failures.", "CME cleared:")
 
 
-////////////////////////
-//CME bubbles
-///////////////////////
+/*
+*	CME BUBBLES
+*/
 
 /obj/effect/cme
 	desc = "A solar ejection projection."

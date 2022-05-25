@@ -9,7 +9,7 @@
 	density = FALSE
 	max_integrity = 15
 
-/obj/structure/mark_turf/Initialize()
+/obj/structure/mark_turf/Initialize(mapload, current_turf)
 	. = ..()
 
 	switch(current_turf)
