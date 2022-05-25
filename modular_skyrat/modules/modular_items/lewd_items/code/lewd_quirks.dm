@@ -1,10 +1,6 @@
-//////////////////////////
-///CODE FOR LEWD QUIRKS///
-//////////////////////////
-
-/////////////////
-///BIMBO TRAIT///
-/////////////////
+/*
+*	BIMBO
+*/
 
 /datum/brain_trauma
 	///Whether the trauma will be displayed on a scanner or kiosk
@@ -174,9 +170,9 @@
 /datum/mood_event/bimbo
 	description = span_purple("So-o... Help..less... Lo-ve it!\n")
 
-///////////////
-///MASOCHISM///
-///////////////
+/*
+*	MASOCHISM
+*/
 
 /datum/quirk/masochism
 	name = "Masochism"
@@ -200,9 +196,9 @@
 	REMOVE_TRAIT(affected_human, TRAIT_MASOCHISM, LEWDQUIRK_TRAIT)
 	affected_human.pain_limit = 0
 
-////////////////
-///NEVERBONER///
-////////////////
+/*
+*	NEVERBONER
+*/
 
 /datum/brain_trauma/special/neverboner
 	name = "Loss of libido"
@@ -221,9 +217,9 @@
 	var/mob/living/carbon/human/affected_human = owner
 	REMOVE_TRAIT(affected_human, TRAIT_NEVERBONER, APHRO_TRAIT)
 
-////////////
-///SADISM///
-////////////
+/*
+*	SADISM
+*/
 
 /datum/quirk/sadism
 	name = "Sadism"
@@ -316,9 +312,10 @@
 /datum/mood_event/sadistic
 	description = span_purple("Others' suffering makes me happier\n")
 
-//////////////////
-///EMPATH BOUNS///
-//////////////////
+/*
+*	EMPATH BONUS
+*/
+
 /mob/living/carbon/human/examine(mob/user)
 	. = ..()
 	var/mob/living/examiner = user

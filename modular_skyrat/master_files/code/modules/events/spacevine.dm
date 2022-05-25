@@ -47,7 +47,7 @@
 	fakeable = FALSE
 
 /datum/round_event/spacevine/start()
-	//list of all the empty floor turfs in the hallway areas
+	// list of all the empty floor turfs in the hallway areas
 	var/list/turfs = list()
 
 	var/obj/structure/spacevine/vine = new()
@@ -59,11 +59,11 @@
 
 	qdel(vine)
 
-	//Pick a turf to spawn at if we can
+	// Pick a turf to spawn at if we can
 	if(length(turfs))
 		var/turf/floor = pick(turfs)
-		//spawn a controller at turf with randomized stats and a single random mutation
-		new /datum/spacevine_controller(floor, list(pick(subtypesof(/datum/spacevine_mutation))), rand(10,100), rand(1,6), src)
+		// spawn a controller at turf with randomized stats and a single random mutation
+		new /datum/spacevine_controller(floor, list(pick(subtypesof(/datum/spacevine_mutation))), rand(10, 100), rand(1, 6), src)
 		for(var/spawn_venus in 1 to 2)
 			new /mob/living/simple_animal/hostile/venus_human_trap(floor)
 
@@ -200,7 +200,7 @@
 
 
 // Hurts mobs when interacting with a mob - either on spread or buckle
-/datum/spacevine_mutation/aggressive_spread  //very OP, but im out of other ideas currently
+/datum/spacevine_mutation/aggressive_spread  // very OP, but im out of other ideas currently
 	name = "Agressive spreading"
 	hue = "#316b2f"
 	severity = SEVERITY_MAJOR
@@ -218,24 +218,24 @@
 
 /// Hurts mobs. To be used when a vine with aggressive spread mutation spreads into the mob's tile or buckles them.
 /datum/spacevine_mutation/aggressive_spread/aggrospread_act(obj/structure/spacevine/attacking_vine, mob/living/hit_mob)
-	var/mob/living/carbon/hit_carbon = hit_mob //If the mob is carbon then it now also exists as hit_carbon, and not just hit_mob.
-	if(!istype(hit_carbon)) //Living but not a carbon? Maybe a silicon? Can't be wounded so have a big chunk of simple bruteloss with no special effects. They can be entangled.
+	var/mob/living/carbon/hit_carbon = hit_mob // If the mob is carbon then it now also exists as hit_carbon, and not just hit_mob.
+	if(!istype(hit_carbon)) // Living but not a carbon? Maybe a silicon? Can't be wounded so have a big chunk of simple bruteloss with no special effects. They can be entangled.
 		hit_mob.adjustBruteLoss(75)
 		playsound(hit_mob, 'sound/weapons/whip.ogg', 50, TRUE, -1)
 		hit_mob.visible_message(span_danger("[hit_mob] is brutally threshed by [attacking_vine]!"), span_userdanger("You are brutally threshed by [attacking_vine]!"))
-		log_combat(attacking_vine, hit_mob, "aggressively spread into") //You aren't being attacked by the vines. You just happen to stand in their way.
+		log_combat(attacking_vine, hit_mob, "aggressively spread into") // You aren't being attacked by the vines. You just happen to stand in their way.
 		return
 
-	//If hit_mob IS a carbon subtype (hit_carbon) we move on to pick a more complex damage proc, with damage zones, wounds and armor mitigation.
-	var/obj/item/bodypart/limb = pick(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG, BODY_ZONE_HEAD, BODY_ZONE_CHEST) //Picks a random bodypart. Does not runtime even if it's missing.
-	var/armor = hit_carbon.run_armor_check(limb, MELEE, null, null) //armor = the armor value of that randomly chosen bodypart. Nulls to not print a message, because it would still print on pierce.
-	var/datum/spacevine_mutation/thorns/has_thorns = locate() in attacking_vine.mutations //Searches for the thorns mutation in the "mutations"-list inside obj/structure/spacevine, and defines T if it finds it.
-	if(has_thorns && (prob(40))) //If we found the thorns mutation there is now a chance to get stung instead of lashed or smashed.
-		hit_carbon.apply_damage(50, BRUTE, def_zone = limb, wound_bonus = rand(-20, 10), sharpness = SHARP_POINTY) //This one gets a bit lower damage because it ignores armor.
-		hit_carbon.Stun(1 SECONDS) //Stopped in place for a moment.
+	// If hit_mob IS a carbon subtype (hit_carbon) we move on to pick a more complex damage proc, with damage zones, wounds and armor mitigation.
+	var/obj/item/bodypart/limb = pick(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG, BODY_ZONE_HEAD, BODY_ZONE_CHEST) // Picks a random bodypart. Does not runtime even if it's missing.
+	var/armor = hit_carbon.run_armor_check(limb, MELEE, null, null) // armor = the armor value of that randomly chosen bodypart. Nulls to not print a message, because it would still print on pierce.
+	var/datum/spacevine_mutation/thorns/has_thorns = locate() in attacking_vine.mutations // Searches for the thorns mutation in the "mutations"-list inside obj/structure/spacevine, and defines T if it finds it.
+	if(has_thorns && (prob(40))) // If we found the thorns mutation there is now a chance to get stung instead of lashed or smashed.
+		hit_carbon.apply_damage(50, BRUTE, def_zone = limb, wound_bonus = rand(-20, 10), sharpness = SHARP_POINTY) // This one gets a bit lower damage because it ignores armor.
+		hit_carbon.Stun(1 SECONDS) // Stopped in place for a moment.
 		playsound(hit_mob, 'sound/weapons/pierce.ogg', 50, TRUE, -1)
 		hit_mob.visible_message(span_danger("[hit_mob] is nailed by a sharp thorn!"), span_userdanger("You are nailed by a sharp thorn!"))
-		log_combat(attacking_vine, hit_mob, "aggressively pierced") //"Aggressively" for easy ctrl+F'ing in the attack logs.
+		log_combat(attacking_vine, hit_mob, "aggressively pierced") // "Aggressively" for easy ctrl+F'ing in the attack logs.
 	else
 		if(prob(80))
 			hit_carbon.apply_damage(60, BRUTE, def_zone = limb, blocked = armor, wound_bonus = rand(-20, 10), sharpness = SHARP_EDGED)
@@ -540,14 +540,14 @@
 		living_eater.adjustFireLoss(-5)
 		living_eater.adjustToxLoss(-5)
 
-//Allows the vine to walk 1 tile away from turfs
+// Allows the vine to walk 1 tile away from turfs
 /datum/spacevine_mutation/space_walking
 	name = "Space walking"
 	hue = "#0a1330"
 	severity = SEVERITY_MAJOR
 	quality = NEGATIVE
 
-//Will prevent the vine from opening doors
+// Will prevent the vine from opening doors
 /datum/spacevine_mutation/domesticated
 	name = "Domesticated"
 	hue = "#a9adb1"
@@ -558,7 +558,7 @@
 	vine_object.layer = TURF_LAYER
 	vine_object.plane = FLOOR_PLANE
 
-//Spawns kudzu flooring on spacetiles
+// Spawns kudzu flooring on spacetiles
 /datum/spacevine_mutation/breach_fixing
 	name = "Breach fixing"
 	hue = "#43a1ff"
@@ -576,7 +576,7 @@
 		space_turf.ChangeTurf(/turf/open/floor/plating/kudzu)
 		space_turf.color = hue
 
-//Hitting/crossing has a chance to infect you with a disease
+// Hitting/crossing has a chance to infect you with a disease
 /datum/spacevine_mutation/disease_carrying
 	name = "Disease carrying"
 	hue = "#dcf597"
@@ -613,7 +613,7 @@
 	else
 		return ..()
 
-//Turns CO2 into oxygen
+// Turns CO2 into oxygen
 /datum/spacevine_mutation/carbon_recycling
 	name = "Carbon recycling"
 	hue = "#008a50"
@@ -643,7 +643,7 @@
 	anchored = TRUE
 	density = FALSE
 	layer = SPACEVINE_LAYER
-	mouse_opacity = MOUSE_OPACITY_OPAQUE //Clicking anywhere on the turf is good enough
+	mouse_opacity = MOUSE_OPACITY_OPAQUE // Clicking anywhere on the turf is good enough
 	pass_flags = PASSTABLE | PASSGRILLE
 	max_integrity = 50
 	/// The amount of energy it has to grow/spread
@@ -715,7 +715,7 @@
 		damage_dealt *= 4
 
 	for(var/datum/spacevine_mutation/vine_mutation in mutations)
-		damage_dealt = vine_mutation.on_hit(src, user, weapon, damage_dealt) //on_hit now takes override damage as arg and returns new value for other mutations to permutate further
+		damage_dealt = vine_mutation.on_hit(src, user, weapon, damage_dealt) // on_hit now takes override damage as arg and returns new value for other mutations to permutate further
 	take_damage(damage_dealt, weapon.damtype, MELEE, 1)
 
 /obj/structure/spacevine/play_attack_sound(damage_amount, damage_type = BRUTE, damage_flag = 0)
@@ -760,7 +760,7 @@
 	var/list/obj/structure/spacevine/vines
 	/// The queue relating to what is to be grown next
 	var/list/growth_queue
-	///List of currently processed vines, on this level to prevent runtime tomfoolery
+	/// List of currently processed vines, on this level to prevent runtime tomfoolery
 	var/list/obj/structure/spacevine/queue_end
 	/// How quickly it spreads
 	var/spread_multiplier = 5
@@ -783,8 +783,8 @@
 	init_subtypes(/datum/spacevine_mutation/, vine_mutations_list)
 	if(potency != null)
 		mutativeness = potency / 10
-	if(production != null && production <= 10) //Prevents runtime in case production is set to 11.
-		spread_cap *= (11 - production) / 5 //Best production speed of 1 doubles spread_cap to 60 while worst speed of 10 lowers it to 6. Even distribution.
+	if(production != null && production <= 10) // Prevents runtime in case production is set to 11.
+		spread_cap *= (11 - production) / 5 // Best production speed of 1 doubles spread_cap to 60 while worst speed of 10 lowers it to 6. Even distribution.
 		spread_multiplier /= (11 - production) / 5
 
 /datum/spacevine_controller/vv_get_dropdown()
@@ -797,8 +797,8 @@
 		if(tgui_alert(usr, "Are you sure you want to delete this spacevine cluster?", "Delete Vines", list("Yes", "No")) == "Yes")
 			DeleteVines()
 
-/datum/spacevine_controller/proc/DeleteVines() //this is kill
-	QDEL_LIST(vines) //this will also qdel us
+/datum/spacevine_controller/proc/DeleteVines() // this is kill
+	QDEL_LIST(vines) // this will also qdel us
 
 /datum/spacevine_controller/Destroy()
 	STOP_PROCESSING(SSobj, src)
@@ -837,13 +837,13 @@
 	var/obj/item/seeds/kudzu/kudzu_seed = new(destroyed_vine.loc)
 	kudzu_seed.mutations |= destroyed_vine.mutations
 	kudzu_seed.set_potency(mutativeness * 10)
-	kudzu_seed.set_production(11 - (spread_cap / initial(spread_cap)) * 5) //Reverts spread_cap formula so resulting seed gets original production stat or equivalent back.
+	kudzu_seed.set_production(11 - (spread_cap / initial(spread_cap)) * 5) // Reverts spread_cap formula so resulting seed gets original production stat or equivalent back.
 	qdel(src)
 
 /datum/spacevine_controller/process(delta_time)
 	var/vine_count = length(vines)
 	if(!vine_count)
-		qdel(src) //space vines exterminated. Remove the controller
+		qdel(src) // space vines exterminated. Remove the controller
 		return
 
 	var/spread_max = round(clamp(delta_time * 0.5 * vine_count / spread_multiplier, 1, spread_cap))
@@ -856,9 +856,9 @@
 		for(var/datum/spacevine_mutation/mutation in current_vine.mutations)
 			mutation.process_mutation(current_vine)
 
-		if(current_vine.energy >= 2) //If tile is fully grown
+		if(current_vine.energy >= 2) // If tile is fully grown
 			current_vine.entangle_mob()
-		else if(DT_PROB(10, delta_time)) //If tile isn't fully grown
+		else if(DT_PROB(10, delta_time)) // If tile isn't fully grown
 			current_vine.grow()
 
 		current_vine.spread()
@@ -867,8 +867,8 @@
 		if(amount_processed >= spread_max)
 			break
 
-	//We can only do so much work per process, but we still want to process everything at some point
-	//So we shift the queue a bit
+	// We can only do so much work per process, but we still want to process everything at some point
+	// So we shift the queue a bit
 	growth_queue += queue_end
 	queue_end = list()
 
@@ -890,14 +890,14 @@
 		for(var/mob/living/entangled_mob in src.loc)
 			entangle(entangled_mob)
 			if(has_buckled_mobs())
-				break //only capture one mob at a time
+				break // only capture one mob at a time
 
 /obj/structure/spacevine/proc/entangle(mob/living/entangled_mob)
 	if(!entangled_mob || isvineimmune(entangled_mob))
 		return
 	for(var/datum/spacevine_mutation/vine_mutation in mutations)
 		vine_mutation.on_buckle(src, entangled_mob)
-	if((entangled_mob.stat != DEAD) && (entangled_mob.buckled != src) && ishuman(entangled_mob)) //not dead or captured
+	if((entangled_mob.stat != DEAD) && (entangled_mob.buckled != src) && ishuman(entangled_mob)) // not dead or captured
 		to_chat(entangled_mob, span_danger("The vines [pick("wind", "tangle", "tighten")] around you!"))
 		buckle_mob(entangled_mob, 1)
 
@@ -907,13 +907,13 @@
 	var/turf/stepturf = get_step(src, direction)
 	if(!stepturf)
 		return
-	//Domesticated removes its ability to open doors
+	// Domesticated removes its ability to open doors
 	var/datum/spacevine_mutation/domesticated/domesticated = locate() in mutations
 	if(!domesticated)
 		for(var/obj/machinery/door/target_door in stepturf.contents)
 			if(prob(50))
 				target_door.open()
-	//Space walking allows it to spread into space under conditions
+	// Space walking allows it to spread into space under conditions
 	var/datum/spacevine_mutation/space_walking/space_mutation = locate() in mutations
 	if(!isspaceturf(stepturf) && stepturf.Enter(src))
 		spread_two(stepturf, direction)
@@ -924,20 +924,20 @@
 			spread_two(stepturf, direction)
 
 /obj/structure/spacevine/proc/spread_two(turf/target_turf, target_dir)
-	//Locates any vine on target turf. Calls that vine "spot_taken".
+	// Locates any vine on target turf. Calls that vine "spot_taken".
 	var/obj/structure/spacevine/spot_taken = locate() in target_turf
 
-	//Locates the vine eating trait in our own seed and calls it eating_mutation.
+	// Locates the vine eating trait in our own seed and calls it eating_mutation.
 	var/datum/spacevine_mutation/vine_eating/eating_mutation = locate() in mutations
 
-	//Proceed if there isn't a vine on the target turf, OR we have vine eater AND target vine is from our seed and doesn't. Vines from other seeds are eaten regardless.
+	// Proceed if there isn't a vine on the target turf, OR we have vine eater AND target vine is from our seed and doesn't. Vines from other seeds are eaten regardless.
 	if(!spot_taken || (eating_mutation && (spot_taken && !spot_taken.mutations.Find(eating_mutation))))
 		if(!master)
 			return
 		for(var/datum/spacevine_mutation/vine_mutation in mutations)
-			vine_mutation.on_spread(src, target_turf) //Only do the on_spread proc if it actually spreads.
-			target_turf = get_step(src, target_dir) //in case turf changes, to make sure no runtimes happen
-		var/obj/structure/spacevine/spawning_vine = master.spawn_spacevine_piece(target_turf, src) //Let's do a cool little animate
+			vine_mutation.on_spread(src, target_turf) // Only do the on_spread proc if it actually spreads.
+			target_turf = get_step(src, target_dir) // in case turf changes, to make sure no runtimes happen
+		var/obj/structure/spacevine/spawning_vine = master.spawn_spacevine_piece(target_turf, src) // Let's do a cool little animate
 		if(NSCOMPONENT(target_dir))
 			spawning_vine.pixel_y = target_dir == NORTH ? -32 : 32
 			animate(spawning_vine, pixel_y = 0, time = 1 SECONDS)
@@ -953,12 +953,12 @@
 		qdel(src)
 
 /obj/structure/spacevine/should_atmos_process(datum/gas_mixture/air, exposed_temperature)
-	return exposed_temperature > FIRE_MINIMUM_TEMPERATURE_TO_SPREAD //if you're cold you're safe
+	return exposed_temperature > FIRE_MINIMUM_TEMPERATURE_TO_SPREAD // if you're cold you're safe
 
 /obj/structure/spacevine/atmos_expose(datum/gas_mixture/air, exposed_temperature)
 	var/volume = air.return_volume()
 	for(var/datum/spacevine_mutation/vine_mutation in mutations)
-		if(vine_mutation.process_temperature(src, exposed_temperature, volume)) //If it's ever true we're safe
+		if(vine_mutation.process_temperature(src, exposed_temperature, volume)) // If it's ever true we're safe
 			return
 	qdel(src)
 

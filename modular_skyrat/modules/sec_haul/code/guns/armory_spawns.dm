@@ -61,7 +61,10 @@
 	new /obj/item/storage/box/rubbershot(src)
 	new /obj/item/storage/box/rubbershot(src)
 
-//////////////////////////AMMO BOXES
+/*
+*	AMMO BOXES
+*/
+
 /obj/item/storage/box/ammo_box
 	name = "ammo box"
 	desc = "A box filled with ammunition."

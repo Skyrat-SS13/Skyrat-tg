@@ -82,6 +82,7 @@
 	var/static/list/slot2type = list(
 		"head" = /obj/item/clothing/head/changeling,
 		"wear_mask" = /obj/item/clothing/mask/changeling,
+		"wear_neck" = /obj/item/changeling, // SKYRAT EDIT
 		"back" = /obj/item/changeling,
 		"wear_suit" = /obj/item/clothing/suit/changeling,
 		"w_uniform" = /obj/item/clothing/under/changeling,
@@ -463,7 +464,19 @@
 	new_profile.underwear = target.underwear
 	new_profile.undershirt = target.undershirt
 	new_profile.socks = target.socks
-
+	
+	// SKYRAT EDIT START
+	new_profile.underwear_color = target.underwear_color
+	new_profile.undershirt_color = target.undershirt_color
+	new_profile.socks_color = target.socks_color
+	new_profile.eye_color_left = target.eye_color_left
+	new_profile.eye_color_right = target.eye_color_right
+	new_profile.emissive_eyes = target.emissive_eyes
+	new_profile.grad_style = LAZYLISTDUPLICATE(target.grad_style)
+	new_profile.grad_color = LAZYLISTDUPLICATE(target.grad_color)
+	new_profile.physique = target.physique
+	//SKYRAT EDIT END
+	
 	// Grab skillchips they have
 	new_profile.skillchips = target.clone_skillchip_list(TRUE)
 
@@ -482,7 +495,7 @@
 	// Grab the target's sechut icon.
 	new_profile.id_icon = target.wear_id?.get_sechud_job_icon_state()
 
-	var/list/slots = list("head", "wear_mask", "back", "wear_suit", "w_uniform", "shoes", "belt", "gloves", "glasses", "ears", "wear_id", "s_store")
+	var/list/slots = list("head", "wear_mask", "wear_neck", "back", "wear_suit", "w_uniform", "shoes", "belt", "gloves", "glasses", "ears", "wear_id", "s_store") // SKYRAT EDIT
 	for(var/slot in slots)
 		if(!(slot in target.vars))
 			continue
@@ -498,6 +511,13 @@
 		new_profile.worn_icon_list[slot] = clothing_item.worn_icon
 		new_profile.worn_icon_state_list[slot] = clothing_item.worn_icon_state
 		new_profile.exists_list[slot] = 1
+		
+		// SKYRAT EDIT START
+		new_profile.worn_icon_digi_list[slot] = clothing_item.worn_icon_digi
+		new_profile.worn_icon_teshari_list[slot] = clothing_item.worn_icon_teshari
+		new_profile.worn_icon_vox_list[slot] = clothing_item.worn_icon_vox
+		new_profile.supports_variations_flags_list[slot] = clothing_item.supports_variations_flags
+		// SKYRAT EDIT END
 
 	return new_profile
 
@@ -665,7 +685,7 @@
 	var/static/list/slot2slot = list(
 		"head" = ITEM_SLOT_HEAD,
 		"wear_mask" = ITEM_SLOT_MASK,
-		"neck" = ITEM_SLOT_NECK,
+		"wear_neck" = ITEM_SLOT_NECK, // SKYRAT EDIT
 		"back" = ITEM_SLOT_BACK,
 		"wear_suit" = ITEM_SLOT_OCLOTHING,
 		"w_uniform" = ITEM_SLOT_ICLOTHING,
@@ -683,6 +703,18 @@
 	user.underwear = chosen_profile.underwear
 	user.undershirt = chosen_profile.undershirt
 	user.socks = chosen_profile.socks
+	
+	// SKYRAT EDIT START
+	user.underwear_color = chosen_profile.underwear_color
+	user.undershirt_color = chosen_profile.undershirt_color
+	user.socks_color = chosen_profile.socks_color
+	user.emissive_eyes = chosen_profile.emissive_eyes
+	user.dna.mutant_bodyparts = chosen_dna.mutant_bodyparts.Copy()
+	user.dna.body_markings = chosen_dna.body_markings.Copy()
+	user.grad_style = LAZYLISTDUPLICATE(chosen_profile.grad_style)
+	user.grad_color = LAZYLISTDUPLICATE(chosen_profile.grad_color)
+	user.physique = chosen_profile.physique
+	// SKYRAT EDIT END
 
 	chosen_dna.transfer_identity(user, TRUE)
 
@@ -690,7 +722,7 @@
 		if(IS_ORGANIC_LIMB(limb))
 			limb.update_limb(is_creating = TRUE)
 
-	user.updateappearance(mutcolor_update = TRUE)
+	user.updateappearance(mutcolor_update = TRUE, eyeorgancolor_update = TRUE) // SKYRAT EDIT
 	user.domutcheck()
 
 	// Get rid of any scars from previous Changeling-ing
@@ -762,6 +794,13 @@
 		new_flesh_item.inhand_icon_state = chosen_profile.inhand_icon_state_list[slot]
 		new_flesh_item.worn_icon = chosen_profile.worn_icon_list[slot]
 		new_flesh_item.worn_icon_state = chosen_profile.worn_icon_state_list[slot]
+		
+		// SKYRAT EDIT START
+		new_flesh_item.worn_icon_digi = chosen_profile.worn_icon_digi_list[slot]
+		new_flesh_item.worn_icon_teshari = chosen_profile.worn_icon_teshari_list[slot]
+		new_flesh_item.worn_icon_vox = chosen_profile.worn_icon_vox_list[slot]
+		new_flesh_item.supports_variations_flags = chosen_profile.supports_variations_flags_list[slot]
+		// SKYRAT EDIT END
 
 		if(istype(new_flesh_item, /obj/item/changeling/id) && chosen_profile.id_icon)
 			var/obj/item/changeling/id/flesh_id = new_flesh_item
@@ -778,6 +817,12 @@
 			attempted_fake_scar.fake = TRUE
 
 	user.regenerate_icons()
+	
+	// SKYRAT EDIT START
+	chosen_dna.transfer_identity(user, TRUE)
+	user.updateappearance(mutcolor_update = TRUE, eyeorgancolor_update = TRUE)
+	user.regenerate_icons()
+	// SKYRAT EDIT END
 
 // Changeling profile themselves. Store a data to store what every DNA instance looked like.
 /datum/changeling_profile
@@ -819,6 +864,22 @@
 	var/datum/icon_snapshot/profile_snapshot
 	/// ID HUD icon associated with the profile
 	var/id_icon
+	
+	/// SKYRAT EDIT START
+	var/underwear_color
+	var/undershirt_color
+	var/socks_color
+	var/eye_color_left
+	var/eye_color_right
+	var/emissive_eyes
+	var/list/grad_style = list("None", "None")
+	var/list/grad_color = list(null, null)
+	var/physique
+	var/list/worn_icon_digi_list = list()
+	var/list/worn_icon_teshari_list = list()
+	var/list/worn_icon_vox_list = list()
+	var/list/supports_variations_flags_list = list()
+	/// SKYRAT EDIT END
 
 /datum/changeling_profile/Destroy()
 	qdel(dna)
@@ -850,6 +911,22 @@
 	new_profile.stored_scars = stored_scars.Copy()
 	new_profile.profile_snapshot = profile_snapshot
 	new_profile.id_icon = id_icon
+	
+	// SKYRAT EDIT START
+	new_profile.underwear_color = underwear_color
+	new_profile.undershirt_color = undershirt_color
+	new_profile.socks_color = socks_color
+	new_profile.eye_color_left = eye_color_left
+	new_profile.eye_color_right = eye_color_right
+	new_profile.emissive_eyes = emissive_eyes
+	new_profile.grad_style = LAZYLISTDUPLICATE(grad_style)
+	new_profile.grad_color = LAZYLISTDUPLICATE(grad_color)
+	new_profile.physique = physique
+	new_profile.worn_icon_digi_list = worn_icon_digi_list.Copy()
+	new_profile.worn_icon_teshari_list = worn_icon_teshari_list.Copy()
+	new_profile.worn_icon_vox_list = worn_icon_vox_list.Copy()
+	new_profile.supports_variations_flags_list = supports_variations_flags_list.Copy()
+	// SKYRAT EDIT END
 
 /datum/antagonist/changeling/roundend_report()
 	var/list/parts = list()
@@ -910,7 +987,7 @@
 	name = "\improper Headslug Changeling"
 	show_in_antagpanel = FALSE
 	give_objectives = FALSE
-	soft_antag = TRUE
+	count_against_dynamic_roll_chance = FALSE
 
 	genetic_points = 5
 	total_genetic_points = 5

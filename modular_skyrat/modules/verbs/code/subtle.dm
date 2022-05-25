@@ -63,8 +63,9 @@
 	else
 		user.visible_message(message = subtle_message, self_message = subtle_message, vision_distance = 1, separation = space)
 
-
-///////////////// SUBTLE 2: NO GHOST BOOGALOO
+/*
+*	SUBTLE 2: NO GHOST BOOGALOO
+*/
 
 /datum/emote/living/subtler
 	key = "subtler"
@@ -124,7 +125,10 @@
 	else
 		user.visible_message(message = subtler_message, self_message = subtler_message, vision_distance = 1, ignored_mobs = GLOB.dead_mob_list, separation = space)
 
-///////////////// VERB CODE
+/*
+*	VERB CODE
+*/
+
 /mob/living/proc/subtle_keybind()
 	var/message = input(src, "", "subtle") as text|null
 	if(!length(message))
@@ -134,21 +138,24 @@
 /mob/living/verb/subtle()
 	set name = "Subtle"
 	set category = "IC"
-	if(GLOB.say_disabled)	//This is here to try to identify lag problems
+	if(GLOB.say_disabled)	// This is here to try to identify lag problems
 		to_chat(usr, span_danger("Speech is currently admin-disabled."))
 		return
 	usr.emote("subtle")
 
-///////////////// VERB CODE 2
+/*
+*	VERB CODE 2
+*/
+
 /mob/living/verb/subtler()
 	set name = "Subtler Anti-Ghost"
 	set category = "IC"
-	if(GLOB.say_disabled)	//This is here to try to identify lag problems
+	if(GLOB.say_disabled)	// This is here to try to identify lag problems
 		to_chat(usr, span_danger("Speech is currently admin-disabled."))
 		return
 	usr.emote("subtler")
 
-//This is bad code.
+// This is bad code.
 /atom/proc/audible_message_subtler(message, deaf_message, hearing_distance = DEFAULT_MESSAGE_RANGE, list/ignored_mobs, self_message, audible_message_flags = NONE, separation = " ")
 	var/list/hearers = get_hearers_in_view(hearing_distance, src)
 	if(self_message)
