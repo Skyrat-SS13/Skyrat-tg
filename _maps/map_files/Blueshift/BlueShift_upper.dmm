@@ -22846,7 +22846,6 @@
 	dir = 1
 	},
 /obj/structure/displaycase/captain{
-	req_access = null;
 	req_access = list("captain")
 	},
 /obj/structure/extinguisher_cabinet/directional/south,
@@ -29873,10 +29872,10 @@
 /area/station/commons/dorms)
 "jRg" = (
 /obj/machinery/door/airlock/maintenance{
-	name = "Council of Practical Gags";
-	req_access = list("theatre")
+	name = "Council of Practical Gags"
 	},
 /obj/structure/cable,
+/obj/effect/mapping_helpers/airlock/access/all/service/theatre,
 /turf/open/floor/noslip,
 /area/station/maintenance/gag_room)
 "jRr" = (
@@ -30118,8 +30117,7 @@
 /area/station/maintenance/department/medical/central)
 "jXz" = (
 /obj/machinery/door/airlock/external{
-	name = "External Airlock";
-	req_access = list("external airlocks")
+	name = "External Airlock"
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 8
@@ -30127,6 +30125,7 @@
 /obj/effect/mapping_helpers/airlock/unres{
 	dir = 8
 	},
+/obj/effect/mapping_helpers/airlock/access/all/engineering/external,
 /turf/open/floor/plating,
 /area/station/maintenance/port/upper)
 "jXD" = (
@@ -37915,6 +37914,7 @@
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 8
 	},
+/obj/effect/mapping_helpers/airlock/access/all/engineering/external,
 /turf/open/floor/plating,
 /area/station/maintenance/port/upper)
 "mHi" = (
@@ -38500,6 +38500,17 @@
 	},
 /turf/open/floor/iron,
 /area/station/maintenance/abandon_holding_cell)
+"mRh" = (
+/obj/machinery/door/airlock/external{
+	name = "External Airlock";
+	space_dir = 8
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/airlock/access/all/engineering/external,
+/turf/open/floor/plating,
+/area/station/maintenance/port/upper)
 "mRw" = (
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
 	dir = 9
@@ -56432,6 +56443,7 @@
 /obj/effect/mapping_helpers/airlock/unres{
 	dir = 4
 	},
+/obj/effect/mapping_helpers/airlock/access/all/engineering/external,
 /turf/open/floor/plating,
 /area/station/maintenance/port/upper)
 "tcO" = (
@@ -60413,7 +60425,6 @@
 	name = "Chamber Hallway Turret Control";
 	pixel_x = -2;
 	pixel_y = -28;
-	req_access = null;
 	req_access = list("minisat")
 	},
 /turf/open/floor/iron/dark,
@@ -90749,7 +90760,7 @@ bXw
 bXw
 bXw
 vaX
-kGi
+mRh
 vaX
 xBG
 xBG
