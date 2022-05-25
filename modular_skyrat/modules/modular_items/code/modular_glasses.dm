@@ -52,7 +52,7 @@
       hud_type = initial(hud_type)
       hud_trait = initial(hud_trait)
   update_icon()
-  playsound(src, activation_sound, 20, TRUE)
+  playsound(src, activation_sound, 50, TRUE)
   user.update_inv_glasses()
   user.update_action_buttons()
   user.update_sight()
@@ -89,7 +89,7 @@
       hud_trait = null
       tint = 1
   update_icon()
-  playsound(src, activation_sound, 20, TRUE)
+  playsound(src, activation_sound, 50, TRUE)
   user.update_inv_glasses()
   user.update_action_buttons()
   user.update_sight()
@@ -188,10 +188,10 @@
   category = list("Equipment")
   departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
 
-/datum/design/mesons_hud_aviator
+/datum/design/meson_hud_aviator
   name = "Meson HUD Aviators"
   desc = "Used by engineering and mining staff to see basic structural and terrain layouts through walls, regardless of lighting condition. This HUD has been fitted inside of a pair of sunglasses."
-  id = "mesons_hud_aviator"
+  id = "meson_hud_aviator"
   build_type = PROTOLATHE
   materials = list(/datum/material/iron = 700, /datum/material/glass = 800, /datum/material/silver = 350)
   build_path = /obj/item/clothing/glasses/hud/aviator/meson
