@@ -42,7 +42,7 @@
 		if(sync_target.emagged) // Skip emagged cyborgs, they don't sync up to the AI anyways and emagged borgs are already outed by just looking at a robotics console.
 			continue
 		if(sync_target.connected_ai)
-			return
+			continue
 		sync_target.notify_ai(AI_NOTIFICATION_CYBORG_DISCONNECTED)
 		sync_target.set_connected_ai(ai_spawn)
 		log_combat(ai_spawn, sync_target, "synced cyborg [ADMIN_LOOKUP(sync_target)] to [ADMIN_LOOKUP(ai_spawn)] (AI spawn syncage)")
