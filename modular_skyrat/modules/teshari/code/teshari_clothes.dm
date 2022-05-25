@@ -34,7 +34,7 @@
 	species_clothing_color_coords = list(list(SPACESUIT_COLORPIXEL_X_1, SPACESUIT_COLORPIXEL_Y_1))
 	greyscale_config_worn_teshari_fallback = /datum/greyscale_config/teshari/spacesuit
 
-/obj/item/clothing/suit/armor/mod
+/obj/item/clothing/suit/mod
 	species_clothing_color_coords = list(list(MODSUIT_COLORPIXEL_X_1, MODSUIT_COLORPIXEL_Y_1), list(MODSUIT_COLORPIXEL_X_2, MODSUIT_COLORPIXEL_Y_2), list(MODSUIT_COLORPIXEL_X_3, MODSUIT_COLORPIXEL_Y_3))
 	greyscale_config_worn_teshari_fallback = /datum/greyscale_config/teshari/hardsuit
 
