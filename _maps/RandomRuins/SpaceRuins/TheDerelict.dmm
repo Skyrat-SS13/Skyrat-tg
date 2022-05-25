@@ -300,13 +300,6 @@
 	icon_state = "damaged2"
 	},
 /area/ruin/space/derelict/bridge/ai_upload)
-"bN" = (
-/obj/machinery/door/morgue{
-	name = "Coffin Storage";
-	req_access = list("chapel_office")
-	},
-/turf/open/floor/iron/dark,
-/area/ruin/space/derelict/medical/chapel)
 "bO" = (
 /turf/open/floor/plating/airless,
 /area/ruin/space/derelict/bridge/ai_upload)
@@ -1161,6 +1154,13 @@
 	icon_state = "damaged4"
 	},
 /area/ruin/space/derelict/singularity_engine)
+"fR" = (
+/obj/machinery/door/airlock/maintenance{
+	name = "Tech Storage";
+	req_access = list("tech_storage")
+	},
+/turf/open/floor/iron/airless,
+/area/ruin/space/derelict/bridge/access)
 "fS" = (
 /obj/effect/spawner/structure/window/hollow/reinforced/middle,
 /turf/open/floor/plating/airless,
@@ -1520,6 +1520,13 @@
 	pixel_y = 7
 	},
 /turf/open/floor/iron/chapel,
+/area/ruin/space/derelict/medical/chapel)
+"hG" = (
+/obj/machinery/door/morgue{
+	name = "Coffin Storage";
+	req_access = list("chapel_office")
+	},
+/turf/open/floor/iron/dark,
 /area/ruin/space/derelict/medical/chapel)
 "hH" = (
 /obj/structure/bodycontainer/morgue,
@@ -3644,13 +3651,6 @@
 /obj/effect/spawner/random/structure/girder,
 /turf/open/floor/iron/airless,
 /area/ruin/space/derelict/hallway/primary)
-"Vh" = (
-/obj/machinery/door/airlock/maintenance{
-	name = "tech_storage";
-	req_access = list("tech_storage")
-	},
-/turf/open/floor/iron/airless,
-/area/ruin/space/derelict/bridge/access)
 "Vz" = (
 /turf/open/floor/iron/airless,
 /area/ruin/space/derelict/hallway/primary/port)
@@ -4808,7 +4808,7 @@ rk
 gX
 hk
 hk
-bN
+hG
 hS
 ij
 hS
@@ -9770,7 +9770,7 @@ cs
 fw
 fx
 fx
-Vh
+fR
 gb
 gm
 gz
