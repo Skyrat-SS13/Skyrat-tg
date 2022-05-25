@@ -183,7 +183,7 @@
 	messenger.is_silicon = TRUE
 	store_file(messenger)
 
-/obj/item/computer_hardware/hard_drive/small/integrated/borg/install_default_programs() // SKYRAT EDIT ADDITION - Reverts TG Change breaking PDA's
+/obj/item/computer_hardware/hard_drive/small/integrated/borg/install_default_programs() // SKYRAT EDIT ADDITION - cyborg PDA messenger
 	store_file(new /datum/computer_file/program/computerconfig(src)) // Computer configuration utility, allows hardware control and displays more info than status bar
 	store_file(new /datum/computer_file/program/filemanager(src)) // File manager, allows text editor functions and basic file manipulation.
 	store_file(new /datum/computer_file/program/robotact(src))
