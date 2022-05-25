@@ -129,6 +129,9 @@ GLOBAL_LIST_INIT(loadout_glasses, generate_loadout_items(/datum/loadout_item/gla
 	name = "Fake Aviators"
 	item_path = /obj/item/clothing/glasses/hud/aviator/fake
 
+/datum/loadout_item/glasses/retinal_projector
+	name = "Civilian Retinal Projector"
+	item_path = /obj/item/clothing/glasses/hud/projector
 
 /*
 *	JOB-LOCKED

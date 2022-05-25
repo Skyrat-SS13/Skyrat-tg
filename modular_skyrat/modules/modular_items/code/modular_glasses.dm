@@ -150,6 +150,10 @@
 /obj/item/clothing/glasses/hud/projector
   worn_icon = 'modular_skyrat/modules/modular_items/icons/modular_glasses_mob.dmi'
   icon = 'modular_skyrat/modules/modular_items/icons/modular_glasses.dmi'
+  name = "retinal projector"
+  desc = "A headset equipped with a scanning lens and mounted retinal projector. It doesn't provide any eye protection, but it's less obtrusive than goggles."
+  icon_state = "projector"
+  flags_cover = null // It doesn't actually cover up any parts
   var/toggleable = TRUE
   var/activation_sound = 'sound/effects/pop.ogg'
   var/off_state = "projector-off"
