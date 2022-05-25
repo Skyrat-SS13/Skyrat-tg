@@ -1238,6 +1238,17 @@
 	},
 /turf/open/floor/iron,
 /area/station/security/checkpoint/supply)
+"apc" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/poddoor/preopen{
+	id = "aiuploadwindow";
+	name = "ai_upload Lockdown Door"
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/plating,
+/area/station/ai_monitored/turret_protected/ai_upload)
 "api" = (
 /obj/effect/turf_decal/trimline/blue/filled/corner,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
@@ -1367,26 +1378,6 @@
 /obj/effect/turf_decal/tile/purple,
 /turf/open/floor/iron/white,
 /area/station/science/research)
-"aqJ" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/door/airlock/maintenance_hatch{
-	name = "Maintenance Hatch"
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/cable,
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/effect/mapping_helpers/airlock/access/all/engineering/maintenance,
-/turf/open/floor/iron,
-/area/station/maintenance/starboard/aft)
 "aqT" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/status_display/evac/directional/west,
@@ -8293,15 +8284,6 @@
 /obj/effect/turf_decal/bot,
 /turf/open/floor/iron,
 /area/station/maintenance/department/electrical)
-"chi" = (
-/obj/effect/spawner/structure/window/reinforced,
-/obj/machinery/door/poddoor/preopen{
-	id = "aiuploadwindow";
-	name = "ai_upload Lockdown Door"
-	},
-/obj/structure/cable,
-/turf/open/floor/plating,
-/area/station/ai_monitored/turret_protected/ai_upload)
 "chn" = (
 /obj/machinery/atmospherics/pipe/smart/simple/purple/visible,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
@@ -12068,6 +12050,16 @@
 	icon_state = "wood-broken"
 	},
 /area/station/service/abandoned_gambling_den)
+"dms" = (
+/obj/machinery/turretid{
+	control_area = "/area/station/ai_monitored/turret_protected/ai_upload";
+	icon_state = "control_stun";
+	name = "ai_upload turret control";
+	pixel_y = -32
+	},
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/turf/open/floor/iron/dark,
+/area/station/ai_monitored/turret_protected/aisat_interior)
 "dmx" = (
 /obj/machinery/door/airlock/research/glass{
 	name = "Xenobiology Kill Room"
@@ -39114,16 +39106,6 @@
 	},
 /turf/open/floor/iron,
 /area/station/cargo/miningoffice)
-"kKz" = (
-/obj/machinery/turretid{
-	control_area = "/area/station/ai_monitored/turret_protected/ai_upload";
-	icon_state = "control_stun";
-	name = "ai_upload turret control";
-	pixel_y = -32
-	},
-/obj/effect/turf_decal/tile/neutral/fourcorners,
-/turf/open/floor/iron/dark,
-/area/station/ai_monitored/turret_protected/aisat_interior)
 "kKJ" = (
 /obj/structure/table/reinforced,
 /turf/open/floor/iron,
@@ -43564,19 +43546,6 @@
 	},
 /turf/open/floor/iron,
 /area/station/cargo/storage)
-"lTo" = (
-/obj/docking_port/stationary{
-	dheight = 4;
-	dir = 4;
-	dwidth = 4;
-	height = 9;
-	id = "aux_base_zone";
-	name = "aux_base zone";
-	roundstart_template = /datum/map_template/shuttle/aux_base/default;
-	width = 9
-	},
-/turf/open/floor/plating,
-/area/station/construction/mining/aux_base)
 "lTp" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable,
@@ -54943,6 +54912,29 @@
 /obj/item/radio/intercom/directional/east,
 /turf/open/floor/iron/dark,
 /area/station/engineering/main)
+"oVq" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/door/airlock/maintenance_hatch{
+	name = "Maintenance Hatch"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/mapping_helpers/airlock/access/all/engineering/maintenance,
+/obj/effect/mapping_helpers/airlock/unres{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/station/maintenance/starboard/aft)
 "oVy" = (
 /obj/machinery/door/airlock/public/glass{
 	name = "Holodeck Access"
@@ -68673,17 +68665,6 @@
 	},
 /turf/open/floor/iron,
 /area/station/hallway/primary/central/fore)
-"sGj" = (
-/obj/effect/spawner/structure/window/reinforced,
-/obj/machinery/door/poddoor/preopen{
-	id = "aiuploadwindow";
-	name = "ai_upload Lockdown Door"
-	},
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/plating,
-/area/station/ai_monitored/turret_protected/ai_upload)
 "sGk" = (
 /obj/effect/turf_decal/tile/yellow/half/contrasted,
 /turf/open/floor/iron,
@@ -77366,6 +77347,15 @@
 	},
 /turf/open/floor/iron,
 /area/station/maintenance/port/fore)
+"uRI" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/poddoor/preopen{
+	id = "aiuploadwindow";
+	name = "ai_upload Lockdown Door"
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/station/ai_monitored/turret_protected/ai_upload)
 "uRO" = (
 /obj/structure/rack,
 /obj/machinery/light/small/directional/west,
@@ -77966,6 +77956,19 @@
 /obj/machinery/status_display/evac/directional/west,
 /turf/open/floor/iron/white,
 /area/station/medical/medbay/lobby)
+"uYX" = (
+/obj/docking_port/stationary{
+	dheight = 4;
+	dir = 4;
+	dwidth = 4;
+	height = 9;
+	id = "aux_base_zone";
+	name = "aux_base zone";
+	roundstart_template = /datum/map_template/shuttle/aux_base/default;
+	width = 9
+	},
+/turf/open/floor/plating,
+/area/station/construction/mining/aux_base)
 "uZp" = (
 /obj/machinery/door/window/brigdoor{
 	dir = 1;
@@ -97354,8 +97357,8 @@ cad
 bPC
 cdt
 cdt
-chi
-chi
+uRI
+uRI
 cdt
 cdt
 aad
@@ -98644,7 +98647,7 @@ kjZ
 bpT
 kmX
 uoO
-sGj
+apc
 vCl
 ukN
 fRa
@@ -98892,7 +98895,7 @@ bFY
 bYe
 pFl
 bYe
-kKz
+dms
 bPC
 apT
 hmU
@@ -99924,8 +99927,8 @@ tIb
 bPC
 cdt
 cdt
-chi
-chi
+uRI
+uRI
 cdt
 cdt
 aad
@@ -134026,7 +134029,7 @@ aeF
 aeF
 aeF
 aeF
-lTo
+uYX
 aeF
 aeF
 aeF
@@ -143386,7 +143389,7 @@ yaI
 yaI
 nXH
 nXH
-aqJ
+oVq
 nXH
 nXH
 aad
