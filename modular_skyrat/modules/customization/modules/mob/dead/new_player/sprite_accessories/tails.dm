@@ -10,6 +10,8 @@
 	genetic = TRUE
 	/// A generalisation of the tail-type, e.g. lizard or feline, for MODsuit or other sprites
 	var/general_type
+	/// Can we use this tail for the fluffy tail turf emote?
+	var/fluffy = FALSE
 
 /datum/sprite_accessory/tails/get_special_render_state(mob/living/carbon/human/wearer)
 	// MODsuit tail spriting
@@ -140,6 +142,7 @@
 	name = "Bat (Long)"
 	icon_state = "batl"
 	general_type = "feline"
+	fluffy = TRUE
 
 /datum/sprite_accessory/tails/mammal/wagging/bat_short
 	name = "Bat (Short)"
@@ -195,6 +198,7 @@
 	name = "Fennec"
 	icon_state = "fennec"
 	general_type = "vulpine"
+	fluffy = TRUE
 
 /datum/sprite_accessory/tails/mammal/wagging/fish
 	name = "Fish"
@@ -205,6 +209,7 @@
 	name = "Fox"
 	icon_state = "fox"
 	general_type = "vulpine"
+	fluffy = TRUE
 
 /datum/sprite_accessory/tails/mammal/wagging/vulpkanin/fox/alt_1
 	name = "Fox (Alt 1)"
@@ -234,6 +239,7 @@
 	name = "Husky"
 	icon_state = "husky"
 	general_type = "shepherdlike"
+	fluffy = TRUE
 
 /datum/sprite_accessory/tails/mammal/wagging/insect
 	name = "Insect"
@@ -252,6 +258,7 @@
 	name = "Kitsune"
 	icon_state = "kitsune"
 	general_type = "vulpine" // Vulpine until I can be bothered to make kitsune modsuit tailsprite!
+	fluffy = TRUE
 
 /datum/sprite_accessory/tails/mammal/wagging/lunasune
 	name = "Kitsune (Lunasune)"
@@ -278,6 +285,7 @@
 	name = "Leopard"
 	icon_state = "leopard"
 	general_type = "feline"
+	fluffy = TRUE
 
 /datum/sprite_accessory/tails/mammal/wagging/murid
 	name = "Murid"
@@ -313,6 +321,7 @@
 	name = "Red Panda"
 	icon_state = "wah"
 	extra = TRUE
+	fluffy = TRUE
 
 /datum/sprite_accessory/tails/mammal/wagging/pede
 	name = "Scolipede"
@@ -326,6 +335,7 @@
 	name = "Sergal"
 	icon_state = "sergal"
 	general_type = "shepherdlike"
+	fluffy = TRUE
 
 /datum/sprite_accessory/tails/mammal/servelyn
 	name = "Servelyn"
@@ -364,6 +374,7 @@
 	name = "Skunk"
 	icon_state = "skunk"
 	general_type = "vulpine"
+	fluffy = TRUE
 
 /datum/sprite_accessory/tails/mammal/wagging/snake
 	name = "Snake"
@@ -386,10 +397,12 @@
 	name = "Squirrel"
 	icon_state = "squirrel"
 	color_src = USE_ONE_COLOR
+	fluffy = TRUE
 
 /datum/sprite_accessory/tails/mammal/wagging/stripe
 	name = "Stripe"
 	icon_state = "stripe"
+	fluffy = TRUE
 
 /datum/sprite_accessory/tails/mammal/wagging/straight
 	name = "Straight Tail"
@@ -438,6 +451,7 @@
 	icon_state = "wolf"
 	color_src = USE_ONE_COLOR
 	general_type = "shepherdlike"
+	fluffy = TRUE
 
 /datum/sprite_accessory/tails/mammal/wagging/zorgoia
 	name = "Zorgoia tail"
