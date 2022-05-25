@@ -1746,12 +1746,21 @@
 /area/station/medical/patients_rooms)
 "ant" = (
 /obj/machinery/door/airlock/maintenance_hatch{
-	name = "Maintenance Hatch";
 	req_access = list("maint_tunnels")
 	},
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/station/maintenance/department/eva)
+"anx" = (
+/obj/machinery/door/airlock/external{
+	name = "External Airlock";
+	space_dir = 8
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/station/maintenance/port/upper)
 "anz" = (
 /obj/structure/table/wood,
 /obj/item/clipboard,
@@ -2700,7 +2709,6 @@
 "axc" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/door/airlock/maintenance_hatch{
-	name = "Maintenance Hatch";
 	req_access = list("maint_tunnels")
 	},
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
@@ -3987,7 +3995,7 @@
 	pixel_x = -32
 	},
 /obj/machinery/door/airlock/public/glass{
-	name = "Central upper hallway"
+	name = "Central Upper Hallway"
 	},
 /turf/open/floor/iron,
 /area/station/hallway/primary/upper)
@@ -4876,7 +4884,7 @@
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
 /obj/machinery/door/airlock/public/glass{
-	name = "Medbay hallway";
+	name = "Medbay Hallway";
 	req_access = list("medical")
 	},
 /obj/effect/mapping_helpers/airlock/unres,
@@ -5646,7 +5654,7 @@
 	dir = 1
 	},
 /obj/machinery/door/airlock/medical{
-	name = "Ward controll room";
+	name = "Ward Controll Room";
 	req_access = list("psychology")
 	},
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
@@ -6224,7 +6232,7 @@
 /obj/machinery/firealarm/directional/north,
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/public/glass{
-	name = "Central upper hallway"
+	name = "Central Upper Hallway"
 	},
 /turf/open/floor/iron,
 /area/station/commons/dorms)
@@ -6737,7 +6745,7 @@
 /obj/machinery/firealarm/directional/east,
 /obj/structure/disposalpipe/segment,
 /obj/machinery/door/airlock/public/glass{
-	name = "Medbay hallway";
+	name = "Medbay Hallway";
 	req_access = list("medical")
 	},
 /obj/effect/mapping_helpers/airlock/unres,
@@ -7682,7 +7690,7 @@
 /area/station/ai_monitored/command/storage/eva)
 "bYs" = (
 /obj/machinery/door/airlock/hatch{
-	name = "EVA Shed";
+	name = "Port EVA Shed";
 	req_access = list("command")
 	},
 /obj/structure/cable,
@@ -10530,7 +10538,7 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock/public/glass{
-	name = "Intermediary glass airlock"
+	name = "Captains Office Access"
 	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
@@ -12161,7 +12169,7 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock/public/glass{
-	name = "Central upper hallway"
+	name = "Central Upper Hallway"
 	},
 /obj/structure/sign/nanotrasen{
 	pixel_x = 32
@@ -12738,7 +12746,7 @@
 	dir = 1
 	},
 /obj/machinery/door/airlock/maintenance{
-	name = "Abandoned clown Chamber";
+	name = "Abandoned Clown Theater";
 	req_access = list("maint_tunnels")
 	},
 /obj/structure/cable,
@@ -13515,7 +13523,6 @@
 /area/station/maintenance/abandon_exam/cat)
 "edd" = (
 /obj/machinery/door/airlock/maintenance_hatch{
-	name = "Maintenance Hatch";
 	req_access = list("maint_tunnels")
 	},
 /obj/structure/cable,
@@ -13542,7 +13549,7 @@
 "edt" = (
 /obj/machinery/door/airlock{
 	id_tag = "Toilet2";
-	name = "Toilet Unit 2"
+	name = "Stall 2"
 	},
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
 	dir = 4
@@ -15003,7 +15010,9 @@
 /turf/open/floor/engine,
 /area/station/science/explab)
 "eFw" = (
-/obj/machinery/door/airlock/external/glass,
+/obj/machinery/door/airlock/external/glass{
+	name = "External Airlock"
+	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
 	cycle_id = "maintZ3-1"
 	},
@@ -17104,7 +17113,7 @@
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
 /obj/structure/disposalpipe/segment,
 /obj/machinery/door/airlock/public/glass{
-	name = "Command hallway"
+	name = "Command Hallway"
 	},
 /turf/open/floor/iron,
 /area/station/hallway/secondary/command)
@@ -19493,7 +19502,7 @@
 	},
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/public/glass{
-	name = "Central upper hallway"
+	name = "Central Upper Hallway"
 	},
 /turf/open/floor/iron,
 /area/station/hallway/primary/upper)
@@ -21809,7 +21818,9 @@
 	},
 /area/station/science/xenobiology)
 "hcC" = (
-/obj/machinery/door/airlock/freezer,
+/obj/machinery/door/airlock/freezer{
+	name = "Freezer"
+	},
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
 /obj/structure/cable,
@@ -23390,7 +23401,7 @@
 /area/station/engineering/transit_tube)
 "hFk" = (
 /obj/machinery/door/airlock/maintenance{
-	name = "Overseer office";
+	name = "Overseer Office";
 	req_access = list("maint_tunnels")
 	},
 /obj/structure/cable,
@@ -24003,7 +24014,7 @@
 	},
 /obj/machinery/firealarm/directional/north,
 /obj/machinery/door/airlock/public/glass{
-	name = "Dormitory hallway"
+	name = "Dormitory Hallway"
 	},
 /turf/open/floor/iron,
 /area/station/commons/dorms)
@@ -24713,7 +24724,7 @@
 /obj/machinery/firealarm/directional/west,
 /obj/structure/disposalpipe/segment,
 /obj/machinery/door/airlock/public/glass{
-	name = "Central upper hallway"
+	name = "Central Upper Hallway"
 	},
 /turf/open/floor/iron,
 /area/station/hallway/primary/upper)
@@ -24838,7 +24849,7 @@
 "iij" = (
 /obj/machinery/door/airlock{
 	id_tag = "Toilet1";
-	name = "Toilet Unit 1"
+	name = "Stall 1"
 	},
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
 	dir = 4
@@ -27368,7 +27379,6 @@
 /area/station/maintenance/department/science/lower)
 "iYk" = (
 /obj/machinery/door/airlock/maintenance_hatch{
-	name = "Maintenance Hatch";
 	req_access = list("maint_tunnels")
 	},
 /turf/open/floor/plating,
@@ -28112,7 +28122,6 @@
 /area/station/medical/virology)
 "jkv" = (
 /obj/machinery/door/airlock/maintenance_hatch{
-	name = "Maintenance Hatch";
 	req_access = list("maint_tunnels")
 	},
 /obj/structure/cable,
@@ -29875,7 +29884,6 @@
 	name = "Council of Practical Gags"
 	},
 /obj/structure/cable,
-/obj/effect/mapping_helpers/airlock/access/all/service/theatre,
 /turf/open/floor/noslip,
 /area/station/maintenance/gag_room)
 "jRr" = (
@@ -29945,6 +29953,18 @@
 /obj/item/kirbyplants/random,
 /turf/open/floor/carpet,
 /area/station/service/theater)
+"jSs" = (
+/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
+	cycle_id = "maintZ3-1"
+	},
+/obj/effect/mapping_helpers/airlock/unres{
+	dir = 1
+	},
+/obj/machinery/door/airlock/external/glass{
+	name = "External Airlock"
+	},
+/turf/open/floor/plating,
+/area/station/maintenance/port/upper)
 "jSG" = (
 /obj/structure/lattice/catwalk,
 /obj/machinery/space_heater,
@@ -30125,7 +30145,6 @@
 /obj/effect/mapping_helpers/airlock/unres{
 	dir = 8
 	},
-/obj/effect/mapping_helpers/airlock/access/all/engineering/external,
 /turf/open/floor/plating,
 /area/station/maintenance/port/upper)
 "jXD" = (
@@ -31558,7 +31577,7 @@
 	dir = 10
 	},
 /obj/machinery/door/airlock/public/glass{
-	name = "Central upper hallway"
+	name = "Central Upper Hallway"
 	},
 /turf/open/floor/iron,
 /area/station/hallway/primary/upper)
@@ -31708,7 +31727,7 @@
 	dir = 6
 	},
 /obj/machinery/door/airlock/public/glass{
-	name = "Central upper hallway"
+	name = "Central Upper Hallway"
 	},
 /turf/open/floor/iron,
 /area/station/hallway/primary/upper)
@@ -32930,7 +32949,7 @@
 /area/station/maintenance/fore/upper)
 "kWM" = (
 /obj/machinery/door/airlock/public/glass{
-	name = "No O2 stop shop"
+	name = "N-O2 Stop Shop"
 	},
 /obj/effect/turf_decal/siding/wood{
 	dir = 1
@@ -33774,7 +33793,8 @@
 	},
 /obj/structure/cable,
 /obj/machinery/door/airlock/hop{
-	name = "Head Of Personel's Office";
+	id_tag = "HoPdoor";
+	name = "Head of Personel's Quarters";
 	req_access = list("hop")
 	},
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
@@ -34012,7 +34032,8 @@
 /area/station/science/cytology)
 "lpY" = (
 /obj/machinery/door/airlock/hop{
-	name = "Head Of Personel's Quarters";
+	id_tag = "HoPdoor";
+	name = "Head of Personel's Quarters";
 	req_access = list("hop")
 	},
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
@@ -36792,7 +36813,7 @@
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
 /obj/machinery/door/airlock/public/glass{
-	name = "Central upper hallway"
+	name = "Central Upper Hallway"
 	},
 /turf/open/floor/iron,
 /area/station/hallway/primary/upper)
@@ -37914,7 +37935,6 @@
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 8
 	},
-/obj/effect/mapping_helpers/airlock/access/all/engineering/external,
 /turf/open/floor/plating,
 /area/station/maintenance/port/upper)
 "mHi" = (
@@ -38020,7 +38040,6 @@
 "mID" = (
 /obj/structure/cable,
 /obj/machinery/door/airlock/maintenance_hatch{
-	name = "Maintenance Hatch";
 	req_access_txt = "12;73"
 	},
 /turf/open/floor/plating,
@@ -38500,17 +38519,6 @@
 	},
 /turf/open/floor/iron,
 /area/station/maintenance/abandon_holding_cell)
-"mRh" = (
-/obj/machinery/door/airlock/external{
-	name = "External Airlock";
-	space_dir = 8
-	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 4
-	},
-/obj/effect/mapping_helpers/airlock/access/all/engineering/external,
-/turf/open/floor/plating,
-/area/station/maintenance/port/upper)
 "mRw" = (
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
 	dir = 9
@@ -38560,7 +38568,7 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock/public/glass{
-	name = "Central upper hallway"
+	name = "Central Upper Hallway"
 	},
 /turf/open/floor/iron,
 /area/station/hallway/primary/upper)
@@ -39179,7 +39187,7 @@
 	dir = 1
 	},
 /obj/machinery/door/airlock/maintenance{
-	name = "Abandoned clown Chamber";
+	name = "Abandoned Clown Theater";
 	req_access = list("maint_tunnels")
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -40795,7 +40803,7 @@
 /area/station/maintenance/department/science/upper)
 "nEW" = (
 /obj/machinery/door/airlock/maintenance{
-	name = "Abandoned holding cells";
+	name = "Abandoned Holding Cells";
 	req_access = list("maint_tunnels")
 	},
 /obj/structure/cable,
@@ -41307,7 +41315,7 @@
 /obj/effect/turf_decal/tile/neutral,
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/public/glass{
-	name = "Central upper hallway"
+	name = "Central Upper Hallway"
 	},
 /turf/open/floor/iron,
 /area/station/commons/dorms)
@@ -42198,7 +42206,6 @@
 /area/station/maintenance/aft/upper)
 "odQ" = (
 /obj/machinery/door/airlock/maintenance_hatch{
-	name = "Maintenance Hatch";
 	req_access = list("maint_tunnels")
 	},
 /turf/open/floor/plating,
@@ -42425,7 +42432,6 @@
 "oiy" = (
 /obj/structure/cable,
 /obj/machinery/door/airlock/maintenance_hatch{
-	name = "Maintenance Hatch";
 	req_access_txt = "12;73"
 	},
 /turf/open/floor/plating,
@@ -43117,7 +43123,7 @@
 /obj/structure/cable,
 /obj/machinery/door/airlock/hop{
 	id_tag = "HoPdoor";
-	name = "Head Of Personel's Office";
+	name = "Head of Personel's Quarters";
 	req_access = list("hop")
 	},
 /obj/structure/disposalpipe/segment,
@@ -43363,7 +43369,7 @@
 	},
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/public/glass{
-	name = "Central upper hallway"
+	name = "Central Upper Hallway"
 	},
 /turf/open/floor/iron,
 /area/station/hallway/primary/upper)
@@ -43973,7 +43979,7 @@
 /obj/machinery/door/airlock/multi_tile/glass{
 	dir = 4;
 	id_tag = "Capoffice";
-	name = "Captain's office";
+	name = "Captain's Office";
 	req_access = list("captain")
 	},
 /obj/machinery/door/firedoor,
@@ -44724,7 +44730,7 @@
 "oXh" = (
 /obj/machinery/door/airlock{
 	id_tag = "Toilet3";
-	name = "Toilet Unit"
+	name = "Stall 3"
 	},
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
 	dir = 4
@@ -49553,7 +49559,7 @@
 	dir = 5
 	},
 /obj/machinery/door/airlock/public/glass{
-	name = "Central upper hallway"
+	name = "Central Upper Hallway"
 	},
 /turf/open/floor/iron,
 /area/station/hallway/primary/upper)
@@ -50899,7 +50905,7 @@
 	},
 /obj/machinery/door/airlock/hop{
 	id_tag = "HoPdoor";
-	name = "Head Of Personel's Quarters";
+	name = "Head of Personel's Quarters";
 	req_access = list("hop")
 	},
 /turf/open/floor/wood,
@@ -52478,7 +52484,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/firealarm/directional/west,
 /obj/machinery/door/airlock/public/glass{
-	name = "Command hallway"
+	name = "Command Hallway"
 	},
 /turf/open/floor/iron,
 /area/station/hallway/secondary/command)
@@ -53981,7 +53987,7 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock/public/glass{
-	name = "Dormitory hallway"
+	name = "Dormitory Hallway"
 	},
 /turf/open/floor/iron,
 /area/station/commons/dorms)
@@ -54539,7 +54545,7 @@
 /area/station/command/captain_kitchen)
 "stY" = (
 /obj/machinery/door/airlock{
-	name = "Store counter"
+	name = "Store Counter"
 	},
 /turf/open/floor/iron/dark/side{
 	dir = 8
@@ -54934,7 +54940,7 @@
 	},
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/public/glass{
-	name = "Central upper hallway"
+	name = "Central Upper Hallway"
 	},
 /turf/open/floor/iron,
 /area/station/commons/dorms)
@@ -55707,7 +55713,7 @@
 /obj/structure/extinguisher_cabinet/directional/west,
 /obj/structure/disposalpipe/segment,
 /obj/machinery/door/airlock/public/glass{
-	name = "Medbay hallway";
+	name = "Medbay Hallway";
 	req_access = list("medical")
 	},
 /obj/effect/mapping_helpers/airlock/unres,
@@ -56200,7 +56206,8 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock/freezer{
-	req_access = list("kitchen")
+	req_access = list("kitchen");
+	name = "Freezer"
 	},
 /turf/open/floor/iron/cafeteria,
 /area/station/command/captain_kitchen)
@@ -56443,7 +56450,6 @@
 /obj/effect/mapping_helpers/airlock/unres{
 	dir = 4
 	},
-/obj/effect/mapping_helpers/airlock/access/all/engineering/external,
 /turf/open/floor/plating,
 /area/station/maintenance/port/upper)
 "tcO" = (
@@ -58072,7 +58078,6 @@
 /area/station/command/meeting_room/council)
 "tGo" = (
 /obj/machinery/door/airlock/maintenance_hatch{
-	name = "Maintenance Hatch";
 	req_access = list("maint_tunnels")
 	},
 /turf/open/floor/plating,
@@ -58092,7 +58097,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/effect/turf_decal/tile/blue,
 /obj/machinery/door/airlock/public/glass{
-	name = "Central upper hallway"
+	name = "Central Upper Hallway"
 	},
 /turf/open/floor/iron,
 /area/station/hallway/primary/upper)
@@ -58301,7 +58306,6 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock/maintenance_hatch{
-	name = "Maintenance Hatch";
 	req_access_txt = "12;73"
 	},
 /turf/open/floor/plating,
@@ -58646,7 +58650,7 @@
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
 /obj/machinery/door/airlock/public/glass{
-	name = "Central upper hallway"
+	name = "Central Upper Hallway"
 	},
 /turf/open/floor/iron,
 /area/station/hallway/primary/upper)
@@ -58869,7 +58873,7 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock/public/glass{
-	name = "No O2 stop shop"
+	name = "N-O2 Stop Shop"
 	},
 /turf/open/floor/iron/dark/side{
 	dir = 4
@@ -58880,7 +58884,6 @@
 /area/station/maintenance/fore/upper)
 "tXN" = (
 /obj/machinery/door/airlock/maintenance_hatch{
-	name = "Maintenance Hatch";
 	req_access = list("maint_tunnels")
 	},
 /obj/structure/cable,
@@ -59919,7 +59922,7 @@
 	dir = 9
 	},
 /obj/machinery/door/airlock/public/glass{
-	name = "Dormitory hallway"
+	name = "Dormitory Hallway"
 	},
 /turf/open/floor/iron,
 /area/station/commons/dorms)
@@ -62397,7 +62400,8 @@
 "vks" = (
 /obj/effect/turf_decal/stripes/full,
 /obj/machinery/door/airlock/vault{
-	req_access = list("command")
+	req_access = list("command");
+	name = "Bunker Access"
 	},
 /obj/machinery/door/firedoor/heavy,
 /obj/structure/cable,
@@ -63157,7 +63161,7 @@
 "vxm" = (
 /obj/machinery/door/airlock{
 	id_tag = "Toilet4";
-	name = "Toilet Unit"
+	name = "Stall 4"
 	},
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
 	dir = 4
@@ -64367,7 +64371,6 @@
 /area/station/maintenance/port/upper)
 "vRy" = (
 /obj/machinery/door/airlock/maintenance_hatch{
-	name = "Maintenance Hatch";
 	req_access = list("maint_tunnels")
 	},
 /obj/structure/cable,
@@ -64988,7 +64991,6 @@
 /area/station/science/xenobiology)
 "wdm" = (
 /obj/machinery/door/airlock/maintenance_hatch{
-	name = "Maintenance Hatch";
 	req_access = list("maint_tunnels")
 	},
 /obj/structure/cable,
@@ -69988,7 +69990,6 @@
 /area/station/maintenance/port/upper)
 "xMX" = (
 /obj/machinery/door/airlock/maintenance_hatch{
-	name = "Maintenance Hatch";
 	req_access = list("maint_tunnels")
 	},
 /obj/structure/cable,
@@ -71078,7 +71079,7 @@
 "yfO" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/public/glass{
-	name = "Command hallway"
+	name = "Command Hallway"
 	},
 /turf/open/floor/iron,
 /area/station/hallway/secondary/command)
@@ -90760,7 +90761,7 @@ bXw
 bXw
 bXw
 vaX
-mRh
+anx
 vaX
 xBG
 xBG
@@ -97188,7 +97189,7 @@ sIe
 xCR
 eFw
 qIB
-eFw
+jSs
 qIB
 xCR
 xCR
