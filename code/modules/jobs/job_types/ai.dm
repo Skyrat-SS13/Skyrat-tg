@@ -37,7 +37,7 @@
 	ai_spawn.log_current_laws()
 	// SKYRAT EDIT ADDITION START
 	for(var/mob/living/silicon/robot/sync_target in GLOB.silicon_mobs)
-		if(!(sync_target.z in SSmapping.levels_by_trait(ZTRAIT_STATION))) // Skip ghost cafe, interlink, and other cyborgs.
+		if(!(sync_target.z in SSmapping.levels_by_trait(ZTRAIT_STATION)) || (sync_target.z in SSmapping.levels_by_trait(ZTRAIT_ICE_RUINS_UNDERGROUND))) // Skip ghost cafe, interlink, and other cyborgs.
 			continue
 		if(sync_target.emagged) // Skip emagged cyborgs, they don't sync up to the AI anyways and emagged borgs are already outed by just looking at a robotics console.
 			continue
