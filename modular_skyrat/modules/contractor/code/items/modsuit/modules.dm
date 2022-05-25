@@ -1,4 +1,3 @@
-
 /obj/item/mod/module/baton_holster
 	name = "MOD baton holster module"
 	desc = "A module installed into the chest of a MODSuit, this allows you \
@@ -65,3 +64,18 @@
 /// This exists for the adminbus contractor modsuit. Do not use otherwise
 /obj/item/mod/module/springlock/contractor/no_complexity
 	complexity = 0
+
+/obj/item/mod/module/scorpion_hook
+	name = "MOD SCORPION hook module"
+	desc = "A module installed in the wrist of a MODSuit, this highly \
+			illegal module uses a hardlight hook to forcefully pull \
+			a target towards you at high speed, knocking them down and \
+			partially exhausting them."
+	icon_state = "hook"
+	icon = 'modular_skyrat/modules/contractor/icons/modsuit_modules.dmi'
+	incompatible_modules = list(/obj/item/mod/module/scorpion_hook)
+	module_type = MODULE_ACTIVE
+	complexity = 3
+	active_power_cost = DEFAULT_CHARGE_DRAIN * 0.3
+	device = /obj/item/gun/magic/hook/contractor
+	cooldown_time = 0.5 SECONDS
