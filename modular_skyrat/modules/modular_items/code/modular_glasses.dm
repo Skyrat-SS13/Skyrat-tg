@@ -197,7 +197,7 @@
   name = "retinal projector meson HUD"
   desc = "A headset equipped with a scanning lens and mounted retinal projector. It doesn't provide any eye protection, but it's less obtrusive than goggles."
   icon_state = "projector"
-  lighting_alpha = NONE
+  lighting_alpha = 300
   vision_flags = SEE_TURFS 
   darkness_view = 2
 
