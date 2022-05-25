@@ -51,11 +51,11 @@
       vision_flags = initial(vision_flags)
       hud_type = initial(hud_type)
       hud_trait = initial(hud_trait)
-  update_icon()
-  playsound(src, activation_sound, 50, TRUE)
-  user.update_inv_glasses()
-  user.update_action_buttons()
-  user.update_sight()
+    update_icon()
+    playsound(src, activation_sound, 50, TRUE)
+    user.update_inv_glasses()
+    user.update_action_buttons()
+    user.update_sight()
   ..()
 
 // Security Aviators
@@ -88,11 +88,12 @@
       hud_type = null
       hud_trait = null
       tint = 1
-  update_icon()
-  playsound(src, activation_sound, 50, TRUE)
-  user.update_inv_glasses()
-  user.update_action_buttons()
-  user.update_sight()
+    update_icon()
+    playsound(src, activation_sound, 50, TRUE)
+    user.update_inv_glasses()
+    user.update_action_buttons()
+    user.update_sight()
+  ..()
 
 // Medical Aviators
 /obj/item/clothing/glasses/hud/aviator/health
@@ -153,7 +154,7 @@
 /obj/item/clothing/glasses/hud/projector
   worn_icon = 'modular_skyrat/modules/modular_items/icons/modular_glasses_mob.dmi'
   icon = 'modular_skyrat/modules/modular_items/icons/modular_glasses.dmi'
-  var/toggleable = FALSE
+  var/toggleable = TRUE
   var/activation_sound = 'sound/effects/pop.ogg'
   var/off_state = "projector-off"
   var/on = TRUE
@@ -186,20 +187,41 @@
       vision_flags = initial(vision_flags)
       hud_type = initial(hud_type)
       hud_trait = initial(hud_trait)
-  update_icon()
-  playsound(src, activation_sound, 50, TRUE)
-  user.update_inv_glasses()
-  user.update_action_buttons()
-  user.update_sight()
+    update_icon()
+    playsound(src, activation_sound, 50, TRUE)
+    user.update_inv_glasses()
+    user.update_action_buttons()
+    user.update_sight()
   ..()
 
 /obj/item/clothing/glasses/hud/projector/meson
   name = "retinal projector meson HUD"
   desc = "A headset equipped with a scanning lens and mounted retinal projector. It doesn't provide any eye protection, but it's less obtrusive than goggles."
-  icon_state = "projector"
+  icon_state = "projector_meson"
   lighting_alpha = 300
   vision_flags = SEE_TURFS 
   darkness_view = 2
+
+/obj/item/clothing/glasses/hud/projector/health
+  name = "retinal projector health HUD"
+  desc = "A headset equipped with a scanning lens and mounted retinal projector. It doesn't provide any eye protection, but it's less obtrusive than a visor."
+  icon_state = "projector_health"
+  hud_type = DATA_HUD_MEDICAL_ADVANCED
+  hud_trait = TRAIT_MEDICAL_HUD
+
+/obj/item/clothing/glasses/hud/projector/security
+  name = "retinal projector security HUD"
+  desc = "A headset equipped with a scanning lens and mounted retinal projector. It doesn't provide any eye protection, but it's less obtrusive than a visor."
+  icon_state = "projector_sec"
+  hud_type = DATA_HUD_SECURITY_ADVANCED
+  hud_trait = TRAIT_SECURITY_HUD
+
+/obj/item/clothing/glasses/hud/projector/diagnostic
+  name = "retinal projector diagnostic HUD"
+  desc = "A headset equipped with a scanning lens and mounted retinal projector. It doesn't provide any eye protection, but it's less obtrusive than a visor."
+  icon_state = "projector_diagnostic"
+  hud_type = DATA_HUD_DIAGNOSTIC_BASIC
+  hud_trait = TRAIT_DIAGNOSTIC_HUD
 
 // Designs
 /datum/design/health_hud_aviator
