@@ -171,6 +171,11 @@
   vision_correction = TRUE
 
 // Retinal projector
+
+#define MODE_OFF "off"
+#define MODE_FLASHING "on1"
+#define MODE_CONTINUOUS "on2"
+
 /obj/item/clothing/glasses/hud/projector
   worn_icon = 'modular_skyrat/modules/modular_items/icons/modular_glasses_mob.dmi'
   icon = 'modular_skyrat/modules/modular_items/icons/modular_glasses.dmi'
@@ -181,30 +186,16 @@
   var/toggleable = TRUE
   var/activation_sound = 'sound/effects/pop.ogg'
   var/off_state = "projector-off"
-  var/on = TRUE
+  var/list/modes = list(MODE_OFF = MODE_FLASHING, MODE_FLASHING = MODE_CONTINUOUS, MODE_CONTINUOUS = MODE_OFF)
+  var/mode = MODE_FLASHING
 
-/obj/item/clothing/glasses/hud/projector/update_icon()
-  if(on)
-    icon_state = initial(icon_state)
-  else
-    icon_state = off_state
-
-/obj/item/clothing/glasses/hud/projector/attack_self(mob/living/user)
-  if(toggleable)
-    if(on)
-      to_chat(usr, span_notice("You deactivate the optical meson matrix on the [src]."))
-      on = FALSE
-      icon_state = off_state
-      user.update_inv_glasses()
-      flash_protect = FLASH_PROTECTION_NONE
-      vision_flags = 0
-      hud_type = null
-      hud_trait = null
-      tint = 0
-      clothing_traits = null
-    else
-      to_chat(usr, span_notice("You activate the optical meson matrix on the [src]."))
-      on = TRUE
+/obj/item/clothing/glasses/hud/projector/attack_self(mob/user, voluntary)
+  mode = modes[mode]
+  switch(mode)
+    if(MODE_FLASHING)
+      to_chat(usr, span_notice("You activate the [src], a projector folds out as it starts flashing."))
+      icon = initial(icon)
+      worn_icon = initial(worn_icon)
       icon_state = initial(icon_state)
       user.update_inv_glasses()
       flash_protect = initial(flash_protect)
@@ -213,11 +204,29 @@
       hud_type = initial(hud_type)
       hud_trait = initial(hud_trait)
       clothing_traits = initial(clothing_traits)
-    update_icon()
-    playsound(src, activation_sound, 50, TRUE)
-    user.update_inv_glasses()
-    user.update_action_buttons()
-    user.update_sight()
+    if(MODE_CONTINUOUS) // freezes animation and only takes 1st frame, why would you want a laser shining in your eye all the time?
+      to_chat(usr, span_notice("You switch modes on the [src], it's is now projecting continously"))
+      var/icon/I = new(icon, frame = 1)
+      icon = I
+      var/icon/W = new(worn_icon, frame = 1)
+      worn_icon = W
+    if(MODE_OFF)
+      to_chat(usr, span_notice("As you press a button on the side. The [src] deactivates, the projector folds inward."))
+      icon_state = off_state
+      user.update_inv_glasses()
+      flash_protect = FLASH_PROTECTION_NONE
+      vision_flags = 0
+      hud_type = null
+      hud_trait = null
+      tint = 0
+      clothing_traits = null
+  playsound(src, activation_sound, 50, TRUE)
+  user.update_inv_glasses()
+  user.update_action_buttons()
+  if(ishuman(user))
+    var/mob/living/carbon/human/H = user
+    if(H.glasses == src)
+      H.update_sight()
   ..()
 
 /obj/item/clothing/glasses/hud/projector/meson
