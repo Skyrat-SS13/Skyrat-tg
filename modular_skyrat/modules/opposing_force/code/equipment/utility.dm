@@ -171,7 +171,7 @@
 			Caution: Product may rehydrate when exposed to water."
 
 /datum/opposing_force_equipment/gear/sentry_gun
-	name = "Toolbox Sentry gun"
+	name = "Toolbox Sentry Gun"
 	item_type = /obj/item/storage/toolbox/emergency/turret
 	description = "A disposable sentry gun deployment system cleverly disguised as a toolbox, apply wrench for functionality."
 
