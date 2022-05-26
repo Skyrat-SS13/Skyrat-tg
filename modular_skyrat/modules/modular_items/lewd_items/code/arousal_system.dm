@@ -21,7 +21,10 @@
 
 #define STRAPON_TRAIT 		"strapon"
 
-///////////-----Decals-----//////////
+/*
+*	DECALS
+*/
+
 /obj/effect/decal/cleanable/cum
 	name = "cum"
 	desc = "Ew... Gross."
@@ -38,7 +41,10 @@
 	random_icon_states = list("femcum_1", "femcum_2", "femcum_3", "femcum_4")
 	beauty = -50
 
-///////////-----Reagents-----///////////
+/*
+*	REAGENTS
+*/
+
 /datum/reagent/consumable/girlcum
 	name = "girlcum"
 	description = "Uhh... Someone had fun."
@@ -103,7 +109,9 @@
 		affected_mob.emote(pick("moan", "twitch_s"))
 	return
 
-///////////-----Initilaze------///////////
+/*
+*	INITIALISE
+*/
 
 /obj/item/organ/genital
 	var/datum/reagents/internal_fluids
@@ -152,7 +160,10 @@
 		apply_status_effect(/datum/status_effect/aroused)
 		apply_status_effect(/datum/status_effect/body_fluid_regen)
 
-///////////-----Verbs------///////////
+/*
+*	VERBS
+*/
+
 /mob/living/carbon/human/verb/arousal_panel()
 	set name = "Climax"
 	set category = "IC"
@@ -173,9 +184,9 @@
 	if(CONFIG_GET(flag/disable_erp_preferences))
 		verbs -= /mob/living/carbon/human/verb/arousal_panel
 
-////////////
-///FLUIDS///
-////////////
+/*
+*	FLUIDS
+*/
 
 /datum/status_effect/body_fluid_regen
 	id = "body fluid regen"
@@ -212,9 +223,10 @@
 			else
 				vagina.internal_fluids.remove_any(0.05)
 
-/////////////
-///AROUSAL///
-/////////////
+/*
+*	AROUSAL
+*/
+
 /mob/living/carbon/human/proc/get_arousal()
 	return arousal
 
@@ -284,7 +296,10 @@
 	affected_mob.adjustPleasure(temp_pleasure)
 	affected_mob.adjustPain(temp_pain)
 
-////Pain////
+/*
+*	PAIN
+*/
+
 /mob/living/carbon/human/proc/get_pain()
 	return pain
 
@@ -311,7 +326,10 @@
 		pain -= abs(change_amount)
 	pain = min(max(pain, 0), 100)
 
-////Pleasure////
+/*
+*	PLEASURE
+*/
+
 /mob/living/carbon/human/proc/get_pleasure()
 	return pleasure
 
@@ -341,9 +359,9 @@
 			var/amount = forced ? damage : damage * hit_percent * burnmod * affected_mob.physiology.burn_mod
 			INVOKE_ASYNC(affected_mob, /mob/living/carbon/human/.proc/adjustPain, amount)
 
-////////////
-///CLIMAX///
-////////////
+/*
+*	CLIMAX
+*/
 
 /datum/mood_event/orgasm
 	description = span_purple("Woah... This pleasant tiredness... I love it.\n")
@@ -554,9 +572,9 @@
 		affected_mob.adjustArousal(temp_arousal)
 		affected_mob.adjustPleasure(temp_pleasure)
 
-////////////////////////
-///SPANKING PROCEDURE///
-////////////////////////
+/*
+*	SPANKING
+*/
 
 //Hips are red after spanking
 /datum/status_effect/spanked
@@ -577,9 +595,9 @@
 	description = span_purple("Ah, yes! More! Punish me!\n")
 	timeout = 5 MINUTES
 
-/////////////////////
-///SUBSPACE EFFECT///
-/////////////////////
+/*
+*	SUBSPACE EFFECT
+*/
 
 /datum/status_effect/subspace
 	id = "subspace"
@@ -620,9 +638,9 @@
 	description = span_purple("I'm tied! Cannot move! These ropes... Ah!~")
 	mood_change = 0 // I don't want to doom the station to sonic-speed perverts, but still want to keep this as mood modifier.
 
-///////////////////////
-///AROUSAL INDICATOR///
-///////////////////////
+/*
+*	AROUSAL INDICATOR
+*/
 
 /obj/item/organ/brain/on_life(delta_time, times_fired) //All your horny is here *points to the head*
 	. = ..()
@@ -721,9 +739,9 @@
 			if(arousal_alert?.pain_level in list("small", "medium", "high", "max"))
 				arousal_alert.cut_overlay(arousal_alert.pain_overlay)
 
-////////////////////////
-///CUM.DM ASSIMILATED///
-////////////////////////
+/*
+*	CUM FACE
+*/
 
 //you got cum on your face bro *licks it off*
 /datum/component/cumfaced

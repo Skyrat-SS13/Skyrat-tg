@@ -32,9 +32,9 @@
 		/obj/item/roller,\
 		)
 
-////////////////////
-/// UNIQUE ITEMS ///
-////////////////////
+/*
+*	UNIQUE ITEMS
+*/
 
 //A box of VeyGun cells, because storage is hell and these take up a LOT more than they're worth.
 /obj/item/storage/box/plastic/medicells

@@ -265,9 +265,9 @@
 	else
 		time_to_choke_left -= delta_time
 
-////////////////////////////////
-//////////---FILTERS---/////////
-////////////////////////////////
+/*
+*	FILTERS
+*/
 
 // Here goes code for lewd gasmask filter
 /obj/item/reagent_containers/glass/lewd_filter

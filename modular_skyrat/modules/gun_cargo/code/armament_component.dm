@@ -48,7 +48,7 @@
 	var/budget_name = "Cargo Budget"
 
 	if(id_card?.registered_account && (console_state == IRN_CONSOLE))
-		if((ACCESS_HEADS in id_card.access) || (ACCESS_QM in id_card.access))
+		if((ACCESS_COMMAND in id_card.access) || (ACCESS_QM in id_card.access))
 			parent_prog.requestonly = FALSE
 			buyer = SSeconomy.get_dep_account(id_card.registered_account?.account_job.paycheck_department)
 			parent_prog.can_approve_requests = TRUE
@@ -71,7 +71,7 @@
 			cant_buy_restricted = FALSE
 
 	else if((console_state == IRN_CONSOLE) && id_card?.registered_account)
-		if((ACCESS_HEADS in id_card.access) || (ACCESS_QM in id_card.access))
+		if((ACCESS_COMMAND in id_card.access) || (ACCESS_QM in id_card.access))
 			if((buyer == SSeconomy.get_dep_account(id_card.registered_account.account_job.paycheck_department)) && !self_paid)
 				cant_buy_restricted = FALSE
 
@@ -220,7 +220,7 @@
 		id_card = the_person.get_idcard(TRUE)
 
 	if(id_card?.registered_account && (console_state == IRN_CONSOLE))
-		if((ACCESS_HEADS in id_card.access) || (ACCESS_QM in id_card.access))
+		if((ACCESS_COMMAND in id_card.access) || (ACCESS_QM in id_card.access))
 			parent_prog.requestonly = FALSE
 			buyer = SSeconomy.get_dep_account(id_card.registered_account.account_job.paycheck_department)
 			parent_prog.can_approve_requests = TRUE
@@ -339,7 +339,7 @@
 		id_card = the_person.get_idcard(TRUE)
 
 	if(id_card?.registered_account && (console_state == IRN_CONSOLE))
-		if((ACCESS_HEADS in id_card.access) || (ACCESS_QM in id_card.access))
+		if((ACCESS_COMMAND in id_card.access) || (ACCESS_QM in id_card.access))
 			parent_prog.requestonly = FALSE
 			buyer = SSeconomy.get_dep_account(id_card.registered_account.account_job.paycheck_department)
 			parent_prog.can_approve_requests = TRUE
@@ -468,7 +468,7 @@
 				var/obj/item/card/id/id_card = user.get_idcard(TRUE)
 
 				if(id_card?.registered_account && (console_state == IRN_CONSOLE))
-					if((ACCESS_HEADS in id_card.access) || (ACCESS_QM in id_card.access))
+					if((ACCESS_COMMAND in id_card.access) || (ACCESS_QM in id_card.access))
 						parent_prog.requestonly = FALSE
 						buyer = SSeconomy.get_dep_account(id_card.registered_account.account_job.paycheck_department)
 						parent_prog.can_approve_requests = TRUE

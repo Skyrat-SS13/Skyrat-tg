@@ -31,7 +31,7 @@
 /datum/id_trim/science_team
 	assignment = "Science Team Scientist"
 	trim_state = "trim_scientist"
-	access = list(ACCESS_RND)
+	access = list(ACCESS_SCIENCE)
 
 /obj/effect/mob_spawn/ghost_role/human/black_mesa/guard
 	name = "Research Facility Security Guard"

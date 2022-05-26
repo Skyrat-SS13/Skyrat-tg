@@ -2,9 +2,11 @@
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/projectiles.dmi'
 	icon_state = "bullet"
 
-////////////6.3mm///////////
-//FLECHETTE | FRAGMENTING | DISSUASIVE//
-//////////////////////////
+/*
+*	6.3mm
+*	FLECHETTE | FRAGMENTING | DISSUASIVE
+*/
+
 /obj/item/ammo_casing/b6mm
 	name = "6.3mm flechette casing"
 	desc = "A spent flechette."
@@ -59,9 +61,11 @@
 	embedding = list(embed_chance=60, fall_chance=3, jostle_chance=4, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.4, pain_mult=5, jostle_pain_mult=6, rip_time=10)
 	weak_against_armour = TRUE
 
-///////////9x19mm/////////////////
-//FMJ | JHP | IHDF | RUBBER//
-///////////////////////////////
+/*
+*	9x19mm
+*	FMJ | JHP | IHDF | RUBBER
+*/
+
 /obj/item/ammo_casing/b9mm
 	name = "9x19mm peacekeeper FMJ casing"
 	desc = "A 9x19mm bullet casing with a low powder load to prevent breaches."
@@ -126,11 +130,13 @@
 	sharpness = NONE
 	embedding = null
 
-//////////10x25mm/////////////////
-//Auto | JHP | IHDF | RUBBER//
-///////////////////////////////
+/*
+*	10x25mm
+*	Auto | JHP | IHDF | RUBBER
+*/
+
 /obj/item/ammo_casing/b10mm
-	name = "10mm Auto casing"
+	name = "10mm auto casing"
 	desc = "A 10mm Auto casing."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
 	icon_state = "sl-casing"
@@ -138,21 +144,21 @@
 	projectile_type = /obj/projectile/bullet/advanced/b10mm
 
 /obj/projectile/bullet/advanced/b10mm
-	name = "10mm Auto bullet"
+	name = "10mm auto bullet"
 	damage = 27
 	speed = 1
 	wound_bonus = 5
 
 /obj/item/ammo_casing/b10mm/hp
-	name = "10mm Auto JHP casing"
-	desc = "A 10mm Auto JHP bullet casing."
+	name = "10mm auto JHP casing"
+	desc = "A 10mm auto JHP bullet casing."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
 	icon_state = "sh-casing"
 	caliber = CALIBER_10MMAUTO
 	projectile_type = /obj/projectile/bullet/advanced/b10mm/hp
 
 /obj/projectile/bullet/advanced/b10mm/hp
-	name = "10mm Auto JHP bullet"
+	name = "10mm auto JHP bullet"
 	icon_state = "bullet_h"
 	damage = 30
 	wound_bonus = 35
@@ -160,7 +166,7 @@
 	weak_against_armour = TRUE
 
 /obj/item/ammo_casing/b10mm/rubber
-	name = "10mm Auto rubber bullet casing"
+	name = "10mm auto rubber bullet casing"
 	desc = "A 10mm rubber bullet casing."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
 	icon_state = "sr-casing"
@@ -182,7 +188,7 @@
 	embedding = null
 
 /obj/item/ammo_casing/b10mm/ihdf
-	name = "10mm Auto IHDF bullet casing"
+	name = "10mm auto IHDF bullet casing"
 	desc = "A 10mm intelligent high-impact dispersal foam bullet casing."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
 	icon_state = "si-casing"
@@ -191,15 +197,17 @@
 	harmful = FALSE
 
 /obj/projectile/bullet/advanced/b10mm/ihdf
-	name = "10mm Auto ihdf bullet"
+	name = "10mm auto ihdf bullet"
 	icon_state = "bullet_i"
 	damage = 30
 	damage_type = STAMINA
 	embedding = list(embed_chance=0, fall_chance=3, jostle_chance=4, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.4, pain_mult=5, jostle_pain_mult=6, rip_time=10)
 
-///////////12.7x30mm/////////
-//FMJ | JHP | BEANBAG//
-////////////////////////
+/*
+*	12.7x30mm
+*	FMJ | JHP | BEANBAG
+*/
+
 /obj/item/ammo_casing/b12mm
 	name = "12.7x30mm FMJ casing"
 	desc = "A 12.7x30mm FMJ casing."
@@ -253,14 +261,15 @@
 	embedding = list(embed_chance=75, fall_chance=3, jostle_chance=4, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.4, pain_mult=5, jostle_pain_mult=6, rip_time=10)
 	weak_against_armour = TRUE
 
-///////////.577S/////////
-//         FMJ         //
-////////////////////////
+/*
+*	.577S
+*	FMJ
+*/
 
 /obj/item/ammo_casing/b577
 	name = ".577 Snider bullet casing"
 	desc = "A .577 Snider bullet casing."
-	caliber = ".577 Snider"
+	caliber = CALIBER_B577
 	projectile_type = /obj/projectile/bullet/advanced/b577
 
 /obj/projectile/bullet/advanced/b577
@@ -309,9 +318,11 @@
 	icon_state = "smartgun_embed"
 	embedding = null
 
-///////4.73x33mm CASELESS//////
-//FMJ | JHP | IHDF | RUBBER//
-///////////////////////////////
+/*
+*	4.73x33mm CASELESS
+*	FMJ | JHP | IHDF | RUBBER
+*/
+
 /obj/item/ammo_casing/caseless/b473
 	name = "4.73x33mm FMJ bullet"
 	desc = "A 4.73x33mm FMJ bullet."
@@ -380,9 +391,9 @@
 	damage_type = STAMINA
 	embedding = list(embed_chance=0, fall_chance=3, jostle_chance=4, ignore_throwspeed_threshold=TRUE, pain_stam_pct=0.4, pain_mult=5, jostle_pain_mult=6, rip_time=10)
 
-////////////////////////////
-///////////14 GAUGE/////////
-////////////////////////////
+/*
+*	14 GAUGE
+*/
 
 /obj/projectile/bullet/s14gauge_slug
 	name = "12g shotgun slug"

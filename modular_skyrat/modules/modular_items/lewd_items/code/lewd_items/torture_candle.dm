@@ -124,9 +124,9 @@
 			return
 		user.visible_message(span_notice("[user] snuffs [src]."))
 
-///////////////////////////////////////////////////
-//here goes things that required for wax dropping//
-///////////////////////////////////////////////////
+/*
+*	WAX DROPPING
+*/
 
 /obj/item/bdsm_candle/attack(mob/living/carbon/human/attacked, mob/living/carbon/human/user)
 	. = ..()

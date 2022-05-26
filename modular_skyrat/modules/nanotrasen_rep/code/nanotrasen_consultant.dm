@@ -118,7 +118,7 @@
 	greyscale_colors = "#017941#0060b8"
 
 /obj/item/storage/box/gunset/nanotrasen_consultant
-	name = "M45A5 Gunset"
+	name = "M45A5 gunset"
 	w_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/gun/ballistic/automatic/pistol/m45a5/nomag

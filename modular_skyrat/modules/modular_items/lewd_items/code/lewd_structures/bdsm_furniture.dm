@@ -57,9 +57,9 @@
 	. = ..()
 	unbuckle_all_mobs(TRUE)
 
-/////////////////////
-//X-Stand code here//
-/////////////////////
+/*
+*	X-STAND
+*/
 
 /obj/structure/chair/x_stand
 	name = "x stand"
@@ -250,9 +250,9 @@
 		current_mob.update_abstract_handcuffed()
 	current_mob = null
 
-///////////////////////////
-//xstand construction kit//
-///////////////////////////
+/*
+*	X-STAND CONSTRUCTION KIT
+*/
 
 /obj/item/x_stand_kit
 	name = "xstand construction kit"
