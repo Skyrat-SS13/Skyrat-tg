@@ -91,7 +91,10 @@
     playsound(src, activation_sound, 50, TRUE)
     user.update_inv_glasses()
     user.update_action_buttons()
-    user.update_sight()
+    if(ishuman(user))
+      var/mob/living/carbon/human/H = user
+      if(H.glasses == src)
+        H.update_sight()
   ..()
 
 // Medical Aviators
@@ -270,7 +273,7 @@
   desc = "A heads-up display that scans the humanoids in view and provides accurate data about their health status. This HUD has been fitted inside of a pair of sunglasses."
   id = "health_hud_aviator"
   build_type = PROTOLATHE
-  materials = list(/datum/material/iron = 700, /datum/material/glass = 800, /datum/material/silver = 350)
+  materials = list(/datum/material/iron = 700, /datum/material/glass = 800, /datum/material/gold = 350)
   build_path = /obj/item/clothing/glasses/hud/aviator/health
   category = list("Equipment")
   departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
@@ -280,7 +283,7 @@
   desc = "A heads-up display that scans the humans in view and provides accurate data about their ID status. This HUD has been fitted inside of a pair of sunglasses."
   id = "security_hud_aviator"
   build_type = PROTOLATHE
-  materials = list(/datum/material/iron = 700, /datum/material/glass = 800, /datum/material/silver = 350)
+  materials = list(/datum/material/iron = 700, /datum/material/glass = 800, /datum/material/gold = 350, /datum/material/silver = 200,)
   build_path = /obj/item/clothing/glasses/hud/aviator/security
   category = list("Equipment")
   departmental_flags = DEPARTMENT_BITFLAG_SECURITY
@@ -300,7 +303,17 @@
   desc = "Used by engineering and mining staff to see basic structural and terrain layouts through walls, regardless of lighting condition. This HUD has been fitted inside of a pair of sunglasses."
   id = "meson_hud_aviator"
   build_type = PROTOLATHE
-  materials = list(/datum/material/iron = 700, /datum/material/glass = 800, /datum/material/silver = 350)
+  materials = list(/datum/material/iron = 700, /datum/material/glass = 800, /datum/material/gold = 350)
   build_path = /obj/item/clothing/glasses/hud/aviator/meson
   category = list("Equipment")
   departmental_flags = DEPARTMENT_BITFLAG_CARGO | DEPARTMENT_BITFLAG_ENGINEERING
+
+/datum/design/science_hud_aviator
+  name = "Science Aviators"
+  desc = "A pair of tacky purple aviator sunglasses that allow the wearer to recognize various chemical compounds with only a glance."
+  id = "science_hud_aviator"
+  build_type = PROTOLATHE
+  materials = list(/datum/material/iron = 700, /datum/material/glass = 800, /datum/material/gold = 350)
+  build_path = /obj/item/clothing/glasses/hud/aviator/science
+  category = list("Equipment")
+  departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
