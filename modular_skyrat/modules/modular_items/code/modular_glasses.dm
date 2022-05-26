@@ -28,35 +28,37 @@
     icon_state = off_state
 
 /obj/item/clothing/glasses/hud/aviator/attack_self(mob/living/user)
-  if(toggleable)
-    if(on)
-      to_chat(usr, span_notice("You deactivate the optical matrix on the [src]."))
-      on = FALSE
-      icon_state = off_state
-      user.update_inv_glasses()
-      flash_protect = FLASH_PROTECTION_NONE
-      vision_flags = 0
-      hud_type = null
-      hud_trait = null
-      tint = 0
-      clothing_traits = null
-    else
-      to_chat(usr, span_notice("You activate the optical matrix on the [src]."))
-      on = TRUE
-      icon_state = initial(icon_state)
-      user.update_inv_glasses()
-      flash_protect = initial(flash_protect)
-      tint = initial(tint)
-      vision_flags = initial(vision_flags)
-      hud_type = initial(hud_type)
-      hud_trait = initial(hud_trait)
-      clothing_traits = initial(clothing_traits)
-    update_icon()
-    playsound(src, activation_sound, 50, TRUE)
+  !toggleable ? return ..() : null
+  if(on)
+    to_chat(usr, span_notice("You deactivate the optical matrix on the [src]."))
+    on = FALSE
+    icon_state = off_state
     user.update_inv_glasses()
-    user.update_action_buttons()
-    user.update_sight()
-  ..()
+    flash_protect = FLASH_PROTECTION_NONE
+    vision_flags = 0
+    hud_type = null
+    hud_trait = null
+    tint = 0
+    clothing_traits = null
+  else
+    to_chat(usr, span_notice("You activate the optical matrix on the [src]."))
+    on = TRUE
+    icon_state = initial(icon_state)
+    user.update_inv_glasses()
+    flash_protect = initial(flash_protect)
+    tint = initial(tint)
+    vision_flags = initial(vision_flags)
+    hud_type = initial(hud_type)
+    hud_trait = initial(hud_trait)
+    clothing_traits = initial(clothing_traits)
+  update_icon()
+  playsound(src, activation_sound, 50, TRUE)
+  user.update_inv_glasses()
+  user.update_action_buttons()
+  if(ishuman(user))
+    var/mob/living/carbon/human/H = user
+    if(H.glasses == src)
+      H.update_sight()
 
 // Security Aviators
 /obj/item/clothing/glasses/hud/aviator/security
@@ -104,7 +106,6 @@
   icon_state = "aviator_med"
   off_state = "aviator"
   toggleable = TRUE
-  vision_correction = FALSE
   flash_protect = FLASH_PROTECTION_NONE
   hud_type = DATA_HUD_MEDICAL_ADVANCED
   hud_trait = TRAIT_MEDICAL_HUD
@@ -117,7 +118,6 @@
   icon_state = "aviator_meson"
   off_state = "aviator"
   toggleable = TRUE
-  vision_correction = FALSE
   flash_protect = FLASH_PROTECTION_NONE
   clothing_traits = list(TRAIT_MADNESS_IMMUNE)
   darkness_view = 2
@@ -132,7 +132,6 @@
   icon_state = "aviator_diagnostic"
   off_state = "aviator"
   toggleable = TRUE
-  vision_correction = FALSE
   flash_protect = FLASH_PROTECTION_NONE
   hud_type = DATA_HUD_DIAGNOSTIC_BASIC
   hud_trait = TRAIT_DIAGNOSTIC_HUD
@@ -145,7 +144,6 @@
   icon_state = "aviator_sci"
   off_state = "aviator"
   toggleable = TRUE
-  vision_correction = FALSE
   flash_protect = FLASH_PROTECTION_NONE
   glass_colour_type = /datum/client_colour/glass_colour/purple
   resistance_flags = ACID_PROOF
@@ -156,18 +154,22 @@
   name = "prescription security HUD aviators"
   desc = "A heads-up display that scans the humanoids in view and provides accurate data about their ID status and security records. This HUD has been fitted inside of a pair of sunglasses with toggleable electrochromatic tinting which. Has lenses that help correct eye sight."
   vision_correction = TRUE
+
 /obj/item/clothing/glasses/hud/aviator/health/prescription
   name = "prescription medical HUD aviators"
   desc = "A heads-up display that scans the humanoids in view and provides accurate data about their health status. This HUD has been fitted inside of a pair of sunglasses which has lenses that help correct eye sight."
   vision_correction = TRUE
+
 /obj/item/clothing/glasses/hud/aviator/meson/prescription
   name = "prescription meson HUD aviators"
   desc = "Used by engineering and mining staff to see basic structural and terrain layouts through walls, regardless of lighting conditions. This HUD has been fitted inside of a pair of sunglasses which has lenses that help correct eye sight."
   vision_correction = TRUE
+
 /obj/item/clothing/glasses/hud/aviator/diagnostic/prescription
   name = "prescription diagnostic HUD aviators"
   desc = "A heads-up display capable of analyzing the integrity and status of robotics and exosuits. This HUD has been fitted inside of a pair of sunglasses which has lenses that help correct eye sight."
   vision_correction = TRUE
+
 /obj/item/clothing/glasses/hud/aviator/science/prescription
   name = "prescription science aviators"
   desc = "A pair of tacky purple aviator sunglasses that allow the wearer to recognize various chemical compounds with only a glance, which has lenses that help correct eye sight."
@@ -180,11 +182,11 @@
 #define MODE_CONTINUOUS "on2"
 
 /obj/item/clothing/glasses/hud/projector
-  worn_icon = 'modular_skyrat/modules/modular_items/icons/modular_glasses_mob.dmi'
-  icon = 'modular_skyrat/modules/modular_items/icons/modular_glasses.dmi'
   name = "retinal projector"
   desc = "A headset equipped with a scanning lens and mounted retinal projector. It doesn't provide any eye protection, but it's less obtrusive than goggles."
   icon_state = "projector"
+  worn_icon = 'modular_skyrat/modules/modular_items/icons/modular_glasses_mob.dmi'
+  icon = 'modular_skyrat/modules/modular_items/icons/modular_glasses.dmi'
   flags_cover = null // It doesn't actually cover up any parts
   var/toggleable = TRUE
   var/activation_sound = 'sound/effects/pop.ogg'
@@ -196,7 +198,7 @@
   mode = modes[mode]
   switch(mode)
     if(MODE_FLASHING)
-      to_chat(usr, span_notice("You activate the [src], a projector folds out as it starts flashing."))
+      to_chat(user, span_notice("You activate the [src], a projector folds out as it starts flashing."))
       icon = initial(icon)
       worn_icon = initial(worn_icon)
       icon_state = initial(icon_state)
@@ -208,13 +210,13 @@
       hud_trait = initial(hud_trait)
       clothing_traits = initial(clothing_traits)
     if(MODE_CONTINUOUS) // freezes animation and only takes 1st frame, why would you want a laser shining in your eye all the time?
-      to_chat(usr, span_notice("You switch modes on the [src], it's is now projecting continously"))
+      to_chat(user, span_notice("You switch modes on the [src], it's is now projecting continously"))
       var/icon/I = new(icon, frame = 1)
       icon = I
       var/icon/W = new(worn_icon, frame = 1)
       worn_icon = W
     if(MODE_OFF)
-      to_chat(usr, span_notice("As you press a button on the side. The [src] deactivates, the projector folds inward."))
+      to_chat(user, span_notice("As you press a button on the side. The [src] deactivates, the projector folds inward."))
       icon_state = off_state
       user.update_inv_glasses()
       flash_protect = FLASH_PROTECTION_NONE
