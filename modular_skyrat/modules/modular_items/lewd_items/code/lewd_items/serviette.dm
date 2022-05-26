@@ -1,3 +1,4 @@
+/*
 /obj/item/serviette
 	name = "serviette"
 	desc = "To clean all the mess."
@@ -98,3 +99,4 @@
 		update_icon_state()
 	else
 		to_chat(user, span_notice("There are no serviettes left!"))
+*/
