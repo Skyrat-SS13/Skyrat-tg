@@ -164,6 +164,17 @@
 			traditional bags and boxes. Caution: Will explode if the powernet contains sufficient amounts of energy."
 	admin_note = "Drains power from the station, explodes if overloaded."
 
+/datum/opposing_force_equipment/gear/gorilla_cubes
+	name = "Box of Gorilla Cubes"
+	item_type = /obj/item/storage/box/gorillacubes
+	description = "A box with three Waffle Co. brand gorilla cubes. Eat big to get big. \
+			Caution: Product may rehydrate when exposed to water."
+
+/datum/opposing_force_equipment/gear/sentry_gun
+	name = "Toolbox Sentry gun"
+	item_type = /obj/item/storage/toolbox/emergency/turret
+	description = "A disposable sentry gun deployment system cleverly disguised as a toolbox, apply wrench for functionality."
+
 /datum/opposing_force_equipment/gear/cloak_mod
 	item_type = /obj/item/mod/module/stealth/ninja
 	description = "An upgraded MODsuit cloaking module stolen from the Spider Clan's finest. Consumes less power than the standard, but is obviously illegal."
