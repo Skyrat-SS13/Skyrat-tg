@@ -57,13 +57,15 @@
 
 		//body parts
 		if(istype(user.getorganslot(ORGAN_SLOT_TAIL), /obj/item/organ/tail))
-			var/list/fluffy_tails = list("Tamamo Kitsune Tails", "Sergal", "Fox", "Fox (Alt 2)", "Fox (Alt 3)", "Fennec", "Red Panda", "Husky", "Skunk", "Lunasune", "Squirrel", "Wolf", "Stripe", "Kitsune", "Leopard", "Bat (Long)", "Triple Kitsune,", "Septuple Kitsune", "Sabresune")
-			if(human_user.dna.species.mutant_bodyparts["tail"][MUTANT_INDEX_NAME] in fluffy_tails)
+			var/name = human_user.dna.species.mutant_bodyparts["tail"][MUTANT_INDEX_NAME]
+			var/datum/sprite_accessory/tails/tail = GLOB.sprite_accessories["tail"][name]
+			if(tail.fluffy)
 				user.allowed_turfs += "tails"
 
 		if(human_user.dna.species.mutant_bodyparts["taur"])
-			var/list/snake_taurs = list("Naga", "Cybernetic Naga")
-			if(human_user.dna.species.mutant_bodyparts["taur"][MUTANT_INDEX_NAME] in snake_taurs)
+			var/name = human_user.dna.species.mutant_bodyparts["taur"][MUTANT_INDEX_NAME]
+			var/datum/sprite_accessory/taur/taur = GLOB.sprite_accessories["taur"][name]
+			if(taur.taur_mode & STYLE_TAUR_SNAKE)
 				user.allowed_turfs -= list("pawprint", "hoofprint", "clawprint")
 				user.allowed_turfs += "constrict"
 
@@ -165,33 +167,6 @@
 
 	if(current_turf == "web")
 		user.spin(8, 1) //Ssspin a web
-
-		/* Commented out to preserve text.
-		Voter decision to exclude pre-determined messages, can still use this area to apply animation onto the user!
-
-			. = "neatly spins a web beneath them."
-		if("water")
-			. = "submerges their surroundings in a pool of water."
-		if("vines")
-			. = "sprouts vines reaching down beneath them."
-		if("dust")
-			. = "flutters their wings, scattering their dust around."
-		if("smoke")
-			. = "expirates a mist of ashes around them."
-		if("slime")
-			. = "splits their gel, forming an oozing shape."
-		if("xenoresin")
-			. = "secretes thick resin, covering the ground beneath them."
-		if("holoseat")
-			. = "artificially summons a seat beneath them."
-		if("holobed")
-			. = "artificially summons a bed beneath them."
-		if("borgmat")
-			. = "dispenses a soft mat, rolling it out beneath them."
-		*/
-
-
-
 
 	current_turf = null
 	LAZYCLEARLIST(user.allowed_turfs)
