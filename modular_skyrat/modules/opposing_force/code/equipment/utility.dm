@@ -164,21 +164,11 @@
 			traditional bags and boxes. Caution: Will explode if the powernet contains sufficient amounts of energy."
 	admin_note = "Drains power from the station, explodes if overloaded."
 
-/datum/opposing_force_equipment/gear/powerbeacon
-	name = "Power Beacon"
-	item_type = /obj/item/sbeacondrop
-	description = "Not to be confused with the <i>Power Sink</i>.\
-			When screwed to wiring attached to an electric grid and activated, this large device pulls any \
-			active gravitational singularities or tesla balls towards it. This will not work when the engine is still \
-			in containment. Because of its size, it cannot be carried. Ordering this \
-			sends you a small beacon that will teleport the larger beacon to your location upon activation."
-	admin_note = "Generally requires a Supermatter Delamination to be effective."
-
 /datum/opposing_force_equipment/gear/cloak_mod
 	item_type = /obj/item/mod/module/stealth/ninja
 	description = "An upgraded MODsuit cloaking module stolen from the Spider Clan's finest. Consumes less power than the standard, but is obviously illegal."
 
-/datum/opposing_force_equipment/gear/flamethrower_mod
+/datum/opposing_force_equipment/gear/chameleon
 	item_type = /obj/item/mod/module/chameleon
 	description = "A module that enables the user to disguise their MODsuit as any other type. Only works while undeployed."
 
