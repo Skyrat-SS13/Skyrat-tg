@@ -1,3 +1,15 @@
+GLOBAL_VAR(current_title_screen)
+
+GLOBAL_VAR(current_title_screen_notice)
+
+GLOBAL_VAR(title_html)
+
+GLOBAL_LIST_EMPTY(title_screens)
+
+#define DEFAULT_TITLE_SCREEN_IMAGE 'modular_skyrat/modules/title_screen/icons/skyrat_title_screen.png'
+#define DEFAULT_TITLE_LOADING_SCREEN 'modular_skyrat/modules/title_screen/icons/loading_screen.gif'
+
+#define DEFAULT_TITLE_HTML {"
 	<html>
 		<head>
 			<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -78,9 +90,9 @@
 					margin-right: 100%;
 					margin-top: 5px;
 					padding-left: 6px;
-					font-size: 6vmin;
-					line-height: 6vmin;
-					height: 6vmin;
+					font-size: 4vmin;
+					line-height: 4vmin;
+					height: 4vmin;
 					letter-spacing: 1px;
 					border: 2px solid white;
 					background-color: #0080ff;
@@ -110,9 +122,9 @@
 					margin-right: 100%;
 					margin-top: 5px;
 					padding-left: 6px;
-					font-size: 6vmin;
-					line-height: 6vmin;
-					height: 6vmin;
+					font-size: 4vmin;
+					line-height: 4vmin;
+					height: 4vmin;
 					letter-spacing: 1px;
 					border: 2px solid white;
 					background-color: #0080ff;
@@ -151,3 +163,4 @@
 			</style>
 		</head>
 		<body>
+			"}
