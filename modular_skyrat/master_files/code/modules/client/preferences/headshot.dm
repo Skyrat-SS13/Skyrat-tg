@@ -7,7 +7,7 @@
 	savefile_key = "headshot"
 	/// Assoc list of ckeys and their link, used to cut down on chat spam
 	var/list/stored_link = list()
-	var/static/link_regex = regex("^https:// i.gyazo.com|https:// media.discordapp.net|https:// cdn.discordapp.com|https:// media.discordapp.net$") // Do not touch the damn duplicates.
+	var/static/link_regex = regex("^https://i.gyazo.com|https://media.discordapp.net|https://cdn.discordapp.com|https://media.discordapp.net$") // Do not touch the damn duplicates.
 	var/static/end_regex = regex("^.jpg|.jpg|.png|.jpeg|.jpeg$") // Regex is terrible, don't touch the duplicate extensions
 
 
@@ -18,8 +18,8 @@
 	if(!length(value)) // Just to get blank ones out of the way
 		usr?.client?.prefs?.headshot = null
 		return TRUE
-	if(!findtext(value, "https:// ", 1, 9))
-		to_chat(usr, span_warning("You need \"https:// \" in the link!"))
+	if(!findtext(value, "https://", 1, 9))
+		to_chat(usr, span_warning("You need \"https://\" in the link!"))
 		return
 	if(!findtext(value, end_regex, abs(LENGTH_LONGEST_EXTENSION - length(value)), length(value)))
 		to_chat(usr, span_warning("You need either \".png\", \".jpg\", or \".jpeg\" in the link!"))
