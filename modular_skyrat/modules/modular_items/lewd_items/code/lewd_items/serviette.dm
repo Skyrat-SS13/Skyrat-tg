@@ -1,9 +1,3 @@
-/*///////////////////////
-//CODE FOR SERVIETTES//
-///////////////////////
-
-//Kubic plz make it clean stuff. My arms grow from same place where grows my legs.
-
 /obj/item/serviette
 	name = "serviette"
 	desc = "To clean all the mess."
@@ -72,9 +66,9 @@
 			remove_item_from_storage(user)
 			user.put_in_hands(used_serviette)
 
-///////////////////////////
-//CODE FOR SERVIETTE PACK//
-///////////////////////////
+/*
+*	SERVIETTE PACK
+*/
 
 /obj/item/serviette_pack
 	name = "pack of serviettes"
@@ -104,4 +98,3 @@
 		update_icon_state()
 	else
 		to_chat(user, span_notice("There are no serviettes left!"))
-*/
