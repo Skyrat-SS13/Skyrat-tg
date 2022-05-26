@@ -84,6 +84,9 @@
 			var/datum/mod_theme/mod_theme = modsuit_control.theme
 			if(mod_theme.modsuit_tail_colors)
 				return FALSE
+		//Hardsuit?
+		if(istype(wearer.wear_suit, /obj/item/clothing/suit/space/hardsuit))
+			return FALSE
 		return TRUE
 
 /datum/sprite_accessory/tails/none
