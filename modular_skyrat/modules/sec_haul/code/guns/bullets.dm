@@ -29,7 +29,6 @@
 	icon_state = "sr-casing"
 	caliber = CALIBER_6MM
 	projectile_type = /obj/projectile/bullet/advanced/b6mm/rubber
-	harmful = FALSE
 
 /obj/projectile/bullet/advanced/b6mm/rubber
 	name = "6mm dissuasive pellet"
@@ -115,7 +114,6 @@
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
 	icon_state = "sr-casing"
 	projectile_type = /obj/projectile/bullet/advanced/b9mm/rubber
-	harmful = FALSE
 
 /obj/projectile/bullet/advanced/b9mm/rubber
 	name = "9mm rubber bullet"
@@ -172,7 +170,6 @@
 	icon_state = "sr-casing"
 	caliber = CALIBER_10MMAUTO
 	projectile_type = /obj/projectile/bullet/advanced/b10mm/rubber
-	harmful = FALSE
 
 /obj/projectile/bullet/advanced/b10mm/rubber
 	name = "10mm Auto rubber bullet"
@@ -229,7 +226,6 @@
 	icon_state = "sr-casing"
 	caliber = CALIBER_12MM
 	projectile_type = /obj/projectile/bullet/advanced/b12mm/rubber
-	harmful = FALSE
 
 /obj/projectile/bullet/advanced/b12mm/rubber
 	name = "12.7x30mm beanbag slug"
@@ -360,7 +356,6 @@
 	icon_state = "sr-casing"
 	caliber = CALIBER_473MM
 	projectile_type = /obj/projectile/bullet/advanced/b473/rubber
-	harmful = FALSE
 
 /obj/projectile/bullet/advanced/b473/rubber
 	name = "4.73x33mm rubber bullet"

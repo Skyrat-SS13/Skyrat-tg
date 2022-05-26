@@ -227,7 +227,6 @@
 	icon_state = "bshell"
 	custom_materials = list(/datum/material/iron=250)
 	projectile_type = /obj/projectile/bullet/s14gauge_beanbag
-	harmful = FALSE
 
 /obj/item/ammo_casing/s14gauge/buckshot
 	name = "14 gauge buckshot shell"
@@ -245,7 +244,6 @@
 	pellets = 5
 	variance = 25
 	custom_materials = list(/datum/material/iron=4000)
-	harmful = FALSE //SKYRAT EDIT ADDITION //What? This is our own file.
 
 /obj/item/ammo_casing/s14gauge/stunslug
 	name = "14 gauge taser slug"
@@ -253,7 +251,6 @@
 	icon_state = "stunshell"
 	projectile_type = /obj/projectile/bullet/s14gauge_stunslug
 	custom_materials = list(/datum/material/iron=500,/datum/material/gold=100)
-	harmful = FALSE
 
 /obj/item/storage/box/rubbershot_14gauge
 	name = "box of 14 gauge rubber shots"

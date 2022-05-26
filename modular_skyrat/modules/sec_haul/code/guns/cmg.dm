@@ -66,7 +66,6 @@
 	name = ".45 rubber bullet casing"
 	desc = "A .45 rubber bullet casing."
 	projectile_type = /obj/projectile/bullet/c45/rubber
-	harmful = FALSE
 
 /obj/projectile/bullet/c45/rubber
 	name = ".45 rubber bullet"
