@@ -7058,9 +7058,6 @@
 /obj/machinery/door/airlock/security/glass{
 	name = "Security Transferring Control"
 	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 4
-	},
 /obj/machinery/door/firedoor,
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
@@ -7069,9 +7066,7 @@
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
 	dir = 4
 	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 8
-	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi,
 /obj/effect/mapping_helpers/airlock/access/all/security/general,
 /turf/open/floor/iron/dark,
 /area/station/cargo/office)
@@ -32181,8 +32176,7 @@
 /area/station/cargo/office)
 "kmV" = (
 /obj/machinery/door/airlock/maintenance_hatch{
-	name = "Maintenance Hatch";
-	req_access = list("maint_tunnels")
+	name = "Maintenance Hatch"
 	},
 /obj/effect/mapping_helpers/airlock/access/all/engineering/maintenance,
 /turf/open/floor/plating,
