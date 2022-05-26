@@ -1,7 +1,6 @@
 /datum/species/snail
 	name = "Snailperson"
 	id = SPECIES_SNAIL
-	default_color = "336600" //vomit green
 	species_traits = list(MUTCOLORS, EYECOLOR, HAS_FLESH, HAS_BONE, HAIR, FACEHAIR) //SKYRAT EDIT - Roundstart Snails - Customization
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,

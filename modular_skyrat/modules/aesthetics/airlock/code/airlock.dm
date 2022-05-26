@@ -374,6 +374,7 @@
 /obj/machinery/door/airlock/glass_large
 	icon = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/multi_tile/multi_tile.dmi'
 	overlays_file = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/multi_tile/overlays.dmi'
+	multi_tile = TRUE
 
 //ASSEMBLYS
 /obj/structure/door_assembly/door_assembly_public
@@ -544,6 +545,10 @@
 
 /obj/structure/door_assembly/door_assembly_hydro
 	icon = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/station/botany.dmi'
+
+/obj/structure/door_assembly/
+	icon = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/station/public.dmi'
+	overlays_file = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/station/overlays.dmi'
 
 //SKYRAT EDIT ADDITION BEGIN - AESTHETICS
 #undef AIRLOCK_LIGHT_POWER

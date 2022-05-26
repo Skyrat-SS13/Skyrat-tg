@@ -18,10 +18,17 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 		if(!visuals_only)
 			to_chat(equipper, "Your loadout uniform was not equipped directly due to your envirosuit.")
 			LAZYADD(outfit.backpack_contents, item_path)
+	else if(override_items == LOADOUT_OVERRIDE_BACKPACK && !visuals_only)
+		if(outfit.uniform)
+			LAZYADD(outfit.backpack_contents, outfit.uniform)
+		outfit.uniform = item_path
 	else
 		outfit.uniform = item_path
 
-//////////////////////////////////////////////////////JUMPSUITS
+/*
+*	JUMPSUITS
+*/
+
 /datum/loadout_item/under/jumpsuit
 
 /datum/loadout_item/under/jumpsuit/greyscale
@@ -209,7 +216,10 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Polychromic Sweater"
 	item_path = /obj/item/clothing/under/misc/polysweater
 
-/////////////////////////////////////////////////////////////MISC UNDERSUITS
+/*
+*	MISC UNDERSUITS
+*/
+
 /datum/loadout_item/under/miscellaneous
 
 //christmas stuff, remove afterword
@@ -572,22 +582,22 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Black Cargo Uniform"
 	item_path = /obj/item/clothing/under/rank/cargo/tech/skyrat/evil
 	restricted_roles = list(JOB_CARGO_TECHNICIAN)
-	
+
 /datum/loadout_item/under/miscellaneous/cargo_turtle
 	name = "Cargo Turtleneck"
 	item_path = /obj/item/clothing/under/rank/cargo/tech/skyrat/turtleneck
 	restricted_roles = list(JOB_CARGO_TECHNICIAN)
-	
+
 /datum/loadout_item/under/miscellaneous/cargo_skirtle
 	name = "Cargo Skirtleneck"
 	item_path = /obj/item/clothing/under/rank/cargo/tech/skyrat/turtleneck/skirt
 	restricted_roles = list(JOB_CARGO_TECHNICIAN)
-	
+
 /datum/loadout_item/under/miscellaneous/qm_skirtle
 	name = "Quartermaster's Skirtleneck"
 	item_path = /obj/item/clothing/under/rank/cargo/qm/skyrat/turtleneck/skirt
 	restricted_roles = list(JOB_QUARTERMASTER)
-	
+
 /datum/loadout_item/under/miscellaneous/qm_gorka
 	name = "Quartermaster's Gorka Uniform"
 	item_path = /obj/item/clothing/under/rank/cargo/qm/skyrat/gorka
@@ -602,7 +612,10 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	item_path = /obj/item/clothing/under/misc/gear_harness/adam
 
 
-////////////////////////////////////////////////////////////////FORMAL UNDERSUITS
+/*
+*	FORMAL UNDERSUITS
+*/
+
 /datum/loadout_item/under/formal
 
 /datum/loadout_item/under/formal/vic_dress

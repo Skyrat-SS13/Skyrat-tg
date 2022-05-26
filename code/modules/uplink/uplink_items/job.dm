@@ -254,6 +254,7 @@
 	cost = 20
 	restricted_roles = list(JOB_CLOWN)
 
+/* //SKYRAT REMOVAL START
 /datum/uplink_item/role_restricted/his_grace
 	name = "His Grace"
 	desc = "An incredibly dangerous weapon recovered from a station overcome by the grey tide. Once activated, He will thirst for blood and must be used to kill to sate that thirst. \
@@ -265,7 +266,7 @@
 	cost = 20
 	restricted_roles = list(JOB_CHAPLAIN)
 	surplus = 5 //Very low chance to get it in a surplus crate even without being the chaplain
-
+*/ //SKYRAT REMOVAL END
 
 // High progression cost
 

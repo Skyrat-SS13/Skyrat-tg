@@ -4,6 +4,7 @@
 #define CALIBER_473MM "473mm"
 #define CALIBER_6MM "6mm"
 #define CALIBER_10MMAUTO "10x25mm"
+#define CALIBER_9MMPEACE "9x19mm"
 
 /// The caliber used by the Automag.
 #define CALIBER_44 ".44 AMP"
@@ -24,3 +25,6 @@
 
 /// The caliber used by the AK-25
 #define CALIBER_732x29 "a732x29"
+
+/// The caliber used by the Ripper gen2
+#define CALIBER_B577 ".577 Snider"

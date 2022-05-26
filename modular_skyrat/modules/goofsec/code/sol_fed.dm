@@ -299,6 +299,10 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 		ID_to_give.update_icon()
 		human_to_equip.sec_hud_set_ID()
 
+/*
+*	POLICE
+*/
+
 /datum/antagonist/ert/request_911/police
 	name = "Marshal"
 	role = "Marshal"
@@ -325,6 +329,10 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 
 	id_trim = /datum/id_trim/solfed
 
+/*
+*	BREACH CONTROL
+*/
+
 /datum/antagonist/ert/request_911/atmos
 	name = "Breach Control Technician"
 	role = "Breach Control Technician"
@@ -349,8 +357,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 		/obj/item/beamout_tool = 1)
 	id_trim = /datum/id_trim/solfed
 
-//////////////////////////////
-/// Breach Control MODsuit ///
+// Breach control MODsuit
 /obj/item/mod/control/pre_equipped/atmospheric/breach_control //Just a different kit as 811 wont be raiding Robotics; otherwise the same look (For now???)
 	theme = /datum/mod_theme/atmospheric/breach_control
 	applied_cell = /obj/item/stock_parts/cell/super
@@ -366,8 +373,10 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 
 /datum/mod_theme/atmospheric/breach_control	//Implement a unique skin for this eventually
 	ui_theme = "neutral"	//Le yellow Sol
-//////////////////////////////
-//////////////////////////////
+
+/*
+*	EMT
+*/
 
 /datum/antagonist/ert/request_911/emt
 	name = "Emergency Medical Technician"
@@ -484,8 +493,8 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 	id_trim = /datum/id_trim/solfed
 
 /obj/item/solfed_reporter
-	name = "SolFed Reporter"
-	desc = "Use this in-hand to vote to call SolFed Backup. If half your team votes for it, SWAT will be dispatched."
+	name = "SolFed reporter"
+	desc = "Use this in-hand to vote to call SolFed backup. If half your team votes for it, SWAT will be dispatched."
 	icon = 'modular_skyrat/modules/goofsec/icons/reporter.dmi'
 	icon_state = "reporter_off"
 	w_class = WEIGHT_CLASS_SMALL
@@ -591,7 +600,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 					agents_number--
 
 /obj/item/solfed_reporter/swat_caller
-	name = "S.W.A.T. Backup Caller"
+	name = "S.W.A.T. backup caller"
 	desc = "Use this in-hand to vote to call SolFed S.W.A.T. backup. If half your team votes for it, SWAT will be dispatched."
 	type_to_check = /datum/antagonist/ert/request_911
 	type_of_callers = "911_responders"
@@ -615,7 +624,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 	return TRUE
 
 /obj/item/solfed_reporter/treason_reporter
-	name = "Treason Reporter"
+	name = "treason reporter"
 	desc = "Use this in-hand to vote that the station is engaging in Treason. If half your team votes for it, the Military will handle the situation."
 	type_to_check = /datum/antagonist/ert/request_911/condom_destroyer
 	type_of_callers = "swat"
@@ -652,7 +661,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 	return TRUE
 
 /obj/item/solfed_reporter/pizza_managers
-	name = "Dogginos Uncompliant Customer Reporter"
+	name = "Dogginos uncompliant customer reporter"
 	desc = "Use this in-hand to vote to call for Dogginos Regional Managers if the station refuses to pay for their pizza. \
 		If half your delivery squad votes for it, Dogginos Regional Managers will be dispatched."
 	type_to_check = /datum/antagonist/ert/pizza/false_call

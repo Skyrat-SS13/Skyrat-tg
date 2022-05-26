@@ -14,7 +14,9 @@
 /turf/open/misc/asteroid/basalt/lava_land_surface,
 /area/ruin/unpowered/ash_walkers)
 "aV" = (
-/obj/machinery/griddle,
+/obj/structure/table/wood,
+/obj/item/forging/billow/primitive,
+/obj/item/stack/sheet/mineral/coal/ten,
 /turf/open/floor/iron/lavaland_atmos,
 /area/service/kitchen/ashwalker)
 "bc" = (
@@ -105,8 +107,8 @@
 "fC" = (
 /obj/structure/headpike/bone,
 /obj/effect/mapping_helpers/no_lava,
-/turf/open/misc/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/template_noop,
+/area/template_noop)
 "gn" = (
 /obj/structure/stone_tile/block/burnt{
 	dir = 8
@@ -116,9 +118,6 @@
 	},
 /turf/open/lava/smooth/lava_land_surface,
 /area/ruin/unpowered/ash_walkers)
-"hg" = (
-/turf/closed/mineral/volcanic/lava_land_surface,
-/area/lavaland/surface/outdoors)
 "hL" = (
 /obj/item/reagent_containers/glass/bucket/wooden{
 	desc = "If this bucket is used for anything other than clean water, the user is to hunt the tribes dinner, and make a new bucket.";
@@ -664,7 +663,10 @@
 /turf/open/lava/smooth/lava_land_surface,
 /area/ruin/unpowered/ash_walkers)
 "xl" = (
-/obj/machinery/oven,
+/obj/structure/bonfire/dense,
+/obj/item/stack/rods{
+	amount = 5
+	},
 /turf/open/floor/iron/lavaland_atmos,
 /area/service/kitchen/ashwalker)
 "xW" = (
@@ -1058,7 +1060,13 @@
 /area/ruin/unpowered/ash_walkers)
 "Mk" = (
 /obj/structure/table,
-/obj/machinery/microwave,
+/obj/item/reagent_containers/glass/bowl/mushroom_bowl,
+/obj/item/reagent_containers/glass/bowl/mushroom_bowl{
+	pixel_y = 4
+	},
+/obj/item/reagent_containers/glass/bowl/mushroom_bowl{
+	pixel_y = 8
+	},
 /turf/open/floor/iron/lavaland_atmos,
 /area/service/kitchen/ashwalker)
 "Mn" = (
@@ -1288,12 +1296,8 @@
 /turf/open/misc/asteroid/basalt/lava_land_surface,
 /area/ruin/unpowered/ash_walkers)
 "Pb" = (
-/obj/machinery/door/airlock{
-	name = "Abandoned Kitchen Storage"
-	},
-/turf/open/floor/iron{
-	initial_gas_mix = "LAVALAND_ATMOS"
-	},
+/obj/structure/curtain/bounty,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
 /area/service/kitchen/ashwalker)
 "Pc" = (
 /obj/structure/fermenting_barrel,
@@ -1374,9 +1378,6 @@
 /obj/structure/stone_tile/surrounding_tile,
 /obj/structure/headpike/bone,
 /turf/open/misc/asteroid/basalt/lava_land_surface,
-/area/ruin/unpowered/ash_walkers)
-"RG" = (
-/turf/closed/mineral/volcanic/lava_land_surface,
 /area/ruin/unpowered/ash_walkers)
 "RK" = (
 /obj/structure/stone_tile/surrounding_tile{
@@ -1618,9 +1619,7 @@
 /turf/open/misc/asteroid/basalt/lava_land_surface,
 /area/ruin/unpowered/ash_walkers)
 "Xe" = (
-/obj/machinery/door/airlock{
-	name = "Abandoned Kitchen"
-	},
+/obj/structure/reagent_forge,
 /turf/open/floor/iron/lavaland_atmos,
 /area/service/kitchen/ashwalker)
 "Xs" = (
@@ -1637,8 +1636,8 @@
 /area/ruin/unpowered/ash_walkers)
 "XV" = (
 /obj/effect/mapping_helpers/no_lava,
-/turf/open/misc/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/turf/template_noop,
+/area/template_noop)
 "Zi" = (
 /obj/structure/stone_tile{
 	dir = 4
@@ -1678,57 +1677,57 @@ mv
 mv
 mv
 mv
-RG
-RG
-RG
-RG
-RG
-RG
-RG
-RG
-RG
-RG
-hg
-hg
-hg
-hg
-hg
-hg
-hg
+bH
+bH
+bH
+bH
+bH
+bH
+bH
+bH
+bH
+bH
+bH
+bH
+bH
+bH
+bH
+bH
+bH
 "}
 (2,1,1) = {"
 mv
 mv
 mv
 mv
-RG
-RG
-RG
-RG
+bH
+bH
+bH
+bH
 JD
 JD
 JD
 JD
-RG
-RG
-RG
-RG
-hg
-hg
-hg
-hg
-hg
-hg
-hg
+bH
+bH
+bH
+bH
+bH
+bH
+bH
+bH
+bH
+bH
+bH
 "}
 (3,1,1) = {"
 mv
 mv
 bH
-RG
-RG
-RG
-RG
+bH
+bH
+bH
+bH
 JD
 tl
 mZ
@@ -1736,22 +1735,22 @@ mZ
 mZ
 JD
 JD
-RG
-RG
-RG
-RG
-RG
-RG
-RG
-hg
-hg
+bH
+bH
+bH
+bH
+bH
+bH
+bH
+bH
+bH
 "}
 (4,1,1) = {"
 mv
 bH
 bH
-RG
-RG
+bH
+bH
 Ly
 Ly
 Ly
@@ -1761,7 +1760,7 @@ mZ
 mZ
 mZ
 JD
-RG
+JD
 Vr
 Vr
 Vr
@@ -1775,7 +1774,7 @@ XV
 bH
 bH
 bH
-RG
+bH
 JD
 Ly
 uM
@@ -1862,7 +1861,7 @@ mZ
 mZ
 mZ
 dw
-Xe
+Pb
 sS
 zV
 UL
@@ -1938,7 +1937,7 @@ mZ
 PK
 dw
 Vr
-aV
+Xe
 sS
 VT
 ab
@@ -2344,7 +2343,7 @@ Ly
 Ly
 Ly
 XV
-hg
+bH
 "}
 (28,1,1) = {"
 bH
@@ -2369,7 +2368,7 @@ Zi
 Ny
 Ly
 XV
-hg
+bH
 "}
 (29,1,1) = {"
 bH
@@ -2394,7 +2393,7 @@ OG
 MS
 Ly
 XV
-hg
+bH
 "}
 (30,1,1) = {"
 bH
@@ -2419,16 +2418,16 @@ MF
 px
 Ly
 XV
-hg
+bH
 "}
 (31,1,1) = {"
 mv
 bH
 bH
-RG
-RG
-RG
-RG
+bH
+bH
+bH
+bH
 Ly
 PB
 dw
@@ -2450,10 +2449,10 @@ XV
 mv
 bH
 bH
-RG
-RG
-RG
-RG
+bH
+bH
+bH
+bH
 Ly
 Ly
 Ly

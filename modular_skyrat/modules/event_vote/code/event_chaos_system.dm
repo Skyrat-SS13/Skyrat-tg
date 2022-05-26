@@ -149,6 +149,9 @@
 /datum/round_event_control/morph
 	chaos_level = EVENT_CHAOS_LOW
 
+/datum/round_event_control/supermatter_surge
+	chaos_level = EVENT_CHAOS_LOW
+
 // MODERATE CHAOS PRESETS
 
 /datum/round_event_control/cme/moderate
@@ -190,9 +193,9 @@
 /datum/round_event_control/revenant
 	chaos_level = EVENT_CHAOS_MED
 
-///////////////////////
-// HIGH CHAOS EVENTS //
-///////////////////////
+/*
+*	HIGH CHAOS EVENTS
+*/
 
 /datum/round_event_control/slaughter
 	chaos_level = EVENT_CHAOS_HIGH
@@ -238,11 +241,11 @@
 /datum/round_event_control/anomaly/anomaly_vortex
 	chaos_level = EVENT_CHAOS_LOW
 
+/*
+*	EVENT CHAOS OVERRIDES
+*	FOR SUBTYPES
+*/
 
-///////////////////////////
-// EVENT CHAOS OVERRIDES //
-//     FOR SUBTYPES      //
-///////////////////////////
 /datum/round_event_control/pirates/enclave
 	chaos_level = EVENT_CHAOS_DISABLED
 

@@ -52,14 +52,14 @@
 
 	var/datum/component/overlay_lighting/lighting_object = src.GetComponent(/datum/component/overlay_lighting)
 	var/image/cone = lighting_object.cone
-	cone.transform = cone.transform.Translate(0, -16) //adjust the little headlamp
+	cone.transform = cone.transform.Translate(0, -16) // adjust the little headlamp
 
 /mob/living/simple_animal/pet/poppy/death()
 	lose_area_sensitivity(INNATE_TRAIT)
 	set_light_on(FALSE)
 
 	if(safety_inspection)
-		var/list/sm_chamber = get_area_turfs(/area/engineering/supermatter)
+		var/list/sm_chamber = get_area_turfs(/area/station/engineering/supermatter)
 		if(src.loc in sm_chamber)
 			safety_inspection = FALSE
 			priority_announce("This is a generated message due to an automated signal regarding the safety standards of the engineering department onboard [station_name()]. Due to the station engineers failing to meet the standard set by Central Command, each of them are now at risk of being forcefully enrolled in a re-evaluation program at later notice...", "Concerning the results of a safety inspection", type = "Priority")
@@ -107,7 +107,7 @@
 /mob/living/simple_animal/pet/poppy/proc/check_area()
 	SIGNAL_HANDLER
 	if(safety_inspection && !upset)
-		var/list/sm_room = get_area_turfs(/area/engineering/supermatter/room)
+		var/list/sm_room = get_area_turfs(/area/station/engineering/supermatter/room)
 		if(src.loc in sm_room)
 			near_engine = TRUE
 

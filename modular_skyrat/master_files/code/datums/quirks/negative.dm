@@ -1,7 +1,7 @@
 /datum/quirk/equipping/nerve_staple
 	name = "Nerve Stapled"
 	desc = "You're a pacifist. Not because you want to be, but because of the device stapled into your eye."
-	value = -10 //pacifism = -8, losing eye slots = -2
+	value = -10 // pacifism = -8, losing eye slots = -2
 	gain_text = span_danger("You suddenly can't raise a hand to hurt others!")
 	lose_text = span_notice("You think you can defend yourself again.")
 	medical_record_text = "Patient is nerve stapled and is unable to harm others."

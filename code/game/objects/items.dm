@@ -123,8 +123,6 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 
 	///What body parts are covered by the clothing when you wear it
 	var/body_parts_covered = 0
-	/// How likely a disease or chemical is to get through a piece of clothing
-	var/permeability_coefficient = 1
 	/// for electrical admittance/conductance (electrocution checks and shit)
 	var/siemens_coefficient = 1
 	/// How much clothing is slowing you down. Negative values speeds you up
@@ -731,7 +729,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 		SEND_SIGNAL(src, COMSIG_MOVABLE_IMPACT, hit_atom, throwingdatum)
 		if(get_temperature() && isliving(hit_atom))
 			var/mob/living/L = hit_atom
-			L.IgniteMob()
+			L.ignite_mob()
 		var/itempush = 1
 		if(w_class < 4)
 			itempush = 0 //too light to push anything
@@ -1383,9 +1381,9 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	if(unique_reskin[pick][RESKIN_WORN_ICON_STATE])
 		if(is_swappable)
 			reskinned_glasses.current_worn_state = unique_reskin[pick][RESKIN_WORN_ICON_STATE]
-			icon_state = reskinned_glasses.current_worn_state + "_R"
+			worn_icon_state = reskinned_glasses.current_worn_state + "_R"
 		else
-			icon_state = unique_reskin[pick][RESKIN_WORN_ICON_STATE]
+			worn_icon_state = unique_reskin[pick][RESKIN_WORN_ICON_STATE]
 
 	if(unique_reskin[pick][RESKIN_INHAND_L])
 		lefthand_file = unique_reskin[pick][RESKIN_INHAND_L]
@@ -1487,7 +1485,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 		attack_image = image('icons/effects/effects.dmi', attacked_atom, visual_effect_icon, attacked_atom.layer + 0.1)
 	else if(used_item)
 		attack_image = image(icon = used_item, loc = attacked_atom, layer = attacked_atom.layer + 0.1)
-		attack_image.plane = attacked_atom.plane
+		attack_image.plane = attacked_atom.plane + 1
 
 		// Scale the icon.
 		attack_image.transform *= 0.4

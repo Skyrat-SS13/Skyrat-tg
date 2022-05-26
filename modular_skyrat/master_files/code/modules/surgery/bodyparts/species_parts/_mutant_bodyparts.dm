@@ -21,7 +21,7 @@
 		if((!human_owner.shoes) || (human_owner.shoes.supports_variations_flags & (CLOTHING_DIGITIGRADE_VARIATION|CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON)))
 			shoes_compatible = TRUE
 
-		if((uniform_compatible && suit_compatible && shoes_compatible) || (suit_compatible && human_owner.wear_suit?.flags_inv & HIDEJUMPSUIT)) //If the uniform is hidden, it doesnt matter if its compatible
+		if((uniform_compatible && suit_compatible && shoes_compatible) || (suit_compatible && human_owner.wear_suit?.flags_inv & HIDEJUMPSUIT)) // If the uniform is hidden, it doesnt matter if its compatible
 			limb_id = "digitigrade"
 		else
 			limb_id = base_limb_id
@@ -40,7 +40,7 @@
 	icon_greyscale = 'modular_skyrat/master_files/icons/mob/species/mammal_parts_greyscale.dmi'
 	limb_id = SPECIES_MAMMAL
 	uses_mutcolor = TRUE
-	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ORGANIC | BODYTYPE_SNOUTED //This is temporary. Ideally the "snout" external organ adds to this.
+	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ORGANIC
 
 /obj/item/bodypart/chest/mutant
 	icon_greyscale = 'modular_skyrat/master_files/icons/mob/species/mammal_parts_greyscale.dmi'

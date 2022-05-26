@@ -81,7 +81,7 @@
 	M.adjustOrganLoss(ORGAN_SLOT_HEART, (2 * REM * delta_time))
 	M.adjustOrganLoss(ORGAN_SLOT_BRAIN, (2 * REM * delta_time))
 	M.adjustStaminaLoss(15 * REM * delta_time, 0) //reverses stamina loss
-	M.Jitter(2 * REM * delta_time)
+	M.set_timed_status_effect(5 SECONDS, /datum/status_effect/jitter, only_if_higher = TRUE)
 	if(DT_PROB(2.5, delta_time))
 		M.emote(pick("twitch","drool"))
 	if(DT_PROB(1.5, delta_time))

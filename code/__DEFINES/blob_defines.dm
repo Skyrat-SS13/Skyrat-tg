@@ -13,7 +13,7 @@
 
 // Generic blob defines
 
-#define BLOB_BASE_POINT_RATE 2 // Base amount of points per process()
+#define BLOB_BASE_POINT_RATE 2.5 // Base amount of points per process(+1 SkyRat change) 
 #define BLOB_EXPAND_COST 4 // Price to expand onto a new tile
 #define BLOB_ATTACK_REFUND 2 // Points 'refunded' when the expand attempt actually attacks something instead
 #define BLOB_BRUTE_RESIST 0.5 // Brute damage taken gets multiplied by this value

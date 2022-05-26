@@ -73,7 +73,7 @@
 	uniform = /obj/item/clothing/under/plasmaman/blueshield
 
 /obj/item/storage/box/gunset/blueshield
-	name = "CMG-1 Gunset"
+	name = "CMG-1 gunset"
 	w_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/gun/ballistic/automatic/cmg/nomag
@@ -82,11 +82,11 @@
 /obj/item/storage/box/gunset/blueshield/PopulateContents()
 	. = ..()
 	new /obj/item/gun/ballistic/automatic/cmg/nomag(src)
-	new /obj/item/ammo_box/magazine/cmgm45(src)
-	new /obj/item/ammo_box/magazine/cmgm45(src)
-	new /obj/item/ammo_box/magazine/cmgm45/lethal(src)
-	new /obj/item/ammo_box/magazine/cmgm45/lethal(src)
-	new /obj/item/suppressor(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/cmg(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/cmg(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/cmg/lethal(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/cmg/lethal(src)
+	new /obj/item/suppressor/nanotrasen(src) //why the fuck does BS need a suppressed gun is beyond me
 
 /obj/item/ammo_casing/energy/laser/hellfire/bs
 	projectile_type = /obj/projectile/beam/laser/hellfire

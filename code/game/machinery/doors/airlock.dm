@@ -84,7 +84,7 @@
 #define DOOR_VISION_DISTANCE 11 ///The maximum distance a door will see out to
 
 /obj/machinery/door/airlock
-	name = "airlock"
+	name = "Airlock"
 	icon = 'icons/obj/doors/airlocks/station/public.dmi'
 	icon_state = "closed"
 	max_integrity = 300
@@ -179,9 +179,11 @@
 		max_integrity = normal_integrity
 	if(damage_deflection == AIRLOCK_DAMAGE_DEFLECTION_N && security_level > AIRLOCK_SECURITY_IRON)
 		damage_deflection = AIRLOCK_DAMAGE_DEFLECTION_R
+
 	prepare_huds()
 	for(var/datum/atom_hud/data/diagnostic/diag_hud in GLOB.huds)
-		diag_hud.add_to_hud(src)
+		diag_hud.add_atom_to_hud(src)
+
 	diag_hud_set_electrified()
 
 	RegisterSignal(src, COMSIG_MACHINERY_BROKEN, .proc/on_break)
@@ -351,7 +353,7 @@
 	QDEL_NULL(note)
 	QDEL_NULL(seal)
 	for(var/datum/atom_hud/data/diagnostic/diag_hud in GLOB.huds)
-		diag_hud.remove_from_hud(src)
+		diag_hud.remove_atom_from_hud(src)
 	return ..()
 
 /obj/machinery/door/airlock/handle_atom_del(atom/A)
@@ -1129,11 +1131,9 @@
 		return
 
 	if(!operating)
-		if(istype(I, /obj/item/fireaxe)) //being fireaxe'd
-			var/obj/item/fireaxe/axe = I
-			if(axe && !axe.wielded)
-				to_chat(user, span_warning("You need to be wielding \the [axe] to do that!"))
-				return
+		if(istype(I, /obj/item/fireaxe) && !HAS_TRAIT(I, TRAIT_WIELDED)) //being fireaxe'd
+			to_chat(user, span_warning("You need to be wielding [I] to do that!"))
+			return
 		INVOKE_ASYNC(src, (density ? .proc/open : .proc/close), 2)
 
 /obj/machinery/door/airlock/open(forced=0)
