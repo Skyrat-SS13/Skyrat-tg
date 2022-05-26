@@ -13995,8 +13995,8 @@
 	req_one_access_txt = "11;31;48"
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/mapping_helpers/airlock/access/all/supply/general,
-/obj/effect/mapping_helpers/airlock/access/all/engineering/engine_equipment,
+/obj/effect/mapping_helpers/airlock/access/any/supply/general,
+/obj/effect/mapping_helpers/airlock/access/any/engineering/engine_equipment,
 /turf/open/floor/plating,
 /area/station/maintenance/starboard/aft)
 "efn" = (
@@ -16396,12 +16396,10 @@
 /turf/open/floor/iron/dark/side,
 /area/station/hallway/primary/central)
 "eZn" = (
-/obj/machinery/door/airlock/maintenance_hatch{
-	name = "Security Maintenance"
-	},
-/obj/effect/mapping_helpers/airlock/access/all/security/detective,
+/obj/machinery/door/airlock/maintenance_hatch,
+/obj/effect/mapping_helpers/airlock/access/all/security/court,
 /turf/open/floor/plating,
-/area/station/maintenance/department/security/lesser)
+/area/station/security/courtroom)
 "eZu" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer4,
@@ -31372,12 +31370,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/security/execution/transfer)
-"jZC" = (
-/obj/machinery/door/airlock/maintenance_hatch,
-/obj/effect/mapping_helpers/airlock/abandoned,
-/obj/effect/mapping_helpers/airlock/access/all/engineering/maintenance,
-/turf/open/floor/plating,
-/area/station/maintenance/port/fore)
 "jZI" = (
 /obj/effect/turf_decal/stripes{
 	dir = 1
@@ -32192,7 +32184,6 @@
 	name = "Maintenance Hatch";
 	req_access = list("maint_tunnels")
 	},
-/obj/machinery/door/airlock/maintenance_hatch,
 /obj/effect/mapping_helpers/airlock/access/all/engineering/maintenance,
 /turf/open/floor/plating,
 /area/station/maintenance/central)
@@ -37745,10 +37736,10 @@
 /area/station/security/medical)
 "mjH" = (
 /obj/machinery/door/airlock/maintenance_hatch,
-/obj/structure/cable,
-/obj/effect/mapping_helpers/airlock/access/all/engineering/general,
+/obj/effect/mapping_helpers/airlock/abandoned,
+/obj/effect/mapping_helpers/airlock/access/all/engineering/maintenance,
 /turf/open/floor/plating,
-/area/station/maintenance/department/engineering/lesser)
+/area/station/maintenance/port/fore)
 "mjI" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -38429,9 +38420,9 @@
 /area/station/security/processing)
 "mwm" = (
 /obj/machinery/door/airlock/maintenance_hatch,
-/obj/effect/mapping_helpers/airlock/access/all/engineering/construction,
+/obj/effect/mapping_helpers/airlock/access/all/engineering/maintenance,
 /turf/open/floor/plating,
-/area/station/maintenance/port/aft)
+/area/station/maintenance/central)
 "mwq" = (
 /obj/effect/turf_decal/delivery,
 /obj/machinery/space_heater,
@@ -41857,8 +41848,8 @@
 	req_one_access_txt = "11;31;48"
 	},
 /obj/structure/cable,
-/obj/effect/mapping_helpers/airlock/access/all/supply/general,
-/obj/effect/mapping_helpers/airlock/access/all/engineering/engine_equipment,
+/obj/effect/mapping_helpers/airlock/access/any/supply/general,
+/obj/effect/mapping_helpers/airlock/access/any/engineering/engine_equipment,
 /turf/open/floor/plating,
 /area/station/maintenance/starboard/aft)
 "nBM" = (
@@ -47294,8 +47285,7 @@
 /obj/machinery/door/firedoor,
 /obj/structure/cable,
 /obj/machinery/door/airlock/service{
-	name = "Service Hallway";
-	req_access = list("maint_tunnels")
+	name = "Service Hallway"
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -50025,10 +50015,9 @@
 /area/station/maintenance/department/security/prison_lower)
 "qpJ" = (
 /obj/machinery/door/airlock/maintenance_hatch,
-/obj/structure/cable,
-/obj/effect/mapping_helpers/airlock/access/all/engineering/maintenance,
+/obj/effect/mapping_helpers/airlock/access/all/engineering/construction,
 /turf/open/floor/plating,
-/area/station/maintenance/library/lower)
+/area/station/maintenance/port/aft)
 "qpL" = (
 /obj/structure/flora/bush/stalky,
 /turf/open/water/overlay,
@@ -53541,10 +53530,12 @@
 /turf/open/floor/iron,
 /area/service/salon)
 "rBX" = (
-/obj/machinery/door/airlock/maintenance_hatch,
-/obj/effect/mapping_helpers/airlock/access/all/engineering/maintenance,
+/obj/machinery/door/airlock/maintenance_hatch{
+	name = "Security Maintenance"
+	},
+/obj/effect/mapping_helpers/airlock/access/all/security/detective,
 /turf/open/floor/plating,
-/area/station/maintenance/central)
+/area/station/maintenance/department/security/lesser)
 "rCc" = (
 /obj/structure/cable,
 /turf/open/floor/plating,
@@ -56828,6 +56819,12 @@
 /obj/effect/turf_decal/trimline/blue/filled/warning,
 /turf/open/floor/iron/white,
 /area/station/security/medical)
+"sHN" = (
+/obj/machinery/door/airlock/maintenance_hatch,
+/obj/structure/cable,
+/obj/effect/mapping_helpers/airlock/access/all/engineering/maintenance,
+/turf/open/floor/plating,
+/area/station/maintenance/library/lower)
 "sHU" = (
 /obj/structure/table/reinforced,
 /obj/effect/turf_decal/siding/wood{
@@ -59534,9 +59531,7 @@
 /turf/open/floor/plating,
 /area/station/maintenance/department/security/greater)
 "tEp" = (
-/obj/machinery/door/airlock/maintenance_hatch{
-	req_access = list("maint_tunnels")
-	},
+/obj/machinery/door/airlock/maintenance_hatch,
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
 	dir = 4
@@ -61237,9 +61232,7 @@
 /turf/closed/wall,
 /area/station/engineering/engine_smes)
 "udL" = (
-/obj/machinery/door/airlock/maintenance_hatch{
-	req_access = list("maint_tunnels")
-	},
+/obj/machinery/door/airlock/maintenance_hatch,
 /obj/machinery/door/firedoor,
 /obj/structure/cable,
 /obj/effect/mapping_helpers/airlock/access/all/security/general,
@@ -61258,9 +61251,10 @@
 /area/station/construction/mining/aux_base)
 "ueN" = (
 /obj/machinery/door/airlock/maintenance_hatch,
-/obj/effect/mapping_helpers/airlock/access/all/security/court,
+/obj/structure/cable,
+/obj/effect/mapping_helpers/airlock/access/all/engineering/general,
 /turf/open/floor/plating,
-/area/station/security/courtroom)
+/area/station/maintenance/department/engineering/lesser)
 "ueT" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
@@ -63537,8 +63531,7 @@
 /area/station/security/medical)
 "uRV" = (
 /obj/machinery/door/airlock/security/glass{
-	name = "Engineering Security Post";
-	req_access = list("security")
+	name = "Engineering Security Post"
 	},
 /obj/structure/cable,
 /obj/machinery/door/firedoor,
@@ -73292,8 +73285,7 @@
 /area/station/service/library)
 "xXh" = (
 /obj/machinery/door/airlock/maintenance_hatch{
-	name = "Engineering Maintenance";
-	req_access = list("engineering")
+	name = "Engineering Maintenance"
 	},
 /obj/machinery/atmospherics/pipe/smart/simple/orange/visible{
 	dir = 4
@@ -95223,7 +95215,7 @@ uyb
 jfy
 cXL
 iRO
-jZC
+mjH
 iRO
 iRO
 pcr
@@ -97789,7 +97781,7 @@ cOd
 tiS
 whr
 whr
-jZC
+mjH
 wQv
 utG
 wQv
@@ -98878,7 +98870,7 @@ oQH
 ael
 rsK
 rsK
-qpJ
+sHN
 xMJ
 rSy
 eDq
@@ -99133,7 +99125,7 @@ mSw
 tsX
 xLG
 xLG
-qpJ
+sHN
 xLG
 xLG
 oUj
@@ -99700,7 +99692,7 @@ mtb
 pgI
 mtb
 wZL
-mwm
+qpJ
 wZL
 wZL
 wZL
@@ -101923,7 +101915,7 @@ wnj
 wnj
 wnj
 wnj
-ueN
+eZn
 xRw
 vBF
 vBF
@@ -102246,7 +102238,7 @@ mtb
 lgs
 nUy
 mtb
-rBX
+mwm
 mtb
 mtb
 rEs
@@ -103016,7 +103008,7 @@ msc
 xgv
 wOw
 bIV
-rBX
+mwm
 rVr
 bDA
 uxT
@@ -103040,7 +103032,7 @@ uRV
 vJI
 xvW
 mQR
-mjH
+ueN
 pSg
 nuA
 ydg
@@ -103456,7 +103448,7 @@ asj
 mgJ
 mna
 mna
-eZn
+rBX
 cwM
 cwM
 agr
@@ -104812,7 +104804,7 @@ krb
 jYQ
 wmO
 wmO
-rBX
+mwm
 wmO
 wmO
 clU
@@ -105324,7 +105316,7 @@ mNm
 qTN
 swu
 jbo
-rBX
+mwm
 uxT
 uxT
 uxT
@@ -107380,7 +107372,7 @@ jNz
 xpu
 lfh
 oCa
-rBX
+mwm
 uxT
 uxT
 mET
