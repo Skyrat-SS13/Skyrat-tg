@@ -1,7 +1,3 @@
-/* /obj/projectile/bullet/pellet
-	var/tile_dropoff = 0.45
-	var/tile_dropoff_s = 0.25 */
-
 /obj/item/ammo_casing/shotgun
 	icon = 'modular_skyrat/modules/shotgunrebalance/icons/shotshells.dmi'
 	custom_materials = list(/datum/material/iron=1000) //We will be using this to prevent refund scamming mats
@@ -202,8 +198,8 @@
 /obj/projectile/bullet/pellet/shotgun_buckshot/iceblox/on_hit(atom/target, blocked = FALSE)
 	. = ..()
 	if(isliving(target))
-		var/mob/living/M = target
-		M.adjust_bodytemperature(((30-blocked)/30)*(temperature - M.bodytemperature))
+		var/mob/living/UnluckyBastard = target
+		UnluckyBastard.adjust_bodytemperature(((30-blocked)/30)*(temperature - UnluckyBastard.bodytemperature))
 
 /obj/item/ammo_casing/shotgun/hunter
 	name = "hunter buckshot shell"
@@ -218,9 +214,9 @@
 	damage = 5
 	wound_bonus = 0
 	weak_against_armour = FALSE
-        /// Bonus force dealt against certain factions
+		/// Bonus force dealt against certain factions
 	var/faction_bonus_force = 25
-        /// Any mob with a faction that exists in this list will take bonus damage/effects
+		/// Any mob with a faction that exists in this list will take bonus damage/effects
 	var/list/nemesis_path = /mob/living/simple_animal
 
 /obj/projectile/bullet/pellet/shotgun_buckshot/hunter/prehit_pierce(mob/living/target, mob/living/carbon/human/user)
@@ -236,7 +232,7 @@
 	desc = "A 12 gauge buckshot shell thats been filled to the brim with confetti. Who is making all these?"
 	icon_state = "honkshell"
 	projectile_type = /obj/projectile/bullet/pellet/shotgun_buckshot/honk
-	pellets = 12 //
+	pellets = 12
 	variance = 35
 	fire_sound = 'sound/items/bikehorn.ogg'
 	harmful = FALSE
