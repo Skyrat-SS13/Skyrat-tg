@@ -204,7 +204,7 @@
 
 /obj/item/spear/bonespear/ComponentInitialize()
 	. = ..()
-	AddComponent(/datum/component/two_handed, force_unwielded=10, force_wielded=20, icon_wielded="[icon_prefix]1") //SKYRAT EDIT
+	AddComponent(/datum/component/two_handed, force_unwielded=8, force_wielded=18, icon_wielded="[icon_prefix]1") //SKYRAT EDIT
 
 /*
  * Bamboo Spear
