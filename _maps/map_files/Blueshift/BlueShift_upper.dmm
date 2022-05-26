@@ -12294,9 +12294,9 @@
 /area/station/service/theater)
 "dEH" = (
 /obj/machinery/door/airlock/maintenance_hatch{
-	name = "Medbay Maintenance";
-	req_access = list("medical")
+	name = "Medbay Maintenance"
 	},
+/obj/effect/mapping_helpers/airlock/access/all/engineering/maintenance,
 /turf/open/floor/plating,
 /area/station/maintenance/department/medical/central)
 "dEW" = (
@@ -14922,18 +14922,12 @@
 /turf/open/floor/engine,
 /area/station/science/explab)
 "eEw" = (
-/obj/machinery/door/airlock/research{
-	name = "Research Division Access"
+/obj/machinery/door/airlock/maintenance_hatch{
+	name = "Medbay Maintenance"
 	},
-/obj/machinery/door/firedoor,
-/obj/effect/mapping_helpers/airlock/unres,
-/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi,
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
-/obj/structure/disposalpipe/segment,
-/obj/effect/mapping_helpers/airlock/access/all/science/general,
-/turf/open/floor/iron,
-/area/station/science/research)
+/obj/effect/mapping_helpers/airlock/access/all/medical/surgery,
+/turf/open/floor/plating,
+/area/station/maintenance/department/science)
 "eEF" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cable,
@@ -17779,7 +17773,6 @@
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
 	dir = 4
 	},
-/obj/effect/mapping_helpers/airlock/access/all/engineering/maintenance,
 /turf/open/floor/iron,
 /area/station/maintenance/abandon_art_studio)
 "fDZ" = (
@@ -28172,14 +28165,13 @@
 /turf/open/floor/iron,
 /area/station/medical/chemistry)
 "jmg" = (
-/obj/machinery/door/airlock/maintenance{
-	req_access = list("maint_tunnels")
-	},
+/obj/machinery/door/airlock/maintenance,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /obj/machinery/door/firedoor,
+/obj/effect/mapping_helpers/airlock/access/all/engineering/maintenance,
 /turf/open/floor/iron,
 /area/station/maintenance/department/medical/central)
 "jmi" = (
@@ -31991,7 +31983,7 @@
 /obj/machinery/door/airlock/maintenance_hatch{
 	name = "Medbay Maintenance"
 	},
-/obj/effect/mapping_helpers/airlock/access/all/engineering/maintenance,
+/obj/effect/mapping_helpers/airlock/access/all/medical/general,
 /turf/open/floor/plating,
 /area/station/maintenance/department/medical/central)
 "kGm" = (
@@ -38513,12 +38505,18 @@
 /turf/open/floor/iron,
 /area/station/science/storage)
 "mRU" = (
-/obj/machinery/door/airlock/maintenance_hatch{
-	name = "Medbay Maintenance"
+/obj/machinery/door/airlock/research{
+	name = "Research Division Access"
 	},
-/obj/effect/mapping_helpers/airlock/access/all/medical/surgery,
-/turf/open/floor/plating,
-/area/station/maintenance/department/science)
+/obj/machinery/door/firedoor,
+/obj/effect/mapping_helpers/airlock/unres,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
+/obj/structure/disposalpipe/segment,
+/obj/effect/mapping_helpers/airlock/access/all/science/general,
+/turf/open/floor/iron,
+/area/station/science/research)
 "mSf" = (
 /obj/effect/turf_decal/stripes/end{
 	dir = 8
@@ -42406,9 +42404,7 @@
 /area/station/ai_monitored/aisat/exterior)
 "oiy" = (
 /obj/structure/cable,
-/obj/machinery/door/airlock/maintenance_hatch{
-	req_access_txt = "12;73"
-	},
+/obj/machinery/door/airlock/maintenance_hatch,
 /obj/effect/mapping_helpers/airlock/access/any/service/maintenance,
 /turf/open/floor/plating,
 /area/station/maintenance/pool_maintenance)
@@ -56183,7 +56179,6 @@
 	dir = 4
 	},
 /obj/machinery/door/airlock/freezer{
-	req_access = list("kitchen");
 	name = "Freezer"
 	},
 /obj/effect/mapping_helpers/airlock/access/all/service/kitchen,
@@ -68429,7 +68424,7 @@
 /obj/machinery/button/door/directional/north{
 	id = "chem_lockdown";
 	name = "chemistry lockdown control";
-	req_access_txt = "5;69"
+	req_access = list("chemistry")
 	},
 /obj/effect/turf_decal/trimline/yellow/filled/line{
 	dir = 1
@@ -69710,7 +69705,6 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor,
-/obj/effect/mapping_helpers/airlock/access/all/engineering/maintenance,
 /turf/open/floor/plating,
 /area/station/maintenance/abandon_art_studio)
 "xJf" = (
@@ -101911,11 +101905,11 @@ glc
 klz
 xib
 rQr
-eEw
+mRU
 vqq
 beR
 pMY
-eEw
+mRU
 rBX
 wmO
 hJV
@@ -106424,7 +106418,7 @@ tIB
 mfO
 mfO
 kRl
-tIB
+gyv
 xBG
 xBG
 xBG
@@ -106432,7 +106426,7 @@ xBG
 xBG
 xBG
 xBG
-tIB
+gyv
 lEo
 lEo
 gjx
@@ -109605,7 +109599,7 @@ aCx
 oJV
 lIj
 uac
-mRU
+eEw
 yeK
 yeK
 slu
@@ -110346,7 +110340,7 @@ oBA
 pbY
 vOf
 vOf
-kGi
+dEH
 vOf
 vOf
 vOf
@@ -114207,7 +114201,7 @@ nAP
 qOS
 qOS
 qOS
-dEH
+kGi
 qOS
 qOS
 qOS
