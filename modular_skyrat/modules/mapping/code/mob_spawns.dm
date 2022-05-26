@@ -445,34 +445,34 @@
 	access = list(5, 29, 66, ACCESS_AWAY_GENERAL, 210)
 
 /obj/item/card/id/away/tarkon/sci  //original tarkon ID is defined in fluff
-	name = "P-T Field Researcher's Access Card"
-	desc = "An access card designated for \"The Science Team\". You are forgotten basically immediately when it comes to the lab."
+	name = "P-T field researcher's access card"
+	desc = "An access card designated for \"the science team\". You are forgotten basically immediately when it comes to the lab."
 	trim = /datum/id_trim/away/tarkon/sci
 
 /obj/item/card/id/away/tarkon/med
-	name = "P-T Trauma Medic's Access Card"
-	desc = "An access card designated for \"Medical Staff\". You provide the medic bags."
+	name = "P-T trauma medic's access card"
+	desc = "An access card designated for \"medical staff\". You provide the medic bags."
 	trim = /datum/id_trim/away/tarkon/med
 
 /obj/item/card/id/away/tarkon/sec
-	name = "P-T Resident Deputy's Access Card"
-	desc = "An access card designated for \"Security Members\". Everyone wants your guns, partner. Yee-haw."
+	name = "P-T resident deputy's access card"
+	desc = "An access card designated for \"security members\". Everyone wants your guns, partner. Yee-haw."
 	trim = /datum/id_trim/away/tarkon/sec
 
 /obj/item/card/id/away/tarkon/cargo
-	name = "P-T Cargo Hauler's Access Card"
-	desc = "An access card designated for \"Cargo's Finest\". You're also a part time space miner, when cargonia is quiet."
+	name = "P-T cargo hauler's access card"
+	desc = "An access card designated for \"cargo's finest\". You're also a part time space miner, when cargonia is quiet."
 	trim = /datum/id_trim/away/tarkon
 
 
 /obj/item/card/id/away/tarkon/engi
-	name = "P-T Maintenance Engineer's Access Card"
-	desc = "An access card designated for \"Engineering Staff\". You're going to be the one everyone points at to fix stuff, lets be honest."
+	name = "P-T maintenance engineer's access card"
+	desc = "An access card designated for \"engineering staff\". You're going to be the one everyone points at to fix stuff, lets be honest."
 	trim = /datum/id_trim/away/tarkon/eng
 
 /obj/item/card/id/away/tarkon/ensign
-	name = "Tarkon Ensign's Access Card"
-	desc = "An access card designated for \"Tarkon Ensign\". No one has to listen to you... But you're the closest there is for command around here."
+	name = "Tarkon ensign's access card"
+	desc = "An access card designated for \"Tarkon ensign\". No one has to listen to you... But you're the closest there is for command around here."
 	trim = /datum/id_trim/away/tarkon/ensign
 
 //AREAS//

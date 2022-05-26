@@ -28,11 +28,16 @@
 	..()
 	changeling.purchased_powers -= src
 	Remove(user)
+	
+	// SKYRAT EDIT START
+	var/datum/dna/chosen_dna = chosen_prof.dna
+	var/datum/species/chosen_species = chosen_dna.species
+	user.humanize(chosen_species)
 
-	var/newmob = user.humanize()
-
-	changeling.transform(newmob, chosen_prof)
+	changeling.transform(user, chosen_prof)
+	user.regenerate_icons()
 	return TRUE
+	// SKYRAT EDIT END
 
 // Subtype used when a changeling uses lesser form.
 /datum/action/changeling/humanform/from_monkey

@@ -6,7 +6,7 @@
 	item = /obj/item/grenade/clusterbuster/spawner_goose
 
 /obj/item/grenade/clusterbuster/spawner_goose
-	name = "Flock of Geese"
+	name = "flock of geese"
 	payload = /obj/item/grenade/spawnergrenade/goose
 
 /obj/item/grenade/spawnergrenade/goose

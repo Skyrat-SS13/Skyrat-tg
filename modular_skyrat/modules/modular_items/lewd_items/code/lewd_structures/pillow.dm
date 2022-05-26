@@ -159,9 +159,9 @@
 		qdel(src)
 	return
 
-////////////////////////////////////
-///CODE FOR TINY PILLOW FURNITURE///
-////////////////////////////////////
+/*
+*	TINY
+*/
 
 /obj/structure/bed/pillow_tiny
 	name = "pillow"
@@ -244,9 +244,9 @@
 	else
 		return ..()
 
-/////////////////////////////////////
-///CODE FOR SMALL PILLOW FURNITURE///
-/////////////////////////////////////
+/*
+*	SMALL
+*/
 
 /obj/structure/chair/pillow_small
 	name = "small pillow pile"
@@ -369,9 +369,9 @@
 /obj/structure/chair/pillow_small/MouseDrop(over_object, src_location, over_location)
 	return
 
-/////////////////////////
-///CODE FOR PILLOW BED///
-/////////////////////////
+/*
+*	BED
+*/
 
 /obj/structure/bed/pillow_large
 	name = "large pillow pile"

@@ -1,6 +1,7 @@
 /datum/dynamic_ruleset/midround/from_ghosts/lone_infiltrator
 	name = "Lone Infiltrator"
 	antag_datum = /datum/antagonist/traitor/infiltrator
+	midround_ruleset_style = MIDROUND_RULESET_STYLE_HEAVY
 	antag_flag = ROLE_LONE_INFILTRATOR
 	restricted_roles = list(JOB_CYBORG, JOB_AI, JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_DETECTIVE, JOB_HEAD_OF_SECURITY, JOB_CAPTAIN, JOB_CORRECTIONS_OFFICER, JOB_VANGUARD_OPERATIVE, JOB_NT_REP, JOB_BLUESHIELD, JOB_ORDERLY, JOB_BOUNCER, JOB_CUSTOMS_AGENT, JOB_ENGINEERING_GUARD, JOB_SCIENCE_GUARD) //SKYRAT EDIT - Sec_haul
 	required_candidates = 1
