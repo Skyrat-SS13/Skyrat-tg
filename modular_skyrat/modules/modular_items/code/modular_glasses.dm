@@ -317,3 +317,53 @@
   build_path = /obj/item/clothing/glasses/hud/aviator/science
   category = list("Equipment")
   departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
+
+/datum/design/health_hud_projector
+  name = "Retinal Projector Medical HUD"
+  desc = "A headset equipped with a scanning lens and mounted retinal projector. It doesn't provide any eye protection, but it's less obtrusive than goggles."
+  id = "health_hud_projector"
+  build_type = PROTOLATHE
+  materials = list(/datum/material/iron = 700, /datum/material/glass = 800, /datum/material/silver = 350)
+  build_path = /obj/item/clothing/glasses/hud/projector/health
+  category = list("Equipment")
+  departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
+
+/datum/design/security_hud_projector
+  name = "Retinal Projector Security HUD"
+  desc = "A headset equipped with a scanning lens and mounted retinal projector. It doesn't provide any eye protection, but it's less obtrusive than goggles."
+  id = "security_hud_projector"
+  build_type = PROTOLATHE
+  materials = list(/datum/material/iron = 700, /datum/material/glass = 800, /datum/material/silver = 350, /datum/material/silver = 200,)
+  build_path = /obj/item/clothing/glasses/hud/projector/security
+  category = list("Equipment")
+  departmental_flags = DEPARTMENT_BITFLAG_SECURITY
+
+/datum/design/diagnostic_hud_projector
+  name = "Retinal Projector Diagnostic HUD"
+  desc = "A headset equipped with a scanning lens and mounted retinal projector. It doesn't provide any eye protection, but it's less obtrusive than goggles."
+  id = "diagnostic_hud_projector"
+  build_type = PROTOLATHE
+  materials = list(/datum/material/iron = 700, /datum/material/glass = 800, /datum/material/silver = 350)
+  build_path = /obj/item/clothing/glasses/hud/projector/diagnostic
+  category = list("Equipment")
+  departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
+
+/datum/design/meson_hud_projector
+  name = "Retinal Projector Meson HUD"
+  desc = "A headset equipped with a scanning lens and mounted retinal projector. It doesn't provide any eye protection, but it's less obtrusive than goggles."
+  id = "meson_hud_projector"
+  build_type = PROTOLATHE
+  materials = list(/datum/material/iron = 700, /datum/material/glass = 800, /datum/material/silver = 350)
+  build_path = /obj/item/clothing/glasses/hud/projector/meson
+  category = list("Equipment")
+  departmental_flags = DEPARTMENT_BITFLAG_CARGO | DEPARTMENT_BITFLAG_ENGINEERING
+
+/datum/design/science_hud_projector
+  name = "Science Retinal Projector"
+  desc = "A headset equipped with a scanning lens and mounted retinal projector. It doesn't provide any eye protection, but it's less obtrusive than goggles."
+  id = "science_hud_projector"
+  build_type = PROTOLATHE
+  materials = list(/datum/material/iron = 700, /datum/material/glass = 800, /datum/material/silver = 350)
+  build_path = /obj/item/clothing/glasses/hud/projector/science
+  category = list("Equipment")
+  departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
