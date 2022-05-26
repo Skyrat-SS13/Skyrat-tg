@@ -1,3 +1,4 @@
+/*
 /obj/item/clothing/sextoy/vibroring
 	name = "vibrating ring"
 	desc = "A ring toy used to keep your erection going strong."
@@ -88,3 +89,4 @@
 	user.adjustPleasure(1 * delta_time)
 	if(balls.aroused != AROUSAL_CANT)
 		balls.aroused = AROUSAL_FULL //Vibroring keep penis erected.
+*/
