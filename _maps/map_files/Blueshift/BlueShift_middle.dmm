@@ -26524,23 +26524,6 @@
 	dir = 4
 	},
 /area/station/hallway/secondary/service)
-"iwE" = (
-/obj/machinery/door/airlock/command/glass{
-	name = "Control Room"
-	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 8
-	},
-/obj/machinery/door/firedoor/heavy,
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
-	dir = 4
-	},
-/obj/effect/mapping_helpers/airlock/access/all/command/general,
-/turf/open/floor/iron,
-/area/station/tcommsat/computer)
 "iwJ" = (
 /obj/machinery/door/airlock/security/glass{
 	name = "Security Checkpoint"
@@ -53118,8 +53101,8 @@
 	dir = 4
 	},
 /obj/structure/sign/warning/radiation/directional/north,
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 8
+/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
+	cycle_id = "grav-gen"
 	},
 /obj/effect/mapping_helpers/airlock/access/all/engineering/construction,
 /turf/open/floor/iron/dark,
@@ -114371,7 +114354,7 @@ wRn
 wRn
 xYp
 xlf
-iwE
+tjs
 xlf
 xYp
 tmm
