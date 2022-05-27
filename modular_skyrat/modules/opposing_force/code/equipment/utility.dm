@@ -150,9 +150,38 @@
 			for rapid healing, a medical night vision HUD for quick identification of injured personnel, \
 			and other supplies helpful for a field medic."
 
+/datum/opposing_force_equipment/gear/ai_module
+	name = "Syndicate AI Law Module"
+	item_type = /obj/item/ai_module/syndicate
+	description = "When used with an upload console, this module allows you to upload priority laws to an artificial intelligence. \
+			Be careful with wording, as artificial intelligences may look for loopholes to exploit."
+
+/datum/opposing_force_equipment/gear/powersink
+	name = "Power Sink"
+	item_type = /obj/item/powersink
+	description = "When screwed to wiring attached to a power grid and activated, this large device lights up and places excessive \
+			load on the grid, causing a station-wide blackout. The sink is large and cannot be stored in most \
+			traditional bags and boxes. Caution: Will explode if the powernet contains sufficient amounts of energy."
+	admin_note = "Drains power from the station, explodes if overloaded."
+
+/datum/opposing_force_equipment/gear/gorilla_cubes
+	name = "Box of Gorilla Cubes"
+	item_type = /obj/item/storage/box/gorillacubes
+	description = "A box with three Waffle Co. brand gorilla cubes. Eat big to get big. \
+			Caution: Product may rehydrate when exposed to water."
+
+/datum/opposing_force_equipment/gear/sentry_gun
+	name = "Toolbox Sentry Gun"
+	item_type = /obj/item/storage/toolbox/emergency/turret
+	description = "A disposable sentry gun deployment system cleverly disguised as a toolbox, apply wrench for functionality."
+
 /datum/opposing_force_equipment/gear/cloak_mod
 	item_type = /obj/item/mod/module/stealth/ninja
 	description = "An upgraded MODsuit cloaking module stolen from the Spider Clan's finest. Consumes less power than the standard, but is obviously illegal."
+
+/datum/opposing_force_equipment/gear/chameleon
+	item_type = /obj/item/mod/module/chameleon
+	description = "A module that enables the user to disguise their MODsuit as any other type. Only works while undeployed."
 
 /datum/opposing_force_equipment/gear/thermal_mod
 	item_type = /obj/item/mod/module/visor/thermal
