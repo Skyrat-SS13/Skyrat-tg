@@ -59,7 +59,7 @@
 	implants = list(/obj/item/implant/mindshield)
 	backpack = /obj/item/storage/backpack/blueshield
 	satchel = /obj/item/storage/backpack/satchel/blueshield
-	duffelbag = /obj/item/storage/backpack/duffel/blueshield
+	duffelbag = /obj/item/storage/backpack/duffelbag/blueshield
 	head = /obj/item/clothing/head/beret/blueshield
 	box = /obj/item/storage/box/survival/security
 	belt = /obj/item/modular_computer/tablet/pda/security

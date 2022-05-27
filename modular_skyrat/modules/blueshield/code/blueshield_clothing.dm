@@ -102,7 +102,7 @@
 	icon_state = "satchel-blueshield"
 	inhand_icon_state = "satchel-sec"
 
-/obj/item/storage/backpack/duffel/blueshield
+/obj/item/storage/backpack/duffelbag/blueshield
 	name = "blueshield duffelbag"
 	desc = "A robust duffelbag issued to Nanotrasen's finest."
 	icon = 'modular_skyrat/modules/blueshield/icons/blueshieldpacks.dmi'
