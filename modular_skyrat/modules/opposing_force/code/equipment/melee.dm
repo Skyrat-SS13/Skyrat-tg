@@ -54,3 +54,8 @@
 	item_type = /obj/item/highfrequencyblade
 	admin_note = "This can gib corpses, and has chance to block.\
 	It also has very good AP and a very low attack delay. Hand this out with caution."
+
+/datum/opposing_force_equipment/melee/meathook
+	name = "Butcher's Meat Hook"
+	item_type = /obj/item/gun/magic/hook
+	description = "A brutal cleaver on a long chain, it allows you to pull people to your location."
