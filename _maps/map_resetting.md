@@ -8,7 +8,6 @@ When performing a reset, it is important to ensure you keep an OLD version of th
 
 ## Critical Changes:
 Critical changes are changes that **NEED** be reset during the main reset PR.
-- Cryopods (inside Recreational/Dormitory area)
 - Security:
 - - Add Ammo Workbench
 - - Add Gun Vendor
@@ -24,6 +23,7 @@ Critical changes are changes that **NEED** be reset during the main reset PR.
 - - Arrival Shuttle Docking Port Resize
 - - Arrival Shuttle Console
 - Central Command Ferry Hangar (inside Arrival area)
+- Barbershop
 
 
 ## Non-Critical Changes
@@ -31,3 +31,4 @@ These are changes that are not integral to gameplay and can be brought over in s
 - Xenoarch Base (Lavaland)
 - Modular pets: E-N (Robotics), Poppy (Engineering), Bumbles (Hydroponics) and Markus (Cargo)
 - Drone Dispensers added to all maps
+- Cryopods (inside Recreational/Dormitory area)
