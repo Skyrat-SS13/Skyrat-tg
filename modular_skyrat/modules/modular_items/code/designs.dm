@@ -8,7 +8,7 @@
   id = "health_hud_aviator"
   build_type = PROTOLATHE
   materials = list(/datum/material/iron = 700, /datum/material/glass = 800, /datum/material/gold = 350)
-  build_path = /obj/item/clothing/glasses/hud/aviator/health
+  build_path = /obj/item/clothing/glasses/hud/ar/aviator/health
   category = list("Equipment")
   departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
@@ -18,7 +18,7 @@
   id = "security_hud_aviator"
   build_type = PROTOLATHE
   materials = list(/datum/material/iron = 700, /datum/material/glass = 800, /datum/material/gold = 350, /datum/material/silver = 200,)
-  build_path = /obj/item/clothing/glasses/hud/aviator/security
+  build_path = /obj/item/clothing/glasses/hud/ar/aviator/security
   category = list("Equipment")
   departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 
@@ -28,7 +28,7 @@
   id = "diagnostic_hud_aviator"
   build_type = PROTOLATHE
   materials = list(/datum/material/iron = 700, /datum/material/glass = 800, /datum/material/gold = 350)
-  build_path = /obj/item/clothing/glasses/hud/aviator/diagnostic
+  build_path = /obj/item/clothing/glasses/hud/ar/aviator/diagnostic
   category = list("Equipment")
   departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
 
@@ -38,7 +38,7 @@
   id = "meson_hud_aviator"
   build_type = PROTOLATHE
   materials = list(/datum/material/iron = 700, /datum/material/glass = 800, /datum/material/gold = 350)
-  build_path = /obj/item/clothing/glasses/hud/aviator/meson
+  build_path = /obj/item/clothing/glasses/hud/ar/aviator/meson
   category = list("Equipment")
   departmental_flags = DEPARTMENT_BITFLAG_CARGO | DEPARTMENT_BITFLAG_ENGINEERING
 
@@ -48,7 +48,7 @@
   id = "science_hud_aviator"
   build_type = PROTOLATHE
   materials = list(/datum/material/iron = 700, /datum/material/glass = 800, /datum/material/gold = 350)
-  build_path = /obj/item/clothing/glasses/hud/aviator/science
+  build_path = /obj/item/clothing/glasses/hud/ar/aviator/science
   category = list("Equipment")
   departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
 
@@ -58,7 +58,7 @@
   id = "health_hud_projector"
   build_type = PROTOLATHE
   materials = list(/datum/material/iron = 700, /datum/material/glass = 800, /datum/material/silver = 350)
-  build_path = /obj/item/clothing/glasses/hud/projector/health
+  build_path = /obj/item/clothing/glasses/hud/ar/projector/health
   category = list("Equipment")
   departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
@@ -68,7 +68,7 @@
   id = "security_hud_projector"
   build_type = PROTOLATHE
   materials = list(/datum/material/iron = 700, /datum/material/glass = 800, /datum/material/silver = 350, /datum/material/silver = 200,)
-  build_path = /obj/item/clothing/glasses/hud/projector/security
+  build_path = /obj/item/clothing/glasses/hud/ar/projector/security
   category = list("Equipment")
   departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 
@@ -78,7 +78,7 @@
   id = "diagnostic_hud_projector"
   build_type = PROTOLATHE
   materials = list(/datum/material/iron = 700, /datum/material/glass = 800, /datum/material/silver = 350)
-  build_path = /obj/item/clothing/glasses/hud/projector/diagnostic
+  build_path = /obj/item/clothing/glasses/hud/ar/projector/diagnostic
   category = list("Equipment")
   departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
 
@@ -88,7 +88,7 @@
   id = "meson_hud_projector"
   build_type = PROTOLATHE
   materials = list(/datum/material/iron = 700, /datum/material/glass = 800, /datum/material/silver = 350)
-  build_path = /obj/item/clothing/glasses/hud/projector/meson
+  build_path = /obj/item/clothing/glasses/hud/ar/projector/meson
   category = list("Equipment")
   departmental_flags = DEPARTMENT_BITFLAG_CARGO | DEPARTMENT_BITFLAG_ENGINEERING
 
@@ -98,6 +98,6 @@
   id = "science_hud_projector"
   build_type = PROTOLATHE
   materials = list(/datum/material/iron = 700, /datum/material/glass = 800, /datum/material/silver = 350)
-  build_path = /obj/item/clothing/glasses/hud/projector/science
+  build_path = /obj/item/clothing/glasses/hud/ar/projector/science
   category = list("Equipment")
   departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
