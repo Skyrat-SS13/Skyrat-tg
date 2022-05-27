@@ -15,8 +15,12 @@
 	exotic_blood = /datum/reagent/toxin/slimejelly
 	damage_overlay_type = ""
 	var/datum/action/innate/regenerate_limbs/regenerate_limbs
+<<<<<<< HEAD
 	var/datum/action/innate/slime_change/slime_change //SKYRAT EDIT ADDITION - CUSTOMIZATION
 	liked_food = MEAT
+=======
+	liked_food = MEAT | BUGS
+>>>>>>> b290e90bd0e (Adds BUG food types (eating ants) (#67202))
 	toxic_food = NONE
 	coldmod = 6   // = 3x cold damage
 	heatmod = 0.5 // = 1/4x heat damage
