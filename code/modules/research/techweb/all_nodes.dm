@@ -593,6 +593,7 @@
 		//SKYRAT EDIT END - RESEARCH DESIGNS
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000)
+	required_experiments = list(/datum/experiment/ordnance/gaseous/bz)
 	discount_experiments = list(/datum/experiment/scanning/random/material/medium/one = 4000)
 
 /datum/techweb_node/anomaly
@@ -1235,6 +1236,7 @@
 		"cybernetic_stomach_tier2",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1000)
+	
 
 /datum/techweb_node/cyber_organs_upgraded
 	id = "cyber_organs_upgraded"
@@ -1249,7 +1251,6 @@
 		"cybernetic_stomach_tier3",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1500)
-	required_experiments = list(/datum/experiment/ordnance/gaseous/bz)
 
 /datum/techweb_node/cyber_implants
 	id = "cyber_implants"
@@ -1279,7 +1280,6 @@
 		"ci-toolset",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
-	required_experiments = list(/datum/experiment/ordnance/gaseous/nitrium)
 
 /datum/techweb_node/combat_cyber_implants
 	id = "combat_cyber_implants"
@@ -1320,7 +1320,7 @@
 	id = "adv_mining"
 	display_name = "Advanced Mining Technology"
 	description = "Efficiency Level 127" //dumb mc references
-	prereq_ids = list("basic_mining", "adv_engi", "adv_power", "adv_plasma")
+	prereq_ids = list("basic_mining", "adv_power", "adv_plasma")
 	design_ids = list(
 		"drill_diamond",
 		"hypermod",
@@ -1444,6 +1444,7 @@
 		"ammoworkbench_disk_lethal", //SKYRAT EDIT ADDITION
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 10000)
+	required_experiments = list(/datum/experiment/ordnance/explosive/pressurebomb)
 
 /datum/techweb_node/adv_weaponry
 	id = "adv_weaponry"
@@ -1455,7 +1456,6 @@
 		"ammo_workbench", //SKYRAT EDIT ADDITION
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 10000)
-	required_experiments = list(/datum/experiment/ordnance/explosive/highyieldbomb)
 
 /datum/techweb_node/electric_weapons
 	id = "electronic_weapons"
