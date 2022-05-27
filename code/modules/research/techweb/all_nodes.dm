@@ -1164,12 +1164,12 @@
 		"security_hud_aviator",
 		"diagnostic_hud_aviator",
 		"meson_hud_aviator",
-    "science_hud_aviator",
+		"science_hud_aviator",
 		"health_hud_projector",
 		"security_hud_projector",
 		"diagnostic_hud_projector",
 		"meson_hud_projector",
-    "science_hud_projector",
+		"science_hud_projector",
 		//SKYRAT EDIT END - RESEARCH DESIGNS
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1500)
