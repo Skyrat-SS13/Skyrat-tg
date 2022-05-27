@@ -29,6 +29,11 @@
 
 	access |= ACCESS_WEAPONS
 
+/datum/id_trim/job/atmospheric_technician/New()
+	. = ..()
+
+	minimal_access |= ACCESS_ENGINE_EQUIP
+
 /datum/id_trim/job/chief_medical_officer/New()
 	. = ..()
 
@@ -48,7 +53,7 @@
 /datum/id_trim/job/quartermaster/New()
 	. = ..()
 
-	access |= ACCESS_WEAPONS
+	access |= list(ACCESS_BRIG_ENTRACE, ACCESS_COMMAND, ACCESS_KEYCARD_AUTH, ACCESS_WEAPONS)
 
 /datum/id_trim/job/blueshield
 	assignment = "Blueshield"
