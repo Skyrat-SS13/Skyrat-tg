@@ -1,3 +1,4 @@
+
 //#define LOWMEMORYMODE //uncomment this to load centcom and runtime station and thats it.
 
 #include "map_files\generic\CentCom_skyrat.dmm" //SKYRAT EDIT ADDITION - SMMS
@@ -23,7 +24,6 @@
 		#include "map_files\Blueshift\BlueShift_upper.dmm"
 		#include "map_files\Blueshift\BlueShift_middle.dmm"
 		#include "map_files\Blueshift\BlueShift_lower.dmm"
-		#include "map_files\NSSJourney\NSSJourney.dmm"
 		#include "map_files\tramstation\tramstation_skyrat.dmm"
 		// The mining maps
 		#include "map_files\Mining\Icemoon.dmm"

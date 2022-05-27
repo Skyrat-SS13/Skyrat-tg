@@ -215,7 +215,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	init_stage_completed = 0
 	var/mc_started = FALSE
 
-	to_chat(world, span_boldannounce("Initializing subsystems..."))
+	add_startup_message("Initializing subsystems...") //SKYRAT EDIT CHANGE - Custom HTML Lobby Screen
 
 	var/list/stage_sorted_subsystems = new(INITSTAGE_MAX)
 	for (var/i in 1 to INITSTAGE_MAX)
@@ -251,6 +251,8 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 				SetRunLevel(1)
 			// Loop.
 			Master.StartProcessing(0)
+			add_startup_message("Clearing clutter...") //SKYRAT EDIT ADDITION
+
 
 	var/time = (REALTIMEOFDAY - start_timeofday) / 10
 

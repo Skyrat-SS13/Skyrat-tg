@@ -46,6 +46,7 @@
 #define UNIT_TEST_FAILED 1
 #define UNIT_TEST_SKIPPED 2
 
+#define TEST_PRE 0
 #define TEST_DEFAULT 1
 #define TEST_DEL_WORLD INFINITY
 
@@ -100,9 +101,11 @@
 #include "holidays.dm"
 #include "hydroponics_harvest.dm"
 #include "hydroponics_self_mutations.dm"
+#include "hydroponics_validate_genes.dm"
 #include "keybinding_init.dm"
 #include "load_map_security.dm"
 #include "machine_disassembly.dm"
+#include "mapping.dm"
 #include "medical_wounds.dm"
 #include "merge_type.dm"
 #include "metabolizing.dm"
@@ -110,6 +113,7 @@
 #include "modsuit.dm"
 #include "modular_map_loader.dm"
 #include "ntnetwork_tests.dm"
+#include "nuke_cinematic.dm"
 #include "objectives.dm"
 #include "outfit_sanity.dm"
 #include "paintings.dm"

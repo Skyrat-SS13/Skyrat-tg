@@ -24,6 +24,7 @@
 /obj/structure/sauna_oven/Destroy()
 	if(lit)
 		STOP_PROCESSING(SSobj, src)
+	QDEL_NULL(particles)
 	return ..()
 
 /obj/structure/sauna_oven/attack_hand(mob/user)
@@ -51,9 +52,9 @@
 
 /obj/structure/sauna_oven/attackby(obj/item/used_item, mob/user)
 	if(used_item.tool_behaviour == TOOL_WRENCH)
-		to_chat(user, span_notice("You begin to deconstruct [src]."))
+		balloon_alert(user, "deconstructing...")
 		if(used_item.use_tool(src, user, 60, volume = 50))
-			to_chat(user, span_notice("You successfully deconstructed [src]."))
+			balloon_alert(user, "deconstructed")
 			new /obj/item/stack/sheet/mineral/wood(get_turf(src), 30)
 			qdel(src)
 
@@ -68,12 +69,12 @@
 			some water to [src]."))
 			water_amount += 5 * SAUNA_WATER_PER_WATER_UNIT
 		else
-			to_chat(user, span_warning("There's no water in [reagent_container]"))
+			balloon_alert(user, "no water!")
 
 	else if(istype(used_item, /obj/item/stack/sheet/mineral/wood))
 		var/obj/item/stack/sheet/mineral/wood/wood = used_item
 		if(fuel_amount > SAUNA_MAXIMUM_FUEL)
-			to_chat(user, span_warning("You can't fit any more of [used_item] in [src]!"))
+			balloon_alert(user, "it's full!")
 			return
 		fuel_amount += SAUNA_LOG_FUEL * wood.amount
 		wood.use(wood.amount)
@@ -98,14 +99,27 @@
 /obj/structure/sauna_oven/process()
 	if(water_amount)
 		water_amount--
+		update_steam_particles()
 		var/turf/open/pos = get_turf(src)
 		if(istype(pos) && pos.air.return_pressure() < 2*ONE_ATMOSPHERE)
 			pos.atmos_spawn_air("water_vapor=10;TEMP=[SAUNA_H2O_TEMP]")
 	fuel_amount--
 	if(fuel_amount <= 0)
 		lit = FALSE
+		update_steam_particles()
 		STOP_PROCESSING(SSobj, src)
 		update_icon()
+
+/obj/structure/sauna_oven/proc/update_steam_particles()
+	if(particles)
+		if(lit && water_amount)
+			return
+		QDEL_NULL(particles)
+		return
+
+	if(lit && water_amount)
+		particles = new /particles/smoke/steam/mild
+		particles.position = list(0, 6, 0)
 
 #undef SAUNA_H2O_TEMP
 #undef SAUNA_LOG_FUEL

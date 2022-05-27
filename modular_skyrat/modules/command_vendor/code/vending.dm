@@ -46,7 +46,7 @@
 		/obj/item/clothing/neck/mantle/bsmantle = 1,
 		/obj/item/storage/backpack/blueshield = 1,
 		/obj/item/storage/backpack/satchel/blueshield = 1,
-		/obj/item/storage/backpack/duffel/blueshield = 1,
+		/obj/item/storage/backpack/duffelbag/blueshield = 1,
 		/obj/item/clothing/shoes/laceup = 1
 		)
 	access_lists["[ACCESS_HOP]"] = list( // Best head btw
@@ -65,7 +65,7 @@
 		/obj/item/clothing/neck/mantle/hopmantle = 1,
 		/obj/item/storage/backpack/head_of_personnel = 1,
 		/obj/item/storage/backpack/satchel/head_of_personnel = 1,
-		/obj/item/storage/backpack/duffel/head_of_personnel = 1,
+		/obj/item/storage/backpack/duffelbag/head_of_personnel = 1,
 		/obj/item/clothing/shoes/sneakers/brown = 1
 		)
 	access_lists["[ACCESS_CMO]"] = list(
@@ -146,7 +146,7 @@
 		/obj/item/clothing/suit/armor/centcom_formal/nt_consultant = 1
 		)
 
-	access_lists["[ACCESS_HEADS]"] = list(
+	access_lists["[ACCESS_COMMAND]"] = list(
 		/obj/item/clothing/head/imperial = 5,
 		/obj/item/clothing/head/imperial/grey = 5,
 		/obj/item/clothing/head/imperial/red = 5,

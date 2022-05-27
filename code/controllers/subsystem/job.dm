@@ -118,7 +118,7 @@ SUBSYSTEM_DEF(job)
 		if(!job.config_check())
 			continue
 		if(!job.map_check()) //Even though we initialize before mapping, this is fine because the config is loaded at new
-			testing("Removed [job.type] due to map config")
+			log_job_debug("Removed [job.title] due to map config")
 			continue
 		new_all_occupations += job
 		name_occupations[job.title] = job
@@ -613,9 +613,6 @@ SUBSYSTEM_DEF(job)
 	for(var/datum/job/job as anything in joinable_occupations)
 		var/regex/jobs = new("[job.title]=(-1|\\d+),(-1|\\d+)")
 		jobs.Find(jobstext)
-		if(length(jobs.group)<2)
-			stack_trace("failed to find a job entry for [job.title] in jobs.txt")
-			continue
 		job.total_positions = text2num(jobs.group[1])
 		job.spawn_positions = text2num(jobs.group[2])
 
@@ -674,6 +671,7 @@ SUBSYSTEM_DEF(job)
 	to_chat(player, "<span class='infoplain'><b>You have failed to qualify for any job you desired.</b></span>")
 	unassigned -= player
 	player.ready = PLAYER_NOT_READY
+	player.client << output(player.ready, "lobby_browser:imgsrc") //SKYRAT EDIT ADDITION
 
 
 /datum/controller/subsystem/job/Recover()
@@ -851,8 +849,8 @@ SUBSYSTEM_DEF(job)
 	var/obj/item/id_slot = new_captain.get_item_by_slot(ITEM_SLOT_ID)
 	if(id_slot)
 		var/obj/item/card/id/id_card = id_slot.GetID()
-		if(!(ACCESS_HEADS in id_card.access))
-			id_card.add_wildcards(list(ACCESS_HEADS), mode=FORCE_ADD_ALL)
+		if(!(ACCESS_COMMAND in id_card.access))
+			id_card.add_wildcards(list(ACCESS_COMMAND), mode=FORCE_ADD_ALL)
 
 	assigned_captain = TRUE
 

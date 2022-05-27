@@ -437,9 +437,9 @@ GLOBAL_LIST_EMPTY(customizable_races)
 		stop_wagging_tail(H)
 	. = ..()
 
-////////////////
-//Tail Wagging//
-////////////////
+/*
+*	TAIL WAGGING
+*/
 
 /datum/species/proc/can_wag_tail(mob/living/carbon/human/H)
 	if(!H) //Somewhere in the core code we're getting those procs with H being null

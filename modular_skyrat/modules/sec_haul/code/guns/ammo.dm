@@ -9,9 +9,9 @@
 	design_ids = list("smartgun")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 3000)
 
-//////////////////////
-//6mm
-//////////////////////
+/*
+*	6mm
+*/
 
 /obj/item/ammo_box/advanced/b6mm
 	name = "6.3mm ammo box"
@@ -32,9 +32,9 @@
 	icon_state = "box10mm-hv"
 	ammo_type = /obj/item/ammo_casing/b6mm/ihdf
 
-//////////////////////
-//9mm
-//////////////////////
+/*
+*	9mm
+*/
 
 /obj/item/ammo_box/advanced/b9mm
 	name = "9x19mm FMJ box"
@@ -50,7 +50,7 @@
 	ammo_type = /obj/item/ammo_casing/b9mm/hp
 
 /obj/item/ammo_box/advanced/b9mm/rubber
-	name = "9x19mm Rubber box"
+	name = "9x19mm rubber box"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammoboxes.dmi'
 	icon_state = "pistol_r"
 	ammo_type = /obj/item/ammo_casing/b9mm/rubber
@@ -61,25 +61,25 @@
 	icon_state = "pistol_hv"
 	ammo_type = /obj/item/ammo_casing/b9mm/ihdf
 
-//////////////////////
-//10mm
-//////////////////////
+/*
+*	10mm
+*/
 
 /obj/item/ammo_box/advanced/b10mm
-	name = "10mm Auto box"
+	name = "10mm auto box"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammoboxes.dmi'
 	icon_state = "box50"
 	ammo_type = /obj/item/ammo_casing/b10mm
 	max_ammo = 30
 
 /obj/item/ammo_box/advanced/b10mm/hp
-	name = "10mm Auto JHP box"
+	name = "10mm auto JHP box"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammoboxes.dmi'
 	icon_state = "box50-lethal"
 	ammo_type = /obj/item/ammo_casing/b10mm/hp
 
 /obj/item/ammo_box/advanced/b10mm/rubber
-	name = "10mm Auto Rubber box"
+	name = "10mm auto rubber box"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammoboxes.dmi'
 	icon_state = "box50-rubber"
 	ammo_type = /obj/item/ammo_casing/b10mm/rubber
@@ -90,9 +90,9 @@
 	icon_state = "box50-hv"
 	ammo_type = /obj/item/ammo_casing/b10mm/ihdf
 
-//////////////////////
-//12mm
-//////////////////////
+/*
+*	12mm
+*/
 
 /obj/item/ammo_box/advanced/b12mm
 	name = "12.7x30mm FMJ box"
@@ -102,7 +102,7 @@
 	max_ammo = 15
 
 /obj/item/ammo_box/advanced/b12mm/rubber
-	name = "12.7x30mm Beanbag box"
+	name = "12.7x30mm beanbag box"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammoboxes.dmi'
 	icon_state = "magnum_r"
 	ammo_type = /obj/item/ammo_casing/b12mm/rubber
@@ -113,9 +113,10 @@
 	icon_state = "magnum_p"
 	ammo_type = /obj/item/ammo_casing/b12mm/hp
 
-//////////////////////
-//SMARTGUN
-//////////////////////
+/*
+*	S.M.A.R.T. RIFLE
+*/
+
 /datum/design/smartgun
 	name = "\improper S.M.A.R.T. Rifle Shock-Rails"
 	id = "smartgun"
@@ -123,19 +124,20 @@
 	materials = list(/datum/material/silver = 10000, /datum/material/gold = 10000, /datum/material/glass = 10000)
 	build_path = /obj/item/ammo_box/advanced/smartgun
 	category = list("Ammo")
-	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
+	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 
 /obj/item/ammo_box/advanced/smartgun
-	name = "5mm Shock-Rail box"
+	name = "5mm shock-rail box"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammoboxes.dmi'
 	icon_state = "smartgun_chain"
 	ammo_type = /obj/item/ammo_casing/smartgun
 	multiple_sprites = AMMO_BOX_PER_BULLET
 	max_ammo = 4
 
-////////////////////
-//MULTI SPRITE MAGS
-///////////////////
+/*
+*	MULTI-SPRITE MAGS
+*/
+
 /obj/item/ammo_box/magazine/multi_sprite
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	desc = "An advanced magazine with smart type displays. Alt+click to reskin it."
@@ -143,7 +145,7 @@
 	item_flags = NO_MAT_REDEMPTION
 	var/round_type = AMMO_TYPE_LETHAL
 	var/base_name = ""
-	var/list/possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_HOLLOWPOINT, AMMO_TYPE_RUBBER, AMMO_TYPE_IHDF, AMMO_TYPE_INCENDIARY, AMMO_TYPE_AP)
+	var/list/possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_HOLLOWPOINT, AMMO_TYPE_RUBBER, AMMO_TYPE_IHDF)
 
 /obj/item/ammo_box/magazine/multi_sprite/Initialize()
 	. = ..()
@@ -206,9 +208,9 @@
 	if(stored_ammo.len)
 		. += "[initial(icon_state)]_[round_type]"
 
-////////////////////////////
-///////////14 GAUGE/////////
-////////////////////////////
+/*
+*	14 GAUGE
+*/
 
 /obj/item/ammo_casing/s14gauge
 	name = "14 gauge shotgun slug"

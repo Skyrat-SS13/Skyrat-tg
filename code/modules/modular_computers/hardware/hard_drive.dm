@@ -17,9 +17,9 @@
 		program.computer = null
 
 /obj/item/computer_hardware/hard_drive/proc/install_default_programs()
-	store_file(new/datum/computer_file/program/computerconfig(src)) // Computer configuration utility, allows hardware control and displays more info than status bar
-	store_file(new/datum/computer_file/program/ntnetdownload(src)) // NTNet Downloader Utility, allows users to download more software from NTNet repository
-	store_file(new/datum/computer_file/program/filemanager(src)) // File manager, allows text editor functions and basic file manipulation.
+	store_file(new /datum/computer_file/program/computerconfig(src)) // Computer configuration utility, allows hardware control and displays more info than status bar
+	store_file(new /datum/computer_file/program/ntnetdownload(src)) // NTNet Downloader Utility, allows users to download more software from NTNet repository
+	store_file(new /datum/computer_file/program/filemanager(src)) // File manager, allows text editor functions and basic file manipulation.
 
 /obj/item/computer_hardware/hard_drive/examine(user)
 	. = ..()
@@ -178,25 +178,36 @@
 	store_file(new /datum/computer_file/program/crew_manifest(src)) // SKYRAT EDIT ADD
 
 // For borg integrated tablets. No downloader.
-/obj/item/computer_hardware/hard_drive/small/integrated/install_default_programs()
+/obj/item/computer_hardware/hard_drive/small/ai/install_default_programs()
 	var/datum/computer_file/program/messenger/messenger = new(src)
 	messenger.is_silicon = TRUE
 	store_file(messenger)
 
-/obj/item/computer_hardware/hard_drive/small/integrated/borg/install_default_programs()
+/obj/item/computer_hardware/hard_drive/small/robot/install_default_programs()
 	store_file(new /datum/computer_file/program/computerconfig(src)) // Computer configuration utility, allows hardware control and displays more info than status bar
 	store_file(new /datum/computer_file/program/filemanager(src)) // File manager, allows text editor functions and basic file manipulation.
 	store_file(new /datum/computer_file/program/robotact(src))
-	var/datum/computer_file/program/messenger/messenger = new(src)
+	store_file(new /datum/computer_file/program/crew_manifest(src)) // SKYRAT EDIT ADDITION - Manifests for cyborgs
+	/* SKYRAT EDIT ADDITION Start- Returns Messenger to borgs */
+	var/datum/computer_file/program/messenger/messenger = new(src) 
 	messenger.is_silicon = TRUE
 	store_file(messenger)
+	/* SKYRAT EDIT ADDITION End- Returns Messenger to borgs */
 
 // Syndicate variant - very slight better
 /obj/item/computer_hardware/hard_drive/portable/syndicate
 	desc = "An efficient SSD for portable devices developed by a rival organisation."
 	power_usage = 8
 	max_capacity = 70
+	device_type = MC_HDD // SKYRAT EDIT
 	var/datum/opposing_force/opfor_data // Syndicate hard drive has the user's data baked directly into it on creation //SKYRAT EDIT - OPFOR, NOT TRAITOR
+
+/obj/item/computer_hardware/hard_drive/portable/syndicate/install_default_programs()
+	. = ..()
+	store_file(new/datum/computer_file/program/computerconfig(src))
+	store_file(new/datum/computer_file/program/ntnetdownload/syndicate(src))
+	store_file(new/datum/computer_file/program/filemanager(src))
+	store_file(new/datum/computer_file/program/radar/fission360(src))
 
 /// For tablets given to nuke ops
 /obj/item/computer_hardware/hard_drive/small/nukeops

@@ -53,7 +53,7 @@
 	icon_state = "cultrobes"
 	inhand_icon_state = "cultrobes"
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS
-	armor = list(MELEE = 50, BULLET = 10, LASER = 10, ENERGY = 10, BOMB = 0, BIO = 0, FIRE = 80, ACID = 80, WOUND = 20) //Chaplain Riot armor
+	armor = list(MELEE = 50, BULLET = 10, LASER = 10, ENERGY = 10, BOMB = 0, BIO = 0, FIRE = 80, ACID = 80, WOUND = 20) // Chaplain Riot armor
 	allowed = list(/obj/item/storage/book/bible, /obj/item/nullrod, /obj/item/reagent_containers/food/drinks/bottle/holywater, /obj/item/storage/fancy/candle_box, /obj/item/candle, /obj/item/tank/internals/emergency_oxygen, /obj/item/tank/internals/plasmaman)
 	hoodtype = /obj/item/clothing/head/hooded/cultlain_hood
 
@@ -64,7 +64,7 @@
 	body_parts_covered = HEAD
 	flags_inv = HIDEFACE|HIDEHAIR|HIDEEARS
 	flags_cover = HEADCOVERSEYES
-	armor = list(MELEE = 50, BULLET = 10, LASER = 10, ENERGY = 10, BOMB = 0, BIO = 0, FIRE = 80, ACID = 80) //Chaplain Riot Helmet
+	armor = list(MELEE = 50, BULLET = 10, LASER = 10, ENERGY = 10, BOMB = 0, BIO = 0, FIRE = 80, ACID = 80) // Chaplain Riot Helmet
 
 /obj/item/storage/box/holy/narsian
 	name = "ancient kit"
@@ -138,7 +138,7 @@
 	attack_verb_continuous = list("whipped", "repented", "lashed", "flagellated")
 	slot_flags = ITEM_SLOT_BELT
 	var/praying = FALSE
-	var/deity_name = "Coderbus" //This is the default, hopefully won't actually appear if the religion subsystem is running properly
+	var/deity_name = "Coderbus" // This is the default, hopefully won't actually appear if the religion subsystem is running properly
 
 /obj/item/nullrod/rosary/Initialize()
 	.=..()
@@ -147,12 +147,12 @@
 
 /obj/item/nullrod/rosary/attack(mob/living/target, mob/living/user, params)
 	if(!user.mind || !user.mind.holy_role)
-		to_chat(user, span_notice("You are not close enough with [deity_name] to use [src]."))
+		balloon_alert(user, "not holy enough!")
 		return
 	if(user.combat_mode)
 		return ..()
 	if(praying)
-		to_chat(user, span_notice("You are already using [src]."))
+		balloon_alert(user, "already in use!")
 		return
 
 	user.visible_message(span_info("[user] kneels[target == user ? null : " next to [target]"] and begins to utter a prayer to [deity_name]."), \
@@ -168,7 +168,7 @@
 		target.adjustFireLoss(-5)
 		praying = FALSE
 	else
-		to_chat(user, span_notice("Your prayer to [deity_name] was interrupted."))
+		balloon_alert(user, "interrupted!")
 		praying = FALSE
 
 /obj/item/nullrod/scythe/sickle

@@ -12,6 +12,7 @@
 	new /obj/item/clothing/neck/petcollar(src)
 	new /obj/item/pet_carrier(src)
 	new /obj/item/storage/bag/garment/captain(src)
+	new /obj/item/computer_hardware/hard_drive/portable/command/captain(src)
 	new /obj/item/storage/box/silver_ids(src)
 	new /obj/item/radio/headset/heads/captain/alt(src)
 	new /obj/item/radio/headset/heads/captain(src)
@@ -96,7 +97,7 @@
 
 /obj/structure/closet/secure_closet/security
 	name = "security officer's locker"
-	req_access = list(ACCESS_SECURITY)
+	req_access = list(ACCESS_BRIG)
 	icon_state = "sec"
 
 /obj/structure/closet/secure_closet/security/PopulateContents()
@@ -196,7 +197,7 @@
 
 /obj/structure/closet/secure_closet/detective
 	name = "\improper detective's cabinet"
-	req_access = list(ACCESS_FORENSICS)
+	req_access = list(ACCESS_DETECTIVE)
 	icon_state = "cabinet"
 	resistance_flags = FLAMMABLE
 	max_integrity = 70
@@ -229,7 +230,7 @@
 
 /obj/structure/closet/secure_closet/brig
 	name = "brig locker"
-	req_access = list(ACCESS_BRIG)
+	req_one_access = list(ACCESS_BRIG)
 	anchored = TRUE
 	var/id = null
 
@@ -281,8 +282,7 @@
 /obj/structure/closet/secure_closet/evidence
 	anchored = TRUE
 	name = "Secure Evidence Closet"
-	req_access_txt = "0"
-	req_one_access_txt = list(ACCESS_ARMORY, ACCESS_FORENSICS)
+	req_one_access = list("armory","detective")
 
 /obj/structure/closet/secure_closet/brig/PopulateContents()
 	..()
@@ -312,7 +312,7 @@
 /obj/structure/closet/secure_closet/contraband/heads
 	anchored = TRUE
 	name = "Contraband Locker"
-	req_access = list(ACCESS_HEADS)
+	req_access = list(ACCESS_COMMAND)
 
 /obj/structure/closet/secure_closet/armory1
 	name = "armory armor locker"

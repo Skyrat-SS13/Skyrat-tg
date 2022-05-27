@@ -153,9 +153,9 @@
 	for(var/obj/item/dogborg_nose/dognose in borg.model.modules)
 		borg.model.remove_module(dognose, TRUE)
 
-/////////////////////////////////////////////
-/// Advanced Engineering Cyborg Materials ///
-/////////////////////////////////////////////
+/*
+*	ADVANCED ENGINEERING CYBORG MATERIALS
+*/
 
 #define ENGINEERING_CYBORG_CHARGE_PER_STACK 1000
 
