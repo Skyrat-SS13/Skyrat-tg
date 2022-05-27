@@ -35,8 +35,6 @@
 	// Force show the panel to see if there are any errors
 	winset(src, "output", "is-disabled=1&is-visible=0")
 	winset(src, "browseroutput", "is-disabled=0;is-visible=1")
-<<<<<<< HEAD
-=======
 
 /client/verb/refresh_tgui()
 	set name = "Refresh TGUI"
@@ -45,4 +43,3 @@
 	for(var/window_id in tgui_windows)
 		var/datum/tgui_window/window = tgui_windows[window_id]
 		window.reinitialize()
->>>>>>> f761861e5da ([NO GBP] Removes a debug message admins to reload TGUI button)
