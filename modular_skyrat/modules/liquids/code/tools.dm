@@ -26,3 +26,16 @@
 	epicenter.add_liquid(choice, volume)
 	message_admins("[ADMIN_LOOKUPFLW(usr)] spawned liquid at [epicenter.loc] ([choice] - [volume]).")
 	log_admin("[key_name(usr)] spawned liquid at [epicenter.loc] ([choice] - [volume]).")
+
+/client/proc/remove_liquid(turf/epicenter in world)
+	set name = "Remove Liquids"
+	set category = "Admin.Game"
+	set desc = "Fixes air in specified radius."
+
+	var/range = tgui_input_number(usr, "Enter range:", "Range selection", 2)
+
+	for(var/obj/effect/abstract/liquid_turf/liquid in range(range, epicenter))
+		qdel(liquid, TRUE)
+
+	message_admins("[key_name_admin(usr)] removed liquids with range [range] in [epicenter.loc.name]")
+	log_game("[key_name_admin(usr)] removed liquids with range [range] in [epicenter.loc.name]")

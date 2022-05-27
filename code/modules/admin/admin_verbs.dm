@@ -21,6 +21,7 @@ GLOBAL_PROTECT(admin_verbs_default)
 	/client/proc/tag_datum_mapview,
 	/client/proc/debugstatpanel,
 	/client/proc/fix_air, /*resets air in designated radius to its default atmos composition*/
+	/client/proc/remove_liquid, // SKYRAT EDIT ADDITION
 	/client/proc/revokebunkerbypass, //SKYRAT EDIT ADDITION - PANICBUNKER
 	/client/proc/addbunkerbypass, //SKYRAT EDIT ADDITION - PANICBUNKER
 	/client/proc/requests
