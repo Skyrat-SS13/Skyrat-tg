@@ -1,32 +1,33 @@
 # Skyrat Map Information
 
-## Modifications to /tg/ maps
+## Map resetting /TG/ maps
 
-The list of items that are modular requiring adding/modifying to /tg/ maps:
+TG maps do periodically need reset to standard, say, in the event of a mass renaming or game critical department update. This is split into **TWO** categories: **Critical** and **Non-Critical**.
 
-- Positronic Alert Consoles (inside Robotics area)
-- Command Vendor (inside Meeting area)
-- LustWish Vendor (inside Recreational/Dormitory area)
-- Barbershop Room (including the vendors, chairs, mirrors, and more)
-- NanoTrasen Consultant's Office
-- Blueshield Office
+When performing a reset, it is important to ensure you keep an OLD version of the reset map, a version that is untouched, so that people can reference this map to bring over non-critical changes. This will be deleted the next reset and redone.
+
+## Critical Changes:
+Critical changes are changes that **NEED** be reset during the main reset PR.
 - Cryopods (inside Recreational/Dormitory area)
-- Stasis Beds to Stasis Pods
-- Armory/Gun Change
-- Prison Change
-- Security Medical Room
-- Arrival Tram and Console (inside Arrival area)
+- Security:
+- - Add Ammo Workbench
+- - Add Gun Vendor
+- Armory:
+- - Replace Disablers With Smartgun
+- - Replace Shotguns With Shotgun Spawners
+- - Replace Energy Guns With MCRS
+- - Replace Laser Guns With CMGs
+- Security Medics Room:
+- - Security Medics Spawner
+- - Security Medics Locker
+- Arrival Docks:
+- - Arrival Shuttle Docking Port Resize
+- - Arrival Shuttle Console
 - Central Command Ferry Hangar (inside Arrival area)
-- Update roundstart_template variable on mining/public/labour stationary docks: mining/x > mining/skyrat, mining_common/x > mining_common/skyrat, labour/x > labour/skyrat , mining/large > mining/large/skyrat
-- Replace the security outposts with their departmental guards
+
+
+## Non-Critical Changes
+These are changes that are not integral to gameplay and can be brought over in subsequent PRs.
 - Xenoarch Base (Lavaland)
 - Modular pets: E-N (Robotics), Poppy (Engineering), Bumbles (Hydroponics) and Markus (Cargo)
 - Drone Dispensers added to all maps
-
-## Rules
-
-- If a map consists of multiple z-levels, each z-level should be a separate dmm file rather than one dmm with multiple z-levels.
-Reason: MapDiffBot is unable to load dmms with multiple z-levels within it. This makes viewing changes needlessly difficult.
-
-- Modular (Skyrat-exclusive) station-maps should aim to only be one z-level; if the map creator is going to use more than one z-level, the maximum amount of z-levels for the station will be two.
-Reason: There can be issues when multiple z-levels are considered station-level z-levels; additionally, more station z-levels means less space z-levels.
