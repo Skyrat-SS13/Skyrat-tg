@@ -53,7 +53,7 @@
 /datum/id_trim/job/quartermaster/New()
 	. = ..()
 
-	minimal_access |= list(ACCESS_BRIG_ENTRACE, ACCESS_COMMAND, ACCESS_KEYCARD_AUTH, ACCESS_WEAPONS)
+	minimal_access |= list(ACCESS_BRIG_ENTRANCE, ACCESS_COMMAND, ACCESS_KEYCARD_AUTH, ACCESS_WEAPONS)
 
 /datum/id_trim/job/blueshield
 	assignment = "Blueshield"
