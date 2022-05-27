@@ -95,8 +95,8 @@
 /obj/item/clothing/suit/armor/vest/capcarapace/naval
 	name = "naval carapace"
 	desc = "A carapace worn by Naval Command members."
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/neck.dmi'
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/neck.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	icon_state = "naval_carapace"
 
 // GLASSES

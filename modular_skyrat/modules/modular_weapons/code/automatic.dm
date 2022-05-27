@@ -1,8 +1,6 @@
-////////////////////////
-//ID: MODULAR_WEAPONS //
-////////////////////////
-
-// Magazines
+/*
+*	MAGAZINES
+*/
 
 /obj/item/ammo_box/magazine/multi_sprite/cfa_wildcat
 	name = "CFA Wildcat magazine (.34)"
@@ -30,11 +28,12 @@
 /obj/item/ammo_box/magazine/multi_sprite/cfa_wildcat/empty
 	start_empty = 1
 
-///////////////
-//  Wildcat  //
-///////////////
-// 3rnd burst .32 calibre, 15 damage.
-// Fills the role of a low damage, high magazine capacity magdump gun.
+/*
+*	WILDCAT
+*	3rnd burst .32 calibre, 15 damage.
+*	Fills the role of a low damage, high magazine capacity magdump gun.
+*/
+
 /obj/item/gun/ballistic/automatic/cfa_wildcat
 	name = "\improper CFA Wildcat"
 	desc = "A robust roller-delayed SMG chambered for .34 ammunition."
@@ -58,9 +57,9 @@
 /obj/item/gun/ballistic/automatic/cfa_wildcat/no_mag
 	spawnwithmagazine = FALSE
 
-///////////////
-//    MP7    //
-///////////////
+/*
+*	CFA LYNX
+*/
 
 /obj/item/gun/ballistic/automatic/cfa_lynx
 	name = "\improper CFA Lynx"

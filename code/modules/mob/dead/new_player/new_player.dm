@@ -3,7 +3,7 @@
 	invisibility = INVISIBILITY_ABSTRACT
 	density = FALSE
 	stat = DEAD
-	hud_type = /datum/hud/new_player
+	//hud_type = /datum/hud/new_player SKYRAT EDIT REMOVAL
 	hud_possible = list()
 
 	var/ready = FALSE
@@ -40,6 +40,7 @@
 /mob/dead/new_player/prepare_huds()
 	return
 
+/* SKYRAT EDIT REMOVAL - MOVED TO MODULAR
 /mob/dead/new_player/Topic(href, href_list[])
 	if(src != usr)
 		return
@@ -111,7 +112,7 @@
 	if(href_list["votepollref"])
 		var/datum/poll_question/poll = locate(href_list["votepollref"]) in GLOB.polls
 		vote_on_poll_handler(poll, href_list)
-
+*/
 
 //When you cop out of the round (NB: this HAS A SLEEP FOR PLAYER INPUT IN IT)
 /mob/dead/new_player/proc/make_me_an_observer()
@@ -126,6 +127,7 @@
 	var/this_is_like_playing_right = alert(usr, "Are you sure you wish to observe?[less_input_message]", "Observe", "Yes", "No") //SKYRAT EDIT CHANGE
 	if(QDELETED(src) || !src.client || this_is_like_playing_right != "Yes")
 		ready = PLAYER_NOT_READY
+		show_title_screen() // SKYRAT EDIT ADDITION
 		return FALSE
 
 	var/mob/dead/observer/observer = new()
@@ -434,6 +436,7 @@
 
 
 /mob/dead/new_player/proc/close_spawn_windows()
+	hide_title_screen() // SKYRAT EDIT ADDITION
 	src << browse(null, "window=latechoices") //closes late choices window (Hey numbnuts go make this tgui)
 	src << browse(null, "window=randjob") //closes the random job window
 
@@ -472,14 +475,12 @@
 	// First we detain them by removing all the verbs they have on client
 	for (var/v in client.verbs)
 		var/procpath/verb_path = v
-		if (!(verb_path in GLOB.stat_panel_verbs))
-			remove_verb(client, verb_path)
+		remove_verb(client, verb_path)
 
 	// Then remove those on their mob as well
 	for (var/v in verbs)
 		var/procpath/verb_path = v
-		if (!(verb_path in GLOB.stat_panel_verbs))
-			remove_verb(src, verb_path)
+		remove_verb(src, verb_path)
 
 	// Then we create the interview form and show it to the client
 	var/datum/interview/I = GLOB.interviews.interview_for_client(client)

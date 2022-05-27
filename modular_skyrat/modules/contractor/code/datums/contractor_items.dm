@@ -213,3 +213,11 @@
 	item_icon = "magnet"
 	limited = 1
 	cost = 2
+
+/datum/contractor_item/mod_scorpion_hook
+	name = "SCORPION Hook Module"
+	desc = "A module that allows you to launch a hardlight hook from your MODsuit, pulling a target into range of your baton."
+	item = /obj/item/mod/module/scorpion_hook
+	item_icon = "arrow-left" //replace if fontawesome gets an actual hook icon
+	limited = 1
+	cost = 3

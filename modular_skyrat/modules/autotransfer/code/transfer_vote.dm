@@ -13,18 +13,25 @@
 		CRASH("[type] wasn't passed a \"toggler\" mob to toggle_votable.")
 	if(!check_rights_for(toggler.client, R_ADMIN))
 		return FALSE
+
+
+	CONFIG_SET(flag/allow_vote_transfer, !CONFIG_GET(flag/allow_vote_transfer))
 	return TRUE
 
 /datum/vote/transfer_vote/is_config_enabled()
-	return CONFIG_GET(flag/autotransfer)
+	return CONFIG_GET(flag/autotransfer) && CONFIG_GET(flag/allow_vote_transfer)
 
 /datum/vote/transfer_vote/can_be_initiated(mob/by_who, forced)
 	. = ..()
 	if(!.)
 		return FALSE
 
-	if(!forced && !CONFIG_GET(flag/autotransfer) && !by_who && !check_rights_for(by_who.client, R_ADMIN))
-		to_chat(by_who, span_warning("Transfer voting is disabled."))
+	if(forced)
+		return TRUE
+
+	if(!CONFIG_GET(flag/autotransfer) || !CONFIG_GET(flag/allow_vote_transfer))
+		if(by_who)
+			to_chat(by_who, span_warning("Transfer voting is disabled."))
 		return FALSE
 
 	return TRUE

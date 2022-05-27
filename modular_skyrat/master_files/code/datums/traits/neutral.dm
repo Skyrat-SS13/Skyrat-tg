@@ -1,6 +1,6 @@
-#define TRAIT_HYDRA_HEADS "hydrahead" //We still dont have a centralised trait file
+#define TRAIT_HYDRA_HEADS "hydrahead" // We still dont have a centralised trait file
 
-//SKYRAT NEUTRAL TRAITS
+// SKYRAT NEUTRAL TRAITS
 /datum/quirk/excitable
 	name = "Excitable!"
 	desc = "Head patting makes your tail wag! You're very excitable! WAG WAG."
@@ -31,7 +31,7 @@
 	mob_trait = TRAIT_DNR
 	icon = "skull-crossbones"
 
-//uncontrollable laughter
+// uncontrollable laughter
 /datum/quirk/item_quirk/joker
 	name = "Pseudobulbar Affect"
 	desc = "At random intervals, you suffer uncontrollable bursts of laughter."
@@ -92,11 +92,10 @@
 	if(flipped)
 		info = initial(info)
 		flipped = FALSE
-		to_chat(user, span_notice("You unflip the card."))
 	else
 		info = info2
 		flipped = TRUE
-		to_chat(user, span_notice("You flip the card."))
+	balloon_alert(user, "card flipped")
 
 /datum/quirk/item_quirk/joker/process()
 	if(pcooldown > world.time)

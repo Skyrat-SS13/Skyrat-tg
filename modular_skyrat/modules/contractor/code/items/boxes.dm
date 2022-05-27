@@ -1,7 +1,7 @@
 #define SMALL_ITEM_AMOUNT 3
 
 /obj/item/storage/box/syndicate/contract_kit
-	name = "Contract Kit"
+	name = "contract kit"
 	special_desc = "Supplied to Syndicate contractors."
 	special_desc_requirement = EXAMINE_CHECK_CONTRACTOR
 	icon_state = "syndiebox"
@@ -45,7 +45,7 @@
 	new /obj/item/paper/contractor_guide(src)
 
 /obj/item/storage/box/syndicate/contractor_loadout
-	name = "Standard Loadout"
+	name = "standard loadout"
 	special_desc_requirement = EXAMINE_CHECK_CONTRACTOR
 	special_desc = "Supplied to Syndicate contractors, providing their specialised MODSuit and chameleon uniform."
 	icon_state = "syndiebox"
@@ -62,7 +62,7 @@
 	new /obj/item/jammer(src)
 
 /obj/item/storage/box/contractor/fulton_extraction
-	name = "Fulton Extraction Kit"
+	name = "fulton extraction kit"
 	icon_state = "syndiebox"
 	illustration = "writing_syndie"
 
@@ -71,7 +71,7 @@
 	new /obj/item/fulton_core(src)
 
 /obj/item/storage/box/syndicate/contract_kit/midround
-	name = "Contract Kit"
+	name = "contract kit"
 	special_desc = "Supplied to Syndicate contractors."
 	special_desc_requirement = EXAMINE_CHECK_CONTRACTOR
 	icon_state = "syndiebox"
