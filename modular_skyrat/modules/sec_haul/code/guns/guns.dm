@@ -222,7 +222,7 @@
 
 /obj/item/ammo_box/magazine/multi_sprite/pdh_peacekeeper
 	name = "\improper PDH-6B magazine"
-	desc = "A magazine for the PDG-6B law enforcement pistol, chambered for 9mm Peacekeeper ammo.
+	desc = "A magazine for the PDG-6B law enforcement pistol, chambered for 9mm Peacekeeper ammo."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "pdh"
 	ammo_type = /obj/item/ammo_casing/b9mm
@@ -354,7 +354,7 @@
 
 /obj/item/ammo_box/magazine/multi_sprite/mk58
 	name = "\improper MK-58 magazine"
-	desc = "A flimsy double-stack polymer magazine for the MK-58 handgun, chambered for 9mm Peacekeeper.
+	desc = "A flimsy double-stack polymer magazine for the MK-58 handgun, chambered for 9mm Peacekeeper."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "g17"
 	ammo_type = /obj/item/ammo_casing/b9mm
@@ -397,7 +397,7 @@
 
 /obj/item/ammo_box/magazine/multi_sprite/firefly
 	name = "\improper P-92 magazine"
-	desc = "
+	desc = "A twelve-round magazine for the P-92 pistol, chambered in 9mm Peacekeeper."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "pdh"
 	ammo_type = /obj/item/ammo_casing/b9mm
