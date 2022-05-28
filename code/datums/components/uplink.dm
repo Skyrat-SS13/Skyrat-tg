@@ -334,6 +334,11 @@
 			failsafe(user)
 			return COMPONENT_STOP_RINGTONE_CHANGE
 		return
+	//SKYRAT EDIT START
+	if(!opfor_check(user))
+		to_chat(user, span_warning("You must have an OPFOR approved to open your uplink!"))
+		return
+	//SKYRAT EDIT END
 	locked = FALSE
 	interact(null, user)
 	to_chat(user, span_hear("The computer softly beeps."))
@@ -355,6 +360,11 @@
 		if(frequency == failsafe_code)
 			failsafe(master.loc)
 		return
+	//SKYRAT EDIT START
+	if(!opfor_check(user))
+		to_chat(user, span_warning("You must have an OPFOR approved to open your uplink!"))
+		return
+	//SKYRAT EDIT END
 	locked = FALSE
 	if(ismob(master.loc))
 		interact(null, master.loc)
@@ -370,6 +380,11 @@
 		popleft(previous_attempts)
 
 	if(compare_list(previous_attempts, unlock_code))
+		//SKYRAT EDIT START
+		if(!opfor_check(user))
+			to_chat(user, span_warning("You must have an OPFOR approved to open your uplink!"))
+			return
+		//SKYRAT EDIT END
 		locked = FALSE
 		previous_attempts.Cut()
 		master.degrees = 0

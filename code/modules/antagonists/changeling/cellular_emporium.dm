@@ -105,4 +105,9 @@
 	return ..()
 
 /datum/action/innate/cellular_emporium/Activate()
+	//SKYRAT EDIT START
+	if(!opfor_check())
+		to_chat(owner, span_warning("You must have an OPFOR approved to open the cellular emporium!"))
+		return
+	//SKYRAT EDIT END
 	cellular_emporium.ui_interact(owner)
