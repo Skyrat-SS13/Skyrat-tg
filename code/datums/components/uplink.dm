@@ -298,6 +298,11 @@
 	SIGNAL_HANDLER
 
 	var/obj/item/implant/implant = parent
+	//SKYRAT EDIT START
+	if(!opfor_check(implant.imp_in))
+		to_chat(user, span_warning("You must have an OPFOR approved to open your uplink!"))
+		return
+	//SKYRAT EDIT END
 	locked = FALSE
 	interact(null, implant.imp_in)
 
