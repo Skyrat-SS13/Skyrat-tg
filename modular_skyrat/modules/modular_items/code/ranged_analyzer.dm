@@ -40,7 +40,7 @@
 	if(total_moles)
 		var/list/env_gases = environment.gases
 
-		environment.assert_gases(arglist(GLOB.hardcoded_gases))
+		environment.assert_gases(/datum/gas/oxygen, /datum/gas/nitrogen, /datum/gas/carbon_dioxide, /datum/gas/plasma)
 		var/o2_concentration = env_gases[/datum/gas/oxygen][MOLES]/total_moles
 		var/n2_concentration = env_gases[/datum/gas/nitrogen][MOLES]/total_moles
 		var/co2_concentration = env_gases[/datum/gas/carbon_dioxide][MOLES]/total_moles
@@ -54,7 +54,7 @@
 		environment.garbage_collect()
 
 		for(var/id in env_gases)
-			if(id in GLOB.hardcoded_gases)
+			if(id in list(/datum/gas/oxygen, /datum/gas/nitrogen, /datum/gas/carbon_dioxide, /datum/gas/plasma))
 				continue
 			var/gas_concentration = env_gases[id][MOLES]/total_moles
 			render_list += "[span_alert("[env_gases[id][GAS_META][META_GAS_NAME]]: [round(gas_concentration*100, 0.01)] % ([round(env_gases[id][MOLES], 0.01)] mol)")]\n"

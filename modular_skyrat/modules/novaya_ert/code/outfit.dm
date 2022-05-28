@@ -73,8 +73,10 @@
 	gloves = /obj/item/clothing/gloves/combat
 	belt = /obj/item/storage/belt/military/nri/full_support
 	back = /obj/item/storage/backpack/satchel/leather
-	backpack_contents = list(/obj/item/storage/box/nri_survival_pack, /obj/item/clothing/mask/gas/alt, /obj/item/storage/belt/utility/full/powertools, /obj/item/clothing/accessory/armband/engine, /obj/item/construction/rcd/combat, /obj/item/clothing/glasses/welding)
+	backpack_contents = list(/obj/item/storage/box/nri_survival_pack, /obj/item/clothing/mask/gas/alt, /obj/item/clothing/accessory/armband/engine, /obj/item/construction/rcd/combat, /obj/item/clothing/glasses/welding)
 	shoes = /obj/item/clothing/shoes/jackboots/black
+
+	l_hand = /obj/item/storage/belt/utility/full/powertools
 
 	id = /obj/item/card/id/advanced/centcom/ert/nri
 	id_trim = /datum/id_trim/nri
