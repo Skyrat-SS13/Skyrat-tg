@@ -380,6 +380,15 @@
 		return
 	var/datum/antagonist/gang/is_gangster = user.mind.has_antag_datum(/datum/antagonist/gang)
 	var/real_name_backup = user.real_name
+	//SKYRAT EDIT START
+	var/smallest_family_size
+	for(var/datum/team/gang/other_gang as anything in handler.gangs)
+		if(!smallest_family_size || (smallest_family_size > length(other_gang.members)))
+			smallest_family_size = length(other_gang.members)
+	if(length(team_to_use.members) > (smallest_family_size + 2))
+		to_chat(user, span_warning("Seems that another family is too smal for this one to induct more!"))
+		return
+	//SKYRAT EDIT END
 	if(is_gangster)
 		if(is_gangster.my_gang == team_to_use)
 			return
