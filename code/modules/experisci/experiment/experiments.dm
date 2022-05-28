@@ -127,7 +127,6 @@
 	experiment_proper = TRUE
 	required_gas = /datum/gas/hypernoblium
 
-<<<<<<< HEAD
 /datum/experiment/ordnance/gaseous/halon
 	name = "Halon Gas Shells"
 	description = "The delivery of Halon gas into an area of operation might prove useful. Perform research and publish papers on this field."
@@ -139,9 +138,6 @@
 // SKYRAT EDIT BEGIN - MATERIAL MEAT WAS REMOVED
 // ORIGINAL: /datum/experiment/scanning/random/material/meat
 /datum/experiment/scanning/random/material/silver
-=======
-/datum/experiment/scanning/random/material/meat
->>>>>>> cd294e90405 (Scipaper rebalancing: Nitrium and halon shell removal. Nitrous added. Emphasis on BZ. (#66738))
 	name = "Biological Material Scanning Experiment"
 // ORIGINAL: description = "They told us we couldn't make chairs out of every material in the world. You're here to prove those nay-sayers wrong."
 	description = "Supposedly silver has an inert anti-microbial effect; scan a few samples to test this."
