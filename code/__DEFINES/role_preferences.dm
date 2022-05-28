@@ -43,6 +43,7 @@
 #define ROLE_BORER "Borer"
 #define ROLE_DRIFTING_CONTRACTOR "Drifting Contractor"
 #define ROLE_ASSAULT_OPERATIVE "Assault Operative"
+#define ROLE_ASSAULT_OPERATIVE_MIDROUND "Assault Operative (Midround)"
 #define ROLE_MUTANT "Mutated Abomination"
 // SKYRAT EDIT END
 
@@ -152,6 +153,7 @@ GLOBAL_LIST_INIT(special_roles, list(
 	ROLE_BORER = 0,
 	ROLE_DRIFTING_CONTRACTOR = 14,
 	ROLE_MUTANT = 0,
+	ROLE_ASSAULT_OPERATIVE_MIDROUND = 14,
 	//SKYRAT EDIT END
 
 	// Latejoin
