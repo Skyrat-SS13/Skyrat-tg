@@ -1,13 +1,9 @@
-GLOBAL_VAR(current_title_screen)
-
-GLOBAL_VAR(current_title_screen_notice)
-
-GLOBAL_VAR(title_html)
-
-GLOBAL_LIST_EMPTY(title_screens)
+#define DEFAULT_TITLE_MAP_LOADTIME 150 SECONDS
 
 #define DEFAULT_TITLE_SCREEN_IMAGE 'modular_skyrat/modules/title_screen/icons/skyrat_title_screen.png'
 #define DEFAULT_TITLE_LOADING_SCREEN 'modular_skyrat/modules/title_screen/icons/loading_screen.gif'
+
+#define TITLE_PROGRESS_CACHE_FILE "data/progress_cache.json"
 
 #define DEFAULT_TITLE_HTML {"
 	<html>
@@ -27,13 +23,14 @@ GLOBAL_LIST_EMPTY(title_screens)
 					background-color: black;
 					padding-top: 5vmin;
 					-ms-user-select: none;
+					cursor: default;
 				}
 
 				img {
 					border-style:none;
 				}
 
-				.fone{
+				.fone {
 					position: absolute;
 					width: auto;
 					height: 100vmin;
@@ -61,12 +58,43 @@ GLOBAL_LIST_EMPTY(title_screens)
 
 				.container_terminal {
 					position: absolute;
-					width: auto;
+					width: 100%;
+					height: calc(100% - 7vmin);
+					overflow: clip;
 					box-sizing: border-box;
-					padding-top: 3vmin;
+					padding: 3vmin 2vmin;
 					top: 0%;
 					left:0%;
 					z-index: 1;
+				}
+
+				.container_progress {
+					position: absolute;
+					box-sizing: border-box;
+					bottom: 3vmin;
+					left: 2vmin;
+					height: 4vmin;
+					width: calc(100% - 4vmin);
+					border-left: 2px solid green;
+					border-right: 2px solid green;
+					padding: 4px;
+					background-color: black;
+				}
+
+				.progress_bar {
+					width: 0%;
+					height: 100%;
+					background-color: green;
+				}
+
+				@keyframes fade_out {
+					to {
+						opacity: 0;
+					}
+				}
+
+				.fade_out {
+					animation: fade_out 2s both;
 				}
 
 				.container_notice {
@@ -74,12 +102,13 @@ GLOBAL_LIST_EMPTY(title_screens)
 					width: auto;
 					box-sizing: border-box;
 					padding-top: 1vmin;
-					top: 0%;
-					left:0%;
+					top: calc(50% - 10vmin);
+					left:50%;
+					transform: translate(-50%, -50%);
 					z-index: 1;
 				}
 
-				.menu_a {
+				.menu_button {
 					display: inline-block;
 					font-family: "Fixedsys";
 					font-weight: lighter;
@@ -97,9 +126,10 @@ GLOBAL_LIST_EMPTY(title_screens)
 					border: 2px solid white;
 					background-color: #0080ff;
 					opacity: 0.5;
+					cursor: pointer;
 				}
 
-				.menu_a:hover {
+				.menu_button:hover {
 					border-left: 3px solid red;
 					border-right: 3px solid red;
 					font-weight: bolder;
@@ -111,7 +141,7 @@ GLOBAL_LIST_EMPTY(title_screens)
 				50% {opacity: 0;}
 				}
 
-				.menu_ab {
+				.menu_poll {
 					display: inline-block;
 					font-family: "Fixedsys";
 					font-weight: lighter;
@@ -132,13 +162,14 @@ GLOBAL_LIST_EMPTY(title_screens)
 					animation: pollsmove 5s infinite;
 				}
 
-				.menu_b {
+				.terminal_text {
 					display: inline-block;
 					font-weight: lighter;
 					text-decoration: none;
 					width: 100%;
 					text-align: right;
 					color:green;
+					text-shadow: 1px 1px black;
 					margin-right: 0%;
 					margin-top: 0px;
 					font-size: 2vmin;
@@ -146,7 +177,7 @@ GLOBAL_LIST_EMPTY(title_screens)
 					letter-spacing: 1px;
 				}
 
-				.menu_c {
+				.menu_notice {
 					display: inline-block;
 					font-family: "Fixedsys";
 					font-weight: lighter;
@@ -154,6 +185,7 @@ GLOBAL_LIST_EMPTY(title_screens)
 					width: 100%;
 					text-align: left;
 					color: red;
+					text-shadow: 1px 1px black;
 					margin-right: 0%;
 					margin-top: 0px;
 					font-size: 3vmin;

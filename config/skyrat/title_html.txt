@@ -1,4 +1,4 @@
-	<html>
+<html>
 		<head>
 			<meta http-equiv="X-UA-Compatible" content="IE=edge">
 			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -15,13 +15,14 @@
 					background-color: black;
 					padding-top: 5vmin;
 					-ms-user-select: none;
+					cursor: default;
 				}
 
 				img {
 					border-style:none;
 				}
 
-				.fone{
+				.fone {
 					position: absolute;
 					width: auto;
 					height: 100vmin;
@@ -49,12 +50,43 @@
 
 				.container_terminal {
 					position: absolute;
-					width: auto;
+					width: 100%;
+					height: calc(100% - 7vmin);
+					overflow: clip;
 					box-sizing: border-box;
-					padding-top: 3vmin;
+					padding: 3vmin 2vmin;
 					top: 0%;
 					left:0%;
 					z-index: 1;
+				}
+
+				.container_progress {
+					position: absolute;
+					box-sizing: border-box;
+					bottom: 3vmin;
+					left: 2vmin;
+					height: 4vmin;
+					width: calc(100% - 4vmin);
+					border-left: 2px solid green;
+					border-right: 2px solid green;
+					padding: 4px;
+					background-color: black;
+				}
+
+				.progress_bar {
+					width: 0%;
+					height: 100%;
+					background-color: green;
+				}
+
+				@keyframes fade_out {
+					to {
+						opacity: 0;
+					}
+				}
+
+				.fade_out {
+					animation: fade_out 2s both;
 				}
 
 				.container_notice {
@@ -62,12 +94,13 @@
 					width: auto;
 					box-sizing: border-box;
 					padding-top: 1vmin;
-					top: 0%;
-					left:0%;
+					top: calc(50% - 10vmin);
+					left:50%;
+					transform: translate(-50%, -50%);
 					z-index: 1;
 				}
 
-				.menu_a {
+				.menu_button {
 					display: inline-block;
 					font-family: "Fixedsys";
 					font-weight: lighter;
@@ -85,9 +118,10 @@
 					border: 2px solid white;
 					background-color: #0080ff;
 					opacity: 0.5;
+					cursor: pointer;
 				}
 
-				.menu_a:hover {
+				.menu_button:hover {
 					border-left: 3px solid red;
 					border-right: 3px solid red;
 					font-weight: bolder;
@@ -99,7 +133,7 @@
 				50% {opacity: 0;}
 				}
 
-				.menu_ab {
+				.menu_poll {
 					display: inline-block;
 					font-family: "Fixedsys";
 					font-weight: lighter;
@@ -120,13 +154,14 @@
 					animation: pollsmove 5s infinite;
 				}
 
-				.menu_b {
+				.terminal_text {
 					display: inline-block;
 					font-weight: lighter;
 					text-decoration: none;
 					width: 100%;
 					text-align: right;
 					color:green;
+					text-shadow: 1px 1px black;
 					margin-right: 0%;
 					margin-top: 0px;
 					font-size: 2vmin;
@@ -134,7 +169,7 @@
 					letter-spacing: 1px;
 				}
 
-				.menu_c {
+				.menu_notice {
 					display: inline-block;
 					font-family: "Fixedsys";
 					font-weight: lighter;
@@ -142,6 +177,7 @@
 					width: 100%;
 					text-align: left;
 					color: red;
+					text-shadow: 1px 1px black;
 					margin-right: 0%;
 					margin-top: 0px;
 					font-size: 3vmin;
