@@ -1,8 +1,11 @@
 /datum/corrupted_flesh_controller
+	/// This is the name we will use to identify all of our babies.
+	var/controller_name = "DEFAULT"
 	/// A list of all of our currently controlled turf objects.
 	var/list/controlled_turf_objects = list()
 	/// A list of all of our currently controlled mobs.
 	var/list/controlled_mobs = list()
+
 
 /datum/corrupted_flesh_controller/proc/register_new_controlled_mob(mob/living/simple_animal/hostile/corrupted_flesh/new_mob)
 	if(!istype(new_mob))

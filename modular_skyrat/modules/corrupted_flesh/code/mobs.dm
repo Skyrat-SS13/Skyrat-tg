@@ -39,7 +39,7 @@
 /mob/living/simple_animal/hostile/corrupted_flesh/Initialize(mapload)
 	. = ..()
 	// We set a unique name when we are created, to give some feeling of randomness.
-	name = pick("Warped ", "Altered ", "Modified ", "Upgraded ", "Abnormal ") + name
+	name = "[pick(CORRUPTED_FLESH_NAME_MODIFIER_LIST)] [name]"
 
 /**
  * These mobs make noises when aggroed.
@@ -388,6 +388,7 @@
  *
  * Created by converted monkeys.
  */
+/mob/living/carbon/human/species/monkey/angry/mauler
 
 /**
  *
