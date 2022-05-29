@@ -6,7 +6,7 @@
  * It handles all of the special interactions.
  */
 
-#define DAMAGE_RESPONSE_PROB 50
+#define DAMAGE_RESPONSE_PROB 60
 #define DAMAGE_SPARKS_PROB 40
 
 #define RETALIATE_PROB 10
@@ -22,7 +22,7 @@
 
 #define INTERACT_RESPONSE_PHRASES list("Get your hands off me!", "You are not worthy of my services!", "You are not part of the flesh!",)
 
-#define PAIN_RESPONSE_EMOTES list("starts crying.", "whimpers.", "shakes in pain.", "visibly winces.",)
+#define PAIN_RESPONSE_EMOTES list("starts crying.", "whimpers.", "shakes in pain.", "visibly winces.", "contorts sickeningly.", "bleeds black fuming liquid.",)
 
 #define PAIN_RESPONSE_SOUNDS list('modular_skyrat/modules/corrupted_flesh/sound/robot_talk_heavy1.ogg', \
 	'modular_skyrat/modules/corrupted_flesh/sound/robot_talk_heavy2.ogg', \
@@ -36,17 +36,22 @@
 		"wires-2",
 		"wires-3",
 	)
+	/// A ref to our controller
+	var/datum/weakref/our_controller
 	/// After init, this will be set so we preserve the originally set overlay even if our overlays are updated.
 	var/set_overlay = ""
 	/// The cooldown to damage responses.
 	var/damage_response_cooldown = 5 SECONDS
 	COOLDOWN_DECLARE(damage_response)
 
-/datum/component/corrupt_machinery/Initialize(...)
+/datum/component/corrupt_machinery/Initialize(datum/corrupted_flesh_controller/incoming_controller)
 	if(!istype(parent, /obj/machinery))
 		return COMPONENT_INCOMPATIBLE
 
 	var/obj/machinery/parent_machine = parent
+
+	if(incoming_controller)
+		our_controller = WEAKREF(incoming_controller)
 
 	set_overlay = pick(possible_overlays)
 
@@ -59,6 +64,11 @@
 	update_name()
 
 	parent_machine.update_appearance()
+
+	parent_machine.light_color = CORRUPTED_FLESH_LIGHT_BLUE
+	parent_machine.light_power = 1
+	parent_machine.light_range = 2
+	parent_machine.update_light()
 
 	parent_machine.idle_power_usage = BASE_MACHINE_ACTIVE_CONSUMPTION * 2 // These machines are now power sinks!
 

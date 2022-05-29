@@ -9,3 +9,5 @@
 #define MALFUNCTION_CHANCE_HIGH 3
 
 #define SPECIES_MONKEY_MAULER "monkey_mauler"
+
+#define CORRUPTED_FLESH_LIGHT_BLUE "#50edd9"

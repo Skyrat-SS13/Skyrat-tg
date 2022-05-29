@@ -14,8 +14,7 @@
 	sexes = FALSE
 	punchdamagelow = 5
 	punchdamagehigh = 7
-	punchstunthreshold = 6 // no stun punches
-	species_language_holder = /datum/language_holder/monkey
+	punchstunthreshold = 6
 
 	bodypart_overrides = list(
 		BODY_ZONE_L_ARM = /obj/item/bodypart/l_arm/monkey/mauler,
@@ -25,48 +24,61 @@
 		BODY_ZONE_R_LEG = /obj/item/bodypart/r_leg/monkey/mauler,
 		BODY_ZONE_CHEST = /obj/item/bodypart/chest/monkey/mauler,
 	)
-	fire_overlay = "monkey"
-	dust_anim = "dust-m"
-	gib_anim = "gibbed-m"
-
-	payday_modifier = 1.5
 
 
 /obj/item/bodypart/head/monkey/mauler
 	icon = 'modular_skyrat/modules/corrupted_flesh/icons/mauler_monkey_parts.dmi'
+	icon_greyscale = 'modular_skyrat/modules/corrupted_flesh/icons/mauler_monkey_parts.dmi'
 	icon_static = 'modular_skyrat/modules/corrupted_flesh/icons/mauler_monkey_parts.dmi'
+	icon_husk = 'modular_skyrat/modules/corrupted_flesh/icons/mauler_monkey_parts.dmi'
 	icon_state = "monkey_chest"
 	wound_resistance = 15
+	uses_mutcolor = FALSE
 
 /obj/item/bodypart/chest/monkey/mauler
 	icon = 'modular_skyrat/modules/corrupted_flesh/icons/mauler_monkey_parts.dmi'
+	icon_greyscale = 'modular_skyrat/modules/corrupted_flesh/icons/mauler_monkey_parts.dmi'
 	icon_static = 'modular_skyrat/modules/corrupted_flesh/icons/mauler_monkey_parts.dmi'
+	icon_husk = 'modular_skyrat/modules/corrupted_flesh/icons/mauler_monkey_parts.dmi'
 	icon_state = "monkey_chest"
 	wound_resistance = 15
+	uses_mutcolor = FALSE
 
 /obj/item/bodypart/l_arm/monkey/mauler
 	icon = 'modular_skyrat/modules/corrupted_flesh/icons/mauler_monkey_parts.dmi'
+	icon_greyscale = 'modular_skyrat/modules/corrupted_flesh/icons/mauler_monkey_parts.dmi'
 	icon_static = 'modular_skyrat/modules/corrupted_flesh/icons/mauler_monkey_parts.dmi'
+	icon_husk = 'modular_skyrat/modules/corrupted_flesh/icons/mauler_monkey_parts.dmi'
 	icon_state = "monkey_chest"
 	wound_resistance = 15
+	uses_mutcolor = FALSE
 
 /obj/item/bodypart/r_arm/monkey/mauler
 	icon = 'modular_skyrat/modules/corrupted_flesh/icons/mauler_monkey_parts.dmi'
+	icon_greyscale = 'modular_skyrat/modules/corrupted_flesh/icons/mauler_monkey_parts.dmi'
 	icon_static = 'modular_skyrat/modules/corrupted_flesh/icons/mauler_monkey_parts.dmi'
+	icon_husk = 'modular_skyrat/modules/corrupted_flesh/icons/mauler_monkey_parts.dmi'
 	icon_state = "monkey_chest"
 	wound_resistance = 15
+	uses_mutcolor = FALSE
 
 /obj/item/bodypart/l_leg/monkey/mauler
 	icon = 'modular_skyrat/modules/corrupted_flesh/icons/mauler_monkey_parts.dmi'
+	icon_greyscale = 'modular_skyrat/modules/corrupted_flesh/icons/mauler_monkey_parts.dmi'
 	icon_static = 'modular_skyrat/modules/corrupted_flesh/icons/mauler_monkey_parts.dmi'
+	icon_husk = 'modular_skyrat/modules/corrupted_flesh/icons/mauler_monkey_parts.dmi'
 	icon_state = "monkey_chest"
 	wound_resistance = 15
+	uses_mutcolor = FALSE
 
 /obj/item/bodypart/r_leg/monkey/mauler
 	icon = 'modular_skyrat/modules/corrupted_flesh/icons/mauler_monkey_parts.dmi'
+	icon_greyscale = 'modular_skyrat/modules/corrupted_flesh/icons/mauler_monkey_parts.dmi'
 	icon_static = 'modular_skyrat/modules/corrupted_flesh/icons/mauler_monkey_parts.dmi'
+	icon_husk = 'modular_skyrat/modules/corrupted_flesh/icons/mauler_monkey_parts.dmi'
 	icon_state = "monkey_chest"
 	wound_resistance = 15
+	uses_mutcolor = FALSE
 
 
 /mob/living/carbon/human/species/monkey/angry/mauler

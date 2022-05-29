@@ -5,6 +5,8 @@
 	var/list/controlled_turf_objects = list()
 	/// A list of all of our currently controlled mobs.
 	var/list/controlled_mobs = list()
+	/// A list of all of our currently controlled machines.
+	var/list/controlled_machines = list()
 
 
 /datum/corrupted_flesh_controller/proc/register_new_controlled_mob(mob/living/simple_animal/hostile/corrupted_flesh/new_mob)

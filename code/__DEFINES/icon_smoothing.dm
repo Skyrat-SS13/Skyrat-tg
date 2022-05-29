@@ -179,5 +179,7 @@ DEFINE_BITFIELD(smoothing_flags, list(
 
 #define SMOOTH_GROUP_WATER S_OBJ(73) ///obj/effect/abstract/liquid_turf
 
-#define MAX_S_OBJ SMOOTH_GROUP_WATER //Always match this value with the one above it.
+#define SMOOTH_GROUP_WIREWEED S_OBJ(74)
+
+#define MAX_S_OBJ SMOOTH_GROUP_WIREWEED //Always match this value with the one above it.
 //SKYRAT EDIT END
