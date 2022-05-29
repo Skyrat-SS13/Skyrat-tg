@@ -4,6 +4,12 @@
 /datum/opposing_force_equipment/loadout/gunman
 	item_type = /obj/item/storage/box/syndie_kit/gunman_outfit
 
+/datum/opposing_force_equipment/loadout/heister
+	name = "Heister bundle"
+	item_type = /obj/item/storage/backpack/duffelbag/heister
+	description = "Rob a bank, the vault, or the captain with this stylish bundle! Comes with a self-regenerating armored suit and a unqiue mask. Weaponry and tools not included."
+	max_amount = 4
+
 /datum/opposing_force_equipment/loadout/grenadier
 	item_type = /obj/item/storage/belt/grenade/full
 	name = "Grenadier Kit"
