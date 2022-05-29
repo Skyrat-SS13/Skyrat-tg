@@ -571,7 +571,7 @@
 	company_flag = COMPANY_BOLT
 
 /obj/item/ammo_box/magazine/internal/cylinder/zeta
-	mame = "\improper Zeta-6 cylinder"
+	name = "\improper Zeta-6 cylinder"
 	desc = "If you see this, you should call a Bluespace Technician. Unless you're that Bluespace Technician."
 	ammo_type = /obj/item/ammo_casing/c10mm
 	caliber = CALIBER_10MM
