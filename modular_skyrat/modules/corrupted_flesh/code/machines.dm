@@ -28,6 +28,9 @@
 	desc = "This monsterous machine is definitely watching you."
 	max_integrity = 500
 	icon_state = "core"
+	component_use_overlays = FALSE
+	component_update_name = FALSE
+	component_update_examine = FALSE
 
 /obj/structure/corrupted_flesh/corrupted_machine/core/Initialize(mapload)
 	. = ..()
