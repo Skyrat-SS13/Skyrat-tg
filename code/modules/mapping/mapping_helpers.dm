@@ -146,13 +146,8 @@
 				airlock.welded = TRUE
 			if(24 to 30)
 				airlock.panel_open = TRUE
-<<<<<<< HEAD
-	if(airlock.cutAiWire && wires) // SKYRAT EDIT
-		wires?.cut(WIRE_AI) // SKYRAT EDIT
-=======
 	if(airlock.cutAiWire)
 		airlock.wires.cut(WIRE_AI)
->>>>>>> 3ad71c0750c (fixes airlock ai cut wires runtiming (#67362))
 	if(airlock.autoname)
 		airlock.name = get_area_name(src, TRUE)
 	update_appearance()
