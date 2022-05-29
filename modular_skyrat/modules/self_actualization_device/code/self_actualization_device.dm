@@ -59,13 +59,14 @@
 /obj/machinery/self_actualization_device/close_machine(mob/user)
 	..()
 	playsound(src, 'sound/machines/click.ogg', 50)
-	if(occupant)
-		if(!ishuman(occupant))
-			occupant.forceMove(drop_location())
-			set_occupant(null)
-			return
-		to_chat(occupant, span_notice("You enter [src]."))
-		update_appearance()
+	if(!occupant)
+		return FALSE
+	if(!ishuman(occupant))
+		occupant.forceMove(drop_location())
+		set_occupant(null)
+		return FALSE
+	to_chat(occupant, span_notice("You enter [src]."))
+	update_appearance()
 
 /obj/machinery/self_actualization_device/examine(mob/user)
 	. = ..()
@@ -77,33 +78,38 @@
 
 /obj/machinery/self_actualization_device/AltClick(mob/user)
 	. = ..()
-	if(powered() && occupant && !state_open)
-		to_chat(user, "You power on [src].")
-		addtimer(CALLBACK(src, .proc/eject_new_you), processing_time, TIMER_OVERRIDE|TIMER_UNIQUE)
-		processing = TRUE
-		update_appearance()
+	if(!powered() || !occupant || state_open)
+		return FALSE
+
+	to_chat(user, "You power on [src].")
+	addtimer(CALLBACK(src, .proc/eject_new_you), processing_time, TIMER_OVERRIDE|TIMER_UNIQUE)
+	processing = TRUE
+	update_appearance()
 
 /obj/machinery/self_actualization_device/container_resist_act(mob/living/user)
-	if(!state_open)
-		to_chat(user, span_notice("The emergency release is not responding! You start pushing against the hull!"))
-		user.changeNext_move(CLICK_CD_BREAKOUT)
-		user.last_special = world.time + CLICK_CD_BREAKOUT
-		user.visible_message(span_notice("You see [user] kicking against the door of [src]!"), \
-			span_notice("You lean on the back of [src] and start pushing the door open... (this will take about [DisplayTimeText(breakout_time)].)"), \
-			span_hear("You hear a metallic creaking from [src]."))
-		if(do_after(user, breakout_time, target = src))
-			if(!user || user.stat != CONSCIOUS || user.loc != src || state_open)
-				return
-			user.visible_message(span_warning("[user] successfully broke out of [src]!"), \
-				span_notice("You successfully break out of [src]!"))
-			open_machine()
-		return
-	open_machine()
+	if(state_open)
+		open_machine()
+		return FALSE
+
+	to_chat(user, span_notice("The emergency release is not responding! You start pushing against the hull!"))
+	user.changeNext_move(CLICK_CD_BREAKOUT)
+	user.last_special = world.time + CLICK_CD_BREAKOUT
+	user.visible_message(span_notice("You see [user] kicking against the door of [src]!"), \
+		span_notice("You lean on the back of [src] and start pushing the door open... (this will take about [DisplayTimeText(breakout_time)].)"), \
+		span_hear("You hear a metallic creaking from [src]."))
+
+	if(do_after(user, breakout_time, target = src))
+		if(!user || user.stat != CONSCIOUS || user.loc != src || state_open)
+			return
+		user.visible_message(span_warning("[user] successfully broke out of [src]!"), \
+			span_notice("You successfully break out of [src]!"))
+		open_machine()
 
 /obj/machinery/self_actualization_device/interact(mob/user)
 	if(state_open)
 		close_machine()
 		return
+
 	if(!processing)
 		open_machine()
 		return
@@ -119,49 +125,62 @@
 		next_fact = rand(initial(next_fact), 2 * initial(next_fact))
 		say(pick(advertisements))
 		playsound(loc, 'sound/machines/chime.ogg', 30, FALSE)
+
 	use_power(500)
+
 /// Ejects the occupant as either their preference character, or as a monke based on emag status.
 /obj/machinery/self_actualization_device/proc/eject_new_you()
 	if(state_open || !occupant || !powered())
 		return
 	processing = FALSE
-	if(ishuman(occupant))
-		var/mob/living/carbon/human/patient = occupant
-		var/original_name = patient.dna.real_name
-		if(obj_flags & EMAGGED)
-			patient.monkeyize()
-		else
-			patient?.client?.prefs?.safe_transfer_prefs_to(patient)
-			patient.dna.update_dna_identity()
-			log_game("[key_name(patient)] used a Self-Actualization Device at [loc_name(src)].")
-			if(patient.dna.real_name != original_name)
-				message_admins("[key_name_admin(patient)] has used the Self-Actualization Device, and changed the name of their character. \
-				Original Name: [original_name], New Name: [patient.dna.real_name]. \
-				This may be a false positive from changing from a humanized monkey into a character, so be careful.")
-		open_machine()
-		playsound(src, 'sound/machines/microwave/microwave-end.ogg', 100, FALSE)
 
-/obj/machinery/self_actualization_device/screwdriver_act(mob/living/user, obj/item/I)
+	if(!ishuman(occupant))
+		return FALSE
+
+	var/mob/living/carbon/human/patient = occupant
+	var/original_name = patient.dna.real_name
+	if(obj_flags & EMAGGED)
+		patient.monkeyize()
+
+	else
+		patient?.client?.prefs?.safe_transfer_prefs_to(patient)
+		patient.dna.update_dna_identity()
+		log_game("[key_name(patient)] used a Self-Actualization Device at [loc_name(src)].")
+
+		if(patient.dna.real_name != original_name)
+			message_admins("[key_name_admin(patient)] has used the Self-Actualization Device, and changed the name of their character. \
+			Original Name: [original_name], New Name: [patient.dna.real_name]. \
+			This may be a false positive from changing from a humanized monkey into a character, so be careful.")
+
+	open_machine()
+	playsound(src, 'sound/machines/microwave/microwave-end.ogg', 100, FALSE)
+
+/obj/machinery/self_actualization_device/screwdriver_act(mob/living/user, obj/item/used_item)
 	. = TRUE
 	if(..())
 		return
+
 	if(occupant)
 		to_chat(user, span_warning("[src] is currently occupied!"))
 		return
-	if(default_deconstruction_screwdriver(user, icon_state, icon_state, I))
+
+	if(default_deconstruction_screwdriver(user, icon_state, icon_state, used_item))
 		update_appearance()
 		return
+
 	return FALSE
 
-/obj/machinery/self_actualization_device/crowbar_act(mob/living/user, obj/item/I)
+/obj/machinery/self_actualization_device/crowbar_act(mob/living/user, obj/item/used_item)
 	if(occupant)
 		to_chat(user, span_warning("[src] is currently occupied!"))
 		return
-	if(default_deconstruction_crowbar(I))
+
+	if(default_deconstruction_crowbar(used_item))
 		return TRUE
 
 /obj/machinery/self_actualization_device/emag_act(mob/living/user)
 	if(obj_flags & EMAGGED)
 		return
+
 	to_chat(user, span_notice("You scramble the brain reading circuits!"))
 	obj_flags |= EMAGGED
