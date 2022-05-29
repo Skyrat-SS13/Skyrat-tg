@@ -53,7 +53,7 @@
 /mob/living/carbon/death(gibbed) // On death, we clear the indiciators
 	..() // Call the TG death. Do not . = ..()!
 	for(var/iteration in status_indicators) // When we die, clear the indicators.
-		remove_status_indicator(icon_state) // The indicators are named after their icon_state and type
+		remove_status_indicator(iteration) // The indicators are named after their icon_state and type
 
 /mob/living/carbon/Initialize(mapload)
 	. = ..()
@@ -63,13 +63,15 @@
 	SIGNAL_HANDLER
 	if(stat == DEAD)
 		for(var/iteration in status_indicators) // When we die, clear the indicators.
-			remove_status_indicator(icon_state) // The indicators are named after their icon_state and type
+			remove_status_indicator(iteration) // The indicators are named after their icon_state and type
 		return
-	is_weakened() ? add_status_indicator("weakened") : remove_status_indicator("weakened")
-	is_paralyzed() ? add_status_indicator("paralysis") : remove_status_indicator("paralysis")
-	is_stunned() ? add_status_indicator("stunned") : remove_status_indicator("stunned")
-	is_unconcious() ? add_status_indicator("sleeping") : remove_status_indicator("sleeping")
-	is_confused() ? add_status_indicator("confused") : remove_status_indicator("confused")
+	else
+		is_weakened() ? add_status_indicator(WEAKEN) : remove_status_indicator(WEAKEN)
+		is_paralyzed() ? add_status_indicator(PARALYSIS) : remove_status_indicator(PARALYSIS)
+		is_stunned() ? add_status_indicator(STUNNED) : remove_status_indicator(STUNNED)
+		is_unconcious() ? add_status_indicator(SLEEPING) : remove_status_indicator(SLEEPING)
+		is_confused() ? add_status_indicator(CONFUSED) : remove_status_indicator(CONFUSED)
+		return
 /// Adds a status indicator to the mob. Takes an image as an argument. If it exists, it won't dupe it.
 /mob/living/proc/add_status_indicator(image/prospective_indicator)
 	if(get_status_indicator(prospective_indicator)) // No duplicates, please.
