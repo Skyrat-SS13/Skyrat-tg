@@ -25,10 +25,15 @@
 	circuit = /obj/item/circuitboard/machine/self_actualization_device
 	state_open = FALSE
 	density = TRUE
+	/// Is someone being processed inside of the machine?
 	var/processing = FALSE
+	/// How long does it take to break out of the machine?
 	var/breakout_time = 10 SECONDS
+	/// How long does the machine take to work?
 	var/processing_time = 1 MINUTES
+	/// The interval that advertisements are said by the machine's speaker.
 	var/next_fact = 10
+	/// A list containing advertisements that the machine says while working.
 	var/static/list/advertisements = list(\
 	"Thank you for using the Self-Actualization Device, brought to you by Cinco: A Family Company!", \
 	"The Self-Actualization device is not to be used by the elderly without direct adult supervision. Cinco is not liable for any and all injuries sustained under unsupervised usage of the Self-Actualization Device.", \
@@ -37,7 +42,6 @@
 	"Please make sure to have your pre-Self Actualization Device brain-stimulating full-body gel lube session performed by a licensed lube man.", \
 	"Have more questions about the Self-Actualization Device? Call your Cinco Mancierge to requisition more information about the Self-Actualization Device!" \
 	)
-	var/times_processed = 0
 
 /obj/machinery/self_actualization_device/update_appearance(updates)
 	. = ..()
