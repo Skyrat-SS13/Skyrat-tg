@@ -20,6 +20,12 @@
 
 #define CORRUPTED_FLESH_LIGHT_BLUE "#50edd9"
 
-#define CORE_LEVEL_1 1
-#define CORE_LEVEL_2 2
-#define CORE_LEVEL_3 3
+/// The controller must reach this before it can level up to the next level.
+#define CONTROLLER_LEVEL_UP_THRESHOLD 500
+
+#define CONTROLLER_LEVEL_1 1
+#define CONTROLLER_LEVEL_2 2
+#define CONTROLLER_LEVEL_3 3
+#define CONTROLLER_LEVEL_4 4
+#define CONTROLLER_LEVEL_5 5
+#define CONTROLLER_LEVEL_MAX 6

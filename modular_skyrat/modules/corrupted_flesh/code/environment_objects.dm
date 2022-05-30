@@ -10,7 +10,7 @@
 	/// A reference to our controller.
 	var/datum/corrupted_flesh_controller/our_controller
 	/// The minimum core level for us to spawn at
-	var/required_core_level = 1
+	var/required_controller_level = CONTROLLER_LEVEL_1
 	/// A list of possible rewards for destroying this thing.
 	var/list/possible_rewards
 

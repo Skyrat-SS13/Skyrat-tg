@@ -13,7 +13,11 @@
 
 /datum/corrupted_flesh_controller
 	/// This is the name we will use to identify all of our babies.
-	var/controller_name = "DEFAULT"
+	var/controller_fullname = "DEFAULT"
+	/// First name, set automatically.
+	var/controller_firstname = "DEFAULT"
+	/// Second name, set automatically.
+	var/controller_secondname = "DEFAULT"
 	/// A list of all of our currently controlled mobs.
 	var/list/controlled_mobs = list()
 	/// A list of all of our currently controlled machine components.
@@ -44,15 +48,22 @@
 	var/wall_off_planetary = TRUE
 
 	/// Types of structures we can spawn.
-	var/list/structure_types
+	var/list/structure_types = list(
+		/obj/structure/corrupted_flesh/structure/babbler,
+		/obj/structure/corrupted_flesh/structure/modulator,
+		/obj/structure/corrupted_flesh/structure/screamer,
+		/obj/structure/corrupted_flesh/structure/whisperer,
+		/obj/structure/corrupted_flesh/structure/assembler,
+	)
 	/// Our wireweed type, defines what is spawned when we grow.
 	var/wireweed_type = /obj/structure/corrupted_flesh/wireweed
 	/// We have the ability to make walls, this defines what kind of walls we make.
 	var/wall_type = /obj/structure/corrupted_flesh/structure/wireweed_wall
 
 	/// Our core level, what is spawned will depend on the level of this core.
-	var/level = 1
+	var/level = CONTROLLER_LEVEL_1
 
+	var/level_up_progress_required = CONTROLLER_LEVEL_UP_THRESHOLD
 	/// Progress to the next wireweed spread.
 	var/spread_progress = 0
 	/// Progress to spawning the next structure.
@@ -84,8 +95,11 @@
 		cores += new_core
 		new_core.our_controller = src
 		RegisterSignal(new_core, COMSIG_PARENT_QDELETING, .proc/core_death)
+		new_core.name = "[controller_fullname] Processor Unit"
 		register_new_asset(new_core)
-	controller_name = "[pick(AI_FORENAME_LIST)] [pick(AI_SURNAME_LIST)]"
+	controller_firstname = pick(AI_FORENAME_LIST)
+	controller_secondname = pick(AI_SURNAME_LIST)
+	controller_fullname = "[controller_firstname] [controller_secondname]"
 	START_PROCESSING(SSfastprocess, src)
 	if(do_initial_expansion)
 		initial_expansion()
@@ -115,6 +129,8 @@
 		for(var/i in 1 to spread_times)
 			wireweed_process(TRUE, FALSE)
 
+	calculate_level_system()
+
 /datum/corrupted_flesh_controller/Destroy(force, ...)
 	active_wireweed = null
 	controlled_machine_components = null
@@ -123,7 +139,7 @@
 	controlled_walls = null
 	cores = null
 	STOP_PROCESSING(SSfastprocess, src)
-	message_admins("Corruption AI [controller_name] has been destroyed.")
+	message_admins("Corruption AI [controller_fullname] has been destroyed.")
 	return ..()
 
 
@@ -218,8 +234,28 @@
 				structure_progression -= spreads_for_structure
 				spawn_structure(picked_turf, pick(structure_types))
 
+/datum/corrupted_flesh_controller/proc/calculate_level_system()
+	if(calculate_current_points() >= level_up_progress_required && level < CONTROLLER_LEVEL_MAX)
+		level_up()
+
+/datum/corrupted_flesh_controller/proc/level_up()
+	level++
+	spawn_new_core()
+	message_admins("Corruption AI [controller_fullname] has leveld up to level [level]!")
+
+/datum/corrupted_flesh_controller/proc/spawn_new_core()
+	var/obj/structure/corrupted_flesh/wireweed/selected_wireweed = pick(controlled_wireweed)
+	var/obj/structure/corrupted_flesh/structure/core/new_core = new(get_turf(selected_wireweed), FALSE)
+	register_new_asset(new_core, FALSE)
+	new_core.our_controller = src
+	cores += new_core
+	new_core.name = "[controller_fullname] Processor Unit"
+
 /// Spawns and registers a resin at location
 /datum/corrupted_flesh_controller/proc/spawn_wireweed(turf/location, wireweed_type)
+	var/obj/structure/corrupted_flesh/wireweed/existing_wireweed = locate() in location
+	if(existing_wireweed)
+		return
 	//Spawn effect
 	for(var/obj/machinery/light/light_in_place in location)
 		light_in_place.break_light_tube()
@@ -254,6 +290,8 @@
 	new_structure.our_controller = src
 	controlled_structures += new_structure
 
+	new_structure.name = "[controller_firstname] [new_structure.name]"
+
 	register_new_asset(new_structure)
 	RegisterSignal(new_structure, COMSIG_PARENT_QDELETING, .proc/structure_death)
 
@@ -261,10 +299,15 @@
 /datum/corrupted_flesh_controller/proc/spawn_structures(amount)
 	if(!structure_types)
 		return
+	var/list/possible_structures = list()
+	for(var/obj/structure/corrupted_flesh/iterating_structure as anything in possible_structures)
+		if(initial(iterating_structure.required_controller_level) > level)
+			continue
+		possible_structures += iterating_structure
 	var/list/locations = list()
 	for(var/obj/structure/corrupted_flesh/structure/corruption_structure as anything in controlled_structures)
 		locations[corruption_structure.loc] = TRUE
-	var/list/guaranteed_structures = structure_types.Copy()
+	var/list/guaranteed_structures = possible_structures.Copy()
 	for(var/i in 1 to amount)
 		if(!length(locations))
 			break
@@ -274,7 +317,7 @@
 		if(length(guaranteed_structures))
 			structure_to_spawn = pick_n_take(guaranteed_structures)
 		else
-			structure_to_spawn = pick(structure_types)
+			structure_to_spawn = pick(possible_structures)
 		spawn_structure(location, structure_to_spawn)
 
 /// Activates resin of this controller in a range around a location, following atmos adjacency.
@@ -310,12 +353,7 @@
 
 /// Returns the amount of evolution points this current controller has.
 /datum/corrupted_flesh_controller/proc/calculate_current_points()
-	var/points = 0
-	var/list/everything = LAZYCOPY(controlled_wireweed) + LAZYCOPY(controlled_walls) + LAZYCOPY(controlled_structures) + LAZYCOPY(controlled_machine_components)
-
-	points = LAZYLEN(everything)
-
-	return points
+	return LAZYLEN(controlled_wireweed) + LAZYLEN(controlled_walls) + LAZYLEN(controlled_structures) + LAZYLEN(controlled_machine_components)
 
 // Death procs
 
@@ -348,9 +386,6 @@
 
 /datum/corrupted_flesh_controller/proc/component_death(datum/component/machine_corruption/deleting_component, force)
 	SIGNAL_HANDLER
-
-	if(QDELETED(src))
-		return
 
 	var/obj/parent_object = deleting_component.parent
 	if(parent_object)

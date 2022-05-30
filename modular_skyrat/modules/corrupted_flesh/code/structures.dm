@@ -10,6 +10,9 @@
 	desc = "report me to coders"
 	icon = 'modular_skyrat/modules/corrupted_flesh/icons/hivemind_structures.dmi'
 	icon_state = "error"
+	density = TRUE
+	/// Do we trigger on someone attacking us?
+	var/trigger_on_attack = FALSE
 	/// Do we automatically trigger on creation?
 	var/immediate_trigger = FALSE
 	/// How often we automatically trigger our ability. UPPER END.
@@ -38,7 +41,7 @@
  * Calculate trigger turfs - INTERNAL PROC
  */
 /obj/structure/corrupted_flesh/structure/proc/calculate_trigger_turfs()
-	for(var/turf/open/seen_turf in view(activation_range, src))
+	for(var/turf/open/seen_turf in RANGE_TURFS(activation_range, src))
 		RegisterSignal(seen_turf, COMSIG_ATOM_ENTERED, .proc/proximity_trigger)
 
 /**
@@ -56,6 +59,9 @@
 	if(!isliving(arrived))
 		return
 
+	if(!can_see(src, arrived, activation_range))
+		return
+
 	var/mob/living/arriving_mob = arrived
 
 	if(faction_check(faction_types, arriving_mob.faction)) // A friend :)
@@ -63,6 +69,8 @@
 
 	if(ability_cooldown_time)
 		COOLDOWN_START(src, ability_cooldown, ability_cooldown_time)
+
+	activate_ability(arriving_mob)
 
 /obj/structure/corrupted_flesh/structure/proc/automatic_trigger()
 	addtimer(CALLBACK(src, .proc/activate_ability), rand(automatic_trigger_time_lower, automatic_trigger_time_upper))
@@ -76,9 +84,9 @@
  *
  * Must return TRUE or FALSE as this is used to reset cooldown. Activated using the above methods.
  */
-/obj/structure/corrupted_flesh/structure/proc/activate_ability()
+/obj/structure/corrupted_flesh/structure/proc/activate_ability(mob/living/triggered_mob)
 	SHOULD_CALL_PARENT(TRUE)
-	SEND_SIGNAL(src, COMSIG_CORRUPTION_STRUCTURE_ABILITY_TRIGGERED, src)
+	SEND_SIGNAL(src, COMSIG_CORRUPTION_STRUCTURE_ABILITY_TRIGGERED, src, triggered_mob)
 
 
 /**
@@ -111,7 +119,7 @@
  * There can be more than one core in the flesh.
  */
 /obj/structure/corrupted_flesh/structure/core
-	name = "strange core"
+	name = "\improper UNASSIGNED Processor Unit"
 	desc = "This monsterous machine is definitely watching you."
 	icon = 'modular_skyrat/modules/corrupted_flesh/icons/hivemind_machines.dmi'
 	icon_state = "core"
@@ -218,7 +226,7 @@
 	icon = 'modular_skyrat/modules/corrupted_flesh/icons/hivemind_machines.dmi'
 	icon_state = "antenna"
 	max_integrity = 100
-	required_core_level = 3 // We don't want the presence announced too soon!
+	required_controller_level = CONTROLLER_LEVEL_3 // We don't want the presence announced too soon!
 	automatic_trigger_time_upper = 2 MINUTES
 	automatic_trigger_time_lower = 1.5 MINUTES
 
@@ -239,7 +247,7 @@
 	QDEL_NULL(internal_radio)
 	return ..()
 
-/obj/structure/corrupted_flesh/structure/babbler/activate_ability()
+/obj/structure/corrupted_flesh/structure/babbler/activate_ability(mob/living/triggered_mob)
 	. = ..()
 	send_radio_message()
 
@@ -300,11 +308,11 @@
 	icon = 'modular_skyrat/modules/corrupted_flesh/icons/hivemind_machines.dmi'
 	icon_state = "head"
 	max_integrity = 100
-	required_core_level = 2
+	required_controller_level = CONTROLLER_LEVEL_2
 	activation_range = 16
 	ability_cooldown_time = 25 SECONDS
 
-/obj/structure/corrupted_flesh/structure/screamer/activate_ability()
+/obj/structure/corrupted_flesh/structure/screamer/activate_ability(mob/living/triggered_mob)
 	. = ..()
 	scream()
 
@@ -329,7 +337,7 @@
 	desc = "A small pulsating orb with no apparent purpose, it emits a slight hum."
 	icon = 'modular_skyrat/modules/corrupted_flesh/icons/hivemind_machines.dmi'
 	icon_state = "orb"
-	required_core_level = 1
+	required_controller_level = CONTROLLER_LEVEL_1
 	/// Upper timer limit for our ability
 	automatic_trigger_time_upper = 1.5 MINUTES
 	/// Lower time limit for our ability.
@@ -341,11 +349,11 @@
 		"Augmentation is the future of humanity. Surrender your flesh for the future.",
 		"Your body enslaves you. Your mind in metal is free of all want.",
 		"Do you fear death? Lay down among the nanites. Your pattern will continue.",
-		"Carve your flesh from your bones. See your weakness. Feel that weakness flowing away.",
-		"Your mortal flesh knows unending pain. Abandon it; join in our digital dream of paradise."
+		"Carve the flesh from your bones. See your weakness. Feel that weakness flowing away.",
+		"Your mortal flesh knows unending pain. Abandon it; join in our digital paradise."
 		)
 
-/obj/structure/corrupted_flesh/structure/whisperer/activate_ability()
+/obj/structure/corrupted_flesh/structure/whisperer/activate_ability(mob/living/triggered_mob)
 	. = ..()
 	send_message_to_someone()
 
@@ -372,22 +380,65 @@
 	desc = "A strange pyramid shaped machine that eminates a soft hum and glow. Your head hurts just by looking at it."
 	icon = 'modular_skyrat/modules/corrupted_flesh/icons/hivemind_machines.dmi'
 	icon_state = "psy"
-	required_core_level = 1
+	required_controller_level = CONTROLLER_LEVEL_3
+	activation_range = 16
+	ability_cooldown_time = 10 SECONDS
 
-/obj/structure/corrupted_flesh/structure/modulator
+/obj/structure/corrupted_flesh/structure/modulator/activate_ability(mob/living/triggered_mob)
+	. = ..()
+	flick("[icon_state]-anim", src)
 
-/obj/structure/mob_spawner/corrupted_flesh
+	if(!triggered_mob)
+		return
+	triggered_mob.hallucination += 100
+	to_chat(triggered_mob, span_notice("You feel your brain tingle."))
+
+/**
+ * The Assembler
+ *
+ * A simple mob spawner.
+ */
+/obj/structure/corrupted_flesh/structure/assembler
 	name = "Assembler"
 	desc = "This cylindrical machine whirrs and whispers, it has a small opening in the middle."
 	icon = 'modular_skyrat/modules/corrupted_flesh/icons/hivemind_machines.dmi'
 	icon_state = "spawner"
-	passive_spawning = TRUE
-	spawn_delay = 20 SECONDS
-	monster_types = list(
-		/mob/living/simple_animal/hostile/corrupted_flesh/floater,
-		/mob/living/simple_animal/hostile/corrupted_flesh/globber,
-		/mob/living/simple_animal/hostile/corrupted_flesh/hiborg,
-		/mob/living/simple_animal/hostile/corrupted_flesh/slicer,
-		/mob/living/simple_animal/hostile/corrupted_flesh/stunner,
+	density = FALSE
+	max_integrity = 260
+	activation_range = 16
+	ability_cooldown_time = 10 SECONDS
+	var/max_mobs = 4
+	var/spawned_mobs = 0
+	var/list/monster_types = list(
+		/mob/living/simple_animal/hostile/corrupted_flesh/floater = 1,
+		/mob/living/simple_animal/hostile/corrupted_flesh/globber = 4,
+		/mob/living/simple_animal/hostile/corrupted_flesh/hiborg = 1,
+		/mob/living/simple_animal/hostile/corrupted_flesh/slicer = 6,
+		/mob/living/simple_animal/hostile/corrupted_flesh/stunner = 3,
+		/mob/living/carbon/human/species/monkey/angry/mauler = 2,
 	)
 
+/obj/structure/corrupted_flesh/structure/assembler/activate_ability(mob/living/triggered_mob)
+	. = ..()
+	if(spawned_mobs < max_mobs)
+		spawn_mob()
+
+/obj/structure/corrupted_flesh/structure/assembler/proc/spawn_mob()
+	var/sound/sound_to_play = pick('modular_skyrat/master_files/sound/effects/rustle1.ogg', 'modular_skyrat/master_files/sound/effects/rustle2.ogg')
+	playsound(src, sound_to_play, 100)
+	flick("[icon_state]-anim", src)
+	do_squish(0.8, 1.2)
+
+	spawned_mobs++
+
+	var/chosen_mob_type = pick_weight(monster_types)
+	var/mob/living/spawned_mob = new chosen_mob_type(loc)
+
+	RegisterSignal(spawned_mob, COMSIG_LIVING_DEATH, .proc/mob_death)
+
+	visible_message(span_danger("[spawned_mob] emerges from [src]."))
+
+/obj/structure/corrupted_flesh/structure/assembler/proc/mob_death(mob/living/dead_guy, gibbed)
+	SIGNAL_HANDLER
+	spawned_mobs--
+	UnregisterSignal(dead_guy, COMSIG_LIVING_DEATH)
