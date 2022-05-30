@@ -37,6 +37,11 @@
 	if(immediate_trigger)
 		activate_ability()
 
+/obj/structure/corrupted_flesh/structure/attacked_by(obj/item/attacking_item, mob/living/user)
+	. = ..()
+	if(trigger_on_attack && (ability_cooldown_time && !COOLDOWN_FINISHED(src, ability_cooldown)))
+		activate_ability()
+
 /**
  * Calculate trigger turfs - INTERNAL PROC
  */
@@ -67,9 +72,6 @@
 	if(faction_check(faction_types, arriving_mob.faction)) // A friend :)
 		return
 
-	if(ability_cooldown_time)
-		COOLDOWN_START(src, ability_cooldown, ability_cooldown_time)
-
 	activate_ability(arriving_mob)
 
 /obj/structure/corrupted_flesh/structure/proc/automatic_trigger()
@@ -87,6 +89,8 @@
 /obj/structure/corrupted_flesh/structure/proc/activate_ability(mob/living/triggered_mob)
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_CORRUPTION_STRUCTURE_ABILITY_TRIGGERED, src, triggered_mob)
+	if(ability_cooldown_time)
+		COOLDOWN_START(src, ability_cooldown, ability_cooldown_time)
 
 
 /**
