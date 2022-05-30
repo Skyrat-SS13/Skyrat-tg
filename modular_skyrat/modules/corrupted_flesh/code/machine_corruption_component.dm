@@ -1,9 +1,9 @@
 /**
- * Flesh corruption component
+ * Machine corruption component
  *
- * This component is used to convert objects into corrupted objects.
+ * This component is used to convert machines into corrupted machines.
  *
- * It handles all of the special interactions.
+ * It handles all of the special interactions and the interactions between the parent object and the core controller.
  */
 
 #define DAMAGE_RESPONSE_PROB 60
@@ -29,7 +29,7 @@
 	'modular_skyrat/modules/corrupted_flesh/sound/robot_talk_heavy3.ogg', \
 	'modular_skyrat/modules/corrupted_flesh/sound/robot_talk_heavy4.ogg',)
 
-/datum/component/corruption
+/datum/component/machine_corruption
 	/// A list of possible overlays that we can choose from when we are created.
 	var/list/possible_overlays = list(
 		"wires-1",
@@ -44,54 +44,49 @@
 	var/damage_response_cooldown = 3 SECONDS
 	COOLDOWN_DECLARE(damage_response)
 
-/datum/component/corruption/Initialize(
-		datum/corrupted_flesh_controller/incoming_controller,
-		react_to_damage = TRUE,
-		use_overlays = TRUE,
-		update_name = TRUE,
-		update_light = TRUE,
-		update_examine = TRUE,
-		handles_ui_interaction = TRUE,
-		handles_destruction = TRUE,
-		updates_power_use = TRUE,
-	)
+/datum/component/machine_corruption/Initialize(datum/corrupted_flesh_controller/incoming_controller)
 
 	if(!isobj(parent))
 		return COMPONENT_INCOMPATIBLE
 
-	var/obj/parent_object = parent
+	var/obj/machinery/parent_machinery = parent
 
 	if(incoming_controller)
-		our_controller = WEAKREF(incoming_controller)
+		RegisterSignal(incoming_controller, COMSIG_PARENT_QDELETING, .proc/controller_death)
+		incoming_controller.RegisterSignal(src, COMSIG_PARENT_QDELETING, /datum/corrupted_flesh_controller/proc/component_death)
 
-	if(react_to_damage)
-		RegisterSignal(parent_object, COMSIG_ATOM_TAKE_DAMAGE, .proc/react_to_damage)
-	if(update_examine)
-		RegisterSignal(parent_object, COMSIG_PARENT_EXAMINE, .proc/on_examine)
-	if(use_overlays)
-		set_overlay = pick(possible_overlays)
-		RegisterSignal(parent_object, COMSIG_ATOM_UPDATE_OVERLAYS, .proc/handle_overlays)
-	if(handles_ui_interaction)
-		RegisterSignal(parent_object, COMSIG_ATOM_UI_INTERACT, .proc/handle_ui_interact)
-	if(handles_destruction)
-		RegisterSignal(parent_object, COMSIG_ATOM_DESTRUCTION, .proc/handle_destruction)
+	set_overlay = pick(possible_overlays)
 
-	if(update_name)
-		update_name()
+	RegisterSignal(parent_machinery, COMSIG_ATOM_TAKE_DAMAGE, .proc/react_to_damage)
+	RegisterSignal(parent_machinery, COMSIG_PARENT_EXAMINE, .proc/on_examine)
+	RegisterSignal(parent_machinery, COMSIG_ATOM_UPDATE_OVERLAYS, .proc/handle_overlays)
+	RegisterSignal(parent_machinery, COMSIG_ATOM_UI_INTERACT, .proc/handle_ui_interact)
+	RegisterSignal(parent_machinery, COMSIG_ATOM_DESTRUCTION, .proc/handle_destruction)
 
-	parent_object.update_appearance()
+	update_name()
 
-	if(update_light)
-		parent_object.light_color = CORRUPTED_FLESH_LIGHT_BLUE
-		parent_object.light_power = 1
-		parent_object.light_range = 2
-		parent_object.update_light()
+	parent_machinery.update_appearance()
 
-	if(updates_power_use && ismachinery(parent))
-		var/obj/machinery/parent_machinery = parent
-		parent_machinery.idle_power_usage = BASE_MACHINE_ACTIVE_CONSUMPTION * 2 // These machines are now power sinks!
+	parent_machinery.light_color = CORRUPTED_FLESH_LIGHT_BLUE
+	parent_machinery.light_power = 1
+	parent_machinery.light_range = 2
+	parent_machinery.update_light()
 
-/datum/component/corruption/Destroy(force, silent)
+
+	parent_machinery.idle_power_usage = BASE_MACHINE_ACTIVE_CONSUMPTION * 2 // These machines are now power sinks!
+
+	parent_machinery.set_machine_stat(BROKEN)
+
+/datum/component/machine_corruption/Destroy(force, silent)
+	var/obj/machinery/parent_machinery = parent
+	parent_machinery.idle_power_usage = initial(parent_machinery.idle_power_usage)
+	parent_machinery.light_color = initial(parent_machinery.light_color)
+	parent_machinery.light_power = initial(parent_machinery.light_power)
+	parent_machinery.light_range = initial(parent_machinery.light_range)
+	parent_machinery.update_light()
+	parent_machinery.name = initial(parent_machinery.name)
+	parent_machinery.update_appearance()
+	our_controller = null
 	UnregisterSignal(parent, list(
 		COMSIG_ATOM_TAKE_DAMAGE,
 		COMSIG_PARENT_EXAMINE,
@@ -102,44 +97,54 @@
 	return ..()
 
 /**
+ * Controller Death
+ *
+ * Handles when the controller dies.
+ */
+/datum/component/machine_corruption/proc/controller_death(datum/corrupted_flesh_controller/deleting_controller, force)
+	SIGNAL_HANDLER
+
+	qdel(src)
+
+/**
  * Handling UI interactions
  *
  * These machines have been posessed by the corruption and should not work, logically, so we want to prevent this in any way we can.
  */
-/datum/component/corruption/proc/handle_ui_interact(datum/source, mob/user)
+/datum/component/machine_corruption/proc/handle_ui_interact(datum/source, mob/user)
 	SIGNAL_HANDLER
 
-	var/obj/parent_object = parent
+	var/obj/machinery/parent_machinery = parent
 	if(!isliving(user))
 		return
 	var/mob/living/living_user = user
 	if((FACTION_CORRUPTED_FLESH in living_user.faction))
 		return
-	if(!living_user.can_interact_with(parent_object))
+	if(!living_user.can_interact_with(parent_machinery))
 		return
 
 	whip_mob(living_user)
 	living_user.apply_damage(10, BRUTE)
 
-	parent_object.say(pick(INTERACT_RESPONSE_PHRASES))
+	parent_machinery.say(pick(INTERACT_RESPONSE_PHRASES))
 
 /**
  * Throws the user in a specified direction.
  */
-/datum/component/corruption/proc/whip_mob(mob/living/user_to_throw)
+/datum/component/machine_corruption/proc/whip_mob(mob/living/user_to_throw)
 	if(!istype(user_to_throw))
 		return
 
-	var/obj/parent_object = parent
+	var/obj/machinery/parent_machinery = parent
 
-	to_chat(user_to_throw, span_userdanger("[parent_object] thrashes you with one of it's tendrils, sending you flying!"))
-	playsound(parent_object, 'sound/weapons/whip.ogg', 70, TRUE)
+	to_chat(user_to_throw, span_userdanger("[parent_machinery] thrashes you with one of it's tendrils, sending you flying!"))
+	playsound(parent_machinery, 'sound/weapons/whip.ogg', 70, TRUE)
 	new /obj/effect/temp_visual/kinetic_blast(get_turf(user_to_throw))
 
-	var/atom/throw_target = get_edge_target_turf(user_to_throw, get_dir(parent_object, get_step_away(user_to_throw, parent_object)))
+	var/atom/throw_target = get_edge_target_turf(user_to_throw, get_dir(parent_machinery, get_step_away(user_to_throw, parent_machinery)))
 	user_to_throw.throw_at(throw_target, 20, 2)
 
-/datum/component/corruption/proc/handle_destruction(obj/item/target, damage_flag)
+/datum/component/machine_corruption/proc/handle_destruction(obj/item/target, damage_flag)
 	SIGNAL_HANDLER
 
 	playsound(target, 'sound/effects/tendril_destroyed.ogg', 100, TRUE)
@@ -148,16 +153,16 @@
 	new /obj/effect/gibspawner/robot(get_turf(target))
 
 
-/datum/component/corruption/proc/handle_overlays(atom/parent_atom, list/overlays)
+/datum/component/machine_corruption/proc/handle_overlays(atom/parent_atom, list/overlays)
 	SIGNAL_HANDLER
 
 	overlays += mutable_appearance('modular_skyrat/modules/corrupted_flesh/icons/hivemind_machines.dmi', set_overlay)
 
-/datum/component/corruption/proc/update_name()
-	var/obj/parent_object = parent
-	parent_object.name = "[pick(CORRUPTED_FLESH_NAME_MODIFIER_LIST)] [parent_object.name]"
+/datum/component/machine_corruption/proc/update_name()
+	var/obj/machinery/parent_machinery = parent
+	parent_machinery.name = "[pick(CORRUPTED_FLESH_NAME_MODIFIER_LIST)] [parent_machinery.name]"
 
-/datum/component/corruption/proc/on_examine(atom/examined, mob/user, list/examine_list)
+/datum/component/machine_corruption/proc/on_examine(atom/examined, mob/user, list/examine_list)
 	SIGNAL_HANDLER
 
 	examine_list += "<b>It has strange wires wrappped around it!</b>"
@@ -165,7 +170,7 @@
 /**
  * Infected machines are considered alive, they react to damage, trying to stop the agressor!
  */
-/datum/component/corruption/proc/react_to_damage(obj/target, damage_amt)
+/datum/component/machine_corruption/proc/react_to_damage(obj/target, damage_amt)
 	SIGNAL_HANDLER
 
 	if(!damage_amt) // They must be caressing us!
@@ -194,7 +199,7 @@
 /**
  * A general attack proc, this whips all users within a range around the machine.
  */
-/datum/component/corruption/proc/whip_all_in_range(range_to_whip)
-	var/obj/parent_object = parent
-	for(var/mob/living/living_mob in circle_view(parent_object, range_to_whip))
+/datum/component/machine_corruption/proc/whip_all_in_range(range_to_whip)
+	var/obj/machinery/parent_machinery = parent
+	for(var/mob/living/living_mob in circle_view(parent_machinery, range_to_whip))
 		whip_mob(living_mob)

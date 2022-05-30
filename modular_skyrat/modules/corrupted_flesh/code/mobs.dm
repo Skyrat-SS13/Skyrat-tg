@@ -314,7 +314,7 @@
 /mob/living/simple_animal/hostile/corrupted_flesh/stunner
 	name = "Stunner"
 	desc = "A small robot that resembles a secbot, it rumbles with hatred."
-	icon_state = "lobber" // TODO: Give new sprite
+	icon_state = "stunner"
 	malfunction_prob = MALFUNCTION_CHANCE_MEDIUM
 	melee_damage_lower = 15
 	melee_damage_upper = 15

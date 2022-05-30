@@ -4,18 +4,13 @@
 	say_mod = "gargles"
 	bodytype = BODYTYPE_ORGANIC | BODYTYPE_MONKEY
 	attack_verb = "mauls"
-	attack_effect = ATTACK_EFFECT_BITE
-	attack_sound = 'sound/weapons/bite.ogg'
-	miss_sound = 'sound/weapons/bite.ogg'
-	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | MIRROR_MAGIC | ERT_SPAWN | SLIME_EXTRACT
-	liked_food = MEAT | FRUIT
-	disliked_food = CLOTH
-	damage_overlay_type = "monkey"
-	sexes = FALSE
+	changesource_flags = MIRROR_BADMIN
+	liked_food = GROSS | TOXIC
 	punchdamagelow = 5
 	punchdamagehigh = 7
 	punchstunthreshold = 6
-
+	mutant_organs = null
+	mutant_bodyparts = null
 	bodypart_overrides = list(
 		BODY_ZONE_L_ARM = /obj/item/bodypart/l_arm/monkey/mauler,
 		BODY_ZONE_R_ARM = /obj/item/bodypart/r_arm/monkey/mauler,
@@ -25,60 +20,61 @@
 		BODY_ZONE_CHEST = /obj/item/bodypart/chest/monkey/mauler,
 	)
 
-
 /obj/item/bodypart/head/monkey/mauler
 	icon = 'modular_skyrat/modules/corrupted_flesh/icons/mauler_monkey_parts.dmi'
 	icon_greyscale = 'modular_skyrat/modules/corrupted_flesh/icons/mauler_monkey_parts.dmi'
 	icon_static = 'modular_skyrat/modules/corrupted_flesh/icons/mauler_monkey_parts.dmi'
-	icon_husk = 'modular_skyrat/modules/corrupted_flesh/icons/mauler_monkey_parts.dmi'
-	icon_state = "monkey_chest"
+	icon_state = "monkey_head"
 	wound_resistance = 15
 	uses_mutcolor = FALSE
+	animal_origin = null
+	is_dimorphic = FALSE
 
 /obj/item/bodypart/chest/monkey/mauler
 	icon = 'modular_skyrat/modules/corrupted_flesh/icons/mauler_monkey_parts.dmi'
 	icon_greyscale = 'modular_skyrat/modules/corrupted_flesh/icons/mauler_monkey_parts.dmi'
 	icon_static = 'modular_skyrat/modules/corrupted_flesh/icons/mauler_monkey_parts.dmi'
-	icon_husk = 'modular_skyrat/modules/corrupted_flesh/icons/mauler_monkey_parts.dmi'
 	icon_state = "monkey_chest"
 	wound_resistance = 15
 	uses_mutcolor = FALSE
+	animal_origin = null
+	is_dimorphic = FALSE
 
 /obj/item/bodypart/l_arm/monkey/mauler
 	icon = 'modular_skyrat/modules/corrupted_flesh/icons/mauler_monkey_parts.dmi'
 	icon_greyscale = 'modular_skyrat/modules/corrupted_flesh/icons/mauler_monkey_parts.dmi'
 	icon_static = 'modular_skyrat/modules/corrupted_flesh/icons/mauler_monkey_parts.dmi'
-	icon_husk = 'modular_skyrat/modules/corrupted_flesh/icons/mauler_monkey_parts.dmi'
-	icon_state = "monkey_chest"
+	icon_state = "monkey_l_arm"
 	wound_resistance = 15
 	uses_mutcolor = FALSE
+	animal_origin = null
 
 /obj/item/bodypart/r_arm/monkey/mauler
 	icon = 'modular_skyrat/modules/corrupted_flesh/icons/mauler_monkey_parts.dmi'
 	icon_greyscale = 'modular_skyrat/modules/corrupted_flesh/icons/mauler_monkey_parts.dmi'
 	icon_static = 'modular_skyrat/modules/corrupted_flesh/icons/mauler_monkey_parts.dmi'
-	icon_husk = 'modular_skyrat/modules/corrupted_flesh/icons/mauler_monkey_parts.dmi'
-	icon_state = "monkey_chest"
+	icon_state = "monkey_r_arm"
 	wound_resistance = 15
 	uses_mutcolor = FALSE
+	animal_origin = null
 
 /obj/item/bodypart/l_leg/monkey/mauler
 	icon = 'modular_skyrat/modules/corrupted_flesh/icons/mauler_monkey_parts.dmi'
 	icon_greyscale = 'modular_skyrat/modules/corrupted_flesh/icons/mauler_monkey_parts.dmi'
 	icon_static = 'modular_skyrat/modules/corrupted_flesh/icons/mauler_monkey_parts.dmi'
-	icon_husk = 'modular_skyrat/modules/corrupted_flesh/icons/mauler_monkey_parts.dmi'
-	icon_state = "monkey_chest"
+	icon_state = "monkey_l_leg"
 	wound_resistance = 15
 	uses_mutcolor = FALSE
+	animal_origin = null
 
 /obj/item/bodypart/r_leg/monkey/mauler
 	icon = 'modular_skyrat/modules/corrupted_flesh/icons/mauler_monkey_parts.dmi'
 	icon_greyscale = 'modular_skyrat/modules/corrupted_flesh/icons/mauler_monkey_parts.dmi'
 	icon_static = 'modular_skyrat/modules/corrupted_flesh/icons/mauler_monkey_parts.dmi'
-	icon_husk = 'modular_skyrat/modules/corrupted_flesh/icons/mauler_monkey_parts.dmi'
-	icon_state = "monkey_chest"
+	icon_state = "monkey_r_leg"
 	wound_resistance = 15
 	uses_mutcolor = FALSE
+	animal_origin = null
 
 
 /mob/living/carbon/human/species/monkey/angry/mauler
