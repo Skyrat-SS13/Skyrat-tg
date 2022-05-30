@@ -68,3 +68,8 @@
 
 /// From mob/living/*/set_combat_mode(): (new_state)
 #define COMSIG_LIVING_COMBAT_MODE_TOGGLE "living_combat_mode_toggle"
+
+// CORRUPTION SIGNALS
+
+/// From /obj/structure/corrupted_flesh/structure/proc/activate_ability() (src)
+#define COMSIG_CORRUPTION_STRUCTURE_ABILITY_TRIGGERED "corruption_structure_ability_triggered"

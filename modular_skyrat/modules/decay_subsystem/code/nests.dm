@@ -75,7 +75,7 @@
 		spawn_delay = world.time + spawn_cooldown
 		spawn_mob()
 
-/obj/structure/mob_spawner/proc/proximity_trigger(datum/source, atom/movable/AM)
+/obj/structure/mob_spawner/proc/proximity_trigger(datum/source, atom/movable/arrived, atom/old_loc, list/atom/old_locs)
 	SIGNAL_HANDLER
 	if(spawned_mobs >= max_mobs)
 		return
@@ -83,10 +83,10 @@
 		return
 	spawn_delay = world.time + spawn_cooldown
 
-	if(!isliving(AM))
+	if(!isliving(arrived))
 		return
 
-	var/mob/living/entered_mob = AM
+	var/mob/living/entered_mob = arrived
 
 	if((NEST_FACTION in entered_mob.faction))
 		return
