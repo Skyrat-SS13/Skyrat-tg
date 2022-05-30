@@ -14,14 +14,14 @@
 
 #define MALFUNCTION_CHANCE_LOW 0.5
 #define MALFUNCTION_CHANCE_MEDIUM 1
-#define MALFUNCTION_CHANCE_HIGH 3
+#define MALFUNCTION_CHANCE_HIGH 2
 
 #define SPECIES_MONKEY_MAULER "monkey_mauler"
 
 #define CORRUPTED_FLESH_LIGHT_BLUE "#50edd9"
 
 /// The controller must reach this before it can level up to the next level.
-#define CONTROLLER_LEVEL_UP_THRESHOLD 500
+#define CONTROLLER_LEVEL_UP_THRESHOLD 300
 
 #define CONTROLLER_LEVEL_1 1
 #define CONTROLLER_LEVEL_2 2

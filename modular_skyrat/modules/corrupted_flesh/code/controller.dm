@@ -62,14 +62,16 @@
 
 	/// Our core level, what is spawned will depend on the level of this core.
 	var/level = CONTROLLER_LEVEL_1
-
+	/// To level up, we much reach this threshold.
 	var/level_up_progress_required = CONTROLLER_LEVEL_UP_THRESHOLD
+	/// Used to track our last points since levelup.
+	var/last_level_up_points = 0
 	/// Progress to the next wireweed spread.
 	var/spread_progress = 0
 	/// Progress to spawning the next structure.
 	var/structure_progression = 0
 	/// How many times do we need to spread to spawn an extra structure.
-	var/spreads_for_structure = 10
+	var/spreads_for_structure = 40
 	/// How many spread in our initial expansion.
 	var/initial_expansion_spreads = 30
 	/// How many structures in our initial expansion.
@@ -233,15 +235,17 @@
 			if(!existing_structure)
 				structure_progression -= spreads_for_structure
 				var/list/possible_structures = list()
-				for(var/obj/structure/corrupted_flesh/iterating_structure as anything in possible_structures)
+				for(var/obj/structure/corrupted_flesh/iterating_structure as anything in structure_types)
 					if(initial(iterating_structure.required_controller_level) > level)
 						continue
 					possible_structures += iterating_structure
 				spawn_structure(picked_turf, pick(possible_structures))
 
 /datum/corrupted_flesh_controller/proc/calculate_level_system()
-	if(calculate_current_points() >= level_up_progress_required && level < CONTROLLER_LEVEL_MAX)
+	var/points = calculate_current_points()
+	if(points >= (last_level_up_points + level_up_progress_required) && level < CONTROLLER_LEVEL_MAX)
 		level_up()
+		last_level_up_points = points
 
 /datum/corrupted_flesh_controller/proc/level_up()
 	level++
@@ -258,9 +262,7 @@
 
 /// Spawns and registers a resin at location
 /datum/corrupted_flesh_controller/proc/spawn_wireweed(turf/location, wireweed_type)
-	var/obj/structure/corrupted_flesh/wireweed/existing_wireweed = locate() in location
-	if(existing_wireweed)
-		return
+
 	//Spawn effect
 	for(var/obj/machinery/light/light_in_place in location)
 		light_in_place.break_light_tube()
@@ -305,7 +307,7 @@
 	if(!structure_types)
 		return
 	var/list/possible_structures = list()
-	for(var/obj/structure/corrupted_flesh/iterating_structure as anything in possible_structures)
+	for(var/obj/structure/corrupted_flesh/iterating_structure as anything in structure_types)
 		if(initial(iterating_structure.required_controller_level) > level)
 			continue
 		possible_structures += iterating_structure

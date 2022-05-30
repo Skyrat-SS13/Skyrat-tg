@@ -341,7 +341,7 @@
 	desc = "A small pulsating orb with no apparent purpose, it emits a slight hum."
 	icon = 'modular_skyrat/modules/corrupted_flesh/icons/hivemind_machines.dmi'
 	icon_state = "orb"
-	required_controller_level = CONTROLLER_LEVEL_1
+	required_controller_level = CONTROLLER_LEVEL_2
 	/// Upper timer limit for our ability
 	automatic_trigger_time_upper = 1.5 MINUTES
 	/// Lower time limit for our ability.
@@ -411,7 +411,7 @@
 	max_integrity = 260
 	activation_range = 16
 	ability_cooldown_time = 10 SECONDS
-	var/max_mobs = 4
+	var/max_mobs = 2
 	var/spawned_mobs = 0
 	var/list/monster_types = list(
 		/mob/living/simple_animal/hostile/corrupted_flesh/floater = 1,
@@ -420,6 +420,8 @@
 		/mob/living/simple_animal/hostile/corrupted_flesh/slicer = 6,
 		/mob/living/simple_animal/hostile/corrupted_flesh/stunner = 3,
 		/mob/living/carbon/human/species/monkey/angry/mauler = 2,
+		/mob/living/simple_animal/hostile/corrupted_flesh/treader = 2,
+		/mob/living/simple_animal/hostile/corrupted_flesh/himan = 2,
 	)
 
 /obj/structure/corrupted_flesh/structure/assembler/activate_ability(mob/living/triggered_mob)
