@@ -188,6 +188,11 @@
 	store_file(new /datum/computer_file/program/filemanager(src)) // File manager, allows text editor functions and basic file manipulation.
 	store_file(new /datum/computer_file/program/robotact(src))
 	store_file(new /datum/computer_file/program/crew_manifest(src)) // SKYRAT EDIT ADDITION - Manifests for cyborgs
+	/* SKYRAT EDIT ADDITION Start- Returns Messenger to borgs */
+	var/datum/computer_file/program/messenger/messenger = new(src) 
+	messenger.is_silicon = TRUE
+	store_file(messenger)
+	/* SKYRAT EDIT ADDITION End- Returns Messenger to borgs */
 
 // Syndicate variant - very slight better
 /obj/item/computer_hardware/hard_drive/portable/syndicate
