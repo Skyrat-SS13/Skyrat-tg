@@ -22,28 +22,28 @@
 //this fragment of code makes unequipping not instant
 /obj/item/clothing/under/misc/latex_catsuit/attack_hand(mob/user)
 	if(iscarbon(user))
-		var/mob/living/carbon/human/C = user
-		if(src == C.w_uniform)
-			if(!do_after(C, 60, target = src))
+		var/mob/living/carbon/human/affected_human = user
+		if(src == affected_human.w_uniform)
+			if(!do_after(affected_human, 60, target = src))
 				return
 	. = ..()
 
 // //some gender identification magic
-/obj/item/clothing/under/misc/latex_catsuit/equipped(mob/living/U, slot)
+/obj/item/clothing/under/misc/latex_catsuit/equipped(mob/living/affected_mob, slot)
 	. = ..()
-	var/mob/living/carbon/human/C = U
-	var/obj/item/organ/genital/breasts/B = C.getorganslot(ORGAN_SLOT_BREASTS)
-	if(src == C.w_uniform)
-		if(U.gender == FEMALE)
+	var/mob/living/carbon/human/affected_human = affected_mob
+	var/obj/item/organ/genital/breasts/affected_breasts = affected_human.getorganslot(ORGAN_SLOT_BREASTS)
+	if(src == affected_human.w_uniform)
+		if(affected_mob.gender == FEMALE)
 			icon_state = "latex_catsuit_female"
-			U.update_inv_w_uniform()
+			affected_mob.update_inv_w_uniform()
 
-		if(U.gender == MALE)
+		if(affected_mob.gender == MALE)
 			icon_state = "latex_catsuit_male"
-			U.update_inv_w_uniform()
+			affected_mob.update_inv_w_uniform()
 
 	//For giving taurs proper sprites
-	if(C.dna.species.mutant_bodyparts["taur"])
+	if(affected_human.dna.species.mutant_bodyparts["taur"])
 		breasts_overlay = mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_uniform/lewd_uniform-snake.dmi', "none")
 		update_overlays()
 	else
@@ -51,40 +51,40 @@
 		update_overlays()
 
 	//Breasts overlay for catsuit
-	if(B?.genital_size >= 6 || B?.genital_type == "pair")
+	if(affected_breasts?.genital_size >= 6 || affected_breasts?.genital_type == "pair")
 		breasts_overlay.icon_state = "breasts_double"
 		breasts_icon_overlay.icon_state = "iconbreasts_double"
 		accessory_overlay = breasts_overlay
 		add_overlay(breasts_icon_overlay)
 		update_overlays()
-	if(B?.genital_type == "quad")
+	if(affected_breasts?.genital_type == "quad")
 		breasts_overlay.icon_state = "breasts_quad"
 		breasts_icon_overlay.icon_state = "iconbreasts_quad"
 		accessory_overlay = breasts_overlay
 		add_overlay(breasts_icon_overlay)
 		update_overlays()
-	if(B?.genital_type == "sextuple")
+	if(affected_breasts?.genital_type == "sextuple")
 		breasts_overlay.icon_state = "breasts_sextuple"
 		breasts_icon_overlay.icon_state = "iconbreasts_sextuple"
 		accessory_overlay = breasts_overlay
 		add_overlay(breasts_icon_overlay)
 		update_overlays()
 
-	if(C.dna.species.mutant_bodyparts["taur"] && src == C.w_uniform)
-		C.remove_overlay(BODY_BEHIND_LAYER)
-		C.remove_overlay(BODY_FRONT_LAYER)
-	C.regenerate_icons()
+	if(affected_human.dna.species.mutant_bodyparts["taur"] && src == affected_human.w_uniform)
+		affected_human.remove_overlay(BODY_BEHIND_LAYER)
+		affected_human.remove_overlay(BODY_FRONT_LAYER)
+	affected_human.regenerate_icons()
 
-/obj/item/clothing/under/misc/latex_catsuit/dropped(mob/living/U)
+/obj/item/clothing/under/misc/latex_catsuit/dropped(mob/living/affected_mob)
 	. = ..()
-	var/mob/living/carbon/human/C = U
+	var/mob/living/carbon/human/affected_human = affected_mob
 	accessory_overlay = null
 	breasts_overlay.icon_state = "none"
 	cut_overlay(breasts_icon_overlay)
 	breasts_icon_overlay.icon_state = "none"
-	if(C.dna.species.mutant_bodyparts["taur"] && src == C.w_uniform)
-		C.apply_overlay(BODY_BEHIND_LAYER)
-		C.apply_overlay(BODY_FRONT_LAYER)
+	if(affected_human.dna.species.mutant_bodyparts["taur"] && src == affected_human.w_uniform)
+		affected_human.apply_overlay(BODY_BEHIND_LAYER)
+		affected_human.apply_overlay(BODY_FRONT_LAYER)
 
 //Plug to bypass the bug with instant suit equip/drop
 /obj/item/clothing/under/misc/latex_catsuit/MouseDrop(atom/over_object)

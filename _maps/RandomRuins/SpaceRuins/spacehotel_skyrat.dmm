@@ -65,7 +65,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/machinery/door/airlock/grunge{
 	name = "Hotel Staff Storage";
-	req_access_txt = "200"
+	req_access = list("away_general")
 	},
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/hotel/workroom)
@@ -557,7 +557,7 @@
 	},
 /obj/structure/closet/secure_closet/freezer/meat{
 	req_access = null;
-	req_access_txt = "200"
+	req_access = list("away_general")
 	},
 /turf/open/floor/iron/kitchen_coldroom/freezerfloor,
 /area/ruin/space/has_grav/hotel/bar)
@@ -567,7 +567,7 @@
 "en" = (
 /obj/structure/window/spawner/west,
 /obj/structure/window/spawner/north,
-/obj/structure/flora/ausbushes/ywflowers,
+/obj/structure/flora/bush/flowers_yw,
 /turf/open/floor/grass,
 /area/ruin/space/has_grav/hotel)
 "ep" = (
@@ -578,16 +578,16 @@
 /area/ruin/space/has_grav/hotel/workroom)
 "ey" = (
 /obj/structure/window/spawner/west,
-/obj/structure/flora/ausbushes/fernybush,
+/obj/structure/flora/bush/ferny,
 /turf/open/floor/grass,
 /area/ruin/space/has_grav/hotel)
 "ez" = (
-/obj/structure/flora/ausbushes/fernybush,
+/obj/structure/flora/bush/ferny,
 /turf/open/floor/grass,
 /area/ruin/space/has_grav/hotel)
 "eA" = (
 /obj/structure/window/spawner/east,
-/obj/structure/flora/ausbushes/fullgrass,
+/obj/structure/flora/bush/fullgrass,
 /turf/open/floor/grass,
 /area/ruin/space/has_grav/hotel)
 "eF" = (
@@ -612,7 +612,7 @@
 "eN" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Hotel Maintenance";
-	req_access_txt = "201"
+	req_access = list("away_maint")
 	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
@@ -630,20 +630,20 @@
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/hotel/guestroom/room_6)
 "eP" = (
-/obj/structure/flora/ausbushes/fernybush,
+/obj/structure/flora/bush/ferny,
 /obj/structure/window/spawner/west,
 /turf/open/floor/grass,
 /area/ruin/space/has_grav/hotel)
 "eQ" = (
-/obj/structure/flora/ausbushes/ywflowers,
+/obj/structure/flora/bush/flowers_yw,
 /turf/open/floor/grass,
 /area/ruin/space/has_grav/hotel)
 "eR" = (
-/obj/structure/flora/ausbushes/fullgrass,
+/obj/structure/flora/bush/fullgrass,
 /turf/open/floor/grass,
 /area/ruin/space/has_grav/hotel)
 "eS" = (
-/obj/structure/flora/ausbushes/fullgrass,
+/obj/structure/flora/bush/fullgrass,
 /obj/structure/window/spawner/east,
 /turf/open/floor/grass,
 /area/ruin/space/has_grav/hotel)
@@ -742,12 +742,12 @@
 /turf/open/floor/grass,
 /area/ruin/space/has_grav/hotel)
 "fn" = (
-/obj/structure/flora/ausbushes/ywflowers,
+/obj/structure/flora/bush/flowers_yw,
 /obj/structure/window/spawner,
 /turf/open/floor/grass,
 /area/ruin/space/has_grav/hotel)
 "fo" = (
-/obj/structure/flora/ausbushes/fullgrass,
+/obj/structure/flora/bush/fullgrass,
 /obj/structure/window/spawner,
 /turf/open/floor/grass,
 /area/ruin/space/has_grav/hotel)
@@ -893,7 +893,7 @@
 "fR" = (
 /obj/machinery/door/airlock/grunge{
 	name = "Bar Backroom";
-	req_access_txt = "200"
+	req_access = list("away_general")
 	},
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/hotel/bar)
@@ -995,7 +995,7 @@
 "gs" = (
 /obj/machinery/door/airlock/grunge{
 	name = "Hotel Staff Room";
-	req_access_txt = "200"
+	req_access = list("away_general")
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/hotel/workroom/quarters)
@@ -1635,7 +1635,7 @@
 	},
 /obj/machinery/door/airlock/grunge{
 	name = "Manager's Office";
-	req_access_txt = "200"
+	req_access = list("away_general")
 	},
 /turf/open/floor/carpet,
 /area/ruin/space/has_grav/hotel/workroom)
@@ -1748,7 +1748,7 @@
 "jq" = (
 /obj/machinery/door/airlock/security/glass{
 	name = "Hotel Security Checkpoint";
-	req_access_txt = "203"
+	req_access = list("away_sec")
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/plating,
@@ -2075,7 +2075,7 @@
 	dir = 4;
 	icon_state = "rightsecure";
 	name = "Cell Door";
-	req_access_txt = "203"
+	req_access = list("away_sec")
 	},
 /obj/effect/turf_decal/tile/red{
 	dir = 1
@@ -2426,7 +2426,7 @@
 "lF" = (
 /obj/machinery/door/airlock/security/glass{
 	name = "Hotel Security Checkpoint";
-	req_access_txt = "203"
+	req_access = list("away_sec")
 	},
 /obj/effect/turf_decal/tile/red{
 	dir = 1
@@ -2530,7 +2530,7 @@
 "lT" = (
 /obj/structure/closet/secure_closet/security{
 	req_access = null;
-	req_access_txt = "203"
+	req_access = list("away_sec")
 	},
 /obj/item/clothing/head/helmet/justice,
 /obj/effect/turf_decal/tile/red{
@@ -2763,7 +2763,7 @@
 "mA" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Hotel Maintenance";
-	req_access_txt = "201"
+	req_access = list("away_maint")
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
 	dir = 4
@@ -2949,7 +2949,7 @@
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/hotel/sauna)
 "mY" = (
-/obj/structure/flora/ausbushes/ywflowers,
+/obj/structure/flora/bush/flowers_yw,
 /obj/structure/window/spawner/north,
 /turf/open/floor/grass,
 /area/ruin/space/has_grav/hotel)
@@ -3507,7 +3507,7 @@
 /obj/structure/cable,
 /obj/machinery/door/airlock/grunge{
 	name = "Hotel Medical Storage";
-	req_access_txt = "200"
+	req_access = list("away_general")
 	},
 /turf/open/floor/iron/showroomfloor,
 /area/ruin/space/has_grav/hotel)
@@ -3540,7 +3540,7 @@
 /turf/open/floor/carpet,
 /area/ruin/space/has_grav/hotel)
 "sh" = (
-/obj/structure/flora/ausbushes/fullgrass,
+/obj/structure/flora/bush/fullgrass,
 /obj/structure/window/spawner/east,
 /obj/structure/window/spawner/north,
 /turf/open/floor/grass,
@@ -4233,7 +4233,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/door/airlock/grunge{
 	name = "Hotel Staff Room";
-	req_access_txt = "200"
+	req_access = list("away_general")
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/hotel/workroom/quarters)
@@ -4293,7 +4293,7 @@
 "zH" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Hotel Maintenance";
-	req_access_txt = "201"
+	req_access = list("away_maint")
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
 	dir = 4
@@ -4334,12 +4334,12 @@
 "Ah" = (
 /obj/machinery/door/airlock/grunge{
 	name = "Hydroponics";
-	req_access_txt = "200"
+	req_access = list("away_general")
 	},
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/hotel/bar)
 "Ai" = (
-/obj/structure/flora/ausbushes/ywflowers,
+/obj/structure/flora/bush/flowers_yw,
 /obj/machinery/light{
 	dir = 1
 	},
@@ -4445,7 +4445,7 @@
 /area/ruin/space/has_grav/hotel/power)
 "BA" = (
 /obj/structure/window/spawner/north,
-/obj/structure/flora/ausbushes/fullgrass,
+/obj/structure/flora/bush/fullgrass,
 /turf/open/floor/grass,
 /area/ruin/space/has_grav/hotel)
 "BB" = (
@@ -4534,7 +4534,7 @@
 /obj/structure/cable,
 /obj/machinery/door/airlock/grunge{
 	name = "Hotel Staff Room";
-	req_access_txt = "200"
+	req_access = list("away_general")
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/hotel/workroom/quarters)
@@ -4545,7 +4545,7 @@
 "Cc" = (
 /obj/machinery/door/airlock/grunge{
 	name = "Kitchen";
-	req_access_txt = "200"
+	req_access = list("away_general")
 	},
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/hotel/bar)
@@ -4823,13 +4823,13 @@
 	},
 /obj/machinery/door/poddoor/preopen{
 	id = "Disposal Exit";
-	name = "disposal exit vent"
+	name = "Disposal Exit Vent"
 	},
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/hotel/workroom)
 "EH" = (
 /obj/machinery/door/window/right/directional/east{
-	req_access_txt = "200"
+	req_access = list("away_general")
 	},
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/hotel/bar)
@@ -5038,7 +5038,7 @@
 "Gw" = (
 /obj/structure/closet/secure_closet/freezer/meat{
 	req_access = null;
-	req_access_txt = "200"
+	req_access = list("away_general")
 	},
 /turf/open/floor/iron/kitchen_coldroom/freezerfloor,
 /area/ruin/space/has_grav/hotel/bar)
@@ -5086,7 +5086,7 @@
 /obj/item/reagent_containers/food/condiment/flour,
 /obj/structure/closet/secure_closet/freezer/kitchen{
 	req_access = null;
-	req_access_txt = "200"
+	req_access = list("away_general")
 	},
 /turf/open/floor/iron/cafeteria,
 /area/ruin/space/has_grav/hotel/bar)
@@ -5348,7 +5348,7 @@
 /turf/open/floor/iron/showroomfloor,
 /area/ruin/space/has_grav/hotel/pool)
 "JF" = (
-/obj/structure/flora/ausbushes/ywflowers,
+/obj/structure/flora/bush/flowers_yw,
 /obj/machinery/light{
 	dir = 4
 	},
@@ -5839,7 +5839,7 @@
 /obj/item/reagent_containers/food/condiment/milk,
 /obj/structure/closet/secure_closet/freezer/fridge{
 	req_access = null;
-	req_access_txt = "200"
+	req_access = list("away_general")
 	},
 /obj/machinery/light{
 	dir = 1
@@ -6228,7 +6228,7 @@
 /turf/open/floor/iron/cafeteria,
 /area/ruin/space/has_grav/hotel/bar)
 "RK" = (
-/obj/structure/flora/ausbushes/ywflowers,
+/obj/structure/flora/bush/flowers_yw,
 /obj/machinery/light,
 /turf/open/floor/grass,
 /area/ruin/space/has_grav/hotel)
@@ -6459,7 +6459,7 @@
 "TA" = (
 /obj/machinery/door/airlock/grunge{
 	name = "Disposals Access";
-	req_access_txt = "200"
+	req_access = list("away_general")
 	},
 /turf/open/floor/plating/airless,
 /area/ruin/space/has_grav/hotel/workroom)
@@ -6478,7 +6478,7 @@
 /turf/open/floor/carpet/black,
 /area/ruin/space/has_grav/hotel/dock)
 "TY" = (
-/obj/structure/flora/ausbushes/ywflowers,
+/obj/structure/flora/bush/flowers_yw,
 /obj/machinery/light{
 	dir = 8
 	},
@@ -6861,7 +6861,7 @@
 /obj/structure/cable,
 /obj/machinery/door/airlock/grunge{
 	name = "Hotel Medical Storage";
-	req_access_txt = "200"
+	req_access = list("away_general")
 	},
 /turf/open/floor/iron/showroomfloor,
 /area/ruin/space/has_grav/hotel)
@@ -7040,7 +7040,7 @@
 	},
 /obj/machinery/door/airlock/grunge{
 	name = "Hydroponics Storage";
-	req_access_txt = "200"
+	req_access = list("away_general")
 	},
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/hotel/bar)
@@ -7055,7 +7055,7 @@
 /obj/structure/cable,
 /obj/machinery/door/airlock/grunge{
 	name = "Hotel Cold Room";
-	req_access_txt = "200"
+	req_access = list("away_general")
 	},
 /turf/open/floor/iron/cafeteria,
 /area/ruin/space/has_grav/hotel/bar)
@@ -7069,7 +7069,7 @@
 	name = "Disposal Vent Control";
 	pixel_x = 25;
 	pixel_y = -4;
-	req_access_txt = "12"
+	req_access = list("maint_tunnels")
 	},
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/hotel/workroom)

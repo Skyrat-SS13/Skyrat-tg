@@ -21,6 +21,7 @@ GLOBAL_PROTECT(admin_verbs_default)
 	/client/proc/tag_datum_mapview,
 	/client/proc/debugstatpanel,
 	/client/proc/fix_air, /*resets air in designated radius to its default atmos composition*/
+	/client/proc/remove_liquid, // SKYRAT EDIT ADDITION
 	/client/proc/revokebunkerbypass, //SKYRAT EDIT ADDITION - PANICBUNKER
 	/client/proc/addbunkerbypass, //SKYRAT EDIT ADDITION - PANICBUNKER
 	/client/proc/requests
@@ -100,6 +101,9 @@ GLOBAL_LIST_INIT(admin_verbs_fun, list(
 	/client/proc/request_more_opfor, //SKYRAT EDIT ADDITION
 	/client/proc/fix_say, // SKYRAT EDIT ADDITION
 	/client/proc/spawn_sunbeam, // SKYRAT EDIT ADDITION
+	/client/proc/admin_change_title_screen, //SKYRAT EDIT ADDITION
+	/client/proc/change_title_screen_notice, //SKYRAT EDIT ADDITION
+	/client/proc/change_title_screen_html, //SKYRAT EDIT ADDITION
 	/client/proc/cmd_select_equipment,
 	/client/proc/cmd_admin_gib_self,
 	/client/proc/drop_bomb,
@@ -125,6 +129,7 @@ GLOBAL_LIST_INIT(admin_verbs_fun, list(
 	/client/proc/add_mob_ability,
 	/datum/admins/proc/station_traits_panel,
 	/client/proc/spawn_pollution, // SKYRAT EDIT ADDITION
+	/client/proc/spawn_liquid, // SKYRAT EDIT ADDITION
 	))
 GLOBAL_PROTECT(admin_verbs_fun)
 GLOBAL_LIST_INIT(admin_verbs_spawn, list(/datum/admins/proc/spawn_atom, /datum/admins/proc/podspawn_atom, /datum/admins/proc/spawn_cargo, /datum/admins/proc/spawn_objasmob, /client/proc/respawn_character, /datum/admins/proc/beaker_panel))
@@ -218,6 +223,7 @@ GLOBAL_PROTECT(admin_verbs_debug)
 	/client/proc/cmd_admin_toggle_fov,
 	/client/proc/cmd_admin_debug_traitor_objectives,
 	/client/proc/spawn_debug_full_crew,
+	/client/proc/validate_puzzgrids,
 	)
 GLOBAL_LIST_INIT(admin_verbs_possess, list(/proc/possess, /proc/release))
 GLOBAL_PROTECT(admin_verbs_possess)
@@ -298,6 +304,7 @@ GLOBAL_LIST_INIT(admin_verbs_hideable, list(
 	/client/proc/toggle_combo_hud,
 	/client/proc/admin_open_event_spawners_menu, //SKYRAT EDIT ADDITION - EVENTS
 	/client/proc/spawn_pollution, // SKYRAT EDIT ADDITION
+	/client/proc/spawn_liquid,
 	/client/proc/debug_huds
 	))
 GLOBAL_PROTECT(admin_verbs_hideable)
@@ -862,7 +869,7 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 	set name = "Debug Stat Panel"
 	set category = "Debug"
 
-	src << output("", "statbrowser:create_debug")
+	src.stat_panel.send_message("create_debug")
 
 /client/proc/admin_2fa_verify()
 	set name = "Verify Admin"

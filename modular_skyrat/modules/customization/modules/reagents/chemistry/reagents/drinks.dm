@@ -24,11 +24,15 @@
 /obj/item/trash/can/skyrat
 	icon = 'modular_skyrat/master_files/icons/obj/janitor.dmi'
 
-//////////////////////////soda_cans/skyrat//
+/*
+*	SKYRAT SODA CANS
+*/
+
 /// How much fizziness is added to the can of soda by throwing it, in percentage points
 #define SODA_FIZZINESS_THROWN 15
 /// How much fizziness is added to the can of soda by shaking it, in percentage points
 #define SODA_FIZZINESS_SHAKE 5
+
 /obj/item/reagent_containers/food/drinks/soda_cans/skyrat
 	icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
 

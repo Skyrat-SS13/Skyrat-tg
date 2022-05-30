@@ -1,6 +1,6 @@
-//////////////////////////
-///Normal vibrating egg///
-//////////////////////////
+/*
+*	VIBRATING EGG
+*/
 
 /obj/item/clothing/sextoy/eggvib
 	name = "vibrating egg"
@@ -38,12 +38,12 @@
 		"pink" = image(icon = src.icon, icon_state = "[initial(icon_state)]_pink_low[(istype(src, /obj/item/clothing/sextoy/eggvib/signalvib)) ? "_on" : ""]"),
 		"teal" = image(icon = src.icon, icon_state = "[initial(icon_state)]_teal_low[(istype(src, /obj/item/clothing/sextoy/eggvib/signalvib)) ? "_on" : ""]"))
 
-/obj/item/clothing/sextoy/eggvib/AltClick(mob/user, obj/item/object)
+/obj/item/clothing/sextoy/eggvib/AltClick(mob/user)
 	if(!color_changed)
 		. = ..()
 		if(.)
 			return
-		var/choice = show_radial_menu(user,src, vib_designs, custom_check = CALLBACK(src, .proc/check_menu, user, object), radius = 36, require_near = TRUE)
+		var/choice = show_radial_menu(user, src, vib_designs, custom_check = CALLBACK(src, .proc/check_menu, user), radius = 36, require_near = TRUE)
 		if(!choice)
 			return FALSE
 		current_color = choice
@@ -136,9 +136,10 @@
 		target.adjustArousal(0.7 * delta_time)
 		target.adjustPleasure(0.7 * delta_time)
 
-//////////////////////////
-///Signal vibrating egg///
-//////////////////////////
+/*
+*	SIGNALLER CONTROLLED EGG
+*/
+
 /obj/item/clothing/sextoy/eggvib/signalvib
 	name = "signal vibrating egg"
 	desc = "A vibrating sex toy with remote control capability. Use a signaller to turn it on."
@@ -157,7 +158,7 @@
 
 /obj/item/clothing/sextoy/eggvib/signalvib/Initialize()
 	if(random)
-		code = rand(1,100)
+		code = rand(1, 100)
 		frequency = rand(MIN_FREE_FREQ, MAX_FREE_FREQ)
 		if(ISMULTIPLE(frequency, 2))//signaller frequencies are always uneven!
 			frequency++
@@ -170,7 +171,7 @@
 	SSradio.remove_object(src, frequency)
 	. = ..()
 
-//A moment for the `attackby()` proc that used to lie here, letting you turn a vibrator into an electric chair.
+// A moment for the `attackby()` proc that used to lie here, letting you turn a vibrator into an electric chair.
 
 /obj/item/clothing/sextoy/eggvib/signalvib/update_icon_state()
 	. = ..()
@@ -187,9 +188,9 @@
 
 //arousal stuff
 
-/obj/item/clothing/sextoy/eggvib/signalvib/AltClick(mob/user, obj/item/I)
+/obj/item/clothing/sextoy/eggvib/signalvib/AltClick(mob/user)
 	if(!color_changed)
-		var/choice = show_radial_menu(user,src, vib_designs, custom_check = CALLBACK(src, /obj/item/clothing/sextoy/proc/check_menu, user, I), radius = 36, require_near = TRUE)
+		var/choice = show_radial_menu(user, src, vib_designs, custom_check = CALLBACK(src, /obj/item/clothing/sextoy/proc/check_menu, user), radius = 36, require_near = TRUE)
 		if(!choice)
 			return FALSE
 		current_color = choice

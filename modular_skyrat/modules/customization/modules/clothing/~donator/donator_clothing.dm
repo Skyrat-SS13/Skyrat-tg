@@ -869,44 +869,21 @@
 	user.whisper(message, spans = spans)
 
 // Donation reward for CandleJax
-/obj/item/clothing/head/helmet/sec/peacekeeper/jax
-	name = "HepUnit standard helmet"
-	desc = "An adjustable riot-grade helmet which protects the user from most forms of blunt force trauma. It comes included with floodlights for deployment in darker environments, as well as a powered visor that can be energized with a current to conceal the users face."
+/obj/item/clothing/head/bio_hood/jax
+	name = "xuracorp biohazard hood"
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
+	icon_state = "bio_hood_jax"
+	inhand_icon_state = "bio_hood_jax"
+	desc = "A hood composed of proprietary material from a NanoTrasen Affiliate."
 
-	icon_state = "hephelmet-visor-nolight"
-	worn_icon_state = "hephelmet-visor-nolight"
-	actions_types = list(/datum/action/item_action/togglevisor)
-
-	flags_inv = HIDEFACIALHAIR | HIDEFACE | HIDESNOUT
-	flags_cover = MASKCOVERSMOUTH | MASKCOVERSEYES
-	visor_flags_inv = HIDEFACIALHAIR | HIDEFACE | HIDESNOUT
-	visor_flags_cover = MASKCOVERSMOUTH | MASKCOVERSEYES
-	var/visor = TRUE
-
-/datum/action/item_action/togglevisor
-	name = "Adjust visor"
-
-/obj/item/clothing/head/helmet/sec/peacekeeper/jax/ui_action_click(mob/living/carbon/user, datum/action)
-	. = ..()
-
-	if(istype(action, /datum/action/item_action/togglevisor))
-		visor = !visor
-		if(visor)
-			flags_inv = HIDEHAIR | HIDEFACIALHAIR | HIDEFACE | HIDESNOUT
-		else
-			flags_inv = HIDEHAIR
-		update_icon()
-
-		if(user)
-			user.head_update(src, forced = 1)
-			user.update_action_buttons_icon()
-
-/obj/item/clothing/head/helmet/sec/peacekeeper/jax/update_icon_state()
-	. = ..()
-	icon_state = "hephelmet-[visor ? "visor" : "novisor"]-[attached_light?.on?"light":"nolight"]"
-	worn_icon_state = icon_state
+/obj/item/clothing/under/plasmaman/jax2
+	name = "xuracorp hazard underfitting"
+	desc = "A hazard suit fitted with bio-resistant fibers. Utilizes self-sterilizing pumps fitted in the back."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
+	icon_state = "plasmaman_jax"
+	inhand_icon_state = "plasmaman_jax"
 
 // Donation reward for Raxraus
 /obj/item/clothing/under/rax_turtleneck
@@ -1384,4 +1361,11 @@
     icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
     worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/custom_w.dmi'
     icon_state = "greenbadge"
+
+    // Donation reward for shyshadow
+/obj/item/toy/plush/donator/plushie_winrow
+	name = "dark and brooding lizard plush"
+	desc = "An almost intimidating black lizard plush, this one's got a little beret to come with it! Best not to separate the two. Its eyes shine with suggestion, no maidens?"
+	icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
+	icon_state = "plushie_winrow"
 

@@ -27,7 +27,10 @@
 
 	target.adjustOxyLoss(-amount_healed)
 
-//PROCS//
+/*
+*	PROCS
+*/
+
 /// Applies digust by damage thresholds.
 /obj/projectile/energy/medical/proc/DamageDisgust(mob/living/target, type_damage)
 	if(type_damage >= 100)
@@ -121,8 +124,15 @@
 
 	target.adjustToxLoss(-(amount_healed * healing_multiplier))
 
-//T1 Healing Projectiles//
-//The Basic Brute Heal Projectile//
+/*
+*	HEALING PROJECTILES
+*/
+
+/*
+*	TIER ONE
+*/
+
+//The Basic Brute Heal Projectile
 /obj/item/ammo_casing/energy/medical/brute1
 	projectile_type = /obj/projectile/energy/medical/brute
 	select_name = "brute"
@@ -198,8 +208,11 @@
 	. = ..()
 	safeBurn(target, amount_healed, base_disgust)
 
-//T2 Healing Projectiles//
-//Tier II Brute Projectile//
+/*
+*	TIER TWO
+*/
+
+//Tier II Brute Projectile
 /obj/item/ammo_casing/energy/medical/brute2
 	projectile_type = /obj/projectile/energy/medical/brute/better
 	select_name = "brute II"
@@ -212,7 +225,7 @@
 	max_clone = 1/3
 	base_disgust = 2
 
-//Tier II Burn Projectile//
+//Tier II Burn Projectile
 /obj/item/ammo_casing/energy/medical/burn2
 	projectile_type = /obj/projectile/energy/medical/burn/better
 	select_name = "burn II"
@@ -225,7 +238,7 @@
 	max_clone = 1/3
 	base_disgust = 2
 
-//Tier II Oxy Projectile//
+//Tier II Oxy Projectile
 /obj/item/ammo_casing/energy/medical/oxy2
 	projectile_type = /obj/projectile/energy/medical/oxygen/better
 	select_name = "oxygen II"
@@ -236,7 +249,7 @@
 	pass_flags =  UPGRADED_MEDICELL_PASSFLAGS
 	amount_healed = 20
 
-//Tier II Toxin Projectile//
+//Tier II Toxin Projectile
 /obj/item/ammo_casing/energy/medical/toxin2
 	projectile_type = /obj/projectile/energy/medical/toxin/better
 	select_name = "toxin II"
@@ -266,8 +279,12 @@
 	amount_healed = 11.25
 	base_disgust = 2
 
-//T3 Healing Projectiles//
-//Tier III Brute Projectile//
+
+/*
+*	TIER THREE
+*/
+
+//Tier III Brute Projectile
 /obj/item/ammo_casing/energy/medical/brute3
 	projectile_type = /obj/projectile/energy/medical/brute/better/best
 	select_name = "brute III"
@@ -279,7 +296,7 @@
 	max_clone = 1/9
 	base_disgust = 1
 
-//Tier III Burn Projectile//
+//Tier III Burn Projectile
 /obj/item/ammo_casing/energy/medical/burn3
 	projectile_type = /obj/projectile/energy/medical/burn/better/best
 	select_name = "burn III"
@@ -291,7 +308,7 @@
 	max_clone = 1/9
 	base_disgust = 1
 
-//Tier III Oxy Projectile//
+//Tier III Oxy Projectile
 /obj/item/ammo_casing/energy/medical/oxy3
 	projectile_type = /obj/projectile/energy/medical/oxygen/better/best
 	select_name = "oxygen III"
@@ -301,7 +318,7 @@
 	name = "powerful oxygen heal shot"
 	amount_healed = 30
 
-//Tier III Toxin Projectile//
+//Tier III Toxin Projectile
 /obj/item/ammo_casing/energy/medical/toxin3
 	projectile_type = /obj/projectile/energy/medical/toxin/better/best
 	select_name = "toxin III"
@@ -332,15 +349,16 @@
 	amount_healed = 15
 	base_disgust = 1
 
-//End of Basic Tiers of cells.
+/*
+*	UTILITY CELLS
+*/
 
-//Utility Cells
 //Utility basis
 /obj/projectile/energy/medical/utility
 	name = "utility medical shot"
 	pass_flags =  UPGRADED_MEDICELL_PASSFLAGS
 
-//CLotting
+//Clotting
 /obj/item/ammo_casing/energy/medical/utility/clotting
 	projectile_type = /obj/projectile/energy/medical/utility/clotting
 	select_name = "clotting"

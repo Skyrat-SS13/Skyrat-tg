@@ -28,6 +28,9 @@
 	//the parent needs to be dense in order to slide through
 	if(!atom_parent.density)
 		return
+	// need to be in range
+	if(!in_range(atom_parent, user))
+		return
 	//you have to be in the list
 	if(!is_type_in_list(user, allowed_mobs))
 		return

@@ -220,11 +220,13 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/button/door/incinerator_vent_atmos_aux{
 	pixel_x = -8;
-	pixel_y = -24
+	pixel_y = -24;
+	req_one_access = list(200)
 	},
 /obj/machinery/button/door/incinerator_vent_atmos_main{
 	pixel_x = -8;
-	pixel_y = -36
+	pixel_y = -36;
+	req_one_access = list(200)
 	},
 /obj/machinery/atmospherics/components/binary/pump/off/general{
 	dir = 8
@@ -2274,7 +2276,9 @@
 "lV" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/spawner/structure/window/reinforced,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/brown,
+/obj/machinery/atmospherics/pipe/layer_manifold/brown/hidden{
+	dir = 4
+	},
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/port_tarkon/atmos)
 "lW" = (
@@ -3320,6 +3324,7 @@
 /obj/effect/turf_decal/stripes/red/line{
 	dir = 8
 	},
+/obj/structure/cable,
 /turf/open/floor/engine/vacuum,
 /area/ruin/space/has_grav/port_tarkon/atmos)
 "sc" = (
@@ -3531,7 +3536,9 @@
 "ts" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/spawner/structure/window/reinforced,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/purple,
+/obj/machinery/atmospherics/pipe/layer_manifold/purple/hidden{
+	dir = 4
+	},
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/port_tarkon/atmos)
 "tt" = (
@@ -3590,7 +3597,7 @@
 "tM" = (
 /obj/machinery/door/airlock/wood{
 	id_tag = "ptdorm2";
-	name = "Private dorm 2"
+	name = "Private Dorm 2"
 	},
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -3656,7 +3663,9 @@
 "ub" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/spawner/structure/window/reinforced,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/yellow,
+/obj/machinery/atmospherics/pipe/layer_manifold/yellow/hidden{
+	dir = 4
+	},
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/port_tarkon/atmos)
 "ud" = (
@@ -3828,7 +3837,7 @@
 "ve" = (
 /obj/machinery/door/airlock/wood{
 	id_tag = "ptdorm3";
-	name = "Private dorm 3"
+	name = "Private Dorm 3"
 	},
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -4005,6 +4014,9 @@
 /obj/effect/decal/cleanable/generic,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/cargo)
+"vY" = (
+/turf/open/misc/asteroid/airless,
+/area/station/ai_monitored)
 "wa" = (
 /obj/structure/cable,
 /obj/machinery/power/terminal{
@@ -4164,7 +4176,9 @@
 "xp" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/spawner/structure/window/reinforced,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/green,
+/obj/machinery/atmospherics/pipe/layer_manifold/green/hidden{
+	dir = 4
+	},
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/port_tarkon/atmos)
 "xq" = (
@@ -4488,6 +4502,7 @@
 /obj/machinery/power/turbine/turbine_outlet{
 	dir = 4
 	},
+/obj/structure/cable,
 /turf/open/floor/engine/vacuum,
 /area/ruin/space/has_grav/port_tarkon/atmos)
 "zJ" = (
@@ -4685,7 +4700,9 @@
 "Bj" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/spawner/structure/window/reinforced,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/cyan,
+/obj/machinery/atmospherics/pipe/layer_manifold/cyan/hidden{
+	dir = 4
+	},
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/port_tarkon/atmos)
 "Bk" = (
@@ -4935,7 +4952,7 @@
 "Cy" = (
 /obj/machinery/door/airlock/wood{
 	id_tag = "ptdorm1";
-	name = "Private dorm 1"
+	name = "Private Dorm 1"
 	},
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -5554,7 +5571,7 @@
 "FT" = (
 /obj/machinery/power/turbine/core_rotor{
 	dir = 4;
-	mapping_id = "main_turbine"
+	mapping_id = "tarkon_turbine"
 	},
 /obj/structure/cable,
 /turf/open/floor/engine/vacuum,
@@ -6052,6 +6069,7 @@
 /obj/item/wirecutters,
 /obj/item/wrench,
 /obj/effect/decal/cleanable/dirt,
+/obj/item/circuitboard/machine/rtg,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/port_tarkon/atmos)
 "IH" = (
@@ -6927,7 +6945,9 @@
 "NK" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/spawner/structure/window/reinforced,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/dark,
+/obj/machinery/atmospherics/pipe/layer_manifold/dark/hidden{
+	dir = 4
+	},
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/port_tarkon/atmos)
 "NL" = (
@@ -6978,14 +6998,7 @@
 "Ob" = (
 /obj/machinery/computer/turbine_computer{
 	dir = 1;
-	mapping_id = "main_turbine"
-	},
-/obj/machinery/computer/security/telescreen{
-	desc = "Used for watching the turbine vent.";
-	dir = 1;
-	name = "turbine vent monitor";
-	network = list("turbine");
-	pixel_y = -29
+	mapping_id = "tarkon_turbine"
 	},
 /obj/structure/cable,
 /obj/machinery/light/dim/directional/south,
@@ -7302,8 +7315,10 @@
 /area/ruin/space/has_grav/port_tarkon/developement)
 "Qg" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/pink,
 /obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/atmospherics/pipe/layer_manifold/pink/hidden{
+	dir = 4
+	},
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/port_tarkon/atmos)
 "Qh" = (
@@ -7490,7 +7505,7 @@
 	dir = 1
 	},
 /obj/machinery/door/airlock/external/glass{
-	name = "Turbine maintenance door"
+	name = "Turbine Maintenance Door"
 	},
 /obj/structure/cable,
 /turf/open/floor/plating,
@@ -9715,7 +9730,7 @@ lH
 sv
 jO
 iB
-zo
+vY
 zo
 zo
 sv

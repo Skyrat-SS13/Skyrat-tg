@@ -1,5 +1,5 @@
-#define LENGTH_LONGEST_LINK 29 //set to the length to the char length of the longest link
-#define LENGTH_LONGEST_EXTENSION 4 //set to the length of the longest file extension
+#define LENGTH_LONGEST_LINK 29 // set to the length to the char length of the longest link
+#define LENGTH_LONGEST_EXTENSION 4 // set to the length of the longest file extension
 
 /datum/preference/text/headshot
 	category = PREFERENCE_CATEGORY_NON_CONTEXTUAL
@@ -7,15 +7,15 @@
 	savefile_key = "headshot"
 	/// Assoc list of ckeys and their link, used to cut down on chat spam
 	var/list/stored_link = list()
-	var/static/link_regex = regex("^https://i.gyazo.com|https://media.discordapp.net|https://cdn.discordapp.com|https://media.discordapp.net$") //Do not touch the damn duplicates.
-	var/static/end_regex = regex("^.jpg|.jpg|.png|.jpeg|.jpeg$") //Regex is terrible, don't touch the duplicate extensions
+	var/static/link_regex = regex("^https://i.gyazo.com|https://media.discordapp.net|https://cdn.discordapp.com|https://media.discordapp.net$") // Do not touch the damn duplicates.
+	var/static/end_regex = regex("^.jpg|.jpg|.png|.jpeg|.jpeg$") // Regex is terrible, don't touch the duplicate extensions
 
 
 /datum/preference/text/headshot/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	target?.dna.features["headshot"] = preferences?.headshot
 
 /datum/preference/text/headshot/is_valid(value)
-	if(!length(value)) //Just to get blank ones out of the way
+	if(!length(value)) // Just to get blank ones out of the way
 		usr?.client?.prefs?.headshot = null
 		return TRUE
 	if(!findtext(value, "https://", 1, 9))
@@ -39,7 +39,7 @@
 	return TRUE
 
 /datum/preference/text/headshot/is_accessible(datum/preferences/preferences)
-	if(isnull(usr)) //Joining at roundstart
+	if(isnull(usr)) // Joining at roundstart
 		return ..()
 	if(!is_veteran_player(usr?.client) && !GLOB.donator_list[usr?.ckey] && !is_admin(usr?.client))
 		return FALSE

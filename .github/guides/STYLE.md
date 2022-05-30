@@ -26,6 +26,23 @@ Do not use tabs/spaces for indentation in the middle of a code line. Not only is
 #define SPECIES_FELINID "felinid"
 ```
 
+### Comments
+
+You mustn't use box comments as headers for code, nor for anything else.
+While it may be slightly more aesthetically pleasing, it can cause problems with auto-documentation and makes it far harder to add anything after the fact.
+It's much easier to stick down a new line than have to balance a bunch of whitespaces and forward slashes. 
+
+```dm
+//////////////////////////////////
+// BAD. DON'T DO THIS. STOP IT. //
+//////////////////////////////////
+
+/*
+* GOOD!
+* CONTINUE TO DO THIS
+*/
+```
+
 ### Control statements
 (if, while, for, etc)
 

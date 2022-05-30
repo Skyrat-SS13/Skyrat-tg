@@ -29,7 +29,7 @@
 /obj/docking_port/mobile/supply,
 /obj/machinery/door/airlock/grunge{
 	name = "Supply Shuttle Airlock";
-	req_access_txt = "31"
+	req_access = list("cargo")
 	},
 /turf/open/floor/iron/shuttle/cargo{
 	icon_state = "floor_box"
@@ -159,7 +159,7 @@
 	},
 /obj/machinery/door/poddoor{
 	id = "QMLoaddoor";
-	name = "supply dock loading door"
+	name = "Supply Dock Loading Door"
 	},
 /turf/open/floor/plating,
 /area/shuttle/supply)
@@ -181,7 +181,7 @@
 "wR" = (
 /obj/machinery/door/airlock/grunge{
 	name = "Supply Shuttle Airlock";
-	req_access_txt = "31"
+	req_access = list("cargo")
 	},
 /turf/open/floor/iron/shuttle/cargo{
 	icon_state = "floor_box"
@@ -267,7 +267,7 @@
 "Ro" = (
 /obj/machinery/door/airlock/grunge{
 	name = "Supply Shuttle Cockpit";
-	req_access_txt = "31"
+	req_access = list("cargo")
 	},
 /turf/open/floor/iron/shuttle/cargo,
 /area/shuttle/supply/cockpit)
@@ -325,7 +325,7 @@
 	},
 /obj/machinery/door/poddoor{
 	id = "QMLoaddoor2";
-	name = "supply dock loading door"
+	name = "Supply Dock Loading Door"
 	},
 /turf/open/floor/plating,
 /area/shuttle/supply)

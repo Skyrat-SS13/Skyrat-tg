@@ -1,8 +1,8 @@
-//Mutant variants needs to be a property of all items, because all items can be equipped, despite the mob code only expecting clothing items (ugh)
+// Mutant variants needs to be a property of all items, because all items can be equipped, despite the mob code only expecting clothing items (ugh)
 /obj/item
-	///Icon file for mob worn overlays, if the user is digi.
+	/// Icon file for mob worn overlays, if the user is digi.
 	var/icon/worn_icon_digi
-	///The config type to use for greyscaled worn sprites for digitigrade characters. Both this and greyscale_colors must be assigned to work.
+	/// The config type to use for greyscaled worn sprites for digitigrade characters. Both this and greyscale_colors must be assigned to work.
 	var/greyscale_config_worn_digi
 	/// Icon file for mob worn overlays, if the user is a vox.
 	var/icon/worn_icon_vox

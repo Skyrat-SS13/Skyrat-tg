@@ -42,8 +42,10 @@
 /obj/item/clothing/head/cowboyhat/sec
 	name = "security cowboy hat"
 	desc = "A security cowboy hat, perfect for any true lawman"
-	icon_state = "cowboyhat_sec"
-	inhand_icon_state = "cowboyhat_sec"
+	icon_state = "cowboyhat_black"
+	inhand_icon_state = "cowboyhat_black"
+	// same armour as the sec beret
+	armor = list(MELEE = 35, BULLET = 30, LASER = 30, ENERGY = 40, BOMB = 25, BIO = 0, FIRE = 20, ACID = 50, WOUND = 4)
 
 /obj/item/clothing/head/kepi
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
@@ -76,7 +78,7 @@
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/head/intern/developer
-	name = "\improper Intern beancap"
+	name = "intern beancap"
 
 /obj/item/clothing/head/sec/navywarden/syndicate
 	name = "master at arms' beret"
@@ -100,20 +102,20 @@
 
 
 /obj/item/clothing/head/cowboyhat/wide
-	name = "wide brimmed cowboy hat"
+	name = "wide-brimmed cowboy hat"
 	desc = "A brown cowboy hat for blocking out the sun. Remember: Justice is truth in action. Let that guide you in the coming days."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "cowboy_wide"
 	inhand_icon_state= "cowboy_wide"
 
-/obj/item/clothing/head/cowboyhat/widesec
-	name = "wide brimmed security cowboy hat"
+/obj/item/clothing/head/cowboyhat/wide/sec
+	name = "wide-brimmed security cowboy hat"
 	desc = "A bandit turned sheriff, his enforcement is brutal but effective - whether out of fear or respect is unclear, though not many bodies hang high. A peaceful land, a quiet people."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "cowboy_black_sec"
-	inhand_icon_state= "cowboy_black_sec"
+	icon_state = "cowboy_black"
+	inhand_icon_state= "cowboy_black"
+	// same armour as the sec beret
+	armor = list(MELEE = 35, BULLET = 30, LASER = 30, ENERGY = 40, BOMB = 25, BIO = 0, FIRE = 20, ACID = 50, WOUND = 4)
 
 
 /obj/item/clothing/head/ushanka/sec
