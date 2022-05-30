@@ -4,6 +4,7 @@
 	icon = 'icons/obj/device.dmi'
 	icon_state = "gangtool-blue"
 	inhand_icon_state = "radio"
+	w_class = WEIGHT_CLASS_SMALL
 	/// How many charges the beacon has left
 	var/uses = 1
 	/// A list of allowed areas that a miner can be spawned in
@@ -96,3 +97,11 @@
 
 /obj/structure/closet/supplypod/podspawn/no_return
 	bluespace = FALSE
+
+/obj/item/storage/box/gas_miner_beacons
+	name = "box of gas miner delivery beacons"
+	desc = "Contains two beacons for delivery of atmospheric gas miners."
+
+/obj/item/storage/box/gas_miner_beacons/PopulateContents()
+	new /obj/item/gas_miner_beacon
+	new /obj/item/gas_miner_beacon
