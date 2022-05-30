@@ -1402,6 +1402,7 @@
 		"seclite",
 		"zipties",
 		"inspector",
+		"ammoworkbench_disk_lethal", //SKYRAT EDIT ADDITION
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1000)
 
@@ -1441,7 +1442,6 @@
 	design_ids = list(
 		"pin_testing",
 		"tele_shield",
-		"ammoworkbench_disk_lethal", //SKYRAT EDIT ADDITION
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 10000)
 	required_experiments = list(/datum/experiment/ordnance/explosive/pressurebomb)
