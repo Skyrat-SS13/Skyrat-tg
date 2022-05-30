@@ -91,10 +91,6 @@
   tint = 0
   off_state = "aviator_off"
 
-/obj/item/clothing/glasses/hud/ar/aviator/suicide_act(mob/living/carbon/user)
-  user.visible_message(span_suicide("[user] is posing rapidly with their [src] on... Clearly breathtaking. It looks like [user.p_theyre()] trying to commit suicide!"))
-  return OXYLOSS
-
 /obj/item/clothing/glasses/hud/ar/aviator/fake 
   desc = "A pair of designer sunglasses. Doesn't seem like it'll block flashes."
   modes = list(MODE_ON = MODE_ON) //... maybe just make these a subtype of /obj/item/clothing/glasses/sun/fake , the modetoggle is not needed
