@@ -307,7 +307,7 @@
  * Stuns enemies around it by screaming nice and loud.
  */
 /obj/structure/corrupted_flesh/structure/screamer
-	name = "tormented head"
+	name = "\improper Tormented Head"
 	desc = "A head impaled on a metal tendril. Still twitching, still living, still screaming."
 	icon = 'modular_skyrat/modules/corrupted_flesh/icons/hivemind_machines.dmi'
 	icon_state = "head"
@@ -403,7 +403,7 @@
  * A simple mob spawner.
  */
 /obj/structure/corrupted_flesh/structure/assembler
-	name = "Assembler"
+	name = "\improper Assembler"
 	desc = "This cylindrical machine whirrs and whispers, it has a small opening in the middle."
 	icon = 'modular_skyrat/modules/corrupted_flesh/icons/hivemind_machines.dmi'
 	icon_state = "spawner"

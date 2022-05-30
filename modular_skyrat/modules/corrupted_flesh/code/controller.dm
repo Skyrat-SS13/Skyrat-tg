@@ -91,15 +91,15 @@
 
 /datum/corrupted_flesh_controller/New(obj/structure/corrupted_flesh/structure/core/new_core)
 	. = ..()
+	controller_firstname = pick(AI_FORENAME_LIST)
+	controller_secondname = pick(AI_SURNAME_LIST)
+	controller_fullname = "[controller_firstname] [controller_secondname]"
 	if(new_core)
 		cores += new_core
 		new_core.our_controller = src
 		RegisterSignal(new_core, COMSIG_PARENT_QDELETING, .proc/core_death)
 		new_core.name = "[controller_fullname] Processor Unit"
 		register_new_asset(new_core)
-	controller_firstname = pick(AI_FORENAME_LIST)
-	controller_secondname = pick(AI_SURNAME_LIST)
-	controller_fullname = "[controller_firstname] [controller_secondname]"
 	START_PROCESSING(SSfastprocess, src)
 	if(do_initial_expansion)
 		initial_expansion()
@@ -232,7 +232,12 @@
 			var/obj/structure/corrupted_flesh/structure/existing_structure = locate() in picked_turf
 			if(!existing_structure)
 				structure_progression -= spreads_for_structure
-				spawn_structure(picked_turf, pick(structure_types))
+				var/list/possible_structures = list()
+				for(var/obj/structure/corrupted_flesh/iterating_structure as anything in possible_structures)
+					if(initial(iterating_structure.required_controller_level) > level)
+						continue
+					possible_structures += iterating_structure
+				spawn_structure(picked_turf, pick(possible_structures))
 
 /datum/corrupted_flesh_controller/proc/calculate_level_system()
 	if(calculate_current_points() >= level_up_progress_required && level < CONTROLLER_LEVEL_MAX)
@@ -305,8 +310,8 @@
 			continue
 		possible_structures += iterating_structure
 	var/list/locations = list()
-	for(var/obj/structure/corrupted_flesh/structure/corruption_structure as anything in controlled_structures)
-		locations[corruption_structure.loc] = TRUE
+	for(var/obj/structure/corrupted_flesh/wireweed/iterating_wireweed as anything in controlled_wireweed)
+		locations[get_turf(iterating_wireweed)] = TRUE
 	var/list/guaranteed_structures = possible_structures.Copy()
 	for(var/i in 1 to amount)
 		if(!length(locations))
