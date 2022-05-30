@@ -56,11 +56,6 @@
 		/obj/item/stack/tile/iron/sepia,
 	)
 
-// iron Kitchen
-/turf/open/floor/iron/kitchen
-	icon_state = "blackchecker"
-	base_icon_state = "blackchecker"
-
 // iron + Red
 /turf/open/floor/iron/red
 	icon_state = "redfull"
