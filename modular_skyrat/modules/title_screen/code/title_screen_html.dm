@@ -7,7 +7,7 @@ GLOBAL_LIST_EMPTY(startup_messages)
 /mob/dead/new_player/proc/get_title_html()
 	var/dat = SStitle.title_html
 	if(SSticker.current_state == GAME_STATE_STARTUP)
-		dat += {"<img src="loading_screen.gif" class="fone" alt="">"}
+		dat += {"<img src="loading_screen.gif" class="bg" alt="">"}
 		dat += {"<div class="container_terminal" id="terminal"></div>"}
 		dat += {"<div class="container_progress" id="progress_container"><div class="progress_bar" id="progress"></div></div>"}
 
@@ -73,11 +73,13 @@ GLOBAL_LIST_EMPTY(startup_messages)
 				progress_current_time = parseFloat(current_time);
 				progress_completion_time = parseFloat(total_time);
 			}
+
+			function update_current_character() {}
 		</script>
 		"}
 
 	else
-		dat += {"<img src="loading_screen.gif" class="fone" alt="">"}
+		dat += {"<img src="loading_screen.gif" class="bg" alt="">"}
 
 		if(SStitle.current_notice)
 			dat += {"
@@ -86,30 +88,24 @@ GLOBAL_LIST_EMPTY(startup_messages)
 			</div>
 		"}
 
-		dat += {"
-		<div class="container_nav">
-			<a class="menu_button" href='?src=\ref[src];character_setup=1'>SETUP ([uppertext(client.prefs.read_preference(/datum/preference/name/real_name))])</a>
-		"}
-
-		dat += {"<a class="menu_button" href='?src=\ref[src];game_options=1'>GAME OPTIONS</a>
-		"}
+		dat += {"<div class="container_nav">"}
 
 		if(!SSticker || SSticker.current_state <= GAME_STATE_PREGAME)
-			dat += {"<a id="ready" class="menu_button" href='?src=\ref[src];toggle_ready=1'>[ready == PLAYER_READY_TO_PLAY ? "READY ☑" : "READY ☒"]</a>
-		"}
+			dat += {"<a id="ready" class="menu_button" href='?src=\ref[src];toggle_ready=1'>[ready == PLAYER_READY_TO_PLAY ? "<span class='checked'>☑</span> READY" : "<span class='unchecked'>☒</span> READY"]</a>"}
 		else
-			dat += {"<a class="menu_button" href='?src=\ref[src];late_join=1'>JOIN</a>
-		"}
-			dat += {"<a class="menu_button" href='?src=\ref[src];view_manifest=1'>CREW</a>
-		"}
+			dat += {"
+				<a class="menu_button" href='?src=\ref[src];late_join=1'>JOIN GAME</a>
+				<a class="menu_button" href='?src=\ref[src];view_manifest=1'>CREW MANIFEST</a>
+			"}
 
-		dat += {"<a id="be_antag" class="menu_button" href='?src=\ref[src];toggle_antag=1'>[client.prefs.read_preference(/datum/preference/toggle/be_antag) ? "BE ANTAG ☑" : "BE ANTAG ☒"]</a>
-		"}
-
-		dat += {"<a class="menu_button" href='?src=\ref[src];observe=1'>OBSERVE</a>
-		"}
+		dat += {"<a class="menu_button" href='?src=\ref[src];observe=1'>OBSERVE</a>"}
 
 		dat += {"
+			<hr>
+			<a class="menu_button" href='?src=\ref[src];character_setup=1'>SETUP CHARACTER (<span id="character_slot">[uppertext(client.prefs.read_preference(/datum/preference/name/real_name))]</span>)</a>
+			<a class="menu_button" href='?src=\ref[src];game_options=1'>GAME OPTIONS</a>
+			<a id="be_antag" class="menu_button" href='?src=\ref[src];toggle_antag=1'>[client.prefs.read_preference(/datum/preference/toggle/be_antag) ? "<span class='checked'>☑</span> BE ANTAGONIST" : "<span class='unchecked'>☒</span> BE ANTAGONIST"]</a>
+			<hr>
 			<a class="menu_button" href='?src=\ref[src];server_swap=1'>SWAP SERVERS</a>
 		"}
 
@@ -121,33 +117,38 @@ GLOBAL_LIST_EMPTY(startup_messages)
 		<script language="JavaScript">
 			var ready_int = 0;
 			var ready_mark = document.getElementById("ready");
-			var ready_marks = \[ 'READY ☒', 'READY ☑' \];
+			var ready_marks = \[ "<span class='unchecked'>☒</span> READY", "<span class='checked'>☑</span> READY" \];
 			function toggle_ready(setReady) {
 				if(setReady) {
 					ready_int = setReady;
-					ready_mark.textContent = ready_marks\[ready_int\];
+					ready_mark.innerHTML = ready_marks\[ready_int\];
 				}
 				else {
 					ready_int++;
 					if (ready_int === ready_marks.length)
 						ready_int = 0;
-					ready_mark.textContent = ready_marks\[ready_int\];
+					ready_mark.innerHTML = ready_marks\[ready_int\];
 				}
 			}
 			var antag_int = 0;
 			var antag_mark = document.getElementById("be_antag");
-			var antag_marks = \[ 'BE ANTAG ☑', 'BE ANTAG ☒' \];
+			var antag_marks = \[ "<span class='unchecked'>☒</span> BE ANTAGONIST", "<span class='checked'>☑</span> BE ANTAGONIST" \];
 			function toggle_antag(setAntag) {
 				if(setAntag) {
 					antag_int = setAntag;
-					antag_mark.textContent = antag_marks\[antag_int\];
+					antag_mark.innerHTML = antag_marks\[antag_int\];
 				}
 				else {
 					antag_int++;
 					if (antag_int === antag_marks.length)
 						antag_int = 0;
-					antag_mark.textContent = antag_marks\[antag_int\];
+					antag_mark.innerHTML = antag_marks\[antag_int\];
 				}
+			}
+
+			var character_name_slot = document.getElementById("character_slot");
+			function update_current_character(name) {
+				character_name_slot.textContent = name.toUpperCase();
 			}
 
 			function append_terminal_text() {}

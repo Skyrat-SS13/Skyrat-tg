@@ -162,6 +162,15 @@ SUBSYSTEM_DEF(title)
 	show_title_screen()
 
 /**
+ * Update a user's character setup name.
+ * Arguments:
+ * * user - The user being updated
+ * * name - the real name of the current slot.
+ */
+/datum/controller/subsystem/title/proc/update_character_name(mob/user, name)
+	user.client << output(name, "title_browser:update_current_character")
+
+/**
  * Adds a startup message to the splashscreen.
  */
 /proc/add_startup_message(msg)
