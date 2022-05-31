@@ -778,6 +778,8 @@
 	attack_verb_simple = "warp"
 	melee_damage_lower = 5
 	melee_damage_upper = 10
+	alert_sounds = null
+	passive_sounds = null
 	/// What is the range at which we spawn our copies?
 	var/phase_range = 5
 	/// How many copies do we spawn when we are aggroed?
@@ -821,7 +823,7 @@
 		if(nearby)
 			for(var/dir in GLOB.alldirs)
 				var/turf/nearby_turf = get_step(new_place, dir)
-				if(can_jump_on(nearby_turf))
+				if(can_jump_on(nearby_turf, target_turf))
 					new_place = nearby_turf
 		else
 			new_place = target_turf
@@ -838,7 +840,7 @@
 		var/tp_direction = angle2dir(angle)
 		new_place = get_ranged_target_turf(loc, tp_direction, rand(2, 4))
 
-	if(!can_jump_on(new_place))
+	if(!can_jump_on(new_place, target_turf))
 		return
 	//an animation
 	var/init_px = pixel_x
@@ -859,9 +861,14 @@
 			playsound(place, 'sound/effects/ghost2.ogg', 70, 1)
 			living_mob.Knockdown(10)
 
-/mob/living/simple_animal/hostile/corrupted_flesh/phaser/proc/can_jump_on(turf/target_turf)
+/mob/living/simple_animal/hostile/corrupted_flesh/phaser/proc/can_jump_on(turf/target_turf, turf/previous_turf)
 	if(!target_turf || target_turf.density || isopenspaceturf(target_turf))
 		return FALSE
+
+
+	if(previous_turf)
+		if(!can_see(target_turf, previous_turf, 12))
+			return FALSE
 
 	//to prevent reflection's stacking
 	var/obj/effect/temp_visual/phaser/phaser_reflection = locate() in target_turf
@@ -924,7 +931,7 @@
 		if(nearby)
 			for(var/dir in GLOB.alldirs)
 				var/turf/nearby_turf = get_step(new_place, dir)
-				if(can_jump_on(nearby_turf))
+				if(can_jump_on(nearby_turf, target_turf))
 					new_place = nearby_turf
 		else
 			new_place = target_turf
@@ -941,7 +948,7 @@
 		var/tp_direction = angle2dir(angle)
 		new_place = get_ranged_target_turf(loc, tp_direction, rand(2, 4))
 
-	if(!can_jump_on(new_place))
+	if(!can_jump_on(new_place, target_turf))
 		return
 	//an animation
 	var/init_px = pixel_x
@@ -956,9 +963,13 @@
 	icon_state = "[base_icon_state]-[rand(1, 4)]"
 	forceMove(target_turf)
 
-/obj/effect/temp_visual/phaser/proc/can_jump_on(turf/target_turf)
+/obj/effect/temp_visual/phaser/proc/can_jump_on(turf/target_turf, turf/previous_turf)
 	if(!target_turf || target_turf.density || isopenspaceturf(target_turf))
 		return FALSE
+
+	if(previous_turf)
+		if(!can_see(target_turf, previous_turf, 12))
+			return FALSE
 
 	//to prevent reflection's stacking
 	var/obj/effect/temp_visual/phaser/phaser_reflection = locate() in target_turf
