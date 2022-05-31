@@ -11,12 +11,15 @@
 		TRAIT_CAN_USE_FLIGHT_POTION,
 	)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID|MOB_REPTILE
-	mutant_bodyparts = list("tail_lizard" = "Smooth", "spines" = "None", "body_markings" = "None", "legs" = "Normal Legs")
-	external_organs = list(/obj/item/organ/external/horns = "None",
+	mutant_bodyparts = list("body_markings" = "None", "legs" = "Normal Legs")
+	external_organs = list(
+		/obj/item/organ/external/horns = "None",
 		/obj/item/organ/external/frills = "None",
-		/obj/item/organ/external/snout = "Round")
-	mutanttongue = /obj/item/organ/tongue/lizard
-	mutant_organs = list(/obj/item/organ/tail/lizard)
+		/obj/item/organ/external/snout = "Round",
+		/obj/item/organ/external/spines = "None",
+		/obj/item/organ/external/tail/lizard = "Smooth",
+	)
+	mutanttongue = /obj/item/organ/internal/tongue/lizard
 	coldmod = 1.5
 	heatmod = 0.67
 	payday_modifier = 0.75
@@ -67,6 +70,7 @@
 
 	return randname
 
+<<<<<<< HEAD
 //SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
 /*
 //I wag in death SKYRAT EDIT - customization
@@ -127,6 +131,8 @@
 
 //SKYRAT EDIT REMOVAL BEGIN
 /*
+=======
+>>>>>>> 6d470992cb6 (This tail refactor turned into an organ refactor. Funny how that works. (#67017))
 /datum/species/lizard/randomize_main_appearance_element(mob/living/carbon/human/human_mob)
 	var/tail = pick(GLOB.tails_list_lizard)
 	human_mob.dna.features["tail_lizard"] = tail
@@ -189,7 +195,7 @@ Lizard subspecies: ASHWALKERS
 	name = "Ash Walker"
 	id = SPECIES_LIZARD_ASH
 	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,HAS_FLESH,HAS_BONE)
-	mutantlungs = /obj/item/organ/lungs/ashwalker
+	mutantlungs = /obj/item/organ/internal/lungs/ashwalker
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_CAN_STRIP,
@@ -218,8 +224,13 @@ Lizard subspecies: SILVER SCALED
 		TRAIT_VIRUSIMMUNE,
 		TRAIT_WINE_TASTER,
 	)
+<<<<<<< HEAD
 	species_language_holder = /datum/language_holder/lizard //SKYRAT EDIT CHANGE
 	mutanttongue = /obj/item/organ/tongue/lizard //SKYRAT EDIT CHANGE
+=======
+	species_language_holder = /datum/language_holder/lizard/silver
+	mutanttongue = /obj/item/organ/internal/tongue/lizard/silver
+>>>>>>> 6d470992cb6 (This tail refactor turned into an organ refactor. Funny how that works. (#67017))
 	armor = 10 //very light silvery scales soften blows
 	changesource_flags = MIRROR_BADMIN | MIRROR_MAGIC | RACE_SWAP | ERT_SPAWN
 	examine_limb_id = SPECIES_LIZARD

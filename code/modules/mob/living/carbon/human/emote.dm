@@ -107,6 +107,7 @@
 	. = ..()
 	if(!.)
 		return
+<<<<<<< HEAD
 	var/mob/living/carbon/human/H = user
 	if(!istype(H) || !H.dna || !H.dna.species || !H.dna.species.can_wag_tail(H))
 		return
@@ -130,7 +131,19 @@
 	//if(H.dna.species.is_wagging_tail()) - ORIGINAL
 	if(H.dna.species.is_wagging_tail(H)) //SKYRAT EDIT CHANGE - CUSTOMIZATION
 		. = null
+=======
+	var/obj/item/organ/external/tail/oranges_accessory = user.getorganslot(ORGAN_SLOT_EXTERNAL_TAIL)
+	if(oranges_accessory.wag_flags & WAG_WAGGING) //We verified the tail exists in can_run_emote()
+		SEND_SIGNAL(user, COMSIG_ORGAN_WAG_TAIL, FALSE)
+	else
+		SEND_SIGNAL(user, COMSIG_ORGAN_WAG_TAIL, TRUE)
+>>>>>>> 6d470992cb6 (This tail refactor turned into an organ refactor. Funny how that works. (#67017))
 
+/datum/emote/living/carbon/human/wag/can_run_emote(mob/user, status_check, intentional)
+	var/obj/item/organ/external/tail/tail = user.getorganslot(ORGAN_SLOT_EXTERNAL_TAIL)
+	if(tail?.wag_flags & WAG_ABLE)
+		return ..()
+	return FALSE
 /datum/emote/living/carbon/human/wing
 	key = "wing"
 	key_third_person = "wings"

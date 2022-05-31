@@ -200,23 +200,23 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	//why does it work this way? because traits also disable the downsides of not having an organ, removing organs but not having the trait will make your species die
 
 	///Replaces default brain with a different organ
-	var/obj/item/organ/brain/mutantbrain = /obj/item/organ/brain
+	var/obj/item/organ/internal/brain/mutantbrain = /obj/item/organ/internal/brain
 	///Replaces default heart with a different organ
-	var/obj/item/organ/heart/mutantheart = /obj/item/organ/heart
+	var/obj/item/organ/internal/heart/mutantheart = /obj/item/organ/internal/heart
 	///Replaces default lungs with a different organ
-	var/obj/item/organ/lungs/mutantlungs = /obj/item/organ/lungs
+	var/obj/item/organ/internal/lungs/mutantlungs = /obj/item/organ/internal/lungs
 	///Replaces default eyes with a different organ
-	var/obj/item/organ/eyes/mutanteyes = /obj/item/organ/eyes
+	var/obj/item/organ/internal/eyes/mutanteyes = /obj/item/organ/internal/eyes
 	///Replaces default ears with a different organ
-	var/obj/item/organ/ears/mutantears = /obj/item/organ/ears
+	var/obj/item/organ/internal/ears/mutantears = /obj/item/organ/internal/ears
 	///Replaces default tongue with a different organ
-	var/obj/item/organ/tongue/mutanttongue = /obj/item/organ/tongue
+	var/obj/item/organ/internal/tongue/mutanttongue = /obj/item/organ/internal/tongue
 	///Replaces default liver with a different organ
-	var/obj/item/organ/liver/mutantliver = /obj/item/organ/liver
+	var/obj/item/organ/internal/liver/mutantliver = /obj/item/organ/internal/liver
 	///Replaces default stomach with a different organ
-	var/obj/item/organ/stomach/mutantstomach = /obj/item/organ/stomach
+	var/obj/item/organ/internal/stomach/mutantstomach = /obj/item/organ/internal/stomach
 	///Replaces default appendix with a different organ.
-	var/obj/item/organ/appendix/mutantappendix = /obj/item/organ/appendix
+	var/obj/item/organ/internal/appendix/mutantappendix = /obj/item/organ/internal/appendix
 	///Forces an item into this species' hands. Only an honorary mutantthing because this is not an organ and not loaded in the same way, you've been warned to do your research.
 	var/obj/item/mutanthands
 
@@ -369,7 +369,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 
 		if(oldorgan && (!should_have || replace_current) && !(oldorgan.zone in excluded_zones) && !(oldorgan.organ_flags & ORGAN_UNREMOVABLE))
 			if(slot == ORGAN_SLOT_BRAIN)
-				var/obj/item/organ/brain/brain = oldorgan
+				var/obj/item/organ/internal/brain/brain = oldorgan
 				if(!brain.decoy_override)//"Just keep it if it's fake" - confucius, probably
 					brain.before_organ_replacement(neworgan)
 					brain.Remove(C,TRUE, TRUE) //brain argument used so it doesn't cause any... sudden death.
@@ -462,10 +462,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 		var/mob/living/carbon/human/human = C
 		for(var/obj/item/organ/external/organ_path as anything in external_organs)
 			//Load a persons preferences from DNA
-			var/feature_key_name = human.dna.features[initial(organ_path.feature_key)]
-
 			var/obj/item/organ/external/new_organ = SSwardrobe.provide_type(organ_path)
-			new_organ.set_sprite(feature_key_name)
 			new_organ.Insert(human)
 
 	for(var/X in inherent_traits)
@@ -575,7 +572,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 
 		// eyes
 		if(!(NOEYESPRITES in species_traits))
-			var/obj/item/organ/eyes/eye_organ = species_human.getorganslot(ORGAN_SLOT_EYES)
+			var/obj/item/organ/internal/eyes/eye_organ = species_human.getorganslot(ORGAN_SLOT_EYES)
 			var/mutable_appearance/no_eyeslay
 			var/add_pixel_x = 0
 			var/add_pixel_y = 0
@@ -699,6 +696,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 
 	var/obj/item/bodypart/head/noggin = source.get_bodypart(BODY_ZONE_HEAD)
 
+<<<<<<< HEAD
 	if(mutant_bodyparts["tail_lizard"])
 		if(source.wear_suit && (source.wear_suit.flags_inv & HIDEJUMPSUIT))
 			bodyparts_to_add -= "tail_lizard"
@@ -733,6 +731,8 @@ GLOBAL_LIST_EMPTY(features_by_species)
 			bodyparts_to_add -= "waggingspines"
 		else if (mutant_bodyparts["tail"])
 			bodyparts_to_add -= "waggingspines"
+=======
+>>>>>>> 6d470992cb6 (This tail refactor turned into an organ refactor. Funny how that works. (#67017))
 
 	if(mutant_bodyparts["ears"])
 		if(!source.dna.features["ears"] || source.dna.features["ears"] == "None" || source.head && (source.head.flags_inv & HIDEHAIR) || (source.wear_mask && (source.wear_mask.flags_inv & HIDEHAIR)) || !noggin || !IS_ORGANIC_LIMB(noggin))
@@ -749,6 +749,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 		for(var/bodypart in bodyparts_to_add)
 			var/datum/sprite_accessory/accessory
 			switch(bodypart)
+<<<<<<< HEAD
 				if("tail_lizard")
 					accessory = GLOB.tails_list_lizard[source.dna.features["tail_lizard"]]
 				if("waggingtail_lizard")
@@ -767,6 +768,8 @@ GLOBAL_LIST_EMPTY(features_by_species)
 					accessory = GLOB.frills_list[source.dna.features["frills"]]
 				if("horns")
 					accessory = GLOB.horns_list[source.dna.features["horns"]]
+=======
+>>>>>>> 6d470992cb6 (This tail refactor turned into an organ refactor. Funny how that works. (#67017))
 				if("ears")
 					accessory = GLOB.ears_list[source.dna.features["ears"]]
 				if("body_markings")
@@ -783,19 +786,11 @@ GLOBAL_LIST_EMPTY(features_by_species)
 					accessory = GLOB.moth_antennae_list[source.dna.features["moth_antennae"]]
 				if("caps")
 					accessory = GLOB.caps_list[source.dna.features["caps"]]
-				if("tail_monkey")
-					accessory = GLOB.tails_list_monkey[source.dna.features["tail_monkey"]]
 
 			if(!accessory || accessory.icon_state == "none")
 				continue
 
 			var/mutable_appearance/accessory_overlay = mutable_appearance(accessory.icon, layer = -layer)
-
-			//A little rename so we don't have to use tail_lizard or tail_human when naming the sprites.
-			if(bodypart == "tail_lizard" || bodypart == "tail_human" || bodypart == "tail_monkey")
-				bodypart = "tail"
-			else if(bodypart == "waggingtail_lizard" || bodypart == "waggingtail_human")
-				bodypart = "waggingtail"
 
 			if(accessory.gender_specific)
 				accessory_overlay.icon_state = "[g]_[bodypart]_[accessory.icon_state]_[layertext]"
@@ -964,7 +959,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 		if(ITEM_SLOT_EYES)
 			if(!H.get_bodypart(BODY_ZONE_HEAD))
 				return FALSE
-			var/obj/item/organ/eyes/E = H.getorganslot(ORGAN_SLOT_EYES)
+			var/obj/item/organ/internal/eyes/E = H.getorganslot(ORGAN_SLOT_EYES)
 			if(E?.no_glasses)
 				return FALSE
 			return equip_delay_self_check(I, H, bypass_equip_delay_self)
@@ -1830,6 +1825,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 //Tail Wagging//
 ////////////////
 
+<<<<<<< HEAD
 
 /*
  * This proc is called when a mob loses their tail.
@@ -1900,6 +1896,8 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	//SKYRAT EDIT TAIL TRAUMA END
 	//SKYRAT EDIT CHANGE END
 
+=======
+>>>>>>> 6d470992cb6 (This tail refactor turned into an organ refactor. Funny how that works. (#67017))
 /*
  * Clears all tail related moodlets when they lose their species.
  *
@@ -1908,8 +1906,8 @@ GLOBAL_LIST_EMPTY(features_by_species)
 /datum/species/proc/clear_tail_moodlets(mob/living/carbon/human/former_tail_owner)
 	SEND_SIGNAL(former_tail_owner, COMSIG_CLEAR_MOOD_EVENT, "tail_lost")
 	SEND_SIGNAL(former_tail_owner, COMSIG_CLEAR_MOOD_EVENT, "tail_balance_lost")
-	SEND_SIGNAL(former_tail_owner, COMSIG_CLEAR_MOOD_EVENT, "right_tail_regained")
 	SEND_SIGNAL(former_tail_owner, COMSIG_CLEAR_MOOD_EVENT, "wrong_tail_regained")
+<<<<<<< HEAD
 	stop_wagging_tail(former_tail_owner)
 
 
@@ -1925,6 +1923,8 @@ GLOBAL_LIST_EMPTY(features_by_species)
 /datum/species/proc/stop_wagging_tail(mob/living/carbon/human/H)
 */
 //SKYRAT EDIT REMOVAL END
+=======
+>>>>>>> 6d470992cb6 (This tail refactor turned into an organ refactor. Funny how that works. (#67017))
 
 ///////////////
 //FLIGHT SHIT//
@@ -1993,6 +1993,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 		if ( \
 			(preference.relevant_mutant_bodypart in mutant_bodyparts) \
 			|| (preference.relevant_species_trait in species_traits) \
+			|| (preference.relevant_external_organ in external_organs)
 		)
 			features += preference.savefile_key
 
