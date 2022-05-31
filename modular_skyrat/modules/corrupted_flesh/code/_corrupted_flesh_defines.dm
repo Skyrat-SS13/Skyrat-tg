@@ -2,13 +2,16 @@
 
 #define MALFUNCTION_RESET_TIME 5 SECONDS
 
+#define STRUCTURE_EMP_LIGHT_DISABLE_TIME 10 SECONDS
+#define STRUCTURE_EMP_HEAVY_DISABLE_TIME 20 SECONDS
+
 #define CORRUPTED_FLESH_NAME_MODIFIER_LIST list ("Warped", "Altered", "Modified", "Upgraded", "Abnormal")
 
 #define AI_FORENAME_LIST list("Von Neumann", "Lazarus", "Abattoir", "Auto-Surgeon", "NanoTrasen", \
 	"NanoNurse", "Vivisector", "Ex Costa", "Apostasy", "Gnosis", "Balaam", "Ophite", \
 	"Sarif", "VersaLife", "Slylandro", "SHODAN", "Pandora", "Fisto")
 
-#define AI_SURNAME_LIST list("Mk I", "Mk II", "Mk III", "Mk IV", "Mk V", \
+#define AI_SURNAME_LIST list("Mk I", "Mk II", "Mk III", "Mk IV", "Mk V", "Mk X", \
 	"v0.9", "v1.0", "v1.1", "v2.0", "2418-B", "Open Beta", \
 	"Pre-Release", "Commercial Release", "Closed Alpha", "Hivebuilt")
 

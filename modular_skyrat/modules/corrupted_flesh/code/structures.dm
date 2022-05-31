@@ -8,9 +8,12 @@
 /obj/structure/corrupted_flesh/structure
 	name = "this shouldn't be here"
 	desc = "report me to coders"
-	icon = 'modular_skyrat/modules/corrupted_flesh/icons/hivemind_structures.dmi'
-	icon_state = "error"
+	icon = 'modular_skyrat/modules/corrupted_flesh/icons/hivemind_machines.dmi'
+	icon_state = "infected_machine"
+	base_icon_state = "infected_machine"
 	density = TRUE
+	/// Are we inoperative?
+	var/disabled = FALSE
 	/// Do we trigger on someone attacking us?
 	var/trigger_on_attack = FALSE
 	/// Do we automatically trigger on creation?
@@ -37,6 +40,13 @@
 	if(immediate_trigger)
 		activate_ability()
 
+/obj/structure/corrupted_flesh/structure/update_icon_state()
+	. = ..()
+	if(disabled)
+		icon_state = "[icon_state]-disabled"
+	else
+		icon_state = base_icon_state
+
 /obj/structure/corrupted_flesh/structure/attacked_by(obj/item/attacking_item, mob/living/user)
 	. = ..()
 	if(trigger_on_attack && (ability_cooldown_time && !COOLDOWN_FINISHED(src, ability_cooldown)))
@@ -55,7 +65,7 @@
 /obj/structure/corrupted_flesh/structure/proc/proximity_trigger(datum/source, atom/movable/arrived, atom/old_loc, list/atom/old_locs)
 	SIGNAL_HANDLER
 
-	if(ability_cooldown_time && !COOLDOWN_FINISHED(src, ability_cooldown))
+	if(ability_cooldown_time && !COOLDOWN_FINISHED(src, ability_cooldown) && !disabled)
 		return
 
 	if(requires_controller && !our_controller)
@@ -64,7 +74,7 @@
 	if(!isliving(arrived))
 		return
 
-	if(!can_see(src, arrived, activation_range))
+	if(!can_see(src, arrived))
 		return
 
 	var/mob/living/arriving_mob = arrived
@@ -92,6 +102,38 @@
 	if(ability_cooldown_time)
 		COOLDOWN_START(src, ability_cooldown, ability_cooldown_time)
 
+/obj/structure/corrupted_flesh/structure/emp_act(severity)
+	. = ..()
+	switch(severity)
+		if(EMP_LIGHT)
+			disable(STRUCTURE_EMP_LIGHT_DISABLE_TIME)
+		if(EMP_HEAVY)
+			disable(STRUCTURE_EMP_HEAVY_DISABLE_TIME)
+
+
+/**
+ * Disable
+ *
+ * Disables the device for a set amount of time. Duration = seconds
+ */
+/obj/structure/corrupted_flesh/structure/proc/disable(duration)
+	do_sparks(4, FALSE, src)
+	balloon_alert_to_viewers("grinds to a hault")
+	Shake(10, 0, duration)
+	disabled = TRUE
+	addtimer(CALLBACK(src, .proc/enable), duration)
+	update_appearance()
+
+/**
+ * Enable
+ *
+ * Enables a device after it was disabled.
+ */
+/obj/structure/corrupted_flesh/structure/proc/enable()
+	balloon_alert_to_viewers("whirrs back to life")
+	disabled = FALSE
+	update_appearance()
+
 
 /**
  * Wireweed Wall
@@ -103,6 +145,7 @@
 	desc = "A wall made of wireweed."
 	icon = 'modular_skyrat/modules/corrupted_flesh/icons/hivemind_structures.dmi'
 	icon_state = "wireweed_wall"
+	base_icon_state = "wireweed_wall"
 	density = TRUE
 	opacity = TRUE
 	can_atmos_pass = ATMOS_PASS_DENSITY
@@ -127,6 +170,7 @@
 	desc = "This monsterous machine is definitely watching you."
 	icon = 'modular_skyrat/modules/corrupted_flesh/icons/hivemind_machines.dmi'
 	icon_state = "core"
+	base_icon_state = "core"
 	density = TRUE
 	max_integrity = 800
 	/// The controller we create when we are created.
@@ -166,7 +210,7 @@
 			icon_state = "core-see"
 			dir = get_dir(src, target)
 	else
-		icon_state = initial(icon_state)
+		icon_state = base_icon_state
 
 	if(COOLDOWN_FINISHED(src, attack_move))
 		return
@@ -181,7 +225,10 @@
 
 /obj/structure/corrupted_flesh/structure/core/update_overlays()
 	. = ..()
-	. += "core-smirk"
+	if(disabled)
+		. += "core-smirk-disabled"
+	else
+		. += "core-smirk"
 
 /obj/structure/corrupted_flesh/structure/core/take_damage(damage_amount, damage_type = BRUTE, damage_flag = 0, sound_effect = 1, attack_dir)
 	our_controller?.core_damaged(src)
@@ -196,7 +243,7 @@
 	var/has_attacked
 	if(istype(thing, /mob/living))
 		var/mob/living/living_thing = thing
-		if(!(faction_types in living_thing.faction))
+		if(!faction_check(faction_types, living_thing.faction))
 			switch(attack_damage_type)
 				if(BRUTE)
 					living_thing.take_bodypart_damage(brute = attack_damage, check_armor = TRUE)
@@ -225,10 +272,11 @@
  * Simply sends random radio talk, probably won't make much sense. Really does add to the suspense though.
  */
 /obj/structure/corrupted_flesh/structure/babbler
-	name = "unknown"
+	name = "\improper Babbler"
 	desc = "A column-like structure with lights."
 	icon = 'modular_skyrat/modules/corrupted_flesh/icons/hivemind_machines.dmi'
 	icon_state = "antenna"
+	base_icon_state = "antenna"
 	max_integrity = 100
 	required_controller_level = CONTROLLER_LEVEL_3 // We don't want the presence announced too soon!
 	automatic_trigger_time_upper = 2 MINUTES
@@ -259,7 +307,7 @@
 	if(!our_controller) // No AI no speak.
 		return
 
-	flick("[icon_state]-anim", src)
+	flick("[base_icon_state]-anim", src)
 
 	var/msg_cycles = rand(1, 2)
 	var/msg = ""
@@ -311,9 +359,10 @@
 	desc = "A head impaled on a metal tendril. Still twitching, still living, still screaming."
 	icon = 'modular_skyrat/modules/corrupted_flesh/icons/hivemind_machines.dmi'
 	icon_state = "head"
+	base_icon_state = "head"
 	max_integrity = 100
 	required_controller_level = CONTROLLER_LEVEL_2
-	activation_range = 16
+	activation_range = 5
 	ability_cooldown_time = 25 SECONDS
 
 /obj/structure/corrupted_flesh/structure/screamer/activate_ability(mob/living/triggered_mob)
@@ -322,9 +371,11 @@
 
 /obj/structure/corrupted_flesh/structure/screamer/proc/scream()
 	playsound(src, 'modular_skyrat/modules/horrorform/sound/horror_scream.ogg', 100, TRUE)
-	flick("[icon_state]-anim", src)
+	flick("[base_icon_state]-anim", src)
 	for(var/mob/living/iterating_mob in get_hearers_in_range(activation_range, src))
 		if(!iterating_mob.can_hear())
+			continue
+		if(faction_check(faction_types, iterating_mob.faction))
 			continue
 		iterating_mob.Paralyze(100)
 		iterating_mob.apply_status_effect(/datum/status_effect/jitter, 20 SECONDS)
@@ -341,6 +392,7 @@
 	desc = "A small pulsating orb with no apparent purpose, it emits a slight hum."
 	icon = 'modular_skyrat/modules/corrupted_flesh/icons/hivemind_machines.dmi'
 	icon_state = "orb"
+	base_icon_state = "orb"
 	required_controller_level = CONTROLLER_LEVEL_2
 	/// Upper timer limit for our ability
 	automatic_trigger_time_upper = 1.5 MINUTES
@@ -384,13 +436,14 @@
 	desc = "A strange pyramid shaped machine that eminates a soft hum and glow. Your head hurts just by looking at it."
 	icon = 'modular_skyrat/modules/corrupted_flesh/icons/hivemind_machines.dmi'
 	icon_state = "psy"
+	base_icon_state = "psy"
 	required_controller_level = CONTROLLER_LEVEL_3
-	activation_range = 16
+	activation_range = 5
 	ability_cooldown_time = 10 SECONDS
 
 /obj/structure/corrupted_flesh/structure/modulator/activate_ability(mob/living/triggered_mob)
 	. = ..()
-	flick("[icon_state]-anim", src)
+	flick("[base_icon_state]-anim", src)
 
 	if(!triggered_mob)
 		return
@@ -407,9 +460,10 @@
 	desc = "This cylindrical machine whirrs and whispers, it has a small opening in the middle."
 	icon = 'modular_skyrat/modules/corrupted_flesh/icons/hivemind_machines.dmi'
 	icon_state = "spawner"
+	base_icon_state = "spawner"
 	density = FALSE
 	max_integrity = 260
-	activation_range = 16
+	activation_range = 5
 	ability_cooldown_time = 10 SECONDS
 	var/max_mobs = 2
 	var/spawned_mobs = 0
@@ -432,7 +486,7 @@
 /obj/structure/corrupted_flesh/structure/assembler/proc/spawn_mob()
 	var/sound/sound_to_play = pick('modular_skyrat/master_files/sound/effects/rustle1.ogg', 'modular_skyrat/master_files/sound/effects/rustle2.ogg')
 	playsound(src, sound_to_play, 100)
-	flick("[icon_state]-anim", src)
+	flick("[base_icon_state]-anim", src)
 	do_squish(0.8, 1.2)
 
 	spawned_mobs++
@@ -448,3 +502,45 @@
 	SIGNAL_HANDLER
 	spawned_mobs--
 	UnregisterSignal(dead_guy, COMSIG_LIVING_DEATH)
+
+
+/**
+ * Spiker
+ *
+ * Basic turret, fires nasty neurotoxin at people.
+ */
+/obj/structure/corrupted_flesh/structure/turret
+	name = "\improper Spiker"
+	desc = "A strange pod looking machine that twitches to your arrival."
+	icon_state = "turret"
+	base_icon_state = "turret"
+	activation_range = 5
+	ability_cooldown_time = 5 SECONDS
+	/// The projectile we fire.
+	var/projectile_type = /obj/projectile/corrupted_flesh_flechette
+
+/obj/structure/corrupted_flesh/structure/turret/activate_ability(mob/living/triggered_mob)
+	. = ..()
+	if(!triggered_mob)
+		return
+	flick("[base_icon_state]-anim", src)
+	playsound(loc, 'modular_skyrat/modules/corrupted_flesh/sound/laser.ogg', 75, TRUE)
+	var/obj/projectile/new_projectile = new projectile_type
+	var/turf/our_turf = get_turf(src)
+	new_projectile.preparePixelProjectile(triggered_mob, our_turf)
+	new_projectile.firer = src
+	new_projectile.fired_from = src
+	new_projectile.ignored_factions = faction_types
+	new_projectile.fire()
+
+
+/obj/projectile/corrupted_flesh_flechette
+	name = "organic flechette"
+	icon = 'modular_skyrat/modules/corrupted_flesh/icons/hivemind_structures.dmi'
+	icon_state = "goo_proj"
+	damage = 30
+	damage_type = BURN
+	nodamage = FALSE
+	impact_effect_type = /obj/effect/temp_visual/impact_effect/neurotoxin
+	hitsound = 'modular_skyrat/modules/black_mesa/sound/mobs/bullsquid/splat1.ogg'
+	hitsound_wall = 'modular_skyrat/modules/black_mesa/sound/mobs/bullsquid/splat1.ogg'

@@ -28,11 +28,11 @@
 		'modular_skyrat/modules/corrupted_flesh/sound/robot_talk_light5.ogg',
 	)
 	/// How likely we are to speak passively.
-	var/passive_speak_chance = 2
+	var/passive_speak_chance = 1
 	/// Lines we will passively speak.
 	var/list/passive_speak_lines
 	/// How long of a cooldown between alert sounds?
-	var/alert_cooldown_time = 1 SECONDS
+	var/alert_cooldown_time = 5 SECONDS
 	COOLDOWN_DECLARE(alert_cooldown)
 	/// How likely are we to trigger a malfunction? Set it to 0 to disable malfunctions.
 	var/malfunction_prob = MALFUNCTION_CHANCE_LOW
@@ -134,7 +134,7 @@
 /mob/living/simple_animal/hostile/corrupted_flesh/proc/say_passive_speech()
 	say(pick(passive_speak_lines))
 	if(passive_sounds)
-		playsound(src, pick(passive_sounds), 100)
+		playsound(src, pick(passive_sounds), 70)
 
 /**
  * Special Abilities
@@ -417,8 +417,24 @@
 	maxHealth = 350
 	melee_damage_lower = 25
 	melee_damage_upper = 30
-	attack_verb_continuous = "claws"
-	attack_verb_simple = "claw"
+	attack_verb_continuous = "saws"
+	attack_verb_simple = "saw"
+	attack_sound = 'sound/weapons/bladeslice.ogg'
+	alert_sounds = list(
+		'modular_skyrat/modules/corrupted_flesh/sound/hiborg/aggro_01.ogg',
+		'modular_skyrat/modules/corrupted_flesh/sound/hiborg/aggro_02.ogg',
+		'modular_skyrat/modules/corrupted_flesh/sound/hiborg/aggro_03.ogg',
+		'modular_skyrat/modules/corrupted_flesh/sound/hiborg/aggro_04.ogg',
+		'modular_skyrat/modules/corrupted_flesh/sound/hiborg/aggro_05.ogg',
+		'modular_skyrat/modules/corrupted_flesh/sound/hiborg/aggro_06.ogg',
+	)
+	passive_sounds = list(
+		'modular_skyrat/modules/corrupted_flesh/sound/hiborg/passive_01.ogg',
+		'modular_skyrat/modules/corrupted_flesh/sound/hiborg/passive_02.ogg',
+		'modular_skyrat/modules/corrupted_flesh/sound/hiborg/passive_03.ogg',
+		'modular_skyrat/modules/corrupted_flesh/sound/hiborg/passive_04.ogg',
+		'modular_skyrat/modules/corrupted_flesh/sound/hiborg/passive_05.ogg',
+	)
 	speak = list(
 		"You will join the flesh, child!",
 		"You will be assimilated, the flesh yearns for your organic matter!",
@@ -483,11 +499,12 @@
 	name = "Human"
 	desc = "Once a man, now metal plates and tubes weave in and out of their oozing sores."
 	icon_state = "himan"
-	icon_dead = "himan-dead"
+	icon_dead = "himan"
 	maxHealth = 250
 	health = 250
 	attack_verb_continuous = "slashes"
 	attack_verb_simple = "slash"
+	attack_sound = 'sound/weapons/bladeslice.ogg'
 	melee_damage_lower = 25
 	melee_damage_upper = 35
 	malfunction_prob = MALFUNCTION_CHANCE_HIGH
@@ -594,6 +611,8 @@
 	for(var/mob/living/iterating_mob in get_hearers_in_range(scream_effect_range, src))
 		if(!iterating_mob.can_hear())
 			continue
+		if(faction_check(faction, iterating_mob.faction))
+			continue
 		iterating_mob.Knockdown(100)
 		iterating_mob.apply_status_effect(/datum/status_effect/jitter, 20 SECONDS)
 		to_chat(iterating_mob, span_userdanger("A terrible howl tears through your mind, the voice senseless, soulless."))
@@ -631,6 +650,7 @@
 	maxHealth = 100
 	speed = 2
 	ranged_cooldown_time = 4 SECONDS
+	attack_sound = 'sound/weapons/bladeslice.ogg'
 	projectiletype = /obj/projectile/treader
 	light_color = CORRUPTED_FLESH_LIGHT_BLUE
 	light_range = 2
@@ -669,3 +689,20 @@
 /obj/projectile/treader/on_hit(atom/target, blocked, pierce_hit)
 	new /obj/effect/decal/cleanable/greenglow(target.loc)
 	return ..()
+
+/**
+ * Mechiver
+ *
+ * Special abilities: Can grab someone and shove them inside, does DOT and flavour text, can convert dead corpses into living ones that work for the flesh.
+ *
+ *
+ */
+/mob/living/simple_animal/hostile/corrupted_flesh/mechiver
+	name = "Mechiver"
+	icon_state = "mechiver"
+
+/**
+ * Phaser
+ *
+ * Special abilities: Phases about next to it's target, can split itself into 4, only one is actually the mob.
+ */

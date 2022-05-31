@@ -13,6 +13,8 @@
 
 #define DEFAULT_WHIP_RANGE 3
 
+#define COMPONENT_SETUP_TIME 5 SECONDS
+
 #define DAMAGE_RESPONSE_PHRASES list("Stop it, please!", \
 	"Please stop, it hurts! Please!", \
 	"You're hurting me, please, stop it!", \
@@ -36,8 +38,8 @@
 		"wires-2",
 		"wires-3",
 	)
-	/// A ref to our controller
-	var/datum/weakref/our_controller
+	/// Are we in the startup phase?
+	var/starting_up = TRUE
 	/// After init, this will be set so we preserve the originally set overlay even if our overlays are updated.
 	var/set_overlay = ""
 	/// The cooldown to damage responses.
@@ -49,13 +51,20 @@
 	if(!isobj(parent))
 		return COMPONENT_INCOMPATIBLE
 
-	var/obj/machinery/parent_machinery = parent
-
 	if(incoming_controller)
 		RegisterSignal(incoming_controller, COMSIG_PARENT_QDELETING, .proc/controller_death)
 		incoming_controller.RegisterSignal(src, COMSIG_PARENT_QDELETING, /datum/corrupted_flesh_controller/proc/component_death)
 
 	set_overlay = pick(possible_overlays)
+
+	var/obj/machinery/parent_machinery = parent
+
+	parent_machinery.update_appearance()
+
+	addtimer(CALLBACK(src, .proc/finish_setup), COMPONENT_SETUP_TIME)
+
+/datum/component/machine_corruption/proc/finish_setup()
+	var/obj/machinery/parent_machinery = parent
 
 	RegisterSignal(parent_machinery, COMSIG_ATOM_TAKE_DAMAGE, .proc/react_to_damage)
 	RegisterSignal(parent_machinery, COMSIG_PARENT_EXAMINE, .proc/on_examine)
@@ -64,6 +73,8 @@
 	RegisterSignal(parent_machinery, COMSIG_ATOM_DESTRUCTION, .proc/handle_destruction)
 
 	update_name()
+
+	starting_up = FALSE
 
 	parent_machinery.update_appearance()
 
@@ -77,6 +88,8 @@
 
 	parent_machinery.set_machine_stat(BROKEN)
 
+	playsound(parent_machinery, 'modular_skyrat/modules/corrupted_flesh/sound/sparks.ogg', 70, TRUE)
+
 /datum/component/machine_corruption/Destroy(force, silent)
 	var/obj/machinery/parent_machinery = parent
 	parent_machinery.idle_power_usage = initial(parent_machinery.idle_power_usage)
@@ -86,7 +99,6 @@
 	parent_machinery.update_light()
 	parent_machinery.name = initial(parent_machinery.name)
 	parent_machinery.update_appearance()
-	our_controller = null
 	UnregisterSignal(parent, list(
 		COMSIG_ATOM_TAKE_DAMAGE,
 		COMSIG_PARENT_EXAMINE,
@@ -147,7 +159,7 @@
 /datum/component/machine_corruption/proc/handle_destruction(obj/item/target, damage_flag)
 	SIGNAL_HANDLER
 
-	playsound(target, 'sound/effects/tendril_destroyed.ogg', 100, TRUE)
+	playsound(target, 'modular_skyrat/modules/corrupted_flesh/sound/sparks_2.ogg', 70, TRUE)
 	if(prob(DAMAGE_RESPONSE_PROB))
 		target.say("ARRRRRRRGHHHHHHH!")
 	new /obj/effect/gibspawner/robot(get_turf(target))
@@ -156,7 +168,10 @@
 /datum/component/machine_corruption/proc/handle_overlays(atom/parent_atom, list/overlays)
 	SIGNAL_HANDLER
 
-	overlays += mutable_appearance('modular_skyrat/modules/corrupted_flesh/icons/hivemind_machines.dmi', set_overlay)
+	if(starting_up)
+		overlays += mutable_appearance('modular_skyrat/modules/corrupted_flesh/icons/hivemind_machines.dmi', "rebuild")
+	else
+		overlays += mutable_appearance('modular_skyrat/modules/corrupted_flesh/icons/hivemind_machines.dmi', set_overlay)
 
 /datum/component/machine_corruption/proc/update_name()
 	var/obj/machinery/parent_machinery = parent

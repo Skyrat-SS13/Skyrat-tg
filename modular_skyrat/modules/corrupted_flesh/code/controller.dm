@@ -54,6 +54,7 @@
 		/obj/structure/corrupted_flesh/structure/screamer,
 		/obj/structure/corrupted_flesh/structure/whisperer,
 		/obj/structure/corrupted_flesh/structure/assembler,
+		/obj/structure/corrupted_flesh/structure/turret,
 	)
 	/// Our wireweed type, defines what is spawned when we grow.
 	var/wireweed_type = /obj/structure/corrupted_flesh/wireweed
@@ -71,7 +72,7 @@
 	/// Progress to spawning the next structure.
 	var/structure_progression = 0
 	/// How many times do we need to spread to spawn an extra structure.
-	var/spreads_for_structure = 40
+	var/spreads_for_structure = 60
 	/// How many spread in our initial expansion.
 	var/initial_expansion_spreads = 30
 	/// How many structures in our initial expansion.
