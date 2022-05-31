@@ -867,7 +867,7 @@
 
 
 	if(previous_turf)
-		if(!can_see(target_turf, previous_turf, 12))
+		if(!can_see(target_turf, previous_turf, 12)) // To prevent us jumping to somewhere we can't access the target atom.
 			return FALSE
 
 	//to prevent reflection's stacking
