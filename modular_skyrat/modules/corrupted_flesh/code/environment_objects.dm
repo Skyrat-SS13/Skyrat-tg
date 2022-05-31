@@ -89,9 +89,11 @@
 	alpha = 255
 
 /obj/structure/corrupted_flesh/wireweed/proc/on_entered(datum/source, atom/movable/moving_atom)
-	if(istype(moving_atom, /mob/living/simple_animal/bot/cleanbot))
-		var/mob/living/simple_animal/bot/captured_bot = moving_atom
-		buckle_mob(captured_bot)
+	if(istype(moving_atom, /mob/living/simple_animal) && prob())
+		var/mob/living/simple_animal/captured_mob = moving_atom
+		captured_mob.visible_message(span_danger("[src] ensnares [captured_mob] with some wires!"), span_userdanger("[src] ensnares you!"))
+		buckle_mob(captured_mob)
+
 
 /obj/effect/temp_visual/wireweed_spread
 	icon = 'modular_skyrat/modules/corrupted_flesh/icons/wireweed_floor.dmi'

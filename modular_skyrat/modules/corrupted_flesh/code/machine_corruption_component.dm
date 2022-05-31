@@ -77,12 +77,13 @@
 				new_mechiver.RegisterSignal(iterating_core, COMSIG_PARENT_QDELETING, /mob/living/simple_animal/hostile/corrupted_flesh/proc/core_death)
 		parent_machinery.circuit.forceMove(get_turf(parent_machinery))
 		parent_machinery.circuit = null
+		notify_ghosts("A new corrupt Mechiver has been created by [incoming_controller.controller_fullname]!", source = new_mechiver)
 		qdel(parent_machinery)
 		return
 
 	RegisterSignal(parent_machinery, COMSIG_ATOM_TAKE_DAMAGE, .proc/react_to_damage)
 	RegisterSignal(parent_machinery, COMSIG_PARENT_EXAMINE, .proc/on_examine)
-	RegisterSignal(parent_machinery, COMSIG_ATOM_UI_INTERACT, .proc/handle_ui_interact)
+	RegisterSignal(parent_machinery, COMSIG_ATOM_ATTACK_HAND, .proc/handle_attack_hand)
 	RegisterSignal(parent_machinery, COMSIG_ATOM_DESTRUCTION, .proc/handle_destruction)
 
 	update_name()
@@ -133,7 +134,7 @@
  *
  * These machines have been posessed by the corruption and should not work, logically, so we want to prevent this in any way we can.
  */
-/datum/component/machine_corruption/proc/handle_ui_interact(datum/source, mob/user)
+/datum/component/machine_corruption/proc/handle_attack_hand(datum/source, mob/living/user, list/modifiers)
 	SIGNAL_HANDLER
 
 	var/obj/machinery/parent_machinery = parent

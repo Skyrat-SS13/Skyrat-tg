@@ -256,6 +256,7 @@
 	level++
 	spawn_new_core()
 	message_admins("Corruption AI [controller_fullname] has leveled up to level [level]!")
+	notify_ghosts("Corruption AI [controller_fullname] has leveled up to level [level]!")
 
 /datum/corrupted_flesh_controller/proc/spawn_new_core()
 	var/obj/structure/corrupted_flesh/wireweed/selected_wireweed = pick(controlled_wireweed)

@@ -12,6 +12,9 @@
 	speak_chance = 15
 	speak_emote = list("mechanically states")
 	mob_biotypes = MOB_ROBOTIC
+	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
+	minbodytemp = 0
+	maxbodytemp = INFINITY
 	/// If we have been converted from another mob, here is our reference.
 	var/mob/living/contained_mob
 	/// A list of sounds we can play when our mob is alerted to an enemy.
@@ -728,6 +731,11 @@
 	for(var/mob/living/iterating_mob in view(DEFAULT_VIEW_RANGE, src))
 		if(faction_check(iterating_mob.faction, faction))
 			iterating_mob.heal_overall_damage(10, 10)
+
+/mob/living/simple_animal/hostile/corrupted_flesh/treader/death(gibbed)
+	empulse(get_turf(src), 1, 3)
+	return ..()
+
 
 /obj/projectile/treader
 	name = "nasty ball of ooze"

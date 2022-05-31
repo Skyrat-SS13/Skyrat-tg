@@ -487,11 +487,11 @@
 	var/list/monster_types = list(
 		/mob/living/simple_animal/hostile/corrupted_flesh/floater = 1,
 		/mob/living/simple_animal/hostile/corrupted_flesh/globber = 4,
-		/mob/living/simple_animal/hostile/corrupted_flesh/hiborg = 1,
+		/mob/living/simple_animal/hostile/corrupted_flesh/hiborg = 0.1,
 		/mob/living/simple_animal/hostile/corrupted_flesh/slicer = 6,
 		/mob/living/simple_animal/hostile/corrupted_flesh/stunner = 3,
-		/mob/living/simple_animal/hostile/corrupted_flesh/treader = 2,
-		/mob/living/simple_animal/hostile/corrupted_flesh/himan = 2,
+		/mob/living/simple_animal/hostile/corrupted_flesh/treader = 1,
+		/mob/living/simple_animal/hostile/corrupted_flesh/himan = 0.1,
 	)
 
 /obj/structure/corrupted_flesh/structure/assembler/activate_ability(mob/living/triggered_mob)
@@ -554,6 +554,9 @@
 		if(target_mob.stat != CONSCIOUS)
 			continue
 		targets += target_mob
+
+	if(!LAZYLEN(targets))
+		return
 
 	var/mob/living/mob_to_shoot = pick(targets)
 
