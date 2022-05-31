@@ -117,8 +117,10 @@
 	. = ..()
 	switch(severity)
 		if(EMP_LIGHT)
+			take_damage(STRUCTURE_EMP_LIGHT_DAMAGE)
 			disable(STRUCTURE_EMP_LIGHT_DISABLE_TIME)
 		if(EMP_HEAVY)
+			take_damage(STRUCTURE_EMP_HEAVY_DAMAGE)
 			disable(STRUCTURE_EMP_HEAVY_DISABLE_TIME)
 
 
@@ -218,7 +220,7 @@
 
 /obj/structure/corrupted_flesh/structure/core/process(delta_time)
 	var/mob/living/carbon/human/target = locate() in view(5, src)
-	if(target)
+	if(target && target.stat == CONSCIOUS)
 		if(get_dist(src, target) <= 1)
 			icon_state = "core-fear"
 		else
@@ -376,7 +378,7 @@
 	icon_state = "head"
 	base_icon_state = "head"
 	max_integrity = 100
-	required_controller_level = CONTROLLER_LEVEL_2
+	required_controller_level = CONTROLLER_LEVEL_1
 	activation_range = DEFAULT_VIEW_RANGE
 	ability_cooldown_time = 25 SECONDS
 

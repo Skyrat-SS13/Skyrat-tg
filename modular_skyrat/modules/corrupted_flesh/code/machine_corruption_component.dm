@@ -15,6 +15,8 @@
 
 #define COMPONENT_SETUP_TIME 5 SECONDS
 
+#define CHANCE_TO_CREATE_MECHIVER 15
+
 #define DAMAGE_RESPONSE_PHRASES list("Stop it, please!", \
 	"Please stop, it hurts! Please!", \
 	"You're hurting me, please, stop it!", \
@@ -63,10 +65,20 @@
 
 	parent_machinery.update_appearance()
 
-	addtimer(CALLBACK(src, .proc/finish_setup), COMPONENT_SETUP_TIME)
+	addtimer(CALLBACK(src, .proc/finish_setup, incoming_controller), COMPONENT_SETUP_TIME)
 
-/datum/component/machine_corruption/proc/finish_setup()
+/datum/component/machine_corruption/proc/finish_setup(datum/corrupted_flesh_controller/incoming_controller)
 	var/obj/machinery/parent_machinery = parent
+
+	if(parent_machinery.circuit && prob(CHANCE_TO_CREATE_MECHIVER))
+		var/mob/living/simple_animal/hostile/corrupted_flesh/mechiver/new_mechiver = new (get_turf(parent_machinery))
+		if(incoming_controller)
+			for(var/obj/structure/corrupted_flesh/structure/core/iterating_core in incoming_controller.cores)
+				new_mechiver.RegisterSignal(iterating_core, COMSIG_PARENT_QDELETING, /mob/living/simple_animal/hostile/corrupted_flesh/proc/core_death)
+		parent_machinery.circuit.forceMove(get_turf(parent_machinery))
+		parent_machinery.circuit = null
+		qdel(parent_machinery)
+		return
 
 	RegisterSignal(parent_machinery, COMSIG_ATOM_TAKE_DAMAGE, .proc/react_to_damage)
 	RegisterSignal(parent_machinery, COMSIG_PARENT_EXAMINE, .proc/on_examine)

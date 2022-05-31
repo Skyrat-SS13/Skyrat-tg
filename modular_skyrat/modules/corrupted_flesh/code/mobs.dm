@@ -1053,6 +1053,24 @@
 		"Mine is the caress of steel.",
 		"I offer you the ecstasy of union, and yet you tremble.",
 	)
+	alert_sounds = list(
+		'modular_skyrat/modules/corrupted_flesh/sound/mechiver/aggro_01.ogg',
+		'modular_skyrat/modules/corrupted_flesh/sound/mechiver/aggro_02.ogg',
+		'modular_skyrat/modules/corrupted_flesh/sound/mechiver/aggro_03.ogg',
+		'modular_skyrat/modules/corrupted_flesh/sound/mechiver/aggro_04.ogg',
+		'modular_skyrat/modules/corrupted_flesh/sound/mechiver/aggro_05.ogg',
+	)
+	passive_sounds = list(
+		'modular_skyrat/modules/corrupted_flesh/sound/mechiver/passive_01.ogg',
+		'modular_skyrat/modules/corrupted_flesh/sound/mechiver/passive_02.ogg',
+		'modular_skyrat/modules/corrupted_flesh/sound/mechiver/passive_03.ogg',
+		'modular_skyrat/modules/corrupted_flesh/sound/mechiver/passive_04.ogg',
+		'modular_skyrat/modules/corrupted_flesh/sound/mechiver/passive_05.ogg',
+		'modular_skyrat/modules/corrupted_flesh/sound/mechiver/passive_06.ogg',
+		'modular_skyrat/modules/corrupted_flesh/sound/mechiver/passive_07.ogg',
+		'modular_skyrat/modules/corrupted_flesh/sound/mechiver/passive_08.ogg',
+
+	)
 	/// Is our hatch open? Used in icon processing.
 	var/hatch_open = FALSE
 	/// How much damage our mob will take, upper end, when they are tormented
@@ -1084,11 +1102,11 @@
 
 	if(!target && !contained_mob && !suffering_malfunction)
 		for(var/mob/living/iterating_mob in view(DEFAULT_VIEW_RANGE, src))
-			if(iterating_mob.stat == DEAD)
+			if(iterating_mob.stat != CONSCIOUS)
 				if(get_dist(src, iterating_mob) <= 1)
 					consume_mob(iterating_mob)
 				else
-					Goto(iterating_mob)
+					Goto(iterating_mob, speed)
 
 /mob/living/simple_animal/hostile/corrupted_flesh/mechiver/proc/torment_passenger()
 	if(!contained_mob)
@@ -1118,12 +1136,10 @@
 		if(contained_mob)
 			. += "[base_icon_state]-process"
 
-
 /mob/living/simple_animal/hostile/corrupted_flesh/mechiver/AttackingTarget(atom/attacked_target)
 	if(target && COOLDOWN_FINISHED(src, consume_ability_cooldown) && Adjacent(target))
 		consume_mob(target)
 	return ..()
-
 
 /mob/living/simple_animal/hostile/corrupted_flesh/mechiver/proc/consume_mob(mob/living/target_mob)
 	if(contained_mob)
@@ -1135,10 +1151,6 @@
 	update_appearance()
 	flick("[base_icon_state]-opening_wires", src)
 	addtimer(CALLBACK(src, .proc/close_hatch), 1 SECONDS)
-
-	if(target_mob.stat == DEAD)
-		convert_mob(target_mob)
-
 	contained_mob = target_mob
 	target_mob.forceMove(src)
 

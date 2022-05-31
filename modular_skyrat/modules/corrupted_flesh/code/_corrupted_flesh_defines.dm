@@ -7,6 +7,9 @@
 #define STRUCTURE_EMP_LIGHT_DISABLE_TIME 10 SECONDS
 #define STRUCTURE_EMP_HEAVY_DISABLE_TIME 20 SECONDS
 
+#define STRUCTURE_EMP_LIGHT_DAMAGE 10
+#define STRUCTURE_EMP_HEAVY_DAMAGE 20
+
 #define CORRUPTED_FLESH_NAME_MODIFIER_LIST list ("Warped", "Altered", "Modified", "Upgraded", "Abnormal")
 
 /// The range at which most of our objects, mobs and structures activate at. 7 seems to be the perfect number.
