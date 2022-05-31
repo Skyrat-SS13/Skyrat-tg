@@ -146,10 +146,10 @@
 				airlock.welded = TRUE
 			if(24 to 30)
 				airlock.panel_open = TRUE
-	if(airlock.cutAiWire && wires) // SKYRAT EDIT
-		wires?.cut(WIRE_AI) // SKYRAT EDIT
+	if(airlock.cutAiWire)
+		airlock.wires.cut(WIRE_AI)
 	if(airlock.autoname)
-		name = get_area_name(src, TRUE)
+		airlock.name = get_area_name(src, TRUE)
 	update_appearance()
 	qdel(src)
 
