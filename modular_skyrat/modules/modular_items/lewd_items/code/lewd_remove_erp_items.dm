@@ -1,3 +1,4 @@
+/*
 /obj/item/storage/box/milking_kit/Initialize()
 	. = ..()
 	if(CONFIG_GET(flag/disable_lewd_items))
@@ -227,3 +228,4 @@
 	. = ..()
 	if(CONFIG_GET(flag/disable_lewd_items))
 		return INITIALIZE_HINT_QDEL
+*/
