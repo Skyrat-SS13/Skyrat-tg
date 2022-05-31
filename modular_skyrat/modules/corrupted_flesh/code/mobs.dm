@@ -36,6 +36,8 @@
 	/// How long of a cooldown between alert sounds?
 	var/alert_cooldown_time = 5 SECONDS
 	COOLDOWN_DECLARE(alert_cooldown)
+	/// Do we automatically escape closets?
+	var/escapes_closets = TRUE
 	/// How likely are we to trigger a malfunction? Set it to 0 to disable malfunctions.
 	var/malfunction_chance = MALFUNCTION_CHANCE_LOW
 	/// These mobs support a special ability, this is used to determine how often we can use it.
@@ -92,7 +94,8 @@
 
 	var/list/possible_targets = ListTargets() //we look around for potential targets and make it a list for later use.
 
-	closet_interaction()
+	if(escapes_closets)
+		closet_interaction()
 
 	disposal_interaction()
 
@@ -717,7 +720,7 @@
 /mob/living/simple_animal/hostile/corrupted_flesh/treader/special_ability()
 	manual_emote("vomits out a burst of nanites!")
 	do_smoke(3, 4, get_turf(src))
-	for(var/mob/living/iterating_mob in view(5, src))
+	for(var/mob/living/iterating_mob in view(DEFAULT_VIEW_RANGE, src))
 		if(faction_check(iterating_mob.faction, faction))
 			iterating_mob.heal_overall_damage(10, 10)
 
@@ -748,6 +751,10 @@
 	name = "Mechiver"
 	icon_state = "mechiver"
 
+/mob/living/simple_animal/hostile/corrupted_flesh/mechiver/special_ability()
+	. = ..()
+
+
 /mob/living/simple_animal/hostile/corrupted_flesh/mechiver/proc/convert_mob(mob/living/mob_to_convert)
 	if(mob_to_convert.stat != DEAD) // No converting non-dead mobs.
 		return
@@ -774,12 +781,19 @@
 	health = 160
 	maxHealth = 160
 	malfunction_chance = 0
+	attack_sound = 'sound/effects/attackblob.ogg'
 	attack_verb_continuous = "warps"
 	attack_verb_simple = "warp"
 	melee_damage_lower = 5
 	melee_damage_upper = 10
 	alert_sounds = null
 	passive_sounds = null
+	escapes_closets = FALSE
+	speak = list()
+	del_on_death = TRUE
+	loot = list(
+		/obj/effect/gibspawner/human,
+	)
 	/// What is the range at which we spawn our copies?
 	var/phase_range = 5
 	/// How many copies do we spawn when we are aggroed?
@@ -787,6 +801,9 @@
 	/// How often we can create copies of ourself.
 	var/phase_ability_cooldown_time = 30 SECONDS
 	COOLDOWN_DECLARE(phase_ability_cooldown)
+	/// How often we are able to enter closets.
+	var/closet_ability_cooldown_time = 10 SECONDS
+	COOLDOWN_DECLARE(closet_ability_cooldown)
 
 /mob/living/simple_animal/hostile/corrupted_flesh/phaser/Initialize(mapload)
 	. = ..()
@@ -814,10 +831,40 @@
 		else if(target)
 			MeleeAction()
 
-/mob/living/simple_animal/hostile/corrupted_flesh/phaser/proc/phase_move_to(atom/target, nearby = FALSE)
+/mob/living/simple_animal/hostile/corrupted_flesh/phaser/Life(delta_time, times_fired)
+	. = ..()
+	if(!.) //dead
+		return
+	if(COOLDOWN_FINISHED(src, closet_ability_cooldown))
+		enter_nearby_closet()
+		COOLDOWN_START(src, closet_ability_cooldown, closet_ability_cooldown_time)
+
+/mob/living/simple_animal/hostile/corrupted_flesh/phaser/proc/enter_nearby_closet()
+	if(target) // We're in combat, no going to a closet.
+		return
+	var/list/possible_closets = list()
+	for(var/obj/structure/closet/closet in view(DEFAULT_VIEW_RANGE, src))
+		if(closet.locked)
+			continue
+		possible_closets += closet
+	if(!LAZYLEN(possible_closets))
+		return
+	var/obj/structure/closet/closet_to_enter = pick(possible_closets)
+
+	phase_move_to(closet_to_enter)
+
+	if(!closet_to_enter.open(src))
+		return
+
+	forceMove(get_turf(closet_to_enter))
+
+	closet_to_enter.close(src)
+
+
+/mob/living/simple_animal/hostile/corrupted_flesh/phaser/proc/phase_move_to(atom/target_atom, nearby = FALSE)
 	var/turf/new_place
-	var/distance_to_target = get_dist(src, target)
-	var/turf/target_turf = get_turf(target)
+	var/distance_to_target = get_dist(src, target_atom)
+	var/turf/target_turf = get_turf(target_atom)
 	//if our target is near, we move precisely to it
 	if(distance_to_target <= 3)
 		if(nearby)
@@ -844,10 +891,11 @@
 		return
 	//an animation
 	var/init_px = pixel_x
-	animate(src, pixel_x=init_px + 16*pick(-1, 1), time=5)
+	animate(src, pixel_x=init_px + 16*pick(-1, 1), time = 5)
 	animate(pixel_x=init_px, time=6, easing=SINE_EASING)
 	animate(filters[1], size = 5, time = 5, flags = ANIMATION_PARALLEL)
 	addtimer(CALLBACK(src, .proc/phase_jump, new_place), 0.5 SECONDS)
+	SEND_SIGNAL(src, COMSIG_PHASER_PHASE_MOVE, target_atom, nearby)
 
 /mob/living/simple_animal/hostile/corrupted_flesh/phaser/proc/phase_jump(turf/place)
 	playsound(place, 'sound/effects/phasein.ogg', 60, 1)
@@ -867,7 +915,7 @@
 
 
 	if(previous_turf)
-		if(!can_see(target_turf, previous_turf, 12)) // To prevent us jumping to somewhere we can't access the target atom.
+		if(!can_see(target_turf, previous_turf, DEFAULT_VIEW_RANGE)) // To prevent us jumping to somewhere we can't access the target atom.
 			return FALSE
 
 	//to prevent reflection's stacking
@@ -893,7 +941,9 @@
 		if(!LAZYLEN(possible_turfs))
 			break
 		var/turf/open/picked_turf = pick_n_take(possible_turfs)
-		new /obj/effect/temp_visual/phaser(pick(picked_turf), target)
+		var/obj/effect/temp_visual/phaser/phaser_copy = new (pick(picked_turf), target)
+		phaser_copy.RegisterSignal(src, COMSIG_PHASER_PHASE_MOVE, /obj/effect/temp_visual/phaser/proc/parent_phase_move)
+		phaser_copy.RegisterSignal(src, COMSIG_LIVING_DEATH, /obj/effect/temp_visual/phaser/proc/parent_death)
 
 /obj/effect/temp_visual/phaser
 	icon = 'modular_skyrat/modules/corrupted_flesh/icons/hivemind_mobs.dmi'
@@ -907,25 +957,21 @@
 	. = ..()
 	icon_state = "[base_icon_state]-[rand(1, 3)]"
 	filters += filter(type = "blur", size = 0)
-	if(istype(target))
-		target_ref = WEAKREF(target)
-		START_PROCESSING(SSobj, src)
 
-/obj/effect/temp_visual/phaser/Destroy()
-	target_ref = null
-	STOP_PROCESSING(SSobj, src)
-	return ..()
-
-/obj/effect/temp_visual/phaser/process(delta_time)
-	var/atom/movable/target = target_ref.resolve()
-	if(!target)
+/obj/effect/temp_visual/phaser/proc/parent_phase_move(datum/source, turf/target_atom, nearby)
+	SIGNAL_HANDLER
+	if(!target_atom)
 		return
-	phase_move_to(target, TRUE)
+	phase_move_to(target_atom, TRUE)
 
-/obj/effect/temp_visual/phaser/proc/phase_move_to(atom/target, nearby = FALSE)
+/obj/effect/temp_visual/phaser/proc/parent_death(mob/living/dead_guy, gibbed)
+	SIGNAL_HANDLER
+	qdel(src)
+
+/obj/effect/temp_visual/phaser/proc/phase_move_to(atom/target_atom, nearby = FALSE)
 	var/turf/new_place
-	var/distance_to_target = get_dist(src, target)
-	var/turf/target_turf = get_turf(target)
+	var/distance_to_target = get_dist(src, target_atom)
+	var/turf/target_turf = get_turf(target_atom)
 	//if our target is near, we move precisely to it
 	if(distance_to_target <= 3)
 		if(nearby)
@@ -968,7 +1014,7 @@
 		return FALSE
 
 	if(previous_turf)
-		if(!can_see(target_turf, previous_turf, 12))
+		if(!can_see(target_turf, previous_turf, DEFAULT_VIEW_RANGE))
 			return FALSE
 
 	//to prevent reflection's stacking

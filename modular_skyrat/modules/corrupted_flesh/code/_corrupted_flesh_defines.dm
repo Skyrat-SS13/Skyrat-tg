@@ -9,6 +9,8 @@
 
 #define CORRUPTED_FLESH_NAME_MODIFIER_LIST list ("Warped", "Altered", "Modified", "Upgraded", "Abnormal")
 
+#define DEFAULT_VIEW_RANGE 12
+
 #define AI_FORENAME_LIST list("Von Neumann", "Lazarus", "Abattoir", "Auto-Surgeon", "NanoTrasen", \
 	"NanoNurse", "Vivisector", "Ex Costa", "Apostasy", "Gnosis", "Balaam", "Ophite", \
 	"Sarif", "VersaLife", "Slylandro", "SHODAN", "Pandora", "Fisto")

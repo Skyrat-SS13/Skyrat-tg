@@ -183,7 +183,7 @@
 	/// Whether the core can attack nearby hostiles as its processing.
 	var/can_attack = TRUE
 	/// How much damage do we do on attacking
-	var/attack_damage = 12
+	var/attack_damage = 15
 	/// What damage do we inflict on attacking
 	var/attack_damage_type = BRUTE
 	/// How quickly we can attack
