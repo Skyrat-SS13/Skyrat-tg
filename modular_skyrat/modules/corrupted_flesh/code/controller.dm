@@ -199,7 +199,7 @@
 							spawn_wall(wireweed_turf, wall_type)
 						continue
 
-				///Check if we can place resin in here
+				///Check if we can place wireweed in here
 				if(isopenspaceturf(adjacent_open))
 					//If we're trying to place on an openspace turf, make sure there's a non openspace turf adjacent
 					var/forbidden = TRUE
@@ -220,7 +220,7 @@
 							place_count++
 				if(wireweed_count < place_count)
 					tasks++
-					spread_turf_canidates[adjacent_open] = TRUE
+					spread_turf_canidates[adjacent_open] = wireweed_turf
 
 		//If it tried to spread and attack and failed to do any task, remove from active
 		if(!tasks && do_spread && do_attack)
@@ -230,7 +230,8 @@
 
 	if(LAZYLEN(spread_turf_canidates))
 		var/turf/picked_turf = pick(spread_turf_canidates)
-		spawn_wireweed(picked_turf, wireweed_type)
+		var/turf/origin_turf = spread_turf_canidates[picked_turf]
+		spawn_wireweed(picked_turf, wireweed_type, origin_turf)
 
 		if(progress_structure && structure_types)
 			structure_progression++
@@ -254,7 +255,7 @@
 /datum/corrupted_flesh_controller/proc/level_up()
 	level++
 	spawn_new_core()
-	message_admins("Corruption AI [controller_fullname] has leveld up to level [level]!")
+	message_admins("Corruption AI [controller_fullname] has leveled up to level [level]!")
 
 /datum/corrupted_flesh_controller/proc/spawn_new_core()
 	var/obj/structure/corrupted_flesh/wireweed/selected_wireweed = pick(controlled_wireweed)
@@ -265,8 +266,7 @@
 	new_core.name = "[controller_fullname] Processor Unit"
 
 /// Spawns and registers a resin at location
-/datum/corrupted_flesh_controller/proc/spawn_wireweed(turf/location, wireweed_type)
-
+/datum/corrupted_flesh_controller/proc/spawn_wireweed(turf/location, wireweed_type, turf/origin_turf)
 	//Spawn effect
 	for(var/obj/machinery/light/light_in_place in location)
 		light_in_place.break_light_tube()
@@ -278,7 +278,14 @@
 			continue
 		iterating_machine.AddComponent(/datum/component/machine_corruption, src)
 
-	var/obj/structure/corrupted_flesh/wireweed/new_wireweed = new wireweed_type(location)
+	var/obj/structure/corrupted_flesh/wireweed/new_wireweed
+	if(origin_turf) // We have an origin turf, thus, are spreading from it. Do anims.
+		new_wireweed = new wireweed_type(location, 0)
+		var/obj/effect/temp_visual/wireweed_spread/effect = new(location)
+		effect.setDir(get_dir(origin_turf, location))
+		new_wireweed.RegisterSignal(effect, COMSIG_PARENT_QDELETING, /obj/structure/corrupted_flesh/wireweed/proc/visual_finished)
+	else
+		new_wireweed = new wireweed_type(location)
 	new_wireweed.our_controller = src
 	active_wireweed += new_wireweed
 	new_wireweed.active = TRUE

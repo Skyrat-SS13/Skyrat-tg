@@ -12,6 +12,9 @@
 	icon_state = "infected_machine"
 	base_icon_state = "infected_machine"
 	density = TRUE
+	light_color = CORRUPTED_FLESH_LIGHT_BLUE
+	light_power = 1
+	light_range = 2
 	/// Are we inoperative?
 	var/disabled = FALSE
 	/// Do we trigger on someone attacking us?
@@ -82,6 +85,9 @@
 
 	var/mob/living/arriving_mob = arrived
 
+	if(arriving_mob.stat != CONSCIOUS)
+		return
+
 	if(faction_check(faction_types, arriving_mob.faction)) // A friend :)
 		return
 
@@ -122,6 +128,8 @@
  * Disables the device for a set amount of time. Duration = seconds
  */
 /obj/structure/corrupted_flesh/structure/proc/disable(duration)
+	if(disabled)
+		return
 	do_sparks(4, FALSE, src)
 	balloon_alert_to_viewers("grinds to a hault")
 	Shake(10, 0, duration)
@@ -135,6 +143,8 @@
  * Enables a device after it was disabled.
  */
 /obj/structure/corrupted_flesh/structure/proc/enable()
+	if(!disabled)
+		return
 	balloon_alert_to_viewers("whirrs back to life")
 	disabled = FALSE
 	update_appearance()
@@ -367,7 +377,7 @@
 	base_icon_state = "head"
 	max_integrity = 100
 	required_controller_level = CONTROLLER_LEVEL_2
-	activation_range = 5
+	activation_range = DEFAULT_VIEW_RANGE
 	ability_cooldown_time = 25 SECONDS
 
 /obj/structure/corrupted_flesh/structure/screamer/activate_ability(mob/living/triggered_mob)
@@ -443,7 +453,7 @@
 	icon_state = "psy"
 	base_icon_state = "psy"
 	required_controller_level = CONTROLLER_LEVEL_3
-	activation_range = 5
+	activation_range = DEFAULT_VIEW_RANGE
 	ability_cooldown_time = 10 SECONDS
 
 /obj/structure/corrupted_flesh/structure/modulator/activate_ability(mob/living/triggered_mob)
@@ -468,7 +478,7 @@
 	base_icon_state = "spawner"
 	density = FALSE
 	max_integrity = 260
-	activation_range = 5
+	activation_range = DEFAULT_VIEW_RANGE
 	ability_cooldown_time = 10 SECONDS
 	var/max_mobs = 2
 	var/spawned_mobs = 0
@@ -521,10 +531,33 @@
 	desc = "A strange pod looking machine that twitches to your arrival."
 	icon_state = "turret"
 	base_icon_state = "turret"
-	activation_range = 5
+	activation_range = DEFAULT_VIEW_RANGE
 	ability_cooldown_time = 5 SECONDS
 	/// The projectile we fire.
 	var/projectile_type = /obj/projectile/corrupted_flesh_flechette
+
+/obj/structure/corrupted_flesh/structure/turret/Initialize(mapload)
+	. = ..()
+	START_PROCESSING(SSobj, src)
+
+/obj/structure/corrupted_flesh/structure/turret/process(delta_time)
+	if(disabled)
+		return
+	if(!COOLDOWN_FINISHED(src, ability_cooldown))
+		return
+	var/list/targets = list()
+	for(var/mob/living/target_mob in view(activation_range, src))
+		if(faction_check(target_mob.faction, faction_types))
+			continue
+		if(target_mob.stat != CONSCIOUS)
+			continue
+		targets += target_mob
+
+	var/mob/living/mob_to_shoot = pick(targets)
+
+	activate_ability(mob_to_shoot)
+
+	COOLDOWN_START(src, ability_cooldown, ability_cooldown_time)
 
 /obj/structure/corrupted_flesh/structure/turret/activate_ability(mob/living/triggered_mob)
 	. = ..()
@@ -539,7 +572,6 @@
 	new_projectile.fired_from = src
 	new_projectile.ignored_factions = faction_types
 	new_projectile.fire()
-
 
 /obj/projectile/corrupted_flesh_flechette
 	name = "organic flechette"

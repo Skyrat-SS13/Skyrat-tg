@@ -195,6 +195,8 @@
  * This simply stops the mob from moving for a set amount of time and displays some nice effects, and a little damage.
  */
 /mob/living/simple_animal/hostile/corrupted_flesh/proc/malfunction(reset_time = MALFUNCTION_RESET_TIME)
+	if(suffering_malfunction)
+		return
 	do_sparks(3, FALSE, src)
 	Shake(10, 0, reset_time)
 	say(pick("Running diagnostics.", "Organ damaged. Aquire replacement.", "Seek new organic components.", "New muscles needed."))
@@ -548,7 +550,8 @@
 	name = "Human"
 	desc = "Once a man, now metal plates and tubes weave in and out of their oozing sores."
 	icon_state = "himan"
-	icon_dead = "dead"
+	icon_dead = "himan-dead"
+	base_icon_state = "himan"
 	maxHealth = 250
 	health = 250
 	speed = 2
@@ -672,12 +675,12 @@
 	LoseAggro()
 	LoseTarget()
 	faking_death = TRUE
-	icon_state = "[icon_state]-dead"
+	icon_state = "[base_icon_state]-dead"
 	COOLDOWN_START(src, fake_death, fake_death_cooldown)
 
 /mob/living/simple_animal/hostile/corrupted_flesh/himan/proc/awake()
 	faking_death = FALSE
-	icon_state = initial(icon_state)
+	icon_state = base_icon_state
 
 /**
  * Treader
@@ -704,6 +707,8 @@
 	projectiletype = /obj/projectile/treader
 	light_color = CORRUPTED_FLESH_LIGHT_BLUE
 	light_range = 2
+	del_on_death = TRUE
+	loot = list(/obj/effect/gibspawner/robot)
 	speak = list(
 		"You there! Cut off my head, I beg you!",
 		"I-..I'm so sorry! I c-..can't control myself anymore!",
@@ -740,34 +745,6 @@
 	new /obj/effect/decal/cleanable/greenglow(target.loc)
 	return ..()
 
-/**
- * Mechiver
- *
- * Special abilities: Can grab someone and shove them inside, does DOT and flavour text, can convert dead corpses into living ones that work for the flesh.
- *
- *
- */
-/mob/living/simple_animal/hostile/corrupted_flesh/mechiver
-	name = "Mechiver"
-	icon_state = "mechiver"
-
-/mob/living/simple_animal/hostile/corrupted_flesh/mechiver/special_ability()
-	. = ..()
-
-
-/mob/living/simple_animal/hostile/corrupted_flesh/mechiver/proc/convert_mob(mob/living/mob_to_convert)
-	if(mob_to_convert.stat != DEAD) // No converting non-dead mobs.
-		return
-
-	if(iscyborg(mob_to_convert))
-		var/mob/living/simple_animal/hostile/corrupted_flesh/hiborg/new_borg = new(get_turf(src))
-		new_borg.contained_mob = mob_to_convert
-		mob_to_convert.forceMove(new_borg)
-
-	if(ishuman(mob_to_convert))
-		var/mob/living/simple_animal/hostile/corrupted_flesh/himan/new_himan = new(get_turf(src))
-		new_himan.contained_mob = mob_to_convert
-		mob_to_convert.forceMove(new_himan)
 
 /**
  * Phaser
@@ -1042,3 +1019,184 @@
 			return FALSE
 
 	return TRUE
+
+
+/**
+ * Mechiver
+ *
+ * Special abilities: Can grab someone and shove them inside, does DOT and flavour text, can convert dead corpses into living ones that work for the flesh.
+ *
+ *
+ */
+/mob/living/simple_animal/hostile/corrupted_flesh/mechiver
+	name = "Mechiver"
+	icon_state = "mechiver"
+	base_icon_state = "mechiver"
+	icon_dead = "mechiver-dead"
+	health = 500
+	maxHealth = 500
+	melee_damage_lower = 25
+	melee_damage_upper = 35
+	attack_verb_continuous = "crushes"
+	attack_verb_simple = "crush"
+	attack_sound = 'sound/weapons/smash.ogg'
+	speed = 4 // Slow fucker
+	passive_speak_lines = list(
+		"A shame this form isn't more fitting.",
+		"I feel so empty inside, I wish someone would join me.",
+		"Beauty is within.",
+	)
+	speak = list(
+		"What a lovely body. Lay it down intact.",
+		"Come here, meatbag.",
+		"What use is that flesh if you don't enjoy it?",
+		"Mine is the caress of steel.",
+		"I offer you the ecstasy of union, and yet you tremble.",
+	)
+	/// Is our hatch open? Used in icon processing.
+	var/hatch_open = FALSE
+	/// How much damage our mob will take, upper end, when they are tormented
+	var/internal_mob_damage_upper = 10
+	/// Ditto
+	var/internal_mob_damage_lower = 5
+	/// How long we keep our passenger before either releasing or converting them.
+	var/conversion_time = 40 SECONDS
+	/// The comsume ability cooldown
+	var/consume_ability_cooldown_time = 1 MINUTES
+	COOLDOWN_DECLARE(consume_ability_cooldown)
+	/// A list of lines we will send to torment the passenger.
+	var/list/torment_lines = list(
+		"An arm grabs your neck!",
+		"Lips whisper, \" This is the womb of your rebirth... \"",
+		"Hot breath flows over your ear, \" You will enjoy bliss when this is over... \"",
+		"A whirring drill bit bores through your chest!",
+		"Something is crushing your ribs!",
+		"Some blood-hot liquid covers you!",
+		"The stench of some chemical overwhelms you!",
+		"A dozen needles lance through your skin!",
+		"You feel a cold worm-like thing trying to wriggle into your wounds!",
+	)
+
+/mob/living/simple_animal/hostile/corrupted_flesh/mechiver/Life(delta_time, times_fired)
+	. = ..()
+	if(contained_mob && contained_mob.stat != DEAD && prob(25) && !suffering_malfunction)
+		torment_passenger()
+
+	if(!target && !contained_mob && !suffering_malfunction)
+		for(var/mob/living/iterating_mob in view(DEFAULT_VIEW_RANGE, src))
+			if(iterating_mob.stat == DEAD)
+				if(get_dist(src, iterating_mob) <= 1)
+					consume_mob(iterating_mob)
+				else
+					Goto(iterating_mob)
+
+/mob/living/simple_animal/hostile/corrupted_flesh/mechiver/proc/torment_passenger()
+	if(!contained_mob)
+		return
+	var/damage_amount = rand(internal_mob_damage_lower, internal_mob_damage_upper)
+	contained_mob.take_overall_damage(damage_amount)
+	contained_mob.emote("scream")
+	Shake(10, 0, 3 SECONDS)
+	do_sparks(4, FALSE, src)
+	to_chat(contained_mob, span_userdanger(pick(torment_lines)))
+	playsound(src, 'sound/weapons/drill.ogg', 70, 1)
+
+/mob/living/simple_animal/hostile/corrupted_flesh/mechiver/Moved()
+	. = ..()
+	update_appearance()
+
+/mob/living/simple_animal/hostile/corrupted_flesh/mechiver/update_overlays()
+	. = ..()
+	if(target && (get_dist(target, src) <= 4))
+		if(contained_mob)
+			. += "[base_icon_state]-chief"
+			. += "[base_icon_state]-hands"
+		else
+			. += "[base_icon_state]-wires"
+	else if(!hatch_open)
+		. += "[base_icon_state]-closed"
+		if(contained_mob)
+			. += "[base_icon_state]-process"
+
+
+/mob/living/simple_animal/hostile/corrupted_flesh/mechiver/AttackingTarget(atom/attacked_target)
+	if(target && COOLDOWN_FINISHED(src, consume_ability_cooldown) && Adjacent(target))
+		consume_mob(target)
+	return ..()
+
+
+/mob/living/simple_animal/hostile/corrupted_flesh/mechiver/proc/consume_mob(mob/living/target_mob)
+	if(contained_mob)
+		return
+	if(!istype(target_mob))
+		return
+
+	hatch_open = TRUE
+	update_appearance()
+	flick("[base_icon_state]-opening_wires", src)
+	addtimer(CALLBACK(src, .proc/close_hatch), 1 SECONDS)
+
+	if(target_mob.stat == DEAD)
+		convert_mob(target_mob)
+
+	contained_mob = target_mob
+	target_mob.forceMove(src)
+
+	to_chat(target_mob, span_userdanger("[src] ensnares your limbs as it pulls you inside its compartment, metal tendrils sliding around you, squeezing tight."))
+	visible_message(span_danger("[src] consumes [target_mob]!"))
+	playsound(src, 'sound/effects/blobattack.ogg', 70, 1)
+
+	addtimer(CALLBACK(src, .proc/release_mob), conversion_time)
+
+/mob/living/simple_animal/hostile/corrupted_flesh/mechiver/proc/close_hatch()
+	hatch_open = FALSE
+	update_appearance()
+
+/// This is where we either release the user, if they're alive, or convert them, if they're dead.
+/mob/living/simple_animal/hostile/corrupted_flesh/mechiver/proc/release_mob()
+	if(!contained_mob)
+		return
+
+	hatch_open = TRUE
+	update_appearance()
+	flick("[base_icon_state]-opening", src)
+	addtimer(CALLBACK(src, .proc/close_hatch), 1 SECONDS)
+	if(contained_mob.stat == DEAD)
+		contained_mob.forceMove(get_turf(src))
+		convert_mob(contained_mob)
+		contained_mob = null
+	else
+		contained_mob.forceMove(get_turf(src))
+		to_chat(contained_mob, span_danger("[src] releases you from its snares!"))
+		contained_mob = null
+
+	playsound(src, 'sound/effects/blobattack.ogg', 70, 1)
+
+/mob/living/simple_animal/hostile/corrupted_flesh/mechiver/proc/convert_mob(mob/living/mob_to_convert)
+	if(mob_to_convert.stat != DEAD) // No converting non-dead mobs.
+		return
+
+	if(iscyborg(mob_to_convert))
+		var/mob/living/simple_animal/hostile/corrupted_flesh/hiborg/new_borg = new(get_turf(src))
+		new_borg.contained_mob = mob_to_convert
+		mob_to_convert.forceMove(new_borg)
+		return
+
+	if(ishuman(mob_to_convert))
+		var/mob/living/simple_animal/hostile/corrupted_flesh/himan/new_himan = new(get_turf(src))
+		new_himan.contained_mob = mob_to_convert
+		mob_to_convert.forceMove(new_himan)
+		return
+
+	// Other mobs get converted into whatever else
+	var/static/list/possible_mobs = list(
+		/mob/living/simple_animal/hostile/corrupted_flesh/floater,
+		/mob/living/simple_animal/hostile/corrupted_flesh/globber,
+		/mob/living/simple_animal/hostile/corrupted_flesh/slicer,
+		/mob/living/simple_animal/hostile/corrupted_flesh/stunner,
+		/mob/living/simple_animal/hostile/corrupted_flesh/treader,
+	)
+	var/picked_mob_type = pick(possible_mobs)
+	var/mob/living/simple_animal/hostile/corrupted_flesh/new_mob = new picked_mob_type(get_turf(src))
+	mob_to_convert.forceMove(new_mob)
+	new_mob.contained_mob = mob_to_convert

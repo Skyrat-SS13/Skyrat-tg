@@ -9,7 +9,8 @@
 
 #define CORRUPTED_FLESH_NAME_MODIFIER_LIST list ("Warped", "Altered", "Modified", "Upgraded", "Abnormal")
 
-#define DEFAULT_VIEW_RANGE 12
+/// The range at which most of our objects, mobs and structures activate at. 7 seems to be the perfect number.
+#define DEFAULT_VIEW_RANGE 7
 
 #define AI_FORENAME_LIST list("Von Neumann", "Lazarus", "Abattoir", "Auto-Surgeon", "NanoTrasen", \
 	"NanoNurse", "Vivisector", "Ex Costa", "Apostasy", "Gnosis", "Balaam", "Ophite", \

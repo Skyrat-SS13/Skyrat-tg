@@ -51,8 +51,9 @@
 	/// Are we active?
 	var/active = FALSE
 
-/obj/structure/corrupted_flesh/wireweed/Initialize(mapload)
+/obj/structure/corrupted_flesh/wireweed/Initialize(mapload, starting_alpha = 255)
 	. = ..()
+	alpha = starting_alpha
 	var/static/list/loc_connections = list(
 		COMSIG_ATOM_ENTERED = .proc/on_entered,
 	)
@@ -83,7 +84,16 @@
 					new_wall_overlay.pixel_x = -32
 			. += new_wall_overlay
 
+/obj/structure/corrupted_flesh/wireweed/proc/visual_finished()
+	SIGNAL_HANDLER
+	alpha = 255
+
 /obj/structure/corrupted_flesh/wireweed/proc/on_entered(datum/source, atom/movable/moving_atom)
 	if(istype(moving_atom, /mob/living/simple_animal/bot/cleanbot))
 		var/mob/living/simple_animal/bot/captured_bot = moving_atom
 		buckle_mob(captured_bot)
+
+/obj/effect/temp_visual/wireweed_spread
+	icon = 'modular_skyrat/modules/corrupted_flesh/icons/wireweed_floor.dmi'
+	icon_state = "spread_anim"
+	duration = 1.7 SECONDS
