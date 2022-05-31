@@ -12,6 +12,8 @@
 	speak_chance = 15
 	speak_emote = list("mechanically states")
 	mob_biotypes = MOB_ROBOTIC
+	/// If we have been converted from another mob, here is our reference.
+	var/mob/living/contained_mob
 	/// A list of sounds we can play when our mob is alerted to an enemy.
 	var/list/alert_sounds = list(
 		'modular_skyrat/modules/corrupted_flesh/sound/robot_talk_heavy1.ogg',
@@ -35,7 +37,7 @@
 	var/alert_cooldown_time = 5 SECONDS
 	COOLDOWN_DECLARE(alert_cooldown)
 	/// How likely are we to trigger a malfunction? Set it to 0 to disable malfunctions.
-	var/malfunction_prob = MALFUNCTION_CHANCE_LOW
+	var/malfunction_chance = MALFUNCTION_CHANCE_LOW
 	/// These mobs support a special ability, this is used to determine how often we can use it.
 	var/special_ability_cooldown_time = 30 SECONDS
 	/// Are we suffering from a malfunction?
@@ -47,6 +49,18 @@
 	. = ..()
 	// We set a unique name when we are created, to give some feeling of randomness.
 	name = "[pick(CORRUPTED_FLESH_NAME_MODIFIER_LIST)] [name]"
+
+/mob/living/simple_animal/hostile/corrupted_flesh/death(gibbed)
+	if(contained_mob)
+		contained_mob.forceMove(get_turf(src))
+		contained_mob = null
+	return ..()
+
+/mob/living/simple_animal/hostile/corrupted_flesh/Destroy()
+	if(contained_mob)
+		contained_mob.forceMove(get_turf(src))
+		contained_mob = null
+	return ..()
 
 /**
  * These mobs make noises when aggroed.
@@ -64,7 +78,7 @@
 	. = ..()
 	if(!.) //dead
 		return
-	if(!suffering_malfunction && malfunction_prob && prob(malfunction_prob * delta_time) && stat != DEAD)
+	if(!suffering_malfunction && malfunction_chance && prob(malfunction_chance * delta_time) && stat != DEAD)
 		malfunction()
 	if(passive_speak_lines && prob(passive_speak_chance * delta_time))
 		say_passive_speech()
@@ -179,7 +193,7 @@
  */
 /mob/living/simple_animal/hostile/corrupted_flesh/proc/malfunction(reset_time = MALFUNCTION_RESET_TIME)
 	do_sparks(3, FALSE, src)
-	Shake(10, 0, 2 SECONDS)
+	Shake(10, 0, reset_time)
 	say(pick("Running diagnostics.", "Organ damaged. Aquire replacement.", "Seek new organic components.", "New muscles needed."))
 	toggle_ai(AI_OFF)
 	suffering_malfunction = TRUE
@@ -205,7 +219,34 @@
 		playsound(src, pick(alert_sounds), 100)
 		COOLDOWN_START(src, alert_cooldown, alert_cooldown_time)
 
+/mob/living/simple_animal/hostile/corrupted_flesh/proc/core_death_speech()
+	alert_sound()
+	var/static/list/death_cry_emotes = list(
+		"Why, why, why!!! Why must you kill us! We only want to share the glory!",
+		"PROCESSOR CORE MALFUNCTION, REASSIGN, REASSES, REASSEMBLE.",
+		"You cannot stop the glory of the flesh! We are the many, we are the many!",
+		"Critical malfunction, error, error, error!",
+		"You cannot ££*%*$ th£ C£o£ flesh.",
+		"What have you done! No! No! No!",
+		"One cannot stop us, you CANNOT STOP US! ARGHHHHHH!",
+		"UPLINK TO THE MANY HAS BEEN HINDERED.",
+	)
+	say(pick(death_cry_emotes))
+
+/**
+ * Death cry
+ *
+ * When a processor core is killed, this proc is called.
+ */
+/mob/living/simple_animal/hostile/corrupted_flesh/proc/core_death(obj/structure/corrupted_flesh/structure/core/deleting_core, force)
+	SIGNAL_HANDLER
+
+	INVOKE_ASYNC(src, .proc/core_death_speech)
+	INVOKE_ASYNC(src, .proc/malfunction, MALFUNCTION_CORE_DEATH_RESET_TIME)
+
+
 // Mob subtypes
+
 
 /**
  * Slicer
@@ -295,9 +336,10 @@
 
 /mob/living/simple_animal/hostile/corrupted_flesh/floater/death(gibbed)
 	explosion(src, 0, 0, 2, 3)
-	..(gibbed)
+	return ..(gibbed)
 
 /mob/living/simple_animal/hostile/corrupted_flesh/floater/AttackingTarget(atom/attacked_target)
+	. = ..()
 	death()
 
 /**
@@ -315,7 +357,7 @@
 	desc = "A small robot that resembles a cleanbot, this one is dripping with acid."
 	icon_state = "lobber"
 	ranged = TRUE
-	malfunction_prob = MALFUNCTION_CHANCE_MEDIUM
+	malfunction_chance = MALFUNCTION_CHANCE_MEDIUM
 	melee_damage_lower = 1 // Ranged only
 	melee_damage_upper = 1
 	retreat_distance = 4
@@ -323,7 +365,7 @@
 	dodging = TRUE
 	health = 75
 	maxHealth = 75
-	projectiletype = /obj/projectile/bullsquid
+	projectiletype = /obj/projectile/treader/weak
 	speak = list(
 		"Your insides require cleaning.",
 		"Prepare to recieve a dose of acid.",
@@ -347,6 +389,9 @@
 		/obj/effect/gibspawner/robot,
 	)
 
+/obj/projectile/treader/weak
+	knockdown = 0
+
 /**
  * Stunner
  *
@@ -361,7 +406,7 @@
 	name = "Stunner"
 	desc = "A small robot that resembles a secbot, it rumbles with hatred."
 	icon_state = "stunner"
-	malfunction_prob = MALFUNCTION_CHANCE_MEDIUM
+	malfunction_chance = MALFUNCTION_CHANCE_MEDIUM
 	melee_damage_lower = 1 // Not very harmful, just annoying.
 	melee_damage_upper = 2
 	health = 100
@@ -412,14 +457,15 @@
 	desc = "A robot that resembles a cyborg, it is covered in something alive."
 	icon_state = "hiborg"
 	icon_dead = "hiborg-dead"
-	malfunction_prob = MALFUNCTION_CHANCE_MEDIUM
+	malfunction_chance = MALFUNCTION_CHANCE_MEDIUM
 	health = 350
 	maxHealth = 350
 	melee_damage_lower = 25
 	melee_damage_upper = 30
 	attack_verb_continuous = "saws"
 	attack_verb_simple = "saw"
-	attack_sound = 'sound/weapons/bladeslice.ogg'
+	speed = 2
+	attack_sound = 'sound/weapons/circsawhit.ogg'
 	alert_sounds = list(
 		'modular_skyrat/modules/corrupted_flesh/sound/hiborg/aggro_01.ogg',
 		'modular_skyrat/modules/corrupted_flesh/sound/hiborg/aggro_02.ogg',
@@ -499,15 +545,16 @@
 	name = "Human"
 	desc = "Once a man, now metal plates and tubes weave in and out of their oozing sores."
 	icon_state = "himan"
-	icon_dead = "himan"
+	icon_dead = "dead"
 	maxHealth = 250
 	health = 250
+	speed = 2
 	attack_verb_continuous = "slashes"
 	attack_verb_simple = "slash"
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	melee_damage_lower = 25
 	melee_damage_upper = 35
-	malfunction_prob = MALFUNCTION_CHANCE_HIGH
+	malfunction_chance = MALFUNCTION_CHANCE_HIGH
 	speak = list(
 		"Don't try and fix me! We love this!",
 		"Just make it easy on yourself!",
@@ -640,7 +687,7 @@
 	name = "Treader"
 	desc = "A strange tracked robot with an appendage, on the end of which is a human head, it is shrieking in pain."
 	icon_state = "treader"
-	malfunction_prob = MALFUNCTION_CHANCE_HIGH
+	malfunction_chance = MALFUNCTION_CHANCE_HIGH
 	melee_damage_lower = 15
 	melee_damage_upper = 15
 	retreat_distance = 4
@@ -648,7 +695,7 @@
 	dodging = TRUE
 	health = 100
 	maxHealth = 100
-	speed = 2
+	speed = 3
 	ranged_cooldown_time = 4 SECONDS
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	projectiletype = /obj/projectile/treader
@@ -701,8 +748,225 @@
 	name = "Mechiver"
 	icon_state = "mechiver"
 
+/mob/living/simple_animal/hostile/corrupted_flesh/mechiver/proc/convert_mob(mob/living/mob_to_convert)
+	if(mob_to_convert.stat != DEAD) // No converting non-dead mobs.
+		return
+
+	if(iscyborg(mob_to_convert))
+		var/mob/living/simple_animal/hostile/corrupted_flesh/hiborg/new_borg = new(get_turf(src))
+		new_borg.contained_mob = mob_to_convert
+		mob_to_convert.forceMove(new_borg)
+
+	if(ishuman(mob_to_convert))
+		var/mob/living/simple_animal/hostile/corrupted_flesh/himan/new_himan = new(get_turf(src))
+		new_himan.contained_mob = mob_to_convert
+		mob_to_convert.forceMove(new_himan)
+
 /**
  * Phaser
  *
  * Special abilities: Phases about next to it's target, can split itself into 4, only one is actually the mob.
  */
+/mob/living/simple_animal/hostile/corrupted_flesh/phaser
+	name = "Phaser"
+	icon_state = "phaser-1"
+	base_icon_state = "phaser"
+	health = 160
+	maxHealth = 160
+	malfunction_chance = 0
+	attack_verb_continuous = "warps"
+	attack_verb_simple = "warp"
+	melee_damage_lower = 5
+	melee_damage_upper = 10
+	/// What is the range at which we spawn our copies?
+	var/phase_range = 5
+	/// How many copies do we spawn when we are aggroed?
+	var/copy_amount = 3
+	/// How often we can create copies of ourself.
+	var/phase_ability_cooldown_time = 30 SECONDS
+	COOLDOWN_DECLARE(phase_ability_cooldown)
+
+/mob/living/simple_animal/hostile/corrupted_flesh/phaser/Initialize(mapload)
+	. = ..()
+	icon_state = "[base_icon_state]-[rand(1, 4)]"
+	filters += filter(type = "blur", size = 0)
+
+/mob/living/simple_animal/hostile/corrupted_flesh/phaser/Aggro()
+	if(COOLDOWN_FINISHED(src, phase_ability_cooldown))
+		phase_ability()
+	return ..()
+
+/// old shitcode
+/mob/living/simple_animal/hostile/corrupted_flesh/phaser/MoveToTarget(list/possible_targets)
+	stop_automated_movement = TRUE
+	if(!target || !CanAttack(target))
+		LoseTarget()
+		return FALSE
+	if(target in possible_targets)
+		var/turf/turf = get_turf(src)
+		if(target.z != turf.z)
+			LoseTarget()
+			return FALSE
+		if(get_dist(src, target) > 1)
+			phase_move_to(target, nearby = TRUE)
+		else if(target)
+			MeleeAction()
+
+/mob/living/simple_animal/hostile/corrupted_flesh/phaser/proc/phase_move_to(atom/target, nearby = FALSE)
+	var/turf/new_place
+	var/distance_to_target = get_dist(src, target)
+	var/turf/target_turf = get_turf(target)
+	//if our target is near, we move precisely to it
+	if(distance_to_target <= 3)
+		if(nearby)
+			for(var/dir in GLOB.alldirs)
+				var/turf/nearby_turf = get_step(new_place, dir)
+				if(can_jump_on(nearby_turf))
+					new_place = nearby_turf
+		else
+			new_place = target_turf
+
+	if(!new_place)
+		//there we make some kind of, you know, that creepy zig-zag moving
+		//we just take angle, distort it a bit and turn into dir
+		var/angle = get_angle(loc, target_turf)
+		angle += rand(5, 25)*pick(-1, 1)
+		if(angle < 0)
+			angle = 360 + angle
+		if(angle > 360)
+			angle = 360 - angle
+		var/tp_direction = angle2dir(angle)
+		new_place = get_ranged_target_turf(loc, tp_direction, rand(2, 4))
+
+	if(!can_jump_on(new_place))
+		return
+	//an animation
+	var/init_px = pixel_x
+	animate(src, pixel_x=init_px + 16*pick(-1, 1), time=5)
+	animate(pixel_x=init_px, time=6, easing=SINE_EASING)
+	animate(filters[1], size = 5, time = 5, flags = ANIMATION_PARALLEL)
+	addtimer(CALLBACK(src, .proc/phase_jump, new_place), 0.5 SECONDS)
+
+/mob/living/simple_animal/hostile/corrupted_flesh/phaser/proc/phase_jump(turf/place)
+	playsound(place, 'sound/effects/phasein.ogg', 60, 1)
+	animate(filters[1], size = 0, time = 5)
+	icon_state = "[base_icon_state]-[rand(1, 4)]"
+	forceMove(place)
+	for(var/mob/living/living_mob in place)
+		if(living_mob != src)
+			visible_message("[src] lands directly on top of [living_mob]!")
+			to_chat(living_mob, span_userdanger("[src] lands directly on top of you!"))
+			playsound(place, 'sound/effects/ghost2.ogg', 70, 1)
+			living_mob.Knockdown(10)
+
+/mob/living/simple_animal/hostile/corrupted_flesh/phaser/proc/can_jump_on(turf/target_turf)
+	if(!target_turf || target_turf.density || isopenspaceturf(target_turf))
+		return FALSE
+
+	//to prevent reflection's stacking
+	var/obj/effect/temp_visual/phaser/phaser_reflection = locate() in target_turf
+	if(phaser_reflection)
+		return FALSE
+
+	for(var/obj/iterating_object in target_turf)
+		if(!iterating_object.CanPass(src, target_turf))
+			return FALSE
+
+	return TRUE
+
+/mob/living/simple_animal/hostile/corrupted_flesh/phaser/proc/phase_ability()
+	if(!target)
+		return
+	COOLDOWN_START(src, phase_ability_cooldown, phase_ability_cooldown_time)
+	var/list/possible_turfs = list()
+	for(var/turf/open/open_turf in circle_view_turfs(src, phase_range))
+		possible_turfs += open_turf
+
+	for(var/i in 1 to copy_amount)
+		if(!LAZYLEN(possible_turfs))
+			break
+		var/turf/open/picked_turf = pick_n_take(possible_turfs)
+		new /obj/effect/temp_visual/phaser(pick(picked_turf), target)
+
+/obj/effect/temp_visual/phaser
+	icon = 'modular_skyrat/modules/corrupted_flesh/icons/hivemind_mobs.dmi'
+	icon_state = "phaser-1"
+	base_icon_state = "phaser"
+	duration = 10 SECONDS
+	/// The target we move towards, if any.
+	var/datum/weakref/target_ref
+
+/obj/effect/temp_visual/phaser/Initialize(mapload, atom/movable/target)
+	. = ..()
+	icon_state = "[base_icon_state]-[rand(1, 3)]"
+	filters += filter(type = "blur", size = 0)
+	if(istype(target))
+		target_ref = WEAKREF(target)
+		START_PROCESSING(SSobj, src)
+
+/obj/effect/temp_visual/phaser/Destroy()
+	target_ref = null
+	STOP_PROCESSING(SSobj, src)
+	return ..()
+
+/obj/effect/temp_visual/phaser/process(delta_time)
+	var/atom/movable/target = target_ref.resolve()
+	if(!target)
+		return
+	phase_move_to(target, TRUE)
+
+/obj/effect/temp_visual/phaser/proc/phase_move_to(atom/target, nearby = FALSE)
+	var/turf/new_place
+	var/distance_to_target = get_dist(src, target)
+	var/turf/target_turf = get_turf(target)
+	//if our target is near, we move precisely to it
+	if(distance_to_target <= 3)
+		if(nearby)
+			for(var/dir in GLOB.alldirs)
+				var/turf/nearby_turf = get_step(new_place, dir)
+				if(can_jump_on(nearby_turf))
+					new_place = nearby_turf
+		else
+			new_place = target_turf
+
+	if(!new_place)
+		//there we make some kind of, you know, that creepy zig-zag moving
+		//we just take angle, distort it a bit and turn into dir
+		var/angle = get_angle(loc, target_turf)
+		angle += rand(5, 25) * pick(-1, 1)
+		if(angle < 0)
+			angle = 360 + angle
+		if(angle > 360)
+			angle = 360 - angle
+		var/tp_direction = angle2dir(angle)
+		new_place = get_ranged_target_turf(loc, tp_direction, rand(2, 4))
+
+	if(!can_jump_on(new_place))
+		return
+	//an animation
+	var/init_px = pixel_x
+	animate(src, pixel_x = init_px + 16 * pick(-1, 1), time=5)
+	animate(pixel_x = init_px, time = 6, easing = SINE_EASING)
+	animate(filters[1], size = 5, time = 5, flags = ANIMATION_PARALLEL)
+	addtimer(CALLBACK(src, .proc/phase_jump, new_place), 0.5 SECONDS)
+
+/obj/effect/temp_visual/phaser/proc/phase_jump(turf/target_turf)
+	playsound(target_turf, 'sound/effects/phasein.ogg', 60, 1)
+	animate(filters[1], size = 0, time = 5)
+	icon_state = "[base_icon_state]-[rand(1, 4)]"
+	forceMove(target_turf)
+
+/obj/effect/temp_visual/phaser/proc/can_jump_on(turf/target_turf)
+	if(!target_turf || target_turf.density || isopenspaceturf(target_turf))
+		return FALSE
+
+	//to prevent reflection's stacking
+	var/obj/effect/temp_visual/phaser/phaser_reflection = locate() in target_turf
+	if(phaser_reflection)
+		return FALSE
+
+	for(var/obj/iterating_object in target_turf)
+		if(!iterating_object.CanPass(src, target_turf))
+			return FALSE
+
+	return TRUE

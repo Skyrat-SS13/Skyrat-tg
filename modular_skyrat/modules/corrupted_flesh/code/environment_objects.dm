@@ -51,6 +51,13 @@
 	/// Are we active?
 	var/active = FALSE
 
+/obj/structure/corrupted_flesh/wireweed/Initialize(mapload)
+	. = ..()
+	var/static/list/loc_connections = list(
+		COMSIG_ATOM_ENTERED = .proc/on_entered,
+	)
+	AddElement(/datum/element/connect_loc, loc_connections)
+
 /obj/structure/corrupted_flesh/wireweed/update_icon(updates)
 	. = ..()
 	if((updates & UPDATE_SMOOTHING) && (smoothing_flags & (SMOOTH_BITMASK)))
@@ -76,3 +83,7 @@
 					new_wall_overlay.pixel_x = -32
 			. += new_wall_overlay
 
+/obj/structure/corrupted_flesh/wireweed/proc/on_entered(datum/source, atom/movable/moving_atom)
+	if(istype(moving_atom, /mob/living/simple_animal/bot/cleanbot))
+		var/mob/living/simple_animal/bot/captured_bot = moving_atom
+		buckle_mob(captured_bot)

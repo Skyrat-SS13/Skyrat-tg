@@ -59,6 +59,8 @@
 
 	var/obj/machinery/parent_machinery = parent
 
+	RegisterSignal(parent_machinery, COMSIG_ATOM_UPDATE_OVERLAYS, .proc/handle_overlays)
+
 	parent_machinery.update_appearance()
 
 	addtimer(CALLBACK(src, .proc/finish_setup), COMPONENT_SETUP_TIME)
@@ -68,7 +70,6 @@
 
 	RegisterSignal(parent_machinery, COMSIG_ATOM_TAKE_DAMAGE, .proc/react_to_damage)
 	RegisterSignal(parent_machinery, COMSIG_PARENT_EXAMINE, .proc/on_examine)
-	RegisterSignal(parent_machinery, COMSIG_ATOM_UPDATE_OVERLAYS, .proc/handle_overlays)
 	RegisterSignal(parent_machinery, COMSIG_ATOM_UI_INTERACT, .proc/handle_ui_interact)
 	RegisterSignal(parent_machinery, COMSIG_ATOM_DESTRUCTION, .proc/handle_destruction)
 
@@ -83,12 +84,9 @@
 	parent_machinery.light_range = 2
 	parent_machinery.update_light()
 
-
 	parent_machinery.idle_power_usage = BASE_MACHINE_ACTIVE_CONSUMPTION * 2 // These machines are now power sinks!
 
 	parent_machinery.set_machine_stat(BROKEN)
-
-	playsound(parent_machinery, 'modular_skyrat/modules/corrupted_flesh/sound/sparks.ogg', 70, TRUE)
 
 /datum/component/machine_corruption/Destroy(force, silent)
 	var/obj/machinery/parent_machinery = parent

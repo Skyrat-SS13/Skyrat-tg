@@ -56,6 +56,9 @@
 		/obj/structure/corrupted_flesh/structure/assembler,
 		/obj/structure/corrupted_flesh/structure/turret,
 	)
+	var/list/blacklisted_conversion_structures = list(
+		/obj/machinery/light,
+	)
 	/// Our wireweed type, defines what is spawned when we grow.
 	var/wireweed_type = /obj/structure/corrupted_flesh/wireweed
 	/// We have the ability to make walls, this defines what kind of walls we make.
@@ -269,6 +272,8 @@
 		light_in_place.break_light_tube()
 
 	for(var/obj/machinery/iterating_machine in location)
+		if(is_type_in_list(blacklisted_conversion_structures))
+			continue
 		if(iterating_machine.GetComponent(/datum/component/machine_corruption))
 			continue
 		iterating_machine.AddComponent(/datum/component/machine_corruption, src)

@@ -65,7 +65,10 @@
 /obj/structure/corrupted_flesh/structure/proc/proximity_trigger(datum/source, atom/movable/arrived, atom/old_loc, list/atom/old_locs)
 	SIGNAL_HANDLER
 
-	if(ability_cooldown_time && !COOLDOWN_FINISHED(src, ability_cooldown) && !disabled)
+	if(disabled)
+		return
+
+	if(ability_cooldown_time && !COOLDOWN_FINISHED(src, ability_cooldown))
 		return
 
 	if(requires_controller && !our_controller)
@@ -86,6 +89,8 @@
 
 /obj/structure/corrupted_flesh/structure/proc/automatic_trigger()
 	addtimer(CALLBACK(src, .proc/activate_ability), rand(automatic_trigger_time_lower, automatic_trigger_time_upper))
+	if(disabled)
+		return
 	if(requires_controller && !our_controller)
 		return
 	activate_ability()
@@ -473,7 +478,6 @@
 		/mob/living/simple_animal/hostile/corrupted_flesh/hiborg = 1,
 		/mob/living/simple_animal/hostile/corrupted_flesh/slicer = 6,
 		/mob/living/simple_animal/hostile/corrupted_flesh/stunner = 3,
-		/mob/living/carbon/human/species/monkey/angry/mauler = 2,
 		/mob/living/simple_animal/hostile/corrupted_flesh/treader = 2,
 		/mob/living/simple_animal/hostile/corrupted_flesh/himan = 2,
 	)
@@ -484,17 +488,20 @@
 		spawn_mob()
 
 /obj/structure/corrupted_flesh/structure/assembler/proc/spawn_mob()
-	var/sound/sound_to_play = pick('modular_skyrat/master_files/sound/effects/rustle1.ogg', 'modular_skyrat/master_files/sound/effects/rustle2.ogg')
-	playsound(src, sound_to_play, 100)
+	playsound(src, 'sound/items/rped.ogg', 100)
 	flick("[base_icon_state]-anim", src)
 	do_squish(0.8, 1.2)
 
 	spawned_mobs++
 
 	var/chosen_mob_type = pick_weight(monster_types)
-	var/mob/living/spawned_mob = new chosen_mob_type(loc)
+	var/mob/living/simple_animal/hostile/corrupted_flesh/spawned_mob = new chosen_mob_type(loc)
 
 	RegisterSignal(spawned_mob, COMSIG_LIVING_DEATH, .proc/mob_death)
+
+	if(our_controller)
+		for(var/obj/structure/corrupted_flesh/structure/core/iterating_core in our_controller.cores)
+			spawned_mob.RegisterSignal(iterating_core, COMSIG_PARENT_QDELETING, /mob/living/simple_animal/hostile/corrupted_flesh/proc/core_death)
 
 	visible_message(span_danger("[spawned_mob] emerges from [src]."))
 
