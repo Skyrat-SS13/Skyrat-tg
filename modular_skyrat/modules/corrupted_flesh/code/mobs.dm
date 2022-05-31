@@ -772,7 +772,7 @@
 /**
  * Phaser
  *
- * Special abilities: Phases about next to it's target, can split itself into 4, only one is actually the mob.
+ * Special abilities: Phases about next to it's target, can split itself into 4, only one is actually the mob. Can also enter closets if not being attacked.
  */
 /mob/living/simple_animal/hostile/corrupted_flesh/phaser
 	name = "Phaser"
@@ -799,7 +799,7 @@
 	/// How many copies do we spawn when we are aggroed?
 	var/copy_amount = 3
 	/// How often we can create copies of ourself.
-	var/phase_ability_cooldown_time = 30 SECONDS
+	var/phase_ability_cooldown_time = 40 SECONDS
 	COOLDOWN_DECLARE(phase_ability_cooldown)
 	/// How often we are able to enter closets.
 	var/closet_ability_cooldown_time = 10 SECONDS
@@ -839,8 +839,18 @@
 		enter_nearby_closet()
 		COOLDOWN_START(src, closet_ability_cooldown, closet_ability_cooldown_time)
 
+	if(istype(loc, /obj/structure/closet))
+		for(var/mob/living/iterating_mob in get_hearers_in_view(DEFAULT_VIEW_RANGE, get_turf(src)))
+			if(faction_check(iterating_mob.faction, faction))
+				continue
+			if(iterating_mob.stat != CONSCIOUS)
+				continue
+			closet_interaction() // We exit if there are enemies nearby
+
 /mob/living/simple_animal/hostile/corrupted_flesh/phaser/proc/enter_nearby_closet()
 	if(target) // We're in combat, no going to a closet.
+		return
+	if(istype(loc, /obj/structure/closet))
 		return
 	var/list/possible_closets = list()
 	for(var/obj/structure/closet/closet in view(DEFAULT_VIEW_RANGE, src))
@@ -853,7 +863,7 @@
 
 	phase_move_to(closet_to_enter)
 
-	if(!closet_to_enter.open(src))
+	if(!closet_to_enter.opened && !closet_to_enter.open(src))
 		return
 
 	forceMove(get_turf(closet_to_enter))
@@ -949,7 +959,7 @@
 	icon = 'modular_skyrat/modules/corrupted_flesh/icons/hivemind_mobs.dmi'
 	icon_state = "phaser-1"
 	base_icon_state = "phaser"
-	duration = 10 SECONDS
+	duration = 30 SECONDS
 	/// The target we move towards, if any.
 	var/datum/weakref/target_ref
 
