@@ -127,6 +127,7 @@
 		/obj/item/clothing/under/rank/cargo/qm/skirt = 1,
 		/obj/item/clothing/under/rank/cargo/qm/skyrat/gorka = 1,
 		/obj/item/clothing/under/rank/cargo/qm/skyrat/turtleneck = 1,
+		/obj/item/clothing/under/rank/cargo/qm/skyrat/turtleneck/skirt = 1,
 		/obj/item/clothing/suit/brownfurrich = 1,
 		/obj/item/clothing/under/rank/cargo/qm/skyrat/casual = 1,
 		/obj/item/clothing/suit/toggle/jacket/supply/head = 1,
