@@ -76,3 +76,5 @@
 
 /// From /mob/living/simple_animal/hostile/corrupted_flesh/phaser/proc/phase_move_to(atom/target, nearby = FALSE)
 #define COMSIG_PHASER_PHASE_MOVE "phaser_phase_move"
+/// from /mob/living/simple_animal/hostile/corrupted_flesh/phaser/proc/enter_nearby_closet()
+#define COMSIG_PHASER_ENTER_CLOSET "phaser_enter_closet"

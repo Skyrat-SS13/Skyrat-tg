@@ -794,6 +794,7 @@
 	loot = list(
 		/obj/effect/gibspawner/human,
 	)
+	wander = FALSE
 	/// What is the range at which we spawn our copies?
 	var/phase_range = 5
 	/// How many copies do we spawn when we are aggroed?
@@ -802,7 +803,7 @@
 	var/phase_ability_cooldown_time = 40 SECONDS
 	COOLDOWN_DECLARE(phase_ability_cooldown)
 	/// How often we are able to enter closets.
-	var/closet_ability_cooldown_time = 10 SECONDS
+	var/closet_ability_cooldown_time = 2 SECONDS
 	COOLDOWN_DECLARE(closet_ability_cooldown)
 
 /mob/living/simple_animal/hostile/corrupted_flesh/phaser/Initialize(mapload)
@@ -835,7 +836,7 @@
 	. = ..()
 	if(!.) //dead
 		return
-	if(COOLDOWN_FINISHED(src, closet_ability_cooldown))
+	if(!target && COOLDOWN_FINISHED(src, closet_ability_cooldown))
 		enter_nearby_closet()
 		COOLDOWN_START(src, closet_ability_cooldown, closet_ability_cooldown_time)
 
@@ -861,7 +862,7 @@
 		return
 	var/obj/structure/closet/closet_to_enter = pick(possible_closets)
 
-	phase_move_to(closet_to_enter)
+	playsound(closet_to_enter, 'sound/effects/phasein.ogg', 60, 1)
 
 	if(!closet_to_enter.opened && !closet_to_enter.open(src))
 		return
@@ -870,6 +871,9 @@
 
 	closet_to_enter.close(src)
 
+	COOLDOWN_RESET(src, phase_ability_cooldown)
+
+	SEND_SIGNAL(src, COMSIG_PHASER_ENTER_CLOSET)
 
 /mob/living/simple_animal/hostile/corrupted_flesh/phaser/proc/phase_move_to(atom/target_atom, nearby = FALSE)
 	var/turf/new_place
@@ -954,6 +958,7 @@
 		var/obj/effect/temp_visual/phaser/phaser_copy = new (pick(picked_turf), target)
 		phaser_copy.RegisterSignal(src, COMSIG_PHASER_PHASE_MOVE, /obj/effect/temp_visual/phaser/proc/parent_phase_move)
 		phaser_copy.RegisterSignal(src, COMSIG_LIVING_DEATH, /obj/effect/temp_visual/phaser/proc/parent_death)
+		phaser_copy.RegisterSignal(src, COMSIG_PHASER_ENTER_CLOSET, /obj/effect/temp_visual/phaser/proc/parent_death)
 
 /obj/effect/temp_visual/phaser
 	icon = 'modular_skyrat/modules/corrupted_flesh/icons/hivemind_mobs.dmi'
