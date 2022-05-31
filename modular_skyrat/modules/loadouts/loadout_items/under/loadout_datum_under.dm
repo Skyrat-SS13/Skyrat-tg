@@ -25,7 +25,10 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	else
 		outfit.uniform = item_path
 
-//////////////////////////////////////////////////////JUMPSUITS
+/*
+*	JUMPSUITS
+*/
+
 /datum/loadout_item/under/jumpsuit
 
 /datum/loadout_item/under/jumpsuit/greyscale
@@ -213,7 +216,10 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Polychromic Sweater"
 	item_path = /obj/item/clothing/under/misc/polysweater
 
-/////////////////////////////////////////////////////////////MISC UNDERSUITS
+/*
+*	MISC UNDERSUITS
+*/
+
 /datum/loadout_item/under/miscellaneous
 
 //christmas stuff, remove afterword
@@ -606,7 +612,10 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	item_path = /obj/item/clothing/under/misc/gear_harness/adam
 
 
-////////////////////////////////////////////////////////////////FORMAL UNDERSUITS
+/*
+*	FORMAL UNDERSUITS
+*/
+
 /datum/loadout_item/under/formal
 
 /datum/loadout_item/under/formal/vic_dress

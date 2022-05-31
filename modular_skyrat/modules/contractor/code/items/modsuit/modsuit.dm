@@ -30,6 +30,7 @@
 		/obj/item/mod/module/jetpack/advanced,
 		/obj/item/mod/module/springlock/contractor/no_complexity,
 		/obj/item/mod/module/baton_holster/preloaded,
+		/obj/item/mod/module/scorpion_hook,
 		/obj/item/mod/module/emp_shield,
 	)
 
