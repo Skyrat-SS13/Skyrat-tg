@@ -18,6 +18,53 @@
 	else
 		regenerate_icons()
 
+// Brand stamps for cyborgs
+/mob/living/silicon/robot/examine(mob/user)
+	. = ..()
+
+	var/mob/living/silicon/robot/robot = src
+	if(R_TRAIT_TALL in robot.model.model_features)
+		. += span_notice("<i>It seems to have branding insignia, you can look again to take a closer look...")
+	else
+		return
+
+/mob/living/silicon/robot/examine_more(mob/user)
+	. = ..()
+
+	var/mob/living/silicon/robot/robot = src
+	. += span_notice("<i>You examine [src] closer, and note the following...</i>")
+
+	switch(user.icon)
+		if(CYBORG_ICON_PEACEKEEPER_TALL)
+			. += "Its waist has <i>[span_pink("Zeng-Hu Pharmaceuticals")]</i> stamped onto it."
+		if(CYBORG_ICON_MINING_TALL)
+			. += "Its waist has <i>[span_cyan("Interdyne Pharmaceuticals")]</i> laser-cut onto it."
+		if(CYBORG_ICON_MED_TALL)
+			. += "Its chest has <i>[span_pink("Zeng-Hu Pharmaceuticals")]</i> stamped onto it."
+		if(CYBORG_ICON_CARGO_TALL)
+			. += "Its coat has a <i>[span_pink("Zeng-Hu Pharmaceuticals")]</i> label."
+	//	if(CYBORG_ICON_ENG_TALL)
+	//		. += ""
+		if(CYBORG_ICON_SERVICE_TALL)
+			switch(robot.model.cyborg_base_icon)
+				if("mekaserve")
+					. += "Its fore-arm has <i>[span_pink("Zeng-Hu Pharmaceuticals")]</i> stamped onto it."
+				if("mekaserve_alt")
+					. += "Its skirt has a <i>[span_pink("Zeng-Hu Pharmaceuticals")]</i> label."
+				else
+					return
+		if(CYBORG_ICON_JANI_TALL)
+			. += "Its skirt has a <i>[span_pink("Zeng-Hu Pharmaceuticals")]</i> label."
+		if(CYBORG_ICON_SYNDIE_TALL)
+			. += "Its label is crudely scratched off..."
+	//	if(CYBORG_ICON_CLOWN_TALL)
+	//		. += ""
+		if(CYBORG_ICON_NINJA_TALL)
+			. += "Its back has a <i>[span_green("Spider Clan")]</i> logo etched onto it."
+
+		else
+			return
+
 // 	Smoke particle effect for heavy-duty cyborgs
 /datum/component/robot_smoke
 
