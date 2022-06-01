@@ -17,6 +17,8 @@
 	maxbodytemp = INFINITY
 	/// If we have been converted from another mob, here is our reference.
 	var/mob/living/contained_mob
+	/// The ckey of our previously contained mob.
+	var/previous_ckey
 	/// A list of sounds we can play when our mob is alerted to an enemy.
 	var/list/alert_sounds = list(
 		'modular_skyrat/modules/corrupted_flesh/sound/robot_talk_heavy1.ogg',
@@ -58,12 +60,16 @@
 /mob/living/simple_animal/hostile/corrupted_flesh/death(gibbed)
 	if(contained_mob)
 		contained_mob.forceMove(get_turf(src))
+		if(previous_ckey)
+			contained_mob.key = previous_ckey
 		contained_mob = null
 	return ..()
 
 /mob/living/simple_animal/hostile/corrupted_flesh/Destroy()
 	if(contained_mob)
 		contained_mob.forceMove(get_turf(src))
+		if(previous_ckey)
+			contained_mob.key = previous_ckey
 		contained_mob = null
 	return ..()
 
@@ -120,7 +126,6 @@
 			if(AIShouldSleep(possible_targets)) // we try to acquire a new one
 				toggle_ai(AI_IDLE) // otherwise we go idle
 	return TRUE
-
 
 
 /**
@@ -504,6 +509,10 @@
 		"The flesh does not hate, it just wants you to experience the glory of the flesh.",
 		"Glory to the flesh.",
 	)
+	del_on_death = TRUE
+	loot = list(
+		/obj/effect/gibspawner/robot,
+	)
 	/// The chance of performing a stun attack.
 	var/stun_attack_prob = 30
 	/// The chance of performing an AOE attack.
@@ -597,6 +606,10 @@
 		'modular_skyrat/modules/corrupted_flesh/sound/himan/passive_02.ogg',
 		'modular_skyrat/modules/corrupted_flesh/sound/himan/passive_03.ogg',
 		'modular_skyrat/modules/corrupted_flesh/sound/himan/passive_04.ogg',
+	)
+	del_on_death = TRUE
+	loot = list(
+		/obj/effect/gibspawner/human,
 	)
 	/// Are we currently faking our death? ready to pounce?
 	var/faking_death = FALSE
@@ -1079,6 +1092,8 @@
 		'modular_skyrat/modules/corrupted_flesh/sound/mechiver/passive_08.ogg',
 
 	)
+	del_on_death = TRUE
+	loot = list(/obj/effect/gibspawner/robot)
 	/// Is our hatch open? Used in icon processing.
 	var/hatch_open = FALSE
 	/// How much damage our mob will take, upper end, when they are tormented
@@ -1196,16 +1211,17 @@
 	if(mob_to_convert.stat != DEAD) // No converting non-dead mobs.
 		return
 
+	if(is_corrupt_mob(mob_to_convert)) // If we are already assimilated, just heal us.
+		mob_to_convert.fully_heal()
+		return
+
 	if(iscyborg(mob_to_convert))
-		var/mob/living/simple_animal/hostile/corrupted_flesh/hiborg/new_borg = new(get_turf(src))
-		new_borg.contained_mob = mob_to_convert
-		mob_to_convert.forceMove(new_borg)
+		create_mob(/mob/living/simple_animal/hostile/corrupted_flesh/hiborg, mob_to_convert)
 		return
 
 	if(ishuman(mob_to_convert))
-		var/mob/living/simple_animal/hostile/corrupted_flesh/himan/new_himan = new(get_turf(src))
-		new_himan.contained_mob = mob_to_convert
-		mob_to_convert.forceMove(new_himan)
+		var/mob_to_spawn = pick(/mob/living/simple_animal/hostile/corrupted_flesh/himan, /mob/living/simple_animal/hostile/corrupted_flesh/phaser) // We can either become a phaser or a himan
+		create_mob(mob_to_spawn, mob_to_convert)
 		return
 
 	// Other mobs get converted into whatever else
@@ -1217,6 +1233,15 @@
 		/mob/living/simple_animal/hostile/corrupted_flesh/treader,
 	)
 	var/picked_mob_type = pick(possible_mobs)
-	var/mob/living/simple_animal/hostile/corrupted_flesh/new_mob = new picked_mob_type(get_turf(src))
-	mob_to_convert.forceMove(new_mob)
-	new_mob.contained_mob = mob_to_convert
+	create_mob(picked_mob_type, mob_to_convert)
+
+/// Creates and transfers a new mob.
+/mob/living/simple_animal/hostile/corrupted_flesh/mechiver/proc/create_mob(new_mob_type, mob/living/old_mob)
+	var/mob/living/simple_animal/hostile/corrupted_flesh/new_mob = new new_mob_type(get_turf(src))
+	if(old_mob)
+		new_mob.contained_mob = old_mob
+		old_mob.forceMove(new_mob)
+		if(old_mob.mind?.key)
+			new_mob.previous_ckey = old_mob.mind.key
+			new_mob.key = old_mob.mind.key
+	return new_mob

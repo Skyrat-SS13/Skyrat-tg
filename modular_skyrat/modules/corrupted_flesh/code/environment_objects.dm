@@ -46,6 +46,8 @@
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = list(SMOOTH_GROUP_WIREWEED)
 	canSmoothWith = list(SMOOTH_GROUP_WIREWEED, SMOOTH_GROUP_WALLS)
+	/// The chance we have to ensnare a mob
+	var/ensnare_chance = 15
 	/// The amount of damage we do when attacking something.
 	var/object_attack_damage = 40
 	/// Are we active?
@@ -89,7 +91,7 @@
 	alpha = 255
 
 /obj/structure/corrupted_flesh/wireweed/proc/on_entered(datum/source, atom/movable/moving_atom)
-	if(istype(moving_atom, /mob/living/simple_animal) && prob())
+	if(istype(moving_atom, /mob/living/simple_animal) && prob(ensnare_chance))
 		var/mob/living/simple_animal/captured_mob = moving_atom
 		captured_mob.visible_message(span_danger("[src] ensnares [captured_mob] with some wires!"), span_userdanger("[src] ensnares you!"))
 		buckle_mob(captured_mob)
