@@ -1,8 +1,9 @@
 /** Read the main access_helpers.dm for more information on these mapping tools.
  * TLDR:
- * Any requires EITHER OR access defined on the ID
- * All requires THAT specific access defined on the ID (so don't put more than one on a door at a time UNLESS ITS INTENTIONAL for a job to have all the access(es))
+ * Any requires ONLY THAT access defined on the ID to open the door
+ * All requires THAT AND THE OTHER access defined on the ID, meaning you will need "ai_uload" and "command" to open AI Upload doors
  * For mapping examples, look at /TG/s MetaStation
+ * For more information about these, see https://hackmd.io/@tgstation/ry4-gbKH5#On-Room-Structure-and-Security
 */
 
 // Any

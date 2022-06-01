@@ -1,7 +1,7 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aaa" = (
 /turf/open/space/basic,
-/area/misc/space)
+/area/space)
 "aac" = (
 /obj/structure/urinal{
 	pixel_y = -5
@@ -3168,7 +3168,7 @@
 "aFn" = (
 /obj/machinery/door/poddoor/shutters/preopen{
 	id = "ghostcafekitchen";
-	name = "kitchen shutters"
+	name = "Kitchen Shutters"
 	},
 /obj/effect/spawner/structure/window,
 /turf/open/indestructible/hoteltile{
@@ -3740,7 +3740,7 @@
 /turf/open/floor/iron/dark,
 /area/centcom/interlink)
 "aKD" = (
-/obj/machinery/vending/wardrobe/chef_wardrobe,
+/obj/machinery/vending/wardrobe/atmos_wardrobe,
 /turf/open/indestructible/hotelwood,
 /area/centcom/holding/cafe)
 "aKP" = (
@@ -3897,9 +3897,9 @@
 /turf/open/floor/iron/dark,
 /area/cruiser_dock)
 "aME" = (
-/obj/machinery/computer/slot_machine,
-/obj/item/coin/silver,
-/obj/item/coin/silver,
+/obj/structure/table/wood,
+/obj/item/toy/cards/deck/cas,
+/obj/item/toy/cards/deck/kotahi,
 /turf/open/indestructible/hotelwood,
 /area/centcom/holding/cafe)
 "aMG" = (
@@ -4236,7 +4236,10 @@
 /turf/open/indestructible/hotelwood,
 /area/centcom/holding/cafedorms)
 "aOw" = (
-/obj/effect/spawner/random/entertainment/arcade,
+/obj/machinery/computer/slot_machine,
+/obj/item/coin/silver,
+/obj/item/coin/silver,
+/obj/item/coin,
 /turf/open/indestructible/hotelwood,
 /area/centcom/holding/cafe)
 "aOz" = (
@@ -4447,6 +4450,7 @@
 	pixel_x = -3;
 	pixel_y = 2
 	},
+/obj/item/toy/cards/deck/tarot,
 /turf/open/indestructible/hotelwood,
 /area/centcom/holding/cafe)
 "aQf" = (
@@ -4774,7 +4778,7 @@
 /area/centcom/holding/cafe)
 "aSi" = (
 /obj/machinery/door/airlock/survival_pod{
-	name = "cockpit"
+	name = "Cockpit"
 	},
 /turf/open/indestructible/hoteltile{
 	icon_state = "darkfull"
@@ -5391,7 +5395,7 @@
 "aXl" = (
 /obj/machinery/door/poddoor/shutters/preopen{
 	id = "ghostcafekitchen";
-	name = "kitchen shutters"
+	name = "Kitchen Shutters"
 	},
 /obj/machinery/door/firedoor,
 /obj/structure/table/reinforced,
@@ -5884,7 +5888,7 @@
 	dir = 8
 	},
 /turf/open/space/basic,
-/area/misc/space)
+/area/space)
 "bDJ" = (
 /obj/machinery/door/airlock{
 	id_tag = "dorm23";
@@ -6708,6 +6712,13 @@
 	},
 /turf/open/floor/iron/dark,
 /area/cruiser_dock)
+"fvx" = (
+/obj/effect/turf_decal/bot,
+/obj/machinery/vending/wardrobe/engi_wardrobe,
+/turf/open/indestructible/hoteltile{
+	icon_state = "darkfull"
+	},
+/area/centcom/holding/cafepark)
 "fwc" = (
 /obj/effect/turf_decal/sand,
 /obj/structure/chair/stool/bar/directional/west{
@@ -7089,6 +7100,14 @@
 /obj/effect/turf_decal/siding/blue,
 /turf/open/floor/iron,
 /area/centcom/interlink)
+"gPN" = (
+/obj/effect/spawner/random/entertainment/arcade,
+/obj/effect/turf_decal/siding/wood,
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/turf/open/floor/eighties,
+/area/centcom/holding/cafe)
 "gVy" = (
 /obj/structure/table/glass,
 /obj/item/paper/pamphlet/centcom/visitor_info{
@@ -7108,6 +7127,12 @@
 	},
 /turf/open/indestructible/hotelwood,
 /area/centcom/interlink)
+"gWT" = (
+/obj/structure/table/wood,
+/obj/item/toy/cards/deck/cas/black,
+/obj/item/toy/cards/deck/wizoff,
+/turf/open/indestructible/hotelwood,
+/area/centcom/holding/cafe)
 "gYg" = (
 /obj/structure/transit_tube/curved{
 	dir = 8
@@ -7930,6 +7955,14 @@
 /obj/structure/chair/sofa/right,
 /turf/open/floor/wood,
 /area/centcom/holding/cafedorms)
+"koF" = (
+/obj/effect/spawner/random/entertainment/arcade,
+/obj/effect/turf_decal/siding/wood,
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/turf/open/floor/eighties,
+/area/centcom/holding/cafe)
 "kqG" = (
 /obj/effect/turf_decal/siding/blue{
 	dir = 9
@@ -7977,10 +8010,9 @@
 /turf/closed/indestructible/wood,
 /area/centcom/holding/cafe)
 "kFE" = (
-/obj/structure/flora/bush/lavendergrass{
-	icon_state = "lavendergrass_4"
-	},
-/turf/closed/indestructible/wood,
+/obj/structure/spacevine,
+/obj/structure/fans/tiny/invisible,
+/turf/open/misc/grass/planet,
 /area/centcom/holding/cafepark)
 "kGR" = (
 /obj/structure/dresser,
@@ -8103,6 +8135,13 @@
 /obj/structure/closet/secure_closet/brig/genpop,
 /turf/open/floor/iron/dark,
 /area/centcom/interlink)
+"kYn" = (
+/obj/effect/turf_decal/bot,
+/obj/machinery/skill_station,
+/turf/open/indestructible/hoteltile{
+	icon_state = "darkfull"
+	},
+/area/centcom/holding/cafepark)
 "kYL" = (
 /obj/effect/turf_decal/arrows{
 	dir = 4
@@ -8165,6 +8204,10 @@
 	},
 /turf/open/misc/asteroid,
 /area/centcom/interlink)
+"liK" = (
+/obj/machinery/vending/wardrobe/chef_wardrobe,
+/turf/open/floor/iron/showroomfloor,
+/area/centcom/holding/cafe)
 "lkh" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 8
@@ -8597,7 +8640,7 @@
 /area/centcom/interlink)
 "mYg" = (
 /obj/machinery/door/airlock/survival_pod{
-	name = "transport ship"
+	name = "Transport Ship"
 	},
 /turf/open/indestructible/hoteltile{
 	icon_state = "darkfull"
@@ -9138,6 +9181,14 @@
 	},
 /turf/open/misc/grass/planet,
 /area/centcom/holding/cafepark)
+"ptd" = (
+/obj/effect/spawner/random/entertainment/arcade,
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/wood,
+/turf/open/floor/eighties,
+/area/centcom/holding/cafe)
 "puo" = (
 /obj/effect/turf_decal/sand,
 /obj/machinery/light{
@@ -9259,7 +9310,8 @@
 "pPo" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Administrative Office";
-	req_one_access_txt = "20;101"
+	req_access = list("captain");
+	req_one_access = null
 	},
 /turf/open/floor/iron,
 /area/centcom/interlink)
@@ -10063,7 +10115,7 @@
 	width = 31
 	},
 /turf/open/space/basic,
-/area/misc/space)
+/area/space)
 "sqx" = (
 /obj/structure/table/glass,
 /obj/item/reagent_containers/food/drinks/coffee,
@@ -10400,7 +10452,7 @@
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/door/poddoor/shutters/preopen{
 	id = "ntconoffice";
-	name = "security shutters"
+	name = "Security Shutters"
 	},
 /turf/open/floor/plating,
 /area/centcom/interlink)
@@ -11480,6 +11532,13 @@
 "xUn" = (
 /obj/machinery/photocopier,
 /turf/open/floor/carpet/executive,
+/area/centcom/interlink)
+"xVA" = (
+/obj/machinery/door/airlock/centcom{
+	name = "Administrative Office";
+	req_one_access_txt = list("cent_general","captain")
+	},
+/turf/open/floor/iron,
 /area/centcom/interlink)
 "xYR" = (
 /obj/effect/turf_decal/siding/wood{
@@ -26771,7 +26830,7 @@ aiL
 aiL
 aiL
 aiL
-pPo
+xVA
 hvQ
 hvQ
 hvQ
@@ -52738,12 +52797,12 @@ ajj
 aCf
 ayI
 aPf
-ajj
 aFy
 aFy
 aFy
 aFy
-aCM
+aFy
+aFy
 ayd
 aIV
 aAz
@@ -53041,8 +53100,8 @@ aPf
 ajj
 ajj
 ajj
-aIm
-aFP
+kFE
+aaY
 aPf
 aPf
 aPf
@@ -53252,7 +53311,7 @@ ajj
 ayI
 aPf
 aFP
-kFE
+aFy
 xQj
 pCd
 dpe
@@ -54537,11 +54596,11 @@ ajj
 aqP
 aPf
 aFP
-awU
-aqf
-aqf
-aqf
-aqf
+aFy
+avn
+aNY
+aNY
+asY
 aqf
 awM
 aBd
@@ -54550,7 +54609,7 @@ aBd
 aBd
 aNn
 aqf
-aOw
+koF
 aUo
 aUz
 aqf
@@ -54794,9 +54853,9 @@ ajj
 aqP
 aPf
 aFP
-aFP
-aqf
-avn
+aFy
+qRd
+aNY
 aNY
 aNY
 aEL
@@ -54807,7 +54866,7 @@ akJ
 aBd
 rxB
 aFn
-aUo
+gPN
 aUo
 azm
 aTb
@@ -55051,9 +55110,9 @@ ajj
 aqP
 aPf
 aFP
-aIV
-aqf
+aFy
 avn
+aNY
 aNY
 aIx
 aqf
@@ -55308,10 +55367,10 @@ ajj
 aqP
 aPf
 aFB
-aFP
-aqf
+aFy
+liK
 aNY
-qRd
+aNY
 asY
 aqf
 aLY
@@ -55321,7 +55380,7 @@ aBd
 aBd
 aZK
 aFn
-aUo
+koF
 aUo
 aUo
 aTb
@@ -55578,7 +55637,7 @@ haZ
 aBd
 aQD
 aqf
-aOw
+ptd
 aUo
 aUo
 aqf
@@ -55609,9 +55668,9 @@ aYt
 aVS
 aAr
 umm
+kYn
 aYc
-aYc
-aYc
+fvx
 aDB
 umm
 ajj
@@ -55835,7 +55894,7 @@ aqf
 aXl
 aqf
 aqf
-aME
+aOw
 aUo
 aUz
 aqf
@@ -57133,8 +57192,8 @@ aGo
 aSg
 aqf
 aUo
-aCD
-aCD
+aME
+gWT
 aqf
 aXd
 aUo
