@@ -159,7 +159,7 @@
 /mob/living/simple_animal/hostile/corrupted_flesh/proc/say_passive_speech()
 	say(pick(passive_speak_lines))
 	if(passive_sounds)
-		playsound(src, pick(passive_sounds), 70)
+		playsound(src, pick(passive_sounds), 50)
 
 /**
  * Special Abilities
@@ -229,7 +229,7 @@
  */
 /mob/living/simple_animal/hostile/corrupted_flesh/proc/alert_sound()
 	if(alert_sounds && COOLDOWN_FINISHED(src, alert_cooldown))
-		playsound(src, pick(alert_sounds), 100)
+		playsound(src, pick(alert_sounds), 50)
 		COOLDOWN_START(src, alert_cooldown, alert_cooldown_time)
 
 /mob/living/simple_animal/hostile/corrupted_flesh/proc/core_death_speech()
@@ -556,16 +556,18 @@
 	var/stun_attack_cooldown = 15 SECONDS
 	COOLDOWN_DECLARE(stun_attack)
 
+/mob/living/simple_animal/hostile/corrupted_flesh/hiborg/Initialize(mapload)
+	. = ..()
+	var/datum/action/cooldown/hiborg_slash/new_action = new
+	new_action.Grant(src)
+
+
 /mob/living/simple_animal/hostile/corrupted_flesh/hiborg/AttackingTarget(atom/attacked_target)
 	. = ..()
-	if(prob(stun_attack_prob))
+	if(prob(stun_attack_prob) && !key)
 		stun_attack(target)
-	if(prob(aoe_attack_prob))
+	if(prob(aoe_attack_prob) && !key)
 		aoe_attack()
-
-/mob/living/simple_animal/hostile/corrupted_flesh/hiborg/attack_hand_secondary(mob/user, list/modifiers)
-	. = ..()
-	stun_attack(user)
 
 /mob/living/simple_animal/hostile/corrupted_flesh/hiborg/proc/stun_attack(mob/living/target_mob)
 	if(!COOLDOWN_FINISHED(src, stun_attack))
@@ -688,13 +690,23 @@
 	COOLDOWN_DECLARE(scream_ability)
 	var/scream_effect_range = 10
 
+/mob/living/simple_animal/hostile/corrupted_flesh/himan/Initialize(mapload)
+	. = ..()
+	var/datum/action/cooldown/himan_fake_death/new_action = new
+	new_action.Grant(src)
+
 /mob/living/simple_animal/hostile/corrupted_flesh/himan/Life(delta_time, times_fired)
 	. = ..()
-	if(health < (maxHealth * 0.5) && !faking_death && COOLDOWN_FINISHED(src, fake_death))
+	if(health < (maxHealth * 0.5) && !faking_death && COOLDOWN_FINISHED(src, fake_death) && !key)
 		fake_our_death()
 
 	if(faking_death)
 		stop_automated_movement = TRUE
+
+/mob/living/simple_animal/hostile/corrupted_flesh/himan/Moved()
+	. = ..()
+	if(faking_death)
+		awake()
 
 /mob/living/simple_animal/hostile/corrupted_flesh/himan/malfunction(reset_time)
 	if(faking_death)
@@ -717,11 +729,11 @@
 	return ..()
 
 /mob/living/simple_animal/hostile/corrupted_flesh/himan/Aggro()
-	if(faking_death)
+	if(faking_death && !key)
 		if(!Adjacent(target))
 			return
 		awake()
-	if(COOLDOWN_FINISHED(src, scream_ability))
+	if(COOLDOWN_FINISHED(src, scream_ability) && !key)
 		scream()
 	return ..()
 
@@ -765,6 +777,20 @@
 	faking_death = FALSE
 	icon_state = base_icon_state
 
+/datum/action/cooldown/himan_fake_death
+	name = "Fake Death"
+	desc = "Fakes our own death."
+	icon_icon = 'icons/obj/objects.dmi'
+	button_icon_state = "bed"
+	cooldown_time = 20 SECONDS
+
+/datum/action/cooldown/himan_fake_death/Activate(atom/target)
+	if(!istype(owner, /mob/living/simple_animal/hostile/corrupted_flesh/himan))
+		return
+	var/mob/living/simple_animal/hostile/corrupted_flesh/himan/himan_owner = owner
+	himan_owner.fake_our_death()
+
+
 /**
  * Treader
  *
@@ -805,7 +831,16 @@
 	)
 	special_ability_cooldown = 20 SECONDS
 
+/mob/living/simple_animal/hostile/corrupted_flesh/treader/Initialize(mapload)
+	. = ..()
+	var/datum/action/cooldown/treader_dispense_nanites/new_action = new
+	new_action.Grant(src)
+
+
 /mob/living/simple_animal/hostile/corrupted_flesh/treader/special_ability()
+	dispense_nanites()
+
+/mob/living/simple_animal/hostile/corrupted_flesh/treader/proc/dispense_nanites()
 	manual_emote("vomits out a burst of nanites!")
 	do_smoke(3, 4, get_turf(src))
 	for(var/mob/living/iterating_mob in view(DEFAULT_VIEW_RANGE, src))
@@ -816,6 +851,18 @@
 	empulse(get_turf(src), 1, 3)
 	return ..()
 
+/datum/action/cooldown/treader_dispense_nanites
+	name = "Dispense Nanites"
+	desc = "Dispenses nanites healing all friendly mobs in a range."
+	icon_icon = 'icons/obj/meteor.dmi'
+	button_icon_state = "dust"
+	cooldown_time = 20 SECONDS
+
+/datum/action/cooldown/treader_dispense_nanites/Activate(atom/target)
+	if(!istype(owner, /mob/living/simple_animal/hostile/corrupted_flesh/treader))
+		return
+	var/mob/living/simple_animal/hostile/corrupted_flesh/treader/treader_owner = owner
+	treader_owner.dispense_nanites()
 
 /obj/projectile/treader
 	name = "nasty ball of ooze"
@@ -870,16 +917,32 @@
 	/// How often we are able to enter closets.
 	var/closet_ability_cooldown_time = 2 SECONDS
 	COOLDOWN_DECLARE(closet_ability_cooldown)
+	/// If we are under manual control, how often can we phase?
+	var/manual_phase_cooldown = 5 SECONDS
+	COOLDOWN_DECLARE(manual_phase)
 
 /mob/living/simple_animal/hostile/corrupted_flesh/phaser/Initialize(mapload)
 	. = ..()
 	icon_state = "[base_icon_state]-[rand(1, 4)]"
 	filters += filter(type = "blur", size = 0)
+	var/datum/action/cooldown/phaser_phase_ability/new_action = new
+	new_action.Grant(src)
 
 /mob/living/simple_animal/hostile/corrupted_flesh/phaser/Aggro()
 	if(COOLDOWN_FINISHED(src, phase_ability_cooldown))
 		phase_ability()
 	return ..()
+
+/mob/living/simple_animal/hostile/corrupted_flesh/phaser/ShiftClickOn(atom/clicked_atom)
+	. = ..()
+	if(!COOLDOWN_FINISHED(src, manual_phase))
+		return
+	if(!clicked_atom)
+		return
+	if(!isturf(clicked_atom))
+		return
+	phase_move_to(clicked_atom)
+	COOLDOWN_START(src, manual_phase, manual_phase_cooldown)
 
 /// old shitcode
 /mob/living/simple_animal/hostile/corrupted_flesh/phaser/MoveToTarget(list/possible_targets)
@@ -901,11 +964,11 @@
 	. = ..()
 	if(!.) //dead
 		return
-	if(!target && COOLDOWN_FINISHED(src, closet_ability_cooldown))
+	if(!target && COOLDOWN_FINISHED(src, closet_ability_cooldown) && !key)
 		enter_nearby_closet()
 		COOLDOWN_START(src, closet_ability_cooldown, closet_ability_cooldown_time)
 
-	if(istype(loc, /obj/structure/closet))
+	if(istype(loc, /obj/structure/closet) && !key)
 		for(var/mob/living/iterating_mob in get_hearers_in_view(DEFAULT_VIEW_RANGE, get_turf(src)))
 			if(faction_check(iterating_mob.faction, faction))
 				continue
@@ -977,6 +1040,8 @@
 	SEND_SIGNAL(src, COMSIG_PHASER_PHASE_MOVE, target_atom, nearby)
 
 /mob/living/simple_animal/hostile/corrupted_flesh/phaser/proc/phase_jump(turf/place)
+	if(!place)
+		return
 	playsound(place, 'sound/effects/phasein.ogg', 60, 1)
 	animate(filters[1], size = 0, time = 5)
 	icon_state = "[base_icon_state]-[rand(1, 4)]"
@@ -1008,8 +1073,11 @@
 
 	return TRUE
 
-/mob/living/simple_animal/hostile/corrupted_flesh/phaser/proc/phase_ability()
-	if(!target)
+/mob/living/simple_animal/hostile/corrupted_flesh/phaser/proc/phase_ability(mob/living/target_override)
+	var/mob/living/intermediate_target = target
+	if(target_override)
+		intermediate_target = target_override
+	if(!intermediate_target)
 		return
 	COOLDOWN_START(src, phase_ability_cooldown, phase_ability_cooldown_time)
 	var/list/possible_turfs = list()
@@ -1020,10 +1088,41 @@
 		if(!LAZYLEN(possible_turfs))
 			break
 		var/turf/open/picked_turf = pick_n_take(possible_turfs)
-		var/obj/effect/temp_visual/phaser/phaser_copy = new (pick(picked_turf), target)
+		var/obj/effect/temp_visual/phaser/phaser_copy = new (pick(picked_turf), intermediate_target)
 		phaser_copy.RegisterSignal(src, COMSIG_PHASER_PHASE_MOVE, /obj/effect/temp_visual/phaser/proc/parent_phase_move)
 		phaser_copy.RegisterSignal(src, COMSIG_LIVING_DEATH, /obj/effect/temp_visual/phaser/proc/parent_death)
 		phaser_copy.RegisterSignal(src, COMSIG_PHASER_ENTER_CLOSET, /obj/effect/temp_visual/phaser/proc/parent_death)
+
+/datum/action/cooldown/phaser_phase_ability
+	name = "Create Clones"
+	desc = "Creates phase copies of ourselves to move towards a set target."
+	icon_icon = 'icons/obj/objects.dmi'
+	button_icon_state = "bhole2"
+	cooldown_time = 40 SECONDS
+
+/datum/action/cooldown/phaser_phase_ability/Activate(atom/target)
+	if(!istype(owner, /mob/living/simple_animal/hostile/corrupted_flesh/phaser))
+		return
+	var/mob/living/simple_animal/hostile/corrupted_flesh/phaser/phaser_owner = owner
+
+	var/list/possible_targets = list()
+	for(var/mob/living/possible_target in view(DEFAULT_VIEW_RANGE, phaser_owner))
+		if(possible_target == src)
+			continue
+		if(faction_check(phaser_owner.faction, possible_target.faction))
+			continue
+		possible_targets += possible_target
+
+	if(!LAZYLEN(possible_targets))
+		return
+
+	var/mob/living/selected_target = tgui_input_list(phaser_owner, "Select a mob to harass", "Select Mob", possible_targets)
+
+	if(!selected_target)
+		return
+
+	phaser_owner.phase_ability(selected_target)
+
 
 /obj/effect/temp_visual/phaser
 	icon = 'modular_skyrat/modules/corrupted_flesh/icons/hivemind_mobs.dmi'
@@ -1136,6 +1235,7 @@
 	)
 	speak = list(
 		"What a lovely body. Lay it down intact.",
+		"First time? I can be gentle, unless you like it rough.",
 		"Come here, meatbag.",
 		"What use is that flesh if you don't enjoy it?",
 		"Mine is the caress of steel.",
