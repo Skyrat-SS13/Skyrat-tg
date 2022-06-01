@@ -89,20 +89,12 @@
 	. = ..()
 	if(!.) //dead
 		return
+	if(key)
+		return
 	if(!suffering_malfunction && malfunction_chance && prob(malfunction_chance * delta_time) && stat != DEAD)
 		malfunction()
 	if(passive_speak_lines && prob(passive_speak_chance * delta_time))
 		say_passive_speech()
-
-/**
- * Automated actions are handled by the NPC pool, and thus handle_automated_action.
- */
-/mob/living/simple_animal/hostile/corrupted_flesh/handle_automated_action()
-	if(AIStatus == AI_OFF)
-		return FALSE
-
-	var/list/possible_targets = ListTargets() //we look around for potential targets and make it a list for later use.
-
 	if(escapes_closets)
 		closet_interaction()
 
@@ -110,23 +102,6 @@
 
 	if(buckled)
 		resist_buckle()
-
-	if(special_ability_cooldown_time && COOLDOWN_FINISHED(src, special_ability_cooldown))
-		special_ability()
-		COOLDOWN_START(src, special_ability_cooldown, special_ability_cooldown_time)
-
-	if(environment_smash)
-		EscapeConfinement()
-
-	if(AICanContinue(possible_targets))
-		var/atom/target_from = GET_TARGETS_FROM(src)
-		if(!QDELETED(target) && !target_from.Adjacent(target))
-			DestroyPathToTarget()
-		if(!MoveToTarget(possible_targets))     //if we lose our target
-			if(AIShouldSleep(possible_targets)) // we try to acquire a new one
-				toggle_ai(AI_IDLE) // otherwise we go idle
-	return TRUE
-
 
 /**
  * Naturally these beasts are sensitive to EMP's. We have custom systems for dealing with this.
@@ -551,7 +526,7 @@
 	/// The chance of performing an AOE attack.
 	var/aoe_attack_prob = 15
 	/// The range on our AOE attaack
-	var/aoe_attack_range = 2
+	var/aoe_attack_range = 1
 	/// How often the mob can use the stun attack.
 	var/stun_attack_cooldown = 15 SECONDS
 	COOLDOWN_DECLARE(stun_attack)
@@ -582,7 +557,7 @@
 
 /mob/living/simple_animal/hostile/corrupted_flesh/hiborg/proc/aoe_attack()
 	visible_message("[src] spins around violently!")
-	spin(100, 10)
+	spin(20, 1)
 	for(var/mob/living/iterating_mob in view(aoe_attack_range, src))
 		if(iterating_mob == src)
 			continue
@@ -606,6 +581,7 @@
 		return
 	var/mob/living/simple_animal/hostile/corrupted_flesh/hiborg/hiborg_owner = owner
 	hiborg_owner.aoe_attack()
+	StartCooldownSelf()
 
 /**
  * Mauler
@@ -789,6 +765,7 @@
 		return
 	var/mob/living/simple_animal/hostile/corrupted_flesh/himan/himan_owner = owner
 	himan_owner.fake_our_death()
+	StartCooldownSelf()
 
 
 /**
@@ -863,6 +840,7 @@
 		return
 	var/mob/living/simple_animal/hostile/corrupted_flesh/treader/treader_owner = owner
 	treader_owner.dispense_nanites()
+	StartCooldownSelf()
 
 /obj/projectile/treader
 	name = "nasty ball of ooze"
@@ -1122,6 +1100,8 @@
 		return
 
 	phaser_owner.phase_ability(selected_target)
+
+	StartCooldownSelf()
 
 
 /obj/effect/temp_visual/phaser
