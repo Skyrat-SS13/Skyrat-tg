@@ -24,7 +24,7 @@
 
 	var/mob/living/silicon/robot/robot = src
 	if(R_TRAIT_TALL in robot.model.model_features)
-		. += span_notice("<i>It seems to have branding insignia, you can look again to take a closer look...")
+		. += span_notice("<i>It seems to have branding insignia, you can examine again to take a closer look...")
 	else
 		return
 
