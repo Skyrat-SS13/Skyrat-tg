@@ -184,6 +184,7 @@
 	// method of healing them, consequence free, to a reasonable amount of health.
 	victim_stage_one(target)
 
+/// Adds omnizine and begins the victim handling
 /datum/syndicate_contract/proc/victim_stage_one(mob/living/target)
 	target.reagents.add_reagent(/datum/reagent/medicine/omnizine, 20)
 
@@ -193,11 +194,13 @@
 	to_chat(target, span_warning("You feel strange..."))
 	addtimer(CALLBACK(src, .proc/victim_stage_two, target), 6 SECONDS)
 
+/// Continued victim handling
 /datum/syndicate_contract/proc/victim_stage_two(mob/living/target)
 	to_chat(target, span_warning("That pod did something to you..."))
 	target.set_timed_status_effect(70 SECONDS, /datum/status_effect/dizziness)
 	addtimer(CALLBACK(src, .proc/victim_stage_three, target), 6 SECONDS)
 
+/// Continued victim handling, flashes them as well
 /datum/syndicate_contract/proc/victim_stage_three(mob/living/target)
 	to_chat(target, span_warning("Your head pounds... It feels like it's going to burst out your skull!"))
 	target.flash_act()
@@ -205,10 +208,12 @@
 	target.blur_eyes(3)
 	addtimer(CALLBACK(src, .proc/victim_stage_four, target), 3 SECONDS)
 
+/// Continued victim handling
 /datum/syndicate_contract/proc/victim_stage_four(mob/living/target)
 	to_chat(target, span_warning("Your head pounds..."))
 	addtimer(CALLBACK(src, .proc/victim_stage_five, target), 10 SECONDS)
 
+/// Continued victim handling, some unconsciousness
 /datum/syndicate_contract/proc/victim_stage_five(mob/living/target)
 	target.flash_act()
 	target.Unconscious(200)
