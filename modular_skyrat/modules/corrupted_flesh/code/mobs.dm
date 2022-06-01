@@ -82,6 +82,29 @@
 	return ..()
 
 /**
+ * We don't want to destroy our own faction objects.
+ */
+/mob/living/simple_animal/hostile/corrupted_flesh/DestroyObjectsInDirection(direction)
+	var/atom/target_from = GET_TARGETS_FROM(src)
+	var/turf/target_turf = get_step(target_from, direction)
+	if(QDELETED(target_turf))
+		return
+	if(target_turf.Adjacent(target_from))
+		if(CanSmashTurfs(target_turf))
+			target_turf.attack_animal(src)
+			return
+	for(var/obj/iterating_object in target_turf.contents)
+		if(!iterating_object.Adjacent(target_from))
+			continue
+		if(istype(iterating_object, /obj/structure/corrupted_flesh))
+			var/obj/structure/corrupted_flesh/friendly_object = iterating_object
+			if(faction_check(friendly_object.faction_types, faction))
+				continue
+		if((ismachinery(iterating_object) || isstructure(iterating_object)) && iterating_object.density && environment_smash >= ENVIRONMENT_SMASH_STRUCTURES && !iterating_object.IsObscured())
+			iterating_object.attack_animal(src)
+			return
+
+/**
  * While this mob lives, it can malfunction.
  */
 
