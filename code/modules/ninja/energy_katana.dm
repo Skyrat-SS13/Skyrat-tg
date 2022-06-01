@@ -66,12 +66,8 @@
 /datum/action/innate/dash/ninja
 	current_charges = 3
 	max_charges = 3
-<<<<<<< HEAD
 	charge_rate = 350 //SKYRAT EDIT CHANGE - ORIGINAL: 200
-=======
-	charge_rate = 200
 	beam_length = 1 SECONDS
->>>>>>> ee3ab47e01a (Adds the Ninja MODsuit (#67220))
 	recharge_sound = null
 
 /datum/action/innate/dash/ninja/GiveAction(mob/viewer) //this action should be invisible, as its handled by right-click

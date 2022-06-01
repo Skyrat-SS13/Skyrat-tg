@@ -210,16 +210,13 @@
 			. += span_notice("You could remove [core] with a <b>wrench</b>.")
 		else
 			. += span_notice("You could use a <b>MOD core</b> on it to install one.")
-<<<<<<< HEAD
-		if(!mod_pai)
+		if(!mod_pai) // SKYRAT EDIT BEGIN - PAI in Modsuits
 			. += span_notice("You could install a pAI with a <b>pAI card</b>.")
-=======
-		if(ai)
+/* 		if(ai)
 			. += span_notice("You could remove [ai] with an <b>intellicard</b>.")
 		else
-			. += span_notice("You could install an AI with an <b>intellicard</b>.")
+			. += span_notice("You could install an AI with an <b>intellicard</b>.") SKYRAT EDIT END */
 	. += span_notice("<i>You could examine it more thoroughly...</i>")
->>>>>>> ee3ab47e01a (Adds the Ninja MODsuit (#67220))
 
 /obj/item/mod/control/examine_more(mob/user)
 	. = ..()
