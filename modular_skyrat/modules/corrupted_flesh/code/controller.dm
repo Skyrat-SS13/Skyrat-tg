@@ -1,10 +1,3 @@
-#define CORE_DAMAGE_WIREWEED_ACTIVATION_RANGE 6
-#define GENERAL_DAMAGE_WIREWEED_ACTIVATION_RANGE 2
-#define SPREAD_PROGRESS_REQUIRED 100
-
-/// A list of objects that are considered part of a door, used to determine if a wireweed should attack it.
-#define DOOR_OBJECT_LIST list(/obj/machinery/door/airlock, /obj/structure/door_assembly, /obj/machinery/door/firedoor)
-
 /**
  * The corrupted flesh controller
  *
@@ -63,7 +56,8 @@
 	var/wireweed_type = /obj/structure/corrupted_flesh/wireweed
 	/// We have the ability to make walls, this defines what kind of walls we make.
 	var/wall_type = /obj/structure/corrupted_flesh/structure/wireweed_wall
-
+	/// What's the type of our death behaviour.
+	var/death_behaviour = CONTROLLER_DEATH_SLOW_DECAY
 	/// Our core level, what is spawned will depend on the level of this core.
 	var/level = CONTROLLER_LEVEL_1
 	/// To level up, we much reach this threshold.
@@ -119,7 +113,10 @@
 
 /datum/corrupted_flesh_controller/process(delta_time)
 	if(!LAZYLEN(cores)) // We have no more processor cores, it's time to die.
-		qdel(src)
+		if(death_behaviour == CONTROLLER_DEATH_SLOW_DECAY)
+			handle_slow_decay()
+		else
+			WARNING("Wireweed controller has no post core behaviours and isn't deleting.")
 		return
 
 	spread_progress += spread_progress_per_second * delta_time
@@ -408,7 +405,9 @@
 /datum/corrupted_flesh_controller/proc/core_death(obj/structure/corrupted_flesh/structure/core/dead_core, force)
 	cores -= dead_core
 	activate_wireweed_nearby(get_turf(dead_core), CORE_DAMAGE_WIREWEED_ACTIVATION_RANGE)
-	return
+	if(!LAZYLEN(cores))
+		controller_death()
+
 
 /datum/corrupted_flesh_controller/proc/wireweed_death(obj/structure/corrupted_flesh/dying_wireweed, force)
 	SIGNAL_HANDLER
@@ -440,3 +439,36 @@
 	controlled_machine_components -= deleting_component
 
 
+/// Deletes everything, unless an argument is passed, then it just deletes structures
+/datum/corrupted_flesh_controller/proc/delete_everything(just_structures = FALSE)
+	for(var/obj/structure/corrupted_flesh/structure/structure_thing as anything in controlled_structures)
+		qdel(structure_thing)
+	for(var/obj/structure/corrupted_flesh/structure/wireweed_wall/wall_thing as anything in controlled_walls)
+		qdel(wall_thing)
+	for(var/datum/component/machine_corruption/corruption_thing as anything in controlled_machine_components)
+		qdel(corruption_thing)
+	if(just_structures)
+		return
+	for(var/obj/structure/corrupted_flesh/wireweed/wireweed_thing as anything in controlled_wireweed)
+		qdel(wireweed_thing)
+	for(var/obj/structure/corrupted_flesh/structure/core/core_to_destroy as anything in cores)
+		qdel(core_to_destroy)
+	qdel(src)
+
+/// Handles the controller(thus AI) dying
+/datum/corrupted_flesh_controller/proc/controller_death()
+	switch(death_behaviour)
+		if(CONTROLLER_DEATH_DO_NOTHING)
+			qdel(src)
+		if(CONTROLLER_DEATH_DELETE_ALL)
+			delete_everything()
+		if(CONTROLLER_DEATH_SLOW_DECAY)
+			delete_everything(TRUE)
+
+/// Handles the slow decay of an empire.
+/datum/corrupted_flesh_controller/proc/handle_slow_decay()
+	if(!LAZYLEN(controlled_wireweed))
+		qdel(src)
+		return
+	var/obj/structure/corrupted_flesh/wireweed/wireweed_thing = controlled_wireweed[LAZYLEN(controlled_wireweed)]
+	qdel(wireweed_thing)

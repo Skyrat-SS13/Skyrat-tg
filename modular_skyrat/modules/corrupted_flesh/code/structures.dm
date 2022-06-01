@@ -218,6 +218,10 @@
 	STOP_PROCESSING(SSobj, src)
 	return ..()
 
+/obj/structure/corrupted_flesh/structure/core/atom_destruction(damage_flag)
+	. = ..()
+	explosion(src, 0, 2, 4, 6, 6)
+
 /obj/structure/corrupted_flesh/structure/core/process(delta_time)
 	var/mob/living/carbon/human/target = locate() in view(5, src)
 	if(target && target.stat == CONSCIOUS)
