@@ -275,7 +275,7 @@
 	if(!are_we_a_cable_node)
 		var/obj/structure/cable/located_cable = locate() in location
 
-		if(located_cable?.node && located_cable.powernet) // WE FOUND A NODE BOIS, ITS TIME TO GE THE PARTY STARTED
+		if(located_cable?.node && located_cable.powernet) // WE FOUND A NODE BOIS, ITS TIME TO GET THE PARTY STARTED
 			var/datum/powernet/cable_powernet = located_cable.powernet
 			var/list/possible_transfer_points = list()
 			for(var/obj/structure/cable/iterating_cable as anything in cable_powernet.cables)
