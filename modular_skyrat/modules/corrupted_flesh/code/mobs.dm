@@ -346,16 +346,49 @@
 	light_color = "#820D1C"
 	light_power = 1
 	light_range = 2
+	/// Have we exploded?
+	var/exploded = FALSE
+
+/mob/living/simple_animal/hostile/corrupted_flesh/floater/Initialize(mapload)
+	. = ..()
+	var/datum/action/innate/floater_explode/new_action = new
+	new_action.Grant(src)
+
 
 /mob/living/simple_animal/hostile/corrupted_flesh/floater/death(gibbed)
-	explosion(src, 0, 0, 2, 3)
+	if(!exploded)
+		detonate()
 	return ..(gibbed)
 
 /mob/living/simple_animal/hostile/corrupted_flesh/floater/AttackingTarget(atom/attacked_target)
 	. = ..()
+	if(!key)
+		detonate()
+
+/mob/living/simple_animal/hostile/corrupted_flesh/floater/proc/detonate()
+	if(exploded)
+		return
+	exploded = TRUE
+	explosion(src, 0, 0, 2, 3)
 	death()
 
-/**
+/datum/action/innate/floater_explode
+	name = "explode"
+	desc = "Detonate our internals."
+	icon_icon = 'icons/obj/grenade.dmi'
+	button_icon_state = "frag"
+	check_flags = AB_CHECK_CONSCIOUS
+
+/datum/action/innate/floater_explode/Activate()
+	if(!istype(owner, /mob/living/simple_animal/hostile/corrupted_flesh/floater))
+		return
+	var/mob/living/simple_animal/hostile/corrupted_flesh/floater/akbar_floater = owner
+	if(akbar_floater.exploded)
+		return
+	akbar_floater.detonate()
+
+
+/**c
  * Globber
  *
  * Special ability: Fires 3 globs of acid at targets.
@@ -518,25 +551,59 @@
 	/// The chance of performing an AOE attack.
 	var/aoe_attack_prob = 15
 	/// The range on our AOE attaack
-	var/aoe_attack_range = 1
+	var/aoe_attack_range = 2
+	/// How often the mob can use the stun attack.
+	var/stun_attack_cooldown = 15 SECONDS
+	COOLDOWN_DECLARE(stun_attack)
 
 /mob/living/simple_animal/hostile/corrupted_flesh/hiborg/AttackingTarget(atom/attacked_target)
 	. = ..()
 	if(prob(stun_attack_prob))
-		if(ishuman(target))
-			var/mob/living/carbon/human/attacked_human = target
-			attacked_human.Paralyze(10)
-			playsound(src, 'sound/weapons/egloves.ogg', 50, TRUE)
+		stun_attack(target)
 	if(prob(aoe_attack_prob))
-		visible_message("[src] spins around violently!")
-		spin(100, 10)
-		for(var/mob/living/iterating_mob in view(aoe_attack_range, src))
-			playsound(iterating_mob, 'sound/weapons/whip.ogg', 70, TRUE)
-			new /obj/effect/temp_visual/kinetic_blast(get_turf(iterating_mob))
+		aoe_attack()
 
-			var/atom/throw_target = get_edge_target_turf(iterating_mob, get_dir(src, get_step_away(iterating_mob, src)))
-			iterating_mob.throw_at(throw_target, 20, 2)
+/mob/living/simple_animal/hostile/corrupted_flesh/hiborg/attack_hand_secondary(mob/user, list/modifiers)
+	. = ..()
+	stun_attack(user)
 
+/mob/living/simple_animal/hostile/corrupted_flesh/hiborg/proc/stun_attack(mob/living/target_mob)
+	if(!COOLDOWN_FINISHED(src, stun_attack))
+		return
+	if(!ishuman(target_mob))
+		return
+	var/mob/living/carbon/human/attacked_human = target_mob
+	attacked_human.Paralyze(10)
+	playsound(src, 'sound/weapons/egloves.ogg', 50, TRUE)
+
+	COOLDOWN_START(src, stun_attack, stun_attack_cooldown)
+
+/mob/living/simple_animal/hostile/corrupted_flesh/hiborg/proc/aoe_attack()
+	visible_message("[src] spins around violently!")
+	spin(100, 10)
+	for(var/mob/living/iterating_mob in view(aoe_attack_range, src))
+		if(iterating_mob == src)
+			continue
+		if(faction_check(faction, iterating_mob.faction))
+			continue
+		playsound(iterating_mob, 'sound/weapons/whip.ogg', 70, TRUE)
+		new /obj/effect/temp_visual/kinetic_blast(get_turf(iterating_mob))
+
+		var/atom/throw_target = get_edge_target_turf(iterating_mob, get_dir(src, get_step_away(iterating_mob, src)))
+		iterating_mob.throw_at(throw_target, 20, 2)
+
+/datum/action/cooldown/hiborg_slash
+	name = "Slash (AOE)"
+	desc = "Whip everyone in a range."
+	icon_icon = 'icons/obj/grenade.dmi'
+	button_icon_state = "slimebang_active"
+	cooldown_time = 20 SECONDS
+
+/datum/action/cooldown/hiborg_slash/Activate(atom/target)
+	if(!istype(owner, /mob/living/simple_animal/hostile/corrupted_flesh/hiborg))
+		return
+	var/mob/living/simple_animal/hostile/corrupted_flesh/hiborg/hiborg_owner = owner
+	hiborg_owner.aoe_attack()
 
 /**
  * Mauler
