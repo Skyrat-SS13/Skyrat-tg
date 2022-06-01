@@ -52,6 +52,8 @@
 	var/object_attack_damage = 40
 	/// Are we active?
 	var/active = FALSE
+	/// Are we a vent burrow?
+	var/vent_burrow = FALSE
 
 /obj/structure/corrupted_flesh/wireweed/Initialize(mapload, starting_alpha = 255)
 	. = ..()
@@ -64,8 +66,14 @@
 /obj/structure/corrupted_flesh/wireweed/update_icon(updates)
 	. = ..()
 	if((updates & UPDATE_SMOOTHING) && (smoothing_flags & (SMOOTH_BITMASK)))
-		QUEUE_SMOOTH(src)
+		if(!vent_burrow)
+			QUEUE_SMOOTH(src)
 		QUEUE_SMOOTH_NEIGHBORS(src)
+
+/obj/structure/corrupted_flesh/wireweed/update_icon_state()
+	. = ..()
+	if(vent_burrow)
+		icon_state = "vent_burrow"
 
 /obj/structure/corrupted_flesh/wireweed/update_overlays()
 	. = ..()

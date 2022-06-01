@@ -82,6 +82,8 @@
 	var/initial_expansion_structures = 3
 	/// How much progress to spreading we get per second.
 	var/spread_progress_per_second = 100
+	/// Our base spread progress per second
+	var/base_spread_progress_per_second = 100
 	/// Probably of wireweed attacking structures per process
 	var/attack_prob = 20
 	/// Probability of wireweed making a wall when able per process
@@ -106,7 +108,9 @@
 		RegisterSignal(new_core, COMSIG_PARENT_QDELETING, .proc/core_death)
 		new_core.name = "[controller_fullname] Processor Unit"
 		register_new_asset(new_core)
-	START_PROCESSING(SSfastprocess, src)
+	if(!SScorruption.can_fire)
+		SScorruption.can_fire = TRUE
+	START_PROCESSING(SScorruption, src)
 	if(do_initial_expansion)
 		initial_expansion()
 
@@ -144,7 +148,7 @@
 	controlled_structures = null
 	controlled_walls = null
 	cores = null
-	STOP_PROCESSING(SSfastprocess, src)
+	STOP_PROCESSING(SScorruption, src)
 	message_admins("Corruption AI [controller_fullname] has been destroyed.")
 	return ..()
 
@@ -162,9 +166,6 @@
 
 	// If no active wireweed, make all active and let the process figure it out.
 	if(!LAZYLEN(active_wireweed))
-		for(var/obj/structure/corrupted_flesh/wireweed/iterating_wireweed as anything in controlled_wireweed)
-			iterating_wireweed.active = TRUE
-			iterating_wireweed.update_appearance()
 		active_wireweed = controlled_wireweed.Copy()
 
 	var/list/spread_turf_canidates = list()
@@ -225,8 +226,6 @@
 		//If it tried to spread and attack and failed to do any task, remove from active
 		if(!tasks && do_spread && do_attack)
 			active_wireweed -= wireweed
-			wireweed.active = FALSE
-			wireweed.update_appearance()
 
 	if(LAZYLEN(spread_turf_canidates))
 		var/turf/picked_turf = pick(spread_turf_canidates)
@@ -252,8 +251,14 @@
 		level_up()
 		last_level_up_points = points
 
+	var/core_count = LAZYLEN(cores)
+	if(core_count > 1)
+		spread_progress_per_second = base_spread_progress_per_second + (CONTROLLER_CORE_SPREAD_PROGRESS_BOOST * core_count)
+
+
 /datum/corrupted_flesh_controller/proc/level_up()
 	level++
+	spread_progress = CONTROLLER_LEVEL_UP_SPREAD_BOOST // We get a nice boost when we level up
 	spawn_new_core()
 	message_admins("Corruption AI [controller_fullname] has leveled up to level [level]!")
 	notify_ghosts("Corruption AI [controller_fullname] has leveled up to level [level]!")
@@ -275,7 +280,7 @@
 	if(!are_we_a_vent_burrow)
 		var/obj/machinery/atmospherics/components/unary/vent_pump/located_vent = locate() in location
 
-		if(located_vent && LAZYLEN(located_vent.parents)) // WE FOUND A VENT BOIS, ITS TIME TO GET THE PARTY STARTED
+		if(located_vent && !located_vent.welded && LAZYLEN(located_vent.parents)) // WE FOUND A VENT BOIS, ITS TIME TO GET THE PARTY STARTED
 			var/datum/pipeline/vent_pipeline = pick(located_vent.parents)
 			var/list/possible_transfer_points = list()
 			for(var/obj/machinery/atmospherics/components/unary/vent_pump/iterating_vent in vent_pipeline.other_atmos_machines)
@@ -310,12 +315,11 @@
 		new_wireweed = new wireweed_type(location)
 	new_wireweed.our_controller = src
 	active_wireweed += new_wireweed
-	new_wireweed.active = TRUE
+	if(are_we_a_vent_burrow)
+		new_wireweed.vent_burrow = TRUE
+		playsound(src, 'sound/machines/ventcrawl.ogg', 100)
 	new_wireweed.update_appearance()
 	controlled_wireweed += new_wireweed
-
-	if(are_we_a_vent_burrow)
-		new_wireweed.icon_state = "wires_burrow"
 
 	register_new_asset(new_wireweed)
 	RegisterSignal(new_wireweed, COMSIG_PARENT_QDELETING, .proc/wireweed_death)
@@ -385,8 +389,6 @@
 	for(var/turf/iterated_turf as anything in turfs_to_check)
 		for(var/obj/structure/corrupted_flesh/wireweed/iterating_wireweed in iterated_turf)
 			if(iterating_wireweed.our_controller == src && !QDELETED(iterating_wireweed))
-				iterating_wireweed.active = TRUE
-				iterating_wireweed.update_appearance()
 				active_wireweed |= iterating_wireweed
 
 /// When the core is damaged, activate nearby wireweed just to make sure that we've sealed up walls near the core, which could be important to prevent cheesing.
