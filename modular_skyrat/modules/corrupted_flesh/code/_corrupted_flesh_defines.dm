@@ -28,6 +28,9 @@
 
 #define CORRUPTED_FLESH_LIGHT_BLUE "#50edd9"
 
+/// Core is in danger, engage turboboosters
+#define MOB_RALLY_SPEED 0
+
 // CONTROLLER RELATED DEFINES
 
 #define AI_FORENAME_LIST list("Von Neumann", "Lazarus", "Abattoir", "Auto-Surgeon", "NanoTrasen", \

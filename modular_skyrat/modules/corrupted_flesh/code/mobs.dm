@@ -1385,6 +1385,8 @@
 /// Creates and transfers a new mob.
 /mob/living/simple_animal/hostile/corrupted_flesh/mechiver/proc/create_mob(new_mob_type, mob/living/old_mob)
 	var/mob/living/simple_animal/hostile/corrupted_flesh/new_mob = new new_mob_type(get_turf(src))
+
+
 	if(old_mob)
 		new_mob.contained_mob = old_mob
 		old_mob.forceMove(new_mob)

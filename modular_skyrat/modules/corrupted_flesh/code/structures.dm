@@ -199,12 +199,14 @@
 	/// What damage do we inflict on attacking
 	var/attack_damage_type = BRUTE
 	/// How quickly we can attack
-	var/attack_cooldown = 6 SECONDS
+	var/attack_cooldown = 3 SECONDS
+	/// The range at which we rally troops!
+	var/rally_range = 20
 	COOLDOWN_DECLARE(attack_move)
 	/// Whether we do a retaliate effect
 	var/does_retaliate_effect = TRUE
 	/// Cooldown for retaliate effect
-	var/retaliate_effect_cooldown = 40 SECONDS
+	var/retaliate_effect_cooldown = 2 MINUTES
 	COOLDOWN_DECLARE(retaliate_effect)
 
 /obj/structure/corrupted_flesh/structure/core/Initialize(mapload, spawn_controller = TRUE)
@@ -283,9 +285,20 @@
 
 
 /obj/structure/corrupted_flesh/structure/core/proc/retaliate_effect()
-	return
+	rally_troops()
+	build_a_wall()
 
+/obj/structure/corrupted_flesh/structure/core/proc/build_a_wall()
+	for(var/turf/iterating_turf in RANGE_TURFS(1, src))
+		new /obj/structure/corrupted_flesh/structure/wireweed_wall(iterating_turf)
 
+/obj/structure/corrupted_flesh/structure/core/proc/rally_troops()
+	balloon_alert_to_viewers("lets out an earbleeding shriek!")
+	playsound(src, 'modular_skyrat/modules/horrorform/sound/horror_scream.ogg', 100, TRUE)
+	for(var/mob/living/simple_animal/mob_in_range in range(rally_range, src))
+		if(faction_check(faction_types, mob_in_range.faction))
+			mob_in_range.Goto(src, MOB_RALLY_SPEED)
+	SEND_SIGNAL(src, COMSIG_CORRUPTED_FLESH_CORE_RALLY)
 
 /**
  * The babbler

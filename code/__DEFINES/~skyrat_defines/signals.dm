@@ -78,3 +78,6 @@
 #define COMSIG_PHASER_PHASE_MOVE "phaser_phase_move"
 /// from /mob/living/simple_animal/hostile/corrupted_flesh/phaser/proc/enter_nearby_closet()
 #define COMSIG_PHASER_ENTER_CLOSET "phaser_enter_closet"
+
+/// from /obj/structure/corrupted_flesh/structure/core/proc/rally_troops()
+#define COMSIG_CORRUPTED_FLESH_CORE_RALLY "corrupted_flesh_core_rally"
