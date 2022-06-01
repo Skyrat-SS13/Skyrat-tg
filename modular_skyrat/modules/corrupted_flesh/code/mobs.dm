@@ -896,7 +896,7 @@
 	var/closet_ability_cooldown_time = 2 SECONDS
 	COOLDOWN_DECLARE(closet_ability_cooldown)
 	/// If we are under manual control, how often can we phase?
-	var/manual_phase_cooldown = 5 SECONDS
+	var/manual_phase_cooldown = 1 SECONDS
 	COOLDOWN_DECLARE(manual_phase)
 
 /mob/living/simple_animal/hostile/corrupted_flesh/phaser/Initialize(mapload)

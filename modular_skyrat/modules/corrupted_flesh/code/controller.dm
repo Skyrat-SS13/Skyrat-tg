@@ -44,7 +44,7 @@
 	var/spawns_walls = TRUE
 	/// Whether the wireweed can spawn walls to seal off vaccuum.
 	var/wall_off_vaccuum = TRUE
-	/// Whether the resin can spawn walls to seal off planetary environments.
+	/// Whether the wireweed can spawn walls to seal off planetary environments.
 	var/wall_off_planetary = TRUE
 
 	/// Types of structures we can spawn.
@@ -82,18 +82,18 @@
 	var/initial_expansion_structures = 3
 	/// How much progress to spreading we get per second.
 	var/spread_progress_per_second = 100
-	/// Probably of resin attacking structures per process
+	/// Probably of wireweed attacking structures per process
 	var/attack_prob = 20
-	/// Probability of resin making a wall when able per process
+	/// Probability of wireweed making a wall when able per process
 	var/wall_prob = 30
-	/// Whether we can put resin on walls. This slows down the expansion and will cause the structures to be more densely packed.
+	/// Whether we can put wireweed on walls. This slows down the expansion and will cause the structures to be more densely packed.
 	var/can_do_wall_wireweed = TRUE
 	/// When we spawn, do we create an expansion zone?
 	var/do_initial_expansion = TRUE
-	/// The amount of time until we can activate nearby resin again.
-	var/next_core_damage_resin_activation_cooldown = 10 SECONDS
+	/// The amount of time until we can activate nearby wireweed again.
+	var/next_core_damage_wireweed_activation_cooldown = 10 SECONDS
 	/// A cooldown to determine when we can activate nearby wireweed after the core has been attacked.
-	COOLDOWN_DECLARE(next_core_damage_resin_activation)
+	COOLDOWN_DECLARE(next_core_damage_wireweed_activation)
 
 /datum/corrupted_flesh_controller/New(obj/structure/corrupted_flesh/structure/core/new_core)
 	. = ..()
@@ -154,13 +154,13 @@
 		wireweed_process(TRUE, FALSE, FALSE)
 	spawn_structures(initial_expansion_structures)
 
-/// The process of handling active resin behaviours
+/// The process of handling active wireweed behaviours
 /datum/corrupted_flesh_controller/proc/wireweed_process(do_spread, do_attack, progress_structure = TRUE)
-	// If no resin, spawn one under our first core.
+	// If no wireweed, spawn one under our first core.
 	if(!LAZYLEN(controlled_wireweed))
 		spawn_wireweed(get_turf(cores[1]), wireweed_type) // We use the first core in the list to spread.
 
-	// If no active resin, make all active and let the process figure it out.
+	// If no active wireweed, make all active and let the process figure it out.
 	if(!LAZYLEN(active_wireweed))
 		for(var/obj/structure/corrupted_flesh/wireweed/iterating_wireweed as anything in controlled_wireweed)
 			iterating_wireweed.active = TRUE
@@ -266,11 +266,32 @@
 	cores += new_core
 	new_core.name = "[controller_fullname] Processor Unit"
 
-/// Spawns and registers a resin at location
-/datum/corrupted_flesh_controller/proc/spawn_wireweed(turf/location, wireweed_type, turf/origin_turf)
+/// Spawns and registers a wireweed at location
+/datum/corrupted_flesh_controller/proc/spawn_wireweed(turf/location, wireweed_type, turf/origin_turf, are_we_a_cable_node = FALSE)
 	//Spawn effect
 	for(var/obj/machinery/light/light_in_place in location)
 		light_in_place.break_light_tube()
+
+	if(!are_we_a_cable_node)
+		var/obj/structure/cable/located_cable = locate() in location
+
+		if(located_cable?.node && located_cable.powernet) // WE FOUND A NODE BOIS, ITS TIME TO GE THE PARTY STARTED
+			var/datum/powernet/cable_powernet = located_cable.powernet
+			var/list/possible_transfer_points = list()
+			for(var/obj/structure/cable/iterating_cable as anything in cable_powernet.cables)
+				if(iterating_cable == located_cable)
+					continue
+				if(!iterating_cable.node) // Can only transfer to other nodes.
+					continue
+				var/obj/structure/corrupted_flesh/wireweed/existing_wireweed = locate() in get_turf(iterating_cable)
+				if(existing_wireweed)
+					continue
+				possible_transfer_points += iterating_cable
+			if(LAZYLEN(possible_transfer_points)) // OH SHIT IM FEELING IT
+				var/obj/structure/cable/new_transfer_cable_node = pick(possible_transfer_points)
+				var/turf/transfer_cable_node_turf = get_turf(new_transfer_cable_node)
+				are_we_a_cable_node = TRUE
+				spawn_wireweed(transfer_cable_node_turf, wireweed_type, origin_turf, are_we_a_cable_node)
 
 	for(var/obj/machinery/iterating_machine in location)
 		if(is_type_in_list(blacklisted_conversion_structures))
@@ -292,6 +313,9 @@
 	new_wireweed.active = TRUE
 	new_wireweed.update_appearance()
 	controlled_wireweed += new_wireweed
+
+	if(are_we_a_cable_node)
+		new_wireweed.icon_state = "wires_burrow"
 
 	register_new_asset(new_wireweed)
 	RegisterSignal(new_wireweed, COMSIG_PARENT_QDELETING, .proc/wireweed_death)
@@ -316,7 +340,7 @@
 	register_new_asset(new_structure)
 	RegisterSignal(new_structure, COMSIG_PARENT_QDELETING, .proc/structure_death)
 
-/// Spawns an amount of structured across all resin, guaranteed to spawn atleast 1 of each type
+/// Spawns an amount of structured across all wireweed, guaranteed to spawn atleast 1 of each type
 /datum/corrupted_flesh_controller/proc/spawn_structures(amount)
 	if(!structure_types)
 		return
@@ -341,7 +365,7 @@
 			structure_to_spawn = pick(possible_structures)
 		spawn_structure(location, structure_to_spawn)
 
-/// Activates resin of this controller in a range around a location, following atmos adjacency.
+/// Activates wireweed of this controller in a range around a location, following atmos adjacency.
 /datum/corrupted_flesh_controller/proc/activate_wireweed_nearby(turf/location, range)
 	var/list/turfs_to_check = list()
 	turfs_to_check[location] = TRUE
@@ -365,11 +389,11 @@
 				iterating_wireweed.update_appearance()
 				active_wireweed |= iterating_wireweed
 
-/// When the core is damaged, activate nearby resin just to make sure that we've sealed up walls near the core, which could be important to prevent cheesing.
+/// When the core is damaged, activate nearby wireweed just to make sure that we've sealed up walls near the core, which could be important to prevent cheesing.
 /datum/corrupted_flesh_controller/proc/core_damaged(obj/structure/corrupted_flesh/structure/core/damaged_core)
-	if(!COOLDOWN_FINISHED(src, next_core_damage_resin_activation))
+	if(!COOLDOWN_FINISHED(src, next_core_damage_wireweed_activation))
 		return
-	COOLDOWN_START(src, next_core_damage_resin_activation, next_core_damage_resin_activation_cooldown)
+	COOLDOWN_START(src, next_core_damage_wireweed_activation, next_core_damage_wireweed_activation_cooldown)
 	activate_wireweed_nearby(get_turf(damaged_core), CORE_DAMAGE_WIREWEED_ACTIVATION_RANGE)
 
 /// Returns the amount of evolution points this current controller has.
