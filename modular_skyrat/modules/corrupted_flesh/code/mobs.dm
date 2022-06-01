@@ -868,10 +868,6 @@
 		if(faction_check(iterating_mob.faction, faction))
 			iterating_mob.heal_overall_damage(10, 10)
 
-/mob/living/simple_animal/hostile/corrupted_flesh/treader/death(gibbed)
-	empulse(get_turf(src), 1, 3)
-	return ..()
-
 /datum/action/cooldown/treader_dispense_nanites
 	name = "Dispense Nanites"
 	desc = "Dispenses nanites healing all friendly mobs in a range."
