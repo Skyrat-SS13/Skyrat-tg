@@ -101,6 +101,7 @@
 /obj/structure/corrupted_flesh/wireweed/proc/on_entered(datum/source, atom/movable/moving_atom)
 	if(istype(moving_atom, /mob/living/simple_animal) && prob(ensnare_chance))
 		var/mob/living/simple_animal/captured_mob = moving_atom
+		if(faction_check(faction_types, captured_mob.faction))
 		captured_mob.visible_message(span_danger("[src] ensnares [captured_mob] with some wires!"), span_userdanger("[src] ensnares you!"))
 		buckle_mob(captured_mob)
 

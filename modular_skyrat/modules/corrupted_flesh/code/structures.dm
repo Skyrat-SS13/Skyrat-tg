@@ -166,7 +166,7 @@
 	density = TRUE
 	opacity = TRUE
 	can_atmos_pass = ATMOS_PASS_DENSITY
-	max_integrity = 150
+	max_integrity = 250
 
 /obj/structure/corrupted_flesh/structure/wireweed_wall/Initialize()
 	. = ..()
@@ -201,7 +201,9 @@
 	/// How quickly we can attack
 	var/attack_cooldown = 3 SECONDS
 	/// The range at which we rally troops!
-	var/rally_range = 20
+	var/rally_range = 15
+	///How far we whip fuckers.
+	var/whip_range = 2
 	COOLDOWN_DECLARE(attack_move)
 	/// Whether we do a retaliate effect
 	var/does_retaliate_effect = TRUE
@@ -285,8 +287,21 @@
 
 
 /obj/structure/corrupted_flesh/structure/core/proc/retaliate_effect()
+	whip_those_fuckers()
 	rally_troops()
 	build_a_wall()
+
+/obj/structure/corrupted_flesh/structure/core/proc/whip_those_fuckers()
+	for(var/mob/living/iterating_mob in view(whip_range, src))
+		if(iterating_mob == src)
+			continue
+		if(faction_check(faction_types, iterating_mob.faction))
+			continue
+		playsound(iterating_mob, 'sound/weapons/whip.ogg', 70, TRUE)
+		new /obj/effect/temp_visual/kinetic_blast(get_turf(iterating_mob))
+
+		var/atom/throw_target = get_edge_target_turf(iterating_mob, get_dir(src, get_step_away(iterating_mob, src)))
+		iterating_mob.throw_at(throw_target, 20, 2)
 
 /obj/structure/corrupted_flesh/structure/core/proc/build_a_wall()
 	for(var/turf/iterating_turf in RANGE_TURFS(1, src))
@@ -298,7 +313,7 @@
 	for(var/mob/living/simple_animal/hostile/corrupted_flesh/mob_in_range in range(rally_range, src))
 		if(faction_check(faction_types, mob_in_range.faction))
 			mob_in_range.Goto(src, MOB_RALLY_SPEED)
-			mob_in_range.manual_emote("scream")
+			mob_in_range.emote("scream")
 			mob_in_range.alert_sound()
 	SEND_SIGNAL(src, COMSIG_CORRUPTED_FLESH_CORE_RALLY)
 
