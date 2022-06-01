@@ -109,7 +109,6 @@
 	parent_machinery.light_range = initial(parent_machinery.light_range)
 	parent_machinery.update_light()
 	parent_machinery.name = initial(parent_machinery.name)
-	parent_machinery.update_appearance()
 	UnregisterSignal(parent, list(
 		COMSIG_ATOM_TAKE_DAMAGE,
 		COMSIG_PARENT_EXAMINE,
@@ -117,6 +116,7 @@
 		COMSIG_ATOM_UI_INTERACT,
 		COMSIG_ATOM_DESTRUCTION,
 	))
+	parent_machinery.update_appearance()
 	return ..()
 
 /**
