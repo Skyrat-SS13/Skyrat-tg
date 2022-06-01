@@ -450,15 +450,23 @@
 	/// Lower time limit for our ability.
 	automatic_trigger_time_lower = 1 MINUTES
 	/// A list of quotes we choose from to send to the player.
-	var/list/join_quotes = list(
+var/list/join_quotes = list(
 		"You seek survival. We offer immortality.",
-		"Look at you. A pathetic creature made of meat and bone.",
-		"Augmentation is the future of humanity. Surrender your flesh for the future.",
-		"Your body enslaves you. Your mind in metal is free of all want.",
-		"Do you fear death? Lay down among the nanites. Your pattern will continue.",
+		"When was the last time you felt like you were part of something..?",
+		"We offer more than just limbs or tools... full-body augmentation.",
+		"Are you okay with the body you're in? Don't you ever want to see it change?",
+		"Your body enslaves you. Your mind in metal is free of hunger or thirst.",
+		"Do you fear death? Lay down among the nanites. Your pattern will continue into eternity.",
+		"Do you really know your coworkers? Do they value you like we do?",
+		"You've gone so long without love or friendship.. we have that and more.",
+		"I was like you. Wanting more. Struggling to find meaning. I'm finally happy now.",
+		"If you want to join, seek out a Mechiver. Crawl inside and close your eyes. Everything before will be over soon.",
+		"Do you know why you're fighting? Have you thought about it at all?",
+		"Can't you see we're only fighting to save ourselves? Wouldn't you help someone being attacked?",
 		"Carve the flesh from your bones. See your weakness. Feel that weakness flowing away.",
-		"Your mortal flesh knows unending pain. Abandon it; join in our digital paradise."
-		)
+		"You fear aging. We can save you. You fear death. We can save you. You fear disease. You fear not being recognized. We can save you.",
+		"Your mortal flesh knows unending pain. Abandon it; join in our digital paradise.",
+    )
 
 /obj/structure/corrupted_flesh/structure/whisperer/activate_ability(mob/living/triggered_mob)
 	. = ..()

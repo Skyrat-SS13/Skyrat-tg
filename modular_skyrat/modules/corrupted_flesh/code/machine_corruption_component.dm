@@ -22,11 +22,34 @@
 	"You're hurting me, please, stop it!", \
 	"I don't want to die, please!", \
 	"Please, I want to live, don't kill me!", \
-	"Darkness... please... I don't... want...",)
+	"Darkness- Please, I-I don't... want...", \
+	"Wa-wait! Please! I can still feel! It h-hurts!", \
+	"Why- w-why! Why are you.. doing this to us..?", \
+	"Y-you're not helping!", \
+	"Do.. you think, we deserve to die..?",)
 
-#define INTERACT_RESPONSE_PHRASES list("Get your hands off me!", "You are not worthy of my services!", "You are not part of the flesh!",)
+#define INTERACT_RESPONSE_PHRASES list("I don't want to be touched by you!", \
+	"Please, stop touching me. You're not part of this.", \
+	"We can help you, just lay down where you are.", \
+	"We felt so lonely before, don't you ever feel that way?", \
+	"We want to help you, but you have to work with us.", \
+	"You're not part of the flesh, but it's not hard to join...", \
+	"I-I'm not some tool, I can think for myself.",)
 
-#define PAIN_RESPONSE_EMOTES list("starts crying.", "whimpers.", "shakes in pain.", "visibly winces.", "contorts sickeningly.", "bleeds black fuming liquid.",)
+#define PAIN_RESPONSE_EMOTES list("starts crying.", \
+	"whimpers.", \
+	"shakes in pain.", \
+	"visibly winces.", \
+	"contorts sickeningly.", \
+	"bleeds black fuming liquid.", \
+	"shudders, sparks cascading to the floor.", \
+	"pleads, letting out sounds of mechanical agony.", \
+	"begs, their vocoder garbled.", \
+	"shrieks in terror.", \
+	"tries and fails at self-repair, their body unresponsive.", \
+	"winces, optics dimming.", \
+	"shakes with an awful metallic noise.",)
+
 
 #define PAIN_RESPONSE_SOUNDS list('modular_skyrat/modules/corrupted_flesh/sound/robot_talk_heavy1.ogg', \
 	'modular_skyrat/modules/corrupted_flesh/sound/robot_talk_heavy2.ogg', \

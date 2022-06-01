@@ -263,6 +263,7 @@
 /datum/corrupted_flesh_controller/proc/spawn_new_core()
 	var/obj/structure/corrupted_flesh/wireweed/selected_wireweed = pick(controlled_wireweed)
 	var/obj/structure/corrupted_flesh/structure/core/new_core = new(get_turf(selected_wireweed), FALSE)
+	RegisterSignal(new_core, COMSIG_PARENT_QDELETING, .proc/core_death)
 	register_new_asset(new_core, FALSE)
 	new_core.our_controller = src
 	cores += new_core

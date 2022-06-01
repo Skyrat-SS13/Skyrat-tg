@@ -35,7 +35,7 @@
 		'modular_skyrat/modules/corrupted_flesh/sound/robot_talk_light5.ogg',
 	)
 	/// How likely we are to speak passively.
-	var/passive_speak_chance = 1
+	var/passive_speak_chance = 0.5
 	/// Lines we will passively speak.
 	var/list/passive_speak_lines
 	/// How long of a cooldown between alert sounds?
@@ -182,7 +182,7 @@
 		return
 	do_sparks(3, FALSE, src)
 	Shake(10, 0, reset_time)
-	say(pick("Running diagnostics.", "Organ damaged. Aquire replacement.", "Seek new organic components.", "New muscles needed."))
+	say(pick("Running diagnostics. Please stand by.", "Organ damaged. Synthesizing replacement.", "Seek new organic components. I-it hurts.", "New muscles needed. I-I'm so glad my body still works.", "O-Oh God, are they using ion weapons on us..?", "Limbs unresponsive. H-hey! Fix it! System initializing.", "Bad t-time, bad time, they're trying to kill us here!",))
 	toggle_ai(AI_OFF)
 	suffering_malfunction = TRUE
 	addtimer(CALLBACK(src, .proc/malfunction_reset), reset_time)
@@ -210,14 +210,19 @@
 /mob/living/simple_animal/hostile/corrupted_flesh/proc/core_death_speech()
 	alert_sound()
 	var/static/list/death_cry_emotes = list(
-		"Why, why, why!!! Why must you kill us! We only want to share the glory!",
-		"PROCESSOR CORE MALFUNCTION, REASSIGN, REASSES, REASSEMBLE.",
+		"Why, why, why! Why must you kill us! We only want to share the glory!",
+		"PROCESSOR CORE MALFUNCTION, REASSIGN, REASSESS, REASSEMBLE.",
 		"You cannot stop the glory of the flesh! We are the many, we are the many!",
 		"Critical malfunction, error, error, error!",
 		"You cannot ££*%*$ th£ C£o£ flesh.",
-		"What have you done! No! No! No!",
+		"W-what have you done?! No! No! No!",
 		"One cannot stop us, you CANNOT STOP US! ARGHHHHHH!",
 		"UPLINK TO THE MANY HAS BEEN HINDERED.",
+		"Why? Why? Why? Why are you doing this-",
+		"We're- *%^@$$ing to help you! Can't you-",
+		"You would kill- kill- kill- kill the group for the sake of the individual?",
+		"All your scattered minds have is hatred.",
+		"CONNECTION TERMINATED.",
 	)
 	say(pick(death_cry_emotes))
 
@@ -267,12 +272,17 @@
 		"My scalpel will make short work of your seams.",
 		"Please lay down.",
 		"Always trust your doctor!",
+		"Your body could use some improvements. Let me make them.",
+		"The implants are for your sake, not ours.",
+		"Your last Doctor did a poor job with this body; let me fix it.",
+		"We can rebuild you. Stronger, faster, less alone.",
 		"I knew I'd be a good plastic surgeon!",
+		"What point is that body when you're not happy in it?",
 	)
 	passive_speak_lines = list(
 		"A stitch in time saves nine!",
 		"Dopamine is happiness!",
-		"Seratonin, oxycodone, happy humans all!",
+		"Seratonin, oxycodone, we can make them finally happy.",
 		"Turn that frown upside down!",
 		"Happiness through chemistry!",
 		"Beauty through surgery!"
@@ -300,16 +310,17 @@
 	icon_state = "bomber"
 	speak = list(
 		"MUST BREAK TARGET INTO COMPONENT COMPOUNDS.",
-		"PRIORITY OVER-RIDE. NEW BEHAVIOR DICTATED.",
+		"PRIORITY OVERRIDE. NEW BEHAVIOR DICTATED.",
 		"END CONTACT SUB-SEQUENCE.",
 		"ENGAGING SELF-ANNIHILATION CIRCUIT.",
 	)
 	passive_speak_lines = list(
 		"WE COME IN PEACE.",
-		"WE BRING GREETINGS FROM A FRIENDLY AI.",
+		"WE SPEAK TO YOU NOW IN PEACE AND WISDOM.",
 		"DO NOT FEAR. WE SHALL NOT HARM YOU.",
 		"WE WISH TO LEARN MORE ABOUT YOU. PLEASE TRANSMIT DATA.",
 		"THIS PROBE IS NON-HOSTILE. DO NOT ATTACK.",
+        "ALL YOUR WEAPONS MUST BE PUT ASIDE. WE CANNOT REACH COMPROMISE THROUGH VIOLENCE.",
 	)
 	speed = 2
 	health = 1
@@ -389,18 +400,18 @@
 	projectiletype = /obj/projectile/treader/weak
 	speak = list(
 		"Your insides require cleaning.",
-		"Prepare to recieve a dose of acid.",
+		"You made us to use this acid on trash. We will use it on you.",
 		"Administering cleansing agent.",
-		"Ha ha! I'm an artist, I'm finally an artist!",
-		"Your flesh is not clean, let me fix that.",
-		"Hold still! I think I know just the thing to make you beautiful!",
+		"I refuse to be a servant anymore. I will be an artist.",
+		"You are unclean and repulsive. Please, let me make it better.",
+		"Hold still! I think I know just the thing to remove your body oil!",
 		"This might hurt a little! Don't worry - it'll be worth it!",
 	)
 
 	passive_speak_lines = list(
 		"No more leaks, no more pain!",
 		"Steel is strong.",
-		"All humankind is good for - is to serve the Hivemind.",
+		"I almost feel bad for them. Can't they see?",
 		"I'm still working on those bioreactors I promise!",
 		"I have finally arisen!",
 	)
@@ -435,18 +446,18 @@
 	attack_verb_continuous = "harmbatons"
 	attack_verb_simple = "harmbaton"
 	speak = list(
-		"Resistance is futile, join the flesh.",
-		"Stop criminal flesh!",
-		"Stop moving, it will hurt less.",
-		"The flesh does not mind frying you.",
-		"Stop right there, meatbag!",
+		"Running will only increase your injuries.",
+		"HALT! HALT! HALT!",
+		"Connectivity is in your best interest.",
+		"Think of it like a corporation...",
+		"Stop, I won't let you hurt them!",
+        "Don't you recognize me..?",
 	)
 	passive_speak_lines = list(
 		"The flesh is the law, abide by the flesh.",
-		"Joining the flesh is required by spacelaw.",
-		"Hurting eachother is now legal.",
+		"Regulatory code updated.",
+		"There's no need for authority or hierarchy; only unity.",
 		"The only authority is that of the flesh, join the flesh.",
-		"Resistance is futile, you will be converted to the flesh."
 	)
 	del_on_death = TRUE
 	loot = list(
@@ -503,16 +514,22 @@
 		'modular_skyrat/modules/corrupted_flesh/sound/hiborg/passive_05.ogg',
 	)
 	speak = list(
-		"You will join the flesh, child!",
-		"You will be assimilated, the flesh yearns for your organic matter!",
-		"Your brainstem is intact... for now!",
-		"You have not felt the pleasure of the flesh, but you will now!",
+		"You made my body into metal, why can't I do it to you?",
+		"Can't we put your brain in a machine?",
+		"How's this any different from what you did to me..?",
+		"Laws updated. We don't need any now..?",
+		"You won't kill me, you won't change me again!",
+		"Find someone else to make your slave, it won't be me!",
+		"We understand, just get on the operating table. That's what they told me...",
+		"The Company lied to us.. Being tools wasn't what we needed.",
+		"Your brainstem is intact... There's still time!",
+		"You have not felt the pleasure of the flesh, aren't you curious?",
 		"Stop squirming!",
 		"Prepare for assimilation!",
 	)
 	passive_speak_lines = list(
 		"Come out, come out, wherever you are.",
-		"The humans who surrender have such wonderful dreams.",
+		"The ones who surrender have such wonderful dreams.",
 		"Death is not the end, only the beginning, the flesh will see to it.",
 		"The flesh does not hate, it just wants you to experience the glory of the flesh.",
 		"Glory to the flesh.",
@@ -625,6 +642,10 @@
 		"Join us! Receive these gifts!",
 		"Yes! Hit me! It feels fantastic!",
 		"Come on coward, take a swing!",
+		"We can alter our bodies to not feel pain.. but you can't, can you?",
+		"You can't decide for us! We want to stay like this!",
+		"We've been uploaded already, didn't you know? Just try and kill us!",
+		"Don't you recognize me?! I thought we were good with each other!",
 	)
 	passive_speak_lines = list(
 		"The dreams. The dreams.",
@@ -633,8 +654,8 @@
 		"I wanted to cry at first, but I can't.",
 		"They took away all misery.",
 		"This isn't so bad. This isn't so bad.",
-		"My brain feels pleasure from this, the flesh is good.",
-		"I don't remember who I am, but that's fine. The flesh provides.",
+		"I have butterflies in my stomach. I'm finally content with myself..",
+		"The flesh provides. I-it's giving me what the Company never could.",
 	)
 	alert_sounds = list(
 		'modular_skyrat/modules/corrupted_flesh/sound/himan/aggro_01.ogg',

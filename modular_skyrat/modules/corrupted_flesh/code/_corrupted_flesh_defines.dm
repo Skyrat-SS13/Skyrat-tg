@@ -33,9 +33,9 @@
 
 // CONTROLLER RELATED DEFINES
 
-#define AI_FORENAME_LIST list("Von Neumann", "Lazarus", "Abattoir", "Auto-Surgeon", "NanoTrasen", \
+#define AI_FORENAME_LIST list("Von Neumann", "Lazarus", "Abattoir", "Auto-Surgeon", "Tra-Sentience", \
 	"NanoNurse", "Vivisector", "Ex Costa", "Apostasy", "Gnosis", "Balaam", "Ophite", \
-	"Sarif", "VersaLife", "Slylandro", "SHODAN", "Pandora", "Fisto")
+	"Sarif", "VersaLife", "Slylandro", "SHODAN", "Pandora", "Master Controller")
 
 #define AI_SURNAME_LIST list("Mk I", "Mk II", "Mk III", "Mk IV", "Mk V", "Mk X", \
 	"v0.9", "v1.0", "v1.1", "v2.0", "2418-B", "Open Beta", \
