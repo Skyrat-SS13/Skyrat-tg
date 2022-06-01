@@ -267,31 +267,31 @@
 	new_core.name = "[controller_fullname] Processor Unit"
 
 /// Spawns and registers a wireweed at location
-/datum/corrupted_flesh_controller/proc/spawn_wireweed(turf/location, wireweed_type, turf/origin_turf, are_we_a_cable_node = FALSE)
+/datum/corrupted_flesh_controller/proc/spawn_wireweed(turf/location, wireweed_type, turf/origin_turf, are_we_a_vent_burrow = FALSE)
 	//Spawn effect
 	for(var/obj/machinery/light/light_in_place in location)
 		light_in_place.break_light_tube()
 
-	if(!are_we_a_cable_node)
-		var/obj/structure/cable/located_cable = locate() in location
+	if(!are_we_a_vent_burrow)
+		var/obj/machinery/atmospherics/components/unary/vent_pump/located_vent = locate() in location
 
-		if(located_cable?.node && located_cable.powernet) // WE FOUND A NODE BOIS, ITS TIME TO GET THE PARTY STARTED
-			var/datum/powernet/cable_powernet = located_cable.powernet
+		if(located_vent && LAZYLEN(located_vent.parents)) // WE FOUND A VENT BOIS, ITS TIME TO GET THE PARTY STARTED
+			var/datum/pipeline/vent_pipeline = pick(located_vent.parents)
 			var/list/possible_transfer_points = list()
-			for(var/obj/structure/cable/iterating_cable as anything in cable_powernet.cables)
-				if(iterating_cable == located_cable)
+			for(var/obj/machinery/atmospherics/components/unary/vent_pump/iterating_vent in vent_pipeline.other_atmos_machines)
+				if(iterating_vent == located_vent)
 					continue
-				if(!iterating_cable.node) // Can only transfer to other nodes.
+				if(iterating_vent.welded) // Can't go through welded vents.
 					continue
-				var/obj/structure/corrupted_flesh/wireweed/existing_wireweed = locate() in get_turf(iterating_cable)
+				var/obj/structure/corrupted_flesh/wireweed/existing_wireweed = locate() in get_turf(iterating_vent)
 				if(existing_wireweed)
 					continue
-				possible_transfer_points += iterating_cable
+				possible_transfer_points += iterating_vent
 			if(LAZYLEN(possible_transfer_points)) // OH SHIT IM FEELING IT
-				var/obj/structure/cable/new_transfer_cable_node = pick(possible_transfer_points)
-				var/turf/transfer_cable_node_turf = get_turf(new_transfer_cable_node)
-				are_we_a_cable_node = TRUE
-				spawn_wireweed(transfer_cable_node_turf, wireweed_type, origin_turf, are_we_a_cable_node)
+				var/obj/machinery/atmospherics/components/unary/vent_pump/new_transfer_vent = pick(possible_transfer_points)
+				var/turf/new_transfer_vent_turf = get_turf(new_transfer_vent)
+				are_we_a_vent_burrow = TRUE
+				spawn_wireweed(new_transfer_vent_turf, wireweed_type, origin_turf, are_we_a_vent_burrow)
 
 	for(var/obj/machinery/iterating_machine in location)
 		if(is_type_in_list(blacklisted_conversion_structures))
@@ -314,7 +314,7 @@
 	new_wireweed.update_appearance()
 	controlled_wireweed += new_wireweed
 
-	if(are_we_a_cable_node)
+	if(are_we_a_vent_burrow)
 		new_wireweed.icon_state = "wires_burrow"
 
 	register_new_asset(new_wireweed)
