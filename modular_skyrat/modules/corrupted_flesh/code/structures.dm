@@ -295,9 +295,11 @@
 /obj/structure/corrupted_flesh/structure/core/proc/rally_troops()
 	balloon_alert_to_viewers("lets out an earbleeding shriek!")
 	playsound(src, 'modular_skyrat/modules/horrorform/sound/horror_scream.ogg', 100, TRUE)
-	for(var/mob/living/simple_animal/mob_in_range in range(rally_range, src))
+	for(var/mob/living/simple_animal/hostile/corrupted_flesh/mob_in_range in range(rally_range, src))
 		if(faction_check(faction_types, mob_in_range.faction))
 			mob_in_range.Goto(src, MOB_RALLY_SPEED)
+			mob_in_range.manual_emote("scream")
+			mob_in_range.alert_sound()
 	SEND_SIGNAL(src, COMSIG_CORRUPTED_FLESH_CORE_RALLY)
 
 /**
