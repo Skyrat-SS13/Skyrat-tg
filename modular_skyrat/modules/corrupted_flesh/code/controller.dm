@@ -317,7 +317,7 @@
 	active_wireweed += new_wireweed
 	if(are_we_a_vent_burrow)
 		new_wireweed.vent_burrow = TRUE
-		playsound(src, 'sound/machines/ventcrawl.ogg', 100)
+		playsound(new_wireweed, 'sound/machines/ventcrawl.ogg', 100)
 	new_wireweed.update_appearance()
 	controlled_wireweed += new_wireweed
 
