@@ -101,7 +101,7 @@
 				reagents.my_atom = src
 				reagents.add_reagent(/datum/reagent/cordycepsspores, 50)
 				var/datum/effect_system/fluid_spread/smoke/chem/smoke_machine/puff = new
-				puff.set_up(4, location = my_turf, carry = reagents, efficiency = 24)
+				puff.set_up(5, location = my_turf, carry = reagents, efficiency = 24)
 				puff.attach(src)
 				puff.start()
 			if(BIO_BLOB_TYPE_FIRE)
@@ -125,7 +125,7 @@
 				R.my_atom = src
 				R.add_reagent(/datum/reagent/toxin, 30)
 				var/datum/effect_system/fluid_spread/foam/foam = new
-				foam.set_up(200, location = my_turf, carry = R)
+				foam.set_up(4, location = my_turf, carry = R)
 				foam.start()
 			if(BIO_BLOB_TYPE_RADIOACTIVE)
 				visible_message(span_warning("The [src] emits a strong radiation pulse!"))
@@ -134,7 +134,7 @@
 				R.my_atom = src
 				R.add_reagent(/datum/reagent/toxin/mutagen, 50)
 				var/datum/effect_system/fluid_spread/foam/foam = new
-				foam.set_up(200, location = my_turf, carry = R)
+				foam.set_up(5, location = my_turf, carry = R)
 				foam.start()
 	return ..()
 
