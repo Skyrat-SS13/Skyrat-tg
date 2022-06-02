@@ -82,8 +82,6 @@
 	var/attack_prob = 20
 	/// Probability of wireweed making a wall when able per process
 	var/wall_prob = 30
-	/// Whether we can put wireweed on walls. This slows down the expansion and will cause the structures to be more densely packed.
-	var/can_do_wall_wireweed = TRUE
 	/// When we spawn, do we create an expansion zone?
 	var/do_initial_expansion = TRUE
 	/// The amount of time until we can activate nearby wireweed again.
@@ -211,11 +209,6 @@
 				var/place_count = 1
 				for(var/obj/structure/corrupted_flesh/wireweed/iterated_wireweed in adjacent_open)
 					wireweed_count++
-				if(can_do_wall_wireweed)
-					for(var/wall_dir in GLOB.cardinals)
-						var/turf/step_turf = get_step(adjacent_open, wall_dir)
-						if(step_turf.density)
-							place_count++
 				if(wireweed_count < place_count)
 					tasks++
 					spread_turf_canidates[adjacent_open] = wireweed_turf
