@@ -36,31 +36,31 @@
 
 	switch(user.icon)
 		if(CYBORG_ICON_PEACEKEEPER_TALL)
-			. += "Its waist has <i>[span_pink("Zeng-Hu Pharmaceuticals")]</i> stamped onto it."
+			. += "It has <i>[span_pink("Zeng-Hu Pharmaceuticals")]</i> stamped onto its waist."
 		if(CYBORG_ICON_MINING_TALL)
-			. += "Its waist has <i>[span_cyan("Interdyne Pharmaceuticals")]</i> laser-cut onto it."
+			. += "It has <i>[span_cyan("Interdyne Pharmaceuticals")]</i> laser-cut into its waist."
 		if(CYBORG_ICON_MED_TALL)
-			. += "Its chest has <i>[span_pink("Zeng-Hu Pharmaceuticals")]</i> stamped onto it."
+			. += "It has <i>[span_pink("Zeng-Hu Pharmaceuticals")]</i> stamped onto its chest."
 		if(CYBORG_ICON_CARGO_TALL)
-			. += "Its coat has a <i>[span_pink("Zeng-Hu Pharmaceuticals")]</i> label."
+			. += "It has a <i>[span_pink("Zeng-Hu Pharmaceuticals")]</i> label on its coat."
 	//	if(CYBORG_ICON_ENG_TALL)
 	//		. += ""
 		if(CYBORG_ICON_SERVICE_TALL)
 			switch(robot.model.cyborg_base_icon)
 				if("mekaserve")
-					. += "Its fore-arm has <i>[span_pink("Zeng-Hu Pharmaceuticals")]</i> stamped onto it."
+					. += "It has <i>[span_pink("Zeng-Hu Pharmaceuticals")]</i> stamped onto its forearm."
 				if("mekaserve_alt")
-					. += "Its skirt has a <i>[span_pink("Zeng-Hu Pharmaceuticals")]</i> label."
+					. += "It has a <i>[span_pink("Zeng-Hu Pharmaceuticals")]</i> label on its skirt."
 				else
 					return
 		if(CYBORG_ICON_JANI_TALL)
-			. += "Its skirt has a <i>[span_pink("Zeng-Hu Pharmaceuticals")]</i> label."
+			. += "It has a <i>[span_pink("Zeng-Hu Pharmaceuticals")]</i> label on its skirt."
 		if(CYBORG_ICON_SYNDIE_TALL)
 			. += "Its label is crudely scratched off..."
 	//	if(CYBORG_ICON_CLOWN_TALL)
 	//		. += ""
 		if(CYBORG_ICON_NINJA_TALL)
-			. += "Its back has a <i>[span_green("Spider Clan")]</i> logo etched onto it."
+			. += "It has a <i>[span_green("Spider Clan")]</i> logo etched into its back."
 
 		else
 			return
