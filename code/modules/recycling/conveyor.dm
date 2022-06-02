@@ -287,14 +287,9 @@ GLOBAL_LIST_EMPTY(conveyors_by_id)
 
 	else if(!user.combat_mode)
 		user.transferItemToLoc(attacking_item, drop_location())
-<<<<<<< HEAD
-	else
-		return ..()
-=======
 
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
->>>>>>> e86558b7e22 (Fixes light switches causing conveyor belts to move anchored objects.  (#67456))
 
 // attack with hand, move pulled object onto conveyor
 /obj/machinery/conveyor/attack_hand(mob/user, list/modifiers)
