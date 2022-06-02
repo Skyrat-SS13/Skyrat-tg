@@ -143,18 +143,19 @@
 /turf/open/floor/iron,
 /area/station/construction/mining/aux_base)
 "aci" = (
-/obj/structure/window/reinforced{
-	dir = 8
+/obj/machinery/cryopod{
+	dir = 1
 	},
-/obj/structure/sign/warning/yes_smoking/circle{
-	pixel_y = -32
+/obj/effect/turf_decal/siding/white{
+	dir = 1
 	},
-/obj/machinery/light/small/directional/south,
-/obj/item/kirbyplants/dead{
-	name = "Lungie"
+/obj/machinery/airalarm/directional/east,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 1
 	},
-/turf/open/floor/iron/white,
-/area/station/commons/fitness/recreation)
+/obj/machinery/camera/directional/east,
+/turf/open/floor/iron/dark,
+/area/station/common/cryopods)
 "acp" = (
 /obj/item/kirbyplants/random,
 /obj/effect/turf_decal/tile/yellow/anticorner/contrasted{
@@ -10867,6 +10868,12 @@
 /obj/machinery/atmospherics/components/tank,
 /turf/open/floor/iron/dark,
 /area/station/science/storage)
+"cSS" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/iron,
+/area/station/commons/fitness/recreation)
 "cTi" = (
 /obj/machinery/camera/directional/south{
 	c_tag = "Holodeck - Aft 1";
@@ -13223,14 +13230,15 @@
 /turf/open/floor/iron,
 /area/station/engineering/atmos/hfr_room)
 "dFi" = (
-/obj/structure/table/wood,
-/obj/item/trash/candle,
-/obj/item/cigbutt{
-	pixel_y = 7
+/obj/machinery/computer/cryopod{
+	dir = 8;
+	pixel_x = 32
 	},
-/obj/item/razor,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/light/directional/east,
 /turf/open/floor/iron/white,
-/area/station/commons/fitness/recreation)
+/area/station/common/cryopods)
 "dFm" = (
 /obj/effect/landmark/start/hangover/closet,
 /obj/structure/closet/crate,
@@ -15662,6 +15670,7 @@
 "esB" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/commons/fitness/recreation)
 "esN" = (
@@ -16214,6 +16223,11 @@
 /obj/effect/spawner/random/maintenance/two,
 /turf/open/floor/iron,
 /area/station/maintenance/port/aft)
+"ezY" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/iron/white,
+/area/station/common/cryopods)
 "eAf" = (
 /obj/machinery/door/window/left/directional/south,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
@@ -16438,6 +16452,7 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/commons/fitness/recreation)
 "eEI" = (
@@ -19996,6 +20011,8 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron,
 /area/station/commons/fitness/recreation)
 "fzF" = (
@@ -29609,6 +29626,13 @@
 /obj/structure/easel,
 /turf/open/floor/iron,
 /area/station/security/prison)
+"iiB" = (
+/obj/machinery/cryopod,
+/obj/effect/turf_decal/siding/white,
+/obj/machinery/power/apc/auto_name/directional/east,
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/station/common/cryopods)
 "iiJ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cable,
@@ -30561,9 +30585,14 @@
 /turf/open/floor/iron,
 /area/station/hallway/secondary/command)
 "iwr" = (
-/obj/effect/spawner/structure/window/reinforced/tinted,
-/turf/open/space/basic,
-/area/station/commons/dorms)
+/obj/effect/landmark/start/hangover,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/white/side{
+	dir = 4
+	},
+/area/station/commons/fitness/recreation)
 "iwt" = (
 /obj/structure/table/reinforced,
 /obj/machinery/door/firedoor,
@@ -38105,13 +38134,9 @@
 /turf/open/floor/iron/cafeteria,
 /area/station/engineering/atmos/pumproom)
 "kuM" = (
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/effect/spawner/random/vending/snackvend,
-/obj/effect/turf_decal/bot_white/right,
-/turf/open/floor/iron/white,
-/area/station/commons/fitness/recreation)
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/station/common/cryopods)
 "kuT" = (
 /obj/machinery/light/small/directional/west,
 /turf/open/floor/engine/n2,
@@ -40705,8 +40730,11 @@
 /area/station/engineering/atmos/project)
 "lfb" = (
 /obj/effect/landmark/start/hangover,
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/white,
-/area/station/commons/fitness/recreation)
+/area/station/common/cryopods)
 "lfC" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -41672,6 +41700,9 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/station/commons/vacant_room/commissary)
+"lsN" = (
+/turf/closed/wall,
+/area/station/common/cryopods)
 "ltr" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -52709,9 +52740,14 @@
 /turf/open/floor/iron,
 /area/station/engineering/gravity_generator)
 "ooD" = (
-/obj/structure/chair/stool/directional/west,
-/turf/open/floor/iron/white,
-/area/station/commons/fitness/recreation)
+/obj/machinery/cryopod{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/white{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/station/common/cryopods)
 "ooG" = (
 /obj/item/reagent_containers/glass/bottle/multiver{
 	pixel_x = 7;
@@ -57621,10 +57657,11 @@
 /turf/open/floor/iron,
 /area/station/hallway/primary/aft)
 "pEx" = (
-/obj/effect/turf_decal/bot_white,
-/obj/machinery/vending/cigarette,
-/turf/open/floor/iron/white,
-/area/station/commons/fitness/recreation)
+/obj/machinery/cryopod,
+/obj/effect/turf_decal/siding/white,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
+/turf/open/floor/iron/dark,
+/area/station/common/cryopods)
 "pEP" = (
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
@@ -63281,12 +63318,14 @@
 /turf/open/floor/iron/dark,
 /area/station/service/abandoned_gambling_den)
 "ria" = (
-/obj/machinery/door/window{
-	dir = 8;
-	name = "Smoking Room"
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/door/airlock/public/glass{
+	name = "Cryopods"
 	},
 /turf/open/floor/iron/white,
-/area/station/commons/fitness/recreation)
+/area/station/common/cryopods)
 "rie" = (
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -68102,10 +68141,10 @@
 /turf/open/floor/iron,
 /area/station/command/heads_quarters/ce)
 "swS" = (
-/obj/effect/turf_decal/bot_white/left,
-/obj/effect/spawner/random/vending/colavend,
-/turf/open/floor/iron/white,
-/area/station/commons/fitness/recreation)
+/obj/machinery/cryopod,
+/obj/effect/turf_decal/siding/white,
+/turf/open/floor/iron/dark,
+/area/station/common/cryopods)
 "swT" = (
 /turf/closed/wall/r_wall,
 /area/station/maintenance/port/lesser)
@@ -143492,7 +143531,7 @@ yaI
 yaI
 unm
 ijp
-iwr
+ijp
 tKi
 yaI
 yaI
@@ -145300,7 +145339,7 @@ vtf
 klz
 nZf
 oSk
-qAF
+cSS
 gVP
 mfC
 qYo
@@ -145557,7 +145596,7 @@ baK
 baK
 bJH
 vii
-vii
+iwr
 wvf
 uKw
 qYo
@@ -145812,11 +145851,11 @@ mfC
 mfC
 mfC
 mfC
-uKw
+lsN
 kuM
 ria
-aci
-uKw
+kuM
+lsN
 qYo
 qYo
 qYo
@@ -146069,11 +146108,11 @@ aaa
 qYo
 eqU
 aaa
-mfC
+kuM
 pEx
 lfb
-dFi
-mfC
+ooD
+kuM
 qYo
 aaa
 qYo
@@ -146326,11 +146365,11 @@ kYk
 fIQ
 fIQ
 aad
-mfC
+kuM
 swS
-aXN
+ezY
 ooD
-mfC
+kuM
 qYo
 aaa
 aaa
@@ -146583,11 +146622,11 @@ cFF
 cFF
 fIQ
 aaa
-mfC
-mfC
-mfC
-mfC
-uKw
+kuM
+iiB
+dFi
+aci
+kuM
 qYo
 qYo
 qYo
@@ -146840,11 +146879,11 @@ cFF
 cFF
 fIQ
 aaa
-mfC
-qYo
-aad
-aad
-aad
+lsN
+lsN
+lsN
+lsN
+lsN
 qYo
 aaa
 xTK
@@ -147097,9 +147136,9 @@ cFF
 cTi
 qOn
 aad
-uKw
+mfC
 qYo
-aad
+qYo
 aaa
 aaa
 aaa
