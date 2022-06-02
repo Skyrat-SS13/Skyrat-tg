@@ -83,6 +83,11 @@
 		/datum/reagent/medicine,
 		/datum/reagent/vaccine
 	)
+        ///Blacklist that contains medicines that SmartDarts are unable to inject.
+	var/list/disallowed_medicine = list(
+		/datum/reagent/inverse/,
+		/datum/reagent/medicine/morphine,
+	)
 
 /obj/projectile/bullet/dart/syringe/dart/on_hit(atom/target, blocked = FALSE)
 	if(!iscarbon(target))
@@ -133,6 +138,8 @@
 				continue
 
 		if(!is_type_in_list(meds, allowed_medicine))
+			continue
+		if(is_type_in_list(meds, disallowed_medicine))
 			continue
 		if(is_type_in_list(meds, allergy_list))
 			prevention_used = TRUE
