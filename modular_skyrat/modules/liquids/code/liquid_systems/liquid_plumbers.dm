@@ -111,6 +111,12 @@
 	var/drain_flat = 20
 	var/drain_percent = 0.4
 
+	var/over_volume = FALSE
+	var/max_ext_volume = LIQUID_HEIGHT_CONSIDER_FULL_TILE
+
+	var/over_pressure = FALSE
+	var/max_ext_kpa = WARNING_HIGH_PRESSURE
+
 /obj/machinery/plumbing/liquid_output_pump/default_unfasten_wrench(mob/user, obj/item/I, time = 20)
 	. = ..()
 	if(. == SUCCESSFUL_UNFASTEN)
@@ -138,14 +144,22 @@
 	. = ..()
 	. += span_notice("It's currently [turned_on ? "ON" : "OFF"].")
 	. += span_notice("It's height regulator [height_regulator ? "points at [height_regulator]" : "is disabled"]. (Ctrl-click to change)")
+	if(over_pressure)
+		. += span_warning("The gas regulator light is blinking.")
 
 /obj/machinery/plumbing/liquid_output_pump/proc/can_pump()
 	if(!turned_on || !anchored || panel_open || !isturf(loc) || reagents.total_volume == 0)
 		return FALSE
-	if(height_regulator)
-		var/turf/T = loc
-		if(T.liquids && T.liquids.height >= height_regulator)
-			return FALSE
+	var/turf/current_turf = loc
+	if(current_turf.liquids?.height >= max_ext_volume)
+		return FALSE
+	if(height_regulator && current_turf.liquids?.height >= height_regulator)
+		return FALSE
+	var/turf/open/open_turf = current_turf
+	var/datum/gas_mixture/gas_mix = open_turf?.return_air()
+	if(gas_mix?.return_pressure() > max_ext_kpa)
+		over_pressure = TRUE
+		return FALSE
 	return TRUE
 
 /obj/machinery/plumbing/liquid_output_pump/process(delta_time)
