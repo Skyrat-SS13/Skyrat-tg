@@ -209,6 +209,15 @@
 	crate_name = "engineering inducer crate"
 	crate_type = /obj/structure/closet/crate/engineering/electrical
 
+/datum/supply_pack/engineering/gas_miner
+	name = "Gas Miner Delivery Beacon Crate"
+	desc = "Contains a single gas miner delivery beacon, for the ordering of one gas miner."
+	access = ACCESS_ATMOSPHERICS
+	contains = list(/obj/item/gas_miner_beacon)
+	cost = CARGO_CRATE_VALUE * 50
+	crate_name = "gas miner delivery beacon crate"
+	crate_type = /obj/structure/closet/crate/secure/engineering
+
 /*
 *	MISC
 */
