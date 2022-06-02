@@ -71,17 +71,17 @@
 
 	SSliquids.add_active_turf(src)
 
-/turf/proc/add_liquid_from_reagents(datum/reagents/giver, no_react = FALSE)
+/turf/proc/add_liquid_from_reagents(datum/reagents/giver, no_react = FALSE, expose_turf = TRUE)
 	var/list/compiled_list = list()
 	for(var/r in giver.reagent_list)
 		var/datum/reagent/R = r
 		compiled_list[R.type] = R.volume
 	if(!compiled_list.len) //No reagents to add, don't bother going further
 		return
-	add_liquid_list(compiled_list, no_react, giver.chem_temp)
+	add_liquid_list(compiled_list, no_react, expose_turf, giver.chem_temp)
 
 //More efficient than add_liquid for multiples
-/turf/proc/add_liquid_list(reagent_list, no_react = FALSE, chem_temp = 300)
+/turf/proc/add_liquid_list(reagent_list, no_react = FALSE, expose_turf = TRUE, chem_temp = 300)
 	if(!liquids)
 		liquids = new(src)
 	if(liquids.immutable)
@@ -118,8 +118,8 @@
 				qdel(liquids)
 				return
 		qdel(reagents)
-		//Expose turf
-		liquids.ExposeMyTurf()
+		if(expose_turf)
+			liquids.ExposeMyTurf()
 
 	liquids.calculate_height()
 	liquids.set_reagent_color_for_liquid()

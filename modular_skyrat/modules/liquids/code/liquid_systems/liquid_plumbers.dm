@@ -164,7 +164,7 @@
 
 	var/datum/reagents/tempr = new(10000)
 	reagents.trans_to(tempr, target_value, no_react = TRUE)
-	T.add_liquid_from_reagents(tempr)
+	T.add_liquid_from_reagents(tempr, expose_turf = FALSE)
 	qdel(tempr)
 
 /obj/machinery/plumbing/liquid_output_pump/Initialize(mapload, bolt)
