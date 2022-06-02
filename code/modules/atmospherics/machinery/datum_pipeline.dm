@@ -189,9 +189,8 @@
 /datum/pipeline/proc/temperature_interact(turf/target, share_volume, thermal_conductivity)
 	var/total_heat_capacity = air.heat_capacity()
 	var/partial_heat_capacity = total_heat_capacity * (share_volume / air.volume)
-	var/target_temperature
-	var/target_heat_capacity
 
+<<<<<<< HEAD
 	//SKYRAT EDIT ADDITION BEGIN
 	if(target.liquids && target.liquids.liquid_state >= LIQUID_STATE_FOR_HEAT_EXCHANGERS)
 		target_temperature = target.liquids.temp
@@ -227,6 +226,23 @@
 			modeled_location.temperature_expose(air, modeled_location.temperature)
 
 		update = TRUE
+=======
+	var/turf_temperature = target.GetTemperature()
+	var/turf_heat_capacity = target.GetHeatCapacity()
+
+	if(turf_heat_capacity <= 0 || partial_heat_capacity <= 0)
+		return TRUE
+
+	var/delta_temperature = turf_temperature - air.temperature
+
+	var/heat = thermal_conductivity * CALCULATE_CONDUCTION_ENERGY(delta_temperature, partial_heat_capacity, turf_heat_capacity)
+	air.temperature += heat / total_heat_capacity
+	target.TakeTemperature(-1 * heat / turf_heat_capacity)
+
+	if(target.blocks_air)
+		target.temperature_expose(air, target.temperature)
+	update = TRUE
+>>>>>>> 7103f8150a6 (Makes the energy calculation part of temp share a define. (#67106))
 
 /datum/pipeline/proc/return_air()
 	. = other_airs + air
