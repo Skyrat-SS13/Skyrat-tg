@@ -44,13 +44,13 @@
 	spawned_human.grant_language(/datum/language/uncommon, TRUE, TRUE, LANGUAGE_MIND)
 	spawned_human.remove_language(/datum/language/common)
 
-/obj/item/clothing/under/rank/security/peacekeeper/sol/traffic/blackmesa
-	name = "security guard uniform"
-	desc = "About that beer I owe'd ya!"
+/obj/item/clothing/under/rank/security/officer/blueshirt/blackmesa
+	armor = list(MELEE = 10, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 10, FIRE = 30, ACID = 30, WOUND = 10)
+	strip_delay = 50
 
 /datum/outfit/security_guard
 	name = "Security Guard"
-	uniform = /obj/item/clothing/under/rank/security/peacekeeper/sol/traffic/blackmesa
+	uniform = /obj/item/clothing/under/rank/security/officer/blueshirt/blackmesa
 	head = /obj/item/clothing/head/helmet/blueshirt
 	gloves = /obj/item/clothing/gloves/color/black
 	suit = /obj/item/clothing/suit/armor/vest/blueshirt
