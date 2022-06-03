@@ -190,59 +190,36 @@
 	var/total_heat_capacity = air.heat_capacity()
 	var/partial_heat_capacity = total_heat_capacity * (share_volume / air.volume)
 
-<<<<<<< HEAD
-	//SKYRAT EDIT ADDITION BEGIN
-	if(target.liquids && target.liquids.liquid_state >= LIQUID_STATE_FOR_HEAT_EXCHANGERS)
-		target_temperature = target.liquids.temp
-		target_heat_capacity = target.liquids.total_reagents * REAGENT_HEAT_CAPACITY
-		var/delta_temperature = (air.temperature - target_temperature)
-
-		if(target_heat_capacity <= 0 || partial_heat_capacity <= 0)
-			return TRUE
-
-		var/heat = thermal_conductivity * delta_temperature * (partial_heat_capacity * target_heat_capacity / (partial_heat_capacity + target_heat_capacity))
-
-		air.temperature -= heat / total_heat_capacity
-		if(!target.liquids.immutable)
-			target.liquids.temp += heat / target_heat_capacity
-	else //SKYRAT EDIT END
-		var/turf/modeled_location = target
-		target_temperature = modeled_location.GetTemperature()
-		target_heat_capacity = modeled_location.GetHeatCapacity()
-
-		var/delta_temperature = air.temperature - target_temperature
-		var/sharer_heat_capacity = target_heat_capacity
-
-		if((sharer_heat_capacity <= 0) || (partial_heat_capacity <= 0))
-			return TRUE
-		var/heat = thermal_conductivity * delta_temperature * (partial_heat_capacity * sharer_heat_capacity / (partial_heat_capacity + sharer_heat_capacity))
-
-		var/self_temperature_delta = - heat / total_heat_capacity
-		var/sharer_temperature_delta = heat / sharer_heat_capacity
-
-		air.temperature += self_temperature_delta
-		modeled_location.TakeTemperature(sharer_temperature_delta)
-		if(modeled_location.blocks_air)
-			modeled_location.temperature_expose(air, modeled_location.temperature)
-
-		update = TRUE
-=======
 	var/turf_temperature = target.GetTemperature()
 	var/turf_heat_capacity = target.GetHeatCapacity()
 
-	if(turf_heat_capacity <= 0 || partial_heat_capacity <= 0)
-		return TRUE
+	//SKYRAT EDIT ADDITION BEGIN
+	if(target.liquids?.liquid_state >= LIQUID_STATE_FOR_HEAT_EXCHANGERS)
+		turf_temperature = target.liquids.temp
+		turf_heat_capacity = target.liquids.total_reagents * REAGENT_HEAT_CAPACITY
+		var/delta_temperature = (air.temperature - turf_temperature)
 
-	var/delta_temperature = turf_temperature - air.temperature
+		if(turf_heat_capacity <= 0 || partial_heat_capacity <= 0)
+			return TRUE
 
-	var/heat = thermal_conductivity * CALCULATE_CONDUCTION_ENERGY(delta_temperature, partial_heat_capacity, turf_heat_capacity)
-	air.temperature += heat / total_heat_capacity
-	target.TakeTemperature(-1 * heat / turf_heat_capacity)
+		var/heat = thermal_conductivity * CALCULATE_CONDUCTION_ENERGY(delta_temperature, turf_heat_capacity, partial_heat_capacity)
 
-	if(target.blocks_air)
-		target.temperature_expose(air, target.temperature)
-	update = TRUE
->>>>>>> 7103f8150a6 (Makes the energy calculation part of temp share a define. (#67106))
+		air.temperature -= heat / total_heat_capacity
+		if(!target.liquids.immutable)
+			target.liquids.temp += heat / turf_heat_capacity
+	else //SKYRAT EDIT END
+		if(turf_heat_capacity <= 0 || partial_heat_capacity <= 0)
+			return TRUE
+
+		var/delta_temperature = turf_temperature - air.temperature
+
+		var/heat = thermal_conductivity * CALCULATE_CONDUCTION_ENERGY(delta_temperature, partial_heat_capacity, turf_heat_capacity)
+		air.temperature += heat / total_heat_capacity
+		target.TakeTemperature(-1 * heat / turf_heat_capacity)
+
+		if(target.blocks_air)
+			target.temperature_expose(air, target.temperature)
+		update = TRUE
 
 /datum/pipeline/proc/return_air()
 	. = other_airs + air
