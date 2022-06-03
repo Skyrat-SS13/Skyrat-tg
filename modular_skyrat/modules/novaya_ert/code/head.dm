@@ -5,7 +5,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "russian_green_helmet"
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
-	armor = list(MELEE = 40, BULLET = 35, LASER = 30, ENERGY = 40, BOMB = 25, BIO = 0, FIRE = 20, ACID = 50, WOUND = 20)
+	armor = list("melee" = 50, "bullet" = 50, "laser" = 30, "energy" = 25, "bomb" = 50, "bio" = 0, "fire" = 50, "acid" = 50, "wound" = 20)
 
 /obj/item/clothing/head/beret/sec/nri
 	name = "commander's beret"
@@ -18,7 +18,7 @@
 	icon_state = "russian_heavy_helmet"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	armor = list(MELEE = 70, BULLET = 60, LASER = 50, ENERGY = 50, BOMB = 100, BIO = 100, FIRE = 90, ACID = 90)
+	armor = list("melee" = 60, "bullet" = 60, "laser" = 50, "energy" = 50, "bomb" = 100, "bio" = 100, "fire" = 70, "acid" = 70, "wound" = 35)
 	/// What position the helmet is in, TRUE = DOWN, FALSE = UP
 	var/helmet_position = TRUE
 

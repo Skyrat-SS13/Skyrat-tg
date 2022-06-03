@@ -1,13 +1,15 @@
 /obj/item/clothing/suit/armor/vest/russian
-	name = "russian vest"
+	name = "russian combined B23 vest"
 	desc = "A bulletproof vest with forest camo. Good thing there's plenty of forests to hide in around here, right?"
-	icon_state = "rus_armor"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	icon_state = "russian_green_armor"
 	inhand_icon_state = "rus_armor"
 	armor = list(MELEE = 25, BULLET = 30, LASER = 0, ENERGY = 10, BOMB = 10, BIO = 0, FIRE = 20, ACID = 50, WOUND = 10)
 
 /obj/item/clothing/suit/armor/vest/russian/nri
 	name = "russian combined B23 vest"
-	desc = "Modern body armor designed to protect the torso from bullets, shrapnel and blunt force. A lead-plated layer offers a very limited amount of radiation protection."
+	desc = "NRI mass-produced body armor designed for protection against bullets, shrapnel and blunt force. A thin layer of experimental alloy provides limited protection against laser and energy and... polar bears?"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "russian_green_armor"
