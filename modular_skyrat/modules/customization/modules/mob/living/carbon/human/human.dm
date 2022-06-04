@@ -13,7 +13,7 @@
 						continue
 					if(G.is_hidden(src))
 						continue
-					var/obj/item/organ/genital/ORG = getorganslot(G.associated_organ_slot)
+					var/obj/item/organ/external/genital/ORG = getorganslot(G.associated_organ_slot)
 					if(!ORG)
 						continue
 					line += ORG.get_description_string(G)
