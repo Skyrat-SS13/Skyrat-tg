@@ -152,7 +152,7 @@
 
 	var/list/trauma_list = list()
 	if(patient.get_traumas())
-		for(var/datum/brain_trauma/trauma in patient.get_traumas())
+		for(var/datum/brain_trauma/trauma as anything in patient.get_traumas())
 			trauma_list += trauma
 
 	var/brute_damage = patient.getBruteLoss()
