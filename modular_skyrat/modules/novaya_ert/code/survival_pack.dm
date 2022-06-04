@@ -7,9 +7,9 @@
 
 /obj/item/storage/box/nri_survival_pack/PopulateContents()
 	new /obj/item/oxygen_candle(src)
-    new /obj/item/tank/internals/emergency_oxygen/double(src)
-    new /obj/item/reagent_containers/blood/o_minus(src)
-    new /obj/item/reagent_containers/syringe(src)
+	new /obj/item/tank/internals/emergency_oxygen/double(src)
+	new /obj/item/reagent_containers/blood/o_minus(src)
+	new /obj/item/reagent_containers/syringe(src)
 	new /obj/item/storage/box/mothic_rations(src)
 	new /obj/item/storage/box/nri_pens(src)
 	new /obj/item/storage/box/nri_flares(src)
