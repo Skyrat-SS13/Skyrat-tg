@@ -155,6 +155,9 @@
 		for(var/datum/brain_trauma/trauma in patient.get_traumas())
 			trauma_list += trauma
 
+	var/brute_damage = patient.getBruteLoss()
+	var/burn_damage = patient.getFireLoss()
+
 	if(obj_flags & EMAGGED)
 		patient.monkeyize()
 
@@ -184,6 +187,10 @@
 
 	if(length(trauma_list))
 		patient_brain.traumas = trauma_list
+
+	//Re-Applies Damage
+	patient.adjustBruteLoss(brute_damage)
+	patient.adjustFireLoss(burn_damage)
 
 	open_machine()
 	playsound(src, 'sound/machines/microwave/microwave-end.ogg', 100, FALSE)
