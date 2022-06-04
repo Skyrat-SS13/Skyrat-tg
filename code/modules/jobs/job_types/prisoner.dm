@@ -3,7 +3,7 @@
 	description = "Keep yourself occupied in permabrig."
 	department_head = list("The Security Team")
 	faction = FACTION_STATION
-	total_positions = 12		// SKYRAT EDIT: Original value (0)
+	total_positions = 4		// SKYRAT EDIT: Original value (0)
 	spawn_positions = 2
 	supervisors = "the security team"
 	selection_color = "#ffe1c3"
