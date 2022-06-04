@@ -6,15 +6,12 @@
 
 	mutant_bodyparts = list("ears" = "Cat", "wings" = "None")
 
-<<<<<<< HEAD
-	//mutantears = /obj/item/organ/ears/cat //SKYRAT EDIT REMOVAL - CUSTOMIZATION
-	//mutant_organs = list(/obj/item/organ/tail/cat) //SKYRAT EDIT REMOVAL - CUSTOMIZATION
-=======
+	/* SKYRAT EDIT REMOVAL - CUSTOMIZATION
 	mutantears = /obj/item/organ/internal/ears/cat
 	external_organs = list(
 		/obj/item/organ/external/tail/cat = "Cat",
 	)
->>>>>>> 6d470992cb6 (This tail refactor turned into an organ refactor. Funny how that works. (#67017))
+	*/ // SKYRAT EDIT REMOVAL END
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | MIRROR_MAGIC | RACE_SWAP | ERT_SPAWN | SLIME_EXTRACT
 	species_language_holder = /datum/language_holder/felinid
 	disliked_food = GROSS | CLOTH | RAW
@@ -32,41 +29,6 @@
 		var/datum/reagent/toxin/carpotoxin/fish = chem
 		fish.toxpwr = 0
 
-<<<<<<< HEAD
-//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
-/*
-//Curiosity killed the cat's wagging tail.
-/datum/species/human/felinid/spec_death(gibbed, mob/living/carbon/human/H)
-	if(H)
-		stop_wagging_tail(H)
-
-/datum/species/human/felinid/spec_stun(mob/living/carbon/human/H,amount)
-	if(H)
-		stop_wagging_tail(H)
-	. = ..()
-
-/datum/species/human/felinid/can_wag_tail(mob/living/carbon/human/H)
-	return mutant_bodyparts["tail_human"] || mutant_bodyparts["waggingtail_human"]
-
-/datum/species/human/felinid/is_wagging_tail(mob/living/carbon/human/H)
-	return mutant_bodyparts["waggingtail_human"]
-
-/datum/species/human/felinid/start_wagging_tail(mob/living/carbon/human/H)
-	if(mutant_bodyparts["tail_human"])
-		mutant_bodyparts["waggingtail_human"] = mutant_bodyparts["tail_human"]
-		mutant_bodyparts -= "tail_human"
-	H.update_body()
-
-/datum/species/human/felinid/stop_wagging_tail(mob/living/carbon/human/H)
-	if(mutant_bodyparts["waggingtail_human"])
-		mutant_bodyparts["tail_human"] = mutant_bodyparts["waggingtail_human"]
-		mutant_bodyparts -= "waggingtail_human"
-	H.update_body()
-=======
->>>>>>> 6d470992cb6 (This tail refactor turned into an organ refactor. Funny how that works. (#67017))
-
-	*/
-//SKYRAT EDIT REMOVAL END
 
 /datum/species/human/felinid/on_species_gain(mob/living/carbon/C, datum/species/old_species, pref_load)
 	if(ishuman(C))

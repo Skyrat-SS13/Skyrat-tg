@@ -70,69 +70,8 @@
 
 	return randname
 
-<<<<<<< HEAD
-//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
-/*
-//I wag in death SKYRAT EDIT - customization
-/datum/species/lizard/spec_death(gibbed, mob/living/carbon/human/H)
-	if(H)
-		stop_wagging_tail(H)
-
-/datum/species/lizard/spec_stun(mob/living/carbon/human/H,amount)
-	if(H)
-		stop_wagging_tail(H)
-	. = ..()
-
-/datum/species/lizard/can_wag_tail(mob/living/carbon/human/H)
-	return mutant_bodyparts["tail_lizard"] || mutant_bodyparts["waggingtail_lizard"]
-
-/datum/species/lizard/is_wagging_tail(mob/living/carbon/human/H)
-	return mutant_bodyparts["waggingtail_lizard"]
-
-/datum/species/lizard/start_wagging_tail(mob/living/carbon/human/H)
-	if(mutant_bodyparts["tail_lizard"])
-		mutant_bodyparts["waggingtail_lizard"] = mutant_bodyparts["tail_lizard"]
-		mutant_bodyparts["waggingspines"] = mutant_bodyparts["spines"]
-		mutant_bodyparts -= "tail_lizard"
-		mutant_bodyparts -= "spines"
-	H.update_body()
-
-/datum/species/lizard/stop_wagging_tail(mob/living/carbon/human/H)
-	if(mutant_bodyparts["waggingtail_lizard"])
-		mutant_bodyparts["tail_lizard"] = mutant_bodyparts["waggingtail_lizard"]
-		mutant_bodyparts["spines"] = mutant_bodyparts["waggingspines"]
-		mutant_bodyparts -= "waggingtail_lizard"
-		mutant_bodyparts -= "waggingspines"
-	H.update_body()
-
-/datum/species/lizard/on_species_gain(mob/living/carbon/C, datum/species/old_species, pref_load)
-	var/real_tail_type = C.dna.features["tail_lizard"]
-	var/real_spines = C.dna.features["spines"]
-
-	. = ..()
-
-	// Special handler for loading preferences. If we're doing it from a preference load, we'll want
-	// to make sure we give the appropriate lizard tail AFTER we call the parent proc, as the parent
-	// proc will overwrite the lizard tail. Species code at its finest.
-	if(pref_load)
-		C.dna.features["tail_lizard"] = real_tail_type
-		C.dna.features["spines"] = real_spines
-
-		var/obj/item/organ/tail/lizard/new_tail = new /obj/item/organ/tail/lizard()
-
-		new_tail.tail_type = C.dna.features["tail_lizard"]
-		new_tail.spines = C.dna.features["spines"]
-
-		// organ.Insert will qdel any existing organs in the same slot, so
-		// we don't need to manage that.
-		new_tail.Insert(C, TRUE, FALSE)
-*/
-//SKYRAT EDIT REMOVAL END
-
 //SKYRAT EDIT REMOVAL BEGIN
 /*
-=======
->>>>>>> 6d470992cb6 (This tail refactor turned into an organ refactor. Funny how that works. (#67017))
 /datum/species/lizard/randomize_main_appearance_element(mob/living/carbon/human/human_mob)
 	var/tail = pick(GLOB.tails_list_lizard)
 	human_mob.dna.features["tail_lizard"] = tail
@@ -224,13 +163,8 @@ Lizard subspecies: SILVER SCALED
 		TRAIT_VIRUSIMMUNE,
 		TRAIT_WINE_TASTER,
 	)
-<<<<<<< HEAD
-	species_language_holder = /datum/language_holder/lizard //SKYRAT EDIT CHANGE
-	mutanttongue = /obj/item/organ/tongue/lizard //SKYRAT EDIT CHANGE
-=======
-	species_language_holder = /datum/language_holder/lizard/silver
-	mutanttongue = /obj/item/organ/internal/tongue/lizard/silver
->>>>>>> 6d470992cb6 (This tail refactor turned into an organ refactor. Funny how that works. (#67017))
+	species_language_holder = /datum/language_holder/lizard //SKYRAT EDIT CHANGE - Enclave pirates - ORIGINAL: species_language_holder = /datum/language_holder/lizard/silver
+	mutanttongue = /obj/item/organ/internal/tongue/lizard //SKYRAT EDIT CHANGE - Enclave pirates - ORIGINAL: mutanttongue = /obj/item/organ/internal/tongue/lizard/silver
 	armor = 10 //very light silvery scales soften blows
 	changesource_flags = MIRROR_BADMIN | MIRROR_MAGIC | RACE_SWAP | ERT_SPAWN
 	examine_limb_id = SPECIES_LIZARD

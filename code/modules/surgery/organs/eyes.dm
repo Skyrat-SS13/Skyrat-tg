@@ -365,13 +365,8 @@
 	else
 		activate()
 
-<<<<<<< HEAD
-/obj/item/organ/eyes/robotic/glow/proc/prompt_for_controls(mob/user)
-	var/color = input(owner, "Select Color", "Select color", current_color_string) as color|null //SKYRAT EDIT CHANGE
-=======
 /obj/item/organ/internal/eyes/robotic/glow/proc/prompt_for_controls(mob/user)
-	var/color = input(owner, "Select Color", "Select color", "#ffffff") as color|null
->>>>>>> 6d470992cb6 (This tail refactor turned into an organ refactor. Funny how that works. (#67017))
+	var/color = input(owner, "Select Color", "Select color", current_color_string) as color|null // SKYRAT EDIT CHANGE
 	if(!color || QDELETED(src) || QDELETED(user) || QDELETED(owner) || owner != user)
 		return
 	var/range = input(user, "Enter range (0 - [max_light_beam_distance])", "Range Select", 0) as null|num

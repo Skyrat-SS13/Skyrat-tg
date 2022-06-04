@@ -175,17 +175,14 @@
 	if(length(wounds))
 		stack_trace("[type] qdeleted with [length(wounds)] uncleared wounds")
 		wounds.Cut()
-<<<<<<< HEAD
 	//SKYRAT EDIT ADDITION BEGIN - MEDICAL
 	if(current_gauze)
 		qdel(current_gauze)
 	if(current_splint)
 		qdel(current_splint)
 	//SKYRAT EDIT ADDITION END
-=======
 	for(var/external_organ in external_organs)
 		qdel(external_organ)
->>>>>>> 6d470992cb6 (This tail refactor turned into an organ refactor. Funny how that works. (#67017))
 	return ..()
 
 /obj/item/bodypart/forceMove(atom/destination) //Please. Never forcemove a limb if its's actually in use. This is only for borgs.

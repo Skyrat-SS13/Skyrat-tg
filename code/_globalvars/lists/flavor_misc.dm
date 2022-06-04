@@ -40,12 +40,8 @@ GLOBAL_LIST_EMPTY(moth_wings_list)
 GLOBAL_LIST_EMPTY(moth_antennae_list)
 GLOBAL_LIST_EMPTY(moth_markings_list)
 GLOBAL_LIST_EMPTY(caps_list)
-<<<<<<< HEAD
-GLOBAL_LIST_EMPTY(tails_list_monkey)
 */
 //SKYRAT EDIT REMOVAL END
-=======
->>>>>>> 6d470992cb6 (This tail refactor turned into an organ refactor. Funny how that works. (#67017))
 GLOBAL_LIST_EMPTY(pod_hair_list)
 
 GLOBAL_LIST_INIT(color_list_ethereal, list(

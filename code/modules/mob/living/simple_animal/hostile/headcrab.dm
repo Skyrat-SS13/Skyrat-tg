@@ -68,10 +68,9 @@
 		Remove(owner)
 		qdel(src)
 
-<<<<<<< HEAD
-/obj/item/organ/body_egg/changeling_egg/proc/Pop()
+/obj/item/organ/internal/body_egg/changeling_egg/proc/Pop()
 	// SKYRAT EDIT START
-	var/mob/living/carbon/human/spawned_monkey = new(owner)
+	var/mob/living/carbon/human/species/monkey/spawned_monkey = new(owner)
 	var/datum/dna/current_dna = spawned_monkey.dna
 	for(var/key in current_dna.mutant_bodyparts)
 		LAZYSET(current_dna.mutant_bodyparts, key, "None")
@@ -88,10 +87,6 @@
 			qdel(iter_scar)
 	spawned_monkey.regenerate_icons()
 	// SKYRAT EDIT END
-=======
-/obj/item/organ/internal/body_egg/changeling_egg/proc/Pop()
-	var/mob/living/carbon/human/species/monkey/spawned_monkey = new(owner)
->>>>>>> 6d470992cb6 (This tail refactor turned into an organ refactor. Funny how that works. (#67017))
 
 	for(var/obj/item/organ/I in src)
 		I.Insert(spawned_monkey, 1)
@@ -104,14 +99,14 @@
 			changeling_datum = origin.add_antag_datum(/datum/antagonist/changeling/headslug)
 		if(changeling_datum.can_absorb_dna(owner))
 			changeling_datum.add_new_profile(owner)
-		
+
 		// SKYRAT EDIT START
 		var/datum/action/changeling/humanform/hf = new()
 		changeling_datum.purchased_powers += hf
 		hf.Grant(origin.current)
 		changeling_datum.regain_powers()
 		// SKYRAT EDIT END
-		
+
 	owner.gib()
 
 #undef EGG_INCUBATION_TIME

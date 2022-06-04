@@ -33,8 +33,6 @@
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/moth_wings, GLOB.moth_wings_list)
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/moth_antennae, GLOB.moth_antennae_list)
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/moth_markings, GLOB.moth_markings_list)
-<<<<<<< HEAD
-	init_sprite_accessory_subtypes(/datum/sprite_accessory/tails/monkey, GLOB.tails_list_monkey)
 	*/
 	//SKYRAT EDIT REMOVAL END
 
@@ -51,10 +49,6 @@
 		GLOB.laugh_types[L.name] = spath
 	sort_list(GLOB.laugh_types, /proc/cmp_typepaths_asc)
 	//SKYRAT EDIT END
-
-=======
->>>>>>> 6d470992cb6 (This tail refactor turned into an organ refactor. Funny how that works. (#67017))
-	init_sprite_accessory_subtypes(/datum/sprite_accessory/pod_hair, GLOB.pod_hair_list)
 
 	//Species
 	for(var/spath in subtypesof(/datum/species))

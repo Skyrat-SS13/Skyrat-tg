@@ -92,13 +92,8 @@
 	if(!GLOB.pod_hair_list.len)
 		init_sprite_accessory_subtypes(/datum/sprite_accessory/pod_hair, GLOB.pod_hair_list)
 
-<<<<<<< HEAD
-	//For now we will always return none for tail_human and ears.
-		return(list(
-=======
 	//For now we will always return none for tail_human and ears. | "For now" he says.
 	return(list(
->>>>>>> 6d470992cb6 (This tail refactor turned into an organ refactor. Funny how that works. (#67017))
 		"mcolor" = "#[pick("7F","FF")][pick("7F","FF")][pick("7F","FF")]",
 		"ethcolor" = GLOB.color_list_ethereal[pick(GLOB.color_list_ethereal)],
 		"tail_cat" = "None",

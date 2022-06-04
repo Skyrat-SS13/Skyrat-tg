@@ -391,13 +391,8 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 			set_uni_feature_block(blocknumber, construct_block(GLOB.moth_markings_list.Find(features["moth_markings"]), GLOB.moth_markings_list.len))
 		if(DNA_MUSHROOM_CAPS_BLOCK)
 			set_uni_feature_block(blocknumber, construct_block(GLOB.caps_list.Find(features["caps"]), GLOB.caps_list.len))
-<<<<<<< HEAD
-		if(DNA_MONKEY_TAIL_BLOCK)
-			set_uni_feature_block(blocknumber, construct_block(GLOB.tails_list_monkey.Find(features["tail_monkey"]), GLOB.tails_list_monkey.len))
 */
 //SKYRAT EDIT REMOVAL END
-=======
->>>>>>> 6d470992cb6 (This tail refactor turned into an organ refactor. Funny how that works. (#67017))
 		if(DNA_POD_HAIR_BLOCK)
 			set_uni_feature_block(blocknumber, construct_block(GLOB.pod_hair_list.Find(features["pod_hair"]), GLOB.pod_hair_list.len))
 

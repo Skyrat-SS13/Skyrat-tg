@@ -56,23 +56,20 @@
 	if(mob_sprite)
 		set_sprite(mob_sprite)
 
-<<<<<<< HEAD
-	cache_key = generate_icon_cache()
+	// cache_key = jointext(generate_icon_cache(), "_") // SKYRAT EDIT - Species stuff that Goofball ported from /tg/, apparently. Commented for now, to see if I can make it work without it.
 	// SKYRAT EDIT: we have like 145+ fucking dna blocks lmao
 	dna_block = GLOB.dna_mutant_bodypart_blocks[preference]
 
-=======
 	if(!(organ_flags & ORGAN_UNREMOVABLE))
 		color = "#[random_color()]" //A temporary random color that gets overwritten on insertion.
 
 /obj/item/organ/external/Destroy()
 	if(owner)
-		Remove(owner, special=TRUE)
+		Remove(owner, special = TRUE)
 	else if(ownerlimb)
 		remove_from_limb()
 
 	return ..()
->>>>>>> 6d470992cb6 (This tail refactor turned into an organ refactor. Funny how that works. (#67017))
 
 /obj/item/organ/external/Insert(mob/living/carbon/reciever, special, drop_if_replaced)
 	var/obj/item/bodypart/limb = reciever.get_bodypart(deprecise_zone(zone))
@@ -161,18 +158,6 @@
 	overlay_list += appearance
 
 /obj/item/organ/external/proc/set_sprite(sprite_name)
-<<<<<<< HEAD
-	return
-	/* SKYRAT EDIT REMOVAL
-	sprite_datum = get_sprite_datum(sprite_name)
-	cache_key = generate_icon_cache()
-	*/
-
-///Generate a unique key based on our sprites. So that if we've aleady drawn these sprites, they can be found in the cache and wont have to be drawn again (blessing and curse)
-/obj/item/organ/external/proc/generate_icon_cache()
-	return ""
-	//return "[sprite_datum.icon_state]_[feature_key]" SKYRAT EDIT REMOVAL
-=======
 	stored_feature_id = sprite_name
 	sprite_datum = get_sprite_datum(sprite_name)
 	cache_key = jointext(generate_icon_cache(), "_")
@@ -184,7 +169,6 @@
 	. += "[render_key ? render_key : feature_key]"
 	. += "[draw_color]"
 	return .
->>>>>>> 6d470992cb6 (This tail refactor turned into an organ refactor. Funny how that works. (#67017))
 
 /**This exists so sprite accessories can still be per-layer without having to include that layer's
 *  number in their sprite name, which causes issues when those numbers change.
@@ -196,15 +180,11 @@
 		if(BODY_ADJ_LAYER)
 			return "ADJ"
 		if(BODY_FRONT_LAYER)
-<<<<<<< HEAD
-			return "_FRONT"
+			return "FRONT"
 		//SKYRAT EDIT ADDITION BEGIN
 		if(BODY_FRONT_UNDER_CLOTHES)
-			return "_FRONT"
-		//SKYRAT EDIT ADDITION END
-=======
 			return "FRONT"
->>>>>>> 6d470992cb6 (This tail refactor turned into an organ refactor. Funny how that works. (#67017))
+		//SKYRAT EDIT ADDITION END
 
 ///Converts a bitflag to the right layer. I'd love to make this a static index list, but byond made an attempt on my life when i did
 /obj/item/organ/external/proc/bitflag_to_layer(layer)
@@ -382,11 +362,7 @@
 
 	dna_block = DNA_POD_HAIR_BLOCK
 
-<<<<<<< HEAD
-	overrides_color = FALSE // SKYRAT EDIT CHANGE - TO DO: FIX THIS FROM JUST DYING
-=======
 	color_source = ORGAN_COLOR_OVERRIDE
->>>>>>> 6d470992cb6 (This tail refactor turned into an organ refactor. Funny how that works. (#67017))
 
 /obj/item/organ/external/pod_hair/can_draw_on_bodypart(mob/living/carbon/human/human)
 	if(!(human.head?.flags_inv & HIDEHAIR) || (human.wear_mask?.flags_inv & HIDEHAIR))

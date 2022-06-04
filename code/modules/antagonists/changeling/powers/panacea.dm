@@ -12,16 +12,10 @@
 	to_chat(user, span_notice("We cleanse impurities from our form."))
 	..()
 	var/list/bad_organs = list(
-<<<<<<< HEAD
-		user.getorgan(/obj/item/organ/body_egg),
-		user.getorgan(/obj/item/organ/zombie_infection)
-		)
-
-	try_to_mutant_cure(user) //SKYRAT EDIT ADDITION
-=======
 		user.getorgan(/obj/item/organ/internal/body_egg),
 		user.getorgan(/obj/item/organ/internal/zombie_infection))
->>>>>>> 6d470992cb6 (This tail refactor turned into an organ refactor. Funny how that works. (#67017))
+
+	try_to_mutant_cure(user) //SKYRAT EDIT ADDITION
 
 	for(var/o in bad_organs)
 		var/obj/item/organ/O = o

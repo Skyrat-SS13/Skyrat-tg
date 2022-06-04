@@ -428,13 +428,9 @@
 	color = "#96DB00" // TODO proper sprite, rather than recoloured pink tongue
 	desc = "A minutely toothed, chitious ribbon, which as a side effect, makes all snails talk IINNCCRREEDDIIBBLLYY SSLLOOWWLLYY."
 	modifies_speech = TRUE
-<<<<<<< HEAD
-/*
-/obj/item/organ/tongue/snail/modify_speech(datum/source, list/speech_args) //SKYRAT EDIT - Roundstart Snails: Less annoying speech.
-=======
 
+/* SKYRAT EDIT START - Roundstart Snails: Less annoying speech.
 /obj/item/organ/internal/tongue/snail/modify_speech(datum/source, list/speech_args)
->>>>>>> 6d470992cb6 (This tail refactor turned into an organ refactor. Funny how that works. (#67017))
 	var/new_message
 	var/message = speech_args[SPEECH_MESSAGE]
 	for(var/i in 1 to length(message))
@@ -443,13 +439,9 @@
 		else
 			new_message += message[i]
 	speech_args[SPEECH_MESSAGE] = new_message
-<<<<<<< HEAD
-*/
-/obj/item/organ/tongue/ethereal
-=======
+*/ // SKYRAT EDIT END
 
 /obj/item/organ/internal/tongue/ethereal
->>>>>>> 6d470992cb6 (This tail refactor turned into an organ refactor. Funny how that works. (#67017))
 	name = "electric discharger"
 	desc = "A sophisticated ethereal organ, capable of synthesising speech via electrical discharge."
 	icon_state = "electrotongue"

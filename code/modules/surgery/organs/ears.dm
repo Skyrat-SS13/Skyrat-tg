@@ -67,13 +67,9 @@
 	visual = TRUE
 	damage_multiplier = 2
 
-<<<<<<< HEAD
 //SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION
 /*
-/obj/item/organ/ears/cat/Insert(mob/living/carbon/human/ear_owner, special = 0, drop_if_replaced = TRUE)
-=======
 /obj/item/organ/internal/ears/cat/Insert(mob/living/carbon/human/ear_owner, special = 0, drop_if_replaced = TRUE)
->>>>>>> 6d470992cb6 (This tail refactor turned into an organ refactor. Funny how that works. (#67017))
 	..()
 	if(istype(ear_owner))
 		color = ear_owner.hair_color

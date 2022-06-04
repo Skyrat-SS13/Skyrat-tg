@@ -696,43 +696,6 @@ GLOBAL_LIST_EMPTY(features_by_species)
 
 	var/obj/item/bodypart/head/noggin = source.get_bodypart(BODY_ZONE_HEAD)
 
-<<<<<<< HEAD
-	if(mutant_bodyparts["tail_lizard"])
-		if(source.wear_suit && (source.wear_suit.flags_inv & HIDEJUMPSUIT))
-			bodyparts_to_add -= "tail_lizard"
-
-	if(mutant_bodyparts["waggingtail_lizard"])
-		if(source.wear_suit && (source.wear_suit.flags_inv & HIDEJUMPSUIT))
-			bodyparts_to_add -= "waggingtail_lizard"
-		else if (mutant_bodyparts["tail_lizard"])
-			bodyparts_to_add -= "waggingtail_lizard"
-
-	if(mutant_bodyparts["tail_human"])
-		if(source.wear_suit && (source.wear_suit.flags_inv & HIDEJUMPSUIT))
-			bodyparts_to_add -= "tail_human"
-
-	if("tail_monkey" in mutant_bodyparts)
-		if(source.wear_suit && (source.wear_suit.flags_inv & HIDEJUMPSUIT))
-			bodyparts_to_add -= "tail_monkey"
-
-
-	if(mutant_bodyparts["waggingtail_human"])
-		if(source.wear_suit && (source.wear_suit.flags_inv & HIDEJUMPSUIT))
-			bodyparts_to_add -= "waggingtail_human"
-		else if (mutant_bodyparts["tail_human"])
-			bodyparts_to_add -= "waggingtail_human"
-
-	if(mutant_bodyparts["spines"])
-		if(!source.dna.features["spines"] || source.dna.features["spines"] == "None" || source.wear_suit && (source.wear_suit.flags_inv & HIDEJUMPSUIT))
-			bodyparts_to_add -= "spines"
-
-	if(mutant_bodyparts["waggingspines"])
-		if(!source.dna.features["spines"] || source.dna.features["spines"] == "None" || source.wear_suit && (source.wear_suit.flags_inv & HIDEJUMPSUIT))
-			bodyparts_to_add -= "waggingspines"
-		else if (mutant_bodyparts["tail"])
-			bodyparts_to_add -= "waggingspines"
-=======
->>>>>>> 6d470992cb6 (This tail refactor turned into an organ refactor. Funny how that works. (#67017))
 
 	if(mutant_bodyparts["ears"])
 		if(!source.dna.features["ears"] || source.dna.features["ears"] == "None" || source.head && (source.head.flags_inv & HIDEHAIR) || (source.wear_mask && (source.wear_mask.flags_inv & HIDEHAIR)) || !noggin || !IS_ORGANIC_LIMB(noggin))
@@ -749,27 +712,6 @@ GLOBAL_LIST_EMPTY(features_by_species)
 		for(var/bodypart in bodyparts_to_add)
 			var/datum/sprite_accessory/accessory
 			switch(bodypart)
-<<<<<<< HEAD
-				if("tail_lizard")
-					accessory = GLOB.tails_list_lizard[source.dna.features["tail_lizard"]]
-				if("waggingtail_lizard")
-					accessory = GLOB.animated_tails_list_lizard[source.dna.features["tail_lizard"]]
-				if("tail_human")
-					accessory = GLOB.tails_list_human[source.dna.features["tail_human"]]
-				if("waggingtail_human")
-					accessory = GLOB.animated_tails_list_human[source.dna.features["tail_human"]]
-				if("spines")
-					accessory = GLOB.spines_list[source.dna.features["spines"]]
-				if("waggingspines")
-					accessory = GLOB.animated_spines_list[source.dna.features["spines"]]
-				if("snout")
-					accessory = GLOB.snouts_list[source.dna.features["snout"]]
-				if("frills")
-					accessory = GLOB.frills_list[source.dna.features["frills"]]
-				if("horns")
-					accessory = GLOB.horns_list[source.dna.features["horns"]]
-=======
->>>>>>> 6d470992cb6 (This tail refactor turned into an organ refactor. Funny how that works. (#67017))
 				if("ears")
 					accessory = GLOB.ears_list[source.dna.features["ears"]]
 				if("body_markings")
@@ -1825,79 +1767,6 @@ GLOBAL_LIST_EMPTY(features_by_species)
 //Tail Wagging//
 ////////////////
 
-<<<<<<< HEAD
-
-/*
- * This proc is called when a mob loses their tail.
- *
- * tail_owner - the owner of the tail (who holds our species datum)
- * lost_tail - the tail that was removed
- * on_species_init - whether or not this was called when the species was initialized, or if it was called due to an ingame means (like surgery)
- */
-/datum/species/proc/on_tail_lost(mob/living/carbon/human/tail_owner, obj/item/organ/tail/lost_tail, on_species_init = FALSE)
-	SEND_SIGNAL(tail_owner, COMSIG_CLEAR_MOOD_EVENT, "right_tail_regained")
-	SEND_SIGNAL(tail_owner, COMSIG_CLEAR_MOOD_EVENT, "wrong_tail_regained")
-	stop_wagging_tail(tail_owner)
-
-	// If it's initializing the species, don't add moodlets
-	if(on_species_init)
-		return
-	// If we don't have a set tail, don't bother adding moodlets
-	//SKYRAT EDIT CHANGE BEGIN
-	/*
-	if(!mutant_organs.len)
-		return
-	*/
-	if(!tail_owner.dna.mutant_bodyparts["tail"])
-		return
-	//SKYRAT EDIT CHANGE END
-
-	SEND_SIGNAL(tail_owner, COMSIG_ADD_MOOD_EVENT, "tail_lost", /datum/mood_event/tail_lost)
-	SEND_SIGNAL(tail_owner, COMSIG_ADD_MOOD_EVENT, "tail_balance_lost", /datum/mood_event/tail_balance_lost)
-
-/*
- * This proc is called when a mob gains a tail.
- *
- * tail_owner - the owner of the tail (who holds our species datum)
- * lost_tail - the tail that was added
- * on_species_init - whether or not this was called when the species was initialized, or if it was called due to an ingame means (like surgery)
- */
-/datum/species/proc/on_tail_regain(mob/living/carbon/human/tail_owner, obj/item/organ/tail/found_tail, on_species_init = FALSE)
-	SEND_SIGNAL(tail_owner, COMSIG_CLEAR_MOOD_EVENT, "tail_lost")
-	SEND_SIGNAL(tail_owner, COMSIG_CLEAR_MOOD_EVENT, "tail_balance_lost")
-
-	// If it's initializing the species, don't add moodlets
-	if(on_species_init)
-		return
-	// If we don't have a set tail, don't add moodlets
-	//SKYRAT EDIT CHANGE BEGIN
-	/*
-	if(!mutant_organs.len)
-		return
-	*/
-	if(!tail_owner.dna.mutant_bodyparts["tail"])
-		return
-	//SKYRAT EDIT CHANGE END
-
-	//SKYRAT EDIT CHANGE BEGIN
-	/*
-	if(found_tail.type in mutant_organs)
-		SEND_SIGNAL(tail_owner, COMSIG_ADD_MOOD_EVENT, "right_tail_regained", /datum/mood_event/tail_regained_right)
-	else
-		SEND_SIGNAL(tail_owner, COMSIG_ADD_MOOD_EVENT, "wrong_tail_regained", /datum/mood_event/tail_regained_wrong)
-	*/
-	//SKYRAT EDIT TAIL TRAUMA BEGIN
-	/* Temporarily disabling until fixed upon player spawm
-	if(tail_owner.dna.mutant_bodyparts["tail"][MUTANT_INDEX_NAME] == mutant_bodyparts["tail"][MUTANT_INDEX_NAME]) //mutant_bodyparts["tail"] should exist here
-		SEND_SIGNAL(tail_owner, COMSIG_ADD_MOOD_EVENT, "right_tail_regained", /datum/mood_event/tail_regained_right)
-	else
-		SEND_SIGNAL(tail_owner, COMSIG_ADD_MOOD_EVENT, "wrong_tail_regained", /datum/mood_event/tail_regained_wrong)
-	*/
-	//SKYRAT EDIT TAIL TRAUMA END
-	//SKYRAT EDIT CHANGE END
-
-=======
->>>>>>> 6d470992cb6 (This tail refactor turned into an organ refactor. Funny how that works. (#67017))
 /*
  * Clears all tail related moodlets when they lose their species.
  *
@@ -1907,24 +1776,6 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	SEND_SIGNAL(former_tail_owner, COMSIG_CLEAR_MOOD_EVENT, "tail_lost")
 	SEND_SIGNAL(former_tail_owner, COMSIG_CLEAR_MOOD_EVENT, "tail_balance_lost")
 	SEND_SIGNAL(former_tail_owner, COMSIG_CLEAR_MOOD_EVENT, "wrong_tail_regained")
-<<<<<<< HEAD
-	stop_wagging_tail(former_tail_owner)
-
-
-//SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
-/*
-/datum/species/proc/can_wag_tail(mob/living/carbon/human/H)
-	return FALSE
-
-/datum/species/proc/is_wagging_tail(mob/living/carbon/human/H)
-	return FALSE
-/datum/species/proc/start_wagging_tail(mob/living/carbon/human/H)
-
-/datum/species/proc/stop_wagging_tail(mob/living/carbon/human/H)
-*/
-//SKYRAT EDIT REMOVAL END
-=======
->>>>>>> 6d470992cb6 (This tail refactor turned into an organ refactor. Funny how that works. (#67017))
 
 ///////////////
 //FLIGHT SHIT//

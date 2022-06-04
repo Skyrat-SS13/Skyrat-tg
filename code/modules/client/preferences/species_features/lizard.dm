@@ -139,11 +139,8 @@
 
 /datum/preference/choiced/lizard_tail/apply_to_human(mob/living/carbon/human/target, value)
 	target.dna.features["tail_lizard"] = value
-<<<<<<< HEAD
-*/
-=======
 
 /datum/preference/choiced/lizard_tail/create_default_value()
 	var/datum/sprite_accessory/tails/lizard/smooth/tail = /datum/sprite_accessory/tails/lizard/smooth
 	return initial(tail.name)
->>>>>>> 6d470992cb6 (This tail refactor turned into an organ refactor. Funny how that works. (#67017))
+*/
