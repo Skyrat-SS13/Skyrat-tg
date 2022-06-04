@@ -162,7 +162,7 @@
 		patient.monkeyize()
 
 	else
-		patient?.client?.prefs?.safe_transfer_prefs_to(patient)
+		patient.client?.prefs?.safe_transfer_prefs_to(patient)
 		patient.dna.update_dna_identity()
 		log_game("[key_name(patient)] used a Self-Actualization Device at [loc_name(src)].")
 
