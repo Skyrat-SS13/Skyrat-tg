@@ -5,7 +5,6 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "russian_green_armor_old"
 	inhand_icon_state = "rus_armor"
-	armor = list(MELEE = 25, BULLET = 30, LASER = 15, ENERGY = 10, BOMB = 10, BIO = 0, FIRE = 20, ACID = 50, WOUND = 10)
 
 /obj/item/clothing/suit/armor/vest/russian/nri
 	name = "\improper B42M combined armor vest"
@@ -18,7 +17,7 @@
 	max_heat_protection_temperature = SPACE_SUIT_MAX_TEMP_PROTECT
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/suit/armor/heavy/nri
+/obj/item/clothing/suit/armor/heavy/nri/old
 	name = "\improper Cordun-M armor system"
 	desc = "A strong set of full-body armor designed for harsh environments. It has nothing in it to aid the user's movement."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'

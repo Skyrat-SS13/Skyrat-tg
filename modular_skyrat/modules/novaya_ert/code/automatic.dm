@@ -7,8 +7,10 @@
 	icon_state = "bison"
 	inhand_icon_state = "bison"
 	mag_type = /obj/item/ammo_box/magazine/plastikov9mm
+	fire_delay = 1
 	burst_size = 5
-	spread = 15
+	dual_wield_spread = 15
+	spread = 20
 	can_suppress = FALSE
 	projectile_damage_multiplier = 0.75 // It's like ~20 damage per bullet, it's close enough to less than 10 shots
 	mag_display = TRUE

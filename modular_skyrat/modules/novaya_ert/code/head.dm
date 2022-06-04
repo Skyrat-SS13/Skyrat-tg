@@ -3,9 +3,8 @@
 	desc = "NRI mass-produced 42-AM helmet, a thin layer of experimental alloy provides limited protection against laser and energy and... polar bears?"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "russian_green_helmet"
+	icon_state = "russian_green_helmet_old"
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
-	armor = list(MELEE = 50, BULLET = 50, LASER = 30, ENERGY = 25, BOMB = 50, BIO = 0, FIRE = 50, ACID = 50, WOUND = 20)
 
 /obj/item/clothing/head/helmet/rus_helmet/nri
 	name = "Russian AM-42 helmet"
