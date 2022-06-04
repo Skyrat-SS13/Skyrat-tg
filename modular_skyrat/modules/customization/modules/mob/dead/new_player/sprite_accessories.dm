@@ -360,6 +360,7 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	name = "Panties - Fishnet Alt"
 	icon_state = "fishnet_lower_alt"
 	gender = FEMALE
+	use_static = null
 
 /datum/sprite_accessory/underwear/female_beekini
 	name = "Panties - Bee-kini"
@@ -443,7 +444,6 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	name = "Thong"
 	icon_state = "thong"
 	gender = FEMALE
-	use_static = TRUE
 
 /datum/sprite_accessory/underwear/thong_babydoll
 	name = "Thong - Alt"
