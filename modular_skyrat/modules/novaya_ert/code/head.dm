@@ -8,8 +8,8 @@
 	armor = list(MELEE = 50, BULLET = 50, LASER = 30, ENERGY = 25, BOMB = 50, BIO = 0, FIRE = 50, ACID = 50, WOUND = 20)
 
 /obj/item/clothing/head/helmet/rus_helmet/nri
-	name = "Russian L47 helmet"
-	desc = "NRI mass-produced 42-AM helmet, a thin layer of experimental alloy provides limited protection against laser and energy and... Polar bears?"
+	name = "Russian AM-42 helmet"
+	desc = "NRI mass-produced AM-42 helmet, a thin layer of experimental alloy provides limited protection against laser and energy and... Polar bears?"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "russian_green_helmet"
