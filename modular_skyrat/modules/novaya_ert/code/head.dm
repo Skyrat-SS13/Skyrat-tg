@@ -1,11 +1,20 @@
-/obj/item/clothing/head/helmet/rus_helmet/nri
+/obj/item/clothing/head/helmet/rus_helmet
 	name = "Russian L47 helmet"
-	desc = "A Type 47 light helmet, it looks like it has a pocket for a bottle of vodka."
+	desc = "NRI mass-produced 42-AM helmet, a thin layer of experimental alloy provides limited protection against laser and energy and... Polar bears?"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "russian_green_helmet"
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
-	armor = list("melee" = 50, "bullet" = 50, "laser" = 30, "energy" = 25, "bomb" = 50, "bio" = 0, "fire" = 50, "acid" = 50, "wound" = 20)
+	armor = list(MELEE = 50, BULLET = 50, LASER = 30, ENERGY = 25, BOMB = 50, BIO = 0, FIRE = 50, ACID = 50, WOUND = 20)
+
+/obj/item/clothing/head/helmet/rus_helmet/nri
+	name = "Russian L47 helmet"
+	desc = "NRI mass-produced 42-AM helmet, a thin layer of experimental alloy provides limited protection against laser and energy and... Polar bears?"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	icon_state = "russian_green_helmet"
+	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
+	armor = list(MELEE = 50, BULLET = 50, LASER = 30, ENERGY = 25, BOMB = 50, BIO = 0, FIRE = 50, ACID = 50, WOUND = 20)
 
 /obj/item/clothing/head/beret/sec/nri
 	name = "commander's beret"
@@ -13,12 +22,12 @@
 	armor = list(MELEE = 40, BULLET = 35, LASER = 30, ENERGY = 40, BOMB = 25, BIO = 0, FIRE = 20, ACID = 50, WOUND = 20)
 
 /obj/item/clothing/head/helmet/nri_heavy
-	name = "altyn helmet"
+	name = "\improper Cordun-M helmet"
 	desc = "A heavy Russian combat helmet with a strong ballistic visor. Alt+click to adjust."
 	icon_state = "russian_heavy_helmet"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	armor = list("melee" = 60, "bullet" = 60, "laser" = 50, "energy" = 50, "bomb" = 100, "bio" = 100, "fire" = 70, "acid" = 70, "wound" = 35)
+	armor = list(MELEE = 60, BULLET = 60, LASER = 50, ENERGY = 50, BOMB = 100, BIO = 100, FIRE = 70, ACID = 70, WOUND = 35)
 	/// What position the helmet is in, TRUE = DOWN, FALSE = UP
 	var/helmet_position = TRUE
 

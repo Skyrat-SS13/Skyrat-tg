@@ -19,7 +19,7 @@
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/suit/armor/heavy/nri
-	name = "\improper REDUT armor system"
+	name = "\improper Cordun-M armor system"
 	desc = "A strong set of full-body armor designed for harsh environments. It has nothing in it to aid the user's movement."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
