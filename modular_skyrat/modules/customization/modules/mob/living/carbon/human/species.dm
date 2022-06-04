@@ -354,7 +354,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 
 		// eyes
 		if(!(NOEYESPRITES in species_traits))
-			var/obj/item/organ/eyes/eye_organ = species_human.getorganslot(ORGAN_SLOT_EYES)
+			var/obj/item/organ/internal/eyes/eye_organ = species_human.getorganslot(ORGAN_SLOT_EYES)
 			var/mutable_appearance/no_eyeslay
 
 			var/add_pixel_x = 0
@@ -444,7 +444,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 /datum/species/proc/can_wag_tail(mob/living/carbon/human/H)
 	if(!H) //Somewhere in the core code we're getting those procs with H being null
 		return FALSE
-	var/obj/item/organ/tail/T = H.getorganslot(ORGAN_SLOT_TAIL)
+	var/obj/item/organ/external/tail/T = H.getorganslot(ORGAN_SLOT_EXTERNAL_TAIL)
 	if(!T)
 		return FALSE
 	if(T.can_wag)
@@ -454,7 +454,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 /datum/species/proc/is_wagging_tail(mob/living/carbon/human/H)
 	if(!H) //Somewhere in the core code we're getting those procs with H being null
 		return FALSE
-	var/obj/item/organ/tail/T = H.getorganslot(ORGAN_SLOT_TAIL)
+	var/obj/item/organ/external/tail/T = H.getorganslot(ORGAN_SLOT_EXTERNAL_TAIL)
 	if(!T)
 		return FALSE
 	return T.wagging
@@ -462,7 +462,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 /datum/species/proc/start_wagging_tail(mob/living/carbon/human/H)
 	if(!H) //Somewhere in the core code we're getting those procs with H being null
 		return
-	var/obj/item/organ/tail/T = H.getorganslot(ORGAN_SLOT_TAIL)
+	var/obj/item/organ/external/tail/T = H.getorganslot(ORGAN_SLOT_EXTERNAL_TAIL)
 	if(!T)
 		return FALSE
 	T.wagging = TRUE
@@ -471,7 +471,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 /datum/species/proc/stop_wagging_tail(mob/living/carbon/human/H)
 	if(!H) //Somewhere in the core code we're getting those procs with H being null
 		return
-	var/obj/item/organ/tail/T = H.getorganslot(ORGAN_SLOT_TAIL)
+	var/obj/item/organ/external/tail/T = H.getorganslot(ORGAN_SLOT_EXTERNAL_TAIL)
 	if(!T)
 		return
 	T.wagging = FALSE

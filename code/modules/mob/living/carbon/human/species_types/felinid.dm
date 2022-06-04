@@ -74,6 +74,7 @@
 		var/datum/species/human/felinid/cat_species = H.dna.species
 		cat_species.original_felinid = FALSE
 	else
+		// GOLDEN TODO - Make this check that they don't already have tails and ears before inserting them.
 		var/obj/item/organ/internal/ears/cat/kitty_ears = new
 		var/obj/item/organ/external/tail/cat/kitty_tail = new
 		kitty_ears.Insert(H, TRUE, FALSE) //Gives nonhumans cat tail and ears

@@ -1,10 +1,10 @@
 /datum/crafting_recipe/food/haggis
 	name = "Haggis"
 	reqs = list(
-		/obj/item/organ/heart = 1,
-		/obj/item/organ/liver = 1,
-		/obj/item/organ/lungs = 1,
-		/obj/item/organ/stomach = 1,
+		/obj/item/organ/internal/heart = 1,
+		/obj/item/organ/internal/liver = 1,
+		/obj/item/organ/internal/lungs = 1,
+		/obj/item/organ/internal/stomach = 1,
 		/obj/item/food/grown/onion = 1,
 		/obj/item/food/soup/oatmeal = 1,
 		/datum/reagent/consumable/salt = 1,

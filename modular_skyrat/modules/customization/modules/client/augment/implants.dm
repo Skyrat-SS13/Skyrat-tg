@@ -34,4 +34,4 @@
 /datum/augment_item/implant/mouth/breathing_tube
 	name = "Breathing Tube"
 	cost = 2
-	path = /obj/item/organ/cyberimp/mouth/breathing_tube
+	path = /obj/item/organ/internal/cyberimp/mouth/breathing_tube

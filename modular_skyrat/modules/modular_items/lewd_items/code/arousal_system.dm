@@ -641,7 +641,7 @@
 *	AROUSAL INDICATOR
 */
 
-/obj/item/organ/brain/on_life(delta_time, times_fired) //All your horny is here *points to the head*
+/obj/item/organ/internal/brain/on_life(delta_time, times_fired) //All your horny is here *points to the head*
 	. = ..()
 	var/mob/living/carbon/human/brain_owner = owner
 	if(istype(brain_owner, /mob/living/carbon/human) && brain_owner.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))

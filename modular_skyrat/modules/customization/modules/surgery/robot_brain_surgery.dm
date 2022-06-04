@@ -24,7 +24,7 @@
 	time = 12 SECONDS //long and complicated
 
 /datum/surgery/robot_brain_surgery/can_start(mob/user, mob/living/carbon/target, obj/item/tool)
-	var/obj/item/organ/brain/B = target.getorganslot(ORGAN_SLOT_BRAIN)
+	var/obj/item/organ/internal/brain/B = target.getorganslot(ORGAN_SLOT_BRAIN)
 	if(!B)
 		return FALSE
 	return TRUE

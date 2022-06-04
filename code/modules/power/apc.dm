@@ -807,7 +807,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/power/apc/auto_name, APC_PIXEL_OFFSET
 	if(!ishuman(user))
 		return
 	var/mob/living/carbon/human/apc_interactor = user
-	var/obj/item/organ/stomach/ethereal/maybe_ethereal_stomach = apc_interactor.getorganslot(ORGAN_SLOT_STOMACH)
+	var/obj/item/organ/internal/stomach/ethereal/maybe_ethereal_stomach = apc_interactor.getorganslot(ORGAN_SLOT_STOMACH)
 	if(!istype(maybe_ethereal_stomach))
 		togglelock(user)
 	else
@@ -820,12 +820,12 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/power/apc/auto_name, APC_PIXEL_OFFSET
 	if(!ishuman(user))
 		return
 	var/mob/living/carbon/human/ethereal = user
-	var/obj/item/organ/stomach/maybe_stomach = ethereal.getorganslot(ORGAN_SLOT_STOMACH)
+	var/obj/item/organ/internal/stomach/maybe_stomach = ethereal.getorganslot(ORGAN_SLOT_STOMACH)
 
-	if(!istype(maybe_stomach, /obj/item/organ/stomach/ethereal))
+	if(!istype(maybe_stomach, /obj/item/organ/internal/stomach/ethereal))
 		return
 	var/charge_limit = ETHEREAL_CHARGE_DANGEROUS - APC_POWER_GAIN
-	var/obj/item/organ/stomach/ethereal/stomach = maybe_stomach
+	var/obj/item/organ/internal/stomach/ethereal/stomach = maybe_stomach
 	if(!((stomach?.drain_time < world.time) && LAZYACCESS(modifiers, RIGHT_CLICK)))
 		return
 	if(ethereal.combat_mode)

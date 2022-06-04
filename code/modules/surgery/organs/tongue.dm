@@ -520,21 +520,21 @@
 		signer.visible_message(span_notice("[signer] lowers [signer.p_their()] eyebrows."))
 
 //SKYRAT MODULAR EDIT BEGIN
-/obj/item/organ/tongue/dog
+/obj/item/organ/internal/tongue/dog
 	name = "long tongue"
 	desc = "A long and wet tongue. It seems to jump when it's called good, oddly enough."
 	say_mod = "woofs"
 	icon_state = "tonguenormal"
 	modifies_speech = TRUE
 
-/obj/item/organ/tongue/dog/Insert(mob/living/carbon/signer)
+/obj/item/organ/internal/tongue/dog/Insert(mob/living/carbon/signer)
 	. = ..()
 	signer.verb_ask = "arfs"
 	signer.verb_exclaim = "wans"
 	signer.verb_whisper = "whimpers"
 	signer.verb_yell = "barks"
 
-/obj/item/organ/tongue/dog/Remove(mob/living/carbon/speaker, special = 0)
+/obj/item/organ/internal/tongue/dog/Remove(mob/living/carbon/speaker, special = 0)
 	..()
 	speaker.verb_ask = initial(verb_ask)
 	speaker.verb_exclaim = initial(verb_exclaim)

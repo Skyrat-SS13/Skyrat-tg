@@ -1,13 +1,15 @@
 /datum/sprite_accessory/tails
 	key = "tail"
 	generic = "Tail"
-	organ_type = /obj/item/organ/tail
+	organ_type = /obj/item/organ/external/tail
 	icon = 'modular_skyrat/master_files/icons/mob/mutant_bodyparts.dmi'
 	special_render_case = TRUE
 	special_icon_case = TRUE
 	special_colorize = TRUE
 	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
 	genetic = TRUE
+	/// Flags which define whether or not we support wagging, and whether or not we're currently wagging.
+	var/wag_flags = NONE
 	/// A generalisation of the tail-type, e.g. lizard or feline, for MODsuit or other sprites
 	var/general_type
 	/// Can we use this tail for the fluffy tail turf emote?
@@ -22,8 +24,8 @@
 			if(mod_theme.modsuit_tail_colors)
 				return "[general_type]_modsuit"
 
-	var/obj/item/organ/tail/tail = wearer.getorganslot(ORGAN_SLOT_TAIL)
-	if(tail && tail.wagging)
+	var/obj/item/organ/external/tail/tail = wearer.getorganslot(ORGAN_SLOT_EXTERNAL_TAIL)
+	if(tail && tail.wag_flags & WAG_WAGGING)
 		return "[icon_state]_wagging"
 
 	return icon_state
@@ -55,12 +57,12 @@
 
 /datum/sprite_accessory/tails/lizard
 	recommended_species = list(SPECIES_LIZARD, SPECIES_LIZARD_ASH, SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_UNATHI, SPECIES_LIZARD_SILVER)
-	organ_type = /obj/item/organ/tail/lizard
+	organ_type = /obj/item/organ/external/tail/lizard
 	general_type = SPECIES_LIZARD
 
 /datum/sprite_accessory/tails/human
 	recommended_species = list(SPECIES_HUMAN, SPECIES_SYNTHHUMAN, SPECIES_FELINE, SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_GHOUL)
-	organ_type = /obj/item/organ/tail/cat
+	organ_type = /obj/item/organ/external/tail/cat
 
 /datum/sprite_accessory/tails/monkey/default
 	name = "Monkey"
@@ -68,7 +70,7 @@
 	icon = 'icons/mob/mutant_bodyparts.dmi'
 	recommended_species = list(SPECIES_HUMAN, SPECIES_SYNTHHUMAN, SPECIES_FELINE, SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_MONKEY, SPECIES_GHOUL)
 	color_src = FALSE
-	organ_type = /obj/item/organ/tail/monkey
+	organ_type = /obj/item/organ/external/tail/monkey
 
 /datum/sprite_accessory/tails/is_hidden(mob/living/carbon/human/wearer, obj/item/bodypart/HD)
 	if(wearer.try_hide_mutant_parts)
@@ -97,11 +99,12 @@
 	icon_state = "none"
 	recommended_species = list(SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL,SPECIES_HUMAN, SPECIES_SYNTHHUMAN, SPECIES_HUMANOID, SPECIES_GHOUL)
 	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/tails.dmi'
-	organ_type = /obj/item/organ/tail/fluffy/no_wag
+	organ_type = /obj/item/organ/external/tail/fluffy/no_wag
 	color_src = USE_MATRIXED_COLORS
 
 /datum/sprite_accessory/tails/mammal/wagging
-	organ_type = /obj/item/organ/tail/fluffy
+	organ_type = /obj/item/organ/external/tail/fluffy
+	flags_for_organ = SPRITE_ACCESSORY_WAG_ABLE
 
 /datum/sprite_accessory/tails/mammal/wagging/akula
 	recommended_species = list(SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_HUMAN, SPECIES_SYNTHHUMAN, SPECIES_AKULA, SPECIES_AQUATIC, SPECIES_HUMANOID, SPECIES_GHOUL)

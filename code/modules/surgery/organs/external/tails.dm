@@ -9,7 +9,7 @@
 	organ_flags = ORGAN_EDIBLE
 	feature_key = "tail"
 	render_key = "tail"
-	dna_block = DNA_TAIL_BLOCK
+	// dna_block = DNA_TAIL_BLOCK // SKYRAT EDIT REMOVAL - Customization - We have our own system to handle DNA.
 	///Does this tail have a wagging sprite, and is it currently wagging?
 	var/wag_flags = NONE
 	///The original owner of this tail
@@ -55,7 +55,7 @@
 	return .
 
 /obj/item/organ/external/tail/get_global_feature_list()
-	return GLOB.tails_list
+	return GLOB.sprite_accessories["tail"] // SKYRAT EDIT - Customization - ORIGINAL: return GLOB.tails_list
 
 /obj/item/organ/external/tail/proc/wag(mob/user, start = TRUE, stop_after = 0)
 	if(!(wag_flags & WAG_ABLE))

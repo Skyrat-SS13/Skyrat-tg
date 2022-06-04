@@ -39,7 +39,7 @@
 
 /obj/item/organ/external/wings/functional/get_global_feature_list()
 	// SKYRAT EDIT TODO: Add support for wings_open
-	return GLOB.sprite_accessories["wings"]
+	return GLOB.sprite_accessories["wings"] // SKYRAT EDIT - Goof's port of species stuff from a missed upstream PR
 
 /obj/item/organ/external/wings/functional/Insert(mob/living/carbon/reciever, special, drop_if_replaced)
 	. = ..()

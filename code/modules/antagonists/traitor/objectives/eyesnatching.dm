@@ -72,7 +72,7 @@
 				continue
 
 		var/mob/living/carbon/human/targets_current = possible_target.current
-		if(!targets_current.getorgan(/obj/item/organ/eyes))
+		if(!targets_current.getorgan(/obj/item/organ/internal/eyes))
 			continue
 
 		possible_targets += targets_current
@@ -148,7 +148,7 @@
 	if(!istype(victim) || !victim.Adjacent(user)) //No TK use
 		return ..()
 
-	var/obj/item/organ/eyes/eyeballies = victim.getorganslot(ORGAN_SLOT_EYES)
+	var/obj/item/organ/internal/eyes/eyeballies = victim.getorganslot(ORGAN_SLOT_EYES)
 	var/obj/item/bodypart/head/head = victim.get_bodypart(BODY_ZONE_HEAD)
 
 	if(!eyeballies || victim.is_eyes_covered())

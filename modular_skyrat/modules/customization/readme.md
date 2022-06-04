@@ -26,8 +26,8 @@ Re-writes how mutant bodyparts exist and how they're handled. Adds in a per limb
  ./code/modules/mob/living/carbon/human/species_types/felinid.dm > the 5 procs related to wagging tail
  ./code/modules/mob/living/carbon/human/species_types/lizardpeople.dm the 5 procs related to wagging tail and - /datum/species/lizard/on_species_gain()
  ./code/modules/surgery/bodyparts/_bodyparts.dm > /obj/item/bodypart/proc/get_limb_icon()
- ./code/modules/surgery/organs/ears.dm > /obj/item/organ/ears/cat/Insert(), /obj/item/organ/ears/cat/Remove()
- ./code/modules/surgery/organs/tails.dm > /obj/item/organ/tail/cat/Insert(), /obj/item/organ/tail/cat/Remove(), /obj/item/organ/tail/lizard/Initialize(), /obj/item/organ/tail/lizard/Insert(), /obj/item/organ/tail/lizard/Remove()
+ ./code/modules/surgery/organs/ears.dm > /obj/item/organ/internal/ears/cat/Insert(), /obj/item/organ/internal/ears/cat/Remove()
+ ./code/modules/surgery/organs/tails.dm > /obj/item/organ/external/tail/cat/Insert(), /obj/item/organ/external/tail/cat/Remove(), /obj/item/organ/external/tail/lizard/Initialize(), /obj/item/organ/external/tail/lizard/Insert(), /obj/item/organ/external/tail/lizard/Remove()
  ./code/modules/surgery/bodyparts/dismemberment.dm > /mob/living/carbon/regenerate_limb()
  ./code/modules/mob/living/carbon/human/status_procs.dm > /mob/living/carbon/human/become_husk() > APPENDED
  ./code/modules/reagents/chemistry/holder.dm > /datum/reagents/metabolize()
@@ -47,8 +47,8 @@ Re-writes how mutant bodyparts exist and how they're handled. Adds in a per limb
 ### Defines:
 
  ./code/modules/surgery/organs/tongue.dm > var/static/list/languages_possible_base - added 2 languages
- ./code/modules/mob/living/carbon/human/species_types/lizardpeople.dm > commented out "mutant_organs = list(/obj/item/organ/tail/lizard)"
- ./code/modules/mob/living/carbon/human/species_types/felinid.dm > commented out "mutantears = /obj/item/organ/ears/cat" and "mutant_organs = list(/obj/item/organ/tail/cat)"
+ ./code/modules/mob/living/carbon/human/species_types/lizardpeople.dm > commented out "mutant_organs = list(/obj/item/organ/external/tail/lizard)"
+ ./code/modules/mob/living/carbon/human/species_types/felinid.dm > commented out "mutantears = /obj/item/organ/internal/ears/cat" and "mutant_organs = list(/obj/item/organ/external/tail/cat)"
  ./code/modules/mob/living/carbon/human/species.dm > var/list/list/mutant_bodyparts (added typed list type)
  ./code/_globalvars/lists/flavor_misc.dm > Removed accessory list defines
  .\code\datums\keybindings\living.dm > /datum/keybinding/living/look_up > from L to P

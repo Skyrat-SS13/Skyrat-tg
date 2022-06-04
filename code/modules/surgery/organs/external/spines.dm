@@ -5,12 +5,12 @@
 	feature_key = "spines"
 	render_key = "spines"
 	preference = "feature_lizard_spines"
-	dna_block = DNA_SPINES_BLOCK
+	// dna_block = DNA_SPINES_BLOCK // SKYRAT EDIT REMOVAL - Customization - We have our own system to handle DNA.
 	///A two-way reference between the tail and the spines because of wagging sprites. Bruh.
 	var/obj/item/organ/external/tail/lizard/paired_tail
 
 /obj/item/organ/external/spines/get_global_feature_list()
-	return GLOB.spines_list
+	return GLOB.sprite_accessories["spines"] // SKYRAT EDIT - Customization - ORIGINAL: return GLOB.spines_list
 
 /obj/item/organ/external/spines/can_draw_on_bodypart(mob/living/carbon/human/human)
 	. = ..()
