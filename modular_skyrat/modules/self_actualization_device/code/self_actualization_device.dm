@@ -150,6 +150,11 @@
 	var/eye_damage = check_organ(patient, /obj/item/organ/eyes)
 	var/ear_damage = check_organ(patient, /obj/item/organ/ears)
 
+	var/list/trauma_list = list()
+	if(patient.get_traumas())
+		for(var/datum/brain_trauma/trauma in patient.get_traumas())
+			trauma_list += trauma
+
 	if(obj_flags & EMAGGED)
 		patient.monkeyize()
 
@@ -173,6 +178,12 @@
 	patient.adjustOrganLoss(ORGAN_SLOT_EYES, eye_damage)
 	patient.adjustOrganLoss(ORGAN_SLOT_EARS, ear_damage)
 	patient.adjustOrganLoss(ORGAN_SLOT_BRAIN, brain_damage)
+
+	//Re-Applies Trauma
+	var/obj/item/organ/brain/patient_brain = patient.getorgan(/obj/item/organ/brain)
+
+	if(length(trauma_list))
+		patient_brain.traumas = trauma_list
 
 	open_machine()
 	playsound(src, 'sound/machines/microwave/microwave-end.ogg', 100, FALSE)
