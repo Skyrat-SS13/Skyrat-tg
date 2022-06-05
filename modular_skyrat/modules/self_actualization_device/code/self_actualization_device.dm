@@ -145,7 +145,6 @@
 	var/liver_damage = check_organ(patient, /obj/item/organ/liver)
 	var/lung_damage = check_organ(patient, /obj/item/organ/lungs)
 	var/stomach_damage = check_organ(patient, /obj/item/organ/stomach)
-	var/appendix_damage = check_organ(patient, /obj/item/organ/appendix)
 	var/brain_damage = check_organ(patient, /obj/item/organ/brain)
 	var/eye_damage = check_organ(patient, /obj/item/organ/eyes)
 	var/ear_damage = check_organ(patient, /obj/item/organ/ears)
@@ -176,7 +175,6 @@
 	patient.adjustOrganLoss(ORGAN_SLOT_LIVER, liver_damage)
 	patient.adjustOrganLoss(ORGAN_SLOT_LUNGS, lung_damage)
 	patient.adjustOrganLoss(ORGAN_SLOT_STOMACH, stomach_damage)
-	patient.adjustOrganLoss(ORGAN_SLOT_APPENDIX, appendix_damage)
 	// Head organ damage.
 	patient.adjustOrganLoss(ORGAN_SLOT_EYES, eye_damage)
 	patient.adjustOrganLoss(ORGAN_SLOT_EARS, ear_damage)
