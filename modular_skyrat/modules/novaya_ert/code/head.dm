@@ -56,4 +56,4 @@
 	name = "\improper REDUT helmet"
 	desc = "A heavy Russian combat helmet with a strong ballistic visor. Alt+click to adjust."
 	icon_state = "russian_heavy_helmet_old"
-	armor = list(MELEE = 60, BULLET = 60, LASER = 50, ENERGY = 50, BOMB = 100, BIO = 100, FIRE = 70, ACID = 70, WOUND = 35)
+	armor = list(MELEE = 50, BULLET = 50, LASER = 40, ENERGY = 50, BOMB = 75, BIO = 60, FIRE = 45, ACID = 45, WOUND = 20)

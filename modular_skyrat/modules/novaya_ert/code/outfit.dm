@@ -6,7 +6,7 @@
 	mask = /obj/item/clothing/mask/gas/hecu2
 	uniform = /obj/item/clothing/under/costume/nri
 	suit = /obj/item/clothing/suit/armor/vest/russian/nri
-	suit_store = /obj/item/gun/ballistic/automatic/akm
+	suit_store = /obj/item/gun/ballistic/automatic/akm/modern
 	gloves = /obj/item/clothing/gloves/combat
 	belt = /obj/item/storage/belt/military/nri/full
 	back = /obj/item/storage/backpack/satchel/leather
@@ -39,7 +39,7 @@
 	belt = /obj/item/storage/belt/military/nri/full
 	suit_store = /obj/item/gun/ballistic/automatic/akm/modern
 	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
-	backpack_contents = list(/obj/item/storage/box/nri_survival_pack, /obj/item/storage/medkit/emergency, /obj/item/clothing/mask/balaclavaadjust, /obj/item/clothing/accessory/armband, /obj/item/megaphone, /obj/item/binoculars)
+	backpack_contents = list(/obj/item/storage/box/nri_survival_pack, /obj/item/storage/medkit/regular, /obj/item/clothing/mask/balaclavaadjust, /obj/item/clothing/accessory/armband, /obj/item/megaphone, /obj/item/binoculars, /obj/item/clothing/head/helmet/rus_helmet/nri)
 
 	id_trim = /datum/id_trim/nri/commander
 
@@ -51,7 +51,7 @@
 	mask = /obj/item/clothing/mask/gas/hecu2
 	uniform = /obj/item/clothing/under/costume/nri
 	suit = /obj/item/clothing/suit/armor/vest/russian/nri
-	suit_store = /obj/item/gun/ballistic/automatic/plastikov
+	suit_store = /obj/item/gun/ballistic/automatic/plastikov/nri
 	gloves = /obj/item/clothing/gloves/color/latex/nitrile
 	belt = /obj/item/storage/belt/military/nri/full_support
 	back = /obj/item/storage/backpack/satchel/leather
@@ -69,7 +69,7 @@
 	mask = /obj/item/clothing/mask/gas/hecu2
 	uniform = /obj/item/clothing/under/costume/nri
 	suit = /obj/item/clothing/suit/armor/vest/russian/nri
-	suit_store = /obj/item/gun/ballistic/automatic/plastikov
+	suit_store = /obj/item/gun/ballistic/automatic/plastikov/nri
 	gloves = /obj/item/clothing/gloves/combat
 	belt = /obj/item/storage/belt/military/nri/full_support
 	back = /obj/item/storage/backpack/satchel/leather
