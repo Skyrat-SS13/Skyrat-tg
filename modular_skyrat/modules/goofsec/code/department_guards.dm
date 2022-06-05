@@ -21,7 +21,6 @@
 	name = "customs agent uniform"
 	icon_state = "customs_uniform"
 	worn_icon_state = "customs_uniform"
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/suit/armor/vest/blueshirt/skyrat
 	icon_state = "barney_armor"
