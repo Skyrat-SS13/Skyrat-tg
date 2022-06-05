@@ -103,5 +103,5 @@
 	desc = "Contains two beacons for delivery of atmospheric gas miners."
 
 /obj/item/storage/box/gas_miner_beacons/PopulateContents()
-	new /obj/item/gas_miner_beacon
-	new /obj/item/gas_miner_beacon
+	new /obj/item/gas_miner_beacon(src)
+	new /obj/item/gas_miner_beacon(src)
