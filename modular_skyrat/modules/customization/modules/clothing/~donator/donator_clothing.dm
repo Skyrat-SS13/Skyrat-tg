@@ -545,7 +545,7 @@
 	adjust_goggles(user)
 
 // Donation reward for NetraKyram
-/obj/item/clothing/under/rank/security/blueshield/netra
+/obj/item/clothing/under/rank/blueshield/netra
 	name = "black and silver armored dress"
 	desc = "An ankle length black and silver dress, made out of some shiny synthetic material with inlaid kevlar shards and silver reinforcements, a silver ring surrounds the collar, and it doesn't appear to have a zipper... How does somebody put this thing on anyways?"
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'

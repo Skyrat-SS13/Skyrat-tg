@@ -255,7 +255,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "checkered"
 
-/obj/item/clothing/under/rank/captain/humble
+/obj/item/clothing/under/rank/captain/skyrat/humble
 	desc = "It's a blue jumpsuit with some small gold markings denoting the rank of \"Captain\", more humble than it's sister."
 	name = "captain's humble jumpsuit"
 	icon_state = "captainhumble"
@@ -503,7 +503,7 @@
 	name = "head of personnel's female formal uniform"
 	icon_state = "hop_parade_female"
 
-/obj/item/clothing/under/rank/captain/kilt
+/obj/item/clothing/under/rank/captain/skyrat/kilt
 	desc = "Not a skirt, it is, however, armoured and decorated with a tartan sash."
 	name = "captain's kilt"
 	icon_state = "capkilt"
@@ -592,7 +592,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "black_suit_fem"
 
-/obj/item/clothing/under/rank/captain/black
+/obj/item/clothing/under/rank/captain/skyrat/black
 	name = "captains black suit"
 	desc = "A very sleek naval captains uniform for those who think they're commanding a battleship."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
