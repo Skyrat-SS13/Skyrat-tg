@@ -21,6 +21,7 @@
 	name = "customs agent uniform"
 	icon_state = "customs_uniform"
 	worn_icon_state = "customs_uniform"
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/suit/armor/vest/blueshirt/skyrat
 	icon_state = "barney_armor"
@@ -28,6 +29,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	unique_reskin = null
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/suit/armor/vest/blueshirt/skyrat/guard
 	icon_state = "guard_armor"
