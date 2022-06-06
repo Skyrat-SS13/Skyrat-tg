@@ -3,11 +3,11 @@
  *
  * These mobs are more robust than your average simple mob and can quite easily evade capture.
  */
-/mob/living/simple_animal/hostile/corrupted_flesh
+/mob/living/simple_animal/hostile/fleshmind
 	name = "broken"
-	icon = 'modular_skyrat/modules/corrupted_flesh/icons/hivemind_mobs.dmi'
+	icon = 'modular_skyrat/modules/fleshmind/icons/hivemind_mobs.dmi'
 	icon_state = "error"
-	faction = list(FACTION_CORRUPTED_FLESH)
+	faction = list(FACTION_FLESHMIND)
 	speak = list("The flesh yearns for your soul.", "The flesh is broken without you.", "The flesh does not discriminate.", "Join the flesh.")
 	speak_chance = 15
 	speak_emote = list("mechanically states")
@@ -21,18 +21,18 @@
 	var/previous_ckey
 	/// A list of sounds we can play when our mob is alerted to an enemy.
 	var/list/alert_sounds = list(
-		'modular_skyrat/modules/corrupted_flesh/sound/robot_talk_heavy1.ogg',
-		'modular_skyrat/modules/corrupted_flesh/sound/robot_talk_heavy2.ogg',
-		'modular_skyrat/modules/corrupted_flesh/sound/robot_talk_heavy3.ogg',
-		'modular_skyrat/modules/corrupted_flesh/sound/robot_talk_heavy4.ogg',
+		'modular_skyrat/modules/fleshmind/sound/robot_talk_heavy1.ogg',
+		'modular_skyrat/modules/fleshmind/sound/robot_talk_heavy2.ogg',
+		'modular_skyrat/modules/fleshmind/sound/robot_talk_heavy3.ogg',
+		'modular_skyrat/modules/fleshmind/sound/robot_talk_heavy4.ogg',
 	)
 	/// Sounds we will play passively.
 	var/passive_sounds = list(
-		'modular_skyrat/modules/corrupted_flesh/sound/robot_talk_light1.ogg',
-		'modular_skyrat/modules/corrupted_flesh/sound/robot_talk_light2.ogg',
-		'modular_skyrat/modules/corrupted_flesh/sound/robot_talk_light3.ogg',
-		'modular_skyrat/modules/corrupted_flesh/sound/robot_talk_light4.ogg',
-		'modular_skyrat/modules/corrupted_flesh/sound/robot_talk_light5.ogg',
+		'modular_skyrat/modules/fleshmind/sound/robot_talk_light1.ogg',
+		'modular_skyrat/modules/fleshmind/sound/robot_talk_light2.ogg',
+		'modular_skyrat/modules/fleshmind/sound/robot_talk_light3.ogg',
+		'modular_skyrat/modules/fleshmind/sound/robot_talk_light4.ogg',
+		'modular_skyrat/modules/fleshmind/sound/robot_talk_light5.ogg',
 	)
 	/// How likely we are to speak passively.
 	var/passive_speak_chance = 0.5
@@ -52,12 +52,12 @@
 	COOLDOWN_DECLARE(special_ability_cooldown)
 
 
-/mob/living/simple_animal/hostile/corrupted_flesh/Initialize(mapload)
+/mob/living/simple_animal/hostile/fleshmind/Initialize(mapload)
 	. = ..()
 	// We set a unique name when we are created, to give some feeling of randomness.
-	name = "[pick(CORRUPTED_FLESH_NAME_MODIFIER_LIST)] [name]"
+	name = "[pick(FLESHMIND_NAME_MODIFIER_LIST)] [name]"
 
-/mob/living/simple_animal/hostile/corrupted_flesh/death(gibbed)
+/mob/living/simple_animal/hostile/fleshmind/death(gibbed)
 	if(contained_mob)
 		contained_mob.forceMove(get_turf(src))
 		if(previous_ckey)
@@ -65,7 +65,7 @@
 		contained_mob = null
 	return ..()
 
-/mob/living/simple_animal/hostile/corrupted_flesh/Destroy()
+/mob/living/simple_animal/hostile/fleshmind/Destroy()
 	if(contained_mob)
 		contained_mob.forceMove(get_turf(src))
 		if(previous_ckey)
@@ -77,14 +77,14 @@
  * These mobs make noises when aggroed.
  */
 
-/mob/living/simple_animal/hostile/corrupted_flesh/Aggro()
+/mob/living/simple_animal/hostile/fleshmind/Aggro()
 	alert_sound()
 	return ..()
 
 /**
  * We don't want to destroy our own faction objects.
  */
-/mob/living/simple_animal/hostile/corrupted_flesh/DestroyObjectsInDirection(direction)
+/mob/living/simple_animal/hostile/fleshmind/DestroyObjectsInDirection(direction)
 	var/atom/target_from = GET_TARGETS_FROM(src)
 	var/turf/target_turf = get_step(target_from, direction)
 	if(QDELETED(target_turf))
@@ -96,8 +96,8 @@
 	for(var/obj/iterating_object in target_turf.contents)
 		if(!iterating_object.Adjacent(target_from))
 			continue
-		if(istype(iterating_object, /obj/structure/corrupted_flesh))
-			var/obj/structure/corrupted_flesh/friendly_object = iterating_object
+		if(istype(iterating_object, /obj/structure/fleshmind))
+			var/obj/structure/fleshmind/friendly_object = iterating_object
 			if(faction_check(friendly_object.faction_types, faction))
 				continue
 		if((ismachinery(iterating_object) || isstructure(iterating_object)) && iterating_object.density && environment_smash >= ENVIRONMENT_SMASH_STRUCTURES && !iterating_object.IsObscured())
@@ -108,7 +108,7 @@
  * While this mob lives, it can malfunction.
  */
 
-/mob/living/simple_animal/hostile/corrupted_flesh/Life(delta_time, times_fired)
+/mob/living/simple_animal/hostile/fleshmind/Life(delta_time, times_fired)
 	. = ..()
 	if(!.) //dead
 		return
@@ -129,7 +129,7 @@
 /**
  * Naturally these beasts are sensitive to EMP's. We have custom systems for dealing with this.
  */
-/mob/living/simple_animal/hostile/corrupted_flesh/emp_act(severity)
+/mob/living/simple_animal/hostile/fleshmind/emp_act(severity)
 	switch(severity)
 		if(EMP_LIGHT)
 			say("Electronic disturbance detected.")
@@ -144,17 +144,17 @@
  * We are robotic, so we spark when we're hit by something that does damage.
  */
 
-/mob/living/simple_animal/hostile/corrupted_flesh/attackby(obj/item/attacking_item, mob/living/user, params)
+/mob/living/simple_animal/hostile/fleshmind/attackby(obj/item/attacking_item, mob/living/user, params)
 	if(attacking_item.force && prob(40))
 		do_sparks(3, FALSE, src)
 	return ..()
 
-/mob/living/simple_animal/hostile/corrupted_flesh/MoveToTarget(list/possible_targets)
+/mob/living/simple_animal/hostile/fleshmind/MoveToTarget(list/possible_targets)
 	if(suffering_malfunction)
 		return
 	return ..()
 
-/mob/living/simple_animal/hostile/corrupted_flesh/proc/say_passive_speech()
+/mob/living/simple_animal/hostile/fleshmind/proc/say_passive_speech()
 	say(pick(passive_speak_lines))
 	if(passive_sounds)
 		playsound(src, pick(passive_sounds), 50)
@@ -166,7 +166,7 @@
  * use the cooldown time to dictate how often this is activated.
  */
 
-/mob/living/simple_animal/hostile/corrupted_flesh/proc/special_ability()
+/mob/living/simple_animal/hostile/fleshmind/proc/special_ability()
 	return
 
 /**
@@ -174,7 +174,7 @@
  *
  * These mobs are able to escape from closets if they are trapped inside using this system.
  */
-/mob/living/simple_animal/hostile/corrupted_flesh/proc/closet_interaction()
+/mob/living/simple_animal/hostile/fleshmind/proc/closet_interaction()
 	if(!(mob_size > MOB_SIZE_SMALL))
 		return FALSE
 	if(!istype(loc, /obj/structure/closet))
@@ -187,7 +187,7 @@
  *
  * Similar to the closet interaction, these mobs can also escape disposals.
  */
-/mob/living/simple_animal/hostile/corrupted_flesh/proc/disposal_interaction()
+/mob/living/simple_animal/hostile/fleshmind/proc/disposal_interaction()
 	if(!istype(loc, /obj/machinery/disposal/bin))
 		return FALSE
 	var/obj/machinery/disposal/bin/disposals_that_contains_us = loc
@@ -200,7 +200,7 @@
  *
  * This simply stops the mob from moving for a set amount of time and displays some nice effects, and a little damage.
  */
-/mob/living/simple_animal/hostile/corrupted_flesh/proc/malfunction(reset_time = MALFUNCTION_RESET_TIME)
+/mob/living/simple_animal/hostile/fleshmind/proc/malfunction(reset_time = MALFUNCTION_RESET_TIME)
 	if(suffering_malfunction)
 		return
 	do_sparks(3, FALSE, src)
@@ -215,7 +215,7 @@
  *
  * Resets the mob after a malfunction has occured.
  */
-/mob/living/simple_animal/hostile/corrupted_flesh/proc/malfunction_reset()
+/mob/living/simple_animal/hostile/fleshmind/proc/malfunction_reset()
 	say("System restored.")
 	toggle_ai(AI_ON)
 	suffering_malfunction = FALSE
@@ -225,12 +225,12 @@
  *
  * Sends an alert sound if we can.
  */
-/mob/living/simple_animal/hostile/corrupted_flesh/proc/alert_sound()
+/mob/living/simple_animal/hostile/fleshmind/proc/alert_sound()
 	if(alert_sounds && COOLDOWN_FINISHED(src, alert_cooldown))
 		playsound(src, pick(alert_sounds), 50)
 		COOLDOWN_START(src, alert_cooldown, alert_cooldown_time)
 
-/mob/living/simple_animal/hostile/corrupted_flesh/proc/core_death_speech()
+/mob/living/simple_animal/hostile/fleshmind/proc/core_death_speech()
 	alert_sound()
 	var/static/list/death_cry_emotes = list(
 		"Why, why, why! Why must you kill us! We only want to share the glory!",
@@ -254,7 +254,7 @@
  *
  * When a processor core is killed, this proc is called.
  */
-/mob/living/simple_animal/hostile/corrupted_flesh/proc/core_death(obj/structure/corrupted_flesh/structure/core/deleting_core, force)
+/mob/living/simple_animal/hostile/fleshmind/proc/core_death(obj/structure/fleshmind/structure/core/deleting_core, force)
 	SIGNAL_HANDLER
 
 	INVOKE_ASYNC(src, .proc/core_death_speech)
@@ -275,7 +275,7 @@
  *
  * It's created by factories or any poor medical bots that get snared in the flesh.
  */
-/mob/living/simple_animal/hostile/corrupted_flesh/slicer
+/mob/living/simple_animal/hostile/fleshmind/slicer
 	name = "Slicer"
 	desc = "A small organic robot, it somewhat resembles a medibot, but it has a blade slashing around."
 	icon_state = "slicer"
@@ -327,7 +327,7 @@
  * Created by factories.
  */
 
-/mob/living/simple_animal/hostile/corrupted_flesh/floater
+/mob/living/simple_animal/hostile/fleshmind/floater
 	name = "Floater"
 	desc = "A small organic robot that floats ominously."
 	icon_state = "bomber"
@@ -358,23 +358,23 @@
 	/// Have we exploded?
 	var/exploded = FALSE
 
-/mob/living/simple_animal/hostile/corrupted_flesh/floater/Initialize(mapload)
+/mob/living/simple_animal/hostile/fleshmind/floater/Initialize(mapload)
 	. = ..()
 	var/datum/action/innate/floater_explode/new_action = new
 	new_action.Grant(src)
 
 
-/mob/living/simple_animal/hostile/corrupted_flesh/floater/death(gibbed)
+/mob/living/simple_animal/hostile/fleshmind/floater/death(gibbed)
 	if(!exploded)
 		detonate()
 	return ..(gibbed)
 
-/mob/living/simple_animal/hostile/corrupted_flesh/floater/AttackingTarget(atom/attacked_target)
+/mob/living/simple_animal/hostile/fleshmind/floater/AttackingTarget(atom/attacked_target)
 	. = ..()
 	if(!key)
 		detonate()
 
-/mob/living/simple_animal/hostile/corrupted_flesh/floater/proc/detonate()
+/mob/living/simple_animal/hostile/fleshmind/floater/proc/detonate()
 	if(exploded)
 		return
 	exploded = TRUE
@@ -389,9 +389,9 @@
 	check_flags = AB_CHECK_CONSCIOUS
 
 /datum/action/innate/floater_explode/Activate()
-	if(!istype(owner, /mob/living/simple_animal/hostile/corrupted_flesh/floater))
+	if(!istype(owner, /mob/living/simple_animal/hostile/fleshmind/floater))
 		return
-	var/mob/living/simple_animal/hostile/corrupted_flesh/floater/akbar_floater = owner
+	var/mob/living/simple_animal/hostile/fleshmind/floater/akbar_floater = owner
 	if(akbar_floater.exploded)
 		return
 	akbar_floater.detonate()
@@ -407,7 +407,7 @@
  *
  * Created by factories or converted cleanbots.
  */
-/mob/living/simple_animal/hostile/corrupted_flesh/globber
+/mob/living/simple_animal/hostile/fleshmind/globber
 	name = "Globber"
 	desc = "A small robot that resembles a cleanbot, this one is dripping with acid."
 	icon_state = "lobber"
@@ -457,7 +457,7 @@
  *
  * Created by factories or converted secbots.
  */
-/mob/living/simple_animal/hostile/corrupted_flesh/stunner
+/mob/living/simple_animal/hostile/fleshmind/stunner
 	name = "Stunner"
 	desc = "A small robot that resembles a secbot, it rumbles with hatred."
 	icon_state = "stunner"
@@ -488,7 +488,7 @@
 		/obj/effect/gibspawner/robot,
 	)
 
-/mob/living/simple_animal/hostile/corrupted_flesh/stunner/AttackingTarget(atom/attacked_target)
+/mob/living/simple_animal/hostile/fleshmind/stunner/AttackingTarget(atom/attacked_target)
 	if(ishuman(target))
 		var/mob/living/carbon/human/attacked_human = target
 		attacked_human.Knockdown(30)
@@ -507,7 +507,7 @@
  *
  * Created by factories or converted cyborgs.
  */
-/mob/living/simple_animal/hostile/corrupted_flesh/hiborg
+/mob/living/simple_animal/hostile/fleshmind/hiborg
 	name = "Flesh Borg"
 	desc = "A robot that resembles a cyborg, it is covered in something alive."
 	icon_state = "hiborg"
@@ -522,19 +522,19 @@
 	speed = 2
 	attack_sound = 'sound/weapons/circsawhit.ogg'
 	alert_sounds = list(
-		'modular_skyrat/modules/corrupted_flesh/sound/hiborg/aggro_01.ogg',
-		'modular_skyrat/modules/corrupted_flesh/sound/hiborg/aggro_02.ogg',
-		'modular_skyrat/modules/corrupted_flesh/sound/hiborg/aggro_03.ogg',
-		'modular_skyrat/modules/corrupted_flesh/sound/hiborg/aggro_04.ogg',
-		'modular_skyrat/modules/corrupted_flesh/sound/hiborg/aggro_05.ogg',
-		'modular_skyrat/modules/corrupted_flesh/sound/hiborg/aggro_06.ogg',
+		'modular_skyrat/modules/fleshmind/sound/hiborg/aggro_01.ogg',
+		'modular_skyrat/modules/fleshmind/sound/hiborg/aggro_02.ogg',
+		'modular_skyrat/modules/fleshmind/sound/hiborg/aggro_03.ogg',
+		'modular_skyrat/modules/fleshmind/sound/hiborg/aggro_04.ogg',
+		'modular_skyrat/modules/fleshmind/sound/hiborg/aggro_05.ogg',
+		'modular_skyrat/modules/fleshmind/sound/hiborg/aggro_06.ogg',
 	)
 	passive_sounds = list(
-		'modular_skyrat/modules/corrupted_flesh/sound/hiborg/passive_01.ogg',
-		'modular_skyrat/modules/corrupted_flesh/sound/hiborg/passive_02.ogg',
-		'modular_skyrat/modules/corrupted_flesh/sound/hiborg/passive_03.ogg',
-		'modular_skyrat/modules/corrupted_flesh/sound/hiborg/passive_04.ogg',
-		'modular_skyrat/modules/corrupted_flesh/sound/hiborg/passive_05.ogg',
+		'modular_skyrat/modules/fleshmind/sound/hiborg/passive_01.ogg',
+		'modular_skyrat/modules/fleshmind/sound/hiborg/passive_02.ogg',
+		'modular_skyrat/modules/fleshmind/sound/hiborg/passive_03.ogg',
+		'modular_skyrat/modules/fleshmind/sound/hiborg/passive_04.ogg',
+		'modular_skyrat/modules/fleshmind/sound/hiborg/passive_05.ogg',
 	)
 	speak = list(
 		"You made my body into metal, why can't I do it to you?",
@@ -571,20 +571,20 @@
 	var/stun_attack_cooldown = 15 SECONDS
 	COOLDOWN_DECLARE(stun_attack)
 
-/mob/living/simple_animal/hostile/corrupted_flesh/hiborg/Initialize(mapload)
+/mob/living/simple_animal/hostile/fleshmind/hiborg/Initialize(mapload)
 	. = ..()
 	var/datum/action/cooldown/hiborg_slash/new_action = new
 	new_action.Grant(src)
 
 
-/mob/living/simple_animal/hostile/corrupted_flesh/hiborg/AttackingTarget(atom/attacked_target)
+/mob/living/simple_animal/hostile/fleshmind/hiborg/AttackingTarget(atom/attacked_target)
 	. = ..()
 	if(prob(stun_attack_prob) && !key)
 		stun_attack(target)
 	if(prob(aoe_attack_prob) && !key)
 		aoe_attack()
 
-/mob/living/simple_animal/hostile/corrupted_flesh/hiborg/proc/stun_attack(mob/living/target_mob)
+/mob/living/simple_animal/hostile/fleshmind/hiborg/proc/stun_attack(mob/living/target_mob)
 	if(!COOLDOWN_FINISHED(src, stun_attack))
 		return
 	if(!ishuman(target_mob))
@@ -595,7 +595,7 @@
 
 	COOLDOWN_START(src, stun_attack, stun_attack_cooldown)
 
-/mob/living/simple_animal/hostile/corrupted_flesh/hiborg/proc/aoe_attack()
+/mob/living/simple_animal/hostile/fleshmind/hiborg/proc/aoe_attack()
 	visible_message("[src] spins around violently!")
 	spin(20, 1)
 	for(var/mob/living/iterating_mob in view(aoe_attack_range, src))
@@ -617,9 +617,9 @@
 	cooldown_time = 20 SECONDS
 
 /datum/action/cooldown/hiborg_slash/Activate(atom/target)
-	if(!istype(owner, /mob/living/simple_animal/hostile/corrupted_flesh/hiborg))
+	if(!istype(owner, /mob/living/simple_animal/hostile/fleshmind/hiborg))
 		return
-	var/mob/living/simple_animal/hostile/corrupted_flesh/hiborg/hiborg_owner = owner
+	var/mob/living/simple_animal/hostile/fleshmind/hiborg/hiborg_owner = owner
 	hiborg_owner.aoe_attack()
 	StartCooldownSelf()
 
@@ -643,7 +643,7 @@
  * Created by converted humans.
  */
 
-/mob/living/simple_animal/hostile/corrupted_flesh/himan
+/mob/living/simple_animal/hostile/fleshmind/himan
 	name = "Human"
 	desc = "Once a man, now metal plates and tubes weave in and out of their oozing sores."
 	icon_state = "himan"
@@ -681,20 +681,20 @@
 		"The flesh provides. I-it's giving me what the Company never could.",
 	)
 	alert_sounds = list(
-		'modular_skyrat/modules/corrupted_flesh/sound/himan/aggro_01.ogg',
-		'modular_skyrat/modules/corrupted_flesh/sound/himan/aggro_02.ogg',
-		'modular_skyrat/modules/corrupted_flesh/sound/himan/aggro_03.ogg',
-		'modular_skyrat/modules/corrupted_flesh/sound/himan/aggro_04.ogg',
-		'modular_skyrat/modules/corrupted_flesh/sound/himan/aggro_05.ogg',
-		'modular_skyrat/modules/corrupted_flesh/sound/himan/aggro_06.ogg',
-		'modular_skyrat/modules/corrupted_flesh/sound/himan/aggro_07.ogg',
-		'modular_skyrat/modules/corrupted_flesh/sound/himan/aggro_08.ogg',
+		'modular_skyrat/modules/fleshmind/sound/himan/aggro_01.ogg',
+		'modular_skyrat/modules/fleshmind/sound/himan/aggro_02.ogg',
+		'modular_skyrat/modules/fleshmind/sound/himan/aggro_03.ogg',
+		'modular_skyrat/modules/fleshmind/sound/himan/aggro_04.ogg',
+		'modular_skyrat/modules/fleshmind/sound/himan/aggro_05.ogg',
+		'modular_skyrat/modules/fleshmind/sound/himan/aggro_06.ogg',
+		'modular_skyrat/modules/fleshmind/sound/himan/aggro_07.ogg',
+		'modular_skyrat/modules/fleshmind/sound/himan/aggro_08.ogg',
 	)
 	passive_sounds = list(
-		'modular_skyrat/modules/corrupted_flesh/sound/himan/passive_01.ogg',
-		'modular_skyrat/modules/corrupted_flesh/sound/himan/passive_02.ogg',
-		'modular_skyrat/modules/corrupted_flesh/sound/himan/passive_03.ogg',
-		'modular_skyrat/modules/corrupted_flesh/sound/himan/passive_04.ogg',
+		'modular_skyrat/modules/fleshmind/sound/himan/passive_01.ogg',
+		'modular_skyrat/modules/fleshmind/sound/himan/passive_02.ogg',
+		'modular_skyrat/modules/fleshmind/sound/himan/passive_03.ogg',
+		'modular_skyrat/modules/fleshmind/sound/himan/passive_04.ogg',
 	)
 	del_on_death = TRUE
 	loot = list(
@@ -710,12 +710,12 @@
 	COOLDOWN_DECLARE(scream_ability)
 	var/scream_effect_range = 10
 
-/mob/living/simple_animal/hostile/corrupted_flesh/himan/Initialize(mapload)
+/mob/living/simple_animal/hostile/fleshmind/himan/Initialize(mapload)
 	. = ..()
 	var/datum/action/cooldown/himan_fake_death/new_action = new
 	new_action.Grant(src)
 
-/mob/living/simple_animal/hostile/corrupted_flesh/himan/Life(delta_time, times_fired)
+/mob/living/simple_animal/hostile/fleshmind/himan/Life(delta_time, times_fired)
 	. = ..()
 	if(health < (maxHealth * 0.5) && !faking_death && COOLDOWN_FINISHED(src, fake_death) && !key)
 		fake_our_death()
@@ -723,32 +723,32 @@
 	if(faking_death)
 		stop_automated_movement = TRUE
 
-/mob/living/simple_animal/hostile/corrupted_flesh/himan/Moved()
+/mob/living/simple_animal/hostile/fleshmind/himan/Moved()
 	. = ..()
 	if(faking_death)
 		awake()
 
-/mob/living/simple_animal/hostile/corrupted_flesh/himan/malfunction(reset_time)
+/mob/living/simple_animal/hostile/fleshmind/himan/malfunction(reset_time)
 	if(faking_death)
 		return
 	return ..()
 
-/mob/living/simple_animal/hostile/corrupted_flesh/himan/say(message, bubble_type, list/spans, sanitize, datum/language/language, ignore_spam, forced, filterproof)
+/mob/living/simple_animal/hostile/fleshmind/himan/say(message, bubble_type, list/spans, sanitize, datum/language/language, ignore_spam, forced, filterproof)
 	if(faking_death)
 		return
 	return ..()
 
-/mob/living/simple_animal/hostile/corrupted_flesh/himan/MoveToTarget(list/possible_targets)
+/mob/living/simple_animal/hostile/fleshmind/himan/MoveToTarget(list/possible_targets)
 	if(faking_death)
 		return
 	return ..()
 
-/mob/living/simple_animal/hostile/corrupted_flesh/himan/AttackingTarget(atom/attacked_target)
+/mob/living/simple_animal/hostile/fleshmind/himan/AttackingTarget(atom/attacked_target)
 	if(faking_death)
 		return
 	return ..()
 
-/mob/living/simple_animal/hostile/corrupted_flesh/himan/Aggro()
+/mob/living/simple_animal/hostile/fleshmind/himan/Aggro()
 	if(faking_death && !key)
 		if(!Adjacent(target))
 			return
@@ -757,22 +757,22 @@
 		scream()
 	return ..()
 
-/mob/living/simple_animal/hostile/corrupted_flesh/himan/say_passive_speech()
+/mob/living/simple_animal/hostile/fleshmind/himan/say_passive_speech()
 	if(faking_death)
 		return
 	return ..()
 
-/mob/living/simple_animal/hostile/corrupted_flesh/himan/alert_sound()
+/mob/living/simple_animal/hostile/fleshmind/himan/alert_sound()
 	if(faking_death)
 		return
 	return ..()
 
-/mob/living/simple_animal/hostile/corrupted_flesh/himan/examine(mob/user)
+/mob/living/simple_animal/hostile/fleshmind/himan/examine(mob/user)
 	. = ..()
 	if(faking_death)
 		. += span_deadsay("Upon closer examination, [p_they()] appear[p_s()] to be dead.")
 
-/mob/living/simple_animal/hostile/corrupted_flesh/himan/proc/scream()
+/mob/living/simple_animal/hostile/fleshmind/himan/proc/scream()
 	COOLDOWN_START(src, scream_ability, scream_cooldown)
 	playsound(src, 'modular_skyrat/modules/horrorform/sound/horror_scream.ogg', 100, TRUE)
 	manual_emote("screams violently!")
@@ -785,7 +785,7 @@
 		iterating_mob.apply_status_effect(/datum/status_effect/jitter, 20 SECONDS)
 		to_chat(iterating_mob, span_userdanger("A terrible howl tears through your mind, the voice senseless, soulless."))
 
-/mob/living/simple_animal/hostile/corrupted_flesh/himan/proc/fake_our_death()
+/mob/living/simple_animal/hostile/fleshmind/himan/proc/fake_our_death()
 	manual_emote("stops moving...")
 	LoseAggro()
 	LoseTarget()
@@ -793,7 +793,7 @@
 	icon_state = "[base_icon_state]-dead"
 	COOLDOWN_START(src, fake_death, fake_death_cooldown)
 
-/mob/living/simple_animal/hostile/corrupted_flesh/himan/proc/awake()
+/mob/living/simple_animal/hostile/fleshmind/himan/proc/awake()
 	faking_death = FALSE
 	icon_state = base_icon_state
 
@@ -805,9 +805,9 @@
 	cooldown_time = 20 SECONDS
 
 /datum/action/cooldown/himan_fake_death/Activate(atom/target)
-	if(!istype(owner, /mob/living/simple_animal/hostile/corrupted_flesh/himan))
+	if(!istype(owner, /mob/living/simple_animal/hostile/fleshmind/himan))
 		return
-	var/mob/living/simple_animal/hostile/corrupted_flesh/himan/himan_owner = owner
+	var/mob/living/simple_animal/hostile/fleshmind/himan/himan_owner = owner
 	himan_owner.fake_our_death()
 	StartCooldownSelf()
 
@@ -819,7 +819,7 @@
  *
  * Created via assemblers.
  */
-/mob/living/simple_animal/hostile/corrupted_flesh/treader
+/mob/living/simple_animal/hostile/fleshmind/treader
 	name = "Treader"
 	desc = "A strange tracked robot with an appendage, on the end of which is a human head, it is shrieking in pain."
 	icon_state = "treader"
@@ -835,7 +835,7 @@
 	ranged_cooldown_time = 4 SECONDS
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	projectiletype = /obj/projectile/treader
-	light_color = CORRUPTED_FLESH_LIGHT_BLUE
+	light_color = FLESHMIND_LIGHT_BLUE
 	light_range = 2
 	del_on_death = TRUE
 	loot = list(/obj/effect/gibspawner/robot)
@@ -852,16 +852,16 @@
 	)
 	special_ability_cooldown = 20 SECONDS
 
-/mob/living/simple_animal/hostile/corrupted_flesh/treader/Initialize(mapload)
+/mob/living/simple_animal/hostile/fleshmind/treader/Initialize(mapload)
 	. = ..()
 	var/datum/action/cooldown/treader_dispense_nanites/new_action = new
 	new_action.Grant(src)
 
 
-/mob/living/simple_animal/hostile/corrupted_flesh/treader/special_ability()
+/mob/living/simple_animal/hostile/fleshmind/treader/special_ability()
 	dispense_nanites()
 
-/mob/living/simple_animal/hostile/corrupted_flesh/treader/proc/dispense_nanites()
+/mob/living/simple_animal/hostile/fleshmind/treader/proc/dispense_nanites()
 	manual_emote("vomits out a burst of nanites!")
 	do_smoke(3, 4, get_turf(src))
 	for(var/mob/living/iterating_mob in view(DEFAULT_VIEW_RANGE, src))
@@ -876,9 +876,9 @@
 	cooldown_time = 20 SECONDS
 
 /datum/action/cooldown/treader_dispense_nanites/Activate(atom/target)
-	if(!istype(owner, /mob/living/simple_animal/hostile/corrupted_flesh/treader))
+	if(!istype(owner, /mob/living/simple_animal/hostile/fleshmind/treader))
 		return
-	var/mob/living/simple_animal/hostile/corrupted_flesh/treader/treader_owner = owner
+	var/mob/living/simple_animal/hostile/fleshmind/treader/treader_owner = owner
 	treader_owner.dispense_nanites()
 	StartCooldownSelf()
 
@@ -904,7 +904,7 @@
  *
  * Special abilities: Phases about next to it's target, can split itself into 4, only one is actually the mob. Can also enter closets if not being attacked.
  */
-/mob/living/simple_animal/hostile/corrupted_flesh/phaser
+/mob/living/simple_animal/hostile/fleshmind/phaser
 	name = "Phaser"
 	icon_state = "phaser-1"
 	base_icon_state = "phaser"
@@ -939,19 +939,19 @@
 	var/manual_phase_cooldown = 1 SECONDS
 	COOLDOWN_DECLARE(manual_phase)
 
-/mob/living/simple_animal/hostile/corrupted_flesh/phaser/Initialize(mapload)
+/mob/living/simple_animal/hostile/fleshmind/phaser/Initialize(mapload)
 	. = ..()
 	icon_state = "[base_icon_state]-[rand(1, 4)]"
 	filters += filter(type = "blur", size = 0)
 	var/datum/action/cooldown/phaser_phase_ability/new_action = new
 	new_action.Grant(src)
 
-/mob/living/simple_animal/hostile/corrupted_flesh/phaser/Aggro()
+/mob/living/simple_animal/hostile/fleshmind/phaser/Aggro()
 	if(COOLDOWN_FINISHED(src, phase_ability_cooldown))
 		phase_ability()
 	return ..()
 
-/mob/living/simple_animal/hostile/corrupted_flesh/phaser/ShiftClickOn(atom/clicked_atom)
+/mob/living/simple_animal/hostile/fleshmind/phaser/ShiftClickOn(atom/clicked_atom)
 	. = ..()
 	if(!COOLDOWN_FINISHED(src, manual_phase))
 		return
@@ -963,7 +963,7 @@
 	COOLDOWN_START(src, manual_phase, manual_phase_cooldown)
 
 /// old shitcode
-/mob/living/simple_animal/hostile/corrupted_flesh/phaser/MoveToTarget(list/possible_targets)
+/mob/living/simple_animal/hostile/fleshmind/phaser/MoveToTarget(list/possible_targets)
 	stop_automated_movement = TRUE
 	if(!target || !CanAttack(target))
 		LoseTarget()
@@ -978,7 +978,7 @@
 		else if(target)
 			MeleeAction()
 
-/mob/living/simple_animal/hostile/corrupted_flesh/phaser/Life(delta_time, times_fired)
+/mob/living/simple_animal/hostile/fleshmind/phaser/Life(delta_time, times_fired)
 	. = ..()
 	if(!.) //dead
 		return
@@ -994,7 +994,7 @@
 				continue
 			closet_interaction() // We exit if there are enemies nearby
 
-/mob/living/simple_animal/hostile/corrupted_flesh/phaser/proc/enter_nearby_closet()
+/mob/living/simple_animal/hostile/fleshmind/phaser/proc/enter_nearby_closet()
 	if(target) // We're in combat, no going to a closet.
 		return
 	if(istype(loc, /obj/structure/closet))
@@ -1021,7 +1021,7 @@
 
 	SEND_SIGNAL(src, COMSIG_PHASER_ENTER_CLOSET)
 
-/mob/living/simple_animal/hostile/corrupted_flesh/phaser/proc/phase_move_to(atom/target_atom, nearby = FALSE)
+/mob/living/simple_animal/hostile/fleshmind/phaser/proc/phase_move_to(atom/target_atom, nearby = FALSE)
 	var/turf/new_place
 	var/distance_to_target = get_dist(src, target_atom)
 	var/turf/target_turf = get_turf(target_atom)
@@ -1057,7 +1057,7 @@
 	addtimer(CALLBACK(src, .proc/phase_jump, new_place), 0.5 SECONDS)
 	SEND_SIGNAL(src, COMSIG_PHASER_PHASE_MOVE, target_atom, nearby)
 
-/mob/living/simple_animal/hostile/corrupted_flesh/phaser/proc/phase_jump(turf/place)
+/mob/living/simple_animal/hostile/fleshmind/phaser/proc/phase_jump(turf/place)
 	if(!place)
 		return
 	playsound(place, 'sound/effects/phasein.ogg', 60, 1)
@@ -1071,7 +1071,7 @@
 			playsound(place, 'sound/effects/ghost2.ogg', 70, 1)
 			living_mob.Knockdown(10)
 
-/mob/living/simple_animal/hostile/corrupted_flesh/phaser/proc/can_jump_on(turf/target_turf, turf/previous_turf)
+/mob/living/simple_animal/hostile/fleshmind/phaser/proc/can_jump_on(turf/target_turf, turf/previous_turf)
 	if(!target_turf || target_turf.density || isopenspaceturf(target_turf))
 		return FALSE
 
@@ -1091,7 +1091,7 @@
 
 	return TRUE
 
-/mob/living/simple_animal/hostile/corrupted_flesh/phaser/proc/phase_ability(mob/living/target_override)
+/mob/living/simple_animal/hostile/fleshmind/phaser/proc/phase_ability(mob/living/target_override)
 	var/mob/living/intermediate_target = target
 	if(target_override)
 		intermediate_target = target_override
@@ -1119,9 +1119,9 @@
 	cooldown_time = 40 SECONDS
 
 /datum/action/cooldown/phaser_phase_ability/Activate(atom/target)
-	if(!istype(owner, /mob/living/simple_animal/hostile/corrupted_flesh/phaser))
+	if(!istype(owner, /mob/living/simple_animal/hostile/fleshmind/phaser))
 		return
-	var/mob/living/simple_animal/hostile/corrupted_flesh/phaser/phaser_owner = owner
+	var/mob/living/simple_animal/hostile/fleshmind/phaser/phaser_owner = owner
 
 	var/list/possible_targets = list()
 	for(var/mob/living/possible_target in view(DEFAULT_VIEW_RANGE, phaser_owner))
@@ -1145,7 +1145,7 @@
 
 
 /obj/effect/temp_visual/phaser
-	icon = 'modular_skyrat/modules/corrupted_flesh/icons/hivemind_mobs.dmi'
+	icon = 'modular_skyrat/modules/fleshmind/icons/hivemind_mobs.dmi'
 	icon_state = "phaser-1"
 	base_icon_state = "phaser"
 	duration = 30 SECONDS
@@ -1235,7 +1235,7 @@
  *
  *
  */
-/mob/living/simple_animal/hostile/corrupted_flesh/mechiver
+/mob/living/simple_animal/hostile/fleshmind/mechiver
 	name = "Mechiver"
 	icon_state = "mechiver"
 	base_icon_state = "mechiver"
@@ -1262,21 +1262,21 @@
 		"I offer you the ecstasy of union, and yet you tremble.",
 	)
 	alert_sounds = list(
-		'modular_skyrat/modules/corrupted_flesh/sound/mechiver/aggro_01.ogg',
-		'modular_skyrat/modules/corrupted_flesh/sound/mechiver/aggro_02.ogg',
-		'modular_skyrat/modules/corrupted_flesh/sound/mechiver/aggro_03.ogg',
-		'modular_skyrat/modules/corrupted_flesh/sound/mechiver/aggro_04.ogg',
-		'modular_skyrat/modules/corrupted_flesh/sound/mechiver/aggro_05.ogg',
+		'modular_skyrat/modules/fleshmind/sound/mechiver/aggro_01.ogg',
+		'modular_skyrat/modules/fleshmind/sound/mechiver/aggro_02.ogg',
+		'modular_skyrat/modules/fleshmind/sound/mechiver/aggro_03.ogg',
+		'modular_skyrat/modules/fleshmind/sound/mechiver/aggro_04.ogg',
+		'modular_skyrat/modules/fleshmind/sound/mechiver/aggro_05.ogg',
 	)
 	passive_sounds = list(
-		'modular_skyrat/modules/corrupted_flesh/sound/mechiver/passive_01.ogg',
-		'modular_skyrat/modules/corrupted_flesh/sound/mechiver/passive_02.ogg',
-		'modular_skyrat/modules/corrupted_flesh/sound/mechiver/passive_03.ogg',
-		'modular_skyrat/modules/corrupted_flesh/sound/mechiver/passive_04.ogg',
-		'modular_skyrat/modules/corrupted_flesh/sound/mechiver/passive_05.ogg',
-		'modular_skyrat/modules/corrupted_flesh/sound/mechiver/passive_06.ogg',
-		'modular_skyrat/modules/corrupted_flesh/sound/mechiver/passive_07.ogg',
-		'modular_skyrat/modules/corrupted_flesh/sound/mechiver/passive_08.ogg',
+		'modular_skyrat/modules/fleshmind/sound/mechiver/passive_01.ogg',
+		'modular_skyrat/modules/fleshmind/sound/mechiver/passive_02.ogg',
+		'modular_skyrat/modules/fleshmind/sound/mechiver/passive_03.ogg',
+		'modular_skyrat/modules/fleshmind/sound/mechiver/passive_04.ogg',
+		'modular_skyrat/modules/fleshmind/sound/mechiver/passive_05.ogg',
+		'modular_skyrat/modules/fleshmind/sound/mechiver/passive_06.ogg',
+		'modular_skyrat/modules/fleshmind/sound/mechiver/passive_07.ogg',
+		'modular_skyrat/modules/fleshmind/sound/mechiver/passive_08.ogg',
 
 	)
 	del_on_death = TRUE
@@ -1305,7 +1305,7 @@
 		"You feel a cold worm-like thing trying to wriggle into your wounds!",
 	)
 
-/mob/living/simple_animal/hostile/corrupted_flesh/mechiver/Life(delta_time, times_fired)
+/mob/living/simple_animal/hostile/fleshmind/mechiver/Life(delta_time, times_fired)
 	. = ..()
 	if(contained_mob && contained_mob.stat != DEAD && prob(25) && !suffering_malfunction)
 		torment_passenger()
@@ -1318,7 +1318,7 @@
 				else
 					Goto(iterating_mob, speed)
 
-/mob/living/simple_animal/hostile/corrupted_flesh/mechiver/proc/torment_passenger()
+/mob/living/simple_animal/hostile/fleshmind/mechiver/proc/torment_passenger()
 	if(!contained_mob)
 		return
 	var/damage_amount = rand(internal_mob_damage_lower, internal_mob_damage_upper)
@@ -1329,11 +1329,11 @@
 	to_chat(contained_mob, span_userdanger(pick(torment_lines)))
 	playsound(src, 'sound/weapons/drill.ogg', 70, 1)
 
-/mob/living/simple_animal/hostile/corrupted_flesh/mechiver/Moved()
+/mob/living/simple_animal/hostile/fleshmind/mechiver/Moved()
 	. = ..()
 	update_appearance()
 
-/mob/living/simple_animal/hostile/corrupted_flesh/mechiver/update_overlays()
+/mob/living/simple_animal/hostile/fleshmind/mechiver/update_overlays()
 	. = ..()
 	if(target && (get_dist(target, src) <= 4))
 		if(contained_mob)
@@ -1346,12 +1346,12 @@
 		if(contained_mob)
 			. += "[base_icon_state]-process"
 
-/mob/living/simple_animal/hostile/corrupted_flesh/mechiver/AttackingTarget(atom/attacked_target)
+/mob/living/simple_animal/hostile/fleshmind/mechiver/AttackingTarget(atom/attacked_target)
 	if(target && COOLDOWN_FINISHED(src, consume_ability_cooldown) && Adjacent(target))
 		consume_mob(target)
 	return ..()
 
-/mob/living/simple_animal/hostile/corrupted_flesh/mechiver/proc/consume_mob(mob/living/target_mob)
+/mob/living/simple_animal/hostile/fleshmind/mechiver/proc/consume_mob(mob/living/target_mob)
 	if(contained_mob)
 		return
 	if(!istype(target_mob))
@@ -1370,12 +1370,12 @@
 
 	addtimer(CALLBACK(src, .proc/release_mob), conversion_time)
 
-/mob/living/simple_animal/hostile/corrupted_flesh/mechiver/proc/close_hatch()
+/mob/living/simple_animal/hostile/fleshmind/mechiver/proc/close_hatch()
 	hatch_open = FALSE
 	update_appearance()
 
 /// This is where we either release the user, if they're alive, or convert them, if they're dead.
-/mob/living/simple_animal/hostile/corrupted_flesh/mechiver/proc/release_mob()
+/mob/living/simple_animal/hostile/fleshmind/mechiver/proc/release_mob()
 	if(!contained_mob)
 		return
 
@@ -1394,7 +1394,7 @@
 
 	playsound(src, 'sound/effects/blobattack.ogg', 70, 1)
 
-/mob/living/simple_animal/hostile/corrupted_flesh/mechiver/proc/convert_mob(mob/living/mob_to_convert)
+/mob/living/simple_animal/hostile/fleshmind/mechiver/proc/convert_mob(mob/living/mob_to_convert)
 	if(mob_to_convert.stat != DEAD) // No converting non-dead mobs.
 		return
 
@@ -1403,28 +1403,28 @@
 		return
 
 	if(iscyborg(mob_to_convert))
-		create_mob(/mob/living/simple_animal/hostile/corrupted_flesh/hiborg, mob_to_convert)
+		create_mob(/mob/living/simple_animal/hostile/fleshmind/hiborg, mob_to_convert)
 		return
 
 	if(ishuman(mob_to_convert))
-		var/mob_to_spawn = pick(/mob/living/simple_animal/hostile/corrupted_flesh/himan, /mob/living/simple_animal/hostile/corrupted_flesh/phaser) // We can either become a phaser or a himan
+		var/mob_to_spawn = pick(/mob/living/simple_animal/hostile/fleshmind/himan, /mob/living/simple_animal/hostile/fleshmind/phaser) // We can either become a phaser or a himan
 		create_mob(mob_to_spawn, mob_to_convert)
 		return
 
 	// Other mobs get converted into whatever else
 	var/static/list/possible_mobs = list(
-		/mob/living/simple_animal/hostile/corrupted_flesh/floater,
-		/mob/living/simple_animal/hostile/corrupted_flesh/globber,
-		/mob/living/simple_animal/hostile/corrupted_flesh/slicer,
-		/mob/living/simple_animal/hostile/corrupted_flesh/stunner,
-		/mob/living/simple_animal/hostile/corrupted_flesh/treader,
+		/mob/living/simple_animal/hostile/fleshmind/floater,
+		/mob/living/simple_animal/hostile/fleshmind/globber,
+		/mob/living/simple_animal/hostile/fleshmind/slicer,
+		/mob/living/simple_animal/hostile/fleshmind/stunner,
+		/mob/living/simple_animal/hostile/fleshmind/treader,
 	)
 	var/picked_mob_type = pick(possible_mobs)
 	create_mob(picked_mob_type, mob_to_convert)
 
 /// Creates and transfers a new mob.
-/mob/living/simple_animal/hostile/corrupted_flesh/mechiver/proc/create_mob(new_mob_type, mob/living/old_mob)
-	var/mob/living/simple_animal/hostile/corrupted_flesh/new_mob = new new_mob_type(get_turf(src))
+/mob/living/simple_animal/hostile/fleshmind/mechiver/proc/create_mob(new_mob_type, mob/living/old_mob)
+	var/mob/living/simple_animal/hostile/fleshmind/new_mob = new new_mob_type(get_turf(src))
 
 
 	if(old_mob)

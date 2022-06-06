@@ -1,20 +1,20 @@
 /**
  * Corrupted flesh basetype(abstract)
  */
-/obj/structure/corrupted_flesh
-	icon = 'modular_skyrat/modules/corrupted_flesh/icons/hivemind_structures.dmi'
+/obj/structure/fleshmind
+	icon = 'modular_skyrat/modules/fleshmind/icons/hivemind_structures.dmi'
 	icon_state = "infected_machine"
 	anchored = TRUE
 	/// Our faction
-	var/faction_types = list(FACTION_CORRUPTED_FLESH)
+	var/faction_types = list(FACTION_FLESHMIND)
 	/// A reference to our controller.
-	var/datum/corrupted_flesh_controller/our_controller
+	var/datum/fleshmind_controller/our_controller
 	/// The minimum core level for us to spawn at
 	var/required_controller_level = CONTROLLER_LEVEL_1
 	/// A list of possible rewards for destroying this thing.
 	var/list/possible_rewards
 
-/obj/structure/corrupted_flesh/Destroy()
+/obj/structure/fleshmind/Destroy()
 	our_controller = null
 	if(possible_rewards)
 		var/thing_to_spawn = pick(possible_rewards)
@@ -25,7 +25,7 @@
  * Deletion cleanup
  *
  */
-/obj/structure/corrupted_flesh/proc/controller_destroyed(datum/corrupted_flesh_controller/dying_controller, force)
+/obj/structure/fleshmind/proc/controller_destroyed(datum/fleshmind_controller/dying_controller, force)
 	SIGNAL_HANDLER
 
 	our_controller = null
@@ -35,10 +35,10 @@
  *
  * These are the arteries of the corrupted flesh, they are required for spreading and support machine life.
  */
-/obj/structure/corrupted_flesh/wireweed
+/obj/structure/fleshmind/wireweed
 	name = "wireweed"
 	desc = "A strange pulsating mass of organic wires."
-	icon = 'modular_skyrat/modules/corrupted_flesh/icons/wireweed_floor.dmi'
+	icon = 'modular_skyrat/modules/fleshmind/icons/wireweed_floor.dmi'
 	icon_state = "wires-0"
 	base_icon_state = "wires"
 	anchored = TRUE
@@ -56,7 +56,7 @@
 	/// Are we a vent burrow?
 	var/vent_burrow = FALSE
 
-/obj/structure/corrupted_flesh/wireweed/Initialize(mapload, starting_alpha = 255)
+/obj/structure/fleshmind/wireweed/Initialize(mapload, starting_alpha = 255)
 	. = ..()
 	alpha = starting_alpha
 	var/static/list/loc_connections = list(
@@ -64,23 +64,34 @@
 	)
 	AddElement(/datum/element/connect_loc, loc_connections)
 
-/obj/structure/corrupted_flesh/wireweed/update_icon(updates)
+/obj/structure/fleshmind/wireweed/wirecutter_act(mob/living/user, obj/item/tool)
+	. = ..()
+	tool.play_tool_sound(src)
+	balloon_alert(user, "cutting...")
+	if(do_after(user, WIREWEED_WIRECUTTER_KILL_TIME, src))
+		if(QDELETED(src))
+			return
+		balloon_alert(user, "cut!")
+		tool.play_tool_sound(src)
+		qdel(src)
+
+/obj/structure/fleshmind/wireweed/update_icon(updates)
 	. = ..()
 	if((updates & UPDATE_SMOOTHING) && (smoothing_flags & (SMOOTH_BITMASK)))
 		if(!vent_burrow)
 			QUEUE_SMOOTH(src)
 		QUEUE_SMOOTH_NEIGHBORS(src)
 
-/obj/structure/corrupted_flesh/wireweed/update_icon_state()
+/obj/structure/fleshmind/wireweed/update_icon_state()
 	. = ..()
 	if(vent_burrow)
 		icon_state = "vent_burrow"
 
-/obj/structure/corrupted_flesh/wireweed/emp_act(severity)
+/obj/structure/fleshmind/wireweed/emp_act(severity)
 	. = ..()
 	qdel(src)
 
-/obj/structure/corrupted_flesh/wireweed/update_overlays()
+/obj/structure/fleshmind/wireweed/update_overlays()
 	. = ..()
 	if(active)
 		. += "active"
@@ -99,11 +110,11 @@
 					new_wall_overlay.pixel_x = -32
 			. += new_wall_overlay
 
-/obj/structure/corrupted_flesh/wireweed/proc/visual_finished()
+/obj/structure/fleshmind/wireweed/proc/visual_finished()
 	SIGNAL_HANDLER
 	alpha = 255
 
-/obj/structure/corrupted_flesh/wireweed/proc/on_entered(datum/source, atom/movable/moving_atom)
+/obj/structure/fleshmind/wireweed/proc/on_entered(datum/source, atom/movable/moving_atom)
 	if(istype(moving_atom, /mob/living/simple_animal) && prob(ensnare_chance))
 		var/mob/living/simple_animal/captured_mob = moving_atom
 		if(faction_check(faction_types, captured_mob.faction))
@@ -113,6 +124,6 @@
 
 
 /obj/effect/temp_visual/wireweed_spread
-	icon = 'modular_skyrat/modules/corrupted_flesh/icons/wireweed_floor.dmi'
+	icon = 'modular_skyrat/modules/fleshmind/icons/wireweed_floor.dmi'
 	icon_state = "spread_anim"
 	duration = 1.7 SECONDS

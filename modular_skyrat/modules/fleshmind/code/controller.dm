@@ -4,7 +4,7 @@
  * This is the heart of the corruption, here is where we handle spreading and other stuff.
  */
 
-/datum/corrupted_flesh_controller
+/datum/fleshmind_controller
 	/// This is the name we will use to identify all of our babies.
 	var/controller_fullname = "DEFAULT"
 	/// First name, set automatically.
@@ -42,20 +42,20 @@
 
 	/// Types of structures we can spawn.
 	var/list/structure_types = list(
-		/obj/structure/corrupted_flesh/structure/babbler,
-		/obj/structure/corrupted_flesh/structure/modulator,
-		/obj/structure/corrupted_flesh/structure/screamer,
-		/obj/structure/corrupted_flesh/structure/whisperer,
-		/obj/structure/corrupted_flesh/structure/assembler,
-		/obj/structure/corrupted_flesh/structure/turret,
+		/obj/structure/fleshmind/structure/babbler,
+		/obj/structure/fleshmind/structure/modulator,
+		/obj/structure/fleshmind/structure/screamer,
+		/obj/structure/fleshmind/structure/whisperer,
+		/obj/structure/fleshmind/structure/assembler,
+		/obj/structure/fleshmind/structure/turret,
 	)
 	var/list/blacklisted_conversion_structures = list(
 		/obj/machinery/light,
 	)
 	/// Our wireweed type, defines what is spawned when we grow.
-	var/wireweed_type = /obj/structure/corrupted_flesh/wireweed
+	var/wireweed_type = /obj/structure/fleshmind/wireweed
 	/// We have the ability to make walls, this defines what kind of walls we make.
-	var/wall_type = /obj/structure/corrupted_flesh/structure/wireweed_wall
+	var/wall_type = /obj/structure/fleshmind/structure/wireweed_wall
 	/// What's the type of our death behaviour.
 	var/death_behaviour = CONTROLLER_DEATH_SLOW_DECAY
 	/// Our core level, what is spawned will depend on the level of this core.
@@ -89,7 +89,7 @@
 	/// A cooldown to determine when we can activate nearby wireweed after the core has been attacked.
 	COOLDOWN_DECLARE(next_core_damage_wireweed_activation)
 
-/datum/corrupted_flesh_controller/New(obj/structure/corrupted_flesh/structure/core/new_core)
+/datum/fleshmind_controller/New(obj/structure/fleshmind/structure/core/new_core)
 	. = ..()
 	controller_firstname = pick(AI_FORENAME_LIST)
 	controller_secondname = pick(AI_SURNAME_LIST)
@@ -106,10 +106,10 @@
 	if(do_initial_expansion)
 		initial_expansion()
 
-/datum/corrupted_flesh_controller/proc/register_new_asset(obj/structure/corrupted_flesh/new_asset)
-	new_asset.RegisterSignal(src, COMSIG_PARENT_QDELETING, /obj/structure/corrupted_flesh/proc/controller_destroyed)
+/datum/fleshmind_controller/proc/register_new_asset(obj/structure/fleshmind/new_asset)
+	new_asset.RegisterSignal(src, COMSIG_PARENT_QDELETING, /obj/structure/fleshmind/proc/controller_destroyed)
 
-/datum/corrupted_flesh_controller/process(delta_time)
+/datum/fleshmind_controller/process(delta_time)
 	if(!LAZYLEN(cores)) // We have no more processor cores, it's time to die.
 		if(death_behaviour == CONTROLLER_DEATH_SLOW_DECAY)
 			handle_slow_decay()
@@ -136,7 +136,7 @@
 
 	calculate_level_system()
 
-/datum/corrupted_flesh_controller/Destroy(force, ...)
+/datum/fleshmind_controller/Destroy(force, ...)
 	active_wireweed = null
 	controlled_machine_components = null
 	controlled_wireweed = null
@@ -148,13 +148,13 @@
 	return ..()
 
 
-/datum/corrupted_flesh_controller/proc/initial_expansion()
+/datum/fleshmind_controller/proc/initial_expansion()
 	for(var/i in 1 to initial_expansion_spreads)
 		wireweed_process(TRUE, FALSE, FALSE)
 	spawn_structures(initial_expansion_structures)
 
 /// The process of handling active wireweed behaviours
-/datum/corrupted_flesh_controller/proc/wireweed_process(do_spread, do_attack, progress_structure = TRUE)
+/datum/fleshmind_controller/proc/wireweed_process(do_spread, do_attack, progress_structure = TRUE)
 	// If no wireweed, spawn one under our first core.
 	if(!LAZYLEN(controlled_wireweed))
 		spawn_wireweed(get_turf(cores[1]), wireweed_type) // We use the first core in the list to spread.
@@ -164,7 +164,7 @@
 		active_wireweed = controlled_wireweed.Copy()
 
 	var/list/spread_turf_canidates = list()
-	for(var/obj/structure/corrupted_flesh/wireweed/wireweed as anything in active_wireweed)
+	for(var/obj/structure/fleshmind/wireweed/wireweed as anything in active_wireweed)
 		var/could_attack = FALSE
 		var/could_do_wall = FALSE
 
@@ -207,7 +207,7 @@
 						continue
 				var/wireweed_count = 0
 				var/place_count = 1
-				for(var/obj/structure/corrupted_flesh/wireweed/iterated_wireweed in adjacent_open)
+				for(var/obj/structure/fleshmind/wireweed/iterated_wireweed in adjacent_open)
 					wireweed_count++
 				if(wireweed_count < place_count)
 					tasks++
@@ -225,17 +225,17 @@
 		if(progress_structure && structure_types)
 			structure_progression++
 		if(structure_progression >= spreads_for_structure)
-			var/obj/structure/corrupted_flesh/structure/existing_structure = locate() in picked_turf
+			var/obj/structure/fleshmind/structure/existing_structure = locate() in picked_turf
 			if(!existing_structure)
 				structure_progression -= spreads_for_structure
 				var/list/possible_structures = list()
-				for(var/obj/structure/corrupted_flesh/iterating_structure as anything in structure_types)
+				for(var/obj/structure/fleshmind/iterating_structure as anything in structure_types)
 					if(initial(iterating_structure.required_controller_level) > level)
 						continue
 					possible_structures += iterating_structure
 				spawn_structure(picked_turf, pick(possible_structures))
 
-/datum/corrupted_flesh_controller/proc/calculate_level_system()
+/datum/fleshmind_controller/proc/calculate_level_system()
 	var/points = calculate_current_points()
 	if(points >= (last_level_up_points + level_up_progress_required) && level < CONTROLLER_LEVEL_MAX)
 		level_up()
@@ -246,16 +246,16 @@
 		spread_progress_per_second = base_spread_progress_per_second + (CONTROLLER_CORE_SPREAD_PROGRESS_BOOST * core_count)
 
 
-/datum/corrupted_flesh_controller/proc/level_up()
+/datum/fleshmind_controller/proc/level_up()
 	level++
 	spread_progress = CONTROLLER_LEVEL_UP_SPREAD_BOOST // We get a nice boost when we level up
 	spawn_new_core()
 	message_admins("Corruption AI [controller_fullname] has leveled up to level [level]!")
 	notify_ghosts("Corruption AI [controller_fullname] has leveled up to level [level]!")
 
-/datum/corrupted_flesh_controller/proc/spawn_new_core()
-	var/obj/structure/corrupted_flesh/wireweed/selected_wireweed = pick(controlled_wireweed)
-	var/obj/structure/corrupted_flesh/structure/core/new_core = new(get_turf(selected_wireweed), FALSE)
+/datum/fleshmind_controller/proc/spawn_new_core()
+	var/obj/structure/fleshmind/wireweed/selected_wireweed = pick(controlled_wireweed)
+	var/obj/structure/fleshmind/structure/core/new_core = new(get_turf(selected_wireweed), FALSE)
 	RegisterSignal(new_core, COMSIG_PARENT_QDELETING, .proc/core_death)
 	register_new_asset(new_core, FALSE)
 	new_core.our_controller = src
@@ -263,7 +263,7 @@
 	new_core.name = "[controller_fullname] Processor Unit"
 
 /// Spawns and registers a wireweed at location
-/datum/corrupted_flesh_controller/proc/spawn_wireweed(turf/location, wireweed_type, turf/origin_turf, are_we_a_vent_burrow = FALSE)
+/datum/fleshmind_controller/proc/spawn_wireweed(turf/location, wireweed_type, turf/origin_turf, are_we_a_vent_burrow = FALSE)
 	//Spawn effect
 	for(var/obj/machinery/light/light_in_place in location)
 		light_in_place.break_light_tube()
@@ -279,8 +279,10 @@
 					continue
 				if(iterating_vent.welded) // Can't go through welded vents.
 					continue
-				var/obj/structure/corrupted_flesh/wireweed/existing_wireweed = locate() in get_turf(iterating_vent)
+				var/obj/structure/fleshmind/wireweed/existing_wireweed = locate() in get_turf(iterating_vent)
 				if(existing_wireweed)
+					continue
+				if(get_dist(iterating_vent, origin_turf) >= MAX_VENT_SPREAD_DISTANCE)
 					continue
 				possible_transfer_points += iterating_vent
 			if(LAZYLEN(possible_transfer_points)) // OH SHIT IM FEELING IT
@@ -296,12 +298,12 @@
 			continue
 		iterating_machine.AddComponent(/datum/component/machine_corruption, src)
 
-	var/obj/structure/corrupted_flesh/wireweed/new_wireweed
+	var/obj/structure/fleshmind/wireweed/new_wireweed
 	if(origin_turf) // We have an origin turf, thus, are spreading from it. Do anims.
 		new_wireweed = new wireweed_type(location, 0)
 		var/obj/effect/temp_visual/wireweed_spread/effect = new(location)
 		effect.setDir(get_dir(origin_turf, location))
-		new_wireweed.RegisterSignal(effect, COMSIG_PARENT_QDELETING, /obj/structure/corrupted_flesh/wireweed/proc/visual_finished)
+		new_wireweed.RegisterSignal(effect, COMSIG_PARENT_QDELETING, /obj/structure/fleshmind/wireweed/proc/visual_finished)
 	else
 		new_wireweed = new wireweed_type(location)
 	new_wireweed.our_controller = src
@@ -316,8 +318,8 @@
 	RegisterSignal(new_wireweed, COMSIG_PARENT_QDELETING, .proc/wireweed_death)
 
 /// Spawns and registers a wall at location
-/datum/corrupted_flesh_controller/proc/spawn_wall(turf/location, wall_type)
-	var/obj/structure/corrupted_flesh/structure/wireweed_wall/new_wall = new wall_type(location)
+/datum/fleshmind_controller/proc/spawn_wall(turf/location, wall_type)
+	var/obj/structure/fleshmind/structure/wireweed_wall/new_wall = new wall_type(location)
 	new_wall.our_controller = src
 	controlled_walls += new_wall
 
@@ -325,8 +327,8 @@
 	RegisterSignal(new_wall, COMSIG_PARENT_QDELETING, .proc/wall_death)
 
 /// Spawns and registers a structure at location
-/datum/corrupted_flesh_controller/proc/spawn_structure(turf/location, structure_type)
-	var/obj/structure/corrupted_flesh/structure/new_structure = new structure_type(location)
+/datum/fleshmind_controller/proc/spawn_structure(turf/location, structure_type)
+	var/obj/structure/fleshmind/structure/new_structure = new structure_type(location)
 	new_structure.our_controller = src
 	controlled_structures += new_structure
 
@@ -336,16 +338,16 @@
 	RegisterSignal(new_structure, COMSIG_PARENT_QDELETING, .proc/structure_death)
 
 /// Spawns an amount of structured across all wireweed, guaranteed to spawn atleast 1 of each type
-/datum/corrupted_flesh_controller/proc/spawn_structures(amount)
+/datum/fleshmind_controller/proc/spawn_structures(amount)
 	if(!structure_types)
 		return
 	var/list/possible_structures = list()
-	for(var/obj/structure/corrupted_flesh/iterating_structure as anything in structure_types)
+	for(var/obj/structure/fleshmind/iterating_structure as anything in structure_types)
 		if(initial(iterating_structure.required_controller_level) > level)
 			continue
 		possible_structures += iterating_structure
 	var/list/locations = list()
-	for(var/obj/structure/corrupted_flesh/wireweed/iterating_wireweed as anything in controlled_wireweed)
+	for(var/obj/structure/fleshmind/wireweed/iterating_wireweed as anything in controlled_wireweed)
 		locations[get_turf(iterating_wireweed)] = TRUE
 	var/list/guaranteed_structures = possible_structures.Copy()
 	for(var/i in 1 to amount)
@@ -361,7 +363,7 @@
 		spawn_structure(location, structure_to_spawn)
 
 /// Activates wireweed of this controller in a range around a location, following atmos adjacency.
-/datum/corrupted_flesh_controller/proc/activate_wireweed_nearby(turf/location, range)
+/datum/fleshmind_controller/proc/activate_wireweed_nearby(turf/location, range)
 	var/list/turfs_to_check = list()
 	turfs_to_check[location] = TRUE
 
@@ -378,32 +380,32 @@
 			turfs_to_iterate = new_iteration_list
 
 	for(var/turf/iterated_turf as anything in turfs_to_check)
-		for(var/obj/structure/corrupted_flesh/wireweed/iterating_wireweed in iterated_turf)
+		for(var/obj/structure/fleshmind/wireweed/iterating_wireweed in iterated_turf)
 			if(iterating_wireweed.our_controller == src && !QDELETED(iterating_wireweed))
 				active_wireweed |= iterating_wireweed
 
 /// When the core is damaged, activate nearby wireweed just to make sure that we've sealed up walls near the core, which could be important to prevent cheesing.
-/datum/corrupted_flesh_controller/proc/core_damaged(obj/structure/corrupted_flesh/structure/core/damaged_core)
+/datum/fleshmind_controller/proc/core_damaged(obj/structure/fleshmind/structure/core/damaged_core)
 	if(!COOLDOWN_FINISHED(src, next_core_damage_wireweed_activation))
 		return
 	COOLDOWN_START(src, next_core_damage_wireweed_activation, next_core_damage_wireweed_activation_cooldown)
 	activate_wireweed_nearby(get_turf(damaged_core), CORE_DAMAGE_WIREWEED_ACTIVATION_RANGE)
 
 /// Returns the amount of evolution points this current controller has.
-/datum/corrupted_flesh_controller/proc/calculate_current_points()
+/datum/fleshmind_controller/proc/calculate_current_points()
 	return LAZYLEN(controlled_wireweed) + LAZYLEN(controlled_walls) + LAZYLEN(controlled_structures) + LAZYLEN(controlled_machine_components)
 
 // Death procs
 
 /// When a core is destroyed.
-/datum/corrupted_flesh_controller/proc/core_death(obj/structure/corrupted_flesh/structure/core/dead_core, force)
+/datum/fleshmind_controller/proc/core_death(obj/structure/fleshmind/structure/core/dead_core, force)
 	cores -= dead_core
 	activate_wireweed_nearby(get_turf(dead_core), CORE_DAMAGE_WIREWEED_ACTIVATION_RANGE)
 	if(!LAZYLEN(cores))
 		controller_death()
 
 
-/datum/corrupted_flesh_controller/proc/wireweed_death(obj/structure/corrupted_flesh/dying_wireweed, force)
+/datum/fleshmind_controller/proc/wireweed_death(obj/structure/fleshmind/dying_wireweed, force)
 	SIGNAL_HANDLER
 
 	controlled_wireweed -= dying_wireweed
@@ -411,20 +413,20 @@
 	activate_wireweed_nearby(get_turf(dying_wireweed), GENERAL_DAMAGE_WIREWEED_ACTIVATION_RANGE)
 
 /// When a wall dies, called by wall
-/datum/corrupted_flesh_controller/proc/wall_death(obj/structure/corrupted_flesh/structure/wireweed_wall/dying_wall, force)
+/datum/fleshmind_controller/proc/wall_death(obj/structure/fleshmind/structure/wireweed_wall/dying_wall, force)
 	SIGNAL_HANDLER
 
 	controlled_walls -= dying_wall
 	activate_wireweed_nearby(get_turf(dying_wall), GENERAL_DAMAGE_WIREWEED_ACTIVATION_RANGE)
 
 /// When a structure dies, called by structure
-/datum/corrupted_flesh_controller/proc/structure_death(obj/structure/corrupted_flesh/structure/dying_structure, force)
+/datum/fleshmind_controller/proc/structure_death(obj/structure/fleshmind/structure/dying_structure, force)
 	SIGNAL_HANDLER
 
 	controlled_structures -= dying_structure
 	activate_wireweed_nearby(get_turf(dying_structure), GENERAL_DAMAGE_WIREWEED_ACTIVATION_RANGE)
 
-/datum/corrupted_flesh_controller/proc/component_death(datum/component/machine_corruption/deleting_component, force)
+/datum/fleshmind_controller/proc/component_death(datum/component/machine_corruption/deleting_component, force)
 	SIGNAL_HANDLER
 
 	var/obj/parent_object = deleting_component.parent
@@ -434,23 +436,23 @@
 
 
 /// Deletes everything, unless an argument is passed, then it just deletes structures
-/datum/corrupted_flesh_controller/proc/delete_everything(just_structures = FALSE)
-	for(var/obj/structure/corrupted_flesh/structure/structure_thing as anything in controlled_structures)
+/datum/fleshmind_controller/proc/delete_everything(just_structures = FALSE)
+	for(var/obj/structure/fleshmind/structure/structure_thing as anything in controlled_structures)
 		qdel(structure_thing)
-	for(var/obj/structure/corrupted_flesh/structure/wireweed_wall/wall_thing as anything in controlled_walls)
+	for(var/obj/structure/fleshmind/structure/wireweed_wall/wall_thing as anything in controlled_walls)
 		qdel(wall_thing)
 	for(var/datum/component/machine_corruption/corruption_thing as anything in controlled_machine_components)
 		qdel(corruption_thing)
 	if(just_structures)
 		return
-	for(var/obj/structure/corrupted_flesh/wireweed/wireweed_thing as anything in controlled_wireweed)
+	for(var/obj/structure/fleshmind/wireweed/wireweed_thing as anything in controlled_wireweed)
 		qdel(wireweed_thing)
-	for(var/obj/structure/corrupted_flesh/structure/core/core_to_destroy as anything in cores)
+	for(var/obj/structure/fleshmind/structure/core/core_to_destroy as anything in cores)
 		qdel(core_to_destroy)
 	qdel(src)
 
 /// Handles the controller(thus AI) dying
-/datum/corrupted_flesh_controller/proc/controller_death()
+/datum/fleshmind_controller/proc/controller_death()
 	switch(death_behaviour)
 		if(CONTROLLER_DEATH_DO_NOTHING)
 			qdel(src)
@@ -460,9 +462,9 @@
 			delete_everything(TRUE)
 
 /// Handles the slow decay of an empire.
-/datum/corrupted_flesh_controller/proc/handle_slow_decay()
+/datum/fleshmind_controller/proc/handle_slow_decay()
 	if(!LAZYLEN(controlled_wireweed))
 		qdel(src)
 		return
-	var/obj/structure/corrupted_flesh/wireweed/wireweed_thing = controlled_wireweed[LAZYLEN(controlled_wireweed)]
+	var/obj/structure/fleshmind/wireweed/wireweed_thing = controlled_wireweed[LAZYLEN(controlled_wireweed)]
 	qdel(wireweed_thing)

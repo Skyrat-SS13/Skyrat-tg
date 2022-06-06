@@ -3,7 +3,7 @@
 /// A list of objects that are considered part of a door, used to determine if a wireweed should attack it.
 #define DOOR_OBJECT_LIST list(/obj/machinery/door/airlock, /obj/structure/door_assembly, /obj/machinery/door/firedoor)
 
-#define FACTION_CORRUPTED_FLESH "corrupted_flesh"
+#define FACTION_FLESHMIND "fleshmind"
 
 #define MALFUNCTION_RESET_TIME 5 SECONDS
 
@@ -15,7 +15,7 @@
 #define STRUCTURE_EMP_LIGHT_DAMAGE 10
 #define STRUCTURE_EMP_HEAVY_DAMAGE 20
 
-#define CORRUPTED_FLESH_NAME_MODIFIER_LIST list ("Warped", "Altered", "Modified", "Upgraded", "Abnormal")
+#define FLESHMIND_NAME_MODIFIER_LIST list ("Warped", "Altered", "Modified", "Upgraded", "Abnormal")
 
 /// The range at which most of our objects, mobs and structures activate at. 7 seems to be the perfect number.
 #define DEFAULT_VIEW_RANGE 7
@@ -26,10 +26,13 @@
 
 #define SPECIES_MONKEY_MAULER "monkey_mauler"
 
-#define CORRUPTED_FLESH_LIGHT_BLUE "#50edd9"
+#define FLESHMIND_LIGHT_BLUE "#50edd9"
 
 /// Core is in danger, engage turboboosters
-#define MOB_RALLY_SPEED 0
+#define MOB_RALLY_SPEED 0.5
+
+/// The max spread distance a wireweed can spread thru a vent.
+#define MAX_VENT_SPREAD_DISTANCE 10
 
 // CONTROLLER RELATED DEFINES
 
@@ -65,5 +68,4 @@
 #define CORE_DAMAGE_WIREWEED_ACTIVATION_RANGE 6
 #define GENERAL_DAMAGE_WIREWEED_ACTIVATION_RANGE 2
 
-
-
+#define WIREWEED_WIRECUTTER_KILL_TIME 2 SECONDS

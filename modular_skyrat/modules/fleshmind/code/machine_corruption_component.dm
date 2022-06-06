@@ -51,10 +51,10 @@
 	"shakes with an awful metallic noise.",)
 
 
-#define PAIN_RESPONSE_SOUNDS list('modular_skyrat/modules/corrupted_flesh/sound/robot_talk_heavy1.ogg', \
-	'modular_skyrat/modules/corrupted_flesh/sound/robot_talk_heavy2.ogg', \
-	'modular_skyrat/modules/corrupted_flesh/sound/robot_talk_heavy3.ogg', \
-	'modular_skyrat/modules/corrupted_flesh/sound/robot_talk_heavy4.ogg',)
+#define PAIN_RESPONSE_SOUNDS list('modular_skyrat/modules/fleshmind/sound/robot_talk_heavy1.ogg', \
+	'modular_skyrat/modules/fleshmind/sound/robot_talk_heavy2.ogg', \
+	'modular_skyrat/modules/fleshmind/sound/robot_talk_heavy3.ogg', \
+	'modular_skyrat/modules/fleshmind/sound/robot_talk_heavy4.ogg',)
 
 /datum/component/machine_corruption
 	/// A list of possible overlays that we can choose from when we are created.
@@ -71,14 +71,14 @@
 	var/damage_response_cooldown = 3 SECONDS
 	COOLDOWN_DECLARE(damage_response)
 
-/datum/component/machine_corruption/Initialize(datum/corrupted_flesh_controller/incoming_controller)
+/datum/component/machine_corruption/Initialize(datum/fleshmind_controller/incoming_controller)
 
 	if(!isobj(parent))
 		return COMPONENT_INCOMPATIBLE
 
 	if(incoming_controller)
 		RegisterSignal(incoming_controller, COMSIG_PARENT_QDELETING, .proc/controller_death)
-		incoming_controller.RegisterSignal(src, COMSIG_PARENT_QDELETING, /datum/corrupted_flesh_controller/proc/component_death)
+		incoming_controller.RegisterSignal(src, COMSIG_PARENT_QDELETING, /datum/fleshmind_controller/proc/component_death)
 
 	set_overlay = pick(possible_overlays)
 
@@ -90,14 +90,14 @@
 
 	addtimer(CALLBACK(src, .proc/finish_setup, incoming_controller), COMPONENT_SETUP_TIME)
 
-/datum/component/machine_corruption/proc/finish_setup(datum/corrupted_flesh_controller/incoming_controller)
+/datum/component/machine_corruption/proc/finish_setup(datum/fleshmind_controller/incoming_controller)
 	var/obj/machinery/parent_machinery = parent
 
 	if(parent_machinery.circuit && prob(CHANCE_TO_CREATE_MECHIVER))
-		var/mob/living/simple_animal/hostile/corrupted_flesh/mechiver/new_mechiver = new (get_turf(parent_machinery))
+		var/mob/living/simple_animal/hostile/fleshmind/mechiver/new_mechiver = new (get_turf(parent_machinery))
 		if(incoming_controller)
-			for(var/obj/structure/corrupted_flesh/structure/core/iterating_core in incoming_controller.cores)
-				new_mechiver.RegisterSignal(iterating_core, COMSIG_PARENT_QDELETING, /mob/living/simple_animal/hostile/corrupted_flesh/proc/core_death)
+			for(var/obj/structure/fleshmind/structure/core/iterating_core in incoming_controller.cores)
+				new_mechiver.RegisterSignal(iterating_core, COMSIG_PARENT_QDELETING, /mob/living/simple_animal/hostile/fleshmind/proc/core_death)
 		parent_machinery.circuit.forceMove(get_turf(parent_machinery))
 		parent_machinery.circuit = null
 		notify_ghosts("A new corrupt Mechiver has been created by [incoming_controller.controller_fullname]!", source = new_mechiver)
@@ -115,7 +115,7 @@
 
 	parent_machinery.update_appearance()
 
-	parent_machinery.light_color = CORRUPTED_FLESH_LIGHT_BLUE
+	parent_machinery.light_color = FLESHMIND_LIGHT_BLUE
 	parent_machinery.light_power = 1
 	parent_machinery.light_range = 2
 	parent_machinery.update_light()
@@ -147,7 +147,7 @@
  *
  * Handles when the controller dies.
  */
-/datum/component/machine_corruption/proc/controller_death(datum/corrupted_flesh_controller/deleting_controller, force)
+/datum/component/machine_corruption/proc/controller_death(datum/fleshmind_controller/deleting_controller, force)
 	SIGNAL_HANDLER
 
 	qdel(src)
@@ -164,7 +164,7 @@
 	if(!isliving(user))
 		return
 	var/mob/living/living_user = user
-	if((FACTION_CORRUPTED_FLESH in living_user.faction))
+	if((FACTION_FLESHMIND in living_user.faction))
 		return
 	if(!living_user.can_interact_with(parent_machinery))
 		return
@@ -193,7 +193,7 @@
 /datum/component/machine_corruption/proc/handle_destruction(obj/item/target, damage_flag)
 	SIGNAL_HANDLER
 
-	playsound(target, 'modular_skyrat/modules/corrupted_flesh/sound/sparks_2.ogg', 70, TRUE)
+	playsound(target, 'modular_skyrat/modules/fleshmind/sound/sparks_2.ogg', 70, TRUE)
 	if(prob(DAMAGE_RESPONSE_PROB))
 		target.say("ARRRRRRRGHHHHHHH!")
 	new /obj/effect/gibspawner/robot(get_turf(target))
@@ -203,13 +203,13 @@
 	SIGNAL_HANDLER
 
 	if(starting_up)
-		overlays += mutable_appearance('modular_skyrat/modules/corrupted_flesh/icons/hivemind_machines.dmi', "rebuild")
+		overlays += mutable_appearance('modular_skyrat/modules/fleshmind/icons/hivemind_machines.dmi', "rebuild")
 	else
-		overlays += mutable_appearance('modular_skyrat/modules/corrupted_flesh/icons/hivemind_machines.dmi', set_overlay)
+		overlays += mutable_appearance('modular_skyrat/modules/fleshmind/icons/hivemind_machines.dmi', set_overlay)
 
 /datum/component/machine_corruption/proc/update_name()
 	var/obj/machinery/parent_machinery = parent
-	parent_machinery.name = "[pick(CORRUPTED_FLESH_NAME_MODIFIER_LIST)] [parent_machinery.name]"
+	parent_machinery.name = "[pick(FLESHMIND_NAME_MODIFIER_LIST)] [parent_machinery.name]"
 
 /datum/component/machine_corruption/proc/on_examine(atom/examined, mob/user, list/examine_list)
 	SIGNAL_HANDLER
