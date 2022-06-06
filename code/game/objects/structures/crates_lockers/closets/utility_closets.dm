@@ -69,11 +69,8 @@
 	new /obj/item/tank/internals/oxygen/red(src)
 	new /obj/item/extinguisher(src)
 	new /obj/item/clothing/head/hardhat/red(src)
-<<<<<<< HEAD
-	new /obj/item/storage/inflatable(src) //SKYRAT EDIT ADDITION - INFLATABLES
-=======
 	new /obj/item/crowbar/large/emergency(src)
->>>>>>> 619d272d792 (adds crowbars to fire-safety closets without gutting red toolboxes (#67484))
+	new /obj/item/storage/inflatable(src) //SKYRAT EDIT ADDITION - INFLATABLES
 
 /obj/structure/closet/firecloset/full/PopulateContents()
 	new /obj/item/clothing/suit/fire/firefighter(src)
