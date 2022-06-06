@@ -169,7 +169,7 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	icon_state = "socks_knee"
 	use_static = null
 
-/datum/sprite_accessory/socks/socks_knee/stirrups
+/datum/sprite_accessory/socks/stirrups_knee
 	name = "Knee-high Stirrups"
 	icon_state = "socks_knee-stir"
 	use_static = null
@@ -189,12 +189,12 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	icon_state = "socks_norm"
 	use_static = null
 
-/datum/sprite_accessory/socks/socks_norm/stirrups
+/datum/sprite_accessory/socks/stirrups_norm
 	name = "Normal Stirrups"
 	icon_state = "socks_norm-stir"
 	use_static = null
 
-/datum/sprite_accessory/socks/socks_mid_stirrups
+/datum/sprite_accessory/socks/stirrups_mid
 	name = "Mid-Length Stirrups"
 	icon_state = "socks_mid-stir"
 	use_static = null
@@ -209,7 +209,7 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	icon_state = "socks_thigh"
 	use_static = null
 
-/datum/sprite_accessory/socks/socks_thigh/stirrups
+/datum/sprite_accessory/socks/stirrups_thigh
 	name = "Thigh-high Stirrups"
 	icon_state = "socks_thigh-stir"
 	use_static = null
@@ -359,7 +359,6 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 /datum/sprite_accessory/underwear/fishnet_lower/alt
 	name = "Panties - Fishnet Alt"
 	icon_state = "fishnet_lower_alt"
-	gender = FEMALE
 	use_static = null
 
 /datum/sprite_accessory/underwear/female_beekini
@@ -633,7 +632,6 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 /datum/sprite_accessory/undershirt/fishnet_sleeves/alt
 	name = "Fishnet - Sleeves Alt"
 	icon_state = "fishnet_sleeves_alt"
-	gender = FEMALE
 	use_static = null
 
 /datum/sprite_accessory/undershirt/fishnet_gloves
@@ -645,7 +643,6 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 /datum/sprite_accessory/undershirt/fishnet_gloves/alt
 	name = "Fishnet - Gloves Alt"
 	icon_state = "fishnet_gloves_alt"
-	gender = FEMALE
 	use_static = null
 
 /datum/sprite_accessory/undershirt/fishnet_base
@@ -657,7 +654,6 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 /datum/sprite_accessory/undershirt/fishnet_base/alt
 	name = "Fishnet - Top Alt"
 	icon_state = "fishnet_body_alt"
-	gender = FEMALE
 	use_static = null
 
 /datum/sprite_accessory/undershirt/swimsuit
@@ -722,8 +718,6 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 /datum/sprite_accessory/undershirt/striped/blue
 	name = "Shirt - Blue Stripes"
 	icon_state = "longstripe_blue"
-	gender = NEUTER
-	use_static = TRUE
 
 /datum/sprite_accessory/undershirt/binder
 	name = "Binder"
@@ -734,8 +728,6 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 /datum/sprite_accessory/undershirt/binder/strapless
 	name = "Binder - Strapless"
 	icon_state = "binder_strapless"
-	gender = MALE
-	use_static = null
 
 /datum/sprite_accessory/undershirt/turtleneck
 	name = "Sweater - Turtleneck"
@@ -746,8 +738,6 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 /datum/sprite_accessory/undershirt/turtleneck/sleeveless
 	name = "Sweater - Sleeveless Turtleneck"
 	icon_state = "turtleneck_sleeveless"
-	gender = NEUTER
-	use_static = null
 
 /datum/sprite_accessory/undershirt/offshoulder
 	name = "Shirt - Off-Shoulder"
@@ -764,5 +754,3 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 /datum/sprite_accessory/undershirt/leotard/turtleneck
 	name = "Shirt - Turtleneck Leotard"
 	icon_state = "leotard_turtleneck"
-	gender = FEMALE
-	use_static = null
