@@ -3168,7 +3168,7 @@
 "aFn" = (
 /obj/machinery/door/poddoor/shutters/preopen{
 	id = "ghostcafekitchen";
-	name = "kitchen shutters"
+	name = "Kitchen Shutters"
 	},
 /obj/effect/spawner/structure/window,
 /turf/open/indestructible/hoteltile{
@@ -4778,7 +4778,7 @@
 /area/centcom/holding/cafe)
 "aSi" = (
 /obj/machinery/door/airlock/survival_pod{
-	name = "cockpit"
+	name = "Cockpit"
 	},
 /turf/open/indestructible/hoteltile{
 	icon_state = "darkfull"
@@ -5395,7 +5395,7 @@
 "aXl" = (
 /obj/machinery/door/poddoor/shutters/preopen{
 	id = "ghostcafekitchen";
-	name = "kitchen shutters"
+	name = "Kitchen Shutters"
 	},
 /obj/machinery/door/firedoor,
 /obj/structure/table/reinforced,
@@ -8640,7 +8640,7 @@
 /area/centcom/interlink)
 "mYg" = (
 /obj/machinery/door/airlock/survival_pod{
-	name = "transport ship"
+	name = "Transport Ship"
 	},
 /turf/open/indestructible/hoteltile{
 	icon_state = "darkfull"
@@ -9310,7 +9310,8 @@
 "pPo" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Administrative Office";
-	req_one_access_txt = "20;101"
+	req_access = list("captain");
+	req_one_access = null
 	},
 /turf/open/floor/iron,
 /area/centcom/interlink)
@@ -10336,7 +10337,6 @@
 /turf/open/floor/iron/white,
 /area/centcom/holding/cafe)
 "tvw" = (
-/obj/structure/lattice,
 /turf/closed/indestructible/riveted,
 /area/centcom/interlink)
 "twL" = (
@@ -10451,7 +10451,7 @@
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/door/poddoor/shutters/preopen{
 	id = "ntconoffice";
-	name = "security shutters"
+	name = "Security Shutters"
 	},
 /turf/open/floor/plating,
 /area/centcom/interlink)
@@ -11531,6 +11531,13 @@
 "xUn" = (
 /obj/machinery/photocopier,
 /turf/open/floor/carpet/executive,
+/area/centcom/interlink)
+"xVA" = (
+/obj/machinery/door/airlock/centcom{
+	name = "Administrative Office";
+	req_one_access_txt = list("cent_general","captain")
+	},
+/turf/open/floor/iron,
 /area/centcom/interlink)
 "xYR" = (
 /obj/effect/turf_decal/siding/wood{
@@ -26822,7 +26829,7 @@ aiL
 aiL
 aiL
 aiL
-pPo
+xVA
 hvQ
 hvQ
 hvQ

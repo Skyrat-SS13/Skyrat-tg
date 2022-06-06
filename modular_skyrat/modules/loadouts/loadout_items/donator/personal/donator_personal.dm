@@ -186,7 +186,7 @@
 
 /datum/loadout_item/under/jumpsuit/netra_dress
 	name = "Black and Silver Armored Dress"
-	item_path = /obj/item/clothing/under/rank/security/blueshield/netra
+	item_path = /obj/item/clothing/under/rank/blueshield/netra
 	ckeywhitelist = list("netrakyram")
 	restricted_roles = list(JOB_CAPTAIN, JOB_BLUESHIELD, JOB_HEAD_OF_SECURITY)
 

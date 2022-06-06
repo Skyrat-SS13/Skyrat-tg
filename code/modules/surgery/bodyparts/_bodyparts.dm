@@ -880,10 +880,8 @@
 
 			var/gender_modifier = ""
 			if(body_zone == BODY_ZONE_CHEST) // Chest markings have male and female versions.
-				if(is_dimorphic)
-					gender_modifier = "_[limb_gender]"
-				else
-					gender_modifier = "_m" // Again, why we don't define if a marking can have male/female is byond me.
+				if(body_marking.gendered)
+					gender_modifier = is_dimorphic ? "_[limb_gender]" : "_m"
 
 			var/mutable_appearance/accessory_overlay
 			var/mutable_appearance/emissive
