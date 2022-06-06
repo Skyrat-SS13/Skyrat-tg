@@ -28,11 +28,10 @@
 
 /obj/item/clothing/glasses/hud/ar/Destroy()
   STOP_PROCESSING(SSobj, src)
-  return ..()
 
 /obj/item/clothing/glasses/hud/ar/proc/toggle_mode(mob/user, voluntary)
   if(mode == modes[mode])
-    return ..() // If there is only really one mode to cycle through, early return
+    return // If there is only really one mode to cycle through, early return
   if(mode == MODE_FREEZE_ANIMATION)
     icon = initial(icon) /// Resets icon to initial value after MODE_FREEZE_ANIMATION, since MODE_FREEZE_ANIMATION replaces it with non-animated version of initial
   mode = modes[mode] // Change modes
@@ -74,7 +73,6 @@
       H.update_sight()
   update_action_buttons()
   update_appearance()
-  ..()
 
 /obj/item/clothing/glasses/hud/ar/attack_self(mob/user)
   toggle_mode(user, TRUE)
