@@ -6,11 +6,8 @@
 		TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_CAN_STRIP,
 		TRAIT_NOSLIPALL,
-<<<<<<< HEAD
-		TRAIT_WATER_BREATHING, //SKYRAT EDIT - Roundstart Snails
-=======
 		TRAIT_LITERATE,
->>>>>>> 59e61bc840c ([NO GBP] Fix illiterate quirk bugs (#67473))
+		TRAIT_WATER_BREATHING, //SKYRAT EDIT - Roundstart Snails
 	)
 	attack_verb = "slap"
 	attack_effect = ATTACK_EFFECT_DISARM
