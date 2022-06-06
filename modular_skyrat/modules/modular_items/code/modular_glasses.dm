@@ -90,10 +90,12 @@
   tint = 0
   off_state = "aviator_off"
 
-/obj/item/clothing/glasses/hud/ar/aviator/fake 
+/obj/item/clothing/glasses/fake_sunglasses/aviator
+  name = "aviators"
   desc = "A pair of designer sunglasses. Doesn't seem like it'll block flashes."
-  modes = list(MODE_ON = MODE_ON) //... maybe just make these a subtype of /obj/item/clothing/glasses/sun/fake , the modetoggle is not needed
-  flash_protect = FLASH_PROTECTION_NONE
+  worn_icon = 'modular_skyrat/modules/modular_items/icons/modular_glasses_mob.dmi'
+  icon_state = "aviator"
+  icon = 'modular_skyrat/modules/modular_items/icons/modular_glasses.dmi'
 
 // Security Aviators
 /obj/item/clothing/glasses/hud/ar/aviator/security
