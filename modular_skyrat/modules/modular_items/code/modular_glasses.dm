@@ -52,10 +52,10 @@
     if(MODE_FREEZE_ANIMATION)
       /// Create new icon and worn_icon, with only the first frame of every state and setting that as icon.
       /// this practically freezes the animation :)
-      var/icon/I = new(icon, frame = 1)
-      icon = I
-      var/icon/W = new(worn_icon, frame = 1)
-      worn_icon = W
+      var/icon/frozen_icon = new(icon, frame = 1)
+      icon = frozen_icon
+      var/icon/frozen_worn_icon =new(worn_icon, frame = 1)
+      worn_icon = frozen_worn_icon
   if(mode == MODE_OFF || mode == MODE_OFF_FLASH_PROTECTION) /// pass both off modes to this step
     icon_state = off_state /// Sets icon_state to be the off variant set in the vars
     flash_protect = (mode == MODE_OFF_FLASH_PROTECTION) ? FLASH_PROTECTION_FLASH : FLASH_PROTECTION_NONE /// when off is supposed to have flash protection
