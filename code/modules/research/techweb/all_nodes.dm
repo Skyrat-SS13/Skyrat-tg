@@ -967,6 +967,12 @@
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 
+//Any kind of point adjustment needs to happen before SSresearch sets up the whole node tree, it gets cached
+/datum/techweb_node/ai/New()
+	. = ..()
+	if(HAS_TRAIT(SSstation, STATION_TRAIT_UNIQUE_AI))
+		research_costs[TECHWEB_POINT_TYPE_GENERIC] *= 3
+
 /////////////////////////EMP tech/////////////////////////
 /datum/techweb_node/emp_basic //EMP tech for some reason
 	id = "emp_basic"
@@ -1758,8 +1764,6 @@
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000)
 	discount_experiments = list(/datum/experiment/scanning/points/machinery_tiered_scan/tier3_mechbay = 2500)
-
-/* SKYRAT EDIT REMOVAL
 /datum/techweb_node/savannah_ivanov
 	id = "mecha_savannah_ivanov"
 	display_name = "EXOSUIT: Savannah-Ivanov"
@@ -1780,7 +1784,7 @@
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 	discount_experiments = list(/datum/experiment/scanning/points/machinery_tiered_scan/tier3_mechbay = 3000)
-*/
+
 /datum/techweb_node/adv_mecha_tools
 	id = "adv_mecha_tools"
 	display_name = "Advanced Exosuit Equipment"

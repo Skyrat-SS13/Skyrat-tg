@@ -1,13 +1,5 @@
 // MODULAR SECURITY WEAR (NOT OVERRIDES, LOOK IN 'modular_skyrat\modules\goofsec\code\sec_clothing_overrides.dm')
 
-// HEAD OF SECURITY
-/obj/item/clothing/under/rank/security/head_of_security/peacekeeper/sol
-	name = "sol chief of police uniform"
-	desc = "A white satin shirt with a leather belt, the belt buckle is a large NT."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/security.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/security.dmi'
-	icon_state = "policechiefalt"
-
 // DETECTIVE
 /obj/item/clothing/under/rank/security/detective/cowboy
 	name = "blonde cowboy uniform"
@@ -52,20 +44,16 @@
 	supports_variations_flags = NONE
 	can_adjust = FALSE
 
-///Police Uniforms
+// Police Uniforms
+///OFFICERS
 /obj/item/clothing/under/rank/security/peacekeeper/sol/cadet
 	name = "sol police cadet uniform"
-	desc = "A light blue shirt with navy pants, perfect for pretending you matter."
+	desc = "A light blue shirt with navy pants, and no other markings. This is essentially no more than a fancy blue suit."
 	icon_state = "policecadetalt"
 
-/obj/item/clothing/under/rank/security/peacekeeper/sol/traffic
-	name = "sol traffic police uniform"
-	desc = "A light blue shirt with navy pants, perfect for standing and shouting at cars."
-	icon_state = "policetrafficalt"
-///OFFICERS
 /obj/item/clothing/under/rank/security/peacekeeper/sol
 	name = "sol police uniform"
-	desc = "A light blue shirt with navy pants, perfect for opressing the Underclasses, like Catgirls."
+	desc = "A light blue shirt with navy pants, and a golden insignia on the shoulder. Perfect for standing around idly during emergencies."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/security.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/security.dmi'
 	icon_state = "policealt"
@@ -73,8 +61,16 @@
 ///WARDEN
 /obj/item/clothing/under/rank/security/warden/peacekeeper/sol
 	name = "sol warden uniform"
-	desc = "A light blue shirt with navy pants, this one seems to have been modified for fat asses, like yourself."
+	desc = "A light blue shirt with navy pants. This one bears the insignia of a Warden, as well as the stretch marks."
 	icon_state = "policewardenalt"
+
+///HEAD OF SECURITY
+/obj/item/clothing/under/rank/security/head_of_security/peacekeeper/sol
+	name = "sol chief of police uniform"
+	desc = "A white satin shirt with golden pauldrons and a leather belt, which has a large \"NT\" for a buckle. Nice to see where the budget went."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/security.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/security.dmi'
+	icon_state = "policechiefalt"
 
 // End Police Uniforms
 

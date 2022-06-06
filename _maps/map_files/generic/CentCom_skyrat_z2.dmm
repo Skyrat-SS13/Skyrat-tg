@@ -9310,7 +9310,8 @@
 "pPo" = (
 /obj/machinery/door/airlock/centcom{
 	name = "Administrative Office";
-	req_one_access_txt = "20;101"
+	req_access = list("captain");
+	req_one_access = null
 	},
 /turf/open/floor/iron,
 /area/centcom/interlink)
@@ -10336,7 +10337,6 @@
 /turf/open/floor/iron/white,
 /area/centcom/holding/cafe)
 "tvw" = (
-/obj/structure/lattice,
 /turf/closed/indestructible/riveted,
 /area/centcom/interlink)
 "twL" = (
@@ -11531,6 +11531,13 @@
 "xUn" = (
 /obj/machinery/photocopier,
 /turf/open/floor/carpet/executive,
+/area/centcom/interlink)
+"xVA" = (
+/obj/machinery/door/airlock/centcom{
+	name = "Administrative Office";
+	req_one_access_txt = list("cent_general","captain")
+	},
+/turf/open/floor/iron,
 /area/centcom/interlink)
 "xYR" = (
 /obj/effect/turf_decal/siding/wood{
@@ -26822,7 +26829,7 @@ aiL
 aiL
 aiL
 aiL
-pPo
+xVA
 hvQ
 hvQ
 hvQ
