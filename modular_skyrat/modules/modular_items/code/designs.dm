@@ -1,6 +1,6 @@
-//
-// Designs
-//
+/*
+* Designs
+*/
 
 /datum/design/health_hud_aviator
   name = "Medical HUD Aviators"
@@ -24,7 +24,7 @@
 
 /datum/design/diagnostic_hud_aviator
   name = "Diagnostic HUD Aviators"
-  desc = "A HUD used to analyze and determine faults within robotic machinery. This HUD has been fitted inside of a pair of sunglasses."
+  desc = "A heads-up display used to analyze and determine faults within robotic machinery. This HUD has been fitted inside of a pair of sunglasses."
   id = "diagnostic_hud_aviator"
   build_type = PROTOLATHE
   materials = list(/datum/material/iron = 700, /datum/material/glass = 800, /datum/material/gold = 350)
@@ -34,7 +34,7 @@
 
 /datum/design/meson_hud_aviator
   name = "Meson HUD Aviators"
-  desc = "Used by engineering and mining staff to see basic structural and terrain layouts through walls, regardless of lighting condition. This HUD has been fitted inside of a pair of sunglasses."
+  desc = "A heads-up display used by engineering and mining staff to see basic structural and terrain layouts through walls, regardless of lighting condition. This HUD has been fitted inside of a pair of sunglasses."
   id = "meson_hud_aviator"
   build_type = PROTOLATHE
   materials = list(/datum/material/iron = 700, /datum/material/glass = 800, /datum/material/gold = 350)

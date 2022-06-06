@@ -101,9 +101,7 @@
   desc = "A heads-up display that scans the humanoids in view and provides accurate data about their ID status and security records. This HUD has been fitted inside of a pair of sunglasses with toggleable electrochromatic tinting."
   icon_state = "aviator_sec"
   off_state = "aviator_sec_flash"
-  darkness_view = 1
   flash_protect = FLASH_PROTECTION_NONE
-  tint = 0
   hud_type = DATA_HUD_SECURITY_ADVANCED
   hud_trait = TRAIT_SECURITY_HUD
   glass_colour_type = /datum/client_colour/glass_colour/red
@@ -123,7 +121,7 @@
 // (Normal) meson scanner Aviators
 /obj/item/clothing/glasses/hud/ar/aviator/meson
   name = "meson HUD aviators"
-  desc = "Used by engineering and mining staff to see basic structural and terrain layouts through walls, regardless of lighting conditions. This HUD has been fitted inside of a pair of sunglasses."
+  desc = "A heads-up display used by engineering and mining staff to see basic structural and terrain layouts through walls, regardless of lighting conditions. This HUD has been fitted inside of a pair of sunglasses."
   icon_state = "aviator_meson"
   flash_protect = FLASH_PROTECTION_NONE
   clothing_traits = list(TRAIT_MADNESS_IMMUNE)
@@ -165,7 +163,7 @@
 
 /obj/item/clothing/glasses/hud/ar/aviator/meson/prescription
   name = "prescription meson HUD aviators"
-  desc = "Used by engineering and mining staff to see basic structural and terrain layouts through walls, regardless of lighting conditions. This HUD has been fitted inside of a pair of sunglasses which has lenses that help correct eye sight."
+  desc = "A heads-up display used by engineering and mining staff to see basic structural and terrain layouts through walls, regardless of lighting conditions. This HUD has been fitted inside of a pair of sunglasses which has lenses that help correct eye sight."
   vision_correction = TRUE
 
 /obj/item/clothing/glasses/hud/ar/aviator/diagnostic/prescription
@@ -182,7 +180,7 @@
 
 /obj/item/clothing/glasses/hud/ar/projector
   name = "retinal projector"
-  desc = "A headset equipped with a scanning lens and mounted retinal projector. It doesn't provide any eye protection, but it's less obtrusive than goggles."
+  desc = "A headset equipped with a scanning lens and mounted retinal projector. It doesn't provide any eye protection, but it's less obtrusive than a visor."
   icon_state = "projector"
   worn_icon = 'modular_skyrat/modules/modular_items/icons/modular_glasses_mob.dmi'
   icon = 'modular_skyrat/modules/modular_items/icons/modular_glasses.dmi'
@@ -193,7 +191,6 @@
 
 /obj/item/clothing/glasses/hud/ar/projector/meson
   name = "retinal projector meson HUD"
-  desc = "A headset equipped with a scanning lens and mounted retinal projector. It doesn't provide any eye protection, but it's less obtrusive than goggles."
   icon_state = "projector_meson"
   lighting_alpha = 300
   vision_flags = SEE_TURFS 
@@ -201,28 +198,24 @@
 
 /obj/item/clothing/glasses/hud/ar/projector/health
   name = "retinal projector health HUD"
-  desc = "A headset equipped with a scanning lens and mounted retinal projector. It doesn't provide any eye protection, but it's less obtrusive than a visor."
   icon_state = "projector_med"
   hud_type = DATA_HUD_MEDICAL_ADVANCED
   hud_trait = list(ID_HUD, TRAIT_MEDICAL_HUD)
 
 /obj/item/clothing/glasses/hud/ar/projector/security
   name = "retinal projector security HUD"
-  desc = "A headset equipped with a scanning lens and mounted retinal projector. It doesn't provide any eye protection, but it's less obtrusive than a visor."
   icon_state = "projector_sec"
   hud_type = DATA_HUD_SECURITY_ADVANCED
   hud_trait = TRAIT_SECURITY_HUD
 
 /obj/item/clothing/glasses/hud/ar/projector/diagnostic
   name = "retinal projector diagnostic HUD"
-  desc = "A headset equipped with a scanning lens and mounted retinal projector. It doesn't provide any eye protection, but it's less obtrusive than a visor."
   icon_state = "projector_diagnostic"
   hud_type = DATA_HUD_DIAGNOSTIC_BASIC
   hud_trait = TRAIT_DIAGNOSTIC_HUD
 
 /obj/item/clothing/glasses/hud/ar/projector/science
   name = "science retinal projector"
-  desc = "A headset equipped with a scanning lens and mounted retinal projector. It doesn't provide any eye protection, but it's less obtrusive than a visor."
   icon_state = "projector_sci"
   clothing_traits = list(TRAIT_REAGENT_SCANNER, TRAIT_RESEARCH_SCANNER)
 
