@@ -150,12 +150,6 @@
 	if(isnum(job_positions_edits["total_positions"]))
 		total_positions = job_positions_edits["total_positions"]
 
-//SKYRAT ADDITION BEGIN
-/datum/job/proc/skyrat_precheck()
-	SHOULD_CALL_PARENT(TRUE)
-	pre_check_ran = TRUE
-//SKYRAT ADDITION END
-
 /// Executes after the mob has been spawned in the map. Client might not be yet in the mob, and is thus a separate variable.
 /datum/job/proc/after_spawn(mob/living/spawned, client/player_client)
 	SHOULD_CALL_PARENT(TRUE)

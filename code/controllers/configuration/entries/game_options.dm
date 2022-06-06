@@ -396,13 +396,3 @@
 	default = 1
 	min_val = 0
 	integer = FALSE
-
-// SKYRAT ADDITION BEGIN
-/datum/config_entry/number/prisoners_per_security // How many prisoners are spawned per security member? Set to 0 to disable this.
-	default = 2
-	min_val = 0
-
-/datum/config_entry/number/max_prisoners_per_security // What's the maximum amount of prisoners to scale to? Set to 0 to disable. Doesn't apply if scaling is off.
-	default = 12
-	min_val = 0
-// SKYRAT ADDITION END
