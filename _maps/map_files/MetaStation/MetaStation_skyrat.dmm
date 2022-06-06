@@ -7948,11 +7948,29 @@
 /area/station/hallway/primary/central)
 "cXc" = (
 /obj/structure/table,
-/obj/item/food/grown/poppy/lily,
+/obj/item/food/grown/poppy/lily{
+	pixel_x = -4;
+	pixel_y = -4
+	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 9
 	},
 /obj/machinery/light/directional/south,
+/mob/living/simple_animal/pet/bumbles{
+	resting = 1
+	},
+/obj/item/food/grown/poppy{
+	pixel_x = -6;
+	pixel_y = 2
+	},
+/obj/item/food/grown/poppy/lily{
+	pixel_x = 6;
+	pixel_y = 6
+	},
+/obj/item/food/grown/poppy{
+	pixel_x = 6;
+	pixel_y = -3
+	},
 /turf/open/floor/iron,
 /area/station/service/hydroponics)
 "cXw" = (
@@ -11875,10 +11893,6 @@
 /obj/structure/table,
 /obj/item/hand_labeler{
 	pixel_y = 11
-	},
-/obj/item/stack/package_wrap{
-	pixel_x = 2;
-	pixel_y = -3
 	},
 /obj/item/stack/package_wrap{
 	pixel_x = 2;
@@ -29963,6 +29977,16 @@
 	},
 /turf/open/floor/iron,
 /area/station/security/checkpoint/supply)
+"kGU" = (
+/obj/effect/turf_decal/tile/yellow{
+	dir = 8
+	},
+/mob/living/simple_animal/pet/poppy{
+	resting = 1;
+	dir = 8
+	},
+/turf/open/floor/iron/dark/corner,
+/area/station/engineering/atmos/storage/gas)
 "kGY" = (
 /obj/effect/turf_decal/tile/purple/fourcorners,
 /obj/structure/table/reinforced,
@@ -31298,6 +31322,16 @@
 /turf/open/floor/iron,
 /area/station/maintenance/disposal/incinerator)
 "ldg" = (
+/obj/structure/bed/dogbed{
+	name = "Markus' bed"
+	},
+/mob/living/simple_animal/pet/dog/markus,
+/obj/effect/decal/cleanable/wrapping,
+/obj/item/stack/package_wrap{
+	pixel_x = 2;
+	pixel_y = -3;
+	name = "chewed package wrapper"
+	},
 /turf/open/floor/wood,
 /area/station/cargo/qm)
 "ldJ" = (
@@ -61662,6 +61696,8 @@
 /obj/effect/turf_decal/tile/yellow{
 	dir = 8
 	},
+/obj/effect/decal/cleanable/ash,
+/obj/effect/decal/remains/human,
 /turf/open/floor/iron/dark/corner,
 /area/station/engineering/atmos/storage/gas)
 "vGN" = (
@@ -66704,6 +66740,12 @@
 /obj/effect/spawner/random/structure/grille,
 /turf/open/floor/plating,
 /area/station/maintenance/port)
+"xuy" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/mob/living/simple_animal/pet/dog/corgi/borgi,
+/turf/open/floor/iron/dark,
+/area/station/science/robotics/lab)
 "xuA" = (
 /obj/effect/turf_decal/trimline/yellow/filled/line{
 	dir = 4
@@ -98626,7 +98668,7 @@ eut
 uBy
 cCs
 qDy
-reL
+xuy
 cRW
 eut
 kwy
@@ -109901,7 +109943,7 @@ peM
 vbq
 xsy
 mZP
-vGF
+kGU
 tMe
 toV
 xip
