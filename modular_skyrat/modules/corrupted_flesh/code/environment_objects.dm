@@ -46,7 +46,7 @@
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = list(SMOOTH_GROUP_WIREWEED)
 	canSmoothWith = list(SMOOTH_GROUP_WIREWEED, SMOOTH_GROUP_WALLS)
-	max_integrity = 80
+	max_integrity = 40
 	/// The chance we have to ensnare a mob
 	var/ensnare_chance = 15
 	/// The amount of damage we do when attacking something.
@@ -75,6 +75,10 @@
 	. = ..()
 	if(vent_burrow)
 		icon_state = "vent_burrow"
+
+/obj/structure/corrupted_flesh/wireweed/emp_act(severity)
+	. = ..()
+	qdel(src)
 
 /obj/structure/corrupted_flesh/wireweed/update_overlays()
 	. = ..()

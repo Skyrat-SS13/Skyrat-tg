@@ -166,7 +166,7 @@
 	density = TRUE
 	opacity = TRUE
 	can_atmos_pass = ATMOS_PASS_DENSITY
-	max_integrity = 250
+	max_integrity = 150
 
 /obj/structure/corrupted_flesh/structure/wireweed_wall/Initialize()
 	. = ..()
@@ -523,7 +523,7 @@ var/list/join_quotes = list(
 	density = FALSE
 	max_integrity = 260
 	activation_range = DEFAULT_VIEW_RANGE
-	ability_cooldown_time = 10 SECONDS
+	ability_cooldown_time = 30 SECONDS
 	var/max_mobs = 2
 	var/spawned_mobs = 0
 	var/list/monster_types = list(

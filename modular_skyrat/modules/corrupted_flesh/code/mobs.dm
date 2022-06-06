@@ -1284,9 +1284,9 @@
 	/// Is our hatch open? Used in icon processing.
 	var/hatch_open = FALSE
 	/// How much damage our mob will take, upper end, when they are tormented
-	var/internal_mob_damage_upper = 10
+	var/internal_mob_damage_upper = 30
 	/// Ditto
-	var/internal_mob_damage_lower = 5
+	var/internal_mob_damage_lower = 20
 	/// How long we keep our passenger before either releasing or converting them.
 	var/conversion_time = 40 SECONDS
 	/// The comsume ability cooldown
