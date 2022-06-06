@@ -410,6 +410,18 @@ SUBSYSTEM_DEF(job)
 
 	// Loop through all levels from high to low
 	var/list/shuffledoccupations = shuffle(joinable_occupations)
+	//SKYRAT EDIT BEGIN
+	// Remove prisoners from the occupations list, we want to assign prisoners after everything else so we can scale the prisoner population
+	// to security's population.
+	var/datum/job/prisoner/prisoner_job
+	for(var/datum/job/potential_prisoner_job in shuffledoccupations)
+		if(istype(potential_prisoner_job, /datum/job/prisoner))
+			shuffledoccupations.Remove(potential_prisoner_job)
+			prisoner_job = potential_prisoner_job
+			break
+	// Put prisoner back in the list, but at the end this time.
+	shuffledoccupations.Add(prisoner_job)
+	// SKYRAT EDIT END
 	for(var/level in level_order)
 		//Check the head jobs first each level
 		CheckHeadPositions(level)
@@ -425,7 +437,10 @@ SUBSYSTEM_DEF(job)
 					JobDebug("FOC invalid/null job in occupations, Player: [player], Job: [job]")
 					shuffledoccupations -= job
 					continue
-
+				// SKYRAT EDIT START
+				if(!job.pre_check_ran)
+					job.skyrat_precheck()
+				// SKYRAT EDIT END
 				// Make sure the job isn't filled. If it is, remove it from the list so it doesn't get checked again.
 				if((job.current_positions >= job.spawn_positions) && job.spawn_positions != -1)
 					JobDebug("FOC job filled and not overflow, Player: [player], Job: [job], Current: [job.current_positions], Limit: [job.spawn_positions]")
