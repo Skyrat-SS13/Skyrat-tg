@@ -789,7 +789,7 @@
 /obj/item/ammo_box/magazine/internal/shot/m23
 	name = "m23 shotgun internal magazine"
 	caliber = CALIBER_SHOTGUN
-	ammo_type = /obj/item/ammo_casing/shotgun/beanbag
+	ammo_type = /obj/item/ammo_casing/shotgun/rubbershot
 	max_ammo = 8
 
 /obj/item/gun/ballistic/shotgun/automatic/as2
@@ -820,63 +820,9 @@
 	ammo_type = /obj/item/ammo_casing/shotgun
 	max_ammo = 4
 
-/obj/item/gun/ballistic/shotgun/sas14
-	name = "\improper SAS-14"
-	desc = "A semi-automatic shotgun with a five-round box magazine."
-	icon =  'modular_skyrat/modules/sec_haul/icons/guns/sas14.dmi'
-	icon_state = "sas14"
-	inhand_icon_state = "shotgun"
-	worn_icon_state = "shotgun"
-	can_suppress = TRUE
-	suppressed_sound = 'modular_skyrat/modules/aesthetics/guns/sound/suppressed_shotgun.ogg'
-	suppressed_volume = 100
-	vary_fire_sound = TRUE
-	fire_sound = 'modular_skyrat/modules/sec_haul/sound/shotgun_bm.ogg'
-	fire_delay = 5
-	mag_type = /obj/item/ammo_box/magazine/sas14
-	w_class = WEIGHT_CLASS_BULKY
-	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_BELT | ITEM_SLOT_OCLOTHING
-	weapon_weight = WEAPON_MEDIUM
-	burst_size = 1
-	fire_select_modes = list(SELECT_SEMI_AUTOMATIC)
-	semi_auto = TRUE
-	internal_magazine = FALSE
-	company_flag = COMPANY_ARMADYNE
-
-/obj/item/ammo_box/magazine/sas14
-	name = "14 Gauge box magazine"
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
-	icon_state = "sas14"
-	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
-	caliber = CALIBER_14GAUGE
-	ammo_type = /obj/item/ammo_casing/s14gauge
-	max_ammo = 5
-
-//New SAS14 mags beyond here
-
-/obj/item/ammo_box/magazine/sas14/empty
-	start_empty = TRUE
-
-/obj/item/ammo_box/magazine/sas14/beanbag
-	ammo_type = /obj/item/ammo_casing/s14gauge/beanbag
-
-/obj/item/ammo_box/magazine/sas14/buckshot
-	ammo_type = /obj/item/ammo_casing/s14gauge/buckshot
-
-/obj/item/ammo_box/magazine/sas14/rubbershot
-	ammo_type = /obj/item/ammo_casing/s14gauge/rubbershot
-
-/obj/item/ammo_box/magazine/sas14/stunslug
-	ammo_type = /obj/item/ammo_casing/s14gauge/stunslug
-
-/*
-*	UN-GOOFED GUNS
-*/
-
 /*
 *	NORWIND
 */
-
 /obj/item/gun/ballistic/automatic/norwind
 	name = "\improper Norwind rifle"
 	desc = "A rare M112 DMR rechambered to 12.7x30mm for peacekeeping work, it comes with a scope for medium-long range engagements. A bayonet lug is visible."
