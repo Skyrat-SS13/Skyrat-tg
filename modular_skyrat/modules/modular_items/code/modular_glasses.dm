@@ -27,6 +27,7 @@
   AddElement(/datum/element/update_icon_updates_onmob)
 
 /obj/item/clothing/glasses/hud/ar/Destroy()
+  . = ..()
   STOP_PROCESSING(SSobj, src)
 
 /obj/item/clothing/glasses/hud/ar/proc/toggle_mode(mob/user, voluntary)
