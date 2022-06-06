@@ -88,6 +88,8 @@
 	var/next_core_damage_wireweed_activation_cooldown = 10 SECONDS
 	/// A cooldown to determine when we can activate nearby wireweed after the core has been attacked.
 	COOLDOWN_DECLARE(next_core_damage_wireweed_activation)
+	/// DO we check distance when spreading through vents?
+	var/vent_distance_check = TRUE
 
 /datum/fleshmind_controller/New(obj/structure/fleshmind/structure/core/new_core)
 	. = ..()
@@ -252,6 +254,14 @@
 	spawn_new_core()
 	message_admins("Corruption AI [controller_fullname] has leveled up to level [level]!")
 	notify_ghosts("Corruption AI [controller_fullname] has leveled up to level [level]!")
+	minor_announce("CORRUPT ANOMALY HAS INCREASED IN INTEGRITY.", "PRIORITY ANNOUNCEMENT")
+
+/datum/fleshmind_controller/proc/level_down()
+	if(level <= 0)
+		return
+	level--
+	notify_ghosts("Corruption AI [controller_fullname] has leveled down to level [level]!")
+	minor_announce("CORRUPT ANOMALY INTEGRITY FALTERING.", "PRIORITY ANNOUNCEMENT")
 
 /datum/fleshmind_controller/proc/spawn_new_core()
 	var/obj/structure/fleshmind/wireweed/selected_wireweed = pick(controlled_wireweed)
@@ -282,7 +292,7 @@
 				var/obj/structure/fleshmind/wireweed/existing_wireweed = locate() in get_turf(iterating_vent)
 				if(existing_wireweed)
 					continue
-				if(get_dist(iterating_vent, origin_turf) >= MAX_VENT_SPREAD_DISTANCE)
+				if(vent_distance_check &&get_dist(iterating_vent, origin_turf) >= MAX_VENT_SPREAD_DISTANCE)
 					continue
 				possible_transfer_points += iterating_vent
 			if(LAZYLEN(possible_transfer_points)) // OH SHIT IM FEELING IT
@@ -401,6 +411,7 @@
 /datum/fleshmind_controller/proc/core_death(obj/structure/fleshmind/structure/core/dead_core, force)
 	cores -= dead_core
 	activate_wireweed_nearby(get_turf(dead_core), CORE_DAMAGE_WIREWEED_ACTIVATION_RANGE)
+	level_down()
 	if(!LAZYLEN(cores))
 		controller_death()
 

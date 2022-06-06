@@ -411,7 +411,7 @@
 	icon = 'modular_skyrat/modules/fleshmind/icons/hivemind_machines.dmi'
 	icon_state = "head"
 	base_icon_state = "head"
-	max_integrity = 100
+	max_integrity = 120
 	required_controller_level = CONTROLLER_LEVEL_1
 	activation_range = DEFAULT_VIEW_RANGE
 	ability_cooldown_time = 25 SECONDS
@@ -426,11 +426,12 @@
 	for(var/mob/living/iterating_mob in get_hearers_in_range(activation_range, src))
 		if(!iterating_mob.can_hear())
 			continue
+		if(iterating_mob.h)
 		if(faction_check(faction_types, iterating_mob.faction))
 			continue
-		iterating_mob.Paralyze(100)
+		iterating_mob.Paralyze(50)
 		iterating_mob.apply_status_effect(/datum/status_effect/jitter, 20 SECONDS)
-		iterating_mob.soundbang_act(1, 200, 10, 15)
+		iterating_mob.soundbang_act(2, 0, 100, 1)
 		to_chat(iterating_mob, span_userdanger("A terrible howl tears through your mind, the voice senseless, soulless."))
 
 /**
@@ -444,13 +445,14 @@
 	icon = 'modular_skyrat/modules/fleshmind/icons/hivemind_machines.dmi'
 	icon_state = "orb"
 	base_icon_state = "orb"
+	max_integrity = 100
 	required_controller_level = CONTROLLER_LEVEL_2
 	/// Upper timer limit for our ability
 	automatic_trigger_time_upper = 1.5 MINUTES
 	/// Lower time limit for our ability.
 	automatic_trigger_time_lower = 1 MINUTES
 	/// A list of quotes we choose from to send to the player.
-var/list/join_quotes = list(
+	var/list/join_quotes = list(
 		"You seek survival. We offer immortality.",
 		"When was the last time you felt like you were part of something..?",
 		"We offer more than just limbs or tools... full-body augmentation.",
@@ -495,6 +497,7 @@ var/list/join_quotes = list(
 	desc = "A strange pyramid shaped machine that eminates a soft hum and glow. Your head hurts just by looking at it."
 	icon = 'modular_skyrat/modules/fleshmind/icons/hivemind_machines.dmi'
 	icon_state = "psy"
+	max_integrity = 100
 	base_icon_state = "psy"
 	required_controller_level = CONTROLLER_LEVEL_3
 	activation_range = DEFAULT_VIEW_RANGE
@@ -577,6 +580,7 @@ var/list/join_quotes = list(
 	base_icon_state = "turret"
 	activation_range = DEFAULT_VIEW_RANGE
 	ability_cooldown_time = 5 SECONDS
+	max_integrity = 300
 	/// The projectile we fire.
 	var/projectile_type = /obj/projectile/fleshmind_flechette
 

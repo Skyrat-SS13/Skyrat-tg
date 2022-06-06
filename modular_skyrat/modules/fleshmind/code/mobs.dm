@@ -857,7 +857,6 @@
 	var/datum/action/cooldown/treader_dispense_nanites/new_action = new
 	new_action.Grant(src)
 
-
 /mob/living/simple_animal/hostile/fleshmind/treader/special_ability()
 	dispense_nanites()
 

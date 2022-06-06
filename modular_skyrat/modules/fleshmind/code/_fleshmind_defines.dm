@@ -1,7 +1,7 @@
 // GENERAL DEFINES
 
 /// A list of objects that are considered part of a door, used to determine if a wireweed should attack it.
-#define DOOR_OBJECT_LIST list(/obj/machinery/door/airlock, /obj/structure/door_assembly, /obj/machinery/door/firedoor)
+#define DOOR_OBJECT_LIST list(/obj/machinery/door/airlock, /obj/structure/door_assembly, /obj/machinery/door/firedoor, /obj/machinery/door/window)
 
 #define FACTION_FLESHMIND "fleshmind"
 
