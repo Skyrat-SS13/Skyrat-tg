@@ -416,8 +416,8 @@ SUBSYSTEM_DEF(job)
 	var/datum/job/prisoner/prisoner_job
 	for(var/datum/job/potential_prisoner_job in shuffledoccupations)
 		if(istype(potential_prisoner_job, /datum/job/prisoner))
-			shuffledoccupations.Remove(potential_prisoner_job)
 			prisoner_job = potential_prisoner_job
+			shuffledoccupations.Remove(potential_prisoner_job)
 			break
 	// Put prisoner back in the list, but at the end this time.
 	shuffledoccupations.Add(prisoner_job)
