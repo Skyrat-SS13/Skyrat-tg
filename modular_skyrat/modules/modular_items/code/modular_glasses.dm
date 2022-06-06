@@ -4,7 +4,7 @@
 #define MODE_FREEZE_ANIMATION "freeze"
 
 /obj/item/clothing/glasses/hud/ar
-  name = "AR glasses"
+  name = "\improper AR glasses"
   icon = 'icons/obj/clothing/glasses.dmi'
   icon_state = "glasses"
   desc = "A heads-up display that provides important info in (almost) real time. These don't really seem to work"
