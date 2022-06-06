@@ -1,32 +1,6 @@
 //Blueshield
-/obj/item/clothing/under/rank/security/blueshield
-	desc = "An expensive designer shirt with snazzy suit pants, complete with a blue tie."
-	name = "blueshield's suit"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/uniform_digi.dmi'
-	icon_state = "blueshield"
-	armor = list("melee" = 10, "bullet" = 5, "laser" = 5,"energy" = 10, "bomb" =10, "bio" = 0, "fire" = 50, "acid" = 50)
-	can_adjust = FALSE
-	sensor_mode = SENSOR_COORDS
-	random_sensor = FALSE
 
-/obj/item/clothing/under/rank/security/blueshield/turtleneck
-	name = "blueshield's skivvy"
-	desc = "A cozier alternative to the normal blueshield's suit. It's made out of an expensive, all-natural wool."
-	icon_state = "bs_turtleneck"
-	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
-
-/obj/item/clothing/under/rank/security/blueshield/turtleneck/skirt
-	name = "blueshield's skirtleneck"
-	desc = "An alternative to the normal turtleneck with the pants replaced with a high-cut skirt. It's still made out of an expensive, all-natural wool."
-	icon_state = "bs_skirtleneck"
-
-/obj/item/clothing/under/rank/security/blueshield/skirt
-	desc = "A \"tactical\" skirt seemingly outfitted in Nanotrasen's standard corporate-chic."
-	name = "blueshield's skirt"
-	icon_state = "blueshieldskirt"
-	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
+//Uniform items are in command.dm
 
 /obj/item/clothing/gloves/tackler/combat/insulated/blueshield
     name = "combat gloves"

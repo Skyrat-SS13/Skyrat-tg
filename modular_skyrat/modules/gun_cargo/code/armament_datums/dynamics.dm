@@ -25,10 +25,10 @@
 
 /datum/armament_entry/cargo_gun/dynamics/ammo/b9mm
 	item_type = /obj/item/ammo_box/advanced/b9mm
-	
+
 /datum/armament_entry/cargo_gun/dynamics/ammo/b9mm_hp
 	item_type = /obj/item/ammo_box/advanced/b9mm/hp
-	
+
 /datum/armament_entry/cargo_gun/dynamics/ammo/b9mm_rub
 	item_type = /obj/item/ammo_box/advanced/b9mm/rubber
 
@@ -113,11 +113,112 @@
 	lower_cost = CARGO_CRATE_VALUE * 0.75
 	upper_cost = CARGO_CRATE_VALUE * 1.25
 
-/datum/armament_entry/cargo_gun/dynamics/ammo/b6mm	
+/datum/armament_entry/cargo_gun/dynamics/ammo/b6mm
 	item_type = /obj/item/ammo_box/advanced/b6mm
-	
-/datum/armament_entry/cargo_gun/dynamics/ammo/b6mm_rub	
+
+/datum/armament_entry/cargo_gun/dynamics/ammo/b6mm_rub
 	item_type = /obj/item/ammo_box/advanced/b6mm/rubber
+
+/datum/armament_entry/cargo_gun/dynamics/ammo/shotgun
+	item_type = /obj/item/ammo_box/advanced/s12gauge
+	description = "A box of 35 Slugs. Great for accurate shooting."
+	stock_mult = 3
+
+/datum/armament_entry/cargo_gun/dynamics/ammo/shotgun/buckshot
+	item_type = /obj/item/ammo_box/advanced/s12gauge/buckshot
+	description = "A box of 35 Buckshots. Can't go wrong with buckshot."
+	stock_mult = 3
+
+/datum/armament_entry/cargo_gun/dynamics/ammo/shotgun/bean
+	item_type = /obj/item/ammo_box/advanced/s12gauge/bean
+	description = "A box of 35 Beanbags. Perfect choice for non-lethal takedowns."
+	stock_mult = 3
+
+/datum/armament_entry/cargo_gun/dynamics/ammo/shotgun/hp
+	item_type = /obj/item/ammo_box/advanced/s12gauge/hp
+	description = "A box of 35 Hollow Point Slugs. It is a shell purpose built for unarmored targets."
+	stock_mult = 3
+	lower_cost = CARGO_CRATE_VALUE * 1
+	upper_cost = CARGO_CRATE_VALUE * 1.5
+
+/datum/armament_entry/cargo_gun/dynamics/ammo/shotgun/rubber
+	item_type = /obj/item/ammo_box/advanced/s12gauge/rubber
+	description = "A box of 35 Rubbershots. Great choice for crowd control."
+	stock_mult = 3
+
+/datum/armament_entry/cargo_gun/dynamics/ammo/shotgun/hunter
+	item_type = /obj/item/ammo_box/advanced/s12gauge/hunter
+	description = "A box of 35 Hunter Buckshots. It is a specialized buckshot that deals more damage to simpler beings."
+	stock_mult = 2
+	lower_cost = CARGO_CRATE_VALUE * 1
+	upper_cost = CARGO_CRATE_VALUE * 2
+
+/datum/armament_entry/cargo_gun/dynamics/ammo/shotgun/express
+	item_type = /obj/item/ammo_box/advanced/s12gauge/express
+	description = "A box of 35 Express Buckshots. It is a shell that has tighter spread and smaller but more projectiles."
+	stock_mult = 2
+	lower_cost = CARGO_CRATE_VALUE * 1
+	upper_cost = CARGO_CRATE_VALUE * 1.5
+
+/datum/armament_entry/cargo_gun/dynamics/ammo/shotgun/magnum
+	item_type = /obj/item/ammo_box/advanced/s12gauge/magnum
+	description = "A box of 35 Magnum Buckshots. It is a shell that fires bigger pellets but has more spread. It is able to contend against armored targets."
+	stock_mult = 3
+	lower_cost = CARGO_CRATE_VALUE * 1.25
+	upper_cost = CARGO_CRATE_VALUE * 2
+
+/datum/armament_entry/cargo_gun/dynamics/ammo/shotgun/pt20
+	item_type = /obj/item/ammo_box/advanced/s12gauge/pt20
+	description = "A box of 15 PT-20 Armor Piercing Slugs. It is a shell that is purpose built to penetrate armored targets."
+	stock_mult = 1
+	lower_cost = CARGO_CRATE_VALUE * 3
+	upper_cost = CARGO_CRATE_VALUE * 5
+
+/datum/armament_entry/cargo_gun/dynamics/ammo/shotgun/rip
+	item_type = /obj/item/ammo_box/advanced/s12gauge/rip
+	description = "A box of 15 RIP Slugs. Radically Invasive Projectile slugs are designed to cause massive damage against unarmored targets by embedding inside them."
+	stock_mult = 1
+	lower_cost = CARGO_CRATE_VALUE * 3
+	upper_cost = CARGO_CRATE_VALUE * 5
+
+/datum/armament_entry/cargo_gun/dynamics/ammo/shotgun/flechette
+	item_type = /obj/item/ammo_box/advanced/s12gauge/flechette
+	description = "A box of 15 Flechettes. It is a shotshell that specializes in ripping through armor."
+	stock_mult = 1
+	lower_cost = CARGO_CRATE_VALUE * 3
+	upper_cost = CARGO_CRATE_VALUE * 5
+
+/datum/armament_entry/cargo_gun/dynamics/ammo/shotgun/beehive
+	item_type = /obj/item/ammo_box/advanced/s12gauge/beehive
+	description = "A box of 15 B3-HVE 'Beehive' shells. A highly experimental non-lethal shell filled with smart nanite pellets that re-aim themselves when bouncing off from surfaces. However they are not able to make out friend from foe."
+	stock_mult = 1
+	lower_cost = CARGO_CRATE_VALUE * 1.75
+	upper_cost = CARGO_CRATE_VALUE * 3
+
+/datum/armament_entry/cargo_gun/dynamics/ammo/shotgun/antitide
+	item_type = /obj/item/ammo_box/advanced/s12gauge/antitide
+	description = "A box of 15 4NT1-TD3 'Suppressor' shells. A highly experimental shell filled with nanite electrodes that will embed themselves in soft targets. The electrodes are charged from kinetic movement which means moving targets will get punished more."
+	stock_mult = 1
+	lower_cost = CARGO_CRATE_VALUE * 2
+	upper_cost = CARGO_CRATE_VALUE * 4
+
+/datum/armament_entry/cargo_gun/dynamics/ammo/shotgun/iceblox
+	item_type = /obj/item/ammo_box/advanced/s12gauge/iceblox
+	description = "A box of 15 Iceshot Shells. A shotshell variant of Iceblox ammo that lowers the targets body temperature."
+	stock_mult = 1
+	lower_cost = CARGO_CRATE_VALUE * 2
+	upper_cost = CARGO_CRATE_VALUE * 4
+
+/datum/armament_entry/cargo_gun/dynamics/ammo/shotgun/incendiary
+	item_type = /obj/item/ammo_box/advanced/s12gauge/incendiary
+	description = "A box of 35 Incendiary Slugs. Warranty is void if set on fire."
+	stock_mult = 2
+
+/datum/armament_entry/cargo_gun/dynamics/ammo/shotgun/honk
+	item_type = /obj/item/ammo_box/advanced/s12gauge/honk
+	description = "A box of 35 Confetti Shots. Warranty is void if found funny."
+	stock_mult = 1
+	contraband = TRUE
 
 /datum/armament_entry/cargo_gun/dynamics/misc
 	subcategory = ARMAMENT_SUBCATEGORY_SPECIAL
