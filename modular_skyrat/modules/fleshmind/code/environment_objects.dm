@@ -42,7 +42,7 @@
 	icon_state = "wires-0"
 	base_icon_state = "wires"
 	anchored = TRUE
-	layer = TABLE_LAYER
+	layer = BELOW_OPEN_DOOR_LAYER
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = list(SMOOTH_GROUP_WIREWEED)
 	canSmoothWith = list(SMOOTH_GROUP_WIREWEED, SMOOTH_GROUP_WALLS)
