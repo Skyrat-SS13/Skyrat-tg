@@ -56,6 +56,8 @@
 	'modular_skyrat/modules/fleshmind/sound/robot_talk_heavy3.ogg', \
 	'modular_skyrat/modules/fleshmind/sound/robot_talk_heavy4.ogg',)
 
+#define MACHINE_TO_SPAWNER_PATHS list(/obj/machinery/rnd/production/techfab, /obj/machinery/autolathe, /obj/machinery/mecha_part_fabricator)
+
 /datum/component/machine_corruption
 	/// A list of possible overlays that we can choose from when we are created.
 	var/list/possible_overlays = list(
@@ -75,6 +77,10 @@
 
 	if(!isobj(parent))
 		return COMPONENT_INCOMPATIBLE
+
+	if(incoming_controller && is_type_in_list(parent, MACHINE_TO_SPAWNER_PATHS))
+		convert_to_factory(incoming_controller)
+		return
 
 	if(incoming_controller)
 		RegisterSignal(incoming_controller, COMSIG_PARENT_QDELETING, .proc/controller_death)
@@ -252,3 +258,15 @@
 	var/obj/machinery/parent_machinery = parent
 	for(var/mob/living/living_mob in circle_view(parent_machinery, range_to_whip))
 		whip_mob(living_mob)
+
+/**
+ * Converts our parent into a factory
+ */
+/datum/component/machine_corruption/proc/convert_to_factory(datum/fleshmind_controller/incoming_controller)
+	var/turf/our_turf = get_turf(parent)
+	incoming_controller.spawn_structure(our_turf, /obj/structure/fleshmind/structure/assembler)
+	var/obj/machinery/parent_machienry = parent
+	if(parent_machienry.circuit)
+		parent_machienry.circuit.forceMove(our_turf)
+		parent_machienry.circuit = null
+	qdel(parent_machienry)

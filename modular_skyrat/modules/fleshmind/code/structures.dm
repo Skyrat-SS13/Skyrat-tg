@@ -426,7 +426,6 @@
 	for(var/mob/living/iterating_mob in get_hearers_in_range(activation_range, src))
 		if(!iterating_mob.can_hear())
 			continue
-		if(iterating_mob.h)
 		if(faction_check(faction_types, iterating_mob.faction))
 			continue
 		iterating_mob.Paralyze(50)
