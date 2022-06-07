@@ -307,7 +307,7 @@
 			continue
 		if(iterating_machine.GetComponent(/datum/component/machine_corruption))
 			continue
-		iterating_machine.AddComponent(/datum/component/machine_corruption)
+		iterating_machine.AddComponent(/datum/component/machine_corruption, src)
 
 	var/obj/structure/fleshmind/wireweed/new_wireweed
 	if(origin_turf) // We have an origin turf, thus, are spreading from it. Do anims.

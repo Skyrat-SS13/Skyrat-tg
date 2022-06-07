@@ -99,11 +99,8 @@
 /datum/component/machine_corruption/proc/finish_setup(datum/fleshmind_controller/incoming_controller)
 	var/obj/machinery/parent_machinery = parent
 
-	if(parent_machinery.circuit && prob(CHANCE_TO_CREATE_MECHIVER))
-		var/mob/living/simple_animal/hostile/fleshmind/mechiver/new_mechiver = new (get_turf(parent_machinery))
-		if(incoming_controller)
-			for(var/obj/structure/fleshmind/structure/core/iterating_core in incoming_controller.cores)
-				new_mechiver.RegisterSignal(iterating_core, COMSIG_PARENT_QDELETING, /mob/living/simple_animal/hostile/fleshmind/proc/core_death)
+	if(incoming_controller && parent_machinery.circuit && prob(CHANCE_TO_CREATE_MECHIVER))
+		var/mob/living/simple_animal/hostile/fleshmind/mechiver/new_mechiver = incoming_controller.spawn_mob(get_turf(parent_machinery), /mob/living/simple_animal/hostile/fleshmind/mechiver)
 		parent_machinery.circuit.forceMove(get_turf(parent_machinery))
 		parent_machinery.circuit = null
 		notify_ghosts("A new corrupt Mechiver has been created by [incoming_controller.controller_fullname]!", source = new_mechiver)
