@@ -42,7 +42,7 @@
 
 /datum/action/cooldown/fleshmind_flesh_call/Activate(atom/target)
 	. = ..()
-	for(var/mob/living/simple_animal/hostile/iterating_mob in get_hearers_in_range(DEFAULT_VIEW_RANGE, owner))
+	for(var/mob/living/simple_animal/hostile/iterating_mob in view(DEFAULT_VIEW_RANGE, owner))
 		if(!faction_check(owner.faction, iterating_mob))
 			continue
 		iterating_mob.Goto(owner, MOB_RALLY_SPEED)

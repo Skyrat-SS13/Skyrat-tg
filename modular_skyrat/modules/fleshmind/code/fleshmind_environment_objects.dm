@@ -138,7 +138,6 @@
 		to_chat(entered_mob, span_green("[src] heals you as you cross over it!"))
 	if(ishuman(entered_mob) && prob(WIREWEED_REPLACE_BODYPART_CHANCE))
 		var/mob/living/carbon/human/human_mob = moving_atom
-		shuffle(replacement_zones)
 		for(var/zone as anything in replacement_zones)
 			if(human_mob.get_bodypart(zone))
 				continue

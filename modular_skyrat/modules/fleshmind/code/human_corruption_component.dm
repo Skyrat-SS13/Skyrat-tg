@@ -9,7 +9,6 @@
 	var/list/granted_actions = list()
 	/// A list of limbs we replace
 	var/list/replacement_zones = list(
-		BODY_ZONE_HEAD = /obj/item/bodypart/head/robot,
 		BODY_ZONE_CHEST = /obj/item/bodypart/chest/robot,
 		BODY_ZONE_L_ARM = /obj/item/bodypart/l_arm/robot,
 		BODY_ZONE_L_LEG = /obj/item/bodypart/l_leg/robot,
@@ -65,8 +64,6 @@
 			qdel(existing_bodypart)
 		human_parent.update_body(TRUE)
 		to_chat(human_parent, span_green("You feel a new [new_bodypart.name] implanted into you!"))
-
-
 
 /datum/component/human_corruption_component/Destroy(force, silent)
 	QDEL_LIST(granted_actions)

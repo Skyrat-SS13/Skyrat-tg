@@ -1332,7 +1332,7 @@
 	if(contained_mob && contained_mob.stat != DEAD && prob(25) && !suffering_malfunction)
 		torment_passenger()
 
-	if(!target && !contained_mob && !suffering_malfunction)
+	if(!target && !contained_mob && !suffering_malfunction && !key)
 		for(var/mob/living/iterating_mob in view(DEFAULT_VIEW_RANGE, src))
 			if(iterating_mob.stat != CONSCIOUS)
 				if(get_dist(src, iterating_mob) <= 1)
