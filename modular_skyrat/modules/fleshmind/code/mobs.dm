@@ -1413,7 +1413,7 @@
 		return
 
 	if(ishuman(mob_to_convert))
-		mob_to_convert.AddComponent(/datum/component/human_corruption_component)
+		mob_to_convert.AddComponent(/datum/component/human_corruption_component, our_controller)
 		return
 
 	if(iscyborg(mob_to_convert))
