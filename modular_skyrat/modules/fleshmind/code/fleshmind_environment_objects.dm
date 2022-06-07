@@ -55,6 +55,13 @@
 	var/active = FALSE
 	/// Are we a vent burrow?
 	var/vent_burrow = FALSE
+	/// ZOnes we passively replace
+	var/list/replacement_zones = list(
+		BODY_ZONE_L_ARM = /obj/item/bodypart/l_arm/robot,
+		BODY_ZONE_L_LEG = /obj/item/bodypart/l_leg/robot,
+		BODY_ZONE_R_ARM = /obj/item/bodypart/r_arm/robot,
+		BODY_ZONE_R_ARM = /obj/item/bodypart/r_leg/robot,
+	)
 
 /obj/structure/fleshmind/wireweed/Initialize(mapload, starting_alpha = 255, datum/fleshmind_controller/incoming_controller)
 	. = ..()
@@ -129,6 +136,18 @@
 	if(prob(WIREWEED_HEAL_CHANCE))
 		entered_mob.heal_overall_damage(WIREWEED_HEAL_AMOUNT, WIREWEED_HEAL_AMOUNT)
 		to_chat(entered_mob, span_green("[src] heals you as you cross over it!"))
+	if(ishuman(entered_mob) && prob(WIREWEED_REPLACE_BODYPART_CHANCE))
+		var/mob/living/carbon/human/human_mob = moving_atom
+		shuffle(replacement_zones)
+		for(var/zone as anything in replacement_zones)
+			if(human_mob.get_bodypart(zone))
+				continue
+			var/bodypart_type = replacement_zones[zone]
+			var/obj/item/bodypart/new_bodypart = new bodypart_type()
+			new_bodypart.replace_limb(human_mob, TRUE)
+			human_mob.update_body(TRUE)
+			to_chat(human_mob, span_green("[src] shoots a mechanical limb right into your missing limb!"))
+
 /obj/effect/temp_visual/wireweed_spread
 	icon = 'modular_skyrat/modules/fleshmind/icons/wireweed_floor.dmi'
 	icon_state = "spread_anim"
