@@ -566,7 +566,7 @@
 	if(!chosen_override_type)
 		return
 
-	override_mobster_type = chosen_override_type
+	override_monser_type = chosen_override_type
 
 /obj/structure/fleshmind/structure/assembler/proc/spawn_mob()
 	if(!our_controller)
