@@ -255,7 +255,7 @@
 	message_admins("Corruption AI [controller_fullname] has leveled up to level [level]!")
 	notify_ghosts("Corruption AI [controller_fullname] has leveled up to level [level]!")
 	if(level >= CONTROLLER_LEVEL_3)
-	minor_announce("CORRUPT ANOMALY HAS INCREASED IN INTEGRITY.", "PRIORITY ANNOUNCEMENT")
+		minor_announce("CORRUPT ANOMALY HAS INCREASED IN INTEGRITY.", "PRIORITY ANNOUNCEMENT")
 
 /datum/fleshmind_controller/proc/level_down()
 	if(level <= 0)
