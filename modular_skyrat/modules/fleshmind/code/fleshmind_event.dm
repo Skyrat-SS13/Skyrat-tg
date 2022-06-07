@@ -19,7 +19,7 @@
 	var/list/possible_spawn_areas = typecacheof(typesof(/area/station/maintenance, /area/station/security/prison, /area/station/construction, /area/station/engineering/atmos))
 
 	for(var/area/iterating_area in world)
-		if(!is_station_level(iterating_areaA.z))
+		if(!is_station_level(iterating_area.z))
 			continue
 		if(!is_type_in_typecache(iterating_area, possible_spawn_areas))
 			continue
