@@ -254,8 +254,11 @@
 	spawn_new_core()
 	message_admins("Corruption AI [controller_fullname] has leveled up to level [level]!")
 	notify_ghosts("Corruption AI [controller_fullname] has leveled up to level [level]!")
-	if(level >= CONTROLLER_LEVEL_3)
-		minor_announce("CORRUPT ANOMALY HAS INCREASED IN INTEGRITY.", "PRIORITY ANNOUNCEMENT")
+	if(level >= CONTROLLER_LEVEL_3 && level < CONTROLLER_LEVEL_MAX)
+		minor_announce("CORRUPT ANOMALY HAS INCREASED IN POWER.", "PRIORITY ANNOUNCEMENT")
+
+	if(level == CONTROLLER_LEVEL_MAX)
+		priority_announce("CORRUPT ANOMALY HAS REACHED CRITICAL MASS", "CRITICAL MASS REACHED", ANNOUNCER_KLAXON)
 
 /datum/fleshmind_controller/proc/level_down()
 	if(level <= 0)

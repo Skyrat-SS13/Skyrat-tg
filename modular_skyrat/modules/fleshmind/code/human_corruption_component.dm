@@ -7,6 +7,15 @@
 		/datum/action/innate/fleshmind_flesh_chat,
 	)
 	var/list/granted_actions = list()
+	/// A list of limbs we replace
+	var/list/replacement_zones = list(
+		BODY_ZONE_HEAD = /obj/item/bodypart/head/robot,
+		BODY_ZONE_CHEST = /obj/item/bodypart/chest/robot,
+		BODY_ZONE_L_ARM = /obj/item/bodypart/l_arm/robot,
+		BODY_ZONE_L_LEG = /obj/item/bodypart/l_leg/robot,
+		BODY_ZONE_R_ARM = /obj/item/bodypart/r_arm/robot,
+		BODY_ZONE_R_ARM = /obj/item/bodypart/r_leg/robot,
+	)
 
 /datum/component/human_corruption_component/Initialize(datum/fleshmind_controller/incoming_controller)
 
@@ -40,7 +49,24 @@
 
 	infected_human.faction |= FACTION_FLESHMIND
 
+	replace_all_limbs()
+
 	infected_human.update_appearance()
+
+
+/datum/component/human_corruption_component/proc/replace_all_limbs()
+	var/mob/living/carbon/human/human_parent = parent
+	for(var/zone as anything in replacement_zones)
+		var/obj/item/bodypart/existing_bodypart = human_parent.get_bodypart(zone)
+		var/bodypart_type = replacement_zones[zone]
+		var/obj/item/bodypart/new_bodypart = new bodypart_type()
+		new_bodypart.replace_limb(human_parent, TRUE)
+		if(existing_bodypart)
+			qdel(existing_bodypart)
+		human_parent.update_body(TRUE)
+		to_chat(human_parent, span_green("You feel a new [new_bodypart.name] implanted into you!"))
+
+
 
 /datum/component/human_corruption_component/Destroy(force, silent)
 	QDEL_LIST(granted_actions)
@@ -85,8 +111,6 @@
 	INVOKE_ASYNC(parent_human, /mob/proc/emote, "scream")
 	parent_human.apply_status_effect(/datum/status_effect/jitter, 20 SECONDS)
 	to_chat(parent_human, span_userdanger("You feel your implants freeze up!"))
-	parent_human.Paralyze(10)
-	parent_human.take_overall_damage(STRUCTURE_EMP_LIGHT_DAMAGE)
 
 /datum/component/human_corruption_component/proc/host_death()
 	SIGNAL_HANDLER
