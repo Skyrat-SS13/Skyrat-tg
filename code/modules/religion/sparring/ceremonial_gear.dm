@@ -26,8 +26,8 @@
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 100, ACID = 50)
 	resistance_flags = FIRE_PROOF
 	//SKYRAT ADDITION START
-	wound_bonus = -100
-	bare_wound_bonus = -100
+	wound_bonus = CANT_WOUND
+	bare_wound_bonus = CANT_WOUND
 	//SKYRAT ADDITION END
 
 /obj/item/ceremonial_blade/Initialize(mapload)
