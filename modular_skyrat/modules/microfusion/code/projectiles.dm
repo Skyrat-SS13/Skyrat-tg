@@ -18,6 +18,9 @@
 	icon = 'modular_skyrat/modules/microfusion/icons/projectiles.dmi'
 	damage = 20
 	hitscan = FALSE
+	tracer_type = /obj/effect/projectile/tracer/laser
+	muzzle_type = /obj/effect/projectile/muzzle/laser
+	impact_type = /obj/effect/projectile/impact/laser
 
 /obj/projectile/beam/laser/microfusion/superheated
 	name = "superheated microfusion laser"
@@ -25,9 +28,6 @@
 	damage = 15 //Trading damage for fire stacks
 	color = LIGHT_COLOR_FIRE
 	light_color = LIGHT_COLOR_FIRE
-	tracer_type = /obj/effect/projectile/tracer/hitscan/hellfire
-	muzzle_type = /obj/effect/projectile/muzzle/hitscan/hellfire
-	impact_type = /obj/effect/projectile/impact/hitscan/hellfire
 
 /obj/projectile/beam/laser/microfusion/superheated/on_hit(atom/target, blocked)
 	. = ..()
@@ -44,9 +44,6 @@
 	speed = 0.6
 	color = LIGHT_COLOR_FLARE
 	light_color = LIGHT_COLOR_FLARE
-	tracer_type = /obj/effect/projectile/tracer/hitscan/hellfire
-	muzzle_type = /obj/effect/projectile/muzzle/hitscan/hellfire
-	impact_type = /obj/effect/projectile/impact/hitscan/hellfire
 
 /obj/projectile/beam/laser/microfusion/scatter
 	name = "scatter microfusion laser"
@@ -68,6 +65,6 @@
 /obj/projectile/beam/laser/microfusion/lance
 	name = "lance microfusion laser"
 	damage = 40 // Were turning the gun into a heavylaser
-	tracer_type = /obj/effect/projectile/tracer/hitscan/heavy_laser
-	muzzle_type = /obj/effect/projectile/muzzle/hitscan/heavy_laser
-	impact_type = /obj/effect/projectile/impact/hitscan/heavy_laser
+	tracer_type = /obj/effect/projectile/tracer/heavy_laser
+	muzzle_type = /obj/effect/projectile/muzzle/heavy_laser
+	impact_type = /obj/effect/projectile/impact/heavy_laser
