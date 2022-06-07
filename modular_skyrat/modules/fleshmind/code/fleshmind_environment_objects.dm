@@ -120,14 +120,15 @@
 	alpha = 255
 
 /obj/structure/fleshmind/wireweed/proc/on_entered(datum/source, atom/movable/moving_atom)
-	if(istype(moving_atom, /mob/living/simple_animal) && prob(ensnare_chance))
-		var/mob/living/simple_animal/captured_mob = moving_atom
-		if(faction_check(faction_types, captured_mob.faction))
-			return
-		captured_mob.visible_message(span_danger("[src] ensnares [captured_mob] with some wires!"), span_userdanger("[src] ensnares you!"))
-		buckle_mob(captured_mob)
-
-
+	SIGNAL_HANDLER
+	if(!isliving(moving_atom))
+		return
+	var/mob/living/entered_mob = moving_atom
+	if(!faction_check(entered_mob.faction, faction_types))
+		return
+	if(prob(WIREWEED_HEAL_CHANCE))
+		entered_mob.heal_overall_damage(WIREWEED_HEAL_AMOUNT, WIREWEED_HEAL_AMOUNT)
+		to_chat(entered_mob, span_green("[src] heals you as you cross over it!"))
 /obj/effect/temp_visual/wireweed_spread
 	icon = 'modular_skyrat/modules/fleshmind/icons/wireweed_floor.dmi'
 	icon_state = "spread_anim"
