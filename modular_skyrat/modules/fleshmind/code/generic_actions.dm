@@ -57,7 +57,7 @@
 	background_icon_state = "bg_fugu"
 	button_icon_state = "hivemind_link"
 
-/datum/action/cooldown/fleshmind_flesh_call/Activate(atom/target)
+/datum/action/cooldown/fleshmind_flesh_chat/Activate(atom/target)
 	. = ..()
 	var/message = tgui_input_text(owner, "Send a message to the fleshmind.", "Flesh Chat")
 	if(!message)

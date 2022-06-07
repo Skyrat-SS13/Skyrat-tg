@@ -12,6 +12,7 @@
 	icon_state = "infected_machine"
 	base_icon_state = "infected_machine"
 	density = TRUE
+	layer = ABOVE_OBJ_LAYER
 	light_color = FLESHMIND_LIGHT_BLUE
 	light_power = 1
 	light_range = 2
