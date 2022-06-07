@@ -118,12 +118,13 @@
 
 /datum/outfit/ds2/syndicate/service
 	name = "DS-2 Staff"
-	uniform = /obj/item/clothing/under/utility/syndicate
+	uniform = /obj/item/clothing/under/syndicate/overalls
 	id_trim = /datum/id_trim/syndicom/skyrat/assault/syndicatestaff
 
 /datum/outfit/ds2/syndicate/enginetech
 	name = "DS-2 Engine Technician"
-	uniform = /obj/item/clothing/under/rank/engineering/engineer/skyrat/utility/syndicate
+	uniform = /obj/item/clothing/under/syndicate/overalls
+	head = /obj/item/clothing/head/soft/sec/syndicate
 	id_trim = /datum/id_trim/syndicom/skyratnoicon/enginetechnician
 	gloves = /obj/item/clothing/gloves/combat
 
@@ -139,7 +140,7 @@
 
 /datum/outfit/ds2/syndicate/masteratarms
 	name = "DS-2 Master At Arms"
-	uniform = /obj/item/clothing/under/utility/sec/old/syndicate
+	uniform = /obj/item/clothing/under/syndicate/combat
 	id_trim = /datum/id_trim/syndicom/skyrat/assault/masteratarms
 	belt = /obj/item/storage/belt/security/full
 	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
@@ -155,7 +156,7 @@
 
 /datum/outfit/ds2/syndicate/brigoff
 	name = "DS-2 Brig Officer"
-	uniform = /obj/item/clothing/under/utility/sec/old/syndicate
+	uniform = /obj/item/clothing/under/syndicate/combat
 	id_trim = /datum/id_trim/syndicom/skyrat/assault/brigofficer
 	belt = /obj/item/storage/belt/security/full
 	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
@@ -172,7 +173,7 @@
 
 /datum/outfit/ds2/syndicate/admiral
 	name = "DS-2 Station Admiral"
-	uniform = /obj/item/clothing/under/rank/captain/skyrat/utility/syndicate
+	uniform = /obj/item/clothing/under/syndicate/combat
 	suit = /obj/item/clothing/suit/armor/vest/capcarapace/syndicate
 	head = /obj/item/clothing/head/hos/beret/syndicate
 	back = /obj/item/storage/backpack

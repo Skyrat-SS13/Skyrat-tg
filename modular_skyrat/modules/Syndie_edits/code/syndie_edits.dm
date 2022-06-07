@@ -4,6 +4,8 @@
 	icon = 'modular_skyrat/modules/syndie_edits/icons/obj.dmi'
 	worn_icon = 'modular_skyrat/modules/syndie_edits/icons/worn.dmi'
 	icon_state = "syndievest"
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+
 
 /obj/item/clothing/suit/armor/vest/capcarapace/syndicate/Initialize(mapload)
 	. = ..()
@@ -30,6 +32,14 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "swat_ds"
+
+/obj/item/clothing/head/beret/sec/syndicate
+	name = "brig officer's beret"
+	desc = "A stylish and protective beret, produced and manufactured by Interdyne Pharmaceuticals with help from the Gorlex Marauders."
+	greyscale_config = /datum/greyscale_config/beret_badge
+	greyscale_config_worn = /datum/greyscale_config/beret_badge/worn
+	icon_state = "beret_badge"
+	greyscale_colors = "#3F3C40#DB2929"
 
 /obj/item/clothing/mask/gas/syndicate/ds
 	name = "balaclava"
@@ -77,3 +87,25 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "coatsyndie_short"
+
+/obj/item/clothing/under/syndicate/overalls
+	name = "utility overalls turtleneck"
+	desc = "A pair of spiffy overalls with a turtleneck underneath, useful for both engineering and botanical work."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon_state = "syndicate_overalls"
+
+/obj/item/clothing/under/syndicate/skirt/overalls
+	name = "utility overalls skirtleneck"
+	desc = "A pair of spiffy overalls with a turtleneck underneath, this one is a skirt instead, breezy."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon_state = "syndicate_overallskirt"
+
+/obj/item/clothing/head/soft/sec/syndicate
+	name = "engine tech utility cover"
+	desc = "A utility cover for an engine technician, there's a tag that reads 'IP-DS-2'."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	icon_state = "dssoft"
+	soft_type = "ds"
