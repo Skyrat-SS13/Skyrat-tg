@@ -58,7 +58,7 @@
 	vend_reply = "Good luck, Peacekeeper!"
 	products = list(/obj/item/clothing/suit/hooded/wintercoat/security = 5,
 					/obj/item/clothing/suit/toggle/jacket/sec = 5,
-					/obj/item/clothing/suit/toggle/brit/sec = 5,
+					/obj/item/clothing/suit/armor/vest/peacekeeper/brit = 5,
 					/obj/item/clothing/neck/security_cape = 5,
 					/obj/item/clothing/neck/security_cape/armplate = 5,
 					/obj/item/storage/backpack/security = 5,
@@ -67,7 +67,6 @@
 					/obj/item/clothing/under/rank/security/officer = 10,
 					/obj/item/clothing/under/rank/security/peacekeeper/tactical = 4,
 					/obj/item/clothing/under/rank/security/peacekeeper/sol/cadet = 3,
-					/obj/item/clothing/under/rank/security/peacekeeper/sol/traffic = 3,
 					/obj/item/clothing/under/rank/security/peacekeeper/sol = 3,
 					/obj/item/clothing/shoes/jackboots/security = 10,
 					/obj/item/clothing/head/security_garrison = 10,
