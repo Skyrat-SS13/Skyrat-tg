@@ -174,3 +174,131 @@
   - bugfix: Xenomorph larva cancelling their evolution no longer displays unnecessary
       messages
   - bugfix: held memorizers are now visible
+2022-06-07:
+  ATHATH:
+  - rscadd: Bulky crowbars have been added to all fire-safety lockers.
+  - spellcheck: Large crowbars are now named "large crowbars" instead of just "crowbars".
+  Deek-Za:
+  - bugfix: Fixed vests for Science, Medical and Service guard roles for digitigrade
+      people.
+  Ebin-Halcyon:
+  - imageadd: Cargo clothing have new sprites for digitigrade legs
+  - imageadd: Engineering clothing have new sprites for digitigrade legs
+  ErdinyoBarboza:
+  - balance: Rebalances costs of all shotgun shells in techfabs and autolathes.
+  - balance: Rebalances buckshots damage. It now has more pellets and damage but is
+      weak against armor.
+  - rscadd: 'Magnum Buckshot: Has less pellets that deal more damage and is now weak
+      against armor.'
+  - rscadd: 'Express Buckshot: Has more and faster pellets and tighter spread but
+      each pellet is weaker then normal buckshot.'
+  - rscadd: 'Hunter Shot: A specialized buckshot that deals more damage to simpler
+      beings (Anything that is under /mob/living/simple_animal)'
+  - rscadd: 'Hollow Point Slug: Deals more damage then slugs and has higher wounding
+      potential on bare targets however it is weak against armor.'
+  - rscadd: 'Flechettes: Specialized buckshot that can penetrate armor and deals cut
+      damage but is weaker damage wise.'
+  - rscadd: 'PT-20 Armor Piercing Slug: A saboted plastitanium slug that can penetrate
+      armor but deals less pure damage then normal slugs.'
+  - rscadd: 'RIP Slug: Radically Invasive Projectile, is capable of embedding and
+      causing massive internal damage but is weak against armor.'
+  - rscadd: 'B3-HVE ''Beehive'' shell: Smart Nanite-Rubber pellets that ricochet with
+      a very high auto-aim angle.'
+  - rscadd: '4NT1-TD3 ''Suppressor'' shell: A shell filled with electrodes that embed
+      into targets and deal stamina damage if they move.'
+  - rscadd: 'Iceshot: Iceblox round in buckshot delivery.'
+  - rscadd: 'Confetti Rounds: Some clown decided filling the buckshot with confetti
+      instead of pellets was smart.'
+  - rscadd: Adds Shotshell Boxes to Guncargo Dynamics. You can now buy boxes of 35/15
+      ammo boxes of shotgun shells and carry them neatly in their bulky box. You can
+      also directly feed your shotgun from the box.
+  - balance: Rebalances some of the shotgun prices in guncargo.
+  - rscdel: 14 Gauge and SAS14 have been fully removed.
+  Higgin:
+  - bugfix: Corrections Officers now actually have weapons permits allowing them to
+      have their job gear.
+  IsaacTheSharkWolf:
+  - refactor: Redid the upper part of toxins to include the oxygen storage tank, mix
+      pipelines, cooling room and some additional adjustments to fit it all.
+  Jolly, sprites by Blueshirtguy:
+  - rscadd: 'Jolly: Added the flower garland to the crafting tab under clothing! You''ll
+      need 4 of these flowers to craft it: poppies, harebells and roses. It''ll also
+      calm your nerves a bit, if you''re on edge.'
+  - imageadd: 'Blueshirtguy: Sprites for the flower garland on-mob and icon sprites.'
+  Moostard:
+  - bugfix: Spent peacekeeper FMJ casings have a correct sprite now.
+  OrionTheFox:
+  - imageadd: Captain/Blueshield/NT Consultant uniform/digi icons have all been moved
+      into clothing/under/command.dmi files in a continued organization effort. Please
+      report any relevant Uniform icon issues to @Orion_The_Fox#1915.
+  Paxilmaniac:
+  - bugfix: 'The new tiles added by tg mirror pr #13344, which were overridden unintentionally
+      by a pr from a while ago, are now available as options for changing the looks
+      of floor tiles into'
+  - qol: barricades now tell you that you can put barbed wire on them
+  - balance: the barbed wire cost has been lowered from 15 cables per barricades to
+      5 per barricade
+  - bugfix: the atmospherics issues with the new icebox ashwalker den have been resolved
+  RatFromTheJungle:
+  - rscadd: Added the original security helmets (just black) to the cargo-listings.
+  SkyratBot:
+  - qol: ninjas now get told about pinning modules and the direction to the station
+  - bugfix: Fix drones not being able to use computers or vault.
+  - bugfix: Fix monkeys being able to read or write.  They are now illiterate however
+      they can gain literacy through the Clever mutation.
+  - bugfix: Fix illiterate mobs being able to receive tablet messages in their chat
+      log.
+  - bugfix: Health Analyzers now properly flag robotic and prosthetic limbs again.
+  - bugfix: Fixed Adminwho taking several seconds to resolve.
+  - bugfix: infinite loop on process_hit in projectiles when hitting ON_BORDER objects,
+      like windoors
+  - qol: The Tip of the Round will no longer misinform you about PACMAN generators.
+  - rscadd: Steam vents have been added to maintenance on all stations. Steam vents
+      create steam clouds that spray when crossed, and can be en/disabled by hand.
+  - bugfix: Inspect bounties no longer give you invalid areas to scan for bounties
+  - bugfix: Inspect bounties now properly choose from a broader range of assignments
+      in service, maintenance, commons, etc.
+  - bugfix: Firelocks no longer check the atmospheric contents of solid walls.
+  - bugfix: Nameless ID cards (with security access) can now access the security records
+      console without issue
+  - bugfix: Electric razors are now functional again
+  - bugfix: You can no longer roll more IDs to steal than there are crewmembers for
+      All Access Fan.
+  - bugfix: Photon projector implants can no longer be used in assemblies. This means
+      that they can no longer bilocate.
+  - balance: Nanotrasen has now implemented a "buffer zone" on IceBoxStation between
+      the wilderness portions of the moon and the parts where there is a station presence.
+      Hopefully, you should see a lot less fauna try to make their way on station.
+  - bugfix: Corrected a couple of trivial typos.
+  - imageadd: The Soviet costume has been resprited and the russian mobs have been
+      updated to match.
+  - bugfix: A severe lack of plating under a window in the DeltaStation rec room was
+      remedied
+  - bugfix: Fixes stack multiplier exploit
+  - bugfix: fixes modsuits fucking up when unequipping every item, like staff of change
+      or slime toxin or whatever
+  - imageadd: Hot Cocoa and Tea now come in mugs again.
+  - qol: Added a roundstart program disk containing nt frontier
+  - code_imp: Changed ordnance's area definition a bit, this includes the misc labs
+      (usually used for circuit labs). Gameplay wise they will have new names.
+  - code_imp: Made the ordnance chamber injector start off. You gotta turn them on
+      using the monitors. Also tidied their code a bit.
+  Son-of-Space, Pepsilawn:
+  - code_imp: Adds checks for double firelocks or airlocks
+  - bugfix: fixes several double firelocks and airlocks across our maps
+  Wallem:
+  - rscdel: Full Ant Party Pizza pies has been removed. Instead, you can get ant pizza
+      slices by pouring ants on margherita pizza slices.
+  Zonespace27:
+  - bugfix: Examining people without records now work as intended
+  nevimer:
+  - code_imp: Prepares modular HUD elements for future upstream PR's.
+  tf-4:
+  - rscdel: Non-admins can no longer see how many votes an option has in an ongoing
+      vote.
+  - bugfix: Gas miner beacon boxes are no longer empty
+  - bugfix: You can no longer make very very large amounts of some gases with zero
+      effort.
+  - bugfix: The high-vis armoured jacket can now hold security items in the suit slot
+  theOOZ:
+  - code_imp: Ears don't hide themselves automatically anymore when a helmet is worn
