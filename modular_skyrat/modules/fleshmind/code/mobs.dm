@@ -1331,6 +1331,8 @@
 /mob/living/simple_animal/hostile/fleshmind/mechiver/proc/torment_passenger()
 	if(!contained_mob)
 		return
+	if(faction_check(contained_mob.faction, faction))
+		return
 	var/damage_amount = rand(internal_mob_damage_lower, internal_mob_damage_upper)
 	contained_mob.take_overall_damage(damage_amount)
 	contained_mob.emote("scream")
@@ -1409,7 +1411,7 @@
 		return
 
 	if(faction_check(faction, mob_to_convert.faction)) // If we are already assimilated, just heal us.
-		mob_to_convert.fully_heal()
+		mob_to_convert.heal_and_revive(0)
 		return
 
 	if(ishuman(mob_to_convert))

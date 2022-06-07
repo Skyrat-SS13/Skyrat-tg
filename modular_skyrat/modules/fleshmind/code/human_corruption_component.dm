@@ -17,7 +17,7 @@
 
 	var/mob/living/carbon/human/infected_human = parent
 
-	infected_human.fully_heal()
+	infected_human.heal_and_revive(0)
 
 	to_chat(infected_human, span_hypnophrase("Your mind feels at ease, your mind feels one with the flesh."))
 	to_chat(infected_human, span_userdanger("IMPORTANT INFO, MUST READ: [CONTROLLED_MOB_POLICY]"))
