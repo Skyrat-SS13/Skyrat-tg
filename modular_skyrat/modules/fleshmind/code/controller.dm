@@ -310,12 +310,12 @@
 
 	var/obj/structure/fleshmind/wireweed/new_wireweed
 	if(origin_turf) // We have an origin turf, thus, are spreading from it. Do anims.
-		new_wireweed = new wireweed_type(location, 0)
+		new_wireweed = new wireweed_type(location, 0, src)
 		var/obj/effect/temp_visual/wireweed_spread/effect = new(location)
 		effect.setDir(get_dir(origin_turf, location))
 		new_wireweed.RegisterSignal(effect, COMSIG_PARENT_QDELETING, /obj/structure/fleshmind/wireweed/proc/visual_finished)
 	else
-		new_wireweed = new wireweed_type(location)
+		new_wireweed = new wireweed_type(location, 255, src)
 	new_wireweed.our_controller = src
 	active_wireweed += new_wireweed
 	if(are_we_a_vent_burrow)
@@ -421,6 +421,7 @@
 
 	controlled_wireweed -= dying_wireweed
 	active_wireweed -= dying_wireweed
+	dying_wireweed.our_controller = null
 	activate_wireweed_nearby(get_turf(dying_wireweed), GENERAL_DAMAGE_WIREWEED_ACTIVATION_RANGE)
 
 /// When a wall dies, called by wall

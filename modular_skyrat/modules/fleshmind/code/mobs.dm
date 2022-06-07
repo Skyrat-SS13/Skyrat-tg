@@ -1397,17 +1397,16 @@
 	if(mob_to_convert.stat != DEAD) // No converting non-dead mobs.
 		return
 
-	if(is_corrupt_mob(mob_to_convert)) // If we are already assimilated, just heal us.
+	if(faction_check(faction, mob_to_convert.faction)) // If we are already assimilated, just heal us.
 		mob_to_convert.fully_heal()
+		return
+
+	if(ishuman(mob_to_convert))
+		mob_to_convert.AddComponent(/datum/component/human_corruption_component)
 		return
 
 	if(iscyborg(mob_to_convert))
 		create_mob(/mob/living/simple_animal/hostile/fleshmind/hiborg, mob_to_convert)
-		return
-
-	if(ishuman(mob_to_convert))
-		var/mob_to_spawn = pick(/mob/living/simple_animal/hostile/fleshmind/himan, /mob/living/simple_animal/hostile/fleshmind/phaser) // We can either become a phaser or a himan
-		create_mob(mob_to_spawn, mob_to_convert)
 		return
 
 	// Other mobs get converted into whatever else
@@ -1424,7 +1423,6 @@
 /// Creates and transfers a new mob.
 /mob/living/simple_animal/hostile/fleshmind/mechiver/proc/create_mob(new_mob_type, mob/living/old_mob)
 	var/mob/living/simple_animal/hostile/fleshmind/new_mob = new new_mob_type(get_turf(src))
-
 
 	if(old_mob)
 		new_mob.contained_mob = old_mob

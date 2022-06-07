@@ -34,6 +34,9 @@
 /// The max spread distance a wireweed can spread thru a vent.
 #define MAX_VENT_SPREAD_DISTANCE 10
 
+#define CONTROLLED_MOB_POLICY "You are part of the fleshmind, this means any fleshmind entities, structures, mobs are your ally. You must not attack them. \n \
+	You must roleplay that you are part of the fleshmind. Your number one goal is converting other hosts and spreading the flesh."
+
 // CONTROLLER RELATED DEFINES
 
 #define AI_FORENAME_LIST list("Von Neumann", "Lazarus", "Abattoir", "Auto-Surgeon", "Tra-Sentience", \

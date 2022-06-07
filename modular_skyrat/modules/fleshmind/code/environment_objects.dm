@@ -56,13 +56,18 @@
 	/// Are we a vent burrow?
 	var/vent_burrow = FALSE
 
-/obj/structure/fleshmind/wireweed/Initialize(mapload, starting_alpha = 255)
+/obj/structure/fleshmind/wireweed/Initialize(mapload, starting_alpha = 255, datum/fleshmind_controller/incoming_controller)
 	. = ..()
 	alpha = starting_alpha
 	var/static/list/loc_connections = list(
 		COMSIG_ATOM_ENTERED = .proc/on_entered,
 	)
 	AddElement(/datum/element/connect_loc, loc_connections)
+	our_controller = incoming_controller
+
+/obj/structure/fleshmind/wireweed/examine(mob/user)
+	. = ..()
+
 
 /obj/structure/fleshmind/wireweed/wirecutter_act(mob/living/user, obj/item/tool)
 	. = ..()

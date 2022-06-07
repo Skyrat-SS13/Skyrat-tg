@@ -315,7 +315,7 @@
 			mob_in_range.Goto(src, MOB_RALLY_SPEED)
 			mob_in_range.emote("scream")
 			mob_in_range.alert_sound()
-	SEND_SIGNAL(src, COMSIG_FLESHMIND_CORE_RALLY)
+	SEND_GLOBAL_SIGNAL(COMSIG_FLESHMIND_CORE_RALLY, src)
 
 /**
  * The babbler
