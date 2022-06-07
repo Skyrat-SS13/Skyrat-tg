@@ -16,7 +16,7 @@
 
 /datum/action/cooldown/fleshmind_create_structure/Activate(atom/target)
 	. = ..()
-	var/datum/component/human_corruption_component/our_component = owner.GetComponent(/datum/component/human_corruption_component)
+	var/datum/component/human_corruption/our_component = owner.GetComponent(/datum/component/human_corruption)
 	if(!our_component?.our_controller)
 		return
 	var/datum/fleshmind_controller/owner_controller = our_component.our_controller

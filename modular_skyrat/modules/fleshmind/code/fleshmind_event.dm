@@ -7,11 +7,36 @@
 /datum/round_event/fleshmind
 	fakeable = TRUE
 	announceWhen = 400
+	endWhen = 400
+	var/list/possible_mob_conversions = list(
+		/mob/living/simple_animal/hostile/fleshmind/globber,
+		/mob/living/simple_animal/hostile/fleshmind/slicer,
+		/mob/living/simple_animal/hostile/fleshmind/stunner,
+		/mob/living/simple_animal/hostile/fleshmind/floater,
+	)
 
 /datum/round_event/fleshmind/announce(fake)
 	priority_announce("Confirmed outbreak of level $£%!£ biohazard aboard [station_name()]. All personnel must contain the outbreak.", "Biohazard Alert", ANNOUNCER_AIMALF)
 
+/datum/round_event/fleshmind/tick()
+	if(prob(FLESHMIND_EVENT_MAKE_CORRUPTION_CHANCE))
+		var/obj/machinery/picked_machinery = pick(GLOB.machines)
+		picked_machinery.AddComponent(/datum/component/machine_corruption)
+		announce_to_ghosts(picked_machinery)
+
+	if(prob(FLESHMIND_EVENT_MAKE_CORRUPT_MOB))
+		for(var/mob/living/simple_animal/iterating_simple_animal in GLOB.mob_living_list)
+			if(iterating_simple_animal.key || iterating_simple_animal.mind)
+				continue
+			var/picked_mob_type = pick(possible_mob_conversions)
+			new picked_mob_type(get_turf(iterating_simple_animal))
+			announce_to_ghosts(picked_mob_type)
+			qdel(iterating_simple_animal)
+			break
+
+
 /datum/round_event/fleshmind/start()
+
 	var/list/turfs = list() //list of all the empty floor turfs in the hallway areas
 
 	var/obj/structure/biohazard_blob/resin/resintest = new()

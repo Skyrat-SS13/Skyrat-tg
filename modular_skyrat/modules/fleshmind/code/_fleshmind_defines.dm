@@ -37,6 +37,10 @@
 #define CONTROLLED_MOB_POLICY "You are part of the fleshmind, this means any fleshmind entities, structures, mobs are your ally. You must not attack them. \n \
 	You must roleplay that you are part of the fleshmind. Your number one goal is converting other hosts and spreading the flesh."
 
+#define FLESHMIND_EVENT_MAKE_CORRUPTION_CHANCE 1
+
+#define FLESHMIND_EVENT_MAKE_CORRUPT_MOB 0.5
+
 // CONTROLLER RELATED DEFINES
 
 #define AI_FORENAME_LIST list("Von Neumann", "Lazarus", "Abattoir", "Auto-Surgeon", "Tra-Sentience", \
