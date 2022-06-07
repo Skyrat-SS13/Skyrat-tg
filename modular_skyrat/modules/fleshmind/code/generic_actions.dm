@@ -42,7 +42,7 @@
 
 /datum/action/cooldown/fleshmind_flesh_call/Activate(atom/target)
 	. = ..()
-	for(var/mob/living/simple_animal/hostile/iterating_mob in get_hearers_in_range(DEFAULT_VIEW_RANGE, src))
+	for(var/mob/living/simple_animal/hostile/iterating_mob in get_hearers_in_range(DEFAULT_VIEW_RANGE, owner))
 		if(!faction_check(owner.faction, iterating_mob))
 			continue
 		iterating_mob.Goto(owner, MOB_RALLY_SPEED)
@@ -57,7 +57,7 @@
 	background_icon_state = "bg_fugu"
 	button_icon_state = "hivemind_link"
 
-/datum/action/cooldown/fleshmind_flesh_chat/Activate(atom/target)
+/datum/action/innate/fleshmind_flesh_chat/Activate(atom/target)
 	. = ..()
 	var/message = tgui_input_text(owner, "Send a message to the fleshmind.", "Flesh Chat")
 	if(!message)
