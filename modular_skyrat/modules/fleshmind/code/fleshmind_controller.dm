@@ -31,7 +31,7 @@
 	/// Can we attack doors?
 	var/wireweed_attacks_doors = TRUE
 	/// Can we attack windows?
-	var/wireweed_attacks_windows = TRUE
+	var/wireweed_attacks_windows = FALSE
 
 	/// Whether the wireweed can spawn walls.
 	var/spawns_walls = TRUE
@@ -81,7 +81,7 @@
 	/// Probably of wireweed attacking structures per process
 	var/attack_prob = 20
 	/// Probability of wireweed making a wall when able per process
-	var/wall_prob = 70
+	var/wall_prob = 30
 	/// When we spawn, do we create an expansion zone?
 	var/do_initial_expansion = TRUE
 	/// The amount of time until we can activate nearby wireweed again.

@@ -67,4 +67,4 @@
 			continue
 		if(iterating_mob == owner)
 			continue
-		to_chat(iterating_mob, span_purple("FLESHMIND ([owner]): [message]"))
+		to_chat(iterating_mob, span_purple("<b>FLESHMIND ([owner]):</b> [message]"))

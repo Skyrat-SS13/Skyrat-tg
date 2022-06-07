@@ -24,6 +24,8 @@
 
 	RegisterSignal(infected_human, COMSIG_ATOM_UPDATE_OVERLAYS, .proc/update_parent_overlays)
 	RegisterSignal(infected_human, COMSIG_PARENT_EXAMINE, .proc/on_examine)
+	RegisterSignal(infected_human, COMSIG_ATOM_EMP_ACT, .proc/emp_act)
+	RegisterSignal(infected_human, COMSIG_LIVING_DEATH, .proc/host_death)
 
 	if(our_controller)
 		for(var/obj/structure/fleshmind/structure/core/iterating_core in our_controller.cores)
@@ -47,6 +49,8 @@
 	UnregisterSignal(parent, list(
 		COMSIG_ATOM_UPDATE_OVERLAYS,
 		COMSIG_PARENT_EXAMINE,
+		COMSIG_ATOM_EMP_ACT,
+		COMSIG_LIVING_DEATH,
 	))
 	parent_mob.update_appearance()
 	return ..()
@@ -72,3 +76,19 @@
 	SIGNAL_HANDLER
 
 	to_chat(parent, span_userdanger("Your mind screams as you feel a processor core dying!"))
+
+/datum/component/human_corruption_component/proc/emp_act(datum/source, severity)
+	SIGNAL_HANDLER
+
+	var/mob/living/carbon/human/parent_human = parent
+
+	INVOKE_ASYNC(parent_human, /mob/proc/emote, "scream")
+	parent_human.apply_status_effect(/datum/status_effect/jitter, 20 SECONDS)
+	to_chat(parent_human, span_userdanger("You feel your implants freeze up!"))
+	parent_human.Paralyze(10)
+	parent_human.take_overall_damage(STRUCTURE_EMP_LIGHT_DAMAGE)
+
+/datum/component/human_corruption_component/proc/host_death()
+	SIGNAL_HANDLER
+
+	qdel(src)

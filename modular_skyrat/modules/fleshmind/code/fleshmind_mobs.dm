@@ -52,6 +52,10 @@
 	/// Are we suffering from a malfunction?
 	var/suffering_malfunction = FALSE
 	COOLDOWN_DECLARE(special_ability_cooldown)
+	/// Default actions to give the mob
+	var/static/list/default_actions = list(
+		/datum/action/innate/fleshmind_flesh_chat,
+	)
 
 
 /mob/living/simple_animal/hostile/fleshmind/Initialize(mapload, datum/fleshmind_controller/incoming_controller)
@@ -59,6 +63,9 @@
 	// We set a unique name when we are created, to give some feeling of randomness.
 	name = "[pick(FLESHMIND_NAME_MODIFIER_LIST)] [name]"
 	our_controller = incoming_controller
+	for(var/iterating_action as anything in default_actions)
+		var/datum/action/new_action = new iterating_action
+		new_action.Grant(src)
 
 /mob/living/simple_animal/hostile/fleshmind/death(gibbed)
 	if(contained_mob)
@@ -1265,11 +1272,16 @@
 	)
 	speak = list(
 		"What a lovely body. Lay it down intact.",
-		"First time? I can be gentle, unless you like it rough.",
-		"Come here, meatbag.",
-		"What use is that flesh if you don't enjoy it?",
+		"Now this... this is worth living for.",
+		"Go on. It's okay to be afraid at first.",
+		"You're unhappy with your body, but you came to the right place.",
+		"What use is a body you're unhappy in? Please, I can fix it.",
 		"Mine is the caress of steel.",
-		"I offer you the ecstasy of union, and yet you tremble.",
+		"Climb inside, and I'll seal the door. When I open it back up, you'll be in a community that loves you.",
+		"You can be the pilot, and I can drive you to somewhere lovely.",
+		"Please, just- lay down, okay? I want nothing more than to help you be yourself.",
+		"Whatever form you want to be, just whisper it into my radio. You can become what you were meant to be.",
+		"It.. hurts, seeing you run. Knowing I can't keep up. Why won't you let other people help you..?",
 	)
 	alert_sounds = list(
 		'modular_skyrat/modules/fleshmind/sound/mechiver/aggro_01.ogg',
@@ -1304,15 +1316,15 @@
 	COOLDOWN_DECLARE(consume_ability_cooldown)
 	/// A list of lines we will send to torment the passenger.
 	var/list/torment_lines = list(
-		"An arm grabs your neck!",
-		"Lips whisper, \" This is the womb of your rebirth... \"",
-		"Hot breath flows over your ear, \" You will enjoy bliss when this is over... \"",
-		"A whirring drill bit bores through your chest!",
-		"Something is crushing your ribs!",
+		"An arm grabs your neck, hundreds of manipulators trying to work a set of implants under your skin!",
+		"The cockpit radio crackles, \" You came to the right place... \"",
+		"Mechanical signals flood your psyche, \" You'll finally be with people that care... \"",
+		"A metallic sensation is slipped underneath your ribcage, an activation signal trying to reach it!",
+		"Something is pressing hard against your spine!",
 		"Some blood-hot liquid covers you!",
-		"The stench of some chemical overwhelms you!",
-		"A dozen needles lance through your skin!",
-		"You feel a cold worm-like thing trying to wriggle into your wounds!",
+		"The stench of some chemical overwhelms you, the fumes permeating your skull before washing into an alien perfume!",
+		"A dozen needles slide effortless into your muscles, injecting you with an unknown vigor!",
+		"You feel a cold worm-like thing trying to wriggle into your solar plexus, burrowing underneath your skin!",
 	)
 
 /mob/living/simple_animal/hostile/fleshmind/mechiver/Life(delta_time, times_fired)

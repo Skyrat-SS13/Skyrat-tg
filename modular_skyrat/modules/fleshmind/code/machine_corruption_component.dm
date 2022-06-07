@@ -111,6 +111,7 @@
 	RegisterSignal(parent_machinery, COMSIG_PARENT_EXAMINE, .proc/on_examine)
 	RegisterSignal(parent_machinery, COMSIG_ATOM_ATTACK_HAND, .proc/handle_attack_hand)
 	RegisterSignal(parent_machinery, COMSIG_ATOM_DESTRUCTION, .proc/handle_destruction)
+	RegisterSignal(parent_machinery, COMSIG_ATOM_EMP_ACT, .proc/emp_act)
 
 	update_name()
 
@@ -267,3 +268,8 @@
 		parent_machienry.circuit.forceMove(our_turf)
 		parent_machienry.circuit = null
 	qdel(parent_machienry)
+
+/datum/component/machine_corruption/proc/emp_act(datum/source, severity)
+	SIGNAL_HANDLER
+
+	qdel(src)

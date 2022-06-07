@@ -1,6 +1,6 @@
 /datum/round_event_control/fleshmind
 	name = "Fleshmind"
-	typepath = /datum/round_event/mold
+	typepath = /datum/round_event/fleshmind
 	max_occurrences = 0
 	min_players = 100
 

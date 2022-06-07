@@ -431,7 +431,6 @@
 			continue
 		iterating_mob.Paralyze(50)
 		iterating_mob.apply_status_effect(/datum/status_effect/jitter, 20 SECONDS)
-		iterating_mob.soundbang_act(2, 0, 100, 1)
 		to_chat(iterating_mob, span_userdanger("A terrible howl tears through your mind, the voice senseless, soulless."))
 
 /**
@@ -526,7 +525,7 @@
 	density = FALSE
 	max_integrity = 260
 	activation_range = DEFAULT_VIEW_RANGE
-	ability_cooldown_time = 30 SECONDS
+	ability_cooldown_time = 2 MINUTES
 	/// The max amount of mobs we can have at any one time.
 	var/max_mobs = 2
 	/// The current amount of spawned mobs
@@ -552,7 +551,7 @@
 
 /obj/structure/fleshmind/structure/assembler/take_damage(damage_amount, damage_type, damage_flag, sound_effect, attack_dir, armour_penetration)
 	. = ..()
-	if(spawned_mobs < max_mobs)
+	if(spawned_mobs < max_mobs && COOLDOWN_FINISHED(src, ability_cooldown))
 		spawn_mob()
 
 /obj/structure/fleshmind/structure/assembler/attack_hand(mob/living/user, list/modifiers)
