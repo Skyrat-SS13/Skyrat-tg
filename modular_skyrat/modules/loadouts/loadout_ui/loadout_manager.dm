@@ -318,6 +318,9 @@
 			if(!GLOB.donator_list[owner.ckey] && !is_admin(owner))
 				formatted_list.len--
 				continue
+		if(item.required_season && !(item.required_season in SSevents.holidays))
+			formatted_list.len--
+			continue
 
 		var/atom/loadout_atom = item.item_path
 

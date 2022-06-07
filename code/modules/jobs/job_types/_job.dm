@@ -61,16 +61,20 @@
 	/// Experience type granted by playing in this job.
 	var/exp_granted_type = ""
 
-	var/paycheck = PAYCHECK_MINIMAL
+	///How much money does this crew member make in a single paycheck? Note that passive paychecks are capped to PAYCHECK_CREW in regular gameplay after roundstart.
+	var/paycheck = PAYCHECK_CREW
+	///Which department does this paycheck pay from?
 	var/paycheck_department = ACCOUNT_CIV
 
-	var/list/mind_traits // Traits added to the mind of the mob assigned this job
+	/// Traits added to the mind of the mob assigned this job
+	var/list/mind_traits
 
 	///Lazylist of traits added to the liver of the mob assigned this job (used for the classic "cops heal from donuts" reaction, among others)
 	var/list/liver_traits = null
 
 	var/display_order = JOB_DISPLAY_ORDER_DEFAULT
 
+	///What types of bounty tasks can this job recieve past the default?
 	var/bounty_types = CIV_JOB_BASIC
 
 	/// Goodies that can be received via the mail system.
@@ -124,30 +128,22 @@
 
 /datum/job/New()
 	. = ..()
-	//SKYRAT ADDITION START
+	// SKYRAT EDIT START
 	if(!job_spawn_title)
 		job_spawn_title = title
-	//SKYRAT ADDITION END
-	var/list/jobs_changes = get_map_changes()
-	if(!jobs_changes)
-		return
-	if(isnum(jobs_changes["spawn_positions"]))
-		spawn_positions = jobs_changes["spawn_positions"]
-	if(isnum(jobs_changes["total_positions"]))
-		total_positions = jobs_changes["total_positions"]
-
-/// Loads up map configs if necessary and returns job changes for this job.
-/datum/job/proc/get_map_changes()
-	var/string_type = "[type]"
-	var/list/splits = splittext(string_type, "/")
-	var/endpart = splits[splits.len]
-
+	// SKYRAT EDIT END
 	var/list/job_changes = SSmapping.config.job_changes
-	if(!(endpart in job_changes))
-		return list()
+	if(!job_changes[title])
+		return TRUE
 
-	return job_changes[endpart]
+	var/list/job_positions_edits = job_changes[title]
+	if(!job_positions_edits)
+		return TRUE
 
+	if(isnum(job_positions_edits["spawn_positions"]))
+		spawn_positions = job_positions_edits["spawn_positions"]
+	if(isnum(job_positions_edits["total_positions"]))
+		total_positions = job_positions_edits["total_positions"]
 
 /// Executes after the mob has been spawned in the map. Client might not be yet in the mob, and is thus a separate variable.
 /datum/job/proc/after_spawn(mob/living/spawned, client/player_client)
@@ -178,13 +174,6 @@
 		var/mob/living/carbon/human/experiencer = spawned
 		for(var/i in roundstart_experience)
 			experiencer.mind.adjust_experience(i, roundstart_experience[i], TRUE)
-
-	var/obj/item/modular_computer/tablet/pda/PDA = spawned.get_item_by_slot(ITEM_SLOT_BELT)
-	if(istype(PDA))
-		var/obj/item/computer_hardware/identifier/id = PDA.all_components[MC_IDENTIFY]
-
-		if(id)
-			id.UpdateDisplay()
 
 /datum/job/proc/announce_job(mob/living/joining_mob, job_title) // SKYRAT EDIT CHANGE - ALTERNATIVE_JOB_TITLES - Original: /datum/job/proc/announce_job(mob/living/joining_mob)
 	if(head_announce)
@@ -242,10 +231,31 @@
 /datum/job/proc/config_check()
 	return TRUE
 
+/**
+ * # map_check
+ *
+ * Checks the map config for job changes
+ * If they have 0 spawn and total positions in the config, the job is entirely removed from occupations prefs for the round.
+ */
 /datum/job/proc/map_check()
-	var/list/job_changes = get_map_changes()
-	if(!job_changes)
+	var/list/job_changes = SSmapping.config.job_changes
+	if(!job_changes[title]) //no edits made
+		return TRUE
+
+	var/list/job_positions_edits = job_changes[title]
+	if(!job_positions_edits)
+		return TRUE
+
+	var/available_roundstart = TRUE
+	var/available_latejoin = TRUE
+	if(!isnull(job_positions_edits["spawn_positions"]) && (job_positions_edits["spawn_positions"] == 0))
+		available_roundstart = FALSE
+	if(!isnull(job_positions_edits["total_positions"]) && (job_positions_edits["total_positions"] == 0))
+		available_latejoin = FALSE
+
+	if(!available_roundstart && !available_latejoin) //map config disabled the job
 		return FALSE
+
 	return TRUE
 
 /datum/job/proc/radio_help_message(mob/M)
@@ -332,6 +342,7 @@
 	if(istype(PDA))
 		PDA.saved_identification = H.real_name
 		PDA.saved_job = J.title
+		PDA.UpdateDisplay()
 
 
 /datum/outfit/job/get_chameleon_disguise_info()
@@ -371,7 +382,7 @@
 		if(HAS_TRAIT(SSstation, STATION_TRAIT_LATE_ARRIVALS))
 			return get_latejoin_spawn_point()
 		if(HAS_TRAIT(SSstation, STATION_TRAIT_RANDOM_ARRIVALS))
-			return get_safe_random_station_turf(typesof(/area/hallway)) || get_latejoin_spawn_point()
+			return get_safe_random_station_turf(typesof(/area/station/hallway)) || get_latejoin_spawn_point()
 		if(HAS_TRAIT(SSstation, STATION_TRAIT_HANGOVER))
 			var/obj/effect/landmark/start/hangover_spawn_point
 			for(var/obj/effect/landmark/start/hangover/hangover_landmark in GLOB.start_landmarks_list)

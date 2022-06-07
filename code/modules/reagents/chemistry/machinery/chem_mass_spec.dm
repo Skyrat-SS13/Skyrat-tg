@@ -90,7 +90,7 @@ This will not clean any inverted reagents. Inverted reagents will still be corre
 		replace_beaker(user, BEAKER1, beaker)
 		to_chat(user, span_notice("You add [beaker] to [src]."))
 		update_appearance()
-		updateUsrDialog()
+		ui_interact(user)
 		return
 	..()
 
@@ -110,7 +110,7 @@ This will not clean any inverted reagents. Inverted reagents will still be corre
 			return
 		replace_beaker(user, BEAKER2, beaker)
 		to_chat(user, span_notice("You add [beaker] to [src]."))
-		updateUsrDialog()
+		ui_interact(user)
 		. = SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 	update_appearance()

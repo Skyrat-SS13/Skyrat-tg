@@ -20,7 +20,7 @@
 	outfit = /datum/outfit/job/expeditionary_trooper
 	plasmaman_outfit = /datum/outfit/plasmaman/mining
 
-	paycheck = PAYCHECK_HARD
+	paycheck = PAYCHECK_CREW
 	paycheck_department = ACCOUNT_SCI
 
 	display_order = JOB_DISPLAY_ORDER_EXP_CORPS

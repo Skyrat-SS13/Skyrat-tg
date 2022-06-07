@@ -6,7 +6,7 @@
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_ears.dmi'
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_ears.dmi'
 	strip_delay = 15
-	custom_price = PAYCHECK_ASSISTANT * 2
+	custom_price = PAYCHECK_CREW * 2
 	/// If the headphones are on or off
 	var/kinky_headphones_on = FALSE
 	/// Current color of the headphones, can affect sprite and can change
@@ -34,13 +34,13 @@
 	AddElement(/datum/element/update_icon_updates_onmob)
 
 //to change model
-/obj/item/clothing/ears/kinky_headphones/AltClick(mob/user, obj/item/I)
+/obj/item/clothing/ears/kinky_headphones/AltClick(mob/user)
 	if(color_changed)
 		return
 	. = ..()
 	if(.)
 		return
-	var/choice = show_radial_menu(user,src, kinkphones_designs, custom_check = CALLBACK(src, .proc/check_menu, user, I), radius = 36, require_near = TRUE)
+	var/choice = show_radial_menu(user, src, kinkphones_designs, custom_check = CALLBACK(src, .proc/check_menu, user), radius = 36, require_near = TRUE)
 	if(!choice)
 		return FALSE
 	current_kinkphones_color = choice

@@ -20,7 +20,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 	desc = "A console used for high-priority announcements and emergencies."
 	icon_screen = "comm"
 	icon_keyboard = "tech_key"
-	req_access = list(ACCESS_HEADS)
+	req_access = list(ACCESS_COMMAND)
 	circuit = /obj/item/circuitboard/computer/communications
 	light_color = LIGHT_COLOR_BLUE
 
@@ -862,7 +862,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 
 		if(HACK_FUGITIVES) // Triggers fugitives, which can cause confusion / chaos as the crew decides which side help
 			priority_announce(
-				"Attention crew, it appears that someone on your station has established an unexpected orbit with an unmarked ship in nearby space.",
+				"Attention crew, it appears that someone on your station has made unexpected communication with an unmarked ship in nearby space.",
 				"[command_name()] High-Priority Update"
 				)
 
@@ -873,7 +873,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 
 		if(HACK_THREAT) // Adds a flat amount of threat to buy a (probably) more dangerous antag later
 			priority_announce(
-				"Attention crew, it appears that someone on your station has shifted your orbit into more dangerous territory.",
+				SSmapping.config.orbit_shift_replacement,
 				"[command_name()] High-Priority Update"
 				)
 

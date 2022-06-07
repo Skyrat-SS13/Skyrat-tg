@@ -245,7 +245,7 @@
 	desc = "An advanced kit to help deal with advanced wounds."
 	icon_state = "medkit_advanced"
 	inhand_icon_state = "medkit-rad"
-	custom_premium_price = PAYCHECK_HARD * 6
+	custom_premium_price = PAYCHECK_COMMAND * 6
 	damagetype_healed = "all"
 
 /obj/item/storage/medkit/advanced/PopulateContents()
@@ -376,7 +376,7 @@
 
 /obj/item/storage/pill_bottle/probital
 	name = "bottle of probital pills"
-	desc = "Contains pills used to treat brute damage.The tag in the bottle states 'Eat before ingesting, may cause fatigue'."
+	desc = "Contains pills used to treat brute damage. The tag in the bottle states 'Eat before ingesting, may cause fatigue'."
 
 /obj/item/storage/pill_bottle/probital/PopulateContents()
 	for(var/i in 1 to 4)
@@ -384,7 +384,7 @@
 
 /obj/item/storage/pill_bottle/iron
 	name = "bottle of iron pills"
-	desc = "Contains pills used to reduce blood loss slowly.The tag in the bottle states 'Only take one each five minutes'."
+	desc = "Contains pills used to reduce blood loss slowly. The tag in the bottle states 'Only take one each five minutes'."
 
 /obj/item/storage/pill_bottle/iron/PopulateContents()
 	for(var/i in 1 to 4)
@@ -531,7 +531,7 @@
 	righthand_file = 'icons/mob/inhands/equipment/medical_righthand.dmi'
 	throw_speed = 3
 	throw_range = 7
-	custom_premium_price = PAYCHECK_MEDIUM * 4
+	custom_premium_price = PAYCHECK_CREW * 4
 	/// var to prevent it freezing the same things over and over
 	var/cooling = FALSE
 

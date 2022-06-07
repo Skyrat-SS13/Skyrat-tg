@@ -268,7 +268,6 @@
 	if(fire_stacks <= 0 && !QDELETED(src))
 		visible_message(span_danger("[src] successfully extinguishes [p_them()]self!"), \
 			span_notice("You extinguish yourself."))
-		extinguish_mob()
 	return
 
 /mob/living/carbon/resist_restraints()
@@ -651,18 +650,6 @@
 	else
 		. += INFINITY
 
-/mob/living/carbon/get_permeability_protection(list/target_zones = list(HANDS,CHEST,GROIN,LEGS,FEET,ARMS,HEAD))
-	var/list/tally = list()
-	for(var/obj/item/I in get_equipped_items())
-		for(var/zone in target_zones)
-			if(I.body_parts_covered & zone)
-				tally["[zone]"] = max(1 - I.permeability_coefficient, target_zones["[zone]"])
-	var/protection = 0
-	for(var/key in tally)
-		protection += tally[key]
-	protection *= INVERSE(target_zones.len)
-	return protection
-
 //this handles hud updates
 /mob/living/carbon/update_damage_hud()
 
@@ -971,23 +958,6 @@
 		to_chat(user, span_notice("You retrieve some of [src]\'s internal organs!"))
 	remove_all_embedded_objects()
 
-/mob/living/carbon/extinguish_mob()
-	for(var/X in get_equipped_items())
-		var/obj/item/I = X
-		I.wash(CLEAN_TYPE_ACID) //washes off the acid on our clothes
-		I.extinguish() //extinguishes our clothes
-	..()
-
-/mob/living/carbon/fakefire(fire_icon = "Generic_mob_burning")
-	var/mutable_appearance/new_fire_overlay = mutable_appearance('icons/mob/OnFire.dmi', fire_icon, -FIRE_LAYER)
-	new_fire_overlay.appearance_flags = RESET_COLOR
-	overlays_standing[FIRE_LAYER] = new_fire_overlay
-	apply_overlay(FIRE_LAYER)
-
-/mob/living/carbon/fakefireextinguish()
-	remove_overlay(FIRE_LAYER)
-
-
 /mob/living/carbon/proc/create_bodyparts()
 	var/l_arm_index_next = -1
 	var/r_arm_index_next = 0
@@ -1010,7 +980,7 @@
 ///Proc to hook behavior on bodypart additions.
 /mob/living/carbon/proc/add_bodypart(obj/item/bodypart/new_bodypart)
 	bodyparts += new_bodypart
-	new_bodypart.owner = src
+	new_bodypart.set_owner(src)
 
 	switch(new_bodypart.body_part)
 		if(LEG_LEFT, LEG_RIGHT)
@@ -1042,6 +1012,17 @@
 		var/obj/item/organ/I = X
 		I.Insert(src)
 
+/// Takes an organ to slot in, and the slot to put it in, and puts in inside our lists properly
+/// To be called once the organ is actually inside us. NOT a helper proc
+/mob/living/carbon/proc/slot_in_organ(obj/item/organ/insert, slot)
+	internal_organs |= insert
+	internal_organs_slot[slot] = insert
+	/// internal_organs_slot must ALWAYS be ordered in the same way as organ_process_order
+	/// Otherwise life processing breaks down
+	sortTim(internal_organs_slot, /proc/cmp_organ_slot_asc)
+
+/proc/cmp_organ_slot_asc(slot_a, slot_b)
+	return GLOB.organ_process_order.Find(slot_a) - GLOB.organ_process_order.Find(slot_b)
 
 /mob/living/carbon/vv_get_dropdown()
 	. = ..()
@@ -1233,17 +1214,15 @@
 
 /// if any of our bodyparts are bleeding
 /mob/living/carbon/proc/is_bleeding()
-	for(var/i in bodyparts)
-		var/obj/item/bodypart/BP = i
-		if(BP.get_part_bleed_rate())
+	for(var/obj/item/bodypart/part as anything in bodyparts)
+		if(part.get_modified_bleed_rate())
 			return TRUE
 
 /// get our total bleedrate
 /mob/living/carbon/proc/get_total_bleed_rate()
 	var/total_bleed_rate = 0
-	for(var/i in bodyparts)
-		var/obj/item/bodypart/BP = i
-		total_bleed_rate += BP.get_part_bleed_rate()
+	for(var/obj/item/bodypart/part as anything in bodyparts)
+		total_bleed_rate += part.get_modified_bleed_rate()
 
 	return total_bleed_rate
 
@@ -1432,7 +1411,31 @@
 	if(!isturf(loc))
 		return
 	var/obj/effect/decal/cleanable/blood/hitsplatter/our_splatter = new(loc)
-	our_splatter.add_blood_DNA(return_blood_DNA())
+	our_splatter.add_blood_DNA(GET_ATOM_BLOOD_DNA(src))
 	our_splatter.blood_dna_info = get_blood_dna_list()
 	var/turf/targ = get_ranged_target_turf(src, splatter_direction, splatter_strength)
 	our_splatter.fly_towards(targ, splatter_strength)
+
+/mob/living/carbon/update_fire_overlay(stacks, on_fire, last_icon_state, suffix = "")
+	var/fire_icon = "generic_burning[suffix]"
+
+	if(!GLOB.fire_appearances[fire_icon])
+		var/mutable_appearance/new_fire_overlay = mutable_appearance('icons/mob/onfire.dmi', fire_icon, -FIRE_LAYER)
+		new_fire_overlay.appearance_flags = RESET_COLOR
+		GLOB.fire_appearances[fire_icon] = new_fire_overlay
+
+	if((stacks > 0 && on_fire) || HAS_TRAIT(src, TRAIT_PERMANENTLY_ONFIRE))
+		if(fire_icon == last_icon_state)
+			return last_icon_state
+
+		remove_overlay(FIRE_LAYER)
+		overlays_standing[FIRE_LAYER] = GLOB.fire_appearances[fire_icon]
+		apply_overlay(FIRE_LAYER)
+		return fire_icon
+
+	if(!last_icon_state)
+		return last_icon_state
+
+	remove_overlay(FIRE_LAYER)
+	apply_overlay(FIRE_LAYER)
+	return null

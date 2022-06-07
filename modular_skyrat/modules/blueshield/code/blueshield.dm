@@ -14,7 +14,7 @@
 	exp_required_type_department = EXP_TYPE_COMMAND
 	exp_granted_type = EXP_TYPE_CREW
 
-	paycheck = PAYCHECK_HARD
+	paycheck = PAYCHECK_COMMAND
 	paycheck_department = ACCOUNT_CMD
 
 	outfit = /datum/outfit/job/blueshield
@@ -46,7 +46,7 @@
 /datum/outfit/job/blueshield
 	name = "Blueshield"
 	jobtype = /datum/job/blueshield
-	uniform = /obj/item/clothing/under/rank/security/blueshield
+	uniform = /obj/item/clothing/under/rank/blueshield
 	suit = /obj/item/clothing/suit/armor/vest/blueshield
 	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
 	id = /obj/item/card/id/advanced/centcom
@@ -59,7 +59,7 @@
 	implants = list(/obj/item/implant/mindshield)
 	backpack = /obj/item/storage/backpack/blueshield
 	satchel = /obj/item/storage/backpack/satchel/blueshield
-	duffelbag = /obj/item/storage/backpack/duffel/blueshield
+	duffelbag = /obj/item/storage/backpack/duffelbag/blueshield
 	head = /obj/item/clothing/head/beret/blueshield
 	box = /obj/item/storage/box/survival/security
 	belt = /obj/item/modular_computer/tablet/pda/security
@@ -73,7 +73,7 @@
 	uniform = /obj/item/clothing/under/plasmaman/blueshield
 
 /obj/item/storage/box/gunset/blueshield
-	name = "CMG-1 Gunset"
+	name = "CMG-1 gunset"
 	w_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/gun/ballistic/automatic/cmg/nomag
@@ -82,11 +82,11 @@
 /obj/item/storage/box/gunset/blueshield/PopulateContents()
 	. = ..()
 	new /obj/item/gun/ballistic/automatic/cmg/nomag(src)
-	new /obj/item/ammo_box/magazine/cmgm45(src)
-	new /obj/item/ammo_box/magazine/cmgm45(src)
-	new /obj/item/ammo_box/magazine/cmgm45/lethal(src)
-	new /obj/item/ammo_box/magazine/cmgm45/lethal(src)
-	new /obj/item/suppressor(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/cmg(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/cmg(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/cmg/lethal(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/cmg/lethal(src)
+	new /obj/item/suppressor/nanotrasen(src) //why the fuck does BS need a suppressed gun is beyond me
 
 /obj/item/ammo_casing/energy/laser/hellfire/bs
 	projectile_type = /obj/projectile/beam/laser/hellfire

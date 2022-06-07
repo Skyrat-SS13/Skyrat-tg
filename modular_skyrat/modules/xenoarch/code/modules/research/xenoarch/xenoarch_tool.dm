@@ -177,7 +177,7 @@
 	icon = 'modular_skyrat/modules/xenoarch/icons/xenoarch_items.dmi'
 	icon_state = "xenoarch_belt"
 	content_overlays = FALSE
-	custom_premium_price = PAYCHECK_MEDIUM * 2
+	custom_premium_price = PAYCHECK_CREW * 2
 
 /obj/item/storage/belt/utility/xenoarch/ComponentInitialize()
 	. = ..()

@@ -1,15 +1,15 @@
-////////////////////////////////////
-//CME EVENT SYSTEM
-//SEE _CME_DEFINES.DM FOR SETTINGS.
-////////////////////////////////////
+/*
+*	CME EVENT SYSTEM
+*	SEE _CME_DEFINES.DM FOR SETTINGS.
+*/
 
 /* Welcome to the CME control system.
-
-This controls the CME event, or coronal mass ejection event, which causes multiple EMP bubbles to form around the station
-depending on conditons and time. There are currently 4 settings of CME, all of which have settings defined in the
-cme defines DM file. See that for more info
-
-Armageddon is truly going to fuck the station, use it sparingly.
+*
+*	This controls the CME event, or coronal mass ejection event, which causes multiple EMP bubbles to form around the station
+*	depending on conditons and time. There are currently 4 settings of CME, all of which have settings defined in the
+*	cme defines DM file. See that for more info
+*
+*	Armageddon is truly going to fuck the station, use it sparingly.
 */
 
 /datum/round_event_control/cme
@@ -170,9 +170,9 @@ Armageddon is truly going to fuck the station, use it sparingly.
 	minor_announce("The station has cleared the solar flare, please proceed to repair electronic failures.", "CME cleared:")
 
 
-////////////////////////
-//CME bubbles
-///////////////////////
+/*
+*	CME BUBBLES
+*/
 
 /obj/effect/cme
 	desc = "A solar ejection projection."
@@ -239,7 +239,7 @@ Armageddon is truly going to fuck the station, use it sparingly.
 /obj/effect/cme/proc/burst()
 	if(neutralized)
 		visible_message(span_notice("[src] fizzles out into nothingness."))
-		new /obj/effect/particle_effect/smoke/bad(loc)
+		new /obj/effect/particle_effect/fluid/smoke/bad(loc)
 		qdel(src)
 		return
 	var/pulse_range_light = rand(cme_light_range_lower, cme_light_range_upper)
@@ -253,7 +253,7 @@ Armageddon is truly going to fuck the station, use it sparingly.
 /obj/effect/cme/armageddon/burst()
 	if(neutralized)
 		visible_message(span_notice("[src] fizzles out into nothingness."))
-		new /obj/effect/particle_effect/smoke/bad(loc)
+		new /obj/effect/particle_effect/fluid/smoke/bad(loc)
 		qdel(src)
 		return
 	var/pulse_range_light = rand(cme_light_range_lower, cme_light_range_upper)
@@ -269,7 +269,7 @@ Armageddon is truly going to fuck the station, use it sparingly.
 
 /obj/effect/cme/proc/anomalyNeutralize()
 	playsound(src,'sound/weapons/resonator_blast.ogg',100,TRUE)
-	new /obj/effect/particle_effect/smoke/bad(loc)
+	new /obj/effect/particle_effect/fluid/smoke/bad(loc)
 	color = COLOR_WHITE
 	light_color = COLOR_WHITE
 	neutralized = TRUE
@@ -278,7 +278,7 @@ Armageddon is truly going to fuck the station, use it sparingly.
 
 /obj/effect/cme/extreme/anomalyNeutralize()
 	playsound(src,'sound/weapons/resonator_blast.ogg',100,TRUE)
-	new /obj/effect/particle_effect/smoke/bad(loc)
+	new /obj/effect/particle_effect/fluid/smoke/bad(loc)
 	var/turf/open/T = get_turf(src)
 	if(istype(T))
 		T.atmos_spawn_air("o2=30;plasma=30;TEMP=5778")
@@ -290,7 +290,7 @@ Armageddon is truly going to fuck the station, use it sparingly.
 
 /obj/effect/cme/armageddon/anomalyNeutralize()
 	playsound(src,'sound/weapons/resonator_blast.ogg',100,TRUE)
-	new /obj/effect/particle_effect/smoke/bad(loc)
+	new /obj/effect/particle_effect/fluid/smoke/bad(loc)
 	var/turf/open/T = get_turf(src)
 	if(istype(T))
 		T.atmos_spawn_air("o2=30;plasma=80;TEMP=5778")

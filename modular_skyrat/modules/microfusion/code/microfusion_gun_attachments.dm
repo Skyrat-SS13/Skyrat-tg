@@ -448,18 +448,16 @@ DANGER: SNOWFLAKE ZONE
 
 /obj/item/microfusion_gun_attachment/scope/run_attachment(obj/item/gun/microfusion/microfusion_gun)
 	. = ..()
-	if(microfusion_gun.azoom)
+	if(microfusion_gun.GetComponent(/datum/component/scope))
 		return
-
-	microfusion_gun.azoom = new()
-	microfusion_gun.azoom.gun = microfusion_gun
+	microfusion_gun.AddComponent(/datum/component/scope, range_modifier = 1.5)
 	microfusion_gun.update_action_buttons()
 
 /obj/item/microfusion_gun_attachment/scope/remove_attachment(obj/item/gun/microfusion/microfusion_gun)
 	. = ..()
-	if(microfusion_gun.azoom)
-		microfusion_gun.azoom.Remove(microfusion_gun.azoom.owner)
-		QDEL_NULL(microfusion_gun.azoom)
+	var/datum/component_datum = microfusion_gun.GetComponent(/datum/component/scope)
+	if(component_datum)
+		qdel(component_datum)
 	microfusion_gun.update_action_buttons()
 
 /*
@@ -505,7 +503,7 @@ Allows for an official blue camo to be applied to the gun.
 Hail NanoTrasen.
 */
 /obj/item/microfusion_gun_attachment/nt_camo
-	name = "\improper NanoTrasen brand microfusion frame"
+	name = "\improper Nanotrasen brand microfusion frame"
 	desc = "A frame modification for the MCR-01, changing the color of the gun to blue."
 	icon_state = "attachment_nt_camo"
 	attachment_overlay_icon_state = "attachment_nt_camo"

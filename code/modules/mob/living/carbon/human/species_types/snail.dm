@@ -1,13 +1,12 @@
 /datum/species/snail
 	name = "Snailperson"
 	id = SPECIES_SNAIL
-	offset_features = list(OFFSET_GLASSES = list(0,4))
-	default_color = "336600" //vomit green
 	species_traits = list(MUTCOLORS, EYECOLOR, HAS_FLESH, HAS_BONE, HAIR, FACEHAIR) //SKYRAT EDIT - Roundstart Snails - Customization
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_CAN_STRIP,
 		TRAIT_NOSLIPALL,
+		TRAIT_LITERATE,
 		TRAIT_WATER_BREATHING, //SKYRAT EDIT - Roundstart Snails
 	)
 	attack_verb = "slap"

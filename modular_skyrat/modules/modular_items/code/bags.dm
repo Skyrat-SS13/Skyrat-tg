@@ -6,7 +6,7 @@
 	slot_flags = ITEM_SLOT_POCKETS
 	w_class = WEIGHT_CLASS_BULKY
 	resistance_flags = FLAMMABLE
-	custom_price = PAYCHECK_HARD * 4
+	custom_price = PAYCHECK_CREW * 4
 
 /obj/item/storage/bag/ammo/ComponentInitialize()
 	. = ..()
@@ -25,7 +25,7 @@
 	slot_flags = ITEM_SLOT_POCKETS
 	w_class = WEIGHT_CLASS_BULKY
 	resistance_flags = FLAMMABLE
-	custom_price = PAYCHECK_HARD * 4
+	custom_price = PAYCHECK_CREW * 4
 
 /obj/item/storage/bag/material/ComponentInitialize()
 	. = ..()

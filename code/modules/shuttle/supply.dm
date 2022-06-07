@@ -158,6 +158,7 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 			if(istype(spawning_order, /datum/supply_order/armament))
 				LAZYADD(forced_briefcases[spawning_order.paying_account], spawning_order)
 			paying_for_this.bank_card_talk("Cargo order #[spawning_order.id] has shipped. [price] credits have been charged to your bank account.")
+			SSeconomy.track_purchase(paying_for_this, price, spawning_order.pack.name)
 			var/datum/bank_account/department/cargo = SSeconomy.get_dep_account(ACCOUNT_CAR)
 			cargo.adjust_money(price - spawning_order.pack.get_cost()) //Cargo gets the handling fee
 		value += spawning_order.pack.get_cost()
@@ -166,7 +167,7 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 		QDEL_NULL(spawning_order.applied_coupon)
 
 		spawning_order.on_spawn() //SKYRAT EDIT
-		if(!spawning_order.pack.goody && !istype(spawning_order, /datum/supply_order/armament)) //we handle goody crates below //SKYRAT EDIT
+		if(!spawning_order.pack.goody && !(spawning_order?.paying_account in forced_briefcases)) //we handle goody crates below //SKYRAT EDIT
 			spawning_order.generate(pick_n_take(empty_turfs))
 
 		SSblackbox.record_feedback("nested tally", "cargo_imports", 1, list("[spawning_order.pack.get_cost()]", "[spawning_order.pack.name]"))
@@ -214,15 +215,18 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 				continue
 			buying_acc_order_num += the_order.item_amount - 1
 
-		if(buying_acc_order_num > GOODY_FREE_SHIPPING_MAX) // no free shipping, send a crate
+		if(buying_acc_order_num > 2) // no free shipping, send a crate
 			var/obj/structure/closet/crate/secure/owned/our_crate = new /obj/structure/closet/crate/secure/owned(pick_n_take(empty_turfs))
 			our_crate.buyer_account = buying_account
-			our_crate.name = "armament case - purchased by [buyer]"
+			our_crate.name = "armament crate - purchased by [buyer]"
 			miscboxes[buyer] = our_crate
 		else //free shipping in a case
 			miscboxes[buyer] = new /obj/item/storage/lockbox/order(pick_n_take(empty_turfs))
 			var/obj/item/storage/lockbox/order/our_case = miscboxes[buyer]
 			our_case.buyer_account = buying_account
+			if(istype(our_case.buyer_account, /datum/bank_account/department))
+				our_case.department_purchase = TRUE
+				our_case.department_account = our_case.buyer_account
 			miscboxes[buyer].name = "armament case - purchased by [buyer]"
 		misc_contents[buyer] = list()
 

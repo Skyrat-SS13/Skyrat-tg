@@ -34,7 +34,7 @@
 	if(isliving(target))
 		var/mob/living/living = target
 		living.fire_stacks += 2
-		living.IgniteMob()
+		living.ignite_mob()
 
 /obj/projectile/beam/laser/microfusion/hellfire
 	name = "hellfire microfusion laser"

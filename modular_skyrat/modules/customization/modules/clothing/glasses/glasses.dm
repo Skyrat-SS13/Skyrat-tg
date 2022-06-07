@@ -1,6 +1,10 @@
 /obj/item/clothing/glasses	//Code to let you switch the side your eyepatch is on! Woo! Just an explanation, this is added to the base glasses so it works on eyepatch-huds too
 	var/can_switch_eye = FALSE	//Having this default to false means that its easy to make sure this doesnt apply to any pre-existing items
 	var/current_eye = "_R"	//Added to the end of the icon_state to make this easy code-wise, L and R being the wearer's Left and Right
+	/// Stores the current state of the sprite. This is mostly here for reskin compatibility.
+	var/current_sprite_state
+	/// Stores the current worn state, this like current_sprite_state, this is used for reskin compatibility.
+	var/current_worn_state
 
 /obj/item/clothing/glasses/CtrlClick(mob/user)
 	. = ..()
@@ -44,13 +48,17 @@
 		current_eye = "_R"
 	else if(current_eye == "_R")
 		current_eye = "_L"
-	src.icon_state = "[initial(icon_state)]"+ current_eye
+	src.icon_state = current_sprite_state + current_eye
 
 /obj/item/clothing/glasses/Initialize()
 	. = ..()
+	current_sprite_state = icon_state //Stores the standard sprite state.
 	if(!can_switch_eye)	//Just runs the normal code for any item that we havent manually set this as TRUE for
 		return
 	icon_state += current_eye	//Makes sure the icon initially ends in _R so its a valid sprite (Change current_eye in loadout once thats possible to spawn it on the side of your choice)
+
+/obj/item/clothing/glasses/alt_click_secondary(mob/user)
+	. = ..()
 
 /* ---------- Items Below ----------*/
 

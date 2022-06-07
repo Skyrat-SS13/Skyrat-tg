@@ -35,11 +35,19 @@
 				else
 					icon_state = "[model.cyborg_base_icon]"
 			cut_overlays()
+
+			if(hat)  // Don't forget your hat
+				var/mutable_appearance/head_overlay = hat.build_worn_icon(default_layer = 20, default_icon_file = 'icons/mob/clothing/head.dmi')
+				head_overlay.pixel_y += (hat_offset - 14)
+				add_overlay(head_overlay)
+
 	else
 		icon_state = "[model.cyborg_base_icon]"
 
 	if((R_TRAIT_UNIQUETIP in model.model_features) && (TRAIT_IMMOBILIZED in status_traits))
 		icon_state = "[model.cyborg_base_icon]-tipped"
+		if(particles)
+			dissipate()
 		cut_overlays()
 
 	if(stat == DEAD && (R_TRAIT_UNIQUEWRECK in model.model_features))

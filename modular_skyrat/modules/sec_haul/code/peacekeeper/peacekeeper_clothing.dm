@@ -111,6 +111,16 @@
 	icon_state = "peacekeeper_black"
 	worn_icon_state = "peacekeeper_black"
 
+/obj/item/clothing/suit/armor/vest/peacekeeper/brit
+	name = "high vis armored vest"
+	desc = "Oi bruv, you got a loicence for that?"
+	icon_state = "hazardbg"
+	worn_icon_state = "hazardbg"
+
+/obj/item/clothing/suit/armor/vest/peacekeeper/brit/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/toggle_icon, "zipper")
+
 /obj/item/clothing/suit/armor/hos/trenchcoat/peacekeeper
 	name = "armored peacekeeper trenchcoat"
 	desc = "A trenchcoat enhanced with a special lightweight kevlar. The epitome of tactical plainclothes."
@@ -160,7 +170,6 @@
 	icon_state = "peacekeeper_gloves"
 	worn_icon_state = "peacekeeper"
 	siemens_coefficient = 0.5
-	permeability_coefficient = 1
 	strip_delay = 20
 	cold_protection = 0
 	min_cold_protection_temperature = null
@@ -274,7 +283,7 @@
 	icon_state = "peacekeeper_webbing"
 	worn_icon_state = "peacekeeper_webbing"
 	content_overlays = FALSE
-	custom_premium_price = PAYCHECK_HARD * 3
+	custom_premium_price = PAYCHECK_CREW * 3
 	component_type = /datum/component/storage/concrete/peacekeeper
 
 /obj/item/storage/belt/security/webbing/peacekeeper/ComponentInitialize()
@@ -317,7 +326,6 @@
 	strip_delay = 30
 	equip_delay_other = 50
 	resistance_flags = NONE
-	permeability_coefficient = 0.05 //Thick soles, and covers the ankle
 	pocket_storage_component_path = /datum/component/storage/concrete/pockets/shoes
 	can_be_tied = FALSE
 

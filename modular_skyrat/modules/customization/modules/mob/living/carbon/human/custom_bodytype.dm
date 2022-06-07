@@ -61,7 +61,7 @@
 /datum/species/proc/generate_custom_worn_icon(item_slot, obj/item/item)
 	// If already set (possibly by us, or manually, use it.)
 	var/icon/final_icon = get_custom_worn_icon(item_slot, item)
-	if(final_icon)
+	if(final_icon && icon_exists(final_icon, item.worn_icon_state || item.icon_state))
 		return final_icon
 
 	// Else check if in custom icon.
@@ -108,7 +108,7 @@
 	if(item.greyscale_colors)
 		// Just use the colors already given to us, but re-align to expected colors.
 		var/list/colors = SSgreyscale.ParseColorString(item.greyscale_colors)
-		var/default_color = (length(colors) >= 1) ? colors[1] : "#00000000"
+		var/default_color = (length(colors) >= 1) ? colors[1] : COLOR_DARK
 		var/list/final_list = list()
 		for(var/i in 1 to expected_num_colors)
 			final_list += (i < length(colors)) ? colors[i] : default_color
@@ -120,10 +120,10 @@
 
 		for(var/i in 1 to expected_num_colors)
 			if(length(item.species_clothing_color_coords) < i)
-				color_list += "#00000000"
+				color_list += COLOR_DARK
 				continue
-			var/color = item.species_clothing_color_coords[i]
-			color_list += final_human_icon.GetPixel(color[1], color[2]) || "#00000000"
+			var/coord = item.species_clothing_color_coords[i]
+			color_list += final_human_icon.GetPixel(coord[1], coord[2]) || COLOR_DARK
 
 		fallback_greyscale_colors = color_list.Join("")
 

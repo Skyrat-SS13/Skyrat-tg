@@ -429,7 +429,7 @@
 			return
 		replace_beaker(user, B)
 		to_chat(user, span_notice("You add [B] to [src]."))
-		updateUsrDialog()
+		ui_interact(user)
 	else if(!user.combat_mode && !istype(I, /obj/item/card/emag))
 		to_chat(user, span_warning("You can't load [I] into [src]!"))
 		return ..()
@@ -475,6 +475,12 @@
 	for(var/obj/item/stock_parts/manipulator/M in component_parts)
 		if (M.rating > 1)
 			dispensable_reagents |= upgrade_reagents
+		//SKYRAT EDIT START
+		if (M.rating > 2)
+			dispensable_reagents |= upgrade_reagents2
+		if (M.rating > 3)
+			dispensable_reagents |= upgrade_reagents3
+		//SKYRAT EDIT END
 		parts_rating += M.rating
 	powerefficiency = round(newpowereff, 0.01)
 

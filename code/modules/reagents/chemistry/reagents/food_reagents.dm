@@ -122,7 +122,7 @@
 	burn_heal = 1
 
 /datum/reagent/consumable/nutriment/vitamin/on_mob_life(mob/living/carbon/M, delta_time, times_fired)
-	if(M.satiety < 600)
+	if(M.satiety < MAX_SATIETY)
 		M.satiety += 30 * REM * delta_time
 	. = ..()
 
@@ -139,6 +139,26 @@
 	description = "Natural tissues that make up the bulk of organs, providing many vitamins and minerals."
 	taste_description = "rich earthy pungent"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
+
+/datum/reagent/consumable/nutriment/cloth_fibers
+	name = "Cloth Fibers"
+	description = "It's not actually a form of nutriment but it does keep Mothpeople going for a short while..."
+	nutriment_factor = 30 * REAGENTS_METABOLISM
+	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
+	brute_heal = 0
+	burn_heal = 0
+	///Amount of satiety that will be drained when the cloth_fibers is fully metabolized
+	var/delayed_satiety_drain = 2 * CLOTHING_NUTRITION_GAIN
+
+/datum/reagent/consumable/nutriment/cloth_fibers/on_mob_life(mob/living/carbon/M, delta_time, times_fired)
+	if(M.satiety < MAX_SATIETY)
+		M.adjust_nutrition(CLOTHING_NUTRITION_GAIN)
+		delayed_satiety_drain += CLOTHING_NUTRITION_GAIN
+	return ..()
+
+/datum/reagent/consumable/nutriment/cloth_fibers/on_mob_delete(mob/living/carbon/M)
+	M.adjust_nutrition(-delayed_satiety_drain)
+	return ..()
 
 /datum/reagent/consumable/cooking_oil
 	name = "Cooking Oil"
@@ -368,7 +388,7 @@
 				victim.emote("scream")
 			victim.blur_eyes(5) // 10 seconds
 			victim.blind_eyes(3) // 6 seconds
-			victim.set_confusion(max(exposed_mob.get_confusion(), 5)) // 10 seconds
+			victim.set_timed_status_effect(5 SECONDS, /datum/status_effect/confusion, only_if_higher = TRUE)
 			victim.Knockdown(3 SECONDS)
 			victim.add_movespeed_modifier(/datum/movespeed_modifier/reagent/pepperspray)
 			addtimer(CALLBACK(victim, /mob.proc/remove_movespeed_modifier, /datum/movespeed_modifier/reagent/pepperspray), 10 SECONDS)
@@ -380,7 +400,7 @@
 			if(prob(10))
 				victim.blur_eyes(1)
 			if(prob(10))
-				victim.Dizzy(1)
+				victim.set_timed_status_effect(2 SECONDS, /datum/status_effect/dizziness, only_if_higher = TRUE)
 			if(prob(5))
 				victim.vomit()
 
@@ -444,7 +464,7 @@
 		if(DT_PROB(min(current_cycle/2, 12.5), delta_time))
 			to_chat(M, span_danger("You can't get the scent of garlic out of your nose! You can barely think..."))
 			M.Paralyze(10)
-			M.Jitter(10)
+			M.set_timed_status_effect(20 SECONDS, /datum/status_effect/jitter, only_if_higher = TRUE)
 	else
 		var/obj/item/organ/liver/liver = M.getorganslot(ORGAN_SLOT_LIVER)
 		if(liver && HAS_TRAIT(liver, TRAIT_CULINARY_METABOLISM))

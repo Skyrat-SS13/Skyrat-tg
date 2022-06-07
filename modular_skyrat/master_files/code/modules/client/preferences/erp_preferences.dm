@@ -1,6 +1,9 @@
 /datum/config_entry/flag/disable_erp_preferences
 	default = FALSE
 
+/datum/config_entry/flag/disable_lewd_items
+	default = FALSE
+
 /datum/config_entry/str_list/erp_emotes_to_disable
 
 /datum/config_entry/str_list/erp_emotes_to_disable/ValidateAndSet(str_val)

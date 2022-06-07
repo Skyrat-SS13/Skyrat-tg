@@ -10,7 +10,7 @@
 	max_amount = 12
 	amount = 6
 	grind_results = list(/datum/reagent/carbon = 2)
-	custom_price = PAYCHECK_ASSISTANT * 2
+	custom_price = PAYCHECK_LOWER * 2
 	merge_type = /obj/item/stack/medical/splint
 	var/splint_type = /datum/bodypart_aid/splint
 

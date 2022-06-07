@@ -123,8 +123,6 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 
 	///What body parts are covered by the clothing when you wear it
 	var/body_parts_covered = 0
-	/// How likely a disease or chemical is to get through a piece of clothing
-	var/permeability_coefficient = 1
 	/// for electrical admittance/conductance (electrocution checks and shit)
 	var/siemens_coefficient = 1
 	/// How much clothing is slowing you down. Negative values speeds you up
@@ -727,29 +725,31 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	do_drop_animation(location)
 
 /obj/item/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
-	if(hit_atom && !QDELETED(hit_atom))
-		SEND_SIGNAL(src, COMSIG_MOVABLE_IMPACT, hit_atom, throwingdatum)
-		if(get_temperature() && isliving(hit_atom))
-			var/mob/living/L = hit_atom
-			L.IgniteMob()
-		var/itempush = 1
-		if(w_class < 4)
-			itempush = 0 //too light to push anything
-		if(istype(hit_atom, /mob/living)) //Living mobs handle hit sounds differently.
-			var/volume = get_volume_by_throwforce_and_or_w_class()
-			if (throwforce > 0)
-				if (mob_throw_hit_sound)
-					playsound(hit_atom, mob_throw_hit_sound, volume, TRUE, -1)
-				else if(hitsound)
-					playsound(hit_atom, hitsound, volume, TRUE, -1)
-				else
-					playsound(hit_atom, 'sound/weapons/genhit.ogg',volume, TRUE, -1)
+	if(QDELETED(hit_atom))
+		return
+	if(SEND_SIGNAL(src, COMSIG_MOVABLE_IMPACT, hit_atom, throwingdatum) & COMPONENT_MOVABLE_IMPACT_NEVERMIND)
+		return
+	if(get_temperature() && isliving(hit_atom))
+		var/mob/living/L = hit_atom
+		L.ignite_mob()
+	var/itempush = 1
+	if(w_class < 4)
+		itempush = 0 //too light to push anything
+	if(istype(hit_atom, /mob/living)) //Living mobs handle hit sounds differently.
+		var/volume = get_volume_by_throwforce_and_or_w_class()
+		if (throwforce > 0)
+			if (mob_throw_hit_sound)
+				playsound(hit_atom, mob_throw_hit_sound, volume, TRUE, -1)
+			else if(hitsound)
+				playsound(hit_atom, hitsound, volume, TRUE, -1)
 			else
-				playsound(hit_atom, 'sound/weapons/throwtap.ogg', 1, volume, -1)
-
+				playsound(hit_atom, 'sound/weapons/genhit.ogg',volume, TRUE, -1)
 		else
-			playsound(src, drop_sound, YEET_SOUND_VOLUME, ignore_walls = FALSE)
-		return hit_atom.hitby(src, 0, itempush, throwingdatum=throwingdatum)
+			playsound(hit_atom, 'sound/weapons/throwtap.ogg', 1, volume, -1)
+
+	else
+		playsound(src, drop_sound, YEET_SOUND_VOLUME, ignore_walls = FALSE)
+	return hit_atom.hitby(src, 0, itempush, throwingdatum=throwingdatum)
 
 /obj/item/throw_at(atom/target, range, speed, mob/thrower, spin=1, diagonals_first = 0, datum/callback/callback, force, gentle = FALSE, quickstart = TRUE)
 	if(HAS_TRAIT(src, TRAIT_NODROP))
@@ -1175,6 +1175,9 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 
 ///For when you want to add/update the embedding on an item. Uses the vars in [/obj/item/var/embedding], and defaults to config values for values that aren't set. Will automatically detach previous embed elements on this item.
 /obj/item/proc/updateEmbedding()
+	SHOULD_CALL_PARENT(TRUE)
+
+	SEND_SIGNAL(src, COMSIG_ITEM_EMBEDDING_UPDATE)
 	if(!LAZYLEN(embedding))
 		disableEmbedding()
 		return
@@ -1339,9 +1342,21 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	if(!LAZYLEN(unique_reskin))
 		return
 
+	/// Is the obj a glasses icon with swappable item states?
+	var/is_swappable = FALSE
+	/// if the item are glasses, this variable stores the item.
+	var/obj/item/clothing/glasses/reskinned_glasses
+
+	if(istype(src, /obj/item/clothing/glasses))
+		reskinned_glasses = src
+		if(reskinned_glasses.can_switch_eye)
+			is_swappable = TRUE
+
 	var/list/items = list()
+
+
 	for(var/reskin_option in unique_reskin)
-		var/image/item_image = image(icon = unique_reskin[reskin_option][RESKIN_ICON] ? unique_reskin[reskin_option][RESKIN_ICON] : icon, icon_state = unique_reskin[reskin_option][RESKIN_ICON_STATE])
+		var/image/item_image = image(icon = unique_reskin[reskin_option][RESKIN_ICON] ? unique_reskin[reskin_option][RESKIN_ICON] : icon, icon_state = "[unique_reskin[reskin_option][RESKIN_ICON_STATE]][is_swappable ? "_R" : ""]")
 		items += list("[reskin_option]" = item_image)
 	sort_list(items)
 
@@ -1351,14 +1366,33 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 	if(!unique_reskin[pick])
 		return
 	current_skin = pick
+
 	if(unique_reskin[pick][RESKIN_ICON])
 		icon = unique_reskin[pick][RESKIN_ICON]
+
 	if(unique_reskin[pick][RESKIN_ICON_STATE])
-		icon_state = unique_reskin[pick][RESKIN_ICON_STATE]
+		if(is_swappable)
+			reskinned_glasses.current_sprite_state = unique_reskin[pick][RESKIN_ICON_STATE]
+			icon_state = reskinned_glasses.current_sprite_state + "_R"
+		else
+			icon_state = unique_reskin[pick][RESKIN_ICON_STATE]
+
 	if(unique_reskin[pick][RESKIN_WORN_ICON])
 		worn_icon = unique_reskin[pick][RESKIN_WORN_ICON]
+
 	if(unique_reskin[pick][RESKIN_WORN_ICON_STATE])
-		worn_icon_state = unique_reskin[pick][RESKIN_WORN_ICON_STATE]
+		if(is_swappable)
+			reskinned_glasses.current_worn_state = unique_reskin[pick][RESKIN_WORN_ICON_STATE]
+			worn_icon_state = reskinned_glasses.current_worn_state + "_R"
+		else
+			worn_icon_state = unique_reskin[pick][RESKIN_WORN_ICON_STATE]
+
+	if(unique_reskin[pick][RESKIN_INHAND_L])
+		lefthand_file = unique_reskin[pick][RESKIN_INHAND_L]
+	if(unique_reskin[pick][RESKIN_INHAND_R])
+		righthand_file = unique_reskin[pick][RESKIN_INHAND_R]
+	if(unique_reskin[pick][RESKIN_INHAND_STATE])
+		inhand_icon_state = unique_reskin[pick][RESKIN_INHAND_STATE]
 	if(unique_reskin[pick][RESKIN_SUPPORTS_VARIATIONS_FLAGS])
 		supports_variations_flags = unique_reskin[pick][RESKIN_SUPPORTS_VARIATIONS_FLAGS]
 	if(ishuman(M))
@@ -1453,7 +1487,7 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 		attack_image = image('icons/effects/effects.dmi', attacked_atom, visual_effect_icon, attacked_atom.layer + 0.1)
 	else if(used_item)
 		attack_image = image(icon = used_item, loc = attacked_atom, layer = attacked_atom.layer + 0.1)
-		attack_image.plane = attacked_atom.plane
+		attack_image.plane = attacked_atom.plane + 1
 
 		// Scale the icon.
 		attack_image.transform *= 0.4

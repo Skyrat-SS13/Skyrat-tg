@@ -4,6 +4,7 @@
 		/datum/traitor_objective/final/romerol = 1,
 		/datum/traitor_objective/final/battlecruiser = 1,
 		/datum/traitor_objective/final/space_dragon = 1,
+		/datum/traitor_objective/final/supermatter_cascade = 1,
 	)
 	weight = 100
 
@@ -11,7 +12,7 @@
 	abstract_type = /datum/traitor_objective/final
 	progression_minimum = 140 MINUTES
 
-	var/progression_points_in_objectives = 140 MINUTES //skyrat edit: original value 20 MINUTES
+	var/progression_points_in_objectives = 75 MINUTES //skyrat edit: original value 20 MINUTES
 
 /// Determines if this final objective can be taken. Should be put into every final objective's generate function.
 /datum/traitor_objective/final/proc/can_take_final_objective()

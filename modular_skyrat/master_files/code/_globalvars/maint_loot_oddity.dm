@@ -1,5 +1,5 @@
 
-GLOBAL_LIST_INIT(oddity_loot, list(//oddity: strange or crazy items
+GLOBAL_LIST_INIT(oddity_loot, list(// oddity: strange or crazy items
 	/obj/item/abductor/silencer = 25,
 	/obj/item/abductor/gizmo = 25,
 	/obj/item/abductor_machine_beacon/chem_dispenser = 25,
@@ -58,6 +58,6 @@ GLOBAL_LIST_INIT(oddity_loot, list(//oddity: strange or crazy items
 	/obj/item/storage/toolbox/syndicate = 100,
 	/obj/item/storage/toolbox/infiltrator = 100,
 	/obj/item/toy/sprayoncan = 200,
-	/obj/item/warpwhistle = 5,
+	/obj/item/warp_whistle = 5,
 	/obj/item/shadowcloak = 50,
 ))

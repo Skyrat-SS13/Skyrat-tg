@@ -9,8 +9,8 @@
 
 /** A simple rudimentary gasmix to information list converter. Can be used for UIs.
  * Args:
- * - gasmix: [/datum/gas_mixture]
- * - name: String used to name the list, optional.
+ * * gasmix: [/datum/gas_mixture]
+ * * name: String used to name the list, optional.
  * Returns: A list parsed_gasmixes with the following structure:
  * - parsed_gasmixes    Value: Assoc List     Desc: The thing we return
  * -- Key: name         Value: String         Desc: Gasmix Name
@@ -32,7 +32,7 @@
 	. = list(
 		"gases" = list(),
 		"reactions" = list(),
-		"name" = name,
+		"name" = format_text(name),
 		"total_moles" = null,
 		"temperature" = null,
 		"volume"= null,
@@ -114,6 +114,37 @@ GLOBAL_LIST_EMPTY(gas_handbook)
 					factor_info["tooltip"] = "This reaction has special behaviour when occuring in specific locations."
 				else if(factor == "Hot Ice")
 					factor_info["tooltip"] = "Hot ice are solidified stacks of plasma. Ignition of one will result in a raging fire."
+			reaction_info["factors"] += list(factor_info)
+		GLOB.reaction_handbook += list(reaction_info)
+		qdel(reaction)
+
+	for (var/datum/electrolyzer_reaction/reaction_path as anything in subtypesof(/datum/electrolyzer_reaction))
+		var/datum/electrolyzer_reaction/reaction = new reaction_path
+		var/list/reaction_info = list()
+		reaction_info["id"] = reaction.id
+		reaction_info["name"] = reaction.name
+		reaction_info["description"] = reaction.desc
+		reaction_info["factors"] = list()
+		for (var/factor in reaction.factor)
+			var/list/factor_info = list()
+			factor_info["desc"] = reaction.factor[factor]
+
+			if(factor in momentary_gas_list)
+				momentary_gas_list[factor]["reactions"] += list(reaction.id = reaction.name)
+				factor_info["factor_id"] = momentary_gas_list[factor]["id"] //Gas id
+				factor_info["factor_type"] = "gas"
+				factor_info["factor_name"] = momentary_gas_list[factor]["name"] //Common name
+			else
+				factor_info["factor_name"] = factor
+				factor_info["factor_type"] = "misc"
+				if(factor == "Temperature" || factor == "Pressure")
+					factor_info["tooltip"] = "Reaction is influenced by the [lowertext(factor)] of the place where the reaction is occuring."
+				else if(factor == "Energy")
+					factor_info["tooltip"] = "Energy released by the reaction, may or may not result in linear temperature change depending on a slew of other factors."
+				else if(factor == "Radiation")
+					factor_info["tooltip"] = "This reaction emits dangerous radiation! Take precautions."
+				else if (factor == "Location")
+					factor_info["tooltip"] = "This reaction has special behaviour when occuring in specific locations."
 			reaction_info["factors"] += list(factor_info)
 		GLOB.reaction_handbook += list(reaction_info)
 		qdel(reaction)

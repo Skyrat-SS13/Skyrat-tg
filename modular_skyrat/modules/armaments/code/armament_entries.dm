@@ -70,9 +70,10 @@ GLOBAL_LIST_INIT(armament_entries, build_armament_list())
 				armament_dataset[ARMAMENT_CATEGORY_STANDARD][CATEGORY_ENTRY][ARMAMENT_SUBCATEGORY_NONE] += spawned_armament_entry
 	return armament_dataset
 
-//////////////////////
-// ARMAMENT ENTRIES //
-//////////////////////
+/*
+*	ARMAMENT ENTRIES
+*/
+
 /datum/armament_entry
 	/// The name of the equipment used in the listing, if not set, it will use the items name.
 	var/name
@@ -98,6 +99,8 @@ GLOBAL_LIST_INIT(armament_entries, build_armament_list())
 	var/magazine
 	/// If we have a magazine, how much is it?
 	var/magazine_cost = 1
+	/// Is this restricted for purchase in some form? Requires extra code in the vendor to function, used for guncargo.
+	var/restricted = FALSE
 
 /datum/armament_entry/proc/setup() // TODO: Make this use overlays.
 	var/obj/item/test_item = new item_type()

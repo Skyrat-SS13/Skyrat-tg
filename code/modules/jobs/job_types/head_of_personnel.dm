@@ -22,6 +22,7 @@
 	plasmaman_outfit = /datum/outfit/plasmaman/head_of_personnel
 	departments_list = list(
 		/datum/job_department/service,
+		///datum/job_department/cargo, //SKYRAT EDIT
 		/datum/job_department/command,
 		)
 
@@ -63,11 +64,12 @@
 	belt = /obj/item/modular_computer/tablet/pda/heads/hop
 	ears = /obj/item/radio/headset/heads/hop
 	head = /obj/item/clothing/head/hopcap
-	shoes = /obj/item/clothing/shoes/sneakers/brown
+	shoes = /obj/item/clothing/shoes/laceup
+	suit = /obj/item/clothing/suit/armor/vest/hop
 
 	backpack = /obj/item/storage/backpack/head_of_personnel // SKYRAT EDIT CHANGE - HOP DRIP
 	satchel = /obj/item/storage/backpack/satchel/head_of_personnel // SKYRAT EDIT CHANGE - HOP DRIP
-	duffelbag = /obj/item/storage/backpack/duffel/head_of_personnel // SKYRAT EDIT CHANGE - HOP DRIP
+	duffelbag = /obj/item/storage/backpack/duffelbag/head_of_personnel // SKYRAT EDIT CHANGE - HOP DRIP
 
 	chameleon_extras = list(
 		/obj/item/gun/energy/e_gun,

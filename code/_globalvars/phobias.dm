@@ -309,11 +309,8 @@ GLOBAL_LIST_INIT(phobia_objs, list(
 		/obj/item/clothing/suit/hooded/cultrobes,
 		/obj/item/clothing/suit/wizrobe,
 		/obj/item/clothing/under/rank/civilian/chaplain,
-		/obj/item/clothing/under/rank/civilian/chaplain,
 		/obj/item/cult_bastard,
 		/obj/item/gun/magic/staff,
-		/obj/item/gun/magic/staff,
-		/obj/item/gun/magic/wand,
 		/obj/item/gun/magic/wand,
 		/obj/item/melee/cultblade,
 		/obj/item/necromantic_stone,
@@ -328,11 +325,12 @@ GLOBAL_LIST_INIT(phobia_objs, list(
 		/obj/item/storage/toolbox/haunted,
 		/obj/item/tome,
 		/obj/item/toy/eightball/haunted,
-		/obj/item/warpwhistle,
+		/obj/item/warp_whistle,
 		/obj/machinery/door/airlock/cult,
 		/obj/narsie,
 		/obj/structure/destructible/cult,
 		/obj/structure/spirit_board,
+		/obj/item/toy/cards/deck/tarot,
 	)),
 
 	"aliens" = typecacheof(list(
@@ -369,11 +367,9 @@ GLOBAL_LIST_INIT(phobia_objs, list(
 	)),
 
 	"anime" = typecacheof(list(
-		/obj/item/clothing/gloves/space_ninja,
 		/obj/item/clothing/head/kitty/genuine,
-		/obj/item/clothing/mask/gas/space_ninja,
-		/obj/item/clothing/shoes/space_ninja,
-		/obj/item/clothing/suit/space/space_ninja,
+		/obj/item/clothing/mask/gas/ninja,
+		/obj/item/clothing/under/syndicate/ninja,
 		/obj/item/clothing/under/costume/schoolgirl,
 		/obj/item/energy_katana,
 		/obj/item/food/chawanmushi,
@@ -423,32 +419,11 @@ GLOBAL_LIST_INIT(phobia_objs, list(
 	)),
 
 	"insects" = typecacheof(list(
-		/obj/item/clothing/mask/animal/rat/bee,
+		/obj/item/clothing/mask/animal/small/bee,
 		/obj/item/clothing/suit/hooded/bee_costume,
 		/obj/item/toy/plush/beeplushie,
 		/obj/item/toy/plush/moth,
 		/obj/structure/beebox,
-	)),
-
-	"anime" = typecacheof(list(
-		/obj/item/clothing/gloves/space_ninja,
-		/obj/item/clothing/head/kitty/genuine,
-		/obj/item/clothing/mask/gas/space_ninja,
-		/obj/item/clothing/shoes/space_ninja,
-		/obj/item/clothing/suit/space/space_ninja,
-		/obj/item/clothing/under/costume/schoolgirl,
-		/obj/item/energy_katana,
-		/obj/item/food/chawanmushi,
-		/obj/item/food/sashimi,
-		/obj/item/highfrequencyblade,
-		/obj/item/katana,
-		/obj/item/nullrod/claymore/katana,
-		/obj/item/nullrod/scythe/vibro,
-		/obj/item/reagent_containers/food/drinks/bottle/sake,
-		/obj/item/throwing_star,
-		/obj/item/toy/katana,
-		/obj/structure/mineral_door/paperframe,
-		/obj/structure/window/paperframe,
 	)),
 
 	"blood" = typecacheof(list(

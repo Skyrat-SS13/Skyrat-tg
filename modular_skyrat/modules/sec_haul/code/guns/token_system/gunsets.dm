@@ -1,6 +1,6 @@
-///////////////
-//GUNSET BOXES
-//////////////
+/*
+*	GUNSET BOXES
+*/
 
 /obj/item/storage/box/gunset
 	name = "gun supply box"
@@ -42,16 +42,18 @@
 	opened = !opened
 	update_icon()
 
-///////////////////
-//GUN SETS
-//////////////////
+/*
+*	GUN SETS
+*/
 
+/*
+*	SIDEARMS
+*/
 
-/////////////////
-//SIDEARM TOKEN GUNSETS
-////////////////
+/*
+*	G-17
+*/
 
-//G-17
 /obj/item/storage/box/gunset/glock17
 	name = "GK-17 supply box"
 
@@ -67,7 +69,10 @@
 	new /obj/item/ammo_box/magazine/multi_sprite/g17(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/g17(src)
 
-//LADON
+/*
+*	LADON
+*/
+
 /obj/item/storage/box/gunset/ladon
 	name = "p-3 ladon supply box"
 
@@ -82,7 +87,10 @@
 	new /obj/item/ammo_box/magazine/multi_sprite/ladon(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/ladon(src)
 
-//DOZER
+/*
+*	DOZER
+*/
+
 /obj/item/storage/box/gunset/dozer
 	name = "dozer supply box"
 
@@ -96,7 +104,10 @@
 	new /obj/item/ammo_box/magazine/multi_sprite/dozer(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/dozer(src)
 
-//PDH
+/*
+*	PDH
+*/
+
 /obj/item/storage/box/gunset/pdh_peacekeeper
 	name = "9x19mm handgun supply box"
 	desc = "Ideally contains a fast-firing 9x19mm Pistol."
@@ -112,7 +123,10 @@
 	new /obj/item/ammo_box/magazine/multi_sprite/pdh_peacekeeper(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/pdh_peacekeeper(src)
 
-// MK-58
+/*
+*	MK-58
+*/
+
 /obj/item/storage/box/gunset/mk58
 	name = "mk-58 supply box"
 
@@ -127,7 +141,10 @@
 	new /obj/item/ammo_box/magazine/multi_sprite/mk58(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/mk58(src)
 
-//CROON
+/*
+*	CROON
+*/
+
 /obj/item/storage/box/gunset/croon
 	name = "weathered supply box"
 	desc = "Ideally contains a cheap 6mm SMG."
@@ -143,7 +160,10 @@
 	new /obj/item/ammo_box/magazine/multi_sprite/croon(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/croon(src)
 
-//MAKAROV
+/*
+*	MAKAROV
+*/
+
 /obj/item/storage/box/gunset/makarov
 	name = "makarov supply box"
 
@@ -159,9 +179,12 @@
 	new /obj/item/ammo_box/magazine/multi_sprite/makarov(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/makarov(src)
 
-//ZETA
+/*
+*	ZETA
+*/
+
 /obj/item/storage/box/gunset/zeta
-	name = "10mm Auto revolver supply box"
+	name = "10mm Magnum revolver supply box"
 	desc = "Ideally contains a slow-firing revolver that packs a punch."
 
 /obj/item/storage/box/gunset/zeta/PopulateContents()
@@ -170,9 +193,12 @@
 	new /obj/item/ammo_box/revolver/zeta(src) //These start empty.
 	new /obj/item/ammo_box/revolver/zeta(src)
 	new /obj/item/ammo_box/revolver/zeta(src)
-	new /obj/item/ammo_box/advanced/b10mm(src)
+	new /obj/item/ammo_box/c10mm(src)
 
-//REVOLUTION
+/*
+*	REVOLUTION
+*/
+
 /obj/item/storage/box/gunset/revolution
 	name = "revolution supply box"
 
@@ -184,53 +210,94 @@
 	new /obj/item/ammo_box/revolver/revolution(src)
 	new /obj/item/ammo_box/advanced/b9mm(src)
 
-/////////////////
-//PRIMARY TOKEN GUNSETS
-////////////////
+/*
+*	PRIMARIES
+*/
 
-///////PCR-9
+/*
+*	PCR-9
+*/
+
 /obj/item/storage/box/gunset/pcr
 	name = "9mm SMG supply box"
 	desc = "Ideally contains a 9x19mm SMG with decent firerate."
 
+/obj/item/gun/ballistic/automatic/pcr/nomag
+	spawnwithmagazine = FALSE
+
 /obj/item/storage/box/gunset/pcr/PopulateContents()
 	. = ..()
-	new /obj/item/gun/energy/pcr(src)
+	new /obj/item/gun/ballistic/automatic/pcr/nomag(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/pcr(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/pcr(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/pcr(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/pcr(src)
 
-////M112
+/*
+*	NORWIND
+*/
 
 /obj/item/storage/box/gunset/norwind
 	name = "12.7x30mm DMR supply box."
 	desc = "Ideally contains an unwieldy rifle that hits like a truck."
 
+/obj/item/gun/ballistic/automatic/norwind/nomag
+	spawnwithmagazine = FALSE
+
 /obj/item/storage/box/gunset/norwind/PopulateContents()
 	. = ..()
-	new /obj/item/gun/energy/norwind(src)
+	new /obj/item/gun/ballistic/automatic/norwind/nomag(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/norwind(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/norwind(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/norwind(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/norwind(src)
 
-//////DTR-6
+/*
+*	OSTWIND
+*/
 
 /obj/item/storage/box/gunset/ostwind
 	name = "6mm SPR box."
 	desc = "Ideally contains an all-around balanced special purpose rifle."
 
+/obj/item/gun/ballistic/automatic/ostwind/nomag
+	spawnwithmagazine = FALSE
+
 /obj/item/storage/box/gunset/ostwind/PopulateContents()
 	. = ..()
-	new /obj/item/gun/energy/ostwind(src)
-////////PITBULL
+	new /obj/item/gun/ballistic/automatic/ostwind/nomag(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/ostwind(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/ostwind(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/ostwind(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/ostwind(src)
+
+/*
+*	PITBULL
+*/
 
 /obj/item/storage/box/gunset/pitbull
 	name = "10mm PDW supply box"
 	desc = "Ideally contains a slow-firing 10mm Auto PDW that packs a punch."
 
+/obj/item/gun/ballistic/automatic/pitbull/nomag
+	spawnwithmagazine = FALSE
+
 /obj/item/storage/box/gunset/pitbull/PopulateContents()
 	. = ..()
-	new /obj/item/gun/energy/pitbull(src)
+	new /obj/item/gun/ballistic/automatic/pitbull/nomag(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/pitbull(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/pitbull(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/pitbull(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/pitbull(src)
 
-/////////////////
-//JOB SPECIFIC GUNSETS
-////////////////
+/*
+*	JOB-SPECIFIC
+*/
 
-//CAPTAIN
+/*
+*	CAPTAIN
+*/
+
 /obj/item/storage/box/gunset/pdh_captain
 	name = "pdh 'socom' supply box"
 	w_class = WEIGHT_CLASS_NORMAL
@@ -246,7 +313,10 @@
 	new /obj/item/ammo_box/magazine/multi_sprite/pdh(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/pdh(src)
 
-//HOS
+/*
+*	HOS
+*/
+
 /obj/item/storage/box/gunset/glock18_hos
 	name = "GK-18 supply box"
 	desc = "Ideally contains a fast-firing 9x19mm pistol made out of cheap plastic."
@@ -263,7 +333,10 @@
 	new /obj/item/ammo_box/magazine/multi_sprite/g18(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/g18/ihdf(src)
 
-//HOP
+/*
+*	HOP
+*/
+
 /obj/item/storage/box/gunset/pdh
 	name = "pdh 'osprey' supply box"
 	w_class = WEIGHT_CLASS_NORMAL
@@ -279,7 +352,10 @@
 	new /obj/item/ammo_box/magazine/multi_sprite/pdh(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/pdh(src)
 
-//CORPO
+/*
+*	CORPO
+*/
+
 /obj/item/storage/box/gunset/pdh_corpo
 	name = "pdh 'corporate' supply box"
 	w_class = WEIGHT_CLASS_NORMAL
@@ -294,7 +370,7 @@
 	new /obj/item/ammo_box/magazine/multi_sprite/pdh_corpo(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/pdh_corpo(src)
 
-//////KRAUT SPACE MAGIC!
+// KRAUT SPACE MAGIC!
 /obj/item/storage/box/gunset/g11
 	name = "g11 supply box"
 
@@ -309,7 +385,10 @@
 	new /obj/item/ammo_box/magazine/multi_sprite/g11(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/g11(src)
 
-//SECURITY MEDIC
+/*
+*	SEC MEDIC
+*/
+
 /obj/item/storage/box/gunset/firefly
 	name = "9x19mm special pistol supply box"
 	desc = "Ideally contains a special 9x19mm Pistol."
@@ -325,7 +404,10 @@
 	new /obj/item/ammo_box/magazine/multi_sprite/firefly(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/firefly(src)
 
-//LASER
+/*
+*	LASER
+*/
+
 /obj/item/storage/box/gunset/laser
 	name = "laser gun supply box"
 
@@ -339,7 +421,10 @@
 	. = ..()
 	new /obj/item/gun/energy/e_gun(src)
 
-//PEPPERBALLS
+/*
+*	PEPPERBALLS
+*/
+
 /obj/item/storage/box/gunset/pepperball
 	name = "pepperball supply box"
 	w_class = WEIGHT_CLASS_NORMAL
@@ -355,9 +440,10 @@
 	new /obj/item/ammo_box/magazine/pepperball(src)
 
 
-/////////////////
-//SHOTGUN GUNSETS
-////////////////
+/*
+*	SHOTGUNS
+*/
+
 /obj/item/storage/box/gunset/m23
 	name = "m23 supply box"
 

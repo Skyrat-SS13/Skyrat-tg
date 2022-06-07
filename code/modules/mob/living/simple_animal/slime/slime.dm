@@ -221,7 +221,7 @@
 						Atkcool = TRUE
 						addtimer(VARSET_CALLBACK(src, Atkcool, FALSE), 4.5 SECONDS)
 
-/mob/living/simple_animal/slime/Process_Spacemove(movement_dir = 0)
+/mob/living/simple_animal/slime/Process_Spacemove(movement_dir = 0, continuous_move = FALSE)
 	return 2
 
 /mob/living/simple_animal/slime/get_status_tab_items()
@@ -438,7 +438,7 @@
 	return
 
 /mob/living/simple_animal/slime/examine(mob/user)
-	. = list("<span class='info'>This is [icon2html(src, user)] \a <EM>[src]</EM>!<hr>") //SKYRAT EDIT CHANGE
+	. = list("<span class='info'>This is [icon2html(src, user)] \a <EM>[src]</EM>!", EXAMINE_SECTION_BREAK) //SKYRAT EDIT CHANGE
 	if (stat == DEAD)
 		. += span_deadsay("It is limp and unresponsive.")
 	else

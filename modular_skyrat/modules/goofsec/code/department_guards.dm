@@ -28,6 +28,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	unique_reskin = null
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/suit/armor/vest/blueshirt/skyrat/guard
 	icon_state = "guard_armor"
@@ -121,7 +122,7 @@
 	outfit = /datum/outfit/job/orderly
 	plasmaman_outfit = /datum/outfit/plasmaman/medical
 
-	paycheck = PAYCHECK_HARD
+	paycheck = PAYCHECK_CREW
 	paycheck_department = ACCOUNT_MED
 
 	display_order = JOB_DISPLAY_ORDER_ORDERLY
@@ -165,9 +166,8 @@
 	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
 	trim_state = "trim_orderly"
 	sechud_icon_state = SECHUD_ORDERLY
-	extra_access = list(ACCESS_BRIG_ENTRANCE, ACCESS_MEDICAL, ACCESS_MORGUE, ACCESS_SURGERY, ACCESS_PHARMACY, ACCESS_CHEMISTRY, ACCESS_VIROLOGY, ACCESS_MECH_MEDICAL, ACCESS_MINERAL_STOREROOM, ACCESS_WEAPONS)
-	minimal_access = list(ACCESS_BRIG_ENTRANCE, ACCESS_MEDICAL, ACCESS_MORGUE, ACCESS_SURGERY, ACCESS_PHARMACY, ACCESS_CHEMISTRY, ACCESS_VIROLOGY, ACCESS_MECH_MEDICAL, ACCESS_MINERAL_STOREROOM, ACCESS_WEAPONS)
-	config_job = "orderly"
+	extra_access = list(ACCESS_BRIG_ENTRANCE, ACCESS_MEDICAL, ACCESS_MORGUE, ACCESS_SURGERY, ACCESS_PHARMACY, ACCESS_PLUMBING, ACCESS_VIROLOGY, ACCESS_MECH_MEDICAL, ACCESS_MINERAL_STOREROOM, ACCESS_WEAPONS)
+	minimal_access = list(ACCESS_BRIG_ENTRANCE, ACCESS_MEDICAL, ACCESS_MORGUE, ACCESS_SURGERY, ACCESS_PHARMACY, ACCESS_PLUMBING, ACCESS_VIROLOGY, ACCESS_MECH_MEDICAL, ACCESS_MINERAL_STOREROOM, ACCESS_WEAPONS)
 	template_access = list(ACCESS_CAPTAIN, ACCESS_CMO, ACCESS_CHANGE_IDS)
 	job = /datum/job/orderly
 
@@ -191,7 +191,7 @@
 	outfit = /datum/outfit/job/science_guard
 	plasmaman_outfit = /datum/outfit/plasmaman/science
 
-	paycheck = PAYCHECK_HARD
+	paycheck = PAYCHECK_CREW
 	paycheck_department = ACCOUNT_SCI
 
 	display_order = JOB_DISPLAY_ORDER_SCIENCE_GUARD
@@ -234,11 +234,10 @@
 	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
 	trim_state = "trim_calhoun"
 	sechud_icon_state = SECHUD_SCIENCE_GUARD
-	extra_access = list(ACCESS_BRIG_ENTRANCE, ACCESS_ROBOTICS, ACCESS_RND, ACCESS_ORDNANCE, ACCESS_ORDNANCE_STORAGE, ACCESS_RESEARCH, ACCESS_XENOBIOLOGY,
+	extra_access = list(ACCESS_BRIG_ENTRANCE, ACCESS_ROBOTICS, ACCESS_SCIENCE, ACCESS_ORDNANCE, ACCESS_ORDNANCE_STORAGE, ACCESS_RESEARCH, ACCESS_XENOBIOLOGY,
 					ACCESS_MECH_SCIENCE, ACCESS_MINERAL_STOREROOM, ACCESS_TECH_STORAGE, ACCESS_GENETICS, ACCESS_AUX_BASE, ACCESS_WEAPONS)
-	minimal_access = list(ACCESS_BRIG_ENTRANCE, ACCESS_ROBOTICS, ACCESS_RND, ACCESS_ORDNANCE, ACCESS_ORDNANCE_STORAGE, ACCESS_RESEARCH, ACCESS_XENOBIOLOGY,
+	minimal_access = list(ACCESS_BRIG_ENTRANCE, ACCESS_ROBOTICS, ACCESS_SCIENCE, ACCESS_ORDNANCE, ACCESS_ORDNANCE_STORAGE, ACCESS_RESEARCH, ACCESS_XENOBIOLOGY,
 					ACCESS_MECH_SCIENCE, ACCESS_MINERAL_STOREROOM, ACCESS_TECH_STORAGE, ACCESS_GENETICS, ACCESS_AUX_BASE, ACCESS_WEAPONS)
-	config_job = "science_guard"
 	template_access = list(ACCESS_CAPTAIN, ACCESS_RD, ACCESS_CHANGE_IDS)
 	job = /datum/job/science_guard
 
@@ -261,7 +260,7 @@
 	outfit = /datum/outfit/job/bouncer
 	plasmaman_outfit = /datum/outfit/plasmaman/party_bouncer
 
-	paycheck = PAYCHECK_HARD
+	paycheck = PAYCHECK_CREW
 	paycheck_department = ACCOUNT_SRV
 
 	display_order = JOB_DISPLAY_ORDER_BOUNCER
@@ -312,7 +311,6 @@
 	sechud_icon_state = SECHUD_BOUNCER
 	extra_access = list(ACCESS_BRIG_ENTRANCE, ACCESS_HYDROPONICS, ACCESS_BAR, ACCESS_KITCHEN, ACCESS_MORGUE, ACCESS_WEAPONS, ACCESS_MINERAL_STOREROOM, ACCESS_THEATRE, ACCESS_WEAPONS)
 	minimal_access = list(ACCESS_BRIG_ENTRANCE, ACCESS_HYDROPONICS, ACCESS_BAR, ACCESS_KITCHEN, ACCESS_MORGUE, ACCESS_WEAPONS, ACCESS_MINERAL_STOREROOM, ACCESS_THEATRE, ACCESS_SERVICE, ACCESS_WEAPONS)
-	config_job = "bouncer"
 	template_access = list(ACCESS_CAPTAIN, ACCESS_HOP, ACCESS_CHANGE_IDS)
 	job = /datum/job/bouncer
 
@@ -335,7 +333,7 @@
 	outfit = /datum/outfit/job/customs_agent
 	plasmaman_outfit = /datum/outfit/plasmaman/cargo
 
-	paycheck = PAYCHECK_HARD
+	paycheck = PAYCHECK_CREW
 	paycheck_department = ACCOUNT_CAR
 
 	display_order = JOB_DISPLAY_ORDER_CUSTOMS_AGENT
@@ -378,9 +376,8 @@
 	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
 	trim_state = "trim_customs"
 	sechud_icon_state = SECHUD_CUSTOMS_AGENT
-	extra_access = list(ACCESS_BRIG_ENTRANCE, ACCESS_MAINT_TUNNELS, ACCESS_MAILSORTING, ACCESS_CARGO, ACCESS_QM, ACCESS_MINING, ACCESS_MECH_MINING, ACCESS_MINING_STATION, ACCESS_MINERAL_STOREROOM, ACCESS_WEAPONS)
-	minimal_access = list(ACCESS_BRIG_ENTRANCE, ACCESS_MAINT_TUNNELS, ACCESS_MAILSORTING, ACCESS_CARGO, ACCESS_QM, ACCESS_MINING, ACCESS_MECH_MINING, ACCESS_MINING_STATION, ACCESS_MINERAL_STOREROOM, ACCESS_WEAPONS)
-	config_job = "customs_agent"
+	extra_access = list(ACCESS_BRIG_ENTRANCE, ACCESS_MAINT_TUNNELS, ACCESS_MAIL_SORTING, ACCESS_CARGO, ACCESS_QM, ACCESS_MINING, ACCESS_MECH_MINING, ACCESS_MINING_STATION, ACCESS_MINERAL_STOREROOM, ACCESS_WEAPONS)
+	minimal_access = list(ACCESS_BRIG_ENTRANCE, ACCESS_MAINT_TUNNELS, ACCESS_MAIL_SORTING, ACCESS_CARGO, ACCESS_QM, ACCESS_MINING, ACCESS_MECH_MINING, ACCESS_MINING_STATION, ACCESS_MINERAL_STOREROOM, ACCESS_WEAPONS)
 	template_access = list(ACCESS_CAPTAIN, ACCESS_QM, ACCESS_CHANGE_IDS)
 	job = /datum/job/customs_agent
 
@@ -403,7 +400,7 @@
 	outfit = /datum/outfit/job/engineering_guard
 	plasmaman_outfit = /datum/outfit/plasmaman/engineering
 
-	paycheck = PAYCHECK_HARD
+	paycheck = PAYCHECK_CREW
 	paycheck_department = ACCOUNT_ENG
 
 	display_order = JOB_DISPLAY_ORDER_ENGINEER_GUARD
@@ -446,11 +443,10 @@
 	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
 	trim_state = "trim_engiguard"
 	sechud_icon_state = SECHUD_ENGINEERING_GUARD
-	extra_access = list(ACCESS_BRIG_ENTRANCE, ACCESS_ENGINE, ACCESS_ENGINE_EQUIP, ACCESS_TECH_STORAGE, ACCESS_MAINT_TUNNELS, ACCESS_MECH_ENGINE, ACCESS_AUX_BASE,
-					ACCESS_EXTERNAL_AIRLOCKS, ACCESS_CONSTRUCTION, ACCESS_ATMOSPHERICS, ACCESS_TCOMSAT, ACCESS_MINERAL_STOREROOM, ACCESS_WEAPONS)
-	minimal_access = list(ACCESS_BRIG_ENTRANCE, ACCESS_ENGINE, ACCESS_ENGINE_EQUIP, ACCESS_TECH_STORAGE, ACCESS_MAINT_TUNNELS, ACCESS_MECH_ENGINE, ACCESS_AUX_BASE,
-					ACCESS_EXTERNAL_AIRLOCKS, ACCESS_CONSTRUCTION, ACCESS_ATMOSPHERICS, ACCESS_TCOMSAT, ACCESS_MINERAL_STOREROOM, ACCESS_WEAPONS)
-	config_job = "engineering_guard"
+	extra_access = list(ACCESS_BRIG_ENTRANCE, ACCESS_ENGINEERING, ACCESS_ENGINE_EQUIP, ACCESS_TECH_STORAGE, ACCESS_MAINT_TUNNELS, ACCESS_MECH_ENGINE, ACCESS_AUX_BASE,
+					ACCESS_EXTERNAL_AIRLOCKS, ACCESS_CONSTRUCTION, ACCESS_ATMOSPHERICS, ACCESS_TCOMMS, ACCESS_MINERAL_STOREROOM, ACCESS_WEAPONS)
+	minimal_access = list(ACCESS_BRIG_ENTRANCE, ACCESS_ENGINEERING, ACCESS_ENGINE_EQUIP, ACCESS_TECH_STORAGE, ACCESS_MAINT_TUNNELS, ACCESS_MECH_ENGINE, ACCESS_AUX_BASE,
+					ACCESS_EXTERNAL_AIRLOCKS, ACCESS_CONSTRUCTION, ACCESS_ATMOSPHERICS, ACCESS_TCOMMS, ACCESS_MINERAL_STOREROOM, ACCESS_WEAPONS)
 	template_access = list(ACCESS_CAPTAIN, ACCESS_CE, ACCESS_CHANGE_IDS)
 	job = /datum/job/engineering_guard
 
@@ -506,34 +502,34 @@
 	name = "medical stun baton"
 	desc = "A stun baton that doesn't operate outside of the Medical department, based off the station's blueprint layout. Can be used outside of Medical up to three times before needing to return!"
 	icon_state = "medical_baton"
-	valid_areas = list(/area/medical, /area/maintenance/department/medical, /area/shuttle/escape)
+	valid_areas = list(/area/station/medical, /area/station/maintenance/department/medical, /area/shuttle/escape)
 
 /obj/item/melee/baton/security/loaded/departmental/engineering
 	name = "engineering stun baton"
 	desc = "A stun baton that doesn't operate outside of the Engineering department, based off the station's blueprint layout. Can be used outside of Engineering up to three times before needing to return!"
 	icon_state = "engineering_baton"
-	valid_areas = list(/area/engineering, /area/maintenance/department/engine, /area/shuttle/escape)
+	valid_areas = list(/area/station/engineering, /area/station/maintenance/department/engine, /area/shuttle/escape)
 
 /obj/item/melee/baton/security/loaded/departmental/science
 	name = "science stun baton"
 	desc = "A stun baton that doesn't operate outside of the Science department, based off the station's blueprint layout. Can be used outside of Science up to three times before needing to return!"
 	icon_state = "science_baton"
-	valid_areas = list(/area/science, /area/maintenance/department/science, /area/shuttle/escape)
+	valid_areas = list(/area/station/science, /area/station/maintenance/department/science, /area/shuttle/escape)
 
 /obj/item/melee/baton/security/loaded/departmental/cargo
 	name = "cargo stun baton"
 	desc = "A stun baton that doesn't operate outside of the Cargo department, based off the station's blueprint layout. Can be used outside of Cargo up to three times before needing to return!"
 	icon_state = "cargo_baton"
-	valid_areas = list(/area/cargo, /area/maintenance/department/cargo, /area/shuttle/escape)
+	valid_areas = list(/area/station/cargo, /area/station/maintenance/department/cargo, /area/shuttle/escape)
 
 /obj/item/melee/baton/security/loaded/departmental/service
 	name = "service stun baton"
 	desc = "A stun baton that doesn't operate outside of the Service department, based off the station's blueprint layout. Can be used outside of Service up to three times before needing to return!"
 	icon_state = "service_baton"
-	valid_areas = list(/area/service, /area/maintenance/department/chapel, /area/maintenance/department/crew_quarters, /area/shuttle/escape) // love mapping
+	valid_areas = list(/area/station/service, /area/station/maintenance/department/chapel, /area/station/maintenance/department/crew_quarters, /area/shuttle/escape) // love mapping
 
 /obj/item/melee/baton/security/loaded/departmental/prison
 	name = "prison stun baton"
 	desc = "A stun baton that doesn't operate outside of the Prison, based off the station's blueprint layout. Can be used outside of the Prison up to three times before needing to return!"
 	icon_state = "prison_baton"
-	valid_areas = list(/area/security/prison, /area/security/processing, /area/shuttle/escape) // love mapping
+	valid_areas = list(/area/station/security/prison, /area/station/security/processing, /area/shuttle/escape) // love mapping

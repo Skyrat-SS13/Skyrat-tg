@@ -28,6 +28,7 @@
 		TRAIT_PRIMITIVE,
 		TRAIT_WEAK_SOUL,
 		TRAIT_GUN_NATURAL,
+		//TRAIT_LITERATE, monkeys shouldn't be able to read or write
 	)
 	no_equip = list(
 		ITEM_SLOT_OCLOTHING,
@@ -37,7 +38,7 @@
 		ITEM_SLOT_SUITSTORE,
 	)
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | MIRROR_MAGIC | ERT_SPAWN | SLIME_EXTRACT
-	liked_food = MEAT | FRUIT
+	liked_food = MEAT | FRUIT | BUGS
 	disliked_food = CLOTH
 	damage_overlay_type = "monkey"
 	sexes = FALSE
@@ -54,7 +55,7 @@
 		BODY_ZONE_R_LEG = /obj/item/bodypart/r_leg/monkey,
 		BODY_ZONE_CHEST = /obj/item/bodypart/chest/monkey,
 	)
-	fire_overlay = "Monkey_burning"
+	fire_overlay = "monkey"
 	dust_anim = "dust-m"
 	gib_anim = "gibbed-m"
 

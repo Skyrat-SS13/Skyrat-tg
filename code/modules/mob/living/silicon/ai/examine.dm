@@ -1,5 +1,5 @@
 /mob/living/silicon/ai/examine(mob/user)
-	. = list("<span class='info'>This is [icon2html(src, user)] <EM>[src]</EM>!<hr>") //SKYRAT EDIT CHANGE
+	. = list("<span class='info'>This is [icon2html(src, user)] <EM>[src]</EM>!", EXAMINE_SECTION_BREAK) //SKYRAT EDIT CHANGE
 	if (stat == DEAD)
 		. += span_deadsay("It appears to be powered-down.")
 	else

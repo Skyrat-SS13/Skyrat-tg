@@ -392,7 +392,7 @@
 
 // Donation reward for TheOOZ
 /obj/item/clothing/mask/kindle
-	name = "mask of Kindle"
+	name = "\proper The mask of Kindle"
 	desc = "The mask which belongs to Nanotrasen's Outpost Captain Kindle, it is the symbol of her 'Kindled' cult. The material feels like it's made entirely out of inexpensive plastic."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/masks.dmi'
 	icon_state = "kindle"
@@ -426,14 +426,14 @@
 
 /obj/item/clothing/mask/kindle/atom_destruction(damage_flag)
 	. = ..()
-	name = "broken mask of Kindle"
+	name = "\proper The broken mask of Kindle"
 	desc = "The mask which belongs to Nanotrasen's Outpost Captain Kindle, it is the symbol of her 'Kindled' cult. The material is completely shattered in half."
 	icon_state = "kindle_broken"
 	inhand_icon_state = "kindle_broken"
 
 /obj/item/clothing/mask/kindle/repair()
 	. = ..()
-	name = "mended mask of Kindle"
+	name = "\proper The mended mask of Kindle"
 	desc = "The mask which belongs to Nanotrasen's Outpost Captain Kindle, it is the symbol of her 'Kindled' cult. The material seems extra flimsy, like it has recently been repaired in a hurry."
 	icon_state = "kindle"
 	inhand_icon_state = "kindle"
@@ -544,8 +544,21 @@
 /obj/item/clothing/head/avipilot/attack_self(mob/living/carbon/user)
 	adjust_goggles(user)
 
+// Donation reward for NetraKyram - public use allowed via the command vendor
+/obj/item/clothing/under/rank/captain/dress
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
+	worn_icon_digi = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform_digi.dmi'
+	name = "captain's dress"
+	desc = "It's a blue dress with some worn-gold markings denoting the rank of \"Captain\"."
+	icon_state = "dress_cap_s"
+	worn_icon_state = "dress_cap_s"
+	body_parts_covered = CHEST|GROIN|ARMS
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
+	can_adjust = FALSE
+
 // Donation reward for NetraKyram
-/obj/item/clothing/under/rank/security/blueshield/netra
+/obj/item/clothing/under/rank/blueshield/netra
 	name = "black and silver armored dress"
 	desc = "An ankle length black and silver dress, made out of some shiny synthetic material with inlaid kevlar shards and silver reinforcements, a silver ring surrounds the collar, and it doesn't appear to have a zipper... How does somebody put this thing on anyways?"
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
@@ -869,44 +882,21 @@
 	user.whisper(message, spans = spans)
 
 // Donation reward for CandleJax
-/obj/item/clothing/head/helmet/sec/peacekeeper/jax
-	name = "HepUnit standard helmet"
-	desc = "An adjustable riot-grade helmet which protects the user from most forms of blunt force trauma. It comes included with floodlights for deployment in darker environments, as well as a powered visor that can be energized with a current to conceal the users face."
+/obj/item/clothing/head/bio_hood/jax
+	name = "xuracorp biohazard hood"
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
+	icon_state = "bio_hood_jax"
+	inhand_icon_state = "bio_hood_jax"
+	desc = "A hood composed of proprietary material from a NanoTrasen Affiliate."
 
-	icon_state = "hephelmet-visor-nolight"
-	worn_icon_state = "hephelmet-visor-nolight"
-	actions_types = list(/datum/action/item_action/togglevisor)
-
-	flags_inv = HIDEFACIALHAIR | HIDEFACE | HIDESNOUT
-	flags_cover = MASKCOVERSMOUTH | MASKCOVERSEYES
-	visor_flags_inv = HIDEFACIALHAIR | HIDEFACE | HIDESNOUT
-	visor_flags_cover = MASKCOVERSMOUTH | MASKCOVERSEYES
-	var/visor = TRUE
-
-/datum/action/item_action/togglevisor
-	name = "Adjust visor"
-
-/obj/item/clothing/head/helmet/sec/peacekeeper/jax/ui_action_click(mob/living/carbon/user, datum/action)
-	. = ..()
-
-	if(istype(action, /datum/action/item_action/togglevisor))
-		visor = !visor
-		if(visor)
-			flags_inv = HIDEHAIR | HIDEFACIALHAIR | HIDEFACE | HIDESNOUT
-		else
-			flags_inv = HIDEHAIR
-		update_icon()
-
-		if(user)
-			user.head_update(src, forced = 1)
-			user.update_action_buttons_icon()
-
-/obj/item/clothing/head/helmet/sec/peacekeeper/jax/update_icon_state()
-	. = ..()
-	icon_state = "hephelmet-[visor ? "visor" : "novisor"]-[attached_light?.on?"light":"nolight"]"
-	worn_icon_state = icon_state
+/obj/item/clothing/under/plasmaman/jax2
+	name = "xuracorp hazard underfitting"
+	desc = "A hazard suit fitted with bio-resistant fibers. Utilizes self-sterilizing pumps fitted in the back."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
+	icon_state = "plasmaman_jax"
+	inhand_icon_state = "plasmaman_jax"
 
 // Donation reward for Raxraus
 /obj/item/clothing/under/rax_turtleneck
@@ -1376,3 +1366,19 @@
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/glasses.dmi'
 	icon_state = "supergarsred"
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/eyes.dmi'
+
+//Donation reward for Konstyantyn
+/obj/item/clothing/accessory/badge/holo/jade
+    name = "jade holobadge"
+    desc = "A strangely green holobadge. 'Lieutenant Uriah' is stamped onto it, above the letters JS."
+    icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
+    worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/custom_w.dmi'
+    icon_state = "greenbadge"
+
+    // Donation reward for shyshadow
+/obj/item/toy/plush/donator/plushie_winrow
+	name = "dark and brooding lizard plush"
+	desc = "An almost intimidating black lizard plush, this one's got a little beret to come with it! Best not to separate the two. Its eyes shine with suggestion, no maidens?"
+	icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
+	icon_state = "plushie_winrow"
+

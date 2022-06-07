@@ -1,7 +1,6 @@
 /datum/species/hemophage
 	name = "Hemophage"
 	id = SPECIES_HEMOPHAGE
-	default_color = "FFFFFF"
 	species_traits = list(
 		EYECOLOR,
 		HAIR,
@@ -76,11 +75,11 @@
 			holder.shape.death() //make sure we're killing the bat if you are out of blood, if you don't it creates weird situations where the bat is alive but the caster is dead.
 		vampire.death() // Owch! Ran out of blood.
 	var/area/A = get_area(vampire)
-	if(istype(A, /area/service/chapel) && halloween_version) // If hemophages have bat form, they cannot enter the church
+	if(istype(A, /area/station/service/chapel) && halloween_version) // If hemophages have bat form, they cannot enter the church
 		to_chat(vampire, span_warning("You don't belong here!"))
 		vampire.adjustFireLoss(10 * delta_time)
 		vampire.adjust_fire_stacks(3 * delta_time)
-		vampire.IgniteMob()
+		vampire.ignite_mob()
 
 /datum/species/hemophage/get_species_description()
 	return "Oftentimes feared for the different bits of folklore surrounding their condition, \

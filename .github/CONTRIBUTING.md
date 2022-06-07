@@ -64,6 +64,7 @@ These are the few directives we have for project maintainers.
     - Try to get secondary maintainer approval before merging if you are able to.
   - PRs with empty commits intended to generate a changelog.
 - Do not merge PRs that contain content from the [banned content list](./CONTRIBUTING.md#banned-content).
+- Do not close PRs purely for breaking a template if the same information is contained without it.
 
 These are not steadfast rules as maintainers are expected to use their best judgement when operating.
 
@@ -87,6 +88,7 @@ Things you **CAN** do:
 
 Things you **CAN'T** do:
 * [Close PRs](https://imgur.com/w2RqpX8.png): Only maintainers are allowed to close PRs. Do not hit that button.
+* Close issues purely for breaking a template if the same information is contained without it.
 
 </details>
 
@@ -158,7 +160,7 @@ You can see each tag and their GBP values [Here](https://github.com/tgstation/tg
 
 If you are porting features/tools from other codebases, you must give them credit where it's due. Typically, crediting them in your pull request and the changelog is the recommended way of doing it. Take note of what license they use though, porting stuff from AGPLv3 and GPLv3 codebases are allowed.
 
-Regarding sprites & sounds, you must credit the artist and possibly the codebase. All /tg/station assets including icons and sound are under a [Creative Commons 3.0 BY-SA license](https://creativecommons.org/licenses/by-sa/3.0/) unless otherwise indicated. However if you are porting assets from GoonStation or usually any assets under the [Creative Commons 3.0 BY-NC-SA license](https://creativecommons.org/licenses/by-nc-sa/3.0/) are to go into the 'goon' folder of the /tg/station codebase.
+Regarding sprites & sounds, you must credit the artist and possibly the codebase. All /tg/station assets including icons and sound are under a [Creative Commons 3.0 BY-SA license](https://creativecommons.org/licenses/by-sa/3.0/) unless otherwise indicated.
 
 Regarding sprites in particular, you still need to take your own screenshots of the sprites in-game on your Skyrat code in your PR body, not just re-use the screenshots provided in the original PR.
 

@@ -4,12 +4,12 @@
 	plural_form = "Lizardfolk"
 	id = SPECIES_LIZARD
 	say_mod = "hisses"
-	default_color = COLOR_VIBRANT_LIME
 	species_traits = list(MUTCOLORS, EYECOLOR, LIPS, HAS_FLESH, HAS_BONE)
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_CAN_STRIP,
 		TRAIT_CAN_USE_FLIGHT_POTION,
+		TRAIT_LITERATE,
 	)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID|MOB_REPTILE
 	mutant_bodyparts = list("tail_lizard" = "Smooth", "spines" = "None", "body_markings" = "None", "legs" = "Normal Legs")
@@ -31,7 +31,7 @@
 	skinned_type = /obj/item/stack/sheet/animalhide/lizard
 	exotic_bloodtype = "L"
 	disliked_food = GRAIN | DAIRY | CLOTH
-	liked_food = GROSS | MEAT | SEAFOOD | NUTS
+	liked_food = GROSS | MEAT | SEAFOOD | NUTS | BUGS
 	inert_mutation = /datum/mutation/human/firebreath
 	deathsound = 'sound/voice/lizard/deathsound.ogg'
 	wings_icons = list("Dragon")
@@ -196,6 +196,7 @@ Lizard subspecies: ASHWALKERS
 		TRAIT_CAN_STRIP,
 		TRAIT_CHUNKYFINGERS,
 		TRAIT_VIRUSIMMUNE,
+		//TRAIT_LITERATE, ashwalkers are uneducated hillbillies from lavaland 
 	)
 	species_language_holder = /datum/language_holder/lizard/ash
 	digitigrade_customization = DIGITIGRADE_FORCED
@@ -217,6 +218,7 @@ Lizard subspecies: SILVER SCALED
 		TRAIT_PIERCEIMMUNE,
 		TRAIT_VIRUSIMMUNE,
 		TRAIT_WINE_TASTER,
+		TRAIT_LITERATE,
 	)
 	species_language_holder = /datum/language_holder/lizard //SKYRAT EDIT CHANGE
 	mutanttongue = /obj/item/organ/tongue/lizard //SKYRAT EDIT CHANGE
@@ -226,21 +228,26 @@ Lizard subspecies: SILVER SCALED
 	///stored mutcolor for when we turn back off of a silverscale.
 	var/old_mutcolor
 	///stored eye color for when we turn back off of a silverscale.
-	var/old_eyecolor
+	var/old_eye_color_left
+	///See above
+	var/old_eye_color_right
 
 /datum/species/lizard/silverscale/on_species_gain(mob/living/carbon/C, datum/species/old_species)
 	var/mob/living/carbon/human/new_silverscale = C
 	old_mutcolor = C.dna.features["mcolor"]
-	old_eyecolor = new_silverscale.eye_color
+	old_eye_color_left = new_silverscale.eye_color_left
+	old_eye_color_right = new_silverscale.eye_color_right
 	new_silverscale.dna.features["mcolor"] = "#eeeeee"
-	new_silverscale.eye_color = "#0000a0"
+	new_silverscale.eye_color_left = "#0000a0"
+	new_silverscale.eye_color_right = "#0000a0"
 	..()
 	new_silverscale.add_filter("silver_glint", 2, list("type" = "outline", "color" = "#ffffff63", "size" = 2))
 
 /datum/species/lizard/silverscale/on_species_loss(mob/living/carbon/C)
 	var/mob/living/carbon/human/was_silverscale = C
 	was_silverscale.dna.features["mcolor"] = old_mutcolor
-	was_silverscale.eye_color = old_eyecolor
+	was_silverscale.eye_color_left = old_eye_color_left
+	was_silverscale.eye_color_right = old_eye_color_right
 
 	was_silverscale.remove_filter("silver_glint")
 	..()

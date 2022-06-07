@@ -1,5 +1,7 @@
-///////////////////////////////////////////
-/////////////    FURNITURE    /////////////
+/*
+*	FURNITURE
+*/
+
 /obj/structure/decorative/shelf
 	name = "shelf"
 	desc = "A sturdy wooden shelf to store a variety of items on."
@@ -50,13 +52,14 @@
 /obj/structure/decorative/shelf/alcohol_assortment
 	desc = "A sturdy wooden shelf with a variety of branded alcoholic drinks."
 	icon_state = "shelf_11"
-/////////////    FURNITURE    /////////////
-///////////////////////////////////////////
-/////////////      LADDER     /////////////
+
+/*
+*	LADDER
+*/
+
 // If you're curious to how this works, just put one down and it'll automatically detect ones in the same location above or below it.
 /obj/structure/ladder/wood
 	name = "wooden ladder"
 	desc = "It's kind of fun to go up or down these once in a while."
 	icon = 'modular_skyrat/modules/mapping/icons/unique/furniture.dmi'
 	icon_state = "ladder"
-/////////////      LADDER     /////////////
