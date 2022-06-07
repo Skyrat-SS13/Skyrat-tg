@@ -73,7 +73,6 @@
 	tracer_type = /obj/effect/projectile/tracer/hitscan/heavy_laser
 	muzzle_type = /obj/effect/projectile/muzzle/hitscan/heavy_laser
 	impact_type = /obj/effect/projectile/impact/hitscan/heavy_laser
-	hitscan = FALSE
 
 /obj/projectile/beam/laser/on_hit(atom/target, blocked = FALSE)
 	. = ..()
