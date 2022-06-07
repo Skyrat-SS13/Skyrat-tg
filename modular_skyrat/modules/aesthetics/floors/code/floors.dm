@@ -9,11 +9,17 @@
 		/obj/item/stack/tile/iron/half,
 		/obj/item/stack/tile/iron/corner,
 		/obj/item/stack/tile/iron/large,
+		/obj/item/stack/tile/iron/small,
+		/obj/item/stack/tile/iron/diagonal,
+		/obj/item/stack/tile/iron/herringbone,
 		/obj/item/stack/tile/iron/dark,
 		/obj/item/stack/tile/iron/dark/smooth_edge,
 		/obj/item/stack/tile/iron/dark/smooth_half,
 		/obj/item/stack/tile/iron/dark/smooth_corner,
 		/obj/item/stack/tile/iron/dark/smooth_large,
+		/obj/item/stack/tile/iron/dark/small,
+		/obj/item/stack/tile/iron/dark/diagonal,
+		/obj/item/stack/tile/iron/dark/herringbone,
 		/obj/item/stack/tile/iron/dark_side,
 		/obj/item/stack/tile/iron/dark_corner,
 		/obj/item/stack/tile/iron/checker,
@@ -22,6 +28,9 @@
 		/obj/item/stack/tile/iron/white/smooth_half,
 		/obj/item/stack/tile/iron/white/smooth_corner,
 		/obj/item/stack/tile/iron/white/smooth_large,
+		/obj/item/stack/tile/iron/white/small,
+		/obj/item/stack/tile/iron/white/diagonal,
+		/obj/item/stack/tile/iron/white/herringbone,
 		/obj/item/stack/tile/iron/white_side,
 		/obj/item/stack/tile/iron/white_corner,
 		/obj/item/stack/tile/iron/cafeteria,
@@ -31,6 +40,14 @@
 		/obj/item/stack/tile/iron/smooth_half,
 		/obj/item/stack/tile/iron/smooth_corner,
 		/obj/item/stack/tile/iron/smooth_large,
+		/obj/item/stack/tile/iron/terracotta,
+		/obj/item/stack/tile/iron/terracotta/small,
+		/obj/item/stack/tile/iron/terracotta/diagonal,
+		/obj/item/stack/tile/iron/terracotta/herringbone,
+		/obj/item/stack/tile/iron/kitchen,
+		/obj/item/stack/tile/iron/kitchen/small,
+		/obj/item/stack/tile/iron/kitchen/diagonal,
+		/obj/item/stack/tile/iron/kitchen/herringbone,
 		/obj/item/stack/tile/iron/chapel,
 		/obj/item/stack/tile/iron/showroomfloor,
 		/obj/item/stack/tile/iron/solarpanel,
@@ -38,11 +55,6 @@
 		/obj/item/stack/tile/iron/grimy,
 		/obj/item/stack/tile/iron/sepia,
 	)
-
-// iron Kitchen
-/turf/open/floor/iron/kitchen
-	icon_state = "blackchecker"
-	base_icon_state = "blackchecker"
 
 // iron + Red
 /turf/open/floor/iron/red
