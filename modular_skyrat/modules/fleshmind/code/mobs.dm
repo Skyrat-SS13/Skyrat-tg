@@ -1,5 +1,5 @@
 /**
- * The corrupted flesh base type, make sure all mobs are derived from this.
+ * The fleshmind base type, make sure all mobs are derived from this.
  *
  * These mobs are more robust than your average simple mob and can quite easily evade capture.
  */

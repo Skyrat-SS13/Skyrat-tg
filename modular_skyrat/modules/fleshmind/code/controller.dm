@@ -1,5 +1,5 @@
 /**
- * The corrupted flesh controller
+ * The fleshmind controller
  *
  * This is the heart of the corruption, here is where we handle spreading and other stuff.
  */

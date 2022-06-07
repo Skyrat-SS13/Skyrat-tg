@@ -1,5 +1,5 @@
 /**
- * Corrupted flesh basetype(abstract)
+ * fleshmind basetype(abstract)
  */
 /obj/structure/fleshmind
 	icon = 'modular_skyrat/modules/fleshmind/icons/hivemind_structures.dmi'
@@ -33,7 +33,7 @@
 /**
  * Wireweed
  *
- * These are the arteries of the corrupted flesh, they are required for spreading and support machine life.
+ * These are the arteries of the fleshmind, they are required for spreading and support machine life.
  */
 /obj/structure/fleshmind/wireweed
 	name = "wireweed"

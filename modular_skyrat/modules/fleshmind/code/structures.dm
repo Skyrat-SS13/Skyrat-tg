@@ -1,7 +1,7 @@
 /**
  * Corrupt Structures
  *
- * Contains all of the structures that the corrupted flesh can use.
+ * Contains all of the structures that the fleshmind can use.
  *
  * Has some inbuilt features, such as a special ability with trigger turfs.
  */
