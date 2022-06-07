@@ -172,7 +172,7 @@
 
 /datum/outfit/ds2/syndicate/admiral
 	name = "DS-2 Station Admiral"
-	uniform = /obj/item/clothing/under/utility/com/syndicate
+	uniform = /obj/item/clothing/under/rank/captain/skyrat/utility/syndicate
 	suit = /obj/item/clothing/suit/armor/vest/capcarapace/syndicate
 	head = /obj/item/clothing/head/hos/beret/syndicate
 	back = /obj/item/storage/backpack
