@@ -20,7 +20,7 @@
 		HAIR,
 		FACEHAIR
 	)
-		inherent_traits = list(
+	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_CAN_STRIP,
 		TRAIT_LITERATE,
