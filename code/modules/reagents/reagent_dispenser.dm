@@ -135,7 +135,7 @@
 	if(SSevents.holidays?[APRIL_FOOLS])
 		icon_state = "fuel_fools"
 
-<<<<<<< HEAD
+
 /obj/structure/reagent_dispensers/fueltank/boom(damage_type = BRUTE, guaranteed_violent = FALSE) //SKYRAT EDIT CHANGE
 	if(damage_type == BURN || guaranteed_violent)
 		explosion(src, heavy_impact_range = 1, light_impact_range = 5, flame_range = 5)
@@ -143,7 +143,7 @@
 	else
 		. = ..()
 	//SKYRAT EDIT END
-=======
+
 /obj/structure/reagent_dispensers/fueltank/Destroy()
 	QDEL_NULL(rig)
 	return ..()
@@ -175,11 +175,6 @@
 	last_rigger = null
 	cut_overlays(assembliesoverlay)
 	UnregisterSignal(src, COMSIG_IGNITER_ACTIVATE)
-
-/obj/structure/reagent_dispensers/fueltank/boom()
-	explosion(src, heavy_impact_range = 1, light_impact_range = 5, flame_range = 5)
-	qdel(src)
->>>>>>> 5675e56a248 (Advanced Welderbombing (#67160))
 
 /obj/structure/reagent_dispensers/fueltank/proc/rig_boom()
 	log_bomber(last_rigger, "rigged fuel tank exploded", src)
