@@ -327,6 +327,8 @@
 	register_new_asset(new_wireweed)
 	RegisterSignal(new_wireweed, COMSIG_PARENT_QDELETING, .proc/wireweed_death)
 
+	return new_wireweed
+
 /// Spawns and registers a wall at location
 /datum/fleshmind_controller/proc/spawn_wall(turf/location, wall_type)
 	var/obj/structure/fleshmind/structure/wireweed_wall/new_wall = new wall_type(location)
@@ -335,6 +337,23 @@
 
 	register_new_asset(new_wall)
 	RegisterSignal(new_wall, COMSIG_PARENT_QDELETING, .proc/wall_death)
+
+	return new_wall
+
+/// Spawns and registers a mob at location
+/datum/fleshmind_controller/proc/spawn_mob(turf/location, mob_type)
+	var/mob/living/simple_animal/hostile/fleshmind/new_mob = new mob_type(location, src)
+	new_mob.our_controller = src
+	controlled_mobs += new_mob
+
+	for(var/obj/structure/fleshmind/structure/core/iterating_core as anything in cores)
+		new_mob.RegisterSignal(iterating_core, COMSIG_PARENT_QDELETING, /mob/living/simple_animal/hostile/fleshmind/proc/core_death)
+
+	RegisterSignal(new_mob, COMSIG_PARENT_QDELETING, .proc/mob_death)
+
+	new_mob.RegisterSignal(src, COMSIG_PARENT_QDELETING, /mob/living/simple_animal/hostile/fleshmind/proc/controller_destroyed)
+
+	return new_mob
 
 /// Spawns and registers a structure at location
 /datum/fleshmind_controller/proc/spawn_structure(turf/location, structure_type)
@@ -446,6 +465,12 @@
 		activate_wireweed_nearby(get_turf(parent_object), GENERAL_DAMAGE_WIREWEED_ACTIVATION_RANGE)
 	controlled_machine_components -= deleting_component
 
+/// When a mob dies, called by mob
+/datum/fleshmind_controller/proc/mob_death(mob/living/simple_animal/hostile/fleshmind/dying_mob, force)
+	SIGNAL_HANDLER
+
+	controlled_mobs -= dying_mob
+	activate_wireweed_nearby(get_turf(dying_mob), GENERAL_DAMAGE_WIREWEED_ACTIVATION_RANGE)
 
 /// Deletes everything, unless an argument is passed, then it just deletes structures
 /datum/fleshmind_controller/proc/delete_everything(just_structures = FALSE)

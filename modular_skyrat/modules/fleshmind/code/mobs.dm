@@ -15,6 +15,8 @@
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	minbodytemp = 0
 	maxbodytemp = INFINITY
+	/// A link to our controller
+	var/datum/fleshmind_controller/our_controller
 	/// If we have been converted from another mob, here is our reference.
 	var/mob/living/contained_mob
 	/// The ckey of our previously contained mob.
@@ -52,10 +54,11 @@
 	COOLDOWN_DECLARE(special_ability_cooldown)
 
 
-/mob/living/simple_animal/hostile/fleshmind/Initialize(mapload)
+/mob/living/simple_animal/hostile/fleshmind/Initialize(mapload, datum/fleshmind_controller/incoming_controller)
 	. = ..()
 	// We set a unique name when we are created, to give some feeling of randomness.
 	name = "[pick(FLESHMIND_NAME_MODIFIER_LIST)] [name]"
+	our_controller = incoming_controller
 
 /mob/living/simple_animal/hostile/fleshmind/death(gibbed)
 	if(contained_mob)
@@ -153,6 +156,14 @@
 	if(suffering_malfunction)
 		return
 	return ..()
+
+/**
+ * When our controller dies, this is called.
+ */
+/mob/living/simple_animal/hostile/fleshmind/proc/controller_destroyed(datum/fleshmind_controller/dying_controller, force)
+	SIGNAL_HANDLER
+
+	our_controller = null
 
 /mob/living/simple_animal/hostile/fleshmind/proc/say_passive_speech()
 	say(pick(passive_speak_lines))

@@ -531,11 +531,11 @@
 	var/list/monster_types = list(
 		/mob/living/simple_animal/hostile/fleshmind/floater = 1,
 		/mob/living/simple_animal/hostile/fleshmind/globber = 4,
-		/mob/living/simple_animal/hostile/fleshmind/hiborg = 0.1,
+		/mob/living/simple_animal/hostile/fleshmind/hiborg = 1,
 		/mob/living/simple_animal/hostile/fleshmind/slicer = 6,
 		/mob/living/simple_animal/hostile/fleshmind/stunner = 3,
 		/mob/living/simple_animal/hostile/fleshmind/treader = 1,
-		/mob/living/simple_animal/hostile/fleshmind/himan = 0.1,
+		/mob/living/simple_animal/hostile/fleshmind/himan = 1,
 	)
 
 /obj/structure/fleshmind/structure/assembler/activate_ability(mob/living/triggered_mob)
@@ -544,6 +544,8 @@
 		spawn_mob()
 
 /obj/structure/fleshmind/structure/assembler/proc/spawn_mob()
+	if(!our_controller)
+		return
 	playsound(src, 'sound/items/rped.ogg', 100)
 	flick("[base_icon_state]-anim", src)
 	do_squish(0.8, 1.2)
@@ -551,13 +553,10 @@
 	spawned_mobs++
 
 	var/chosen_mob_type = pick_weight(monster_types)
-	var/mob/living/simple_animal/hostile/fleshmind/spawned_mob = new chosen_mob_type(loc)
+
+	var/mob/living/simple_animal/hostile/fleshmind/spawned_mob = our_controller.spawn_mob(get_turf(src), chosen_mob_type)
 
 	RegisterSignal(spawned_mob, COMSIG_LIVING_DEATH, .proc/mob_death)
-
-	if(our_controller)
-		for(var/obj/structure/fleshmind/structure/core/iterating_core in our_controller.cores)
-			spawned_mob.RegisterSignal(iterating_core, COMSIG_PARENT_QDELETING, /mob/living/simple_animal/hostile/fleshmind/proc/core_death)
 
 	visible_message(span_danger("[spawned_mob] emerges from [src]."))
 
