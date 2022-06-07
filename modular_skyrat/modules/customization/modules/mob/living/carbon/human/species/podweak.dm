@@ -18,6 +18,11 @@
 		HAIR,
 		FACEHAIR
 	)
+		inherent_traits = list(
+		TRAIT_ADVANCEDTOOLUSER,
+		TRAIT_CAN_STRIP,
+		TRAIT_LITERATE,
+	)
 	mutant_bodyparts = list()
 	default_mutant_bodyparts = list()
 
