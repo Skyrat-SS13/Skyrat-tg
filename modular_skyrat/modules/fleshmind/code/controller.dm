@@ -81,7 +81,7 @@
 	/// Probably of wireweed attacking structures per process
 	var/attack_prob = 20
 	/// Probability of wireweed making a wall when able per process
-	var/wall_prob = 30
+	var/wall_prob = 70
 	/// When we spawn, do we create an expansion zone?
 	var/do_initial_expansion = TRUE
 	/// The amount of time until we can activate nearby wireweed again.

@@ -526,8 +526,11 @@
 	max_integrity = 260
 	activation_range = DEFAULT_VIEW_RANGE
 	ability_cooldown_time = 30 SECONDS
+	/// The max amount of mobs we can have at any one time.
 	var/max_mobs = 2
+	/// The current amount of spawned mobs
 	var/spawned_mobs = 0
+	/// The allowed monster types
 	var/list/monster_types = list(
 		/mob/living/simple_animal/hostile/fleshmind/floater = 1,
 		/mob/living/simple_animal/hostile/fleshmind/globber = 4,
@@ -537,11 +540,33 @@
 		/mob/living/simple_animal/hostile/fleshmind/treader = 1,
 		/mob/living/simple_animal/hostile/fleshmind/himan = 1,
 	)
+	/// Our override type, if manually set.
+	var/override_monser_type
+
 
 /obj/structure/fleshmind/structure/assembler/activate_ability(mob/living/triggered_mob)
 	. = ..()
 	if(spawned_mobs < max_mobs)
 		spawn_mob()
+
+/obj/structure/fleshmind/structure/assembler/take_damage(damage_amount, damage_type, damage_flag, sound_effect, attack_dir, armour_penetration)
+	. = ..()
+	if(spawned_mobs < max_mobs)
+		spawn_mob()
+
+/obj/structure/fleshmind/structure/assembler/attack_hand(mob/living/user, list/modifiers)
+	. = ..()
+	if(!faction_check(faction_types, user.faction))
+		return
+	if(!user.can_interact_with(src))
+		return
+
+	var/chosen_override_type = tgui_input_list(user, "Select override mob to spawn", "Override Mob", monster_types)
+
+	if(!chosen_override_type)
+		return
+
+	override_mobster_type = chosen_override_type
 
 /obj/structure/fleshmind/structure/assembler/proc/spawn_mob()
 	if(!our_controller)
@@ -552,7 +577,7 @@
 
 	spawned_mobs++
 
-	var/chosen_mob_type = pick_weight(monster_types)
+	var/chosen_mob_type = override_monser_type ? override_monser_type : pick_weight(monster_types)
 
 	var/mob/living/simple_animal/hostile/fleshmind/spawned_mob = our_controller.spawn_mob(get_turf(src), chosen_mob_type)
 
