@@ -1,7 +1,7 @@
 /obj/item/ammo_box
 	w_class = WEIGHT_CLASS_NORMAL
 
-obj/item/ammo_box/magazine/
+/obj/item/ammo_box/magazine
 	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/ammo_box/c9mm/ap
