@@ -6,7 +6,7 @@
 	genetic = TRUE
 
 /datum/sprite_accessory/ears/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
-	if(H.head && (H.head.flags_inv & HIDEHAIR) || (H.wear_mask && (H.wear_mask.flags_inv & HIDEHAIR)) || !HD)
+	if(H.head && ((H.head.flags_inv & HIDEHAIR)  && H.try_hide_mutant_parts) || ((H.wear_mask && (H.wear_mask.flags_inv & HIDEHAIR))  && H.try_hide_mutant_parts) || !HD)
 		//This line basically checks if we FORCE accessory-ears to show, for items with earholes like Balaclavas and Luchador masks
 		if(!(H.head && (H.head.flags_inv & SHOWSPRITEEARS) || (H.wear_mask && (H.wear_mask.flags_inv & SHOWSPRITEEARS)) || !HD))
 			return TRUE

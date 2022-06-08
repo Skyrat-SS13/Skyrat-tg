@@ -111,6 +111,16 @@
 	icon_state = "peacekeeper_black"
 	worn_icon_state = "peacekeeper_black"
 
+/obj/item/clothing/suit/armor/vest/peacekeeper/brit
+	name = "high vis armored vest"
+	desc = "Oi bruv, you got a loicence for that?"
+	icon_state = "hazardbg"
+	worn_icon_state = "hazardbg"
+
+/obj/item/clothing/suit/armor/vest/peacekeeper/brit/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/toggle_icon, "zipper")
+
 /obj/item/clothing/suit/armor/hos/trenchcoat/peacekeeper
 	name = "armored peacekeeper trenchcoat"
 	desc = "A trenchcoat enhanced with a special lightweight kevlar. The epitome of tactical plainclothes."
