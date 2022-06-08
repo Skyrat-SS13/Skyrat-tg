@@ -1,4 +1,4 @@
-/obj/item/ammo_box/
+/obj/item/ammo_box
 	w_class = WEIGHT_CLASS_NORMAL
 
 obj/item/ammo_box/magazine/
