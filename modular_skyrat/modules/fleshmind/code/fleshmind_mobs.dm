@@ -1436,6 +1436,7 @@
 		return
 
 	if(faction_check(faction, mob_to_convert.faction)) // If we are already assimilated, just heal us.
+		mob_to_convert.fully_heal(TRUE)
 		mob_to_convert.heal_and_revive(0)
 		return
 
