@@ -558,10 +558,10 @@
 			to_chat(usr, span_warning("This unit already has an expand module installed!"))
 			return FALSE
 		// SKYRAT EDIT BEGIN
-		if(R.model.model_select_icon == "nomod")
+		if(robot.model.model_select_icon == "nomod")
 			to_chat(usr, span_warning("Default models cannot take expand or shrink upgrades."))
 			return FALSE
-		if((R_TRAIT_WIDE in R.model.model_features) || (R_TRAIT_TALL in R.model.model_features))
+		if((R_TRAIT_WIDE in robot.model.model_features) || (R_TRAIT_TALL in robot.model.model_features))
 			to_chat(usr, span_warning("This unit's chassis cannot be enlarged any further."))
 			return FALSE
 		// SKYRAT EDIT END
@@ -578,22 +578,12 @@
 			playsound(robot, pick('sound/items/drill_use.ogg', 'sound/items/jaws_cut.ogg', 'sound/items/jaws_pry.ogg', 'sound/items/welder.ogg', 'sound/items/ratchet.ogg'), 80, TRUE, -1)
 			sleep(12)
 		if(!prev_lockcharge)
-<<<<<<< HEAD
-			R.SetLockdown(FALSE)
-		R.set_anchored(FALSE)
-		R.notransform = FALSE
-		//R.resize = 2 //ORIGINAL
-		R.resize = 1.25 //SKYRAT EDIT CHANGE - CYBORG
-		R.hasExpanded = TRUE
-		R.update_transform()
-=======
 			robot.SetLockdown(FALSE)
 		robot.set_anchored(FALSE)
 		robot.notransform = FALSE
-		robot.resize = 2
+		robot.resize = 1.25 //SKYRAT EDIT CHANGE - CYBORG
 		robot.hasExpanded = TRUE
 		robot.update_transform()
->>>>>>> 2683ec04b09 (Improves logging for smoke clouds. (#67206))
 
 /obj/item/borg/upgrade/expand/deactivate(mob/living/silicon/robot/R, user = usr)
 	. = ..()
