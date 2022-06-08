@@ -188,6 +188,12 @@ SUBSYSTEM_DEF(id_access)
 			"templates" = list(),
 			"pdas" = list(),
 		),
+		"[ACCESS_QM]" = list(
+			"regions" = list(REGION_SUPPLY),
+			"head" = JOB_QUARTERMASTER,
+			"templates" = list(),
+			"pdas" = list(),
+		),
 	)
 
 	// SKYRAT EDIT START - QMs are heads too

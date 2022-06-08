@@ -3,12 +3,16 @@
 	description = "Distribute supplies to the departments that ordered them, \
 		collect empty crates, load and unload the supply shuttle, \
 		ship bounty cubes."
-	department_head = list(JOB_HEAD_OF_PERSONNEL)
+	department_head = list(JOB_QUARTERMASTER)
 	faction = FACTION_STATION
 	total_positions = 3
 	spawn_positions = 2
+<<<<<<< HEAD
 	//supervisors = "the quartermaster and the head of personnel" //ORIGINAL
 	supervisors = "the quartermaster" //SKYRAT EDIT CHANGE
+=======
+	supervisors = "the quartermaster"
+>>>>>>> aebd156a437 (CARGONIA THE FREE: The Quartermaster is now a head of staff. (#67518))
 	selection_color = "#dcba97"
 	exp_granted_type = EXP_TYPE_CREW
 

@@ -144,9 +144,28 @@
 	assignment = "Cargo Technician"
 	trim_state = "trim_cargotechnician"
 	sechud_icon_state = SECHUD_CARGO_TECHNICIAN
+<<<<<<< HEAD
 	extra_access = list(ACCESS_QM, ACCESS_MINING, ACCESS_MINING_STATION)
 	minimal_access = list(ACCESS_CARGO, ACCESS_MAIL_SORTING, ACCESS_MAINT_TUNNELS, ACCESS_MECH_MINING, ACCESS_MINERAL_STOREROOM)
 	template_access = list(ACCESS_CAPTAIN, ACCESS_HOP, ACCESS_CHANGE_IDS)
+=======
+	minimal_access = list(
+		ACCESS_CARGO,
+		ACCESS_MAINT_TUNNELS,
+		ACCESS_MECH_MINING,
+		ACCESS_MINERAL_STOREROOM,
+		ACCESS_SHIPPING,
+		)
+	extra_access = list(
+		ACCESS_MINING,
+		ACCESS_MINING_STATION,
+		)
+	template_access = list(
+		ACCESS_CAPTAIN,
+		ACCESS_CHANGE_IDS,
+		ACCESS_QM,
+		)
+>>>>>>> aebd156a437 (CARGONIA THE FREE: The Quartermaster is now a head of staff. (#67518))
 	job = /datum/job/cargo_technician
 
 /datum/id_trim/job/chaplain
@@ -260,6 +279,7 @@
 	intern_alt_name = "Head of Personnel-in-Training"
 	trim_state = "trim_headofpersonnel"
 	sechud_icon_state = SECHUD_HEAD_OF_PERSONNEL
+<<<<<<< HEAD
 	extra_access = list()
 	extra_wildcard_access = list()
 	minimal_access = list(ACCESS_AI_UPLOAD, ACCESS_ALL_PERSONAL_LOCKERS, ACCESS_AUX_BASE, ACCESS_BAR, ACCESS_CARGO, ACCESS_CHAPEL_OFFICE,
@@ -270,6 +290,48 @@
 					ACCESS_RESEARCH, ACCESS_BRIG_ENTRANCE, ACCESS_TELEPORTER, ACCESS_THEATRE, ACCESS_VAULT, ACCESS_WEAPONS, ACCESS_SERVICE)
 	minimal_wildcard_access = list(ACCESS_HOP)
 	template_access = list(ACCESS_CAPTAIN, ACCESS_CHANGE_IDS)
+=======
+	minimal_access = list(
+		ACCESS_AI_UPLOAD,
+		ACCESS_ALL_PERSONAL_LOCKERS,
+		ACCESS_AUX_BASE,
+		ACCESS_BAR,
+		ACCESS_BRIG_ENTRANCE,
+		ACCESS_CHAPEL_OFFICE,
+		ACCESS_CHANGE_IDS,
+		ACCESS_CREMATORIUM,
+		ACCESS_COMMAND,
+		ACCESS_COURT,
+		ACCESS_ENGINEERING,
+		ACCESS_EVA,
+		ACCESS_GATEWAY,
+		ACCESS_HYDROPONICS,
+		ACCESS_JANITOR,
+		ACCESS_KEYCARD_AUTH,
+		ACCESS_KITCHEN,
+		ACCESS_LAWYER,
+		ACCESS_LIBRARY,
+		ACCESS_MAINT_TUNNELS,
+		ACCESS_MEDICAL,
+		ACCESS_MINERAL_STOREROOM,
+		ACCESS_PSYCHOLOGY,
+		ACCESS_RC_ANNOUNCE,
+		ACCESS_SCIENCE,
+		ACCESS_SERVICE,
+		ACCESS_TELEPORTER,
+		ACCESS_THEATRE,
+		ACCESS_WEAPONS,
+		)
+	minimal_wildcard_access = list(
+		ACCESS_HOP,
+		)
+	extra_access = list()
+	extra_wildcard_access = list()
+	template_access = list(
+		ACCESS_CAPTAIN,
+		ACCESS_CHANGE_IDS,
+	)
+>>>>>>> aebd156a437 (CARGONIA THE FREE: The Quartermaster is now a head of staff. (#67518))
 	job = /datum/job/head_of_personnel
 
 /datum/id_trim/job/head_of_security
@@ -391,10 +453,38 @@
 	assignment = "Quartermaster"
 	trim_state = "trim_quartermaster"
 	sechud_icon_state = SECHUD_QUARTERMASTER
+<<<<<<< HEAD
 	extra_access = list()
 	minimal_access = list(ACCESS_AUX_BASE, ACCESS_CARGO, ACCESS_MAIL_SORTING, ACCESS_MAINT_TUNNELS, ACCESS_MECH_MINING, ACCESS_MINING_STATION,
 					ACCESS_MINERAL_STOREROOM, ACCESS_MINING, ACCESS_QM, ACCESS_RC_ANNOUNCE, ACCESS_VAULT)
 	template_access = list(ACCESS_CAPTAIN, ACCESS_HOP, ACCESS_CHANGE_IDS)
+=======
+	minimal_access = list(
+		ACCESS_AUX_BASE,
+		ACCESS_CARGO,
+		ACCESS_MAINT_TUNNELS,
+		ACCESS_MECH_MINING,
+		ACCESS_MINING_STATION,
+		ACCESS_MINERAL_STOREROOM,
+		ACCESS_MINING,
+		ACCESS_QM,
+		ACCESS_RC_ANNOUNCE,
+		ACCESS_SHIPPING,
+		ACCESS_VAULT,
+		ACCESS_KEYCARD_AUTH,
+		ACCESS_COMMAND,
+		ACCESS_EVA,
+		ACCESS_BRIG_ENTRANCE,
+		)
+	extra_access = list()
+	minimal_wildcard_access = list(
+		ACCESS_QM,
+	)
+	template_access = list(
+		ACCESS_CAPTAIN,
+		ACCESS_CHANGE_IDS,
+	)
+>>>>>>> aebd156a437 (CARGONIA THE FREE: The Quartermaster is now a head of staff. (#67518))
 	job = /datum/job/quartermaster
 
 /datum/id_trim/job/research_director
@@ -482,10 +572,29 @@
 	assignment = "Shaft Miner"
 	trim_state = "trim_shaftminer"
 	sechud_icon_state = SECHUD_SHAFT_MINER
+<<<<<<< HEAD
 	extra_access = list(ACCESS_MAINT_TUNNELS, ACCESS_QM)
 	minimal_access = list(ACCESS_CARGO, ACCESS_AUX_BASE, ACCESS_MAIL_SORTING, ACCESS_MECH_MINING, ACCESS_MINERAL_STOREROOM, ACCESS_MINING,
 					ACCESS_MINING_STATION)
 	template_access = list(ACCESS_CAPTAIN, ACCESS_HOP, ACCESS_CHANGE_IDS)
+=======
+	minimal_access = list(
+		ACCESS_AUX_BASE,
+		ACCESS_CARGO,
+		ACCESS_MECH_MINING,
+		ACCESS_MINERAL_STOREROOM,
+		ACCESS_MINING,
+		ACCESS_MINING_STATION,
+		)
+	extra_access = list(
+		ACCESS_MAINT_TUNNELS,
+		)
+	template_access = list(
+		ACCESS_CAPTAIN,
+		ACCESS_CHANGE_IDS,
+		ACCESS_QM,
+		)
+>>>>>>> aebd156a437 (CARGONIA THE FREE: The Quartermaster is now a head of staff. (#67518))
 	job = /datum/job/shaft_miner
 
 /// ID card obtained from the mining Disney dollar points vending machine.

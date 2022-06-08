@@ -10849,10 +10849,6 @@
 	},
 /turf/open/floor/iron,
 /area/station/hallway/secondary/entry)
-"dFS" = (
-/obj/structure/table,
-/turf/open/floor/carpet,
-/area/station/cargo/qm)
 "dFY" = (
 /obj/structure/sign/poster/official/here_for_your_safety{
 	pixel_y = -32
@@ -16693,7 +16689,9 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/computer/security/telescreen/vault{
+	pixel_y = 30
+	},
 /turf/open/floor/iron,
 /area/station/cargo/qm)
 "fMs" = (
@@ -25539,13 +25537,13 @@
 /turf/open/floor/iron,
 /area/station/engineering/atmos)
 "iPD" = (
-/obj/machinery/modular_computer/console/preset/civilian{
-	dir = 4
-	},
 /obj/effect/turf_decal/trimline/brown/filled/line{
 	dir = 8
 	},
 /obj/item/radio/intercom/directional/west,
+/obj/machinery/modular_computer/console/preset/id{
+	dir = 4
+	},
 /turf/open/floor/iron,
 /area/station/cargo/qm)
 "iPQ" = (
@@ -31022,19 +31020,6 @@
 /obj/item/radio/intercom/directional/north,
 /turf/open/floor/iron,
 /area/station/security/checkpoint/engineering)
-"kCL" = (
-/obj/machinery/door/airlock/mining/glass{
-	name = "Quartermaster"
-	},
-/obj/machinery/door/firedoor,
-/obj/effect/turf_decal/trimline/brown/filled/line{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/effect/mapping_helpers/airlock/access/all/supply/qm,
-/turf/open/floor/iron,
-/area/station/cargo/qm)
 "kCN" = (
 /obj/structure/rack,
 /obj/effect/spawner/random/techstorage/command_all,
@@ -36104,6 +36089,13 @@
 /obj/effect/mapping_helpers/airlock/access/all/engineering/general,
 /turf/open/floor/plating,
 /area/station/maintenance/solars/starboard)
+"mjz" = (
+/obj/effect/turf_decal/trimline/brown/filled/line{
+	dir = 4
+	},
+/obj/machinery/keycard_auth/directional/east,
+/turf/open/floor/iron,
+/area/station/cargo/qm)
 "mjI" = (
 /obj/machinery/vending/cigarette,
 /turf/open/floor/wood,
@@ -45705,6 +45697,7 @@
 	sortType = 3
 	},
 /obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/station/cargo/qm)
 "puH" = (
@@ -47903,6 +47896,10 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/science/xenobiology)
+"qgW" = (
+/obj/machinery/pdapainter/supply,
+/turf/open/floor/carpet,
+/area/station/cargo/qm)
 "qha" = (
 /obj/machinery/door/poddoor/incinerator_atmos_aux,
 /turf/open/floor/engine,
@@ -48996,9 +48993,6 @@
 	dir = 4
 	},
 /obj/effect/landmark/start/head_of_personnel,
-/obj/machinery/computer/security/telescreen/vault{
-	pixel_y = 30
-	},
 /obj/machinery/light/directional/north,
 /turf/open/floor/carpet,
 /area/station/command/heads_quarters/hop)
@@ -67482,9 +67476,6 @@
 /turf/open/floor/iron,
 /area/station/engineering/atmos)
 "wQv" = (
-/obj/machinery/door/airlock/mining/glass{
-	name = "Quartermaster"
-	},
 /obj/machinery/door/firedoor,
 /obj/effect/turf_decal/trimline/brown/filled/line{
 	dir = 4
@@ -67492,6 +67483,11 @@
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable,
 /obj/effect/mapping_helpers/airlock/access/all/supply/qm,
+/obj/machinery/door/airlock/command/glass{
+	name = "Quartermaster's Office"
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron,
 /area/station/cargo/qm)
 "wQP" = (
@@ -70036,9 +70032,6 @@
 /turf/open/floor/iron,
 /area/station/commons/lounge)
 "xLd" = (
-/obj/machinery/door/airlock/mining/glass{
-	name = "Quartermaster"
-	},
 /obj/machinery/door/firedoor,
 /obj/effect/turf_decal/trimline/brown/filled/line{
 	dir = 1
@@ -70048,6 +70041,9 @@
 	dir = 4
 	},
 /obj/effect/mapping_helpers/airlock/access/all/supply/qm,
+/obj/machinery/door/airlock/command/glass{
+	name = "Quartermaster's Office"
+	},
 /turf/open/floor/iron,
 /area/station/cargo/office)
 "xLi" = (
@@ -179448,12 +179444,12 @@ dJV
 dJV
 dJV
 nkJ
-kCL
+aFo
 fLY
 owZ
 aXZ
 kMW
-iYb
+qgW
 trs
 whL
 een
@@ -179710,7 +179706,7 @@ puE
 tjJ
 aYG
 kRG
-dFS
+iYb
 trs
 whL
 mpA
@@ -179964,7 +179960,7 @@ gKj
 qHM
 aFo
 sxj
-aWh
+mjz
 aWh
 fza
 aWh

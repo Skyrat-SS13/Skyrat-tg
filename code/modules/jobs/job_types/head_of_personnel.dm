@@ -4,8 +4,12 @@
 		protect Ian, run the station when the captain dies." //SKYRAT EDIT: HOP ISN'T HEAD OF SUPPLY
 	auto_deadmin_role_flags = DEADMIN_POSITION_HEAD
 	department_head = list(JOB_CAPTAIN)
+<<<<<<< HEAD
 	//head_announce = list(RADIO_CHANNEL_SUPPLY, RADIO_CHANNEL_SERVICE) //ORIGINAL
 	head_announce = list(RADIO_CHANNEL_SERVICE) //SKYRAT EDIT CHANGE
+=======
+	head_announce = list(RADIO_CHANNEL_SERVICE)
+>>>>>>> aebd156a437 (CARGONIA THE FREE: The Quartermaster is now a head of staff. (#67518))
 	faction = FACTION_STATION
 	total_positions = 1
 	spawn_positions = 1
@@ -22,7 +26,10 @@
 	plasmaman_outfit = /datum/outfit/plasmaman/head_of_personnel
 	departments_list = list(
 		/datum/job_department/service,
+<<<<<<< HEAD
 		///datum/job_department/cargo, //SKYRAT EDIT
+=======
+>>>>>>> aebd156a437 (CARGONIA THE FREE: The Quartermaster is now a head of staff. (#67518))
 		/datum/job_department/command,
 		)
 
