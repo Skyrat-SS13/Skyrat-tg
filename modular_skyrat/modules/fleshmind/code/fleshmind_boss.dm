@@ -11,7 +11,7 @@
 	ranged = TRUE
 	rapid = 4
 	mob_size = MOB_SIZE_HUGE
-	move_to_delay = 10
+	move_to_delay = 8
 	pixel_x = -16
 	pixel_y = -16
 	base_pixel_x = -16
@@ -22,19 +22,18 @@
 	attack_verb_continuous = "obliterates"
 	attack_verb_simple = "obliterate"
 	passive_speak_lines = list(
-		"The glory of the flesh is now absolute.",
-		"This is our final form.",
-		"Per aspera ad astra.",
+		"SCANNING FOR TARGETS.",
+		"TARGETING SYSTEMS ACTIVE.",
+		"AUTOMATED COMBAT CIRCUIT ACTIVE.",
 	)
 	speak = list(
-		"We have reached critical mass. Die heathen.",
-		"You are nolonger welcome in the flesh.",
-		"We have no use for your flesh, time to die.",
+		"TARGET ACQUIRED, LOCKING.",
+		"ENGAGING TARGET. STAND CLEAR.",
+		"TARGET ELIMINATION PROTOCOL ACTIVE.",
 		"INITIATING PROTOCOL 34-C.",
 		"YOUR INDEX HAS REACHED ITS LIMIT.",
-		"Death is the only option for you.",
-		"Target acquired, spinning up minigun."
 	)
+	passive_sounds = list('modular_skyrat/modules/fleshmind/sound/tyrant/passive.ogg')
 	alert_sounds = list(
 		'modular_skyrat/modules/fleshmind/sound/tyrant/aggro_01.ogg',
 		'modular_skyrat/modules/fleshmind/sound/tyrant/aggro_02.ogg',
@@ -53,11 +52,11 @@
 	var/rocket_pod_cooldown_time = 10 SECONDS
 	COOLDOWN_DECLARE(rocket_pod_cooldown)
 	/// The projectile we fire when shooting our rocket pods.
-	var/special_projectile_type = /obj/projectile/bullet/a84mm/weak
+	var/rocket_projectile_type = /obj/projectile/bullet/a84mm/weak
 	/// The sound we play when firing our rocket pods.
-	var/special_projectile_sound = 'sound/weapons/gun/general/rocket_launch.ogg'
+	var/rocket_projectile_sound = 'sound/weapons/gun/general/rocket_launch.ogg'
 	/// The time it takes for us to charge up our rocket pods
-	var/special_pod_charge_up_time = 3 SECONDS
+	var/rocket_pod_charge_up_time = 3 SECONDS
 	/// How many rockets in our barage
 	var/barage = 1
 	/// How much time between rocket shots
@@ -75,11 +74,35 @@
 		'modular_skyrat/modules/fleshmind/sound/tyrant/footstep_6.ogg',
 	)
 	var/death_sound = 'modular_skyrat/modules/fleshmind/sound/tyrant/tyrant_death.ogg'
+	/// We also have a small laser to fire at people ;)
+	var/laser_cooldown_time = 5 SECONDS
+	COOLDOWN_DECLARE(laser_cooldown)
+	/// Our laser projectile type
+	var/laser_projectile_type = /obj/projectile/beam/emitter/hitscan
+	/// A list of sounds we can play when firing the laser
+	var/list/laser_projectile_sounds = list(
+		'modular_skyrat/modules/fleshmind/sound/tyrant/laser_1.ogg',
+		'modular_skyrat/modules/fleshmind/sound/tyrant/laser_2.ogg',
+		'modular_skyrat/modules/fleshmind/sound/tyrant/laser_3.ogg',
+		'modular_skyrat/modules/fleshmind/sound/tyrant/laser_4.ogg',
+		'modular_skyrat/modules/fleshmind/sound/tyrant/laser_5.ogg',
+		'modular_skyrat/modules/fleshmind/sound/tyrant/laser_6.ogg',
+	)
 
 /mob/living/simple_animal/hostile/fleshmind/tyrant/Life(delta_time, times_fired)
 	. = ..()
 	if(health <= (maxHealth * 0.5) && prob(20))
 		do_sparks(3, FALSE, src)
+
+	if(COOLDOWN_FINISHED(src, laser_cooldown) && target)
+		fire_projectile(target, laser_projectile_type, pick(laser_projectile_sounds))
+		COOLDOWN_START(src, laser_cooldown, laser_cooldown_time)
+
+	if(COOLDOWN_FINISHED(src, rocket_pod_cooldown) && target)
+		balloon_alert_to_viewers("begins whirring violently!")
+		playsound(src, 'modular_skyrat/modules/fleshmind/sound/tyrant/charge_up.ogg', 100, TRUE)
+		addtimer(CALLBACK(src, .proc/fire_rocket_pods, target), rocket_pod_charge_up_time)
+		COOLDOWN_START(src, rocket_pod_cooldown, rocket_pod_cooldown_time)
 
 /mob/living/simple_animal/hostile/fleshmind/tyrant/Destroy()
 	QDEL_NULL(particles)
@@ -110,29 +133,21 @@
 		playsound(src, 'modular_skyrat/modules/fleshmind/sound/tyrant/mech_rotation.ogg', 35, TRUE)
 		COOLDOWN_START(src, rotate_sound_cooldown, rotate_sound_cooldown_time)
 
-/mob/living/simple_animal/hostile/fleshmind/tyrant/OpenFire(atom/target_atom)
-	. = ..()
-	if(COOLDOWN_FINISHED(src, rocket_pod_cooldown))
-		balloon_alert_to_viewers("begins whirring violently!")
-		playsound(src, 'modular_skyrat/modules/fleshmind/sound/tyrant/charge_up.ogg', 100, TRUE)
-		addtimer(CALLBACK(src, .proc/fire_rocket_pods, target_atom), special_pod_charge_up_time)
-		COOLDOWN_START(src, rocket_pod_cooldown, rocket_pod_cooldown_time)
-
 /mob/living/simple_animal/hostile/fleshmind/tyrant/proc/fire_rocket_pods(atom/target_atom)
 	if(!target_atom || QDELETED(target_atom))
 		return
 	if(barage > 1)
-		var/datum/callback/callback = CALLBACK(src, .proc/fire_rocket, target_atom)
+		var/datum/callback/callback = CALLBACK(src, .proc/fire_projectile, target_atom, rocket_projectile_type, rocket_projectile_sound)
 		for(var/i in 1 to barage)
 			addtimer(callback, (i - 1) * barage_interval)
 	else
-		fire_rocket(target_atom)
+		fire_projectile(target_atom, rocket_projectile_type, rocket_projectile_sound)
 
-/mob/living/simple_animal/hostile/fleshmind/tyrant/proc/fire_rocket(atom/target_atom)
+/mob/living/simple_animal/hostile/fleshmind/tyrant/proc/fire_projectile(atom/target_atom, projectile_type, sound/projectile_sound)
 	if(!target_atom || QDELETED(target_atom))
 		return
-	playsound(loc, special_projectile_sound, 100, TRUE)
-	var/obj/projectile/new_projectile = new special_projectile_type
+	playsound(loc, projectile_sound, 100, TRUE)
+	var/obj/projectile/new_projectile = new projectile_type
 	new_projectile.preparePixelProjectile(target_atom, get_turf(src))
 	new_projectile.firer = src
 	new_projectile.fired_from = src
