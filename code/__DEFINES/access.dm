@@ -272,9 +272,6 @@
 	ACCESS_MORGUE, \
 	ACCESS_NETWORK, \
 	ACCESS_ORDNANCE, \
-<<<<<<< HEAD
-	ACCESS_BARBER, \
-=======
 	ACCESS_ORDNANCE_STORAGE, \
 	ACCESS_PHARMACY, \
 	ACCESS_PLUMBING, \
@@ -284,7 +281,6 @@
 	ACCESS_ROBOTICS, \
 	ACCESS_SCIENCE, \
 	ACCESS_SECURITY, \
->>>>>>> 3dd6524ea72 ([MDB IGNORE] Big Access Tweaks and Organization (#67512))
 	ACCESS_SERVICE, \
 	ACCESS_SHIPPING, \
 	ACCESS_SURGERY, \
@@ -292,7 +288,8 @@
 	ACCESS_VIROLOGY, \
 	ACCESS_WEAPONS, \
 	ACCESS_XENOBIOLOGY, \
-)
+	ACCESS_BARBER, \
+) // SKYRAT EDIT ADDITION
 
 /// Command staff/secure accesses, think bridge/armoury, ai_upload, notably access to modify ID cards themselves. Do not use direct, access via SSid_access.get_flag_access_list(ACCESS_FLAG_COMMAND)
 #define COMMAND_ACCESS list( \
