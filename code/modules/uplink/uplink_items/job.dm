@@ -254,9 +254,6 @@
 	cost = 20
 	restricted_roles = list(JOB_CLOWN)
 
-<<<<<<< HEAD
-/* //SKYRAT REMOVAL START
-=======
 /datum/uplink_item/role_restricted/concealed_weapon_bay
 	name = "Concealed Weapon Bay"
 	desc = "A modification for non-combat exosuits that allows them to equip one piece of equipment designed for combat units. \
@@ -267,8 +264,7 @@
 	item = /obj/item/mecha_parts/mecha_equipment/concealed_weapon_bay
 	cost = 3
 	restricted_roles = list(JOB_ROBOTICIST, JOB_RESEARCH_DIRECTOR)
-
->>>>>>> e1e47ac40a2 (Re-adds the Concealed Weapon Bay (#67414))
+/* //SKYRAT REMOVAL START
 /datum/uplink_item/role_restricted/his_grace
 	name = "His Grace"
 	desc = "An incredibly dangerous weapon recovered from a station overcome by the grey tide. Once activated, He will thirst for blood and must be used to kill to sate that thirst. \
