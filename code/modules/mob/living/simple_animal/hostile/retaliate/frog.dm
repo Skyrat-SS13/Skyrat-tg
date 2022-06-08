@@ -50,12 +50,8 @@
 		icon_living = "rare_frog"
 		icon_dead = "rare_frog_dead"
 		butcher_results = list(/obj/item/food/nugget = 5)
-<<<<<<< HEAD
-/* SKYRAT EDIT REMOVAL
-=======
 		poison_type = /datum/reagent/drug/mushroomhallucinogen
 
->>>>>>> cdf0a3c58a4 (Add hallucinogen poison to frog attacks (#67572))
 	var/static/list/loc_connections = list(
 		COMSIG_ATOM_ENTERED = .proc/on_entered,
 	)
@@ -69,7 +65,6 @@
 		var/mob/living/L = AM
 		if(L.mob_size > MOB_SIZE_TINY)
 			playsound(src, stepped_sound, 50, TRUE)
-*/
 
 /mob/living/simple_animal/hostile/retaliate/frog/add_cell_sample()
 	. = ..()
