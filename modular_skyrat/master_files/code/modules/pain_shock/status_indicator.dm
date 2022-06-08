@@ -50,20 +50,14 @@
 		return TRUE
 
 
-/mob/living/carbon/death(gibbed) // On death, we clear the indiciators
-	..() // Call the TG death. Do not . = ..()!
-	for(var/iteration in status_indicators) // When we die, clear the indicators.
-		remove_status_indicator(iteration) // The indicators are named after their icon_state and type
-
 /mob/living/carbon/Initialize(mapload)
 	. = ..()
 	RegisterSignal(src, COMSIG_CARBON_HEALTH_UPDATE, .proc/status_sanity)
+	RegisterSignal(src, COMSIG_LIVING_DEATH, .proc/cut_indicators_overlays)
 /// Receives signals to update on carbon health updates. Checks if the mob is dead - if true, removes all the indicators. Then, we determine what status indicators the mob should carry or remove.
 /mob/living/proc/status_sanity()
 	SIGNAL_HANDLER
 	if(stat == DEAD)
-		for(var/iteration in status_indicators) // When we die, clear the indicators.
-			remove_status_indicator(iteration) // The indicators are named after their icon_state and type
 		return
 	else
 		is_weakened() ? add_status_indicator(WEAKEN) : remove_status_indicator(WEAKEN)
@@ -96,15 +90,11 @@
 			if(I.icon_state == prospective_indicator)
 				return I
 	return LAZYACCESS(status_indicators, LAZYFIND(status_indicators, prospective_indicator))
-/// Cuts all the indicators on a mob. Does not remove the status_indicator objects, just the overlays. Useful for race conditions.
+/// Cuts all the indicators on a mob.
 /mob/living/proc/cut_indicators_overlays()
-	if(!status_indicators) // sometimes the overlay cutting misses, so if theres nothing when its called, lets just clear them all!
-		for(var/image/iteration in overlays) // Check all the images.
-			if(iteration.plane == PLANE_STATUS) // If we got here, we got status indicator overlays with no attached indicator objects. We should clear those so they don't last.
-				cut_overlay(iteration)
-	else // We have status indicator objects, lets only clear ones we know exist with overlays.
-		for(var/prospective_indicator in status_indicators)
-			cut_overlay(prospective_indicator)
+	SIGNAL_HANDLER
+	for(var/prospective_indicator in status_indicators)
+		cut_overlay(prospective_indicator)
 
 /// Refreshes the indicators over a mob's head. Should only be called when adding or removing a status indicator with the above procs,
 /// or when the mob changes size visually for some reason.
@@ -151,11 +141,11 @@
 		// and it won't cause any issues since no more icons will be added, and the var is not used for anything else.
 		current_x_position += STATUS_INDICATOR_ICON_X_SIZE + STATUS_INDICATOR_ICON_MARGIN
 
-/mob/living/proc/get_icon_scale(carbon)
-	if(!iscarbon(carbon)) // normal mobs are always 1 for scale - not borg compatible but ok
+/mob/living/proc/get_icon_scale(livingmob)
+	if(!iscarbon(livingmob)) // normal mobs are always 1 for scale - hopefully all borgs and simplemobs get this one
 		return 1
-	var/mob/living/carbon/passed_mob = carbon // we're possibly a player! We have size prefs!
-	var/mysize = (passed_mob.dna.current_body_size ? passed_mob.dna.current_body_size : 1)
+	var/mob/living/carbon/passed_mob = livingmob // we're possibly a player! We have size prefs!
+	var/mysize = (passed_mob.dna?.current_body_size ? passed_mob.dna.current_body_size : 1)
 	return mysize
 
 /atom/movable/screen/plane_master/runechat/status
