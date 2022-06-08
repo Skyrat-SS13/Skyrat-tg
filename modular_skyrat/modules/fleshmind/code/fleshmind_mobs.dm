@@ -302,6 +302,7 @@
 	wound_bonus = 20
 	melee_damage_lower = 15
 	melee_damage_upper = 20
+	mob_size = MOB_SIZE_SMALL
 	attack_verb_continuous = "slices"
 	attack_verb_simple = "slice"
 	armour_penetration = 10
@@ -363,9 +364,10 @@
 		"THIS PROBE IS NON-HOSTILE. DO NOT ATTACK.",
         "ALL YOUR WEAPONS MUST BE PUT ASIDE. WE CANNOT REACH COMPROMISE THROUGH VIOLENCE.",
 	)
-	speed = 2
+	move_to_delay = 10
 	health = 1
 	maxHealth = 1
+	mob_size = MOB_SIZE_SMALL
 	del_on_death = TRUE
 	loot = list(
 		/obj/effect/gibspawner/robot,
@@ -438,6 +440,7 @@
 	dodging = TRUE
 	health = 75
 	maxHealth = 75
+	mob_size = MOB_SIZE_SMALL
 	projectiletype = /obj/projectile/treader/weak
 	speak = list(
 		"Your insides require cleaning.",
@@ -486,6 +489,7 @@
 	maxHealth = 100
 	attack_verb_continuous = "harmbatons"
 	attack_verb_simple = "harmbaton"
+	mob_size = MOB_SIZE_SMALL
 	speak = list(
 		"Running will only increase your injuries.",
 		"HALT! HALT! HALT!",
@@ -538,6 +542,8 @@
 	attack_verb_continuous = "saws"
 	attack_verb_simple = "saw"
 	speed = 2
+	move_to_delay = 5
+	mob_size = MOB_SIZE_HUMAN
 	attack_sound = 'sound/weapons/circsawhit.ogg'
 	alert_sounds = list(
 		'modular_skyrat/modules/fleshmind/sound/hiborg/aggro_01.ogg',
@@ -670,12 +676,14 @@
 	maxHealth = 250
 	health = 250
 	speed = 2
+	move_to_delay = 5
 	attack_verb_continuous = "slashes"
 	attack_verb_simple = "slash"
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	melee_damage_lower = 25
 	melee_damage_upper = 35
 	malfunction_chance = MALFUNCTION_CHANCE_HIGH
+	mob_size = MOB_SIZE_HUMAN
 	speak = list(
 		"Don't try and fix me! We love this!",
 		"Just make it easy on yourself!",
@@ -850,12 +858,14 @@
 	health = 100
 	maxHealth = 100
 	speed = 3
+	move_to_delay = 7
 	ranged_cooldown_time = 4 SECONDS
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	projectiletype = /obj/projectile/treader
 	light_color = FLESHMIND_LIGHT_BLUE
 	light_range = 2
 	del_on_death = TRUE
+	mob_size = MOB_SIZE_HUMAN
 	loot = list(/obj/effect/gibspawner/robot)
 	speak = list(
 		"You there! Cut off my head, I beg you!",
@@ -941,6 +951,7 @@
 	loot = list(
 		/obj/effect/gibspawner/human,
 	)
+	mob_size = MOB_SIZE_HUMAN
 	wander = FALSE
 	/// What is the range at which we spawn our copies?
 	var/phase_range = 5
@@ -1265,6 +1276,8 @@
 	attack_verb_simple = "crush"
 	attack_sound = 'sound/weapons/smash.ogg'
 	speed = 4 // Slow fucker
+	move_to_delay = 5
+	mob_size = MOB_SIZE_LARGE
 	passive_speak_lines = list(
 		"A shame this form isn't more fitting.",
 		"I feel so empty inside, I wish someone would join me.",
