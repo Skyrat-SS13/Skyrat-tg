@@ -31,7 +31,7 @@
 	lock_back_sound = 'sound/weapons/gun/pistol/slide_lock.ogg'
 	bolt_drop_sound = 'sound/weapons/gun/pistol/slide_drop.ogg'
 	can_flashlight = TRUE
-	dirt_modifier = 1
+	dirt_modifier = 0.5
 	emp_damageable = TRUE
 	fire_delay = 1.90
 	company_flag = COMPANY_CANTALAN
@@ -77,7 +77,7 @@
 	mag_display_ammo = FALSE
 	can_flashlight = TRUE
 	company_flag = COMPANY_CANTALAN
-	dirt_modifier = 1
+	dirt_modifier = 0.7
 
 /obj/item/ammo_box/magazine/multi_sprite/g18
 	name = "\improper GK-18 magazine"
@@ -139,6 +139,7 @@
 	lock_back_sound = 'sound/weapons/gun/pistol/slide_lock.ogg'
 	bolt_drop_sound = 'sound/weapons/gun/pistol/slide_drop.ogg'
 	realistic = TRUE
+	dirt_modifier = 0.3
 	can_flashlight = TRUE
 	emp_damageable = TRUE
 	company_flag = COMPANY_ARMADYNE
@@ -217,6 +218,7 @@
 	mag_type = /obj/item/ammo_box/magazine/multi_sprite/pdh_peacekeeper
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/pistol_fire.ogg'
 	realistic = TRUE
+	dirt_modifier = 0.6
 	can_flashlight = TRUE
 	company_flag = COMPANY_ARMADYNE
 
@@ -263,7 +265,7 @@
 	bolt_drop_sound = 'sound/weapons/gun/pistol/slide_drop.ogg'
 	realistic = TRUE
 	can_flashlight = TRUE
-	dirt_modifier = 0.8
+	dirt_modifier = 0.6
 	emp_damageable = TRUE
 	fire_delay = 4.20
 	company_flag = COMPANY_ARMADYNE
@@ -305,7 +307,7 @@
 	rack_sound = 'sound/weapons/gun/pistol/rack.ogg'
 	lock_back_sound = 'sound/weapons/gun/pistol/slide_lock.ogg'
 	bolt_drop_sound = 'sound/weapons/gun/pistol/slide_drop.ogg'
-	dirt_modifier = 0.75
+	dirt_modifier = 0.3
 	emp_damageable = TRUE
 	company_flag = COMPANY_IZHEVSK
 
@@ -1061,6 +1063,7 @@
 	mag_display = TRUE
 	mag_display_ammo = TRUE
 	realistic = TRUE
+	dirt_modifier = 0.4
 	fire_sound = 'sound/weapons/gun/smg/shot.ogg'
 	emp_damageable = TRUE
 	can_bayonet = TRUE
