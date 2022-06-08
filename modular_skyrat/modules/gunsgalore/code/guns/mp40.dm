@@ -21,6 +21,7 @@
 	eject_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/smg_magout.ogg'
 	alt_icons = TRUE
 	realistic = TRUE
+	fire_select_modes = list(SELECT_SEMI_AUTOMATIC, SELECT_FULLY_AUTOMATIC)
 	company_flag = COMPANY_OLDARMS
 
 /obj/item/ammo_box/magazine/mp40
