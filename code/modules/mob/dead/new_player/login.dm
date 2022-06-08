@@ -57,7 +57,3 @@
 		var/tl = SSticker.GetTimeLeft()
 		to_chat(src, "Please set up your character and select \"Ready\". The game will start [tl > 0 ? "in about [DisplayTimeText(tl)]" : "soon"].")
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 8b08bdcfd71 (Fixes issues where players can enter the game without accepted interviews. (#67565))
