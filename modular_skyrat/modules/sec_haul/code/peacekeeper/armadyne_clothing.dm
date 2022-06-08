@@ -1,11 +1,11 @@
 /obj/item/clothing/under/rank/security/peacekeeper/armadyne
-	name = "armadyne corporate uniform"
-	desc = "A robust uniform worn by Armadyne corporate."
+	name = "\improper Armadyne corporate uniform"
+	desc = "A sleek uniform worn by Armadyne corporate. Its metallic red belt buckle is made in the shape of the Armadyne logo."
 	icon_state = "armadyne_shirt"
 	worn_icon_state = "armadyne_shirt"
 
 /obj/item/clothing/under/rank/security/peacekeeper/armadyne/tactical
-	name = "armadyne tactical uniform"
+	name = "\improper Armadyne tactical uniform"
 	desc = "A robust tactical uniform worn by Armadyne corporate."
 	icon_state = "armadyne_tac"
 	worn_icon_state = "armadyne_tac"
@@ -90,6 +90,7 @@
 	uniform = /obj/item/clothing/under/rank/security/peacekeeper/armadyne
 	gloves = /obj/item/clothing/gloves/combat/peacekeeper/armadyne
 	head =  /obj/item/clothing/head/beret/sec/peacekeeper/armadyne
+	neck = /obj/item/clothing/neck/tie/black
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses/peacekeeper/armadyne
 	suit = /obj/item/clothing/suit/armor/vest/peacekeeper/armadyne
 	shoes = /obj/item/clothing/shoes/combat/peacekeeper/armadyne
