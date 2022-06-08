@@ -49,7 +49,8 @@
 
 	)
 	/// The cooldown on our rocket pod use.
-	var/rocket_pod_cooldown_time = 10 SECONDS
+	var/rocket_pod_cooldown_time_upper = 12 SECONDS
+	var/rocket_pod_cooldown_time_lower = 10 SECONDS
 	COOLDOWN_DECLARE(rocket_pod_cooldown)
 	/// The projectile we fire when shooting our rocket pods.
 	var/rocket_projectile_type = /obj/projectile/bullet/a84mm/weak
@@ -75,7 +76,8 @@
 	)
 	var/death_sound = 'modular_skyrat/modules/fleshmind/sound/tyrant/tyrant_death.ogg'
 	/// We also have a small laser to fire at people ;)
-	var/laser_cooldown_time = 5 SECONDS
+	var/laser_cooldown_time_upper = 8 SECONDS
+	var/laser_cooldown_time_lower = 4 SECONDS
 	COOLDOWN_DECLARE(laser_cooldown)
 	/// Our laser projectile type
 	var/laser_projectile_type = /obj/projectile/beam/emitter/hitscan
@@ -96,13 +98,13 @@
 
 	if(COOLDOWN_FINISHED(src, laser_cooldown) && target)
 		fire_projectile(target, laser_projectile_type, pick(laser_projectile_sounds))
-		COOLDOWN_START(src, laser_cooldown, laser_cooldown_time)
+		COOLDOWN_START(src, laser_cooldown, rand(laser_cooldown_time_lower, laser_cooldown_time_upper))
 
 	if(COOLDOWN_FINISHED(src, rocket_pod_cooldown) && target)
 		balloon_alert_to_viewers("begins whirring violently!")
 		playsound(src, 'modular_skyrat/modules/fleshmind/sound/tyrant/charge_up.ogg', 100, TRUE)
 		addtimer(CALLBACK(src, .proc/fire_rocket_pods, target), rocket_pod_charge_up_time)
-		COOLDOWN_START(src, rocket_pod_cooldown, rocket_pod_cooldown_time)
+		COOLDOWN_START(src, rocket_pod_cooldown, rand(rocket_pod_cooldown_time_lower, rocket_pod_cooldown_time_upper))
 
 /mob/living/simple_animal/hostile/fleshmind/tyrant/Destroy()
 	QDEL_NULL(particles)
