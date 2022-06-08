@@ -20578,10 +20578,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/iron/dark,
 /area/station/medical/break_room)
-"hyw" = (
-/obj/effect/spawner/structure/window,
-/turf/open/floor/plating,
-/area/station/cargo/qm)
 "hyC" = (
 /obj/structure/disposaloutlet{
 	desc = "An outlet for the pneumatic disposal system. This one seems designed for rapid corpse disposal.";
@@ -28318,6 +28314,7 @@
 	pixel_x = -6;
 	pixel_y = 4
 	},
+/obj/machinery/keycard_auth/directional/south,
 /turf/open/floor/wood,
 /area/station/cargo/qm)
 "kat" = (
@@ -31357,6 +31354,9 @@
 /turf/open/floor/iron,
 /area/station/maintenance/disposal/incinerator)
 "ldg" = (
+/obj/machinery/modular_computer/console/preset/id{
+	dir = 1
+	},
 /turf/open/floor/wood,
 /area/station/cargo/qm)
 "ldJ" = (
@@ -33953,6 +33953,9 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/machinery/computer/security/telescreen/vault{
+	pixel_y = 30
+	},
 /turf/open/floor/wood,
 /area/station/cargo/qm)
 "mbk" = (
@@ -35854,14 +35857,14 @@
 /turf/open/floor/wood,
 /area/station/security/courtroom)
 "mLR" = (
-/obj/machinery/door/airlock/mining/glass{
-	name = "Quartermaster"
-	},
 /obj/structure/cable,
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/effect/mapping_helpers/airlock/access/all/supply/qm,
+/obj/machinery/door/airlock/command/glass{
+	name = "Quartermaster's Office"
+	},
 /turf/open/floor/iron,
 /area/station/cargo/qm)
 "mLS" = (
@@ -39365,6 +39368,10 @@
 	},
 /turf/open/space/basic,
 /area/space)
+"nWZ" = (
+/obj/machinery/pdapainter/supply,
+/turf/open/floor/carpet/red,
+/area/station/cargo/qm)
 "nXm" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
@@ -47055,9 +47062,6 @@
 /obj/item/folder/blue,
 /obj/item/storage/secure/briefcase,
 /obj/item/assembly/flash/handheld,
-/obj/machinery/computer/security/telescreen/vault{
-	pixel_y = 30
-	},
 /turf/open/floor/wood,
 /area/station/command/heads_quarters/hop)
 "qJz" = (
@@ -86822,7 +86826,7 @@ jRM
 uKm
 thQ
 lme
-hyw
+bJR
 fXw
 pCl
 iAd
@@ -87336,7 +87340,7 @@ jRM
 bgx
 mmR
 wRj
-hyw
+bJR
 xgw
 xgw
 xgw
@@ -87593,11 +87597,11 @@ dka
 bgx
 mmR
 ekY
-hyw
+bJR
 iGD
 kga
 fRQ
-xgw
+nWZ
 eDi
 geK
 krf
