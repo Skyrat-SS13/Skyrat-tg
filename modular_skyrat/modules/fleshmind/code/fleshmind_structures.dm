@@ -415,7 +415,7 @@
 	max_integrity = 120
 	required_controller_level = CONTROLLER_LEVEL_1
 	activation_range = DEFAULT_VIEW_RANGE
-	ability_cooldown_time = 25 SECONDS
+	ability_cooldown_time = 30 SECONDS
 
 /obj/structure/fleshmind/structure/screamer/activate_ability(mob/living/triggered_mob)
 	. = ..()
@@ -427,6 +427,7 @@
 	for(var/mob/living/iterating_mob in get_hearers_in_range(activation_range, src))
 		if(!iterating_mob.can_hear())
 			continue
+		var/mob/living/carbon/human/iterating_human = iterating_mob
 		if(faction_check(faction_types, iterating_mob.faction))
 			continue
 		iterating_mob.Paralyze(50)
@@ -525,20 +526,21 @@
 	density = FALSE
 	max_integrity = 260
 	activation_range = DEFAULT_VIEW_RANGE
-	ability_cooldown_time = 2 MINUTES
+	ability_cooldown_time = 30 SECONDS
 	/// The max amount of mobs we can have at any one time.
 	var/max_mobs = 2
 	/// The current amount of spawned mobs
 	var/spawned_mobs = 0
 	/// The allowed monster types
 	var/list/monster_types = list(
-		/mob/living/simple_animal/hostile/fleshmind/floater = 1,
+		/mob/living/simple_animal/hostile/fleshmind/floater = 2,
 		/mob/living/simple_animal/hostile/fleshmind/globber = 4,
-		/mob/living/simple_animal/hostile/fleshmind/hiborg = 1,
-		/mob/living/simple_animal/hostile/fleshmind/slicer = 6,
-		/mob/living/simple_animal/hostile/fleshmind/stunner = 3,
-		/mob/living/simple_animal/hostile/fleshmind/treader = 1,
-		/mob/living/simple_animal/hostile/fleshmind/himan = 1,
+		/mob/living/simple_animal/hostile/fleshmind/hiborg = 2,
+		/mob/living/simple_animal/hostile/fleshmind/slicer = 4,
+		/mob/living/simple_animal/hostile/fleshmind/stunner = 4,
+		/mob/living/simple_animal/hostile/fleshmind/treader = 3,
+		/mob/living/simple_animal/hostile/fleshmind/himan = 2,
+		/mob/living/simple_animal/hostile/fleshmind/mechiver = 2,
 	)
 	/// Our override type, if manually set.
 	var/override_monser_type
@@ -602,7 +604,7 @@
 	icon_state = "turret"
 	base_icon_state = "turret"
 	activation_range = DEFAULT_VIEW_RANGE
-	ability_cooldown_time = 5 SECONDS
+	ability_cooldown_time = 3 SECONDS
 	max_integrity = 300
 	/// The projectile we fire.
 	var/projectile_type = /obj/projectile/fleshmind_flechette

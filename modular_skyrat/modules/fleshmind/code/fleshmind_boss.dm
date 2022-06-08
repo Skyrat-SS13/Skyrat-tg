@@ -7,7 +7,8 @@
 	maxHealth = 2000
 	projectiletype = /obj/projectile/bullet/c50cal/tyrant
 	projectilesound = 'modular_skyrat/modules/mounted_machine_gun/sound/50cal_box_01.ogg'
-	minimum_distance = 5
+	minimum_distance = 3
+	retreat_distance = 5
 	ranged = TRUE
 	rapid = 4
 	mob_size = MOB_SIZE_HUGE

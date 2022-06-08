@@ -69,11 +69,11 @@
 	/// Progress to spawning the next structure.
 	var/structure_progression = 0
 	/// How many times do we need to spread to spawn an extra structure.
-	var/spreads_for_structure = 60
+	var/spreads_for_structure = 30
 	/// How many spread in our initial expansion.
 	var/initial_expansion_spreads = 30
 	/// How many structures in our initial expansion.
-	var/initial_expansion_structures = 3
+	var/initial_expansion_structures = 5
 	/// How much progress to spreading we get per second.
 	var/spread_progress_per_second = 100
 	/// Our base spread progress per second

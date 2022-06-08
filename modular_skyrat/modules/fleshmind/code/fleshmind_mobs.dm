@@ -143,11 +143,11 @@
 	switch(severity)
 		if(EMP_LIGHT)
 			say("Electronic disturbance detected.")
-			apply_damage(maxHealth * 0.2)
-			malfunction()
+			apply_damage(MOB_EMP_LIGHT_DAMAGE)
+			malfunction(MALFUNCTION_RESET_TIME)
 		if(EMP_HEAVY)
 			say("Major electronic disturbance detected!")
-			apply_damage(maxHealth * 0.5)
+			apply_damage(MOB_EMP_HEAVY_DAMAGE)
 			malfunction(MALFUNCTION_RESET_TIME * 2)
 
 /**
@@ -364,7 +364,7 @@
 		"THIS PROBE IS NON-HOSTILE. DO NOT ATTACK.",
         "ALL YOUR WEAPONS MUST BE PUT ASIDE. WE CANNOT REACH COMPROMISE THROUGH VIOLENCE.",
 	)
-	move_to_delay = 10
+	move_to_delay = 8
 	health = 1
 	maxHealth = 1
 	mob_size = MOB_SIZE_SMALL
@@ -542,7 +542,7 @@
 	attack_verb_continuous = "saws"
 	attack_verb_simple = "saw"
 	speed = 2
-	move_to_delay = 5
+	move_to_delay = 4
 	mob_size = MOB_SIZE_HUMAN
 	attack_sound = 'sound/weapons/circsawhit.ogg'
 	alert_sounds = list(
@@ -676,7 +676,6 @@
 	maxHealth = 250
 	health = 250
 	speed = 2
-	move_to_delay = 5
 	attack_verb_continuous = "slashes"
 	attack_verb_simple = "slash"
 	attack_sound = 'sound/weapons/bladeslice.ogg'
@@ -855,10 +854,10 @@
 	retreat_distance = 4
 	minimum_distance = 4
 	dodging = TRUE
-	health = 100
-	maxHealth = 100
+	health = 200
+	maxHealth = 200
 	speed = 3
-	move_to_delay = 7
+	move_to_delay = 6
 	ranged_cooldown_time = 4 SECONDS
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	projectiletype = /obj/projectile/treader
@@ -912,7 +911,7 @@
 /obj/projectile/treader
 	name = "nasty ball of ooze"
 	icon_state = "neurotoxin"
-	damage = 10
+	damage = 20
 	damage_type = BURN
 	nodamage = FALSE
 	knockdown = 20
@@ -1276,7 +1275,6 @@
 	attack_verb_simple = "crush"
 	attack_sound = 'sound/weapons/smash.ogg'
 	speed = 4 // Slow fucker
-	move_to_delay = 5
 	mob_size = MOB_SIZE_LARGE
 	passive_speak_lines = list(
 		"A shame this form isn't more fitting.",
@@ -1319,11 +1317,11 @@
 	/// Is our hatch open? Used in icon processing.
 	var/hatch_open = FALSE
 	/// How much damage our mob will take, upper end, when they are tormented
-	var/internal_mob_damage_upper = 30
+	var/internal_mob_damage_upper = 60
 	/// Ditto
-	var/internal_mob_damage_lower = 20
+	var/internal_mob_damage_lower = 40
 	/// How long we keep our passenger before either releasing or converting them.
-	var/conversion_time = 40 SECONDS
+	var/conversion_time = 20 SECONDS
 	/// The comsume ability cooldown
 	var/consume_ability_cooldown_time = 1 MINUTES
 	COOLDOWN_DECLARE(consume_ability_cooldown)
@@ -1420,21 +1418,13 @@
 	update_appearance()
 	flick("[base_icon_state]-opening", src)
 	addtimer(CALLBACK(src, .proc/close_hatch), 1 SECONDS)
-	if(contained_mob.stat == DEAD)
-		contained_mob.forceMove(get_turf(src))
-		convert_mob(contained_mob)
-		contained_mob = null
-	else
-		contained_mob.forceMove(get_turf(src))
-		to_chat(contained_mob, span_danger("[src] releases you from its snares!"))
-		contained_mob = null
+	contained_mob.forceMove(get_turf(src))
+	convert_mob(contained_mob)
+	contained_mob = null
 
 	playsound(src, 'sound/effects/blobattack.ogg', 70, 1)
 
 /mob/living/simple_animal/hostile/fleshmind/mechiver/proc/convert_mob(mob/living/mob_to_convert)
-	if(mob_to_convert.stat != DEAD) // No converting non-dead mobs.
-		return
-
 	if(faction_check(faction, mob_to_convert.faction)) // If we are already assimilated, just heal us.
 		mob_to_convert.fully_heal(TRUE)
 		mob_to_convert.heal_and_revive(0)

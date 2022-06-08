@@ -49,22 +49,7 @@
 
 	infected_human.faction |= FACTION_FLESHMIND
 
-	replace_all_limbs()
-
 	infected_human.update_appearance()
-
-
-/datum/component/human_corruption/proc/replace_all_limbs()
-	var/mob/living/carbon/human/human_parent = parent
-	for(var/zone as anything in replacement_zones)
-		var/obj/item/bodypart/existing_bodypart = human_parent.get_bodypart(zone)
-		var/bodypart_type = replacement_zones[zone]
-		var/obj/item/bodypart/new_bodypart = new bodypart_type()
-		new_bodypart.replace_limb(human_parent, TRUE)
-		if(existing_bodypart)
-			qdel(existing_bodypart)
-		human_parent.update_body(TRUE)
-		to_chat(human_parent, span_green("You feel a new [new_bodypart.name] implanted into you!"))
 
 /datum/component/human_corruption/Destroy(force, silent)
 	QDEL_LIST(granted_actions)
@@ -108,6 +93,7 @@
 
 	INVOKE_ASYNC(parent_human, /mob/proc/emote, "scream")
 	parent_human.apply_status_effect(/datum/status_effect/jitter, 20 SECONDS)
+	parent_human.Knockdown(10)
 	to_chat(parent_human, span_userdanger("You feel your implants freeze up!"))
 
 /datum/component/human_corruption/proc/host_death()
