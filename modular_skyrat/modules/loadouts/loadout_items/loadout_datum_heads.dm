@@ -385,13 +385,13 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 	name = "Fashionable Baseball Cap"
 	item_path = /obj/item/clothing/head/soft/yankee
 
-/datum/loadout_item/head/goner_helmet
+/datum/loadout_item/head/blastwave_helmet
 	name = "Blastwave Plastic Helmet"
-	item_path = /obj/item/clothing/head/goner
+	item_path = /obj/item/clothing/head/blastwave
 
-/datum/loadout_item/head/goner_cap
+/datum/loadout_item/head/blastwave_cap
 	name = "Blastwave Peaked Cap"
-	item_path = /obj/item/clothing/head/goner/officer
+	item_path = /obj/item/clothing/head/blastwave/officer
 
 /*
 *	COWBOY

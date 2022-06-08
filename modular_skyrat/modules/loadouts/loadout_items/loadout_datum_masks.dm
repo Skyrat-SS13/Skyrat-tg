@@ -76,10 +76,6 @@ GLOBAL_LIST_INIT(loadout_masks, generate_loadout_items(/datum/loadout_item/mask)
 	name = "Glass Gas Mask"
 	item_path = /obj/item/clothing/mask/gas/glass
 
-/datum/loadout_item/mask/gas_full
-	name = "Full Gas Mask"
-	item_path = /obj/item/clothing/mask/gas/full
-
 /*
 *	JOB-LOCKED
 */
