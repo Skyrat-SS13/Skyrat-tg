@@ -264,6 +264,7 @@
 	item = /obj/item/mecha_parts/mecha_equipment/concealed_weapon_bay
 	cost = 3
 	restricted_roles = list(JOB_ROBOTICIST, JOB_RESEARCH_DIRECTOR)
+
 /* //SKYRAT REMOVAL START
 /datum/uplink_item/role_restricted/his_grace
 	name = "His Grace"
