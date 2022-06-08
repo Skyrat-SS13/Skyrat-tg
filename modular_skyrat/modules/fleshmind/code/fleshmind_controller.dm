@@ -75,9 +75,9 @@
 	/// How many structures in our initial expansion.
 	var/initial_expansion_structures = 3
 	/// How much progress to spreading we get per second.
-	var/spread_progress_per_second = 50
+	var/spread_progress_per_second = 100
 	/// Our base spread progress per second
-	var/base_spread_progress_per_second = 50
+	var/base_spread_progress_per_second = 100
 	/// Probably of wireweed attacking structures per process
 	var/attack_prob = 20
 	/// Probability of wireweed making a wall when able per process
