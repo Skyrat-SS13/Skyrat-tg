@@ -1,4 +1,4 @@
-/turf/open/lava/planet
+/turf/open/lava/fake
 	name = "lava"
 	desc = "Go on. Step in it. Maybe you'll be like some sort of Lava based Jesus."
 	planetary_atmos = TRUE
