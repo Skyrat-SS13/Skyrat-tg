@@ -36,7 +36,7 @@
   if(mode == MODE_FREEZE_ANIMATION)
     icon = initial(icon) /// Resets icon to initial value after MODE_FREEZE_ANIMATION, since MODE_FREEZE_ANIMATION replaces it with non-animated version of initial
   mode = modes[mode] // Change modes
-  to_chat(user, span_notice("[modes_msg[mode]][src].")) /// Print the message defined for this mode as a balloon over the user
+  balloon_alert(user, span_notice("[modes_msg[mode]][src].")) /// Print the message defined for this mode as a balloon over the user
   switch(mode)
     if(MODE_ON)
       /// Resets all the vars to their initial values (THIS PRESUMES THE DEFAULT STATE IS ON)
