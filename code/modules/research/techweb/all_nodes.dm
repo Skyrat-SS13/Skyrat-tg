@@ -64,6 +64,9 @@
 		"turbine_part_compressor",
 		"turbine_part_rotor",
 		"turbine_part_stator",
+		// SKYRAT EDIT BEGIN - replace this when i figure out a good way to fix the modular method
+		"security_pistol_magazine_influence",
+		// SKYRAT EDIT END
 	)
 
 /datum/techweb_node/mmi
@@ -955,7 +958,7 @@
 		"paladin_module",
 		"robocop_module",
 		"corporate_module",
-		"drone_module",		
+		"drone_module",
 		"oxygen_module",
 		"safeguard_module",
 		"protectstation_module",
@@ -964,7 +967,7 @@
 		"remove_module",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
-	
+
 /datum/techweb_node/ai_adv
 	id = "ai_adv"
 	display_name = "Advanced Artificial Intelligence"
@@ -1262,6 +1265,9 @@
 		"implantcase",
 		"implanter",
 		"locator",
+		// SKYRAT EDIT BEGIN - replace this when i figure out a good way to fix the modular method
+		"security_pistol_magazine_trac",
+		// SKYRAT EDIT END
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 
@@ -1279,7 +1285,7 @@
 		"cybernetic_stomach_tier2",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1000)
-	
+
 
 /datum/techweb_node/cyber_organs_upgraded
 	id = "cyber_organs_upgraded"
@@ -1567,6 +1573,12 @@
 		"c38_hotshot",
 		"c38_iceblox",
 		"techshotshell",
+		// SKYRAT EDIT BEGIN - replace this when i figure out a good way to fix the modular method
+		"security_pistol_magazine_iceblox",
+		"security_pistol_magazine_cruelty",
+		"security_pistol_magazine_geiger",
+		"security_pistol_magazine_ceo_mindset",
+		// SKYRAT EDIT END
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 

@@ -8,7 +8,8 @@
 	..()
 	new /obj/item/storage/briefcase(src)
 	new /obj/item/pinpointer/crew(src)
-	new /obj/item/storage/belt/security/full(src)
+	//new /obj/item/storage/belt/security/full(src) ORIGINAL
+	new /obj/item/storage/belt/hf/full(src) //SKYRAT EDIT CHANGE
 	new /obj/item/grenade/flashbang(src)
 	new /obj/item/assembly/flash/handheld(src)
 	new /obj/item/restraints/handcuffs(src)
