@@ -65,6 +65,4 @@
 	for(var/mob/iterating_mob in GLOB.player_list)
 		if(!(FACTION_FLESHMIND in iterating_mob.faction) && !isobserver(iterating_mob))
 			continue
-		if(iterating_mob == owner)
-			continue
 		to_chat(iterating_mob, span_purple("<b>FLESHMIND ([owner]):</b> [message]"))
