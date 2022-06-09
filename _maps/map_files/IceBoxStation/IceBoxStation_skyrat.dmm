@@ -31994,7 +31994,7 @@
 /turf/open/floor/plating,
 /area/station/maintenance/fore)
 "kin" = (
-/obj/structure/table,
+/obj/machinery/pdapainter/supply,
 /turf/open/floor/carpet,
 /area/station/cargo/qm)
 "kir" = (
@@ -35171,15 +35171,14 @@
 "lfG" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/door/airlock/mining/glass{
-	id_tag = "Quatermaster";
-	name = "Quartermaster"
-	},
 /obj/machinery/door/firedoor,
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable,
 /obj/effect/mapping_helpers/airlock/access/all/supply/qm,
 /obj/effect/turf_decal/tile/brown/fourcorners,
+/obj/machinery/door/airlock/command{
+	name = "Quartermaster's Office"
+	},
 /turf/open/floor/iron,
 /area/station/cargo/qm)
 "lfL" = (
@@ -38107,7 +38106,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/effect/mapping_helpers/airlock/access/all/supply/mail_sorting,
+/obj/effect/mapping_helpers/airlock/access/all/supply/shipping,
 /turf/open/floor/iron,
 /area/station/cargo/sorting)
 "mfy" = (
@@ -42949,6 +42948,7 @@
 	pixel_y = 4
 	},
 /obj/item/folder/yellow,
+/obj/machinery/keycard_auth/directional/west,
 /turf/open/floor/iron,
 /area/station/cargo/qm)
 "nNv" = (
@@ -44321,6 +44321,10 @@
 /obj/effect/turf_decal/tile/brown{
 	dir = 4
 	},
+/obj/machinery/computer/security/telescreen/vault{
+	pixel_y = 30
+	},
+/obj/machinery/modular_computer/console/preset/id,
 /turf/open/floor/iron,
 /area/station/cargo/qm)
 "ogL" = (
@@ -54079,9 +54083,6 @@
 /turf/open/floor/iron,
 /area/station/cargo/sorting)
 "rpu" = (
-/obj/machinery/computer/security/telescreen/vault{
-	pixel_y = 30
-	},
 /obj/machinery/disposal/bin,
 /obj/structure/disposalpipe/trunk{
 	dir = 4
@@ -60693,7 +60694,7 @@
 /obj/machinery/door/airlock/mining/glass{
 	name = "Delivery Office"
 	},
-/obj/effect/mapping_helpers/airlock/access/all/supply/mail_sorting,
+/obj/effect/mapping_helpers/airlock/access/all/supply/shipping,
 /turf/open/floor/iron,
 /area/station/cargo/sorting)
 "tuU" = (
