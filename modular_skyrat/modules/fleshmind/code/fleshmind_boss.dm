@@ -3,6 +3,7 @@
 	desc = "The will of the many, manifested in flesh and metal. It has fucking rockets."
 	icon = 'modular_skyrat/modules/fleshmind/icons/tyrant.dmi'
 	icon_state = "tyrant"
+	icon_dead = "tyrant_dead"
 	health = 2000
 	maxHealth = 2000
 	projectiletype = /obj/projectile/bullet/c50cal/tyrant
@@ -123,7 +124,7 @@
 
 /mob/living/simple_animal/hostile/fleshmind/tyrant/update_overlays()
 	. = ..()
-	if(health <= (maxHealth * 0.5))
+	if(health <= (maxHealth * 0.5) && stat != DEAD)
 		. += "tyrant_damage"
 
 /mob/living/simple_animal/hostile/fleshmind/tyrant/Moved()
