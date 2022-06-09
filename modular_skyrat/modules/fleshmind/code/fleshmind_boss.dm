@@ -11,9 +11,9 @@
 	minimum_distance = 3
 	retreat_distance = 5
 	ranged = TRUE
-	rapid = 4
+	rapid = 5
 	mob_size = MOB_SIZE_HUGE
-	move_to_delay = 8
+	move_to_delay = 6
 	pixel_x = -16
 	pixel_y = -16
 	base_pixel_x = -16
@@ -78,8 +78,8 @@
 	)
 	var/death_sound = 'modular_skyrat/modules/fleshmind/sound/tyrant/tyrant_death.ogg'
 	/// We also have a small laser to fire at people ;)
-	var/laser_cooldown_time_upper = 8 SECONDS
-	var/laser_cooldown_time_lower = 4 SECONDS
+	var/laser_cooldown_time_upper = 4 SECONDS
+	var/laser_cooldown_time_lower = 2 SECONDS
 	COOLDOWN_DECLARE(laser_cooldown)
 	/// Our laser projectile type
 	var/laser_projectile_type = /obj/projectile/beam/emitter/hitscan
