@@ -91,7 +91,7 @@
 	bare_wound_bonus = 25
 	can_gib = FALSE
 
-/datum/supply_pack/security/security_pistol
+/datum/supply_pack/security/hf
 	name = "High Frequency Blade Crate"
 	desc = "Three High Frequency Blades in sheaths, if your security team gets disarmed."
 	cost = CARGO_CRATE_VALUE * 3
