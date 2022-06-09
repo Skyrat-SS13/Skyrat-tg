@@ -861,6 +861,8 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	var/can_gib = TRUE
 	///What's the block chance while wielded?
 	var/block_chance_wielded = 100
+	///Can this deflect projectiles while unwielded?
+	var/can_deflect_projectiles_unwielded = TRUE
 	// SKYRAT EDIT END
 
 /obj/item/highfrequencyblade/Initialize(mapload)
@@ -878,7 +880,7 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 /obj/item/highfrequencyblade/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
 	if(attack_type == PROJECTILE_ATTACK)
 		// SKYRAT EDIT BEGIN
-		if((HAS_TRAIT(src, TRAIT_WIELDED) && prob(block_chance_wielded)) || prob(final_block_chance))
+		if((HAS_TRAIT(src, TRAIT_WIELDED) && prob(block_chance_wielded)) || (can_deflect_projectiles_unwielded && prob(final_block_chance)))
 		// SKYRAT EDIT END
 			owner.visible_message(span_danger("[owner] deflects [attack_text] with [src]!"))
 			playsound(src, pick('sound/weapons/bulletflyby.ogg', 'sound/weapons/bulletflyby2.ogg', 'sound/weapons/bulletflyby3.ogg'), 75, TRUE)

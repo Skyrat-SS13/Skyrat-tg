@@ -91,6 +91,7 @@
 	bare_wound_bonus = 25
 	block_chance_wielded = 25
 	can_gib = FALSE
+	can_deflect_projectiles_unwielded = FALSE
 
 /datum/supply_pack/security/hf
 	name = "High Frequency Blade Crate"
