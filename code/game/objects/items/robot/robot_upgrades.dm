@@ -550,41 +550,40 @@
 	desc = "A cyborg resizer, it makes a cyborg huge."
 	icon_state = "cyborg_upgrade3"
 
-/obj/item/borg/upgrade/expand/action(mob/living/silicon/robot/R, user = usr)
+/obj/item/borg/upgrade/expand/action(mob/living/silicon/robot/robot, user = usr)
 	. = ..()
 	if(.)
 
-		if(R.hasExpanded)
+		if(robot.hasExpanded)
 			to_chat(usr, span_warning("This unit already has an expand module installed!"))
 			return FALSE
 		// SKYRAT EDIT BEGIN
-		if(R.model.model_select_icon == "nomod")
+		if(robot.model.model_select_icon == "nomod")
 			to_chat(usr, span_warning("Default models cannot take expand or shrink upgrades."))
 			return FALSE
-		if((R_TRAIT_WIDE in R.model.model_features) || (R_TRAIT_TALL in R.model.model_features))
+		if((R_TRAIT_WIDE in robot.model.model_features) || (R_TRAIT_TALL in robot.model.model_features))
 			to_chat(usr, span_warning("This unit's chassis cannot be enlarged any further."))
 			return FALSE
 		// SKYRAT EDIT END
 
-		R.notransform = TRUE
-		var/prev_lockcharge = R.lockcharge
-		R.SetLockdown(TRUE)
-		R.set_anchored(TRUE)
+		robot.notransform = TRUE
+		var/prev_lockcharge = robot.lockcharge
+		robot.SetLockdown(TRUE)
+		robot.set_anchored(TRUE)
 		var/datum/effect_system/fluid_spread/smoke/smoke = new
-		smoke.set_up(1, location = R.loc)
+		smoke.set_up(1, holder = robot, location = robot.loc)
 		smoke.start()
 		sleep(2)
 		for(var/i in 1 to 4)
-			playsound(R, pick('sound/items/drill_use.ogg', 'sound/items/jaws_cut.ogg', 'sound/items/jaws_pry.ogg', 'sound/items/welder.ogg', 'sound/items/ratchet.ogg'), 80, TRUE, -1)
+			playsound(robot, pick('sound/items/drill_use.ogg', 'sound/items/jaws_cut.ogg', 'sound/items/jaws_pry.ogg', 'sound/items/welder.ogg', 'sound/items/ratchet.ogg'), 80, TRUE, -1)
 			sleep(12)
 		if(!prev_lockcharge)
-			R.SetLockdown(FALSE)
-		R.set_anchored(FALSE)
-		R.notransform = FALSE
-		//R.resize = 2 //ORIGINAL
-		R.resize = 1.25 //SKYRAT EDIT CHANGE - CYBORG
-		R.hasExpanded = TRUE
-		R.update_transform()
+			robot.SetLockdown(FALSE)
+		robot.set_anchored(FALSE)
+		robot.notransform = FALSE
+		robot.resize = 1.25 //SKYRAT EDIT CHANGE - CYBORG
+		robot.hasExpanded = TRUE
+		robot.update_transform()
 
 /obj/item/borg/upgrade/expand/deactivate(mob/living/silicon/robot/R, user = usr)
 	. = ..()

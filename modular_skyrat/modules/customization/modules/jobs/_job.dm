@@ -86,9 +86,6 @@
 /datum/job/head_of_personnel
 	banned_quirks = list(HEAD_RESTRICTED_QUIRKS)
 
-/datum/job/quartermaster
-	banned_quirks = list(HEAD_RESTRICTED_QUIRKS)
-
 //Silicon
 /datum/job/ai
 	loadout = FALSE
