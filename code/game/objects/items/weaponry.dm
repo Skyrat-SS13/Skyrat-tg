@@ -886,7 +886,9 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 			playsound(src, pick('sound/weapons/bulletflyby.ogg', 'sound/weapons/bulletflyby2.ogg', 'sound/weapons/bulletflyby3.ogg'), 75, TRUE)
 			return TRUE
 		return FALSE
-	if(prob(final_block_chance * (HAS_TRAIT(src, TRAIT_WIELDED) ? 2 : 1)))
+	// SKYRAT EDIT BEGIN
+	if(prob(block_chance * (HAS_TRAIT(src, TRAIT_WIELDED) ? 2 : 1)))
+	// SKYRAT EDIT END
 		owner.visible_message(span_danger("[owner] parries [attack_text] with [src]!"))
 		return TRUE
 
