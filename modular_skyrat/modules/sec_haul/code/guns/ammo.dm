@@ -1,5 +1,4 @@
 /obj/item/ammo_box/advanced
-	w_class = WEIGHT_CLASS_NORMAL
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
 /datum/techweb_node/peacekeeper_ammo_advanced
