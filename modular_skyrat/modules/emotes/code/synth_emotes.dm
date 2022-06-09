@@ -143,7 +143,6 @@
 	key = "laughtrack"
 	message = "plays a laughtrack."
 	emote_type = EMOTE_AUDIBLE
-	vary = TRUE
 	sound = 'sound/items/sitcomlaugh2.ogg'
 	silicon_allowed = TRUE
 	allowed_species = list(/datum/species/robotic/ipc, /datum/species/robotic/synthliz, /datum/species/robotic/synthetic_human, /datum/species/robotic/synthetic_mammal)
