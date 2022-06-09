@@ -203,7 +203,7 @@
 				to_chat(human_user, span_warning("ERROR: Invalid access"))
 				return
 			if(href_list["p_stat"])
-				var/health_status = input(human_user, "Specify a new physical status for this person.", "Medical HUD", target_record.fields["p_stat"]) in list("Active", "Physically Unfit", "*Unconscious*", "*Deceased*", "Cancel")
+				var/health_status = input(human_user, "Specify a new physical status for this person.", "Medical HUD", general_record.fields["p_stat"]) in list("Active", "Physically Unfit", "*Unconscious*", "*Deceased*", "Cancel")
 				if(!general_record) // SKYRAT EDIT CHANGE
 					return
 				if(!human_user.canUseHUD())
@@ -214,7 +214,7 @@
 					general_record.fields["p_stat"] = health_status // SKYRAT EDIT CHANGE
 				return
 			if(href_list["m_stat"])
-				var/health_status = input(human_user, "Specify a new mental status for this person.", "Medical HUD", target_record.fields["m_stat"]) in list("Stable", "*Watch*", "*Unstable*", "*Insane*", "Cancel")
+				var/health_status = input(human_user, "Specify a new mental status for this person.", "Medical HUD", general_record.fields["m_stat"]) in list("Stable", "*Watch*", "*Unstable*", "*Insane*", "Cancel")
 				if(!general_record) // SKYRAT EDIT CHANGE
 					return
 				if(!human_user.canUseHUD())
@@ -349,7 +349,7 @@
 
 			if(href_list["add_crime"])
 				var/t1 = tgui_input_text(human_user, "Crime name", "Security HUD")
-				if(!target_record || !t1 || !allowed_access) //SKYRAT EDIT CHANGE - EXAMINE RECORDS
+				if(!sec_record || !t1 || !allowed_access) //SKYRAT EDIT CHANGE - EXAMINE RECORDS
 					return
 				if(!human_user.canUseHUD())
 					return
