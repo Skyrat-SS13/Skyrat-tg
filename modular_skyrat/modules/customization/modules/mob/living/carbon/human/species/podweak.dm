@@ -1,7 +1,9 @@
 /datum/species/pod
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,
-		TRAIT_CAN_STRIP
+		TRAIT_CAN_STRIP,
+		TRAIT_PLANT_SAFE,
+		TRAIT_LITERATE,
 	)
 	learnable_languages = list(/datum/language/common, /datum/language/sylvan) //I guess plants are smart and they can speak common
 	payday_modifier = 0.75
@@ -17,6 +19,11 @@
 		HAS_BONE,
 		HAIR,
 		FACEHAIR
+	)
+	inherent_traits = list(
+		TRAIT_ADVANCEDTOOLUSER,
+		TRAIT_CAN_STRIP,
+		TRAIT_LITERATE,
 	)
 	mutant_bodyparts = list()
 	default_mutant_bodyparts = list()

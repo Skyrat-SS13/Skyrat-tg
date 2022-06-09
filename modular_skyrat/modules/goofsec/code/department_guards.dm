@@ -28,6 +28,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	unique_reskin = null
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/suit/armor/vest/blueshirt/skyrat/guard
 	icon_state = "guard_armor"
@@ -375,8 +376,8 @@
 	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
 	trim_state = "trim_customs"
 	sechud_icon_state = SECHUD_CUSTOMS_AGENT
-	extra_access = list(ACCESS_BRIG_ENTRANCE, ACCESS_MAINT_TUNNELS, ACCESS_MAIL_SORTING, ACCESS_CARGO, ACCESS_QM, ACCESS_MINING, ACCESS_MECH_MINING, ACCESS_MINING_STATION, ACCESS_MINERAL_STOREROOM, ACCESS_WEAPONS)
-	minimal_access = list(ACCESS_BRIG_ENTRANCE, ACCESS_MAINT_TUNNELS, ACCESS_MAIL_SORTING, ACCESS_CARGO, ACCESS_QM, ACCESS_MINING, ACCESS_MECH_MINING, ACCESS_MINING_STATION, ACCESS_MINERAL_STOREROOM, ACCESS_WEAPONS)
+	extra_access = list(ACCESS_BRIG_ENTRANCE, ACCESS_MAINT_TUNNELS, ACCESS_SHIPPING, ACCESS_CARGO, ACCESS_QM, ACCESS_MINING, ACCESS_MECH_MINING, ACCESS_MINING_STATION, ACCESS_MINERAL_STOREROOM, ACCESS_WEAPONS)
+	minimal_access = list(ACCESS_BRIG_ENTRANCE, ACCESS_MAINT_TUNNELS, ACCESS_SHIPPING, ACCESS_CARGO, ACCESS_QM, ACCESS_MINING, ACCESS_MECH_MINING, ACCESS_MINING_STATION, ACCESS_MINERAL_STOREROOM, ACCESS_WEAPONS)
 	template_access = list(ACCESS_CAPTAIN, ACCESS_QM, ACCESS_CHANGE_IDS)
 	job = /datum/job/customs_agent
 

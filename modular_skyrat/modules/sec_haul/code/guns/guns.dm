@@ -37,7 +37,8 @@
 	company_flag = COMPANY_CANTALAN
 
 /obj/item/ammo_box/magazine/multi_sprite/g17
-	name = "9x19mm peacekeeper double stack magazine"
+	name = "\improper GK-17 magazine"
+	desc = "A magazine for the GK-17 handgun, chambered for 9mm Peacekeeper ammo."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "g17"
 	ammo_type = /obj/item/ammo_casing/b9mm
@@ -59,7 +60,7 @@
 
 /obj/item/gun/ballistic/automatic/pistol/g18
 	name = "\improper GK-18"
-	desc = "A CFA-made burst firing cheap polymer pistol chambered in 9x19mm Peacekeeper. Its heavy duty barrel affects firerate."
+	desc = "A CFA-made burst firing cheap polymer pistol chambered in 9mm Peacekeeper. Its heavy duty barrel affects firerate."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/glock.dmi'
 	icon_state = "glock_spec"
 	w_class = WEIGHT_CLASS_NORMAL
@@ -79,7 +80,8 @@
 	dirt_modifier = 1
 
 /obj/item/ammo_box/magazine/multi_sprite/g18
-	name = "extended 9x19mm magazine"
+	name = "\improper GK-18 magazine"
+	desc = "A magazine for the GK-18 machine pistol, chambered for 9mm Peacekeeper."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "g18"
 	ammo_type = /obj/item/ammo_casing/b9mm
@@ -158,7 +160,8 @@
 	emp_damageable = FALSE
 
 /obj/item/ammo_box/magazine/multi_sprite/pdh
-	name = "12.7x30mm pistol magazine"
+	name = "12mm PDH-6 magazine"
+	desc = "A heavy 12mm magazine made for the PDH-6H and PDH-6C handguns."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "pdh"
 	ammo_type = /obj/item/ammo_casing/b12mm
@@ -192,7 +195,8 @@
 	company_flag = COMPANY_ARMADYNE
 
 /obj/item/ammo_box/magazine/multi_sprite/pdh_corpo
-	name = ".357 pistol magazine"
+	name = "\improper PDH-6M magazine"
+	desc = "A magazine for Armadyne's exclusive corporate handgun. Chambered for .357, to your disgrace."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "pdh"
 	ammo_type = /obj/item/ammo_casing/a357
@@ -207,7 +211,7 @@
 
 /obj/item/gun/ballistic/automatic/pistol/pdh/peacekeeper
 	name = "\improper PDH-6B"
-	desc = "A modern ballistic sidearm, used primarily by law enforcement, chambered in 9x19mm Peacekeeper."
+	desc = "A modern ballistic sidearm, used primarily by law enforcement, chambered in 9mm Peacekeeper."
 	fire_delay = 1.95
 	icon_state = "pdh_peacekeeper"
 	mag_type = /obj/item/ammo_box/magazine/multi_sprite/pdh_peacekeeper
@@ -217,7 +221,8 @@
 	company_flag = COMPANY_ARMADYNE
 
 /obj/item/ammo_box/magazine/multi_sprite/pdh_peacekeeper
-	name = "9x19mm PDH-6B polymer magazine"
+	name = "\improper PDH-6B magazine"
+	desc = "A magazine for the PDG-6B law enforcement pistol, chambered for 9mm Peacekeeper ammo."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "pdh"
 	ammo_type = /obj/item/ammo_casing/b9mm
@@ -264,7 +269,8 @@
 	company_flag = COMPANY_ARMADYNE
 
 /obj/item/ammo_box/magazine/multi_sprite/ladon
-	name = "10mm auto pistol magazine"
+	name = "\improper Ladon magazine"
+	desc = "A magazine for the Ladon pistol, chambered for 10mm Auto."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "pdh"
 	ammo_type = /obj/item/ammo_casing/b10mm
@@ -290,7 +296,7 @@
 
 /obj/item/gun/ballistic/automatic/pistol/makarov
 	name = "\improper R-C 'Makarov'"
-	desc = "A mediocre pocket-sized handgun of seemingly Russian origin, chambered in 10mm Auto."
+	desc = "A mediocre pocket-sized handgun of NRI origin, chambered in 10mm Auto."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/makarov.dmi'
 	icon_state = "makarov"
 	w_class = WEIGHT_CLASS_SMALL
@@ -304,7 +310,8 @@
 	company_flag = COMPANY_IZHEVSK
 
 /obj/item/ammo_box/magazine/multi_sprite/makarov
-	name = "small 10mm auto pistol magazine"
+	name = "\improper R-C Makarov magazine"
+	desc = "A tiny magazine for the R-C Makarov pocket pistol, chambered in 10mm Auto."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "pdh"
 	ammo_type = /obj/item/ammo_casing/b10mm
@@ -346,7 +353,8 @@
 	company_flag = COMPANY_ARMADYNE
 
 /obj/item/ammo_box/magazine/multi_sprite/mk58
-	name = "outdated 9x19mm magazine"
+	name = "\improper MK-58 magazine"
+	desc = "A flimsy double-stack polymer magazine for the MK-58 handgun, chambered for 9mm Peacekeeper."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "g17"
 	ammo_type = /obj/item/ammo_casing/b9mm
@@ -371,8 +379,8 @@
 */
 
 /obj/item/gun/ballistic/automatic/pistol/firefly
-	name = "\improper P-92 'Firefly'"
-	desc = "A 9mm (Peacekeeper) sidearm made by Armadyne's Medical Directive, with a heavy front for weak wrists. A small warning label on the back says it's not fit for surgical work."
+	name = "\improper P-92 pistol"
+	desc = "A simple sidearm made by Armadyne's Medical Directive, with a heavy front for weak wrists. A small warning label on the back says it's not fit for surgical work, and chambered for 9mm Peacekeeper."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/firefly.dmi'
 	righthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/righthand.dmi'
 	lefthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/lefthand.dmi'
@@ -388,7 +396,8 @@
 	company_flag = COMPANY_ARMADYNE
 
 /obj/item/ammo_box/magazine/multi_sprite/firefly
-	name = "9x19mm special pistol magazine"
+	name = "\improper P-92 magazine"
+	desc = "A twelve-round magazine for the P-92 pistol, chambered in 9mm Peacekeeper."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "pdh"
 	ammo_type = /obj/item/ammo_casing/b9mm
@@ -412,7 +421,7 @@
 */
 
 /obj/item/gun/ballistic/automatic/croon
-	name = "\improper DT-4 'Croon'"
+	name = "\improper Croon submachine gun"
 	desc = "A low-quality 6.3mm reproduction of a popular SMG model, jams like a bitch. Although crude and unofficial, it gets the job done."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/croon.dmi'
 	righthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/righthand40x32.dmi'
@@ -438,7 +447,8 @@
 	company_flag = COMPANY_IZHEVSK
 
 /obj/item/ammo_box/magazine/multi_sprite/croon
-	name = "6.3mm SMG magazine"
+	name = "\improper Croon magazine"
+	desc = "A straight 6.3mm magazine for the Croon SMG."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "croon"
 	ammo_type = /obj/item/ammo_casing/b6mm
@@ -460,7 +470,7 @@
 */
 
 /obj/item/gun/ballistic/automatic/dozer
-	name = "\improper DZR-9 'Dozer'"
+	name = "\improper Dozer PDW"
 	desc = "The DZR-9, a notorious 9x25mm PDW that lives up to its nickname."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/dozer.dmi'
 	righthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/righthand.dmi'
@@ -484,7 +494,8 @@
 	company_flag = COMPANY_ARMADYNE
 
 /obj/item/ammo_box/magazine/multi_sprite/dozer
-	name = "9x25mm small PDW magazine"
+	name = "\improper Dozer magazine"
+	desc = "A magazine for the Dozer PDW, chambered for 9x25mm Mark 12."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "croon"
 	ammo_type = /obj/item/ammo_casing/c9mm
@@ -510,7 +521,7 @@
 */
 
 /obj/item/gun/ballistic/automatic/dmr
-	name = "\improper M557 'Ripper' Gen-2"
+	name = "\improper Gen-2 Ripper rifle"
 	desc = "An incredibly powerful marksman rifle with an internal stabilization gymbal. It's chambered in .577 Snider."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/dmr.dmi'
 	icon_state = "dmr"
@@ -533,7 +544,8 @@
 	company_flag = COMPANY_ARMADYNE
 
 /obj/item/ammo_box/magazine/dmr
-	name = ".577 DMR magazine"
+	name = "\improper Gen-2 Ripper magazine"
+	desc = "A magazine for the Ripper DMR, chambered for .577 Snider."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "dmr"
 	ammo_type = /obj/item/ammo_casing/b577
@@ -546,8 +558,8 @@
 */
 
 /obj/item/gun/ballistic/revolver/zeta
-	name = "\improper Zeta-6 'Spurchamber'"
-	desc = "A fairly common double-action six-shooter chambered for 10mm Magnum."
+	name = "\improper Zeta-6 revolver"
+	desc = "A fairly common double-action six-shooter chambered for 10mm Magnum, 'Spurchamber' is engraved on the cylinder."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/zeta.dmi'
 	righthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/righthand.dmi'
 	lefthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/lefthand.dmi'
@@ -559,14 +571,15 @@
 	company_flag = COMPANY_BOLT
 
 /obj/item/ammo_box/magazine/internal/cylinder/zeta
-	name = "10mm auto revolver cylinder"
+	name = "\improper Zeta-6 cylinder"
+	desc = "If you see this, you should call a Bluespace Technician. Unless you're that Bluespace Technician."
 	ammo_type = /obj/item/ammo_casing/c10mm
 	caliber = CALIBER_10MM
 	max_ammo = 6
 
 /obj/item/ammo_box/revolver/zeta
-	name = "10mm Magnum speedloader"
-	desc = "Designed to quickly reload the Zeta-6."
+	name = "\improper Zeta-6 speedloader"
+	desc = "A speedloader for the Spurchamber revolver, chambered for 10mm Magnum ammo."
 	icon_state = "speedloader"
 	ammo_type = /obj/item/ammo_casing/c10mm
 	max_ammo = 6
@@ -582,7 +595,7 @@
 */
 
 /obj/item/gun/ballistic/revolver/revolution
-	name = "\improper Revolution-8 'Spurmaster'"
+	name = "\improper Revolution-8 revolver"
 	desc = "The Zeta 6's distant cousin, sporting an eight-round competition grade cylinder chambered for 9mm Peacekeeper."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/revolution.dmi'
 	righthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/righthand.dmi'
@@ -595,14 +608,15 @@
 	company_flag = COMPANY_BOLT
 
 /obj/item/ammo_box/magazine/internal/cylinder/revolution
-	name = "revolver cylinder"
+	name = "\improper Revolution-8 cylinder"
+	desc = "If you see this, you should call a Bluespace Technician. Unless you're that Bluespace Technician."
 	ammo_type = /obj/item/ammo_casing/b9mm
 	caliber = CALIBER_9MMPEACE
 	max_ammo = 8
 
 /obj/item/ammo_box/revolver/revolution
-	name = "9x19mm speedloader"
-	desc = "Designed to quickly reload revolvers."
+	name = "\improper Revolution-8 speedloader"
+	desc = "A speedloader for the Revolution-8 revolver, chambered in 9mm Peacekeeper."
 	icon_state = "speedloader"
 	ammo_type = /obj/item/ammo_casing/b9mm
 	max_ammo = 8
@@ -674,7 +688,7 @@
 		icon_state = "smartgun_closed"
 
 /obj/item/ammo_box/magazine/smartgun
-	name = "rail rifle magazine"
+	name = "\improper SMART-Rifle magazine"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "smartgun"
 	ammo_type = /obj/item/ammo_casing/smartgun
@@ -741,7 +755,8 @@
 	company_flag = COMPANY_OLDARMS
 
 /obj/item/ammo_box/magazine/multi_sprite/g11
-	name = "4.73x33mm top-loader magazine"
+	name = "\improper G-11 magazine"
+	desc = "A magazine for the G-11 rifle, meant to be filled with angry propellant cubes. Chambered for 4.73mm."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "g11"
 	ammo_type = /obj/item/ammo_casing/caseless/b473
@@ -774,7 +789,7 @@
 /obj/item/ammo_box/magazine/internal/shot/m23
 	name = "m23 shotgun internal magazine"
 	caliber = CALIBER_SHOTGUN
-	ammo_type = /obj/item/ammo_casing/shotgun/beanbag
+	ammo_type = /obj/item/ammo_casing/shotgun/rubbershot
 	max_ammo = 8
 
 /obj/item/gun/ballistic/shotgun/automatic/as2
@@ -805,65 +820,11 @@
 	ammo_type = /obj/item/ammo_casing/shotgun
 	max_ammo = 4
 
-/obj/item/gun/ballistic/shotgun/sas14
-	name = "\improper SAS-14"
-	desc = "A semi-automatic shotgun with a five-round box magazine."
-	icon =  'modular_skyrat/modules/sec_haul/icons/guns/sas14.dmi'
-	icon_state = "sas14"
-	inhand_icon_state = "shotgun"
-	worn_icon_state = "shotgun"
-	can_suppress = TRUE
-	suppressed_sound = 'modular_skyrat/modules/aesthetics/guns/sound/suppressed_shotgun.ogg'
-	suppressed_volume = 100
-	vary_fire_sound = TRUE
-	fire_sound = 'modular_skyrat/modules/sec_haul/sound/shotgun_bm.ogg'
-	fire_delay = 5
-	mag_type = /obj/item/ammo_box/magazine/sas14
-	w_class = WEIGHT_CLASS_BULKY
-	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_BELT | ITEM_SLOT_OCLOTHING
-	weapon_weight = WEAPON_MEDIUM
-	burst_size = 1
-	fire_select_modes = list(SELECT_SEMI_AUTOMATIC)
-	semi_auto = TRUE
-	internal_magazine = FALSE
-	company_flag = COMPANY_ARMADYNE
-
-/obj/item/ammo_box/magazine/sas14
-	name = "14 Gauge box magazine"
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
-	icon_state = "sas14"
-	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
-	caliber = CALIBER_14GAUGE
-	ammo_type = /obj/item/ammo_casing/s14gauge
-	max_ammo = 5
-
-//New SAS14 mags beyond here
-
-/obj/item/ammo_box/magazine/sas14/empty
-	start_empty = TRUE
-
-/obj/item/ammo_box/magazine/sas14/beanbag
-	ammo_type = /obj/item/ammo_casing/s14gauge/beanbag
-
-/obj/item/ammo_box/magazine/sas14/buckshot
-	ammo_type = /obj/item/ammo_casing/s14gauge/buckshot
-
-/obj/item/ammo_box/magazine/sas14/rubbershot
-	ammo_type = /obj/item/ammo_casing/s14gauge/rubbershot
-
-/obj/item/ammo_box/magazine/sas14/stunslug
-	ammo_type = /obj/item/ammo_casing/s14gauge/stunslug
-
-/*
-*	UN-GOOFED GUNS
-*/
-
 /*
 *	NORWIND
 */
-
 /obj/item/gun/ballistic/automatic/norwind
-	name = "\improper M112 'Norwind'"
+	name = "\improper Norwind rifle"
 	desc = "A rare M112 DMR rechambered to 12.7x30mm for peacekeeping work, it comes with a scope for medium-long range engagements. A bayonet lug is visible."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/norwind.dmi'
 	righthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/righthand.dmi'
@@ -898,7 +859,8 @@
 	AddComponent(/datum/component/scope, range_modifier = 1.75)
 
 /obj/item/ammo_box/magazine/multi_sprite/norwind
-	name = "12.7x30mm DMR magazine"
+	name = "\improper Norwind magazine"
+	desc = "An eight-round magazine for the Norwind DMR, chambered for 12mm."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "norwind"
 	ammo_type = /obj/item/ammo_casing/b12mm
@@ -952,7 +914,8 @@
 	AddComponent(/datum/component/scope, range_modifier = 1.5)
 
 /obj/item/ammo_box/magazine/multi_sprite/vintorez
-	name = "9x19mm carbine magazine"
+	name = "\improper VKC magazine"
+	desc = "A twenty-round magazine for the VKC marksman rifle, chambered in 9mm Peacekeeper."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "norwind"
 	ammo_type = /obj/item/ammo_casing/b9mm
@@ -1003,7 +966,8 @@
 	company_flag = COMPANY_BOLT
 
 /obj/item/ammo_box/magazine/multi_sprite/pcr
-	name = "9mm SMG magazine"
+	name = "\improper PCR-9 magazine"
+	desc = "A thirty-two round magazine for the PCR-9 submachine gun, chambered for 9mm Peacekeeper."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "pcr"
 	ammo_type = /obj/item/ammo_casing/b9mm
@@ -1050,7 +1014,8 @@
 	company_flag = COMPANY_BOLT
 
 /obj/item/ammo_box/magazine/multi_sprite/pitbull
-	name = "10mm SMG magazine"
+	name = "\improper Pitbull magazine"
+	desc = "A twenty-four round magazine for the Pitbull PDW, chambered in 10mm Auto."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "pcr"
 	ammo_type = /obj/item/ammo_casing/b10mm
@@ -1076,7 +1041,7 @@
 
 /obj/item/gun/ballistic/automatic/ostwind
 	name = "\improper DTR-6 Rifle"
-	desc = "A 6.3mm special-purpose rifle designed for specific situations."
+	desc = "A 6.3mm special-purpose rifle designed to deal with threats uniquely. You feel like this is a support type firearm."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ostwind.dmi'
 	righthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/righthand.dmi'
 	lefthand_file = 'modular_skyrat/modules/sec_haul/icons/guns/inhands/lefthand.dmi'
@@ -1101,7 +1066,8 @@
 	can_bayonet = TRUE
 
 /obj/item/ammo_box/magazine/multi_sprite/ostwind
-	name = "6.3mm rifle magazine"
+	name = "\improper DTR-6 magazine"
+	desc = "A thirty round double-stack magazine for the DTR-6 rifle, capable of loading flechettes, fragmentation ammo or dissuasive pellets. Chambered for 6.3mm."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "pcr"
 	ammo_type = /obj/item/ammo_casing/b6mm
