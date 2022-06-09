@@ -859,6 +859,8 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	// SKYRAT EDIT BEGIN
 	/// Can this High Frequency Blade gib?
 	var/can_gib = TRUE
+	///What's the block chance while wielded?
+	var/block_chance_wielded = 100
 	// SKYRAT EDIT END
 
 /obj/item/highfrequencyblade/Initialize(mapload)
@@ -875,7 +877,9 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 
 /obj/item/highfrequencyblade/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
 	if(attack_type == PROJECTILE_ATTACK)
-		if(HAS_TRAIT(src, TRAIT_WIELDED) || prob(final_block_chance))
+		// SKYRAT EDIT BEGIN
+		if((HAS_TRAIT(src, TRAIT_WIELDED) && prob(block_chance_wielded)) || prob(final_block_chance))
+		// SKYRAT EDIT END
 			owner.visible_message(span_danger("[owner] deflects [attack_text] with [src]!"))
 			playsound(src, pick('sound/weapons/bulletflyby.ogg', 'sound/weapons/bulletflyby2.ogg', 'sound/weapons/bulletflyby3.ogg'), 75, TRUE)
 			return TRUE

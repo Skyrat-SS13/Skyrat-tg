@@ -89,6 +89,7 @@
 	throwforce = 15
 	wound_bonus = 20
 	bare_wound_bonus = 25
+	block_chance_wielded = 25
 	can_gib = FALSE
 
 /datum/supply_pack/security/hf
