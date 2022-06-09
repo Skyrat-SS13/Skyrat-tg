@@ -296,7 +296,7 @@
 						to_chat(human_user, "<b>Details:</b> <A href='?src=[REF(src)];hud=s;add_details=1;cdataid=[c.dataId]'>\[Add details]</A>")
 					to_chat(human_user, "Added by [c.author] at [c.time]")
 					to_chat(human_user, "----------")
-				to_chat(human_user, "<b>Notes:</b> [sec_record.fields["notes"]]")
+				to_chat(human_user, "<b>Notes:</b> [sec_record.fields["notes"]]") //SKYRAT EDIT CHANGE - EXAMINE RECORDS
 				return
 
 			//SKYRAT EDIT ADDITION BEGIN - EXAMINE RECORDS
@@ -349,7 +349,7 @@
 
 			if(href_list["add_crime"])
 				var/t1 = tgui_input_text(human_user, "Crime name", "Security HUD")
-				if(!target_record || !t1 || !allowed_access)
+				if(!target_record || !t1 || !allowed_access) //SKYRAT EDIT CHANGE - EXAMINE RECORDS
 					return
 				if(!human_user.canUseHUD())
 					return
