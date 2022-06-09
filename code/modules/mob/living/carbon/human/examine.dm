@@ -445,9 +445,6 @@
 				// SKYRAT EDIT ADDITION BEGIN - EXAMINE RECORDS
 				if(target_record && length(target_record.fields["past_records"]) > RECORDS_INVISIBLE_THRESHOLD)
 					. += "<span class='deptradio'>Security record:</span> <a href='?src=[REF(src)];hud=s;secrecords=1;examine_time=[world.time]'>\[View security records\]</a>"	
-	else if(isobserver(user))
-		. += span_info("<b>Traits:</b> [get_quirk_string(FALSE, CAT_QUIRK_ALL)]")
-	. += "*---------*</span>"
 
 		if (record_cache && length(record_cache.fields["past_records"]) > RECORDS_INVISIBLE_THRESHOLD)
 			. += "<a href='?src=[REF(src)];hud=[HAS_TRAIT(user, TRAIT_SECURITY_HUD) ? "s" : "m"];genrecords=1;examine_time=[world.time]'>\[View general records\]</a>"
