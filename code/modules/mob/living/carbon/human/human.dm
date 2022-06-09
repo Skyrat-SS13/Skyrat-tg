@@ -301,14 +301,14 @@
 
 			//SKYRAT EDIT ADDITION BEGIN - EXAMINE RECORDS
 			if(href_list["genrecords"])
-				if(!H.canUseHUD())
+				if(!human_user.canUseHUD())
 					return
 				if(!HAS_TRAIT(H, TRAIT_SECURITY_HUD))
 					return
 				to_chat(usr, "<b>General Record:</b> [general_record.fields["past_records"]]")
 
 			if(href_list["secrecords"])
-				if(!H.canUseHUD())
+				if(!human_user.canUseHUD())
 					return
 				if(!HAS_TRAIT(H, TRAIT_SECURITY_HUD))
 					return
