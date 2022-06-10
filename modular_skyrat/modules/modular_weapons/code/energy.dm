@@ -17,14 +17,11 @@
 	cell_type = /obj/item/stock_parts/cell/mini_egun
 	ammo_x_offset = 2
 	charge_sections = 3
-	can_flashlight = FALSE // Can't attach or detach the flashlight, and override it's icon update
-	gunlight_state = "cfa-disabler-light"
 	has_gun_safety = FALSE
 	company_flag = COMPANY_BOLT
 
-/obj/item/gun/energy/disabler/bolt_disabler/Initialize()
-	set_gun_light(new /obj/item/flashlight/seclite(src))
-	return ..()
+/obj/item/gun/energy/disabler/bolt_disabler/add_seclight_point()
+	return
 
 /*
 *	CFA PHALANX

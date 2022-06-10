@@ -9,11 +9,9 @@
 	icon = 'modular_skyrat/modules/microfusion/icons/microfusion_gun40x32.dmi'
 	icon_state = "mcr01"
 	bayonet_icon = 'modular_skyrat/modules/microfusion/icons/microfusion_gun40x32.dmi'
-	gunlight_icon = 'modular_skyrat/modules/microfusion/icons/microfusion_gun40x32.dmi'
 	lefthand_file = 'modular_skyrat/modules/microfusion/icons/guns_lefthand.dmi'
 	righthand_file = 'modular_skyrat/modules/microfusion/icons/guns_righthand.dmi'
 	has_gun_safety = TRUE
-	can_flashlight = FALSE
 	can_bayonet = FALSE
 	w_class = WEIGHT_CLASS_BULKY
 	obj_flags = UNIQUE_RENAME
@@ -117,6 +115,9 @@
 
 /obj/item/gun/microfusion/add_weapon_description()
 	AddElement(/datum/element/weapon_description, attached_proc = .proc/add_notes_energy)
+
+/obj/item/gun/microfusion/add_seclight_point()
+	return
 
 /obj/item/gun/microfusion/Destroy()
 	if(microfusion_lens)

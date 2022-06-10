@@ -105,14 +105,10 @@
 	trigger_guard = TRIGGER_GUARD_NONE
 	ammo_x_offset = 2
 
-<<<<<<< HEAD
-/obj/item/gun/energy/e_gun/nuclear //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
-=======
 /obj/item/gun/energy/e_gun/turret/add_seclight_point()
 	return
 
 /obj/item/gun/energy/e_gun/nuclear
->>>>>>> 3c8b666b352 (Refactors Gunlight / Helmetlight to be a component (#67517))
 	name = "advanced energy gun"
 	desc = "An energy gun with an experimental miniaturized nuclear reactor that automatically charges the internal power cell."
 	icon_state = "nucgun"

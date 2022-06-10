@@ -32,12 +32,7 @@
 	inhand_icon_state = null
 	ammo_type = list(/obj/item/ammo_casing/energy/disabler/skyrat) // SKYRAT EDIT: 	ammo_type = list(/obj/item/ammo_casing/energy/disabler)
 	ammo_x_offset = 2
-<<<<<<< HEAD
-	can_flashlight = TRUE
-	flight_x_offset = 15
-	flight_y_offset = 10
 	cell_type = /obj/item/stock_parts/cell/super // SKYRAT EDIT ADDITION
-=======
 
 /obj/item/gun/energy/disabler/add_seclight_point()
 	AddComponent(/datum/component/seclite_attachable, \
@@ -45,7 +40,6 @@
 		light_overlay = "flight", \
 		overlay_x = 15, \
 		overlay_y = 10)
->>>>>>> 3c8b666b352 (Refactors Gunlight / Helmetlight to be a component (#67517))
 
 /obj/item/gun/energy/disabler/cyborg
 	name = "cyborg disabler"
