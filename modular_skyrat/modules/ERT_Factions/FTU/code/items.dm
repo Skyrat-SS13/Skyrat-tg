@@ -58,7 +58,6 @@
 	fire_sound = 'modular_skyrat/modules/ERT_Factions/FTU/sound/r37.ogg'
 	emp_damageable = FALSE
 	can_bayonet = FALSE
-	can_flashlight = TRUE
 	mag_type = /obj/item/ammo_box/magazine/pulse/r37
 	company_flag = null
 
@@ -95,7 +94,6 @@
 	fire_sound = 'modular_skyrat/modules/ERT_Factions/FTU/sound/r40.ogg'
 	emp_damageable = FALSE
 	can_bayonet = FALSE
-	can_flashlight = TRUE
 	mag_type = /obj/item/ammo_box/magazine/pulse/r40
 	company_flag = null
 
@@ -128,8 +126,10 @@
 	rack_sound_volume = 110
 	spread = 1
 	realistic = TRUE
-	can_flashlight = FALSE
 	emp_damageable = FALSE
+
+/obj/item/gun/ballistic/automatic/pistol/pdh/pulse/golden_eagle/add_seclight_point()
+	return
 
 /obj/item/ammo_box/magazine/pulse/mm12/saphe
 	name = "12.7x35mm SAP-HE magnum magazine"

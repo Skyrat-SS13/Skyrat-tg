@@ -15,14 +15,18 @@
 	fire_delay = 2.5
 	burst_size = 2
 	can_bayonet = TRUE
-	can_flashlight = TRUE
 	knife_x_offset = 26
 	knife_y_offset = 10
-	flight_x_offset = 24
-	flight_y_offset = 10
 	mag_display = TRUE
 	mag_display_ammo = TRUE
 	empty_indicator = TRUE
+
+/obj/item/gun/ballistic/automatic/cmg/add_seclight_point()
+	AddComponent(/datum/component/seclite_attachable, \
+		light_overlay_icon = 'icons/obj/guns/flashlights.dmi', \
+		light_overlay = "flight", \
+		overlay_x = 24, \
+		overlay_y = 10)
 
 /obj/item/ammo_box/magazine/multi_sprite/cmg
 	name = ".45 PDW magazine"

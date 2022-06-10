@@ -1,7 +1,7 @@
 #define MASK_SNOUT_EXTRA_OFFSET_X 1
 #define MASK_SNOUT_EXTRA_OFFSET_Y 1
 
-/obj/item/clothing
+/obj/item
 	var/datum/greyscale_config/greyscale_config_worn_teshari_fallback
 	var/datum/greyscale_config/greyscale_config_worn_teshari_fallback_skirt
 
@@ -12,15 +12,11 @@
 	item.worn_icon_teshari = icon
 
 /datum/species/teshari/get_custom_worn_config_fallback(item_slot, obj/item/item)
-	var/obj/item/clothing/clothing = item
-	if(!istype(clothing))
-		return null
-
 	// skirt support
-	if(istype(clothing, /obj/item/clothing/under) && !(clothing.body_parts_covered & LEGS))
-		return clothing.greyscale_config_worn_teshari_fallback_skirt
+	if(istype(item, /obj/item/clothing/under) && !(item.body_parts_covered & LEGS))
+		return item.greyscale_config_worn_teshari_fallback_skirt
 
-	return clothing.greyscale_config_worn_teshari_fallback
+	return item.greyscale_config_worn_teshari_fallback
 
 /datum/species/teshari/generate_custom_worn_icon(item_slot, obj/item/item)
 	. = ..()
@@ -28,8 +24,7 @@
 		return
 
 	// Use the fancy fallback sprites.
-	if(istype(item, /obj/item/clothing))
-		. = generate_custom_worn_icon_fallback(item_slot, item)
+	. = generate_custom_worn_icon_fallback(item_slot, item)
 	if(.)
 		return
 
