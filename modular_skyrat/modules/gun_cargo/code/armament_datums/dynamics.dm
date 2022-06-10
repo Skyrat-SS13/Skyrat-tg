@@ -202,12 +202,14 @@
 	lower_cost = CARGO_CRATE_VALUE * 2
 	upper_cost = CARGO_CRATE_VALUE * 4
 
+/*
 /datum/armament_entry/cargo_gun/dynamics/ammo/shotgun/iceblox
 	item_type = /obj/item/ammo_box/advanced/s12gauge/iceblox
 	description = "A box of 15 Iceshot Shells. A shotshell variant of Iceblox ammo that lowers the targets body temperature."
 	stock_mult = 1
 	lower_cost = CARGO_CRATE_VALUE * 2
 	upper_cost = CARGO_CRATE_VALUE * 4
+*/
 
 /datum/armament_entry/cargo_gun/dynamics/ammo/shotgun/incendiary
 	item_type = /obj/item/ammo_box/advanced/s12gauge/incendiary
