@@ -329,7 +329,7 @@
 	)
 
 	if(!(HAS_TRAIT(target, TRAIT_NUMBED) || target.stat >= UNCONSCIOUS)) ///skyrat add start - warning for unanesthetized surgery
-		balloon_alert(user, "not numbed!") ///skyrat add end
+		target.balloon_alert(user, "not numbed!") ///skyrat add end
 	
 	log_combat(user, target, "operated on", null, "(OPERATION TYPE: [procedure.name]) (TARGET AREA: [selected_zone])")
 
