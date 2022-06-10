@@ -30,7 +30,7 @@
 	rack_sound = 'sound/weapons/gun/pistol/rack.ogg'
 	lock_back_sound = 'sound/weapons/gun/pistol/slide_lock.ogg'
 	bolt_drop_sound = 'sound/weapons/gun/pistol/slide_drop.ogg'
-	dirt_modifier = 1
+	dirt_modifier = 0.5
 	emp_damageable = TRUE
 	fire_delay = 1.90
 	company_flag = COMPANY_CANTALAN
@@ -78,7 +78,7 @@
 	mag_display = FALSE
 	mag_display_ammo = FALSE
 	company_flag = COMPANY_CANTALAN
-	dirt_modifier = 1
+	dirt_modifier = 0.7
 
 /obj/item/gun/ballistic/automatic/pistol/g18/add_seclight_point()
 	AddComponent(/datum/component/seclite_attachable, light_overlay_icon = 'icons/obj/guns/flashlights.dmi', light_overlay = "flight")
@@ -146,6 +146,7 @@
 	lock_back_sound = 'sound/weapons/gun/pistol/slide_lock.ogg'
 	bolt_drop_sound = 'sound/weapons/gun/pistol/slide_drop.ogg'
 	realistic = TRUE
+	dirt_modifier = 0.3
 	emp_damageable = TRUE
 	company_flag = COMPANY_ARMADYNE
 
@@ -224,6 +225,7 @@
 	mag_type = /obj/item/ammo_box/magazine/multi_sprite/pdh_peacekeeper
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/pistol_fire.ogg'
 	realistic = TRUE
+	dirt_modifier = 0.6
 	company_flag = COMPANY_ARMADYNE
 
 /obj/item/ammo_box/magazine/multi_sprite/pdh_peacekeeper
@@ -268,7 +270,7 @@
 	lock_back_sound = 'sound/weapons/gun/pistol/slide_lock.ogg'
 	bolt_drop_sound = 'sound/weapons/gun/pistol/slide_drop.ogg'
 	realistic = TRUE
-	dirt_modifier = 0.8
+	dirt_modifier = 0.6
 	emp_damageable = TRUE
 	fire_delay = 4.20
 	company_flag = COMPANY_ARMADYNE
@@ -313,7 +315,7 @@
 	rack_sound = 'sound/weapons/gun/pistol/rack.ogg'
 	lock_back_sound = 'sound/weapons/gun/pistol/slide_lock.ogg'
 	bolt_drop_sound = 'sound/weapons/gun/pistol/slide_drop.ogg'
-	dirt_modifier = 0.75
+	dirt_modifier = 0.3
 	emp_damageable = TRUE
 	company_flag = COMPANY_IZHEVSK
 
@@ -1077,6 +1079,7 @@
 	mag_display = TRUE
 	mag_display_ammo = TRUE
 	realistic = TRUE
+	dirt_modifier = 0.4
 	fire_sound = 'sound/weapons/gun/smg/shot.ogg'
 	emp_damageable = TRUE
 	can_bayonet = TRUE
