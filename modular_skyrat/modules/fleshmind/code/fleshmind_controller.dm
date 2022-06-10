@@ -44,7 +44,6 @@
 	var/list/structure_types = list(
 		/obj/structure/fleshmind/structure/babbler,
 		/obj/structure/fleshmind/structure/modulator,
-		/obj/structure/fleshmind/structure/screamer,
 		/obj/structure/fleshmind/structure/whisperer,
 		/obj/structure/fleshmind/structure/assembler,
 		/obj/structure/fleshmind/structure/turret,
@@ -69,7 +68,7 @@
 	/// Progress to spawning the next structure.
 	var/structure_progression = 0
 	/// How many times do we need to spread to spawn an extra structure.
-	var/spreads_for_structure = 30
+	var/spreads_for_structure = 50
 	/// How many spread in our initial expansion.
 	var/initial_expansion_spreads = 30
 	/// How many structures in our initial expansion.

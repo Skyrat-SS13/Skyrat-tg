@@ -1,5 +1,5 @@
 /mob/living/simple_animal/hostile/fleshmind/tyrant
-	name = "Tyrant Type 34-C"
+	name = "Type 34-C Fleshdrive"
 	desc = "The will of the many, manifested in flesh and metal. It has fucking rockets."
 	icon = 'modular_skyrat/modules/fleshmind/icons/tyrant.dmi'
 	icon_state = "tyrant"
@@ -50,6 +50,10 @@
 		'modular_skyrat/modules/fleshmind/sound/tyrant/aggro_11.ogg',
 
 	)
+	environment_smash = ENVIRONMENT_SMASH_RWALLS
+	move_force = MOVE_FORCE_OVERPOWERING
+	move_resist = MOVE_FORCE_OVERPOWERING
+	pull_force = MOVE_FORCE_OVERPOWERING
 	/// The cooldown on our rocket pod use.
 	var/rocket_pod_cooldown_time_upper = 12 SECONDS
 	var/rocket_pod_cooldown_time_lower = 10 SECONDS

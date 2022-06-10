@@ -526,7 +526,7 @@
 	density = FALSE
 	max_integrity = 260
 	activation_range = DEFAULT_VIEW_RANGE
-	ability_cooldown_time = 30 SECONDS
+	ability_cooldown_time = 40 SECONDS
 	/// The max amount of mobs we can have at any one time.
 	var/max_mobs = 2
 	/// The current amount of spawned mobs

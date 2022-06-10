@@ -126,8 +126,6 @@
 
 	parent_machinery.idle_power_usage = BASE_MACHINE_ACTIVE_CONSUMPTION * 2 // These machines are now power sinks!
 
-	parent_machinery.set_machine_stat(BROKEN)
-
 /datum/component/machine_corruption/Destroy(force, silent)
 	var/obj/machinery/parent_machinery = parent
 	parent_machinery.idle_power_usage = initial(parent_machinery.idle_power_usage)

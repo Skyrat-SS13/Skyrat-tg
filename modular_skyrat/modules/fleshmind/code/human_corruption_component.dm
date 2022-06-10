@@ -49,6 +49,8 @@
 
 	infected_human.faction |= FACTION_FLESHMIND
 
+	ADD_TRAIT(infected_human, TRAIT_NOGUNS, "fleshmind")
+
 	infected_human.update_appearance()
 
 /datum/component/human_corruption/Destroy(force, silent)
@@ -61,6 +63,7 @@
 		COMSIG_ATOM_EMP_ACT,
 		COMSIG_LIVING_DEATH,
 	))
+	REMOVE_TRAIT(parent_mob, TRAIT_NOGUNS, "fleshmind")
 	parent_mob.update_appearance()
 	return ..()
 
