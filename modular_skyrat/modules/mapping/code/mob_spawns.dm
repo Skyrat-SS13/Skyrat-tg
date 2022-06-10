@@ -259,10 +259,10 @@
 	neck = /obj/item/clothing/neck/cloak/qm
 	back = /obj/item/storage/backpack
 	backpack_contents = list(
-    	/obj/item/armament_token/energy=1,
-    	/obj/item/megaphone/cargo=1,
-    	)
-	id = /obj/item/card/id/away/freightqm
+		/obj/item/armament_token/energy=1,
+		/obj/item/megaphone/cargo=1,
+		)
+	id = /obj/item/card/id/away/silver/freightqm
 
 //Port Tarkon, 5 people trapped in a revamped charlie-station like ghost role. Survive the aliens and threats, Fix the port and/or finish construction
 
@@ -396,6 +396,12 @@
 	icon_state = "cryopod-open"
 
 //IDS//
+
+/obj/item/card/id/away/silver
+	name = "old silver identification card"
+	desc = "A perfectly generic identification card. Looks like it could use some flavor. This one looks like it belonged to someone important."
+	wildcard_slots = WILDCARD_LIMIT_SILVER
+
 /obj/item/card/id/away/blackmarket
 	name = "scuffed ID card"
 	desc = "A faded, scuffed, plastic ID card. You can make out the rank \"Deck Crewman\"."
@@ -406,19 +412,19 @@
 	assignment = "Deck Crewman"
 
 /obj/item/card/id/away/freightcrew
-    name = "Freighter ID"
-    desc = "An ID card marked with the rank of Freight Hauler."
-    trim = /datum/id_trim/job/cargo_technician
+	name = "Freighter ID"
+	desc = "An ID card marked with the rank of Freight Hauler."
+	trim = /datum/id_trim/job/cargo_technician
 
 /obj/item/card/id/away/freightmine
-    name = "Freighter ID"
-    desc = "An ID card marked with the rank of Freight Ship Excavator."
-    trim = /datum/id_trim/job/shaft_miner
+	name = "Freighter ID"
+	desc = "An ID card marked with the rank of Freight Ship Excavator."
+	trim = /datum/id_trim/job/shaft_miner
 
-/obj/item/card/id/away/freightqm
-    name = "Freighter Deck Chief ID"
-    desc = "An ID card marked with the rank of Freight Deck Chief."
-    trim = /datum/id_trim/job/quartermaster
+/obj/item/card/id/away/silver/freightqm
+	name = "Freighter Deck Chief ID"
+	desc = "An ID card marked with the rank of Freight Deck Chief."
+	trim = /datum/id_trim/job/quartermaster
 
 
 /datum/id_trim/away/tarkon

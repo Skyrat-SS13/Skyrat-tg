@@ -199,7 +199,7 @@
 	. = ..()
 	if(isliving(target))
 		var/mob/living/UnluckyBastard = target
-		UnluckyBastard.adjust_bodytemperature(((30-blocked)/30)*(temperature - UnluckyBastard.bodytemperature))
+		UnluckyBastard.adjust_bodytemperature(((100-blocked)/100)*(temperature - UnluckyBastard.bodytemperature))
 
 /obj/item/ammo_casing/shotgun/hunter
 	name = "hunter buckshot shell"

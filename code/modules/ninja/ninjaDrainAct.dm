@@ -277,6 +277,12 @@
 	return COMPONENT_CANCEL_ATTACK_CHAIN
 
 /mob/living/silicon/robot/proc/ninjadrain_charge(mob/living/carbon/human/ninja, obj/item/mod/module/hacker/hacking_module)
+	//SKYRAT EDIT: ADDITION START
+	var/list/modelselected = list()
+	modelselected["Assault"] = "/obj/item/robot_model/ninja"
+	modelselected["Medical"] = "/obj/item/robot_model/ninja/ninja_medical"
+	modelselected["Saboteur"] = "/obj/item/robot_model/ninja_saboteur"
+	//SKYRAT EDIT: ADDITION END
 	if(!do_after(ninja, 6 SECONDS, target = src))
 		return
 	spark_system.start()
@@ -287,7 +293,12 @@
 	UnlinkSelf()
 	ionpulse = TRUE
 	laws = new /datum/ai_laws/ninja_override()
-	model.transform_to(pick(/obj/item/robot_model/syndicate, /obj/item/robot_model/syndicate_medical, /obj/item/robot_model/saboteur))
+	//SKYRAT EDIT CHANGE BEGIN - Role Selection
+	//model.transform_to(pick(/obj/item/robot_model/syndicate, /obj/item/robot_model/syndicate_medical, /obj/item/robot_model/saboteur)) - SKYRAT EDIT - ORIGINAL
+	var/choice = input(src,"What role do you wish to become?","Select Role") in sort_list(modelselected)
+	model.transform_to(modelselected[choice])
+	//SKYRAT EDIT CHANGE END
+
 
 	var/datum/antagonist/ninja/ninja_antag = ninja.mind.has_antag_datum(/datum/antagonist/ninja)
 	if(!ninja_antag)
