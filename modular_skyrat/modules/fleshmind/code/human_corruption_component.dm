@@ -51,6 +51,8 @@
 
 	ADD_TRAIT(infected_human, TRAIT_NOGUNS, "fleshmind")
 
+	create_glow()
+
 	infected_human.update_appearance()
 
 /datum/component/human_corruption/Destroy(force, silent)
@@ -64,6 +66,7 @@
 		COMSIG_LIVING_DEATH,
 	))
 	REMOVE_TRAIT(parent_mob, TRAIT_NOGUNS, "fleshmind")
+	parent_mob.remove_filter("corruption_glow")
 	parent_mob.update_appearance()
 	return ..()
 
@@ -103,3 +106,19 @@
 	SIGNAL_HANDLER
 
 	qdel(src)
+
+/datum/component/human_corruption/proc/create_glow()
+	var/atom/movable/parent_movable = parent
+	if (!istype(parent_movable))
+		return
+
+	parent_movable.add_filter("corruption_glow", 2, list("type" = "outline", "color" = FLESHMIND_LIGHT_BLUE, "size" = 2))
+	addtimer(CALLBACK(src, .proc/start_glow_loop, parent_movable), rand(0.1 SECONDS, 1.9 SECONDS))
+
+/datum/component/human_corruption/proc/start_glow_loop(atom/movable/parent_movable)
+	var/filter = parent_movable.get_filter("corruption_glow")
+	if (!filter)
+		return
+
+	animate(filter, alpha = 110, time = 1.5 SECONDS, loop = -1)
+	animate(alpha = 40, time = 2.5 SECONDS)
