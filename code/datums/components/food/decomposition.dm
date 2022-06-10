@@ -73,7 +73,11 @@
 
 	var/turf/open/open_turf = food.loc
 
+<<<<<<< HEAD
 	if(!istype(open_turf) || istype(open_turf, /turf/open/lava) || istype(open_turf, /turf/open/misc/asteroid/basalt)) //Are we actually in a valid open turf?
+=======
+	if(!istype(open_turf) || islava(open_turf) || istype(open_turf, /turf/open/misc/asteroid)) //Are we actually in a valid open turf?
+>>>>>>> e15e0f3e91b (Lemon does weather effects (#67469))
 		remove_timer()
 		return
 
