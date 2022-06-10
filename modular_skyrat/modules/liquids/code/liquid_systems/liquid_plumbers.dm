@@ -111,6 +111,16 @@
 	var/drain_flat = 20
 	var/drain_percent = 0.4
 
+	/// Is the turf too full to pump more?
+	var/over_volume = FALSE
+	/// Max liquid volume on the turf before we stop pumping.
+	var/max_ext_volume = LIQUID_HEIGHT_CONSIDER_FULL_TILE
+
+	/// Is the turf too high-pressured to pump more?
+	var/over_pressure = FALSE
+	/// Max pressure on the turf before we stop pumping.
+	var/max_ext_kpa = WARNING_HIGH_PRESSURE
+
 /obj/machinery/plumbing/liquid_output_pump/default_unfasten_wrench(mob/user, obj/item/I, time = 20)
 	. = ..()
 	if(. == SUCCESSFUL_UNFASTEN)
@@ -138,14 +148,24 @@
 	. = ..()
 	. += span_notice("It's currently [turned_on ? "ON" : "OFF"].")
 	. += span_notice("It's height regulator [height_regulator ? "points at [height_regulator]" : "is disabled"]. (Ctrl-click to change)")
+	if(over_pressure)
+		. += span_warning("The gas regulator light is blinking.")
+	if(over_volume)
+		. += span_warning("The liquid volume regulator light is blinking.")
 
 /obj/machinery/plumbing/liquid_output_pump/proc/can_pump()
 	if(!turned_on || !anchored || panel_open || !isturf(loc) || reagents.total_volume == 0)
 		return FALSE
-	if(height_regulator)
-		var/turf/T = loc
-		if(T.liquids && T.liquids.height >= height_regulator)
-			return FALSE
+	var/turf/current_turf = loc
+	if(current_turf.liquids?.height >= max_ext_volume)
+		return FALSE
+	if(height_regulator && current_turf.liquids?.height >= height_regulator)
+		return FALSE
+	var/turf/open/open_turf = current_turf
+	var/datum/gas_mixture/gas_mix = open_turf?.return_air()
+	if(gas_mix?.return_pressure() > max_ext_kpa)
+		over_pressure = TRUE
+		return FALSE
 	return TRUE
 
 /obj/machinery/plumbing/liquid_output_pump/process(delta_time)
@@ -188,6 +208,7 @@
 
 /obj/item/construction/plumbing/engineering/set_plumbing_designs()
 	plumbing_design_types = list(
+	/obj/machinery/duct = 1,
 	/obj/machinery/plumbing/input = 5,
 	/obj/machinery/plumbing/output = 5,
 	/obj/machinery/plumbing/tank = 20,
