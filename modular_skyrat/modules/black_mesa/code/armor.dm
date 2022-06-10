@@ -88,7 +88,6 @@
 	icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecucloth.dmi'
 	worn_icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecumob.dmi'
 	worn_icon_digi = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecumob_muzzled.dmi'
-	can_flashlight = FALSE
 	uses_advanced_reskins = TRUE
 	unique_reskin = list(
 		"Basic" = list(
