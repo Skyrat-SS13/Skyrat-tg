@@ -11,6 +11,7 @@
 	progression_minimum = 45 MINUTES
 	progression_reward = list(15 MINUTES, 20 MINUTES)
 	telecrystal_reward = list(3, 5)
+	population_requirement = 80 //SKYRAT EDIT
 
 	var/progression_objectives_minimum = 20 MINUTES
 
