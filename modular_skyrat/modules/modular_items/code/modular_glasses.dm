@@ -10,7 +10,7 @@
   desc = "A heads-up display that provides important info in (almost) real time. These don't really seem to work"
   actions_types = list(/datum/action/item_action/toggle_mode)
   glass_colour_type = /datum/client_colour/glass_colour/gray
-  /// Defines sound to be played upon mode switching 
+  /// Defines sound to be played upon mode switching
   var/modeswitch_sound = 'sound/effects/pop.ogg'
   /// Iconstate for when the status is off (TODO:  off_state --> modes_states list for expandability)
   var/off_state = "salesman_fzz"
@@ -36,7 +36,7 @@
   if(mode == MODE_FREEZE_ANIMATION)
     icon = initial(icon) /// Resets icon to initial value after MODE_FREEZE_ANIMATION, since MODE_FREEZE_ANIMATION replaces it with non-animated version of initial
   mode = modes[mode] // Change modes
-  balloon_alert(user,user, span_notice("[modes_msg[mode]][src].")) /// Print the message defined for this mode as a balloon over the user
+  balloon_alert(user, span_notice("[modes_msg[mode]][src].")) /// Print the message defined for this mode as a balloon over the user
   switch(mode)
     if(MODE_ON)
       /// Resets all the vars to their initial values (THIS PRESUMES THE DEFAULT STATE IS ON)
@@ -195,7 +195,7 @@
   name = "retinal projector meson HUD"
   icon_state = "projector_meson"
   lighting_alpha = 300
-  vision_flags = SEE_TURFS 
+  vision_flags = SEE_TURFS
   darkness_view = 2
 
 /obj/item/clothing/glasses/hud/ar/projector/health
