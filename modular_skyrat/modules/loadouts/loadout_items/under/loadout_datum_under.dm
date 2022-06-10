@@ -428,6 +428,10 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Tactical Pants"
 	item_path = /obj/item/clothing/under/pants/tactical
 
+/datum/loadout_item/under/miscellaneous/blastwave_uniform
+	name = "Blastwave Uniform"
+	item_path = /obj/item/clothing/under/blastwave
+
 //HALLOWEEN
 /datum/loadout_item/under/miscellaneous/pj_blood
 	name = "Blood-red Pajamas"
