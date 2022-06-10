@@ -262,8 +262,8 @@
 		return
 	ADD_TRAIT(owner, TRAIT_IMMOBILIZED, TRAIT_STATUS_EFFECT(id))
 	ADD_TRAIT(owner, TRAIT_HANDS_BLOCKED, TRAIT_STATUS_EFFECT(id))
-	ADD_TRAIT(owner, TRAIT_NUMBED, "stasis") //SKYRAT EDIT START - STASIS APPLIES NUMBING
-	owner.throw_alert("numbed", /atom/movable/screen/alert/numbed) //SKYRAT EDIT END
+	ADD_TRAIT(owner, TRAIT_NUMBED, TRAIT_STATUS_EFFECT(id)) //SKYRAT EDIT START - STASIS APPLIES NUMBING
+	owner.throw_alert("stasis numbed", /atom/movable/screen/alert/numbed) //SKYRAT EDIT END
 	owner.add_filter("stasis_status_ripple", 2, list("type" = "ripple", "flags" = WAVE_BOUNDED, "radius" = 0, "size" = 2))
 	var/filter = owner.get_filter("stasis_status_ripple")
 	animate(filter, radius = 0, time = 0.2 SECONDS, size = 2, easing = JUMP_EASING, loop = -1, flags = ANIMATION_PARALLEL)
@@ -281,8 +281,8 @@
 	REMOVE_TRAIT(owner, TRAIT_IMMOBILIZED, TRAIT_STATUS_EFFECT(id))
 	REMOVE_TRAIT(owner, TRAIT_HANDS_BLOCKED, TRAIT_STATUS_EFFECT(id))
 	if(HAS_TRAIT(owner, TRAIT_NUMBED)) //SKYRAT EDIT START - STASIS END REMOVES NUMBING
-		REMOVE_TRAIT(owner, TRAIT_NUMBED, "stasis")
-		owner.clear_alert("numbed") //SKYRAT EDIT END
+		REMOVE_TRAIT(owner, TRAIT_NUMBED, TRAIT_STATUS_EFFECT(id))
+		owner.clear_alert("stasis numbed") //SKYRAT EDIT END
 	owner.remove_filter("stasis_status_ripple")
 	update_time_of_death()
 	if(iscarbon(owner))

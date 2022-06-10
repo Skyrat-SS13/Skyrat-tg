@@ -328,6 +328,9 @@
 		span_notice("You drape [parent] over [target]'s [parse_zone(selected_zone)] to prepare for \an [procedure.name]."),
 	)
 
+	if(!(HAS_TRAIT(target, TRAIT_NUMBED) || target.stat >= UNCONSCIOUS)) ///skyrat add start - warning for unanesthetized surgery
+		to_chat(user, span_warning("You notice [target] react to your touch and realize they might feel this.")) ///skyrat add end
+	
 	log_combat(user, target, "operated on", null, "(OPERATION TYPE: [procedure.name]) (TARGET AREA: [selected_zone])")
 
 /datum/component/surgery_initiator/proc/surgery_needs_exposure(datum/surgery/surgery, mob/living/target)
