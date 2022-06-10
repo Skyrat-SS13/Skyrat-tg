@@ -9,7 +9,7 @@
 	suit_store = /obj/item/gun/ballistic/automatic/akm/modern
 	gloves = /obj/item/clothing/gloves/combat
 	belt = /obj/item/storage/belt/military/nri/full
-	back = /obj/item/storage/backpack/satchel/leather
+	back = /obj/item/storage/backpack/duffelbag/syndie/nri
 	backpack_contents = list(/obj/item/storage/box/nri_survival_pack, /obj/item/storage/medkit/emergency, /obj/item/clothing/mask/balaclavaadjust)
 	l_pocket = /obj/item/gun/ballistic/automatic/pistol
 	r_pocket = /obj/item/ammo_box/magazine/m9mm
@@ -26,8 +26,8 @@
 	mask = /obj/item/clothing/mask/gas/hecu2
 	belt = /obj/item/storage/belt/military/nri/full_heavy
 	suit_store = /obj/item/gun/ballistic/automatic/pistol/aps
-	back = /obj/item/storage/backpack/satchel/leather
-	backpack_contents = null
+	back = /obj/item/storage/backpack/duffelbag/syndie/nri
+	backpack_contents = list(/obj/item/storage/box/nri_survival_pack, /obj/item/storage/medkit/emergency, /obj/item/clothing/mask/balaclavaadjust)
 	l_pocket = /obj/item/wrench/combat
 
 	id_trim = /datum/id_trim/nri/heavy
@@ -54,7 +54,7 @@
 	suit_store = /obj/item/gun/ballistic/automatic/plastikov/nri
 	gloves = /obj/item/clothing/gloves/color/latex/nitrile
 	belt = /obj/item/storage/belt/military/nri/full_support
-	back = /obj/item/storage/backpack/satchel/leather
+	back = /obj/item/storage/backpack/duffelbag/syndie/nri
 	backpack_contents = list(/obj/item/storage/box/nri_survival_pack, /obj/item/clothing/mask/balaclavaadjust, /obj/item/storage/medkit/tactical, /obj/item/storage/medkit/surgery, /obj/item/gun/medbeam, /obj/item/clothing/accessory/armband/med)
 	shoes = /obj/item/clothing/shoes/combat/swat
 
@@ -72,7 +72,7 @@
 	suit_store = /obj/item/gun/ballistic/automatic/plastikov/nri
 	gloves = /obj/item/clothing/gloves/combat
 	belt = /obj/item/storage/belt/military/nri/full_support
-	back = /obj/item/storage/backpack/satchel/leather
+	back = /obj/item/storage/backpack/duffelbag/syndie/nri
 	backpack_contents = list(/obj/item/storage/box/nri_survival_pack, /obj/item/clothing/mask/balaclavaadjust, /obj/item/clothing/accessory/armband/engine, /obj/item/construction/rcd/combat, /obj/item/clothing/glasses/welding)
 	shoes = /obj/item/clothing/shoes/combat/swat
 
