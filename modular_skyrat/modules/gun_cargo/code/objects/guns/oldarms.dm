@@ -1,6 +1,6 @@
 /obj/item/gun/ballistic/automatic/m16/oldarms
 	name = "\improper Mk-11.4 Rifle"
-	desc = "An old-fashioned rifle from Sol-3's bygone era, rumor has it, it can shoot apart an entire jungle given the time, has \"Keep out of water\" laser-engraved on the side."
+	desc = "An old-fashioned rifle from Sol-3's bygone era, rumor has it, it can shoot apart an entire jungle, or desert given the time, has \"Keep out of water\" laser-engraved on the side. Now including a free reflex sight!"
 	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_guns40x32.dmi'
 	icon_state = "m16"
 	lefthand_file = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_lefthand.dmi'
@@ -12,7 +12,7 @@
 	w_class = WEIGHT_CLASS_BULKY
 	weapon_weight = WEAPON_HEAVY
 	mag_type = /obj/item/ammo_box/magazine/m16/vintage/oldarms
-  fire_delay = 1.9
+  	fire_delay = 3.5
 	fire_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/fire/m16_fire.ogg'
 	fire_sound_volume = 50
 	rack_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/sfrifle_cock.ogg'
@@ -21,7 +21,7 @@
 	eject_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/sfrifle_magout.ogg'
 	alt_icons = TRUE
 	realistic = TRUE
-  fire_select_modes = list(SELECT_SEMI_AUTOMATIC, SELECT_FULLY_AUTOMATIC)
+  	fire_select_modes = list(SELECT_SEMI_AUTOMATIC, SELECT_FULLY_AUTOMATIC)
   
   
   /obj/item/ammo_box/magazine/m16/vintage/oldarms
@@ -41,7 +41,7 @@
 	projectile_type = /obj/projectile/bullet/oldarms/a223
 
 /obj/projectile/bullet/oldarms/a223
-  name = "5.56mm bullet"
+  	name = "5.56mm bullet"
 	damage = 26
 	armour_penetration = 5
 	wound_bonus = -20
