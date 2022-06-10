@@ -509,12 +509,16 @@
 		/obj/item/bot_assembly/secbot,
 		/obj/effect/gibspawner/robot,
 	)
+	/// How often we can stun someone
+	var/stun_cooldown_time = 2 SECONDS
+	COOLDOWN_DECLARE(stun_cooldown)
 
 /mob/living/simple_animal/hostile/fleshmind/stunner/AttackingTarget(atom/attacked_target)
-	if(ishuman(target))
+	if(ishuman(target) && COOLDOWN_FINISHED(src, stun_cooldown))
 		var/mob/living/carbon/human/attacked_human = target
 		attacked_human.Knockdown(30)
 		playsound(src, 'sound/weapons/egloves.ogg', 50, TRUE)
+		COOLDOWN_START(src, stun_cooldown, stun_cooldown_time)
 	. = ..()
 
 /**
@@ -1324,7 +1328,7 @@
 	/// Ditto
 	var/internal_mob_damage_lower = 40
 	/// How long we keep our passenger before either releasing or converting them.
-	var/conversion_time = 20 SECONDS
+	var/conversion_time = 40 SECONDS
 	/// The comsume ability cooldown
 	var/consume_ability_cooldown_time = 1 MINUTES
 	COOLDOWN_DECLARE(consume_ability_cooldown)

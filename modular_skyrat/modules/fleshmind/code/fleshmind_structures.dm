@@ -415,7 +415,7 @@
 	max_integrity = 120
 	required_controller_level = CONTROLLER_LEVEL_1
 	activation_range = DEFAULT_VIEW_RANGE
-	ability_cooldown_time = 30 SECONDS
+	ability_cooldown_time = 45 SECONDS
 
 /obj/structure/fleshmind/structure/screamer/activate_ability(mob/living/triggered_mob)
 	. = ..()
@@ -427,10 +427,9 @@
 	for(var/mob/living/iterating_mob in get_hearers_in_range(activation_range, src))
 		if(!iterating_mob.can_hear())
 			continue
-		var/mob/living/carbon/human/iterating_human = iterating_mob
 		if(faction_check(faction_types, iterating_mob.faction))
 			continue
-		iterating_mob.Paralyze(50)
+		iterating_mob.Knockdown(100)
 		iterating_mob.apply_status_effect(/datum/status_effect/jitter, 20 SECONDS)
 		to_chat(iterating_mob, span_userdanger("A terrible howl tears through your mind, the voice senseless, soulless."))
 
@@ -540,6 +539,7 @@
 		/mob/living/simple_animal/hostile/fleshmind/stunner = 4,
 		/mob/living/simple_animal/hostile/fleshmind/treader = 3,
 		/mob/living/simple_animal/hostile/fleshmind/himan = 2,
+		/mob/living/simple_animal/hostile/fleshmind/phaser = 2,
 		/mob/living/simple_animal/hostile/fleshmind/mechiver = 2,
 	)
 	/// Our override type, if manually set.
