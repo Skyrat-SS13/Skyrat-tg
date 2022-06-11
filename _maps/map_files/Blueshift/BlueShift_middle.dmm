@@ -4960,6 +4960,9 @@
 /area/station/security/medical)
 "bhr" = (
 /obj/effect/turf_decal/siding/wood/corner,
+/obj/machinery/modular_computer/console/preset/id{
+	dir = 8
+	},
 /turf/open/floor/carpet/royalblack,
 /area/station/cargo/qm)
 "bhA" = (
@@ -5056,6 +5059,8 @@
 	pixel_y = 7
 	},
 /obj/item/dest_tagger,
+/obj/item/paper_bin,
+/obj/item/pen/fourcolor,
 /turf/open/floor/carpet/royalblack,
 /area/station/cargo/qm)
 "biE" = (
@@ -25839,10 +25844,6 @@
 	},
 /obj/machinery/door/firedoor,
 /obj/structure/cable,
-/obj/machinery/door/airlock/qm{
-	id_tag = "QMdoor";
-	name = "Quartermaster's Office"
-	},
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
 	dir = 4
 	},
@@ -25853,6 +25854,9 @@
 	dir = 4
 	},
 /obj/effect/mapping_helpers/airlock/access/all/supply/qm,
+/obj/machinery/door/airlock/command{
+	name = "Quartermaster's Office"
+	},
 /turf/open/floor/iron,
 /area/station/cargo/qm)
 "ims" = (
@@ -54904,8 +54908,7 @@
 /area/station/maintenance/department/security/prison_lower)
 "rZG" = (
 /obj/machinery/door/airlock/engineering/glass{
-	name = "Engineering Foyer";
-	
+	name = "Engineering Foyer"
 	},
 /obj/machinery/door/firedoor,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
@@ -56027,8 +56030,7 @@
 /area/station/engineering/supermatter/room)
 "stE" = (
 /obj/machinery/door/airlock/maintenance_hatch{
-	name = "Supermatter Engine Maintenance";
-	
+	name = "Supermatter Engine Maintenance"
 	},
 /obj/machinery/atmospherics/pipe/smart/simple/orange/visible{
 	dir = 4
@@ -56722,8 +56724,7 @@
 /area/station/maintenance/department/engineering/engine_aft_starboard)
 "sGe" = (
 /obj/machinery/door/airlock/engineering/glass{
-	name = "Engineering Foyer";
-	
+	name = "Engineering Foyer"
 	},
 /obj/machinery/door/firedoor,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
@@ -61869,8 +61870,7 @@
 /area/station/security/lockers)
 "upw" = (
 /obj/machinery/door/airlock/security/glass{
-	name = "Security Office";
-	
+	name = "Security Office"
 	},
 /obj/structure/cable,
 /obj/machinery/door/firedoor,
@@ -65323,8 +65323,7 @@
 /area/station/security/prison/upper)
 "vyl" = (
 /obj/machinery/door/airlock/engineering/glass{
-	name = "Engineering Foyer";
-	
+	name = "Engineering Foyer"
 	},
 /obj/machinery/door/firedoor,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
@@ -66838,8 +66837,7 @@
 /area/station/security/range)
 "vVG" = (
 /obj/machinery/door/airlock/mining/glass{
-	name = "Cargo Office";
-	
+	name = "Cargo Office"
 	},
 /obj/machinery/door/firedoor,
 /obj/effect/turf_decal/stripes,
@@ -70884,12 +70882,10 @@
 /obj/effect/turf_decal/siding/wood/corner{
 	dir = 8
 	},
-/obj/structure/table/wood,
-/obj/item/paper_bin,
-/obj/item/pen/fourcolor,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/machinery/pdapainter/supply,
 /turf/open/floor/carpet/royalblack,
 /area/station/cargo/qm)
 "xmB" = (

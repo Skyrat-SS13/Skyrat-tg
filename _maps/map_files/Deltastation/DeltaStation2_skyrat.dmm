@@ -5257,7 +5257,6 @@
 /area/station/service/chapel)
 "buT" = (
 /obj/structure/table/reinforced,
-/obj/item/flashlight/lamp,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron,
 /area/station/cargo/qm)
@@ -17337,6 +17336,12 @@
 /obj/effect/landmark/event_spawn,
 /turf/open/floor/iron,
 /area/station/engineering/atmos/project)
+"eQj" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/machinery/keycard_auth/directional/west,
+/turf/open/floor/iron,
+/area/station/cargo/qm)
 "eQl" = (
 /obj/structure/cable,
 /obj/effect/turf_decal/tile/purple{
@@ -32351,12 +32356,8 @@
 /turf/open/floor/iron,
 /area/station/commons/locker)
 "iTM" = (
-/obj/structure/table/reinforced,
-/obj/item/computer_hardware/hard_drive/portable/quartermaster,
-/obj/item/computer_hardware/hard_drive/portable/quartermaster,
-/obj/item/computer_hardware/hard_drive/portable/quartermaster,
-/obj/item/gps/mining,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/machinery/pdapainter/supply,
 /turf/open/floor/iron,
 /area/station/cargo/qm)
 "iTV" = (
@@ -34869,6 +34870,8 @@
 /obj/item/folder/yellow,
 /obj/item/stamp/qm,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/item/gps/mining,
+/obj/item/computer_hardware/hard_drive/portable/quartermaster,
 /turf/open/floor/iron,
 /area/station/cargo/qm)
 "jCF" = (
@@ -52492,6 +52495,9 @@
 /obj/effect/turf_decal/tile/brown/half/contrasted{
 	dir = 4
 	},
+/obj/machinery/modular_computer/console/preset/id{
+	dir = 8
+	},
 /turf/open/floor/iron,
 /area/station/cargo/qm)
 "oig" = (
@@ -69292,9 +69298,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/machinery/door/airlock/mining{
-	name = "Quartermaster's Office"
-	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
@@ -69303,6 +69306,9 @@
 	},
 /obj/machinery/door/firedoor,
 /obj/effect/mapping_helpers/airlock/access/all/supply/qm,
+/obj/machinery/door/airlock/command{
+	name = "Quartermaster's Office"
+	},
 /turf/open/floor/iron,
 /area/station/cargo/qm)
 "sIP" = (
@@ -73185,9 +73191,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/mining{
-	name = "Quartermaster's Quarters"
-	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
@@ -73195,6 +73198,9 @@
 	dir = 4
 	},
 /obj/effect/mapping_helpers/airlock/access/all/supply/qm,
+/obj/machinery/door/airlock/command{
+	name = "Quartermaster's Office"
+	},
 /turf/open/floor/iron,
 /area/station/cargo/qm)
 "tHC" = (
@@ -88927,6 +88933,7 @@
 /obj/effect/turf_decal/tile/brown/anticorner/contrasted{
 	dir = 4
 	},
+/obj/item/flashlight/lamp,
 /turf/open/floor/iron,
 /area/station/cargo/qm)
 "xLi" = (
@@ -137086,7 +137093,7 @@ aaa
 aad
 rje
 qom
-jGR
+eQj
 eGI
 jGR
 ear
