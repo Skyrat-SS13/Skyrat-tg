@@ -857,6 +857,7 @@
 		if(!dropped && !external_organ.can_draw_on_bodypart(owner))
 			continue
 		//Some externals have multiple layers for background, foreground and between
+		/* SKYRAT EDIT START - Customization (better layer handling for external organs) - ORIGINAL:
 		for(var/external_layer in external_organ.all_layers)
 			if(external_organ.layers & external_layer)
 				external_organ.get_overlays(
@@ -865,6 +866,15 @@
 					external_organ.bitflag_to_layer(external_layer),
 					limb_gender,
 				)
+		*/ // ORIGINAL END
+		for(var/external_layer in external_organ.relevant_layers)
+			external_organ.get_overlays(
+				.,
+				image_dir,
+				external_layer,
+				limb_gender,
+			)
+		// SKYRAT EDIT END
 
 	// SKYRAT EDIT ADDITION BEGIN - MARKINGS CODE
 	var/override_color

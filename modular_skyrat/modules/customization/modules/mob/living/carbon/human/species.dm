@@ -29,7 +29,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	var/body_size_restricted = FALSE
 
 /datum/species/proc/handle_mutant_bodyparts(mob/living/carbon/human/H, forced_colour, force_update = FALSE)
-	var/list/standing	= list()
+	var/list/standing = list()
 
 	var/obj/item/bodypart/head/HD = H.get_bodypart(BODY_ZONE_HEAD)
 
@@ -487,6 +487,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 		if(SA?.factual && SA.organ_type)
 			var/obj/item/organ/path = new SA.organ_type
 			path.sprite_accessory_flags = SA.flags_for_organ
+			path.relevant_layers = SA.relevent_layers
 			if(robot_organs)
 				path.status = ORGAN_ROBOTIC
 				path.organ_flags |= ORGAN_SYNTHETIC
