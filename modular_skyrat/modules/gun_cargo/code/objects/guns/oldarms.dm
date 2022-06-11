@@ -1,6 +1,6 @@
 /obj/item/gun/ballistic/automatic/m16/oldarms
 	name = "\improper Mk-11.4 Rifle"
-	desc = "An old-fashioned rifle from Sol-3's bygone era, rumor has it, it can shoot apart an entire jungle, or desert given the time, has \"Keep out of water\" laser-engraved on the side. Now including a free reflex sight!"
+	desc = "An old-fashioned rifle from Sol-3's bygone era. Rumor has it that it can shoot apart an entire jungle (or desert, given the time). It has \"Keep out of water\" laser-engraved on the side. Now including a free reflex sight!"
 	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_guns40x32.dmi'
 	icon_state = "m16"
 	lefthand_file = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_lefthand.dmi'
