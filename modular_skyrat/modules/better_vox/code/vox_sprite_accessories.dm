@@ -85,7 +85,7 @@
 	icon = 'modular_skyrat/modules/better_vox/icons/accessories/vox_bodymarkings.dmi'
 	default_color = "#64e8ff"
 	recommended_species = list(SPECIES_VOX_PRIMALIS)
-	affected_bodyparts = HEAD
+	affected_bodyparts = CHEST
 	gendered = FALSE
 
 /datum/body_marking/vox_primalis/leader
@@ -115,3 +115,13 @@
 /datum/body_marking/vox_primalis/servitor
 	name = "Vox Primalis Servitor"
 	icon_state = "servitor"
+
+// THE BEAK
+/datum/sprite_accessory/snouts/vox_primalis_beak
+	icon = 'modular_skyrat/modules/better_vox/icons/accessories/vox_snout.dmi'
+	name = "Vox Primalis Beak"
+	icon_state = "vox"
+	color_src = 0
+	gender_specific = FALSE
+	recommended_species = list(SPECIES_VOX_PRIMALIS)
+
