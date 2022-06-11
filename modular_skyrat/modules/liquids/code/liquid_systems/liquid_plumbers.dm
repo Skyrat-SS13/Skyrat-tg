@@ -208,6 +208,7 @@
 
 /obj/item/construction/plumbing/engineering/set_plumbing_designs()
 	plumbing_design_types = list(
+	/obj/machinery/duct = 1,
 	/obj/machinery/plumbing/input = 5,
 	/obj/machinery/plumbing/output = 5,
 	/obj/machinery/plumbing/tank = 20,
