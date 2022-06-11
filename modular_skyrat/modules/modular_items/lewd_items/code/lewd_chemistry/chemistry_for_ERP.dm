@@ -377,7 +377,7 @@
 		/// Wording chosen to be seen by other mobs, while mob is clothed.
 		var/static/list/notice_boobs = list("seems to be a bit tighter.", "appears to be a bit bigger.", "seems to swell outward a bit.", )
 		/// Checks for cup size.
-		var/translation = breasts_size_to_cup(mob_breasts.genital_size)
+		var/translation = mob_breasts.breasts_size_to_cup(mob_breasts.genital_size)
 
 		if(mob_breasts.visibility_preference == GENITAL_ALWAYS_SHOW || exposed_mob.is_topless())
 			switch(translation)

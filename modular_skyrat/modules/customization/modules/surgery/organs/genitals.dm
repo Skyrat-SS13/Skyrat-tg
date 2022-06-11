@@ -48,7 +48,7 @@
 		return
 	. = ..()
 
-/obj/item/organ/external/genital/Remove(mob/living/carbon/M, special = FALSE)
+/obj/item/organ/external/genital/Remove(mob/living/carbon/M, special = FALSE, moving)
 	. = ..()
 	update_genital_icon_state()
 
@@ -180,6 +180,10 @@
 	if(DNA.features["penis_uses_skintones"])
 		uses_skintones = accessory.has_skintone_shading
 
+/obj/item/organ/external/genital/penis/get_global_feature_list()
+	return GLOB.sprite_accessories["penis"]
+
+
 /obj/item/organ/external/genital/testicles
 	name = "testicles"
 	desc = "A male reproductive organ."
@@ -223,6 +227,25 @@
 		passed_string += "_s"
 	return passed_string
 
+/obj/item/organ/external/genital/testicles/get_global_feature_list()
+	return GLOB.sprite_accessories["testicles"]
+
+
+/obj/item/organ/external/genital/testicles/proc/balls_size_to_description(number)
+	if(number < 0)
+		number = 0
+	var/returned = GLOB.balls_size_translation["[number]"]
+	if(!returned)
+		returned = "beyond measurement"
+	return returned
+
+/obj/item/organ/external/genital/testicles/proc/balls_description_to_size(cup)
+	for(var/key in GLOB.balls_size_translation)
+		if(GLOB.balls_size_translation[key] == cup)
+			return text2num(key)
+	return 0
+
+
 /obj/item/organ/external/genital/vagina
 	name = "vagina"
 	icon = 'modular_skyrat/master_files/icons/obj/genitals/vagina.dmi'
@@ -261,6 +284,10 @@
 	if(DNA.features["vagina_uses_skintones"])
 		uses_skintones = accessory.has_skintone_shading
 
+/obj/item/organ/external/genital/vagina/get_global_feature_list()
+	return GLOB.sprite_accessories["vagina"]
+
+
 /obj/item/organ/external/genital/womb
 	name = "womb"
 	desc = "A female reproductive organ."
@@ -274,6 +301,10 @@
 	aroused = AROUSAL_CANT
 	genital_location = GROIN
 	drop_when_organ_spilling = FALSE
+
+/obj/item/organ/external/genital/womb/get_global_feature_list()
+	return GLOB.sprite_accessories["womb"]
+
 
 /obj/item/organ/external/genital/anus
 	name = "anus"
@@ -294,6 +325,10 @@
 	if(aroused == AROUSAL_FULL)
 		returned_string += " It looks very tight."
 	return returned_string
+
+/obj/item/organ/external/genital/anus/get_global_feature_list()
+	return GLOB.sprite_accessories["anus"]
+
 
 /obj/item/organ/external/genital/breasts
 	name = "breasts"
@@ -364,7 +399,10 @@
 	if(DNA.features["breasts_uses_skintones"])
 		uses_skintones = accessory.has_skintone_shading
 
-/proc/breasts_size_to_cup(number)
+/obj/item/organ/external/genital/breasts/get_global_feature_list()
+	return GLOB.sprite_accessories["breasts"]
+
+/obj/item/organ/external/genital/breasts/proc/breasts_size_to_cup(number)
 	if(number < 0)
 		number = 0
 	var/returned = GLOB.breasts_size_translation["[number]"]
@@ -372,25 +410,12 @@
 		returned = "beyond measurement"
 	return returned
 
-/proc/breasts_cup_to_size(cup)
+/obj/item/organ/external/genital/breasts/proc/breasts_cup_to_size(cup)
 	for(var/key in GLOB.breasts_size_translation)
 		if(GLOB.breasts_size_translation[key] == cup)
 			return text2num(key)
 	return 0
 
-/proc/balls_size_to_description(number)
-	if(number < 0)
-		number = 0
-	var/returned = GLOB.balls_size_translation["[number]"]
-	if(!returned)
-		returned = "beyond measurement"
-	return returned
-
-/proc/balls_description_to_size(cup)
-	for(var/key in GLOB.balls_size_translation)
-		if(GLOB.balls_size_translation[key] == cup)
-			return text2num(key)
-	return 0
 
 /mob/living/carbon/human/verb/toggle_genitals()
 	set category = "IC"
@@ -426,6 +451,7 @@
 	. = ..()
 	if(CONFIG_GET(flag/disable_erp_preferences))
 		verbs -= /mob/living/carbon/human/verb/toggle_genitals
+		verbs -= /mob/living/carbon/human/verb/toggle_arousal
 
 /mob/living/carbon/human/verb/toggle_arousal()
 	set category = "IC"
@@ -446,19 +472,14 @@
 	var/obj/item/organ/external/genital/picked_organ
 	picked_organ = input(src, "Choose which genitalia to change arousal", "Expose/Hide genitals") as null|anything in genital_list
 	if(picked_organ && (picked_organ in internal_organs))
-		var/list/gen_arous_trans = list("Not aroused" = AROUSAL_NONE,
-												"Partly aroused" = AROUSAL_PARTIAL,
-												"Very aroused" = AROUSAL_FULL
-												)
+		var/list/gen_arous_trans = list(
+			"Not aroused" = AROUSAL_NONE,
+			"Partly aroused" = AROUSAL_PARTIAL,
+			"Very aroused" = AROUSAL_FULL,
+		)
 		var/picked_arousal = input(src, "Choose arousal", "Toggle Arousal") as null|anything in gen_arous_trans
 		if(picked_arousal && picked_organ && (picked_organ in internal_organs))
 			picked_organ.aroused = gen_arous_trans[picked_arousal]
 			picked_organ.update_sprite_suffix()
 			update_body()
 	return
-
-//Removing ERP IC verb depending on config
-/mob/living/carbon/human/Initialize()
-	. = ..()
-	if(CONFIG_GET(flag/disable_erp_preferences))
-		verbs -= /mob/living/carbon/human/verb/toggle_arousal

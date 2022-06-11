@@ -186,9 +186,9 @@
 				if("Breasts Size")
 					var/new_size = input(H, "Choose your character's breasts size:", "DNA Alteration") as null|anything in GLOB.preference_breast_sizes
 					if(new_size)
-						DNA.features["breasts_size"] = breasts_cup_to_size(new_size)
 						var/obj/item/organ/external/genital/breasts/melons = H.getorganslot(ORGAN_SLOT_BREASTS)
 						if(melons)
+							DNA.features["breasts_size"] = melons.breasts_cup_to_size(new_size)
 							melons.set_size(DNA.features["breasts_size"])
 				if("Breasts Lactation")
 					DNA.features["breasts_lactation"] = !DNA.features["breasts_lactation"]
@@ -230,9 +230,9 @@
 				if("Balls Size")
 					var/new_size = input(H, "Choose your character's balls size:", "Character Preference") as null|anything in GLOB.preference_balls_sizes
 					if(new_size)
-						DNA.features["balls_size"] = balls_description_to_size(new_size)
 						var/obj/item/organ/external/genital/testicles/avocados = H.getorganslot(ORGAN_SLOT_TESTICLES)
 						if(avocados)
+							DNA.features["balls_size"] = avocados.balls_description_to_size(new_size)
 							avocados.set_size(DNA.features["balls_size"])
 				if("Body Size")
 					var/new_body_size = input(H, "Choose your desired sprite size:\n([BODY_SIZE_MIN*100]%-[BODY_SIZE_MAX*100]%), Warning: May make your character look distorted", "Character Preference", DNA.features["body_size"]*100) as num|null
