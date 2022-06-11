@@ -4954,7 +4954,6 @@
 /turf/open/floor/iron/white,
 /area/station/security/medical)
 "bhr" = (
-/obj/effect/turf_decal/siding/wood/corner,
 /obj/machinery/modular_computer/console/preset/id{
 	dir = 8
 	},
@@ -13366,18 +13365,7 @@
 	dir = 10
 	},
 /obj/structure/table/wood,
-/obj/item/reagent_containers/food/drinks/bottle/rum{
-	pixel_x = 6;
-	pixel_y = 6
-	},
 /obj/item/flashlight/lamp/green,
-/obj/machinery/button/door{
-	id = "qmprivacy";
-	name = "Privacy Control";
-	pixel_x = -7;
-	pixel_y = 1;
-	req_access = list("qm")
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -15628,14 +15616,9 @@
 /turf/open/floor/iron,
 /area/station/maintenance/department/crew_quarters/bar)
 "eJL" = (
-/obj/effect/turf_decal/stripes{
-	dir = 8
-	},
-/obj/effect/turf_decal/siding/wood,
 /obj/machinery/computer/piratepad_control{
 	dir = 8
 	},
-/obj/machinery/keycard_auth/directional/east,
 /turf/open/floor/iron/dark,
 /area/station/cargo/qm)
 "eJN" = (
@@ -24453,9 +24436,6 @@
 /turf/closed/wall/rust,
 /area/station/maintenance/department/engineering/engine_aft_port)
 "hPg" = (
-/obj/effect/turf_decal/stripes{
-	dir = 8
-	},
 /obj/effect/turf_decal/siding/wood{
 	dir = 1
 	},
@@ -30997,8 +30977,13 @@
 	},
 /area/space/nearstation)
 "jUf" = (
-/obj/effect/turf_decal/siding/wood,
-/turf/open/floor/carpet/royalblack,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/chair/office{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
 /area/station/cargo/qm)
 "jUm" = (
 /obj/structure/closet/crate/trashcart/laundry,
@@ -36595,6 +36580,7 @@
 	dir = 1
 	},
 /obj/structure/disposalpipe/segment,
+/obj/machinery/keycard_auth/directional/north,
 /turf/open/floor/carpet/royalblack,
 /area/station/cargo/qm)
 "lQQ" = (
@@ -39890,11 +39876,9 @@
 /obj/effect/turf_decal/siding/wood{
 	dir = 4
 	},
-/obj/structure/table/wood/fancy/royalblack,
-/obj/item/clipboard,
-/obj/item/toy/figure/qm,
 /obj/machinery/power/apc/auto_name/directional/north,
 /obj/structure/cable,
+/obj/machinery/pdapainter/supply,
 /turf/open/floor/carpet/royalblack,
 /area/station/cargo/qm)
 "mVK" = (
@@ -51028,14 +51012,17 @@
 /turf/open/floor/iron/white/side,
 /area/station/security/prison)
 "qGV" = (
-/obj/effect/turf_decal/siding/wood{
-	dir = 1
-	},
 /obj/structure/chair/office{
 	dir = 4
 	},
 /obj/effect/landmark/start/quartermaster,
-/turf/open/floor/carpet/royalblack,
+/obj/effect/turf_decal/stripes{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
 /area/station/cargo/qm)
 "qGZ" = (
 /obj/structure/chair{
@@ -68727,9 +68714,15 @@
 	dir = 8
 	},
 /obj/structure/table/wood/fancy/royalblack,
-/obj/item/modular_computer/laptop,
 /obj/structure/noticeboard/qm{
 	pixel_y = 31
+	},
+/obj/item/clipboard{
+	pixel_x = 15
+	},
+/obj/item/modular_computer/laptop,
+/obj/item/toy/figure/qm{
+	pixel_x = 15
 	},
 /turf/open/floor/carpet/royalblack,
 /area/station/cargo/qm)
@@ -70891,7 +70884,18 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/machinery/pdapainter/supply,
+/obj/structure/table/wood,
+/obj/item/reagent_containers/food/drinks/bottle/rum{
+	pixel_x = 6;
+	pixel_y = 6
+	},
+/obj/machinery/button/door{
+	id = "qmprivacy";
+	name = "Privacy Control";
+	pixel_x = -7;
+	pixel_y = 1;
+	req_access = list("qm")
+	},
 /turf/open/floor/carpet/royalblack,
 /area/station/cargo/qm)
 "xmB" = (
