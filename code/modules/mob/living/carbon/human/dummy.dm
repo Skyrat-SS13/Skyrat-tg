@@ -101,7 +101,7 @@ INITIALIZE_IMMEDIATE(/mob/living/carbon/human/dummy)
 	dna.features["moth_wings"] = "Plain"
 	dna.features["snout"] = "Round"
 	dna.features["spines"] = "None"
-	dna.features["tail_cat"] = "None"
+	dna.features["tail"] = "None" // SKYRAT EDIT - Customization - ORIGINAL: dna.features["tail_cat"] = "None"
 	dna.features["tail_lizard"] = "Light"
 
 //Inefficient pooling/caching way.

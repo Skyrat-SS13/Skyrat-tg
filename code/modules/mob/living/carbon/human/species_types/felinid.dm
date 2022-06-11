@@ -34,7 +34,7 @@
 	if(ishuman(C))
 		var/mob/living/carbon/human/H = C
 		if(!pref_load) //Hah! They got forcefully purrbation'd. Force default felinid parts on them if they have no mutant parts in those areas!
-			H.dna.features["tail_cat"] = "Cat"
+			H.dna.features["tail"] = "Cat" // SKYRAT EDIT - Customization - ORIGINAL: H.dna.features["tail_cat"] = "Cat"
 			if(H.dna.features["ears"] == "None")
 				H.dna.features["ears"] = "Cat"
 		if(H.dna.features["ears"] == "Cat")
