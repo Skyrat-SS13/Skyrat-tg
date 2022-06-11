@@ -4,7 +4,7 @@
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
 
 /datum/preference/choiced/vox_bodycolor/init_possible_values()
-	return list("darkteal", "yellow", "albino", "brown")
+	return list("default", "darkteal", "yellow", "albino", "brown")
 
 /datum/preference/choiced/vox_bodycolor/create_default_value()
 	return "default"

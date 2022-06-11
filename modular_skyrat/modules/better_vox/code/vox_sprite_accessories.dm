@@ -85,7 +85,7 @@
 	icon = 'modular_skyrat/modules/better_vox/icons/accessories/vox_bodymarkings.dmi'
 	default_color = "#64e8ff"
 	recommended_species = list(SPECIES_VOX_PRIMALIS)
-	affected_bodyparts = CHEST
+	affected_bodyparts = HEAD
 	gendered = FALSE
 
 /datum/body_marking/vox_primalis/leader
