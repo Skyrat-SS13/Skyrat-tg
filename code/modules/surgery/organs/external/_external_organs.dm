@@ -376,5 +376,5 @@
 	return GLOB.pod_hair_list
 
 /obj/item/organ/external/pod_hair/override_color(rgb_value)
-	var/list/rgb_list = rgb2num(rgb_value)
+	var/list/rgb_list = rgb2num("#" + rgb_value) // SKYRAT EDIT - Fixing CI because somehow that doesn't work down here - ORIGINAL: var/list/rgb_list = rgb2num(rgb_value)
 	return rgb(255 - rgb_list[1], 255 - rgb_list[2], 255 - rgb_list[3])
