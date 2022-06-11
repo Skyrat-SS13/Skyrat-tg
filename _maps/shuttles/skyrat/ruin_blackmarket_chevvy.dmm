@@ -1,33 +1,9 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"ax" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
-/obj/machinery/atmospherics/components/unary/passive_vent/layer2{
-	dir = 4
-	},
-/obj/structure/fluff/metalpole/end{
-	dir = 8;
-	pixel_x = -32
-	},
-/obj/structure/shuttle/engine/propulsion{
-	dir = 8
-	},
-/turf/open/floor/plating/airless,
-/area/shuttle/blackmarket_chevvy)
-"aU" = (
-/obj/structure/chair/comfy/shuttle{
-	dir = 4
-	},
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
-	dir = 8
-	},
-/obj/machinery/button/door/directional/south{
-	name = "Blast Door Control";
-	id = "skiffcargo"
-	},
+"ad" = (
+/obj/effect/turf_decal/tile/neutral/diagonal_centre,
+/obj/effect/turf_decal/tile/neutral/diagonal_edge,
 /obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/iron/shuttle/cargo,
+/turf/open/floor/iron/dark/diagonal,
 /area/shuttle/blackmarket_chevvy)
 "bu" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -77,20 +53,22 @@
 /turf/closed/wall/mineral/titanium/nodiagonal,
 /area/shuttle/blackmarket_chevvy)
 "jD" = (
-/obj/structure/marker_beacon/olive,
-/turf/closed/wall/mineral/titanium/nodiagonal,
+/obj/effect/turf_decal/delivery/white,
+/obj/machinery/door/airlock/external,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
+	cycle_id = "skiffside"
+	},
+/turf/open/floor/iron/dark/textured_large,
 /area/shuttle/blackmarket_chevvy)
-"lV" = (
+"ka" = (
+/obj/machinery/portable_atmospherics/canister/oxygen,
+/obj/machinery/atmospherics/components/unary/portables_connector/visible/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/effect/turf_decal/bot_white,
-/obj/machinery/modular_computer/console/preset/engineering{
-	dir = 8
-	},
-/obj/machinery/button/door/directional/south{
-	name = "Window Shutter Control";
-	id = "skiffwindf"
-	},
-/obj/effect/decal/cleanable/dirt/dust,
-/obj/item/radio/intercom/directional/north,
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/blackmarket_chevvy)
 "nB" = (
@@ -101,13 +79,22 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron/shuttle/cargo,
 /area/shuttle/blackmarket_chevvy)
-"nG" = (
-/obj/machinery/computer/camera_advanced/shuttle_docker/blackmarket_chevvy,
-/obj/effect/turf_decal/bot_white,
-/obj/structure/window/reinforced/plasma/spawner/north,
-/obj/effect/decal/cleanable/dirt/dust,
-/obj/machinery/airalarm/directional/west,
-/turf/open/floor/iron/dark/smooth_large,
+"pI" = (
+/obj/structure/fluff/metalpole/end{
+	dir = 4;
+	pixel_x = 32
+	},
+/turf/closed/wall/mineral/titanium/nodiagonal,
+/area/shuttle/blackmarket_chevvy)
+"ss" = (
+/obj/structure/marker_beacon/burgundy,
+/turf/closed/wall/mineral/titanium/nodiagonal,
+/area/shuttle/blackmarket_chevvy)
+"tp" = (
+/obj/structure/shuttle/engine/propulsion/in_wall{
+	pixel_y = -32
+	},
+/turf/closed/wall/mineral/titanium/nodiagonal,
 /area/shuttle/blackmarket_chevvy)
 "uW" = (
 /obj/structure/shuttle/engine/heater{
@@ -139,12 +126,35 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron/shuttle/cargo,
 /area/shuttle/blackmarket_chevvy)
-"yd" = (
-/obj/machinery/computer/shuttle/caravan/blackmarket_chevvy,
-/obj/effect/turf_decal/bot_white,
-/obj/structure/window/reinforced/plasma/spawner/north,
+"yt" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 4
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 8
+	},
+/obj/machinery/button/door/directional/south{
+	name = "Blast Door Control";
+	id = "skiffcargo"
+	},
 /obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/iron/dark/smooth_large,
+/turf/open/floor/iron/shuttle/cargo,
+/area/shuttle/blackmarket_chevvy)
+"zi" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/machinery/atmospherics/components/unary/passive_vent/layer2{
+	dir = 4
+	},
+/obj/structure/fluff/metalpole/end{
+	dir = 8;
+	pixel_x = -32
+	},
+/obj/structure/shuttle/engine/propulsion{
+	dir = 8
+	},
+/turf/open/floor/plating/airless,
 /area/shuttle/blackmarket_chevvy)
 "zH" = (
 /obj/machinery/button/door/directional/north{
@@ -165,12 +175,18 @@
 	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/blackmarket_chevvy)
-"Fr" = (
-/obj/effect/spawner/structure/window/reinforced/shuttle,
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "skiffwindf"
+"Ee" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 8
 	},
-/turf/open/floor/plating,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/light/dim/directional/south,
+/turf/open/floor/iron/shuttle/cargo,
+/area/shuttle/blackmarket_chevvy)
+"Fr" = (
+/obj/structure/marker_beacon/olive,
+/turf/closed/wall/mineral/titanium/nodiagonal,
 /area/shuttle/blackmarket_chevvy)
 "Fu" = (
 /obj/effect/turf_decal/box/white/corners{
@@ -186,31 +202,19 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron/dark/diagonal,
 /area/shuttle/blackmarket_chevvy)
-"Ge" = (
-/obj/structure/fluff/metalpole/end{
-	dir = 4;
-	pixel_x = 32
-	},
-/turf/closed/wall/mineral/titanium/nodiagonal,
-/area/shuttle/blackmarket_chevvy)
-"GI" = (
-/obj/structure/shuttle/engine/propulsion/in_wall{
-	pixel_y = -32
-	},
-/turf/closed/wall/mineral/titanium/nodiagonal,
-/area/shuttle/blackmarket_chevvy)
 "GO" = (
-/obj/effect/turf_decal/tile/neutral/diagonal_centre,
-/obj/effect/turf_decal/tile/neutral/diagonal_edge,
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/iron/dark/diagonal,
-/area/shuttle/blackmarket_chevvy)
-"Hn" = (
 /obj/effect/spawner/structure/window/reinforced/shuttle,
 /obj/machinery/door/poddoor/shutters/preopen{
 	id = "skiffwinds"
 	},
 /turf/open/floor/plating,
+/area/shuttle/blackmarket_chevvy)
+"Hj" = (
+/obj/machinery/computer/shuttle/caravan/blackmarket_chevvy,
+/obj/effect/turf_decal/bot_white,
+/obj/structure/window/reinforced/plasma/spawner/north,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/blackmarket_chevvy)
 "Ii" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -218,17 +222,7 @@
 /obj/machinery/light/dim/directional/south,
 /turf/open/floor/catwalk_floor,
 /area/shuttle/blackmarket_chevvy)
-"IO" = (
-/obj/effect/turf_decal/box/white/corners{
-	dir = 4
-	},
-/obj/effect/turf_decal/box/white/corners,
-/obj/effect/turf_decal/tile/neutral/diagonal_centre,
-/obj/effect/turf_decal/tile/neutral/diagonal_edge,
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/iron/dark/diagonal,
-/area/shuttle/blackmarket_chevvy)
-"IZ" = (
+"JW" = (
 /obj/structure/table/survival_pod,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/button/door/directional/north{
@@ -241,6 +235,16 @@
 "Ov" = (
 /turf/template_noop,
 /area/template_noop)
+"OB" = (
+/obj/effect/turf_decal/box/white/corners{
+	dir = 4
+	},
+/obj/effect/turf_decal/box/white/corners,
+/obj/effect/turf_decal/tile/neutral/diagonal_centre,
+/obj/effect/turf_decal/tile/neutral/diagonal_edge,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/dark/diagonal,
+/area/shuttle/blackmarket_chevvy)
 "OR" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 4
@@ -263,12 +267,25 @@
 	},
 /turf/open/floor/engine,
 /area/shuttle/blackmarket_chevvy)
-"Rr" = (
-/obj/effect/turf_decal/delivery/white,
-/obj/machinery/door/airlock/external,
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 4
+"RN" = (
+/obj/machinery/computer/camera_advanced/shuttle_docker/blackmarket_chevvy,
+/obj/effect/turf_decal/bot_white,
+/obj/structure/window/reinforced/plasma/spawner/north,
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/airalarm/directional/west,
+/turf/open/floor/iron/dark/smooth_large,
+/area/shuttle/blackmarket_chevvy)
+"SY" = (
+/obj/effect/turf_decal/bot_white,
+/obj/machinery/modular_computer/console/preset/engineering{
+	dir = 8
 	},
+/obj/machinery/button/door/directional/south{
+	name = "Window Shutter Control";
+	id = "skiffwindf"
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/item/radio/intercom/directional/north,
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/blackmarket_chevvy)
 "Tk" = (
@@ -295,18 +312,11 @@
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/blackmarket_chevvy)
 "VX" = (
-/obj/effect/turf_decal/delivery/white,
-/obj/machinery/door/airlock/external,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
-	cycle_id = "skiffside"
+/obj/effect/spawner/structure/window/reinforced/shuttle,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "skiffwindf"
 	},
-/turf/open/floor/iron/dark/textured_large,
-/area/shuttle/blackmarket_chevvy)
-"WU" = (
-/obj/structure/marker_beacon/burgundy,
-/turf/closed/wall/mineral/titanium/nodiagonal,
+/turf/open/floor/plating,
 /area/shuttle/blackmarket_chevvy)
 "Yg" = (
 /obj/effect/turf_decal/delivery/white,
@@ -315,23 +325,15 @@
 /obj/machinery/door/airlock/hatch,
 /turf/open/floor/iron/dark/smooth_large,
 /area/shuttle/blackmarket_chevvy)
-"YM" = (
-/obj/machinery/portable_atmospherics/canister/oxygen,
-/obj/machinery/atmospherics/components/unary/portables_connector/visible/layer4{
+"YP" = (
+/obj/effect/turf_decal/delivery/white,
+/obj/machinery/door/airlock/external{
+	id = "skiffextb"
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/effect/turf_decal/bot_white,
 /turf/open/floor/iron/dark/smooth_large,
-/area/shuttle/blackmarket_chevvy)
-"YP" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
-	dir = 8
-	},
-/obj/effect/decal/cleanable/dirt/dust,
-/obj/machinery/light/dim/directional/south,
-/turf/open/floor/iron/shuttle/cargo,
 /area/shuttle/blackmarket_chevvy)
 "YX" = (
 /turf/closed/wall/mineral/titanium/nodiagonal,
@@ -381,44 +383,44 @@
 Ov
 Ov
 YX
-Rr
+YP
 YX
 Ov
 Ov
 "}
 (2,1,1) = {"
 fp
-ax
+zi
 YX
 vK
 YX
-ax
+zi
 fp
 "}
 (3,1,1) = {"
-WU
+ss
 uW
 YX
 Dx
 YX
 uW
-jD
+Fr
 "}
 (4,1,1) = {"
 gt
-IZ
+JW
 Vy
 OR
 YX
-YM
-GI
+ka
+tp
 "}
 (5,1,1) = {"
-Hn
+GO
 Tk
 wE
 cL
-VX
+jD
 Ii
 YX
 "}
@@ -432,31 +434,31 @@ zH
 ZW
 "}
 (7,1,1) = {"
-WU
+ss
 ZC
 nB
 ZC
 YX
-VX
 jD
+Fr
 "}
 (8,1,1) = {"
 YX
 ZE
 bu
-GO
-nG
-YP
+ad
+RN
+Ee
 YX
 "}
 (9,1,1) = {"
 gt
 Fu
 en
-IO
-yd
-aU
-GI
+OB
+Hj
+yt
+tp
 "}
 (10,1,1) = {"
 YX
@@ -464,7 +466,7 @@ eu
 PY
 eu
 YX
-lV
+SY
 YX
 "}
 (11,1,1) = {"
@@ -473,6 +475,6 @@ Ov
 Ov
 Ov
 fp
-Fr
-Ge
+VX
+pI
 "}
