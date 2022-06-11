@@ -19805,6 +19805,22 @@
 /area/station/service/lawoffice)
 "hpa" = (
 /obj/structure/table/wood,
+/obj/item/clipboard{
+	pixel_x = -6;
+	pixel_y = 4
+	},
+/obj/item/stamp{
+	pixel_x = 7;
+	pixel_y = 9
+	},
+/obj/item/stamp/denied{
+	pixel_x = 7;
+	pixel_y = 4
+	},
+/obj/item/stamp/qm{
+	pixel_x = 7;
+	pixel_y = -2
+	},
 /turf/open/floor/wood{
 	icon_state = "wood-broken6"
 	},
@@ -28145,23 +28161,8 @@
 /turf/open/floor/iron/dark/corner,
 /area/station/engineering/atmos/storage/gas)
 "kah" = (
-/obj/structure/table/wood,
-/obj/item/stamp{
-	pixel_x = 7;
-	pixel_y = 9
-	},
-/obj/item/stamp/denied{
-	pixel_x = 7;
-	pixel_y = 4
-	},
-/obj/item/stamp/qm{
-	pixel_x = 7;
-	pixel_y = -2
-	},
-/obj/item/clipboard{
-	pixel_x = -6;
-	pixel_y = 4
-	},
+/obj/machinery/keycard_auth/directional/south,
+/obj/machinery/pdapainter/supply,
 /turf/open/floor/wood,
 /area/station/cargo/qm)
 "kat" = (
@@ -31248,6 +31249,9 @@
 /turf/open/floor/iron,
 /area/station/maintenance/disposal/incinerator)
 "ldg" = (
+/obj/machinery/modular_computer/console/preset/id{
+	dir = 1
+	},
 /turf/open/floor/wood,
 /area/station/cargo/qm)
 "ldJ" = (
@@ -35743,14 +35747,14 @@
 /turf/open/floor/wood,
 /area/station/security/courtroom)
 "mLR" = (
-/obj/machinery/door/airlock/mining/glass{
-	name = "Quartermaster"
-	},
 /obj/structure/cable,
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/effect/mapping_helpers/airlock/access/all/supply/qm,
+/obj/machinery/door/airlock/command{
+	name = "Quartermaster's Office"
+	},
 /turf/open/floor/iron,
 /area/station/cargo/qm)
 "mLS" = (
