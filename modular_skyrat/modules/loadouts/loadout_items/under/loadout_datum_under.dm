@@ -204,7 +204,7 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 
 /datum/loadout_item/under/jumpsuit/utility_com
 	name = "Command Utility Uniform"
-	item_path = /obj/item/clothing/under/utility/com
+	item_path = /obj/item/clothing/under/rank/captain/skyrat/utility
 	restricted_roles = list(JOB_CAPTAIN, JOB_HEAD_OF_PERSONNEL, JOB_BLUESHIELD, JOB_HEAD_OF_SECURITY, JOB_RESEARCH_DIRECTOR, JOB_QUARTERMASTER, JOB_CHIEF_MEDICAL_OFFICER, JOB_CHIEF_ENGINEER)
 
 /datum/loadout_item/under/jumpsuit/polysweater
@@ -427,6 +427,10 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /datum/loadout_item/under/miscellaneous/tactical_pants
 	name = "Tactical Pants"
 	item_path = /obj/item/clothing/under/pants/tactical
+
+/datum/loadout_item/under/miscellaneous/blastwave_uniform
+	name = "Blastwave Uniform"
+	item_path = /obj/item/clothing/under/blastwave
 
 //HALLOWEEN
 /datum/loadout_item/under/miscellaneous/pj_blood
@@ -986,5 +990,5 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 
 /datum/loadout_item/under/donator/captain_black
 	name  = "Captains Black Uniform"
-	item_path = /obj/item/clothing/under/rank/captain/black
+	item_path = /obj/item/clothing/under/rank/captain/skyrat/black
 	restricted_roles = list(JOB_CAPTAIN)

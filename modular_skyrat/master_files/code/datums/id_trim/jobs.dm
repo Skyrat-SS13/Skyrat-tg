@@ -50,11 +50,6 @@
 
 	minimal_access |= ACCESS_WEAPONS
 
-/datum/id_trim/job/quartermaster/New()
-	. = ..()
-
-	minimal_access |= list(ACCESS_BRIG_ENTRANCE, ACCESS_COMMAND, ACCESS_KEYCARD_AUTH, ACCESS_WEAPONS)
-
 /datum/id_trim/job/blueshield
 	assignment = "Blueshield"
 	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
@@ -117,7 +112,7 @@
 	sechud_icon_state = SECHUD_CORRECTIONS_OFFICER
 	extra_access = list()
 	minimal_access = list(ACCESS_SECURITY, ACCESS_BRIG_ENTRANCE, ACCESS_BRIG, ACCESS_COURT,
-				ACCESS_MAINT_TUNNELS, ACCESS_ENTER_GENPOP, ACCESS_LEAVE_GENPOP)
+				ACCESS_MAINT_TUNNELS, ACCESS_ENTER_GENPOP, ACCESS_LEAVE_GENPOP, ACCESS_WEAPONS)
 	template_access = list(ACCESS_CAPTAIN, ACCESS_HOS, ACCESS_CHANGE_IDS)
 	job = /datum/job/brigoff
 

@@ -16,8 +16,6 @@
 */
 
 /obj/item/clothing/under/rank/cargo/tech/skyrat/utility
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/cargo.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/cargo.dmi'
 	name = "supply utility uniform"
 	desc = "A utility uniform worn by employees of the Supply department."
 	icon_state = "util_cargo"
@@ -43,13 +41,11 @@
 	name = "supply turtleneck"
 	desc = "A snug turtleneck sweater worn by the Supply department.."
 	icon_state = "turtleneck_cargo"
-	can_adjust = FALSE
 
 /obj/item/clothing/under/rank/cargo/tech/skyrat/turtleneck/skirt
 	name = "supply skirtleneck"
 	desc = "A snug turtleneck sweater worn by Supply, this time with a skirt attached!"
 	icon_state = "skirtleneck"
-	can_adjust = FALSE
 
 /obj/item/clothing/under/rank/cargo/tech/skyrat/evil
 	name = "black cargo uniform"
@@ -77,13 +73,11 @@
 	name = "quartermaster's turtleneck"
 	desc = "A snug turtleneck sweater worn by the Quartermaster, characterized by the expensive-looking pair of suit pants."
 	icon_state = "turtleneck_qm"
-	can_adjust = FALSE
 
 /obj/item/clothing/under/rank/cargo/qm/skyrat/turtleneck/skirt
 	name = "quartermaster's skirtleneck"
 	desc = "A snug turtleneck sweater worn by the Quartermaster, as shown by the elegant double-lining of its silk skirt."
 	icon_state = "skirtleneckQM"
-	can_adjust = FALSE
 
 /obj/item/clothing/under/rank/cargo/qm/skyrat/syndie
 	name = "deck officer's jumpsuit"
