@@ -2,14 +2,12 @@
 	key = "tail"
 	generic = "Tail"
 	organ_type = /obj/item/organ/external/tail
-	icon = 'modular_skyrat/master_files/icons/mob/mutant_bodyparts.dmi'
+	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/tails.dmi'
 	special_render_case = TRUE
 	special_icon_case = TRUE
 	special_colorize = TRUE
 	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
 	genetic = TRUE
-	/// Flags which define whether or not we support wagging, and whether or not we're currently wagging.
-	var/wag_flags = NONE
 	/// A generalisation of the tail-type, e.g. lizard or feline, for MODsuit or other sprites
 	var/general_type
 	/// Can we use this tail for the fluffy tail turf emote?
@@ -98,7 +96,6 @@
 /datum/sprite_accessory/tails/mammal
 	icon_state = "none"
 	recommended_species = list(SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL,SPECIES_HUMAN, SPECIES_SYNTHHUMAN, SPECIES_HUMANOID, SPECIES_GHOUL)
-	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/tails.dmi'
 	organ_type = /obj/item/organ/external/tail/fluffy/no_wag
 	color_src = USE_MATRIXED_COLORS
 
