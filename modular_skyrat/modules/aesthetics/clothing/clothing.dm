@@ -131,3 +131,12 @@
 /obj/item/clothing/under/syndicate/sniper
 	icon = 'icons/obj/clothing/under/syndicate.dmi'
 	worn_icon = 'icons/mob/clothing/under/syndicate.dmi'
+
+/*
+*	SHOES
+*/
+
+/obj/item/clothing/shoes/workboots/old
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/feet.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/shoes.dmi'
+	icon_state = "workbootsold"

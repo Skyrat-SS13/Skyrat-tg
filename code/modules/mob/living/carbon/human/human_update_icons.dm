@@ -470,7 +470,8 @@ There are several things that need to be remembered:
 				mutant_override = TRUE
 		if(!icon_file && (dna.species.bodytype & BODYTYPE_SNOUTED) && (worn_item.supports_variations_flags & CLOTHING_SNOUTED_VARIATION))
 			icon_file = worn_item.worn_icon_muzzled || SNOUTED_HEAD_FILE
-			mutant_override = TRUE
+			if(icon_file && icon_exists(icon_file, RESOLVE_ICON_STATE(worn_item)))
+				mutant_override = TRUE
 		// SKYRAT EDIT END
 
 		if(!(icon_exists(icon_file, RESOLVE_ICON_STATE(worn_item))))
@@ -611,7 +612,8 @@ There are several things that need to be remembered:
 				mutant_override = TRUE
 		if(!icon_file && (dna.species.bodytype & BODYTYPE_SNOUTED) && (worn_item.supports_variations_flags & CLOTHING_SNOUTED_VARIATION))
 			icon_file = worn_item.worn_icon_muzzled || SNOUTED_MASK_FILE
-			mutant_override = TRUE
+			if(icon_file && icon_exists(icon_file, RESOLVE_ICON_STATE(worn_item)))
+				mutant_override = TRUE
 		// SKYRAT EDIT END
 
 		if(!(ITEM_SLOT_MASK in check_obscured_slots()))

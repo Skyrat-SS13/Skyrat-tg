@@ -27,7 +27,7 @@
 		play_lobby_button_sound()
 		var/datum/preferences/preferences = client.prefs
 		preferences.write_preference(GLOB.preference_entries[/datum/preference/toggle/be_antag], !preferences.read_preference(/datum/preference/toggle/be_antag))
-		client << output(!preferences.read_preference(/datum/preference/toggle/be_antag), "title_browser:toggle_antag")
+		client << output(preferences.read_preference(/datum/preference/toggle/be_antag), "title_browser:toggle_antag")
 		return
 
 	if(href_list["character_setup"])
@@ -136,7 +136,7 @@
 /mob/dead/new_player/proc/update_title_screen()
 	var/dat = get_title_html()
 
-	src << browse(GLOB.current_title_screen, "file=loading_screen.gif;display=0")
+	src << browse(SStitle.current_title_screen, "file=loading_screen.gif;display=0")
 	src << browse(dat, "window=title_browser")
 
 /datum/asset/simple/lobby
@@ -250,9 +250,9 @@
 		qdel(query_get_new_polls)
 		return
 	if(query_get_new_polls.NextRow())
-		output +={"<a class="menu_ab" href='?src=\ref[src];viewpoll=1'>POLLS (NEW)</a>"}
+		output +={"<a class="menu_button menu_newpoll" href='?src=\ref[src];viewpoll=1'>POLLS (NEW)</a>"}
 	else
-		output +={"<a class="menu_a" href='?src=\ref[src];viewpoll=1'>POLLS</a>"}
+		output +={"<a class="menu_button" href='?src=\ref[src];viewpoll=1'>POLLS</a>"}
 	qdel(query_get_new_polls)
 	if(QDELETED(src))
 		return

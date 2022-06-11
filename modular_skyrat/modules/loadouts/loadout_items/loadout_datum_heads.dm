@@ -385,6 +385,14 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 	name = "Fashionable Baseball Cap"
 	item_path = /obj/item/clothing/head/soft/yankee
 
+/datum/loadout_item/head/blastwave_helmet
+	name = "Blastwave Plastic Helmet"
+	item_path = /obj/item/clothing/head/blastwave
+
+/datum/loadout_item/head/blastwave_cap
+	name = "Blastwave Peaked Cap"
+	item_path = /obj/item/clothing/head/blastwave/officer
+
 /*
 *	COWBOY
 */
@@ -480,7 +488,7 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 
 /datum/loadout_item/head/cowboyhat_secwide
 	name = "Wide Cowboy Hat, Security"
-	item_path = /obj/item/clothing/head/cowboyhat/widesec
+	item_path = /obj/item/clothing/head/cowboyhat/wide/sec
 	restricted_roles = list(JOB_WARDEN,JOB_DETECTIVE,JOB_SECURITY_MEDIC,JOB_SECURITY_OFFICER,JOB_HEAD_OF_SECURITY,JOB_CORRECTIONS_OFFICER)
 
 /datum/loadout_item/head/ushanka/sec

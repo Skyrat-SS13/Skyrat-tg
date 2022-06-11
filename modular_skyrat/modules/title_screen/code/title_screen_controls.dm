@@ -17,9 +17,9 @@
 			var/file = input(usr) as icon|null
 			if(!file)
 				return
-			change_title_screen(file)
+			SStitle.change_title_screen(file)
 		if("Reset")
-			change_title_screen()
+			SStitle.change_title_screen()
 		if("Cancel")
 			return
 
@@ -36,50 +36,13 @@
 	log_admin("[key_name(usr)] is setting the title screen notice.")
 	message_admins("[key_name_admin(usr)] is setting the title screen notice.")
 
-	var/new_notice = input(usr, "Please input a notice to be displayed on the title screen:", "Titlescreen Notice")
+	var/new_notice = input(usr, "Please input a notice to be displayed on the title screen:", "Titlescreen Notice") as text|null
+	SStitle.set_notice(new_notice)
 	if(!new_notice)
-		set_title_screen_notice()
 		return
-	set_title_screen_notice(new_notice)
 	for(var/mob/dead/new_player/new_player in GLOB.new_player_list)
 		to_chat(new_player, span_boldannounce("TITLE NOTICE UPDATED: [new_notice]"))
 		SEND_SOUND(new_player,  sound('modular_skyrat/modules/admin/sound/duckhonk.ogg'))
-
-/**
- * Adds a startup message to the splashscreen.
- */
-/proc/add_startup_message(msg)
-	var/msg_dat = {"<p class="menu_b">[msg]</p>"}
-
-	GLOB.startup_messages.Insert(1, msg_dat)
-
-	for(var/mob/dead/new_player/iterating_new_player in GLOB.new_player_list)
-		INVOKE_ASYNC(iterating_new_player, /mob/dead/new_player.proc/update_title_screen)
-
-/**
- * Changes the title screen to a new image.
- */
-
-/proc/change_title_screen(new_screen)
-	if(new_screen)
-		GLOB.current_title_screen = new_screen
-	else
-		if(LAZYLEN(GLOB.title_screens))
-			GLOB.current_title_screen = pick(GLOB.title_screens)
-		else
-			GLOB.current_title_screen = DEFAULT_TITLE_SCREEN_IMAGE
-
-	for(var/mob/dead/new_player/new_player in GLOB.new_player_list)
-		INVOKE_ASYNC(new_player, /mob/dead/new_player.proc/show_title_screen)
-
-/**
- * Adds a notice to the main title screen in the form of big red text!
- */
-/proc/set_title_screen_notice(new_title)
-	GLOB.current_title_screen_notice = new_title ? sanitize_text(new_title) : null
-
-	for(var/mob/dead/new_player/new_player in GLOB.new_player_list)
-		INVOKE_ASYNC(new_player, /mob/dead/new_player.proc/show_title_screen)
 
 /**
  * Reloads the titlescreen if it is bugged for someone.
@@ -113,9 +76,7 @@
 	if(!new_html)
 		return
 
-	GLOB.title_html = new_html
-
-	for(var/mob/dead/new_player/new_player in GLOB.new_player_list)
-		INVOKE_ASYNC(new_player, /mob/dead/new_player.proc/show_title_screen)
+	SStitle.title_html = new_html
+	SStitle.show_title_screen()
 
 	message_admins("[key_name_admin(usr)] has changed the title screen HTML.")

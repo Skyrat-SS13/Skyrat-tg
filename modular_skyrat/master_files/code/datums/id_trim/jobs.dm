@@ -12,43 +12,43 @@
 /datum/id_trim/job/head_of_security/New()
 	. = ..()
 
-	access |= list(ACCESS_ENTER_GENPOP, ACCESS_LEAVE_GENPOP)
+	minimal_access |= list(ACCESS_ENTER_GENPOP, ACCESS_LEAVE_GENPOP)
 
 /datum/id_trim/job/warden/New()
 	. = ..()
 
-	access |= list(ACCESS_ENTER_GENPOP, ACCESS_LEAVE_GENPOP)
+	minimal_access |= list(ACCESS_ENTER_GENPOP, ACCESS_LEAVE_GENPOP)
 
 /datum/id_trim/job/security_officer/New()
 	. = ..()
 
-	access |= list(ACCESS_ENTER_GENPOP, ACCESS_LEAVE_GENPOP)
+	minimal_access |= list(ACCESS_ENTER_GENPOP, ACCESS_LEAVE_GENPOP)
 
 /datum/id_trim/job/chief_engineer/New()
 	. = ..()
 
-	access |= ACCESS_WEAPONS
+	minimal_access |= ACCESS_WEAPONS
+
+/datum/id_trim/job/atmospheric_technician/New()
+	. = ..()
+
+	minimal_access |= ACCESS_ENGINE_EQUIP
 
 /datum/id_trim/job/chief_medical_officer/New()
 	. = ..()
 
-	access |= ACCESS_WEAPONS
+	minimal_access |= ACCESS_WEAPONS
 
 /datum/id_trim/job/research_director/New()
 	. = ..()
 
-	access |= ACCESS_WEAPONS
+	minimal_access |= ACCESS_WEAPONS
 
 
 /datum/id_trim/job/head_of_personnel/New()
 	. = ..()
 
-	access |= ACCESS_WEAPONS
-
-/datum/id_trim/job/quartermaster/New()
-	. = ..()
-
-	access |= ACCESS_WEAPONS
+	minimal_access |= ACCESS_WEAPONS
 
 /datum/id_trim/job/blueshield
 	assignment = "Blueshield"
@@ -112,7 +112,7 @@
 	sechud_icon_state = SECHUD_CORRECTIONS_OFFICER
 	extra_access = list()
 	minimal_access = list(ACCESS_SECURITY, ACCESS_BRIG_ENTRANCE, ACCESS_BRIG, ACCESS_COURT,
-				ACCESS_MAINT_TUNNELS, ACCESS_ENTER_GENPOP, ACCESS_LEAVE_GENPOP)
+				ACCESS_MAINT_TUNNELS, ACCESS_ENTER_GENPOP, ACCESS_LEAVE_GENPOP, ACCESS_WEAPONS)
 	template_access = list(ACCESS_CAPTAIN, ACCESS_HOS, ACCESS_CHANGE_IDS)
 	job = /datum/job/brigoff
 
