@@ -16,6 +16,7 @@
 		TRAIT_CAN_STRIP,
 		TRAIT_EASYDISMEMBER,
 		TRAIT_EASILY_WOUNDED, //theyre like fuckin skin and bones
+		TRAIT_LITERATE,
 	)
 	offset_features = list(
 		OFFSET_UNIFORM = list(0,0),

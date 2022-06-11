@@ -255,17 +255,6 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "checkered"
 
-/obj/item/clothing/under/rank/captain/humble
-	desc = "It's a blue jumpsuit with some small gold markings denoting the rank of \"Captain\", more humble than it's sister."
-	name = "captain's humble jumpsuit"
-	icon_state = "captainhumble"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	inhand_icon_state = "b_suit"
-	sensor_mode = SENSOR_COORDS
-	random_sensor = FALSE
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 0, ACID = 0, WOUND = 15)
-
 /obj/item/clothing/under/uvf
 	name = "british combat sweater"
 	desc = "Thankfully doesn't include the sash your father wore."
@@ -314,14 +303,6 @@
 	icon_state = "adam"
 	body_parts_covered = GROIN
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
-
-/obj/item/clothing/under/misc/evilcargo
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	name = "black cargo uniform"
-	desc = "Yep, here’s your problem. Someone set this thing to evil."
-	icon_state = "qmsynd"
-	can_adjust = FALSE
 
 /obj/item/clothing/under/rank/medical/doctor/white
 	name = "white scrubs"
@@ -503,14 +484,6 @@
 	name = "head of personnel's female formal uniform"
 	icon_state = "hop_parade_female"
 
-/obj/item/clothing/under/rank/captain/kilt
-	desc = "Not a skirt, it is, however, armoured and decorated with a tartan sash."
-	name = "captain's kilt"
-	icon_state = "capkilt"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	inhand_icon_state = "kilt"
-
 /obj/item/clothing/under/suit/helltaker
 	name = "red shirt with white pants"
 	desc = "No time. Busy gathering girls."
@@ -591,10 +564,3 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "black_suit_fem"
-
-/obj/item/clothing/under/rank/captain/black
-	name = "captains black suit"
-	desc = "A very sleek naval captains uniform for those who think they're commanding a battleship."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "captainblacksuit"

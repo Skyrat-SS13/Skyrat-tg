@@ -18,7 +18,7 @@
 
 /obj/item/straight_razor/proc/shave(mob/living/carbon/human/target_human)
 	target_human.facial_hairstyle = "Shaved"
-	target_human.update_hair()
+	target_human.update_hair(is_creating = TRUE)
 	playsound(loc, 'sound/items/unsheath.ogg', 20, TRUE)
 
 /obj/item/straight_razor/attack(mob/attacked_mob, mob/living/user)
@@ -49,7 +49,7 @@
 				user.visible_message(span_notice("[user] shaves [self_shaving ? user.p_their() : "[target_human]'s"] facial hair clean with [src]."), \
 					span_notice("You finish shaving[self_shaving ? "" : " [target_human]'s facial hair"] with [src]. Fast and clean!"))
 				shave(target_human)
-			
+
 		else
 			..()
 	else

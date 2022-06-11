@@ -46,6 +46,8 @@
 
 /obj/structure/deployable_barricade/examine(mob/user)
 	. = ..()
+	if(!is_wired)
+		. += span_info("Barbed wire could be added with some <b>cable</b>.")
 	if(is_wired)
 		. += span_info("It has barbed wire along the top.")
 
@@ -95,7 +97,7 @@
 /obj/structure/deployable_barricade/attackby(obj/item/I, mob/living/user, params)
 	if(istype(I, /obj/item/stack/cable_coil) && can_wire)
 		var/obj/item/stack/S = I
-		if(S.use(15))
+		if(S.use(5))
 			wire()
 		else
 			return
