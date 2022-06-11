@@ -82,6 +82,9 @@
 
 	if(!stored_feature_id) //We only want this set *once*
 		stored_feature_id = reciever.dna.features[feature_key]
+		// SKYRAT EDIT START - Customization (we use mutant_bodyparts for a lot of things)
+		if(!stored_feature_id)
+			stored_feature_id = reciever.dna.mutant_bodyparts[feature_key]?["name"]
 
 	reciever.external_organs.Add(src)
 	if(slot)
