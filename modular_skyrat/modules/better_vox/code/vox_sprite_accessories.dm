@@ -7,6 +7,22 @@
 	gender_specific = FALSE
 	recommended_species = list(SPECIES_VOX_PRIMALIS)
 
+/datum/sprite_accessory/tails/vox_primalis/albino
+	name = "Vox Primalis Albino Tail"
+	icon_state = "vox_albino"
+
+/datum/sprite_accessory/tails/vox_primalis/brown
+	name = "Vox Primalis Brown Tail"
+	icon_state = "vox_brown"
+
+/datum/sprite_accessory/tails/vox_primalis/darkteal
+	name = "Vox Primalis Darkteal Tail"
+	icon_state = "vox_darkteal"
+
+/datum/sprite_accessory/tails/vox_primalis/yellow
+	name = "Vox Primalis Yellow Tail"
+	icon_state = "vox_yellow"
+
 // HAIR
 /datum/sprite_accessory/hair/vox_primalis
 	icon = 'modular_skyrat/modules/better_vox/icons/accessories/vox_hair.dmi'
@@ -63,3 +79,39 @@
 /datum/sprite_accessory/hair/vox_primalis/kingly_dreads
 	name = "Vox Primalis Kingly Dreads"
 	icon_state = "vox_kingly_dreads_s"
+
+// MARKINGS
+/datum/body_marking/vox_primalis
+	icon = 'modular_skyrat/modules/better_vox/icons/accessories/vox_bodymarkings.dmi'
+	default_color = "#64e8ff"
+	recommended_species = list(SPECIES_VOX_PRIMALIS)
+	affected_bodyparts = CHEST
+	gendered = FALSE
+
+/datum/body_marking/vox_primalis/leader
+	name = "Vox Primalis Leader"
+	icon_state = "leader"
+
+/datum/body_marking/vox_primalis/drone
+	name = "Vox Primalis Drone"
+	icon_state = "drone"
+
+/datum/body_marking/vox_primalis/reaver
+	name = "Vox Primalis Reaver"
+	icon_state = "reaver"
+
+/datum/body_marking/vox_primalis/raider
+	name = "Vox Primalis Raider"
+	icon_state = "raider"
+
+/datum/body_marking/vox_primalis/larva
+	name = "Vox Primalis Larva"
+	icon_state = "larva"
+
+/datum/body_marking/vox_primalis/scavenger
+	name = "Vox Primalis Scavenger"
+	icon_state = "scavenger"
+
+/datum/body_marking/vox_primalis/servitor
+	name = "Vox Primalis Servitor"
+	icon_state = "servitor"

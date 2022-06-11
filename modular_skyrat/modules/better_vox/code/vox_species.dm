@@ -93,3 +93,12 @@
 
 /datum/species/vox_primalis/get_species_lore()
 	return list(placeholder_lore)
+
+/datum/species/vox_primalis/on_species_gain(mob/living/carbon/human/transformer)
+	. = ..()
+	var/vox_color = transformer.dna.features["vox_bodycolor"]
+	if(vox_color == "default")
+		return
+	for(var/obj/item/bodypart/limb as anything in transformer.bodyparts)
+		limb.limb_id = "[SPECIES_VOX_PRIMALIS]_[vox_color]"
+	transformer.update_body()

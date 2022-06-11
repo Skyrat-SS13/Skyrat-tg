@@ -2,10 +2,12 @@
 	savefile_key = "vox_bodycolor"
 	savefile_identifier = PREFERENCE_CHARACTER
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
-	relevant_species_trait = SPECIES_VOX_PRIMALIS
 
 /datum/preference/choiced/vox_bodycolor/init_possible_values()
-	return list("darkteal", "green", "yellow", "albino", "brown")
+	return list("darkteal", "yellow", "albino", "brown")
+
+/datum/preference/choiced/vox_bodycolor/create_default_value()
+	return "default"
 
 /datum/preference/choiced/vox_bodycolor/apply_to_human(mob/living/carbon/human/target, value)
 	target.dna.features["vox_bodycolor"] = value

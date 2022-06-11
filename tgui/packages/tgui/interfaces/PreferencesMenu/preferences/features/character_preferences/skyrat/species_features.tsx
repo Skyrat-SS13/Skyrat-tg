@@ -659,3 +659,8 @@ export const heterochromia_emissive: Feature<boolean[]> = {
   description: "Want to have a fancy species name? Put it here, or leave it blank.",
   component: FeatureTriBoolInput,
 };
+
+export const vox_bodycolor: Feature<string> = {
+  name: "Vox Bodycolor",
+  component: FeatureDropdownInput,
+};
