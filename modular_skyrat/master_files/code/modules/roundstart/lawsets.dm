@@ -6,6 +6,7 @@
 	var/list/law_weights = CONFIG_GET(keyed_list/law_weight)
 	if(HAS_TRAIT(SSstation, STATION_TRAIT_UNIQUE_AI))
 		law_weights -= "asimov"
+		law_weights -= "safeguard"
 	while(!lawtype && length(law_weights))
 		var/possible_id = pick_weight(law_weights)
 		lawtype = lawid_to_type(possible_id)
