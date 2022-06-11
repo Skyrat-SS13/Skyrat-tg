@@ -22,11 +22,21 @@
 			if(mod_theme.modsuit_tail_colors)
 				return "[general_type]_modsuit"
 
-	var/obj/item/organ/external/tail/tail = wearer.getorganslot(ORGAN_SLOT_EXTERNAL_TAIL)
-	if(tail && tail.wag_flags & WAG_WAGGING)
-		return "[icon_state]_wagging"
-
 	return icon_state
+
+/datum/sprite_accessory/tails/get_special_render_key(mob/living/carbon/human/owner)
+	if(general_type && owner.wear_suit && istype(owner.wear_suit, /obj/item/clothing/suit/mod))
+		if(owner.back && istype(owner.back, /obj/item/mod/control)) // If this fails, honestly, something's really wrong, but just to be safe...
+			var/obj/item/mod/control/modsuit_control = owner.back
+			var/datum/mod_theme/mod_theme = modsuit_control.theme
+			if(mod_theme.modsuit_tail_colors)
+				return key
+
+	var/obj/item/organ/external/tail/tail = owner.getorganslot(ORGAN_SLOT_EXTERNAL_TAIL)
+	if(tail)
+		return tail.render_key
+
+	return key
 
 /datum/sprite_accessory/tails/get_special_icon(mob/living/carbon/human/wearer, passed_state)
 	var/returned = icon

@@ -87,6 +87,9 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 /datum/sprite_accessory/proc/get_special_render_state(mob/living/carbon/human/H)
 	return null
 
+/datum/sprite_accessory/proc/get_special_render_key(mob/living/carbon/human/owner)
+	return key
+
 /datum/sprite_accessory/proc/get_special_render_colour(mob/living/carbon/human/H, passed_state)
 	return null
 

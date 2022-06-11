@@ -69,7 +69,7 @@
 	else
 		render_key = initial(render_key)
 		wag_flags &= ~WAG_WAGGING
-	owner.update_body_parts()
+	owner.update_body() // SKYRAT EDIT - Golden update this in your upcoming tail refactor please :) - Original: owner.update_body_parts()
 
 /obj/item/organ/external/tail/cat
 	name = "tail"
@@ -126,7 +126,7 @@
 		if(paired_spines)
 			paired_spines.render_key = initial(paired_spines.render_key)
 
-	owner.update_body_parts()
+	owner.update_body() // SKYRAT EDIT - Golden update this in your upcoming tail refactor please :) - Original: owner.update_body_parts()
 
 /obj/item/organ/external/tail/lizard/fake
 	name = "fabricated lizard tail"
