@@ -1107,6 +1107,11 @@
 	},
 /turf/open/floor/iron/freezer,
 /area/ruin/space/has_grav/lostcargo/cafe)
+"st" = (
+/obj/structure/marker_beacon/burgundy,
+/obj/structure/lattice/catwalk,
+/turf/template_noop,
+/area/ruin/space/has_grav/lostcargo/hallway)
 "sv" = (
 /obj/structure/window/reinforced/tinted{
 	dir = 4
@@ -1772,7 +1777,13 @@
 	},
 /area/ruin/space/has_grav/lostcargo/hallway)
 "Bb" = (
-/obj/effect/decal/cleanable/blood/splatter,
+/obj/structure/cable,
+/obj/effect/turf_decal/raven{
+	dir = 1
+	},
+/obj/effect/turf_decal/arrows{
+	dir = 1
+	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/lostcargo/mining)
 "Bo" = (
@@ -1996,10 +2007,9 @@
 /turf/open/floor/iron/cafeteria,
 /area/ruin/space/has_grav/lostcargo/cafe)
 "FR" = (
-/obj/structure/marker_beacon/burgundy,
-/obj/structure/lattice/catwalk,
-/turf/template_noop,
-/area/ruin/space/has_grav/lostcargo/hallway)
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/lostcargo/mining)
 "FS" = (
 /obj/machinery/door/airlock/survival_pod/glass,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
@@ -2256,16 +2266,6 @@
 /obj/machinery/door/firedoor,
 /turf/open/floor/iron/dark/green,
 /area/ruin/space/has_grav/lostcargo/crew)
-"Kq" = (
-/obj/structure/cable,
-/obj/effect/turf_decal/raven{
-	dir = 1
-	},
-/obj/effect/turf_decal/arrows{
-	dir = 1
-	},
-/turf/open/floor/iron/dark,
-/area/ruin/space/has_grav/lostcargo/mining)
 "KC" = (
 /obj/structure/fans/tiny/forcefield,
 /obj/machinery/door/poddoor{
@@ -2739,7 +2739,7 @@
 /obj/structure/marker_beacon/burgundy,
 /obj/structure/lattice/catwalk,
 /turf/template_noop,
-/area/ruin/space/has_grav/lostcargo)
+/area/ruin/space/has_grav/lostcargo/crew)
 "Qi" = (
 /obj/structure/toilet{
 	dir = 4
@@ -4869,7 +4869,7 @@ Df
 yB
 Gi
 Zy
-FR
+st
 Zy
 "}
 (38,1,1) = {"
@@ -4999,7 +4999,7 @@ iF
 Vs
 Xr
 JQ
-Kq
+Bb
 hg
 eS
 Tm
@@ -5172,7 +5172,7 @@ jh
 HL
 XJ
 II
-Bb
+FR
 Nk
 Sl
 VN
