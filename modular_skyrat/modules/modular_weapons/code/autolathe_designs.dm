@@ -99,7 +99,7 @@
 	build_path = /obj/item/ammo_casing/c10mm/rubber
 	category = list("initial", "Security")
 
-// Peackeaper Rounds
+// Peacekeeper Rounds
 /datum/design/b9mm
 	name = "Ammo Box (9x19mm Peacekeeper FMJ)"
 	id = "b9mm"
@@ -115,7 +115,6 @@
 	materials = list(/datum/material/iron = 1000)
 	build_path = /obj/item/ammo_casing/b9mm/rubber
 	category = list("hacked", "Security")
-
 
 /datum/design/b10mm
 	name = "Ammo Box (10mm Auto)"
