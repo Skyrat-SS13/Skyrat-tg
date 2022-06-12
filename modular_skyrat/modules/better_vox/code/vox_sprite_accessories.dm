@@ -112,9 +112,9 @@
 	name = "Vox Primalis Scavenger"
 	icon_state = "scavenger"
 
-/datum/body_marking/vox_primalis/servitor
-	name = "Vox Primalis Servitor"
-	icon_state = "servitor"
+/datum/body_marking/vox_primalis/servirtor
+	name = "Vox Primalis Servirtor"
+	icon_state = "servirtor"
 
 // THE BEAK
 /datum/sprite_accessory/snouts/vox_primalis_beak
