@@ -153,6 +153,8 @@ There are several things that need to be remembered:
 
 		var/mutable_appearance/uniform_overlay
 
+		//Change check_adjustable_clothing.dm if you change this
+		var/handled_by_bodytype = TRUE
 		var/icon_file
 		var/woman
 		var/mutant_override = FALSE // SKYRAT EDIT ADDITION
@@ -182,7 +184,11 @@ There are several things that need to be remembered:
 				isinhands = FALSE,
 				female_uniform = woman ? uniform.female_sprite_flags : null,
 				override_state = target_overlay,
+<<<<<<< HEAD
 				override_file = mutant_override ? icon_file : null, // SKYRAT EDIT CHANGE
+=======
+				override_file = handled_by_bodytype ? icon_file : null,
+>>>>>>> 29fd14a7ff9 (Adds `handled_by_bodytype` var and override back to `human_update_icons.dm` (#67657))
 			)
 
 		if(!mutant_override && (OFFSET_UNIFORM in dna.species.offset_features)) // SKYRAT EDIT CHANGE
