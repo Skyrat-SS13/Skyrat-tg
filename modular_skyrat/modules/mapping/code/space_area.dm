@@ -283,3 +283,9 @@
 	name = "\improper P-T Solar Array"
 	icon_state = "solarsS"
 	has_gravity = STANDARD_GRAVITY
+
+// Lost Cargo Freighter areas
+
+/area/ruin/space/has_grav/deepstorage/lostcargo
+	name = "Freighter Ship"
+	icon_state = "yellow"
