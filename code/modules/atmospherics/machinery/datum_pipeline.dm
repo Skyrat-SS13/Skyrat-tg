@@ -202,7 +202,7 @@
 		if(turf_heat_capacity <= 0 || partial_heat_capacity <= 0)
 			return TRUE
 
-		var/heat = thermal_conductivity * CALCULATE_CONDUCTION_ENERGY(delta_temperature, turf_heat_capacity, partial_heat_capacity)
+		var/heat = CALCULATE_CONDUCTION_ENERGY(thermal_conductivity * delta_temperature, turf_heat_capacity, partial_heat_capacity)
 
 		air.temperature -= heat / total_heat_capacity
 		if(!target.liquids.immutable)

@@ -1,4 +1,4 @@
-/obj/item/organ/brain/ipc_positron
+/obj/item/organ/internal/brain/ipc_positron
 	name = "positronic brain carcass"
 	slot = ORGAN_SLOT_BRAIN
 	zone = BODY_ZONE_CHEST
@@ -12,7 +12,7 @@
 	#define SYNTH_EMP_BRAIN_DAMAGE_LIGHT 12
 	#define SYNTH_EMP_BRAIN_DAMAGE_MAXIMUM 75
 
-/obj/item/organ/brain/ipc_positron/Insert(mob/living/carbon/user, special = 0, drop_if_replaced = TRUE)
+/obj/item/organ/internal/brain/ipc_positron/Insert(mob/living/carbon/user, special = 0, drop_if_replaced = TRUE)
 	..()
 	if(user.stat == DEAD && ishuman(user))
 		var/mob/living/carbon/human/user_human = user
@@ -20,7 +20,7 @@
 			if(user_human.health > 50)
 				user_human.revive(FALSE)
 
-/obj/item/organ/brain/ipc_positron/emp_act(severity)
+/obj/item/organ/internal/brain/ipc_positron/emp_act(severity)
 	switch(severity)
 		if(1)
 			owner.adjustOrganLoss(ORGAN_SLOT_BRAIN, SYNTH_EMP_BRAIN_DAMAGE_HEAVY, SYNTH_EMP_BRAIN_DAMAGE_MAXIMUM)
@@ -29,7 +29,7 @@
 			owner.adjustOrganLoss(ORGAN_SLOT_BRAIN, SYNTH_EMP_BRAIN_DAMAGE_LIGHT, SYNTH_EMP_BRAIN_DAMAGE_MAXIMUM)
 			to_chat(owner, span_warning("Alert: System corruption in central processing unit."))
 
-/obj/item/organ/stomach/robot_ipc
+/obj/item/organ/internal/stomach/robot_ipc
 	name = "IPC micro cell"
 	icon = 'modular_skyrat/master_files/icons/obj/surgery.dmi'
 	icon_state = "stomach-ipc"
@@ -40,7 +40,7 @@
 	status = ORGAN_ROBOTIC
 	organ_flags = ORGAN_SYNTHETIC
 
-/obj/item/organ/stomach/robot_ipc/emp_act(severity)
+/obj/item/organ/internal/stomach/robot_ipc/emp_act(severity)
 	. = ..()
 	if(!owner || . & EMP_PROTECT_SELF)
 		return
@@ -52,7 +52,7 @@
 			owner.nutrition = 250
 			to_chat(owner, span_warning("Alert: Minor battery discharge!"))
 
-/obj/item/organ/ears/robot_ipc
+/obj/item/organ/internal/ears/robot_ipc
 	name = "auditory sensors"
 	icon = 'modular_skyrat/master_files/icons/obj/surgery.dmi'
 	icon_state = "ears-ipc"
@@ -63,7 +63,7 @@
 	status = ORGAN_ROBOTIC
 	organ_flags = ORGAN_SYNTHETIC
 
-/obj/item/organ/ears/robot_ipc/emp_act(severity)
+/obj/item/organ/internal/ears/robot_ipc/emp_act(severity)
 	. = ..()
 	if(!owner || . & EMP_PROTECT_SELF)
 		return
@@ -80,7 +80,7 @@
 			owner.Knockdown(40)
 			to_chat(owner, span_warning("Your system reports anomalous feedback from your auditory sensors."))
 
-/obj/item/organ/tongue/robot_ipc
+/obj/item/organ/internal/tongue/robot_ipc
 	name = "robotic voicebox"
 	desc = "A voice synthesizer that can interface with organic lifeforms."
 	status = ORGAN_ROBOTIC
@@ -92,17 +92,17 @@
 	maxHealth = 100 //RoboTongue!
 	organ_flags = ORGAN_SYNTHETIC
 
-/obj/item/organ/tongue/robot_ipc/handle_speech(datum/source, list/speech_args)
+/obj/item/organ/internal/tongue/robot_ipc/handle_speech(datum/source, list/speech_args)
 	speech_args[SPEECH_SPANS] |= SPAN_ROBOT
 
-/obj/item/organ/eyes/robot_ipc
+/obj/item/organ/internal/eyes/robot_ipc
 	name = "optical sensors"
 	icon_state = "cybernetic_eyeballs"
 	desc = "A very basic set of optical sensors with no extra vision modes or functions."
 	status = ORGAN_ROBOTIC
 	organ_flags = ORGAN_SYNTHETIC
 
-/obj/item/organ/eyes/robot_ipc/emp_act(severity)
+/obj/item/organ/internal/eyes/robot_ipc/emp_act(severity)
 	. = ..()
 	if(!owner || . & EMP_PROTECT_SELF)
 		return
@@ -111,7 +111,7 @@
 	if(severity == EMP_HEAVY)
 		owner.adjustOrganLoss(ORGAN_SLOT_EYES, 20)
 
-/obj/item/organ/lungs/robot_ipc
+/obj/item/organ/internal/lungs/robot_ipc
 	name = "heat sink"
 	desc = "A device that transfers generated heat to a fluid medium to cool it down. Required to keep your synthetics cool-headed. It's shape resembles lungs." //Purposefully left the 'fluid medium' ambigious for interpretation of the character, whether it be air or fluid cooling
 	icon = 'modular_skyrat/master_files/icons/obj/surgery.dmi'
@@ -130,7 +130,7 @@
 	status = ORGAN_ROBOTIC
 	organ_flags = ORGAN_SYNTHETIC
 
-/obj/item/organ/lungs/robot_ipc/emp_act(severity)
+/obj/item/organ/internal/lungs/robot_ipc/emp_act(severity)
 	. = ..()
 	if(. & EMP_PROTECT_SELF)
 		return
@@ -141,7 +141,7 @@
 		if(2)
 			owner.adjust_bodytemperature(30*TEMPERATURE_DAMAGE_COEFFICIENT)
 
-/obj/item/organ/heart/robot_ipc
+/obj/item/organ/internal/heart/robot_ipc
 	name = "hydraulic pump engine"
 	desc = "An electronic device that handles the hydraulic pumps, powering one's robotic limbs."
 	organ_flags = ORGAN_SYNTHETIC
@@ -149,7 +149,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/surgery.dmi'
 	icon_state = "heart-ipc"
 
-/obj/item/organ/liver/robot_ipc
+/obj/item/organ/internal/liver/robot_ipc
 	name = "reagent processing unit"
 	desc = "An electronic device that processes the beneficial chemicals for the synthetic user."
 	organ_flags = ORGAN_SYNTHETIC
@@ -158,7 +158,7 @@
 	icon_state = "liver-c"
 	filterToxins = FALSE //We dont filter them, we're immune ot them
 
-/obj/item/organ/cyberimp/arm/power_cord
+/obj/item/organ/internal/cyberimp/arm/power_cord
 	name = "power cord implant"
 	desc = "An internal power cord hooked up to a battery. Useful if you run on volts."
 	contents = newlist(/obj/item/apc_powercord)
@@ -176,7 +176,7 @@
 	user.changeNext_move(CLICK_CD_MELEE)
 	var/obj/machinery/power/apc/target_apc = target
 	var/mob/living/carbon/human/ipc = user
-	var/obj/item/organ/stomach/robot_ipc/cell = locate(/obj/item/organ/stomach/robot_ipc) in ipc.internal_organs
+	var/obj/item/organ/internal/stomach/robot_ipc/cell = locate(/obj/item/organ/internal/stomach/robot_ipc) in ipc.internal_organs
 	if(!cell)
 		to_chat(ipc, span_warning("You try to siphon energy from the [target_apc], but your power cell is gone!"))
 		return

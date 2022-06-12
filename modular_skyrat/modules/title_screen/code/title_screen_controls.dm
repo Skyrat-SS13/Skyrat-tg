@@ -57,6 +57,7 @@
 		new_player.show_title_screen()
 	else
 		winset(src, "title_browser", "is-disabled=true;is-visible=false")
+		winset(src, "status_bar", "is-visible=true")
 
 /**
  * An admin debug command that enables you to change the HTML on the go.

@@ -160,7 +160,7 @@
 	for(var/obj/item/item in human_target.get_equipped_items(TRUE))
 		qdel(item)
 
-	var/obj/item/organ/brain/human_brain = human_target.getorganslot(BRAIN)
+	var/obj/item/organ/internal/brain/human_brain = human_target.getorganslot(BRAIN)
 	human_brain.destroy_all_skillchips() // get rid of skillchips to prevent runtimes
 	human_target.equipOutfit(assault_operative_default_outfit)
 	human_target.regenerate_icons()
