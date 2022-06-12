@@ -16,7 +16,7 @@
 
 
 /obj/item/autosurgeon/organ/syndicate/esword_arm
-	starting_organ = /obj/item/organ/cyberimp/arm/esword
+	starting_organ = /obj/item/organ/internal/cyberimp/arm/esword
 
 /obj/item/clothing/under/pants/black/robohand
 	name = "badass pants"
@@ -24,7 +24,7 @@
 	armor = list(MELEE = 20, BULLET = 20, LASER = 20, ENERGY = 20, BOMB = 20, BIO = 0, FIRE = 0, ACID = 0, WOUND = 5)
 
 /obj/item/autosurgeon/organ/syndicate/nodrop
-	starting_organ = /obj/item/organ/cyberimp/brain/anti_drop
+	starting_organ = /obj/item/organ/internal/cyberimp/brain/anti_drop
 
 //What do you mean glasses don't protect your head? Of course they do. Cyberpunk has flying cars(mostly intentional)!
 /obj/item/clothing/glasses/sunglasses/robohand
