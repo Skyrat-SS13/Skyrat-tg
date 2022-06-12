@@ -286,6 +286,6 @@
 
 // Lost Cargo Freighter areas
 
-/area/ruin/space/has_grav/deepstorage/lostcargo
+/area/ruin/space/has_grav/lostcargo
 	name = "Freighter Ship"
 	icon_state = "yellow"
