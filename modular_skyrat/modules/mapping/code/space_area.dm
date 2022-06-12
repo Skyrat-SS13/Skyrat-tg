@@ -293,11 +293,11 @@
 
 /area/ruin/space/has_grav/lostcargo/cargo
 	name = "Freighter Cargo Bay"
-	icon_state = "cargo"
+	icon_state = "cargo_bay"
 
 /area/ruin/space/has_grav/lostcargo/hallway
 	name = "Freighter Cargo Bay"
-	icon_state = "cargo"
+	icon_state = "hall"
 
 /area/ruin/space/has_grav/lostcargo/crew
 	name = "Freighter Crew Quarters"
@@ -305,7 +305,7 @@
 
 /area/ruin/space/has_grav/lostcargo/cafe
 	name = "Freighter Cafetaria"
-	icon_state = "cafe"
+	icon_state = "cafeteria"
 
 /area/ruin/space/has_grav/lostcargo/mining
 	name = "Freighter Excavation Equipment"
@@ -317,17 +317,13 @@
 
 /area/ruin/space/has_grav/lostcargo/qm
 	name = "Freighter Chief Bedroom"
-	icon_state = "quartoffice"
+	icon_state = "quart_office"
 
 /area/ruin/space/has_grav/lostcargo/medical
 	name = "Freighter Infirmary"
-	icon_state = "medbay"
+	icon_state = "med_office"
 
 /area/ruin/space/has_grav/lostcargo/engine
 	name = "Freighter Engine Room"
-	icon_state = "engine"
-
-/area/ruin/space/has_grav/lostcargo/emitter
-	name = "Freighter Turret Room"
-	icon_state = "construction"
+	icon_state = "engine_storage"
 
