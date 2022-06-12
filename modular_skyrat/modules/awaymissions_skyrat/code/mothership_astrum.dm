@@ -250,12 +250,12 @@
 
 /obj/effect/spawner/random/astrum/agentloot
 	name = "abductor agent loot"
-	loot = list(/obj/item/organ/heart/cybernetic/tier3 = 10,
+	loot = list(/obj/item/organ/internal/heart/cybernetic/tier3 = 10,
 				/obj/item/clothing/suit/armor/abductor/astrum = 10,
 				/obj/item/clothing/head/helmet/astrum = 10,
-				/obj/item/organ/cyberimp/arm/armblade = 5,
+				/obj/item/organ/internal/cyberimp/arm/armblade = 5,
 				/obj/effect/gibspawner/generic = 10,
-				/obj/item/organ/eyes/night_vision/alien = 5
+				/obj/item/organ/internal/eyes/night_vision/alien = 5
 				)
 
 /obj/item/gun/energy/alien/zeta
@@ -306,7 +306,6 @@
 	desc = "An exceptionally robust helmet. For alien standards, that is."
 	icon_state = "alienhelmet"
 	inhand_icon_state = "alienhelmet"
-	blockTracking = TRUE
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT
 	armor = list(MELEE = 40, BULLET = 30, LASER = 30,ENERGY = 40, BOMB = 50, BIO = 90, FIRE = 100, ACID = 100, WOUND = 15)
 	resistance_flags = FIRE_PROOF | ACID_PROOF

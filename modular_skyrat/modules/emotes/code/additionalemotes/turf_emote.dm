@@ -56,7 +56,7 @@
 			user.allowed_turfs += "dust" //moth's dust ✨
 
 		//body parts
-		if(istype(user.getorganslot(ORGAN_SLOT_TAIL), /obj/item/organ/tail))
+		if(istype(user.getorganslot(ORGAN_SLOT_EXTERNAL_TAIL), /obj/item/organ/external/tail))
 			var/name = human_user.dna.species.mutant_bodyparts["tail"][MUTANT_INDEX_NAME]
 			var/datum/sprite_accessory/tails/tail = GLOB.sprite_accessories["tail"][name]
 			if(tail.fluffy)

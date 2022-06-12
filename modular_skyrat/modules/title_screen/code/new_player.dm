@@ -124,6 +124,7 @@
 		return
 
 	winset(src, "title_browser", "is-disabled=false;is-visible=true")
+	winset(src, "status_bar", "is-visible=false")
 
 	var/datum/asset/assets = get_asset_datum(/datum/asset/simple/lobby) //Sending pictures to the client
 	assets.send(src)
@@ -150,6 +151,7 @@
 /mob/dead/new_player/proc/hide_title_screen()
 	if(client?.mob)
 		winset(client, "title_browser", "is-disabled=true;is-visible=false")
+		winset(client, "status_bar", "is-visible=true")
 
 /mob/dead/new_player/proc/play_lobby_button_sound()
 	SEND_SOUND(src, sound('modular_skyrat/master_files/sound/effects/save.ogg'))

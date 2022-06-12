@@ -35,5 +35,5 @@
 	)
 
 // For the prefs menu
-/obj/item/mod/control/pre_equipped/syndicate_empty/contractor
+/obj/item/mod/control/pre_equipped/empty/contractor
 	theme = /datum/mod_theme/contractor

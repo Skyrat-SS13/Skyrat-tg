@@ -13,6 +13,7 @@
 		TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_CAN_STRIP,
 		TRAIT_CAN_USE_FLIGHT_POTION,
+		TRAIT_LITERATE,
 	)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	say_mod = "warbles"
@@ -31,12 +32,12 @@
 	default_mutant_bodyparts = list("skrell_hair" = ACC_RANDOM)
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	eyes_icon = 'modular_skyrat/master_files/icons/mob/species/skrell_eyes.dmi'
-	mutantbrain = /obj/item/organ/brain/skrell
-	mutanteyes = /obj/item/organ/eyes/skrell
-	mutantlungs = /obj/item/organ/lungs/skrell
-	mutantheart = /obj/item/organ/heart/skrell
-	mutantliver = /obj/item/organ/liver/skrell
-	mutanttongue = /obj/item/organ/tongue/skrell
+	mutantbrain = /obj/item/organ/internal/brain/skrell
+	mutanteyes = /obj/item/organ/internal/eyes/skrell
+	mutantlungs = /obj/item/organ/internal/lungs/skrell
+	mutantheart = /obj/item/organ/internal/heart/skrell
+	mutantliver = /obj/item/organ/internal/liver/skrell
+	mutanttongue = /obj/item/organ/internal/tongue/skrell
 	learnable_languages = list(/datum/language/common, /datum/language/skrell)
 	bodypart_overrides = list(
 		BODY_ZONE_HEAD = /obj/item/bodypart/head/mutant/skrell,
@@ -53,7 +54,7 @@
 /datum/species/skrell/get_species_lore()
 	return list(placeholder_lore)
 
-/obj/item/organ/tongue/skrell
+/obj/item/organ/internal/tongue/skrell
 	name = "internal vocal sacs"
 	desc = "An Strange looking sac."
 	icon = 'modular_skyrat/master_files/icons/mob/species/skrell_organ.dmi'
@@ -81,24 +82,24 @@
 		/datum/language/skrell,
 	))
 
-/obj/item/organ/heart/skrell
+/obj/item/organ/internal/heart/skrell
 	name = "skrellian heart"
 	icon = 'modular_skyrat/master_files/icons/mob/species/skrell_organ.dmi'
 	icon_state = "heart"
 
-/obj/item/organ/brain/skrell
+/obj/item/organ/internal/brain/skrell
 	name = "spongy brain"
 	icon = 'modular_skyrat/master_files/icons/mob/species/skrell_organ.dmi'
 	icon_state = "brain2"
 
-/obj/item/organ/eyes/skrell
+/obj/item/organ/internal/eyes/skrell
 	name = "amphibian eyes"
 	desc = "Large black orbs."
 	icon = 'modular_skyrat/master_files/icons/mob/species/skrell_organ.dmi'
 	icon_state = "eyes"
 	flash_protect = FLASH_PROTECTION_SENSITIVE
 
-/obj/item/organ/lungs/skrell
+/obj/item/organ/internal/lungs/skrell
 	name = "skrell lungs"
 	icon = 'modular_skyrat/master_files/icons/mob/species/skrell_organ.dmi'
 	icon_state = "lungs"
@@ -124,7 +125,7 @@
 	heat_level_3_damage = HEAT_GAS_DAMAGE_LEVEL_3
 	heat_damage_type = BURN
 
-/obj/item/organ/liver/skrell
+/obj/item/organ/internal/liver/skrell
 	name = "skrell liver"
 	icon_state = "liver"
 	icon = 'modular_skyrat/master_files/icons/mob/species/skrell_organ.dmi'

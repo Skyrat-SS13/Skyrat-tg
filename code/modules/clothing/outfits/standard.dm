@@ -424,8 +424,10 @@
 
 /datum/outfit/chrono_agent/post_equip(mob/living/carbon/human/agent, visualsOnly)
 	. = ..()
-	var/obj/item/mod/control/pre_equipped/timeline = agent.back
-	var/obj/item/mod/module/eradication_lock/lock = locate(/obj/item/mod/module/eradication_lock) in timeline.modules
+	var/obj/item/mod/control/mod = agent.back
+	if(!istype(mod))
+		return
+	var/obj/item/mod/module/eradication_lock/lock = locate(/obj/item/mod/module/eradication_lock) in mod.modules
 	lock.true_owner_ckey = agent.ckey
 
 /datum/outfit/debug //Debug objs plus MODsuit

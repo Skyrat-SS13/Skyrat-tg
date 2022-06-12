@@ -470,7 +470,8 @@ There are several things that need to be remembered:
 				mutant_override = TRUE
 		if(!icon_file && (dna.species.bodytype & BODYTYPE_SNOUTED) && (worn_item.supports_variations_flags & CLOTHING_SNOUTED_VARIATION))
 			icon_file = worn_item.worn_icon_muzzled || SNOUTED_HEAD_FILE
-			mutant_override = TRUE
+			if(icon_file && icon_exists(icon_file, RESOLVE_ICON_STATE(worn_item)))
+				mutant_override = TRUE
 		// SKYRAT EDIT END
 
 		if(!(icon_exists(icon_file, RESOLVE_ICON_STATE(worn_item))))
@@ -611,7 +612,8 @@ There are several things that need to be remembered:
 				mutant_override = TRUE
 		if(!icon_file && (dna.species.bodytype & BODYTYPE_SNOUTED) && (worn_item.supports_variations_flags & CLOTHING_SNOUTED_VARIATION))
 			icon_file = worn_item.worn_icon_muzzled || SNOUTED_MASK_FILE
-			mutant_override = TRUE
+			if(icon_file && icon_exists(icon_file, RESOLVE_ICON_STATE(worn_item)))
+				mutant_override = TRUE
 		// SKYRAT EDIT END
 
 		if(!(ITEM_SLOT_MASK in check_obscured_slots()))
@@ -946,7 +948,7 @@ generate/load female uniform sprites matching all previously decided variables
 
 		// eyes
 		if(!(NOEYESPRITES in dna.species.species_traits))
-			var/obj/item/organ/eyes/parent_eyes = getorganslot(ORGAN_SLOT_EYES)
+			var/obj/item/organ/internal/eyes/parent_eyes = getorganslot(ORGAN_SLOT_EYES)
 			if(parent_eyes)
 				add_overlay(parent_eyes.generate_body_overlay(src))
 			else

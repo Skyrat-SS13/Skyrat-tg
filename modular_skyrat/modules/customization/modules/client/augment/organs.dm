@@ -13,7 +13,7 @@
 
 /datum/augment_item/organ/heart/cybernetic
 	name = "Cybernetic heart"
-	path = /obj/item/organ/heart/cybernetic
+	path = /obj/item/organ/internal/heart/cybernetic
 
 //LUNGS
 /datum/augment_item/organ/lungs
@@ -22,27 +22,27 @@
 /datum/augment_item/organ/lungs/hot
 	name = "Lungs Adapted to Heat"
 	slot = AUGMENT_SLOT_LUNGS
-	path = /obj/item/organ/lungs/hot
+	path = /obj/item/organ/internal/lungs/hot
 	cost = 1
 
 /datum/augment_item/organ/lungs/cold
 	name = "Cold-Adapted Lungs"
 	slot = AUGMENT_SLOT_LUNGS
-	path = /obj/item/organ/lungs/cold
+	path = /obj/item/organ/internal/lungs/cold
 	cost = 1
 /datum/augment_item/organ/lungs/toxin
 	name = "Lungs Adapted to Toxins"
 	slot = AUGMENT_SLOT_LUNGS
-	path = /obj/item/organ/lungs/toxin
+	path = /obj/item/organ/internal/lungs/toxin
 	cost = 1
 /datum/augment_item/organ/lungs/oxy
 	name = "Low-Pressure Adapted Lungs"
 	slot = AUGMENT_SLOT_LUNGS
-	path = /obj/item/organ/lungs/oxy
+	path = /obj/item/organ/internal/lungs/oxy
 	cost = 1
 /datum/augment_item/organ/lungs/cybernetic
 	name = "Cybernetic lungs"
-	path = /obj/item/organ/lungs/cybernetic
+	path = /obj/item/organ/internal/lungs/cybernetic
 
 //LIVERS
 /datum/augment_item/organ/liver
@@ -50,7 +50,7 @@
 
 /datum/augment_item/organ/liver/cybernetic
 	name = "Cybernetic liver"
-	path = /obj/item/organ/liver/cybernetic
+	path = /obj/item/organ/internal/liver/cybernetic
 
 //STOMACHES
 /datum/augment_item/organ/stomach
@@ -58,7 +58,7 @@
 
 /datum/augment_item/organ/stomach/cybernetic
 	name = "Cybernetic stomach"
-	path = /obj/item/organ/stomach/cybernetic
+	path = /obj/item/organ/internal/stomach/cybernetic
 
 //EYES
 /datum/augment_item/organ/eyes
@@ -66,11 +66,11 @@
 
 /datum/augment_item/organ/eyes/cybernetic
 	name = "Cybernetic eyes"
-	path = /obj/item/organ/eyes/robotic
+	path = /obj/item/organ/internal/eyes/robotic
 
 /datum/augment_item/organ/eyes/highlumi
 	name = "High-luminosity eyes"
-	path = /obj/item/organ/eyes/robotic/glow
+	path = /obj/item/organ/internal/eyes/robotic/glow
 	allowed_biotypes = MOB_ORGANIC|MOB_ROBOTIC
 	cost = 1
 
@@ -80,12 +80,12 @@
 
 /datum/augment_item/organ/tongue/normal
 	name = "Organic tongue"
-	path = /obj/item/organ/tongue
+	path = /obj/item/organ/internal/tongue
 
 /datum/augment_item/organ/tongue/robo
 	name = "Robotic voicebox"
-	path = /obj/item/organ/tongue/robot
+	path = /obj/item/organ/internal/tongue/robot
 
 /datum/augment_item/organ/tongue/forked
 	name = "Forked tongue"
-	path = /obj/item/organ/tongue/lizard
+	path = /obj/item/organ/internal/tongue/lizard

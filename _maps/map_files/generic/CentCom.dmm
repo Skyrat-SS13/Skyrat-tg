@@ -2212,6 +2212,13 @@
 	},
 /turf/open/floor/mineral/titanium/blue,
 /area/centcom/central_command_areas/evacuation/ship)
+"gr" = (
+/obj/structure/table/optable/abductor,
+/obj/item/surgical_drapes{
+	pixel_y = -5
+	},
+/turf/open/floor/plating/abductor,
+/area/centcom/abductor_ship)
 "gs" = (
 /obj/item/paper/pamphlet/centcom/visitor_info,
 /obj/item/paper/pamphlet/centcom/visitor_info,
@@ -2355,20 +2362,6 @@
 /obj/item/paicard,
 /turf/open/floor/wood/tile,
 /area/centcom/syndicate_mothership/control)
-"gN" = (
-/obj/structure/closet,
-/obj/item/storage/backpack/duffelbag/med/surgery,
-/obj/machinery/iv_drip,
-/obj/item/roller,
-/obj/item/storage/medkit/regular,
-/obj/item/reagent_containers/medigel/synthflesh,
-/obj/item/reagent_containers/medigel/synthflesh,
-/obj/item/reagent_containers/medigel/synthflesh,
-/obj/item/organ/heart/cybernetic/tier2,
-/obj/item/organ/heart/cybernetic/tier2,
-/obj/item/defibrillator,
-/turf/open/floor/iron/sepia,
-/area/centcom/central_command_areas/holding)
 "gO" = (
 /turf/closed/indestructible/riveted,
 /area/centcom/central_command_areas/briefing)
@@ -4112,31 +4105,16 @@
 	icon_state = "alien12"
 	},
 /area/centcom/abductor_ship)
-"lC" = (
-/obj/item/retractor/alien,
-/obj/item/hemostat/alien,
-/obj/structure/table/abductor,
-/turf/open/floor/plating/abductor,
-/area/centcom/abductor_ship)
 "lD" = (
 /obj/effect/landmark/abductor/scientist{
 	team_number = 4
 	},
 /turf/open/floor/plating/abductor,
 /area/centcom/abductor_ship)
-"lE" = (
-/obj/structure/table/optable/abductor,
-/turf/open/floor/plating/abductor,
-/area/centcom/abductor_ship)
 "lF" = (
 /obj/effect/landmark/abductor/agent{
 	team_number = 4
 	},
-/turf/open/floor/plating/abductor,
-/area/centcom/abductor_ship)
-"lG" = (
-/obj/structure/table/abductor,
-/obj/machinery/recharger,
 /turf/open/floor/plating/abductor,
 /area/centcom/abductor_ship)
 "lH" = (
@@ -4263,14 +4241,6 @@
 	icon_state = "alien10"
 	},
 /area/centcom/abductor_ship)
-"lY" = (
-/obj/item/surgical_drapes,
-/obj/item/paper/guides/antag/abductor,
-/obj/item/scalpel/alien,
-/obj/structure/table/abductor,
-/obj/item/cautery/alien,
-/turf/open/floor/plating/abductor,
-/area/centcom/abductor_ship)
 "lZ" = (
 /turf/closed/indestructible/abductor{
 	icon_state = "alien11"
@@ -4387,12 +4357,6 @@
 /area/centcom/abductor_ship)
 "mt" = (
 /obj/machinery/abductor/gland_dispenser,
-/turf/open/floor/plating/abductor,
-/area/centcom/abductor_ship)
-"mu" = (
-/obj/structure/table/abductor,
-/obj/item/surgicaldrill/alien,
-/obj/item/circular_saw/alien,
 /turf/open/floor/plating/abductor,
 /area/centcom/abductor_ship)
 "mv" = (
@@ -6738,6 +6702,20 @@
 /obj/effect/mapping_helpers/airlock/access/all/admin/general,
 /turf/open/floor/iron,
 /area/centcom/central_command_areas/ferry)
+"tw" = (
+/obj/structure/closet,
+/obj/item/storage/backpack/duffelbag/med/surgery,
+/obj/machinery/iv_drip,
+/obj/item/roller,
+/obj/item/storage/medkit/regular,
+/obj/item/reagent_containers/medigel/synthflesh,
+/obj/item/reagent_containers/medigel/synthflesh,
+/obj/item/reagent_containers/medigel/synthflesh,
+/obj/item/organ/internal/heart/cybernetic/tier2,
+/obj/item/organ/internal/heart/cybernetic/tier2,
+/obj/item/defibrillator,
+/turf/open/floor/iron/sepia,
+/area/centcom/central_command_areas/holding)
 "tx" = (
 /obj/effect/turf_decal/stripes/corner{
 	dir = 4
@@ -6953,6 +6931,19 @@
 	},
 /turf/open/floor/iron/grimy,
 /area/centcom/central_command_areas/admin)
+"ui" = (
+/obj/machinery/computer/atmos_control/noreconnect{
+	atmos_chambers = list("nukiebase"="Burn Chamber");
+	desc = "Used to monitor the Syndicate Ordnance Laboratory's burn chamber.";
+	dir = 1;
+	name = "Ordnance Chamber Monitor"
+	},
+/obj/effect/turf_decal/stripes/line,
+/obj/machinery/light/cold/directional/west{
+	dir = 2
+	},
+/turf/open/floor/mineral/titanium/tiled/yellow,
+/area/centcom/syndicate_mothership/expansion_bombthreat)
 "uj" = (
 /obj/structure/flora/bush/lavendergrass/style_random,
 /obj/structure/flora/bush/sparsegrass/style_random,
@@ -11420,6 +11411,18 @@
 	},
 /turf/open/floor/iron/dark/textured_large,
 /area/centcom/syndicate_mothership/control)
+"GV" = (
+/obj/structure/table/abductor,
+/obj/item/toy/plush/abductor{
+	pixel_y = 14;
+	pixel_x = -7
+	},
+/obj/item/toy/plush/abductor/agent{
+	pixel_y = 2;
+	pixel_x = 9
+	},
+/turf/open/floor/plating/abductor,
+/area/centcom/abductor_ship)
 "GW" = (
 /obj/effect/turf_decal/tile/bar,
 /obj/effect/turf_decal/tile/bar{
@@ -11467,19 +11470,6 @@
 /obj/structure/extinguisher_cabinet/directional/east,
 /turf/open/floor/mineral/plastitanium,
 /area/centcom/syndicate_mothership/control)
-"Hh" = (
-/obj/machinery/computer/atmos_control/noreconnect{
-	atmos_chambers = list("nukiebase" = "Burn Chamber");
-	desc = "Used to monitor the Syndicate Ordnance Laboratory's burn chamber.";
-	dir = 1;
-	name = "Ordnance Chamber Monitor"
-	},
-/obj/effect/turf_decal/stripes/line,
-/obj/machinery/light/cold/directional/west{
-	dir = 2
-	},
-/turf/open/floor/mineral/titanium/tiled/yellow,
-/area/centcom/syndicate_mothership/expansion_bombthreat)
 "Hi" = (
 /obj/structure/flora/rock/pile/style_random,
 /obj/structure/flora/bush/grassy/style_random,
@@ -13016,6 +13006,19 @@
 /obj/machinery/portable_atmospherics/canister,
 /turf/open/floor/plating,
 /area/centcom/syndicate_mothership/expansion_bombthreat)
+"Mf" = (
+/obj/item/scalpel/alien{
+	pixel_y = 7
+	},
+/obj/structure/table/abductor,
+/obj/item/cautery/alien{
+	pixel_y = 15
+	},
+/obj/item/circular_saw/alien{
+	pixel_y = -2
+	},
+/turf/open/floor/plating/abductor,
+/area/centcom/abductor_ship)
 "Mg" = (
 /obj/machinery/door/airlock/hatch{
 	name = "Closet"
@@ -14643,6 +14646,19 @@
 /obj/item/clothing/under/costume/roman,
 /turf/open/floor/wood/parquet,
 /area/centcom/central_command_areas/holding)
+"QG" = (
+/obj/structure/table/abductor,
+/obj/item/hemostat/alien{
+	pixel_y = 16
+	},
+/obj/item/surgicaldrill/alien{
+	pixel_y = -7
+	},
+/obj/item/retractor/alien{
+	pixel_y = 4
+	},
+/turf/open/floor/plating/abductor,
+/area/centcom/abductor_ship)
 "QH" = (
 /obj/item/toy/figure/syndie,
 /turf/open/misc/asteroid/snow/icemoon,
@@ -16135,6 +16151,18 @@
 	},
 /turf/open/floor/wood/tile,
 /area/centcom/central_command_areas/holding)
+"UD" = (
+/obj/structure/table/abductor,
+/obj/machinery/recharger{
+	pixel_y = 0;
+	pixel_x = 7
+	},
+/obj/item/paper/guides/antag/abductor{
+	pixel_y = 0;
+	pixel_x = -5
+	},
+/turf/open/floor/plating/abductor,
+/area/centcom/abductor_ship)
 "UE" = (
 /obj/structure/table/reinforced/plastitaniumglass,
 /obj/item/paper_bin,
@@ -19095,8 +19123,8 @@ aa
 ko
 kL
 lh
-lC
-lY
+QG
+Mf
 ms
 nb
 aa
@@ -19122,40 +19150,13 @@ aa
 ko
 kL
 Be
-lC
-lY
+QG
+Mf
 ms
 nb
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-ko
-kL
-JF
-lC
-lY
-ms
-nb
 aa
 aa
 aa
@@ -19179,8 +19180,35 @@ aa
 ko
 kL
 LS
-lC
-lY
+QG
+Mf
+ms
+nb
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ko
+kL
+JF
+QG
+Mf
 ms
 nb
 aa
@@ -19407,9 +19435,9 @@ aa
 aa
 aa
 kp
-JA
+LK
 li
-JM
+LT
 li
 mt
 nc
@@ -19434,9 +19462,9 @@ aa
 aa
 aa
 kp
-LK
+JA
 li
-LT
+JM
 li
 mt
 nc
@@ -19609,9 +19637,9 @@ aa
 kq
 kN
 li
-lE
+gr
 li
-mu
+GV
 nd
 aa
 aa
@@ -19636,40 +19664,13 @@ aa
 kq
 Av
 li
-lE
+gr
 li
-mu
+GV
 nd
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-kq
-JB
-li
-lE
-li
-mu
-nd
 aa
 aa
 aa
@@ -19693,9 +19694,36 @@ aa
 kq
 LL
 li
-lE
+gr
 li
-mu
+GV
+nd
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+kq
+JB
+li
+gr
+li
+GV
 nd
 aa
 LV
@@ -19921,9 +19949,9 @@ aa
 aa
 aa
 kr
-JC
+LM
 li
-JN
+LU
 li
 mv
 ne
@@ -19948,9 +19976,9 @@ aa
 aa
 aa
 kr
-LM
+JC
 li
-LU
+JN
 li
 mv
 ne
@@ -20123,7 +20151,7 @@ aa
 ks
 kP
 RQ
-lG
+UD
 lj
 mw
 nf
@@ -20150,7 +20178,7 @@ aa
 ks
 kP
 RQ
-lG
+UD
 lj
 mw
 nf
@@ -20180,7 +20208,7 @@ aa
 ks
 kP
 RQ
-lG
+UD
 lj
 mw
 nf
@@ -20207,7 +20235,7 @@ aa
 ks
 kP
 RQ
-lG
+UD
 lj
 mw
 nf
@@ -26572,7 +26600,7 @@ BD
 Us
 Ks
 Mc
-Hh
+ui
 Yg
 uU
 uU
@@ -45344,7 +45372,7 @@ Zt
 Zt
 Iy
 fO
-gN
+tw
 hb
 Vj
 fO
@@ -45356,7 +45384,7 @@ bu
 fO
 Pf
 Sa
-gN
+tw
 fO
 Oe
 yg
