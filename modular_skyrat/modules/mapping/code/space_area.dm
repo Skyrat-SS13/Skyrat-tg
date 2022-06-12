@@ -284,8 +284,49 @@
 	icon_state = "solarsS"
 	has_gravity = STANDARD_GRAVITY
 
-// Lost Cargo Freighter areas
+/// Lost Cargo Freighter areas
 
 /area/ruin/space/has_grav/lostcargo
 	name = "Freighter Ship"
-	icon_state = "yellow"
+	icon_state = "shuttle"
+
+/area/ruin/space/has_grav/lostcargo/cargo
+	name = "Freighter Cargo Bay"
+	icon_state = "cargo"
+
+/area/ruin/space/has_grav/lostcargo/hallway
+	name = "Freighter Cargo Bay"
+	icon_state = "cargo"
+
+/area/ruin/space/has_grav/lostcargo/crew
+	name = "Freighter Crew Quarters"
+	icon_state = "crew_quarters"
+
+/area/ruin/space/has_grav/lostcargo/cafe
+	name = "Freighter Cafetaria"
+	icon_state = "cafe"
+
+/area/ruin/space/has_grav/lostcargo/mining
+	name = "Freighter Excavation Equipment"
+	icon_state = "mining"
+
+/area/ruin/space/has_grav/lostcargo/bridge
+	name = "Freighter Bridge"
+	icon_state = "bridge"
+
+/area/ruin/space/has_grav/lostcargo/qm
+	name = "Freighter Chief Bedroom"
+	icon_state = "quartoffice"
+
+/area/ruin/space/has_grav/lostcargo/medical
+	name = "Freighter Infirmary"
+	icon_state = "medbay"
+
+/area/ruin/space/has_grav/lostcargo/engine
+	name = "Freighter Engine Room"
+	icon_state = "engine"
+
+/area/ruin/space/has_grav/lostcargo/emitter
+	name = "Freighter Turret Room"
+	icon_state = "construction"
+
