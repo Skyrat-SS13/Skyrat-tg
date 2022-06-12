@@ -745,7 +745,7 @@
 /area/ruin/space/has_grav/lostcargo/cargo)
 "nf" = (
 /turf/open/floor/engine,
-/area/ruin/space/has_grav/lostcargo)
+/area/ruin/space/has_grav/lostcargo/bridge)
 "nl" = (
 /obj/machinery/door/airlock/mining/glass{
 	name = "Excavation Equipment"
@@ -865,7 +865,7 @@
 "pv" = (
 /obj/machinery/ammo_workbench/unlocked,
 /turf/open/floor/engine,
-/area/ruin/space/has_grav/lostcargo)
+/area/ruin/space/has_grav/lostcargo/bridge)
 "pD" = (
 /obj/machinery/door/window/brigdoor/right/directional/south{
 	dir = 4
@@ -966,7 +966,7 @@
 /obj/effect/spawner/random/entertainment/money_large,
 /obj/effect/spawner/random/entertainment/money_large,
 /turf/open/floor/engine,
-/area/ruin/space/has_grav/lostcargo)
+/area/ruin/space/has_grav/lostcargo/bridge)
 "qU" = (
 /obj/effect/turf_decal/bot,
 /obj/structure/closet/crate/engineering{
@@ -1211,7 +1211,7 @@
 /obj/structure/safe,
 /obj/item/mod/control/pre_equipped/traitor,
 /turf/open/floor/engine,
-/area/ruin/space/has_grav/lostcargo)
+/area/ruin/space/has_grav/lostcargo/bridge)
 "uj" = (
 /obj/machinery/door/window/brigdoor/right/directional/south{
 	dir = 8
@@ -1724,7 +1724,7 @@
 "AK" = (
 /mob/living/simple_animal/hostile/looter/ranged/space/laser,
 /turf/open/floor/engine,
-/area/ruin/space/has_grav/lostcargo)
+/area/ruin/space/has_grav/lostcargo/bridge)
 "AM" = (
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
@@ -1772,8 +1772,9 @@
 	},
 /area/ruin/space/has_grav/lostcargo/hallway)
 "Bb" = (
-/turf/closed/wall/mineral/titanium/spaceship/nodiagonal,
-/area/ruin/space/has_grav/lostcargo)
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/lostcargo/mining)
 "Bo" = (
 /obj/structure/cable,
 /obj/machinery/computer/atmos_alert{
@@ -1786,10 +1787,6 @@
 /obj/machinery/vending/hydroseeds,
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/lostcargo/cafe)
-"BH" = (
-/obj/effect/decal/cleanable/blood/splatter,
-/turf/open/floor/iron/dark,
-/area/ruin/space/has_grav/lostcargo/mining)
 "BL" = (
 /obj/machinery/portable_atmospherics/pump,
 /obj/structure/cable,
@@ -1876,7 +1873,7 @@
 "Dt" = (
 /obj/structure/rack/gunrack,
 /turf/open/floor/engine,
-/area/ruin/space/has_grav/lostcargo)
+/area/ruin/space/has_grav/lostcargo/bridge)
 "DD" = (
 /obj/structure/cable,
 /turf/closed/mineral/random/high_chance,
@@ -1908,7 +1905,7 @@
 	faction = list("hostile")
 	},
 /turf/open/floor/engine,
-/area/ruin/space/has_grav/lostcargo)
+/area/ruin/space/has_grav/lostcargo/bridge)
 "Eh" = (
 /obj/machinery/light,
 /turf/open/floor/iron/dark/brown,
@@ -1971,7 +1968,7 @@
 	dir = 1
 	},
 /turf/open/floor/engine,
-/area/ruin/space/has_grav/lostcargo)
+/area/ruin/space/has_grav/lostcargo/bridge)
 "Fy" = (
 /obj/effect/turf_decal/bot,
 /obj/structure/closet/crate/secure/plasma{
@@ -1999,15 +1996,10 @@
 /turf/open/floor/iron/cafeteria,
 /area/ruin/space/has_grav/lostcargo/cafe)
 "FR" = (
-/obj/structure/cable,
-/obj/effect/turf_decal/raven{
-	dir = 1
-	},
-/obj/effect/turf_decal/arrows{
-	dir = 1
-	},
-/turf/open/floor/iron/dark,
-/area/ruin/space/has_grav/lostcargo/mining)
+/obj/structure/marker_beacon/burgundy,
+/obj/structure/lattice/catwalk,
+/turf/template_noop,
+/area/ruin/space/has_grav/lostcargo/hallway)
 "FS" = (
 /obj/machinery/door/airlock/survival_pod/glass,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
@@ -2036,7 +2028,7 @@
 /area/ruin/space/has_grav/lostcargo/cargo)
 "Gi" = (
 /turf/closed/wall/mineral/titanium/spaceship/overspace,
-/area/ruin/space/has_grav/lostcargo)
+/area/ruin/space/has_grav/lostcargo/hallway)
 "Gs" = (
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/lostcargo/mining)
@@ -2264,6 +2256,16 @@
 /obj/machinery/door/firedoor,
 /turf/open/floor/iron/dark/green,
 /area/ruin/space/has_grav/lostcargo/crew)
+"Kq" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/raven{
+	dir = 1
+	},
+/obj/effect/turf_decal/arrows{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/lostcargo/mining)
 "KC" = (
 /obj/structure/fans/tiny/forcefield,
 /obj/machinery/door/poddoor{
@@ -2798,7 +2800,7 @@
 	name = "Vault"
 	},
 /turf/open/floor/engine,
-/area/ruin/space/has_grav/lostcargo)
+/area/ruin/space/has_grav/lostcargo/bridge)
 "QY" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
 	dir = 4
@@ -4849,9 +4851,9 @@ vm
 sC
 sC
 jM
-Bb
-Bb
-Bb
+uX
+uX
+uX
 mL
 mL
 nl
@@ -4867,7 +4869,7 @@ Df
 yB
 Gi
 Zy
-Qc
+FR
 Zy
 "}
 (38,1,1) = {"
@@ -4884,7 +4886,7 @@ Er
 SV
 SV
 dk
-Bb
+uX
 ug
 qF
 mL
@@ -4954,7 +4956,7 @@ JM
 SV
 va
 xb
-Bb
+uX
 Fx
 Eg
 mL
@@ -4989,7 +4991,7 @@ YR
 SV
 dO
 dn
-Bb
+uX
 pv
 Dt
 mL
@@ -4997,7 +4999,7 @@ iF
 Vs
 Xr
 JQ
-FR
+Kq
 hg
 eS
 Tm
@@ -5170,7 +5172,7 @@ jh
 HL
 XJ
 II
-BH
+Bb
 Nk
 Sl
 VN
