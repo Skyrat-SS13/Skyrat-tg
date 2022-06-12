@@ -1,4 +1,4 @@
-/* Commented in PR oversised 
+/* Commented in PR #14276 (Commenting door slamming in oversized's quirk)
 /obj/machinery/door/airlock/Initialize(mapload)
 	. = ..()
 	var/static/list/loc_connections = list(
