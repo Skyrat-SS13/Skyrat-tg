@@ -153,6 +153,13 @@ There are several things that need to be remembered:
 
 		var/mutable_appearance/uniform_overlay
 
+		//This is how non-humanoid clothing works. You check if the mob has the right bodyflag, and the clothing has the corresponding clothing flag.
+		//handled_by_bodytype is used to track whether or not we successfully used an alternate sprite. It's set to TRUE to ease up on copy-paste.
+		//icon_file MUST be set to null by default, or it causes issues.
+		//handled_by_bodytype MUST be set to FALSE under the if(!icon_exists()) statement, or everything breaks.
+		//"override_file = handled_by_bodytype ? icon_file : null" MUST be added to the arguments of build_worn_icon()
+		//Friendly reminder that icon_exists(file, state, scream = TRUE) is your friend when debugging this code.
+		var/handled_by_bodytype = TRUE
 		var/icon_file
 		var/woman
 		var/mutant_override = FALSE // SKYRAT EDIT ADDITION
@@ -182,7 +189,7 @@ There are several things that need to be remembered:
 				isinhands = FALSE,
 				female_uniform = woman ? uniform.female_sprite_flags : null,
 				override_state = target_overlay,
-				override_file = mutant_override ? icon_file : null, // SKYRAT EDIT CHANGE
+				override_file = mutant_override ? icon_file : null, // SKYRAT EDIT CHANGE - ORIGINAL: override_file = handled_by_bodytype ? icon_file : null,	
 			)
 
 		if(!mutant_override && (OFFSET_UNIFORM in dna.species.offset_features)) // SKYRAT EDIT CHANGE
