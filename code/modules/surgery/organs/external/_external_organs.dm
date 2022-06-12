@@ -376,5 +376,9 @@
 	return GLOB.pod_hair_list
 
 /obj/item/organ/external/pod_hair/override_color(rgb_value)
+	// SKYRAT EDIT START - I hate non-sensical errors sometimes.
+	if(!findtext(rgb_value, "#", 1, 2))
+		rgb_value = "#[rgb_value]"
+	// SKYRAT EDIT END
 	var/list/rgb_list = rgb2num(rgb_value)
 	return rgb(255 - rgb_list[1], 255 - rgb_list[2], 255 - rgb_list[3])
