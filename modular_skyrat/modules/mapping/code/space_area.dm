@@ -289,6 +289,7 @@
 /area/ruin/space/has_grav/lostcargo
 	name = "Freighter Ship"
 	icon_state = "shuttle"
+	icon = 'icons/area/areas_station.dmi'
 
 /area/ruin/space/has_grav/lostcargo/cargo
 	name = "Freighter Cargo Bay"
