@@ -1147,10 +1147,10 @@
 /area/ruin/space/has_grav/lostcargo/bridge)
 "th" = (
 /obj/machinery/door/airlock/survival_pod/glass,
-/obj/structure/cable,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 1
 	},
+/obj/item/stack/cable_coil/five,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/lostcargo/cargo)
 "ti" = (
@@ -1386,6 +1386,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
+/obj/structure/cable,
 /turf/open/floor/iron/brown/side{
 	dir = 8
 	},
@@ -1785,6 +1786,10 @@
 /obj/machinery/vending/hydroseeds,
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/lostcargo/cafe)
+"BH" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/lostcargo/mining)
 "BL" = (
 /obj/machinery/portable_atmospherics/pump,
 /obj/structure/cable,
@@ -1994,12 +1999,15 @@
 /turf/open/floor/iron/cafeteria,
 /area/ruin/space/has_grav/lostcargo/cafe)
 "FR" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on{
-	dir = 4
-	},
 /obj/structure/cable,
-/turf/open/floor/iron/white,
-/area/ruin/space/has_grav/lostcargo/medical)
+/obj/effect/turf_decal/raven{
+	dir = 1
+	},
+/obj/effect/turf_decal/arrows{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/lostcargo/mining)
 "FS" = (
 /obj/machinery/door/airlock/survival_pod/glass,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
@@ -2320,7 +2328,7 @@
 	},
 /obj/item/storage/box/stockparts/basic,
 /obj/item/storage/box/stockparts/basic,
-/obj/structure/closet/crate,
+/obj/structure/closet/crate/science,
 /obj/item/storage/toolbox/mechanical,
 /obj/item/stack/sheet/glass/fifty,
 /obj/item/circuitboard/machine/protolathe/offstation,
@@ -2464,6 +2472,7 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
 	dir = 8
 	},
+/obj/effect/decal/cleanable/blood/splatter,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/lostcargo/mining)
 "Np" = (
@@ -2502,7 +2511,7 @@
 /area/ruin/space/has_grav/lostcargo/qm)
 "NM" = (
 /obj/structure/fans/tiny/invisible,
-/obj/structure/cable,
+/obj/item/stack/cable_coil/cut,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/lostcargo/cargo)
 "NS" = (
@@ -2532,8 +2541,11 @@
 /area/ruin/space/has_grav/lostcargo/medical)
 "Oe" = (
 /obj/structure/table/reinforced,
-/obj/machinery/computer/security/wooden_tv,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/machinery/button/door{
+	id = "lockdown";
+	name = "Lockdown Button"
+	},
 /turf/open/floor/iron/dark/blue,
 /area/ruin/space/has_grav/lostcargo/bridge)
 "Og" = (
@@ -2603,6 +2615,7 @@
 /obj/machinery/airalarm/all_access{
 	pixel_y = -35
 	},
+/obj/effect/spawner/random/exotic/ripley,
 /turf/open/floor/iron/brown/side,
 /area/ruin/space/has_grav/lostcargo/cargo)
 "Pq" = (
@@ -2874,6 +2887,9 @@
 "Sl" = (
 /obj/effect/turf_decal/bot,
 /obj/structure/closet/crate,
+/obj/item/mod/module/thermal_regulator,
+/obj/item/mod/module/thermal_regulator,
+/obj/item/mod/module/thermal_regulator,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/lostcargo/mining)
 "Sv" = (
@@ -3330,6 +3346,7 @@
 "Xm" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
 /obj/effect/mob_spawn/corpse/human/miner/mod,
+/obj/effect/decal/cleanable/blood,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/lostcargo/mining)
 "Xn" = (
@@ -3348,6 +3365,8 @@
 "Xr" = (
 /obj/effect/turf_decal/bot,
 /mob/living/simple_animal/hostile/giant_spider,
+/obj/effect/turf_decal/loading_area,
+/obj/effect/turf_decal/raven,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/lostcargo/mining)
 "Xs" = (
@@ -3461,7 +3480,10 @@
 /turf/open/floor/iron/brown,
 /area/ruin/space/has_grav/lostcargo/cargo)
 "YP" = (
-/obj/effect/spawner/random/exotic/ripley,
+/obj/structure/frame/computer{
+	dir = 1
+	},
+/obj/structure/cable,
 /turf/open/floor/iron/brown/side{
 	dir = 10
 	},
@@ -4908,7 +4930,7 @@ tL
 iw
 mL
 MN
-FR
+Tm
 Xn
 hZ
 Rd
@@ -4975,7 +4997,7 @@ iF
 Vs
 Xr
 JQ
-tL
+FR
 hg
 eS
 Tm
@@ -5035,7 +5057,7 @@ SV
 SV
 SV
 iS
-va
+TP
 ih
 SU
 Xp
@@ -5135,11 +5157,11 @@ OP
 OP
 QR
 uX
-Ak
-Ak
-Ak
-Ak
-Ak
+sC
+sC
+sC
+sC
+sC
 uX
 QR
 YA
@@ -5148,7 +5170,7 @@ jh
 HL
 XJ
 II
-jg
+BH
 Nk
 Sl
 VN
