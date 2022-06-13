@@ -3,6 +3,8 @@
 	typepath = /datum/round_event/fleshmind
 	max_occurrences = 0
 	min_players = 100
+	earliest_start = 1 HOUR
+
 
 /datum/round_event/fleshmind
 	fakeable = TRUE
@@ -14,6 +16,8 @@
 		/mob/living/simple_animal/hostile/fleshmind/stunner,
 		/mob/living/simple_animal/hostile/fleshmind/floater,
 	)
+	/// Has our core been made?
+	var/core_made = FALSE
 
 /datum/round_event/fleshmind/announce(fake)
 	priority_announce("Confirmed outbreak of level $£%!£ biohazard aboard [station_name()]. All personnel must contain the outbreak.", "Biohazard Alert", ANNOUNCER_AIMALF)
@@ -26,16 +30,21 @@
 
 	if(prob(FLESHMIND_EVENT_MAKE_CORRUPT_MOB))
 		for(var/mob/living/simple_animal/iterating_simple_animal in GLOB.mob_living_list)
-			if(iterating_simple_animal.key || iterating_simple_animal.mind)
+			if(iterating_simple_animal.key || iterating_simple_animal.mind || is_station_level(iterating_simple_animal.z))
 				continue
 			var/picked_mob_type = pick(possible_mob_conversions)
-			new picked_mob_type(get_turf(iterating_simple_animal))
-			announce_to_ghosts(picked_mob_type)
+			var/mob/living/new_mob = new picked_mob_type(get_turf(iterating_simple_animal))
+			announce_to_ghosts(new_mob)
 			qdel(iterating_simple_animal)
 			break
 
+	if(activeFor > 100 && !core_made)
+		make_core()
+		core_made = TRUE
 
-/datum/round_event/fleshmind/start()
+
+
+/datum/round_event/fleshmind/proc/make_core()
 
 	var/list/turfs = list() //list of all the empty floor turfs in the hallway areas
 
