@@ -31,6 +31,7 @@
 	/* SKYRAT EDIT REMOVAL
 	human.dna.features["mcolor"] = "#[random_color()]"
 	human.dna.features["ethcolor"] = GLOB.color_list_ethereal[pick(GLOB.color_list_ethereal)]
+	human.dna.features["tail_cat"] = pick(GLOB.tails_list_human)
 	human.dna.features["tail_lizard"] = pick(GLOB.tails_list_lizard)
 	human.dna.features["snout"] = pick(GLOB.snouts_list)
 	human.dna.features["horns"] = pick(GLOB.horns_list)

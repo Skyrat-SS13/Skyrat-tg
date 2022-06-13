@@ -16,7 +16,7 @@
 			continue
 		if(H.stat == DEAD)
 			continue
-		if(!H.getorgan(/obj/item/organ/appendix)) //Don't give the disease to some who lacks it, only for it to be auto-cured
+		if(!H.getorgan(/obj/item/organ/internal/appendix)) //Don't give the disease to some who lacks it, only for it to be auto-cured
 			continue
 		if(!(H.mob_biotypes & MOB_ORGANIC)) //biotype sleeper bugs strike again, once again making appendicitis pick a target that can't take it
 			continue
