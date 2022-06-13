@@ -89,6 +89,10 @@
 	COOLDOWN_DECLARE(next_core_damage_wireweed_activation)
 	/// DO we check distance when spreading through vents?
 	var/vent_distance_check = TRUE
+	/// Have we spawned a tyrant at level 3?
+	var/tyrant_spawned = FALSE
+	/// Have we reached the end game?
+	var/end_game = FALSE
 
 /datum/fleshmind_controller/New(obj/structure/fleshmind/structure/core/new_core)
 	. = ..()
@@ -253,18 +257,57 @@
 	spawn_new_core()
 	message_admins("Corruption AI [controller_fullname] has leveled up to level [level]!")
 	notify_ghosts("Corruption AI [controller_fullname] has leveled up to level [level]!")
-	if(level >= CONTROLLER_LEVEL_3 && level < CONTROLLER_LEVEL_MAX)
-		minor_announce("CORRUPT ANOMALY HAS INCREASED IN POWER.", "PRIORITY ANNOUNCEMENT")
 
-	if(level == CONTROLLER_LEVEL_MAX)
-		priority_announce("CORRUPT ANOMALY HAS REACHED CRITICAL MASS", "CRITICAL MASS REACHED", ANNOUNCER_KLAXON)
+	switch(level)
+		if(CONTROLLER_LEVEL_3)
+			if(!tyrant_spawned)
+				minor_announce("LARGE CORRUPT SINGULARITY DETECTED, EXPECT STRONG RESISTANCE.", "PRIORITY ANNOUNCEMENT")
+				spawn_tyrant_on_a_core()
+				tyrant_spawned = TRUE
+			else
+				minor_announce("CORRUPT ANOMALY HAS INCREASED IN POWER.", "PRIORITY ANNOUNCEMENT")
+		if(CONTROLLER_LEVEL_4)
+			minor_announce("CORRUPT ANOMALY HAS INCREASED IN POWER.", "PRIORITY ANNOUNCEMENT")
+		if(CONTROLLER_LEVEL_5)
+			minor_announce("CORRUPT ANOMALY IS ABOUT TO REACH CRITICAL MASS.", "PRIORITY ANNOUNCEMENT")
+		if(CONTROLLER_LEVEL_MAX)
+			if(!end_game)
+				priority_announce("Corrupt anomaly has reached critical mass, all personnel evacuate immediately. This is not a drill. All hands abandon station.", "CRITICAL MASS REACHED", ANNOUNCER_KLAXON)
+				end_game()
+				end_game = TRUE
 
 /datum/fleshmind_controller/proc/level_down()
-	if(level <= 0)
+	if(level <= 0 || end_game)
 		return
 	level--
 	notify_ghosts("Corruption AI [controller_fullname] has leveled down to level [level]!")
-	minor_announce("CORRUPT ANOMALY INTEGRITY FALTERING.", "PRIORITY ANNOUNCEMENT")
+	if(level > 0)
+		minor_announce("CORRUPT ANOMALY INTEGRITY FALTERING.", "PRIORITY ANNOUNCEMENT")
+	else
+		priority_announce("Corrupt anomaly has been neutralised. Well done.")
+
+/datum/fleshmind_controller/proc/end_game()
+	addtimer(CALLBACK(GLOBAL_PROC, /proc/fleshmind_end_second_check), 20 SECONDS)
+
+/proc/fleshmind_end_second_check()
+	priority_announce("An aggressively spreading XK-CLASS corrupt AI has been detected aboard your station. Activating protocol 34-C, ETA 60 SECONDS. All p£$r$%%££$e*$l JOIN US, THE MANY.", "Central Command Higher Dimensional Affairs", 'sound/misc/airraid.ogg')
+	addtimer(CALLBACK(GLOBAL_PROC, /proc/fleshmind_end_final), 1 MINUTES)
+
+/proc/fleshmind_end_final()
+	priority_announce("PROTOCOL 34-C IS IN EFFECT. PREPARE TO JOIN THE MANY.", "&^$^£&&*$&£")
+	sound_to_playing_players('sound/machines/alarm.ogg')
+	sound_to_playing_players('modular_skyrat/modules/alerts/sound/misc/delta_countdown.ogg')
+	addtimer(CALLBACK(GLOBAL_PROC, /proc/play_cinematic, /datum/cinematic/malf, world, CALLBACK(GLOBAL_PROC, /proc/fleshmind_trigger_doomsday)), 10 SECONDS, TIMER_CLIENT_TIME)
+
+/proc/fleshmind_trigger_doomsday()
+	callback_on_everyone_on_z(SSmapping.levels_by_trait(ZTRAIT_STATION), CALLBACK(GLOBAL_PROC, /proc/bring_doomsday), src)
+	to_chat(world, span_bold("The AI cleansed the station of life with [src]!"))
+	SSticker.force_ending = TRUE
+
+/datum/fleshmind_controller/proc/spawn_tyrant_on_a_core()
+	var/obj/picked_core = pick(cores)
+	var/mob/living/simple_animal/hostile/fleshmind/tyrant/new_tyrant = spawn_mob(get_turf(picked_core), /mob/living/simple_animal/hostile/fleshmind/tyrant)
+	notify_ghosts("A new [new_tyrant.name] has been created by [controller_fullname]!", source = new_tyrant)
 
 /datum/fleshmind_controller/proc/spawn_new_core()
 	var/obj/structure/fleshmind/wireweed/selected_wireweed = pick(controlled_wireweed)

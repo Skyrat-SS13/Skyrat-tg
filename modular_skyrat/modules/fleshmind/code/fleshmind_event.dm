@@ -6,8 +6,8 @@
 
 /datum/round_event/fleshmind
 	fakeable = TRUE
-	announceWhen = 400
-	endWhen = 400
+	announceWhen = 200
+	endWhen = 200
 	var/list/possible_mob_conversions = list(
 		/mob/living/simple_animal/hostile/fleshmind/globber,
 		/mob/living/simple_animal/hostile/fleshmind/slicer,
