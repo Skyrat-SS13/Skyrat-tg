@@ -291,7 +291,7 @@
 
 /proc/fleshmind_end_second_check()
 	priority_announce("An aggressively spreading XK-CLASS corrupt AI has been detected aboard your station. Activating protocol 34-C, ETA 60 SECONDS. All p£$r$%%££$e*$l JOIN US, THE MANY.", "Central Command Higher Dimensional Affairs", 'sound/misc/airraid.ogg')
-	addtimer(CALLBACK(GLOBAL_PROC, /proc/fleshmind_end_final), 1 MINUTES)
+	addtimer(CALLBACK(GLOBAL_PROC, /proc/fleshmind_end_final), 1 MINUTES, TIMER_CLIENT_TIME)
 
 /proc/fleshmind_end_final()
 	priority_announce("PROTOCOL 34-C IS IN EFFECT. PREPARE TO JOIN THE MANY.", "&^$^£&&*$&£")
@@ -300,8 +300,8 @@
 	addtimer(CALLBACK(GLOBAL_PROC, /proc/play_cinematic, /datum/cinematic/malf, world, CALLBACK(GLOBAL_PROC, /proc/fleshmind_trigger_doomsday)), 10 SECONDS, TIMER_CLIENT_TIME)
 
 /proc/fleshmind_trigger_doomsday()
-	callback_on_everyone_on_z(SSmapping.levels_by_trait(ZTRAIT_STATION), CALLBACK(GLOBAL_PROC, /proc/bring_doomsday), src)
-	to_chat(world, span_bold("The AI cleansed the station of life with [src]!"))
+	callback_on_everyone_on_z(SSmapping.levels_by_trait(ZTRAIT_STATION), CALLBACK(GLOBAL_PROC, /proc/bring_doomsday))
+	to_chat(world, span_bold("The AI cleansed the station of life!"))
 	SSticker.force_ending = TRUE
 
 /datum/fleshmind_controller/proc/spawn_tyrant_on_a_core()
