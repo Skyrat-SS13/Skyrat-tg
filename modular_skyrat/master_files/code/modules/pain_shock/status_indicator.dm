@@ -1,4 +1,4 @@
-#define PLANE_STATUS -12 //Status Indicators that show over mobs' heads when certain things like stuns affect them.
+#define PLANE_STATUS_INDICATOR -12 //Status Indicators that show over mobs' heads when certain things like stuns affect them.
 
 #define VIS_STATUS			24
 
@@ -53,7 +53,6 @@
 /mob/living/proc/is_confused()
 	if(has_status_effect(/datum/status_effect/confusion))
 		return TRUE
-
 
 /mob/living/carbon/Initialize(mapload)
 	. = ..()
@@ -140,7 +139,7 @@
 
 		// This is a semi-HUD element, in a similar manner as medHUDs, in that they're 'above' everything else in the world,
 		// but don't pierce obfuscation layers such as blindness or darkness, unlike actual HUD elements like inventory slots.
-		I.plane = PLANE_STATUS
+		I.plane = PLANE_STATUS_INDICATOR
 		I.layer = STATUS_LAYER
 		I.appearance_flags = PIXEL_SCALE|TILE_BOUND|NO_CLIENT_COLOR|RESET_COLOR|RESET_ALPHA|RESET_TRANSFORM|KEEP_APART
 		I.pixel_y = y_offset
@@ -159,7 +158,7 @@
 
 /atom/movable/screen/plane_master/runechat/status
 	name = "status indicator plane master"
-	plane = PLANE_STATUS
+	plane = PLANE_STATUS_INDICATOR
 	appearance_flags = PLANE_MASTER
 	blend_mode = BLEND_OVERLAY
 	render_relay_plane = RENDER_PLANE_NON_GAME
