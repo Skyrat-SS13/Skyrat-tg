@@ -1,8 +1,8 @@
 import { CheckboxInput, FeatureToggle } from "../../base";
 
 export const enable_status_indicators: FeatureToggle = {
-  name: "Show/Hide Status Indicators",
+  name: "Display Status Indicators",
   category: "GAMEPLAY",
-  description: "This shows/hides status indicators.",
+  description: "This toggles whether or not you will see status indicators.",
   component: CheckboxInput,
 };
