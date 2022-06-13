@@ -226,12 +226,12 @@
 	update_current_power_usage()
 	broken_sparks(start_only=TRUE)
 
-<<<<<<< HEAD
+
 //SKYRAT EDIT ADDITION BEGIN - AESTHETICS
 #undef LIGHT_ON_DELAY_UPPER
 #undef LIGHT_ON_DELAY_LOWER
 //SKYRAT EDIT END
-=======
+
 /obj/machinery/light/update_current_power_usage()
 	if(!on && static_power_used > 0) //Light is off but still powered
 		removeStaticPower(static_power_used, AREA_USAGE_STATIC_LIGHT)
@@ -247,7 +247,6 @@
 			removeStaticPower(static_power_used, AREA_USAGE_STATIC_LIGHT)
 			static_power_used = static_power_used_new
 			addStaticPower(static_power_used, AREA_USAGE_STATIC_LIGHT)
->>>>>>> fc540a26cce (Night shift lights use power according to the brightness (#67667))
 
 /obj/machinery/light/update_atom_colour()
 	..()
