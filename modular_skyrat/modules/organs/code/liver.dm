@@ -1,4 +1,4 @@
-/obj/item/organ/liver/snail
+/obj/item/organ/internal/liver/snail
 	name = "gastropod liver"
 	icon_state = "liver-x"
 	desc = "Due to snailfolk evolving in typically poisonous environments such as bogs, their liver has a higher tolerance for poisons compared to most."

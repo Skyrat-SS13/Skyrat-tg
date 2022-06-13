@@ -28,16 +28,16 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	///Is this species restricted from changing their body_size in character creation?
 	var/body_size_restricted = FALSE
 
-/datum/species/proc/handle_mutant_bodyparts(mob/living/carbon/human/H, forced_colour, force_update = FALSE)
-	var/list/standing	= list()
+/datum/species/proc/handle_mutant_bodyparts(mob/living/carbon/human/owner, forced_colour, force_update = FALSE)
+	var/list/standing = list()
 
-	var/obj/item/bodypart/head/HD = H.get_bodypart(BODY_ZONE_HEAD)
+	var/obj/item/bodypart/head/HD = owner.get_bodypart(BODY_ZONE_HEAD)
 
 	if(!mutant_bodyparts)
-		H.remove_overlay(BODY_BEHIND_LAYER)
-		H.remove_overlay(BODY_ADJ_LAYER)
-		H.remove_overlay(BODY_FRONT_LAYER)
-		H.remove_overlay(BODY_FRONT_UNDER_CLOTHES)
+		owner.remove_overlay(BODY_BEHIND_LAYER)
+		owner.remove_overlay(BODY_ADJ_LAYER)
+		owner.remove_overlay(BODY_FRONT_LAYER)
+		owner.remove_overlay(BODY_FRONT_UNDER_CLOTHES)
 		return
 
 	var/list/bodyparts_to_add = list()
@@ -46,82 +46,82 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	for(var/key in mutant_bodyparts)
 		if (!islist(mutant_bodyparts[key]))
 			continue
-		var/datum/sprite_accessory/S = GLOB.sprite_accessories[key][mutant_bodyparts[key][MUTANT_INDEX_NAME]]
-		if(!S || S.icon_state == "none")
+		var/datum/sprite_accessory/mutant_accessory = GLOB.sprite_accessories[key][mutant_bodyparts[key][MUTANT_INDEX_NAME]]
+		if(!mutant_accessory || mutant_accessory.icon_state == "none")
 			continue
-		if(S.is_hidden(H, HD))
+		if(mutant_accessory.is_hidden(owner, HD))
 			continue
 		var/render_state
-		if(S.special_render_case)
-			render_state = S.get_special_render_state(H)
+		if(mutant_accessory.special_render_case)
+			render_state = mutant_accessory.get_special_render_state(owner)
 		else
-			render_state = S.icon_state
-		new_renderkey += "-[key]-[render_state]"
-		bodyparts_to_add[S] = render_state
+			render_state = mutant_accessory.icon_state
+		new_renderkey += "-[mutant_accessory.get_special_render_key(owner)]-[render_state]"
+		bodyparts_to_add[mutant_accessory] = render_state
 
-	if(new_renderkey == H.mutant_renderkey && !force_update)
+	if(new_renderkey == owner.mutant_renderkey && !force_update)
 		return
-	H.mutant_renderkey = new_renderkey
+	owner.mutant_renderkey = new_renderkey
 
-	H.remove_overlay(BODY_BEHIND_LAYER)
-	H.remove_overlay(BODY_ADJ_LAYER)
-	H.remove_overlay(BODY_FRONT_LAYER)
-	H.remove_overlay(BODY_FRONT_UNDER_CLOTHES)
+	owner.remove_overlay(BODY_BEHIND_LAYER)
+	owner.remove_overlay(BODY_ADJ_LAYER)
+	owner.remove_overlay(BODY_FRONT_LAYER)
+	owner.remove_overlay(BODY_FRONT_UNDER_CLOTHES)
 
-	var/g = (H.physique == FEMALE) ? "f" : "m"
+	var/g = (owner.physique == FEMALE) ? "f" : "m"
 	for(var/bodypart in bodyparts_to_add)
-		var/datum/sprite_accessory/S = bodypart
-		var/key = S.key
+		var/datum/sprite_accessory/bodypart_accessory = bodypart
+		var/key = bodypart_accessory.key
 
 		var/icon_to_use
 		var/x_shift
-		var/render_state = bodyparts_to_add[S]
+		var/render_state = bodyparts_to_add[bodypart_accessory]
 
 		var/override_color = forced_colour
-		if(!override_color && S.special_colorize)
-			override_color = S.get_special_render_colour(H, render_state)
+		if(!override_color && bodypart_accessory.special_colorize)
+			override_color = bodypart_accessory.get_special_render_colour(owner, render_state)
 
-		var/color_layer_list = S.color_layer_names
-		if(S.special_icon_case)
-			icon_to_use = S.get_special_icon(H, render_state)
+		var/color_layer_list = bodypart_accessory.color_layer_names
+		if(bodypart_accessory.special_icon_case)
+			icon_to_use = bodypart_accessory.get_special_icon(owner, render_state)
 		else
-			icon_to_use = S.icon
+			icon_to_use = bodypart_accessory.icon
 
-		if (S.special_render_case)
+		if (bodypart_accessory.special_render_case)
 			color_layer_list = list("1" = "primary", "2" = "secondary", "3" = "tertiary")
 
-		if(S.special_x_dimension)
-			x_shift = S.get_special_x_dimension(H, render_state)
+		if(bodypart_accessory.special_x_dimension)
+			x_shift = bodypart_accessory.get_special_x_dimension(owner, render_state)
 		else
-			x_shift = S.dimension_x
+			x_shift = bodypart_accessory.dimension_x
 
-		if(S.gender_specific)
-			render_state = "[g]_[key]_[render_state]"
+		if(bodypart_accessory.gender_specific)
+			render_state = "[g]_[bodypart_accessory.get_special_render_key(owner)]_[render_state]"
 		else
-			render_state = "m_[key]_[render_state]"
+			render_state = "m_[bodypart_accessory.get_special_render_key(owner)]_[render_state]"
 
-		for(var/layer in S.relevent_layers)
+		for(var/layer in bodypart_accessory.relevent_layers)
 			var/layertext = mutant_bodyparts_layertext(layer)
 			var/list/mutable_appearance/accessories
 			var/mutable_appearance/accessory_overlay = mutable_appearance(icon_to_use, layer = -layer)
 
 			accessory_overlay.icon_state = "[render_state]_[layertext]"
-			if (S.color_src == USE_MATRIXED_COLORS && color_layer_list)
+			if (bodypart_accessory.color_src == USE_MATRIXED_COLORS && color_layer_list)
 				accessory_overlay.icon_state = "[render_state]_[layertext]_primary"
 				accessories = list()
 
-			if(S.center)
-				accessory_overlay = center_image(accessory_overlay, x_shift, S.dimension_y)
+			if(bodypart_accessory.center)
+				accessory_overlay = center_image(accessory_overlay, x_shift, bodypart_accessory.dimension_y)
 
 
 			if(!override_color)
-				if(HAS_TRAIT(H, TRAIT_HUSK))
-					if(S.color_src == USE_MATRIXED_COLORS) //Matrixed+husk needs special care, otherwise we get sparkle dogs
+				if(HAS_TRAIT(owner, TRAIT_HUSK))
+					if(bodypart_accessory.color_src == USE_MATRIXED_COLORS) //Matrixed+husk needs special care, otherwise we get sparkle dogs
 						accessory_overlay.color = HUSK_COLOR_LIST
 					else
 						accessory_overlay.color = "#AAA" //The gray husk color
 				else
-					switch(S.color_src)
+					switch(bodypart_accessory.color_src)
 						if(USE_ONE_COLOR)
 							accessory_overlay.color = mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST][1]
 						if(USE_MATRIXED_COLORS)
@@ -132,30 +132,30 @@ GLOBAL_LIST_EMPTY(customizable_races)
 								matrixed_acce.icon_state = "[render_state]_[layertext]_[color_layer_list[n]]"
 								matrixed_acce.color = color_list[num]
 								matrixed_acce.alpha = specific_alpha
-								if (S.center)
-									matrixed_acce = center_image(matrixed_acce, x_shift, S.dimension_y)
+								if (bodypart_accessory.center)
+									matrixed_acce = center_image(matrixed_acce, x_shift, bodypart_accessory.dimension_y)
 								accessories += matrixed_acce
 								if (mutant_bodyparts[key][MUTANT_INDEX_EMISSIVE_LIST] && mutant_bodyparts[key][MUTANT_INDEX_EMISSIVE_LIST][num])
 									var/mutable_appearance/emissive_overlay = emissive_appearance_copy(matrixed_acce)
-									//if (S.center)
-									//	emissive_overlay = center_image(emissive_overlay, x_shift, S.dimension_y)
+									//if (bodypart_accessory.center)
+									//	emissive_overlay = center_image(emissive_overlay, x_shift, bodypart_accessory.dimension_y)
 									accessories += emissive_overlay
 						if(MUTCOLORS)
 							if(fixed_mut_color)
 								accessory_overlay.color = fixed_mut_color
 							else
-								accessory_overlay.color = H.dna.features["mcolor"]
+								accessory_overlay.color = owner.dna.features["mcolor"]
 						if(HAIR)
 							if(hair_color == "mutcolor")
-								accessory_overlay.color = H.dna.features["mcolor"]
+								accessory_overlay.color = owner.dna.features["mcolor"]
 							else if(hair_color == "fixedmutcolor")
 								accessory_overlay.color = fixed_mut_color
 							else
-								accessory_overlay.color = H.hair_color
+								accessory_overlay.color = owner.hair_color
 						if(FACEHAIR)
-							accessory_overlay.color = H.facial_hair_color
+							accessory_overlay.color = owner.facial_hair_color
 						if(EYECOLOR)
-							accessory_overlay.color = H.eye_color_left
+							accessory_overlay.color = owner.eye_color_left
 			else
 				accessory_overlay.color = override_color
 			if (accessories)
@@ -165,79 +165,79 @@ GLOBAL_LIST_EMPTY(customizable_races)
 				standing += accessory_overlay
 				if (mutant_bodyparts[key][MUTANT_INDEX_EMISSIVE_LIST] && mutant_bodyparts[key][MUTANT_INDEX_EMISSIVE_LIST][1])
 					var/mutable_appearance/emissive_overlay = emissive_appearance_copy(accessory_overlay)
-					//if (S.center)
-					//	emissive_overlay = center_image(emissive_overlay, x_shift, S.dimension_y)
+					//if (bodypart_accessory.center)
+					//	emissive_overlay = center_image(emissive_overlay, x_shift, bodypart_accessory.dimension_y)
 					standing += emissive_overlay
 
-			if(S.hasinner)
-				var/mutable_appearance/inner_accessory_overlay = mutable_appearance(S.icon, layer = -layer)
-				if(S.gender_specific)
-					inner_accessory_overlay.icon_state = "[g]_[key]inner_[S.icon_state]_[layertext]"
+			if(bodypart_accessory.hasinner)
+				var/mutable_appearance/inner_accessory_overlay = mutable_appearance(bodypart_accessory.icon, layer = -layer)
+				if(bodypart_accessory.gender_specific)
+					inner_accessory_overlay.icon_state = "[g]_[key]inner_[bodypart_accessory.icon_state]_[layertext]"
 				else
-					inner_accessory_overlay.icon_state = "m_[key]inner_[S.icon_state]_[layertext]"
+					inner_accessory_overlay.icon_state = "m_[key]inner_[bodypart_accessory.icon_state]_[layertext]"
 
-				if(S.center)
-					inner_accessory_overlay = center_image(inner_accessory_overlay, S.dimension_x, S.dimension_y)
+				if(bodypart_accessory.center)
+					inner_accessory_overlay = center_image(inner_accessory_overlay, bodypart_accessory.dimension_x, bodypart_accessory.dimension_y)
 
 				standing += inner_accessory_overlay
 
 			//Here's EXTRA parts of accessories which I should get rid of sometime TODO i guess
-			if(S.extra) //apply the extra overlay, if there is one
-				var/mutable_appearance/extra_accessory_overlay = mutable_appearance(S.icon, layer = -layer)
-				if(S.gender_specific)
-					extra_accessory_overlay.icon_state = "[g]_[key]_extra_[S.icon_state]_[layertext]"
+			if(bodypart_accessory.extra) //apply the extra overlay, if there is one
+				var/mutable_appearance/extra_accessory_overlay = mutable_appearance(bodypart_accessory.icon, layer = -layer)
+				if(bodypart_accessory.gender_specific)
+					extra_accessory_overlay.icon_state = "[g]_[key]_extra_[bodypart_accessory.icon_state]_[layertext]"
 				else
-					extra_accessory_overlay.icon_state = "m_[key]_extra_[S.icon_state]_[layertext]"
-				if(S.center)
-					extra_accessory_overlay = center_image(extra_accessory_overlay, S.dimension_x, S.dimension_y)
+					extra_accessory_overlay.icon_state = "m_[key]_extra_[bodypart_accessory.icon_state]_[layertext]"
+				if(bodypart_accessory.center)
+					extra_accessory_overlay = center_image(extra_accessory_overlay, bodypart_accessory.dimension_x, bodypart_accessory.dimension_y)
 
 
-				switch(S.extra_color_src) //change the color of the extra overlay
+				switch(bodypart_accessory.extra_color_src) //change the color of the extra overlay
 					if(MUTCOLORS)
 						if(fixed_mut_color)
 							extra_accessory_overlay.color = fixed_mut_color
 						else
-							extra_accessory_overlay.color = H.dna.features["mcolor"]
+							extra_accessory_overlay.color = owner.dna.features["mcolor"]
 					if(MUTCOLORS2)
-						extra_accessory_overlay.color = H.dna.features["mcolor2"]
+						extra_accessory_overlay.color = owner.dna.features["mcolor2"]
 					if(MUTCOLORS3)
-						extra_accessory_overlay.color = H.dna.features["mcolor3"]
+						extra_accessory_overlay.color = owner.dna.features["mcolor3"]
 					if(HAIR)
 						if(hair_color == "mutcolor")
-							extra_accessory_overlay.color = H.dna.features["mcolor3"]
+							extra_accessory_overlay.color = owner.dna.features["mcolor3"]
 						else
-							extra_accessory_overlay.color = H.hair_color
+							extra_accessory_overlay.color = owner.hair_color
 					if(FACEHAIR)
-						extra_accessory_overlay.color = H.facial_hair_color
+						extra_accessory_overlay.color = owner.facial_hair_color
 					if(EYECOLOR)
-						extra_accessory_overlay.color = H.eye_color_left
+						extra_accessory_overlay.color = owner.eye_color_left
 
 				standing += extra_accessory_overlay
 
-			if(S.extra2) //apply the extra overlay, if there is one
-				var/mutable_appearance/extra2_accessory_overlay = mutable_appearance(S.icon, layer = -layer)
-				if(S.gender_specific)
-					extra2_accessory_overlay.icon_state = "[g]_[key]_extra2_[S.icon_state]_[layertext]"
+			if(bodypart_accessory.extra2) //apply the extra overlay, if there is one
+				var/mutable_appearance/extra2_accessory_overlay = mutable_appearance(bodypart_accessory.icon, layer = -layer)
+				if(bodypart_accessory.gender_specific)
+					extra2_accessory_overlay.icon_state = "[g]_[key]_extra2_[bodypart_accessory.icon_state]_[layertext]"
 				else
-					extra2_accessory_overlay.icon_state = "m_[key]_extra2_[S.icon_state]_[layertext]"
-				if(S.center)
-					extra2_accessory_overlay = center_image(extra2_accessory_overlay, S.dimension_x, S.dimension_y)
+					extra2_accessory_overlay.icon_state = "m_[key]_extra2_[bodypart_accessory.icon_state]_[layertext]"
+				if(bodypart_accessory.center)
+					extra2_accessory_overlay = center_image(extra2_accessory_overlay, bodypart_accessory.dimension_x, bodypart_accessory.dimension_y)
 
-				switch(S.extra2_color_src) //change the color of the extra overlay
+				switch(bodypart_accessory.extra2_color_src) //change the color of the extra overlay
 					if(MUTCOLORS)
 						if(fixed_mut_color)
 							extra2_accessory_overlay.color = fixed_mut_color
 						else
-							extra2_accessory_overlay.color = H.dna.features["mcolor"]
+							extra2_accessory_overlay.color = owner.dna.features["mcolor"]
 					if(MUTCOLORS2)
-						extra2_accessory_overlay.color = H.dna.features["mcolor2"]
+						extra2_accessory_overlay.color = owner.dna.features["mcolor2"]
 					if(MUTCOLORS3)
-						extra2_accessory_overlay.color = H.dna.features["mcolor3"]
+						extra2_accessory_overlay.color = owner.dna.features["mcolor3"]
 					if(HAIR)
 						if(hair_color == "mutcolor3")
-							extra2_accessory_overlay.color = H.dna.features["mcolor"]
+							extra2_accessory_overlay.color = owner.dna.features["mcolor"]
 						else
-							extra2_accessory_overlay.color = H.hair_color
+							extra2_accessory_overlay.color = owner.hair_color
 
 				standing += extra2_accessory_overlay
 			if (specific_alpha != 255 && !override_color)
@@ -246,13 +246,13 @@ GLOBAL_LIST_EMPTY(customizable_races)
 					if (!istype(overlay.color,/list)) //check for a list because setting the alpha of the matrix colors breaks the color (the matrix alpha is set above inside the matrix)
 						overlay.alpha = specific_alpha
 
-			H.overlays_standing[layer] += standing
+			owner.overlays_standing[layer] += standing
 			standing = list()
 
-	H.apply_overlay(BODY_BEHIND_LAYER)
-	H.apply_overlay(BODY_ADJ_LAYER)
-	H.apply_overlay(BODY_FRONT_LAYER)
-	H.apply_overlay(BODY_FRONT_UNDER_CLOTHES)
+	owner.apply_overlay(BODY_BEHIND_LAYER)
+	owner.apply_overlay(BODY_ADJ_LAYER)
+	owner.apply_overlay(BODY_FRONT_LAYER)
+	owner.apply_overlay(BODY_FRONT_UNDER_CLOTHES)
 
 /datum/species
 	///What accessories can a species have aswell as their default accessory of such type e.g. "frills" = "Aquatic". Default accessory colors is dictated by the accessory properties and mutcolors of the specie
@@ -354,7 +354,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 
 		// eyes
 		if(!(NOEYESPRITES in species_traits))
-			var/obj/item/organ/eyes/eye_organ = species_human.getorganslot(ORGAN_SLOT_EYES)
+			var/obj/item/organ/internal/eyes/eye_organ = species_human.getorganslot(ORGAN_SLOT_EYES)
 			var/mutable_appearance/no_eyeslay
 
 			var/add_pixel_x = 0
@@ -444,7 +444,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 /datum/species/proc/can_wag_tail(mob/living/carbon/human/H)
 	if(!H) //Somewhere in the core code we're getting those procs with H being null
 		return FALSE
-	var/obj/item/organ/tail/T = H.getorganslot(ORGAN_SLOT_TAIL)
+	var/obj/item/organ/external/tail/T = H.getorganslot(ORGAN_SLOT_EXTERNAL_TAIL)
 	if(!T)
 		return FALSE
 	if(T.can_wag)
@@ -454,7 +454,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 /datum/species/proc/is_wagging_tail(mob/living/carbon/human/H)
 	if(!H) //Somewhere in the core code we're getting those procs with H being null
 		return FALSE
-	var/obj/item/organ/tail/T = H.getorganslot(ORGAN_SLOT_TAIL)
+	var/obj/item/organ/external/tail/T = H.getorganslot(ORGAN_SLOT_EXTERNAL_TAIL)
 	if(!T)
 		return FALSE
 	return T.wagging
@@ -462,7 +462,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 /datum/species/proc/start_wagging_tail(mob/living/carbon/human/H)
 	if(!H) //Somewhere in the core code we're getting those procs with H being null
 		return
-	var/obj/item/organ/tail/T = H.getorganslot(ORGAN_SLOT_TAIL)
+	var/obj/item/organ/external/tail/T = H.getorganslot(ORGAN_SLOT_EXTERNAL_TAIL)
 	if(!T)
 		return FALSE
 	T.wagging = TRUE
@@ -471,7 +471,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 /datum/species/proc/stop_wagging_tail(mob/living/carbon/human/H)
 	if(!H) //Somewhere in the core code we're getting those procs with H being null
 		return
-	var/obj/item/organ/tail/T = H.getorganslot(ORGAN_SLOT_TAIL)
+	var/obj/item/organ/external/tail/T = H.getorganslot(ORGAN_SLOT_EXTERNAL_TAIL)
 	if(!T)
 		return
 	T.wagging = FALSE
@@ -487,6 +487,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 		if(SA?.factual && SA.organ_type)
 			var/obj/item/organ/path = new SA.organ_type
 			path.sprite_accessory_flags = SA.flags_for_organ
+			path.relevant_layers = SA.relevent_layers
 			if(robot_organs)
 				path.status = ORGAN_ROBOTIC
 				path.organ_flags |= ORGAN_SYNTHETIC

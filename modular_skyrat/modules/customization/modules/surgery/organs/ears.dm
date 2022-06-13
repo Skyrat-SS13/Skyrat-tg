@@ -1,4 +1,4 @@
-/obj/item/organ/ears/mutant
+/obj/item/organ/internal/ears/mutant
 	name = "fluffy ears"
 	icon = 'icons/obj/clothing/hats.dmi'
 	icon_state = "kitty"
