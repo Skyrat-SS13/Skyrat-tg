@@ -661,10 +661,6 @@
 	dir = 1
 	},
 /area/station/medical/medbay)
-"cv" = (
-/mob/living/circuit_drone,
-/turf/open/floor/iron/dark,
-/area/station/science/explab)
 "cw" = (
 /obj/machinery/door/airlock,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
@@ -1975,8 +1971,9 @@
 /obj/machinery/light_switch/directional/west,
 /turf/open/floor/iron,
 /area/station/construction)
-"iW" = (
-/turf/closed/wall/r_wall,
+"iF" = (
+/obj/structure/money_bot,
+/turf/open/floor/iron/dark,
 /area/station/science/explab)
 "jb" = (
 /obj/machinery/door/airlock,
@@ -2003,6 +2000,10 @@
 /obj/machinery/light/directional/north,
 /turf/open/floor/iron,
 /area/station/hallway/primary/central)
+"kP" = (
+/obj/machinery/bci_implanter,
+/turf/open/floor/iron/dark,
+/area/station/science/explab)
 "kQ" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
 	dir = 8
@@ -2027,6 +2028,10 @@
 	},
 /turf/open/floor/iron,
 /area/station/hallway/primary/central)
+"mb" = (
+/obj/structure/server,
+/turf/open/floor/iron/dark,
+/area/station/science/explab)
 "mE" = (
 /obj/structure/cable,
 /obj/machinery/chem_mass_spec,
@@ -2049,6 +2054,12 @@
 	},
 /turf/open/floor/plating,
 /area/station/hallway/secondary/entry)
+"op" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/station/science/explab)
 "ou" = (
 /obj/machinery/airalarm/directional/west,
 /turf/open/floor/plating,
@@ -2096,11 +2107,17 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/hallway/primary/central)
-"sd" = (
-/obj/machinery/light/directional/east,
-/obj/item/integrated_circuit/loaded/hello_world,
-/obj/item/integrated_circuit/loaded/speech_relay,
-/obj/structure/rack,
+"sh" = (
+/obj/structure/table,
+/obj/item/organ/internal/cyberimp/bci{
+	pixel_y = 5
+	},
+/obj/item/organ/internal/cyberimp/bci{
+	pixel_y = 5
+	},
+/obj/item/organ/internal/cyberimp/bci{
+	pixel_y = 5
+	},
 /turf/open/floor/iron/dark,
 /area/station/science/explab)
 "sr" = (
@@ -2112,6 +2129,17 @@
 /obj/item/storage/box/shipping,
 /turf/open/floor/iron,
 /area/station/commons/storage/primary)
+"tn" = (
+/obj/structure/table,
+/obj/item/storage/toolbox/electrical,
+/obj/item/multitool/circuit{
+	pixel_x = -4
+	},
+/obj/item/multitool{
+	pixel_x = 4
+	},
+/turf/open/floor/iron/dark,
+/area/station/science/explab)
 "tE" = (
 /obj/machinery/door/airlock/research,
 /turf/open/floor/iron/dark,
@@ -2200,21 +2228,6 @@
 	},
 /turf/open/floor/iron,
 /area/station/hallway/primary/central)
-"wV" = (
-/obj/effect/spawner/structure/window/reinforced,
-/turf/open/floor/plating,
-/area/station/science/explab)
-"xe" = (
-/obj/structure/table,
-/obj/item/storage/toolbox/electrical,
-/obj/item/multitool/circuit{
-	pixel_x = -4
-	},
-/obj/item/multitool{
-	pixel_x = 4
-	},
-/turf/open/floor/iron/dark,
-/area/station/science/explab)
 "yK" = (
 /obj/structure/fans/tiny/invisible,
 /obj/effect/turf_decal/stripes/line{
@@ -2232,18 +2245,27 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/engineering/atmos)
+"zv" = (
+/obj/machinery/airalarm/unlocked{
+	dir = 1;
+	pixel_y = 23
+	},
+/turf/open/floor/iron/dark,
+/area/station/science/explab)
+"zy" = (
+/obj/structure/cable,
+/obj/machinery/power/apc/auto_name/directional/north,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/station/science/explab)
 "AP" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
 	dir = 8
 	},
 /turf/open/floor/iron,
 /area/station/science)
-"Bu" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on{
-	dir = 8
-	},
-/turf/open/floor/iron/dark,
-/area/station/science/explab)
 "BD" = (
 /obj/structure/closet/secure_closet/chief_medical{
 	locked = 0
@@ -2328,6 +2350,14 @@
 	},
 /turf/open/floor/iron,
 /area/station/medical/chemistry)
+"FM" = (
+/obj/structure/bot,
+/turf/open/floor/iron/dark,
+/area/station/science/explab)
+"Hz" = (
+/mob/living/circuit_drone,
+/turf/open/floor/iron/dark,
+/area/station/science/explab)
 "If" = (
 /obj/machinery/rnd/production/techfab/department,
 /turf/open/floor/iron,
@@ -2371,6 +2401,10 @@
 	},
 /turf/open/floor/engine,
 /area/station/cargo/miningoffice)
+"Ku" = (
+/obj/machinery/component_printer,
+/turf/open/floor/iron/dark,
+/area/station/science/explab)
 "Kx" = (
 /obj/structure/table,
 /obj/item/analyzer,
@@ -2378,23 +2412,6 @@
 /obj/machinery/light/directional/south,
 /turf/open/floor/plating,
 /area/station/engineering/atmos)
-"KH" = (
-/obj/structure/table,
-/obj/item/organ/cyberimp/bci{
-	pixel_y = 5
-	},
-/obj/item/organ/cyberimp/bci{
-	pixel_y = 5
-	},
-/obj/item/organ/cyberimp/bci{
-	pixel_y = 5
-	},
-/turf/open/floor/iron/dark,
-/area/station/science/explab)
-"Lb" = (
-/obj/structure/bot,
-/turf/open/floor/iron/dark,
-/area/station/science/explab)
 "Ly" = (
 /obj/machinery/chem_dispenser/chem_synthesizer,
 /turf/open/floor/iron/dark,
@@ -2426,20 +2443,25 @@
 /obj/machinery/chem_recipe_debug,
 /turf/open/floor/iron,
 /area/station/medical/chemistry)
-"Ne" = (
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
-	dir = 4
-	},
-/obj/machinery/door/airlock/research,
-/turf/open/floor/iron/dark,
-/area/station/science/explab)
 "Ns" = (
 /obj/machinery/door/airlock/public/glass,
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/medical/medbay)
-"NE" = (
+"NN" = (
+/obj/structure/table,
+/obj/machinery/cell_charger,
+/obj/item/stock_parts/cell/bluespace,
+/obj/item/stock_parts/cell/bluespace,
+/obj/item/stock_parts/cell/bluespace,
+/turf/open/floor/iron/dark,
+/area/station/science/explab)
+"NW" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 4
+	},
+/obj/machinery/door/airlock/research,
 /turf/open/floor/iron/dark,
 /area/station/science/explab)
 "NZ" = (
@@ -2450,26 +2472,6 @@
 /obj/item/disk/tech_disk/debug,
 /turf/open/floor/iron,
 /area/station/science)
-"Pe" = (
-/obj/machinery/component_printer,
-/turf/open/floor/iron/dark,
-/area/station/science/explab)
-"Qa" = (
-/obj/machinery/light/directional/west,
-/obj/structure/table,
-/obj/item/compact_remote,
-/obj/item/compact_remote,
-/obj/item/compact_remote{
-	pixel_x = -5
-	},
-/obj/item/controller{
-	pixel_x = 5
-	},
-/obj/item/controller{
-	pixel_x = 5
-	},
-/turf/open/floor/iron/dark,
-/area/station/science/explab)
 "Qi" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
@@ -2484,10 +2486,6 @@
 /obj/machinery/door/airlock/external/glass/ruin,
 /turf/open/floor/plating,
 /area/station/medical/medbay)
-"QD" = (
-/obj/structure/server,
-/turf/open/floor/iron/dark,
-/area/station/science/explab)
 "Rb" = (
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
@@ -2498,14 +2496,6 @@
 	},
 /turf/open/floor/plating,
 /area/station/hallway/secondary/entry)
-"Rn" = (
-/obj/structure/table,
-/obj/machinery/cell_charger,
-/obj/item/stock_parts/cell/bluespace,
-/obj/item/stock_parts/cell/bluespace,
-/obj/item/stock_parts/cell/bluespace,
-/turf/open/floor/iron/dark,
-/area/station/science/explab)
 "RM" = (
 /obj/effect/turf_decal/tile/blue,
 /obj/effect/turf_decal/tile/blue{
@@ -2523,6 +2513,10 @@
 	},
 /turf/open/floor/iron/white/corner,
 /area/station/medical/medbay)
+"Su" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/station/science/explab)
 "Td" = (
 /obj/machinery/light/directional/east,
 /obj/effect/turf_decal/stripes/line{
@@ -2534,11 +2528,17 @@
 /obj/machinery/door/poddoor,
 /turf/open/floor/engine,
 /area/station/hallway/secondary/entry)
+"Ts" = (
+/turf/closed/wall/r_wall,
+/area/station/science/explab)
 "Tt" = (
 /turf/open/floor/plating,
 /area/station/maintenance/aft)
-"TC" = (
-/obj/structure/money_bot,
+"TM" = (
+/obj/machinery/light/directional/east,
+/obj/item/integrated_circuit/loaded/hello_world,
+/obj/item/integrated_circuit/loaded/speech_relay,
+/obj/structure/rack,
 /turf/open/floor/iron/dark,
 /area/station/science/explab)
 "TV" = (
@@ -2553,6 +2553,22 @@
 /obj/item/healthanalyzer/advanced,
 /turf/open/floor/iron,
 /area/station/medical/medbay)
+"Uu" = (
+/obj/machinery/light/directional/west,
+/obj/structure/table,
+/obj/item/compact_remote,
+/obj/item/compact_remote,
+/obj/item/compact_remote{
+	pixel_x = -5
+	},
+/obj/item/controller{
+	pixel_x = 5
+	},
+/obj/item/controller{
+	pixel_x = 5
+	},
+/turf/open/floor/iron/dark,
+/area/station/science/explab)
 "Vg" = (
 /obj/machinery/light/directional/south,
 /obj/structure/cable,
@@ -2567,13 +2583,6 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/engineering/main)
-"VW" = (
-/obj/machinery/airalarm/unlocked{
-	dir = 1;
-	pixel_y = 23
-	},
-/turf/open/floor/iron/dark,
-/area/station/science/explab)
 "We" = (
 /obj/machinery/newscaster/directional/west,
 /turf/open/floor/iron,
@@ -2622,14 +2631,6 @@
 	},
 /turf/open/floor/iron,
 /area/station/engineering/atmos)
-"XB" = (
-/obj/structure/cable,
-/obj/machinery/power/apc/auto_name/directional/north,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
-	dir = 4
-	},
-/turf/open/floor/iron/dark,
-/area/station/science/explab)
 "XC" = (
 /obj/structure/cable,
 /turf/open/floor/iron,
@@ -2656,14 +2657,13 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/science)
-"YP" = (
-/obj/machinery/bci_implanter,
-/turf/open/floor/iron/dark,
-/area/station/science/explab)
 "ZD" = (
 /obj/machinery/suit_storage_unit/ce,
 /turf/open/floor/iron,
 /area/station/engineering/atmos)
+"ZR" = (
+/turf/open/floor/iron/dark,
+/area/station/science/explab)
 
 (1,1,1) = {"
 aa
@@ -5928,7 +5928,7 @@ cN
 cN
 cN
 cN
-Ne
+NW
 en
 dY
 dY
@@ -6020,11 +6020,11 @@ dy
 dm
 dM
 cN
-XB
-cv
-Qa
-Rn
-wV
+zy
+Hz
+Uu
+NN
+Su
 aa
 aa
 aa
@@ -6112,11 +6112,11 @@ dn
 dn
 dL
 sr
-Bu
-NE
-NE
-TC
-wV
+op
+ZR
+ZR
+iF
+Su
 aa
 aa
 aa
@@ -6204,11 +6204,11 @@ dn
 dn
 dL
 cN
-VW
-QD
-KH
-xe
-wV
+zv
+mb
+sh
+tn
+Su
 aa
 aa
 aa
@@ -6296,11 +6296,11 @@ dn
 dn
 dL
 tE
-NE
-NE
-NE
-Lb
-wV
+ZR
+ZR
+ZR
+FM
+Su
 aa
 aa
 aa
@@ -6388,11 +6388,11 @@ dn
 dn
 dL
 cN
-NE
-sd
-YP
-Pe
-wV
+ZR
+TM
+kP
+Ku
+Su
 aa
 aa
 aa
@@ -6481,10 +6481,10 @@ dn
 dL
 cN
 fI
-iW
-iW
-iW
-iW
+Ts
+Ts
+Ts
+Ts
 aa
 aa
 aa

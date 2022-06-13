@@ -26,15 +26,15 @@
 	siemens_coeff = 1.4 //Not more because some shocks will outright crit you, which is very unfun
 	payday_modifier = 0.75 // Matches the rest of the pay penalties the non-human crew have
 	species_language_holder = /datum/language_holder/machine
-	mutant_organs = list(/obj/item/organ/cyberimp/arm/power_cord)
-	mutantbrain = /obj/item/organ/brain/ipc_positron
-	mutantstomach = /obj/item/organ/stomach/robot_ipc
-	mutantears = /obj/item/organ/ears/robot_ipc
-	mutanttongue = /obj/item/organ/tongue/robot_ipc
-	mutanteyes = /obj/item/organ/eyes/robot_ipc
-	mutantlungs = /obj/item/organ/lungs/robot_ipc
-	mutantheart = /obj/item/organ/heart/robot_ipc
-	mutantliver = /obj/item/organ/liver/robot_ipc
+	mutant_organs = list(/obj/item/organ/internal/cyberimp/arm/power_cord)
+	mutantbrain = /obj/item/organ/internal/brain/ipc_positron
+	mutantstomach = /obj/item/organ/internal/stomach/robot_ipc
+	mutantears = /obj/item/organ/internal/ears/robot_ipc
+	mutanttongue = /obj/item/organ/internal/tongue/robot_ipc
+	mutanteyes = /obj/item/organ/internal/eyes/robot_ipc
+	mutantlungs = /obj/item/organ/internal/lungs/robot_ipc
+	mutantheart = /obj/item/organ/internal/heart/robot_ipc
+	mutantliver = /obj/item/organ/internal/liver/robot_ipc
 	exotic_blood = /datum/reagent/fuel/oil
 	learnable_languages = list(/datum/language/common, /datum/language/machine)
 
@@ -52,7 +52,7 @@
 
 /datum/species/robotic/on_species_gain(mob/living/carbon/human/C)
 	. = ..()
-	var/obj/item/organ/appendix/appendix = C.getorganslot(ORGAN_SLOT_APPENDIX)
+	var/obj/item/organ/internal/appendix/appendix = C.getorganslot(ORGAN_SLOT_APPENDIX)
 	if(appendix)
 		appendix.Remove(C)
 		qdel(appendix)
@@ -63,7 +63,7 @@
 	return randname
 
 /datum/species/robotic/get_types_to_preload()
-	return ..() - typesof(/obj/item/organ/cyberimp/arm/power_cord) // Don't cache things that lead to hard deletions.
+	return ..() - typesof(/obj/item/organ/internal/cyberimp/arm/power_cord) // Don't cache things that lead to hard deletions.
 
 /datum/species/robotic/get_species_description()
 	return placeholder_description
