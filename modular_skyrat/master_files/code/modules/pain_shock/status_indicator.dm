@@ -28,23 +28,28 @@
 
 /mob/living
 	var/list/status_indicators = null // Will become a list as needed. Contains our status indicator objects. Note, they are actually added to overlays, this just keeps track of what exists.
+
 /// Returns true if the mob is weakened. Also known as floored.
 /mob/living/proc/is_weakened()
 	if(HAS_TRAIT(src, TRAIT_FLOORED) || has_status_effect(/datum/status_effect/incapacitating/knockdown))
 		return TRUE
+
 /// Returns true if the mob is stunned.
 /mob/living/proc/is_stunned()
 	if(HAS_TRAIT_FROM(src, TRAIT_INCAPACITATED, TRAIT_STATUS_EFFECT(STAT_TRAIT)) || HAS_TRAIT_FROM(src, TRAIT_IMMOBILIZED, TRAIT_STATUS_EFFECT(STAT_TRAIT)) || HAS_TRAIT_FROM(src, TRAIT_IMMOBILIZED, CHOKEHOLD_TRAIT))
 		return TRUE
+
 /// Returns true if the mob is paralyzed - for can't fight back purposes.
 /mob/living/proc/is_paralyzed()
 	if(HAS_TRAIT_FROM(src, TRAIT_FLOORED, CHOKEHOLD_TRAIT) || HAS_TRAIT(src, TRAIT_CRITICAL_CONDITION) || HAS_TRAIT_FROM(src, TRAIT_INCAPACITATED, STAMINA) || HAS_TRAIT_FROM(src, TRAIT_INCAPACITATED, TRAIT_STATUS_EFFECT(STAT_TRAIT)) || HAS_TRAIT_FROM(src, TRAIT_IMMOBILIZED, TRAIT_STATUS_EFFECT(STAT_TRAIT)))
 		return TRUE
-// Returns true if the mob is unconcious for any reason.
+
+/// Returns true if the mob is unconcious for any reason.
 /mob/living/proc/is_unconcious()
 	if(HAS_TRAIT(src, TRAIT_KNOCKEDOUT))
 		return TRUE
-// Returns true if the mob has confusion.
+
+/// Returns true if the mob has confusion.
 /mob/living/proc/is_confused()
 	if(has_status_effect(/datum/status_effect/confusion))
 		return TRUE
@@ -54,6 +59,7 @@
 	. = ..()
 	RegisterSignal(src, COMSIG_CARBON_HEALTH_UPDATE, .proc/status_sanity)
 	RegisterSignal(src, COMSIG_LIVING_DEATH, .proc/cut_indicators_overlays)
+
 /// Receives signals to update on carbon health updates. Checks if the mob is dead - if true, removes all the indicators. Then, we determine what status indicators the mob should carry or remove.
 /mob/living/proc/status_sanity()
 	SIGNAL_HANDLER
@@ -83,6 +89,7 @@
 	cut_overlay(prospective_indicator)
 	LAZYREMOVE(status_indicators, prospective_indicator)
 	handle_status_indicators()
+
 /// Finds a status indicator on a mob.
 /mob/living/proc/get_status_indicator(image/prospective_indicator)
 	if(!istype(prospective_indicator, /image))
@@ -90,6 +97,7 @@
 			if(I.icon_state == prospective_indicator)
 				return I
 	return LAZYACCESS(status_indicators, LAZYFIND(status_indicators, prospective_indicator))
+
 /// Cuts all the indicators on a mob.
 /mob/living/proc/cut_indicators_overlays()
 	SIGNAL_HANDLER
