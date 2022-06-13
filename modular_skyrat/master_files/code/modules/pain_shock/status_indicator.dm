@@ -72,6 +72,7 @@
 		is_unconcious() ? add_status_indicator(SLEEPING) : remove_status_indicator(SLEEPING)
 		is_confused() ? add_status_indicator(CONFUSED) : remove_status_indicator(CONFUSED)
 		return
+
 /// Adds a status indicator to the mob. Takes an image as an argument. If it exists, it won't dupe it.
 /mob/living/proc/add_status_indicator(image/prospective_indicator)
 	if(get_status_indicator(prospective_indicator)) // No duplicates, please.
