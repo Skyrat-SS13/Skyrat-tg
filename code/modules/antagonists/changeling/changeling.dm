@@ -99,6 +99,30 @@
 	var/list/stolen_memories = list()
 
 	var/true_form_death //SKYRAT EDIT ADDITION: The time that the horror form died.
+	
+	// SKYRAT EDIT START
+	var/datum/changeling_profile/current_profile = null
+	var/list/mimicable_quirks_list = list(
+		"Bad Touch",
+		"Sensitive Snout",
+		"Ash aspect (Emotes)",
+		"Canidae Traits",
+		"Excitable!",
+		"Feline Traits",
+		"Floral aspect (Emotes)",
+		"Heterochromatic",
+		"Hydra Heads",
+		"Oversized",
+		"Personal Space",
+		"Pseudobulbar Affect",
+		"Shifty Eyes",
+		"Smooth-Headed",
+		"Sparkle aspect (Emotes)",
+		"Water aspect (Emotes)",
+		"Webbing aspect (Emotes)",
+		"Friendly",
+	)
+	// SKYRAT EDIT END
 
 /datum/antagonist/changeling/New()
 	. = ..()
@@ -475,6 +499,11 @@
 	new_profile.grad_style = LAZYLISTDUPLICATE(target.grad_style)
 	new_profile.grad_color = LAZYLISTDUPLICATE(target.grad_color)
 	new_profile.physique = target.physique
+	new_profile.scream_type = target.selected_scream.type
+	new_profile.laugh_type = target.selected_laugh.type
+	new_profile.age = target.age
+	for(var/datum/quirk/target_quirk in target.quirks)
+		LAZYADD(new_profile.quirks, new target_quirk.type)
 	//SKYRAT EDIT END
 	
 	// Grab skillchips they have
@@ -534,6 +563,7 @@
 
 	if(!first_profile)
 		first_profile = new_profile
+		current_profile = first_profile  // SKYRAT EDIT
 
 	stored_profiles += new_profile
 	absorbed_count++
@@ -714,6 +744,26 @@
 	user.grad_style = LAZYLISTDUPLICATE(chosen_profile.grad_style)
 	user.grad_color = LAZYLISTDUPLICATE(chosen_profile.grad_color)
 	user.physique = chosen_profile.physique
+	qdel(user.selected_scream)
+	qdel(user.selected_laugh)
+	user.selected_scream = new chosen_profile.scream_type
+	user.selected_laugh = new chosen_profile.laugh_type
+	user.age = chosen_profile.age
+	
+	// Only certain quirks will be copied, to avoid making the changeling blind or wheelchair-bound when they can simply pretend to have these quirks.
+	
+	for(var/datum/quirk/target_quirk in user.quirks)
+		for(var/mimicable_quirk in mimicable_quirks_list)
+			if(target_quirk.name == mimicable_quirk)
+				user.remove_quirk(target_quirk.type)
+				break
+	
+	for(var/datum/quirk/target_quirk in chosen_profile.quirks)
+		for(var/mimicable_quirk in mimicable_quirks_list)
+			if(target_quirk.name == mimicable_quirk)
+				user.add_quirk(target_quirk.type)
+				break
+	
 	// SKYRAT EDIT END
 
 	chosen_dna.transfer_identity(user, TRUE)
@@ -822,6 +872,7 @@
 	chosen_dna.transfer_identity(user, TRUE)
 	user.updateappearance(mutcolor_update = TRUE, eyeorgancolor_update = TRUE)
 	user.regenerate_icons()
+	current_profile = chosen_profile
 	// SKYRAT EDIT END
 
 // Changeling profile themselves. Store a data to store what every DNA instance looked like.
@@ -879,6 +930,10 @@
 	var/list/worn_icon_teshari_list = list()
 	var/list/worn_icon_vox_list = list()
 	var/list/supports_variations_flags_list = list()
+	var/scream_type
+	var/laugh_type
+	var/age
+	var/list/quirks = list()
 	/// SKYRAT EDIT END
 
 /datum/changeling_profile/Destroy()
@@ -926,6 +981,10 @@
 	new_profile.worn_icon_teshari_list = worn_icon_teshari_list.Copy()
 	new_profile.worn_icon_vox_list = worn_icon_vox_list.Copy()
 	new_profile.supports_variations_flags_list = supports_variations_flags_list.Copy()
+	new_profile.scream_type = scream_type
+	new_profile.laugh_type = laugh_type
+	new_profile.age = age
+	new_profile.quirks = quirks.Copy()
 	// SKYRAT EDIT END
 
 /datum/antagonist/changeling/roundend_report()
