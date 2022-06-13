@@ -119,6 +119,9 @@ PROTECT_ROLES_FROM_ANTAGONIST
 ## If non-human species are barred from joining as a head of staff
 #ENFORCE_HUMAN_AUTHORITY
 
+## If non-human species are barred from joining as a head of staff, including jobs flagged as allowed for non-humans, ie. Quartermaster.
+#ENFORCE_HUMAN_AUTHORITY_ON_EVERYONE
+
 ## If late-joining players have a chance to become a traitor/changeling
 ALLOW_LATEJOIN_ANTAGONISTS
 
@@ -259,18 +262,11 @@ RANDOM_LAWS dagothbot
 LAW_WEIGHT custom,0
 
 ## standard-ish laws. These are fairly ok to run
-<<<<<<< HEAD
+## Unique AI station trait uses weights so we don't want asimov
 #SKYRAT EDIT ADDITION BEGIN
 LAW_WEIGHT armadyne_safeguard,40
 LAW_WEIGHT dagothbot,8
 #SKYRAT EDIT ADDITION END
-LAW_WEIGHT asimov,32
-LAW_WEIGHT asimovpp,12
-LAW_WEIGHT paladin,12
-LAW_WEIGHT robocop,12
-LAW_WEIGHT corporate,12
-=======
-## Unique AI station trait uses weights so we don't want asimov
 LAW_WEIGHT asimov,0
 LAW_WEIGHT asimovpp,5
 LAW_WEIGHT paladin,5
@@ -283,7 +279,6 @@ LAW_WEIGHT liveandletlive,5
 LAW_WEIGHT peacekeeper,5
 LAW_WEIGHT ten_commandments,5
 LAW_WEIGHT nutimov,5
->>>>>>> f06d735a523 (All AI Lawsets are rebalanced, can be researched, appear in config, and random spawners for AI upload. (#66854))
 
 ## Quirky laws. Shouldn't cause too much harm
 LAW_WEIGHT reporter,3
@@ -518,3 +513,7 @@ MAXFINE 2000
 
 ## Whether native FoV is enabled for all people.
 #NATIVE_FOV
+
+## Comment if you wish to enable title music playing at the lobby screen. This flag is disabled by default to facilitate better code testing on local machines.
+## Do keep in mind that this flag will not affect individual player's preferences: if they opt-out on your server, it will never play for them.
+DISALLOW_TITLE_MUSIC

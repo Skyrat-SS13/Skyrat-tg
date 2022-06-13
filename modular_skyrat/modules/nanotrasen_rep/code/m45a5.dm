@@ -15,9 +15,11 @@
 	recoil = 0
 	realistic = TRUE
 	dirt_modifier = 0.1
-	can_flashlight = TRUE
 	emp_damageable = FALSE
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/dp_fire.ogg'
+
+/obj/item/gun/ballistic/automatic/pistol/m45a5/add_seclight_point()
+	AddComponent(/datum/component/seclite_attachable, light_overlay_icon = 'icons/obj/guns/flashlights.dmi', light_overlay = "flight")
 
 /obj/item/ammo_box/magazine/m45a5
 	name = "ACA modular magazine"

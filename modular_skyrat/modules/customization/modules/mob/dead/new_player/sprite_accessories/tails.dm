@@ -1,8 +1,8 @@
 /datum/sprite_accessory/tails
 	key = "tail"
 	generic = "Tail"
-	organ_type = /obj/item/organ/tail
-	icon = 'modular_skyrat/master_files/icons/mob/mutant_bodyparts.dmi'
+	organ_type = /obj/item/organ/external/tail
+	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/tails.dmi'
 	special_render_case = TRUE
 	special_icon_case = TRUE
 	special_colorize = TRUE
@@ -22,11 +22,21 @@
 			if(mod_theme.modsuit_tail_colors)
 				return "[general_type]_modsuit"
 
-	var/obj/item/organ/tail/tail = wearer.getorganslot(ORGAN_SLOT_TAIL)
-	if(tail && tail.wagging)
-		return "[icon_state]_wagging"
-
 	return icon_state
+
+/datum/sprite_accessory/tails/get_special_render_key(mob/living/carbon/human/owner)
+	if(general_type && owner.wear_suit && istype(owner.wear_suit, /obj/item/clothing/suit/mod))
+		if(owner.back && istype(owner.back, /obj/item/mod/control)) // If this fails, honestly, something's really wrong, but just to be safe...
+			var/obj/item/mod/control/modsuit_control = owner.back
+			var/datum/mod_theme/mod_theme = modsuit_control.theme
+			if(mod_theme.modsuit_tail_colors)
+				return key
+
+	var/obj/item/organ/external/tail/tail = owner.getorganslot(ORGAN_SLOT_EXTERNAL_TAIL)
+	if(tail)
+		return tail.render_key
+
+	return key
 
 /datum/sprite_accessory/tails/get_special_icon(mob/living/carbon/human/wearer, passed_state)
 	var/returned = icon
@@ -55,12 +65,12 @@
 
 /datum/sprite_accessory/tails/lizard
 	recommended_species = list(SPECIES_LIZARD, SPECIES_LIZARD_ASH, SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_UNATHI, SPECIES_LIZARD_SILVER)
-	organ_type = /obj/item/organ/tail/lizard
+	organ_type = /obj/item/organ/external/tail/lizard
 	general_type = SPECIES_LIZARD
 
 /datum/sprite_accessory/tails/human
 	recommended_species = list(SPECIES_HUMAN, SPECIES_SYNTHHUMAN, SPECIES_FELINE, SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_GHOUL)
-	organ_type = /obj/item/organ/tail/cat
+	organ_type = /obj/item/organ/external/tail/cat
 
 /datum/sprite_accessory/tails/monkey/default
 	name = "Monkey"
@@ -68,7 +78,7 @@
 	icon = 'icons/mob/mutant_bodyparts.dmi'
 	recommended_species = list(SPECIES_HUMAN, SPECIES_SYNTHHUMAN, SPECIES_FELINE, SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_MONKEY, SPECIES_GHOUL)
 	color_src = FALSE
-	organ_type = /obj/item/organ/tail/monkey
+	organ_type = /obj/item/organ/external/tail/monkey
 
 /datum/sprite_accessory/tails/is_hidden(mob/living/carbon/human/wearer, obj/item/bodypart/HD)
 	if(wearer.try_hide_mutant_parts)
@@ -96,12 +106,12 @@
 /datum/sprite_accessory/tails/mammal
 	icon_state = "none"
 	recommended_species = list(SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL,SPECIES_HUMAN, SPECIES_SYNTHHUMAN, SPECIES_HUMANOID, SPECIES_GHOUL)
-	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/tails.dmi'
-	organ_type = /obj/item/organ/tail/fluffy/no_wag
+	organ_type = /obj/item/organ/external/tail/fluffy/no_wag
 	color_src = USE_MATRIXED_COLORS
 
 /datum/sprite_accessory/tails/mammal/wagging
-	organ_type = /obj/item/organ/tail/fluffy
+	organ_type = /obj/item/organ/external/tail/fluffy
+	flags_for_organ = SPRITE_ACCESSORY_WAG_ABLE
 
 /datum/sprite_accessory/tails/mammal/wagging/akula
 	recommended_species = list(SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_HUMAN, SPECIES_SYNTHHUMAN, SPECIES_AKULA, SPECIES_AQUATIC, SPECIES_HUMANOID, SPECIES_GHOUL)

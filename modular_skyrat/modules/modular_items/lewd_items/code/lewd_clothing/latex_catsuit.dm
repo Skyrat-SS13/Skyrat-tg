@@ -32,7 +32,7 @@
 /obj/item/clothing/under/misc/latex_catsuit/equipped(mob/living/affected_mob, slot)
 	. = ..()
 	var/mob/living/carbon/human/affected_human = affected_mob
-	var/obj/item/organ/genital/breasts/affected_breasts = affected_human.getorganslot(ORGAN_SLOT_BREASTS)
+	var/obj/item/organ/external/genital/breasts/affected_breasts = affected_human.getorganslot(ORGAN_SLOT_BREASTS)
 	if(src == affected_human.w_uniform)
 		if(affected_mob.gender == FEMALE)
 			icon_state = "latex_catsuit_female"
