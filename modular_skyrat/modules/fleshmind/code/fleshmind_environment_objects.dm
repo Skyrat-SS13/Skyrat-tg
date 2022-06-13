@@ -50,7 +50,7 @@
 	/// The chance we have to ensnare a mob
 	var/ensnare_chance = 15
 	/// The amount of damage we do when attacking something.
-	var/object_attack_damage = 40
+	var/object_attack_damage = 150
 	/// Are we active?
 	var/active = FALSE
 	/// Are we a vent burrow?
