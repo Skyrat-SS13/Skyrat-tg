@@ -149,7 +149,7 @@
 	return mysize
 
 /atom/movable/screen/plane_master/runechat/status
-	name = "status plane master"
+	name = "status indicator plane master"
 	plane = PLANE_STATUS
 	appearance_flags = PLANE_MASTER
 	blend_mode = BLEND_OVERLAY
