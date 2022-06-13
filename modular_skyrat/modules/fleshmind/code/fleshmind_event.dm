@@ -3,7 +3,7 @@
 	typepath = /datum/round_event/fleshmind
 	max_occurrences = 0
 	min_players = 100
-	earliest_start = 1 HOUR
+	earliest_start = 1 HOURS
 
 
 /datum/round_event/fleshmind
