@@ -297,7 +297,7 @@
 	priority_announce("PROTOCOL 34-C IS IN EFFECT. PREPARE TO JOIN THE MANY.", "&^$^£&&*$&£")
 	sound_to_playing_players('sound/machines/alarm.ogg')
 	sound_to_playing_players('modular_skyrat/modules/alerts/sound/misc/delta_countdown.ogg')
-	addtimer(CALLBACK(GLOBAL_PROC, /proc/play_cinematic, /datum/cinematic/malf, world, CALLBACK(GLOBAL_PROC, /proc/fleshmind_trigger_doomsday)), 10 SECONDS, TIMER_CLIENT_TIME)
+	addtimer(CALLBACK(GLOBAL_PROC, /proc/play_cinematic, /datum/cinematic/malf, world, CALLBACK(GLOBAL_PROC, /proc/fleshmind_trigger_doomsday)), 15 SECONDS, TIMER_CLIENT_TIME)
 
 /proc/fleshmind_trigger_doomsday()
 	callback_on_everyone_on_z(SSmapping.levels_by_trait(ZTRAIT_STATION), CALLBACK(GLOBAL_PROC, /proc/bring_doomsday))
