@@ -1179,7 +1179,7 @@
 
 /// This mob is abile to read books
 /mob/proc/is_literate()
-	return FALSE
+	return HAS_TRAIT(src, TRAIT_LITERATE) && !HAS_TRAIT(src, TRAIT_ILLITERATE)
 
 /// Can this mob write
 /mob/proc/can_write(obj/writing_instrument)
@@ -1187,7 +1187,11 @@
 		to_chat(src, span_warning("You can't write with the [writing_instrument]!"))
 
 	if(!is_literate())
-		to_chat(src, span_warning("You don't know how to write."))
+		to_chat(src, span_warning("You try to write, but don't know how to spell anything!"))
+		return FALSE
+
+	if(!has_light_nearby() && !has_nightvision())
+		to_chat(src, span_warning("It's too dark in here to write anything!"))
 		return FALSE
 
 	var/obj/item/pen/pen = writing_instrument
@@ -1215,12 +1219,12 @@
 	return mob_location.get_lumcount() > light_amount
 
 /// Can this mob read
-/mob/proc/can_read(obj/O)
+/mob/proc/can_read(obj/O, check_for_light = TRUE)
 	if(!is_literate())
 		to_chat(src, span_warning("You try to read [O], but can't comprehend any of it."))
 		return FALSE
 
-	if(!has_light_nearby() && !has_nightvision())
+	if(check_for_light && !has_light_nearby() && !has_nightvision())
 		to_chat(src, span_warning("It's too dark in here to read!"))
 		return FALSE
 

@@ -15,9 +15,11 @@
 	recoil = 0
 	realistic = TRUE
 	dirt_modifier = 0.1
-	can_flashlight = TRUE
 	emp_damageable = FALSE
 	fire_sound = 'modular_skyrat/modules/sec_haul/sound/dp_fire.ogg'
+
+/obj/item/gun/ballistic/automatic/pistol/m45a5/add_seclight_point()
+	AddComponent(/datum/component/seclite_attachable, light_overlay_icon = 'icons/obj/guns/flashlights.dmi', light_overlay = "flight")
 
 /obj/item/ammo_box/magazine/m45a5
 	name = "ACA modular magazine"
@@ -30,7 +32,7 @@
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 
 /obj/item/ammo_casing/b460
-	name = ".460 Rowland magnum bullet casing"
+	name = ".460 Rowland Magnum bullet casing"
 	desc = "A .460 Rowland magnum casing."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/ammo_cartridges.dmi'
 	icon_state = "sl-casing"

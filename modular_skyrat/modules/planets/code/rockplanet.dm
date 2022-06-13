@@ -1,4 +1,6 @@
-////////////////////////MAP GENERATOR////////////////////////////////
+/*
+*	MAP GENERATOR
+*/
 
 /datum/map_generator/cave_generator/rockplanet
 	open_turf_types = list(/turf/open/misc/asteroid/lowpressure = 1)

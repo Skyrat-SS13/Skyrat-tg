@@ -1,7 +1,9 @@
-// Crew has to build a bluespace cannon
-// Cargo orders part for high price
-// Requires high amount of power
-// Requires high level stock parts
+/*
+*	Crew has to build a bluespace cannon
+*	Cargo orders part for high price
+*	Requires high amount of power
+*	Requires high level stock parts
+*/
 
 #define SYSTEM_OFFLINE "SYSTEM OFFLINE"
 #define SYSTEM_READY "SYSTEM READY"

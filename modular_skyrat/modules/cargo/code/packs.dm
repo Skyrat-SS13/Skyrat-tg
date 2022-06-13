@@ -1,8 +1,8 @@
 /// Cost of the crate. DO NOT GO ANY LOWER THAN X1.4 the "CARGO_CRATE_VALUE" value if using regular crates, or infinite profit will be possible!
 
-//////////////////////////////////////////////////////////////////////////////
-//////////////////////////////// Livestock ///////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////
+/*
+*	LIVESTOCK
+*/
 
 /datum/supply_pack/critter/doublecrab
 	name = "Crab Crate"
@@ -24,9 +24,9 @@
 	for(var/i in 1 to 5)
 		new /mob/living/simple_animal/mouse(.)
 
-//////////////////////////////////////////////////////////////////////////////
-//////////////////////////////// Medical /////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////
+/*
+*	MEDICAL
+*/
 
 /datum/supply_pack/medical/anesthetics
 	name = "Anesthetics Crate"
@@ -107,9 +107,9 @@
 					/obj/item/weaponcell/medical/toxin)
 	crate_name = "medicell replacement crate"
 
-//////////////////////////////////////////////////////////////////////////////
-//////////////////////////// Security ////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////
+/*
+*	SECURITY
+*/
 
 /datum/supply_pack/security/MODsuit_security
 	name = "Security MODsuit Crate"
@@ -128,6 +128,15 @@
 					/obj/item/clothing/suit/armor/vest/alt,
 					/obj/item/clothing/suit/armor/vest/alt)
 	crate_name = "armor crate"
+	
+/datum/supply_pack/security/helmets
+	name = "Helmets Crate"
+	desc = "Contains three standard-issue brain buckets. Requires Security access to open."
+	cost = CARGO_CRATE_VALUE * 2
+	contains = list(/obj/item/clothing/head/helmet/sec/redsec,
+					/obj/item/clothing/head/helmet/sec/redsec,
+					/obj/item/clothing/head/helmet/sec/redsec)
+	crate_name = "helmet crate"
 
 /datum/supply_pack/security/deployablebarricades
 	name = "C.U.C.K.S Deployable Barricades"
@@ -137,10 +146,9 @@
 					/obj/item/storage/barricade,)
 	crate_name = "C.U.C.K.S Crate"
 
-
-//////////////////////////////////////////////////////////////////////////////
-///////////////////////////// Engineering ////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////
+/*
+*	ENGINEERING
+*/
 
 /datum/supply_pack/engineering/industrial_rcd
 	name = "Industrial RCD Crate"
@@ -210,9 +218,18 @@
 	crate_name = "engineering inducer crate"
 	crate_type = /obj/structure/closet/crate/engineering/electrical
 
-//////////////////////////////////////////////////////////////////////////////
-//////////////////////////// Misc Crates /////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////
+/datum/supply_pack/engineering/gas_miner
+	name = "Gas Miner Delivery Beacon Crate"
+	desc = "Contains a single gas miner delivery beacon, for the ordering of one gas miner."
+	access = ACCESS_ATMOSPHERICS
+	contains = list(/obj/item/gas_miner_beacon)
+	cost = CARGO_CRATE_VALUE * 50
+	crate_name = "gas miner delivery beacon crate"
+	crate_type = /obj/structure/closet/crate/secure/engineering
+
+/*
+*	MISC
+*/
 
 /datum/supply_pack/misc/medibeam //Moved to Misc so Medical can't order them for free through department consoles and break the economy.
 	name = "Medical Beam Gun"
@@ -296,9 +313,9 @@
 	crate_name = "snowmobile kit"
 	crate_type = /obj/structure/closet/crate/large
 
-//////////////////////////////////////////////////////////////////////////////
-//////////////////////////// Food Stuff //////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////
+/*
+*	FOOD
+*/
 
 /datum/supply_pack/organic/combomeal
 	name = "Burger Combo Crate"
@@ -451,9 +468,9 @@
 	crate_name = "bulk lizard pack"
 	crate_type = /obj/structure/closet/crate/freezer
 
-//////////////////////////////////////////////////////////////////////////////
-//////////////////////////// Pack Type ///////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////
+/*
+*	PACK TYPE
+*/
 
 /datum/supply_pack/service/buildabar
 	name = "Build a Bar Crate"
@@ -581,9 +598,9 @@
 	contains = list(/obj/item/mod/control/pre_equipped/loader)
 	crate_name = "cargo MODsuit crate"
 
-//////////////////////////////////////////////////////////////////////////////
-//////////////////////////// Materials & Sheets //////////////////////////////
-//////////////////////////////////////////////////////////////////////////////
+/*
+*	MATERIALS AND SHEETS
+*/
 
 /datum/supply_pack/materials/rawlumber
 	name = "20 Towercap Logs"

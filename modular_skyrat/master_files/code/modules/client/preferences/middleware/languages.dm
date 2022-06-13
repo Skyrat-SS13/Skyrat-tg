@@ -36,7 +36,7 @@
 	)
 	var/list/name_to_language
 
-/datum/preference_middleware/languages/apply_to_human(mob/living/carbon/human/target, datum/preferences/preferences) //SKYRAT EDIT CHANGE
+/datum/preference_middleware/languages/apply_to_human(mob/living/carbon/human/target, datum/preferences/preferences) // SKYRAT EDIT CHANGE
 	target.language_holder.understood_languages.Cut()
 	target.language_holder.spoken_languages.Cut()
 	target.language_holder.omnitongue = TRUE // a crappy hack but it works
@@ -82,7 +82,7 @@
 		var/datum/language/language = GLOB.language_datum_instances[language_name]
 		if(language.secret)
 			continue
-		if(species.always_customizable && !(language.type in species.learnable_languages)) //For the ghostrole species. We don't want ashwalkers speaking beachtongue now.
+		if(species.always_customizable && !(language.type in species.learnable_languages)) // For the ghostrole species. We don't want ashwalkers speaking beachtongue now.
 			continue
 		if(preferences.languages[language.type])
 			selected_languages += list(list(

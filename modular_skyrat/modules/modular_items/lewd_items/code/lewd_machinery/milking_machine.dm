@@ -9,9 +9,11 @@
 	max_integrity = 75
 	var/color_changed = FALSE // Variable to track the color change of the machine by the user. So that you can change it once.
 	var/static/list/milkingmachine_designs
-	//////////////////////
-	// Power management //
-	//////////////////////
+
+/*
+*	POWER MANAGEMENT
+*/
+
 	var/obj/item/stock_parts/cell/cell = null // Current cell in machine
 	var/charge_rate = 200 // Power charge per tick devided by delta_time (always about ~2)
 	var/power_draw_rate = 65 // Power draw per tick multiplied by delta_time (always about ~2)
@@ -19,49 +21,55 @@
 	var/power_draw_multiplier_list = list("off" = 0, "low" = 0.025, "medium" = 0.25, "hard" = 0.5)
 	var/panel_open = FALSE // Сurrent maintenace panel state
 
-	/////////////////////////////
-	// Machine operating modes //
-	/////////////////////////////
+/*
+*	OPERATING MODES
+*/
+
 	var/pump_state_list = list("pump_off", "pump_on")
 	var/pump_state
 	var/mode_list = list("off", "low", "medium", "hard")
 	var/current_mode
 
-	/////////////////////////////////
-	// Return sensation parameters //
-	/////////////////////////////////
+
+/*
+*	SENSATION PARAMETERS
+*/
+
 	// Values are returned every tick, without additional modifiers
 	var/arousal_amounts = list("off" = 0, "low" = 1, "medium" = 2, "hard" = 3)
 	var/pleasure_amounts = list("off" = 0, "low" = 0.2, "medium" = 1, "hard" = 1.5)
 	var/pain_amounts = list("off" = 0, "low" = 0, "medium" = 0.2, "hard" = 0.5)
 
-	//////////////////////
-	// Fluid management //
-	//////////////////////
+/*
+*	FLUID MANAGEMENT
+*/
+
 	// Liquids are taken every tick, no additional modifiers
 	var/milk_retrive_amount = list("off" = 0, "low" = 1, "medium" = 2, "hard" = 3)
 	var/girlcum_retrive_amount = list("off" = 0, "low" = 1, "medium" = 2, "hard" = 3)
 	var/semen_retrive_amount = list("off" = 0, "low" = 1, "medium" = 2, "hard" = 3)
 	var/climax_retrive_multiplier = 2 // Climax intake volume multiplier
 
-	//////////////////////////
-	// Vessels and parameters //
-	//////////////////////////
+/*
+*	VESSELS
+*/
+
 	var/max_vessel_capacity = 100 // Limits a max capacity of any internal vessel in machine
 	var/obj/item/reagent_containers/milk_vessel
 	var/obj/item/reagent_containers/girlcum_vessel
 	var/obj/item/reagent_containers/semen_vessel
 	var/obj/item/reagent_containers/current_vessel // Vessel selected in UI
 
-	////////////////////////////////////////////
-	// Work object link cache for the machine //
-	////////////////////////////////////////////
-	var/obj/item/organ/genital/current_selected_organ = null // Organ selected in UI
+/*
+*	WORKED OBJECT
+*/
+
+	var/obj/item/organ/external/genital/current_selected_organ = null // Organ selected in UI
 	var/obj/item/reagent_containers/glass/beaker = null // Beaker inserted in machine
 	var/mob/living/carbon/human/current_mob = null // Mob buckled to the machine
-	var/obj/item/organ/genital/breasts/current_breasts = null // Buckled mob breasts
-	var/obj/item/organ/genital/testicles/current_testicles = null // Buckled mob testicles
-	var/obj/item/organ/genital/vagina/current_vagina = null // Buckled mob vagina
+	var/obj/item/organ/external/genital/breasts/current_breasts = null // Buckled mob breasts
+	var/obj/item/organ/external/genital/testicles/current_testicles = null // Buckled mob testicles
+	var/obj/item/organ/external/genital/vagina/current_vagina = null // Buckled mob vagina
 
 	// Variables for working with sizes and types of organs
 	var/breasts_size = null
@@ -70,12 +78,13 @@
 	var/testicles_size = null
 
 	// Machine colors
-	var/machine_color_list = list("pink", "teal") // Применить ссылки на список везде, где можно
+	var/machine_color_list = list("pink", "teal")
 	var/machine_color
 
-	//////////////////////////////////////////
-	// Stuff for visualizing machine states //
-	//////////////////////////////////////////
+/*
+*	STATE MANAGEMENT
+*/
+
 	// Cell power capacity indicator
 	var/indicator_state_list = list("indicator_off", "indicator_low", "indicator_medium", "indicator_high")
 	var/indicator_state
@@ -89,9 +98,10 @@
 
 	var/lock_state = "open"
 
-	/////////////////////
-	// Overlay Objects //
-	/////////////////////
+/*
+*	OVERLAYS
+*/
+
 	var/mutable_appearance/vessel_overlay
 	var/mutable_appearance/indicator_overlay
 	var/mutable_appearance/locks_overlay
@@ -157,9 +167,10 @@
 	populate_milkingmachine_designs()
 	START_PROCESSING(SSobj, src)
 
-////////////////////////////////
-// Managing object appearance //
-////////////////////////////////
+/*
+*	APPEARANCE MANAGEMENT
+*/
+
 // Define color options for the menu
 /obj/structure/chair/milking_machine/proc/populate_milkingmachine_designs()
 	milkingmachine_designs = list(
@@ -188,9 +199,6 @@
 		return FALSE
 	return TRUE
 
-//////////////////////////////////////////////////////////
-// Override block to change the standard chair behavior //
-//////////////////////////////////////////////////////////
 // Another plug to disable rotation
 /obj/structure/chair/milking_machine/attack_tk(mob/user)
 	return FALSE
@@ -374,9 +382,11 @@
 		. = ..()
 		return
 
-//////////////////////////////////////
-// Milking machine main logic block //
-//////////////////////////////////////
+
+/*
+*	MAIN LOGIC
+*/
+
 // Empty Hand Attack Handler
 /obj/structure/chair/milking_machine/attack_hand(mob/user)
 	// If the panel is open and the hand is empty, then we take out the battery, otherwise standard processing
@@ -546,19 +556,19 @@
 	if(current_selected_organ == null || current_mode == mode_list[1])
 		update_all_visuals()
 		return // Does not work if an organ is not connected OR the machine is not switched to On
-	if(istype(current_selected_organ, /obj/item/organ/genital/breasts))
+	if(istype(current_selected_organ, /obj/item/organ/external/genital/breasts))
 		if(milk_vessel.reagents.total_volume == max_vessel_capacity)
 			current_mode = mode_list[1]
 			pump_state = pump_state_list[1]
 			update_all_visuals()
 			return
-	if(istype(current_selected_organ, /obj/item/organ/genital/vagina))
+	if(istype(current_selected_organ, /obj/item/organ/external/genital/vagina))
 		if(girlcum_vessel.reagents.total_volume == max_vessel_capacity)
 			current_mode = mode_list[1]
 			pump_state = pump_state_list[1]
 			update_all_visuals()
 			return
-	if(istype(current_selected_organ, /obj/item/organ/genital/testicles))
+	if(istype(current_selected_organ, /obj/item/organ/external/genital/testicles))
 		if(semen_vessel.reagents.total_volume == max_vessel_capacity)
 			current_mode = mode_list[1]
 			pump_state = pump_state_list[1]
@@ -588,17 +598,17 @@
 		if(current_mob.has_status_effect(/datum/status_effect/climax))
 			fluid_multiplier = climax_retrive_multiplier
 
-	if(istype(current_selected_organ, /obj/item/organ/genital/breasts))
+	if(istype(current_selected_organ, /obj/item/organ/external/genital/breasts))
 		if(current_selected_organ.reagents.total_volume > 0)
 			current_selected_organ.internal_fluids.trans_to(milk_vessel, milk_retrive_amount[current_mode] * fluid_multiplier * delta_time)
 		else
 			return
-	else if (istype(current_selected_organ, /obj/item/organ/genital/vagina))
+	else if (istype(current_selected_organ, /obj/item/organ/external/genital/vagina))
 		if(current_selected_organ.reagents.total_volume > 0)
 			current_selected_organ.internal_fluids.trans_to(girlcum_vessel, girlcum_retrive_amount[current_mode] * fluid_multiplier * delta_time)
 		else
 			return
-	else if (istype(current_selected_organ, /obj/item/organ/genital/testicles))
+	else if (istype(current_selected_organ, /obj/item/organ/external/genital/testicles))
 		if(current_selected_organ.reagents.total_volume > 0)
 			current_selected_organ.internal_fluids.trans_to(semen_vessel, semen_retrive_amount[current_mode] * fluid_multiplier * delta_time)
 		else
@@ -708,7 +718,7 @@
 	if(current_selected_organ != null)
 		cut_overlay(organ_overlay)
 		organ_overlay_new_icon_state = null
-		if(istype(current_selected_organ, /obj/item/organ/genital/breasts))
+		if(istype(current_selected_organ, /obj/item/organ/external/genital/breasts))
 			if(current_selected_organ.genital_type == "pair")
 				current_selected_organ_type = "double_breast"
 				current_selected_organ_size = current_selected_organ.genital_size
@@ -754,7 +764,7 @@
 				if(organ_overlay.icon_state != organ_overlay_new_icon_state)
 					organ_overlay.icon_state = organ_overlay_new_icon_state
 
-		if(istype(current_selected_organ, /obj/item/organ/genital/testicles))
+		if(istype(current_selected_organ, /obj/item/organ/external/genital/testicles))
 			current_selected_organ_type = "penis"
 			current_selected_organ_size = current_selected_organ.genital_size
 			if(current_mode == mode_list[1])
@@ -768,7 +778,7 @@
 				if(organ_overlay.icon_state != organ_overlay_new_icon_state)
 					organ_overlay.icon_state = organ_overlay_new_icon_state
 
-		if(istype(current_selected_organ, /obj/item/organ/genital/vagina))
+		if(istype(current_selected_organ, /obj/item/organ/external/genital/vagina))
 			current_selected_organ_type = "vagina"
 			current_selected_organ_size = current_selected_organ.genital_size
 			if(current_mode == mode_list[1])
@@ -841,18 +851,19 @@
 	update_icon_state()
 	update_icon()
 
-////////////////////////////////////////////////////
-/// Milking machine interface handler block ///
-////////////////////////////////////////////////////
+/*
+*	INTERFACE
+*/
+
 // Handler for clicking an empty hand on a machine
 /obj/structure/chair/milking_machine/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 
-	// // Standard behavior. Uncomment for UI debugging
-	// if(!ui)
-	// 	ui = new(user, src, "MilkingMachine", name)
-	// 	ui.open()
-	// ///////////////////////////////////////////////////////////
+	/* Standard behavior. Uncomment for UI debugging
+	if(!ui)
+		ui = new(user, src, "MilkingMachine", name)
+		ui.open()
+	*/
 
 	//Block the interface if we are in the machine. Use in production
 	if(LAZYLEN(buckled_mobs))
@@ -868,7 +879,6 @@
 		ui = new(user, src, "MilkingMachine", name)
 		ui.open()
 		return
-	///////////////////////////////////////
 
 // Interface data filling handler
 /obj/structure/chair/milking_machine/ui_data(mob/user)

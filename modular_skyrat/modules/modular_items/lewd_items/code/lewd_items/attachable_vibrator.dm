@@ -1,6 +1,6 @@
-//////////////////////////
-///Normal vibrating egg///
-//////////////////////////
+/*
+*	VIBRATING EGG
+*/
 
 /obj/item/clothing/sextoy/eggvib
 	name = "vibrating egg"
@@ -136,9 +136,10 @@
 		target.adjustArousal(0.7 * delta_time)
 		target.adjustPleasure(0.7 * delta_time)
 
-//////////////////////////
-///Signal vibrating egg///
-//////////////////////////
+/*
+*	SIGNALLER CONTROLLED EGG
+*/
+
 /obj/item/clothing/sextoy/eggvib/signalvib
 	name = "signal vibrating egg"
 	desc = "A vibrating sex toy with remote control capability. Use a signaller to turn it on."

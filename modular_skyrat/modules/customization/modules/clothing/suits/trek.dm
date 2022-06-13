@@ -51,11 +51,11 @@
 	inhand_icon_state = "fedmodernblue"
 
 /obj/item/clothing/suit/fedcoat/modern/eng
-	name = "modern eng Federation jacket"
+	name = "modern engineering Federation jacket"
 	icon_state = "fedmoderneng"
 	inhand_icon_state = "fedmoderneng"
 
 /obj/item/clothing/suit/fedcoat/modern/sec
-	name = "modern sec Federation jacket"
+	name = "modern security Federation jacket"
 	icon_state = "fedmodernsec"
 	inhand_icon_state = "fedmodernsec"

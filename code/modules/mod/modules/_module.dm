@@ -78,7 +78,7 @@
 			balloon_alert(mod.wearer, "not active!")
 		return
 	// SKYRAT EDIT START - DEPLOYABLE EVERYTHING OVER EVERYTHING
-	if(mod.wearer.wear_suit != mod.chestplate)
+	if((mod.wearer.wear_suit != mod.chestplate) && !allowed_inactive)
 		balloon_alert(mod.wearer, "chestplate retracted!")
 		return
 	// SKYRAT EDIT END
@@ -230,9 +230,7 @@
 
 /// Checks if there is enough power in the suit
 /obj/item/mod/module/proc/check_power(amount)
-	if(mod.get_charge() < amount)
-		return FALSE
-	return TRUE
+	return mod.check_charge(amount)
 
 /// Adds additional things to the MODsuit ui_data()
 /obj/item/mod/module/proc/add_ui_data()

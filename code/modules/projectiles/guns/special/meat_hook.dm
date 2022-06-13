@@ -38,10 +38,11 @@
 	hitsound = 'sound/effects/splat.ogg'
 	var/chain
 	var/knockdown_time = (0.5 SECONDS)
+	var/chain_icon = 'icons/effects/beam.dmi' //SKYRAT ADDITION
 
 /obj/projectile/hook/fire(setAngle)
 	if(firer)
-		chain = firer.Beam(src, icon_state = "chain")
+		chain = firer.Beam(src, icon_state = "chain", icon = chain_icon) //SKYRAT EDIT
 	..()
 	//TODO: root the firer until the chain returns
 

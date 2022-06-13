@@ -65,7 +65,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/machinery/door/airlock/grunge{
 	name = "Hotel Staff Storage";
-	req_access_txt = "200"
+	req_access = list("away_general")
 	},
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/hotel/workroom)
@@ -557,7 +557,7 @@
 	},
 /obj/structure/closet/secure_closet/freezer/meat{
 	req_access = null;
-	req_access_txt = "200"
+	req_access = list("away_general")
 	},
 /turf/open/floor/iron/kitchen_coldroom/freezerfloor,
 /area/ruin/space/has_grav/hotel/bar)
@@ -612,7 +612,7 @@
 "eN" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Hotel Maintenance";
-	req_access_txt = "201"
+	req_access = list("away_maint")
 	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
@@ -893,7 +893,7 @@
 "fR" = (
 /obj/machinery/door/airlock/grunge{
 	name = "Bar Backroom";
-	req_access_txt = "200"
+	req_access = list("away_general")
 	},
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/hotel/bar)
@@ -925,12 +925,6 @@
 	},
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/hotel/guestroom/room_1)
-"fX" = (
-/obj/effect/spawner/structure/window/reinforced,
-/obj/machinery/door/firedoor,
-/obj/machinery/door/firedoor,
-/turf/open/floor/plating,
-/area/ruin/space/has_grav/hotel/pool)
 "fY" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/iron/white,
@@ -995,7 +989,7 @@
 "gs" = (
 /obj/machinery/door/airlock/grunge{
 	name = "Hotel Staff Room";
-	req_access_txt = "200"
+	req_access = list("away_general")
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/hotel/workroom/quarters)
@@ -1635,7 +1629,7 @@
 	},
 /obj/machinery/door/airlock/grunge{
 	name = "Manager's Office";
-	req_access_txt = "200"
+	req_access = list("away_general")
 	},
 /turf/open/floor/carpet,
 /area/ruin/space/has_grav/hotel/workroom)
@@ -1748,14 +1742,13 @@
 "jq" = (
 /obj/machinery/door/airlock/security/glass{
 	name = "Hotel Security Checkpoint";
-	req_access_txt = "203"
+	req_access = list("away_sec")
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/hotel/security)
 "jw" = (
 /obj/machinery/door/airlock/public/glass,
-/obj/machinery/door/firedoor,
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -2075,7 +2068,7 @@
 	dir = 4;
 	icon_state = "rightsecure";
 	name = "Cell Door";
-	req_access_txt = "203"
+	req_access = list("away_sec")
 	},
 /obj/effect/turf_decal/tile/red{
 	dir = 1
@@ -2426,7 +2419,7 @@
 "lF" = (
 /obj/machinery/door/airlock/security/glass{
 	name = "Hotel Security Checkpoint";
-	req_access_txt = "203"
+	req_access = list("away_sec")
 	},
 /obj/effect/turf_decal/tile/red{
 	dir = 1
@@ -2530,7 +2523,7 @@
 "lT" = (
 /obj/structure/closet/secure_closet/security{
 	req_access = null;
-	req_access_txt = "203"
+	req_access = list("away_sec")
 	},
 /obj/item/clothing/head/helmet/justice,
 /obj/effect/turf_decal/tile/red{
@@ -2763,7 +2756,7 @@
 "mA" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Hotel Maintenance";
-	req_access_txt = "201"
+	req_access = list("away_maint")
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
 	dir = 4
@@ -3507,7 +3500,7 @@
 /obj/structure/cable,
 /obj/machinery/door/airlock/grunge{
 	name = "Hotel Medical Storage";
-	req_access_txt = "200"
+	req_access = list("away_general")
 	},
 /turf/open/floor/iron/showroomfloor,
 /area/ruin/space/has_grav/hotel)
@@ -4233,7 +4226,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/door/airlock/grunge{
 	name = "Hotel Staff Room";
-	req_access_txt = "200"
+	req_access = list("away_general")
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/hotel/workroom/quarters)
@@ -4293,7 +4286,7 @@
 "zH" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Hotel Maintenance";
-	req_access_txt = "201"
+	req_access = list("away_maint")
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
 	dir = 4
@@ -4334,7 +4327,7 @@
 "Ah" = (
 /obj/machinery/door/airlock/grunge{
 	name = "Hydroponics";
-	req_access_txt = "200"
+	req_access = list("away_general")
 	},
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/hotel/bar)
@@ -4534,7 +4527,7 @@
 /obj/structure/cable,
 /obj/machinery/door/airlock/grunge{
 	name = "Hotel Staff Room";
-	req_access_txt = "200"
+	req_access = list("away_general")
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/hotel/workroom/quarters)
@@ -4545,7 +4538,7 @@
 "Cc" = (
 /obj/machinery/door/airlock/grunge{
 	name = "Kitchen";
-	req_access_txt = "200"
+	req_access = list("away_general")
 	},
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/hotel/bar)
@@ -4823,13 +4816,13 @@
 	},
 /obj/machinery/door/poddoor/preopen{
 	id = "Disposal Exit";
-	name = "disposal exit vent"
+	name = "Disposal Exit Vent"
 	},
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/hotel/workroom)
 "EH" = (
 /obj/machinery/door/window/right/directional/east{
-	req_access_txt = "200"
+	req_access = list("away_general")
 	},
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/hotel/bar)
@@ -5038,7 +5031,7 @@
 "Gw" = (
 /obj/structure/closet/secure_closet/freezer/meat{
 	req_access = null;
-	req_access_txt = "200"
+	req_access = list("away_general")
 	},
 /turf/open/floor/iron/kitchen_coldroom/freezerfloor,
 /area/ruin/space/has_grav/hotel/bar)
@@ -5086,7 +5079,7 @@
 /obj/item/reagent_containers/food/condiment/flour,
 /obj/structure/closet/secure_closet/freezer/kitchen{
 	req_access = null;
-	req_access_txt = "200"
+	req_access = list("away_general")
 	},
 /turf/open/floor/iron/cafeteria,
 /area/ruin/space/has_grav/hotel/bar)
@@ -5445,7 +5438,6 @@
 /area/ruin/space/has_grav/hotel/power)
 "KG" = (
 /obj/machinery/door/airlock/public/glass,
-/obj/machinery/door/firedoor,
 /obj/machinery/door/firedoor,
 /turf/open/floor/iron/white,
 /area/ruin/space/has_grav/hotel/pool)
@@ -5839,7 +5831,7 @@
 /obj/item/reagent_containers/food/condiment/milk,
 /obj/structure/closet/secure_closet/freezer/fridge{
 	req_access = null;
-	req_access_txt = "200"
+	req_access = list("away_general")
 	},
 /obj/machinery/light{
 	dir = 1
@@ -6459,7 +6451,7 @@
 "TA" = (
 /obj/machinery/door/airlock/grunge{
 	name = "Disposals Access";
-	req_access_txt = "200"
+	req_access = list("away_general")
 	},
 /turf/open/floor/plating/airless,
 /area/ruin/space/has_grav/hotel/workroom)
@@ -6861,7 +6853,7 @@
 /obj/structure/cable,
 /obj/machinery/door/airlock/grunge{
 	name = "Hotel Medical Storage";
-	req_access_txt = "200"
+	req_access = list("away_general")
 	},
 /turf/open/floor/iron/showroomfloor,
 /area/ruin/space/has_grav/hotel)
@@ -7040,7 +7032,7 @@
 	},
 /obj/machinery/door/airlock/grunge{
 	name = "Hydroponics Storage";
-	req_access_txt = "200"
+	req_access = list("away_general")
 	},
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/hotel/bar)
@@ -7055,7 +7047,7 @@
 /obj/structure/cable,
 /obj/machinery/door/airlock/grunge{
 	name = "Hotel Cold Room";
-	req_access_txt = "200"
+	req_access = list("away_general")
 	},
 /turf/open/floor/iron/cafeteria,
 /area/ruin/space/has_grav/hotel/bar)
@@ -7069,7 +7061,7 @@
 	name = "Disposal Vent Control";
 	pixel_x = 25;
 	pixel_y = -4;
-	req_access_txt = "12"
+	req_access = list("maint_tunnels")
 	},
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/hotel/workroom)
@@ -9879,7 +9871,7 @@ Hb
 so
 so
 pf
-fX
+mN
 jY
 MN
 jY

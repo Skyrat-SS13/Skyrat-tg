@@ -32,7 +32,10 @@
 	desc = "Use this if your friends left you behind."
 	possible_destinations = "arrivals_stationary;arrivals_shuttle"
 
-///////////////////////////////////////////// Map Templates //////////////////////////////////////////////////////////
+/*
+*	MAP TEMPLATES
+*/
+
 /datum/map_template/shuttle/ferry
 	name = "NAV Monarch (Ferry)"
 	prefix = "_maps/shuttles/skyrat/"

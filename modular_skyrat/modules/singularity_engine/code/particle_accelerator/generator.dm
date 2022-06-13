@@ -1,4 +1,7 @@
-/////SINGULARITY SPAWNER
+/*
+*	SINGULARITY SPAWNER
+*/
+
 /obj/machinery/the_singularitygen
 	name = "gravitational singularity generator"
 	desc = "An odd device which produces a Gravitational Singularity when set up."

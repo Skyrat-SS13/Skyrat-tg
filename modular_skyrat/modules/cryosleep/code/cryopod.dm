@@ -20,7 +20,7 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 	// circuit = /obj/item/circuitboard/cryopodcontrol
 	density = FALSE
 	interaction_flags_machine = INTERACT_MACHINE_OFFLINE
-	req_one_access = list(ACCESS_HEADS, ACCESS_ARMORY) // Heads of staff or the warden can go here to claim recover items from their department that people went were cryodormed with.
+	req_one_access = list(ACCESS_COMMAND, ACCESS_ARMORY) // Heads of staff or the warden can go here to claim recover items from their department that people went were cryodormed with.
 	var/mode = null
 
 	/// Used for logging people entering cryosleep and important items they are carrying.
@@ -363,7 +363,7 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 
 // Allows players to cryo others. Checks if they have been AFK for 30 minutes.
 	if(target.key && user != target)
-		if (target.getorgan(/obj/item/organ/brain) ) //Target the Brain
+		if (target.getorgan(/obj/item/organ/internal/brain) ) //Target the Brain
 			if(!target.mind || target.ssd_indicator ) // Is the character empty / AI Controlled
 				if(target.lastclienttime + ssd_time >= world.time)
 					to_chat(user, span_notice("You can't put [target] into [src] for another [ssd_time - round(((world.time - target.lastclienttime) / (1 MINUTES)), 1)] minutes."))

@@ -131,7 +131,9 @@
 	retaliated = FALSE
 	visible_message(span_danger("[src] calms down."))
 
-///////////// CUSTOM SPAWNERS
+/*
+*	CUSTOM SPAWNERS
+*/
 
 /obj/structure/mob_spawner/spiders
 	name = "sticky cobwebs"

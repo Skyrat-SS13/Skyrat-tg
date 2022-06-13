@@ -322,8 +322,11 @@
 #undef RECOMBINATION_STEP_TIME
 #undef RECOMBINATION_STEP_AMOUNT
 
+/*
+*	Infection stuff
+*	You didn't think I wouldn't include this did you?
+*/
 
-//////////////////////////////Infection stuff - You didn't think I wouldn't include this did you?
 /datum/reagent/hnz
 	name = "HNZ-1"
 	description = "HNZ-1 is a highly experimental viral bioterror agent \
@@ -353,7 +356,7 @@
 
 
 /obj/item/storage/briefcase/virology/hnz
-	name = "\improper HNZ-1 Biocontainer"
+	name = "\improper HNZ-1 biocontainer"
 	desc = "An airtight biosealed box containing the highly reactive substance, HNZ1. Authorised personnel only."
 	w_class = WEIGHT_CLASS_SMALL
 	max_integrity = 500

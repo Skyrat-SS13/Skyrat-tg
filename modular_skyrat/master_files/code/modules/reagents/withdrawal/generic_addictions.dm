@@ -1,6 +1,6 @@
 /datum/addiction/nicotine
 	name = "nicotine"
-	addiction_relief_treshold = 0.03 //This used to be 0.01.
+	addiction_relief_treshold = 0.03 // This used to be 0.01.
 	withdrawal_stage_messages = list("Feel like having a smoke...", "I really need a smoke now...", "I can't take it, I really need a smoke now!")
 
 	medium_withdrawal_moodlet = /datum/mood_event/nicotine_withdrawal_moderate

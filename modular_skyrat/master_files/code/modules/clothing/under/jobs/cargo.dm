@@ -1,5 +1,5 @@
 /obj/item/clothing/under/rank/cargo
-	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/under/cargo_digi.dmi' //Anything that was in the cargo.dmi, should be in the cargo_digi.dmi
+	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/under/cargo_digi.dmi' // Anything that was in the cargo.dmi, should be in the cargo_digi.dmi
 
 /obj/item/clothing/under/rank/cargo/tech/skyrat
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/cargo.dmi'
@@ -9,20 +9,20 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/cargo.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/cargo.dmi'
 
-//Add a /obj/item/clothing/under/rank/cargo/miner/skyrat if you add miner uniforms
+// Add a /obj/item/clothing/under/rank/cargo/miner/skyrat if you add miner uniforms
 
-////////////////////////////////////////
-////////////// CARGO TECH //////////////
+/*
+*	CARGO TECH
+*/
+
 /obj/item/clothing/under/rank/cargo/tech/skyrat/utility
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/cargo.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/cargo.dmi'
 	name = "supply utility uniform"
 	desc = "A utility uniform worn by employees of the Supply department."
 	icon_state = "util_cargo"
 	can_adjust = FALSE
 
 /obj/item/clothing/under/rank/cargo/tech/skyrat/utility/syndicate
-	armor = list(MELEE = 10, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 40) //Same stats as the tactical turtleneck.
+	armor = list(MELEE = 10, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 40) // Same stats as the tactical turtleneck.
 	has_sensor = NO_SENSORS
 
 /obj/item/clothing/under/rank/cargo/tech/skyrat/long
@@ -41,13 +41,11 @@
 	name = "supply turtleneck"
 	desc = "A snug turtleneck sweater worn by the Supply department.."
 	icon_state = "turtleneck_cargo"
-	can_adjust = FALSE
-	
+
 /obj/item/clothing/under/rank/cargo/tech/skyrat/turtleneck/skirt
 	name = "supply skirtleneck"
 	desc = "A snug turtleneck sweater worn by Supply, this time with a skirt attached!"
 	icon_state = "skirtleneck"
-	can_adjust = FALSE
 
 /obj/item/clothing/under/rank/cargo/tech/skyrat/evil
 	name = "black cargo uniform"
@@ -61,8 +59,9 @@
 	icon_state = "cargotechjean"
 	can_adjust = FALSE
 
-/////////////////////////////////////////
-///////////// QUARTERMASTER /////////////
+/*
+*	QUARTERMASTER
+*/
 
 /obj/item/clothing/under/rank/cargo/qm/skyrat/gorka
 	name = "quartermaster's gorka"
@@ -74,20 +73,18 @@
 	name = "quartermaster's turtleneck"
 	desc = "A snug turtleneck sweater worn by the Quartermaster, characterized by the expensive-looking pair of suit pants."
 	icon_state = "turtleneck_qm"
-	can_adjust = FALSE
-	
+
 /obj/item/clothing/under/rank/cargo/qm/skyrat/turtleneck/skirt
 	name = "quartermaster's skirtleneck"
 	desc = "A snug turtleneck sweater worn by the Quartermaster, as shown by the elegant double-lining of its silk skirt."
 	icon_state = "skirtleneckQM"
-	can_adjust = FALSE
 
 /obj/item/clothing/under/rank/cargo/qm/skyrat/syndie
 	name = "deck officer's jumpsuit"
 	desc = "A dark suit with a classic cargo vest. For the ultimate master of all things paper."
 	icon_state = "qmsynd"
 	has_sensor = NO_SENSORS
-	armor = list(MELEE = 10, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 40)
+	armor = list(MELEE = 10, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 40)
 	can_adjust = FALSE
 
 /obj/item/clothing/under/rank/cargo/qm/skyrat/formal

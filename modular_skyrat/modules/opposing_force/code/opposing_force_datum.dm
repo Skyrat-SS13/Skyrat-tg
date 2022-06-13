@@ -853,7 +853,7 @@
 
 /datum/opposing_force/proc/roundend_report()
 	var/list/report = list("<br>")
-	report += span_greentext(mind_reference.current.real_name)
+	report += span_greentext(mind_reference.current?.real_name)
 
 	if(set_backstory)
 		report += "<b>Had an approved OPFOR application with the following backstory:</b><br>"

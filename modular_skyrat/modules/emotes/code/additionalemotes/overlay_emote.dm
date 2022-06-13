@@ -93,7 +93,6 @@
 	else
 		return FALSE
 
-////
 //	These emotes hook into existing ones
 /datum/emote/living/sigh
 	key = "sigh"

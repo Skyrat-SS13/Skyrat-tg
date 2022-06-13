@@ -1,9 +1,9 @@
-//NEW CARTRAGES
+//NEW CARTRIDGES
 /obj/item/ammo_casing/realistic
 	icon = 'modular_skyrat/modules/gunsgalore/icons/ammo/ammo.dmi'
 
 //GERMAN
-//7.92x33mm Kurz german
+//7.92x33mm Kurz
 /obj/item/ammo_casing/realistic/a792x33
 	name = "7.92x33 bullet casing"
 	desc = "A 7.92x33mm Kurz bullet casing."
@@ -34,7 +34,7 @@
 	wound_falloff_tile = 0
 //
 
-//RUSSIAN
+//RUSSIAN - NRI
 //7.62x25 tokarev
 /obj/item/ammo_casing/realistic/a762x25
 	name = "7.62x25 bullet casing"
@@ -49,16 +49,16 @@
 	wound_falloff_tile = 0
 //
 
-//7.62x39mm M43
+//NRI Propietary ammo
 /obj/item/ammo_casing/realistic/a762x39
-	name = "7.62x39 bullet casing"
-	desc = "A 7.62x39mm M43 bullet casing."
+	name = "5.6x40mm bullet casing"
+	desc = "A 5.6x40mm bullet casing."
 	icon_state = "762x39-casing"
 	caliber = "a762x39"
 	projectile_type = /obj/projectile/bullet/a762x39
 
 /obj/projectile/bullet/a762x39
-	name = "7.62x25 bullet"
+	name = "5.6mm bullet"
 	damage = 38
 	wound_bonus = 35
 	armour_penetration = 40

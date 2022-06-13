@@ -16,6 +16,7 @@
 		TRAIT_CAN_STRIP,
 		TRAIT_EASYDISMEMBER,
 		TRAIT_EASILY_WOUNDED, //theyre like fuckin skin and bones
+		TRAIT_LITERATE,
 	)
 	offset_features = list(
 		OFFSET_UNIFORM = list(0,0),
@@ -133,9 +134,9 @@
 	C.part_default_r_leg = /obj/item/bodypart/r_leg
 	C.ReassignForeignBodyparts()
 
-//////////////////
-// ATTACK PROCS //
-//////////////////
+/*
+*	ATTACK PROCS
+*/
 
 /datum/species/ghoul/disarm(mob/living/carbon/human/user, mob/living/carbon/human/target, datum/martial_art/attacker_style)
 	// Targeting Self? With "DISARM"

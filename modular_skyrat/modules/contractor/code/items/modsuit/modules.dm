@@ -1,4 +1,3 @@
-
 /obj/item/mod/module/baton_holster
 	name = "MOD baton holster module"
 	desc = "A module installed into the chest of a MODSuit, this allows you \
@@ -7,69 +6,39 @@
 		Remove an inserted baton with a wrench."
 	icon_state = "holster"
 	icon = 'modular_skyrat/modules/contractor/icons/modsuit_modules.dmi'
+	module_type = MODULE_ACTIVE
 	complexity = 3
+	active_power_cost = DEFAULT_CHARGE_DRAIN * 0.3
+	device = /obj/item/melee/baton/telescopic/contractor_baton
 	incompatible_modules = list(/obj/item/mod/module/baton_holster)
-	module_type = MODULE_USABLE
+	cooldown_time = 0.5 SECONDS
 	allowed_inactive = TRUE
-	/// Ref to the baton
-	var/obj/item/melee/baton/telescopic/contractor_baton/stored_batong
-	/// If the baton is out or not
-	var/deployed = FALSE
+	/// Have they sacrificed a baton to actually be able to use this?
+	var/eaten_baton = FALSE
 
 /obj/item/mod/module/baton_holster/attackby(obj/item/attacking_item, mob/user, params)
 	. = ..()
-	if(!istype(attacking_item, /obj/item/melee/baton/telescopic/contractor_baton) || stored_batong)
+	if(!istype(attacking_item, /obj/item/melee/baton/telescopic/contractor_baton) || eaten_baton)
 		return
 	balloon_alert(user, "[attacking_item] inserted")
-	attacking_item.forceMove(src)
-	stored_batong = attacking_item
-	stored_batong.holster = src
+	eaten_baton = TRUE
+	for(var/obj/item/melee/baton/telescopic/contractor_baton/device_baton as anything in src)
+		for(var/obj/item/baton_upgrade/original_upgrade in attacking_item)
+			var/obj/item/baton_upgrade/new_upgrade = new original_upgrade.type(device_baton)
+			device_baton.add_upgrade(new_upgrade)
+		for(var/obj/item/restraints/handcuffs/cable/baton_cuffs in attacking_item)
+			baton_cuffs.forceMove(device_baton)
+	qdel(attacking_item)
 
-/obj/item/mod/module/baton_holster/wrench_act(mob/living/user, obj/item/tool)
-	. = ..()
-	if(!stored_batong)
+/obj/item/mod/module/baton_holster/on_activation()
+	if(!eaten_baton)
+		balloon_alert(mod.wearer, "no baton inserted")
 		return
-	balloon_alert(user, "[stored_batong] removed")
-	stored_batong.forceMove(get_turf(src))
-	stored_batong.holster = null
-	stored_batong = null
-	tool.play_tool_sound(src)
-
-/obj/item/mod/module/baton_holster/Destroy()
-	if(stored_batong)
-		stored_batong.forceMove(get_turf(src))
-		stored_batong.holster = null
-		stored_batong = null
-	. = ..()
-
-/obj/item/mod/module/baton_holster/on_use()
-	if(!deployed)
-		deploy(mod.wearer)
-	else
-		undeploy(mod.wearer)
-
-/obj/item/mod/module/baton_holster/proc/deploy(mob/living/user)
-	if(!(stored_batong in src))
-		return
-	if(!user.put_in_hands(stored_batong))
-		to_chat(user, span_warning("You need a free hand to hold [stored_batong]!"))
-		return
-	deployed = TRUE
-	balloon_alert(user, "[stored_batong] deployed")
-
-/obj/item/mod/module/baton_holster/proc/undeploy(mob/living/user)
-	if(QDELETED(stored_batong))
-		return
-	stored_batong.forceMove(src)
-	deployed = FALSE
-	balloon_alert(user, "[stored_batong] retracted")
+	return ..()
 
 /obj/item/mod/module/baton_holster/preloaded
-
-/obj/item/mod/module/baton_holster/preloaded/Initialize(mapload)
-	. = ..()
-	stored_batong = new/obj/item/melee/baton/telescopic/contractor_baton/upgraded(src)
-	stored_batong.holster = src
+	eaten_baton = TRUE
+	device = /obj/item/melee/baton/telescopic/contractor_baton/upgraded
 
 /obj/item/mod/module/chameleon/contractor // zero complexity module to match pre-TGification
 	complexity = 0
@@ -88,8 +57,27 @@
 	icon_state = "magnet"
 	icon = 'modular_skyrat/modules/contractor/icons/modsuit_modules.dmi'
 
-/obj/item/mod/module/springlock/on_suit_activation() // This module is actually *not* a death trap
+/obj/item/mod/module/springlock/contractor/on_suit_activation() // This module is actually *not* a death trap
 	return
 
-/obj/item/mod/module/springlock/on_suit_deactivation(deleting = FALSE)
+/obj/item/mod/module/springlock/contractor/on_suit_deactivation(deleting = FALSE)
 	return
+
+/// This exists for the adminbus contractor modsuit. Do not use otherwise
+/obj/item/mod/module/springlock/contractor/no_complexity
+	complexity = 0
+
+/obj/item/mod/module/scorpion_hook
+	name = "MOD SCORPION hook module"
+	desc = "A module installed in the wrist of a MODSuit, this highly \
+			illegal module uses a hardlight hook to forcefully pull \
+			a target towards you at high speed, knocking them down and \
+			partially exhausting them."
+	icon_state = "hook"
+	icon = 'modular_skyrat/modules/contractor/icons/modsuit_modules.dmi'
+	incompatible_modules = list(/obj/item/mod/module/scorpion_hook)
+	module_type = MODULE_ACTIVE
+	complexity = 3
+	active_power_cost = DEFAULT_CHARGE_DRAIN * 0.3
+	device = /obj/item/gun/magic/hook/contractor
+	cooldown_time = 0.5 SECONDS

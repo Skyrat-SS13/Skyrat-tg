@@ -29,9 +29,10 @@
 	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
 	baseturfs = /turf/open/misc/dirt/planet
 
-/////////////   GRASS TURFS   /////////////
-///////////////////////////////////////////
-/////////////   SNOW  TURFS   /////////////
+/*
+*	SNOW
+*/
+
 /turf/open/misc/asteroid/snow/indestructible
 	gender = PLURAL
 	name = "snow"
@@ -70,9 +71,9 @@
 */
 
 
-///////////////////////////////////////////
-/////////////   OTHER TURFS   /////////////
-///////////////////////////////////////////
+/*
+*	OTHER
+*/
 
 /turf/closed/mineral/earth_like
 	icon_state = "rock"
@@ -121,9 +122,9 @@
 /turf/closed/mineral/asteroid/has_air
 	initial_gas_mix = OPENTURF_LOW_PRESSURE	//one that WONT screw with atmos if its mapped somewhere
 
-///////////////////////////////////////////
-/////////////  HAZARD  TURFS  /////////////
-///////////////////////////////////////////
+/*
+*	HAZARD
+*/
 
 /turf/open/chasm/sandy	//just a retexture of the other chasm. making this was nothing but painful.
 	icon = 'modular_skyrat/modules/mapping/icons/turf/open/sandychasm.dmi'

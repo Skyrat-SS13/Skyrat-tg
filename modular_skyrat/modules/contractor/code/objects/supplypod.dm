@@ -15,7 +15,7 @@
 	if (contract_hub.current_contract == tied_contract)
 		contract_hub.current_contract = null
 	contract_hub = null
-	. = ..()
+	return ..()
 
 /obj/structure/closet/supplypod/extractionpod/Moved()
 	if(recieving && (atom_integrity <= 0))

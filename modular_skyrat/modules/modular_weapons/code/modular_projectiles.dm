@@ -1,9 +1,6 @@
-////////////////////////
-//ID: MODULAR_WEAPONS //
-////////////////////////
-
-////////////////////////
-//////   .32 ACP  //////
+/*
+*	.32 ACP
+*/
 
 /obj/item/ammo_casing/c32
 	name = ".32 bullet casing"
@@ -34,7 +31,9 @@
 
 /obj/item/ammo_casing/c32/ap
 	name = ".32 armor-piercing bullet"
-	desc = "A .32 armor-piercing bullet casing."
+	desc = "A .32 armor-piercing bullet casing.\
+	<br><br>\
+	<i>ARMOR PIERCING: Increased armor piercing capabilities. What did you expect?</i>"
 	caliber = "c32acp"
 	projectile_type = /obj/projectile/bullet/c32/ap
 
@@ -56,9 +55,10 @@
 	fire_stacks = 1
 	wound_bonus = -90
 
-//////   .32 ACP  //////
-////////////////////////
-/////  10mm Magnum /////
+/*
+*	10mm MAG
+*/
+
 
 /obj/item/ammo_casing/c10mm/rubber
 	name = "10mm Magnum rubber bullet casing"
@@ -79,17 +79,19 @@
 	sharpness = NONE
 	embedding = null
 
-/////  10mm Magnum /////
-////////////////////////
-//////   .45 ACP  //////
+/*
+*	.460 Ceres
+*/
 
 /obj/item/ammo_casing/c45/rubber
-	name = ".45 rubber bullet casing"
-	desc = "A .45 bullet casing."
+	name = ".460 Ceres rubber bullet casing"
+	desc = "A .460 bullet casing.\
+	<br><br>\
+	<i>RUBBER: Less than lethal ammo. Deals both stamina damage and regular damage.</i>"
 	projectile_type = /obj/projectile/bullet/c45/rubber
 
 /obj/projectile/bullet/c45/rubber
-	name = ".45 rubber ball"
+	name = ".460 Ceres rubber bullet"
 	damage = 10
 	stamina = 30
 	ricochets_max = 6
@@ -101,12 +103,12 @@
 	embedding = null
 	wound_bonus = -50
 
-//////   .45 ACP  //////
-////////////////////////
-/////  HK 4.6x30mm /////
+/*
+*	8mm Usurpator
+*/
 
 /obj/projectile/bullet/c46x30mm_rubber
-	name = "4.6x30mm rubber bullet"
+	name = "8mm Usurpator rubber bullet"
 	damage = 3
 	stamina = 17
 	ricochets_max = 6
@@ -119,24 +121,28 @@
 	wound_bonus = -50
 
 /obj/item/ammo_casing/c46x30mm/rubber
-	name = "4.6x30mm rubber bullet casing"
-	desc = "A 4.6x30mm rubber bullet casing."
+	name = "8mm Usurpator rubber bullet casing"
+	desc = "An 8mm Usurpator rubber bullet casing.\
+	<br><br>\
+	<i>RUBBER: Less than lethal ammo. Deals both stamina damage and regular damage.</i>"
 	projectile_type = /obj/projectile/bullet/c46x30mm_rubber
 	harmful = FALSE
 
-/////  HK 4.6x30mm /////
-////////////////////////
-//// 5.56x30mm MARS ////
+/*
+*	.277 Aestus
+*/
 
 /obj/item/ammo_casing/a556/rubber
-	name = "5.56mm rubber bullet casing"
-	desc = "A 5.56mm rubber bullet casing."
+	name = ".277 rubber bullet casing"
+	desc = "A .277 rubber bullet casing.\
+	<br><br>\
+	<i>RUBBER: Less than lethal ammo. Deals both stamina damage and regular damage.</i>"
 	caliber = CALIBER_A556
 	projectile_type = /obj/projectile/bullet/a556/rubber
 	harmful = FALSE
 
 /obj/projectile/bullet/a556/rubber
-	name = "5.56mm rubber bullet"
+	name = ".277 rubber bullet"
 	damage = 10
 	armour_penetration = 10
 	stamina = 30
@@ -150,29 +156,34 @@
 	wound_bonus = -50
 
 /obj/item/ammo_casing/a556/ap
-	name = "5.56mm AP bullet casing"
-	desc = "A 5.56mm AP bullet casing."
+	name = ".277 Aestus armor-piercing polymer casing"
+	desc = "A .277 armor-piercing bullet casing.\
+	<br><br>\
+	<i>ARMOR PIERCING: Increased armor piercing capabilities. What did you expect?"
 	caliber = CALIBER_A556
 	projectile_type = /obj/projectile/bullet/a556/ap
 
 /obj/projectile/bullet/a556/ap
-	name = "5.56mm AP bullet"
+	name = ".277 armor-piercing bullet"
 	armour_penetration = 60
 
-//// 5.56x30mm MARS ////
-////////////////////////
-//////    7.62    //////
+/*
+*	.244 Acia
+*/
+
 
 /obj/item/ammo_casing/a762/rubber
-	name = "7.62 rubber bullet casing"
-	desc = "A 7.62 rubber bullet casing. <b>This is isn't exactly 'non-lethal'.</b>"
+	name = ".244 Acia rubber bullet casing"
+	desc = "A .244 rubber bullet casing.\
+	<br><br>\
+	<i>RUBBER: Less than lethal ammo. Deals both stamina damage and regular damage.</i>"
 	icon_state = "762-casing"
 	caliber = CALIBER_A762
 	projectile_type = /obj/projectile/bullet/a762/rubber
 	harmful = FALSE
 
 /obj/projectile/bullet/a762/rubber
-	name = "7.62mm rubber bullet"
+	name = ".244 rubber bullet"
 	damage = 15
 	stamina = 55
 	ricochets_max = 5
@@ -183,10 +194,11 @@
 	sharpness = NONE
 	embedding = null
 
-//////    7.62    //////
-////////////////////////
-/////  5.56x45mm   /////
-// Very good at piercing armour at short range, not as good at going through armour at over 100m. But this is SS13...
+/*
+*	5.56x45mm (???)
+*/
+
+// Very good at piercing armour at short range, not as good at going through armour at over 100m. But this is SS13...  //I have no fucking clue why there's 2 separate instances of 5.56 but I won't remove this until I know shit won't break entirely -DF
 
 /// The 5.56 you see pretty much everyone under NATO use.
 #define CALIBER_A556x45 "a556x45"
@@ -205,9 +217,9 @@
 	wound_bonus = 20
 	bare_wound_bonus = 10
 
-/////  5.56x45mm   /////
-////////////////////////
-//////   .34 ACP  //////
+/*
+*	.34 ACP
+*/
 // Why? Blame CFA, they want their bullets to be *proprietary*
 /obj/item/ammo_casing/c34
 	name = ".34 bullet casing"
@@ -260,9 +272,9 @@
 	fire_stacks = 1
 	wound_bonus = -90
 
-//////   .34 ACP  //////
-////////////////////////
-//////  4.2x30mm  //////
+/*
+*	4.2x30mm
+*/
 
 /obj/item/ammo_casing/c42x30mm
 	name = "4.2x30mm bullet casing"
@@ -317,9 +329,9 @@
 	projectile_type = /obj/projectile/bullet/c42x30mm_rubber
 	harmful = FALSE
 
-//////  4.2x30mm  //////
-////////////////////////
-//////    12mm    //////
+/*
+*	12mm Magnum
+*/
 
 /obj/item/ammo_casing/c12mm
 	name = "12mm Magnum bullet casing"
@@ -379,9 +391,10 @@
 	sharpness = NONE
 	embedding = null
 
-//////    12mm    //////
-////////////////////////
-//////  6.8x43mm  //////
+/*
+*	6.8x43mm
+*/
+
 
 
 /obj/item/ammo_casing/a68
@@ -397,5 +410,3 @@
 	armour_penetration = 10
 	wound_bonus = -45
 	wound_falloff_tile = 0
-
-//////  6.8x43mm  //////

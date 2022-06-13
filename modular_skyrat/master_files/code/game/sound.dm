@@ -9,7 +9,7 @@
 					'modular_skyrat/modules/aesthetics/computer/sound/keypress4.ogg',
 					'modular_skyrat/modules/aesthetics/computer/sound/keystroke4.ogg',
 				)
-			if(SFX_BULLET_IMPACT_METAL) //This is the one that will be used most, it is extensive.
+			if(SFX_BULLET_IMPACT_METAL) // This is the one that will be used most, it is extensive.
 				soundin = pick(
 					'modular_skyrat/modules/gunsgalore/sound/impact/impact_metal_01.ogg',
 					'modular_skyrat/modules/gunsgalore/sound/impact/impact_metal_02.ogg',

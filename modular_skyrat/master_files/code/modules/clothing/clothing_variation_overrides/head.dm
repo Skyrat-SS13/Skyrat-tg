@@ -7,13 +7,13 @@
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/head/helmet/gladiator
-    supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
+	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/head/chefhat
-    supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
+	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/head/hos/beret
-    supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
+	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/head/soft/paramedic
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON

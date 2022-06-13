@@ -403,7 +403,7 @@ Striking a noncultist, however, will tear their flesh."}
 	armor = list(MELEE = 50, BULLET = 40, LASER = 50, ENERGY = 60, BOMB = 50, BIO = 100, FIRE = 100, ACID = 100)
 	hoodtype = /obj/item/clothing/head/hooded/cult_hoodie/hardened
 	clothing_flags = STOPSPRESSUREDAMAGE | THICKMATERIAL
-	flags_inv = HIDEGLOVES | HIDESHOES | HIDEJUMPSUIT
+	flags_inv = HIDEGLOVES | HIDESHOES | HIDEJUMPSUIT | HIDETAIL // SKYRAT EDIT ADDITION - HIDETAIL
 	min_cold_protection_temperature = SPACE_SUIT_MIN_TEMP_PROTECT
 	max_heat_protection_temperature = SPACE_SUIT_MAX_TEMP_PROTECT
 	resistance_flags = NONE

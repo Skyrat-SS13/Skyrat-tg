@@ -19,6 +19,7 @@
 	new /obj/item/extinguisher/advanced(src)
 	new /obj/item/storage/photo_album/ce(src)
 	new /obj/item/storage/box/skillchips/engineering(src)
+	new /obj/item/storage/box/gas_miner_beacons(src) // SKYRAT EDIT ADDITION
 	new /obj/item/construction/plumbing/engineering(src) //SKYRAT EDIT ADDITION
 	new /obj/item/circuitboard/machine/rodstopper(src) //SKYRAT EDIT ADDITION
 

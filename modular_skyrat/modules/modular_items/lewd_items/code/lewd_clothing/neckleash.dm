@@ -4,7 +4,10 @@
 #define STATUS_EFFECT_LEASH_FREEPET /datum/status_effect/leash_freepet
 #define MOVESPEED_ID_LEASH      "LEASH"
 
-/////STATUS EFFECTS/////
+/*
+*	STATUS EFFECTS
+*/
+
 //These are mostly used as flags for the states each member can be in
 
 /datum/status_effect/leash_dom
@@ -453,7 +456,10 @@
 */
 /*
 
-///// OBJECT /////
+/*
+*	OBJECT
+*/
+
 //The leash object itself
 //The component variables are used for hooks, used later.
 

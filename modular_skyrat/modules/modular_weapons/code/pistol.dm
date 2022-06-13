@@ -1,10 +1,6 @@
-////////////////////////
-//ID: MODULAR_WEAPONS //
-////////////////////////
-
-////////////////////////
-//       PISTOLS      //
-////////////////////////
+/*
+*	PISTOLS
+*/
 
 /obj/item/gun/ballistic/automatic/pistol/cfa_snub
 	name = "CFA Snub"
@@ -38,9 +34,10 @@
 /obj/item/gun/ballistic/automatic/pistol/cfa_ruby/empty
 	spawnwithmagazine = FALSE
 
-////////////////////////
-//        AMMO        //
-////////////////////////
+/*
+*	AMMO
+*/
+
 /obj/item/ammo_box/magazine/multi_sprite/cfa_snub
 	name = "CFA Snub magazine (4.2x30mm)"
 	desc = "An advanced magazine with smart type displays. Alt+click to reskin it."

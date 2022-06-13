@@ -41,7 +41,7 @@
 
 // Milking machine
 /obj/item/storage/box/milking_kit
-	name = "DIY Milking machine kit"
+	name = "DIY milking machine kit"
 	desc = "Contains everything you need to build your own milking machine!"
 
 /obj/item/storage/box/milking_kit/PopulateContents()
@@ -51,7 +51,7 @@
 
 // X-Stand
 /obj/item/storage/box/xstand_kit
-	name = "DIY X-Stand kit"
+	name = "DIY x-stand kit"
 	desc = "Contains everything you need to build your own X-stand!"
 
 /obj/item/storage/box/xstand_kit/PopulateContents()
@@ -81,7 +81,7 @@
 
 // Shibari stand
 /obj/item/storage/box/shibari_stand
-	name = "DIY Shibari stand kit"
+	name = "DIY shibari stand kit"
 	desc = "Contains everything you need to build your own shibari stand!"
 
 /obj/item/storage/box/shibari_stand/PopulateContents()
@@ -195,7 +195,7 @@
 /mob/living/carbon/human/proc/has_penis(required_state = REQUIRE_ANY)
 	if(issilicon(src) && has_penis)
 		return TRUE
-	var/obj/item/organ/genital/peepee = getorganslot(ORGAN_SLOT_PENIS)
+	var/obj/item/organ/external/genital/peepee = getorganslot(ORGAN_SLOT_PENIS)
 	if(peepee)
 		switch(required_state)
 			if(REQUIRE_ANY)
@@ -215,7 +215,7 @@
 	return FALSE
 
 /mob/living/carbon/human/proc/has_balls(required_state = REQUIRE_ANY)
-	var/obj/item/organ/genital/peepee = getorganslot(ORGAN_SLOT_TESTICLES)
+	var/obj/item/organ/external/genital/peepee = getorganslot(ORGAN_SLOT_TESTICLES)
 	if(peepee)
 		switch(required_state)
 			if(REQUIRE_ANY)
@@ -237,7 +237,7 @@
 /mob/living/carbon/human/proc/has_vagina(required_state = REQUIRE_ANY)
 	if(issilicon(src) && has_vagina)
 		return TRUE
-	var/obj/item/organ/genital/peepee = getorganslot(ORGAN_SLOT_VAGINA)
+	var/obj/item/organ/external/genital/peepee = getorganslot(ORGAN_SLOT_VAGINA)
 	if(peepee)
 		switch(required_state)
 			if(REQUIRE_ANY)
@@ -257,7 +257,7 @@
 	return FALSE
 
 /mob/living/carbon/human/proc/has_breasts(required_state = REQUIRE_ANY)
-	var/obj/item/organ/genital/peepee = getorganslot(ORGAN_SLOT_BREASTS)
+	var/obj/item/organ/external/genital/peepee = getorganslot(ORGAN_SLOT_BREASTS)
 	if(peepee)
 		switch(required_state)
 			if(REQUIRE_ANY)
@@ -279,7 +279,7 @@
 /mob/living/carbon/human/proc/has_anus(required_state = REQUIRE_ANY)
 	if(issilicon(src))
 		return TRUE
-	var/obj/item/organ/genital/peepee = getorganslot(ORGAN_SLOT_ANUS)
+	var/obj/item/organ/external/genital/peepee = getorganslot(ORGAN_SLOT_ANUS)
 	if(peepee)
 		switch(required_state)
 			if(REQUIRE_ANY)

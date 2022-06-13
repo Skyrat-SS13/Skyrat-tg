@@ -13,7 +13,7 @@
 	flags_1 = IS_PLAYER_COLORABLE_1
 
 /obj/item/clothing/suit/mush
-	name = "Mushroom suit"
+	name = "mushroom suit"
 	desc = "A mushroom suit, these can be sporadically seen being worn by the more fungal personalities."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'

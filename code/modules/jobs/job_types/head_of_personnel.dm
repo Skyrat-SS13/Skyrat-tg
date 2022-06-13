@@ -4,8 +4,7 @@
 		protect Ian, run the station when the captain dies." //SKYRAT EDIT: HOP ISN'T HEAD OF SUPPLY
 	auto_deadmin_role_flags = DEADMIN_POSITION_HEAD
 	department_head = list(JOB_CAPTAIN)
-	//head_announce = list(RADIO_CHANNEL_SUPPLY, RADIO_CHANNEL_SERVICE) //ORIGINAL
-	head_announce = list(RADIO_CHANNEL_SERVICE) //SKYRAT EDIT CHANGE
+	head_announce = list(RADIO_CHANNEL_SERVICE)
 	faction = FACTION_STATION
 	total_positions = 1
 	spawn_positions = 1
@@ -22,7 +21,6 @@
 	plasmaman_outfit = /datum/outfit/plasmaman/head_of_personnel
 	departments_list = list(
 		/datum/job_department/service,
-		///datum/job_department/cargo, //SKYRAT EDIT
 		/datum/job_department/command,
 		)
 
@@ -64,11 +62,12 @@
 	belt = /obj/item/modular_computer/tablet/pda/heads/hop
 	ears = /obj/item/radio/headset/heads/hop
 	head = /obj/item/clothing/head/hopcap
-	shoes = /obj/item/clothing/shoes/sneakers/brown
+	shoes = /obj/item/clothing/shoes/laceup
+	suit = /obj/item/clothing/suit/armor/vest/hop
 
 	backpack = /obj/item/storage/backpack/head_of_personnel // SKYRAT EDIT CHANGE - HOP DRIP
 	satchel = /obj/item/storage/backpack/satchel/head_of_personnel // SKYRAT EDIT CHANGE - HOP DRIP
-	duffelbag = /obj/item/storage/backpack/duffel/head_of_personnel // SKYRAT EDIT CHANGE - HOP DRIP
+	duffelbag = /obj/item/storage/backpack/duffelbag/head_of_personnel // SKYRAT EDIT CHANGE - HOP DRIP
 
 	chameleon_extras = list(
 		/obj/item/gun/energy/e_gun,

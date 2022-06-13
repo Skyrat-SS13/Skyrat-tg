@@ -916,7 +916,7 @@
 "Is" = (
 /obj/machinery/door/airlock/security/old/glass{
 	name = "Shuttle Brig";
-	req_access_txt = "2"
+	req_access = list("brig")
 	},
 /turf/open/floor/iron/shuttle/evac{
 	icon_state = "floorsec2"
@@ -939,7 +939,7 @@
 /area/shuttle/escape)
 "IB" = (
 /obj/machinery/door/airlock/external/glass{
-	req_access_txt = "2"
+	req_access = list("brig")
 	},
 /turf/open/floor/iron/shuttle/evac{
 	icon_state = "floorsec2"
@@ -1157,7 +1157,7 @@
 "RS" = (
 /obj/machinery/door/airlock/command/glass{
 	name = "Cockpit";
-	req_access_txt = "19"
+	req_access = list("command")
 	},
 /turf/open/floor/iron/shuttle/evac{
 	icon_state = "floorplace"

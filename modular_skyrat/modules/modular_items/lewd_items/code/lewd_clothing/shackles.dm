@@ -21,9 +21,9 @@
 	var/color_changed = FALSE
 	var/static/list/shackles_designs
 
-//////////////////////////////////////
-//here goes code for changing model.//
-//////////////////////////////////////
+/*
+*	MODEL CHANGES
+*/
 
 //create radial menu
 /obj/item/clothing/suit/straight_jacket/shackles/proc/populate_shackles_designs()

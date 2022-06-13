@@ -377,7 +377,7 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 
 /datum/loadout_item/suit/dutchjacket
 	name = "Dutch Jacket"
-	item_path = /obj/item/clothing/suit/dutchjacketsr
+	item_path = /obj/item/clothing/suit/dutch
 
 /datum/loadout_item/suit/caretaker
 	name = "Caretaker Jacket"
@@ -424,6 +424,10 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 /datum/loadout_item/suit/cardigan
 	name = "Cardigan"
 	item_path = /obj/item/clothing/suit/toggle/jacket/cardigan
+
+/datum/loadout_item/suit/blastwave_suit
+	name = "Blastwave Trenchcoat"
+	item_path = /obj/item/clothing/suit/blastwave
 
 /*
 *	HOODIES
@@ -567,7 +571,7 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 
 /datum/loadout_item/suit/brit
 	name = "High Vis Armored Vest"
-	item_path = /obj/item/clothing/suit/toggle/brit/sec
+	item_path = /obj/item/clothing/suit/armor/vest/peacekeeper/brit
 	restricted_roles = list(JOB_HEAD_OF_SECURITY, JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_DETECTIVE, JOB_SECURITY_MEDIC, JOB_CORRECTIONS_OFFICER)
 
 /datum/loadout_item/suit/british_jacket

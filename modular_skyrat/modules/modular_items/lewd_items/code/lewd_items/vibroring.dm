@@ -1,7 +1,3 @@
-///////////////
-///Vibroring///
-///////////////
-
 /obj/item/clothing/sextoy/vibroring
 	name = "vibrating ring"
 	desc = "A ring toy used to keep your erection going strong."
@@ -85,7 +81,7 @@
 	var/mob/living/carbon/human/user = loc
 	if(!user || !istype(user))
 		return PROCESS_KILL
-	var/obj/item/organ/genital/testicles/balls = user.getorganslot(ORGAN_SLOT_PENIS)
+	var/obj/item/organ/external/genital/testicles/balls = user.getorganslot(ORGAN_SLOT_PENIS)
 	if(!toy_on || !balls)
 		return
 	user.adjustArousal(1 * delta_time)

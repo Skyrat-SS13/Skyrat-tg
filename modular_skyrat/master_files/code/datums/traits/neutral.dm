@@ -1,6 +1,6 @@
-#define TRAIT_HYDRA_HEADS "hydrahead" //We still dont have a centralised trait file
+#define TRAIT_HYDRA_HEADS "hydrahead" // We still dont have a centralised trait file
 
-//SKYRAT NEUTRAL TRAITS
+// SKYRAT NEUTRAL TRAITS
 /datum/quirk/excitable
 	name = "Excitable!"
 	desc = "Head patting makes your tail wag! You're very excitable! WAG WAG."
@@ -31,7 +31,7 @@
 	mob_trait = TRAIT_DNR
 	icon = "skull-crossbones"
 
-//uncontrollable laughter
+// uncontrollable laughter
 /datum/quirk/item_quirk/joker
 	name = "Pseudobulbar Affect"
 	desc = "At random intervals, you suffer uncontrollable bursts of laughter."
@@ -128,9 +128,9 @@
 
 /datum/quirk/item_quirk/canine/add_unique()
 	var/mob/living/carbon/human/human_holder = quirk_holder
-	var/obj/item/organ/tongue/old_tongue = human_holder.getorganslot(ORGAN_SLOT_TONGUE)
+	var/obj/item/organ/internal/tongue/old_tongue = human_holder.getorganslot(ORGAN_SLOT_TONGUE)
 	old_tongue.Remove(human_holder)
 	qdel(old_tongue)
 
-	var/obj/item/organ/tongue/dog/new_tongue = new(get_turf(human_holder))
+	var/obj/item/organ/internal/tongue/dog/new_tongue = new(get_turf(human_holder))
 	new_tongue.Insert(human_holder)

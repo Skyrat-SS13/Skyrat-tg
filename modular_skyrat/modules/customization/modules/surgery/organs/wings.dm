@@ -16,6 +16,9 @@
 	///Whether the owner of wings has flight thanks to the wings
 	var/granted_flight
 
+/obj/item/organ/external/wings/get_global_feature_list()
+	return GLOB.sprite_accessories["wings"]
+
 //TODO: Well you know what this flight stuff is a bit complicated and hardcoded, this is enough for now
 
 /obj/item/organ/external/wings/moth

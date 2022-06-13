@@ -1,6 +1,6 @@
-////////////////////////
-//CME DEFINES FILE!
-///////////////////////
+/*
+*	CME DEFINES
+*/
 
 GLOBAL_LIST_INIT(cme_loot_list, list(
 	/obj/item/raw_anomaly_core/random = 30,

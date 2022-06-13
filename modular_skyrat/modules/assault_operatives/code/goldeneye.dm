@@ -74,7 +74,7 @@ SUBSYSTEM_DEF(goldeneye)
 
 // Goldeneye key
 /obj/item/goldeneye_key
-	name = "\improper GoldenEye Authentication Keycard"
+	name = "\improper GoldenEye authentication keycard"
 	desc = "A high profile authentication keycard to Nanotrasen's GoldenEye defence network. It seems indestructable."
 	icon = 'modular_skyrat/modules/assault_operatives/icons/goldeneye.dmi'
 	icon_state = "goldeneye_key"
@@ -89,7 +89,7 @@ SUBSYSTEM_DEF(goldeneye)
 	. = ..()
 	SSgoldeneye.goldeneye_keys += src
 	goldeneye_tag = "G[rand(10000, 99999)]"
-	name = "\improper GoldenEye Authentication Keycard: [goldeneye_tag]"
+	name = "\improper GoldenEye authentication keycard: [goldeneye_tag]"
 	AddComponent(/datum/component/gps, goldeneye_tag)
 
 /obj/item/goldeneye_key/examine(mob/user)
@@ -141,7 +141,7 @@ SUBSYSTEM_DEF(goldeneye)
 
 // Pinpointer
 /obj/item/pinpointer/nuke/goldeneye
-	name = "\improper GoldenEye Keycard Pinpointer"
+	name = "\improper GoldenEye keycard pinpointer"
 	desc = "A handheld tracking device that locks onto certain signals. This one is configured to locate any GoldenEye keycards."
 	icon_state = "pinpointer_syndicate"
 	worn_icon_state = "pinpointer_black"
@@ -168,7 +168,7 @@ SUBSYSTEM_DEF(goldeneye)
 /datum/objective/goldeneye
 	name = "subvert goldeneye"
 	objective_name = "Subvert GoldenEye"
-	explanation_text = "Extract all of the required GoldenEye Authentication Keys from the heads of staff and activate GoldenEye."
+	explanation_text = "Extract all of the required GoldenEye authentication keys from the heads of staff and activate GoldenEye."
 	martyr_compatible = TRUE
 
 /datum/objective/goldeneye/check_completion()

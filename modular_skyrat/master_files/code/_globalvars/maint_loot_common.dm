@@ -1,6 +1,6 @@
 
-GLOBAL_LIST_INIT(common_loot, list( //common: basic items
-	list( //Tiles
+GLOBAL_LIST_INIT(common_loot, list( // common: basic items
+	list( // Tiles
 		/obj/item/stack/sheet/bronze/thirty,
 		/obj/item/stack/tile/carpet/black/fifty = 25,
 		/obj/item/stack/tile/carpet/blue/fifty = 25,
@@ -19,7 +19,7 @@ GLOBAL_LIST_INIT(common_loot, list( //common: basic items
 		/obj/item/stack/tile/fakepit/loaded = 10,
 		/obj/item/stack/tile/fakespace/loaded = 10
 	) = 50,
-	list( //Cash money
+	list( // Cash money
 		/obj/item/stack/spacecash/c1 = 256,
 		/obj/item/stack/spacecash/c10 = 128,
 		/obj/item/stack/spacecash/c20 = 64,
@@ -30,7 +30,7 @@ GLOBAL_LIST_INIT(common_loot, list( //common: basic items
 		/obj/item/stack/spacecash/c1000 = 2,
 		/obj/item/stack/spacecash/c10000 = 1
 	) = 200,
-	list( //Construction Material
+	list( // Construction Material
 		/obj/item/stack/ore/glass = 25,
 		/obj/item/stack/ore/iron = 25,
 		/obj/item/stack/package_wrap = 25,
@@ -75,7 +75,7 @@ GLOBAL_LIST_INIT(common_loot, list( //common: basic items
 		/obj/item/stack/sheet/sandblock/five = 25,
 		/obj/item/stack/sheet/sandblock/twenty = 25,
 	) = 100,
-	list( //Hides and fluff stuff
+	list( // Hides and fluff stuff
 		/obj/item/stack/sheet/animalhide/cat = 25,
 		/obj/item/stack/sheet/animalhide/corgi = 25,
 		/obj/item/stack/sheet/animalhide/generic = 50,
@@ -91,7 +91,7 @@ GLOBAL_LIST_INIT(common_loot, list( //common: basic items
 		/obj/item/stack/sheet/xenochitin = 10,
 		/obj/item/stack/sheet/sinew = 10
 	) = 50,
-	list( //Medical stuff
+	list( // Medical stuff
 		/obj/item/stock_parts/cell/lead = 25,
 		/obj/item/healthanalyzer = 25,
 		/obj/item/healthanalyzer/wound = 50,
@@ -115,7 +115,7 @@ GLOBAL_LIST_INIT(common_loot, list( //common: basic items
 		/obj/item/storage/medkit/toxin = 25,
 		/obj/item/lead_pipe = 25,
 	) = 100,
-	list( //Tools you'd get in tool storage and elsewhere
+	list( // Tools you'd get in tool storage and elsewhere
 		/obj/item/screwdriver = 100,
 		/obj/item/analyzer = 75,
 		/obj/item/assembly/health = 25,
@@ -140,7 +140,7 @@ GLOBAL_LIST_INIT(common_loot, list( //common: basic items
 		/obj/item/wirecutters = 100,
 		/obj/item/wrench = 100
 	) = 200,
-	list( //Stuff you'd get elsewhere but they're not that good
+	list( // Stuff you'd get elsewhere but they're not that good
 		/obj/item/binoculars = 50,
 		/obj/item/bodybag = 200,
 		/obj/item/clothing/gloves/radio = 25,
@@ -177,7 +177,7 @@ GLOBAL_LIST_INIT(common_loot, list( //common: basic items
 		/obj/item/watertank/atmos = 5,
 		/obj/item/watertank/janitor = 5
 	) = 75,
-	list( //FAKE insuls.
+	list( // FAKE insuls.
 		/obj/item/clothing/gloves/color/fyellow = 100,
 		/obj/item/clothing/gloves/color/fyellow/old = 10,
 		/obj/item/clothing/gloves/color/red = 50,
@@ -185,7 +185,7 @@ GLOBAL_LIST_INIT(common_loot, list( //common: basic items
 		/obj/item/clothing/gloves/fingerless = 75,
 		/obj/item/clothing/gloves/tackler/offbrand = 100,
 	) = 300,
-	list( //Toys, cosmetics, and vanity items.
+	list( // Toys, cosmetics, and vanity items.
 		/obj/item/bikehorn/rubberducky/plasticducky = 25,
 		/obj/item/cardpack/resin = 25,
 		/obj/item/cardpack/series_one = 25,
@@ -280,7 +280,7 @@ GLOBAL_LIST_INIT(common_loot, list( //common: basic items
 		/obj/item/toy/xmas_cracker = 5,
 		/obj/item/training_toolbox = 5
 	) = 100,
-	list( //Instruments
+	list( // Instruments
 		/obj/item/instrument/accordion = 1,
 		/obj/item/instrument/banjo = 1,
 		/obj/item/instrument/bikehorn = 1,
@@ -296,7 +296,7 @@ GLOBAL_LIST_INIT(common_loot, list( //common: basic items
 		/obj/item/instrument/trumpet = 1,
 		/obj/item/instrument/violin = 1
 	) = 50,
-	list( //Unimportant clothing
+	list( // Unimportant clothing
 		/obj/item/clothing/accessory/clown_enjoyer_pin = 25,
 		/obj/item/clothing/accessory/mime_fan_pin = 25,
 		/obj/item/clothing/accessory/lawyers_badge = 5,
@@ -345,7 +345,7 @@ GLOBAL_LIST_INIT(common_loot, list( //common: basic items
 		/obj/item/clothing/under/shorts/polychromic/pantsu = 100,
 		/obj/item/clothing/suit/hooded/wintercoat/polychromic = 100
 	) = 100,
-	list( //Stuff you'd find in maint but like not really
+	list( // Stuff you'd find in maint but like not really
 		/obj/item/food/meat/slab/human = 1,
 		/obj/item/food/meat/slab/human/mutant/ethereal = 1,
 		/obj/item/food/meat/slab/human/mutant/fly = 1,

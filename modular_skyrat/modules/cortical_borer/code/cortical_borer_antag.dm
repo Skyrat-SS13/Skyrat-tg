@@ -135,6 +135,7 @@
 /datum/dynamic_ruleset/midround/from_ghosts/cortical_borer
 	name = "Cortical Borer Infestation"
 	antag_datum = /datum/antagonist/cortical_borer
+	midround_ruleset_style = MIDROUND_RULESET_STYLE_LIGHT
 	antag_flag = ROLE_BORER
 	enemy_roles = list(
 		JOB_CAPTAIN,
