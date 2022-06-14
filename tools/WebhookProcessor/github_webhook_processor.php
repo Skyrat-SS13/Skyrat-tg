@@ -243,7 +243,6 @@ function tag_pr($payload, $opened) {
 
 		if(strpos(strtolower($title), 'refactor') !== FALSE)
 			$tags[] = 'Refactor';
-
 		if(strpos(strtolower($title), 'revert') !== FALSE)
 			$tags[] = 'Revert';
 		if(strpos(strtolower($title), 'removes') !== FALSE)
@@ -270,6 +269,9 @@ function tag_pr($payload, $opened) {
 			$tags[] = $tag;
 
 	check_tag_and_replace($payload, '[dnm]', 'Do Not Merge', $tags);
+	check_tag_and_replace($payload, '[no gbp]', 'GBP: No Update', $tags);
+
+	check_tag_and_replace($payload, '[host]', 'Host Request', $tags);
 
 	return array($tags, $remove);
 }
@@ -335,7 +337,7 @@ function handle_pr($payload) {
 	global $discord_announce_blacklist;
 	global $no_changelog;
 	global $game_announce_whitelist;
-	
+
 	$action = 'opened';
 	$validated = validate_user($payload);
 	switch ($payload["action"]) {
@@ -729,7 +731,7 @@ function checkchangelog($payload, $compile = true) {
 			case 'adds':
 			case 'rscadd':
 				if($item != 'Added new mechanics or gameplay changes' && $item != 'Added more things') {
-					$tags[] = 'Mechanic';
+					$tags[] = 'Feature';
 					$currentchangelogblock[] = array('type' => 'rscadd', 'body' => $item);
 				}
 				break;
@@ -773,12 +775,6 @@ function checkchangelog($payload, $compile = true) {
 				if($item != 'changed some code'){
 					$tags[] = 'Code Improvement';
 					$currentchangelogblock[] = array('type' => 'code_imp', 'body' => $item);
-				}
-				break;
-			case 'expansion':
-				if($item != 'Expands content of an existing feature'){
-					$tags[] = 'Content Expansion';
-					$currentchangelogblock[] = array('type' => 'expansion', 'body' => $item);
 				}
 				break;
 			case 'refactor':

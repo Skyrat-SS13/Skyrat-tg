@@ -1,15 +1,11 @@
-////////////////////////
-//ID: MODULAR_WEAPONS //
-////////////////////////
-
-////////////////////////
-//        AMMO        //
-////////////////////////
+/*
+*	AMMO
+*/
 
 // .32 - 15 damage pistol round.
 
 /datum/design/c32
-	name = "4.6x30mm Bullet"
+	name = ".32 Bullet"
 	id = "c32"
 	build_type = AUTOLATHE
 	materials = list(/datum/material/iron = 1000)
@@ -23,30 +19,6 @@
 	materials = list(/datum/material/iron = 1000)
 	build_path = /obj/item/ammo_casing/c32/rubber
 	category = list("initial", "Security")
-
-/datum/design/c32/ap
-	name = ".32 Armor-Piercing Bullet"
-	id = "c32/ap"
-	build_type = AUTOLATHE
-	materials = list(/datum/material/iron = 2000)
-	build_path = /obj/item/ammo_casing/c32/ap
-	category = list("hacked", "Security")
-
-/datum/design/c32_incendiary
-	name = ".32 Incendiary Bullet"
-	id = "c32_incendiary"
-	build_type = AUTOLATHE
-	materials = list(/datum/material/iron = 2000)
-	build_path = /obj/item/ammo_casing/c32_incendiary
-	category = list("hacked", "Security")
-
-/datum/design/smg32acp
-	name = "Empty .32 SMG Magazine"
-	id = "smg32acp"
-	build_type = AUTOLATHE
-	materials = list(/datum/material/iron = 3000)
-	build_path = /obj/item/ammo_box/magazine/multi_sprite/cfa_wildcat/empty
-	category = list("hacked", "Security")
 
 /datum/design/a762
 	name = "7.62 Bullet"
@@ -82,22 +54,6 @@
 	build_path = /obj/item/ammo_casing/c46x30mm/rubber
 	category = list("initial", "Security")
 
-/datum/design/c46x30mm_ap
-	name = "4.6x30mm Armor-Piercing Bullet"
-	id = "c46x30mm_ap"
-	build_type = AUTOLATHE
-	materials = list(/datum/material/iron = 1000)
-	build_path = /obj/item/ammo_casing/c46x30mm/ap
-	category = list("hacked", "Security")
-
-/datum/design/c46x30mm_incendiary
-	name = "4.6x30mm Incendiary Bullet"
-	id = "c46x30mm_incendiary"
-	build_type = AUTOLATHE
-	materials = list(/datum/material/iron = 1000)
-	build_path = /obj/item/ammo_casing/c46x30mm/inc
-	category = list("hacked", "Security")
-
 // .45
 
 /datum/design/c45_lethal
@@ -116,6 +72,16 @@
 	build_path = /obj/item/ammo_casing/c45/rubber
 	category = list("initial", "Security")
 
+// .460 Rowland magnum, for the M45A5
+
+/datum/design/b460
+	name = ".460 Rowland magnum"
+	id = "b460"
+	build_type = AUTOLATHE
+	materials = list(/datum/material/iron = 1500)
+	build_path = /obj/item/ammo_casing/b460
+	category = list("hacked", "Security")
+
 // 10mm Magnum
 /datum/design/c10mm_lethal
 	name = "10mm Magnum bullet"
@@ -133,18 +99,35 @@
 	build_path = /obj/item/ammo_casing/c10mm/rubber
 	category = list("initial", "Security")
 
-/datum/design/shotgun_slug
-	name = "Shotgun Slug"
-	id = "shotgun_slug"
+// Peacekeeper Rounds
+/datum/design/b9mm
+	name = "Ammo Box (9x19mm Peacekeeper FMJ)"
+	id = "b9mm"
 	build_type = AUTOLATHE
-	materials = list(/datum/material/iron = 6000)
-	build_path = /obj/item/ammo_casing/shotgun
+	materials = list(/datum/material/iron = 30000)
+	build_path = /obj/item/ammo_box/advanced/b9mm
 	category = list("hacked", "Security")
 
-/datum/design/buckshot_shell
-	name = "Buckshot Shell"
-	id = "buckshot_shell"
+/datum/design/b9mm_rubber
+	name = "9x19mm Peacekeeper rubber bullet"
+	id = "b9mm_rubber"
 	build_type = AUTOLATHE
-	materials = list(/datum/material/iron = 4000)
-	build_path = /obj/item/ammo_casing/shotgun/buckshot
-	category = list("hacked", "Security") 
+	materials = list(/datum/material/iron = 1000)
+	build_path = /obj/item/ammo_casing/b9mm/rubber
+	category = list("hacked", "Security")
+
+/datum/design/b10mm
+	name = "Ammo Box (10mm Auto)"
+	id = "b10mm"
+	build_type = AUTOLATHE
+	materials = list(/datum/material/iron = 30000)
+	build_path = /obj/item/ammo_box/advanced/b10mm
+	category = list("hacked", "Security")
+
+/datum/design/b10mm_rubber
+	name = "10mm Auto rubber bullet"
+	id = "b10mm_rubber"
+	build_type = AUTOLATHE
+	materials = list(/datum/material/iron = 1000)
+	build_path = /obj/item/ammo_casing/b10mm/rubber
+	category = list("hacked", "Security")

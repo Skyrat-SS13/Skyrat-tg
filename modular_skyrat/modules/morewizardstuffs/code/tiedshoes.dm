@@ -17,7 +17,7 @@
 		return FALSE
 
 	var/mob/living/carbon/target = targets[1]
-	if(target.anti_magic_check())
+	if(target.can_block_magic(MAGIC_RESISTANCE))
 		to_chat(user, span_warning("The spell had no effect!"))
 		return FALSE
 	var/obj/item/clothing/shoes/tiedshoes = target.shoes

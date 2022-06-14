@@ -1,4 +1,6 @@
-// --- Loadout item datums for gloves ---
+/*
+*	LOADOUT ITEM DATUMS FOR THE HAND SLOT
+*/
 
 /// Glove Slot Items (Deletes overrided items)
 GLOBAL_LIST_INIT(loadout_gloves, generate_loadout_items(/datum/loadout_item/gloves))
@@ -54,10 +56,6 @@ GLOBAL_LIST_INIT(loadout_gloves, generate_loadout_items(/datum/loadout_item/glov
 	name = "Purple Gloves"
 	item_path = /obj/item/clothing/gloves/color/purple
 
-/datum/loadout_item/gloves/rainbow
-	name = "Rainbow Gloves"
-	item_path = /obj/item/clothing/gloves/color/rainbow
-
 /datum/loadout_item/gloves/red
 	name = "Red Gloves"
 	item_path = /obj/item/clothing/gloves/color/red
@@ -67,27 +65,41 @@ GLOBAL_LIST_INIT(loadout_gloves, generate_loadout_items(/datum/loadout_item/glov
 	item_path = /obj/item/clothing/gloves/color/yellow
 	additional_tooltip_contents = list("NON-INSULATING - This item is purely cosmetic and provide no shock insulation.")
 
-/datum/loadout_item/gloves/yellow
+/datum/loadout_item/gloves/white
 	name = "White Gloves"
 	item_path = /obj/item/clothing/gloves/color/white
+
+/datum/loadout_item/gloves/rainbow
+	name = "Rainbow Gloves"
+	item_path = /obj/item/clothing/gloves/color/rainbow
 
 /datum/loadout_item/gloves/evening
 	name = "Evening Gloves"
 	item_path = /obj/item/clothing/gloves/evening
 
-/datum/loadout_item/gloves/goldring
-	name = "A gold ring"
-	item_path = /obj/item/clothing/gloves/ring
+/datum/loadout_item/gloves/maid
+	name = "Maid Arm Covers"
+	item_path = /obj/item/clothing/gloves/maid
+
+/*
+*	RINGS
+*/
 
 /datum/loadout_item/gloves/silverring
-	name = "A silver ring"
+	name = "Silver Ring"
 	item_path = /obj/item/clothing/gloves/ring/silver
 
+/datum/loadout_item/gloves/goldring
+	name = "Gold Ring"
+	item_path = /obj/item/clothing/gloves/ring
+
 /datum/loadout_item/gloves/diamondring
-	name = "A diamond ring"
+	name = "Diamond Ring"
 	item_path = /obj/item/clothing/gloves/ring/diamond
 
-//Donator gloves down here
+/*
+*	DONATOR
+*/
 
 /datum/loadout_item/gloves/donator
 	donator_only = TRUE

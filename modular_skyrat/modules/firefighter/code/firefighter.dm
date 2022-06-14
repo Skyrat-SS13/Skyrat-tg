@@ -16,7 +16,6 @@
 /obj/vehicle/sealed/mecha/working/ripley/firefighter/generate_actions()
 	initialize_passenger_action_type(/datum/action/vehicle/sealed/mecha/mech_eject)
 	initialize_passenger_action_type(/datum/action/vehicle/sealed/mecha/mech_toggle_internals)
-	initialize_passenger_action_type(/datum/action/vehicle/sealed/mecha/mech_cycle_equip)
 	initialize_passenger_action_type(/datum/action/vehicle/sealed/mecha/mech_toggle_lights)
 	initialize_passenger_action_type(/datum/action/vehicle/sealed/mecha/mech_view_stats)
 	initialize_passenger_action_type(/datum/action/vehicle/sealed/mecha/strafe)
@@ -82,12 +81,6 @@
 		markone.capacitor.forceMove(mkf)
 		markone.capacitor = null
 	mkf.update_part_values()
-	for(var/obj/item/mecha_parts/equipment in markone.contents)
-		if(istype(equipment, /obj/item/mecha_parts/concealed_weapon_bay)) //why is the bay not just a variable change who did this
-			equipment.forceMove(mkf)
-	for(var/obj/item/mecha_parts/mecha_equipment/equipment in markone.equipment) //Move the equipment over...
-		equipment.detach(mkf)
-		equipment.attach(mkf)
 	mkf.dna_lock = markone.dna_lock
 	mkf.mecha_flags = markone.mecha_flags
 	mkf.strafe = markone.strafe

@@ -28,3 +28,4 @@ Code: Gandalf2k15
 Sprite modification: Gandalf2k15
 Uniforms and equipment sprites: JungleRat
 Gun sprites: Eris and Sojourn
+de-goofsec'd guns: ErdinyoBarboza

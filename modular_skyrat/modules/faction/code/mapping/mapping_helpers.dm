@@ -18,7 +18,7 @@
 	see_hidden = FALSE
 	icon_screen = "syndishuttle"
 	icon_keyboard = "syndie_key"
-	jumpto_ports = list("tradership" = 1, "tradership_away" = 1, "tradership_custom" = 1,"whiteship_away" = 1, "whiteship_home" = 1, "whiteship_z4" = 1, "caravantrade1_ambush" = 1, "whiteship_lavaland" = 1)
+	jump_to_ports = list("tradership" = 1, "tradership_away" = 1, "tradership_custom" = 1,"whiteship_away" = 1, "whiteship_home" = 1, "whiteship_z4" = 1, "caravantrade1_ambush" = 1, "whiteship_lavaland" = 1)
 	whitelist_turfs = list(/turf/open/space, /turf/open/floor/plating, /turf/open/lava, /turf/closed/mineral)
 	lock_override = NONE
 
@@ -73,9 +73,9 @@
 			name = "internals crate"
 			icon_state = "o2crate"
 		if(4)
-			new /obj/item/storage/firstaid/regular(src)
-			new /obj/item/storage/firstaid/o2(src)
-			new /obj/item/storage/firstaid/toxin(src)
+			new /obj/item/storage/medkit/regular(src)
+			new /obj/item/storage/medkit/o2(src)
+			new /obj/item/storage/medkit/toxin(src)
 			new /obj/item/reagent_containers/hypospray/medipen(src)
 			new /obj/item/reagent_containers/hypospray/medipen/ekit(src)
 			desc = "A medical crate."
@@ -158,7 +158,7 @@
 			new /obj/item/gun/energy/e_gun(src)
 			new /obj/item/gun/energy/e_gun(src)
 			new /obj/item/gun/energy/e_gun/mini(src)
-			new /obj/item/gun/energy/kinetic_accelerator/crossbow(src)
+			new /obj/item/gun/energy/recharge/ebow(src)
 			new /obj/item/gun/energy/e_gun/nuclear(src)
 			new /obj/item/melee/energy/sword(src)
 			new /obj/item/melee/energy/sword(src)
@@ -172,31 +172,30 @@
 			for(var/i in 1 to 2)
 				new /obj/item/ammo_box/magazine/multi_sprite/cfa_wildcat(src)
 				new /obj/item/ammo_box/magazine/multi_sprite/cfa_wildcat(src)
-			new /obj/item/gun/ballistic/automatic/assault_rifle/akm(src)
+			new /obj/item/gun/ballistic/automatic/akm(src)
 			for(var/i in 1 to 2)
 				new /obj/item/ammo_box/magazine/akm(src)
-			new /obj/item/gun/ballistic/automatic/submachine_gun/ppsh(src)
+			new /obj/item/gun/ballistic/automatic/ppsh(src)
 			for(var/i in 1 to 2)
 				new /obj/item/ammo_box/magazine/ppsh(src)
-			new /obj/item/gun/ballistic/automatic/assault_rifle/stg(src)
+			new /obj/item/gun/ballistic/automatic/stg(src)
 			for(var/i in 1 to 2)
 				new /obj/item/ammo_box/magazine/stg(src)
 
-		if(4) //Hardsuits
-			new /obj/item/clothing/suit/space/hardsuit/mining(src)
-			new /obj/item/clothing/suit/space/hardsuit/engine(src)
-			new /obj/item/clothing/suit/space/hardsuit/engine/atmos(src)
-			new /obj/item/clothing/suit/space/hardsuit/rd(src)
-			new /obj/item/clothing/suit/space/hardsuit/syndi/elite(src)
-			new /obj/item/clothing/suit/space/hardsuit/syndi(src)
-			new /obj/item/clothing/suit/space/hardsuit/swat(src)
+		if(4) //MODsuits
+			new /obj/item/mod/control/pre_equipped/mining(src)
+			new /obj/item/mod/control/pre_equipped/engineering(src)
+			new /obj/item/mod/control/pre_equipped/atmospheric(src)
+			new /obj/item/mod/control/pre_equipped/research(src)
+			new /obj/item/mod/control/pre_equipped/traitor(src)
+			new /obj/item/mod/control/pre_equipped/elite(src)
 		if(5) //Implants
 			new /obj/item/storage/box/cyber_implants(src)
-			new /obj/item/organ/cyberimp/arm/combat(src)
-			new /obj/item/organ/cyberimp/arm/surgery(src)
-			new /obj/item/organ/cyberimp/arm/baton(src)
-			new /obj/item/organ/cyberimp/arm/toolset(src)
-			new /obj/item/organ/cyberimp/arm/gun/taser(src)
+			new /obj/item/organ/internal/cyberimp/arm/combat(src)
+			new /obj/item/organ/internal/cyberimp/arm/surgery(src)
+			new /obj/item/organ/internal/cyberimp/arm/baton(src)
+			new /obj/item/organ/internal/cyberimp/arm/toolset(src)
+			new /obj/item/organ/internal/cyberimp/arm/gun/taser(src)
 
 /obj/structure/closet/crate/secure/tradership_cargo_very_valuable
 	req_access = ACCESS_FACTION_COMMAND

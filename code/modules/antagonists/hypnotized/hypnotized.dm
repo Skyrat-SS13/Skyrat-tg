@@ -1,6 +1,6 @@
 /// Antag datum associated with the hypnosis brain trauma, used for displaying objectives and antag hud
 /datum/antagonist/hypnotized
-	name = "Hypnotized Victim"
+	name = "\improper Hypnotized Victim"
 	job_rank = ROLE_HYPNOTIZED
 	roundend_category = "hypnotized victims"
 	antag_hud_name = "brainwashed"
@@ -8,6 +8,7 @@
 	show_in_antagpanel = TRUE
 	antagpanel_category = "Other"
 	show_name_in_check_antagonists = TRUE
+	count_against_dynamic_roll_chance = FALSE
 
 	silent = TRUE //not actually silent, because greet will be called by the trauma anyway.
 	/// Brain trauma associated with this antag datum

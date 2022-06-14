@@ -53,48 +53,62 @@
 				inhand_icon_state = "[initial(icon_state)]"
 				worn_icon_state = "[initial(icon_state)]"
 
-/obj/item/gun/ballistic/insert_magazine(mob/user, obj/item/ammo_box/magazine/AM, display_message)
-	if(reload_time && !HAS_TRAIT(user, TRAIT_INSTANT_RELOAD) && magazine) //This only happens when you're attempting a tactical reload, e.g. there's a mag already inserted.
-		to_chat(user, span_notice("You start to insert the magazine into [src]!"))
-		if(!do_after(user, reload_time, src))
-			to_chat(user, span_danger("You fail to insert the magazine into [src]!"))
-			return
+/obj/item/gun/ballistic/attackby(obj/item/A, mob/user, params)
 	. = ..()
+	if (.)
+		return
+	if (!internal_magazine && istype(A, /obj/item/ammo_box/magazine))
+		handle_magazine(user, A)
+		return
+	if (istype(A, /obj/item/ammo_casing) || istype(A, /obj/item/ammo_box))
+		if (bolt_type == BOLT_TYPE_NO_BOLT || internal_magazine)
+			if (chambered && !chambered.loaded_projectile)
+				chambered.forceMove(drop_location())
+				chambered = null
+			var/num_loaded = magazine?.attackby(A, user, params, TRUE)
+			if (num_loaded)
+				to_chat(user, span_notice("You load [num_loaded] [cartridge_wording]\s into [src]."))
+				playsound(src, load_sound, load_sound_volume, load_sound_vary)
+				if (chambered == null && bolt_type == BOLT_TYPE_NO_BOLT)
+					chamber_round()
+				A.update_appearance()
+				update_appearance()
+			return
+	if(istype(A, /obj/item/suppressor))
+		var/obj/item/suppressor/S = A
+		if(!can_suppress)
+			to_chat(user, span_warning("You can't seem to figure out how to fit [S] on [src]!"))
+			return
+		if(!user.is_holding(src))
+			to_chat(user, span_warning("You need be holding [src] to fit [S] to it!"))
+			return
+		if(suppressed)
+			to_chat(user, span_warning("[src] already has a suppressor!"))
+			return
+		if(user.transferItemToLoc(A, src))
+			to_chat(user, span_notice("You screw [S] onto [src]."))
+			install_suppressor(A)
+			return
+	if (can_be_sawn_off)
+		if (sawoff(user, A))
+			return
 
-/obj/item/gun/ballistic/assault_rifle
-	rack_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/ltrifle_cock.ogg'
-	load_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/ltrifle_magin.ogg'
-	load_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/ltrifle_magin.ogg'
-	eject_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/ltrifle_magout.ogg'
-	eject_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/ltrifle_magout.ogg'
+	if(can_misfire && istype(A, /obj/item/stack/sheet/cloth))
+		if(guncleaning(user, A))
+			return
 
-/obj/item/gun/ballistic/battle_rifle
-	rack_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/batrifle_cock.ogg'
-	load_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/batrifle_magin.ogg'
-	load_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/batrifle_magin.ogg'
-	eject_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/batrifle_magout.ogg'
-	eject_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/batrifle_magout.ogg'
+	return FALSE
 
-/obj/item/gun/ballistic/machine_gun
-	rack_sound = 'sound/weapons/gun/l6/l6_rack.ogg'
-	load_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/lmg_magin.ogg'
-	load_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/lmg_magin.ogg'
-	eject_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/lmg_magout.ogg'
-	eject_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/lmg_magout.ogg'
-
-/obj/item/gun/ballistic/sniper_rifle
-	rack_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/sfrifle_cock.ogg'
-	load_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/sfrifle_magin.ogg'
-	load_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/sfrifle_magin.ogg'
-	eject_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/sfrifle_magout.ogg'
-	eject_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/sfrifle_magout.ogg'
-
-/obj/item/gun/ballistic/submachine_gun
-	rack_sound = 'sound/weapons/gun/smg/smgrack.ogg'
-	load_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/smg_magin.ogg'
-	load_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/smg_magin.ogg'
-	eject_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/smg_magout.ogg'
-	eject_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/smg_magout.ogg'
+/obj/item/gun/ballistic/proc/handle_magazine(mob/user, obj/item/ammo_box/magazine/inserting_magazine)
+	if(magazine) // If we already have a magazine inserted, we're going to begin tactically reloading it.
+		if(reload_time && !HAS_TRAIT(user, TRAIT_INSTANT_RELOAD)) // Check if we have a reload time to tactical reloading, or if we have the instant reload trait.
+			to_chat(user, span_notice("You start to insert the magazine into [src]!"))
+			if(!do_after(user, reload_time, src, IGNORE_USER_LOC_CHANGE)) // We are allowed to move while reloading.
+				to_chat(user, span_danger("You fail to insert the magazine into [src]!"))
+				return
+		eject_magazine(user, FALSE, inserting_magazine) // We eject the magazine then insert the new one, while putting the old one in hands.
+	else
+		insert_magazine(user, inserting_magazine) // Otherwise, just insert it.
 
 /obj/item/gun/ballistic/proc/jam(unjam = FALSE, mob/living/user)
 	if(unjam && jammed != TRUE)
@@ -228,42 +242,26 @@
 
 /obj/structure/closet/crate/secure/weapon/ww2/PopulateContents()
 	. = ..()
-	new /obj/item/gun/ballistic/automatic/battle_rifle/fg42(src)
+	new /obj/item/gun/ballistic/automatic/fg42(src)
 	new /obj/item/ammo_box/magazine/fg42(src)
-	new /obj/item/gun/ballistic/automatic/assault_rifle/akm(src)
+	new /obj/item/gun/ballistic/automatic/akm(src)
 	new /obj/item/ammo_box/magazine/akm(src)
-	new /obj/item/gun/ballistic/automatic/assault_rifle/m16(src)
-	new /obj/item/ammo_box/magazine/m16(src)
+	new /obj/item/gun/ballistic/automatic/m16(src)
+	new /obj/item/ammo_box/magazine/m16/vintage(src)
 	new /obj/item/gun/ballistic/automatic/mg34(src)
 	new /obj/item/ammo_box/magazine/mg34(src)
-	new /obj/item/gun/ballistic/automatic/submachine_gun/mp40(src)
+	new /obj/item/gun/ballistic/automatic/mp40(src)
 	new /obj/item/ammo_box/magazine/mp40(src)
-	new /obj/item/gun/ballistic/automatic/assault_rifle/stg(src)
+	new /obj/item/gun/ballistic/automatic/stg(src)
 	new /obj/item/ammo_box/magazine/stg(src)
-	new /obj/item/gun/ballistic/automatic/submachine_gun/ppsh(src)
+	new /obj/item/gun/ballistic/automatic/ppsh(src)
 	new /obj/item/ammo_box/magazine/ppsh(src)
-	new /obj/item/gun/ballistic/automatic/submachine_gun/pps(src)
+	new /obj/item/gun/ballistic/automatic/pps(src)
 	new /obj/item/ammo_box/magazine/pps(src)
-
-/obj/structure/closet/crate/secure/weapon/ww2
-	name = "modern weapons crate"
-	desc = "A secure weapons crate. Looks like it's from the 25th century."
-	icon_state = "weaponcrate"
-
-/obj/structure/closet/crate/secure/weapon/ww2/PopulateContents()
-	. = ..()
-	new /obj/item/gun/ballistic/automatic/battle_rifle/fg42/modern(src)
-	new /obj/item/ammo_box/magazine/fg42(src)
-	new /obj/item/gun/ballistic/automatic/assault_rifle/akm/modern(src)
-	new /obj/item/ammo_box/magazine/akm(src)
-	new /obj/item/gun/ballistic/automatic/assault_rifle/m16/modern(src)
-	new /obj/item/ammo_box/magazine/m16(src)
-	new /obj/item/gun/ballistic/automatic/submachine_gun/mp40/modern(src)
-	new /obj/item/ammo_box/magazine/mp40(src)
-	new /obj/item/gun/ballistic/automatic/assault_rifle/stg/modern(src)
-	new /obj/item/ammo_box/magazine/stg(src)
-	new /obj/item/gun/ballistic/automatic/submachine_gun/ppsh/modern(src)
-	new /obj/item/ammo_box/magazine/ppsh(src)
+	new /obj/item/gun/ballistic/automatic/mg34/mg42(src)
+	new /obj/item/ammo_box/magazine/mg42(src)
+	new /obj/item/gun/ballistic/automatic/pistol/luger(src)
+	new /obj/item/ammo_box/magazine/m9mm(src)
 
 /obj/effect/temp_visual/dir_setting/firing_effect
 	light_system = MOVABLE_LIGHT

@@ -19,10 +19,9 @@
 
 /datum/round_event/shuttle_catastrophe/announce(fake)
 	var/cause = pick("was attacked by [syndicate_name()] Operatives", "mysteriously teleported away", "had its refuelling crew mutiny",
-		"was found with its engines stolen", "\[REDACTED\]", "flew into the sunset, and melted", "went through a bluespace portal, onto adventure",
+		"was found with its engines stolen", "\[REDACTED\]", "flew into the sunset, and melted", "learned something from a very wise cow, and left on its own",
 		"had cloning devices on it", "had its shuttle inspector put the shuttle in reverse instead of park, causing the shuttle to crash into the hangar")
 	var/message = "Your emergency shuttle [cause]. "
-//SKYRAT EDIT: Changed wise cow that talked to the shuttle instead to be went through a bluespace portal!
 
 	if(SSshuttle.shuttle_insurance)
 		message += "Luckily, your shuttle insurance has covered the costs of repair!"

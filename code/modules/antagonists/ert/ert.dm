@@ -10,6 +10,7 @@
 	show_to_ghosts = TRUE
 	antag_moodlet = /datum/mood_event/focused
 	suicide_cry = "FOR NANOTRASEN!!"
+	count_against_dynamic_roll_chance = FALSE
 	var/datum/team/ert/ert_team
 	var/leader = FALSE
 	var/datum/outfit/outfit = /datum/outfit/centcom/ert/security
@@ -52,7 +53,7 @@
 	outfit = /datum/outfit/centcom/centcom_official
 
 /datum/antagonist/ert/official/greet()
-	to_chat(owner, "<span class='warningplain'><B><font size=3 color=red>You are a CentCom Official.</font></B></span>")
+	. = ..()
 	if (ert_team)
 		to_chat(owner, "<span class='warningplain'>Central Command is sending you to [station_name()] with the task: [ert_team.mission.explanation_text]</span>")
 	else
@@ -209,6 +210,18 @@
 	if(istype(new_team))
 		ert_team = new_team
 
+/datum/antagonist/ert/bounty_armor
+	role = "Armored Bounty Hunter"
+	outfit = /datum/outfit/bountyarmor/ert
+
+/datum/antagonist/ert/bounty_hook
+	role = "Hookgun Bounty Hunter"
+	outfit = /datum/outfit/bountyarmor/ert
+
+/datum/antagonist/ert/bounty_synth
+	role = "Synthetic Bounty Hunter"
+	outfit = /datum/outfit/bountysynth/ert
+
 /datum/antagonist/ert/proc/forge_objectives()
 	if(ert_team)
 		objectives |= ert_team.objectives
@@ -268,8 +281,9 @@
 	..()
 // SKYRAT EDIT START
 /datum/antagonist/ert/families/greet()
-	var/missiondesc = "<span class='warningplain'><B><font size=6 color=red>You are the [name].</font></B>"
-	missiondesc += "<BR><B><font size=5 color=red>You are NOT a Nanotrasen Employee. You work for the Sol Federation as a [role].</font></B>"
+	. = ..()
+	var/missiondesc
+	missiondesc += "<BR><B><font size=5 color=red>You are NOT a Nanotrasen Employee. You work for SolFed.</font></B>"
 	missiondesc += "<BR><B><font size=5 color=red>You are NOT a deathsquad. You are here to help innocents escape violence, criminal activity, and other dangerous things.</font></B>"
 	missiondesc += "<BR>You are responding to emergency calls from the station for immediate SolFed Police assistance!\n"
 	missiondesc += "<BR><B>Your Mission</B>:"

@@ -5,7 +5,7 @@
 	cooldown_min = 0
 	level_max = 1
 	clothes_req = FALSE
-	antimagic_allowed = TRUE
+	antimagic_flags = NONE
 	action_icon = 'icons/mob/actions/actions_items.dmi'
 	action_icon_state = "voice_of_god"
 	var/command
@@ -23,7 +23,7 @@
 /obj/effect/proc_holder/spell/voice_of_god/choose_targets(mob/user = usr)
 	perform(user=user)
 /obj/effect/proc_holder/spell/voice_of_god/perform(list/targets, recharge = 1, mob/user = usr)
-	command = input(user, "Speak with the Voice of God", "Command")
+	command = tgui_input_text(user, "Speak with the Voice of God", "Command")
 	if(QDELETED(src) || QDELETED(user))
 		return
 	if(!command)

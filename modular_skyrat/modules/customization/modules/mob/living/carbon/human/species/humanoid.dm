@@ -1,7 +1,6 @@
 /datum/species/humanoid
 	name = "Humanoid"
 	id = SPECIES_HUMANOID
-	default_color = "#4B4B4B"
 	species_traits = list(MUTCOLORS,
 		EYECOLOR,
 		LIPS,
@@ -12,7 +11,9 @@
 	)
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,
-		TRAIT_CAN_STRIP
+		TRAIT_CAN_STRIP,
+		TRAIT_CAN_USE_FLIGHT_POTION,
+		TRAIT_LITERATE,
 	)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	mutant_bodyparts = list()
@@ -27,4 +28,10 @@
 	)
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	payday_modifier = 0.75
-	limbs_id = SPECIES_HUMAN
+	examine_limb_id = SPECIES_HUMAN
+
+/datum/species/humanoid/get_species_description()
+	return "This is a template species for your own creations!"
+
+/datum/species/humanoid/get_species_lore()
+	return list("Make sure you fill out your own custom species lore!")

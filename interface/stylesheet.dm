@@ -91,7 +91,9 @@ h1.alert, h2.alert		{color: #000000;}
 .unconscious			{color: #0000ff;	font-weight: bold;}
 .suicide				{color: #ff5050;	font-style: italic;}
 .green					{color: #03ff39;}
+.grey					{color: #838383;}
 .nicegreen				{color: #14a833;}
+.boldnicegreen			{color: #14a833;	font-weight: bold;}
 .cult					{color: #973e3b;}
 .cultlarge				{color: #973e3b;	font-weight: bold;	font-size: 3;}
 .narsie					{color: #973e3b;	font-weight: bold;	font-size: 15;}
@@ -166,6 +168,31 @@ h1.alert, h2.alert		{color: #000000;}
 		60% 	{color: #ffb31a;}
 		100% 	{color: #ff33cc;}
 }
+
+.doyourjobidiot {
+  color: #c51e1e;
+  text-shadow: 0 0 4px #e22525;
+  font-size: 125%;
+  font-weight: bold;
+  animation: flashingfuckingwarning 250ms infinite;
+}
+
+@keyframes flashingfuckingwarning {
+  0% {
+    color: #c51e1e;
+    text-shadow: 0 0 4px #c51e1e;
+  }
+
+  50% {
+    color: #e22525;
+    text-shadow: 0 0 8px #e22525;
+  }
+
+  100% {
+    color: #c51e1e;
+    text-shadow: 0 0 4px #c51e1e;
+  }
+}
 // SKYRAT ADDITION END
 
 .phobia			{color: #dd0000;	font-weight: bold;	animation: phobia 750ms infinite;}
@@ -189,4 +216,8 @@ h1.alert, h2.alert		{color: #000000;}
 
 .monkeyhive				{color: #774704;}
 .monkeylead				{color: #774704;	font-size: 2;}
+.brown					{color: #3d2009;}
+.orange 				{color: #b8761a;}
+.yellow					{color: #c7b72c;}
+.cyan					{color: #0ea1e6;}
 </style>"}

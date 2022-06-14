@@ -6,7 +6,7 @@
 	genetic = TRUE
 
 /datum/sprite_accessory/frills/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
-	if(H.head && (H.try_hide_mutant_parts || (H.head.flags_inv & HIDEEARS) || !HD || HD.status == BODYPART_ROBOTIC))
+	if(H.head && (H.try_hide_mutant_parts || (H.head.flags_inv & HIDEEARS) || !HD))
 		return TRUE
 	return FALSE
 

@@ -44,8 +44,8 @@
 /obj/item/food/pie/cream/proc/splat(atom/movable/hit_atom)
 	if(isliving(loc)) //someone caught us!
 		return
-	var/turf/T = get_turf(hit_atom)
-	new/obj/effect/decal/cleanable/food/pie_smudge(T)
+	var/turf/hit_turf = get_turf(hit_atom)
+	new/obj/effect/decal/cleanable/food/pie_smudge(hit_turf)
 	if(reagents?.total_volume)
 		reagents.expose(hit_atom, TOUCH)
 	if(isliving(hit_atom))
@@ -55,7 +55,7 @@
 			living_target_getting_hit.StaminaKnockdown(10, TRUE) //SKYRAT EDIT CHANGE - COMBAT
 		living_target_getting_hit.adjust_blurriness(1)
 		living_target_getting_hit.visible_message(span_warning("[living_target_getting_hit] is creamed by [src]!"), span_userdanger("You've been creamed by [src]!"))
-		playsound(living_target_getting_hit, "desecration", 50, TRUE)
+		playsound(living_target_getting_hit, SFX_DESECRATION, 50, TRUE)
 	if(is_type_in_typecache(hit_atom, GLOB.creamable))
 		hit_atom.AddComponent(/datum/component/creamed, src)
 	qdel(src)
@@ -155,7 +155,7 @@
 	foodtypes = GRAIN | VEGETABLES | SUGAR
 
 /obj/item/food/pie/pumpkinpie/MakeProcessable()
-	AddElement(/datum/element/processable, TOOL_KNIFE, /obj/item/food/pieslice/pumpkin, 5, 20)
+	AddElement(/datum/element/processable, TOOL_KNIFE, /obj/item/food/pieslice/pumpkin, 5, 20, table_required = TRUE)
 
 /obj/item/food/pieslice/pumpkin
 	name = "pumpkin pie slice"
@@ -214,7 +214,7 @@
 	foodtypes = GRAIN | VEGETABLES
 
 /obj/item/food/pie/blumpkinpie/MakeProcessable()
-	AddElement(/datum/element/processable, TOOL_KNIFE, /obj/item/food/pieslice/blumpkin, 5, 20)
+	AddElement(/datum/element/processable, TOOL_KNIFE, /obj/item/food/pieslice/blumpkin, 5, 20, table_required = TRUE)
 
 /obj/item/food/pieslice/blumpkin
 	name = "blumpkin pie slice"
@@ -234,7 +234,7 @@
 	venue_value = FOOD_PRICE_EXOTIC
 
 /obj/item/food/pie/dulcedebatata/MakeProcessable()
-	AddElement(/datum/element/processable, TOOL_KNIFE, /obj/item/food/pieslice/dulcedebatata, 5, 20)
+	AddElement(/datum/element/processable, TOOL_KNIFE, /obj/item/food/pieslice/dulcedebatata, 5, 20, table_required = TRUE)
 
 /obj/item/food/pieslice/dulcedebatata
 	name = "dulce de batata slice"
@@ -261,7 +261,7 @@
 	foodtypes = NUTS | SUGAR
 
 /obj/item/food/pie/baklava/MakeProcessable()
-	AddElement(/datum/element/processable, TOOL_KNIFE, /obj/item/food/pieslice/baklava, 6, 20)
+	AddElement(/datum/element/processable, TOOL_KNIFE, /obj/item/food/pieslice/baklava, 6, 20, table_required = TRUE)
 
 /obj/item/food/pieslice/baklava
 	name = "baklava dish"
@@ -269,3 +269,22 @@
 	icon_state = "baklavaslice"
 	tastes = list("nuts" = 1, "pie" = 1)
 	foodtypes = NUTS | SUGAR
+
+/obj/item/food/pie/frenchsilkpie
+	name = "french silk pie"
+	desc = "A decadent pie made of a creamy chocolate mousse filling topped with a layer of whipped cream and chocolate shavings. Sliceable."
+	icon_state = "frenchsilkpie"
+	food_reagents = list(/datum/reagent/consumable/nutriment = 12, /datum/reagent/consumable/nutriment/vitamin = 4)
+	tastes = list("pie" = 1, "smooth chocolate" = 1, "whipped cream" = 1)
+	foodtypes = GRAIN | DAIRY | SUGAR
+
+/obj/item/food/pieslice/frenchsilk
+	name = "french silk pie slice"
+	desc = "A slice of french silk pie, filled with a chocolate mousse and topped with a layer of whipped cream and chocolate shavings. Delicious enough to make you cry."
+	icon_state = "frenchsilkpieslice"
+	food_reagents = list(/datum/reagent/consumable/nutriment = 2)
+	tastes = list("pie" = 1, "smooth chocolate" = 1, "whipped cream" = 1)
+	foodtypes = GRAIN | DAIRY | SUGAR
+
+/obj/item/food/pie/frenchsilkpie/MakeProcessable()
+	AddElement(/datum/element/processable, TOOL_KNIFE, /obj/item/food/pieslice/frenchsilk, 5, 20)

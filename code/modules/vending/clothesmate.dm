@@ -25,6 +25,9 @@
 		/obj/item/clothing/head/beret/black = 3,
 		/obj/item/clothing/head/kippah = 3,
 		/obj/item/clothing/head/taqiyahred = 3,
+		/obj/item/clothing/mask/bandana = 3,
+		/obj/item/clothing/mask/bandana/striped = 3,
+		/obj/item/clothing/mask/bandana/skull = 3,
 		/obj/item/clothing/gloves/fingerless = 2,
 		/obj/item/clothing/neck/scarf/pink = 3,
 		/obj/item/clothing/neck/scarf/red = 3,
@@ -92,8 +95,8 @@
 		/obj/item/clothing/accessory/waistcoat = 1,
 		/obj/item/clothing/head/that = 1,
 		/obj/item/clothing/head/fedora = 1,
-		/obj/item/clothing/head/cowboy_hat_white =1,
-		/obj/item/clothing/head/cowboy_hat_grey =1,
+		/obj/item/clothing/head/cowboy_hat_white = 1,
+		/obj/item/clothing/head/cowboy_hat_grey = 1,
 		/obj/item/clothing/glasses/monocle = 1,
 		/obj/item/clothing/head/sombrero = 1,
 		/obj/item/clothing/suit/poncho = 1,
@@ -174,7 +177,10 @@
 		/obj/item/clothing/suit/basil_boys = 20,
 		/obj/item/clothing/under/costume/basil_boys = 20,
 		/obj/item/clothing/head/basil_boys = 20,
-		/obj/item/clothing/shoes/basil_boys = 20
+		/obj/item/clothing/shoes/basil_boys = 20,
+		/obj/item/clothing/suit/mothcoat = 3,
+		/obj/item/clothing/suit/mothcoat/winter = 3,
+		/obj/item/clothing/head/mothcap = 3,
 	)
 	contraband = list(
 		/obj/item/clothing/under/syndicate/tacticool = 1,
@@ -185,10 +191,9 @@
 		/obj/item/storage/belt/fannypack/black = 2,
 		/obj/item/clothing/suit/jacket/letterman_syndie = 1,
 		/obj/item/clothing/under/costume/jabroni = 1,
-		/obj/item/clothing/suit/vapeshirt = 1,
 		/obj/item/clothing/under/costume/geisha = 1,
 		/obj/item/clothing/under/rank/centcom/officer/replica = 1,
-		/obj/item/clothing/under/rank/centcom/officer_skirt/replica = 1
+		/obj/item/clothing/under/rank/centcom/officer_skirt/replica = 1,
 	)
 	premium = list(/obj/item/clothing/under/suit/checkered = 1,
 		/obj/item/clothing/head/mailman = 1,
@@ -200,17 +205,14 @@
 		/obj/item/clothing/suit/jacket/letterman_nanotrasen = 1,
 		/obj/item/clothing/under/costume/swagoutfit = 1,
 		/obj/item/clothing/shoes/swagshoes = 1,
-		/obj/item/instrument/piano_synth/headphones/spacepods = 1
+		/obj/item/instrument/piano_synth/headphones/spacepods = 1,
 	)
 	refill_canister = /obj/item/vending_refill/clothing
-	default_price = PAYCHECK_ASSISTANT * 0.7 //Default of
-	extra_price = PAYCHECK_HARD
+	default_price = PAYCHECK_CREW * 0.7 //Default of
+	extra_price = PAYCHECK_COMMAND
 	payment_department = NO_FREEBIES
 	light_mask = "wardrobe-light-mask"
 	light_color = LIGHT_COLOR_ELECTRIC_GREEN
-
-/obj/machinery/vending/clothing/canLoadItem(obj/item/I,mob/user)
-	return (I.type in products)
 
 /obj/item/vending_refill/clothing
 	machine_name = "ClothesMate"

@@ -24,6 +24,10 @@
 	fire_sound_volume = 100
 	bolt_wording = "fuckin' slide"
 	reload_time = 0 //FAST AS FUCK BOIS!
+	var/unrestricted = FALSE
+
+/obj/item/gun/ballistic/automatic/pistol/robohand/unrestricted
+	unrestricted = TRUE
 
 //Gun actions
 
@@ -32,11 +36,12 @@
 	//This is where we are checking if the user has a cybernetic arm to USE the gun. ROBOHAND HAS A ROBO HAND
 	if(ishuman(user))
 		return ..()
-	var/mob/living/carbon/human/human_user = user
-	var/obj/item/bodypart/selected_hand = human_user.get_active_hand()
-	if(selected_hand.status != BODYPART_ROBOTIC)
-		to_chat(user, span_warning("You can't seem to figure out how to use [src], perhaps you need to check the manual?"))
-		return
+	if(!unrestricted)
+		var/mob/living/carbon/human/human_user = user
+		var/obj/item/bodypart/selected_hand = human_user.get_active_hand()
+		if(IS_ORGANIC_LIMB(selected_hand))
+			to_chat(user, span_warning("You can't seem to figure out how to use [src], perhaps you need to check the manual?"))
+			return
 	. = ..()
 
 /obj/item/gun/ballistic/automatic/pistol/robohand/insert_magazine(mob/user, obj/item/ammo_box/magazine/inserted_mag, display_message)

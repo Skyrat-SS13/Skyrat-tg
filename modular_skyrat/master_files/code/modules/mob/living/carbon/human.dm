@@ -3,12 +3,12 @@
 		return ..()
 	// Cat-people always land on their feet
 	if(isfelinid(src) || istajaran(src))
-		//Check to make sure legs are working
+		// Check to make sure legs are working
 		var/obj/item/bodypart/left_leg = get_bodypart(BODY_ZONE_L_LEG)
 		var/obj/item/bodypart/right_leg = get_bodypart(BODY_ZONE_R_LEG)
 		if(left_leg || right_leg || !left_leg.bodypart_disabled || !right_leg.bodypart_disabled)
 			Stun(0.5 SECONDS) // You can't move and you can't use items
-			//Nailed it!
+			// Nailed it!
 			visible_message(span_notice("[src] lands elegantly on [p_their()] feet!"),
 				span_warning("You fall [levels > 1 ? "[levels] levels" : "one level"] into [target_turf], perfecting the landing!"))
 			return

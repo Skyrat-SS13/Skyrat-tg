@@ -75,7 +75,7 @@
 	. = ..()
 	if(!is_wizard_or_friend(user))
 		to_chat(user, span_hypnophrase("<span style='font-size: 24px'>The staff feels weaker as you touch it</span>"))
-		balloon_alert(user, "the staff feels weaker as you touch it")
+		user.balloon_alert(user, "the staff feels weaker as you touch it")
 
 /obj/item/gun/magic/staff/healing/Initialize(mapload)
 	. = ..()
@@ -113,8 +113,8 @@
 	recharge_rate = 2
 	no_den_usage = 1
 	school = SCHOOL_FORBIDDEN //this staff is evil. okay? it just is. look at this projectile type list. this is wrong.
-	var/allowed_projectile_types = list(/obj/projectile/magic/animate, /obj/projectile/magic/resurrection,
-	/obj/projectile/magic/death, /obj/projectile/magic/teleport, /obj/projectile/magic/door, /obj/projectile/magic/aoe/fireball,
+	var/allowed_projectile_types = list(/obj/projectile/magic/change, /obj/projectile/magic/animate, /obj/projectile/magic/resurrection,
+	/obj/projectile/magic/death, /obj/projectile/magic/teleport, /obj/projectile/magic/door, /obj/projectile/magic/fireball,
 	/obj/projectile/magic/spellblade, /obj/projectile/magic/arcane_barrage, /obj/projectile/magic/locker, /obj/projectile/magic/flying,
 	/obj/projectile/magic/bounty, /obj/projectile/magic/antimagic, /obj/projectile/magic/fetch, /obj/projectile/magic/sapping,
 	/obj/projectile/magic/necropotence, /obj/projectile/magic, /obj/projectile/temp/chill, /obj/projectile/magic/wipe) //SKYRAT EDIT - Removes /obj/projectile/magic/change
@@ -127,7 +127,7 @@
 	. = ..()
 
 /obj/item/gun/magic/staff/chaos/on_intruder_use(mob/living/user)
-	if(user.anti_magic_check(TRUE, FALSE, FALSE)) // Don't let people with antimagic use the staff of chaos.
+	if(!user.can_cast_magic()) // Don't let people with antimagic use the staff of chaos.
 		balloon_alert(user, "the staff refuses to fire!")
 		return FALSE
 

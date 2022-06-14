@@ -27,12 +27,13 @@ GLOBAL_LIST_INIT(department_order_cooldowns, list(
 	if(mapload) //check for mapping errors
 		for(var/delivery_area_type in department_delivery_areas)
 			if(GLOB.areas_by_type[delivery_area_type])
-				break
+				return
 		//every area fallback didn't exist on this map so throw a mapping error and set some generic area that uuuh please exist okay
 		log_mapping("[src] has no valid areas to deliver to on this map, add some more fallback areas to its \"department_delivery_areas\" var.")
-		department_delivery_areas = list(/area/hallway/primary/central) //if this doesn't exist like honestly fuck your map man
+		department_delivery_areas = list(/area/station/hallway/primary/central) //if this doesn't exist like honestly fuck your map man
 
 /obj/machinery/computer/department_orders/ui_interact(mob/user, datum/tgui/ui)
+	. = ..()
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "DepartmentOrders")
@@ -97,9 +98,9 @@ GLOBAL_LIST_INIT(department_order_cooldowns, list(
 			playsound(src, 'sound/machines/buzz-sigh.ogg', 30, TRUE)
 			return
 
-		if(department_order && (department_order in SSshuttle.shoppinglist))
+		if(department_order && (department_order in SSshuttle.shopping_list))
 			GLOB.department_order_cooldowns[type] = 0
-			SSshuttle.shoppinglist -= department_order
+			SSshuttle.shopping_list -= department_order
 			department_order = null
 			UnregisterSignal(SSshuttle, COMSIG_SUPPLY_SHUTTLE_BUY)
 		return TRUE
@@ -118,6 +119,8 @@ GLOBAL_LIST_INIT(department_order_cooldowns, list(
 	if(!pack)
 		say("Something went wrong!")
 		CRASH("requested supply pack id \"[id]\" not found!")
+	if(pack.hidden || pack.DropPodOnly || pack.special)
+		return
 	var/name = "*None Provided*"
 	var/rank = "*None Provided*"
 	var/ckey = usr.ckey
@@ -136,7 +139,7 @@ GLOBAL_LIST_INIT(department_order_cooldowns, list(
 			chosen_delivery_area = delivery_area_type
 			break
 	department_order = new(pack, name, rank, ckey, "", null, chosen_delivery_area, null)
-	SSshuttle.shoppinglist += department_order
+	SSshuttle.shopping_list += department_order
 	if(!already_signalled)
 		RegisterSignal(SSshuttle, COMSIG_SUPPLY_SHUTTLE_BUY, .proc/finalize_department_order)
 	say("Order processed. Cargo will deliver the crate when it comes in on their shuttle. NOTICE: Heads of staff may override the order.")
@@ -145,7 +148,7 @@ GLOBAL_LIST_INIT(department_order_cooldowns, list(
 ///signal when the supply shuttle begins to spawn orders. we forget the current order preventing it from being overridden (since it's already past the point of no return on undoing the order)
 /obj/machinery/computer/department_orders/proc/finalize_department_order(datum/subsystem)
 	SIGNAL_HANDLER
-	if(department_order && (department_order in SSshuttle.shoppinglist))
+	if(department_order && (department_order in SSshuttle.shopping_list))
 		department_order = null
 	UnregisterSignal(subsystem, COMSIG_SUPPLY_SHUTTLE_BUY)
 
@@ -162,15 +165,15 @@ GLOBAL_LIST_INIT(department_order_cooldowns, list(
 /obj/machinery/computer/department_orders/service
 	name = "service order console"
 	circuit = /obj/item/circuitboard/computer/service_orders
-	department_delivery_areas = list(/area/hallway/secondary/service, /area/service/bar/atrium)
+	department_delivery_areas = list(/area/station/hallway/secondary/service, /area/station/service/bar/atrium)
 	override_access = ACCESS_HOP
-	req_one_access = list(ACCESS_KITCHEN, ACCESS_BAR, ACCESS_HYDROPONICS, ACCESS_JANITOR, ACCESS_THEATRE)
+	req_one_access = list(ACCESS_SERVICE)
 	dep_groups = list("Service", "Food & Hydroponics", "Livestock", "Costumes & Toys")
 
 /obj/machinery/computer/department_orders/engineering
 	name = "engineering order console"
 	circuit = /obj/item/circuitboard/computer/engineering_orders
-	department_delivery_areas = list(/area/engineering/main)
+	department_delivery_areas = list(/area/station/engineering/main)
 	override_access = ACCESS_CE
 	req_one_access = REGION_ACCESS_ENGINEERING
 	dep_groups = list("Engineering", "Engine Construction", "Canisters & Materials")
@@ -178,7 +181,7 @@ GLOBAL_LIST_INIT(department_order_cooldowns, list(
 /obj/machinery/computer/department_orders/science
 	name = "science order console"
 	circuit = /obj/item/circuitboard/computer/science_orders
-	department_delivery_areas = list(/area/science/research)
+	department_delivery_areas = list(/area/station/science/research)
 	override_access = ACCESS_RD
 	req_one_access = REGION_ACCESS_RESEARCH
 	dep_groups = list("Science", "Livestock")
@@ -186,7 +189,7 @@ GLOBAL_LIST_INIT(department_order_cooldowns, list(
 /obj/machinery/computer/department_orders/security
 	name = "security order console"
 	circuit = /obj/item/circuitboard/computer/security_orders
-	department_delivery_areas = list(/area/security/brig)
+	department_delivery_areas = list(/area/station/security/brig)
 	override_access = ACCESS_HOS
 	req_one_access = REGION_ACCESS_SECURITY
 	dep_groups = list("Security", "Armory")
@@ -194,7 +197,7 @@ GLOBAL_LIST_INIT(department_order_cooldowns, list(
 /obj/machinery/computer/department_orders/medical
 	name = "medical order console"
 	circuit = /obj/item/circuitboard/computer/medical_orders
-	department_delivery_areas = list(/area/medical/medbay/central)
+	department_delivery_areas = list(/area/station/medical/medbay/central)
 	override_access = ACCESS_CMO
 	req_one_access = REGION_ACCESS_MEDBAY
 	dep_groups = list("Medical")

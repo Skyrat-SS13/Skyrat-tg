@@ -5,19 +5,19 @@
 	icon_state = "tube"
 	desc = "A lighting fixture."
 	layer = WALL_OBJ_LAYER
+	plane = GAME_PLANE_UPPER
 	max_integrity = 100
 	use_power = ACTIVE_POWER_USE
-	idle_power_usage = 2
-	active_power_usage = 20
+	idle_power_usage = BASE_MACHINE_IDLE_CONSUMPTION * 0.02
+	active_power_usage = BASE_MACHINE_ACTIVE_CONSUMPTION * 0.02
 	power_channel = AREA_USAGE_LIGHT //Lights are calc'd via area so they dont need to be in the machine list
+	always_area_sensitive = TRUE
 	///What overlay the light should use
 	var/overlay_icon = 'icons/obj/lighting_overlay.dmi'
 	///base description and icon_state
 	var/base_state = "tube"
 	///Is the light on?
 	var/on = FALSE
-	///compared to the var/on for static calculations
-	var/on_gs = FALSE
 	///Amount of power used
 	var/static_power_used = 0
 	///Luminosity when on, also used in power calculation
@@ -64,6 +64,8 @@
 	var/bulb_emergency_pow_mul = 0.75
 	///The minimum value for the light's power in emergency mode
 	var/bulb_emergency_pow_min = 0.5
+	///Power usage - W per unit of luminosity
+	var/power_consumption_rate = 20
 
 /obj/machinery/light/Move()
 	if(status != LIGHT_BROKEN)
@@ -75,8 +77,8 @@
 	. = ..()
 
 	if(!mapload) //sync up nightshift lighting for player made lights
-		var/area/local_area = get_area(src)
-		var/obj/machinery/power/apc/temp_apc = local_area.apc
+		var/area/our_area = get_area(src)
+		var/obj/machinery/power/apc/temp_apc = our_area.apc
 		nightshift_enabled = temp_apc?.nightshift_lights
 
 	if(start_with_cell && !no_emergency)
@@ -90,11 +92,9 @@
 	. = ..()
 	switch(fitting)
 		if("tube")
-			brightness = 8
 			if(prob(2))
 				break_light_tube(TRUE)
 		if("bulb")
-			brightness = 4
 			if(prob(5))
 				break_light_tube(TRUE)
 	addtimer(CALLBACK(src, .proc/update, FALSE), 0.1 SECONDS)
@@ -127,19 +127,45 @@
 	if(!on || status != LIGHT_OK)
 		return
 
-	// var/area/A = get_area(src) SKYRAT EDIT REMOVAL
-	if(emergency_mode || firealarm) //SKYRAT EDIT CHANGE
-		. += mutable_appearance(overlay_icon, "[base_state]_emergency", layer, plane)
+	/* SKYRAT EDIT START - ORIGINAL:
+	var/area/local_area = get_area(src)
+	if(emergency_mode || (local_area?.fire))
+	*/
+	if(emergency_mode || firealarm) // SKYRAT EDIT END
+		. += mutable_appearance(overlay_icon, "[base_state]_emergency")
 		return
 	if(nightshift_enabled)
-		. += mutable_appearance(overlay_icon, "[base_state]_nightshift", layer, plane)
+		. += mutable_appearance(overlay_icon, "[base_state]_nightshift")
 		return
-	. += mutable_appearance(overlay_icon, base_state, layer, plane)
+	. += mutable_appearance(overlay_icon, base_state)
+
 
 //SKYRAT EDIT ADDITION BEGIN - AESTHETICS
 #define LIGHT_ON_DELAY_UPPER 3 SECONDS
 #define LIGHT_ON_DELAY_LOWER 1 SECONDS
 //SKYRAT EDIT END
+
+// Area sensitivity is traditionally tied directly to power use, as an optimization
+// But since we want it for fire reacting, we disregard that
+/obj/machinery/light/setup_area_power_relationship()
+	. = ..()
+	if(!.)
+		return
+	var/area/our_area = get_area(src)
+	RegisterSignal(our_area, COMSIG_AREA_FIRE_CHANGED, .proc/handle_fire)
+
+/obj/machinery/light/on_enter_area(datum/source, area/area_to_register)
+	..()
+	RegisterSignal(area_to_register, COMSIG_AREA_FIRE_CHANGED, .proc/handle_fire)
+	handle_fire(area_to_register, area_to_register.fire)
+
+/obj/machinery/light/on_exit_area(datum/source, area/area_to_unregister)
+	..()
+	UnregisterSignal(area_to_unregister, COMSIG_AREA_FIRE_CHANGED)
+
+/obj/machinery/light/proc/handle_fire(area/source, new_fire)
+	SIGNAL_HANDLER
+	update()
 
 // update the icon_state and luminosity of the light depending on its state
 /obj/machinery/light/proc/update(trigger = TRUE, instant = FALSE, play_sound = TRUE) //SKYRAT EDIT CHANGE
@@ -197,29 +223,37 @@
 		use_power = IDLE_POWER_USE
 		set_light(l_range = 0)
 	update_appearance()
-
-	active_power_usage = (brightness * 10)
-	if(on != on_gs)
-		on_gs = on
-		if(on)
-			static_power_used = brightness * 20 //20W per unit luminosity
-			addStaticPower(static_power_used, AREA_USAGE_STATIC_LIGHT)
-		else
-			removeStaticPower(static_power_used, AREA_USAGE_STATIC_LIGHT)
-
+	update_current_power_usage()
 	broken_sparks(start_only=TRUE)
+
 
 //SKYRAT EDIT ADDITION BEGIN - AESTHETICS
 #undef LIGHT_ON_DELAY_UPPER
 #undef LIGHT_ON_DELAY_LOWER
 //SKYRAT EDIT END
 
+/obj/machinery/light/update_current_power_usage()
+	if(!on && static_power_used > 0) //Light is off but still powered
+		removeStaticPower(static_power_used, AREA_USAGE_STATIC_LIGHT)
+		static_power_used = 0
+	else if(on) //Light is on, just recalculate usage
+		var/static_power_used_new = 0
+		var/area/local_area = get_area(src)
+		if (nightshift_enabled && !local_area?.fire)
+			static_power_used_new = nightshift_brightness * nightshift_light_power * power_consumption_rate
+		else
+			static_power_used_new = brightness * bulb_power * power_consumption_rate
+		if(static_power_used != static_power_used_new) //Consumption changed - update
+			removeStaticPower(static_power_used, AREA_USAGE_STATIC_LIGHT)
+			static_power_used = static_power_used_new
+			addStaticPower(static_power_used, AREA_USAGE_STATIC_LIGHT)
+
 /obj/machinery/light/update_atom_colour()
 	..()
 	update()
 
 /obj/machinery/light/proc/broken_sparks(start_only=FALSE)
-	if(!QDELETED(src) && status == LIGHT_BROKEN && has_power() && Master.current_runlevel)
+	if(!QDELETED(src) && status == LIGHT_BROKEN && has_power() && MC_RUNNING())
 		if(!start_only)
 			do_sparks(3, TRUE, src)
 		var/delay = rand(BROKEN_SPARKS_MIN, BROKEN_SPARKS_MAX)
@@ -489,14 +523,15 @@
 	var/mob/living/carbon/human/electrician = user
 
 	if(istype(electrician))
-		var/obj/item/organ/stomach/maybe_stomach = electrician.getorganslot(ORGAN_SLOT_STOMACH)
-		if(istype(maybe_stomach, /obj/item/organ/stomach/ethereal))
-			var/obj/item/organ/stomach/ethereal/stomach = maybe_stomach
+		var/obj/item/organ/internal/stomach/maybe_stomach = electrician.getorganslot(ORGAN_SLOT_STOMACH)
+		if(istype(maybe_stomach, /obj/item/organ/internal/stomach/ethereal))
+			var/obj/item/organ/internal/stomach/ethereal/stomach = maybe_stomach
 			if(stomach.drain_time > world.time)
 				return
 			to_chat(electrician, span_notice("You start channeling some power through the [fitting] into your body."))
 			stomach.drain_time = world.time + LIGHT_DRAIN_TIME
-			if(do_after(user, LIGHT_DRAIN_TIME, target = src))
+			while(do_after(user, LIGHT_DRAIN_TIME, target = src))
+				stomach.drain_time = world.time + LIGHT_DRAIN_TIME
 				if(istype(stomach))
 					to_chat(electrician, span_notice("You receive some charge from the [fitting]."))
 					stomach.adjust_charge(LIGHT_POWER_GAIN)
@@ -513,7 +548,7 @@
 
 	if(protection_amount > 0 || HAS_TRAIT(user, TRAIT_RESISTHEAT) || HAS_TRAIT(user, TRAIT_RESISTHEATHANDS))
 		to_chat(user, span_notice("You remove the light [fitting]."))
-	else if(istype(user) && user.dna.check_mutation(TK))
+	else if(istype(user) && user.dna.check_mutation(/datum/mutation/human/telekinesis))
 		to_chat(user, span_notice("You telekinetically remove the light [fitting]."))
 	else
 		var/obj/item/bodypart/affecting = electrician.get_bodypart("[(user.active_hand_index % 2 == 0) ? "r" : "l" ]_arm")
@@ -636,6 +671,7 @@
 	base_state = "floor" // base description and icon_state
 	icon_state = "floor"
 	brightness = 4
-	layer = 2.5
+	layer = LOW_OBJ_LAYER
+	plane = FLOOR_PLANE
 	light_type = /obj/item/light/bulb
 	fitting = "bulb"

@@ -2,7 +2,7 @@
 /obj/item/organ/external/wings
 	zone = BODY_ZONE_CHEST
 	slot = ORGAN_SLOT_EXTERNAL_WINGS
-	layers = EXTERNAL_BEHIND | EXTERNAL_ADJACENT | EXTERNAL_FRONT
+	layers = ALL_EXTERNAL_OVERLAYS
 
 	feature_key = "wings"
 
@@ -39,7 +39,7 @@
 
 /obj/item/organ/external/wings/functional/get_global_feature_list()
 	// SKYRAT EDIT TODO: Add support for wings_open
-	return GLOB.sprite_accessories["wings"]
+	return GLOB.sprite_accessories["wings"] // SKYRAT EDIT - Goof's port of species stuff from a missed upstream PR
 
 /obj/item/organ/external/wings/functional/Insert(mob/living/carbon/reciever, special, drop_if_replaced)
 	. = ..()
@@ -48,7 +48,7 @@
 		fly = new
 		fly.Grant(reciever)
 
-/obj/item/organ/external/wings/functional/Remove(mob/living/carbon/organ_owner, special)
+/obj/item/organ/external/wings/functional/Remove(mob/living/carbon/organ_owner, special, moving)
 	. = ..()
 
 	fly.Remove(organ_owner)
@@ -81,7 +81,7 @@
 		return FALSE
 
 	var/datum/gas_mixture/environment = location.return_air()
-	if(environment && !(environment.return_pressure() > 30))
+	if(environment?.return_pressure() < HAZARD_LOW_PRESSURE + 10)
 		to_chat(human, span_warning("The atmosphere is too thin for you to fly!"))
 		return FALSE
 	else
@@ -107,7 +107,7 @@
 		buckled_obj.unbuckle_mob(human)
 		step(buckled_obj, olddir)
 	else
-		new /datum/forced_movement(human, get_ranged_target_turf(human, olddir, 4), 1, FALSE, CALLBACK(human, /mob/living/carbon/.proc/spin, 1, 1))
+		human.AddComponent(/datum/component/force_move, get_ranged_target_turf(human, olddir, 4), TRUE)
 	return TRUE
 
 ///UNSAFE PROC, should only be called through the Activate or other sources that check for CanFly
@@ -179,7 +179,9 @@
 	return GLOB.sprite_accessories["wings"] //SKYRAT EDIT CHANGE
 
 /obj/item/organ/external/wings/moth/can_draw_on_bodypart(mob/living/carbon/human/human)
-	return TRUE
+	if(!(human.wear_suit?.flags_inv & HIDEMUTWINGS))
+		return TRUE
+	return FALSE
 
 /obj/item/organ/external/wings/moth/Insert(mob/living/carbon/reciever, special, drop_if_replaced)
 	. = ..()
@@ -188,7 +190,7 @@
 	RegisterSignal(reciever, COMSIG_LIVING_POST_FULLY_HEAL, .proc/heal_wings)
 	RegisterSignal(reciever, COMSIG_MOVABLE_PRE_MOVE, .proc/update_float_move)
 
-/obj/item/organ/external/wings/moth/Remove(mob/living/carbon/organ_owner, special)
+/obj/item/organ/external/wings/moth/Remove(mob/living/carbon/organ_owner, special, moving)
 	. = ..()
 
 	UnregisterSignal(organ_owner, list(COMSIG_HUMAN_BURNING, COMSIG_LIVING_POST_FULLY_HEAL, COMSIG_MOVABLE_PRE_MOVE))

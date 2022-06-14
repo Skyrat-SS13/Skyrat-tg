@@ -346,9 +346,7 @@
 				ROLE_FAMILIES,
 				ROLE_HERETIC,
 				ROLE_HIVE,
-				ROLE_INTERNAL_AFFAIRS,
 				ROLE_MALF,
-				ROLE_MONKEY,
 				ROLE_NINJA,
 				ROLE_OPERATIVE,
 				ROLE_OVERTHROW,
@@ -357,10 +355,11 @@
 				ROLE_REV_HEAD,
 				ROLE_SENTIENT_DISEASE,
 				ROLE_SPIDER,
-				ROLE_SWARMER,
 				ROLE_SYNDICATE,
 				ROLE_TRAITOR,
 				ROLE_WIZARD,
+				ROLE_BORER, //SKYRAT EDIT
+				ROLE_ASSAULT_OPERATIVE, //SKYRAT EDIT
 			),
 			"Skyrat Ban Options" = list(
 				BAN_PACIFICATION,
@@ -369,7 +368,9 @@
 				BAN_MOB_CONTROL,
 				BAN_GHOST_ROLE_SPAWNER,
 				BAN_GHOST_TAKEOVER,
-				BAN_EORG
+				BAN_EORG,
+				BAN_ANTAGONIST,
+				BAN_OPFOR,
 			),//SKYRAT EDIT ADDITION - EXTRA_BANS
 		)
 		for(var/department in long_job_lists)
@@ -1038,7 +1039,7 @@
 	if(query_check_adminban_count.NextRow())
 		var/adminban_count = text2num(query_check_adminban_count.item[1])
 		var/max_adminbans = MAX_ADMINBANS_PER_ADMIN
-		if(check_rights(R_PERMISSIONS, show_msg = FALSE) && (rank.can_edit_rights & R_EVERYTHING) == R_EVERYTHING) //edit rights are a more effective way to check hierarchical rank since many non-headmins have R_PERMISSIONS now
+		if(check_rights(R_PERMISSIONS, show_msg = FALSE) && (can_edit_rights_flags() & R_EVERYTHING) == R_EVERYTHING) //edit rights are a more effective way to check hierarchical rank since many non-headmins have R_PERMISSIONS now
 			max_adminbans = MAX_ADMINBANS_PER_HEADMIN
 		if(adminban_count >= max_adminbans)
 			to_chat(usr, span_danger("You've already logged [max_adminbans] admin ban(s) or more. Do not abuse this function!"), confidential = TRUE)

@@ -1,4 +1,6 @@
-// --- Loadout item datums for backpack / pocket items ---
+/*
+*	LOADOUT ITEM DATUMS FOR BACKPACK/POCKET SLOTS
+*/
 
 /// Pocket items (Moved to backpack)
 GLOBAL_LIST_INIT(loadout_pocket_items, generate_loadout_items(/datum/loadout_item/pocket_items))
@@ -44,9 +46,9 @@ GLOBAL_LIST_INIT(loadout_pocket_items, generate_loadout_items(/datum/loadout_ite
 		if(!equipper.equip_to_slot_if_possible(wallet, slot = ITEM_SLOT_BACKPACK, initial = TRUE))
 			wallet.forceMove(equipper.drop_location())
 
-/datum/loadout_item/pocket_items/rag
-	name = "Rag"
-	item_path = /obj/item/reagent_containers/glass/rag
+/*
+*	GUM
+*/
 
 /datum/loadout_item/pocket_items/gum_pack
 	name = "Pack of Gum"
@@ -59,6 +61,10 @@ GLOBAL_LIST_INIT(loadout_pocket_items, generate_loadout_items(/datum/loadout_ite
 /datum/loadout_item/pocket_items/gum_pack_hp
 	name = "Pack of HP+ Gum"
 	item_path = /obj/item/storage/box/gum/happiness
+
+/*
+*	LIPSTICK
+*/
 
 /datum/loadout_item/pocket_items/lipstick_black
 	name = "Black Lipstick"
@@ -76,20 +82,24 @@ GLOBAL_LIST_INIT(loadout_pocket_items, generate_loadout_items(/datum/loadout_ite
 	name = "Red Lipstick"
 	item_path = /obj/item/lipstick
 
+/*
+*	MISC
+*/
+
+/datum/loadout_item/pocket_items/rag
+	name = "Rag"
+	item_path = /obj/item/reagent_containers/glass/rag
+
 /datum/loadout_item/pocket_items/razor
 	name = "Razor"
 	item_path = /obj/item/razor
-
-/datum/loadout_item/pocket_items/lighter
-	name = "Lighter"
-	item_path = /obj/item/lighter
 
 /datum/loadout_item/pocket_items/matches
 	name = "Matchbox"
 	item_path = /obj/item/storage/box/matches
 
 /datum/loadout_item/pocket_items/cheaplighter
-	name = "Cheap lighter"
+	name = "Cheap Lighter"
 	item_path = /obj/item/lighter/greyscale
 
 /datum/loadout_item/pocket_items/zippolighter
@@ -100,74 +110,60 @@ GLOBAL_LIST_INIT(loadout_pocket_items, generate_loadout_items(/datum/loadout_ite
 	name = "Text-to-Speech Device"
 	item_path = /obj/item/ttsdevice
 
-
 /datum/loadout_item/pocket_items/paicard
-	name = "Personal AI device"
+	name = "Personal AI Device"
 	item_path = /obj/item/paicard
 
-
-/datum/loadout_item/pocket_items/cigar
-	name = "Cigar"
-	item_path = /obj/item/clothing/mask/cigarette/cigar
-	 //smoking is bad mkay
-
 /datum/loadout_item/pocket_items/cigarettes
-	name = "Cigarette pack"
+	name = "Cigarette Pack"
 	item_path = /obj/item/storage/fancy/cigarettes
 
-/datum/loadout_item/pocket_items/wallet
-	name = "Wallet"
-	item_path = /obj/item/storage/wallet
+/datum/loadout_item/pocket_items/cigar //smoking is bad mkay
+	name = "Cigar"
+	item_path = /obj/item/clothing/mask/cigarette/cigar
 
 /datum/loadout_item/pocket_items/flask
 	name = "Flask"
 	item_path = /obj/item/reagent_containers/food/drinks/flask
-
 
 /datum/loadout_item/pocket_items/skub
 	name = "Skub"
 	item_path = /obj/item/skub
 
 /datum/loadout_item/pocket_items/multipen
-	name = "A multicolored pen"
+	name = "Multicolored Pen"
 	item_path = /obj/item/pen/fourcolor
 
 /datum/loadout_item/pocket_items/fountainpen
-	name = "A fancy pen"
+	name = "Fancy Pen"
 	item_path = /obj/item/pen/fountain
 
-
 /datum/loadout_item/pocket_items/modular_tablet
-	name = "A modular tablet"
+	name = "Modular Tablet"
 	item_path = /obj/item/modular_computer/tablet/preset/cheap/
 
-
 /datum/loadout_item/pocket_items/modular_laptop
-	name = "A modular laptop"
-	item_path = /obj/item/modular_computer/laptop/preset/civilian
-
+	name = "Modular Laptop"
+	item_path = /obj/item/modular_computer/laptop/preset/civilian/closed
 
 /datum/loadout_item/pocket_items/ringbox_gold
-	name = "A gold ring box"
+	name = "Gold Ring Box"
 	item_path = /obj/item/storage/fancy/ringbox
 
-
 /datum/loadout_item/pocket_items/ringbox_silver
-	name = "A silver ring box"
+	name = "Silver Ring Box"
 	item_path = /obj/item/storage/fancy/ringbox/silver
 
-
 /datum/loadout_item/pocket_items/ringbox_diamond
-	name = "A diamond ring box"
+	name = "Diamond Ring Box"
 	item_path = /obj/item/storage/fancy/ringbox/diamond
 
-
 /datum/loadout_item/pocket_items/tapeplayer
-	name = "Taperecorder"
+	name = "Universal Recorder"
 	item_path = /obj/item/taperecorder
 
 /datum/loadout_item/pocket_items/tape
-	name = "Spare cassette tape"
+	name = "Spare Cassette Tape"
 	item_path = /obj/item/tape/random
 
 /datum/loadout_item/pocket_items/newspaper
@@ -178,12 +174,14 @@ GLOBAL_LIST_INIT(loadout_pocket_items, generate_loadout_items(/datum/loadout_ite
 	name = "Handheld Mirror"
 	item_path = /obj/item/hhmirror
 
-
-
 /datum/loadout_item/pocket_items/cross
 	name = "Ornate Cross"
 	item_path = /obj/item/crucifix
-	restricted_roles = list("Chaplain")
+	restricted_roles = list(JOB_CHAPLAIN)
+
+/*
+*	FRAGRANCES
+*/
 
 /datum/loadout_item/pocket_items/fragrance_cologne
 	name = "Cologne Bottle"
@@ -225,21 +223,22 @@ GLOBAL_LIST_INIT(loadout_pocket_items, generate_loadout_items(/datum/loadout_ite
 	name = "Amber Perfume"
 	item_path = /obj/item/perfume/amber
 
-//Donator stuffs down here
+
+/*
+*	DONATOR
+*/
+
 /datum/loadout_item/pocket_items/donator
 	donator_only = TRUE
 
 /datum/loadout_item/pocket_items/donator/coin
 	name = "Iron Coin"
 	item_path = /obj/item/coin/iron
-	donator_only = TRUE
 
 /datum/loadout_item/pocket_items/donator/havana_cigar_case
 	name = "Havanian Cigars"
 	item_path = /obj/item/storage/fancy/cigarettes/cigars/havana
-	donator_only = TRUE
 
 /datum/loadout_item/pocket_items/donator/vape
 	name = "E-Cigarette"
 	item_path = /obj/item/clothing/mask/vape
-	donator_only = TRUE

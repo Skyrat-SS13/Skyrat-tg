@@ -33,6 +33,10 @@
 
 	/// Dictionary of job sub-typepath to template changes dictionary
 	var/job_changes = list()
+	/// List of additional areas that count as a part of the library
+	var/library_areas = list()
+	/// What message shows up when the orbit is shifted.
+	var/orbit_shift_replacement = "Attention crew, it appears that someone on your station has shifted your orbit into more dangerous territory."
 
 /**
  * Proc that simply loads the default map config, which should always be functional.
@@ -166,6 +170,9 @@
 		log_world("map_config space_empty_levels is not a number!")
 		return
 
+	if("orbit_shift_replacement" in json)
+		orbit_shift_replacement = json["orbit_shift_replacement"]
+
 	if ("minetype" in json)
 		minetype = json["minetype"]
 
@@ -176,6 +183,17 @@
 			log_world("map_config \"job_changes\" field is missing or invalid!")
 			return
 		job_changes = json["job_changes"]
+	
+	if("library_areas" in json)
+		if(!islist(json["library_areas"]))
+			log_world("map_config \"library_areas\" field is missing or invalid!")
+			return
+		for(var/path_as_text in json["library_areas"])
+			var/path = text2path(path_as_text)
+			if(!ispath(path, /area))
+				stack_trace("Invalid path in mapping config for additional library areas: \[[path_as_text]\]")
+				continue
+			library_areas += path
 
 	defaulted = FALSE
 	return TRUE

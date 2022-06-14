@@ -1,7 +1,9 @@
-// Crew has to build a bluespace cannon
-// Cargo orders part for high price
-// Requires high amount of power
-// Requires high level stock parts
+/*
+*	Crew has to build a bluespace cannon
+*	Cargo orders part for high price
+*	Requires high amount of power
+*	Requires high level stock parts
+*/
 
 #define SYSTEM_OFFLINE "SYSTEM OFFLINE"
 #define SYSTEM_READY "SYSTEM READY"
@@ -40,10 +42,10 @@
 	density = TRUE
 	anchored = TRUE
 
-/obj/machinery/bsa/wrench_act(mob/living/user, obj/item/I)
-	..()
-	default_unfasten_wrench(user, I, 10)
-	return TRUE
+/obj/machinery/bsa/wrench_act(mob/living/user, obj/item/tool)
+	. = ..()
+	default_unfasten_wrench(user, tool, time = 1 SECONDS)
+	return TOOL_ACT_TOOLTYPE_SUCCESS
 
 /obj/machinery/bsa/back
 	name = "Bluespace Artillery Generator"

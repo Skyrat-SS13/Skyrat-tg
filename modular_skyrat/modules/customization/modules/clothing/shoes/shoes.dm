@@ -67,7 +67,6 @@
 	strip_delay = 30
 	equip_delay_other = 50
 	resistance_flags = NONE
-	permeability_coefficient = 0.05 //Thick soles, and covers the ankle
 	pocket_storage_component_path = /datum/component/storage/concrete/pockets/shoes
 	can_be_tied = TRUE //SKYRAT EDIT
 
@@ -78,17 +77,15 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/feet.dmi'
 	icon_state = "blackjack"
 
-/obj/item/clothing/shoes/wraps/poly
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/shoes.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/feet.dmi'
+/obj/item/clothing/shoes/wraps/colourable
 	name = "cloth foot wraps"
 	desc = "Boxer tape or bandages wrapped like a mummy, all left up to the choice of the wearer."
 	icon_state = "clothwrap"
+	greyscale_config = /datum/greyscale_config/wraps
+	greyscale_config_worn = /datum/greyscale_config/wraps/worn
+	greyscale_colors = "#FFFFFF"
 	body_parts_covered = FALSE
-
-/obj/item/clothing/shoes/wraps/poly/ComponentInitialize()
-	. = ..()
-	AddElement(/datum/element/polychromic, list("#FFFFFF"))
+	flags_1 = IS_PLAYER_COLORABLE_1
 
 /obj/item/clothing/shoes/sports
 	name = "sport shoes"
@@ -118,3 +115,16 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/feet.dmi'
 	icon_state = "timbs"
 
+/obj/item/clothing/shoes/winterboots/christmas
+	name = "red christmas boots"
+	desc = "A pair of fluffy red christmas boots!"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/shoes.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/feet.dmi'
+	icon_state = "christmasbootsr"
+
+/obj/item/clothing/shoes/winterboots/christmas/green
+	name = "green christmas boots"
+	desc = "A pair of fluffy green christmas boots!"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/shoes.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/feet.dmi'
+	icon_state = "christmasbootsg"

@@ -1,4 +1,4 @@
-//SKYRAT GOOD TRAITS
+// SKYRAT GOOD TRAITS
 
 /datum/quirk/hard_soles
 	name = "Hardened Soles"
@@ -20,7 +20,7 @@
 	medical_record_text = "Patient demonstrates a high brain plasticity in regards to language learning."
 	icon = "globe"
 
-//AdditionalEmotes *turf quirks
+// AdditionalEmotes *turf quirks
 /datum/quirk/water_aspect
 	name = "Water aspect (Emotes)"
 	desc = "(Aquatic innate) Underwater societies are home to you, space ain't much different. (Say *turf to cast)"

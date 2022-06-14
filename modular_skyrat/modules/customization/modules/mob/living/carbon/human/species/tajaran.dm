@@ -1,7 +1,7 @@
 /datum/species/tajaran
 	name = "Tajaran"
 	id = SPECIES_TAJARAN
-	default_color = "#4B4B4B"
+	say_mod = "meows"
 	species_traits = list(
 		MUTCOLORS,
 		EYECOLOR,
@@ -12,7 +12,9 @@
 	)
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,
-		TRAIT_CAN_STRIP
+		TRAIT_CAN_STRIP,
+		TRAIT_CAN_USE_FLIGHT_POTION,
+		TRAIT_LITERATE,
 	)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	mutant_bodyparts = list()
@@ -23,13 +25,22 @@
 		"legs" = "Normal Legs"
 	)
 	attack_verb = "slash"
+	attack_effect = ATTACK_EFFECT_CLAW
 	attack_sound = 'sound/weapons/slash.ogg'
 	miss_sound = 'sound/weapons/slashmiss.ogg'
-	liked_food = GROSS | MEAT | FRIED
+	disliked_food = CLOTH
+	liked_food = GRAIN | MEAT
 	payday_modifier = 0.75
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
-	limbs_icon = 'modular_skyrat/master_files/icons/mob/species/mammal_parts_greyscale.dmi'
-	limbs_id = SPECIES_MAMMAL
+	examine_limb_id = SPECIES_MAMMAL
+	bodypart_overrides = list(
+		BODY_ZONE_HEAD = /obj/item/bodypart/head/mutant,
+		BODY_ZONE_CHEST = /obj/item/bodypart/chest/mutant,
+		BODY_ZONE_L_ARM = /obj/item/bodypart/l_arm/mutant,
+		BODY_ZONE_R_ARM = /obj/item/bodypart/r_arm/mutant,
+		BODY_ZONE_L_LEG = /obj/item/bodypart/l_leg/mutant,
+		BODY_ZONE_R_LEG = /obj/item/bodypart/r_leg/mutant,
+	)
 
 /datum/species/tajaran/get_random_features()
 	var/list/returned = MANDATORY_FEATURE_LIST
@@ -79,3 +90,9 @@
 		randname += " [pick(GLOB.last_names_taj)]"
 
 	return randname
+
+/datum/species/tajaran/get_species_description()
+	return placeholder_description
+
+/datum/species/tajaran/get_species_lore()
+	return list(placeholder_lore)

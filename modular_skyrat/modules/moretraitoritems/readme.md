@@ -8,6 +8,8 @@ MODULE ID: MORETRAITORITEMS
 
 Add a new category with loadouts in it, Along with Holocarps and a space assassin bundle
 
+Nowadays used to add new small traitor items
+
 ### TG Proc/File Changes:
 
 - N/A
@@ -32,4 +34,5 @@ Add a new category with loadouts in it, Along with Holocarps and a space assassi
 Funce#7321 - Funce
 Tyger#8082 - SarmentiCampbell
 Dawson#8115 - Dawsonkeyes
+ErdinyoBarboza#4088 - ErdinyoBarboza
 <!-- Here go the credits to you, dear coder, and in case of collaborative work or ports, credits to the original source of the code -->

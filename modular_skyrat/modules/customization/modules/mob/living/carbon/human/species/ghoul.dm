@@ -1,11 +1,9 @@
 /datum/species/ghoul
 	name = "Ghoul"
 	id = SPECIES_GHOUL
-	limbs_id = "ghoul"
+	examine_limb_id = "ghoul"
 	say_mod = "rasps"
-	sexes = FALSE
-	default_color = "#c4af7c"
-	species_traits = list(NOEYESPRITES, DYNCOLORS, AGENDER, HAS_FLESH, HAS_BONE, HAIR, FACEHAIR)
+	species_traits = list(NOEYESPRITES, DYNCOLORS, HAS_FLESH, HAS_BONE, HAIR, FACEHAIR)
 	can_have_genitals = FALSE //WHY WOULD YOU WANT TO FUCK ONE OF THESE THINGS?
 	mutant_bodyparts = list("ghoulcolor" = "Tan Necrotic")
 	default_mutant_bodyparts = list(
@@ -18,6 +16,7 @@
 		TRAIT_CAN_STRIP,
 		TRAIT_EASYDISMEMBER,
 		TRAIT_EASILY_WOUNDED, //theyre like fuckin skin and bones
+		TRAIT_LITERATE,
 	)
 	offset_features = list(
 		OFFSET_UNIFORM = list(0,0),
@@ -47,15 +46,13 @@
 	punchdamagehigh = 5 //highest possible punch damage
 	bodytemp_normal = T20C
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
-	limbs_icon = 'modular_skyrat/master_files/icons/mob/species/ghoul_bodyparts.dmi'
-
-	bodypart_overides = list(
-		BODY_ZONE_L_ARM = /obj/item/bodypart/l_arm/ghoul,
-		BODY_ZONE_R_ARM = /obj/item/bodypart/r_arm/ghoul,
-		BODY_ZONE_HEAD = /obj/item/bodypart/head,
-		BODY_ZONE_L_LEG = /obj/item/bodypart/l_leg/ghoul,
-		BODY_ZONE_R_LEG = /obj/item/bodypart/r_leg/ghoul,
-		BODY_ZONE_CHEST = /obj/item/bodypart/chest,
+	bodypart_overrides = list(
+		BODY_ZONE_L_ARM = /obj/item/bodypart/l_arm/mutant/ghoul,
+		BODY_ZONE_R_ARM = /obj/item/bodypart/r_arm/mutant/ghoul,
+		BODY_ZONE_HEAD = /obj/item/bodypart/head/mutant/ghoul,
+		BODY_ZONE_L_LEG = /obj/item/bodypart/l_leg/mutant/ghoul,
+		BODY_ZONE_R_LEG = /obj/item/bodypart/r_leg/mutant/ghoul,
+		BODY_ZONE_CHEST = /obj/item/bodypart/chest/mutant/ghoul,
 	)
 	//the chest and head cannot be turned into meat
 	//i dont have to worry about sprites due to limbs_icon, thank god
@@ -78,12 +75,12 @@
 		set_ghoul_color(H)
 
 		// 2) BODYPARTS
-		C.part_default_head = /obj/item/bodypart/head
-		C.part_default_chest = /obj/item/bodypart/chest
-		C.part_default_l_arm = /obj/item/bodypart/l_arm/ghoul
-		C.part_default_r_arm = /obj/item/bodypart/r_arm/ghoul
-		C.part_default_l_leg = /obj/item/bodypart/l_leg/ghoul
-		C.part_default_r_leg = /obj/item/bodypart/r_leg/ghoul
+		C.part_default_head = /obj/item/bodypart/head/mutant/ghoul
+		C.part_default_chest = /obj/item/bodypart/chest/mutant/ghoul
+		C.part_default_l_arm = /obj/item/bodypart/l_arm/mutant/ghoul
+		C.part_default_r_arm = /obj/item/bodypart/r_arm/mutant/ghoul
+		C.part_default_l_leg = /obj/item/bodypart/l_leg/mutant/ghoul
+		C.part_default_r_leg = /obj/item/bodypart/r_leg/mutant/ghoul
 		C.ReassignForeignBodyparts()
 
 /datum/species/proc/set_ghoul_color(mob/living/carbon/human/H)
@@ -92,7 +89,6 @@
 /datum/species/ghoul/set_ghoul_color(mob/living/carbon/human/H)
 	// Called on Assign, or on Color Change (or any time proof_ghoul_features() is used)
 	fixed_mut_color = H.dna.features["ghoulcolor"]
-	default_color = fixed_mut_color
 
 /mob/living/carbon/proc/ReassignForeignBodyparts()
 	var/obj/item/bodypart/head = get_bodypart(BODY_ZONE_HEAD)
@@ -138,9 +134,9 @@
 	C.part_default_r_leg = /obj/item/bodypart/r_leg
 	C.ReassignForeignBodyparts()
 
-//////////////////
-// ATTACK PROCS //
-//////////////////
+/*
+*	ATTACK PROCS
+*/
 
 /datum/species/ghoul/disarm(mob/living/carbon/human/user, mob/living/carbon/human/target, datum/martial_art/attacker_style)
 	// Targeting Self? With "DISARM"
@@ -156,7 +152,7 @@
 				return FALSE
 
 			// Robot Arms Fail
-			if (affecting.status != BODYPART_ORGANIC)
+			if (!IS_ORGANIC_LIMB(affecting))
 				to_chat(user, "That thing is on there good. It's not coming off with a gentle tug.")
 				return FALSE
 
@@ -212,72 +208,6 @@
 
 	return ..() // TRUE FALSE
 
-//LIMBS
-
-/obj/item/bodypart/r_arm/ghoul
-	icon = 'modular_skyrat/master_files/icons/mob/species/ghoul_bodyparts.dmi'
-
-/obj/item/bodypart/l_arm/ghoul
-	icon = 'modular_skyrat/master_files/icons/mob/species/ghoul_bodyparts.dmi'
-
-/obj/item/bodypart/r_leg/ghoul
-	icon = 'modular_skyrat/master_files/icons/mob/species/ghoul_bodyparts.dmi'
-
-/obj/item/bodypart/l_leg/ghoul
-	icon = 'modular_skyrat/master_files/icons/mob/species/ghoul_bodyparts.dmi'
-
-/obj/item/bodypart/r_arm/ghoul/drop_limb(special)
-	//amCondemned = TRUE
-	//var/mob/owner_cache = owner
-	..() // Create Meat, Remove Limb
-	var/percentHealth = 1 - (brute_dam + burn_dam) / max_damage
-	if (percentHealth > 0)
-		// Create Meat
-		var/obj/item/food/meat/slab/newMeat = new /obj/item/food/meat/slab(src.loc)
-
-		. = newMeat // Return MEAT
-
-	qdel(src)
-
-/obj/item/bodypart/l_arm/ghoul/drop_limb(special)
-	//amCondemned = TRUE
-	//var/mob/owner_cache = owner
-	..() // Create Meat, Remove Limb
-	var/percentHealth = 1 - (brute_dam + burn_dam) / max_damage
-	if (percentHealth > 0)
-		// Create Meat
-		var/obj/item/food/meat/slab/newMeat = new /obj/item/food/meat/slab(src.loc)
-
-		. = newMeat // Return MEAT
-
-	qdel(src)
-
-/obj/item/bodypart/r_leg/ghoul/drop_limb(special)
-	//amCondemned = TRUE
-	//var/mob/owner_cache = owner
-	..() // Create Meat, Remove Limb
-	var/percentHealth = 1 - (brute_dam + burn_dam) / max_damage
-	if (percentHealth > 0)
-		// Create Meat
-		var/obj/item/food/meat/slab/newMeat = new /obj/item/food/meat/slab(src.loc)
-
-		. = newMeat // Return MEAT
-
-	qdel(src)
-
-/obj/item/bodypart/l_leg/ghoul/drop_limb(special)
-	//amCondemned = TRUE
-	//var/mob/owner_cache = owner
-	..() // Create Meat, Remove Limb
-	var/percentHealth = 1 - (brute_dam + burn_dam) / max_damage
-	if (percentHealth > 0)
-		// Create Meat
-		var/obj/item/food/meat/slab/newMeat = new /obj/item/food/meat/slab(src.loc)
-
-		. = newMeat // Return MEAT
-
-	qdel(src)
-
 /mob/living/carbon
 	// Type References for Bodyparts
 	var/obj/item/bodypart/head/part_default_head = /obj/item/bodypart/head
@@ -286,3 +216,9 @@
 	var/obj/item/bodypart/r_arm/part_default_r_arm = /obj/item/bodypart/r_arm
 	var/obj/item/bodypart/l_leg/part_default_l_leg = /obj/item/bodypart/l_leg
 	var/obj/item/bodypart/r_leg/part_default_r_leg = /obj/item/bodypart/r_leg
+
+/datum/species/ghoul/get_species_description()
+	return placeholder_description
+
+/datum/species/ghoul/get_species_lore()
+	return list(placeholder_lore)

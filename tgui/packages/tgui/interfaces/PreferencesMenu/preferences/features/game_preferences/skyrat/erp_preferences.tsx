@@ -1,4 +1,4 @@
-import { CheckboxInput, FeatureToggle } from "../../base";
+import { CheckboxInput, FeatureDropdownInput, FeatureChoiced, FeatureToggle } from "../../base";
 
 export const master_erp_pref: FeatureToggle = {
   name: "Show/Hide Erotic Roleplay Preferences",
@@ -35,13 +35,6 @@ export const aphro_pref: FeatureToggle = {
   component: CheckboxInput,
 };
 
-export const noncon_pref: FeatureToggle = {
-  name: "Obsessed Non-con Target",
-  category: "ERP",
-  description: "Toggles whether you wish to be an obsessed target for those with the trait.",
-  component: CheckboxInput,
-};
-
 export const sextoy_pref: FeatureToggle = {
   name: "Sex toy interaction",
   category: "ERP",
@@ -75,4 +68,11 @@ export const autocum_pref: FeatureToggle = {
   category: "ERP",
   description: "Toggles whether you automatically cum using the arousal system, or if you need to do it manually.",
   component: CheckboxInput,
+};
+
+export const erp_sexuality_pref: FeatureChoiced = {
+  name: "Sexuality Preference",
+  category: "ERP",
+  description: "Determines what sexual content you see, limited use. None will show all content.",
+  component: FeatureDropdownInput,
 };

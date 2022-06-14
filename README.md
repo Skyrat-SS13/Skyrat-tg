@@ -18,7 +18,13 @@
 
 This is Skyrat's downstream fork of /tg/station created in byond.
 
+**Please note that this repository contains sexually explicit content and is not suitable for those under the age of 18.**
+
 Space Station 13 is a paranoia-laden round-based roleplaying game set against the backdrop of a nonsensical, metal death trap masquerading as a space station, with charming spritework designed to represent the sci-fi setting and its dangerous undertones. Have fun, and survive!
+
+## Important note - TEST YOUR PULL REQUESTS
+
+You are responsible for the testing of your content. You should not mark a pull request ready for review until you have actually tested it. If you require a separate client for testing, you can use a guest account by logging out of BYOND and connecting to your test server. Test merges are not for bug finding, they are for stress tests where local testing simply doesn't allow for this.
 
 ## DEVELOPMENT FLOWCHART
 ![image](https://i.imgur.com/aJnE4WT.png)

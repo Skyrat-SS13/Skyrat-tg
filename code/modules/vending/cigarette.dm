@@ -15,31 +15,22 @@
 		/obj/item/storage/box/matches = 10,
 		/obj/item/lighter/greyscale = 4,
 		/obj/item/storage/fancy/rollingpapers = 5,
-		//SKYRAT EDIT START - VAPECARTS
-		/obj/item/clothing/mask/vape = 5,
-		/obj/item/reagent_containers/vapecart = 10
 	)
 	contraband = list(
-		//SKYRAT REMOVAL - /obj/item/clothing/mask/vape = 5
-		/obj/item/reagent_containers/vapecart/empty = 5,
-		/obj/item/reagent_containers/vapecart/bluekush = 4,
-		/obj/item/reagent_containers/vapecart/reddiesel = 4,
-		/obj/item/reagent_containers/vapecart/pwrgame = 4,
-		/obj/item/reagent_containers/vapecart/cheese = 4
+		/obj/item/clothing/mask/vape = 5,
 	)
-	//SKYRAT EDIT END - VAPECARTS
 	premium = list(
 		/obj/item/storage/fancy/cigarettes/cigpack_robustgold = 3,
 		/obj/item/storage/box/gum/nicotine = 2,
 		/obj/item/lighter = 3,
 		/obj/item/storage/fancy/cigarettes/cigars = 1,
 		/obj/item/storage/fancy/cigarettes/cigars/havana = 1,
-		/obj/item/storage/fancy/cigarettes/cigars/cohiba = 1
+		/obj/item/storage/fancy/cigarettes/cigars/cohiba = 1,
 	)
 
 	refill_canister = /obj/item/vending_refill/cigarette
-	default_price = PAYCHECK_ASSISTANT
-	extra_price = PAYCHECK_HARD
+	default_price = PAYCHECK_CREW
+	extra_price = PAYCHECK_COMMAND
 	payment_department = ACCOUNT_SRV
 	light_mask = "cigs-light-mask"
 
@@ -53,7 +44,7 @@
 		/obj/item/storage/fancy/cigarettes/cigpack_midori = 1,
 		/obj/item/storage/box/matches = 10,
 		/obj/item/lighter/greyscale = 4,
-		/obj/item/storage/fancy/rollingpapers = 5
+		/obj/item/storage/fancy/rollingpapers = 5,
 	)
 
 /obj/machinery/vending/cigarette/beach //Used in the lavaland_biodome_beach.dmm ruin
@@ -70,12 +61,12 @@
 		/obj/item/storage/fancy/cigarettes/cigpack_cannabis = 5,
 		/obj/item/storage/box/matches = 10,
 		/obj/item/lighter/greyscale = 4,
-		/obj/item/storage/fancy/rollingpapers = 5
+		/obj/item/storage/fancy/rollingpapers = 5,
 	)
 	premium = list(
 		/obj/item/storage/fancy/cigarettes/cigpack_mindbreaker = 5,
 		/obj/item/clothing/mask/vape = 5,
-		/obj/item/lighter = 3
+		/obj/item/lighter = 3,
 	)
 
 /obj/item/vending_refill/cigarette

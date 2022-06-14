@@ -1,10 +1,10 @@
 /datum/ert/nri
-	roles = list(/datum/antagonist/ert/nri, /datum/antagonist/ert/nri/heavy)
+	roles = list(/datum/antagonist/ert/nri, /datum/antagonist/ert/nri/heavy, /datum/antagonist/ert/nri/medic, /datum/antagonist/ert/nri/engineer)
 	leader_role = /datum/antagonist/ert/nri/commander
-	rename_team = "Novaya Rossiyskaya Imperiya Platoon"
+	rename_team = "Novaya Rossiyskaya Imperiya Patrol"
 	code = "Red"
-	mission = "Assist the station."
-	polldesc = "a squad of specialized NRI soldiers"
+	mission = "Cooperate with the station, protect NRI assets."
+	polldesc = "a squad of NRI border patrol"
 
 /datum/antagonist/ert/nri
 	name = "Novaya Rossiyskaya Imperiya Soldier"
@@ -33,3 +33,13 @@
 	name = "Novaya Rossiyskaya Imperiya Heavy Soldier"
 	role = "Heavy Soldier"
 	outfit = /datum/outfit/centcom/ert/nri/heavy
+
+/datum/antagonist/ert/nri/medic
+	name = "Novaya Rossiyskaya Imperiya Corpsman"
+	role = "Corpsman"
+	outfit = /datum/outfit/centcom/ert/nri/medic
+
+/datum/antagonist/ert/nri/engineer
+	name = "Novaya Rossiyskaya Imperiya Combat Engineer"
+	role = "Combat Engineer"
+	outfit = /datum/outfit/centcom/ert/nri/engineer

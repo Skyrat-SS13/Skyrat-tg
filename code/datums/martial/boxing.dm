@@ -31,9 +31,14 @@
 
 	var/obj/item/bodypart/affecting = D.get_bodypart(ran_zone(A.zone_selected))
 	var/armor_block = D.run_armor_check(affecting, MELEE)
-
-	playsound(D.loc, species.attack_sound, 25, TRUE, -1)
-
+	// SKYRAT EDIT CHANGE
+	var/sound/attack_sound
+	if(!species.attack_sound)
+		attack_sound = get_sfx("punch")
+	else
+		attack_sound = species.attack_sound
+	playsound(D.loc, attack_sound, 25, TRUE, -1)
+	//SKYRAT EDIT END
 	D.visible_message(span_danger("[A] [atk_verb]ed [D]!"), \
 					span_userdanger("You're [atk_verb]ed by [A]!"), span_hear("You hear a sickening sound of flesh hitting flesh!"), COMBAT_MESSAGE_RANGE, A)
 	to_chat(A, span_danger("You [atk_verb]ed [D]!"))

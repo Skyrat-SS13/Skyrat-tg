@@ -1,7 +1,6 @@
-
-//////////////////
-//TOKEN SYSTEM
-/////////////////
+/*
+*	GUN VENDOR
+*/
 
 /obj/machinery/gun_vendor
 	name = "Armadyne weapons dispensary"
@@ -12,6 +11,8 @@
 	circuit = /obj/item/circuitboard/machine/gun_vendor
 	max_integrity = 2000
 	density = TRUE
+	/// If FALSE, does not require an alert level to redeem the token.
+	var/requires_alert = TRUE
 
 /obj/item/circuitboard/machine/gun_vendor
 	name = "Weapons Dispenser (Machine Board)"
@@ -31,7 +32,7 @@
 		return
 
 /obj/machinery/gun_vendor/proc/RedeemToken(obj/item/armament_token/token, mob/redeemer)
-	if(seclevel2num(get_security_level()) < token.minimum_sec_level)
+	if((seclevel2num(get_security_level()) < token.minimum_sec_level) && requires_alert)
 		to_chat(redeemer, span_redtext("Warning, this holochip is locked to [num2seclevel(token.minimum_sec_level)]!"))
 		message_admins("ARMAMENT LOG: [redeemer] attempted to redeem a [token.name] on the incorrect security level!")
 		return
@@ -55,9 +56,12 @@
 	SSblackbox.record_feedback("tally", "armament_token_redeemed", 1, dispensed)
 	qdel(token)
 
-////////////////////
-//TOKENS
-////////////////////
+/obj/machinery/gun_vendor/no_alert
+	requires_alert = FALSE
+
+/*
+*	TOKENS
+*/
 
 /obj/item/armament_token
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi'
@@ -68,12 +72,14 @@
 /obj/item/armament_token/proc/get_available_gunsets()
 	return FALSE
 
-//Sidearm
+/*
+*	SIDEARMS
+*/
+
 /obj/item/armament_token/sidearm
 	name = "sidearm armament holochip"
 	desc = "A holochip used in any armament vendor, this is for sidearms. Do not bend."
 	icon_state = "token_sidearm"
-	minimum_sec_level = SEC_LEVEL_BLUE
 
 /obj/item/armament_token/sidearm/get_available_gunsets()
 	return list(
@@ -103,12 +109,13 @@
 		),
 	)
 
-//BAD BOY!
+// BAD BOY!
 /obj/item/armament_token/sidearm_blackmarket
 	name = "blackmarket armament holochip"
 	desc = "A holochip used in any armament vendor, this is for |bad people|. Do not bend."
 	icon_state = "token_blackmarket"
-	custom_premium_price = PAYCHECK_HARD * 3
+	custom_price = PAYCHECK_COMMAND * 10
+	custom_premium_price = PAYCHECK_COMMAND * 10
 
 /obj/item/armament_token/sidearm_blackmarket/get_available_gunsets()
 	return list(
@@ -127,7 +134,10 @@
 	)
 
 
-//Primary
+/*
+*	PRIMARIES
+*/
+
 /obj/item/armament_token/primary
 	name = "primary armament holochip"
 	desc = "A holochip used in any armament vendor, this is for main arms. Do not bend."
@@ -178,7 +188,7 @@
 	name = "energy armament holochip"
 	desc = "A holochip used in any armament vendor, this is for energy weapons. Do not bend."
 	icon_state = "token_energy"
-	custom_premium_price = PAYCHECK_HARD * 3
+	custom_premium_price = PAYCHECK_CREW * 3
 	minimum_sec_level = SEC_LEVEL_AMBER
 
 /obj/item/armament_token/energy/get_available_gunsets()
@@ -233,29 +243,3 @@
 	new /obj/item/armament_token/energy(src)
 	new /obj/item/armament_token/energy(src)
 	new /obj/item/armament_token/energy(src)
-
-//Sergeants!
-/obj/item/armament_token/sarge
-	name = "security sergeant holochip"
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi'
-	icon_state = "token_sarge"
-	desc = "A holochip used in any armament vendor, this is for promoting officers to Sergeants. Do not bend."
-
-/obj/item/armament_token/sarge/get_available_gunsets()
-	return list(
-	/obj/item/storage/box/gunset/sarge = image(
-		icon = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/peacekeeper_items.dmi',
-		icon_state = "peacekeeper_sergeant_cap"
-		)
-	)
-
-/obj/item/storage/box/armament_tokens_sarge
-	name = "security sarge tokens"
-	icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi'
-	icon_state = "armadyne_sarge"
-	desc = "A box full of sergeant promotion tokens!"
-	illustration = null
-
-/obj/item/storage/box/armament_tokens_sarge/PopulateContents()
-	. = ..()
-	new /obj/item/armament_token/sarge(src)

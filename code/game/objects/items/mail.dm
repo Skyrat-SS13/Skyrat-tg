@@ -265,9 +265,9 @@
 /obj/item/storage/bag/mail
 	name = "mail bag"
 	desc = "A bag for letters, envelopes, and other postage."
-	icon = 'icons/obj/library.dmi'
-	icon_state = "bookbag"
-	worn_icon_state = "bookbag"
+	icon = 'icons/obj/bureaucracy.dmi'
+	icon_state = "mailbag"
+	worn_icon_state = "mailbag"
 	resistance_flags = FLAMMABLE
 
 /obj/item/storage/bag/mail/ComponentInitialize()
@@ -279,7 +279,7 @@
 	storage.display_numerical_stacking = FALSE
 	storage.set_holdable(list(
 		/obj/item/mail,
-		/obj/item/small_delivery,
+		/obj/item/delivery/small,
 		/obj/item/paper
 	))
 

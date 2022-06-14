@@ -33,8 +33,8 @@
 	///Cooldown between salutations for commissioned bots
 	COOLDOWN_DECLARE(next_salute_check)
 
-	///The core this bot uses, usually only used to set access? This is a hack and should be removed eventually.
-	var/obj/machinery/bot_core/bot_core = /obj/machinery/bot_core
+	///Access required to access this Bot's maintenance protocols
+	var/maints_access_required = list(ACCESS_ROBOTICS)
 	///The Robot arm attached to this robot - has a 50% chance to drop on death.
 	var/robot_arm = /obj/item/bodypart/r_arm/robot
 	///People currently looking into a bot's UI panel.
@@ -104,29 +104,7 @@
 	var/beacon_freq = FREQ_NAV_BEACON
 	///The type of data HUD the bot uses. Diagnostic by default.
 	var/data_hud_type = DATA_HUD_DIAGNOSTIC_BASIC
-	//This holds text for what the bot is mode doing, reported on the remote bot control interface.
-	var/list/mode_name = list(
-		"In Pursuit",
-		"Preparing to Arrest",
-		"Arresting",
-		"Beginning Patrol",
-		"Patrolling",
-		"Summoned by PDA",
-		"Cleaning",
-		"Repairing",
-		"Proceeding to work site",
-		"Healing",
-		"Proceeding to AI waypoint",
-		"Navigating to Delivery Location",
-		"Navigating to Home",
-		"Waiting for clear path",
-		"Calculating navigation path",
-		"Pinging beacon network",
-		"Unable to reach destination",
-		"Chasing filth",
-		"No Route",
-	)
-	var/datum/atom_hud/data/bot_path/path_hud = new /datum/atom_hud/data/bot_path()
+	var/datum/atom_hud/data/bot_path/path_hud
 	var/path_image_icon = 'icons/mob/aibots.dmi'
 	var/path_image_icon_state = "path_indicator"
 	var/path_image_color = "#FFFFFF"
@@ -141,10 +119,8 @@
 			return "<b>Autonomous</b>"
 	else if(!(bot_mode_flags & BOT_MODE_ON))
 		return "<span class='bad'>Inactive</span>"
-	else if(!mode)
-		return "<span class='good'>Idle</span>"
 	else
-		return "<span class='average'>[mode_name[mode]]</span>"
+		return "<span class='average'>[mode]</span>"
 
 /**
  * Returns a status string about the bot's current status, if it's moving, manually controlled, or idle.
@@ -154,10 +130,8 @@
 		return paicard ? "pAI Controlled" : "Autonomous"
 	else if(!(bot_mode_flags & BOT_MODE_ON))
 		return "Inactive"
-	else if(!mode)
-		return "Idle"
 	else
-		return "[mode_name[mode]]"
+		return "[mode]"
 
 /mob/living/simple_animal/bot/proc/turn_on()
 	if(stat)
@@ -182,42 +156,45 @@
 	balloon_alert(src, "turned off")
 	update_appearance()
 
-/mob/living/simple_animal/bot/proc/get_bot_flag(checked_flag)
-	if(bot_mode_flags & checked_flag)
+/mob/living/simple_animal/bot/proc/get_bot_flag(checked_mode, checked_flag)
+	if(checked_mode & checked_flag)
 		return TRUE
 	return FALSE
 
 /mob/living/simple_animal/bot/Initialize(mapload)
 	. = ..()
 	GLOB.bots_list += src
+
+	path_hud = new /datum/atom_hud/data/bot_path()
+	for(var/hud in path_hud.hud_icons) // You get to see your own path
+		set_hud_image_active(hud, exclusive_hud = path_hud)
+
 	// Give bots a fancy new ID card that can hold any access.
 	access_card = new /obj/item/card/id/advanced/simple_bot(src)
 	// This access is so bots can be immediately set to patrol and leave Robotics, instead of having to be let out first.
 	access_card.set_access(list(ACCESS_ROBOTICS))
-	internal_radio = new/obj/item/radio(src)
+	internal_radio = new /obj/item/radio(src)
 	if(radio_key)
 		internal_radio.keyslot = new radio_key
 	internal_radio.subspace_transmission = TRUE
 	internal_radio.canhear_range = 0 // anything greater will have the bot broadcast the channel as if it were saying it out loud.
 	internal_radio.recalculateChannels()
 
-	bot_core = new(src)
-
 	//Adds bot to the diagnostic HUD system
 	prepare_huds()
 	for(var/datum/atom_hud/data/diagnostic/diag_hud in GLOB.huds)
-		diag_hud.add_to_hud(src)
+		diag_hud.add_atom_to_hud(src)
 	diag_hud_set_bothealth()
 	diag_hud_set_botstat()
 	diag_hud_set_botmode()
 
 	//If a bot has its own HUD (for player bots), provide it.
-	if(data_hud_type)
+	if(!isnull(data_hud_type))
 		var/datum/atom_hud/datahud = GLOB.huds[data_hud_type]
-		datahud.add_hud_to(src)
+		datahud.show_to(src)
 	if(path_hud)
-		path_hud.add_to_hud(src)
-		path_hud.add_hud_to(src)
+		path_hud.add_atom_to_hud(src)
+		path_hud.show_to(src)
 
 
 /mob/living/simple_animal/bot/Destroy()
@@ -229,8 +206,25 @@
 		ejectpai()
 	QDEL_NULL(internal_radio)
 	QDEL_NULL(access_card)
-	QDEL_NULL(bot_core)
 	return ..()
+
+/mob/living/simple_animal/bot/proc/check_access(mob/living/user, obj/item/card/id)
+	if(user.has_unlimited_silicon_privilege || isAdminGhostAI(user)) // Silicon and Admins always have access.
+		return TRUE
+	if(!maints_access_required) // No requirements to access it.
+		return TRUE
+	if(!(bot_cover_flags & BOT_COVER_LOCKED)) // Unlocked.
+		return TRUE
+
+	var/obj/item/card/id/used_id = id || user.get_idcard(TRUE)
+
+	if(!used_id || !used_id.access)
+		return FALSE
+
+	for(var/requested_access in maints_access_required)
+		if(requested_access in used_id.access)
+			return TRUE
+	return FALSE
 
 /mob/living/simple_animal/bot/bee_friendly()
 	return TRUE
@@ -240,10 +234,12 @@
 	..()
 
 /mob/living/simple_animal/bot/proc/explode()
-	qdel(src)
+	visible_message(span_boldnotice("[src] blows apart!"))
+	do_sparks(3, TRUE, src)
 	var/atom/location_destroyed = drop_location()
 	if(prob(50))
 		drop_part(robot_arm, location_destroyed)
+	qdel(src)
 
 /mob/living/simple_animal/bot/emag_act(mob/user, obj/item/card/emag/emag_card)
 	. = ..()
@@ -327,7 +323,7 @@
 			call_mode()
 			return FALSE
 		if(BOT_SUMMON) //Called to a location
-			bot_summon()
+			summon_step()
 			return FALSE
 	return TRUE //Successful completion. Used to prevent child process() continuing if this one is ended early.
 
@@ -365,21 +361,42 @@
 	if(bot_cover_flags & BOT_COVER_OPEN)
 		to_chat(user, span_warning("Please close the access panel before [bot_cover_flags & BOT_COVER_LOCKED ? "un" : ""]locking it."))
 		return
-	if(!bot_core.allowed(user))
+	if(!check_access(user))
 		to_chat(user, span_warning("Access denied."))
 		return
 	bot_cover_flags ^= BOT_COVER_LOCKED
 	to_chat(user, span_notice("Controls are now [bot_cover_flags & BOT_COVER_LOCKED ? "locked" : "unlocked"]."))
 	return TRUE
 
+/mob/living/simple_animal/bot/screwdriver_act(mob/living/user, obj/item/tool)
+	if(bot_cover_flags & BOT_COVER_LOCKED)
+		to_chat(user, span_warning("The maintenance panel is locked!"))
+		return TOOL_ACT_TOOLTYPE_SUCCESS
+
+	tool.play_tool_sound(src)
+	bot_cover_flags ^= BOT_COVER_OPEN
+	to_chat(user, span_notice("The maintenance panel is now [bot_cover_flags & BOT_COVER_OPEN ? "opened" : "closed"]."))
+	return TOOL_ACT_TOOLTYPE_SUCCESS
+
+/mob/living/simple_animal/bot/welder_act(mob/living/user, obj/item/tool)
+	user.changeNext_move(CLICK_CD_MELEE)
+	if(user.combat_mode)
+		return FALSE
+
+	if(health >= maxHealth)
+		to_chat(user, span_warning("[src] does not need a repair!"))
+		return TOOL_ACT_TOOLTYPE_SUCCESS
+	if(!(bot_cover_flags & BOT_COVER_OPEN))
+		to_chat(user, span_warning("Unable to repair with the maintenance panel closed!"))
+		return TOOL_ACT_TOOLTYPE_SUCCESS
+
+	if(tool.use_tool(src, user, 0 SECONDS, volume=40))
+		adjustHealth(-10)
+		user.visible_message(span_notice("[user] repairs [src]!"),span_notice("You repair [src]."))
+		return TOOL_ACT_TOOLTYPE_SUCCESS
+
 /mob/living/simple_animal/bot/attackby(obj/item/attacking_item, mob/living/user, params)
-	if(attacking_item.tool_behaviour == TOOL_SCREWDRIVER)
-		if(!(bot_cover_flags & BOT_COVER_LOCKED))
-			bot_cover_flags ^= BOT_COVER_OPEN
-			to_chat(user, span_notice("The maintenance panel is now [bot_cover_flags & BOT_COVER_OPEN ? "opened" : "closed"]."))
-		else
-			to_chat(user, span_warning("The maintenance panel is locked!"))
-	else if(attacking_item.GetID())
+	if(attacking_item.GetID())
 		unlock_with_id(user)
 	else if(istype(attacking_item, /obj/item/paicard))
 		insertpai(user, attacking_item)
@@ -393,24 +410,11 @@
 					user.visible_message(span_notice("[user] uses [attacking_item] to pull [paicard] out of [initial(src.name)]!"),span_notice("You pull [paicard] out of [initial(src.name)] with [attacking_item]."))
 					ejectpai(user)
 	else
-		user.changeNext_move(CLICK_CD_MELEE)
-		if(attacking_item.tool_behaviour == TOOL_WELDER && !user.combat_mode)
-			if(health >= maxHealth)
-				to_chat(user, span_warning("[src] does not need a repair!"))
-				return
-			if(!(bot_cover_flags & BOT_COVER_OPEN))
-				to_chat(user, span_warning("Unable to repair with the maintenance panel closed!"))
-				return
+		if(attacking_item.force) //if force is non-zero
+			do_sparks(5, TRUE, src)
+		..()
 
-			if(attacking_item.use_tool(src, user, 0, volume=40))
-				adjustHealth(-10)
-				user.visible_message(span_notice("[user] repairs [src]!"),span_notice("You repair [src]."))
-		else
-			if(attacking_item.force) //if force is non-zero
-				do_sparks(5, TRUE, src)
-			..()
-
-/mob/living/simple_animal/bot/bullet_act(obj/projectile/Proj)
+/mob/living/simple_animal/bot/bullet_act(obj/projectile/Proj, def_zone, piercing_hit = FALSE)
 	if(Proj && (Proj.damage_type == BRUTE || Proj.damage_type == BURN))
 		if(prob(75) && Proj.damage > 0)
 			do_sparks(5, TRUE, src)
@@ -460,74 +464,73 @@
 		return REDUCE_RANGE
 
 /mob/living/simple_animal/bot/proc/drop_part(obj/item/drop_item, dropzone)
+	var/obj/item/item_to_drop
 	if(ispath(drop_item))
-		new drop_item(dropzone)
+		item_to_drop = new drop_item(dropzone)
 	else
-		drop_item.forceMove(dropzone)
+		item_to_drop = drop_item
+		item_to_drop.forceMove(dropzone)
 
-	if(istype(drop_item, /obj/item/stock_parts/cell))
-		var/obj/item/stock_parts/cell/dropped_cell = drop_item
+	if(istype(item_to_drop, /obj/item/stock_parts/cell))
+		var/obj/item/stock_parts/cell/dropped_cell = item_to_drop
 		dropped_cell.charge = 0
 		dropped_cell.update_appearance()
 
-	else if(istype(drop_item, /obj/item/storage))
-		var/obj/item/storage/S = drop_item
-		S.contents = list()
+	else if(istype(item_to_drop, /obj/item/storage))
+		var/obj/item/storage/storage_to_drop = item_to_drop
+		storage_to_drop.contents = list()
 
-	else if(istype(drop_item, /obj/item/gun/energy))
-		var/obj/item/gun/energy/dropped_gun = drop_item
+	else if(istype(item_to_drop, /obj/item/gun/energy))
+		var/obj/item/gun/energy/dropped_gun = item_to_drop
 		dropped_gun.cell.charge = 0
 		dropped_gun.update_appearance()
 
 //Generalized behavior code, override where needed!
 
-/*
-scan() will search for a given type (such as turfs, human mobs, or objects) in the bot's view range, and return a single result.
-Arguments: The object type to be searched (such as "/mob/living/carbon/human"), the old scan result to be ignored, if one exists,
-and the view range, which defaults to 7 (full screen) if an override is not passed.
-If the bot maintains an ignore list, it is also checked here.
-
-Example usage: patient = scan(/mob/living/carbon/human, oldpatient, 1)
-The proc would return a human next to the bot to be set to the patient var.
-Pass the desired type path itself, declaring a temporary var beforehand is not required.
-*/
-/mob/living/simple_animal/bot/proc/scan(scan_type, old_target, scan_range = DEFAULT_SCAN_RANGE)
-	var/turf/T = get_turf(src)
-	if(!T)
+/**
+ * Attempt to scan tiles near [src], first by checking adjacent, then if a target is still not found, nearby.
+ *
+ * scan_types - list (of typepaths) that nearby tiles are being scanned for.
+ * old_target - what has already been scanned, and will early return at checkscan.
+ * scan_range - how far away from [src] will be scanned, if nothing is found directly adjacent.
+ */
+/mob/living/simple_animal/bot/proc/scan(list/scan_types, old_target, scan_range = DEFAULT_SCAN_RANGE)
+	var/turf/current_turf = get_turf(src)
+	if(!current_turf)
 		return
-	var/list/adjacent = T.get_atmos_adjacent_turfs(1)
+	var/list/adjacent = current_turf.get_atmos_adjacent_turfs(1)
 	if(shuffle) //If we were on the same tile as another bot, let's randomize our choices so we dont both go the same way
 		adjacent = shuffle(adjacent)
 		shuffle = FALSE
-	for(var/scan in adjacent)//Let's see if there's something right next to us first!
+
+	for(var/turf/scan as anything in adjacent) //Let's see if there's something right next to us first!
 		if(check_bot(scan)) //Is there another bot there? Then let's just skip it
 			continue
-		if(isturf(scan_type)) //If we're lookeing for a turf we can just run the checks directly!
-			var/final_result = checkscan(scan,scan_type,old_target)
-			if(final_result)
-				return final_result
-		else
-			var/turf/turfy = scan
-			for(var/deepscan in turfy.contents)//Check the contents since adjacent is turfs
-				var/final_result = checkscan(deepscan,scan_type,old_target)
-				if(final_result)
-					return final_result
-	for (var/scan in shuffle(view(scan_range, src))-adjacent) //Search for something in range!
-		var/final_result = checkscan(scan,scan_type,old_target)
+		var/final_result = checkscan(scan, scan_types, old_target)
 		if(final_result)
 			return final_result
 
-/mob/living/simple_animal/bot/proc/checkscan(scan, scan_type, old_target)
-	if(!istype(scan, scan_type)) //Check that the thing we found is the type we want!
-		return FALSE //If not, keep searching!
-	if((REF(scan) in ignore_list) || (scan == old_target)) //Filter for blacklisted elements, usually unreachable or previously processed oness
-		return FALSE
+	for(var/turf/scanned_turfs as anything in shuffle(view(scan_range, src)) - adjacent) //Search for something in range, minus what we already checked.
+		if(check_bot(scanned_turfs)) //Is there another bot there? Then let's just skip it
+			continue
+		var/final_result = checkscan(scanned_turfs, scan_types, old_target)
+		if(final_result)
+			return final_result
 
-	var/scan_result = process_scan(scan) //Some bots may require additional processing when a result is selected.
-	if(scan_result)
-		return scan_result
-	else
-		return FALSE //The current element failed assessment, move on to the next.
+/mob/living/simple_animal/bot/proc/checkscan(atom/scan, list/scan_types, old_target)
+	for(var/scan_type in scan_types)
+		if(!istype(scan, scan_type)) //Check that the thing we found is the type we want!
+			continue //If not, keep searching!
+		if((REF(scan) in ignore_list) || (scan == old_target)) //Filter for blacklisted elements, usually unreachable or previously processed oness
+			continue
+
+		var/scan_result = process_scan(scan) //Some bots may require additional processing when a result is selected.
+		if(scan_result)
+			return scan_result
+
+//When the scan finds a target, run bot specific processing to select it for the next step. Empty by default.
+/mob/living/simple_animal/bot/proc/process_scan(scan_target)
+	return scan_target
 
 /mob/living/simple_animal/bot/proc/check_bot(targ)
 	var/turf/T = get_turf(targ)
@@ -535,11 +538,6 @@ Pass the desired type path itself, declaring a temporary var beforehand is not r
 		for(var/C in T.contents)
 			if(istype(C,type) && (C != src)) //Is there another bot there already? If so, let's skip it so we dont all atack on top of eachother.
 				return TRUE //Let's abort if we find a bot so we dont have to keep rechecking
-
-//When the scan finds a target, run bot specific processing to select it for the next step. Empty by default.
-/mob/living/simple_animal/bot/proc/process_scan(scan_target)
-	return scan_target
-
 
 /mob/living/simple_animal/bot/proc/add_to_ignore(subject)
 	if(ignore_list.len < 50) //This will help keep track of them, so the bot is always trying to reach a blocked spot.
@@ -784,8 +782,6 @@ Pass a positive integer as an argument to override a bot's default speed.
 			mode = BOT_SUMMON
 			speak("Responding.", radio_channel)
 
-			calc_summon_path()
-
 		if("ejectpai")
 			ejectpairemote(user)
 	return
@@ -811,9 +807,6 @@ Pass a positive integer as an argument to override a bot's default speed.
 			return
 		else
 			to_chat(src, span_warning("Unidentified control sequence received:[command]"))
-
-/mob/living/simple_animal/bot/proc/bot_summon() // summoned to PDA
-	summon_step()
 
 // calculates a path to the current destination
 // given an optional turf to avoid
@@ -869,6 +862,7 @@ Pass a positive integer as an argument to override a bot's default speed.
 	data["can_hack"] = (issilicon(user) || isAdminGhostAI(user))
 	data["custom_controls"] = list()
 	data["emagged"] = bot_cover_flags & BOT_COVER_EMAGGED
+	data["has_access"] = check_access(user)
 	data["locked"] = bot_cover_flags & BOT_COVER_LOCKED
 	data["pai"] = list()
 	data["settings"] = list()
@@ -886,13 +880,13 @@ Pass a positive integer as an argument to override a bot's default speed.
 	. = ..()
 	if(.)
 		return
-	if(!bot_core.allowed(usr) && !usr.has_unlimited_silicon_privilege)
+	if(!check_access(usr))
 		to_chat(usr, span_warning("Access denied."))
 		return
+
 	if(action == "lock")
 		bot_cover_flags ^= BOT_COVER_LOCKED
-	if(bot_cover_flags & BOT_COVER_LOCKED && !(issilicon(usr) || isAdminGhostAI(usr)))
-		return
+
 	switch(action)
 		if("power")
 			if(bot_mode_flags & BOT_MODE_ON)
@@ -926,21 +920,10 @@ Pass a positive integer as an argument to override a bot's default speed.
 			if(paicard)
 				to_chat(usr, span_notice("You eject [paicard] from [initial(src.name)]."))
 				ejectpai(usr)
-	return
 
 /mob/living/simple_animal/bot/update_icon_state()
-	icon_state = "[initial(icon_state)][get_bot_flag(BOT_MODE_ON)]"
+	icon_state = "[initial(icon_state)][get_bot_flag(bot_mode_flags, BOT_MODE_ON)]"
 	return ..()
-
-// Machinery to simplify topic and access calls
-/obj/machinery/bot_core
-	use_power = NO_POWER_USE
-	anchored = FALSE
-
-/obj/machinery/bot_core/Initialize(mapload)
-	. = ..()
-	if(!isbot(loc))
-		return INITIALIZE_HINT_QDEL
 
 /mob/living/simple_animal/bot/proc/topic_denied(mob/user) //Access check proc for bot topics! Remember to place in a bot's individual Topic if desired.
 	if(!user.canUseTopic(src, !issilicon(user)))
@@ -957,11 +940,11 @@ Pass a positive integer as an argument to override a bot's default speed.
 	if(paicard)
 		to_chat(user, span_warning("A [paicard] is already inserted!"))
 		return
-	if(!(bot_mode_flags & BOT_MODE_PAI_CONTROLLABLE) || !key)
-		to_chat(user, span_warning("[src] is not compatible with [card]!"))
-		return
 	if(bot_cover_flags & BOT_COVER_LOCKED || !(bot_cover_flags & BOT_COVER_OPEN))
 		to_chat(user, span_warning("The personality slot is locked."))
+		return
+	if(!(bot_mode_flags & BOT_MODE_PAI_CONTROLLABLE) || key) //Not pAI controllable or is already player controlled.
+		to_chat(user, span_warning("[src] is not compatible with [card]!"))
 		return
 	if(!card.pai || !card.pai.mind)
 		to_chat(user, span_warning("[card] is inactive."))
@@ -998,7 +981,7 @@ Pass a positive integer as an argument to override a bot's default speed.
 		faction = initial(faction)
 
 /mob/living/simple_animal/bot/proc/ejectpairemote(mob/user)
-	if(bot_core.allowed(user) && paicard)
+	if(check_access(user) && paicard)
 		speak("Ejecting personality chip.", radio_channel)
 		ejectpai(user)
 
@@ -1036,18 +1019,17 @@ Pass a positive integer as an argument to override a bot's default speed.
 	var/list/path_huds_watching_me = list(GLOB.huds[DATA_HUD_DIAGNOSTIC_ADVANCED])
 	if(path_hud)
 		path_huds_watching_me += path_hud
-	for(var/V in path_huds_watching_me)
-		var/datum/atom_hud/H = V
-		H.remove_from_hud(src)
+	for(var/datum/atom_hud/hud as anything in path_huds_watching_me)
+		hud.remove_atom_from_hud(src)
 
-	var/list/path_images = hud_list[DIAG_PATH_HUD]
+	var/list/path_images = active_hud_list[DIAG_PATH_HUD]
 	QDEL_LIST(path_images)
 	if(newpath)
 		for(var/i in 1 to newpath.len)
 			var/turf/T = newpath[i]
 			if(T == loc) //don't bother putting an image if it's where we already exist.
 				continue
-			var/direction = NORTH
+			var/direction = get_dir(src, T)
 			if(i > 1)
 				var/turf/prevT = path[i - 1]
 				var/image/prevI = path[prevT]
@@ -1070,7 +1052,7 @@ Pass a positive integer as an argument to override a bot's default speed.
 			MA.icon = path_image_icon
 			MA.icon_state = path_image_icon_state
 			MA.layer = ABOVE_OPEN_TURF_LAYER
-			MA.plane = 0
+			MA.plane = GAME_PLANE
 			MA.appearance_flags = RESET_COLOR|RESET_TRANSFORM
 			MA.color = path_image_color
 			MA.dir = direction
@@ -1079,21 +1061,19 @@ Pass a positive integer as an argument to override a bot's default speed.
 			path[T] = I
 			path_images += I
 
-	for(var/V in path_huds_watching_me)
-		var/datum/atom_hud/H = V
-		H.add_to_hud(src)
-
+	for(var/datum/atom_hud/hud as anything in path_huds_watching_me)
+		hud.add_atom_to_hud(src)
 
 /mob/living/simple_animal/bot/proc/increment_path()
 	if(!length(path))
 		return
 	var/image/I = path[path[1]]
 	if(I)
-		I.icon_state = null
+		animate(I, alpha = 0, time = 3)
 	path.Cut(1, 2)
 
 	if(!length(path))
-		set_path(null)
+		addtimer(CALLBACK(src, .proc/set_path, null), 0.6 SECONDS) // Enough time for the animate to finish
 
 /mob/living/simple_animal/bot/rust_heretic_act()
 	adjustBruteLoss(400)

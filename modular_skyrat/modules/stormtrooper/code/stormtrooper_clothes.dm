@@ -4,7 +4,7 @@
 	icon = 'modular_skyrat/modules/stormtrooper/icons/items.dmi'
 	worn_icon = 'modular_skyrat/modules/stormtrooper/icons/head.dmi'
 	icon_state = "stormtrooper_helmet"
-	mutant_variants = NONE
+	supports_variations_flags = NONE
 
 /obj/item/clothing/suit/armor/stormtrooper
 	name = "stormtrooper suit"
@@ -12,7 +12,7 @@
 	icon_state = "stormtrooper_suit"
 	icon = 'modular_skyrat/modules/stormtrooper/icons/items.dmi'
 	worn_icon = 'modular_skyrat/modules/stormtrooper/icons/suit.dmi'
-	mutant_variants = NONE
+	supports_variations_flags = NONE
 
 /obj/item/clothing/shoes/combat/stormtrooper
 	name = "stormtrooper boots"
@@ -24,9 +24,8 @@
 	strip_delay = 30
 	equip_delay_other = 50
 	resistance_flags = NONE
-	permeability_coefficient = 0.05 //Thick soles, and covers the ankle
 	can_be_tied = FALSE
-	mutant_variants = NONE
+	supports_variations_flags = NONE
 
 /obj/item/clothing/gloves/combat/peacekeeper/stormtrooper
 	name = "stormtrooper gloves"

@@ -13,7 +13,7 @@
 		return
 
 	if(!uses) // Can be set to -1 for infinite uses, basically.
-		to_chat(user, span_warning("No matter how hard you shake the can, nothing'll come out, it's empty!"))
+		balloon_alert(user, "it's empty!")
 		return
 
 	var/mob/living/carbon/human/human_target = target
@@ -32,7 +32,7 @@
 
 		human_target.visible_message(span_notice("[user] starts applying hair dye to [dying_themselves ? "their own" : "[human_target]'s"] hair..."), span_notice("[dying_themselves ? "You start" : "[user] starts"] applying hair dye to [dying_themselves ? "your own" : "your"] hair..."), ignored_mobs = user)
 		if(!dying_themselves)
-			to_chat(user, "You start applying hair dye to [human_target]'s hair...")
+			balloon_alert(user, "dyeing...")
 		if(!do_after(usr, 3 SECONDS, target))
 			return
 		human_target.hair_color = sanitize_hexcolor(new_color)
@@ -53,7 +53,7 @@
 
 		human_target.visible_message(span_notice("[user] starts applying hair dye to [dying_themselves ? "their own" : "[human_target]'s"] hair..."), span_notice("[dying_themselves ? "You start" : "[user] starts"] applying hair dye to [dying_themselves ? "your own" : "your"] hair..."), ignored_mobs = user)
 		if(!dying_themselves)
-			to_chat(user, "You start applying hair dye to [human_target]'s hair...")
+			balloon_alert(user, "dyeing...")
 		if(!do_after(usr, 3 SECONDS, target))
 			return
 		var/gradient_key = beard_or_hair == "Hair" ? GRADIENT_HAIR_KEY : GRADIENT_FACIAL_HAIR_KEY
@@ -64,8 +64,8 @@
 	playsound(src, 'sound/effects/spray.ogg', 5, TRUE, 5)
 	human_target.visible_message(span_notice("[user] finishes applying hair dye to [dying_themselves ? "their own" : "[human_target]'s"] hair, changing its color!"), span_notice("[dying_themselves ? "You finish" : "[user] finishes"] applying hair dye to [dying_themselves ? "your own" : "your"] hair, changing its color!"), ignored_mobs = user)
 	if(!dying_themselves)
-		to_chat(user, "You finish applying hair dye to [human_target]'s hair, changing its color!")
-	human_target.update_hair()
+		balloon_alert(user, "dyeing complete!")
+	human_target.update_hair(is_creating = TRUE)
 
 	uses--
 

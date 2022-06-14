@@ -93,15 +93,12 @@
 		return TRUE
 
 /obj/item/clothing/accessory/badge/holo/attackby(var/obj/item/object as obj, var/mob/user as mob)
-	if(istype(object, /obj/item/card/id) || istype(object, /obj/item/pda))
+	if(istype(object, /obj/item/card/id))
 
 		var/obj/item/card/id/id_card = null
 
 		if(istype(object, /obj/item/card/id))
 			id_card = object
-		else
-			var/obj/item/pda/pda = object
-			id_card = pda.id
 
 		if(ACCESS_BRIG in id_card.access || emagged)
 			to_chat(user, "You imprint your ID details onto the badge.")

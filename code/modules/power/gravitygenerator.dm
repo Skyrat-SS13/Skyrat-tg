@@ -34,11 +34,11 @@ GLOBAL_LIST_EMPTY(gravity_generators) // We will keep track of this by adding ne
 	///Audio for when the gravgen is on
 	var/datum/looping_sound/gravgen/soundloop
 
-/obj/machinery/gravity_generator/main/Initialize(mapload)
+/obj/machinery/gravity_generator/Initialize(mapload)
 	. = ..()
 	soundloop = new(src, TRUE)
 
-/obj/machinery/gravity_generator/main/Destroy()
+/obj/machinery/gravity_generator/Destroy()
 	QDEL_NULL(gravity_field)
 	QDEL_NULL(soundloop)
 	return ..()
@@ -133,7 +133,7 @@ GLOBAL_LIST_EMPTY(gravity_generators) // We will keep track of this by adding ne
 /obj/machinery/gravity_generator/main
 	icon_state = "on_8"
 	idle_power_usage = 0
-	active_power_usage = 3000
+	active_power_usage = BASE_MACHINE_ACTIVE_CONSUMPTION * 3
 	power_channel = AREA_USAGE_ENVIRON
 	sprite_number = 8
 	use_power = IDLE_POWER_USE
@@ -147,6 +147,12 @@ GLOBAL_LIST_EMPTY(gravity_generators) // We will keep track of this by adding ne
 	var/current_overlay = null
 	var/broken_state = 0
 	var/setting = 1 //Gravity value when on
+
+///Station generator that spawns with gravity turned off.
+/obj/machinery/gravity_generator/main/station/off
+	on = FALSE
+	breaker = FALSE
+	charge_count = 0
 
 /obj/machinery/gravity_generator/main/Destroy() // If we somehow get deleted, remove all of our other parts.
 	investigate_log("was destroyed!", INVESTIGATE_GRAVITY)
@@ -173,6 +179,7 @@ GLOBAL_LIST_EMPTY(gravity_generators) // We will keep track of this by adding ne
 		if(count <= 3) // Their sprite is the top part of the generator
 			part.set_density(FALSE)
 			part.layer = WALL_OBJ_LAYER
+			part.plane = GAME_PLANE_UPPER
 		part.sprite_number = count
 		part.main_part = src
 		parts += part
@@ -207,39 +214,40 @@ GLOBAL_LIST_EMPTY(gravity_generators) // We will keep track of this by adding ne
 
 // Fixing the gravity generator.
 /obj/machinery/gravity_generator/main/attackby(obj/item/I, mob/user, params)
-	switch(broken_state)
-		if(GRAV_NEEDS_SCREWDRIVER)
-			if(I.tool_behaviour == TOOL_SCREWDRIVER)
-				to_chat(user, span_notice("You secure the screws of the framework."))
-				I.play_tool_sound(src)
-				broken_state++
-				update_appearance()
-				return
-		if(GRAV_NEEDS_WELDING)
-			if(I.tool_behaviour == TOOL_WELDER)
-				if(I.use_tool(src, user, 0, volume=50, amount=1))
-					to_chat(user, span_notice("You mend the damaged framework."))
+	if(machine_stat & BROKEN)
+		switch(broken_state)
+			if(GRAV_NEEDS_SCREWDRIVER)
+				if(I.tool_behaviour == TOOL_SCREWDRIVER)
+					to_chat(user, span_notice("You secure the screws of the framework."))
+					I.play_tool_sound(src)
 					broken_state++
 					update_appearance()
-				return
-		if(GRAV_NEEDS_PLASTEEL)
-			if(istype(I, /obj/item/stack/sheet/plasteel))
-				var/obj/item/stack/sheet/plasteel/PS = I
-				if(PS.get_amount() >= 10)
-					PS.use(10)
-					to_chat(user, span_notice("You add the plating to the framework."))
-					playsound(src.loc, 'sound/machines/click.ogg', 75, TRUE)
-					broken_state++
-					update_appearance()
-				else
-					to_chat(user, span_warning("You need 10 sheets of plasteel!"))
-				return
-		if(GRAV_NEEDS_WRENCH)
-			if(I.tool_behaviour == TOOL_WRENCH)
-				to_chat(user, span_notice("You secure the plating to the framework."))
-				I.play_tool_sound(src)
-				set_fix()
-				return
+					return
+			if(GRAV_NEEDS_WELDING)
+				if(I.tool_behaviour == TOOL_WELDER)
+					if(I.use_tool(src, user, 0, volume=50, amount=1))
+						to_chat(user, span_notice("You mend the damaged framework."))
+						broken_state++
+						update_appearance()
+					return
+			if(GRAV_NEEDS_PLASTEEL)
+				if(istype(I, /obj/item/stack/sheet/plasteel))
+					var/obj/item/stack/sheet/plasteel/PS = I
+					if(PS.get_amount() >= 10)
+						PS.use(10)
+						to_chat(user, span_notice("You add the plating to the framework."))
+						playsound(src.loc, 'sound/machines/click.ogg', 75, TRUE)
+						broken_state++
+						update_appearance()
+					else
+						to_chat(user, span_warning("You need 10 sheets of plasteel!"))
+					return
+			if(GRAV_NEEDS_WRENCH)
+				if(I.tool_behaviour == TOOL_WRENCH)
+					to_chat(user, span_notice("You secure the plating to the framework."))
+					I.play_tool_sound(src)
+					set_fix()
+					return
 	return ..()
 
 /obj/machinery/gravity_generator/main/ui_interact(mob/user, datum/tgui/ui)
@@ -308,7 +316,7 @@ GLOBAL_LIST_EMPTY(gravity_generators) // We will keep track of this by adding ne
 		investigate_log("was brought online and is now producing gravity for this level.", INVESTIGATE_GRAVITY)
 		message_admins("The gravity generator was brought online [ADMIN_VERBOSEJMP(src)]")
 		shake_everyone()
-	gravity_field = make_field(/datum/proximity_monitor/advanced/gravity, list("current_range" = 2, "host" = src, "gravity_value" = 6))
+	gravity_field = new(src, 2, TRUE, 6)
 
 	complete_state_update()
 
@@ -332,7 +340,6 @@ GLOBAL_LIST_EMPTY(gravity_generators) // We will keep track of this by adding ne
 /obj/machinery/gravity_generator/main/proc/complete_state_update()
 	update_appearance()
 	update_list()
-	updateUsrDialog()
 
 // Set the state of the gravity.
 /obj/machinery/gravity_generator/main/proc/set_state(new_state)
@@ -369,8 +376,6 @@ GLOBAL_LIST_EMPTY(gravity_generators) // We will keep track of this by adding ne
 			if(charge_count % 4 == 0 && prob(75)) // Let them know it is charging/discharging.
 				playsound(src.loc, 'sound/effects/empulse.ogg', 100, TRUE)
 
-			updateDialog()
-
 			var/overlay_state = null
 			switch(charge_count)
 				if(0 to 20)
@@ -399,7 +404,7 @@ GLOBAL_LIST_EMPTY(gravity_generators) // We will keep track of this by adding ne
 		var/mob/M = i
 		if(M.z != z && !(SSmapping.level_trait(z, ZTRAITS_STATION) && SSmapping.level_trait(M.z, ZTRAITS_STATION)))
 			continue
-		M.update_gravity(M.mob_has_gravity())
+		M.update_gravity(M.has_gravity())
 		if(M.client)
 			shake_camera(M, 15, 1)
 			M.playsound_local(T, null, 100, 1, 0.5, S = alert_sound)
@@ -440,6 +445,13 @@ GLOBAL_LIST_EMPTY(gravity_generators) // We will keep track of this by adding ne
 	if(value != setting)
 		setting = value
 		shake_everyone()
+
+/obj/machinery/gravity_generator/main/proc/blackout()
+	charge_count = 0
+	breaker = FALSE
+	set_power()
+	disable()
+	investigate_log("was turned off by blackout event or a gravity anomaly detonation.", INVESTIGATE_GRAVITY)
 
 // Misc
 

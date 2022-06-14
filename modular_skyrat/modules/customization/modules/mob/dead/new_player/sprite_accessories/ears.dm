@@ -1,13 +1,15 @@
 /datum/sprite_accessory/ears
 	key = "ears"
 	generic = "Ears"
-	organ_type = /obj/item/organ/ears/mutant
-	relevent_layers = list(BODY_ADJ_LAYER, BODY_FRONT_LAYER)
+	organ_type = /obj/item/organ/internal/ears/mutant
+	relevent_layers = list(BODY_BEHIND_LAYER, BODY_ADJ_LAYER, BODY_FRONT_LAYER)
 	genetic = TRUE
 
 /datum/sprite_accessory/ears/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
-	if(H.head && (H.head.flags_inv & HIDEHAIR) || (H.wear_mask && (H.wear_mask.flags_inv & HIDEHAIR)) || !HD)
-		return TRUE
+	if(H.head && ((H.head.flags_inv & HIDEHAIR)  && H.try_hide_mutant_parts) || ((H.wear_mask && (H.wear_mask.flags_inv & HIDEHAIR))  && H.try_hide_mutant_parts) || !HD)
+		//This line basically checks if we FORCE accessory-ears to show, for items with earholes like Balaclavas and Luchador masks
+		if(!(H.head && (H.head.flags_inv & SHOWSPRITEEARS) || (H.wear_mask && (H.wear_mask.flags_inv & SHOWSPRITEEARS)) || !HD))
+			return TRUE
 	return FALSE
 
 
@@ -17,7 +19,7 @@
 
 /datum/sprite_accessory/ears/mutant
 	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/ears.dmi'
-	organ_type = /obj/item/organ/ears/mutant
+	organ_type = /obj/item/organ/internal/ears/mutant
 	color_src = USE_MATRIXED_COLORS
 	recommended_species = list(SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_HUMAN, SPECIES_SYNTHHUMAN, SPECIES_FELINE, SPECIES_HUMANOID, SPECIES_GHOUL)
 	uses_emissives = TRUE
@@ -27,6 +29,9 @@
 	icon_state = "none"
 	color_src = null
 	factual = FALSE
+
+/datum/sprite_accessory/ears/mutant/big
+	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/ears_big.dmi'
 
 /datum/sprite_accessory/ears/mutant/vulpkanin
 	recommended_species = list(SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_HUMAN, SPECIES_SYNTHHUMAN, SPECIES_FELINE, SPECIES_VULP, SPECIES_HUMANOID, SPECIES_GHOUL)
@@ -115,6 +120,18 @@
 	color_src = USE_ONE_COLOR
 	default_color = DEFAULT_SKIN_OR_PRIMARY
 
+/datum/sprite_accessory/ears/mutant/elf/wide
+	name = "Wide Elf"
+	icon_state = "elfwide"
+
+/datum/sprite_accessory/ears/mutant/elf/broad
+	name = "Broad Elf"
+	icon_state = "elfbroad"
+
+/datum/sprite_accessory/ears/mutant/elf/longer
+	name = "Longer Elf"
+	icon_state = "elflonger"
+
 /datum/sprite_accessory/ears/mutant/elephant
 	name = "Elephant"
 	icon_state = "elephant"
@@ -166,6 +183,18 @@
 /datum/sprite_accessory/ears/mutant/rabbit
 	name = "Rabbit"
 	icon_state = "rabbit"
+
+/datum/sprite_accessory/ears/mutant/big/hare_large
+	name = "Rabbit (Large)"
+	icon_state = "bunny_large"
+
+/datum/sprite_accessory/ears/mutant/big/bunny_large
+	name = "Curved Rabbit Ears (Large)"
+	icon_state = "rabbit_large"
+
+/datum/sprite_accessory/ears/mutant/big/sandfox_large
+	name = "Sandfox (Large)"
+	icon_state = "sandfox_large"
 
 /datum/sprite_accessory/ears/mutant/pede
 	name = "Scolipede"
@@ -285,26 +314,31 @@
 /datum/sprite_accessory/ears/mutant/teshari/feathers_mushroom
 	name = "Teshari Feathers Mushroom"
 	icon_state = "teshari_feathers_mushroom"
-	color_src = USE_ONE_COLOR 
+	color_src = USE_ONE_COLOR
 	// Converting each one of these to rbg matrixed is like a 20+ minute process per sprite to make it look good
 	// and this one looks kinda meh anyway so I cba, it stays greyscale
 
 /datum/sprite_accessory/ears/mutant/teshari/feathers_backstrafe
 	name = "Teshari Feathers Backstrafe"
 	icon_state = "teshari_feathers_backstrafe"
-	color_src = USE_ONE_COLOR 
+	color_src = USE_ONE_COLOR
 
 /datum/sprite_accessory/ears/mutant/teshari/feathers_thinmohawk
 	name = "Teshari Feathers Thin Mohawk"
 	icon_state = "teshari_feathers_thinmohawk"
-	color_src = USE_ONE_COLOR 
+	color_src = USE_ONE_COLOR
 
 /datum/sprite_accessory/ears/mutant/teshari/feathers_thinmane
 	name = "Teshari Feathers Thin Mane"
 	icon_state = "teshari_feathers_thinmane"
-	color_src = USE_ONE_COLOR 
+	color_src = USE_ONE_COLOR
 
 /datum/sprite_accessory/ears/mutant/deer2
 	name = "Deer 2"
 	icon_state = "deer2"
+	color_src = USE_ONE_COLOR
+
+/datum/sprite_accessory/ears/mutant/mouse
+	name = "Mouse"
+	icon_state = "mouse"
 	color_src = USE_ONE_COLOR

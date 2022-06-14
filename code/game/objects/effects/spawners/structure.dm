@@ -91,7 +91,7 @@ again.
 /obj/effect/spawner/structure/window/reinforced
 	name = "reinforced window spawner"
 	icon_state = "rwindow_spawner"
-	spawn_list = list(/obj/machinery/door/firedoor/onetile, /obj/structure/grille, /obj/structure/window/reinforced/fulltile) //SKYRAT EDIT CHANGE
+	spawn_list = list(/obj/structure/grille, /obj/structure/window/reinforced/fulltile)
 
 /obj/effect/spawner/structure/window/hollow/reinforced
 	name = "hollow reinforced window spawner"
@@ -153,6 +153,13 @@ again.
 	name = "tinted reinforced window spawner"
 	icon_state = "twindow_spawner"
 	spawn_list = list(/obj/structure/grille, /obj/structure/window/reinforced/tinted/fulltile)
+
+//bronze
+
+/obj/effect/spawner/structure/window/bronze
+	name = "bronze window spawner"
+	icon_state = "bronzewindow_spawner"
+	spawn_list = list(/obj/structure/grille, /obj/structure/window/bronze/fulltile)
 
 
 //shuttle window

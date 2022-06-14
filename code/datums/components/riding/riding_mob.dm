@@ -1,5 +1,11 @@
 // For any mob that can be ridden
 
+//SKYRAT EDIT START: Human Riding Defines
+#define OVERSIZED_OFFSET 18
+#define OVERSIZED_SIDE_OFFSET 11
+#define REGULAR_OFFSET 6
+#define REGULAR_SIDE_OFFSET 4
+//SKYRAT EDIT END
 /datum/component/riding/creature
 	/// If TRUE, this creature's movements can be controlled by the rider while mounted (as opposed to riding cyborgs and humans, which is passive)
 	var/can_be_driven = TRUE
@@ -47,21 +53,21 @@
 	rider.log_message("started riding [living_parent]", LOG_ATTACK, color="pink")
 
 // this applies to humans and most creatures, but is replaced again for cyborgs
-/datum/component/riding/creature/ride_check(mob/living/rider)
+/datum/component/riding/creature/ride_check(mob/living/rider, consequences = TRUE)
+	. = TRUE
 	var/mob/living/living_parent = parent
 
-	var/kick_us_off
 	if(living_parent.body_position != STANDING_UP) // if we move while on the ground, the rider falls off
-		kick_us_off = TRUE
+		. = FALSE
 	// for piggybacks and (redundant?) borg riding, check if the rider is stunned/restrained
-	else if((ride_check_flags & RIDER_NEEDS_ARMS) && (HAS_TRAIT(rider, TRAIT_RESTRAINED) || rider.incapacitated(TRUE, TRUE)))
-		kick_us_off = TRUE
+	else if((ride_check_flags & RIDER_NEEDS_ARMS) && (HAS_TRAIT(rider, TRAIT_RESTRAINED) || rider.incapacitated(IGNORE_RESTRAINTS|IGNORE_GRAB)))
+		. = FALSE
 	// for fireman carries, check if the ridden is stunned/restrained
-	else if((ride_check_flags & CARRIER_NEEDS_ARM) && (HAS_TRAIT(living_parent, TRAIT_RESTRAINED) || living_parent.incapacitated(TRUE, TRUE)))
-		kick_us_off = TRUE
+	else if((ride_check_flags & CARRIER_NEEDS_ARM) && (HAS_TRAIT(living_parent, TRAIT_RESTRAINED) || living_parent.incapacitated(IGNORE_RESTRAINTS|IGNORE_GRAB)))
+		. = FALSE
 
-	if(!kick_us_off)
-		return TRUE
+	if(. || !consequences)
+		return
 
 	rider.visible_message(span_warning("[rider] falls off of [living_parent]!"), \
 					span_warning("You fall off of [living_parent]!"))
@@ -141,7 +147,7 @@
 		var/obj/effect/proc_holder/proc_holder = ability
 		if(!proc_holder.action)
 			return
-		proc_holder.action.Share(rider)
+		proc_holder.action.GiveAction(rider)
 
 /// Takes away the riding parent's abilities from the rider
 /datum/component/riding/creature/proc/remove_abilities(mob/living/rider)
@@ -156,7 +162,21 @@
 			return
 		if(rider == proc_holder.ranged_ability_user)
 			proc_holder.remove_ranged_ability()
-		proc_holder.action.Unshare(rider)
+		proc_holder.action.HideFrom(rider)
+
+/datum/component/riding/creature/riding_can_z_move(atom/movable/movable_parent, direction, turf/start, turf/destination, z_move_flags, mob/living/rider)
+	if(!(z_move_flags & ZMOVE_CAN_FLY_CHECKS))
+		return COMPONENT_RIDDEN_ALLOW_Z_MOVE
+	if(!can_be_driven)
+		if(z_move_flags & ZMOVE_FEEDBACK)
+			to_chat(rider, span_warning("[movable_parent] cannot be driven around. Unbuckle from [movable_parent.p_them()] first."))
+		return COMPONENT_RIDDEN_STOP_Z_MOVE
+	if(!ride_check(rider, FALSE))
+		if(z_move_flags & ZMOVE_FEEDBACK)
+			to_chat(rider, span_warning("You're unable to ride [movable_parent] right now!"))
+		return COMPONENT_RIDDEN_STOP_Z_MOVE
+	return COMPONENT_RIDDEN_ALLOW_Z_MOVE
+
 
 ///////Yes, I said humans. No, this won't end well...//////////
 /datum/component/riding/creature/human
@@ -241,11 +261,32 @@
 
 /datum/component/riding/creature/human/get_offsets(pass_index)
 	var/mob/living/carbon/human/H = parent
+	//SKYRAT EDIT BEGIN - Oversized Overhaul
 	if(H.buckle_lying)
-		return list(TEXT_NORTH = list(0, 6), TEXT_SOUTH = list(0, 6), TEXT_EAST = list(0, 6), TEXT_WEST = list(0, 6))
+		return HAS_TRAIT(H, TRAIT_OVERSIZED) ? list(
+				TEXT_NORTH = list(0, OVERSIZED_OFFSET),
+				TEXT_SOUTH = list(0, OVERSIZED_OFFSET),
+				TEXT_EAST = list(0, OVERSIZED_OFFSET),
+				TEXT_WEST = list(0, OVERSIZED_OFFSET),
+			) : list(
+				TEXT_NORTH = list(0, REGULAR_OFFSET),
+				TEXT_SOUTH = list(0, REGULAR_OFFSET),
+				TEXT_EAST = list(0, REGULAR_OFFSET),
+				TEXT_WEST = list(0, REGULAR_OFFSET),
+			)
 	else
-		return list(TEXT_NORTH = list(0, 6), TEXT_SOUTH = list(0, 6), TEXT_EAST = list(-6, 4), TEXT_WEST = list( 6, 4))
-
+		return HAS_TRAIT(H, TRAIT_OVERSIZED) ? list(
+				TEXT_NORTH = list(0, OVERSIZED_OFFSET),
+				TEXT_SOUTH = list(0, OVERSIZED_OFFSET),
+				TEXT_EAST = list(-OVERSIZED_SIDE_OFFSET, OVERSIZED_OFFSET),
+				TEXT_WEST = list(OVERSIZED_SIDE_OFFSET, OVERSIZED_OFFSET),
+			) : list(
+				TEXT_NORTH = list(0, REGULAR_OFFSET),
+				TEXT_SOUTH = list(0, REGULAR_OFFSET),
+				TEXT_EAST = list(-REGULAR_OFFSET, REGULAR_SIDE_OFFSET),
+				TEXT_WEST = list(REGULAR_OFFSET, REGULAR_SIDE_OFFSET)
+			)
+	//SKYRAT EDIT END
 /datum/component/riding/creature/human/force_dismount(mob/living/dismounted_rider)
 	var/atom/movable/AM = parent
 	AM.unbuckle_mob(dismounted_rider)
@@ -259,12 +300,12 @@
 /datum/component/riding/creature/cyborg
 	can_be_driven = FALSE
 
-/datum/component/riding/creature/cyborg/ride_check(mob/living/user)
+/datum/component/riding/creature/cyborg/ride_check(mob/living/user, consequences = TRUE)
 	var/mob/living/silicon/robot/robot_parent = parent
 	if(!iscarbon(user))
-		return
-	var/mob/living/carbon/carbonuser = user
-	if(!carbonuser.usable_hands)
+		return TRUE
+	. = user.usable_hands
+	if(!. && consequences)
 		Unbuckle(user)
 		to_chat(user, span_warning("You can't grab onto [robot_parent] with no hands!"))
 
@@ -377,3 +418,11 @@
 	set_vehicle_dir_offsets(NORTH, movable_parent.pixel_x, 0)
 	set_vehicle_dir_offsets(EAST, movable_parent.pixel_x, 0)
 	set_vehicle_dir_offsets(WEST, movable_parent.pixel_x, 0)
+
+
+//SKYRAT EDIT START: Human Riding Defines
+#undef OVERSIZED_OFFSET
+#undef OVERSIZED_SIDE_OFFSET
+#undef REGULAR_OFFSET
+#undef REGULAR_SIDE_OFFSET
+//SKYRAT EDIT END

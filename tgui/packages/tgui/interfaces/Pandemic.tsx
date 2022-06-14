@@ -1,13 +1,14 @@
-import { useBackend, useSharedState } from '../backend';
+import { BooleanLike } from '../../common/react';
+import { useBackend, useLocalState } from '../backend';
 import { Box, Button, Collapsible, Input, LabeledList, NoticeBox, ProgressBar, Section, Stack, Tabs, Tooltip } from '../components';
 import { Window } from '../layouts';
 
 type PandemicContext = {
   beaker?: Beaker;
   blood?: Blood;
-  has_beaker: number;
-  has_blood: number;
-  is_ready: number;
+  has_beaker: BooleanLike;
+  has_blood: BooleanLike;
+  is_ready: BooleanLike;
   resistances?: Resistance[];
   viruses?: Virus[];
 };
@@ -29,9 +30,9 @@ type Resistance = {
 
 type Virus = {
   name: string;
-  can_rename: number;
-  is_adv: number;
-  symptoms: Symptom[];
+  can_rename: BooleanLike;
+  is_adv: BooleanLike;
+  symptoms?: Symptom[];
   resistance: number;
   stealth: number;
   stage_speed: number;
@@ -64,7 +65,7 @@ type Symptom = {
   stage_speed: number;
   transmission: number;
   level: number;
-  neutered: number;
+  neutered: BooleanLike;
   threshold_desc: Threshold[];
 };
 
@@ -207,7 +208,7 @@ const BeakerInfoDisplay = (_, context) => {
 /** If antibodies are present, returns buttons to create vaccines */
 const AntibodyInfoDisplay = (_, context) => {
   const { act, data } = useBackend<PandemicContext>(context);
-  const { is_ready, resistances } = data;
+  const { is_ready, resistances = [] } = data;
   if (!resistances) {
     return <NoticeBox>Nothing detected</NoticeBox>;
   }
@@ -240,15 +241,15 @@ const AntibodyInfoDisplay = (_, context) => {
 /** Displays info for the loaded blood, if any */
 const SpecimenDisplay = (_, context) => {
   const { act, data } = useBackend<PandemicContext>(context);
-  const [tab, setTab] = useSharedState(context, 'tab', 0);
-  const { is_ready, viruses } = data;
-  if (!viruses?.length) {
-    return <NoticeBox>No viruses detected</NoticeBox>;
-  }
+  const [tab, setTab] = useLocalState(context, 'tab', 0);
+  const { is_ready, viruses = [] } = data;
   const virus = viruses[tab];
   const setTabHandler = (index: number) => {
     setTab(index);
   };
+  if (!viruses?.length || !virus) {
+    return <NoticeBox>Nothing detected.</NoticeBox>;
+  }
 
   return (
     <Section
@@ -280,7 +281,8 @@ const SpecimenDisplay = (_, context) => {
           <VirusDisplay virus={virus} />
         </Stack.Item>
         <Stack.Item>
-          <SymptomDisplay symptoms={virus.symptoms} />
+          {virus?.symptoms
+          && <SymptomDisplay symptoms={virus.symptoms} />}
         </Stack.Item>
       </Stack>
     </Section>
@@ -293,10 +295,7 @@ const SpecimenDisplay = (_, context) => {
 const VirusTabs = (props: TabsProps, context) => {
   const { data } = useBackend<PandemicContext>(context);
   const { tab, tabHandler } = props;
-  const { viruses } = data;
-  if (!viruses) {
-    return <NoticeBox>No viruses detected</NoticeBox>;
-  }
+  const { viruses = [] } = data;
 
   return (
     <Tabs>
@@ -349,7 +348,7 @@ const VirusTextInfo = (props: VirusInfoProps, context) => {
           <Input
             placeholder="Input a name"
             value={virus.name === 'Unknown' ? '' : virus.name}
-            onChange={(e, value) =>
+            onChange={(_, value) =>
               act('rename_disease', {
                 index: virus.index,
                 name: value,
@@ -416,8 +415,8 @@ const VirusTraitInfo = (props: VirusInfoProps) => {
  * Returns info about symptoms as collapsibles.
  */
 const SymptomDisplay = (props: SymptomDisplayProps) => {
-  const { symptoms } = props;
-  if (!symptoms.length) {
+  const { symptoms = [] } = props;
+  if (!symptoms || !symptoms.length) {
     return <NoticeBox>No symptoms detected.</NoticeBox>;
   }
 
@@ -488,11 +487,11 @@ const SymptomTraitInfo = (props: SymptomInfoProps) => {
 
 /** Displays threshold data */
 const ThresholdDisplay = (props: ThresholdDisplayProps) => {
-  const { thresholds } = props;
+  const { thresholds = [] } = props;
   let convertedThresholds: Threshold[] = [];
   // Converts obj of obj => array of thresholds
   // I'm sure there's a more succinct way to do this
-  Object.entries(thresholds).map((label, value) => {
+  Object.entries(thresholds).map((label) => {
     return convertedThresholds.push({
       label: label[0],
       descr: label[1].toString(),

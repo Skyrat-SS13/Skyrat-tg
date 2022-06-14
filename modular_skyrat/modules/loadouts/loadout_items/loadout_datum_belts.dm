@@ -1,4 +1,6 @@
-// --- Loadout item datums for belts ---
+/*
+*	LOADOUT ITEM DATUMS FOR THE BELT SLOT
+*/
 
 /// Belt Slot Items (Moves overrided items to backpack)
 GLOBAL_LIST_INIT(loadout_belts, generate_loadout_items(/datum/loadout_item/belts))
@@ -19,7 +21,7 @@ GLOBAL_LIST_INIT(loadout_belts, generate_loadout_items(/datum/loadout_item/belts
 	item_path = /obj/item/storage/belt/fannypack/black
 
 /datum/loadout_item/belts/fanny_pack_blue
-	name = "Blu Fannypack"
+	name = "Blue Fannypack"
 	item_path = /obj/item/storage/belt/fannypack/blue
 
 /datum/loadout_item/belts/fanny_pack_brown

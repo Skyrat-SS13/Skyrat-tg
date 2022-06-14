@@ -17,6 +17,10 @@ Don't dump on them the work that you could have done yourself.
 
 This document is meant to be updated and changed, whenever any new exceptions are added onto it. It might be worth it to check, from time to time, whether we didn't define a more unique standardized way of handling some common change.
 
+## Important note - TEST YOUR PULL REQUESTS
+
+You are responsible for the testing of your content. You should not mark a pull request ready for review until you have actually tested it. If you require a separate client for testing, you can use a guest account by logging out of BYOND and connecting to your test server. Test merges are not for bug finding, they are for stress tests where local testing simply doesn't allow for this.
+
 ### The nature of conflicts
 
 For example, let's have an original
@@ -73,6 +77,8 @@ The major station maps have their equivalents in the same folder as the original
 If you wanted to add some location to the CentCom z-level, a'la whatever off-station location that isn't meant to be reachable or escapable through normal means, we have our own separate z-level, in `_maps/map_files/generic/Offstation_skyrat.dmm`. That z-level, by design, has the same traits as the CentCom z-level, meaning that teleporters and a lot of other things will simply refuse to work there.
 
 If you plan to edit space ruins and so on, currently, it should be discussed with a maintainer and likely should be PRed upstream, to tgstation repository.
+
+Put any skyrat specific maps into the _maps/ folder, and then into the skyrat folder inside the type. E.g. an ice ruin map would go into_maps/RandomRuins/IceRuins/skyrat/whatever.dmm.
 
 ### Assets: images, sounds, icons and binaries
 

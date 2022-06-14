@@ -18,8 +18,10 @@ GLOBAL_PROTECT(admin_verbs_default)
 	/client/proc/cmd_admin_pm_panel, /*admin-pm list*/
 	/client/proc/stop_sounds,
 	/client/proc/mark_datum_mapview,
+	/client/proc/tag_datum_mapview,
 	/client/proc/debugstatpanel,
 	/client/proc/fix_air, /*resets air in designated radius to its default atmos composition*/
+	/client/proc/remove_liquid, // SKYRAT EDIT ADDITION
 	/client/proc/revokebunkerbypass, //SKYRAT EDIT ADDITION - PANICBUNKER
 	/client/proc/addbunkerbypass, //SKYRAT EDIT ADDITION - PANICBUNKER
 	/client/proc/requests
@@ -37,6 +39,7 @@ GLOBAL_PROTECT(admin_verbs_admin)
 	/client/proc/check_ai_laws, /*shows AI and borg laws*/
 	/client/proc/ghost_pool_protection, /*opens a menu for toggling ghost roles*/
 	/datum/admins/proc/toggledchat, // SKYRAT EDIT ADDITION
+	/client/proc/request_help, // SKYRAT EDIT ADDITION
 	/datum/admins/proc/toggleooc, /*toggles ooc on/off for everyone*/
 	/datum/admins/proc/toggleoocdead, /*toggles ooc on/off for everyone who is dead*/
 	/datum/admins/proc/toggleenter, /*toggles whether people can join the current game*/
@@ -81,10 +84,13 @@ GLOBAL_PROTECT(admin_verbs_admin)
 	/client/proc/move_ghost_to_lobby, //SKYRAT EDIT ADDITION
 	/datum/admins/proc/toggleaooc,		//SKYRAT EDIT ADDITION - ADMIN
 	/datum/admins/proc/togglesooc,		//SKYRAT EDIT ADDITION - ADMIN
+	/client/proc/view_opfors,			//SKYRAT EDIT
 	/datum/admins/proc/open_borgopanel,
 	/datum/admins/proc/view_all_circuits,
 	/datum/admins/proc/view_all_sdql_spells,
 	/datum/admins/proc/known_alts_panel,
+	/datum/admins/proc/paintings_manager,
+	/datum/admins/proc/display_tags,
 	)
 GLOBAL_LIST_INIT(admin_verbs_ban, list(/client/proc/unban_panel, /client/proc/ban_panel, /client/proc/stickybanpanel))
 GLOBAL_PROTECT(admin_verbs_ban)
@@ -93,6 +99,13 @@ GLOBAL_PROTECT(admin_verbs_sounds)
 GLOBAL_LIST_INIT(admin_verbs_fun, list(
 	/client/proc/one_click_antag, // SKYRAT EDIT ADDITION - ONE CLICK ANTAG
 	/client/proc/spawn_mob_spawner, // SKYRAT EDIT ADDITION
+	/client/proc/event_panel, // SKYRAT EDIT ADDITION
+	/client/proc/request_more_opfor, //SKYRAT EDIT ADDITION
+	/client/proc/fix_say, // SKYRAT EDIT ADDITION
+	/client/proc/spawn_sunbeam, // SKYRAT EDIT ADDITION
+	/client/proc/admin_change_title_screen, //SKYRAT EDIT ADDITION
+	/client/proc/change_title_screen_notice, //SKYRAT EDIT ADDITION
+	/client/proc/change_title_screen_html, //SKYRAT EDIT ADDITION
 	/client/proc/cmd_select_equipment,
 	/client/proc/cmd_admin_gib_self,
 	/client/proc/drop_bomb,
@@ -115,8 +128,10 @@ GLOBAL_LIST_INIT(admin_verbs_fun, list(
 	/client/proc/show_tip,
 	/client/proc/smite,
 	/client/proc/admin_away,
+	/client/proc/add_mob_ability,
 	/datum/admins/proc/station_traits_panel,
 	/client/proc/spawn_pollution, // SKYRAT EDIT ADDITION
+	/client/proc/spawn_liquid, // SKYRAT EDIT ADDITION
 	))
 GLOBAL_PROTECT(admin_verbs_fun)
 GLOBAL_LIST_INIT(admin_verbs_spawn, list(/datum/admins/proc/spawn_atom, /datum/admins/proc/podspawn_atom, /datum/admins/proc/spawn_cargo, /datum/admins/proc/spawn_objasmob, /client/proc/respawn_character, /datum/admins/proc/beaker_panel))
@@ -134,8 +149,9 @@ GLOBAL_PROTECT(admin_verbs_server)
 	/datum/admins/proc/toggleAI,
 	/client/proc/cmd_admin_delete, /*delete an instance/object/mob/etc*/
 	/client/proc/cmd_debug_del_all,
+	/client/proc/cmd_debug_force_del_all,
+	/client/proc/cmd_debug_hard_del_all,
 	/client/proc/toggle_random_events,
-	/client/proc/set_mining_map, //SKYRAT EDIT ADDITION
 	/client/proc/forcerandomrotate,
 	/client/proc/adminchangemap,
 	/client/proc/panicbunker,
@@ -155,6 +171,8 @@ GLOBAL_PROTECT(admin_verbs_debug)
 	/client/proc/cmd_debug_mob_lists,
 	/client/proc/cmd_admin_delete,
 	/client/proc/cmd_debug_del_all,
+	/client/proc/cmd_debug_force_del_all,
+	/client/proc/cmd_debug_hard_del_all,
 	/client/proc/restart_controller,
 	/client/proc/enable_mapping_verbs,
 	/client/proc/callproc,
@@ -171,6 +189,7 @@ GLOBAL_PROTECT(admin_verbs_debug)
 	/client/proc/set_dynex_scale,
 	/client/proc/cmd_display_del_log,
 	/client/proc/outfit_manager,
+	/client/proc/open_colorblind_test,
 	/client/proc/generate_wikichem_list,
 	/client/proc/modify_goals,
 	/client/proc/debug_huds,
@@ -179,6 +198,7 @@ GLOBAL_PROTECT(admin_verbs_debug)
 	/client/proc/map_template_upload,
 	/client/proc/jump_to_ruin,
 	/client/proc/clear_dynamic_transit,
+	/client/proc/run_empty_query,
 	/client/proc/toggle_medal_disable,
 	/client/proc/view_runtimes,
 	/client/proc/pump_random_event,
@@ -202,6 +222,10 @@ GLOBAL_PROTECT(admin_verbs_debug)
 	/client/proc/cmd_sdql_spell_menu,
 	/client/proc/adventure_manager,
 	/client/proc/load_circuit,
+	/client/proc/cmd_admin_toggle_fov,
+	/client/proc/cmd_admin_debug_traitor_objectives,
+	/client/proc/spawn_debug_full_crew,
+	/client/proc/validate_puzzgrids,
 	)
 GLOBAL_LIST_INIT(admin_verbs_possess, list(/proc/possess, /proc/release))
 GLOBAL_PROTECT(admin_verbs_possess)
@@ -268,6 +292,8 @@ GLOBAL_LIST_INIT(admin_verbs_hideable, list(
 	/client/proc/cmd_debug_make_powernets,
 	/client/proc/cmd_debug_mob_lists,
 	/client/proc/cmd_debug_del_all,
+	/client/proc/cmd_debug_force_del_all,
+	/client/proc/cmd_debug_hard_del_all,
 	/client/proc/enable_mapping_verbs,
 	/proc/possess,
 	/proc/release,
@@ -280,6 +306,7 @@ GLOBAL_LIST_INIT(admin_verbs_hideable, list(
 	/client/proc/toggle_combo_hud,
 	/client/proc/admin_open_event_spawners_menu, //SKYRAT EDIT ADDITION - EVENTS
 	/client/proc/spawn_pollution, // SKYRAT EDIT ADDITION
+	/client/proc/spawn_liquid,
 	/client/proc/debug_huds
 	))
 GLOBAL_PROTECT(admin_verbs_hideable)
@@ -288,7 +315,7 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 	if(holder)
 		control_freak = CONTROL_FREAK_SKIN | CONTROL_FREAK_MACROS
 
-		var/rights = holder.rank.rights
+		var/rights = holder.rank_flags()
 		add_verb(src, GLOB.admin_verbs_default)
 		if(rights & R_BUILD)
 			add_verb(src, /client/proc/togglebuildmodeself)
@@ -472,34 +499,56 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 /client/proc/stealth()
 	set category = "Admin"
 	set name = "Stealth Mode"
-	if(holder)
-		if(holder.fakekey)
-			holder.fakekey = null
-			if(isobserver(mob))
-				mob.invisibility = initial(mob.invisibility)
-				mob.alpha = initial(mob.alpha)
-				if(mob.mind)
-					if(mob.mind.ghostname)
-						mob.name = mob.mind.ghostname
-					else
-						mob.name = mob.mind.name
-				else
-					mob.name = mob.real_name
-				mob.mouse_opacity = initial(mob.mouse_opacity)
-		else
-			var/new_key = ckeyEx(stripped_input(usr, "Enter your desired display name.", "Fake Key", key, 26))
-			if(!new_key)
-				return
-			holder.fakekey = new_key
-			createStealthKey()
-			if(isobserver(mob))
-				mob.invisibility = INVISIBILITY_MAXIMUM //JUST IN CASE
-				mob.alpha = 0 //JUUUUST IN CASE
-				mob.name = " "
-				mob.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-		log_admin("[key_name(usr)] has turned stealth mode [holder.fakekey ? "ON" : "OFF"]")
-		message_admins("[key_name_admin(usr)] has turned stealth mode [holder.fakekey ? "ON" : "OFF"]")
+	if(!holder)
+		return
+
+	if(holder.fakekey)
+		disable_stealth_mode()
+	else
+		enable_stealth_mode()
+
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Stealth Mode") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+
+#define STEALTH_MODE_TRAIT "stealth_mode"
+
+/client/proc/enable_stealth_mode()
+	var/new_key = ckeyEx(stripped_input(usr, "Enter your desired display name.", "Fake Key", key, 26))
+	if(!new_key)
+		return
+	holder.fakekey = new_key
+	createStealthKey()
+	if(isobserver(mob))
+		mob.invisibility = INVISIBILITY_MAXIMUM //JUST IN CASE
+		mob.alpha = 0 //JUUUUST IN CASE
+		mob.name = " "
+		mob.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+
+	ADD_TRAIT(mob, TRAIT_ORBITING_FORBIDDEN, STEALTH_MODE_TRAIT)
+	QDEL_NULL(mob.orbiters)
+
+	log_admin("[key_name(usr)] has turned stealth mode ON")
+	message_admins("[key_name_admin(usr)] has turned stealth mode ON")
+
+/client/proc/disable_stealth_mode()
+	holder.fakekey = null
+	if(isobserver(mob))
+		mob.invisibility = initial(mob.invisibility)
+		mob.alpha = initial(mob.alpha)
+		if(mob.mind)
+			if(mob.mind.ghostname)
+				mob.name = mob.mind.ghostname
+			else
+				mob.name = mob.mind.name
+		else
+			mob.name = mob.real_name
+		mob.mouse_opacity = initial(mob.mouse_opacity)
+
+	REMOVE_TRAIT(mob, TRAIT_ORBITING_FORBIDDEN, STEALTH_MODE_TRAIT)
+
+	log_admin("[key_name(usr)] has turned stealth mode OFF")
+	message_admins("[key_name_admin(usr)] has turned stealth mode OFF")
+
+#undef STEALTH_MODE_TRAIT
 
 /client/proc/drop_bomb()
 	set category = "Admin.Fun"
@@ -507,12 +556,12 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 	set desc = "Cause an explosion of varying strength at your location."
 
 	var/list/choices = list("Small Bomb (1, 2, 3, 3)", "Medium Bomb (2, 3, 4, 4)", "Big Bomb (3, 5, 7, 5)", "Maxcap", "Custom Bomb")
-	var/choice = tgui_input_list(usr, "What size explosion would you like to produce? NOTE: You can do all this rapidly and in an IC manner (using cruise missiles!) with the Config/Launch Supplypod verb. WARNING: These ignore the maxcap", "Drop Bomb", choices)
+	var/choice = tgui_input_list(src, "What size explosion would you like to produce? NOTE: You can do all this rapidly and in an IC manner (using cruise missiles!) with the Config/Launch Supplypod verb. WARNING: These ignore the maxcap", "Drop Bomb", choices)
+	if(isnull(choice))
+		return
 	var/turf/epicenter = mob.loc
 
 	switch(choice)
-		if(null)
-			return
 		if("Small Bomb (1, 2, 3, 3)")
 			explosion(epicenter, devastation_range = 1, heavy_impact_range = 2, light_impact_range = 3, flash_range = 3, adminlog = TRUE, ignorecap = TRUE, explosion_cause = mob)
 		if("Medium Bomb (2, 3, 4, 4)")
@@ -605,7 +654,7 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 	if(!SStrading_card_game.loaded)
 		message_admins("The card subsystem is not currently loaded")
 		return
-	reloadAllCardFiles(SStrading_card_game.card_files, SStrading_card_game.card_directory)
+	SStrading_card_game.reloadAllCardFiles()
 
 /client/proc/validate_cards()
 	set name = "Validate Cards"
@@ -615,8 +664,8 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 	if(!SStrading_card_game.loaded)
 		message_admins("The card subsystem is not currently loaded")
 		return
-	var/message = checkCardpacks(SStrading_card_game.card_packs)
-	message += checkCardDatums()
+	var/message = SStrading_card_game.checkCardpacks(SStrading_card_game.card_packs)
+	message += SStrading_card_game.checkCardDatums()
 	if(message)
 		message_admins(message)
 
@@ -632,12 +681,12 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 	var/batchCount = input("How many times should we open it?", "Don't worry, I understand") as null|num
 	var/batchSize = input("How many cards per batch?", "I hope you remember to check the validation") as null|num
 	var/guar = input("Should we use the pack's guaranteed rarity? If so, how many?", "We've all been there. Man you should have seen the old system") as null|num
-	checkCardDistribution(pack, batchSize, batchCount, guar)
+	SStrading_card_game.checkCardDistribution(pack, batchSize, batchCount, guar)
 
 /client/proc/print_cards()
 	set name = "Print Cards"
 	set category = "Debug"
-	printAllCards()
+	SStrading_card_game.printAllCards()
 
 /client/proc/give_spell(mob/spell_recipient in GLOB.mob_list)
 	set category = "Admin.Fun"
@@ -667,7 +716,6 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 
 	if(robeless)
 		new_spell.clothes_req = FALSE
-		new_spell.cult_req = FALSE
 
 	if(spell_recipient.mind)
 		spell_recipient.mind.AddSpell(new_spell)
@@ -711,7 +759,7 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 	set category = "Admin.Events"
 	set name = "OSay"
 	set desc = "Makes an object say something."
-	var/message = input(usr, "What do you want the message to be?", "Make Sound") as text | null
+	var/message = tgui_input_text(usr, "What do you want the message to be?", "Make Sound", encode = FALSE)
 	if(!message)
 		return
 	O.say(message, sanitize = FALSE)
@@ -721,7 +769,7 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 /client/proc/togglebuildmodeself()
 	set name = "Toggle Build Mode Self"
 	set category = "Admin.Events"
-	if (!(holder.rank.rights & R_BUILD))
+	if (!(holder.rank_flags() & R_BUILD))
 		return
 	if(src.mob)
 		togglebuildmode(src.mob)
@@ -740,9 +788,6 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 
 	if(!holder)
 		return
-
-	if(combo_hud_enabled)
-		toggle_combo_hud()
 
 	holder.deactivate()
 
@@ -797,7 +842,7 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 
 					candidates = get_area_turfs(area)
 
-					if (candidates.len)
+					if (length(candidates))
 						k = 100
 
 						do
@@ -826,7 +871,7 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 	set name = "Debug Stat Panel"
 	set category = "Debug"
 
-	src << output("", "statbrowser:create_debug")
+	src.stat_panel.send_message("create_debug")
 
 /client/proc/admin_2fa_verify()
 	set name = "Verify Admin"
@@ -840,3 +885,81 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 	set category = "Debug"
 
 	src << link("?debug=profile&type=sendmaps&window=test")
+
+/**
+ * Debug verb that spawns human crewmembers
+ * of each job type, gives them a mind and assigns the role,
+ * and injects them into the manifest, as if they were a "player".
+ *
+ * This spawns humans with minds and jobs, but does NOT make them 'players'.
+ * They're all clientles mobs with minds / jobs.
+ */
+/client/proc/spawn_debug_full_crew()
+	set name = "Spawn Debug Full Crew"
+	set desc = "Creates a full crew for the station, filling the datacore and assigning them all minds / jobs. Don't do this on live"
+	set category = "Debug"
+
+	if(!check_rights(R_DEBUG))
+		return
+
+	var/mob/admin = usr
+
+	if(SSticker.current_state != GAME_STATE_PLAYING)
+		to_chat(admin, "You should only be using this after a round has setup and started.")
+		return
+
+	// Two input checks here to make sure people are certain when they're using this.
+	if(tgui_alert(admin, "This command will create a bunch of dummy crewmembers with minds, job, and datacore entries, which will take a while and fill the manifest.", "Spawn Crew", list("Yes", "Cancel")) != "Yes")
+		return
+
+	if(tgui_alert(admin, "I sure hope you aren't doing this on live. Are you sure?", "Spawn Crew (Be certain)", list("Yes", "Cancel")) != "Yes")
+		return
+
+	// Find the observer spawn, so we have a place to dump the dummies.
+	var/obj/effect/landmark/observer_start/observer_point = locate(/obj/effect/landmark/observer_start) in GLOB.landmarks_list
+	var/turf/destination = get_turf(observer_point)
+	if(!destination)
+		to_chat(admin, "Failed to find the observer spawn to send the dummies.")
+		return
+
+	// Okay, now go through all nameable occupations.
+	// Pick out all jobs that have JOB_CREW_MEMBER set.
+	// Then, spawn a human and slap a person into it.
+	var/number_made = 0
+	for(var/rank in SSjob.name_occupations)
+		var/datum/job/job = SSjob.GetJob(rank)
+
+		// JOB_CREW_MEMBER is all jobs that pretty much aren't silicon
+		if(!(job.job_flags & JOB_CREW_MEMBER))
+			continue
+
+		// Create our new_player for this job and set up its mind.
+		var/mob/dead/new_player/new_guy = new()
+		new_guy.mind_initialize()
+		new_guy.mind.name = "[rank] Dummy"
+
+		// Assign the rank to the new player dummy.
+		if(!SSjob.AssignRole(new_guy, job))
+			qdel(new_guy)
+			to_chat(admin, "[rank] wasn't able to be spawned.")
+			continue
+
+		// It's got a job, spawn in a human and shove it in the human.
+		var/mob/living/carbon/human/character = new(destination)
+		character.name = new_guy.mind.name
+		new_guy.mind.transfer_to(character)
+		qdel(new_guy)
+
+		// Then equip up the human with job gear.
+		SSjob.EquipRank(character, job)
+		job.after_latejoin_spawn(character)
+
+		// Finally, ensure the minds are tracked and in the manifest.
+		SSticker.minds += character.mind
+		if(ishuman(character))
+			GLOB.data_core.manifest_inject(character)
+
+		number_made++
+		CHECK_TICK
+
+	to_chat(admin, "[number_made] crewmembers have been created.")

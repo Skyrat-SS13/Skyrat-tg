@@ -25,9 +25,12 @@
 /datum/component/storage/concrete/pockets/small/fedora/Initialize()
 	. = ..()
 	var/static/list/exception_cache = typecacheof(list(
-		/obj/item/katana, /obj/item/toy/katana, /obj/item/nullrod/claymore/katana,
-		/obj/item/energy_katana, /obj/item/gun/ballistic/automatic/tommygun
-		))
+		/obj/item/katana,
+		/obj/item/toy/katana,
+		/obj/item/nullrod/claymore/katana,
+		/obj/item/energy_katana,
+		/obj/item/gun/ballistic/automatic/tommygun,
+	))
 	exception_hold = exception_cache
 
 /datum/component/storage/concrete/pockets/small/fedora/detective
@@ -61,24 +64,64 @@
 /datum/component/storage/concrete/pockets/shoes/Initialize()
 	. = ..()
 	set_holdable(list(
-		/obj/item/knife, /obj/item/switchblade, /obj/item/pen,
-		/obj/item/scalpel, /obj/item/reagent_containers/syringe, /obj/item/dnainjector,
-		/obj/item/reagent_containers/hypospray/medipen, /obj/item/reagent_containers/dropper,
-		/obj/item/implanter, /obj/item/screwdriver, /obj/item/weldingtool/mini,
-		/obj/item/firing_pin
-		),
-		list(/obj/item/screwdriver/power)
+		/obj/item/knife,
+		/obj/item/switchblade,
+		/obj/item/pen,
+		/obj/item/scalpel,
+		/obj/item/reagent_containers/syringe,
+		/obj/item/dnainjector,
+		/obj/item/reagent_containers/hypospray/medipen,
+		/obj/item/reagent_containers/dropper,
+		/obj/item/implanter,
+		/obj/item/screwdriver,
+		/obj/item/weldingtool/mini,
+		/obj/item/firing_pin,
+		/obj/item/suppressor,
+		/obj/item/ammo_box/magazine/m9mm,
+		/obj/item/ammo_box/magazine/m45,
+		/obj/item/ammo_casing,
+		/obj/item/lipstick,
+		/obj/item/clothing/mask/cigarette,
+		/obj/item/lighter,
+		/obj/item/match,
+		/obj/item/holochip,
+		/obj/item/toy/crayon),
+		list(/obj/item/screwdriver/power,
+		/obj/item/ammo_casing/caseless/rocket,
+		/obj/item/clothing/mask/cigarette/pipe,
+		/obj/item/toy/crayon/spraycan)
 		)
 
 /datum/component/storage/concrete/pockets/shoes/clown/Initialize()
 	. = ..()
 	set_holdable(list(
-		/obj/item/knife, /obj/item/switchblade, /obj/item/pen,
-		/obj/item/scalpel, /obj/item/reagent_containers/syringe, /obj/item/dnainjector,
-		/obj/item/reagent_containers/hypospray/medipen, /obj/item/reagent_containers/dropper,
-		/obj/item/implanter, /obj/item/screwdriver, /obj/item/weldingtool/mini,
-		/obj/item/firing_pin, /obj/item/bikehorn),
-		list(/obj/item/screwdriver/power)
+		/obj/item/knife,
+		/obj/item/switchblade,
+		/obj/item/pen,
+		/obj/item/scalpel,
+		/obj/item/reagent_containers/syringe,
+		/obj/item/dnainjector,
+		/obj/item/reagent_containers/hypospray/medipen,
+		/obj/item/reagent_containers/dropper,
+		/obj/item/implanter,
+		/obj/item/screwdriver,
+		/obj/item/weldingtool/mini,
+		/obj/item/firing_pin,
+		/obj/item/suppressor,
+		/obj/item/ammo_box/magazine/m9mm,
+		/obj/item/ammo_box/magazine/m45,
+		/obj/item/ammo_casing,
+		/obj/item/lipstick,
+		/obj/item/clothing/mask/cigarette,
+		/obj/item/lighter,
+		/obj/item/match,
+		/obj/item/holochip,
+		/obj/item/toy/crayon,
+		/obj/item/bikehorn),
+		list(/obj/item/screwdriver/power,
+		/obj/item/ammo_casing/caseless/rocket,
+		/obj/item/clothing/mask/cigarette/pipe,
+		/obj/item/toy/crayon/spraycan)
 		)
 
 /datum/component/storage/concrete/pockets/pocketprotector
@@ -115,9 +158,24 @@
 
 /datum/component/storage/concrete/pockets/void_cloak
 	quickdraw = TRUE
+	max_combined_w_class = 5 // 2 small items + 1 tiny item, or 1 normal item + 1 small item
 	max_items = 3
 
 /datum/component/storage/concrete/pockets/void_cloak/Initialize()
 	. = ..()
-	var/static/list/exception_cache = typecacheof(list(/obj/item/living_heart,/obj/item/forbidden_book))
+	set_holdable(list(
+		/obj/item/ammo_box/a762/lionhunter,
+		/obj/item/bodypart, // Bodyparts are often used in rituals. They're also often normal sized, so you can only fit one.
+		/obj/item/clothing/neck/eldritch_amulet,
+		/obj/item/clothing/neck/heretic_focus,
+		/obj/item/codex_cicatrix,
+		/obj/item/eldritch_potion,
+		/obj/item/food/grown/poppy, // Used to regain a Living Heart.
+		/obj/item/melee/rune_carver,
+		/obj/item/melee/sickly_blade, // Normal sized, so you can only fit one.
+		/obj/item/organ, // Organs are also often used in rituals.
+		/obj/item/reagent_containers/glass/beaker/eldritch,
+	))
+
+	var/static/list/exception_cache = typecacheof(list(/obj/item/bodypart, /obj/item/melee/sickly_blade))
 	exception_hold = exception_cache

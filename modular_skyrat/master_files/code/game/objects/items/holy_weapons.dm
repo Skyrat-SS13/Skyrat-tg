@@ -53,7 +53,7 @@
 	icon_state = "cultrobes"
 	inhand_icon_state = "cultrobes"
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS
-	armor = list(MELEE = 50, BULLET = 10, LASER = 10, ENERGY = 10, BOMB = 0, BIO = 0, FIRE = 80, ACID = 80, WOUND = 20) //Chaplain Riot armor
+	armor = list(MELEE = 50, BULLET = 10, LASER = 10, ENERGY = 10, BOMB = 0, BIO = 0, FIRE = 80, ACID = 80, WOUND = 20) // Chaplain Riot armor
 	allowed = list(/obj/item/storage/book/bible, /obj/item/nullrod, /obj/item/reagent_containers/food/drinks/bottle/holywater, /obj/item/storage/fancy/candle_box, /obj/item/candle, /obj/item/tank/internals/emergency_oxygen, /obj/item/tank/internals/plasmaman)
 	hoodtype = /obj/item/clothing/head/hooded/cultlain_hood
 
@@ -64,7 +64,7 @@
 	body_parts_covered = HEAD
 	flags_inv = HIDEFACE|HIDEHAIR|HIDEEARS
 	flags_cover = HEADCOVERSEYES
-	armor = list(MELEE = 50, BULLET = 10, LASER = 10, ENERGY = 10, BOMB = 0, BIO = 0, FIRE = 80, ACID = 80) //Chaplain Riot Helmet
+	armor = list(MELEE = 50, BULLET = 10, LASER = 10, ENERGY = 10, BOMB = 0, BIO = 0, FIRE = 80, ACID = 80) // Chaplain Riot Helmet
 
 /obj/item/storage/box/holy/narsian
 	name = "ancient kit"
@@ -76,7 +76,7 @@
 /obj/item/nullrod/cultdagger
 	name = "ritual dagger"
 	desc = "A strange dagger said to be once used by a sinister group.. "
-	icon = 'icons/obj/wizard.dmi'
+	icon = 'icons/obj/cult/items_and_weapons.dmi'
 	icon_state = "render"
 	inhand_icon_state = "cultdagger"
 	worn_icon_state = "render"
@@ -86,7 +86,7 @@
 	attack_verb_continuous = list("attacks", "slashes", "stabs", "slices", "tears", "lacerates", "rips", "dices", "cuts")
 	attack_verb_simple = list("attack", "slash", "stab", "slice", "tear", "lacerate", "rip", "dice", "cut")
 	special_desc_requirement = EXAMINE_CHECK_JOB
-	special_desc_jobs = list("Chaplain")
+	special_desc_jobs = list(JOB_CHAPLAIN)
 	special_desc = "Activate it to receive the language of a forgotten cult."
 	var/narsian = FALSE
 
@@ -100,7 +100,7 @@
 
 /obj/item/nullrod/claymore/darkblade
 	special_desc_requirement = EXAMINE_CHECK_JOB
-	special_desc_jobs = list("Chaplain")
+	special_desc_jobs = list(JOB_CHAPLAIN)
 	special_desc = "Activate it to receive the language of a forgotten cult."
 	var/narsian = FALSE
 
@@ -115,7 +115,7 @@
 /* The other one isn't merged yet so we'll wait.
 /obj/item/nullrod/spear
 	special_desc_requirement = EXAMINE_CHECK_JOB
-	special_desc_jobs = list("Chaplain")
+	special_desc_jobs = list(JOB_CHAPLAIN)
 	special_desc = "Activate it to receive the language of a forgotten cult."
 	var/ratvarian = FALSE
 
@@ -138,7 +138,7 @@
 	attack_verb_continuous = list("whipped", "repented", "lashed", "flagellated")
 	slot_flags = ITEM_SLOT_BELT
 	var/praying = FALSE
-	var/deity_name = "Coderbus" //This is the default, hopefully won't actually appear if the religion subsystem is running properly
+	var/deity_name = "Coderbus" // This is the default, hopefully won't actually appear if the religion subsystem is running properly
 
 /obj/item/nullrod/rosary/Initialize()
 	.=..()
@@ -146,20 +146,20 @@
 		deity_name = GLOB.deity
 
 /obj/item/nullrod/rosary/attack(mob/living/target, mob/living/user, params)
-	if(!user.mind || user.mind.assigned_role != "Chaplain")
-		to_chat(user, span_notice("You are not close enough with [deity_name] to use [src]."))
+	if(!user.mind || !user.mind.holy_role)
+		balloon_alert(user, "not holy enough!")
 		return
 	if(user.combat_mode)
 		return ..()
 	if(praying)
-		to_chat(user, span_notice("You are already using [src]."))
+		balloon_alert(user, "already in use!")
 		return
 
 	user.visible_message(span_info("[user] kneels[target == user ? null : " next to [target]"] and begins to utter a prayer to [deity_name]."), \
 		span_info("You kneel[target == user ? null : " next to [target]"] and begin a prayer to [deity_name]."))
 
 	praying = TRUE
-	if(do_after(user, 20, target = target))
+	if(do_after(user, 5 SECONDS, target = target))
 		target.reagents?.add_reagent(/datum/reagent/water/holywater, 5)
 		to_chat(target, span_notice("[user]'s prayer to [deity_name] has eased your pain!"))
 		target.adjustToxLoss(-5, TRUE, TRUE)
@@ -168,7 +168,7 @@
 		target.adjustFireLoss(-5)
 		praying = FALSE
 	else
-		to_chat(user, span_notice("Your prayer to [deity_name] was interrupted."))
+		balloon_alert(user, "interrupted!")
 		praying = FALSE
 
 /obj/item/nullrod/scythe/sickle

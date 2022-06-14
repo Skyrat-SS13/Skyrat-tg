@@ -33,7 +33,19 @@
 		processing += checked_atom.contents
 		. += checked_atom
 
+///Returns a list of all locations (except the area) the movable is within.
+/proc/get_nested_locs(atom/movable/atom_on_location, include_turf = FALSE)
+	. = list()
+	var/atom/location = atom_on_location.loc
+	var/turf/our_turf = get_turf(atom_on_location)
+	while(location && location != our_turf)
+		. += location
+		location = location.loc
+	if(our_turf && include_turf) //At this point, only the turf is left, provided it exists.
+		. += our_turf
+
 ///Step-towards method of determining whether one atom can see another. Similar to viewers()
+///note: this is a line of sight algorithm, view() does not do any sort of raycasting and cannot be emulated by it accurately
 /proc/can_see(atom/source, atom/target, length=5) // I couldnt be arsed to do actual raycasting :I This is horribly inaccurate.
 	var/turf/current = get_turf(source)
 	var/turf/target_turf = get_turf(target)
@@ -301,3 +313,17 @@ rough example of the "cone" made by the 3 dirs checked
 ///A do nothing proc
 /proc/pass(...)
 	return
+
+///Returns a list of the parents of all storage components that contain the target item
+/proc/get_storage_locs(obj/item/target)
+	. = list()
+	if(!istype(target) || !(target.item_flags & IN_STORAGE))
+		return
+	var/datum/component/storage/concrete/storage_datum = target.loc.GetComponent(/datum/component/storage/concrete)
+	if(!storage_datum)
+		return
+	. += storage_datum.parent
+	for(var/datum/component/storage/slave as anything in storage_datum.slaves)
+		if(!isatom(slave.parent))
+			continue
+		. += slave.parent

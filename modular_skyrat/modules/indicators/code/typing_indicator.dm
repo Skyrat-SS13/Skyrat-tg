@@ -1,14 +1,19 @@
-GLOBAL_VAR_INIT(typing_indicator_overlay, mutable_appearance('modular_skyrat/modules/indicators/icons/typing_indicator.dmi', "default0", FLY_LAYER))
+GLOBAL_VAR_INIT(typing_indicator_overlay, mutable_appearance('modular_skyrat/modules/indicators/icons/typing_indicator.dmi', "default0", CHAT_INDICATOR_LAYER))
+GLOBAL_VAR_INIT(emote_indicator_overlay, mutable_appearance('modular_skyrat/modules/indicators/icons/emote_indicator.dmi', "default0", CHAT_INDICATOR_LAYER))
 
 /mob
 	var/typing_indicator = FALSE
 
-/mob/proc/set_typing_indicator(var/state)
+/mob/proc/set_typing_indicator(state, emote)
 	typing_indicator = state
 	if(typing_indicator)
-		add_overlay(GLOB.typing_indicator_overlay)
+		if(emote)
+			add_overlay(GLOB.emote_indicator_overlay)
+		else
+			add_overlay(GLOB.typing_indicator_overlay)
 	else
 		cut_overlay(GLOB.typing_indicator_overlay)
+		cut_overlay(GLOB.emote_indicator_overlay)
 
 /mob/living/key_down(_key, client/user)
 	if(!typing_indicator && stat == CONSCIOUS)
@@ -17,7 +22,7 @@ GLOBAL_VAR_INIT(typing_indicator_overlay, mutable_appearance('modular_skyrat/mod
 			if("Say" in binds)
 				set_typing_indicator(TRUE)
 			if("Me" in binds)
-				set_typing_indicator(TRUE)
+				set_typing_indicator(TRUE, TRUE)
 	return ..()
 
 /proc/animate_speechbubble(image/I, list/show_to, duration)
@@ -33,3 +38,4 @@ GLOBAL_VAR_INIT(typing_indicator_overlay, mutable_appearance('modular_skyrat/mod
 	sleep(20)
 	for(var/client/C in show_to)
 		C.images -= I
+

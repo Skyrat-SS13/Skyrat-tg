@@ -40,7 +40,7 @@
 	allowed += list(
 		/obj/item/melee/baton/telescopic,
 		/obj/item/gun/energy/cell_loaded/medigun, //SKYRAT EDIT MEDIGUNS
-		/obj/item/storage/firstaid //SKYRAT EDIT - ADDITION
+		/obj/item/storage/medkit //SKYRAT EDIT - ADDITION
 	)
 
 /obj/item/clothing/suit/toggle/labcoat/paramedic
@@ -53,7 +53,7 @@
 /obj/item/clothing/suit/toggle/labcoat/paramedic/Initialize()
 	. = ..()
 	allowed += list(
-		/obj/item/storage/firstaid,
+		/obj/item/storage/medkit,
 	)
 //END SKYRAT EDIT- ADDITION
 
@@ -73,15 +73,27 @@
 	desc = "A suit that protects against minor chemical spills. Has an orange stripe on the shoulder."
 	icon_state = "labcoat_chem"
 
+/obj/item/clothing/suit/toggle/labcoat/chemist/Initialize(mapload)
+	. = ..()
+	allowed += /obj/item/storage/bag/chemistry
+
 /obj/item/clothing/suit/toggle/labcoat/virologist
 	name = "virologist labcoat"
 	desc = "A suit that protects against minor chemical spills. Has a green stripe on the shoulder."
 	icon_state = "labcoat_vir"
 
+/obj/item/clothing/suit/toggle/labcoat/virologist/Initialize(mapload)
+	. = ..()
+	allowed += /obj/item/storage/bag/bio
+
 /obj/item/clothing/suit/toggle/labcoat/science
 	name = "scientist labcoat"
 	desc = "A suit that protects against minor chemical spills. Has a purple stripe on the shoulder."
 	icon_state = "labcoat_sci"
+
+/obj/item/clothing/suit/toggle/labcoat/science/Initialize(mapload)
+	. = ..()
+	allowed += /obj/item/storage/bag/xeno
 
 /obj/item/clothing/suit/toggle/labcoat/roboticist
 	name = "roboticist labcoat"

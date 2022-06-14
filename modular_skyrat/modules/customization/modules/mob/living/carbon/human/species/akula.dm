@@ -1,7 +1,6 @@
 /datum/species/akula
 	name = "Akula"
 	id = SPECIES_AKULA
-	default_color = "#4B4B4B"
 	species_traits = list(
 		MUTCOLORS,
 		EYECOLOR,
@@ -12,7 +11,9 @@
 	)
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,
-		TRAIT_CAN_STRIP
+		TRAIT_CAN_STRIP,
+		TRAIT_CAN_USE_FLIGHT_POTION,
+		TRAIT_LITERATE,
 	)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	mutant_bodyparts = list()
@@ -23,12 +24,22 @@
 		"legs" = "Normal Legs"
 	)
 	attack_verb = "slash"
+	attack_effect = ATTACK_EFFECT_CLAW
 	attack_sound = 'sound/weapons/slash.ogg'
 	miss_sound = 'sound/weapons/slashmiss.ogg'
 	payday_modifier = 0.75
-	liked_food = GROSS | MEAT | FRIED
+	liked_food = SEAFOOD | RAW
+	disliked_food = CLOTH | DAIRY
+	toxic_food = TOXIC
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
-	limbs_icon = 'modular_skyrat/master_files/icons/mob/species/akula_parts_greyscale.dmi'
+	bodypart_overrides = list(
+		BODY_ZONE_HEAD = /obj/item/bodypart/head/mutant/akula,
+		BODY_ZONE_CHEST = /obj/item/bodypart/chest/mutant/akula,
+		BODY_ZONE_L_ARM = /obj/item/bodypart/l_arm/mutant/akula,
+		BODY_ZONE_R_ARM = /obj/item/bodypart/r_arm/mutant/akula,
+		BODY_ZONE_L_LEG = /obj/item/bodypart/l_leg/mutant/akula,
+		BODY_ZONE_R_LEG = /obj/item/bodypart/r_leg/mutant/akula,
+	)
 
 /datum/species/akula/get_random_features()
 	var/list/returned = MANDATORY_FEATURE_LIST
@@ -64,3 +75,9 @@
 	if(BMS)
 		markings = assemble_body_markings_from_set(BMS, passed_features, src)
 	return markings
+
+/datum/species/akula/get_species_description()
+	return placeholder_description
+
+/datum/species/akula/get_species_lore()
+	return list(placeholder_lore)

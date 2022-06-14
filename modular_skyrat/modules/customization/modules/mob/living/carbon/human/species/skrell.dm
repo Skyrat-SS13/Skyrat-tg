@@ -1,7 +1,6 @@
 /datum/species/skrell
 	name = "Skrell"
 	id = SPECIES_SKRELL
-	default_color = "#4B4B4B"
 	species_traits = list(
 		MUTCOLORS,
 		EYECOLOR,
@@ -12,7 +11,9 @@
 	)
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,
-		TRAIT_CAN_STRIP
+		TRAIT_CAN_STRIP,
+		TRAIT_CAN_USE_FLIGHT_POTION,
+		TRAIT_LITERATE,
 	)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	say_mod = "warbles"
@@ -24,26 +25,39 @@
 	bodytemp_cold_damage_limit = (T20C - 10)
 	species_language_holder = /datum/language_holder/skrell
 	mutant_bodyparts = list()
-	liked_food = TOXIC | DAIRY | FRUIT
+	toxic_food = DAIRY | MEAT
+	disliked_food = RAW | CLOTH
+	liked_food = TOXIC | FRUIT | VEGETABLES
 	payday_modifier = 0.75
 	default_mutant_bodyparts = list("skrell_hair" = ACC_RANDOM)
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
-	limbs_icon = 'modular_skyrat/master_files/icons/mob/species/skrell_parts_greyscale.dmi'
 	eyes_icon = 'modular_skyrat/master_files/icons/mob/species/skrell_eyes.dmi'
-
-	mutantbrain = /obj/item/organ/brain/skrell
-	mutanteyes = /obj/item/organ/eyes/skrell
-	mutantlungs = /obj/item/organ/lungs/skrell
-	mutantheart = /obj/item/organ/heart/skrell
-	mutantliver = /obj/item/organ/liver/skrell
-	mutanttongue = /obj/item/organ/tongue/skrell
-
+	mutantbrain = /obj/item/organ/internal/brain/skrell
+	mutanteyes = /obj/item/organ/internal/eyes/skrell
+	mutantlungs = /obj/item/organ/internal/lungs/skrell
+	mutantheart = /obj/item/organ/internal/heart/skrell
+	mutantliver = /obj/item/organ/internal/liver/skrell
+	mutanttongue = /obj/item/organ/internal/tongue/skrell
 	learnable_languages = list(/datum/language/common, /datum/language/skrell)
+	bodypart_overrides = list(
+		BODY_ZONE_HEAD = /obj/item/bodypart/head/mutant/skrell,
+		BODY_ZONE_CHEST = /obj/item/bodypart/chest/mutant/skrell,
+		BODY_ZONE_L_ARM = /obj/item/bodypart/l_arm/mutant/skrell,
+		BODY_ZONE_R_ARM = /obj/item/bodypart/r_arm/mutant/skrell,
+		BODY_ZONE_L_LEG = /obj/item/bodypart/l_leg/mutant/skrell,
+		BODY_ZONE_R_LEG = /obj/item/bodypart/r_leg/mutant/skrell,
+	)
 
-/obj/item/organ/tongue/skrell
+/datum/species/skrell/get_species_description()
+	return placeholder_description
+
+/datum/species/skrell/get_species_lore()
+	return list(placeholder_lore)
+
+/obj/item/organ/internal/tongue/skrell
 	name = "internal vocal sacs"
 	desc = "An Strange looking sac."
-	icon = 'modular_skyrat/modules/customization/modules/mob/living/carbon/human/species/skrell_organ.dmi'
+	icon = 'modular_skyrat/master_files/icons/mob/species/skrell_organ.dmi'
 	icon_state = "tongue"
 	taste_sensitivity = 5
 	var/static/list/languages_possible_skrell = typecacheof(list(
@@ -68,26 +82,26 @@
 		/datum/language/skrell,
 	))
 
-/obj/item/organ/heart/skrell
-	name = "Skrellian Heart"
-	icon = 'modular_skyrat/modules/customization/modules/mob/living/carbon/human/species/skrell_organ.dmi'
+/obj/item/organ/internal/heart/skrell
+	name = "skrellian heart"
+	icon = 'modular_skyrat/master_files/icons/mob/species/skrell_organ.dmi'
 	icon_state = "heart"
 
-/obj/item/organ/brain/skrell
+/obj/item/organ/internal/brain/skrell
 	name = "spongy brain"
-	icon = 'modular_skyrat/modules/customization/modules/mob/living/carbon/human/species/skrell_organ.dmi'
+	icon = 'modular_skyrat/master_files/icons/mob/species/skrell_organ.dmi'
 	icon_state = "brain2"
 
-/obj/item/organ/eyes/skrell
+/obj/item/organ/internal/eyes/skrell
 	name = "amphibian eyes"
 	desc = "Large black orbs."
-	icon = 'modular_skyrat/modules/customization/modules/mob/living/carbon/human/species/skrell_organ.dmi'
+	icon = 'modular_skyrat/master_files/icons/mob/species/skrell_organ.dmi'
 	icon_state = "eyes"
 	flash_protect = FLASH_PROTECTION_SENSITIVE
 
-/obj/item/organ/lungs/skrell
+/obj/item/organ/internal/lungs/skrell
 	name = "skrell lungs"
-	icon = 'modular_skyrat/modules/customization/modules/mob/living/carbon/human/species/skrell_organ.dmi'
+	icon = 'modular_skyrat/master_files/icons/mob/species/skrell_organ.dmi'
 	icon_state = "lungs"
 	safe_plasma_max = 40
 	safe_co2_max = 40
@@ -111,10 +125,10 @@
 	heat_level_3_damage = HEAT_GAS_DAMAGE_LEVEL_3
 	heat_damage_type = BURN
 
-/obj/item/organ/liver/skrell
+/obj/item/organ/internal/liver/skrell
 	name = "skrell liver"
 	icon_state = "liver"
-	icon = 'modular_skyrat/modules/customization/modules/mob/living/carbon/human/species/skrell_organ.dmi'
+	icon = 'modular_skyrat/master_files/icons/mob/species/skrell_organ.dmi'
 	alcohol_tolerance = 5
 	toxTolerance = 10 //can shrug off up to 10u of toxins.
 	toxLethality = 0.8 * LIVER_DEFAULT_TOX_LETHALITY //20% less damage than a normal liver

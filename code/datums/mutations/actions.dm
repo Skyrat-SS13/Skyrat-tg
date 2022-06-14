@@ -53,7 +53,7 @@
 	if(sniffed)
 		var/old_target = tracking_target
 		possible = list()
-		var/list/prints = sniffed.return_fingerprints()
+		var/list/prints = GET_ATOM_FINGERPRINTS(sniffed)
 		if(prints)
 			for(var/mob/living/carbon/C in GLOB.carbon_list)
 				if(prints[md5(C.dna.unique_identity)])
@@ -61,9 +61,9 @@
 		if(!length(possible))
 			to_chat(user,span_warning("Despite your best efforts, there are no scents to be found on [sniffed]..."))
 			return
-		tracking_target = input(user, "Choose a scent to remember.", "Scent Tracking") as null|anything in sort_names(possible)
-		if(!tracking_target)
-			if(!old_target)
+		tracking_target = tgui_input_list(user, "Scent to remember", "Scent Tracking", sort_names(possible))
+		if(isnull(tracking_target))
+			if(isnull(old_target))
 				to_chat(user,span_warning("You decide against remembering any scents. Instead, you notice your own nose in your peripheral vision. This goes on to remind you of that one time you started breathing manually and couldn't stop. What an awful day that was."))
 				return
 			tracking_target = old_target
@@ -116,11 +116,13 @@
 		our_spell.cone_levels += 2 // Cone fwooshes further, and...
 		our_spell.self_throw_range += 1 // the breath throws the user back more
 
+
 /obj/effect/proc_holder/spell/cone/staggered/firebreath
 	name = "Fire Breath"
 	desc = "You breathe a cone of fire directly in front of you."
 	school = SCHOOL_EVOCATION
 	invocation = ""
+	invocation_type = INVOCATION_NONE
 	charge_max = 400
 	clothes_req = FALSE
 	range = 20
@@ -130,6 +132,7 @@
 	sound = 'sound/magic/demon_dies.ogg' //horrifying lizard noises
 	respect_density = TRUE
 	cone_levels = 3
+	antimagic_flags = NONE // cannot be restricted or blocked by antimagic
 	/// The range our user is thrown backwards after casting the spell
 	var/self_throw_range = 1
 
@@ -143,7 +146,7 @@
 		return
 
 	our_lizard.adjust_fire_stacks(cone_levels)
-	our_lizard.IgniteMob()
+	our_lizard.ignite_mob()
 	to_chat(our_lizard, span_warning("Something in front of your mouth catches fire!"))
 
 /obj/effect/proc_holder/spell/cone/staggered/firebreath/cast(list/targets, mob/user)
@@ -168,7 +171,7 @@
 	// The actual burn damage application is not blocked by fireproofing, like space dragons.
 	target_mob.apply_damage(max(10, 40 - (5 * level)), BURN, spread_damage = TRUE)
 	target_mob.adjust_fire_stacks(max(2, 5 - level))
-	target_mob.IgniteMob()
+	target_mob.ignite_mob()
 
 /obj/effect/proc_holder/spell/cone/staggered/firebreath/do_obj_cone_effect(obj/target_obj, level)
 	// Further out objects experience less exposed_temperature and exposed_volume
@@ -242,7 +245,7 @@
 		if(BP.body_part != HEAD && BP.body_part != CHEST)
 			if(BP.dismemberable)
 				parts += BP
-	if(!parts.len)
+	if(!length(parts))
 		to_chat(usr, span_notice("You can't shed any more limbs!"))
 		return
 
@@ -277,9 +280,9 @@
 	var/mob/living/carbon/C = user
 	if(HAS_TRAIT(C, TRAIT_NODISMEMBER))
 		return
-	var/obj/item/organ/tongue/tongue
+	var/obj/item/organ/internal/tongue/tongue
 	for(var/org in C.internal_organs)
-		if(istype(org, /obj/item/organ/tongue))
+		if(istype(org, /obj/item/organ/internal/tongue))
 			tongue = org
 			break
 

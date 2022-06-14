@@ -24,8 +24,8 @@
 		var/prev_lockcharge = borg.lockcharge
 		borg.SetLockdown(1)
 		borg.set_anchored(TRUE)
-		var/datum/effect_system/smoke_spread/smoke = new
-		smoke.set_up(1, borg.loc)
+		var/datum/effect_system/fluid_spread/smoke/smoke = new
+		smoke.set_up(1, location = get_turf(borg))
 		smoke.start()
 		sleep(2)
 		for(var/i in 1 to 4)
@@ -153,9 +153,9 @@
 	for(var/obj/item/dogborg_nose/dognose in borg.model.modules)
 		borg.model.remove_module(dognose, TRUE)
 
-/////////////////////////////////////////////
-/// Advanced Engineering Cyborg Materials ///
-/////////////////////////////////////////////
+/*
+*	ADVANCED ENGINEERING CYBORG MATERIALS
+*/
 
 #define ENGINEERING_CYBORG_CHARGE_PER_STACK 1000
 

@@ -6,6 +6,7 @@
 	desc = "A traditional ancient Earth Japanese Kimono"
 	icon_state = "kimono"
 	body_parts_covered = CHEST|GROIN
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY //Stop cutting a hole in the Kimono, please :)
 
 /obj/item/clothing/under/costume/kimono/dark
 	name = "dark kimono"
@@ -43,7 +44,7 @@
 	name = "samurai armor"
 	desc = "A set of ancient-Japan Samurai armor. Despite being a cheap replica, it's still remarkably heavy."
 	icon_state = "samurai"
-	mutant_variants = NONE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/head/costume/kabuto
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
@@ -51,7 +52,7 @@
 	name = "kabuto"
 	desc = "An ancient-Japan armored helmet - or a replica of one, at least."
 	icon_state = "kabuto"
-	mutant_variants = NONE
+	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
 //Victorian Clothes
 /obj/item/clothing/under/costume/vic_vest
@@ -65,6 +66,10 @@
 /obj/item/clothing/under/costume/vic_vest/red
 	name = "red-sleeved victorian vest"
 	icon_state = "victorianvest_red"
+
+/obj/item/clothing/under/costume/vic_vest/green
+	name = "green-sleeved victorian vest"
+	icon_state = "victorianvest_green"
 
 /obj/item/clothing/under/costume/vic_vest/blue
 	name = "blue-sleeved victorian vest"
@@ -100,7 +105,7 @@
 	name = "victorian tailcoat"
 	desc = "A fancy tailcoat to make your suit seem even more lavish."
 	icon_state = "tailcoat"
-	mutant_variants = NONE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/suit/costume/vic_dresscoat
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
@@ -108,7 +113,7 @@
 	name = "victorian dresscoat"
 	desc = "An elaborate coat to go over an old-Earth Victorian Period dress. Much thinner fabric than you'd expected."
 	icon_state = "vickyblack"
-	mutant_variants = NONE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/suit/costume/vic_dresscoat/red
 	icon_state = "vickyred"
@@ -119,7 +124,7 @@
 	name = "wide black hat"
 	desc = "A fancy old hat to match fancy old dresses."
 	icon_state = "widehat_black"
-	mutant_variants = NONE
+	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/head/costume/widehat/red
 	name = "wide red hat"
@@ -132,14 +137,6 @@
 	name = "grey shirt"
 	desc = "A plain grey shirt and black pants - a much more rugged option compared to the jumpsuit."
 	icon_state = "greyshirt"
-
-/obj/item/clothing/under/misc/cargo_long
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	name = "cargo technician's long jumpsuit"
-	desc = "For crate-pushers who'd rather protect their legs than show them off."
-	icon_state = "cargo_long"
-	can_adjust = TRUE
 
 /obj/item/clothing/under/misc/mechanic
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
@@ -155,7 +152,7 @@
 	desc = "An extremely short black dress, for those with no shame."
 	icon_state = "littleblackdress_s"
 	body_parts_covered = CHEST|GROIN
-	fitted = FEMALE_UNIFORM_TOP
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 	can_adjust = FALSE
 
 /obj/item/clothing/under/dress/pinktutu
@@ -165,5 +162,5 @@
 	desc = "A fluffy pink tutu."
 	icon_state = "pinktutu_s"
 	body_parts_covered = CHEST|GROIN
-	fitted = FEMALE_UNIFORM_TOP
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 	can_adjust = FALSE

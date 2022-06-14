@@ -5,9 +5,9 @@
 	inhand_icon_state = "monkeymind"
 	strip_delay = 100
 	armor = list(MELEE = 5, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 25, BIO = 0, FIRE = 50, ACID = 50, WOUND = 0)
-	var/mob/living/carbon/human/magnification = null ///if the helmet is on a valid target (just works like a normal helmet if not (cargo please stop))
-	var/polling = FALSE///if the helmet is currently polling for targets (special code for removal)
-	var/light_colors = 1 ///which icon state color this is (red, blue, yellow)
+	var/mob/living/carbon/human/magnification = null /// if the helmet is on a valid target (just works like a normal helmet if not (cargo please stop))
+	var/polling = FALSE/// if the helmet is currently polling for targets (special code for removal)
+	var/light_colors = 1 /// which icon state color this is (red, blue, yellow)
 
 /obj/item/clothing/head/helmet/monkey_sentience/Initialize()
 	. = ..()
@@ -31,18 +31,18 @@
 	. = ..()
 	if(slot != ITEM_SLOT_HEAD)
 		return
-	if(istype(user, /mob/living/carbon/human/dummy)) //Prevents ghosts from being polled when the helmet is put on a dummy.
+	if(istype(user, /mob/living/carbon/human/dummy)) // Prevents ghosts from being polled when the helmet is put on a dummy.
 		return
 	if(!ismonkey(user) || user.ckey)
 		var/mob/living/something = user
 		to_chat(something, span_boldnotice("You feel a stabbing pain in the back of your head for a moment."))
-		something.apply_damage(5, BRUTE, BODY_ZONE_HEAD, FALSE, FALSE, FALSE) //notably: no damage resist (it's in your helmet), no damage spread (it's in your helmet)
+		something.apply_damage(5, BRUTE, BODY_ZONE_HEAD, FALSE, FALSE, FALSE) // notably: no damage resist (it's in your helmet), no damage spread (it's in your helmet)
 		playsound(src, 'sound/machines/buzz-sigh.ogg', 30, TRUE)
 		return
 	if(!(GLOB.ghost_role_flags & GHOSTROLE_STATION_SENTIENCE))
 		say("ERROR: Central Command has temporarily outlawed monkey sentience helmets in this sector. NEAREST LAWFUL SECTOR: 2.537 million light years away.")
 		return
-	magnification = user //this polls ghosts
+	magnification = user // this polls ghosts
 	visible_message(span_warning("[src] powers up!"))
 	playsound(src, 'sound/machines/ping.ogg', 30, TRUE)
 	RegisterSignal(magnification, COMSIG_SPECIES_LOSS, .proc/make_fall_off)
@@ -69,7 +69,7 @@
 	if(policy)
 		to_chat(magnification, policy)
 	icon_state = "[icon_state]up"
-	REMOVE_TRAIT(magnification, TRAIT_PRIMITIVE, SPECIES_TRAIT) //Monkeys with sentience should be able to use less primitive tools.
+	REMOVE_TRAIT(magnification, TRAIT_PRIMITIVE, SPECIES_TRAIT) // Monkeys with sentience should be able to use less primitive tools.
 
 /obj/item/clothing/head/helmet/monkey_sentience/Destroy()
 	if(magnification)
@@ -78,25 +78,25 @@
 	return ..()
 
 /obj/item/clothing/head/helmet/monkey_sentience/proc/disconnect()
-	if(!magnification) //not put on a viable head
+	if(!magnification) // not put on a viable head
 		return
-	//either used up correctly or taken off before polling finished (punish this by having a chance to gib the monkey?)
+	// either used up correctly or taken off before polling finished (punish this by having a chance to gib the monkey?)
 	UnregisterSignal(magnification, COMSIG_SPECIES_LOSS)
 	playsound(src, 'sound/machines/buzz-sigh.ogg', 30, TRUE)
-	ADD_TRAIT(magnification, TRAIT_PRIMITIVE, SPECIES_TRAIT) //We removed it, now that they're back to being dumb, add the trait again.
-	if(!polling)//put on a viable head, but taken off after polling finished.
+	ADD_TRAIT(magnification, TRAIT_PRIMITIVE, SPECIES_TRAIT) // We removed it, now that they're back to being dumb, add the trait again.
+	if(!polling)// put on a viable head, but taken off after polling finished.
 		if(magnification.client)
 			to_chat(magnification, span_userdanger("You feel your flicker of sentience ripped away from you, as everything becomes dim..."))
 			magnification.ghostize(FALSE)
 		if(prob(10))
 			switch(rand(1, 4))
-				if(1) //blood rage
+				if(1) // blood rage
 					magnification.ai_controller.blackboard[BB_MONKEY_AGGRESSIVE] = TRUE
-				if(2) //brain death
+				if(2) // brain death
 					magnification.apply_damage(500, BRAIN, BODY_ZONE_HEAD, FALSE, FALSE, FALSE)
-				if(3) //primal gene (gorilla)
+				if(3) // primal gene (gorilla)
 					magnification.gorillize()
-				if(4) //genetic mass susceptibility (gib)
+				if(4) // genetic mass susceptibility (gib)
 					magnification.gib()
 	magnification = null
 

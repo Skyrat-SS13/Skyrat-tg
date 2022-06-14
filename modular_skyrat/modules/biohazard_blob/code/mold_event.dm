@@ -16,12 +16,11 @@
 		/obj/structure/biohazard_blob/structure/core/toxic,
 		/obj/structure/biohazard_blob/structure/core/radioactive,
 		/obj/structure/biohazard_blob/structure/core/emp,
-		/obj/structure/biohazard_blob/structure/core/fungus
 	)
 
 /datum/round_event/mold/start()
 	var/list/turfs = list() //list of all the empty floor turfs in the hallway areas
-	var/molds2spawn 
+	var/molds2spawn
 	if(get_active_player_count(alive_check = TRUE, afk_check = TRUE, human_check = TRUE) >= 60)
 		molds2spawn	= 2 //Guaranteedly worse
 	else
@@ -29,7 +28,7 @@
 
 	var/obj/structure/biohazard_blob/resin/resintest = new()
 
-	var/list/possible_spawn_areas = typecacheof(typesof(/area/maintenance, /area/security/prison, /area/construction))
+	var/list/possible_spawn_areas = typecacheof(typesof(/area/station/maintenance, /area/station/security/prison, /area/station/construction))
 
 	for(var/area/A in world)
 		if(!is_station_level(A.z))

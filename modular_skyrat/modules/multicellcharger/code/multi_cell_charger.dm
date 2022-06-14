@@ -112,6 +112,7 @@
 	return COMPONENT_CANCEL_ATTACK_CHAIN
 
 /obj/machinery/cell_charger_multi/RefreshParts()
+	. = ..()
 	charge_rate = 0 // No, you cant get free charging speed!
 	for(var/obj/item/stock_parts/capacitor/C in component_parts)
 		charge_rate += charge_rate_base * C.rating

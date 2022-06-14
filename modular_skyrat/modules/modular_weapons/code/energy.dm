@@ -1,11 +1,13 @@
-//////////////////////
-//   CFA Defender   //
-//////////////////////
-// A mini disabler with 12 shot capacity in comparison to the normal disabler's 20.
+/*
+*	BOLT RESPONDER
+*	A mini disabler
+*	12 shot capacity VS normal disabler's 20.
+*/
 
-/obj/item/gun/energy/disabler/cfa_disabler
-	name = "CFA Responder"
-	desc = "A pocket-sized self-defense weapon popular with law enforcement due to its safe non-lethal payload that physically exhausts organic targets and cheap pricetag. The size makes it popular with smaller species, however, gives the obvious drawback of a smaller battery. It has <b><span style='color:purple'>Cantalan Federal Arms</span></b> eteched into the grip."
+
+/obj/item/gun/energy/disabler/bolt_disabler
+	name = "Bolt Responder"
+	desc = "A pocket-sized non-lethal energy gun with low ammo capacity."
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/guns/projectile.dmi'
 	icon_state = "cfa-disabler"
 	inhand_icon_state = null
@@ -15,18 +17,17 @@
 	cell_type = /obj/item/stock_parts/cell/mini_egun
 	ammo_x_offset = 2
 	charge_sections = 3
-	can_flashlight = FALSE // Can't attach or detach the flashlight, and override it's icon update
-	gunlight_state = "cfa-disabler-light"
 	has_gun_safety = FALSE
+	company_flag = COMPANY_BOLT
 
-/obj/item/gun/energy/disabler/cfa_disabler/Initialize()
-	set_gun_light(new /obj/item/flashlight/seclite(src))
-	return ..()
+/obj/item/gun/energy/disabler/bolt_disabler/add_seclight_point()
+	return
 
-//////////////////////
-//    CFA Phalanx   //
-//////////////////////
-// Similar to the HoS's laser. Fires a bouncing non-lethal, lethal and knockdown projectile.
+/*
+*	CFA PHALANX
+*	Similar to the HoS's laser
+*	Fires a bouncing non-lethal, lethal and knockdown projectile.
+*/
 
 /obj/item/gun/energy/e_gun/cfa_phalanx
 	name = "\improper Mk.II Phalanx plasma blaster"
@@ -41,10 +42,11 @@
 	has_gun_safety = FALSE
 	cell_type = /obj/item/stock_parts/cell/hos_gun
 
-//////////////////////
-//    CFA Paladin   //
-//////////////////////
-// Identical to a heavy laser.
+/*
+*	CFA PALADIN
+*	Identical to a heavy laser.
+*/
+
 
 /obj/item/gun/energy/laser/cfa_paladin
 	name = "\improper Mk.IV Paladin plasma carbine"
@@ -56,10 +58,11 @@
 	charge_sections = 5
 	has_gun_safety = FALSE
 
-//////////////////////
-// Bounce Disabler  //
-//////////////////////
-// It's a disabler that will always ricochet.
+/*
+*	BOUNCE DISABLER
+*	A disabler that will always ricochet.
+*/
+
 
 /obj/item/ammo_casing/energy/disabler/bounce
 	projectile_type = /obj/projectile/beam/disabler/bounce
@@ -79,7 +82,7 @@
 	icon_state = "bouncebeam"
 	damage = 30
 	damage_type = STAMINA
-	flag = ENERGY
+	armor_flag = ENERGY
 	eyeblur = 1
 	tracer_type = /obj/effect/projectile/tracer/disabler/bounce
 	light_range = 5
@@ -90,14 +93,14 @@
 	ricochet_chance = 130
 	ricochet_decay_damage = 0.9
 
+// Allows the projectile to reflect on walls like how bullets ricochet.
 /obj/projectile/beam/disabler/bounce/check_ricochet_flag(atom/A)
 	return TRUE
-// Allows the projectile to reflect on walls like how bullets ricochet.
 
-//////////////////////
-//  Bounce  Laser   //
-//////////////////////
-// It's a laser that will always ricochet.
+/*
+*	BOUNCE LASER
+*	A laser that will always ricochet.
+*/
 
 /obj/item/ammo_casing/energy/laser/bounce
 	projectile_type = /obj/projectile/beam/laser/bounce
@@ -110,7 +113,7 @@
 	icon_state = "bouncebeam_red"
 	damage = 20
 	damage_type = BURN
-	flag = LASER
+	armor_flag = LASER
 	light_range = 5
 	light_power = 0.75
 	speed = 1.4
@@ -119,14 +122,14 @@
 	ricochet_chance = 130
 	ricochet_decay_damage = 0.9
 
+// Allows the projectile to reflect on walls like how bullets ricochet.
 /obj/projectile/beam/laser/bounce/check_ricochet_flag(atom/A)
 	return TRUE
-// Allows the projectile to reflect on walls like how bullets ricochet.
 
-//////////////////////
-// Knockdown  Bolt  //
-//////////////////////
-// A taser that had the same stamina impact as a disabler, but a five-second knockdown and taser hitter effects.
+/*
+*	KNOCKDOWN BOLT
+*	A taser that had the same stamina impact as a disabler, but a five-second knockdown and taser hitter effects.
+*/
 
 /obj/item/ammo_casing/energy/electrode/knockdown
 	projectile_type = /obj/projectile/energy/electrode/knockdown
@@ -143,10 +146,13 @@
 	stamina = 30
 	range = 6
 
-//////////////////////
-//   Single Laser   //
-//////////////////////
-// Has an unique sprite, it's a low-powered laser for rapid fire. Pea-shooter tier.
+/*
+*	SINGLE LASER
+*	Has an unique sprite
+*	Low-powered laser for rapid fire
+*	Pea-shooter tier.
+*/
+
 
 /obj/item/ammo_casing/energy/laser/single
 	projectile_type = /obj/projectile/beam/laser/single
@@ -164,10 +170,11 @@
 	speed = 0.5
 	armour_penetration = 10
 
-//////////////////////
-//   Double Laser   //
-//////////////////////
-// Visually, this fires two lasers. In code, it's just one. It's fast and great for turrets.
+/*
+*	DOUBLE LASER
+*	Visually, this fires two lasers. In code, it's just one.
+*	It's fast and great for turrets.
+*/
 
 /obj/item/ammo_casing/energy/laser/double
 	projectile_type = /obj/projectile/beam/laser/double
@@ -186,11 +193,11 @@
 	speed = 0.5
 	armour_penetration = 10
 
-//////////////////////
-//  Energy Bullets  //
-//////////////////////
-// Ballistic gunplay but it allows us to target a different part of the armour block.
-// Also allows the benefits of lasers (blobs strains, xenos) over bullets to be used with ballistic gunplay.
+/*
+*	ENERGY BULLETS
+*	Ballistic gunplay but it allows us to target a different part of the armour block.
+*	Also allows the benefits of lasers (blobs strains, xenos) over bullets to be used with ballistic gunplay.
+*/
 
 /obj/item/ammo_casing/caseless/laser
 	name = "type I plasma projectile"
@@ -212,7 +219,7 @@
 	projectile_type = /obj/projectile/beam/laser/double
 
 /obj/item/ammo_casing/caseless/laser/bounce
-	name = "type III reflective projectile (Lethal)"
+	name = "type III reflective projectile (lethal)"
 	desc = "A chemical mixture that once triggered, creates a deadly bouncing projectile, melting it's own casing in the process."
 	icon_state = "bounce_shell"
 	worn_icon_state = "shell"
@@ -221,7 +228,7 @@
 	projectile_type = /obj/projectile/beam/laser/bounce
 
 /obj/item/ammo_casing/caseless/laser/bounce/disabler
-	name = "type III reflective projectile (Disabler)"
+	name = "type III reflective projectile (disabler)"
 	desc = "A chemical mixture that once triggered, creates bouncing disabler projectile, melting it's own casing in the process."
 	icon_state = "disabler_shell"
 	projectile_type = /obj/projectile/beam/disabler/bounce

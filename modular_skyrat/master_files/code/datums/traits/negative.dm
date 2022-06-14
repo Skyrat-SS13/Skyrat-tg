@@ -1,4 +1,4 @@
-//SKYRAT NEGATIVE TRAITS
+// SKYRAT NEGATIVE TRAITS
 
 /datum/quirk/alexithymia
 	name = "Alexithymia"
@@ -66,10 +66,20 @@
 	mob_trait = TRAIT_CHUNKYFINGERS
 	icon = "hand-middle-finger"
 
+/datum/quirk/no_guns
+	name = "No Guns"
+	desc = "For whatever reason, you are unable to use guns. The reasoning may vary, but is up to you to decide."
+	gain_text = span_notice("You feel like you won't be able to use guns anymore...")
+	lose_text = span_notice("You suddenly feel like you can use guns again!")
+	medical_record_text = "Patient is unable to use firearms. Reasoning unknown."
+	value = -4
+	mob_trait = TRAIT_NOGUNS
+	icon = "none"
+
 /datum/quirk/mute
 	name = "Mute"
 	desc = "Due to some accident, medical condition, or simply by choice, you are completely unable to speak."
-	value = -2 //HALP MAINTS
+	value = -2 // HALP MAINTS
 	gain_text = span_danger("You find yourself unable to speak!")
 	lose_text = span_notice("You feel a growing strength in your vocal chords.")
 	medical_record_text = "Functionally mute, patient is unable to use their voice in any capacity."

@@ -10,16 +10,15 @@
 	icon_state = "condom_pack"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
 	w_class = WEIGHT_CLASS_TINY
+	/// The current color of the condom, can be changed and affects sprite
 	var/current_color = "pink"
-	var/color_changed = FALSE
 
 /obj/item/condom_pack/Initialize()
 	. = ..()
 	//color chosen randomly when item spawned
+	current_color = "pink"
 	if(prob(50))
 		current_color = "teal"
-	else
-		current_color = "pink"
 	update_icon_state()
 	update_icon()
 
@@ -29,19 +28,19 @@
 
 /obj/item/condom_pack/attack_self(mob/user)
 	to_chat(user, span_notice("You start to open the condom pack..."))
-	if(!do_after(user, 15, target = user))
+	if(!do_after(user, 1.5 SECONDS, target = user))
 		return
 	playsound(src.loc, 'sound/items/poster_ripped.ogg', 50, TRUE)
-	var/obj/item/clothing/sextoy/condom/C = new /obj/item/clothing/sextoy/condom
+	var/obj/item/clothing/sextoy/condom/removed_condom = new /obj/item/clothing/sextoy/condom
 
-	user.put_in_hands(C)
+	user.put_in_hands(removed_condom)
 	switch(current_color)
 		if("pink")
-			C.current_color = "pink"
+			removed_condom.current_color = "pink"
 		if("teal")
-			C.current_color = "teal"
-	C.update_icon_state()
-	C.update_icon()
+			removed_condom.current_color = "teal"
+	removed_condom.update_icon_state()
+	removed_condom.update_icon()
 	qdel(src)
 
 //Opened condom
@@ -65,20 +64,17 @@
 	. = ..()
 	icon_state = "[initial(icon_state)]_[current_color]_[condom_state]"
 
-//to update model properly after use
+/// Updates the condom's sprite, called after use
 /obj/item/clothing/sextoy/condom/proc/condom_use()
 	switch(condom_state)
 		if("used")
+			name = "used condom"
+			condom_state = "dirty"
 			if(prob(10)) //chance of condom to break on first time.
 				name = "broken condom"
 				condom_state = "broken"
-				update_icon_state()
-				update_icon()
-			else
-				name = "used condom"
-				condom_state = "dirty"
-				update_icon_state()
-				update_icon()
+			update_icon_state()
+			update_icon()
 
 		if("dirty")
 			name = "broken condom"

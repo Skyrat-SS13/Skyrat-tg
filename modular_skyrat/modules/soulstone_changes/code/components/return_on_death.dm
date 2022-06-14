@@ -34,4 +34,4 @@
 
 
 /datum/component/return_on_death/UnregisterFromParent()
-	UnregisterSignal(parent, COMSIG_LIVING_DEATH, COMSIG_PARENT_QDELETING)
+	UnregisterSignal(parent, list(COMSIG_LIVING_DEATH, COMSIG_PARENT_QDELETING))

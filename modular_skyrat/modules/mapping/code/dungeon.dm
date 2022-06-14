@@ -1,6 +1,6 @@
-//////////////////////
-//		Walls		//
-//////////////////////
+/*
+*	WALLS
+*/
 
 /turf/closed/indestructible/dungeon
 	name = "stone wall"
@@ -14,9 +14,9 @@
 	icon_state = "wall-corner"
 	base_icon_state = "wall-corner"
 
-//////////////////////
-//       Turfs       //
-//////////////////////
+/*
+*	TURFS
+*/
 
 /turf/open/floor/plating/cobblestone
 	gender = PLURAL
@@ -27,7 +27,7 @@
 	planetary_atmos = FALSE
 
 /turf/open/floor/plating/cobblestone/planet
-	baseturfs = /turf/open/floor/plating/dirt/planet
+	baseturfs = /turf/open/misc/dirt/planet
 	planetary_atmos = TRUE
 
 /turf/open/floor/plating/cobblestone/dungeon
@@ -45,9 +45,9 @@
 	baseturfs = /turf/open/floor/plating/cobblestone/sparse/planet
 	planetary_atmos = TRUE
 
-//////////////////////
-//    Fake Walls    //
-//////////////////////
+/*
+*	FAKE WALLS
+*/
 
 /obj/structure/dungeon
 	name = "stone wall with a hole in it!"

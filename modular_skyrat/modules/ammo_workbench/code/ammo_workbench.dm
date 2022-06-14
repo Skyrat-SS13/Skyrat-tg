@@ -336,12 +336,13 @@
 	id = "ammo_workbench"
 	build_path = /obj/item/circuitboard/machine/ammo_workbench
 	category = list("Weapons Machinery")
-	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
+	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 
 
 //MISC MACHINE PROCS
 
 /obj/machinery/ammo_workbench/RefreshParts()
+	. = ..()
 	var/time_efficiency = 20
 	for(var/obj/item/stock_parts/micro_laser/new_laser in component_parts)
 		time_efficiency -= new_laser.rating * 2

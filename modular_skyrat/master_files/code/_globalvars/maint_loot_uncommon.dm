@@ -1,19 +1,16 @@
 
-GLOBAL_LIST_INIT(uncommon_loot, list(//uncommon: useful items
-	list( //Skillchips
+GLOBAL_LIST_INIT(uncommon_loot, list(// uncommon: useful items
+	list( // Skillchips
 		/obj/item/skillchip/basketweaving = 50,
 		/obj/item/skillchip/bonsai = 100,
 		/obj/item/skillchip/disk_verifier = 1,
 		/obj/item/skillchip/job/engineer = 10,
 		/obj/item/skillchip/job/roboticist = 10,
 		/obj/item/skillchip/light_remover = 10,
-		/obj/item/skillchip/glassblowing_master = 10,
-		/obj/item/skillchip/ceramic_master = 10,
-		/obj/item/skillchip/fishing_master = 10,
 		/obj/item/skillchip/useless_adapter = 25,
 		/obj/item/skillchip/wine_taster = 50
 	) = 50,
-	list( //Collectable hats!
+	list( // Collectable hats!
 		/obj/item/clothing/head/collectable/beret = 1,
 		/obj/item/clothing/head/collectable/captain = 1,
 		/obj/item/clothing/head/collectable/chef = 1,
@@ -33,32 +30,16 @@ GLOBAL_LIST_INIT(uncommon_loot, list(//uncommon: useful items
 		/obj/item/clothing/head/collectable/tophat = 1,
 		/obj/item/clothing/head/collectable/welding = 1,
 		/obj/item/clothing/head/collectable/wizard = 1,
-		/obj/item/clothing/head/collectable/xenom = 1
+		/obj/item/clothing/head/collectable/xenom = 1,
 	) = 50,
-	list( //Cartridges
-		/obj/item/cartridge/atmos = 100,
-		/obj/item/cartridge/captain = 5,
-		/obj/item/cartridge/ce = 5,
-		/obj/item/cartridge/chemistry = 50,
-		/obj/item/cartridge/cmo = 5,
-		/obj/item/cartridge/curator = 100,
-		/obj/item/cartridge/detective = 50,
-		/obj/item/cartridge/engineering = 50,
-		/obj/item/cartridge/head = 5,
-		/obj/item/cartridge/hop = 5,
-		/obj/item/cartridge/hos = 5,
-		/obj/item/cartridge/janitor = 50,
-		/obj/item/cartridge/lawyer = 50,
-		/obj/item/cartridge/medical = 50,
-		/obj/item/cartridge/quartermaster = 5,
-		/obj/item/cartridge/rd = 5,
-		/obj/item/cartridge/roboticist = 50,
-		/obj/item/cartridge/security = 50,
-		/obj/item/cartridge/signal = 100,
-		/obj/item/cartridge/virus/clown = 5,
-		/obj/item/cartridge/virus/mime = 5
+	list( // Cartridges
+		/obj/item/computer_hardware/hard_drive/portable/command/captain = 1,
+		/obj/item/computer_hardware/hard_drive/portable/command/cmo = 1,
+		/obj/item/computer_hardware/hard_drive/portable/command/rd = 1,
+		/obj/item/computer_hardware/hard_drive/portable/command/ce = 1,
+		/obj/item/computer_hardware/hard_drive/portable/command/hos = 1,
 	) = 50,
-	list( //Bot assemblies
+	list( // Bot assemblies
 		/obj/item/bot_assembly/cleanbot = 1,
 		/obj/item/bot_assembly/ed209 = 1,
 		/obj/item/bot_assembly/firebot = 1,
@@ -68,7 +49,7 @@ GLOBAL_LIST_INIT(uncommon_loot, list(//uncommon: useful items
 		/obj/item/bot_assembly/medbot = 1,
 		/obj/item/bot_assembly/secbot = 1
 	) = 50,
-	list( //Surgery stuff
+	list( // Surgery stuff
 		/obj/item/bonesetter = 1,
 		/obj/item/cautery = 1,
 		/obj/item/circular_saw = 1,
@@ -81,7 +62,7 @@ GLOBAL_LIST_INIT(uncommon_loot, list(//uncommon: useful items
 		/obj/item/surgical_processor = 1,
 		/obj/item/surgicaldrill = 1
 	) = 50,
-	list( //Very useful tools and equipment
+	list( // Very useful tools and equipment
 		/obj/item/anomaly_neutralizer = 5,
 		/obj/item/assembly/flash = 50,
 		/obj/item/clothing/glasses/material = 100,
@@ -135,13 +116,11 @@ GLOBAL_LIST_INIT(uncommon_loot, list(//uncommon: useful items
 		/obj/item/toy/cards/deck/syndicate = 5,
 		/obj/item/wormhole_jaunter = 5
 	) = 200,
-	list( //Ammo
+	list( // Ammo
 		/obj/item/ammo_casing/shotgun/beanbag = 50,
 		/obj/item/ammo_casing/shotgun/buckshot = 50,
 		/obj/item/ammo_casing/shotgun/improvised = 200,
 		/obj/item/ammo_casing/a357 = 25,
-		/obj/item/ammo_casing/a556 = 50,
-		/obj/item/ammo_casing/a556/rubber = 25,
 		/obj/item/ammo_casing/a762 = 25,
 		/obj/item/ammo_casing/c10mm = 25,
 		/obj/item/ammo_casing/c32 = 50,
@@ -166,6 +145,8 @@ GLOBAL_LIST_INIT(uncommon_loot, list(//uncommon: useful items
 		/obj/item/banhammer = 25,
 		/obj/item/bikehorn/airhorn = 25,
 		/obj/item/book/granter/spell/smoke/lesser = 5,
+		/obj/item/book/granter/crafting_recipe/pipegun_prime = 5,
+		/obj/item/book/granter/crafting_recipe/trash_cannon = 5,
 		/obj/item/bountytrap = 25,
 		/obj/item/camera/spooky = 5,
 		/obj/item/capturedevice = 5,
@@ -189,9 +170,9 @@ GLOBAL_LIST_INIT(uncommon_loot, list(//uncommon: useful items
 		/obj/item/greentext/quiet = 5,
 		/obj/item/grenade/antigravity = 5,
 		/obj/item/grenade/chem_grenade/colorful = 50,
-		/obj/item/grenade/chem_grenade/ez_clean = 25,
 		/obj/item/grenade/firecracker = 25,
 		/obj/item/grenade/stingbang = 25,
+		/obj/item/tattoo_kit = 5,
 		/obj/item/instrument/musicalmoth = 5,
 		/obj/item/instrument/piano_synth/headphones/spacepods = 5,
 		/obj/item/instrument/violin/golden = 5,
@@ -203,20 +184,19 @@ GLOBAL_LIST_INIT(uncommon_loot, list(//uncommon: useful items
 		/obj/item/rsf = 5,
 		/obj/item/rupee = 5,
 		/obj/item/sord = 5,
-		/obj/item/stack/telecrystal/five = 5,
 		/obj/item/stack/telecrystal = 5,
 		/obj/item/storage/belt/utility/syndicate = 5,
 		/obj/item/storage/box/firecrackers = 10,
 		/obj/item/storage/box/fireworks/dangerous = 5,
 		/obj/item/storage/box/hug/medical = 100,
-		/obj/item/storage/firstaid/ancient = 25,
+		/obj/item/storage/medkit/ancient = 25,
 		/obj/item/storage/toolbox/emergency/old = 25,
 		/obj/item/storage/toolbox/mechanical/old = 25,
 		/obj/item/tailclub = 25,
 		/obj/item/taster = 25,
 		/obj/item/disk/holodisk/woospider = 25
 	) = 50,
-	list( //Meme-level injectors
+	list( // Meme-level injectors
 		/obj/item/dnainjector/chavmut = 1,
 		/obj/item/dnainjector/clumsymut = 1,
 		/obj/item/dnainjector/dwarf = 1,
@@ -234,7 +214,7 @@ GLOBAL_LIST_INIT(uncommon_loot, list(//uncommon: useful items
 		/obj/item/dnainjector/wackymut = 1
 
 	) = 50,
-	list( //Strong as fuck injectors
+	list( // Strong as fuck injectors
 		/obj/item/dnainjector/timed/hulk = 1,
 		/obj/item/dnainjector/insulated = 1,
 		/obj/item/dnainjector/olfaction = 1,
@@ -242,13 +222,13 @@ GLOBAL_LIST_INIT(uncommon_loot, list(//uncommon: useful items
 		/obj/item/dnainjector/thermal = 1,
 		/obj/item/dnainjector/void = 1
 	) = 25,
-	list( //INSULS!
+	list( // INSULS!
 		/obj/item/clothing/gloves/color/yellow = 100,
 		/obj/item/clothing/gloves/combat = 10,
 		/obj/item/clothing/gloves/color/red/insulated = 50,
 		/obj/item/clothing/gloves/tackler/combat/insulated = 5,
 	) = 25,
-	list( //Fake objects meant to trick players into thinking they're other items.
+	list( // Fake objects meant to trick players into thinking they're other items.
 		/obj/item/fakeartefact = 100,
 		/obj/item/card/emagfake = 25,
 		/obj/item/cardboard_cutout = 25,
@@ -275,13 +255,14 @@ GLOBAL_LIST_INIT(uncommon_loot, list(//uncommon: useful items
 		/obj/item/storage/belt/holster = 25,
 		/obj/item/storage/box/fakesyndiesuit = 25
 	) = 100,
-	list( //Improvised weapons and tools that are weapons.
+	list( // Improvised weapons and tools that are weapons.
 		/obj/item/gun/ballistic/revolver/rifle/improvised = 100,
+		/obj/item/gun/ballistic/rifle/boltaction/pipegun = 100,
 		/obj/item/scythe = 25,
 		/obj/item/throwing_star = 5,
 		/obj/item/throwing_star/stamina = 5
 	) = 5,
-	list( //Chameleon gear
+	list( // Chameleon gear
 		/obj/item/clothing/glasses/chameleon = 1,
 		/obj/item/clothing/glasses/chameleon/broken = 1,
 		/obj/item/clothing/gloves/chameleon = 1,
@@ -309,15 +290,19 @@ GLOBAL_LIST_INIT(uncommon_loot, list(//uncommon: useful items
 		/obj/item/storage/belt/holster/chameleon = 1,
 		/obj/item/storage/belt/holster/chameleon/broken = 1
 	) = 5,
-	list( //Department analyzers
+	list( // Department analyzers
 		/obj/item/clothing/glasses/hud/diagnostic = 1,
 		/obj/item/clothing/glasses/hud/health = 1,
 		/obj/item/clothing/glasses/hud/security = 1,
 		/obj/item/clothing/glasses/night = 1
 	) = 75,
-	list( //Potion seller, give me your strongest potions
+	list( // Potion seller, give me your strongest potions
 		/obj/item/eldritch_potion/crucible_soul = 1,
 		/obj/item/eldritch_potion/duskndawn = 1,
 		/obj/item/eldritch_potion/wounded = 1
-	) = 1
+	) = 1,
+	list( // Modsuits
+		/obj/item/mod/construction/broken_core = 1,
+		/obj/effect/spawner/random/mod/maint = 3,
+	) = 25
 ))

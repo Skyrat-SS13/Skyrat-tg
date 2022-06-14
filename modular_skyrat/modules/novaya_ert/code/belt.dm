@@ -30,3 +30,11 @@
 		/obj/item/grenade/smokebomb = 1,
 		/obj/item/grenade/frag = 1,
 	),src)
+
+/obj/item/storage/belt/military/nri/full_support/PopulateContents()
+	generate_items_inside(list(
+		/obj/item/ammo_box/magazine/plastikov9mm = 4,
+		/obj/item/knife/combat = 1,
+		/obj/item/grenade/smokebomb = 1,
+		/obj/item/grenade/frag = 1,
+	),src)

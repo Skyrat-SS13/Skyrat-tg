@@ -1,4 +1,9 @@
-///// AREAS, None of these should need power or lighting. I'd sooner die than hand-light this entire map
+/*
+*	AREAS
+*	None of these should need power or lighting
+*	I'd sooner die than hand-light this entire map
+*/
+
 /area/awaymission/mothership_astrum/halls
 	name = "Mothership Astrum Hallways"
 	icon_state = "away1"
@@ -84,8 +89,14 @@
 /obj/item/paper/fluff/awaymissions/astrum5/AltClick()
 	return //no folding these
 
-//Simplemobs
-//MELEE
+/*
+*	SIMPLEMOBS
+*/
+
+/*
+*	MELEE
+*/
+
 /mob/living/simple_animal/hostile/abductor
 	name = "Abductor Scientist"
 	desc = "From the depths of space."
@@ -142,7 +153,10 @@
 	health = 160
 	loot = list(/obj/effect/gibspawner/generic, /obj/effect/spawner/random/astrum/agentloot)
 
-//RANGED
+/*
+*	RANGED
+*/
+
 /mob/living/simple_animal/hostile/abductor/ranged
 	name = "Abductor Scientist"
 	ranged = 1
@@ -164,17 +178,19 @@
 	health = 140
 	loot = list(/obj/effect/gibspawner/generic, /obj/effect/spawner/random/astrum/agentloot)
 
-//GHOSTROLES
-/obj/effect/mob_spawn/human/lobotomite
+/*
+*	GHOST ROLES
+*/
+
+/obj/effect/mob_spawn/ghost_role/human/lobotomite
 	name = "lobotomite containment tube"
+	prompt_name = "a lobotomite"
 	desc = "A pod containing a sleeping experiment, peering through the frost reveals a sleeping human."
 	mob_name = "Lobotomite"
 	density = TRUE
-	roundstart = FALSE
-	death = FALSE
 	mob_species = /datum/species/human
 	outfit = /datum/outfit/lobotomite
-	short_desc = "You are a lobotomite, an experiment of those who took you away from... why can't you remember?"
+	you_are_text = "You are a lobotomite, an experiment of those who took you away from... why can't you remember?"
 	flavour_text = "You are the Lobotomite. \
 	Do not explore the gateway. \
 	Do not touch anything in the gateway. \
@@ -190,23 +206,13 @@
 	mask = /obj/item/clothing/mask/breath/medical
 	back = /obj/item/tank/internals/anesthetic
 
-//LOOT
-/obj/item/crowbar/freeman
-	name = "blood soaked crowbar"
-	desc = "A weapon wielded by an ancient physicist, the blood of hundreds seeps through this rod of iron and malice."
-	icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/freeman.dmi'
-	icon_state = "crowbar"
-	force = 35
-	throwforce = 45
-	toolspeed = 0.1
-	wound_bonus = 10
-	hitsound = 'modular_skyrat/master_files/sound/weapons/crowbar2.ogg'
-	mob_throw_hit_sound = 'modular_skyrat/master_files/sound/weapons/crowbar2.ogg'
-	force_opens = TRUE
+/*
+*	LOOT
+*/
 
 /obj/effect/spawner/random/astrum
 	name = "astrum low"
-	loot = list(/obj/item/storage/firstaid/regular = 10,
+	loot = list(/obj/item/storage/medkit/regular = 10,
 				/obj/item/reagent_containers/syringe/penacid = 5,
 				/obj/item/reagent_containers/syringe/salacid = 20,
 				/obj/item/reagent_containers/syringe/oxandrolone = 20,
@@ -218,7 +224,7 @@
 
 /obj/effect/spawner/random/astrum/mid
 	name = "astrum mid"
-	loot = list(/obj/item/storage/firstaid/expeditionary = 20,
+	loot = list(/obj/item/storage/medkit/expeditionary = 20,
 				/obj/item/shield/riot/tele = 12,
 				/obj/item/dnainjector/shock = 10,
 				/obj/item/book/granter/spell/summonitem = 20,
@@ -244,12 +250,12 @@
 
 /obj/effect/spawner/random/astrum/agentloot
 	name = "abductor agent loot"
-	loot = list(/obj/item/organ/heart/cybernetic/tier3 = 10,
+	loot = list(/obj/item/organ/internal/heart/cybernetic/tier3 = 10,
 				/obj/item/clothing/suit/armor/abductor/astrum = 10,
 				/obj/item/clothing/head/helmet/astrum = 10,
-				/obj/item/organ/cyberimp/arm/armblade = 5,
+				/obj/item/organ/internal/cyberimp/arm/armblade = 5,
 				/obj/effect/gibspawner/generic = 10,
-				/obj/item/organ/eyes/night_vision/alien = 5
+				/obj/item/organ/internal/eyes/night_vision/alien = 5
 				)
 
 /obj/item/gun/energy/alien/zeta
@@ -300,30 +306,14 @@
 	desc = "An exceptionally robust helmet. For alien standards, that is."
 	icon_state = "alienhelmet"
 	inhand_icon_state = "alienhelmet"
-	blockTracking = TRUE
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT
 	armor = list(MELEE = 40, BULLET = 30, LASER = 30,ENERGY = 40, BOMB = 50, BIO = 90, FIRE = 100, ACID = 100, WOUND = 15)
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 
-// Machine that removes nanites
-/obj/machinery/scanner_gate/anti_nanite
-	name = "Advanced Scanner Gate"
-	desc = "This gate seems to be highly modified with odd markings."
-	resistance_flags = INDESTRUCTIBLE
-	use_power = NO_POWER_USE
-	flags_1 = NODECONSTRUCT_1
+/*
+*	BOSS
+*/
 
-/obj/machinery/scanner_gate/anti_nanite/emag_act(mob/user)
-	to_chat(user, span_notice("This gate has advanced security measures!"))
-	return
-
-/obj/machinery/scanner_gate/anti_nanite/attackby(obj/item/W, mob/user, params)
-	return
-
-/obj/machinery/scanner_gate/anti_nanite/examine(mob/user)
-	return list("This gate seems to be highly modified with odd markings.")
-
-//Boss
 /mob/living/simple_animal/hostile/megafauna/hierophant/astrum
 	name = "Abductor Captain"
 	desc = "The one you've come here for, finish this."

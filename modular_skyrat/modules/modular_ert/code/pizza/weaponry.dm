@@ -12,5 +12,5 @@
 
 /obj/item/knife/hotknife/attack(mob/living/victim, mob/living/attacker, params)
 	victim.adjust_fire_stacks(fire_stacks)
-	victim.IgniteMob()
+	victim.ignite_mob()
 	return ..()

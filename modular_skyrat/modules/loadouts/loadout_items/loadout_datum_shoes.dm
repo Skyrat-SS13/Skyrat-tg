@@ -1,4 +1,6 @@
-// --- Loadout item datums for shoes items ---
+/*
+*	LOADOUT ITEM DATUMS FOR THE SHOE SLOT
+*/
 
 /// Shoe Slot Items (Deletes overrided items)
 GLOBAL_LIST_INIT(loadout_shoes, generate_loadout_items(/datum/loadout_item/shoes))
@@ -14,18 +16,18 @@ GLOBAL_LIST_INIT(loadout_shoes, generate_loadout_items(/datum/loadout_item/shoes
 	else
 		outfit.shoes = item_path
 
+/*
+*	JACKBOOTS
+*/
+
 /datum/loadout_item/shoes/jackboots
 	name = "Jackboots"
 	item_path = /obj/item/clothing/shoes/jackboots
 
 // Thedragmeme's donator reward, they've decided to make them available to everybody.
 /datum/loadout_item/shoes/jackboots/heel
-	name = "High-heel Jackboots"
+	name = "High-Heel Jackboots"
 	item_path = /obj/item/clothing/shoes/jackboots/heel
-
-/datum/loadout_item/shoes/junhle
-	name = "Brown Jackboots"
-	item_path = /obj/item/clothing/shoes/jungleboots
 
 /datum/loadout_item/shoes/thighboot
 	name = "Thigh Boots"
@@ -35,9 +37,17 @@ GLOBAL_LIST_INIT(loadout_shoes, generate_loadout_items(/datum/loadout_item/shoes
 	name = "Knee Boots"
 	item_path = /obj/item/clothing/shoes/jackboots/knee
 
+/*
+*	MISC BOOTS
+*/
+
 /datum/loadout_item/shoes/timbs
 	name = "Fashionable Boots"
 	item_path = /obj/item/clothing/shoes/jackboots/timbs
+
+/datum/loadout_item/shoes/jungle
+	name = "Jungle Boots"
+	item_path = /obj/item/clothing/shoes/jungleboots
 
 /datum/loadout_item/shoes/winter_boots
 	name = "Winter Boots"
@@ -47,32 +57,48 @@ GLOBAL_LIST_INIT(loadout_shoes, generate_loadout_items(/datum/loadout_item/shoes
 	name = "Work Boots"
 	item_path = /obj/item/clothing/shoes/workboots
 
+/datum/loadout_item/shoes/work_boots/old
+	name = "Old Work Boots"
+	item_path = /obj/item/clothing/shoes/workboots/old
+
 /datum/loadout_item/shoes/mining_boots
 	name = "Mining Boots"
 	item_path = /obj/item/clothing/shoes/workboots/mining
-
-/datum/loadout_item/shoes/laceup
-	name = "Laceup Shoes"
-	item_path = /obj/item/clothing/shoes/laceup
 
 /datum/loadout_item/shoes/russian_boots
 	name = "Russian Boots"
 	item_path = /obj/item/clothing/shoes/russian
 
-/datum/loadout_item/shoes/black_cowboy_boots
-	name = "Black Cowboy Boots"
-	item_path = /obj/item/clothing/shoes/cowboy/black
+/*
+*	COWBOY
+*/
 
 /datum/loadout_item/shoes/brown_cowboy_boots
 	name = "Brown Cowboy Boots"
 	item_path = /obj/item/clothing/shoes/cowboy
 
+/datum/loadout_item/shoes/black_cowboy_boots
+	name = "Black Cowboy Boots"
+	item_path = /obj/item/clothing/shoes/cowboy/black
+
 /datum/loadout_item/shoes/white_cowboy_boots
 	name = "White Cowboy Boots"
 	item_path = /obj/item/clothing/shoes/cowboy/white
 
+/datum/loadout_item/shoes/cowboyboots
+	name = "Cowboy Boots (Brown)"
+	item_path = /obj/item/clothing/shoes/cowboyboots
+
+/datum/loadout_item/shoes/cowboyboots_black
+	name = "Cowboy Boots (Black)"
+	item_path = /obj/item/clothing/shoes/cowboyboots/black
+
+/*
+*	SNEAKERS
+*/
+
 /datum/loadout_item/shoes/greyscale_sneakers
-	name = "Greyscale Sneakers"
+	name = "Colorable Sneakers"
 	item_path = /obj/item/clothing/shoes/sneakers
 
 /datum/loadout_item/shoes/black_sneakers
@@ -99,10 +125,6 @@ GLOBAL_LIST_INIT(loadout_shoes, generate_loadout_items(/datum/loadout_item/shoes
 	name = "Orange Sneakers"
 	item_path = /obj/item/clothing/shoes/sneakers/orange
 
-/datum/loadout_item/shoes/rainbow_sneakers
-	name = "Rainbow Sneakers"
-	item_path = /obj/item/clothing/shoes/sneakers/rainbow
-
 /datum/loadout_item/shoes/yellow_sneakers
 	name = "Yellow Sneakers"
 	item_path = /obj/item/clothing/shoes/sneakers/yellow
@@ -110,6 +132,50 @@ GLOBAL_LIST_INIT(loadout_shoes, generate_loadout_items(/datum/loadout_item/shoes
 /datum/loadout_item/shoes/white_sneakers
 	name = "White Sneakers"
 	item_path = /obj/item/clothing/shoes/sneakers/white
+
+/*
+*	LEG WRAPS
+*/
+
+/datum/loadout_item/shoes/gildedcuffs
+	name = "Gilded Leg Wraps"
+	item_path = /obj/item/clothing/shoes/wraps
+
+/datum/loadout_item/shoes/silvercuffs
+	name = "Silver Leg Wraps"
+	item_path = /obj/item/clothing/shoes/wraps/silver
+
+/datum/loadout_item/shoes/redcuffs
+	name = "Red Leg Wraps"
+	item_path = /obj/item/clothing/shoes/wraps/red
+
+/datum/loadout_item/shoes/bluecuffs
+	name = "Blue Leg Wraps"
+	item_path = /obj/item/clothing/shoes/wraps/blue
+
+/datum/loadout_item/shoes/clothwrap
+	name = "Colourable Cloth Wraps"
+	item_path = /obj/item/clothing/shoes/wraps/colourable
+
+/*
+*	MISC
+*/
+
+/datum/loadout_item/shoes/laceup
+	name = "Laceup Shoes"
+	item_path = /obj/item/clothing/shoes/laceup
+
+/datum/loadout_item/shoes/high_heels
+	name = "High Heels"
+	item_path = /obj/item/clothing/shoes/high_heels
+
+/datum/loadout_item/shoes/disco
+	name = "Green Snakeskin Shoes"
+	item_path = /obj/item/clothing/shoes/discoshoes
+
+/datum/loadout_item/shoes/dominaheels
+	name = "Dominant Heels"
+	item_path = /obj/item/clothing/shoes/dominaheels
 
 /datum/loadout_item/shoes/griffin
 	name = "Griffon Boots"
@@ -123,48 +189,33 @@ GLOBAL_LIST_INIT(loadout_shoes, generate_loadout_items(/datum/loadout_item/shoes
 	name = "Sport Shoes"
 	item_path = /obj/item/clothing/shoes/sports
 
-/datum/loadout_item/shoes/gildedcuffs
-	name = "Gilded leg wraps"
-	item_path = /obj/item/clothing/shoes/wraps
+/*
+*	SEASONAL
+*/
 
-/datum/loadout_item/shoes/silvercuffs
-	name = "Silver leg wraps"
-	item_path = /obj/item/clothing/shoes/wraps/silver
+/datum/loadout_item/shoes/christmas
+	name = "Red Christmas Boots"
+	item_path = /obj/item/clothing/shoes/winterboots/christmas
+	required_season = CHRISTMAS
 
-/datum/loadout_item/shoes/redcuffs
-	name = "Red leg wraps"
-	item_path = /obj/item/clothing/shoes/wraps/red
+/datum/loadout_item/shoes/christmas/green
+	name = "Green Christmas Boots"
+	item_path = /obj/item/clothing/shoes/winterboots/christmas/green
 
-/datum/loadout_item/shoes/bluecuffs
-	name = "Blue leg wraps"
-	item_path = /obj/item/clothing/shoes/wraps/blue
 
-/datum/loadout_item/shoes/clothwrap
-	name = "Colourable Cloth Wraps"
-	item_path = /obj/item/clothing/shoes/wraps/poly
+/*
+*	JOB-RESTRICTED
+*/
 
-/datum/loadout_item/shoes/high_heels
-	name = "High Heels"
-	item_path = /obj/item/clothing/shoes/high_heels
+/datum/loadout_item/shoes/jester
+	name = "Jester Shoes"
+	item_path = /obj/item/clothing/shoes/clown_shoes/jester
+	restricted_roles = list(JOB_CLOWN)
 
-/datum/loadout_item/shoes/cowboyboots
-	name = "Cowboy Boots, Brown"
-	item_path = /obj/item/clothing/shoes/cowboyboots
+/*
+*	FAMILIES
+*/
 
-/datum/loadout_item/shoes/cowboyboots_black
-	name = "Cowboy Boots, Black"
-	item_path = /obj/item/clothing/shoes/cowboyboots/black
-
-/datum/loadout_item/shoes/disco
-	name = "Green Snakeskin Shoes"
-	item_path = /obj/item/clothing/shoes/discoshoes
-
-//shoes
-/datum/loadout_item/shoes/dominaheels
-	name = "Dominant heels"
-	item_path = /obj/item/clothing/shoes/dominaheels
-
-//Families Gear
 /datum/loadout_item/shoes/deckers
 	name = "Deckers Shoes"
 	item_path = /obj/item/clothing/shoes/deckers
@@ -189,7 +240,10 @@ GLOBAL_LIST_INIT(loadout_shoes, generate_loadout_items(/datum/loadout_item/shoes
 	name = "Basil Shoes"
 	item_path = /obj/item/clothing/shoes/basil_boys
 
-//Donator shoes here
+/*
+*	DONATOR
+*/
+
 /datum/loadout_item/shoes/donator
 	donator_only = TRUE
 

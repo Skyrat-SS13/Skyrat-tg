@@ -1,4 +1,3 @@
-
 //schools of magic - unused for years and years on end, finally has a use with chaplains getting punished for using "evil" spells
 
 //use this if your spell isn't actually a spell, it's set by default (and actually, i really suggest if that's the case you should use datum/actions instead - see spider.dm for an example)
@@ -21,9 +20,18 @@
 
 //invocation types - what does the wizard need to do to invoke (cast) the spell?
 
+///Allows being able to cast the spell without saying anything.
+#define INVOCATION_NONE "none"
 ///Forces the wizard to shout (and be able to) to cast the spell.
 #define INVOCATION_SHOUT "shout"
 ///Forces the wizard to emote (and be able to) to cast the spell.
 #define INVOCATION_EMOTE "emote"
 ///Forces the wizard to whisper (and be able to) to cast the spell.
 #define INVOCATION_WHISPER "whisper"
+
+/// Default magic resistance that blocks normal magic (wizard, spells, magical staff projectiles)
+#define MAGIC_RESISTANCE (1<<0)
+/// Tinfoil hat magic resistance that blocks mental magic (telepathy, mind curses, abductors, jelly people)
+#define MAGIC_RESISTANCE_MIND (1<<1)
+/// Holy magic resistance that blocks unholy magic (revenant, cult, vampire, voice of god)
+#define MAGIC_RESISTANCE_HOLY (1<<2)

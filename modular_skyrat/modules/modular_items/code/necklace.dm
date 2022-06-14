@@ -1,7 +1,7 @@
 //ASHWALKER TRANSLATOR NECKLACE//
 #define LANGUAGE_TRANSLATOR "translator"
 /obj/item/clothing/neck/necklace/ashwalker
-	name = "Draconic necklace"
+	name = "draconic necklace"
 	desc = "A necklace forged in the raging fires of lavaland, grants the ability to speak Draconic, the native language of Ashwalkers, while worn."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/neck.dmi'
 	icon_state = "ashnecklace"

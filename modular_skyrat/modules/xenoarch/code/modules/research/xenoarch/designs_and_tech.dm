@@ -3,7 +3,7 @@
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = 500, /datum/material/plastic = 500)
 	category = list("Equipment")
-	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE | DEPARTMENTAL_FLAG_CARGO
+	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE | DEPARTMENT_BITFLAG_CARGO
 
 /datum/design/xeno_hammer/hammercm1
 	name = "Hammer (cm 1)"
@@ -48,7 +48,7 @@
 	materials = list(/datum/material/iron = 500, /datum/material/plastic = 500)
 	build_path = /obj/item/xenoarch/brush
 	category = list("Equipment")
-	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE | DEPARTMENTAL_FLAG_CARGO
+	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE | DEPARTMENT_BITFLAG_CARGO
 
 /datum/design/xeno_tape
 	name = "Xenoarch Tape Measure"
@@ -58,7 +58,7 @@
 	materials = list(/datum/material/iron = 500, /datum/material/plastic = 500)
 	build_path = /obj/item/xenoarch/tape_measure
 	category = list("Equipment")
-	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE | DEPARTMENTAL_FLAG_CARGO
+	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE | DEPARTMENT_BITFLAG_CARGO
 
 /datum/design/xeno_hh_scanner
 	name = "Xenoarch Handheld Scanner"
@@ -68,7 +68,7 @@
 	materials = list(/datum/material/iron = 500, /datum/material/plastic = 500)
 	build_path = /obj/item/xenoarch/handheld_scanner
 	category = list("Equipment")
-	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE | DEPARTMENTAL_FLAG_CARGO
+	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE | DEPARTMENT_BITFLAG_CARGO
 
 /datum/design/xeno_hh_scanner/advanced
 	name = "Xenoarch Advanced Handheld Scanner"
@@ -76,7 +76,7 @@
 	materials = list(/datum/material/iron = 500, /datum/material/plastic = 500, /datum/material/diamond = 500)
 	build_path = /obj/item/xenoarch/handheld_scanner/advanced
 	category = list("Equipment")
-	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE | DEPARTMENTAL_FLAG_CARGO
+	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE | DEPARTMENT_BITFLAG_CARGO
 
 /datum/design/xeno_hh_recoverer
 	name = "Xenoarch Handheld Recoverer"
@@ -86,7 +86,7 @@
 	materials = list(/datum/material/iron = 500, /datum/material/plastic = 500)
 	build_path = /obj/item/xenoarch/handheld_recoverer
 	category = list("Equipment")
-	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE | DEPARTMENTAL_FLAG_CARGO
+	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE | DEPARTMENT_BITFLAG_CARGO
 
 /datum/design/xeno_bag
 	name = "Xenoarch Bag"
@@ -96,7 +96,7 @@
 	materials = list(/datum/material/iron = 500, /datum/material/plastic = 500)
 	build_path = /obj/item/storage/bag/xenoarch
 	category = list("Equipment")
-	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE | DEPARTMENTAL_FLAG_CARGO
+	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE | DEPARTMENT_BITFLAG_CARGO
 
 /datum/design/xeno_belt
 	name = "Xenoarch Belt"
@@ -106,7 +106,7 @@
 	materials = list(/datum/material/iron = 500, /datum/material/plastic = 500)
 	build_path = /obj/item/storage/belt/utility/xenoarch
 	category = list("Equipment")
-	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE | DEPARTMENTAL_FLAG_CARGO
+	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE | DEPARTMENT_BITFLAG_CARGO
 
 /datum/design/adv_hammer
 	name = "Advanced Hammer"
@@ -116,7 +116,7 @@
 	materials = list(/datum/material/iron = 500, /datum/material/plastic = 500, /datum/material/diamond = 500)
 	build_path = /obj/item/xenoarch/hammer/adv
 	category = list("Equipment")
-	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE | DEPARTMENTAL_FLAG_CARGO
+	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE | DEPARTMENT_BITFLAG_CARGO
 
 /datum/design/adv_brush
 	name = "Advanced Brush"
@@ -126,7 +126,7 @@
 	materials = list(/datum/material/iron = 500, /datum/material/plastic = 500, /datum/material/diamond = 500)
 	build_path = /obj/item/xenoarch/brush/adv
 	category = list("Equipment")
-	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE | DEPARTMENTAL_FLAG_CARGO
+	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE | DEPARTMENT_BITFLAG_CARGO
 
 /datum/design/adv_bag
 	name = "Advanced Xenoarch Bag"
@@ -136,39 +136,39 @@
 	materials = list(/datum/material/iron = 500, /datum/material/plastic = 500, /datum/material/diamond = 500)
 	build_path = /obj/item/storage/bag/xenoarch/adv
 	category = list("Equipment")
-	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE | DEPARTMENTAL_FLAG_CARGO
+	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE | DEPARTMENT_BITFLAG_CARGO
 
 /datum/design/board/xeno_researcher
 	name = "Machine Design (Xenoarch Researcher)"
 	desc = "Allows for the construction of circuit boards used to build a new xenoarch researcher."
 	id = "xeno_researcher"
-	build_path = /obj/item/circuitboard/machine/xenoarch_researcher
+	build_path = /obj/item/circuitboard/machine/xenoarch_machine/xenoarch_researcher
 	category = list("Research Machinery")
-	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE
-
-/datum/design/board/xeno_digger
-	name = "Machine Design (Xenoarch Digger)"
-	desc = "Allows for the construction of circuit boards used to build a new xenoarch digger."
-	id = "xeno_digger"
-	build_path = /obj/item/circuitboard/machine/xenoarch_digger
-	category = list("Research Machinery")
-	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE
+	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
 
 /datum/design/board/xeno_scanner
 	name = "Machine Design (Xenoarch Scanner)"
 	desc = "Allows for the construction of circuit boards used to build a new xenoarch scanner."
 	id = "xeno_scanner"
-	build_path = /obj/item/circuitboard/machine/xenoarch_scanner
+	build_path = /obj/item/circuitboard/machine/xenoarch_machine/xenoarch_scanner
 	category = list("Research Machinery")
-	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE
+	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
 
 /datum/design/board/xeno_recoverer
 	name = "Machine Design (Xenoarch Recoverer)"
 	desc = "Allows for the construction of circuit boards used to build a new xenoarch recoverer."
 	id = "xeno_recoverer"
-	build_path = /obj/item/circuitboard/machine/xenoarch_recoverer
+	build_path = /obj/item/circuitboard/machine/xenoarch_machine/xenoarch_recoverer
 	category = list("Research Machinery")
-	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE
+	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
+
+/datum/design/board/xeno_digger
+	name = "Machine Design (Xenoarch Digger)"
+	desc = "Allows for the construction of circuit boards used to build a new xenoarch digger."
+	id = "xeno_digger"
+	build_path = /obj/item/circuitboard/machine/xenoarch_machine/xenoarch_digger
+	category = list("Research Machinery")
+	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
 
 /datum/techweb_node/basic_xenoarch
 	id = "basic_xenoarch"
@@ -206,7 +206,6 @@
 	prereq_ids = list("basic_xenoarch")
 	design_ids = list(
 		"xeno_researcher",
-		"xeno_digger",
 		"xeno_scanner",
 		"xeno_recoverer",
 	)
@@ -223,5 +222,16 @@
 		"adv_bag",
 		"xeno_hh_scanner_advanced",
 		"xeno_hh_recoverer",
+		"xeno_digger",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 3000)
+	required_experiments = list(/datum/experiment/scanning/points/xenoarch)
+
+/datum/experiment/scanning/points/xenoarch
+	name = "Advanced Xenoarchaeology Tools"
+	description = "It is possible to create even more advanced tools for xenoarchaeoloy."
+	required_points = 10
+	required_atoms = list(
+		/obj/item/xenoarch/useless_relic = 1,
+		/obj/item/xenoarch/broken_item = 2,
+	)

@@ -25,6 +25,7 @@
 	COOLDOWN_DECLARE(static/announcement_cooldown)
 
 /obj/machinery/computer/centcom_announcement/ui_interact(mob/user, datum/tgui/ui)
+	. = ..()
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "CommandReportConsole")

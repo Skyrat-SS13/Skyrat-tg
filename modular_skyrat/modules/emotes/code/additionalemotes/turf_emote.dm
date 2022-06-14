@@ -1,5 +1,3 @@
-var/current_turf
-
 /mob/living
 	var/obj/owned_turf
 	var/list/allowed_turfs = list()
@@ -8,6 +6,8 @@ var/current_turf
 	key = "turf"
 	key_third_person = "turf"
 	cooldown = 4 SECONDS
+	/// The current turf ID that the user selected in the radial menu.
+	var/current_turf
 
 /datum/emote/living/mark_turf/run_emote(mob/living/user, params, type_override, intentional)
 	. = ..()
@@ -15,10 +15,10 @@ var/current_turf
 
 	if(ishuman(user))
 		//feet
-		if(!(DIGITIGRADE in human_user.dna.species.species_traits) && !(human_user.dna.species.mutant_bodyparts["taur"]))
+		if(!(human_user.dna.species.bodytype & BODYTYPE_DIGITIGRADE) && !(human_user.dna.species.mutant_bodyparts["taur"]))
 			user.allowed_turfs += "footprint"
 
-		if((DIGITIGRADE in human_user.dna.species.species_traits) || human_user.dna.species.mutant_bodyparts["taur"])
+		if((human_user.dna.species.bodytype & BODYTYPE_DIGITIGRADE) || human_user.dna.species.mutant_bodyparts["taur"])
 			user.allowed_turfs += list("pawprint", "hoofprint", "clawprint")
 
 		//species & taurs
@@ -56,17 +56,18 @@ var/current_turf
 			user.allowed_turfs += "dust" //moth's dust ✨
 
 		//body parts
-		if(istype(user.getorganslot(ORGAN_SLOT_TAIL), /obj/item/organ/tail))
-			var/list/fluffy_tails = list("Tamamo Kitsune Tails", "Sergal", "Fox", "Fox (Alt 2)", "Fox (Alt 3)", "Fennec", "Red Panda", "Husky", "Skunk", "Lunasune", "Squirrel", "Wolf", "Stripe", "Kitsune", "Leopard", "Bat (Long)")
-			if(human_user.dna.species.mutant_bodyparts["tail"][MUTANT_INDEX_NAME] in fluffy_tails)
+		if(istype(user.getorganslot(ORGAN_SLOT_EXTERNAL_TAIL), /obj/item/organ/external/tail))
+			var/name = human_user.dna.species.mutant_bodyparts["tail"][MUTANT_INDEX_NAME]
+			var/datum/sprite_accessory/tails/tail = GLOB.sprite_accessories["tail"][name]
+			if(tail.fluffy)
 				user.allowed_turfs += "tails"
 
 		if(human_user.dna.species.mutant_bodyparts["taur"])
-			var/list/snake_taurs = list("Naga", "Cybernetic Naga")
-			if(human_user.dna.species.mutant_bodyparts["taur"][MUTANT_INDEX_NAME] in snake_taurs)
+			var/name = human_user.dna.species.mutant_bodyparts["taur"][MUTANT_INDEX_NAME]
+			var/datum/sprite_accessory/taur/taur = GLOB.sprite_accessories["taur"][name]
+			if(taur.taur_mode & STYLE_TAUR_SNAKE)
 				user.allowed_turfs -= list("pawprint", "hoofprint", "clawprint")
-				if(!(human_user.wear_suit && istype(human_user.wear_suit, /obj/item/clothing/suit/space/hardsuit)))
-					user.allowed_turfs += "constrict"
+				user.allowed_turfs += "constrict"
 
 		//clothing
 		var/obj/item/shoes = user.get_item_by_slot(ITEM_SLOT_FEET)
@@ -92,11 +93,10 @@ var/current_turf
 	if(QDELETED(src) || QDELETED(user) || !chosen_turf)
 		return FALSE
 
-	if(do_after(user,10))
+	if(do_after(user, 1 SECONDS))
 		current_turf = chosen_turf
 
-		var/obj/turf_icon = /obj/structure/mark_turf
-		user.owned_turf = new turf_icon(get_turf(user))
+		user.owned_turf = new /obj/structure/mark_turf(get_turf(user), current_turf)
 		user.owned_turf.dir = user.dir
 
 		if(ishuman(user))
@@ -168,33 +168,6 @@ var/current_turf
 	if(current_turf == "web")
 		user.spin(8, 1) //Ssspin a web
 
-		/* Commented out to preserve text.
-		Voter decision to exclude pre-determined messages, can still use this area to apply animation onto the user!
-
-			. = "neatly spins a web beneath them."
-		if("water")
-			. = "submerges their surroundings in a pool of water."
-		if("vines")
-			. = "sprouts vines reaching down beneath them."
-		if("dust")
-			. = "flutters their wings, scattering their dust around."
-		if("smoke")
-			. = "expirates a mist of ashes around them."
-		if("slime")
-			. = "splits their gel, forming an oozing shape."
-		if("xenoresin")
-			. = "secretes thick resin, covering the ground beneath them."
-		if("holoseat")
-			. = "artificially summons a seat beneath them."
-		if("holobed")
-			. = "artificially summons a bed beneath them."
-		if("borgmat")
-			. = "dispenses a soft mat, rolling it out beneath them."
-		*/
-
-
-
-
 	current_turf = null
 	LAZYCLEARLIST(user.allowed_turfs)
 
@@ -210,6 +183,7 @@ var/current_turf
 		return TRUE
 
 /datum/emote/living/mark_turf/proc/turf_owner(mob/living/user)
+	SIGNAL_HANDLER
 	UnregisterSignal(user, COMSIG_MOVABLE_MOVED)
 
 	var/obj/owned_turf = user.owned_turf

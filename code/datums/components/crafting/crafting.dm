@@ -34,6 +34,7 @@
 					CAT_MEAT,
 					CAT_SEAFOOD,
 					CAT_MISCFOOD,
+					CAT_MOTH,
 					CAT_PASTRY,
 					CAT_PIE,
 					CAT_PIZZA,
@@ -45,6 +46,7 @@
 				CAT_DRINK = CAT_NONE,
 				CAT_CLOTHING = CAT_NONE,
 				CAT_ATMOSPHERIC = CAT_NONE,
+				CAT_STRUCTURE = CAT_NONE,
 			)
 
 	var/cur_category = CAT_NONE

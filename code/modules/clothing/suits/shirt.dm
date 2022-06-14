@@ -11,10 +11,10 @@
 	. = ..()
 	if(wash_count <= 5)
 		transform *= TRANSFORM_USING_VARIABLE(0.8, 1)
-		washer.balloon_alert_to_viewers("\the [src] appears to have shrunken after being washed.")
+		washer.visible_message("[src] appears to have shrunken after being washed.")
 		wash_count += 1
 	else
-		washer.balloon_alert_to_viewers("\the [src] implodes due to repeated washing.")
+		washer.visible_message("[src] implodes due to repeated washing.")
 		qdel(src)
 
 /obj/item/clothing/suit/nerdshirt
@@ -23,9 +23,3 @@
 	icon_state = "nerdshirt"
 	inhand_icon_state = "nerdshirt"
 	species_exception = list(/datum/species/golem)
-
-/obj/item/clothing/suit/vapeshirt //wearing this is asking to get beat.
-	name = "Vape Naysh shirt"
-	desc = "A cheap white T-shirt with a big tacky \"VN\" on the front, Why would you wear this unironically?"
-	icon_state = "vapeshirt"
-	inhand_icon_state = "vapeshirt"

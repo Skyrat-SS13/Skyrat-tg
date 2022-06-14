@@ -52,7 +52,7 @@
 
 /obj/structure/particle_accelerator/ComponentInitialize()
 	. = ..()
-	AddComponent(/datum/component/simple_rotation,ROTATION_ALTCLICK | ROTATION_CLOCKWISE | ROTATION_COUNTERCLOCKWISE | ROTATION_VERBS )
+	AddComponent(/datum/component/simple_rotation)
 
 
 /obj/structure/particle_accelerator/set_anchored(anchorvalue)
@@ -126,7 +126,7 @@
 	. = ..()
 	if(master && master.active)
 		master.toggle_power()
-		investigate_log("was moved whilst active; it <font color='red'>powered down</font>.", INVESTIGATE_SINGULO)
+		investigate_log("was moved whilst active; it <font color='red'>powered down</font>.", INVESTIGATE_ENGINE)
 
 
 /obj/structure/particle_accelerator/update_icon_state()
@@ -152,10 +152,9 @@
 		return 1
 	return 0
 
-///////////
-// PARTS //
-///////////
-
+/*
+*	PARTS
+*/
 
 /obj/structure/particle_accelerator/end_cap
 	name = "alpha particle generation array"

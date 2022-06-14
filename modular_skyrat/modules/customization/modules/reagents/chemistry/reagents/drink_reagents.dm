@@ -11,7 +11,7 @@
 	glass_name = "tall glass of strawberry milk"
 	glass_desc = "Delicious flavored strawberry syrup mixed with milk."
 
-/datum/reagent/consumable/tea/pinkmilk/on_mob_life(mob/living/carbon/M)
+/datum/reagent/consumable/pinkmilk/on_mob_life(mob/living/carbon/M)
 	if(prob(15))
 		to_chat(M, span_notice("[pick("You cant help to smile.","You feel nostalgia all of sudden.","You remember to relax.")]"))
 	..()
@@ -28,11 +28,11 @@
 	glass_name = "mug of strawberry tea"
 	glass_desc = "Delicious traditional tea flavored with strawberries."
 
-/datum/reagent/consumable/tea/pinktea/on_mob_life(mob/living/carbon/M)
+/datum/reagent/consumable/pinktea/on_mob_life(mob/living/carbon/M)
 	if(prob(10))
 		to_chat(M, span_notice("[pick("Diamond skies where white deer fly.","Sipping strawberry tea.","Silver raindrops drift through timeless, Neverending June.","Crystal ... pearls free, with love!","Beaming love into me.")]"))
 	..()
-	. = 1
+	. = TRUE
 
 /datum/reagent/consumable/catnip_tea
 	name = "Catnip Tea"
@@ -46,41 +46,14 @@
 
 /datum/reagent/consumable/catnip_tea/on_mob_life(mob/living/carbon/M)
 	M.adjustStaminaLoss(min(50 - M.getStaminaLoss(), 3))
-	if(prob(20))
-		M.emote("nya")
-	if(prob(20))
-		to_chat(M, span_notice("[pick("Headpats feel nice.", "Backrubs would be nice.", "Mew")]"))
+	if(isfelinid(M) || istajaran(M))
+		if(prob(20))
+			M.emote("nya")
+		if(prob(20))
+			to_chat(M, span_notice("[pick("Headpats feel nice.", "Backrubs would be nice.", "Mew")]"))
+	else
+		to_chat(M, span_notice("[pick("I feel oddly calm.", "I feel relaxed.", "Mew?")]"))
 	..()
-
-/datum/reagent/consumable/milkshake
-	name = "Milkshake"
-	description = "A delicious, frozen treat!"
-	color = "#ede9dd" //237, 233, 221
-	taste_description = "richness and icecream"
-	glass_icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
-	glass_icon_state = "milkshake"
-	glass_name = "plastic cup of milkshake"
-	glass_desc = "Brings all the boys to the yard."
-
-/datum/reagent/consumable/milkshake_strawberry
-	name = "Strawberry Milkshake"
-	description = "A delicious, fruity treat!"
-	color = "#e39c91" //227, 156, 145
-	taste_description = "strawberry and icecream"
-	glass_icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
-	glass_icon_state = "milkshake_strawberry"
-	glass_name = "plastic cup of stawberry milkshake"
-	glass_desc = "Best shared with friends."
-
-/datum/reagent/consumable/milkshake_chocolate
-	name = "Chocolate Milkshake"
-	description = "Heaven-sent chocolatey elixir."
-	color = "#997755" // 153,119,85
-	taste_description = "richness and chocolate"
-	glass_icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
-	glass_icon_state = "milkshake_chocolate"
-	glass_name = "plastic cup of chocolate milkshake"
-	glass_desc = "Reminds you of someone, oddly enough."
 
 /datum/reagent/consumable/beerbatter
 	name = "Beer Batter"

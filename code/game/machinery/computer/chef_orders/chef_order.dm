@@ -17,7 +17,7 @@
 /obj/machinery/computer/chef_order/Initialize(mapload)
 	. = ..()
 	radio = new(src)
-	radio.frequency = FREQ_SUPPLY
+	radio.set_frequency(FREQ_SUPPLY)
 	radio.subspace_transmission = TRUE
 	radio.canhear_range = 0
 	radio.recalculateChannels()
@@ -36,6 +36,7 @@
 		. += grocery_list[item] * item.cost_per_order
 
 /obj/machinery/computer/chef_order/ui_interact(mob/user, datum/tgui/ui)
+	. = ..()
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "ProduceConsole", name)

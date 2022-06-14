@@ -38,10 +38,11 @@
 	hitsound = 'sound/effects/splat.ogg'
 	var/chain
 	var/knockdown_time = (0.5 SECONDS)
+	var/chain_icon = 'icons/effects/beam.dmi' //SKYRAT ADDITION
 
 /obj/projectile/hook/fire(setAngle)
 	if(firer)
-		chain = firer.Beam(src, icon_state = "chain")
+		chain = firer.Beam(src, icon_state = "chain", icon = chain_icon) //SKYRAT EDIT
 	..()
 	//TODO: root the firer until the chain returns
 
@@ -52,6 +53,8 @@
 		if(A.anchored)
 			return
 		A.visible_message(span_danger("[A] is snagged by [firer]'s hook!"))
+		//Should really be a movement loop, but I don't want to support moving 5 tiles a tick
+		//It just looks bad
 		new /datum/forced_movement(A, get_turf(firer), 5, TRUE)
 		if (isliving(target))
 			var/mob/living/fresh_meat = target

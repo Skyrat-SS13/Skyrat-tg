@@ -1,6 +1,9 @@
-////////////////////////////////////////////////////////////// PHASE EMITTERS
 /*
-Basically the heart of the gun, can be upgraded.
+*	PHASE EMITTERS
+*/
+
+/*
+*	Basically the heart of the gun, can be upgraded.
 */
 /obj/item/microfusion_phase_emitter
 	name = "basic microfusion phase emitter"

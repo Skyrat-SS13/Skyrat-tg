@@ -32,7 +32,7 @@
 	name = "Toggle Headphones"
 	desc = "UNTZ UNTZ UNTZ"
 
-/datum/action/item_action/toggle_headphones/Trigger()
+/datum/action/item_action/toggle_headphones/Trigger(trigger_flags)
 	var/obj/item/clothing/ears/headphones/H = target
 	if(istype(H))
 		H.toggle(owner)

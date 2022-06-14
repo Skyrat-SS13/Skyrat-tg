@@ -97,7 +97,7 @@
 			to_chat(usr, span_admin("Too late!"))
 			return
 		triggering = FALSE
-		SSevents.spawnEvent()
+		SSevents.spawnEvent(TRUE) //SKYRAT EDIT
 		message_admins("[key_name_admin(usr)] requested a new event be spawned instead of [name].")
 		log_admin_private("[key_name(usr)] requested a new event be spawned instead of [name].")
 	//SKYRAT EDIT END
@@ -108,6 +108,8 @@
 	E.control = src
 	SSblackbox.record_feedback("tally", "event_ran", 1, "[E]")
 	occurrences++
+
+	SSevents.previously_run += src //SKYRAT EDIT ADDITION
 
 	testing("[time2text(world.time, "hh:mm:ss")] [E.type]")
 	if(random)

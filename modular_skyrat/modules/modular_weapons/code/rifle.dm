@@ -1,13 +1,8 @@
-////////////////////////
-//ID: MODULAR_WEAPONS //
-////////////////////////
-
-////////////////////////
-//  IMPROVISED RIFLE  //
-////////////////////////
-//		There was an improvised rifle on Cit/Skyrat, it's pretty cool so here it is too.
-//		We're using a slightly modified sprite designed around a Short Magazine Lee Enfield (SMLE) Mk.III
-//
+/*
+*	IMPROVISED RIFLE
+*	There was an improvised rifle on Cit/Skyrat, it's pretty cool so here it is too.
+*	We're using a slightly modified sprite designed around a Short Magazine Lee Enfield (SMLE) Mk.III
+*/
 
 /obj/item/ammo_box/magazine/internal/boltaction/improvised
 	max_ammo = 1
@@ -28,12 +23,12 @@
 	pixel_x = -8
 	weapon_weight = WEAPON_HEAVY	// It's big.
 
-////////////////////////
-// IMPROVISED SHOTGUN //
-////////////////////////
-//		We're using the rifle because we want the bolt action so we can pretend it's a break action gun.
-//		On Skyrat/Cit there was a need to tone improvised weapons down due to their incredible ease of access.
-//		This is the same nerf, but drastically more fun. We now need two hands to fire and we have a slightly slower action.
+/*
+*	IMPROVISED SHOTGUN
+*	We're using the rifle because we want the bolt action so we can pretend it's a break action gun.
+*	On Skyrat/Cit there was a need to tone improvised weapons down due to their incredible ease of access.
+*	This is the same nerf, but drastically more fun. We now need two hands to fire and we have a slightly slower action.
+*/
 
 /obj/item/gun/ballistic/rifle/ishotgun
 	name = "improvised shotgun"
@@ -113,13 +108,13 @@
 	sawn_off = TRUE
 	slot_flags = ITEM_SLOT_BELT
 
-////////////////////////
-//      CFA RIFLE     //
-////////////////////////
+/*
+*	CFA RIFLE
+*/
 
 /obj/item/gun/ballistic/automatic/cfa_rifle
-	name = "Cantanheim 7.62 rifle"
-	desc = "An old semi-automatic rifle used in a war long ago. Uses 7.62 bullets in a ten round magazine."
+	name = "Cantanheim 6.8mm rifle"
+	desc = "A simple semi-automatic rifle chambered in 6.8mm. The letters 'XJP' are crossed out in the receiver." //Different 6.8mm than the FTU's propietary pulse ballistics
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/guns/projectile40x32.dmi'
 	icon_state = "cfa_rifle"
 	inhand_icon_state = "irifle"
@@ -128,34 +123,37 @@
 	lefthand_file = 'modular_skyrat/modules/modular_weapons/icons/mob/inhands/weapons/64x_guns_left.dmi'
 	righthand_file = 'modular_skyrat/modules/modular_weapons/icons/mob/inhands/weapons/64x_guns_right.dmi'
 	worn_icon_state = null
-	mag_type = /obj/item/ammo_box/magazine/cm762
+	mag_type = /obj/item/ammo_box/magazine/cm68
 	fire_delay = 5
 	can_suppress = FALSE
 	burst_size = 0
-	fire_select_modes = list(SELECT_SEMI_AUTOMATIC) //SKYRAT EDIT CHANGE
+	fire_select_modes = list(SELECT_SEMI_AUTOMATIC)
 	mag_display = FALSE
 	mag_display_ammo = FALSE
 	empty_indicator = FALSE
 	recoil = 1
 	weapon_weight = WEAPON_HEAVY
 	pixel_x = -8
-	zoomable = TRUE
-	zoom_amt = 4
-	zoom_out_amt = 2
 	has_gun_safety = FALSE
 	w_class = WEIGHT_CLASS_BULKY
+	company_flag = COMPANY_CANTALAN
+	dirt_modifier = 0.25
+
+/obj/item/gun/ballistic/automatic/cfa_rifle/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/scope, range_modifier = 1.5)
 
 /obj/item/gun/ballistic/automatic/cfa_rifle/empty
 	spawnwithmagazine = FALSE
 
-/obj/item/ammo_box/magazine/cm762
-	name = "rifle magazine (7.62mm)"
+/obj/item/ammo_box/magazine/cm68
+	name = "rifle magazine (6.8mm)"
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/ammo.dmi'
-	icon_state = "7.62"
-	ammo_type = /obj/item/ammo_casing/a762
-	caliber = CALIBER_A762
+	icon_state = "6.8"
+	ammo_type = /obj/item/ammo_casing/a68
+	caliber = CALIBER_A68
 	max_ammo = 10
 	multiple_sprites = 2
 
-/obj/item/ammo_box/magazine/cm762/empty
+/obj/item/ammo_box/magazine/cm68/empty
 	start_empty = 1

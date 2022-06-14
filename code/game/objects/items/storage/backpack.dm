@@ -71,7 +71,7 @@
 	user.dropItemToGround(src, TRUE)
 	user.Stun(100, ignore_canstun = TRUE)
 	sleep(20)
-	playsound(src, "rustle", 50, TRUE, -5)
+	playsound(src, SFX_RUSTLE, 50, TRUE, -5)
 	qdel(user)
 
 /obj/item/storage/backpack/santabag
@@ -146,24 +146,6 @@
 	desc = "It's a very robust backpack."
 	icon_state = "securitypack"
 	inhand_icon_state = "securitypack"
-	// SKYRAT EDIT ADDITION START
-	uses_advanced_reskins = TRUE
-	unique_reskin = list(
-		"Basic Backpack" = list(
-			RESKIN_ICON = 'icons/obj/storage.dmi',
-			RESKIN_ICON_STATE = "securitypack",
-			RESKIN_WORN_ICON = 'icons/mob/clothing/back.dmi',
-			RESKIN_WORN_ICON_STATE = "securitypack"
-		),
-		"Peacekeeper" = list(
-			RESKIN_ICON = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/peacekeeper_items.dmi',
-			RESKIN_ICON_STATE = "peacepack",
-			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/back.dmi',
-			RESKIN_WORN_ICON_STATE = "peacepack"
-		)
-	)
-	/// SKYRAT EDIT ADDITION END
-
 
 /obj/item/storage/backpack/captain
 	name = "captain's backpack"
@@ -309,23 +291,6 @@
 	desc = "A robust satchel for security related needs."
 	icon_state = "satchel-sec"
 	inhand_icon_state = "satchel-sec"
-	// SKYRAT EDIT ADDITION START
-	uses_advanced_reskins = TRUE
-	unique_reskin = list(
-		"Basic Satchel" = list(
-			RESKIN_ICON = 'icons/obj/storage.dmi',
-			RESKIN_ICON_STATE = "satchel-sec",
-			RESKIN_WORN_ICON = 'icons/mob/clothing/back.dmi',
-			RESKIN_WORN_ICON_STATE = "satchel-sec"
-		),
-		"Peacekeeper" = list(
-			RESKIN_ICON = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/peacekeeper_items.dmi',
-			RESKIN_ICON_STATE = "peacekeepersatchel",
-			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/back.dmi',
-			RESKIN_WORN_ICON_STATE = "peacekeepersatchel"
-		)
-	)
-	/// SKYRAT EDIT ADDITION END
 
 /obj/item/storage/backpack/satchel/explorer
 	name = "explorer satchel"
@@ -348,7 +313,7 @@
 
 /obj/item/storage/backpack/satchel/flat/Initialize(mapload)
 	. = ..()
-	AddElement(/datum/element/undertile, TRAIT_T_RAY_VISIBLE, INVISIBILITY_OBSERVER, use_anchor = TRUE)
+	AddElement(/datum/element/undertile, TRAIT_T_RAY_VISIBLE, INVISIBILITY_MAXIMUM, use_anchor = TRUE) // SKYRAT EDIT - ORIGINAL: INVISIBILITY_OBSERVER
 
 /obj/item/storage/backpack/satchel/flat/ComponentInitialize()
 	. = ..()
@@ -485,23 +450,6 @@
 	desc = "A large duffel bag for holding extra security supplies and ammunition."
 	icon_state = "duffel-sec"
 	inhand_icon_state = "duffel-sec"
-	// SKYRAT EDIT ADDITION START
-	uses_advanced_reskins = TRUE
-	unique_reskin = list(
-		"Basic Dufflebag" = list(
-			RESKIN_ICON = 'icons/obj/storage.dmi',
-			RESKIN_ICON_STATE = "duffel-sec",
-			RESKIN_WORN_ICON = 'icons/mob/clothing/back.dmi',
-			RESKIN_WORN_ICON_STATE = "duffel-sec"
-		),
-		"Peacekeeper" = list(
-			RESKIN_ICON = 'modular_skyrat/modules/sec_haul/icons/peacekeeper/peacekeeper_items.dmi',
-			RESKIN_ICON_STATE = "peacekeeperduffle",
-			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/back.dmi',
-			RESKIN_WORN_ICON_STATE = "peacekeeperduffle"
-		)
-	)
-	/// SKYRAT EDIT ADDITION END
 
 /obj/item/storage/backpack/duffelbag/sec/surgery
 	name = "surgical duffel bag"
@@ -682,7 +630,7 @@
 
 /obj/item/storage/backpack/duffelbag/syndie/med/medicalbundle/PopulateContents()
 	new /obj/item/clothing/shoes/magboots/syndie(src)
-	new /obj/item/storage/firstaid/tactical(src)
+	new /obj/item/storage/medkit/tactical(src)
 	new /obj/item/gun/ballistic/automatic/l6_saw/toy(src)
 	new /obj/item/ammo_box/foambox/riot(src)
 
@@ -709,12 +657,11 @@
 		new /obj/item/grenade/c4/x4(src)
 
 /obj/item/storage/backpack/duffelbag/syndie/firestarter
-	desc = "A large duffel bag containing a New Russian pyro backpack sprayer, Elite hardsuit, a Stechkin APS pistol, minibomb, ammo, and other equipment."
+	desc = "A large duffel bag containing a New Russian pyro backpack sprayer, Elite MODsuit, a Stechkin APS pistol, minibomb, ammo, and other equipment."
 
 /obj/item/storage/backpack/duffelbag/syndie/firestarter/PopulateContents()
 	new /obj/item/clothing/under/syndicate/soviet(src)
-	new /obj/item/watertank/op(src)
-	new /obj/item/clothing/suit/space/hardsuit/syndi/elite(src)
+	new /obj/item/mod/control/pre_equipped/elite/flamethrower(src)
 	new /obj/item/gun/ballistic/automatic/pistol/aps(src)
 	new /obj/item/ammo_box/magazine/m9mm_aps/fire(src)
 	new /obj/item/ammo_box/magazine/m9mm_aps/fire(src)
@@ -730,7 +677,7 @@
 	STR.silent = TRUE
 
 /obj/item/storage/backpack/duffelbag/clown/syndie/PopulateContents()
-	new /obj/item/pda/clown(src)
+	new /obj/item/modular_computer/tablet/pda/clown(src)
 	new /obj/item/clothing/under/rank/civilian/clown(src)
 	new /obj/item/clothing/shoes/clown_shoes(src)
 	new /obj/item/clothing/mask/gas/clown_hat(src)

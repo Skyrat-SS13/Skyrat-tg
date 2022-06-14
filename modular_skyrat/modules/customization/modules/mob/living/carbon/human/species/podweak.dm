@@ -1,7 +1,9 @@
 /datum/species/pod
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,
-		TRAIT_CAN_STRIP
+		TRAIT_CAN_STRIP,
+		TRAIT_PLANT_SAFE,
+		TRAIT_LITERATE,
 	)
 	learnable_languages = list(/datum/language/common, /datum/language/sylvan) //I guess plants are smart and they can speak common
 	payday_modifier = 0.75
@@ -9,7 +11,7 @@
 /datum/species/pod/podweak
 	name = "Podperson"
 	id = SPECIES_PODPERSON_WEAK
-	limbs_id = SPECIES_PODPERSON
+	examine_limb_id = SPECIES_PODPERSON
 	species_traits = list(
 		MUTCOLORS,
 		EYECOLOR,
@@ -17,6 +19,11 @@
 		HAS_BONE,
 		HAIR,
 		FACEHAIR
+	)
+	inherent_traits = list(
+		TRAIT_ADVANCEDTOOLUSER,
+		TRAIT_CAN_STRIP,
+		TRAIT_LITERATE,
 	)
 	mutant_bodyparts = list()
 	default_mutant_bodyparts = list()
@@ -36,7 +43,7 @@
 		if(H.nutrition > NUTRITION_LEVEL_ALMOST_FULL)
 			H.set_nutrition(NUTRITION_LEVEL_ALMOST_FULL)
 		if(light_amount > 0.2) //if there's enough light, heal
-			H.heal_overall_damage(0.2 * delta_time, 0.2 * delta_time, 0, BODYPART_ORGANIC)
+			H.heal_overall_damage(0.2 * delta_time, 0.2 * delta_time, 0)
 			H.adjustToxLoss(-0.2 * delta_time)
 			H.adjustOxyLoss(-0.2 * delta_time)
 
