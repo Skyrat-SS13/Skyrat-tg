@@ -45,9 +45,10 @@
 	
 /datum/outfit/centcom/ert/marine/engineer //engineer
 	suit_store = /obj/item/melee/hammer //doesn't need a rifle
-	back = /obj/item/mod/control/pre_equipped/marine
+	back = /obj/item/mod/control/pre_equipped/marine/engineer
 	backpack_contents = list(
 		/obj/item/storage/box/survival/engineer/marine = 1,
+		/obj/item/ammo_box/magazine/smartgun_drum = 4, //AND WE'LL ALL STAY FREE
 	)
 	l_hand = /obj/item/deployable_turret_folded
 	r_hand = null
