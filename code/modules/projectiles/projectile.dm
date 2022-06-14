@@ -434,7 +434,7 @@
 		++pierces
 	hit_something = TRUE
 	var/result = target.bullet_act(src, def_zone, mode == PROJECTILE_PIERCE_HIT)
-	if((result == BULLET_ACT_FORCE_PIERCE) || (mode == PROJECTILE_PIERCE_HIT))
+	if((result == BULLET_ACT_FORCE_PIERCE) || (mode == PROJECTILE_PIERCE_HIT) || (result == BULLET_ACT_FORCE_PIERCE_BLOCK)) //SKYRAT EDIT: BULLET_ACT_FORCE_PIERCE_BLOCK
 		if(!(movement_type & PHASING))
 			temporary_unstoppable_movement = TRUE
 			movement_type |= PHASING
