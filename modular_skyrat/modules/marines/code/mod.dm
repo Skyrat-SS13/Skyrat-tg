@@ -65,10 +65,13 @@
 		/obj/item/mod/module/storage/large_capacity,
 		/obj/item/mod/module/emp_shield/advanced,
 		/obj/item/mod/module/magnetic_harness,
+		/obj/item/mod/module/holster,
 		/obj/item/mod/module/flashlight,
 		/obj/item/mod/module/jetpack,
 		/obj/item/mod/module/noslip,
 		/obj/item/mod/module/power_kick,
+		/obj/item/mod/module/megaphone,
 		/obj/item/mod/module/springlock/contractor,
 		/obj/item/mod/module/dna_lock, //in lieu of req_access
+		/obj/item/mod/module/visor/sechud, //for identifying teammates also in suits
 	)
