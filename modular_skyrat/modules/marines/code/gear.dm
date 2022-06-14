@@ -1,3 +1,5 @@
+#define CALIBER_300C "300comp"
+
 /obj/item/gun/ballistic/automatic/ar/modular/m44a
 	name = "\improper NT M44A Pulse Rifle"
 	desc = "A specialized Nanotrasen-produced ballistic pulse rifle that uses compressed magazines to output absurd firepower in a compact package."
@@ -30,12 +32,12 @@
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 	possible_types = AMMO_TYPE_LETHAL
 	ammo_type = /obj/item/ammo_casing/caseless/300comp
-	caliber = "300c"
+	caliber = CALIBER_300C
 
 /obj/item/ammo_casing/caseless/300comp
 	name = ".300 caseless round"
 	desc = "A .300 caseless round for proprietary Nanotrasen firearms."
-	caliber = "300c"
+	caliber = CALIBER_300C
 	projectile_type = /obj/projectile/bullet/300c
 
 /obj/projectile/bullet/300c
