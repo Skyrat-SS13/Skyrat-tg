@@ -36,9 +36,9 @@
 	name = ".300 caseless round"
 	desc = "A .300 caseless round for proprietary Nanotrasen firearms."
 	caliber = "300comp"
-	projectile_type = /obj/projectile/bullet/300c
+	projectile_type = /obj/projectile/bullet/a300
 
-/obj/projectile/bullet/300c
+/obj/projectile/bullet/a300
 	name = ".300 caseless bullet"
 	damage = 20
 	armor_penetration = 30
