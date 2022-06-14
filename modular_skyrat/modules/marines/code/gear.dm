@@ -24,7 +24,7 @@
 
 /obj/item/ammo_box/magazine/m44a
 	name = "\improper .300 compressed magazine"
-	desc = "This magazine uses a bluespace compression chamber to hold a maximum of 99 .300 caliber caseless rounds for the M44A pulse rifle."
+	desc = "This magazine uses a bluespace compression chamber to hold a maximum of ninety-nine .300 caliber caseless rounds for the M44A pulse rifle."
 	icon = 'modular_skyrat/modules/marines/icons/m44a.dmi'
 	icon_state = "300compressed"
 	max_ammo = 99
