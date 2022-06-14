@@ -50,7 +50,7 @@
 	desc = "A specialized Nanotrasen-produced ballistic pulse rifle that uses compressed magazines to output absurd firepower in a compact package. This one's fitted with a long-range scope."
 	icon_state = "m44a_s"
 	inhand_icon_state = "m44a_s"
-	
+
 /obj/item/gun/ballistic/automatic/ar/modular/m44a/s/Initialize()
 	. = ..()
 	AddComponent(/datum/component/scope, range_modifier = 1.5)
@@ -60,20 +60,23 @@
 	desc = "This shouldn't be heeere!"
 	can_suppress = FALSE
 	has_gun_safety = FALSE
-	bolt_type = BOLT_TYPE_NO_BOLT
+	mag_type = /obj/item/ammo_box/magazine/internal/shot/as2/ubsg
+
+/obj/item/ammo_box/magazine/internal/shot/as2/ubsg
+	max_ammo = 1
 
 /obj/item/gun/ballistic/automatic/ar/modular/m44a/sg
 	name = "\improper NT M44ASG Pulse Rifle"
-	desc = "A specialized Nanotrasen-produced ballistic pulse rifle that uses compressed magazines to output absurd firepower in a compact package. This one's fitted with a semi-auto underbarrel 12 gauge shotgun."
+	desc = "A specialized Nanotrasen-produced ballistic pulse rifle that uses compressed magazines to output absurd firepower in a compact package. This one's fitted with a two-round semi-automatic underbarrel 12 gauge shotgun."
 	icon_state = "m44a_sg"
 	inhand_icon_state = "m44a_sg"
 	var/obj/item/gun/ballistic/shotgun/automatic/as2/ubsg/underbarrel
-	
+
 /obj/item/gun/ballistic/automatic/ar/modular/m44a/sg/Initialize()
 	. = ..()
 	underbarrel = new /obj/item/gun/ballistic/shotgun/automatic/as2/ubsg(src)
 	update_appearance()
-	
+
 /obj/item/gun/ballistic/automatic/ar/modular/m44a/sg/afterattack_secondary(atom/target, mob/living/user, flag, params)
 	underbarrel.afterattack(target, user, flag, params)
 	return SECONDARY_ATTACK_CONTINUE_CHAIN
@@ -88,17 +91,16 @@
 
 /obj/item/gun/ballistic/automatic/ar/modular/m44a/gl
 	name = "\improper NT M44AGL Pulse Rifle"
-	desc = "A specialized Nanotrasen-produced ballistic pulse rifle that uses compressed magazines to output absurd firepower in a compact package. This one's fitted with an underbarrel grenade launcher. Compensating for something?"
+	desc = "A specialized Nanotrasen-produced ballistic pulse rifle that uses compressed magazines to output absurd firepower in a compact package. This one's fitted with an underbarrel grenade launcher, and a red dot scope to help align it. Compensating for something?"
 	icon_state = "m44a_gl"
 	inhand_icon_state = "m44a_gl"
 	var/obj/item/gun/ballistic/revolver/grenadelauncher/underbarrel
-	
+
 /obj/item/gun/ballistic/automatic/ar/modular/m44a/gl/Initialize()
 	. = ..()
 	underbarrel = new /obj/item/gun/ballistic/revolver/grenadelauncher/unrestricted(src)
-	AddComponent(/datum/component/scope, range_modifier = 1.5)
 	update_appearance()
-	
+
 /obj/item/gun/ballistic/automatic/ar/modular/m44a/gl/afterattack_secondary(atom/target, mob/living/user, flag, params)
 	underbarrel.afterattack(target, user, flag, params)
 	return SECONDARY_ATTACK_CONTINUE_CHAIN
