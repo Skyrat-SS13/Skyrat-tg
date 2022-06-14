@@ -23,3 +23,9 @@
 	strip_delay = 12 SECONDS
 	resistance_flags = LAVA_PROOF | FIRE_PROOF | ACID_PROOF
 	can_adjust = FALSE
+
+// SKYRAT EDIT ADDITION - Use TG sprites for missing assets
+/obj/item/clothing/under/syndicate/ninja/Initialize(mapload)
+	. = ..()
+	icon = 'icons/obj/clothing/under/syndicate.dmi'
+	worn_icon = 'icons/mob/clothing/under/syndicate.dmi'
