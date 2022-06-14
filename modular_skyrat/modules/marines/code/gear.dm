@@ -9,6 +9,7 @@
 	fire_delay = 1
 	burst_size = 3
 	spread = 6
+	pin = /obj/item/firing_pin/implant/mindshield
 	can_suppress = FALSE
 	emp_damageable = FALSE
 	can_bayonet = FALSE
@@ -43,3 +44,65 @@
 	armor_penetration = 30
 	embedding = null
 	shrapnel_tyle = null
+
+/obj/item/gun/ballistic/automatic/ar/modular/m44a/s
+	name = "\improper NT M44AS Pulse Rifle"
+	desc = "A specialized Nanotrasen-produced ballistic pulse rifle that uses compressed magazines to output absurd firepower in a compact package. This one's fitted with a long-range scope."
+	icon_state = "m44a_s"
+	
+/obj/item/gun/ballistic/automatic/ar/modular/m44a/s/Initialize()
+	. = ..()
+	AddComponent(/datum/component/scope, range_modifier = 1.5)
+
+/obj/item/gun/ballistic/shotgun/automatic/as2/ubsg
+	name = "\improper M2 auto-shotgun underbarrel"
+	desc = "This shouldn't be heeere!"
+	can_suppress = FALSE
+	has_gun_safety = FALSE
+
+/obj/item/gun/ballistic/automatic/ar/modular/m44a/sg
+	name = "\improper NT M44ASG Pulse Rifle"
+	desc = "A specialized Nanotrasen-produced ballistic pulse rifle that uses compressed magazines to output absurd firepower in a compact package. This one's fitted with a semi-auto underbarrel 12 gauge shotgun."
+	icon_state = "m44a_sg"
+	var/obj/item/gun/ballistic/shotgun/automatic/as2/underbarrel
+	
+/obj/item/gun/ballistic/automatic/ar/modular/m44a/sg/Initialize()
+	. = ..()
+	underbarrel = new /obj/item/gun/ballistic/shotgun/automatic/as2/ubsg(src)
+	update_appearance()
+	
+/obj/item/gun/ballistic/automatic/ar/modular/m44a/sg/afterattack_secondary(atom/target, mob/living/user, flag, params)
+	underbarrel.afterattack(target, user, flag, params)
+	return SECONDARY_ATTACK_CONTINUE_CHAIN
+
+/obj/item/gun/ballistic/automatic/ar/modular/m44a/sg/attackby(obj/item/attacking_item, mob/user, params)
+	if(istype(attacking_item, /obj/item/ammo_casing))
+		if(istype(attacking_item, underbarrel.magazine.ammo_type))
+			underbarrel.attack_self(user)
+			underbarrel.attackby(attacking_item, user, params)
+	else
+		..()
+
+/obj/item/gun/ballistic/automatic/ar/modular/m44a/gl
+	name = "\improper NT M44AGL Pulse Rifle"
+	desc = "A specialized Nanotrasen-produced ballistic pulse rifle that uses compressed magazines to output absurd firepower in a compact package. This one's fitted with a long-range scope and an underbarrel grenade launcher. Compensating for something?"
+	icon_state = "m44a_gl"
+	var/obj/item/gun/ballistic/revolver/grenadelauncher/underbarrel
+	
+/obj/item/gun/ballistic/automatic/ar/modular/m44a/gl/Initialize()
+	. = ..()
+	underbarrel = new /obj/item/gun/ballistic/revolver/grenadelauncher/unrestricted(src)
+	AddComponent(/datum/component/scope, range_modifier = 1.5)
+	update_appearance()
+	
+/obj/item/gun/ballistic/automatic/ar/modular/m44a/gl/afterattack_secondary(atom/target, mob/living/user, flag, params)
+	underbarrel.afterattack(target, user, flag, params)
+	return SECONDARY_ATTACK_CONTINUE_CHAIN
+
+/obj/item/gun/ballistic/automatic/ar/modular/m44a/gl/attackby(obj/item/attacking_item, mob/user, params)
+	if(istype(attacking_item, /obj/item/ammo_casing))
+		if(istype(attacking_item, underbarrel.magazine.ammo_type))
+			underbarrel.attack_self(user)
+			underbarrel.attackby(attacking_item, user, params)
+	else
+		..()
