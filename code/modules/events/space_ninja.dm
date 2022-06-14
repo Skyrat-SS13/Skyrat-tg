@@ -38,16 +38,15 @@
 // SKYRAT EDIT ADDITION BEGIN: Preference Ninjas
 	var/loadme = tgui_input_list(ninja, "Do you wish to load your character slot?", "Load Character?", list("Yes!", "No, I want to be random!"), default = "No, I want to be random!", timeout = 60 SECONDS)
 	var/codename
-	switch(loadme)
-		if("Yes!")
-			ninja.client?.prefs?.safe_transfer_prefs_to(ninja)
-			codename = tgui_input_text(ninja.client, "What should your codename be?", "Agent Name", "[pick("Master", "Legendary", "Agent", "Shinobi", "Ninja")] [ninja.dna.species.name]", 42, FALSE, TRUE, 300 SECONDS)
-			ninja.name = codename
-			ninja.real_name = codename
-			ninja.dna.update_dna_identity()
-		else
-			ninja.randomize_human_appearance(~(RANDOMIZE_NAME|RANDOMIZE_SPECIES))
-			ninja.dna.update_dna_identity()
+	if(loadme == "Yes!")
+		ninja.client?.prefs?.safe_transfer_prefs_to(ninja)
+		codename = tgui_input_text(ninja.client, "What should your codename be?", "Agent Name", "[pick("Master", "Legendary", "Agent", "Shinobi", "Ninja")] [ninja.dna.species.name]", 42, FALSE, TRUE, 300 SECONDS)
+		ninja.name = codename
+		ninja.real_name = codename
+		ninja.dna.update_dna_identity()
+	else
+		ninja.randomize_human_appearance(~(RANDOMIZE_NAME|RANDOMIZE_SPECIES))
+		ninja.dna.update_dna_identity()
 
 // SKYRAT EDIT ADDITION END: Preference Ninjas
 	message_admins("[ADMIN_LOOKUPFLW(ninja)] has been made into a space ninja by an event.")
