@@ -5,7 +5,7 @@
 		/obj/item/ammo_box/magazine/m44a = 6,
 	), src)
 
-/obj/item/ammo_box/advanced/s12gauge/marine
+/obj/item/ammo_box/advanced/s12gauge/buckshot/marine
 	w_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/storage/box/survival/engineer/marine
