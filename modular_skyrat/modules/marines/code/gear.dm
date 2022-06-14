@@ -64,7 +64,7 @@
 	name = "\improper NT M44ASG Pulse Rifle"
 	desc = "A specialized Nanotrasen-produced ballistic pulse rifle that uses compressed magazines to output absurd firepower in a compact package. This one's fitted with a semi-auto underbarrel 12 gauge shotgun."
 	icon_state = "m44a_sg"
-	var/obj/item/gun/ballistic/shotgun/automatic/as2/underbarrel
+	var/obj/item/gun/ballistic/shotgun/automatic/as2/ubsg/underbarrel
 	
 /obj/item/gun/ballistic/automatic/ar/modular/m44a/sg/Initialize()
 	. = ..()
