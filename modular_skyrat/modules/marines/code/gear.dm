@@ -2,6 +2,7 @@
 	name = "\improper NT M44A Pulse Rifle"
 	desc = "A specialized Nanotrasen-produced ballistic pulse rifle that uses compressed magazines to output absurd firepower in a compact package."
 	icon_state = "m44a"
+	inhand_icon_state = "m44a"
 	icon = 'modular_skyrat/modules/marines/icons/m44a.dmi'
 	righthand_file = 'modular_skyrat/modules/marines/icons/m44a_r.dmi'
 	lefthand_file = 'modular_skyrat/modules/marines/icons/m44a_l.dmi'
@@ -16,19 +17,18 @@
 	realistic = FALSE
 	mag_display = TRUE
 	mag_display_ammo = TRUE
-	mag_type = /obj/item/ammo_box/magazine/multi_sprite/m44a
+	mag_type = /obj/item/ammo_box/magazine/m44a
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BELT | ITEM_SLOT_OCLOTHING
 	company_flag = COMPANY_NANOTRASEN
 
-/obj/item/ammo_box/magazine/multi_sprite/m44a
-	name = "\improper .300 Compressed Magazine"
+/obj/item/ammo_box/magazine/m44a
+	name = "\improper .300 compressed magazine"
 	desc = "This magazine uses a bluespace compression chamber to hold a maximum of 99 .300 caliber caseless rounds for the M44A pulse rifle."
 	icon = 'modular_skyrat/modules/marines/icons/m44a.dmi'
 	icon_state = "300compressed"
 	max_ammo = 99
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
-	possible_types = AMMO_TYPE_LETHAL
 	ammo_type = /obj/item/ammo_casing/caseless/c300
 	caliber = "300comp"
 
@@ -49,6 +49,7 @@
 	name = "\improper NT M44AS Pulse Rifle"
 	desc = "A specialized Nanotrasen-produced ballistic pulse rifle that uses compressed magazines to output absurd firepower in a compact package. This one's fitted with a long-range scope."
 	icon_state = "m44a_s"
+	inhand_icon_state = "m44a_s"
 	
 /obj/item/gun/ballistic/automatic/ar/modular/m44a/s/Initialize()
 	. = ..()
@@ -59,11 +60,13 @@
 	desc = "This shouldn't be heeere!"
 	can_suppress = FALSE
 	has_gun_safety = FALSE
+	bolt_type = BOLT_TYPE_NO_BOLT
 
 /obj/item/gun/ballistic/automatic/ar/modular/m44a/sg
 	name = "\improper NT M44ASG Pulse Rifle"
 	desc = "A specialized Nanotrasen-produced ballistic pulse rifle that uses compressed magazines to output absurd firepower in a compact package. This one's fitted with a semi-auto underbarrel 12 gauge shotgun."
 	icon_state = "m44a_sg"
+	inhand_icon_state = "m44a_sg"
 	var/obj/item/gun/ballistic/shotgun/automatic/as2/ubsg/underbarrel
 	
 /obj/item/gun/ballistic/automatic/ar/modular/m44a/sg/Initialize()
@@ -85,8 +88,9 @@
 
 /obj/item/gun/ballistic/automatic/ar/modular/m44a/gl
 	name = "\improper NT M44AGL Pulse Rifle"
-	desc = "A specialized Nanotrasen-produced ballistic pulse rifle that uses compressed magazines to output absurd firepower in a compact package. This one's fitted with a long-range scope and an underbarrel grenade launcher. Compensating for something?"
+	desc = "A specialized Nanotrasen-produced ballistic pulse rifle that uses compressed magazines to output absurd firepower in a compact package. This one's fitted with an underbarrel grenade launcher. Compensating for something?"
 	icon_state = "m44a_gl"
+	inhand_icon_state = "m44a_gl"
 	var/obj/item/gun/ballistic/revolver/grenadelauncher/underbarrel
 	
 /obj/item/gun/ballistic/automatic/ar/modular/m44a/gl/Initialize()
