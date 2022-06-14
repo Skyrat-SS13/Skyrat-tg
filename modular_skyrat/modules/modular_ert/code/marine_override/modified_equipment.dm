@@ -8,6 +8,8 @@
 		/obj/item/storage/box/handcuffs = 1,
 		/obj/item/ammo_box/a40mm = 2, //gods must be strong
 	)
+	l_hand = null
+	r_hand = null
 	
 /datum/outfit/centcom/ert/marine/security //generic and/or heavy
 	suit_store = /obj/item/gun/ballistic/automatic/ar/modular/m44a/sg
@@ -19,7 +21,8 @@
 		/obj/item/storage/box/handcuffs = 1,
 		/obj/item/ammo_box/advanced/s12gauge/marine = 2,
 	)
-	l_hand = /obj/item/shield/riot/pointman/hecu //weaker than exp corps shield, also looks the part
+	l_hand = null
+	r_hand = null
 	
 /datum/outfit/centcom/ert/marine/medic //medic
 	suit_store = /obj/item/gun/ballistic/automatic/ar/modular/m44a/s
@@ -38,6 +41,7 @@
 		/obj/item/stack/sticky_tape/surgical,
 	)
 	l_hand = /obj/item/gun/medbeam
+	r_hand = null
 	
 /datum/outfit/centcom/ert/marine/engineer //engineer
 	suit_store = null //doesn't need a rifle
@@ -46,3 +50,4 @@
 		/obj/item/storage/box/survival/engineer/marine = 1,
 	)
 	l_hand = /obj/item/deployable_turret_folded
+	r_hand = null
