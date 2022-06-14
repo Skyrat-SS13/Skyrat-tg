@@ -73,6 +73,9 @@
 
 #define FILTER_STAMINACRIT filter(type="drop_shadow", x=0, y=0, size=-3, color="#04080F")
 
+/// For a bullet to pierce through a target, but not damage it
+#define BULLET_ACT_FORCE_PIERCE_BLOCK "PIERCE_BLOCK"
+
 /mob/living/carbon
 	var/next_stamina_message = 0
 
