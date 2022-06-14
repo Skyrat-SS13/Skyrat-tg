@@ -64,6 +64,7 @@
 
 /obj/item/ammo_box/magazine/internal/shot/as2/ubsg
 	max_ammo = 1
+	ammo_type = /obj/item/ammo_casing/shotgun/buckshot
 
 /obj/item/gun/ballistic/automatic/ar/modular/m44a/sg
 	name = "\improper NT M44ASG Pulse Rifle"
