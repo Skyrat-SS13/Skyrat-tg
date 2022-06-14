@@ -7,3 +7,14 @@
 
 /obj/item/ammo_box/advanced/s12gauge/marine
 	w_class = WEIGHT_CLASS_NORMAL
+
+/obj/item/storage/box/survival/engineer/marine
+	name = "military survival box"
+	desc = "A box issued to Nanotrasen space marines, containing field essentials. This one is labelled to contain an extended-capacity tank."
+	illustration = "extendedtank"
+	internal_type = /obj/item/tank/internals/emergency_oxygen/engi
+
+/obj/item/storage/box/survival/engineer/marine/PopulateContents()
+	..()
+	new /obj/item/crowbar/red(src)
+	new /obj/item/storage/crayons(src) //absolutely required
