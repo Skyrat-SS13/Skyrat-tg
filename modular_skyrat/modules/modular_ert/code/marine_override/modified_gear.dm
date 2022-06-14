@@ -16,5 +16,4 @@
 
 /obj/item/storage/box/survival/engineer/marine/PopulateContents()
 	..()
-	new /obj/item/crowbar/red(src)
 	new /obj/item/storage/crayons(src) //absolutely required
