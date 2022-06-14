@@ -7,7 +7,7 @@
 		in active combat situations where standard gear won't cut it. Lightweight composite armor plating over \
 		a strong exoskeleton ensures that no speed is sacrificed for protection, and a variety of unique \
 		modules keep the wearer efficient during active combat situations. When response teams fail, \
-		you're the backup's backup - the desperate measures. "
+		you're the backup's backup - the desperate measures."
 	default_skin = "marine"
 	armor = list(MELEE = 50, BULLET = 50, LASER = 30, ENERGY = 25, BOMB = 50, BIO = 100, FIRE = 40, ACID = 50, WOUND = 20) //same as traditional, non-modsuit marine armor
 	atom_flags = PREVENT_CONTENTS_EXPLOSION_1
