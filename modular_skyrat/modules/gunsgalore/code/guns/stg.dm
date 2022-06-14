@@ -14,6 +14,7 @@
 	mag_type = /obj/item/ammo_box/magazine/stg
 	can_suppress = FALSE
 	fire_delay = 1.5
+	burst_size = 1
 	fire_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/fire/stg_fire.ogg'
 	fire_sound_volume = 70
 	alt_icons = TRUE
