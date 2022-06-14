@@ -3,8 +3,8 @@
 	desc = "A specialized Nanotrasen-produced ballistic pulse rifle that uses compressed magazines to output absurd firepower in a compact package."
 	icon_state = "m44a"
 	icon = 'modular_skyrat/modules/marines/icons/m44a.dmi'
-	righthand_file = 'odular_skyrat/modules/marines/icons/m44a_r.dmi'
-	lefthand_file = 'odular_skyrat/modules/marines/icons/m44a_l.dmi'
+	righthand_file = 'modular_skyrat/modules/marines/icons/m44a_r.dmi'
+	lefthand_file = 'modular_skyrat/modules/marines/icons/m44a_l.dmi'
 	fire_sound = 'modular_skyrat/modules/marines/sound/m44a.ogg'
 	fire_delay = 1
 	burst_size = 3
@@ -41,9 +41,9 @@
 /obj/projectile/bullet/a300
 	name = ".300 caseless bullet"
 	damage = 20
-	armor_penetration = 30
+	armour_penetration = 30 //gonna actually kill the brit that made this var require a U in armor
 	embedding = null
-	shrapnel_tyle = null
+	shrapnel_type = null
 
 /obj/item/gun/ballistic/automatic/ar/modular/m44a/s
 	name = "\improper NT M44AS Pulse Rifle"
