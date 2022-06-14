@@ -21,8 +21,7 @@
 	mag_type = /obj/item/ammo_box/magazine/smartgun_drum
 	can_suppress = FALSE
 	fire_delay = 0.5
-	realistic = TRUE
-	dirt_modifier = 0.1
+	realistic = FALSE
 	bolt_type = BOLT_TYPE_OPEN
 	show_bolt_icon = FALSE
 	tac_reloads = FALSE
