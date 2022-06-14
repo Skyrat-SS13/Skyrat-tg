@@ -6,8 +6,8 @@
 			and the gun itself fires at a blistering rate of fire, capable of suppressing enemies \
 			without hurting teammates thanks to IFF technology."
 	icon_state = "smartgun"
-	icon = 'modular_skyrat/modules/ERT_Factions/marines/icons/items/module.dmi'
-	overlay_icon_file = 'modular_skyrat/modules/ERT_Factions/marines/icons/mobs/mod_modules.dmi'
+	icon = 'master-skyrat/modular_skyrat/modules/marines/icons/items/module.dmi'
+	overlay_icon_file = 'modular_skyrat/modules/marines/icons/mobs/mod_modules.dmi'
 	module_type = MODULE_ACTIVE
 	complexity = 3
 	active_power_cost = DEFAULT_CHARGE_DRAIN * 0.3
