@@ -18,6 +18,7 @@
 
 /obj/item/organ/external/tail/cat
 	mutantpart_info = list(MUTANT_INDEX_NAME = "Cat", MUTANT_INDEX_COLOR_LIST = list("#FFAA00"))
+	color_source = ORGAN_COLOR_OVERRIDE
 
 /obj/item/organ/external/tail/monkey
 	mutantpart_info = list(MUTANT_INDEX_NAME = "Monkey", MUTANT_INDEX_COLOR_LIST = list("#FFFFFF"))
