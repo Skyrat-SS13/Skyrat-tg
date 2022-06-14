@@ -50,5 +50,5 @@
 		/obj/item/storage/box/survival/engineer/marine = 1,
 		/obj/item/ammo_box/magazine/smartgun_drum = 4, //AND WE'LL ALL STAY FREE
 	)
-	l_hand = /obj/item/deployable_turret_folded
+	l_hand = null
 	r_hand = null
