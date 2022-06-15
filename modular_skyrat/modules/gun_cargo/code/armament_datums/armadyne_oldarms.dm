@@ -27,17 +27,24 @@
 	lower_cost = CARGO_CRATE_VALUE * 16
 	upper_cost = CARGO_CRATE_VALUE * 20
 	interest_required = PASSED_INTEREST
+	
+/datum/armament_entry/cargo_gun/oldarms/smg/pps
+	item_type = /obj/item/gun/ballistic/automatic/pps 
+	lower_cost = CARGO_CRATE_VALUE * 15
+	upper_cost = CARGO_CRATE_VALUE * 19
+	interest_required = PASSED_INTEREST
 
-/datum/armament_entry/cargo_gun/oldarms/smg/ppsh
-	item_type = /obj/item/gun/ballistic/automatic/ppsh
-	lower_cost = CARGO_CRATE_VALUE * 32
-	upper_cost = CARGO_CRATE_VALUE * 38
-	interest_required = HIGH_INTEREST
 
 /datum/armament_entry/cargo_gun/oldarms/rifle
 	subcategory = ARMAMENT_SUBCATEGORY_ASSAULTRIFLE
 	interest_required = HIGH_INTEREST
 	restricted = TRUE
+	
+/datum/armament_entry/cargo_gun/oldarms/rifle/m16/oldarms
+	item_type = /obj/item/gun/ballistic/automatic/m16/oldarms
+	lower_cost = CARGO_CRATE_VALUE * 20
+	upper_cost = CARGO_CRATE_VALUE * 24
+	interest_required = HIGH_INTEREST
 
 /datum/armament_entry/cargo_gun/oldarms/rifle/vintorez
 	item_type = /obj/item/gun/ballistic/automatic/vintorez

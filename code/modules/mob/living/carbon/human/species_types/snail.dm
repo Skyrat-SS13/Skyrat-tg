@@ -24,10 +24,10 @@
 	sexes = FALSE //snails are hermaphrodites
 	veteran_only = TRUE //SKYRAT EDIT - Roundstart Snails
 
-	mutanteyes = /obj/item/organ/eyes/snail
-	mutanttongue = /obj/item/organ/tongue/snail
-	mutantliver = /obj/item/organ/liver/snail //SKYRAT EDIT - Roundstart Snails
-	//exotic_bloodtype = /datum/reagent/lube //SKYRAT EDIT REMOVAL: Roundstart Snails - No more lube
+	mutanteyes = /obj/item/organ/internal/eyes/snail
+	mutanttongue = /obj/item/organ/internal/tongue/snail
+	mutantliver = /obj/item/organ/internal/liver/snail //SKYRAT EDIT - Roundstart Snails
+	// exotic_blood = /datum/reagent/lube // SKYRAT EDIT REMOVAL: Roundstart Snails - No more lube
 
 	bodypart_overrides = list(
 		BODY_ZONE_HEAD = /obj/item/bodypart/head/snail,

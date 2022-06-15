@@ -186,13 +186,13 @@
 				if("Breasts Size")
 					var/new_size = input(H, "Choose your character's breasts size:", "DNA Alteration") as null|anything in GLOB.preference_breast_sizes
 					if(new_size)
-						DNA.features["breasts_size"] = breasts_cup_to_size(new_size)
-						var/obj/item/organ/genital/breasts/melons = H.getorganslot(ORGAN_SLOT_BREASTS)
+						var/obj/item/organ/external/genital/breasts/melons = H.getorganslot(ORGAN_SLOT_BREASTS)
 						if(melons)
+							DNA.features["breasts_size"] = melons.breasts_cup_to_size(new_size)
 							melons.set_size(DNA.features["breasts_size"])
 				if("Breasts Lactation")
 					DNA.features["breasts_lactation"] = !DNA.features["breasts_lactation"]
-					var/obj/item/organ/genital/breasts/melons = H.getorganslot(ORGAN_SLOT_BREASTS)
+					var/obj/item/organ/external/genital/breasts/melons = H.getorganslot(ORGAN_SLOT_BREASTS)
 					if(melons)
 						melons.lactates = DNA.features["breasts_lactation"]
 					to_chat(H, span_notice("Your breasts [DNA.features["breasts_lactation"] ? "will now lactate" : "will not lactate anymore"]."))
@@ -203,7 +203,7 @@
 					var/new_length = input(H, "Choose your penis length:\n([PENIS_MIN_LENGTH]-[PENIS_MAX_LENGTH] in inches)", "DNA Alteration") as num|null
 					if(new_length)
 						DNA.features["penis_size"] = clamp(round(new_length, 1), PENIS_MIN_LENGTH, PENIS_MAX_LENGTH)
-						var/obj/item/organ/genital/penis/PP = H.getorganslot(ORGAN_SLOT_PENIS)
+						var/obj/item/organ/external/genital/penis/PP = H.getorganslot(ORGAN_SLOT_PENIS)
 						if(DNA.features["penis_girth"] >= new_length)
 							DNA.features["penis_girth"] = new_length - 1
 							if(PP)
@@ -214,7 +214,7 @@
 					var/new_sheath = input(H, "Choose your penis sheath", "DNA Alteration") as null|anything in SHEATH_MODES
 					if(new_sheath)
 						DNA.features["penis_sheath"] = new_sheath
-						var/obj/item/organ/genital/penis/PP = H.getorganslot(ORGAN_SLOT_PENIS)
+						var/obj/item/organ/external/genital/penis/PP = H.getorganslot(ORGAN_SLOT_PENIS)
 						if(PP)
 							PP.sheath = new_sheath
 				if("Penis Girth")
@@ -224,15 +224,15 @@
 					var/new_girth = input(H, "Choose your penis girth:\n(1-[max_girth] (based on length) in inches)", "Character Preference") as num|null
 					if(new_girth)
 						DNA.features["penis_girth"] = clamp(round(new_girth, 1), 1, max_girth)
-						var/obj/item/organ/genital/penis/PP = H.getorganslot(ORGAN_SLOT_PENIS)
+						var/obj/item/organ/external/genital/penis/PP = H.getorganslot(ORGAN_SLOT_PENIS)
 						if(PP)
 							PP.girth = DNA.features["penis_girth"]
 				if("Balls Size")
 					var/new_size = input(H, "Choose your character's balls size:", "Character Preference") as null|anything in GLOB.preference_balls_sizes
 					if(new_size)
-						DNA.features["balls_size"] = balls_description_to_size(new_size)
-						var/obj/item/organ/genital/testicles/avocados = H.getorganslot(ORGAN_SLOT_TESTICLES)
+						var/obj/item/organ/external/genital/testicles/avocados = H.getorganslot(ORGAN_SLOT_TESTICLES)
 						if(avocados)
+							DNA.features["balls_size"] = avocados.balls_description_to_size(new_size)
 							avocados.set_size(DNA.features["balls_size"])
 				if("Body Size")
 					var/new_body_size = input(H, "Choose your desired sprite size:\n([BODY_SIZE_MIN*100]%-[BODY_SIZE_MAX*100]%), Warning: May make your character look distorted", "Character Preference", DNA.features["body_size"]*100) as num|null

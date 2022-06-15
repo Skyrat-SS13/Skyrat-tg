@@ -29,7 +29,7 @@
 		TRAIT_NOCLONELOSS
 		)
 	inherent_biotypes = MOB_UNDEAD | MOB_HUMANOID
-	mutanttongue = /obj/item/organ/tongue/zombie
+	mutanttongue = /obj/item/organ/internal/tongue/zombie
 	disliked_food = NONE
 	liked_food = GROSS | MEAT | RAW
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | ERT_SPAWN
@@ -70,7 +70,7 @@
 	mutanthands = /obj/item/mutant_hand
 	speedmod = 1
 	armor = 10
-	mutanteyes = /obj/item/organ/eyes/night_vision/zombie
+	mutanteyes = /obj/item/organ/internal/eyes/night_vision/zombie
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | ERT_SPAWN
 	/// The rate the mutants regenerate at
 	var/heal_rate = 1

@@ -32,11 +32,6 @@
 
 	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS
 
-/datum/job/expeditionary_trooper/after_spawn(mob/living/carbon/human/H, mob/M)
-	. = ..()
-	to_chat(M, span_redtext("As a Vanguard Operative you are not part of security! You must not perform security duties unless absolutely nessecary. \
-	Do not valid hunt using your equipment. Use common sense. Failure to follow these simple rules will result in a job ban."))
-
 /datum/outfit/job/expeditionary_trooper
 	name = "Vanguard Operative"
 	jobtype = /datum/job/expeditionary_trooper

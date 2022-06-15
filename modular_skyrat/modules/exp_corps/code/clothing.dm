@@ -196,7 +196,7 @@
 
 /obj/item/clothing/head/helmet/expeditionary_corps/proc/enable_nv(mob/user)
 	if(current_user)
-		var/obj/item/organ/eyes/my_eyes = current_user.getorgan(/obj/item/organ/eyes)
+		var/obj/item/organ/internal/eyes/my_eyes = current_user.getorgan(/obj/item/organ/internal/eyes)
 		if(my_eyes)
 			my_eyes.lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 			my_eyes.see_in_dark = 8
@@ -205,7 +205,7 @@
 
 /obj/item/clothing/head/helmet/expeditionary_corps/proc/disable_nv()
 	if(current_user)
-		var/obj/item/organ/eyes/my_eyes = current_user.getorgan(/obj/item/organ/eyes)
+		var/obj/item/organ/internal/eyes/my_eyes = current_user.getorgan(/obj/item/organ/internal/eyes)
 		if(my_eyes)
 			my_eyes.lighting_alpha = initial(my_eyes.lighting_alpha)
 			my_eyes.see_in_dark = initial(my_eyes.see_in_dark)
