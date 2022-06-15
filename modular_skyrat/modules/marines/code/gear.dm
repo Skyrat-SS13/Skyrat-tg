@@ -45,7 +45,7 @@
 	embedding = null
 	shrapnel_type = null
 
-/obj/item/gun/ballistic/automatic/ar/modular/m44a/s
+/obj/item/gun/ballistic/automatic/ar/modular/m44a/scoped
 	name = "\improper NT M44AS Pulse Rifle"
 	desc = "A specialized Nanotrasen-produced ballistic pulse rifle that uses compressed magazines to output absurd firepower in a compact package. This one's fitted with a long-range scope."
 	icon_state = "m44a_s"
@@ -66,7 +66,7 @@
 	max_ammo = 3
 	ammo_type = /obj/item/ammo_casing/shotgun/buckshot
 
-/obj/item/gun/ballistic/automatic/ar/modular/m44a/sg
+/obj/item/gun/ballistic/automatic/ar/modular/m44a/shotgun
 	name = "\improper NT M44ASG Pulse Rifle"
 	desc = "A specialized Nanotrasen-produced ballistic pulse rifle that uses compressed magazines to output absurd firepower in a compact package. This one's fitted with a two-round semi-automatic underbarrel 12 gauge shotgun."
 	icon_state = "m44a_sg"
@@ -90,7 +90,7 @@
 	else
 		..()
 
-/obj/item/gun/ballistic/automatic/ar/modular/m44a/gl
+/obj/item/gun/ballistic/automatic/ar/modular/m44a/grenadelauncher
 	name = "\improper NT M44AGL Pulse Rifle"
 	desc = "A specialized Nanotrasen-produced ballistic pulse rifle that uses compressed magazines to output absurd firepower in a compact package. This one's fitted with an underbarrel grenade launcher, and a red dot scope to help align it. Compensating for something?"
 	icon_state = "m44a_gl"
