@@ -51,7 +51,7 @@
 	icon_state = "m44a_s"
 	inhand_icon_state = "m44a_s"
 
-/obj/item/gun/ballistic/automatic/ar/modular/m44a/s/Initialize()
+/obj/item/gun/ballistic/automatic/ar/modular/m44a/scoped/Initialize()
 	. = ..()
 	AddComponent(/datum/component/scope, range_modifier = 1.5)
 
