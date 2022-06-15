@@ -110,6 +110,7 @@
 	START_PROCESSING(SScorruption, src)
 	if(do_initial_expansion)
 		initial_expansion()
+	SSshuttle.registerHostileEnvironment(src)
 
 /datum/fleshmind_controller/proc/register_new_asset(obj/structure/fleshmind/new_asset)
 	new_asset.RegisterSignal(src, COMSIG_PARENT_QDELETING, /obj/structure/fleshmind/proc/controller_destroyed)
@@ -150,6 +151,7 @@
 	cores = null
 	STOP_PROCESSING(SScorruption, src)
 	message_admins("Corruption AI [controller_fullname] has been destroyed.")
+	SSshuttle.clearHostileEnvironment(src)
 	return ..()
 
 
