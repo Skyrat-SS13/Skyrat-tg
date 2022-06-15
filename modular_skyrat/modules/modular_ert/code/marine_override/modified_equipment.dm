@@ -1,5 +1,5 @@
 /datum/outfit/centcom/ert/marine //commander
-	suit_store = /obj/item/gun/ballistic/automatic/ar/modular/m44a/gl
+	suit_store = /obj/item/gun/ballistic/automatic/ar/modular/m44a/grenadelauncher
 	belt = /obj/item/storage/belt/military/assault/full/m44a
 	back = /obj/item/mod/control/pre_equipped/marine
 	backpack_contents = list(
@@ -12,7 +12,7 @@
 	r_hand = null
 	
 /datum/outfit/centcom/ert/marine/security //generic and/or heavy
-	suit_store = /obj/item/gun/ballistic/automatic/ar/modular/m44a/sg
+	suit_store = /obj/item/gun/ballistic/automatic/ar/modular/m44a/shotgun
 	belt = /obj/item/storage/belt/military/assault/full/m44a
 	back = /obj/item/mod/control/pre_equipped/marine
 	backpack_contents = list(
@@ -25,7 +25,7 @@
 	r_hand = null
 	
 /datum/outfit/centcom/ert/marine/medic //medic
-	suit_store = /obj/item/gun/ballistic/automatic/ar/modular/m44a/s
+	suit_store = /obj/item/gun/ballistic/automatic/ar/modular/m44a/scoped
 	belt = /obj/item/storage/belt/military/assault/full/m44a
 	back = /obj/item/mod/control/pre_equipped/marine
 	backpack_contents = list(
