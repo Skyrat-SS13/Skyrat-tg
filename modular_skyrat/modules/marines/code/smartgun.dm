@@ -26,6 +26,7 @@
 	show_bolt_icon = FALSE
 	tac_reloads = FALSE
 	burst_size = 1
+	pin = /obj/item/firing_pin/implant/mindshield
 	var/cover_open = FALSE
 	var/list/iff_factions = list("ert")
 
