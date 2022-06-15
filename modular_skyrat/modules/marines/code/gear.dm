@@ -73,16 +73,16 @@
 	inhand_icon_state = "m44a_sg"
 	var/obj/item/gun/ballistic/shotgun/automatic/as2/ubsg/underbarrel
 
-/obj/item/gun/ballistic/automatic/ar/modular/m44a/sg/Initialize()
+/obj/item/gun/ballistic/automatic/ar/modular/m44a/sshotgun/Initialize()
 	. = ..()
 	underbarrel = new /obj/item/gun/ballistic/shotgun/automatic/as2/ubsg(src)
 	update_appearance()
 
-/obj/item/gun/ballistic/automatic/ar/modular/m44a/sg/afterattack_secondary(atom/target, mob/living/user, flag, params)
+/obj/item/gun/ballistic/automatic/ar/modular/m44a/shotgun/afterattack_secondary(atom/target, mob/living/user, flag, params)
 	underbarrel.afterattack(target, user, flag, params)
 	return SECONDARY_ATTACK_CONTINUE_CHAIN
 
-/obj/item/gun/ballistic/automatic/ar/modular/m44a/sg/attackby(obj/item/attacking_item, mob/user, params)
+/obj/item/gun/ballistic/automatic/ar/modular/m44a/shotgun/attackby(obj/item/attacking_item, mob/user, params)
 	if(istype(attacking_item, /obj/item/ammo_casing))
 		if(istype(attacking_item, underbarrel.magazine.ammo_type))
 			underbarrel.attack_self(user)
@@ -97,16 +97,16 @@
 	inhand_icon_state = "m44a_gl"
 	var/obj/item/gun/ballistic/revolver/grenadelauncher/underbarrel
 
-/obj/item/gun/ballistic/automatic/ar/modular/m44a/gl/Initialize()
+/obj/item/gun/ballistic/automatic/ar/modular/m44a/grenadelauncher/Initialize()
 	. = ..()
 	underbarrel = new /obj/item/gun/ballistic/revolver/grenadelauncher/unrestricted(src)
 	update_appearance()
 
-/obj/item/gun/ballistic/automatic/ar/modular/m44a/gl/afterattack_secondary(atom/target, mob/living/user, flag, params)
+/obj/item/gun/ballistic/automatic/ar/modular/m44a/grenadelauncher/afterattack_secondary(atom/target, mob/living/user, flag, params)
 	underbarrel.afterattack(target, user, flag, params)
 	return SECONDARY_ATTACK_CONTINUE_CHAIN
 
-/obj/item/gun/ballistic/automatic/ar/modular/m44a/gl/attackby(obj/item/attacking_item, mob/user, params)
+/obj/item/gun/ballistic/automatic/ar/modular/m44a/grenadelauncher/attackby(obj/item/attacking_item, mob/user, params)
 	if(istype(attacking_item, /obj/item/ammo_casing))
 		if(istype(attacking_item, underbarrel.magazine.ammo_type))
 			underbarrel.attack_self(user)
