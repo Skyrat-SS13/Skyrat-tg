@@ -1,11 +1,11 @@
 /obj/item/clothing/under/rank/security/peacekeeper/armadyne
-	name = "\improper Armadyne corporate uniform"
+	name = "armadyne corporate uniform"
 	desc = "A sleek uniform worn by Armadyne corporate. Its metallic red belt buckle is made in the shape of the Armadyne logo."
 	icon_state = "armadyne_shirt"
 	worn_icon_state = "armadyne_shirt"
 
 /obj/item/clothing/under/rank/security/peacekeeper/armadyne/tactical
-	name = "\improper Armadyne tactical uniform"
+	name = "armadyne tactical uniform"
 	desc = "A robust tactical uniform worn by Armadyne corporate."
 	icon_state = "armadyne_tac"
 	worn_icon_state = "armadyne_tac"
