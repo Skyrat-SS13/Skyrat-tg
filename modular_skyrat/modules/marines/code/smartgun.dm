@@ -66,8 +66,8 @@
 		return
 	return ..()
 
-/obj/item/gun/ballistic/automatic/smart_machine_gun/attackby(obj/item/A, mob/user, params)
-	if(!cover_open && istype(A, mag_type))
+/obj/item/gun/ballistic/automatic/smart_machine_gun/attackby(obj/item/attack_item, mob/user, params)
+	if(!cover_open && istype(attack_item, mag_type))
 		to_chat(user, span_warning("[src]'s dust cover prevents a magazine from being fit."))
 		return
 	..()
