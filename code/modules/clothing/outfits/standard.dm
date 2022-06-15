@@ -64,7 +64,7 @@
 	head = /obj/item/clothing/head/fedora/det_hat
 	l_hand = /obj/item/gun/ballistic
 	l_hand = null
-	r_hand = /obj/item/ammo_box/c10mm //SKYRAT EDIT
+	r_hand = /obj/item/ammo_box/c10mm //SKYRAT EDIT: ORIGINAL r_pocket FOR CI
 
 /datum/outfit/tournament/janitor
 	name = "tournament janitor"
