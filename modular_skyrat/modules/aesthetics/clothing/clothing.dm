@@ -126,6 +126,14 @@
 	worn_icon = 'icons/mob/clothing/under/syndicate.dmi'
 
 /*
+*	NINJA
+*/
+
+/obj/item/clothing/under/syndicate/ninja
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+
+/*
 *	SHOES
 */
 
