@@ -343,8 +343,8 @@
 	outfit = /datum/outfit/tarkon/sec
 
 /datum/outfit/tarkon/sec
-	uniform = /obj/item/clothing/under/utility/sec
-	glasses = /obj/item/clothing/glasses/hud/security
+	uniform = /obj/item/clothing/under/rank/security/skyrat/utility/redsec
+	glasses = /obj/item/clothing/glasses/hud/security/redsec
 	gloves = /obj/item/clothing/gloves/tackler/combat
 	id = /obj/item/card/id/away/tarkon/sec
 	l_pocket = /obj/item/melee/baton/telescopic
