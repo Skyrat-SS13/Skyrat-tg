@@ -9,13 +9,13 @@
 	obj_flags = UNIQUE_RENAME
 
 /obj/item/ttsdevice/attack_self(mob/user)
-	user.balloon_alert_to_viewers("Typing on [initial(name)].", "You begin typing.")
+	user.balloon_alert_to_viewers("typing on [initial(name)]...", "you begin typing...")
 	playsound(src, 'modular_skyrat/master_files/sound/items/tts/started_type.ogg', 50, TRUE)
 	var/str = tgui_input_text(user, "What would you like the device to say?", "Say Text", "", MAX_MESSAGE_LEN, encode = FALSE)
 	if(QDELETED(src) || !user.canUseTopic(src, BE_CLOSE))
 		return
 	if(!str)
-		user.balloon_alert_to_viewers("Stops typing on [initial(name)].", "You stop typing.")
+		user.balloon_alert_to_viewers("stops typing on [initial(name)]", "you stop typing")
 		playsound(src, 'modular_skyrat/master_files/sound/items/tts/stopped_type.ogg', 50, TRUE)
 		return
 	src.say(str)
