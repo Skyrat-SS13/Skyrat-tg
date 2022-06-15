@@ -73,7 +73,7 @@
 	inhand_icon_state = "m44a_sg"
 	var/obj/item/gun/ballistic/shotgun/automatic/as2/ubsg/underbarrel
 
-/obj/item/gun/ballistic/automatic/ar/modular/m44a/sshotgun/Initialize()
+/obj/item/gun/ballistic/automatic/ar/modular/m44a/shotgun/Initialize()
 	. = ..()
 	underbarrel = new /obj/item/gun/ballistic/shotgun/automatic/as2/ubsg(src)
 	update_appearance()
