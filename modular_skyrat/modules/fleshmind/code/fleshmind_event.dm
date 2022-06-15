@@ -23,16 +23,6 @@
 	priority_announce("Confirmed outbreak of level $£%!£ biohazard aboard [station_name()]. All personnel must contain the outbreak.", "Biohazard Alert", ANNOUNCER_AIMALF)
 
 /datum/round_event/fleshmind/tick()
-	if(prob(FLESHMIND_EVENT_MAKE_CORRUPTION_CHANCE))
-		var/list/temp_machine_list = LAZYCOPY(GLOB.machines)
-		shuffle(temp_machine_list)
-		for(var/obj/machinery/iterating_machine as anything in temp_machine_list)
-			if(!is_station_level(iterating_machine.z))
-				continue
-			iterating_machine.AddComponent(/datum/component/machine_corruption)
-			announce_to_ghosts(iterating_machine)
-			break
-
 	if(prob(FLESHMIND_EVENT_MAKE_CORRUPT_MOB))
 		for(var/mob/living/simple_animal/iterating_simple_animal in GLOB.mob_living_list)
 			if(iterating_simple_animal.key || iterating_simple_animal.mind || !is_station_level(iterating_simple_animal.z))
