@@ -393,7 +393,7 @@
 // Donation reward for TheOOZ
 /obj/item/clothing/mask/animal/kindle
 	name = "wolf mask"
-	desc = "A dark mask in the shape of a wolf's head.<br> The material feels like it's made entirely out of inexpensive plastic."
+	desc = "A dark mask in the shape of a wolf's head.<br>The material feels like it's made entirely out of inexpensive plastic."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/masks.dmi'
 	icon_state = "kindle"
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/mask.dmi'
@@ -416,7 +416,7 @@
 	. = ..()
 	clothing_flags = initial(clothing_flags)
 	name = "\proper the accursed wolf mask"
-	desc = "The mask which belongs to Nanotrasen's Outpost Captain Kindle, it is the symbol of her alleged cult.<br> It looks like a [animal_type] mask, but closer inspection reveals it's melded onto this person's face!"
+	desc = "The mask which belongs to Nanotrasen's Outpost Captain Kindle, it is the symbol of her alleged cult.<br>It looks like a [animal_type] mask, but closer inspection reveals it's melded onto this person's face!"
 
 // Donation reward for Random516
 /obj/item/clothing/head/drake_skull
