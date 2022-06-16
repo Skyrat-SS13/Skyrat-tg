@@ -393,7 +393,7 @@
 // Donation reward for TheOOZ
 /obj/item/clothing/mask/animal/kindle
 	name = "wolf mask"
-	desc = "A dark mask in the shape of a [animal_type]'s head.<br> The material feels like it's made entirely out of inexpensive plastic."
+	desc = "A dark mask in the shape of a wolf's head.<br> The material feels like it's made entirely out of inexpensive plastic."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/masks.dmi'
 	icon_state = "kindle"
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/mask.dmi'
