@@ -1328,7 +1328,7 @@
 	/// Ditto
 	var/internal_mob_damage_lower = 40
 	/// How long we keep our passenger before either releasing or converting them.
-	var/conversion_time = 40 SECONDS
+	var/conversion_time = 15 SECONDS
 	/// The comsume ability cooldown
 	var/consume_ability_cooldown_time = 1 MINUTES
 	COOLDOWN_DECLARE(consume_ability_cooldown)

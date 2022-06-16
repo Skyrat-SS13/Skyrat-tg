@@ -34,6 +34,8 @@
 	var/ability_cooldown_time = 0
 	/// Our ability cooldown
 	COOLDOWN_DECLARE(ability_cooldown)
+	/// Do we have a disabled sprite?
+	var/disabled_sprite = TRUE
 
 /obj/structure/fleshmind/structure/Initialize(mapload)
 	. = ..()
@@ -46,7 +48,7 @@
 
 /obj/structure/fleshmind/structure/update_icon_state()
 	. = ..()
-	if(disabled)
+	if(disabled && disabled_sprite)
 		icon_state = "[icon_state]-disabled"
 	else
 		icon_state = base_icon_state
@@ -168,6 +170,7 @@
 	opacity = TRUE
 	can_atmos_pass = ATMOS_PASS_DENSITY
 	max_integrity = 150
+	disabled_sprite = FALSE
 
 /obj/structure/fleshmind/structure/wireweed_wall/Initialize()
 	. = ..()
@@ -291,6 +294,7 @@
 	whip_those_fuckers()
 	rally_troops()
 	build_a_wall()
+	our_controller?.spawn_mob(get_turf(src), /mob/living/simple_animal/hostile/fleshmind/mechiver)
 
 /obj/structure/fleshmind/structure/core/proc/whip_those_fuckers()
 	for(var/mob/living/iterating_mob in view(whip_range, src))
@@ -525,7 +529,7 @@
 	density = FALSE
 	max_integrity = 260
 	activation_range = DEFAULT_VIEW_RANGE
-	ability_cooldown_time = 40 SECONDS
+	ability_cooldown_time = 20 SECONDS
 	/// The max amount of mobs we can have at any one time.
 	var/max_mobs = 2
 	/// The current amount of spawned mobs
@@ -538,9 +542,9 @@
 		/mob/living/simple_animal/hostile/fleshmind/slicer = 4,
 		/mob/living/simple_animal/hostile/fleshmind/stunner = 4,
 		/mob/living/simple_animal/hostile/fleshmind/treader = 3,
-		/mob/living/simple_animal/hostile/fleshmind/himan = 2,
+		/mob/living/simple_animal/hostile/fleshmind/himan = 3,
 		/mob/living/simple_animal/hostile/fleshmind/phaser = 2,
-		/mob/living/simple_animal/hostile/fleshmind/mechiver = 2,
+		/mob/living/simple_animal/hostile/fleshmind/mechiver = 4,
 	)
 	/// Our override type, if manually set.
 	var/override_monser_type

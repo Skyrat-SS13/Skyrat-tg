@@ -150,8 +150,6 @@
 	controlled_walls = null
 	cores = null
 	STOP_PROCESSING(SScorruption, src)
-	message_admins("Corruption AI [controller_fullname] has been destroyed.")
-	SSshuttle.clearHostileEnvironment(src)
 	return ..()
 
 
@@ -260,6 +258,10 @@
 	message_admins("Corruption AI [controller_fullname] has leveled up to level [level]!")
 	notify_ghosts("Corruption AI [controller_fullname] has leveled up to level [level]!")
 
+	for(var/obj/structure/fleshmind/structure/core/iterating_core in cores)
+		iterating_core.max_integrity += CONTROLLER_LEVEL_UP_CORE_INTEGRITY_AMOUNT
+		iterating_core.update_integrity(iterating_core.max_integrity)
+
 	switch(level)
 		if(CONTROLLER_LEVEL_3)
 			if(!tyrant_spawned)
@@ -286,7 +288,9 @@
 	if(level > 0)
 		minor_announce("CORRUPT ANOMALY INTEGRITY FALTERING.", "PRIORITY ANNOUNCEMENT")
 	else
-		priority_announce("Corrupt anomaly has been neutralised. Well done.")
+		priority_announce("Corrupt anomaly has been neutralised.", "Corrupt AI")
+		message_admins("Corruption AI [controller_fullname] has been destroyed.")
+		SSshuttle.clearHostileEnvironment(src)
 
 /datum/fleshmind_controller/proc/end_game()
 	addtimer(CALLBACK(GLOBAL_PROC, /proc/fleshmind_end_second_check), 20 SECONDS)
