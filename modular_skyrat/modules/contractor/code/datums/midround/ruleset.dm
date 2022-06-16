@@ -22,7 +22,7 @@
 /datum/dynamic_ruleset/midround/from_ghosts/contractor/ready(forced = FALSE)
 	if(prob(33))
 		required_candidates++
-	if (required_candidates > (dead_players.len + list_observers.len))
+	if (required_candidates > (length(dead_players) + length(list_observers)))
 		return FALSE
 	for(var/obj/effect/landmark/carpspawn/carp in GLOB.landmarks_list)
 		spawn_locs += carp.loc
