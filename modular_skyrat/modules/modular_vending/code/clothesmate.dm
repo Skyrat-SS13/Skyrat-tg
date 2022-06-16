@@ -96,3 +96,5 @@
 		/obj/item/clothing/suit/frenchtrench = 1,
 		/obj/item/clothing/under/misc/royalkilt = 5,
 	)
+
+	skyrat_amount_override = 5
