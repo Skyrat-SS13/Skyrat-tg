@@ -153,6 +153,7 @@
 		/obj/item/clothing/mask/bandana/striped/cargo = 3,
 		/obj/item/clothing/head/soft = 3,
 		/obj/item/radio/headset/headset_cargo = 3,
+		/obj/item/clothing/glasses/hud/gun_permit = 5,
 	)
 	premium = list(
 		/obj/item/clothing/under/rank/cargo/miner = 3,
