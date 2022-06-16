@@ -66,7 +66,7 @@
 		/obj/item/clothing/mask/balaclavaadjust = 5,
 		/obj/item/clothing/mask/balaclava/threehole = 5,
 		/obj/item/clothing/mask/balaclava/threehole/green = 5,
-		/obj/item/clothing/head/imperialhelmet = 5,
+		/obj/item/clothing/head/imperial/helmet = 5,
 		/obj/item/clothing/head/imperial/red = 5,
 		/obj/item/clothing/head/imperial/grey = 5,
 		/obj/item/clothing/head/imperial = 5,

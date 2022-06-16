@@ -70,6 +70,7 @@
 	access_lists["[ACCESS_CMO]"] = list(
 		/obj/item/clothing/head/beret/medical/cmo = 1,
 		/obj/item/clothing/head/beret/medical/cmo/alt = 1,
+		/obj/item/clothing/head/imperial/cmo = 1,
 		/obj/item/clothing/under/rank/medical/chief_medical_officer = 1,
 		/obj/item/clothing/under/rank/medical/chief_medical_officer/skirt = 1,
 		/obj/item/clothing/under/rank/medical/chief_medical_officer/turtleneck = 1,
@@ -149,8 +150,9 @@
 	access_lists["[ACCESS_COMMAND]"] = list(
 		/obj/item/clothing/head/imperial = 5,
 		/obj/item/clothing/head/imperial/grey = 5,
+		/obj/item/clothing/head/imperial/white = 2,
 		/obj/item/clothing/head/imperial/red = 5,
-		/obj/item/clothing/head/imperialhelmet = 5,
+		/obj/item/clothing/head/imperial/helmet = 5,
 		/obj/item/clothing/under/rank/captain/skyrat/imperial/generic = 5,
 		/obj/item/clothing/under/rank/captain/skyrat/imperial/generic/grey = 5,
 		/obj/item/clothing/under/rank/captain/skyrat/imperial/generic/pants = 5,
