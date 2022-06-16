@@ -20,6 +20,12 @@
 	icon_state = "capkilt"
 	inhand_icon_state = "kilt"
 
+/obj/item/clothing/under/rank/captain/skyrat/imperial
+	name = "captain's naval jumpsuit"
+	desc = "A white naval suit adorned with golden epaulets and a rank badge denoting a Captain. There are two ways to destroy a person, kill him, or ruin his reputation."
+	//Rank pins of the Grand Admiral, not a Captain.
+	icon_state = "impcap"
+
 //Donor item for Gandalf - all donors have access
 /obj/item/clothing/under/rank/captain/skyrat/black
 	name = "captain's black suit"
@@ -107,6 +113,26 @@
 /obj/item/clothing/under/rank/captain/skyrat/utility/syndicate
 	armor = list(MELEE = 10, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 40) //Same stats as the tactical turtleneck.
 	has_sensor = NO_SENSORS
+
+/obj/item/clothing/under/rank/captain/skyrat/imperial/generic
+	desc = "A grey naval suit with a rank badge denoting an Officer. Doesn't protect against blaster fire."
+	name = "grey officer's naval jumpsuit"
+	icon_state = "impcom"
+
+/obj/item/clothing/under/rank/captain/skyrat/imperial/generic/pants
+	desc = "A grey naval suit over black pants, with a rank badge denoting an Officer. Doesn't protect against blaster fire."
+	name = "officer's naval jumpsuit"
+	icon_state = "impcom_pants"
+
+/obj/item/clothing/under/rank/captain/skyrat/imperial/generic/grey
+	desc = "A dark grey naval suit with a rank badge denoting an Officer. Doesn't protect against blaster fire."
+	name = "dark grey officer's naval jumpsuit"
+	icon_state = "impcom_dark"
+
+/obj/item/clothing/under/rank/captain/skyrat/imperial/generic/red
+	desc = "A red naval suit with a rank badge denoting an Officer. Doesn't protect against blaster fire."
+	name = "red officer's naval jumpsuit"
+	icon_state = "impred_uniform"
 
 /obj/item/clothing/under/rank/captain/skyrat/pilot
 	name = "shuttle pilot's jumpsuit"

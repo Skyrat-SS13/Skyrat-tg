@@ -19,7 +19,16 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/medical.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/medical.dmi'
 
-// Add a 'medical/chief_medical_officer/skyrat' or 'medical/virologist/skyrat' if you make CMO or Virologist uniforms
+/obj/item/clothing/under/rank/medical/chief_medical_officer/skyrat
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/medical.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/medical.dmi'
+
+
+// Add a 'medical/virologist/skyrat' if you make Virologist uniforms
+
+/*
+*	DOCTOR
+*/
 
 /obj/item/clothing/under/rank/medical/doctor/skyrat/utility
 	name = "medical utility uniform"
@@ -63,3 +72,12 @@
 	dying_key = DYE_REGISTRY_JUMPSKIRT
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+
+/*
+*	CHIEF MEDICAL OFFICER
+*/
+
+/obj/item/clothing/under/rank/medical/chief_medical_officer/skyrat/imperial //Rank pins of the Brigadier General
+	desc = "A teal, sterile naval suit with a rank badge denoting the Officer of the Medical Corps. Doesn't protect against blaster fire."
+	name = "chief medical officer's naval jumpsuit"
+	icon_state = "impcmo"
