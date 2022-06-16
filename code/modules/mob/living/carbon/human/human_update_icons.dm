@@ -166,13 +166,10 @@ There are several things that need to be remembered:
 			//BEGIN SPECIES HANDLING
 			if((dna?.species.bodytype & BODYTYPE_DIGITIGRADE) && (uniform.supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION))
 				icon_file = uniform.worn_icon_digi || DIGITIGRADE_UNIFORM_FILE // SKYRAT EDIT CHANGE
-				handled_by_bodytype = TRUE
 
 			// SKYRAT EDIT ADDITION
 			else if(dna.species.bodytype & BODYTYPE_CUSTOM)
 				icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_UNIFORM, w_uniform)
-				if(icon_file)
-					handled_by_bodytype = TRUE
 			// SKYRAT EDIT END
 
 			//Female sprites have lower priority than digitigrade sprites
@@ -181,7 +178,7 @@ There are several things that need to be remembered:
 
 			if(!icon_exists(icon_file, RESOLVE_ICON_STATE(uniform)))
 				icon_file = DEFAULT_UNIFORM_FILE
-				handled_by_bodytype = TRUE
+				handled_by_bodytype = FALSE
 
 			//END SPECIES HANDLING
 			uniform_overlay = uniform.build_worn_icon(
