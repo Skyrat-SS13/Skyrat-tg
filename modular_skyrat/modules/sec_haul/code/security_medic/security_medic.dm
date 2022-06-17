@@ -44,11 +44,6 @@
 	rpg_title = "Battle Cleric"
 	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS | JOB_CAN_BE_INTERN
 
-/datum/job/security_medic/after_spawn(mob/living/carbon/human/H, mob/M)
-	. = ..()
-	to_chat(M, span_redtext("As the Security Medic, you are comparable in medical knowledge to a Paramedic, not a one man surgical bay. \
-	your main duty is healing on the field or in combat situations. Leave revivals and chemistry work to trained professionals."))
-
 /datum/outfit/job/security_medic
 	name = "Security Medic"
 	jobtype = /datum/job/security_medic
