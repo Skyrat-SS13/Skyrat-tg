@@ -13,10 +13,10 @@
 	metabolization_rate = 0.5 * REAGENTS_METABOLISM
 	inverse_chem_val 		= 0
 	purity = 0.9
-	var/obj/item/organ/tongue/nT
+	var/obj/item/organ/internal/tongue/nT
 	chemical_flags = REAGENT_DONOTSPLIT | REAGENT_CAN_BE_SYNTHESIZED
 	ph = 5
-	var/obj/item/organ/tongue/T
+	var/obj/item/organ/internal/tongue/T
 
 
 /datum/reagent/OwO/furranium/expose_mob(mob/living/carbon/human/M, method=INJECT, reac_volume)
@@ -57,7 +57,7 @@
 					to_chat(M, "You notice [pick(seen)]'s bulge [pick("OwO!", "uwu!")]")
 		if(16)
 			T = M.getorganslot(ORGAN_SLOT_TONGUE)
-			var/obj/item/organ/tongue/nT = new /obj/item/organ/tongue/fluffy
+			var/obj/item/organ/internal/tongue/nT = new /obj/item/organ/internal/tongue/fluffy
 			T.Remove()
 			nT.Insert(M)
 			T.moveToNullspace()//To valhalla

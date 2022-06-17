@@ -1,4 +1,4 @@
-/obj/item/organ/tongue/fluffy
+/obj/item/organ/internal/tongue/fluffy
 	name = "fluffy tongue"
 	desc = "OwO what's this?"
 	icon = 'modular_tannhauser/modules/CitOwOChems/art/tonguefluffy.dmi'
@@ -6,7 +6,7 @@
 	taste_sensitivity = 10 // extra sensitive and inquisitive uwu
 	modifies_speech = TRUE
 
-/obj/item/organ/tongue/fluffy/modify_speech(datum/source, list/speech_args)
+/obj/item/organ/internal/tongue/fluffy/modify_speech(datum/source, list/speech_args)
 	var/message = speech_args[SPEECH_MESSAGE]
 	if(message[1] != "*")
 		message = replacetext(message, "ne", "nye")
