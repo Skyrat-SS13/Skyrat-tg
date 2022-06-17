@@ -643,6 +643,7 @@
 		cortical_owner.human_host.log_message(logging_text, LOG_GAME)
 		if(borer_organ)
 			borer_organ.Remove(cortical_owner.human_host)
+		cortical_owner.forceMove(human_turfone)
 		cortical_owner.human_host = null
 		StartCooldown()
 		return
