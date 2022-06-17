@@ -104,10 +104,6 @@
 		CtrlClickOn(A)
 		return
 
-	//SKYRAT EDIT ADDITION BEGIN - TYPING_INDICATOR
-	if(typing_indicator)
-		set_typing_indicator(FALSE)
-	//SKYRAT EDIT ADDITION END
 	if(incapacitated(IGNORE_RESTRAINTS|IGNORE_STASIS))
 		return
 
