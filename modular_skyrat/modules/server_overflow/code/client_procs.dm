@@ -21,7 +21,8 @@
 		return FALSE
 	return TRUE
 
-/mob/dead/new_player/proc/connect_to_second_server(choice)
+/mob/dead/new_player/proc/connect_to_second_server()
+	var/choice = tgui_alert(src, "The server is currently experiencing high demand, please consider joining our secondary server.", "High Demand", list("Stay here", "Connect me!"))
 	if(!client)
 		return
 	if(choice != "Send me there")
@@ -32,3 +33,4 @@
 		message_admins("WARNING: Overflow server IP not set!")
 		return
 	client << link(overflow_server_ip)
+

@@ -1192,22 +1192,15 @@ GLOBAL_LIST_EMPTY(features_by_species)
 		var/attack_direction = get_dir(user, target)
 		if(atk_effect == ATTACK_EFFECT_KICK)//kicks deal 1.5x raw damage
 			target.apply_damage(damage*1.5, user.dna.species.attack_type, affecting, armor_block, attack_direction = attack_direction)
-<<<<<<< HEAD
 			target.apply_damage(damage*PUNCH_STAMINA_MULTIPLIER, STAMINA, affecting, armor_block) //SKYRAT EDIT ADDITION
-			log_combat(user, target, "kicked")
-		else//other attacks deal full raw damage + 1.5x in stamina damage
-			target.apply_damage(damage, user.dna.species.attack_type, affecting, armor_block, attack_direction = attack_direction)
-			target.apply_damage(damage*PUNCH_STAMINA_MULTIPLIER, STAMINA, affecting, armor_block) //SKYRAT EDIT CHANGE: target.apply_damage(damage*1.5, STAMINA, affecting, armor_block)
-=======
 			if((damage * 1.5) >= 9)
 				target.force_say()
 			log_combat(user, target, "kicked")
 		else//other attacks deal full raw damage + 1.5x in stamina damage
 			target.apply_damage(damage, user.dna.species.attack_type, affecting, armor_block, attack_direction = attack_direction)
-			target.apply_damage(damage*1.5, STAMINA, affecting, armor_block)
+			target.apply_damage(damage*PUNCH_STAMINA_MULTIPLIER, STAMINA, affecting, armor_block) //SKYRAT EDIT CHANGE: target.apply_damage(damage*1.5, STAMINA, affecting, armor_block)
 			if(damage >= 9)
 				target.force_say()
->>>>>>> acfa5e4fdd0 (TGUI Say: Upgrades chat input with modern features (#67116))
 			log_combat(user, target, "punched")
 
 		if((target.stat != DEAD) && damage >= user.dna.species.punchstunthreshold)
@@ -1259,7 +1252,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 		to_chat(owner, span_warning("You attempt to touch [target]!"))
 		return
 	//Check if we can do a grab maneuver, if so, attempt it - SKYRAT EDIT ADDITION
-	if(H.pulledby && H.pulledby == M && M.grab_state && try_grab_maneuver(M, H, modifiers))
+	if(owner.pulledby && owner.pulledby == target && target.grab_state && try_grab_maneuver(target, owner, modifiers))
 		return //SKYRAT EDIT END
 
 	SEND_SIGNAL(owner, COMSIG_MOB_ATTACK_HAND, owner, target, attacker_style)
@@ -1323,12 +1316,6 @@ GLOBAL_LIST_EMPTY(features_by_species)
 			if(get_dist(user, human) <= 1) //people with TK won't get smeared with blood
 				user.add_mob_blood(human)
 
-<<<<<<< HEAD
-					if(H.mind && H.stat == CONSCIOUS && H != user && prob(I.force + ((MAX_HUMAN_LIFE  - H.health) * 0.5))) // rev deconversion through blunt trauma. SKYRAT EDIT: if(H.mind && H.stat == CONSCIOUS && H != user && prob(I.force + ((100  - H.health) * 0.5)))
-						var/datum/antagonist/rev/rev = H.mind.has_antag_datum(/datum/antagonist/rev)
-						if(rev)
-							rev.remove_revolutionary(FALSE, user)
-=======
 	switch(hit_area)
 		if(BODY_ZONE_HEAD)
 			if(!weapon.get_sharpness() && armor_block < 50)
@@ -1343,21 +1330,12 @@ GLOBAL_LIST_EMPTY(features_by_species)
 						human.gain_trauma(/datum/brain_trauma/mild/concussion)
 				else
 					human.adjustOrganLoss(ORGAN_SLOT_BRAIN, weapon.force * 0.2)
->>>>>>> acfa5e4fdd0 (TGUI Say: Upgrades chat input with modern features (#67116))
 
-				if(human.mind && human.stat == CONSCIOUS && human != user && prob(weapon.force + ((100 - human.health) * 0.5))) // rev deconversion through blunt trauma.
+				if(human.mind && human.stat == CONSCIOUS && human != user && prob(weapon.force + ((MAX_HUMAN_LIFE - human.health) * 0.5))) // rev deconversion through blunt trauma. // SKYRAT EDIT CHANGE
 					var/datum/antagonist/rev/rev = human.mind.has_antag_datum(/datum/antagonist/rev)
 					if(rev)
 						rev.remove_revolutionary(FALSE, user)
 
-<<<<<<< HEAD
-			if(BODY_ZONE_CHEST)
-				if(H.stat == CONSCIOUS && !I.get_sharpness() && armor_block < 50)
-					if(prob((I.force)))
-						H.visible_message("<span class='danger'>[H] is knocked down!</span>", \
-									"<span class='userdanger'>You're knocked down!</span>")
-						H.apply_effect(60, EFFECT_KNOCKDOWN, armor_block)
-=======
 			if(bloody) //Apply blood
 				if(human.wear_mask)
 					human.wear_mask.add_mob_blood(human)
@@ -1368,7 +1346,6 @@ GLOBAL_LIST_EMPTY(features_by_species)
 				if(human.glasses && prob(33))
 					human.glasses.add_mob_blood(human)
 					human.update_inv_glasses()
->>>>>>> acfa5e4fdd0 (TGUI Say: Upgrades chat input with modern features (#67116))
 
 		if(BODY_ZONE_CHEST)
 			if(human.stat == CONSCIOUS && !weapon.get_sharpness() && armor_block < 50)
