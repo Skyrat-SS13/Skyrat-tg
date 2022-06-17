@@ -40,12 +40,6 @@
 	veteran_only = TRUE
 	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_BOLD_SELECT_TEXT | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS
 
-/datum/job/nanotrasen_consultant/after_spawn(mob/living/H, mob/M, latejoin)
-	. = ..()
-	to_chat(H, span_boldannounce("As the Nanotrasen Consultant, you are required to follow the following placeholder policy and SOP: https://paradisestation.org/wiki/index.php/Nanotrasen_Representative"))
-	//REMOVE THIS AFTER FAX MACHINES ARE ADDED!!!!
-	to_chat(H, span_boldannounce("If you require IC admin intervention, send an admin help until the fax machine is added."))
-
 /datum/outfit/job/nanotrasen_consultant
 	name = "Nanotrasen Consultant"
 	jobtype = /datum/job/nanotrasen_consultant

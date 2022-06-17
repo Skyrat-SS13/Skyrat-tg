@@ -38,15 +38,6 @@
 
 	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS | JOB_CAN_BE_INTERN
 
-/datum/job/brigoff/after_spawn(mob/living/carbon/human/H, mob/M)
-	. = ..()
-	to_chat(M, span_userdanger("You are a <b><u>GUARD</b></u> not a Security Officer, do <b><u>NOT</b></u> run off and be Security unless it's red alert!."))
-	to_chat(M, span_warning("You shouldn't leave the brig for long peroids of time. <b>Remember: You aren't a Security Officer.</b>"))
-	to_chat(M, "<b>You are a Brig Officer of the Frontier Space Station 13, your duties include Prisoner escort and ensuring the Prisoners stay in line.</b>")
-
-
-
-
 /datum/outfit/job/brigoff
 	name = "Corrections Officer"
 	jobtype = /datum/job/brigoff

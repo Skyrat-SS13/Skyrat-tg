@@ -237,7 +237,8 @@
 			if(current_mob.dna.species.type in allowed_species_synth)
 				available_emotes += synth_emotes
 			// Checking if can wag tail
-			if(!current_mob.dna.species.can_wag_tail(current_mob))
+			var/obj/item/organ/external/tail/tail = current_mob.getorganslot(ORGAN_SLOT_EXTERNAL_TAIL)
+			if(!(tail?.wag_flags & WAG_ABLE))
 				available_emotes -= /mob/living/carbon/human/proc/emote_wag
 			// Checking if has wings
 			if(!current_mob.getorganslot(ORGAN_SLOT_EXTERNAL_WINGS))

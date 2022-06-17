@@ -8,6 +8,7 @@
 	uplink.computer = src
 
 	hard_drive.store_file(uplink)
+	hard_drive.store_file(new /datum/computer_file/program/crew_manifest)
 
 	install_component(new /obj/item/computer_hardware/battery(src, /obj/item/stock_parts/cell/computer))
 	install_component(hard_drive)

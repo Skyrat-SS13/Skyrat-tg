@@ -9,14 +9,14 @@
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_CAN_STRIP,
+		TRAIT_LITERATE,
+		TRAIT_NOBREATH,
 		TRAIT_RADIMMUNE,
 		TRAIT_VIRUSIMMUNE,
-		TRAIT_NOBREATH,
-		TRAIT_LITERATE,
 	)
 	inherent_factions = list("faithless")
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | MIRROR_MAGIC
-	mutanteyes = /obj/item/organ/eyes/night_vision
+	mutanteyes = /obj/item/organ/internal/eyes/night_vision
 	species_language_holder = /datum/language_holder/shadowpeople
 	examine_limb_id = SPECIES_SHADOW // SKYRAT EDIT: Fixing Shadowpeople
 	bodypart_overrides = list(

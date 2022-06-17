@@ -31,8 +31,7 @@
 	//SKYRAT EDIT ADDITION
 	var/soft_player_cap = CONFIG_GET(number/player_soft_cap)
 	if(soft_player_cap >= TGS_CLIENT_COUNT)
-		var/datum/callback/connect_callback = CALLBACK(src, .proc/connect_to_second_server)
-		tgui_alert_async(src, "The server is currently experiencing high demand, please consider joining our secondary server.", "High Demand", list("Stay here", "Connect me!"), connect_callback)
+		INVOKE_ASYNC(src, .proc/connect_to_second_server)
 	//SKYRAT EDIT END
 
 	var/spc = CONFIG_GET(number/soft_popcap)

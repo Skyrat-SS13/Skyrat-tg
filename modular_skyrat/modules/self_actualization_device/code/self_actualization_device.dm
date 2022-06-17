@@ -141,13 +141,13 @@
 	var/original_name = patient.dna.real_name
 
 	//Organ damage saving code.
-	var/heart_damage = check_organ(patient, /obj/item/organ/heart)
-	var/liver_damage = check_organ(patient, /obj/item/organ/liver)
-	var/lung_damage = check_organ(patient, /obj/item/organ/lungs)
-	var/stomach_damage = check_organ(patient, /obj/item/organ/stomach)
-	var/brain_damage = check_organ(patient, /obj/item/organ/brain)
-	var/eye_damage = check_organ(patient, /obj/item/organ/eyes)
-	var/ear_damage = check_organ(patient, /obj/item/organ/ears)
+	var/heart_damage = check_organ(patient, /obj/item/organ/internal/heart)
+	var/liver_damage = check_organ(patient, /obj/item/organ/internal/liver)
+	var/lung_damage = check_organ(patient, /obj/item/organ/internal/lungs)
+	var/stomach_damage = check_organ(patient, /obj/item/organ/internal/stomach)
+	var/brain_damage = check_organ(patient, /obj/item/organ/internal/brain)
+	var/eye_damage = check_organ(patient, /obj/item/organ/internal/eyes)
+	var/ear_damage = check_organ(patient, /obj/item/organ/internal/ears)
 
 	var/list/trauma_list = list()
 	if(patient.get_traumas())
@@ -181,7 +181,7 @@
 	patient.adjustOrganLoss(ORGAN_SLOT_BRAIN, brain_damage)
 
 	//Re-Applies Trauma
-	var/obj/item/organ/brain/patient_brain = patient.getorgan(/obj/item/organ/brain)
+	var/obj/item/organ/internal/brain/patient_brain = patient.getorgan(/obj/item/organ/internal/brain)
 
 	if(length(trauma_list))
 		patient_brain.traumas = trauma_list
