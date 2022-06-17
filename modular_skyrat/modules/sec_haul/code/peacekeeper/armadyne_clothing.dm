@@ -41,7 +41,7 @@
 
 /obj/item/clothing/suit/armor/vest/peacekeeper/armadyne/armor
 	name = "armadyne armor vest"
-	desc = "An nanocarbon and high-grade polymer vest, with the worn-red Armadyne logo printed on the back. Used by Armadyne corporate when they need emergency armor."
+	desc = "A nanocarbon and high-grade polymer vest, with the worn-red Armadyne logo printed on the back. Used by Armadyne corporate when they need emergency armor."
 	icon_state = "armadyne_armor"
 	worn_icon_state = "armadyne_armor"
 
