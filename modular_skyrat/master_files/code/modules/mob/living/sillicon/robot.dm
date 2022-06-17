@@ -1,3 +1,23 @@
+// 	Typing indicator icon change
+/mob/living/silicon/robot/set_typing_indicator(state, emote)
+	var/static/mutable_appearance/type_indicator = mutable_appearance('modular_skyrat/modules/indicators/icons/typing_indicator.dmi', "borg0", CHAT_INDICATOR_LAYER)
+	var/static/mutable_appearance/emote_indicator = mutable_appearance('modular_skyrat/modules/indicators/icons/emote_indicator.dmi', "borg0", CHAT_INDICATOR_LAYER)
+	typing_indicator = state
+
+	if(typing_indicator)
+
+		// Tallborg stuff
+		if((!robot_resting) && model && model.model_features && (R_TRAIT_TALL in model.model_features))
+			type_indicator.pixel_y = 16
+			emote_indicator.pixel_y = 16
+		else
+			type_indicator.pixel_y = 0
+			emote_indicator.pixel_y = 0
+		add_overlay((emote ? emote_indicator : type_indicator))
+
+	else
+		regenerate_icons()
+
 // 	Smoke particle effect for heavy-duty cyborgs
 /datum/component/robot_smoke
 

@@ -23,7 +23,7 @@
 	icon_state = "down"
 
 //TAILS
-/datum/sprite_accessory/tails/mammal/wagging/xeno_tail
+/datum/sprite_accessory/tails/xeno_tail
 	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/xeno_parts.dmi'
 	name = "Xenomorph Tail"
 	icon_state = "xeno"

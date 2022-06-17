@@ -182,8 +182,6 @@
 	var/static/list/projectile_connections = list(
 		COMSIG_ATOM_ENTERED = .proc/on_entered,
 	)
-	/// If true directly targeted turfs can be hit
-	var/can_hit_turfs = FALSE
 
 /obj/projectile/Initialize(mapload)
 	. = ..()
@@ -496,7 +494,7 @@
 /obj/projectile/proc/can_hit_target(atom/target, direct_target = FALSE, ignore_loc = FALSE, cross_failed = FALSE)
 	if(QDELETED(target) || impacted[target])
 		return FALSE
-	if(!ignore_loc && (loc != target.loc) && !(can_hit_turfs && direct_target && loc == target))
+	if(!ignore_loc && (loc != target.loc))
 		return FALSE
 	// if pass_flags match, pass through entirely - unless direct target is set.
 	if((target.pass_flags_self & pass_flags) && !direct_target)
@@ -513,7 +511,7 @@
 		return TRUE
 	if(!isliving(target))
 		if(isturf(target)) // non dense turfs
-			return can_hit_turfs && direct_target
+			return FALSE
 		if(target.layer < hit_threshhold)
 			return FALSE
 		else if(!direct_target) // non dense objects do not get hit unless specifically clicked

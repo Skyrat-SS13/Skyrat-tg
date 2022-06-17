@@ -216,7 +216,7 @@
 
 /obj/item/circular_saw/attack(mob/living/carbon/target, mob/living/user, params)
 	if(!istype(target))
-		return ..()
+		return
 	if(!istype(target.wear_neck, /obj/item/clothing/neck/kink_collar/locked))
 		return ..()
 	var/obj/item/clothing/neck/kink_collar/locked/collar = target.wear_neck

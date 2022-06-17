@@ -31,7 +31,7 @@
 	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_items.dmi'
 	icon_state = "m16"
 	ammo_type = /obj/item/ammo_casing/oldarms/a223
-	caliber = CALIBER_223
+	caliber = "223"
 	max_ammo = 20
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
   

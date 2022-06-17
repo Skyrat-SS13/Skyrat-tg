@@ -1,11 +1,9 @@
-/datum/outfit/centcom
-	name = "CentCom Base"
-
-/datum/outfit/centcom/post_equip(mob/living/carbon/human/centcom_member, visualsOnly = FALSE)
+/datum/outfit/centcom/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	if(visualsOnly)
 		return
-	var/obj/item/implant/mindshield/mindshield = new /obj/item/implant/mindshield(centcom_member)//hmm lets have centcom officials become revs
-	mindshield.implant(centcom_member, null, silent = TRUE)
+
+	var/obj/item/implant/mindshield/L = new/obj/item/implant/mindshield(H)//hmm lets have centcom officials become revs
+	L.implant(H, null, 1)
 
 /datum/outfit/centcom/ert
 	name = "ERT Common"
