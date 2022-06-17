@@ -17,9 +17,9 @@
 		contraband += skyrat_contraband
 	if(skyrat_amount_override)
 		for (var/item in products)
-			products[item] = 5
+			products[item] = skyrat_amount_override
 		for (var/item in premium)
-			premium[item] = 5
+			premium[item] = skyrat_amount_override
 			
 	QDEL_NULL(skyrat_products)
 	QDEL_NULL(skyrat_premium)
