@@ -126,7 +126,7 @@
 /datum/loadout_item/suit/jacket/cherno
 	name = "Blue-Silvered Coat"
 	item_path = /obj/item/clothing/suit/jacket/cherno
-	ckeywhitelist = list("candlejax")
+	ckeywhitelist = list("Cherno_00")
 
 /datum/loadout_item/head/avipilot
 	name = "Smuggler's Flying Cap"
