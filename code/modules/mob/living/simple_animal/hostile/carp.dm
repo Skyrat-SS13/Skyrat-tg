@@ -103,6 +103,7 @@
 
 /mob/living/simple_animal/hostile/carp/proc/tamed(mob/living/tamer)
 	tamed = TRUE
+	can_buckle = TRUE
 	buckle_lying = 0
 	AddElement(/datum/element/ridable, /datum/component/riding/creature/carp)
 	if(ai_controller)

@@ -72,20 +72,18 @@
 	doorobjective.doors_required = rand(15,40)
 	doorobjective.explanation_text = "Use your gloves to doorjack [doorobjective.doors_required] airlocks on the station."
 	objectives += doorobjective
-	//SKYRAT EDIT START
-	if(length(get_crewmember_minds()) >= BOMB_POP_REQUIREMENT)
-		//Explosive plant, the bomb will register its completion on priming
-		var/datum/objective/plant_explosive/bombobjective = new /datum/objective/plant_explosive()
-		for(var/sanity in 1 to 100) // 100 checks at most.
-			var/area/selected_area = pick(GLOB.sortedAreas)
-			if(!is_station_level(selected_area.z) || !(selected_area.area_flags & VALID_TERRITORY))
-				continue
-			bombobjective.detonation_location = selected_area
-			break
-		if(bombobjective.detonation_location)
-			bombobjective.explanation_text = "Detonate your starter bomb in [bombobjective.detonation_location].  Note that the bomb will not work anywhere else!"
-			objectives += bombobjective
-	//SKYRAT EDIT END
+
+	//Explosive plant, the bomb will register its completion on priming
+	var/datum/objective/plant_explosive/bombobjective = new /datum/objective/plant_explosive()
+	for(var/sanity in 1 to 100) // 100 checks at most.
+		var/area/selected_area = pick(GLOB.sortedAreas)
+		if(!is_station_level(selected_area.z) || !(selected_area.area_flags & VALID_TERRITORY))
+			continue
+		bombobjective.detonation_location = selected_area
+		break
+	if(bombobjective.detonation_location)
+		bombobjective.explanation_text = "Detonate your starter bomb in [bombobjective.detonation_location].  Note that the bomb will not work anywhere else!"
+		objectives += bombobjective
 
 	//Security Scramble, set to complete upon using your gloves on a security console
 	var/datum/objective/securityobjective = new /datum/objective/security_scramble()

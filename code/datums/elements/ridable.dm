@@ -7,7 +7,7 @@
  * just having the variables, behavior, and procs be standardized is still a big improvement.
  */
 /datum/element/ridable
-	element_flags = ELEMENT_BESPOKE|ELEMENT_DETACH
+	element_flags = ELEMENT_BESPOKE
 	id_arg_index = 2
 
 	/// The specific riding component subtype we're loading our instructions from, don't leave this as default please!
@@ -24,7 +24,6 @@
 		stack_trace("Tried attaching a ridable element to [target] with basic/abstract /datum/component/riding component type. Please designate a specific riding component subtype when adding the ridable element.")
 		return COMPONENT_INCOMPATIBLE
 
-	target.can_buckle = TRUE
 	riding_component_type = component_type
 	potion_boosted = potion_boost
 
@@ -32,11 +31,10 @@
 	if(isvehicle(target))
 		RegisterSignal(target, COMSIG_SPEED_POTION_APPLIED, .proc/check_potion)
 	if(ismob(target))
-		RegisterSignal(target, COMSIG_MOB_STATCHANGE, .proc/on_stat_change)
+		RegisterSignal(target, COMSIG_LIVING_DEATH, .proc/handle_removal)
 
-/datum/element/ridable/Detach(atom/movable/target)
-	target.can_buckle = initial(target.can_buckle)
-	UnregisterSignal(target, list(COMSIG_MOVABLE_PREBUCKLE, COMSIG_SPEED_POTION_APPLIED, COMSIG_MOB_STATCHANGE))
+/datum/element/ridable/Detach(datum/target)
+	UnregisterSignal(target, list(COMSIG_MOVABLE_PREBUCKLE, COMSIG_SPEED_POTION_APPLIED, COMSIG_LIVING_DEATH))
 	return ..()
 
 /// Someone is buckling to this movable, which is literally the only thing we care about (other than speed potions)
@@ -149,17 +147,13 @@
 			qdel(O)
 	return TRUE
 
-/datum/element/ridable/proc/on_stat_change(mob/source)
+/datum/element/ridable/proc/handle_removal(datum/source)
 	SIGNAL_HANDLER
 
-	// If we're dead, don't let anyone buckle onto us
-	if(source.stat == DEAD)
-		source.can_buckle = FALSE
-		source.unbuckle_all_mobs()
+	var/atom/movable/ridden = source
+	ridden.unbuckle_all_mobs()
 
-	// If we're alive, back to being buckle-able
-	else
-		source.can_buckle = TRUE
+	Detach(source)
 
 /obj/item/riding_offhand
 	name = "offhand"

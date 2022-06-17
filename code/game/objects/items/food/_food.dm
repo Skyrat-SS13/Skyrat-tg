@@ -65,7 +65,6 @@
 	MakeGrillable()
 	MakeDecompose(mapload)
 	MakeBakeable()
-	ADD_TRAIT(src, FISHING_BAIT_TRAIT, INNATE_TRAIT)
 
 ///This proc adds the edible component, overwrite this if you for some reason want to change some specific args like callbacks.
 /obj/item/food/proc/MakeEdible()

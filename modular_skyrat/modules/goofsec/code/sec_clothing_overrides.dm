@@ -106,8 +106,6 @@
 	)
 	component_type = /datum/component/storage/concrete/security
 
-/obj/item/storage/belt/security/webbing
-	uses_advanced_reskins = FALSE
 
 ///Enables you to quickdraw weapons from security holsters
 /datum/component/storage/concrete/security/open_storage(mob/user)

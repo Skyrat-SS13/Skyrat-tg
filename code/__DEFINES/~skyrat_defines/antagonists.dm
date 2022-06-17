@@ -15,6 +15,3 @@
 #define ASSAULTOPS_ALL_ALIVE 2
 
 #define GOLDENEYE_REQUIRED_KEYS_MAXIMUM 3
-
-/// Population requirement for bomb objectives (ninja c4, locate weakpoint, etc.) objectives to appear
-#define BOMB_POP_REQUIREMENT 80

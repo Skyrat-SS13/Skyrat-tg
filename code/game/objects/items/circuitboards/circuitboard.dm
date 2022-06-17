@@ -5,8 +5,6 @@
 
 /obj/item/circuitboard
 	name = "circuit board"
-	/// extension that is applied after the initial name AKA (Computer/Machine Board)
-	var/name_extension = null
 	icon = 'icons/obj/module.dmi'
 	icon_state = "circuit_map"
 	inhand_icon_state = "electronic"
@@ -21,8 +19,6 @@
 	var/onstation = TRUE
 
 /obj/item/circuitboard/Initialize(mapload)
-	if(name_extension)
-		name = "[initial(name)] [name_extension]"
 	set_greyscale(new_config = /datum/greyscale_config/circuit)
 	return ..()
 
@@ -66,7 +62,6 @@ micro-manipulator, console screen, beaker, Microlaser, matter bin, power cells.
 */
 
 /obj/item/circuitboard/machine
-	name_extension = "(Machine Board)"
 	var/needs_anchored = TRUE // Whether this machine must be anchored to be constructed.
 	var/list/req_components // Components required by the machine.
 							// Example: list(/obj/item/stock_parts/matter_bin = 5)
