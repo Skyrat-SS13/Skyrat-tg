@@ -523,30 +523,39 @@
 	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/merp.ogg' = 1)
 	young = FALSE
 
-/obj/item/toy/plush/bonnie
+/obj/item/toy/plush/punko
+	name = "punko fop"
+	desc = "A soulless creature that haunts your dreams."
+	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
+	icon_state = "plushie_pfbonnie"
+	var/list/responses = list("Do you fear death? Do you fear the world you live in? What 'God's so called infinite mercy is? A neverending life of constant and unending misery. Being forced to work and go on as millions, trillions suffer around you as you are either too powerless or too lazy to do anything? Is this worth living?", "Hi!!", )
+
+/obj/item/plush/punko/attackby()
+	. = ..()
+	say(pick(responses))
+
+
+/obj/item/plush/punko/attack()
+	. = ..()
+	say(pick(responses))
+
+
+/obj/item/toy/plush/punko/bonnie
 	name = "punko fop blue bunny"
-	desc = "An 'adorable', if big eyed rabbit girl. This one is blue. Produced by the Punko Fop Company<i><b>TM</b></i>. Spits out various Rabbit facts of dubious validity."
+	desc = "An 'adorable', if big eyed rabbit girl. This one is blue. Produced by the Punko Fop Company|+TM+|. Spits out various Rabbit facts of dubious validity."
 	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
 	icon_state = "plushie_pfbonnie"
 	gender = FEMALE
 	attack_verb_continuous = list("pats", "hugs", "scolds", "pets")
 	attack_verb_simple = list("pat", "hug", "scold", "pet")
 	squeak_override = list('sound/effects/mousesqueek.ogg' = 1)
+	responses = list("Rabbits are prey animals and are therefore constantly aware of their surroundings.", "Things to jump up on (they like to be in high places)", "become a rabbit today!", "Be cunning and full of tricks...", "Subscription confirmed! Thank you for choosing RABBITFACTS |+TM+|!",)
+
  //All lowercase messages are intentional
-	var/static/list/bonhit_response = list("Rabbits are prey animals and are therefore constantly aware of their surroundings.", "Things to jump up on (they like to be in high places)", "become a rabbit today!", "Be cunning and full of tricks...", "Subscription confirmed! Thank you for choosing RABBITFACTS <i><b>TM</b></i>!",)
 
-/obj/item/toy/plush/bonnie/attackby(obj/item/attacking_item, mob/living/user, params)
-	. = ..()
-	say(pick(bonhit_response))
-
-/obj/item/toy/plush/bonnie/attack(mob/living/target, mob/living/user, params)
-	. = ..()
-	say(pick(bonhit_response))
-
-
-/obj/item/toy/plush/andrew
+/obj/item/toy/plush/punko/andrew
 	name = "punko fop green and orange bunny"
-	desc = "An 'adorable', if big eyed rabbit girl(?). This one is green and orange. Produced by the Punko Fop Company<i><b>TM</b></i>. Spits out various Bunnies of dubious existance."
+	desc = "An 'adorable', if big eyed rabbit girl(?). This one is green and orange. Produced by the Punko Fop Company|+TM+|. Spits out various Bunnies of dubious existance."
 	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
 	icon_state = "plushie_pfandrew"
 	gender = MALE
@@ -554,32 +563,15 @@
 	attack_verb_simple = list("pat", "hug", "scold", "pet")
 	squeak_override = list('sound/effects/mousesqueek.ogg' = 1)
 	//All lowercase messages are intentional
-	var/static/list/andyhit_response = list("bunny who you best pray you never encounter, lest you suffer a fate worse than death.", "this is a bunny!", "I wonder what would happen if you took bunnies, and combined them with rabbits, and merged their properties and characteristics. It's something to think about.", "If you're cold, they're cold. Give them the deed to your house.", "bunny that goes yeah! woo! yeah! woo! yeah! woo! yeah! woo! yeah! woo! yeah!", "the bunnies are beyond my comprehension",)
+	responses = list("bunny who you best pray you never encounter, lest you suffer a fate worse than death.", "this is a bunny!", "I wonder what would happen if you took bunnies, and combined them with rabbits, and merged their properties and characteristics. It's something to think about.", "If you're cold, they're cold. Give them the deed to your house.", "bunny that goes yeah! woo! yeah! woo! yeah! woo! yeah! woo! yeah! woo! yeah!", "the bunnies are beyond my comprehension",)
 
-/obj/item/toy/plush/andrew/attackby(obj/item/attacking_item, mob/living/user, params)
-	. = ..()
-	say(pick(andyhit_response))
-
-/obj/item/toy/plush/andrew/attack(mob/living/target, mob/living/user, params)
-	. = ..()
-	say(pick(andyhit_response))
-
-
-/obj/item/toy/plush/inessa
+/obj/item/toy/plush/punko/inessa
 	name = "punko fop medical bear"
-	desc = "An 'adorable', tired looking bear woman. This one produces fake smoke! Produced by the Punko Fop Company<i><b>TM</b></i>. Spits out various Medical facts with a broken voicebox."
+	desc = "An 'adorable', tired looking bear woman. This one produces fake smoke! Produced by the Punko Fop Company|+TM+|. Spits out various Medical facts with a broken voicebox."
 	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
 	icon_state = "plushie_pfinessa"
 	gender = FEMALE
 	attack_verb_continuous = list("slashes", "dissects", "yawns", "smokes")
 	attack_verb_simple = list("slash", "dissect", "yawn", "smoke")
 	squeak_override = list('modular_skyrat/modules/emotes/sound/emotes/female/female_cough_3.ogg' = 1, 'modular_skyrat/modules/emotes/sound/emotes/female/female_cough_2.ogg' = 1, 'modular_skyrat/modules/emotes/sound/emotes/female/female_cough_1.ogg' = 1)
-	var/static/list/inessahit_response = list("The huuuuuman body can surviiiive three weeks withooooout skin.", "The thigh bone is connected to the hiiiiip bone.",)
-
-/obj/item/toy/plush/inessa/attackby(obj/item/attacking_item, mob/living/user, params)
-	. = ..()
-	say(pick(inessahit_response))
-
-/obj/item/toy/plush/inessa/attack(mob/living/target, mob/living/user, params)
-	. = ..()
-	say(pick(inessahit_response))
+	responses = list("The huuuuuman body can surviiiive three weeks withooooout skin.", "The thigh bone is connected to the hiiiiip bone.",)

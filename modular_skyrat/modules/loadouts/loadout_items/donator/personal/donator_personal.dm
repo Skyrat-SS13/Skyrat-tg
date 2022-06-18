@@ -442,13 +442,13 @@
 
 /datum/loadout_item/toys/PFBonnie
 	name = "Punko Fop: Blue Bunny Plushie"
-	item_path = /obj/item/toy/plush/bonnie
+	item_path = /obj/item/toy/plush/punko/bonnie
 	donator_only = TRUE
 /datum/loadout_item/toys/PFAndrew
 	name = "Punko Fop: Green Bunny Plushie"
-	item_path = /obj/item/toy/plush/andrew
+	item_path = /obj/item/toy/plush/punko/andrew
 	donator_only = TRUE
 /datum/loadout_item/toys/PFInessa
 	name = "Punko Fop: Medical Bear Plushie"
-	item_path = /obj/item/toy/plush/inessa
+	item_path = /obj/item/toy/plush/punko/inessa
 	donator_only = TRUE
