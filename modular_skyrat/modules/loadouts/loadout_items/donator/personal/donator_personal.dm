@@ -440,15 +440,15 @@
     name = "Dark and brooding lizard plushie"
     item_path = /obj/item/toy/plush/donator/plushie_winrow
 
-/datum/loadout_item/toys/PFBonnie
-	name = "Punko Fop: Blue Bunny Plushie"
-	item_path = /obj/item/toy/plush/punko/bonnie
+/datum/loadout_item/toys/CFBonnie
+	name = "Chunko Fop: Blue Bunny Plushie"
+	item_path = /obj/item/toy/plush/chunko/bonnie
 	donator_only = TRUE
-/datum/loadout_item/toys/PFAndrew
-	name = "Punko Fop: Green Bunny Plushie"
-	item_path = /obj/item/toy/plush/punko/andrew
+/datum/loadout_item/toys/CFAndrew
+	name = "Chunko Fop: Green Bunny Plushie"
+	item_path = /obj/item/toy/plush/chunko/andrew
 	donator_only = TRUE
-/datum/loadout_item/toys/PFInessa
-	name = "Punko Fop: Medical Bear Plushie"
-	item_path = /obj/item/toy/plush/punko/inessa
+/datum/loadout_item/toys/CFInessa
+	name = "Chunko Fop: Medical Bear Plushie"
+	item_path = /obj/item/toy/plush/chunko/inessa
 	donator_only = TRUE
