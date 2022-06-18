@@ -31,7 +31,6 @@
 
 	var/icon_to_use = 'icons/mob/clothing/modsuit/mod_modules.dmi'
 	var/icon_state_to_use = module_icon_state
-	var/add_overlay = TRUE
 	if(is_new_vox || is_old_vox)
 		if(is_new_vox)
 			icon_to_use = worn_icon_better_vox
@@ -42,8 +41,9 @@
 		icon_to_use = 'modular_skyrat/master_files/icons/mob/mod.dmi'
 		icon_state_to_use = "[module_icon_state]_digi"
 
-		if((active && head_only_when_active) | (!active && head_only_when_inactive))
-			add_overlay = FALSE
+	var/add_overlay = TRUE
+	if(has_head_sprite && ((active && head_only_when_active) || (!active && head_only_when_inactive)))
+		add_overlay = FALSE
 
 	if(add_overlay)
 		var/mutable_appearance/module_icon = mutable_appearance(icon_to_use, icon_state_to_use, layer = standing.layer + 0.1) // Just changed the raw icon path to icon_to_use and the used_overlay to icon_state_to_use
@@ -56,6 +56,10 @@
 
 		if(suit_supports_variations_flags && (supports_variations_flags & CLOTHING_SNOUTED_VARIATION))
 			icon_state_to_use = "[icon_state_to_use]_muzzled"
+
+		if(is_new_vox)
+			icon_to_use = 'modular_skyrat/modules/better_vox/icons/clothing/mod_modules.dmi'
+			icon_state_to_use = module_icon_state
 
 		var/mutable_appearance/additional_module_icon = mutable_appearance(icon_to_use, icon_state_to_use, layer = standing.layer + 0.1)
 		additional_module_icon.appearance_flags |= RESET_COLOR
