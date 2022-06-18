@@ -75,5 +75,3 @@
 		/obj/item/clothing/under/imperial/grey = 5,
 		/obj/item/clothing/under/imperial = 5,
 	)
-
-	skyrat_amount_override = 5
