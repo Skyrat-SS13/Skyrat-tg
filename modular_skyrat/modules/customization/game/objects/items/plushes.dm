@@ -529,15 +529,24 @@
 	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
 	icon_state = "plushie_pfbonnie"
 	var/responses = list("Do you fear death? Do you fear the world you live in? What 'God's so called infinite mercy is? A neverending life of constant and unending misery. Being forced to work and go on as millions, trillions suffer around you as you are either too powerless or too lazy to do anything? Is this worth living? Capitalism in overdrive, life in hell. Why?", "Hi!!", )
+	COOLDOWN_DECLARE(punko_cooldown)
 
 /obj/item/plush/punko/attackby()
 	. = ..()
 	say(pick(responses))
+	if(!COOLDOWN_FINISHED(src, punko_cooldown)
+		return
+	say(pick(responses))
+	COOLDOWN_START(src, punko_cooldown, 2 SECONDS)
 
 
 /obj/item/plush/punko/attack()
 	. = ..()
 	say(pick(responses))
+	if(!COOLDOWN_FINISHED(src, punko_cooldown)
+		return
+	say(pick(responses))
+	COOLDOWN_START(src, punko_cooldown, 2 SECONDS)
 
 
 /obj/item/toy/plush/punko/bonnie
@@ -548,7 +557,7 @@
 	gender = FEMALE
 	attack_verb_continuous = list("pats", "hugs", "scolds", "pets")
 	attack_verb_simple = list("pat", "hug", "scold", "pet")
-	squeak_override = list('sound/effects/mousesqueek.ogg' = 1)
+	squeak_override = list('sound/effects/mousesqueek.ogg' = 1, 'modular_skyrat/modules/emotes/sound/voice/mothsqueak.ogg' = 1,)
 	responses = list("Rabbits are prey animals and are therefore constantly aware of their surroundings.", "Things to jump up on (they like to be in high places)", "become a rabbit today!", "Be cunning and full of tricks...", "Subscription confirmed! Thank you for choosing RABBITFACTS |+TM+|!",)
 
  //All lowercase messages are intentional
@@ -561,7 +570,7 @@
 	gender = MALE
 	attack_verb_continuous = list("pats", "hugs", "scolds", "pets")
 	attack_verb_simple = list("pat", "hug", "scold", "pet")
-	squeak_override = list('sound/effects/mousesqueek.ogg' = 1)
+	squeak_override = list('sound/effects/mousesqueek.ogg' = 1, 'modular_skyrat/modules/emotes/sound/voice/mothsqueak.ogg' = 1,)
 	//All lowercase messages are intentional
 	responses = list("bunny who you best pray you never encounter, lest you suffer a fate worse than death.", "this is a bunny!", "I wonder what would happen if you took bunnies, and combined them with rabbits, and merged their properties and characteristics. It's something to think about.", "If you're cold, they're cold. Give them the deed to your house.", "bunny that goes yeah! woo! yeah! woo! yeah! woo! yeah! woo! yeah! woo! yeah!", "the bunnies are beyond my comprehension",)
 
