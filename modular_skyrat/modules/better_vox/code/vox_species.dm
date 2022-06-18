@@ -85,10 +85,10 @@
 	return randname
 
 /datum/species/vox_primalis/get_custom_worn_icon(item_slot, obj/item/item)
-	return item.worn_icon_vox
+	return item.worn_icon_better_vox
 
 /datum/species/vox_primalis/set_custom_worn_icon(item_slot, obj/item/item, icon/icon)
-	item.worn_icon_vox = icon
+	item.worn_icon_better_vox = icon
 
 /datum/species/vox_primalis/get_species_description()
 	return {"The Vox (voks) seem to be nomadic, bio-engineered alien creatures that operate in and around human space at "the behest of crazed and dreaming gods." In reality, we know them to be originally designed by the Vox Auralis, a wholly-reclusive variety of powerful psychics, and present a cold shoulder to all other known cultures, and generally their only visible role on the galactic stage is to act as auxiliary workforce of which they are functionally suited for. The massive moon-sized arkships that serve as their homes travel meandering and convoluted migratory trails through the Milky Way, and the appearance of their looted and repurposed ships is almost always a cause for alarm.
@@ -100,15 +100,24 @@
 
 Artificially made by the Apex, Vox Primalis are grown for a purpose, their personalities and duties sourced by the cortical stacks installed in their heads. The exact specifications and duties of a Primalis may change throughout their life according to the enigmatic will of the biocomputers fabricating them, and their duties may be oddly specific at times; but seven core 'groups' of jobs are known by humans, signified by a series of neck, throat, facial, and back markings encoded with their role, genetic lineage, notable deeds, and arkship of origin.
 
+
+
 'Drones' are the engineers, technicians, and builders of the Primalis. Their duties revolve around the upkeep of the Arkships themselves, and the operation of technologies new and old.
 'Servitors' are in charge of biological affairs; making sure stocks are full, meals are made, and Vox are healthy. They typically share work with Drones due to Vox technology being both synthetic and organic.
+
+
 
 'Raiders' are those combat-focused Primalis sent on excursion teams from the ships to plunder goods, people, and other wares from aliens.
 'Scavengers' work alongside Raiders, pulling stations and ships apart to find anything even remotely valuable, down to the scrap metal and copper wiring in an outpost.
 
+
 'Reavers' are essentially the white blood cells of an Arkship. Rarely seen but always around, these Vox are dedicated to expunging threats and ensuring that individuals in need of 'pruning' are brought in swiftly to the Armalis and Apex. If ever seen outside an Arkship, it's typically for the purpose of overseeing other Primalis in place of a proper Armalis.
 
+
+
 'Leaders' are those that are in charge of a crew. Acting like a tightly-knit family, these work crews are kept in line not only by the Armalis, but by these typically very old Vox. These magnanimous (for a Primalis) individuals are very, very rarely seen outside of an Arkship due to their assignments requiring 'active duty'. To see a 'Leader,' in a place of aliens is to know that they are almost assuredly an exile, and shunned by all varieties of Vox. The Vox consider 'drains on resources' as inexcusable, and to be one is an act to be shunned upon.
+
+
 
 'Larva' are not Primalis children, as they'd be less than a few months old at youngest, but a denigrating term for Vox that either have not yet been assigned a duty, or those currently inbetween them. While these Vox are often pushed by other Primalis to 'hurry up already,' it is the wide consensus of Vox that 'A lone leader is worse than a larva, for while even a larva has a future, all the leader has is a disgraced past.'"})
 

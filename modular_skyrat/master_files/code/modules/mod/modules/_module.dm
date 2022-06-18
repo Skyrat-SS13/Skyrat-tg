@@ -18,16 +18,26 @@
  */
 /obj/item/mod/module/proc/handle_module_icon(mutable_appearance/standing, module_icon_state)
 	. = list()
+	var/is_new_vox = FALSE
+	var/is_old_vox = FALSE
 	if(mod.wearer)
 		if(mod.chestplate && (mod.chestplate.supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION) && (mod.wearer.dna.species.bodytype & BODYTYPE_DIGITIGRADE))
 			suit_supports_variations_flags |= CLOTHING_DIGITIGRADE_VARIATION
 
 		if(mod.helmet && (mod.helmet.supports_variations_flags & CLOTHING_SNOUTED_VARIATION) && mod.wearer.dna.species.bodytype & BODYTYPE_SNOUTED)
 			suit_supports_variations_flags |= CLOTHING_SNOUTED_VARIATION
+		is_new_vox = isvoxprimalis(mod.wearer)
+		is_old_vox = isvox(mod.wearer)
 
 	var/icon_to_use = 'icons/mob/clothing/modsuit/mod_modules.dmi'
 	var/icon_state_to_use = module_icon_state
 	var/add_overlay = TRUE
+	if(is_new_vox || is_old_vox)
+		if(is_new_vox)
+			icon_to_use = worn_icon_better_vox
+		if(is_old_vox)
+			icon_to_use = worn_icon_vox
+
 	if(suit_supports_variations_flags && (supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION))
 		icon_to_use = 'modular_skyrat/master_files/icons/mob/mod.dmi'
 		icon_state_to_use = "[module_icon_state]_digi"
