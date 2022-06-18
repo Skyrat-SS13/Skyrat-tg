@@ -439,3 +439,16 @@
 /datum/loadout_item/toys/plushe_winrow
     name = "Dark and brooding lizard plushie"
     item_path = /obj/item/toy/plush/donator/plushie_winrow
+
+/datum/loadout_item/toys/PFBonnie
+	name = "Punko Fop: Blue Bunny Plushie"
+	item_path = /obj/item/toy/plush/bonnie
+	donator_only = TRUE
+/datum/loadout_item/toys/PFAndrew
+	name = "Punko Fop: Green Bunny Plushie"
+	item_path = /obj/item/toy/plush/andrew
+	donator_only = TRUE
+/datum/loadout_item/toys/PFInessa
+	name = "Punko Fop: Medical Bear Plushie"
+	item_path = /obj/item/toy/plush/inessa
+	donator_only = TRUE
