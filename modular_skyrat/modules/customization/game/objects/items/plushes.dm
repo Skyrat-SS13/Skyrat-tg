@@ -531,7 +531,7 @@
 	var/responses = list("Do you fear death? Do you fear the world you live in? What 'God's so called infinite mercy is? A neverending life of constant and unending misery. Being forced to work and go on as millions, trillions suffer around you as you are either too powerless or too lazy to do anything? Is this worth living? Capitalism in overdrive, life in hell. Why?", "Hi!!", )
 	COOLDOWN_DECLARE(punko_cooldown)
 
-/obj/item/plush/punko/attackby()
+/obj/item/toy/plush/punko/attackby()
 	. = ..()
 	if(!COOLDOWN_FINISHED(src, punko_cooldown))
 		return
@@ -539,7 +539,7 @@
 	COOLDOWN_START(src, punko_cooldown, 2 SECONDS)
 
 
-/obj/item/plush/punko/attack()
+/obj/item/toy/plush/punko/attack()
 	. = ..()
 	if(!COOLDOWN_FINISHED(src, punko_cooldown))
 		return
