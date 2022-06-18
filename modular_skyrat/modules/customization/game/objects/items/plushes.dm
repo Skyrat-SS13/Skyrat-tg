@@ -533,7 +533,6 @@
 
 /obj/item/plush/punko/attackby()
 	. = ..()
-	say(pick(responses))
 	if(!COOLDOWN_FINISHED(src, punko_cooldown)
 		return
 	say(pick(responses))
@@ -542,7 +541,6 @@
 
 /obj/item/plush/punko/attack()
 	. = ..()
-	say(pick(responses))
 	if(!COOLDOWN_FINISHED(src, punko_cooldown)
 		return
 	say(pick(responses))
