@@ -444,11 +444,15 @@
 	name = "Chunko Fop: Blue Bunny Plushie"
 	item_path = /obj/item/toy/plush/chunko/bonnie
 	donator_only = TRUE
+
 /datum/loadout_item/toys/CFAndrew
 	name = "Chunko Fop: Green Bunny Plushie"
 	item_path = /obj/item/toy/plush/chunko/andrew
 	donator_only = TRUE
+
 /datum/loadout_item/toys/CFInessa
 	name = "Chunko Fop: Medical Bear Plushie"
 	item_path = /obj/item/toy/plush/chunko/inessa
 	donator_only = TRUE
+
+//Chunko Fops were donated by SlippyJoe, who requested they are usable by everyone
