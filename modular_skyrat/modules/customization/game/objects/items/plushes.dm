@@ -549,20 +549,20 @@
 
 /obj/item/toy/plush/punko/bonnie
 	name = "punko fop blue bunny"
-	desc = "An 'adorable', if big eyed rabbit girl. This one is blue. Produced by the Punko Fop Company|+TM+|. Spits out various Rabbit facts of dubious validity."
+	desc = "An 'adorable', if big eyed rabbit girl. This one is blue. Produced by the Punko Fop Company <b><i>TM</i></b>. Spits out various Rabbit facts of dubious validity."
 	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
 	icon_state = "plushie_pfbonnie"
 	gender = FEMALE
 	attack_verb_continuous = list("pats", "hugs", "scolds", "pets")
 	attack_verb_simple = list("pat", "hug", "scold", "pet")
 	squeak_override = list('sound/effects/mousesqueek.ogg' = 1, 'modular_skyrat/modules/emotes/sound/voice/mothsqueak.ogg' = 1,)
-	responses = list("Rabbits are prey animals and are therefore constantly aware of their surroundings.", "Things to jump up on (they like to be in high places)", "become a rabbit today!", "Be cunning and full of tricks...", "Subscription confirmed! Thank you for choosing RABBITFACTS |+TM+|!",)
+	responses = list("Rabbits are prey animals and are therefore constantly aware of their surroundings.", "Things to jump up on (they like to be in high places)", "become a rabbit today!", "Be cunning and full of tricks...", "Subscription confirmed! Thank you for choosing RABBITFACTS +TM+!",)
 
  //All lowercase messages are intentional
 
 /obj/item/toy/plush/punko/andrew
 	name = "punko fop green and orange bunny"
-	desc = "An 'adorable', if big eyed rabbit girl(?). This one is green and orange. Produced by the Punko Fop Company|+TM+|. Spits out various Bunnies of dubious existance."
+	desc = "An 'adorable', if big eyed rabbit girl(?). This one is green and orange. Produced by the Punko Fop Company <b><i>TM</i></b>. Spits out various Bunnies of dubious existance."
 	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
 	icon_state = "plushie_pfandrew"
 	gender = MALE
@@ -574,7 +574,7 @@
 
 /obj/item/toy/plush/punko/inessa
 	name = "punko fop medical bear"
-	desc = "An 'adorable', tired looking bear woman. This one produces fake smoke! Produced by the Punko Fop Company|+TM+|. Spits out various Medical facts with a broken voicebox."
+	desc = "An 'adorable', tired looking bear woman. This one produces fake smoke! Produced by the Punko Fop Company <b><i>TM</i></b>. Spits out various Medical facts with a broken voicebox."
 	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
 	icon_state = "plushie_pfinessa"
 	gender = FEMALE
