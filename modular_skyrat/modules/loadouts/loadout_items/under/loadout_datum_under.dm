@@ -59,7 +59,7 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 
 /datum/loadout_item/under/jumpsuit/impcap
 	name = "Captain's Naval Jumpsuit"
-	item_path = /obj/item/clothing/under/rank/captain/imperial
+	item_path = /obj/item/clothing/under/rank/captain/skyrat/imperial
 	restricted_roles = list(JOB_CAPTAIN, JOB_NT_REP)
 
 /datum/loadout_item/under/jumpsuit/imphop
@@ -69,43 +69,43 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 
 /datum/loadout_item/under/jumpsuit/imphos
 	name = "Head of Security's Naval Uniform"
-	item_path = /obj/item/clothing/under/rank/security/head_of_security/imperial
+	item_path = /obj/item/clothing/under/rank/security/head_of_security/skyrat/imperial
 	restricted_roles = list(JOB_HEAD_OF_SECURITY)
 
 /datum/loadout_item/under/jumpsuit/impcmo
 	name = "Chief Medical Officer's Naval Uniform"
-	item_path = /obj/item/clothing/under/rank/medical/chief_medical_officer/imperial
+	item_path = /obj/item/clothing/under/rank/medical/chief_medical_officer/skyrat/imperial
 	restricted_roles = list(JOB_CHIEF_MEDICAL_OFFICER)
 
 /datum/loadout_item/under/jumpsuit/impce
 	name = "Chief Engineer's Naval Uniform"
-	item_path = /obj/item/clothing/under/rank/engineering/chief_engineer/imperial
+	item_path = /obj/item/clothing/under/rank/engineering/chief_engineer/skyrat/imperial
 	restricted_roles = list(JOB_CHIEF_ENGINEER)
 
 /datum/loadout_item/under/jumpsuit/imprd
 	name = "Research Director's Naval Uniform"
-	item_path = /obj/item/clothing/under/rank/rnd/research_director/imperial
+	item_path = /obj/item/clothing/under/rank/rnd/research_director/skyrat/imperial
 	restricted_roles = list(JOB_RESEARCH_DIRECTOR)
 
 /datum/loadout_item/under/jumpsuit/impcommand
 	name = "Light Grey Officer's Naval Jumpsuit"
-	item_path = /obj/item/clothing/under/imperial
+	item_path = /obj/item/clothing/under/rank/captain/skyrat/imperial/generic
 	restricted_roles = list(JOB_CAPTAIN, JOB_HEAD_OF_PERSONNEL, JOB_BLUESHIELD, JOB_HEAD_OF_SECURITY, JOB_RESEARCH_DIRECTOR, JOB_QUARTERMASTER, JOB_CHIEF_MEDICAL_OFFICER, JOB_CHIEF_ENGINEER, JOB_NT_REP)
 
 /datum/loadout_item/under/jumpsuit/impcom
 	name = "Grey Officer's Naval Jumpsuit"
-	item_path = /obj/item/clothing/under/imperial/grey
+	item_path = /obj/item/clothing/under/rank/captain/skyrat/imperial/generic/grey
 	restricted_roles = list(JOB_CAPTAIN, JOB_HEAD_OF_PERSONNEL, JOB_BLUESHIELD, JOB_HEAD_OF_SECURITY, JOB_RESEARCH_DIRECTOR, JOB_QUARTERMASTER, JOB_CHIEF_MEDICAL_OFFICER, JOB_CHIEF_ENGINEER, JOB_NT_REP)
 
 /datum/loadout_item/under/jumpsuit/impred
 	name = "Red Officer's Naval Jumpsuit"
-	item_path = /obj/item/clothing/under/imperial/red
+	item_path = /obj/item/clothing/under/rank/captain/skyrat/imperial/generic/red
 	restricted_roles = list(JOB_CAPTAIN, JOB_HEAD_OF_PERSONNEL, JOB_BLUESHIELD, JOB_HEAD_OF_SECURITY, JOB_RESEARCH_DIRECTOR, JOB_QUARTERMASTER, JOB_CHIEF_MEDICAL_OFFICER, JOB_CHIEF_ENGINEER)	//NT Reps would never wear red, it's unbefitting
 
 
 /datum/loadout_item/under/jumpsuit/impcomtrous
 	name = "Grey Officer's Naval Jumpsuit (Trousers)"
-	item_path = /obj/item/clothing/under/imperial/grey/trouser
+	item_path = /obj/item/clothing/under/rank/captain/skyrat/imperial/generic/pants
 	restricted_roles = list(JOB_CAPTAIN, JOB_HEAD_OF_PERSONNEL, JOB_BLUESHIELD, JOB_HEAD_OF_SECURITY, JOB_RESEARCH_DIRECTOR, JOB_QUARTERMASTER, JOB_CHIEF_MEDICAL_OFFICER, JOB_CHIEF_ENGINEER, JOB_NT_REP)
 
 /datum/loadout_item/under/jumpsuit/solwarden
@@ -199,7 +199,7 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 
 /datum/loadout_item/under/jumpsuit/utility_sec
 	name = "Security Utility Uniform"
-	item_path = /obj/item/clothing/under/utility/sec
+	item_path = /obj/item/clothing/under/rank/security/skyrat/utility
 	restricted_roles = list(JOB_SECURITY_OFFICER, JOB_DETECTIVE, JOB_WARDEN, JOB_BLUESHIELD, JOB_SECURITY_MEDIC, JOB_HEAD_OF_SECURITY, JOB_CORRECTIONS_OFFICER) //i dunno about the blueshield, they're a weird combo of sec and command, thats why they arent in the loadout pr im making
 
 /datum/loadout_item/under/jumpsuit/utility_com

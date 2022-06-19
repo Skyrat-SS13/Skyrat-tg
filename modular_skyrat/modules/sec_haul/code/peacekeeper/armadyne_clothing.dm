@@ -1,6 +1,6 @@
 /obj/item/clothing/under/rank/security/peacekeeper/armadyne
 	name = "armadyne corporate uniform"
-	desc = "A robust uniform worn by Armadyne corporate."
+	desc = "A sleek uniform worn by Armadyne corporate. Its metallic red belt buckle is made in the shape of the Armadyne logo."
 	icon_state = "armadyne_shirt"
 	worn_icon_state = "armadyne_shirt"
 
@@ -20,24 +20,28 @@
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/suit/armor/hos/trenchcoat/peacekeeper/armadyne
-	name = "armored armadyne trenchcoat"
-	desc = "An Armadyne branded trenchcoat, feels heavy, premium, and pristegious. Worn by Armadyne corporate."
+	name = "armadyne trenchcoat"
+	desc = "A large and warm Armadyne-red trenchcoat worn by the wealthy higher-ups. A good half of its warmth - and bulk - actually comes from the polymer armor plating beneath it."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "armadyne_trench"
 
 /obj/item/clothing/suit/armor/vest/peacekeeper/armadyne
-	name = "armadyne armor jacket"
-	desc = "An Armadyne branded suit vest, feels heavy, premium, and pristegious. Worn by Armadyne corporate."
+	name = "armadyne jacket"
+	desc = "An Armadyne branded track jacket, with a thin nanocarbon lining inside for protective purposes. Worn by Armadyne corporate, or wealthy supporters."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "armadyne_jacket"
 	worn_icon_state = "armadyne_jacket"
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
+/obj/item/clothing/suit/armor/vest/peacekeeper/armadyne/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/toggle_icon, "zipper")
+
 /obj/item/clothing/suit/armor/vest/peacekeeper/armadyne/armor
 	name = "armadyne armor vest"
-	desc = "An Armadyne branded vest, feels heavy, premium, and pristegious. Worn by Armadyne corporate."
+	desc = "A nanocarbon and high-grade polymer vest, with the worn-red Armadyne logo printed on the back. Used by Armadyne corporate when they need emergency armor."
 	icon_state = "armadyne_armor"
 	worn_icon_state = "armadyne_armor"
 
@@ -90,6 +94,7 @@
 	uniform = /obj/item/clothing/under/rank/security/peacekeeper/armadyne
 	gloves = /obj/item/clothing/gloves/combat/peacekeeper/armadyne
 	head =  /obj/item/clothing/head/beret/sec/peacekeeper/armadyne
+	neck = /obj/item/clothing/neck/tie/black
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses/peacekeeper/armadyne
 	suit = /obj/item/clothing/suit/armor/vest/peacekeeper/armadyne
 	shoes = /obj/item/clothing/shoes/combat/peacekeeper/armadyne
