@@ -227,32 +227,22 @@
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/head/imperial
-	name = "naval officer cap"
-	desc = "A grey cap with a silver disk in the center."
+	name = "grey naval officer cap"
+	desc = "A grey naval cap with a silver disk in the center."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "impcom"
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/head/imperial/cmo
-	name = "chief medical officer's naval cap"
-	desc = "A teal naval cap with a silver disk in the center."
-	icon_state = "impcmo"
-
-/obj/item/clothing/head/imperial/hop
-	name = "head of personnel's naval officer cap"
-	desc = "A olive cap with a silver disk in the center."
-	icon_state = "imphop"
-
-/obj/item/clothing/head/imperial/hos
-	name = "head of security's naval officer cap"
-	desc = "A tar black cap with a silver disk in the center."
-	icon_state = "imphos"
-
 /obj/item/clothing/head/imperial/grey
-	name = "grey naval officer cap"
-	desc = "A light grey with a silver disk in the center."
+	name = "dark grey naval officer cap"
+	desc = "A dark grey naval cap with a silver disk in the center."
 	icon_state = "impcommand"
+
+/obj/item/clothing/head/imperial/red
+	name = "red naval officer cap"
+	desc = "A red naval cap with a silver disk in the center."
+	icon_state = "impcap_red"
 
 /obj/item/clothing/head/imperial/white
 	name = "white naval officer cap"
@@ -261,8 +251,22 @@
 
 /obj/item/clothing/head/imperial/cap
 	name = "captain's naval officer cap"
-	desc = "A white cap with a silver disk in the center."
+	desc = "A white naval cap with a silver disk in the center."
 	icon_state = "impcap"
+
+/obj/item/clothing/head/imperial/hop
+	name = "head of personnel's naval officer cap"
+	desc = "An olive naval cap with a silver disk in the center."
+	icon_state = "imphop"
+
+/obj/item/clothing/head/imperial/hos
+	name = "head of security's naval officer cap"
+	desc = "A tar black naval cap with a silver disk in the center."
+	icon_state = "imphos"
+/obj/item/clothing/head/imperial/cmo
+	name = "chief medical officer's naval cap"
+	desc = "A teal naval cap with a silver disk in the center."
+	icon_state = "impcmo"
 
 /obj/item/clothing/head/imperial/ce
 	name = "chief engineer's blast helmet"
@@ -276,10 +280,6 @@
 	icon_state = "impce"
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT
 
-/obj/item/clothing/head/imperial/red
-	name = "red naval officer cap"
-	desc = "A red cap with a silver disk in the center."
-	icon_state = "impcap_red"
 
 /obj/item/clothing/head/imperial/helmet
 	name = "blast helmet"
