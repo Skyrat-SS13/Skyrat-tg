@@ -41,6 +41,7 @@
 	if(loadme == "Yes!")
 		ninja.client?.prefs?.safe_transfer_prefs_to(ninja)
 		codename = tgui_input_text(ninja.client, "What should your codename be?", "Agent Name", "[pick("Master", "Legendary", "Agent", "Shinobi", "Ninja")] [ninja.dna.species.name]", 42, FALSE, TRUE, 300 SECONDS)
+		codename ? codename : (codename = "[pick("Master", "Legendary", "Agent", "Shinobi", "Ninja")] [ninja.dna.species.name]")
 		ninja.name = codename
 		ninja.real_name = codename
 		ninja.dna.update_dna_identity()
