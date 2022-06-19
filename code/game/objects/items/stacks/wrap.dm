@@ -78,20 +78,12 @@
 /obj/item/stack/package_wrap/suicide_act(mob/living/user)
 	user.visible_message(span_suicide("[user] begins wrapping [user.p_them()]self in \the [src]! It looks like [user.p_theyre()] trying to commit suicide!"))
 	if(use(3))
-<<<<<<< HEAD
-		var/obj/item/delivery/big/P = new(get_turf(user.loc))
-		P.base_icon_state = "deliverypackage5"
-		P.update_icon()
-		user.forceMove(P)
-		P.contains_mobs = TRUE // SKYRAT EDIT - CARGO BORGS
-		P.add_fingerprint(user)
-=======
 		var/obj/item/delivery/big/parcel = new(get_turf(user.loc))
 		parcel.base_icon_state = "deliverypackage5"
 		parcel.update_icon()
 		user.forceMove(parcel)
+		parcel.contains_mobs = TRUE // SKYRAT EDIT - CARGO BORGS
 		parcel.add_fingerprint(user)
->>>>>>> feb0a8c5751 (Gas canisters and other portable atmospheric machinery can now be packaged with packaging paper. (#67631))
 		return OXYLOSS
 	else
 		balloon_alert(user, span_warning("You need more paper!"))
