@@ -1,4 +1,3 @@
-/* SKYRAT EDIT - NON-MODULAR REMOVAL
 /obj/item/clothing/mask/joy
 	name = "emotion mask"
 	desc = "Express your happiness or hide your sorrows with this cultured cutout."
@@ -26,7 +25,6 @@
 	. = ..()
 	user.update_inv_wear_mask()
 	current_skin = null//so we can infinitely reskin
-SKYRAT EDIT END */
 
 /obj/item/clothing/mask/mummy
 	name = "mummy mask"
