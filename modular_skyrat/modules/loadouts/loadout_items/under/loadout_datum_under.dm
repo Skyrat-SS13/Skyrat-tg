@@ -24,6 +24,7 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 		outfit.uniform = item_path
 	else
 		outfit.uniform = item_path
+	outfit.modified_outfit_slots |= ITEM_SLOT_ICLOTHING
 
 /*
 *	JUMPSUITS
