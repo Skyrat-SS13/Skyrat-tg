@@ -70,6 +70,7 @@
 	desc = "An off-white naval suit over black pants, with a rank badge denoting the Officer of the Internal Science Division. It's a peaceful life."
 	name = "research director's naval jumpsuit"
 	icon_state = "imprd"
+	inhand_icon_state = "w_suit"
 
 /*
 *	OVERRIDES
