@@ -88,6 +88,10 @@
 	armor = list(MELEE = 5, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 80, FIRE = 80, ACID = 70)
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
+/obj/item/clothing/under/syndicate/ninja // Back to TG until we have our own digi & normal in the modular overrides.
+	icon = 'icons/obj/clothing/under/syndicate.dmi'
+	worn_icon = 'icons/mob/clothing/under/syndicate.dmi'
+
 /*
 *	HEAD
 */
