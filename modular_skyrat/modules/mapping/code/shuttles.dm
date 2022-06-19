@@ -104,6 +104,9 @@
 /obj/item/radio/headset/guild/command
 	command = TRUE
 
+/datum/outfit/guild
+	name = "Guild Default Outfit"
+
 /datum/outfit/guild/slaver
 	name = "Privateer Slaver"
 	head = /obj/item/clothing/head/helmet/alt
