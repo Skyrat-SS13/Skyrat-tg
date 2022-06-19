@@ -581,4 +581,4 @@
 	attack_verb_continuous = list("slashes", "dissects", "yawns", "smokes")
 	attack_verb_simple = list("slash", "dissect", "yawn", "smoke")
 	squeak_override = list('modular_skyrat/modules/emotes/sound/emotes/female/female_cough_3.ogg' = 1, 'modular_skyrat/modules/emotes/sound/emotes/female/female_cough_2.ogg' = 1, 'modular_skyrat/modules/emotes/sound/emotes/female/female_cough_1.ogg' = 1)
-	responses = list("The huuuuuman body can surviiiive three weeks withooooout skin.", "The thigh bone is connected to the hiiiiip bone.", "Yeeeessss?", "Helloooooo.")
+	responses = list("The human body can survive three weeks without skiiiiiiiiiiin.", "The thigh bone is connected to the hip boooooooooone.", "Yeeeessss?", "Helloooooo.", "Don't be such a baby, ribs grow baaaaaaaaaack.",)
