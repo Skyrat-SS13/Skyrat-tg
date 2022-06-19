@@ -147,21 +147,6 @@
 			balloon_alert(user, span_warning("You can't wrap this!"))
 			return
 		if(use(3))
-<<<<<<< HEAD
-			var/obj/item/delivery/big/P = new(get_turf(O.loc))
-			P.base_icon_state = O.delivery_icon
-			P.update_icon()
-			P.drag_slowdown = O.drag_slowdown
-			O.forceMove(P)
-			P.add_fingerprint(user)
-			O.add_fingerprint(user)
-			// SKYRAT EDIT START - CARGO BORGS
-			for(var/item in O.get_all_contents())
-				if(istype(item, /mob))
-					P.contains_mobs = TRUE
-					break
-			// SKYRAT EDIT END
-=======
 			var/obj/item/delivery/big/parcel = new(get_turf(closet.loc))
 			parcel.base_icon_state = closet.delivery_icon
 			parcel.update_icon()
@@ -169,7 +154,12 @@
 			closet.forceMove(parcel)
 			parcel.add_fingerprint(user)
 			closet.add_fingerprint(user)
->>>>>>> feb0a8c5751 (Gas canisters and other portable atmospheric machinery can now be packaged with packaging paper. (#67631))
+			// SKYRAT EDIT START - CARGO BORGS
+			for(var/item in closet.get_all_contents())
+				if(istype(item, /mob))
+					parcel.contains_mobs = TRUE
+					break
+			// SKYRAT EDIT END
 		else
 			balloon_alert(user, span_warning("You need more paper!"))
 			return
