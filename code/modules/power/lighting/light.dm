@@ -115,13 +115,8 @@
 /obj/machinery/light/update_icon_state()
 	switch(status) // set icon_states
 		if(LIGHT_OK)
-<<<<<<< HEAD
-			//var/area/A = get_area(src) //SKYRAT EDIT REMOVAL
-			if(emergency_mode || firealarm) //SKYRAT EDIT CHANGE
-=======
-			var/area/local_area = get_area(src)
-			if(low_power_mode || major_emergency || (local_area?.fire))
->>>>>>> 763a10d1cc4 (Resonance cascade polishening, bugfixes and better logging (#67488))
+			//var/area/local_area = get_area(src) SKYRAT EDIT REMOVAL
+			if(low_power_mode || major_emergency) // SKYRAT EDIT CHANGE
 				icon_state = "[base_state]_emergency"
 			else
 				icon_state = "[base_state]"
@@ -140,13 +135,9 @@
 
 	/* SKYRAT EDIT START - ORIGINAL:
 	var/area/local_area = get_area(src)
-<<<<<<< HEAD
 	if(emergency_mode || (local_area?.fire))
 	*/
-	if(emergency_mode || firealarm) // SKYRAT EDIT END
-=======
-	if(low_power_mode || major_emergency || (local_area?.fire))
->>>>>>> 763a10d1cc4 (Resonance cascade polishening, bugfixes and better logging (#67488))
+	if(low_power_mode || major_emergency) // SKYRAT EDIT END
 		. += mutable_appearance(overlay_icon, "[base_state]_emergency")
 		return
 	if(nightshift_enabled)
