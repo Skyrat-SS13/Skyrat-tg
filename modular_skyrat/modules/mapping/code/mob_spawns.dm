@@ -91,6 +91,9 @@
 	ears = /obj/item/radio/headset/cybersun/captain
 	id_trim = /datum/id_trim/syndicom/skyrat/captain
 
+/datum/outfit/ds2
+	name = "default ds2 outfit"
+
 /datum/outfit/ds2/post_equip(mob/living/carbon/human/syndicate, visualsOnly = FALSE)
 	var/obj/item/card/id/id_card = syndicate.wear_id
 	if(istype(id_card))
@@ -118,12 +121,13 @@
 
 /datum/outfit/ds2/syndicate/service
 	name = "DS-2 Staff"
-	uniform = /obj/item/clothing/under/utility/syndicate
+	uniform = /obj/item/clothing/under/syndicate/overalls
 	id_trim = /datum/id_trim/syndicom/skyrat/assault/syndicatestaff
 
 /datum/outfit/ds2/syndicate/enginetech
 	name = "DS-2 Engine Technician"
-	uniform = /obj/item/clothing/under/rank/engineering/engineer/skyrat/utility/syndicate
+	uniform = /obj/item/clothing/under/syndicate/overalls
+	head = /obj/item/clothing/head/soft/sec/syndicate
 	id_trim = /datum/id_trim/syndicom/skyratnoicon/enginetechnician
 	gloves = /obj/item/clothing/gloves/combat
 
@@ -139,13 +143,13 @@
 
 /datum/outfit/ds2/syndicate/masteratarms
 	name = "DS-2 Master At Arms"
-	uniform = /obj/item/clothing/under/utility/sec/old/syndicate
+	uniform = /obj/item/clothing/under/syndicate/combat
 	id_trim = /datum/id_trim/syndicom/skyrat/assault/masteratarms
 	belt = /obj/item/storage/belt/security/full
 	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
 	suit = /obj/item/clothing/suit/armor/vest/warden/syndicate
 	head = /obj/item/clothing/head/sec/navywarden/syndicate
-	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
+	glasses = /obj/item/clothing/glasses/hud/security/sunglasses/redsec
 	ears = /obj/item/radio/headset/interdyne
 
 	backpack_contents = list(
@@ -155,13 +159,13 @@
 
 /datum/outfit/ds2/syndicate/brigoff
 	name = "DS-2 Brig Officer"
-	uniform = /obj/item/clothing/under/utility/sec/old/syndicate
+	uniform = /obj/item/clothing/under/syndicate/combat
 	id_trim = /datum/id_trim/syndicom/skyrat/assault/brigofficer
 	belt = /obj/item/storage/belt/security/full
 	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
 	suit = /obj/item/clothing/suit/armor/bulletproof/old
 	head = /obj/item/clothing/head/helmet/swat/ds
-	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
+	glasses = /obj/item/clothing/glasses/hud/security/sunglasses/redsec
 	mask = /obj/item/clothing/mask/gas/syndicate/ds
 	ears = /obj/item/radio/headset/interdyne
 
@@ -172,7 +176,7 @@
 
 /datum/outfit/ds2/syndicate/admiral
 	name = "DS-2 Station Admiral"
-	uniform = /obj/item/clothing/under/rank/captain/skyrat/utility/syndicate
+	uniform = /obj/item/clothing/under/syndicate/combat
 	suit = /obj/item/clothing/suit/armor/vest/capcarapace/syndicate
 	head = /obj/item/clothing/head/hos/beret/syndicate
 	back = /obj/item/storage/backpack
@@ -280,6 +284,7 @@
 	random_appearance = FALSE
 
 /datum/outfit/tarkon
+	name = "default port tarkon outfit"
 	uniform = /obj/item/clothing/under/rank/cargo/tech/skyrat/utility
 	shoes = /obj/item/clothing/shoes/winterboots
 	gloves = /obj/item/clothing/gloves/fingerless
@@ -306,6 +311,7 @@
 	outfit = /datum/outfit/tarkon/sci
 
 /datum/outfit/tarkon/sci
+	name = "Port Tarkon Science Outfit"
 	uniform = /obj/item/clothing/under/rank/rnd/scientist/skyrat/utility
 	glasses = /obj/item/clothing/glasses/hud/diagnostic
 	id = /obj/item/card/id/away/tarkon/sci
@@ -318,6 +324,7 @@
 	outfit = /datum/outfit/tarkon/med
 
 /datum/outfit/tarkon/med
+	name = "Port Tarkon Medical Outfit"
 	uniform = /obj/item/clothing/under/rank/medical/doctor/skyrat/utility
 	glasses = /obj/item/clothing/glasses/hud/health
 	id = /obj/item/card/id/away/tarkon/med
@@ -330,6 +337,7 @@
 	outfit = /datum/outfit/tarkon/engi
 
 /datum/outfit/tarkon/engi
+	name = "Port Tarkon Engineering Outfit"
 	uniform = /obj/item/clothing/under/rank/engineering/engineer/skyrat/utility
 	glasses = /obj/item/clothing/glasses/meson/engine/tray
 	id = /obj/item/card/id/away/tarkon/engi
@@ -342,8 +350,9 @@
 	outfit = /datum/outfit/tarkon/sec
 
 /datum/outfit/tarkon/sec
-	uniform = /obj/item/clothing/under/utility/sec
-	glasses = /obj/item/clothing/glasses/hud/security
+	name = "Port Tarkon Security Outfit"
+	uniform = /obj/item/clothing/under/rank/security/skyrat/utility/redsec
+	glasses = /obj/item/clothing/glasses/hud/security/redsec
 	gloves = /obj/item/clothing/gloves/tackler/combat
 	id = /obj/item/card/id/away/tarkon/sec
 	l_pocket = /obj/item/melee/baton/telescopic
@@ -361,6 +370,7 @@
 	outfit = /datum/outfit/tarkon/ensign
 
 /datum/outfit/tarkon/ensign //jack of all trades, master of none, spent all his credits, every last one
+	name = "Port Tarkon Ensigns Outfit"
 	uniform = /obj/item/clothing/under/utility
 	ears = /obj/item/radio/headset/tarkon/ensign
 	id = /obj/item/card/id/away/tarkon/ensign

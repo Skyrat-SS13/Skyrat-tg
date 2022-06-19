@@ -255,7 +255,7 @@ GLOBAL_LIST_EMPTY(total_uf_len_by_block)
 	eye_color_left = sanitize_hexcolor(get_uni_identity_block(structure, DNA_EYE_COLOR_LEFT_BLOCK))
 	eye_color_right = sanitize_hexcolor(get_uni_identity_block(structure, DNA_EYE_COLOR_RIGHT_BLOCK))
 	if(eyeorgancolor_update)
-		var/obj/item/organ/eyes/eye_organ = getorganslot(ORGAN_SLOT_EYES)
+		var/obj/item/organ/internal/eyes/eye_organ = getorganslot(ORGAN_SLOT_EYES)
 		eye_organ.eye_color_left = eye_color_left
 		eye_organ.eye_color_right = eye_color_right
 		eye_organ.old_eye_color_left = eye_color_left
