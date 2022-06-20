@@ -27,3 +27,6 @@
 	SIGNAL_HANDLER
 
 	drain_power(power_per_bullet)
+
+/obj/item/mod/module/smartgun/marines
+	removable = FALSE //no stealing!!

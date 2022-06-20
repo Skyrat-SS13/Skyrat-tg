@@ -2,10 +2,10 @@
 	name = "\improper M63A4 \"Smartgun\""
 	desc = "A weapon with a blistering rate of fire, so heavy that it needs to be mounted on a modsuit to wield. \
 	It's equipped with IFF technology, allowing the bullets to intentionally miss friendly targets."
-	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_guns.dmi'
+	icon = 'modular_skyrat/modules/marines/icons/items/guns.dmi'
 	lefthand_file = 'modular_skyrat/modules/marines/icons/mobs/guns_l.dmi'
 	righthand_file = 'modular_skyrat/modules/marines/icons/mobs/guns_r.dmi'
-	worn_icon = 'modular_skyrat/modules/marines/icons/items/module.dmi'
+	worn_icon = 'modular_skyrat/modules/marines/icons/mobs/mod_modules.dmi'
 	icon_state = "smartgun"
 	worn_icon_state = "module_smartgun_off" // just in case. You shouldn't be able to do this, though
 	inhand_icon_state = "smartgun"
@@ -21,12 +21,12 @@
 	mag_type = /obj/item/ammo_box/magazine/smartgun_drum
 	can_suppress = FALSE
 	fire_delay = 0.5
-	realistic = TRUE
-	dirt_modifier = 0.1
+	realistic = FALSE
 	bolt_type = BOLT_TYPE_OPEN
 	show_bolt_icon = FALSE
 	tac_reloads = FALSE
 	burst_size = 1
+	pin = /obj/item/firing_pin/implant/mindshield
 	var/cover_open = FALSE
 	var/list/iff_factions = list("ert")
 
@@ -66,8 +66,8 @@
 		return
 	return ..()
 
-/obj/item/gun/ballistic/automatic/smart_machine_gun/attackby(obj/item/A, mob/user, params)
-	if(!cover_open && istype(A, mag_type))
+/obj/item/gun/ballistic/automatic/smart_machine_gun/attackby(obj/item/attack_item, mob/user, params)
+	if(!cover_open && istype(attack_item, mag_type))
 		to_chat(user, span_warning("[src]'s dust cover prevents a magazine from being fit."))
 		return
 	..()
@@ -76,6 +76,8 @@
 	. = ..()
 	. += "[base_icon_state]_door_open"
 
+/obj/item/gun/ballistic/automatic/smart_machine_gun/unrestricted
+    pin = /obj/item/firing_pin 
 // Magazine itself
 
 /obj/item/ammo_box/magazine/smartgun_drum
