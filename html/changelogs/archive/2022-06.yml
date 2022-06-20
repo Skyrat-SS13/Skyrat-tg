@@ -766,3 +766,111 @@
   - balance: Changes powerloss inhibition (both CO2 and psychologist effect) to change
       the rate of powerloss instead of changing the rate of both functions then comparing
       them to which one should be used.
+2022-06-20:
+  Christmas5:
+  - bugfix: Changeling transformations now update scream/laugh types, age, as well
+      as certain quirks.
+  Gandalf2k15:
+  - rscadd: Vox have been overhauled and resprited!
+  Ghommie:
+  - imageadd: resprited on-mob chest sprites. Mostly the same, save for a more visible
+      outline and shading around the underside.
+  Ghommie (hi to Quotefox & co):
+  - imageadd: Updated penile overlays. Some are from Hyper.
+  - balance: Overlays for joysticks of 9 or 10 units of length should have an icon
+      of size 2 instead of 1 now.
+  Guillaume Prata:
+  - qol: Airlock painter, extinguishers, geiger counter, holosign projectors, inducers
+      and welding tools use balloon alerts on some of their more spammy/error actions
+      and have some useless `to_chat` messages removed.
+  - qol: Health and Gene analyzers give a balloon alert on a successful scan.
+  IsaacTheSharkWolf:
+  - bugfix: Burn chamber air alarm(s) should work now.
+  Melbert:
+  - qol: The Cursed Dufflebag now tells nearby people when it takes a bite out of
+      someone.
+  - balance: The Cursed Dufflebag takes any food poisoned by any means, instead of
+      just burnt messes.
+  - balance: The Cursed Dufflebag deals out slightly less wounds now to people wearing
+      armor and protection.
+  - balance: The Cursed Dufflebag deals less damage if the mob it's attached to is
+      dead, and doesn't heal if so.
+  - bugfix: The Cursed Dufflebag no longer permanently makes you a pacifist and clumsy.
+  - code_imp: Diggable component was changed to the Diggable element.
+  OrionTheFox:
+  - imageadd: rearranged all the security digitigrade uniforms into a security_digi.dmi
+      in a continued organization effort. Please report any relevant Uniform icon
+      issues to @Orion_The_Fox#1915.
+  - imageadd: Nanotrasen's finally permitted the use of non-replica Naval(Imperial)
+      Uniforms aboard their station, and has even supplied Heads of Staff with higher
+      quality ones as well, should they choose to wear them! (Also updates departmental
+      Utility uniforms - Please report any relevant Uniform icon issues to @Orion_The_Fox#1915.)
+  - imageadd: CentCom/Armadyne/etc uniform/digi icons have all been moved into clothing/under/centcom.dmi
+      files in a continued organization effort. Please report any relevant Uniform
+      icon issues to @Orion_The_Fox#1915.
+  - imageadd: With this moving, Armadyne in particular has been given a bit of a makeover,
+      mostly just to be cleaner and in-line with current sprites. Credit to Halcyon
+      for the trenchcoat - and for making me need to add this CL entry.
+  PositiveEntropy, WJohnston, Dragomagol, LemonInTheDark, Riggle:
+  - imageadd: Resprites most variety of tiles into a better shaded version!
+  - code_imp: Damaged floors are now damaged overlays, meaning that most tiles should
+      properly display a damaged state!
+  RimiNosha:
+  - bugfix: The engineering deliveries windoor on Blueshift now actually allows engineers
+      to open it.
+  SkyratBot:
+  - admin: Added a way for administrators to globally disable circuit component sound
+      emitters.
+  - balance: Further limited the sound emitter component so that maximum volume is
+      reduced and pitch is capped between -50 and 50
+  - rscadd: Gas canisters and other portable atmospheric machinery can now be packaged
+      with wrapping paper.
+  - rscadd: Replaces chat messages with balloon alerts for package wrapping related
+      failures.
+  - rscadd: Added new moodlet for cascades, for more FLAVAH!
+  - bugfix: Rifts should now spawn at least 30 turfs from the nearest mass, and now
+      no longer stalemates.
+  - bugfix: Rift code is now no longer just copypasted supermatter bump code! Godmode
+      players, rejoice, you can actually leave the station now.
+  - bugfix: Made shuttle behaviour more predictable, escape shuttle can no longer
+      end the round prematurely during a cascade, it will stall out in hyperspace
+      instead.
+  - bugfix: Supermatter warp effect should be removed correctly now.
+  - bugfix: Fixed emergency lights not giving off red light.
+  - bugfix: Bluespace rifts pick a safe turf in CentCom dock now.
+  - spellcheck: Improves almost all messages that play during a cascade.
+  - admin: Better logging about resonance cascade-related actions.
+  - bugfix: Fixed recycler bug that deleted the output stack because it was merged
+      with the input stack
+  - bugfix: Fixed recycler bug where it deleted stacks of 50 because it didn't have
+      enough space by removing recycle bins that reset its internal space from infinity
+      to the level of matter bin part
+  - rscadd: Added several new goodie items to purchase through cargo, including translation
+      keys, mutadone autoinjectors, and a full RLD.
+  - code_imp: documented research_nodes and radios.
+  - soundadd: Energy and Magic gunfire sound pitch now varies based on how much ammo
+      is left.
+  - soundadd: Ballistic gunfire now has a low-ammo click sound.
+  - qol: food now shows its type on examine
+  - balance: Hacking the command console and winning revs no longer adds midround
+      threat. Instead, it'll force a heavy ruleset to spawn, and barring that, will
+      spawn a dangerous random event.
+  - bugfix: Locate weakpoint objective now works again.
+  UDaV73rus, Tokoriso, dragomagol:
+  - rscadd: welding now has an animation!
+  YakumoChen:
+  - qol: The quartermaster"s Permit HUD in their locker comes with flash protection
+      now.
+  - qol: Permit HUDs now available in the cargodrobe.
+  - qol: Permit HUDs now available in protolathe with HUD research
+  softcerv:
+  - balance: surgery tables now only apply numbing
+  - code_imp: code for stasis on surgery tables is now modular.
+  - spellcheck: following the removal of stasis from surgery tables, they now use
+      their original name and description.
+  theOOZ:
+  - imageadd: Xeno-hybrid race has been touched-up a little
+  theselfish:
+  - rscadd: Famed collector items; Funko- Chunko Fops have arrived on station! They
+      talk, and they're here for those who are willing to spend their money on useless,
+      soulless pieces of cloth!
