@@ -9,6 +9,13 @@
 	var/upgrade_flags
 	/// If the baton lists its upgrades
 	var/lists_upgrades = TRUE
+	/// Allows you to disguise the contractor baton as something else until you hit something
+	var/datum/action/item_action/disguise/baton_disguise
+
+/obj/item/melee/baton/telescopic/contractor_baton/Initialize(mapload)
+	. = ..()
+	baton_disguise = new(src)
+	RegisterSignal(src, COMSIG_ITEM_AFTERATTACK, .proc/undisguise)
 
 /obj/item/melee/baton/telescopic/contractor_baton/attack_secondary(mob/living/victim, mob/living/user, params)
 	if(!(upgrade_flags & BATON_CUFF_UPGRADE) || !active)
@@ -62,6 +69,37 @@
 		. += "<br><br>[span_boldnotice("[src] has the following upgrades attached:")]"
 	for(var/obj/item/baton_upgrade/upgrade in contents)
 		. += "<br>[span_notice("[upgrade].")]"
+
+/obj/item/melee/baton/telescopic/contractor_baton/on_transform(obj/item/source, mob/user, active)
+	if(baton_disguise.disguised)
+		lefthand_file = 'icons/mob/inhands/items_lefthand.dmi'
+		righthand_file = 'icons/mob/inhands/items_righthand.dmi'
+		inhand_icon_state = "rods"
+		user.regenerate_icons()
+		update_appearance()
+	else
+		lefthand_file = initial(lefthand_file)
+		righthand_file = initial(righthand_file)
+		inhand_icon_state = active ? on_inhand_icon_state : null // When inactive, there is no inhand icon_state.
+	src.active = active
+	playsound(user ? user : src, on_sound, 50, TRUE)
+	balloon_alert(user, active ? "extended" : "collapsed")
+	return COMPONENT_NO_DEFAULT_MESSAGE
+
+
+/obj/item/melee/baton/telescopic/contractor_baton/proc/undisguise(datum/source, atom/target, mob/user)
+	SIGNAL_HANDLER
+
+	if(!baton_disguise.disguised)
+		return
+	inhand_icon_state = active ? on_inhand_icon_state : null
+	lefthand_file = initial(lefthand_file)
+	righthand_file = initial(righthand_file)
+	name = initial(name)
+	baton_disguise.disguised = FALSE
+	user.regenerate_icons()
+	update_appearance()
+	balloon_alert(user, "baton undisguised")
 
 /obj/item/melee/baton/telescopic/contractor_baton/proc/add_upgrade(obj/item/baton_upgrade/upgrade)
 	if(!(upgrade_flags & upgrade.upgrade_flag))
