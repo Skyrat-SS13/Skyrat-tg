@@ -104,7 +104,7 @@
 
 	if(istype(loaded_projectile, /obj/projectile/bullet/smart))
 		var/obj/projectile/bullet/smart/smart_proj = loaded_projectile
-		smart_proj.iff_factions = iff_factions.Copy()
+		smart_proj.ignored_factions = iff_factions.Copy()
 
 /obj/item/ammo_casing/smart/caseless
 	firing_effect_type = null
@@ -134,30 +134,7 @@
 // Smart bullets
 
 /obj/projectile/bullet/smart
-	var/list/iff_factions = list()
-
-/obj/projectile/bullet/smart/Initialize(mapload)
-	. = ..()
-	RegisterSignal(src, COMSIG_PROJECTILE_IFF_CHECK, .proc/iff_check)
-
-/obj/projectile/bullet/smart/on_hit(atom/target, blocked, pierce_hit)
-	. = ..()
-	if(!ismob(target))
-		return
-	var/mob/mob_target = target
-	for(var/faction as anything in iff_factions)
-		if(faction in mob_target.faction)
-			return BULLET_ACT_FORCE_PIERCE_BLOCK
-
-/obj/projectile/bullet/smart/proc/iff_check(datum/owner, atom/target)
-	SIGNAL_HANDLER
-
-	if(!ismob(target))
-		return FALSE
-	var/mob/mob_target = target
-	for(var/faction as anything in iff_factions)
-		if(faction in mob_target.faction)
-			return TRUE
+	ignore_direct_target = TRUE
 
 /obj/projectile/bullet/smart/a10x28
 	name = "10x28mm bullet"

@@ -56,30 +56,29 @@
 	var/mob/living/L = target
 
 	if(blocked != 100) // not completely blocked
-		if(!SEND_SIGNAL(src, COMSIG_PROJECTILE_IFF_CHECK, target))
-			if(damage && L.blood_volume && damage_type == BRUTE)
-				var/splatter_dir = dir
-				if(starting)
-					splatter_dir = get_dir(starting, target_loca)
-				if(isalien(L))
-					new /obj/effect/temp_visual/dir_setting/bloodsplatter/xenosplatter(target_loca, splatter_dir)
-				else
-					new /obj/effect/temp_visual/dir_setting/bloodsplatter(target_loca, splatter_dir)
-				if(prob(33))
-					L.add_splatter_floor(target_loca)
-			else if(impact_effect_type && !hitscan)
-				new impact_effect_type(target_loca, hitx, hity)
-
-			var/organ_hit_text = ""
-			var/limb_hit = hit_limb
-			if(limb_hit)
-				organ_hit_text = " in \the [parse_zone(limb_hit)]"
-			else if(suppressed && suppressed != SUPPRESSED_VERY)
-				to_chat(L, span_userdanger("You're shot by \a [src][organ_hit_text]!"))
+		if(damage && L.blood_volume && damage_type == BRUTE)
+			var/splatter_dir = dir
+			if(starting)
+				splatter_dir = get_dir(starting, target_loca)
+			if(isalien(L))
+				new /obj/effect/temp_visual/dir_setting/bloodsplatter/xenosplatter(target_loca, splatter_dir)
 			else
-				L.visible_message(span_danger("[L] is hit by \a [src][organ_hit_text]!"), \
-						span_userdanger("You're hit by \a [src][organ_hit_text]!"), null, COMBAT_MESSAGE_RANGE)
-			L.on_hit(src)
+				new /obj/effect/temp_visual/dir_setting/bloodsplatter(target_loca, splatter_dir)
+			if(prob(33))
+				L.add_splatter_floor(target_loca)
+		else if(impact_effect_type && !hitscan)
+			new impact_effect_type(target_loca, hitx, hity)
+
+		var/organ_hit_text = ""
+		var/limb_hit = hit_limb
+		if(limb_hit)
+			organ_hit_text = " in \the [parse_zone(limb_hit)]"
+		else if(suppressed && suppressed != SUPPRESSED_VERY)
+			to_chat(L, span_userdanger("You're shot by \a [src][organ_hit_text]!"))
+		else
+			L.visible_message(span_danger("[L] is hit by \a [src][organ_hit_text]!"), \
+					span_userdanger("You're hit by \a [src][organ_hit_text]!"), null, COMBAT_MESSAGE_RANGE)
+		L.on_hit(src)
 
 	var/reagent_note
 	if(reagents?.reagent_list)
