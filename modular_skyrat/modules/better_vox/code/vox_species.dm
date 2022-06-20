@@ -115,7 +115,7 @@ Artificially made by the Apex, Vox Primalis are grown for a purpose, their perso
 /datum/species/vox_primalis/on_species_gain(mob/living/carbon/human/transformer)
 	. = ..()
 	var/vox_color = transformer.dna.features["vox_bodycolor"]
-	if(vox_color == "default")
+	if(!vox_color || vox_color == "default")
 		return
 	for(var/obj/item/bodypart/limb as anything in transformer.bodyparts)
 		limb.limb_id = "[SPECIES_VOX_PRIMALIS]_[vox_color]"
