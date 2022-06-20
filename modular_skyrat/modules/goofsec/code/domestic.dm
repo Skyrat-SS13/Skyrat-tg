@@ -16,6 +16,10 @@
 	lock_back_sound = 'sound/weapons/gun/pistol/slide_lock.ogg'
 	bolt_drop_sound = 'sound/weapons/gun/pistol/slide_drop.ogg'
 
+/obj/item/gun/ballistic/automatic/pistol/security/Initialize()
+	. = ..()
+	AddComponent(/datum/component/renameable)
+
 // fucking guncode means i have to have the basetype be the magazine that spawns loaded in the gun if i want it to spawn loaded
 // if I made it spawn loaded with a nonlethal magazine, then it could only load the nonlethal magazines,
 // so instead the base mag type needs to be a mirror of the non-lethal one to pretend to be it

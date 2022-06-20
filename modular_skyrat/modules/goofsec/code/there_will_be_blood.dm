@@ -95,6 +95,10 @@
 	can_effect_non_mobs = FALSE
 	does_full_sfx = FALSE
 
+/obj/item/highfrequencyblade/security/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/renameable)
+
 /datum/supply_pack/security/armory/hf
 	name = "High Frequency Blade Crate"
 	desc = "Three High Frequency Blades in sheaths, if your security team gets disarmed."
