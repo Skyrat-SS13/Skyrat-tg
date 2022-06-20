@@ -2,7 +2,7 @@
 	name = "Bureaucratic Error"
 	typepath = /datum/round_event/bureaucratic_error
 	max_occurrences = 0 // SKYRAT EDIT - ORIGINAL: 1
-	weight = 5
+	weight = 0 // SKYRAT EDIT - ORIGINAL: 5
 
 /datum/round_event/bureaucratic_error
 	announceWhen = 1
