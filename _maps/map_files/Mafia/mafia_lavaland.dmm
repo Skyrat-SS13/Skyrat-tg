@@ -2,6 +2,9 @@
 "a" = (
 /turf/closed/indestructible/riveted,
 /area/centcom/mafia)
+"b" = (
+/turf/open/floor/fakebasalt,
+/area/centcom/mafia)
 "c" = (
 /turf/closed/wall/rust,
 /area/centcom/mafia)
@@ -9,8 +12,8 @@
 /turf/open/floor/plating,
 /area/centcom/mafia)
 "e" = (
-/obj/effect/mapping_helpers/broken_floor,
-/turf/open/floor/plating,
+/obj/effect/landmark/mafia,
+/turf/open/floor/fakebasalt,
 /area/centcom/mafia)
 "f" = (
 /obj/effect/mapping_helpers/burnt_floor,
@@ -25,6 +28,10 @@
 /obj/structure/grille/indestructable,
 /turf/open/floor/plating,
 /area/centcom/mafia)
+"i" = (
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/plating,
+/area/centcom/mafia)
 "j" = (
 /obj/machinery/door/airlock/external/ruin{
 	max_integrity = 99999;
@@ -36,19 +43,6 @@
 "k" = (
 /obj/mafia_game_board,
 /turf/open/floor/plating,
-/area/centcom/mafia)
-"l" = (
-/obj/structure/closet{
-	desc = "It's a storage unit. For mining stuff. Y'know.";
-	icon_state = "mining";
-	name = "miner equipment locker"
-	},
-/obj/item/clothing/under/rank/cargo/miner/lavaland,
-/turf/open/floor/grass/fakebasalt,
-/area/centcom/mafia)
-"m" = (
-/obj/effect/landmark/mafia,
-/turf/open/floor/grass/fakebasalt,
 /area/centcom/mafia)
 "n" = (
 /obj/effect/landmark/mafia,
@@ -78,9 +72,6 @@
 	name = "Station Night Shutters"
 	},
 /turf/closed/indestructible/fakeglass,
-/area/centcom/mafia)
-"q" = (
-/turf/open/floor/grass/fakebasalt,
 /area/centcom/mafia)
 "r" = (
 /obj/effect/turf_decal/trimline/brown/filled/line{
@@ -343,6 +334,15 @@
 "Y" = (
 /turf/closed/indestructible/reinforced,
 /area/centcom/mafia)
+"Z" = (
+/obj/structure/closet{
+	desc = "It's a storage unit. For mining stuff. Y'know.";
+	icon_state = "mining";
+	name = "miner equipment locker"
+	},
+/obj/item/clothing/under/rank/cargo/miner/lavaland,
+/turf/open/floor/fakebasalt,
+/area/centcom/mafia)
 
 (1,1,1) = {"
 a
@@ -431,7 +431,7 @@ d
 d
 d
 d
-e
+i
 d
 d
 d
@@ -452,7 +452,7 @@ c
 h
 d
 d
-e
+i
 Y
 Y
 j
@@ -462,7 +462,7 @@ Y
 Y
 d
 d
-e
+i
 h
 c
 Y
@@ -474,13 +474,13 @@ a
 Y
 Y
 c
-e
+i
 Y
 Y
 j
 Y
-l
-q
+Z
+b
 Y
 s
 H
@@ -504,14 +504,14 @@ Y
 r
 M
 p
-m
-q
+e
+b
 p
 w
 A
 p
-q
-l
+b
+Z
 Y
 d
 c
@@ -530,13 +530,13 @@ L
 N
 Y
 Y
-q
+b
 Y
 x
 Y
 Y
-q
-m
+b
+e
 Y
 d
 d
@@ -555,12 +555,12 @@ p
 O
 P
 p
-q
+b
 p
 y
 p
-q
-q
+b
+b
 p
 Y
 Y
@@ -575,7 +575,7 @@ Y
 c
 d
 Y
-l
+Z
 p
 Y
 p
@@ -600,21 +600,21 @@ Y
 c
 d
 j
-m
-q
-q
-q
+e
+b
+b
+b
 p
-q
+b
 u
-q
+b
 p
 B
 C
 C
 J
 j
-e
+i
 c
 Y
 a
@@ -623,7 +623,7 @@ a
 a
 Y
 c
-e
+i
 Y
 Y
 p
@@ -655,14 +655,14 @@ C
 C
 P
 p
-q
+b
 W
-q
+b
 p
-q
-q
-q
-m
+b
+b
+b
+e
 j
 d
 c
@@ -687,9 +687,9 @@ p
 p
 Y
 p
-l
+Z
 Y
-e
+i
 c
 Y
 a
@@ -702,12 +702,12 @@ d
 Y
 Y
 p
-q
-q
+b
+b
 p
 S
 p
-q
+b
 p
 B
 D
@@ -726,13 +726,13 @@ c
 f
 d
 Y
-m
-q
+e
+b
 Y
 Y
 T
 Y
-q
+b
 Y
 Y
 E
@@ -751,14 +751,14 @@ c
 c
 d
 Y
-l
-q
+Z
+b
 p
 Q
 U
 p
-q
-m
+b
+e
 p
 F
 I
@@ -782,8 +782,8 @@ Y
 z
 V
 Y
-q
-l
+b
+Z
 Y
 j
 Y
@@ -800,7 +800,7 @@ Y
 Y
 c
 h
-e
+i
 d
 d
 Y
@@ -811,7 +811,7 @@ j
 Y
 Y
 d
-e
+i
 d
 h
 c
@@ -828,7 +828,7 @@ k
 h
 d
 d
-e
+i
 d
 d
 d
