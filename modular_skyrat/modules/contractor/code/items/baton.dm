@@ -102,10 +102,26 @@
 	name = initial(name)
 	icon = initial(icon)
 	icon_state = active ? "[initial(icon_state)]_on" : initial(icon_state)
+	desc = initial(desc)
+	cooldown = initial(cooldown)
 	baton_disguise.disguised = FALSE
 	user.regenerate_icons()
 	update_appearance()
 	balloon_alert(user, "baton undisguised")
+
+/obj/item/melee/baton/telescopic/contractor_baton/proc/disguise(datum/source, mob/user)
+	lefthand_file = 'icons/mob/inhands/items_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/items_righthand.dmi'
+	inhand_icon_state = "rods"
+	name = "iron rod"
+	icon = 'icons/obj/stack_objects.dmi'
+	icon_state = "rods"
+	desc = "Some rods. Can be used for building or something."
+	cooldown = initial(cooldown) * 2
+	baton_disguise.disguised = TRUE
+	user.regenerate_icons()
+	update_appearance()
+	balloon_alert(user, "baton disguised")
 
 /obj/item/melee/baton/telescopic/contractor_baton/proc/add_upgrade(obj/item/baton_upgrade/upgrade)
 	if(!(upgrade_flags & upgrade.upgrade_flag))

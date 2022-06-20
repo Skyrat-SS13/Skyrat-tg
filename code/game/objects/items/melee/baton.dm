@@ -346,7 +346,7 @@
 
 /obj/item/melee/baton/telescopic/contractor_baton
 	name = "contractor baton"
-	desc = "A compact, specialised baton assigned to Syndicate contractors. Applies light electrical shocks to targets."
+	desc = "A compact, specialised baton assigned to Syndicate contractors. Applies light electrical shocks to targets. Chameleon technology allows the baton to disguise as a common item, but power draw doubles the cooldown of the baton as a side effect." //SKYRAT EDIT: CHAMELEON
 	icon = 'icons/obj/items_and_weapons.dmi'
 	icon_state = "contractor_baton"
 	worn_icon_state = "contractor_baton"
