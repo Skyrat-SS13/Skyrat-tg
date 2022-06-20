@@ -863,6 +863,8 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	var/block_chance_wielded = 100
 	///Can this deflect projectiles while unwielded?
 	var/can_deflect_projectiles_unwielded = TRUE
+	///Can this do the effects on non-mobs?
+	var/can_effect_non_mobs = TRUE
 	// SKYRAT EDIT END
 
 /obj/item/highfrequencyblade/Initialize(mapload)
@@ -945,14 +947,16 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 				living_target.gib()
 				log_combat(user, living_target, "gibbed", src)
 		// SKYRAT EDIT END
-	else if(target.uses_integrity)
+	// SKYRAT EDIT BEGIN
+	else if(target.uses_integrity && can_effect_non_mobs)
 		target.take_damage(force*damage_mod*3, BRUTE, MELEE, FALSE, null, 50)
-	else if(iswallturf(target) && prob(force*damage_mod*0.5))
+	else if(iswallturf(target) && prob(force*damage_mod*0.5) && can_effect_non_mobs)
 		var/turf/closed/wall/wall_target = target
 		wall_target.dismantle_wall()
-	else if(ismineralturf(target) && prob(force*damage_mod))
+	else if(ismineralturf(target) && prob(force*damage_mod) && can_effect_non_mobs)
 		var/turf/closed/mineral/mineral_target = target
 		mineral_target.gets_drilled()
+	// SKYRAT EDIT END
 
 /obj/effect/temp_visual/slash
 	icon_state = "highfreq_slash"

@@ -267,11 +267,10 @@
 	id = "security_pistol_magazine_ceo_mindset"
 	build_path = /obj/item/ammo_box/magazine/security_pistol/ceo_mindset
 
-/datum/supply_pack/security/security_pistol
+/datum/supply_pack/security/armory/security_pistol
 	name = "Domestic Crate"
 	desc = "Three Domestics, if your security team gets disarmed."
-	cost = CARGO_CRATE_VALUE * 3
-	access_view = ACCESS_SECURITY
+	cost = CARGO_CRATE_VALUE * 6
 	contains = list(/obj/item/gun/ballistic/automatic/pistol/security,
 					/obj/item/gun/ballistic/automatic/pistol/security,
 					/obj/item/gun/ballistic/automatic/pistol/security)

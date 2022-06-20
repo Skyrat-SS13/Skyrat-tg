@@ -92,12 +92,12 @@
 	block_chance_wielded = 25
 	can_gib = FALSE
 	can_deflect_projectiles_unwielded = FALSE
+	can_effect_non_mobs = FALSE
 
-/datum/supply_pack/security/hf
+/datum/supply_pack/security/armory/hf
 	name = "High Frequency Blade Crate"
 	desc = "Three High Frequency Blades in sheaths, if your security team gets disarmed."
-	cost = CARGO_CRATE_VALUE * 3
-	access_view = ACCESS_SECURITY
+	cost = CARGO_CRATE_VALUE * 6
 	contains = list(/obj/item/storage/belt/hf,
 					/obj/item/storage/belt/hf,
 					/obj/item/storage/belt/hf)
