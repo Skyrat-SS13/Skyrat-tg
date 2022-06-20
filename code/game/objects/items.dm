@@ -1,4 +1,5 @@
 GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/effects/fire.dmi', "fire"))
+GLOBAL_DATUM_INIT(welding_sparks, /mutable_appearance, mutable_appearance('icons/effects/welding_effect.dmi', "welding_sparks", GASFIRE_LAYER, ABOVE_LIGHTING_PLANE))
 
 /// Anything you can pick up and hold.
 /obj/item
@@ -1001,11 +1002,6 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 
 	delay *= toolspeed * skill_modifier
 
-	// SKYRAT EDIT ADDITION
-	if(welding_sparks) // If we have sparks, assume we are a welding tool.
-		target.add_overlay(welding_sparks)
-	// SKYRAT EDIT END
-
 	// Play tool sound at the beginning of tool usage.
 	play_tool_sound(target, volume)
 
@@ -1015,45 +1011,24 @@ GLOBAL_DATUM_INIT(fire_overlay, /mutable_appearance, mutable_appearance('icons/e
 
 		if(ismob(target))
 			if(!do_mob(user, target, delay, extra_checks=tool_check))
-				// SKYRAT EDIT ADDITION
-				if(welding_sparks)
-					target.cut_overlay(welding_sparks)
-				// SKYRAT EDIT END
 				return
 
 		else
 			if(!do_after(user, delay, target=target, extra_checks=tool_check))
-				// SKYRAT EDIT ADDITION
-				if(welding_sparks)
-					target.cut_overlay(welding_sparks)
-				// SKYRAT EDIT END
 				return
 	else
 		// Invoke the extra checks once, just in case.
 		if(extra_checks && !extra_checks.Invoke())
-			// SKYRAT EDIT ADDITION
-			if(welding_sparks)
-				target.cut_overlay(welding_sparks)
-			// SKYRAT EDIT END
 			return
 
 	// Use tool's fuel, stack sheets or charges if amount is set.
 	if(amount && !use(amount))
-		// SKYRAT EDIT ADDITION
-		if(welding_sparks)
-			target.cut_overlay(welding_sparks)
-		// SKYRAT EDIT END
 		return
 
 	// Play tool sound at the end of tool usage,
 	// but only if the delay between the beginning and the end is not too small
 	if(delay >= MIN_TOOL_SOUND_DELAY)
 		play_tool_sound(target, volume)
-
-	// SKYRAT EDIT ADDITION
-	if(welding_sparks)
-		target.cut_overlay(welding_sparks)
-	// SKYRAT EDIT END
 
 	return TRUE
 

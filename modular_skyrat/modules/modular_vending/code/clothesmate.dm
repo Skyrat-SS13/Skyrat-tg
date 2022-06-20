@@ -45,7 +45,6 @@
 		/obj/item/clothing/shoes/sports = 5,
 		/obj/item/clothing/shoes/wraps/colourable = 5,
 		/obj/item/clothing/shoes/jungleboots = 5,
-		/obj/item/clothing/shoes/jackboots/thigh = 5,
 		/obj/item/clothing/shoes/jackboots/knee = 5,
 		/obj/item/clothing/suit/duster/colorable = 5,
 		/obj/item/clothing/suit/toggle/peacoat = 5,
