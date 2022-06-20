@@ -74,6 +74,8 @@
 	if(baton_disguise.disguised)
 		lefthand_file = 'icons/mob/inhands/items_lefthand.dmi'
 		righthand_file = 'icons/mob/inhands/items_righthand.dmi'
+		icon = 'icons/obj/stack_objects.dmi'
+		icon_state = "rods"
 		inhand_icon_state = "rods"
 		user.regenerate_icons()
 		update_appearance()
@@ -81,6 +83,8 @@
 		lefthand_file = initial(lefthand_file)
 		righthand_file = initial(righthand_file)
 		inhand_icon_state = active ? on_inhand_icon_state : null // When inactive, there is no inhand icon_state.
+		icon = initial(icon)
+		icon_state = active ? "[initial(icon_state)]_on" : initial(icon_state)
 	src.active = active
 	playsound(user ? user : src, on_sound, 50, TRUE)
 	balloon_alert(user, active ? "extended" : "collapsed")
@@ -96,6 +100,8 @@
 	lefthand_file = initial(lefthand_file)
 	righthand_file = initial(righthand_file)
 	name = initial(name)
+	icon = initial(icon)
+	icon_state = active ? "[initial(icon_state)]_on" : initial(icon_state)
 	baton_disguise.disguised = FALSE
 	user.regenerate_icons()
 	update_appearance()

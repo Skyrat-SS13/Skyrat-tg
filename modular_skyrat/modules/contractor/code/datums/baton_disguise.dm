@@ -12,6 +12,8 @@
 	baton.righthand_file = 'icons/mob/inhands/items_righthand.dmi'
 	baton.inhand_icon_state = "rods"
 	baton.name = "iron rod"
+	baton.icon = 'icons/obj/stack_objects.dmi'
+	baton.icon_state = "rods"
 	disguised = TRUE
 	owner.regenerate_icons()
 	baton.update_appearance()
