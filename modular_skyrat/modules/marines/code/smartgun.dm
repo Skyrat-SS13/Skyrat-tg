@@ -3,9 +3,9 @@
 	desc = "A weapon with a blistering rate of fire, so heavy that it needs to be mounted on a modsuit to wield. \
 	It's equipped with IFF technology, allowing the bullets to intentionally miss friendly targets."
 	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_guns.dmi'
-	lefthand_file = 'modular_skyrat/modules/ERT_Factions/marines/icons/mobs/guns_l.dmi'
-	righthand_file = 'modular_skyrat/modules/ERT_Factions/marines/icons/mobs/guns_r.dmi'
-	worn_icon = 'modular_skyrat/modules/ERT_Factions/marines/icons/items/module.dmi'
+	lefthand_file = 'modular_skyrat/modules/marines/icons/mobs/guns_l.dmi'
+	righthand_file = 'modular_skyrat/modules/marines/icons/mobs/guns_r.dmi'
+	worn_icon = 'modular_skyrat/modules/marines/icons/items/module.dmi'
 	icon_state = "smartgun"
 	worn_icon_state = "module_smartgun_off" // just in case. You shouldn't be able to do this, though
 	inhand_icon_state = "smartgun"
@@ -80,7 +80,7 @@
 
 /obj/item/ammo_box/magazine/smartgun_drum
 	name = "smartgun drum (10x28mm caseless)"
-	icon = 'modular_skyrat/modules/ERT_Factions/marines/icons/items/ammo.dmi'
+	icon = 'modular_skyrat/modules/marines/icons/items/ammo.dmi'
 	icon_state = "smartgun_drum"
 	ammo_type = /obj/item/ammo_casing/smart/caseless/a10x28
 	caliber = "a10x28"
@@ -102,7 +102,7 @@
 
 	if(istype(loaded_projectile, /obj/projectile/bullet/smart))
 		var/obj/projectile/bullet/smart/smart_proj = loaded_projectile
-		smart_proj.iff_factions = iff_factions.Copy()
+		smart_proj.ignored_factions = iff_factions.Copy()
 
 /obj/item/ammo_casing/smart/caseless
 	firing_effect_type = null
@@ -132,30 +132,7 @@
 // Smart bullets
 
 /obj/projectile/bullet/smart
-	var/list/iff_factions = list()
-
-/obj/projectile/bullet/smart/Initialize(mapload)
-	. = ..()
-	RegisterSignal(src, COMSIG_PROJECTILE_IFF_CHECK, .proc/iff_check)
-
-/obj/projectile/bullet/smart/on_hit(atom/target, blocked, pierce_hit)
-	. = ..()
-	if(!ismob(target))
-		return
-	var/mob/mob_target = target
-	for(var/faction as anything in iff_factions)
-		if(faction in mob_target.faction)
-			return BULLET_ACT_FORCE_PIERCE_BLOCK
-
-/obj/projectile/bullet/smart/proc/iff_check(datum/owner, atom/target)
-	SIGNAL_HANDLER
-
-	if(!ismob(target))
-		return FALSE
-	var/mob/mob_target = target
-	for(var/faction as anything in iff_factions)
-		if(faction in mob_target.faction)
-			return TRUE
+	ignore_direct_target = TRUE
 
 /obj/projectile/bullet/smart/a10x28
 	name = "10x28mm bullet"
