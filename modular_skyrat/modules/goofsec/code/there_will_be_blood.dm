@@ -93,6 +93,7 @@
 	can_gib = FALSE
 	can_deflect_projectiles_unwielded = FALSE
 	can_effect_non_mobs = FALSE
+	does_full_sfx = FALSE
 
 /datum/supply_pack/security/armory/hf
 	name = "High Frequency Blade Crate"

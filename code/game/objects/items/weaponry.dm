@@ -865,6 +865,8 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	var/can_deflect_projectiles_unwielded = TRUE
 	///Can this do the effects on non-mobs?
 	var/can_effect_non_mobs = TRUE
+	///Should this do the full sound effects?
+	var/does_full_sfx = TRUE
 	// SKYRAT EDIT END
 
 /obj/item/highfrequencyblade/Initialize(mapload)
@@ -935,7 +937,10 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	previous_x = x_slashed
 	previous_y = y_slashed
 	playsound(src, 'sound/weapons/bladeslice.ogg', 100, vary = TRUE)
-	playsound(src, 'sound/weapons/zapbang.ogg', 50, vary = TRUE)
+	// SKYRAT EDIT BEGIN
+	if(does_full_sfx)
+		playsound(src, 'sound/weapons/zapbang.ogg', 50, vary = TRUE)
+	// SKYRAT EDIT END
 	if(isliving(target))
 		var/mob/living/living_target = target
 		living_target.apply_damage(force*damage_mod, BRUTE, sharpness = SHARP_EDGED, wound_bonus = wound_bonus, bare_wound_bonus = bare_wound_bonus, def_zone = user.zone_selected)
