@@ -109,7 +109,7 @@
 /datum/opposing_force_equipment/clothing/nukiemod
 	name = "Blood-Red MODsuit"
 	item_type = /obj/item/mod/control/pre_equipped/nuclear
-	description = "A suit designed by Gorlex Marauders, offering armor ruled illegal in most of Spinward Stellar."
+	description = "A suit designed by Gorlex Marauders, offering armor ruled illegal in most of Sector-13"
 
 /datum/opposing_force_equipment/clothing/elitemod
 	name = "Elite MODsuit"
