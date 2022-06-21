@@ -278,6 +278,8 @@
 	/// Cooldown for retaliate effect
 	var/retaliate_effect_cooldown = 1 MINUTES
 	COOLDOWN_DECLARE(retaliate_effect)
+	/// Are we in the end game state?
+	var/end_game = FALSE
 
 /obj/structure/fleshmind/structure/core/Initialize(mapload, spawn_controller = TRUE)
 	. = ..()
@@ -322,6 +324,12 @@
 		. += "core-smirk-disabled"
 	else
 		. += "core-smirk"
+
+	if(end_game)
+		for(var/i in 1 to SUNBEAM_OVERLAYS)
+			var/mutable_appearance/beam_overlay = mutable_appearance('icons/obj/guns/projectiles_tracer.dmi', "tracer_beam")
+			beam_overlay.pixel_y = 32 * i
+			. += beam_overlay
 
 /obj/structure/fleshmind/structure/core/take_damage(damage_amount, damage_type = BRUTE, damage_flag = 0, sound_effect = 1, attack_dir)
 	our_controller?.core_damaged(src)

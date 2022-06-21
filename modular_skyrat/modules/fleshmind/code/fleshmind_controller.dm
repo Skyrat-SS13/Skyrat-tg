@@ -294,6 +294,9 @@
 
 /datum/fleshmind_controller/proc/end_game()
 	addtimer(CALLBACK(src, .proc/fleshmind_end_second_check), 20 SECONDS)
+	for(var/obj/structure/fleshmind/structure/core/iterating_core as anything in cores)
+		iterating_core.end_game = TRUE
+		iterating_core.update_appearance()
 	// Here we summon an ERT to defend the shuttle.
 	make_ert(/datum/ert/asset_protection, 5, "HEAD TO AND BOARD THE EMERGENCY SHUTTLE, DO NOT USE THE FERRY, STOP THE CORRUPTION AT **ALL** COSTS!!!", "the last defense of centcom", "GAMMA", FALSE, TRUE, TRUE, FALSE, TRUE)
 

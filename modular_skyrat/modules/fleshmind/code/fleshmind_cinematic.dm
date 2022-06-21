@@ -5,6 +5,7 @@
 
 /datum/cinematic/fleshmind/play_cinematic()
 	flick("intro_malf", screen)
+	alert_sound_to_playing('modular_skyrat/modules/fleshmind/sound/override_sound.ogg')
 	stoplag(7.6 SECONDS)
 	special_callback?.Invoke()
 

@@ -27,7 +27,6 @@
 		TRAIT_RESISTHIGHPRESSURE,
 		TRAIT_VIRUSIMMUNE,
 		TRAIT_NOHUNGER,
-
 	)
 
 /datum/component/human_corruption/Initialize(datum/fleshmind_controller/incoming_controller)
