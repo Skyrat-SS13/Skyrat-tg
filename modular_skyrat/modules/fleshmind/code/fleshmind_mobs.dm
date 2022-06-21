@@ -1448,7 +1448,6 @@
 		return
 
 	if(iscyborg(mob_to_convert))
-		our_controller.spawn_mob
 		create_mob(/mob/living/simple_animal/hostile/fleshmind/hiborg, mob_to_convert)
 		return
 
@@ -1465,7 +1464,7 @@
 
 /// Creates and transfers a new mob.
 /mob/living/simple_animal/hostile/fleshmind/mechiver/proc/create_mob(new_mob_type, mob/living/old_mob)
-	var/mob/living/simple_animal/hostile/fleshmind/new_mob = new new_mob_type(get_turf(src))
+	var/mob/living/simple_animal/hostile/fleshmind/new_mob = our_controller.spawn_mob(get_turf(src), new_mob_type)
 
 	if(old_mob)
 		new_mob.contained_mob = old_mob
