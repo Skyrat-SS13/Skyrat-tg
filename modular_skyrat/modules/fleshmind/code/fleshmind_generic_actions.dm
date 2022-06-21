@@ -66,3 +66,25 @@
 		if(!(FACTION_FLESHMIND in iterating_mob.faction) && !isobserver(iterating_mob))
 			continue
 		to_chat(iterating_mob, span_purple("<b>FLESHMIND ([owner]):</b> [message]"))
+
+/datum/action/cooldown/fleshmind_plant_weeds
+	name = "Create Wireweed"
+	desc = "Creates a single patch of wireweed at your location."
+	icon_icon = 'icons/obj/items_and_weapons.dmi'
+	background_icon_state = "bg_fugu"
+	button_icon_state = "toyhammer"
+	cooldown_time = 30 SECONDS
+
+/datum/action/cooldown/fleshmind_create_structure/Activate(atom/target)
+	. = ..()
+	var/datum/component/human_corruption/our_component = owner.GetComponent(/datum/component/human_corruption)
+	if(!our_component?.our_controller)
+		return
+	var/datum/fleshmind_controller/owner_controller = our_component.our_controller
+	var/obj/structure/fleshmind/wireweed/under_wireweed = locate() in get_turf(owner)
+	if(!under_wireweed)
+		to_chat(owner, span_warning("There is already wireweed beneath you!"))
+		return
+	owner_controller.spawn_wireweed(get_turf(owner), /obj/structure/fleshmind/wireweed)
+	to_chat(owner, span_green("Wireweed planted!"))
+	StartCooldownSelf()

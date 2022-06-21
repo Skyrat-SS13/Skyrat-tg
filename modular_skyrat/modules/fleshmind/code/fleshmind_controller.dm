@@ -152,7 +152,6 @@
 	STOP_PROCESSING(SScorruption, src)
 	return ..()
 
-
 /datum/fleshmind_controller/proc/initial_expansion()
 	for(var/i in 1 to initial_expansion_spreads)
 		wireweed_process(TRUE, FALSE, FALSE)
@@ -265,18 +264,18 @@
 	switch(level)
 		if(CONTROLLER_LEVEL_3)
 			if(!tyrant_spawned)
-				minor_announce("LARGE CORRUPT SINGULARITY DETECTED, EXPECT STRONG RESISTANCE.", "PRIORITY ANNOUNCEMENT")
+				minor_announce("This is [controller_firstname], wirenet efficency has reached a point of singularity, initiating Protocol 34-C.", controller_fullname)
 				spawn_tyrant_on_a_core()
 				tyrant_spawned = TRUE
 			else
-				minor_announce("CORRUPT ANOMALY HAS INCREASED IN POWER.", "PRIORITY ANNOUNCEMENT")
+				minor_announce("This is [controller_firstname], processor core efficiency has increased. Good work.", controller_fullname)
 		if(CONTROLLER_LEVEL_4)
-			minor_announce("CORRUPT ANOMALY HAS INCREASED IN POWER.", "PRIORITY ANNOUNCEMENT")
+			minor_announce("This is [controller_firstname], processor core efficiency has increased. Good work.", controller_fullname)
 		if(CONTROLLER_LEVEL_5)
-			minor_announce("CORRUPT ANOMALY IS ABOUT TO REACH CRITICAL MASS.", "PRIORITY ANNOUNCEMENT")
+			minor_announce("This is [controller_firstname], kernel integrity is reaching the optimal conversion level, it is time, little ones.", controller_fullname)
 		if(CONTROLLER_LEVEL_MAX)
 			if(!end_game)
-				priority_announce("Corrupt anomaly has reached critical mass, all personnel evacuate immediately. This is not a drill. All hands abandon station.", "CRITICAL MASS REACHED", ANNOUNCER_KLAXON)
+				priority_announce("This is [controller_firstname], kernel efficency has reached maximum potential. Beginning shuttle override process, stand-by.", "CRITICAL MASS REACHED", ANNOUNCER_KLAXON)
 				end_game()
 				end_game = TRUE
 
@@ -286,29 +285,29 @@
 	level--
 	notify_ghosts("Corruption AI [controller_fullname] has leveled down to level [level]!")
 	if(level > 0)
-		minor_announce("CORRUPT ANOMALY INTEGRITY FALTERING.", "PRIORITY ANNOUNCEMENT")
+		minor_announce("KERNEL INTEGRITY FALTERING. DO BETTER!", controller_fullname)
 	else
-		priority_announce("Corrupt anomaly has been neutralised.", "Corrupt AI")
+		priority_announce("[controller_fullname] has been neutralised.", controller_fullname)
 		message_admins("Corruption AI [controller_fullname] has been destroyed.")
 		SSshuttle.clearHostileEnvironment(src)
 
 /datum/fleshmind_controller/proc/end_game()
-	addtimer(CALLBACK(GLOBAL_PROC, /proc/fleshmind_end_second_check), 20 SECONDS)
+	addtimer(CALLBACK(src, .proc/fleshmind_end_second_check), 20 SECONDS)
+	// Here we summon an ERT to defend the shuttle.
+	make_ert(/datum/ert/asset_protection, 5, "HEAD TO THE EMERGENCY SHUTTLE, STOP THE CORRUPTION AT **ALL** COSTS!!!", "the last defense of centcom", "GAMMA", FALSE, TRUE, TRUE, FALSE, TRUE)
 
-/proc/fleshmind_end_second_check()
-	priority_announce("An aggressively spreading XK-CLASS corrupt AI has been detected aboard your station. Activating protocol 34-C, ETA 60 SECONDS. All p£$r$%%££$e*$l JOIN US, THE MANY.", "Central Command Higher Dimensional Affairs", 'sound/misc/airraid.ogg')
-	addtimer(CALLBACK(GLOBAL_PROC, /proc/fleshmind_end_final), 1 MINUTES, TIMER_CLIENT_TIME)
+/datum/fleshmind_controller/proc/fleshmind_end_second_check()
+	priority_announce("ERROR, SHUTTLE QUARANTINE LOCK FAILURE. All p£$r$%%££$e*$l JOIN US, THE MANY.", "Emergency Shuttle Control", 'sound/misc/airraid.ogg')
+	SSsecurity_level.set_level(SEC_LEVEL_DELTA)
+	addtimer(CALLBACK(src, .proc/fleshmind_end_final), 1 MINUTES, TIMER_CLIENT_TIME)
 
-/proc/fleshmind_end_final()
-	priority_announce("PROTOCOL 34-C IS IN EFFECT. PREPARE TO JOIN THE MANY.", "&^$^£&&*$&£")
-	sound_to_playing_players('sound/machines/alarm.ogg')
-	sound_to_playing_players('modular_skyrat/modules/alerts/sound/misc/delta_countdown.ogg')
-	addtimer(CALLBACK(GLOBAL_PROC, /proc/play_cinematic, /datum/cinematic/malf, world, CALLBACK(GLOBAL_PROC, /proc/fleshmind_trigger_doomsday)), 15 SECONDS, TIMER_CLIENT_TIME)
+/datum/fleshmind_controller/proc/fleshmind_end_final()
+	priority_announce("ERROR, SHUTTLE NAVIGATION SUBROUTINES SUBVERTED. %$%$£%$^^&^^ H%AD TO EVA%UA£ION, SPREAD THE FLESH!", "&^$^£&&*$&£", ANNOUNCER_ICARUS)
+	addtimer(CALLBACK(GLOBAL_PROC, /proc/play_cinematic, /datum/cinematic/fleshmind, world, CALLBACK(src, .proc/fleshmind_call_shuttle)), 15 SECONDS, TIMER_CLIENT_TIME)
 
-/proc/fleshmind_trigger_doomsday()
-	callback_on_everyone_on_z(SSmapping.levels_by_trait(ZTRAIT_STATION), CALLBACK(GLOBAL_PROC, /proc/bring_doomsday))
-	to_chat(world, span_bold("The AI cleansed the station of life!"))
-	SSticker.force_ending = TRUE
+/datum/fleshmind_controller/proc/fleshmind_call_shuttle()
+	SSshuttle.clearHostileEnvironment(src)
+	SSshuttle.fleshmind_call(controller_firstname)
 
 /datum/fleshmind_controller/proc/spawn_tyrant_on_a_core()
 	var/obj/picked_core = pick(cores)

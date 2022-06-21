@@ -178,6 +178,15 @@
 	my_turf.immediate_calculate_adjacent_turfs()
 
 /**
+ * Le wireweed door
+ *
+ * Opens and closes.
+ *
+ * Only lets the many in.
+ */
+/obj/structure/fleshmind/structure/wireweed_door
+
+/**
  * The CORE
  *
  * This is the central nervous system of this AI, the CPU if you will.
