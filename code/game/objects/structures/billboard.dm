@@ -65,6 +65,6 @@
 	icon_state = "billboard_roadsign_error"
 
 /obj/structure/billboard/smoothies
-	name = "\improper Spinward Smoothies billboard"
-	desc = "A billboard advertising Spinward Smoothies. "
+	name = "\improper Sector-13 Smoothies billboard" //SKYRAT EDIT - Spinward>Sector13
+	desc = "A billboard advertising Sector-13 Smoothies. " //SKYRAT EDIT - Spinward>Sector13
 	icon_state = "billboard_smoothies"
