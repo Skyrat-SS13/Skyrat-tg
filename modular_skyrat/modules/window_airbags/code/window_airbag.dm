@@ -2,6 +2,13 @@
 	. = ..()
 	AddElement(/datum/element/airbag)
 
+/**
+ * Airbag Element
+ *
+ * Basically a fancy create on destroy. I would love to add a disarm function, but that would mean it would need to be a component.
+ *
+ * And since this is going on every window, an element is more reasonable for performance :)
+ */
 /datum/element/airbag
 	/// The type we spawn when our parent is destroyed
 	var/airbag_type = /obj/item/airbag/immediate_arm
@@ -45,9 +52,9 @@
 	/// Are we currently armed?
 	var/armed = FALSE
 	/// The sound we play when armed
-	var/armed_sound = 'modular_skyrat/modules/inflatables/sound/airbag_armed.ogg'
+	var/armed_sound = 'modular_skyrat/modules/window_airbags/sound/airbag_armed.ogg'
 	/// The sound we play when we go bang
-	var/bang_sound = 'modular_skyrat/modules/inflatables/sound/airbag_bang.ogg'
+	var/bang_sound = 'modular_skyrat/modules/window_airbags/sound/airbag_bang.ogg'
 
 /obj/item/airbag/Initialize(mapload)
 	. = ..()
