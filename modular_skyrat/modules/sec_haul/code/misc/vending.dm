@@ -106,7 +106,7 @@
 					/obj/item/clothing/mask/bandana/red = 3,
 					/obj/item/clothing/gloves/color/black = 3,
 					/obj/item/clothing/under/rank/security/officer/skirt = 3,
-					/obj/item/clothing/under/utility/sec/old = 3,
+					/obj/item/clothing/under/rank/security/skyrat/utility/redsec = 3,
 					/obj/item/clothing/suit/toggle/jacket/sec/old = 3,
 					)
 	premium = list( /obj/item/clothing/under/rank/security/officer/formal = 5,
