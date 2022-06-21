@@ -74,7 +74,7 @@
 		addtimer(CALLBACK(src, .proc/deploy_anchor), 1 SECONDS)
 	addtimer(CALLBACK(src, .proc/bang), detonate_time, TIMER_CLIENT_TIME)
 	armed = TRUE
-	playsound(src, armed_sound, 100)
+	playsound(src, armed_sound, 100, pressure_affected = FALSE)
 	update_appearance()
 
 /obj/item/airbag/proc/deploy_anchor()

@@ -20,6 +20,10 @@
 	/// How quickly we deflate when manually deflated.
 	var/manual_deflation_time = 3 SECONDS
 
+/obj/structure/inflatable/Initialize(mapload)
+	. = ..()
+	air_update_turf(TRUE)
+
 /obj/structure/inflatable/ex_act(severity)
 	switch(severity)
 		if(EXPLODE_DEVASTATE)
