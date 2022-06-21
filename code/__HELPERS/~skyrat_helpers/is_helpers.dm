@@ -6,7 +6,7 @@
 #define issynthhuman(A) (is_species(A,/datum/species/robotic/synthetic_human))
 //Actual Species
 #define isvox(A) (is_species(A,/datum/species/vox))
-#define isvoxprimalis(A) (is_species(A,/datum/species/vox/primalis))
+#define isvoxprimalis(A) (is_species(A,/datum/species/vox_primalis))
 #define ispodweak(A) (is_species(A,/datum/species/pod/podweak))
 #define isxenohybrid(A) (is_species(A,/datum/species/xeno))
 #define isdwarf(A) (is_species(A,/datum/species/dwarf))
