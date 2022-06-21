@@ -493,6 +493,8 @@
 			continue
 		if(iterating_human.stat != CONSCIOUS)
 			continue
+		if(faction_check(faction_types, iterating_human.faction))
+			continue
 		possible_candidates += iterating_human
 
 	if(LAZYLEN(possible_candidates))
