@@ -361,7 +361,6 @@
 		do_attack_animation(thing, ATTACK_EFFECT_PUNCH)
 		return TRUE
 
-
 /obj/structure/fleshmind/structure/core/proc/retaliate_effect()
 	whip_those_fuckers()
 	rally_troops()
