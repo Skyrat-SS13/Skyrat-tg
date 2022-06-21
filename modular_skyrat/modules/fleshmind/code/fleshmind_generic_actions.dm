@@ -19,9 +19,6 @@
 	if(!our_component?.our_controller)
 		to_chat(owner, span_warning("There is no hive link to tunnel this power through!"))
 		return
-	if(!do_after(owner, 2 SECONDS))
-		to_chat(owner, span_warning("Unable to place due to movement!"))
-		return
 	var/datum/fleshmind_controller/owner_controller = our_component.our_controller
 	var/obj/structure/fleshmind/wireweed/under_wireweed = locate() in get_turf(owner)
 	if(!under_wireweed)
@@ -29,6 +26,9 @@
 		return
 	var/picked_stucture_type = tgui_input_list(owner, "Pick structure type!", "Structure Type", possible_structures)
 	if(!picked_stucture_type)
+		return
+	if(!do_after(owner, 2 SECONDS))
+		to_chat(owner, span_warning("Unable to place due to movement!"))
 		return
 	if(QDELETED(owner_controller)) // Input is not async
 		return

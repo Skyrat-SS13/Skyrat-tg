@@ -215,7 +215,7 @@
 	toggle_door()
 	to_chat(user, span_notice("You [door_state ? "close" : "open"] [src]!"))
 
-/obj/structure/fleshmind/structure/wireweed_door/Bump(atom/bumped_atom)
+/obj/structure/fleshmind/structure/wireweed_door/Bumped(atom/movable/bumped_atom)
 	. = ..()
 	if(!isliving(bumped_atom))
 		return
