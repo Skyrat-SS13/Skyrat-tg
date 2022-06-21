@@ -118,6 +118,7 @@
 		door_state = TRUE
 		flick("[base_icon_state]_closing", src)
 	density = door_state
+	air_update_turf(TRUE)
 	update_appearance()
 
 

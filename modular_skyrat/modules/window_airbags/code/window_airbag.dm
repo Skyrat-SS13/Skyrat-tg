@@ -39,12 +39,13 @@
 // A fun little gadget!
 /obj/item/airbag
 	name = "airbag"
-	desc = "A small package with an explosive package attached."
+	desc = "A small package with an explosive package attached. Stand clear!"
 	icon = 'modular_skyrat/modules/inflatables/icons/inflatable.dmi'
 	icon_state = "airbag_safe"
 	base_icon_state = "airbag"
+	max_integrity = 10
 	/// The time in which we deploy
-	var/detonate_time = 6.7 SECONDS
+	var/detonate_time = 2 SECONDS
 	/// The item we drop on detonation
 	var/drop_type = /obj/structure/inflatable/window_airbag
 	/// Are we immediately armed?
@@ -74,7 +75,7 @@
 		addtimer(CALLBACK(src, .proc/deploy_anchor), 1 SECONDS)
 	addtimer(CALLBACK(src, .proc/bang), detonate_time, TIMER_CLIENT_TIME)
 	armed = TRUE
-	playsound(src, armed_sound, 100, pressure_affected = FALSE)
+	playsound(src, armed_sound, 100)
 	update_appearance()
 
 /obj/item/airbag/proc/deploy_anchor()
@@ -85,7 +86,7 @@
 
 /obj/item/airbag/proc/bang()
 	var/obj/created_object = new drop_type(get_turf(src))
-	playsound(src, bang_sound, 100)
+	playsound(src, bang_sound, 100, pressure_affected = FALSE)
 	do_smoke(1, 1, created_object, get_turf(src))
 	qdel(src)
 
