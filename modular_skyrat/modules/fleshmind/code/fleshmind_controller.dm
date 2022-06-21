@@ -288,7 +288,7 @@
 	if(level > 0)
 		minor_announce("KERNEL INTEGRITY FALTERING. DO BETTER!", controller_fullname, sound = 'sound/ai/default/aimalf.ogg')
 	else
-		priority_announce("[controller_fullname] has been neutralised.", controller_fullname)
+		priority_announce("[controller_fullname] has been neutralised.", "Corrupt AI Kernel OFFLINE")
 		message_admins("Corruption AI [controller_fullname] has been destroyed.")
 		SSshuttle.clearHostileEnvironment(src)
 
