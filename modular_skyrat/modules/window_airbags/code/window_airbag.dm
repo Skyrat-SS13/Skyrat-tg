@@ -60,6 +60,7 @@
 	. = ..()
 	if(immediate_arm)
 		arm()
+		anchored = TRUE
 
 /obj/item/airbag/update_icon_state()
 	. = ..()
@@ -69,14 +70,15 @@
 	if(armed)
 		return
 	balloon_alert_to_viewers("armed!")
-	addtimer(CALLBACK(src, .proc/deploy_anchor), 1 SECONDS)
+	if(!anchored)
+		addtimer(CALLBACK(src, .proc/deploy_anchor), 1 SECONDS)
 	addtimer(CALLBACK(src, .proc/bang), detonate_time, TIMER_CLIENT_TIME)
 	armed = TRUE
 	playsound(src, armed_sound, 100)
 	update_appearance()
 
 /obj/item/airbag/proc/deploy_anchor()
-	if(!isturf(loc))
+	if(!isturf(loc) || anchored)
 		return
 	balloon_alert_to_viewers("anchor deployed!")
 	anchored = TRUE
