@@ -1488,4 +1488,6 @@
 	maxHealth = 140
 	speak = list(
 		"OOK OOK OOK!!!",
+		"SEEK!",
+		"OOOOOOOOOOK!!!",
 	)
