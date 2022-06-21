@@ -183,15 +183,19 @@
  * Opens and closes.
  *
  * Only lets the many in.
+ *
+ * Let's reinvent the door
  */
 /obj/structure/fleshmind/structure/wireweed_door
 	name = "wireweed door"
 	desc = "A door made of wireweed."
+	icon = 'modular_skyrat/modules/fleshmind/icons/fleshmind_structures.dmi'
 	icon_state = "door"
 	base_icon_state = "door"
 	can_atmos_pass = ATMOS_PASS_DENSITY
 	max_integrity = 150
 	disabled_sprite = FALSE
+	color = "#CCFFFF"
 	/// Are we open(FALSE), or are we closed(TRUE)?
 	var/door_state = TRUE
 	/// The sound we play when changing states
@@ -210,6 +214,15 @@
 		return
 	toggle_door()
 	to_chat(user, span_notice("You [door_state ? "close" : "open"] [src]!"))
+
+/obj/structure/fleshmind/structure/wireweed_door/Bump(atom/bumped_atom)
+	. = ..()
+	if(!isliving(bumped_atom))
+		return
+	var/mob/living/bumped_mob = bumped_atom
+	if(!faction_check(faction_types, bumped_mob.faction))
+		return
+	toggle_door()
 
 /obj/structure/fleshmind/structure/wireweed_door/update_icon_state()
 	. = ..()
