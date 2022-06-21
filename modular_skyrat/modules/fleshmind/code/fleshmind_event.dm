@@ -5,7 +5,6 @@
 	min_players = 100
 	earliest_start = 1 HOURS
 
-
 /datum/round_event/fleshmind
 	fakeable = TRUE
 	announceWhen = 400
@@ -36,8 +35,6 @@
 	if(activeFor > 200 && !core_made)
 		make_core()
 		core_made = TRUE
-
-
 
 /datum/round_event/fleshmind/proc/make_core()
 
