@@ -320,8 +320,8 @@
 	icon = 'modular_skyrat/master_files/icons/mob/landmarks.dmi'
 
 /datum/job/customs_agent
-	title = JOB_CUSTOMS_AGENT // No, you don't get to ship ten kilograms of cocaine to the Spinward Stellar Coalition.
-	description = "Inspect the packages coming to and from the station, protect the cargo department, beat the shit out of people trying to ship Cocaine to the Spinward Stellar Coalition."
+	title = JOB_CUSTOMS_AGENT // No, you don't get to ship ten kilograms of cocaine to the Marketeers.
+	description = "Inspect the packages coming to and from the station, protect the cargo department, beat the shit out of people trying to ship Cocaine off-station."
 	department_head = list(JOB_QUARTERMASTER)
 	faction = FACTION_STATION
 	total_positions = 2
