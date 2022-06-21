@@ -7,7 +7,7 @@
  *
  * PROC IS NOT ASYNC.
  */
-/proc/make_ert(ert_type, teamsize = 5, mission_objective_override = "Assist the station.", poll_description = "an ERT team", code = "UNKNOWN", enforce_human = FALSE, open_armory_doors = FALSE, leader_experience = FALSE, random_names = TRUE, notify_players = TRUE)
+/proc/make_ert(ert_type, teamsize = 5, mission_objective_override = "Assist the station.", poll_description = "an ERT team", code = "UNKNOWN", enforce_human = FALSE, open_armory_doors = FALSE, leader_experience = FALSE, random_names = TRUE, notify_players = TRUE, spawnpoint_override)
 	if(!ert_type)
 		return
 
@@ -23,7 +23,12 @@
 	created_ert_datum.notify_players = notify_players
 	created_ert_datum.code = code
 
-	var/list/spawnpoints = GLOB.emergencyresponseteamspawn
+	var/list/spawnpoints
+
+	if(spawnpoint_override)
+		spawnpoints = spawnpoint_override
+	else
+		spawnpoints = GLOB.emergencyresponseteamspawn
 
 	if(!LAZYLEN(spawnpoints))
 		CRASH("make_ert had no ERT spawnpoints to choose from!")
