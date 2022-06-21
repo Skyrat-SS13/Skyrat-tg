@@ -276,7 +276,7 @@
 	/// Whether we do a retaliate effect
 	var/does_retaliate_effect = TRUE
 	/// Cooldown for retaliate effect
-	var/retaliate_effect_cooldown = 2 MINUTES
+	var/retaliate_effect_cooldown = 1 MINUTES
 	COOLDOWN_DECLARE(retaliate_effect)
 
 /obj/structure/fleshmind/structure/core/Initialize(mapload, spawn_controller = TRUE)
