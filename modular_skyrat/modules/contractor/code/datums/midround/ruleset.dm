@@ -32,11 +32,6 @@
 		return FALSE
 	return ..()
 
-/*
-/datum/dynamic_ruleset/midround/from_ghosts/contractor/generate_ruleset_body(mob/applicant)
-	..()
-	return applicant*/
-
 /datum/dynamic_ruleset/midround/from_ghosts/contractor/finish_setup(mob/new_character, index)
 	..()
 	new_character.forceMove(pick_n_take(spawn_locs))
