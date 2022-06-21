@@ -10,6 +10,8 @@ This PR changes the previously empty medical ERT belt to be filled with;
 1 laser scalpel (scalpel + bonesaw)
 1 advanced retractor(retractor + hemo-something)
 1 advanced cautery(cautery + drill)
+1 bone gel
+1 surgical drapes
 
 
 ### TG Proc/File Changes:
