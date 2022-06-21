@@ -14,7 +14,7 @@
 	filedesc = "Marlowe Treeby's Art Galaxy"
 	category = PROGRAM_CATEGORY_CREW
 	program_icon_state = "dummy"
-	extended_desc = "This program connects to a Spinward Sector community art site for viewing and printing art."
+	extended_desc = "This program connects to a  Sector-13 community art site for viewing and printing art." // SKYRAT EDIT - Spinward>Sector13
 	transfer_access = list(ACCESS_LIBRARY)
 	usage_flags = PROGRAM_CONSOLE
 	requires_ntnet = TRUE
