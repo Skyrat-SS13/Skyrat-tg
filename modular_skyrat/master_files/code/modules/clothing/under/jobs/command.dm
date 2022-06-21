@@ -6,8 +6,9 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/command.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/command.dmi'
 
-/////////////////////////////////////
-////////////// CAPTAIN //////////////
+/*
+*	CAPTAIN
+*/
 
 /obj/item/clothing/under/rank/captain/skyrat/humble
 	desc = "It's a blue jumpsuit with some small gold markings denoting the rank of \"Captain\", more humble than it's sister."
@@ -20,6 +21,14 @@
 	icon_state = "capkilt"
 	inhand_icon_state = "kilt"
 
+/obj/item/clothing/under/rank/captain/skyrat/imperial
+	name = "captain's naval jumpsuit"
+	desc = "A white naval suit adorned with golden epaulets and a rank badge denoting a Captain. There are two ways to destroy a person, kill him, or ruin his reputation."
+	//Rank pins of the Grand Admiral, not a Captain.
+	icon_state = "impcap"
+	inhand_icon_state = "w_suit"
+	can_adjust = FALSE
+
 //Donor item for Gandalf - all donors have access
 /obj/item/clothing/under/rank/captain/skyrat/black
 	name = "captain's black suit"
@@ -28,9 +37,9 @@
 	inhand_icon_state = "w_suit"
 	can_adjust = FALSE
 
-////////////////////////////////////////
-////////////// BLUESHIELD //////////////
-
+/*
+*	BLUESHIELD
+*/
 //Why is this in command.dm? Simple: Centcomm.dmi will already be packed with CC/NTNavy/AD/LL/SOL/FTU - all of them more event-based clothes, while this will appear
 //on-station often.
 
@@ -70,8 +79,9 @@
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
-///////////////////////////////////////////
-////////////// NT CONSULTANT //////////////
+/*
+*	NT CONSULTANT
+*/
 //See Blueshield note - tl;dr, this role is a station role, while Centcomm.dmi is more event roles
 
 /obj/item/clothing/under/rank/nanotrasen_consultant
@@ -94,8 +104,9 @@
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
-//////////////////////////////////
-////////////// MISC //////////////
+/*
+*	UNASSIGNED (Any head of staff)
+*/
 
 /obj/item/clothing/under/rank/captain/skyrat/utility
 	name = "command utility uniform"
@@ -107,6 +118,32 @@
 /obj/item/clothing/under/rank/captain/skyrat/utility/syndicate
 	armor = list(MELEE = 10, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 40) //Same stats as the tactical turtleneck.
 	has_sensor = NO_SENSORS
+
+/obj/item/clothing/under/rank/captain/skyrat/imperial/generic
+	desc = "A grey naval suit with a rank badge denoting an Officer. Doesn't protect against blaster fire."
+	name = "grey officer's naval jumpsuit"
+	inhand_icon_state = "g_suit"
+	icon_state = "impcom"
+
+/obj/item/clothing/under/rank/captain/skyrat/imperial/generic/pants
+	desc = "A grey naval suit over black pants, with a rank badge denoting an Officer. Doesn't protect against blaster fire."
+	name = "officer's naval jumpsuit"
+	icon_state = "impcom_pants"
+
+/obj/item/clothing/under/rank/captain/skyrat/imperial/generic/grey
+	desc = "A dark grey naval suit with a rank badge denoting an Officer. Doesn't protect against blaster fire."
+	name = "dark grey officer's naval jumpsuit"
+	icon_state = "impcom_dark"
+
+/obj/item/clothing/under/rank/captain/skyrat/imperial/generic/red
+	desc = "A red naval suit with a rank badge denoting an Officer. Doesn't protect against blaster fire."
+	name = "red officer's naval jumpsuit"
+	inhand_icon_state = "r_suit"
+	icon_state = "impcom_red"
+
+/*
+*	MISC
+*/
 
 /obj/item/clothing/under/rank/captain/skyrat/pilot
 	name = "shuttle pilot's jumpsuit"

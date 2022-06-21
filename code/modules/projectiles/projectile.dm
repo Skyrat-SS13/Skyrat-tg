@@ -683,7 +683,7 @@
 		AddElement(/datum/element/embed, projectile_payload = shrapnel_type)
 	if(!log_override && firer && original)
 		log_combat(firer, original, "fired at", src, "from [get_area_name(src, TRUE)]")
-	if(direct_target && (get_dist(direct_target, get_turf(src)) <= 1)) // point blank shots
+	if(direct_target && (get_dist(direct_target, get_turf(fired_from)) <= 1)) // point blank shots // SKYRAT EDIT - ORIGINAL: if(direct_target && (get_dist(direct_target, get_turf(src)) <= 1))
 		process_hit(get_turf(direct_target), direct_target)
 		if(QDELETED(src))
 			return

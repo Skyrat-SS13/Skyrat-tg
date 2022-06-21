@@ -108,6 +108,7 @@
 #define SPECIES_TAJARAN "tajaran"
 #define SPECIES_UNATHI "unathi"
 #define SPECIES_VOX "vox"
+#define SPECIES_VOX_PRIMALIS "vox_primalis"
 #define SPECIES_VULP "vulpkanin"
 #define SPECIES_XENO "xeno"
 #define SPECIES_GHOUL "ghoul"

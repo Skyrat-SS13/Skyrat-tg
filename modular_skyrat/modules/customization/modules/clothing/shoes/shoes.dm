@@ -94,13 +94,6 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/feet.dmi'
 	icon_state = "sportshoe"
 
-/obj/item/clothing/shoes/jackboots/thigh
-	name = "thigh boots"
-	desc = "Black leather boots that go up to the thigh."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/shoes.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/feet.dmi'
-	icon_state = "thighboots"
-
 /obj/item/clothing/shoes/jackboots/knee
 	name = "knee boots"
 	desc = "Black leather boots that go up to the knee."
