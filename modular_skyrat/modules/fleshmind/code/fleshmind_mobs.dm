@@ -1483,3 +1483,9 @@
 	name = "Mauler"
 	desc = "A mutated abomination, it resembles a monkey."
 	icon_state = "mauler_monkey"
+	move_to_delay = 2 // We want it to be quite fast.
+	health = 140
+	maxHealth = 140
+	speak = list(
+		"OOK OOK OOK!!!",
+	)
