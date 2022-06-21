@@ -87,6 +87,7 @@
 				affected_cyborgs += owned_borg
 				borg_flw += "[ADMIN_LOOKUPFLW(owned_borg)], "
 				borg_txt += "[owned_borg.name]([owned_borg.key]), "
+				owned_borg.lawsync() //SKYRAT ADDITION
 
 	borg_txt = borg_txt.Join()
 	GLOB.lawchanges.Add("[time] <B>:</B> [user.name]([user.key]) used [src.name] on [ainame]([aikey]).[law2log ? " The law specified [law2log]" : ""], [length(affected_cyborgs) ? ", impacting synced borgs [borg_txt]" : ""]")
@@ -510,7 +511,7 @@
 
 /obj/item/ai_module/syndicate // This one doesn't inherit from ion boards because it doesn't call ..() in transmitInstructions. ~Miauw
 	name = "hacked circuitry" //SKYRAT CHANGE
-	desc = "A suspicious circuit board modified beyond recognition. It appears to be a module for bleeding edge technology." //SKYRAT CHANGE 
+	desc = "A suspicious circuit board modified beyond recognition. It appears to be a module for bleeding edge technology." //SKYRAT CHANGE
 	laws = list("")
 	special_desc_requirement = EXAMINE_CHECK_JOB // Skyrat edit
 	special_desc_jobs = list("Scientist", "Roboticist", "Research Director", "Cyborg", "AI") //SKYRAT CHANGE
