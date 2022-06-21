@@ -24,7 +24,10 @@
 	if(!under_wireweed)
 		to_chat(owner, span_warning("There needs to be wireweed underneath you!"))
 		return
-	var/picked_stucture_type = tgui_input_list(owner, "Pick structure type!", "Structure Type", possible_structures)
+	var/list/built_radial_menu = list()
+	for(var/obj/iterating_type as anything in possible_structures)
+		built_radial_menu[iterating_type] = image(icon = initial(iterating_type.icon), icon_state = initial(iterating_type.icon_state))
+	var/picked_stucture_type = show_radial_menu(owner, owner, built_radial_menu, radius = 40)
 	if(!picked_stucture_type)
 		return
 	if(!do_after(owner, 2 SECONDS))
@@ -34,6 +37,7 @@
 		return
 	owner_controller.spawn_structure(get_turf(owner), picked_stucture_type)
 	StartCooldownSelf()
+
 
 /datum/action/cooldown/fleshmind_create_structure/basic
 	name = "Create Basic Structure"
