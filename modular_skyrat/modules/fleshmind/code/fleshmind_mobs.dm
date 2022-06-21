@@ -1479,3 +1479,6 @@
  *
  * A nasty looking converted monkey. Sadly, we can't use the monkey AI controller.
  */
+/mob/living/simple_animal/hostile/fleshmind/mauler_monkey
+	name = "Mauler"
+	desc = "A mutated abomination, it resembles a monkey."
