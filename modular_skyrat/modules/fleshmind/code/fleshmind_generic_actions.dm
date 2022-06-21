@@ -71,7 +71,7 @@
 	desc = "Sends a message to all other sentient fleshmind beings."
 	icon_icon = 'icons/mob/actions/actions_changeling.dmi'
 	background_icon_state = "bg_fugu"
-	button_icon_state = "fleshmind_link"
+	button_icon_state = "hivemind_link"
 
 /datum/action/innate/fleshmind_flesh_chat/Activate(atom/target)
 	var/message = tgui_input_text(owner, "Send a message to the fleshmind.", "Flesh Chat")
