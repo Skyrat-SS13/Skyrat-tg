@@ -2,7 +2,7 @@
  * fleshmind basetype(abstract)
  */
 /obj/structure/fleshmind
-	icon = 'modular_skyrat/modules/fleshmind/icons/hivemind_structures.dmi'
+	icon = 'modular_skyrat/modules/fleshmind/icons/fleshmind_structures.dmi'
 	icon_state = "infected_machine"
 	anchored = TRUE
 	/// Our faction

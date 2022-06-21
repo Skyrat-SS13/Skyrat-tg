@@ -1,11 +1,11 @@
 /datum/action/cooldown/fleshmind_create_structure
-	name = "Create Structure"
-	desc = "Creates a structure of your choice at your location(must be on wireweed)."
+	name = "Create Tech Structure"
+	desc = "Creates a tech structure of your choice at your location(must be on wireweed)."
 	icon_icon = 'icons/obj/items_and_weapons.dmi'
 	background_icon_state = "bg_fugu"
-	button_icon_state = "toyhammer"
+	button_icon_state = "blueprints"
 	cooldown_time = 2 MINUTES
-	var/static/list/possible_structures = list(
+	var/list/possible_structures = list(
 		/obj/structure/fleshmind/structure/babbler,
 		/obj/structure/fleshmind/structure/whisperer,
 		/obj/structure/fleshmind/structure/modulator,
@@ -15,9 +15,12 @@
 	)
 
 /datum/action/cooldown/fleshmind_create_structure/Activate(atom/target)
-	. = ..()
 	var/datum/component/human_corruption/our_component = owner.GetComponent(/datum/component/human_corruption)
 	if(!our_component?.our_controller)
+		to_chat(owner, span_warning("There is no hive link to tunnel this power through!"))
+		return
+	if(!do_after(owner, 2 SECONDS))
+		to_chat(owner, span_warning("Unable to place due to movement!"))
 		return
 	var/datum/fleshmind_controller/owner_controller = our_component.our_controller
 	var/obj/structure/fleshmind/wireweed/under_wireweed = locate() in get_turf(owner)
@@ -32,6 +35,16 @@
 	owner_controller.spawn_structure(get_turf(owner), picked_stucture_type)
 	StartCooldownSelf()
 
+/datum/action/cooldown/fleshmind_create_structure/basic
+	name = "Create Basic Structure"
+	desc = "Creates a basic structure of your choice at your location(must be on wireweed)."
+	button_icon_state = "mjollnir1"
+	possible_structures = list(
+		/obj/structure/fleshmind/structure/wireweed_door,
+		/obj/structure/fleshmind/structure/wireweed_wall
+	)
+	cooldown_time = 5 SECONDS
+
 /datum/action/cooldown/fleshmind_flesh_call
 	name = "Call Flesh Reinforcements"
 	desc = "Gets all fleshmind mobs to come to your location in a radius."
@@ -41,7 +54,6 @@
 	cooldown_time = 2 MINUTES
 
 /datum/action/cooldown/fleshmind_flesh_call/Activate(atom/target)
-	. = ..()
 	for(var/mob/living/simple_animal/hostile/iterating_mob in view(DEFAULT_VIEW_RANGE, owner))
 		if(!faction_check(owner.faction, iterating_mob))
 			continue
@@ -55,10 +67,9 @@
 	desc = "Sends a message to all other sentient fleshmind beings."
 	icon_icon = 'icons/mob/actions/actions_changeling.dmi'
 	background_icon_state = "bg_fugu"
-	button_icon_state = "hivemind_link"
+	button_icon_state = "fleshmind_link"
 
 /datum/action/innate/fleshmind_flesh_chat/Activate(atom/target)
-	. = ..()
 	var/message = tgui_input_text(owner, "Send a message to the fleshmind.", "Flesh Chat")
 	if(!message)
 		return
@@ -73,18 +84,19 @@
 	icon_icon = 'icons/obj/items_and_weapons.dmi'
 	background_icon_state = "bg_fugu"
 	button_icon_state = "toyhammer"
-	cooldown_time = 30 SECONDS
+	cooldown_time = 10 SECONDS
 
-/datum/action/cooldown/fleshmind_create_structure/Activate(atom/target)
-	. = ..()
+/datum/action/cooldown/fleshmind_plant_weeds/Activate(atom/target)
 	var/datum/component/human_corruption/our_component = owner.GetComponent(/datum/component/human_corruption)
 	if(!our_component?.our_controller)
+		to_chat(owner, span_warning("There is no hive link to tunnel this power through!"))
 		return
 	var/datum/fleshmind_controller/owner_controller = our_component.our_controller
 	var/obj/structure/fleshmind/wireweed/under_wireweed = locate() in get_turf(owner)
-	if(!under_wireweed)
+	if(under_wireweed)
 		to_chat(owner, span_warning("There is already wireweed beneath you!"))
 		return
 	owner_controller.spawn_wireweed(get_turf(owner), /obj/structure/fleshmind/wireweed)
 	to_chat(owner, span_green("Wireweed planted!"))
 	StartCooldownSelf()
+

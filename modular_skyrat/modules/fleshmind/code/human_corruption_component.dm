@@ -3,6 +3,8 @@
 	var/datum/fleshmind_controller/our_controller
 	var/static/list/actions_to_give = list(
 		/datum/action/cooldown/fleshmind_create_structure,
+		/datum/action/cooldown/fleshmind_create_structure/basic,
+		/datum/action/cooldown/fleshmind_plant_weeds,
 		/datum/action/cooldown/fleshmind_flesh_call,
 		/datum/action/innate/fleshmind_flesh_chat,
 	)
@@ -73,7 +75,7 @@
 /datum/component/human_corruption/proc/update_parent_overlays(atom/source, list/new_overlays)
 	SIGNAL_HANDLER
 
-	new_overlays += mutable_appearance('modular_skyrat/modules/fleshmind/icons/hivemind_mobs.dmi', "human_overlay")
+	new_overlays += mutable_appearance('modular_skyrat/modules/fleshmind/icons/fleshmind_mobs.dmi', "human_overlay")
 
 /datum/component/human_corruption/proc/action_destroyed(datum/action/deleting_action, force) // What why are we deleting!!
 	SIGNAL_HANDLER

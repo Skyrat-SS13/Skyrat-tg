@@ -8,7 +8,7 @@
 /obj/structure/fleshmind/structure
 	name = "this shouldn't be here"
 	desc = "report me to coders"
-	icon = 'modular_skyrat/modules/fleshmind/icons/hivemind_machines.dmi'
+	icon = 'modular_skyrat/modules/fleshmind/icons/fleshmind_machines.dmi'
 	icon_state = "infected_machine"
 	base_icon_state = "infected_machine"
 	density = TRUE
@@ -163,7 +163,7 @@
 /obj/structure/fleshmind/structure/wireweed_wall
 	name = "wireweed wall"
 	desc = "A wall made of wireweed."
-	icon = 'modular_skyrat/modules/fleshmind/icons/hivemind_structures.dmi'
+	icon = 'modular_skyrat/modules/fleshmind/icons/fleshmind_structures.dmi'
 	icon_state = "wireweed_wall"
 	base_icon_state = "wireweed_wall"
 	density = TRUE
@@ -185,6 +185,48 @@
  * Only lets the many in.
  */
 /obj/structure/fleshmind/structure/wireweed_door
+	name = "wireweed door"
+	desc = "A door made of wireweed."
+	icon_state = "door"
+	base_icon_state = "door"
+	can_atmos_pass = ATMOS_PASS_DENSITY
+	max_integrity = 150
+	disabled_sprite = FALSE
+	/// Are we open(FALSE), or are we closed(TRUE)?
+	var/door_state = TRUE
+	/// The sound we play when changing states
+	var/door_sound = 'modular_skyrat/modules/black_mesa/sound/xen_door.ogg'
+
+/obj/structure/fleshmind/structure/wireweed_door/Initialize(mapload)
+	. = ..()
+	density = door_state
+	opacity = door_state
+
+/obj/structure/fleshmind/structure/wireweed_door/attack_hand(mob/living/user, list/modifiers)
+	. = ..()
+	if(!faction_check(faction_types, user.faction))
+		return
+	if(!user.can_interact_with(src))
+		return
+	toggle_door()
+	to_chat(user, span_notice("You [door_state ? "close" : "open"] [src]!"))
+
+/obj/structure/fleshmind/structure/wireweed_door/update_icon_state()
+	. = ..()
+	icon_state = "[base_icon_state]_[door_state ? "closed" : "open"]"
+
+/obj/structure/fleshmind/structure/wireweed_door/proc/toggle_door()
+	if(door_state) // opening
+		door_state = FALSE
+		flick("door_opening", src)
+	else // Closing
+		door_state = TRUE
+		flick("door_closing", src)
+	density = door_state
+	opacity = door_state
+	playsound(src, door_sound, 100)
+	update_appearance()
+
 
 /**
  * The CORE
@@ -198,7 +240,7 @@
 /obj/structure/fleshmind/structure/core
 	name = "\improper UNASSIGNED Processor Unit"
 	desc = "This monsterous machine is definitely watching you."
-	icon = 'modular_skyrat/modules/fleshmind/icons/hivemind_machines.dmi'
+	icon = 'modular_skyrat/modules/fleshmind/icons/fleshmind_machines.dmi'
 	icon_state = "core"
 	base_icon_state = "core"
 	density = TRUE
@@ -339,7 +381,7 @@
 /obj/structure/fleshmind/structure/babbler
 	name = "\improper Babbler"
 	desc = "A column-like structure with lights."
-	icon = 'modular_skyrat/modules/fleshmind/icons/hivemind_machines.dmi'
+	icon = 'modular_skyrat/modules/fleshmind/icons/fleshmind_machines.dmi'
 	icon_state = "antenna"
 	base_icon_state = "antenna"
 	max_integrity = 100
@@ -422,7 +464,7 @@
 /obj/structure/fleshmind/structure/screamer
 	name = "\improper Tormented Head"
 	desc = "A head impaled on a metal tendril. Still twitching, still living, still screaming."
-	icon = 'modular_skyrat/modules/fleshmind/icons/hivemind_machines.dmi'
+	icon = 'modular_skyrat/modules/fleshmind/icons/fleshmind_machines.dmi'
 	icon_state = "head"
 	base_icon_state = "head"
 	max_integrity = 120
@@ -454,7 +496,7 @@
 /obj/structure/fleshmind/structure/whisperer
 	name = "\improper Whisperer"
 	desc = "A small pulsating orb with no apparent purpose, it emits a slight hum."
-	icon = 'modular_skyrat/modules/fleshmind/icons/hivemind_machines.dmi'
+	icon = 'modular_skyrat/modules/fleshmind/icons/fleshmind_machines.dmi'
 	icon_state = "orb"
 	base_icon_state = "orb"
 	max_integrity = 100
@@ -509,7 +551,7 @@
 /obj/structure/fleshmind/structure/modulator
 	name = "\improper Psi-Modulator"
 	desc = "A strange pyramid shaped machine that eminates a soft hum and glow. Your head hurts just by looking at it."
-	icon = 'modular_skyrat/modules/fleshmind/icons/hivemind_machines.dmi'
+	icon = 'modular_skyrat/modules/fleshmind/icons/fleshmind_machines.dmi'
 	icon_state = "psy"
 	max_integrity = 100
 	base_icon_state = "psy"
@@ -534,7 +576,7 @@
 /obj/structure/fleshmind/structure/assembler
 	name = "\improper Assembler"
 	desc = "This cylindrical machine whirrs and whispers, it has a small opening in the middle."
-	icon = 'modular_skyrat/modules/fleshmind/icons/hivemind_machines.dmi'
+	icon = 'modular_skyrat/modules/fleshmind/icons/fleshmind_machines.dmi'
 	icon_state = "spawner"
 	base_icon_state = "spawner"
 	density = FALSE
@@ -666,7 +708,7 @@
 
 /obj/projectile/fleshmind_flechette
 	name = "organic flechette"
-	icon = 'modular_skyrat/modules/fleshmind/icons/hivemind_structures.dmi'
+	icon = 'modular_skyrat/modules/fleshmind/icons/fleshmind_structures.dmi'
 	icon_state = "goo_proj"
 	damage = 30
 	damage_type = BURN

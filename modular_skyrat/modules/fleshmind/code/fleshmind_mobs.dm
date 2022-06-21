@@ -5,7 +5,7 @@
  */
 /mob/living/simple_animal/hostile/fleshmind
 	name = "broken"
-	icon = 'modular_skyrat/modules/fleshmind/icons/hivemind_mobs.dmi'
+	icon = 'modular_skyrat/modules/fleshmind/icons/fleshmind_mobs.dmi'
 	icon_state = "error"
 	faction = list(FACTION_FLESHMIND)
 	speak = list("The flesh yearns for your soul.", "The flesh is broken without you.", "The flesh does not discriminate.", "Join the flesh.")
@@ -54,6 +54,10 @@
 	COOLDOWN_DECLARE(special_ability_cooldown)
 	/// Default actions to give the mob
 	var/static/list/default_actions = list(
+		/datum/action/cooldown/fleshmind_create_structure,
+		/datum/action/cooldown/fleshmind_create_structure/basic,
+		/datum/action/cooldown/fleshmind_plant_weeds,
+		/datum/action/cooldown/fleshmind_flesh_call,
 		/datum/action/innate/fleshmind_flesh_chat,
 	)
 
@@ -1176,7 +1180,7 @@
 
 
 /obj/effect/temp_visual/phaser
-	icon = 'modular_skyrat/modules/fleshmind/icons/hivemind_mobs.dmi'
+	icon = 'modular_skyrat/modules/fleshmind/icons/fleshmind_mobs.dmi'
 	icon_state = "phaser-1"
 	base_icon_state = "phaser"
 	duration = 30 SECONDS

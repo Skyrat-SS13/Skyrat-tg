@@ -205,9 +205,9 @@
 	SIGNAL_HANDLER
 
 	if(starting_up)
-		overlays += mutable_appearance('modular_skyrat/modules/fleshmind/icons/hivemind_machines.dmi', "rebuild")
+		overlays += mutable_appearance('modular_skyrat/modules/fleshmind/icons/fleshmind_machines.dmi', "rebuild")
 	else
-		overlays += mutable_appearance('modular_skyrat/modules/fleshmind/icons/hivemind_machines.dmi', set_overlay)
+		overlays += mutable_appearance('modular_skyrat/modules/fleshmind/icons/fleshmind_machines.dmi', set_overlay)
 
 /datum/component/machine_corruption/proc/update_name()
 	var/obj/machinery/parent_machinery = parent
