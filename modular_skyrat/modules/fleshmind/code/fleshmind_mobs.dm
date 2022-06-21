@@ -1482,3 +1482,4 @@
 /mob/living/simple_animal/hostile/fleshmind/mauler_monkey
 	name = "Mauler"
 	desc = "A mutated abomination, it resembles a monkey."
+	icon_state = "mauler_monkey"
