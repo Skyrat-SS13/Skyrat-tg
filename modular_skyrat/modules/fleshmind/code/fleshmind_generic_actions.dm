@@ -81,9 +81,9 @@
 /datum/action/cooldown/fleshmind_plant_weeds
 	name = "Create Wireweed"
 	desc = "Creates a single patch of wireweed at your location."
-	icon_icon = 'icons/obj/items_and_weapons.dmi'
+	icon_icon = 'modular_skyrat/modules/fleshmind/icons/fleshmind_structures.dmi'
 	background_icon_state = "bg_fugu"
-	button_icon_state = "toyhammer"
+	button_icon_state = "wires-0"
 	cooldown_time = 10 SECONDS
 
 /datum/action/cooldown/fleshmind_plant_weeds/Activate(atom/target)
