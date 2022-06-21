@@ -481,7 +481,7 @@
 	icon_state = "head"
 	base_icon_state = "head"
 	max_integrity = 120
-	required_controller_level = CONTROLLER_LEVEL_1
+	required_controller_level = CONTROLLER_LEVEL_2
 	activation_range = DEFAULT_VIEW_RANGE
 	ability_cooldown_time = 45 SECONDS
 

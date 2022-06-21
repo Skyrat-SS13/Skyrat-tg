@@ -20,18 +20,16 @@
 		to_chat(owner, span_warning("There is no hive link to tunnel this power through!"))
 		return
 	var/datum/fleshmind_controller/owner_controller = our_component.our_controller
-	var/obj/structure/fleshmind/wireweed/under_wireweed = locate() in get_turf(owner)
-	if(!under_wireweed)
-		to_chat(owner, span_warning("There needs to be wireweed underneath you!"))
-		return
+
 	var/list/built_radial_menu = list()
 	for(var/obj/iterating_type as anything in possible_structures)
 		built_radial_menu[iterating_type] = image(icon = initial(iterating_type.icon), icon_state = initial(iterating_type.icon_state))
 	var/picked_stucture_type = show_radial_menu(owner, owner, built_radial_menu, radius = 40)
 	if(!picked_stucture_type)
 		return
-	if(!do_after(owner, 2 SECONDS))
-		to_chat(owner, span_warning("Unable to place due to movement!"))
+	var/obj/structure/fleshmind/wireweed/under_wireweed = locate() in get_turf(owner)
+	if(!under_wireweed)
+		to_chat(owner, span_warning("There needs to be wireweed underneath you!"))
 		return
 	if(QDELETED(owner_controller)) // Input is not async
 		return

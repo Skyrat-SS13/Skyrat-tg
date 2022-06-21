@@ -868,6 +868,8 @@
 	move_to_delay = 6
 	ranged_cooldown_time = 4 SECONDS
 	attack_sound = 'sound/weapons/bladeslice.ogg'
+	retreat_distance = 4
+	minimum_distance = 4
 	projectiletype = /obj/projectile/treader
 	light_color = FLESHMIND_LIGHT_BLUE
 	light_range = 2
