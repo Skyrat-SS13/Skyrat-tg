@@ -52,7 +52,7 @@
 	/// Are we currently armed?
 	var/armed = FALSE
 	/// The sound we play when armed
-	var/armed_sound = 'modular_skyrat/modules/window_airbags/sound/airbag_armed.ogg'
+	var/armed_sound = 'modular_skyrat/modules/window_airbags/sound/airbag_arm.ogg'
 	/// The sound we play when we go bang
 	var/bang_sound = 'modular_skyrat/modules/window_airbags/sound/airbag_bang.ogg'
 
@@ -68,10 +68,18 @@
 /obj/item/airbag/proc/arm()
 	if(armed)
 		return
+	balloon_alert_to_viewers("armed!")
+	addtimer(CALLBACK(src, .proc/deploy_anchor), 1 SECONDS)
 	addtimer(CALLBACK(src, .proc/bang), detonate_time, TIMER_CLIENT_TIME)
 	armed = TRUE
 	playsound(src, armed_sound, 100)
 	update_appearance()
+
+/obj/item/airbag/proc/deploy_anchor()
+	if(!isturf(loc))
+		return
+	balloon_alert_to_viewers("anchor deployed!")
+	anchored = TRUE
 
 /obj/item/airbag/proc/bang()
 	var/obj/created_object = new drop_type(get_turf(src))
