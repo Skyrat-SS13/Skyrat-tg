@@ -22,7 +22,7 @@
 
 /obj/structure/inflatable/Initialize(mapload)
 	. = ..()
-	air_update_turf(TRUE)
+	air_update_turf(TRUE, !density)
 
 /obj/structure/inflatable/ex_act(severity)
 	switch(severity)
@@ -56,6 +56,10 @@
 
 /obj/structure/inflatable/play_attack_sound(damage_amount, damage_type, damage_flag)
 	playsound(src, hit_sound, 75, TRUE)
+
+/obj/structure/inflatable/can_atmos_pass(turf/target_turf, vertical)
+	. = ..()
+
 
 
 /obj/structure/inflatable/proc/deflate(violent)
@@ -118,7 +122,7 @@
 		door_state = TRUE
 		flick("[base_icon_state]_closing", src)
 	density = door_state
-	air_update_turf(TRUE)
+	air_update_turf(TRUE, !density)
 	update_appearance()
 
 
