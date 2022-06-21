@@ -1473,3 +1473,9 @@
 			new_mob.previous_ckey = old_mob.mind.key
 			new_mob.key = old_mob.mind.key
 	return new_mob
+
+/**
+ * Mauler Monkey
+ *
+ * A nasty looking converted monkey. Sadly, we can't use the monkey AI controller.
+ */
