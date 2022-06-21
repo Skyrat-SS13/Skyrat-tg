@@ -1448,6 +1448,7 @@
 		return
 
 	if(iscyborg(mob_to_convert))
+		our_controller.spawn_mob
 		create_mob(/mob/living/simple_animal/hostile/fleshmind/hiborg, mob_to_convert)
 		return
 
