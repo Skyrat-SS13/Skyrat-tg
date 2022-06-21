@@ -36,14 +36,13 @@
 	owner_controller.spawn_structure(get_turf(owner), picked_stucture_type)
 	StartCooldownSelf()
 
-
 /datum/action/cooldown/fleshmind_create_structure/basic
 	name = "Create Basic Structure"
 	desc = "Creates a basic structure of your choice at your location(must be on wireweed)."
 	button_icon_state = "mjollnir1"
 	possible_structures = list(
 		/obj/structure/fleshmind/structure/wireweed_door,
-		/obj/structure/fleshmind/structure/wireweed_wall
+		/obj/structure/fleshmind/structure/wireweed_wall,
 	)
 	cooldown_time = 5 SECONDS
 

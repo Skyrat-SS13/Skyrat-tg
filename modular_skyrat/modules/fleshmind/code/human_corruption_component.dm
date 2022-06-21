@@ -17,6 +17,17 @@
 		BODY_ZONE_R_ARM = /obj/item/bodypart/r_arm/robot,
 		BODY_ZONE_R_LEG = /obj/item/bodypart/r_leg/robot,
 	)
+	var/list/traits_to_give = list(
+		TRAIT_NOGUNS,
+		TRAIT_NOBREATH,
+		TRAIT_RESISTCOLD,
+		TRAIT_RESISTHEAT,
+		TRAIT_RESISTLOWPRESSURE,
+		TRAIT_RESISTHIGHPRESSURE,
+		TRAIT_VIRUSIMMUNE,
+		TRAIT_NOHUNGER,
+
+	)
 
 /datum/component/human_corruption/Initialize(datum/fleshmind_controller/incoming_controller)
 
@@ -51,7 +62,8 @@
 
 	infected_human.faction |= FACTION_FLESHMIND
 
-	ADD_TRAIT(infected_human, TRAIT_NOGUNS, "fleshmind")
+	for(var/trait as anything in traits_to_give)
+		ADD_TRAIT(infected_human, trait, "fleshmind")
 
 	create_glow()
 
@@ -67,7 +79,8 @@
 		COMSIG_ATOM_EMP_ACT,
 		COMSIG_LIVING_DEATH,
 	))
-	REMOVE_TRAIT(parent_mob, TRAIT_NOGUNS, "fleshmind")
+	for(var/trait as anything in traits_to_give)
+		REMOVE_TRAIT(parent_mob, trait, "fleshmind")
 	parent_mob.remove_filter("corruption_glow")
 	parent_mob.update_appearance()
 	return ..()
