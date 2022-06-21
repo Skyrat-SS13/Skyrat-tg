@@ -517,7 +517,7 @@
 	/// Upper timer limit for our ability
 	automatic_trigger_time_upper = 1.5 MINUTES
 	/// Lower time limit for our ability.
-	automatic_trigger_time_lower = 1 MINUTES
+	automatic_trigger_time_lower = 40 SECONDS
 	/// A list of quotes we choose from to send to the player.
 	var/list/join_quotes = list(
 		"You seek survival. We offer immortality.",

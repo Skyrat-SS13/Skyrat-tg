@@ -17,6 +17,7 @@
 		BODY_ZONE_R_ARM = /obj/item/bodypart/r_arm/robot,
 		BODY_ZONE_R_LEG = /obj/item/bodypart/r_leg/robot,
 	)
+	/// These traits will be given and removed from the host.
 	var/list/traits_to_give = list(
 		TRAIT_NOGUNS,
 		TRAIT_NOBREATH,
