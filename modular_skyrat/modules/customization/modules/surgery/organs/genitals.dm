@@ -154,9 +154,9 @@
 	if(measured_size < 1)
 		measured_size = 1
 	switch(measured_size)
-		if(1 to 10)
+		if(1 to 8)
 			size_affix = "1"
-		if(11 to 15)
+		if(9 to 15)
 			size_affix = "2"
 		if(16 to 24)
 			size_affix = "3"
