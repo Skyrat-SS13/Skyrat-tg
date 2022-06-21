@@ -37,7 +37,7 @@
 	armor = list(MELEE = 10, BULLET = 0, LASER = 0, ENERGY = 10, BOMB = 10, BIO = 100, FIRE = 50, ACID = 25, WOUND = 5)
 
 /datum/mod_theme/syndicate // Bloodred Syndicate
-	desc = "A suit designed by Gorlex Marauders, offering armor ruled illegal in most of Sector-13."
+	desc = "A suit designed by Gorlex Marauders, offering armor ruled illegal for non-combatant use in most of Sector-13."
 	armor = list(MELEE = 20, BULLET = 25, LASER = 15, ENERGY = 20, BOMB = 40, BIO = 100, FIRE = 50, ACID = 90, WOUND = 25)
 
 /obj/item/mod/module/armor_booster
