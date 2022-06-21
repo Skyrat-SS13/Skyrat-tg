@@ -81,7 +81,7 @@
 
 /obj/item/clothing/gloves/tackler/rocket
 	name = "rocket gloves"
-	desc = "The ultimate in high risk, high reward, perfect for when you need to stop a criminal from fifty feet away or die trying. Banned in most Secter-13 gridiron football and rugby leagues." //SKYRAT EDIT - Spinward>Sector13
+	desc = "The ultimate in high risk, high reward, perfect for when you need to stop a criminal from fifty feet away or die trying. Banned in most Sector-13 gridiron football and rugby leagues." //SKYRAT EDIT - Spinward>Sector13
 	icon_state = "tacklerocket"
 	inhand_icon_state = "tacklerocket"
 
