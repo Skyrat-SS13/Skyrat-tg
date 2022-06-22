@@ -385,9 +385,17 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Royal Kilt"
 	item_path = /obj/item/clothing/under/misc/royalkilt
 
-/datum/loadout_item/under/miscellaneous/qipao
+/datum/loadout_item/under/miscellaneous/qipao_black
 	name = "Qipao, Black"
 	item_path = /obj/item/clothing/under/costume/qipao
+
+/datum/loadout_item/under/miscellaneous/qipao_white
+	name = "Qipao, White"
+	item_path = /obj/item/clothing/under/costume/qipao/white
+
+/datum/loadout_item/under/miscellaneous/qipao_red
+	name = "Qipao, Red"
+	item_path = /obj/item/clothing/under/costume/qipao/red
 
 /datum/loadout_item/under/miscellaneous/cheongsam
 	name = "Cheongsam, Black"
