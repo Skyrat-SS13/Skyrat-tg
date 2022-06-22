@@ -1374,7 +1374,7 @@
 	icon_state = "plushie_winrow"
 
 // Donation reward for M97screwsyourparents
-/obj/item/clothing/head/recruitercap
+/obj/item/clothing/head/recruiter_cap
 	name = "recruiter's cap"
 	desc = "Hey, free college!"
 	icon_state = "officerhat"
