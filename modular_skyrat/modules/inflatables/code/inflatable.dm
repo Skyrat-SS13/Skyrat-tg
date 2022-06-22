@@ -4,7 +4,7 @@
 
 /obj/structure/inflatable
 	name = "inflatable wall"
-	desc = "An inflated membrane. Do not puncture."
+	desc = "An inflated membrane. Do not puncture. Alt+Click to deflate."
 	can_atmos_pass = ATMOS_PASS_DENSITY
 	density = TRUE
 	anchored = TRUE
