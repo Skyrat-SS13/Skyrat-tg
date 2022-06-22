@@ -100,11 +100,11 @@
 		to_chat(usr, span_warning("[mask_out ? "The machine is already in use!" : "The machine has no attached tank!"]"))
 		return FALSE
 
-	usr.visible_message("<span class='warning'>[usr] attemps to attach the [src] to [target].</span>", "<span class='notice'>You attempt to attach the [src] to [target].</span>")
+	usr.visible_message(span_warning("[usr] attemps to attach the [src] to [target].</span>", "<span class='notice'>You attempt to attach the [src] to [target].</span>"))
 	if(!do_after(usr, 5 SECONDS, target))
 		return
 	if(!target.equip_to_appropriate_slot(attached_mask))
-		to_chat(usr, "<span class='warning'>You are unable to attach the [src] to [target]!</span>")
+		to_chat(usr, span_warning("You are unable to attach the [src] to [target]!</span>"))
 		return
 
 	usr.visible_message("<span class='warning'>[usr] attaches the [src] to [target].</span>", "<span class='notice'>You attach the [src] to [target].</span>")
