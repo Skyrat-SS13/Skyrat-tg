@@ -1204,6 +1204,7 @@
 		"diagnostic_hud_projector",
 		"meson_hud_projector",
 		"science_hud_projector",
+		"permit_glasses",
 		//SKYRAT EDIT END - RESEARCH DESIGNS
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1500)
@@ -1279,7 +1280,7 @@
 		"cybernetic_stomach_tier2",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1000)
-	
+
 
 /datum/techweb_node/cyber_organs_upgraded
 	id = "cyber_organs_upgraded"
@@ -1656,6 +1657,7 @@
 		"mod_mag_harness",
 		"mod_pathfinder",
 		"mod_holster",
+		"mod_projectile_dampener"
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 
@@ -2250,6 +2252,18 @@
 	prereq_ids = list("base")
 	design_ids = list(
 		"mod_disposal",
+	)
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
+	hidden = TRUE
+	experimental = TRUE
+
+/datum/techweb_node/fishing
+	id = "fishing"
+	display_name = "Fishing Technology"
+	description = "Cutting edge fishing advancements."
+	prereq_ids = list("base")
+	design_ids = list(
+		"fishing_rod_tech"
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 	hidden = TRUE

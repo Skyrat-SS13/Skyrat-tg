@@ -182,6 +182,8 @@
 	var/static/list/projectile_connections = list(
 		COMSIG_ATOM_ENTERED = .proc/on_entered,
 	)
+	/// If true directly targeted turfs can be hit
+	var/can_hit_turfs = FALSE
 
 /obj/projectile/Initialize(mapload)
 	. = ..()
@@ -494,7 +496,7 @@
 /obj/projectile/proc/can_hit_target(atom/target, direct_target = FALSE, ignore_loc = FALSE, cross_failed = FALSE)
 	if(QDELETED(target) || impacted[target])
 		return FALSE
-	if(!ignore_loc && (loc != target.loc))
+	if(!ignore_loc && (loc != target.loc) && !(can_hit_turfs && direct_target && loc == target))
 		return FALSE
 	// if pass_flags match, pass through entirely - unless direct target is set.
 	if((target.pass_flags_self & pass_flags) && !direct_target)
@@ -511,7 +513,7 @@
 		return TRUE
 	if(!isliving(target))
 		if(isturf(target)) // non dense turfs
-			return FALSE
+			return can_hit_turfs && direct_target
 		if(target.layer < hit_threshhold)
 			return FALSE
 		else if(!direct_target) // non dense objects do not get hit unless specifically clicked
@@ -681,7 +683,7 @@
 		AddElement(/datum/element/embed, projectile_payload = shrapnel_type)
 	if(!log_override && firer && original)
 		log_combat(firer, original, "fired at", src, "from [get_area_name(src, TRUE)]")
-	if(direct_target && (get_dist(direct_target, get_turf(src)) <= 1)) // point blank shots
+	if(direct_target && (get_dist(direct_target, get_turf(fired_from)) <= 1)) // point blank shots // SKYRAT EDIT - ORIGINAL: if(direct_target && (get_dist(direct_target, get_turf(src)) <= 1))
 		process_hit(get_turf(direct_target), direct_target)
 		if(QDELETED(src))
 			return

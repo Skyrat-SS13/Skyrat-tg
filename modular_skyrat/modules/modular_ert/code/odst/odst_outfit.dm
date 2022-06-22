@@ -1,7 +1,7 @@
 /datum/outfit/centcom/ert/odst // ODST, Admin spawn only obviously
 	name = "ODST"
 	id = /obj/item/card/id/advanced/centcom/ert
-	uniform = /obj/item/clothing/under/odst
+	uniform = /obj/item/clothing/under/syndicate/combat
 	glasses = /obj/item/clothing/glasses/hud/security/night
 	ears = /obj/item/radio/headset/headset_cent/alt
 	gloves = /obj/item/clothing/gloves/combat

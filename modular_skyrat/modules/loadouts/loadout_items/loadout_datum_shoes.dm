@@ -29,10 +29,6 @@ GLOBAL_LIST_INIT(loadout_shoes, generate_loadout_items(/datum/loadout_item/shoes
 	name = "High-Heel Jackboots"
 	item_path = /obj/item/clothing/shoes/jackboots/heel
 
-/datum/loadout_item/shoes/thighboot
-	name = "Thigh Boots"
-	item_path = /obj/item/clothing/shoes/jackboots/thigh
-
 /datum/loadout_item/shoes/kneeboot
 	name = "Knee Boots"
 	item_path = /obj/item/clothing/shoes/jackboots/knee

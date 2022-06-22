@@ -123,6 +123,11 @@
 	item_path = /obj/item/clothing/under/plasmaman/candlejax
 	ckeywhitelist = list("candlejax")
 
+/datum/loadout_item/suit/jacket/cherno
+	name = "Blue-Silvered Coat"
+	item_path = /obj/item/clothing/suit/jacket/cherno
+	ckeywhitelist = list("cherno00")
+
 /datum/loadout_item/head/avipilot
 	name = "Smuggler's Flying Cap"
 	item_path = /obj/item/clothing/head/avipilot
@@ -155,7 +160,7 @@
 
 /datum/loadout_item/mask/kindle_mask
 	name = "Kindle's mask"
-	item_path = /obj/item/clothing/mask/kindle
+	item_path = /obj/item/clothing/mask/animal/kindle
 	ckeywhitelist = list("theooz")
 
 /datum/loadout_item/head/drake_skull
@@ -464,3 +469,20 @@
 	name = "NT Idol's Skirt"
 	item_path = /obj/item/clothing/under/nt_idol_skirt
 	ckeywhitelist = list("tetrako")
+
+/datum/loadout_item/toys/CFBonnie
+	name = "Chunko Fop: Blue Bunny Plushie"
+	item_path = /obj/item/toy/plush/chunko/bonnie
+	donator_only = TRUE
+
+/datum/loadout_item/toys/CFAndrew
+	name = "Chunko Fop: Green Bunny Plushie"
+	item_path = /obj/item/toy/plush/chunko/andrew
+	donator_only = TRUE
+
+/datum/loadout_item/toys/CFInessa
+	name = "Chunko Fop: Medical Bear Plushie"
+	item_path = /obj/item/toy/plush/chunko/inessa
+	donator_only = TRUE
+
+//Chunko Fops were donated by SlippyJoe, who requested they are usable by everyone

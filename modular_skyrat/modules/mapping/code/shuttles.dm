@@ -19,7 +19,6 @@
 /obj/machinery/computer/shuttle/caravan/blackmarket_chevvy
 	name = "Chevvy Shuttle Console"
 	desc = "Used to control the affectionately named 'Chevvy'."
-	req_access = list(208)
 	circuit = /obj/item/circuitboard/computer/blackmarket_chevvy
 	shuttleId = "blackmarket_chevvy"
 	possible_destinations = "blackmarket_chevvy_custom;blackmarket_chevvy_home;whiteship_home"
@@ -104,6 +103,9 @@
 
 /obj/item/radio/headset/guild/command
 	command = TRUE
+
+/datum/outfit/guild
+	name = "Guild Default Outfit"
 
 /datum/outfit/guild/slaver
 	name = "Privateer Slaver"
