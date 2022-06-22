@@ -437,5 +437,30 @@
 	ckeywhitelist = list("konstyantyn")
 
 /datum/loadout_item/toys/plushe_winrow
-    name = "Dark and brooding lizard plushie"
+    name = "Dark and Brooding Lizard Plushie"
     item_path = /obj/item/toy/plush/donator/plushie_winrow
+
+/datum/loadout_item/head/recruitercap
+	name = "Recruiter's Cap"
+	item_path = /obj/item/clothing/head/recruitercap
+	ckeywhitelist = list("m97screwsyourparents")
+
+/datum/loadout_item/suit/recruiterjacket
+	name = "Recruiter's Jacket"
+	item_path = /obj/item/clothing/suit/toggle/recruiterjacket
+	ckeywhitelist = list("m97screwsyourparents")
+
+/datum/loadout_item/under/jumpsuit/recruiteruniform
+	name = "Recruiter's Uniform"
+	item_path = /obj/item/clothing/under/recruiteruniform
+	ckeywhitelist = list("m97screwsyourparents")
+
+/datum/loadout_item/pocket_items/hypnowatch
+	name = "Pocket Watch"
+	item_path = /obj/item/clothing/accessory/hypnowatch
+	ckeywhitelist = list("slippyjoe")
+
+/datum/loadout_item/under/jumpsuit/nt_idol
+	name = "NT Idol's Skirt"
+	item_path = /obj/item/clothing/under/nt_idol_skirt
+	ckeywhitelist = list("tetrako")
