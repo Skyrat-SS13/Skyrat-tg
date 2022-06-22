@@ -33,12 +33,12 @@
 		/obj/item/reagent_containers/hypospray/combat = 1,
 		/obj/item/storage/medkit/regular = 1,
 		/obj/item/storage/medkit/advanced = 1,
-		/obj/item/sensor_device,
-		/obj/item/pinpointer/crew/prox,
-		/obj/item/stack/medical/gauze/twelve,
-		/obj/item/reagent_containers/syringe,
-		/obj/item/reagent_containers/glass/bottle/formaldehyde,
-		/obj/item/stack/sticky_tape/surgical,
+		/obj/item/sensor_device = 1,
+		/obj/item/pinpointer/crew/prox = 1,
+		/obj/item/stack/medical/gauze/twelve = 1,
+		/obj/item/reagent_containers/syringe = 1,
+		/obj/item/reagent_containers/glass/bottle/formaldehyde = 1,
+		/obj/item/stack/sticky_tape/surgical = 1,
 	)
 	l_hand = /obj/item/gun/medbeam
 	r_hand = null
