@@ -1413,7 +1413,7 @@
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 // Donation reward for SlippyJoe
-/obj/item/clothing/accessory/hypnowatch
+/obj/item/clothing/accessory/hypno_watch
 	name = "cracked pocket watch"
 	desc = "A shining pocket watch, cast in gold and embossed with metallic swirls that almost seem  amethyst under the right light... There's a button on the top to unlatch the front panel, although all that's inside is a layer of cracked glass, the argent hands stuck pointing to 7:07 PM. The brushed silver of these arrows almost seems to swirl if one's gaze lingers for too long. Despite its inert apparence, the eerie mechanical sound of gears turning and clicking in place seems to quietly ring out from the artifact. In the right hands, [span_boldwarning("Who knows what it could be used for?")]"
 	icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
