@@ -1204,6 +1204,7 @@
 		"diagnostic_hud_projector",
 		"meson_hud_projector",
 		"science_hud_projector",
+		"permit_glasses",
 		//SKYRAT EDIT END - RESEARCH DESIGNS
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1500)
@@ -1656,6 +1657,7 @@
 		"mod_mag_harness",
 		"mod_pathfinder",
 		"mod_holster",
+		"mod_projectile_dampener"
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 

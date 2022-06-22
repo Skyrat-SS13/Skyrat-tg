@@ -763,7 +763,7 @@
 			cumface.icon_state = "cumface_lizard"
 		else if(target.dna.species.id == SPECIES_MONKEY)
 			cumface.icon_state = "cumface_monkey"
-		else if(target.dna.species.id == SPECIES_VOX)
+		else if(target.dna.species.id == SPECIES_VOX || target.dna.species.id == SPECIES_VOX_PRIMALIS)
 			cumface.icon_state = "cumface_vox"
 		else if(target.dna.species.mutant_bodyparts["snout"])
 			cumface.icon_state = "cumface_lizard"

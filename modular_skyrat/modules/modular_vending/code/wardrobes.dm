@@ -39,6 +39,7 @@
 		/obj/item/clothing/under/rank/cargo/tech/skyrat/casualman = 3,
 		/obj/item/clothing/suit/gorka/supply = 3,
 		/obj/item/clothing/suit/toggle/jacket/supply = 3,
+		/obj/item/clothing/glasses/hud/gun_permit = 5, //from Gun_Cargo module
 	)
 
 	skyrat_contraband = list(
