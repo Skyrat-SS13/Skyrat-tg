@@ -1375,7 +1375,7 @@
 
 // Donation reward for M97screwsyourparents
 /obj/item/clothing/head/recruiter_cap
-	name = "recruiter's cap"
+	name = "recruiter cap"
 	desc = "Hey, free college!"
 	icon_state = "officerhat"
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/hats.dmi'
@@ -1384,7 +1384,7 @@
 
 // Donation reward for M97screwsyourparents
 /obj/item/clothing/suit/toggle/recruiter_jacket
-	name = "recruiter's jacket"
+	name = "recruiter jacket"
 	desc = "Hey, free college!"
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
@@ -1393,7 +1393,7 @@
 
 // Donation reward for M97screwsyourparents
 /obj/item/clothing/under/recruiter_uniform
-	name = "recruiter's uniform"
+	name = "recruiter uniform"
 	desc = "Hey, free college!"
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
 	icon_state = "oldmarine_whites"
