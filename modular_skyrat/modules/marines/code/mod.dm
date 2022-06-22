@@ -63,7 +63,7 @@
 	applied_cell = /obj/item/stock_parts/cell/bluespace
 	initial_modules = list(
 		/obj/item/mod/module/storage/large_capacity,
-		/obj/item/mod/module/emp_shield/advanced,
+		/obj/item/mod/module/emp_shield,
 		/obj/item/mod/module/magnetic_harness,
 		/obj/item/mod/module/holster,
 		/obj/item/mod/module/flashlight,
