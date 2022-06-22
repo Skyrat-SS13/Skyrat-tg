@@ -1428,7 +1428,7 @@
 	actions_types = list(/datum/action/item_action/hypno_whisper)
 
 //TODO: make a component for all that various hypno stuff instead of adding it to items individually
-/obj/item/clothing/accessory/hypnowatch/ui_action_click(mob/living/user, action)
+/obj/item/clothing/accessory/hypno_watch/ui_action_click(mob/living/user, action)
 	if(!isliving(user) || !can_use(user))
 		return
 	var/message = input(user, "Speak with a hypnotic whisper", "Whisper")
