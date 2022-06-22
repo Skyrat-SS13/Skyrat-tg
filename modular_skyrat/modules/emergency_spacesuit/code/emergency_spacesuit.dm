@@ -47,7 +47,7 @@
 /obj/item/clothing/suit/space/emergency/examine(mob/user)
 	. = ..()
 	if(torn)
-		. += span_danger("It looks like it has been torn and is completely useless!")
+		. += span_danger("It looks torn and useless!")
 
 #undef EMERGENCY_SUIT_MIN_TEMP_PROTECT
 #undef EMERGENCY_SUIT_MAX_TEMP_PROTECT
