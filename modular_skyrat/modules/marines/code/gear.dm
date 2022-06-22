@@ -53,7 +53,7 @@
 
 /obj/item/gun/ballistic/automatic/ar/modular/m44a/scoped/Initialize()
 	. = ..()
-	AddComponent(/datum/component/scope, range_modifier = 1.5)
+	AddComponent(/datum/component/scope, range_modifier = 2.2)
 
 /obj/item/gun/ballistic/shotgun/automatic/as2/ubsg
 	name = "\improper M2 auto-shotgun underbarrel"
