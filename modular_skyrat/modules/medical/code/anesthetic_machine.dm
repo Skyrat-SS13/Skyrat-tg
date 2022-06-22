@@ -21,7 +21,7 @@
 
 	. += "Click on the stand to retract the mask, if the mask is currently out"
 	if(attached_tank)
-		. += "Alt+Click to remove [attached_tank]"
+		. += "<b>Alt + Click</b> to remove [attached_tank]."
 
 /obj/machinery/anesthetic_machine/Initialize(mapload)
 	. = ..()
