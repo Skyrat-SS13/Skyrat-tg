@@ -155,7 +155,7 @@
 
 /datum/loadout_item/mask/kindle_mask
 	name = "Kindle's mask"
-	item_path = /obj/item/clothing/mask/kindle
+	item_path = /obj/item/clothing/mask/animal/kindle
 	ckeywhitelist = list("theooz")
 
 /datum/loadout_item/head/drake_skull
