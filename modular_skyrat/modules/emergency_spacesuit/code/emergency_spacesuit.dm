@@ -20,16 +20,24 @@
 	/// Have we been damaged?
 	var/torn = FALSE
 
-/obj/item/clothing/suit/space/emergency/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
-	if(!torn && prob(50))
-		to_chat(owner, span_warning("[src] tears from the damage, breaking the air-tight seal!"))
-		clothing_flags &= ~STOPSPRESSUREDAMAGE
-		name = "torn [src]."
-		desc = "A bulky suit meant to protect the user during emergency situations, at least until someone tore a hole in the suit."
+/obj/item/clothing/suit/space/emergency/run_atom_armor(damage_amount, damage_type, damage_flag, attack_dir, armour_penetration)
+	if(damage_amount && !torn && prob(50))
+		balloon_alert_to_viewers("[src] is torn!")
 		torn = TRUE
-		playsound(loc, 'sound/weapons/slashmiss.ogg', 50, TRUE)
-		playsound(loc, 'sound/effects/refill.ogg', 50, TRUE)
+		playsound(src, 'sound/weapons/slashmiss.ogg', 50, TRUE)
+		playsound(src, 'sound/effects/refill.ogg', 50, TRUE)
+		update_appearance()
 	return ..()
+
+/obj/item/clothing/suit/space/emergency/update_name(updates)
+	. = ..()
+	if(torn)
+		name = "torn [src]"
+
+/obj/item/clothing/suit/space/emergency/examine(mob/user)
+	. = ..()
+	if(torn)
+		. += span_danger("It looks like it has been torn and is completely useless!")
 
 #undef EMERGENCY_SUIT_MIN_TEMP_PROTECT
 #undef EMERGENCY_SUIT_MAX_TEMP_PROTECT
@@ -77,6 +85,7 @@
 
 // Overriding emergency lockers
 /obj/structure/closet/emcloset/PopulateContents()
+	new /obj/item/storage/box/emergency_spacesuit(src)
 	if (prob(40))
 		new /obj/item/storage/toolbox/emergency(src)
 
@@ -100,4 +109,4 @@
 			new /obj/item/tank/internals/emergency_oxygen(src)
 			new /obj/item/clothing/mask/breath(src)
 
-	new /obj/item/storage/box/emergency_spacesuit(src)
+
