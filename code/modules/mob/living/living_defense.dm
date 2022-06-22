@@ -58,10 +58,6 @@
 
 /mob/living/bullet_act(obj/projectile/P, def_zone, piercing_hit = FALSE)
 	. = ..()
-	//SKYRAT EDIT START: BULLET_ACT_FORCE_PIERCE_BLOCK
-	if(. == BULLET_ACT_FORCE_PIERCE_BLOCK)
-		return BULLET_ACT_FORCE_PIERCE_BLOCK
-	//SKYRAT EDIT END: BULLET_ACT_FORCE_PIERCE_BLOCK
 	if(!P.nodamage && (. != BULLET_ACT_BLOCK))
 		var/attack_direction = get_dir(P.starting, src)
 		// we need a second, silent armor check to actually know how much to reduce damage taken, as opposed to

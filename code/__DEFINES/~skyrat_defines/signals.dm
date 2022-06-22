@@ -71,6 +71,3 @@
 
 /// To chambered round on gun's `process_fire()`: (list/iff_factions)
 #define COMSIG_CHAMBERED_BULLET_FIRE "chambered_bullet_fire"
-
-/// Checking that if the projectile is an IFF round with a compatible faction (atom/target)
-#define COMSIG_PROJECTILE_IFF_CHECK "projectile_iff_check"
