@@ -77,5 +77,27 @@
 
 // Overriding emergency lockers
 /obj/structure/closet/emcloset/PopulateContents()
+	if (prob(40))
+		new /obj/item/storage/toolbox/emergency(src)
+
+	switch (pick_weight(list("small" = 35, "aid" = 30, "tank" = 20, "both" = 10)))
+		if ("small")
+			new /obj/item/tank/internals/emergency_oxygen(src)
+			new /obj/item/tank/internals/emergency_oxygen(src)
+			new /obj/item/clothing/mask/breath(src)
+			new /obj/item/clothing/mask/breath(src)
+
+		if ("aid")
+			new /obj/item/tank/internals/emergency_oxygen(src)
+			new /obj/item/storage/medkit/emergency(src)
+			new /obj/item/clothing/mask/breath(src)
+
+		if ("tank")
+			new /obj/item/tank/internals/oxygen(src)
+			new /obj/item/clothing/mask/breath(src)
+
+		if ("both")
+			new /obj/item/tank/internals/emergency_oxygen(src)
+			new /obj/item/clothing/mask/breath(src)
+
 	new /obj/item/storage/box/emergency_spacesuit(src)
-	return ..()
