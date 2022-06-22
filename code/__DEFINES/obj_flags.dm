@@ -68,7 +68,8 @@
 #define PLASMAMAN_PREVENT_IGNITION (1<<18)
 /// Usable as casting clothes by wizards (only matters for suits and headwear)
 #define CASTING_CLOTHES (1<<19)
-
+/// Allows for masks to use tanks on adjacentadjecent tiles.
+#define MASKEXTENDRANGE (1<<20) //SKYRAT DEFINE
 /// Flags for the organ_flags var on /obj/item/organ
 
 #define ORGAN_SYNTHETIC (1<<0) //Synthetic organs, or cybernetic organs. Reacts to EMPs and don't deteriorate or heal
