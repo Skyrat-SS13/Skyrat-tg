@@ -116,7 +116,7 @@
 		return PROCESS_KILL
 
 	if(get_dist(src, get_turf(attached_mask)) > 1) // If too far away, detach
-		to_chat(attached_mask.loc, span_warning("The [attached_mask] is ripped off of your face!"))
+		to_chat(attached_mask.loc, span_warning("[attached_mask] is ripped off of your face!"))
 		retract_mask()
 		return PROCESS_KILL
 
