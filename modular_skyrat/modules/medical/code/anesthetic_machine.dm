@@ -19,7 +19,8 @@
 /obj/machinery/anesthetic_machine/examine(mob/user)
 	. = ..()
 
-	. += "Click on the stand to retract the mask, if the mask is currently out"
+	if(mask_out)
+		. += "Click on the stand to retract the mask, if the mask is currently out"
 	if(attached_tank)
 		. += "<b>Alt + Click</b> to remove [attached_tank]."
 
@@ -31,14 +32,16 @@
 
 /obj/machinery/anesthetic_machine/update_icon()
 	. = ..()
+
 	cut_overlays()
-	if(mask_out)
-		add_overlay("mask_off")
-	else
-		add_overlay("mask_on")
+
 	if(attached_tank)
 		add_overlay("tank_on")
 
+	if(mask_out)
+		add_overlay("mask_off")
+		return
+	add_overlay("mask_on")
 
 /obj/machinery/anesthetic_machine/attack_hand(mob/living/user)
 	. = ..()
