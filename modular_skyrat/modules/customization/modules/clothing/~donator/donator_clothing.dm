@@ -943,6 +943,17 @@
 	cold_protection = CHEST|GROIN|ARMS
 	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
 
+// Donation reward for Cherno_00
+/obj/item/clothing/suit/jacket/cherno
+	name = "silver-buttoned coat"
+	desc = "A comfy-looking blue coat. It looks a bit fancy, with shiny silver buttons and a few belts!"
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
+	icon_state = "chernocoat"
+	body_parts_covered = CHEST|GROIN|ARMS
+	cold_protection = CHEST|GROIN|ARMS
+	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
+
 // Donation reward for GoldenAlpharex
 /obj/item/clothing/glasses/welding/goldengoggles
 	name = "steampunk goggles"
