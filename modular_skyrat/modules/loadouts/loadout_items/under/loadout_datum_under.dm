@@ -374,7 +374,7 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	item_path = /obj/item/clothing/under/misc/greyshirt
 
 /datum/loadout_item/under/miscellaneous/maidcostume
-	name = "Maid costume"
+	name = "Maid Costume"
 	item_path = /obj/item/clothing/under/costume/maid
 
 /datum/loadout_item/under/miscellaneous/croptop
@@ -396,7 +396,9 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /datum/loadout_item/under/miscellaneous/qipao_red
 	name = "Qipao, Red"
 	item_path = /obj/item/clothing/under/costume/qipao/red
-
+/datum/loadout_item/under/miscellaneous/fem_skirt
+	name = "Feminine Skirt"
+	item_path = /obj/item/clothing/under/suit/black/female/skirt
 /datum/loadout_item/under/miscellaneous/cheongsam
 	name = "Cheongsam, Black"
 	item_path = /obj/item/clothing/under/costume/cheongsam
