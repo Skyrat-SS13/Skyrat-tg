@@ -126,9 +126,8 @@
 /obj/machinery/anesthetic_machine/Destroy()
 	if(mask_out)
 		retract_mask()
-	QDEL_NULL(attached_mask)
 
-	new /obj/item/clothing/mask/breath(src)
+	QDEL_NULL(attached_mask)
 	. = ..()
 
 /// This a special version of the breath mask used for the anesthetic machine.
