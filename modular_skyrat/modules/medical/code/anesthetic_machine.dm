@@ -15,7 +15,6 @@
 	/// Is the attached mask currently out?
 	var/mask_out = FALSE
 
-
 /obj/machinery/anesthetic_machine/examine(mob/user)
 	. = ..()
 
@@ -63,11 +62,11 @@
 
 /obj/machinery/anesthetic_machine/AltClick(mob/user)
 	. = ..()
-	if(!attached_tank)// If attached tank, remove it.
+	if(!attached_tank)
 		return
 
 	attached_tank.forceMove(loc)
-	to_chat(user, span_notice("You remove the [attached_tank].</span>"))
+	to_chat(user, span_notice("You remove the [attached_tank]."))
 	attached_tank = null
 	update_icon()
 	if(mask_out)
@@ -100,14 +99,15 @@
 		to_chat(usr, span_warning("[mask_out ? "The machine is already in use!" : "The machine has no attached tank!"]"))
 		return FALSE
 
-	usr.visible_message(span_warning("[usr] attemps to attach the [src] to [target].</span>", "<span class='notice'>You attempt to attach the [src] to [target].</span>"))
+	usr.visible_message(span_warning("[usr] attemps to attach the [src] to [target]."), span_notice("You attempt to attach the [src] to [target]"))
 	if(!do_after(usr, 5 SECONDS, target))
 		return
 	if(!target.equip_to_appropriate_slot(attached_mask))
-		to_chat(usr, span_warning("You are unable to attach the [src] to [target]!</span>"))
+		to_chat(usr, span_warning("You are unable to attach the [src] to [target]!"))
 		return
 
-	usr.visible_message("<span class='warning'>[usr] attaches the [src] to [target].</span>", "<span class='notice'>You attach the [src] to [target].</span>")
+	usr.visible_message(span_warning("[usr] attaches the [src] to [target]."), span_notice("You attach the [src] to [target]"))
+
 	target.internal = attached_tank
 	mask_out = TRUE
 	START_PROCESSING(SSmachines, src)
