@@ -445,22 +445,22 @@
     name = "Dark and Brooding Lizard Plushie"
     item_path = /obj/item/toy/plush/donator/plushie_winrow
 
-/datum/loadout_item/head/recruitercap
+/datum/loadout_item/head/recruiter_cap
 	name = "Recruiter's Cap"
-	item_path = /obj/item/clothing/head/recruitercap
+	item_path = /obj/item/clothing/head/recruiter_cap
 	ckeywhitelist = list("m97screwsyourparents")
 
-/datum/loadout_item/suit/recruiterjacket
+/datum/loadout_item/suit/recruiter_jacket
 	name = "Recruiter's Jacket"
-	item_path = /obj/item/clothing/suit/toggle/recruiterjacket
+	item_path = /obj/item/clothing/suit/toggle/recruiter_jacket
 	ckeywhitelist = list("m97screwsyourparents")
 
-/datum/loadout_item/under/jumpsuit/recruiteruniform
+/datum/loadout_item/under/jumpsuit/recruiter_uniform
 	name = "Recruiter's Uniform"
-	item_path = /obj/item/clothing/under/recruiteruniform
+	item_path = /obj/item/clothing/under/recruiter_uniform
 	ckeywhitelist = list("m97screwsyourparents")
 
-/datum/loadout_item/pocket_items/hypnowatch
+/datum/loadout_item/pocket_items/hypno_watch
 	name = "Pocket Watch"
 	item_path = /obj/item/clothing/accessory/hypnowatch
 	ckeywhitelist = list("slippyjoe")
