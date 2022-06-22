@@ -262,13 +262,6 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "uvf"
 
-/obj/item/clothing/under/suit/black/female/skirt
-	name = "feminine skirt"
-	desc = "Perfect for a secretary that does no work."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "black_suit_fem_skirt"
-
 /obj/item/clothing/under/whiterussian
 	name = "army baron uniform"
 	desc = "Space Communism? That's just like...your opinion man."
@@ -493,10 +486,3 @@
 	icon_state = "beeze"
 	obj_flags = null
 	unique_reskin = null
-
-/obj/item/clothing/under/suit/black/female/trousers //i swear this already existed, but whatever
-	name = "feminine suit"
-	desc = "Perfect for a secretary that does no work. This time with pants!"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "black_suit_fem"
