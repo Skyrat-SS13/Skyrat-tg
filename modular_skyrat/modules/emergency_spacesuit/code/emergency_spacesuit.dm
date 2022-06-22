@@ -20,14 +20,24 @@
 	/// Have we been damaged?
 	var/torn = FALSE
 
-/obj/item/clothing/suit/space/emergency/run_atom_armor(damage_amount, damage_type, damage_flag, attack_dir, armour_penetration)
-	if(damage_amount && !torn && prob(50))
-		balloon_alert_to_viewers("[src] is torn!")
+/obj/item/clothing/suit/space/emergency/equipped(mob/user, slot)
+	. = ..()
+	RegisterSignal(user, COMSIG_MOB_APPLY_DAMAGE, .proc/user_damaged)
+
+/obj/item/clothing/suit/space/emergency/dropped(mob/user)
+	. = ..()
+	UnregisterSignal(user, COMSIG_MOB_APPLY_DAMAGE)
+
+/obj/item/clothing/suit/space/emergency/proc/user_damaged(datum/source, damage, damagetype, def_zone)
+	SIGNAL_HANDLER
+	if(damage && !torn && prob(50))
+		balloon_alert_to_viewers("[src] tears!")
+		clothing_flags &= ~STOPSPRESSUREDAMAGE
 		torn = TRUE
 		playsound(src, 'sound/weapons/slashmiss.ogg', 50, TRUE)
 		playsound(src, 'sound/effects/refill.ogg', 50, TRUE)
 		update_appearance()
-	return ..()
+
 
 /obj/item/clothing/suit/space/emergency/update_name(updates)
 	. = ..()
