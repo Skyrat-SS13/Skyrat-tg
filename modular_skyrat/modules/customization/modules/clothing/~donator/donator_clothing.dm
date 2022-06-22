@@ -1383,7 +1383,7 @@
 	worn_icon_state = "officerhat"
 
 // Donation reward for M97screwsyourparents
-/obj/item/clothing/suit/toggle/recruiterjacket
+/obj/item/clothing/suit/toggle/recruiter_jacket
 	name = "recruiter's jacket"
 	desc = "Hey, free college!"
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
