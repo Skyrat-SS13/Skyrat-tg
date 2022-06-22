@@ -147,5 +147,5 @@
 	. = ..()
 
 	if(loc != attached_machine) //If it isn't in the machine, then it retracts when dropped
-		to_chat(user, span_notice("The [src] retracts back into the [attached_machine]"))
+		to_chat(user, span_notice("[src] retracts back into the [attached_machine]."))
 		attached_machine.retract_mask()
