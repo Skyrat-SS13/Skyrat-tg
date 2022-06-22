@@ -1,6 +1,7 @@
 #define EMERGENCY_SUIT_MIN_TEMP_PROTECT 237
 #define EMERGENCY_SUIT_MAX_TEMP_PROTECT 100
-
+#define EMERGENCY_HELMET_MIN_TEMP_PROTECT 2.0
+#define EMERGENCY_HELMET_MAX_TEMP_PROTECT 100
 
 // The suit
 /obj/item/clothing/suit/space/emergency
@@ -49,11 +50,6 @@
 	if(torn)
 		. += span_danger("It looks torn and useless!")
 
-#undef EMERGENCY_SUIT_MIN_TEMP_PROTECT
-#undef EMERGENCY_SUIT_MAX_TEMP_PROTECT
-
-#define EMERGENCY_HELMET_MIN_TEMP_PROTECT 2.0
-#define EMERGENCY_HELMET_MAX_TEMP_PROTECT 100
 
 // The helmet
 /obj/item/clothing/head/helmet/space/emergency
@@ -70,6 +66,8 @@
 
 #undef EMERGENCY_HELMET_MIN_TEMP_PROTECT
 #undef EMERGENCY_HELMET_MAX_TEMP_PROTECT
+#undef EMERGENCY_SUIT_MIN_TEMP_PROTECT
+#undef EMERGENCY_SUIT_MAX_TEMP_PROTECT
 
 // Lil box to hold em in
 /obj/item/storage/box/emergency_spacesuit
