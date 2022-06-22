@@ -54,7 +54,7 @@
 		attached_tank.forceMove(loc)
 
 	used_item.forceMove(src) // Put new tank in, set it as attached tank
-	visible_message(span_notice("[user] inserts [used_item] into [src].</span>"))
+	visible_message(span_notice("[user] inserts [used_item] into [src]."))
 	attached_tank = used_item
 	update_icon()
 
