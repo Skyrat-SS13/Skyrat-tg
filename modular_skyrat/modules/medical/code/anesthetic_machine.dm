@@ -44,7 +44,7 @@
 	. = ..()
 	if(!retract_mask())
 		return FALSE
-	visible_message(span_notice("[user] retracts the mask back into the [src]."))
+	visible_message(span_notice("[user] retracts [attached_mask] back into [src]."))
 
 /obj/machinery/anesthetic_machine/attacked_by(obj/item/used_item, mob/living/user)
 	if(!istype(used_item, /obj/item/tank))
