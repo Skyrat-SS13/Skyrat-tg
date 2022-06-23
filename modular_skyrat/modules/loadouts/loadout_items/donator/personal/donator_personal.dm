@@ -123,6 +123,11 @@
 	item_path = /obj/item/clothing/under/plasmaman/candlejax
 	ckeywhitelist = list("candlejax")
 
+/datum/loadout_item/suit/jacket/cherno
+	name = "Blue-Silvered Coat"
+	item_path = /obj/item/clothing/suit/jacket/cherno
+	ckeywhitelist = list("cherno00")
+
 /datum/loadout_item/head/avipilot
 	name = "Smuggler's Flying Cap"
 	item_path = /obj/item/clothing/head/avipilot
@@ -155,7 +160,7 @@
 
 /datum/loadout_item/mask/kindle_mask
 	name = "Kindle's mask"
-	item_path = /obj/item/clothing/mask/kindle
+	item_path = /obj/item/clothing/mask/animal/kindle
 	ckeywhitelist = list("theooz")
 
 /datum/loadout_item/head/drake_skull
