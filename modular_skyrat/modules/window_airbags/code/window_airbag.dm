@@ -1,3 +1,5 @@
+#define DISARM_TIME 3 SECONDS
+
 /obj/structure/window/reinforced/fulltile/Initialize(mapload, direct)
 	. = ..()
 	AddElement(/datum/element/airbag)
@@ -12,6 +14,8 @@
 /datum/element/airbag
 	/// The type we spawn when our parent is destroyed
 	var/airbag_type = /obj/item/airbag/immediate_arm
+	/// The type we spawn when we are disarmed.
+	var/disarmed_type = /obj/item/airbag
 
 /datum/element/airbag/Attach(datum/target, airbag_type_override)
 	. = ..()
@@ -20,9 +24,11 @@
 
 	RegisterSignal(target, COMSIG_ATOM_DESTRUCTION, .proc/deploy_airbag)
 	RegisterSignal(target, COMSIG_PARENT_EXAMINE, .proc/on_examine)
+	RegisterSignal(target, COMSIG_CLICK_ALT, .proc/on_altclick)
 
 /datum/element/airbag/Detach(datum/target)
-	UnregisterSignal(target, list(COMSIG_ATOM_DESTRUCTION, COMSIG_PARENT_EXAMINE))
+	. = ..()
+	UnregisterSignal(target, list(COMSIG_ATOM_DESTRUCTION, COMSIG_PARENT_EXAMINE, COMSIG_CLICK_ALT))
 
 /datum/element/airbag/proc/deploy_airbag(atom/movable/destroying_atom, damage_flag)
 	SIGNAL_HANDLER
@@ -34,12 +40,23 @@
 
 	examine_text += span_warning("It has a blinking red light indicating an airbag is primed and ready to trigger on harsh impact.")
 
+/datum/element/airbag/proc/on_altclick(atom/movable/clicked_atom, mob/living/clicker)
+	SIGNAL_HANDLER
 
+	INVOKE_ASYNC(src, .proc/disarm_airbag, clicked_atom, clicker)
+
+
+/datum/element/airbag/proc/disarm_airbag(atom/movable/clicked_atom, mob/living/clicker)
+	to_chat(clicker, span_notice("You start to disarm the airbag."))
+	if(do_after(clicker, DISARM_TIME, clicked_atom))
+		to_chat(clicker, span_notice("You disarm the airbag."))
+		new disarmed_type(get_turf(clicked_atom))
+		Detach(clicked_atom)
 
 // A fun little gadget!
 /obj/item/airbag
 	name = "airbag"
-	desc = "A small package with an explosive package attached. Stand clear!"
+	desc = "A small package with an explosive attached. Stand clear!"
 	icon = 'modular_skyrat/modules/inflatables/icons/inflatable.dmi'
 	icon_state = "airbag_safe"
 	base_icon_state = "airbag"
@@ -67,26 +84,32 @@
 	. = ..()
 	icon_state = "[base_icon_state]_[armed ? "armed" : "safe"]"
 
+/obj/item/airbag/attack_self(mob/user, modifiers)
+	. = ..()
+	arm()
+
 /obj/item/airbag/proc/arm()
 	if(armed)
 		return
 	balloon_alert_to_viewers("armed!")
 	if(!anchored)
 		addtimer(CALLBACK(src, .proc/deploy_anchor), 1 SECONDS)
-	addtimer(CALLBACK(src, .proc/bang), detonate_time, TIMER_CLIENT_TIME)
+	addtimer(CALLBACK(src, .proc/bang), detonate_time)
 	armed = TRUE
-	playsound(src, armed_sound, 100)
+	playsound(src, armed_sound, 50)
 	update_appearance()
 
+// Anchors the airbag to the ground, namely to prevent air movement.
 /obj/item/airbag/proc/deploy_anchor()
 	if(!isturf(loc) || anchored)
 		return
 	balloon_alert_to_viewers("anchor deployed!")
 	anchored = TRUE
 
+// Detonates the airbag, dropping the item and playing the sound.
 /obj/item/airbag/proc/bang()
 	var/obj/created_object = new drop_type(get_turf(src))
-	playsound(src, bang_sound, 100, pressure_affected = FALSE)
+	playsound(src, bang_sound, 50, pressure_affected = FALSE)
 	do_smoke(1, 1, created_object, get_turf(src))
 	qdel(src)
 
@@ -99,3 +122,5 @@
 	icon_state = "airbag_wall"
 	torn_type = null // No debris left behind!
 	deflated_type = null
+
+#undef DISARM_TIME
