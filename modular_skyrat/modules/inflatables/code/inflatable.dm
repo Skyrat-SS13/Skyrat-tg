@@ -180,7 +180,7 @@
 
 /obj/item/inflatable/update_icon_state()
 	. = ..()
-	icon_state = "[base_icon_state]_[torn ? "torn" : ""]"
+	icon_state = "[base_icon_state][torn ? "_torn" : ""]"
 
 /obj/item/inflatable/examine(mob/user)
 	. = ..()
