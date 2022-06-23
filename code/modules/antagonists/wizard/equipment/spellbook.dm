@@ -655,7 +655,9 @@
 	/// Determines if this spellbook can refund anything.
 	var/can_refund = TRUE
 
-	var/mob/living/carbon/human/owner
+	/// The mind that first used the book. Automatically assigned when a wizard spawns.
+	var/datum/mind/owner
+
 	var/list/entries = list()
 
 /obj/item/spellbook/examine(mob/user)
@@ -693,10 +695,12 @@
 
 /obj/item/spellbook/attack_self(mob/user)
 	if(!owner)
+		if(!user.mind)
+			return
 		to_chat(user, span_notice("You bind the spellbook to yourself."))
-		owner = user
+		owner = user.mind
 		return
-	if(user != owner)
+	if(user.mind != owner)
 		if(user.mind.special_role == ROLE_WIZARD_APPRENTICE)
 			to_chat(user, "If you got caught sneaking a peek from your teacher's spellbook, you'd likely be expelled from the Wizard Academy. Better not.")
 		else
@@ -706,7 +710,7 @@
 	if(user?.mind?.opposing_force.status != OPFOR_STATUS_APPROVED)
 		to_chat(user, span_warning("You must have an approved OPFOR to use this!"))
 	//SKYRAT EDIT END
-	. = ..()
+	return ..()
 
 /obj/item/spellbook/attackby(obj/item/O, mob/user, params)
 	if(!can_refund)
