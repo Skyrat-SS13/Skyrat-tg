@@ -83,7 +83,7 @@
 	always_unpowered = FALSE // SKYRAT EDIT ADDITION - SYNDIEBROKE
 
 /area/ruin/syndicate_lava_base/telecomms
-	name = "\improper Interdyne Telecommunications" // SKYRAT EDIT STEALTH INTERDYNE
+	name = "\improper Interdyne Operations" // SKYRAT EDIT STEALTH INTERDYNE
 
 //Xeno Nest
 
