@@ -3,7 +3,7 @@
 	var/ashwalker_harmed = FALSE
 
 /mob/living/simple_animal/hostile/megafauna/attacked_by(obj/item/I, mob/living/user)
-	if(!ashwalker_harmed && is_species(maybe_ashie, /datum/species/lizard/ashwalker))
+	if(!ashwalker_harmed && is_species(user, /datum/species/lizard/ashwalker))
 		ashwalker_harmed = TRUE
 	return ..()
 
