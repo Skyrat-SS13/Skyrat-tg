@@ -36,11 +36,12 @@
 /datum/element/airbag/proc/on_examine(datum/source, mob/user, list/examine_text)
 	SIGNAL_HANDLER
 
-	examine_text += span_warning("It has a blinking red light indicating an airbag is primed and ready to trigger on harsh impact.")
+	examine_text += span_warning("It has a blinking red light indicating an aribag is installed, <b>alt+click</b> to disarm.")
 
 /datum/element/airbag/proc/on_altclick(atom/movable/clicked_atom, mob/living/clicker)
 	SIGNAL_HANDLER
-
+	if(!clicker.can_interact_with(clicked_atom))
+		return
 	INVOKE_ASYNC(src, .proc/disarm_airbag, clicked_atom, clicker)
 
 
