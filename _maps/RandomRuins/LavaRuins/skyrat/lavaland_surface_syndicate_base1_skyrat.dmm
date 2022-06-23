@@ -456,6 +456,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
+/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
 /turf/open/floor/iron/dark,
 /area/ruin/syndicate_lava_base/virology)
 "fg" = (
@@ -560,6 +561,18 @@
 /obj/effect/turf_decal/siding/brown{
 	dir = 4
 	},
+/obj/structure/closet/crate,
+/obj/item/modular_computer/laptop/preset/syndicate,
+/obj/item/modular_computer/laptop/preset/syndicate,
+/obj/item/modular_computer/laptop/preset/syndicate,
+/obj/item/modular_computer/laptop/preset/syndicate,
+/obj/item/modular_computer/laptop/preset/syndicate,
+/obj/item/modular_computer/laptop/preset/syndicate,
+/obj/machinery/camera/directional/north{
+	name = "interdyne camera";
+	network = list("nukie");
+	c_tag = "INT - South Primary Hall"
+	},
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/engineering)
 "fP" = (
@@ -588,12 +601,28 @@
 "fU" = (
 /obj/structure/marker_beacon/yellow,
 /turf/open/misc/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/area/ruin/syndicate_lava_base/arrivals)
 "fZ" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
-/obj/machinery/computer/camera_advanced,
+/obj/machinery/computer/camera_advanced{
+	networks = list("ss13","nukie")
+	},
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/telecomms)
+"gd" = (
+/obj/machinery/door/airlock/external,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
+	cycle_id = "interdyne-main"
+	},
+/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
+/obj/machinery/button/door{
+	id = "interdynebridge";
+	name = "Bridge Control";
+	req_access = list("syndicate");
+	pixel_y = 24
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/syndicate_lava_base/arrivals)
 "gf" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -614,7 +643,9 @@
 /area/ruin/syndicate_lava_base/engineering)
 "gm" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
-/obj/structure/bodycontainer/crematorium,
+/obj/structure/bodycontainer/crematorium{
+	id = "morningnapalm"
+	},
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/syndicate_lava_base/medbay)
 "gn" = (
@@ -689,6 +720,12 @@
 /obj/machinery/disposal/bin,
 /obj/machinery/airalarm/directional/west{
 	req_access = list("syndicate")
+	},
+/obj/machinery/camera/directional/west{
+	name = "interdyne camera";
+	network = list("nukie");
+	c_tag = "INT - Bar";
+	dir = 10
 	},
 /turf/open/floor/wood,
 /area/ruin/syndicate_lava_base/bar)
@@ -1011,6 +1048,21 @@
 /obj/effect/spawner/random/trash/janitor_supplies,
 /turf/open/floor/plating,
 /area/ruin/syndicate_lava_base/medbay)
+"js" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/orange/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/general/hidden/layer4,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/brown/warning,
+/obj/structure/cable,
+/obj/machinery/camera/directional/north{
+	name = "interdyne camera";
+	network = list("nukie");
+	c_tag = "INT - Dorms Hallway"
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/syndicate_lava_base/dormitories)
 "jt" = (
 /obj/effect/baseturf_helper/lava_land/surface,
 /turf/closed/wall/r_wall/syndicate/nodiagonal,
@@ -1157,6 +1209,12 @@
 /obj/machinery/airalarm/directional/east{
 	req_access = list("syndicate")
 	},
+/obj/machinery/camera/directional/east{
+	name = "interdyne camera";
+	network = list("nukie");
+	c_tag = "INT - Medbay Hall";
+	dir = 6
+	},
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/syndicate_lava_base/medbay)
 "kL" = (
@@ -1220,6 +1278,11 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 1
 	},
+/obj/machinery/camera/directional/north{
+	name = "interdyne camera";
+	network = list("nukie");
+	c_tag = "INT - Exterior East"
+	},
 /turf/open/floor/plating/lavaland_atmos,
 /area/ruin/syndicate_lava_base/virology)
 "le" = (
@@ -1279,13 +1342,20 @@
 /area/ruin/syndicate_lava_base/arrivals)
 "lF" = (
 /obj/structure/table/reinforced/plastitaniumglass,
-/obj/item/reagent_containers/glass/beaker/jar{
-	pixel_x = 11;
-	pixel_y = 2
-	},
 /obj/item/mmi/posibrain,
 /turf/open/floor/mineral/plastitanium,
 /area/ruin/syndicate_lava_base/engineering)
+"lK" = (
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 8
+	},
+/obj/machinery/camera/directional/south{
+	name = "interdyne camera";
+	network = list("nukie");
+	c_tag = "INT - Recreation Hall"
+	},
+/turf/open/floor/iron,
+/area/ruin/syndicate_lava_base/bar)
 "lP" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/orange/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/general/hidden/layer4,
@@ -1344,6 +1414,12 @@
 	pixel_x = 5;
 	pixel_y = -1
 	},
+/obj/machinery/camera/directional/east{
+	name = "interdyne camera";
+	network = list("nukie");
+	c_tag = "INT - Medbay Surgery";
+	dir = 6
+	},
 /turf/open/floor/iron/white,
 /area/ruin/syndicate_lava_base/medbay)
 "mU" = (
@@ -1388,6 +1464,27 @@
 	},
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/syndicate_lava_base/virology)
+"nv" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/orange/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/general/hidden/layer4,
+/obj/structure/disposalpipe/segment{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/machinery/button/door{
+	id = "interdyneengineering";
+	name = "Engineering Lockdown";
+	req_access = list("syndicate");
+	pixel_x = -24
+	},
+/obj/machinery/camera/directional/west{
+	name = "interdyne camera";
+	network = list("nukie");
+	c_tag = "INT - Foyer";
+	dir = 10
+	},
+/turf/open/floor/catwalk_floor/iron_dark,
+/area/ruin/syndicate_lava_base/arrivals)
 "ny" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 8
@@ -1438,6 +1535,12 @@
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/directional/south{
 	req_access = list("syndicate")
+	},
+/obj/machinery/camera/directional/south{
+	name = "interdyne camera";
+	network = list("nukie");
+	c_tag = "INT - Medbay Chemistry";
+	dir = 7
 	},
 /turf/open/floor/iron/white/textured_half,
 /area/ruin/syndicate_lava_base/chemistry)
@@ -1512,6 +1615,10 @@
 "oA" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/orange/hidden/layer2,
 /obj/machinery/light/small/directional/east,
+/obj/machinery/button/crematorium{
+	id = "morningnapalm";
+	pixel_x = 24
+	},
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/syndicate_lava_base/medbay)
 "oC" = (
@@ -1563,6 +1670,14 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/general/hidden/layer4,
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/telecomms)
+"pa" = (
+/obj/machinery/door/airlock/survival_pod/glass,
+/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
+/obj/structure/fans/tiny,
+/turf/open/floor/iron/stairs{
+	dir = 1
+	},
+/area/ruin/syndicate_lava_base/engineering)
 "pj" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/orange/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/general/hidden/layer4,
@@ -1726,7 +1841,12 @@
 /turf/open/floor/iron/white/textured_large,
 /area/ruin/syndicate_lava_base/chemistry)
 "qO" = (
-/obj/machinery/firealarm/directional/north,
+/obj/machinery/camera/directional/north{
+	name = "interdyne camera";
+	network = list("nukie");
+	dir = 9;
+	c_tag = "INT - Medbay Chemistry"
+	},
 /turf/open/floor/iron/white/textured_half{
 	dir = 1
 	},
@@ -1803,6 +1923,15 @@
 "rA" = (
 /turf/open/floor/iron/white,
 /area/ruin/syndicate_lava_base/bar)
+"rB" = (
+/obj/machinery/camera/directional/east{
+	name = "interdyne camera";
+	network = list("nukie");
+	c_tag = "INT - Dorms Hallway";
+	dir = 6
+	},
+/turf/open/floor/iron,
+/area/ruin/syndicate_lava_base/dormitories)
 "rC" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/orange/hidden/layer2,
 /obj/machinery/door/firedoor,
@@ -1849,6 +1978,15 @@
 /obj/effect/turf_decal/siding/dark_green,
 /turf/open/floor/iron/white,
 /area/ruin/syndicate_lava_base/virology)
+"rP" = (
+/obj/structure/marker_beacon/yellow,
+/obj/machinery/camera/directional/east{
+	name = "interdyne camera";
+	network = list("nukie");
+	c_tag = "INT - Entrance Interior"
+	},
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/ruin/syndicate_lava_base/arrivals)
 "rT" = (
 /obj/machinery/smartfridge/chemistry/preloaded,
 /turf/closed/wall/r_wall/syndicate/nodiagonal,
@@ -2104,6 +2242,11 @@
 /area/ruin/syndicate_lava_base/dormitories)
 "uL" = (
 /obj/structure/chair/office,
+/obj/machinery/camera/directional/north{
+	name = "interdyne camera";
+	network = list("nukie");
+	c_tag = "INT - Meeting Room"
+	},
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/bar)
 "uM" = (
@@ -2135,6 +2278,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
+/obj/item/kirbyplants/random,
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/arrivals)
 "vb" = (
@@ -2187,7 +2331,7 @@
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/dormitories)
 "vC" = (
-/obj/machinery/posialert,
+/obj/machinery/posialert/interdyne,
 /turf/closed/wall/mineral/titanium/survival/pod,
 /area/ruin/syndicate_lava_base/engineering)
 "vE" = (
@@ -2325,6 +2469,24 @@
 /obj/structure/extinguisher_cabinet/directional/north,
 /turf/open/floor/catwalk_floor/iron_dark,
 /area/ruin/syndicate_lava_base/dormitories)
+"wT" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/orange/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/general/hidden/layer4,
+/obj/structure/disposalpipe/segment{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/effect/turf_decal/trimline/dark_green/warning{
+	dir = 8
+	},
+/obj/machinery/camera/directional/east{
+	name = "interdyne camera";
+	network = list("nukie");
+	c_tag = "INT - Medbay Hall";
+	dir = 6
+	},
+/turf/open/floor/iron/dark/textured_large,
+/area/ruin/syndicate_lava_base/medbay)
 "wX" = (
 /obj/machinery/atmospherics/components/unary/outlet_injector/on{
 	dir = 1
@@ -2483,6 +2645,7 @@
 "ye" = (
 /obj/machinery/plumbing/receiver,
 /obj/machinery/light/directional/north,
+/obj/machinery/firealarm/directional/north,
 /turf/open/floor/iron/white/textured_large,
 /area/ruin/syndicate_lava_base/chemistry)
 "yg" = (
@@ -2580,6 +2743,11 @@
 	dir = 2
 	},
 /obj/machinery/disposal/bin,
+/obj/machinery/camera/directional/east{
+	name = "interdyne camera";
+	network = list("nukie");
+	c_tag = "INT - Medbay Virology"
+	},
 /turf/open/floor/iron/white,
 /area/ruin/syndicate_lava_base/virology)
 "yK" = (
@@ -2710,12 +2878,11 @@
 "zB" = (
 /obj/machinery/door/firedoor,
 /obj/structure/table/reinforced/plastitaniumglass,
-/obj/item/paper_bin{
-	pixel_x = 5;
-	pixel_y = 3
-	},
-/obj/item/pen{
-	pixel_y = 4
+/obj/machinery/button/door{
+	id = "interdynemedbay";
+	name = "Medbay Lockdown";
+	req_access = list("syndicate");
+	pixel_x = 5
 	},
 /turf/open/floor/iron/white/textured_half{
 	dir = 1
@@ -2921,6 +3088,12 @@
 /obj/structure/railing{
 	dir = 8
 	},
+/obj/machinery/camera/directional/north{
+	name = "interdyne camera";
+	network = list("nukie");
+	dir = 9;
+	c_tag = "INT - Operations"
+	},
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/telecomms)
 "Bt" = (
@@ -2959,6 +3132,19 @@
 	},
 /turf/open/floor/plating,
 /area/ruin/syndicate_lava_base/arrivals)
+"BR" = (
+/obj/machinery/conveyor{
+	dir = 8;
+	id = "interdynecargoin"
+	},
+/obj/machinery/camera/directional/north{
+	name = "interdyne camera";
+	network = list("nukie");
+	dir = 9;
+	c_tag = "INT - Exterior South"
+	},
+/turf/open/floor/plating/lavaland_atmos,
+/area/ruin/syndicate_lava_base/engineering)
 "BS" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/orange/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/general/hidden/layer4,
@@ -3155,6 +3341,16 @@
 /obj/structure/bedsheetbin,
 /turf/open/floor/iron/dark,
 /area/ruin/syndicate_lava_base/dormitories)
+"Df" = (
+/obj/machinery/power/rtg/advanced,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/orange/hidden/layer2,
+/obj/structure/disposalpipe/segment{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/machinery/light/small/directional/east,
+/turf/open/floor/plating,
+/area/ruin/syndicate_lava_base/engineering)
 "Dg" = (
 /obj/machinery/vending/hydronutrients{
 	onstation = 0
@@ -3261,6 +3457,7 @@
 	name = "bluespace-powered power storage unit"
 	},
 /obj/structure/cable,
+/obj/machinery/light/directional/east,
 /turf/open/floor/plating,
 /area/ruin/syndicate_lava_base/engineering)
 "DW" = (
@@ -3288,6 +3485,11 @@
 /obj/item/airlock_painter/decal,
 /obj/item/airlock_painter{
 	pixel_y = -6
+	},
+/obj/machinery/camera/directional/east{
+	name = "interdyne camera";
+	network = list("nukie");
+	c_tag = "INT - Engineering"
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/syndicate_lava_base/engineering)
@@ -3391,12 +3593,14 @@
 	dir = 1
 	},
 /obj/structure/closet/crate,
-/obj/item/modular_computer/laptop/preset/syndicate,
-/obj/item/modular_computer/laptop/preset/syndicate,
-/obj/item/modular_computer/laptop/preset/syndicate,
-/obj/item/modular_computer/laptop/preset/syndicate,
-/obj/item/modular_computer/laptop/preset/syndicate,
-/obj/item/modular_computer/laptop/preset/syndicate,
+/obj/item/card/id/advanced/chameleon,
+/obj/item/card/id/advanced/chameleon,
+/obj/item/card/id/advanced/chameleon,
+/obj/item/radio/headset/interdyne,
+/obj/item/radio/headset/interdyne,
+/obj/item/radio/headset/interdyne,
+/obj/item/encryptionkey/headset_interdyne,
+/obj/item/encryptionkey/headset_interdyne,
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/telecomms)
 "ES" = (
@@ -3473,6 +3677,16 @@
 /obj/machinery/griddle,
 /turf/open/floor/iron/kitchen,
 /area/ruin/syndicate_lava_base/bar)
+"Fv" = (
+/obj/structure/lattice/catwalk,
+/obj/machinery/camera/directional/east{
+	name = "interdyne camera";
+	network = list("nukie");
+	c_tag = "INT - Entrance Interior";
+	dir = 6
+	},
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/ruin/syndicate_lava_base/arrivals)
 "Fy" = (
 /obj/effect/turf_decal/trimline/dark_green/line,
 /obj/effect/turf_decal/trimline/dark_green/mid_joiner,
@@ -3538,7 +3752,7 @@
 /turf/open/floor/iron/lavaland_atmos{
 	icon_state = "dark_large"
 	},
-/area/lavaland/surface/outdoors)
+/area/ruin/syndicate_lava_base/arrivals)
 "Gi" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/orange/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/general/hidden/layer4,
@@ -3655,6 +3869,7 @@
 /obj/machinery/atmospherics/components/binary/pump/on{
 	dir = 1
 	},
+/obj/machinery/light/directional/west,
 /turf/open/floor/plating,
 /area/ruin/syndicate_lava_base/engineering)
 "GO" = (
@@ -3710,6 +3925,10 @@
 /obj/effect/turf_decal/siding/brown{
 	dir = 4
 	},
+/turf/open/floor/iron,
+/area/ruin/syndicate_lava_base/bar)
+"Hk" = (
+/obj/item/kirbyplants/random,
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/bar)
 "Hm" = (
@@ -3782,7 +4001,7 @@
 /turf/open/floor/wood,
 /area/ruin/syndicate_lava_base/bar)
 "HW" = (
-/obj/machinery/mineral/equipment_vendor,
+/obj/machinery/mineral/equipment_vendor/interdyne,
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/telecomms)
 "Ic" = (
@@ -3809,7 +4028,7 @@
 	},
 /obj/machinery/button/door{
 	id = "interdynedorms";
-	name = "Recreation Lockdown";
+	name = "Dorms Lockdown";
 	req_access = list("syndicate");
 	pixel_x = -6;
 	pixel_y = 11
@@ -4000,6 +4219,7 @@
 /obj/machinery/airalarm/directional/east{
 	req_access = list("syndicate")
 	},
+/obj/item/kirbyplants/random,
 /turf/open/floor/iron/dark,
 /area/ruin/syndicate_lava_base/dormitories)
 "Js" = (
@@ -4067,7 +4287,6 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 2
 	},
-/obj/structure/extinguisher_cabinet/directional/north,
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/arrivals)
 "Ke" = (
@@ -4089,6 +4308,12 @@
 /obj/machinery/airalarm/directional/east{
 	req_access = list("syndicate")
 	},
+/obj/machinery/camera/directional/east{
+	name = "interdyne camera";
+	network = list("nukie");
+	c_tag = "INT - Botany";
+	dir = 6
+	},
 /turf/open/floor/grass,
 /area/ruin/syndicate_lava_base/bar)
 "Kp" = (
@@ -4105,6 +4330,14 @@
 	},
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/telecomms)
+"Kq" = (
+/obj/machinery/camera/directional/south{
+	name = "interdyne camera";
+	network = list("nukie");
+	c_tag = "INT - Dorms Hallway"
+	},
+/turf/open/floor/iron,
+/area/ruin/syndicate_lava_base/dormitories)
 "KL" = (
 /obj/structure/sign/warning/docking/directional,
 /turf/closed/wall/r_wall/syndicate/nodiagonal,
@@ -4128,9 +4361,10 @@
 /turf/open/floor/iron/white,
 /area/ruin/syndicate_lava_base/virology)
 "Ld" = (
-/obj/machinery/mineral/ore_redemption{
-	req_access = list("syndicate")
-	},
+/obj/structure/frame/machine,
+/obj/item/stack/cable_coil/five,
+/obj/item/circuitboard/machine/ore_redemption,
+/obj/item/assembly/igniter,
 /turf/open/floor/iron/textured_large,
 /area/ruin/syndicate_lava_base/telecomms)
 "Lg" = (
@@ -4153,6 +4387,9 @@
 /area/ruin/syndicate_lava_base/virology)
 "Lm" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/purple/hidden,
+/obj/structure/closet/secure_closet/ds2atmos{
+	anchored = 1
+	},
 /turf/open/floor/iron/dark,
 /area/ruin/syndicate_lava_base/engineering)
 "Lu" = (
@@ -4336,6 +4573,14 @@
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/syndicate_lava_base/bar)
+"ME" = (
+/obj/machinery/door/airlock/survival_pod/glass,
+/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
+/obj/structure/fans/tiny,
+/turf/open/floor/iron/stairs{
+	dir = 4
+	},
+/area/ruin/syndicate_lava_base/engineering)
 "MF" = (
 /obj/structure/table/wood,
 /turf/open/floor/wood,
@@ -4429,6 +4674,7 @@
 /obj/machinery/airalarm/directional/south{
 	req_access = list("syndicate")
 	},
+/obj/item/kirbyplants/random,
 /turf/open/floor/iron/white/textured_large,
 /area/ruin/syndicate_lava_base/medbay)
 "Nk" = (
@@ -4493,6 +4739,13 @@
 "NH" = (
 /obj/structure/lattice/catwalk,
 /turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/ruin/syndicate_lava_base/arrivals)
+"NJ" = (
+/obj/effect/turf_decal/trimline/brown/warning{
+	dir = 10
+	},
+/obj/structure/extinguisher_cabinet/directional/south,
+/turf/open/floor/iron/dark,
 /area/ruin/syndicate_lava_base/arrivals)
 "NS" = (
 /turf/open/floor/iron,
@@ -4946,6 +5199,12 @@
 	dir = 1
 	},
 /obj/structure/cable,
+/obj/machinery/button/door{
+	id = "interdynedorms";
+	name = "Dorms Lockdown";
+	req_access = list("syndicate");
+	pixel_x = -24
+	},
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/syndicate_lava_base/dormitories)
 "RD" = (
@@ -4975,6 +5234,11 @@
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/syndicate_lava_base/telecomms)
+"RL" = (
+/obj/machinery/light/directional/west,
+/obj/item/kirbyplants/random,
+/turf/open/floor/iron/dark,
+/area/ruin/syndicate_lava_base/dormitories)
 "RU" = (
 /obj/structure/cable,
 /turf/open/floor/plating,
@@ -5104,6 +5368,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
+/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
 /turf/open/floor/iron/dark,
 /area/ruin/syndicate_lava_base/virology)
 "Td" = (
@@ -5187,6 +5452,11 @@
 /obj/structure/table/reinforced/plastitaniumglass,
 /obj/item/storage/box/donkpockets{
 	pixel_y = 8
+	},
+/obj/machinery/camera/directional/south{
+	name = "interdyne camera";
+	network = list("nukie");
+	c_tag = "INT - Kitchen"
 	},
 /turf/open/floor/iron/kitchen,
 /area/ruin/syndicate_lava_base/bar)
@@ -5485,6 +5755,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
+/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
 /turf/open/floor/iron/dark,
 /area/ruin/syndicate_lava_base/virology)
 "WK" = (
@@ -5508,6 +5779,7 @@
 /area/ruin/syndicate_lava_base/dormitories)
 "WT" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/purple/hidden,
+/obj/machinery/light/directional/south,
 /turf/open/floor/plating,
 /area/ruin/syndicate_lava_base/engineering)
 "WW" = (
@@ -5541,6 +5813,13 @@
 "Xi" = (
 /obj/machinery/door/firedoor,
 /obj/structure/table/reinforced/plastitaniumglass,
+/obj/item/paper_bin{
+	pixel_x = 5;
+	pixel_y = 3
+	},
+/obj/item/pen{
+	pixel_y = 4
+	},
 /turf/open/floor/iron/white,
 /area/ruin/syndicate_lava_base/chemistry)
 "Xk" = (
@@ -5566,7 +5845,7 @@
 /obj/machinery/door/airlock/survival_pod/glass,
 /obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
 /obj/structure/fans/tiny,
-/turf/open/floor/plating,
+/turf/open/floor/iron/stairs,
 /area/ruin/syndicate_lava_base/engineering)
 "Xv" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/orange/hidden/layer2,
@@ -5586,6 +5865,22 @@
 "Xz" = (
 /obj/effect/turf_decal/trimline/brown/filled/corner{
 	dir = 4
+	},
+/obj/machinery/suit_storage_unit/syndicate/chameleon,
+/obj/effect/turf_decal/box/red/corners,
+/obj/effect/turf_decal/box/red/corners{
+	dir = 8
+	},
+/obj/effect/turf_decal/box/red/corners{
+	dir = 1
+	},
+/obj/effect/turf_decal/box/red/corners{
+	dir = 4
+	},
+/obj/machinery/camera/xray/directional/south{
+	name = "interdyne camera";
+	network = list("nukie");
+	c_tag = "INT - Vault"
 	},
 /turf/open/floor/iron/dark/textured_corner{
 	dir = 4
@@ -5626,6 +5921,12 @@
 	},
 /obj/item/clothing/neck/cloak/qm/syndie,
 /obj/item/megaphone/cargo,
+/obj/machinery/camera/directional/west{
+	name = "interdyne camera";
+	network = list("nukie");
+	c_tag = "INT - DO Office";
+	dir = 10
+	},
 /turf/open/floor/iron/dark,
 /area/ruin/syndicate_lava_base/dormitories)
 "Yj" = (
@@ -5780,6 +6081,11 @@
 	},
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/dormitories)
+"ZK" = (
+/obj/effect/turf_decal/trimline/brown/warning,
+/obj/structure/extinguisher_cabinet/directional/south,
+/turf/open/floor/iron/dark,
+/area/ruin/syndicate_lava_base/arrivals)
 "ZR" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/orange/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/general/hidden/layer4,
@@ -5816,7 +6122,7 @@ HE
 HE
 HE
 HE
-fU
+rP
 Gd
 Gd
 fU
@@ -5974,7 +6280,7 @@ HE
 HE
 HE
 Xy
-Xy
+vO
 vO
 vO
 vO
@@ -6173,7 +6479,7 @@ GE
 NH
 lD
 MV
-NH
+Fv
 GE
 GE
 GE
@@ -6388,14 +6694,14 @@ vO
 vO
 XK
 Yi
-Nq
+RL
 QJ
 aq
 XK
 Hn
 Ds
 rN
-NS
+Kq
 XK
 XY
 Ke
@@ -6407,7 +6713,7 @@ dK
 pn
 ND
 ND
-TH
+gd
 TH
 ND
 xE
@@ -6467,7 +6773,7 @@ dK
 pn
 BP
 bO
-VK
+NJ
 ND
 BP
 oo
@@ -6526,7 +6832,7 @@ pn
 pn
 BP
 RD
-dF
+ZK
 ND
 jz
 jz
@@ -6767,7 +7073,7 @@ aY
 gU
 gU
 aY
-aY
+nv
 aY
 iF
 iF
@@ -6870,7 +7176,7 @@ rN
 NS
 NS
 NS
-NS
+rB
 kq
 Wp
 NS
@@ -6961,7 +7267,7 @@ Js
 sq
 KW
 mB
-WO
+BR
 vO
 vO
 vO
@@ -6970,7 +7276,7 @@ Xy
 HE
 "}
 (21,1,1) = {"
-HE
+vO
 vO
 Xy
 HE
@@ -7029,7 +7335,7 @@ Xy
 HE
 "}
 (22,1,1) = {"
-HE
+vO
 vO
 Xy
 HE
@@ -7073,7 +7379,7 @@ lq
 Xg
 mB
 rd
-rp
+Df
 rp
 tE
 QC
@@ -7088,7 +7394,7 @@ vO
 HE
 "}
 (23,1,1) = {"
-HE
+vO
 vO
 Xy
 kD
@@ -7147,7 +7453,7 @@ vO
 HE
 "}
 (24,1,1) = {"
-HE
+vO
 vO
 Xy
 Xy
@@ -7206,7 +7512,7 @@ vO
 HE
 "}
 (25,1,1) = {"
-HE
+vO
 vO
 Xy
 HE
@@ -7265,7 +7571,7 @@ vO
 HE
 "}
 (26,1,1) = {"
-HE
+vO
 vO
 Xy
 HE
@@ -7321,7 +7627,7 @@ HE
 Xy
 vO
 vO
-HE
+vO
 "}
 (27,1,1) = {"
 HE
@@ -7337,7 +7643,7 @@ LG
 WK
 zv
 XK
-LP
+js
 rN
 NS
 XK
@@ -7380,7 +7686,7 @@ HE
 HE
 vO
 vO
-HE
+vO
 "}
 (28,1,1) = {"
 HE
@@ -7439,7 +7745,7 @@ HE
 HE
 HE
 vO
-HE
+vO
 "}
 (29,1,1) = {"
 HE
@@ -7498,7 +7804,7 @@ Xy
 HE
 HE
 vO
-HE
+vO
 "}
 (30,1,1) = {"
 HE
@@ -7547,7 +7853,7 @@ vG
 zQ
 Bk
 Er
-Xt
+pa
 mp
 mp
 mp
@@ -7557,7 +7863,7 @@ kD
 HE
 HE
 vO
-HE
+vO
 "}
 (31,1,1) = {"
 HE
@@ -7616,7 +7922,7 @@ Xy
 HE
 vO
 vO
-HE
+vO
 "}
 (32,1,1) = {"
 HE
@@ -7675,7 +7981,7 @@ Xy
 HE
 vO
 vO
-HE
+vO
 "}
 (33,1,1) = {"
 HE
@@ -7903,7 +8209,7 @@ Xy
 Op
 iK
 iK
-Xt
+ME
 iK
 iK
 HE
@@ -8224,7 +8530,7 @@ DD
 JX
 Gx
 HG
-HH
+lK
 GP
 TE
 OZ
@@ -8424,7 +8730,7 @@ kf
 Gi
 DB
 sC
-gJ
+wT
 gJ
 DB
 ta
@@ -8821,7 +9127,7 @@ TM
 GP
 JG
 JS
-io
+Hk
 vJ
 vO
 vO
@@ -9120,10 +9426,10 @@ Xy
 Xy
 Xy
 Xy
-Xy
-Xy
-Xy
-Xy
+vO
+vO
+vO
+vO
 vO
 vO
 vO

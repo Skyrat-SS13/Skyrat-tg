@@ -11,7 +11,9 @@
 	COOLDOWN_DECLARE(ghost_cooldown)
 	/// The encryption key typepath that will be used by the console.
 	var/radio_key = /obj/item/encryptionkey/headset_sci
-	/// The radio used to send messages over the science channel.
+	/// The channel to be used with the given encryprion typepath.
+	var/radio_channel = RADIO_CHANNEL_SCIENCE
+	/// The radio used to send messages over the specified channel.
 	var/obj/item/radio/radio
 
 /obj/machinery/posialert/examine(mob/user)
@@ -58,5 +60,11 @@
 	COOLDOWN_START(src, ghost_cooldown, 30 SECONDS)
 	flick("posialertflash",src)
 	say("There are positronic personalities available.")
-	radio.talk_into(src, "There are positronic personalities available.", RADIO_CHANNEL_SCIENCE)
+	radio.talk_into(src, "There are positronic personalities available.", radio_channel)
 	playsound(loc, 'sound/machines/ping.ogg', 50)
+
+
+/// Interdyne variant
+/obj/machinery/posialert/interdyne
+	radio_key = /obj/item/encryptionkey/headset_interdyne
+	radio_channel = RADIO_CHANNEL_INTERDYNE
