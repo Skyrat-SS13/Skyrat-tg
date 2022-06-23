@@ -6,6 +6,7 @@
 	color_src = 0
 	gender_specific = FALSE
 	recommended_species = list(SPECIES_VOX_PRIMALIS)
+	general_type = "vox_primalis"
 
 /datum/sprite_accessory/tails/vox_primalis/albino
 	name = "Vox Primalis Albino Tail"

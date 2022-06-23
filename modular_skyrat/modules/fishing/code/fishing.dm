@@ -69,7 +69,7 @@ GLOBAL_LIST_INIT(fishing_weights, list(
 	playsound(atom_parent, 'sound/machines/ping.ogg', 35, FALSE)
 	atom_parent.do_alert_animation()
 
-/datum/component/fishing/proc/finish_fishing(obj/item/fishing_rod/fisher = null, mob/living/user)
+/datum/component/fishing/proc/finish_fishing(obj/item/skyrat_fishing_rod/fisher = null, mob/living/user)
 	SIGNAL_HANDLER
 	if(reel_sound_timer)
 		deltimer(reel_sound_timer)
@@ -124,7 +124,7 @@ GLOBAL_LIST_INIT(fishing_weights, list(
 	. = ..()
 	AddComponent(/datum/component/fishing, set_loot = GLOB.fishing_weights, allow_fishes = FALSE)
 
-/obj/item/fishing_rod
+/obj/item/skyrat_fishing_rod
 	name = "fishing rod"
 	desc = "A wonderful item that can be used to fish from bodies of liquids."
 	icon = 'modular_skyrat/modules/fishing/icons/fishing.dmi'
@@ -141,23 +141,23 @@ GLOBAL_LIST_INIT(fishing_weights, list(
 	///whether the fishing rod is being dual-wielded
 	var/is_wielded = FALSE
 
-/obj/item/fishing_rod/primitive
+/obj/item/skyrat_fishing_rod/primitive
 	icon_state = "lava_rod"
 	inhand_icon_state = "lava_rod"
 
-/obj/item/fishing_rod/Initialize(mapload)
+/obj/item/skyrat_fishing_rod/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/two_handed)
 	RegisterSignal(src, COMSIG_TWOHANDED_WIELD, .proc/on_wield)
 	RegisterSignal(src, COMSIG_TWOHANDED_UNWIELD, .proc/on_unwield)
 
-/obj/item/fishing_rod/proc/on_wield()
+/obj/item/skyrat_fishing_rod/proc/on_wield()
 	is_wielded = TRUE
 
-/obj/item/fishing_rod/proc/on_unwield()
+/obj/item/skyrat_fishing_rod/proc/on_unwield()
 	is_wielded = FALSE
 
-/obj/item/fishing_rod/examine(mob/user)
+/obj/item/skyrat_fishing_rod/examine(mob/user)
 	. = ..()
 	switch(fishing_focus)
 		if(FOCUS_NONE)
@@ -169,7 +169,7 @@ GLOBAL_LIST_INIT(fishing_weights, list(
 		if(FOCUS_FISH)
 			. += span_notice("There is a fish attachment, this rod will attempt to fish for fish solely!")
 
-/obj/item/fishing_rod/Destroy()
+/obj/item/skyrat_fishing_rod/Destroy()
 	if(listening_to)
 		UnregisterSignal(listening_to, COMSIG_MOVABLE_MOVED)
 		listening_to = null
@@ -178,7 +178,7 @@ GLOBAL_LIST_INIT(fishing_weights, list(
 		target_atom = null
 	return ..()
 
-/obj/item/fishing_rod/equipped(mob/user, slot, initial)
+/obj/item/skyrat_fishing_rod/equipped(mob/user, slot, initial)
 	. = ..()
 	if(listening_to == user)
 		return
@@ -190,7 +190,7 @@ GLOBAL_LIST_INIT(fishing_weights, list(
 	RegisterSignal(user, COMSIG_MOVABLE_MOVED, .proc/check_movement)
 	listening_to = user
 
-/obj/item/fishing_rod/dropped(mob/user, silent)
+/obj/item/skyrat_fishing_rod/dropped(mob/user, silent)
 	. = ..()
 	if(listening_to)
 		UnregisterSignal(listening_to, COMSIG_MOVABLE_MOVED)
@@ -199,7 +199,7 @@ GLOBAL_LIST_INIT(fishing_weights, list(
 		SEND_SIGNAL(target_atom, COMSIG_FINISH_FISHING, fisher = src)
 		target_atom = null
 
-/obj/item/fishing_rod/proc/check_movement()
+/obj/item/skyrat_fishing_rod/proc/check_movement()
 	SIGNAL_HANDLER
 	if(!listening_to)
 		return
@@ -208,7 +208,7 @@ GLOBAL_LIST_INIT(fishing_weights, list(
 	if(get_dist(target_atom, listening_to) >= 4)
 		SEND_SIGNAL(target_atom, COMSIG_FINISH_FISHING, fisher = src)
 
-/obj/item/fishing_rod/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
+/obj/item/skyrat_fishing_rod/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	var/skill_level = user.mind.get_skill_level(/datum/skill/fishing)
 	if((!is_wielded && skill_level < SKILL_LEVEL_MASTER) || get_dist(target, user) >= 4)
 		return
@@ -224,7 +224,7 @@ GLOBAL_LIST_INIT(fishing_weights, list(
 		RegisterSignal(target_atom, COMSIG_MOVABLE_MOVED, .proc/check_movement, override = TRUE)
 	SEND_SIGNAL(target_atom, COMSIG_START_FISHING, user = user)
 
-/obj/item/fishing_rod/attackby(obj/item/attacking_item, mob/living/user, params)
+/obj/item/skyrat_fishing_rod/attackby(obj/item/attacking_item, mob/living/user, params)
 	if(istype(attacking_item, /obj/item/fishing_focus))
 		if(fishing_focus != FOCUS_NONE)
 			to_chat(user, span_warning("You need to remove the current attachment first, use a crowbar!"))
@@ -236,7 +236,7 @@ GLOBAL_LIST_INIT(fishing_weights, list(
 		return
 	return ..()
 
-/obj/item/fishing_rod/crowbar_act(mob/living/user, obj/item/tool)
+/obj/item/skyrat_fishing_rod/crowbar_act(mob/living/user, obj/item/tool)
 	var/obj/item/fishing_focus/find_focus = locate() in contents
 	if(find_focus)
 		find_focus.forceMove(get_turf(src))
@@ -267,16 +267,16 @@ GLOBAL_LIST_INIT(fishing_weights, list(
 	icon_state = "pick"
 	given_focus = FOCUS_ORE
 
-/datum/crafting_recipe/fishing_rod_primitive
+/datum/crafting_recipe/skyrat_fishing_rod_primitive
 	name = "Primitive Fishing Rod"
-	result = /obj/item/fishing_rod
+	result = /obj/item/skyrat_fishing_rod
 	reqs = list(/obj/item/stack/sheet/animalhide/goliath_hide = 2,
 				/obj/item/stack/sheet/sinew = 2)
 	category = CAT_MISC
 
-/datum/crafting_recipe/fishing_rod
+/datum/crafting_recipe/skyrat_fishing_rod
 	name = "Fishing Rod"
-	result = /obj/item/fishing_rod
+	result = /obj/item/skyrat_fishing_rod
 	reqs = list(/obj/item/stack/rods = 2,
 				/obj/item/stack/cable_coil = 2)
 	category = CAT_MISC
