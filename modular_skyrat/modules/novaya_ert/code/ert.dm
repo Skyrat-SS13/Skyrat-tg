@@ -57,18 +57,9 @@
 	role = "Soldier"
 	outfit = /datum/outfit/centcom/ert/nri
 
-/datum/antagonist/ert/nri/on_gain()
+/datum/antagonist/ert/nri_diplomacy/on_gain()
 	. = ..()
 	equip_nri()
-
-/datum/antagonist/ert/nri/proc/equip_nri()
-	if(!ishuman(owner.current))
-		return
-	var/mob/living/carbon/human/H = owner.current
-
-	H.grant_language(/datum/language/neorusskya)
-
-	return TRUE
 
 /datum/antagonist/ert/nri/commander
 	name = "Novaya Rossiyskaya Imperiya Commander"
