@@ -341,10 +341,12 @@
 	SSblackbox.record_feedback("tally", "wizard_spell_learned", 1, name)
 	return spawned_path
 
+/* //SKYRAT REMOVAL START
 /datum/spellbook_entry/item/staffchange
 	name = "Staff of Change"
 	desc = "An artefact that spits bolts of coruscating energy which cause the target's very form to reshape itself."
 	item_path = /obj/item/gun/magic/staff/change
+*/ //SKYRAT REMOVAL END
 
 /datum/spellbook_entry/item/staffanimation
 	name = "Staff of Animation"
@@ -461,6 +463,7 @@
 	if(.)
 		new /obj/item/paper/guides/antag/guardian/wizard(get_turf(user))
 
+/* //SKYRAT REMOVAL START
 /datum/spellbook_entry/item/bloodbottle
 	name = "Bottle of Blood"
 	desc = "A bottle of magically infused blood, the smell of which will attract extradimensional beings when broken. Be careful though, the kinds of creatures summoned by blood magic are indiscriminate in their killing, and you yourself may become a victim."
@@ -481,6 +484,7 @@
 	cost = 1 //non-destructive; it's just a jape, sibling!
 	limit = 3
 	category = "Assistance"
+*/ //SKYRAT REMOVAL END
 
 /datum/spellbook_entry/item/mjolnir
 	name = "Mjolnir"
@@ -544,6 +548,7 @@
 	times++
 	return TRUE
 
+/* //SKYRAT REMOVAL START
 /datum/spellbook_entry/summon/ghosts
 	name = "Summon Ghosts"
 	desc = "Spook the crew out by making them see dead people. Be warned, ghosts are capricious and occasionally vindicative, and some will use their incredibly minor abilities to frustrate you."
@@ -553,6 +558,7 @@
 	summon_ghosts(user)
 	playsound(get_turf(user), 'sound/effects/ghost2.ogg', 50, TRUE)
 	return ..()
+*/ //SKYRAT REMOVAL END
 
 /datum/spellbook_entry/summon/guns
 	name = "Summon Guns"
@@ -612,6 +618,7 @@
 		. += "You have cast it [times] time\s.<br>"
 	return .
 
+/* //SKYRAT REMOVAL START
 /datum/spellbook_entry/summon/curse_of_madness
 	name = "Curse of Madness"
 	desc = "Curses the station, warping the minds of everyone inside, causing lasting traumas. Warning: this spell can affect you if not cast from a safe distance."
@@ -624,6 +631,7 @@
 	curse_of_madness(user, message)
 	playsound(user, 'sound/magic/mandswap.ogg', 50, TRUE)
 	return ..()
+*/ //SKYRAT REMOVAL END
 
 #undef MINIMUM_THREAT_FOR_RITUALS
 
@@ -694,6 +702,10 @@
 		else
 			to_chat(user, span_warning("The [name] does not recognize you as its owner and refuses to open!"))
 		return
+	//SKYRAT EDIT START
+	if(user?.mind?.opposing_force.status != OPFOR_STATUS_APPROVED)
+		to_chat(user, span_warning("You must have an approved OPFOR to use this!"))
+	//SKYRAT EDIT END
 	. = ..()
 
 /obj/item/spellbook/attackby(obj/item/O, mob/user, params)
@@ -712,6 +724,7 @@
 				if(!isnull(CT.limit))
 					CT.limit++
 			qdel(O)
+	/* //SKYRAT REMOVAL START
 	else if(istype(O, /obj/item/antag_spawner/slaughter_demon))
 		to_chat(user, span_notice("On second thought, maybe summoning a demon is a bad idea. You refund your points."))
 		if(istype(O, /obj/item/antag_spawner/slaughter_demon/laughter))
@@ -724,6 +737,7 @@
 			for(var/datum/spellbook_entry/item/bloodbottle/BB in entries)
 				if(!isnull(BB.limit))
 					BB.limit++
+	*/ //SKYRAT REMOVAL END
 		qdel(O)
 
 /obj/item/spellbook/proc/prepare_spells()
