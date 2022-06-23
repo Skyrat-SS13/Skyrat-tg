@@ -6,7 +6,7 @@
 	name = "drone shell dispenser"
 	desc = "A hefty machine that, when supplied with iron and glass, will periodically create a drone shell. Does not need to be manually operated."
 
-	icon = 'icons/obj/machines/droneDispenser.dmi'
+	icon = 'modular_skyrat/modules/drone_adjustments/icons/droneDispenser.dmi' //SKYRAT EDIT CHANGE
 	icon_state = "on"
 	density = TRUE
 

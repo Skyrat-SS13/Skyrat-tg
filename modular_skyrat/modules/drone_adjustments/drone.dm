@@ -28,7 +28,20 @@
 	name = "[initial(name)] [rand(0,9)]-[rand(100,999)]" //So that we can identify drones from each other
 
 /obj/item/storage/backpack/drone_bag
-	name = "drone backpack"
+	name = "drone bag"
+	desc = "A maintenance drone bag used for carrying tools and items."
+	icon = 'modular_skyrat/modules/drone_adjustments/icons/belts.dmi'
+	icon_state = "drone_bag"
+	inhand_icon_state = "drone_bag"
+	lefthand_file = 'modular_skyrat/modules/drone_adjustments/icons/belt_lefthand.dmi'
+	righthand_file = 'modular_skyrat/modules/drone_adjustments/icons/belt_righthand.dmi'
+	worn_icon = 'modular_skyrat/modules/drone_adjustments/icons/belt.dmi'
+	worn_icon_state = "drone_bag"
+	equip_sound = 'sound/items/equip/toolbelt_equip.ogg'
+	w_class = WEIGHT_CLASS_BULKY
+	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_BELT
+	resistance_flags = NONE
+	max_integrity = 300
 
 /obj/item/storage/backpack/drone_bag/PopulateContents()
 	. = ..()
