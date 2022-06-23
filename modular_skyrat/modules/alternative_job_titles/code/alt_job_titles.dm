@@ -73,7 +73,7 @@
 	alt_titles = list("Detective", "Forensic Technician", "Private Investigator", "Forensic Scientist")
 
 /datum/job/doctor
-	alt_titles = list("Medical Doctor", "Surgeon", "Nurse", "General Practitioner", "Medical Resident", "Physician", "Medical Intern")
+	alt_titles = list("Medical Doctor", "Surgeon", "Nurse", "General Practitioner", "Medical Resident", "Physician")
 
 /datum/job/engineering_guard //see orderly
 
