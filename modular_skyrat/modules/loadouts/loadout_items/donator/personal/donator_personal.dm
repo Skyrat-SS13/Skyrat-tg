@@ -469,6 +469,7 @@
 	name = "NT Idol's Skirt"
 	item_path = /obj/item/clothing/under/nt_idol_skirt
 	ckeywhitelist = list("tetrako")
+	restricted_roles = list(JOB_NT_REP)
 
 /datum/loadout_item/toys/CFBonnie
 	name = "Chunko Fop: Blue Bunny Plushie"
