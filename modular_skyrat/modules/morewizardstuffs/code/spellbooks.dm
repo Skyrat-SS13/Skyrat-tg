@@ -1,9 +1,4 @@
 //OFFENSIVE
-/datum/spellbook_entry/summonknives
-	name = "Summon Knives"
-	desc = "Summon several knives to throw at your enemies, A bit sharp, Isn't it?"
-	spell_type = /obj/effect/proc_holder/spell/aimed/summonknives
-
 /datum/spellbook_entry/knotlaces
 	name = "Tie shoelaces"
 	desc = "Make a fool out of them by tying their shoelaces!"
