@@ -40,10 +40,10 @@
 
 /datum/element/airbag/proc/on_altclick(atom/movable/clicked_atom, mob/living/clicker)
 	SIGNAL_HANDLER
+
 	if(!clicker.can_interact_with(clicked_atom))
 		return
 	INVOKE_ASYNC(src, .proc/disarm_airbag, clicked_atom, clicker)
-
 
 /datum/element/airbag/proc/disarm_airbag(atom/movable/clicked_atom, mob/living/clicker)
 	clicked_atom.balloon_alert(clicker, "disarming airbag...")
