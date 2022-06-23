@@ -7,9 +7,7 @@
 /**
  * Airbag Element
  *
- * Basically a fancy create on destroy. I would love to add a disarm function, but that would mean it would need to be a component.
- *
- * And since this is going on every window, an element is more reasonable for performance :)
+ * Basically a fancy create on destroy.
  */
 /datum/element/airbag
 	/// The type we spawn when our parent is destroyed

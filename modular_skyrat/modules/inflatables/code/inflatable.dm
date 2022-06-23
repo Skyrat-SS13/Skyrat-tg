@@ -1,6 +1,9 @@
 
 #define TAPE_REQUIRED_TO_FIX 2
-
+#define INFLATABLE_DOOR_OPENED FALSE
+#define INFLATABLE_DOOR_CLOSED TRUE
+#define BOX_DOOR_AMOUNT 8
+#define BOX_WALL_AMOUNT 16
 
 /obj/structure/inflatable
 	name = "inflatable wall"
@@ -57,11 +60,7 @@
 /obj/structure/inflatable/play_attack_sound(damage_amount, damage_type, damage_flag)
 	playsound(src, hit_sound, 75, TRUE)
 
-/obj/structure/inflatable/can_atmos_pass(turf/target_turf, vertical)
-	. = ..()
-
-
-
+// Deflates the airbag and drops a deflated airbag item. If violent, drops a broken item instantly.
 /obj/structure/inflatable/proc/deflate(violent)
 	playsound(src, 'sound/machines/hiss.ogg', 75, 1)
 	if(!violent)
@@ -73,6 +72,7 @@
 		new torn_type(get_turf(src))
 	qdel(src)
 
+// Called when the airbag is calmly deflated, drops a non-broken item.
 /obj/structure/inflatable/proc/slow_deflate_finish()
 	if(deflated_type)
 		new deflated_type(get_turf(src))
@@ -97,7 +97,7 @@
 	torn_type = /obj/item/inflatable/door/torn
 	deflated_type = /obj/item/inflatable/door
 	/// Are we open(FALSE), or are we closed(TRUE)?
-	var/door_state = TRUE
+	var/door_state = INFLATABLE_DOOR_CLOSED
 
 /obj/structure/inflatable/door/Initialize(mapload)
 	. = ..()
@@ -116,10 +116,10 @@
 
 /obj/structure/inflatable/door/proc/toggle_door()
 	if(door_state) // opening
-		door_state = FALSE
+		door_state = INFLATABLE_DOOR_OPENED
 		flick("[base_icon_state]_opening", src)
 	else // Closing
-		door_state = TRUE
+		door_state = INFLATABLE_DOOR_CLOSED
 		flick("[base_icon_state]_closing", src)
 	density = door_state
 	air_update_turf(TRUE, !density)
@@ -156,7 +156,7 @@
 		return
 	playsound(loc, 'sound/items/zip.ogg', 75, 1)
 	to_chat(user, span_notice("You inflate [src]."))
-	if(do_mob(user, src, 10))
+	if(do_mob(user, src, 1 SECONDS))
 		new structure_type(get_turf(user))
 		qdel(src)
 
@@ -220,9 +220,13 @@
 	STR.max_combined_w_class = 21
 
 /obj/item/storage/inflatable/PopulateContents()
-	for(var/i = 0, i < 8, i++)
+	for(var/i = 0, i < BOX_DOOR_AMOUNT, i++)
 		new /obj/item/inflatable/door(src)
-	for(var/i = 0, i < 16, i ++)
+	for(var/i = 0, i < BOX_WALL_AMOUNT, i ++)
 		new /obj/item/inflatable(src)
 
-
+#undef TAPE_REQUIRED_TO_FIX
+#undef INFLATABLE_DOOR_OPENED
+#undef INFLATABLE_DOOR_CLOSED
+#undef BOX_DOOR_AMOUNT
+#undef BOX_WALL_AMOUNT
