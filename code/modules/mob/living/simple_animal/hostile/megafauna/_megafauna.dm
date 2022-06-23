@@ -91,6 +91,13 @@
 	if(crusher_dmg && crusher_loot && crusher_dmg.total_damage >= maxHealth * 0.6)
 		spawn_crusher_loot()
 		crusher_kill = TRUE
+	//SKYRAT EDIT START
+	for(var/mob/living/carbon/human/maybe_ashie in range(7))
+		if(is_species(maybe_ashie, /datum/species/lizard/ashwalker))
+			to_chat(maybe_ashie, span_notice(span_bold("The Necropolis has blessed your kill, dropping its trophy!")))
+			spawn_crusher_loot()
+			break
+	//SKYRAT EDIT END
 	if(true_spawn && !(flags_1 & ADMIN_SPAWNED_1))
 		var/tab = "megafauna_kills"
 		if(crusher_kill)
