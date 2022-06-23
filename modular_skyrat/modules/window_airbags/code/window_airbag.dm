@@ -45,9 +45,9 @@
 
 
 /datum/element/airbag/proc/disarm_airbag(atom/movable/clicked_atom, mob/living/clicker)
-	to_chat(clicker, span_notice("You start to disarm the airbag."))
+	clicked_atom.balloon_alert(clicker, "disarming airbag...")
 	if(do_after(clicker, DISARM_TIME, clicked_atom))
-		to_chat(clicker, span_notice("You disarm the airbag."))
+		clicked_atom.balloon_alert(clicker, "airbag disarmed!")
 		new disarmed_type(get_turf(clicked_atom))
 		Detach(clicked_atom)
 
