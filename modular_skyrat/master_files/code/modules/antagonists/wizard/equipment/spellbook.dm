@@ -13,7 +13,7 @@
 /datum/spellbook_entry/summon/curse_of_hats
 	name = "Curse of Hats"
 	desc = "Curses the station into wearing random hats! Budget cuts have made for the hats to be removable, but at least it'll get a reaction out of them."
-	cost = 2
+	cost = 1
 
 /datum/spellbook_entry/summon/curse_of_hats/Buy(mob/living/carbon/human/user, obj/item/spellbook/book)
 	var/list/hats = subtypesof(/obj/item/clothing/head)
