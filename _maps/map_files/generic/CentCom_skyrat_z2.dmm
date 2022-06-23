@@ -2571,9 +2571,10 @@
 /obj/machinery/button/door{
 	name = "Dorm Bolt Control";
 	normaldoorcontrol = 1;
-	pixel_y = -26;
+	pixel_y = -11;
 	specialfunctions = 4;
-	id = "ghostcafecabinjap"
+	id = "ghostcafecabinjap";
+	pixel_x = -9
 	},
 /turf/open/floor/bamboo,
 /area/centcom/holding/cafedorms)
@@ -3965,7 +3966,7 @@
 /area/centcom/holding/cafedorms)
 "aMI" = (
 /obj/machinery/vending/hydronutrients{
-	products = list(/obj/item/reagent_containers/glass/bottle/nutrient/ez=50,/obj/item/reagent_containers/glass/bottle/nutrient/l4z=20,/obj/item/reagent_containers/glass/bottle/nutrient/rh=10,/obj/item/reagent_containers/spray/pestspray=30,/obj/item/reagent_containers/syringe=5,/obj/item/storage/bag/plants=30,/obj/item/cultivator=10,/obj/item/shovel/spade=10,/obj/item/plant_analyzer=10)
+	products = list(/obj/item/reagent_containers/glass/bottle/nutrient/ez = 50, /obj/item/reagent_containers/glass/bottle/nutrient/l4z = 20, /obj/item/reagent_containers/glass/bottle/nutrient/rh = 10, /obj/item/reagent_containers/spray/pestspray = 30, /obj/item/reagent_containers/syringe = 5, /obj/item/storage/bag/plants = 30, /obj/item/cultivator = 10, /obj/item/shovel/spade = 10, /obj/item/plant_analyzer = 10)
 	},
 /turf/open/indestructible/hoteltile{
 	icon_state = "darkfull"
@@ -4066,6 +4067,10 @@
 	pixel_y = 7
 	},
 /obj/structure/table/wood,
+/obj/item/reagent_containers/food/drinks/bottle/bottleofnothing{
+	pixel_x = -8;
+	pixel_y = 6
+	},
 /turf/open/indestructible/hotelwood,
 /area/centcom/holding/cafe)
 "aNj" = (
@@ -4095,13 +4100,13 @@
 /obj/item/storage/box/ingredients/american,
 /obj/item/storage/box/ingredients/exotic,
 /obj/item/reagent_containers/food/condiment/flour{
-	list_reagents = list(/datum/reagent/consumable/flour=90);
+	list_reagents = list(/datum/reagent/consumable/flour = 90);
 	name = "large flour sack";
 	possible_transfer_amounts = list(1,5,10,15,30,60,90);
 	volume = 90
 	},
 /obj/item/reagent_containers/food/condiment/flour{
-	list_reagents = list(/datum/reagent/consumable/flour=90);
+	list_reagents = list(/datum/reagent/consumable/flour = 90);
 	name = "large flour sack";
 	possible_transfer_amounts = list(1,5,10,15,30,60,90);
 	volume = 90
@@ -7320,12 +7325,12 @@
 /obj/item/reagent_containers/food/condiment/soysauce,
 /obj/item/reagent_containers/food/condiment/sugar,
 /obj/item/reagent_containers/food/condiment/rice{
-	list_reagents = list(/datum/reagent/consumable/rice=90);
+	list_reagents = list(/datum/reagent/consumable/rice = 90);
 	name = "large rice sack";
 	possible_transfer_amounts = list(1,5,10,15,20,25,30,50,60,90)
 	},
 /obj/item/reagent_containers/food/condiment/rice{
-	list_reagents = list(/datum/reagent/consumable/rice=90);
+	list_reagents = list(/datum/reagent/consumable/rice = 90);
 	name = "large rice sack";
 	possible_transfer_amounts = list(1,5,10,15,20,25,30,50,60,90)
 	},
@@ -9232,24 +9237,24 @@
 /obj/item/storage/box/ingredients/american,
 /obj/item/storage/box/ingredients/exotic,
 /obj/item/reagent_containers/food/condiment/flour{
-	list_reagents = list(/datum/reagent/consumable/flour=90);
+	list_reagents = list(/datum/reagent/consumable/flour = 90);
 	name = "large flour sack";
 	possible_transfer_amounts = list(1,5,10,15,30,60,90);
 	volume = 90
 	},
 /obj/item/reagent_containers/food/condiment/flour{
-	list_reagents = list(/datum/reagent/consumable/flour=90);
+	list_reagents = list(/datum/reagent/consumable/flour = 90);
 	name = "large flour sack";
 	possible_transfer_amounts = list(1,5,10,15,30,60,90);
 	volume = 90
 	},
 /obj/item/reagent_containers/food/condiment/rice{
-	list_reagents = list(/datum/reagent/consumable/rice=90);
+	list_reagents = list(/datum/reagent/consumable/rice = 90);
 	name = "large rice sack";
 	possible_transfer_amounts = list(1,5,10,15,20,25,30,50,60,90)
 	},
 /obj/item/reagent_containers/food/condiment/rice{
-	list_reagents = list(/datum/reagent/consumable/rice=90);
+	list_reagents = list(/datum/reagent/consumable/rice = 90);
 	name = "large rice sack";
 	possible_transfer_amounts = list(1,5,10,15,20,25,30,50,60,90)
 	},
@@ -10022,7 +10027,7 @@
 	dir = 6
 	},
 /obj/item/kirbyplants/random,
-/turf/open/misc/grass,
+/turf/open/floor/bamboo,
 /area/centcom/holding/cafedorms)
 "qWA" = (
 /obj/structure/table/wood,
@@ -10495,6 +10500,7 @@
 /obj/item/storage/basket{
 	pixel_y = 11
 	},
+/obj/item/gohei,
 /turf/open/floor/bamboo,
 /area/centcom/holding/cafedorms)
 "sGf" = (
@@ -11480,7 +11486,7 @@
 /obj/structure/mineral_door/paperframe{
 	name = "Guest Suite *A"
 	},
-/turf/open/space/basic,
+/turf/open/floor/sepia,
 /area/centcom/holding/cafedorms)
 "wcp" = (
 /obj/effect/turf_decal/arrows{
@@ -69410,8 +69416,8 @@ aiA
 aiA
 aiA
 aiA
-aiA
-aiA
+aPf
+aPf
 aPf
 aPf
 aPf

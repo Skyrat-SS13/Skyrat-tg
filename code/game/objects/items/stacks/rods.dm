@@ -8,6 +8,7 @@ GLOBAL_LIST_INIT(rod_recipes, list ( \
 	new/datum/stack_recipe("ladder", /obj/structure/ladder/crafted, 15, time = 150, one_per_turf = TRUE, on_floor = FALSE), \
 	new/datum/stack_recipe("wrestling ropes", /obj/structure/railing/wrestling, 3, time = 18, window_checks = TRUE), \
 	new/datum/stack_recipe("catwalk floor tile", /obj/item/stack/tile/catwalk_tile, 1, 4, 20), \
+	new/datum/stack_recipe("white cane", /obj/item/cane/white, 3, time = 10, one_per_turf = FALSE), \
 	))
 //the wrestling ropes recipe is a SKYRAT EDIT
 
@@ -23,6 +24,7 @@ GLOBAL_LIST_INIT(rod_recipes, list ( \
 	throwforce = 10
 	throw_speed = 3
 	throw_range = 7
+	demolition_mod = 1.25
 	mats_per_unit = list(/datum/material/iron=1000)
 	max_amount = 50
 	attack_verb_continuous = list("hits", "bludgeons", "whacks")

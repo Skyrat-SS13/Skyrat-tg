@@ -29,6 +29,11 @@
 	. = ..()
 	for(var/mob/living/silicon/ai/ai as anything in GLOB.ai_list)
 		ai.show_laws()
+		//SKYRAT ADDITION START
+		for(var/mob/living/silicon/robot/cyborg as anything in ai.connected_robots)
+			if(cyborg.connected_ai && cyborg.lawupdate)
+				cyborg.lawsync()
+		//SKYRAT ADDITION END
 
 /datum/station_trait/ian_adventure
 	name = "Ian's Adventure"

@@ -64,7 +64,8 @@
 	head = /obj/item/clothing/head/fedora/det_hat
 	l_hand = /obj/item/gun/ballistic
 	l_hand = null
-	r_pocket = /obj/item/ammo_box/c10mm
+	//r_pocket = /obj/item/ammo_box/c10mm
+	r_hand = /obj/item/ammo_box/c10mm // SKYRAT EDIT CHANGE
 
 /datum/outfit/tournament/janitor
 	name = "tournament janitor"
@@ -337,13 +338,13 @@
 	r_pocket = /obj/item/teleportation_scroll
 	l_hand = /obj/item/staff
 
-/datum/outfit/wizard/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
+/datum/outfit/wizard/post_equip(mob/living/carbon/human/wizard, visualsOnly = FALSE)
 	if(visualsOnly)
 		return
 
-	var/obj/item/spellbook/S = locate() in H.back
-	if(S)
-		S.owner = H
+	var/obj/item/spellbook/new_spellbook = locate() in wizard.back
+	if(new_spellbook)
+		new_spellbook.owner = wizard.mind
 
 /datum/outfit/wizard/apprentice
 	name = "Wizard Apprentice"

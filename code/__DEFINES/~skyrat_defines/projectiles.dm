@@ -25,3 +25,6 @@
 
 /// The caliber used by the Ripper gen2
 #define CALIBER_B577 ".577 Snider"
+
+/// The caliber used by the Oldarms 'Mk.11.4 rifle'
+#define CALIBER_223 ".223 Stinger"

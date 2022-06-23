@@ -64,12 +64,12 @@
 *	WORKED OBJECT
 */
 
-	var/obj/item/organ/genital/current_selected_organ = null // Organ selected in UI
+	var/obj/item/organ/external/genital/current_selected_organ = null // Organ selected in UI
 	var/obj/item/reagent_containers/glass/beaker = null // Beaker inserted in machine
 	var/mob/living/carbon/human/current_mob = null // Mob buckled to the machine
-	var/obj/item/organ/genital/breasts/current_breasts = null // Buckled mob breasts
-	var/obj/item/organ/genital/testicles/current_testicles = null // Buckled mob testicles
-	var/obj/item/organ/genital/vagina/current_vagina = null // Buckled mob vagina
+	var/obj/item/organ/external/genital/breasts/current_breasts = null // Buckled mob breasts
+	var/obj/item/organ/external/genital/testicles/current_testicles = null // Buckled mob testicles
+	var/obj/item/organ/external/genital/vagina/current_vagina = null // Buckled mob vagina
 
 	// Variables for working with sizes and types of organs
 	var/breasts_size = null
@@ -556,19 +556,19 @@
 	if(current_selected_organ == null || current_mode == mode_list[1])
 		update_all_visuals()
 		return // Does not work if an organ is not connected OR the machine is not switched to On
-	if(istype(current_selected_organ, /obj/item/organ/genital/breasts))
+	if(istype(current_selected_organ, /obj/item/organ/external/genital/breasts))
 		if(milk_vessel.reagents.total_volume == max_vessel_capacity)
 			current_mode = mode_list[1]
 			pump_state = pump_state_list[1]
 			update_all_visuals()
 			return
-	if(istype(current_selected_organ, /obj/item/organ/genital/vagina))
+	if(istype(current_selected_organ, /obj/item/organ/external/genital/vagina))
 		if(girlcum_vessel.reagents.total_volume == max_vessel_capacity)
 			current_mode = mode_list[1]
 			pump_state = pump_state_list[1]
 			update_all_visuals()
 			return
-	if(istype(current_selected_organ, /obj/item/organ/genital/testicles))
+	if(istype(current_selected_organ, /obj/item/organ/external/genital/testicles))
 		if(semen_vessel.reagents.total_volume == max_vessel_capacity)
 			current_mode = mode_list[1]
 			pump_state = pump_state_list[1]
@@ -598,17 +598,17 @@
 		if(current_mob.has_status_effect(/datum/status_effect/climax))
 			fluid_multiplier = climax_retrive_multiplier
 
-	if(istype(current_selected_organ, /obj/item/organ/genital/breasts))
+	if(istype(current_selected_organ, /obj/item/organ/external/genital/breasts))
 		if(current_selected_organ.reagents.total_volume > 0)
 			current_selected_organ.internal_fluids.trans_to(milk_vessel, milk_retrive_amount[current_mode] * fluid_multiplier * delta_time)
 		else
 			return
-	else if (istype(current_selected_organ, /obj/item/organ/genital/vagina))
+	else if (istype(current_selected_organ, /obj/item/organ/external/genital/vagina))
 		if(current_selected_organ.reagents.total_volume > 0)
 			current_selected_organ.internal_fluids.trans_to(girlcum_vessel, girlcum_retrive_amount[current_mode] * fluid_multiplier * delta_time)
 		else
 			return
-	else if (istype(current_selected_organ, /obj/item/organ/genital/testicles))
+	else if (istype(current_selected_organ, /obj/item/organ/external/genital/testicles))
 		if(current_selected_organ.reagents.total_volume > 0)
 			current_selected_organ.internal_fluids.trans_to(semen_vessel, semen_retrive_amount[current_mode] * fluid_multiplier * delta_time)
 		else
@@ -718,7 +718,7 @@
 	if(current_selected_organ != null)
 		cut_overlay(organ_overlay)
 		organ_overlay_new_icon_state = null
-		if(istype(current_selected_organ, /obj/item/organ/genital/breasts))
+		if(istype(current_selected_organ, /obj/item/organ/external/genital/breasts))
 			if(current_selected_organ.genital_type == "pair")
 				current_selected_organ_type = "double_breast"
 				current_selected_organ_size = current_selected_organ.genital_size
@@ -764,7 +764,7 @@
 				if(organ_overlay.icon_state != organ_overlay_new_icon_state)
 					organ_overlay.icon_state = organ_overlay_new_icon_state
 
-		if(istype(current_selected_organ, /obj/item/organ/genital/testicles))
+		if(istype(current_selected_organ, /obj/item/organ/external/genital/testicles))
 			current_selected_organ_type = "penis"
 			current_selected_organ_size = current_selected_organ.genital_size
 			if(current_mode == mode_list[1])
@@ -778,7 +778,7 @@
 				if(organ_overlay.icon_state != organ_overlay_new_icon_state)
 					organ_overlay.icon_state = organ_overlay_new_icon_state
 
-		if(istype(current_selected_organ, /obj/item/organ/genital/vagina))
+		if(istype(current_selected_organ, /obj/item/organ/external/genital/vagina))
 			current_selected_organ_type = "vagina"
 			current_selected_organ_size = current_selected_organ.genital_size
 			if(current_mode == mode_list[1])
