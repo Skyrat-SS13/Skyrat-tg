@@ -19,7 +19,7 @@
 	. = ..()
 
 	if(mask_out)
-		. += "Click on the stand to retract the mask, if the mask is currently out"
+		. += "<b>Click</b> on the stand to retract the mask, if the mask is currently out"
 	if(attached_tank)
 		. += "<b>Alt + Click</b> to remove [attached_tank]."
 
@@ -99,14 +99,14 @@
 		to_chat(usr, span_warning("[mask_out ? "The machine is already in use!" : "The machine has no attached tank!"]"))
 		return FALSE
 
-	usr.visible_message(span_warning("[usr] attemps to attach the [src] to [target]."), span_notice("You attempt to attach the [src] to [target]"))
+	usr.visible_message(span_warning("[usr] attemps to attach the [attached_mask] to [target]."), span_notice("You attempt to attach the [attached_mask] to [target]"))
 	if(!do_after(usr, 5 SECONDS, target))
 		return
 	if(!target.equip_to_appropriate_slot(attached_mask))
-		to_chat(usr, span_warning("You are unable to attach the [src] to [target]!"))
+		to_chat(usr, span_warning("You are unable to attach the [attached_mask] to [target]!"))
 		return
 
-	usr.visible_message(span_warning("[usr] attaches the [src] to [target]."), span_notice("You attach the [src] to [target]"))
+	usr.visible_message(span_warning("[usr] attaches the [attached_mask] to [target]."), span_notice("You attach the [attached_mask] to [target]"))
 
 	target.internal = attached_tank
 	mask_out = TRUE
@@ -133,7 +133,7 @@
 /// This a special version of the breath mask used for the anesthetic machine.
 /obj/item/clothing/mask/breath/anesthetic
 	/// What machine is the mask currently attached to?
-	var/obj/machinery/anesthetic_machine/attached_machine
+	var/datum/weakref/attached_machine
 
 	clothing_flags = MASKINTERNALS | MASKEXTENDRANGE
 
@@ -150,4 +150,9 @@
 
 	if(loc != attached_machine) //If it isn't in the machine, then it retracts when dropped
 		to_chat(user, span_notice("[src] retracts back into the [attached_machine]."))
-		attached_machine.retract_mask()
+
+		if(!istype(attached_machine, /obj/machinery/anesthetic_machine))
+			return FALSE
+
+		var/obj/machinery/anesthetic_machine/source_machine = attached_machine
+		source_machine.retract_mask()
