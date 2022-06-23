@@ -1,7 +1,7 @@
 //Credit to Beestation for the original anesthetic machine code: https://github.com/BeeStation/BeeStation-Hornet/pull/3753
 
 /obj/machinery/anesthetic_machine
-	name = "Portable Anesthetic Tank Stand"
+	name = "portable anesthetic tank stand"
 	desc = "A stand on wheels, similar to an IV drip, that can hold a canister of anesthetic along with a gas mask."
 	icon = 'modular_skyrat/modules/medical/icons/obj/machinery.dmi'
 	icon_state = "breath_machine"
@@ -18,6 +18,7 @@
 /obj/machinery/anesthetic_machine/examine(mob/user)
 	. = ..()
 
+	. += "<b>Right + Click <b> with a wrench will deconstruct the stand, if there is no tank attached."
 	if(mask_out)
 		. += "<b>Click</b> on the stand to retract the mask, if the mask is currently out"
 	if(attached_tank)
@@ -28,6 +29,24 @@
 	attached_mask = new /obj/item/clothing/mask/breath/anesthetic(src)
 	attached_mask.attached_machine = src
 	update_icon()
+
+/obj/machinery/anesthetic_machine/wrench_act_secondary(mob/living/user, obj/item/tool)
+	if(user.combat_mode)
+		return ..()
+
+	if(mask_out)
+		to_chat(user, span_warning("There is someone currently attached to the [src]!"))
+		return TRUE
+
+	if(attached_tank)
+		to_chat(user, span_warning("[attached_tank] inside of the [src] deconsturction."))
+		return TRUE
+
+	new /obj/item/anesthetic_machine_kit(get_turf(src))
+	tool.play_tool_sound(user)
+	to_chat(user, span_notice("You deconstruct the [src]."))
+	qdel(src)
+	return TRUE
 
 /obj/machinery/anesthetic_machine/update_icon()
 	. = ..()
@@ -156,3 +175,16 @@
 
 		var/obj/machinery/anesthetic_machine/source_machine = attached_machine
 		source_machine.retract_mask()
+
+/// A boxed version of the Anesthetic Machine. This is what is printed from the medical prolathe.
+/obj/item/anesthetic_machine_kit
+	name = "anesthetic stand parts kit"
+	desc = "Contains all of the parts needed to assemble a portable anesthetic stand."
+	icon = 'icons/obj/storage.dmi'
+	icon_state = "plasticbox"
+
+/obj/item/anesthetic_machine_kit/attack_self(mob/user)
+	new /obj/machinery/anesthetic_machine(user.loc)
+
+	playsound(get_turf(user), 'sound/weapons/circsawhit.ogg', 50, TRUE)
+	qdel(src)
