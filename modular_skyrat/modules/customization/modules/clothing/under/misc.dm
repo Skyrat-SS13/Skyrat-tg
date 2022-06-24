@@ -324,7 +324,6 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "workpants_red"
 
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 /obj/item/clothing/under/costume/christmas
 	name = "christmas costume"
 	desc = "Can you believe it guys? Christmas. Just a lightyear away!"
