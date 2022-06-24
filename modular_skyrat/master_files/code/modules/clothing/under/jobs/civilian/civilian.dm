@@ -44,14 +44,14 @@
 
 /obj/item/clothing/under/rank/civilian/head_of_personnel/skyrat/turtleneck
 	name = "head of personnel's turtleneck"
-	desc = "A dark teal turtleneck and black khakis, for a second with a superior sense of style."
+	desc = "A soft blue turtleneck and black khakis worn by Executives who prefer a bit more comfort over style."
 	icon_state = "hopturtle"
 	can_adjust = TRUE
 	alt_covers_chest = TRUE
 
 /obj/item/clothing/under/rank/civilian/head_of_personnel/skyrat/turtleneck/skirt
 	name = "head of personnel's turtleneck skirt"
-	desc = "A dark teal turtleneck and tanblack khaki skirt, for a second with a superior sense of style."
+	desc = "A soft blue turtleneck and black skirt worn by Executives who prefer a bit more comfort over style."
 	icon_state = "hopturtle_skirt"
 	body_parts_covered = CHEST|GROIN|ARMS
 	dying_key = DYE_REGISTRY_JUMPSKIRT
