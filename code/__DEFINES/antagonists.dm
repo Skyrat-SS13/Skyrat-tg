@@ -233,7 +233,7 @@ GLOBAL_LIST_INIT(ai_employers, list(
 // Progression traitor defines
 
 /// How many telecrystals a normal traitor starts with
-#define TELECRYSTALS_DEFAULT 35 //SKYRAT EDIT CHANGE
+#define TELECRYSTALS_DEFAULT 20
 /// How many telecrystals mapper/admin only "precharged" uplink implant
 #define TELECRYSTALS_PRELOADED_IMPLANT 10
 /// The normal cost of an uplink implant; used for calcuating how many
