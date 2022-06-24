@@ -29,7 +29,7 @@
 
 /obj/effect/ash_rune/attack_hand(mob/living/user, list/modifiers)
 	. = ..()
-	if(current_ritual)
+	if(current_ritual && is_species(user, /datum/species/lizard/ashwalker))
 		current_ritual.ritual_start(src)
 		return
 	current_ritual = tgui_input_list(user, "Choose the ritual to begin...", "Ritual Choice", rituals)
