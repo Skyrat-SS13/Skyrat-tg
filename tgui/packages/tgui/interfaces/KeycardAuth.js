@@ -5,10 +5,14 @@ import { Window } from '../layouts';
 export const KeycardAuth = (props, context) => {
   const { act, data } = useBackend(context);
   return (
+<<<<<<< HEAD
     // SKYRAT EDIT: height 125 -> 150, addition of permit-locked firing pin
     <Window
       width={375}
       height={150}>
+=======
+    <Window width={375} height={125}>
+>>>>>>> 731ab29aa73 (Adds Prettierx - or how I broke TGUI for the nth time (#67935))
       <Window.Content>
         <Section>
           <Box>
@@ -27,7 +31,8 @@ export const KeycardAuth = (props, context) => {
                     lineHeight="60px"
                     fluid
                     onClick={() => act('auth_swipe')}
-                    content="Authorize" />
+                    content="Authorize"
+                  />
                 )}
                 {data.auth_required === 0 && (
                   <>
@@ -37,16 +42,19 @@ export const KeycardAuth = (props, context) => {
                       onClick={() => {
                         return act('red_alert');
                       }}
-                      content="Red Alert" />
+                      content="Red Alert"
+                    />
                     <Button
                       icon="wrench"
                       fluid
                       onClick={() => act('emergency_maint')}
-                      content="Emergency Maintenance Access" />
+                      content="Emergency Maintenance Access"
+                    />
                     <Button
                       icon="meteor"
                       fluid
                       onClick={() => act('bsa_unlock')}
+<<<<<<< HEAD
                       content="Bluespace Artillery Unlock" />
                     {!!data.permit_pins && (
                       <Button
@@ -55,6 +63,10 @@ export const KeycardAuth = (props, context) => {
                         onClick={() => act('pin_unrestrict')}
                         content="Permit-Locked Firing Pin Unrestriction" />
                     )}
+=======
+                      content="Bluespace Artillery Unlock"
+                    />
+>>>>>>> 731ab29aa73 (Adds Prettierx - or how I broke TGUI for the nth time (#67935))
                   </>
                 )}
               </>
