@@ -18,7 +18,7 @@
  * 40 minutes = armor
  * 60 minutes = base punch
  * 80 minutes = lavaproof
- * 100 minutes = fireball
+ * 100 minutes = firebreath
  */
 
 /datum/element/ash_age
@@ -45,7 +45,7 @@
 /datum/element/ash_age/proc/check_evolution()
 	// if the world time hasn't yet passed the time required for evolution
 	if(world.time < (evo_time + stage_time))
-		to_chat(human_target, span_warning("More time is necessary to evolve... twenty minutes between each evolution..."))
+		to_chat(human_target, span_warning("More time is necessary to evolve-- twenty minutes between each evolution..."))
 		return
 	// since it was time, go up a stage and now we check what to add
 	current_stage++

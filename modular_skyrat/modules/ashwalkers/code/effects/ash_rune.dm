@@ -19,7 +19,8 @@
 		var/obj/effect/side_rune/spawning_rune = new (get_step(src, direction))
 		spawning_rune.icon_state = "[initial(icon_state)]_[direction]"
 		spawning_rune.connected_rune = src
-	generate_rituals()
+	if(!length(rituals))
+		generate_rituals()
 
 /obj/effect/ash_rune/proc/generate_rituals()
 	for(var/type in subtypesof(/datum/ash_ritual))

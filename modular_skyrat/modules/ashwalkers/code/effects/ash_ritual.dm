@@ -33,7 +33,7 @@
 		return
 	in_use = TRUE
 
-	rune.balloon_alert_to_viewers("the ritual has begun...")
+	rune.balloon_alert_to_viewers("ritual has begun...")
 	new ritual_effect(rune.loc)
 
 	// it is entirely possible to have your own effects here... this is just a suggestion
@@ -73,7 +73,7 @@
 			return FALSE
 		if(consume_north_component)
 			qdel(north_check)
-			north_rune.balloon_alert_to_viewers("the north component has been consumed...")
+			north_rune.balloon_alert_to_viewers("north component has been consumed...")
 		new ritual_effect(north_rune.loc)
 		sleep(ritual_time)
 		return TRUE
@@ -87,7 +87,7 @@
 			return FALSE
 		if(consume_south_component)
 			qdel(south_check)
-			south_rune.balloon_alert_to_viewers("the south component has been consumed...")
+			south_rune.balloon_alert_to_viewers("south component has been consumed...")
 		new ritual_effect(south_rune.loc)
 		sleep(ritual_time)
 		return TRUE
@@ -101,7 +101,7 @@
 			return FALSE
 		if(consume_east_component)
 			qdel(east_check)
-			east_rune.balloon_alert_to_viewers("the east component has been consumed...")
+			east_rune.balloon_alert_to_viewers("east component has been consumed...")
 		new ritual_effect(east_rune.loc)
 		sleep(ritual_time)
 		return TRUE
@@ -115,7 +115,7 @@
 			return FALSE
 		if(consume_west_component)
 			qdel(west_check)
-			west_rune.balloon_alert_to_viewers("the west component has been consumed...")
+			west_rune.balloon_alert_to_viewers("west component has been consumed...")
 		new ritual_effect(west_rune.loc)
 		sleep(ritual_time)
 		return TRUE
@@ -123,89 +123,16 @@
 
 /datum/ash_ritual/proc/ritual_fail(obj/effect/ash_rune/failed_rune)
 	new ritual_effect(failed_rune.loc)
-	failed_rune.balloon_alert_to_viewers("the ritual has failed...")
+	failed_rune.balloon_alert_to_viewers("ritual has failed...")
 	failed_rune.current_ritual = null
 	in_use = FALSE
 	return
 
 /datum/ash_ritual/proc/ritual_success(obj/effect/ash_rune/success_rune)
 	new ritual_effect(success_rune.loc)
-	success_rune.balloon_alert_to_viewers("the ritual has been successful...")
+	success_rune.balloon_alert_to_viewers("ritual has been successful...")
 	if(ritual_success_item)
 		new ritual_success_item(get_turf(success_rune))
 	success_rune.current_ritual = null
 	in_use = FALSE
 	return TRUE
-
-/datum/ash_ritual/summon_staff
-	name = "Summon Ash Staff"
-	north_ritual_component = /obj/item/stack/sheet/mineral/wood
-	south_ritual_component = /obj/item/organ/regenerative_core
-	ritual_success_item = /obj/item/ash_staff
-
-/datum/ash_ritual/summon_necklace
-	name = "Summon Draconic Necklace"
-	north_ritual_component = /obj/item/stack/sheet/bone
-	south_ritual_component = /obj/item/organ/regenerative_core
-	east_ritual_component = /obj/item/stack/sheet/sinew
-	west_ritual_component = /obj/item/stack/sheet/sinew
-	ritual_success_item = /obj/item/clothing/neck/necklace/ashwalker
-
-/datum/ash_ritual/summon_key
-	name = "Summon Skeleton Key"
-	north_ritual_component = /obj/item/stack/sheet/bone
-	south_ritual_component = /obj/item/stack/sheet/bone
-	east_ritual_component = /obj/item/stack/sheet/bone
-	west_ritual_component = /obj/item/stack/sheet/bone
-	ritual_success_item = /obj/item/skeleton_key
-
-/datum/ash_ritual/summon_cursed_knife
-	name = "Summon Cursed Ash Knife"
-	north_ritual_component = /obj/item/organ/regenerative_core
-	south_ritual_component = /obj/item/forging/reagent_weapon/dagger
-	east_ritual_component = /obj/item/stack/sheet/bone
-	west_ritual_component = /obj/item/stack/sheet/sinew
-	ritual_success_item = /obj/item/cursed_dagger
-
-/datum/ash_ritual/summon_tendril_seed
-	name = "Summon Tendril Seed"
-	north_ritual_component = /obj/item/organ/regenerative_core
-	south_ritual_component = /obj/item/cursed_dagger
-	east_ritual_component = /obj/item/crusher_trophy/goliath_tentacle
-	west_ritual_component = /obj/item/crusher_trophy/watcher_wing
-	ritual_success_item = /obj/item/tendril_seed
-
-/datum/ash_ritual/incite_megafauna
-	name = "Incite Megafauna"
-	north_ritual_component = /mob/living/carbon/human
-	south_ritual_component = /obj/item/tendril_seed
-	east_ritual_component = /mob/living/carbon/human
-	west_ritual_component = /mob/living/carbon/human
-
-/datum/ash_ritual/incite_megafauna/ritual_success(obj/effect/ash_rune/success_rune)
-	. = ..()
-	for(var/mob/select_mob in GLOB.player_list)
-		if(select_mob.z != success_rune.z)
-			continue
-		to_chat(select_mob, span_userdanger("The planet stirs... another monster has arrived..."))
-		playsound(get_turf(select_mob), 'sound/magic/demon_attack1.ogg', 50, TRUE)
-		flash_color(select_mob, flash_color = "#FF0000", flash_time = 3 SECONDS)
-	var/megafauna_choice = pick(
-		/mob/living/simple_animal/hostile/megafauna/blood_drunk_miner,
-		/mob/living/simple_animal/hostile/megafauna/dragon,
-		/mob/living/simple_animal/hostile/megafauna/hierophant,
-	)
-	var/turf/spawn_turf = locate(rand(1,255), rand(1,255), success_rune.z)
-	new megafauna_choice(spawn_turf)
-
-/datum/ash_ritual/ash_ceremony
-	name = "Ashen Age Ceremony"
-	north_ritual_component = /mob/living/carbon/human
-	south_ritual_component = /obj/item/organ/regenerative_core
-	east_ritual_component = /obj/item/stack/sheet/bone
-	west_ritual_component = /obj/item/stack/sheet/sinew
-
-/datum/ash_ritual/ash_ceremony/ritual_success(obj/effect/ash_rune/success_rune)
-	. = ..()
-	for(var/mob/living/carbon/human/human_target in range(1))
-		SEND_SIGNAL(human_target, COMSIG_RUNE_EVOLUTION)

@@ -75,6 +75,8 @@
 
 /obj/item/tendril_seed/attack_self(mob/user, modifiers)
 	. = ..()
+	if(!is_mining_level(z))
+		return
 	if(!isliving(user))
 		return
 	var/mob/living/living_user = user
@@ -85,7 +87,7 @@
 	living_user.adjustBruteLoss(35)
 	if(!do_after(living_user, 4 SECONDS, target = src))
 		return
-	to_chat(living_user, span_warning("[src] wraps around your chest and begins to tighten... you feel an odd needle sensation..."))
+	to_chat(living_user, span_warning("[src] wraps around your chest and begins to tighten, causing an odd needling sensation..."))
 	living_user.adjustBruteLoss(35)
 	if(!do_after(living_user, 4 SECONDS, target = src))
 		return

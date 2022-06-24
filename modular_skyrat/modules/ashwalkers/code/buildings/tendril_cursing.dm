@@ -13,7 +13,7 @@
 		balloon_alert_to_viewers("a curse has been [cursed ? "placed..." : "lifted..."]")
 		if(isliving(user))
 			var/mob/living/living_user = user
-			living_user.adjustBruteLoss(100)
+			living_user.adjustFireLoss(100)
 		to_chat(user, span_warning("The knife sears your hand!"))
 		return
 	return ..()

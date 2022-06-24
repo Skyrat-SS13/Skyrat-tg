@@ -973,6 +973,16 @@
 	result = /obj/structure/bonfire
 	category = CAT_PRIMAL
 
+/* SKYRAT EDIT START: Ash Rituals
+/datum/crafting_recipe/skeleton_key
+	name = "Skeleton Key"
+	time = 30
+	reqs = list(/obj/item/stack/sheet/bone = 5)
+	result = /obj/item/skeleton_key
+	always_available = FALSE
+	category = CAT_PRIMAL
+SKYRAT EDIT STOP: Ash Rituals */
+
 /datum/crafting_recipe/rake //Category resorting incoming
 	name = "Rake"
 	time = 30
