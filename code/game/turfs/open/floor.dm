@@ -181,7 +181,7 @@
 
 /turf/open/floor/crowbar_act(mob/living/user, obj/item/I)
 	if(user.combat_mode)
-		return TRUE
+		return ..()
 	if(overfloor_placed && pry_tile(I, user))
 		return TRUE
 
