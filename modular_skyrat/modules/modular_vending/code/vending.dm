@@ -13,7 +13,7 @@
 		premium += skyrat_premium
 	if(skyrat_contraband)
 		contraband += skyrat_contraband
-	
+
 	/// Time to make clothes amounts consistent!
 	for (var/item in products)
 		if(products[item] < 5 && ispath(item, /obj/item/clothing) && skyrat_IsNotGameplay(item))
@@ -27,16 +27,20 @@
 	QDEL_NULL(skyrat_contraband)
 	return ..()
 
-/obj/machinery/vending/proc/skyrat_IsNotGameplay(var/obj/item/clothing/clothing)
-	var/list/traits = new clothing().clothing_traits
+/obj/machinery/vending/proc/skyrat_IsNotGameplay(var/obj/item/clothing/clothing_path)
+	var/obj/item/clothing/clothing = new clothing_path()
 
-	if(TRAIT_CHUNKYFINGERS in traits)
+	if(TRAIT_CHUNKYFINGERS in clothing.clothing_traits)
 		return FALSE
-	if(TRAIT_FASTMED in traits)
+	if(TRAIT_FASTMED in clothing.clothing_traits)
 		return FALSE
-	if(TRAIT_QUICK_CARRY in traits)
+	if(TRAIT_QUICK_CARRY in clothing.clothing_traits)
 		return FALSE
-	if(TRAIT_QUICKER_CARRY in traits)
+	if(TRAIT_QUICKER_CARRY in clothing.clothing_traits)
+		return FALSE
+	if(TRAIT_DEAF in clothing.clothing_traits)
+		return FALSE
+	if(clothing.flash_protect == FLASH_PROTECTION_WELDER)
 		return FALSE
 	if(ispath(clothing, /obj/item/clothing/suit/armor))
 		return FALSE
