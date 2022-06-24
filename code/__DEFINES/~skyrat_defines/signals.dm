@@ -68,3 +68,6 @@
 
 /// From mob/living/*/set_combat_mode(): (new_state)
 #define COMSIG_LIVING_COMBAT_MODE_TOGGLE "living_combat_mode_toggle"
+
+/// when someone attempts to evolve through the rune
+#define COMSIG_RUNE_EVOLUTION "rune_evolution"
