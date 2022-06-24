@@ -113,6 +113,50 @@
 /obj/item/clothing/head/weddingveil
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 
+/obj/item/clothing/head/pelt
+	name = "Bear pelt"
+	desc = "A luxurious bear pelt, good to keep warm in winter. Or to sleep through winter."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	icon_state = "bearpelt_brown"
+	inhand_icon_state = "bearpelt_brown"
+
+/obj/item/clothing/head/pelt/black
+	icon_state = "bearpelt_black"
+	inhand_icon_state = "bearpelt_black"
+
+/obj/item/clothing/head/pelt/wolfpelt
+	name = "Wolf pelt"
+	desc = "A fuzzy wolf pelt, demanding respect as a hunter, well if it isn't synthetic or anything at least. Or bought, for all the glory but none of the credit."
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head/pelt_big.dmi'
+	icon_state = "wolfpelt_brown"
+	inhand_icon_state = "wolfpelt_brown"
+
+/obj/item/clothing/head/pelt/wolfpeltblack
+	name = "Wolf pelt"
+	desc = "A fuzzy wolf pelt, demanding respect as a hunter, well if it isn't synthetic or anything at least. Or bought, for all the glory but none of the credit."
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head/pelt_big.dmi'
+	icon_state = "wolfpelt_gray"
+	inhand_icon_state = "wolfpelt_gray"
+
+/obj/item/clothing/head/pelt/tigerpelt
+	name = "Shiny tiger pelt"
+	desc = "A vibrant tiger pelt, particularly fabulous."
+	icon_state = "tigerpelt_shiny"
+	inhand_icon_state = "tigerpelt_shiny"
+
+/obj/item/clothing/head/pelt/tigerpeltsnow
+	name = "Snow tiger pelt"
+	desc = "A pelt of a less vibrant tiger, but rather warm."
+	icon_state = "tigerpelt_snow"
+	inhand_icon_state = "tigerpelt_snow"
+
+/obj/item/clothing/head/pelt/tigerpeltpink
+	name = "Pink tiger pelt"
+	desc = "A particularly vibrant tiger pelt, for those who want to be the most fabulous at parties."
+	icon_state = "tigerpelt_pink"
+	inhand_icon_state = "tigerpelt_pink"
+
 /*
 *	TURTLENECKS
 */
