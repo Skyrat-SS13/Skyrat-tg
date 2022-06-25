@@ -3,17 +3,9 @@
 	var/name = "Summon Coders"
 
 	/// the components necessary for a successful ritual
-	var/atom/north_ritual_component
-	var/consume_north_component = TRUE
-
-	var/atom/south_ritual_component
-	var/consume_south_component = TRUE
-
-	var/atom/east_ritual_component
-	var/consume_east_component = TRUE
-
-	var/atom/west_ritual_component
-	var/consume_west_component = TRUE
+	var/list/required_components = list()
+	/// the list that checks whether the components will be consumed
+	var/list/consumed_components = list()
 
 	/// if the ritual is successful, and the ritual will spawn an item, this is it
 	var/ritual_success_item
@@ -42,19 +34,7 @@
 
 	sleep(ritual_time)
 
-	if(!check_north(rune))
-		rune.vis_contents -= warp
-		warp = null
-		return
-	if(!check_south(rune))
-		rune.vis_contents -= warp
-		warp = null
-		return
-	if(!check_east(rune))
-		rune.vis_contents -= warp
-		warp = null
-		return
-	if(!check_west(rune))
+	if(!check_component_list(rune))
 		rune.vis_contents -= warp
 		warp = null
 		return
@@ -65,60 +45,21 @@
 	rune.vis_contents -= warp
 	warp = null
 
-/datum/ash_ritual/proc/check_north(obj/effect/ash_rune/north_rune)
-	if(north_ritual_component)
-		var/north_check = locate(north_ritual_component) in get_step(north_rune, NORTH)
-		if(!north_check)
-			ritual_fail(north_rune)
+/datum/ash_ritual/proc/check_component_list(obj/effect/ash_rune/checked_rune)
+	for(var/checked_component in required_components)
+		var/set_direction = text2dir(checked_component)
+		var/turf/checked_turf = get_step(checked_rune, set_direction)
+		var/atom_check = locate(required_components[checked_component]) in checked_turf.contents
+		if(!atom_check)
+			ritual_fail(checked_rune)
 			return FALSE
-		if(consume_north_component)
-			qdel(north_check)
-			north_rune.balloon_alert_to_viewers("north component has been consumed...")
-		new ritual_effect(north_rune.loc)
+		if(is_type_in_list(atom_check, consumed_components))
+			qdel(atom_check)
+			checked_rune.balloon_alert_to_viewers("[checked_component] component has been consumed...")
+		else
+			checked_rune.balloon_alert_to_viewers("[checked_component] component has been checked...")
+		new ritual_effect(checked_rune.loc)
 		sleep(ritual_time)
-		return TRUE
-	return TRUE
-
-/datum/ash_ritual/proc/check_south(obj/effect/ash_rune/south_rune)
-	if(south_ritual_component)
-		var/south_check = locate(south_ritual_component) in get_step(south_rune, SOUTH)
-		if(!south_check)
-			ritual_fail(south_rune)
-			return FALSE
-		if(consume_south_component)
-			qdel(south_check)
-			south_rune.balloon_alert_to_viewers("south component has been consumed...")
-		new ritual_effect(south_rune.loc)
-		sleep(ritual_time)
-		return TRUE
-	return TRUE
-
-/datum/ash_ritual/proc/check_east(obj/effect/ash_rune/east_rune)
-	if(east_ritual_component)
-		var/east_check = locate(east_ritual_component) in get_step(east_rune, EAST)
-		if(!east_check)
-			ritual_fail(east_rune)
-			return FALSE
-		if(consume_east_component)
-			qdel(east_check)
-			east_rune.balloon_alert_to_viewers("east component has been consumed...")
-		new ritual_effect(east_rune.loc)
-		sleep(ritual_time)
-		return TRUE
-	return TRUE
-
-/datum/ash_ritual/proc/check_west(obj/effect/ash_rune/west_rune)
-	if(west_ritual_component)
-		var/west_check = locate(west_ritual_component) in get_step(west_rune, WEST)
-		if(!west_check)
-			ritual_fail(west_rune)
-			return FALSE
-		if(consume_west_component)
-			qdel(west_check)
-			west_rune.balloon_alert_to_viewers("west component has been consumed...")
-		new ritual_effect(west_rune.loc)
-		sleep(ritual_time)
-		return TRUE
 	return TRUE
 
 /datum/ash_ritual/proc/ritual_fail(obj/effect/ash_rune/failed_rune)

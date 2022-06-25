@@ -1,47 +1,87 @@
 /datum/ash_ritual/summon_staff
 	name = "Summon Ash Staff"
-	north_ritual_component = /obj/item/stack/sheet/mineral/wood
-	south_ritual_component = /obj/item/organ/regenerative_core
+	required_components = list(
+		"north" = /obj/item/stack/sheet/mineral/wood,
+		"south" = /obj/item/organ/regenerative_core,
+	)
+	consumed_components = list(
+		/obj/item/stack/sheet/mineral/wood,
+		/obj/item/organ/regenerative_core,
+	)
 	ritual_success_item = /obj/item/ash_staff
 
 /datum/ash_ritual/summon_necklace
 	name = "Summon Draconic Necklace"
-	north_ritual_component = /obj/item/stack/sheet/bone
-	south_ritual_component = /obj/item/organ/regenerative_core
-	east_ritual_component = /obj/item/stack/sheet/sinew
-	west_ritual_component = /obj/item/stack/sheet/sinew
+	required_components = list(
+		"north" = /obj/item/stack/sheet/bone,
+		"south" = /obj/item/organ/regenerative_core,
+		"east" = /obj/item/stack/sheet/sinew,
+		"west" = /obj/item/stack/sheet/sinew,
+	)
+	consumed_components = list(
+		/obj/item/stack/sheet/bone,
+		/obj/item/organ/regenerative_core,
+		/obj/item/stack/sheet/sinew,
+	)
 	ritual_success_item = /obj/item/clothing/neck/necklace/ashwalker
 
 /datum/ash_ritual/summon_key
 	name = "Summon Skeleton Key"
-	north_ritual_component = /obj/item/stack/sheet/bone
-	south_ritual_component = /obj/item/stack/sheet/bone
-	east_ritual_component = /obj/item/stack/sheet/bone
-	west_ritual_component = /obj/item/stack/sheet/bone
+	required_components = list(
+		"north" = /obj/item/stack/sheet/bone,
+		"south" = /obj/item/stack/sheet/bone,
+		"east" = /obj/item/stack/sheet/bone,
+		"west" = /obj/item/stack/sheet/bone,
+	)
+	consumed_components = list(
+		/obj/item/stack/sheet/bone,
+	)
 	ritual_success_item = /obj/item/skeleton_key
 
 /datum/ash_ritual/summon_cursed_knife
 	name = "Summon Cursed Ash Knife"
-	north_ritual_component = /obj/item/organ/regenerative_core
-	south_ritual_component = /obj/item/forging/reagent_weapon/dagger
-	east_ritual_component = /obj/item/stack/sheet/bone
-	west_ritual_component = /obj/item/stack/sheet/sinew
+	required_components = list(
+		"north" = /obj/item/organ/regenerative_core,
+		"south" = /obj/item/forging/reagent_weapon/dagger,
+		"east" = /obj/item/stack/sheet/bone,
+		"west" = /obj/item/stack/sheet/sinew,
+	)
+	consumed_components = list(
+		/obj/item/organ/regenerative_core,
+		/obj/item/forging/reagent_weapon/dagger,
+		/obj/item/stack/sheet/bone,
+		/obj/item/stack/sheet/sinew,
+	)
 	ritual_success_item = /obj/item/cursed_dagger
 
 /datum/ash_ritual/summon_tendril_seed
 	name = "Summon Tendril Seed"
-	north_ritual_component = /obj/item/organ/regenerative_core
-	south_ritual_component = /obj/item/cursed_dagger
-	east_ritual_component = /obj/item/crusher_trophy/goliath_tentacle
-	west_ritual_component = /obj/item/crusher_trophy/watcher_wing
+	required_components = list(
+		"north" = /obj/item/organ/regenerative_core,
+		"south" = /obj/item/cursed_dagger,
+		"east" = /obj/item/crusher_trophy/goliath_tentacle,
+		"west" = /obj/item/crusher_trophy/watcher_wing,
+	)
+	consumed_components = list(
+		/obj/item/organ/regenerative_core,
+		/obj/item/cursed_dagger,
+		/obj/item/crusher_trophy/goliath_tentacle,
+		/obj/item/crusher_trophy/watcher_wing,
+	)
 	ritual_success_item = /obj/item/tendril_seed
 
 /datum/ash_ritual/incite_megafauna
 	name = "Incite Megafauna"
-	north_ritual_component = /mob/living/carbon/human
-	south_ritual_component = /obj/item/tendril_seed
-	east_ritual_component = /mob/living/carbon/human
-	west_ritual_component = /mob/living/carbon/human
+	required_components = list(
+		"north" = /mob/living/carbon/human,
+		"south" = /obj/item/tendril_seed,
+		"east" = /mob/living/carbon/human,
+		"west" = /mob/living/carbon/human,
+	)
+	consumed_components = list(
+		/mob/living/carbon/human,
+		/obj/item/tendril_seed,
+	)
 
 /datum/ash_ritual/incite_megafauna/ritual_success(obj/effect/ash_rune/success_rune)
 	. = ..()
@@ -63,10 +103,18 @@
 
 /datum/ash_ritual/ash_ceremony
 	name = "Ashen Age Ceremony"
-	north_ritual_component = /mob/living/carbon/human
-	south_ritual_component = /obj/item/organ/regenerative_core
-	east_ritual_component = /obj/item/stack/sheet/bone
-	west_ritual_component = /obj/item/stack/sheet/sinew
+	required_components = list(
+		"north" = /mob/living/carbon/human,
+		"south" = /obj/item/organ/regenerative_core,
+		"east" = /obj/item/stack/sheet/bone,
+		"west" = /obj/item/stack/sheet/sinew,
+	)
+	consumed_components = list(
+		/mob/living/carbon/human,
+		/obj/item/organ/regenerative_core,
+		/obj/item/stack/sheet/bone,
+		/obj/item/stack/sheet/sinew,
+	)
 
 /datum/ash_ritual/ash_ceremony/ritual_success(obj/effect/ash_rune/success_rune)
 	. = ..()

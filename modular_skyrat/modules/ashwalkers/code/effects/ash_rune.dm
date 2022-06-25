@@ -38,22 +38,10 @@
 	current_ritual = rituals[current_ritual]
 	balloon_alert_to_viewers("ritual has been chosen...")
 	sleep(2 SECONDS)
-	var/atom/required_item
-	if(current_ritual.north_ritual_component)
-		required_item = current_ritual.north_ritual_component
-		balloon_alert_to_viewers("north requires [initial(required_item.name)]...")
+	for(var/checked_component in current_ritual.required_components)
+		var/atom/associated_component = current_ritual.required_components[checked_component]
+		balloon_alert_to_viewers("[checked_component] requires [associated_component.name]...")
 		sleep(2 SECONDS)
-	if(current_ritual.south_ritual_component)
-		required_item = current_ritual.south_ritual_component
-		balloon_alert_to_viewers("south requires [initial(required_item.name)]...")
-		sleep(2 SECONDS)
-	if(current_ritual.east_ritual_component)
-		required_item = current_ritual.east_ritual_component
-		balloon_alert_to_viewers("east requires [initial(required_item.name)]...")
-		sleep(2 SECONDS)
-	if(current_ritual.west_ritual_component)
-		required_item = current_ritual.west_ritual_component
-		balloon_alert_to_viewers("west requires [initial(required_item.name)]...")
 
 // this is solely for aesthetics... though the central rune will check the directions, of which this is on
 /obj/effect/side_rune
