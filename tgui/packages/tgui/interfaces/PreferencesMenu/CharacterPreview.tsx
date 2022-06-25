@@ -1,4 +1,4 @@
-import { ByondUi } from "../../components";
+import { ByondUi } from '../../components';
 
 
 export const CharacterPreview = (props: {

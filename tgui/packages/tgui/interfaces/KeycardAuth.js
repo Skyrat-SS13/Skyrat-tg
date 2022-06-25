@@ -27,7 +27,8 @@ export const KeycardAuth = (props, context) => {
                     lineHeight="60px"
                     fluid
                     onClick={() => act('auth_swipe')}
-                    content="Authorize" />
+                    content="Authorize"
+                  />
                 )}
                 {data.auth_required === 0 && (
                   <>
@@ -37,12 +38,14 @@ export const KeycardAuth = (props, context) => {
                       onClick={() => {
                         return act('red_alert');
                       }}
-                      content="Red Alert" />
+                      content="Red Alert"
+                    />
                     <Button
                       icon="wrench"
                       fluid
                       onClick={() => act('emergency_maint')}
-                      content="Emergency Maintenance Access" />
+                      content="Emergency Maintenance Access"
+                    />
                     <Button
                       icon="meteor"
                       fluid

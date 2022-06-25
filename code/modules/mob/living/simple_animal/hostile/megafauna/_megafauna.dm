@@ -91,6 +91,11 @@
 	if(crusher_dmg && crusher_loot && crusher_dmg.total_damage >= maxHealth * 0.6)
 		spawn_crusher_loot()
 		crusher_kill = TRUE
+	//SKYRAT ADDITION START - ASHWALKER TROPHIES
+	var/datum/status_effect/ashwalker_damage/ashie_damage = has_status_effect(/datum/status_effect/ashwalker_damage)
+	if(!crusher_kill && ashie_damage && crusher_loot && ashie_damage.total_damage >= maxHealth * 0.6)
+		spawn_crusher_loot()
+	//SKYRAT ADDITION END
 	if(true_spawn && !(flags_1 & ADMIN_SPAWNED_1))
 		var/tab = "megafauna_kills"
 		if(crusher_kill)
