@@ -79,6 +79,8 @@
 	var/obj/effect/statclick/opfor_specific/stat_button
 	/// If it is part of the ticket ping subsystem
 	var/ticket_ping = FALSE
+	/// If this OPFOR has ever been approved.
+	var/approved_ever = FALSE
 
 	COOLDOWN_DECLARE(static/request_update_cooldown)
 	COOLDOWN_DECLARE(static/ping_cooldown)
@@ -551,6 +553,7 @@
 	if(status == OPFOR_STATUS_APPROVED)
 		return
 	status = OPFOR_STATUS_APPROVED
+	approved_ever = TRUE
 	can_edit = FALSE
 
 	SEND_SOUND(mind_reference.current, sound('modular_skyrat/modules/opposing_force/sound/approved.ogg'))
