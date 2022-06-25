@@ -1277,8 +1277,8 @@
 	icon_state = "mechiver"
 	base_icon_state = "mechiver"
 	icon_dead = "mechiver-dead"
-	health = 500
-	maxHealth = 500
+	health = 450
+	maxHealth = 450
 	melee_damage_lower = 25
 	melee_damage_upper = 35
 	attack_verb_continuous = "crushes"
@@ -1334,7 +1334,7 @@
 	/// Ditto
 	var/internal_mob_damage_lower = 40
 	/// How long we keep our passenger before either releasing or converting them.
-	var/conversion_time = 15 SECONDS
+	var/conversion_time = 20 SECONDS
 	/// The comsume ability cooldown
 	var/consume_ability_cooldown_time = 1 MINUTES
 	COOLDOWN_DECLARE(consume_ability_cooldown)
@@ -1403,6 +1403,9 @@
 	if(contained_mob)
 		return
 	if(!istype(target_mob))
+		return
+
+	if(target_mob.health > (target_mob.maxHealth * MECHIVER_CONSUME_HEALTH_THRESHOLD))
 		return
 
 	hatch_open = TRUE

@@ -103,9 +103,9 @@
 	. = ..()
 	switch(severity)
 		if(EMP_LIGHT)
-			take_damage(10)
-		if(EMP_HEAVY)
 			take_damage(20)
+		if(EMP_HEAVY)
+			take_damage(40)
 
 
 /obj/structure/fleshmind/wireweed/update_overlays()
