@@ -211,14 +211,8 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 					playsound(src, 'sound/machines/terminal_prompt_deny.ogg', 50, FALSE)
 					return
 
-<<<<<<< HEAD
-			var/new_sec_level = seclevel2num(params["newSecurityLevel"])
-			//if (new_sec_level != SEC_LEVEL_GREEN && new_sec_level != SEC_LEVEL_BLUE) - ORIGINAL
-			if (new_sec_level < SEC_LEVEL_GREEN || new_sec_level > SEC_LEVEL_AMBER) //SKYRAT EDIT CHANGE - ALERTS
-=======
 			var/new_sec_level = SSsecurity_level.text_level_to_number(params["newSecurityLevel"])
-			if (new_sec_level != SEC_LEVEL_GREEN && new_sec_level != SEC_LEVEL_BLUE)
->>>>>>> 110edaa153a (Security Level Datums (#67949))
+			if (new_sec_level < SEC_LEVEL_GREEN || new_sec_level > SEC_LEVEL_AMBER) //SKYRAT EDIT CHANGE - ALERTS
 				return
 			if (SSsecurity_level.get_current_level_as_number() == new_sec_level)
 				return
