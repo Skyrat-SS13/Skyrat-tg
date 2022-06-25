@@ -21,39 +21,57 @@
 /obj/structure/spawner/lavaland/Destroy()
 	if(cursed)
 		for(var/mob/living/carbon/human/selected_human in range(7))
-			selected_human.ForceContractDisease(new /datum/disease/curse_blight(), FALSE, TRUE)
+			if(is_species(selected_human, /datum/species/lizard/ashwalker))
+				continue
+			selected_human.AddElement(/datum/element/ash_cursed)
+		for(var/mob/select_mob in GLOB.player_list)
+			if(!is_species(select_mob, /datum/species/lizard/ashwalker))
+				continue
+			to_chat(select_mob, span_boldwarning("A cursed tendril has been broken! The target has been marked until they flee the lands!"))
 	. = ..()
 
-/datum/disease/curse_blight
-	name = "Unnatural Wasting"
-	max_stages = 5
-	stage_prob = 5
-	spread_flags = DISEASE_SPREAD_AIRBORNE | DISEASE_SPREAD_CONTACT_FLUIDS | DISEASE_SPREAD_CONTACT_SKIN
-	cure_text = "Holy water."
-	spread_text = "A burst of unholy energy"
-	cures = list(/datum/reagent/water/holywater)
-	cure_chance = 3
-	agent = "Unholy Forces"
-	viable_mobtypes = list(/mob/living/carbon/human)
-	disease_flags = CURABLE
-	infectivity = 25
-	spreading_modifier = 1
-	severity = DISEASE_SEVERITY_DANGEROUS
+/datum/element/ash_cursed
+	/// the person who is targeted by the curse
+	var/mob/living/carbon/human/human_target
 
-/datum/disease/curse_blight/stage_act(delta_time, times_fired)
+/datum/element/ash_cursed/Attach(datum/target)
 	. = ..()
-	if(!.)
+	if(!ishuman(target))
+		return ELEMENT_INCOMPATIBLE
+	human_target = target
+	ADD_TRAIT(human_target, TRAIT_NO_TELEPORT, src)
+	human_target.add_movespeed_modifier(/datum/movespeed_modifier/ash_cursed)
+	RegisterSignal(human_target, COMSIG_MOVABLE_MOVED, .proc/do_move)
+	RegisterSignal(human_target, COMSIG_LIVING_DEATH, .proc/remove_curse)
+
+/datum/element/ash_cursed/Detach(datum/source, ...)
+	. = ..()
+	REMOVE_TRAIT(human_target, TRAIT_NO_TELEPORT, src)
+	human_target.remove_movespeed_modifier(/datum/movespeed_modifier/ash_cursed)
+	UnregisterSignal(human_target, list(COMSIG_MOVABLE_MOVED, COMSIG_LIVING_DEATH))
+
+/datum/element/ash_cursed/proc/remove_curse()
+	for(var/mob/select_mob in GLOB.player_list)
+		if(!is_species(select_mob, /datum/species/lizard/ashwalker))
+			continue
+		to_chat(select_mob, span_boldwarning("A target has died, the curse has been lifted!"))
+	Detach(human_target)
+
+/datum/element/ash_cursed/proc/do_move()
+	var/turf/human_turf = get_turf(human_target)
+	if(!is_mining_level(human_turf))
+		Detach(human_target)
+		for(var/mob/select_mob in GLOB.player_list)
+			if(!is_species(select_mob, /datum/species/lizard/ashwalker))
+				continue
+			to_chat(select_mob, span_boldwarning("A target has fled from the land, breaking the curse!"))
 		return
+	var/obj/effect/decal/cleanable/blood/spawned_blood = new(human_turf)
+	spawned_blood.color = "#00aeff"
+	addtimer(CALLBACK(spawned_blood, /obj/effect/decal/cleanable/blood.proc/do_qdel), 5 MINUTES)
 
-	if(stage >= 1 && prob(10))
-		to_chat(affected_mob, span_revennotice("You suddenly feel [pick("sick and tired", "disoriented", "tired and confused", "nauseated", "faint", "dizzy")]..."))
-		affected_mob.adjust_timed_status_effect(8 SECONDS, /datum/status_effect/confusion)
-		new /obj/effect/temp_visual/revenant(affected_mob.loc)
+/obj/effect/decal/cleanable/blood/proc/do_qdel()
+	qdel(src)
 
-	if(stage >= 3 && prob(10))
-		affected_mob.adjustStaminaLoss(20, FALSE)
-		new /obj/effect/temp_visual/revenant(affected_mob.loc)
-
-	if(stage >= 5 && prob(10))
-		affected_mob.adjustToxLoss(5)
-		new /obj/effect/temp_visual/revenant(affected_mob.loc)
+/datum/movespeed_modifier/ash_cursed
+	multiplicative_slowdown = 1.0

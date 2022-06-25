@@ -75,7 +75,8 @@
 
 /obj/item/tendril_seed/attack_self(mob/user, modifiers)
 	. = ..()
-	if(!is_mining_level(z))
+	var/turf/src_turf = get_turf(src)
+	if(!is_mining_level(src_turf.z))
 		return
 	if(!isliving(user))
 		return

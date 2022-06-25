@@ -66,7 +66,7 @@
 	var/datum/species/species_target = human_target.dna.species
 	switch(current_stage)
 		if(1)
-			species_target.speedmod -= 0.2
+			human_target.add_movespeed_modifier(/datum/movespeed_modifier/ash_aged)
 			to_chat(human_target, span_notice("Your body seems lighter..."))
 		if(2)
 			species_target.armor += 10
@@ -86,3 +86,5 @@
 		if(6 to INFINITY)
 			to_chat(human_target, span_warning("You have already reached the pinnacle of your current body!"))
 
+/datum/movespeed_modifier/ash_aged
+	multiplicative_slowdown = -0.2
