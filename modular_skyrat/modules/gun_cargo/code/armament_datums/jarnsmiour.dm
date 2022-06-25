@@ -18,7 +18,7 @@
 	lower_cost = CARGO_CRATE_VALUE * 5
 	upper_cost = CARGO_CRATE_VALUE * 7
 
-/datum/armament_entry/cargo_gun/jarns/knife/csabre
+/datum/armament_entry/cargo_gun/jarns/knife/cargo_sabre
 	item_type = /obj/item/storage/belt/sabre/cargo
 	lower_cost = CARGO_CRATE_VALUE * 7
 	upper_cost = CARGO_CRATE_VALUE * 8
