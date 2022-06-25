@@ -235,7 +235,11 @@
 
 ///security level and shuttle lockdowns for [/proc/begin_the_end()]
 /proc/narsie_start_destroy_station()
+<<<<<<< HEAD
 	set_security_level("gamma") //SKYRAT EDIT CHANGE - ALERTS - ORIGINAL "delta"
+=======
+	SSsecurity_level.set_level(SEC_LEVEL_DELTA)
+>>>>>>> 110edaa153a (Security Level Datums (#67949))
 	SSshuttle.registerHostileEnvironment(GLOB.cult_narsie)
 	SSshuttle.lockdown = TRUE
 	addtimer(CALLBACK(GLOBAL_PROC, .proc/narsie_apocalypse), 1 MINUTES)
@@ -255,7 +259,7 @@
 
 ///Called only if the crew managed to destroy narsie at the very last second for [/proc/begin_the_end()]
 /proc/narsie_last_second_win()
-	set_security_level("red")
+	SSsecurity_level.set_level(SEC_LEVEL_RED)
 	SSshuttle.lockdown = FALSE
 	INVOKE_ASYNC(GLOBAL_PROC, .proc/cult_ending_helper, CULT_FAILURE_NARSIE_KILLED)
 
