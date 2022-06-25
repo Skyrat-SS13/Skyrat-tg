@@ -28,6 +28,11 @@
 	/// The uplink handler that this traitor belongs to.
 	var/datum/uplink_handler/uplink_handler
 
+	// SKYRAT EDIT START
+	///the final objective the traitor has to accomplish, be it escaping, hijacking, or just martyrdom.
+	var/datum/objective/ending_objective
+	// SKYRAT EDIT END
+
 	var/uplink_sale_count = 3
 
 /datum/antagonist/traitor/New(give_objectives = TRUE)
@@ -50,7 +55,7 @@
 		uplink_handler.has_progression = FALSE //SKYRAT EDIT
 		SStraitor.register_uplink_handler(uplink_handler)
 
-		uplink_handler.has_objectives = TRUE
+		uplink_handler.has_objectives = FALSE //SKYRAT EDIT
 		uplink_handler.generate_objectives()
 
 		if(uplink_handler.progression_points < SStraitor.current_global_progression)
@@ -69,6 +74,7 @@
 
 	if(give_objectives)
 		forge_traitor_objectives()
+		forge_ending_objective() //SKYRAT EDIT
 
 	pick_employer()
 
@@ -199,13 +205,13 @@
 	if(total_points < required_progression_in_objectives)
 		return FALSE
 	return TRUE
-
+//SKYRAT EDIT START - OBJECTIVE REMOVAL
+	/*
 /// Generates a complete set of traitor objectives up to the traitor objective limit, including non-generic objectives such as martyr and hijack.
 /datum/antagonist/traitor/proc/forge_traitor_objectives()
 	objectives.Cut()
 
-	//SKYRAT EDIT START - OBJECTIVE REMOVAL
-	/*
+
 	var/datum/objective/traitor_progression/final_objective = new /datum/objective/traitor_progression()
 	final_objective.owner = owner
 	objectives += final_objective
