@@ -40,7 +40,7 @@
 	sleep(2 SECONDS)
 	for(var/checked_component in current_ritual.required_components)
 		var/atom/associated_component = current_ritual.required_components[checked_component]
-		balloon_alert_to_viewers("[checked_component] requires [associated_component.name]...")
+		balloon_alert_to_viewers("[checked_component] requires [initial(associated_component.name)]...")
 		sleep(2 SECONDS)
 
 // this is solely for aesthetics... though the central rune will check the directions, of which this is on
