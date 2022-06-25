@@ -51,6 +51,7 @@
 	UnregisterSignal(human_target, list(COMSIG_MOVABLE_MOVED, COMSIG_LIVING_DEATH))
 
 /datum/element/ash_cursed/proc/remove_curse()
+	SIGNAL_HANDLER
 	for(var/mob/select_mob in GLOB.player_list)
 		if(!is_species(select_mob, /datum/species/lizard/ashwalker))
 			continue
@@ -58,19 +59,24 @@
 	Detach(human_target)
 
 /datum/element/ash_cursed/proc/do_move()
+	SIGNAL_HANDLER
 	var/turf/human_turf = get_turf(human_target)
-	if(!is_mining_level(human_turf))
+	if(!is_mining_level(human_turf.z))
 		Detach(human_target)
 		for(var/mob/select_mob in GLOB.player_list)
 			if(!is_species(select_mob, /datum/species/lizard/ashwalker))
 				continue
 			to_chat(select_mob, span_boldwarning("A target has fled from the land, breaking the curse!"))
 		return
-	var/obj/effect/decal/cleanable/blood/spawned_blood = new(human_turf)
-	spawned_blood.color = "#00aeff"
-	addtimer(CALLBACK(spawned_blood, /obj/effect/decal/cleanable/blood.proc/do_qdel), 5 MINUTES)
+	if(prob(75))
+		return
+	var/obj/effect/decal/cleanable/greenglow/ecto/spawned_goo = locate() in human_turf
+	if(spawned_goo)
+		return
+	spawned_goo = new(human_turf)
+	addtimer(CALLBACK(spawned_goo, /obj/effect/decal/cleanable/greenglow/ecto.proc/do_qdel), 5 MINUTES, TIMER_STOPPABLE|TIMER_DELETE_ME)
 
-/obj/effect/decal/cleanable/blood/proc/do_qdel()
+/obj/effect/decal/cleanable/greenglow/ecto/proc/do_qdel()
 	qdel(src)
 
 /datum/movespeed_modifier/ash_cursed

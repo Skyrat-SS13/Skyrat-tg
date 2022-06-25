@@ -55,6 +55,7 @@
 	RegisterSignal(human_target, COMSIG_RUNE_EVOLUTION, .proc/check_evolution)
 
 /datum/element/ash_age/proc/check_evolution()
+	SIGNAL_HANDLER
 	// if the world time hasn't yet passed the time required for evolution
 	if(world.time < (evo_time + stage_time))
 		to_chat(human_target, span_warning("More time is necessary to evolve-- twenty minutes between each evolution..."))
