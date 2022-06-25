@@ -397,10 +397,6 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Qipao, Red"
 	item_path = /obj/item/clothing/under/costume/qipao/red
 
-/datum/loadout_item/under/miscellaneous/fem_skirt
-	name = "Feminine Skirt"
-	item_path = /obj/item/clothing/under/suit/black/female/skirt
-	
 /datum/loadout_item/under/miscellaneous/cheongsam
 	name = "Cheongsam, Black"
 	item_path = /obj/item/clothing/under/costume/cheongsam
