@@ -7,7 +7,7 @@
 	. = ..()
 	ADD_TRAIT(C, TRAIT_ASHSTORM_IMMUNE, SPECIES_TRAIT)
 	RegisterSignal(C, COMSIG_MOB_ITEM_ATTACK, .proc/mob_attack)
-	C.AddElement(/datum/element/ash_age)
+	C.AddComponent(/datum/component/ash_age)
 
 /datum/species/lizard/ashwalker/on_species_loss(mob/living/carbon/C)
 	. = ..()
@@ -33,7 +33,7 @@
  * 100 minutes = firebreath
  */
 
-/datum/element/ash_age
+/datum/component/ash_age
 	/// the amount of minutes after each upgrade
 	var/stage_time = 20 MINUTES
 	/// the current stage of the ash
@@ -43,18 +43,17 @@
 	/// the human target the element is attached to
 	var/mob/living/carbon/human/human_target
 
-/datum/element/ash_age/Attach(datum/target)
-	. = ..()
-	if(!ishuman(target))
-		return ELEMENT_INCOMPATIBLE
+/datum/component/ash_age/Initialize()
+	if(!ishuman(parent))
+		return COMPONENT_INCOMPATIBLE
 	// set the target for the element so we can reference in other parts
-	human_target = target
+	human_target = parent
 	// set the time that it was attached then we will compare current world time versus the evo_time plus stage_time
 	evo_time = world.time
 	// when the rune successfully completes the age ritual, it will send the signal... do the proc when we receive the signal
 	RegisterSignal(human_target, COMSIG_RUNE_EVOLUTION, .proc/check_evolution)
 
-/datum/element/ash_age/proc/check_evolution()
+/datum/component/ash_age/proc/check_evolution()
 	SIGNAL_HANDLER
 	// if the world time hasn't yet passed the time required for evolution
 	if(world.time < (evo_time + stage_time))
