@@ -137,14 +137,9 @@ export const QuirksPage = (props, context) => {
 
   return (
     <ServerPreferencesFetcher
-<<<<<<< HEAD
       // SKYRAT EDIT START - Quirks balance refactor
       render={quirks_data => {
         if (!quirks_data) { // SKYRAT EDIT END
-=======
-      render={(data) => {
-        if (!data) {
->>>>>>> 731ab29aa73 (Adds Prettierx - or how I broke TGUI for the nth time (#67935))
           return <Box>Loading quirks...</Box>;
         }
 
@@ -179,7 +174,6 @@ export const QuirksPage = (props, context) => {
             }
           }
 
-<<<<<<< HEAD
           // SKYRAT EDIT START - Veteran quirks
           if (quirk.veteran_only && !data.is_veteran) {
             return "You need to be a veteran to select this quirk, apply today!";
@@ -187,9 +181,6 @@ export const QuirksPage = (props, context) => {
           // SKYRAT EDIT END
 
           const selectedQuirkNames = selectedQuirks.map(quirkKey => {
-=======
-          const selectedQuirkNames = selectedQuirks.map((quirkKey) => {
->>>>>>> 731ab29aa73 (Adds Prettierx - or how I broke TGUI for the nth time (#67935))
             return quirkInfo[quirkKey].name;
           });
 

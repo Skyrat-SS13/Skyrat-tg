@@ -13,13 +13,9 @@ export const NtosCrewManifest = (props, context) => {
   const { act, data } = useBackend(context);
   const { have_printer, manifest = {} } = data;
   return (
-<<<<<<< HEAD
     <NtosWindow
       width={500}
       height={480}>
-=======
-    <NtosWindow width={400} height={480}>
->>>>>>> 731ab29aa73 (Adds Prettierx - or how I broke TGUI for the nth time (#67935))
       <NtosWindow.Content scrollable>
         <Section
           title="Crew Manifest"
@@ -34,7 +30,6 @@ export const NtosCrewManifest = (props, context) => {
           {map((entries, department) => (
             <Section key={department} level={2} title={department}>
               <Table>
-<<<<<<< HEAD
                 {entries.map(entry => (
                   <Table.Row
                     key={entry.name}
@@ -47,12 +42,6 @@ export const NtosCrewManifest = (props, context) => {
                         ? entry.rank
                         : <>{entry.rank} ({entry.trim})</>}
                     </Table.Cell>
-=======
-                {entries.map((entry) => (
-                  <Table.Row key={entry.name} className="candystripe">
-                    <Table.Cell bold>{entry.name}</Table.Cell>
-                    <Table.Cell>({entry.rank})</Table.Cell>
->>>>>>> 731ab29aa73 (Adds Prettierx - or how I broke TGUI for the nth time (#67935))
                   </Table.Row>
                 ))}
               </Table>

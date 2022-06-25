@@ -1,21 +1,6 @@
-<<<<<<< HEAD
-import { classes } from "common/react";
-import { sendAct, useBackend, useLocalState } from "../../backend";
-import { Autofocus, Box, Button, Flex, LabeledList, Popper, Stack, TrackOutsideClicks, Dropdown } from "../../components"; // SKYRAT EDIT CHANGE
-import { createSetPreference, PreferencesMenuData, RandomSetting } from "./data";
-import { CharacterPreview } from "./CharacterPreview";
-import { RandomizationButton } from "./RandomizationButton";
-import { ServerPreferencesFetcher } from "./ServerPreferencesFetcher";
-import { MultiNameInput, NameInput } from "./names";
-import { Gender, GENDERS } from "./preferences/gender";
-import features from "./preferences/features";
-import { FeatureChoicedServerData, FeatureValueInput } from "./preferences/features/base";
-import { filterMap, sortBy } from "common/collections";
-import { useRandomToggleState } from "./useRandomToggleState";
-=======
 import { classes } from 'common/react';
 import { sendAct, useBackend, useLocalState } from '../../backend';
-import { Autofocus, Box, Button, Flex, LabeledList, Popper, Stack, TrackOutsideClicks } from '../../components';
+import { Autofocus, Box, Button, Flex, LabeledList, Popper, Stack, TrackOutsideClicks, Dropdown } from "../../components"; // SKYRAT EDIT CHANGE
 import { createSetPreference, PreferencesMenuData, RandomSetting } from './data';
 import { CharacterPreview } from './CharacterPreview';
 import { RandomizationButton } from './RandomizationButton';
@@ -26,7 +11,6 @@ import features from './preferences/features';
 import { FeatureChoicedServerData, FeatureValueInput } from './preferences/features/base';
 import { filterMap, sortBy } from 'common/collections';
 import { useRandomToggleState } from './useRandomToggleState';
->>>>>>> 731ab29aa73 (Adds Prettierx - or how I broke TGUI for the nth time (#67935))
 
 const CLOTHING_CELL_SIZE = 48;
 const CLOTHING_SIDEBAR_ROWS = 13.4; // SKYRAT EDIT CHANGE - ORIGINAL:  9
@@ -36,20 +20,12 @@ const CLOTHING_SELECTION_WIDTH = 5.4;
 const CLOTHING_SELECTION_MULTIPLIER = 5.2;
 
 const CharacterControls = (props: {
-<<<<<<< HEAD
-  handleRotate: () => void,
-  handleOpenSpecies: () => void,
-  handleLoadout: () => void, // SKYRAT EDIT ADDITION
-  gender: Gender,
-  setGender: (gender: Gender) => void,
-  showGender: boolean,
-=======
   handleRotate: () => void;
   handleOpenSpecies: () => void;
+  handleLoadout: () => void, // SKYRAT EDIT ADDITION
   gender: Gender;
   setGender: (gender: Gender) => void;
   showGender: boolean;
->>>>>>> 731ab29aa73 (Adds Prettierx - or how I broke TGUI for the nth time (#67935))
 }) => {
   return (
     <Stack>
@@ -553,57 +529,6 @@ export const MainPage = (
               />
             )}
 
-<<<<<<< HEAD
-          <Stack height={`${CLOTHING_SIDEBAR_ROWS * CLOTHING_CELL_SIZE}px`}>
-            <Stack.Item fill>
-              <Stack vertical fill>
-                <Stack.Item>
-                  <CharacterControls
-                    gender={data.character_preferences.misc.gender}
-                    handleOpenSpecies={props.openSpecies}
-                    handleRotate={() => {
-                      act("rotate");
-                    }}
-                    handleLoadout={() => {
-                      act("open_loadout");
-                    }}
-                    // SKYRAT EDIT END
-                    setGender={createSetPreference(act, "gender")}
-                    showGender={
-                      currentSpeciesData ? !!currentSpeciesData.sexes : true
-                    }
-                  />
-                </Stack.Item>
-
-                <Stack.Item grow>
-                  <CharacterPreview
-                    height="80%" // SKYRAT EDIT - ORIGINAL: height="100%"
-                    id={data.character_preview_view} />
-                </Stack.Item>
-
-                <Dropdown
-                  // SKYRAT EDIT ADDITION
-                  width="100%"
-                  position="relative"
-                  selected={data.preview_selection}
-                  options={data.preview_options}
-                  onSelected={value => act('update_preview', {
-                    updated_preview: value,
-                  })} />
-                <Stack.Item position="relative">
-                  <NameInput
-                    name={
-                      data.character_preferences.names[data.name_to_use]
-                    }
-                    handleUpdateName={
-                      createSetPreference(act, data.name_to_use)
-                    }
-                    openMultiNameInput={() => {
-                      setMultiNameInputOpen(true);
-                    }}
-                  />
-                </Stack.Item>
-=======
             <Stack height={`${CLOTHING_SIDEBAR_ROWS * CLOTHING_CELL_SIZE}px`}>
               <Stack.Item fill>
                 <Stack vertical fill>
@@ -614,6 +539,9 @@ export const MainPage = (
                       handleRotate={() => {
                         act('rotate');
                       }}
+                      handleLoadout={() => {
+                        act("open_loadout");
+                      }}
                       setGender={createSetPreference(act, 'gender')}
                       showGender={
                         currentSpeciesData ? !!currentSpeciesData.sexes : true
@@ -623,10 +551,20 @@ export const MainPage = (
 
                   <Stack.Item grow>
                     <CharacterPreview
-                      height="100%"
+                      height="80%" // SKYRAT EDIT - ORIGINAL: height="100%"
                       id={data.character_preview_view}
                     />
                   </Stack.Item>
+
+                  <Dropdown
+                    // SKYRAT EDIT ADDITION
+                    width="100%"
+                    position="relative"
+                    selected={data.preview_selection}
+                    options={data.preview_options}
+                    onSelected={value => act('update_preview', {
+                      updated_preview: value,
+                  })} />
 
                   <Stack.Item position="relative">
                     <NameInput
@@ -642,7 +580,6 @@ export const MainPage = (
                   </Stack.Item>
                 </Stack>
               </Stack.Item>
->>>>>>> 731ab29aa73 (Adds Prettierx - or how I broke TGUI for the nth time (#67935))
 
               <Stack.Item fill width={`${CLOTHING_CELL_SIZE * 2 + 15}px`}>
                 <Stack height="100%" vertical wrap>

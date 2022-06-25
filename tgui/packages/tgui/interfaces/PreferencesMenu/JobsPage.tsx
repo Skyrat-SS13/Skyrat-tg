@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { sortBy } from "common/collections";
 import { classes } from "common/react";
 import { InfernoNode, SFC } from "inferno";
@@ -7,15 +6,6 @@ import { Box, Button, Dropdown, Stack, Tooltip } from "../../components";
 import { logger } from "../../logging";
 import { createSetPreference, Job, JoblessRole, JobPriority, PreferencesMenuData } from "./data";
 import { ServerPreferencesFetcher } from "./ServerPreferencesFetcher";
-=======
-import { sortBy } from 'common/collections';
-import { classes } from 'common/react';
-import { InfernoNode, SFC } from 'inferno';
-import { useBackend } from '../../backend';
-import { Box, Button, Dropdown, Stack, Tooltip } from '../../components';
-import { createSetPreference, Job, JoblessRole, JobPriority, PreferencesMenuData } from './data';
-import { ServerPreferencesFetcher } from './ServerPreferencesFetcher';
->>>>>>> 731ab29aa73 (Adds Prettierx - or how I broke TGUI for the nth time (#67935))
 
 const sortJobs = (entries: [string, Job][], head?: string) =>
   sortBy<[string, Job]>(
@@ -35,7 +25,6 @@ const PriorityButton = (props: {
   const className = `PreferencesMenu__Jobs__departments__priority`;
 
   return (
-<<<<<<< HEAD
     // SKYRAT EDIT START
     <Button
       className={classes([
@@ -51,23 +40,6 @@ const PriorityButton = (props: {
       width={PRIORITY_BUTTON_SIZE}
     />
     // SKYRAT EDIT END
-=======
-    <Stack.Item height={PRIORITY_BUTTON_SIZE}>
-      <Button
-        className={classes([
-          className,
-          props.modifier && `${className}--${props.modifier}`,
-        ])}
-        color={props.enabled ? props.color : 'white'}
-        circular
-        onClick={props.onClick}
-        tooltip={props.name}
-        tooltipPosition="bottom"
-        height={PRIORITY_BUTTON_SIZE}
-        width={PRIORITY_BUTTON_SIZE}
-      />
-    </Stack.Item>
->>>>>>> 731ab29aa73 (Adds Prettierx - or how I broke TGUI for the nth time (#67935))
   );
 };
 
@@ -137,7 +109,6 @@ const PriorityButtons = (props: {
   return (
     <Box inline // SKYRAT EDIT
       style={{
-<<<<<<< HEAD
         "align-items": "center",
         "height": "100%",
         "textAlign": "end", // SKYRAT EDIT
@@ -154,22 +125,6 @@ const PriorityButtons = (props: {
               enabled={!priority}
               onClick={createSetPriority(null)}
             />
-=======
-        'align-items': 'center',
-        'height': '100%',
-        'justify-content': 'flex-end',
-        'padding-left': '0.3em',
-      }}>
-      {isOverflow ? (
-        <>
-          <PriorityButton
-            name="Off"
-            modifier="off"
-            color="light-grey"
-            enabled={!priority}
-            onClick={createSetPriority(null)}
-          />
->>>>>>> 731ab29aa73 (Adds Prettierx - or how I broke TGUI for the nth time (#67935))
 
           <PriorityButton
             name="On"
@@ -177,7 +132,7 @@ const PriorityButtons = (props: {
             enabled={!!priority}
             onClick={createSetPriority(JobPriority.High)}
           />
-        </>
+          </>
       ) : (
         <>
           <PriorityButton
@@ -202,27 +157,15 @@ const PriorityButtons = (props: {
             onClick={createSetPriority(JobPriority.Medium)}
           />
 
-<<<<<<< HEAD
             <PriorityButton
               name="High"
               color="green"
               enabled={priority === JobPriority.High}
               onClick={createSetPriority(JobPriority.High)}
             />
-          </>
+        </>
         )}
     </Box> // SKYRAT EDIT
-=======
-          <PriorityButton
-            name="High"
-            color="green"
-            enabled={priority === JobPriority.High}
-            onClick={createSetPriority(JobPriority.High)}
-          />
-        </>
-      )}
-    </Stack>
->>>>>>> 731ab29aa73 (Adds Prettierx - or how I broke TGUI for the nth time (#67935))
   );
 };
 
@@ -312,7 +255,6 @@ const JobRow = (
     );
   }
   return (
-<<<<<<< HEAD
     <Box className={className} style={{ // SKYRAT EDIT
       "margin-top": 0,
     }}>
@@ -332,23 +274,6 @@ const JobRow = (
               />)
             // SKYRAT EDIT END
             }
-=======
-    <Stack.Item
-      className={className}
-      height="100%"
-      style={{
-        'margin-top': 0,
-      }}>
-      <Stack fill align="center">
-        <Tooltip content={job.description} position="bottom-start">
-          <Stack.Item
-            className="job-name"
-            width="50%"
-            style={{
-              'padding-left': '0.3em',
-            }}>
-            {name}
->>>>>>> 731ab29aa73 (Adds Prettierx - or how I broke TGUI for the nth time (#67935))
           </Stack.Item>
         </Tooltip>
 
@@ -391,7 +316,6 @@ const Department: SFC<{ department: string }> = (props) => {
         logger.log(className);
         return (
           <Box>
-<<<<<<< HEAD
             {jobsForDepartment.map(([name, job]) => {
               logger.log(name);
               return (<JobRow /* SKYRAT EDIT START - Fixing alt titles */
@@ -401,23 +325,6 @@ const Department: SFC<{ department: string }> = (props) => {
                 name={name}
               />);
             })/* SKYRAT EDIT END */}
-=======
-            <Stack vertical fill>
-              {jobsForDepartment.map(([name, job]) => {
-                return (
-                  <JobRow
-                    className={classes([
-                      className,
-                      name === department.head && 'head',
-                    ])}
-                    key={name}
-                    job={job}
-                    name={name}
-                  />
-                );
-              })}
-            </Stack>
->>>>>>> 731ab29aa73 (Adds Prettierx - or how I broke TGUI for the nth time (#67935))
 
             {children}
           </Box>

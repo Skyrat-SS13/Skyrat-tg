@@ -4,7 +4,6 @@ import { Icon, Section, Table, Tooltip } from '../components';
 import { Window } from '../layouts';
 
 const commandJobs = [
-<<<<<<< HEAD
   "Head of Personnel",
   "Head of Security",
   "Chief Engineer",
@@ -12,13 +11,6 @@ const commandJobs = [
   "Chief Medical Officer",
   "Quartermaster", // SKYRAT EDIT
   "Nanotrasen Consultant", // SKYRAT EDIT
-=======
-  'Head of Personnel',
-  'Head of Security',
-  'Chief Engineer',
-  'Research Director',
-  'Chief Medical Officer',
->>>>>>> 731ab29aa73 (Adds Prettierx - or how I broke TGUI for the nth time (#67935))
 ];
 
 // SKYRAT EDIT CHANGE BEGIN - ALTERNATIVE_JOB_TITLES
@@ -52,7 +44,6 @@ export const CrewManifest = (props, context) => {
                       'CrewManifest__Cell',
                       'CrewManifest__Icons',
                     ])}
-<<<<<<< HEAD
                     collapsing
                   >
                     {positions[dept].exceptions.includes(crewMember.trim) && (
@@ -68,16 +59,6 @@ export const CrewManifest = (props, context) => {
                         content="Captain"
                         position="bottom"
                       >
-=======
-                    collapsing>
-                    {positions[dept].exceptions.includes(crewMember.rank) && (
-                      <Tooltip content="No position limit" position="bottom">
-                        <Icon className="CrewManifest__Icon" name="infinity" />
-                      </Tooltip>
-                    )}
-                    {crewMember.rank === 'Captain' && (
-                      <Tooltip content="Captain" position="bottom">
->>>>>>> 731ab29aa73 (Adds Prettierx - or how I broke TGUI for the nth time (#67935))
                         <Icon
                           className={classes([
                             'CrewManifest__Icon',
@@ -87,16 +68,11 @@ export const CrewManifest = (props, context) => {
                         />
                       </Tooltip>
                     )}
-<<<<<<< HEAD
                     {commandJobs.includes(crewMember.trim) && (
                       <Tooltip
                         content="Member of command"
                         position="bottom"
                       >
-=======
-                    {commandJobs.includes(crewMember.rank) && (
-                      <Tooltip content="Member of command" position="bottom">
->>>>>>> 731ab29aa73 (Adds Prettierx - or how I broke TGUI for the nth time (#67935))
                         <Icon
                           className={classes([
                             'CrewManifest__Icon',

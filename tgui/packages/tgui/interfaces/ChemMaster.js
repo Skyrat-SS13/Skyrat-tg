@@ -225,7 +225,6 @@ const PackagingControlsItem = (props) => {
 
 const PackagingControls = (props, context) => {
   const { act, data } = useBackend(context);
-<<<<<<< HEAD
   const [
     pillAmount,
     setPillAmount,
@@ -252,20 +251,6 @@ const PackagingControls = (props, context) => {
     packAmount,
     setPackAmount,
   ] = useSharedState(context, 'packAmount', 1);
-=======
-  const [pillAmount, setPillAmount] = useSharedState(context, 'pillAmount', 1);
-  const [patchAmount, setPatchAmount] = useSharedState(
-    context,
-    'patchAmount',
-    1
-  );
-  const [bottleAmount, setBottleAmount] = useSharedState(
-    context,
-    'bottleAmount',
-    1
-  );
-  const [packAmount, setPackAmount] = useSharedState(context, 'packAmount', 1);
->>>>>>> 731ab29aa73 (Adds Prettierx - or how I broke TGUI for the nth time (#67935))
   const {
     condi,
     chosenPillStyle,

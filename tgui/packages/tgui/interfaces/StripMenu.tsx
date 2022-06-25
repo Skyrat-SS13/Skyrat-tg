@@ -57,7 +57,6 @@ const ALTERNATE_ACTIONS: Record<string, AlternateAction> = {
   },
 
   enable_internals: {
-<<<<<<< HEAD
     icon: "lungs", // SKYRAT EDIT - TGFONT IS FUCKED AND I DUNNO WHY SO HERE'S A BANDAID - original "tg-air-tank"
     text: "Enable internals",
   },
@@ -65,15 +64,6 @@ const ALTERNATE_ACTIONS: Record<string, AlternateAction> = {
   disable_internals: {
     icon: "lungs-virus", // SKYRAT EDIT - TGFONT IS FUCKED AND I DUNNO WHY SO HERE'S A BANDAID - original "tg-air-tank-slash"
     text: "Disable internals",
-=======
-    icon: 'tg-air-tank',
-    text: 'Enable internals',
-  },
-
-  disable_internals: {
-    icon: 'tg-air-tank-slash',
-    text: 'Disable internals',
->>>>>>> 731ab29aa73 (Adds Prettierx - or how I broke TGUI for the nth time (#67935))
   },
 
   adjust_jumpsuit: {

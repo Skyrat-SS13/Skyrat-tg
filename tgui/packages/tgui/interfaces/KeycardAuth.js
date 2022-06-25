@@ -5,14 +5,10 @@ import { Window } from '../layouts';
 export const KeycardAuth = (props, context) => {
   const { act, data } = useBackend(context);
   return (
-<<<<<<< HEAD
     // SKYRAT EDIT: height 125 -> 150, addition of permit-locked firing pin
     <Window
       width={375}
       height={150}>
-=======
-    <Window width={375} height={125}>
->>>>>>> 731ab29aa73 (Adds Prettierx - or how I broke TGUI for the nth time (#67935))
       <Window.Content>
         <Section>
           <Box>
@@ -54,7 +50,6 @@ export const KeycardAuth = (props, context) => {
                       icon="meteor"
                       fluid
                       onClick={() => act('bsa_unlock')}
-<<<<<<< HEAD
                       content="Bluespace Artillery Unlock" />
                     {!!data.permit_pins && (
                       <Button
@@ -63,10 +58,6 @@ export const KeycardAuth = (props, context) => {
                         onClick={() => act('pin_unrestrict')}
                         content="Permit-Locked Firing Pin Unrestriction" />
                     )}
-=======
-                      content="Bluespace Artillery Unlock"
-                    />
->>>>>>> 731ab29aa73 (Adds Prettierx - or how I broke TGUI for the nth time (#67935))
                   </>
                 )}
               </>

@@ -16,12 +16,7 @@ export const GENDERS = {
   },
 
   [Gender.Other]: {
-<<<<<<< HEAD
     icon: "question", // SKYRAT EDIT CHANGE - ORIGINAL: icon: "tg-non-binary"
     text: "Other",
-=======
-    icon: 'tg-non-binary',
-    text: 'Other',
->>>>>>> 731ab29aa73 (Adds Prettierx - or how I broke TGUI for the nth time (#67935))
   },
 };

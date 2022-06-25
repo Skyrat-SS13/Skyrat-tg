@@ -171,7 +171,6 @@ const ChoicesPanel = (props, context) => {
                       Vote
                     </Button>
                   }>
-<<<<<<< HEAD
                   {user.selectedChoice
                   && choice.name === user.selectedChoice && (
                     <Icon
@@ -182,18 +181,6 @@ const ChoicesPanel = (props, context) => {
                     />
                   )}
                   {user.isLowerAdmin ? `${choice.votes} Votes` : ""/* SKYRAT EDIT*/}
-=======
-                  {user.selectedChoice &&
-                    choice.name === user.selectedChoice && (
-                      <Icon
-                        alignSelf="right"
-                        mr={2}
-                        color="green"
-                        name="vote-yea"
-                      />
-                    )}
-                  {choice.votes} Votes
->>>>>>> 731ab29aa73 (Adds Prettierx - or how I broke TGUI for the nth time (#67935))
                 </LabeledList.Item>
                 <LabeledList.Divider />
               </Box>

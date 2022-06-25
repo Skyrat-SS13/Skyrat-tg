@@ -184,13 +184,9 @@ export class Changelog extends Component {
         </p>
         <p>
           {'Current project maintainers can be found '}
-<<<<<<< HEAD
           <a href="https://github.com/skyrat-ss13?tab=members">
             here
           </a>
-=======
-          <a href="https://github.com/tgstation?tab=members">here</a>
->>>>>>> 731ab29aa73 (Adds Prettierx - or how I broke TGUI for the nth time (#67935))
           {', recent GitHub contributors can be found '}
           <a href="https://github.com/Skyrat-SS13/Skyrat-tg/pulse/monthly">
             here
@@ -198,15 +194,10 @@ export class Changelog extends Component {
           .
         </p>
         <p>
-<<<<<<< HEAD
           {'You can also join our forums '}
           <a href="https://forum.skyrat13.tk/">
             here
           </a>.
-=======
-          {'You can also join our discord '}
-          <a href="https://tgstation13.org/phpBB/viewforum.php?f=60">here</a>.
->>>>>>> 731ab29aa73 (Adds Prettierx - or how I broke TGUI for the nth time (#67935))
         </p>
         {dateDropdown}
       </Section>

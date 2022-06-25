@@ -515,7 +515,6 @@ const ParametersSection = (props, context) => {
         <LabeledList.Item label="Occupant">
           {wearer_name}, {wearer_job}
         </LabeledList.Item>
-<<<<<<< HEAD
         <LabeledList.Item label="Onboard pAI" buttons={
           // SKYRAT EDIT START - pAIs in MODsuits
           (pAI && !ispAI) ? <Button
@@ -526,9 +525,6 @@ const ParametersSection = (props, context) => {
         } >
           {pAI || 'None'/* SKYRAT EDIT END */}
         </LabeledList.Item>
-=======
-        <LabeledList.Item label="Onboard AI">{AI || 'None'}</LabeledList.Item>
->>>>>>> 731ab29aa73 (Adds Prettierx - or how I broke TGUI for the nth time (#67935))
       </LabeledList>
     </Section>
   );

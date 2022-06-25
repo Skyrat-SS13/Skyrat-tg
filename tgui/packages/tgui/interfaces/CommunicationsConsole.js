@@ -446,7 +446,6 @@ const PageMain = (props, context) => {
       )}
 
       <Section title="Functions">
-<<<<<<< HEAD
         <Flex
           direction="column">
           {!!canMakeAnnouncement && <Button
@@ -465,35 +464,6 @@ const PageMain = (props, context) => {
             color={emergencyAccess ? "bad" : undefined}
             onClick={() => act("toggleEmergencyAccess")}
           />}
-=======
-        <Flex direction="column">
-          {!!canMakeAnnouncement && (
-            <Button
-              icon="bullhorn"
-              content="Make Priority Announcement"
-              onClick={() => act('makePriorityAnnouncement')}
-            />
-          )}
-
-          {!!aprilFools && !!canMakeAnnouncement && (
-            <Button
-              icon="bullhorn"
-              content="Call Emergency Meeting"
-              onClick={() => act('emergency_meeting')}
-            />
-          )}
-
-          {!!canToggleEmergencyAccess && (
-            <Button.Confirm
-              icon="id-card-o"
-              content={`${
-                emergencyAccess ? 'Disable' : 'Enable'
-              } Emergency Maintenance Access`}
-              color={emergencyAccess ? 'bad' : undefined}
-              onClick={() => act('toggleEmergencyAccess')}
-            />
-          )}
->>>>>>> 731ab29aa73 (Adds Prettierx - or how I broke TGUI for the nth time (#67935))
 
           {!syndicate && (
             <Button
@@ -540,7 +510,6 @@ const PageMain = (props, context) => {
             />
           )}
 
-<<<<<<< HEAD
           {(!!emagged && !syndicate) && <Button
             icon="undo"
             content="Restore Backup Routing Data"
@@ -572,15 +541,6 @@ const PageMain = (props, context) => {
           {
             // SKYRAT EDIT END
           }
-=======
-          {!!emagged && !syndicate && (
-            <Button
-              icon="undo"
-              content="Restore Backup Routing Data"
-              onClick={() => act('restoreBackupRoutingData')}
-            />
-          )}
->>>>>>> 731ab29aa73 (Adds Prettierx - or how I broke TGUI for the nth time (#67935))
         </Flex>
       </Section>
 

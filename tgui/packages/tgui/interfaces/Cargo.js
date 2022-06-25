@@ -64,7 +64,6 @@ export const CargoContent = (props, context) => {
           )}
         </Tabs>
       </Section>
-<<<<<<< HEAD
       {tab === 'catalog' && (
         <CargoCatalog />
       )}
@@ -80,12 +79,6 @@ export const CargoContent = (props, context) => {
       {tab === 'gun_window' && (
         tab === 'catalog'
       )}
-=======
-      {tab === 'catalog' && <CargoCatalog />}
-      {tab === 'requests' && <CargoRequests />}
-      {tab === 'cart' && <CargoCart />}
-      {tab === 'help' && <CargoHelp />}
->>>>>>> 731ab29aa73 (Adds Prettierx - or how I broke TGUI for the nth time (#67935))
     </Box>
   );
 };

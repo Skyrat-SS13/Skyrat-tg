@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { exhaustiveCheck } from "common/exhaustive";
 import { useBackend, useLocalState } from "../../backend";
 import { Stack, Dropdown, Flex } from "../../components";
@@ -14,20 +13,6 @@ import { QuirksPage } from "./QuirksPage";
 import { LanguagesPage } from "./LanguagesMenu";
 import { LimbsPage } from "./LimbsPage";
 // SKYRAT EDIT END
-=======
-import { exhaustiveCheck } from 'common/exhaustive';
-import { useBackend, useLocalState } from '../../backend';
-import { Button, Stack } from '../../components';
-import { Window } from '../../layouts';
-import { PreferencesMenuData } from './data';
-import { PageButton } from './PageButton';
-import { AntagsPage } from './AntagsPage';
-import { JobsPage } from './JobsPage';
-import { MainPage } from './MainPage';
-import { SpeciesPage } from './SpeciesPage';
-import { QuirksPage } from './QuirksPage';
-
->>>>>>> 731ab29aa73 (Adds Prettierx - or how I broke TGUI for the nth time (#67935))
 enum Page {
   Antags,
   Main,
@@ -41,18 +26,13 @@ enum Page {
 }
 
 const CharacterProfiles = (props: {
-<<<<<<< HEAD
   activeSlot: number; // SKYRAT EDIT CHANGE
-=======
-  activeSlot: number;
->>>>>>> 731ab29aa73 (Adds Prettierx - or how I broke TGUI for the nth time (#67935))
   onClick: (index: number) => void;
   profiles: (string | null)[];
 }) => {
   const { profiles, activeSlot, onClick } = props;
   // SKYRAT EDIT CHANGE
   return (
-<<<<<<< HEAD
     <Flex align="center" justify="center">
       <Flex.Item width="25%">
         <Dropdown
@@ -69,22 +49,6 @@ const CharacterProfiles = (props: {
         />
       </Flex.Item>
     </Flex>
-=======
-    <Stack justify="center" wrap>
-      {profiles.map((profile, slot) => (
-        <Stack.Item key={slot}>
-          <Button
-            selected={slot === props.activeSlot}
-            onClick={() => {
-              props.onClick(slot);
-            }}
-            fluid>
-            {profile ?? 'New Character'}
-          </Button>
-        </Stack.Item>
-      ))}
-    </Stack>
->>>>>>> 731ab29aa73 (Adds Prettierx - or how I broke TGUI for the nth time (#67935))
   );
 };
 

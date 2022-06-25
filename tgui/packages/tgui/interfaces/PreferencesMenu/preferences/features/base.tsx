@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import { sortBy, sortStrings } from "common/collections";
 import { BooleanLike, classes } from "common/react";
 import { ComponentType, createComponentVNode, InfernoNode } from "inferno";
@@ -9,16 +8,6 @@ import { Box, Button, Dropdown, NumberInput, Stack, TextArea, Input } from "../.
 // SKYRAT EDIT END
 import { createSetPreference, PreferencesMenuData } from "../../data";
 import { ServerPreferencesFetcher } from "../../ServerPreferencesFetcher";
-=======
-import { sortBy, sortStrings } from 'common/collections';
-import { BooleanLike, classes } from 'common/react';
-import { ComponentType, createComponentVNode, InfernoNode } from 'inferno';
-import { VNodeFlags } from 'inferno-vnode-flags';
-import { sendAct, useBackend, useLocalState } from '../../../../backend';
-import { Box, Button, Dropdown, NumberInput, Stack } from '../../../../components';
-import { createSetPreference, PreferencesMenuData } from '../../data';
-import { ServerPreferencesFetcher } from '../../ServerPreferencesFetcher';
->>>>>>> 731ab29aa73 (Adds Prettierx - or how I broke TGUI for the nth time (#67935))
 
 export const sortChoices = sortBy<[string, InfernoNode]>(([name]) => name);
 

@@ -7,19 +7,11 @@ import { Window } from '../layouts';
 
 const HEALTH_COLOR_BY_LEVEL = [
   '#17d568',
-<<<<<<< HEAD
   '#c4cf2d', // SKYRAT EDIT - Original'#2ecc71' - moved to make it visually different,
   '#e67e22',
   '#ed5100',
   '#e74c3c',
   '#801308', // SKYRAT EDIT - Original'#ed2814' - darker to help distinguish better,
-=======
-  '#c4cf2d',
-  '#e67e22',
-  '#ed5100',
-  '#e74c3c',
-  '#801308',
->>>>>>> 731ab29aa73 (Adds Prettierx - or how I broke TGUI for the nth time (#67935))
 ];
 // SKYRAT ADDITION  - Icon status list
 const HEALTH_ICON_BY_LEVEL = [
@@ -30,13 +22,8 @@ const HEALTH_ICON_BY_LEVEL = [
   'heartbeat',
   'skull',
 ];
-<<<<<<< HEAD
 // SKRAY ADDITION - END:
 const jobIsHead = jobId => jobId % 10 === 0;
-=======
-
-const jobIsHead = (jobId) => jobId % 10 === 0;
->>>>>>> 731ab29aa73 (Adds Prettierx - or how I broke TGUI for the nth time (#67935))
 
 const jobToColor = (jobId) => {
   if (jobId === 0) {
@@ -76,12 +63,8 @@ const healthToAttribute = (oxy, tox, burn, brute, attributeList) => {
   return attributeList[level];
 };
 
-<<<<<<< HEAD
 
 const HealthStat = props => {
-=======
-const HealthStat = (props) => {
->>>>>>> 731ab29aa73 (Adds Prettierx - or how I broke TGUI for the nth time (#67935))
   const { type, value } = props;
   return (
     <Box inline width={2} color={COLORS.damageType[type]} textAlign="center">
@@ -109,17 +92,12 @@ const CrewTable = (props, context) => {
   // SKYRAT EDIT START - Various adjustments to re-align columns
     <Table cellpadding="3" >{/* SKYRAT EDIT - gives a buffer to flush text*/}
       <Table.Row>
-<<<<<<< HEAD
         <Table.Cell bold colspan="2" > {/* SKYRAT EDIT - Expands the first column to account for robotic wrench*/}
           Name
         </Table.Cell>
         <Table.Cell bold collapsing textAlign="center"> {/* SKYRAT EDIT - Removal of false column and changes to alignment*/}
           Status
         </Table.Cell>
-=======
-        <Table.Cell bold>Name</Table.Cell>
-        <Table.Cell bold collapsing />
->>>>>>> 731ab29aa73 (Adds Prettierx - or how I broke TGUI for the nth time (#67935))
         <Table.Cell bold collapsing textAlign="center">
           Vitals
         </Table.Cell>
@@ -188,17 +166,12 @@ const CrewTableEntry = (props, context) => {
         ) : life_status ? (
           <Icon name="heart" color="#17d568" size={1} />
         ) : (
-<<<<<<< HEAD
           life_status ? (
             <Icon name="heart" color="#17d568" size={1} />
           ) : (
             <Icon name="skull" color="#B7410E" size={1} />
           ))}
         {/* SKYRAT EDIT END */}
-=======
-          <Icon name="skull" color="#801308" size={1} />
-        )}
->>>>>>> 731ab29aa73 (Adds Prettierx - or how I broke TGUI for the nth time (#67935))
       </Table.Cell>
       <Table.Cell collapsing textAlign="center">
         {oxydam !== undefined ? (
@@ -218,15 +191,7 @@ const CrewTableEntry = (props, context) => {
         )}
       </Table.Cell>
       <Table.Cell>
-<<<<<<< HEAD
         {area !== undefined ? area : <Icon name="question" color="#ffffff" size={1} /> } {/* SKYRAT EDIT - Icon from text 'N/A'*/}
-=======
-        {area !== undefined ? (
-          area
-        ) : (
-          <Icon name="question" color="#ffffff" size={1} />
-        )}
->>>>>>> 731ab29aa73 (Adds Prettierx - or how I broke TGUI for the nth time (#67935))
       </Table.Cell>
       {!!link_allowed && (
         <Table.Cell collapsing>

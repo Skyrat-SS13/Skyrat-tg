@@ -237,14 +237,10 @@ const ScannerGateOff = (props, context) => {
         />
         <Button
           content="Species"
-<<<<<<< HEAD
           onClick={() => act('set_mode', { new_mode: 'Species' })} />
         <Button //  SKYRAT EDIT START - MORE SCANNER GATE OPTIONS
           content="Gender"
           onClick={() => act('set_mode', { new_mode: 'Gender' })}//  SKYRAT EDIT END - MORE SCANNER GATE OPTIONS
-=======
-          onClick={() => act('set_mode', { new_mode: 'Species' })}
->>>>>>> 731ab29aa73 (Adds Prettierx - or how I broke TGUI for the nth time (#67935))
         />
         <Button
           content="Nutrition"
