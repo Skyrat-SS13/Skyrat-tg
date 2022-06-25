@@ -154,17 +154,9 @@
 			var/area/A = get_area(src)
 			sound_to_use.environment = A.sound_environment
 
-<<<<<<< HEAD
-		if(use_reverb && S.environment != SOUND_ENVIRONMENT_NONE) //We have reverb, reset our echo setting
-			//S.echo[3] = 0 //Room setting, 0 means normal reverb //ORIGINAL
-			//S.echo[4] = 0 //RoomHF setting, 0 means normal reverb. //ORIGINAL
-			S.echo[3] = -1300 //Room setting, 0 means normal reverb //SKYRAT EDIT CHANGE
-			S.echo[4] = -1300 //RoomHF setting, 0 means normal reverb. //SKYRAT EDIT CHANGE
-=======
 		if(use_reverb && sound_to_use.environment != SOUND_ENVIRONMENT_NONE) //We have reverb, reset our echo setting
-			sound_to_use.echo[3] = 0 //Room setting, 0 means normal reverb
-			sound_to_use.echo[4] = 0 //RoomHF setting, 0 means normal reverb.
->>>>>>> 8f0df7816ba ((code bounty) The tram is now unstoppably powerful. it cannot be stopped, it cannot be slowed, it cannot be reasoned with. YOU HAVE NO IDEA HOW READY YOU ARE (#66657))
+			sound_to_use.echo[3] = -1300 //Room setting, 0 means normal reverb //SKYRAT EDIT CHANGE
+			sound_to_use.echo[4] = -1300 //RoomHF setting, 0 means normal reverb. //SKYRAT EDIT CHANGE
 
 	SEND_SOUND(src, sound_to_use)
 
