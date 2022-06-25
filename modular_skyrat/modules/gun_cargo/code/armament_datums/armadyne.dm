@@ -38,8 +38,8 @@
 
 /datum/armament_entry/cargo_gun/armadyne/shotgun/as2
 	item_type = /obj/item/gun/ballistic/shotgun/automatic/as2
-	lower_cost = CARGO_CRATE_VALUE * 7
-	upper_cost = CARGO_CRATE_VALUE * 8
+	lower_cost = CARGO_CRATE_VALUE * 10
+	upper_cost = CARGO_CRATE_VALUE * 12
 
 /datum/armament_entry/cargo_gun/armadyne/smg
 	subcategory = ARMAMENT_SUBCATEGORY_SUBMACHINEGUN

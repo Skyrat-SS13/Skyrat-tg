@@ -5,7 +5,11 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/engineering.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/engineering.dmi'
 
-// Add a /obj/item/clothing/under/rank/engineering/chief_engineer/skyrat or /obj/item/clothing/under/rank/engineering/atmospheric_technician/skyrat if you add uniforms for either
+/obj/item/clothing/under/rank/engineering/chief_engineer/skyrat
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/engineering.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/engineering.dmi'
+
+// Add a /obj/item/clothing/under/rank/engineering/atmospheric_technician/skyrat if you add uniforms for it
 
 /*
 *	ENGINEER
@@ -37,3 +41,13 @@
 	icon_state = "hazard_white"
 	inhand_icon_state = "suit-white"
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 10, FIRE = 10, ACID = 50) // Worse stats than the proper chem-hazard uniform
+
+/*
+*	CHIEF ENGINEER
+*/
+
+/obj/item/clothing/under/rank/engineering/chief_engineer/skyrat/imperial
+	desc = "A gray naval suit with a lead-lined vest and a rank badge denoting the Officer of the Internal Engineering Division. Doesn't come with a death machine building guide."
+	name = "chief engineer's naval jumpsuit"
+	icon_state = "impce"
+	inhand_icon_state = "gy_suit"

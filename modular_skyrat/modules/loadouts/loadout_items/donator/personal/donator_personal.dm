@@ -123,6 +123,11 @@
 	item_path = /obj/item/clothing/under/plasmaman/candlejax
 	ckeywhitelist = list("candlejax")
 
+/datum/loadout_item/suit/jacket/cherno
+	name = "Blue-Silvered Coat"
+	item_path = /obj/item/clothing/suit/jacket/cherno
+	ckeywhitelist = list("cherno00")
+
 /datum/loadout_item/head/avipilot
 	name = "Smuggler's Flying Cap"
 	item_path = /obj/item/clothing/head/avipilot
@@ -155,7 +160,7 @@
 
 /datum/loadout_item/mask/kindle_mask
 	name = "Kindle's mask"
-	item_path = /obj/item/clothing/mask/kindle
+	item_path = /obj/item/clothing/mask/animal/kindle
 	ckeywhitelist = list("theooz")
 
 /datum/loadout_item/head/drake_skull
@@ -186,7 +191,7 @@
 
 /datum/loadout_item/under/jumpsuit/netra_dress
 	name = "Black and Silver Armored Dress"
-	item_path = /obj/item/clothing/under/rank/security/blueshield/netra
+	item_path = /obj/item/clothing/under/rank/blueshield/netra
 	ckeywhitelist = list("netrakyram")
 	restricted_roles = list(JOB_CAPTAIN, JOB_BLUESHIELD, JOB_HEAD_OF_SECURITY)
 
@@ -437,5 +442,48 @@
 	ckeywhitelist = list("konstyantyn")
 
 /datum/loadout_item/toys/plushe_winrow
-    name = "Dark and brooding lizard plushie"
+    name = "Dark and Brooding Lizard Plushie"
     item_path = /obj/item/toy/plush/donator/plushie_winrow
+
+/datum/loadout_item/head/recruiter_cap
+	name = "Recruiter's Cap"
+	item_path = /obj/item/clothing/head/recruiter_cap
+	ckeywhitelist = list("m97screwsyourparents")
+
+/datum/loadout_item/suit/recruiter_jacket
+	name = "Recruiter's Jacket"
+	item_path = /obj/item/clothing/suit/toggle/recruiter_jacket
+	ckeywhitelist = list("m97screwsyourparents")
+
+/datum/loadout_item/under/jumpsuit/recruiter_uniform
+	name = "Recruiter's Uniform"
+	item_path = /obj/item/clothing/under/recruiter_uniform
+	ckeywhitelist = list("m97screwsyourparents")
+
+/datum/loadout_item/pocket_items/hypno_watch
+	name = "Pocket Watch"
+	item_path = /obj/item/clothing/accessory/hypno_watch
+	ckeywhitelist = list("slippyjoe")
+
+/datum/loadout_item/under/jumpsuit/nt_idol
+	name = "NT Idol's Skirt"
+	item_path = /obj/item/clothing/under/nt_idol_skirt
+	ckeywhitelist = list("tetrako")
+	restricted_roles = list(JOB_NT_REP)
+
+/datum/loadout_item/toys/CFBonnie
+	name = "Chunko Fop: Blue Bunny Plushie"
+	item_path = /obj/item/toy/plush/chunko/bonnie
+	donator_only = TRUE
+
+/datum/loadout_item/toys/CFAndrew
+	name = "Chunko Fop: Green Bunny Plushie"
+	item_path = /obj/item/toy/plush/chunko/andrew
+	donator_only = TRUE
+
+/datum/loadout_item/toys/CFInessa
+	name = "Chunko Fop: Medical Bear Plushie"
+	item_path = /obj/item/toy/plush/chunko/inessa
+	donator_only = TRUE
+
+//Chunko Fops were donated by SlippyJoe, who requested they are usable by everyone

@@ -1,3 +1,7 @@
+/datum/outfit/ert
+	name = "Default ERT outfit"
+
+
 /datum/outfit/ert/weedkiller
 	name = "Fumigator"
 	id = /obj/item/card/id/advanced/centcom/ert

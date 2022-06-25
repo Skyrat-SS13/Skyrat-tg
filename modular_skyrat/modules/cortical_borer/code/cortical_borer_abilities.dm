@@ -383,7 +383,7 @@
 		var/mob/living/carbon/carbontarget = cortical_owner.human_host
 
 		// Ear status
-		var/obj/item/organ/ears/ears = carbontarget.getorganslot(ORGAN_SLOT_EARS)
+		var/obj/item/organ/internal/ears/ears = carbontarget.getorganslot(ORGAN_SLOT_EARS)
 		if(istype(ears))
 			if(HAS_TRAIT_FROM(carbontarget, TRAIT_DEAF, GENETIC_MUTATION))
 				render_list = "<span class='alert ml-2'>Subject is genetically deaf.\n</span>"
@@ -398,7 +398,7 @@
 					render_list += "<span class='alert ml-2'>Subject is [ears.damage > ears.maxHealth ? "permanently ": "temporarily "] deaf.\n</span>"
 
 		// Eye status
-		var/obj/item/organ/eyes/eyes = carbontarget.getorganslot(ORGAN_SLOT_EYES)
+		var/obj/item/organ/internal/eyes/eyes = carbontarget.getorganslot(ORGAN_SLOT_EYES)
 		if(istype(eyes))
 			if(carbontarget.is_blind())
 				render_list += "<span class='alert ml-2'>Subject is blind.\n</span>"
@@ -551,7 +551,7 @@
 	if(iscarbon(cortical_owner.human_host))
 		var/mob/living/carbon/carbontarget = cortical_owner.human_host
 		var/cyberimp_detect
-		for(var/obj/item/organ/cyberimp/CI in carbontarget.internal_organs)
+		for(var/obj/item/organ/internal/cyberimp/CI in carbontarget.internal_organs)
 			if(CI.status == ORGAN_ROBOTIC && !CI.syndicate_implant)
 				cyberimp_detect += "[!cyberimp_detect ? "[CI.get_examine_string(cortical_owner)]" : ", [CI.get_examine_string(cortical_owner)]"]"
 		if(cyberimp_detect)
@@ -573,7 +573,7 @@
 			render_list += "<span class='notice ml-1'>Subject contains no reagents in their blood.</span>\n"
 
 		// Stomach reagents
-		var/obj/item/organ/stomach/belly = cortical_owner.human_host.getorganslot(ORGAN_SLOT_STOMACH)
+		var/obj/item/organ/internal/stomach/belly = cortical_owner.human_host.getorganslot(ORGAN_SLOT_STOMACH)
 		if(belly)
 			if(belly.reagents.reagent_list.len)
 				render_list += "<span class='notice ml-1'>Subject contains the following reagents in their stomach:</span>\n"
@@ -643,6 +643,7 @@
 		cortical_owner.human_host.log_message(logging_text, LOG_GAME)
 		if(borer_organ)
 			borer_organ.Remove(cortical_owner.human_host)
+		cortical_owner.forceMove(human_turfone)
 		cortical_owner.human_host = null
 		StartCooldown()
 		return

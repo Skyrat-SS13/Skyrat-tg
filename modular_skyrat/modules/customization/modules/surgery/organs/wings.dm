@@ -5,6 +5,7 @@
 	slot = ORGAN_SLOT_WINGS
 	mutantpart_key = "wings"
 	mutantpart_info = list(MUTANT_INDEX_NAME = "Bat", MUTANT_INDEX_COLOR_LIST = list("#335533"))
+	color_source = ORGAN_COLOR_OVERRIDE
 	///Whether the wings should grant flight on insertion.
 	var/unconditional_flight
 	///What species get flights thanks to those wings. Important for moth wings
@@ -16,7 +17,16 @@
 	///Whether the owner of wings has flight thanks to the wings
 	var/granted_flight
 
+/obj/item/organ/external/wings/get_global_feature_list()
+	return GLOB.sprite_accessories["wings"]
+
 //TODO: Well you know what this flight stuff is a bit complicated and hardcoded, this is enough for now
+
+/obj/item/organ/external/wings/override_color(rgb_value)
+	if(mutantpart_key)
+		return mutantpart_info[MUTANT_INDEX_COLOR_LIST][1]
+
+	return rgb_value
 
 /obj/item/organ/external/wings/moth
 	name = "moth wings"

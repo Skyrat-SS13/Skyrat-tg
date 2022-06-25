@@ -128,6 +128,15 @@
 					/obj/item/clothing/suit/armor/vest/alt,
 					/obj/item/clothing/suit/armor/vest/alt)
 	crate_name = "armor crate"
+	
+/datum/supply_pack/security/helmets
+	name = "Helmets Crate"
+	desc = "Contains three standard-issue brain buckets. Requires Security access to open."
+	cost = CARGO_CRATE_VALUE * 2
+	contains = list(/obj/item/clothing/head/helmet/sec/redsec,
+					/obj/item/clothing/head/helmet/sec/redsec,
+					/obj/item/clothing/head/helmet/sec/redsec)
+	crate_name = "helmet crate"
 
 /datum/supply_pack/security/deployablebarricades
 	name = "C.U.C.K.S Deployable Barricades"
@@ -208,6 +217,15 @@
 					/obj/item/inducer)
 	crate_name = "engineering inducer crate"
 	crate_type = /obj/structure/closet/crate/engineering/electrical
+
+/datum/supply_pack/engineering/gas_miner
+	name = "Gas Miner Delivery Beacon Crate"
+	desc = "Contains a single gas miner delivery beacon, for the ordering of one gas miner."
+	access = ACCESS_ATMOSPHERICS
+	contains = list(/obj/item/gas_miner_beacon)
+	cost = CARGO_CRATE_VALUE * 50
+	crate_name = "gas miner delivery beacon crate"
+	crate_type = /obj/structure/closet/crate/secure/engineering
 
 /*
 *	MISC

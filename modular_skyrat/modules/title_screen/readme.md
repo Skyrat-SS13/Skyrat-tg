@@ -18,15 +18,20 @@ We offer the option to customise the lobby HTML by giving you access to a file n
 DO NOT UNDER ANY CIRCUMSTANCES RENAME THE ELEMENTS WITHIN THE HTML FILE, KEEP THEM AS THEY ARE.
 
 Elements:
-.container_nav - This is the main menu container box, it defines where the menu is, and what it looks like.
+.bg - the background image
 .container_terminal - This is the startup terminal html, generally, don't change this unless you want a cooler startup terminal.
+.terminal_text - Terminal text
+.container_progress - This is the container for the progress bar. Changing this likely involves changing the .container_terminal.
+.progress_bar - The moving part of the progress bar. Must start at 0% width; the body script updates the width live.
+.fade_out - Generic class that fades content out. Currently applied to .container_progress when the progress bar overruns 100%.
+.container_nav - This is the main menu container box, it defines where the menu is, and what it looks like.
+.menu_button - The "buttons" for the main menu(join, observe, etc).
+.menu_button:hover - The animation for hovering over buttons.
+.menu_newpoll - This is the new polls text, so players attention is brought to it, flashes in and out with @ pollsmove animation.
 .container_notice - This is the admin notice container for when an admin sets the title notice. This button is under fun in the admin tab.
-.menu_a - The "buttons" for the main menu(join, observe, etc).
-.menu_a:hover - The animation for hovering over buttons.
-.menu_ab - This is the new polls text, so players attention is brought to it, flashes in and out with @ pollsmove animation.
-.menu_b - Terminal text
-.menu_c - Admin notice text.
-
+.menu_notice - Admin notice text.
+.unchecked - Unchecked ☒ box.
+.checked - Checked ☑ box.
 REMEMBER, DO NOT EDIT THESE ELEMENT NAMES ELSE THE LOBBYSCREEN WILL BREAK.
 
 ## Credits:

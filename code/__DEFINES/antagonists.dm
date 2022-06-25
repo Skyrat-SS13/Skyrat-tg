@@ -196,6 +196,9 @@ GLOBAL_LIST_INIT(ai_employers, list(
 /// Checks if the given mob is a nuclear operative
 #define IS_NUKE_OP(mob) (mob?.mind?.has_antag_datum(/datum/antagonist/nukeop))
 
+//Tells whether or not someone is a space ninja
+#define IS_SPACE_NINJA(mob) (mob?.mind?.has_antag_datum(/datum/antagonist/ninja))
+
 /// Checks if the given mob is a heretic.
 #define IS_HERETIC(mob) (mob.mind?.has_antag_datum(/datum/antagonist/heretic))
 /// Check if the given mob is a heretic monster.
@@ -230,7 +233,7 @@ GLOBAL_LIST_INIT(ai_employers, list(
 // Progression traitor defines
 
 /// How many telecrystals a normal traitor starts with
-#define TELECRYSTALS_DEFAULT 35 //SKYRAT EDIT CHANGE
+#define TELECRYSTALS_DEFAULT 20
 /// How many telecrystals mapper/admin only "precharged" uplink implant
 #define TELECRYSTALS_PRELOADED_IMPLANT 10
 /// The normal cost of an uplink implant; used for calcuating how many
@@ -249,3 +252,10 @@ GLOBAL_LIST_INIT(ai_employers, list(
 #define OBJECTIVE_STATE_FAILED 4
 /// If the objective is no longer valid
 #define OBJECTIVE_STATE_INVALID 5
+
+/// Weights for traitor objective categories
+#define OBJECTIVE_WEIGHT_TINY    5
+#define OBJECTIVE_WEIGHT_SMALL 	 7
+#define OBJECTIVE_WEIGHT_DEFAULT 10
+#define OBJECTIVE_WEIGHT_BIG	 15
+#define OBJECTIVE_WEIGHT_HUGE	 20

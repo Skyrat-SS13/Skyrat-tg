@@ -32,7 +32,7 @@
 	new /obj/item/clothing/shoes/combat(src)
 
 /obj/item/autosurgeon/organ/syndicate/hackerman
-	starting_organ = /obj/item/organ/cyberimp/arm/hacker
+	starting_organ = /obj/item/organ/internal/cyberimp/arm/hacker
 
 /obj/item/storage/box/syndie_kit/insurgent
 	name = "syndicate insurgent bundle"

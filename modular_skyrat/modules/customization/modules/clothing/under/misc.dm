@@ -255,17 +255,6 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "checkered"
 
-/obj/item/clothing/under/rank/captain/humble
-	desc = "It's a blue jumpsuit with some small gold markings denoting the rank of \"Captain\", more humble than it's sister."
-	name = "captain's humble jumpsuit"
-	icon_state = "captainhumble"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	inhand_icon_state = "b_suit"
-	sensor_mode = SENSOR_COORDS
-	random_sensor = FALSE
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 0, ACID = 0, WOUND = 15)
-
 /obj/item/clothing/under/uvf
 	name = "british combat sweater"
 	desc = "Thankfully doesn't include the sash your father wore."
@@ -315,14 +304,6 @@
 	body_parts_covered = GROIN
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 
-/obj/item/clothing/under/misc/evilcargo
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	name = "black cargo uniform"
-	desc = "Yep, here’s your problem. Someone set this thing to evil."
-	icon_state = "qmsynd"
-	can_adjust = FALSE
-
 /obj/item/clothing/under/rank/medical/doctor/white
 	name = "white scrubs"
 	desc = "It's made of a special fiber that provides minor protection against biohazards. This one is in a cream white colour."
@@ -370,73 +351,10 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "workpants_red"
 
-/obj/item/clothing/under/rank/captain/imperial
-	desc = "A white jumpsuit adorned with golden epaulets and a rank badge denoting a Captain. There are two ways to destroy a person, kill him, or ruin his reputation."
-	name = "captain's naval jumpsuit"
-	icon_state = "impcap"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-
-/obj/item/clothing/under/rank/civilian/head_of_personnel/imperial
-	desc = "A olive green navel suit and a rank badge denoting the Personnel Officer. Target, maximum firepower."
+/obj/item/clothing/under/rank/civilian/head_of_personnel/imperial //Rank pins of the Grand Moff //MOVE TO SERVICE.DM AFTER ITS PR'D AND MERGED
+	desc = "A pale green naval suit and a rank badge denoting the Personnel Officer. Target, maximum firepower."
 	name = "head of personnel's naval jumpsuit"
 	icon_state = "imphop"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-
-/obj/item/clothing/under/rank/security/head_of_security/imperial
-	desc = "A tar black navel jumpsuit and a rank badge denoting the Officer of The Internal Security Division. Be careful your underlings don't bump their head on a door."
-	name = "head of security's naval jumpsuit"
-	icon_state = "imphos"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-
-/obj/item/clothing/under/rank/rnd/research_director/imperial
-	desc = "A grey, sterile jumpsuit with a rank badge denoting the Officer of the Internal Science Division. It's a peaceful life."
-	name = "research director's naval jumpsuit"
-	icon_state = "imprd"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-
-/obj/item/clothing/under/rank/engineering/chief_engineer/imperial
-	desc = "A black, lead lined jumpsuit with a rank badge denoting the Officer of the Internal Engineering Division. Doesn't come with a death machine building guide."
-	name = "chief engineer's naval jumpsuit"
-	icon_state = "impce"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-
-/obj/item/clothing/under/rank/medical/chief_medical_officer/imperial
-	desc = "A teal, sterile jumpsuit with a rank badge denoting the Officer of the Medical Corps. Doesn't protect against blaster fire."
-	name = "chief medical officer's naval jumpsuit"
-	icon_state = "impcmo"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-
-/obj/item/clothing/under/imperial
-	desc = "A light grey jumpsuit with a rank badge denoting an Officer. Doesn't protect against blaster fire."
-	name = "light grey officer's naval jumpsuit"
-	icon_state = "impcom"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-
-/obj/item/clothing/under/imperial/grey
-	desc = "A grey jumpsuit with a rank badge denoting an Officer. Doesn't protect against blaster fire."
-	name = "grey officer's naval jumpsuit"
-	icon_state = "impcommand"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-
-/obj/item/clothing/under/imperial/grey/trouser
-	desc = "A grey jumpsuit with a rank badge denoting an Officer. This one has grey trousers."
-	name = "grey officer's naval jumpsuit"
-	icon_state = "admiral_uniform"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-
-/obj/item/clothing/under/imperial/red
-	desc = "A red jumpsuit with a rank badge denoting an Officer. Doesn't protect against blaster fire."
-	name = "red officer's naval jumpsuit"
-	icon_state = "impred_uniform"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 
@@ -446,7 +364,6 @@
 	icon_state = "detective_skirty"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-
 
 /obj/item/clothing/under/rank/civilian/lawyer/black/skirtybaby
 	desc = "A white shirt with a dark pancilskirt."
@@ -502,14 +419,6 @@
 /obj/item/clothing/under/rank/civilian/head_of_personnel/parade/female
 	name = "head of personnel's female formal uniform"
 	icon_state = "hop_parade_female"
-
-/obj/item/clothing/under/rank/captain/kilt
-	desc = "Not a skirt, it is, however, armoured and decorated with a tartan sash."
-	name = "captain's kilt"
-	icon_state = "capkilt"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	inhand_icon_state = "kilt"
 
 /obj/item/clothing/under/suit/helltaker
 	name = "red shirt with white pants"
@@ -591,10 +500,3 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "black_suit_fem"
-
-/obj/item/clothing/under/rank/captain/black
-	name = "captains black suit"
-	desc = "A very sleek naval captains uniform for those who think they're commanding a battleship."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "captainblacksuit"

@@ -9,12 +9,15 @@
 		EYECOLOR,
 		LIPS,
 		HAS_FLESH,
-		HAS_BONE
+		HAS_BONE,
+		HAIR,
+		FACEHAIR
 	)
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_CAN_STRIP,
 		TRAIT_CAN_USE_FLIGHT_POTION,
+		TRAIT_LITERATE,
 	)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	mutant_bodyparts = list()
@@ -22,8 +25,10 @@
 		"tail" = "Xenomorph Tail",
 		"xenodorsal" = ACC_RANDOM,
 		"xenohead" = ACC_RANDOM,
+		"legs" = "Digitigrade Legs",
 		"taur" = "None"
 	)
+	external_organs = list()
 	attack_verb = "slash"
 	attack_effect = ATTACK_EFFECT_CLAW
 	attack_sound = 'sound/weapons/slash.ogg'
@@ -38,9 +43,12 @@
 		BODY_ZONE_CHEST = /obj/item/bodypart/chest/mutant/xenohybrid,
 		BODY_ZONE_L_ARM = /obj/item/bodypart/l_arm/mutant/xenohybrid,
 		BODY_ZONE_R_ARM = /obj/item/bodypart/r_arm/mutant/xenohybrid,
-		BODY_ZONE_L_LEG = /obj/item/bodypart/l_leg/mutant/xenohybrid,
-		BODY_ZONE_R_LEG = /obj/item/bodypart/r_leg/mutant/xenohybrid,
+		BODY_ZONE_L_LEG = /obj/item/bodypart/l_leg/digitigrade/xenohybrid,
+		BODY_ZONE_R_LEG = /obj/item/bodypart/r_leg/digitigrade/xenohybrid,
 	)
+
+	meat = /obj/item/food/meat/slab/xeno
+	skinned_type = /obj/item/stack/sheet/animalhide/xeno
 
 /datum/species/xeno/get_species_description()
 	return placeholder_description

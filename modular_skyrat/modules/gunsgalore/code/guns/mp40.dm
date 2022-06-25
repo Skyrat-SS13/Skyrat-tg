@@ -11,7 +11,7 @@
 	slot_flags = ITEM_SLOT_BELT | ITEM_SLOT_BACK
 	mag_type = /obj/item/ammo_box/magazine/mp40
 	can_suppress = FALSE
-	burst_size = 3
+	burst_size = 1
 	fire_delay = 1.7
 	fire_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/fire/mp40_fire.ogg'
 	fire_sound_volume = 100
@@ -21,6 +21,7 @@
 	eject_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/smg_magout.ogg'
 	alt_icons = TRUE
 	realistic = TRUE
+	fire_select_modes = list(SELECT_SEMI_AUTOMATIC, SELECT_FULLY_AUTOMATIC)
 	company_flag = COMPANY_OLDARMS
 
 /obj/item/ammo_box/magazine/mp40

@@ -406,8 +406,7 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 	var/image/I = image('icons/mob/talk.dmi', src, "[bubble_type][say_test(message)]", FLY_LAYER)
 	I.plane = ABOVE_GAME_PLANE
 	I.appearance_flags = APPEARANCE_UI_IGNORE_ALPHA
-	//INVOKE_ASYNC(GLOBAL_PROC, /.proc/flick_overlay, I, speech_bubble_recipients, 30) - ORIGINAL
-	INVOKE_ASYNC(GLOBAL_PROC, /.proc/animate_speechbubble, I, speech_bubble_recipients, 30) //SKYRAT EDIT CHANGE - TYPING_INDICATOR
+	INVOKE_ASYNC(GLOBAL_PROC, /.proc/flick_overlay, I, speech_bubble_recipients, 30)
 
 /mob/proc/binarycheck()
 	return FALSE
@@ -452,6 +451,11 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 	return message
 
 /mob/living/proc/radio(message, list/message_mods = list(), list/spans, language)
+	//SKYRAT EDIT ADDITION BEGIN
+	if((message_mods[MODE_HEADSET] || message_mods[RADIO_EXTENSION]) && !(mobility_flags & MOBILITY_USE) && !isAI(src)) // If can't use items, you can't press the button
+		to_chat(src, span_warning("You can't use the radio right now as you can't reach the button!"))
+		return ITALICS | REDUCE_RANGE
+	//SKYRAT EDIT END
 	var/obj/item/implant/radio/imp = locate() in src
 	if(imp?.radio.is_on())
 		if(message_mods[MODE_HEADSET])

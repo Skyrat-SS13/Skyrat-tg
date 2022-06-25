@@ -16,7 +16,7 @@
 	area.lightswitch = FALSE
 	area.update_icon()
 
-	for(var/obj/machinery/light_switch/L in area)
-		L.update_icon()
+	for(var/obj/machinery/light_switch/light_switch in area)
+		light_switch.update_icon()
 
 	area.power_change()

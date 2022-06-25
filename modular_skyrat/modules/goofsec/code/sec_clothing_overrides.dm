@@ -106,6 +106,8 @@
 	)
 	component_type = /datum/component/storage/concrete/security
 
+/obj/item/storage/belt/security/webbing
+	uses_advanced_reskins = FALSE
 
 ///Enables you to quickdraw weapons from security holsters
 /datum/component/storage/concrete/security/open_storage(mob/user)
@@ -201,12 +203,6 @@
 			flags_inv ^= visor_flags_inv
 			flags_cover ^= visor_flags_cover
 			icon_state = "[initial(icon_state)][up ? "up" : ""]"
-			//Functionally our only change; checks if the attached light is on or off
-			if(attached_light)
-				if(attached_light.on)
-					icon_state += "-flight-on" //"security_helmet-flight-on" // "security_helmetup-flight-on"
-				else
-					icon_state += "-flight" //etc.
 			//End of our only change
 			to_chat(user, span_notice("[up ? alt_toggle_message : toggle_message] \the [src]."))
 
@@ -214,12 +210,6 @@
 			if(iscarbon(user))
 				var/mob/living/carbon/C = user
 				C.head_update(src, forced = 1)
-
-/obj/item/clothing/head/helmet/sec/update_icon_state()
-	. = ..()
-	if(attached_light)
-		//This compresses it down nicely. End result is Initial(is the visor toggled)-(is the flashlight on)
-		icon_state = "[initial(icon_state)][up ? "up" : ""][attached_light.on ? "-flight-on" : "-flight"]"
 
 //Bulletproof Helmet
 /obj/item/clothing/head/helmet/alt

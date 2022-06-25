@@ -99,18 +99,35 @@
 	build_path = /obj/item/ammo_casing/c10mm/rubber
 	category = list("initial", "Security")
 
-/datum/design/shotgun_slug
-	name = "Shotgun Slug"
-	id = "shotgun_slug"
+// Peacekeeper Rounds
+/datum/design/b9mm
+	name = "Ammo Box (9x19mm Peacekeeper FMJ)"
+	id = "b9mm"
 	build_type = AUTOLATHE
-	materials = list(/datum/material/iron = 6000)
-	build_path = /obj/item/ammo_casing/shotgun
+	materials = list(/datum/material/iron = 30000)
+	build_path = /obj/item/ammo_box/advanced/b9mm
 	category = list("hacked", "Security")
 
-/datum/design/buckshot_shell
-	name = "Buckshot Shell"
-	id = "buckshot_shell"
+/datum/design/b9mm_rubber
+	name = "9x19mm Peacekeeper rubber bullet"
+	id = "b9mm_rubber"
 	build_type = AUTOLATHE
-	materials = list(/datum/material/iron = 4000)
-	build_path = /obj/item/ammo_casing/shotgun/buckshot
+	materials = list(/datum/material/iron = 1000)
+	build_path = /obj/item/ammo_casing/b9mm/rubber
+	category = list("hacked", "Security")
+
+/datum/design/b10mm
+	name = "Ammo Box (10mm Auto)"
+	id = "b10mm"
+	build_type = AUTOLATHE
+	materials = list(/datum/material/iron = 30000)
+	build_path = /obj/item/ammo_box/advanced/b10mm
+	category = list("hacked", "Security")
+
+/datum/design/b10mm_rubber
+	name = "10mm Auto rubber bullet"
+	id = "b10mm_rubber"
+	build_type = AUTOLATHE
+	materials = list(/datum/material/iron = 1000)
+	build_path = /obj/item/ammo_casing/b10mm/rubber
 	category = list("hacked", "Security")

@@ -49,8 +49,6 @@
 	desc = "A katana that can be imbued with a reagent. It's very sharp, but not quite million-times-folded sharp."
 	force = 15
 	armour_penetration = 25 //Slices through armour like butter, but can't quite bisect a knight like the real thing.
-	wound_bonus = 20
-	bare_wound_bonus = 40
 	icon_state = "katana"
 	inhand_icon_state = "katana"
 	hitsound = 'sound/weapons/bladeslice.ogg'

@@ -19,7 +19,8 @@
 		)
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,
-		TRAIT_CAN_STRIP
+		TRAIT_CAN_STRIP,
+		TRAIT_LITERATE,
 	)
 	default_mutant_bodyparts = list(
 		"tail" = ACC_RANDOM,

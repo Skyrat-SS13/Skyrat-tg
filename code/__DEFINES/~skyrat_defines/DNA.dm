@@ -60,7 +60,31 @@
 #define SHEATH_SLIT	"Slit"
 #define SHEATH_MODES list(SHEATH_NONE, SHEATH_NORMAL, SHEATH_SLIT)
 
-#define MANDATORY_FEATURE_LIST list("mcolor" = "#FFFFBB","mcolor2" = "#FFFFBB","mcolor3" = "#FFFFBB","ethcolor" = "#FFCCCC","skin_color" = "#FFEEDD","flavor_text" = "","breasts_size" = 1,"breasts_lactation" = FALSE,"penis_size" = 13,"penis_girth" = 9,"penis_taur_mode" = TRUE,"penis_sheath" = SHEATH_NONE ,"balls_size" = 1, "body_size" = BODY_SIZE_NORMAL, "custom_species" = null, penis_uses_skintones = TRUE, penis_uses_skincolor = TRUE, testicles_uses_skintones = TRUE, testicles_uses_skincolor = TRUE, vagina_uses_skintones = TRUE, vagina_uses_skincolor = TRUE, breasts_uses_skintones = TRUE, breasts_uses_skincolor = TRUE)
+#define MANDATORY_FEATURE_LIST list(\
+	"mcolor" = "#FFFFBB",\
+	"mcolor2" = "#FFFFBB",\
+	"mcolor3" = "#FFFFBB",\
+	"ethcolor" = "#FFCCCC",\
+	"skin_color" = "#FFEEDD",\
+	"flavor_text" = "",\
+	"breasts_size" = 1,\
+	"breasts_lactation" = FALSE,\
+	"penis_size" = 13,\
+	"penis_girth" = 9,\
+	"penis_taur_mode" = TRUE,\
+	"penis_sheath" = SHEATH_NONE,\
+	"balls_size" = 1,\
+	"body_size" = BODY_SIZE_NORMAL,\
+	"custom_species" = null,\
+	"penis_uses_skintones" = TRUE,\
+	"penis_uses_skincolor" = TRUE,\
+	"testicles_uses_skintones" = TRUE,\
+	"testicles_uses_skincolor" = TRUE,\
+	"vagina_uses_skintones" = TRUE,\
+	"vagina_uses_skincolor" = TRUE,\
+	"breasts_uses_skintones" = TRUE,\
+	"breasts_uses_skincolor" = TRUE,\
+)
 
 #define AROUSAL_CANT 0
 #define AROUSAL_NONE 1
@@ -84,6 +108,7 @@
 #define SPECIES_TAJARAN "tajaran"
 #define SPECIES_UNATHI "unathi"
 #define SPECIES_VOX "vox"
+#define SPECIES_VOX_PRIMALIS "vox_primalis"
 #define SPECIES_VULP "vulpkanin"
 #define SPECIES_XENO "xeno"
 #define SPECIES_GHOUL "ghoul"

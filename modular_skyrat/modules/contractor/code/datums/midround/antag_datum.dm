@@ -38,7 +38,7 @@
 	var/objectives_complete = TRUE
 	if(length(objectives))
 		report += printobjectives(objectives)
-		for(var/datum/objective/objective in objectives)
+		for(var/datum/objective/objective as anything in objectives)
 			if(!objective.check_completion())
 				objectives_complete = FALSE
 				break
