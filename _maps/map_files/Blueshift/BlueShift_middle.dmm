@@ -4198,9 +4198,6 @@
 /area/station/common/wrestling/arena)
 "aVs" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/medical/glass{
-	name = "Hydroponics"
-	},
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
 	dir = 4
 	},
@@ -4212,6 +4209,9 @@
 	},
 /obj/effect/landmark/navigate_destination,
 /obj/effect/mapping_helpers/airlock/access/all/service/hydroponics,
+/obj/machinery/door/airlock/hydroponics/glass{
+	name = "Hydroponics"
+	},
 /turf/open/floor/iron/dark,
 /area/station/service/hydroponics)
 "aVu" = (
@@ -34819,9 +34819,6 @@
 /turf/open/floor/iron/dark,
 /area/station/security/brig)
 "liK" = (
-/obj/machinery/door/airlock/medical/glass{
-	name = "Hydroponics"
-	},
 /obj/machinery/door/firedoor,
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
@@ -34831,6 +34828,9 @@
 	dir = 4
 	},
 /obj/effect/mapping_helpers/airlock/access/all/service/hydroponics,
+/obj/machinery/door/airlock/hydroponics{
+	name = "Hydroponics Backroom"
+	},
 /turf/open/floor/iron,
 /area/station/service/hydroponics)
 "liM" = (
@@ -45339,7 +45339,7 @@
 /obj/machinery/door/window/left{
 	dir = 4;
 	name = "Hydroponics Desk";
-	req_access = list("hydroponics","kitchen")
+	req_access = list("hydroponics")
 	},
 /obj/item/folder,
 /obj/item/food/grown/apple,
@@ -52684,9 +52684,6 @@
 /turf/open/floor/iron/dark,
 /area/station/security/processing)
 "rod" = (
-/obj/machinery/door/airlock{
-	name = "Hydroponics Test Lab"
-	},
 /obj/machinery/door/firedoor,
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
@@ -52702,6 +52699,9 @@
 	dir = 4
 	},
 /obj/effect/mapping_helpers/airlock/access/all/service/hydroponics,
+/obj/machinery/door/airlock/hydroponics{
+	name = "Hydroponics Test Lab"
+	},
 /turf/open/floor/iron,
 /area/station/service/hydroponics/upper)
 "ror" = (
@@ -64290,16 +64290,13 @@
 /turf/open/floor/iron/dark,
 /area/station/security/execution/transfer)
 "vlG" = (
-/obj/machinery/door/airlock{
-	name = "Hydroponics Backroom"
-	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
-/obj/machinery/door/airlock/medical/glass{
-	name = "Hydroponics"
-	},
 /obj/effect/mapping_helpers/airlock/access/all/service/hydroponics,
+/obj/machinery/door/airlock/hydroponics{
+	name = "Hydroponics Backroom"
+	},
 /turf/open/floor/iron,
 /area/station/service/hydroponics)
 "vlI" = (
@@ -73773,10 +73770,10 @@
 /turf/open/floor/iron/freezer,
 /area/station/security/prison/shower)
 "yjg" = (
-/obj/item/circuitboard/machine/chem_dispenser/mutagensaltpeter,
 /obj/structure/closet/crate/engineering{
 	name = "Prototype Botanical Plant Nutrient Dispenser"
 	},
+/obj/item/circuitboard/machine/chem_dispenser,
 /turf/open/floor/plating,
 /area/station/maintenance/starboard/fore)
 "yjw" = (
