@@ -706,10 +706,6 @@
 		else
 			to_chat(user, span_warning("The [name] does not recognize you as its owner and refuses to open!"))
 		return
-	//SKYRAT EDIT START
-	if(user?.mind?.opposing_force.status != OPFOR_STATUS_APPROVED)
-		to_chat(user, span_warning("You must have an approved OPFOR to use this!"))
-	//SKYRAT EDIT END
 	return ..()
 
 /obj/item/spellbook/attackby(obj/item/O, mob/user, params)
