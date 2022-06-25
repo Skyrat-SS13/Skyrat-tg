@@ -391,52 +391,32 @@
 	adjustmask(user)
 
 // Donation reward for TheOOZ
-/obj/item/clothing/mask/kindle
-	name = "\proper The mask of Kindle"
-	desc = "The mask which belongs to Nanotrasen's Outpost Captain Kindle, it is the symbol of her 'Kindled' cult. The material feels like it's made entirely out of inexpensive plastic."
+/obj/item/clothing/mask/animal/kindle
+	name = "wolf mask"
+	desc = "A dark mask in the shape of a wolf's head.<br>The material feels like it's made entirely out of inexpensive plastic."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/masks.dmi'
 	icon_state = "kindle"
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/mask.dmi'
 	inhand_icon_state = "kindle"
+	animal_type = "wolf"
+	animal_sounds = list("Awoo!", "Woof.", "Arf!")
+	animal_sounds_alt_probability = 15
+	animal_sounds_alt = list("Join us!", "Wear the mask.")
+	curse_spawn_sound = 'modular_skyrat/master_files/sound/effects/wolfhead_curse.ogg'
+	cursed = FALSE
+
 	supports_variations_flags = NONE
-	clothing_flags = MASKINTERNALS
+	clothing_flags = MASKINTERNALS | VOICEBOX_DISABLED | VOICEBOX_TOGGLABLE
 	flags_inv = HIDEFACIALHAIR | HIDESNOUT
 	visor_flags_inv = HIDEFACIALHAIR | HIDESNOUT
 	alternate_worn_layer = ABOVE_BODY_FRONT_HEAD_LAYER
 	w_class = WEIGHT_CLASS_SMALL
 
-/obj/item/clothing/mask/kindle/Initialize()
+/obj/item/clothing/mask/animal/kindle/make_cursed()
 	. = ..()
-	AddComponent(/datum/component/knockoff,50,list(BODY_ZONE_HEAD),list(ITEM_SLOT_MASK))
-	var/static/list/loc_connections = list(
-		COMSIG_ATOM_ENTERED = .proc/on_entered,
-	)
-	AddElement(/datum/element/connect_loc, loc_connections)
-
-/obj/item/clothing/mask/kindle/proc/on_entered(datum/source, atom/movable/movable)
-	SIGNAL_HANDLER
-	if(damaged_clothes == CLOTHING_SHREDDED)
-		return
-	if(isliving(movable))
-		var/mob/living/crusher = movable
-		if(crusher.m_intent != MOVE_INTENT_WALK && (!(crusher.movement_type & (FLYING|FLOATING)) || crusher.buckled))
-			playsound(src, 'modular_skyrat/master_files/sound/effects/plastic_crush.ogg', 75)
-			visible_message(span_warning("[crusher] steps on [src], crushing it with ease."))
-			take_damage(100, sound_effect = FALSE)
-
-/obj/item/clothing/mask/kindle/atom_destruction(damage_flag)
-	. = ..()
-	name = "\proper The broken mask of Kindle"
-	desc = "The mask which belongs to Nanotrasen's Outpost Captain Kindle, it is the symbol of her 'Kindled' cult. The material is completely shattered in half."
-	icon_state = "kindle_broken"
-	inhand_icon_state = "kindle_broken"
-
-/obj/item/clothing/mask/kindle/repair()
-	. = ..()
-	name = "\proper The mended mask of Kindle"
-	desc = "The mask which belongs to Nanotrasen's Outpost Captain Kindle, it is the symbol of her 'Kindled' cult. The material seems extra flimsy, like it has recently been repaired in a hurry."
-	icon_state = "kindle"
-	inhand_icon_state = "kindle"
+	clothing_flags = initial(clothing_flags)
+	name = "\proper the accursed wolf mask"
+	desc = "The mask which belongs to Nanotrasen's Outpost Captain Kindle, it is the symbol of her alleged cult.<br>It looks like a [animal_type] mask, but closer inspection reveals it's melded onto this person's face!"
 
 // Donation reward for Random516
 /obj/item/clothing/head/drake_skull
@@ -963,6 +943,17 @@
 	cold_protection = CHEST|GROIN|ARMS
 	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
 
+// Donation reward for Cherno_00
+/obj/item/clothing/suit/jacket/cherno
+	name = "silver-buttoned coat"
+	desc = "A comfy-looking blue coat. It looks a bit fancy, with shiny silver buttons and a few belts!"
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
+	icon_state = "chernocoat"
+	body_parts_covered = CHEST|GROIN|ARMS
+	cold_protection = CHEST|GROIN|ARMS
+	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
+
 // Donation reward for GoldenAlpharex
 /obj/item/clothing/glasses/welding/goldengoggles
 	name = "steampunk goggles"
@@ -1382,3 +1373,68 @@
 	icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
 	icon_state = "plushie_winrow"
 
+// Donation reward for M97screwsyourparents
+/obj/item/clothing/head/recruiter_cap
+	name = "recruiter cap"
+	desc = "Hey, free college!"
+	icon_state = "officerhat"
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
+	worn_icon_state = "officerhat"
+
+// Donation reward for M97screwsyourparents
+/obj/item/clothing/suit/toggle/recruiter_jacket
+	name = "recruiter jacket"
+	desc = "Hey, free college!"
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
+	icon_state = "officerjacket"
+	base_icon_state = "officerjacket"
+
+// Donation reward for M97screwsyourparents
+/obj/item/clothing/under/recruiter_uniform
+	name = "recruiter uniform"
+	desc = "Hey, free college!"
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
+	icon_state = "oldmarine_whites"
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
+	worn_icon_digi = null
+
+//Donation reward for Tetrako
+/obj/item/clothing/under/nt_idol_skirt
+	name = "\improper NT Idol's suitskirt"
+	desc = "This outfit resembles much the same as other ranking NT Officers, but comes with certain bells and whistles, like frills around the dress, slight puffs around the shoulders and most importantly, several golden buckles to accentuate the green! The only thing fit for NT's very own idols to wear!"
+	icon = 'icons/obj/clothing/under/centcom.dmi'
+	worn_icon = 'icons/mob/clothing/under/centcom.dmi'
+	icon_state = "centcom_skirt"
+	inhand_icon_state = "dg_suit"
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
+	body_parts_covered = CHEST|GROIN|ARMS
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+
+// Donation reward for SlippyJoe
+/obj/item/clothing/accessory/hypno_watch
+	name = "cracked pocket watch"
+	desc = "A shining pocket watch, cast in gold and embossed with metallic swirls that almost seem  amethyst under the right light... There's a button on the top to unlatch the front panel, although all that's inside is a layer of cracked glass, the argent hands stuck pointing to 7:07 PM. The brushed silver of these arrows almost seems to swirl if one's gaze lingers for too long. Despite its inert appearance, the eerie mechanical sound of gears turning and clicking in place seems to quietly ring out from the artifact. In the right hands, "
+	icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/custom_w.dmi'
+	lefthand_file = 'modular_skyrat/master_files/icons/donator/mob/inhands/donator_left.dmi'
+	righthand_file = 'modular_skyrat/master_files/icons/donator/mob/inhands/donator_right.dmi'
+	worn_icon_state = "pocketwatch"
+	icon_state = "pocketwatch"
+	inhand_icon_state = "pocketwatch"
+	var/list/spans = list("velvet")
+	actions_types = list(/datum/action/item_action/hypno_whisper)
+
+//TODO: make a component for all that various hypno stuff instead of adding it to items individually
+/obj/item/clothing/accessory/hypno_watch/ui_action_click(mob/living/user, action)
+	if(!isliving(user) || !can_use(user))
+		return
+	var/message = input(user, "Speak with a hypnotic whisper", "Whisper")
+	if(QDELETED(src) || QDELETED(user) || !message || !user.can_speak())
+		return
+	user.whisper(message, spans = spans)
+
+/obj/item/clothing/accessory/examine()
+	. = ..()
+	. += span_boldwarning("who knows what it could be used for?")

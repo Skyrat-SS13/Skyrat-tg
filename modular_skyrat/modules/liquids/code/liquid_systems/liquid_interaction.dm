@@ -16,6 +16,7 @@
 
 /datum/element/liquids_interaction/Detach(mob/living/target)
 	UnregisterSignal(target, COMSIG_ITEM_AFTERATTACK)
+	return ..()
 
 /datum/element/liquids_interaction/proc/AfterAttack(obj/item/target, atom/target2, mob/user)
 	SIGNAL_HANDLER
