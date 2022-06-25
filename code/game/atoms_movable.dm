@@ -471,11 +471,7 @@
 	if(!direction)
 		direction = get_dir(src, newloc)
 
-<<<<<<< HEAD
-	if(set_dir_on_move && !face_mouse)
-=======
-	if(set_dir_on_move && dir != direction)
->>>>>>> 8f0df7816ba ((code bounty) The tram is now unstoppably powerful. it cannot be stopped, it cannot be slowed, it cannot be reasoned with. YOU HAVE NO IDEA HOW READY YOU ARE (#66657))
+	if(set_dir_on_move && dir != direction && !face_mouse) // SKYRAT EDIT CHANGE
 		setDir(direction)
 
 	var/is_multi_tile_object = bound_width > 32 || bound_height > 32
@@ -601,7 +597,7 @@
 						moving_diagonally = SECOND_DIAG_STEP
 						. = step(src, SOUTH)
 			if(moving_diagonally == SECOND_DIAG_STEP)
-				if(!. && set_dir_on_move && !face_mouse)
+				if(!. && set_dir_on_move && !face_mouse) // SKYRAT EDIT CHANGE
 					setDir(first_step_dir)
 			moving_diagonally = 0
 			return
@@ -638,11 +634,7 @@
 
 	last_move = direct
 
-<<<<<<< HEAD
-	if(set_dir_on_move && !face_mouse)
-=======
-	if(set_dir_on_move && dir != direct)
->>>>>>> 8f0df7816ba ((code bounty) The tram is now unstoppably powerful. it cannot be stopped, it cannot be slowed, it cannot be reasoned with. YOU HAVE NO IDEA HOW READY YOU ARE (#66657))
+	if(set_dir_on_move && dir != direct && !face_mouse) // SKYRAT EDIT CHANGE
 		setDir(direct)
 	if(. && has_buckled_mobs() && !handle_buckled_mob_movement(loc, direct, glide_size_override)) //movement failed due to buckled mob(s)
 		. = FALSE
