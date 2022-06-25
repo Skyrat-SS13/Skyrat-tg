@@ -335,6 +335,7 @@
 		"chem_heater",
 		"chem_mass_spec",
 		//SKYRAT EDIT - RESEARCH DESIGNS
+		"anesthetic_machine",
 		"smartdartgun",
 		//SKYRAT EDIT - END
 		"chem_master",
@@ -955,7 +956,7 @@
 		"paladin_module",
 		"robocop_module",
 		"corporate_module",
-		"drone_module",		
+		"drone_module",
 		"oxygen_module",
 		"safeguard_module",
 		"protectstation_module",
@@ -964,7 +965,7 @@
 		"remove_module",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
-	
+
 /datum/techweb_node/ai_adv
 	id = "ai_adv"
 	display_name = "Advanced Artificial Intelligence"

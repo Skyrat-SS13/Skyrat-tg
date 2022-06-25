@@ -18,7 +18,7 @@
 /obj/machinery/anesthetic_machine/examine(mob/user)
 	. = ..()
 
-	. += "<b>Right + Click <b> with a wrench will deconstruct the stand, if there is no tank attached."
+	. += "<b>Right Clicking</b> with a wrench will deconstruct the stand, if there is no tank attached."
 	if(mask_out)
 		. += "<b>Click</b> on the stand to retract the mask, if the mask is currently out"
 	if(attached_tank)
@@ -179,7 +179,8 @@
 /// A boxed version of the Anesthetic Machine. This is what is printed from the medical prolathe.
 /obj/item/anesthetic_machine_kit
 	name = "anesthetic stand parts kit"
-	desc = "Contains all of the parts needed to assemble a portable anesthetic stand."
+	desc = "Contains all of the parts needed to assemble a portable anesthetic stand. Use in hand to construct."
+	w_class = WEIGHT_CLASS_BULKY
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "plasticbox"
 
