@@ -5,7 +5,7 @@
 /obj/item/reagent_containers/borghypo/borgshaker/specific/juice
 	name = "cyborg juice shaker"
 	icon_state = "juice"
-	reagent_ids = list(/datum/reagent/consumable/orangejuice,
+	default_reagent_types = list(/datum/reagent/consumable/orangejuice,
 					/datum/reagent/consumable/tomatojuice,
 					/datum/reagent/consumable/limejuice,
 					/datum/reagent/consumable/carrotjuice,
@@ -27,7 +27,7 @@
 /obj/item/reagent_containers/borghypo/borgshaker/specific/alcohol
 	name = "cyborg alcohol shaker"
 	icon_state = "alcohol"
-	reagent_ids = list(/datum/reagent/consumable/ethanol,
+	default_reagent_types = list(/datum/reagent/consumable/ethanol,
 					/datum/reagent/consumable/ethanol/beer,
 					/datum/reagent/consumable/ethanol/beer/maltliquor,
 					/datum/reagent/consumable/ethanol/kahlua,
@@ -58,7 +58,7 @@
 /obj/item/reagent_containers/borghypo/borgshaker/specific/soda
 	name = "cyborg soda shaker"
 	icon_state = "soda"
-	reagent_ids = list(/datum/reagent/consumable/space_cola,
+	default_reagent_types = list(/datum/reagent/consumable/space_cola,
 					/datum/reagent/consumable/dr_gibb,
 					/datum/reagent/consumable/space_up,
 					/datum/reagent/consumable/sodawater,
@@ -71,7 +71,7 @@
 /obj/item/reagent_containers/borghypo/borgshaker/specific/misc
 	name = "cyborg misc shaker"
 	icon_state = "misc"
-	reagent_ids = list(/datum/reagent/consumable/milk,
+	default_reagent_types = list(/datum/reagent/consumable/milk,
 					/datum/reagent/consumable/soymilk,
 					/datum/reagent/consumable/cream,
 					/datum/reagent/toxin/coffeepowder,
