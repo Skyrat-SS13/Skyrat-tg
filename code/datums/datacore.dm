@@ -273,6 +273,10 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 			G.fields["past_records"] = C.prefs.read_preference(/datum/preference/text/general)
 		else
 			G.fields["past_records"] = ""
+		if (C && C.prefs && C.prefs.read_preference(/datum/preference/text/background))
+			G.fields["background_records"] = C.prefs.read_preference(/datum/preference/text/background)
+		else
+			G.fields["background_records"] = ""
 		if (C && C.prefs && C.prefs.read_preference(/datum/preference/text/exploitable))
 			G.fields["exploitable_records"] = C.prefs.read_preference(/datum/preference/text/exploitable)
 		else

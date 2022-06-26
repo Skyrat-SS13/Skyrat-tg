@@ -399,6 +399,11 @@
 				return
 
 	//SKYRAT EDIT ADDITION BEGIN - VIEW RECORDS
+	if(href_list["bgrecords"])
+		if(isobserver(usr))
+			var/examined_name = get_face_name(get_id_name(""))
+			var/datum/data/record/target_general_records = find_record("name", examined_name, GLOB.data_core.general)
+			to_chat(usr, "<b>Background information:</b> [target_general_records.fields["background_records"]]")
 	if(href_list["exprecords"])
 		if(isobserver(usr) || usr.mind.can_see_exploitables || usr.mind.has_exploitables_override)
 			var/examined_name = get_face_name(get_id_name("")) //Named as such because this is the name we see when we examine
