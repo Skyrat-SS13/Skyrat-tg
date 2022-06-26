@@ -33,3 +33,11 @@
 	if(BMS)
 		markings = assemble_body_markings_from_set(BMS, passed_features, src)
 	return markings
+
+/datum/species/moth/prepare_human_for_preview(mob/living/carbon/human/moth)
+	moth.dna.features["mcolor"] = "#E5CD99"
+	moth.dna.species.mutant_bodyparts["moth_antennae"] = list(MUTANT_INDEX_NAME = "Plain", MUTANT_INDEX_COLOR_LIST = list("#FFFFFF", "#FFFFFF", "#FFFFFF"))
+	moth.dna.species.mutant_bodyparts["moth_markings"] = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_COLOR_LIST = list("#FFFFFF", "#FFFFFF", "#FFFFFF"))
+	moth.dna.species.mutant_bodyparts["wings"] = list(MUTANT_INDEX_NAME = "Moth (Plain)", MUTANT_INDEX_COLOR_LIST = list("#FFFFFF", "#FFFFFF", "#FFFFFF"))
+	moth.update_mutant_bodyparts(TRUE)
+	moth.update_body(TRUE)
