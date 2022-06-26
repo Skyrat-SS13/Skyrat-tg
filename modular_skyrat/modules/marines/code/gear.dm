@@ -71,6 +71,7 @@
 	desc = "A specialized Nanotrasen-produced ballistic pulse rifle that uses compressed magazines to output absurd firepower in a compact package. This one's fitted with a two-round semi-automatic underbarrel 12 gauge shotgun."
 	icon_state = "m44a_sg"
 	inhand_icon_state = "m44a_sg"
+	/// Reference to the underbarrel shotgun
 	var/obj/item/gun/ballistic/shotgun/automatic/as2/ubsg/underbarrel
 
 /obj/item/gun/ballistic/automatic/ar/modular/m44a/shotgun/Initialize()
@@ -83,18 +84,18 @@
 	return SECONDARY_ATTACK_CONTINUE_CHAIN
 
 /obj/item/gun/ballistic/automatic/ar/modular/m44a/shotgun/attackby(obj/item/attacking_item, mob/user, params)
-	if(istype(attacking_item, /obj/item/ammo_casing))
-		if(istype(attacking_item, underbarrel.magazine.ammo_type))
-			underbarrel.attack_self(user)
-			underbarrel.attackby(attacking_item, user, params)
-	else
+	if(!istype(attacking_item, /obj/item/ammo_casing))
 		..()
+	if(istype(attacking_item, underbarrel.magazine.ammo_type))
+		underbarrel.attack_self(user)
+		underbarrel.attackby(attacking_item, user, params)
 
 /obj/item/gun/ballistic/automatic/ar/modular/m44a/grenadelauncher
 	name = "\improper NT M44AGL Pulse Rifle"
 	desc = "A specialized Nanotrasen-produced ballistic pulse rifle that uses compressed magazines to output absurd firepower in a compact package. This one's fitted with an underbarrel grenade launcher, and a red dot scope to help align it. Compensating for something?"
 	icon_state = "m44a_gl"
 	inhand_icon_state = "m44a_gl"
+	/// Underbarrel grenade launcher reference
 	var/obj/item/gun/ballistic/revolver/grenadelauncher/underbarrel
 
 /obj/item/gun/ballistic/automatic/ar/modular/m44a/grenadelauncher/Initialize()
@@ -107,9 +108,8 @@
 	return SECONDARY_ATTACK_CONTINUE_CHAIN
 
 /obj/item/gun/ballistic/automatic/ar/modular/m44a/grenadelauncher/attackby(obj/item/attacking_item, mob/user, params)
-	if(istype(attacking_item, /obj/item/ammo_casing))
-		if(istype(attacking_item, underbarrel.magazine.ammo_type))
-			underbarrel.attack_self(user)
-			underbarrel.attackby(attacking_item, user, params)
-	else
+	if(!istype(attacking_item, /obj/item/ammo_casing))
 		..()
+	if(istype(attacking_item, underbarrel.magazine.ammo_type))
+		underbarrel.attack_self(user)
+		underbarrel.attackby(attacking_item, user, params)
