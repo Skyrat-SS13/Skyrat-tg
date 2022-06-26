@@ -453,20 +453,15 @@
 		. += "<span class='info'><b>Traits:</b> [get_quirk_string(FALSE, CAT_QUIRK_ALL)]</span>"
 
 	//SKYRAT EDIT ADDITION BEGIN - EXAMINE RECORDS
-	if(isobserver(user))
+	if(isobserver(user) || user.mind?.can_see_exploitables || user.mind?.has_exploitables_override)
 		var/datum/data/record/target_records = find_record("name", perpname, GLOB.data_core.general)
 		if(target_records)
 			var/background_text = target_records.fields["background_records"]
+			var/exploitable_text = target_records.fields["exploitable_records"]
 			if((length(background_text) > RECORDS_INVISIBLE_THRESHOLD))
 				. += "<a href='?src=[REF(src)];bgrecords=1'>\[View background info\]</a>"
-
-	if(isobserver(user) || user.mind?.can_see_exploitables || user.mind?.has_exploitables_override)
-		var/datum/data/record/target_records = find_record("name", perpname, GLOB.data_core.general) //apparantly golden is okay with offstation roles having no records, FYI
-		if(target_records)
-			var/exploitable_text = target_records.fields["exploitable_records"]
 			if((length(exploitable_text) > RECORDS_INVISIBLE_THRESHOLD) && ((exploitable_text) != EXPLOITABLE_DEFAULT_TEXT))
 				. += "<a href='?src=[REF(src)];exprecords=1'>\[View exploitable info\]</a>"
-
 	//SKYRAT EDIT END
 	//SKYRAT EDIT ADDITION BEGIN - GUNPOINT
 	if(gunpointing)
