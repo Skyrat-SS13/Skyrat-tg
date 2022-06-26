@@ -1435,6 +1435,6 @@
 		return
 	user.whisper(message, spans = spans)
 
-/obj/item/clothing/accessory/examine()
+/obj/item/clothing/accessory/hypno_watch/examine()
 	. = ..()
-	. += span_boldwarning("who knows what it could be used for?")
+	. += span_boldwarning("Who knows what it could be used for?")
