@@ -5,10 +5,10 @@
 	// Test lizards as their own thing so we can get more coverage on their features
 	var/mob/living/carbon/human/lizard = allocate(/mob/living/carbon/human/dummy/consistent)
 	lizard.dna.features["mcolor"] = "#099"
-	lizard.dna.mutant_bodyparts["tail"] = list(MUTANT_INDEX_NAME = "Light Tiger", MUTANT_INDEX_COLOR_LIST = list("#FFFFFF", "#FFFFFF", "#FFFFFF")) // SKYRAT EDIT - Customization - ORIGINAL: lizard.dna.features["tail_lizard"] = "Light Tiger"
-	lizard.dna.mutant_bodyparts["snout"] = list(MUTANT_INDEX_NAME = "Sharp + Light", MUTANT_INDEX_COLOR_LIST = list("#FFFFFF", "#FFFFFF", "#FFFFFF")) // SKYRAT EDIT - Customization - ORIGINAL: lizard.dna.features["snout"] = "Sharp + Light"
-	lizard.dna.mutant_bodyparts["horns"] = list(MUTANT_INDEX_NAME = "Simple", MUTANT_INDEX_COLOR_LIST = list("#FFFFFF", "#FFFFFF", "#FFFFFF")) // SKYRAT EDIT - Customization - ORIGINAL: lizard.dna.features["horns"] = "Simple"
-	lizard.dna.mutant_bodyparts["frills"] = list(MUTANT_INDEX_NAME = "Aquatic", MUTANT_INDEX_COLOR_LIST = list("#FFFFFF", "#FFFFFF", "#FFFFFF")) // SKYRAT EDIT - Customization - ORIGINAL: lizard.dna.features["frills"] = "Aquatic"
+	lizard.dna.mutant_bodyparts["tail"] = list(MUTANT_INDEX_NAME = "Light Tiger", MUTANT_INDEX_COLOR_LIST = list("#009999", "#009999", "#009999")) // SKYRAT EDIT - Customization - ORIGINAL: lizard.dna.features["tail_lizard"] = "Light Tiger"
+	lizard.dna.mutant_bodyparts["snout"] = list(MUTANT_INDEX_NAME = "Sharp + Light", MUTANT_INDEX_COLOR_LIST = list("#009999", "#009999", "#009999")) // SKYRAT EDIT - Customization - ORIGINAL: lizard.dna.features["snout"] = "Sharp + Light"
+	lizard.dna.mutant_bodyparts["horns"] = list(MUTANT_INDEX_NAME = "Simple", MUTANT_INDEX_COLOR_LIST = list("#009999", "#009999", "#009999")) // SKYRAT EDIT - Customization - ORIGINAL: lizard.dna.features["horns"] = "Simple"
+	lizard.dna.mutant_bodyparts["frills"] = list(MUTANT_INDEX_NAME = "Aquatic", MUTANT_INDEX_COLOR_LIST = list("#009999", "#009999", "#009999")) // SKYRAT EDIT - Customization - ORIGINAL: lizard.dna.features["frills"] = "Aquatic"
 	lizard.dna.features["legs"] = "Normal Legs"
 	lizard.set_species(/datum/species/lizard)
 	lizard.equipOutfit(/datum/outfit/job/engineer)
@@ -40,6 +40,10 @@
 
 /datum/unit_test/screenshot_humanoids/proc/make_dummy(species, job_outfit)
 	var/mob/living/carbon/human/dummy/consistent/dummy = allocate(/mob/living/carbon/human/dummy/consistent)
+	// SKYRAT EDIT ADDITION START - More consistent screenshots
+	var/datum/species/dummy_species = new species
+	dummy_species.prepare_human_for_preview(dummy)
+	// SKYRAT EDIT ADDITION END
 	dummy.set_species(species)
 	dummy.equipOutfit(job_outfit, visualsOnly = TRUE)
 	return dummy
