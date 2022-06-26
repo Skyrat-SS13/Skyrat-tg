@@ -14,6 +14,7 @@
 #define QUIRK_LINGUIST "Linguist" // Extra language point.
 #define GLUED_ITEM_TRAIT "glued-item" // This is for glued items, undroppable. Syndie glue applies this.
 #define TRAIT_STICKY_FINGERS "sticky_fingers" //This is so a mob can strip items faster and picks them up after
+#define TRAIT_PROPER "Proper" //Makes it so you can walk in heels
 /// This makes trait makes it so that the person cannot be infected by the zombie virus.
 #define TRAIT_MUTANT_IMMUNE "mutant_immune"
 
