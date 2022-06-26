@@ -378,6 +378,7 @@
 /datum/greyscale_config/wraps/worn
 	name = "Cloth Wraps (Worn)"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/wraps/wraps_worn.json'
+
 /datum/greyscale_config/wraps/worn/digi
 	name = "Cloth Wraps (Worn Digi)"
 
