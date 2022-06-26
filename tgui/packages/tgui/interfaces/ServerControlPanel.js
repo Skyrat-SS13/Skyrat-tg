@@ -4,33 +4,28 @@ import { Window } from '../layouts';
 
 export const MicrofusionGunControl = (props, context) => {
   const { act, data } = useBackend(context);
-  const {
-    current_players,
-    servers = [],
-  } = data;
+  const { current_players, servers = [] } = data;
   return (
-    <Window
-      title="Server Control Panel"
-      width={500}
-      height={700}>
+    <Window title="Server Control Panel" width={500} height={700}>
       <Window.Content>
         {servers.len === 0 ? (
-          <NoticeBox>
-            No server is currently online.
-          </NoticeBox>
+          <NoticeBox>No server is currently online.</NoticeBox>
         ) : (
-          servers.map(server => (
+          servers.map((server) => (
             <Section
               key={server.name}
               title={server.name}
-              buttons={(
+              buttons={
                 <Button
                   icon="connect"
                   content="Connect"
-                  onClick={() => act('connect', {
-                    server_ref: server.name,
-                  })} />
-              )}>
+                  onClick={() =>
+                    act('connect', {
+                      server_ref: server.name,
+                    })
+                  }
+                />
+              }>
               <LabeledList>
                 <LabeledList.Item label="Players">
                   {server.players}/{server.max_players}

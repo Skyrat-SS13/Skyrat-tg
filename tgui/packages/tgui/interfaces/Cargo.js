@@ -64,21 +64,11 @@ export const CargoContent = (props, context) => {
           )}
         </Tabs>
       </Section>
-      {tab === 'catalog' && (
-        <CargoCatalog />
-      )}
-      {tab === 'requests' && (
-        <CargoRequests />
-      )}
-      {tab === 'cart' && (
-        <CargoCart />
-      )}
-      {tab === 'help' && (
-        <CargoHelp />
-      )}
-      {tab === 'gun_window' && (
-        tab === 'catalog'
-      )}
+      {tab === 'catalog' && <CargoCatalog />}
+      {tab === 'requests' && <CargoRequests />}
+      {tab === 'cart' && <CargoCart />}
+      {tab === 'help' && <CargoHelp />}
+      {tab === 'gun_window' && tab === 'catalog'}
     </Box>
   );
 };
