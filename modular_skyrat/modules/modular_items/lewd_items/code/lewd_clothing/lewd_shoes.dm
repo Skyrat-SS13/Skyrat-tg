@@ -30,8 +30,16 @@
 /obj/item/clothing/shoes/latexheels/equipped(mob/user, slot)
 	. = ..()
 	var/mob/living/carbon/human/affected_mob = user
-	if(src == affected_mob.shoes)
+	if(HAS_TRAIT(affected_mob, TRAIT_PROPER)) //Janky workaround for slowdown not updating before if(affected_mob.shoes)
+		slowdown = 1
+	else
+		slowdown = 4
+
+	if((src == affected_mob.shoes) && (!HAS_TRAIT(affected_mob, TRAIT_PROPER))) //Does not process if player has TRAIT_PROPER
 		START_PROCESSING(SSobj, src)
+	else if(src == affected_mob.shoes)
+		to_chat(affected_mob, span_notice("Wearing these heels is almost like second nature"))
+
 	affected_mob.update_inv_shoes()
 	affected_mob.hud_used.hidden_inventory_update()
 	message_sent = FALSE
@@ -44,7 +52,6 @@
 	if(discomfort >= 80)
 		to_chat(affected_mob, span_purple("The latex heels no longer hurt your legs."))
 	discomfort = 0
-	slowdown = 4
 
 // Heels pain processor
 /obj/item/clothing/shoes/latexheels/process(delta_time)
@@ -114,7 +121,14 @@
 	worn_icon_digi = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_shoes_digi.dmi'
 	equip_delay_other = 60
 	strip_delay = 60
-	slowdown = 1
+
+/obj/item/clothing/shoes/dominaheels/equipped(mob/user, slot)
+	. = ..()
+	if(HAS_TRAIT(user, TRAIT_PROPER))
+		slowdown = 0
+	else
+		slowdown = 1
+
 
 //it takes time to put them off, do not touch
 /obj/item/clothing/shoes/dominaheels/attack_hand(mob/user)

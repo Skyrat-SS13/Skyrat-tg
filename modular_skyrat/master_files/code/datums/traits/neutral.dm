@@ -134,3 +134,14 @@
 
 	var/obj/item/organ/internal/tongue/dog/new_tongue = new(get_turf(human_holder))
 	new_tongue.Insert(human_holder)
+
+/datum/quirk/proper
+	name = "Proper"
+	desc = "You can walk in heels without penalty"
+	icon = "black-tie"
+	value = 0
+	gain_text = "You feel well balanced in heels"
+	lose_text = "You no longer feel balanced in heels"
+	medical_record_text = "Patient seems to have the ability to walk with any type of heels"
+	mob_trait = TRAIT_PROPER
+

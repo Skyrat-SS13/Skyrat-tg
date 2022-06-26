@@ -74,6 +74,7 @@
 					/obj/item/clothing/under/misc/stripper/bunnysuit = 5,
 					/obj/item/clothing/under/misc/stripper/bunnysuit/white = 5,
 					/obj/item/clothing/under/misc/gear_harness = 4,
+					/obj/item/clothing/under/dress/corset = 4,
 
 					//hands
 					/obj/item/clothing/gloves/ball_mittens = 8,
@@ -85,6 +86,7 @@
 					/obj/item/clothing/shoes/latexheels = 4,
 					/obj/item/clothing/shoes/dominaheels = 4,
 					/obj/item/clothing/shoes/jackboots/knee = 3,
+					/obj/item/clothing/under/pants/chaps = 4,
 
 					//belt
 					/obj/item/clothing/strapon = 6,
@@ -109,8 +111,6 @@
 					/obj/item/storage/box/shibari_stand = 4)
 
 	premium = list(
-		/obj/item/clothing/under/dress/corset = 4,
-		/obj/item/clothing/under/pants/chaps = 4,
 		/obj/item/clothing/neck/human_petcollar/locked/holo = 3)
 
 	contraband = list(
