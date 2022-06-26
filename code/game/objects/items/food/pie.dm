@@ -51,8 +51,12 @@
 	if(isliving(hit_atom))
 		var/mob/living/living_target_getting_hit = hit_atom
 		if(stunning)
+<<<<<<< HEAD
 			//living_target_getting_hit.Paralyze(20) //splat! //ORIGINAL
 			living_target_getting_hit.StaminaKnockdown(10, TRUE) //SKYRAT EDIT CHANGE - COMBAT
+=======
+			living_target_getting_hit.Paralyze(2 SECONDS) //splat!
+>>>>>>> b4eab1c3576 (Converts all* of the times in the food files into SECONDS (#67984))
 		living_target_getting_hit.adjust_blurriness(1)
 		living_target_getting_hit.visible_message(span_warning("[living_target_getting_hit] is creamed by [src]!"), span_userdanger("You've been creamed by [src]!"))
 		playsound(living_target_getting_hit, SFX_DESECRATION, 50, TRUE)
@@ -155,7 +159,7 @@
 	foodtypes = GRAIN | VEGETABLES | SUGAR
 
 /obj/item/food/pie/pumpkinpie/MakeProcessable()
-	AddElement(/datum/element/processable, TOOL_KNIFE, /obj/item/food/pieslice/pumpkin, 5, 20, table_required = TRUE)
+	AddElement(/datum/element/processable, TOOL_KNIFE, /obj/item/food/pieslice/pumpkin, 5, table_required = TRUE)
 
 /obj/item/food/pieslice/pumpkin
 	name = "pumpkin pie slice"
@@ -214,7 +218,7 @@
 	foodtypes = GRAIN | VEGETABLES
 
 /obj/item/food/pie/blumpkinpie/MakeProcessable()
-	AddElement(/datum/element/processable, TOOL_KNIFE, /obj/item/food/pieslice/blumpkin, 5, 20, table_required = TRUE)
+	AddElement(/datum/element/processable, TOOL_KNIFE, /obj/item/food/pieslice/blumpkin, 5, table_required = TRUE)
 
 /obj/item/food/pieslice/blumpkin
 	name = "blumpkin pie slice"
@@ -234,7 +238,7 @@
 	venue_value = FOOD_PRICE_EXOTIC
 
 /obj/item/food/pie/dulcedebatata/MakeProcessable()
-	AddElement(/datum/element/processable, TOOL_KNIFE, /obj/item/food/pieslice/dulcedebatata, 5, 20, table_required = TRUE)
+	AddElement(/datum/element/processable, TOOL_KNIFE, /obj/item/food/pieslice/dulcedebatata, 5, table_required = TRUE)
 
 /obj/item/food/pieslice/dulcedebatata
 	name = "dulce de batata slice"
@@ -287,4 +291,4 @@
 	foodtypes = GRAIN | DAIRY | SUGAR
 
 /obj/item/food/pie/frenchsilkpie/MakeProcessable()
-	AddElement(/datum/element/processable, TOOL_KNIFE, /obj/item/food/pieslice/frenchsilk, 5, 20)
+	AddElement(/datum/element/processable, TOOL_KNIFE, /obj/item/food/pieslice/frenchsilk, 5)
