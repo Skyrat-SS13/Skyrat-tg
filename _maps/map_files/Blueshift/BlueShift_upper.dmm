@@ -4269,9 +4269,7 @@
 /area/station/maintenance/department/science)
 "aYE" = (
 /obj/machinery/light/floor,
-/obj/structure/industrial_lift{
-	id = "publicElevator"
-	},
+/obj/structure/industrial_lift,
 /turf/open/openspace,
 /area/station/hallway/primary/upper)
 "aYG" = (
@@ -6271,9 +6269,7 @@
 /obj/structure/railing{
 	dir = 5
 	},
-/obj/structure/industrial_lift{
-	id = "publicElevator"
-	},
+/obj/structure/industrial_lift,
 /turf/open/openspace,
 /area/station/hallway/primary/upper)
 "bBJ" = (
@@ -27818,9 +27814,7 @@
 /obj/structure/railing{
 	dir = 6
 	},
-/obj/structure/industrial_lift{
-	id = "publicElevator"
-	},
+/obj/structure/industrial_lift,
 /turf/open/openspace,
 /area/station/hallway/primary/upper)
 "jkJ" = (
@@ -33708,9 +33702,7 @@
 /obj/structure/railing{
 	dir = 9
 	},
-/obj/structure/industrial_lift{
-	id = "publicElevator"
-	},
+/obj/structure/industrial_lift,
 /turf/open/openspace,
 /area/station/hallway/primary/upper)
 "lqI" = (
@@ -43844,8 +43836,9 @@
 /turf/open/floor/iron,
 /area/station/maintenance/department/medical/central)
 "oNm" = (
-/obj/structure/industrial_lift{
-	id = "publicElevator"
+/obj/structure/industrial_lift,
+/obj/effect/landmark/lift_id{
+	specific_lift_id = "publicElevator"
 	},
 /turf/open/openspace,
 /area/station/hallway/primary/upper)
@@ -55834,9 +55827,7 @@
 /obj/structure/railing{
 	dir = 10
 	},
-/obj/structure/industrial_lift{
-	id = "publicElevator"
-	},
+/obj/structure/industrial_lift,
 /turf/open/openspace,
 /area/station/hallway/primary/upper)
 "sUu" = (
@@ -67210,7 +67201,7 @@
 	name = "Toxins Requests Console"
 	},
 /obj/machinery/computer/atmos_control/noreconnect{
-	atmos_chambers = list("ordnancegas1" = "Burn Chamber", "ordnancegas2" = "Freezer Chamber");
+	atmos_chambers = list("ordnancegas1"="Burn Chamber","ordnancegas2"="Freezer Chamber");
 	dir = 1
 	},
 /turf/open/floor/iron/dark,
@@ -68388,18 +68379,18 @@
 /obj/item/storage/box/ingredients/fiesta,
 /obj/item/storage/box/ingredients/american,
 /obj/item/reagent_containers/food/condiment/flour{
-	list_reagents = list(/datum/reagent/consumable/flour = 600);
+	list_reagents = list(/datum/reagent/consumable/flour=600);
 	name = "Premium All-Purpose Flour (16KG)";
 	volume = 600
 	},
 /obj/item/reagent_containers/food/condiment/milk,
 /obj/item/reagent_containers/food/condiment/enzyme{
-	list_reagents = list(/datum/reagent/consumable/enzyme = 500);
+	list_reagents = list(/datum/reagent/consumable/enzyme=500);
 	name = "universe-sized universal enyzyme";
 	volume = 500
 	},
 /obj/item/reagent_containers/food/condiment/rice{
-	list_reagents = list(/datum/reagent/consumable/rice = 150);
+	list_reagents = list(/datum/reagent/consumable/rice=150);
 	name = "Basmati Rice Sack (4KG)";
 	volume = 150
 	},
