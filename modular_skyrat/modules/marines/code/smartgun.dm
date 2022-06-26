@@ -27,7 +27,11 @@
 	tac_reloads = FALSE
 	burst_size = 1
 	pin = /obj/item/firing_pin/implant/mindshield
+	mag_display_ammo = FALSE
+	mag_display = FALSE
+	/// If the gun's dustcover is open or not
 	var/cover_open = FALSE
+	/// Factions that the gun cannot shoot under any circumstances
 	var/list/iff_factions = list("ert")
 
 /obj/item/gun/ballistic/automatic/smart_machine_gun/ComponentInitialize()
@@ -77,7 +81,7 @@
 	. += "[base_icon_state]_door_open"
 
 /obj/item/gun/ballistic/automatic/smart_machine_gun/unrestricted
-    pin = /obj/item/firing_pin 
+    pin = /obj/item/firing_pin
 // Magazine itself
 
 /obj/item/ammo_box/magazine/smartgun_drum

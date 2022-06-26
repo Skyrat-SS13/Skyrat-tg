@@ -16,7 +16,7 @@
 	can_bayonet = FALSE
 	realistic = FALSE
 	mag_display = TRUE
-	mag_display_ammo = TRUE
+	mag_display_ammo = FALSE
 	mag_type = /obj/item/ammo_box/magazine/m44a
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BELT | ITEM_SLOT_OCLOTHING
