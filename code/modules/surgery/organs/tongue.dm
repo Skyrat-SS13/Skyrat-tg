@@ -43,7 +43,8 @@
 		/datum/language/zolmach, // SKYRAT EDIT - customization - extra languages
 		/datum/language/xenoknockoff, // SKYRAT EDIT - customization - extra languages
 		/datum/language/yangyu, // SKYRAT EDIT - customization - extra languages
-		/datum/language/schechi // SKYRAT EDIT - customization - extra languages
+		/datum/language/schechi, // SKYRAT EDIT - customization - extra languages
+		/datum/language/ashtongue // SKYRAT EDIT - customization - extra languages
 	))
 
 /obj/item/organ/internal/tongue/Initialize(mapload)
@@ -96,7 +97,7 @@
 	say_mod = "hisses"
 	taste_sensitivity = 10 // combined nose + tongue, extra sensitive
 	modifies_speech = TRUE
-	languages_native = list(/datum/language/draconic)
+	languages_native = list(/datum/language/draconic, /datum/language/ashtongue) //SKYRAT EDIT: Ashtongue for Ashwalkers
 
 /obj/item/organ/internal/tongue/lizard/modify_speech(datum/source, list/speech_args)
 	var/static/regex/lizard_hiss = new("s+", "g")
