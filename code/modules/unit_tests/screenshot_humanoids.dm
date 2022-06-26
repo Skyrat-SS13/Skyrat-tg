@@ -40,10 +40,10 @@
 
 /datum/unit_test/screenshot_humanoids/proc/make_dummy(species, job_outfit)
 	var/mob/living/carbon/human/dummy/consistent/dummy = allocate(/mob/living/carbon/human/dummy/consistent)
+	dummy.set_species(species)
 	// SKYRAT EDIT ADDITION START - More consistent screenshots
 	var/datum/species/dummy_species = new species
 	dummy_species.prepare_human_for_preview(dummy)
 	// SKYRAT EDIT ADDITION END
-	dummy.set_species(species)
 	dummy.equipOutfit(job_outfit, visualsOnly = TRUE)
 	return dummy
