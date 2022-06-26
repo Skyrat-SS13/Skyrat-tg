@@ -24,8 +24,7 @@
 	/// See [`code/__DEFINES/uplink.dm`]
 	var/uplink_flag = UPLINK_TRAITORS
 
-///obj/item/uplink/Initialize(mapload, owner, tc_amount = 20) //ORIGINAL
-/obj/item/uplink/Initialize(mapload, owner, tc_amount = 35) //SKYRAT EDIT CHANGE
+/obj/item/uplink/Initialize(mapload, owner, tc_amount = 20)
 	. = ..()
 	AddComponent(/datum/component/uplink, owner, FALSE, TRUE, uplink_flag, tc_amount)
 
