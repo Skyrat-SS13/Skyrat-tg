@@ -146,7 +146,7 @@
 				return
 
 			if(prob(50) && (target.stat != DEAD))
-				target.emote(pick("twitch_s", "moan", "blush"))
+				target.try_lewd_autoemote(pick("twitch_s", "moan", "blush"))
 
 		if(BODY_ZONE_CHEST)
 			targetedsomewhere = TRUE
@@ -156,7 +156,7 @@
 				target.adjustArousal(DEFAULT_AROUSAL_INCREASE)
 				target.adjustPleasure(DEFAULT_PLEASURE_INCREASE * 0.5)
 				if(prob(30) && (target.stat != DEAD))
-					target.emote(pick("twitch_s", "moan"))
+					target.try_lewd_autoemote(pick("twitch_s", "moan"))
 
 			else
 				to_chat(user, span_danger("Looks like [target]'s chest is covered!"))
