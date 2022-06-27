@@ -15,12 +15,12 @@
 /obj/effect/ash_rune/examine(mob/user)
 	. = ..()
 	if(!current_ritual)
-		. += span_notice("There is no selected ritual at this moment-- use the central rune to select a ritual.")
+		. += span_notice("<br>There is no selected ritual at this moment-- use the central rune to select a ritual.")
 		return
-	. += span_notice("The current ritual is: [current_ritual.name]<br>")
+	. += span_notice("<br>The current ritual is: [current_ritual.name]<br>")
 	. += span_warning("The required components are as follows:")
 	for(var/the_components in current_ritual.required_components)
-		var/component_name = current_ritual.required_components[the_components]
+		var/atom/component_name = current_ritual.required_components[the_components]
 		. += span_warning("[the_components] component is [initial(component_name.name)]")
 
 /obj/effect/ash_rune/Initialize(mapload)
