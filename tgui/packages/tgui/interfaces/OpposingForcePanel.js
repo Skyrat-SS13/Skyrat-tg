@@ -6,17 +6,13 @@ import { Window } from '../layouts';
 export const OpposingForcePanel = (props, context) => {
   const [tab, setTab] = useLocalState(context, 'tab', 1);
   const { act, data } = useBackend(context);
-  const {
-    admin_mode,
-    creator_ckey,
-    owner_antag,
-  } = data;
+  const { admin_mode, creator_ckey, owner_antag } = data;
   return (
     <Window
-      title={"Opposing Force: " + creator_ckey}
+      title={'Opposing Force: ' + creator_ckey}
       width={585}
       height={840}
-      theme={owner_antag ? "syndicate" : "admin"}>
+      theme={owner_antag ? 'syndicate' : 'admin'}>
       <Window.Content>
         <Stack vertical grow mb={1}>
           <Stack.Item>
@@ -63,24 +59,14 @@ export const OpposingForcePanel = (props, context) => {
         </Stack>
         {admin_mode ? (
           <>
-            {tab === 1 && (
-              <AdminTab />
-            )}
-            {tab === 2 && (
-              <AdminChatTab />
-            )}
+            {tab === 1 && <AdminTab />}
+            {tab === 2 && <AdminChatTab />}
           </>
         ) : (
           <>
-            {tab === 1 && (
-              <OpposingForceTab />
-            )}
-            {tab === 2 && (
-              <EquipmentTab />
-            )}
-            {tab === 3 && (
-              <AdminChatTab />
-            )}
+            {tab === 1 && <OpposingForceTab />}
+            {tab === 2 && <EquipmentTab />}
+            {tab === 3 && <AdminChatTab />}
           </>
         )}
       </Window.Content>
@@ -107,25 +93,38 @@ export const OpposingForceTab = (props, context) => {
   return (
     <Stack vertical grow>
       <Stack.Item>
-        <Section title={handling_admin ? "Control - Handling Admin: " + handling_admin : "Control"}>
+        <Section
+          title={
+            handling_admin
+              ? 'Control - Handling Admin: ' + handling_admin
+              : 'Control'
+          }>
           <Stack>
             <Stack.Item>
               <Button
                 icon="check"
                 color="good"
-                tooltip={"Submit your application for review." + (blocked ? " (Blocked)" : "")}
+                tooltip={
+                  'Submit your application for review.' +
+                  (blocked ? ' (Blocked)' : '')
+                }
                 disabled={!can_submit || blocked}
                 content="Submit Application"
-                onClick={() => act('submit')} />
+                onClick={() => act('submit')}
+              />
             </Stack.Item>
             <Stack.Item>
               <Button
                 icon="question"
                 color="orange"
-                tooltip={"Request an update from the admins." + (request_updates_muted ? " (Muted)" : "")}
+                tooltip={
+                  'Request an update from the admins.' +
+                  (request_updates_muted ? ' (Muted)' : '')
+                }
                 disabled={!can_request_update || request_updates_muted}
                 content="Ask For Update"
-                onClick={() => act('request_update')} />
+                onClick={() => act('request_update')}
+              />
             </Stack.Item>
             <Stack.Item>
               <Button
@@ -134,20 +133,22 @@ export const OpposingForceTab = (props, context) => {
                 tooltip="Modify your application, this will reset all authorisations."
                 disabled={can_edit}
                 content="Modify Request"
-                onClick={() => act('modify_request')} />
+                onClick={() => act('modify_request')}
+              />
             </Stack.Item>
             <Stack.Item>
               <Button
                 icon="trash"
                 color="bad"
                 tooltip="Remove your application from the queue."
-                disabled={status === "Not submitted"}
+                disabled={status === 'Not submitted'}
                 content="Withdraw Application"
-                onClick={() => act('close_application')} />
+                onClick={() => act('close_application')}
+              />
             </Stack.Item>
           </Stack>
           <NoticeBox
-            color={approved ? "good" : denied ? "bad" : "orange"}
+            color={approved ? 'good' : denied ? 'bad' : 'orange'}
             mt={2}>
             {status}
           </NoticeBox>
@@ -160,22 +161,25 @@ export const OpposingForceTab = (props, context) => {
             height="100px"
             value={backstory}
             placeholder="Provide a description of why you want to do bad things. Include specifics such as what lead upto the events that made you want to do bad things, think of it as though you were your character, react appropriately."
-            onChange={(_e, value) => act('set_backstory', {
-              backstory: value,
-            })} />
+            onChange={(_e, value) =>
+              act('set_backstory', {
+                backstory: value,
+              })
+            }
+          />
         </Section>
       </Stack.Item>
       <Stack.Item>
-        <Section title="Objectives"
-          buttons={(
+        <Section
+          title="Objectives"
+          buttons={
             <Button
               icon="plus"
               content="Add Objective"
-              onClick={() => act('add_objective')} />
-          )}>
-          { !!objectives.length && (
-            <OpposingForceObjectives />
-          )}
+              onClick={() => act('add_objective')}
+            />
+          }>
+          {!!objectives.length && <OpposingForceObjectives />}
         </Section>
       </Stack.Item>
     </Stack>
@@ -184,29 +188,39 @@ export const OpposingForceTab = (props, context) => {
 
 export const OpposingForceObjectives = (props, context) => {
   const { act, data } = useBackend(context);
-  const {
-    objectives = [],
-    can_edit,
-  } = data;
+  const { objectives = [], can_edit } = data;
 
-  const [
-    selectedObjectiveID,
-    setSelectedObjective,
-  ] = useLocalState(context, 'objectives', objectives[0]?.id);
+  const [selectedObjectiveID, setSelectedObjective] = useLocalState(
+    context,
+    'objectives',
+    objectives[0]?.id
+  );
 
-  const selectedObjective = objectives.find(objective => {
+  const selectedObjective = objectives.find((objective) => {
     return objective.id === selectedObjectiveID;
   });
 
   return (
     <Stack vertical grow>
-      { objectives.length > 0 && (
+      {objectives.length > 0 && (
         <Stack.Item>
           <Tabs fill>
-            {objectives.map(objective => (
+            {objectives.map((objective) => (
               <Tabs.Tab
-                color={objective.status_text === "Not Reviewed" ? "yellow" : objective.approved ? "good" : "bad"}
-                textColor={objective.status_text === "Not Reviewed" ? "yellow" : objective.approved ? "good" : "bad"}
+                color={
+                  objective.status_text === 'Not Reviewed'
+                    ? 'yellow'
+                    : objective.approved
+                      ? 'good'
+                      : 'bad'
+                }
+                textColor={
+                  objective.status_text === 'Not Reviewed'
+                    ? 'yellow'
+                    : objective.approved
+                      ? 'good'
+                      : 'bad'
+                }
                 width="25%"
                 key={objective.id}
                 selected={objective.id === selectedObjectiveID}
@@ -223,8 +237,11 @@ export const OpposingForceObjectives = (props, context) => {
                       color="bad"
                       textAlign="center"
                       tooltip="Remove objective"
-                      onClick={() => act('remove_objective', {
-                        objective_ref: objective.ref })}
+                      onClick={() =>
+                        act('remove_objective', {
+                          objective_ref: objective.ref,
+                        })
+                      }
                     />
                   </Stack.Item>
                 </Stack>
@@ -233,31 +250,32 @@ export const OpposingForceObjectives = (props, context) => {
           </Tabs>
         </Stack.Item>
       )}
-      { selectedObjective ? (
+      {selectedObjective ? (
         <Stack.Item>
           <Stack vertical>
             <Stack.Item>
               <Stack.Item>
                 <Stack vertical>
-                  <Stack.Item >
-                    Title
-                  </Stack.Item>
+                  <Stack.Item>Title</Stack.Item>
                   <Stack.Item>
                     <Input
                       disabled={!can_edit}
                       width="100%"
                       placeholder="blank objective"
                       value={selectedObjective.title}
-                      onChange={(e, value) => act('set_objective_title', {
-                        objective_ref: selectedObjective.ref,
-                        title: value,
-                      })} />
+                      onChange={(e, value) =>
+                        act('set_objective_title', {
+                          objective_ref: selectedObjective.ref,
+                          title: value,
+                        })
+                      }
+                    />
                   </Stack.Item>
                 </Stack>
               </Stack.Item>
               <Stack.Item>
                 <Stack vertical mt={2}>
-                  <Stack.Item >
+                  <Stack.Item>
                     Intensity: {selectedObjective.text_intensity}
                   </Stack.Item>
                   <Stack.Item>
@@ -266,13 +284,16 @@ export const OpposingForceObjectives = (props, context) => {
                       step={0.1}
                       stepPixelSize={0.1}
                       value={selectedObjective.intensity}
-                      format={value => round(value)}
+                      format={(value) => round(value)}
                       minValue={0}
                       maxValue={500}
-                      onDrag={(e, value) => act('set_objective_intensity', {
-                        objective_ref: selectedObjective.ref,
-                        new_intensity_level: value,
-                      })} />
+                      onDrag={(e, value) =>
+                        act('set_objective_intensity', {
+                          objective_ref: selectedObjective.ref,
+                          new_intensity_level: value,
+                        })
+                      }
+                    />
                   </Stack.Item>
                   <Stack.Item>
                     <Stack>
@@ -283,45 +304,60 @@ export const OpposingForceObjectives = (props, context) => {
                           disabled={!can_edit}
                           icon="laugh"
                           color="good"
-                          onClick={() => act('set_objective_intensity', {
-                            objective_ref: selectedObjective.ref,
-                            new_intensity_level: 50,
-                          })} />
+                          onClick={() =>
+                            act('set_objective_intensity', {
+                              objective_ref: selectedObjective.ref,
+                              new_intensity_level: 50,
+                            })
+                          }
+                        />
                         <Button
                           mr={15}
                           disabled={!can_edit}
                           icon="smile"
                           color="teal"
-                          onClick={() => act('set_objective_intensity', {
-                            objective_ref: selectedObjective.ref,
-                            new_intensity_level: 150,
-                          })} />
+                          onClick={() =>
+                            act('set_objective_intensity', {
+                              objective_ref: selectedObjective.ref,
+                              new_intensity_level: 150,
+                            })
+                          }
+                        />
                         <Button
                           mr={15}
                           disabled={!can_edit}
                           icon="meh-blank"
                           color="olive"
-                          onClick={() => act('set_objective_intensity', {
-                            objective_ref: selectedObjective.ref,
-                            new_intensity_level: 250,
-                          })} />
+                          onClick={() =>
+                            act('set_objective_intensity', {
+                              objective_ref: selectedObjective.ref,
+                              new_intensity_level: 250,
+                            })
+                          }
+                        />
                         <Button
                           mr={15}
                           disabled={!can_edit}
                           icon="frown"
                           color="orange"
-                          onClick={() => act('set_objective_intensity', {
-                            objective_ref: selectedObjective.ref,
-                            new_intensity_level: 350,
-                          })} />
+                          onClick={() =>
+                            act('set_objective_intensity', {
+                              objective_ref: selectedObjective.ref,
+                              new_intensity_level: 350,
+                            })
+                          }
+                        />
                         <Button
                           disabled={!can_edit}
                           icon="grimace"
                           color="red"
-                          onClick={() => act('set_objective_intensity', {
-                            objective_ref: selectedObjective.ref,
-                            new_intensity_level: 450,
-                          })} />
+                          onClick={() =>
+                            act('set_objective_intensity', {
+                              objective_ref: selectedObjective.ref,
+                              new_intensity_level: 450,
+                            })
+                          }
+                        />
                       </Stack.Item>
                     </Stack>
                   </Stack.Item>
@@ -334,7 +370,8 @@ export const OpposingForceObjectives = (props, context) => {
                     <Button
                       icon="info"
                       tooltip="Input objective description here, be descriptive about what you want to do, such as 'Destroy the Death Star' or 'Destroy the Death Star and the Death Star Base'."
-                      color="light-gray" />
+                      color="light-gray"
+                    />
                   </Stack.Item>
                   <Stack.Item>
                     <TextArea
@@ -342,10 +379,13 @@ export const OpposingForceObjectives = (props, context) => {
                       disabled={!can_edit}
                       height="85px"
                       value={selectedObjective.description}
-                      onChange={(e, value) => act('set_objective_description', {
-                        objective_ref: selectedObjective.ref,
-                        new_desciprtion: value,
-                      })} />
+                      onChange={(e, value) =>
+                        act('set_objective_description', {
+                          objective_ref: selectedObjective.ref,
+                          new_desciprtion: value,
+                        })
+                      }
+                    />
                   </Stack.Item>
                 </Stack>
               </Stack.Item>
@@ -356,36 +396,41 @@ export const OpposingForceObjectives = (props, context) => {
                     <Button
                       icon="info"
                       tooltip="Input justification for the objective here, make sure you have a good reason for the objective."
-                      color="light-gray" />
+                      color="light-gray"
+                    />
                   </Stack.Item>
                   <Stack.Item>
                     <TextArea
                       disabled={!can_edit}
                       height="85px"
                       value={selectedObjective.justification}
-                      onChange={(e, value) => act('set_objective_justification', {
-                        objective_ref: selectedObjective.ref,
-                        new_justification: value,
-                      })} />
+                      onChange={(e, value) =>
+                        act('set_objective_justification', {
+                          objective_ref: selectedObjective.ref,
+                          new_justification: value,
+                        })
+                      }
+                    />
                   </Stack.Item>
                 </Stack>
               </Stack.Item>
               <Stack.Item mt={2}>
-                <NoticeBox color={selectedObjective.approved ? "good" : "bad"}>
-                  {selectedObjective.status_text === "Not Reviewed" ? (
-                    "Objective Not Reviewed"
-                  ) : (
-                    selectedObjective.approved ? "Objective Approved" : selectedObjective.denied_text ? "Objective Denied - Reason: " + selectedObjective.denied_text : "Objective Denied"
-                  )}
+                <NoticeBox color={selectedObjective.approved ? 'good' : 'bad'}>
+                  {selectedObjective.status_text === 'Not Reviewed'
+                    ? 'Objective Not Reviewed'
+                    : selectedObjective.approved
+                      ? 'Objective Approved'
+                      : selectedObjective.denied_text
+                        ? 'Objective Denied - Reason: ' +
+                        selectedObjective.denied_text
+                        : 'Objective Denied'}
                 </NoticeBox>
               </Stack.Item>
             </Stack.Item>
           </Stack>
         </Stack.Item>
       ) : (
-        <Stack.Item>
-          No objectives selected.
-        </Stack.Item>
+        <Stack.Item>No objectives selected.</Stack.Item>
       )}
     </Stack>
   );
@@ -393,52 +438,52 @@ export const OpposingForceObjectives = (props, context) => {
 
 export const EquipmentTab = (props, context) => {
   const { act, data } = useBackend(context);
-  const {
-    equipment_list = [],
-    selected_equipment = [],
-    can_edit,
-  } = data;
+  const { equipment_list = [], selected_equipment = [], can_edit } = data;
   return (
     <Stack vertical grow>
       <Stack.Item>
-        <Section
-          title="Selected Equipment">
+        <Section title="Selected Equipment">
           {selected_equipment.length === 0 ? (
-            <Box color="bad">
-              No equipment selected.
-            </Box>
+            <Box color="bad">No equipment selected.</Box>
           ) : (
-            selected_equipment.map(equipment => (
+            selected_equipment.map((equipment) => (
               <>
                 <LabeledList key={equipment.ref}>
                   <LabeledList.Item
-                    buttons={(
+                    buttons={
                       <>
                         <NumberInput
                           animated
                           value={equipment.count}
                           minValue={1}
                           maxValue={5}
-                          onChange={(e, value) => act('set_equipment_count', {
-                            selected_equipment_ref: equipment.ref,
-                            new_equipment_count: value,
-                          })} />
+                          onChange={(e, value) =>
+                            act('set_equipment_count', {
+                              selected_equipment_ref: equipment.ref,
+                              new_equipment_count: value,
+                            })
+                          }
+                        />
                         <Button
                           icon="times"
                           color="bad"
                           content="Remove"
-                          onClick={() => act('remove_equipment', {
-                            selected_equipment_ref: equipment.ref,
-                          })} />
+                          onClick={() =>
+                            act('remove_equipment', {
+                              selected_equipment_ref: equipment.ref,
+                            })
+                          }
+                        />
                       </>
-                    )}
-                    label={equipment.name} />
+                    }
+                    label={equipment.name}
+                  />
                   <LabeledList.Item label="Status">
-                    {equipment.denied_reason ? (
-                      equipment.status + " - Reason: " + equipment.denied_reason
-                    ) : (
-                      equipment.status
-                    )}
+                    {equipment.denied_reason
+                      ? equipment.status +
+                      ' - Reason: ' +
+                      equipment.denied_reason
+                      : equipment.status}
                   </LabeledList.Item>
                 </LabeledList>
                 <Input
@@ -448,36 +493,42 @@ export const EquipmentTab = (props, context) => {
                   width="100%"
                   placeholder="Reason for item"
                   value={equipment.reason}
-                  onChange={(e, value) => act('set_equipment_reason', {
-                    selected_equipment_ref: equipment.ref,
-                    new_equipment_reason: value,
-                  })} />
+                  onChange={(e, value) =>
+                    act('set_equipment_reason', {
+                      selected_equipment_ref: equipment.ref,
+                      new_equipment_reason: value,
+                    })
+                  }
+                />
               </>
-            )
-            ))}
+            ))
+          )}
         </Section>
         <Section title="Available Equipment">
           <Stack vertical fill>
-            {equipment_list.map(equipment_category => (
+            {equipment_list.map((equipment_category) => (
               <Stack.Item key={equipment_category.category}>
                 <Collapsible
                   title={equipment_category.category}
                   key={equipment_category.category}>
                   <Section>
-                    {equipment_category.items.map(item => (
+                    {equipment_category.items.map((item) => (
                       <Section
                         title={item.name}
                         key={item.ref}
-                        buttons={(
+                        buttons={
                           <Button
                             icon="check"
                             color="good"
                             content="Select"
                             disabled={!can_edit}
-                            onClick={() => act('select_equipment', {
-                              equipment_ref: item.ref,
-                            })} />
-                        )}>
+                            onClick={() =>
+                              act('select_equipment', {
+                                equipment_ref: item.ref,
+                              })
+                            }
+                          />
+                        }>
                         <LabeledList>
                           <LabeledList.Item label="Description">
                             {item.description}
@@ -496,23 +547,15 @@ export const EquipmentTab = (props, context) => {
   );
 };
 
-
 export const AdminChatTab = (props, context) => {
   const { act, data } = useBackend(context);
-  const {
-    messages = [],
-  } = data;
+  const { messages = [] } = data;
   return (
     <Stack vertical fill>
-      <Stack.Item grow={10} >
-        <Section
-          scrollable
-          fill>
-          {messages.map(message => (
-            <Box
-              key={message.msg}>
-              {message.msg}
-            </Box>
+      <Stack.Item grow={10}>
+        <Section scrollable fill>
+          {messages.map((message) => (
+            <Box key={message.msg}>{message.msg}</Box>
           ))}
         </Section>
       </Stack.Item>
@@ -523,9 +566,12 @@ export const AdminChatTab = (props, context) => {
           selfClear
           placeholder="Send a message or command using '/'"
           mt={1}
-          onEnter={(e, value) => act('send_message', {
-            message: value,
-          })} />
+          onEnter={(e, value) =>
+            act('send_message', {
+              message: value,
+            })
+          }
+        />
       </Stack.Item>
     </Stack>
   );
@@ -551,12 +597,8 @@ export const AdminTab = (props, context) => {
       <Stack.Item>
         <Section title="User Information">
           <LabeledList>
-            <LabeledList.Item label="Name">
-              {owner_mob}
-            </LabeledList.Item>
-            <LabeledList.Item label="Role">
-              {owner_role}
-            </LabeledList.Item>
+            <LabeledList.Item label="Name">{owner_mob}</LabeledList.Item>
+            <LabeledList.Item label="Role">{owner_role}</LabeledList.Item>
             <LabeledList.Item label="Application Status">
               {raw_status}
             </LabeledList.Item>
@@ -571,7 +613,8 @@ export const AdminTab = (props, context) => {
                 tooltip="Approve the application, and any approved objectives."
                 disabled={approved}
                 content="Approve"
-                onClick={() => act('approve')} />
+                onClick={() => act('approve')}
+              />
             </Stack.Item>
             <Stack.Item>
               <Button
@@ -580,7 +623,8 @@ export const AdminTab = (props, context) => {
                 tooltip="Approve all objectives and equipment as well as the application. Make sure you have reviewed the application and objectives first!"
                 disabled={approved}
                 content="Approve All"
-                onClick={() => act('approve_all')} />
+                onClick={() => act('approve_all')}
+              />
             </Stack.Item>
             <Stack.Item>
               <Button
@@ -589,7 +633,8 @@ export const AdminTab = (props, context) => {
                 disabled={!approved || equipment_issued}
                 tooltip="Issue the player with all approved equipment."
                 content="Issue Gear"
-                onClick={() => act('issue_gear')} />
+                onClick={() => act('issue_gear')}
+              />
             </Stack.Item>
             <Stack.Item>
               <Button
@@ -597,7 +642,8 @@ export const AdminTab = (props, context) => {
                 color="red"
                 disabled={denied}
                 content="Deny"
-                onClick={() => act('deny')} />
+                onClick={() => act('deny')}
+              />
             </Stack.Item>
             <Stack.Item>
               {blocked ? (
@@ -606,14 +652,16 @@ export const AdminTab = (props, context) => {
                   color="green"
                   tooltip="Unblock the user from submitting applications."
                   content="Unblock User"
-                  onClick={() => act('toggle_block')} />
+                  onClick={() => act('toggle_block')}
+                />
               ) : (
                 <Button
                   icon="ban"
                   color="red"
                   tooltip="Block the user from submitting applications."
                   content="Block User"
-                  onClick={() => act('toggle_block')} />
+                  onClick={() => act('toggle_block')}
+                />
               )}
             </Stack.Item>
             <Stack.Item>
@@ -622,7 +670,8 @@ export const AdminTab = (props, context) => {
                 color="blue"
                 tooltip="Assign yourself as the handling admin."
                 content="Handle"
-                onClick={() => act('handle')} />
+                onClick={() => act('handle')}
+              />
             </Stack.Item>
           </Stack>
           <Stack>
@@ -632,13 +681,15 @@ export const AdminTab = (props, context) => {
                   icon="volume-up"
                   color="green"
                   content="Unmute Help Requests"
-                  onClick={() => act('mute_request_updates')} />
+                  onClick={() => act('mute_request_updates')}
+                />
               ) : (
                 <Button
                   icon="volume-mute"
                   color="red"
                   content="Mute Help Requests"
-                  onClick={() => act('mute_request_updates')} />
+                  onClick={() => act('mute_request_updates')}
+                />
               )}
             </Stack.Item>
             <Stack.Item>
@@ -647,7 +698,8 @@ export const AdminTab = (props, context) => {
                 color="teal"
                 tooltip="Follow User Mob"
                 content="Follow"
-                onClick={() => act('flw_user')} />
+                onClick={() => act('flw_user')}
+              />
             </Stack.Item>
           </Stack>
         </Section>
@@ -655,46 +707,53 @@ export const AdminTab = (props, context) => {
       <Stack.Item>
         <Section title="Backstory">
           {backstory.length === 0 ? (
-            <Box color="bad">
-              No backstory set.
-            </Box>
+            <Box color="bad">No backstory set.</Box>
           ) : (
-            <Box preserveWhitespace>
-              {backstory}
-            </Box>
+            <Box preserveWhitespace>{backstory}</Box>
           )}
         </Section>
       </Stack.Item>
       <Stack.Item>
         <Section title="Objectives">
           {objectives.length === 0 ? (
-            <Box color="bad">
-              No objectives selected.
-            </Box>
+            <Box color="bad">No objectives selected.</Box>
           ) : (
             objectives.map((objective, index) => (
               <Section
-                title={index + 1 + ". " + objective.title} key={objective.id}
-                buttons={(
+                title={index + 1 + '. ' + objective.title}
+                key={objective.id}
+                buttons={
                   <>
                     <Button
                       icon="check"
                       color="good"
-                      disabled={objective.approved && objective.status_text !== "Not Reviewed"}
+                      disabled={
+                        objective.approved &&
+                        objective.status_text !== 'Not Reviewed'
+                      }
                       content="Approve Objective"
-                      onClick={() => act('approve_objective', {
-                        objective_ref: objective.ref,
-                      })} />
+                      onClick={() =>
+                        act('approve_objective', {
+                          objective_ref: objective.ref,
+                        })
+                      }
+                    />
                     <Button
                       icon="times"
                       color="bad"
-                      disabled={!objective.approved && objective.status_text !== "Not Reviewed"}
+                      disabled={
+                        !objective.approved &&
+                        objective.status_text !== 'Not Reviewed'
+                      }
                       content="Deny Objective"
-                      onClick={() => act('deny_objective', {
-                        objective_ref: objective.ref,
-                      })} />
+                      onClick={() =>
+                        act('deny_objective', {
+                          objective_ref: objective.ref,
+                        })
+                      }
+                    />
                   </>
-                )}>
+                }>
                 <LabeledList key={objective.id}>
                   <LabeledList.Item label="Description">
                     {objective.description}
@@ -703,14 +762,20 @@ export const AdminTab = (props, context) => {
                     {objective.justification}
                   </LabeledList.Item>
                   <LabeledList.Item label="Intensity">
-                    {"(" + objective.intensity + ") " + objective.text_intensity}
+                    {'(' +
+                      objective.intensity +
+                      ') ' +
+                      objective.text_intensity}
                   </LabeledList.Item>
                   <LabeledList.Item label="Status">
-                    {objective.status_text === "Not Reviewed" ? (
-                      "Objective Not Reviewed"
-                    ) : (
-                      objective.approved ? "Objective Approved" : objective.denied_text ? "Objective Denied - Reason: " + objective.denied_text : "Objective Denied"
-                    )}
+                    {objective.status_text === 'Not Reviewed'
+                      ? 'Objective Not Reviewed'
+                      : objective.approved
+                        ? 'Objective Approved'
+                        : objective.denied_text
+                          ? 'Objective Denied - Reason: ' +
+                          objective.denied_text
+                          : 'Objective Denied'}
                   </LabeledList.Item>
                 </LabeledList>
               </Section>
@@ -721,33 +786,44 @@ export const AdminTab = (props, context) => {
       <Stack.Item>
         <Section title="Equipment">
           {selected_equipment.length === 0 ? (
-            <Box color="bad">
-              No equipment selected.
-            </Box>
+            <Box color="bad">No equipment selected.</Box>
           ) : (
             selected_equipment.map((equipment, index) => (
               <Section
-                title={equipment.name} key={equipment.ref}
-                buttons={(
+                title={equipment.name}
+                key={equipment.ref}
+                buttons={
                   <>
                     <Button
                       icon="check"
                       color="good"
-                      disabled={equipment.approved && equipment.status !== "Not Reviewed"}
+                      disabled={
+                        equipment.approved &&
+                        equipment.status !== 'Not Reviewed'
+                      }
                       content="Approve Equipment"
-                      onClick={() => act('approve_equipment', {
-                        selected_equipment_ref: equipment.ref,
-                      })} />
+                      onClick={() =>
+                        act('approve_equipment', {
+                          selected_equipment_ref: equipment.ref,
+                        })
+                      }
+                    />
                     <Button
                       icon="times"
                       color="bad"
-                      disabled={!equipment.approved && equipment.status !== "Not Reviewed"}
+                      disabled={
+                        !equipment.approved &&
+                        equipment.status !== 'Not Reviewed'
+                      }
                       content="Deny Equipment"
-                      onClick={() => act('deny_equipment', {
-                        selected_equipment_ref: equipment.ref,
-                      })} />
+                      onClick={() =>
+                        act('deny_equipment', {
+                          selected_equipment_ref: equipment.ref,
+                        })
+                      }
+                    />
                   </>
-                )}>
+                }>
                 <LabeledList key={equipment.ref}>
                   <LabeledList.Item label="Description">
                     {equipment.description}
@@ -756,11 +832,11 @@ export const AdminTab = (props, context) => {
                     {equipment.reason}
                   </LabeledList.Item>
                   <LabeledList.Item label="Status">
-                    {equipment.denied_reason ? (
-                      equipment.status + " - Reason: " + equipment.denied_reason
-                    ) : (
-                      equipment.status
-                    )}
+                    {equipment.denied_reason
+                      ? equipment.status +
+                      ' - Reason: ' +
+                      equipment.denied_reason
+                      : equipment.status}
                   </LabeledList.Item>
                   <LabeledList.Item label="Amount">
                     {equipment.count}
@@ -777,4 +853,3 @@ export const AdminTab = (props, context) => {
     </Stack>
   );
 };
-

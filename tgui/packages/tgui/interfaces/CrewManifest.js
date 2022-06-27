@@ -4,13 +4,13 @@ import { Icon, Section, Table, Tooltip } from '../components';
 import { Window } from '../layouts';
 
 const commandJobs = [
-  "Head of Personnel",
-  "Head of Security",
-  "Chief Engineer",
-  "Research Director",
-  "Chief Medical Officer",
-  "Quartermaster", // SKYRAT EDIT
-  "Nanotrasen Consultant", // SKYRAT EDIT
+  'Head of Personnel',
+  'Head of Security',
+  'Chief Engineer',
+  'Research Director',
+  'Chief Medical Officer',
+  'Quartermaster', // SKYRAT EDIT
+  'Nanotrasen Consultant', // SKYRAT EDIT
 ];
 
 // SKYRAT EDIT CHANGE BEGIN - ALTERNATIVE_JOB_TITLES
@@ -44,21 +44,14 @@ export const CrewManifest = (props, context) => {
                       'CrewManifest__Cell',
                       'CrewManifest__Icons',
                     ])}
-                    collapsing
-                  >
+                    collapsing>
                     {positions[dept].exceptions.includes(crewMember.trim) && (
-                      <Tooltip
-                        content="No position limit"
-                        position="bottom"
-                      >
+                      <Tooltip content="No position limit" position="bottom">
                         <Icon className="CrewManifest__Icon" name="infinity" />
                       </Tooltip>
                     )}
-                    {crewMember.trim === "Captain" && (
-                      <Tooltip
-                        content="Captain"
-                        position="bottom"
-                      >
+                    {crewMember.trim === 'Captain' && (
+                      <Tooltip content="Captain" position="bottom">
                         <Icon
                           className={classes([
                             'CrewManifest__Icon',
@@ -69,10 +62,7 @@ export const CrewManifest = (props, context) => {
                       </Tooltip>
                     )}
                     {commandJobs.includes(crewMember.trim) && (
-                      <Tooltip
-                        content="Member of command"
-                        position="bottom"
-                      >
+                      <Tooltip content="Member of command" position="bottom">
                         <Icon
                           className={classes([
                             'CrewManifest__Icon',
