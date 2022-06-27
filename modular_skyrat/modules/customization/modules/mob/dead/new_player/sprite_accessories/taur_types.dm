@@ -9,9 +9,10 @@
 	genetic = TRUE
 	organ_type = /obj/item/organ/external/taur_body
 	flags_for_organ = SPRITE_ACCESSORY_HIDE_SHOES
-	var/taur_mode = NONE //Must be a single specific tauric suit variation bitflag. Don't do FLAG_1|FLAG_2
-	var/alt_taur_mode = NONE //Same as above.
-	var/hide_markings = FALSE //Any taur part that has "legs" should not hide markings
+	/// Must be a single specific tauric suit variation bitflag. Don't do FLAG_1|FLAG_2
+	var/taur_mode = NONE
+	/// Must be a single specific tauric suit variation bitflag. Don't do FLAG_1|FLAG_2
+	var/alt_taur_mode = NONE
 
 /datum/sprite_accessory/taur/is_hidden(mob/living/carbon/human/target, obj/item/bodypart/limb)
 	if(target.wear_suit && (target.wear_suit.flags_inv & HIDEJUMPSUIT))
@@ -62,7 +63,7 @@
 	return ..()
 
 
-/obj/item/organ/external/taur_body/Remove(mob/living/carbon/organ_owner, special)
+/obj/item/organ/external/taur_body/Remove(mob/living/carbon/organ_owner, special, moving)
 	var/obj/item/bodypart/l_leg/left_leg = organ_owner.get_bodypart(BODY_ZONE_L_LEG)
 	var/obj/item/bodypart/r_leg/right_leg = organ_owner.get_bodypart(BODY_ZONE_R_LEG)
 
