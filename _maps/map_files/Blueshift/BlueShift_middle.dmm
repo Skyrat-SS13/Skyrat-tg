@@ -14563,7 +14563,7 @@
 /obj/item/clothing/gloves/color/yellow,
 /obj/item/wirecutters,
 /obj/item/paper/fluff{
-	info = "Please keep in mind that the shiftstart powerdraw can be very high, the ship is provided with capacitor banks that will allow you some breathing room to set up, but generally you want about 6 to 8 emitters running at minimum after a few minutes, keep a close eye on overvoltage on the main powernet too as you don't want to shock the crewmembers." ;
+	info = "Please keep in mind that the shiftstart powerdraw can be very high, the ship is provided with capacitor banks that will allow you some breathing room to set up, but generally you want about 6 to 8 emitters running at minimum after a few minutes, keep a close eye on overvoltage on the main powernet too as you don't want to shock the crewmembers.";
 	name = "Note to Electricians"
 	},
 /turf/open/floor/iron/dark,
@@ -16578,8 +16578,9 @@
 /turf/open/floor/iron/dark,
 /area/station/security/detectives_office)
 "ffv" = (
-/obj/structure/industrial_lift{
-	id = "CargoElevator"
+/obj/structure/industrial_lift,
+/obj/effect/landmark/lift_id{
+	specific_lift_id = "CargoElevator"
 	},
 /turf/open/openspace,
 /area/station/cargo/sorting)
@@ -16805,9 +16806,7 @@
 	},
 /area/station/hallway/primary/port)
 "fiI" = (
-/obj/structure/industrial_lift{
-	id = "CargoElevator"
-	},
+/obj/structure/industrial_lift,
 /obj/structure/railing,
 /turf/open/openspace,
 /area/station/cargo/sorting)
@@ -22412,9 +22411,7 @@
 	},
 /area/station/security/prison/upper)
 "hek" = (
-/obj/structure/industrial_lift{
-	id = "CargoElevator"
-	},
+/obj/structure/industrial_lift,
 /obj/structure/railing{
 	dir = 1
 	},
@@ -28880,10 +28877,11 @@
 /turf/open/floor/plating,
 /area/station/maintenance/starboard/fore)
 "jkC" = (
-/obj/structure/industrial_lift{
-	id = "publicElevator2"
-	},
+/obj/structure/industrial_lift,
 /obj/machinery/light/floor,
+/obj/effect/landmark/lift_id{
+	specific_lift_id = "publicElevator2"
+	},
 /turf/open/openspace,
 /area/station/hallway/primary/starboard)
 "jkH" = (
@@ -29493,9 +29491,7 @@
 /turf/open/floor/iron,
 /area/station/commons/storage/primary)
 "juU" = (
-/obj/structure/industrial_lift{
-	id = "CargoElevator"
-	},
+/obj/structure/industrial_lift,
 /obj/structure/railing,
 /obj/structure/marker_beacon/burgundy,
 /turf/open/openspace,
@@ -34007,6 +34003,10 @@
 	},
 /turf/open/floor/iron,
 /area/station/hallway/primary/port)
+"kSw" = (
+/obj/structure/industrial_lift,
+/turf/open/openspace,
+/area/station/cargo/sorting)
 "kSy" = (
 /obj/machinery/door/airlock/maintenance_hatch{
 	name = "Engineering - Security Maintenance"
@@ -43709,9 +43709,7 @@
 	},
 /area/station/hallway/primary/starboard)
 "omM" = (
-/obj/structure/industrial_lift{
-	id = "CargoElevator"
-	},
+/obj/structure/industrial_lift,
 /obj/structure/railing{
 	dir = 1
 	},
@@ -45358,18 +45356,18 @@
 /obj/item/storage/box/ingredients/fiesta,
 /obj/item/storage/box/ingredients/american,
 /obj/item/reagent_containers/food/condiment/flour{
-	list_reagents = list(/datum/reagent/consumable/flour = 600);
+	list_reagents = list(/datum/reagent/consumable/flour=600);
 	name = "Premium All-Purpose Flour (16KG)";
 	volume = 600
 	},
 /obj/item/reagent_containers/food/condiment/milk,
 /obj/item/reagent_containers/food/condiment/enzyme{
-	list_reagents = list(/datum/reagent/consumable/enzyme = 500);
+	list_reagents = list(/datum/reagent/consumable/enzyme=500);
 	name = "universe-sized universal enyzyme";
 	volume = 500
 	},
 /obj/item/reagent_containers/food/condiment/rice{
-	list_reagents = list(/datum/reagent/consumable/rice = 150);
+	list_reagents = list(/datum/reagent/consumable/rice=150);
 	name = "Basmati Rice Sack (4KG)";
 	volume = 150
 	},
@@ -114173,7 +114171,7 @@ sej
 oZR
 rLD
 omM
-ffv
+kSw
 juU
 unB
 ptb
