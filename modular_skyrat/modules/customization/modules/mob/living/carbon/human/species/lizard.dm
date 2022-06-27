@@ -48,4 +48,4 @@
 /datum/species/lizard/ashwalker
 	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,HAS_FLESH,HAS_BONE,NO_UNDERWEAR,HAIR,FACEHAIR)
 	always_customizable = TRUE
-	species_language_holder = /datum/language_holder/lizard/ash
+	learnable_languages = list(/datum/language/ashtongue)

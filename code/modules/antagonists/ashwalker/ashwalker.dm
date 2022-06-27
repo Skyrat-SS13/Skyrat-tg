@@ -49,6 +49,17 @@
 		owner.teach_crafting_recipe(recipe_datum)
 	//SKYRAT EDIT: Recipes for Tribals
 
+//SKYRAT EDIT: Ashtongue for Ashwalkers
+/datum/antagonist/ashwalker/apply_innate_effects(mob/living/mob_override)
+	. = ..()
+	var/mob/living/owner_mob = mob_override || owner.current
+	var/datum/language_holder/holder = owner_mob.get_language_holder()
+	holder.remove_language(/datum/language/common, TRUE, TRUE, LANGUAGE_ALL)
+	holder.remove_language(/datum/language/draconic, TRUE, TRUE, LANGUAGE_ALL)
+	holder.grant_language(/datum/language/ashtongue, TRUE, TRUE, LANGUAGE_ALL)
+	holder.selected_language = /datum/language/ashtongue
+//SKYRAT EDIT: Ashtongue for Ashwalkers
+
 /datum/antagonist/ashwalker/on_removal()
 	. = ..()
 	UnregisterSignal(owner.current, COMSIG_MOB_EXAMINATE)
