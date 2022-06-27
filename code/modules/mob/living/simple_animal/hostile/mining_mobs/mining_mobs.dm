@@ -54,8 +54,16 @@
 /mob/living/simple_animal/hostile/asteroid/death(gibbed)
 	SSblackbox.record_feedback("tally", "mobs_killed_mining", 1, type)
 	var/datum/status_effect/crusher_damage/C = has_status_effect(/datum/status_effect/crusher_damage)
+	var/crusher_loot_spawned = FALSE //SKYRAT ADDITION
 	if(C && crusher_loot && prob((C.total_damage/maxHealth) * crusher_drop_mod)) //on average, you'll need to kill 4 creatures before getting the item
 		spawn_crusher_loot()
+		crusher_loot_spawned = TRUE //SKYRAT ADDITION
+	//SKYRAT ADDITION START - ASHWALKER TROPHIES
+	var/datum/status_effect/ashwalker_damage/ashie_damage = has_status_effect(/datum/status_effect/ashwalker_damage)
+	if(!crusher_loot_spawned && ashie_damage && crusher_loot && prob((ashie_damage.total_damage / maxHealth) * crusher_drop_mod))
+		spawn_crusher_loot()
+		crusher_loot_spawned = TRUE
+	//SKYRAT ADDITION END
 	..(gibbed)
 
 /mob/living/simple_animal/hostile/asteroid/proc/spawn_crusher_loot()

@@ -210,3 +210,5 @@
 	var/native_fov = FOV_180_DEGREES //SKYRAT EDIT CHANGE
 	/// Lazy list of FOV traits that will apply a FOV view when handled.
 	var/list/fov_traits
+	///what multiplicative slowdown we get from turfs currently.
+	var/current_turf_slowdown = 0

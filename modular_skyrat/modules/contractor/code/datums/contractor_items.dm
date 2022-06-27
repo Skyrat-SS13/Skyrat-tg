@@ -14,10 +14,6 @@
 
 /// Subtract cost, and spawn if it's an item.
 /datum/contractor_item/proc/handle_purchase(datum/contractor_hub/hub, mob/living/user)
-	if(!item)
-		return
-	if(!ispath(item))
-		CRASH("Contractor item [src] is not assigned a typepath")
 
 	if(hub.contract_rep >= cost)
 		hub.contract_rep -= cost
@@ -33,13 +29,14 @@
 
 	user.playsound_local(user, 'sound/machines/uplinkpurchase.ogg', 100)
 
-	var/atom/item_to_create = new item(get_turf(user))
-	if(user.put_in_hands(item_to_create))
-		to_chat(user, span_notice("Your purchase materializes into your hands!"))
-	else
-		to_chat(user, span_notice("Your purchase materializes onto the floor."))
+	if(item)
+		var/atom/item_to_create = new item(get_turf(user))
+		if(user.put_in_hands(item_to_create))
+			to_chat(user, span_notice("Your purchase materializes into your hands!"))
+		else
+			to_chat(user, span_notice("Your purchase materializes onto the floor."))
 
-	return item_to_create
+	return TRUE
 
 /datum/contractor_item/contract_reroll
 	name = "Contract Reroll"
