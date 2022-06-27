@@ -291,6 +291,11 @@ Key procs
 	selected_language = /datum/language/ashtongue
 	//SKYRAT EDIT END
 
+/* ORIGINAL
+/datum/language_holder/lizard/ash
+	selected_language = /datum/language/draconic
+*/
+
 /datum/language_holder/lizard/silver
 	understood_languages = list(/datum/language/uncommon = list(LANGUAGE_ATOM),
 								/datum/language/draconic = list(LANGUAGE_ATOM))
