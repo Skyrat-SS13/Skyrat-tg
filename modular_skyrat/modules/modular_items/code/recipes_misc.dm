@@ -55,7 +55,7 @@
 /datum/crafting_recipe/ashnecklace
 	name = "Ashen Necklace"
 	result = /obj/item/clothing/neck/necklace/ashwalker
-	reqs = list(/obj/item/stack/sheet/bone = 1, /obj/item/stack/sheet/sinew = 2, /obj/item/organ/regenerative_core = 1)
+	reqs = list(/obj/item/stack/sheet/bone = 1, /obj/item/stack/sheet/sinew = 2, /obj/item/organ/internal/regenerative_core = 1)
 	always_available = FALSE
 	time = 30
 	category = CAT_PRIMAL
