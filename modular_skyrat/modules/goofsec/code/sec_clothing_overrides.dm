@@ -108,6 +108,7 @@
 
 /obj/item/storage/belt/security/webbing
 	uses_advanced_reskins = FALSE
+	unique_reskin = NONE
 
 ///Enables you to quickdraw weapons from security holsters
 /datum/component/storage/concrete/security/open_storage(mob/user)
