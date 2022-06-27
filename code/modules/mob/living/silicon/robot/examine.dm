@@ -1,5 +1,9 @@
 /mob/living/silicon/robot/examine(mob/user)
+<<<<<<< HEAD
 	. = list("<span class='info'>This is [icon2html(src, user)] \a <EM>[src]</EM>!") //SKYRAT EDIT CHANGE
+=======
+	. = list("<span class='info'>This is [icon2html(src, user)] <EM>[src]</EM>!")
+>>>>>>> b864589522f (Examine Blocks (#67937))
 	if(desc)
 		. += "[desc]"
 
@@ -42,6 +46,7 @@
 		if(SOFT_CRIT, UNCONSCIOUS, HARD_CRIT)
 			. += span_warning("It doesn't seem to be responding.")
 		if(DEAD)
+<<<<<<< HEAD
 			. += "<span class='deadsay'>It looks like its system is corrupted and requires a reset.</span>"
 	//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
 	var/flavor_text_link
@@ -64,5 +69,12 @@
 			. += span_notice("<b>They look different than usual:</b> [copytext_char(temporary_flavor_text, 1, 37)]... <a href='?src=[REF(src)];temporary_flavor=1'>More...</a>")
 	//SKYRAT EDIT ADDITION END
 	//. += "*---------*</span>"
+=======
+			. += span_deadsay("It looks like its system is corrupted and requires a reset.")
+	. += "</span>"
+>>>>>>> b864589522f (Examine Blocks (#67937))
 
 	. += ..()
+
+/mob/living/silicon/robot/get_examine_string(mob/user, thats = FALSE)
+	return null

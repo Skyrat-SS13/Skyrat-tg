@@ -48,7 +48,7 @@
 		RegisterSignal(parent, COMSIG_ADD_MOOD_EVENT_RND, .proc/add_event) //Mood events that are only for RnD members
 
 /datum/component/mood/proc/print_mood(mob/user)
-	var/msg = "[span_info("*---------*\n<EM>My current mental status:</EM>")]\n"
+	var/msg = "[span_info("<EM>My current mental status:</EM>")]\n"
 	msg += span_notice("My current sanity: ") //Long term
 	//ORIGINAL
 	/*
@@ -150,7 +150,11 @@
 					msg += span_boldnicegreen(event.description + "\n")
 	else
 		msg += "[span_grey("I don't have much of a reaction to anything right now.")]\n"
+<<<<<<< HEAD
 	to_chat(user, examine_block(msg)) //SKYRAT EDIT CHANGE
+=======
+	to_chat(user, examine_block(msg))
+>>>>>>> b864589522f (Examine Blocks (#67937))
 
 ///Called after moodevent/s have been added/removed.
 /datum/component/mood/proc/update_mood()

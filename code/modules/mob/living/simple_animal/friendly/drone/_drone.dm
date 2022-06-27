@@ -250,7 +250,11 @@
 	dust()
 
 /mob/living/simple_animal/drone/examine(mob/user)
+<<<<<<< HEAD
 	. = list("<span class='info'>This is [icon2html(src, user)] \a <b>[src]</b>!", EXAMINE_SECTION_BREAK) //SKYRAT EDIT CHANGE
+=======
+	. = list("<span class='info'>This is [icon2html(src, user)] \a <b>[src]</b>!")
+>>>>>>> b864589522f (Examine Blocks (#67937))
 
 	//Hands
 	for(var/obj/item/I in held_items)
@@ -286,7 +290,11 @@
 			. += span_deadsay("A message repeatedly flashes on its display: \"REBOOT -- REQUIRED\".")
 		else
 			. += span_deadsay("A message repeatedly flashes on its display: \"ERROR -- OFFLINE\".")
+<<<<<<< HEAD
 	//. += "*---------*</span>" SKYRAT EDIT REMOVAL
+=======
+	. += "</span>"
+>>>>>>> b864589522f (Examine Blocks (#67937))
 
 
 /mob/living/simple_animal/drone/assess_threat(judgement_criteria, lasercolor = "", datum/callback/weaponcheck=null) //Secbots won't hunt maintenance drones.

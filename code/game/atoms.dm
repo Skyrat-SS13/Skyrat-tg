@@ -602,10 +602,10 @@
  * [COMSIG_ATOM_GET_EXAMINE_NAME] signal
  */
 /atom/proc/get_examine_name(mob/user)
-	. = "\a [src]"
+	. = "\a <b>[src]</b>"
 	var/list/override = list(gender == PLURAL ? "some" : "a", " ", "[name]")
 	if(article)
-		. = "[article] [src]"
+		. = "[article] <b>[src]</b>"
 		override[EXAMINE_POSITION_ARTICLE] = article
 	if(SEND_SIGNAL(src, COMSIG_ATOM_GET_EXAMINE_NAME, user, override) & COMPONENT_EXNAME_CHANGED)
 		. = override.Join("")
@@ -637,7 +637,15 @@
  * Produces a signal [COMSIG_PARENT_EXAMINE]
  */
 /atom/proc/examine(mob/user)
+<<<<<<< HEAD
 	. = list("[get_examine_string(user, TRUE)].", EXAMINE_SECTION_BREAK) // SKYRAT EDIT CHANGE - original: list("[get_examine_string(user, TRUE)].")
+=======
+	var/examine_string = get_examine_string(user, thats = TRUE)
+	if(examine_string)
+		. = list("[examine_string].")
+	else
+		. = list()
+>>>>>>> b864589522f (Examine Blocks (#67937))
 
 	. += get_name_chaser(user)
 	if(desc)
@@ -665,7 +673,11 @@
 			if(length(reagents.reagent_list))
 				if(user.can_see_reagents()) //Show each individual reagent
 					for(var/datum/reagent/current_reagent as anything in reagents.reagent_list)
+<<<<<<< HEAD
 						. += "&bull; [round(current_reagent.volume, 0.01)] units of [current_reagent.name]" // SKYRAT EDIT CHANGE - added bullet
+=======
+						. += "&bull; [round(current_reagent.volume, 0.01)] units of [current_reagent.name]"
+>>>>>>> b864589522f (Examine Blocks (#67937))
 					if(reagents.is_reacting)
 						. += span_warning("&nbsp;&nbsp;It is currently reacting!") // SKYRAT EDIT CHANGE - added spacing
 					. += span_notice("The solution's pH is [round(reagents.ph, 0.01)] and has a temperature of [reagents.chem_temp]K.")

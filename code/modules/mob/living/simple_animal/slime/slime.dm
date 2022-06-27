@@ -438,7 +438,11 @@
 	return
 
 /mob/living/simple_animal/slime/examine(mob/user)
+<<<<<<< HEAD
 	. = list("<span class='info'>This is [icon2html(src, user)] \a <EM>[src]</EM>!", EXAMINE_SECTION_BREAK) //SKYRAT EDIT CHANGE
+=======
+	. = list("<span class='info'>This is [icon2html(src, user)] \a <EM>[src]</EM>!")
+>>>>>>> b864589522f (Examine Blocks (#67937))
 	if (stat == DEAD)
 		. += span_deadsay("It is limp and unresponsive.")
 	else
@@ -465,7 +469,11 @@
 			if(10)
 				. += span_warning("<B>It is radiating with massive levels of electrical activity!</B>")
 
+<<<<<<< HEAD
 	//. += "*---------*</span>" SKYRAT EDIT REMOVAL
+=======
+	. += "</span>"
+>>>>>>> b864589522f (Examine Blocks (#67937))
 
 /mob/living/simple_animal/slime/proc/discipline_slime(mob/user)
 	if(stat)
