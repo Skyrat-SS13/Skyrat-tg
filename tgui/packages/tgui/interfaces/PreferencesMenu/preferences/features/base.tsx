@@ -1,13 +1,13 @@
-import { sortBy, sortStrings } from "common/collections";
-import { BooleanLike, classes } from "common/react";
-import { ComponentType, createComponentVNode, InfernoNode } from "inferno";
-import { VNodeFlags } from "inferno-vnode-flags";
-import { sendAct, useBackend, useLocalState } from "../../../../backend";
+import { sortBy, sortStrings } from 'common/collections';
+import { BooleanLike, classes } from 'common/react';
+import { ComponentType, createComponentVNode, InfernoNode } from 'inferno';
+import { VNodeFlags } from 'inferno-vnode-flags';
+import { sendAct, useBackend, useLocalState } from '../../../../backend';
 // SKYRAT EDIT
-import { Box, Button, Dropdown, NumberInput, Stack, TextArea, Input } from "../../../../components";
+import { Box, Button, Dropdown, NumberInput, Stack, TextArea, Input } from '../../../../components';
 // SKYRAT EDIT END
-import { createSetPreference, PreferencesMenuData } from "../../data";
-import { ServerPreferencesFetcher } from "../../ServerPreferencesFetcher";
+import { createSetPreference, PreferencesMenuData } from '../../data';
+import { ServerPreferencesFetcher } from '../../ServerPreferencesFetcher';
 
 export const sortChoices = sortBy<[string, InfernoNode]>(([name]) => name);
 
@@ -349,57 +349,58 @@ export const FeatureValueInput = (
 
 // SKYRAT FEATURES DOWN HERE
 
-export const FeatureTextInput = (
-  props: FeatureValueProps<string>
-) => {
-  return (<TextArea
-    height="100px"
-    value={props.value}
-    onChange={(_, value) => props.handleSetValue(value)}
-  />);
+export const FeatureTextInput = (props: FeatureValueProps<string>) => {
+  return (
+    <TextArea
+      height="100px"
+      value={props.value}
+      onChange={(_, value) => props.handleSetValue(value)}
+    />
+  );
 };
 
-export const FeatureShortTextInput = (
-  props: FeatureValueProps<string>
-) => {
-  return (<Input
-    width="100%"
-    value={props.value}
-    onChange={(_, value) => props.handleSetValue(value)}
-  />);
+export const FeatureShortTextInput = (props: FeatureValueProps<string>) => {
+  return (
+    <Input
+      width="100%"
+      value={props.value}
+      onChange={(_, value) => props.handleSetValue(value)}
+    />
+  );
 };
 
 export const FeatureTriColorInput = (props: FeatureValueProps<string[]>) => {
   const buttonFromValue = (index) => {
     return (
       <Stack.Item>
-        <Button onClick={() => {
-          props.act("set_tricolor_preference", {
-            preference: props.featureId,
-            value: index+1,
-          });
-        }}>
+        <Button
+          onClick={() => {
+            props.act('set_tricolor_preference', {
+              preference: props.featureId,
+              value: index + 1,
+            });
+          }}>
           <Stack align="center" fill>
             <Stack.Item>
-              <Box style={{
-                background: props.value[index].startsWith("#")
-                  ? props.value[index]
-                  : `#${props.value[index]}`,
-                border: "2px solid white",
-                "box-sizing": "content-box",
-                height: "11px",
-                width: "11px",
-                ...(props.shrink ? {
-                  "margin": "1px",
-                } : {}),
-              }} />
+              <Box
+                style={{
+                  background: props.value[index].startsWith('#')
+                    ? props.value[index]
+                    : `#${props.value[index]}`,
+                  border: '2px solid white',
+                  'box-sizing': 'content-box',
+                  height: '11px',
+                  width: '11px',
+                  ...(props.shrink
+                    ? {
+                      'margin': '1px',
+                    }
+                    : {}),
+                }}
+              />
             </Stack.Item>
 
-            {!props.shrink && (
-              <Stack.Item>
-                Change
-              </Stack.Item>
-            )}
+            {!props.shrink && <Stack.Item>Change</Stack.Item>}
           </Stack>
         </Button>
       </Stack.Item>
