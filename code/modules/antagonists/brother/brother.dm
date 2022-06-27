@@ -40,9 +40,10 @@
 	brother1.dna.features["ethcolor"] = GLOB.color_list_ethereal["Faint Red"]
 	brother1.set_species(/datum/species/ethereal)
 
-	brother2.dna.features["moth_antennae"] = "Plain"
-	brother2.dna.features["moth_markings"] = "None"
-	brother2.dna.features["moth_wings"] = "Plain"
+	brother2.dna.features["mcolor"] = "#E5CD99" // SKYRAT EDIT ADDITION - Customization
+	brother2.dna.mutant_bodyparts["moth_antennae"] = list(MUTANT_INDEX_NAME = "Plain", MUTANT_INDEX_COLOR_LIST = list("#FFFFFF", "#FFFFFF", "#FFFFFF")) // SKYRAT EDIT - Customization - ORIGINAL: brother2.dna.features["moth_antennae"] = "Plain"
+	brother2.dna.mutant_bodyparts["moth_markings"] = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_COLOR_LIST = list("#FFFFFF", "#FFFFFF", "#FFFFFF")) // SKYRAT EDIT - Customization - ORIGINAL: brother2.dna.features["moth_markings"] = "None"
+	brother2.dna.mutant_bodyparts["wings"] = list(MUTANT_INDEX_NAME = "Moth (Plain)", MUTANT_INDEX_COLOR_LIST = list("#FFFFFF", "#FFFFFF", "#FFFFFF")) // SKYRAT EDIT - Customization - ORIGINAL: brother2.dna.features["moth_wings"] = "Plain"
 	brother2.set_species(/datum/species/moth)
 
 	var/icon/brother1_icon = render_preview_outfit(/datum/outfit/job/quartermaster, brother1)

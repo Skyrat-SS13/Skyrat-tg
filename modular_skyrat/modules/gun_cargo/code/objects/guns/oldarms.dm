@@ -13,6 +13,7 @@
 	weapon_weight = WEAPON_HEAVY
 	mag_type = /obj/item/ammo_box/magazine/m16/vintage/oldarms
 	fire_delay = 3.5
+	burst_size = 1
 	fire_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/fire/m16_fire.ogg'
 	fire_sound_volume = 50
 	rack_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/sfrifle_cock.ogg'
@@ -30,7 +31,7 @@
 	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_items.dmi'
 	icon_state = "m16"
 	ammo_type = /obj/item/ammo_casing/oldarms/a223
-	caliber = "223"
+	caliber = CALIBER_223
 	max_ammo = 20
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
   

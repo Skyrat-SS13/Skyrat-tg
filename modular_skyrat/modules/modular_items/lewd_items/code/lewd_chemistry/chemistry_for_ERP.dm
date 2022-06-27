@@ -115,7 +115,7 @@
 	exposed_mob.adjustPleasure(pleasure_adjust_amount)
 	exposed_mob.adjustPain(pain_adjust_amount)
 
-	for(var/obj/item/organ/external/genital/mob_genitals in exposed_mob.internal_organs)
+	for(var/obj/item/organ/external/genital/mob_genitals in exposed_mob.external_organs)
 		if(!mob_genitals.aroused == AROUSAL_CANT)
 			mob_genitals.aroused = AROUSAL_FULL
 			mob_genitals.update_sprite_suffix()

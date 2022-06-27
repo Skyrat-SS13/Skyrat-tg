@@ -45,7 +45,6 @@
 		/obj/item/clothing/shoes/sports = 5,
 		/obj/item/clothing/shoes/wraps/colourable = 5,
 		/obj/item/clothing/shoes/jungleboots = 5,
-		/obj/item/clothing/shoes/jackboots/thigh = 5,
 		/obj/item/clothing/shoes/jackboots/knee = 5,
 		/obj/item/clothing/suit/duster/colorable = 5,
 		/obj/item/clothing/suit/toggle/peacoat = 5,
@@ -86,6 +85,12 @@
 		/obj/item/clothing/head/fedora/fedblack = 5,
 		/obj/item/clothing/head/fedora/fedbrown = 5,
 		/obj/item/clothing/suit/croptop = 5,
+		/obj/item/clothing/under/sweater/black = 5,
+		/obj/item/clothing/under/sweater/blue = 5,
+		/obj/item/clothing/under/sweater/green = 5,
+		/obj/item/clothing/under/sweater/purple = 5,
+		/obj/item/clothing/under/sweater/red = 5,
+		/obj/item/clothing/under/sweater/keyhole = 5,
 	)
 
 	skyrat_premium = list( //being here means you're artificially rare, congratulations

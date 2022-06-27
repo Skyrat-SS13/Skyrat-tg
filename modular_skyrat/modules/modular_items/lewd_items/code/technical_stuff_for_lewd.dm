@@ -552,19 +552,30 @@
 /datum/outfit/equip(mob/living/carbon/human/target, visualsOnly = FALSE)
 	. = ..()
 	if(.)
-		pre_equip(target, visualsOnly)
+		var/need_updating = FALSE
 		if(vagina)
 			target.equip_to_slot_or_del(new vagina(target), ITEM_SLOT_VAGINA, TRUE)
+			need_updating = TRUE
+
 		if(anus)
 			target.equip_to_slot_or_del(new anus(target), ITEM_SLOT_ANUS, TRUE)
+			need_updating = TRUE
+
 		if(nipples)
 			target.equip_to_slot_or_del(new nipples(target), ITEM_SLOT_NIPPLES, TRUE)
+			need_updating = TRUE
+
 		if(penis)
 			target.equip_to_slot_or_del(new penis(target), ITEM_SLOT_PENIS, TRUE)
-		post_equip(target, visualsOnly)
-		target.update_body()
-		target?.hud_used?.hidden_inventory_update(target)
-	return TRUE
+			need_updating = TRUE
+
+		if(need_updating)
+			target.update_body()
+			target?.hud_used?.hidden_inventory_update(target)
+
+		return TRUE
+
+	return .
 
 
 // Support fingerprints when working with ERP slots

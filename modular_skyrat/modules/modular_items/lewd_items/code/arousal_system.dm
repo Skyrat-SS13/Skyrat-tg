@@ -243,9 +243,9 @@
 			arousal_status = arousal_flag
 			if(istype(src, /mob/living/carbon/human))
 				var/mob/living/carbon/human/target = src
-				for(var/i = 1, i <= target.internal_organs.len, i++)
-					if(istype(target.internal_organs[i], /obj/item/organ/external/genital))
-						var/obj/item/organ/external/genital/target_genital = target.internal_organs[i]
+				for(var/i = 1, i <= target.external_organs.len, i++)
+					if(istype(target.external_organs[i], /obj/item/organ/external/genital))
+						var/obj/item/organ/external/genital/target_genital = target.external_organs[i]
 						if(!target_genital.aroused == AROUSAL_CANT)
 							target_genital.aroused = arousal_status
 							target_genital.update_sprite_suffix()
@@ -762,7 +762,7 @@
 			cumface.icon_state = "cumface_lizard"
 		else if(target.dna.species.id == SPECIES_MONKEY)
 			cumface.icon_state = "cumface_monkey"
-		else if(target.dna.species.id == SPECIES_VOX)
+		else if(target.dna.species.id == SPECIES_VOX || target.dna.species.id == SPECIES_VOX_PRIMALIS)
 			cumface.icon_state = "cumface_vox"
 		else if(target.dna.species.mutant_bodyparts["snout"])
 			cumface.icon_state = "cumface_lizard"

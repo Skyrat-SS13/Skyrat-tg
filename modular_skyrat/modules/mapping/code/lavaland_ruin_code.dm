@@ -39,7 +39,7 @@
 	ears = /obj/item/radio/headset/interdyne
 
 /datum/outfit/lavaland_syndicate/comms
-	uniform = /obj/item/clothing/under/utility/sec/old/syndicate
+	uniform = /obj/item/clothing/under/rank/security/skyrat/utility/redsec/syndicate
 	ears = /obj/item/radio/headset/interdyne/comms
 
 /datum/outfit/lavaland_syndicate/comms/space

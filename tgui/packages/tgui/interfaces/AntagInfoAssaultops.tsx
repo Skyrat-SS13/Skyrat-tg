@@ -3,23 +3,22 @@ import { LabeledList, Stack, Button, Section, ProgressBar, Box, Tabs, Divider } 
 import { BooleanLike } from 'common/react';
 import { Window } from '../layouts';
 
-
 type Objectives = {
   count: number;
   name: string;
   explanation: string;
   complete: BooleanLike;
-}
+};
 
 type AvailableTargets = {
   name: string;
   job: string;
-}
+};
 
 type ExtractedTargets = {
   name: string;
   job: string;
-}
+};
 
 type GoldeneyeKeys = {
   coord_x: number;
@@ -28,7 +27,7 @@ type GoldeneyeKeys = {
   name: string;
   ref: string;
   selected: BooleanLike;
-}
+};
 
 type Info = {
   equipped: Number;
@@ -43,16 +42,9 @@ type Info = {
 export const AntagInfoAssaultops = (props, context) => {
   const [tab, setTab] = useLocalState(context, 'tab', 1);
   const { data } = useBackend<Info>(context);
-  const {
-    required_keys,
-    uploaded_keys,
-    objectives,
-  } = data;
+  const { required_keys, uploaded_keys, objectives } = data;
   return (
-    <Window
-      theme="hackerman"
-      width={650}
-      height={650}>
+    <Window theme="hackerman" width={650} height={650}>
       <Window.Content>
         <Stack vertical>
           <Stack.Item>
@@ -80,7 +72,7 @@ export const AntagInfoAssaultops = (props, context) => {
                         maxValue={required_keys}
                       />
                     </Stack.Item>
-                    <Stack.Item color="yellow" >
+                    <Stack.Item color="yellow">
                       Required Keycards: {required_keys}
                     </Stack.Item>
                     <Stack.Item color="green">
@@ -92,7 +84,7 @@ export const AntagInfoAssaultops = (props, context) => {
             </Section>
             <Section title="Objectives">
               <LabeledList>
-                {objectives.map(objective => (
+                {objectives.map((objective) => (
                   <LabeledList.Item
                     key={objective.count}
                     label={objective.name}
@@ -122,12 +114,8 @@ export const AntagInfoAssaultops = (props, context) => {
                 </Tabs>
               </Stack.Item>
             </Stack>
-            {tab === 1 && (
-              <TargetPrintout />
-            )}
-            {tab === 2 && (
-              <KeyPrintout />
-            )}
+            {tab === 1 && <TargetPrintout />}
+            {tab === 2 && <KeyPrintout />}
           </Stack.Item>
         </Stack>
       </Window.Content>
@@ -137,13 +125,12 @@ export const AntagInfoAssaultops = (props, context) => {
 
 const TargetPrintout = (props, context) => {
   const { act, data } = useBackend<Info>(context);
-  const {
-    available_targets,
-    extracted_targets,
-  } = data;
+  const { available_targets, extracted_targets } = data;
   return (
     <Section grow>
-      <Box textColor="red" fontSize="20px" mb={1}>Target List</Box>
+      <Box textColor="red" fontSize="20px" mb={1}>
+        Target List
+      </Box>
       <Stack>
         <Stack.Item grow>
           <Section title="Available Targets">
@@ -152,7 +139,7 @@ const TargetPrintout = (props, context) => {
               They can be extracted by the in-TERROR-gator.
             </Box>
             <LabeledList>
-              {available_targets.map(target => (
+              {available_targets.map((target) => (
                 <LabeledList.Item
                   key={target.name}
                   label={target.name}
@@ -171,7 +158,7 @@ const TargetPrintout = (props, context) => {
               They cannot be extracted again.
             </Box>
             <LabeledList>
-              {extracted_targets.map(target => (
+              {extracted_targets.map((target) => (
                 <LabeledList.Item
                   key={target.name}
                   label={target.name}
@@ -191,21 +178,21 @@ const TargetPrintout = (props, context) => {
 
 const KeyPrintout = (props, context) => {
   const { act, data } = useBackend<Info>(context);
-  const {
-    goldeneye_keys,
-  } = data;
+  const { goldeneye_keys } = data;
   return (
     <Section grow>
-      <Box textColor="red" fontSize="20px">GoldenEye Keycards</Box>
+      <Box textColor="red" fontSize="20px">
+        GoldenEye Keycards
+      </Box>
       <Box mb={1}>
-        A list of GoldenEye keycards currently in existence.
-        Select one to track where it is using your hud.
+        A list of GoldenEye keycards currently in existence. Select one to track
+        where it is using your hud.
       </Box>
       <Stack vertical fill>
         <Stack.Item>
           <Section>
             <Stack vertical>
-              {goldeneye_keys.map(key => (
+              {goldeneye_keys.map((key) => (
                 <Stack.Item key={key.name}>
                   <Button
                     width="100%"
@@ -214,18 +201,38 @@ const KeyPrintout = (props, context) => {
                     disabled={key.selected}
                     key={key.name}
                     icon="key"
-                    content={key.selected ? key.name + ' (' + key.coord_x + ', ' + key.coord_y + ', ' + key.coord_z + ')' + ' (Tracking)' : key.name + ' (' + key.coord_x + ', ' + key.coord_y + ', ' + key.coord_z + ')'}
-                    onClick={() => act('track_key', {
-                      key_ref: key.ref,
-                    })} />
+                    content={
+                      key.selected
+                        ? key.name +
+                        ' (' +
+                        key.coord_x +
+                        ', ' +
+                        key.coord_y +
+                        ', ' +
+                        key.coord_z +
+                        ')' +
+                        ' (Tracking)'
+                        : key.name +
+                        ' (' +
+                        key.coord_x +
+                        ', ' +
+                        key.coord_y +
+                        ', ' +
+                        key.coord_z +
+                        ')'
+                    }
+                    onClick={() =>
+                      act('track_key', {
+                        key_ref: key.ref,
+                      })
+                    }
+                  />
                 </Stack.Item>
               ))}
             </Stack>
-
           </Section>
         </Stack.Item>
       </Stack>
     </Section>
   );
 };
-

@@ -2943,9 +2943,8 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/event_spawn,
-/turf/open/floor/wood{
-	icon_state = "wood-broken5"
-	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
 /area/station/commons/vacant_room/office)
 "bnt" = (
 /obj/structure/chair/office{
@@ -13645,6 +13644,21 @@
 /obj/structure/closet/emcloset,
 /turf/open/floor/iron/smooth,
 /area/station/maintenance/central/greater)
+"eBY" = (
+/obj/effect/turf_decal/stripes{
+	dir = 1
+	},
+/obj/docking_port/stationary{
+	dheight = 3;
+	dir = 2;
+	dwidth = 8;
+	height = 11;
+	id = "ferry_home";
+	name = "Port Bay 2";
+	width = 20
+	},
+/turf/open/floor/plating,
+/area/station/hallway/secondary/entry)
 "eCa" = (
 /obj/effect/turf_decal/trimline/blue/filled/line,
 /turf/open/floor/iron,
@@ -20129,9 +20143,8 @@
 /turf/open/floor/iron,
 /area/station/security/brig)
 "gPI" = (
-/turf/open/floor/wood{
-	icon_state = "wood-broken7"
-	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
 /area/station/commons/vacant_room/office)
 "gPJ" = (
 /obj/structure/closet/secure_closet/brig/genpop,
@@ -23645,9 +23658,8 @@
 /obj/effect/turf_decal/siding/wood{
 	dir = 8
 	},
-/turf/open/floor/wood{
-	icon_state = "wood-broken"
-	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
 /area/station/commons/vacant_room/office)
 "ial" = (
 /turf/open/floor/iron,
@@ -50377,9 +50389,6 @@
 	dir = 1
 	},
 /obj/effect/landmark/tram/middle_part,
-/obj/structure/industrial_lift/tram/central{
-	icon_state = "titanium"
-	},
 /obj/machinery/computer/tram_controls,
 /turf/open/floor/vault,
 /area/station/hallway/primary/tram/center)
@@ -57983,18 +57992,6 @@
 /obj/structure/cable/layer3,
 /turf/open/floor/plating,
 /area/station/engineering/supermatter)
-"tsE" = (
-/obj/docking_port/stationary{
-	dheight = 3;
-	dir = 2;
-	dwidth = 8;
-	height = 11;
-	id = "ferry_home";
-	name = "Port Bay 2";
-	width = 20
-	},
-/turf/open/floor/plating,
-/area/station/hallway/secondary/entry)
 "tsH" = (
 /obj/effect/turf_decal/trimline/blue/filled/corner{
 	dir = 4
@@ -59867,6 +59864,17 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/station/maintenance/port/fore)
+"tZg" = (
+/obj/effect/turf_decal/stripes,
+/obj/effect/turf_decal/stripes{
+	dir = 1
+	},
+/obj/structure/industrial_lift/tram{
+	icon_state = "titanium"
+	},
+/obj/effect/landmark/lift_id,
+/turf/open/floor/vault,
+/area/station/hallway/primary/tram/center)
 "tZi" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 1
@@ -147361,7 +147369,7 @@ pNi
 tCT
 tCT
 tCT
-sqV
+eBY
 tCT
 tCT
 tCT
@@ -147617,7 +147625,7 @@ aPZ
 pNi
 tCT
 tCT
-tsE
+tCT
 tCT
 tCT
 tCT
@@ -169713,7 +169721,7 @@ dhw
 vSM
 wgz
 rPU
-sOY
+tZg
 biX
 adD
 vIq
