@@ -1144,7 +1144,6 @@
 "anP" = (
 /obj/effect/turf_decal/delivery,
 /obj/structure/closet/secure_closet/brigoff,
-/obj/effect/mapping_helpers/airlock/access/all/security/brig,
 /turf/open/floor/iron/dark/blue/side{
 	dir = 6
 	},
@@ -4772,7 +4771,7 @@
 "blM" = (
 /obj/machinery/door/poddoor/preopen{
 	id = "brigprison";
-	name = "Prison Blast door"
+	name = "Prison Blast Door"
 	},
 /obj/effect/turf_decal/delivery,
 /turf/open/floor/iron,
@@ -9353,7 +9352,6 @@
 	name = "Brig Officer's Locker"
 	},
 /obj/item/clothing/mask/whistle,
-/obj/effect/mapping_helpers/airlock/access/all/security/brig,
 /turf/open/floor/iron/dark/blue/side{
 	dir = 5
 	},
@@ -17711,7 +17709,7 @@
 "eNG" = (
 /obj/machinery/door/poddoor/preopen{
 	id = "brigprison";
-	name = "Prison Blast door"
+	name = "Prison Blast Door"
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/sign/warning/pods{
@@ -23951,7 +23949,7 @@
 "gul" = (
 /obj/machinery/door/poddoor/preopen{
 	id = "justicechamber";
-	name = "Justice Chamber Blast door"
+	name = "Justice Chamber Blast Door"
 	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
@@ -28650,13 +28648,13 @@
 /obj/machinery/door/firedoor,
 /obj/effect/turf_decal/delivery/blue,
 /obj/machinery/turnstile{
-	dir = 1
+	dir = 1;
+	req_access = list("brig")
 	},
 /obj/machinery/door/poddoor/shutters/window/preopen{
 	id = "permaturnstile";
 	name = "Lockdown"
 	},
-/obj/effect/mapping_helpers/airlock/access/all/security/brig,
 /turf/open/floor/iron/dark,
 /area/station/security/prison)
 "hMa" = (
@@ -30120,7 +30118,6 @@
 "ifg" = (
 /obj/structure/bed,
 /obj/item/bedsheet/purple,
-/obj/effect/mapping_helpers/airlock/access/all/security/brig,
 /turf/open/floor/iron/dark/purple/side{
 	dir = 6
 	},
@@ -39333,14 +39330,14 @@
 "kxA" = (
 /obj/effect/turf_decal/delivery/blue,
 /obj/machinery/turnstile{
-	dir = 1
+	dir = 1;
+	req_access = list("brig")
 	},
 /obj/machinery/door/poddoor/shutters/window/preopen{
 	id = "permaturnstile";
 	name = "Lockdown"
 	},
 /obj/machinery/door/firedoor,
-/obj/effect/mapping_helpers/airlock/access/all/security/brig,
 /turf/open/floor/iron/dark,
 /area/station/security/prison)
 "kxC" = (
@@ -44269,7 +44266,6 @@
 	name = "Brig Officer's Locker"
 	},
 /obj/item/clothing/mask/whistle,
-/obj/effect/mapping_helpers/airlock/access/all/security/brig,
 /turf/open/floor/iron/dark/blue/side{
 	dir = 4
 	},
@@ -50604,7 +50600,7 @@
 /obj/structure/closet/crate,
 /obj/item/inflatable/door,
 /obj/item/clothing/suit/fire/atmos{
-	armor = list("melee"=40,"bullet"=30,"laser"=20,"energy"=20,"bomb"=20,"bio"=10,"rad"=20,"fire"=80,"acid"=50);
+	armor = list("melee"=40,"bullet"=30,"laser"=20,"energy"=20,"bomb"=20,"bio"=10,"fire"=80,"acid"=50);
 	desc = "An old, reinforced and obviously stolen firesuit. There's an expiry date for the thermal padding, safe to say it's well past the expiration date.";
 	name = "padded firesuit";
 	slowdown = 0.25
@@ -59017,7 +59013,7 @@
 "pzv" = (
 /obj/machinery/door/poddoor/preopen{
 	id = "brigprison";
-	name = "Prison Blast door"
+	name = "Prison Blast Door"
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cable,
@@ -60100,7 +60096,7 @@
 "pMt" = (
 /obj/machinery/door/poddoor/preopen{
 	id = "brigprison";
-	name = "Prison Blast door"
+	name = "Prison Blast Door"
 	},
 /obj/effect/turf_decal/delivery,
 /obj/machinery/button/door/directional/east{
@@ -65660,7 +65656,7 @@
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/door/poddoor/preopen{
 	id = "justicechamber";
-	name = "Justice Chamber Blast door"
+	name = "Justice Chamber Blast Door"
 	},
 /obj/structure/cable,
 /turf/open/floor/plating,
@@ -78562,7 +78558,7 @@
 /obj/effect/turf_decal/stripes/full,
 /obj/machinery/door/poddoor{
 	id = "justiceblast";
-	name = "Justice Blast door"
+	name = "Justice Blast Door"
 	},
 /turf/open/floor/iron/dark,
 /area/station/security/execution)
