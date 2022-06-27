@@ -67,16 +67,24 @@
 	lefthand_file = 'icons/mob/inhands/weapons/swords_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/swords_righthand.dmi'
 
+/obj/item/cursed_dagger/examine(mob/user)
+	. = ..()
+	. += span_notice("To be used on tendrils. It will visually change the tendril to indicate whether it has been cursed or not.")
+
 /obj/item/tendril_seed
 	name = "tendril seed"
 	desc = "A horrible fleshy mass that pulse with a dark energy."
 	icon = 'modular_skyrat/modules/ashwalkers/icons/ashwalker_tools.dmi'
 	icon_state = "tendril_seed"
 
+/obj/item/tendril_seed/examine(mob/user)
+	. = ..()
+	. += span_notice("In order to be planted, it is required to be on the mining level as well as on basalt.")
+
 /obj/item/tendril_seed/attack_self(mob/user, modifiers)
 	. = ..()
 	var/turf/src_turf = get_turf(src)
-	if(!is_mining_level(src_turf.z))
+	if(!is_mining_level(src_turf.z) || !istype(src_turf, /turf/open/misc/asteroid/basalt))
 		return
 	if(!isliving(user))
 		return

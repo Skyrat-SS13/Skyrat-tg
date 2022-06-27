@@ -7,8 +7,8 @@
 	/// the list that checks whether the components will be consumed
 	var/list/consumed_components = list()
 
-	/// if the ritual is successful, and the ritual will spawn an item, this is it
-	var/ritual_success_item
+	/// if the ritual is successful, it will go through each item in the list to be spawned
+	var/list/ritual_success_items
 
 	/// the effect that is spawned when the components are consumed, etc.
 	var/ritual_effect = /obj/effect/particle_effect/sparks
@@ -72,8 +72,10 @@
 /datum/ash_ritual/proc/ritual_success(obj/effect/ash_rune/success_rune)
 	new ritual_effect(success_rune.loc)
 	success_rune.balloon_alert_to_viewers("ritual has been successful...")
-	if(ritual_success_item)
-		new ritual_success_item(get_turf(success_rune))
+	var/turf/rune_turf = get_turf(success_rune)
+	if(length(ritual_success_items))
+		for(var/type in ritual_success_items)
+			new type(rune_turf)
 	success_rune.current_ritual = null
 	in_use = FALSE
 	return TRUE

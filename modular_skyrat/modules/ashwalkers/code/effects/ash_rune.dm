@@ -12,6 +12,17 @@
 
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF | FREEZE_PROOF
 
+/obj/effect/ash_rune/examine(mob/user)
+	. = ..()
+	if(!current_ritual)
+		. += span_notice("There is no selected ritual at this moment-- use the central rune to select a ritual.")
+		return
+	. += span_notice("The current ritual is: [current_ritual.name]<br>")
+	. += span_warning("The required components are as follows:")
+	for(var/the_components in current_ritual.required_components)
+		var/component_name = current_ritual.required_components[the_components]
+		. += span_warning("[the_components] component is [initial(component_name.name)]")
+
 /obj/effect/ash_rune/Initialize(mapload)
 	. = ..()
 	// this is just to spawn the "aesthetic" runes around
@@ -21,6 +32,11 @@
 		spawning_rune.connected_rune = src
 	if(!length(rituals))
 		generate_rituals()
+
+/obj/effect/ash_rune/Destroy(force)
+	rituals = null
+	current_ritual = null
+	. = ..()
 
 /obj/effect/ash_rune/proc/generate_rituals()
 	for(var/type in subtypesof(/datum/ash_ritual))
@@ -36,12 +52,7 @@
 	if(!current_ritual)
 		return
 	current_ritual = rituals[current_ritual]
-	balloon_alert_to_viewers("ritual has been chosen...")
-	sleep(2 SECONDS)
-	for(var/checked_component in current_ritual.required_components)
-		var/atom/associated_component = current_ritual.required_components[checked_component]
-		balloon_alert_to_viewers("[checked_component] requires [initial(associated_component.name)]...")
-		sleep(2 SECONDS)
+	balloon_alert_to_viewers("ritual has been chosen-- examine the central rune for more information.")
 
 // this is solely for aesthetics... though the central rune will check the directions, of which this is on
 /obj/effect/side_rune
@@ -56,3 +67,7 @@
 	. = ..()
 	if(connected_rune)
 		connected_rune.attack_hand(user, modifiers)
+
+/obj/effect/side_rune/Destroy(force)
+	connected_rune = null
+	. = ..()

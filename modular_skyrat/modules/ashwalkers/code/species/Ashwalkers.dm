@@ -3,23 +3,23 @@
 	burnmod = 0.7
 	brutemod = 0.8
 
-/datum/species/lizard/ashwalker/on_species_gain(mob/living/carbon/C, datum/species/old_species)
+/datum/species/lizard/ashwalker/on_species_gain(mob/living/carbon/carbon_target, datum/species/old_species)
 	. = ..()
-	ADD_TRAIT(C, TRAIT_ASHSTORM_IMMUNE, SPECIES_TRAIT)
-	RegisterSignal(C, COMSIG_MOB_ITEM_ATTACK, .proc/mob_attack)
-	C.AddComponent(/datum/component/ash_age)
+	ADD_TRAIT(carbon_target, TRAIT_ASHSTORM_IMMUNE, SPECIES_TRAIT)
+	RegisterSignal(carbon_target, COMSIG_MOB_ITEM_ATTACK, .proc/mob_attack)
+	carbon_target.AddComponent(/datum/component/ash_age)
 
-/datum/species/lizard/ashwalker/on_species_loss(mob/living/carbon/C)
+/datum/species/lizard/ashwalker/on_species_loss(mob/living/carbon/carbon_target)
 	. = ..()
-	REMOVE_TRAIT(C, TRAIT_ASHSTORM_IMMUNE, SPECIES_TRAIT)
-	UnregisterSignal(C, COMSIG_MOB_ITEM_ATTACK)
+	REMOVE_TRAIT(carbon_target, TRAIT_ASHSTORM_IMMUNE, SPECIES_TRAIT)
+	UnregisterSignal(carbon_target, COMSIG_MOB_ITEM_ATTACK)
 
-/datum/species/lizard/ashwalker/proc/mob_attack(datum/source, mob/M, mob/user)
+/datum/species/lizard/ashwalker/proc/mob_attack(datum/source, mob/mob_target, mob/user)
 	SIGNAL_HANDLER
 
-	if(!isliving(M))
+	if(!isliving(mob_target))
 		return
-	var/mob/living/living_target = M
+	var/mob/living/living_target = mob_target
 	var/datum/status_effect/ashwalker_damage/ashie_damage = living_target.has_status_effect(/datum/status_effect/ashwalker_damage)
 	if(!ashie_damage)
 		ashie_damage = living_target.apply_status_effect(/datum/status_effect/ashwalker_damage)
@@ -52,6 +52,7 @@
 	evo_time = world.time
 	// when the rune successfully completes the age ritual, it will send the signal... do the proc when we receive the signal
 	RegisterSignal(human_target, COMSIG_RUNE_EVOLUTION, .proc/check_evolution)
+	RegisterSignal(human_target, COMSIG_PARENT_EXAMINE, .proc/on_examine)
 
 /datum/component/ash_age/proc/check_evolution()
 	SIGNAL_HANDLER
@@ -88,3 +89,10 @@
 
 /datum/movespeed_modifier/ash_aged
 	multiplicative_slowdown = -0.2
+
+/datum/component/ash_age/proc/on_examine(atom/target_atom, mob/user, list/examine_list)
+	SIGNAL_HANDLER
+	if(world.time < (evo_time + stage_time))
+		examine_list += span_notice("[human_target] has not yet reached the age for evolving.")
+		return
+	examine_list += span_warning("[human_target] has reached the age for evolving!")
