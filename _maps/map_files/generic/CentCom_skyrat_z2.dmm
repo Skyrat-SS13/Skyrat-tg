@@ -2555,9 +2555,21 @@
 /turf/open/indestructible/hotelwood,
 /area/centcom/holding/cafe)
 "aAJ" = (
-/obj/structure/flora/bush/sunny,
-/turf/open/misc/grass/planet,
-/area/centcom/holding/cafepark)
+/obj/effect/turf_decal/siding{
+	color = "#2e2e2e"
+	},
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/obj/item/candle/infinite{
+	pixel_y = -10;
+	pixel_x = -19
+	},
+/obj/item/candle/infinite{
+	pixel_x = -16
+	},
+/turf/open/floor/bamboo,
+/area/centcom/holding/cafedorms)
 "aAL" = (
 /obj/item/reagent_containers/food/drinks/soda_cans/thirteenloko{
 	pixel_x = -10;
@@ -5971,11 +5983,18 @@
 /turf/open/misc/dirt/planet,
 /area/centcom/holding/cafepark)
 "bGE" = (
-/obj/structure/mirror/directional/east,
-/obj/structure/sink{
-	pixel_y = -4;
-	pixel_x = 12;
-	dir = 8
+/obj/effect/turf_decal/siding/wood,
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/machinery/door/airlock/wood{
+	id_tag = "ghostcafecabinjap";
+	name = "Shinto Cabin"
+	},
+/obj/structure/fans/tiny/invisible,
+/obj/effect/turf_decal/siding{
+	icon = 'icons/turf/floors/carpet.dmi';
+	icon_state = "carpet-1"
 	},
 /turf/open/floor/sepia,
 /area/centcom/holding/cafedorms)
@@ -7167,17 +7186,9 @@
 /area/centcom/interlink)
 "gLq" = (
 /obj/effect/turf_decal/siding{
-	color = "#2e2e2e"
-	},
-/obj/effect/turf_decal/siding/wood{
-	dir = 8
-	},
-/obj/item/candle/infinite{
-	pixel_y = -10;
-	pixel_x = -19
-	},
-/obj/item/candle/infinite{
-	pixel_x = -16
+	icon = 'icons/turf/floors/carpet.dmi';
+	icon_state = "carpet-2";
+	pixel_y = -16
 	},
 /turf/open/floor/bamboo,
 /area/centcom/holding/cafedorms)
@@ -7223,24 +7234,28 @@
 /turf/open/floor/iron,
 /area/centcom/interlink)
 "gPj" = (
-/obj/effect/turf_decal/tile/yellow/half{
+/obj/effect/turf_decal/siding{
+	color = "#2e2e2e"
+	},
+/obj/effect/turf_decal/siding{
+	color = "#2e2e2e";
+	dir = 10
+	},
+/obj/effect/turf_decal/siding/wood{
 	dir = 4
 	},
-/obj/effect/turf_decal/tile/yellow/half{
-	dir = 8
+/obj/item/candle/infinite{
+	pixel_x = 15
 	},
-/obj/effect/turf_decal/tile/neutral/half{
-	dir = 4
+/obj/machinery/button/door{
+	name = "Dorm Bolt Control";
+	normaldoorcontrol = 1;
+	specialfunctions = 4;
+	id = "ghostcafecabinjap";
+	pixel_y = -24
 	},
-/obj/effect/turf_decal/tile/neutral/half{
-	dir = 8
-	},
-/obj/structure/mineral_door/paperframe{
-	name = "Guest Suite *A"
-	},
-/turf/open/floor/iron/textured_half{
-	dir = 1
-	},
+/obj/machinery/light/warm/directional/west,
+/turf/open/floor/bamboo,
 /area/centcom/holding/cafedorms)
 "gPN" = (
 /obj/effect/spawner/random/entertainment/arcade,
@@ -7701,6 +7716,18 @@
 	},
 /turf/open/floor/glass/reinforced,
 /area/cruiser_dock)
+"iGS" = (
+/obj/effect/turf_decal/siding{
+	color = "#2e2e2e";
+	dir = 1
+	},
+/obj/machinery/button/curtain{
+	id = "ghostcafecabinjapcurtain";
+	pixel_y = -4;
+	pixel_x = 20
+	},
+/turf/open/floor/bamboo,
+/area/centcom/holding/cafedorms)
 "iJK" = (
 /obj/effect/turf_decal/siding{
 	color = "#2e2e2e";
@@ -9073,17 +9100,13 @@
 /area/centcom/interlink)
 "nJO" = (
 /obj/effect/turf_decal/siding{
+	color = "#2e2e2e"
+	},
+/obj/effect/turf_decal/siding{
 	color = "#2e2e2e";
-	dir = 5
+	dir = 6
 	},
-/obj/structure/table/wood/fancy/orange{
-	pixel_y = -3
-	},
-/obj/item/candle/infinite{
-	pixel_y = -2;
-	pixel_x = -7
-	},
-/obj/item/candle/infinite,
+/obj/item/kirbyplants/random,
 /obj/machinery/light/warm/directional/east,
 /turf/open/floor/bamboo,
 /area/centcom/holding/cafedorms)
@@ -9398,12 +9421,24 @@
 	},
 /area/centcom/holding/cafedorms)
 "oWR" = (
-/obj/effect/turf_decal/siding{
-	icon = 'icons/turf/floors/carpet.dmi';
-	icon_state = "carpet-2";
-	pixel_y = -16
+/obj/effect/turf_decal/tile/yellow/half{
+	dir = 4
 	},
-/turf/open/floor/bamboo,
+/obj/effect/turf_decal/tile/yellow/half{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral/half{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral/half{
+	dir = 8
+	},
+/obj/structure/mineral_door/paperframe{
+	name = "Shinto Cabin Bedroom"
+	},
+/turf/open/floor/iron/textured_half{
+	dir = 1
+	},
 /area/centcom/holding/cafedorms)
 "oZG" = (
 /obj/structure/table/wood,
@@ -9563,29 +9598,9 @@
 /turf/open/floor/iron,
 /area/centcom/interlink)
 "pET" = (
-/obj/effect/turf_decal/siding{
-	color = "#2e2e2e"
-	},
-/obj/effect/turf_decal/siding{
-	color = "#2e2e2e";
-	dir = 10
-	},
-/obj/effect/turf_decal/siding/wood{
-	dir = 4
-	},
-/obj/item/candle/infinite{
-	pixel_x = 15
-	},
-/obj/machinery/button/door{
-	name = "Dorm Bolt Control";
-	normaldoorcontrol = 1;
-	specialfunctions = 4;
-	id = "ghostcafecabinjap";
-	pixel_y = -24
-	},
-/obj/machinery/light/warm/directional/west,
-/turf/open/floor/bamboo,
-/area/centcom/holding/cafedorms)
+/obj/structure/flora/bush/flowers_yw,
+/turf/open/misc/grass/planet,
+/area/centcom/holding/cafepark)
 "pGK" = (
 /obj/machinery/shower{
 	dir = 8
@@ -9794,18 +9809,6 @@
 "qlO" = (
 /turf/open/floor/iron/stairs,
 /area/centcom/interlink)
-"qmL" = (
-/obj/effect/turf_decal/siding{
-	color = "#2e2e2e";
-	dir = 1
-	},
-/obj/machinery/button/curtain{
-	id = "ghostcafecabinjapcurtain";
-	pixel_y = -4;
-	pixel_x = 20
-	},
-/turf/open/floor/bamboo,
-/area/centcom/holding/cafedorms)
 "qnD" = (
 /obj/structure/toilet{
 	contents = newlist(/obj/item/toy/snappop/phoenix);
@@ -10027,16 +10030,15 @@
 /turf/open/floor/wood,
 /area/centcom/holding/cafe)
 "qWc" = (
-/obj/effect/turf_decal/siding{
-	color = "#2e2e2e"
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
 	},
-/obj/effect/turf_decal/siding{
-	color = "#2e2e2e";
-	dir = 6
+/obj/effect/turf_decal/siding/wood,
+/obj/structure/curtain/cloth/fancy/mechanical/start_closed{
+	id = "ghostcafecabinjapcurtain"
 	},
-/obj/item/kirbyplants/random,
-/obj/machinery/light/warm/directional/east,
-/turf/open/floor/bamboo,
+/obj/structure/fans/tiny/invisible,
+/turf/closed/indestructible/fakeglass,
 /area/centcom/holding/cafedorms)
 "qWA" = (
 /obj/structure/table/wood,
@@ -10329,13 +10331,10 @@
 /turf/open/floor/iron/dark,
 /area/cruiser_dock)
 "rYj" = (
-/obj/effect/turf_decal/siding{
-	color = "#2e2e2e";
-	dir = 9
+/obj/structure/mineral_door/paperframe{
+	name = "Shinto Cabin Washroom"
 	},
-/obj/machinery/washing_machine,
-/obj/machinery/light/warm/directional/west,
-/turf/open/floor/bamboo,
+/turf/open/floor/sepia,
 /area/centcom/holding/cafedorms)
 "rYL" = (
 /obj/effect/turf_decal/trimline/red/line{
@@ -10372,15 +10371,13 @@
 /turf/open/floor/iron/dark,
 /area/cruiser_dock)
 "sfN" = (
-/obj/effect/turf_decal/siding/wood{
-	dir = 1
+/obj/structure/mirror/directional/east,
+/obj/structure/sink{
+	pixel_y = -4;
+	pixel_x = 12;
+	dir = 8
 	},
-/obj/effect/turf_decal/siding/wood,
-/obj/structure/curtain/cloth/fancy/mechanical/start_closed{
-	id = "ghostcafecabinjapcurtain"
-	},
-/obj/structure/fans/tiny/invisible,
-/turf/closed/indestructible/fakeglass,
+/turf/open/floor/sepia,
 /area/centcom/holding/cafedorms)
 "shf" = (
 /obj/structure/table/wood/poker,
@@ -10461,20 +10458,13 @@
 /turf/open/floor/iron/stairs/old,
 /area/centcom/holding/cafepark)
 "sto" = (
-/obj/effect/turf_decal/siding/wood,
-/obj/effect/turf_decal/siding/wood{
-	dir = 1
-	},
-/obj/machinery/door/airlock/wood{
-	id_tag = "ghostcafecabinjap";
-	name = "Shinto Cabin"
-	},
-/obj/structure/fans/tiny/invisible,
 /obj/effect/turf_decal/siding{
-	icon = 'icons/turf/floors/carpet.dmi';
-	icon_state = "carpet-1"
+	color = "#2e2e2e";
+	dir = 9
 	},
-/turf/open/floor/sepia,
+/obj/machinery/washing_machine,
+/obj/machinery/light/warm/directional/west,
+/turf/open/floor/bamboo,
 /area/centcom/holding/cafedorms)
 "svy" = (
 /obj/structure/flora/bush/lavendergrass,
@@ -11488,10 +11478,20 @@
 /turf/open/misc/asteroid,
 /area/centcom/interlink)
 "wcd" = (
-/obj/structure/mineral_door/paperframe{
-	name = "Guest Suite *A"
+/obj/effect/turf_decal/siding{
+	color = "#2e2e2e";
+	dir = 5
 	},
-/turf/open/floor/sepia,
+/obj/structure/table/wood/fancy/orange{
+	pixel_y = -3
+	},
+/obj/item/candle/infinite{
+	pixel_y = -2;
+	pixel_x = -7
+	},
+/obj/item/candle/infinite,
+/obj/machinery/light/warm/directional/east,
+/turf/open/floor/bamboo,
 /area/centcom/holding/cafedorms)
 "wcp" = (
 /obj/effect/turf_decal/arrows{
@@ -11841,7 +11841,7 @@
 /turf/open/misc/beach/sand,
 /area/centcom/holding/cafepark)
 "xFZ" = (
-/obj/structure/flora/bush/flowers_yw,
+/obj/structure/flora/bush/sunny,
 /turf/open/misc/grass/planet,
 /area/centcom/holding/cafepark)
 "xGy" = (
@@ -63283,7 +63283,7 @@ aFP
 axA
 oVT
 pCd
-bGE
+sfN
 axA
 aLH
 aFP
@@ -63532,14 +63532,14 @@ aXD
 axA
 aFP
 aFP
-xFZ
+pET
 aFP
 avb
 aFP
 axA
 axA
 axA
-wcd
+rYj
 axA
 axA
 aFP
@@ -63794,10 +63794,10 @@ aVA
 aFP
 aFP
 axA
-rYj
+sto
 iYC
 grr
-pET
+gPj
 axA
 akp
 aFP
@@ -64305,13 +64305,13 @@ aIV
 aFP
 aKu
 aFP
-xFZ
+pET
 aFP
 pQp
 bTK
 ppR
 njU
-gLq
+aAJ
 gSD
 aFP
 ayd
@@ -64565,11 +64565,11 @@ aAz
 aFP
 aFP
 pQp
-qmL
+iGS
 ppR
 ppR
-oWR
-sto
+gLq
+bGE
 aFP
 aFP
 aFP
@@ -64821,9 +64821,9 @@ aFP
 aFP
 aNk
 aFP
-sfN
+qWc
 iJK
-gPj
+oWR
 pBW
 cXb
 gSD
@@ -65336,10 +65336,10 @@ aMJ
 aFP
 aFP
 axA
-nJO
+wcd
 aFy
 wCC
-qWc
+nJO
 axA
 aNk
 arT
@@ -65590,7 +65590,7 @@ ahQ
 aFP
 aFP
 aFP
-aAJ
+xFZ
 aFP
 axA
 axA
@@ -66102,7 +66102,7 @@ aFP
 aFP
 aFP
 aFP
-xFZ
+pET
 aFP
 aIV
 aFP
