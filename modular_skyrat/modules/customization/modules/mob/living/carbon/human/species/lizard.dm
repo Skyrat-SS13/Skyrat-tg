@@ -49,3 +49,12 @@
 	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,HAS_FLESH,HAS_BONE,NO_UNDERWEAR,HAIR,FACEHAIR)
 	always_customizable = TRUE
 	learnable_languages = list(/datum/language/ashtongue)
+
+/datum/species/lizard/ashwalker/prepare_human_for_preview(mob/living/carbon/human/lizard, lizard_color = "#990000")
+	. = ..(lizard, lizard_color)
+
+
+/datum/species/lizard/silverscale/prepare_human_for_preview(mob/living/carbon/human/lizard, lizard_color = "#eeeeee")
+	lizard.eye_color_left = "#0000a0"
+	lizard.eye_color_right = "#0000a0"
+	. = ..(lizard, lizard_color)
