@@ -225,32 +225,22 @@ const PackagingControlsItem = (props) => {
 
 const PackagingControls = (props, context) => {
   const { act, data } = useBackend(context);
-  const [
-    pillAmount,
-    setPillAmount,
-  ] = useSharedState(context, 'pillAmount', 1);
-  const [
-    patchAmount,
-    setPatchAmount,
-  ] = useSharedState(context, 'patchAmount', 1);
-  const [
-    bottleAmount,
-    setBottleAmount,
-  ] = useSharedState(context, 'bottleAmount', 1);
+  const [pillAmount, setPillAmount] = useSharedState(context, 'pillAmount', 1);
+  const [patchAmount, setPatchAmount] = useSharedState(
+    context,
+    'patchAmount',
+    1
+  );
+  const [bottleAmount, setBottleAmount] = useSharedState(
+    context,
+    'bottleAmount',
+    1
+  );
   // SKYRAT EDIT HYPOVIALS
-  const [
-    vialAmount,
-    setVialAmount,
-  ] = useSharedState(context, 'vialAmount', 1);
-  const [
-    dartAmount,
-    setdartAmount,
-  ] = useSharedState(context, 'dartAmount', 1);
+  const [vialAmount, setVialAmount] = useSharedState(context, 'vialAmount', 1);
+  const [dartAmount, setdartAmount] = useSharedState(context, 'dartAmount', 1);
   // SKYRAT EDIT END
-  const [
-    packAmount,
-    setPackAmount,
-  ] = useSharedState(context, 'packAmount', 1);
+  const [packAmount, setPackAmount] = useSharedState(context, 'packAmount', 1);
   const {
     condi,
     chosenPillStyle,
@@ -350,11 +340,14 @@ const PackagingControls = (props, context) => {
           amountUnit="vials"
           sideNote="max 60u"
           onChangeAmount={(e, value) => setVialAmount(value)}
-          onCreate={() => act('create', {
-            type: 'vial',
-            amount: vialAmount,
-            volume: 'auto',
-          })} />
+          onCreate={() =>
+            act('create', {
+              type: 'vial',
+              amount: vialAmount,
+              volume: 'auto',
+            })
+          }
+        />
       )}
       {!condi && (
         <PackagingControlsItem
@@ -363,11 +356,14 @@ const PackagingControls = (props, context) => {
           amountUnit="darts"
           sideNote="max 10u"
           onChangeAmount={(e, value) => setdartAmount(value)}
-          onCreate={() => act('create', {
-            type: 'smartdart',
-            amount: dartAmount,
-            volume: 'auto',
-          })} /> // SKYRAT EDIT MEDICAL END
+          onCreate={() =>
+            act('create', {
+              type: 'smartdart',
+              amount: dartAmount,
+              volume: 'auto',
+            })
+          }
+        /> // SKYRAT EDIT MEDICAL END
       )}
       {!!condi && (
         <LabeledList.Item label="Bottle type">

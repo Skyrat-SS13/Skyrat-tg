@@ -77,7 +77,7 @@ export type Job = {
   // SKYRAT EDIT
   veteran?: boolean;
   alt_titles?: string[];
-// SKYRAT EDIT END
+  // SKYRAT EDIT END
 };
 
 export type Quirk = {
@@ -121,7 +121,7 @@ export type Organ = {
   slot: string;
   name: string;
   chosen_organ: string;
-  organ_choices: Record<string, string>
+  organ_choices: Record<string, string>;
   costs: Record<string, number>;
 };
 
@@ -207,7 +207,7 @@ export type PreferencesMenuData = {
   >;
   job_preferences: Record<string, JobPriority>;
 
-// SKYRAT EDIT
+  // SKYRAT EDIT
   job_alt_titles: Record<string, string>;
 
   robotic_styles: string[];
@@ -221,11 +221,10 @@ export type PreferencesMenuData = {
   quirks_balance: number;
   positive_quirk_count: number;
   species_restricted_jobs?: string[];
-// SKYRAT EDIT END
+  // SKYRAT EDIT END
   keybindings: Record<string, string[]>;
   overflow_role: string;
   selected_quirks: string[];
-
 
   antag_bans?: string[];
   antag_days_left?: Record<string, number>;
