@@ -132,12 +132,12 @@
 				All synthetic and non-organic lifeforms should seek shelter immediately! \
 				Neutralize magnetic field bubbles at all costs.", "Solar Event", sound('modular_skyrat/modules/cme/sound/cme_warning.ogg'))
 			if(CME_EXTREME)
-				set_security_level(SEC_LEVEL_RED)
+				SSsecurity_level.set_level(SEC_LEVEL_RED)
 				priority_announce("Critical Coronal mass ejection detected! Expected intensity: [uppertext(cme_intensity)]. Impact in: [round((startWhen * SSevents.wait) * 0.1, 0.1)] seconds. \
 				All synthetic and non-organic lifeforms should seek shelter immediately! \
 				Neutralize magnetic field bubbles at all costs.", "Solar Event", sound('modular_skyrat/modules/cme/sound/cme_warning.ogg'))
 			if(CME_ARMAGEDDON)
-				set_security_level(SEC_LEVEL_GAMMA)
+				SSsecurity_level.set_level(SEC_LEVEL_GAMMA)
 				priority_announce("Neutron Mass Ejection Detected! Expected intensity: [uppertext(cme_intensity)]. Impact in: [round((startWhen * SSevents.wait) * 0.1, 0.1)] seconds. \
 				All personnel should proceed to their nearest warpgate for evacuation, the Solar Federation has issued this mandatory alert.", "Solar Event", sound('modular_skyrat/modules/cme/sound/cme_warning.ogg'))
 

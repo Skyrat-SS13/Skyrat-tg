@@ -25,11 +25,11 @@
 	AddComponent(/datum/component/bloodysoles/feet)
 	AddElement(/datum/element/ridable, /datum/component/riding/creature/human)
 	AddElement(/datum/element/strippable, GLOB.strippable_human_items, /mob/living/carbon/human/.proc/should_strip)
-	GLOB.human_list += src
 	var/static/list/loc_connections = list(
 		COMSIG_ATOM_ENTERED = .proc/on_entered,
 	)
 	AddElement(/datum/element/connect_loc, loc_connections)
+	GLOB.human_list += src
 	SSopposing_force.give_opfor_button(src) //SKYRAT EDIT - OPFOR SYSTEM
 
 /mob/living/carbon/human/proc/setup_human_dna()
@@ -97,11 +97,6 @@
 			. += ""
 			. += "Chemical Storage: [changeling.chem_charges]/[changeling.total_chem_storage]"
 			. += "Absorbed DNA: [changeling.absorbed_count]"
-
-// called when something steps onto a human
-/mob/living/carbon/human/proc/on_entered(datum/source, atom/movable/AM)
-	SIGNAL_HANDLER
-	spreadFire(AM)
 
 /mob/living/carbon/human/reset_perspective(atom/new_eye, force_reset = FALSE)
 	if(dna?.species?.prevent_perspective_change && !force_reset) // This is in case a species needs to prevent perspective changes in certain cases, like Dullahans preventing perspective changes when they're looking through their head.
@@ -411,7 +406,10 @@
 			to_chat(usr, "<b>Exploitable information:</b> [target_general_records.fields["exploitable_records"]]")
 	//SKYRAT EDIT END
 
-	..() //end of this massive fucking chain. TODO: make the hud chain not spooky. - Yeah, great job doing that.
+//called when something steps onto a human
+/mob/living/carbon/human/proc/on_entered(datum/source, atom/movable/AM)
+	SIGNAL_HANDLER
+	spreadFire(AM)
 
 /mob/living/carbon/human/proc/canUseHUD()
 	return (mobility_flags & MOBILITY_USE)
