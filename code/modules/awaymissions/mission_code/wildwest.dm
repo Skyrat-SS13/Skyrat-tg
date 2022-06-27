@@ -124,7 +124,7 @@
 	anchored = TRUE
 	icon = 'icons/mob/blob.dmi'
 	icon_state = "blobpod"
-	var/triggered = 0
+	var/triggered = FALSE
 
 /obj/effect/meatgrinder/Initialize(mapload)
 	. = ..()
@@ -138,21 +138,21 @@
 	Bumped(AM)
 
 /obj/effect/meatgrinder/Bumped(atom/movable/AM)
-
 	if(triggered)
 		return
 	if(!ishuman(AM))
+		to_chat(AM, span_notice("You feel as if you aren't valid sacrifice..."))
 		return
 
-	var/mob/living/carbon/human/M = AM
+	var/mob/living/carbon/human/human_atom = AM
 
-	if(M.stat != DEAD && M.ckey)
-		visible_message(span_warning("[M] triggered [src]!"))
-		triggered = 1
-
-		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-		s.set_up(3, 1, src)
-		s.start()
+	if(human_atom.stat != DEAD && human_atom.ckey && human_atom.client)
+		visible_message(span_warning("[human_atom] triggers [src], vaporizing them instantly as it explodes!"))
+		triggered = TRUE
+		human_atom.dust(just_ash = TRUE, drop_items = FALSE, force = TRUE)
+		var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread
+		sparks.set_up(3, 1, src)
+		sparks.start()
 		explosion(src, devastation_range = 1, explosion_cause = src)
 		qdel(src)
 
