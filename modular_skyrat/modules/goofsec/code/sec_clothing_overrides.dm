@@ -109,6 +109,13 @@
 /obj/item/storage/belt/security/webbing
 	uses_advanced_reskins = FALSE
 	unique_reskin = NONE
+	current_skin = "securitywebbing" //Prevents reskinning
+
+/obj/item/storage/belt/security/webbing/peacekeeper //did I mention this codebase is fucking awful
+	current_skin = "peacekeeper_webbing"
+
+/obj/item/storage/belt/security/webbing/peacekeeper/armadyne
+	current_skin = "armadyne_webbing"
 
 ///Enables you to quickdraw weapons from security holsters
 /datum/component/storage/concrete/security/open_storage(mob/user)
