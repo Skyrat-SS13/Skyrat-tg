@@ -22,13 +22,13 @@
 	alt_titles = list("Barber", "Salon Manager", "Salon Technician", "Stylist", "Colorist")
 
 /datum/job/bartender
-	alt_titles = list("Bartender", "Mixologist", "Barkeeper")
+	alt_titles = list("Bartender", "Mixologist", "Barkeeper", "Barista")
 
 /datum/job/blueshield
 	alt_titles = list("Blueshield", "Command Bodyguard", "Executive Protection Agent")
 
 /datum/job/botanist
-	alt_titles = list("Botanist", "Hydroponicist", "Gardener", "Botanical Researcher", "Herbalist")
+	alt_titles = list("Botanist", "Hydroponicist", "Gardener", "Botanical Researcher", "Herbalist", "Florist")
 
 /datum/job/bouncer
 	alt_titles = list("Bouncer", "Service Guard")
@@ -52,10 +52,10 @@
 	alt_titles = list("Chief Engineer", "Engineering Foreman", "Head of Engineering")
 
 /datum/job/chief_medical_officer
-	alt_titles = list("Chief Medical Officer", "Medical Director", "Head of Medical")
+	alt_titles = list("Chief Medical Officer", "Medical Director", "Head of Medical", "Chief Physician", "Head Physician")
 
 /datum/job/clown
-	alt_titles = list("Clown", "Jester")
+	alt_titles = list("Clown", "Jester", "Joker", "Comedian")
 
 /datum/job/cook
 	alt_titles = list("Cook", "Chef", "Butcher", "Culinary Artist", "Sous-Chef")
@@ -141,7 +141,7 @@
 	)
 
 /datum/job/security_medic
-	alt_titles = list("Security Medic", "Field Medic", "Security Corpsman", "Brig Physician")
+	alt_titles = list("Security Medic", "Field Medic", "Security Corpsman", "Brig Physician", "Combat Medic")
 
 /datum/job/security_officer
 	alt_titles = list("Security Officer", "Security Operative", "Peacekeeper")

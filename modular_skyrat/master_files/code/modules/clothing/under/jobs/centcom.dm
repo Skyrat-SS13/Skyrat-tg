@@ -5,8 +5,8 @@
 	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/under/centcom_digi.dmi'	// Anything that was in the rnd.dmi, should be in the rnd_digi.dmi
 
 /obj/item/clothing/under/rank/centcom/skyrat
-	icon = 'icons/obj/clothing/under/centcom.dmi'
-	worn_icon = 'icons/mob/clothing/under/centcom.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/centcom.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/centcom.dmi'
 
 /*
 *	NANOTRASEN
