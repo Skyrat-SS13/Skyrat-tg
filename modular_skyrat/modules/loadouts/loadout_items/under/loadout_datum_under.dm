@@ -822,6 +822,10 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Denim Skirt"
 	item_path = /obj/item/clothing/under/pants/denimskirt
 
+/datum/loadout_item/under/formal/littleblack
+	name = "Short Black Dress"
+	item_path = /obj/item/clothing/under/dress/littleblack
+
 /datum/loadout_item/under/formal/striped_skirt
 	name = "Striped Dress"
 	item_path = /obj/item/clothing/under/dress/striped

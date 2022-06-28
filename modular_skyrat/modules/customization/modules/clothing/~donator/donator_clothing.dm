@@ -1415,7 +1415,7 @@
 // Donation reward for SlippyJoe
 /obj/item/clothing/accessory/hypno_watch
 	name = "cracked pocket watch"
-	desc = "A shining pocket watch, cast in gold and embossed with metallic swirls that almost seem  amethyst under the right light... There's a button on the top to unlatch the front panel, although all that's inside is a layer of cracked glass, the argent hands stuck pointing to 7:07 PM. The brushed silver of these arrows almost seems to swirl if one's gaze lingers for too long. Despite its inert appearance, the eerie mechanical sound of gears turning and clicking in place seems to quietly ring out from the artifact. In the right hands, "
+	desc = "A shining pocket watch, cast in gold and embossed with metallic swirls that almost seem  amethyst under the right light... There's a button on the top to unlatch the front panel, although all that's inside is a layer of cracked glass, the argent hands stuck pointing to 7:07 PM. The brushed silver of these arrows almost seems to swirl if one's gaze lingers for too long. Despite its inert appearance, the eerie mechanical sound of gears turning and clicking in place seems to quietly ring out from the artifact. In the right hands..."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/custom_w.dmi'
 	lefthand_file = 'modular_skyrat/master_files/icons/donator/mob/inhands/donator_left.dmi'
@@ -1435,6 +1435,6 @@
 		return
 	user.whisper(message, spans = spans)
 
-/obj/item/clothing/accessory/examine()
+/obj/item/clothing/accessory/hypno_watch/examine()
 	. = ..()
-	. += span_boldwarning("who knows what it could be used for?")
+	. += span_boldwarning("Who knows what it could be used for?")

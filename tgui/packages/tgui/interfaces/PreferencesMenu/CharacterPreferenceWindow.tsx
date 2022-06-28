@@ -1,26 +1,26 @@
-import { exhaustiveCheck } from "common/exhaustive";
-import { useBackend, useLocalState } from "../../backend";
-import { Stack, Dropdown, Flex } from "../../components";
-import { Window } from "../../layouts";
-import { PreferencesMenuData } from "./data";
-import { PageButton } from "./PageButton";
-import { AntagsPage } from "./AntagsPage";
-import { JobsPage } from "./JobsPage";
-import { MainPage } from "./MainPage";
-import { SpeciesPage } from "./SpeciesPage";
-import { QuirksPage } from "./QuirksPage";
+import { exhaustiveCheck } from 'common/exhaustive';
+import { useBackend, useLocalState } from '../../backend';
+import { Stack, Dropdown, Flex } from '../../components';
+import { Window } from '../../layouts';
+import { PreferencesMenuData } from './data';
+import { PageButton } from './PageButton';
+import { AntagsPage } from './AntagsPage';
+import { JobsPage } from './JobsPage';
+import { MainPage } from './MainPage';
+import { SpeciesPage } from './SpeciesPage';
+import { QuirksPage } from './QuirksPage';
 // SKYRAT EDIT
-import { LanguagesPage } from "./LanguagesMenu";
-import { LimbsPage } from "./LimbsPage";
+import { LanguagesPage } from './LanguagesMenu';
+import { LimbsPage } from './LimbsPage';
 // SKYRAT EDIT END
 enum Page {
   Antags,
   Main,
   Jobs,
-// SKYRAT EDIT
+  // SKYRAT EDIT
   Limbs,
   Languages,
-// SKYRAT EDIT END
+  // SKYRAT EDIT END
   Species,
   Quirks,
 }
@@ -152,8 +152,7 @@ export const CharacterPreferenceWindow = (props, context) => {
                 <PageButton
                   currentPage={currentPage}
                   page={Page.Limbs}
-                  setPage={setCurrentPage}
-                >
+                  setPage={setCurrentPage}>
                   Augments+
                 </PageButton>
               </Stack.Item>
@@ -162,8 +161,7 @@ export const CharacterPreferenceWindow = (props, context) => {
                 <PageButton
                   currentPage={currentPage}
                   page={Page.Languages}
-                  setPage={setCurrentPage}
-                >
+                  setPage={setCurrentPage}>
                   Languages
                 </PageButton>
               </Stack.Item>

@@ -542,7 +542,7 @@
 	else
 		result = examinify.examine(src) // if a tree is examined but no client is there to see it, did the tree ever really exist?
 
-	//SKYRAT EDIT ADDITION
+	//SKYRAT EDIT CHANGE
 	if(result.len)
 		for(var/i = 1; i <= length(result); i++)
 			if(result[i] != EXAMINE_SECTION_BREAK)
@@ -554,7 +554,7 @@
 					i--
 	//SKYRAT EDIT END
 
-	to_chat(src, "<div class='examine_block'><span class='infoplain'>[result.Join()]</span></div>") //SKYRAT EDIT CHANGE
+	to_chat(src, examine_block("<span class='infoplain'>[result.Join()]</span>"))
 	SEND_SIGNAL(src, COMSIG_MOB_EXAMINATE, examinify)
 
 

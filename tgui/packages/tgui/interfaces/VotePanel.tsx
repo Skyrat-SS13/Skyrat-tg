@@ -171,16 +171,20 @@ const ChoicesPanel = (props, context) => {
                       Vote
                     </Button>
                   }>
-                  {user.selectedChoice
-                  && choice.name === user.selectedChoice && (
-                    <Icon
-                      alignSelf="right"
-                      mr={2}
-                      color="green"
-                      name="vote-yea"
-                    />
-                  )}
-                  {user.isLowerAdmin ? `${choice.votes} Votes` : ""/* SKYRAT EDIT*/}
+                  {user.selectedChoice &&
+                    choice.name === user.selectedChoice && (
+                      <Icon
+                        alignSelf="right"
+                        mr={2}
+                        color="green"
+                        name="vote-yea"
+                      />
+                    )}
+                  {
+                    user.isLowerAdmin
+                      ? `${choice.votes} Votes`
+                      : '' /* SKYRAT EDIT*/
+                  }
                 </LabeledList.Item>
                 <LabeledList.Divider />
               </Box>

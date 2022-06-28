@@ -2364,7 +2364,7 @@
 /obj/machinery/door/window/left{
 	dir = 4;
 	name = "Crate Security Door";
-	req_access = list("mail_sorting")
+	req_access = list("cargo")
 	},
 /obj/machinery/camera{
 	c_tag = "Cargo Bay - Sorting";
@@ -10791,13 +10791,13 @@
 /turf/open/floor/iron,
 /area/station/cargo/warehouse)
 "iCX" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/machinery/light/directional/west,
+/obj/effect/turf_decal/bot,
 /obj/machinery/button/elevator{
 	id = "CargoElevator";
 	pixel_x = -25
 	},
-/obj/effect/turf_decal/stripes/line,
-/obj/machinery/light/directional/west,
-/obj/effect/turf_decal/bot,
 /turf/open/floor/iron/dark,
 /area/station/cargo/storage)
 "iDm" = (
@@ -18884,7 +18884,7 @@
 /obj/machinery/door/window/left{
 	dir = 4;
 	name = "Cargo Bay to Mail Office";
-	req_access = list("mail_sorting")
+	req_access = list("cargo")
 	},
 /turf/open/floor/iron/dark,
 /area/station/cargo/storage)
