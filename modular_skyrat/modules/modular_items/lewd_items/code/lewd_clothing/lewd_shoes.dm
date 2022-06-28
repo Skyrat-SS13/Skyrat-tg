@@ -1,7 +1,7 @@
 //heels item
 /obj/item/clothing/shoes/latexheels
 	name = "latex heels"
-	desc = "Lace up before use. It's pretty difficult to walk in these while they are laced."
+	desc = "A pair of latex heels. Lace up before use."
 	icon_state = "latexheels"
 	inhand_icon_state = "latexheels"
 	// We really need to find a way to condense there.
