@@ -31,14 +31,20 @@ export const RecordManifest = (props, context) => {
                   <Table.Cell>
                     <Button
                       content="Show exploitables"
-                      onClick={() => act("show_exploitables", {
-                        exploitable_id: crewMember.name,
-                      })} />
+                      onClick={() =>
+                        act('show_exploitables', {
+                          exploitable_id: crewMember.name,
+                        })
+                      }
+                    />
                     <Button
                       content="Show background"
-                      onClick={() => act("show_background", {
-                        background_id: crewMember.name,
-                      })} />
+                      onClick={() =>
+                        act('show_background', {
+                          background_id: crewMember.name,
+                        })
+                      }
+                    />
                   </Table.Cell>
                   <Table.Cell
                     className={classes([
