@@ -32,6 +32,7 @@
 		forge_objectives()
 	if(equip_ert)
 		equipERT()
+	owner?.current.faction |= FACTION_ERT //SKYRAT ADDITION
 	. = ..()
 
 /datum/antagonist/ert/get_team()
@@ -216,7 +217,7 @@
 
 /datum/antagonist/ert/bounty_hook
 	role = "Hookgun Bounty Hunter"
-	outfit = /datum/outfit/bountyarmor/ert
+	outfit = /datum/outfit/bountyhook/ert
 
 /datum/antagonist/ert/bounty_synth
 	role = "Synthetic Bounty Hunter"

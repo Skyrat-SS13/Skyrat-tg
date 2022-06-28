@@ -107,12 +107,19 @@
 /datum/species/human/felinid/prepare_human_for_preview(mob/living/carbon/human/human)
 	human.hairstyle = "Hime Cut"
 	human.hair_color = "#ffcccc" // pink
-	human.update_hair()
+	human.update_hair(TRUE) // SKYRAT EDIT - Making the species menu icons work better - ORIGINAL: human.update_hair()
 
+	/** SKYRAT EDIT - Making the species menu icons work better - ORIGINAL:
 	var/obj/item/organ/internal/ears/cat/cat_ears = human.getorgan(/obj/item/organ/internal/ears/cat)
 	if (cat_ears)
 		cat_ears.color = human.hair_color
 		human.update_body()
+	**/ // START
+	human.dna.species.mutant_bodyparts["tail"] = list(MUTANT_INDEX_NAME = "Cat", MUTANT_INDEX_COLOR_LIST = list(human.hair_color))
+	human.dna.species.mutant_bodyparts["ears"] = list(MUTANT_INDEX_NAME = "Cat", MUTANT_INDEX_COLOR_LIST = list(human.hair_color))
+	human.update_mutant_bodyparts(TRUE)
+	human.update_body(TRUE)
+	// SKYRAT EDIT END
 
 /datum/species/human/felinid/get_species_description()
 	return "Felinids are one of the many types of bespoke genetic \

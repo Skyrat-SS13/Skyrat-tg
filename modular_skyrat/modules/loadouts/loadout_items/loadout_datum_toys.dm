@@ -350,6 +350,14 @@ GLOBAL_LIST_INIT(loadout_toys, generate_loadout_items(/datum/loadout_item/toys))
 *	MISC
 */
 
+/datum/loadout_item/toys/cat_toy
+	name = "Cat Toy"
+	item_path = /obj/item/toy/cattoy
+
+/datum/loadout_item/toys/crayons
+	name = "Box of Crayons"
+	item_path = /obj/item/storage/crayons
+
 /datum/loadout_item/toys/eightball
 	name = "Magic Eightball"
 	item_path = /obj/item/toy/eightball
@@ -357,7 +365,3 @@ GLOBAL_LIST_INIT(loadout_toys, generate_loadout_items(/datum/loadout_item/toys))
 /datum/loadout_item/toys/toykatana
 	name = "Toy Katana"
 	item_path = /obj/item/toy/katana
-
-/datum/loadout_item/toys/crayons
-	name = "Box of Crayons"
-	item_path = /obj/item/storage/crayons

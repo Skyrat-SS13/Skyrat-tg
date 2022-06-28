@@ -237,10 +237,11 @@ const ScannerGateOff = (props, context) => {
         />
         <Button
           content="Species"
-          onClick={() => act('set_mode', { new_mode: 'Species' })} />
+          onClick={() => act('set_mode', { new_mode: 'Species' })}
+        />
         <Button //  SKYRAT EDIT START - MORE SCANNER GATE OPTIONS
           content="Gender"
-          onClick={() => act('set_mode', { new_mode: 'Gender' })}//  SKYRAT EDIT END - MORE SCANNER GATE OPTIONS
+          onClick={() => act('set_mode', { new_mode: 'Gender' })} //  SKYRAT EDIT END - MORE SCANNER GATE OPTIONS
         />
         <Button
           content="Nutrition"
@@ -389,24 +390,26 @@ const ScannerGateNutrition = (props, context) => {
 const ScannerGateGender = (props, context) => {
   const { act, data } = useBackend(context);
   const { reverse, target_gender } = data;
-  const gender = TARGET_GENDER_LIST.find(gender => {
+  const gender = TARGET_GENDER_LIST.find((gender) => {
     return gender.value === target_gender;
   });
   return (
     <>
       <Box mb={2}>
-        Trigger if the person scanned is {reverse ? 'not' : ''}
-        {' '}a {gender.name}.
+        Trigger if the person scanned is {reverse ? 'not' : ''} a {gender.name}.
       </Box>
       <Box mb={2}>
-        {TARGET_GENDER_LIST.map(gender => (
+        {TARGET_GENDER_LIST.map((gender) => (
           <Button.Checkbox
             key={gender.name}
             checked={gender.value === target_gender}
             content={gender.name}
-            onClick={() => act('set_target_gender', {
-              new_gender: gender.name,
-            })} />
+            onClick={() =>
+              act('set_target_gender', {
+                new_gender: gender.name,
+              })
+            }
+          />
         ))}
       </Box>
       <ScannerGateMode />

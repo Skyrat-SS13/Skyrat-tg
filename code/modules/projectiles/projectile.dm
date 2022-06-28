@@ -182,6 +182,11 @@
 	var/static/list/projectile_connections = list(
 		COMSIG_ATOM_ENTERED = .proc/on_entered,
 	)
+	//SKYRAT ADDITION START
+	/// If this should be able to hit the target even on direct firing when `ignored_factions` applies
+	var/ignore_direct_target = FALSE
+	//SKYRAT ADDITION END
+
 	/// If true directly targeted turfs can be hit
 	var/can_hit_turfs = FALSE
 
@@ -505,7 +510,7 @@
 		var/mob/M = firer
 		if((target == firer) || ((target == firer.loc) && ismecha(firer.loc)) || (target in firer.buckled_mobs) || (istype(M) && (M.buckled == target)))
 			return FALSE
-	if(ignored_factions?.len && ismob(target) && !direct_target)
+	if(ignored_factions?.len && ismob(target) && (!direct_target || ignore_direct_target)) //SKYRAT EDIT: ignore_direct_target
 		var/mob/target_mob = target
 		if(faction_check(target_mob.faction, ignored_factions))
 			return FALSE
