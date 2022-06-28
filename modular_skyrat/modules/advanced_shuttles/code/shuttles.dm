@@ -76,15 +76,30 @@
 	prefix = "_maps/shuttles/skyrat/"
 	suffix = "skyrat"
 
+/obj/docking_port/stationary/laborcamp_home
+	roundstart_template = /datum/map_template/shuttle/labour/skyrat
+
+/obj/docking_port/stationary/laborcamp_home/kilo
+	roundstart_template = /datum/map_template/shuttle/labour/skyrat
+
 /datum/map_template/shuttle/mining_common/skyrat
 	name = "NMC Chimera (Mining)"
 	prefix = "_maps/shuttles/skyrat/"
 	suffix = "skyrat"
 
+/obj/docking_port/stationary/mining_home/common
+	roundstart_template = /datum/map_template/shuttle/mining_common/skyrat
+
+/obj/docking_port/stationary/mining_home/common/kilo
+	roundstart_template = /datum/map_template/shuttle/mining_common/skyrat
+
 /datum/map_template/shuttle/mining/skyrat
 	name = "NMC Phoenix (Mining)"
 	prefix = "_maps/shuttles/skyrat/"
 	suffix = "skyrat"
+
+/obj/docking_port/stationary/mining_home
+	roundstart_template = /datum/map_template/shuttle/mining/skyrat
 
 /datum/map_template/shuttle/mining/skyrat/large
 	name = "NMC Manticore (Mining)"
