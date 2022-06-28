@@ -16,7 +16,7 @@ export const GENDERS = {
   },
 
   [Gender.Other]: {
-    icon: "question", // SKYRAT EDIT CHANGE - ORIGINAL: icon: "tg-non-binary"
-    text: "Other",
+    icon: 'question', // SKYRAT EDIT CHANGE - ORIGINAL: icon: "tg-non-binary"
+    text: 'Other',
   },
 };
