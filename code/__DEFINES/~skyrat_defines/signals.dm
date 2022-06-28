@@ -68,3 +68,6 @@
 
 /// From mob/living/*/set_combat_mode(): (new_state)
 #define COMSIG_LIVING_COMBAT_MODE_TOGGLE "living_combat_mode_toggle"
+
+/// To chambered round on gun's `process_fire()`: (list/iff_factions)
+#define COMSIG_CHAMBERED_BULLET_FIRE "chambered_bullet_fire"
