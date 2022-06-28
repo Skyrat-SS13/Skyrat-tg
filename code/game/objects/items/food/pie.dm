@@ -51,12 +51,8 @@
 	if(isliving(hit_atom))
 		var/mob/living/living_target_getting_hit = hit_atom
 		if(stunning)
-<<<<<<< HEAD
-			//living_target_getting_hit.Paralyze(20) //splat! //ORIGINAL
-			living_target_getting_hit.StaminaKnockdown(10, TRUE) //SKYRAT EDIT CHANGE - COMBAT
-=======
-			living_target_getting_hit.Paralyze(2 SECONDS) //splat!
->>>>>>> b4eab1c3576 (Converts all* of the times in the food files into SECONDS (#67984))
+			//living_target_getting_hit.Paralyze(2 SECONDS) //splat! //ORIGINAL
+			living_target_getting_hit.StaminaKnockdown(1 SECONDS, TRUE) //SKYRAT EDIT CHANGE - COMBAT
 		living_target_getting_hit.adjust_blurriness(1)
 		living_target_getting_hit.visible_message(span_warning("[living_target_getting_hit] is creamed by [src]!"), span_userdanger("You've been creamed by [src]!"))
 		playsound(living_target_getting_hit, SFX_DESECRATION, 50, TRUE)
