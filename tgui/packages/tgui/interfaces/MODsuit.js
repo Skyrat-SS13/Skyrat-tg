@@ -515,15 +515,21 @@ const ParametersSection = (props, context) => {
         <LabeledList.Item label="Occupant">
           {wearer_name}, {wearer_job}
         </LabeledList.Item>
-        <LabeledList.Item label="Onboard pAI" buttons={
-          // SKYRAT EDIT START - pAIs in MODsuits
-          (pAI && !ispAI) ? <Button
-            icon="eject"
-            content="Eject pAI"
-            onClick={() => act('remove_pai')}
-          /> : <> </>
-        } >
-          {pAI || 'None'/* SKYRAT EDIT END */}
+        <LabeledList.Item
+          label="Onboard pAI"
+          buttons={
+            // SKYRAT EDIT START - pAIs in MODsuits
+            pAI && !ispAI ? (
+              <Button
+                icon="eject"
+                content="Eject pAI"
+                onClick={() => act('remove_pai')}
+              />
+            ) : (
+              <> </>
+            )
+          }>
+          {pAI || 'None' /* SKYRAT EDIT END */}
         </LabeledList.Item>
       </LabeledList>
     </Section>

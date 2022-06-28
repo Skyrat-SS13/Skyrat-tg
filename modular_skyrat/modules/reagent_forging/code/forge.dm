@@ -282,7 +282,7 @@
 		to_chat(user, span_notice("You successfully line [src] with [attacking_item]."))
 		return
 
-	if(istype(attacking_item, /obj/item/organ/regenerative_core))
+	if(istype(attacking_item, /obj/item/organ/internal/regenerative_core))
 		if(in_use) //only insert one at a time
 			to_chat(user, span_warning("You cannot do multiple things at the same time!"))
 			return
@@ -290,7 +290,7 @@
 		if(reagent_forging) //if its already able to reagent forge, why continue wasting?
 			fail_message(user, "[src] is already upgraded.")
 			return
-		var/obj/item/organ/regenerative_core/used_core = attacking_item
+		var/obj/item/organ/internal/regenerative_core/used_core = attacking_item
 		if(used_core.inert) //no inert cores allowed
 			fail_message(user, "You cannot use an inert [used_core].")
 			return
