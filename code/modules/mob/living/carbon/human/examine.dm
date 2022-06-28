@@ -19,7 +19,6 @@
 		if(HAS_TRAIT(L, TRAIT_PROSOPAGNOSIA) || HAS_TRAIT(L, TRAIT_INVISIBLE_MAN))
 			obscure_name = TRUE
 
-<<<<<<< HEAD
 	//SKYRAT EDIT CHANGE BEGIN - CUSTOMIZATION
 	var/species_visible
 	var/species_name_string
@@ -50,9 +49,6 @@
 	. = list("<span class='info'>*---------*\nThis is <EM>[!obscure_name ? name : "Unknown"][apparent_species]</EM>!")
 
 	. = list("<span class='info'>*---------*\nThis is <EM>[!obscure_name ? name : "Unknown"]</EM>!")
-=======
-	. = list("<span class='info'>This is <EM>[!obscure_name ? name : "Unknown"]</EM>!")
->>>>>>> b864589522f (Examine Blocks (#67937))
 
 	var/obscured = check_obscured_slots()
 	var/skipface = (wear_mask && (wear_mask.flags_inv & HIDEFACE)) || (head && (head.flags_inv & HIDEFACE))
@@ -446,21 +442,15 @@
 					"<a href='?src=[REF(src)];hud=s;add_crime=1;examine_time=[world.time]'>\[Add crime\]</a>",
 					"<a href='?src=[REF(src)];hud=s;view_comment=1;examine_time=[world.time]'>\[View comment log\]</a>",
 					"<a href='?src=[REF(src)];hud=s;add_comment=1;examine_time=[world.time]'>\[Add comment\]</a>"), "")
-<<<<<<< HEAD
 				// SKYRAT EDIT ADDITION BEGIN - EXAMINE RECORDS
 				if(target_record && length(target_record.fields["past_records"]) > RECORDS_INVISIBLE_THRESHOLD)
-					. += "<span class='deptradio'>Security record:</span> <a href='?src=[REF(src)];hud=s;secrecords=1;examine_time=[world.time]'>\[View security records\]</a>"	
-=======
-	else if(isobserver(user))
-		. += span_info("<b>Traits:</b> [get_quirk_string(FALSE, CAT_QUIRK_ALL)]")
-	. += "</span>"
->>>>>>> b864589522f (Examine Blocks (#67937))
+					. += "<span class='deptradio'>Security record:</span> <a href='?src=[REF(src)];hud=s;secrecords=1;examine_time=[world.time]'>\[View security records\]</a>"
 
 		if (record_cache && length(record_cache.fields["past_records"]) > RECORDS_INVISIBLE_THRESHOLD)
 			. += "<a href='?src=[REF(src)];hud=[HAS_TRAIT(user, TRAIT_SECURITY_HUD) ? "s" : "m"];genrecords=1;examine_time=[world.time]'>\[View general records\]</a>"
 		//SKYRAT EDIT ADDITION END
 	else if(isobserver(user))
-		. += "<span class='info'><b>Traits:</b> [get_quirk_string(FALSE, CAT_QUIRK_ALL)]</span>"
+		. += span_info("<b>Traits:</b> [get_quirk_string(FALSE, CAT_QUIRK_ALL)]")
 
 	//SKYRAT EDIT ADDITION BEGIN - EXAMINE RECORDS
 	if(isobserver(user) || user.mind?.can_see_exploitables || user.mind?.has_exploitables_override)
@@ -512,7 +502,7 @@
 			. += span_notice("<b>They look different than usual:</b> [temporary_flavor_text]")
 		else
 			. += span_notice("<b>They look different than usual:</b> [copytext_char(temporary_flavor_text, 1, 37)]... <a href='?src=[REF(src)];temporary_flavor=1'>More...</a>")
-	//. += "*---------*</span>" SKYRAT EDIT REMOVAL
+	. += "</span>"
 	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, user, .)
 
 /**

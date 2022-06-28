@@ -263,20 +263,12 @@
 	if(!length(shown_skills))
 		to_chat(user, span_notice("You don't seem to have any particularly outstanding skills."))
 		return
-<<<<<<< HEAD
-	var/msg = "[span_info("<EM>Your skills</EM>")]\n<span class='notice'><hr>" //SKYRAT EDIT CHANGE
-=======
 	var/msg = "[span_info("<EM>Your skills</EM>")]\n<span class='notice'>"
->>>>>>> b864589522f (Examine Blocks (#67937))
 	for(var/i in shown_skills)
 		var/datum/skill/the_skill = i
 		msg += "[initial(the_skill.name)] - [get_skill_level_name(the_skill)]\n"
 	msg += "</span>"
-<<<<<<< HEAD
-	to_chat(user, examine_block(msg)) //SKYRAT EDIT CHANGE
-=======
 	to_chat(user, examine_block(msg))
->>>>>>> b864589522f (Examine Blocks (#67937))
 
 /datum/mind/proc/set_death_time()
 	SIGNAL_HANDLER

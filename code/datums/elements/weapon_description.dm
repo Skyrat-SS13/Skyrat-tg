@@ -62,11 +62,7 @@
 	SIGNAL_HANDLER
 
 	if(href_list["examine"])
-<<<<<<< HEAD
-		to_chat(user, span_notice(examine_block("[build_label_text(source)]"))) //SKYRAT EDIT CHANGE
-=======
 		to_chat(user, span_notice(examine_block("[build_label_text(source)]")))
->>>>>>> b864589522f (Examine Blocks (#67937))
 
 /**
  *
