@@ -95,13 +95,6 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/engineering/gravity_generator)
-"au" = (
-/obj/effect/spawner/structure/window/reinforced,
-/obj/structure/sign/warning/radiation/rad_area{
-	pixel_y = 32
-	},
-/turf/open/floor/plating,
-/area/station/engineering/gravity_generator)
 "av" = (
 /turf/open/floor/iron/dark,
 /area/station/engineering/gravity_generator)
@@ -649,6 +642,10 @@
 	},
 /turf/open/floor/iron,
 /area/station/command/bridge)
+"cs" = (
+/obj/structure/sign/warning/vacuum/external/directional/east,
+/turf/open/floor/iron,
+/area/station/medical/medbay)
 "ct" = (
 /obj/machinery/light/directional/west,
 /turf/open/floor/iron,
@@ -1125,6 +1122,12 @@
 /obj/item/gun/magic/wand/resurrection/debug,
 /turf/open/floor/iron,
 /area/station/commons/storage/primary)
+"eb" = (
+/obj/docking_port/stationary/laborcamp_home{
+	dir = 8
+	},
+/turf/open/space/basic,
+/area/space)
 "ec" = (
 /obj/docking_port/stationary{
 	dir = 8;
@@ -1358,12 +1361,6 @@
 	},
 /turf/open/floor/iron,
 /area/station/cargo/storage)
-"eU" = (
-/obj/structure/sign/warning/vacuum/external{
-	pixel_x = 32
-	},
-/turf/open/floor/iron,
-/area/station/medical/medbay)
 "eV" = (
 /obj/machinery/light/directional/west,
 /turf/open/floor/iron,
@@ -2017,12 +2014,6 @@
 /obj/machinery/chem_mass_spec,
 /turf/open/floor/iron,
 /area/station/medical/chemistry)
-"mP" = (
-/obj/docking_port/stationary/mining_home{
-	dir = 8
-	},
-/turf/open/floor/engine,
-/area/station/cargo/miningoffice)
 "nn" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
 	dir = 8
@@ -2229,12 +2220,6 @@
 /obj/machinery/power/rtg/debug,
 /turf/open/floor/plating/airless,
 /area/space/nearstation)
-"yX" = (
-/obj/docking_port/stationary/laborcamp_home{
-	dir = 8
-	},
-/turf/open/space/basic,
-/area/space)
 "zo" = (
 /obj/machinery/power/apc/auto_name/directional/south,
 /obj/structure/cable,
@@ -2383,6 +2368,12 @@
 	},
 /turf/open/floor/iron,
 /area/station/medical/chemistry)
+"Kd" = (
+/obj/docking_port/stationary/mining_home{
+	dir = 8
+	},
+/turf/open/floor/engine,
+/area/station/cargo/miningoffice)
 "Kx" = (
 /obj/structure/table,
 /obj/item/analyzer,
@@ -2454,6 +2445,11 @@
 /obj/item/disk/tech_disk/debug,
 /turf/open/floor/iron,
 /area/station/science)
+"Pr" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/structure/sign/warning/radiation/rad_area/directional/north,
+/turf/open/floor/plating,
+/area/station/engineering/gravity_generator)
 "Qi" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
@@ -4143,7 +4139,7 @@ qQ
 qQ
 qQ
 qQ
-mP
+Kd
 qQ
 qQ
 qQ
@@ -5433,7 +5429,7 @@ aa
 aa
 aa
 aa
-yX
+eb
 aa
 aa
 dY
@@ -7821,7 +7817,7 @@ aa
 ad
 af
 ak
-au
+Pr
 aI
 aX
 aI
@@ -8289,7 +8285,7 @@ av
 by
 bX
 cm
-eU
+cs
 cy
 Ut
 cm
