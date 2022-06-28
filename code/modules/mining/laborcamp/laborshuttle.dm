@@ -30,10 +30,10 @@
 /obj/docking_port/stationary/laborcamp_home
 	name = "SS13: Labor Shuttle Dock"
 	id = "laborcamp_home"
-	roundstart_template = /datum/map_template/shuttle/labour/delta
+	roundstart_template = /datum/map_template/shuttle/labour/skyrat ///SKYRAT EDIT CHANGE - Original: /datum/map_template/shuttle/labour/delta
 	width = 9
 	dwidth = 2
 	height = 5
 
 /obj/docking_port/stationary/laborcamp_home/kilo
-	roundstart_template = /datum/map_template/shuttle/labour/kilo
+	roundstart_template = /datum/map_template/shuttle/labour/skyrat ///SKYRAT EDIT CHANGE - Original: /datum/map_template/shuttle/labour/kilo
