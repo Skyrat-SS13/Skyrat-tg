@@ -3412,9 +3412,7 @@
 /area/station/maintenance/department/crew_quarters/dorms)
 "aJt" = (
 /obj/effect/turf_decal/tile/neutral,
-/obj/structure/sign/departments/restroom{
-	pixel_y = -32
-	},
+/obj/structure/sign/departments/restroom/directional/south,
 /turf/open/floor/iron,
 /area/station/commons/dorms)
 "aJw" = (
@@ -4269,9 +4267,7 @@
 /area/station/maintenance/department/science)
 "aYE" = (
 /obj/machinery/light/floor,
-/obj/structure/industrial_lift{
-	id = "publicElevator"
-	},
+/obj/structure/industrial_lift,
 /turf/open/openspace,
 /area/station/hallway/primary/upper)
 "aYG" = (
@@ -6271,9 +6267,7 @@
 /obj/structure/railing{
 	dir = 5
 	},
-/obj/structure/industrial_lift{
-	id = "publicElevator"
-	},
+/obj/structure/industrial_lift,
 /turf/open/openspace,
 /area/station/hallway/primary/upper)
 "bBJ" = (
@@ -13597,9 +13591,7 @@
 /area/station/commons/dorms)
 "ehZ" = (
 /obj/structure/cable,
-/obj/structure/sign/warning/vacuum{
-	pixel_x = -32
-	},
+/obj/structure/sign/warning/vacuum/directional/west,
 /turf/open/floor/plating,
 /area/station/maintenance/solars/starboard/fore)
 "eik" = (
@@ -21070,9 +21062,7 @@
 /area/station/maintenance/department/medical/central)
 "gWI" = (
 /obj/effect/turf_decal/tile/purple,
-/obj/structure/sign/departments/science{
-	pixel_y = -32
-	},
+/obj/structure/sign/departments/science/directional/south,
 /turf/open/floor/iron,
 /area/station/hallway/primary/upper)
 "gWP" = (
@@ -27740,9 +27730,7 @@
 /obj/effect/turf_decal/trimline/yellow/filled/line{
 	dir = 1
 	},
-/obj/structure/sign/departments/chemistry{
-	pixel_y = 32
-	},
+/obj/structure/sign/departments/chemistry/directional/north,
 /turf/open/floor/iron/white,
 /area/station/medical/chemistry)
 "jiz" = (
@@ -27818,9 +27806,7 @@
 /obj/structure/railing{
 	dir = 6
 	},
-/obj/structure/industrial_lift{
-	id = "publicElevator"
-	},
+/obj/structure/industrial_lift,
 /turf/open/openspace,
 /area/station/hallway/primary/upper)
 "jkJ" = (
@@ -30661,9 +30647,7 @@
 /obj/effect/spawner/random/trash/mess,
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light/small/red/directional/west,
-/obj/structure/sign/warning/deathsposal{
-	pixel_y = -32
-	},
+/obj/structure/sign/warning/deathsposal/directional/south,
 /turf/open/floor/plating,
 /area/station/maintenance/xenobio_disposals)
 "kmz" = (
@@ -33381,9 +33365,7 @@
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
 /obj/structure/disposalpipe/segment,
-/obj/structure/sign/departments/restroom{
-	pixel_x = -32
-	},
+/obj/structure/sign/departments/restroom/directional/west,
 /turf/open/floor/iron,
 /area/station/hallway/primary/upper)
 "llU" = (
@@ -33708,9 +33690,7 @@
 /obj/structure/railing{
 	dir = 9
 	},
-/obj/structure/industrial_lift{
-	id = "publicElevator"
-	},
+/obj/structure/industrial_lift,
 /turf/open/openspace,
 /area/station/hallway/primary/upper)
 "lqI" = (
@@ -38356,9 +38336,7 @@
 	dir = 4
 	},
 /obj/structure/disposalpipe/segment,
-/obj/structure/sign/departments/chemistry/pharmacy{
-	pixel_x = 32
-	},
+/obj/structure/sign/departments/chemistry/pharmacy/directional/east,
 /turf/open/floor/iron,
 /area/station/hallway/primary/upper)
 "mUN" = (
@@ -43844,8 +43822,9 @@
 /turf/open/floor/iron,
 /area/station/maintenance/department/medical/central)
 "oNm" = (
-/obj/structure/industrial_lift{
-	id = "publicElevator"
+/obj/structure/industrial_lift,
+/obj/effect/landmark/lift_id{
+	specific_lift_id = "publicElevator"
 	},
 /turf/open/openspace,
 /area/station/hallway/primary/upper)
@@ -54551,9 +54530,7 @@
 /turf/open/floor/engine,
 /area/station/science/xenobiology)
 "sxa" = (
-/obj/structure/sign/warning/vacuum/external{
-	pixel_y = -32
-	},
+/obj/structure/sign/warning/vacuum/external/directional/south,
 /turf/open/floor/plating,
 /area/station/maintenance/aft/upper)
 "sxE" = (
@@ -55834,9 +55811,7 @@
 /obj/structure/railing{
 	dir = 10
 	},
-/obj/structure/industrial_lift{
-	id = "publicElevator"
-	},
+/obj/structure/industrial_lift,
 /turf/open/openspace,
 /area/station/hallway/primary/upper)
 "sUu" = (
@@ -67210,7 +67185,7 @@
 	name = "Toxins Requests Console"
 	},
 /obj/machinery/computer/atmos_control/noreconnect{
-	atmos_chambers = list("ordnancegas1" = "Burn Chamber", "ordnancegas2" = "Freezer Chamber");
+	atmos_chambers = list("ordnancegas1"="Burn Chamber","ordnancegas2"="Freezer Chamber");
 	dir = 1
 	},
 /turf/open/floor/iron/dark,
@@ -68388,18 +68363,18 @@
 /obj/item/storage/box/ingredients/fiesta,
 /obj/item/storage/box/ingredients/american,
 /obj/item/reagent_containers/food/condiment/flour{
-	list_reagents = list(/datum/reagent/consumable/flour = 600);
+	list_reagents = list(/datum/reagent/consumable/flour=600);
 	name = "Premium All-Purpose Flour (16KG)";
 	volume = 600
 	},
 /obj/item/reagent_containers/food/condiment/milk,
 /obj/item/reagent_containers/food/condiment/enzyme{
-	list_reagents = list(/datum/reagent/consumable/enzyme = 500);
+	list_reagents = list(/datum/reagent/consumable/enzyme=500);
 	name = "universe-sized universal enyzyme";
 	volume = 500
 	},
 /obj/item/reagent_containers/food/condiment/rice{
-	list_reagents = list(/datum/reagent/consumable/rice = 150);
+	list_reagents = list(/datum/reagent/consumable/rice=150);
 	name = "Basmati Rice Sack (4KG)";
 	volume = 150
 	},

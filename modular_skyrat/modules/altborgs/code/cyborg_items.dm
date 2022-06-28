@@ -19,7 +19,7 @@
 	icon_state = "borghypo_n"
 	charge_cost = 20
 	recharge_time = 2
-	reagent_ids = list(
+	default_reagent_types = list(
 		/datum/reagent/medicine/syndicate_nanites,
 		/datum/reagent/medicine/inacusiate,
 		/datum/reagent/medicine/potass_iodide,
@@ -27,4 +27,4 @@
 		/datum/reagent/consumable/nutriment //That is for Ninja.
 	)
 	bypass_protection = TRUE //They still wearing suits, don't they?
-	accepts_reagent_upgrades = FALSE
+

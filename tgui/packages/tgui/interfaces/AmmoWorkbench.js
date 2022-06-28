@@ -13,31 +13,19 @@ export const AmmoWorkbench = (props, context) => {
       title="Ammunitions Workbench">
       <Window.Content scrollable>
         <Tabs>
-          <Tabs.Tab
-            selected={tab === 1}
-            onClick={() => setTab(1)}>
+          <Tabs.Tab selected={tab === 1} onClick={() => setTab(1)}>
             Ammunitions
           </Tabs.Tab>
-          <Tabs.Tab
-            selected={tab === 2}
-            onClick={() => setTab(2)}>
+          <Tabs.Tab selected={tab === 2} onClick={() => setTab(2)}>
             Materials
           </Tabs.Tab>
-          <Tabs.Tab
-            selected={tab === 3}
-            onClick={() => setTab(3)}>
+          <Tabs.Tab selected={tab === 3} onClick={() => setTab(3)}>
             Datadisks
           </Tabs.Tab>
         </Tabs>
-        {tab === 1 && (
-          <AmmunitionsTab />
-        )}
-        {tab === 2 && (
-          <MaterialsTab />
-        )}
-        {tab === 3 && (
-          <DatadiskTab />
-        )}
+        {tab === 1 && <AmmunitionsTab />}
+        {tab === 2 && <MaterialsTab />}
+        {tab === 3 && <DatadiskTab />}
       </Window.Content>
     </Window>
   );
@@ -66,19 +54,17 @@ export const AmmunitionsTab = (props, context) => {
           {error}
         </NoticeBox>
       )}
-      <Section
-        title="Machine Settings">
+      <Section title="Machine Settings">
         <Box inline mr={4}>
-          Current Efficiency: <RoundGauge
+          Current Efficiency:{' '}
+          <RoundGauge
             value={efficiency}
             minValue={1.6}
             maxValue={1}
             format={() => null}
           />
         </Box>
-        <Box>
-          Time Per Round: {time} seconds
-        </Box>
+        <Box>Time Per Round: {time} seconds</Box>
         <Button.Checkbox
           textAlign="right"
           checked={turboBoost}
@@ -88,7 +74,7 @@ export const AmmunitionsTab = (props, context) => {
       </Section>
       <Section
         title="Loaded Magazine"
-        buttons={(
+        buttons={
           <>
             {!!mag_loaded && (
               <Box inline mr={2}>
@@ -103,18 +89,13 @@ export const AmmunitionsTab = (props, context) => {
               icon="eject"
               content="Eject"
               disabled={!mag_loaded}
-              onClick={() => act('EjectMag')} />
+              onClick={() => act('EjectMag')}
+            />
           </>
-        )}>
+        }>
+        {!!mag_loaded && <Box>{toTitleCase(mag_name)}</Box>}
         {!!mag_loaded && (
-          <Box>
-            {toTitleCase(mag_name)}
-          </Box>
-        )}
-        {!!mag_loaded && (
-          <Box
-            bold
-            textAlign="right">
+          <Box bold textAlign="right">
             {current_rounds} / {max_rounds}
           </Box>
         )}
@@ -122,7 +103,7 @@ export const AmmunitionsTab = (props, context) => {
       <Section title="Available Ammunition Types">
         {!!mag_loaded && (
           <Flex.Item grow={1} basis={0}>
-            {available_rounds.map(available_round => (
+            {available_rounds.map((available_round) => (
               <Box
                 key={available_round.name}
                 className="candystripe"
@@ -132,21 +113,23 @@ export const AmmunitionsTab = (props, context) => {
                   <Button
                     content={available_round.name}
                     disabled={system_busy}
-                    onClick={() => act('FillMagazine', {
-                      selected_type: available_round.typepath,
-                    })} />
+                    onClick={() =>
+                      act('FillMagazine', {
+                        selected_type: available_round.typepath,
+                      })
+                    }
+                  />
                 </Stack.Item>
               </Box>
             ))}
           </Flex.Item>
         )}
       </Section>
-      {!!hacked &&(
+      {!!hacked && (
         <NoticeBox textAlign="center" color="bad">
-          !WARNING! - ARMADYNE SAFETY PROTOCOLS ARE NOT ENGAGED!
-          MISUSE IS NOT COVERED UNDER WARRANTY.
-          SOME MUNITION TYPES MAY CONSTITUTE A WAR CRIME IN YOUR AREA.
-          PLEASE CONTACT AN ARMADYNE ADMINISTRATOR IMMEDIATELY.
+          !WARNING! - ARMADYNE SAFETY PROTOCOLS ARE NOT ENGAGED! MISUSE IS NOT
+          COVERED UNDER WARRANTY. SOME MUNITION TYPES MAY CONSTITUTE A WAR CRIME
+          IN YOUR AREA. PLEASE CONTACT AN ARMADYNE ADMINISTRATOR IMMEDIATELY.
         </NoticeBox>
       )}
     </>
@@ -155,20 +138,21 @@ export const AmmunitionsTab = (props, context) => {
 
 export const MaterialsTab = (props, context) => {
   const { act, data } = useBackend(context);
-  const {
-    materials = [],
-  } = data;
+  const { materials = [] } = data;
   return (
     <Section title="Materials">
       <Table>
-        {materials.map(material => (
+        {materials.map((material) => (
           <MaterialRow
             key={material.id}
             material={material}
-            onRelease={amount => act('Release', {
-              id: material.id,
-              sheets: amount,
-            })} />
+            onRelease={(amount) =>
+              act('Release', {
+                id: material.id,
+                sheets: amount,
+              })
+            }
+          />
         ))}
       </Table>
     </Section>
@@ -194,32 +178,32 @@ export const DatadiskTab = (props, context) => {
       )}
       <Section
         title="Datadisk"
-        buttons={(
+        buttons={
           <>
             <Button
               icon="save"
               content="Load Disk"
               disabled={!datadisk_loaded}
-              onClick={() => act('ReadDisk')} />
+              onClick={() => act('ReadDisk')}
+            />
             <Button
               icon="eject"
               content="Eject"
               disabled={!datadisk_loaded}
-              onClick={() => act('EjectDisk')} />
+              onClick={() => act('EjectDisk')}
+            />
           </>
-        )}>
+        }>
         {!!datadisk_loaded && (
           <Box>
             Inserted Datadisk: {datadisk_name}
-            <Box>
-              Description: {datadisk_desc}
-            </Box>
+            <Box>Description: {datadisk_desc}</Box>
           </Box>
         )}
       </Section>
       <Section title="Loaded Datadisks">
         <Table>
-          {loaded_datadisks.map(loaded_datadisk => (
+          {loaded_datadisks.map((loaded_datadisk) => (
             <Box key={loaded_datadisk.loaded_disk_name}>
               {loaded_datadisk.loaded_disk_name}
               <Box textAlign="right">
@@ -236,17 +220,16 @@ export const DatadiskTab = (props, context) => {
 const MaterialRow = (props, context) => {
   const { material, onRelease } = props;
 
-  const [
-    amount,
-    setAmount,
-  ] = useLocalState(context, "amount" + material.name, 1);
+  const [amount, setAmount] = useLocalState(
+    context,
+    'amount' + material.name,
+    1
+  );
 
   const amountAvailable = Math.floor(material.amount);
   return (
     <Table.Row>
-      <Table.Cell>
-        {toTitleCase(material.name).replace('Alloy', '')}
-      </Table.Cell>
+      <Table.Cell>{toTitleCase(material.name).replace('Alloy', '')}</Table.Cell>
       <Table.Cell collapsing textAlign="right">
         <Box mr={2} color="label" inline>
           {material.value && material.value + ' cr'}
@@ -265,11 +248,13 @@ const MaterialRow = (props, context) => {
           minValue={1}
           maxValue={50}
           value={amount}
-          onChange={(e, value) => setAmount(value)} />
+          onChange={(e, value) => setAmount(value)}
+        />
         <Button
           disabled={amountAvailable < 1}
           content="Release"
-          onClick={() => onRelease(amount)} />
+          onClick={() => onRelease(amount)}
+        />
       </Table.Cell>
     </Table.Row>
   );

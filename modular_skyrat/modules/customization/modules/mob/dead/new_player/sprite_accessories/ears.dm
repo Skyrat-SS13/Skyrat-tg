@@ -5,10 +5,15 @@
 	relevent_layers = list(BODY_BEHIND_LAYER, BODY_ADJ_LAYER, BODY_FRONT_LAYER)
 	genetic = TRUE
 
-/datum/sprite_accessory/ears/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
-	if(H.head && ((H.head.flags_inv & HIDEHAIR)  && H.try_hide_mutant_parts) || ((H.wear_mask && (H.wear_mask.flags_inv & HIDEHAIR))  && H.try_hide_mutant_parts) || !HD)
+/datum/sprite_accessory/ears/is_hidden(mob/living/carbon/human/human, obj/item/bodypart/bodypart)
+	if(
+		(human.head && (human.head.flags_inv & HIDEHAIR)) \
+		|| (human.wear_mask && (human.wear_mask.flags_inv & HIDEHAIR)) \
+		|| human.try_hide_mutant_parts \
+		|| !bodypart \
+	)
 		//This line basically checks if we FORCE accessory-ears to show, for items with earholes like Balaclavas and Luchador masks
-		if(!(H.head && (H.head.flags_inv & SHOWSPRITEEARS) || (H.wear_mask && (H.wear_mask.flags_inv & SHOWSPRITEEARS)) || !HD))
+		if(!(human.head && (human.head.flags_inv & SHOWSPRITEEARS) || (human.wear_mask && (human.wear_mask.flags_inv & SHOWSPRITEEARS)) || !bodypart))
 			return TRUE
 	return FALSE
 
