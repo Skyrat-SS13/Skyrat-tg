@@ -421,7 +421,7 @@
 	uniform = /obj/item/clothing/under/color/white
 	suit_store = /obj/item/tank/internals/oxygen
 	mask = /obj/item/clothing/mask/breath
-	back = /obj/item/mod/control/pre_equipped/timeline
+	back = /obj/item/mod/control/pre_equipped/chrono
 
 /datum/outfit/chrono_agent/post_equip(mob/living/carbon/human/agent, visualsOnly)
 	. = ..()
