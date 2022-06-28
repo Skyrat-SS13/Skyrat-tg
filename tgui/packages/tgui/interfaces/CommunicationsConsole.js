@@ -446,24 +446,31 @@ const PageMain = (props, context) => {
       )}
 
       <Section title="Functions">
-        <Flex
-          direction="column">
-          {!!canMakeAnnouncement && <Button
-            icon="bullhorn"
-            content="Make Priority Announcement"
-            onClick={() => act("makePriorityAnnouncement")}
-          />}
-          {!!aprilFools && !!canMakeAnnouncement && <Button
-            icon="bullhorn"
-            content="Call Emergency Meeting"
-            onClick={() => act("emergency_meeting")}
-          />}
-          {!!canToggleEmergencyAccess && <Button.Confirm
-            icon="id-card-o"
-            content={`${emergencyAccess ? "Disable" : "Enable"} Emergency Maintenance Access`}
-            color={emergencyAccess ? "bad" : undefined}
-            onClick={() => act("toggleEmergencyAccess")}
-          />}
+        <Flex direction="column">
+          {!!canMakeAnnouncement && (
+            <Button
+              icon="bullhorn"
+              content="Make Priority Announcement"
+              onClick={() => act('makePriorityAnnouncement')}
+            />
+          )}
+          {!!aprilFools && !!canMakeAnnouncement && (
+            <Button
+              icon="bullhorn"
+              content="Call Emergency Meeting"
+              onClick={() => act('emergency_meeting')}
+            />
+          )}
+          {!!canToggleEmergencyAccess && (
+            <Button.Confirm
+              icon="id-card-o"
+              content={`${
+                emergencyAccess ? 'Disable' : 'Enable'
+              } Emergency Maintenance Access`}
+              color={emergencyAccess ? 'bad' : undefined}
+              onClick={() => act('toggleEmergencyAccess')}
+            />
+          )}
 
           {!syndicate && (
             <Button
@@ -510,34 +517,44 @@ const PageMain = (props, context) => {
             />
           )}
 
-          {(!!emagged && !syndicate) && <Button
-            icon="undo"
-            content="Restore Backup Routing Data"
-            onClick={() => act("restoreBackupRoutingData")}
-          />}
+          {!!emagged && !syndicate && (
+            <Button
+              icon="undo"
+              content="Restore Backup Routing Data"
+              onClick={() => act('restoreBackupRoutingData')}
+            />
+          )}
           {
             // SKYRAT EDIT BEGIN
           }
-          {!!canMakeAnnouncement && <Button
-            icon="bullhorn"
-            content="Call Sol Federation 911: Marshals Response"
-            onClick={() => act("callThePolice")}
-          />}
-          {!!canMakeAnnouncement && <Button
-            icon="bullhorn"
-            content="Call Sol Federation 811: Breach Control Response"
-            onClick={() => act("callBreachControl")}
-          />}
-          {!!canMakeAnnouncement && <Button
-            icon="bullhorn"
-            content="Call Sol Federation 911: Medical Response"
-            onClick={() => act("callTheParameds")}
-          />}
-          {!!emagged && <Button
-            icon="bullhorn"
-            content="Place an Order with Dogginos Pizza"
-            onClick={() => act("callThePizza")}
-          />}
+          {!!canMakeAnnouncement && (
+            <Button
+              icon="bullhorn"
+              content="Call Sol Federation 911: Marshals Response"
+              onClick={() => act('callThePolice')}
+            />
+          )}
+          {!!canMakeAnnouncement && (
+            <Button
+              icon="bullhorn"
+              content="Call Sol Federation 811: Breach Control Response"
+              onClick={() => act('callBreachControl')}
+            />
+          )}
+          {!!canMakeAnnouncement && (
+            <Button
+              icon="bullhorn"
+              content="Call Sol Federation 911: Medical Response"
+              onClick={() => act('callTheParameds')}
+            />
+          )}
+          {!!emagged && (
+            <Button
+              icon="bullhorn"
+              content="Place an Order with Dogginos Pizza"
+              onClick={() => act('callThePizza')}
+            />
+          )}
           {
             // SKYRAT EDIT END
           }

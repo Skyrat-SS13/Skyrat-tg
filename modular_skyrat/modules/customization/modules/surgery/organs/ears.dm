@@ -4,3 +4,7 @@
 	icon_state = "kitty"
 	mutantpart_key = "ears"
 	mutantpart_info = list(MUTANT_INDEX_NAME = "Cat", MUTANT_INDEX_COLOR_LIST = list("#FFAA00"))
+
+/obj/item/organ/internal/ears/cat
+	mutantpart_key = "ears"
+	mutantpart_info = list(MUTANT_INDEX_NAME = "Cat", MUTANT_INDEX_COLOR_LIST = list("#FFAA00"))

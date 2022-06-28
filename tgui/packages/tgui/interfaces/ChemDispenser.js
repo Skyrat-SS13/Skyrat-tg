@@ -128,7 +128,8 @@ export const ChemDispenser = (props, context) => {
         <Button // SKYRAT EDIT ADDITION BEGIN - CHEMISTRY QOL
           icon="pen"
           content="Custom Amount"
-          onClick={() => act('custom_amount')} />
+          onClick={() => act('custom_amount')}
+        />
         <Section
           title="Dispense"
           buttons={beakerTransferAmounts.map((amount) => (

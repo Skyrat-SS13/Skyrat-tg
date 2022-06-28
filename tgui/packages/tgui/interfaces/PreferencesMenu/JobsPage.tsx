@@ -1,11 +1,11 @@
-import { sortBy } from "common/collections";
-import { classes } from "common/react";
-import { InfernoNode, SFC } from "inferno";
-import { useBackend } from "../../backend";
-import { Box, Button, Dropdown, Stack, Tooltip } from "../../components";
-import { logger } from "../../logging";
-import { createSetPreference, Job, JoblessRole, JobPriority, PreferencesMenuData } from "./data";
-import { ServerPreferencesFetcher } from "./ServerPreferencesFetcher";
+import { sortBy } from 'common/collections';
+import { classes } from 'common/react';
+import { InfernoNode, SFC } from 'inferno';
+import { useBackend } from '../../backend';
+import { Box, Button, Dropdown, Stack, Tooltip } from '../../components';
+import { logger } from '../../logging';
+import { createSetPreference, Job, JoblessRole, JobPriority, PreferencesMenuData } from './data';
+import { ServerPreferencesFetcher } from './ServerPreferencesFetcher';
 
 const sortJobs = (entries: [string, Job][], head?: string) =>
   sortBy<[string, Job]>(
@@ -31,7 +31,7 @@ const PriorityButton = (props: {
         className,
         props.modifier && `${className}--${props.modifier}`,
       ])}
-      color={props.enabled ? props.color : "white"}
+      color={props.enabled ? props.color : 'white'}
       circular
       onClick={props.onClick}
       tooltip={props.name}
@@ -107,24 +107,23 @@ const PriorityButtons = (props: {
   const { createSetPriority, isOverflow, priority } = props;
 
   return (
-    <Box inline // SKYRAT EDIT
+    <Box
+      inline // SKYRAT EDIT
       style={{
-        "align-items": "center",
-        "height": "100%",
-        "textAlign": "end", // SKYRAT EDIT
-        "padding": "0.3em", // SKYRAT EDIT
-      }}
-    >
-      {isOverflow
-        ? (
-          <>
-            <PriorityButton
-              name="Off"
-              modifier="off"
-              color="light-grey"
-              enabled={!priority}
-              onClick={createSetPriority(null)}
-            />
+        'align-items': 'center',
+        'height': '100%',
+        'textAlign': 'end', // SKYRAT EDIT
+        'padding': '0.3em', // SKYRAT EDIT
+      }}>
+      {isOverflow ? (
+        <>
+          <PriorityButton
+            name="Off"
+            modifier="off"
+            color="light-grey"
+            enabled={!priority}
+            onClick={createSetPriority(null)}
+          />
 
           <PriorityButton
             name="On"
@@ -132,7 +131,7 @@ const PriorityButtons = (props: {
             enabled={!!priority}
             onClick={createSetPriority(JobPriority.High)}
           />
-          </>
+        </>
       ) : (
         <>
           <PriorityButton
@@ -157,14 +156,14 @@ const PriorityButtons = (props: {
             onClick={createSetPriority(JobPriority.Medium)}
           />
 
-            <PriorityButton
-              name="High"
-              color="green"
-              enabled={priority === JobPriority.High}
-              onClick={createSetPriority(JobPriority.High)}
-            />
+          <PriorityButton
+            name="High"
+            color="green"
+            enabled={priority === JobPriority.High}
+            onClick={createSetPriority(JobPriority.High)}
+          />
         </>
-        )}
+      )}
     </Box> // SKYRAT EDIT
   );
 };
@@ -194,7 +193,8 @@ const JobRow = (
 
   // SKYRAT EDIT
   const alt_title_selected = data.job_alt_titles[name]
-    ? data.job_alt_titles[name] : name;
+    ? data.job_alt_titles[name]
+    : name;
   // SKYRAT EDIT END
 
   let rightSide: InfernoNode;
@@ -226,7 +226,7 @@ const JobRow = (
         </Stack.Item>
       </Stack>
     );
-  // SKYRAT EDIT START
+    // SKYRAT EDIT START
   } else if (job.veteran && !data.is_veteran) {
     rightSide = (
       <Stack align="center" height="100%" pr={1}>
@@ -235,8 +235,10 @@ const JobRow = (
         </Stack.Item>
       </Stack>
     );
-  } else if (data.species_restricted_jobs
-            && data.species_restricted_jobs.indexOf(name) !== -1) {
+  } else if (
+    data.species_restricted_jobs &&
+    data.species_restricted_jobs.indexOf(name) !== -1
+  ) {
     rightSide = (
       <Stack align="center" height="100%" pr={1}>
         <Stack.Item grow textAlign="right">
@@ -244,7 +246,7 @@ const JobRow = (
         </Stack.Item>
       </Stack>
     );
-  // SKYRAT EDIT END
+    // SKYRAT EDIT END
   } else {
     rightSide = (
       <PriorityButtons
@@ -255,24 +257,39 @@ const JobRow = (
     );
   }
   return (
-    <Box className={className} style={{ // SKYRAT EDIT
-      "margin-top": 0,
-    }}>
+    <Box
+      className={className}
+      style={{
+        // SKYRAT EDIT
+        'margin-top': 0,
+      }}>
       <Stack align="center" /* SKYRAT EDIT */>
         <Tooltip
           content={job.description}
-          position="right"// SKYRAT EDIT bottom-start->right
+          position="right" // SKYRAT EDIT bottom-start->right
         >
-          <Stack.Item className="job-name" width="50%" style={{
-            "padding-left": "0.3em",
-          }}> { // SKYRAT EDIT
-              (!job.alt_titles ? name : <Dropdown
-                width="100%"
-                options={job.alt_titles}
-                displayText={alt_title_selected}
-                onSelected={(value) => act("set_job_title", { job: name, new_title: value })}
-              />)
-            // SKYRAT EDIT END
+          <Stack.Item
+            className="job-name"
+            width="50%"
+            style={{
+              'padding-left': '0.3em',
+            }}>
+            {' '}
+            {
+              // SKYRAT EDIT
+              !job.alt_titles ? (
+                name
+              ) : (
+                <Dropdown
+                  width="100%"
+                  options={job.alt_titles}
+                  displayText={alt_title_selected}
+                  onSelected={(value) =>
+                    act('set_job_title', { job: name, new_title: value })
+                  }
+                />
+              )
+              // SKYRAT EDIT END
             }
           </Stack.Item>
         </Tooltip>
@@ -288,7 +305,7 @@ const JobRow = (
 const Department: SFC<{ department: string }> = (props) => {
   const { children, department: name } = props;
   const className = `PreferencesMenu__Jobs__departments--${name}`;
-  logger.log(name + ": " + className);
+  logger.log(name + ': ' + className);
 
   return (
     <ServerPreferencesFetcher
@@ -316,15 +333,22 @@ const Department: SFC<{ department: string }> = (props) => {
         logger.log(className);
         return (
           <Box>
-            {jobsForDepartment.map(([name, job]) => {
-              logger.log(name);
-              return (<JobRow /* SKYRAT EDIT START - Fixing alt titles */
-                className={classes([className, name === department.head && "head"])}
-                key={name}
-                job={job}
-                name={name}
-              />);
-            })/* SKYRAT EDIT END */}
+            {
+              jobsForDepartment.map(([name, job]) => {
+                logger.log(name);
+                return (
+                  <JobRow /* SKYRAT EDIT START - Fixing alt titles */
+                    className={classes([
+                      className,
+                      name === department.head && 'head',
+                    ])}
+                    key={name}
+                    job={job}
+                    name={name}
+                  />
+                );
+              }) /* SKYRAT EDIT END */
+            }
 
             {children}
           </Box>
