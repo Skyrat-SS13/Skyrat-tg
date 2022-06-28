@@ -719,6 +719,7 @@
 /mob/living/carbon/human/check_self_for_injuries()
 	if(stat >= UNCONSCIOUS)
 		return
+	var/list/combined_msg = list()
 
 	visible_message(span_notice("[src] examines [p_them()]self."))
 

@@ -19,21 +19,13 @@
 
 /mob/living/simple_animal/hostile/guardian/dextrous/examine(mob/user)
 	if(dextrous)
-<<<<<<< HEAD
 		. = list("<span class='info'>This is [icon2html(src)] \a <b>[src]</b>!\n[desc]", EXAMINE_SECTION_BREAK) //SKYRAT EDIT CHANGE
-=======
-		. = list("<span class='info'>This is [icon2html(src)] \a <b>[src]</b>!\n[desc]")
->>>>>>> b864589522f (Examine Blocks (#67937))
 		for(var/obj/item/I in held_items)
 			if(!(I.item_flags & ABSTRACT))
 				. += "It has [I.get_examine_string(user)] in its [get_held_index_name(get_held_index_of_item(I))]."
 		if(internal_storage && !(internal_storage.item_flags & ABSTRACT))
 			. += "It is holding [internal_storage.get_examine_string(user)] in its internal storage."
-<<<<<<< HEAD
-		//. += "*---------*</span>" SKYRAT EDIT REMOVAL
-=======
 		. += "</span>"
->>>>>>> b864589522f (Examine Blocks (#67937))
 	else
 		return ..()
 
