@@ -109,7 +109,7 @@
 					/obj/item/storage/box/shibari_stand = 4)
 
 	premium = list(
-		/obj/item/clothing/under/dress/corset = 4,
+		/obj/item/clothing/suit/corset = 4,
 		/obj/item/clothing/under/pants/chaps = 4,
 		/obj/item/clothing/neck/human_petcollar/locked/holo = 3)
 
@@ -133,7 +133,7 @@
 //Secret vending machine skin. Don't touch plz
 /obj/machinery/vending/dorms/proc/populate_vend_designs()
     vend_designs = list(
-        "pink" = image (icon = src.icon, icon_state = "lustwish_pink"),
+        "pink" = image(icon = src.icon, icon_state = "lustwish_pink"),
         "teal" = image(icon = src.icon, icon_state = "lustwish_teal"))
 
 //Changing special secret var

@@ -1,4 +1,3 @@
-#define TIGHT_SLOWDOWN 2
 
 /obj/item/clothing/suit/corset
 	name = "corset"
@@ -14,7 +13,7 @@
 	lefthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_left.dmi'
 	righthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_right.dmi'
 	body_parts_covered = CHEST
-	slowdown = 1 // You can't run with that thing literally squeezing your chest
+	slowdown = 0 // No longer slows down while not laced
 
 	/// Has it been laced tightly?
 	var/laced_tight = FALSE
@@ -24,9 +23,11 @@
 	to_chat(user, span_notice("You [laced_tight ? "tighten" : "loosen"] the corset, making it far [laced_tight ? "harder" : "easier"] to breathe."))
 	playsound(user, laced_tight ? 'sound/items/handling/cloth_pickup.ogg' : 'sound/items/handling/cloth_drop.ogg', 40, TRUE)
 	if(laced_tight)
-		slowdown = TIGHT_SLOWDOWN
+		slowdown = 1
+		user.update_equipment_speed_mods()
 		return
 	slowdown = initial(slowdown)
+	user.update_equipment_speed_mods()
 
 /obj/item/clothing/suit/corset/equipped(mob/living/carbon/human/user, slot)
 	. = ..()
@@ -38,4 +39,6 @@
 	if(laced_tight && src == user.wear_suit)
 		to_chat(user, span_purple("Phew. Now you can breathe normally."))
 
-#undef TIGHT_SLOWDOWN
+/obj/item/clothing/suit/corset/examine(mob/user)
+	. = ..()
+	. += span_notice("Alt-Click to [laced_tight ? "unlace" : "lace"] the corset.")
