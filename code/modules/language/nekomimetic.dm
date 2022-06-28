@@ -15,9 +15,9 @@
 	)
 	*/
 	//SKYRAT EDIT BEGIN: Less Meme Nekomimetic
-    syllables = list("mao", "cht", "skr", "mew", "maw", "sss", "hss", "mouw", "reow", "meow", "krr", "cht-cht",
-        "nya", "chrp", "chipt", "baou", "reeaow", "aaahou", "mrp", "mrrp", "ragh", "mro", "mra", "mrro", "mrra",
-        "kra", "mi", "chur", "eech", "ara", "ch", "chrp", "tr", "trll", "chrr", "kit", "nnaeu", "yoa", "nny",
+	syllables = list("mao", "cht", "skr", "mew", "maw", "sss", "hss", "mouw", "reow", "meow", "krr", "cht-cht",
+		"nya", "chrp", "chipt", "baou", "reeaow", "aaahou", "mrp", "mrrp", "ragh", "mro", "mra", "mrro", "mrra",
+		"kra", "mi", "chur", "eech", "ara", "ch", "chrp", "tr", "trll", "chrr", "kit", "nnaeu", "yoa", "nny",
 		"turr", "uuou", "merr", "ynn", "orrd", "ssu"
 	)
 	//SKYRAT EDIT END
