@@ -117,6 +117,7 @@
 	user.log_message(subtler_message, LOG_SUBTLER)
 
 	var/space = should_have_space_before_emote(html_decode(subtler_emote)[1]) ? " " : ""
+	subtle_message = auto_punctuate(subtle_message)
 
 	subtler_message = span_emote("<b>[user]</b>[space]<i>[user.say_emphasis(subtler_message)]</i>")
 
