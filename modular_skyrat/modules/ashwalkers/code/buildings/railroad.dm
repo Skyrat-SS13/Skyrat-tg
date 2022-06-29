@@ -19,7 +19,7 @@
 	var/obj/structure/railroad/check_rail = locate() in target_turf
 	if(check_rail || !use(1))
 		return ..()
-	to_chat(user, span_notice("You have placed [src] on [target_turf]."))
+	to_chat(user, span_notice("You place [src] on [target_turf]."))
 	new /obj/structure/railroad(get_turf(target))
 
 /obj/structure/railroad
@@ -101,7 +101,7 @@
 	var/datum/component/storage/rail_storage = GetComponent(/datum/component/storage)
 	rail_storage.open_storage(user)
 
-/// searches the cardinal directions to add a this cart to another cart's trailer
+/// searches the cardinal directions to add this cart to another cart's trailer
 /obj/vehicle/ridden/rail_cart/proc/attach_trailer()
 	for(var/direction in GLOB.cardinals)
 		var/obj/vehicle/ridden/rail_cart/locate_cart = locate() in get_step(src, direction)
