@@ -103,7 +103,7 @@
 		var/obj/vehicle/ridden/rail_cart/locate_cart = locate() in get_step(src, direction)
 		if(!locate_cart || locate_cart.trailer)
 			continue
-		locate_cart.trailer = src
+		locate_cart.add_trailer(src)
 		break
 
 /datum/component/riding/vehicle/rail_cart
@@ -117,3 +117,13 @@
 	set_vehicle_dir_layer(NORTH, OBJ_LAYER)
 	set_vehicle_dir_layer(EAST, OBJ_LAYER)
 	set_vehicle_dir_layer(WEST, OBJ_LAYER)
+
+/// adds a trailer to the vehicle in a manner that allows safe qdeling
+/obj/vehicle/proc/add_trailer(obj/vehicle/added_trailer)
+	trailer = added_trailer
+	RegisterSignal(trailer, COMSIG_PARENT_QDELETING, .proc/remove_trailer)
+
+/// removes a trailer to the vehicle in a manner that allows safe qdeling
+/obj/vehicle/proc/remove_trailer()
+	UnregisterSignal(trailer, COMSIG_PARENT_QDELETING)
+	trailer = null
