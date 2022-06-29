@@ -349,8 +349,8 @@ structure_check() searches for nearby cultist structures required for the invoca
 		return TRUE
 	var/obj/item/soulstone/stone = new /obj/item/soulstone(get_turf(src))
 	if(sacrificial.mind && !sacrificial.suiciding)
-		stone.invisibility = INVISIBILITY_MAXIMUM //so it's not picked up during transfer_soul()
 		stone.capture_soul(sacrificial, first_invoker, TRUE)
+<<<<<<< HEAD
 		stone.invisibility = 0
 	//SKYRAT EDIT BEGIN -- SOULSTONE_CHANGES
 	if(sacrificial)
@@ -365,6 +365,12 @@ structure_check() searches for nearby cultist structures required for the invoca
 		else
 			sacrificial.gib(TRUE)
 	//SKYRAT EDIT END
+=======
+
+	if(sacrificial)
+		playsound(sacrificial, 'sound/magic/disintegrate.ogg', 100, TRUE)
+		sacrificial.gib()
+>>>>>>> bcd16397d34 (Fixes some soulstone issues, overall makes soulstone behavior more consistent (#67846))
 	return TRUE
 
 /obj/effect/rune/empower
