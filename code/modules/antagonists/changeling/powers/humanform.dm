@@ -33,7 +33,7 @@
 	var/datum/dna/chosen_dna = chosen_prof.dna
 	var/datum/species/chosen_species = chosen_dna.species
 	user.humanize(chosen_species)
-	
+
 	changeling.transform(user, chosen_prof)
 	user.regenerate_icons()
 	return TRUE
