@@ -28,6 +28,7 @@
 	desc = "A primitive form of transportation. You may see some rail carts on it."
 	icon = 'modular_skyrat/modules/ashwalkers/icons/railroad.dmi'
 	icon_state = "rail"
+	anchored = TRUE
 
 /obj/structure/railroad/proc/update_connection()
 	update_appearance()
