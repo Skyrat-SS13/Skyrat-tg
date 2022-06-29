@@ -20,6 +20,16 @@
 	medical_record_text = "Patient demonstrates a high brain plasticity in regards to language learning."
 	icon = "globe"
 
+/datum/quirk/multilinguist
+	name = "Multilinguist"
+	desc = "You're a dedicated student of numerous languages and come with two additional language points."
+	value = 10
+	mob_trait = QUIRK_MULTILINGUIST
+	gain_text = span_notice("Your brain seems very equipped to handle different modes of conversation.")
+	lose_text = span_danger("Your grasp of the finer points of Draconic idioms fades away.")
+	medical_record_text = "Patient demonstrates an extreme brain plasticity in regards to language learning."
+	icon = "globe"
+
 // AdditionalEmotes *turf quirks
 /datum/quirk/water_aspect
 	name = "Water aspect (Emotes)"

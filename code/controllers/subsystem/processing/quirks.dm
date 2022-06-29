@@ -30,7 +30,8 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 		list("Nerve Stapled", "Pacifist", "Nearsighted"),
 		list("No Guns", "Chunky Fingers", "Stormtrooper Aim"),
 		list("Mute", "Social Anxiety"),
-		list("No Guns", "Pacifist")
+		list("No Guns", "Pacifist"),
+		list("Linguist", "Multilinguist"),
 		//SKYRAT EDIT ADDITION END
 	)
 
