@@ -281,10 +281,12 @@
 			qdel(currentItem)
 	return ..()
 
+/* //SKYRAT REMOVAL START
 /datum/spellbook_entry/barnyard
 	name = "Barnyard Curse"
 	desc = "This spell dooms an unlucky soul to possess the speech and facial attributes of a barnyard animal."
 	spell_type = /obj/effect/proc_holder/spell/pointed/barnyardcurse
+*/ //SKYRAT REMOVAL END
 
 /datum/spellbook_entry/charge
 	name = "Charge"
