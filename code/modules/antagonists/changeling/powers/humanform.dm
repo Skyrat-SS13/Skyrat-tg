@@ -33,9 +33,8 @@
 	var/datum/dna/chosen_dna = chosen_prof.dna
 	var/datum/species/chosen_species = chosen_dna.species
 	user.humanize(chosen_species)
-
-	if(LAZYACCESS(chosen_dna.features, 14) == 1)
-		changeling.transform(user, chosen_prof)
+	
+	changeling.transform(user, chosen_prof)
 	user.regenerate_icons()
 	return TRUE
 	// SKYRAT EDIT END
