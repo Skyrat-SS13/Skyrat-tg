@@ -2,7 +2,7 @@
 	name = "Lone Infiltrator"
 	antag_datum = /datum/antagonist/traitor/infiltrator
 	midround_ruleset_style = MIDROUND_RULESET_STYLE_LIGHT
-	antag_flag = ROLE_TRAITOR // It's basically this anyway
+	antag_flag = ROLE_LONE_INFILTRATOR
 	restricted_roles = list(JOB_CYBORG,
 							JOB_AI,
 							JOB_SECURITY_OFFICER,

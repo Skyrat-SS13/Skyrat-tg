@@ -57,13 +57,13 @@ const ALTERNATE_ACTIONS: Record<string, AlternateAction> = {
   },
 
   enable_internals: {
-    icon: "lungs", // SKYRAT EDIT - TGFONT IS FUCKED AND I DUNNO WHY SO HERE'S A BANDAID - original "tg-air-tank"
-    text: "Enable internals",
+    icon: 'lungs', // SKYRAT EDIT - TGFONT IS FUCKED AND I DUNNO WHY SO HERE'S A BANDAID - original "tg-air-tank"
+    text: 'Enable internals',
   },
 
   disable_internals: {
-    icon: "lungs-virus", // SKYRAT EDIT - TGFONT IS FUCKED AND I DUNNO WHY SO HERE'S A BANDAID - original "tg-air-tank-slash"
-    text: "Disable internals",
+    icon: 'lungs-virus', // SKYRAT EDIT - TGFONT IS FUCKED AND I DUNNO WHY SO HERE'S A BANDAID - original "tg-air-tank-slash"
+    text: 'Disable internals',
   },
 
   adjust_jumpsuit: {
@@ -208,27 +208,27 @@ const SLOTS: Record<
   },
   // SKYRAT EDIT ADDITION
   vagina: {
-    displayName: "vagina",
+    displayName: 'vagina',
     gridSpot: getGridSpotKey([5, 1]),
-    image: "inventory-pocket.png",
+    image: 'inventory-pocket.png',
   },
 
   anus: {
-    displayName: "anus",
+    displayName: 'anus',
     gridSpot: getGridSpotKey([5, 2]),
-    image: "inventory-pocket.png",
+    image: 'inventory-pocket.png',
   },
 
   nipples: {
-    displayName: "nipples",
+    displayName: 'nipples',
     gridSpot: getGridSpotKey([5, 3]),
-    image: "inventory-pocket.png",
+    image: 'inventory-pocket.png',
   },
 
   penis: {
-    displayName: "penis",
+    displayName: 'penis',
     gridSpot: getGridSpotKey([5, 4]),
-    image: "inventory-pocket.png",
+    image: 'inventory-pocket.png',
   },
 };
 // SKYRAT EDIT END

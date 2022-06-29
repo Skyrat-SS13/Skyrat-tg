@@ -1,6 +1,6 @@
 import { classes } from 'common/react';
 import { sendAct, useBackend, useLocalState } from '../../backend';
-import { Autofocus, Box, Button, Flex, LabeledList, Popper, Stack, TrackOutsideClicks, Dropdown } from "../../components"; // SKYRAT EDIT CHANGE
+import { Autofocus, Box, Button, Flex, LabeledList, Popper, Stack, TrackOutsideClicks, Dropdown } from '../../components'; // SKYRAT EDIT CHANGE
 import { createSetPreference, PreferencesMenuData, RandomSetting } from './data';
 import { CharacterPreview } from './CharacterPreview';
 import { RandomizationButton } from './RandomizationButton';
@@ -22,7 +22,7 @@ const CLOTHING_SELECTION_MULTIPLIER = 5.2;
 const CharacterControls = (props: {
   handleRotate: () => void;
   handleOpenSpecies: () => void;
-  handleLoadout: () => void, // SKYRAT EDIT ADDITION
+  handleLoadout: () => void; // SKYRAT EDIT ADDITION
   gender: Gender;
   setGender: (gender: Gender) => void;
   showGender: boolean;
@@ -540,7 +540,7 @@ export const MainPage = (
                         act('rotate');
                       }}
                       handleLoadout={() => {
-                        act("open_loadout");
+                        act('open_loadout');
                       }}
                       setGender={createSetPreference(act, 'gender')}
                       showGender={
@@ -562,9 +562,12 @@ export const MainPage = (
                     position="relative"
                     selected={data.preview_selection}
                     options={data.preview_options}
-                    onSelected={value => act('update_preview', {
-                      updated_preview: value,
-                  })} />
+                    onSelected={(value) =>
+                      act('update_preview', {
+                        updated_preview: value,
+                      })
+                    }
+                  />
 
                   <Stack.Item position="relative">
                     <NameInput

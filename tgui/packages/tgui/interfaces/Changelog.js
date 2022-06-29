@@ -177,16 +177,14 @@ export class Changelog extends Component {
         <h1>Skyrat Space Station 13</h1>
         <p>
           <b>Thanks to: </b>
-          Traditional Games 13, Baystation 12, /vg/station, NTstation,
-          CDK Station devs,FacepunchStation, GoonStation devs, the original
-          Space Station 13 developers, Invisty for the title image and the
-          countless others who have contributed to the game.
+          Traditional Games 13, Baystation 12, /vg/station, NTstation, CDK
+          Station devs,FacepunchStation, GoonStation devs, the original Space
+          Station 13 developers, Invisty for the title image and the countless
+          others who have contributed to the game.
         </p>
         <p>
           {'Current project maintainers can be found '}
-          <a href="https://github.com/skyrat-ss13?tab=members">
-            here
-          </a>
+          <a href="https://github.com/skyrat-ss13?tab=members">here</a>
           {', recent GitHub contributors can be found '}
           <a href="https://github.com/Skyrat-SS13/Skyrat-tg/pulse/monthly">
             here
@@ -195,9 +193,7 @@ export class Changelog extends Component {
         </p>
         <p>
           {'You can also join our forums '}
-          <a href="https://forum.skyrat13.tk/">
-            here
-          </a>.
+          <a href="https://forum.skyrat13.tk/">here</a>.
         </p>
         {dateDropdown}
       </Section>
