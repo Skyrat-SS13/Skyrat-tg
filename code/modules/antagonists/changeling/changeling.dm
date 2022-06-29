@@ -101,7 +101,7 @@
 	var/true_form_death //SKYRAT EDIT ADDITION: The time that the horror form died.
 	
 	// SKYRAT EDIT START
-	var/datum/changeling_profile/current_profile = null
+	var/datum/changeling_profile/current_profile
 	var/list/mimicable_quirks_list = list(
 		"Bad Touch",
 		"Sensitive Snout",
@@ -504,6 +504,8 @@
 	new_profile.age = target.age
 	for(var/datum/quirk/target_quirk in target.quirks)
 		LAZYADD(new_profile.quirks, new target_quirk.type)
+	if(target.wear_id?.get_gun_permit_iconstate()=="hud_permit")
+		new_profile.gun_permit = TRUE
 	//SKYRAT EDIT END
 	
 	// Grab skillchips they have
@@ -855,6 +857,7 @@
 		if(istype(new_flesh_item, /obj/item/changeling/id) && chosen_profile.id_icon)
 			var/obj/item/changeling/id/flesh_id = new_flesh_item
 			flesh_id.hud_icon = chosen_profile.id_icon
+			flesh_id.gun_permit = chosen_profile.gun_permit  // SKYRAT EDIT
 
 		if(equip)
 			user.equip_to_slot_or_del(new_flesh_item, slot2slot[slot])
@@ -934,6 +937,7 @@
 	var/laugh_type
 	var/age
 	var/list/quirks = list()
+	var/gun_permit
 	/// SKYRAT EDIT END
 
 /datum/changeling_profile/Destroy()
@@ -985,6 +989,7 @@
 	new_profile.laugh_type = laugh_type
 	new_profile.age = age
 	new_profile.quirks = quirks.Copy()
+	new_profile.gun_permit = gun_permit
 	// SKYRAT EDIT END
 
 /datum/antagonist/changeling/roundend_report()
