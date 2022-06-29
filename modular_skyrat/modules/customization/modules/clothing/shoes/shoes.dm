@@ -44,7 +44,6 @@
 	greyscale_config_worn_digi = /datum/greyscale_config/heels/worn/digi
 	greyscale_colors = "#FFFFFF"
 	flags_1 = IS_PLAYER_COLORABLE_1
-	body_parts_covered = TRUE
 
 /obj/item/clothing/shoes/black_heels
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/shoes.dmi'
