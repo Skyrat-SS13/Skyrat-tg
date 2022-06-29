@@ -242,8 +242,8 @@
 	spawning_item = /obj/item/arrow_spawner
 
 /obj/item/forging/complete/rail_nail
-	name = "rail_nail"
-	desc = "A nail, ready to get some wood for completion."
+	name = "rail nail"
+	desc = "A nail, ready to be used with some wood in order to make tracks."
 	icon = 'modular_skyrat/modules/ashwalkers/icons/railroad.dmi'
 	icon_state = "nail"
 	spawning_item = /obj/item/stack/rail_track/five
