@@ -47,11 +47,11 @@
 	body_parts_covered = TRUE
 
 /obj/item/clothing/shoes/black_heels
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/shoes.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/feet.dmi'
 	name = "black heels"
 	desc = "A pair of black high heels that are much smaller on your feet"
 	icon_state = "highheels"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/shoes.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/feet.dmi'
 
 /obj/item/clothing/shoes/discoshoes
 	name = "green snakeskin shoes"
