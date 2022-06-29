@@ -147,6 +147,20 @@
 	average_wait = 0.5 SECONDS
 	spawn_item = /obj/item/forging/complete/arrowhead
 
+/obj/item/forging/incomplete/rail_nail
+	name = "incomplete rail nail"
+	icon = 'modular_skyrat/modules/ashwalkers/icons/railroad.dmi'
+	icon_state = "hot_nail"
+	average_hits = 10
+	average_wait = 0.5 SECONDS
+	spawn_item = /obj/item/forging/complete/rail_nail
+
+/obj/item/forging/incomplete/rail_cart
+	name = "incomplete rail cart"
+	icon = 'modular_skyrat/modules/ashwalkers/icons/railroad.dmi'
+	icon_state = "hot_cart"
+	spawn_item = /obj/vehicle/ridden/rail_cart
+
 //"complete" pre-complete items
 /obj/item/forging/complete
 	///the path of the item that will be created
@@ -226,6 +240,13 @@
 	desc = "An arrowhead, ready to get some wood for completion."
 	icon_state = "arrowhead"
 	spawning_item = /obj/item/arrow_spawner
+
+/obj/item/forging/complete/rail_nail
+	name = "rail_nail"
+	desc = "A nail, ready to get some wood for completion."
+	icon = 'modular_skyrat/modules/ashwalkers/icons/railroad.dmi'
+	icon_state = "nail"
+	spawning_item = /obj/item/stack/rail_track/five
 
 /obj/item/forging/coil
 	name = "coil"

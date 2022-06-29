@@ -158,9 +158,17 @@
 		if(flags & i)
 			remove_controller_actions_by_flag(controller, i)
 	return TRUE
-
+/* SKYRAT EDIT: Carts
 /obj/vehicle/Move(newloc, dir)
 	. = ..()
 	if(trailer && .)
 		var/dir_to_move = get_dir(trailer.loc, newloc)
+		step(trailer, dir_to_move)
+*/
+/obj/vehicle/Move(atom/newloc, direct, glide_size_override)
+	var/atom/old_loc = loc
+	. = ..()
+	if(trailer && .)
+		var/dir_to_move = get_dir(trailer.loc, old_loc)
+		trailer.glide_size = glide_size
 		step(trailer, dir_to_move)
