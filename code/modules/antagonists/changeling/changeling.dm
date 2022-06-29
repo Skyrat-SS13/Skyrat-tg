@@ -101,7 +101,7 @@
 	var/true_form_death //SKYRAT EDIT ADDITION: The time that the horror form died.
 	
 	// SKYRAT EDIT START
-	var/datum/changeling_profile/current_profile
+	var/datum/changeling_profile/current_profile = null
 	var/list/mimicable_quirks_list = list(
 		"Bad Touch",
 		"Sensitive Snout",
