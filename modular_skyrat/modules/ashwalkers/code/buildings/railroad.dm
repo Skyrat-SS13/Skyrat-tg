@@ -29,10 +29,6 @@
 	icon_state = "rail"
 	anchored = TRUE
 
-/// proc that calls update_appearance; so that a timer can call it
-/obj/structure/railroad/proc/update_connection()
-	update_appearance()
-
 /obj/structure/railroad/Initialize(mapload)
 	. = ..()
 	for(var/obj/structure/railroad/rail in range(1))
@@ -43,7 +39,7 @@
 	for(var/obj/structure/railroad/rail in range(1))
 		if(rail == src)
 			continue
-		addtimer(CALLBACK(rail, .proc/update_connection), 5)
+		addtimer(CALLBACK(rail, /atom/proc/update_appearance), 5)
 
 /obj/structure/railroad/update_appearance(updates)
 	icon_state = "rail"
