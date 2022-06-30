@@ -67,6 +67,7 @@
 #define TRAIT_SOURCE_UNIT_TESTS "unit_tests"
 
 // SKYRAT EDIT START
+#include "~skyrat/ash_rituals.dm"
 #include "~skyrat/opposing_force.dm"
 //SKYRAT EDIT END
 #include "achievements.dm"
