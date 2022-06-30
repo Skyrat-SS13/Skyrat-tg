@@ -1,8 +1,8 @@
 /datum/ash_ritual/summon_staff
 	name = "Summon Ash Staff"
 	required_components = list(
-		"north" = /obj/item/stack/sheet/mineral/wood,
-		"south" = /obj/item/organ/internal/regenerative_core,
+		NORTH = /obj/item/stack/sheet/mineral/wood,
+		SOUTH = /obj/item/organ/internal/regenerative_core,
 	)
 	consumed_components = list(
 		/obj/item/stack/sheet/mineral/wood,
@@ -15,10 +15,10 @@
 /datum/ash_ritual/summon_necklace
 	name = "Summon Draconic Necklace"
 	required_components = list(
-		"north" = /obj/item/stack/sheet/bone,
-		"south" = /obj/item/organ/internal/regenerative_core,
-		"east" = /obj/item/stack/sheet/sinew,
-		"west" = /obj/item/stack/sheet/sinew,
+		NORTH = /obj/item/stack/sheet/bone,
+		SOUTH = /obj/item/organ/internal/regenerative_core,
+		EAST = /obj/item/stack/sheet/sinew,
+		WEST = /obj/item/stack/sheet/sinew,
 	)
 	consumed_components = list(
 		/obj/item/stack/sheet/bone,
@@ -32,10 +32,10 @@
 /datum/ash_ritual/summon_key
 	name = "Summon Skeleton Key"
 	required_components = list(
-		"north" = /obj/item/stack/sheet/bone,
-		"south" = /obj/item/stack/sheet/bone,
-		"east" = /obj/item/stack/sheet/bone,
-		"west" = /obj/item/stack/sheet/bone,
+		NORTH = /obj/item/stack/sheet/bone,
+		SOUTH = /obj/item/stack/sheet/bone,
+		EAST = /obj/item/stack/sheet/bone,
+		WEST = /obj/item/stack/sheet/bone,
 	)
 	consumed_components = list(
 		/obj/item/stack/sheet/bone,
@@ -47,10 +47,10 @@
 /datum/ash_ritual/summon_cursed_knife
 	name = "Summon Cursed Ash Knife"
 	required_components = list(
-		"north" = /obj/item/organ/internal/regenerative_core,
-		"south" = /obj/item/forging/reagent_weapon/dagger,
-		"east" = /obj/item/stack/sheet/bone,
-		"west" = /obj/item/stack/sheet/sinew,
+		NORTH = /obj/item/organ/internal/regenerative_core,
+		SOUTH = /obj/item/forging/reagent_weapon/dagger,
+		EAST = /obj/item/stack/sheet/bone,
+		WEST = /obj/item/stack/sheet/sinew,
 	)
 	consumed_components = list(
 		/obj/item/organ/internal/regenerative_core,
@@ -65,10 +65,10 @@
 /datum/ash_ritual/summon_tendril_seed
 	name = "Summon Tendril Seed"
 	required_components = list(
-		"north" = /obj/item/organ/internal/regenerative_core,
-		"south" = /obj/item/cursed_dagger,
-		"east" = /obj/item/crusher_trophy/goliath_tentacle,
-		"west" = /obj/item/crusher_trophy/watcher_wing,
+		NORTH = /obj/item/organ/internal/regenerative_core,
+		SOUTH = /obj/item/cursed_dagger,
+		EAST = /obj/item/crusher_trophy/goliath_tentacle,
+		WEST = /obj/item/crusher_trophy/watcher_wing,
 	)
 	consumed_components = list(
 		/obj/item/organ/internal/regenerative_core,
@@ -82,11 +82,12 @@
 
 /datum/ash_ritual/incite_megafauna
 	name = "Incite Megafauna"
+	ritual_bitflags = ASH_RITUAL_NO_RESULT
 	required_components = list(
-		"north" = /mob/living/carbon/human,
-		"south" = /obj/item/tendril_seed,
-		"east" = /mob/living/carbon/human,
-		"west" = /mob/living/carbon/human,
+		NORTH = /mob/living/carbon/human,
+		SOUTH = /obj/item/tendril_seed,
+		EAST = /mob/living/carbon/human,
+		WEST = /mob/living/carbon/human,
 	)
 	consumed_components = list(
 		/mob/living/carbon/human,
@@ -115,11 +116,12 @@
 
 /datum/ash_ritual/ash_ceremony
 	name = "Ashen Age Ceremony"
+	ritual_bitflags = ASH_RITUAL_NO_RESULT | ASH_RITUAL_AGING
 	required_components = list(
-		"north" = /mob/living/carbon/human,
-		"south" = /obj/item/organ/internal/regenerative_core,
-		"east" = /obj/item/stack/sheet/bone,
-		"west" = /obj/item/stack/sheet/sinew,
+		NORTH = /mob/living/carbon/human,
+		SOUTH = /obj/item/organ/internal/regenerative_core,
+		EAST = /obj/item/stack/sheet/bone,
+		WEST = /obj/item/stack/sheet/sinew,
 	)
 	consumed_components = list(
 		/mob/living/carbon/human,
@@ -136,10 +138,10 @@
 /datum/ash_ritual/summon_lavaland_creature
 	name = "Summon Lavaland Creature"
 	required_components = list(
-		"north" = /obj/item/organ/internal/regenerative_core,
-		"south" = /mob/living/simple_animal/hostile/asteroid/ice_whelp,
-		"east" = /obj/item/stack/ore/bluespace_crystal,
-		"west" = /obj/item/stack/ore/bluespace_crystal,
+		NORTH = /obj/item/organ/internal/regenerative_core,
+		SOUTH = /mob/living/simple_animal/hostile/asteroid/ice_whelp,
+		EAST = /obj/item/stack/ore/bluespace_crystal,
+		WEST = /obj/item/stack/ore/bluespace_crystal,
 	)
 	consumed_components = list(
 		/obj/item/organ/internal/regenerative_core,
@@ -161,10 +163,10 @@
 /datum/ash_ritual/summon_icemoon_creature
 	name = "Summon Icemoon Creature"
 	required_components = list(
-		"north" = /obj/item/organ/internal/regenerative_core,
-		"south" = /obj/item/food/grown/surik,
-		"east" = /obj/item/stack/ore/bluespace_crystal,
-		"west" = /obj/item/stack/ore/bluespace_crystal,
+		NORTH = /obj/item/organ/internal/regenerative_core,
+		SOUTH = /obj/item/food/grown/surik,
+		EAST = /obj/item/stack/ore/bluespace_crystal,
+		WEST = /obj/item/stack/ore/bluespace_crystal,
 	)
 	consumed_components = list(
 		/obj/item/organ/internal/regenerative_core,
@@ -185,11 +187,12 @@
 
 /datum/ash_ritual/uncover_rocks
 	name = "Uncover Strange Rocks"
+	ritual_bitflags = ASH_RITUAL_NO_RESULT
 	required_components = list(
-		"north" = /obj/item/stack/ore/bluespace_crystal,
-		"south" = /obj/item/stack/sheet/animalhide/goliath_hide,
-		"east" = /obj/item/xenoarch/brush,
-		"west" = /obj/item/xenoarch/useless_relic,
+		NORTH = /obj/item/stack/ore/bluespace_crystal,
+		SOUTH = /obj/item/stack/sheet/animalhide/goliath_hide,
+		EAST = /obj/item/xenoarch/brush,
+		WEST = /obj/item/xenoarch/useless_relic,
 	)
 	consumed_components = list(
 		/obj/item/stack/ore/bluespace_crystal,

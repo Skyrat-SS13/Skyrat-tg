@@ -18,3 +18,9 @@
 
 /// Population requirement for bomb objectives (ninja c4, locate weakpoint, etc.) objectives to appear
 #define BOMB_POP_REQUIREMENT 80
+
+// Ashwalker stuff
+/// When the ritual is intended to produce no result items
+#define ASH_RITUAL_NO_RESULT (1<<0)
+/// If the ash ritual is the aging one
+#define ASH_RITUAL_AGING (1<<1)

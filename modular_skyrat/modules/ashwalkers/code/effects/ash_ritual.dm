@@ -19,6 +19,9 @@
 	/// whether the ritual is in use
 	var/in_use = FALSE
 
+	/// Bitflags to determine special properties of the ash ritual
+	var/ritual_bitflags
+
 /datum/ash_ritual/proc/ritual_start(obj/effect/ash_rune/rune)
 
 	if(in_use)

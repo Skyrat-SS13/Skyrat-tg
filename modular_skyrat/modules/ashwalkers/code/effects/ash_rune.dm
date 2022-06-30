@@ -21,15 +21,13 @@
 	. += span_warning("The required components are as follows:")
 	for(var/the_components in current_ritual.required_components)
 		var/atom/component_name = current_ritual.required_components[the_components]
-		. += span_warning("[the_components] component is [initial(component_name.name)]")
+		. += span_warning("[dir_num_to_text(the_components, TRUE)] component is [initial(component_name.name)]")
 
-/obj/effect/ash_rune/Initialize(mapload)
+/obj/effect/ash_rune/Initialize(mapload, spawn_runes = TRUE)
 	. = ..()
 	// this is just to spawn the "aesthetic" runes around
-	for(var/direction in GLOB.cardinals)
-		var/obj/effect/side_rune/spawning_rune = new (get_step(src, direction))
-		spawning_rune.icon_state = "[initial(icon_state)]_[direction]"
-		spawning_rune.connected_rune = src
+	if(spawn_runes)
+		spawn_side_runes()
 	if(!length(rituals))
 		generate_rituals()
 
@@ -53,6 +51,13 @@
 		return
 	current_ritual = rituals[current_ritual]
 	balloon_alert_to_viewers("ritual has been chosen-- examine the central rune for more information.")
+
+/// Used to create the side runes
+/obj/effect/ash_rune/proc/spawn_side_runes()
+	for(var/direction in GLOB.cardinals)
+		var/obj/effect/side_rune/spawning_rune = new (get_step(src, direction))
+		spawning_rune.icon_state = "[initial(icon_state)]_[direction]"
+		spawning_rune.connected_rune = src
 
 // this is solely for aesthetics... though the central rune will check the directions, of which this is on
 /obj/effect/side_rune
