@@ -98,7 +98,7 @@
 			. += span_warning("[t_He] look[t_s] slightly dented.")
 		else
 			. += span_warning("<b>[t_He] look[t_s] severely dented!</b>")
-	//. += "*---------*</span>" SKYRAT EDIT REMOVAL
+	. += "</span>"
 
 /mob/living/simple_animal/hostile/construct/attack_animal(mob/living/simple_animal/user, list/modifiers)
 	if(isconstruct(user)) //is it a construct?

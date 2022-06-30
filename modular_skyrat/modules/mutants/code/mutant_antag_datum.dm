@@ -18,3 +18,4 @@
 	var/component = owner.current?.GetComponent(/datum/component/mutant_infection)
 	if(!component)
 		owner.current?.AddComponent(/datum/component/mutant_infection)
+	to_chat(owner, span_boldannounce(antag_memory))
