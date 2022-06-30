@@ -1,4 +1,9 @@
-import { CheckboxInput, FeatureDropdownInput, FeatureChoiced, FeatureToggle } from '../../base';
+import {
+  CheckboxInput,
+  FeatureDropdownInput,
+  FeatureChoiced,
+  FeatureToggle,
+} from '../../base';
 
 export const master_erp_pref: FeatureToggle = {
   name: 'Show/Hide Erotic Roleplay Preferences',
@@ -76,9 +81,10 @@ export const autocum_pref: FeatureToggle = {
 };
 
 export const autoemote_pref: FeatureToggle = {
-  name: "Auto Emote",
-  category: "ERP",
-  description: "Toggles whether you automatically emote using the arousal system, or if you need to do it manually.",
+  name: 'Auto Emote',
+  category: 'ERP',
+  description:
+    'Toggles whether you automatically emote using the arousal system, or if you need to do it manually.',
   component: CheckboxInput,
 };
 
