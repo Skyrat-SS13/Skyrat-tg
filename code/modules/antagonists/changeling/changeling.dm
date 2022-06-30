@@ -100,8 +100,14 @@
 
 	var/true_form_death //SKYRAT EDIT ADDITION: The time that the horror form died.
 	
-	// SKYRAT EDIT START
+	/// SKYRAT EDIT START
+	///	Keeps track of the currently selected profile.
 	var/datum/changeling_profile/current_profile = null
+	/*	
+	 *	Static list of the quirks that you can gain/lose depending on who you shapeshift into.
+	 *	It'd be easiest to just get all of your target's quirks, but it wouldn't make sense for
+	 *	quirks like pacifist, brain tumor or paraplegic.
+	 */
 	var/list/mimicable_quirks_list = list(
 		"Bad Touch",
 		"Sensitive Snout",
@@ -502,11 +508,13 @@
 	new_profile.scream_type = target.selected_scream.type
 	new_profile.laugh_type = target.selected_laugh.type
 	new_profile.age = target.age
+	// Grab the target's quirks.
 	for(var/datum/quirk/target_quirk in target.quirks)
 		LAZYADD(new_profile.quirks, new target_quirk.type)
+	// Grab the target's gun permit.
 	if(target.wear_id?.get_gun_permit_iconstate() == "hud_permit")
 		new_profile.gun_permit = TRUE
-	//SKYRAT EDIT END
+	// SKYRAT EDIT END
 	
 	// Grab skillchips they have
 	new_profile.skillchips = target.clone_skillchip_list(TRUE)
@@ -544,6 +552,7 @@
 		new_profile.exists_list[slot] = 1
 		
 		// SKYRAT EDIT START
+		// Grabs variation flags and digi/teshari/vox icons for items/clothes.
 		new_profile.worn_icon_digi_list[slot] = clothing_item.worn_icon_digi
 		new_profile.worn_icon_teshari_list[slot] = clothing_item.worn_icon_teshari
 		new_profile.worn_icon_vox_list[slot] = clothing_item.worn_icon_vox
@@ -746,13 +755,25 @@
 	user.grad_style = LAZYLISTDUPLICATE(chosen_profile.grad_style)
 	user.grad_color = LAZYLISTDUPLICATE(chosen_profile.grad_color)
 	user.physique = chosen_profile.physique
+	// Delete user's scream and laugh.
 	qdel(user.selected_scream)
 	qdel(user.selected_laugh)
+	// Make a new scream and laugh of the selected types.
 	user.selected_scream = new chosen_profile.scream_type
 	user.selected_laugh = new chosen_profile.laugh_type
 	user.age = chosen_profile.age
 	
-	// Only certain quirks will be copied, to avoid making the changeling blind or wheelchair-bound when they can simply pretend to have these quirks.
+	/*
+	 *	Remove old quirks and copy over new ones from the chosen profile.
+	 *
+	 *	Only quirks from the mimicable_quirks_list will be removed and/or copied over.
+	 *	Copying all quirks would be easier as well as making it harder to distinguish
+	 *	the changeling from crew, but it would act as a major debuff with quirks like
+	 *	blind, paraplegic or brain tumor.
+	 *	TODO: Maybe add a toggle feature, allowing the changeling to switch between
+	 *	"mimicable" quirks and the full set of their target's quirks? That way they could
+	 *	make it harder for others to distinguish them when inspected up close.
+	 */
 	
 	for(var/datum/quirk/target_quirk in user.quirks)
 		for(var/mimicable_quirk in mimicable_quirks_list)
@@ -872,6 +893,13 @@
 	user.regenerate_icons()
 	
 	// SKYRAT EDIT START
+	/*
+	 *	When shapeshifting, sometimes the transform would not go all the way through,
+	 *	giving the changeling a mixed appearance of what they looked like and what they shapeshifted into.
+	 *	Usually it's not a major issue: The changeling can just shapeshift again into the same target.
+	 *	The temporary fix is to run transfer_identity and updateappearance twice, effectively updating
+	 *	the changeling's DNA and appearance twice, so that they don't have to shapeshift twice.
+	 */
 	chosen_dna.transfer_identity(user, TRUE)
 	user.updateappearance(mutcolor_update = TRUE, eyeorgancolor_update = TRUE)
 	user.regenerate_icons()
@@ -920,23 +948,41 @@
 	var/id_icon
 	
 	/// SKYRAT EDIT START
+	/// The colour of the underwear worn by the profile source.
 	var/underwear_color
+	/// The colour of the undershirt worn by the profile source.
 	var/undershirt_color
+	/// The colour of the socks worn by the profile source.
 	var/socks_color
+	/// The colour of the left eye of the profile source.
 	var/eye_color_left
+	/// The colour of the right eye of the profile source.
 	var/eye_color_right
+	/// Whether the profile source had emissive eyes.
 	var/emissive_eyes
+	/// The hair and facial hair gradient styles of the profile source.
 	var/list/grad_style = list("None", "None")
+	/// The hair and facial hair gradient colours of the profile source.
 	var/list/grad_color = list(null, null)
+	/// The body type (male/female) of the profile source.
 	var/physique
+	/// Digitigrade icons of the items/clothes worn by the profile source.
 	var/list/worn_icon_digi_list = list()
+	/// Teshari icons of the items/clothes worn by the profile source.
 	var/list/worn_icon_teshari_list = list()
+	/// Vox icons of the items/clothes worn by the profile source.
 	var/list/worn_icon_vox_list = list()
+	/// Variation flags of the items/clothes worn by the profile source.
 	var/list/supports_variations_flags_list = list()
+	/// The typepath of the selected_scream used by the profile source.
 	var/scream_type
+	/// The typepath of the selected_laugh used by the profile source.
 	var/laugh_type
+	/// The age of the profile source.
 	var/age
+	/// The quirks of the profile source.
 	var/list/quirks = list()
+	/// Whether the profile source displayed a gun permit icon when looked at with a sechud.
 	var/gun_permit
 	/// SKYRAT EDIT END
 
