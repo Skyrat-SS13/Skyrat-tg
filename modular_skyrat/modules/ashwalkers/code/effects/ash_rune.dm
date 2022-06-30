@@ -30,7 +30,7 @@ GLOBAL_LIST_EMPTY(ash_rituals)
 	// this is just to spawn the "aesthetic" runes around
 	if(spawn_runes)
 		spawn_side_runes()
-	if(!length(rituals))
+	if(!length(GLOB.ash_rituals))
 		generate_rituals()
 
 /obj/effect/ash_rune/Destroy(force)
