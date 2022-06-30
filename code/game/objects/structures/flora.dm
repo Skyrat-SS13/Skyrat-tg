@@ -122,11 +122,7 @@ GLOBAL_LIST_EMPTY(flora_uprooting_tools_typepaths)
 		return
 	visible_message(span_notice("[user] [harvest_verb][harvest_verb_suffix] [src]."),
 		ignored_mobs = list(user))
-<<<<<<< HEAD
-	play_attack_sound(W.force)
-=======
 	play_attack_sound(used_item.force)
->>>>>>> 294c89a3287 (Lets SAW tools (and PKC) cut trees, MINING tools break rocks, and fixes e-blades cutting while off (#67285))
 
 	if(harvest(user))
 		after_harvest(user)
@@ -214,11 +210,7 @@ GLOBAL_LIST_EMPTY(flora_uprooting_tools_typepaths)
 /obj/structure/flora/proc/harvest(user)
 	. = FALSE
 	if(harvested && !LAZYLEN(product_types))
-<<<<<<< HEAD
-		return
-=======
 		return FALSE
->>>>>>> 294c89a3287 (Lets SAW tools (and PKC) cut trees, MINING tools break rocks, and fixes e-blades cutting while off (#67285))
 
 	var/list/products_to_create = get_products_list()
 	if(!products_to_create.len)
