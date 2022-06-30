@@ -21,3 +21,7 @@
 #define COMPANY_INTEREST_ATTACHMENT 4
 #define COMPANY_INTEREST_AMMO_BULK 4
 #define COMPANY_INTEREST_AMMO 1
+
+// Gun permit states for HUDs
+#define HUD_PERMIT_YES "hud_permit"
+#define HUD_PERMIT_NO "hudfan_no"
