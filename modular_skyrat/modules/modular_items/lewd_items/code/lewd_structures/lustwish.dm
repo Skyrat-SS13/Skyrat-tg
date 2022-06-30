@@ -109,6 +109,7 @@
 					/obj/item/storage/box/shibari_stand = 4)
 
 	premium = list(
+		/obj/item/clothing/under/dress/corset = 4,
 		/obj/item/clothing/suit/corset = 4,
 		/obj/item/clothing/under/pants/chaps = 4,
 		/obj/item/clothing/neck/human_petcollar/locked/holo = 3)

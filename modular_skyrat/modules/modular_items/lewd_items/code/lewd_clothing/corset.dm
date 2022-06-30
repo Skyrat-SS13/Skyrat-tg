@@ -1,6 +1,6 @@
 #define TIGHT_SLOWDOWN 1
 /obj/item/clothing/suit/corset
-	name = "corset"
+	name = "oversuit corset"
 	desc = "A tight latex corset. How can anybody fit in THAT?"
 	icon_state = "corset"
 	inhand_icon_state = "corset"
