@@ -45,7 +45,35 @@
 	returned["mcolor3"] = third_color
 	return returned
 
+/datum/species/lizard/prepare_human_for_preview(mob/living/carbon/human/lizard, lizard_color = "#009999")
+	lizard.dna.features["mcolor"] = lizard_color
+	lizard.dna.species.mutant_bodyparts["tail"] = list(MUTANT_INDEX_NAME = "Light Tiger", MUTANT_INDEX_COLOR_LIST = list(lizard_color, lizard_color, lizard_color))
+	lizard.dna.species.mutant_bodyparts["snout"] = list(MUTANT_INDEX_NAME = "Sharp + Light", MUTANT_INDEX_COLOR_LIST = list(lizard_color, lizard_color, lizard_color))
+	lizard.dna.species.mutant_bodyparts["horns"] = list(MUTANT_INDEX_NAME = "Simple", MUTANT_INDEX_COLOR_LIST = list(lizard_color, lizard_color, lizard_color))
+	lizard.dna.species.mutant_bodyparts["frills"] = list(MUTANT_INDEX_NAME = "Aquatic", MUTANT_INDEX_COLOR_LIST = list(lizard_color, lizard_color, lizard_color))
+	lizard.dna.features["legs"] = "Normal Legs"
+	lizard.update_mutant_bodyparts(TRUE)
+	lizard.update_body(TRUE)
+
 /datum/species/lizard/ashwalker
-	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,HAS_FLESH,HAS_BONE,NO_UNDERWEAR,HAIR,FACEHAIR)
+	species_traits = list(
+		MUTCOLORS,
+		EYECOLOR,
+		LIPS,
+		HAS_FLESH,
+		HAS_BONE,
+		NO_UNDERWEAR,
+		HAIR,
+		FACEHAIR
+	)
 	always_customizable = TRUE
-	learnable_languages = list(/datum/language/draconic)
+	learnable_languages = list(/datum/language/ashtongue)
+
+/datum/species/lizard/ashwalker/prepare_human_for_preview(mob/living/carbon/human/lizard, lizard_color = "#990000")
+	. = ..(lizard, lizard_color)
+
+
+/datum/species/lizard/silverscale/prepare_human_for_preview(mob/living/carbon/human/lizard, lizard_color = "#eeeeee")
+	lizard.eye_color_left = "#0000a0"
+	lizard.eye_color_right = "#0000a0"
+	. = ..(lizard, lizard_color)

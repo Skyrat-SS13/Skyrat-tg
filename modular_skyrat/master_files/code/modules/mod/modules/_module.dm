@@ -46,6 +46,7 @@
 		add_overlay = FALSE
 
 	if(add_overlay)
+		icon_to_use = overlay_icon_file
 		var/mutable_appearance/module_icon = mutable_appearance(icon_to_use, icon_state_to_use, layer = standing.layer + 0.1) // Just changed the raw icon path to icon_to_use and the used_overlay to icon_state_to_use
 		module_icon.appearance_flags |= RESET_COLOR
 		. += module_icon

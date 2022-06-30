@@ -64,6 +64,7 @@
 		"turbine_part_compressor",
 		"turbine_part_rotor",
 		"turbine_part_stator",
+		"watering_can",
 	)
 
 /datum/techweb_node/mmi
@@ -1411,6 +1412,7 @@
 		"hydro_tray",
 		"portaseeder",
 		"seed_extractor",
+		"adv_watering_can",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 4000)
 	discount_experiments = list(/datum/experiment/scanning/random/plants/wild = 3000)

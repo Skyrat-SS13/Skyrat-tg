@@ -19,7 +19,7 @@
 #define ROLE_TRAITOR "Traitor"
 #define ROLE_WIZARD "Wizard"
 // SKYRAT EDIT START
-#define ROLE_SYNDICATE_SABOTEUR "Syndicate Saboteur" //Traitor, but without the progression
+#define ROLE_ASSAULT_OPERATIVE "Assault Operative"
 // SKYRAT EDIT END
 
 // Midround roles
@@ -42,21 +42,17 @@
 #define ROLE_SPACE_DRAGON "Space Dragon"
 #define ROLE_SPIDER "Spider"
 #define ROLE_WIZARD_MIDROUND "Wizard (Midround)"
-// SKYRAT EDIT START
-#define ROLE_ASSAULT_OPERATIVE "Assault Operative"
+//SKYRAT EDIT START
+#define ROLE_LONE_INFILTRATOR "Lone Infiltrator"
 #define ROLE_BORER "Borer"
 #define ROLE_DRIFTING_CONTRACTOR "Drifting Contractor"
 #define ROLE_MUTANT "Mutated Abomination"
-#define ROLE_SLEEPER_SABOTEUR "Sleeper Saboteur"
 // SKYRAT EDIT END
 
 // Latejoin roles
 #define ROLE_HERETIC_SMUGGLER "Heretic Smuggler"
 #define ROLE_PROVOCATEUR "Provocateur"
 #define ROLE_SYNDICATE_INFILTRATOR "Syndicate Infiltrator"
-// SKYRAT EDIT START
-#define ROLE_INFILTRATING_SABOTEUR "Infiltrating Saboteur"
-// SKYRAT EDIT END
 
 // Other roles
 #define ROLE_SYNDICATE "Syndicate"
@@ -157,6 +153,7 @@ GLOBAL_LIST_INIT(special_roles, list(
 	ROLE_SPIDER = 0,
 	ROLE_WIZARD_MIDROUND = 14,
 	//SKYRAT EDIT START
+	ROLE_LONE_INFILTRATOR = 0,
 	ROLE_BORER = 0,
 	ROLE_DRIFTING_CONTRACTOR = 14,
 	ROLE_MUTANT = 0,
