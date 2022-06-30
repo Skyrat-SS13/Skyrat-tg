@@ -504,7 +504,7 @@
 	new_profile.age = target.age
 	for(var/datum/quirk/target_quirk in target.quirks)
 		LAZYADD(new_profile.quirks, new target_quirk.type)
-	if(target.wear_id?.get_gun_permit_iconstate()=="hud_permit")
+	if(target.wear_id?.get_gun_permit_iconstate() == "hud_permit")
 		new_profile.gun_permit = TRUE
 	//SKYRAT EDIT END
 	
