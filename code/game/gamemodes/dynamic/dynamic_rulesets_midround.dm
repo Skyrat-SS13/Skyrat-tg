@@ -191,7 +191,7 @@
 /datum/dynamic_ruleset/midround/autotraitor
 	name = "Syndicate Sleeper Agent"
 	midround_ruleset_style = MIDROUND_RULESET_STYLE_LIGHT
-	antag_datum = /datum/antagonist/traitor
+	antag_datum = /datum/antagonist/traitor/saboteur //SKYRAT EDIT - PROGRESIONLESS TRAITORS
 	antag_flag = ROLE_SLEEPER_AGENT
 	antag_flag_override = ROLE_TRAITOR
 	protected_roles = list(
@@ -233,7 +233,7 @@
 	var/mob/M = pick(living_players)
 	assigned += M
 	living_players -= M
-	var/datum/antagonist/traitor/newTraitor = new
+	var/datum/antagonist/traitor/saboteur/newTraitor = new //SKYRAT EDIT - PROGRESSIONLESS TRAITORS
 	M.mind.add_antag_datum(newTraitor)
 	message_admins("[ADMIN_LOOKUPFLW(M)] was selected by the [name] ruleset and has been made into a midround traitor.")
 	log_game("DYNAMIC: [key_name(M)] was selected by the [name] ruleset and has been made into a midround traitor.")

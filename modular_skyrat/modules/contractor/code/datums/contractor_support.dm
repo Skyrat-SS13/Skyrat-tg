@@ -13,7 +13,7 @@
 /datum/team/contractor_team
 	show_roundend_report = FALSE
 
-/datum/antagonist/traitor/contractor_support/forge_traitor_objectives()
+/datum/antagonist/traitor/contractor_support/on_gain()
 	var/datum/objective/generic_objective = new
 
 	generic_objective.name = "Follow the Contractor's Orders"
@@ -22,6 +22,7 @@
 	generic_objective.completed = TRUE
 
 	objectives += generic_objective
+	return ..()
 
 /datum/outfit/contractor_partner
 	name = "Contractor Support Unit"

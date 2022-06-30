@@ -28,11 +28,6 @@
 	/// The uplink handler that this traitor belongs to.
 	var/datum/uplink_handler/uplink_handler
 
-	// SKYRAT EDIT START
-	///the final objective the traitor has to accomplish, be it escaping, hijacking, or just martyrdom.
-	var/datum/objective/ending_objective
-	// SKYRAT EDIT END
-
 	var/uplink_sale_count = 3
 
 /datum/antagonist/traitor/New(give_objectives = TRUE)
@@ -52,10 +47,10 @@
 			uplink.uplink_handler = uplink_handler
 		else
 			uplink_handler = uplink.uplink_handler
-		uplink_handler.has_progression = FALSE //SKYRAT EDIT
+		uplink_handler.has_progression = progression_enabled //SKYRAT EDIT
 		SStraitor.register_uplink_handler(uplink_handler)
 
-		uplink_handler.has_objectives = FALSE //SKYRAT EDIT
+		uplink_handler.has_objectives = progression_enabled //SKYRAT EDIT
 		uplink_handler.generate_objectives()
 
 		if(uplink_handler.progression_points < SStraitor.current_global_progression)
@@ -71,10 +66,10 @@
 					uplink_items += item
 					continue
 		uplink_handler.extra_purchasable += create_uplink_sales(uplink_sale_count, /datum/uplink_category/discounts, -1, uplink_items)
-
+	/* //SKYRAT REMOVAL START - PROGRESIONLESS TRAITORS
 	if(give_objectives)
 		forge_traitor_objectives()
-		forge_ending_objective() //SKYRAT EDIT
+	*/ //SKYRAT REMOVAL END
 
 	pick_employer()
 
