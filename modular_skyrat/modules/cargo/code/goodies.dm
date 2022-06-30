@@ -57,12 +57,6 @@
 	contains = list(/obj/item/gun_maintenance_supplies,
 					/obj/item/gun_maintenance_supplies)
 
-/datum/supply_pack/goody/sabre
-	name = "Authentic Samshir Sabre"
-	desc = "A shamshir sabre that comes tucked inside of a black leather sheath. Provides a stylish way to exert your authority."
-	cost = PAYCHECK_CREW * 30
-	contains = list(/obj/item/storage/belt/sabre/cargo)
-
 /*
 *	CARPET PACKS
 */

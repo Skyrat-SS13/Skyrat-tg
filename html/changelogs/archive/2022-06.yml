@@ -1022,3 +1022,166 @@
   - rscadd: You can now get a cat toy in your loadout.
   - bugfix: The briefcase of cash has been replaced with cash in the smuggler's satchel
       loot pool.
+2022-06-27:
+  Iamgoofball:
+  - refactor: High heel shoes are now just normal shoes with special footstep sounds.
+  - code_imp: Dominant Heels are now a subtype of Latex Heels for code cleanliness.
+  Jolly:
+  - bugfix: On BlueShift, any and all elevators should be functional again.
+  Original code by SabreML:
+  - bugfix: Items in the suit storage slot won't turn invisible anymore
+  SkyratBot:
+  - bugfix: Gorillas now change speed when holding something vs. not holding something,
+      as was always intended
+  - balance: Made gorillas use their old speed value when they're holding something,
+      and made them slightly faster when they're not holding something
+  - bugfix: The decryption key to the Nanotrasen message network has been delivered
+      to the Syndicate Listening Post
+  - bugfix: People who gain or lose the monkified mutation no longer have invisible
+      equipped items.
+  - qol: mining and labor shuttle home docks are no longer varedits of /stationary,
+      and are now their own subtype
+  Zonespace27:
+  - bugfix: Fixed erroneous on-examine message of accessories
+  - bugfix: Lone Infiltrator should now run and is a light ruleset, with slightly
+      reduced weight
+  dawsonkeyes:
+  - rscadd: The Marine ERT has been totally revamped to fill their intended niche,
+      and sports a wealth of new armament and gear!
+2022-06-28:
+  GoldenAlpharex:
+  - bugfix: Fixed all of the Prettier-related linter failures. The linter will pass
+      again, wooo!
+  - code_imp: The screenshot tests have been improved, giving us more flexibility
+      to make species look exactly the way we want them to, in a consistent manner.
+  - bugfix: A handful of species now look a lot more appropriate in the prefs menu,
+      at long last! That's a few less neon-green alien-looking monstrosities to look
+      at!
+  - bugfix: All antagonist roles will now look the way they're intended to look, in
+      the "Antagonist" tab of the prefs menu.
+  - bugfix: The MODsuit armor booster module should now look the way it's intended
+      to look on Clown-branded Syndicate MODsuits.
+  - bugfix: Moths have had their greyscale bodyparts updated to be properly greyscaled,
+      allowing for much more precise coloring.
+  - bugfix: Outfits will no longer call pre_equip() and post_equip() twice when they're
+      being equiped, which previously resulted in certain clothes acting all funky.
+  - bugfix: Snail people are no longer too shy to show their eyes, and will now expose
+      them out for everyone to see them, once more.
+  Melbert:
+  - refactor: Refactored how Knock (spell) tells stuff to open up, makes it easier
+      to add more knockable things.
+  OrionTheFox:
+  - bugfix: those pesky fake-news peddlers have fixed their "how to charge your PDA"
+      poster-printers. Dont fall for their lies!
+  RimiNosha:
+  - rscadd: Added the Short Black Dress to the loadout.
+  - rscadd: Added sweaters the the ClothesMate vendor.
+  SkyratBot:
+  - qol: 'UI: Added option to enter fullscreen mode to OOC verbs'
+  - qol: 'UI: Added option to hide the status/tooltip bar to OOC verbs'
+  - qol: 'UI: Made the chat input change colors according to the selected theme'
+  - bugfix: fixes the ocean in the beach gateway having a different gasmix than the
+      sand, making the place unbreathable
+  - bugfix: The runic knight helmet's worn sprites have had their alignment fixed.
+  - bugfix: regenerative core implants will automatically revive you again
+  - rscadd: Added the current map to the hub entry
+  - rscadd: derelict1.dmm was overhauled into a derelict version of the Sulaco bridge
+  - balance: the meteor with engines strapped to it now has air in its rocks
+  - bugfix: the hookshot bounty hunter, when summoned as an ert team member, is no
+      longer identical to the armoured bounty hunter.
+  - bugfix: bounty hunter IDs are no longer invisible save for the trim
+  - bugfix: Fixes nuke op reinforcements having no HUD icon when seen by other nukeops,
+      nor being able to see the HUD icons of other nuke ops
+  - code_imp: Fixed a runtime if update_sight is called on a mob whose client has
+      no eye
+  - spellcheck: Fixed a lack of line breaks in the operating computer when displaying
+      surgeries with required chemicals
+  - bugfix: Fix scrubbers not being able to be deconstructed when connected pipe disconnects.
+  - bugfix: plasma glass floor tiles will no longer sometimes be invisible
+  theselfish:
+  - spellcheck: A certain cracked pocket watch's description ends better.
+2022-06-29:
+  13spacemen, Gandalf2k15:
+  - rscadd: Examining and other chat outputs now display in blocks to make them easier
+      to see
+  - bugfix: AI and borgs no longer have their name show twice upon being examined
+  Guillaume Prata and Wallem:
+  - rscadd: Botany starts with watering cans instead of buckets now. There is also
+      a research locked advanced watering can which generates it's own water.
+  Melbert:
+  - bugfix: Frozen stuff is now properly actually recognized as frozen and won't re-freeze.
+  RimiNosha:
+  - bugfix: Blueshift cargo employees are able to access their windoors again.
+  SkyratBot:
+  - qol: Makes the noblium gas shells experiment explicitly clear that it requires
+      Hypernoblium gas and not just "Noblium"
+  - spellcheck: CentCom is now properly capitalised in the description of an experiment
+  - qol: Nanotrasen has used a new method of installing signs to their walls. If you
+      see any floating signs, or signs that appear to be positioned in incorrect locations,
+      please contact your nearest reality manager.
+  - bugfix: pianos will now look broken when they are damaged
+  - soundadd: pianos make a DONG sound when hit
+  - rscadd: Ice Box Station's got a new look. Notably, the cold room is on the bottom
+      floor with the kitchen all being up on the upper Z-Level
+  - code_imp: times for food items are now in X SECONDS format, functionality is still
+      the exact same
+  - rscadd: Adds a special Medical ERT belt + gives it to medical ERT
+  - bugfix: TGUI Say now retains current messages / keying through history doesn't
+      erase your current message.
+  - bugfix: TextArea keydown prop has been renamed so as to not trigger double keydown
+      events.
+  - bugfix: TGUI say now properly expands when viewing recent messages
+  - spellcheck: The Brand of Dance description is correct now
+  - bugfix: Fixed a runtime that occurs when inflicting a blunt wound on an armless
+      human.
+  - bugfix: Broken tiles (as seen in places like caravan ambush) now match our smooth
+      iron tiles
+  - bugfix: Fixes martial arts auto reset bug.
+  tf-4:
+  - bugfix: Various access/airlock related fixes for Blueshift hydroponics.
+  - bugfix: The chem dispenser board in maintenance behind Blueshift hydroponics has
+      been replaced with a more functional one.
+2022-06-30:
+  GoldenAlpharex:
+  - bugfix: All heels now behave as intended, and no longer give out error sprites.
+  Melbert:
+  - bugfix: Comms console hacking will be interrupted if the comms console itself
+      is destroyed or depowered.
+  - code_imp: The blood walk element has been changed from a bespoke element to a
+      component.
+  - code_imp: MULEs now use the blood walk component.
+  - bugfix: MULEbots no longer track blood forever.
+  Nerev4r:
+  - rscadd: Adds a new Ashwalker-specific language, Ashtongue. Go roleplay with them
+      if you wanna speak it too!
+  RimiNosha:
+  - bugfix: Blushift's roundstart power capacitors are now actually linked, actually
+      giving engineering time to setup the SM before blackouts.
+  SkyratBot:
+  - bugfix: The Orion Trail's Realism Mode works again, triggering negative events
+      for the player
+  - qol: Added a new tab for the autolathe which allows you to dispense not only iron
+      or glass but all the mats you put in
+  - bugfix: Fixes missing "=" operator in autolathe
+  - imageadd: The Makarov pistol has been resprited
+  - imageadd: The Ghoulbot now has a new sprite matching the new 3/4 mulebot sprites
+  - imageadd: Rootbread slice toppings have a sprite now.
+  - bugfix: Removes a method that allows xenobiologists to produce slimes of every
+      colour and bypassing the intended progression sequence by making the disease
+      induced by advanced mutation toxin only produce grey slimes unless the infected
+      person is a sentient non-monkey human
+  - bugfix: headpikes can be made again.
+  Zonespace27:
+  - bugfix: Ash runes should no longer harddel
+  - refactor: Refactored Drifting contractor, it should now appear again as a light
+      midround ruleset
+  - bugfix: Drifting Contractor now can greentext again
+  jjpark-kb:
+  - rscadd: added the ashen rituals
+  - rscadd: added ash age, which entices ashwalkers to live longer
+  - rscadd: added the cursed ash knife, which claims/curses tendrils-- stay away from
+      cursed individuals (cure is holy water)
+  - rscadd: added the tendril seed, which can spawn a lavaland tendril
+  - rscdel: removed the draconic necklace, skeletal key, and ashen staff recipes --
+      placed into rituals
+  - bugfix: fixed icewalker nest named "ash walker nest" to "ice walker nest"

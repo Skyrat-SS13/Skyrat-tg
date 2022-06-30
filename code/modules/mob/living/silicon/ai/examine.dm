@@ -14,9 +14,12 @@
 			else
 				. += span_warning("<B>Its casing is melted and heat-warped!</B>")
 		if(deployed_shell)
-			. += "The wireless networking light is blinking.\n"
+			. += "The wireless networking light is blinking."
 		else if (!shunted && !client)
-			. += "[src]Core.exe has stopped responding! NTOS is searching for a solution to the problem...\n"
-	//. += "*---------*</span>" SKYRAT EDIT REMOVAL
+			. += "[src]Core.exe has stopped responding! NTOS is searching for a solution to the problem..."
+	. += "</span>"
 
 	. += ..()
+
+/mob/living/silicon/ai/get_examine_string(mob/user, thats = FALSE)
+	return null

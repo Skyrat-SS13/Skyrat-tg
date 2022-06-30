@@ -57,11 +57,11 @@
 		deltimer(timer_id)
 		timer_id = null
 	if(host)
-		remove_mutant_datum()
+		remove_infection()
 		host = null
 	return ..()
 
-/datum/component/mutant_infection/proc/remove_mutant_datum()
+/datum/component/mutant_infection/proc/remove_infection()
 	if(ismutant(host) && old_species)
 		host.set_species(old_species)
 	host.grab_ghost()
@@ -69,8 +69,9 @@
 	to_chat(host, span_greentext("You feel like you're free of that foul disease!"))
 	ADD_TRAIT(host, TRAIT_MUTANT_IMMUNE, "mutant_virus")
 	host.mind?.remove_antag_datum(/datum/antagonist/mutant)
-	var/cure_time = rand(IMMUNITY_LOWER, IMMUNITY_UPPER)
-	addtimer(CALLBACK(host, /mob/living/carbon/human/proc/remove_mutant_immunity), cure_time, TIMER_STOPPABLE)
+	host.remove_filter("infection_glow")
+	host.update_appearance()
+	addtimer(CALLBACK(host, /mob/living/carbon/human/proc/remove_mutant_immunity), rand(IMMUNITY_LOWER, IMMUNITY_UPPER), TIMER_STOPPABLE)
 
 /datum/component/mutant_infection/proc/extract_rna()
 	if(rna_extracted)
@@ -144,6 +145,7 @@
 		to_chat(host, span_redtext("You are a SLOW zombie. You walk slowly and hit more slowly and harder. However, you are far more resilient to most damage types."))
 	to_chat(host, span_alertalien("You are now a mutant! Do not seek to be cured, do not help any non-mutants in any way, do not harm your mutant brethren. You retain some higher functions and can reason to an extent."))
 	host.mind?.add_antag_datum(/datum/antagonist/mutant)
+	create_glow()
 	RegisterSignal(parent, COMSIG_LIVING_DEATH, .proc/mutant_death)
 
 /datum/component/mutant_infection/proc/mutant_death()
@@ -165,3 +167,19 @@
 		outside as your tissues knit and reknit."))
 	playsound(host, 'sound/magic/demon_consume.ogg', 50, TRUE)
 	host.revive(TRUE, TRUE)
+
+/datum/component/mutant_infection/proc/create_glow()
+	var/atom/movable/parent_movable = parent
+	if(!istype(parent_movable))
+		return
+
+	parent_movable.add_filter("infection_glow", 2, list("type" = "outline", "color" = COLOR_RED, "size" = 2))
+	addtimer(CALLBACK(src, .proc/start_glow_loop, parent_movable), rand(0.1 SECONDS, 1.9 SECONDS))
+
+/datum/component/mutant_infection/proc/start_glow_loop(atom/movable/parent_movable)
+	var/filter = parent_movable.get_filter("infection_glow")
+	if(!filter)
+		return
+
+	animate(filter, alpha = 110, time = 1.5 SECONDS, loop = -1)
+	animate(alpha = 40, time = 2.5 SECONDS)
