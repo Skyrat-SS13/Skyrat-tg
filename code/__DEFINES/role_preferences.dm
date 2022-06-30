@@ -20,6 +20,7 @@
 #define ROLE_WIZARD "Wizard"
 // SKYRAT EDIT START
 #define ROLE_ASSAULT_OPERATIVE "Assault Operative"
+#define ROLE_SYNDICATE_SABOTEUR "Syndicate Saboteur"
 // SKYRAT EDIT END
 
 // Midround roles
