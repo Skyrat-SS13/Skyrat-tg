@@ -82,7 +82,7 @@
 	var/static/list/slot2type = list(
 		"head" = /obj/item/clothing/head/changeling,
 		"wear_mask" = /obj/item/clothing/mask/changeling,
-		"wear_neck" = /obj/item/changeling, // SKYRAT EDIT
+		"wear_neck" = /obj/item/changeling, // SKYRAT EDIT	( TODO: Move upstream. )
 		"back" = /obj/item/changeling,
 		"wear_suit" = /obj/item/clothing/suit/changeling,
 		"w_uniform" = /obj/item/clothing/under/changeling,
@@ -534,7 +534,7 @@
 	// Grab the target's sechut icon.
 	new_profile.id_icon = target.wear_id?.get_sechud_job_icon_state()
 
-	var/list/slots = list("head", "wear_mask", "wear_neck", "back", "wear_suit", "w_uniform", "shoes", "belt", "gloves", "glasses", "ears", "wear_id", "s_store") // SKYRAT EDIT
+	var/list/slots = list("head", "wear_mask", "wear_neck", "back", "wear_suit", "w_uniform", "shoes", "belt", "gloves", "glasses", "ears", "wear_id", "s_store") // SKYRAT EDIT	( TODO: Move upstream. )
 	for(var/slot in slots)
 		if(!(slot in target.vars))
 			continue
@@ -574,7 +574,7 @@
 
 	if(!first_profile)
 		first_profile = new_profile
-		current_profile = first_profile  // SKYRAT EDIT
+		current_profile = first_profile  // SKYRAT EDIT	( TODO: Move upstream. )
 
 	stored_profiles += new_profile
 	absorbed_count++
@@ -726,7 +726,7 @@
 	var/static/list/slot2slot = list(
 		"head" = ITEM_SLOT_HEAD,
 		"wear_mask" = ITEM_SLOT_MASK,
-		"wear_neck" = ITEM_SLOT_NECK, // SKYRAT EDIT
+		"wear_neck" = ITEM_SLOT_NECK, // SKYRAT EDIT	( TODO: Move upstream. )
 		"back" = ITEM_SLOT_BACK,
 		"wear_suit" = ITEM_SLOT_OCLOTHING,
 		"w_uniform" = ITEM_SLOT_ICLOTHING,
