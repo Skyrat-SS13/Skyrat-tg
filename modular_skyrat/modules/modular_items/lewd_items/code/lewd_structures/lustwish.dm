@@ -83,8 +83,8 @@
 
 					//legs
 					/obj/item/clothing/shoes/latex_socks = 8,
-					/obj/item/clothing/shoes/latexheels = 4,
-					/obj/item/clothing/shoes/dominaheels = 4,
+					/obj/item/clothing/shoes/latex_heels = 4,
+					/obj/item/clothing/shoes/latex_heels/domina_heels = 4,
 					/obj/item/clothing/shoes/jackboots/knee = 3,
 					/obj/item/clothing/under/pants/chaps = 4,
 
