@@ -27,12 +27,12 @@
 		for(var/atom/movable/atoms_near in range(1, our_rune))
 			if(istype(atoms_near, /obj/effect/ash_rune) || istype(atoms_near, /obj/effect/side_rune) || istype(atoms_near, /mob/living/carbon/human))
 				continue
-			for(var/type in spawned_ritual.consumed_components)
-				if(istype(atoms_near, type))
-					TEST_FAIL("Ash Rituals: [type] was found unconsumed in [spawned_ritual.type] by the ritual circle, even though it was specified that it should.")
+			for(var/consumed_type in spawned_ritual.consumed_components)
+				if(istype(atoms_near, consumed_type))
+					TEST_FAIL("Ash Rituals: [consumed_type] was found unconsumed in [spawned_ritual.type] by the ritual circle, even though it was specified that it should.")
 					continue
-			for(var/type in spawned_ritual.ritual_success_items)
-				if(istype(atoms_near, type))
+			for(var/success_type in spawned_ritual.ritual_success_items)
+				if(istype(atoms_near, success_type))
 					result_amount[1]++
 					continue
 			if(result_amount[1] != result_amount[2])
