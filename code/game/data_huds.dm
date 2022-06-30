@@ -265,7 +265,7 @@ Security HUDs! Basic mode shows only the job.
 	permit_holder.pixel_y = I.Height() - world.icon_size
 	var/permit_icon_state = wear_id?.get_gun_permit_iconstate()
 	if(!permit_icon_state)
-		permit_icon_state = "hudfan_no"
+		permit_icon_state = HUD_PERMIT_NO
 	permit_holder.icon_state = permit_icon_state
 	//SKYRAT EDIT END
 
