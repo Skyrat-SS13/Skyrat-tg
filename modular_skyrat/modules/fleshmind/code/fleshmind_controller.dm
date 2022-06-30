@@ -247,13 +247,10 @@
 		last_level_up_points = points
 
 	var/core_count = LAZYLEN(cores)
-	if(core_count > 1)
-		spread_progress_per_second = base_spread_progress_per_second + (CONTROLLER_CORE_SPREAD_PROGRESS_BOOST * core_count)
 
 
 /datum/fleshmind_controller/proc/level_up()
 	level++
-	spread_progress = CONTROLLER_LEVEL_UP_SPREAD_BOOST // We get a nice boost when we level up
 	spawn_new_core()
 	message_admins("Corruption AI [controller_fullname] has leveled up to level [level]!")
 	notify_ghosts("Corruption AI [controller_fullname] has leveled up to level [level]!")
