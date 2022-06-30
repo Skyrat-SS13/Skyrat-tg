@@ -145,7 +145,7 @@
 	..()
 	changeling.transform(user, chosen_prof)
 	
-	// SKYRAT EDIT START
+	// SKYRAT EDIT START	( TODO: Move upstream. )
 	var/mob/dum = user.tgui.dummy_holder
 	dum.name = chosen_prof.name
 	for(var/obj/item/item in dum)
