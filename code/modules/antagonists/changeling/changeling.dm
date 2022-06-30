@@ -100,7 +100,7 @@
 
 	var/true_form_death //SKYRAT EDIT ADDITION: The time that the horror form died.
 	
-	/// SKYRAT EDIT START
+	/// SKYRAT EDIT START	( TODO: Move upstream. (Except for some of the quirks in the list.) )
 	///	Keeps track of the currently selected profile.
 	var/datum/changeling_profile/current_profile = null
 	/*	
@@ -495,7 +495,7 @@
 	new_profile.undershirt = target.undershirt
 	new_profile.socks = target.socks
 	
-	// SKYRAT EDIT START
+	// SKYRAT EDIT START	( TODO: Move some of this upstream. )
 	new_profile.underwear_color = target.underwear_color
 	new_profile.undershirt_color = target.undershirt_color
 	new_profile.socks_color = target.socks_color
@@ -745,7 +745,7 @@
 	user.undershirt = chosen_profile.undershirt
 	user.socks = chosen_profile.socks
 	
-	// SKYRAT EDIT START
+	// SKYRAT EDIT START	( TODO: Move some of this upstream. )
 	user.underwear_color = chosen_profile.underwear_color
 	user.undershirt_color = chosen_profile.undershirt_color
 	user.socks_color = chosen_profile.socks_color
@@ -763,7 +763,7 @@
 	user.selected_laugh = new chosen_profile.laugh_type
 	user.age = chosen_profile.age
 	
-	/*
+	/*	
 	 *	Remove old quirks and copy over new ones from the chosen profile.
 	 *
 	 *	Only quirks from the mimicable_quirks_list will be removed and/or copied over.
@@ -899,6 +899,7 @@
 	 *	Usually it's not a major issue: The changeling can just shapeshift again into the same target.
 	 *	The temporary fix is to run transfer_identity and updateappearance twice, effectively updating
 	 *	the changeling's DNA and appearance twice, so that they don't have to shapeshift twice.
+	 *	(Seems to be related to anthro stuff and mutant parts.)
 	 */
 	chosen_dna.transfer_identity(user, TRUE)
 	user.updateappearance(mutcolor_update = TRUE, eyeorgancolor_update = TRUE)
@@ -947,7 +948,7 @@
 	/// ID HUD icon associated with the profile
 	var/id_icon
 	
-	/// SKYRAT EDIT START
+	/// SKYRAT EDIT START	( TODO: Move some of this upstream. )
 	/// The colour of the underwear worn by the profile source.
 	var/underwear_color
 	/// The colour of the undershirt worn by the profile source.
@@ -1017,7 +1018,7 @@
 	new_profile.profile_snapshot = profile_snapshot
 	new_profile.id_icon = id_icon
 	
-	// SKYRAT EDIT START
+	// SKYRAT EDIT START	( TODO: Move some of this upstream. )
 	new_profile.underwear_color = underwear_color
 	new_profile.undershirt_color = undershirt_color
 	new_profile.socks_color = socks_color
