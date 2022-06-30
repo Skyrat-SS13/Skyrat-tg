@@ -6,8 +6,9 @@
 		/datum/reagent/medicine/c2/libital,\
 		/datum/reagent/medicine/c2/multiver,\
 		/datum/reagent/medicine/salglu_solution,\
-		/datum/reagent/medicine/spaceacillin\
-	)
+		/datum/reagent/medicine/spaceacillin,\
+		/datum/reagent/medicine/lidocaine\
+	) //SKYRAT EDIT line 10 added Lidocaine
 #define EXPANDED_MEDICAL_REAGENTS list(\
 		/datum/reagent/medicine/haloperidol,\
 		/datum/reagent/medicine/inacusiate,\
