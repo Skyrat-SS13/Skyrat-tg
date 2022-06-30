@@ -14,7 +14,7 @@
 #define MAROON_PROB 30
 
 /// Generates a complete set of traitor objectives up to the traitor objective limit, including non-generic objectives such as martyr and hijack.
-/datum/antagonist/traitor/saboteur/proc/forge_traitor_objectives()
+/datum/antagonist/traitor/saboteur/forge_traitor_objectives()
 	objectives.Cut()
 
 	var/objective_count = 0

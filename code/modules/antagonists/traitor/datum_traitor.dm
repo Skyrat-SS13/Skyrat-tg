@@ -66,10 +66,8 @@
 					uplink_items += item
 					continue
 		uplink_handler.extra_purchasable += create_uplink_sales(uplink_sale_count, /datum/uplink_category/discounts, -1, uplink_items)
-	/* //SKYRAT REMOVAL START - PROGRESIONLESS TRAITORS
-	if(give_objectives)
+	if(give_objectives && progression_enabled) //SKYRAT EDIT - progression_enabled
 		forge_traitor_objectives()
-	*/ //SKYRAT REMOVAL END
 
 	pick_employer()
 
@@ -200,8 +198,7 @@
 	if(total_points < required_progression_in_objectives)
 		return FALSE
 	return TRUE
-//SKYRAT EDIT START - OBJECTIVE REMOVAL
-	/*
+
 /// Generates a complete set of traitor objectives up to the traitor objective limit, including non-generic objectives such as martyr and hijack.
 /datum/antagonist/traitor/proc/forge_traitor_objectives()
 	objectives.Cut()
@@ -214,8 +211,6 @@
 	var/datum/objective/traitor_objectives/objective_completion = new /datum/objective/traitor_objectives()
 	objective_completion.owner = owner
 	objectives += objective_completion
-	*/
-	//SKYRAT EDIT END
 
 /datum/antagonist/traitor/apply_innate_effects(mob/living/mob_override)
 	. = ..()
