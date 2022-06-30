@@ -10,7 +10,7 @@ GLOBAL_DATUM_INIT(orbit_menu, /datum/orbit_menu, new)
 	if (!ui)
 		ui = new(user, src, "Orbit")
 		ui.open()
-	ui.autoupdate = FALSE // SKYRAT EDIT ADDITION
+	ui.set_autoupdate(FALSE) // SKYRAT EDIT ADDITION
 
 /datum/orbit_menu/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
