@@ -69,8 +69,9 @@
 		qdel(src)
 
 /obj/item/organ/internal/body_egg/changeling_egg/proc/Pop()
-	// SKYRAT EDIT START
+	// SKYRAT EDIT START	( TODO: Move some of this upstream. )
 	var/mob/living/carbon/human/species/monkey/spawned_monkey = new(owner)
+	// Need to clear the skyrat customisation stuff before transforming into a monkey, otherwise an abomination is created.
 	var/datum/dna/current_dna = spawned_monkey.dna
 	for(var/key in current_dna.mutant_bodyparts)
 		LAZYSET(current_dna.mutant_bodyparts, key, "None")
@@ -100,7 +101,7 @@
 		if(changeling_datum.can_absorb_dna(owner))
 			changeling_datum.add_new_profile(owner)
 
-		// SKYRAT EDIT START
+		// SKYRAT EDIT START	( TODO: Move upstream. )
 		var/datum/action/changeling/humanform/hf = new()
 		changeling_datum.purchased_powers += hf
 		hf.Grant(origin.current)
