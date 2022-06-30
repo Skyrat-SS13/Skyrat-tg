@@ -465,7 +465,7 @@
 			if(10)
 				. += span_warning("<B>It is radiating with massive levels of electrical activity!</B>")
 
-	//. += "*---------*</span>" SKYRAT EDIT REMOVAL
+	. += "</span>"
 
 /mob/living/simple_animal/slime/proc/discipline_slime(mob/user)
 	if(stat)

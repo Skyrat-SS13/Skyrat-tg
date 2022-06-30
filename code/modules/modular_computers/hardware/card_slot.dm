@@ -98,6 +98,8 @@
 		to_chat(user, span_warning("There are no cards in \the [src]."))
 		return FALSE
 
+	SpinAnimation()
+
 	if(user && !issilicon(user) && in_range(src, user))
 		user.put_in_hands(stored_card)
 	else
