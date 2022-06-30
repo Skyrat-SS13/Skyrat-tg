@@ -178,7 +178,7 @@
 /mob/living/proc/get_quirk_string(medical, category = CAT_QUIRK_ALL) //helper string. gets a string of all the quirks the mob has
 	var/list/dat = list()
 	
-	// SKYRAT EDIT START
+	// SKYRAT EDIT START	( TODO: Move upstream. )
 	// The health analyzer will first check if the target is a changeling, and if they are, load the quirks of the person they're disguising as.
 
 	var/target_quirks = quirks
