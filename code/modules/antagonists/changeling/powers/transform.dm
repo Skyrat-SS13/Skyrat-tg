@@ -113,6 +113,7 @@
 	var/icon/cached_flat_icon
 	/// HUD job icon of the ID
 	var/hud_icon
+	/// Gun permit of the ID (TRUE or FALSE, it either has one or it doesn't).
 	var/gun_permit // SKYRAT EDIT
 
 /obj/item/changeling/id/equipped(mob/user, slot, initial)
