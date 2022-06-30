@@ -64,6 +64,8 @@
 	var/level_up_progress_required = CONTROLLER_LEVEL_UP_THRESHOLD
 	/// Used to track our last points since levelup.
 	var/last_level_up_points = 0
+	/// How many points we currently have. Use calculate_current_points for an exact realtime value.
+	var/current_points = 0
 	/// Progress to the next wireweed spread.
 	var/spread_progress = 0
 	/// Progress to spawning the next structure.
@@ -241,12 +243,10 @@
 				spawn_structure(picked_turf, pick(possible_structures))
 
 /datum/fleshmind_controller/proc/calculate_level_system()
-	var/points = calculate_current_points()
+	current_points = calculate_current_points()
 	if(points >= (last_level_up_points + level_up_progress_required) && level < CONTROLLER_LEVEL_MAX)
 		level_up()
 		last_level_up_points = points
-
-	var/core_count = LAZYLEN(cores)
 
 
 /datum/fleshmind_controller/proc/level_up()
