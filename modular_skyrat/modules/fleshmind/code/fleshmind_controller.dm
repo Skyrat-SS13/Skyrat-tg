@@ -244,9 +244,9 @@
 
 /datum/fleshmind_controller/proc/calculate_level_system()
 	current_points = calculate_current_points()
-	if(points >= (last_level_up_points + level_up_progress_required) && level < CONTROLLER_LEVEL_MAX)
+	if(current_points >= (last_level_up_points + level_up_progress_required) && level < CONTROLLER_LEVEL_MAX)
 		level_up()
-		last_level_up_points = points
+		last_level_up_points = current_points
 
 
 /datum/fleshmind_controller/proc/level_up()
