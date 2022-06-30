@@ -15,6 +15,11 @@
 	..()
 
 	// SKYRAT EDIT START
+	/*
+	 *	We need to clear most of the skyrat customisation stuff before changing into a monkey
+	 *	because changing species does not automatically clear these and you'll create an abomination
+	 *	if you try to continue without doing so.
+	 */
 	var/datum/dna/current_dna = user.dna
 	for(var/key in current_dna.mutant_bodyparts)
 		LAZYSET(current_dna.mutant_bodyparts, key, "None")
@@ -24,7 +29,6 @@
 		LAZYREMOVE(current_dna.features, "legs")
 	LAZYSET(current_dna.features, "body_size", 1)
 	current_dna.update_body_size()
-	user.transform = list(1, 0, 0, 0, 1, 0)
 	// SKYRAT EDIT END
 
 	user.monkeyize()
@@ -34,7 +38,8 @@
 	changeling.purchased_powers += human_form_ability
 	changeling.purchased_powers -= src
 	
-	// SKYRAT EDIT START
+	// SKYRAT EDIT START	( TODO: Move upstream. )
+	// Drops all flesh disguise items after monkeyizing, because they don't drop automatically like real clothing.
 	for(var/slot in changeling.slot2type)
 		if(istype(user.vars[slot], changeling.slot2type[slot]))
 			qdel(user.vars[slot])
