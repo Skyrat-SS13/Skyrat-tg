@@ -180,7 +180,20 @@ GLOBAL_LIST_EMPTY(total_uf_len_by_block)
 	//We update the translation to make sure our character doesn't go out of the southern bounds of the tile
 	var/translate = ((change_multiplier-1) * 32)/2
 	holder.transform = holder.transform.Scale(change_multiplier)
-	holder.transform = holder.transform.Translate(0, translate)
+	// Check user's rotation before updating their translation, f.e. whether they're laying down or hanging upside down
+	var/translate_x = 0
+	var/translate_y = 0
+	if(holder.transform.a > 0)
+		translate_y = translate
+	else if(holder.transform.d > 0)
+		translate_x = -translate
+	else if(holder.transform.b > 0)
+		translate_x = translate
+	else if(holder.transform.a < 0)
+		translate_y = -translate
+	else
+		return
+	holder.transform = holder.transform.Translate(translate_x, translate_y)
 	holder.maptext_height = 32 * features["body_size"] // Adjust runechat height
 	current_body_size = features["body_size"]
 
