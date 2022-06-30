@@ -95,13 +95,6 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/engineering/gravity_generator)
-"au" = (
-/obj/effect/spawner/structure/window/reinforced,
-/obj/structure/sign/warning/radiation/rad_area{
-	pixel_y = 32
-	},
-/turf/open/floor/plating,
-/area/station/engineering/gravity_generator)
 "av" = (
 /turf/open/floor/iron/dark,
 /area/station/engineering/gravity_generator)
@@ -1358,12 +1351,6 @@
 	},
 /turf/open/floor/iron,
 /area/station/cargo/storage)
-"eU" = (
-/obj/structure/sign/warning/vacuum/external{
-	pixel_x = 32
-	},
-/turf/open/floor/iron,
-/area/station/medical/medbay)
 "eV" = (
 /obj/machinery/light/directional/west,
 /turf/open/floor/iron,
@@ -1939,6 +1926,11 @@
 /obj/item/paper/guides/jobs/security/labor_camp,
 /turf/open/floor/iron,
 /area/station/security/brig)
+"gW" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/structure/sign/warning/radiation/rad_area/directional/north,
+/turf/open/floor/plating,
+/area/station/engineering/gravity_generator)
 "gY" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
 	dir = 8
@@ -1959,6 +1951,10 @@
 /obj/machinery/light_switch/directional/west,
 /turf/open/floor/iron,
 /area/station/construction)
+"is" = (
+/obj/structure/sign/warning/vacuum/external/directional/east,
+/turf/open/floor/iron,
+/area/station/medical/medbay)
 "jb" = (
 /obj/machinery/door/airlock,
 /obj/structure/cable,
@@ -2017,12 +2013,6 @@
 /obj/machinery/chem_mass_spec,
 /turf/open/floor/iron,
 /area/station/medical/chemistry)
-"mP" = (
-/obj/docking_port/stationary/mining_home{
-	dir = 8
-	},
-/turf/open/floor/engine,
-/area/station/cargo/miningoffice)
 "nn" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
 	dir = 8
@@ -2217,6 +2207,12 @@
 "wU" = (
 /turf/closed/wall/r_wall,
 /area/station/science/explab)
+"yA" = (
+/obj/docking_port/stationary/laborcamp_home{
+	dir = 8
+	},
+/turf/open/space/basic,
+/area/space)
 "yK" = (
 /obj/structure/fans/tiny/invisible,
 /obj/effect/turf_decal/stripes/line{
@@ -2229,12 +2225,6 @@
 /obj/machinery/power/rtg/debug,
 /turf/open/floor/plating/airless,
 /area/space/nearstation)
-"yX" = (
-/obj/docking_port/stationary/laborcamp_home{
-	dir = 8
-	},
-/turf/open/space/basic,
-/area/space)
 "zo" = (
 /obj/machinery/power/apc/auto_name/directional/south,
 /obj/structure/cable,
@@ -2366,17 +2356,17 @@
 	},
 /turf/open/floor/iron,
 /area/station/command/bridge)
-"IE" = (
-/obj/machinery/gravity_generator/main/station,
-/obj/effect/turf_decal/tile/neutral/fourcorners,
-/turf/open/floor/iron/dark,
-/area/station/engineering/gravity_generator)
 "II" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
 /turf/open/floor/iron,
 /area/station/cargo/miningoffice)
+"Jp" = (
+/obj/machinery/gravity_generator/main,
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/turf/open/floor/iron/dark,
+/area/station/engineering/gravity_generator)
 "JF" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
 	dir = 8
@@ -2468,6 +2458,12 @@
 /obj/machinery/door/airlock/external/glass/ruin,
 /turf/open/floor/plating,
 /area/station/medical/medbay)
+"Qu" = (
+/obj/docking_port/stationary/mining_home{
+	dir = 8
+	},
+/turf/open/floor/engine,
+/area/station/cargo/miningoffice)
 "Rb" = (
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
@@ -4143,7 +4139,7 @@ qQ
 qQ
 qQ
 qQ
-mP
+Qu
 qQ
 qQ
 qQ
@@ -5433,7 +5429,7 @@ aa
 aa
 aa
 aa
-yX
+yA
 aa
 aa
 dY
@@ -7821,7 +7817,7 @@ aa
 ad
 af
 ak
-au
+gW
 aI
 aX
 aI
@@ -8100,7 +8096,7 @@ ak
 dT
 MN
 av
-IE
+Jp
 av
 by
 bV
@@ -8289,7 +8285,7 @@ av
 by
 bX
 cm
-eU
+is
 cy
 Ut
 cm
