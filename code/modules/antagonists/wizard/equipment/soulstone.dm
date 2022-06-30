@@ -314,10 +314,6 @@
 
 	victim.grab_ghost()
 	if(victim.client)
-<<<<<<< HEAD
-		// victim.unequip_everything() /// SKYRAT EDIT REMOVAL BEGIN - SOULSTONE_CHANGES
-=======
->>>>>>> bcd16397d34 (Fixes some soulstone issues, overall makes soulstone behavior more consistent (#67846))
 		init_shade(victim, user)
 		return TRUE
 
@@ -486,12 +482,6 @@
 	var/theme = newstruct.theme
 	flick("make_[makeicon][theme]", newstruct)
 	playsound(newstruct, 'sound/effects/constructform.ogg', 50)
-	//SKYRAT EDIT ADDITION BEGIN - SOULSTONE_CHANGES
-	var/datum/component/return_on_death/RoD = target.GetComponent(/datum/component/return_on_death)
-	if(RoD)
-		var/sourcemob = RoD.sourcemob
-		newstruct.AddComponent(/datum/component/return_on_death, sourcemob)
-	//SKYRAT EDIT ADDITION END
 	if(stoner)
 		newstruct.faction |= "[REF(stoner)]"
 		newstruct.master = stoner
@@ -514,56 +504,10 @@
 /obj/item/soulstone/anybody
 	required_role = null
 
-<<<<<<< HEAD
-/obj/item/soulstone/proc/init_shade(mob/living/carbon/human/victim, mob/user, message_user = FALSE, mob/shade_controller)
-	//SKYRAT EDIT ADDITION BEGIN - SOULSTONE_CHANGES
-	if(HAS_TRAIT_FROM(victim, TRAIT_SACRIFICED, "soulstoned"))
-		if(user)
-			to_chat(user, "This body has already been harvested!")
-		return
-	ADD_TRAIT(victim, TRAIT_SACRIFICED, "sacrificed")
-	//SKYRAT EDIT ADDITION END
-	if(!shade_controller)
-		shade_controller = victim
-	victim.stop_sound_channel(CHANNEL_HEARTBEAT)
-	var/mob/living/simple_animal/shade/soulstone_spirit = new /mob/living/simple_animal/shade(src)
-	soulstone_spirit.AddComponent(/datum/component/return_on_death, victim) //SKYRAT EDIT ADDITION - SOULSTONE_CHANGES
-	soulstone_spirit.AddComponent(/datum/component/soulstoned, src)
-	soulstone_spirit.name = "Shade of [victim.real_name]"
-	soulstone_spirit.real_name = "Shade of [victim.real_name]"
-	soulstone_spirit.key = shade_controller.key
-	soulstone_spirit.copy_languages(victim, LANGUAGE_MIND)//Copies the old mobs languages into the new mob holder.
-	if(user)
-		soulstone_spirit.copy_languages(user, LANGUAGE_MASTER)
-	soulstone_spirit.update_atom_languages()
-	soulstone_spirit.grant_all_languages(FALSE, FALSE, TRUE) //Grants omnitongue
-	if(user)
-		soulstone_spirit.faction |= "[REF(user)]" //Add the master as a faction, allowing inter-mob cooperation
-	if(user && IS_CULTIST(user))
-		soulstone_spirit.mind.add_antag_datum(/datum/antagonist/cult)
-	soulstone_spirit.cancel_camera()
-	name = "soulstone: Shade of [victim.real_name]"
-	switch(theme)
-		if(THEME_HOLY)
-			icon_state = "purified_soulstone2"
-		if(THEME_WIZARD)
-			icon_state = "mystic_soulstone2"
-		if(THEME_CULT)
-			icon_state = "soulstone2"
-	if(user)
-		if(IS_CULTIST(user))
-			to_chat(soulstone_spirit, "Your soul has been captured! You are now bound to the cult's will. Help them succeed in their goals at all costs.")
-		else if(role_check(user))
-			to_chat(soulstone_spirit, "Your soul has been captured! You are now bound to [user.real_name]'s will. Help [user.p_them()] succeed in [user.p_their()] goals at all costs.")
-		if(message_user)
-			to_chat(user, "[span_info("<b>Capture successful!</b>:")] [victim.real_name]'s soul has been ripped from [victim.p_their()] body and stored within [src].")
-	// victim.dust() // SKYRAT EDIT - SOULSTONE_CHANGES
-=======
 /obj/item/soulstone/mystic
 	icon_state = "mystic_soulstone"
 	theme = THEME_WIZARD
 	required_role = /datum/antagonist/wizard
->>>>>>> bcd16397d34 (Fixes some soulstone issues, overall makes soulstone behavior more consistent (#67846))
 
 /obj/item/soulstone/anybody/revolver
 	one_use = TRUE
@@ -578,22 +522,6 @@
 	one_use = TRUE
 	grab_sleeping = FALSE
 
-<<<<<<< HEAD
-	if(!chosen_ghost || !chosen_ghost.client) //Failing that, we grab a ghosts
-		var/list/consenting_candidates = poll_ghost_candidates("Would you like to play as a Shade?", "Cultist", ROLE_CULTIST, 50, POLL_IGNORE_SHADE)
-		if(consenting_candidates.len)
-			chosen_ghost = pick(consenting_candidates)
-	if(!victim || user.incapacitated() || !user.is_holding(src) || !user.CanReach(victim, src))
-		return FALSE
-	if(!chosen_ghost || !chosen_ghost.client)
-		to_chat(user, span_danger("There were no spirits willing to become a shade."))
-		return FALSE
-	if(contents.len) //If they used the soulstone on someone else in the meantime
-		return FALSE
-	// victim.unequip_everything() /// SKYRAT REMOVAL - SOULSTONE_CHANGES
-	init_shade(victim, user, shade_controller = chosen_ghost)
-	return TRUE
-=======
 /obj/item/soulstone/anybody/chaplain/sparring
 	name = "divine punishment"
 	desc = "A prison for those who lost a divine game."
@@ -607,4 +535,3 @@
 
 /obj/item/soulstone/anybody/mining
 	grab_sleeping = FALSE
->>>>>>> bcd16397d34 (Fixes some soulstone issues, overall makes soulstone behavior more consistent (#67846))
