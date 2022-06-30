@@ -29,7 +29,7 @@
 	changeling.purchased_powers -= src
 	Remove(user)
 	
-	// SKYRAT EDIT START
+	// SKYRAT EDIT START	( TODO: Move upstream. )
 	var/datum/dna/chosen_dna = chosen_prof.dna
 	var/datum/species/chosen_species = chosen_dna.species
 	user.humanize(chosen_species)
