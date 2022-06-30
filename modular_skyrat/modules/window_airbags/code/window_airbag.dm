@@ -36,7 +36,7 @@
 /datum/element/airbag/proc/on_examine(datum/source, mob/user, list/examine_text)
 	SIGNAL_HANDLER
 
-	examine_text += span_warning("It has a blinking red light indicating an aribag is installed, <b>alt+click</b> to disarm.")
+	examine_text += span_warning("It has a blinking red light indicating an airbag is installed. <b>Alt+click</b> to disarm.")
 
 /datum/element/airbag/proc/on_altclick(atom/movable/clicked_atom, mob/living/clicker)
 	SIGNAL_HANDLER
