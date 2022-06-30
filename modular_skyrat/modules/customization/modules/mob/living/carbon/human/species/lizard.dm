@@ -55,7 +55,6 @@
 	lizard.update_mutant_bodyparts(TRUE)
 	lizard.update_body(TRUE)
 
-
 /datum/species/lizard/ashwalker
 	species_traits = list(
 		MUTCOLORS,
@@ -68,7 +67,7 @@
 		FACEHAIR
 	)
 	always_customizable = TRUE
-	learnable_languages = list(/datum/language/draconic)
+	learnable_languages = list(/datum/language/ashtongue)
 
 /datum/species/lizard/ashwalker/prepare_human_for_preview(mob/living/carbon/human/lizard, lizard_color = "#990000")
 	. = ..(lizard, lizard_color)
