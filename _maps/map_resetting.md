@@ -5,6 +5,7 @@
 
 ## Map resetting /TG/ maps
 
+
 TG maps do periodically need to be reset to what they are upstream. 
 In the event some major repathing occurs, which would otherwise render the map useless, the maps will need to be reset. Some **CRITICAL** things need to be brought over. These **CRITICAL** things are necessary  for the flow of the game and round, in other words, they're **ROUND CRITICAL**. 
 
@@ -24,6 +25,16 @@ Round Critical items are rooms/spawners/objs that are **REQUIRED** for the flow 
 
 - Arrival Shuttle Console
 
+## Critical Changes:
+Critical changes are changes that **NEED** be reset during the main reset PR.
+- Security:
+- - Add Ammo Workbench
+- - Add Gun Vendor
+- Armory:
+- - Replace Disablers With Smartgun
+- - Replace Shotguns With Shotgun Spawners
+- - Replace Energy Guns With MCRS
+- - Replace Laser Guns With CMGs
 - Central Command Ferry Hangar (inside Arrival area)
 
 ### Security
@@ -51,8 +62,6 @@ Round Critical items are rooms/spawners/objs that are **REQUIRED** for the flow 
 These are rooms/spawners/objs that aren't really required for the flow of the round, and so, not including them initially is okay and can be brought over in later PR(s).
 
 - Xenoarch Base (Lavaland)
-
-- Modular pets: E-N (Robotics), Poppy (Engineering), Bumbles (Hydroponics) and Markus (Cargo)
 
 - Drone Dispensers added to all maps
 
