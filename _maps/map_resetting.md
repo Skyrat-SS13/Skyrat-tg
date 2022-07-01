@@ -18,7 +18,6 @@ Critical changes are changes that **NEED** be reset during the main reset PR.
 - - Replace Laser Guns With CMGs
 - Security Medics Room:
 - - Security Medics Spawner
-- - Security Medics Locker
 - Arrival Docks:
 - - Arrival Shuttle Docking Port Resize
 - - Arrival Shuttle Console
@@ -29,6 +28,5 @@ Critical changes are changes that **NEED** be reset during the main reset PR.
 ## Non-Critical Changes
 These are changes that are not integral to gameplay and can be brought over in subsequent PRs.
 - Xenoarch Base (Lavaland)
-- Modular pets: E-N (Robotics), Poppy (Engineering), Bumbles (Hydroponics) and Markus (Cargo)
 - Drone Dispensers added to all maps
 - Cryopods (inside Recreational/Dormitory area)
