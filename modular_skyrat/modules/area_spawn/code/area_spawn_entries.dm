@@ -63,11 +63,11 @@
 	target_area = /area/station/engineering
 	desired_atom = /mob/living/simple_animal/pet/poppy
 
-/obj/item/summon_beacon/secmed_locker
+/datum/area_spawn/secmed_locker
 	target_area = /area/station/security/medical
 	desired_atom = /obj/structure/closet/secure_closet/security_medic
 
-/obj/item/summon_beacon/command_drobe
+/datum/area_spawn/command_drobe
 	target_area = /area/station/command/heads_quarters
 	desired_atom = /obj/machinery/vending/access/command
 
