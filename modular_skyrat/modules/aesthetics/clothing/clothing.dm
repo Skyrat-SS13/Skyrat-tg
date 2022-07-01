@@ -114,7 +114,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 
 /obj/item/clothing/head/pelt
-	name = "Bear pelt"
+	name = "bear pelt"
 	desc = "A luxurious bear pelt, good to keep warm in winter. Or to sleep through winter."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
