@@ -116,13 +116,9 @@
 	var/medipen_type = /obj/item/reagent_containers/hypospray/medipen
 
 /obj/item/storage/box/survival/PopulateContents()
-<<<<<<< HEAD
-	//SKYRAT EDIT ADDITION START - VOX INTERNALS - Honestly I dont know if this has a function any more with wardrobe_removal(), but TG still uses the plasmaman one so better safe than sorry
-=======
 	if(!isnull(mask_type))
 		new mask_type(src)
-
->>>>>>> 966b711e15b (Removes the superfluous breathing mask from the survival box of clown/mime + New mime hugbox. (#67621))
+	//SKYRAT EDIT ADDITION START - VOX INTERNALS - Honestly I dont know if this has a function any more with wardrobe_removal(), but TG still uses the plasmaman one so better safe than sorry
 	if(!isplasmaman(loc))
 		if(isvox(loc))
 			new /obj/item/tank/internals/nitrogen/belt/emergency(src)
