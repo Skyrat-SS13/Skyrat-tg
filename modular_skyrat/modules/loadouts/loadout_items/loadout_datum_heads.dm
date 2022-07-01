@@ -225,31 +225,31 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 	item_path = /obj/item/clothing/head/bowler
 
 /datum/loadout_item/head/bearpelt
-	name = "Brown bear pelt"
+	name = "Brown Bear Pelt"
 	item_path = /obj/item/clothing/head/pelt
 
 /datum/loadout_item/head/bearpeltblack
-	name = "Black bear pelt"
+	name = "Black Bear Pelt"
 	item_path = /obj/item/clothing/head/pelt/black
 
 /datum/loadout_item/head/wolfpelt
-	name = "Brown wolf pelt"
+	name = "Brown Wolf Pelt"
 	item_path = /obj/item/clothing/head/pelt/wolfpelt
 
 /datum/loadout_item/head/wolfpeltblack
-	name = "Black wolf pelt"
+	name = "Black Wolf Pelt"
 	item_path = /obj/item/clothing/head/pelt/wolfpeltblack
 
 /datum/loadout_item/head/tigerpelt
-	name = "Shiny tiger pelt"
+	name = "Shiny Tiger Pelt"
 	item_path = /obj/item/clothing/head/pelt/tigerpelt
 
 /datum/loadout_item/head/tigerpeltsnow
-	name = "Snow tiger pelt"
+	name = "Snow Tiger Pelt"
 	item_path = /obj/item/clothing/head/pelt/tigerpeltsnow
 
 /datum/loadout_item/head/tigerpeltpink
-	name = "Pink tiger pelt"
+	name = "Pink Tiger Pelt"
 	item_path = /obj/item/clothing/head/pelt/tigerpeltpink
 
 /*
