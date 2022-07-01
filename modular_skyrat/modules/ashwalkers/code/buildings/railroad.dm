@@ -6,8 +6,8 @@
 	icon_state = "rail_item"
 	merge_type = /obj/item/stack/rail_track
 
-/obj/item/stack/rail_track/five
-	amount = 5
+/obj/item/stack/rail_track/ten
+	amount = 10
 
 /obj/item/stack/rail_track/fifty
 	amount = 50
@@ -68,7 +68,7 @@
 
 /obj/vehicle/ridden/rail_cart/examine(mob/user)
 	. = ..()
-	. += span_notice("<br>Alt-Click to attach this rail cart to another.")
+	. += span_notice("<br>Alt-Click to attach a rail cart to this cart.")
 
 /obj/vehicle/ridden/rail_cart/Initialize(mapload)
 	. = ..()
@@ -99,11 +99,14 @@
 
 /// searches the cardinal directions to add this cart to another cart's trailer
 /obj/vehicle/ridden/rail_cart/proc/attach_trailer()
+	if(trailer)
+		remove_trailer()
+		return
 	for(var/direction in GLOB.cardinals)
 		var/obj/vehicle/ridden/rail_cart/locate_cart = locate() in get_step(src, direction)
-		if(!locate_cart || locate_cart.trailer)
+		if(!locate_cart || locate_cart.trailer == src)
 			continue
-		locate_cart.add_trailer(src)
+		add_trailer(locate_cart)
 		break
 
 /datum/component/riding/vehicle/rail_cart

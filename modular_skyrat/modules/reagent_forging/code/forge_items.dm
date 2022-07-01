@@ -246,7 +246,7 @@
 	desc = "A nail, ready to be used with some wood in order to make tracks."
 	icon = 'modular_skyrat/modules/ashwalkers/icons/railroad.dmi'
 	icon_state = "nail"
-	spawning_item = /obj/item/stack/rail_track/five
+	spawning_item = /obj/item/stack/rail_track/ten
 
 /obj/item/forging/coil
 	name = "coil"
