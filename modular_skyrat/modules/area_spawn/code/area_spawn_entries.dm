@@ -14,9 +14,6 @@
 	var/requires_open_space = TRUE
 
 /datum/area_spawn/proc/try_spawn()
-	if(!target_area)
-		CRASH("[src.type] does not have a valid target area!")
-
 	var/area/found_area = GLOB.areas_by_type[target_area]
 
 	if(!found_area)
@@ -32,6 +29,13 @@
 				continue
 			if(!enter_test.Enter(iterating_turf))
 				continue
+			var/cardinal_check = FALSE
+			for(var/dir in GLOB.cardinals)
+				var/turf/cardinal_test_turf = get_step(iterating_turf, dir)
+				if(enter_test.Enter(cardinal_test_turf))
+					cardinal_check = TRUE
+			if(!cardinal_check)
+				continue
 		available_turfs += iterating_turf
 
 	qdel(enter_test)
@@ -46,3 +50,24 @@
 /datum/area_spawn/markus
 	target_area = /area/station/cargo/warehouse
 	desired_atom = /mob/living/simple_animal/pet/dog/markus
+
+/datum/area_spawn/bumbles
+	target_area = /area/station/service/hydroponics
+	desired_atom = /mob/living/simple_animal/pet/bumbles
+
+/datum/area_spawn/borgi
+	target_area = /area/station/science/robotics
+	desired_atom = /mob/living/simple_animal/pet/dog/corgi/borgi
+
+/datum/area_spawn/poppy
+	target_area = /area/station/engineering
+	desired_atom = /mob/living/simple_animal/pet/poppy
+
+/obj/item/summon_beacon/secmed_locker
+	target_area = /area/station/security/medical
+	desired_atom = /obj/structure/closet/secure_closet/security_medic
+
+/obj/item/summon_beacon/command_drobe
+	target_area = /area/station/command/heads_quarters
+	desired_atom = /obj/machinery/vending/access/command
+
