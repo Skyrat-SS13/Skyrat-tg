@@ -304,7 +304,7 @@
 
 /datum/fleshmind_controller/proc/fleshmind_end_final()
 	priority_announce("ERROR, SHUTTLE NAVIGATION SUBROUTINES SUBVERTED. %$%$£%$^^&^^ H%AD TO EVA%UA£ION, SPREAD THE FLESH!", "&^$^£&&*$&£", ANNOUNCER_ICARUS)
-	addtimer(CALLBACK(GLOBAL_PROC, /proc/play_cinematic, /datum/cinematic/fleshmind, world, CALLBACK(src, .proc/fleshmind_call_shuttle)), 15 SECONDS, TIMER_CLIENT_TIME)
+	addtimer(CALLBACK(src, .proc/fleshmind_call_shuttle), 15 SECONDS)
 
 /datum/fleshmind_controller/proc/fleshmind_call_shuttle()
 	SSshuttle.clearHostileEnvironment(src)
