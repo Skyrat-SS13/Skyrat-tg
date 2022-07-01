@@ -269,14 +269,9 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 		G.fields["photo_front"] = photo_front
 		G.fields["photo_side"] = photo_side
 		// SKYRAT ADDITION START - RP RECORDS
-		if(C && C.prefs && C.prefs.read_preference(/datum/preference/text/general))
-			G.fields["past_records"] = C.prefs.read_preference(/datum/preference/text/general)
-		else
-			G.fields["past_records"] = ""
-		if (C && C.prefs && C.prefs.read_preference(/datum/preference/text/exploitable))
-			G.fields["exploitable_records"] = C.prefs.read_preference(/datum/preference/text/exploitable)
-		else
-			G.fields["exploitable_records"] = ""
+		G.fields["past_records"] = C?.prefs?.read_preference(/datum/preference/text/general) || ""
+		G.fields["background_records"] = C?.prefs?.read_preference(/datum/preference/text/background) || ""
+		G.fields["exploitable_records"] = C?.prefs?.read_preference(/datum/preference/text/exploitable) || ""
 		// SKYRAT ADDITION END
 		general += G
 
