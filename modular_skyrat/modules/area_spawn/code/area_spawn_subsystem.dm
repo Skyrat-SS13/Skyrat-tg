@@ -10,7 +10,7 @@ SUBSYSTEM_DEF(area_spawn)
 	init_order = INIT_ORDER_PERSISTENCE
 
 /datum/controller/subsystem/area_spawn/Initialize(start_timeofday)
-	for(var/datum/area_spawn/iterating_area_spawn as anything in subtypesof(/datum/area_spawn))
-		iterating_area_spawn = new
+	for(var/iterating_type in subtypesof(/datum/area_spawn))
+		var/datum/area_spawn/iterating_area_spawn = new iterating_type
 		iterating_area_spawn.try_spawn()
 	return ..()

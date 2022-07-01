@@ -13,7 +13,10 @@
 	/// Do we require an open space to spawn?
 	var/requires_open_space = TRUE
 
-/datum/area_spawn/proc/try_spawn(list/available_areas)
+/datum/area_spawn/proc/try_spawn()
+	if(!target_area)
+		CRASH("[src.type] does not have a valid target area!")
+
 	var/area/found_area = GLOB.areas_by_type[target_area]
 
 	if(!found_area)
