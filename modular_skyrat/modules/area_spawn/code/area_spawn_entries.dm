@@ -5,9 +5,9 @@
  */
 /datum/area_spawn
 	/// The target area for us to spawn the desired atom
-	var/area/target_area
+	var/target_area
 	/// The atom that we want to spawn
-	var/atom/desired_atom
+	var/desired_atom
 	/// The amount we want to spawn
 	var/amount_to_spawn = 1
 	/// Do we require an open space to spawn?
@@ -17,7 +17,7 @@
 	var/area/found_area = GLOB.areas_by_type[target_area]
 
 	if(!found_area)
-		CRASH("[src] could not find area [target_area]!")
+		CRASH("[src.type] could not find area [target_area]!")
 
 	var/list/available_turfs = list()
 
@@ -34,10 +34,11 @@
 	qdel(enter_test)
 
 	if(!available_turfs)
-		CRASH("[src] could not find any suitable turfs!")
+		CRASH("[src.type] could not find any suitable turfs!")
 
 	for(var/i in 1 to amount_to_spawn)
 		new desired_atom(pick(available_turfs))
+
 
 /datum/area_spawn/markus
 	target_area = /area/station/cargo/warehouse
