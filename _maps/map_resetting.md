@@ -35,9 +35,6 @@ Critical changes are changes that **NEED** be reset during the main reset PR.
 - - Replace Shotguns With Shotgun Spawners
 - - Replace Energy Guns With MCRS
 - - Replace Laser Guns With CMGs
-- Security Medics Room:
-- - Security Medics Spawner
-
 - Central Command Ferry Hangar (inside Arrival area)
 
 ### Security
