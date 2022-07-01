@@ -148,7 +148,7 @@
 
 /datum/armament_entry/cargo_gun/dynamics/ammo/shotgun/hunter
 	item_type = /obj/item/ammo_box/advanced/s12gauge/hunter
-	description = "A box of 35 Hunter Buckshots. It is a specialized buckshot that deals more damage to simpler beings."
+	description = "A box of 15 Hunter Buckshots. It is a specialized buckshot that deals more damage to simpler beings."
 	stock_mult = 2
 	lower_cost = CARGO_CRATE_VALUE * 1
 	upper_cost = CARGO_CRATE_VALUE * 2
