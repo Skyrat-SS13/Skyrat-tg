@@ -36,6 +36,9 @@
 /obj/item/summon_beacon/attack_self(mob/user)
 	if(!can_use_beacon(user))
 		return
+	if(length(selectable_atoms) == 1)
+		selected_atom = selectable_atoms[1]
+		return
 	show_options(user)
 
 /obj/item/summon_beacon/proc/can_use_beacon(mob/living/user)
@@ -67,7 +70,7 @@
 /obj/item/summon_beacon/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	. = ..()
 	if(!selected_atom)
-		balloon_alert(user, "no atom selected!")
+		balloon_alert(user, "no choice selected!")
 		return
 	var/turf/target_turf = get_turf(target)
 	var/area/target_area = get_area(target)
@@ -75,7 +78,7 @@
 		balloon_alert(user, "can't call here!")
 		return
 
-	var/confirmed = tgui_alert(user, "Are you sure you want to call it here?", "Confirmation", list("Yes", "No"))
+	var/confirmed = tgui_alert(user, "Are you sure you want to call [selected_atom.name] here?", "Confirmation", list("Yes", "No"))
 	if(confirmed != "Yes")
 		return
 
@@ -136,7 +139,7 @@
 	area_string = "atmospherics"
 	supply_pod_stay = TRUE
 
-/obj/item/summon_beacon/commanddrobe
+/obj/item/summon_beacon/command_drobe
 	name = "command outfitting beacon"
 	desc = "Delivers a command outfitting station to the target location."
 

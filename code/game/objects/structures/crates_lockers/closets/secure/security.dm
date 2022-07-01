@@ -20,7 +20,7 @@
 	new /obj/item/storage/box/gunset/pdh_captain(src) // SKYRAT EDIT ADDITION
 	new /obj/item/door_remote/captain(src)
 	new /obj/item/storage/photo_album/captain(src)
-	new /obj/item/summon_beacon/commanddrobe(src) // SKYRAT EDIT ADDITION
+	new /obj/item/summon_beacon/command_drobe(src) // SKYRAT EDIT ADDITION
 
 /obj/structure/closet/secure_closet/hop
 	name = "\proper head of personnel's locker"
