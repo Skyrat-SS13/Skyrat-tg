@@ -120,6 +120,8 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "bearpelt_brown"
 	inhand_icon_state = "bearpelt_brown"
+	cold_protection = CHEST|HEAD
+	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
 
 /obj/item/clothing/head/pelt/black
 	icon_state = "bearpelt_black"
