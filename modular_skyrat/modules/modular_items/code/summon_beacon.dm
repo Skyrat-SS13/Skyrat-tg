@@ -55,17 +55,25 @@
 	return atom_list
 
 /obj/item/summon_beacon/proc/show_options(mob/user)
-	var/list/display_names = generate_display_names()
-	if(!length(display_names))
+	var/list/radial_build = get_available_options()
+	if(!radial_build)
 		return
-	var/choice = tgui_input_list(user, "Choose An Object", "Object Selection", display_names)
-	if(!choice)
-		return
-	if(!display_names[choice])
-		return
-	if(!user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
-		return
-	selected_atom = display_names[choice]
+
+	selected_atom = show_radial_menu(user, src, radial_build, radius = 40, tooltips = TRUE)
+
+/obj/item/summon_beacon/proc/get_available_options()
+	var/list/options = list()
+	for(var/iterating_choice in selectable_atoms)
+		var/obj/our_object = iterating_choice
+		var/datum/radial_menu_choice/option = new
+		option.image = image(icon = initial(our_object.icon), icon_state = initial(our_object.icon_state))
+		option.info = span_boldnotice("[initial(our_object.desc)]")
+
+		options[our_object] = option
+
+	sort_list(options)
+
+	return options
 
 /obj/item/summon_beacon/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	. = ..()
