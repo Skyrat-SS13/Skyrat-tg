@@ -71,10 +71,6 @@
 
 	id_trim = /datum/id_trim/job/security_medic
 
-/obj/effect/landmark/start/security_officer/Initialize(mapload)
-	. = ..()
-	new /obj/effect/landmark/start/security_medic(get_turf(src))
-
 /obj/effect/landmark/start/security_medic
 	name = "Security Medic"
 	icon_state = "Security Medic"
