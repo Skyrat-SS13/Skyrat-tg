@@ -530,7 +530,7 @@
 /obj/item/organ/internal/eyes/snail
 	name = "snail eyes"
 	desc = "These eyes seem to have a large range, but might be cumbersome with glasses."
-	eye_icon_state = "eyes" //SKYRAT EDIT - Roundstart Snails
+	eye_icon_state = "snail_eyes"
 	icon_state = "snail_eyeballs"
 	eyes_layer = ABOVE_BODY_FRONT_HEAD_LAYER //SKYRAT EDIT - Roundstart Snails
 
