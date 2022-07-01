@@ -90,9 +90,6 @@
 /obj/item/implanter/radio/syndicate
 	name = "implanter" // Skyrat edit , was originally implanter (internal syndicate radio)
 	imp_type = /obj/item/implant/radio/syndicate
-<<<<<<< HEAD
 	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // Skyrat edit
 	special_desc = "A Syndicate implanter used for a internal radio implant" // Skyrat edit
 
-=======
->>>>>>> f8f3dbed98e (Completely removes `proc_holders` from existence. Refactors all wizard, xeno, spider, and genetics powers to be actions. Also refactors and sorts ton of accompanying code.  (#67083))

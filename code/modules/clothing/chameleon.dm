@@ -414,12 +414,9 @@
 	blood_overlay_type = "armor"
 	resistance_flags = NONE
 	armor = list(MELEE = 10, BULLET = 10, LASER = 10, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 50)
-<<<<<<< HEAD
 	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // SKYRAT EDIT
 	special_desc = "A chameleon vest employed by the Syndicate in infiltration operations." // SKYRAT EDIT
 
-=======
->>>>>>> f8f3dbed98e (Completely removes `proc_holders` from existence. Refactors all wizard, xeno, spider, and genetics powers to be actions. Also refactors and sorts ton of accompanying code.  (#67083))
 	var/datum/action/item_action/chameleon/change/chameleon_action
 
 /obj/item/clothing/suit/chameleon/Initialize(mapload)

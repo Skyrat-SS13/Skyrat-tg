@@ -25,8 +25,6 @@
 			return r_store
 		if(ITEM_SLOT_SUITSTORE)
 			return s_store
-
-<<<<<<< HEAD
 		//SKYRAT EDIT ADDITION BEGIN - ERP_SLOT_SYSTEM
 		if(ITEM_SLOT_VAGINA)
 			return vagina
@@ -37,9 +35,6 @@
 		if(ITEM_SLOT_PENIS)
 			return penis
 		//SKYRAT EDIT ADDITION END
-
-	return null
-=======
 	return ..()
 
 /mob/living/carbon/human/get_slot_by_item(obj/item/looking_for)
@@ -80,7 +75,6 @@
 		return ITEM_SLOT_SUITSTORE
 
 	return ..()
->>>>>>> f8f3dbed98e (Completely removes `proc_holders` from existence. Refactors all wizard, xeno, spider, and genetics powers to be actions. Also refactors and sorts ton of accompanying code.  (#67083))
 
 /mob/living/carbon/human/get_all_worn_items()
 	. = get_head_slots() | get_body_slots()

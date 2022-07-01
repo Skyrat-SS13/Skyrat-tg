@@ -116,7 +116,7 @@
 	var/loot = rand(1,2)
 	switch(loot)
 		if(1)
-			new /obj/item/bloodcrawlbottle(src) //SKYRAT EDIT
+			new /obj/item/mayhem(src)
 		if(2)
 			new /obj/item/soulscythe(src)
 

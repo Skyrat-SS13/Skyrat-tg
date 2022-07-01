@@ -45,12 +45,9 @@
 // Syndicate device disguised as a multitool; it will turn red when an AI camera is nearby.
 
 /obj/item/multitool/ai_detect
-<<<<<<< HEAD
 	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // Skyrat edit
 	special_desc = "A special sensor embedded stealthily into this device can detect and warn of nearby silicon activity and camera vision range." // Skyrat edit
-=======
 	actions_types = list(/datum/action/item_action/toggle_multitool)
->>>>>>> f8f3dbed98e (Completely removes `proc_holders` from existence. Refactors all wizard, xeno, spider, and genetics powers to be actions. Also refactors and sorts ton of accompanying code.  (#67083))
 	var/detect_state = PROXIMITY_NONE
 	var/rangealert = 8 //Glows red when inside
 	var/rangewarning = 20 //Glows yellow when inside

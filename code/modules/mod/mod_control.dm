@@ -556,19 +556,12 @@
 	new_module.on_install()
 	if(wearer)
 		new_module.on_equip()
-<<<<<<< HEAD
-		var/datum/action/item_action/mod/pinned_module/action = new_module.pinned_to[REF(wearer)]
-		if(action)
-			action.Grant(wearer)
 	// SKYRAT EDIT START - pAIs in MODsuits
 	if(mod_pai)
 		var/datum/action/item_action/mod/pinned_module/action = new_module.pinned_to[ref(mod_pai)]
 		if(action)
 			action.Grant(mod_pai)
 	// SKYRAT EDIT END
-=======
-
->>>>>>> f8f3dbed98e (Completely removes `proc_holders` from existence. Refactors all wizard, xeno, spider, and genetics powers to be actions. Also refactors and sorts ton of accompanying code.  (#67083))
 	if(user)
 		balloon_alert(user, "[new_module] added")
 		playsound(src, 'sound/machines/click.ogg', 50, TRUE, SILENCED_SOUND_EXTRARANGE)
