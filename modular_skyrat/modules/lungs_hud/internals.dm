@@ -13,7 +13,7 @@
 	if(internal)
 		internal_hud?.maptext = MAPTEXT("<span style=\"font-size:5px\">LUNG:\n[safe_min]KPA\nCUR:\n[pressure]KPA\n</span>")
 	else
-		internal_hud?.maptext = MAPTEXT("<span style=\"font-size:5px\">LAST:\n[pressure]KPA\n</span>")
+		internal_hud?.maptext = MAPTEXT("<span style=\"font-size:5px\">LAST KPA:\n[pressure]\n</span>")
 
 /obj/item/organ/internal/lungs/check_breath(datum/gas_mixture/breath, mob/living/carbon/human/breather)
 	breather?.internals_text_update()
