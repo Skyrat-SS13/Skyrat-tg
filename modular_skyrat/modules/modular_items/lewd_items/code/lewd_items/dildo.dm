@@ -114,18 +114,18 @@
 				target.adjustArousal(4)
 				target.adjustPleasure(5)
 				if(prob(20) && (target.stat != DEAD))
-					target.emote("moan")
+					target.try_lewd_autoemote("moan")
 			else if(poly_size == "medium")
 				target.adjustArousal(6)
 				target.adjustPleasure(8)
 				if(prob(40) && (target.stat != DEAD))
-					target.emote(pick("twitch_s", "moan"))
+					target.try_lewd_autoemote(pick("twitch_s", "moan"))
 			else if(poly_size == "big")
 				target.adjustArousal(8)
 				target.adjustPleasure(10)
 				target.adjustPain(2)
 				if(prob(60) && (target.stat != DEAD))
-					target.emote(pick("twitch_s", "moan", "gasp"))
+					target.try_lewd_autoemote(pick("twitch_s", "moan", "gasp"))
 			if(side_double)
 				user.adjustArousal(6)
 				user.adjustPleasure(8)
@@ -138,7 +138,7 @@
 			target.adjustArousal(4)
 			target.adjustPleasure(1)
 			if(prob(70) && (target.stat != DEAD))
-				target.emote(pick("gasp", "moan"))
+				target.try_lewd_autoemote(pick("gasp", "moan"))
 
 
 		else
@@ -149,7 +149,7 @@
 			target.adjustArousal(5)
 			target.adjustPleasure(5)
 			if(prob(60) && (target.stat != DEAD))
-				target.emote(pick("twitch_s", "moan", "shiver"))
+				target.try_lewd_autoemote(pick("twitch_s", "moan", "shiver"))
 
 	user.visible_message(span_purple("[user] [message]!"))
 	playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/bang1.ogg',

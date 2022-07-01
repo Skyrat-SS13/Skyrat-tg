@@ -92,7 +92,7 @@
 /datum/reagent/drug/dopamine/on_mob_life(mob/living/carbon/affected_mob, delta_time, times_fired)
 	affected_mob.set_timed_status_effect(2 SECONDS * REM * delta_time, /datum/status_effect/drugginess)
 	if(prob(7))
-		affected_mob.emote(pick("shaking", "moan"))
+		affected_mob.try_lewd_autoemote(pick("shaking", "moan"))
 	..()
 
 /datum/reagent/drug/dopamine/overdose_start(mob/living/carbon/human/human_mob)
@@ -106,7 +106,7 @@
 	affected_mob.adjustPleasure(0.3)
 	affected_mob.adjustPain(-0.5)
 	if(prob(2))
-		affected_mob.emote(pick("moan", "twitch_s"))
+		affected_mob.try_lewd_autoemote(pick("moan", "twitch_s"))
 	return
 
 /*
@@ -284,12 +284,12 @@
 			temp_arousal -= 0.1
 		if(affected_mob.arousal >= AROUS_SYS_STRONG && affected_mob.stat != DEAD)
 			if(prob(3))
-				affected_mob.emote(pick("moan", "blush"))
+				affected_mob.try_lewd_autoemote(pick("moan", "blush"))
 			temp_pleasure += 0.1
 			//moan
 		if(affected_mob.pleasure >= PLEAS_SYS_EDGE && affected_mob.stat != DEAD)
 			if(prob(3))
-				affected_mob.emote(pick("moan", "twitch_s"))
+				affected_mob.try_lewd_autoemote(pick("moan", "twitch_s"))
 			//moan x2
 
 	affected_mob.adjustArousal(temp_arousal)
@@ -314,7 +314,7 @@
 				if(change_amount > 0)
 					adjustArousal(-change_amount)
 			if(prob(2) && pain > pain_limit && change_amount > pain_limit / 10)
-				emote(pick("scream", "shiver")) //SCREAM!!!
+				try_lewd_autoemote(pick("scream", "shiver")) //SCREAM!!!
 		else
 			if(change_amount > 0)
 				adjustArousal(change_amount)
@@ -490,7 +490,7 @@
 							visible_message(span_userlove("[src] hilts [p_their()] cock into [target_human]'s [climax_into_choice], shooting cum into it!"), \
 								span_userlove("You hilt your cock into [target_human]'s [climax_into_choice], shooting cum into it!"))
 							to_chat(target_human, span_userlove("Your [climax_into_choice] fills with warm cum as [src] shoots [p_their()] load into it."))
-				emote("moan")
+				try_lewd_autoemote("moan")
 				testicles.reagents.remove_all(testicles.reagents.total_volume * 0.6)
 				apply_status_effect(/datum/status_effect/climax)
 				apply_status_effect(/datum/status_effect/climax_cooldown)
@@ -514,6 +514,12 @@
 			visible_message(span_purple("[src] twitches, trying to cum, but with no result."), \
 				span_purple("You can't have an orgasm!"))
 			return TRUE
+
+// Let's not force lewd emotes from folk who don't want them, mmm~?
+/mob/living/carbon/proc/try_lewd_autoemote(emote)
+	if(!client?.prefs?.read_preference(/datum/preference/toggle/erp/autoemote))
+		return
+	emote(emote)
 
 /datum/status_effect/climax_cooldown
 	id = "climax_cooldown"
@@ -923,7 +929,7 @@
 		applied_reagents.expose(target, TOUCH)
 		log_combat(user, target, "came on")
 		if(prob(40))
-			user.emote("moan")
+			affected_human.try_lewd_autoemote("moan")
 		qdel(src)
 
 // Jerk off into bottles
@@ -960,7 +966,7 @@
 			playsound(target, SFX_DESECRATION, 50, TRUE, ignore_walls = FALSE)
 			applied_reagents.trans_to(target, cum_volume)
 			if(prob(40))
-				user.emote("moan")
+				affected_human.try_lewd_autoemote("moan")
 			qdel(src)
 	else
 		user.visible_message(span_warning("[user] starts masturbating onto [target]!"), span_danger("You start masturbating onto [target]!"))
@@ -970,7 +976,7 @@
 			playsound(target, SFX_DESECRATION, 50, TRUE, ignore_walls = FALSE)
 			new/obj/effect/decal/cleanable/cum(target_turf)
 			if(prob(40))
-				user.emote("moan")
+				affected_human.try_lewd_autoemote("moan")
 
 			if(target.icon_state=="stickyweb1"|target.icon_state=="stickyweb2")
 				target.icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_decals/lewd_decals.dmi'

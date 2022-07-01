@@ -138,7 +138,7 @@
 			target.adjustPleasure((vibration_mode == "low" ? 1 : (vibration_mode == "hard" ? 9 : 4)))
 
 	if(prob(30) && (target.stat != DEAD))
-		target.emote(pick("twitch_s", "moan"))
+		target.try_lewd_autoemote(pick("twitch_s", "moan"))
 	user.visible_message(span_purple("[user] [message]!"))
 	playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/vibrate.ogg', (vibration_mode == "low" ? 10 : (vibration_mode == "hard" ? 30 : 20)), TRUE, ignore_walls = FALSE)
 

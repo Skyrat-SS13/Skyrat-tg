@@ -474,6 +474,11 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	icon_state = "panties_latex"
 	use_static = TRUE
 
+/datum/sprite_accessory/underwear/latex
+	name = "Panties - Latex"
+	icon_state = "panties_latex"
+	use_static = TRUE
+
 /datum/sprite_accessory/underwear/lizared
 	name = "LIZARED Underwear"
 	icon_state = "lizared"

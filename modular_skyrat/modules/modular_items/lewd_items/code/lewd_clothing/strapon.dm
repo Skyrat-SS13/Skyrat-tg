@@ -209,7 +209,7 @@
 						hit_mob.adjustArousal(6)
 						hit_mob.adjustPleasure(8)
 						if(prob(40))
-							hit_mob.emote(pick("twitch_s", "moan"))
+							hit_mob.try_lewd_autoemote(pick("twitch_s", "moan"))
 						user.visible_message(span_purple("[user] [message]!"))
 						playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/bang1.ogg',
 											'modular_skyrat/modules/modular_items/lewd_items/sounds/bang2.ogg',
@@ -231,7 +231,7 @@
 					hit_mob.adjustPleasure(1)
 					hit_mob.adjustOxyLoss(1.5)
 					if(prob(70))
-						hit_mob.emote(pick("gasp", "moan"))
+						hit_mob.try_lewd_autoemote(pick("gasp", "moan"))
 					user.visible_message(span_purple("[user] [message]!"))
 					playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/bang1.ogg',
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang2.ogg',
@@ -250,7 +250,7 @@
 					hit_mob.adjustArousal(5)
 					hit_mob.adjustPleasure(5)
 					if(prob(60))
-						hit_mob.emote(pick("twitch_s", "moan", "shiver"))
+						hit_mob.try_lewd_autoemote(pick("twitch_s", "moan", "shiver"))
 					user.visible_message(span_purple("[user] [message]!"))
 					playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/bang1.ogg',
 										'modular_skyrat/modules/modular_items/lewd_items/sounds/bang2.ogg',
