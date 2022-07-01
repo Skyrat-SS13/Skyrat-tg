@@ -556,6 +556,7 @@
 	new_module.on_install()
 	if(wearer)
 		new_module.on_equip()
+<<<<<<< HEAD
 		var/datum/action/item_action/mod/pinned_module/action = new_module.pinned_to[REF(wearer)]
 		if(action)
 			action.Grant(wearer)
@@ -565,6 +566,9 @@
 		if(action)
 			action.Grant(mod_pai)
 	// SKYRAT EDIT END
+=======
+
+>>>>>>> f8f3dbed98e (Completely removes `proc_holders` from existence. Refactors all wizard, xeno, spider, and genetics powers to be actions. Also refactors and sorts ton of accompanying code.  (#67083))
 	if(user)
 		balloon_alert(user, "[new_module] added")
 		playsound(src, 'sound/machines/click.ogg', 50, TRUE, SILENCED_SOUND_EXTRARANGE)
@@ -577,7 +581,7 @@
 		if(old_module.active)
 			old_module.on_deactivation(display_message = !deleting, deleting = deleting)
 	old_module.on_uninstall(deleting = deleting)
-	QDEL_LIST(old_module.pinned_to)
+	QDEL_LIST_ASSOC_VAL(old_module.pinned_to)
 	old_module.mod = null
 
 /obj/item/mod/control/proc/update_access(mob/user, obj/item/card/id/card)
