@@ -60,7 +60,7 @@
 			if(wall_hug && !wall_check)
 				new /obj/effect/turf_test/fail(iterating_turf)
 				continue
-			if(!cardinal_density_check)
+			if(!cardinal_density_check && wall_hug)
 				new /obj/effect/turf_test/fail(iterating_turf)
 				continue
 			// Finally we want to prioritise entirely empty turfs
@@ -140,6 +140,6 @@
 	desired_atom = /obj/effect/landmark/start/blueshield
 
 /datum/area_spawn/vanguard_landmark
-	target_areas = list(/area/station/command/gateway, /area/station/hallway/primary/central)
+	target_areas = list(/area/station/command/gateway, /area/station/science/lobby, /area/station/science/breakroom)
 	desired_atom = /obj/effect/landmark/start/expeditionary_corps
 
