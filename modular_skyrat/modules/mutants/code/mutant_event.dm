@@ -17,14 +17,14 @@
 /datum/round_event/mutant_infestation/start()
 	. = ..()
 	var/infectees = 0
-	for(var/mob/living/carbon/human/H in shuffle(GLOB.player_list))
-		if(!is_station_level(H.z))
+	for(var/mob/living/carbon/human/iterating_human in shuffle(GLOB.player_list))
+		if(!is_station_level(iterating_human.z))
 			continue
 		if(infectees >= infected)
 			break
-		if(try_to_mutant_infect(H, TRUE))
+		if(try_to_mutant_infect(iterating_human, TRUE))
 			infectees++
-			notify_ghosts("[H] has been infected by the HNZ-1 pathogen!", source = H)
+			notify_ghosts("[iterating_human] has been infected by the HNZ-1 pathogen!", source = iterating_human)
 
 /datum/round_event/mutant_infestation/announce(fake)
 	alert_sound_to_playing(sound('modular_skyrat/modules/alerts/sound/alerts/alert2.ogg'), override_volume = TRUE)

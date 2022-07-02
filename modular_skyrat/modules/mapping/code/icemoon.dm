@@ -20,7 +20,7 @@
 	always_place = TRUE
 
 /datum/map_template/ruin/icemoon/underground/skyrat/ashwalker_nest
-	name = "Ash Walker Nest"
+	name = "Ice Walker Nest"
 	id = "ash-walker-ice"
 	description = "A forboding dark stoned castle, it has seen better days but at least the current occupants patched the walls."
 	prefix = "_maps/RandomRuins/IceRuins/skyrat/"

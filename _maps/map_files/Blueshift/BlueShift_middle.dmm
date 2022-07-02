@@ -305,7 +305,6 @@
 /turf/open/floor/iron,
 /area/station/engineering/main)
 "adB" = (
-/obj/structure/closet/secure_closet/security_medic,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
 /turf/open/floor/carpet/red,
 /area/station/security/medical)
@@ -345,7 +344,7 @@
 /obj/machinery/door/window/right{
 	dir = 1;
 	name = "Medbay Deliveries";
-	req_access = list("mail_sorting")
+	req_access = list("cargo")
 	},
 /turf/open/floor/iron/dark/side{
 	dir = 1
@@ -4198,9 +4197,6 @@
 /area/station/common/wrestling/arena)
 "aVs" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/medical/glass{
-	name = "Hydroponics"
-	},
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
 	dir = 4
 	},
@@ -4212,6 +4208,9 @@
 	},
 /obj/effect/landmark/navigate_destination,
 /obj/effect/mapping_helpers/airlock/access/all/service/hydroponics,
+/obj/machinery/door/airlock/hydroponics/glass{
+	name = "Hydroponics"
+	},
 /turf/open/floor/iron/dark,
 /area/station/service/hydroponics)
 "aVu" = (
@@ -6817,8 +6816,7 @@
 /area/station/maintenance/starboard/fore)
 "bHu" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/turnstile{
-	dir = 4;
+/obj/machinery/door/airlock/security{
 	req_access = list("brig","brig_entrance","leave_genpop")
 	},
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
@@ -8982,7 +8980,6 @@
 "cuc" = (
 /obj/structure/cable,
 /obj/structure/disposalpipe/segment,
-/mob/living/simple_animal/pet/dog/markus,
 /obj/machinery/holopad,
 /turf/open/floor/iron,
 /area/station/cargo/office)
@@ -18230,7 +18227,7 @@
 /turf/open/floor/iron/dark,
 /area/station/engineering/lobby)
 "fHG" = (
-/obj/machinery/gravity_generator/main/station,
+/obj/machinery/gravity_generator/main,
 /obj/effect/turf_decal/bot_white,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -18829,7 +18826,6 @@
 "fSO" = (
 /obj/structure/flora/bush/fullgrass,
 /obj/structure/flora/bush/lavendergrass,
-/mob/living/simple_animal/pet/bumbles,
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
 	dir = 5
 	},
@@ -23434,7 +23430,7 @@
 /obj/machinery/door/window/right{
 	dir = 1;
 	name = "Security Deliveries";
-	req_access = list("mail_sorting")
+	req_access = list("cargo")
 	},
 /obj/structure/railing{
 	dir = 4
@@ -28460,7 +28456,7 @@
 /obj/machinery/door/window/right{
 	dir = 1;
 	name = "Cargo Desk";
-	req_access = list("mail_sorting")
+	req_access = list("cargo")
 	},
 /turf/open/floor/iron/dark,
 /area/station/cargo/office)
@@ -31835,7 +31831,7 @@
 /area/station/maintenance/starboard/fore)
 "kiJ" = (
 /obj/structure/table/wood/fancy,
-/obj/item/book/granter/spell/smoke/lesser,
+/obj/item/book/granter/action/spell/smoke/lesser,
 /obj/item/nullrod,
 /obj/item/organ/internal/heart,
 /obj/item/reagent_containers/food/drinks/bottle/holywater,
@@ -32583,7 +32579,7 @@
 /obj/machinery/door/window/right{
 	dir = 1;
 	name = "Science Deliveries";
-	req_access = list("mail_sorting")
+	req_access = list("cargo")
 	},
 /turf/open/floor/iron/dark/side{
 	dir = 1
@@ -34819,9 +34815,6 @@
 /turf/open/floor/iron/dark,
 /area/station/security/brig)
 "liK" = (
-/obj/machinery/door/airlock/medical/glass{
-	name = "Hydroponics"
-	},
 /obj/machinery/door/firedoor,
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
@@ -34831,6 +34824,9 @@
 	dir = 4
 	},
 /obj/effect/mapping_helpers/airlock/access/all/service/hydroponics,
+/obj/machinery/door/airlock/hydroponics{
+	name = "Hydroponics Backroom"
+	},
 /turf/open/floor/iron,
 /area/station/service/hydroponics)
 "liM" = (
@@ -34946,7 +34942,7 @@
 /turf/open/floor/iron,
 /area/station/engineering/supermatter/room)
 "llQ" = (
-/obj/effect/spawner/structure/window/reinforced,
+/obj/effect/spawner/structure/window,
 /turf/open/floor/plating,
 /area/station/service/hydroponics/garden)
 "llU" = (
@@ -41471,7 +41467,7 @@
 /obj/machinery/door/window{
 	dir = 8;
 	name = "Deliveries";
-	req_access = list("mail_sorting")
+	req_access = list("cargo")
 	},
 /obj/effect/turf_decal/stripes{
 	dir = 8
@@ -45337,7 +45333,7 @@
 /obj/machinery/door/window/left{
 	dir = 4;
 	name = "Hydroponics Desk";
-	req_access = list("hydroponics","kitchen")
+	req_access = list("hydroponics")
 	},
 /obj/item/folder,
 /obj/item/food/grown/apple,
@@ -48165,7 +48161,7 @@
 /obj/machinery/door/window/right{
 	dir = 1;
 	name = "Service Deliveries";
-	req_access = list("mail_sorting")
+	req_access = list("cargo")
 	},
 /turf/open/floor/iron/dark/side{
 	dir = 1
@@ -48445,7 +48441,7 @@
 	name = "Test Blast Shutters"
 	},
 /obj/machinery/door/airlock/highsecurity{
-	name = "Botany Test Chamber"
+	name = "Hydroponics Test Chamber"
 	},
 /obj/effect/mapping_helpers/airlock/access/all/service/hydroponics,
 /turf/open/floor/iron/dark,
@@ -52682,9 +52678,6 @@
 /turf/open/floor/iron/dark,
 /area/station/security/processing)
 "rod" = (
-/obj/machinery/door/airlock{
-	name = "Hydroponics Test Lab"
-	},
 /obj/machinery/door/firedoor,
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
@@ -52700,6 +52693,9 @@
 	dir = 4
 	},
 /obj/effect/mapping_helpers/airlock/access/all/service/hydroponics,
+/obj/machinery/door/airlock/hydroponics{
+	name = "Hydroponics Test Lab"
+	},
 /turf/open/floor/iron,
 /area/station/service/hydroponics/upper)
 "ror" = (
@@ -57090,7 +57086,7 @@
 /obj/machinery/door/window{
 	dir = 4;
 	name = "Deliveries";
-	req_access = list("mail_sorting")
+	req_access = list("cargo")
 	},
 /obj/effect/turf_decal/delivery,
 /obj/effect/turf_decal/stripes{
@@ -63448,12 +63444,10 @@
 /area/station/security/warden)
 "uWm" = (
 /obj/effect/turf_decal/bot,
-/obj/machinery/vending/hydroseeds{
-	slogan_delay = 700
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 6
 	},
+/obj/machinery/vending/hydroseeds,
 /turf/open/floor/iron/dark/side{
 	dir = 1
 	},
@@ -64288,16 +64282,13 @@
 /turf/open/floor/iron/dark,
 /area/station/security/execution/transfer)
 "vlG" = (
-/obj/machinery/door/airlock{
-	name = "Hydroponics Backroom"
-	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
-/obj/machinery/door/airlock/medical/glass{
-	name = "Hydroponics"
-	},
 /obj/effect/mapping_helpers/airlock/access/all/service/hydroponics,
+/obj/machinery/door/airlock/hydroponics{
+	name = "Hydroponics Backroom"
+	},
 /turf/open/floor/iron,
 /area/station/service/hydroponics)
 "vlI" = (
@@ -67347,7 +67338,7 @@
 /obj/machinery/door/window/right{
 	dir = 1;
 	name = "Engineering Deliveries";
-	req_access = list("mail_sorting")
+	req_access = list("cargo")
 	},
 /turf/open/floor/iron/dark/side{
 	dir = 1
@@ -69468,7 +69459,7 @@
 	},
 /obj/machinery/door/window{
 	name = "Deliveries";
-	req_access = list("mail_sorting")
+	req_access = list("cargo")
 	},
 /obj/effect/turf_decal/delivery,
 /obj/effect/turf_decal/stripes,
@@ -72885,7 +72876,6 @@
 /turf/open/floor/iron,
 /area/station/commons/storage/tools)
 "xWK" = (
-/mob/living/simple_animal/pet/poppy,
 /obj/effect/turf_decal/tile/yellow{
 	dir = 1
 	},
@@ -73771,10 +73761,10 @@
 /turf/open/floor/iron/freezer,
 /area/station/security/prison/shower)
 "yjg" = (
-/obj/item/circuitboard/machine/chem_dispenser/mutagensaltpeter,
 /obj/structure/closet/crate/engineering{
 	name = "Prototype Botanical Plant Nutrient Dispenser"
 	},
+/obj/item/circuitboard/machine/chem_dispenser,
 /turf/open/floor/plating,
 /area/station/maintenance/starboard/fore)
 "yjw" = (

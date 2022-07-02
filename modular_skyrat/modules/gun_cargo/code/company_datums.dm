@@ -109,3 +109,10 @@
 	cost_change_lower = -5000
 	cost_change_upper = 6500
 	cost = 4000 //subsidized or smth
+
+/datum/gun_company/jarnsmiour
+	name = "Jarnsmiour Blacksteel Foundation"
+	company_flag = COMPANY_JARNSMIOUR
+	cost = 4500
+	cost_change_lower = -2250
+	cost_change_upper = 2000

@@ -65,7 +65,7 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 
 /datum/loadout_item/under/jumpsuit/imphop
 	name = "Head of Personnel's Naval Jumpsuit"
-	item_path = /obj/item/clothing/under/rank/civilian/head_of_personnel/imperial
+	item_path = /obj/item/clothing/under/rank/civilian/head_of_personnel/skyrat/imperial
 	restricted_roles = list(JOB_HEAD_OF_PERSONNEL, JOB_NT_REP)
 
 /datum/loadout_item/under/jumpsuit/imphos
@@ -397,10 +397,6 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Qipao, Red"
 	item_path = /obj/item/clothing/under/costume/qipao/red
 
-/datum/loadout_item/under/miscellaneous/fem_skirt
-	name = "Feminine Skirt"
-	item_path = /obj/item/clothing/under/suit/black/female/skirt
-	
 /datum/loadout_item/under/miscellaneous/cheongsam
 	name = "Cheongsam, Black"
 	item_path = /obj/item/clothing/under/costume/cheongsam
@@ -731,12 +727,12 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	item_path = /obj/item/clothing/under/suit/black_really/skirt
 
 /datum/loadout_item/under/formal/executive_suit_alt
-	name = "Executive Suit Alt"
-	item_path = /obj/item/clothing/under/suit/black/female/trousers
+	name = "Wide-collared Executive Suit"
+	item_path = /obj/item/clothing/under/suit/skyrat/black_really_collared
 
 /datum/loadout_item/under/formal/executive_skirt_alt
-	name = "Executive Suitskirt Alt"
-	item_path = /obj/item/clothing/under/suit/black/female/skirt
+	name = "Wide-collared Executive Suitskirt"
+	item_path = /obj/item/clothing/under/suit/skyrat/black_really_collared/skirt
 
 /datum/loadout_item/under/formal/green_suit
 	name = "Green Suit"
@@ -780,11 +776,11 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 
 /datum/loadout_item/under/formal/helltaker
 	name = "Red Shirt with White Trousers"
-	item_path = /obj/item/clothing/under/suit/helltaker
+	item_path = /obj/item/clothing/under/suit/skyrat/helltaker
 
 /datum/loadout_item/under/formal/helltaker/skirt
 	name = "Red Shirt with White Skirt"
-	item_path = /obj/item/clothing/under/suit/helltaker/skirt
+	item_path = /obj/item/clothing/under/suit/skyrat/helltaker/skirt
 
 /datum/loadout_item/under/formal/red_lawyer_skirt
 	name = "Red Lawyer Suit"
@@ -990,15 +986,15 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 
 /datum/loadout_item/under/formal/inferno
 	name = "Inferno Suit"
-	item_path = /obj/item/clothing/under/rank/civilian/lawyer/inferno
+	item_path = /obj/item/clothing/under/suit/skyrat/inferno
 
 /datum/loadout_item/under/formal/inferno_skirt
 	name = "Inferno Skirt"
-	item_path = /obj/item/clothing/under/rank/civilian/lawyer/inferno/skirt
+	item_path = /obj/item/clothing/under/suit/skyrat/inferno/skirt
 
 /datum/loadout_item/under/formal/designer_inferno
 	name = "Designer Inferno Suit"
-	item_path = /obj/item/clothing/under/rank/civilian/lawyer/inferno/beeze
+	item_path = /obj/item/clothing/under/suit/skyrat/inferno/beeze
 	restricted_roles = list(JOB_LAWYER)
 
 /// DONATOR

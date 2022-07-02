@@ -1,6 +1,5 @@
 /obj/item/implant/mortis
 	name = "MORTIS implant"
-	activated = 0
 
 /obj/item/implant/mortis/get_data()
 	var/dat = {"<b>Implant Specifications:</b><BR>

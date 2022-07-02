@@ -30,7 +30,8 @@ for line in sys.stdin:
 
 fail_no_include = False
 
-for code_file in glob.glob("code/**/*.dm", recursive=True):
+code_files = glob.glob("code/**/*.dm", recursive=True) + glob.glob("modular_skyrat/**/*.dm", recursive=True) # SKYRAT EDIT CHANGE
+for code_file in code_files: # SKYRAT EDIT CHANGE
     dm_path = code_file.replace('/', '\\')
 
     included = f"#include \"{dm_path}\"" in lines

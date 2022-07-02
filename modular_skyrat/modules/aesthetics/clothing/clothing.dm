@@ -1,29 +1,4 @@
 /*
-*	UNIFORMS
-*/
-
-/obj/item/clothing/under/rank/civilian/chef/skirt
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-
-/obj/item/clothing/under/rank/civilian/bartender/skirt
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-
-/obj/item/clothing/under/rank/civilian/chef
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-
-/obj/item/clothing/under/rank/civilian/bartender
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-
-/obj/item/clothing/under/rank/civilian/lawyer/bluesuit
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-
-
-/*
 *	SUITS
 */
 

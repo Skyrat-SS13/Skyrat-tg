@@ -25,7 +25,7 @@
 			if(target.stat == DEAD)
 				return
 			if(prob(70))
-				target.emote(pick("laugh", "giggle", "twitch", "twitch_s"))
+				target.try_lewd_autoemote(pick("laugh", "giggle", "twitch", "twitch_s"))
 
 		if(BODY_ZONE_CHEST)
 			targetedsomewhere = TRUE
@@ -37,7 +37,7 @@
 			if(target.stat == DEAD)
 				return
 			if(prob(70))
-				target.emote(pick("laugh", "giggle", "twitch", "twitch_s", "moan", ))
+				target.try_lewd_autoemote(pick("laugh", "giggle", "twitch", "twitch_s", "moan", ))
 
 		if(BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
 			targetedsomewhere = TRUE
@@ -52,7 +52,7 @@
 			if(target.stat == DEAD)
 				return
 			if(prob(70))
-				target.emote(pick("laugh", "giggle", "twitch", "twitch_s", "moan", ))
+				target.try_lewd_autoemote(pick("laugh", "giggle", "twitch", "twitch_s", "moan", ))
 
 		if(BODY_ZONE_R_ARM, BODY_ZONE_L_ARM)
 			targetedsomewhere = TRUE
@@ -63,7 +63,7 @@
 			if(target.stat == DEAD)
 				return
 			if(prob(70))
-				target.emote(pick("laugh", "giggle", "twitch", "twitch_s", "moan", ))
+				target.try_lewd_autoemote(pick("laugh", "giggle", "twitch", "twitch_s", "moan", ))
 	if(!targetedsomewhere)
 		return
 	target.do_jitter_animation()

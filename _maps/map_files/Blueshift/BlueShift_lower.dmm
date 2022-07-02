@@ -1833,10 +1833,6 @@
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
 /turf/open/floor/iron,
 /area/station/cargo/miningdock)
-"bsT" = (
-/obj/structure/cable/multilayer/connected,
-/turf/open/floor/plating,
-/area/station/maintenance/department/engineering/atmos/port_maint)
 "bsZ" = (
 /obj/effect/decal/cleanable/blood/splatter,
 /obj/effect/mapping_helpers/burnt_floor,
@@ -2364,7 +2360,7 @@
 /obj/machinery/door/window/left{
 	dir = 4;
 	name = "Crate Security Door";
-	req_access = list("mail_sorting")
+	req_access = list("cargo")
 	},
 /obj/machinery/camera{
 	c_tag = "Cargo Bay - Sorting";
@@ -2535,11 +2531,6 @@
 /obj/effect/turf_decal/bot_red,
 /turf/open/floor/iron/dark,
 /area/station/hallway/secondary/exit)
-"bOL" = (
-/obj/structure/cable,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/iron/dark,
-/area/station/engineering/power_room)
 "bOU" = (
 /obj/structure/closet/crate{
 	icon_state = "crateopen"
@@ -2999,13 +2990,13 @@
 /obj/effect/turf_decal/stripes{
 	dir = 10
 	},
-/obj/structure/cable/layer1,
 /obj/machinery/power/smes{
 	capacity = 9e+006;
 	charge = 9e+006;
 	input_level = 0;
 	output_level = 25000
 	},
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/station/engineering/power_room)
 "ceU" = (
@@ -4504,7 +4495,6 @@
 /obj/machinery/power/terminal{
 	dir = 4
 	},
-/obj/structure/cable,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron,
 /area/station/engineering/power_room)
@@ -6914,12 +6904,6 @@
 /obj/effect/spawner/random/trash/botanical_waste,
 /turf/open/floor/plating,
 /area/station/maintenance/starboard)
-"fmO" = (
-/obj/structure/cable/layer1,
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/cable,
-/turf/open/floor/iron,
-/area/station/engineering/power_room)
 "fmP" = (
 /obj/machinery/light/small/directional/north,
 /obj/effect/decal/cleanable/dirt,
@@ -7388,7 +7372,6 @@
 "fLL" = (
 /obj/machinery/light/directional/north,
 /obj/machinery/power/apc/auto_name/directional/north,
-/obj/structure/cable/layer1,
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/engineering/power_room)
@@ -8306,15 +8289,14 @@
 /area/station/maintenance/evac_maintenance/upper)
 "gtx" = (
 /obj/structure/table,
-/obj/item/storage/box/beakers/variety{
-	pixel_x = 3;
-	pixel_y = 12
-	},
 /obj/item/storage/box/syringes{
 	pixel_y = 4
 	},
 /obj/item/reagent_containers/dropper{
 	pixel_y = -9
+	},
+/obj/item/storage/box/beakers{
+	pixel_y = 11
 	},
 /turf/open/floor/iron/white,
 /area/station/maintenance/abandon_cafeteria/hydro)
@@ -9198,7 +9180,9 @@
 /area/station/maintenance/disposal/incinerator)
 "hke" = (
 /obj/structure/table,
-/obj/effect/spawner/random/food_or_drink/pizzaparty,
+/obj/item/pizzabox/pineapple{
+	pixel_y = 9
+	},
 /turf/open/floor/iron,
 /area/station/maintenance/abandon_cafeteria)
 "hkY" = (
@@ -9867,7 +9851,6 @@
 /obj/machinery/power/terminal{
 	dir = 8
 	},
-/obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/station/engineering/power_room)
 "hPg" = (
@@ -10243,7 +10226,7 @@
 	input_level = 0;
 	output_level = 10000
 	},
-/obj/structure/cable/layer1,
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/station/engineering/power_room)
 "ifX" = (
@@ -11106,13 +11089,6 @@
 	},
 /turf/open/floor/iron,
 /area/station/cargo/storage)
-"iPj" = (
-/obj/structure/railing/corner{
-	dir = 8
-	},
-/obj/structure/cable/layer1,
-/turf/open/floor/iron,
-/area/station/engineering/power_room)
 "iPk" = (
 /obj/structure/reagent_dispensers/watertank,
 /obj/effect/turf_decal/bot,
@@ -11537,9 +11513,9 @@
 /area/station/maintenance/evac_maintenance)
 "jgu" = (
 /obj/structure/railing,
-/obj/structure/cable/layer1,
 /obj/structure/rack/shelf,
 /obj/effect/spawner/random/engineering/tool,
+/obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/engineering/power_room)
 "jgJ" = (
@@ -11842,7 +11818,6 @@
 /obj/machinery/door/airlock/engineering{
 	name = "Ship Capacitor Banks"
 	},
-/obj/structure/cable/layer1,
 /obj/structure/cable,
 /obj/effect/mapping_helpers/airlock/access/all/engineering/general,
 /turf/open/floor/plating,
@@ -12946,7 +12921,6 @@
 /obj/machinery/door/airlock/engineering{
 	name = "Ship Capacitor Banks"
 	},
-/obj/structure/cable,
 /obj/effect/mapping_helpers/airlock/access/all/engineering/general,
 /turf/open/floor/iron/dark,
 /area/station/engineering/power_room)
@@ -13036,13 +13010,13 @@
 /obj/effect/turf_decal/stripes{
 	dir = 4
 	},
-/obj/structure/cable/layer1,
 /obj/machinery/power/smes{
 	capacity = 9e+006;
 	charge = 9e+006;
 	input_level = 0;
 	output_level = 40000
 	},
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/station/engineering/power_room)
 "kuR" = (
@@ -13728,7 +13702,6 @@
 /turf/open/floor/iron,
 /area/station/maintenance/evac_maintenance)
 "kWQ" = (
-/obj/structure/cable,
 /obj/machinery/light/directional/south,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/dark,
@@ -13984,7 +13957,8 @@
 /turf/open/floor/plating,
 /area/station/maintenance/evac_maintenance)
 "lhK" = (
-/obj/structure/closet/crate/secure/tradership_cargo_very_valuable,
+/obj/structure/reagent_dispensers/fueltank/large,
+/obj/structure/decorative/fluff/ai_node,
 /turf/open/floor/plating/airless,
 /area/space/nearstation)
 "lhT" = (
@@ -15416,8 +15390,10 @@
 	},
 /area/station/engineering/atmos)
 "mpz" = (
-/obj/structure/cable,
-/turf/open/floor/iron/dark,
+/obj/structure/railing/corner{
+	dir = 8
+	},
+/turf/open/floor/iron,
 /area/station/engineering/power_room)
 "mpG" = (
 /obj/effect/turf_decal/delivery,
@@ -16067,13 +16043,13 @@
 	dir = 4
 	},
 /obj/machinery/light/directional/west,
-/obj/structure/cable/layer1,
 /obj/machinery/power/smes{
 	capacity = 9e+006;
 	charge = 9e+006;
 	input_level = 0;
 	output_level = 40000
 	},
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/station/engineering/power_room)
 "mOM" = (
@@ -16651,7 +16627,6 @@
 /area/station/hallway/secondary/entry)
 "nnE" = (
 /obj/machinery/hydroponics/soil,
-/obj/effect/spawner/random/food_or_drink/seed_vault,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/grass,
 /area/station/maintenance/abandon_cafeteria/hydro)
@@ -17913,11 +17888,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/visible,
 /turf/open/floor/plating,
 /area/station/maintenance/department/electrical)
-"odd" = (
-/obj/structure/cable/layer1,
-/obj/structure/cable,
-/turf/open/floor/plating,
-/area/station/maintenance/department/engineering/atmos/port_maint)
 "odq" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -18430,7 +18400,7 @@
 /turf/open/floor/plating,
 /area/station/maintenance/department/engine/atmos)
 "oxH" = (
-/obj/structure/cable/layer1,
+/obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron,
 /area/station/engineering/power_room)
@@ -18884,7 +18854,7 @@
 /obj/machinery/door/window/left{
 	dir = 4;
 	name = "Cargo Bay to Mail Office";
-	req_access = list("mail_sorting")
+	req_access = list("cargo")
 	},
 /turf/open/floor/iron/dark,
 /area/station/cargo/storage)
@@ -20972,12 +20942,6 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/engineering/atmos/hfr_room)
-"qzt" = (
-/obj/structure/cable/layer1,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/iron,
-/area/station/engineering/power_room)
 "qzB" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
@@ -21023,6 +20987,7 @@
 "qCr" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/engineering/power_room)
 "qCM" = (
@@ -22110,7 +22075,6 @@
 /obj/machinery/power/terminal{
 	dir = 4
 	},
-/obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/engineering/power_room)
 "rCD" = (
@@ -22288,7 +22252,6 @@
 /area/station/maintenance/department/engineering/atmos/port_maint)
 "rHF" = (
 /obj/structure/railing,
-/obj/structure/cable/layer1,
 /turf/open/floor/iron,
 /area/station/engineering/power_room)
 "rHV" = (
@@ -22467,7 +22430,6 @@
 /turf/open/floor/engine/vacuum,
 /area/station/maintenance/disposal/incinerator)
 "rSo" = (
-/obj/structure/cable,
 /obj/machinery/camera/directional/east{
 	c_tag = "Engineering - Capacitor banks";
 	name = "engineering camera"
@@ -24055,7 +24017,7 @@
 	input_level = 0;
 	output_level = 10000
 	},
-/obj/structure/cable/layer1,
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/station/engineering/power_room)
 "tjW" = (
@@ -24821,7 +24783,6 @@
 /area/station/security/prison/safe)
 "tUg" = (
 /obj/structure/railing/corner,
-/obj/structure/cable/layer1,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron,
 /area/station/engineering/power_room)
@@ -25042,13 +25003,13 @@
 /obj/effect/turf_decal/stripes{
 	dir = 8
 	},
-/obj/structure/cable/layer1,
 /obj/machinery/power/smes{
 	capacity = 9e+006;
 	charge = 9e+006;
 	input_level = 0;
 	output_level = 25000
 	},
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/station/engineering/power_room)
 "uec" = (
@@ -25885,7 +25846,6 @@
 /obj/machinery/power/terminal{
 	dir = 8
 	},
-/obj/structure/cable,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/dark,
 /area/station/engineering/power_room)
@@ -27452,7 +27412,6 @@
 /obj/machinery/power/terminal{
 	dir = 4
 	},
-/obj/structure/cable,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/dark,
 /area/station/engineering/power_room)
@@ -27854,7 +27813,6 @@
 /obj/machinery/power/terminal{
 	dir = 4
 	},
-/obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/station/engineering/power_room)
 "wcm" = (
@@ -57323,7 +57281,7 @@ uEa
 ipb
 gZo
 kbY
-iPj
+mpz
 hOV
 uRX
 hOV
@@ -57586,8 +57544,8 @@ wck
 vNL
 vNL
 wck
-bOL
-bOL
+oeC
+oeC
 siE
 lUf
 rYU
@@ -58094,14 +58052,14 @@ uFn
 kiG
 siE
 fLL
-iPj
+mpz
 tEd
 tEd
 tEd
 tEd
 lpJ
 oeC
-bOL
+oeC
 nON
 cui
 uEa
@@ -58347,18 +58305,18 @@ piG
 lce
 xrt
 xeq
-bsT
-odd
+xeq
+xeq
 jvI
-fmO
-qCr
+kbY
+oxH
 rCB
 dld
 rCB
 dld
 rSo
-mpz
-mpz
+jsS
+jsS
 krh
 rYU
 rYU
@@ -58607,8 +58565,8 @@ wFG
 xrt
 xrt
 siE
-qzt
-oxH
+qCr
+kbY
 tjK
 tjK
 ifB
