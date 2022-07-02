@@ -103,4 +103,44 @@
 	to_chat(usr, span_notice("[try_hide_mutant_parts ? "You try and hide your mutant body parts under your clothes." : "You no longer try and hide your mutant body parts"]"))
 	update_mutant_bodyparts()
 
+/mob/living/carbon/human/verb/acting()
+	set category = "IC"
+	set name = "Feign Impairment"
+	set desc = "Slur, stutter, jitter, or act stupid for a defined duration."
 
+	if(stat != CONSCIOUS)
+		to_chat(usr, span_warning("You can't do this right now..."))
+		return
+
+	var/list/choices = list("Drunkenness", "Stuttering", "Jittering", "Stupidness")
+	var/impairment = tgui_input_list(src, "Select an impairment to perform:", "Impairments", choices)
+	if(!impairment)
+		return
+
+	var/duration = tgui_input_number(src, "How long would you like to feign [impairment] for?", "Duration in seconds", 25, 36000)
+	switch(impairment)
+		if("Drunkenness")
+			set_timed_status_effect(duration, /datum/status_effect/speech/slurring/drunk, only_if_higher = TRUE)
+		if("Stuttering")
+			set_timed_status_effect(duration, /datum/status_effect/speech/stutter, only_if_higher = TRUE)
+		if("Jittering")
+			set_timed_status_effect(duration, /datum/status_effect/jitter, only_if_higher = TRUE)
+		if("Stupidness")
+			set_timed_status_effect(duration, /datum/status_effect/speech/stutter/derpspeech, only_if_higher = TRUE)
+
+	if(duration)
+		addtimer(CALLBACK(src, .proc/acting_expiry, impairment), duration SECONDS)
+		to_chat(src, "You are now feigning [impairment].")
+
+/mob/living/carbon/human/proc/acting_expiry(var/impairment) //End only the impairment we're affected by. Still holds true
+	if(impairment)
+		switch(impairment)
+			if("Drunkenness")
+				remove_status_effect(/datum/status_effect/speech/slurring/drunk)
+			if("Stuttering")
+				remove_status_effect(/datum/status_effect/speech/stutter)
+			if("Jittering")
+				remove_status_effect(/datum/status_effect/jitter)
+			if("Stupidness")
+				remove_status_effect(/datum/status_effect/speech/stutter/derpspeech)
+		to_chat(src, "You are no longer feigning [impairment].")
