@@ -12,7 +12,7 @@
 	var/amount_to_spawn = 1
 	/// The max amount that the world can have
 	var/max_amount = 1
-	/// Do we need to be adjacent to a wall?
+	/// Do we need to be adjacent to a wall? This also checks the other 3 cardinals for no density. Generally useful for objects with density and anchored.
 	var/wall_hug = FALSE
 	/// Map blacklist, this is used to determine what maps we should not spawn on.
 	var/list/blacklisted_stations = list("Blueshift", "Runtime Station", "MultiZ Debug")
@@ -100,11 +100,11 @@
 
 // Pets
 /datum/area_spawn/markus
-	target_areas = list(/area/station/cargo/lobby, /area/station/cargo/office, /area/station/cargo/qm)
+	target_areas = list(/area/station/cargo/lobby, /area/station/cargo/office, /area/station/cargo/qm, /area/station/cargo/storage)
 	desired_atom = /mob/living/simple_animal/pet/dog/markus
 
 /datum/area_spawn/bumbles
-	target_areas = list(/area/station/service/hydroponics, /area/station/service/hydroponics/upper, /area/station/service/hydroponics/garden)
+	target_areas = list(/area/station/service/hydroponics, /area/station/service/hydroponics/upper)
 	desired_atom = /mob/living/simple_animal/pet/bumbles
 
 /datum/area_spawn/borgi
