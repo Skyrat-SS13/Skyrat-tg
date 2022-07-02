@@ -32,7 +32,7 @@
 /obj/structure/railroad/Initialize(mapload)
 	. = ..()
 	for(var/obj/structure/railroad/rail in range(1))
-		rail.update_appearance()
+		addtimer(CALLBACK(rail, /atom/proc/update_appearance), 5)
 
 /obj/structure/railroad/Destroy()
 	. = ..()
@@ -65,6 +65,8 @@
 	desc = "A wonderful form of locomotion. It will only ride while on tracks. It does have storage"
 	icon = 'modular_skyrat/modules/ashwalkers/icons/railroad.dmi'
 	icon_state = "railcart"
+	// The mutable appearance used for the overlay over buckled mobs.
+	var/mutable_appearance/railoverlay
 
 /obj/vehicle/ridden/rail_cart/examine(mob/user)
 	. = ..()
@@ -73,12 +75,30 @@
 /obj/vehicle/ridden/rail_cart/Initialize(mapload)
 	. = ..()
 	attach_trailer()
+	railoverlay = mutable_appearance(icon, "railoverlay")
+	railoverlay.layer = ABOVE_MOB_LAYER
+	railoverlay.plane = GAME_PLANE_UPPER
 	AddElement(/datum/element/ridable, /datum/component/riding/vehicle/rail_cart)
 	AddComponent(/datum/component/storage/concrete)
 	var/datum/component/storage/added_storage = GetComponent(/datum/component/storage)
 	added_storage.max_combined_w_class = 21
 	added_storage.max_w_class = WEIGHT_CLASS_NORMAL
 	added_storage.max_items = 21
+
+/obj/vehicle/ridden/rail_cart/post_buckle_mob(mob/living/M)
+	. = ..()
+	update_overlays()
+
+/obj/vehicle/ridden/rail_cart/post_unbuckle_mob(mob/living/M)
+	. = ..()
+	update_overlays()
+
+/obj/vehicle/ridden/rail_cart/update_overlays()
+	. = ..()
+	if(has_buckled_mobs())
+		add_overlay(railoverlay)
+	else
+		cut_overlay(railoverlay)
 
 /obj/vehicle/ridden/rail_cart/relaymove(mob/living/user, direction)
 	var/obj/structure/railroad/locate_rail = locate() in get_step(src, direction)
@@ -115,7 +135,7 @@
 
 /datum/component/riding/vehicle/rail_cart/handle_specials()
 	. = ..()
-	set_riding_offsets(RIDING_OFFSET_ALL, list(TEXT_NORTH = list(0, 16), TEXT_SOUTH = list(0, 16), TEXT_EAST = list(0, 16), TEXT_WEST = list(0, 16)))
+	set_riding_offsets(RIDING_OFFSET_ALL, list(TEXT_NORTH = list(0, 13), TEXT_SOUTH = list(0, 13), TEXT_EAST = list(0, 13), TEXT_WEST = list(0, 13)))
 	set_vehicle_dir_layer(SOUTH, OBJ_LAYER)
 	set_vehicle_dir_layer(NORTH, OBJ_LAYER)
 	set_vehicle_dir_layer(EAST, OBJ_LAYER)
