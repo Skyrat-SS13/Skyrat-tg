@@ -72,7 +72,7 @@
 
 	var/safety = FALSE /// Internal variable for keeping track whether the safety is on or off
 	var/has_gun_safety = FALSE /// Whether the gun actually has a gun safety
-	var/datum/action/item_action/toggle_safety/tsafety
+	var/datum/action/item_action/toggle_safety/toggle_safety_action
 
 	var/datum/action/item_action/toggle_firemode/firemode_action
 	/// Current fire selection, can choose between burst, single, and full auto.
@@ -93,7 +93,7 @@
 /obj/item/gun/ui_action_click(mob/user, actiontype)
 	if(istype(actiontype, /datum/action/item_action/toggle_firemode))
 		fire_select()
-	else if(istype(actiontype, tsafety))
+	else if(istype(actiontype, toggle_safety_action))
 		toggle_safety(user)
 	else
 		..()
@@ -107,7 +107,8 @@
 
 	if(has_gun_safety)
 		safety = TRUE
-		tsafety = new(src)
+		toggle_safety_action = new(src)
+		add_item_action(toggle_safety_action)
 
 	if(burst_size > 1 && !(SELECT_BURST_SHOT in fire_select_modes))
 		fire_select_modes.Add(SELECT_BURST_SHOT)
@@ -122,6 +123,8 @@
 		firemode_action = new(src)
 		firemode_action.button_icon_state = "fireselect_[fire_select]"
 		firemode_action.UpdateButtons()
+		add_item_action(firemode_action)
+
 
 /obj/item/gun/ComponentInitialize()
 	. = ..()
@@ -137,8 +140,8 @@
 		QDEL_NULL(chambered)
 	if(isatom(suppressed))
 		QDEL_NULL(suppressed)
-	if(tsafety)
-		QDEL_NULL(tsafety)
+	if(toggle_safety_action)
+		QDEL_NULL(toggle_safety_action)
 	if(firemode_action)
 		QDEL_NULL(firemode_action)
 	. = ..()
@@ -400,8 +403,8 @@
 			safety = TRUE
 	else
 		safety = !safety
-	tsafety.button_icon_state = "safety_[safety ? "on" : "off"]"
-	tsafety.UpdateButtons()
+	toggle_safety_action.button_icon_state = "safety_[safety ? "on" : "off"]"
+	toggle_safety_action.UpdateButtons()
 	playsound(src, 'sound/weapons/empty.ogg', 100, TRUE)
 	user.visible_message(span_notice("[user] toggles [src]'s safety [safety ? "<font color='#00ff15'>ON</font>" : "<font color='#ff0000'>OFF</font>"]."),
 	span_notice("You toggle [src]'s safety [safety ? "<font color='#00ff15'>ON</font>" : "<font color='#ff0000'>OFF</font>"]."))
