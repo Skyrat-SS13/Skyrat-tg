@@ -58,6 +58,9 @@
 		else
 			spawned_player.ckey = user.key
 
+		if(give_return != "No")
+			var/datum/action/cooldown/spell/return_back/return_spell = new(spawned_player)
+			return_spell.Grant(spawned_player)
 
 		if(dresscode != "Naked")
 			spawned_player.equipOutfit(dresscode)
