@@ -89,10 +89,12 @@
 /datum/area_spawn/secmed_locker
 	target_areas = list(/area/station/security/medical)
 	desired_atom = /obj/structure/closet/secure_closet/security_medic
+	wall_hug = TRUE
 
 /datum/area_spawn/command_drobe
 	target_areas = list(/area/station/command/heads_quarters)
 	desired_atom = /obj/machinery/vending/access/command
+	wall_hug = TRUE
 
 // Job spawners
 /datum/area_spawn/secmed_landmark
