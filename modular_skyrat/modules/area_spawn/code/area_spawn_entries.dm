@@ -75,7 +75,7 @@
 			available_turfs += iterating_turf
 
 	if(!LAZYLEN(available_turfs))
-		CRASH("[src.type] could not find any suitable turfs!")
+		CRASH("[src.type] could not find any suitable turfs on map [SSmapping.config.map_name]!")
 
 	for(var/i in 1 to amount_to_spawn)
 		if(LAZYLEN(available_empty_turfs))
