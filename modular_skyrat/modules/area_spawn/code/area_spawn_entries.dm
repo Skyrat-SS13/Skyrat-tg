@@ -24,6 +24,7 @@
 		return
 
 	var/list/available_turfs = list()
+	var/list/available_empty_turfs = list()
 
 	for(var/area_type in target_areas)
 		var/area/found_area = GLOB.areas_by_type[area_type]
@@ -44,6 +45,7 @@
 			// Time to check cardinals
 			// At least one cardinal must have no density!
 			var/cardinal_density_check = FALSE
+			// Some items want to be hugging a wall, such as lockers, and machines. It just looks better.
 			var/wall_check = FALSE
 			for(var/dir in GLOB.cardinals)
 				var/turf/cardinal_test_turf = get_step(iterating_turf, dir)
@@ -62,25 +64,40 @@
 			if(!cardinal_density_check)
 				new /obj/effect/turf_test/fail(iterating_turf)
 				continue
+			// Finally we want to prioritise entirely empty turfs
+			var/totally_empty = TRUE
+			for(var/atom/movable/found_movable in iterating_turf)
+				totally_empty = FALSE
+				break
+			if(totally_empty)
+				new /obj/effect/turf_test/empty(iterating_turf)
+				available_empty_turfs += iterating_turf
 			new /obj/effect/turf_test(iterating_turf)
 			available_turfs += iterating_turf
-
 
 	if(!LAZYLEN(available_turfs))
 		CRASH("[src.type] could not find any suitable turfs!")
 
 	for(var/i in 1 to amount_to_spawn)
-		new desired_atom(pick(available_turfs))
+		if(LAZYLEN(available_empty_turfs))
+			new desired_atom(pick(available_empty_turfs))
+		else
+			new desired_atom(pick(available_turfs))
 
 /obj/effect/turf_test
-	name = "TURF TEST"
+	name = "PASS"
 	icon = 'modular_skyrat/modules/area_spawn/icons/area_test.dmi'
 	icon_state = "area_test"
 	color = COLOR_GREEN
 	anchored = TRUE
 
 /obj/effect/turf_test/fail
+	name = "FAIL"
 	color = COLOR_RED
+
+/obj/effect/turf_test/empty
+	name = "PASS(EMPTY)"
+	color = COLOR_BLUE
 
 // Pets
 /datum/area_spawn/markus
