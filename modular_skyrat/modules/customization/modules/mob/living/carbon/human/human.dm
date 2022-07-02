@@ -134,7 +134,7 @@
 		addtimer(CALLBACK(src, .proc/acting_expiry, impairment), duration SECONDS)
 		to_chat(src, "You are now feigning [impairment].")
 
-/mob/living/carbon/human/proc/acting_expiry(var/impairment)
+/mob/living/carbon/human/proc/acting_expiry(impairment)
 	if(impairment)
 		if(impairment == "drunkenness")
 			REMOVE_TRAIT(usr, TRAIT_BLUSHING, "[type]")
