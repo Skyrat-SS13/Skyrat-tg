@@ -14,6 +14,8 @@
 	var/max_amount = 1
 	/// Do we require an open space to spawn?
 	var/requires_open_space = TRUE
+	/// Do we need to be adjacent to a wall?
+	var/wall_hug = FALSE
 	/// Map blacklist, this is used to determine what maps we should not spawn on.
 	var/list/blacklisted_stations = list("Blueshift", "Runtime Station", "MultiZ Debug")
 
@@ -27,7 +29,7 @@
 	for(desired_atom in world)
 		amount_in_world++
 
-	if(amount_in_world > max_amount)
+	if(amount_in_world >= max_amount)
 		return
 
 	var/list/available_turfs = list()
@@ -45,10 +47,15 @@
 				if(!enter_test.Enter(iterating_turf))
 					continue
 				var/cardinal_check = FALSE
+				var/wall_check = FALSE
 				for(var/dir in GLOB.cardinals)
 					var/turf/cardinal_test_turf = get_step(iterating_turf, dir)
 					if(enter_test.Enter(cardinal_test_turf))
 						cardinal_check = TRUE
+					if(isclosedturf(cardinal_test_turf))
+						wall_check = TRUE
+				if(wall_hug && !wall_check)
+					continue
 				if(!cardinal_check)
 					continue
 			available_turfs += iterating_turf
