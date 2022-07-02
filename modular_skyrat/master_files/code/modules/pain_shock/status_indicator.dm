@@ -1,8 +1,4 @@
 #define PLANE_STATUS_INDICATOR -12 //Status Indicators that show over mobs' heads when certain things like stuns affect them.
-
-#define VIS_STATUS			24
-
-#define VIS_COUNT			24 //Must be highest number from above.
 #define STATUS_LAYER -2.1
 #define STATUS_INDICATOR_Y_OFFSET 2 // Offset from the edge of the icon sprite, so 32 pixels plus whatever number is here.
 #define STATUS_INDICATOR_ICON_X_SIZE 0 // Don't need to care about the Y size due to the origin being on the bottom side.
@@ -18,30 +14,38 @@
 
 /datum/preference/toggle/enable_status_indicators/apply_to_client(client/client, value)
 	. = ..()
-	var/atom/movable/screen/plane_master/runechat/status/status = locate() in client?.screen
+	if(client)
+		client.apply_status_indicator_pref(value)
+
+/client/proc/apply_status_indicator_pref(value)
+	SIGNAL_HANDLER
+	var/client/myclient = src
+	if(!value) // We called from a signal
+		value = myclient?.prefs?.read_preference(/datum/preference/toggle/enable_status_indicators)
+	var/atom/movable/screen/plane_master/status/status = locate() in myclient?.screen
 	if(!status)
 		return
-	if(value)
-		status.alpha = 255
+	if(value && status)
+		status.Show()
 	else
-		status.alpha = 0
+		status.Hide()
 
 /mob/living
 	var/list/status_indicators = null // Will become a list as needed. Contains our status indicator objects. Note, they are actually added to overlays, this just keeps track of what exists.
 
 /// Returns true if the mob is weakened. Also known as floored.
 /mob/living/proc/is_weakened()
-	if(HAS_TRAIT(src, TRAIT_FLOORED) || has_status_effect(/datum/status_effect/incapacitating/knockdown))
+	if(HAS_TRAIT(src, TRAIT_FLOORED) || has_status_effect(/datum/status_effect/incapacitating/knockdown && !HAS_TRAIT_FROM(src, TRAIT_FLOORED, BUCKLED_TRAIT)))
 		return TRUE
 
 /// Returns true if the mob is stunned.
 /mob/living/proc/is_stunned()
-	if(HAS_TRAIT_FROM(src, TRAIT_INCAPACITATED, TRAIT_STATUS_EFFECT(STAT_TRAIT)) || HAS_TRAIT_FROM(src, TRAIT_IMMOBILIZED, TRAIT_STATUS_EFFECT(STAT_TRAIT)) || HAS_TRAIT_FROM(src, TRAIT_IMMOBILIZED, CHOKEHOLD_TRAIT))
+	if(HAS_TRAIT_FROM(src, TRAIT_INCAPACITATED, TRAIT_STATUS_EFFECT(STAT_TRAIT)) || HAS_TRAIT(src, TRAIT_CRITICAL_CONDITION) || HAS_TRAIT_FROM(src, TRAIT_IMMOBILIZED, TRAIT_STATUS_EFFECT(STAT_TRAIT)) || HAS_TRAIT_FROM(src, TRAIT_IMMOBILIZED, CHOKEHOLD_TRAIT)  || HAS_TRAIT_FROM(src, TRAIT_INCAPACITATED, TRAIT_STATUS_EFFECT(STAT_TRAIT)) || HAS_TRAIT_FROM(src, TRAIT_IMMOBILIZED, TRAIT_STATUS_EFFECT(STAT_TRAIT)))
 		return TRUE
 
 /// Returns true if the mob is paralyzed - for can't fight back purposes.
 /mob/living/proc/is_paralyzed()
-	if(HAS_TRAIT_FROM(src, TRAIT_FLOORED, CHOKEHOLD_TRAIT) || HAS_TRAIT(src, TRAIT_CRITICAL_CONDITION) || HAS_TRAIT_FROM(src, TRAIT_INCAPACITATED, STAMINA) || HAS_TRAIT_FROM(src, TRAIT_INCAPACITATED, TRAIT_STATUS_EFFECT(STAT_TRAIT)) || HAS_TRAIT_FROM(src, TRAIT_IMMOBILIZED, TRAIT_STATUS_EFFECT(STAT_TRAIT)))
+	if(HAS_TRAIT_FROM(src, TRAIT_FLOORED, CHOKEHOLD_TRAIT) || HAS_TRAIT_FROM(src, TRAIT_IMMOBILIZED, TRAIT_STATUS_EFFECT(STAT_TRAIT)) || HAS_TRAIT(src, TRAIT_CRITICAL_CONDITION)  || HAS_TRAIT_FROM(src, TRAIT_INCAPACITATED, STAMINA))
 		return TRUE
 
 /// Returns true if the mob is unconcious for any reason.
@@ -56,11 +60,12 @@
 
 /mob/living/carbon/Initialize(mapload)
 	. = ..()
-	RegisterSignal(src, COMSIG_CARBON_HEALTH_UPDATE, .proc/status_sanity)
+	RegisterSignal(src, COMSIG_CARBON_HEALTH_UPDATE, .proc/status_indictor_evaluate)
 	RegisterSignal(src, COMSIG_LIVING_DEATH, .proc/cut_indicators_overlays)
+	RegisterSignal(client, COMSIG_MOB_LOGIN, /client/.proc/apply_status_indicator_pref)
 
 /// Receives signals to update on carbon health updates. Checks if the mob is dead - if true, removes all the indicators. Then, we determine what status indicators the mob should carry or remove.
-/mob/living/proc/status_sanity()
+/mob/living/proc/status_indictor_evaluate()
 	SIGNAL_HANDLER
 	if(stat == DEAD)
 		return
@@ -98,7 +103,7 @@
 				return I
 	return LAZYACCESS(status_indicators, LAZYFIND(status_indicators, prospective_indicator))
 
-/// Cuts all the indicators on a mob.
+/// Cuts all the indicators on a mob in a loop.
 /mob/living/proc/cut_indicators_overlays()
 	SIGNAL_HANDLER
 	for(var/prospective_indicator in status_indicators)
@@ -131,7 +136,7 @@
 
 	// In /mob/living's `update_transform()`, the sprite is horizontally shifted when scaled up, so that the center of the sprite doesn't move to the right.
 	// Because of that, this adjustment needs to happen with the future indicator row as well, or it will look bad.
-	current_x_position -= (32 / 2) * (icon_scale - 1)
+	current_x_position -= 16 * (icon_scale - 1)
 
 	// Now the indicator row can actually be built.
 	for(var/prospective_indicator in status_indicators)
@@ -156,13 +161,12 @@
 	var/mysize = (passed_mob.dna?.current_body_size ? passed_mob.dna.current_body_size : 1)
 	return mysize
 
-/atom/movable/screen/plane_master/runechat/status
+/atom/movable/screen/plane_master/status
 	name = "status indicator plane master"
 	plane = PLANE_STATUS_INDICATOR
 	appearance_flags = PLANE_MASTER
 	blend_mode = BLEND_OVERLAY
 	render_relay_plane = RENDER_PLANE_NON_GAME
-
 #undef STATUS_INDICATOR_Y_OFFSET
 #undef STATUS_INDICATOR_ICON_X_SIZE
 #undef STATUS_INDICATOR_ICON_MARGIN
