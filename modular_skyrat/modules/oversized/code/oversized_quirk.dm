@@ -1,6 +1,8 @@
 #define OVERSIZED_SPEED_SLOWDOWN 0.5
 #define OVERSIZED_HUNGER_MOD 1.5
 
+// Before making any changes to oversized, please see the module's readme.md file
+
 /datum/quirk/oversized
 	name = "Oversized"
 	desc = "You, for whatever reason, are FAR too tall, and will encounter some rough situations because of it."

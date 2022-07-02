@@ -47,7 +47,7 @@
 	restricted = TRUE
 
 /datum/armament_entry/cargo_gun/nanotrasen/smg/saber
-	item_type = /obj/item/gun/ballistic/automatic/proto
+	item_type = /obj/item/gun/ballistic/automatic/proto/unrestricted
 	lower_cost = CARGO_CRATE_VALUE * 16
 	upper_cost = CARGO_CRATE_VALUE * 20
 

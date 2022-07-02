@@ -1422,14 +1422,14 @@
 	crate_name = "raw pyro anomaly"
 	crate_type = /obj/structure/closet/crate/secure/science
 
-/datum/supply_pack/science/raw_delimber_anomaly
-	name = "Raw Delimber Anomaly"
-	desc = "The raw core of a delimber anomaly, ready to be implosion-compressed into a powerful artifact."
+/datum/supply_pack/science/raw_bioscrambler_anomaly
+	name = "Raw Bioscrambler Anomaly"
+	desc = "The raw core of a bioscrambler anomaly, ready to be implosion-compressed into a powerful artifact."
 	cost = CARGO_CRATE_VALUE * 10
 	access = ACCESS_ORDNANCE
 	access_view = ACCESS_ORDNANCE
-	contains = list(/obj/item/raw_anomaly_core/delimber)
-	crate_name = "raw delimber anomaly"
+	contains = list(/obj/item/raw_anomaly_core/bioscrambler)
+	crate_name = "raw bioscrambler anomaly"
 	crate_type = /obj/structure/closet/crate/secure/science
 
 
@@ -1702,7 +1702,7 @@
 	contains = list(/obj/item/storage/backpack/duffelbag/mining_conscript)
 	crate_name = "shaft miner starter kit"
 	crate_type = /obj/structure/closet/crate/secure
-
+/* //SKYRAT REMOVAL START - GUN CARGO
 /datum/supply_pack/service/survivalknives
 	name = "Survival Knives Crate"
 	desc = "Contains three sharpened survival knives. Each knife guaranteed to fit snugly inside any Nanotrasen-standard boot."
@@ -1711,7 +1711,7 @@
 					/obj/item/knife/combat/survival,
 					/obj/item/knife/combat/survival)
 	crate_name = "survival knife crate"
-
+*/ //SKYRAT REMOVAL END
 /datum/supply_pack/service/wedding
 	name = "Wedding Crate"
 	desc = "Everything you need to host a wedding! Now you just need an officiant."

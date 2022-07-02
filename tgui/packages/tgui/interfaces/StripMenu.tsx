@@ -1,14 +1,14 @@
-import { range } from "common/collections";
-import { BooleanLike } from "common/react";
-import { resolveAsset } from "../assets";
-import { useBackend } from "../backend";
-import { Box, Button, Icon, Stack } from "../components";
-import { Window } from "../layouts";
+import { range } from 'common/collections';
+import { BooleanLike } from 'common/react';
+import { resolveAsset } from '../assets';
+import { useBackend } from '../backend';
+import { Box, Button, Icon, Stack } from '../components';
+import { Window } from '../layouts';
 
 const ROWS = 6; // SKYRAT EDIT CHANGE
 const COLUMNS = 6;
 
-const BUTTON_DIMENSIONS = "50px";
+const BUTTON_DIMENSIONS = '50px';
 
 type GridSpotKey = string;
 
@@ -17,7 +17,7 @@ const getGridSpotKey = (spot: [number, number]): GridSpotKey => {
 };
 
 const CornerText = (props: {
-  align: "left" | "right";
+  align: 'left' | 'right';
   children: string;
 }): JSX.Element => {
   const { align, children } = props;
@@ -25,12 +25,11 @@ const CornerText = (props: {
   return (
     <Box
       style={{
-        position: "relative",
-        left: align === "left" ? "2px" : "-2px",
-        "text-align": align,
-        "text-shadow": "1px 1px 1px #555",
-      }}
-    >
+        position: 'relative',
+        left: align === 'left' ? '2px' : '-2px',
+        'text-align': align,
+        'text-shadow': '1px 1px 1px #555',
+      }}>
       {children}
     </Box>
   );
@@ -43,33 +42,33 @@ type AlternateAction = {
 
 const ALTERNATE_ACTIONS: Record<string, AlternateAction> = {
   knot: {
-    icon: "shoe-prints",
-    text: "Knot",
+    icon: 'shoe-prints',
+    text: 'Knot',
   },
 
   untie: {
-    icon: "shoe-prints",
-    text: "Untie",
+    icon: 'shoe-prints',
+    text: 'Untie',
   },
 
   unknot: {
-    icon: "shoe-prints",
-    text: "Unknot",
+    icon: 'shoe-prints',
+    text: 'Unknot',
   },
 
   enable_internals: {
-    icon: "lungs", // SKYRAT EDIT - TGFONT IS FUCKED AND I DUNNO WHY SO HERE'S A BANDAID - original "tg-air-tank"
-    text: "Enable internals",
+    icon: 'lungs', // SKYRAT EDIT - TGFONT IS FUCKED AND I DUNNO WHY SO HERE'S A BANDAID - original "tg-air-tank"
+    text: 'Enable internals',
   },
 
   disable_internals: {
-    icon: "lungs-virus", // SKYRAT EDIT - TGFONT IS FUCKED AND I DUNNO WHY SO HERE'S A BANDAID - original "tg-air-tank-slash"
-    text: "Disable internals",
+    icon: 'lungs-virus', // SKYRAT EDIT - TGFONT IS FUCKED AND I DUNNO WHY SO HERE'S A BANDAID - original "tg-air-tank-slash"
+    text: 'Disable internals',
   },
 
   adjust_jumpsuit: {
-    icon: "tshirt",
-    text: "Adjust jumpsuit",
+    icon: 'tshirt',
+    text: 'Adjust jumpsuit',
   },
 };
 
@@ -83,153 +82,153 @@ const SLOTS: Record<
   }
 > = {
   eyes: {
-    displayName: "eyewear",
+    displayName: 'eyewear',
     gridSpot: getGridSpotKey([0, 1]),
-    image: "inventory-glasses.png",
+    image: 'inventory-glasses.png',
   },
 
   head: {
-    displayName: "headwear",
+    displayName: 'headwear',
     gridSpot: getGridSpotKey([0, 2]),
-    image: "inventory-head.png",
+    image: 'inventory-head.png',
   },
 
   neck: {
-    displayName: "neckwear",
+    displayName: 'neckwear',
     gridSpot: getGridSpotKey([1, 1]),
-    image: "inventory-neck.png",
+    image: 'inventory-neck.png',
   },
 
   mask: {
-    displayName: "mask",
+    displayName: 'mask',
     gridSpot: getGridSpotKey([1, 2]),
-    image: "inventory-mask.png",
+    image: 'inventory-mask.png',
   },
 
   corgi_collar: {
-    displayName: "collar",
+    displayName: 'collar',
     gridSpot: getGridSpotKey([1, 2]),
-    image: "inventory-collar.png",
+    image: 'inventory-collar.png',
   },
 
   ears: {
-    displayName: "earwear",
+    displayName: 'earwear',
     gridSpot: getGridSpotKey([1, 3]),
-    image: "inventory-ears.png",
+    image: 'inventory-ears.png',
   },
 
   parrot_headset: {
-    displayName: "headset",
+    displayName: 'headset',
     gridSpot: getGridSpotKey([1, 3]),
-    image: "inventory-ears.png",
+    image: 'inventory-ears.png',
   },
 
   handcuffs: {
-    displayName: "handcuffs",
+    displayName: 'handcuffs',
     gridSpot: getGridSpotKey([1, 4]),
   },
 
   legcuffs: {
-    displayName: "legcuffs",
+    displayName: 'legcuffs',
     gridSpot: getGridSpotKey([1, 5]),
   },
 
   jumpsuit: {
-    displayName: "uniform",
+    displayName: 'uniform',
     gridSpot: getGridSpotKey([2, 1]),
-    image: "inventory-uniform.png",
+    image: 'inventory-uniform.png',
   },
 
   suit: {
-    displayName: "suit",
+    displayName: 'suit',
     gridSpot: getGridSpotKey([2, 2]),
-    image: "inventory-suit.png",
+    image: 'inventory-suit.png',
   },
 
   gloves: {
-    displayName: "gloves",
+    displayName: 'gloves',
     gridSpot: getGridSpotKey([2, 3]),
-    image: "inventory-gloves.png",
+    image: 'inventory-gloves.png',
   },
 
   right_hand: {
-    displayName: "right hand",
+    displayName: 'right hand',
     gridSpot: getGridSpotKey([2, 4]),
-    image: "inventory-hand_r.png",
+    image: 'inventory-hand_r.png',
     additionalComponent: <CornerText align="left">R</CornerText>,
   },
 
   left_hand: {
-    displayName: "left hand",
+    displayName: 'left hand',
     gridSpot: getGridSpotKey([2, 5]),
-    image: "inventory-hand_l.png",
+    image: 'inventory-hand_l.png',
     additionalComponent: <CornerText align="right">L</CornerText>,
   },
 
   shoes: {
-    displayName: "shoes",
+    displayName: 'shoes',
     gridSpot: getGridSpotKey([3, 2]),
-    image: "inventory-shoes.png",
+    image: 'inventory-shoes.png',
   },
 
   suit_storage: {
-    displayName: "suit storage item",
+    displayName: 'suit storage item',
     gridSpot: getGridSpotKey([4, 0]),
-    image: "inventory-suit_storage.png",
+    image: 'inventory-suit_storage.png',
   },
 
   id: {
-    displayName: "ID",
+    displayName: 'ID',
     gridSpot: getGridSpotKey([4, 1]),
-    image: "inventory-id.png",
+    image: 'inventory-id.png',
   },
 
   belt: {
-    displayName: "belt",
+    displayName: 'belt',
     gridSpot: getGridSpotKey([4, 2]),
-    image: "inventory-belt.png",
+    image: 'inventory-belt.png',
   },
 
   back: {
-    displayName: "backpack",
+    displayName: 'backpack',
     gridSpot: getGridSpotKey([4, 3]),
-    image: "inventory-back.png",
+    image: 'inventory-back.png',
   },
 
   left_pocket: {
-    displayName: "left pocket",
+    displayName: 'left pocket',
     gridSpot: getGridSpotKey([4, 4]),
-    image: "inventory-pocket.png",
+    image: 'inventory-pocket.png',
   },
 
   right_pocket: {
-    displayName: "right pocket",
+    displayName: 'right pocket',
     gridSpot: getGridSpotKey([4, 5]),
-    image: "inventory-pocket.png",
+    image: 'inventory-pocket.png',
   },
   // SKYRAT EDIT ADDITION
   vagina: {
-    displayName: "vagina",
+    displayName: 'vagina',
     gridSpot: getGridSpotKey([5, 1]),
-    image: "inventory-pocket.png",
+    image: 'inventory-pocket.png',
   },
 
   anus: {
-    displayName: "anus",
+    displayName: 'anus',
     gridSpot: getGridSpotKey([5, 2]),
-    image: "inventory-pocket.png",
+    image: 'inventory-pocket.png',
   },
 
   nipples: {
-    displayName: "nipples",
+    displayName: 'nipples',
     gridSpot: getGridSpotKey([5, 3]),
-    image: "inventory-pocket.png",
+    image: 'inventory-pocket.png',
   },
 
   penis: {
-    displayName: "penis",
+    displayName: 'penis',
     gridSpot: getGridSpotKey([5, 4]),
-    image: "inventory-pocket.png",
+    image: 'inventory-pocket.png',
   },
 };
 // SKYRAT EDIT END
@@ -284,10 +283,10 @@ export const StripMenu = (props, context) => {
     <Window title={`Stripping ${data.name}`} width={400} height={400}>
       <Window.Content>
         <Stack fill vertical>
-          {range(0, ROWS).map(row => (
+          {range(0, ROWS).map((row) => (
             <Stack.Item key={row}>
               <Stack fill>
-                {range(0, COLUMNS).map(column => {
+                {range(0, COLUMNS).map((column) => {
                   const key = getGridSpotKey([row, column]);
                   const keyAtSpot = gridSpots.get(key);
 
@@ -313,7 +312,7 @@ export const StripMenu = (props, context) => {
 
                   if (item === null) {
                     tooltip = slot.displayName;
-                  } else if ("name" in item) {
+                  } else if ('name' in item) {
                     if (item.alternate) {
                       alternateAction = ALTERNATE_ACTIONS[item.alternate];
                     }
@@ -325,28 +324,28 @@ export const StripMenu = (props, context) => {
                         height="100%"
                         width="100%"
                         style={{
-                          "-ms-interpolation-mode": "nearest-neighbor",
-                          "vertical-align": "middle",
+                          '-ms-interpolation-mode': 'nearest-neighbor',
+                          'vertical-align': 'middle',
                         }}
                       />
                     );
 
                     tooltip = item.name;
-                  } else if ("obscured" in item) {
+                  } else if ('obscured' in item) {
                     content = (
                       <Icon
                         name={
                           item.obscured === ObscuringLevel.Completely
-                            ? "ban"
-                            : "eye-slash"
+                            ? 'ban'
+                            : 'eye-slash'
                         }
                         size={3}
                         ml={0}
                         mt={1.3}
                         style={{
-                          "text-align": "center",
-                          height: "100%",
-                          width: "100%",
+                          'text-align': 'center',
+                          height: '100%',
+                          width: '100%',
                         }}
                       />
                     );
@@ -360,18 +359,16 @@ export const StripMenu = (props, context) => {
                       style={{
                         width: BUTTON_DIMENSIONS,
                         height: BUTTON_DIMENSIONS,
-                      }}
-                    >
+                      }}>
                       <Box
                         style={{
-                          position: "relative",
-                          width: "100%",
-                          height: "100%",
-                        }}
-                      >
+                          position: 'relative',
+                          width: '100%',
+                          height: '100%',
+                        }}>
                         <Button
                           onClick={() => {
-                            act("use", {
+                            act('use', {
                               key: keyAtSpot,
                             });
                           }}
@@ -379,14 +376,13 @@ export const StripMenu = (props, context) => {
                           tooltip={tooltip}
                           style={{
                             background: item?.interacting
-                              ? "hsl(39, 73%, 30%)"
+                              ? 'hsl(39, 73%, 30%)'
                               : undefined,
-                            position: "relative",
-                            width: "100%",
-                            height: "100%",
+                            position: 'relative',
+                            width: '100%',
+                            height: '100%',
                             padding: 0,
-                          }}
-                        >
+                          }}>
                           {slot.image && (
                             <Box
                               as="img"
@@ -396,9 +392,7 @@ export const StripMenu = (props, context) => {
                             />
                           )}
 
-                          <Box style={{ position: "relative" }}>
-                            {content}
-                          </Box>
+                          <Box style={{ position: 'relative' }}>{content}</Box>
 
                           {slot.additionalComponent}
                         </Button>
@@ -406,19 +400,18 @@ export const StripMenu = (props, context) => {
                         {alternateAction !== undefined && (
                           <Button
                             onClick={() => {
-                              act("alt", {
+                              act('alt', {
                                 key: keyAtSpot,
                               });
                             }}
                             tooltip={alternateAction.text}
                             style={{
-                              background: "rgba(0, 0, 0, 0.6)",
-                              position: "absolute",
+                              background: 'rgba(0, 0, 0, 0.6)',
+                              position: 'absolute',
                               bottom: 0,
                               right: 0,
-                              "z-index": 2,
-                            }}
-                          >
+                              'z-index': 2,
+                            }}>
                             <Icon name={alternateAction.icon} />
                           </Button>
                         )}

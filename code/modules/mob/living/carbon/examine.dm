@@ -6,7 +6,7 @@
 	var/t_has = p_have()
 	var/t_is = p_are()
 
-	. = list("<span class='info'>This is [icon2html(src, user)] \a <EM>[src]</EM>!", EXAMINE_SECTION_BREAK) // SKYRAT EDIT CHANGE - HR padding
+	. = list("<span class='info'>This is [icon2html(src, user)] \a <EM>[src]</EM>!>", EXAMINE_SECTION_BREAK) // SKYRAT EDIT CHANGE - HR padding
 	var/obscured = check_obscured_slots()
 
 	if (handcuffed)
@@ -153,7 +153,7 @@
 				. += "[t_He] look[p_s()] very happy."
 			if(MOOD_LEVEL_HAPPY4 to INFINITY)
 				. += "[t_He] look[p_s()] ecstatic."
-	//. += "*---------*</span>" SKYRAT EDIT REMOVAL
+	. += "</span>"
 
 	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, user, .)
 

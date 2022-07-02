@@ -115,8 +115,8 @@
 		visible_message("[src] gets destroyed...")
 		qdel(src)
 		return
-	if(istype(I, /obj/item/organ/regenerative_core))
-		var/obj/item/organ/regenerative_core/regen_item = I
+	if(istype(I, /obj/item/organ/internal/regenerative_core))
+		var/obj/item/organ/internal/regenerative_core/regen_item = I
 		if(regen_item.inert)
 			to_chat(user, span_warning("[regen_item] is inert and is unable to even try to instantly grow [src]!"))
 			return

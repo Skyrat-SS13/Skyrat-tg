@@ -40,6 +40,7 @@
 		new /datum/data/mining_equipment("Fulton Pack", /obj/item/extraction_pack, 1000),
 		new /datum/data/mining_equipment("Lazarus Injector", /obj/item/lazarus_injector, 1000),
 		new /datum/data/mining_equipment("Silver Pickaxe", /obj/item/pickaxe/silver, 1000),
+		new /datum/data/mining_equipment("Hunter Buckshot Ammo Box", /obj/item/ammo_box/advanced/s12gauge/hunter, 1250), // SKYRAT EDIT ADDITION
 		new /datum/data/mining_equipment("Mining Conscription Kit", /obj/item/storage/backpack/duffelbag/mining_conscript, 1500),
 		new /datum/data/mining_equipment("Space Cash", /obj/item/stack/spacecash/c1000, 2000),
 		new /datum/data/mining_equipment("Diamond Pickaxe", /obj/item/pickaxe/diamond, 2000),

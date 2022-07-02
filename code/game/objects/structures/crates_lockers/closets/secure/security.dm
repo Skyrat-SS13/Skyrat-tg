@@ -20,6 +20,7 @@
 	new /obj/item/storage/box/gunset/pdh_captain(src) // SKYRAT EDIT ADDITION
 	new /obj/item/door_remote/captain(src)
 	new /obj/item/storage/photo_album/captain(src)
+	new /obj/item/summon_beacon/command_drobe(src) // SKYRAT EDIT ADDITION
 
 /obj/structure/closet/secure_closet/hop
 	name = "\proper head of personnel's locker"
@@ -44,6 +45,7 @@
 	new /obj/item/circuitboard/machine/techfab/department/service(src)
 	new /obj/item/storage/photo_album/hop(src)
 	new /obj/item/storage/lockbox/medal/hop(src)
+	new /obj/item/summon_beacon/bumbles(src) // SKYRAT EDIT ADDITION
 
 /obj/structure/closet/secure_closet/hos
 	name = "\proper head of security's locker"

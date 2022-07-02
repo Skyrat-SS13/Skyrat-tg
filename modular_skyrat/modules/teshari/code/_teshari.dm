@@ -70,3 +70,14 @@
 		BODY_ZONE_L_LEG = /obj/item/bodypart/l_leg/mutant/teshari,
 		BODY_ZONE_R_LEG = /obj/item/bodypart/r_leg/mutant/teshari,
 	)
+
+/datum/species/teshari/random_name(gender, unique, lastname)
+	if(unique)
+		return random_unique_teshari_name()
+
+	var/randname = teshari_name()
+
+	if(lastname)
+		randname += " [lastname]"
+
+	return randname

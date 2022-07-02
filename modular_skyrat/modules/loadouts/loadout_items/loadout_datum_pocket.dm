@@ -144,7 +144,7 @@ GLOBAL_LIST_INIT(loadout_pocket_items, generate_loadout_items(/datum/loadout_ite
 
 /datum/loadout_item/pocket_items/modular_laptop
 	name = "Modular Laptop"
-	item_path = /obj/item/modular_computer/laptop/preset/civilian/closed
+	item_path = /obj/item/modular_computer/laptop/preset/civilian
 
 /datum/loadout_item/pocket_items/ringbox_gold
 	name = "Gold Ring Box"

@@ -472,7 +472,6 @@
 	affected_bodyparts = HEAD
 	recommended_species = list(SPECIES_XENO)
 
-//TODO: Make these markings associated with their assigned bodyparts rather than mob dna.
 /datum/body_marking/tattoo
 	icon = 'modular_skyrat/master_files/icons/mob/body_markings/tattoo_markings.dmi'
 	recommended_species = null
@@ -526,3 +525,13 @@
 	name = "Tattoo - Tiger (Foot)"
 	icon_state = "tat_tiger_foot"
 	affected_bodyparts = LEG_RIGHT | LEG_LEFT
+
+/datum/body_marking/tattoo/infinity
+	name = "Tattoo - Infinity"
+	icon_state = "tat_infinity"
+	affected_bodyparts = CHEST | ARM_LEFT | ARM_RIGHT | LEG_RIGHT | LEG_LEFT
+
+/datum/body_marking/tattoo/butterfly
+	name = "Tattoo - Butterfly"
+	icon_state = "tat_butterfly"
+	affected_bodyparts = CHEST

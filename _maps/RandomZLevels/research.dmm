@@ -219,6 +219,10 @@
 /mob/living/simple_animal/hostile/syndicate/melee/sword,
 /turf/open/floor/plating,
 /area/awaymission/research/interior/engineering)
+"aU" = (
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/iron,
+/area/awaymission/research/interior/engineering)
 "aW" = (
 /obj/machinery/light/directional/east,
 /obj/structure/tank_dispenser,
@@ -239,7 +243,10 @@
 	},
 /turf/open/floor/iron/white,
 /area/awaymission/research/interior/engineering)
-"bd" = (
+"bb" = (
+/obj/item/shard{
+	icon_state = "small"
+	},
 /obj/effect/mapping_helpers/broken_floor,
 /turf/open/floor/iron,
 /area/awaymission/research/interior/engineering)
@@ -290,13 +297,6 @@
 	dir = 4
 	},
 /turf/open/floor/iron/white,
-/area/awaymission/research/interior/engineering)
-"br" = (
-/obj/item/shard{
-	icon_state = "small"
-	},
-/obj/effect/mapping_helpers/broken_floor,
-/turf/open/floor/iron,
 /area/awaymission/research/interior/engineering)
 "bs" = (
 /obj/item/ammo_casing/c45,
@@ -453,9 +453,7 @@
 /turf/open/floor/iron/white,
 /area/awaymission/research/interior/engineering)
 "bP" = (
-/obj/structure/sign/warning/vacuum{
-	pixel_x = 32
-	},
+/obj/structure/sign/warning/vacuum/directional/east,
 /turf/open/floor/plating,
 /area/awaymission/research/interior/maint)
 "bQ" = (
@@ -486,9 +484,7 @@
 /turf/open/floor/iron/dark,
 /area/awaymission/research/interior/gateway)
 "bV" = (
-/obj/structure/sign/warning/no_smoking/circle{
-	pixel_x = -32
-	},
+/obj/structure/sign/warning/no_smoking/circle/directional/west,
 /obj/effect/turf_decal/tile/yellow,
 /obj/effect/turf_decal/tile/yellow{
 	dir = 4
@@ -3198,15 +3194,11 @@
 /area/awaymission/research/exterior)
 "mg" = (
 /obj/structure/closet/emcloset,
-/obj/structure/sign/warning/vacuum{
-	pixel_y = 32
-	},
+/obj/structure/sign/warning/vacuum/directional/north,
 /turf/open/floor/plating,
 /area/awaymission/research/interior/escapepods)
 "mh" = (
-/obj/structure/sign/warning/pods{
-	pixel_x = -32
-	},
+/obj/structure/sign/warning/pods/directional/west,
 /obj/effect/turf_decal/tile/green,
 /turf/open/floor/iron/white,
 /area/awaymission/research/interior/escapepods)
@@ -3399,9 +3391,7 @@
 /turf/open/floor/iron/white,
 /area/awaymission/research/interior/escapepods)
 "mI" = (
-/obj/structure/sign/warning/pods{
-	pixel_x = -32
-	},
+/obj/structure/sign/warning/pods/directional/west,
 /obj/effect/turf_decal/tile/green,
 /obj/effect/turf_decal/tile/green{
 	dir = 4
@@ -3497,9 +3487,7 @@
 /turf/open/floor/iron/white,
 /area/awaymission/research/interior/escapepods)
 "mU" = (
-/obj/structure/sign/warning/vacuum{
-	pixel_y = -32
-	},
+/obj/structure/sign/warning/vacuum/directional/south,
 /obj/machinery/light/directional/south,
 /obj/effect/turf_decal/tile/green{
 	dir = 1
@@ -3520,9 +3508,7 @@
 /turf/open/floor/iron/white,
 /area/awaymission/research/interior/escapepods)
 "mW" = (
-/obj/structure/sign/warning/vacuum{
-	pixel_y = -32
-	},
+/obj/structure/sign/warning/vacuum/directional/south,
 /obj/effect/turf_decal/tile/green{
 	dir = 1
 	},
@@ -41835,8 +41821,8 @@ al
 al
 al
 al
-bd
-br
+aU
+bb
 gL
 bG
 ar
@@ -42093,7 +42079,7 @@ ap
 an
 aJ
 nf
-bd
+aU
 EV
 bH
 ar
@@ -42350,7 +42336,7 @@ an
 an
 an
 aT
-bd
+aU
 Mo
 bI
 bV
@@ -42608,7 +42594,7 @@ an
 aK
 au
 be
-br
+bb
 XU
 EC
 cg
@@ -42868,7 +42854,7 @@ bf
 bs
 bK
 bX
-bd
+aU
 cs
 cC
 cP
@@ -43120,7 +43106,7 @@ al
 al
 al
 al
-bd
+aU
 bg
 QI
 bL
