@@ -23,7 +23,9 @@
 	if(SSmapping.config.map_name in blacklisted_stations)
 		return
 
+	// Turfs that are available
 	var/list/available_turfs = list()
+	// Turfs that are available and completely void of contents
 	var/list/available_empty_turfs = list()
 
 	for(var/area_type in target_areas)
@@ -43,21 +45,18 @@
 				new /obj/effect/turf_test/fail(iterating_turf)
 				continue
 			// Time to check cardinals
-			// At least one cardinal must have no density!
-			var/cardinal_density_check = FALSE
+			// The cardinals must be clear of any density, aside from wall cardinals!
+			var/cardinal_density_check = TRUE
 			// Some items want to be hugging a wall, such as lockers, and machines. It just looks better.
 			var/wall_check = FALSE
 			for(var/dir in GLOB.cardinals)
 				var/turf/cardinal_test_turf = get_step(iterating_turf, dir)
-				var/cardinal_has_no_density = TRUE
-				for(var/atom/movable/found_movable in cardinal_test_turf)
-					if(found_movable.density)
-						cardinal_has_no_density = FALSE
-						break
-				if(cardinal_has_no_density)
-					cardinal_density_check = TRUE
 				if(isclosedturf(cardinal_test_turf))
 					wall_check = TRUE
+				for(var/atom/movable/found_movable in cardinal_test_turf)
+					if(found_movable.density && !wall_check)
+						cardinal_density_check = FALSE
+						break
 			if(wall_hug && !wall_check)
 				new /obj/effect/turf_test/fail(iterating_turf)
 				continue
