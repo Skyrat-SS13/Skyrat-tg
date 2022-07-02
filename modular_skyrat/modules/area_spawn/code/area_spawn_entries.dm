@@ -12,8 +12,6 @@
 	var/amount_to_spawn = 1
 	/// The max amount that the world can have
 	var/max_amount = 1
-	/// Do we require an open space to spawn?
-	var/requires_open_space = TRUE
 	/// Do we need to be adjacent to a wall?
 	var/wall_hug = FALSE
 	/// Map blacklist, this is used to determine what maps we should not spawn on.
@@ -25,64 +23,80 @@
 	if(SSmapping.config.map_name in blacklisted_stations)
 		return
 
-	var/amount_in_world = 0
-	for(desired_atom in world)
-		amount_in_world++
-
-	if(amount_in_world >= max_amount)
-		return
-
 	var/list/available_turfs = list()
-
-	var/obj/structure/enter_test = new()
 
 	for(var/area_type in target_areas)
 		var/area/found_area = GLOB.areas_by_type[area_type]
 		if(!found_area)
 			continue
 		for(var/turf/iterating_turf in found_area)
-			if(requires_open_space)
-				if(iterating_turf.density)
-					continue
-				if(!enter_test.Enter(iterating_turf))
-					continue
-				var/cardinal_check = FALSE
-				var/wall_check = FALSE
-				for(var/dir in GLOB.cardinals)
-					var/turf/cardinal_test_turf = get_step(iterating_turf, dir)
-					if(enter_test.Enter(cardinal_test_turf))
-						cardinal_check = TRUE
-					if(isclosedturf(cardinal_test_turf))
-						wall_check = TRUE
-				if(wall_hug && !wall_check)
-					continue
-				if(!cardinal_check)
-					continue
+			if(iterating_turf.density)
+				new /obj/effect/turf_test/fail(iterating_turf)
+				continue
+			var/density_found = FALSE
+			for(var/atom/movable/found_movable in iterating_turf)
+				if(found_movable.density)
+					density_found = TRUE
+					break
+			if(density_found)
+				new /obj/effect/turf_test/fail(iterating_turf)
+				continue
+			// Time to check cardinals
+			// At least one cardinal must have no density!
+			var/cardinal_density_check = FALSE
+			var/wall_check = FALSE
+			for(var/dir in GLOB.cardinals)
+				var/turf/cardinal_test_turf = get_step(iterating_turf, dir)
+				var/cardinal_has_no_density = TRUE
+				for(var/atom/movable/found_movable in cardinal_test_turf)
+					if(found_movable.density)
+						cardinal_has_no_density = FALSE
+						break
+				if(cardinal_has_no_density)
+					cardinal_density_check = TRUE
+				if(isclosedturf(cardinal_test_turf))
+					wall_check = TRUE
+			if(wall_hug && !wall_check)
+				new /obj/effect/turf_test/fail(iterating_turf)
+				continue
+			if(!cardinal_density_check)
+				new /obj/effect/turf_test/fail(iterating_turf)
+				continue
+			new /obj/effect/turf_test(iterating_turf)
 			available_turfs += iterating_turf
 
-	qdel(enter_test)
 
-	if(!available_turfs)
+	if(!LAZYLEN(available_turfs))
 		CRASH("[src.type] could not find any suitable turfs!")
 
 	for(var/i in 1 to amount_to_spawn)
 		new desired_atom(pick(available_turfs))
 
+/obj/effect/turf_test
+	name = "TURF TEST"
+	icon = 'modular_skyrat/modules/area_spawn/icons/area_test.dmi'
+	icon_state = "area_test"
+	color = COLOR_GREEN
+	anchored = TRUE
+
+/obj/effect/turf_test/fail
+	color = COLOR_RED
+
 // Pets
 /datum/area_spawn/markus
-	target_areas = list(/area/station/cargo/storage)
+	target_areas = list(/area/station/cargo/lobby, /area/station/cargo/office, /area/station/cargo/qm)
 	desired_atom = /mob/living/simple_animal/pet/dog/markus
 
 /datum/area_spawn/bumbles
-	target_areas = list(/area/station/service/hydroponics)
+	target_areas = list(/area/station/service/hydroponics, /area/station/service/hydroponics/upper, /area/station/service/hydroponics/garden)
 	desired_atom = /mob/living/simple_animal/pet/bumbles
 
 /datum/area_spawn/borgi
-	target_areas = list(/area/station/science/robotics)
+	target_areas = list(/area/station/science/robotics, /area/station/science/robotics/mechbay, /area/station/science/robotics/lab)
 	desired_atom = /mob/living/simple_animal/pet/dog/corgi/borgi
 
 /datum/area_spawn/poppy
-	target_areas = list(/area/station/engineering)
+	target_areas = list(/area/station/engineering/main, /area/station/engineering/break_room, /area/station/engineering/lobby, /area/station/engineering/supermatter/room)
 	desired_atom = /mob/living/simple_animal/pet/poppy
 
 // Structures
@@ -92,7 +106,7 @@
 	wall_hug = TRUE
 
 /datum/area_spawn/command_drobe
-	target_areas = list(/area/station/command/heads_quarters)
+	target_areas = list(/area/station/command/bridge, /area/station/command/meeting_room)
 	desired_atom = /obj/machinery/vending/access/command
 	wall_hug = TRUE
 
