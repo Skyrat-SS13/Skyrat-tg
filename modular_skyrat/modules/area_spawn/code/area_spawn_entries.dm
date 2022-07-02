@@ -12,8 +12,15 @@
 	var/amount_to_spawn = 1
 	/// Do we require an open space to spawn?
 	var/requires_open_space = TRUE
+	/// Map blacklist, this is used to determine what maps we should not spawn on.
+	var/list/blacklisted_stations = list("Blueshift", "Runtime Station", "MultiZ Debug")
 
 /datum/area_spawn/proc/try_spawn()
+	SHOULD_CALL_PARENT(TRUE)
+
+	if(SSmapping.config.map_name in blacklisted_stations)
+		return
+
 	var/list/available_turfs = list()
 
 	var/obj/structure/enter_test = new()
@@ -45,7 +52,7 @@
 	for(var/i in 1 to amount_to_spawn)
 		new desired_atom(pick(available_turfs))
 
-
+// Pets
 /datum/area_spawn/markus
 	target_areas = list(/area/station/cargo/storage)
 	desired_atom = /mob/living/simple_animal/pet/dog/markus
@@ -62,6 +69,7 @@
 	target_areas = list(/area/station/engineering)
 	desired_atom = /mob/living/simple_animal/pet/poppy
 
+// Structures
 /datum/area_spawn/secmed_locker
 	target_areas = list(/area/station/security/medical)
 	desired_atom = /obj/structure/closet/secure_closet/security_medic
@@ -69,4 +77,21 @@
 /datum/area_spawn/command_drobe
 	target_areas = list(/area/station/command/heads_quarters)
 	desired_atom = /obj/machinery/vending/access/command
+
+// Job spawners
+/datum/area_spawn/secmed_landmark
+	target_areas = list(/area/station/security/medical, /area/station/security/brig)
+	desired_atom = /obj/effect/landmark/start/security_medic
+
+/datum/area_spawn/barber_landmark
+	target_areas = list(/area/station/service/salon, /area/station/hallway/secondary/service)
+	desired_atom = /obj/effect/landmark/start/security_medic
+
+/datum/area_spawn/blueshield_landmark
+	target_areas = list(/area/station/command/heads_quarters/captain, /area/station/command/bridge)
+	desired_atom = /obj/effect/landmark/start/blueshield
+
+/datum/area_spawn/vanguard_landmark
+	target_areas = list(/area/station/command/gateway, /area/station/hallway/primary/central)
+	desired_atom = /obj/effect/landmark/start/expeditionary_corps
 

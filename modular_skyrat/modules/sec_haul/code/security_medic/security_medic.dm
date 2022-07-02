@@ -59,7 +59,6 @@
 	head = /obj/item/clothing/head/beret/sec/peacekeeper/security_medic
 	backpack_contents = list(
 		/obj/item/storage/box/gunset/firefly = 1,
-		/obj/item/summon_beacon/secmed = 1,
 		)
 	backpack = /obj/item/storage/backpack/security
 	satchel = /obj/item/storage/backpack/satchel/sec
