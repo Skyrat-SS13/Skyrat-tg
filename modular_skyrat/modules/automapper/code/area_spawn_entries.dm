@@ -18,8 +18,6 @@
 	var/list/blacklisted_stations = list("Blueshift", "Runtime Station", "MultiZ Debug")
 
 /datum/area_spawn/proc/try_spawn()
-	SHOULD_CALL_PARENT(TRUE)
-
 	if(SSmapping.config.map_name in blacklisted_stations)
 		return
 
@@ -29,12 +27,13 @@
 	var/list/available_empty_turfs = list()
 
 	for(var/area_type in target_areas)
+		if(LAZYLEN(available_turfs))
+			break
 		var/area/found_area = GLOB.areas_by_type[area_type]
 		if(!found_area)
 			continue
 		for(var/turf/iterating_turf in found_area)
 			if(iterating_turf.density)
-				new /obj/effect/turf_test/fail(iterating_turf)
 				continue
 			var/density_found = FALSE
 			for(var/atom/movable/found_movable in iterating_turf)
@@ -42,7 +41,6 @@
 					density_found = TRUE
 					break
 			if(density_found)
-				new /obj/effect/turf_test/fail(iterating_turf)
 				continue
 			// Time to check cardinals
 			// The cardinals must be clear of any density, aside from wall cardinals!
@@ -58,10 +56,8 @@
 						cardinal_density_check = FALSE
 						break
 			if(wall_hug && !wall_check)
-				new /obj/effect/turf_test/fail(iterating_turf)
 				continue
 			if(!cardinal_density_check && wall_hug)
-				new /obj/effect/turf_test/fail(iterating_turf)
 				continue
 			// Finally we want to prioritise entirely empty turfs
 			var/totally_empty = TRUE
@@ -69,9 +65,7 @@
 				totally_empty = FALSE
 				break
 			if(totally_empty)
-				new /obj/effect/turf_test/empty(iterating_turf)
 				available_empty_turfs += iterating_turf
-			new /obj/effect/turf_test(iterating_turf)
 			available_turfs += iterating_turf
 
 	if(!LAZYLEN(available_turfs))
@@ -83,24 +77,9 @@
 		else
 			new desired_atom(pick(available_turfs))
 
-/obj/effect/turf_test
-	name = "PASS"
-	icon = 'modular_skyrat/modules/area_spawn/icons/area_test.dmi'
-	icon_state = "area_test"
-	color = COLOR_GREEN
-	anchored = TRUE
-
-/obj/effect/turf_test/fail
-	name = "FAIL"
-	color = COLOR_RED
-
-/obj/effect/turf_test/empty
-	name = "PASS(EMPTY)"
-	color = COLOR_BLUE
-
 // Pets
 /datum/area_spawn/markus
-	target_areas = list(/area/station/cargo/lobby, /area/station/cargo/office, /area/station/cargo/qm, /area/station/cargo/storage)
+	target_areas = list(/area/station/cargo/sorting,  /area/station/cargo/storage, /area/station/cargo/office, /area/station/cargo/qm)
 	desired_atom = /mob/living/simple_animal/pet/dog/markus
 
 /datum/area_spawn/bumbles
@@ -126,6 +105,16 @@
 	desired_atom = /obj/machinery/vending/access/command
 	wall_hug = TRUE
 
+/datum/area_spawn/lustwish_dorms
+	target_areas = list(/area/station/commons/locker, /area/station/commons/dorms)
+	desired_atom = /obj/machinery/vending/dorms
+	wall_hug = TRUE
+
+/datum/area_spawn/lustwish_prison
+	target_areas = list(/area/station/security/prison, /area/station/security/prison/shower)
+	desired_atom = /obj/machinery/vending/dorms
+	wall_hug = TRUE
+
 // Job spawners
 /datum/area_spawn/secmed_landmark
 	target_areas = list(/area/station/security/medical, /area/station/security/brig)
@@ -143,3 +132,18 @@
 	target_areas = list(/area/station/command/gateway, /area/station/science/lobby, /area/station/science/breakroom)
 	desired_atom = /obj/effect/landmark/start/expeditionary_corps
 
+/datum/area_spawn/bouncer_landmark
+	desired_atom = /obj/effect/landmark/start/bouncer
+	target_areas = list(/area/station/service/bar, /area/station/service/cafeteria, /area/station/service/kitchen/diner)
+
+/datum/area_spawn/engineering_guard_landmark
+	desired_atom = /obj/effect/landmark/start/engineering_guard
+	target_areas = list(/area/station/security/checkpoint/engineering, /area/station/engineering/break_room, /area/station/engineering/lobby)
+
+/datum/area_spawn/science_guard_landmark
+	desired_atom = /obj/effect/landmark/start/science_guard
+	target_areas = list(/area/station/security/checkpoint/science/research, /area/station/science/lobby)
+
+/datum/area_spawn/orderly_landmark
+	desired_atom = /obj/effect/landmark/start/orderly
+	target_areas = list(/area/station/security/checkpoint/medical, /area/station/medical/medbay/lobby)

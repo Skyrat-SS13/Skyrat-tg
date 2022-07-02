@@ -1,0 +1,18 @@
+# Automapper configuration
+# [templates.example_template] - example_template should be replaced with the name of your map template.
+# map_files - These are the names of the map files, including the extension, that will be loaded. Supports multiple for randomness.
+# required_map - This is the name of the required map that needs to be loaded in order for this template to load.
+# coordinates - The coordinates of the map template placement. (X, Y, Z). PLEASE NOTE: The Z coordinate is the same as would be shown in SDMM. NOT IN GAME.
+# leave it at 1 if it is not a multi-z map.
+# clear_everything - If this is set, we will clear everything before loading the map.
+
+
+# The core directory we will locate our templates at, best not to change this.
+directory = "_maps/skyrat/automapper/templates/"
+
+# Test
+[templates.test_template]
+map_files = ["test.dmm"]
+required_map = "MetaStation"
+coordinates = [152, 133, 1]
+clear_everything = true
