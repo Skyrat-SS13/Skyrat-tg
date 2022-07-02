@@ -10,6 +10,8 @@
 	var/desired_atom
 	/// The amount we want to spawn
 	var/amount_to_spawn = 1
+	/// The max amount that the world can have
+	var/max_amount = 1
 	/// Do we require an open space to spawn?
 	var/requires_open_space = TRUE
 	/// Map blacklist, this is used to determine what maps we should not spawn on.
@@ -19,6 +21,13 @@
 	SHOULD_CALL_PARENT(TRUE)
 
 	if(SSmapping.config.map_name in blacklisted_stations)
+		return
+
+	var/amount_in_world = 0
+	for(desired_atom in world)
+		amount_in_world++
+
+	if(amount_in_world > max_amount)
 		return
 
 	var/list/available_turfs = list()
@@ -85,7 +94,7 @@
 
 /datum/area_spawn/barber_landmark
 	target_areas = list(/area/station/service/salon, /area/station/hallway/secondary/service)
-	desired_atom = /obj/effect/landmark/start/security_medic
+	desired_atom = /obj/effect/landmark/start/barber
 
 /datum/area_spawn/blueshield_landmark
 	target_areas = list(/area/station/command/heads_quarters/captain, /area/station/command/bridge)
