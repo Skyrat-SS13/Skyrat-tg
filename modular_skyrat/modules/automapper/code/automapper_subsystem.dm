@@ -9,7 +9,7 @@
  *
  * Please note, this uses some black magic to interject the templates mid world load to prevent mass runtimes down the line.
  *
- * CURRENTLY ONLY SUPPORTS STATION MAPS(To make it support other maps, a better Z level handling system must be made.)
+ * LIMITED SUPPORT FOR NON-STATION LEVELS(until someone adds a better Z level handling system for this)
  */
 
 SUBSYSTEM_DEF(automapper)
