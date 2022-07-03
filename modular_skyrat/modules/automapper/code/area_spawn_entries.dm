@@ -1,3 +1,6 @@
+#define RESTRICTED_OBJECTS_LIST list(/obj/machinery/recharge_station)
+#define RESTRICTED_CARDINAL_OBJECTS_LIST list(/obj/machinery/disposal/bin, /obj/structure/table, /obj/machinery/door)
+
 SUBSYSTEM_DEF(area_spawn)
 	name = "Area Spawn"
 	flags = SS_NO_FIRE
@@ -53,6 +56,9 @@ SUBSYSTEM_DEF(area_spawn)
 				if(found_movable.density)
 					density_found = TRUE
 					break
+				if(is_type_in_list(found_movable, RESTRICTED_OBJECTS_LIST))
+					density_found = TRUE
+					break
 			if(density_found)
 				continue
 			// Time to check cardinals
@@ -65,9 +71,8 @@ SUBSYSTEM_DEF(area_spawn)
 				if(isclosedturf(cardinal_test_turf))
 					wall_check = TRUE
 				for(var/atom/movable/found_movable in cardinal_test_turf)
-					if(found_movable.density && !wall_check)
+					if(is_type_in_list(found_movable, RESTRICTED_CARDINAL_OBJECTS_LIST))
 						cardinal_density_check = FALSE
-						break
 			if(wall_hug && !wall_check)
 				continue
 			if(!cardinal_density_check && wall_hug)
@@ -75,10 +80,14 @@ SUBSYSTEM_DEF(area_spawn)
 			// Finally we want to prioritise entirely empty turfs
 			var/totally_empty = TRUE
 			for(var/atom/movable/found_movable in iterating_turf)
-				totally_empty = FALSE
-				break
+				if(found_movable.layer > LOW_OBJ_LAYER)
+					totally_empty = FALSE
+					break
 			if(totally_empty)
 				available_empty_turfs += iterating_turf
+				new /obj/effect/turf_test/empty(iterating_turf)
+			else
+				new /obj/effect/turf_test(iterating_turf)
 			available_turfs += iterating_turf
 
 	if(!LAZYLEN(available_turfs))
@@ -93,6 +102,21 @@ SUBSYSTEM_DEF(area_spawn)
 			var/turf/picked_turf = pick(available_turfs)
 			available_turfs -= picked_turf
 			new desired_atom(picked_turf)
+
+/obj/effect/turf_test
+	name = "PASS"
+	icon = 'modular_skyrat/modules/automapper/icons/area_test.dmi'
+	icon_state = "area_test"
+	color = COLOR_GREEN
+	anchored = TRUE
+
+/obj/effect/turf_test/fail
+	name = "FAIL"
+	color = COLOR_RED
+
+/obj/effect/turf_test/empty
+	name = "PASS(EMPTY)"
+	color = COLOR_BLUE
 
 // Pets
 /datum/area_spawn/markus
@@ -123,7 +147,7 @@ SUBSYSTEM_DEF(area_spawn)
 	wall_hug = TRUE
 
 /datum/area_spawn/command_drobe
-	target_areas = list(/area/station/command/bridge, /area/station/command/meeting_room)
+	target_areas = list(/area/station/command/meeting_room, /area/station/command/bridge)
 	desired_atom = /obj/machinery/vending/access/command
 	wall_hug = TRUE
 
@@ -183,3 +207,6 @@ SUBSYSTEM_DEF(area_spawn)
 /datum/area_spawn/customs_agent_landmark
 	desired_atom = /obj/effect/landmark/start/customs_agent
 	target_areas = list(/area/station/security/checkpoint/supply, /area/station/cargo/storage)
+
+#undef RESTRICTED_OBJECTS_LIST
+#undef RESTRICTED_CARDINAL_OBJECTS_LIST
