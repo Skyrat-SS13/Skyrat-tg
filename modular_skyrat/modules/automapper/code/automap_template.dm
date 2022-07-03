@@ -2,10 +2,17 @@
 	name = "Automap Template"
 	/// Our load turf
 	var/turf/load_turf
+	/// The map for which we load on
+	var/override_map_name
 
-/datum/map_template/automap_template/proc/preload(map_file = null, incoming_load_turf, incoming_clear = FALSE, template_name)
+/datum/map_template/automap_template/proc/preload(map_file, incoming_override_map_name, incoming_load_turf, template_name)
 	if(!map_file)
 		return
+
+	if(!incoming_override_map_name)
+		return
+
+	override_map_name = incoming_override_map_name
 
 	if(template_name)
 		name = template_name
@@ -16,3 +23,4 @@
 		load_turf = incoming_load_turf
 
 	preload_size(mappath) // We need to preload this so we can get the affected turfs to clear them up.
+/obj/effect/mapping_helpers/airlock/access/all/supply/customs
