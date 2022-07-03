@@ -293,6 +293,17 @@
 	name = "Cardigan (Worn)"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/cardigan/cardigan_worn.json'
 
+// URBAN COAT
+
+/datum/greyscale_config/urban_coat
+	name = "Urban Coat"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/urban_coat.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/urban_coat/urban_coat.json'
+
+/datum/greyscale_config/urban_coat/worn
+	name = "Urban Coat (Worn)"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/urban_coat/urban_coat_worn.json'
+
 // JUMPSUITS
 
 /datum/greyscale_config/jumpsuit_worn/digi
