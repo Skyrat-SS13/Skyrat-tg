@@ -365,7 +365,7 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 
 /datum/loadout_item/suit/urban
 	name = "Urban Coat"
-	item_path = /obj/item/clothing/suit/urban/polychromic
+	item_path = /obj/item/clothing/suit/urban
 
 /datum/loadout_item/suit/maxson
 	name = "Fancy Brown Coat"
