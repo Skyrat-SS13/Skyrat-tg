@@ -112,7 +112,7 @@
 		to_chat(usr, span_warning("You can't do this right now..."))
 		return
 
-	var/list/choices = list("drunkenness", "stuttering", "jittering", "stupidness")
+	var/static/list/choices = list("drunkenness", "stuttering", "jittering", "stupidness")
 	var/impairment = tgui_input_list(src, "Select an impairment to perform:", "Impairments", choices)
 	if(!impairment)
 		return
