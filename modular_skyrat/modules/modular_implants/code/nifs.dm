@@ -12,14 +12,25 @@
 	var/mob/living/carbon/human/linked_mob
 	///What access does the user have? This is used for role restricted NIFSofts.
 	var/list/user_access_list
+
 	///What is the maximum power level of the NIF?
 	var/max_power = 1000
 	///How much power is currently inside of the NIF?
 	var/power_level
+	///How much power is the NIF currently using? Negative usage will result in power being gained.
+	var/power_usage = 0
+
+	///What is the maximum durability of the NIF?
+	var/max_durability = 100
 	///What level of durability is the NIF at?
 	var/durability = 100
+	///How much durability is subtracted per shift?
+	var/shift_durability_loss = 20
+	//How much durability is lost per death if any?
+	var/death_durability_loss = 10
 	///Does the NIF stay between rounds? By default, they do.
 	var/nif_persistence
+
 
 	//Software Variables
 	///How many programs can the NIF store at once?
@@ -44,6 +55,20 @@
 	. = ..()
 	linked_mob = null //This is going to need to be changed later on.
 
+/obj/item/organ/cyberimp/brain/nif/process(delta_time)
+	. = ..()
+
+	if(!linked_mob)
+		return FALSE
+	if(IS_IN_STASIS(linked_mob))
+		return
+
+	power_level = power_level - power_usage
+
+/// Subtracts from the power level of the NIF once, this is good for anything that is single use.
+/obj/item/organ/cyberimp/brain/nif/proc/use_power(power_to_use)
+	power_level = power_level - power_to_use
+
 // Action used to pull up the NIF menu
 /datum/action/item_action/nif
 	button_icon = 'modular_skyrat/master_files/icons/mob/actions/action_backgrounds.dmi'
@@ -63,5 +88,6 @@
 	var/datum/action/item_action/nif/bridge = target
 	bridge.ui_interact(usr)
 
+//NIF autosurgeon. This is just here so that I can debug faster.
 /obj/item/autosurgeon/organ/nif
 	starting_organ = /obj/item/organ/cyberimp/brain/nif
