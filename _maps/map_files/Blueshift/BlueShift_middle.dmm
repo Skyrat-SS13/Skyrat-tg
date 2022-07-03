@@ -305,7 +305,6 @@
 /turf/open/floor/iron,
 /area/station/engineering/main)
 "adB" = (
-/obj/structure/closet/secure_closet/security_medic,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
 /turf/open/floor/carpet/red,
 /area/station/security/medical)
@@ -2560,10 +2559,10 @@
 	id_tag = "permainner";
 	name = "Permabrig Transfer"
 	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 8
-	},
 /obj/effect/mapping_helpers/airlock/access/all/security/brig,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
+	cycle_id = "perma-transfer"
+	},
 /turf/open/floor/iron/dark,
 /area/station/security/prison)
 "awY" = (
@@ -6817,15 +6816,19 @@
 /area/station/maintenance/starboard/fore)
 "bHu" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/turnstile{
-	dir = 4;
-	req_access = list("brig","brig_entrance","leave_genpop")
-	},
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
 	dir = 4
+	},
+/obj/machinery/door/airlock/security/glass{
+	id_tag = "permainner";
+	name = "Permabrig Transfer"
+	},
+/obj/effect/mapping_helpers/airlock/access/all/security/brig,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
+	cycle_id = "perma-transfer"
 	},
 /turf/open/floor/iron/dark,
 /area/station/security/prison)
@@ -8982,7 +8985,6 @@
 "cuc" = (
 /obj/structure/cable,
 /obj/structure/disposalpipe/segment,
-/mob/living/simple_animal/pet/dog/markus,
 /obj/machinery/holopad,
 /turf/open/floor/iron,
 /area/station/cargo/office)
@@ -13093,10 +13095,10 @@
 	id_tag = "permaouter";
 	name = "Permabrig Transfer"
 	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 4
-	},
 /obj/effect/mapping_helpers/airlock/access/all/security/brig,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
+	cycle_id = "perma-transfer"
+	},
 /turf/open/floor/iron/dark,
 /area/station/security/prison)
 "dPK" = (
@@ -18230,7 +18232,7 @@
 /turf/open/floor/iron/dark,
 /area/station/engineering/lobby)
 "fHG" = (
-/obj/machinery/gravity_generator/main/station,
+/obj/machinery/gravity_generator/main,
 /obj/effect/turf_decal/bot_white,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -18829,7 +18831,6 @@
 "fSO" = (
 /obj/structure/flora/bush/fullgrass,
 /obj/structure/flora/bush/lavendergrass,
-/mob/living/simple_animal/pet/bumbles,
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
 	dir = 5
 	},
@@ -31835,7 +31836,7 @@
 /area/station/maintenance/starboard/fore)
 "kiJ" = (
 /obj/structure/table/wood/fancy,
-/obj/item/book/granter/spell/smoke/lesser,
+/obj/item/book/granter/action/spell/smoke/lesser,
 /obj/item/nullrod,
 /obj/item/organ/internal/heart,
 /obj/item/reagent_containers/food/drinks/bottle/holywater,
@@ -72880,7 +72881,6 @@
 /turf/open/floor/iron,
 /area/station/commons/storage/tools)
 "xWK" = (
-/mob/living/simple_animal/pet/poppy,
 /obj/effect/turf_decal/tile/yellow{
 	dir = 1
 	},

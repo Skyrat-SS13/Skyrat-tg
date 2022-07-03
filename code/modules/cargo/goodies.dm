@@ -38,13 +38,13 @@
 	cost = PAYCHECK_COMMAND * 2.5
 	access_view = ACCESS_BRIG
 	contains = list(/obj/item/grenade/stingbang)
-
+/* //SKYRAT EDIT START - GUN CARGO
 /datum/supply_pack/goody/Survivalknives_single
 	name = "Survival Knife Single-Pack"
 	desc = "Contains one sharpened survival knive. Guaranteed to fit snugly inside any Nanotrasen-standard boot."
 	cost = PAYCHECK_COMMAND * 1.75
 	contains = list(/obj/item/knife/combat/survival)
-/* //SKYRAT EDIT START - GUN CARGO
+
 /datum/supply_pack/goody/ballistic_single
 	name = "Combat Shotgun Single-Pack"
 	desc = "For when the enemy absolutely needs to be replaced with lead. Contains one Aussec-designed Combat Shotgun, and one Shotgun Bandolier."
