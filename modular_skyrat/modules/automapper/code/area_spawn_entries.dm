@@ -117,6 +117,11 @@ SUBSYSTEM_DEF(area_spawn)
 	desired_atom = /obj/structure/closet/secure_closet/security_medic
 	wall_hug = TRUE
 
+/datum/area_spawn/blueshield_locker
+	target_areas = list(/area/station/command/heads_quarters/captain, /area/station/command/bridge)
+	desired_atom = /obj/structure/closet/secure_closet/blueshield
+	wall_hug = TRUE
+
 /datum/area_spawn/command_drobe
 	target_areas = list(/area/station/command/bridge, /area/station/command/meeting_room)
 	desired_atom = /obj/machinery/vending/access/command
