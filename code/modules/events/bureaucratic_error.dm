@@ -8,7 +8,8 @@
 	announceWhen = 1
 
 /datum/round_event/bureaucratic_error/announce(fake)
-	priority_announce("A recent bureaucratic error in the Organic Resources Department may result in personnel shortages in some departments and redundant staffing in others.", "Paperwork Mishap Alert")
+	//priority_announce("A recent bureaucratic error in the Organic Resources Department may result in personnel shortages in some departments and redundant staffing in others.", "Paperwork Mishap Alert") // ORIGINAL
+	priority_announce("A recent bureaucratic error in the Organic Resources Department may result in redundant staffing in some departments.", "Paperwork Mishap Alert") // SKYRAT EDIT
 
 /datum/round_event/bureaucratic_error/start()
 	var/list/jobs = SSjob.joinable_occupations.Copy()
