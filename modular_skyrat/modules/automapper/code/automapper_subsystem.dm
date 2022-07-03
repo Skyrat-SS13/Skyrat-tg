@@ -54,6 +54,9 @@ SUBSYSTEM_DEF(automapper)
 
 		var/map_file = selected_template["directory"] + pick(selected_template["map_files"])
 
+		if(!fexists(map_file))
+			CRASH("[template] could not find map file [map_file]!")
+
 		var/datum/map_template/automap_template/map = new()
 
 		map.preload(map_file, selected_template["required_map"], load_turf, template)
@@ -79,6 +82,8 @@ SUBSYSTEM_DEF(automapper)
  * Not really useful outside of load groups.
  */
 /datum/controller/subsystem/automapper/proc/get_turf_blacklists(map_names)
+	if(!islist(map_names))
+		map_names = list(map_names)
 	var/list/blacklisted_turfs = list()
 	for(var/datum/map_template/automap_template/iterating_template as anything in preloaded_map_templates)
 		if(!(iterating_template.override_map_name in map_names))
@@ -86,4 +91,3 @@ SUBSYSTEM_DEF(automapper)
 		for(var/turf/iterating_turf as anything in iterating_template.get_affected_turfs(iterating_template.load_turf, FALSE))
 			blacklisted_turfs += iterating_turf
 	return blacklisted_turfs
-

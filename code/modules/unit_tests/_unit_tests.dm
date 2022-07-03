@@ -68,6 +68,7 @@
 
 // SKYRAT EDIT START
 #include "~skyrat/opposing_force.dm"
+#include "~skyrat/automapper.dm"
 //SKYRAT EDIT END
 #include "achievements.dm"
 #include "anchored_mobs.dm"

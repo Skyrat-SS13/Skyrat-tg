@@ -23,4 +23,5 @@
 		load_turf = incoming_load_turf
 
 	preload_size(mappath) // We need to preload this so we can get the affected turfs to clear them up.
-/obj/effect/mapping_helpers/airlock/access/all/supply/customs
+
+
