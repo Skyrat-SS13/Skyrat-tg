@@ -77,7 +77,10 @@
 	return markings
 
 /datum/species/akula/get_species_description()
-	return placeholder_description
+	return {The Azuleans, also widely known as Akula, are one of several sapient species of humanoids and make up one of four primary "nations" in current-day charted space. Their physiology is closely shark-like, yet posesses mammalian features that allow them to exist in both water and land without complication.
+	They have a semi-rigid skeleton composed of tough and flexible cartilage and a nearly-identical organ structure to that of humans with the addition of gills and a buoyant liver.
+	Among their most noticeable features is the abundant presence of small hydrodynamic feathers on their heads, looking exactly like hair at a first glance - and their webbed toes and fingers.
+	All of these are often not completely granted, as Akula are close with genetical modification.
 
 /datum/species/akula/get_species_lore()
 	return list(placeholder_lore)
