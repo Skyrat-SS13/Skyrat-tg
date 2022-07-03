@@ -122,6 +122,16 @@ SUBSYSTEM_DEF(area_spawn)
 	desired_atom = /obj/machinery/vending/access/command
 	wall_hug = TRUE
 
+/datum/area_spawn/ammo_workbench
+	target_areas = list(/area/station/security/lockers, /area/station/security/office)
+	desired_atom = /obj/machinery/ammo_workbench
+	wall_hug = TRUE
+
+/datum/area_spawn/gun_vendor
+	target_areas = list(/area/station/security/lockers, /area/station/security/office)
+	desired_atom = /obj/machinery/gun_vendor
+	wall_hug = TRUE
+
 /datum/area_spawn/lustwish_dorms
 	target_areas = list(/area/station/commons/locker, /area/station/commons/dorms)
 	desired_atom = /obj/machinery/vending/dorms
@@ -159,8 +169,12 @@ SUBSYSTEM_DEF(area_spawn)
 
 /datum/area_spawn/science_guard_landmark
 	desired_atom = /obj/effect/landmark/start/science_guard
-	target_areas = list(/area/station/security/checkpoint/science/research, /area/station/science/lobby, /area/station/science/lab)
+	target_areas = list(/area/station/security/checkpoint/science, /area/station/science/lobby, /area/station/science/lab)
 
 /datum/area_spawn/orderly_landmark
 	desired_atom = /obj/effect/landmark/start/orderly
 	target_areas = list(/area/station/security/checkpoint/medical, /area/station/medical/medbay/lobby)
+
+/datum/area_spawn/customs_agent_landmark
+	desired_atom = /obj/effect/landmark/start/customs_agent
+	target_areas = list(/area/station/security/checkpoint/supply, /area/station/cargo/storage)
