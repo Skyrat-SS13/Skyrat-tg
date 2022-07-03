@@ -3,7 +3,7 @@
 	var/config_path = "_maps/skyrat/automapper/automapper_config.toml"
 
 /datum/unit_test/automapper/Run()
-	var/test_config = rustg_read_toml_file(config_file)
+	var/test_config = rustg_read_toml_file(config_path)
 
 	if(!test_config)
 		TEST_FAIL("Automapper could not read/find TOML config [config_path]!")
