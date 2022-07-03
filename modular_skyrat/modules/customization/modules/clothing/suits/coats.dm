@@ -164,18 +164,14 @@
 	flags_inv = HIDEEARS|HIDEEYES|HIDEHAIR|HIDEFACIALHAIR
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/suit/urban/polychromic
+/obj/item/clothing/suit/urban
 	name = "urban coat"
 	desc = "A coat built for urban life."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	icon_state = "urbanjacket"
+	icon_state = "urban_coat"
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
-
-/obj/item/clothing/suit/urban/polychromic/ComponentInitialize()
-	. = ..()
-	AddElement(/datum/element/polychromic, list("#55DD55", "#EEEEAA", "#333333"))
-
+	greyscale_config = /datum/greyscale_config/urban_coat
+	greyscale_config_worn = /datum/greyscale_config/urban_coat/worn
+	greyscale_colors = "#252e5a#938060#66562b"
 
 /obj/item/clothing/suit/toggle/deckard
 	name = "runner coat"
