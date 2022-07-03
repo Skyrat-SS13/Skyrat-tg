@@ -75,15 +75,15 @@ export const RADIO_PREFIXES = {
     label: 'Intdyn',
   },
   ':q ': {
-    id: 'Cybersun',
+    id: 'cybersun',
     label: 'Cyber',
   },
   ':g ': {
-    id: 'Guild',
+    id: 'guild',
     label: 'Guild',
   },
   ':k ': {
-    id: 'Tarkon',
+    id: 'tarkon',
     label: 'Tarkon',
   },
 } as const;
