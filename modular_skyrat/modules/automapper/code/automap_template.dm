@@ -5,6 +5,9 @@
 	/// The map for which we load on
 	var/override_map_name
 
+/**
+ * Used to calculate the area affected and set up the template for immediate and easy loading.
+ */
 /datum/map_template/automap_template/proc/preload(map_file, incoming_override_map_name, incoming_load_turf, template_name)
 	if(!map_file)
 		return
