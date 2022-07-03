@@ -152,7 +152,7 @@ SUBSYSTEM_DEF(area_spawn)
 
 /datum/area_spawn/science_guard_landmark
 	desired_atom = /obj/effect/landmark/start/science_guard
-	target_areas = list(/area/station/security/checkpoint/science/research, /area/station/science/lobby)
+	target_areas = list(/area/station/security/checkpoint/science/research, /area/station/science/lobby, /area/station/science/lab)
 
 /datum/area_spawn/orderly_landmark
 	desired_atom = /obj/effect/landmark/start/orderly
