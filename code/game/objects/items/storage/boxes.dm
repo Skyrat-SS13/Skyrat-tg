@@ -120,11 +120,15 @@
 		new mask_type(src)
 	//SKYRAT EDIT ADDITION START - VOX INTERNALS - Honestly I dont know if this has a function any more with wardrobe_removal(), but TG still uses the plasmaman one so better safe than sorry
 	if(!isplasmaman(loc))
+<<<<<<< HEAD
 		if(isvox(loc))
 			new /obj/item/tank/internals/nitrogen/belt/emergency(src)
 		else
 			new mask_type(src)
 			new internal_type(src)
+=======
+		new internal_type(src)
+>>>>>>> 258d553b68b (Crew starts with the right amount of breathing mask again (#68153))
 	else
 		new /obj/item/tank/internals/plasmaman/belt(src)
 	//SKYRAT EDIT ADDITION END - VOX INTERNALS
