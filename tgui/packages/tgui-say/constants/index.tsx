@@ -70,4 +70,20 @@ export const RADIO_PREFIXES = {
     id: 'centcom',
     label: 'CCom',
   },
+  ':w ': {
+    id: 'interdyne',
+    label: 'Intdyn',
+  },
+  ':q ': {
+    id: 'Cybersun',
+    label: 'Cyber',
+  },
+  ':g ': {
+    id: 'Guild',
+    label: 'Guild',
+  },
+  ':k ': {
+    id: 'Tarkon',
+    label: 'Tarkon',
+  },
 } as const;
