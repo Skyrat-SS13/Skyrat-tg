@@ -1,5 +1,5 @@
 #define RESTRICTED_OBJECTS_LIST list(/obj/machinery/recharge_station)
-#define RESTRICTED_CARDINAL_OBJECTS_LIST list(/obj/machinery/disposal/bin, /obj/structure/table, /obj/machinery/door)
+#define RESTRICTED_CARDINAL_OBJECTS_LIST list(/obj/machinery/disposal/bin, /obj/structure/table, /obj/machinery/door, /obj/structure/closet)
 
 SUBSYSTEM_DEF(area_spawn)
 	name = "Area Spawn"
@@ -85,9 +85,6 @@ SUBSYSTEM_DEF(area_spawn)
 					break
 			if(totally_empty)
 				available_empty_turfs += iterating_turf
-				new /obj/effect/turf_test/empty(iterating_turf)
-			else
-				new /obj/effect/turf_test(iterating_turf)
 			available_turfs += iterating_turf
 
 	if(!LAZYLEN(available_turfs))
@@ -137,9 +134,8 @@ SUBSYSTEM_DEF(area_spawn)
 
 // Structures
 /datum/area_spawn/secmed_locker
-	target_areas = list(/area/station/security/medical)
+	target_areas = list(/area/station/security/medical, /area/station/security/lockers)
 	desired_atom = /obj/structure/closet/secure_closet/security_medic
-	wall_hug = TRUE
 
 /datum/area_spawn/blueshield_locker
 	target_areas = list(/area/station/command/heads_quarters/captain, /area/station/command/bridge)
