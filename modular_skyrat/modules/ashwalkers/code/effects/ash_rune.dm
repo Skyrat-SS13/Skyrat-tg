@@ -23,7 +23,7 @@ GLOBAL_LIST_EMPTY(ash_rituals)
 	. += span_warning("The required components are as follows:")
 	for(var/the_components in current_ritual.required_components)
 		var/atom/component_name = current_ritual.required_components[the_components]
-		. += span_warning("[dir_num_to_text(the_components, TRUE)] component is [initial(component_name.name)]")
+		. += span_warning("[capitalize(dir2text(the_components))] component is [initial(component_name.name)]")
 
 /obj/effect/ash_rune/Initialize(mapload, spawn_runes = TRUE)
 	. = ..()
