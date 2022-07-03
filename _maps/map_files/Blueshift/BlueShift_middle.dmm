@@ -2559,10 +2559,10 @@
 	id_tag = "permainner";
 	name = "Permabrig Transfer"
 	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 8
-	},
 /obj/effect/mapping_helpers/airlock/access/all/security/brig,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
+	cycle_id = "perma-transfer"
+	},
 /turf/open/floor/iron/dark,
 /area/station/security/prison)
 "awY" = (
@@ -6816,14 +6816,19 @@
 /area/station/maintenance/starboard/fore)
 "bHu" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/security{
-	req_access = list("brig","brig_entrance","leave_genpop")
-	},
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
 	dir = 4
+	},
+/obj/machinery/door/airlock/security/glass{
+	id_tag = "permainner";
+	name = "Permabrig Transfer"
+	},
+/obj/effect/mapping_helpers/airlock/access/all/security/brig,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
+	cycle_id = "perma-transfer"
 	},
 /turf/open/floor/iron/dark,
 /area/station/security/prison)
@@ -13090,10 +13095,10 @@
 	id_tag = "permaouter";
 	name = "Permabrig Transfer"
 	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 4
-	},
 /obj/effect/mapping_helpers/airlock/access/all/security/brig,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
+	cycle_id = "perma-transfer"
+	},
 /turf/open/floor/iron/dark,
 /area/station/security/prison)
 "dPK" = (
