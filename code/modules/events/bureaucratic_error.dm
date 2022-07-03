@@ -27,5 +27,5 @@
 	for(var/datum/job/current as anything in jobs)
 		if(!current.allow_bureaucratic_error)
 			continue
-		var/ran = rand(0,4) // SKYRAT EDIT - no more locking off jobs
+		var/ran = rand(0,3) // SKYRAT EDIT - no more locking off jobs
 		current.total_positions = max(current.total_positions + ran, 0)
