@@ -7,6 +7,7 @@ It supports two types of automapping, simple area automapper and template automa
 
 ## Simple Area Automapper
 What this will do is check an area for a suitable single tile to spawn an object in. It uses "intelligent" heatmapping to choose a suitable place.
+It uses an algorithm to decide where to place a singular item, it will avoid blocking hallways or doors.
 
 ## Template Automapper
 This automapper is designed to load templates over existing maps using a template file and entry in the config toml.

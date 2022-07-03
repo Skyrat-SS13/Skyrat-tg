@@ -14,7 +14,7 @@ SUBSYSTEM_DEF(area_spawn)
  * Use these to spawn atoms in areas instead of placing them on a map. It will select any available open and entering turf.
  */
 /datum/area_spawn
-	/// The target area for us to spawn the desired atom
+	/// The target area for us to spawn the desired atom, the list is formatted, highest priority first.
 	var/list/target_areas
 	/// The atom that we want to spawn
 	var/desired_atom
@@ -27,6 +27,9 @@ SUBSYSTEM_DEF(area_spawn)
 	/// Map blacklist, this is used to determine what maps we should not spawn on.
 	var/list/blacklisted_stations = list("Blueshift", "Runtime Station", "MultiZ Debug")
 
+/**
+ * Attempts to find a location using an algorithm to spawn the desired atom.
+ */
 /datum/area_spawn/proc/try_spawn()
 	if(SSmapping.config.map_name in blacklisted_stations)
 		return
@@ -83,9 +86,13 @@ SUBSYSTEM_DEF(area_spawn)
 
 	for(var/i in 1 to amount_to_spawn)
 		if(LAZYLEN(available_empty_turfs))
-			new desired_atom(pick(available_empty_turfs))
+			var/turf/picked_turf = pick(available_empty_turfs)
+			available_empty_turfs -= picked_turf
+			new desired_atom(picked_turf)
 		else
-			new desired_atom(pick(available_turfs))
+			var/turf/picked_turf = pick(available_turfs)
+			available_turfs -= picked_turf
+			new desired_atom(picked_turf)
 
 // Pets
 /datum/area_spawn/markus
