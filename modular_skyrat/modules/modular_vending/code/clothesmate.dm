@@ -46,7 +46,7 @@
 		/obj/item/clothing/shoes/wraps/colourable = 5,
 		/obj/item/clothing/shoes/jungleboots = 5,
 		/obj/item/clothing/shoes/jackboots/knee = 5,
-		/obj/item/clothing/suit/duster/colorable = 5,
+		/obj/item/clothing/suit/duster = 5,
 		/obj/item/clothing/suit/toggle/peacoat = 5,
 		/obj/item/clothing/suit/toggle/trackjacket = 5,
 		/obj/item/clothing/suit/modernwintercoatthing = 5,
