@@ -12,5 +12,5 @@
 	if(clear_everything)
 		var/list/turfs_to_annihilate = get_affected_turfs(T, centered)
 		for(var/turf/iterating_turf as anything in turfs_to_annihilate)
-			iterating_turf.empty()
+			iterating_turf.clear_everything()
 	. = ..()
