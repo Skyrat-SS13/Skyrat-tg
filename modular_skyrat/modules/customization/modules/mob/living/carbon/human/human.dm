@@ -127,7 +127,7 @@
 		if("jittering")
 			set_timed_status_effect(duration SECONDS, /datum/status_effect/jitter, only_if_higher = TRUE)
 		if("stupidness")
-			set_timed_status_effect(duration SECONDS, /datum/status_effect/speech/stutter/derpspeech, only_if_higher = TRUE)
+			set_timed_status_effect(duration SECONDS, /datum/status_effect/speech/unintelligible, only_if_higher = TRUE)
 
 	if(duration)
 		addtimer(CALLBACK(src, .proc/acting_expiry, impairment), duration SECONDS)
@@ -139,3 +139,14 @@
 			SEND_SIGNAL(usr, COMSIG_CLEAR_MOOD_EVENT, "drunk")
 
 		to_chat(src, "You are no longer feigning [impairment].")
+
+/datum/status_effect/speech/unintelligible/handle_message(datum/source, list/message_args)
+	var/message = html_decode(message_args[1])
+	// This is simulating the TRAIT_UNINTELLIGIBLE_SPEECH without actually giving the trait
+	message = unintelligize(message)
+
+	message_args[1] = message
+
+	var/mob/living/living_source = source
+	if(!isliving(source) || living_source.has_status_effect(/datum/status_effect/speech/unintelligible))
+		return
