@@ -61,16 +61,11 @@
 
 	var/atom/target = holding || get_turf(src)
 	scrub(target.return_air())
-<<<<<<< HEAD
-
 	//SKYRAT EDIT ADDITION
 	for(var/turf/open/open_turf in view(3, src))
 		if(open_turf.pollution)
 			open_turf.pollution.ScrubAmount(POLLUTION_HEIGHT_DIVISOR)
 	//SKYRAT EDIT END
-
-=======
->>>>>>> a9f5dbfc546 (Refactors canister damage calculation (#68142))
 	return ..()
 
 /**
