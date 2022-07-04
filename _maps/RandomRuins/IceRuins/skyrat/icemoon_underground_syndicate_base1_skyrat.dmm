@@ -1082,10 +1082,11 @@
 /turf/open/floor/iron/dark,
 /area/ruin/syndicate_lava_base/cargo)
 "jy" = (
-/obj/structure/table/reinforced,
-/obj/item/storage/bag/tray,
-/turf/open/floor/iron/kitchen,
-/area/ruin/syndicate_lava_base/bar)
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/ruin/syndicate_lava_base/dormitories)
 "jH" = (
 /obj/structure/table/wood,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -2348,13 +2349,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/dormitories)
-"xn" = (
-/obj/machinery/button/door/directional/west{
-	id = "interdynedorms";
-	req_access = list("syndicate")
-	},
-/turf/open/floor/iron,
-/area/ruin/syndicate_lava_base/dormitories)
 "xo" = (
 /obj/structure/bed,
 /obj/item/bedsheet/brown,
@@ -3217,16 +3211,6 @@
 /area/ruin/syndicate_lava_base/engineering)
 "He" = (
 /obj/structure/table/reinforced,
-/obj/item/plate,
-/obj/item/plate{
-	pixel_y = 2
-	},
-/obj/item/plate{
-	pixel_y = 4
-	},
-/obj/item/plate{
-	pixel_y = 6
-	},
 /turf/open/floor/iron/kitchen,
 /area/ruin/syndicate_lava_base/bar)
 "Hn" = (
@@ -4257,8 +4241,9 @@
 /turf/open/floor/plating/icemoon,
 /area/ruin/syndicate_lava_base/engineering)
 "TI" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
-	dir = 1
+/obj/machinery/button/door/directional/west{
+	id = "interdynedorms";
+	req_access = list("syndicate")
 	},
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/dormitories)
@@ -5929,7 +5914,7 @@ Jd
 xm
 Jd
 Jd
-xn
+TI
 HU
 Kb
 CR
@@ -5990,7 +5975,7 @@ Fn
 Fn
 UO
 UO
-TI
+jy
 CR
 ab
 ab
@@ -6698,7 +6683,7 @@ Kv
 NN
 YI
 Rc
-jy
+He
 Au
 td
 ab
