@@ -123,7 +123,6 @@
 		if(isvox(loc))
 			new /obj/item/tank/internals/nitrogen/belt/emergency(src)
 		else
-			new mask_type(src)
 			new internal_type(src)
 	else
 		new /obj/item/tank/internals/plasmaman/belt(src)
