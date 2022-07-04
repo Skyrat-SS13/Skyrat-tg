@@ -1,5 +1,8 @@
 name: automerge
 on:
+  pull_request_review:
+    types:
+      - submitted
   check_suite:
     types:
       - completed
@@ -15,7 +18,7 @@ jobs:
           GITHUB_TOKEN: "${{ secrets.AUTOMERGE }}"
           MERGE_LABELS: "automerge"
           MERGE_REMOVE_LABELS: ""
-          MERGE_METHOD: "squash"
+          MERGE_METHOD: "merge"
           MERGE_COMMIT_MESSAGE: "pull-request-title"
           MERGE_FORKS: "false"
           MERGE_RETRIES: "12"
