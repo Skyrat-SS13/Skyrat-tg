@@ -104,8 +104,10 @@
 	return markings
 
 /datum/species/mammal/get_species_description()
-	return "This is a template species for your own creations!"
+	return {"Anthromorph is a catch-all term for any anthropomorphic creature, often mammalian, that is either not registered in any official Sapient Universal Species Database under the Sol Federation, Taj Empire, Agurrkral Kingdom, Novaya Rossiyskaya Imperiya, and other major States - or is simply a result of genetical modification."}
 
 
 /datum/species/mammal/get_species_lore()
-	return list("Make sure you fill out your own custom species lore!")
+	return list({"Anthromorphs are a template species! You can write any sort of backstory as long as it's compliant with the Character Creation Guidelines document.
+	
+	If you have no idea what to do, a regular course of action is writing them as a gene-modded Human."})
