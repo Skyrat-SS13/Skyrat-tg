@@ -30,11 +30,19 @@
 	slot = ORGAN_SLOT_EXTERNAL_TAUR
 	layers = ALL_EXTERNAL_OVERLAYS
 	external_bodytypes = BODYTYPE_TAUR
+	color_source = ORGAN_COLOR_OVERRIDE
 
 	feature_key = "taur"
 	preference = "feature_taur"
 	mutantpart_key = "taur"
 	mutantpart_info = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_COLOR_LIST = list("#FFFFFF", "#FFFFFF", "#FFFFFF"))
+
+
+/obj/item/organ/external/taur_body/override_color(rgb_value)
+	if(mutantpart_key)
+		return mutantpart_info[MUTANT_INDEX_COLOR_LIST][1]
+
+	return rgb_value
 
 
 /obj/item/organ/external/taur_body/get_global_feature_list()
