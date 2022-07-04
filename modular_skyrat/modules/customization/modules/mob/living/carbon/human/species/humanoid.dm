@@ -31,7 +31,13 @@
 	examine_limb_id = SPECIES_HUMAN
 
 /datum/species/humanoid/get_species_description()
-	return "This is a template species for your own creations!"
+	return {"In the current day, Humanoid is a catch-all term for any sapient being that is not anthropomorphic in nature but rather closely resembles a regular Human being. They may also be called different terms, like \"Demi-Human\" or \"Kemonomimi\"."}
 
 /datum/species/humanoid/get_species_lore()
-	return list("Make sure you fill out your own custom species lore!")
+	return list({"The idea of Humans with traditionally non-human characteristics has been a thing since the moment civilization was born in Sol-3. Various types of folklore and religion, such as creatures the likes of Sirens, Satyrs, Lamias, Ogres, and Orcs or Ancient Egyptian gods like Sobek and Anubis have been presented as different types of \"Humanoids\".
+	
+	For over five-hundred years, the concept Humanoids has consistently found itself represented in pop culture, most notably Asian entertainment.
+	
+	It should come off as no surprise that when aesthetic genetical modification was readily available, the first distinct group of users were closely knit with previously mentioned tales of folklore and pop culture.
+	
+	In modern space-states like the Sol Federation, one may find that Humanoids are an extremely common sight - sometimes even surpassing regular Humans in numbers. Nonetheless, they may still encounter discrimination from puritan groups."})
