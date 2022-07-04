@@ -88,6 +88,8 @@
 		'sound/voice/lizard/lizard_scream_3.ogg',
 	)
 
+//SKYRAT EDIT REMOVAL BEGIN - OVERRIDEN MODULARLY IN modular_skyrat/modules/customization/modules/mob/living/carbon/human/species/lizard.dm
+/*
 /datum/species/lizard/get_species_description()
 	return "The militaristic Lizardpeople hail originally from Tizira, but have grown \
 		throughout their centuries in the stars to possess a large spacefaring \
@@ -112,6 +114,8 @@
 		"On their homeworld, lizards celebrate their 16th birthday by enrolling in a mandatory 5 year military tour of duty. \
 		Roles range from combat to civil service and everything in between. As the old slogan goes: \"Your place will be found!\"",
 	)
+*/
+//SKYRAT EDIT REMOVAL END
 
 // Override for the default temperature perks, so we can give our specific "cold blooded" perk.
 /datum/species/lizard/create_pref_temperature_perks()
