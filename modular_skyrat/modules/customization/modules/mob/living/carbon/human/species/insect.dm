@@ -50,7 +50,9 @@
 	)
 
 /datum/species/insect/get_species_description()
-	return placeholder_description
+	return {"Anthromorphic Insect is a catch-all term for any anthropomorphic creature, often arthropods, that is either not registered in any official Sapient Universal Species Database under the Sol Federation, Taj Empire, Agurrkral Kingdom, Novaya Rossiyskaya Imperiya, and other major States - or is simply a result of genetical modification."}
 
 /datum/species/insect/get_species_lore()
-	return list(placeholder_lore)
+	return list({"Anthromorphic Insects are a template species! You can write any sort of backstory as long as it's compliant with the Character Creation Guidelines document.
+	
+	If you have no idea what to do, a regular course of action is writing them as a gene-modded Human."})
