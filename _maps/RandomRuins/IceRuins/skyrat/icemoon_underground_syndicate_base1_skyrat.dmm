@@ -163,13 +163,6 @@
 	},
 /turf/open/floor/iron/kitchen,
 /area/ruin/syndicate_lava_base/bar)
-"be" = (
-/obj/machinery/button/door/directional/west{
-	id = "interdynedorms";
-	req_access = list("syndicate")
-	},
-/turf/open/floor/iron,
-/area/ruin/syndicate_lava_base/dormitories)
 "bf" = (
 /obj/structure/rack,
 /obj/item/cultivator,
@@ -2355,6 +2348,13 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/dormitories)
+"xn" = (
+/obj/machinery/button/door/directional/west{
+	id = "interdynedorms";
+	req_access = list("syndicate")
+	},
+/turf/open/floor/iron,
+/area/ruin/syndicate_lava_base/dormitories)
 "xo" = (
 /obj/structure/bed,
 /obj/item/bedsheet/brown,
@@ -2747,10 +2747,6 @@
 "Cj" = (
 /obj/machinery/light/directional/west,
 /turf/open/floor/iron,
-/area/ruin/syndicate_lava_base/main)
-"Ct" = (
-/obj/machinery/porta_turret/syndicate,
-/turf/closed/wall/r_wall/syndicate/nodiagonal,
 /area/ruin/syndicate_lava_base/main)
 "CC" = (
 /obj/structure/table,
@@ -3304,6 +3300,9 @@
 "If" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 1
+	},
+/obj/machinery/airalarm/directional/south{
+	req_access = list("syndicate")
 	},
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/bar)
@@ -4258,12 +4257,11 @@
 /turf/open/floor/plating/icemoon,
 /area/ruin/syndicate_lava_base/engineering)
 "TI" = (
-/obj/machinery/airalarm/directional/south{
-	req_access = list("syndicate")
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 1
 	},
-/obj/machinery/light/directional/south,
 /turf/open/floor/iron,
-/area/ruin/syndicate_lava_base/bar)
+/area/ruin/syndicate_lava_base/dormitories)
 "TO" = (
 /obj/machinery/door/airlock/mining/glass{
 	name = "Cargo Bay"
@@ -4780,11 +4778,9 @@
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/dormitories)
 "ZF" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
-	dir = 1
-	},
-/turf/open/floor/iron,
-/area/ruin/syndicate_lava_base/dormitories)
+/obj/machinery/porta_turret/syndicate,
+/turf/closed/wall/r_wall/syndicate/nodiagonal,
+/area/ruin/syndicate_lava_base/main)
 "ZK" = (
 /obj/structure/sign/directions/supply{
 	dir = 1;
@@ -5933,7 +5929,7 @@ Jd
 xm
 Jd
 Jd
-be
+xn
 HU
 Kb
 CR
@@ -5994,7 +5990,7 @@ Fn
 Fn
 UO
 UO
-ZF
+TI
 CR
 ab
 ab
@@ -6645,7 +6641,7 @@ NJ
 SI
 NJ
 bd
-Ct
+ZF
 ab
 ab
 ab
@@ -6813,7 +6809,7 @@ nd
 td
 iZ
 dR
-TI
+sc
 td
 td
 pK
