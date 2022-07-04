@@ -31,7 +31,7 @@
 /obj/item/summon_beacon/examine()
 	. = ..()
 	. += span_warning("Caution: Only works in [area_string].")
-	. += span_notice("Currently selected: [selected_atom ? selected_atom.name : "None"].")
+	. += span_notice("Currently selected: [selected_atom ? initial(selected_atom.name) : "None"].")
 
 /obj/item/summon_beacon/attack_self(mob/user)
 	if(!can_use_beacon(user))
@@ -86,7 +86,7 @@
 		balloon_alert(user, "can't call here!")
 		return
 
-	var/confirmed = tgui_alert(user, "Are you sure you want to call [selected_atom.name] here?", "Confirmation", list("Yes", "No"))
+	var/confirmed = tgui_alert(user, "Are you sure you want to call [initial(selected_atom.name)] here?", "Confirmation", list("Yes", "No"))
 	if(confirmed != "Yes")
 		return
 
