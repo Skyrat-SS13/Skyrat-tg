@@ -24,6 +24,11 @@
 	. = ..()
 	AddComponent(/datum/component/gags_recolorable)
 
+/obj/item/card/id/advanced/colourable/examine(mob/user)
+	. = ..()
+	. += span_info("You could change its colours with a <b>spray can</b>!")
+
+
 // SOLFED
 /obj/item/card/id/advanced/solfed
 	name = "solfed identification card"
