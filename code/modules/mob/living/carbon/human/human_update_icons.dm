@@ -188,6 +188,7 @@ There are several things that need to be remembered:
 				female_uniform = woman ? uniform.female_sprite_flags : null,
 				override_state = target_overlay,
 				override_file = handled_by_bodytype ? icon_file : null,
+				taur_bodytype = uniform.gets_cropped_on_taurs && (dna.species.bodytype & BODYTYPE_TAUR), // SKYRAT EDIT ADDITION - Taur-friendly uniforms!
 			)
 
 		if(!handled_by_bodytype && (OFFSET_UNIFORM in dna.species.offset_features)) // SKYRAT EDIT CHANGE
@@ -561,7 +562,12 @@ There are several things that need to be remembered:
 		if(!(icon_exists(icon_file, RESOLVE_ICON_STATE(worn_item))))
 			icon_file = DEFAULT_SUIT_FILE
 
-		suit_overlay = wear_suit.build_worn_icon(default_layer = SUIT_LAYER, default_icon_file = icon_file, override_file = mutant_override ? icon_file : null) // SKYRAT EDIT CHANGE
+		// SKYRAT EDIT ADDITION START - Taur-friendly suits!
+		var/obj/item/clothing/suit/worn_suit = wear_suit
+		if(!istype(wear_suit))
+			worn_suit = null
+		// SKYRAT EDIT END
+		suit_overlay = wear_suit.build_worn_icon(default_layer = SUIT_LAYER, default_icon_file = icon_file, override_file = mutant_override ? icon_file : null, taur_bodytype = worn_suit?.gets_cropped_on_taurs && (dna.species.bodytype & BODYTYPE_TAUR)) // SKYRAT EDIT CHANGE - Mutant bodytypes and Taur-friendly suits!
 
 		if(!suit_overlay)
 			return
@@ -843,10 +849,10 @@ in this situation default_icon_file is expected to match either the lefthand_ or
 female_uniform: A value matching a uniform item's female_sprite_flags var, if this is anything but NO_FEMALE_UNIFORM, we
 generate/load female uniform sprites matching all previously decided variables
 
-
+taur_bodytype: The taur bodytype associated to the item we're trying to wear. Can be NONE even on a taur, if the item isn't meant to be cropped. // SKYRAT EDIT ADDITION - Taur-friendly suits and uniforms
 */
 
-/obj/item/proc/build_worn_icon(default_layer = 0, default_icon_file = null, isinhands = FALSE, female_uniform = NO_FEMALE_UNIFORM, override_state = null, override_file = null)
+/obj/item/proc/build_worn_icon(default_layer = 0, default_icon_file = null, isinhands = FALSE, female_uniform = NO_FEMALE_UNIFORM, override_state = null, override_file = null, taur_bodytype = NONE) // SKYRAT EDIT - Taur-friendly outfits (added `taur_bodytype` argument)
 
 	//Find a valid icon_state from variables+arguments
 	var/t_state
@@ -869,6 +875,10 @@ generate/load female uniform sprites matching all previously decided variables
 		standing = wear_female_version(t_state, file2use, layer2use, female_uniform, greyscale_colors) //should layer2use be in sync with the adjusted value below? needs testing - shiz
 	if(!standing)
 		standing = mutable_appearance(file2use, t_state, -layer2use)
+	// SKYRAT EDIT ADDITION START - Taur-friendly uniforms and suits
+	if(taur_bodytype)
+		standing = wear_taur_version(standing.icon_state, standing.icon, layer2use, female_uniform, greyscale_colors)
+	// SKYRAT EDIT END
 
 	//Get the overlays for this item when it's being worn
 	//eg: ammo counters, primed grenade flashes, etc.
