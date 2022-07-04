@@ -1,19 +1,40 @@
-import { useBackend } from '../backend';
+import { useBackend, useLocalState } from '../backend';
 import { Window } from '../layouts';
-import { Box, Dropdown, LabeledList, ProgressBar, Section } from '../components';
+import { Box, Dropdown, LabeledList, ProgressBar, Section, Button, Input } from '../components';
 
 export const NifPanel = (props, context) => {
   const { act, data } = useBackend(context);
   const { linked_mob_name } = data;
+  const [settingsOpen, setSettingsOpen] = useLocalState(
+    context,
+    settingsOpen,
+    false
+  );
+
   return (
     <Window
-      title={'Nanite Implant Frameworkk'}
+      title={'Nanite Implant Framework'}
       width={500}
       height={400}
       resizable>
       <Window.Content>
-        <Section title={'Welcome to your NIF, ' + linked_mob_name}>
-          <NifStats />
+        <Section
+          title={'Welcome to your NIF, ' + linked_mob_name}
+          buttons={
+            <Button
+              icon="cogs"
+              tooltip="NIF Settings"
+              tooltiptooltipPosition="bottom-end"
+              selected={settingsOpen}
+              onClick={() => setSettingsOpen(!settingsOpen)}
+            />
+          }>
+          {(settingsOpen && <NifSettings />) || <NifStats />}
+          {!settingsOpen && (
+            <Section title={'NIFSoft Programs'}>
+              <NifPrograms />
+            </Section>
+          )}
         </Section>
       </Window.Content>
     </Window>
@@ -26,7 +47,10 @@ const NifSettings = (props, context) => {
   return (
     <LabeledList>
       <LabeledList.Item label="NIF Theme">
-        <Dropdown />
+        <Dropdown width="100%" />
+      </LabeledList.Item>
+      <LabeledList.Item>
+        <Input label="Custom Examine Text" />
       </LabeledList.Item>
     </LabeledList>
   );
@@ -66,5 +90,17 @@ const NifStats = (props, context) => {
         </LabeledList.Item>
       </LabeledList>
     </Box>
+  );
+};
+
+const NifPrograms = (props, context) => {
+  const { act, data } = useBackend(context);
+  const { theme, product_notes } = data;
+  return (
+    <LabeledList>
+      <LabeledList.Item label="NIF Theme">
+        <Dropdown />
+      </LabeledList.Item>
+    </LabeledList>
   );
 };
