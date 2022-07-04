@@ -56,7 +56,9 @@
 	lizard.update_body(TRUE)
 
 /datum/species/lizard/get_species_description()
-	return {"Lizardperson is a catch-all term for any anthropomorphic creature, often reptilian, that is either not registered in any official Sapient Universal Species Database under the Sol Federation, Taj Empire, Agurrkral Kingdom, Novaya Rossiyskaya Imperiya, and other major States - or is simply a result of genetical modification."}
+	return {"Lizardperson is a catch-all term for any anthropomorphic creature, often reptilian, \
+	that is either not registered in any official Sapient Universal Species Database under the Sol Federation, Taj Empire, Agurrkral Kingdom, Novaya Rossiyskaya Imperiya, and other major States \
+	- or is simply a result of genetical modification."}
 
 
 /datum/species/lizard/get_species_lore()
