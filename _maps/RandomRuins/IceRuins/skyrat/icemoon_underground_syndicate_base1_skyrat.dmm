@@ -1020,7 +1020,6 @@
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/medbay)
 "jc" = (
-/obj/structure/table,
 /obj/machinery/light/directional/east,
 /turf/open/floor/iron/dark,
 /area/ruin/syndicate_lava_base/bar)
@@ -2451,6 +2450,7 @@
 /obj/machinery/door/airlock/maintenance/external,
 /obj/structure/fans/tiny,
 /obj/structure/cable,
+/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
 /turf/open/floor/plating,
 /area/ruin/syndicate_lava_base/medbay)
 "yB" = (
@@ -2807,6 +2807,13 @@
 	id = "interdynedorms"
 	},
 /turf/open/floor/plating,
+/area/ruin/syndicate_lava_base/dormitories)
+"CS" = (
+/obj/machinery/button/door/directional/west{
+	id = "interdynedorms";
+	req_access = list("syndicate")
+	},
+/turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/dormitories)
 "CX" = (
 /obj/effect/turf_decal/siding/thinplating/dark{
@@ -3714,6 +3721,7 @@
 /area/ruin/syndicate_lava_base/medbay)
 "Ny" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/table,
 /turf/open/floor/iron/dark/textured_corner{
 	dir = 8
 	},
@@ -3863,7 +3871,9 @@
 /turf/open/floor/wood,
 /area/ruin/syndicate_lava_base/testlab)
 "OV" = (
-/obj/structure/chair,
+/obj/structure/chair{
+	dir = 8
+	},
 /obj/machinery/computer/security/telescreen/entertainment/directional/east,
 /turf/open/floor/iron/dark,
 /area/ruin/syndicate_lava_base/bar)
@@ -4241,12 +4251,11 @@
 /turf/open/floor/plating/icemoon,
 /area/ruin/syndicate_lava_base/engineering)
 "TI" = (
-/obj/machinery/button/door/directional/west{
-	id = "interdynedorms";
-	req_access = list("syndicate")
+/obj/structure/chair{
+	dir = 4
 	},
-/turf/open/floor/iron,
-/area/ruin/syndicate_lava_base/dormitories)
+/turf/open/floor/iron/dark,
+/area/ruin/syndicate_lava_base/bar)
 "TO" = (
 /obj/machinery/door/airlock/mining/glass{
 	name = "Cargo Bay"
@@ -4329,9 +4338,11 @@
 /turf/open/floor/wood,
 /area/ruin/syndicate_lava_base/dormitories)
 "UV" = (
-/obj/structure/frame/machine,
 /obj/item/stack/cable_coil/five,
 /obj/item/circuitboard/machine/ore_silo,
+/obj/structure/frame/machine{
+	anchored = 1
+	},
 /turf/open/floor/iron/corner,
 /area/ruin/syndicate_lava_base/main)
 "UX" = (
@@ -5914,7 +5925,7 @@ Jd
 xm
 Jd
 Jd
-TI
+CS
 HU
 Kb
 CR
@@ -6264,7 +6275,7 @@ tM
 dR
 xl
 NY
-XT
+TI
 HI
 XT
 Lp
@@ -6384,7 +6395,7 @@ dR
 NY
 OV
 jc
-FF
+XT
 cZ
 xf
 sF
