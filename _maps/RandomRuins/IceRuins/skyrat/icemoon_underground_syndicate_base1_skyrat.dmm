@@ -9,24 +9,22 @@
 /turf/closed/mineral/random/snow/underground,
 /area/icemoon/underground/explored)
 "ad" = (
-/obj/machinery/door/airlock/external{
-	req_access = list("syndicate")
-	},
+/obj/machinery/door/airlock/external,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /obj/structure/fans/tiny,
+/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
 /turf/open/floor/plating,
 /area/ruin/syndicate_lava_base/cargo)
 "ag" = (
 /turf/open/floor/plating,
 /area/ruin/syndicate_lava_base/cargo)
 "ai" = (
-/obj/machinery/door/airlock/external{
-	req_access = list("syndicate")
-	},
+/obj/machinery/door/airlock/external,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 1
 	},
 /obj/structure/fans/tiny,
+/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
 /turf/open/floor/plating,
 /area/ruin/syndicate_lava_base/cargo)
 "ak" = (
@@ -39,7 +37,7 @@
 	},
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/directional/north{
-	req_access = list(150)
+	req_access = list("syndicate")
 	},
 /obj/machinery/vending/wardrobe/syndie_wardrobe{
 	onstation = 0
@@ -59,12 +57,12 @@
 /area/ruin/syndicate_lava_base/engineering)
 "ar" = (
 /obj/machinery/door/airlock/command{
-	name = "Deck Officer";
-	req_access = list("syndicate_leader")
+	name = "Deck Officer"
 	},
 /obj/effect/turf_decal/siding/wood,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/mapping_helpers/airlock/access/all/syndicate/leader,
 /turf/open/floor/wood,
 /area/ruin/syndicate_lava_base/cargo)
 "as" = (
@@ -74,17 +72,18 @@
 /turf/open/floor/plating,
 /area/ruin/syndicate_lava_base/testlab)
 "au" = (
-/obj/effect/turf_decal/siding/thinplating/dark{
-	dir = 1
+/obj/structure/table/glass,
+/obj/item/book/random{
+	pixel_y = 3
 	},
-/obj/effect/turf_decal/siding/thinplating/dark,
-/obj/machinery/firealarm/directional/east{
-	dir = 8
+/turf/open/floor/wood/tile,
+/area/ruin/syndicate_lava_base/dormitories)
+"aA" = (
+/obj/machinery/conveyor{
+	dir = 1;
+	id = "interdynedisp"
 	},
-/obj/effect/mob_spawn/ghost_role/human/lavaland_syndicate/ice{
-	dir = 8
-	},
-/turf/open/floor/iron/kitchen,
+/turf/open/floor/plating/lavaland_atmos,
 /area/ruin/syndicate_lava_base/bar)
 "aB" = (
 /obj/structure/window/reinforced/survival_pod{
@@ -93,12 +92,11 @@
 /turf/open/floor/engine,
 /area/ruin/syndicate_lava_base/testlab)
 "aE" = (
-/obj/machinery/door/airlock/external{
-	req_access = list("syndicate")
-	},
+/obj/machinery/door/airlock/external,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 4
 	},
+/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
 /turf/open/floor/plating,
 /area/ruin/syndicate_lava_base/cargo)
 "aG" = (
@@ -127,6 +125,7 @@
 	id = "interdynecargoout"
 	},
 /obj/structure/closet/crate,
+/obj/item/vending_refill/wardrobe/syndie_wardrobe,
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/cargo)
 "aT" = (
@@ -143,7 +142,6 @@
 /obj/effect/turf_decal/siding/wood{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/wood,
 /area/ruin/syndicate_lava_base/testlab)
 "aY" = (
@@ -155,6 +153,14 @@
 "bd" = (
 /obj/structure/table/reinforced,
 /obj/machinery/light/directional/south,
+/obj/effect/spawner/random/food_or_drink/donkpockets{
+	pixel_y = 7;
+	pixel_x = 10
+	},
+/obj/item/storage/box/donkpockets{
+	pixel_y = 5;
+	pixel_x = -7
+	},
 /turf/open/floor/iron/kitchen,
 /area/ruin/syndicate_lava_base/bar)
 "bf" = (
@@ -198,7 +204,7 @@
 	dir = 1
 	},
 /obj/structure/closet/secure_closet/freezer/kitchen{
-	req_access = list(150)
+	req_access = list("syndicate")
 	},
 /obj/item/reagent_containers/food/condiment/milk,
 /obj/item/reagent_containers/food/condiment/soymilk,
@@ -311,6 +317,14 @@
 	},
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/cargo)
+"bY" = (
+/obj/machinery/door/airlock/grunge{
+	name = "Morgue"
+	},
+/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
+/obj/structure/fans/tiny,
+/turf/open/floor/plating/lavaland_atmos,
+/area/ruin/syndicate_lava_base/medbay)
 "ca" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/railing{
@@ -367,11 +381,11 @@
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/main)
 "cj" = (
-/obj/effect/turf_decal/tile/bar{
-	dir = 1
+/obj/machinery/atmospherics/components/binary/volume_pump{
+	dir = 4;
+	name = "BZ Pump"
 	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/general/hidden,
-/turf/open/floor/iron/telecomms,
+/turf/open/floor/iron/dark,
 /area/ruin/syndicate_lava_base/testlab)
 "ck" = (
 /obj/structure/sign/directions/medical{
@@ -427,6 +441,19 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/main)
+"cW" = (
+/obj/effect/turf_decal/siding/thinplating/dark/end{
+	dir = 1
+	},
+/obj/structure/table/reinforced,
+/obj/machinery/door/firedoor,
+/obj/machinery/door/poddoor/shutters{
+	dir = 8;
+	state_open = 1;
+	id = s
+	},
+/turf/open/floor/iron/kitchen,
+/area/ruin/syndicate_lava_base/bar)
 "cY" = (
 /turf/open/floor/iron/edge{
 	dir = 1
@@ -442,6 +469,7 @@
 	desc = "It's a box, for storing things.";
 	name = "chameleon kit"
 	},
+/obj/item/disk/ammo_workbench/lethal,
 /turf/open/floor/iron/corner{
 	dir = 1
 	},
@@ -466,14 +494,20 @@
 /turf/open/floor/engine/o2,
 /area/ruin/syndicate_lava_base/engineering)
 "dm" = (
-/obj/structure/fans/tiny,
-/obj/machinery/door/airlock/maintenance/external{
-	req_access = list("syndicate")
+/obj/effect/turf_decal/siding/thinplating/dark/corner{
+	dir = 4
 	},
-/obj/effect/turf_decal/stripes/corner{
-	dir = 8
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 10
 	},
-/turf/open/floor/plating,
+/obj/structure/table/reinforced,
+/obj/machinery/door/firedoor,
+/obj/machinery/door/poddoor/shutters{
+	dir = 8;
+	state_open = 1;
+	id = "interdynekitchen"
+	},
+/turf/open/floor/iron/kitchen,
 /area/ruin/syndicate_lava_base/bar)
 "dp" = (
 /obj/effect/turf_decal/siding/thinplating/dark/corner{
@@ -488,7 +522,13 @@
 /turf/closed/wall/r_wall/syndicate/nodiagonal,
 /area/ruin/syndicate_lava_base/virology)
 "dw" = (
-/turf/open/floor/iron/telecomms,
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	external_pressure_bound = 140;
+	name = "server vent";
+	pressure_checks = 0;
+	dir = 8
+	},
+/turf/open/floor/circuit/telecomms,
 /area/ruin/syndicate_lava_base/testlab)
 "dy" = (
 /obj/effect/turf_decal/stripes/line{
@@ -501,10 +541,10 @@
 /area/ruin/syndicate_lava_base/medbay)
 "dz" = (
 /obj/machinery/door/airlock/public/glass{
-	name = "Bar";
-	req_access = list("syndicate")
+	name = "Service"
 	},
 /obj/machinery/door/firedoor,
+/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/bar)
 "dJ" = (
@@ -541,6 +581,7 @@
 /obj/effect/turf_decal/siding/thinplating/dark{
 	dir = 8
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/stone,
 /area/ruin/syndicate_lava_base/bar)
 "dT" = (
@@ -556,6 +597,15 @@
 	},
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/dormitories)
+"eg" = (
+/obj/machinery/door/airlock{
+	name = "Quiet Room"
+	},
+/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/iron,
+/area/ruin/syndicate_lava_base/dormitories)
 "ej" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -565,15 +615,14 @@
 /area/ruin/syndicate_lava_base/testlab)
 "el" = (
 /obj/structure/fans/tiny,
-/obj/machinery/door/airlock/maintenance/external{
-	req_access = list("syndicate")
-	},
+/obj/machinery/door/airlock/maintenance/external,
 /obj/effect/turf_decal/stripes/corner{
 	dir = 1
 	},
 /obj/effect/turf_decal/stripes/corner{
 	dir = 4
 	},
+/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
 /turf/open/floor/plating,
 /area/ruin/syndicate_lava_base/engineering)
 "er" = (
@@ -588,13 +637,14 @@
 /area/ruin/syndicate_lava_base/dormitories)
 "ex" = (
 /obj/machinery/airalarm/directional/south{
-	req_access = list(150)
+	req_access = list("syndicate")
 	},
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/main)
 "eA" = (
 /obj/structure/table,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
+/obj/item/key/atv,
 /turf/open/floor/iron/smooth_edge,
 /area/ruin/syndicate_lava_base/cargo)
 "eC" = (
@@ -632,17 +682,17 @@
 /turf/open/floor/iron/kitchen,
 /area/ruin/syndicate_lava_base/bar)
 "eZ" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
-/turf/open/floor/plating/icemoon,
-/area/ruin/syndicate_lava_base/bar)
+/turf/open/floor/wood/tile,
+/area/ruin/syndicate_lava_base/dormitories)
+"fd" = (
+/turf/open/floor/wood,
+/area/ruin/syndicate_lava_base/dormitories)
 "fe" = (
-/obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
-/obj/machinery/door/poddoor{
-	id = "interdynebar"
+/obj/machinery/door/airlock{
+	name = "Disposals"
 	},
-/turf/open/floor/plating,
+/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
+/turf/open/floor/plating/lavaland_atmos,
 /area/ruin/syndicate_lava_base/bar)
 "fq" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -650,11 +700,16 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/dormitories)
+"ft" = (
+/obj/machinery/light/small/directional/north,
+/obj/effect/decal/cleanable/blood/gibs/old,
+/turf/open/floor/plating/lavaland_atmos,
+/area/ruin/syndicate_lava_base/medbay)
 "fx" = (
 /obj/machinery/door/airlock/medical/glass{
-	name = "Medical Wing";
-	req_access = list("syndicate")
+	name = "Medical Wing"
 	},
+/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
 /turf/open/floor/iron/white/side{
 	dir = 4
 	},
@@ -683,9 +738,8 @@
 /turf/open/floor/iron/kitchen,
 /area/ruin/syndicate_lava_base/bar)
 "ge" = (
-/obj/structure/sink{
-	pixel_y = 20
-	},
+/obj/machinery/griddle,
+/obj/machinery/firealarm/directional/north,
 /turf/open/floor/iron/dark/smooth_large,
 /area/ruin/syndicate_lava_base/bar)
 "gj" = (
@@ -698,6 +752,10 @@
 	},
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/cargo)
+"gm" = (
+/obj/structure/bookcase/random/reference,
+/turf/open/floor/wood/tile,
+/area/ruin/syndicate_lava_base/dormitories)
 "gn" = (
 /obj/machinery/light/directional/west,
 /obj/effect/mob_spawn/ghost_role/human/lavaland_syndicate/shaftminer/ice{
@@ -728,7 +786,6 @@
 /obj/vehicle/ridden/atv/snowmobile/syndicate{
 	dir = 8
 	},
-/obj/item/key/atv,
 /turf/open/floor/iron/dark,
 /area/ruin/syndicate_lava_base/cargo)
 "gz" = (
@@ -740,15 +797,12 @@
 /turf/open/floor/stone,
 /area/ruin/syndicate_lava_base/bar)
 "gA" = (
-/obj/structure/window/reinforced/survival_pod{
-	dir = 8
+/obj/machinery/atmospherics/components/unary/thermomachine/freezer/on{
+	name = "euthanization chamber freezer";
+	dir = 4;
+	initialize_directions = 4
 	},
-/obj/machinery/atmospherics/components/unary/vent_pump/on{
-	external_pressure_bound = 140;
-	name = "server vent";
-	pressure_checks = 0
-	},
-/turf/open/floor/iron/telecomms,
+/turf/open/floor/iron/dark,
 /area/ruin/syndicate_lava_base/testlab)
 "gB" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -769,10 +823,10 @@
 /area/ruin/syndicate_lava_base/engineering)
 "gN" = (
 /obj/machinery/door/airlock/medical/glass{
-	name = "Medical Wing";
-	req_access = list("syndicate")
+	name = "Medical Wing"
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
 /turf/open/floor/iron/white/side{
 	dir = 4
 	},
@@ -787,12 +841,13 @@
 /obj/effect/turf_decal/siding/thinplating/dark{
 	dir = 1
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/stone,
 /area/ruin/syndicate_lava_base/bar)
 "gZ" = (
 /obj/machinery/griddle,
 /obj/machinery/airalarm/directional/north{
-	req_access = list(150)
+	req_access = list("syndicate")
 	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/ruin/syndicate_lava_base/bar)
@@ -832,11 +887,11 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
-/obj/machinery/vending/dorms{
-	onstation = 0
-	},
 /obj/machinery/airalarm/directional/north{
-	req_access = list(150)
+	req_access = list("syndicate")
+	},
+/obj/machinery/vending/autodrobe{
+	onstation = 0
 	},
 /turf/open/floor/iron/cafeteria,
 /area/ruin/syndicate_lava_base/dormitories)
@@ -848,12 +903,11 @@
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/medbay)
 "hA" = (
-/obj/machinery/door/airlock/maintenance/external{
-	req_access = list("syndicate")
-	},
-/obj/structure/fans/tiny,
-/turf/open/floor/plating,
-/area/ruin/syndicate_lava_base/testlab)
+/obj/item/paper/guides/jobs/medical/morgue,
+/obj/structure/table/reinforced,
+/obj/item/storage/backpack/duffelbag/syndie/surgery,
+/turf/open/floor/plating/lavaland_atmos,
+/area/ruin/syndicate_lava_base/medbay)
 "hJ" = (
 /obj/effect/turf_decal/siding/thinplating/dark/corner,
 /turf/open/floor/iron,
@@ -867,6 +921,10 @@
 	},
 /turf/open/floor/iron/kitchen,
 /area/ruin/syndicate_lava_base/bar)
+"hT" = (
+/obj/machinery/photocopier,
+/turf/open/floor/wood/large,
+/area/ruin/syndicate_lava_base/dormitories)
 "hX" = (
 /obj/structure/window/reinforced/survival_pod{
 	dir = 4
@@ -898,14 +956,19 @@
 /area/ruin/syndicate_lava_base/bar)
 "it" = (
 /obj/machinery/door/airlock/engineering{
-	name = "Engineering";
-	req_access = list("syndicate")
+	name = "Engineering"
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
+/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/engineering)
+"iw" = (
+/obj/effect/decal/cleanable/ash,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating/lavaland_atmos,
+/area/ruin/syndicate_lava_base/bar)
 "iy" = (
 /obj/machinery/suit_storage_unit/mining,
 /turf/open/floor/iron/dark,
@@ -958,7 +1021,7 @@
 "iZ" = (
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/directional/north{
-	req_access = list(150)
+	req_access = list("syndicate")
 	},
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/bar)
@@ -1033,14 +1096,36 @@
 /obj/item/storage/bag/tray,
 /turf/open/floor/iron/kitchen,
 /area/ruin/syndicate_lava_base/bar)
+"jH" = (
+/obj/structure/table/wood,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/item/toy/crayon/spraycan{
+	pixel_y = 9;
+	pixel_x = 4
+	},
+/obj/item/toy/crayon/spraycan{
+	pixel_y = 9;
+	pixel_x = -5
+	},
+/obj/structure/sign/painting/large{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/ruin/syndicate_lava_base/dormitories)
+"jI" = (
+/obj/effect/mob_spawn/ghost_role/human/lavaland_syndicate/ice{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/syndicate_lava_base/main)
 "jJ" = (
 /obj/machinery/door/airlock/grunge{
-	name = "Bar";
-	req_access = list("syndicate")
+	name = "Bar"
 	},
 /obj/effect/turf_decal/siding/thinplating/dark/corner{
 	dir = 4
 	},
+/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
 /turf/open/floor/iron/dark/side{
 	dir = 4
 	},
@@ -1049,10 +1134,10 @@
 /turf/open/floor/iron/white,
 /area/ruin/syndicate_lava_base/medbay)
 "jT" = (
+/obj/machinery/light/directional/south,
 /obj/machinery/vending/medical/syndicate_access{
 	onstation = 0
 	},
-/obj/machinery/light/directional/south,
 /turf/open/floor/iron/dark,
 /area/ruin/syndicate_lava_base/medbay)
 "jV" = (
@@ -1139,6 +1224,12 @@
 	},
 /turf/open/lava/plasma/ice_moon,
 /area/ruin/syndicate_lava_base/medbay)
+"kN" = (
+/obj/machinery/porta_turret/syndicate{
+	dir = 6
+	},
+/turf/closed/wall/r_wall/syndicate/nodiagonal,
+/area/ruin/syndicate_lava_base/main)
 "kO" = (
 /obj/structure/railing{
 	dir = 4
@@ -1213,6 +1304,13 @@
 /obj/machinery/smartfridge/food,
 /turf/closed/wall/r_wall/syndicate/nodiagonal,
 /area/ruin/syndicate_lava_base/bar)
+"lP" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/chair/sofa/left{
+	dir = 1
+	},
+/turf/open/floor/wood/tile,
+/area/ruin/syndicate_lava_base/dormitories)
 "lT" = (
 /obj/effect/turf_decal/siding/thinplating/dark{
 	dir = 8
@@ -1222,7 +1320,7 @@
 	dir = 4
 	},
 /obj/machinery/airalarm/directional/south{
-	req_access = list(150)
+	req_access = list("syndicate")
 	},
 /turf/open/floor/iron/white,
 /area/ruin/syndicate_lava_base/medbay)
@@ -1246,10 +1344,10 @@
 /area/ruin/syndicate_lava_base/bar)
 "mk" = (
 /obj/machinery/door/airlock/research{
-	name = "Science Division";
-	req_access = list("syndicate")
+	name = "Science Division"
 	},
 /obj/machinery/door/firedoor,
+/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/testlab)
 "mp" = (
@@ -1284,11 +1382,11 @@
 /area/ruin/syndicate_lava_base/cargo)
 "my" = (
 /obj/machinery/door/airlock/research{
-	name = "Xenobiology Lab";
-	req_access = list("syndicate")
+	name = "Xenobiology Lab"
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
 /turf/open/floor/iron/dark/side,
 /area/ruin/syndicate_lava_base/testlab)
 "mA" = (
@@ -1308,12 +1406,34 @@
 /obj/item/toy/figure/syndie,
 /turf/open/misc/asteroid/snow/icemoon,
 /area/icemoon/underground/explored)
+"mV" = (
+/obj/structure/window/reinforced/survival_pod{
+	dir = 1
+	},
+/obj/structure/window/reinforced/survival_pod{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/dark_red,
+/turf/open/floor/engine,
+/area/ruin/syndicate_lava_base/testlab)
+"nc" = (
+/obj/structure/bookcase/random/nonfiction,
+/turf/open/floor/wood/tile,
+/area/ruin/syndicate_lava_base/dormitories)
+"nd" = (
+/obj/item/storage/box/stockparts/deluxe,
+/obj/structure/closet/crate,
+/obj/item/storage/bag/trash,
+/obj/item/mop,
+/obj/item/reagent_containers/glass/bucket,
+/turf/open/floor/plating/lavaland_atmos,
+/area/ruin/syndicate_lava_base/bar)
 "nn" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 1
-	},
-/obj/machinery/vending/games{
-	onstation = 0
 	},
 /obj/machinery/light/directional/south,
 /turf/open/floor/iron,
@@ -1323,10 +1443,12 @@
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/medbay)
 "nr" = (
-/obj/structure/frame/machine,
 /obj/item/stack/cable_coil/five,
 /obj/item/circuitboard/machine/ore_redemption,
 /obj/item/assembly/igniter,
+/obj/structure/frame/machine{
+	anchored = 1
+	},
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/cargo)
 "ns" = (
@@ -1334,11 +1456,12 @@
 /turf/open/floor/plating,
 /area/ruin/syndicate_lava_base/testlab)
 "nx" = (
-/obj/machinery/hydroponics/constructable,
-/obj/machinery/airalarm/directional/west{
-	req_access = list(150)
+/obj/structure/frame/machine{
+	anchored = 1
 	},
-/turf/open/misc/grass,
+/obj/item/circuitboard/machine/stacking_machine,
+/obj/item/stack/cable_coil/five,
+/turf/open/floor/plating/lavaland_atmos,
 /area/ruin/syndicate_lava_base/bar)
 "ny" = (
 /obj/effect/mob_spawn/ghost_role/human/lavaland_syndicate/deckofficer{
@@ -1349,10 +1472,15 @@
 	},
 /turf/open/floor/wood,
 /area/ruin/syndicate_lava_base/cargo)
+"nz" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/sign/painting/library{
+	pixel_x = 32
+	},
+/turf/open/floor/wood,
+/area/ruin/syndicate_lava_base/dormitories)
 "nA" = (
 /obj/structure/table/glass,
-/obj/item/storage/box/beakers/bluespace,
-/obj/item/storage/box/beakers/bluespace,
 /obj/machinery/firealarm/directional/west{
 	dir = 4
 	},
@@ -1361,12 +1489,12 @@
 /area/ruin/syndicate_lava_base/medbay)
 "nC" = (
 /obj/machinery/door/airlock/medical/glass{
-	name = "Medical Wing";
-	req_access = list("syndicate")
+	name = "Medical Wing"
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
+/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
 /turf/open/floor/iron/white,
 /area/ruin/syndicate_lava_base/medbay)
 "nJ" = (
@@ -1377,17 +1505,16 @@
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/cargo)
 "nP" = (
-/obj/machinery/vending/hydronutrients{
-	onstation = 0
-	},
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 8
+	},
+/obj/machinery/vending/hydronutrients{
+	onstation = 0
 	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/ruin/syndicate_lava_base/bar)
 "nS" = (
-/obj/structure/lattice/catwalk,
-/turf/open/lava/plasma/ice_moon,
+/turf/open/floor/iron/checker,
 /area/ruin/syndicate_lava_base/bar)
 "oc" = (
 /obj/machinery/turretid{
@@ -1431,6 +1558,13 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/testlab)
+"ox" = (
+/obj/machinery/light/directional/west,
+/obj/structure/sign/painting/library{
+	pixel_x = -32
+	},
+/turf/open/floor/wood,
+/area/ruin/syndicate_lava_base/dormitories)
 "oz" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/firealarm/directional/north{
@@ -1455,6 +1589,13 @@
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/syndicate_lava_base/cargo)
+"oE" = (
+/obj/machinery/skill_station,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/ruin/syndicate_lava_base/dormitories)
 "oG" = (
 /obj/structure/cable,
 /turf/open/floor/iron,
@@ -1487,6 +1628,7 @@
 /area/ruin/syndicate_lava_base/engineering)
 "oV" = (
 /obj/machinery/oven,
+/obj/machinery/light/directional/north,
 /turf/open/floor/iron/dark/smooth_large,
 /area/ruin/syndicate_lava_base/bar)
 "pc" = (
@@ -1500,14 +1642,14 @@
 /area/ruin/syndicate_lava_base/virology)
 "pe" = (
 /obj/machinery/door/airlock/grunge{
-	name = "Bar";
-	req_access = list("syndicate")
+	name = "Bar"
 	},
 /obj/effect/turf_decal/siding/thinplating/dark/corner{
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
 /turf/open/floor/stone,
 /area/ruin/syndicate_lava_base/bar)
 "pg" = (
@@ -1525,12 +1667,12 @@
 /turf/open/floor/catwalk_floor/iron,
 /area/ruin/syndicate_lava_base/medbay)
 "pl" = (
-/obj/structure/lattice/catwalk,
-/obj/structure/railing{
-	dir = 8
+/obj/effect/mob_spawn/ghost_role/human/lavaland_syndicate/ice{
+	dir = 4
 	},
-/turf/open/lava/plasma/ice_moon,
-/area/ruin/syndicate_lava_base/cargo)
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron,
+/area/ruin/syndicate_lava_base/main)
 "pp" = (
 /obj/effect/turf_decal/siding/thinplating{
 	dir = 8
@@ -1562,6 +1704,22 @@
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/syndicate_lava_base/cargo)
+"pK" = (
+/obj/effect/turf_decal/siding/thinplating/dark/end{
+	dir = 4
+	},
+/obj/structure/table/reinforced,
+/obj/machinery/door/firedoor,
+/obj/machinery/door/window/survival_pod{
+	dir = 4;
+	req_access = list("syndicate")
+	},
+/obj/machinery/door/window/survival_pod{
+	dir = 8;
+	req_access = list("syndicate")
+	},
+/turf/open/floor/iron/kitchen,
+/area/ruin/syndicate_lava_base/bar)
 "pN" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -1570,9 +1728,10 @@
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/medbay)
 "pP" = (
-/obj/machinery/skill_station,
-/turf/open/floor/iron,
-/area/ruin/syndicate_lava_base/main)
+/obj/machinery/hydroponics/constructable,
+/obj/machinery/airalarm/directional/south,
+/turf/open/misc/grass,
+/area/ruin/syndicate_lava_base/bar)
 "qa" = (
 /obj/structure/disposalpipe/segment{
 	dir = 6
@@ -1580,19 +1739,15 @@
 /turf/closed/wall/r_wall/syndicate/nodiagonal,
 /area/ruin/syndicate_lava_base/virology)
 "qd" = (
-/obj/machinery/door/airlock/maintenance/external{
-	req_access = list("syndicate")
-	},
+/obj/machinery/door/airlock/maintenance/external,
 /obj/structure/fans/tiny,
+/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
 /turf/open/floor/plating,
 /area/ruin/syndicate_lava_base/medbay)
 "qg" = (
 /obj/structure/fans/tiny,
-/obj/machinery/door/airlock/maintenance/external{
-	req_access = list("syndicate")
-	},
-/turf/open/floor/plating,
-/area/ruin/syndicate_lava_base/bar)
+/turf/closed/wall/r_wall/syndicate/nodiagonal,
+/area/ruin/syndicate_lava_base/dormitories)
 "qp" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
@@ -1634,13 +1789,18 @@
 /turf/open/floor/wood,
 /area/ruin/syndicate_lava_base/dormitories)
 "qS" = (
-/obj/effect/turf_decal/stripes/line,
-/obj/structure/table,
-/obj/item/toy/cards/deck/kotahi{
-	pixel_y = 5
+/obj/structure/table/wood,
+/obj/machinery/computer/libraryconsole/bookmanagement,
+/turf/open/floor/wood/large,
+/area/ruin/syndicate_lava_base/dormitories)
+"qT" = (
+/obj/structure/sink{
+	dir = 8;
+	pixel_x = 12
 	},
-/turf/open/floor/plating/icemoon,
-/area/ruin/syndicate_lava_base/testlab)
+/obj/structure/mirror/directional/east,
+/turf/open/floor/iron/checker,
+/area/ruin/syndicate_lava_base/bar)
 "qU" = (
 /obj/machinery/light/directional/north,
 /turf/open/floor/iron/dark,
@@ -1668,15 +1828,18 @@
 /turf/open/floor/carpet/orange,
 /area/ruin/syndicate_lava_base/cargo)
 "rm" = (
-/obj/effect/turf_decal/stripes/corner{
+/obj/machinery/door/airlock{
+	name = "Extra Sleepers"
+	},
+/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
+/turf/open/floor/plating,
+/area/ruin/syndicate_lava_base/main)
+"rv" = (
+/obj/effect/turf_decal/tile/dark_red{
 	dir = 1
 	},
-/obj/machinery/door/airlock/maintenance/external{
-	req_access = list("syndicate")
-	},
-/obj/structure/fans/tiny,
-/turf/open/floor/plating,
-/area/ruin/syndicate_lava_base/cargo)
+/turf/open/floor/engine,
+/area/ruin/syndicate_lava_base/testlab)
 "rD" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 8
@@ -1691,11 +1854,11 @@
 /area/ruin/syndicate_lava_base/virology)
 "rG" = (
 /obj/machinery/door/airlock/medical/glass{
-	name = "Medical Wing";
-	req_access = list("syndicate")
+	name = "Medical Wing"
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
+/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
 /turf/open/floor/iron/white/side{
 	dir = 4
 	},
@@ -1704,10 +1867,18 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/bar)
+"rT" = (
+/obj/structure/table/optable,
+/turf/open/floor/plating/lavaland_atmos,
+/area/ruin/syndicate_lava_base/medbay)
+"sa" = (
+/obj/structure/bodycontainer/morgue,
+/turf/open/floor/plating/lavaland_atmos,
+/area/ruin/syndicate_lava_base/medbay)
 "sc" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/light/directional/south,
 /turf/open/floor/iron,
-/area/ruin/syndicate_lava_base/dormitories)
+/area/ruin/syndicate_lava_base/bar)
 "se" = (
 /obj/machinery/conveyor{
 	dir = 8;
@@ -1727,6 +1898,7 @@
 /obj/effect/turf_decal/siding/thinplating/dark/corner{
 	dir = 1
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/stone,
 /area/ruin/syndicate_lava_base/bar)
 "so" = (
@@ -1740,13 +1912,17 @@
 /turf/open/floor/plating/icemoon,
 /area/ruin/syndicate_lava_base/testlab)
 "sr" = (
-/obj/effect/turf_decal/tile/bar,
 /obj/machinery/light/directional/north,
-/turf/open/floor/iron/telecomms,
+/obj/structure/window/reinforced/survival_pod{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/general/hidden,
+/turf/open/floor/circuit/telecomms,
 /area/ruin/syndicate_lava_base/testlab)
 "ss" = (
 /obj/structure/table/wood,
 /obj/machinery/light/directional/west,
+/obj/item/key/atv,
 /turf/open/floor/wood,
 /area/ruin/syndicate_lava_base/cargo)
 "st" = (
@@ -1755,7 +1931,7 @@
 	dir = 4
 	},
 /obj/machinery/airalarm/directional/west{
-	req_access = list(150)
+	req_access = list("syndicate")
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/syndicate_lava_base/medbay)
@@ -1770,13 +1946,20 @@
 /turf/open/floor/iron/dark,
 /area/ruin/syndicate_lava_base/cargo)
 "sE" = (
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/turf/open/floor/iron,
-/area/ruin/syndicate_lava_base/dormitories)
+/obj/machinery/porta_turret/syndicate{
+	dir = 5
+	},
+/turf/closed/wall/r_wall/syndicate/nodiagonal,
+/area/ruin/syndicate_lava_base/main)
 "sF" = (
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/bar)
+"sG" = (
+/obj/machinery/vending/games{
+	onstation = 0
+	},
+/turf/open/floor/wood,
+/area/ruin/syndicate_lava_base/dormitories)
 "sL" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 4
@@ -1810,6 +1993,10 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/medbay)
+"sZ" = (
+/obj/effect/turf_decal/stripes/line,
+/turf/open/floor/plating/icemoon,
+/area/ruin/syndicate_lava_base/medbay)
 "ta" = (
 /obj/machinery/seed_extractor,
 /turf/open/floor/iron/dark/smooth_large,
@@ -1836,9 +2023,8 @@
 /obj/effect/turf_decal/stripes/corner{
 	dir = 1
 	},
-/obj/machinery/door/airlock/maintenance/external{
-	req_access = list("syndicate")
-	},
+/obj/machinery/door/airlock/maintenance/external,
+/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
 /turf/open/floor/plating,
 /area/ruin/syndicate_lava_base/main)
 "tx" = (
@@ -1857,6 +2043,10 @@
 /obj/structure/railing,
 /turf/open/lava/plasma/ice_moon,
 /area/ruin/syndicate_lava_base/medbay)
+"tJ" = (
+/obj/structure/bookcase/random/fiction,
+/turf/open/floor/wood/tile,
+/area/ruin/syndicate_lava_base/dormitories)
 "tM" = (
 /obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -1867,7 +2057,7 @@
 "tS" = (
 /obj/structure/window/reinforced/survival_pod,
 /obj/structure/closet/secure_closet/freezer/meat{
-	req_access = list(150)
+	req_access = list("syndicate")
 	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/ruin/syndicate_lava_base/bar)
@@ -1878,9 +2068,6 @@
 /turf/open/floor/carpet/orange,
 /area/ruin/syndicate_lava_base/cargo)
 "ue" = (
-/obj/structure/window/reinforced/survival_pod{
-	dir = 1
-	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
@@ -1888,6 +2075,17 @@
 	c_tag = "Xenobio East";
 	dir = 4;
 	network = list("fsci")
+	},
+/obj/machinery/door/window/survival_pod{
+	req_access = list("syndicate");
+	dir = 1;
+	name = "Slime Pacification Chamber"
+	},
+/obj/effect/turf_decal/tile/dark_red{
+	dir = 8
+	},
+/obj/machinery/atmospherics/components/unary/passive_vent{
+	dir = 1
 	},
 /turf/open/floor/engine,
 /area/ruin/syndicate_lava_base/testlab)
@@ -1897,13 +2095,17 @@
 	},
 /turf/open/floor/engine/o2,
 /area/ruin/syndicate_lava_base/engineering)
+"um" = (
+/obj/structure/bookcase/random/adult,
+/turf/open/floor/wood/tile,
+/area/ruin/syndicate_lava_base/dormitories)
+"up" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/wood/tile,
+/area/ruin/syndicate_lava_base/dormitories)
 "us" = (
-/obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
-/obj/machinery/door/poddoor{
-	id = "interdynedorms"
-	},
-/turf/open/floor/plating,
-/area/ruin/syndicate_lava_base/bar)
+/turf/open/floor/plating/lavaland_atmos,
+/area/ruin/syndicate_lava_base/medbay)
 "ux" = (
 /obj/structure/sign/departments/medbay/alt/directional/east,
 /turf/open/floor/iron,
@@ -1915,10 +2117,10 @@
 /area/ruin/syndicate_lava_base/medbay)
 "uB" = (
 /obj/machinery/door/airlock/vault{
-	id_tag = "syndie_lavaland_vault";
-	req_access = list("syndicate")
+	id_tag = "syndie_lavaland_vault"
 	},
 /obj/effect/mapping_helpers/airlock/locked,
+/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
 /turf/open/floor/iron/textured_half,
 /area/ruin/syndicate_lava_base/main)
 "uQ" = (
@@ -1930,24 +2132,33 @@
 /obj/vehicle/ridden/atv/snowmobile/syndicate{
 	dir = 8
 	},
-/obj/item/key/atv,
 /turf/open/floor/iron/dark,
 /area/ruin/syndicate_lava_base/cargo)
+"uV" = (
+/obj/structure/table/wood,
+/obj/item/storage/dice,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
+/turf/open/floor/wood,
+/area/ruin/syndicate_lava_base/dormitories)
 "uX" = (
 /obj/effect/turf_decal/siding/thinplating/dark,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/bar)
 "vi" = (
-/obj/structure/lattice/catwalk,
-/obj/structure/railing/corner{
+/obj/structure/chair/sofa/right{
 	dir = 8
 	},
-/turf/open/lava/plasma/ice_moon,
-/area/ruin/syndicate_lava_base/engineering)
+/turf/open/floor/wood/tile,
+/area/ruin/syndicate_lava_base/dormitories)
 "vl" = (
 /obj/structure/sign/departments/chemistry/directional/east,
 /obj/structure/table/glass,
+/obj/item/stack/sheet/mineral/plasma{
+	amount = 15
+	},
+/obj/item/storage/box/beakers/bluespace,
+/obj/item/storage/box/beakers/bluespace,
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/medbay)
 "vo" = (
@@ -1964,10 +2175,8 @@
 /turf/open/floor/wood,
 /area/ruin/syndicate_lava_base/cargo)
 "vt" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 4
-	},
-/turf/open/floor/plating/icemoon,
+/obj/item/kirbyplants/random,
+/turf/open/floor/iron/checker,
 /area/ruin/syndicate_lava_base/bar)
 "vv" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -1975,16 +2184,15 @@
 /area/ruin/syndicate_lava_base/cargo)
 "vw" = (
 /obj/structure/frame/computer{
-	dir = 4
+	dir = 4;
+	anchored = 1
 	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/ruin/syndicate_lava_base/testlab)
 "vz" = (
-/obj/structure/lattice/catwalk,
-/obj/structure/railing{
-	dir = 4
-	},
-/turf/open/lava/plasma/ice_moon,
+/obj/structure/closet/crate/bin,
+/obj/item/soap/syndie,
+/turf/open/floor/iron/checker,
 /area/ruin/syndicate_lava_base/bar)
 "vH" = (
 /obj/structure/tank_holder/anesthetic,
@@ -2044,13 +2252,18 @@
 /obj/machinery/light/directional/north,
 /turf/open/floor/iron/dark,
 /area/ruin/syndicate_lava_base/cargo)
-"wr" = (
-/obj/machinery/door/airlock/external{
-	req_access = list("syndicate")
+"wn" = (
+/obj/machinery/porta_turret/syndicate{
+	dir = 10
 	},
+/turf/closed/wall/r_wall/syndicate,
+/area/ruin/syndicate_lava_base/main)
+"wr" = (
+/obj/machinery/door/airlock/external,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 8
 	},
+/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
 /turf/open/floor/plating,
 /area/ruin/syndicate_lava_base/cargo)
 "wu" = (
@@ -2058,21 +2271,18 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 4
 	},
-/obj/effect/mob_spawn/ghost_role/human/lavaland_syndicate/ice{
-	dir = 8
-	},
 /turf/open/floor/iron/white,
 /area/ruin/syndicate_lava_base/medbay)
 "wv" = (
 /obj/machinery/door/airlock/medical{
-	name = "Medical Desk";
-	req_access = list("syndicate")
+	name = "Medical Desk"
 	},
 /obj/effect/turf_decal/siding/thinplating/dark/corner{
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
 /turf/open/floor/iron/white,
 /area/ruin/syndicate_lava_base/medbay)
 "wF" = (
@@ -2099,17 +2309,35 @@
 /obj/structure/table/reinforced,
 /turf/open/floor/iron/white,
 /area/ruin/syndicate_lava_base/medbay)
+"wV" = (
+/obj/machinery/door/airlock/external,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 8
+	},
+/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
+/obj/docking_port/stationary,
+/obj/docking_port/stationary,
+/turf/open/floor/plating,
+/area/ruin/syndicate_lava_base/cargo)
 "wX" = (
 /obj/structure/table,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 1
 	},
+/obj/item/key/atv,
 /turf/open/floor/iron/smooth_edge{
 	dir = 1
 	},
 /area/ruin/syndicate_lava_base/cargo)
 "xc" = (
 /turf/open/floor/iron,
+/area/ruin/syndicate_lava_base/medbay)
+"xe" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/structure/chair/plastic{
+	dir = 4
+	},
+/turf/open/floor/plating/lavaland_atmos,
 /area/ruin/syndicate_lava_base/medbay)
 "xf" = (
 /obj/effect/turf_decal/tile/bar{
@@ -2141,6 +2369,7 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
 /turf/open/floor/iron/white,
 /area/ruin/syndicate_lava_base/medbay)
 "xA" = (
@@ -2162,9 +2391,6 @@
 	id = "interdynemedbay";
 	req_access = list("syndicate")
 	},
-/obj/effect/mob_spawn/ghost_role/human/lavaland_syndicate/ice{
-	dir = 8
-	},
 /turf/open/floor/iron/white,
 /area/ruin/syndicate_lava_base/medbay)
 "xP" = (
@@ -2178,9 +2404,17 @@
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/cargo)
 "xS" = (
-/obj/structure/flora/tree/pine,
-/turf/open/misc/asteroid/snow/icemoon,
-/area/icemoon/underground/explored)
+/obj/machinery/conveyor{
+	dir = 1;
+	id = "interdynedisp"
+	},
+/obj/structure/frame/machine{
+	anchored = 1
+	},
+/obj/item/stack/cable_coil/five,
+/obj/item/circuitboard/machine/recycler,
+/turf/open/floor/plating/lavaland_atmos,
+/area/ruin/syndicate_lava_base/bar)
 "xY" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/wood,
@@ -2199,55 +2433,62 @@
 	},
 /turf/open/floor/wood,
 /area/ruin/syndicate_lava_base/cargo)
+"yi" = (
+/obj/machinery/door/airlock{
+	name = "Unisex Toilet";
+	id_tag = "interdynerec1"
+	},
+/turf/open/floor/iron/checker,
+/area/ruin/syndicate_lava_base/bar)
+"yq" = (
+/obj/machinery/bookbinder,
+/turf/open/floor/wood/large,
+/area/ruin/syndicate_lava_base/dormitories)
 "yu" = (
 /obj/machinery/door/airlock/mining{
 	name = "Shaft Miner Dormitory Beta"
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
 /turf/open/floor/iron/smooth_half{
 	dir = 1
 	},
 /area/ruin/syndicate_lava_base/cargo)
 "yy" = (
-/obj/machinery/door/airlock/maintenance/external{
-	req_access = list("syndicate")
-	},
+/obj/machinery/door/airlock/maintenance/external,
 /obj/structure/fans/tiny,
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/ruin/syndicate_lava_base/medbay)
 "yB" = (
 /obj/effect/turf_decal/stripes/line,
-/obj/machinery/power/floodlight{
-	anchored = 1
+/obj/structure/chair/plastic{
+	dir = 8
 	},
-/obj/structure/cable,
-/turf/open/floor/plating/icemoon,
+/turf/open/floor/plating/lavaland_atmos,
 /area/ruin/syndicate_lava_base/medbay)
 "yE" = (
 /turf/closed/wall/r_wall/syndicate,
 /area/ruin/syndicate_lava_base/testlab)
 "yF" = (
-/obj/structure/frame/machine,
+/obj/structure/frame/machine{
+	anchored = 1
+	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/ruin/syndicate_lava_base/testlab)
 "yH" = (
-/obj/structure/fans/tiny,
-/obj/machinery/door/airlock/maintenance/external{
-	req_access = list("syndicate")
-	},
 /obj/effect/turf_decal/stripes/corner,
-/turf/open/floor/plating,
+/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
+/obj/machinery/door/airlock{
+	name = "Unisex Restrooms"
+	},
+/turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/bar)
 "yJ" = (
 /obj/structure/sink{
 	dir = 8;
 	pixel_x = 12
-	},
-/obj/machinery/light/directional/east,
-/obj/effect/mob_spawn/ghost_role/human/lavaland_syndicate/ice{
-	dir = 8
 	},
 /turf/open/misc/grass,
 /area/ruin/syndicate_lava_base/bar)
@@ -2255,7 +2496,7 @@
 /obj/effect/turf_decal/siding/thinplating/dark,
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/directional/north{
-	req_access = list(150)
+	req_access = list("syndicate")
 	},
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/testlab)
@@ -2277,6 +2518,7 @@
 	name = "Dormitories";
 	req_access = list("syndicate")
 	},
+/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/dormitories)
 "zd" = (
@@ -2304,7 +2546,7 @@
 	dir = 1
 	},
 /obj/machinery/airalarm/directional/south{
-	req_access = list(150)
+	req_access = list("syndicate")
 	},
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/medbay)
@@ -2350,17 +2592,31 @@
 	},
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/main)
+"zT" = (
+/turf/open/floor/stone,
+/area/ruin/syndicate_lava_base/bar)
+"zX" = (
+/obj/structure/bookcase/random/religion,
+/turf/open/floor/wood/tile,
+/area/ruin/syndicate_lava_base/dormitories)
 "Ad" = (
-/obj/structure/lattice/catwalk,
-/obj/structure/railing{
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/wood/tile,
+/area/ruin/syndicate_lava_base/dormitories)
+"Ae" = (
+/obj/structure/window/reinforced/survival_pod{
 	dir = 8
 	},
-/turf/open/lava/plasma/ice_moon,
-/area/ruin/syndicate_lava_base/bar)
+/obj/effect/turf_decal/tile/dark_red/half{
+	dir = 4
+	},
+/turf/open/floor/engine,
+/area/ruin/syndicate_lava_base/testlab)
 "Au" = (
 /obj/structure/table/reinforced,
-/obj/item/storage/box/donkpockets{
-	pixel_y = 8
+/obj/item/book/manual/wiki/cooking_to_serve_man{
+	pixel_y = 2
 	},
 /turf/open/floor/iron/kitchen,
 /area/ruin/syndicate_lava_base/bar)
@@ -2431,7 +2687,7 @@
 	dir = 1
 	},
 /obj/machinery/airalarm/directional/south{
-	req_access = list(150)
+	req_access = list("syndicate")
 	},
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/bar)
@@ -2544,7 +2800,7 @@
 /area/ruin/syndicate_lava_base/engineering)
 "CN" = (
 /obj/machinery/airalarm/directional/north{
-	req_access = list(150)
+	req_access = list("syndicate")
 	},
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/main)
@@ -2614,9 +2870,9 @@
 /area/ruin/syndicate_lava_base/bar)
 "DL" = (
 /obj/machinery/door/airlock/mining/glass{
-	name = "Cargo Bay";
-	req_access = list("syndicate")
+	name = "Cargo Bay"
 	},
+/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
 /turf/open/floor/iron/dark,
 /area/ruin/syndicate_lava_base/cargo)
 "DT" = (
@@ -2658,21 +2914,23 @@
 /turf/open/floor/iron/white,
 /area/ruin/syndicate_lava_base/medbay)
 "En" = (
-/obj/machinery/atmospherics/components/unary/thermomachine/freezer/on{
-	dir = 4;
-	initialize_directions = 4;
-	name = "euthanization chamber freezer"
-	},
-/turf/open/floor/iron/dark,
-/area/ruin/syndicate_lava_base/testlab)
+/obj/effect/decal/cleanable/oil,
+/turf/open/floor/plating/lavaland_atmos,
+/area/ruin/syndicate_lava_base/bar)
 "Er" = (
 /obj/structure/lattice/catwalk,
 /turf/open/lava/plasma/ice_moon,
 /area/ruin/syndicate_lava_base/medbay)
 "EA" = (
 /obj/structure/table/reinforced,
-/obj/item/book/manual/wiki/cooking_to_serve_man,
+/obj/machinery/reagentgrinder,
 /turf/open/floor/iron/kitchen,
+/area/ruin/syndicate_lava_base/bar)
+"EL" = (
+/obj/structure/disposaloutlet{
+	dir = 1
+	},
+/turf/open/floor/plating/lavaland_atmos,
 /area/ruin/syndicate_lava_base/bar)
 "EO" = (
 /obj/effect/turf_decal/stripes/line{
@@ -2699,9 +2957,6 @@
 /obj/machinery/firealarm/directional/east{
 	dir = 8
 	},
-/obj/effect/mob_spawn/ghost_role/human/lavaland_syndicate/ice{
-	dir = 8
-	},
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/testlab)
 "EU" = (
@@ -2715,12 +2970,19 @@
 	dir = 8
 	},
 /obj/machinery/airalarm/directional/east{
-	req_access = list(150)
+	req_access = list("syndicate")
 	},
 /turf/open/floor/iron/smooth_corner{
 	dir = 8
 	},
 /area/ruin/syndicate_lava_base/medbay)
+"Fa" = (
+/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
+/obj/machinery/door/airlock{
+	name = "Unisex Restrooms"
+	},
+/turf/open/floor/iron,
+/area/ruin/syndicate_lava_base/bar)
 "Fi" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/white,
@@ -2801,7 +3063,8 @@
 	},
 /obj/machinery/power/smes/magical{
 	desc = "A high-capacity superconducting magnetic energy storage (SMES) unit. Produces power through an unstable bluespace pocket.";
-	name = "bluespace-powered power storage unit"
+	name = "bluespace-powered power storage unit";
+	output_level = 200000
 	},
 /obj/structure/cable,
 /turf/open/floor/plating,
@@ -2810,11 +3073,11 @@
 /obj/effect/turf_decal/stripes/corner{
 	dir = 8
 	},
-/obj/structure/fans/tiny,
-/obj/machinery/door/airlock/maintenance/external{
-	req_access = list("syndicate")
+/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
+/obj/machinery/door/airlock{
+	name = "Library Backroom"
 	},
-/turf/open/floor/plating,
+/turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/main)
 "FO" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -2848,7 +3111,6 @@
 /obj/structure/chair/office/light{
 	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/effect/turf_decal/siding/thinplating/dark/corner,
 /turf/open/floor/stone,
 /area/ruin/syndicate_lava_base/bar)
@@ -2857,6 +3119,7 @@
 /obj/machinery/firealarm/directional/north{
 	dir = 2
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/dormitories)
 "Gh" = (
@@ -2899,14 +3162,14 @@
 /area/ruin/syndicate_lava_base/medbay)
 "Gx" = (
 /obj/machinery/door/airlock/mining/glass{
-	name = "Cargo Bay";
-	req_access = list("syndicate")
+	name = "Cargo Bay"
 	},
 /obj/effect/turf_decal/stripes/corner{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
 /turf/open/floor/iron/dark/side{
 	dir = 8
 	},
@@ -2933,6 +3196,12 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/white,
 /area/ruin/syndicate_lava_base/medbay)
+"GM" = (
+/obj/structure/chair/comfy/black{
+	dir = 4
+	},
+/turf/open/floor/wood,
+/area/ruin/syndicate_lava_base/dormitories)
 "GQ" = (
 /obj/machinery/computer/crew/syndie{
 	dir = 4
@@ -2968,17 +3237,25 @@
 /obj/structure/sign/departments/engineering/directional/south,
 /turf/open/floor/iron/white,
 /area/ruin/syndicate_lava_base/medbay)
+"Ho" = (
+/obj/effect/decal/cleanable/blood/old,
+/turf/open/floor/plating/lavaland_atmos,
+/area/ruin/syndicate_lava_base/medbay)
 "Hs" = (
-/obj/effect/turf_decal/tile/bar{
-	dir = 1
+/obj/machinery/door/window/survival_pod{
+	req_access = list("syndicate");
+	name = "Slime Euthanization Chamber"
 	},
-/turf/open/floor/iron/telecomms,
+/turf/open/floor/circuit/telecomms,
 /area/ruin/syndicate_lava_base/testlab)
 "Hx" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/effect/turf_decal/siding/thinplating/dark,
 /turf/open/floor/stone,
 /area/ruin/syndicate_lava_base/bar)
+"HF" = (
+/obj/structure/chair/office,
+/turf/open/floor/wood/large,
+/area/ruin/syndicate_lava_base/dormitories)
 "HI" = (
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/syndicate_lava_base/bar)
@@ -3037,13 +3314,18 @@
 /obj/structure/closet/secure_closet{
 	icon_state = "qm";
 	name = "deck offficer's locker";
-	req_access = list(151)
+	req_access = list("syndicate_leader")
 	},
 /obj/item/clothing/neck/cloak/qm/syndie,
 /obj/item/clothing/under/rank/cargo/qm/skyrat/syndie,
 /obj/item/circuitboard/computer/advanced_camera,
 /obj/item/megaphone/cargo,
 /obj/item/clothing/glasses/sunglasses,
+/obj/item/gun/ballistic/automatic/pistol/makarov,
+/obj/item/ammo_box/magazine/m9mm{
+	pixel_x = 1;
+	pixel_y = -1
+	},
 /turf/open/floor/wood,
 /area/ruin/syndicate_lava_base/cargo)
 "Im" = (
@@ -3067,13 +3349,21 @@
 "Iy" = (
 /turf/open/misc/asteroid/snow/icemoon,
 /area/icemoon/underground/explored)
-"IB" = (
-/obj/effect/turf_decal/stripes/line,
-/obj/structure/chair/plastic{
-	dir = 8
+"IA" = (
+/obj/structure/easel,
+/obj/item/canvas/twentythree_nineteen,
+/obj/item/canvas/twentythree_twentythree,
+/obj/item/canvas/twentythree_twentythree,
+/obj/structure/sign/painting/library{
+	pixel_x = -32
 	},
-/turf/open/floor/plating/icemoon,
-/area/ruin/syndicate_lava_base/testlab)
+/turf/open/floor/wood,
+/area/ruin/syndicate_lava_base/dormitories)
+"IB" = (
+/obj/machinery/libraryscanner,
+/obj/machinery/light/directional/north,
+/turf/open/floor/wood/large,
+/area/ruin/syndicate_lava_base/dormitories)
 "IP" = (
 /obj/structure/table/reinforced,
 /obj/item/kitchen/rollingpin,
@@ -3150,8 +3440,8 @@
 /turf/open/floor/iron/smooth_large,
 /area/ruin/syndicate_lava_base/cargo)
 "Kb" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
-	dir = 1
+/obj/machinery/vending/dorms{
+	onstation = 0
 	},
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/dormitories)
@@ -3164,12 +3454,15 @@
 	dir = 1
 	},
 /obj/machinery/airalarm/directional/east{
-	req_access = list(150)
+	req_access = list("syndicate")
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/syndicate_lava_base/virology)
 "Km" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/door/window/survival_pod{
+	dir = 8;
+	req_access = list("syndicate")
+	},
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/dormitories)
 "Ko" = (
@@ -3206,16 +3499,16 @@
 	},
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/directional/north{
-	req_access = list(150)
+	req_access = list("syndicate")
 	},
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/medbay)
 "KP" = (
-/obj/machinery/button/door/directional/south{
-	id = "interdynebar"
+/obj/structure/closet/secure_closet/personal{
+	locked = 0
 	},
 /turf/open/floor/iron,
-/area/ruin/syndicate_lava_base/bar)
+/area/ruin/syndicate_lava_base/main)
 "KW" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 4
@@ -3223,9 +3516,9 @@
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/bar)
 "Lc" = (
-/obj/structure/flora/rock/icy,
-/turf/open/misc/asteroid/snow/icemoon,
-/area/icemoon/underground/explored)
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/lavaland_atmos,
+/area/ruin/syndicate_lava_base/bar)
 "Ld" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -3234,26 +3527,32 @@
 	},
 /turf/open/floor/stone,
 /area/ruin/syndicate_lava_base/bar)
-"Lf" = (
-/obj/machinery/atmospherics/pipe/layer_manifold/scrubbers/hidden{
-	dir = 4
+"Le" = (
+/obj/machinery/door/airlock{
+	name = "Library"
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
+/turf/open/floor/wood,
+/area/ruin/syndicate_lava_base/dormitories)
+"Lf" = (
 /obj/machinery/monkey_recycler,
 /turf/open/floor/iron/dark,
 /area/ruin/syndicate_lava_base/testlab)
 "Lg" = (
 /obj/structure/reagent_dispensers/watertank/high,
+/obj/machinery/light/directional/east,
 /turf/open/misc/grass,
 /area/ruin/syndicate_lava_base/bar)
 "Lh" = (
 /obj/structure/fans/tiny,
-/obj/machinery/door/airlock/maintenance/external{
-	req_access = list("syndicate")
-	},
+/obj/machinery/door/airlock/maintenance/external,
 /obj/effect/turf_decal/stripes/corner,
 /obj/effect/turf_decal/stripes/corner{
 	dir = 8
 	},
+/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
 /turf/open/floor/plating,
 /area/ruin/syndicate_lava_base/medbay)
 "Li" = (
@@ -3278,6 +3577,19 @@
 "Lw" = (
 /obj/machinery/light/directional/east,
 /turf/open/floor/iron,
+/area/ruin/syndicate_lava_base/bar)
+"LA" = (
+/obj/effect/spawner/random/trash/grime,
+/turf/open/floor/plating/lavaland_atmos,
+/area/ruin/syndicate_lava_base/bar)
+"LC" = (
+/obj/machinery/conveyor_switch/oneway{
+	dir = 8;
+	id = "interdynedisp";
+	name = "disposal conveyor"
+	},
+/obj/effect/decal/cleanable/shreds,
+/turf/open/floor/plating/lavaland_atmos,
 /area/ruin/syndicate_lava_base/bar)
 "LD" = (
 /obj/machinery/hydroponics/constructable,
@@ -3319,10 +3631,16 @@
 /obj/structure/table/glass,
 /obj/item/stock_parts/cell/bluespace,
 /obj/machinery/airalarm/directional/west{
-	req_access = list(150)
+	req_access = list("syndicate")
 	},
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/testlab)
+"Mk" = (
+/obj/machinery/porta_turret/syndicate{
+	dir = 10
+	},
+/turf/closed/wall/r_wall/syndicate/nodiagonal,
+/area/ruin/syndicate_lava_base/main)
 "Mn" = (
 /turf/open/floor/iron/smooth_edge{
 	dir = 1
@@ -3339,16 +3657,18 @@
 /area/ruin/syndicate_lava_base/virology)
 "Mu" = (
 /obj/effect/turf_decal/stripes/line,
-/obj/structure/cable,
-/turf/open/floor/plating/icemoon,
+/obj/structure/table,
+/obj/item/toy/cards/deck/kotahi{
+	pixel_y = 5
+	},
+/turf/open/floor/plating/lavaland_atmos,
 /area/ruin/syndicate_lava_base/medbay)
 "My" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/directional/west{
-	req_access = list(150)
+	req_access = list("syndicate")
 	},
-/obj/effect/mob_spawn/ghost_role/human/lavaland_syndicate/ice,
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/engineering)
 "MC" = (
@@ -3438,7 +3758,6 @@
 /obj/machinery/microwave{
 	pixel_y = 9
 	},
-/obj/effect/spawner/random/food_or_drink/donkpockets,
 /turf/open/floor/iron/kitchen,
 /area/ruin/syndicate_lava_base/bar)
 "NV" = (
@@ -3497,18 +3816,23 @@
 /turf/open/floor/engine/n2,
 /area/ruin/syndicate_lava_base/engineering)
 "Ow" = (
-/obj/effect/turf_decal/tile/bar,
-/obj/effect/turf_decal/tile/bar{
-	dir = 1
+/obj/structure/window/reinforced/survival_pod,
+/obj/structure/window/reinforced/survival_pod{
+	dir = 8
 	},
-/turf/open/floor/iron/telecomms,
+/obj/machinery/atmospherics/components/unary/vent_pump/siphon/on{
+	dir = 1;
+	external_pressure_bound = 120;
+	name = "server vent"
+	},
+/turf/open/floor/circuit/telecomms,
 /area/ruin/syndicate_lava_base/testlab)
 "Oz" = (
 /obj/machinery/door/airlock/medical/glass{
-	name = "Medical Wing";
-	req_access = list("syndicate")
+	name = "Medical Wing"
 	},
 /obj/machinery/door/firedoor,
+/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/medbay)
 "OD" = (
@@ -3580,7 +3904,12 @@
 /obj/machinery/light/directional/west,
 /turf/open/floor/plating,
 /area/ruin/syndicate_lava_base/engineering)
+"Pq" = (
+/obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
+/turf/open/floor/plating,
+/area/ruin/syndicate_lava_base/testlab)
 "Pr" = (
+/obj/machinery/suit_storage_unit/syndicate/chameleon,
 /turf/open/floor/iron/corner{
 	dir = 4
 	},
@@ -3595,8 +3924,22 @@
 	},
 /turf/open/floor/plating/icemoon,
 /area/ruin/syndicate_lava_base/testlab)
+"PG" = (
+/obj/structure/chair/wood{
+	dir = 1
+	},
+/obj/structure/sign/painting/library{
+	pixel_x = -32
+	},
+/turf/open/floor/wood,
+/area/ruin/syndicate_lava_base/dormitories)
 "PI" = (
-/obj/machinery/griddle,
+/obj/structure/sink{
+	dir = 8;
+	pixel_x = 11;
+	pixel_y = -5
+	},
+/obj/machinery/light/directional/north,
 /turf/open/floor/iron/dark/smooth_large,
 /area/ruin/syndicate_lava_base/bar)
 "PK" = (
@@ -3604,6 +3947,9 @@
 	dir = 8
 	},
 /obj/machinery/light/directional/south,
+/obj/effect/turf_decal/tile/dark_red{
+	dir = 4
+	},
 /turf/open/floor/engine,
 /area/ruin/syndicate_lava_base/testlab)
 "PQ" = (
@@ -3617,9 +3963,8 @@
 /turf/open/floor/iron/dark,
 /area/ruin/syndicate_lava_base/virology)
 "PW" = (
-/obj/machinery/door/airlock/maintenance_hatch{
-	req_access = list("syndicate")
-	},
+/obj/machinery/door/airlock/maintenance_hatch,
+/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
 /turf/open/floor/plating,
 /area/ruin/syndicate_lava_base/medbay)
 "Qe" = (
@@ -3667,10 +4012,9 @@
 /obj/effect/turf_decal/stripes/corner{
 	dir = 4
 	},
-/obj/machinery/door/airlock/maintenance/external{
-	req_access = list("syndicate")
-	},
+/obj/machinery/door/airlock/maintenance/external,
 /obj/structure/fans/tiny,
+/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
 /turf/open/floor/plating,
 /area/ruin/syndicate_lava_base/cargo)
 "QN" = (
@@ -3694,9 +4038,9 @@
 	dir = 8
 	},
 /obj/machinery/door/airlock/public/glass{
-	name = "Bar";
-	req_access = list("syndicate")
+	name = "Service"
 	},
+/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/bar)
 "Re" = (
@@ -3724,25 +4068,36 @@
 	dir = 1
 	},
 /area/ruin/syndicate_lava_base/bar)
-"RH" = (
-/obj/structure/window/reinforced/survival_pod{
-	dir = 8
+"Rv" = (
+/obj/machinery/door/airlock{
+	name = "Library Backroom"
 	},
-/obj/effect/turf_decal/tile/bar,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/general/hidden,
-/turf/open/floor/iron/telecomms,
+/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
+/turf/open/floor/wood/large,
+/area/ruin/syndicate_lava_base/dormitories)
+"RE" = (
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 4
+	},
+/turf/open/floor/stone,
+/area/ruin/syndicate_lava_base/bar)
+"RH" = (
+/obj/machinery/portable_atmospherics/canister/bz,
+/obj/machinery/atmospherics/components/unary/portables_connector,
+/turf/open/floor/iron/dark,
 /area/ruin/syndicate_lava_base/testlab)
 "RN" = (
 /obj/machinery/airalarm/directional/south{
-	req_access = list(150)
+	req_access = list("syndicate")
 	},
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/medbay)
 "RQ" = (
-/obj/structure/lattice/catwalk,
-/obj/structure/railing,
-/turf/open/lava/plasma/ice_moon,
-/area/ruin/syndicate_lava_base/testlab)
+/obj/machinery/modular_computer/console/preset/curator{
+	dir = 1
+	},
+/turf/open/floor/wood/large,
+/area/ruin/syndicate_lava_base/dormitories)
 "RV" = (
 /turf/closed/wall/r_wall/syndicate/nodiagonal,
 /area/ruin/syndicate_lava_base/cargo)
@@ -3824,6 +4179,10 @@
 /area/ruin/syndicate_lava_base/medbay)
 "Tl" = (
 /obj/machinery/deepfryer,
+/obj/machinery/button/door/directional/north{
+	id_tag = "interdynekitchen";
+	req_access = list("syndicate")
+	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/ruin/syndicate_lava_base/bar)
 "Tm" = (
@@ -3849,7 +4208,7 @@
 	},
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/directional/west{
-	req_access = list(150)
+	req_access = list("syndicate")
 	},
 /obj/structure/table/glass,
 /obj/machinery/reagentgrinder,
@@ -3864,12 +4223,18 @@
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/syndicate_lava_base/virology)
+"Tv" = (
+/obj/machinery/porta_turret/syndicate{
+	dir = 9
+	},
+/turf/closed/wall/r_wall/syndicate/nodiagonal,
+/area/ruin/syndicate_lava_base/main)
 "Tx" = (
 /obj/structure/window/reinforced/survival_pod{
 	dir = 1
 	},
 /obj/structure/closet/secure_closet/freezer/meat{
-	req_access = list(150)
+	req_access = list("syndicate")
 	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/ruin/syndicate_lava_base/bar)
@@ -3890,16 +4255,17 @@
 /area/ruin/syndicate_lava_base/engineering)
 "TI" = (
 /obj/machinery/airalarm/directional/south{
-	req_access = list(150)
+	req_access = list("syndicate")
 	},
+/obj/machinery/light/directional/south,
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/bar)
 "TO" = (
 /obj/machinery/door/airlock/mining/glass{
-	name = "Cargo Bay";
-	req_access = list("syndicate")
+	name = "Cargo Bay"
 	},
 /obj/machinery/door/firedoor,
+/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
 /turf/open/floor/iron/dark/side{
 	dir = 1
 	},
@@ -3922,28 +4288,35 @@
 /turf/open/floor/wood,
 /area/ruin/syndicate_lava_base/dormitories)
 "Uj" = (
-/obj/effect/turf_decal/stripes/line,
-/obj/structure/chair/plastic{
-	dir = 4
-	},
 /obj/structure/sign/departments/xenobio/directional/west,
-/turf/open/floor/plating/icemoon,
-/area/ruin/syndicate_lava_base/testlab)
+/obj/structure/closet/crate,
+/obj/item/clothing/neck/stethoscope,
+/obj/item/choice_beacon/music,
+/obj/item/choice_beacon/music,
+/turf/open/floor/wood/large,
+/area/ruin/syndicate_lava_base/dormitories)
+"Uo" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
+/obj/machinery/light/directional/north,
+/turf/open/floor/wood/tile,
+/area/ruin/syndicate_lava_base/dormitories)
 "Uq" = (
 /obj/effect/turf_decal/tile/brown{
 	dir = 1
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/syndicate_lava_base/cargo)
+"Ut" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/lavaland_atmos,
+/area/ruin/syndicate_lava_base/medbay)
 "Uz" = (
-/obj/effect/turf_decal/stripes/line{
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/mob_spawn/ghost_role/human/lavaland_syndicate/ice{
 	dir = 8
 	},
-/obj/structure/chair/plastic{
-	dir = 8
-	},
-/turf/open/floor/plating/icemoon,
-/area/ruin/syndicate_lava_base/cargo)
+/turf/open/floor/iron,
+/area/ruin/syndicate_lava_base/main)
 "UE" = (
 /obj/structure/window/reinforced/plasma/plastitanium,
 /obj/structure/flora/bush/flowers_br,
@@ -3975,11 +4348,8 @@
 /turf/open/floor/iron/corner,
 /area/ruin/syndicate_lava_base/main)
 "UX" = (
-/obj/structure/window/reinforced/survival_pod{
-	dir = 8
-	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/general/hidden,
-/turf/open/floor/iron/telecomms,
+/turf/open/floor/iron/dark,
 /area/ruin/syndicate_lava_base/testlab)
 "Vb" = (
 /obj/effect/turf_decal/stripes/line{
@@ -3992,9 +4362,8 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/effect/turf_decal/stripes/line,
 /obj/machinery/airalarm/directional/east{
-	req_access = list(150)
+	req_access = list("syndicate")
 	},
-/obj/machinery/suit_storage_unit/syndicate/chameleon,
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/engineering)
 "Vk" = (
@@ -4013,16 +4382,17 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
 /obj/structure/rack,
 /obj/item/pipe_dispenser,
-/obj/item/construction/rcd,
+/obj/item/construction/rcd/loaded,
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/engineering)
 "Vr" = (
-/obj/structure/table/glass,
-/obj/item/stack/sheet/mineral/plasma{
-	amount = 15
-	},
+/obj/machinery/chem_mass_spec,
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/medbay)
+"Vt" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron,
+/area/ruin/syndicate_lava_base/main)
 "Vv" = (
 /obj/effect/turf_decal/tile/brown,
 /obj/machinery/light/directional/east,
@@ -4030,9 +4400,9 @@
 /area/ruin/syndicate_lava_base/cargo)
 "VE" = (
 /obj/machinery/door/airlock/public/glass{
-	name = "Bar";
-	req_access = list("syndicate")
+	name = "Service"
 	},
+/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/bar)
 "VJ" = (
@@ -4076,20 +4446,27 @@
 /turf/closed/wall/r_wall/syndicate/nodiagonal,
 /area/ruin/syndicate_lava_base/medbay)
 "VQ" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/siphon/on{
-	dir = 8;
-	external_pressure_bound = 120;
-	name = "server vent"
-	},
-/turf/open/floor/iron/telecomms,
+/obj/structure/fans/tiny,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/general/hidden,
+/turf/open/floor/iron/dark,
 /area/ruin/syndicate_lava_base/testlab)
 "VW" = (
 /obj/machinery/suit_storage_unit/mining,
 /obj/machinery/airalarm/directional/north{
-	req_access = list(150)
+	req_access = list("syndicate")
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/syndicate_lava_base/cargo)
+"Wg" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 8
+	},
+/obj/structure/chair/sofa/corner{
+	dir = 8
+	},
+/obj/machinery/light/directional/south,
+/turf/open/floor/wood/tile,
+/area/ruin/syndicate_lava_base/dormitories)
 "Wj" = (
 /obj/machinery/vending/hydroseeds{
 	onstation = 0
@@ -4109,12 +4486,12 @@
 /turf/open/floor/catwalk_floor/iron_dark,
 /area/ruin/syndicate_lava_base/testlab)
 "Wx" = (
-/obj/machinery/door/airlock/grunge{
-	name = "Hydroponics";
-	req_access = list("syndicate")
-	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
+/obj/machinery/door/airlock/hydroponics{
+	name = "Hydroponics"
+	},
 /turf/open/floor/stone,
 /area/ruin/syndicate_lava_base/bar)
 "Wz" = (
@@ -4140,26 +4517,26 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
 /turf/open/floor/iron/smooth_half{
 	dir = 1
 	},
 /area/ruin/syndicate_lava_base/cargo)
 "WF" = (
-/obj/machinery/door/airlock/maintenance/external{
-	req_access = list("syndicate")
-	},
+/obj/machinery/door/airlock/maintenance/external,
 /obj/structure/fans/tiny,
 /obj/effect/turf_decal/stripes/corner{
 	dir = 4
 	},
+/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
 /turf/open/floor/plating,
 /area/ruin/syndicate_lava_base/main)
 "WI" = (
-/obj/effect/turf_decal/stripes/line{
+/obj/effect/mob_spawn/ghost_role/human/lavaland_syndicate/ice{
 	dir = 8
 	},
-/turf/open/floor/plating/icemoon,
-/area/ruin/syndicate_lava_base/cargo)
+/turf/open/floor/iron,
+/area/ruin/syndicate_lava_base/main)
 "WK" = (
 /obj/machinery/light/directional/south,
 /turf/open/floor/iron,
@@ -4169,13 +4546,16 @@
 	name = "Dormitories";
 	req_access = list("syndicate")
 	},
+/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/dormitories)
 "Xa" = (
-/obj/structure/frame/machine,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
+/obj/structure/frame/machine{
+	anchored = 1
+	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/ruin/syndicate_lava_base/testlab)
 "Xc" = (
@@ -4226,7 +4606,7 @@
 	},
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/directional/north{
-	req_access = list(150)
+	req_access = list("syndicate")
 	},
 /turf/open/floor/iron/cafeteria,
 /area/ruin/syndicate_lava_base/dormitories)
@@ -4304,15 +4684,11 @@
 /area/ruin/syndicate_lava_base/bar)
 "YB" = (
 /obj/structure/lattice/catwalk,
-/obj/structure/railing{
-	dir = 8
-	},
-/turf/open/lava/plasma/ice_moon,
+/turf/open/lava/smooth/lava_land_surface,
 /area/ruin/syndicate_lava_base/engineering)
 "YC" = (
-/obj/effect/turf_decal/stripes/line,
-/turf/open/floor/plating/icemoon,
-/area/ruin/syndicate_lava_base/testlab)
+/turf/open/floor/wood/large,
+/area/ruin/syndicate_lava_base/dormitories)
 "YI" = (
 /obj/effect/turf_decal/siding/thinplating/dark{
 	dir = 4
@@ -4352,6 +4728,15 @@
 	},
 /turf/open/floor/engine,
 /area/ruin/syndicate_lava_base/testlab)
+"Zh" = (
+/obj/structure/toilet{
+	dir = 8
+	},
+/obj/machinery/button/door/directional/north{
+	id = "interdynerec1"
+	},
+/turf/open/floor/iron/checker,
+/area/ruin/syndicate_lava_base/bar)
 "Zi" = (
 /turf/open/floor/wood,
 /area/ruin/syndicate_lava_base/cargo)
@@ -4395,6 +4780,9 @@
 	id = "interdynedorms";
 	req_access = list("syndicate")
 	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 1
+	},
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/dormitories)
 "ZK" = (
@@ -4413,6 +4801,12 @@
 	dir = 1
 	},
 /area/ruin/syndicate_lava_base/medbay)
+"ZN" = (
+/obj/effect/turf_decal/tile/dark_red/half{
+	dir = 8
+	},
+/turf/open/floor/engine,
+/area/ruin/syndicate_lava_base/testlab)
 "ZQ" = (
 /obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -4460,8 +4854,8 @@ ac
 ac
 ac
 ac
-aa
-aa
+ac
+ac
 ac
 ac
 ac
@@ -4578,8 +4972,8 @@ ab
 ab
 ab
 ab
-ac
-ac
+ab
+ab
 ab
 ab
 ab
@@ -4705,7 +5099,7 @@ kf
 kf
 kf
 kf
-yE
+wn
 ab
 ab
 ab
@@ -4995,7 +5389,7 @@ kU
 my
 kr
 kw
-En
+kw
 MD
 Xc
 zu
@@ -5025,6 +5419,7 @@ ac
 ac
 ab
 ab
+Tv
 RV
 RV
 RV
@@ -5036,8 +5431,7 @@ RV
 RV
 RV
 RV
-RV
-RV
+Mk
 ab
 ab
 ab
@@ -5070,7 +5464,7 @@ zF
 zF
 zF
 zF
-zF
+Mk
 ab
 ab
 ab
@@ -5114,9 +5508,9 @@ kf
 sr
 Ow
 cj
-MD
-Xc
-zu
+mV
+Ae
+Ae
 PK
 zF
 YM
@@ -5174,16 +5568,16 @@ dw
 Hs
 VQ
 ue
-Fy
-aB
-BA
+ZN
+ZN
+rv
 zF
 XS
 Qq
 jt
 zF
-Km
-sc
+UO
+Jd
 zF
 jt
 Qq
@@ -5229,7 +5623,7 @@ Pc
 mk
 kf
 kf
-hA
+kf
 kf
 kf
 kf
@@ -5242,7 +5636,7 @@ zF
 zF
 zF
 Gb
-sc
+Jd
 zF
 zF
 zF
@@ -5286,22 +5680,22 @@ VL
 jo
 ej
 jo
-VL
+Pq
 Uj
-eC
-RQ
-ab
-ab
-ab
-ab
-ab
+YC
+yq
+zF
+IA
+PG
+ox
+sG
 zF
 gG
 CZ
 zF
 XD
-sE
-sc
+xm
+Jd
 OH
 zF
 Tm
@@ -5345,22 +5739,22 @@ VL
 jo
 FT
 jo
-VL
+Pq
 qS
-eC
-RQ
-ab
-ab
-ab
-ab
-ab
+YC
+YC
+Rv
+GM
+GM
+fd
+oE
 zF
 Yl
 xY
 zF
 Oc
-sE
-sc
+xm
+Jd
 vo
 zF
 UP
@@ -5404,22 +5798,22 @@ VL
 jo
 FT
 jo
-VL
+Pq
 IB
-eC
-RQ
-ab
-ab
-ab
-ab
-ab
+YC
+hT
+zF
+uV
+jH
+nz
+gT
 zF
 eu
 Uf
 zF
 hu
-sE
-sc
+xm
+Jd
 zF
 zF
 Uf
@@ -5463,22 +5857,22 @@ VL
 jo
 Yo
 jo
-VL
+Pq
 YC
-eC
+HF
 RQ
-ab
-ab
-ab
-ab
-ab
+zF
+zF
+zF
+zF
+Le
 zF
 zF
 SK
 zF
 Xz
-sE
-sc
+xm
+Jd
 tx
 zF
 Fx
@@ -5510,11 +5904,11 @@ RV
 RV
 RV
 RV
-ab
-ab
-ab
-ab
-ab
+ZU
+ZU
+ZU
+ZU
+ZU
 ZU
 ZU
 tw
@@ -5526,18 +5920,18 @@ kf
 FK
 ZU
 ZU
-ab
-ab
-ab
-ab
-ab
 zF
-Jd
+um
+zX
+gm
+Ad
+eg
+HU
 HU
 Jd
 Jd
-sE
-sc
+xm
+Jd
 Jd
 Jd
 HU
@@ -5569,11 +5963,11 @@ Rl
 Ic
 RV
 RV
+jI
 pl
-pl
-pl
-pl
-RV
+jI
+jI
+ZU
 Zl
 Zo
 Zo
@@ -5585,12 +5979,12 @@ Kz
 Zo
 Vn
 Zl
-td
+ZU
+Uo
+up
+up
 Ad
-Ad
-Ad
-Ad
-td
+zF
 dO
 fq
 xm
@@ -5628,11 +6022,11 @@ lZ
 Ci
 Yi
 RV
-RZ
-RZ
-RZ
-RZ
-RV
+Zo
+Vt
+Vt
+Zo
+ZU
 DX
 DH
 DH
@@ -5644,11 +6038,11 @@ DH
 DH
 DH
 WK
-td
-nS
-nS
-nS
-nS
+ZU
+nc
+eZ
+au
+lP
 qg
 Jd
 fq
@@ -5659,7 +6053,7 @@ Jd
 Jd
 ef
 Sm
-ef
+Jd
 CR
 ab
 ab
@@ -5689,8 +6083,8 @@ bO
 RV
 Uz
 WI
-WI
-WI
+KP
+Vt
 rm
 Zo
 DH
@@ -5703,12 +6097,12 @@ Zo
 Zo
 DH
 Zo
-dm
+ZU
+tJ
 eZ
-eZ
-eZ
-eZ
-td
+vi
+Wg
+zF
 WS
 ZQ
 yY
@@ -5718,7 +6112,7 @@ QU
 zF
 Cd
 Zx
-Cd
+Km
 zF
 ab
 ab
@@ -5763,10 +6157,10 @@ ZK
 EP
 er
 td
-us
-us
-us
-us
+td
+td
+td
+td
 td
 Ol
 dR
@@ -5822,9 +6216,9 @@ CN
 ju
 Zo
 dz
-sF
-sF
 KW
+sF
+sF
 sF
 dz
 sF
@@ -5941,9 +6335,9 @@ ju
 Zo
 dz
 sF
+sF
+sF
 fF
-sF
-sF
 dz
 sF
 xl
@@ -5999,10 +6393,10 @@ iB
 DH
 GA
 td
-us
-us
-us
-us
+td
+td
+td
+td
 td
 sF
 dR
@@ -6058,17 +6452,17 @@ Zo
 DH
 Zo
 yH
-vt
-vt
-vt
+nS
+nS
+nS
 vt
 td
 VE
 tM
 Rd
 td
-Pm
-Pm
+cW
+dm
 td
 td
 jJ
@@ -6117,14 +6511,14 @@ DH
 DH
 nn
 td
+yi
+td
 nS
 nS
-nS
-nS
-qg
+Fa
 sF
 dR
-sF
+sc
 td
 oV
 Li
@@ -6173,14 +6567,14 @@ cV
 Zo
 Zo
 oG
-pP
+Zo
 Zl
 td
+Zh
+td
+qT
 vz
-vz
-vz
-vz
-fe
+td
 sF
 xl
 sF
@@ -6234,15 +6628,15 @@ yQ
 yy
 yQ
 yQ
-ab
-ab
-ab
-ab
-ab
-fe
+td
+td
+td
+td
+td
+td
 sF
 xl
-KP
+sF
 td
 ge
 Qe
@@ -6290,14 +6684,14 @@ xc
 Fu
 xc
 NB
-Mu
+sZ
 Er
 tB
-ab
-ab
-Iy
-ab
-ab
+td
+LA
+Lc
+iw
+En
 fe
 sF
 xl
@@ -6332,7 +6726,7 @@ wr
 bq
 RV
 sP
-wr
+wV
 Jj
 ab
 ab
@@ -6349,21 +6743,21 @@ xc
 Yf
 xc
 NB
-Mu
+xe
 Er
 tB
-ab
-Iy
+td
+aA
 xS
-Iy
-ab
+aA
+EL
 td
 sF
 dR
 If
 td
 PI
-au
+Li
 Tx
 tS
 cK
@@ -6411,18 +6805,18 @@ NB
 Mu
 Er
 tB
-ab
-Iy
-Iy
+td
+nx
+LC
 Lc
-ab
+nd
 td
 iZ
 dR
 TI
 td
 td
-td
+pK
 td
 td
 pe
@@ -6470,19 +6864,19 @@ NB
 yB
 Er
 tB
-ab
-ab
-Iy
-Iy
-ab
+td
+td
+td
+td
+td
 td
 Ol
 dR
 sF
 Pm
-zq
 Xw
-nx
+zT
+zq
 zq
 mg
 zq
@@ -6514,7 +6908,7 @@ ab
 ab
 ab
 ab
-Mt
+Tv
 Mt
 Mt
 Mt
@@ -6530,18 +6924,18 @@ yQ
 yQ
 yQ
 yQ
-ab
-ab
-ab
-ab
+sa
+sa
+sa
+sa
 td
 rP
 dR
 sF
 Ro
 FW
-kl
-kl
+RE
+RE
 kl
 Ld
 zq
@@ -6589,11 +6983,11 @@ yQ
 GQ
 Ca
 yQ
-ab
-ab
-ab
-ab
-fe
+us
+Ut
+us
+Ut
+td
 sF
 xl
 sF
@@ -6603,7 +6997,7 @@ ta
 BB
 nP
 gW
-zq
+pP
 td
 ab
 ab
@@ -6649,10 +7043,10 @@ CX
 lT
 yQ
 yQ
-ab
-ab
-ab
-fe
+ft
+Ho
+us
+td
 sF
 xl
 sF
@@ -6708,10 +7102,10 @@ oN
 GJ
 jT
 yQ
-ab
-ab
-ab
-fe
+rT
+Ut
+Ut
+td
 sF
 xl
 zI
@@ -6767,9 +7161,9 @@ oe
 vW
 kV
 yQ
-ab
-ab
-ab
+hA
+Ut
+Ho
 td
 tv
 dR
@@ -6826,9 +7220,9 @@ yQ
 wv
 yQ
 yQ
-ab
-ab
-ab
+yQ
+bY
+yQ
 ap
 ap
 it
@@ -6884,7 +7278,7 @@ nA
 aG
 Hn
 yQ
-vi
+YB
 YB
 YB
 YB
@@ -7135,7 +7529,7 @@ ap
 ap
 ap
 ap
-ap
+kN
 ab
 ab
 ac
@@ -7163,7 +7557,7 @@ ab
 ab
 ab
 Iy
-yQ
+sE
 yQ
 yQ
 yQ
@@ -7183,7 +7577,7 @@ ab
 ab
 ab
 ab
-ap
+sE
 ap
 ap
 ap
