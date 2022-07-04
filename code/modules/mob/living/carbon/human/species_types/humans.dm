@@ -54,7 +54,9 @@
 	From the exact moment of their appearance over two-million years ago, Humans have extended their habitat from the African continent to the rest of Sol-3, \"Planet Earth\". \
 	Over thousands of years, they had managed to become the lone dominant species of their planet of origin - and refused to stop there. More than five-hundred years ago, \
 	Humanity set out to find another Earth, a new start - a planet not polluded by hundreds of years of industrialization, with a healthy, thriving ecosystem, unaffected by millenia of warfare and resource exploitation. \
-	-"})
+	Nowadays, it's merely a story for children in the very outer colonies established in the frontiers of charted space.
+	
+	"})
 	
 //^ SKYRAT EDIT - ORIGINAL:
 /*
