@@ -163,6 +163,13 @@
 	},
 /turf/open/floor/iron/kitchen,
 /area/ruin/syndicate_lava_base/bar)
+"be" = (
+/obj/machinery/button/door/directional/west{
+	id = "interdynedorms";
+	req_access = list("syndicate")
+	},
+/turf/open/floor/iron,
+/area/ruin/syndicate_lava_base/dormitories)
 "bf" = (
 /obj/structure/rack,
 /obj/item/cultivator,
@@ -200,14 +207,7 @@
 /turf/open/floor/plating,
 /area/ruin/syndicate_lava_base/cargo)
 "bu" = (
-/obj/structure/window/reinforced/survival_pod{
-	dir = 1
-	},
-/obj/structure/closet/secure_closet/freezer/kitchen{
-	req_access = list("syndicate")
-	},
-/obj/item/reagent_containers/food/condiment/milk,
-/obj/item/reagent_containers/food/condiment/soymilk,
+/obj/machinery/processor,
 /turf/open/floor/iron/dark/smooth_large,
 /area/ruin/syndicate_lava_base/bar)
 "bv" = (
@@ -675,10 +675,7 @@
 /turf/open/floor/iron/showroomfloor,
 /area/ruin/syndicate_lava_base/cargo)
 "eX" = (
-/obj/structure/table/reinforced,
-/obj/item/reagent_containers/food/condiment/enzyme{
-	pixel_y = 8
-	},
+/obj/machinery/disposal/bin,
 /turf/open/floor/iron/kitchen,
 /area/ruin/syndicate_lava_base/bar)
 "eZ" = (
@@ -908,13 +905,6 @@
 /obj/item/storage/backpack/duffelbag/syndie/surgery,
 /turf/open/floor/plating/lavaland_atmos,
 /area/ruin/syndicate_lava_base/medbay)
-"hG" = (
-/obj/machinery/button/door/directional/west{
-	id = "interdynedorms";
-	req_access = list("syndicate")
-	},
-/turf/open/floor/iron,
-/area/ruin/syndicate_lava_base/dormitories)
 "hJ" = (
 /obj/effect/turf_decal/siding/thinplating/dark/corner,
 /turf/open/floor/iron,
@@ -1264,8 +1254,7 @@
 /turf/open/floor/iron/dark,
 /area/ruin/syndicate_lava_base/medbay)
 "kZ" = (
-/obj/structure/window/reinforced/survival_pod,
-/obj/machinery/processor,
+/obj/machinery/vending/dinnerware,
 /turf/open/floor/iron/dark/smooth_large,
 /area/ruin/syndicate_lava_base/bar)
 "lb" = (
@@ -2062,10 +2051,12 @@
 /turf/open/floor/plating,
 /area/ruin/syndicate_lava_base/bar)
 "tS" = (
-/obj/structure/window/reinforced/survival_pod,
-/obj/structure/closet/secure_closet/freezer/meat{
+/obj/structure/closet/secure_closet/freezer/kitchen{
 	req_access = list("syndicate")
 	},
+/obj/item/reagent_containers/food/condiment/milk,
+/obj/item/reagent_containers/food/condiment/soymilk,
+/obj/structure/window/reinforced/survival_pod,
 /turf/open/floor/iron/dark/smooth_large,
 /area/ruin/syndicate_lava_base/bar)
 "tT" = (
@@ -2757,6 +2748,10 @@
 /obj/machinery/light/directional/west,
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/main)
+"Ct" = (
+/obj/machinery/porta_turret/syndicate,
+/turf/closed/wall/r_wall/syndicate/nodiagonal,
+/area/ruin/syndicate_lava_base/main)
 "CC" = (
 /obj/structure/table,
 /turf/open/floor/iron/dark,
@@ -3377,6 +3372,9 @@
 /obj/item/reagent_containers/food/condiment/saltshaker,
 /obj/item/reagent_containers/food/condiment/peppermill{
 	pixel_x = 6
+	},
+/obj/item/reagent_containers/food/condiment/enzyme{
+	pixel_y = 8
 	},
 /turf/open/floor/iron/kitchen,
 /area/ruin/syndicate_lava_base/bar)
@@ -4187,8 +4185,7 @@
 "Tl" = (
 /obj/machinery/deepfryer,
 /obj/machinery/button/door/directional/north{
-	id_tag = "interdynekitchen";
-	req_access = list("syndicate")
+	id_tag = "interdynekitchen"
 	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/ruin/syndicate_lava_base/bar)
@@ -5936,7 +5933,7 @@ Jd
 xm
 Jd
 Jd
-hG
+be
 HU
 Kb
 CR
@@ -6648,7 +6645,7 @@ NJ
 SI
 NJ
 bd
-td
+Ct
 ab
 ab
 ab
