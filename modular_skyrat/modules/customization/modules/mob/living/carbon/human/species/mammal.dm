@@ -104,7 +104,8 @@
 	return markings
 
 /datum/species/mammal/get_species_description()
-	return {"Anthromorph is a catch-all term for any anthropomorphic creature, often mammalian, that is either not registered in any official Sapient Universal Species Database under the Sol Federation, Taj Empire, Agurrkral Kingdom, Novaya Rossiyskaya Imperiya, and other major States - or is simply a result of genetical modification."}
+	return {"Anthromorph is a catch-all term for any anthropomorphic creature, often mammalian, that is either not registered in any official Sapient Universal Species Database under the Sol Federation, Taj Empire, Agurrkral Kingdom, Novaya Rossiyskaya Imperiya, and other major States \
+	- or is simply a result of genetical modification."}
 
 
 /datum/species/mammal/get_species_lore()
