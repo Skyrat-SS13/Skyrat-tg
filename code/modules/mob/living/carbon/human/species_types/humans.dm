@@ -43,28 +43,18 @@
 	)
 
 /datum/species/human/get_species_description()
-	return "Humans are the dominant species in the known galaxy. \
-		Their kind extend from old Earth to the edges of known space."
+	return {"Founders and rightful leaders of the Sol Federation, a Human being, or Human, is any member of the mammalian species Homo sapiens sapiens, \
+	a group of ground-dwelling, tailless primates that originate from Sol-3 and are characterized by bipedalism and the capacity for speech and language, with an erect body carriage that frees the hands for manipulating objects. \
+	Humans are characterized by their quick technological advancements, extreme perserverance, adaptative capabilities, and unending stupidity - among other skills. \
+	In Sol time, it's said humanity had first reached space several centuries ago, but only started their expansion in the past few hundred years."}
 
 /datum/species/human/get_species_lore()
-	return list(
-		"These primate-descended creatures, originating from the mostly harmless Earth, \
-		have long-since outgrown their home and semi-benign designation. \
-		The space age has taken humans out of their solar system and into the galaxy-at-large.",
-
-		"In traditional human fashion, this near-record pace from terra firma to the final frontier spat \
-		in the face of other races they now shared a stage with. \
-		This included the lizards - if anyone was offended by these upstarts, it was certainly lizardkind.",
-
-		"Humanity never managed to find the kind of peace to fully unite under one banner like other species. \
-		The pencil and paper pushing of the UN bureaucrat lives on in the mosaic that is TerraGov; \
-		a composite of the nation-states that still live on in human society.",
-
-		"The human spirit of opportunity and enterprise continues on in its peak form: \
-		the hypercorporation. Acting outside of TerraGov's influence, literally and figuratively, \
-		hypercorporations buy the senate votes they need and establish territory far past the Earth Government's reach. \
-		In hypercorporation territory company policy is law, giving new meaning to \"employee termination\".",
-	)
+	return list({"Humanity and its history is so diverse that even in the space age it's still hard to make a generalization. One thing is for certain - \
+	They are best defined by the words of an ancient, once powerful dictator. \"I came. I saw. I conquered.\" \
+	From the exact moment of their appearance over two-million years ago, Humans have extended their habitat from the African continent to the rest of Sol-3, \"Planet Earth\". \
+	Over thousands of years, they had managed to become the lone dominant species of their planet of origin - and refused to stop there. More than five-hundred years ago, \
+	Humanity set out to find another Earth, a new start - a planet not polluded by hundreds of years of industrialization, with a healthy, thriving ecosystem, unaffected by millenia of warfare and resource exploitation. \
+	-"}
 
 /datum/species/human/create_pref_unique_perks()
 	var/list/to_add = list()
