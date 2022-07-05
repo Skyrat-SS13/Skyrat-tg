@@ -9260,6 +9260,10 @@
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/engine,
 /area/station/science/xenobiology)
+"cNT" = (
+/obj/machinery/light/small/directional/east,
+/turf/open/floor/engine/vacuum,
+/area/station/science/ordnance/burnchamber)
 "cOa" = (
 /obj/structure/sign/warning/secure_area{
 	desc = "A warning sign which reads 'SERVER ROOM'.";
@@ -11860,10 +11864,6 @@
 /obj/effect/landmark/start/hangover,
 /turf/open/floor/iron/dark,
 /area/station/commons/fitness)
-"dCH" = (
-/obj/machinery/portable_atmospherics/pump,
-/turf/open/floor/iron/dark,
-/area/station/science/ordnance/office)
 "dCL" = (
 /obj/structure/disposalpipe/trunk/multiz{
 	dir = 4
@@ -18654,6 +18654,14 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/engineering/atmos)
+"fKN" = (
+/obj/item/radio/intercom/directional/west,
+/obj/machinery/camera/directional/west{
+	c_tag = "Engineering Emitter Room Port";
+	network = list("ss13","engine")
+	},
+/turf/open/floor/iron/dark,
+/area/station/engineering/supermatter/room)
 "fKP" = (
 /obj/machinery/shower{
 	dir = 1
@@ -22146,10 +22154,6 @@
 /obj/machinery/light_switch/directional/south,
 /turf/open/floor/iron/showroomfloor,
 /area/station/security/warden)
-"gPB" = (
-/obj/item/radio/intercom/directional/west,
-/turf/open/floor/iron/dark,
-/area/station/engineering/supermatter/room)
 "gPE" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -45925,6 +45929,10 @@
 	},
 /turf/open/floor/plating/snowed/icemoon,
 /area/icemoon/surface/outdoors/nospawn)
+"ooP" = (
+/obj/machinery/light/small/directional/west,
+/turf/open/floor/engine/vacuum,
+/area/station/science/ordnance/burnchamber)
 "ooR" = (
 /obj/structure/table,
 /obj/machinery/cell_charger,
@@ -61032,14 +61040,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/closed/wall/r_wall,
 /area/station/science/ordnance/burnchamber)
-"tea" = (
-/obj/machinery/atmospherics/pipe/smart/simple/dark/visible{
-	dir = 5
-	},
-/obj/machinery/igniter/incinerator_atmos,
-/obj/structure/sign/warning/gas_mask/directional/south,
-/turf/open/floor/engine,
-/area/station/maintenance/disposal/incinerator)
 "ted" = (
 /obj/machinery/holopad,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -62519,10 +62519,6 @@
 /obj/structure/sign/warning/secure_area/directional/west,
 /turf/open/floor/engine,
 /area/station/science/explab)
-"tBT" = (
-/obj/machinery/light/small/directional/west,
-/turf/open/floor/engine/vacuum,
-/area/station/science/ordnance/burnchamber)
 "tBW" = (
 /obj/structure/railing{
 	dir = 5
@@ -67280,6 +67276,14 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/science/ordnance)
+"vcM" = (
+/obj/machinery/atmospherics/pipe/smart/simple/dark/visible{
+	dir = 5
+	},
+/obj/machinery/igniter/incinerator_atmos,
+/obj/structure/sign/warning/gas_mask/directional/south,
+/turf/open/floor/engine,
+/area/station/maintenance/disposal/incinerator)
 "vcO" = (
 /obj/machinery/vending/wardrobe/chap_wardrobe,
 /turf/open/floor/iron/dark,
@@ -69509,6 +69513,13 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/station/service/chapel/office)
+"vMo" = (
+/obj/machinery/camera/directional/east{
+	c_tag = "Engineering Emitter Room Starboard";
+	network = list("ss13","engine")
+	},
+/turf/open/floor/iron/dark,
+/area/station/engineering/supermatter/room)
 "vMq" = (
 /obj/effect/turf_decal/tile/neutral/diagonal_edge,
 /obj/structure/disposalpipe/segment{
@@ -75338,6 +75349,10 @@
 /obj/structure/cable,
 /turf/open/floor/wood,
 /area/station/security/courtroom)
+"xCc" = (
+/obj/machinery/portable_atmospherics/pump,
+/turf/open/floor/iron/dark,
+/area/station/science/ordnance/office)
 "xCh" = (
 /obj/machinery/button/door/directional/west{
 	id = "xenobio5";
@@ -76054,10 +76069,6 @@
 /obj/machinery/mineral/processing_unit_console,
 /turf/open/floor/iron,
 /area/mine/production)
-"xPj" = (
-/obj/machinery/light/small/directional/east,
-/turf/open/floor/engine/vacuum,
-/area/station/science/ordnance/burnchamber)
 "xPk" = (
 /obj/structure/disposalpipe/segment,
 /obj/effect/turf_decal/tile/yellow,
@@ -192194,7 +192205,7 @@ udC
 rcY
 iDt
 inb
-tBT
+ooP
 gWZ
 wHd
 mLK
@@ -192708,7 +192719,7 @@ udC
 rcY
 iDt
 inb
-xPj
+cNT
 nBV
 iao
 iPD
@@ -235934,7 +235945,7 @@ uLH
 mvX
 gka
 miS
-gPB
+fKN
 oNX
 lhC
 maY
@@ -239018,7 +239029,7 @@ nsv
 kAT
 gka
 oWQ
-lhC
+vMo
 alx
 pMC
 qWJ
@@ -246974,7 +246985,7 @@ msN
 gVC
 lyH
 uxF
-tea
+vcM
 wvI
 bln
 bln
@@ -257995,7 +258006,7 @@ kgo
 sCx
 gWr
 iHc
-dCH
+xCc
 gXv
 vaa
 xLq
