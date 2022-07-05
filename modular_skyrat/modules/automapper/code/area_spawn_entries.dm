@@ -71,7 +71,7 @@ SUBSYSTEM_DEF(area_spawn)
 				if(isclosedturf(cardinal_test_turf))
 					wall_check = TRUE
 				for(var/atom/movable/found_movable in cardinal_test_turf)
-					if(is_type_in_list(found_movable, RESTRICTED_CARDINAL_OBJECTS_LIST))
+					if(found_movable.density)
 						cardinal_density_check = FALSE
 			if(wall_hug && !wall_check)
 				continue
