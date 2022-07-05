@@ -16,7 +16,7 @@ SUBSYSTEM_DEF(day_night)
 
 /datum/controller/subsystem/day_night/Initialize(start_timeofday)
 	for(var/datum/day_night_preset/iterating_preset as anything in subtypesof(/datum/day_night_preset))
-		if(SSmapping.config.map_file in iterating_preset.load_map_names)
+		if(SSmapping.config.map_file in initial(iterating_preset.load_map_names))
 			cached_presets = new iterating_preset
 	current_hour = rand(0, 23)
 	update_presets(current_hour)
@@ -35,7 +35,7 @@ SUBSYSTEM_DEF(day_night)
 		current_hour = 0
 
 /**
- * Gets the current time in text format to be displayed on the statpanel.
+ * Gets the current 24hr time in text format to be displayed on the statpanel.
  *
  * Returns HH:MM
  */

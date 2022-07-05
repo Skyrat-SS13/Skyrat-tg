@@ -61,7 +61,7 @@
 
 // PRESETS
 /datum/day_night_preset/icebox
-	load_map_names = "IceBoxStation_skyrat.dmm"
+	load_map_names = list("IceBoxStation_skyrat.dmm")
 	timezones = list(
 		/datum/timezone/midnight,
 		/datum/timezone/early_morning,
