@@ -15,12 +15,12 @@
 /datum/preference/toggle/enable_status_indicators/apply_to_client(client/client, value)
 	. = ..()
 	if(client)
-		client.apply_status_indicator_pref(value)
+		client.mob?.apply_status_indicator_pref(value)
 
-/client/proc/apply_status_indicator_pref(value)
+/mob/proc/apply_status_indicator_pref(value)
 	SIGNAL_HANDLER
-	var/client/myclient = src
-	if(!value) // We called from a signal
+	var/client/myclient = client
+	if(isnull(value)) // We called from a signal
 		value = myclient?.prefs?.read_preference(/datum/preference/toggle/enable_status_indicators)
 	var/atom/movable/screen/plane_master/status/status = locate() in myclient?.screen
 	if(!status)
@@ -58,14 +58,28 @@
 	if(has_status_effect(/datum/status_effect/confusion))
 		return TRUE
 
+/mob/Initialize(mapload)
+	. = ..()
+	RegisterSignal(src, COMSIG_MOB_CLIENT_LOGIN, .proc/apply_status_indicator_pref)
+
 /mob/living/carbon/Initialize(mapload)
 	. = ..()
-	RegisterSignal(src, COMSIG_CARBON_HEALTH_UPDATE, .proc/status_indictor_evaluate)
+	// The Basics
+	RegisterSignal(src, COMSIG_CARBON_HEALTH_UPDATE, .proc/status_indicator_evaluate)
 	RegisterSignal(src, COMSIG_LIVING_DEATH, .proc/cut_indicators_overlays)
-	RegisterSignal(client, COMSIG_MOB_LOGIN, /client/.proc/apply_status_indicator_pref)
+	// Catching weird cases
+	RegisterSignal(src, COMSIG_CARBON_HELP_ACT, .proc/status_indicator_evaluate)
+	RegisterSignal(src, COMSIG_LIVING_SET_BODY_POSITION, .proc/status_indicator_evaluate)
+	// When things actually happen
+	RegisterSignal(src, COMSIG_LIVING_STATUS_STUN, .proc/status_indicator_evaluate)
+	RegisterSignal(src, COMSIG_LIVING_STATUS_KNOCKDOWN, .proc/status_indicator_evaluate)
+	RegisterSignal(src, COMSIG_LIVING_STATUS_PARALYZE, .proc/status_indicator_evaluate)
+	RegisterSignal(src, COMSIG_LIVING_STATUS_IMMOBILIZE, .proc/status_indicator_evaluate)
+	RegisterSignal(src, COMSIG_LIVING_STATUS_UNCONSCIOUS, .proc/status_indicator_evaluate)
+	RegisterSignal(src, COMSIG_LIVING_STATUS_SLEEP, .proc/status_indicator_evaluate)
 
 /// Receives signals to update on carbon health updates. Checks if the mob is dead - if true, removes all the indicators. Then, we determine what status indicators the mob should carry or remove.
-/mob/living/proc/status_indictor_evaluate()
+/mob/living/proc/status_indicator_evaluate()
 	SIGNAL_HANDLER
 	if(stat == DEAD)
 		return
@@ -81,8 +95,8 @@
 /mob/living/proc/add_status_indicator(image/prospective_indicator)
 	if(get_status_indicator(prospective_indicator)) // No duplicates, please.
 		return
-	if(!istype(prospective_indicator, /image))
-		prospective_indicator = image(icon = 'modular_skyrat/master_files/icons/mob/status_indicators.dmi', loc = src, icon_state = prospective_indicator)
+
+	prospective_indicator = image(icon = 'modular_skyrat/master_files/icons/mob/status_indicators.dmi', loc = src, icon_state = prospective_indicator)
 
 	LAZYADD(status_indicators, prospective_indicator)
 	handle_status_indicators()
@@ -97,10 +111,10 @@
 
 /// Finds a status indicator on a mob.
 /mob/living/proc/get_status_indicator(image/prospective_indicator)
-	if(!istype(prospective_indicator, /image))
-		for(var/image/I in status_indicators)
-			if(I.icon_state == prospective_indicator)
-				return I
+
+	for(var/image/I in status_indicators)
+		if(I.icon_state == prospective_indicator)
+			return I
 	return LAZYACCESS(status_indicators, LAZYFIND(status_indicators, prospective_indicator))
 
 /// Cuts all the indicators on a mob in a loop.
@@ -167,6 +181,7 @@
 	appearance_flags = PLANE_MASTER
 	blend_mode = BLEND_OVERLAY
 	render_relay_plane = RENDER_PLANE_NON_GAME
+
 #undef STATUS_INDICATOR_Y_OFFSET
 #undef STATUS_INDICATOR_ICON_X_SIZE
 #undef STATUS_INDICATOR_ICON_MARGIN
