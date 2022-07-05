@@ -997,6 +997,38 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	item_path = /obj/item/clothing/under/suit/skyrat/inferno/beeze
 	restricted_roles = list(JOB_LAWYER)
 
+/datum/loadout_item/under/formal/pencil
+	name = "Black Pencilskirt"
+	item_path = /obj/item/clothing/under/suit/skyrat/pencil
+
+/datum/loadout_item/under/formal/pencil/black_really
+	name = "Executive Pencilskirt"
+	item_path = /obj/item/clothing/under/suit/skyrat/pencil/black_really
+
+/datum/loadout_item/under/formal/pencil/charcoal
+	name = "Charcoal Pencilskirt"
+	item_path = /obj/item/clothing/under/suit/skyrat/pencil/charcoal
+
+/datum/loadout_item/under/formal/pencil/navy
+	name = "Navy Pencilskirt"
+	item_path = /obj/item/clothing/under/suit/skyrat/pencil/navy
+
+/datum/loadout_item/under/formal/pencil/burgandy
+	name = "Burgandy Pencilskirt"
+	item_path = /obj/item/clothing/under/suit/skyrat/pencil/burgandy
+
+/datum/loadout_item/under/formal/pencil/checkered
+	name = "Checkered Pencilskirt"
+	item_path = /obj/item/clothing/under/suit/skyrat/pencil/checkered
+
+/datum/loadout_item/under/formal/pencil/tan
+	name = "Tan Pencilskirt"
+	item_path = /obj/item/clothing/under/suit/skyrat/pencil/tan
+
+/datum/loadout_item/under/formal/pencil/green
+	name = "Green Pencilskirt"
+	item_path = /obj/item/clothing/under/suit/skyrat/pencil/green
+
 /// DONATOR
 /datum/loadout_item/under/donator
 	donator_only = TRUE
