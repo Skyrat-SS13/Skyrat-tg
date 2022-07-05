@@ -13,7 +13,7 @@
 
 	for(var/type in subtypesof(/datum/ash_ritual))
 		var/datum/ash_ritual/spawned_ritual = new type
-		if(spawned_ritual.ritual_bitflags & ASH_RITUAL_AGING)
+		if(spawned_ritual.ritual_bitflags & ASH_RITUAL_NO_TEST)
 			qdel(spawned_ritual)
 			continue
 		spawned_ritual.ritual_time = 0

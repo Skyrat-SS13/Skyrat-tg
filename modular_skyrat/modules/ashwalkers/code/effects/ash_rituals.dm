@@ -82,7 +82,7 @@
 
 /datum/ash_ritual/incite_megafauna
 	name = "Incite Megafauna"
-	ritual_bitflags = ASH_RITUAL_NO_RESULT
+	ritual_bitflags = ASH_RITUAL_NO_RESULT | ASH_RITUAL_NO_TEST
 	required_components = list(
 		"North" = /mob/living/carbon/human,
 		"South" = /obj/item/tendril_seed,
@@ -116,7 +116,7 @@
 
 /datum/ash_ritual/ash_ceremony
 	name = "Ashen Age Ceremony"
-	ritual_bitflags = ASH_RITUAL_NO_RESULT | ASH_RITUAL_AGING
+	ritual_bitflags = ASH_RITUAL_NO_RESULT | ASH_RITUAL_NO_TEST
 	required_components = list(
 		"North" = /mob/living/carbon/human,
 		"South" = /obj/item/organ/internal/regenerative_core,

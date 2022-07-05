@@ -22,5 +22,5 @@
 // Ashwalker stuff
 /// When the ritual is intended to produce no result items
 #define ASH_RITUAL_NO_RESULT (1<<0)
-/// If the ash ritual is the aging one
-#define ASH_RITUAL_AGING (1<<1)
+/// If the ash ritual shouldn't be unit tested normally
+#define ASH_RITUAL_NO_TEST (1<<1)
