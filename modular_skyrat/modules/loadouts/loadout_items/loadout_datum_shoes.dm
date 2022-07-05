@@ -29,10 +29,6 @@ GLOBAL_LIST_INIT(loadout_shoes, generate_loadout_items(/datum/loadout_item/shoes
 	name = "High-Heel Jackboots"
 	item_path = /obj/item/clothing/shoes/jackboots/heel
 
-/datum/loadout_item/shoes/thighboot
-	name = "Thigh Boots"
-	item_path = /obj/item/clothing/shoes/jackboots/thigh
-
 /datum/loadout_item/shoes/kneeboot
 	name = "Knee Boots"
 	item_path = /obj/item/clothing/shoes/jackboots/knee
@@ -169,13 +165,17 @@ GLOBAL_LIST_INIT(loadout_shoes, generate_loadout_items(/datum/loadout_item/shoes
 	name = "High Heels"
 	item_path = /obj/item/clothing/shoes/high_heels
 
+/datum/loadout_item/shoes/black_heels
+	name = "Black Heels"
+	item_path = /obj/item/clothing/shoes/black_heels
+
 /datum/loadout_item/shoes/disco
 	name = "Green Snakeskin Shoes"
 	item_path = /obj/item/clothing/shoes/discoshoes
 
 /datum/loadout_item/shoes/dominaheels
 	name = "Dominant Heels"
-	item_path = /obj/item/clothing/shoes/dominaheels
+	item_path = /obj/item/clothing/shoes/latex_heels/domina_heels
 
 /datum/loadout_item/shoes/griffin
 	name = "Griffon Boots"

@@ -50,8 +50,3 @@
 	item_type = /obj/item/gun/ballistic/automatic/vintorez
 	lower_cost = CARGO_CRATE_VALUE * 12
 	upper_cost = CARGO_CRATE_VALUE * 18
-
-/datum/armament_entry/cargo_gun/oldarms/rifle/stg
-	item_type = /obj/item/gun/ballistic/automatic/stg
-	lower_cost = CARGO_CRATE_VALUE * 24
-	upper_cost = CARGO_CRATE_VALUE * 28

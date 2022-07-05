@@ -155,7 +155,7 @@
 	playsound(src, 'sound/effects/wounds/blood1.ogg', 100)
 	playsound(src, 'sound/items/drill_use.ogg', 100)
 	say("Stage two complete!")
-	minor_announce("SECURITY BREACH DETECTED, NETWORK COMPROMISED! COORDINATES: [x], [y], [z]", "GoldenEye Defence Network")
+	minor_announce("SECURITY BREACH DETECTED, NETWORK COMPROMISED! INTERROGATION COORDINATES: [x], [y], [z]", "GoldenEye Defence Network")
 	timer_id = addtimer(CALLBACK(src, .proc/stage_three), rand(STAGE_PROCESS_TIME_LOWER, STAGE_PROCESS_TIME_UPPER), TIMER_STOPPABLE|TIMER_UNIQUE)
 
 /obj/machinery/interrogator/proc/stage_three()

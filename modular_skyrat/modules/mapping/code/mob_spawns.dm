@@ -91,6 +91,9 @@
 	ears = /obj/item/radio/headset/cybersun/captain
 	id_trim = /datum/id_trim/syndicom/skyrat/captain
 
+/datum/outfit/ds2
+	name = "default ds2 outfit"
+
 /datum/outfit/ds2/post_equip(mob/living/carbon/human/syndicate, visualsOnly = FALSE)
 	var/obj/item/card/id/id_card = syndicate.wear_id
 	if(istype(id_card))
@@ -281,6 +284,7 @@
 	random_appearance = FALSE
 
 /datum/outfit/tarkon
+	name = "default port tarkon outfit"
 	uniform = /obj/item/clothing/under/rank/cargo/tech/skyrat/utility
 	shoes = /obj/item/clothing/shoes/winterboots
 	gloves = /obj/item/clothing/gloves/fingerless
@@ -307,6 +311,7 @@
 	outfit = /datum/outfit/tarkon/sci
 
 /datum/outfit/tarkon/sci
+	name = "Port Tarkon Science Outfit"
 	uniform = /obj/item/clothing/under/rank/rnd/scientist/skyrat/utility
 	glasses = /obj/item/clothing/glasses/hud/diagnostic
 	id = /obj/item/card/id/away/tarkon/sci
@@ -319,6 +324,7 @@
 	outfit = /datum/outfit/tarkon/med
 
 /datum/outfit/tarkon/med
+	name = "Port Tarkon Medical Outfit"
 	uniform = /obj/item/clothing/under/rank/medical/doctor/skyrat/utility
 	glasses = /obj/item/clothing/glasses/hud/health
 	id = /obj/item/card/id/away/tarkon/med
@@ -331,6 +337,7 @@
 	outfit = /datum/outfit/tarkon/engi
 
 /datum/outfit/tarkon/engi
+	name = "Port Tarkon Engineering Outfit"
 	uniform = /obj/item/clothing/under/rank/engineering/engineer/skyrat/utility
 	glasses = /obj/item/clothing/glasses/meson/engine/tray
 	id = /obj/item/card/id/away/tarkon/engi
@@ -343,8 +350,9 @@
 	outfit = /datum/outfit/tarkon/sec
 
 /datum/outfit/tarkon/sec
-	uniform = /obj/item/clothing/under/utility/sec
-	glasses = /obj/item/clothing/glasses/hud/security
+	name = "Port Tarkon Security Outfit"
+	uniform = /obj/item/clothing/under/rank/security/skyrat/utility/redsec
+	glasses = /obj/item/clothing/glasses/hud/security/redsec
 	gloves = /obj/item/clothing/gloves/tackler/combat
 	id = /obj/item/card/id/away/tarkon/sec
 	l_pocket = /obj/item/melee/baton/telescopic
@@ -362,6 +370,7 @@
 	outfit = /datum/outfit/tarkon/ensign
 
 /datum/outfit/tarkon/ensign //jack of all trades, master of none, spent all his credits, every last one
+	name = "Port Tarkon Ensigns Outfit"
 	uniform = /obj/item/clothing/under/utility
 	ears = /obj/item/radio/headset/tarkon/ensign
 	id = /obj/item/card/id/away/tarkon/ensign
