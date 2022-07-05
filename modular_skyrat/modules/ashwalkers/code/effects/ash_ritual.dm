@@ -50,7 +50,7 @@
 
 /datum/ash_ritual/proc/check_component_list(obj/effect/ash_rune/checked_rune)
 	for(var/checked_component in required_components)
-		var/set_direction = text2dir(checked_component)
+		var/set_direction = text2num(checked_component)
 		var/turf/checked_turf = get_step(checked_rune, set_direction)
 		var/atom_check = locate(required_components[checked_component]) in checked_turf.contents
 		if(!atom_check)

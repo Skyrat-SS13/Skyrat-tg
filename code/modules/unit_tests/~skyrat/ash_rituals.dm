@@ -20,7 +20,7 @@
 		our_rune.current_ritual = spawned_ritual
 		for(var/requirement_dir in spawned_ritual.required_components)
 			var/atom/required_atom = spawned_ritual.required_components[requirement_dir]
-			new required_atom(get_step(our_rune, requirement_dir))
+			new required_atom(get_step(our_rune, text2num(requirement_dir)))
 		spawned_ritual.ritual_start(our_rune)
 
 		var/list/result_amount = list(0, length(spawned_ritual.ritual_success_items))
