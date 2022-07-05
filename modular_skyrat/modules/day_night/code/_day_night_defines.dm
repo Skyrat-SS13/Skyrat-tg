@@ -1,0 +1,2 @@
+#define MIDNIGHT 0000
+#define MIDDAY 1200
