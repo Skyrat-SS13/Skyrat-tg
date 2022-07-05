@@ -345,13 +345,6 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 		to_chat(user, span_notice("[src] is already occupied!"))
 		return
 
-	if(LAZYLEN(target.buckled_mobs) > 0)
-		if(target == user)
-			to_chat(user, span_danger("You can't fit into the cryopod while someone is buckled to you."))
-		else
-			to_chat(user, span_danger("You can't fit [target] into the cryopod while someone is buckled to them."))
-		return
-
 	if(target.stat == DEAD)
 		to_chat(user, span_notice("Dead people can not be put into cryo."))
 		return
@@ -404,6 +397,13 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 		var/datum/antagonist/antag = target.mind.has_antag_datum(/datum/antagonist)
 		if(antag)
 			tgui_alert(target, "You're \a [antag.name]! [AHELP_FIRST_MESSAGE]")
+
+	if(LAZYLEN(target.buckled_mobs) > 0)
+		if(target == user)
+			to_chat(user, span_danger("You can't fit into the cryopod while someone is buckled to you."))
+		else
+			to_chat(user, span_danger("You can't fit [target] into the cryopod while someone is buckled to them."))
+		return
 
 	if(!istype(target) || !can_interact(user) || !target.Adjacent(user) || !ismob(target) || isanimal(target) || !istype(user.loc, /turf) || target.buckled)
 		return
