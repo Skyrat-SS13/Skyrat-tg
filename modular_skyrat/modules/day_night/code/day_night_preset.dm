@@ -59,6 +59,7 @@
 	for(var/area/iterating_area as anything in area_cache)
 		iterating_area.set_base_lighting(timezone_to_apply.light_color, timezone_to_apply.light_alpha)
 
+// PRESETS
 /datum/day_night_preset/icebox
 	load_map_names = "IceBoxStation_skyrat.dmm"
 	timezones = list(

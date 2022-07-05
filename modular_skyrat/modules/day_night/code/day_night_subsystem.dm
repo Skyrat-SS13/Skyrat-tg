@@ -1,13 +1,11 @@
-#define HOUR_INCREMENT 60
-#define MIDNIGHT_RESET 24
-#define FIRE_INCREMENT 10
+
 
 /**
  * STATION TIMES ARE 24 HR FORMAT
  */
 
 SUBSYSTEM_DEF(day_night)
-	name = "Time"
+	name = "Day/Night Cycle"
 	wait = 1 MINUTES // Every minute, the clock moves forward 10 minutes
 	/// The current hour
 	var/current_hour = 0
@@ -23,7 +21,7 @@ SUBSYSTEM_DEF(day_night)
 	return ..()
 
 /datum/controller/subsystem/day_night/fire(resumed)
-	current_minute += FIRE_INCREMENT
+	current_minute += SUBSYTEM_FIRE_INCREMENT
 
 	if(current_minute >= HOUR_INCREMENT)
 		var/time_delta = (current_minute - HOUR_INCREMENT) > 0 ? current_minute - HOUR_INCREMENT : 0
