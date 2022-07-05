@@ -15,9 +15,11 @@ SUBSYSTEM_DEF(day_night)
 	var/list/cached_presets = list()
 
 /datum/controller/subsystem/day_night/Initialize(start_timeofday)
-	for(var/datum/day_night_preset/iterating_preset in subtypesof(/datum/day_night_preset))
+	for(var/datum/day_night_preset/iterating_preset as anything in subtypesof(/datum/day_night_preset))
 		if(SSmapping.config.map_file in iterating_preset.load_map_names)
 			cached_presets = new iterating_preset
+	current_hour = rand(0, 23)
+	update_presets(current_hour)
 	return ..()
 
 /datum/controller/subsystem/day_night/fire(resumed)
@@ -32,7 +34,6 @@ SUBSYSTEM_DEF(day_night)
 	if(current_hour >= MIDNIGHT_RESET)
 		current_hour = 0
 
-
 /**
  * Gets the current time in text format to be displayed on the statpanel.
  *
@@ -45,7 +46,7 @@ SUBSYSTEM_DEF(day_night)
 	var/minute_entry = "[current_minute]"
 	if(current_minute < 10)
 		minute_entry = "0[minute_entry]"
-	return "[hour_entry]:[minute_entry]"
+	return "[hour_entry][minute_entry]"
 
 /**
  * Updates the current preset timezones
