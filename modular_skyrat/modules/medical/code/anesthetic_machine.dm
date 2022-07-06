@@ -18,7 +18,7 @@
 /obj/machinery/anesthetic_machine/examine(mob/user)
 	. = ..()
 
-	. += "<b>Right Clicking</b> with a wrench will deconstruct the stand, if there is no tank attached."
+	. += "<b>Right-clicking</b> with a wrench will deconstruct the stand, if there is no tank attached."
 	if(mask_out)
 		. += "<b>Click</b> on the stand to retract the mask, if the mask is currently out"
 	if(attached_tank)
