@@ -113,7 +113,9 @@
 		/mob/living/proc/emote_bark,
 		/mob/living/proc/emote_squish,
 		/mob/living/proc/emote_meow,
+		/mob/living/proc/emote_gnarl1,
 		/mob/living/proc/emote_hiss1,
+		/mob/living/proc/emote_roar1,
 		/mob/living/proc/emote_chitter,
 		/mob/living/proc/emote_snore,
 		/mob/living/proc/emote_clap,
@@ -368,6 +370,11 @@
 	set name = "~ Grimace"
 	set category = "Emotes"
 	usr.emote("grimace", intentional = TRUE)
+
+/mob/living/proc/emote_gnarl1()
+	set name = "~ Hiss"
+	set category = "Emotes"
+	usr.emote("gnarl1", intentional = TRUE)
 
 /mob/living/proc/emote_jump()
 	set name = "~ Jump"
@@ -704,6 +711,11 @@
 	set name = "> Hiss"
 	set category = "Emotes+"
 	usr.emote("hiss1", intentional = TRUE)
+
+/mob/living/proc/emote_roar1()
+	set name = "> Roar"
+	set category = "Emotes+"
+	usr.emote("roar1", intentional = TRUE)
 
 /mob/living/proc/emote_chitter()
 	set name = "> Chitter"

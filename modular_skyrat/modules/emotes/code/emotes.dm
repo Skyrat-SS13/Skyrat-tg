@@ -170,9 +170,13 @@
 	vary = TRUE
 	sound = 'modular_skyrat/modules/emotes/sound/emotes/meow.ogg'
 
+/datum/emote/living/gnarl
+	key = "gnarl1"
+	emote_type = EMOTE_VISIBLE
+	message = "gnarls and shows their teeth..."
+
 /datum/emote/living/hiss
-	key = "hiss"
-	key_third_person = "hisses"
+	key = "hiss1"
 	message = "hisses."
 	emote_type = EMOTE_AUDIBLE
 	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
@@ -185,8 +189,7 @@
 		return 'modular_skyrat/modules/emotes/sound/emotes/hiss.ogg'
 
 /datum/emote/living/roar
-	key = "roar"
-	key_third_person = "roars"
+	key = "roar1"
 	message = "roars."
 	emote_type = EMOTE_AUDIBLE
 	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
