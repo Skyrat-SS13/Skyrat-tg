@@ -190,7 +190,7 @@
 
 /datum/emote/living/roar
 	key = "roar1"
-	message = "roars!"
+	message = "roars."
 	emote_type = EMOTE_AUDIBLE
 	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
 	vary = TRUE
