@@ -195,14 +195,18 @@
 	ADD_STEAL_ITEM(src, /obj/item/clothing/accessory/medal/gold/captain)
 
 /datum/objective_item/steal/hypo
-	name = "the hypospray"
-	targetitem = /obj/item/reagent_containers/hypospray/cmo
+	//name = "the hypospray" // ORIGINAL
+	name = "the Chief Medical Officer's hypospray" // SKYRAT EDIT CHANGE
+	//targetitem = /obj/item/reagent_containers/hypospray/cmo // ORIGINAL
+	targetitem = /obj/item/hypospray/mkii/cmo // SKYRAT EDIT CHANGE
 	difficulty = 5
 	excludefromjob = list(JOB_CHIEF_MEDICAL_OFFICER)
 	exists_on_map = TRUE
 
-/obj/item/reagent_containers/hypospray/cmo/add_stealing_item_objective()
-	ADD_STEAL_ITEM(src, /obj/item/reagent_containers/hypospray/cmo)
+///obj/item/reagent_containers/hypospray/cmo/add_stealing_item_objective() // ORIGINAL
+/obj/item/hypospray/mkii/cmo/add_stealing_item_objective() // SKYRAT EDIT CHANGE
+	//ADD_STEAL_ITEM(src, /obj/item/reagent_containers/hypospray/cmo) // ORIGINAL
+	ADD_STEAL_ITEM(src, /obj/item/hypospray/mkii/cmo) // SKYRAT EDIT CHANGE
 
 /datum/objective_item/steal/nukedisc
 	name = "the nuclear authentication disk"
