@@ -35,10 +35,10 @@
 				if(istype(atoms_near, success_type))
 					result_amount[1]++
 					continue
-			if(result_amount[1] != result_amount[2])
-				TEST_FAIL("Ash Rituals: [spawned_ritual.type] did not produce the expected amount of result items.")
-			if(result_amount[1] == 0 && !(spawned_ritual.ritual_bitflags & ASH_RITUAL_NO_RESULT))
-				TEST_FAIL("Ash Rituals: [spawned_ritual.type] did not produce any result items while lacking the ASH_RITUAL_NO_RESULT bitflag.")
+		if(result_amount[1] != result_amount[2])
+			TEST_FAIL("Ash Rituals: [spawned_ritual.type] did not produce the expected amount of result items.")
+		if(result_amount[1] == 0 && !(spawned_ritual.ritual_bitflags & ASH_RITUAL_NO_RESULT))
+			TEST_FAIL("Ash Rituals: [spawned_ritual.type] did not produce any result items while lacking the ASH_RITUAL_NO_RESULT bitflag.")
 		qdel(spawned_ritual)
 
 	var/datum/ash_ritual/ash_ceremony/aging_ritual = new
