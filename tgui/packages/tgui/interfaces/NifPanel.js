@@ -43,14 +43,21 @@ export const NifPanel = (props, context) => {
 
 const NifSettings = (props, context) => {
   const { act, data } = useBackend(context);
-  const { theme, product_notes } = data;
+  const { theme, product_notes, nutrition_unavalible, nutrition_drain } = data;
   return (
     <LabeledList>
       <LabeledList.Item label="NIF Theme">
         <Dropdown width="100%" />
       </LabeledList.Item>
-      <LabeledList.Item>
-        <Input label="Custom Examine Text" />
+      <LabeledList.Item label="Examine Text">
+        <Input onInput={(e, value) => act('change_examine_text', { new_text : value })} width="100%" />
+      </LabeledList.Item>
+      <LabeledList.Item label="Nutrition Drain">
+        <Button fluid
+        content={(nutrition_drain === 0) ? "Nutrition Drain Disabled" : "Nutrition Drain enabled"}
+        tooltip="Toggles the ability for the NIF to use your food as an energy source. Enabling this may result in increased hunger."
+        onClick={() => act('toggle_nutrition_drain')}
+        disabled={nutrition_unavalible} />
       </LabeledList.Item>
     </LabeledList>
   );
@@ -58,7 +65,8 @@ const NifSettings = (props, context) => {
 
 const NifStats = (props, context) => {
   const { act, data } = useBackend(context);
-  const { max_power, power_level, durability } = data;
+  const { max_power, power_level, durability, nutrition_level, nutrition_drain } = data;
+
   return (
     <Box>
       <LabeledList>
@@ -88,8 +96,29 @@ const NifStats = (props, context) => {
             alertAfter={max_power * 0.1}
           />
         </LabeledList.Item>
+        {(nutrition_drain === 1) && (
+          <LabeledList.Item label="User Nutrition">
+            <NifNutritionBar />
+          </LabeledList.Item>
+        )}
       </LabeledList>
     </Box>
+  );
+};
+
+const NifNutritionBar = (props, context) => {
+  const { act, data } = useBackend(context);
+  const { nutrition_level } = data;
+  return (
+    <ProgressBar
+      value={nutrition_level}
+      minValue={0}
+      maxValue={550}
+      ranges={{
+        'good' : [250, Infinity],
+        'average' : [150, 250],
+        'bad' : [0, 150],
+      }} />
   );
 };
 
