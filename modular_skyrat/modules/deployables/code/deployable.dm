@@ -9,7 +9,17 @@
 
 #define MAX_POWER 40000	// BS cell capacity, a potato battery would still outplay this
 
-////
+// Automapper
+/datum/area_spawn/borg_action_pacifier
+	target_areas = list(/area/station/security/office, /area/station/security/lockers)
+	desired_atom = /obj/item/grenade/borg_action_pacifier_grenade
+	amount_to_spawn = 3
+
+/datum/area_spawn/borg_action_pacifier_deployed
+	target_areas = list(/area/station/science/robotics/mechbay)
+	desired_atom = /obj/structure/bed/borg_action_pacifier
+	amount_to_spawn = 2
+
 //	The item in its functional state
 /obj/structure/bed/borg_action_pacifier
 	name = "deployed B.A.P. unit"
@@ -52,7 +62,6 @@
 	if(power_storage == MAX_POWER)
 		. += span_warning("It cannot store any more power.")
 
-////
 //	The grenade
 /obj/item/grenade/borg_action_pacifier_grenade
 	name = "B.A.P. grenade"
@@ -90,7 +99,6 @@
 	if(power_storage == MAX_POWER)
 		. += span_warning("It cannot store any more power.")
 
-////
 //		// Subject to change
 /obj/structure/bed/borg_action_pacifier/undeployed/deploying
 	name = "Deploying B.A.P. unit"
@@ -107,7 +115,6 @@
 	deployed.power_storage = power_storage
 	qdel(src)
 
-////
 //	The item in its retrieval state
 /obj/structure/bed/borg_action_pacifier/undeployed
 	name = "undeployed B.A.P. unit"
@@ -130,7 +137,6 @@
 		qdel(src)
 
 
-////
 //	Alt-click control
 
 // Venting the power out of the grenade-form
