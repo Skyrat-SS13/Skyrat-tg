@@ -3,7 +3,7 @@
  */
 /datum/timezone
 	/// The name of this timezone
-	var/name = "DEFALT"
+	var/name = "DEFAULT"
 	/// The HOUR at which this timezone should start
 	var/start_hour = 0
 	/// The HOUR at which this timezone should end
