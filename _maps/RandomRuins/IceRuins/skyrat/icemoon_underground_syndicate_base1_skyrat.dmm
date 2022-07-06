@@ -79,9 +79,10 @@
 /turf/open/floor/wood/tile,
 /area/ruin/syndicate_lava_base/dormitories)
 "aA" = (
-/obj/machinery/conveyor{
-	dir = 1;
-	id = "interdynedisp"
+/obj/machinery/conveyor_switch/oneway{
+	dir = 8;
+	id = "interdynedisp";
+	name = "disposal conveyor"
 	},
 /turf/open/floor/plating,
 /area/ruin/syndicate_lava_base/bar)
@@ -448,7 +449,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/poddoor/shutters{
 	dir = 8;
-	id = "interdynekitchen"
+	id_tag = "interdynekitchen"
 	},
 /turf/open/floor/iron/kitchen,
 /area/ruin/syndicate_lava_base/bar)
@@ -502,7 +503,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/poddoor/shutters{
 	dir = 8;
-	id = "interdynekitchen"
+	id_tag = "interdynekitchen"
 	},
 /turf/open/floor/iron/kitchen,
 /area/ruin/syndicate_lava_base/bar)
@@ -1031,8 +1032,13 @@
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/engineering)
 "iw" = (
-/obj/effect/decal/cleanable/ash,
-/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/disposaloutlet{
+	dir = 1
+	},
+/obj/structure/disposalpipe/trunk{
+	dir = 2
+	},
 /turf/open/floor/plating,
 /area/ruin/syndicate_lava_base/bar)
 "iy" = (
@@ -1537,7 +1543,6 @@
 /obj/item/storage/bag/trash,
 /obj/item/mop,
 /obj/item/reagent_containers/glass/bucket,
-/obj/item/lightreplacer,
 /turf/open/floor/plating,
 /area/ruin/syndicate_lava_base/bar)
 "nn" = (
@@ -1565,11 +1570,10 @@
 /turf/open/floor/plating,
 /area/ruin/syndicate_lava_base/testlab)
 "nx" = (
-/obj/structure/frame/machine{
-	anchored = 1
+/obj/machinery/conveyor{
+	dir = 6;
+	id = "interdynedisp"
 	},
-/obj/item/circuitboard/machine/stacking_machine,
-/obj/item/stack/cable_coil/five,
 /turf/open/floor/plating,
 /area/ruin/syndicate_lava_base/bar)
 "ny" = (
@@ -2289,13 +2293,17 @@
 /turf/open/floor/wood/tile,
 /area/ruin/syndicate_lava_base/dormitories)
 "us" = (
-/obj/effect/turf_decal/siding/thinplating/dark{
-	dir = 1
+/obj/structure/frame/machine{
+	anchored = 1;
+	state = 2;
+	icon_state = "box_1"
 	},
-/obj/structure/disposalpipe/segment{
-	dir = 10
+/obj/item/circuitboard/machine/recycler,
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "interdynedisp"
 	},
-/turf/open/floor/iron/kitchen,
+/turf/open/floor/plating,
 /area/ruin/syndicate_lava_base/bar)
 "ux" = (
 /obj/structure/sign/departments/medbay/alt/directional/east,
@@ -2620,15 +2628,7 @@
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/cargo)
 "xS" = (
-/obj/machinery/conveyor{
-	dir = 1;
-	id = "interdynedisp"
-	},
-/obj/structure/frame/machine{
-	anchored = 1
-	},
-/obj/item/stack/cable_coil/five,
-/obj/item/circuitboard/machine/recycler,
+/obj/effect/spawner/random/trash/grime,
 /turf/open/floor/plating,
 /area/ruin/syndicate_lava_base/bar)
 "xY" = (
@@ -2683,7 +2683,7 @@
 	onstation = 0
 	},
 /obj/machinery/button/door/directional/north{
-	id_tag = "interdynebarbers"
+	id = "interdynebarbers"
 	},
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/medbay)
@@ -3158,9 +3158,7 @@
 /area/ruin/syndicate_lava_base/medbay)
 "En" = (
 /obj/effect/decal/cleanable/oil,
-/obj/structure/disposalpipe/segment{
-	dir = 6
-	},
+/obj/structure/disposalpipe/segment,
 /turf/open/floor/plating,
 /area/ruin/syndicate_lava_base/bar)
 "Er" = (
@@ -3180,14 +3178,12 @@
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/main)
 "EL" = (
-/obj/structure/disposaloutlet{
-	dir = 1
-	},
-/obj/structure/disposalpipe/trunk{
-	dir = 8
+/obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
+/obj/machinery/door/poddoor{
+	id_tag = "interdynebarbers"
 	},
 /turf/open/floor/plating,
-/area/ruin/syndicate_lava_base/bar)
+/area/ruin/syndicate_lava_base/medbay)
 "EO" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -3599,6 +3595,15 @@
 /obj/machinery/atmospherics/components/binary/valve/digital/layer2,
 /turf/open/floor/plating,
 /area/ruin/syndicate_lava_base/engineering)
+"Ii" = (
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 1
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 10
+	},
+/turf/open/floor/iron/kitchen,
+/area/ruin/syndicate_lava_base/bar)
 "Ij" = (
 /obj/machinery/light/directional/west,
 /obj/structure/closet/secure_closet{
@@ -3828,6 +3833,10 @@
 /area/ruin/syndicate_lava_base/bar)
 "Lc" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/conveyor{
+	id = "interdynedisp";
+	dir = 1
+	},
 /turf/open/floor/plating,
 /area/ruin/syndicate_lava_base/bar)
 "Ld" = (
@@ -3892,16 +3901,16 @@
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/bar)
 "LA" = (
-/obj/effect/spawner/random/trash/grime,
+/obj/machinery/conveyor{
+	dir = 5;
+	id = "interdynedisp"
+	},
 /turf/open/floor/plating,
 /area/ruin/syndicate_lava_base/bar)
 "LC" = (
-/obj/machinery/conveyor_switch/oneway{
-	dir = 8;
-	id = "interdynedisp";
-	name = "disposal conveyor"
+/obj/machinery/conveyor{
+	id = "interdynedisp"
 	},
-/obj/effect/decal/cleanable/shreds,
 /turf/open/floor/plating,
 /area/ruin/syndicate_lava_base/bar)
 "LD" = (
@@ -4564,7 +4573,7 @@
 "Tl" = (
 /obj/machinery/deepfryer,
 /obj/machinery/button/door/directional/north{
-	id_tag = "interdynekitchen"
+	id = "interdynekitchen"
 	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/ruin/syndicate_lava_base/bar)
@@ -4722,13 +4731,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/wood,
 /area/ruin/syndicate_lava_base/dormitories)
-"UQ" = (
-/obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
-/obj/machinery/door/poddoor{
-	id = "interdynebarbers"
-	},
-/turf/open/floor/plating,
-/area/ruin/syndicate_lava_base/medbay)
 "UV" = (
 /obj/item/stack/cable_coil/five,
 /obj/item/circuitboard/machine/ore_silo,
@@ -5053,6 +5055,12 @@
 "Ya" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light/small/directional/east,
+/obj/item/circuitboard/machine/stacking_machine,
+/obj/structure/frame/machine{
+	anchored = 1;
+	state = 2;
+	icon_state = "box_1"
+	},
 /turf/open/floor/plating,
 /area/ruin/syndicate_lava_base/bar)
 "Yc" = (
@@ -6958,7 +6966,7 @@ oV
 Li
 bu
 kZ
-us
+Ii
 eX
 td
 td
@@ -7117,7 +7125,7 @@ NB
 xc
 Fu
 xc
-UQ
+EL
 xc
 wx
 eo
@@ -7176,15 +7184,15 @@ NB
 xc
 Yf
 xc
-UQ
+EL
 xc
 xc
 qe
 td
-aA
+us
 xS
 aA
-EL
+xS
 td
 sF
 dR
@@ -7235,7 +7243,7 @@ NB
 xc
 Yf
 xc
-UQ
+EL
 xc
 Kn
 tB

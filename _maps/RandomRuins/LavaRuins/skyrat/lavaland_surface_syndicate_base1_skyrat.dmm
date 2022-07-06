@@ -695,6 +695,19 @@
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/syndicate_lava_base/cargo)
+"gA" = (
+/obj/structure/frame/machine{
+	anchored = 1;
+	state = 2;
+	icon_state = "box_1"
+	},
+/obj/item/circuitboard/machine/recycler,
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "interdynedisp"
+	},
+/turf/open/floor/plating,
+/area/ruin/syndicate_lava_base/bar)
 "gB" = (
 /obj/machinery/conveyor{
 	dir = 4;
@@ -1109,7 +1122,7 @@
 "kY" = (
 /obj/machinery/deepfryer,
 /obj/machinery/button/door/directional/north{
-	id_tag = "interdynekitchen"
+	id_tag = "interdyneskitchen"
 	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/ruin/syndicate_lava_base/bar)
@@ -1258,13 +1271,6 @@
 /obj/item/radio/headset/interdyne,
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/cargo)
-"mt" = (
-/obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
-/obj/machinery/door/poddoor{
-	id = "interdynebarbers"
-	},
-/turf/open/floor/plating,
-/area/ruin/syndicate_lava_base/medbay)
 "mz" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -1304,15 +1310,6 @@
 "mN" = (
 /turf/open/floor/engine/o2,
 /area/ruin/syndicate_lava_base/engineering)
-"nc" = (
-/obj/effect/turf_decal/siding/thinplating/dark{
-	dir = 1
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 10
-	},
-/turf/open/floor/iron/kitchen,
-/area/ruin/syndicate_lava_base/bar)
 "nd" = (
 /obj/structure/sign/directions/science{
 	dir = 8;
@@ -1464,12 +1461,10 @@
 /turf/open/floor/wood/tile,
 /area/ruin/syndicate_lava_base/dormitories)
 "oK" = (
-/obj/structure/frame/machine{
-	anchored = 1;
-	state = 2;
-	icon_state = "box_1"
+/obj/machinery/conveyor{
+	dir = 6;
+	id = "interdynedisp"
 	},
-/obj/item/circuitboard/machine/stacking_machine,
 /turf/open/floor/plating,
 /area/ruin/syndicate_lava_base/bar)
 "oM" = (
@@ -1871,19 +1866,14 @@
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/cargo)
 "tJ" = (
-/obj/machinery/conveyor_switch/oneway{
-	dir = 8;
-	id = "interdynedisp";
-	name = "disposal conveyor"
+/obj/machinery/conveyor{
+	id = "interdynedisp"
 	},
-/obj/effect/decal/cleanable/shreds,
 /turf/open/floor/plating,
 /area/ruin/syndicate_lava_base/bar)
 "tP" = (
 /obj/effect/decal/cleanable/oil,
-/obj/structure/disposalpipe/segment{
-	dir = 6
-	},
+/obj/structure/disposalpipe/segment,
 /turf/open/floor/plating,
 /area/ruin/syndicate_lava_base/bar)
 "tS" = (
@@ -2043,16 +2033,7 @@
 /turf/open/misc/asteroid/basalt,
 /area/ruin/syndicate_lava_base/cargo)
 "vR" = (
-/obj/machinery/conveyor{
-	dir = 1;
-	id = "interdynedisp"
-	},
-/obj/structure/frame/machine{
-	anchored = 1;
-	state = 2;
-	icon_state = "box_1"
-	},
-/obj/item/circuitboard/machine/recycler,
+/obj/effect/spawner/random/trash/grime,
 /turf/open/floor/plating,
 /area/ruin/syndicate_lava_base/bar)
 "vX" = (
@@ -2076,8 +2057,13 @@
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/dormitories)
 "wf" = (
-/obj/effect/decal/cleanable/ash,
-/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/disposaloutlet{
+	dir = 1
+	},
+/obj/structure/disposalpipe/trunk{
+	dir = 2
+	},
 /turf/open/floor/plating,
 /area/ruin/syndicate_lava_base/bar)
 "wi" = (
@@ -3490,14 +3476,19 @@
 /turf/open/floor/plating,
 /area/ruin/syndicate_lava_base/testlab)
 "JU" = (
-/obj/machinery/conveyor{
-	dir = 1;
-	id = "interdynedisp"
+/obj/machinery/conveyor_switch/oneway{
+	dir = 8;
+	id = "interdynedisp";
+	name = "disposal conveyor"
 	},
 /turf/open/floor/plating,
 /area/ruin/syndicate_lava_base/bar)
 "JV" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/conveyor{
+	id = "interdynedisp";
+	dir = 1
+	},
 /turf/open/floor/plating,
 /area/ruin/syndicate_lava_base/bar)
 "JX" = (
@@ -3615,6 +3606,15 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/testlab)
+"KO" = (
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 1
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 10
+	},
+/turf/open/floor/iron/kitchen,
+/area/ruin/syndicate_lava_base/bar)
 "KQ" = (
 /obj/machinery/porta_turret/syndicate{
 	dir = 10
@@ -4234,7 +4234,10 @@
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/bar)
 "QR" = (
-/obj/effect/spawner/random/trash/grime,
+/obj/machinery/conveyor{
+	dir = 5;
+	id = "interdynedisp"
+	},
 /turf/open/floor/plating,
 /area/ruin/syndicate_lava_base/bar)
 "QS" = (
@@ -4610,6 +4613,12 @@
 "UZ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light/small/directional/east,
+/obj/item/circuitboard/machine/stacking_machine,
+/obj/structure/frame/machine{
+	anchored = 1;
+	state = 2;
+	icon_state = "box_1"
+	},
 /turf/open/floor/plating,
 /area/ruin/syndicate_lava_base/bar)
 "Va" = (
@@ -5001,14 +5010,12 @@
 /turf/open/floor/engine,
 /area/ruin/syndicate_lava_base/testlab)
 "Yo" = (
-/obj/structure/disposaloutlet{
-	dir = 1
-	},
-/obj/structure/disposalpipe/trunk{
-	dir = 8
+/obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
+/obj/machinery/door/poddoor{
+	id = "interdynebarbers"
 	},
 /turf/open/floor/plating,
-/area/ruin/syndicate_lava_base/bar)
+/area/ruin/syndicate_lava_base/medbay)
 "Yp" = (
 /turf/open/floor/iron/white,
 /area/ruin/syndicate_lava_base/medbay)
@@ -6934,7 +6941,7 @@ ZS
 eM
 Dy
 do
-nc
+KO
 MW
 Tx
 Tx
@@ -7093,7 +7100,7 @@ VO
 Wq
 Pf
 Wq
-mt
+Yo
 Wq
 NO
 HR
@@ -7152,15 +7159,15 @@ gJ
 Wq
 jK
 Wq
-mt
+Yo
 Wq
 Wq
 AS
 Tx
-JU
+gA
 vR
 JU
-Yo
+vR
 Tx
 WW
 QQ
@@ -7211,7 +7218,7 @@ VO
 Wq
 jK
 Wq
-mt
+Yo
 Wq
 CJ
 CW
