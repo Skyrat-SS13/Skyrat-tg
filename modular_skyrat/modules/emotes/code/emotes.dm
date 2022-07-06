@@ -171,13 +171,33 @@
 	sound = 'modular_skyrat/modules/emotes/sound/emotes/meow.ogg'
 
 /datum/emote/living/hiss
-	key = "hiss1"
+	key = "hiss"
 	key_third_person = "hisses"
-	message = "hisses!"
+	message = "hisses."
+	emote_type = EMOTE_AUDIBLE
+	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
+	vary = FALSE
+
+/datum/emote/living/hiss/get_sound(mob/living/user)
+	if(isxenohybrid(user) || user.getorgan(/obj/item/organ/internal/tongue/alien))
+		return SFX_HISS
+	else
+		return 'modular_skyrat/modules/emotes/sound/emotes/hiss.ogg'
+
+/datum/emote/living/roar
+	key = "roar"
+	key_third_person = "roars"
+	message = "roars."
 	emote_type = EMOTE_AUDIBLE
 	mob_type_allowed_typecache = list(/mob/living/carbon, /mob/living/silicon/pai)
 	vary = TRUE
-	sound = 'modular_skyrat/modules/emotes/sound/emotes/hiss.ogg'
+
+/datum/emote/living/roar/get_sound(mob/living/user)
+	if(isxenohybrid(user) || user.getorgan(/obj/item/organ/internal/tongue/alien))
+		return 'sound/voice/hiss5.ogg'
+	else
+		return 'modular_skyrat/modules/emotes/sound/voice/roar.ogg'
+
 
 /datum/emote/living/chitter
 	key = "chitter"
