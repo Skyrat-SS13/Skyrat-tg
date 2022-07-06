@@ -27,7 +27,6 @@
 	QDEL_NULL(skyrat_products)
 	QDEL_NULL(skyrat_premium)
 	QDEL_NULL(skyrat_contraband)
-	QDEL_NULL(skyrat_forbidden_traits)
 	return ..()
 
 /// This proc checks for forbidden traits cause it'd be pretty bad to have 5 insuls available to assistants roundstart at the vendor!
@@ -43,7 +42,7 @@
 	/// Don't touch bodyarmour!
 	if(ispath(clothing, /obj/item/clothing/suit/armor))
 		return FALSE
-	/// Don't touch protective helets, like riot helmets!
+	/// Don't touch protective helmets, like riot helmets!
 	if(ispath(clothing, /obj/item/clothing/head/helmet))
 		return FALSE
 	/// Ignore all gloves, because it's almost impossible to check what they do...
