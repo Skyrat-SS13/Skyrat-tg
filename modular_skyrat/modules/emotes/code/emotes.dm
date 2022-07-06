@@ -199,7 +199,7 @@
 	if(isxenohybrid(user) || user.getorgan(/obj/item/organ/internal/tongue/alien))
 		return 'sound/voice/hiss5.ogg'
 	else
-		return 'modular_skyrat/modules/emotes/sound/voice/roar.ogg'
+		return
 
 
 /datum/emote/living/chitter
