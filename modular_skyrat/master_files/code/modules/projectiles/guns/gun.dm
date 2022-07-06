@@ -72,7 +72,7 @@
 
 	var/safety = FALSE /// Internal variable for keeping track whether the safety is on or off
 	var/has_gun_safety = FALSE /// Whether the gun actually has a gun safety
-	var/datum/action/item_action/toggle_safety/tsafety
+	var/datum/action/item_action/toggle_safety/toggle_safety_action
 
 	var/datum/action/item_action/toggle_firemode/firemode_action
 	/// Current fire selection, can choose between burst, single, and full auto.
@@ -93,7 +93,7 @@
 /obj/item/gun/ui_action_click(mob/user, actiontype)
 	if(istype(actiontype, /datum/action/item_action/toggle_firemode))
 		fire_select()
-	else if(istype(actiontype, tsafety))
+	else if(istype(actiontype, toggle_safety_action))
 		toggle_safety(user)
 	else
 		..()
@@ -107,7 +107,8 @@
 
 	if(has_gun_safety)
 		safety = TRUE
-		tsafety = new(src)
+		toggle_safety_action = new(src)
+		add_item_action(toggle_safety_action)
 
 	if(burst_size > 1 && !(SELECT_BURST_SHOT in fire_select_modes))
 		fire_select_modes.Add(SELECT_BURST_SHOT)
@@ -122,6 +123,8 @@
 		firemode_action = new(src)
 		firemode_action.button_icon_state = "fireselect_[fire_select]"
 		firemode_action.UpdateButtons()
+		add_item_action(firemode_action)
+
 
 /obj/item/gun/ComponentInitialize()
 	. = ..()
@@ -137,8 +140,8 @@
 		QDEL_NULL(chambered)
 	if(isatom(suppressed))
 		QDEL_NULL(suppressed)
-	if(tsafety)
-		QDEL_NULL(tsafety)
+	if(toggle_safety_action)
+		QDEL_NULL(toggle_safety_action)
 	if(firemode_action)
 		QDEL_NULL(firemode_action)
 	. = ..()
@@ -258,32 +261,49 @@
 /obj/item/gun/proc/can_shoot()
 	return TRUE
 
+/obj/item/gun/proc/tk_firing(mob/living/user)
+	return loc != user ? TRUE : FALSE
+
 /obj/item/gun/proc/shoot_with_empty_chamber(mob/living/user as mob|obj)
 	balloon_alert(user, "*click*")
 	playsound(src, dry_fire_sound, 30, TRUE)
 
-/obj/item/gun/proc/shoot_live_shot(mob/living/user, pointblank = 0, atom/pbtarget = null, message = 1)
-	if(recoil)
-		shake_camera(user, recoil + 1, recoil)
-
+/obj/item/gun/proc/fire_sounds()
 	if(suppressed)
-		playsound(user, suppressed_sound, suppressed_volume, vary_fire_sound, ignore_walls = FALSE, extrarange = SILENCED_SOUND_EXTRARANGE, falloff_distance = 0)
+		playsound(src, suppressed_sound, suppressed_volume, vary_fire_sound, ignore_walls = FALSE, extrarange = SILENCED_SOUND_EXTRARANGE, falloff_distance = 0)
 	else
-		playsound(user, fire_sound, fire_sound_volume, vary_fire_sound)
+		playsound(src, fire_sound, fire_sound_volume, vary_fire_sound)
+
+/obj/item/gun/proc/shoot_live_shot(mob/living/user, pointblank = 0, atom/pbtarget = null, message = 1)
+	if(recoil && !tk_firing(user))
+		shake_camera(user, recoil + 1, recoil)
+	fire_sounds()
+	if(!suppressed)
 		if(message)
-			if(pointblank)
-				user.visible_message(span_danger("[user] fires [src] point blank at [pbtarget]!"), \
-								span_danger("You fire [src] point blank at [pbtarget]!"), \
-								span_hear("You hear a gunshot!"), COMBAT_MESSAGE_RANGE, pbtarget)
+			if(tk_firing(user))
+				visible_message(
+						span_danger("[src] fires itself[pointblank ? " point blank at [pbtarget]!" : "!"]"),
+						blind_message = span_hear("You hear a gunshot!"),
+						vision_distance = COMBAT_MESSAGE_RANGE
+				)
+			else if(pointblank)
+				user.visible_message(
+						span_danger("[user] fires [src] point blank at [pbtarget]!"),
+						span_danger("You fire [src] point blank at [pbtarget]!"),
+						span_hear("You hear a gunshot!"), COMBAT_MESSAGE_RANGE, pbtarget
+				)
 				to_chat(pbtarget, span_userdanger("[user] fires [src] point blank at you!"))
 				if(pb_knockback > 0 && ismob(pbtarget))
 					var/mob/PBT = pbtarget
 					var/atom/throw_target = get_edge_target_turf(PBT, user.dir)
 					PBT.throw_at(throw_target, pb_knockback, 2)
-			else
-				user.visible_message(span_danger("[user] fires [src]!"), \
-								span_danger("You fire [src]!"), \
-								span_hear("You hear a gunshot!"), COMBAT_MESSAGE_RANGE)
+			else if(!tk_firing(user))
+				user.visible_message(
+						span_danger("[user] fires [src]!"),
+						blind_message = span_hear("You hear a gunshot!"),
+						vision_distance = COMBAT_MESSAGE_RANGE,
+						ignored_mobs = user
+				)
 	if(user.resting) // SKYRAT EDIT ADD - no crawlshooting
 		user.Immobilize(20, TRUE) // SKYRAT EDIT END
 
@@ -372,7 +392,8 @@
 				var/shot_leg = pick(BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
 				process_fire(user, user, FALSE, params, shot_leg)
 				SEND_SIGNAL(user, COMSIG_MOB_CLUMSY_SHOOT_FOOT)
-				user.dropItemToGround(src, TRUE)
+				if(!tk_firing(user) && !HAS_TRAIT(src, TRAIT_NODROP))
+					user.dropItemToGround(src, TRUE)
 				return TRUE
 
 /obj/item/gun/can_trigger_gun(mob/living/user)
@@ -393,11 +414,13 @@
 			safety = TRUE
 	else
 		safety = !safety
-	tsafety.button_icon_state = "safety_[safety ? "on" : "off"]"
-	tsafety.UpdateButtons()
+	toggle_safety_action.button_icon_state = "safety_[safety ? "on" : "off"]"
+	toggle_safety_action.UpdateButtons()
 	playsound(src, 'sound/weapons/empty.ogg', 100, TRUE)
-	user.visible_message(span_notice("[user] toggles [src]'s safety [safety ? "<font color='#00ff15'>ON</font>" : "<font color='#ff0000'>OFF</font>"]."),
-	span_notice("You toggle [src]'s safety [safety ? "<font color='#00ff15'>ON</font>" : "<font color='#ff0000'>OFF</font>"]."))
+	user.visible_message(
+		span_notice("[user] toggles [src]'s safety [safety ? "<font color='#00ff15'>ON</font>" : "<font color='#ff0000'>OFF</font>"]."),
+		span_notice("You toggle [src]'s safety [safety ? "<font color='#00ff15'>ON</font>" : "<font color='#ff0000'>OFF</font>"].")
+	)
 	SEND_SIGNAL(src, COMSIG_UPDATE_AMMO_HUD)
 
 /obj/item/gun/proc/handle_pins(mob/living/user)

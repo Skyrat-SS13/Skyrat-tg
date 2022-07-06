@@ -24,6 +24,7 @@
 	sexes = FALSE //snails are hermaphrodites
 	veteran_only = TRUE //SKYRAT EDIT - Roundstart Snails
 
+	eyes_icon = 'modular_skyrat/master_files/icons/mob/species/snail_eyes.dmi'
 	mutanteyes = /obj/item/organ/internal/eyes/snail
 	mutanttongue = /obj/item/organ/internal/tongue/snail
 	mutantliver = /obj/item/organ/internal/liver/snail //SKYRAT EDIT - Roundstart Snails

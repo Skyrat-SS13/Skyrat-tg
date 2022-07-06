@@ -1,6 +1,6 @@
 /datum/outfit/centcom/naval
 	name = "Nanotrasen Naval Command - Default"
-	uniform = /obj/item/clothing/under/rank/centcom/naval/ensign
+	uniform = /obj/item/clothing/under/rank/centcom/skyrat/naval
 	id = /obj/item/card/id/advanced/centcom
 	l_pocket = /obj/item/melee/baton/telescopic
 	shoes = /obj/item/clothing/shoes/combat/swat
@@ -25,7 +25,7 @@
 
 	head = /obj/item/clothing/head/caphat/naval/beret
 
-	uniform = /obj/item/clothing/under/rank/centcom/naval/ensign
+	uniform = /obj/item/clothing/under/rank/centcom/skyrat/naval
 
 	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
 
@@ -40,7 +40,7 @@
 
 	suit = /obj/item/clothing/suit/armor/vest/capcarapace/naval
 
-	uniform = /obj/item/clothing/under/rank/centcom/naval/commander
+	uniform = /obj/item/clothing/under/rank/centcom/skyrat/naval/commander
 
 	gloves = /obj/item/clothing/gloves/combat/naval
 
@@ -57,7 +57,7 @@
 
 	suit = /obj/item/clothing/suit/armor/vest/capcarapace/naval
 
-	uniform = /obj/item/clothing/under/rank/centcom/naval/commander
+	uniform = /obj/item/clothing/under/rank/centcom/skyrat/naval/commander
 
 	gloves = /obj/item/clothing/gloves/combat/naval
 
@@ -74,7 +74,7 @@
 
 	suit = /obj/item/clothing/suit/armor/vest/capcarapace/naval
 
-	uniform = /obj/item/clothing/under/rank/centcom/naval/commander
+	uniform = /obj/item/clothing/under/rank/centcom/skyrat/naval/commander
 
 	gloves = /obj/item/clothing/gloves/combat/naval
 
@@ -91,7 +91,7 @@
 
 	suit = /obj/item/clothing/suit/armor/vest/capcarapace/naval
 
-	uniform = /obj/item/clothing/under/rank/centcom/naval/commander
+	uniform = /obj/item/clothing/under/rank/centcom/skyrat/naval/commander
 
 	gloves = /obj/item/clothing/gloves/combat/naval
 
@@ -104,7 +104,7 @@
 
 	head = /obj/item/clothing/head/caphat/naval
 
-	uniform = /obj/item/clothing/under/rank/centcom/naval/admiral
+	uniform = /obj/item/clothing/under/rank/centcom/skyrat/naval/admiral
 
 	gloves = /obj/item/clothing/gloves/combat/naval
 
@@ -119,7 +119,7 @@
 
 	neck = /obj/item/clothing/neck/cloak/admiral
 
-	uniform = /obj/item/clothing/under/rank/centcom/naval/admiral
+	uniform = /obj/item/clothing/under/rank/centcom/skyrat/naval/admiral
 
 	gloves = /obj/item/clothing/gloves/combat/naval
 
@@ -134,7 +134,7 @@
 
 	neck = /obj/item/clothing/neck/cloak/fleet_admiral
 
-	uniform = /obj/item/clothing/under/rank/centcom/naval/fleet_admiral
+	uniform = /obj/item/clothing/under/rank/centcom/skyrat/naval/fleet_admiral
 
 	gloves = /obj/item/clothing/gloves/combat/naval/fleet_admiral
 

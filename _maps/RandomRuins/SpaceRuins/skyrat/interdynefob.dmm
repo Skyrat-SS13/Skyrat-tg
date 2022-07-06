@@ -58,7 +58,7 @@
 "ag" = (
 /obj/item/storage/belt/security/full,
 /obj/item/radio/headset/interdyne,
-/obj/item/clothing/under/utility/sec/old/syndicate,
+/obj/item/clothing/under/rank/security/skyrat/utility/redsec/syndicate,
 /obj/structure/closet/secure_closet{
 	icon_state = "sec";
 	name = "brig officer's locker";
@@ -761,7 +761,7 @@
 	},
 /obj/item/storage/belt/security/full,
 /obj/item/radio/headset/interdyne,
-/obj/item/clothing/under/utility/sec/old/syndicate,
+/obj/item/clothing/under/rank/security/skyrat/utility/redsec/syndicate,
 /obj/item/storage/belt/security/webbing/ds,
 /obj/item/clothing/head/beret/sec/syndicate,
 /turf/open/floor/mineral/plastitanium,
@@ -1596,10 +1596,11 @@
 /area/template_noop)
 "fH" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/turnstile{
-	dir = 1;
-	req_one_access_txt = "151"
+/obj/machinery/door/airlock/security/old{
+	name = "Long-Term Brig"
 	},
+/obj/effect/mapping_helpers/airlock/access/all/syndicate,
+/obj/effect/mapping_helpers/airlock/cutaiwire,
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/security)
 "fJ" = (
@@ -1772,9 +1773,8 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light/broken/directional/west,
-/turf/open/floor/wood{
-	icon_state = "wood-broken"
-	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
 /area/ruin/space/has_grav/skyrat/interdynefob/maintenance/southeast)
 "gk" = (
 /obj/structure/table/wood,
@@ -1884,7 +1884,7 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge)
 "gD" = (
 /obj/effect/spawner/liquids_spawner{
-	reagent_list = list(/datum/reagent/water = 600)
+	reagent_list = list(/datum/reagent/water=600)
 	},
 /turf/open/misc/asteroid,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge)
@@ -2906,9 +2906,8 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/maintenance/northeast)
 "kh" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/iron{
-	icon_state = "floorscorched2"
-	},
+/obj/effect/mapping_helpers/burnt_floor,
+/turf/open/floor/iron,
 /area/ruin/space/has_grav/skyrat/interdynefob/maintenance/southwest)
 "ki" = (
 /turf/open/floor/engine/n2,
@@ -4143,7 +4142,7 @@
 /obj/structure/flora/ocean/seaweed,
 /obj/machinery/light/directional/east,
 /obj/effect/spawner/liquids_spawner{
-	reagent_list = list(/datum/reagent/water = 600)
+	reagent_list = list(/datum/reagent/water=600)
 	},
 /turf/open/misc/asteroid,
 /area/ruin/space/has_grav/skyrat/interdynefob/service/diner)
@@ -4403,18 +4402,18 @@
 /obj/item/storage/box/ingredients/fiesta,
 /obj/item/storage/box/ingredients/american,
 /obj/item/reagent_containers/food/condiment/flour{
-	list_reagents = list(/datum/reagent/consumable/flour = 600);
+	list_reagents = list(/datum/reagent/consumable/flour=600);
 	name = "Premium All-Purpose Flour (16KG)";
 	volume = 600
 	},
 /obj/item/reagent_containers/food/condiment/milk,
 /obj/item/reagent_containers/food/condiment/enzyme{
-	list_reagents = list(/datum/reagent/consumable/enzyme = 500);
+	list_reagents = list(/datum/reagent/consumable/enzyme=500);
 	name = "universe-sized universal enyzyme";
 	volume = 500
 	},
 /obj/item/reagent_containers/food/condiment/rice{
-	list_reagents = list(/datum/reagent/consumable/rice = 150);
+	list_reagents = list(/datum/reagent/consumable/rice=150);
 	name = "Basmati Rice Sack (4KG)";
 	volume = 150
 	},
@@ -4557,9 +4556,8 @@
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
 	dir = 4
 	},
-/turf/open/floor/wood{
-	icon_state = "wood-broken"
-	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge/cl)
 "pW" = (
 /obj/structure/sign/poster/official/nanotrasen_logo{
@@ -4587,9 +4585,8 @@
 /obj/structure/table/wood,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/reagent_containers/glass/rag,
-/turf/open/floor/wood{
-	icon_state = "wood-broken3"
-	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
 /area/ruin/space/has_grav/skyrat/interdynefob/maintenance/southeast)
 "pZ" = (
 /turf/closed/wall/r_wall/syndicate/nodiagonal,
@@ -4825,7 +4822,7 @@
 /obj/structure/flora/ocean/longseaweed,
 /obj/structure/flora/ocean/glowweed,
 /obj/effect/spawner/liquids_spawner{
-	reagent_list = list(/datum/reagent/water = 600)
+	reagent_list = list(/datum/reagent/water=600)
 	},
 /turf/open/misc/asteroid,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge)
@@ -6071,7 +6068,7 @@
 	},
 /obj/item/storage/belt/security/full,
 /obj/item/radio/headset/interdyne,
-/obj/item/clothing/under/utility/sec/old/syndicate,
+/obj/item/clothing/under/rank/security/skyrat/utility/redsec/syndicate,
 /obj/effect/turf_decal/delivery,
 /obj/structure/window/reinforced/survival_pod{
 	dir = 1
@@ -6284,12 +6281,6 @@
 	},
 /turf/open/floor/iron/dark/smooth_edge,
 /area/ruin/space/has_grav/skyrat/interdynefob/halls)
-"vI" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/wood{
-	icon_state = "wood-broken4"
-	},
-/area/ruin/space/has_grav/skyrat/interdynefob/maintenance/southeast)
 "vK" = (
 /obj/effect/turf_decal/siding/thinplating{
 	dir = 8
@@ -6386,9 +6377,8 @@
 	},
 /area/ruin/space/has_grav/skyrat/interdynefob/service/diner)
 "wb" = (
-/turf/open/floor/wood{
-	icon_state = "wood-broken2"
-	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
 /area/ruin/space/has_grav/skyrat/interdynefob/maintenance/southeast)
 "wc" = (
 /obj/structure/cable,
@@ -6405,7 +6395,7 @@
 "we" = (
 /obj/structure/flora/ocean/longseaweed,
 /obj/effect/spawner/liquids_spawner{
-	reagent_list = list(/datum/reagent/water = 600)
+	reagent_list = list(/datum/reagent/water=600)
 	},
 /turf/open/misc/asteroid,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge)
@@ -8236,9 +8226,7 @@
 	},
 /area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
 "Cl" = (
-/obj/structure/sign/departments/engineering{
-	pixel_x = -32
-	},
+/obj/structure/sign/departments/engineering/directional/west,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/halls)
 "Cm" = (
@@ -8698,9 +8686,7 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/halls)
 "DF" = (
 /obj/machinery/light/directional/north,
-/obj/structure/sign/departments/security{
-	pixel_y = 32
-	},
+/obj/structure/sign/departments/security/directional/north,
 /obj/effect/turf_decal/siding/thinplating/dark{
 	dir = 9
 	},
@@ -9017,9 +9003,8 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/halls)
 "EV" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/wood{
-	icon_state = "wood-broken"
-	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
 /area/ruin/space/has_grav/skyrat/interdynefob/maintenance/southeast)
 "EW" = (
 /obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
@@ -9152,7 +9137,7 @@
 "Fu" = (
 /obj/structure/flora/rock,
 /obj/effect/spawner/liquids_spawner{
-	reagent_list = list(/datum/reagent/water = 600)
+	reagent_list = list(/datum/reagent/water=600)
 	},
 /turf/open/misc/asteroid,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge)
@@ -9325,10 +9310,10 @@
 "Gb" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/security/old{
-	name = "Long-Term Brig";
-	req_access = list("syndicate_leader")
+	name = "Long-Term Brig"
 	},
 /obj/effect/mapping_helpers/airlock/cutaiwire,
+/obj/effect/mapping_helpers/airlock/access/all/syndicate,
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/security)
 "Gc" = (
@@ -9405,7 +9390,7 @@
 "Gl" = (
 /obj/structure/flora/rock,
 /obj/effect/spawner/liquids_spawner{
-	reagent_list = list(/datum/reagent/water = 600)
+	reagent_list = list(/datum/reagent/water=600)
 	},
 /turf/open/misc/asteroid,
 /area/ruin/space/has_grav/skyrat/interdynefob/service/diner)
@@ -9550,7 +9535,7 @@
 "GT" = (
 /obj/structure/flora/rock/pile,
 /obj/effect/spawner/liquids_spawner{
-	reagent_list = list(/datum/reagent/water = 600)
+	reagent_list = list(/datum/reagent/water=600)
 	},
 /turf/open/misc/asteroid,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge)
@@ -9665,7 +9650,7 @@
 "Ht" = (
 /obj/structure/flora/ocean/seaweed,
 /obj/effect/spawner/liquids_spawner{
-	reagent_list = list(/datum/reagent/water = 600)
+	reagent_list = list(/datum/reagent/water=600)
 	},
 /turf/open/misc/asteroid,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge)
@@ -10800,7 +10785,7 @@
 /obj/structure/flora/ocean/coral,
 /obj/structure/flora/ocean/glowweed,
 /obj/effect/spawner/liquids_spawner{
-	reagent_list = list(/datum/reagent/water = 600)
+	reagent_list = list(/datum/reagent/water=600)
 	},
 /turf/open/misc/asteroid,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge)
@@ -11061,7 +11046,7 @@
 /obj/structure/flora/rock/pile,
 /obj/structure/flora/ocean/glowweed,
 /obj/effect/spawner/liquids_spawner{
-	reagent_list = list(/datum/reagent/water = 600)
+	reagent_list = list(/datum/reagent/water=600)
 	},
 /turf/open/misc/asteroid,
 /area/ruin/space/has_grav/skyrat/interdynefob/service/diner)
@@ -11453,9 +11438,7 @@
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "Ng" = (
-/obj/structure/sign/departments/lawyer{
-	pixel_x = -32
-	},
+/obj/structure/sign/departments/lawyer/directional/west,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/halls)
 "Nh" = (
@@ -11504,7 +11487,7 @@
 "No" = (
 /obj/machinery/light/directional/south,
 /obj/effect/spawner/liquids_spawner{
-	reagent_list = list(/datum/reagent/water = 600)
+	reagent_list = list(/datum/reagent/water=600)
 	},
 /turf/open/misc/asteroid,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge)
@@ -11680,7 +11663,7 @@
 /obj/structure/closet/crate,
 /obj/item/inflatable/door,
 /obj/item/clothing/suit/fire/atmos{
-	armor = list("melee" = 20, "bullet" = 30, "laser" = 20, "energy" = 20, "bomb" = 20, "bio" = 10, "fire" = 80, "acid" = 50);
+	armor = list("melee"=20,"bullet"=30,"laser"=20,"energy"=20,"bomb"=20,"bio"=10,"fire"=80,"acid"=50);
 	desc = "An old, reinforced and obviously stolen firesuit. There's an expiry date for the thermal padding, safe to say it's well past the expiration date.";
 	name = "padded firesuit";
 	slowdown = 0.25
@@ -11804,7 +11787,7 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/maintenance/southwest)
 "Og" = (
 /obj/effect/spawner/liquids_spawner{
-	reagent_list = list(/datum/reagent/water = 600)
+	reagent_list = list(/datum/reagent/water=600)
 	},
 /obj/structure/flora/ocean/seaweed,
 /turf/open/misc/asteroid,
@@ -12584,9 +12567,7 @@
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/lawyer)
 "QF" = (
-/obj/structure/sign/departments/science{
-	pixel_y = -32
-	},
+/obj/structure/sign/departments/science/directional/south,
 /turf/open/floor/iron/dark/smooth_edge{
 	dir = 1
 	},
@@ -12767,9 +12748,8 @@
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
-/turf/open/floor/wood{
-	icon_state = "wood-broken2"
-	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge/cl)
 "Rq" = (
 /turf/open/floor/iron/dark/textured_edge{
@@ -13100,7 +13080,7 @@
 "Sr" = (
 /obj/structure/flora/ocean/longseaweed,
 /obj/effect/spawner/liquids_spawner{
-	reagent_list = list(/datum/reagent/water = 600)
+	reagent_list = list(/datum/reagent/water=600)
 	},
 /turf/open/misc/asteroid,
 /area/ruin/space/has_grav/skyrat/interdynefob/service/diner)
@@ -13159,9 +13139,7 @@
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
 	dir = 6
 	},
-/obj/structure/sign/departments/restroom{
-	pixel_x = -32
-	},
+/obj/structure/sign/departments/restroom/directional/west,
 /turf/open/floor/iron/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/service/dorms/fitness)
 "SB" = (
@@ -13412,9 +13390,7 @@
 /turf/open/floor/iron/solarpanel/airless,
 /area/template_noop)
 "TA" = (
-/obj/structure/sign/warning/firing_range{
-	pixel_y = -32
-	},
+/obj/structure/sign/warning/firing_range/directional/south,
 /turf/open/floor/iron/dark/red/side{
 	dir = 6
 	},
@@ -13570,6 +13546,10 @@
 "TX" = (
 /obj/structure/loom,
 /obj/machinery/light/small/directional/north,
+/obj/machinery/door/airlock/security/old{
+	name = "Long-Term Brig";
+	req_access = list("syndicate_leader")
+	},
 /turf/open/floor/vault/rock,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
 "Ua" = (
@@ -14023,9 +14003,7 @@
 /turf/open/floor/catwalk_floor/iron,
 /area/ruin/space/has_grav/skyrat/interdynefob/maintenance/southwest)
 "VO" = (
-/obj/structure/sign/departments/holy{
-	pixel_y = 32
-	},
+/obj/structure/sign/departments/holy/directional/north,
 /turf/open/floor/iron/dark/textured_edge{
 	dir = 4
 	},
@@ -14568,16 +14546,16 @@
 /obj/item/storage/belt/security/full,
 /obj/item/radio/headset/interdyne,
 /obj/item/clothing/suit/armor/vest/warden/syndicate,
-/obj/item/clothing/under/utility/sec/old/syndicate,
+/obj/item/clothing/under/rank/security/skyrat/utility/redsec/syndicate,
 /obj/structure/cable,
 /obj/item/clothing/head/sec/navywarden/syndicate,
 /obj/item/clothing/suit/armor/hos/trenchcoat{
-	armor = list("melee" = 35, "bullet" = 30, "laser" = 30, "energy" = 40, "bomb" = 25, "bio" = 0, "fire" = 50, "acid" = 50, "wound" = 10);
+	armor = list("melee"=35,"bullet"=30,"laser"=30,"energy"=40,"bomb"=25,"bio"=0,"fire"=50,"acid"=50,"wound"=10);
 	desc = "A trenchcoat enhanced with a special lightweight kevlar. It has little Syndicate logos sewn onto the shoulder badges with the letters 'MAA' just under it.";
 	name = "Master at arms' armored trenchcoat"
 	},
 /obj/item/clothing/suit/armor/hos{
-	armor = list("melee" = 35, "bullet" = 30, "laser" = 30, "energy" = 40, "bomb" = 25, "bio" = 0, "fire" = 50, "acid" = 50, "wound" = 10);
+	armor = list("melee"=35,"bullet"=30,"laser"=30,"energy"=40,"bomb"=25,"bio"=0,"fire"=50,"acid"=50,"wound"=10);
 	desc = "A greatcoat enhanced with a special alloy for some extra protection and style for those with a likely chance to get bullied for being outside of the brig";
 	name = "Master at arms' armored greatcoat"
 	},
@@ -23273,7 +23251,7 @@ XW
 XH
 bD
 nO
-vI
+EV
 Tf
 Tf
 bB

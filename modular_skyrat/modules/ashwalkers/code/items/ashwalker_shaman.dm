@@ -12,12 +12,6 @@
 	///If the world.time is above this, it wont work. Charging requires whacking the necropolis nest
 	var/staff_time = 0
 
-/datum/crafting_recipe/ash_staff
-	name = "Staff of the Ashlands"
-	result = /obj/item/ash_staff
-	reqs = list(/obj/item/stack/sheet/mineral/wood = 25)
-	category = CAT_PRIMAL
-
 /obj/item/ash_staff/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	if(!proximity_flag)
 		return ..()

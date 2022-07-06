@@ -20,7 +20,7 @@
 /obj/structure/closet/emcloset/anchored
 	anchored = TRUE
 
-/obj/structure/closet/emcloset/PopulateContents()
+/obj/structure/closet/emcloset/PopulateContents() // SKYRAT EDIT OVERRIDE - emergency_spacesuit.dm
 	..()
 
 	if (prob(40))

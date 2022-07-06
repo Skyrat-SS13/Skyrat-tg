@@ -4,8 +4,8 @@
 	light_range = 8
 
 /obj/structure/lavaland/ash_walker/attackby(obj/item/I, mob/living/user, params)
-	if(istype(I, /obj/item/organ/regenerative_core) && user.mind.has_antag_datum(/datum/antagonist/ashwalker))
-		var/obj/item/organ/regenerative_core/regen_core = I
+	if(istype(I, /obj/item/organ/internal/regenerative_core) && user.mind.has_antag_datum(/datum/antagonist/ashwalker))
+		var/obj/item/organ/internal/regenerative_core/regen_core = I
 		regen_core.preserved()
 		playsound(src, 'sound/magic/demon_consume.ogg', 50, TRUE)
 		to_chat(user, span_notice("The tendril revitalizes [regen_core]."))

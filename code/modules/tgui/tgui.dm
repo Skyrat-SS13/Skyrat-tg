@@ -37,6 +37,8 @@
 	var/datum/ui_state/state = null
 	/// Rate limit client refreshes to prevent DoS.
 	COOLDOWN_DECLARE(refresh_cooldown)
+	/// Are byond mouse events beyond the window passed in to the ui
+	var/mouse_hooked = FALSE
 
 /**
  * public
@@ -103,6 +105,8 @@
 		window.send_message("ping")
 	var/flush_queue = window.send_asset(get_asset_datum(
 		/datum/asset/simple/namespaced/fontawesome))
+	flush_queue |= window.send_asset(get_asset_datum(
+		/datum/asset/simple/namespaced/tgfont))
 	for(var/datum/asset/asset in src_object.ui_assets(user))
 		flush_queue |= window.send_asset(asset)
 	if (flush_queue)
@@ -110,6 +114,8 @@
 	window.send_message("update", get_payload(
 		with_data = TRUE,
 		with_static_data = TRUE))
+	if(mouse_hooked)
+		window.set_mouse_macro()
 	SStgui.on_open(src)
 
 	return TRUE
@@ -147,6 +153,18 @@
  */
 /datum/tgui/proc/set_autoupdate(autoupdate)
 	src.autoupdate = autoupdate
+
+/**
+ * public
+ *
+ * Enable/disable passing through byond mouse events to the window
+ *
+ * required value bool Enable/disable hooking.
+ */
+/datum/tgui/proc/set_mouse_hook(value)
+	src.mouse_hooked = value
+	//Handle unhooking/hooking on already open windows ?
+
 
 /**
  * public
