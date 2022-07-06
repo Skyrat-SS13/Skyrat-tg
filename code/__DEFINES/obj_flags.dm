@@ -67,7 +67,7 @@
 #define CASTING_CLOTHES (1<<19)
 //SKYRAT DEFINE
 /// Allows for masks to use tanks on adjacentadjecent tiles.
-#define MASKEXTENDRANGE (1<<20)
+#define MASK_EXTEND_RANGE (1<<20)
 //SKYRAT DEFINE END
 /// Flags for the organ_flags var on /obj/item/organ
 
