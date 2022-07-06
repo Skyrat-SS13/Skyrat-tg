@@ -126,11 +126,11 @@
 /obj/item/circuitboard/computer/advanced_camera,
 /obj/item/megaphone/cargo,
 /obj/item/clothing/glasses/sunglasses,
-/obj/item/gun/ballistic/automatic/pistol/makarov,
 /obj/item/ammo_box/magazine/m9mm{
 	pixel_x = 1;
 	pixel_y = -1
 	},
+/obj/item/gun/ballistic/automatic/pistol,
 /turf/open/floor/wood,
 /area/ruin/syndicate_lava_base/cargo)
 "br" = (
@@ -416,13 +416,6 @@
 /obj/structure/window/reinforced/survival_pod,
 /turf/open/floor/iron/dark/smooth_large,
 /area/ruin/syndicate_lava_base/bar)
-"dK" = (
-/obj/machinery/door/poddoor{
-	id = "interdynebarbers"
-	},
-/obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
-/turf/open/floor/plating,
-/area/ruin/syndicate_lava_base/medbay)
 "dN" = (
 /obj/machinery/door/airlock/external,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
@@ -736,10 +729,10 @@
 /turf/open/floor/plating,
 /area/ruin/syndicate_lava_base/cargo)
 "gJ" = (
-/obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
 /obj/machinery/door/poddoor{
 	id = "interdynebarbers"
 	},
+/obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
 /turf/open/floor/plating,
 /area/ruin/syndicate_lava_base/medbay)
 "gQ" = (
@@ -1265,6 +1258,13 @@
 /obj/item/radio/headset/interdyne,
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/cargo)
+"mt" = (
+/obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
+/obj/machinery/door/poddoor{
+	id = "interdynebarbers"
+	},
+/turf/open/floor/plating,
+/area/ruin/syndicate_lava_base/medbay)
 "mz" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -1304,6 +1304,15 @@
 "mN" = (
 /turf/open/floor/engine/o2,
 /area/ruin/syndicate_lava_base/engineering)
+"nc" = (
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 1
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 10
+	},
+/turf/open/floor/iron/kitchen,
+/area/ruin/syndicate_lava_base/bar)
 "nd" = (
 /obj/structure/sign/directions/science{
 	dir = 8;
@@ -1456,10 +1465,11 @@
 /area/ruin/syndicate_lava_base/dormitories)
 "oK" = (
 /obj/structure/frame/machine{
-	anchored = 1
+	anchored = 1;
+	state = 2;
+	icon_state = "box_1"
 	},
 /obj/item/circuitboard/machine/stacking_machine,
-/obj/item/stack/cable_coil/five,
 /turf/open/floor/plating,
 /area/ruin/syndicate_lava_base/bar)
 "oM" = (
@@ -2038,17 +2048,19 @@
 	id = "interdynedisp"
 	},
 /obj/structure/frame/machine{
-	anchored = 1
+	anchored = 1;
+	state = 2;
+	icon_state = "box_1"
 	},
-/obj/item/stack/cable_coil/five,
 /obj/item/circuitboard/machine/recycler,
 /turf/open/floor/plating,
 /area/ruin/syndicate_lava_base/bar)
 "vX" = (
 /obj/structure/frame/machine{
-	anchored = 1
+	anchored = 1;
+	state = 2;
+	icon_state = "box_1"
 	},
-/obj/item/stack/cable_coil/five,
 /obj/item/circuitboard/machine/ore_redemption,
 /obj/item/assembly/igniter,
 /turf/open/floor/iron,
@@ -2242,15 +2254,6 @@
 /obj/machinery/light/directional/east,
 /turf/open/floor/iron/dark,
 /area/ruin/syndicate_lava_base/bar)
-"xJ" = (
-/obj/effect/turf_decal/siding/thinplating/dark{
-	dir = 1
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 10
-	},
-/turf/open/floor/iron/kitchen,
-/area/ruin/syndicate_lava_base/bar)
 "xL" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -2322,7 +2325,9 @@
 /area/ruin/syndicate_lava_base/engineering)
 "yf" = (
 /obj/structure/frame/machine{
-	anchored = 1
+	anchored = 1;
+	state = 2;
+	icon_state = "box_1"
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -3270,7 +3275,9 @@
 /obj/item/stack/cable_coil/five,
 /obj/item/circuitboard/machine/ore_silo,
 /obj/structure/frame/machine{
-	anchored = 1
+	anchored = 1;
+	state = 2;
+	icon_state = "box_1"
 	},
 /turf/open/floor/iron/corner,
 /area/ruin/syndicate_lava_base/main)
@@ -4298,7 +4305,9 @@
 /area/ruin/syndicate_lava_base/medbay)
 "Ru" = (
 /obj/structure/frame/machine{
-	anchored = 1
+	anchored = 1;
+	state = 2;
+	icon_state = "box_1"
 	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/ruin/syndicate_lava_base/testlab)
@@ -6925,7 +6934,7 @@ ZS
 eM
 Dy
 do
-xJ
+nc
 MW
 Tx
 Tx
@@ -7084,7 +7093,7 @@ VO
 Wq
 Pf
 Wq
-gJ
+mt
 Wq
 NO
 HR
@@ -7139,11 +7148,11 @@ ab
 xR
 Vj
 FE
-dK
+gJ
 Wq
 jK
 Wq
-gJ
+mt
 Wq
 Wq
 AS
@@ -7202,7 +7211,7 @@ VO
 Wq
 jK
 Wq
-gJ
+mt
 Wq
 CJ
 CW
