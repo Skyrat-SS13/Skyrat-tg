@@ -1,6 +1,11 @@
+/**
+ * Day Night Presets are easy to use day/night cycles for certain maps, they are what is used to dictate the sky color.
+ *
+ * IMPORTANT: The timezones in this MUST all add up to 23, you cannot miss an hour!
+ */
 /datum/day_night_preset
 	/// The maps that this preset should be loaded on
-	var/load_map_names = list()
+	var/load_map_name
 	/// The timezones that this preset should have
 	var/list/timezones = list()
 	/// The timezones that this preset has loaded
@@ -19,7 +24,7 @@
  * Finds and saves all areas that this preset will affect
  */
 /datum/day_night_preset/proc/load_areas()
-	for(var/area/iterating_area_type in controlled_areas)
+	for(var/iterating_area_type in controlled_areas)
 		for(var/area/iterating_area as anything in get_areas(iterating_area_type, TRUE))
 			LAZYADD(area_cache, iterating_area)
 			RegisterSignal(iterating_area, COMSIG_PARENT_QDELETING, .proc/remove_area_from_loaded)
@@ -28,8 +33,8 @@
  * Creates all of the desired timezone datums and caches them for later.
  */
 /datum/day_night_preset/proc/load_timezones()
-	for(var/datum/timezone/iterating_timezone in timezones)
-		timezone_cache += new iterating_timezone
+	for(var/iterating_timezone_type in timezones)
+		timezone_cache += new iterating_timezone_type
 
 /**
  * Removes an area from the preset
@@ -56,12 +61,21 @@
  */
 /datum/day_night_preset/proc/update_time(hour)
 	var/datum/timezone/timezone_to_apply = get_timezone(hour)
+	var/alpha_to_set = calculate_alpha_delta(timezone_to_apply, get_timezone(timezone_to_apply.end_hour == 24 ? 1 : timezone_to_apply.end_hour + 1), hour)
+
 	for(var/area/iterating_area as anything in area_cache)
-		iterating_area.set_base_lighting(timezone_to_apply.light_color, timezone_to_apply.light_alpha)
+		iterating_area.set_base_lighting(timezone_to_apply.light_color, alpha_to_set)
+
+/datum/day_night_preset/proc/calculate_alpha_delta(datum/timezone/starting_timezone, datum/timezone/next_timezone, hour)
+	var/target_alpha_difference = next_timezone.light_alpha - starting_timezone.light_alpha
+	var/time_difference = starting_timezone.end_hour - starting_timezone.start_hour
+	var/run_time = hour - starting_timezone.start_hour
+	var/percentage = run_time / time_difference
+	return (target_alpha_difference * percentage) + starting_timezone.light_alpha
 
 // PRESETS
 /datum/day_night_preset/icebox
-	load_map_names = list("IceBoxStation_skyrat.dmm")
+	load_map_name = "IceBoxStation.dmm"
 	timezones = list(
 		/datum/timezone/midnight,
 		/datum/timezone/early_morning,

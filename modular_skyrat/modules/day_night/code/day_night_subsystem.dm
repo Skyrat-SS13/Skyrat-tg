@@ -16,7 +16,7 @@ SUBSYSTEM_DEF(day_night)
 
 /datum/controller/subsystem/day_night/Initialize(start_timeofday)
 	for(var/datum/day_night_preset/iterating_preset as anything in subtypesof(/datum/day_night_preset))
-		if(SSmapping.config.map_file in initial(iterating_preset.load_map_names))
+		if(SSmapping.config.map_file == initial(iterating_preset.load_map_name))
 			cached_presets = new iterating_preset
 	current_hour = rand(0, 23)
 	update_presets(current_hour)
@@ -54,5 +54,5 @@ SUBSYSTEM_DEF(day_night)
  * * hour - The updating hour which we will sent to the preset controllers
  */
 /datum/controller/subsystem/day_night/proc/update_presets(hour)
-	for(var/datum/day_night_preset/iterating_preset as anything in cached_presets)
+	for(var/datum/day_night_preset/iterating_preset in cached_presets)
 		iterating_preset.update_time(hour)

@@ -1,3 +1,6 @@
+/**
+ * Timezones are simple presets to determine what color the sky will be at a certain time.
+ */
 /datum/timezone
 	/// The name of this timezone
 	var/name = "DEFALT"
