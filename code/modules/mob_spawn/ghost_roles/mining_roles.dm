@@ -244,7 +244,7 @@
 	// SKYRAT EDIT MOVE
 	// Moved lizard name randomizer before parent call (so character names are preserved)
 	spawned_human.fully_replace_character_name(null,random_unique_lizard_name(gender))
-	loadout_enabled = TRUE //SKYRAT EDIT ADDITION
+	quirks_enabled = TRUE //SKYRAT EDIT ADDITION
 	. = ..()
 	// SKYRAT EDIT END
 	to_chat(spawned_human, "<b>Drag the corpses of men and beasts to your nest. It will absorb them to create more of your kind. Invade the strange structure of the outsiders if you must. Do not cause unnecessary destruction, as littering the wastes with ugly wreckage is certain to not gain you favor. Glory to the Necropolis!</b>")
@@ -312,7 +312,7 @@
 	r_pocket = /obj/item/gun/ballistic/automatic/pistol
 	id = /obj/item/card/id/advanced/chameleon
 	implants = list(/obj/item/implant/weapons_auth)
-	id_trim = /datum/id_trim/chameleon/operative
+	id_trim = /datum/id_trim/syndicom/skyrat/interdyne //SKYRAT EDIT
 
 // SKYRAT EDIT REMOVAL BEGIN -- mapping
 /*

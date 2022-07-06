@@ -192,6 +192,7 @@ GLOBAL_LIST_INIT(hailer_phrases, list(
 	inhand_icon_state = "whistle"
 	slot_flags = ITEM_SLOT_MASK|ITEM_SLOT_NECK
 	custom_price = PAYCHECK_COMMAND * 1.5
+	w_class = WEIGHT_CLASS_SMALL
 	actions_types = list(/datum/action/item_action/halt)
 
 /obj/item/clothing/mask/whistle/ui_action_click(mob/user, action)
@@ -199,6 +200,9 @@ GLOBAL_LIST_INIT(hailer_phrases, list(
 		usr.audible_message("<font color='red' size='5'><b>HALT!</b></font>")
 		playsound(src, 'sound/misc/whistle.ogg', 75, FALSE, 4)
 		cooldown = world.time
+
+/datum/action/item_action/halt
+	name = "HALT!"
 
 #undef PHRASE_COOLDOWN
 #undef OVERUSE_COOLDOWN

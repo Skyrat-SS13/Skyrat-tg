@@ -64,7 +64,8 @@
 	head = /obj/item/clothing/head/fedora/det_hat
 	l_hand = /obj/item/gun/ballistic
 	l_hand = null
-	r_pocket = /obj/item/ammo_box/c10mm
+	//r_pocket = /obj/item/ammo_box/c10mm
+	r_hand = /obj/item/ammo_box/c10mm // SKYRAT EDIT CHANGE
 
 /datum/outfit/tournament/janitor
 	name = "tournament janitor"
@@ -240,6 +241,7 @@
 	id = /obj/item/card/id/advanced/chameleon/black
 	id_trim = /datum/id_trim/reaper_assassin
 	uniform = /obj/item/clothing/under/suit/black
+	neck = /obj/item/clothing/neck/tie/red/hitman/tied
 	belt = /obj/item/modular_computer/tablet/pda/heads
 	ears = /obj/item/radio/headset
 	gloves = /obj/item/clothing/gloves/color/black
@@ -337,13 +339,13 @@
 	r_pocket = /obj/item/teleportation_scroll
 	l_hand = /obj/item/staff
 
-/datum/outfit/wizard/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
+/datum/outfit/wizard/post_equip(mob/living/carbon/human/wizard, visualsOnly = FALSE)
 	if(visualsOnly)
 		return
 
-	var/obj/item/spellbook/S = locate() in H.back
-	if(S)
-		S.owner = H
+	var/obj/item/spellbook/new_spellbook = locate() in wizard.back
+	if(new_spellbook)
+		new_spellbook.owner = wizard.mind
 
 /datum/outfit/wizard/apprentice
 	name = "Wizard Apprentice"
@@ -398,6 +400,7 @@
 	id = /obj/item/card/id/advanced
 	id_trim = /datum/id_trim/mobster
 	uniform = /obj/item/clothing/under/suit/black_really
+	neck = /obj/item/clothing/neck/tie/red/tied
 	ears = /obj/item/radio/headset
 	glasses = /obj/item/clothing/glasses/sunglasses
 	gloves = /obj/item/clothing/gloves/color/black
@@ -420,12 +423,14 @@
 	uniform = /obj/item/clothing/under/color/white
 	suit_store = /obj/item/tank/internals/oxygen
 	mask = /obj/item/clothing/mask/breath
-	back = /obj/item/mod/control/pre_equipped/timeline
+	back = /obj/item/mod/control/pre_equipped/chrono
 
 /datum/outfit/chrono_agent/post_equip(mob/living/carbon/human/agent, visualsOnly)
 	. = ..()
-	var/obj/item/mod/control/pre_equipped/timeline = agent.back
-	var/obj/item/mod/module/eradication_lock/lock = locate(/obj/item/mod/module/eradication_lock) in timeline.modules
+	var/obj/item/mod/control/mod = agent.back
+	if(!istype(mod))
+		return
+	var/obj/item/mod/module/eradication_lock/lock = locate(/obj/item/mod/module/eradication_lock) in mod.modules
 	lock.true_owner_ckey = agent.ckey
 
 /datum/outfit/debug //Debug objs plus MODsuit

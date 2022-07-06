@@ -19,7 +19,6 @@
 /obj/machinery/computer/shuttle/caravan/blackmarket_chevvy
 	name = "Chevvy Shuttle Console"
 	desc = "Used to control the affectionately named 'Chevvy'."
-	req_access = list(208)
 	circuit = /obj/item/circuitboard/computer/blackmarket_chevvy
 	shuttleId = "blackmarket_chevvy"
 	possible_destinations = "blackmarket_chevvy_custom;blackmarket_chevvy_home;whiteship_home"
@@ -105,6 +104,9 @@
 /obj/item/radio/headset/guild/command
 	command = TRUE
 
+/datum/outfit/guild
+	name = "Guild Default Outfit"
+
 /datum/outfit/guild/slaver
 	name = "Privateer Slaver"
 	head = /obj/item/clothing/head/helmet/alt
@@ -186,6 +188,6 @@
 	view_range = 0
 
 /obj/item/circuitboard/computer/tarkon_driver
-	name = "Chevvy Control Console (Computer Board)"
+	name = "Tarkon Driver Control Console (Computer Board)"
 	build_path = /obj/machinery/computer/shuttle/tarkon_driver
 /*----- End of Tarkon Shuttle Code -----*/

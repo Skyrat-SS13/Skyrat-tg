@@ -1,5 +1,5 @@
 /obj/item/hilbertshotel/ghostdojo
-	name = "Infinite Dormitories"
+	name = "infinite dormitories"
 	anchored = TRUE
 
 /obj/item/hilbertshotel/ghostdojo/attack_hand(mob/user, list/modifiers)

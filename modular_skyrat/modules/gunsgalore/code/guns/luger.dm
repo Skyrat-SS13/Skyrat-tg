@@ -1,6 +1,6 @@
 /obj/item/gun/ballistic/automatic/pistol/luger
 	name = "\improper Armadyne P-09X"
-	desc = "A small, light-weight reproduction of the Luger P08 from the 20th century, manufactured by the Oldarms division of the Armadyne Corporation. Chambered in 9mm."
+	desc = "A small, light-weight reproduction of the Luger P08 from the 20th century, manufactured by the Oldarms division of the Armadyne Corporation. Chambered in 9x25mm."
 	icon_state = "luger"
 	inhand_icon_state = "luger"
 	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_guns.dmi'

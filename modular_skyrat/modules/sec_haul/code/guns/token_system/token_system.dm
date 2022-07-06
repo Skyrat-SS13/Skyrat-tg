@@ -1,7 +1,6 @@
-
-//////////////////
-//TOKEN SYSTEM
-/////////////////
+/*
+*	GUN VENDOR
+*/
 
 /obj/machinery/gun_vendor
 	name = "Armadyne weapons dispensary"
@@ -33,12 +32,11 @@
 		return
 
 /obj/machinery/gun_vendor/proc/RedeemToken(obj/item/armament_token/token, mob/redeemer)
-	if((seclevel2num(get_security_level()) < token.minimum_sec_level) && requires_alert)
-		to_chat(redeemer, span_redtext("Warning, this holochip is locked to [num2seclevel(token.minimum_sec_level)]!"))
+	if((SSsecurity_level.get_current_level_as_number() < token.minimum_sec_level) && requires_alert)
+		to_chat(redeemer, span_redtext("Warning, this holochip is locked to [SSsecurity_level.get_current_level_as_text()]!"))
 		message_admins("ARMAMENT LOG: [redeemer] attempted to redeem a [token.name] on the incorrect security level!")
 		return
 	var/list/radial_build = token.get_available_gunsets()
-	seclevel2num()
 	var/obj/item/storage/box/gunset/chosen_gunset = show_radial_menu(redeemer, src, radial_build, radius = 40)
 	if(!chosen_gunset)
 		return
@@ -60,9 +58,9 @@
 /obj/machinery/gun_vendor/no_alert
 	requires_alert = FALSE
 
-////////////////////
-//TOKENS
-////////////////////
+/*
+*	TOKENS
+*/
 
 /obj/item/armament_token
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/gunsets.dmi'
@@ -73,7 +71,10 @@
 /obj/item/armament_token/proc/get_available_gunsets()
 	return FALSE
 
-//Sidearm
+/*
+*	SIDEARMS
+*/
+
 /obj/item/armament_token/sidearm
 	name = "sidearm armament holochip"
 	desc = "A holochip used in any armament vendor, this is for sidearms. Do not bend."
@@ -107,7 +108,7 @@
 		),
 	)
 
-//BAD BOY!
+// BAD BOY!
 /obj/item/armament_token/sidearm_blackmarket
 	name = "blackmarket armament holochip"
 	desc = "A holochip used in any armament vendor, this is for |bad people|. Do not bend."
@@ -132,7 +133,10 @@
 	)
 
 
-//Primary
+/*
+*	PRIMARIES
+*/
+
 /obj/item/armament_token/primary
 	name = "primary armament holochip"
 	desc = "A holochip used in any armament vendor, this is for main arms. Do not bend."

@@ -87,7 +87,7 @@
 /obj/projectile/beam/disabler
 	name = "disabler beam"
 	icon_state = "omnilaser"
-	damage = 41 // SKYRAT EDIT: 30
+	damage = 30
 	damage_type = STAMINA
 	armor_flag = ENERGY
 	hitsound = 'sound/weapons/tap.ogg'

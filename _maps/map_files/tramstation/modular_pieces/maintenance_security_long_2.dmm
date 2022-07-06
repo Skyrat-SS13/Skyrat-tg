@@ -73,10 +73,9 @@
 	pixel_x = -10;
 	pixel_y = -10
 	},
-/obj/structure/sign/warning{
+/obj/structure/sign/warning/directional/east{
 	desc = "A warning sign to watch for loose rocks.";
-	name = "COLLAPSE HAZARD sign";
-	pixel_x = 32
+	name = "COLLAPSE HAZARD sign"
 	},
 /turf/open/floor/iron/smooth,
 /area/station/maintenance/department/security)
@@ -99,20 +98,21 @@
 	pixel_x = -9;
 	pixel_y = 8
 	},
-/obj/structure/sign/warning{
+/obj/structure/sign/warning/directional/north{
 	desc = "A warning sign to watch for loose rocks.";
-	name = "COLLAPSE HAZARD sign";
-	pixel_y = 32
+	name = "COLLAPSE HAZARD sign"
 	},
 /obj/structure/cable,
 /turf/open/floor/catwalk_floor,
 /area/station/maintenance/department/security)
 "J" = (
-/obj/machinery/door/airlock/maintenance_hatch{
-	req_one_access_txt = "12"
-	},
+/obj/machinery/door/airlock/maintenance_hatch,
 /obj/effect/decal/cleanable/dirt,
 /obj/modular_map_connector,
+/obj/effect/mapping_helpers/airlock/unres{
+	dir = 8
+	},
+/obj/effect/mapping_helpers/airlock/access/all/engineering/maintenance,
 /turf/open/floor/catwalk_floor,
 /area/station/maintenance/department/security)
 "M" = (

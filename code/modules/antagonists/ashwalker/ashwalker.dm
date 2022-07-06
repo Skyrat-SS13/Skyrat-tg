@@ -11,12 +11,11 @@
 	prevent_roundtype_conversion = FALSE
 	antagpanel_category = "Ash Walkers"
 	suicide_cry = "I HAVE NO IDEA WHAT THIS THING DOES!!"
+	count_against_dynamic_roll_chance = FALSE
 	var/datum/team/ashwalkers/ashie_team
 	//SKYRAT EDIT: Recipes for Tribals
 	///The list of recipes that will be learned on inheriting the antag datum
 	var/static/list/antag_recipes = list(
-		/datum/crafting_recipe/skeleton_key,
-		/datum/crafting_recipe/ashnecklace,
 		/datum/crafting_recipe/bonesword,
 		/datum/crafting_recipe/ash_recipe/macahuitl,
 		/datum/crafting_recipe/boneaxe,

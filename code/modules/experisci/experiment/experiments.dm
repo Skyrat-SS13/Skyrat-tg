@@ -98,30 +98,30 @@
 	name = "Reactionless Explosives"
 	description = "Gases with high specific heat can heat up those with a low one and produce a lot of pressure. Perform research and publish papers on this field. No gas reactions are allowed."
 	gain = list(10,50,100)
-	target_amount = list(20,75,200)
+	target_amount = list(20,50,100)
 	experiment_proper = TRUE
 	sanitized_misc = FALSE
 	sanitized_reactions = TRUE
 
-/datum/experiment/ordnance/gaseous/nitrium
-	name = "Nitrium Gas Shells"
-	description = "The delivery of Nitrium gas into an area of operation might prove useful. Perform research and publish papers on this field."
-	gain = list(20,60,120)
-	target_amount = list(20,120,500)
+/datum/experiment/ordnance/gaseous/nitrous_oxide
+	name = "Nitrous Oxide Gas Shells"
+	description = "The delivery of N2O into an area of operation might prove useful. Perform research and publish papers on this field."
+	gain = list(10,40)
+	target_amount = list(200,600)
 	experiment_proper = TRUE
-	required_gas = /datum/gas/nitrium
+	required_gas = /datum/gas/nitrous_oxide
 
 /datum/experiment/ordnance/gaseous/bz
 	name = "BZ Gas Shells"
 	description = "The delivery of BZ gas into an area of operation might prove useful. Perform research and publish papers on this field."
-	gain = list(25,50)
-	target_amount = list(200,600)
+	gain = list(10,30,60)
+	target_amount = list(50,125,400)
 	experiment_proper = TRUE
 	required_gas = /datum/gas/bz
 
 /datum/experiment/ordnance/gaseous/noblium
-	name = "Noblium Gas Shells"
-	description = "The delivery of Noblium gas into an area of operation might prove useful. Perform research and publish papers on this field."
+	name = "Hypernoblium Gas Shells"
+	description = "The delivery of Hypernoblium gas into an area of operation might prove useful. Perform research and publish papers on this field."
 	gain = list(10,40,80)
 	target_amount = list(15,55,250)
 	experiment_proper = TRUE
@@ -188,7 +188,7 @@
 
 /datum/experiment/scanning/random/plants/traits
 	name = "Unique Biomatter Mutation Sample"
-	description = "We here at centcom are on the look out for rare and exotic plants with unique properties to brag about to our shareholders. We're looking for a sample with a very specific genes currently."
+	description = "We here at CentCom are on the look out for rare and exotic plants with unique properties to brag about to our shareholders. We're looking for a sample with a very specific genes currently."
 	performance_hint = "The wide varities of plants on station each carry various traits, some unique to them. Look for plants that may mutate into what we're looking for."
 	total_requirement = 3
 	possible_plant_genes = list(/datum/plant_gene/trait/squash, /datum/plant_gene/trait/cell_charge, /datum/plant_gene/trait/glow/shadow, /datum/plant_gene/trait/teleport, /datum/plant_gene/trait/brewing, /datum/plant_gene/trait/juicing, /datum/plant_gene/trait/eyes, /datum/plant_gene/trait/sticky)

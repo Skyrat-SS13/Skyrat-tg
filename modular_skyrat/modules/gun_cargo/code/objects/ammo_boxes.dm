@@ -1,3 +1,18 @@
+/obj/item/ammo_box
+	w_class = WEIGHT_CLASS_NORMAL
+
+/obj/item/ammo_box/magazine
+	w_class = WEIGHT_CLASS_SMALL
+
+/obj/item/ammo_box/a762
+	w_class = WEIGHT_CLASS_SMALL
+	
+/obj/item/ammo_box/a357
+	w_class = WEIGHT_CLASS_SMALL
+
+/obj/item/ammo_box/c38
+	w_class = WEIGHT_CLASS_SMALL
+
 /obj/item/ammo_box/c9mm/ap
 	name = "ammo box (9mm AP)"
 	ammo_type = /obj/item/ammo_casing/c9mm/ap
@@ -7,7 +22,7 @@
 	ammo_type = /obj/item/ammo_casing/c9mm/hp
 
 /obj/item/ammo_box/c9mm/fire
-	name = "ammo box (9mm Incen)"
+	name = "ammo box (9mm incendiary)"
 	ammo_type = /obj/item/ammo_casing/c9mm/fire
 
 /obj/item/ammo_box/c10mm/ap
@@ -21,7 +36,7 @@
 	max_ammo = 20
 
 /obj/item/ammo_box/c10mm/fire
-	name = "ammo box (10mm Incen)"
+	name = "ammo box (10mm incendiary)"
 	ammo_type = /obj/item/ammo_casing/c10mm/fire
 	max_ammo = 20
 
@@ -37,7 +52,7 @@
 	ammo_type = /obj/item/ammo_casing/c46x30mm/ap
 
 /obj/item/ammo_box/c46x30mm/rubber
-	name = "ammo box (4.6x30mm Rubber)"
+	name = "ammo box (4.6x30mm rubber)"
 	ammo_type = /obj/item/ammo_casing/c46x30mm/rubber
 
 /obj/item/ammo_box/c32
@@ -52,11 +67,11 @@
 	ammo_type = /obj/item/ammo_casing/c32/ap
 
 /obj/item/ammo_box/c32/rubber
-	name = "ammo box (.32 Rubber)"
+	name = "ammo box (.32 rubber)"
 	ammo_type = /obj/item/ammo_casing/c32/rubber
 
 /obj/item/ammo_box/c32/fire
-	name = "ammo box (.32 Incen)"
+	name = "ammo box (.32 incendiary)"
 	ammo_type = /obj/item/ammo_casing/c32_incendiary
 
 /obj/item/ammo_box/c34
@@ -71,11 +86,11 @@
 	ammo_type = /obj/item/ammo_casing/c34/ap
 
 /obj/item/ammo_box/c34/rubber
-	name = "ammo box (.34 Rubber)"
+	name = "ammo box (.34 rubber)"
 	ammo_type = /obj/item/ammo_casing/c34/rubber
 
 /obj/item/ammo_box/c34/fire
-	name = "ammo box (.34 Incen)"
+	name = "ammo box (.34 incendiary)"
 	ammo_type = /obj/item/ammo_casing/c34_incendiary
 
 /obj/item/ammo_box/c12mm
@@ -94,7 +109,7 @@
 	ammo_type = /obj/item/ammo_casing/c12mm/hp
 
 /obj/item/ammo_box/c12mm/fire
-	name = "ammo box (12mm Incen)"
+	name = "ammo box (12mm incendiary)"
 	ammo_type = /obj/item/ammo_casing/c12mm/fire
 
 /obj/item/storage/box/ammo_box/microfusion/bluespace
@@ -114,17 +129,3 @@
 	new /obj/item/stock_parts/cell/microfusion/bluespace(src)
 	new /obj/item/stock_parts/cell/microfusion/bluespace(src)
 
-/obj/item/ammo_box/b10mm
-	name = "ammo box (10mm Auto)"
-	ammo_type = /obj/item/ammo_casing/b10mm
-	max_ammo = 20
-
-/obj/item/ammo_box/b10mm/hp
-	name = "ammo box (10mm Auto HP)"
-	ammo_type = /obj/item/ammo_casing/b10mm/hp
-	max_ammo = 20
-
-/obj/item/ammo_box/b10mm/rubber
-	name = "ammo box (10mm Auto Rubber)"
-	ammo_type = /obj/item/ammo_casing/b10mm/rubber
-	max_ammo = 20

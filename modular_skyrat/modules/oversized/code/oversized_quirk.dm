@@ -1,6 +1,8 @@
 #define OVERSIZED_SPEED_SLOWDOWN 0.5
 #define OVERSIZED_HUNGER_MOD 1.5
 
+// Before making any changes to oversized, please see the module's readme.md file
+
 /datum/quirk/oversized
 	name = "Oversized"
 	desc = "You, for whatever reason, are FAR too tall, and will encounter some rough situations because of it."
@@ -24,12 +26,12 @@
 	human_holder.physiology.hunger_mod *= OVERSIZED_HUNGER_MOD //50% hungrier
 	var/speed_mod = human_holder.dna.species.speedmod + OVERSIZED_SPEED_SLOWDOWN
 	human_holder.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/species, multiplicative_slowdown = speed_mod)
-	var/obj/item/organ/stomach/old_stomach = human_holder.getorganslot(ORGAN_SLOT_STOMACH)
-	if(!(old_stomach.type == /obj/item/organ/stomach))
+	var/obj/item/organ/internal/stomach/old_stomach = human_holder.getorganslot(ORGAN_SLOT_STOMACH)
+	if(!(old_stomach.type == /obj/item/organ/internal/stomach))
 		return
 	old_stomach.Remove(human_holder, special = TRUE)
 	qdel(old_stomach)
-	var/obj/item/organ/stomach/oversized/new_stomach = new //YOU LOOK HUGE, THAT MUST MEAN YOU HAVE HUGE GUTS! RIP AND TEAR YOUR HUGE GUTS!
+	var/obj/item/organ/internal/stomach/oversized/new_stomach = new //YOU LOOK HUGE, THAT MUST MEAN YOU HAVE HUGE GUTS! RIP AND TEAR YOUR HUGE GUTS!
 	new_stomach.Insert(human_holder, special = TRUE)
 	to_chat(human_holder, span_warning("You feel your massive stomach rumble!"))
 

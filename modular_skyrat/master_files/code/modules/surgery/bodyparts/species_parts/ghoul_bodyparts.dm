@@ -25,7 +25,7 @@
 	icon_greyscale = 'modular_skyrat/master_files/icons/mob/species/ghoul_bodyparts.dmi'
 	limb_id = SPECIES_GHOUL
 
-//LIMBS
+// LIMBS
 
 /obj/item/bodypart/r_arm/mutant/ghoul/drop_limb(special)
 	..() // Create Meat, Remove Limb

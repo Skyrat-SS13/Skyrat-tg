@@ -1,27 +1,4 @@
-////
-//	Typing indicator icon change
-/mob/living/silicon/robot/set_typing_indicator(state, emote)
-	var/static/mutable_appearance/type_indicator = mutable_appearance('modular_skyrat/modules/indicators/icons/typing_indicator.dmi', "borg0", CHAT_INDICATOR_LAYER)
-	var/static/mutable_appearance/emote_indicator = mutable_appearance('modular_skyrat/modules/indicators/icons/emote_indicator.dmi', "borg0", CHAT_INDICATOR_LAYER)
-	typing_indicator = state
-
-	if(typing_indicator)
-
-		//Tallborg stuff
-		if((!robot_resting) && model && model.model_features && (R_TRAIT_TALL in model.model_features))
-			type_indicator.pixel_y = 16
-			emote_indicator.pixel_y = 16
-		else
-			type_indicator.pixel_y = 0
-			emote_indicator.pixel_y = 0
-		add_overlay((emote ? emote_indicator : type_indicator))
-
-	else
-		regenerate_icons()
-
-
-////
-//	Smoke particle effect for heavy-duty cyborgs
+// 	Smoke particle effect for heavy-duty cyborgs
 /datum/component/robot_smoke
 
 /datum/component/robot_smoke/RegisterWithParent()
@@ -117,9 +94,7 @@
 	pixel_y = -8
 	layer = ABOVE_MOB_LAYER
 
-
-////
-//	Modular solution for alternative tipping visuals
+// 	Modular solution for alternative tipping visuals
 /datum/component/tippable/set_tipped_status(mob/living/tipped_mob, new_status = FALSE)
 	var/mob/living/silicon/robot/robot = tipped_mob
 
@@ -129,7 +104,7 @@
 		ADD_TRAIT(tipped_mob, TRAIT_IMMOBILIZED, TIPPED_OVER)
 		if(R_TRAIT_UNIQUETIP in robot.model.model_features)
 			robot.icon_state = "[robot.model.cyborg_base_icon]-tipped"
-			robot.cut_overlays() //Cut eye-lights
+			robot.cut_overlays() // Cut eye-lights
 			return
 
 		tipped_mob.transform = turn(tipped_mob.transform, 180)
@@ -138,7 +113,7 @@
 		REMOVE_TRAIT(tipped_mob, TRAIT_IMMOBILIZED, TIPPED_OVER)
 		if(R_TRAIT_UNIQUETIP in robot.model.model_features)
 			robot.icon_state = "[robot.model.cyborg_base_icon]"
-			robot.regenerate_icons() //Return eye-lights
+			robot.regenerate_icons() // Return eye-lights
 			return
 
 		tipped_mob.transform = turn(tipped_mob.transform, -180)

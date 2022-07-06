@@ -6,8 +6,8 @@
 	default_color = "#555555"
 	genetic = TRUE
 
-/datum/sprite_accessory/horns/is_hidden(mob/living/carbon/human/H, obj/item/bodypart/HD)
-	if(H.head && ((H.head.flags_inv & HIDEHAIR) && H.try_hide_mutant_parts) || !HD)
+/datum/sprite_accessory/horns/is_hidden(mob/living/carbon/human/human, obj/item/bodypart/bodypart)
+	if(human.try_hide_mutant_parts || !bodypart)
 		return TRUE
 	return FALSE
 
@@ -60,3 +60,19 @@
 /datum/sprite_accessory/horns/broken_left
 	name = "Broken(left)"
 	icon_state = "lbroken"
+
+/datum/sprite_accessory/horns/dragon
+	name = "Dragon"
+	icon_state = "dragon"
+
+/datum/sprite_accessory/horns/lifted
+	name = "Lifted"
+	icon_state = "lifted"
+
+/datum/sprite_accessory/horns/curly
+	name = "Curly"
+	icon_state = "newcurly"
+
+/datum/sprite_accessory/horns/upwards
+	name = "Upwards"
+	icon_state = "upwardshorns"

@@ -10,7 +10,7 @@
 
 /obj/machinery/door/proc/try_manual_override(mob/user)
 	if(density && !welded && !operating)
-		to_chat(user, span_notice("You begin working the manual override mechanism..."))
+		balloon_alert(user, "opening...")
 		if(do_after(user, 10 SECONDS, target = src))
 			try_to_crowbar(null, user)
 			return TRUE
@@ -18,7 +18,7 @@
 
 /obj/machinery/door/firedoor/try_to_crowbar(obj/item/used_object, mob/user)
 	if(welded || operating)
-		to_chat(user, span_warning("[src] refuses to budge!"))
+		balloon_alert(user, "opening failed!")
 		return
 
 	if(density)

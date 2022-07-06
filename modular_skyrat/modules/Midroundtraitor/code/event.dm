@@ -1,10 +1,27 @@
 /datum/dynamic_ruleset/midround/from_ghosts/lone_infiltrator
 	name = "Lone Infiltrator"
 	antag_datum = /datum/antagonist/traitor/infiltrator
+	midround_ruleset_style = MIDROUND_RULESET_STYLE_LIGHT
 	antag_flag = ROLE_LONE_INFILTRATOR
-	restricted_roles = list(JOB_CYBORG, JOB_AI, JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_DETECTIVE, JOB_HEAD_OF_SECURITY, JOB_CAPTAIN, JOB_CORRECTIONS_OFFICER, JOB_VANGUARD_OPERATIVE, JOB_NT_REP, JOB_BLUESHIELD, JOB_ORDERLY, JOB_BOUNCER, JOB_CUSTOMS_AGENT, JOB_ENGINEERING_GUARD, JOB_SCIENCE_GUARD) //SKYRAT EDIT - Sec_haul
+	restricted_roles = list(JOB_CYBORG,
+							JOB_AI,
+							JOB_SECURITY_OFFICER,
+							JOB_WARDEN,
+							JOB_DETECTIVE,
+							JOB_HEAD_OF_SECURITY,
+							JOB_CAPTAIN,
+							JOB_CORRECTIONS_OFFICER,
+							JOB_VANGUARD_OPERATIVE,
+							JOB_NT_REP,
+							JOB_BLUESHIELD,
+							JOB_ORDERLY,
+							JOB_BOUNCER,
+							JOB_CUSTOMS_AGENT,
+							JOB_ENGINEERING_GUARD,
+							JOB_SCIENCE_GUARD,
+							)
 	required_candidates = 1
-	weight = 5 //Slightly less common than normal midround traitors.
+	weight = 4 //Slightly less common than normal midround traitors.
 	cost = 15 //But also slightly more costly.
 	requirements = list(50,40,30,20,10,10,10,10,10,10)
 	var/list/spawn_locs = list()

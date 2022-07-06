@@ -17,7 +17,7 @@
 "dF" = (
 /obj/machinery/door/airlock/titanium{
 	name = "Emergency Shuttle Airlock";
-	req_access_txt = "2"
+	req_access = list("brig")
 	},
 /turf/open/floor/mineral/plastitanium/red/brig,
 /area/shuttle/escape)
@@ -135,7 +135,7 @@
 "nE" = (
 /obj/machinery/door/airlock/command/glass{
 	name = "Emergency Shuttle Command Bedroom";
-	req_access_txt = "19"
+	req_access = list("command")
 	},
 /turf/open/floor/mineral/titanium/blue,
 /area/shuttle/escape)
@@ -146,7 +146,7 @@
 "oY" = (
 /obj/machinery/door/airlock/security/old{
 	name = "Emergency Shuttle Brig";
-	req_access_txt = "2"
+	req_access = list("brig")
 	},
 /turf/open/floor/mineral/plastitanium/red/brig,
 /area/shuttle/escape)
@@ -218,7 +218,7 @@
 "tw" = (
 /obj/machinery/door/airlock/command/glass{
 	name = "Emergency Shuttle Cockpit";
-	req_access_txt = "19"
+	req_access = list("command")
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 8
@@ -276,7 +276,7 @@
 "AQ" = (
 /obj/machinery/door/airlock/command/glass{
 	name = "Emergency Shuttle Cockpit";
-	req_access_txt = "19"
+	req_access = list("command")
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 4

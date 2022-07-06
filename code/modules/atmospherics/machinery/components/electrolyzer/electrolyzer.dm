@@ -101,10 +101,11 @@
 
 	air_update_turf(FALSE, FALSE)
 
+	var/power_to_use = (5 * (3 * working_power) * working_power) / (efficiency + working_power)
 	if(anchored)
-		return
-
-	cell.use((5 * (3 * working_power) * working_power) / (efficiency + working_power))
+		use_power(power_to_use)
+	else 
+		cell.use(power_to_use)
 
 /obj/machinery/electrolyzer/proc/call_reactions(datum/gas_mixture/env)
 	for(var/reaction in GLOB.electrolyzer_reactions)
@@ -137,20 +138,13 @@
 	update_appearance()
 	return TRUE
 
-/obj/machinery/electrolyzer/crowbar_act(mob/living/user, obj/item/tool)
-	return default_deconstruction_crowbar(tool)
-
-/obj/machinery/electrolyzer/default_unfasten_wrench(mob/user, obj/item/wrench, time)
-	. = ..()
-	if(anchored)
-		update_use_power(ACTIVE_POWER_USE)
-	else
-		update_use_power(NO_POWER_USE)
-
 /obj/machinery/electrolyzer/wrench_act(mob/living/user, obj/item/tool)
 	. = ..()
 	default_unfasten_wrench(user, tool)
 	return TOOL_ACT_TOOLTYPE_SUCCESS
+
+/obj/machinery/electrolyzer/crowbar_act(mob/living/user, obj/item/tool)
+	return default_deconstruction_crowbar(tool)
 
 /obj/machinery/electrolyzer/attackby(obj/item/I, mob/user, params)
 	add_fingerprint(user)

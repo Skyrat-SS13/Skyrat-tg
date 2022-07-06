@@ -39,7 +39,7 @@
 	ears = /obj/item/radio/headset/interdyne
 
 /datum/outfit/lavaland_syndicate/comms
-	uniform = /obj/item/clothing/under/utility/sec/old/syndicate
+	uniform = /obj/item/clothing/under/rank/security/skyrat/utility/redsec/syndicate
 	ears = /obj/item/radio/headset/interdyne/comms
 
 /datum/outfit/lavaland_syndicate/comms/space
@@ -50,6 +50,7 @@
 	uniform = /obj/item/clothing/under/rank/cargo/tech/skyrat/utility/syndicate
 	suit = null //Subtype moment
 	r_pocket = /obj/item/storage/bag/ore
+	id_trim = /datum/id_trim/syndicom/skyrat/interdyne
 	backpack_contents = list(
 		/obj/item/flashlight/seclite=1,\
 		/obj/item/knife/combat/survival=1,

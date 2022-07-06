@@ -39,10 +39,11 @@
 		/obj/item/clothing/under/rank/cargo/tech/skyrat/casualman = 3,
 		/obj/item/clothing/suit/gorka/supply = 3,
 		/obj/item/clothing/suit/toggle/jacket/supply = 3,
+		/obj/item/clothing/glasses/hud/gun_permit = 5, //from Gun_Cargo module
 	)
 
 	skyrat_contraband = list(
-		/obj/item/clothing/under/suit/white/scarface = 2,
+		/obj/item/clothing/under/suit/skyrat/scarface = 2,
 		/obj/item/clothing/under/rank/cargo/tech/skyrat/evil = 2,
 	)
 
@@ -65,7 +66,7 @@
 
 /obj/machinery/vending/wardrobe/hydro_wardrobe
 	skyrat_contraband = list(
-		/obj/item/clothing/under/suit/white/scarface = 2,
+		/obj/item/clothing/under/suit/skyrat/scarface = 2,
 		/obj/item/clothing/under/misc/gear_harness/adam = 2,
 		/obj/item/clothing/under/misc/gear_harness/eve = 2,
 	)
@@ -131,7 +132,9 @@
 
 /obj/machinery/vending/wardrobe/law_wardrobe
 	skyrat_products = list(
-		/obj/item/clothing/under/rank/civilian/lawyer/inferno = 3,
-		/obj/item/clothing/under/rank/civilian/lawyer/inferno/skirt = 3,
-		/obj/item/clothing/under/rank/civilian/lawyer/inferno/beeze = 2,
+		/obj/item/clothing/under/suit/skyrat/black_really_collared = 3,
+		/obj/item/clothing/under/suit/skyrat/black_really_collared/skirt = 3,
+		/obj/item/clothing/under/suit/skyrat/inferno = 3,
+		/obj/item/clothing/under/suit/skyrat/inferno/skirt = 3,
+		/obj/item/clothing/under/suit/skyrat/inferno/beeze = 2,
 	)

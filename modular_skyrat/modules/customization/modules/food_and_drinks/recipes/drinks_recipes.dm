@@ -162,7 +162,7 @@
 
 /datum/chemical_reaction/drink/pinkmilk
 	results = list(/datum/reagent/consumable/pinkmilk = 2)
-	required_reagents = list(/datum/reagent/consumable/berryjuice = 1, /datum/reagent/consumable/milk = 1)
+	required_reagents = list(/datum/reagent/consumable/berryjuice = 1, /datum/reagent/consumable/milk = 1, /datum/reagent/consumable/sugar = 1)
 
 /datum/chemical_reaction/drink/pinktea
 	results = list(/datum/reagent/consumable/pinktea = 5)

@@ -39,7 +39,7 @@
 
 /obj/item/organ/external/wings/functional/get_global_feature_list()
 	// SKYRAT EDIT TODO: Add support for wings_open
-	return GLOB.sprite_accessories["wings"]
+	return GLOB.sprite_accessories["wings"] // SKYRAT EDIT - Goof's port of species stuff from a missed upstream PR
 
 /obj/item/organ/external/wings/functional/Insert(mob/living/carbon/reciever, special, drop_if_replaced)
 	. = ..()
@@ -48,7 +48,7 @@
 		fly = new
 		fly.Grant(reciever)
 
-/obj/item/organ/external/wings/functional/Remove(mob/living/carbon/organ_owner, special)
+/obj/item/organ/external/wings/functional/Remove(mob/living/carbon/organ_owner, special, moving)
 	. = ..()
 
 	fly.Remove(organ_owner)
@@ -190,11 +190,11 @@
 	RegisterSignal(reciever, COMSIG_LIVING_POST_FULLY_HEAL, .proc/heal_wings)
 	RegisterSignal(reciever, COMSIG_MOVABLE_PRE_MOVE, .proc/update_float_move)
 
-/obj/item/organ/external/wings/moth/Remove(mob/living/carbon/organ_owner, special)
+/obj/item/organ/external/wings/moth/Remove(mob/living/carbon/organ_owner, special, moving)
 	. = ..()
 
 	UnregisterSignal(organ_owner, list(COMSIG_HUMAN_BURNING, COMSIG_LIVING_POST_FULLY_HEAL, COMSIG_MOVABLE_PRE_MOVE))
-	REMOVE_TRAIT(organ_owner, TRAIT_FREE_FLOAT_MOVEMENT, src)
+	REMOVE_TRAIT(organ_owner, TRAIT_FREE_FLOAT_MOVEMENT, REF(src))
 
 /obj/item/organ/external/wings/moth/can_soften_fall()
 	return !burnt
@@ -206,10 +206,10 @@
 	if(!isspaceturf(owner.loc) && !burnt)
 		var/datum/gas_mixture/current = owner.loc.return_air()
 		if(current && (current.return_pressure() >= ONE_ATMOSPHERE*0.85)) //as long as there's reasonable pressure and no gravity, flight is possible
-			ADD_TRAIT(owner, TRAIT_FREE_FLOAT_MOVEMENT, src)
+			ADD_TRAIT(owner, TRAIT_FREE_FLOAT_MOVEMENT, REF(src))
 			return
 
-	REMOVE_TRAIT(owner, TRAIT_FREE_FLOAT_MOVEMENT, src)
+	REMOVE_TRAIT(owner, TRAIT_FREE_FLOAT_MOVEMENT, REF(src))
 
 ///check if our wings can burn off ;_;
 /obj/item/organ/external/wings/moth/proc/try_burn_wings(mob/living/carbon/human/human)

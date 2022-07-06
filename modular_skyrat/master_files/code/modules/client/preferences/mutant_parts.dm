@@ -10,7 +10,7 @@
 /datum/preference/toggle/allow_emissives
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
 	savefile_identifier = PREFERENCE_CHARACTER
-	savefile_key = "allow_emissives_toggle" //no 'e' so it goes right after allow_mismatched_parts, not before
+	savefile_key = "allow_emissives_toggle" // no 'e' so it goes right after allow_mismatched_parts, not before
 	default_value = FALSE
 
 /datum/preference/toggle/allow_emissives/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
@@ -34,7 +34,7 @@
 	relevant_species_trait = EYECOLOR
 
 /datum/preference/toggle/eye_emissives/apply_to_human(mob/living/carbon/human/target, value)
-	var/obj/item/organ/eyes/eyes_organ = target.getorgan(/obj/item/organ/eyes)
+	var/obj/item/organ/internal/eyes/eyes_organ = target.getorgan(/obj/item/organ/internal/eyes)
 	target.emissive_eyes = TRUE
 	if (istype(eyes_organ))
 		eyes_organ.is_emissive = value

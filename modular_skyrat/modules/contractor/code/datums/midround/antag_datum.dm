@@ -25,7 +25,9 @@
 	equip_guy()
 
 /datum/antagonist/contractor/proc/forge_objectives()
-	objectives += new/datum/objective/contractor_total
+	var/datum/objective/contractor_total/contract_objectives = new
+	contract_objectives.owner = owner
+	objectives += contract_objectives
 
 /datum/antagonist/contractor/roundend_report()
 	var/list/report = list()
@@ -38,7 +40,7 @@
 	var/objectives_complete = TRUE
 	if(length(objectives))
 		report += printobjectives(objectives)
-		for(var/datum/objective/objective in objectives)
+		for(var/datum/objective/objective as anything in objectives)
 			if(!objective.check_completion())
 				objectives_complete = FALSE
 				break

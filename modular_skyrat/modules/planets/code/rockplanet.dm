@@ -1,4 +1,6 @@
-////////////////////////MAP GENERATOR////////////////////////////////
+/*
+*	MAP GENERATOR
+*/
 
 /datum/map_generator/cave_generator/rockplanet
 	open_turf_types = list(/turf/open/misc/asteroid/lowpressure = 1)
@@ -19,8 +21,8 @@
 		/mob/living/simple_animal/hostile/asteroid/goldgrub = 10
 		)
 	flora_spawn_list = list(
-		/obj/structure/flora/rock/jungle = 2,
-		/obj/structure/flora/junglebush = 2,
+		/obj/structure/flora/rock/pile/jungle = 2,
+		/obj/structure/flora/bush/jungle = 2,
 		/obj/structure/flora/ash/leaf_shroom = 2,
 		/obj/structure/flora/ash/cap_shroom = 2,
 		/obj/structure/flora/ash/stem_shroom = 2,

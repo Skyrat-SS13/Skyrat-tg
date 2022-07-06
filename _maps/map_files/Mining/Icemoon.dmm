@@ -201,7 +201,7 @@
 	},
 /obj/machinery/door/airlock/security/glass{
 	name = "Labor Camp Shuttle Security Airlock";
-	req_access_txt = "2"
+	req_access = list("brig")
 	},
 /turf/open/floor/iron,
 /area/mine/laborcamp)
@@ -213,7 +213,7 @@
 	id = "labor";
 	name = "Labor Camp Lockdown";
 	pixel_y = 28;
-	req_access_txt = "2"
+	req_access = list("brig")
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron,
@@ -221,7 +221,7 @@
 "ba" = (
 /obj/machinery/door/poddoor/preopen{
 	id = "labor";
-	name = "labor camp blast door"
+	name = "Labor Camp Blast Door"
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron,
@@ -487,7 +487,7 @@
 "bL" = (
 /obj/machinery/door/airlock/highsecurity{
 	name = "Labor Camp Monitoring";
-	req_access_txt = "2"
+	req_access = list("brig")
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -525,7 +525,7 @@
 "bS" = (
 /obj/machinery/door/airlock/mining/glass{
 	name = "Mining Station EVA";
-	req_access_txt = "54"
+	req_access = list("mining_station")
 	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
@@ -582,7 +582,7 @@
 	glass = 1;
 	name = "Mining External Airlock";
 	opacity = 0;
-	req_access_txt = "54"
+	req_access = list("mining_station")
 	},
 /turf/open/floor/iron,
 /area/mine/eva)
@@ -847,9 +847,7 @@
 	dir = 1
 	},
 /obj/structure/closet/crate/secure/loot,
-/obj/structure/sign/warning/electric_shock{
-	pixel_y = 32
-	},
+/obj/structure/sign/warning/electric_shock/directional/north,
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/mine/living_quarters)
@@ -1220,7 +1218,7 @@
 "dP" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Mining Station Communications";
-	req_access_txt = "48"
+	req_access = list("mining")
 	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -1242,7 +1240,7 @@
 "dS" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Mining Station Maintenance";
-	req_access_txt = "48"
+	req_access = list("mining")
 	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/layer_manifold,
@@ -2113,9 +2111,7 @@
 /obj/effect/turf_decal/stripes/corner{
 	dir = 1
 	},
-/obj/structure/sign/warning/gas_mask{
-	pixel_y = 32
-	},
+/obj/structure/sign/warning/gas_mask/directional/north,
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
 	dir = 10
@@ -2240,7 +2236,7 @@
 /obj/structure/cable,
 /obj/machinery/door/airlock/mining/glass{
 	name = "Processing Area";
-	req_access_txt = "48"
+	req_access = list("mining")
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -2705,9 +2701,7 @@
 /turf/open/floor/iron,
 /area/mine/living_quarters)
 "vs" = (
-/obj/structure/sign/warning/docking{
-	pixel_x = -32
-	},
+/obj/structure/sign/warning/docking/directional/west,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron,
 /area/mine/laborcamp)
@@ -2795,9 +2789,7 @@
 /turf/open/floor/iron,
 /area/mine/laborcamp)
 "xX" = (
-/obj/structure/sign/departments/medbay/alt{
-	pixel_x = -32
-	},
+/obj/structure/sign/departments/medbay/alt/directional/west,
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light{
 	dir = 8
@@ -3241,7 +3233,7 @@
 /obj/structure/cable,
 /obj/machinery/door/airlock/security/glass{
 	name = "Labor Camp Monitoring";
-	req_access_txt = "2"
+	req_access = list("brig")
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -3800,7 +3792,7 @@
 "UC" = (
 /obj/machinery/door/airlock/research/glass{
 	name = "Mining Station Mech Bay";
-	req_access_txt = "54"
+	req_access = list("mining_station")
 	},
 /obj/structure/cable,
 /turf/open/floor/iron,
@@ -3984,7 +3976,7 @@
 	},
 /obj/machinery/door/airlock/security/glass{
 	name = "Labor Camp Shuttle Security Airlock";
-	req_access_txt = "2"
+	req_access = list("brig")
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron,
@@ -4007,7 +3999,7 @@
 	glass = 1;
 	name = "Mining External Airlock";
 	opacity = 0;
-	req_access_txt = "54"
+	req_access = list("mining_station")
 	},
 /turf/open/floor/iron,
 /area/mine/eva)

@@ -52,13 +52,13 @@
 	AddElement(/datum/element/update_icon_updates_onmob)
 
 //to change model
-/obj/item/clothing/accessory/lewdapron/AltClick(mob/user, obj/item/I)
+/obj/item/clothing/accessory/lewdapron/AltClick(mob/user)
 	if(color_changed)
 		return
 	. = ..()
 	if(.)
 		return
-	var/choice = show_radial_menu(user,src, apron_designs, custom_check = CALLBACK(src, .proc/check_menu, user, I), radius = 36, require_near = TRUE)
+	var/choice = show_radial_menu(user, src, apron_designs, custom_check = CALLBACK(src, .proc/check_menu, user), radius = 36, require_near = TRUE)
 	if(!choice)
 		return FALSE
 	current_color = choice

@@ -152,19 +152,19 @@
 
 /* BEWARE, THE BELOW NONSENSE IS MADNESS. bones.dm looks more like what I have in mind and is sufficiently clean, don't pay attention to this messiness */
 
-/datum/wound/slash/check_grab_treatments(obj/item/I, mob/user)
-	if(istype(I, /obj/item/gun/energy/laser))
+/datum/wound/slash/check_grab_treatments(obj/item/treatment_item, mob/user)
+	if(istype(treatment_item, /obj/item/gun/energy/laser))
 		return TRUE
-	if(I.get_temperature()) // if we're using something hot but not a cautery, we need to be aggro grabbing them first, so we don't try treating someone we're eswording
+	if(treatment_item.get_temperature()) // if we're using something hot but not a cautery, we need to be aggro grabbing them first, so we don't try treating someone we're eswording
 		return TRUE
 
-/datum/wound/slash/treat(obj/item/I, mob/user)
-	if(istype(I, /obj/item/gun/energy/laser))
-		las_cauterize(I, user)
-	else if(I.tool_behaviour == TOOL_CAUTERY || I.get_temperature())
-		tool_cauterize(I, user)
-	else if(istype(I, /obj/item/stack/medical/suture))
-		suture(I, user)
+/datum/wound/slash/treat(obj/item/treatment_item, mob/user)
+	if(istype(treatment_item, /obj/item/gun/energy/laser))
+		las_cauterize(treatment_item, user)
+	else if(treatment_item.tool_behaviour == TOOL_CAUTERY || treatment_item.get_temperature())
+		tool_cauterize(treatment_item, user)
+	else if(istype(treatment_item, /obj/item/stack/medical/suture))
+		suture(treatment_item, user)
 
 /datum/wound/slash/try_handling(mob/living/carbon/human/user)
 	if(user.pulling != victim || user.zone_selected != limb.body_zone || !user.combat_mode || !isfelinid(user) || !victim.can_inject(user, TRUE))
@@ -229,11 +229,11 @@
 	victim.visible_message(span_warning("The cuts on [victim]'s [parse_zone(limb.body_zone)] scar over!"))
 
 /// If someone is using either a cautery tool or something with heat to cauterize this cut
-/datum/wound/slash/proc/tool_cauterize(obj/item/I, mob/user)
-	var/improv_penalty_mult = (I.tool_behaviour == TOOL_CAUTERY ? 1 : 1.25) // 25% longer and less effective if you don't use a real cautery
+/datum/wound/slash/proc/tool_cauterize(obj/item/used_cautery, mob/user)
+	var/improv_penalty_mult = (used_cautery.tool_behaviour == TOOL_CAUTERY ? 1 : 1.25) // 25% longer and less effective if you don't use a real cautery
 	var/self_penalty_mult = (user == victim ? 1.5 : 1) // 50% longer and less effective if you do it to yourself
 
-	user.visible_message(span_danger("[user] begins cauterizing [victim]'s [parse_zone(limb.body_zone)] with [I]..."), span_warning("You begin cauterizing [user == victim ? "your" : "[victim]'s"] [parse_zone(limb.body_zone)] with [I]..."))
+	user.visible_message(span_danger("[user] begins cauterizing [victim]'s [parse_zone(limb.body_zone)] with [used_cautery]..."), span_warning("You begin cauterizing [user == victim ? "your" : "[victim]'s"] [parse_zone(limb.body_zone)] with [used_cautery]..."))
 	if(!do_after(user, base_treat_time * self_penalty_mult * improv_penalty_mult, target=victim, extra_checks = CALLBACK(src, .proc/still_exists)))
 		return
 
@@ -245,25 +245,25 @@
 	blood_flow -= blood_cauterized
 
 	if(blood_flow > minimum_flow)
-		try_treating(I, user)
+		try_treating(used_cautery, user)
 	else if(demotes_to)
 		to_chat(user, span_green("You successfully lower the severity of [user == victim ? "your" : "[victim]'s"] cuts."))
 
 /// If someone is using a suture to close this cut
-/datum/wound/slash/proc/suture(obj/item/stack/medical/suture/I, mob/user)
+/datum/wound/slash/proc/suture(obj/item/stack/medical/suture/used_suture, mob/user)
 	var/self_penalty_mult = (user == victim ? 1.4 : 1)
-	user.visible_message(span_notice("[user] begins stitching [victim]'s [parse_zone(limb.body_zone)] with [I]..."), span_notice("You begin stitching [user == victim ? "your" : "[victim]'s"] [parse_zone(limb.body_zone)] with [I]..."))
+	user.visible_message(span_notice("[user] begins stitching [victim]'s [parse_zone(limb.body_zone)] with [used_suture]..."), span_notice("You begin stitching [user == victim ? "your" : "[victim]'s"] [parse_zone(limb.body_zone)] with [used_suture]..."))
 
 	if(!do_after(user, base_treat_time * self_penalty_mult, target=victim, extra_checks = CALLBACK(src, .proc/still_exists)))
 		return
 	user.visible_message(span_green("[user] stitches up some of the bleeding on [victim]."), span_green("You stitch up some of the bleeding on [user == victim ? "yourself" : "[victim]"]."))
-	var/blood_sutured = I.stop_bleeding / self_penalty_mult
+	var/blood_sutured = used_suture.stop_bleeding / self_penalty_mult
 	blood_flow -= blood_sutured
-	limb.heal_damage(I.heal_brute, I.heal_burn)
-	I.use(1)
+	limb.heal_damage(used_suture.heal_brute, used_suture.heal_burn)
+	used_suture.use(1)
 
 	if(blood_flow > minimum_flow)
-		try_treating(I, user)
+		try_treating(used_suture, user)
 	else if(demotes_to)
 		to_chat(user, span_green("You successfully lower the severity of [user == victim ? "your" : "[victim]'s"] cuts."))
 

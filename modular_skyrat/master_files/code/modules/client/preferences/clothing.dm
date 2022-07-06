@@ -17,7 +17,7 @@
 	return !(NO_UNDERWEAR in species.species_traits)
 
 /datum/preference/choiced/undershirt/init_possible_values()
-	return generate_values_for_underwear(GLOB.undershirt_list, list("human_chest_m", "human_r_arm", "human_l_arm", "human_r_leg", "human_l_leg", "human_r_hand", "human_l_hand"), COLOR_ALMOST_BLACK,10)
+	return generate_values_for_underwear(GLOB.undershirt_list, list("human_chest_m", "human_r_arm", "human_l_arm", "human_r_leg", "human_l_leg", "human_r_hand", "human_l_hand"), COLOR_ALMOST_BLACK, 10)
 
 /datum/preference/choiced/undershirt/compile_constant_data()
 	var/list/data = ..()

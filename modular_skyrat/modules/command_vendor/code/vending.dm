@@ -18,13 +18,12 @@
 		/obj/item/clothing/head/imperial/cap = 1,
 		/obj/item/clothing/under/rank/captain = 1,
 		/obj/item/clothing/under/rank/captain/skirt = 1,
-		/obj/item/clothing/under/rank/captain/humble = 1,
 		/obj/item/clothing/under/rank/captain/dress = 1,
-		/obj/item/clothing/under/rank/captain/kilt = 1,
-		/obj/item/clothing/under/rank/captain/imperial = 1,
+		/obj/item/clothing/under/rank/captain/skyrat/humble = 1,
+		/obj/item/clothing/under/rank/captain/skyrat/kilt = 1,
+		/obj/item/clothing/under/rank/captain/skyrat/imperial = 1,
 		/obj/item/clothing/head/caphat/parade = 1,
 		/obj/item/clothing/under/rank/captain/parade = 1,
-		/obj/item/clothing/under/rank/captain/kilt = 1,
 		/obj/item/clothing/suit/armor/vest/capcarapace/captains_formal = 1,
 		/obj/item/clothing/suit/armor/vest/capcarapace/jacket = 1,
 		/obj/item/clothing/suit/capjacket = 1,
@@ -37,16 +36,16 @@
 		// BLUESHIELD
 		/obj/item/clothing/head/beret/blueshield = 1,
 		/obj/item/clothing/head/beret/blueshield/navy = 1,
-		/obj/item/clothing/under/rank/security/blueshield = 1,
-		/obj/item/clothing/under/rank/security/blueshield/skirt = 1,
-		/obj/item/clothing/under/rank/security/blueshield/turtleneck = 1,
-		/obj/item/clothing/under/rank/security/blueshield/turtleneck/skirt = 1,
+		/obj/item/clothing/under/rank/blueshield = 1,
+		/obj/item/clothing/under/rank/blueshield/skirt = 1,
+		/obj/item/clothing/under/rank/blueshield/turtleneck = 1,
+		/obj/item/clothing/under/rank/blueshield/turtleneck/skirt = 1,
 		/obj/item/clothing/suit/armor/vest/blueshield = 1,
 		/obj/item/clothing/suit/armor/vest/blueshieldarmor = 1,
 		/obj/item/clothing/neck/mantle/bsmantle = 1,
 		/obj/item/storage/backpack/blueshield = 1,
 		/obj/item/storage/backpack/satchel/blueshield = 1,
-		/obj/item/storage/backpack/duffel/blueshield = 1,
+		/obj/item/storage/backpack/duffelbag/blueshield = 1,
 		/obj/item/clothing/shoes/laceup = 1
 		)
 	access_lists["[ACCESS_HOP]"] = list( // Best head btw
@@ -56,25 +55,26 @@
 		/obj/item/clothing/head/imperial/hop = 1,
 		/obj/item/clothing/under/rank/civilian/head_of_personnel = 1,
 		/obj/item/clothing/under/rank/civilian/head_of_personnel/skirt = 1,
-		/obj/item/clothing/under/rank/civilian/head_of_personnel/turtleneck = 1,
-		/obj/item/clothing/under/rank/civilian/head_of_personnel/turtleneck/skirt = 1,
-		/obj/item/clothing/under/rank/civilian/head_of_personnel/parade = 1,
-		/obj/item/clothing/under/rank/civilian/head_of_personnel/parade/female = 1,
-		/obj/item/clothing/under/rank/civilian/head_of_personnel/imperial = 1,
+		/obj/item/clothing/under/rank/civilian/head_of_personnel/skyrat/turtleneck = 1,
+		/obj/item/clothing/under/rank/civilian/head_of_personnel/skyrat/turtleneck/skirt = 1,
+		/obj/item/clothing/under/rank/civilian/head_of_personnel/skyrat/parade = 1,
+		/obj/item/clothing/under/rank/civilian/head_of_personnel/skyrat/parade/female = 1,
+		/obj/item/clothing/under/rank/civilian/head_of_personnel/skyrat/imperial = 1,
 		/obj/item/clothing/suit/toggle/hop_parade = 1,
 		/obj/item/clothing/neck/mantle/hopmantle = 1,
 		/obj/item/storage/backpack/head_of_personnel = 1,
 		/obj/item/storage/backpack/satchel/head_of_personnel = 1,
-		/obj/item/storage/backpack/duffel/head_of_personnel = 1,
+		/obj/item/storage/backpack/duffelbag/head_of_personnel = 1,
 		/obj/item/clothing/shoes/sneakers/brown = 1
 		)
 	access_lists["[ACCESS_CMO]"] = list(
 		/obj/item/clothing/head/beret/medical/cmo = 1,
 		/obj/item/clothing/head/beret/medical/cmo/alt = 1,
+		/obj/item/clothing/head/imperial/cmo = 1,
 		/obj/item/clothing/under/rank/medical/chief_medical_officer = 1,
 		/obj/item/clothing/under/rank/medical/chief_medical_officer/skirt = 1,
 		/obj/item/clothing/under/rank/medical/chief_medical_officer/turtleneck = 1,
-		/obj/item/clothing/under/rank/medical/chief_medical_officer/imperial = 1,
+		/obj/item/clothing/under/rank/medical/chief_medical_officer/skyrat/imperial = 1,
 		/obj/item/clothing/neck/mantle/cmomantle = 1,
 		/obj/item/clothing/shoes/sneakers/brown = 1
 		)
@@ -89,7 +89,7 @@
 		/obj/item/clothing/under/rank/rnd/research_director/turtleneck/skirt = 1,
 		/obj/item/clothing/under/rank/rnd/research_director/skyrat/jumpsuit = 1,
 		/obj/item/clothing/under/rank/rnd/research_director/skyrat/jumpsuit/skirt = 1,
-		/obj/item/clothing/under/rank/rnd/research_director/imperial = 1,
+		/obj/item/clothing/under/rank/rnd/research_director/skyrat/imperial = 1,
 		/obj/item/clothing/neck/mantle/rdmantle = 1,
 		/obj/item/clothing/suit/toggle/labcoat = 1,
 		/obj/item/clothing/shoes/sneakers/brown = 1
@@ -100,7 +100,7 @@
 		/obj/item/clothing/head/imperial/ce = 1,
 		/obj/item/clothing/under/rank/engineering/chief_engineer = 1,
 		/obj/item/clothing/under/rank/engineering/chief_engineer/skirt = 1,
-		/obj/item/clothing/under/rank/engineering/chief_engineer/imperial = 1,
+		/obj/item/clothing/under/rank/engineering/chief_engineer/skyrat/imperial = 1,
 		/obj/item/clothing/neck/mantle/cemantle = 1,
 		/obj/item/clothing/shoes/sneakers/brown = 1
 		)
@@ -113,7 +113,7 @@
 		/obj/item/clothing/under/rank/security/head_of_security/peacekeeper/sol = 1,
 		/obj/item/clothing/under/rank/security/head_of_security/alt = 1,
 		/obj/item/clothing/under/rank/security/head_of_security/alt/skirt = 1,
-		/obj/item/clothing/under/rank/security/head_of_security/imperial = 1,
+		/obj/item/clothing/under/rank/security/head_of_security/skyrat/imperial = 1,
 		/obj/item/clothing/suit/armor/hos/navyblue = 1,
 		/obj/item/clothing/under/rank/security/head_of_security/parade = 1,
 		/obj/item/clothing/suit/armor/hos/hos_formal = 1,
@@ -127,6 +127,7 @@
 		/obj/item/clothing/under/rank/cargo/qm/skirt = 1,
 		/obj/item/clothing/under/rank/cargo/qm/skyrat/gorka = 1,
 		/obj/item/clothing/under/rank/cargo/qm/skyrat/turtleneck = 1,
+		/obj/item/clothing/under/rank/cargo/qm/skyrat/turtleneck/skirt = 1,
 		/obj/item/clothing/suit/brownfurrich = 1,
 		/obj/item/clothing/under/rank/cargo/qm/skyrat/casual = 1,
 		/obj/item/clothing/suit/toggle/jacket/supply/head = 1,
@@ -146,13 +147,14 @@
 		/obj/item/clothing/suit/armor/centcom_formal/nt_consultant = 1
 		)
 
-	access_lists["[ACCESS_HEADS]"] = list(
+	access_lists["[ACCESS_COMMAND]"] = list(
 		/obj/item/clothing/head/imperial = 5,
 		/obj/item/clothing/head/imperial/grey = 5,
+		/obj/item/clothing/head/imperial/white = 2,
 		/obj/item/clothing/head/imperial/red = 5,
-		/obj/item/clothing/head/imperialhelmet = 5,
-		/obj/item/clothing/under/imperial = 5,
-		/obj/item/clothing/under/imperial/grey = 5,
-		/obj/item/clothing/under/imperial/grey/trouser = 5,
-		/obj/item/clothing/under/imperial/red = 5
+		/obj/item/clothing/head/imperial/helmet = 5,
+		/obj/item/clothing/under/rank/captain/skyrat/imperial/generic = 5,
+		/obj/item/clothing/under/rank/captain/skyrat/imperial/generic/grey = 5,
+		/obj/item/clothing/under/rank/captain/skyrat/imperial/generic/pants = 5,
+		/obj/item/clothing/under/rank/captain/skyrat/imperial/generic/red = 5
 		)

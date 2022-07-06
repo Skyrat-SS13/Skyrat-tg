@@ -35,7 +35,7 @@
 	///Is there a sprite difference between male and female?
 	var/is_dimorphic = FALSE
 	///The actual color a limb is drawn as, set by /proc/update_limb()
-	VAR_PROTECTED/draw_color
+	var/draw_color //NEVER. EVER. EDIT THIS VALUE OUTSIDE OF UPDATE_LIMB. I WILL FIND YOU. It ruins the limb icon pipeline.
 
 	/// BODY_ZONE_CHEST, BODY_ZONE_L_ARM, etc , used for def_zone
 	var/body_zone
@@ -181,6 +181,8 @@
 	if(current_splint)
 		qdel(current_splint)
 	//SKYRAT EDIT ADDITION END
+	for(var/external_organ in external_organs)
+		qdel(external_organ)
 	return ..()
 
 /obj/item/bodypart/forceMove(atom/destination) //Please. Never forcemove a limb if its's actually in use. This is only for borgs.
@@ -733,6 +735,7 @@
 	if(!IS_ORGANIC_LIMB(src))
 		dmg_overlay_type = "robotic"
 
+	recolor_external_organs()
 	return TRUE
 
 //to update the bodypart's icon when not attached to a mob
@@ -832,9 +835,9 @@
 
 	if(draw_color)
 		//SKYRAT EDIT BEGIN - Alpha values on limbs //We check if the limb is attached and if the owner has an alpha value to append
-		limb.color = owner?.dna.species ? "[draw_color][num2hex(owner.dna.species.specific_alpha, 2)]" : "[draw_color]"
+		limb.color = owner?.dna?.species && owner.dna.species.specific_alpha != 255 ? "[draw_color][num2hex(owner.dna.species.specific_alpha, 2)]" : "[draw_color]"
 		if(aux_zone)
-			aux.color = owner?.dna.species ? "[draw_color][num2hex(owner.dna.species.specific_alpha, 2)]" : "[draw_color]"
+			aux.color = owner?.dna?.species && owner.dna.species.specific_alpha != 255 ? "[draw_color][num2hex(owner.dna.species.specific_alpha, 2)]" : "[draw_color]"
 		//SKYRAT EDIT END
 
 	//EMISSIVE CODE START
@@ -854,6 +857,7 @@
 		if(!dropped && !external_organ.can_draw_on_bodypart(owner))
 			continue
 		//Some externals have multiple layers for background, foreground and between
+		/* SKYRAT EDIT START - Customization (better layer handling for external organs) - ORIGINAL:
 		for(var/external_layer in external_organ.all_layers)
 			if(external_organ.layers & external_layer)
 				external_organ.get_overlays(
@@ -861,8 +865,16 @@
 					image_dir,
 					external_organ.bitflag_to_layer(external_layer),
 					limb_gender,
-					external_organ.overrides_color ? external_organ.override_color(draw_color) : draw_color
 				)
+		*/ // ORIGINAL END
+		for(var/external_layer in external_organ.relevant_layers)
+			external_organ.get_overlays(
+				.,
+				image_dir,
+				external_layer,
+				limb_gender,
+			)
+		// SKYRAT EDIT END
 
 	// SKYRAT EDIT ADDITION BEGIN - MARKINGS CODE
 	var/override_color
@@ -880,10 +892,8 @@
 
 			var/gender_modifier = ""
 			if(body_zone == BODY_ZONE_CHEST) // Chest markings have male and female versions.
-				if(is_dimorphic)
-					gender_modifier = "_[limb_gender]"
-				else
-					gender_modifier = "_m" // Again, why we don't define if a marking can have male/female is byond me.
+				if(body_marking.gendered)
+					gender_modifier = is_dimorphic ? "_[limb_gender]" : "_m"
 
 			var/mutable_appearance/accessory_overlay
 			var/mutable_appearance/emissive
@@ -1104,11 +1114,7 @@
 		SEND_SIGNAL(src, COMSIG_BODYPART_GAUZE_DESTROYED)
 */
 
-
-///Proc to turn bodypart into another.
-/obj/item/bodypart/proc/change_bodypart(obj/item/bodypart/new_type)
-	RETURN_TYPE(/obj/item/bodypart)
-
-	var/mob/living/carbon/our_owner = owner //dropping nulls the limb
-	var/obj/item/bodypart/new_part = new new_type()
-	new_part.replace_limb(our_owner, TRUE)
+///Loops through all of the bodypart's external organs and update's their color.
+/obj/item/bodypart/proc/recolor_external_organs()
+	for(var/obj/item/organ/external/ext_organ as anything in external_organs)
+		ext_organ.inherit_color(force = TRUE)

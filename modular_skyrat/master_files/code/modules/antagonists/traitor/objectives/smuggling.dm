@@ -4,7 +4,7 @@
 		/datum/traitor_objective/smuggle = 1,
 	)
 
-///smuggle! bring a traitor item from its arrival area to the cargo shuttle, where the objective completes on selling the item
+/// smuggle! bring a traitor item from its arrival area to the cargo shuttle, where the objective completes on selling the item
 /datum/traitor_objective/smuggle
 	name = "Smuggle %CONTRABAND% from %AREA% off the station via cargo shuttle"
 	description = "Go to a designated area, pick up syndicate contraband, and get it off the station via the cargo shuttle. \
@@ -14,23 +14,23 @@
 	progression_reward = list(5 MINUTES, 9 MINUTES)
 	telecrystal_reward = list(0, 1)
 
-	///area type the objective owner must be in to recieve the contraband
+	/// area type the objective owner must be in to recieve the contraband
 	var/area/smuggle_spawn_type
-	///the contraband that must be exported on the shuttle
+	/// the contraband that must be exported on the shuttle
 	var/obj/item/contraband
-	///type of contraband to spawn
+	/// type of contraband to spawn
 	var/obj/item/contraband_type
 	/// possible objective items. Mapped by item type = penalty cost for failing
 	var/list/possible_contrabands = list(
 		/obj/item/pen/edagger/prototype = 2,
 		/obj/item/gun/syringe/syndicate/prototype = 4,
-		/obj/item/reagent_containers/glass/bottle/ritual_wine = 6, //poison kit price
+		/obj/item/reagent_containers/glass/bottle/ritual_wine = 6, // poison kit price
 	)
 
 /datum/traitor_objective/smuggle/is_duplicate(datum/traitor_objective/smuggle/objective_to_compare)
 	if(objective_to_compare.contraband_type == contraband_type)
 		return TRUE
-	//it's too similar if its from the same area
+	// it's too similar if its from the same area
 	if(objective_to_compare.smuggle_spawn_type == smuggle_spawn_type)
 		return TRUE
 	return FALSE
@@ -66,14 +66,14 @@
 					penalty = telecrystal_penalty)
 
 /datum/traitor_objective/smuggle/generate_objective(datum/mind/generating_for, list/possible_duplicates)
-	//anyone working cargo should not get almost free objectives by having direct access to the cargo shuttle
+	// anyone working cargo should not get almost free objectives by having direct access to the cargo shuttle
 	if(generating_for.assigned_role.departments_bitflags & DEPARTMENT_BITFLAG_CARGO)
 		return FALSE
 
-	//choose starting area to recieve contraband
+	// choose starting area to recieve contraband
 	var/list/possible_areas = GLOB.the_station_areas.Copy()
 	for(var/area/possible_area as anything in possible_areas)
-		//remove areas too close to the destination, too obvious for our poor shmuck, or just unfair
+		// remove areas too close to the destination, too obvious for our poor shmuck, or just unfair
 		if(istype(possible_area, /area/station/cargo) || istype(possible_area, /area/station/hallway) || istype(possible_area, /area/station/security))
 			possible_areas -= possible_area
 	for(var/datum/traitor_objective/smuggle/smuggle_objective as anything in possible_duplicates)
@@ -86,7 +86,7 @@
 	if(!length(possible_areas))
 		return FALSE
 	smuggle_spawn_type = pick(possible_areas)
-	//choose contraband type to spawn when reaching starting area
+	// choose contraband type to spawn when reaching starting area
 	contraband_type = pick(possible_contrabands)
 	telecrystal_penalty = possible_contrabands[contraband_type]
 	replace_in_name("%CONTRABAND%", initial(contraband_type.name))

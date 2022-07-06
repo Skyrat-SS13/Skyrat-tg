@@ -24,8 +24,12 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 		outfit.uniform = item_path
 	else
 		outfit.uniform = item_path
+	outfit.modified_outfit_slots |= ITEM_SLOT_ICLOTHING
 
-//////////////////////////////////////////////////////JUMPSUITS
+/*
+*	JUMPSUITS
+*/
+
 /datum/loadout_item/under/jumpsuit
 
 /datum/loadout_item/under/jumpsuit/greyscale
@@ -56,53 +60,53 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 
 /datum/loadout_item/under/jumpsuit/impcap
 	name = "Captain's Naval Jumpsuit"
-	item_path = /obj/item/clothing/under/rank/captain/imperial
+	item_path = /obj/item/clothing/under/rank/captain/skyrat/imperial
 	restricted_roles = list(JOB_CAPTAIN, JOB_NT_REP)
 
 /datum/loadout_item/under/jumpsuit/imphop
 	name = "Head of Personnel's Naval Jumpsuit"
-	item_path = /obj/item/clothing/under/rank/civilian/head_of_personnel/imperial
+	item_path = /obj/item/clothing/under/rank/civilian/head_of_personnel/skyrat/imperial
 	restricted_roles = list(JOB_HEAD_OF_PERSONNEL, JOB_NT_REP)
 
 /datum/loadout_item/under/jumpsuit/imphos
 	name = "Head of Security's Naval Uniform"
-	item_path = /obj/item/clothing/under/rank/security/head_of_security/imperial
+	item_path = /obj/item/clothing/under/rank/security/head_of_security/skyrat/imperial
 	restricted_roles = list(JOB_HEAD_OF_SECURITY)
 
 /datum/loadout_item/under/jumpsuit/impcmo
 	name = "Chief Medical Officer's Naval Uniform"
-	item_path = /obj/item/clothing/under/rank/medical/chief_medical_officer/imperial
+	item_path = /obj/item/clothing/under/rank/medical/chief_medical_officer/skyrat/imperial
 	restricted_roles = list(JOB_CHIEF_MEDICAL_OFFICER)
 
 /datum/loadout_item/under/jumpsuit/impce
 	name = "Chief Engineer's Naval Uniform"
-	item_path = /obj/item/clothing/under/rank/engineering/chief_engineer/imperial
+	item_path = /obj/item/clothing/under/rank/engineering/chief_engineer/skyrat/imperial
 	restricted_roles = list(JOB_CHIEF_ENGINEER)
 
 /datum/loadout_item/under/jumpsuit/imprd
 	name = "Research Director's Naval Uniform"
-	item_path = /obj/item/clothing/under/rank/rnd/research_director/imperial
+	item_path = /obj/item/clothing/under/rank/rnd/research_director/skyrat/imperial
 	restricted_roles = list(JOB_RESEARCH_DIRECTOR)
 
 /datum/loadout_item/under/jumpsuit/impcommand
 	name = "Light Grey Officer's Naval Jumpsuit"
-	item_path = /obj/item/clothing/under/imperial
+	item_path = /obj/item/clothing/under/rank/captain/skyrat/imperial/generic
 	restricted_roles = list(JOB_CAPTAIN, JOB_HEAD_OF_PERSONNEL, JOB_BLUESHIELD, JOB_HEAD_OF_SECURITY, JOB_RESEARCH_DIRECTOR, JOB_QUARTERMASTER, JOB_CHIEF_MEDICAL_OFFICER, JOB_CHIEF_ENGINEER, JOB_NT_REP)
 
 /datum/loadout_item/under/jumpsuit/impcom
 	name = "Grey Officer's Naval Jumpsuit"
-	item_path = /obj/item/clothing/under/imperial/grey
+	item_path = /obj/item/clothing/under/rank/captain/skyrat/imperial/generic/grey
 	restricted_roles = list(JOB_CAPTAIN, JOB_HEAD_OF_PERSONNEL, JOB_BLUESHIELD, JOB_HEAD_OF_SECURITY, JOB_RESEARCH_DIRECTOR, JOB_QUARTERMASTER, JOB_CHIEF_MEDICAL_OFFICER, JOB_CHIEF_ENGINEER, JOB_NT_REP)
 
 /datum/loadout_item/under/jumpsuit/impred
 	name = "Red Officer's Naval Jumpsuit"
-	item_path = /obj/item/clothing/under/imperial/red
+	item_path = /obj/item/clothing/under/rank/captain/skyrat/imperial/generic/red
 	restricted_roles = list(JOB_CAPTAIN, JOB_HEAD_OF_PERSONNEL, JOB_BLUESHIELD, JOB_HEAD_OF_SECURITY, JOB_RESEARCH_DIRECTOR, JOB_QUARTERMASTER, JOB_CHIEF_MEDICAL_OFFICER, JOB_CHIEF_ENGINEER)	//NT Reps would never wear red, it's unbefitting
 
 
 /datum/loadout_item/under/jumpsuit/impcomtrous
 	name = "Grey Officer's Naval Jumpsuit (Trousers)"
-	item_path = /obj/item/clothing/under/imperial/grey/trouser
+	item_path = /obj/item/clothing/under/rank/captain/skyrat/imperial/generic/pants
 	restricted_roles = list(JOB_CAPTAIN, JOB_HEAD_OF_PERSONNEL, JOB_BLUESHIELD, JOB_HEAD_OF_SECURITY, JOB_RESEARCH_DIRECTOR, JOB_QUARTERMASTER, JOB_CHIEF_MEDICAL_OFFICER, JOB_CHIEF_ENGINEER, JOB_NT_REP)
 
 /datum/loadout_item/under/jumpsuit/solwarden
@@ -118,11 +122,6 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /datum/loadout_item/under/jumpsuit/security_trousers
 	name = "Security Trousers"
 	item_path = /obj/item/clothing/under/rank/security/peacekeeper/trousers/red
-	restricted_roles = list(JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_HEAD_OF_SECURITY, JOB_SECURITY_MEDIC)
-
-/datum/loadout_item/under/jumpsuit/sectrafficop
-	name = "Sol Traffic Cop Uniform"
-	item_path = /obj/item/clothing/under/rank/security/peacekeeper/sol/traffic
 	restricted_roles = list(JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_HEAD_OF_SECURITY, JOB_SECURITY_MEDIC)
 
 /datum/loadout_item/under/jumpsuit/solofficer
@@ -201,19 +200,22 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 
 /datum/loadout_item/under/jumpsuit/utility_sec
 	name = "Security Utility Uniform"
-	item_path = /obj/item/clothing/under/utility/sec
+	item_path = /obj/item/clothing/under/rank/security/skyrat/utility
 	restricted_roles = list(JOB_SECURITY_OFFICER, JOB_DETECTIVE, JOB_WARDEN, JOB_BLUESHIELD, JOB_SECURITY_MEDIC, JOB_HEAD_OF_SECURITY, JOB_CORRECTIONS_OFFICER) //i dunno about the blueshield, they're a weird combo of sec and command, thats why they arent in the loadout pr im making
 
 /datum/loadout_item/under/jumpsuit/utility_com
 	name = "Command Utility Uniform"
-	item_path = /obj/item/clothing/under/utility/com
+	item_path = /obj/item/clothing/under/rank/captain/skyrat/utility
 	restricted_roles = list(JOB_CAPTAIN, JOB_HEAD_OF_PERSONNEL, JOB_BLUESHIELD, JOB_HEAD_OF_SECURITY, JOB_RESEARCH_DIRECTOR, JOB_QUARTERMASTER, JOB_CHIEF_MEDICAL_OFFICER, JOB_CHIEF_ENGINEER)
 
 /datum/loadout_item/under/jumpsuit/polysweater
 	name = "Polychromic Sweater"
 	item_path = /obj/item/clothing/under/misc/polysweater
 
-/////////////////////////////////////////////////////////////MISC UNDERSUITS
+/*
+*	MISC UNDERSUITS
+*/
+
 /datum/loadout_item/under/miscellaneous
 
 //christmas stuff, remove afterword
@@ -372,7 +374,7 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	item_path = /obj/item/clothing/under/misc/greyshirt
 
 /datum/loadout_item/under/miscellaneous/maidcostume
-	name = "Maid costume"
+	name = "Maid Costume"
 	item_path = /obj/item/clothing/under/costume/maid
 
 /datum/loadout_item/under/miscellaneous/croptop
@@ -383,9 +385,17 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Royal Kilt"
 	item_path = /obj/item/clothing/under/misc/royalkilt
 
-/datum/loadout_item/under/miscellaneous/qipao
+/datum/loadout_item/under/miscellaneous/qipao_black
 	name = "Qipao, Black"
 	item_path = /obj/item/clothing/under/costume/qipao
+
+/datum/loadout_item/under/miscellaneous/qipao_white
+	name = "Qipao, White"
+	item_path = /obj/item/clothing/under/costume/qipao/white
+
+/datum/loadout_item/under/miscellaneous/qipao_red
+	name = "Qipao, Red"
+	item_path = /obj/item/clothing/under/costume/qipao/red
 
 /datum/loadout_item/under/miscellaneous/cheongsam
 	name = "Cheongsam, Black"
@@ -426,6 +436,10 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /datum/loadout_item/under/miscellaneous/tactical_pants
 	name = "Tactical Pants"
 	item_path = /obj/item/clothing/under/pants/tactical
+
+/datum/loadout_item/under/miscellaneous/blastwave_uniform
+	name = "Blastwave Uniform"
+	item_path = /obj/item/clothing/under/blastwave
 
 //HALLOWEEN
 /datum/loadout_item/under/miscellaneous/pj_blood
@@ -606,7 +620,10 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	item_path = /obj/item/clothing/under/misc/gear_harness/adam
 
 
-////////////////////////////////////////////////////////////////FORMAL UNDERSUITS
+/*
+*	FORMAL UNDERSUITS
+*/
+
 /datum/loadout_item/under/formal
 
 /datum/loadout_item/under/formal/vic_dress
@@ -710,12 +727,12 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	item_path = /obj/item/clothing/under/suit/black_really/skirt
 
 /datum/loadout_item/under/formal/executive_suit_alt
-	name = "Executive Suit Alt"
-	item_path = /obj/item/clothing/under/suit/black/female/trousers
+	name = "Wide-collared Executive Suit"
+	item_path = /obj/item/clothing/under/suit/skyrat/black_really_collared
 
 /datum/loadout_item/under/formal/executive_skirt_alt
-	name = "Executive Suitskirt Alt"
-	item_path = /obj/item/clothing/under/suit/black/female/skirt
+	name = "Wide-collared Executive Suitskirt"
+	item_path = /obj/item/clothing/under/suit/skyrat/black_really_collared/skirt
 
 /datum/loadout_item/under/formal/green_suit
 	name = "Green Suit"
@@ -759,11 +776,11 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 
 /datum/loadout_item/under/formal/helltaker
 	name = "Red Shirt with White Trousers"
-	item_path = /obj/item/clothing/under/suit/helltaker
+	item_path = /obj/item/clothing/under/suit/skyrat/helltaker
 
 /datum/loadout_item/under/formal/helltaker/skirt
 	name = "Red Shirt with White Skirt"
-	item_path = /obj/item/clothing/under/suit/helltaker/skirt
+	item_path = /obj/item/clothing/under/suit/skyrat/helltaker/skirt
 
 /datum/loadout_item/under/formal/red_lawyer_skirt
 	name = "Red Lawyer Suit"
@@ -800,6 +817,10 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /datum/loadout_item/under/formal/denim_skirt
 	name = "Denim Skirt"
 	item_path = /obj/item/clothing/under/pants/denimskirt
+
+/datum/loadout_item/under/formal/littleblack
+	name = "Short Black Dress"
+	item_path = /obj/item/clothing/under/dress/littleblack
 
 /datum/loadout_item/under/formal/striped_skirt
 	name = "Striped Dress"
@@ -965,16 +986,48 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 
 /datum/loadout_item/under/formal/inferno
 	name = "Inferno Suit"
-	item_path = /obj/item/clothing/under/rank/civilian/lawyer/inferno
+	item_path = /obj/item/clothing/under/suit/skyrat/inferno
 
 /datum/loadout_item/under/formal/inferno_skirt
 	name = "Inferno Skirt"
-	item_path = /obj/item/clothing/under/rank/civilian/lawyer/inferno/skirt
+	item_path = /obj/item/clothing/under/suit/skyrat/inferno/skirt
 
 /datum/loadout_item/under/formal/designer_inferno
 	name = "Designer Inferno Suit"
-	item_path = /obj/item/clothing/under/rank/civilian/lawyer/inferno/beeze
+	item_path = /obj/item/clothing/under/suit/skyrat/inferno/beeze
 	restricted_roles = list(JOB_LAWYER)
+
+/datum/loadout_item/under/formal/pencil
+	name = "Black Pencilskirt"
+	item_path = /obj/item/clothing/under/suit/skyrat/pencil
+
+/datum/loadout_item/under/formal/pencil/black_really
+	name = "Executive Pencilskirt"
+	item_path = /obj/item/clothing/under/suit/skyrat/pencil/black_really
+
+/datum/loadout_item/under/formal/pencil/charcoal
+	name = "Charcoal Pencilskirt"
+	item_path = /obj/item/clothing/under/suit/skyrat/pencil/charcoal
+
+/datum/loadout_item/under/formal/pencil/navy
+	name = "Navy Pencilskirt"
+	item_path = /obj/item/clothing/under/suit/skyrat/pencil/navy
+
+/datum/loadout_item/under/formal/pencil/burgandy
+	name = "Burgandy Pencilskirt"
+	item_path = /obj/item/clothing/under/suit/skyrat/pencil/burgandy
+
+/datum/loadout_item/under/formal/pencil/checkered
+	name = "Checkered Pencilskirt"
+	item_path = /obj/item/clothing/under/suit/skyrat/pencil/checkered
+
+/datum/loadout_item/under/formal/pencil/tan
+	name = "Tan Pencilskirt"
+	item_path = /obj/item/clothing/under/suit/skyrat/pencil/tan
+
+/datum/loadout_item/under/formal/pencil/green
+	name = "Green Pencilskirt"
+	item_path = /obj/item/clothing/under/suit/skyrat/pencil/green
 
 /// DONATOR
 /datum/loadout_item/under/donator
@@ -982,5 +1035,5 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 
 /datum/loadout_item/under/donator/captain_black
 	name  = "Captains Black Uniform"
-	item_path = /obj/item/clothing/under/rank/captain/black
+	item_path = /obj/item/clothing/under/rank/captain/skyrat/black
 	restricted_roles = list(JOB_CAPTAIN)

@@ -29,7 +29,6 @@
 
 /obj/item/healthanalyzer/Initialize(mapload)
 	. = ..()
-
 	register_item_context()
 
 /obj/item/healthanalyzer/examine(mob/user)
@@ -47,6 +46,9 @@
 	return BRUTELOSS
 
 /obj/item/healthanalyzer/attack_self(mob/user)
+	if(!user.can_read(src) || user.is_blind())
+		return
+
 	scanmode = (scanmode + 1) % SCANMODE_COUNT
 	switch(scanmode)
 		if(SCANMODE_HEALTH)
@@ -59,6 +61,9 @@
 	if(!(item_use_power(power_use_amount, user, FALSE) & COMPONENT_POWER_SUCCESS))
 		return
 	//SKYRAT EDIT END
+	if(!user.can_read(src) || user.is_blind())
+		return
+
 	flick("[icon_state]-scan", src) //makes it so that it plays the scan animation upon scanning, including clumsy scanning
 
 	// Clumsiness/brain damage check
@@ -75,8 +80,8 @@
 		to_chat(user, "<span class='info'>[M]'s biological structure is too complex for the health analyzer.")
 		return
 
-	user.visible_message(span_notice("[user] analyzes [M]'s vitals."), \
-						span_notice("You analyze [M]'s vitals."))
+	user.visible_message(span_notice("[user] analyzes [M]'s vitals."))
+	balloon_alert(user, "analyzing vitals")
 
 	switch (scanmode)
 		if (SCANMODE_HEALTH)
@@ -87,10 +92,9 @@
 	add_fingerprint(user)
 
 /obj/item/healthanalyzer/attack_secondary(mob/living/victim, mob/living/user, params)
-	//SKYRAT EDIT ADDITION
-	if(!(item_use_power(power_use_amount, user) & COMPONENT_POWER_SUCCESS))
+	if(!user.can_read(src) || user.is_blind() || !(item_use_power(power_use_amount, user) & COMPONENT_POWER_SUCCESS)) // SKYRAT EDIT CHANGE
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
-	//SKYRAT EDIT END
+
 	chemscan(user, victim)
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
@@ -115,10 +119,6 @@
 // Used by the PDA medical scanner too
 /proc/healthscan(mob/user, mob/living/target, mode = SCANNER_VERBOSE, advanced = FALSE, tochat = TRUE)
 	if(user.incapacitated())
-		return
-
-	if(user.is_blind())
-		to_chat(user, span_warning("You realize that your scanner has no accessibility support for the blind!"))
 		return
 
 	// the final list of strings to render
@@ -210,7 +210,7 @@
 		var/mob/living/carbon/carbontarget = target
 
 		// Ear status
-		var/obj/item/organ/ears/ears = carbontarget.getorganslot(ORGAN_SLOT_EARS)
+		var/obj/item/organ/internal/ears/ears = carbontarget.getorganslot(ORGAN_SLOT_EARS)
 		if(istype(ears))
 			if(HAS_TRAIT_FROM(carbontarget, TRAIT_DEAF, GENETIC_MUTATION))
 				render_list = "<span class='alert ml-2'>Subject is genetically deaf.\n</span>"
@@ -225,7 +225,7 @@
 					render_list += "<span class='alert ml-2'>Subject is [ears.damage > ears.maxHealth ? "permanently ": "temporarily "] deaf.\n</span>"
 
 		// Eye status
-		var/obj/item/organ/eyes/eyes = carbontarget.getorganslot(ORGAN_SLOT_EYES)
+		var/obj/item/organ/internal/eyes/eyes = carbontarget.getorganslot(ORGAN_SLOT_EYES)
 		if(istype(eyes))
 			if(carbontarget.is_blind())
 				render_list += "<span class='alert ml-2'>Subject is blind.\n</span>"
@@ -252,7 +252,10 @@
 
 			if(mode == SCANNER_VERBOSE)
 				for(var/obj/item/bodypart/limb as anything in damaged)
-					dmgreport += "<tr><td><font color='#cc3333'>[capitalize(limb.plaintext_zone)]:</font></td>"
+					if(limb.bodytype & BODYTYPE_ROBOTIC)
+						dmgreport += "<tr><td><font color='#cc3333'>[capitalize(limb.name)]:</font></td>"
+					else
+						dmgreport += "<tr><td><font color='#cc3333'>[capitalize(limb.plaintext_zone)]:</font></td>"
 					dmgreport += "<td><font color='#cc3333'>[(limb.brute_dam > 0) ? "[CEILING(limb.brute_dam,1)]" : "0"]</font></td>"
 					dmgreport += "<td><font color='#ff9933'>[(limb.burn_dam > 0) ? "[CEILING(limb.burn_dam,1)]" : "0"]</font></td></tr>"
 			dmgreport += "</font></table>"
@@ -379,7 +382,7 @@
 	if(iscarbon(target))
 		var/mob/living/carbon/carbontarget = target
 		var/cyberimp_detect
-		for(var/obj/item/organ/cyberimp/CI in carbontarget.internal_organs)
+		for(var/obj/item/organ/internal/cyberimp/CI in carbontarget.internal_organs)
 			if(CI.status == ORGAN_ROBOTIC && !CI.syndicate_implant)
 				cyberimp_detect += "[!cyberimp_detect ? "[CI.get_examine_string(user)]" : ", [CI.get_examine_string(user)]"]"
 		if(cyberimp_detect)
@@ -393,16 +396,12 @@
 	// SKYRAT EDIT END
 
 	if(tochat)
-		to_chat(user, jointext(render_list, ""), trailing_newline = FALSE, type = MESSAGE_TYPE_INFO)
+		to_chat(user, examine_block(jointext(render_list, "")), trailing_newline = FALSE, type = MESSAGE_TYPE_INFO)
 	else
 		return(jointext(render_list, ""))
 
 /proc/chemscan(mob/living/user, mob/living/target)
 	if(user.incapacitated())
-		return
-
-	if(user.is_blind())
-		to_chat(user, span_warning("You realize that your scanner has no accessibility support for the blind!"))
 		return
 
 	if(istype(target) && target.reagents)
@@ -420,7 +419,7 @@
 			render_list += "<span class='notice ml-1'>Subject contains no reagents in their blood.</span>\n"
 
 		// Stomach reagents
-		var/obj/item/organ/stomach/belly = target.getorganslot(ORGAN_SLOT_STOMACH)
+		var/obj/item/organ/internal/stomach/belly = target.getorganslot(ORGAN_SLOT_STOMACH)
 		if(belly)
 			if(belly.reagents.reagent_list.len)
 				render_list += "<span class='notice ml-1'>Subject contains the following reagents in their stomach:</span>\n"
@@ -456,12 +455,12 @@
 				render_list += "<span class='alert ml-2'>[allergies]</span>\n"
 
 		// we handled the last <br> so we don't need handholding
-		to_chat(user, examine_block(jointext(render_list, "")), trailing_newline = FALSE, type = MESSAGE_TYPE_INFO) //SKYRAT EDIT CHANGE
+		to_chat(user, examine_block(jointext(render_list, "")), trailing_newline = FALSE, type = MESSAGE_TYPE_INFO)
 
 /obj/item/healthanalyzer/AltClick(mob/user)
 	..()
 
-	if(!user.canUseTopic(src, BE_CLOSE))
+	if(!user.canUseTopic(src, BE_CLOSE) || !user.can_read(src) || user.is_blind())
 		return
 
 	mode = !mode
@@ -477,10 +476,6 @@
 /// Displays wounds with extended information on their status vs medscanners
 /proc/woundscan(mob/user, mob/living/carbon/patient, obj/item/healthanalyzer/wound/scanner)
 	if(!istype(patient) || user.incapacitated())
-		return
-
-	if(user.is_blind())
-		to_chat(user, span_warning("You realize that your scanner has no accessibility support for the blind!"))
 		return
 
 	var/render_list = ""
@@ -500,7 +495,7 @@
 		else
 			to_chat(user, "<span class='notice ml-1'>No wounds detected in subject.</span>")
 	else
-		to_chat(user, examine_block(jointext(render_list, "")), type = MESSAGE_TYPE_INFO) //SKYRAT EDIT CHANGE
+		to_chat(user, examine_block(jointext(render_list, "")), type = MESSAGE_TYPE_INFO)
 
 /obj/item/healthanalyzer/wound
 	name = "first aid analyzer"
@@ -529,6 +524,9 @@
 			L.dropItemToGround(src)
 
 /obj/item/healthanalyzer/wound/attack(mob/living/carbon/patient, mob/living/carbon/human/user)
+	if(!user.can_read(src) || user.is_blind())
+		return
+
 	add_fingerprint(user)
 	user.visible_message(span_notice("[user] scans [patient] for serious injuries."), span_notice("You scan [patient] for serious injuries."))
 

@@ -213,7 +213,7 @@
 	if(plasma_parts.len)
 		var/obj/item/bodypart/burn_limb = pick(plasma_parts) //using the above-mentioned list to get a choice of limbs
 		burn_human.emote("scream")
-		ADD_TRAIT(burn_limb, TRAIT_PLASMABURNT, src)
+		ADD_TRAIT(burn_limb, TRAIT_PLASMABURNT, name)
 		burn_human.update_body_parts()
 		burn_human.emote("scream")
 		burn_human.visible_message(span_warning("[burn_human]'s [burn_limb.name] melts down to the bone!"), \
@@ -467,19 +467,6 @@
 	desc = "This wand uses healing magics to heal and revive. The years of the cold have weakened the magic inside the wand."
 	max_charges = 5
 
-//mobs//--
-
-//ice spiders moved to giant_spiders.dm
-
-//objs//--
-
-/obj/structure/flora/rock/icy
-	name = "icy rock"
-	color = rgb(204,233,235)
-
-/obj/structure/flora/rock/pile/icy
-	name = "icey rocks"
-	color = rgb(204,233,235)
 
 //decals//--
 /obj/effect/turf_decal/snowdin_station_sign

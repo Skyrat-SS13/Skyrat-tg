@@ -277,7 +277,7 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 
 /datum/loadout_item/suit/duster
 	name = "Colorable Duster"
-	item_path = /obj/item/clothing/suit/duster/colorable
+	item_path = /obj/item/clothing/suit/duster
 
 /datum/loadout_item/suit/peacoat
 	name = "Colorable Peacoat"
@@ -365,7 +365,7 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 
 /datum/loadout_item/suit/urban
 	name = "Urban Coat"
-	item_path = /obj/item/clothing/suit/urban/polychromic
+	item_path = /obj/item/clothing/suit/urban
 
 /datum/loadout_item/suit/maxson
 	name = "Fancy Brown Coat"
@@ -377,7 +377,7 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 
 /datum/loadout_item/suit/dutchjacket
 	name = "Dutch Jacket"
-	item_path = /obj/item/clothing/suit/dutchjacketsr
+	item_path = /obj/item/clothing/suit/dutch
 
 /datum/loadout_item/suit/caretaker
 	name = "Caretaker Jacket"
@@ -391,9 +391,9 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	name = "Bomber Jacket w/ Zipper"
 	item_path = /obj/item/clothing/suit/toggle/jacket
 
-/datum/loadout_item/suit/polyjacketleather
-	name = "Colorable Leather Jacket"
-	item_path = /obj/item/clothing/suit/jacket/leather/polychromic
+/datum/loadout_item/suit/colourable_leather_jacket
+	name = "Colourable Leather Jacket"
+	item_path = /obj/item/clothing/suit/jacket/leather/colourable
 
 /datum/loadout_item/suit/woolcoat
 	name = "Leather Overcoat"
@@ -424,6 +424,10 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 /datum/loadout_item/suit/cardigan
 	name = "Cardigan"
 	item_path = /obj/item/clothing/suit/toggle/jacket/cardigan
+
+/datum/loadout_item/suit/blastwave_suit
+	name = "Blastwave Trenchcoat"
+	item_path = /obj/item/clothing/suit/blastwave
 
 /*
 *	HOODIES
@@ -567,7 +571,7 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 
 /datum/loadout_item/suit/brit
 	name = "High Vis Armored Vest"
-	item_path = /obj/item/clothing/suit/toggle/brit/sec
+	item_path = /obj/item/clothing/suit/armor/vest/peacekeeper/brit
 	restricted_roles = list(JOB_HEAD_OF_SECURITY, JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_DETECTIVE, JOB_SECURITY_MEDIC, JOB_CORRECTIONS_OFFICER)
 
 /datum/loadout_item/suit/british_jacket

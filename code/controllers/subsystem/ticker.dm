@@ -160,6 +160,8 @@ SUBSYSTEM_DEF(ticker)
 				discord_alerted = TRUE
 				send2chat("<@&[CONFIG_GET(string/game_alert_role_id)]> New round starting on [SSmapping.config.map_name], [CONFIG_GET(string/servername)]! \nIf you wish to be pinged for game related stuff, go to <#[CONFIG_GET(string/role_assign_channel_id)]> and assign yourself the roles.", CONFIG_GET(string/chat_announce_new_game)) // Skyrat EDIT -- role pingcurrent_state = GAME_STATE_PREGAME
 			current_state = GAME_STATE_PREGAME
+			SStitle.change_title_screen() //SKYRAT EDIT ADDITION - Title screen
+			addtimer(CALLBACK(SStitle, /datum/controller/subsystem/title/.proc/change_title_screen), 1 SECONDS) //SKYRAT EDIT ADDITION - Title screen
 			//Everyone who wants to be an observer is now spawned
 			SEND_SIGNAL(src, COMSIG_TICKER_ENTER_PREGAME)
 			fire()
@@ -351,8 +353,12 @@ SUBSYSTEM_DEF(ticker)
 			GLOB.joined_player_list += player.ckey
 			var/atom/destination = player.mind.assigned_role.get_roundstart_spawn_point()
 			if(!destination) // Failed to fetch a proper roundstart location, won't be going anywhere.
+				player.show_title_screen() //SKYRAT EDIT CHANGE
 				continue
 			player.create_character(destination)
+		else
+			player.show_title_screen() //SKYRAT EDIT ADDITION
+
 
 		CHECK_TICK
 
@@ -617,7 +623,7 @@ SUBSYSTEM_DEF(ticker)
 		if(GANG_DESTROYED)
 			news_message = "The crew of [decoded_station_name] would like to thank the Spinward Stellar Coalition Police Department for quickly resolving a minor terror threat to the station."
 		if(SUPERMATTER_CASCADE)
-			news_message = "Recovery of the surviving crew of [decoded_station_name] is underway following a major supermatter cascade."
+			news_message = "Officials are advising nearby colonies about a newly declared exclusion zone in the sector surrounding [decoded_station_name]."
 
 	//SKYRAT EDIT - START
 	if(SSblackbox.first_death)

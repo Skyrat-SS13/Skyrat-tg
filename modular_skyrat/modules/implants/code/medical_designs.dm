@@ -5,9 +5,9 @@
 	build_type = MECHFAB
 	materials = list (/datum/material/iron = 3500, /datum/material/glass = 1500, /datum/material/silver = 1500)
 	construction_time = 200
-	build_path = /obj/item/organ/cyberimp/arm/armblade
+	build_path = /obj/item/organ/internal/cyberimp/arm/armblade
 	category = list("Misc", "Medical Designs")
-	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
+	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 
 /datum/design/cyberimp_hacker
 	name = "Hacking Hand Implant"
@@ -16,9 +16,9 @@
 	build_type = MECHFAB
 	materials = list (/datum/material/iron = 3500, /datum/material/glass = 1500, /datum/material/silver = 1500)
 	construction_time = 200
-	build_path = /obj/item/organ/cyberimp/arm/hacker
+	build_path = /obj/item/organ/internal/cyberimp/arm/hacker
 	category = list("Misc", "Medical Designs")
-	departmental_flags = DEPARTMENTAL_FLAG_ENGINEERING
+	departmental_flags = DEPARTMENT_BITFLAG_ENGINEERING
 
 /datum/design/cyberimp_flash
 	name = "Photon Projector Implant"
@@ -27,9 +27,9 @@
 	build_type = MECHFAB
 	materials = list (/datum/material/iron = 3500, /datum/material/glass = 1500, /datum/material/silver = 1500)
 	construction_time = 200
-	build_path = /obj/item/organ/cyberimp/arm/flash
+	build_path = /obj/item/organ/internal/cyberimp/arm/flash
 	category = list("Misc", "Medical Designs")
-	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
+	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 
 /datum/design/cyberimp_botany
 	name = "Botany Arm Implant"
@@ -38,9 +38,9 @@
 	build_type = MECHFAB | PROTOLATHE
 	materials = list (/datum/material/iron = 3500, /datum/material/glass = 1500, /datum/material/silver = 1500, /datum/material/plastic = 2000)
 	construction_time = 200
-	build_path = /obj/item/organ/cyberimp/arm/botany
+	build_path = /obj/item/organ/internal/cyberimp/arm/botany
 	category = list("Misc", "Medical Designs")
-	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL | DEPARTMENTAL_FLAG_SERVICE
+	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL | DEPARTMENT_BITFLAG_SERVICE
 
 /datum/design/cyberimp_nv
 	name = "Night Vision Eyes"
@@ -49,9 +49,9 @@
 	build_type = MECHFAB | PROTOLATHE
 	construction_time = 60
 	materials = list(/datum/material/iron = 600, /datum/material/glass = 600, /datum/material/silver = 600, /datum/material/gold = 600, /datum/material/uranium = 1000,)
-	build_path = /obj/item/organ/eyes/night_vision/cyber
+	build_path = /obj/item/organ/internal/eyes/night_vision/cyber
 	category = list("Misc", "Medical Designs")
-	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
+	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/cyberimp_antisleep
 	name = "CNS Jumpstarter Implant"
@@ -60,9 +60,9 @@
 	build_type = MECHFAB | PROTOLATHE
 	construction_time = 60
 	materials = list(/datum/material/iron = 600, /datum/material/glass = 600, /datum/material/silver = 1000, /datum/material/gold = 500)
-	build_path = /obj/item/organ/cyberimp/brain/anti_sleep
+	build_path = /obj/item/organ/internal/cyberimp/brain/anti_sleep
 	category = list("Misc", "Medical Designs")
-	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
+	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/cyberimp_scanner
 	name = "Internal Medical Analyzer"
@@ -71,9 +71,9 @@
 	build_type = MECHFAB | PROTOLATHE
 	construction_time = 40
 	materials = list(/datum/material/iron = 5000, /datum/material/glass = 2500, /datum/material/silver = 2000, /datum/material/gold = 1500)
-	build_path = /obj/item/organ/cyberimp/chest/scanner
+	build_path = /obj/item/organ/internal/cyberimp/chest/scanner
 	category = list("Misc", "Medical Designs")
-	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
+	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/cyberimp_janitor
 	name = "Janitor Arm Implant"
@@ -82,9 +82,9 @@
 	build_type = PROTOLATHE | MECHFAB
 	materials = list (/datum/material/iron = 3500, /datum/material/glass = 1500, /datum/material/silver = 1500)
 	construction_time = 200
-	build_path = /obj/item/organ/cyberimp/arm/janitor
+	build_path = /obj/item/organ/internal/cyberimp/arm/janitor
 	category = list("Misc", "Medical Designs")
-	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL | DEPARTMENTAL_FLAG_SERVICE
+	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL | DEPARTMENT_BITFLAG_SERVICE
 
 /datum/design/cyberimp_lighter
 	name = "Lighter Arm Implant"
@@ -93,6 +93,6 @@
 	build_type = PROTOLATHE | MECHFAB
 	materials = list (/datum/material/iron = 500, /datum/material/glass = 500, /datum/material/silver = 500)
 	construction_time = 100
-	build_path = /obj/item/organ/cyberimp/arm/lighter
+	build_path = /obj/item/organ/internal/cyberimp/arm/lighter
 	category = list("Misc", "Medical Designs")
-	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL | DEPARTMENTAL_FLAG_SERVICE
+	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL | DEPARTMENT_BITFLAG_SERVICE

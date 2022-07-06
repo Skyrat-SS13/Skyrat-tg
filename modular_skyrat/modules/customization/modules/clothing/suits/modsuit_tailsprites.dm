@@ -1,5 +1,7 @@
-// Here be the hexadecimal color lists for the MODsuit tail sprites.
-// The list gets passed on to var/list/special_colour_list in species.dm, turned to RGB values, and overlayed onto the uncolored tailsprite in tails_modsuit.dmi
+/*
+*	Here be the hexadecimal color lists for the MODsuit tail sprites.
+*	The list gets passed on to var/list/special_colour_list in species.dm, turned to RGB values, and overlayed onto the uncolored tailsprite in tails_modsuit.dmi
+*/
 
 /datum/mod_theme
 	/// Tail colors for the tail overlay of the modsuit

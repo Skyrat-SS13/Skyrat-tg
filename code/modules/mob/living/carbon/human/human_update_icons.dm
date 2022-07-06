@@ -153,20 +153,23 @@ There are several things that need to be remembered:
 
 		var/mutable_appearance/uniform_overlay
 
+		//This is how non-humanoid clothing works. You check if the mob has the right bodyflag, and the clothing has the corresponding clothing flag.
+		//handled_by_bodytype is used to track whether or not we successfully used an alternate sprite. It's set to TRUE to ease up on copy-paste.
+		//icon_file MUST be set to null by default, or it causes issues.
+		//handled_by_bodytype MUST be set to FALSE under the if(!icon_exists()) statement, or everything breaks.
+		//"override_file = handled_by_bodytype ? icon_file : null" MUST be added to the arguments of build_worn_icon()
+		//Friendly reminder that icon_exists(file, state, scream = TRUE) is your friend when debugging this code.
+		var/handled_by_bodytype = TRUE
 		var/icon_file
 		var/woman
-		var/mutant_override = FALSE // SKYRAT EDIT ADDITION
 		if(!uniform_overlay)
 			//BEGIN SPECIES HANDLING
 			if((dna?.species.bodytype & BODYTYPE_DIGITIGRADE) && (uniform.supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION))
 				icon_file = uniform.worn_icon_digi || DIGITIGRADE_UNIFORM_FILE // SKYRAT EDIT CHANGE
-				mutant_override = TRUE
 
 			// SKYRAT EDIT ADDITION
 			else if(dna.species.bodytype & BODYTYPE_CUSTOM)
 				icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_UNIFORM, w_uniform)
-				if(icon_file)
-					mutant_override = TRUE
 			// SKYRAT EDIT END
 
 			//Female sprites have lower priority than digitigrade sprites
@@ -175,6 +178,8 @@ There are several things that need to be remembered:
 
 			if(!icon_exists(icon_file, RESOLVE_ICON_STATE(uniform)))
 				icon_file = DEFAULT_UNIFORM_FILE
+				handled_by_bodytype = FALSE
+
 			//END SPECIES HANDLING
 			uniform_overlay = uniform.build_worn_icon(
 				default_layer = UNIFORM_LAYER,
@@ -182,10 +187,10 @@ There are several things that need to be remembered:
 				isinhands = FALSE,
 				female_uniform = woman ? uniform.female_sprite_flags : null,
 				override_state = target_overlay,
-				override_file = mutant_override ? icon_file : null, // SKYRAT EDIT CHANGE
+				override_file = handled_by_bodytype ? icon_file : null,
 			)
 
-		if(!mutant_override && (OFFSET_UNIFORM in dna.species.offset_features)) // SKYRAT EDIT CHANGE
+		if(!handled_by_bodytype && (OFFSET_UNIFORM in dna.species.offset_features)) // SKYRAT EDIT CHANGE
 			uniform_overlay?.pixel_x += dna.species.offset_features[OFFSET_UNIFORM][1]
 			uniform_overlay?.pixel_y += dna.species.offset_features[OFFSET_UNIFORM][2]
 		overlays_standing[UNIFORM_LAYER] = uniform_overlay
@@ -470,7 +475,8 @@ There are several things that need to be remembered:
 				mutant_override = TRUE
 		if(!icon_file && (dna.species.bodytype & BODYTYPE_SNOUTED) && (worn_item.supports_variations_flags & CLOTHING_SNOUTED_VARIATION))
 			icon_file = worn_item.worn_icon_muzzled || SNOUTED_HEAD_FILE
-			mutant_override = TRUE
+			if(icon_file && icon_exists(icon_file, RESOLVE_ICON_STATE(worn_item)))
+				mutant_override = TRUE
 		// SKYRAT EDIT END
 
 		if(!(icon_exists(icon_file, RESOLVE_ICON_STATE(worn_item))))
@@ -611,7 +617,8 @@ There are several things that need to be remembered:
 				mutant_override = TRUE
 		if(!icon_file && (dna.species.bodytype & BODYTYPE_SNOUTED) && (worn_item.supports_variations_flags & CLOTHING_SNOUTED_VARIATION))
 			icon_file = worn_item.worn_icon_muzzled || SNOUTED_MASK_FILE
-			mutant_override = TRUE
+			if(icon_file && icon_exists(icon_file, RESOLVE_ICON_STATE(worn_item)))
+				mutant_override = TRUE
 		// SKYRAT EDIT END
 
 		if(!(ITEM_SLOT_MASK in check_obscured_slots()))
@@ -768,7 +775,7 @@ There are several things that need to be remembered:
 
 /mob/living/carbon/human/proc/update_hud_s_store(obj/item/worn_item)
 	worn_item.screen_loc = ui_sstore1
-	if((client && hud_used) && (hud_used.inventory_shown && hud_used.hud_shown))
+	if(client && hud_used?.hud_shown)
 		client.screen += worn_item
 	update_observer_view(worn_item,TRUE)
 
@@ -946,7 +953,7 @@ generate/load female uniform sprites matching all previously decided variables
 
 		// eyes
 		if(!(NOEYESPRITES in dna.species.species_traits))
-			var/obj/item/organ/eyes/parent_eyes = getorganslot(ORGAN_SLOT_EYES)
+			var/obj/item/organ/internal/eyes/parent_eyes = getorganslot(ORGAN_SLOT_EYES)
 			if(parent_eyes)
 				add_overlay(parent_eyes.generate_body_overlay(src))
 			else

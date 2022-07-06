@@ -1,5 +1,5 @@
 /obj/item
-	///How much power would this item use?
+	/// How much power would this item use?
 	var/power_use_amount = POWER_CELL_USE_NORMAL
 
 

@@ -24,7 +24,7 @@ GLOBAL_VAR_INIT(successful_blood_chem, 0)
 	return FALSE
 
 //so if a person is debrained, the borer is removed
-/obj/item/organ/brain/Remove(mob/living/carbon/target, special = 0, no_id_transfer = FALSE)
+/obj/item/organ/internal/brain/Remove(mob/living/carbon/target, special = 0, no_id_transfer = FALSE)
 	. = ..()
 	var/mob/living/simple_animal/cortical_borer/cb_inside = target.has_borer()
 	if(cb_inside)

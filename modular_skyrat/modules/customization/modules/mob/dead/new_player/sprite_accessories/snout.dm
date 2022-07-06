@@ -17,6 +17,7 @@
 	mutantpart_key = "snout"
 	mutantpart_info = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_COLOR_LIST = list("#FFFFFF", "#FFFFFF", "#FFFFFF"))
 	external_bodytypes = NONE // We don't actually want this to have BODYTYPE_SNOUTED by default, since some of them don't apply that.
+	color_source = ORGAN_COLOR_OVERRIDE
 
 /obj/item/organ/external/snout/Insert(mob/living/carbon/reciever, special, drop_if_replaced)
 	if(sprite_accessory_flags & SPRITE_ACCESSORY_USE_MUZZLED_SPRITE)
@@ -24,6 +25,11 @@
 
 	return ..()
 
+/obj/item/organ/external/snout/override_color(rgb_value)
+	if(mutantpart_key)
+		return mutantpart_info[MUTANT_INDEX_COLOR_LIST][1]
+
+	return rgb_value
 
 /datum/sprite_accessory/snouts/none
 	name = "None"
@@ -56,27 +62,27 @@
 /datum/sprite_accessory/snouts/mammal/bigbeak
 	name = "Big Beak"
 	icon_state = "bigbeak"
-	
+
 /datum/sprite_accessory/snouts/mammal/bigbeakshort
 	name = "Big Beak Short"
 	icon_state = "bigbeakshort"
-	
+
 /datum/sprite_accessory/snouts/mammal/slimbeak
 	name = "Slim Beak"
 	icon_state = "slimbeak"
-	
+
 /datum/sprite_accessory/snouts/mammal/slimbeakshort
 	name = "Slim Beak Short"
 	icon_state = "slimbeakshort"
-	
+
 /datum/sprite_accessory/snouts/mammal/slimbeakalt
 	name = "Slim Beak Alt"
 	icon_state = "slimbeakalt"
-	
+
 /datum/sprite_accessory/snouts/mammal/hookbeak
 	name = "Hook Beak"
 	icon_state = "hookbeak"
-	
+
 /datum/sprite_accessory/snouts/mammal/hookbeakbig
 	name = "Hook Beak Big"
 	icon_state = "hookbeakbig"

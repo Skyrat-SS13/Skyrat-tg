@@ -1,5 +1,5 @@
 /obj/item/suppressor/nanotrasen
-	name = "NT-S Suppressor"
+	name = "NT-S suppressor"
 	desc = "A Nanotrasen brand knockoff suppressor, you can almost smell abestos."
 	icon = 'icons/obj/guns/ballistic.dmi'
 	icon_state = "suppressor"

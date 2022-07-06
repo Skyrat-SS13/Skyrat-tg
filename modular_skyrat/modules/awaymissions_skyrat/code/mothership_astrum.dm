@@ -1,4 +1,9 @@
-///// AREAS, None of these should need power or lighting. I'd sooner die than hand-light this entire map
+/*
+*	AREAS
+*	None of these should need power or lighting
+*	I'd sooner die than hand-light this entire map
+*/
+
 /area/awaymission/mothership_astrum/halls
 	name = "Mothership Astrum Hallways"
 	icon_state = "away1"
@@ -84,8 +89,14 @@
 /obj/item/paper/fluff/awaymissions/astrum5/AltClick()
 	return //no folding these
 
-//Simplemobs
-//MELEE
+/*
+*	SIMPLEMOBS
+*/
+
+/*
+*	MELEE
+*/
+
 /mob/living/simple_animal/hostile/abductor
 	name = "Abductor Scientist"
 	desc = "From the depths of space."
@@ -142,7 +153,10 @@
 	health = 160
 	loot = list(/obj/effect/gibspawner/generic, /obj/effect/spawner/random/astrum/agentloot)
 
-//RANGED
+/*
+*	RANGED
+*/
+
 /mob/living/simple_animal/hostile/abductor/ranged
 	name = "Abductor Scientist"
 	ranged = 1
@@ -164,7 +178,10 @@
 	health = 140
 	loot = list(/obj/effect/gibspawner/generic, /obj/effect/spawner/random/astrum/agentloot)
 
-//GHOSTROLES
+/*
+*	GHOST ROLES
+*/
+
 /obj/effect/mob_spawn/ghost_role/human/lobotomite
 	name = "lobotomite containment tube"
 	prompt_name = "a lobotomite"
@@ -189,8 +206,9 @@
 	mask = /obj/item/clothing/mask/breath/medical
 	back = /obj/item/tank/internals/anesthetic
 
-//LOOT
-
+/*
+*	LOOT
+*/
 
 /obj/effect/spawner/random/astrum
 	name = "astrum low"
@@ -209,7 +227,7 @@
 	loot = list(/obj/item/storage/medkit/expeditionary = 20,
 				/obj/item/shield/riot/tele = 12,
 				/obj/item/dnainjector/shock = 10,
-				/obj/item/book/granter/spell/summonitem = 20,
+				/obj/item/book/granter/action/spell/summonitem = 20,
 				/obj/item/storage/backpack/holding = 12,
 				/obj/item/dnainjector/thermal = 5,
 				/obj/item/melee/baton/telescopic = 12)
@@ -232,12 +250,12 @@
 
 /obj/effect/spawner/random/astrum/agentloot
 	name = "abductor agent loot"
-	loot = list(/obj/item/organ/heart/cybernetic/tier3 = 10,
+	loot = list(/obj/item/organ/internal/heart/cybernetic/tier3 = 10,
 				/obj/item/clothing/suit/armor/abductor/astrum = 10,
 				/obj/item/clothing/head/helmet/astrum = 10,
-				/obj/item/organ/cyberimp/arm/armblade = 5,
+				/obj/item/organ/internal/cyberimp/arm/armblade = 5,
 				/obj/effect/gibspawner/generic = 10,
-				/obj/item/organ/eyes/night_vision/alien = 5
+				/obj/item/organ/internal/eyes/night_vision/alien = 5
 				)
 
 /obj/item/gun/energy/alien/zeta
@@ -288,12 +306,14 @@
 	desc = "An exceptionally robust helmet. For alien standards, that is."
 	icon_state = "alienhelmet"
 	inhand_icon_state = "alienhelmet"
-	blockTracking = TRUE
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT
 	armor = list(MELEE = 40, BULLET = 30, LASER = 30,ENERGY = 40, BOMB = 50, BIO = 90, FIRE = 100, ACID = 100, WOUND = 15)
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 
-//Boss
+/*
+*	BOSS
+*/
+
 /mob/living/simple_animal/hostile/megafauna/hierophant/astrum
 	name = "Abductor Captain"
 	desc = "The one you've come here for, finish this."

@@ -1,3 +1,7 @@
+/obj/item/storage/backpack
+	species_clothing_color_coords = list(list(BACK_COLORPIXEL_X_1, BACK_COLORPIXEL_Y_1))
+	greyscale_config_worn_teshari_fallback = /datum/greyscale_config/teshari/backpack
+
 /obj/item/clothing/glasses
 	species_clothing_color_coords = list(list(GLASSES_COLORPIXEL_X_1, GLASSES_COLORPIXEL_Y_1), list(GLASSES_COLORPIXEL_X_2, GLASSES_COLORPIXEL_Y_2))
 	greyscale_config_worn_teshari_fallback = /datum/greyscale_config/teshari/glasses
@@ -34,7 +38,7 @@
 	species_clothing_color_coords = list(list(SPACESUIT_COLORPIXEL_X_1, SPACESUIT_COLORPIXEL_Y_1))
 	greyscale_config_worn_teshari_fallback = /datum/greyscale_config/teshari/spacesuit
 
-/obj/item/clothing/suit/armor/mod
+/obj/item/clothing/suit/mod
 	species_clothing_color_coords = list(list(MODSUIT_COLORPIXEL_X_1, MODSUIT_COLORPIXEL_Y_1), list(MODSUIT_COLORPIXEL_X_2, MODSUIT_COLORPIXEL_Y_2), list(MODSUIT_COLORPIXEL_X_3, MODSUIT_COLORPIXEL_Y_3))
 	greyscale_config_worn_teshari_fallback = /datum/greyscale_config/teshari/hardsuit
 
@@ -42,6 +46,10 @@
 	species_clothing_color_coords = list(list(UNDER_COLORPIXEL_X_1, UNDER_COLORPIXEL_Y_1), list(UNDER_COLORPIXEL_X_2, UNDER_COLORPIXEL_Y_2), list(UNDER_COLORPIXEL_X_3, UNDER_COLORPIXEL_Y_3))
 	greyscale_config_worn_teshari_fallback = /datum/greyscale_config/teshari/under
 	greyscale_config_worn_teshari_fallback_skirt = /datum/greyscale_config/teshari/under_skirt
+
+/obj/item/mod/control
+	species_clothing_color_coords = list(list(MODCONTROL_COLORPIXEL_X_1, MODCONTROL_COLORPIXEL_Y_1))
+	greyscale_config_worn_teshari_fallback = /datum/greyscale_config/teshari/modcontrol
 
 ///GAGS below here
 

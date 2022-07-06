@@ -546,6 +546,10 @@
 /obj/structure/door_assembly/door_assembly_hydro
 	icon = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/station/botany.dmi'
 
+/obj/structure/door_assembly/
+	icon = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/station/public.dmi'
+	overlays_file = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/station/overlays.dmi'
+
 //SKYRAT EDIT ADDITION BEGIN - AESTHETICS
 #undef AIRLOCK_LIGHT_POWER
 #undef AIRLOCK_LIGHT_RANGE

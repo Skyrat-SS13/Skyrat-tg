@@ -10,6 +10,6 @@
 	name = "meat product"
 	id = "meatp"
 	build_type = BIOGENERATOR
-	materials = list(/datum/material/biomass= 125) //Monkey Cube is more efficient, but this is easier on the chef.
+	materials = list(/datum/material/biomass= 125) // Monkey Cube is more efficient, but this is easier on the chef.
 	build_path = /obj/item/food/meat/slab/meatproduct
 	category = list("initial", "Food")

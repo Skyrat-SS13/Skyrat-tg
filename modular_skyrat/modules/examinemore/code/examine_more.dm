@@ -117,9 +117,9 @@ would only be recognisable with someone that had the syndicate trait.
 					composed_message += special_desc
 					. += composed_message
 
-//////////
-//Examples:
-//////////
+/*
+*	EXAMPLES
+*/
 
 /obj/item/storage/backpack/duffelbag/syndie
 	name = "duffel bag"

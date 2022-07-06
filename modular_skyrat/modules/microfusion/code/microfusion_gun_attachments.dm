@@ -418,15 +418,16 @@ Allows for flashlights bayonets and adds 1 slot to equipment.
 
 /obj/item/microfusion_gun_attachment/rail/run_attachment(obj/item/gun/microfusion/microfusion_gun)
 	. = ..()
-	microfusion_gun.can_flashlight = TRUE
+	microfusion_gun.AddComponent(/datum/component/seclite_attachable, \
+		light_overlay_icon = 'modular_skyrat/modules/microfusion/icons/microfusion_gun40x32.dmi', \
+		light_overlay = "flight")
 	microfusion_gun.can_bayonet = TRUE
 
 /obj/item/microfusion_gun_attachment/rail/remove_attachment(obj/item/gun/microfusion/microfusion_gun)
 	. = ..()
-	microfusion_gun.gun_light = initial(microfusion_gun.can_flashlight)
-	if(microfusion_gun.gun_light)
-		microfusion_gun.gun_light.forceMove(get_turf(microfusion_gun))
-		microfusion_gun.clear_gunlight()
+	var/component_to_delete = microfusion_gun.GetComponent(/datum/component/seclite_attachable)
+	if(component_to_delete)
+		qdel(component_to_delete)
 	microfusion_gun.can_bayonet = initial(microfusion_gun.can_bayonet)
 	if(microfusion_gun.bayonet)
 		microfusion_gun.bayonet.forceMove(get_turf(microfusion_gun))
@@ -503,7 +504,7 @@ Allows for an official blue camo to be applied to the gun.
 Hail NanoTrasen.
 */
 /obj/item/microfusion_gun_attachment/nt_camo
-	name = "\improper NanoTrasen brand microfusion frame"
+	name = "\improper Nanotrasen brand microfusion frame"
 	desc = "A frame modification for the MCR-01, changing the color of the gun to blue."
 	icon_state = "attachment_nt_camo"
 	attachment_overlay_icon_state = "attachment_nt_camo"

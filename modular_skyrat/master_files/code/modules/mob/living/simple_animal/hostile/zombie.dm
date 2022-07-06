@@ -27,7 +27,7 @@
 	var/datum/outfit/zombie_outfit
 	if(zombie_job.outfit)
 		zombie_outfit = new zombie_job.outfit
-		//They have claws now.
+		// They have claws now.
 		zombie_outfit.r_hand = null
 		zombie_outfit.l_hand = null
 

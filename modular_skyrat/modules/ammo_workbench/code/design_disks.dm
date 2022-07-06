@@ -15,4 +15,4 @@
 	materials = list(/datum/material/iron = 1000)
 	build_path = /obj/item/disk/ammo_workbench/lethal
 	category = list("intial", "Security", "Ammo")
-	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
+	departmental_flags = DEPARTMENT_BITFLAG_SECURITY

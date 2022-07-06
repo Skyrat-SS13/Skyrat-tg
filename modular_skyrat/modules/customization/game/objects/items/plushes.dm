@@ -269,7 +269,7 @@
 	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/weh.ogg' = 1)
 
 /obj/item/toy/plush/mechanic_fox
-	name = "Mechanist Fox Plushie"
+	name = "mechanist fox plushie"
 	desc = "A fox with fabulous hair! It has a tendency to make synth plushies look good as new when placed next to them."
 	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
 	icon_state = "plushie_cali"
@@ -279,7 +279,7 @@
 	squeak_override = list('modular_skyrat/modules/customization/game/objects/items/sound/deerplush.ogg' = 1)
 
 /obj/item/toy/plush/tribal_salamander
-	name = "Tribal Salamander Plushie"
+	name = "tribal salamander plushie"
 	desc = "A water-safe plushie that always seems to lose any clothes you try to put on it."
 	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
 	icon_state = "plushie_azu"
@@ -289,7 +289,7 @@
 	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/wurble.ogg' = 1)
 
 /obj/item/toy/plush/commanding_teshari
-    name = "Commanding Teshari Plushy"
+    name = "commanding teshari plushy"
     desc = "A very soft plush resembling a certain science-loving, command inclined Teshari. Just holding it makes you feel cared for."
     icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
     icon_state = "plushie_alara"
@@ -299,7 +299,7 @@
     squeak_override = list('modular_skyrat/modules/emotes/sound/voice/peep_once.ogg' = 1)
 
 /obj/item/toy/plush/breakdancing_bird
-	name = "Breakdancing Bird Plushie"
+	name = "breakdancing bird plushie"
 	desc = "This little robotic bird plushie loves to give you a little dance in celebration of your achievements, no matter how mundane."
 	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
 	icon_state = "plushie_cadicus"
@@ -309,7 +309,7 @@
 	squeak_override = list('sound/machines/ping.ogg' = 1)
 
 /obj/item/toy/plush/skreking_vox
-	name = "Skreking Vox Plushie"
+	name = "skreking vox plushie"
 	desc = "A vox plushie that seems ready to pull a gun on you and demand your money! Rumor has it that if you poke it in a particular way, it will show you its skrektual technique."
 	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
 	icon_state = "plushie_toko"
@@ -319,7 +319,7 @@
 	squeak_override = list('modular_skyrat/modules/emotes/sound/emotes/voxrustle.ogg' = 1)
 
 /obj/item/toy/plush/blue_dog
-	name = "Blue Dog Plushie"
+	name = "blue dog plushie"
 	desc = "A devious looking husky that seems to be begging for headpats. It smells faintly of blueberries."
 	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
 	icon_state = "plushie_cobalt"
@@ -329,7 +329,7 @@
 	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/bark1.ogg'=1, 'modular_skyrat/modules/emotes/sound/voice/bark2.ogg'=1)
 
 /obj/item/toy/plush/engi_snek
-	name = "Engineering Snek Plushie"
+	name = "engineering snek plushie"
 	desc = "This plush looks like it knows the difference between pumps and pipes! The arm is detachable, so don't lose it!"
 	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
 	icon_state = "plushie_tyri"
@@ -339,7 +339,7 @@
 	squeak_override = list('sound/items/screwdriver.ogg' = 1, 'sound/items/drill_use.ogg' = 1, 'sound/items/welder.ogg' = 1)
 
 /obj/item/toy/plush/glitch_synth
-	name = "Glitching Synthetic Plushie"
+	name = "glitching synthetic plushie"
 	desc = "A synthetic plush, the interface seems to glitch out every time you give it a hug or call it cute!"
 	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
 	icon_state = "plushie_rex"
@@ -349,7 +349,7 @@
 	squeak_override = list('sound/machines/twobeep_high.ogg' = 1)
 
 /obj/item/toy/plush/boom_bird
-	name = "Boom Bird Plushie"
+	name = "boom bird plushie"
 	desc = "This little bird plushie may look like a nerd, but you have the sneaking suspicion it might be valid! Why does your skin start to glow when you hug it?"
 	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
 	icon_state = "plushie_dima"
@@ -396,7 +396,7 @@
 	inhand_icon_state = "plushie_sels"
 	attack_verb_continuous = list("hugs", "cackles at", "health analyzes")
 	attack_verb_simple = list("hugs", "cackles at", "health analyzes")
-	squeak_override = list('sound/creatures/venus_trap_hurt.ogg' = 1)
+	squeak_override = list('sound/effects/crunchybushwhack1.ogg' = 1)
 
 /obj/item/toy/plush/fox/mia
 	name = "Mia’s fox plushie"
@@ -523,3 +523,62 @@
 	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/merp.ogg' = 1)
 	young = FALSE
 
+/obj/item/toy/plush/chunko
+	name = "chunko fop"
+	desc = "A soulless creature that haunts your dreams."
+	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
+	icon_state = "plushie_pfbonnie"
+	var/responses = list("Do you fear death? Do you fear the world you live in? What 'God's so called infinite mercy is? A neverending life of constant and unending misery. Being forced to work and go on as millions, trillions suffer around you as you are either too powerless or too lazy to do anything? Is this worth living? Capitalism in overdrive, life in hell. Why?", "Hi!!", )
+	COOLDOWN_DECLARE(chunko_cooldown)
+
+/obj/item/toy/plush/chunko/attackby()
+	. = ..()
+	if(!COOLDOWN_FINISHED(src, chunko_cooldown))
+		return
+	say(pick(responses))
+	COOLDOWN_START(src, chunko_cooldown, 2 SECONDS)
+
+
+/obj/item/toy/plush/chunko/attack()
+	. = ..()
+	if(!COOLDOWN_FINISHED(src, chunko_cooldown))
+		return
+	say(pick(responses))
+	COOLDOWN_START(src, chunko_cooldown, 2 SECONDS)
+
+
+/obj/item/toy/plush/chunko/bonnie
+	name = "chunko fop blue bunny"
+	desc = "An 'adorable', if big eyed rabbit girl. This one is blue. Produced by the Chunko Fop Company <b><i>TM</i></b>. Spits out various Rabbit facts of dubious validity."
+	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
+	icon_state = "plushie_pfbonnie"
+	gender = FEMALE
+	attack_verb_continuous = list("pats", "hugs", "scolds", "pets")
+	attack_verb_simple = list("pat", "hug", "scold", "pet")
+	squeak_override = list('sound/effects/mousesqueek.ogg' = 1, 'modular_skyrat/modules/emotes/sound/voice/mothsqueak.ogg' = 1,)
+	responses = list("Rabbits are prey animals and are therefore constantly aware of their surroundings.", "Things to jump up on (they like to be in high places)", "become a rabbit today!", "Be cunning and full of tricks...", "Subscription confirmed! Thank you for choosing RABBITFACTS +TM+!", "Holland Lops are a breed of rabbit originating in the Netherlands.", "Rabbits may need medication to keep themselves healthy, and that's ok! Make sure to take yours too!", "rabbits really liked this product", "A healthy rabbit diet includes fresh vegetables.", "Rabbits do not hibernate. Their schedules are much too busy.", "the rate of bunnies is measured by RPB (rabbits per bunny)", )
+
+ //All lowercase messages are intentional
+
+/obj/item/toy/plush/chunko/andrew
+	name = "chunko fop green and orange bunny"
+	desc = "An 'adorable', if big eyed rabbit girl(?). This one is green and orange. Produced by the Chunko Fop Company <b><i>TM</i></b>. Spits out various Bunnies of dubious existance."
+	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
+	icon_state = "plushie_pfandrew"
+	gender = MALE
+	attack_verb_continuous = list("pats", "hugs", "scolds", "pets")
+	attack_verb_simple = list("pat", "hug", "scold", "pet")
+	squeak_override = list('sound/effects/mousesqueek.ogg' = 1, 'modular_skyrat/modules/emotes/sound/voice/mothsqueak.ogg' = 1,)
+	//All lowercase messages are intentional
+	responses = list("bunny who you best pray you never encounter, lest you suffer a fate worse than death.", "this is a bunny!", "I wonder what would happen if you took bunnies, and combined them with rabbits, and merged their properties and characteristics. It's something to think about.", "If you're cold, they're cold. Give them the deed to your house.", "bunny that goes yeah! woo! yeah! woo! yeah! woo! yeah! woo! yeah! woo! yeah!", "the bunnies are beyond my comprehension", "it's a bunny thing, you wouldn't get it", "this bunny has an unfathomable power level", "%pull the string and I'll bink at you...I'm your bunny.", "Bunny (1954)", "the bunny that pulls the strings....", )
+
+/obj/item/toy/plush/chunko/inessa
+	name = "chunko fop medical bear"
+	desc = "An 'adorable', tired looking bear woman. This one produces fake smoke! Produced by the Chunko Fop Company <b><i>TM</i></b>. Spits out various Medical facts with a broken voicebox."
+	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
+	icon_state = "plushie_pfinessa"
+	gender = FEMALE
+	attack_verb_continuous = list("slashes", "dissects", "yawns", "smokes")
+	attack_verb_simple = list("slash", "dissect", "yawn", "smoke")
+	squeak_override = list('modular_skyrat/modules/emotes/sound/emotes/female/female_cough_3.ogg' = 1, 'modular_skyrat/modules/emotes/sound/emotes/female/female_cough_2.ogg' = 1, 'modular_skyrat/modules/emotes/sound/emotes/female/female_cough_1.ogg' = 1)
+	responses = list("The human body can survive three weeks without skiiiiiiiiiiin.", "The thigh bone is connected to the hip boooooooooone.", "Yeeeessss?", "Helloooooo.", "Don't be such a baby, ribs grow baaaaaaaaaack.",)

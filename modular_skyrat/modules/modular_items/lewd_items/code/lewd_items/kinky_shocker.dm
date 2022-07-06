@@ -121,8 +121,8 @@
 	switch(user.zone_selected) //to let code know what part of body we gonna tickle
 		if(BODY_ZONE_PRECISE_GROIN)
 			targetedsomewhere = TRUE
-			var/obj/item/organ/genital/penis = target.getorganslot(ORGAN_SLOT_PENIS)
-			var/obj/item/organ/genital/vagina = target.getorganslot(ORGAN_SLOT_VAGINA)
+			var/obj/item/organ/external/genital/penis = target.getorganslot(ORGAN_SLOT_PENIS)
+			var/obj/item/organ/external/genital/vagina = target.getorganslot(ORGAN_SLOT_VAGINA)
 			if(vagina && penis)
 				if(target.is_bottomless() || (penis.visibility_preference == GENITAL_ALWAYS_SHOW && vagina.visibility_preference == GENITAL_ALWAYS_SHOW))
 					message = (user == target) ? pick("leans [src] against [target.p_their()] penis, letting it shock it. Ouch...",
@@ -181,7 +181,7 @@
 
 		if(BODY_ZONE_CHEST)
 			targetedsomewhere = TRUE
-			var/obj/item/organ/genital/breasts = target.getorganslot(ORGAN_SLOT_BREASTS)
+			var/obj/item/organ/external/genital/breasts = target.getorganslot(ORGAN_SLOT_BREASTS)
 			if(breasts)
 				if(breasts.visibility_preference == GENITAL_ALWAYS_SHOW || target.is_topless())
 					message = (user == target) ? pick("leans [src] against [target.p_their()] breasts, letting it shock it.",
@@ -276,11 +276,11 @@
 	if(!targetedsomewhere)
 		return
 	user.visible_message(span_purple("[user] [message]!"))
-	playsound(loc,'sound/weapons/taserhit.ogg')
+	playsound(loc, 'sound/weapons/taserhit.ogg')
 	if(target.stat == DEAD)
 		return
 	if(prob(80))
-		target.emote(pick("twitch","twitch_s","shiver","scream"))
+		target.try_lewd_autoemote(pick("twitch", "twitch_s", "shiver", "scream"))
 	target.do_jitter_animation()
 	target.adjustStaminaLoss(3)
 	target.adjustPain(9)

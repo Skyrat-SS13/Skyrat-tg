@@ -1,4 +1,7 @@
-///////////////////HECU
+/*
+*	HECU
+*/
+
 /mob/living/simple_animal/hostile/blackmesa/hecu
 	name = "HECU Grunt"
 	desc = "I didn't sign on for this shit. Monsters, sure, but civilians? Who ordered this operation anyway?"

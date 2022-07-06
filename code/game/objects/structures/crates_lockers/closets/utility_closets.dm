@@ -20,7 +20,7 @@
 /obj/structure/closet/emcloset/anchored
 	anchored = TRUE
 
-/obj/structure/closet/emcloset/PopulateContents()
+/obj/structure/closet/emcloset/PopulateContents() // SKYRAT EDIT OVERRIDE - emergency_spacesuit.dm
 	..()
 
 	if (prob(40))
@@ -69,6 +69,7 @@
 	new /obj/item/tank/internals/oxygen/red(src)
 	new /obj/item/extinguisher(src)
 	new /obj/item/clothing/head/hardhat/red(src)
+	new /obj/item/crowbar/large/emergency(src)
 	new /obj/item/storage/inflatable(src) //SKYRAT EDIT ADDITION - INFLATABLES
 
 /obj/structure/closet/firecloset/full/PopulateContents()
@@ -78,6 +79,7 @@
 	new /obj/item/tank/internals/oxygen/red(src)
 	new /obj/item/extinguisher(src)
 	new /obj/item/clothing/head/hardhat/red(src)
+	new /obj/item/crowbar/large/emergency(src)
 
 
 /*

@@ -555,7 +555,13 @@
 
 	SEND_SOUND(mind_reference.current, sound('modular_skyrat/modules/opposing_force/sound/approved.ogg'))
 	add_log(approver.ckey, "Approved application")
-	to_chat(mind_reference.current, examine_block(span_greentext("Your OPFOR application has been approved by [approver ? get_admin_ckey(approver) : "the OPFOR subsystem"]!")))
+	var/objective_denied = FALSE
+	for(var/datum/opposing_force_objective/opfor_obj as anything in objectives)
+		if(!(opfor_obj.status == OPFOR_OBJECTIVE_STATUS_DENIED))
+			continue
+		objective_denied = TRUE
+		break
+	to_chat(mind_reference.current, examine_block(span_greentext("Your OPFOR application has been [objective_denied ? span_bold("partially approved (please view your OPFOR for details)") : span_bold("fully approved")] by [approver ? get_admin_ckey(approver) : "the OPFOR subsystem"]!")))
 	send_system_message("[approver ? get_admin_ckey(approver) : "The OPFOR subsystem"] has approved the application")
 	send_admins_opfor_message("[span_green("APPROVED")]: [ADMIN_LOOKUPFLW(approver)] has approved [ckey]'s application")
 	ticket_counter_add_handled(approver.key, 1)
@@ -678,11 +684,13 @@
 	opposing_force_objective.denied_reason = deny_reason
 	add_log(user.ckey, "Denied objective([opposing_force_objective.title]) WITH REASON: [deny_reason]")
 	send_system_message("[user ? get_admin_ckey(user) : "The OPFOR subsystem"] has denied objective '[opposing_force_objective.title]' with the reason '[deny_reason]'")
+	to_chat(mind_reference?.current, span_warning("Your OPFOR objective [span_bold("[opposing_force_objective.title]")] has been denied."))
 
 /datum/opposing_force/proc/approve_objective(mob/user, datum/opposing_force_objective/opposing_force_objective)
 	opposing_force_objective.status = OPFOR_OBJECTIVE_STATUS_APPROVED
 	add_log(user.ckey, "Approved objective([opposing_force_objective.title])")
 	send_system_message("[user ? get_admin_ckey(user) : "The OPFOR subsystem"] has approved objective '[opposing_force_objective.title]'")
+	to_chat(mind_reference?.current, span_warning("Your OPFOR objective [span_bold("[opposing_force_objective.title]")] has been approved."))
 
 /**
  * System procs
@@ -845,7 +853,7 @@
 
 /datum/opposing_force/proc/roundend_report()
 	var/list/report = list("<br>")
-	report += span_greentext(mind_reference.current.real_name)
+	report += span_greentext(mind_reference.current?.real_name)
 
 	if(set_backstory)
 		report += "<b>Had an approved OPFOR application with the following backstory:</b><br>"

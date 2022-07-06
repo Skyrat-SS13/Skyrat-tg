@@ -1,4 +1,12 @@
-///////////// OVERLAY EFFECTS /////////////
+/*
+*	OVERLAY EFFECTS
+*/
+
+/*
+*	Paradise, Tigercat2000 - Original idea for the pool and the sprites for the water overlay and the 'pool' floor tile.
+*	TGstation, Rohesie - Offered help in making this perform better by using vis contents instead of overlays. Thanks!
+*/
+
 /obj/effect/overlay/water
 	name = "water"
 	icon = 'modular_skyrat/modules/mapping/icons/unique/pool.dmi'
@@ -13,22 +21,14 @@
 	icon_state = "top"
 	layer = BELOW_MOB_LAYER
 	vis_flags = NONE
-///////////// OVERLAY EFFECTS /////////////
-///////////////////////////////////////////
-/////////////   INITIALISE    /////////////
+
 /turf/open/water/overlay/Initialize()
 	.  = ..()
 	var/obj/effect/overlay/water/water_overlay = new()
 	var/obj/effect/overlay/water/top/water_top_overlay = new()
 	vis_contents += water_overlay
 	vis_contents += water_top_overlay
-/////////////   INITIALISE    /////////////
-///////////////////////////////////////////
-///////////// GARBAGE CONTROL /////////////
 
-///////////// GARBAGE CONTROL /////////////
-///////////////////////////////////////////
-///////////// CLEANING  BLOCK /////////////
 /turf/open/water/overlay/Entered(atom/movable/AM)
 	..()
 	wash_atom(AM)
@@ -37,9 +37,7 @@
 /turf/open/water/overlay/proc/wash_atom(atom/A)
 	A.wash(CLEAN_RAD) // Clean radiation non-instantly
 	A.wash(CLEAN_WASH)
-///////////// CLEANING  BLOCK /////////////
-///////////////////////////////////////////
-/////////////   MOOD  EVENT   /////////////
+
 /turf/open/water/overlay/hotspring/Entered(atom/movable/AM)
 	..()
 	SEND_SIGNAL(AM, COMSIG_ADD_MOOD_EVENT, "hotspring", /datum/mood_event/hotspring)
@@ -52,9 +50,7 @@
 	description = span_nicegreen("I recently had a paddle in some nice warm water! It was so refreshing!\n")
 	mood_change = 4
 	timeout = 20 MINUTES
-/////////////   MOOD  EVENT   /////////////
-///////////////////////////////////////////
-/////////////   WATER TURFS   /////////////
+
 // Planetside water, indestructible.
 /turf/open/water/overlay
 	name = "shallow water"
@@ -98,9 +94,3 @@
 /turf/open/water/overlay/hotspring/planet/outdoors
 	baseturfs = /turf/open/water/overlay/hotspring/planet/outdoors
 	planetary_atmos = TRUE
-/////////////   WATER TURFS   /////////////
-///////////////////////////////////////////
-/////////////     CREDITS     /////////////
-//• Paradise, Tigercat2000 - Original idea for the pool and the sprites for the water overlay and the 'pool' floor tile.
-//• TGstation, Rohesie - Offered help in making this perform better by using vis contents instead of overlays. Thanks!
-/////////////     CREDITS     /////////////

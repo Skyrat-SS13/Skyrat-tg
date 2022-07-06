@@ -33,7 +33,7 @@
 
 	var/datum/species/pref_species
 
-	//BACKGROUND STUFF
+	// BACKGROUND STUFF
 	var/general_record = ""
 	var/security_record = ""
 	var/medical_record = ""
@@ -41,21 +41,21 @@
 	var/background_info = ""
 	var/exploitable_info = ""
 
-	///Whether the user wants to see body size being shown in the preview
+	/// Whether the user wants to see body size being shown in the preview
 	var/show_body_size = FALSE
 
-	///Alternative job titles stored in preferences. Assoc list, ie. alt_job_titles["Scientist"] = "Cytologist"
+	/// Alternative job titles stored in preferences. Assoc list, ie. alt_job_titles["Scientist"] = "Cytologist"
 	var/list/alt_job_titles = list()
 
-	//Determines if the player has undergone TGUI preferences migration, if so, this will prevent constant loading.
+	// Determines if the player has undergone TGUI preferences migration, if so, this will prevent constant loading.
 	var/tgui_prefs_migration = TRUE
 
-	///A photo of the character, visible on close examine
+	/// A photo of the character, visible on close examine
 	var/headshot = ""
 
 /datum/preferences/proc/species_updated(species_type)
 	all_quirks = list()
-	//Reset cultural stuff
+	// Reset cultural stuff
 	try_get_common_language()
 	save_character()
 
@@ -119,7 +119,7 @@
 		return FALSE
 	return TRUE
 
-//Whenever we switch a species, we'll try to get common if we can to not confuse anyone
+// Whenever we switch a species, we'll try to get common if we can to not confuse anyone
 /datum/preferences/proc/try_get_common_language()
 	var/list/langs = get_available_languages()
 	if(langs[/datum/language/common])
@@ -129,19 +129,19 @@
 /datum/preferences/proc/validate_species_parts()
 	var/list/target_bodyparts = pref_species.default_mutant_bodyparts.Copy()
 
-	//Remove all "extra" accessories
+	// Remove all "extra" accessories
 	for(var/key in mutant_bodyparts)
-		if(!GLOB.sprite_accessories[key]) //That accessory no longer exists, remove it
+		if(!GLOB.sprite_accessories[key]) // That accessory no longer exists, remove it
 			mutant_bodyparts -= key
 			continue
 		if(!pref_species.default_mutant_bodyparts[key])
 			mutant_bodyparts -= key
 			continue
-		if(!GLOB.sprite_accessories[key][mutant_bodyparts[key][MUTANT_INDEX_NAME]]) //The individual accessory no longer exists
+		if(!GLOB.sprite_accessories[key][mutant_bodyparts[key][MUTANT_INDEX_NAME]]) // The individual accessory no longer exists
 			mutant_bodyparts[key][MUTANT_INDEX_NAME] = pref_species.default_mutant_bodyparts[key]
-		validate_color_keys_for_part(key) //Validate the color count of each accessory that wasnt removed
+		validate_color_keys_for_part(key) // Validate the color count of each accessory that wasnt removed
 
-	//Add any missing accessories
+	// Add any missing accessories
 	for(var/key in target_bodyparts)
 		if(!mutant_bodyparts[key])
 			var/datum/sprite_accessory/SA
@@ -166,7 +166,7 @@
 		mutant_bodyparts[key][MUTANT_INDEX_COLOR_LIST] = SA.get_default_color(features, pref_species)
 
 /datum/preferences/proc/CanBuyAugment(datum/augment_item/target_aug, datum/augment_item/current_aug)
-	//Check biotypes
+	// Check biotypes
 	if(!(pref_species.inherent_biotypes & target_aug.allowed_biotypes))
 		return
 	var/quirk_points = GetQuirkBalance()
