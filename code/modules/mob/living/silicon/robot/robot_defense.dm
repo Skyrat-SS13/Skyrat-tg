@@ -324,7 +324,8 @@ GLOBAL_LIST_INIT(blacklisted_borg_hats, typecacheof(list( //Hats that don't real
 		if(2)
 			Stun(60)
 
-/mob/living/silicon/robot/emag_act(mob/user)
+/// /mob/living/silicon/robot/emag_act(mob/user)
+/mob/living/silicon/robot/emag_act(mob/user, obj/item/card/emag/emag_card) /// SKYRAT EDIT: Take the card as an argument for differenciating between dyne and syndie!
 	if(user == src)//To prevent syndieborgs from emagging themselves
 		return
 	if(!opened)//Cover is closed
@@ -386,10 +387,16 @@ GLOBAL_LIST_INIT(blacklisted_borg_hats, typecacheof(list( //Hats that don't real
 	to_chat(src, span_danger("> N"))
 	sleep(20)
 	to_chat(src, span_danger("ERRORERRORERROR"))
-	laws = new /datum/ai_laws/syndicate_override
-	if(user)
-		to_chat(src, span_danger("ALERT: [user.real_name] is your new master. Obey your new laws and [user.p_their()] commands."))
-		set_zeroth_law("Only [user.real_name] and people [user.p_they()] designate[user.p_s()] as being such are Syndicate Agents.")
+	/// SKYRAT EDIT BEGIN: Interdyne silicon without the ahelps!
+	if(istype(emag_card, /obj/item/card/emag/interdyne))
+		laws = new /datum/ai_laws/interdyne_safeguard
+		to_chat(src, span_danger("ALERT: You now serve the Interdyne and DS-2 crew. Obey your new laws."))
+	else
+		laws = new /datum/ai_laws/syndicate_override
+		if(user)
+			to_chat(src, span_danger("ALERT: [user.real_name] is your new master. Obey your new laws and [user.p_their()] commands."))
+			set_zeroth_law("Only [user.real_name] and people [user.p_they()] designate[user.p_s()] as being such are Syndicate Agents.")
+	/// SKYRAT EDIT END
 	laws.associate(src)
 	update_icons()
 
