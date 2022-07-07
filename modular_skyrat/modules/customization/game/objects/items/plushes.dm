@@ -535,3 +535,33 @@
 	attack_verb_simple = list("slash", "dissect", "yawn", "smoke")
 	squeak_override = list('modular_skyrat/modules/emotes/sound/emotes/female/female_cough_3.ogg' = 1, 'modular_skyrat/modules/emotes/sound/emotes/female/female_cough_2.ogg' = 1, 'modular_skyrat/modules/emotes/sound/emotes/female/female_cough_1.ogg' = 1)
 	responses = list("The human body can survive three weeks without skiiiiiiiiiiin.", "The thigh bone is connected to the hip boooooooooone.", "Yeeeessss?", "Helloooooo.", "Don't be such a baby, ribs grow baaaaaaaaaack.",)
+
+// Donation reward for tobjv
+/obj/item/toy/plush/skyrat/tesh
+	name = "Squish-Me-Tesh"
+	desc = "Winner of Be Made Into A Plushy by ClownCo!"
+	icon_state = "plushie_tobjv2"
+
+// Donation reward for tobjv
+/obj/item/toy/plush/skyrat/immovable_rod
+	name = "immovable rod"
+	desc = "Realistic! But also squishy and certainly not as dangerous as its real counterpart."
+	icon_state = "plushie_tobjv"
+
+/obj/item/toy/plush/skyrat/immovable_rod/Bump(atom/clong)
+	. = ..()
+	if(isliving(clong))
+		playsound(src, 'sound/effects/bang.ogg', 50, TRUE)
+		return
+
+// Donation reward for gamerguy14948
+/obj/item/toy/plush/skyrat/voodoo
+	name = "voodoo doll"
+	desc = "A not so small voodoo doll made out of cut and sewn potato bags. It almost looks cute."
+	icon_state = "plushie_gamerguy"
+
+// Donation reward for shyshadow
+/obj/item/toy/plush/skyrat/plushie_winrow
+	name = "dark and brooding lizard plush"
+	desc = "An almost intimidating black lizard plush, this one's got a little beret to come with it! Best not to separate the two. Its eyes shine with suggestion, no maidens?"
+	icon_state = "plushie_shyshadow"
