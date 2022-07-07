@@ -159,7 +159,7 @@
 	/// What machine is the mask currently attached to?
 	var/datum/weakref/attached_machine
 
-	clothing_flags = MASKINTERNALS | MASKEXTENDRANGE
+	clothing_flags = MASKINTERNALS | MASK_EXTEND_RANGE
 
 /obj/item/clothing/mask/breath/anesthetic/Initialize(mapload)
 	. = ..()
