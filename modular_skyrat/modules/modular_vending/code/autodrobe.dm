@@ -28,7 +28,7 @@
 		/obj/item/clothing/head/cowboyhat/blackwide = 5,
 		/obj/item/clothing/head/cowboyhat/wide = 5,
 		/obj/item/clothing/neck/ranger_poncho = 5,
-		/obj/item/clothing/suit/duster/colorable = 5,
+		/obj/item/clothing/suit/duster = 5,
 		/obj/item/clothing/suit/frenchtrench = 5,
 		/obj/item/clothing/suit/dutchjacketsr = 5,
 		/obj/item/clothing/mask/gas/clown_colourable = 1,
