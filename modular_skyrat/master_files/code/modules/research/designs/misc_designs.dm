@@ -51,7 +51,7 @@
 
 /datum/design/anesthetic_machine
 	name = "anesthetic machine parts kit"
-	desc = "a box kit containing the parts to create a portable anesthetic stand, tank not included."
+	desc = "All-in-one kit containing the parts to create a portable anesthetic stand, tank not included."
 	id = "anesthetic_machine"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = 10000, /datum/material/plastic = 10000, /datum/material/silver = 4000)
