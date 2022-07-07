@@ -2568,14 +2568,6 @@
 /obj/item/candle/infinite{
 	pixel_x = -16
 	},
-/obj/machinery/button/door{
-	name = "Dorm Bolt Control";
-	normaldoorcontrol = 1;
-	pixel_y = -11;
-	specialfunctions = 4;
-	id = "ghostcafecabinjap";
-	pixel_x = -9
-	},
 /turf/open/floor/bamboo,
 /area/centcom/holding/cafedorms)
 "aAL" = (
@@ -3966,7 +3958,7 @@
 /area/centcom/holding/cafedorms)
 "aMI" = (
 /obj/machinery/vending/hydronutrients{
-	products = list(/obj/item/reagent_containers/glass/bottle/nutrient/ez = 50, /obj/item/reagent_containers/glass/bottle/nutrient/l4z = 20, /obj/item/reagent_containers/glass/bottle/nutrient/rh = 10, /obj/item/reagent_containers/spray/pestspray = 30, /obj/item/reagent_containers/syringe = 5, /obj/item/storage/bag/plants = 30, /obj/item/cultivator = 10, /obj/item/shovel/spade = 10, /obj/item/plant_analyzer = 10)
+	products = list(/obj/item/reagent_containers/glass/bottle/nutrient/ez=50,/obj/item/reagent_containers/glass/bottle/nutrient/l4z=20,/obj/item/reagent_containers/glass/bottle/nutrient/rh=10,/obj/item/reagent_containers/spray/pestspray=30,/obj/item/reagent_containers/syringe=5,/obj/item/storage/bag/plants=30,/obj/item/cultivator=10,/obj/item/shovel/spade=10,/obj/item/plant_analyzer=10)
 	},
 /turf/open/indestructible/hoteltile{
 	icon_state = "darkfull"
@@ -4100,13 +4092,13 @@
 /obj/item/storage/box/ingredients/american,
 /obj/item/storage/box/ingredients/exotic,
 /obj/item/reagent_containers/food/condiment/flour{
-	list_reagents = list(/datum/reagent/consumable/flour = 90);
+	list_reagents = list(/datum/reagent/consumable/flour=90);
 	name = "large flour sack";
 	possible_transfer_amounts = list(1,5,10,15,30,60,90);
 	volume = 90
 	},
 /obj/item/reagent_containers/food/condiment/flour{
-	list_reagents = list(/datum/reagent/consumable/flour = 90);
+	list_reagents = list(/datum/reagent/consumable/flour=90);
 	name = "large flour sack";
 	possible_transfer_amounts = list(1,5,10,15,30,60,90);
 	volume = 90
@@ -5991,8 +5983,18 @@
 /turf/open/misc/dirt/planet,
 /area/centcom/holding/cafepark)
 "bGE" = (
-/obj/structure/sink{
+/obj/effect/turf_decal/siding/wood,
+/obj/effect/turf_decal/siding/wood{
 	dir = 1
+	},
+/obj/machinery/door/airlock/wood{
+	id_tag = "ghostcafecabinjap";
+	name = "Shinto Cabin"
+	},
+/obj/structure/fans/tiny/invisible,
+/obj/effect/turf_decal/siding{
+	icon = 'icons/turf/floors/carpet.dmi';
+	icon_state = "carpet-1"
 	},
 /turf/open/floor/sepia,
 /area/centcom/holding/cafedorms)
@@ -6707,6 +6709,19 @@
 	},
 /turf/open/floor/plating,
 /area/centcom/interlink)
+"eRa" = (
+/obj/effect/turf_decal/trimline/green/filled/line{
+	dir = 8
+	},
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/machinery/status_display/shuttle{
+	pixel_x = -32;
+	shuttle_id = "arrivals_shuttle"
+	},
+/turf/open/floor/iron,
+/area/centcom/interlink)
 "eTB" = (
 /obj/structure/railing/corner{
 	dir = 8
@@ -7184,17 +7199,10 @@
 /area/centcom/interlink)
 "gLq" = (
 /obj/effect/turf_decal/siding{
-	color = "#2e2e2e";
-	dir = 5
+	icon = 'icons/turf/floors/carpet.dmi';
+	icon_state = "carpet-2";
+	pixel_y = -16
 	},
-/obj/structure/table/wood/fancy/orange{
-	pixel_y = -3
-	},
-/obj/item/candle/infinite{
-	pixel_y = -2;
-	pixel_x = -7
-	},
-/obj/item/candle/infinite,
 /turf/open/floor/bamboo,
 /area/centcom/holding/cafedorms)
 "gLI" = (
@@ -7239,24 +7247,28 @@
 /turf/open/floor/iron,
 /area/centcom/interlink)
 "gPj" = (
-/obj/effect/turf_decal/tile/yellow/half{
+/obj/effect/turf_decal/siding{
+	color = "#2e2e2e"
+	},
+/obj/effect/turf_decal/siding{
+	color = "#2e2e2e";
+	dir = 10
+	},
+/obj/effect/turf_decal/siding/wood{
 	dir = 4
 	},
-/obj/effect/turf_decal/tile/yellow/half{
-	dir = 8
+/obj/item/candle/infinite{
+	pixel_x = 15
 	},
-/obj/effect/turf_decal/tile/neutral/half{
-	dir = 4
+/obj/machinery/button/door{
+	name = "Dorm Bolt Control";
+	normaldoorcontrol = 1;
+	specialfunctions = 4;
+	id = "ghostcafecabinjap";
+	pixel_y = -24
 	},
-/obj/effect/turf_decal/tile/neutral/half{
-	dir = 8
-	},
-/obj/structure/mineral_door/paperframe{
-	name = "Guest Suite *A"
-	},
-/turf/open/floor/iron/textured_half{
-	dir = 1
-	},
+/obj/machinery/light/warm/directional/west,
+/turf/open/floor/bamboo,
 /area/centcom/holding/cafedorms)
 "gPN" = (
 /obj/effect/spawner/random/entertainment/arcade,
@@ -7325,12 +7337,12 @@
 /obj/item/reagent_containers/food/condiment/soysauce,
 /obj/item/reagent_containers/food/condiment/sugar,
 /obj/item/reagent_containers/food/condiment/rice{
-	list_reagents = list(/datum/reagent/consumable/rice = 90);
+	list_reagents = list(/datum/reagent/consumable/rice=90);
 	name = "large rice sack";
 	possible_transfer_amounts = list(1,5,10,15,20,25,30,50,60,90)
 	},
 /obj/item/reagent_containers/food/condiment/rice{
-	list_reagents = list(/datum/reagent/consumable/rice = 90);
+	list_reagents = list(/datum/reagent/consumable/rice=90);
 	name = "large rice sack";
 	possible_transfer_amounts = list(1,5,10,15,20,25,30,50,60,90)
 	},
@@ -7717,6 +7729,18 @@
 	},
 /turf/open/floor/glass/reinforced,
 /area/cruiser_dock)
+"iGS" = (
+/obj/effect/turf_decal/siding{
+	color = "#2e2e2e";
+	dir = 1
+	},
+/obj/machinery/button/curtain{
+	id = "ghostcafecabinjapcurtain";
+	pixel_y = -4;
+	pixel_x = 20
+	},
+/turf/open/floor/bamboo,
+/area/centcom/holding/cafedorms)
 "iJK" = (
 /obj/effect/turf_decal/siding{
 	color = "#2e2e2e";
@@ -9091,9 +9115,12 @@
 /obj/effect/turf_decal/siding{
 	color = "#2e2e2e"
 	},
-/obj/machinery/light{
-	dir = 4
+/obj/effect/turf_decal/siding{
+	color = "#2e2e2e";
+	dir = 6
 	},
+/obj/item/kirbyplants/random,
+/obj/machinery/light/warm/directional/east,
 /turf/open/floor/bamboo,
 /area/centcom/holding/cafedorms)
 "nKj" = (
@@ -9161,9 +9188,7 @@
 /area/centcom/interlink)
 "oei" = (
 /obj/effect/turf_decal/sand,
-/obj/structure/sign/departments/restroom{
-	pixel_y = -32
-	},
+/obj/structure/sign/departments/restroom/directional/south,
 /obj/machinery/light,
 /turf/open/misc/beach/sand,
 /area/centcom/holding/cafepark)
@@ -9237,24 +9262,24 @@
 /obj/item/storage/box/ingredients/american,
 /obj/item/storage/box/ingredients/exotic,
 /obj/item/reagent_containers/food/condiment/flour{
-	list_reagents = list(/datum/reagent/consumable/flour = 90);
+	list_reagents = list(/datum/reagent/consumable/flour=90);
 	name = "large flour sack";
 	possible_transfer_amounts = list(1,5,10,15,30,60,90);
 	volume = 90
 	},
 /obj/item/reagent_containers/food/condiment/flour{
-	list_reagents = list(/datum/reagent/consumable/flour = 90);
+	list_reagents = list(/datum/reagent/consumable/flour=90);
 	name = "large flour sack";
 	possible_transfer_amounts = list(1,5,10,15,30,60,90);
 	volume = 90
 	},
 /obj/item/reagent_containers/food/condiment/rice{
-	list_reagents = list(/datum/reagent/consumable/rice = 90);
+	list_reagents = list(/datum/reagent/consumable/rice=90);
 	name = "large rice sack";
 	possible_transfer_amounts = list(1,5,10,15,20,25,30,50,60,90)
 	},
 /obj/item/reagent_containers/food/condiment/rice{
-	list_reagents = list(/datum/reagent/consumable/rice = 90);
+	list_reagents = list(/datum/reagent/consumable/rice=90);
 	name = "large rice sack";
 	possible_transfer_amounts = list(1,5,10,15,20,25,30,50,60,90)
 	},
@@ -9407,16 +9432,24 @@
 	},
 /area/centcom/holding/cafedorms)
 "oWR" = (
-/obj/effect/turf_decal/siding{
-	color = "#2e2e2e";
-	dir = 9
+/obj/effect/turf_decal/tile/yellow/half{
+	dir = 4
 	},
-/obj/machinery/washing_machine,
-/obj/machinery/light{
-	dir = 8;
-	light_color = "#e8eaff"
+/obj/effect/turf_decal/tile/yellow/half{
+	dir = 8
 	},
-/turf/open/floor/bamboo,
+/obj/effect/turf_decal/tile/neutral/half{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral/half{
+	dir = 8
+	},
+/obj/structure/mineral_door/paperframe{
+	name = "Shinto Cabin Bedroom"
+	},
+/turf/open/floor/iron/textured_half{
+	dir = 1
+	},
 /area/centcom/holding/cafedorms)
 "oZG" = (
 /obj/structure/table/wood,
@@ -9576,18 +9609,9 @@
 /turf/open/floor/iron,
 /area/centcom/interlink)
 "pET" = (
-/obj/structure/window/paperframe{
-	can_atmos_pass = 0
-	},
-/obj/effect/turf_decal/siding/wood{
-	dir = 1
-	},
-/obj/effect/turf_decal/siding/wood,
-/obj/structure/curtain/cloth/fancy/mechanical/start_closed{
-	id = "ghostcafecabinjapcurtain"
-	},
-/turf/open/floor/sepia,
-/area/centcom/holding/cafedorms)
+/obj/structure/flora/bush/flowers_yw,
+/turf/open/misc/grass/planet,
+/area/centcom/holding/cafepark)
 "pGK" = (
 /obj/machinery/shower{
 	dir = 8
@@ -9646,16 +9670,14 @@
 	},
 /area/centcom/holding/cafe)
 "pQp" = (
-/obj/effect/turf_decal/siding/wood,
 /obj/effect/turf_decal/siding/wood{
 	dir = 1
 	},
-/obj/machinery/door/airlock/wood{
-	id_tag = "ghostcafecabinjap";
-	name = "Shinto Cabin"
+/obj/effect/turf_decal/siding/wood,
+/obj/structure/curtain/cloth/fancy/mechanical/start_closed{
+	id = "ghostcafecabinjapcurtain"
 	},
-/obj/structure/fans/tiny/invisible,
-/turf/open/floor/sepia,
+/turf/closed/indestructible/fakeglass,
 /area/centcom/holding/cafedorms)
 "pRy" = (
 /obj/effect/turf_decal/arrows/white{
@@ -10019,15 +10041,15 @@
 /turf/open/floor/wood,
 /area/centcom/holding/cafe)
 "qWc" = (
-/obj/effect/turf_decal/siding{
-	color = "#2e2e2e"
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
 	},
-/obj/effect/turf_decal/siding{
-	color = "#2e2e2e";
-	dir = 6
+/obj/effect/turf_decal/siding/wood,
+/obj/structure/curtain/cloth/fancy/mechanical/start_closed{
+	id = "ghostcafecabinjapcurtain"
 	},
-/obj/item/kirbyplants/random,
-/turf/open/floor/bamboo,
+/obj/structure/fans/tiny/invisible,
+/turf/closed/indestructible/fakeglass,
 /area/centcom/holding/cafedorms)
 "qWA" = (
 /obj/structure/table/wood,
@@ -10196,6 +10218,14 @@
 /obj/structure/flora/bush/sparsegrass,
 /turf/open/misc/asteroid,
 /area/centcom/interlink)
+"rFg" = (
+/obj/effect/turf_decal/trimline/blue/arrow_cw,
+/obj/machinery/status_display/shuttle{
+	shuttle_id = "arrivals_shuttle";
+	pixel_y = -32
+	},
+/turf/open/floor/iron,
+/area/centcom/interlink)
 "rGP" = (
 /obj/effect/turf_decal/stripes/asteroid/line{
 	dir = 1
@@ -10320,24 +10350,10 @@
 /turf/open/floor/iron/dark,
 /area/cruiser_dock)
 "rYj" = (
-/obj/effect/turf_decal/siding{
-	color = "#2e2e2e"
+/obj/structure/mineral_door/paperframe{
+	name = "Shinto Cabin Washroom"
 	},
-/obj/effect/turf_decal/siding{
-	color = "#2e2e2e";
-	dir = 10
-	},
-/obj/effect/turf_decal/siding/wood{
-	dir = 4
-	},
-/obj/item/candle/infinite{
-	pixel_x = 15
-	},
-/obj/machinery/light{
-	dir = 8;
-	light_color = "#e8eaff"
-	},
-/turf/open/floor/bamboo,
+/turf/open/floor/sepia,
 /area/centcom/holding/cafedorms)
 "rYL" = (
 /obj/effect/turf_decal/trimline/red/line{
@@ -10374,14 +10390,26 @@
 /turf/open/floor/iron/dark,
 /area/cruiser_dock)
 "sfN" = (
-/obj/structure/mirror{
-	pixel_y = 2
+/obj/structure/mirror/directional/east,
+/obj/structure/sink{
+	pixel_y = -4;
+	pixel_x = 12;
+	dir = 8
 	},
-/turf/closed/indestructible/wood,
+/turf/open/floor/sepia,
 /area/centcom/holding/cafedorms)
 "shf" = (
 /obj/structure/table/wood/poker,
 /turf/open/floor/eighties,
+/area/centcom/interlink)
+"siH" = (
+/obj/effect/turf_decal/trimline/green/filled/line{
+	dir = 8
+	},
+/obj/structure/sign/poster/contraband/random{
+	pixel_x = -32
+	},
+/turf/open/floor/iron,
 /area/centcom/interlink)
 "sjJ" = (
 /obj/structure/chair/sofa/right{
@@ -10458,18 +10486,13 @@
 /turf/open/floor/iron/stairs/old,
 /area/centcom/holding/cafepark)
 "sto" = (
-/obj/structure/window/paperframe{
-	can_atmos_pass = 0
+/obj/effect/turf_decal/siding{
+	color = "#2e2e2e";
+	dir = 9
 	},
-/obj/effect/turf_decal/siding/wood{
-	dir = 1
-	},
-/obj/effect/turf_decal/siding/wood,
-/obj/structure/curtain/cloth/fancy/mechanical/start_closed{
-	id = "ghostcafecabinjapcurtain"
-	},
-/obj/structure/fans/tiny/invisible,
-/turf/open/floor/sepia,
+/obj/machinery/washing_machine,
+/obj/machinery/light/warm/directional/west,
+/turf/open/floor/bamboo,
 /area/centcom/holding/cafedorms)
 "svy" = (
 /obj/structure/flora/bush/lavendergrass,
@@ -11483,10 +11506,20 @@
 /turf/open/misc/asteroid,
 /area/centcom/interlink)
 "wcd" = (
-/obj/structure/mineral_door/paperframe{
-	name = "Guest Suite *A"
+/obj/effect/turf_decal/siding{
+	color = "#2e2e2e";
+	dir = 5
 	},
-/turf/open/floor/sepia,
+/obj/structure/table/wood/fancy/orange{
+	pixel_y = -3
+	},
+/obj/item/candle/infinite{
+	pixel_y = -2;
+	pixel_x = -7
+	},
+/obj/item/candle/infinite,
+/obj/machinery/light/warm/directional/east,
+/turf/open/floor/bamboo,
 /area/centcom/holding/cafedorms)
 "wcp" = (
 /obj/effect/turf_decal/arrows{
@@ -11836,20 +11869,9 @@
 /turf/open/misc/beach/sand,
 /area/centcom/holding/cafepark)
 "xFZ" = (
-/obj/effect/turf_decal/siding{
-	color = "#2e2e2e";
-	dir = 1
-	},
-/obj/machinery/button/curtain{
-	id = "ghostcafecabinjapcurtain";
-	pixel_y = -4;
-	pixel_x = 20
-	},
-/obj/machinery/light{
-	dir = 4
-	},
-/turf/open/floor/bamboo,
-/area/centcom/holding/cafedorms)
+/obj/structure/flora/bush/sunny,
+/turf/open/misc/grass/planet,
+/area/centcom/holding/cafepark)
 "xGy" = (
 /obj/structure/chair/stool/bar/directional/east,
 /obj/effect/landmark/latejoin,
@@ -21101,7 +21123,7 @@ aqG
 aqG
 aDg
 aVy
-aoN
+rFg
 tvw
 aEg
 hvQ
@@ -23146,8 +23168,8 @@ poj
 tvw
 aRp
 hvQ
-aHe
-aVm
+siH
+eRa
 aHe
 aiE
 aiE
@@ -62509,17 +62531,17 @@ aFP
 aAc
 aFP
 aFP
+aFP
+aFP
+aFP
+aFP
+aFP
 aSs
 axA
 axA
 axA
 axA
 axA
-aFP
-asX
-aFV
-aFP
-auf
 aBr
 aFP
 aFB
@@ -62765,6 +62787,11 @@ aFP
 aFP
 agy
 aFP
+avb
+aFP
+aIE
+aFP
+aFP
 aFP
 aFP
 axA
@@ -62772,11 +62799,6 @@ ekp
 mDj
 tfI
 axA
-aFB
-aFP
-aFP
-arT
-aLH
 ayd
 aFP
 aFP
@@ -63023,17 +63045,17 @@ aFP
 aFP
 auf
 aFP
+aFP
+aFP
+aFP
+aVA
+aFP
 ahQ
 axA
 lLN
 pCd
-bGE
-sfN
-avb
-aeT
-aFP
-aMJ
-aFP
+pCd
+axA
 aFP
 aFP
 aFP
@@ -63279,18 +63301,18 @@ axA
 axA
 axA
 axA
+aIV
 aFP
+aFP
+aSs
+aFP
+aAz
 aFP
 axA
 oVT
 pCd
-pCd
+sfN
 axA
-aFP
-aFP
-aFP
-aFP
-aFP
 aLH
 aFP
 aFP
@@ -63537,17 +63559,17 @@ afs
 aXD
 axA
 aFP
-axA
-axA
-axA
-wcd
-axA
-axA
 aFP
+pET
 aFP
+avb
 aFP
-aFP
-aVA
+axA
+axA
+axA
+rYj
+axA
+axA
 aFP
 aCM
 aeT
@@ -63794,17 +63816,17 @@ aSC
 aHJ
 sMF
 aFP
+aVA
+aFP
+aVA
+aFP
+aFP
 axA
-oWR
+sto
 iYC
 grr
-rYj
+gPj
 axA
-aFP
-agy
-aBr
-aFP
-aFB
 akp
 aFP
 aFP
@@ -64051,17 +64073,17 @@ aNa
 axA
 axA
 aFP
+aIE
+aFP
+auf
+aAc
+aIV
 pBW
 sFF
 ppR
 lRD
 ycB
 gSD
-aFP
-aFP
-aFP
-ahQ
-aFP
 agy
 aFP
 aFP
@@ -64307,18 +64329,18 @@ atF
 atF
 atF
 axA
+aIV
+aFP
+aKu
 aFP
 pET
+aFP
+pQp
 bTK
 ppR
 njU
 aAJ
 gSD
-aFP
-aFP
-aeT
-asX
-ahU
 aFP
 ayd
 aBp
@@ -64565,18 +64587,18 @@ abK
 aNz
 axA
 aFP
-pET
-xFZ
-ppR
-ppR
-nJO
+aFP
+aAc
+aAz
+aFP
+aFP
 pQp
+iGS
+ppR
+ppR
+gLq
+bGE
 aFP
-alf
-aFP
-aFP
-aFP
-aLH
 aFP
 aFP
 aFP
@@ -64822,17 +64844,17 @@ aye
 aMG
 axA
 aFP
-sto
+aAz
+aFP
+aFP
+aNk
+aFP
+qWc
 iJK
-gPj
+oWR
 pBW
 cXb
 gSD
-aFP
-avb
-ahs
-aFP
-aAc
 aFP
 ahs
 aFP
@@ -65079,17 +65101,17 @@ axA
 axA
 axA
 aFP
+aFP
+aFP
+aFP
+aIE
+aVA
 pBW
 bTK
 ppR
 ppR
 jgg
 hge
-aFP
-ahQ
-aFP
-aFP
-agy
 aFB
 bAr
 aFP
@@ -65336,17 +65358,17 @@ aFP
 aLH
 aFP
 aFP
+aFP
+aFP
+aMJ
+aFP
+aFP
 axA
-gLq
+wcd
 aFy
 wCC
-qWc
+nJO
 axA
-aFP
-aFP
-aFP
-azk
-ahQ
 aNk
 arT
 aLH
@@ -65593,17 +65615,17 @@ aAc
 aFP
 ahs
 ahQ
+aFP
+aFP
+aFP
+xFZ
+aFP
 axA
 axA
 pBW
 pBW
 axA
 axA
-aFP
-akp
-aFP
-aFP
-aFP
 aFV
 avb
 aFP
@@ -66108,9 +66130,9 @@ aFP
 aFP
 aFP
 aFP
+pET
 aFP
-aFP
-aFP
+aIV
 aFP
 aFP
 aFP

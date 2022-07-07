@@ -74,8 +74,8 @@
 
 						//legs
 						/obj/item/clothing/shoes/latex_socks,
-						/obj/item/clothing/shoes/latexheels,
-						/obj/item/clothing/shoes/dominaheels,
+						/obj/item/clothing/shoes/latex_heels,
+						/obj/item/clothing/shoes/latex_heels/domina_heels,
 
 						//belt
 						/obj/item/clothing/strapon,

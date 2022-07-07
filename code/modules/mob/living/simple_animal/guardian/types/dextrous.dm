@@ -25,7 +25,7 @@
 				. += "It has [I.get_examine_string(user)] in its [get_held_index_name(get_held_index_of_item(I))]."
 		if(internal_storage && !(internal_storage.item_flags & ABSTRACT))
 			. += "It is holding [internal_storage.get_examine_string(user)] in its internal storage."
-		//. += "*---------*</span>" SKYRAT EDIT REMOVAL
+		. += "</span>"
 	else
 		return ..()
 
@@ -57,6 +57,16 @@
 				return FALSE
 			return TRUE
 	..()
+
+/mob/living/simple_animal/hostile/guardian/dextrous/get_item_by_slot(slot_id)
+	if(slot_id == ITEM_SLOT_DEX_STORAGE)
+		return internal_storage
+	return ..()
+
+/mob/living/simple_animal/hostile/guardian/dextrous/get_slot_by_item(obj/item/looking_for)
+	if(internal_storage == looking_for)
+		return ITEM_SLOT_DEX_STORAGE
+	return ..()
 
 /mob/living/simple_animal/hostile/guardian/dextrous/equip_to_slot(obj/item/I, slot)
 	if(!..())
