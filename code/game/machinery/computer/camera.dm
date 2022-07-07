@@ -283,7 +283,10 @@
 	network = list("thunder")
 	density = FALSE
 	circuit = null
+	/*SKYRAT EDIT REMOVAL BEGIN - TELEVISION MODULE
 	interaction_flags_atom = NONE  // interact() is called by BigClick()
+	*/
+	//SKYRAT EDIT REMOVAL END
 	var/icon_state_off = "entertainment_blank"
 	var/icon_state_on = "entertainment"
 
@@ -291,15 +294,19 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/security/telescreen/entertai
 
 /obj/machinery/computer/security/telescreen/entertainment/Initialize(mapload)
 	. = ..()
-	RegisterSignal(src, COMSIG_CLICK, .proc/BigClick)
+	//RegisterSignal(src, COMSIG_CLICK, .proc/BigClick) SKYRAT EDIT REMOVAL BEGIN - TELEVISION MODULE
 
 // Bypass clickchain to allow humans to use the telescreen from a distance
 /obj/machinery/computer/security/telescreen/entertainment/proc/BigClick()
+	/*SKYRAT EDIT REMOVAL BEGIN - TELEVISION MODULE
 	SIGNAL_HANDLER
 
 	INVOKE_ASYNC(src, /atom.proc/interact, usr)
+	*/
+	//SKYRAT EDIT REMOVAL END
 
 /obj/machinery/computer/security/telescreen/entertainment/proc/notify(on)
+	/*SKYRAT EDIT REMOVAL BEGIN - TELEVISION MODULE
 	if(on && icon_state == icon_state_off)
 		say(pick(
 			"Feats of bravery live now at the thunderdome!",
@@ -309,6 +316,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/security/telescreen/entertai
 		icon_state = icon_state_on
 	else
 		icon_state = icon_state_off
+	*/
+	//SKYRAT EDIT REMOVAL END
 
 /obj/machinery/computer/security/telescreen/rd
 	name = "\improper Research Director's telescreen"
