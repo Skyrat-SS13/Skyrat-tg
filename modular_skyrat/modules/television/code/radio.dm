@@ -31,6 +31,7 @@
 	to_chat(user, "You have turned [sound ? "on" : "off"] the sound")
 
 /obj/item/tv_radio/Destroy()
+	. = ..()
 	QDEL_NULL(internal_radio)
 
 /obj/item/radio/intercom/tv

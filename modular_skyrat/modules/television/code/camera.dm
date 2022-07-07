@@ -17,6 +17,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/camera/tv_camera, 32)
 	internal_radio.set_listening(FALSE)
 
 /obj/machinery/camera/tv_camera/Destroy()
+	. = ..()
 	QDEL_NULL(internal_radio)
 
 /obj/item/device/pocket_tvcamera
@@ -51,6 +52,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/camera/tv_camera, 32)
 	. += "Alt + click allows you to make an announcement about the start of a broadcast."
 
 /obj/item/device/pocket_tvcamera/Destroy()
+	. = ..()
 	QDEL_NULL(tv_camera)
 	QDEL_NULL(internal_radio)
 
@@ -157,6 +159,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/camera/tv_camera, 32)
 		to_chat(user, span_warning("You don't have access to do that."))
 
 /obj/item/device/pocket_tvcamera/update_icon()
+	. = ..()
 	if(on)
 		inhand_icon_state = "camcorder_on"
 		icon_state = "camcorder_on"

@@ -31,4 +31,5 @@
 	addtimer(VARSET_CALLBACK(src, icon_state, "entertainment"), 15 SECONDS)
 
 /obj/machinery/computer/security/telescreen/entertainment/Destroy()
+	. = ..()
 	QDEL_NULL(internal_radio)
