@@ -21,3 +21,9 @@
 #define RADIO_TOKEN_TARKON ":k"
 
 #define FREQ_TARKON 1243
+
+#define RADIO_CHANNEL_TV "Nanotrasen TV"
+#define RADIO_KEY_TV "r"
+#define RADIO_TOKEN_TV ":r"
+
+#define FREQ_TV 1216
