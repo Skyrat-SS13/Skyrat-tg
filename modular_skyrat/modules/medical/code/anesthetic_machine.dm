@@ -91,6 +91,7 @@
 	if(mask_out)
 		retract_mask()
 
+///Retracts the attached_mask back into the machine
 /obj/machinery/anesthetic_machine/proc/retract_mask()
 	if(!mask_out)
 		return FALSE
@@ -146,6 +147,10 @@
 	if(mask_out)
 		retract_mask()
 
+	if(attached_tank)
+		attached_tank.forceMove(loc)
+		attached_tank = null
+
 	QDEL_NULL(attached_mask)
 	. = ..()
 
@@ -171,6 +176,7 @@
 		to_chat(user, span_notice("[src] retracts back into the [attached_machine]."))
 
 		if(!istype(attached_machine, /obj/machinery/anesthetic_machine))
+			qdel(src)
 			return FALSE
 
 		var/obj/machinery/anesthetic_machine/source_machine = attached_machine
