@@ -35,6 +35,7 @@
 				if(istype(atoms_near, success_type))
 					result_amount[1]++
 					continue
+			qdel(atoms_near)
 		if(result_amount[1] != result_amount[2])
 			TEST_FAIL("Ash Rituals: [spawned_ritual.type] did not produce the expected amount of result items.")
 		if(result_amount[1] == 0 && !(spawned_ritual.ritual_bitflags & ASH_RITUAL_NO_RESULT))
