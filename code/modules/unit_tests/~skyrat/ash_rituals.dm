@@ -54,7 +54,7 @@
 	var/current_age = ashie_aging.current_stage
 	aging_ritual.ritual_start(our_rune)
 	if(ashie_aging.current_stage != (current_age + 1))
-		TEST_FAIL("Ash Rituals: [aging_ritual.type] did not age the ashwalker correctly (expected [current_age + 1], recieved [ashie_aging.current_stage]!")
+		TEST_FAIL("Ash Rituals: [aging_ritual.type] did not age the ashwalker correctly (expected [current_age + 1], recieved [ashie_aging.current_stage])!")
 	qdel(aging_ritual)
 
 	qdel(our_human)

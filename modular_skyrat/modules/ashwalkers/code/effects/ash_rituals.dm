@@ -137,6 +137,7 @@
 
 /datum/ash_ritual/summon_lavaland_creature
 	name = "Summon Lavaland Creature"
+	ritual_bitflags = ASH_RITUAL_NO_RESULT
 	required_components = list(
 		"North" = /obj/item/organ/internal/regenerative_core,
 		"South" = /mob/living/simple_animal/hostile/asteroid/ice_whelp,
@@ -162,6 +163,7 @@
 
 /datum/ash_ritual/summon_icemoon_creature
 	name = "Summon Icemoon Creature"
+	ritual_bitflags = ASH_RITUAL_NO_RESULT
 	required_components = list(
 		"North" = /obj/item/organ/internal/regenerative_core,
 		"South" = /obj/item/food/grown/surik,
