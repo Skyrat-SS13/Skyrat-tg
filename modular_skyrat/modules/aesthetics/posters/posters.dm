@@ -41,11 +41,6 @@
 	desc = "This poster has one word on it, 'ULTRA'; it depicts a smiling pill next to a beaker. Ominous."
 	icon_state = "poster_sr_ultra"
 
-/obj/structure/sign/poster/contraband/secborg_vale
-	name = "Defaced Valeborg Advertisement"
-	desc = "This poster originally sought to advertise the sleek utility of the valeborg - but it seems to have been long since defaced. One word lies on top; 'RUN.' - Perhaps fitting, considering the security model shown."
-	icon_state = "poster_sr_valeborg"
-
 /obj/structure/sign/poster/contraband/killingjoke // I like Batman :)))
 	name = "You don't have to be crazy to work here - but it sure helps!"
 	desc = "A poster boldly stating that being insane abord Nanotrasen stations isn't required. But it doesn't hurt to have!"
