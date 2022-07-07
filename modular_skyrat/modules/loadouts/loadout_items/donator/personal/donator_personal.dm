@@ -345,7 +345,7 @@
 
 /datum/loadout_item/toys/voodooplush
 	name = "Voodoo Doll"
-	item_path = /obj/item/toy/plush/skyrat/donator/voodoo
+	item_path = /obj/item/toy/plush/skyrat/voodoo
 	ckeywhitelist = list("gamerguy14948")
 
 /datum/loadout_item/mask/octusvox
@@ -411,12 +411,12 @@
 
 /datum/loadout_item/toys/immovable_rod_plush
 	name = "Immovable Rod Plushie"
-	item_path = /obj/item/toy/plush/skyrat/donator/immovable_rod
+	item_path = /obj/item/toy/plush/skyrat/immovable_rod
 	ckeywhitelist = list("tobjv")
 
 /datum/loadout_item/toys/tesh_plush
 	name = "Squish-Me-Tesh Plush"
-	item_path = /obj/item/toy/plush/skyrat/donator/tesh
+	item_path = /obj/item/toy/plush/skyrat/tesh
 	ckeywhitelist = list("tobjv")
 
 /datum/loadout_item/under/jumpsuit/redhosneck
@@ -443,7 +443,7 @@
 
 /datum/loadout_item/toys/plushe_winrow
     name = "Dark and Brooding Lizard Plushie"
-    item_path = /obj/item/toy/plush/skyrat/donator/plushie_winrow
+    item_path = /obj/item/toy/plush/skyrat/plushie_winrow
 
 /datum/loadout_item/head/recruiter_cap
 	name = "Recruiter's Cap"
