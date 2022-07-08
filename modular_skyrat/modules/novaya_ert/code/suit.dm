@@ -1,3 +1,17 @@
+#define NRI_ARMOR_POWEROFF list(25, 25, 25, 25, 25, 25, 30, 30, 30, 10)
+
+#define NRI_ARMOR_POWERON list(40, 40, 40, 40, 60, 75, 50, 50, 50, 40)
+
+#define NRI_POWERUSE_HIT 100
+#define NRI_POWERUSE_HEAL 150
+
+#define NRI_COOLDOWN_HEAL 10 SECONDS
+#define NRI_COOLDOWN_RADS 20 SECONDS
+#define NRI_COOLDOWN_ACID 20 SECONDS
+
+#define NRI_HEAL_AMOUNT 10
+#define NRI_BLOOD_REPLENISHMENT 20
+
 /obj/item/clothing/suit/armor/vest/russian
 	name = "\improper B23 combined armor vest"
 	desc = "A B23 combined body armor designed to protect the torso from bullets, shrapnel and blunt force. This vest performed well in the Border War against SolFed, but NRI required significant design changes due to the enemy's new and improved weaponry. These models were recently phased out and then quickly found their way onto the black market, now commonly seen in the hands (or on the bodies) of insurgents."
@@ -43,3 +57,88 @@
 	icon_state = "russian_heavy_armor_old"
 	armor = list(MELEE = 50, BULLET = 50, LASER = 40, ENERGY = 40, BOMB = 75, BIO = 60, FIRE = 45, ACID = 45, WOUND = 20)
 	slowdown = 2
+
+/obj/item/clothing/head/helmet/space/hev_suit/nri
+	name = "\improper VOSKHOD powered combat armor helmet"
+	desc = "A composite graphene-plasteel helmet with a ballistic nylon inner padding, complete with a deployable airtight polycarbonate visor and respirator system. 'НРИ - Оборонная Коллегия' is imprinted on the back."
+	icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecucloth.dmi'
+	worn_icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecumob.dmi'
+	worn_icon_digi = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecumob_muzzled.dmi'
+	icon_state = "hecu_helm"
+	inhand_icon_state = "sec_helm"
+	armor = list(MELEE = 25, BULLET = 25, LASER = 25, ENERGY = 25, BOMB = 25, BIO = 20, FIRE = 20, ACID = 20, WOUND = 10)
+	flags_inv = HIDEHAIR
+	obj_flags = NO_MAT_REDEMPTION
+	supports_variations_flags = NONE
+	resistance_flags = FIRE_PROOF|UNACIDABLE|ACID_PROOF|FREEZE_PROOF
+	clothing_flags = STOPSPRESSUREDAMAGE|SNUG_FIT|BLOCK_GAS_SMOKE_EFFECT
+	clothing_traits = null
+	flags_cover = HEADCOVERSEYES | PEPPERPROOF
+	flash_protect = null
+	visor_flags_inv = HIDEMASK|HIDEEYES|HIDEFACE|HIDEFACIALHAIR
+	visor_flags = STOPSPRESSUREDAMAGE
+	slowdown = 0
+
+/obj/item/clothing/suit/space/hev_suit/nri
+	name = "\improper VOSKHOD powered combat armor"
+	desc = "A hybrid set of space-resistant armor built on a modified mass-produced Nomex-Aerogel flight suit, polyurea coated durathread-lined light plasteel plates hinder mobility as little as possible while the onboard life support system aids the user in combat. The power cell is what makes the armor work without hassle, a sticker in the power supply unit warns anyone reading to responsibly manage battery levels."
+	icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecucloth.dmi'
+	worn_icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecumob.dmi'
+	worn_icon_digi = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecumob_digi.dmi'
+	icon_state = "hecu_vest"
+	armor = list(MELEE = 25, BULLET = 25, LASER = 25, ENERGY = 25, BOMB = 25, BIO = 20, FIRE = 20, ACID = 20, WOUND = 10)
+	flags_inv = null
+	allowed = list(/obj/item/gun, /obj/item/ammo_box,/obj/item/ammo_casing, /obj/item/melee/baton, /obj/item/melee/energy/sword, /obj/item/restraints/handcuffs, /obj/item/tank/internals)
+	cell = /obj/item/stock_parts/cell/bluespace
+	actions_types = list(/datum/action/item_action/hev_toggle, /datum/action/item_action/hev_toggle_notifs)
+	resistance_flags = FIRE_PROOF|UNACIDABLE|ACID_PROOF|FREEZE_PROOF
+	clothing_flags = STOPSPRESSUREDAMAGE|SNUG_FIT|BLOCKS_SHOVE_KNOCKDOWN
+
+	activation_song = null //No nice song.
+
+	logon_sound = 'modular_skyrat/modules/hev_suit/sound/nri/01_hev_logon.ogg' //don't tell anyone that we've used russian HEV sounds
+	armor_sound = 'modular_skyrat/modules/hev_suit/sound/nri/02_powerarmor_on.ogg'
+	atmospherics_sound = 'modular_skyrat/modules/hev_suit/sound/nri/03_atmospherics_on.ogg'
+	vitalsigns_sound = 'modular_skyrat/modules/hev_suit/sound/nri/04_vitalsigns_on.ogg'
+	automedic_sound = 'modular_skyrat/modules/hev_suit/sound/nri/05_automedic_on.ogg'
+	weaponselect_sound = 'modular_skyrat/modules/hev_suit/sound/nri/06_weaponselect_on.ogg'
+	munitions_sound = 'modular_skyrat/modules/hev_suit/sound/nri/07_munitionview_on.ogg'
+	communications_sound = 'modular_skyrat/modules/hev_suit/sound/nri/08_communications_on.ogg'
+	safe_day_sound = 'modular_skyrat/modules/hev_suit/sound/nri/09_safe_day.ogg'
+
+	batt_50_sound = 'modular_skyrat/modules/hev_suit/sound/nri/power_level_is_fifty.ogg'
+	batt_40_sound = 'modular_skyrat/modules/hev_suit/sound/nri/power_level_is_fourty.ogg'
+	batt_30_sound = 'modular_skyrat/modules/hev_suit/sound/nri/power_level_is_thirty.ogg'
+	batt_20_sound = 'modular_skyrat/modules/hev_suit/sound/nri/power_level_is_twenty.ogg'
+	batt_10_sound = 'modular_skyrat/modules/hev_suit/sound/nri/power_level_is_ten.ogg'
+
+	near_death_sound = 'modular_skyrat/modules/hev_suit/sound/nri/near_death.ogg'
+	health_critical_sound = 'modular_skyrat/modules/hev_suit/sound/nri/health_critical.ogg'
+	health_dropping_sound = 'modular_skyrat/modules/hev_suit/sound/nri/health_dropping2.ogg'
+
+	blood_loss_sound = 'modular_skyrat/modules/hev_suit/sound/nri/blood_loss.ogg'
+	blood_toxins_sound = 'modular_skyrat/modules/hev_suit/sound/nri/blood_toxins.ogg'
+	biohazard_sound = 'modular_skyrat/modules/hev_suit/sound/nri/biohazard_detected.ogg'
+	chemical_sound = 'modular_skyrat/modules/hev_suit/sound/nri/chemical_detected.ogg'
+
+	minor_fracture_sound = 'modular_skyrat/modules/hev_suit/sound/nri/minor_fracture.ogg'
+	major_fracture_sound = 'modular_skyrat/modules/hev_suit/sound/nri/major_fracture.ogg'
+	minor_lacerations_sound = 'modular_skyrat/modules/hev_suit/sound/nri/minor_lacerations.ogg'
+	major_lacerations_sound = 'modular_skyrat/modules/hev_suit/sound/nri/major_lacerations.ogg'
+
+	morphine_sound = 'modular_skyrat/modules/hev_suit/sound/nri/morphine_shot.ogg'
+	wound_sound = 'modular_skyrat/modules/hev_suit/sound/nri/wound_sterilized.ogg'
+	antitoxin_sound = 'modular_skyrat/modules/hev_suit/sound/nri/antitoxin_shot.ogg'
+	antidote_sound = 'modular_skyrat/modules/hev_suit/sound/nri/antidote_shot.ogg'
+
+	radio_channel = RADIO_CHANNEL_CENTCOM
+
+	armor_poweroff = NRI_ARMOR_POWEROFF
+	armor_poweron = NRI_ARMOR_POWERON
+	heal_amount = NRI_HEAL_AMOUNT
+	blood_replenishment = NRI_BLOOD_REPLENISHMENT
+	health_static_cooldown = NRI_COOLDOWN_HEAL
+	rads_static_cooldown = NRI_COOLDOWN_RADS
+	acid_static_cooldown = NRI_COOLDOWN_ACID
+	suit_name = "VOSKHOD"
+	first_use = FALSE //No nice song.
