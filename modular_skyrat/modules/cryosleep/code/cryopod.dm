@@ -398,6 +398,13 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 		if(antag)
 			tgui_alert(target, "You're \a [antag.name]! [AHELP_FIRST_MESSAGE]")
 
+	if(LAZYLEN(target.buckled_mobs) > 0)
+		if(target == user)
+			to_chat(user, span_danger("You can't fit into the cryopod while someone is buckled to you."))
+		else
+			to_chat(user, span_danger("You can't fit [target] into the cryopod while someone is buckled to them."))
+		return
+
 	if(!istype(target) || !can_interact(user) || !target.Adjacent(user) || !ismob(target) || isanimal(target) || !istype(user.loc, /turf) || target.buckled)
 		return
 		// rerun the checks in case of shenanigans

@@ -31,7 +31,7 @@
 /obj/item/summon_beacon/examine()
 	. = ..()
 	. += span_warning("Caution: Only works in [area_string].")
-	. += span_notice("Currently selected: [selected_atom ? selected_atom.name : "None"].")
+	. += span_notice("Currently selected: [selected_atom ? initial(selected_atom.name) : "None"].")
 
 /obj/item/summon_beacon/attack_self(mob/user)
 	if(!can_use_beacon(user))
@@ -86,7 +86,7 @@
 		balloon_alert(user, "can't call here!")
 		return
 
-	var/confirmed = tgui_alert(user, "Are you sure you want to call [selected_atom.name] here?", "Confirmation", list("Yes", "No"))
+	var/confirmed = tgui_alert(user, "Are you sure you want to call [initial(selected_atom.name)] here?", "Confirmation", list("Yes", "No"))
 	if(confirmed != "Yes")
 		return
 
@@ -146,92 +146,6 @@
 
 	area_string = "atmospherics"
 	supply_pod_stay = TRUE
-
-/obj/item/summon_beacon/command_drobe
-	name = "command outfitting beacon"
-	desc = "Delivers a command outfitting station to the target location."
-
-	allowed_areas = list(
-		/area/station/command/bridge,
-		/area/station/command/heads_quarters/captain,
-		/area/station/command/heads_quarters/hop,
-	)
-
-	selectable_atoms = list(
-		/obj/machinery/vending/access/command,
-	)
-
-	area_string = "the bridge"
-
-/obj/item/summon_beacon/borgi
-	name = "E-N beacon"
-	desc = "Delivers a lovable borgi to the target location."
-
-	allowed_areas = list(
-		/area/station/science/robotics,
-	)
-
-	selectable_atoms = list(
-		/mob/living/simple_animal/pet/dog/corgi/borgi,
-	)
-
-	area_string = "robotics"
-
-/obj/item/summon_beacon/poppy
-	name = "engineering possum beacon"
-	desc = "Delivers the engineering possum, Poppy, to the target location."
-
-	allowed_areas = list(
-		/area/station/engineering,
-	)
-
-	selectable_atoms = list(
-		/mob/living/simple_animal/pet/poppy,
-	)
-
-	area_string = "engineering"
-
-/obj/item/summon_beacon/bumbles
-	name = "Bumbles beacon"
-	desc = "Delivers hydreponics' bee, Bumbles, to the target location."
-
-	allowed_areas = list(
-		/area/station/service/hydroponics,
-	)
-
-	selectable_atoms = list(
-		/mob/living/simple_animal/pet/bumbles,
-	)
-
-	area_string = "hydroponics"
-
-/obj/item/summon_beacon/markus
-	name = "cargo corgi beacon"
-	desc = "Delivers Markus, the mascot of cargo, to the target location."
-
-	allowed_areas = list(
-		/area/station/cargo,
-	)
-
-	selectable_atoms = list(
-		/mob/living/simple_animal/pet/dog/markus,
-	)
-
-	area_string = "cargo"
-
-/obj/item/summon_beacon/secmed
-	name = "security medic locker beacon"
-	desc = "Delivers a security medic's locker to the target location."
-
-	allowed_areas = list(
-		/area/station/security/medical,
-	)
-
-	selectable_atoms = list(
-		/obj/structure/closet/secure_closet/security_medic,
-	)
-
-	area_string = "the medical ward of security"
 
 /obj/item/summon_beacon/vanguard
 	name = "vanguard operatives supply beacon"

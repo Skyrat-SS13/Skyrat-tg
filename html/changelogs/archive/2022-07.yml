@@ -168,3 +168,136 @@
   tf-4:
   - rscadd: You can now buy hunter buckshot in the mining vendor.
   - bugfix: Hunter buckshot in cargo now reports the right amount per box.
+2022-07-03:
+  GoldenAlpharex:
+  - bugfix: Fixed the "Return" spell for the Bluespace Technician (and all of the
+      quick IC spawned humans).
+  - bugfix: Fixed gun safeties and fire mode toggle being inaccessible.
+  Jolly:
+  - bugfix: Delta arrivals should be fixed. If you didn't notice anything, well, congratulations!!
+  tf-4:
+  - rscdel: Hunter buckshot is now inaccessible
+2022-07-04:
+  Gandalf2k15:
+  - bugfix: Summon beacons now function again.
+  Ghommie:
+  - bugfix: fixed the augments tab in the character menu not working unless you had
+      "Allow Mismatched Parts" enabled.
+  Jolly:
+  - bugfix: On BlueShift, an external airlock near sec has had its all access define
+      fixed.
+  - bugfix: on BlueShift, the active turf generated from the indestructible file has
+      been fixed.
+  - bugfix: On BlueShift, Starboard Maintenance is no longer wedged in Atmos, its
+      been replaced with "Lesser Atmospherics Maintenance".
+  - bugfix: For Ice Ashwalkers, atmos related mishaps shouldn't be an issue anymore.
+      Or maybe you didn't notice the air is now always cold.
+  - bugfix: On BlueShift, the reported missing turnstiles have been replaced with
+      sec doors. They'll also cycle with the other doors in the small area.
+  Melbert:
+  - code_imp: Some traits which mistakenly were sourced from a hard reference are
+      no longer.
+  SkyratBot:
+  - rscadd: Furry Pride large spraypaint added to spraycans
+  - rscdel: removes movement and combat mode from the status tab
+  - bugfix: fixed crystalizer passing any item as the user and causing a runtime
+  - qol: There is now a new preference in Game Preferences, Suppress All Ghost Rolls.
+      If you tick this preference, you will not get a singular window pop-up whenever
+      a Ghost Role is available. Intended for the few who really do need it.
+  - admin: Admins get another additional preference where Suppress All Ghost Roles
+      only works while they are currently in an adminned state. They will still get
+      ghost rolls normally when they are in a deadminned state.
+  - balance: Pluoxium now heals oxygen damage when breathed
+  - refactor: Orbit UI has been reworked.
+  - bugfix: you start with the right amount of breathing mask again
+  capsaicinz:
+  - bugfix: 'ashtongue no longer shares a language key with draconic. (new key: l)'
+  tf-4:
+  - code_imp: The urban coat now uses GAGS.
+  - code_imp: The polychromic duster and peacoat have been converted to GAGS.
+2022-07-05:
+  Guillaume Prata:
+  - qol: Miners rejoice! A few of the mostly useless and spammy messages that get
+      send to your chat were changed to balloon alerts or straight up removed. Hopefully,
+      you will have an easier time listening to the radio chatter now.
+  SkyratBot:
+  - code_imp: removes a stray verb call from the status tab
+  - balance: The supermatter running into you is no longer just as deadly as you running
+      into the supermatter.
+  - refactor: Changed how canister calculate their overpressure/overtemp damage. No
+      gameplay changes expected.
+2022-07-06:
+  GoldenAlpharex:
+  - bugfix: Trapdoors can no longer start broken because of the decay subsystem.
+  Guillaume Prata:
+  - imageadd: The QM's RPG trim icon got updated to use Command's blue instead of
+      the old cargo brown.
+  Jureiia:
+  - rscadd: Pencilskirts added as an option in the loadout.
+  Melbert:
+  - balance: Nettles and Deathnettles are now normal sized, up from tiny. (Number
+      per plant bag has decreased from 100 to 33.)
+  SkyratBot:
+  - bugfix: Fix Confusion and Self-Respiration virus symptoms to appear at final stage.
+  - bugfix: Fixes the Herald being able to drag it's mirror around.
+  - bugfix: fixes a major oversight with steal gun objectives
+  - admin: experiment completion are now logged in research.html
+  - bugfix: icebox pumps now match the standard of every other map
+  Zonespace27:
+  - bugfix: Ash ritual circles can no longer be moved
+  capsaicinz:
+  - bugfix: corp. reg. manual is now readable.
+  - config: set the skyrat wiki link to the most up-to-date one.
+2022-07-07:
+  Crumpaloo, jlsnow301, JohnFulpWillard:
+  - rscadd: Typing indicators now use your speech bubble type, rather than all being
+      the same, so Cyborgs no longer look like a human when typing, and Lawyers have
+      that cool speech bubble again.
+  Deek-Za:
+  - bugfix: Prevents a cryopod from breaking permanently through a particular exploit.
+  Gandalf2k15:
+  - rscadd: 'A new automapper subsystem, please report any anomalies to: https://github.com/Skyrat-SS13/Skyrat-tg/pull/14679'
+  GoldenAlpharex:
+  - bugfix: The Skrell preview icon in the species menu will now properly look like
+      a Skrell.
+  Mr_yourface13:
+  - bugfix: All Skrell no longer have corporate mandated moustaches and neck hair.
+      We also shaved your knees.
+  SkyratBot:
+  - bugfix: pAI screens light up with an alert when there's a personality to download!
+  - bugfix: made plastic flaps in MetaStation deliveries area transparent
+  - bugfix: Fixed sec vestibule maintenance
+  - bugfix: Fixes the Structural Weakpoint Objective to do a normal, smaller explosion,
+      especially on Lowpop(~20) and gives the objective a lower weight.
+  - refactor: Reworked the wiring in AI Sats incorporating multiple layered wiring.
+  Zonespace27:
+  - bugfix: Ashen Necklace now takes away ashtongue as intended when removed
+  tf-4:
+  - bugfix: Modular contraband seeds in the seed vendor are now contraband once again.
+2022-07-08:
+  Guillaume Prata:
+  - qol: You fold roller beds and bodybags with a right click instead of click and
+      dragging into you.
+  - qol: You can use any sharp object to cut a bodybag's tag instead of being forced
+      to use a wirecutter.
+  Jolly:
+  - rscadd: 'KC13 (The big ruin with the drone spawners) has received some new room
+      types. bal: [KC13] The ruin now starts DEPOWERED. As some mild compensation,
+      there are more batteries in the ruin. Please don''t swallow them.'
+  - qol: KC13 has been spruced up a bit, aesthetically speaking.
+  - qol: '[KC13] Converted any full tile windows to the "hollow" window spawners (the
+      one with 4 thin windows)'
+  - bugfix: '[KC13] Fixed the stacked old AI turret in the AI upload hall.'
+  - bugfix: '[KC13] Fixed some wall mount items not being directional (icky var edits).'
+  SkyratBot:
+  - bugfix: The changeling tentacle power now properly functions the way its description
+      says it does.
+  - bugfix: Kilostation had a few areas in space around the ordnance test site fixed
+      up.
+  - balance: removes the BMP spawns that are out in bum-fuck nowhere.
+  - bugfix: fixes the lack of air in the BMP asteroid spawns.
+  - bugfix: fixed an incorrect disposals junction in Tramstation Medical department
+  - bugfix: Syndicate fission360 apps work again
+  - code_imp: Code for Academy, Challenge, Spacebattle, and Wild West away missions
+      has been removed
+  - rscdel: Wild West Gateway (Skyrat version) has been removed
