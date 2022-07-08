@@ -162,11 +162,6 @@
 	desc = "A unique hybrid set of space-resistant armor made for high-ranking NRI operatives, built on a proprietary durathread padded, Akulan made Larr'Takh silk utility uniform. Polyurea coated hexagraphene-lined plastitanium plates hinder mobility as little as possible while the onboard life support system aids the user in combat. The power cell is what makes the armor work without hassle, a sticker in the power supply unit warns anyone reading to responsibly manage battery levels."
 	icon_state = "nri_captain"
 
-/obj/item/clothing/head/helmet/space/hev_suit/nri/captain
-	name = "\improper VOSKHOD-2 powered combat armor helmet"
-	desc = "A black composite polyurea coated graphene-plastitanium helmet with durathread inner padding, complete with a deployable airtight tinted plasmaglass visor and a kevlar-lined respirator system. 'НРИ - Оборонная Коллегия' is imprinted on the back."
-	icon_state = "nri_captain"
-
 /obj/item/clothing/suit/space/hev_suit/nri/medic
 	name = "\improper VOSKHOD-KH powered combat armor"
 	desc = "A hybrid set of space-resistant armor built on a modified mass-produced Dipolyester-Aerogel surgeon field jumpsuit, polyurea coated titanium plates hinder mobility as little as possible while the onboard life support system aids the user in combat and provides additional medical functions. The power cell is what makes the armor work without hassle, a sticker in the power supply unit warns anyone reading to responsibly manage battery levels."

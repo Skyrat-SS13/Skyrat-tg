@@ -26,7 +26,7 @@
 	mask = /obj/item/clothing/mask/gas/hecu2
 	belt = /obj/item/storage/belt/military/nri/full_heavy
 	suit_store = /obj/item/gun/ballistic/automatic/pistol/aps
-	backpack_contents = list(/obj/item/storage/box/nri_survival_pack, /obj/item/storage/medkit/emergency, /obj/item/clothing/mask/balaclavaadjust)
+	backpack_contents = list(/obj/item/storage/box/nri_survival_pack, /obj/item/storage/medkit/emergency, /obj/item/clothing/mask/balaclavaadjust, /obj/item/advanced_choice_beacon/nri/heavy)
 	l_pocket = /obj/item/wrench/combat
 
 	id_trim = /datum/id_trim/nri/heavy
@@ -47,7 +47,7 @@
 	name = "Novaya Rossiyskaya Imperiya Corpsman"
 	head = /obj/item/clothing/head/helmet/space/hev_suit/nri/medic
 	glasses = /obj/item/clothing/glasses/hud/health/night
-	suit = /obj/item/clothing/suit/space/hev_suit/nri/captain
+	suit = /obj/item/clothing/suit/space/hev_suit/nri/medic
 	suit_store = /obj/item/gun/ballistic/automatic/plastikov/nri
 	gloves = /obj/item/clothing/gloves/color/latex/nitrile
 	belt = /obj/item/storage/belt/military/nri/full_support
@@ -57,10 +57,12 @@
 
 /datum/outfit/centcom/ert/nri/engineer
 	name = "Novaya Rossiyskaya Imperiya Combat Engineer"
+	head = /obj/item/clothing/head/helmet/space/hev_suit/nri/engineer
 	glasses = /obj/item/clothing/glasses/meson/night
+	suit = /obj/item/clothing/suit/space/hev_suit/nri/engineer
 	suit_store = /obj/item/gun/ballistic/automatic/plastikov/nri
 	belt = /obj/item/storage/belt/military/nri/full_support
-	backpack_contents = list(/obj/item/storage/box/nri_survival_pack, /obj/item/clothing/mask/balaclavaadjust, /obj/item/clothing/accessory/armband/engine, /obj/item/construction/rcd/loaded/upgraded, /obj/item/clothing/glasses/welding)
+	backpack_contents = list(/obj/item/storage/box/nri_survival_pack, /obj/item/clothing/mask/balaclavaadjust, /obj/item/clothing/accessory/armband/engine, /obj/item/construction/rcd/loaded/upgraded, /obj/item/clothing/glasses/welding, /obj/item/advanced_choice_beacon/nri/engineer)
 
 	l_hand = /obj/item/storage/belt/utility/full/powertools
 

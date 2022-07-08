@@ -1,13 +1,68 @@
+/obj/item/advanced_choice_beacon
+	name = "advanced choice beacon"
+	desc = "A beacon that will send whatever your heart desires, providing Nanotrasen approves it."
+	icon = 'icons/obj/device.dmi'
+	icon_state = "gangtool-red"
+	inhand_icon_state = "radio"
+
+	var/list/possible_choices = list()
+
+	var/pod_style = STYLE_CENTCOM
+
+/obj/item/advanced_choice_beacon/attack_self(mob/user, modifiers)
+	if(canUseBeacon(user))
+		display_options(user)
+
+/obj/item/advanced_choice_beacon/proc/canUseBeacon(mob/living/user)
+	if(user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
+		return TRUE
+	else
+		playsound(src, 'sound/machines/buzz-sigh.ogg', 40, TRUE)
+		return FALSE
+
+
+/obj/item/advanced_choice_beacon/proc/display_options(mob/user)
+	var/list/radial_build = get_available_options()
+
+	if(!radial_build)
+		return
+
+	var/chosen_option = show_radial_menu(user, src, radial_build, radius = 40, tooltips = TRUE)
+
+	if(!chosen_option)
+		return
+
+	podspawn(list(
+		"target" = get_turf(src),
+		"style" = pod_style,
+		"spawn" = chosen_option,
+	))
+
+	qdel(src)
+
+/obj/item/advanced_choice_beacon/proc/get_available_options()
+	var/list/options = list()
+	for(var/iterating_choice in possible_choices)
+		var/obj/our_object = iterating_choice
+		var/datum/radial_menu_choice/option = new
+		option.image = image(icon = initial(our_object.icon), icon_state = initial(our_object.icon_state))
+		option.info = span_boldnotice("[initial(our_object.desc)]")
+
+		options[our_object] = option
+
+	sort_list(options)
+
+	return options
+
+
 /obj/item/advanced_choice_beacon/nri
 	name = "\improper NRI Defense Colleague supply beacon"
 	desc = "Used to request your job supplies, use in hand to do so!"
 
-	possible_choices = list(/obj/structure/closet/crate/secure/exp_corps)
-
 /obj/item/advanced_choice_beacon/nri/get_available_options()
 	var/list/options = list()
 	for(var/iterating_choice in possible_choices)
-		var/obj/structure/closet/crate/secure/exp_corps/our_crate = iterating_choice
+		var/obj/structure/closet/crate/secure/weapon/nri/our_crate = iterating_choice
 		var/datum/radial_menu_choice/option = new
 		option.image = image(icon = initial(our_crate.icon), icon_state = initial(our_crate.icon_state))
 		option.info = span_boldnotice("[initial(our_crate.loadout_desc)]")
@@ -71,12 +126,18 @@
 	name = "military supplies crate"
 	desc = "A secure military-grade crate. According to the markings, -as well as mixed Cyrillics-, it was shipped and provided by the NRI Defense Colleague."
 	req_access = list(ACCESS_CENT_GENERAL)
+	var/loadout_desc = "Whoever picks this is might be busy debugging this copypasted code."
 
 //base, don't use this, but leaving it for admin spawns is probably a good call? (no because it's literally freaking empty lmfao)
 /obj/structure/closet/crate/secure/weapon/nri/PopulateContents()
 	return null
 
 //defensive engineering loadout
+/obj/structure/closet/crate/secure/weapon/nri/engineer/defense
+	name = "defensive engineering supplies"
+	loadout_desc = "An assortment of engineering supplies finely tuned for quick fortification.\
+	 Features barricades, building materials, extra large fuel tank and 5.6mm defensive autoturrets."
+
 /obj/structure/closet/crate/secure/weapon/nri/engineer/defense/PopulateContents()
 	new /obj/item/storage/barricade(src)
 	new /obj/item/storage/barricade(src)
@@ -97,6 +158,11 @@
 	new /obj/item/rcd_ammo/large(src)
 
 //offensive engineering loadout
+/obj/structure/closet/crate/secure/weapon/nri/engineer/offense
+	name = "offensive engineering supplies"
+	loadout_desc = "An assortment of engineering supplies finely tuned for rapid approach and suppresion.\
+	 Features a smaller amount of barricades and building materials than its more defensive analogue, but includes NRI-issued viscerator grenades, as well as a combat RCD."
+
 /obj/structure/closet/crate/secure/weapon/nri/engineer/offense/PopulateContents()
 	new /obj/item/storage/barricade(src)
 	new /obj/item/stack/sheet/mineral/sandbags/fifty(src)
@@ -111,6 +177,11 @@
 	new /obj/item/rcd_ammo/large(src)
 
 //defensive heavy loadout
+/obj/structure/closet/crate/secure/weapon/nri/heavy/defense
+	name = "defensive heavy supplies"
+	loadout_desc = "An assortment of heavy soldier supplies finely tuned for stationary fire suppression and explosive fortifications.\
+	 Features a smaller amount of barricades and building materials than its more defensive analogue, but includes NRI-issue viscerator grenades, as well as a combat RCD."
+
 /obj/structure/closet/crate/secure/weapon/nri/heavy/defense/PopulateContents()
 	new /obj/item/mounted_machine_gun_folded(src)
 	new /obj/item/ammo_box/magazine/mmg_box(src)
@@ -125,6 +196,13 @@
 	new /obj/item/minespawner/explosive(src)
 
 //offensive heavy loadout
+/obj/structure/closet/crate/secure/weapon/nri/heavy/offense
+	name = "offensive heavy supplies"
+	loadout_desc = "An assortment of heavy soldier supplies finely tuned for rapid approach and munition support.\
+	 Features FTU's standard pulse MMG with two spare ammo boxes, as well as ammunition for Krinkov and PP-542.\
+		And a bonus frag grenade."
+
+
 /obj/structure/closet/crate/secure/weapon/nri/heavy/offense/PopulateContents()
 	new /obj/item/gun/ballistic/automatic/pitbull/pulse/r40(src)
 	new /obj/item/ammo_box/magazine/pulse/r40(src)
