@@ -48,7 +48,7 @@
 
 /datum/supply_pack/goody/nri_rations
 	name = "Surplus NRI Combat Ration"
-	desc = "A single surplus ration pack from the NRI Defense Colleague. Comes with a standard-issue selection of food used and approved by their military."
+	desc = "A single surplus ration pack from the NRI Defense Colleague. Comes with a standard-issue selection of food selected and approved by at least one Imperial regiment."
 	cost = PAYCHECK_COMMAND * 1 //It's about two times less nourishing so why not.
 	contains = list(/obj/item/storage/box/nri_rations)
 
