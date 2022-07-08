@@ -9,7 +9,7 @@
 
 /obj/item/clothing/suit/armor/vest/russian/nri
 	name = "\improper B42M combined armor vest"
-	desc = "NRI mass-produced body armor designed for protection against bullets, shrapnel and blunt force. A thin layer of experimental alloy provides limited protection against laser and energy."
+	desc = "NRI's mass-produced body armor designed for protection against bullets, shrapnel and blunt force. A thin layer of experimental alloy provides limited protection against laser and energy."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "russian_green_armor"
@@ -20,7 +20,7 @@
 
 /obj/item/clothing/suit/armor/heavy/nri
 	name = "\improper Cordun-M armor system"
-	desc = "A strong set of full-body armor designed for harsh environments. It has nothing in it to aid the user's movement."
+	desc = "A robust set of full-body armor designed for the harshest of environments. A modern set of heavy armor recently implemented by NRI Defense Colleague to accomodate with modern specifications. While a combination of lighter materials and a passive internal exoskeleton might assist the user's movement, you'll still be as slow as a snail."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "russian_heavy_armor"
@@ -37,11 +37,9 @@
 
 /obj/item/clothing/suit/armor/heavy/nri/old
 	name = "\improper REDUT armor system"
-	desc = "A robust set of full-body armor designed for harsh environments. After the NRI withdrew them, these models found their way onto the black market and have been rarely used by freelance mercenaries and planetary militias ever since, because they have nothing in them to aid the user's movement."
+	desc = "A strong set of full-body armor designed for harsh environments. After the NRI withdrew them, these models found their way onto the black market and have been rarely used by freelance mercenaries and planetary militias ever since, because of their relatively low cost."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "russian_heavy_armor_old"
-	armor = list(MELEE = 50, BULLET = 50, LASER = 40, ENERGY = 50, BOMB = 75, BIO = 60, FIRE = 45, ACID = 45, WOUND = 20)
+	armor = list(MELEE = 50, BULLET = 50, LASER = 40, ENERGY = 40, BOMB = 75, BIO = 60, FIRE = 45, ACID = 45, WOUND = 20)
 	slowdown = 2
-	equip_delay_self = 5 SECONDS
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
