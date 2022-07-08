@@ -57,3 +57,39 @@
 	desc = "A heavy Russian combat helmet with a strong ballistic visor. Alt+click to adjust."
 	icon_state = "russian_heavy_helmet_old"
 	armor = list(MELEE = 50, BULLET = 50, LASER = 40, ENERGY = 50, BOMB = 75, BIO = 60, FIRE = 45, ACID = 45, WOUND = 20)
+
+/obj/item/clothing/head/helmet/space/hev_suit/nri
+	name = "\improper VOSKHOD powered combat armor helmet"
+	desc = "A composite graphene-plasteel helmet with a ballistic nylon inner padding, complete with a deployable airtight polycarbonate visor and respirator system. 'НРИ - Оборонная Коллегия' is imprinted on the back."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/head_muzzled.dmi'
+	icon_state = "nri_soldier"
+	inhand_icon_state = "sec_helm"
+	armor = list(MELEE = 25, BULLET = 25, LASER = 25, ENERGY = 25, BOMB = 25, BIO = 20, FIRE = 20, ACID = 20, WOUND = 10)
+	flags_inv = HIDEHAIR
+	obj_flags = NO_MAT_REDEMPTION
+	supports_variations_flags = NONE
+	resistance_flags = FIRE_PROOF|UNACIDABLE|ACID_PROOF|FREEZE_PROOF
+	clothing_flags = STOPSPRESSUREDAMAGE|SNUG_FIT|BLOCK_GAS_SMOKE_EFFECT
+	clothing_traits = null
+	flags_cover = HEADCOVERSEYES | PEPPERPROOF
+	flash_protect = FLASH_PROTECTION_FLASH
+	visor_flags_inv = HIDEMASK|HIDEEYES|HIDEFACE|HIDEFACIALHAIR
+	visor_flags = STOPSPRESSUREDAMAGE
+	slowdown = 0
+
+/obj/item/clothing/head/helmet/space/hev_suit/nri/captain
+	name = "\improper VOSKHOD-2 powered combat armor helmet"
+	desc = "A black composite polyurea coated graphene-plastitanium helmet with durathread inner padding, complete with a deployable airtight tinted plasmaglass visor and a kevlar-lined respirator system. 'НРИ - Оборонная Коллегия' is imprinted on the back."
+	icon_state = "nri_captain"
+
+/obj/item/clothing/head/helmet/space/hev_suit/nri/medic
+	name = "\improper VOSKHOD-KH powered combat armor helmet"
+	desc = "A combat medic's composite graphene-titanium helmet with bio-resistant padding, complete with a deployable airtight polycarbonate visor and optimized respirator system. 'НРИ - Оборонная Коллегия' is imprinted on the back."
+	icon_state = "nri_medic"
+
+/obj/item/clothing/head/helmet/space/hev_suit/nri/engineer
+	name = "\improper VOSKHOD-IN powered combat armor helmet"
+	desc = "A composite tungsten-plasteel helmet with a lead-lined ballistic nylon inner padding, complete with a deployable airtight polycarbonate visor and respirator system. 'НРИ - Оборонная Коллегия' is imprinted on the back."
+	icon_state = "nri_engineer"

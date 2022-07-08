@@ -1,11 +1,11 @@
 /datum/outfit/centcom/ert/nri
 	name = "Novaya Rossiyskaya Imperiya Soldier"
-	head = /obj/item/clothing/head/helmet/rus_helmet/nri
+	head = /obj/item/clothing/head/helmet/space/hev_suit/nri
 	glasses = /obj/item/clothing/glasses/night
 	ears = /obj/item/radio/headset/headset_cent/alt/with_key
 	mask = /obj/item/clothing/mask/gas/hecu2
 	uniform = /obj/item/clothing/under/costume/nri
-	suit = /obj/item/clothing/suit/armor/vest/russian/nri
+	suit = /obj/item/clothing/suit/space/hev_suit/nri
 	suit_store = /obj/item/gun/ballistic/automatic/akm/modern
 	gloves = /obj/item/clothing/gloves/combat
 	belt = /obj/item/storage/belt/military/nri/full
@@ -33,18 +33,21 @@
 
 /datum/outfit/centcom/ert/nri/commander
 	name = "Novaya Rossiyskaya Imperiya Platoon Commander"
-	head = /obj/item/clothing/head/beret/sec/nri
+	head = /obj/item/clothing/head/helmet/space/hev_suit/nri/captain
 	glasses = /obj/item/clothing/glasses/thermal/eyepatch
 	belt = /obj/item/storage/belt/military/nri/full
+	suit = /obj/item/clothing/suit/space/hev_suit/nri/captain
 	suit_store = /obj/item/gun/ballistic/automatic/akm/modern
 	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
-	backpack_contents = list(/obj/item/storage/box/nri_survival_pack, /obj/item/storage/medkit/regular, /obj/item/clothing/mask/balaclavaadjust, /obj/item/clothing/accessory/armband, /obj/item/megaphone, /obj/item/binoculars, /obj/item/clothing/head/helmet/rus_helmet/nri)
+	backpack_contents = list(/obj/item/storage/box/nri_survival_pack, /obj/item/storage/medkit/regular, /obj/item/clothing/mask/balaclavaadjust, /obj/item/clothing/accessory/armband, /obj/item/megaphone, /obj/item/binoculars, /obj/item/clothing/head/beret/sec/nri)
 
 	id_trim = /datum/id_trim/nri/commander
 
 /datum/outfit/centcom/ert/nri/medic
 	name = "Novaya Rossiyskaya Imperiya Corpsman"
+	head = /obj/item/clothing/head/helmet/space/hev_suit/nri/medic
 	glasses = /obj/item/clothing/glasses/hud/health/night
+	suit = /obj/item/clothing/suit/space/hev_suit/nri/captain
 	suit_store = /obj/item/gun/ballistic/automatic/plastikov/nri
 	gloves = /obj/item/clothing/gloves/color/latex/nitrile
 	belt = /obj/item/storage/belt/military/nri/full_support
@@ -57,7 +60,7 @@
 	glasses = /obj/item/clothing/glasses/meson/night
 	suit_store = /obj/item/gun/ballistic/automatic/plastikov/nri
 	belt = /obj/item/storage/belt/military/nri/full_support
-	backpack_contents = list(/obj/item/storage/box/nri_survival_pack, /obj/item/clothing/mask/balaclavaadjust, /obj/item/clothing/accessory/armband/engine, /obj/item/construction/rcd/combat, /obj/item/clothing/glasses/welding)
+	backpack_contents = list(/obj/item/storage/box/nri_survival_pack, /obj/item/clothing/mask/balaclavaadjust, /obj/item/clothing/accessory/armband/engine, /obj/item/construction/rcd/loaded/upgraded, /obj/item/clothing/glasses/welding)
 
 	l_hand = /obj/item/storage/belt/utility/full/powertools
 
@@ -76,9 +79,11 @@
 	belt = /obj/item/gun/ballistic/revolver/nagant
 	back = /obj/item/storage/backpack/satchel/leather
 	backpack_contents = list(/obj/item/storage/box/nri_survival_pack, /obj/item/ammo_box/n762, /obj/item/ammo_box/n762, /obj/item/suppressor, /obj/item/knife/combat)
+	l_pocket = null
+	r_pocket = null
 	shoes = /obj/item/clothing/shoes/combat/swat
 	id = /obj/item/card/id/advanced/centcom/ert/nri
-	id_trim = /datum/id_trim/nri/major
+	id_trim = /datum/id_trim/nri/diplomat/major
 
 /datum/outfit/centcom/ert/nri/scientist
 	name = "Novaya Rossiyskaya Imperiya Research Inspector"
@@ -93,9 +98,11 @@
 	belt = /obj/item/clipboard
 	back = /obj/item/storage/backpack/satchel/leather
 	backpack_contents = list(/obj/item/storage/box/nri_survival_pack, /obj/item/melee/baton/telescopic, /obj/item/gun/energy/e_gun/mini)
+	l_pocket = null
+	r_pocket = null
 	shoes = /obj/item/clothing/shoes/sneakers/brown
 	id = /obj/item/card/id/advanced/centcom/ert/nri
-	id_trim = /datum/id_trim/nri/scientist
+	id_trim = /datum/id_trim/nri/diplomat/scientist
 
 /datum/outfit/centcom/ert/nri/doctor
 	name = "Novaya Rossiyskaya Imperiya Medical Inspector"
@@ -110,10 +117,12 @@
 	belt = /obj/item/clipboard
 	back = /obj/item/storage/backpack/satchel/leather
 	backpack_contents = list(/obj/item/storage/box/nri_survival_pack, /obj/item/gun/ballistic/automatic/pistol, /obj/item/ammo_box/magazine/m9mm, /obj/item/storage/medkit/expeditionary, /obj/item/melee/baton/telescopic)
+	l_pocket = null
+	r_pocket = null
 	shoes = /obj/item/clothing/shoes/sneakers/brown
 	id = /obj/item/card/id/advanced/centcom/ert/nri
-	id_trim = /datum/id_trim/nri/doctor
+	id_trim = /datum/id_trim/nri/diplomat/doctor
 
 /datum/outfit/centcom/ert/nri/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	return
-	//Two reasons for this; one, Russians arent NT and dont need implants used mostly for NT-sympathizers. Two, the HUD looks ugly with the blue mindshield outline.
+	//Two reasons for this; one, Russians aren't NT and dont need implants used mostly for NT-sympathizers. Two, the HUD looks ugly with the blue mindshield outline.

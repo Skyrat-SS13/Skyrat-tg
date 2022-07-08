@@ -74,7 +74,7 @@
 	clothing_flags = STOPSPRESSUREDAMAGE|SNUG_FIT|BLOCK_GAS_SMOKE_EFFECT
 	clothing_traits = null
 	flags_cover = HEADCOVERSEYES | PEPPERPROOF
-	flash_protect = null
+	flash_protect = FLASH_PROTECTION_FLASH
 	visor_flags_inv = HIDEMASK|HIDEEYES|HIDEFACE|HIDEFACIALHAIR
 	visor_flags = STOPSPRESSUREDAMAGE
 	slowdown = 0
@@ -114,7 +114,7 @@
 
 	near_death_sound = 'modular_skyrat/modules/hev_suit/sound/nri/near_death.ogg'
 	health_critical_sound = 'modular_skyrat/modules/hev_suit/sound/nri/health_critical.ogg'
-	health_dropping_sound = 'modular_skyrat/modules/hev_suit/sound/nri/health_dropping2.ogg'
+	health_dropping_sound = 'modular_skyrat/modules/hev_suit/sound/nri/health_dropping.ogg'
 
 	blood_loss_sound = 'modular_skyrat/modules/hev_suit/sound/nri/blood_loss.ogg'
 	blood_toxins_sound = 'modular_skyrat/modules/hev_suit/sound/nri/blood_toxins.ogg'
@@ -156,3 +156,23 @@
 	background_icon_state = "bg_nri"
 	icon_icon = 'modular_skyrat/modules/novaya_ert/icons/toggles.dmi'
 	button_icon_state = "sound"
+
+/obj/item/clothing/suit/space/hev_suit/nri/captain
+	name = "\improper VOSKHOD-2 powered combat armor"
+	desc = "A unique hybrid set of space-resistant armor made for high-ranking NRI operatives, built on a proprietary durathread padded, Akulan made Larr'Takh silk utility uniform. Polyurea coated hexagraphene-lined plastitanium plates hinder mobility as little as possible while the onboard life support system aids the user in combat. The power cell is what makes the armor work without hassle, a sticker in the power supply unit warns anyone reading to responsibly manage battery levels."
+	icon_state = "nri_captain"
+
+/obj/item/clothing/head/helmet/space/hev_suit/nri/captain
+	name = "\improper VOSKHOD-2 powered combat armor helmet"
+	desc = "A black composite polyurea coated graphene-plastitanium helmet with durathread inner padding, complete with a deployable airtight tinted plasmaglass visor and a kevlar-lined respirator system. 'НРИ - Оборонная Коллегия' is imprinted on the back."
+	icon_state = "nri_captain"
+
+/obj/item/clothing/suit/space/hev_suit/nri/medic
+	name = "\improper VOSKHOD-KH powered combat armor"
+	desc = "A hybrid set of space-resistant armor built on a modified mass-produced Dipolyester-Aerogel surgeon field jumpsuit, polyurea coated titanium plates hinder mobility as little as possible while the onboard life support system aids the user in combat and provides additional medical functions. The power cell is what makes the armor work without hassle, a sticker in the power supply unit warns anyone reading to responsibly manage battery levels."
+	icon_state = "nri_medic"
+
+/obj/item/clothing/suit/space/hev_suit/nri/engineer
+	name = "\improper VOSKHOD-IN powered combat armor"
+	desc = "A hybrid set of space-resistant armor built on a modified Nanotrasen heavy-duty engineering undersuit, polyurea coated lead-lined light plasteel plates hinder mobility as little as possible and offer additional radiation protection while the onboard life support system aids the user in combat. The power cell is what makes the armor work without hassle, a sticker in the power supply unit warns anyone reading to responsibly manage battery levels."
+	icon_state = "nri_engineer"
