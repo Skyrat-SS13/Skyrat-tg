@@ -13,6 +13,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/camera/tv_camera, 32)
 	internal_radio = new /obj/item/radio(src)
 	internal_radio.keyslot = new radio_key
 	internal_radio.set_frequency(FREQ_TV)
+	internal_radio.canhear_range = 10
 	internal_radio.set_broadcasting(TRUE)
 	internal_radio.set_listening(FALSE)
 
