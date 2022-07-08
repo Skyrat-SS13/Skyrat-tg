@@ -33,3 +33,36 @@
 /obj/machinery/computer/security/telescreen/entertainment/Destroy()
 	. = ..()
 	QDEL_NULL(internal_radio)
+
+/obj/machinery/computer/security/wooden_tv/tv
+	name = "Old TV Monitor"
+	desc = "Humans call it a zombie screen. Sometimes they show Japanese cartoons on it"
+	circuit = /obj/item/circuitboard/computer/wooden_tv
+	network = list("tv","thunder")
+	var/obj/item/radio/internal_radio
+	var/radio_key = /obj/item/encryptionkey/tv
+	var/sound = TRUE
+
+/obj/machinery/computer/security/wooden_tv/tv/Initialize(mapload)
+	. = ..()
+	internal_radio = new /obj/item/radio(src)
+	internal_radio.keyslot = new radio_key
+	internal_radio.set_frequency(FREQ_TV)
+
+/obj/machinery/computer/security/wooden_tv/tv/examine()
+	. = ..()
+	. += "Ctrl + click toggles the sound. Sound indicator lights [sound ? "green" : "red"]"
+
+/obj/machinery/computer/security/wooden_tv/tv/CtrlClick(mob/user)
+	. = ..()
+	sound = !sound
+	internal_radio.set_on(sound)
+	internal_radio.set_frequency(FREQ_TV)
+	to_chat(user, "You have turned [sound ? "on" : "off"] the sound")
+
+/obj/machinery/computer/security/wooden_tv/tv/proc/announcement(var/message)
+	say(message)
+
+/obj/machinery/computer/security/wooden_tv/tv/Destroy()
+	. = ..()
+	QDEL_NULL(internal_radio)

@@ -14,3 +14,15 @@
 	materials = list(/datum/material/iron = 200, /datum/material/glass = 50)
 	build_path = /obj/item/tv_radio
 	category = list("initial","Misc")
+
+/obj/item/circuitboard/computer/wooden_tv
+	name = "TV BOX"
+	build_path = /obj/machinery/computer/security/wooden_tv/tv
+
+/datum/design/board/wooden_tv
+	name = "Computer Design (TV BOX)"
+	desc = "Allows for the construction of circuit boards used to build a TV BOX."
+	id = "atmosalerts"
+	build_path = /obj/item/circuitboard/computer/wooden_tv
+	category = list("Computer Boards")
+	departmental_flags = DEPARTMENT_BITFLAG_ENGINEERING

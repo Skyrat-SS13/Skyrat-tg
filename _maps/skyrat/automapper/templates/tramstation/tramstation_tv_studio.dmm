@@ -96,8 +96,16 @@
 /area/station/service/tv_studio)
 "iN" = (
 /obj/structure/table,
-/obj/item/tv_radio,
 /obj/machinery/light/directional/east,
+/obj/item/tv_radio{
+	pixel_y = 19
+	},
+/obj/item/tv_radio{
+	pixel_y = 13
+	},
+/obj/item/tv_radio{
+	pixel_y = 4
+	},
 /turf/open/floor/iron/large,
 /area/station/service/tv_studio)
 "iR" = (
@@ -227,8 +235,10 @@
 /area/station/service/tv_studio)
 "tM" = (
 /obj/structure/table,
-/obj/item/tv_radio,
 /obj/effect/decal/cleanable/dirt,
+/obj/item/circuitboard/computer/wooden_tv,
+/obj/item/circuitboard/computer/wooden_tv,
+/obj/item/circuitboard/computer/wooden_tv,
 /turf/open/floor/iron/large,
 /area/station/service/tv_studio)
 "uc" = (
@@ -460,7 +470,7 @@
 /obj/structure/table,
 /obj/machinery/computer/security/telescreen{
 	name = "TV Record Screen";
-	network = list("tv")
+	network = list("tv","thunder")
 	},
 /turf/open/floor/iron/large,
 /area/station/service/tv_studio)
@@ -552,7 +562,6 @@
 /area/station/service/tv_studio)
 "YD" = (
 /obj/structure/table,
-/obj/item/tv_radio,
 /obj/machinery/firealarm/directional/east,
 /turf/open/floor/iron/large,
 /area/station/service/tv_studio)

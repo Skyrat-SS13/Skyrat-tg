@@ -151,6 +151,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/camera/tv_camera, 32)
 			else
 				for(var/obj/machinery/computer/security/telescreen/entertainment/TV in GLOB.machines)
 					TV.announcement(str)
+				for(var/obj/machinery/computer/security/wooden_tv/tv/TV_WOODEN in GLOB.machines)
+					TV_WOODEN.announcement(str)
 				to_chat(user, "Announcement successfully completed")
 				annonceReload = TRUE
 			addtimer(VARSET_CALLBACK(src, annonceReload, FALSE), 256 SECONDS)

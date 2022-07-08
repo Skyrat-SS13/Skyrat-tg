@@ -211,8 +211,10 @@
 /area/station/service/tv_studio)
 "pm" = (
 /obj/structure/table,
-/obj/item/tv_radio,
 /obj/machinery/light/directional/south,
+/obj/item/circuitboard/computer/wooden_tv,
+/obj/item/circuitboard/computer/wooden_tv,
+/obj/item/circuitboard/computer/wooden_tv,
 /turf/open/floor/iron,
 /area/station/service/tv_studio)
 "pR" = (
@@ -491,7 +493,7 @@
 /obj/machinery/computer/security/telescreen{
 	dir = 8;
 	name = "TV Record Screen";
-	network = list("tv")
+	network = list("tv","thunder")
 	},
 /turf/open/floor/iron/large,
 /area/station/service/tv_studio)
@@ -505,7 +507,15 @@
 /area/station/service/tv_studio)
 "PT" = (
 /obj/structure/table,
-/obj/item/tv_radio,
+/obj/item/tv_radio{
+	pixel_y = 19
+	},
+/obj/item/tv_radio{
+	pixel_y = 13
+	},
+/obj/item/tv_radio{
+	pixel_y = 4
+	},
 /turf/open/floor/iron,
 /area/station/service/tv_studio)
 "PU" = (
