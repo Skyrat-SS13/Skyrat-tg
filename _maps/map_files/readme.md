@@ -29,3 +29,6 @@ UPDATE LOG:
 06:45 20/02/2022 - Jake Park - Hardset all non-modular maps to upstream.
 18:40 12/04/2022 - ErdinyoBarboza - TramStation has been once again made skyrat compliant.
 11:22 27/05/2022 - Zonespace - Reset all nonmodular maps to upstream
+17:05 25/06/2022 - Jolly66 - Reset all non-modular maps to upstream.
+14:24 30/06/2022 - Jolly66 - Reset modular Tram to be CI compliant.
+18:17 30/06/2022 - Jolly66 - Reset ALL maps. Modular bits included to our modular maps.

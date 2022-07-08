@@ -46,6 +46,11 @@
 		RegisterSignal(SSdcs, COMSIG_GLOB_TRAPDOOR_LINK, .proc/on_link_requested)
 	else
 		RegisterSignal(assembly, COMSIG_ASSEMBLY_PULSED, .proc/toggle_trapdoor)
+	// SKYRAT EDIT START - Trapdoors shouldn't be targeted by SSDecay.
+	if(isturf(parent))
+		var/turf/turf_parent = parent
+		turf_parent.turf_flags &= ~CAN_DECAY_BREAK_1
+	// SKYRAT EDIT END
 
 /datum/component/trapdoor/UnregisterFromParent()
 	. = ..()

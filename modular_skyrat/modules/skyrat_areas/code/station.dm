@@ -71,6 +71,8 @@
 	icon = 'modular_skyrat/modules/skyrat_areas/icons/areas_station.dmi'
 	icon_state = "atmos_maint_port"
 
+/area/station/maintenance/department/engine/atmos/lesser
+	name = "Lesser Atmospherics Maintenance"
 
 /area/station/maintenance/department/security/lesser
 	name = "Lesser Security Maintenance"
