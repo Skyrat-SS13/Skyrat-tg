@@ -551,6 +551,9 @@
 	},
 /obj/machinery/door/firedoor,
 /obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 1
+	},
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/bar)
 "dJ" = (
@@ -756,6 +759,9 @@
 	req_access = list("syndicate")
 	},
 /obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 8
+	},
 /turf/open/floor/iron/white/side{
 	dir = 4
 	},
@@ -1463,6 +1469,9 @@
 	},
 /obj/machinery/door/firedoor,
 /obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 8
+	},
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/testlab)
 "mp" = (
@@ -3131,6 +3140,7 @@
 	name = "Cargo Bay"
 	},
 /obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /turf/open/floor/iron/dark,
 /area/ruin/syndicate_lava_base/cargo)
 "DT" = (
@@ -3319,10 +3329,11 @@
 /turf/open/floor/catwalk_floor/iron,
 /area/ruin/syndicate_lava_base/dormitories)
 "Fo" = (
-/obj/structure/dresser,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 1
 	},
+/obj/item/bedsheet/dorms,
+/obj/structure/bed,
 /turf/open/floor/wood,
 /area/ruin/syndicate_lava_base/dormitories)
 "Fu" = (
@@ -4202,6 +4213,9 @@
 	},
 /obj/machinery/door/firedoor,
 /obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 4
+	},
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/medbay)
 "OD" = (
@@ -4681,6 +4695,9 @@
 	},
 /obj/machinery/door/firedoor,
 /obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 1
+	},
 /turf/open/floor/iron/dark/side{
 	dir = 1
 	},
@@ -5049,6 +5066,15 @@
 	},
 /turf/open/floor/iron,
 /area/ruin/syndicate_lava_base/main)
+"XI" = (
+/obj/machinery/door/airlock/public/glass{
+	name = "Bar"
+	},
+/obj/machinery/door/firedoor,
+/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper,
+/turf/open/floor/iron,
+/area/ruin/syndicate_lava_base/bar)
 "XO" = (
 /obj/machinery/firealarm/directional/east{
 	dir = 8
@@ -5063,10 +5089,16 @@
 /turf/open/floor/iron/kitchen,
 /area/ruin/syndicate_lava_base/bar)
 "XS" = (
-/obj/structure/bed,
-/obj/item/bedsheet/dorms,
-/turf/open/floor/wood,
-/area/ruin/syndicate_lava_base/dormitories)
+/obj/machinery/door/airlock/research{
+	name = "Science Division"
+	},
+/obj/machinery/door/firedoor,
+/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/syndicate_lava_base/testlab)
 "XT" = (
 /turf/open/floor/iron/dark,
 /area/ruin/syndicate_lava_base/bar)
@@ -5148,8 +5180,9 @@
 /turf/open/floor/iron/kitchen,
 /area/ruin/syndicate_lava_base/bar)
 "YM" = (
-/obj/structure/dresser,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
+/obj/structure/bed,
+/obj/item/bedsheet/dorms,
 /turf/open/floor/wood,
 /area/ruin/syndicate_lava_base/dormitories)
 "YO" = (
@@ -6037,7 +6070,7 @@ ZN
 ZN
 rv
 zF
-XS
+gG
 Qq
 jt
 zF
@@ -6046,7 +6079,7 @@ Jd
 zF
 jt
 Qq
-XS
+gG
 zF
 ab
 ab
@@ -6083,9 +6116,9 @@ ca
 de
 kf
 kf
-mk
+XS
 Pc
-mk
+XS
 kf
 kf
 kf
@@ -6680,7 +6713,7 @@ ZU
 CN
 ju
 Zo
-dz
+XI
 KW
 sF
 sF
@@ -6798,7 +6831,7 @@ ZU
 zP
 Sh
 Zo
-dz
+XI
 sF
 sF
 sF
