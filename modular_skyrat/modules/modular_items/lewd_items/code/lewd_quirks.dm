@@ -6,7 +6,7 @@
 	///Whether the trauma will be displayed on a scanner or kiosk
 	var/display_scanner = TRUE
 
-/datum/brain_trauma/special/bimbo
+/datum/brain_trauma/very_special/bimbo
 	name = "Permanent hormonal disruption"
 	desc = "The patient has completely lost the ability to form speech and seems extremely aroused."
 	scan_desc = "permanent hormonal disruption"
@@ -41,7 +41,7 @@
 /**
  * If we are not satisfied, this will be ran through
  */
-/datum/brain_trauma/special/bimbo/proc/try_unsatisfied()
+/datum/brain_trauma/very_special/bimbo/proc/try_unsatisfied()
 	var/mob/living/carbon/human/human_owner = owner
 	//we definitely need an owner; but if you are satisfied, just return
 	if(satisfaction || !human_owner)
@@ -72,14 +72,14 @@
 /**
  * If we have climaxed, return true
  */
-/datum/brain_trauma/special/bimbo/proc/check_climaxed()
+/datum/brain_trauma/very_special/bimbo/proc/check_climaxed()
 	if(owner.has_status_effect(/datum/status_effect/climax))
 		stress = 0
 		satisfaction = 300
 		return TRUE
 	return FALSE
 
-/datum/brain_trauma/special/bimbo/on_life()
+/datum/brain_trauma/very_special/bimbo/on_life()
 	var/mob/living/carbon/human/human_owner = owner
 
 	//Check if we climaxed, if so, just stop for now
@@ -128,14 +128,14 @@
 /**
  * If we have another human in view, return true
  */
-/datum/brain_trauma/special/bimbo/proc/in_company()
+/datum/brain_trauma/very_special/bimbo/proc/in_company()
 	for(var/mob/living/carbon/human/human_check in oview(owner, 4))
 		if(!istype(human_check))
 			continue
 		return TRUE
 	return FALSE
 
-/datum/brain_trauma/special/bimbo/handle_speech(datum/source, list/speech_args)
+/datum/brain_trauma/very_special/bimbo/handle_speech(datum/source, list/speech_args)
 	if(!HAS_TRAIT(owner, TRAIT_BIMBO)) //You have the trauma but not the trait, go ahead and fail here
 		return ..()
 	var/message = speech_args[SPEECH_MESSAGE]
@@ -150,7 +150,7 @@
 	message = jointext(split_message, " ")
 	speech_args[SPEECH_MESSAGE] = message
 
-/datum/brain_trauma/special/bimbo/on_gain()
+/datum/brain_trauma/very_special/bimbo/on_gain()
 	SEND_SIGNAL(owner, COMSIG_ADD_MOOD_EVENT, "bimbo", /datum/mood_event/bimbo)
 	if(!HAS_TRAIT_FROM(owner, TRAIT_BIMBO, LEWDCHEM_TRAIT))
 		ADD_TRAIT(owner, TRAIT_BIMBO, LEWDCHEM_TRAIT)
@@ -158,7 +158,7 @@
 	if(!HAS_TRAIT_FROM(owner, TRAIT_MASOCHISM, APHRO_TRAIT))
 		ADD_TRAIT(owner, TRAIT_MASOCHISM, APHRO_TRAIT)
 
-/datum/brain_trauma/special/bimbo/on_lose()
+/datum/brain_trauma/very_special/bimbo/on_lose()
 	SEND_SIGNAL(owner, COMSIG_CLEAR_MOOD_EVENT, "bimbo", /datum/mood_event/bimbo)
 	if(HAS_TRAIT_FROM(owner, TRAIT_BIMBO, LEWDCHEM_TRAIT))
 		REMOVE_TRAIT(owner, TRAIT_BIMBO, LEWDCHEM_TRAIT)
@@ -200,7 +200,7 @@
 *	NEVERBONER
 */
 
-/datum/brain_trauma/special/neverboner
+/datum/brain_trauma/very_special/neverboner
 	name = "Loss of libido"
 	desc = "The patient has completely lost sexual interest."
 	scan_desc = "lack of libido"
@@ -209,11 +209,11 @@
 	random_gain = FALSE
 	resilience = TRAUMA_RESILIENCE_ABSOLUTE
 
-/datum/brain_trauma/special/neverboner/on_gain()
+/datum/brain_trauma/very_special/neverboner/on_gain()
 	var/mob/living/carbon/human/affected_human = owner
 	ADD_TRAIT(affected_human, TRAIT_NEVERBONER, APHRO_TRAIT)
 
-/datum/brain_trauma/special/neverboner/on_lose()
+/datum/brain_trauma/very_special/neverboner/on_lose()
 	var/mob/living/carbon/human/affected_human = owner
 	REMOVE_TRAIT(affected_human, TRAIT_NEVERBONER, APHRO_TRAIT)
 
@@ -234,14 +234,14 @@
 /datum/quirk/sadism/post_add()
 	. = ..()
 	var/mob/living/carbon/human/affected_human = quirk_holder
-	affected_human.gain_trauma(/datum/brain_trauma/special/sadism, TRAUMA_RESILIENCE_ABSOLUTE)
+	affected_human.gain_trauma(/datum/brain_trauma/very_special/sadism, TRAUMA_RESILIENCE_ABSOLUTE)
 
 /datum/quirk/sadism/remove()
 	. = ..()
 	var/mob/living/carbon/human/affected_human = quirk_holder
-	affected_human?.cure_trauma_type(/datum/brain_trauma/special/sadism, TRAUMA_RESILIENCE_ABSOLUTE)
+	affected_human?.cure_trauma_type(/datum/brain_trauma/very_special/sadism, TRAUMA_RESILIENCE_ABSOLUTE)
 
-/datum/brain_trauma/special/sadism
+/datum/brain_trauma/very_special/sadism
 	name = "Sadism"
 	desc = "The subject's cerebral pleasure centers are more active when someone is suffering."
 	scan_desc = "sadistic tendencies"
@@ -251,7 +251,7 @@
 	random_gain = FALSE
 	resilience = TRAUMA_RESILIENCE_ABSOLUTE
 
-/datum/brain_trauma/special/sadism/on_life(delta_time, times_fired)
+/datum/brain_trauma/very_special/sadism/on_life(delta_time, times_fired)
 	var/mob/living/carbon/human/affected_mob = owner
 	if(someone_suffering() && affected_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp))
 		affected_mob.adjustArousal(2)
@@ -259,7 +259,7 @@
 	else
 		SEND_SIGNAL(owner, COMSIG_CLEAR_MOOD_EVENT, "sadistic", /datum/mood_event/sadistic)
 
-/datum/brain_trauma/special/sadism/proc/someone_suffering()
+/datum/brain_trauma/very_special/sadism/proc/someone_suffering()
 	if(HAS_TRAIT(owner, TRAIT_BLIND))
 		return FALSE
 	for(var/mob/living/carbon/human/iterated_mob in oview(owner, 4))
