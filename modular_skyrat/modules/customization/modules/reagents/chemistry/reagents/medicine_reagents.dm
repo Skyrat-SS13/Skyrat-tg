@@ -7,10 +7,7 @@
 /datum/reagent/medicine/stimulants
 	process_flags = REAGENT_ORGANIC | REAGENT_SYNTHETIC //Syndicate developed 'accelerants' for synths?
 
-/datum/reagent/medicine/neo_jelly
-	process_flags = REAGENT_ORGANIC | REAGENT_SYNTHETIC //Should synthetic miners not be able to use pens? Up for a debate probably but for now lets leave their contents in
-
-/datum/reagent/medicine/lavaland_extract
+/datum/reagent/medicine/omnizine
 	process_flags = REAGENT_ORGANIC | REAGENT_SYNTHETIC
 
 /datum/reagent/medicine/leporazine
