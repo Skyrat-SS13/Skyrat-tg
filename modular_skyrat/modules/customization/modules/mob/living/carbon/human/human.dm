@@ -103,6 +103,10 @@
 	to_chat(usr, span_notice("[try_hide_mutant_parts ? "You try and hide your mutant body parts under your clothes." : "You no longer try and hide your mutant body parts"]"))
 	update_mutant_bodyparts()
 
+// Feign impairment verb
+#define DEFAULT_TIME 30
+#define MAX_TIME 36000 // 10 hours
+
 /mob/living/carbon/human/verb/acting()
 	set category = "IC"
 	set name = "Feign Impairment"
@@ -112,12 +116,12 @@
 		to_chat(usr, span_warning("You can't do this right now..."))
 		return
 
-	var/static/list/choices = list("drunkenness", "stuttering", "jittering", "stupidness")
+	var/static/list/choices = list("drunkenness", "stuttering", "jittering")
 	var/impairment = tgui_input_list(src, "Select an impairment to perform:", "Impairments", choices)
 	if(!impairment)
 		return
 
-	var/duration = tgui_input_number(src, "How long would you like to feign [impairment] for?", "Duration in seconds", 25, 36000)
+	var/duration = tgui_input_number(src, "How long would you like to feign [impairment] for?", "Duration in seconds", DEFAULT_TIME, MAX_TIME)
 	switch(impairment)
 		if("drunkenness")
 			SEND_SIGNAL(usr, COMSIG_ADD_MOOD_EVENT, "drunk", /datum/mood_event/drunk)
@@ -126,8 +130,6 @@
 			set_timed_status_effect(duration SECONDS, /datum/status_effect/speech/stutter, only_if_higher = TRUE)
 		if("jittering")
 			set_timed_status_effect(duration SECONDS, /datum/status_effect/jitter, only_if_higher = TRUE)
-		if("stupidness")
-			set_timed_status_effect(duration SECONDS, /datum/status_effect/speech/unintelligible, only_if_higher = TRUE)
 
 	if(duration)
 		addtimer(CALLBACK(src, .proc/acting_expiry, impairment), duration SECONDS)
@@ -135,18 +137,11 @@
 
 /mob/living/carbon/human/proc/acting_expiry(impairment)
 	if(impairment)
+		// Procs when fake impairment duration ends, useful for calling extra events to wrap up too
 		if(impairment == "drunkenness")
 			SEND_SIGNAL(usr, COMSIG_CLEAR_MOOD_EVENT, "drunk")
-
+		// Notify the user
 		to_chat(src, "You are no longer feigning [impairment].")
 
-/datum/status_effect/speech/unintelligible/handle_message(datum/source, list/message_args)
-	var/message = html_decode(message_args[1])
-	// This is simulating the TRAIT_UNINTELLIGIBLE_SPEECH without actually giving the trait
-	message = unintelligize(message)
-
-	message_args[1] = message
-
-	var/mob/living/living_source = source
-	if(!isliving(source) || living_source.has_status_effect(/datum/status_effect/speech/unintelligible))
-		return
+#undef DEFAULT_TIME
+#undef MAX_TIME
