@@ -115,8 +115,6 @@
 	var/mutable_appearance/mug_glow = mutable_appearance(icon, "maunamug_incand")
 	mug_glow.alpha = 255 * intensity
 	. += mug_glow
-<<<<<<< HEAD:code/modules/reagents/reagent_containers/maunamug.dm
-=======
 
 /obj/item/reagent_containers/glass/rag
 	name = "damp rag"
@@ -159,4 +157,3 @@
 
 	else if(istype(A) && (src in user))
 		start_cleaning(src, A, user)
->>>>>>> e0caf5f959d (Refactors cleaning into a component (#68156)):code/modules/reagents/reagent_containers/misc.dm
