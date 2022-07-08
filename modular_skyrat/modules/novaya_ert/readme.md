@@ -8,5 +8,6 @@ A new style ERT for our Russian downstreams, requested by them! It's a cool look
 
 ### Credits:
 Gandalf2k15 - Code and some icons.
+Stalkeros - Code.
 Ramirez - Icons and idea.
 Flavrius - Icons + misc.

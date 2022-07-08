@@ -1,6 +1,6 @@
 #define NRI_ARMOR_POWEROFF list(25, 25, 25, 25, 25, 25, 30, 30, 30, 10)
 
-#define NRI_ARMOR_POWERON list(40, 40, 40, 40, 60, 75, 50, 50, 50, 40)
+#define NRI_ARMOR_POWERON list(40, 50, 30, 40, 60, 75, 50, 50, 50, 40)
 
 #define NRI_POWERUSE_HIT 100
 #define NRI_POWERUSE_HEAL 150
@@ -61,10 +61,10 @@
 /obj/item/clothing/head/helmet/space/hev_suit/nri
 	name = "\improper VOSKHOD powered combat armor helmet"
 	desc = "A composite graphene-plasteel helmet with a ballistic nylon inner padding, complete with a deployable airtight polycarbonate visor and respirator system. 'НРИ - Оборонная Коллегия' is imprinted on the back."
-	icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecucloth.dmi'
-	worn_icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecumob.dmi'
-	worn_icon_digi = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecumob_muzzled.dmi'
-	icon_state = "hecu_helm"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/head_muzzled.dmi'
+	icon_state = "nri_soldier"
 	inhand_icon_state = "sec_helm"
 	armor = list(MELEE = 25, BULLET = 25, LASER = 25, ENERGY = 25, BOMB = 25, BIO = 20, FIRE = 20, ACID = 20, WOUND = 10)
 	flags_inv = HIDEHAIR
@@ -82,15 +82,15 @@
 /obj/item/clothing/suit/space/hev_suit/nri
 	name = "\improper VOSKHOD powered combat armor"
 	desc = "A hybrid set of space-resistant armor built on a modified mass-produced Nomex-Aerogel flight suit, polyurea coated durathread-lined light plasteel plates hinder mobility as little as possible while the onboard life support system aids the user in combat. The power cell is what makes the armor work without hassle, a sticker in the power supply unit warns anyone reading to responsibly manage battery levels."
-	icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecucloth.dmi'
-	worn_icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecumob.dmi'
-	worn_icon_digi = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecumob_digi.dmi'
-	icon_state = "hecu_vest"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/suit_digi.dmi'
+	icon_state = "nri_soldier"
 	armor = list(MELEE = 25, BULLET = 25, LASER = 25, ENERGY = 25, BOMB = 25, BIO = 20, FIRE = 20, ACID = 20, WOUND = 10)
 	flags_inv = null
 	allowed = list(/obj/item/gun, /obj/item/ammo_box,/obj/item/ammo_casing, /obj/item/melee/baton, /obj/item/melee/energy/sword, /obj/item/restraints/handcuffs, /obj/item/tank/internals)
 	cell = /obj/item/stock_parts/cell/bluespace
-	actions_types = list(/datum/action/item_action/hev_toggle, /datum/action/item_action/hev_toggle_notifs)
+	actions_types = list(/datum/action/item_action/hev_toggle/nri, /datum/action/item_action/hev_toggle_notifs/nri, /datum/action/item_action/toggle_spacesuit)
 	resistance_flags = FIRE_PROOF|UNACIDABLE|ACID_PROOF|FREEZE_PROOF
 	clothing_flags = STOPSPRESSUREDAMAGE|SNUG_FIT|BLOCKS_SHOVE_KNOCKDOWN
 
@@ -142,3 +142,17 @@
 	acid_static_cooldown = NRI_COOLDOWN_ACID
 	suit_name = "VOSKHOD"
 	first_use = FALSE //No nice song.
+
+/datum/action/item_action/hev_toggle/nri
+	name = "Toggle VOSKHOD Suit"
+	button_icon = 'modular_skyrat/modules/novaya_ert/icons/toggles.dmi'
+	background_icon_state = "bg_nri"
+	icon_icon = 'modular_skyrat/modules/novaya_ert/icons/toggles.dmi'
+	button_icon_state = "toggle"
+
+/datum/action/item_action/hev_toggle_notifs/nri
+	name = "Toggle VOSKHOD Suit Notifications"
+	button_icon = 'modular_skyrat/modules/novaya_ert/icons/toggles.dmi'
+	background_icon_state = "bg_nri"
+	icon_icon = 'modular_skyrat/modules/novaya_ert/icons/toggles.dmi'
+	button_icon_state = "sound"
