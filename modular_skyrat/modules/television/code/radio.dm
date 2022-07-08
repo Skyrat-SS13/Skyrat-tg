@@ -11,12 +11,13 @@
 	custom_materials = list(/datum/material/iron = 200, /datum/material/glass = 50)
 	var/obj/item/radio/internal_radio = null
 	var/radio_key = /obj/item/encryptionkey/tv
-	var/sound = TRUE
+	var/sound = FALSE
 
 /obj/item/tv_radio/Initialize(mapload)
 	. = ..()
 	internal_radio = new /obj/item/radio(src)
 	internal_radio.keyslot = new radio_key
+	internal_radio.set_on(sound)
 	internal_radio.set_frequency(FREQ_TV)
 
 /obj/item/tv_radio/examine()
