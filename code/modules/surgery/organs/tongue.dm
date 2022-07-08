@@ -524,10 +524,19 @@
 		tonal_indicator = mutable_appearance('icons/mob/talk.dmi', "signlang1", TYPING_LAYER)
 		owner.visible_message(span_notice("[owner] lowers [owner.p_their()] eyebrows."))
 	else if(exclamation_found)
-<<<<<<< HEAD
-		signer.visible_message(span_notice("[signer] raises [signer.p_their()] eyebrows."))
-	else if(question_found)
-		signer.visible_message(span_notice("[signer] lowers [signer.p_their()] eyebrows."))
+		tonal_indicator = mutable_appearance('icons/mob/talk.dmi', "signlang2", TYPING_LAYER)
+		owner.visible_message(span_notice("[owner] raises [owner.p_their()] eyebrows."))
+	if(!isnull(tonal_indicator) && owner?.client.typing_indicators)
+		owner.add_overlay(tonal_indicator)
+		tonal_timerid = addtimer(CALLBACK(src, .proc/remove_tonal_indicator), 2.5 SECONDS, TIMER_UNIQUE | TIMER_OVERRIDE)
+	else // If we're not gonna use it, just be sure we get rid of it
+		tonal_indicator = null
+
+/obj/item/organ/internal/tongue/tied/proc/remove_tonal_indicator()
+	if(isnull(tonal_indicator))
+		return
+	owner.cut_overlay(tonal_indicator)
+	tonal_indicator = null
 
 //SKYRAT MODULAR EDIT BEGIN
 /obj/item/organ/internal/tongue/dog
@@ -551,18 +560,3 @@
 	speaker.verb_whisper = initial(verb_whisper)
 	speaker.verb_sing = initial(verb_sing)
 	speaker.verb_yell = initial(verb_yell)
-=======
-		tonal_indicator = mutable_appearance('icons/mob/talk.dmi', "signlang2", TYPING_LAYER)
-		owner.visible_message(span_notice("[owner] raises [owner.p_their()] eyebrows."))
-	if(!isnull(tonal_indicator) && owner?.client.typing_indicators)
-		owner.add_overlay(tonal_indicator)
-		tonal_timerid = addtimer(CALLBACK(src, .proc/remove_tonal_indicator), 2.5 SECONDS, TIMER_UNIQUE | TIMER_OVERRIDE)
-	else // If we're not gonna use it, just be sure we get rid of it
-		tonal_indicator = null
-
-/obj/item/organ/internal/tongue/tied/proc/remove_tonal_indicator()
-	if(isnull(tonal_indicator))
-		return
-	owner.cut_overlay(tonal_indicator)
-	tonal_indicator = null
->>>>>>> 4f392cfb38c (Gives sign language users a unique speech indicator, as well as a new tonal indicator (#68231))
