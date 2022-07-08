@@ -348,7 +348,11 @@
 		/datum/language/xenocommon,
 		/datum/language/common,
 		/datum/language/draconic,
-		/datum/language/monkey))
+		/datum/language/monkey,
+		// SKYRAT ADDITION
+		/datum/language/xenoknockoff
+		// SKYRAT ADD END
+		))
 
 /obj/item/organ/internal/tongue/alien/Initialize(mapload)
 	. = ..()
