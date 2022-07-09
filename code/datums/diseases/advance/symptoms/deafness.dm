@@ -36,21 +36,26 @@
 	. = ..()
 	if(!.)
 		return
-	var/mob/living/carbon/M = A.affected_mob
-	var/obj/item/organ/internal/ears/ears = M.getorganslot(ORGAN_SLOT_EARS)
+	var/mob/living/carbon/infected_mob = A.affected_mob
+	var/obj/item/organ/internal/ears/ears = infected_mob.getorganslot(ORGAN_SLOT_EARS)
 	if(!ears)
 		return //cutting off your ears to cure the deafness: the ultimate own
 	switch(A.stage)
 		if(3, 4)
 			if(prob(base_message_chance) && !suppress_warning)
-				to_chat(M, span_warning("[pick("You hear a ringing in your ear.", "Your ears pop.")]"))
+				to_chat(infected_mob, span_warning("[pick("You hear a ringing in your ear.", "Your ears pop.")]"))
 		if(5)
 			if(power >= 2)
 				if(ears.damage < ears.maxHealth)
-					to_chat(M, span_userdanger("Your ears pop painfully and start bleeding!"))
+					to_chat(infected_mob, span_userdanger("Your ears pop painfully and start bleeding!"))
 					// Just absolutely murder me man
 					ears.applyOrganDamage(ears.maxHealth)
+<<<<<<< HEAD
 					M.emote("scream")
+=======
+					infected_mob.emote("scream")
+					ADD_TRAIT(infected_mob, TRAIT_DEAF, DISEASE_TRAIT)
+>>>>>>> f1c3b8af85d (Fixes a compile error caused by #68080 (0b7e5429273901c230bc5d8bf9864569232a1fa2) (#68282))
 			else
-				to_chat(M, span_userdanger("Your ears pop and begin ringing loudly!"))
+				to_chat(infected_mob, span_userdanger("Your ears pop and begin ringing loudly!"))
 				ears.deaf = min(20, ears.deaf + 15)
