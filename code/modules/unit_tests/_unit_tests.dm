@@ -68,11 +68,13 @@
 
 // SKYRAT EDIT START
 #include "~skyrat/opposing_force.dm"
+#include "~skyrat/automapper.dm"
 //SKYRAT EDIT END
 #include "achievements.dm"
 #include "anchored_mobs.dm"
 #include "anonymous_themes.dm"
 #include "autowiki.dm"
+#include "barsigns.dm"
 #include "bespoke_id.dm"
 #include "binary_insert.dm"
 #include "bloody_footprints.dm"
