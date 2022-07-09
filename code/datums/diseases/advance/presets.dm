@@ -37,7 +37,7 @@
 		if(chosen_symptom)
 			var/datum/symptom/S = new chosen_symptom
 			symptoms += S
-	from_miasma = caused_by_miasma
+	from_miasma = caused_by_miasma // SKYRAT EDIT ADDITION - Less annoying miasma
 	Refresh()
 
 	name = "Sample #[rand(1,10000)]"
