@@ -91,6 +91,15 @@
 /obj/item/storage/toolbox/emergency/turret/nri
 	name = "NRI stationary defense deployment system"
 	desc = "You feel a strange urge to hit this with a wrench."
+	icon = 'modular_skyrat/modules/novaya_ert/icons/turret_deployable.dmi'
+	icon_state = "inventory"
+	inhand_icon_state = "held"
+	lefthand_file = 'modular_skyrat/modules/novaya_ert/icons/turret_deployable.dmi'
+	righthand_file = 'modular_skyrat/modules/novaya_ert/icons/turret_deployable.dmi'
+	w_class = WEIGHT_CLASS_BULKY
+
+/obj/item/storage/toolbox/emergency/turret/nri/ComponentInitialize()
+	AddComponent(/datum/component/two_handed, require_twohands=TRUE)
 
 /obj/item/storage/toolbox/emergency/turret/nri/PopulateContents()
 	return null
@@ -101,21 +110,24 @@
 			span_danger("You bash [src] with [I]!"), null, COMBAT_MESSAGE_RANGE)
 		playsound(src, "sound/items/drill_use.ogg", 80, TRUE, -1)
 		var/obj/machinery/porta_turret/syndicate/pod/toolbox/nri/turret = new(get_turf(loc))
-		turret.faction = list(FACTION_STATION)
+		turret.faction = list("neutral")
 		qdel(src)
 
 	..()
 
 /obj/machinery/porta_turret/syndicate/pod/toolbox/nri
-	stun_projectile = /obj/projectile/bullet/advanced/b9mm/rubber
+	icon = 'modular_skyrat/modules/novaya_ert/icons/turret_deployable.dmi'
+	icon_state = "living"
+	base_icon_state = "living"
+	stun_projectile = /obj/projectile/bullet/advanced/b12mm/rubber
 	lethal_projectile = /obj/projectile/bullet/a762x39
 	max_integrity = 150
-	req_access = list(ACCESS_AWAY_SEC)
-	faction = list(FACTION_STATION)
+	req_access = list(ACCESS_CENT_GENERAL)
+	faction = list("neutral")
 	shot_delay = 0.5
 
 /mob/living/simple_animal/hostile/viscerator/nri
-	faction = list(FACTION_STATION)
+	faction = list("neutral")
 
 /obj/item/grenade/spawnergrenade/manhacks/nri
 	name = "viscerator delivery grenade"
@@ -160,8 +172,8 @@
 //offensive engineering loadout
 /obj/structure/closet/crate/secure/weapon/nri/engineer/offense
 	name = "offensive engineering supplies"
-	loadout_desc = "An assortment of engineering supplies finely tuned for rapid approach and suppresion.\
-	 Features a smaller amount of barricades and building materials than its more defensive analogue, but includes NRI-issued viscerator grenades, as well as a combat RCD."
+	loadout_desc = "An assortment of engineering supplies finely tuned for rapid approach defortification and area suppression.\
+	 Features way less barricades and building materials than its more defensive analogue, but includes NRI-issued viscerator grenades and a combat RCD."
 
 /obj/structure/closet/crate/secure/weapon/nri/engineer/offense/PopulateContents()
 	new /obj/item/storage/barricade(src)
@@ -180,7 +192,7 @@
 /obj/structure/closet/crate/secure/weapon/nri/heavy/defense
 	name = "defensive heavy supplies"
 	loadout_desc = "An assortment of heavy soldier supplies finely tuned for stationary fire suppression and explosive fortifications.\
-	 Features a smaller amount of barricades and building materials than its more defensive analogue, but includes NRI-issue viscerator grenades, as well as a combat RCD."
+	 Features a fifty calibre heavy machinegun with a lot of ammo to spare, as well as a bunch of explosive landmines."
 
 /obj/structure/closet/crate/secure/weapon/nri/heavy/defense/PopulateContents()
 	new /obj/item/mounted_machine_gun_folded(src)
