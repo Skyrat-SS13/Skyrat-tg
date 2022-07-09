@@ -909,7 +909,6 @@ SUBSYSTEM_DEF(job)
 		JobDebug("[debug_prefix] Error: [get_job_unavailable_error_message(JOB_UNAVAILABLE_BANNED, possible_job.title)], Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")
 		return JOB_UNAVAILABLE_BANNED
 
-<<<<<<< HEAD
 	//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
 	if(possible_job.veteran_only && !is_veteran_player(player.client))
 		JobDebug("[debug_prefix] Error: [get_job_unavailable_error_message(JOB_NOT_VETERAN)], Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")
@@ -935,9 +934,7 @@ SUBSYSTEM_DEF(job)
 	//SKYRAT EDIT END
 
 	// Run this check after is_banned_from since it can query the DB which may sleep.
-=======
 	// Need to recheck the player exists after is_banned_from since it can query the DB which may sleep.
->>>>>>> 80398698b93 (New player job selection fixes pack (#68208))
 	if(QDELETED(player))
 		JobDebug("[debug_prefix] player is qdeleted, Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")
 		return JOB_UNAVAILABLE_GENERIC
