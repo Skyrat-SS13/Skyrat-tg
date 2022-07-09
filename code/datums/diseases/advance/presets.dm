@@ -20,8 +20,12 @@
 /datum/disease/advance/random
 	name = "Experimental Disease"
 	copy_type = /datum/disease/advance
+	// SKYRAT EDIT ADDITION START - Less annoying miasma
+	/// Does this virus come from miasma? Defaults to FALSE, will fail to infect anyone that has already caught a miasma virus before.
+	var/from_miasma = FALSE
+	// SKYRAT EDIT END
 
-/datum/disease/advance/random/New(max_symptoms, max_level = 8)
+/datum/disease/advance/random/New(max_symptoms, max_level = 8, caused_by_miasma = FALSE) // SKYRAT EDIT - Less annoying miasma - ORIGINAL: /datum/disease/advance/random/New(max_symptoms, max_level = 8)
 	if(!max_symptoms)
 		max_symptoms = rand(1, VIRUS_SYMPTOM_LIMIT)
 	var/list/datum/symptom/possible_symptoms = list()
@@ -37,6 +41,7 @@
 		if(chosen_symptom)
 			var/datum/symptom/S = new chosen_symptom
 			symptoms += S
+	from_miasma = caused_by_miasma
 	Refresh()
 
 	name = "Sample #[rand(1,10000)]"
