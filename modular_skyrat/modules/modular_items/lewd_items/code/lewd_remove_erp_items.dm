@@ -68,7 +68,7 @@
 	if(CONFIG_GET(flag/disable_lewd_items))
 		return INITIALIZE_HINT_QDEL
 
-/obj/item/clothing/shoes/dominaheels/Initialize()
+/obj/item/clothing/shoes/latex_heels/domina_heels/Initialize()
 	. = ..()
 	if(CONFIG_GET(flag/disable_lewd_items))
 		return INITIALIZE_HINT_QDEL
