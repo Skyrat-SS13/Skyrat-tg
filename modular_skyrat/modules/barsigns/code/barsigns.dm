@@ -116,9 +116,11 @@
 	icon = "vault13"
 	desc = "Coincidence is intentional."
 
+/*
 /datum/barsign/thehive
 	name = "The Hive"
 	icon = "thehive"
+*/
 
 /datum/barsign/cantina
 	name = "Chalmun's Cantina"
