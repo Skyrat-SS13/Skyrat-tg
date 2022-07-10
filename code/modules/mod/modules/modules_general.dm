@@ -515,7 +515,7 @@
 			/obj/item/clothing/head/chefhat,
 			/obj/item/clothing/head/papersack,
 			/obj/item/clothing/head/caphat/beret
-			)
+			))
 			//Need to subtract the beret because its annoying
 
 /obj/item/mod/module/hat_stabilizer/on_suit_activation()
