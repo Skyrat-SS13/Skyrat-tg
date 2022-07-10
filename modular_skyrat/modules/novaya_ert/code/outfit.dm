@@ -11,8 +11,8 @@
 	belt = /obj/item/storage/belt/military/nri/full
 	back = /obj/item/storage/backpack/duffelbag/syndie/nri
 	backpack_contents = list(/obj/item/storage/box/nri_survival_pack, /obj/item/storage/medkit/emergency)
-	l_pocket = /obj/item/gun/ballistic/automatic/pistol
-	r_pocket = /obj/item/ammo_box/magazine/m9mm
+	l_pocket = /obj/item/gun/ballistic/automatic/pistol/ladon/nri
+	r_pocket = /obj/item/ammo_box/magazine/m9mm_aps
 	shoes = /obj/item/clothing/shoes/combat/swat
 
 	id = /obj/item/card/id/advanced/centcom/ert/nri
