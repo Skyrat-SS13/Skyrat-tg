@@ -7,12 +7,12 @@
 	category = list("initial","Misc")
 	departmental_flags = DEPARTMENT_BITFLAG_SERVICE
 
-/datum/design/tv_radio
-	name = "Pocket TV Radio"
-	id = "tv_radio"
+/datum/design/pocket_tv
+	name = "Pocket TV monitor"
+	id = "pocket_tv"
 	build_type = AUTOLATHE | PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = 200, /datum/material/glass = 50)
-	build_path = /obj/item/tv_radio
+	build_path = /obj/item/pocket_tv
 	category = list("initial","Misc")
 
 /obj/item/circuitboard/computer/wooden_tv
