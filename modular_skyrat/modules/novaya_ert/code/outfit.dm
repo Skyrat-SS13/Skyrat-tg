@@ -10,7 +10,7 @@
 	gloves = /obj/item/clothing/gloves/combat
 	belt = /obj/item/storage/belt/military/nri/full
 	back = /obj/item/storage/backpack/duffelbag/syndie/nri
-	backpack_contents = list(/obj/item/storage/box/nri_survival_pack, /obj/item/storage/medkit/emergency, /obj/item/clothing/mask/balaclavaadjust)
+	backpack_contents = list(/obj/item/storage/box/nri_survival_pack, /obj/item/storage/medkit/emergency)
 	l_pocket = /obj/item/gun/ballistic/automatic/pistol
 	r_pocket = /obj/item/ammo_box/magazine/m9mm
 	shoes = /obj/item/clothing/shoes/combat/swat
@@ -26,7 +26,7 @@
 	mask = /obj/item/clothing/mask/gas/hecu2
 	belt = /obj/item/storage/belt/military/nri/full_heavy
 	suit_store = /obj/item/gun/ballistic/automatic/pistol/aps
-	backpack_contents = list(/obj/item/storage/box/nri_survival_pack, /obj/item/storage/medkit/emergency, /obj/item/clothing/mask/balaclavaadjust, /obj/item/advanced_choice_beacon/nri/heavy)
+	backpack_contents = list(/obj/item/storage/box/nri_survival_pack, /obj/item/storage/medkit/emergency, /obj/item/advanced_choice_beacon/nri/heavy)
 	l_pocket = /obj/item/wrench/combat
 
 	id_trim = /datum/id_trim/nri/heavy
@@ -41,7 +41,7 @@
 	suit_store = /obj/item/gun/ballistic/automatic/akm/modern
 	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
 	back = /obj/item/storage/backpack/duffelbag/syndie/nri/captain
-	backpack_contents = list(/obj/item/storage/box/nri_survival_pack, /obj/item/storage/medkit/regular, /obj/item/clothing/mask/balaclavaadjust, /obj/item/clothing/accessory/armband, /obj/item/megaphone, /obj/item/binoculars, /obj/item/clothing/head/beret/sec/nri)
+	backpack_contents = list(/obj/item/storage/box/nri_survival_pack, /obj/item/storage/medkit/regular, /obj/item/megaphone, /obj/item/binoculars, /obj/item/clothing/head/beret/sec/nri)
 
 	id_trim = /datum/id_trim/nri/commander
 
@@ -55,7 +55,7 @@
 	gloves = /obj/item/clothing/gloves/color/latex/nitrile
 	belt = /obj/item/storage/belt/military/nri/full_support
 	back = /obj/item/storage/backpack/duffelbag/syndie/nri/medic
-	backpack_contents = list(/obj/item/storage/box/nri_survival_pack, /obj/item/clothing/mask/balaclavaadjust, /obj/item/storage/medkit/tactical, /obj/item/storage/medkit/surgery, /obj/item/gun/medbeam, /obj/item/clothing/accessory/armband/med)
+	backpack_contents = list(/obj/item/storage/box/nri_survival_pack, /obj/item/storage/medkit/tactical, /obj/item/storage/medkit/surgery, /obj/item/gun/medbeam, /obj/item/gun/energy/cell_loaded/medigun/cmo, /obj/item/storage/box/plastic/medicells)
 
 	id_trim = /datum/id_trim/nri/medic
 
@@ -68,7 +68,7 @@
 	suit_store = /obj/item/gun/ballistic/automatic/plastikov/nri
 	belt = /obj/item/storage/belt/military/nri/full_support
 	back = /obj/item/storage/backpack/duffelbag/syndie/nri/engineer
-	backpack_contents = list(/obj/item/storage/box/nri_survival_pack, /obj/item/clothing/mask/balaclavaadjust, /obj/item/clothing/accessory/armband/engine, /obj/item/construction/rcd/loaded/upgraded, /obj/item/clothing/glasses/welding, /obj/item/advanced_choice_beacon/nri/engineer)
+	backpack_contents = list(/obj/item/storage/box/nri_survival_pack, /obj/item/construction/rcd/loaded/upgraded, /obj/item/rcd_ammo/large, /obj/item/advanced_choice_beacon/nri/engineer)
 
 	l_hand = /obj/item/storage/belt/utility/full/powertools
 
@@ -124,7 +124,7 @@
 	gloves = /obj/item/clothing/gloves/color/latex/nitrile
 	belt = /obj/item/clipboard
 	back = /obj/item/storage/backpack/satchel/leather
-	backpack_contents = list(/obj/item/storage/box/nri_survival_pack, /obj/item/gun/ballistic/automatic/pistol, /obj/item/ammo_box/magazine/m9mm, /obj/item/storage/medkit/expeditionary, /obj/item/melee/baton/telescopic)
+	backpack_contents = list(/obj/item/storage/box/nri_survival_pack, /obj/item/gun/ballistic/automatic/pistol, /obj/item/ammo_box/magazine/m9mm, /obj/item/suppressor, /obj/item/storage/medkit/expeditionary, /obj/item/melee/baton/telescopic)
 	l_pocket = null
 	r_pocket = null
 	shoes = /obj/item/clothing/shoes/sneakers/brown
