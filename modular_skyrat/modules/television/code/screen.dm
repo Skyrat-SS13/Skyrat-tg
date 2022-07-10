@@ -73,7 +73,7 @@
 	name = "Pocket TV monitor"
 	desc = "A version of TV that you can put in your pocket. Wait, Nanotrazen made TVs out of our old PDAs!?"
 	icon = 'modular_skyrat/modules/television/icons/obj/devices.dmi'
-	icon_state = "pda-1"
+	icon_state = "pda"
 	w_class = WEIGHT_CLASS_SMALL
 	custom_materials = list(/datum/material/iron = 200, /datum/material/glass = 50)
 	var/obj/item/radio/internal_radio
@@ -94,7 +94,6 @@
 
 /obj/item/pocket_tv/Initialize(mapload)
 	. = ..()
-	icon_state = "pda-[rand(1,33)]"
 	internal_radio = new /obj/item/radio(src)
 	internal_radio.keyslot = new radio_key
 	internal_radio.set_on(sound)
