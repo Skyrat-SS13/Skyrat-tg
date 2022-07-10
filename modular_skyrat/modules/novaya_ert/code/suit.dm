@@ -39,6 +39,8 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "russian_heavy_armor"
 	armor = list(MELEE = 60, BULLET = 60, LASER = 50, ENERGY = 50, BOMB = 100, BIO = 100, FIRE = 70, ACID = 70, WOUND = 35)
+	resistance_flags = FIRE_PROOF|UNACIDABLE|ACID_PROOF|FREEZE_PROOF
+	clothing_flags = STOPSPRESSUREDAMAGE|SNUG_FIT|BLOCK_GAS_SMOKE_EFFECT|THICKMATERIAL
 	slowdown = 1.5
 	equip_delay_self = 5 SECONDS
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
@@ -56,28 +58,9 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "russian_heavy_armor_old"
 	armor = list(MELEE = 50, BULLET = 50, LASER = 40, ENERGY = 40, BOMB = 75, BIO = 60, FIRE = 45, ACID = 45, WOUND = 20)
+	resistance_flags = FIRE_PROOF|ACID_PROOF|FREEZE_PROOF
+	clothing_flags = SNUG_FIT|THICKMATERIAL
 	slowdown = 2
-
-/obj/item/clothing/head/helmet/space/hev_suit/nri
-	name = "\improper VOSKHOD powered combat armor helmet"
-	desc = "A composite graphene-plasteel helmet with a ballistic nylon inner padding, complete with a deployable airtight polycarbonate visor and respirator system. 'НРИ - Оборонная Коллегия' is imprinted on the back."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/head_muzzled.dmi'
-	icon_state = "nri_soldier"
-	inhand_icon_state = "sec_helm"
-	armor = list(MELEE = 25, BULLET = 25, LASER = 25, ENERGY = 25, BOMB = 25, BIO = 20, FIRE = 20, ACID = 20, WOUND = 10)
-	flags_inv = HIDEHAIR
-	obj_flags = NO_MAT_REDEMPTION
-	supports_variations_flags = NONE
-	resistance_flags = FIRE_PROOF|UNACIDABLE|ACID_PROOF|FREEZE_PROOF
-	clothing_flags = STOPSPRESSUREDAMAGE|SNUG_FIT|BLOCK_GAS_SMOKE_EFFECT
-	clothing_traits = null
-	flags_cover = HEADCOVERSEYES | PEPPERPROOF
-	flash_protect = FLASH_PROTECTION_FLASH
-	visor_flags_inv = HIDEMASK|HIDEEYES|HIDEFACE|HIDEFACIALHAIR
-	visor_flags = STOPSPRESSUREDAMAGE
-	slowdown = 0
 
 /obj/item/clothing/suit/space/hev_suit/nri
 	name = "\improper VOSKHOD powered combat armor"

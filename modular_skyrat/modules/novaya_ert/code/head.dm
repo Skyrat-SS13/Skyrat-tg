@@ -28,6 +28,8 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	armor = list(MELEE = 60, BULLET = 60, LASER = 50, ENERGY = 50, BOMB = 100, BIO = 100, FIRE = 70, ACID = 70, WOUND = 35)
+	resistance_flags = FIRE_PROOF|UNACIDABLE|ACID_PROOF|FREEZE_PROOF
+	clothing_flags = STOPSPRESSUREDAMAGE|SNUG_FIT|BLOCK_GAS_SMOKE_EFFECT|THICKMATERIAL
 	/// What position the helmet is in, TRUE = DOWN, FALSE = UP
 	var/helmet_position = TRUE
 
@@ -57,6 +59,8 @@
 	desc = "A heavy Russian combat helmet with a strong ballistic visor. Alt+click to adjust."
 	icon_state = "russian_heavy_helmet_old"
 	armor = list(MELEE = 50, BULLET = 50, LASER = 40, ENERGY = 50, BOMB = 75, BIO = 60, FIRE = 45, ACID = 45, WOUND = 20)
+	resistance_flags = FIRE_PROOF|ACID_PROOF|FREEZE_PROOF
+	clothing_flags = SNUG_FIT|THICKMATERIAL
 
 /obj/item/clothing/head/helmet/space/hev_suit/nri
 	name = "\improper VOSKHOD powered combat armor helmet"
