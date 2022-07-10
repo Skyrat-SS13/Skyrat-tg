@@ -24,6 +24,7 @@
 		#include "map_files\Blueshift\BlueShift_middle.dmm"
 		#include "map_files\Blueshift\BlueShift_lower.dmm"
 		#include "map_files\tramstation\tramstation_skyrat.dmm"
+		#include "map_filed\VoidRaptor\VoidRaptor.dmm"
 		// The mining maps
 		#include "map_files\Mining\Icemoon.dmm"
 		#include "map_files\Mining\Rockplanet.dmm"
