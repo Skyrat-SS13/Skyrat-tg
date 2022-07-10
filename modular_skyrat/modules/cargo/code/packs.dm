@@ -632,5 +632,5 @@
 					/obj/item/gun/ballistic/rifle/boltaction,
 					/obj/item/clothing/suit/armor/heavy/nri/old,
 					/obj/item/clothing/head/helmet/nri_heavy/old,
-					/obj/item/gun/ballistic/automatic/pistol,
-					/obj/item/ammo_box/magazine/m9mm)
+					/obj/item/gun/ballistic/automatic/plastikov,
+					/obj/item/ammo_box/magazine/plastikov9mm)
