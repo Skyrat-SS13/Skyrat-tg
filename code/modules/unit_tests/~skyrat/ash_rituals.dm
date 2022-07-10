@@ -52,6 +52,7 @@
 		TEST_FAIL("Ash Rituals: Ashwalker did not get ash_age component!")
 	ashie_aging.evo_time = 0
 	var/current_age = ashie_aging.current_stage
+	our_human.forceMove(locate((run_loc_floor_bottom_left.x + 1), (run_loc_floor_bottom_left.y + 1), run_loc_floor_bottom_left.z))
 	aging_ritual.ritual_start(our_rune)
 	if(ashie_aging.current_stage != (current_age + 1))
 		TEST_FAIL("Ash Rituals: [aging_ritual.type] did not age the ashwalker correctly (expected [current_age + 1], recieved [ashie_aging.current_stage])!")
