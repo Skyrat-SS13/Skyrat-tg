@@ -13,6 +13,9 @@
 	if(!istype(toremove))
 		return
 
+	if(!(toremove in contents) || toremove.loc !== src)
+		return
+
 	if(!toremove.on_exit_container(src) || !on_container_exited(toremove))
 		return
 
