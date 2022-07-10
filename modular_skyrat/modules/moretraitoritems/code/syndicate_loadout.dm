@@ -1,7 +1,6 @@
 
 /obj/item/storage/box/syndie_kit/spaceassassin/PopulateContents()
 	new /obj/item/knife/combat(src)
-	new	/obj/item/book/granter/traitsr/ventcrawl_book(src)
 	switch(pick(list("red", "green", "dgreen", "blue", "orange", "black")))
 		if("green")
 			new /obj/item/clothing/head/helmet/space/syndicate/green(src)
@@ -120,7 +119,7 @@
 	new /obj/item/clothing/suit/hooded/chaplain_hoodie(src)
 	new /obj/item/card/id/advanced/chameleon(src)
 	new /obj/item/clothing/shoes/chameleon/noslip(src)
-	new /obj/item/book/granter/spell/summonitem(src)
+	new /obj/item/book/granter/action/spell/summonitem(src)
 
 /obj/item/storage/box/syndie_kit/loadout/hunter/PopulateContents()
 	new /obj/item/gun/ballistic/rifle/boltaction/harpoon(src)
