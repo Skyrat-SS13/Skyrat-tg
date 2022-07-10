@@ -384,7 +384,7 @@
 		list("White", "#D4D4D4"),
 		list("Black", "#0e0f0f"),
 		list("Bar Burgundy", "#791500"),
-		list("Sec Red", "#DE3A3A"),
+		list("Sec Blue", "#486091"), // SKYRAT EDIT CHANGE
 		list("Cargo Brown", "#A46106"),
 		list("Engi Yellow", "#EFB341"),
 		list("Service Green", "#9FED58"),
