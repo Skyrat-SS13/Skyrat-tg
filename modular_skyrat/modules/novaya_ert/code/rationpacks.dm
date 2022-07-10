@@ -41,14 +41,16 @@
 /obj/item/storage/box/nri_rations/ComponentInitialize()
 	. = ..()
 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	STR.max_items = 5
+	STR.max_items = 7
 
 /obj/item/storage/box/nri_rations/PopulateContents()
 	new /obj/item/food/nri_course/entree(src)
 	new /obj/item/food/nri_course/main(src)
 	new /obj/item/food/nri_course/side(src)
 	new /obj/item/storage/box/gum(src)
-	new /obj/item/reagent_containers/glass/bottle/water(src)
+	new /obj/item/reagent_containers/food/drinks/waterbottle(src)
+	new /obj/item/storage/fancy/cigarettes/cigpack_robust(src)
+	new /obj/item/storage/box/matches(src)
 
 /obj/item/storage/box/nri_rations/attack_self(mob/user, modifiers)
 	icon_state = "mre_package_open"

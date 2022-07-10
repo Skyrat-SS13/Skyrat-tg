@@ -35,10 +35,12 @@
 	name = "Novaya Rossiyskaya Imperiya Platoon Commander"
 	head = /obj/item/clothing/head/helmet/space/hev_suit/nri/captain
 	glasses = /obj/item/clothing/glasses/thermal/eyepatch
+	uniform = /obj/item/clothing/under/costume/nri/captain
 	belt = /obj/item/storage/belt/military/nri/full
 	suit = /obj/item/clothing/suit/space/hev_suit/nri/captain
 	suit_store = /obj/item/gun/ballistic/automatic/akm/modern
 	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
+	back = /obj/item/storage/backpack/duffelbag/syndie/nri/captain
 	backpack_contents = list(/obj/item/storage/box/nri_survival_pack, /obj/item/storage/medkit/regular, /obj/item/clothing/mask/balaclavaadjust, /obj/item/clothing/accessory/armband, /obj/item/megaphone, /obj/item/binoculars, /obj/item/clothing/head/beret/sec/nri)
 
 	id_trim = /datum/id_trim/nri/commander
@@ -47,10 +49,12 @@
 	name = "Novaya Rossiyskaya Imperiya Corpsman"
 	head = /obj/item/clothing/head/helmet/space/hev_suit/nri/medic
 	glasses = /obj/item/clothing/glasses/hud/health/night
+	uniform = /obj/item/clothing/under/costume/nri/medic
 	suit = /obj/item/clothing/suit/space/hev_suit/nri/medic
 	suit_store = /obj/item/gun/ballistic/automatic/plastikov/nri
 	gloves = /obj/item/clothing/gloves/color/latex/nitrile
 	belt = /obj/item/storage/belt/military/nri/full_support
+	back = /obj/item/storage/backpack/duffelbag/syndie/nri/medic
 	backpack_contents = list(/obj/item/storage/box/nri_survival_pack, /obj/item/clothing/mask/balaclavaadjust, /obj/item/storage/medkit/tactical, /obj/item/storage/medkit/surgery, /obj/item/gun/medbeam, /obj/item/clothing/accessory/armband/med)
 
 	id_trim = /datum/id_trim/nri/medic
@@ -59,9 +63,11 @@
 	name = "Novaya Rossiyskaya Imperiya Combat Engineer"
 	head = /obj/item/clothing/head/helmet/space/hev_suit/nri/engineer
 	glasses = /obj/item/clothing/glasses/meson/night
+	uniform = /obj/item/clothing/under/costume/nri/engineer
 	suit = /obj/item/clothing/suit/space/hev_suit/nri/engineer
 	suit_store = /obj/item/gun/ballistic/automatic/plastikov/nri
 	belt = /obj/item/storage/belt/military/nri/full_support
+	back = /obj/item/storage/backpack/duffelbag/syndie/nri/engineer
 	backpack_contents = list(/obj/item/storage/box/nri_survival_pack, /obj/item/clothing/mask/balaclavaadjust, /obj/item/clothing/accessory/armband/engine, /obj/item/construction/rcd/loaded/upgraded, /obj/item/clothing/glasses/welding, /obj/item/advanced_choice_beacon/nri/engineer)
 
 	l_hand = /obj/item/storage/belt/utility/full/powertools
