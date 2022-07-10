@@ -74,6 +74,11 @@
 		if(istype(loc, /obj/))
 			var/obj/location_as_object = loc
 			location_as_object.handle_internal_lifeform(src,0)
+		// SKYRAT EDIT BEGIN - MOB CONTAINER
+		if(istype(loc, /mob/))
+			var/mob/location_as_mob = loc
+			location_as_mob.handle_internal_lifeform(src)
+		// SKYRAT EDIT END - MOB CONTAINER
 
 //Second link in a breath chain, calls check_breath()
 /mob/living/carbon/proc/breathe(delta_time, times_fired)
