@@ -78,7 +78,7 @@
 	resistance_flags = FIRE_PROOF
 
 	var/danger_level = 0
-	var/mode = AALARM_MODE_SCRUBBING
+	var/mode = AALARM_MODE_CONTAMINATED // SKYRAT EDIT - original: AALARM_MODE_SCRUBBING
 	///A reference to the area we are in
 	var/area/my_area
 
