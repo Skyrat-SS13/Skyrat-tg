@@ -396,7 +396,7 @@
 
 	var/new_power_usage = 0
 	if(scrubbing == SCRUBBING)
-		new_power_usage = idle_power_usage + idle_power_usage * length(filter_types)
+		new_power_usage = idle_power_usage // SKYRAT EDIT - original new_power_usage = idle_power_usage + idle_power_usage * length(filter_types)
 		update_use_power(IDLE_POWER_USE)
 	else
 		new_power_usage = active_power_usage
