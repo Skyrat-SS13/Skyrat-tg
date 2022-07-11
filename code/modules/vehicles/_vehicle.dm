@@ -177,12 +177,5 @@
 	. = ..()
 	if(trailer && .)
 		var/dir_to_move = get_dir(trailer.loc, old_loc)
-		step(trailer, dir_to_move)
-
-/obj/vehicle/Move(atom/newloc, direct, glide_size_override)
-	var/atom/old_loc = loc
-	. = ..()
-	if(trailer && .)
-		var/dir_to_move = get_dir(trailer.loc, old_loc)
-		trailer.glide_size = glide_size
+		trailer.glide_size = glide_size //SKYRAT EDIT: Carts
 		step(trailer, dir_to_move)
