@@ -13,7 +13,7 @@
 	backpack_contents = list(/obj/item/storage/box/nri_survival_pack, /obj/item/storage/medkit/emergency)
 	l_pocket = /obj/item/gun/ballistic/automatic/pistol/ladon/nri
 	r_pocket = /obj/item/ammo_box/magazine/m9mm_aps
-	shoes = /obj/item/clothing/shoes/combat/swat
+	shoes = /obj/item/clothing/shoes/magboots/advance
 
 	id = /obj/item/card/id/advanced/centcom/ert/nri
 	id_trim = /datum/id_trim/nri
