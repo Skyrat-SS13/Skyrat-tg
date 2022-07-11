@@ -3,6 +3,7 @@
 #define STATUS_INDICATOR_Y_OFFSET 2 // Offset from the edge of the icon sprite, so 32 pixels plus whatever number is here.
 #define STATUS_INDICATOR_ICON_X_SIZE 0 // Don't need to care about the Y size due to the origin being on the bottom side.
 #define STATUS_INDICATOR_ICON_MARGIN 0 // The space between two status indicators. We don't do this with the current icons.
+#define DEFAULT_MOB_SCALE 1
 
 /datum/preference/toggle/enable_status_indicators
 	category = PREFERENCE_CATEGORY_GAME_PREFERENCES
@@ -13,29 +14,26 @@
 	return TRUE
 
 /datum/preference/toggle/enable_status_indicators/apply_to_client(client/client, value)
-	. = ..()
 	if(client)
-		client.mob?.apply_status_indicator_pref(value)
+		var/mob/client_mob = client.mob
+		INVOKE_ASYNC(client_mob, /mob.proc/apply_status_indicator_pref)
 
-/mob/proc/apply_status_indicator_pref(value)
+/mob/proc/apply_status_indicator_pref(datum/source)
 	SIGNAL_HANDLER
 	var/client/myclient = client
-	if(isnull(value)) // We called from a signal
-		value = myclient?.prefs?.read_preference(/datum/preference/toggle/enable_status_indicators)
-	var/atom/movable/screen/plane_master/status/status = locate() in myclient?.screen
-	if(!status)
-		return
-	if(value && status)
-		status.Show()
-	else
-		status.Hide()
+	var/value = myclient?.prefs?.read_preference(/datum/preference/toggle/enable_status_indicators)
+	var/atom/movable/screen/plane_master/status/status_indicators  = locate() in myclient?.screen
+	if(value && status_indicators)
+		status_indicators.Show()
+	else if(!value && status_indicators)
+		status_indicators.Hide()
 
 /mob/living
 	var/list/status_indicators = null // Will become a list as needed. Contains our status indicator objects. Note, they are actually added to overlays, this just keeps track of what exists.
 
 /// Returns true if the mob is weakened. Also known as floored.
 /mob/living/proc/is_weakened()
-	if(HAS_TRAIT(src, TRAIT_FLOORED) || has_status_effect(/datum/status_effect/incapacitating/knockdown && !HAS_TRAIT_FROM(src, TRAIT_FLOORED, BUCKLED_TRAIT)))
+	if(!HAS_TRAIT_FROM(src, TRAIT_FLOORED, BUCKLED_TRAIT) && !buckled && HAS_TRAIT(src, TRAIT_FLOORED) || has_status_effect(/datum/status_effect/incapacitating/knockdown))
 		return TRUE
 
 /// Returns true if the mob is stunned.
@@ -65,18 +63,14 @@
 /mob/living/carbon/Initialize(mapload)
 	. = ..()
 	// The Basics
-	RegisterSignal(src, COMSIG_CARBON_HEALTH_UPDATE, .proc/status_indicator_evaluate)
 	RegisterSignal(src, COMSIG_LIVING_DEATH, .proc/cut_indicators_overlays)
-	// Catching weird cases
-	RegisterSignal(src, COMSIG_CARBON_HELP_ACT, .proc/status_indicator_evaluate)
-	RegisterSignal(src, COMSIG_LIVING_SET_BODY_POSITION, .proc/status_indicator_evaluate)
+	RegisterSignal(src, COMSIG_CARBON_HEALTH_UPDATE, .proc/status_indicator_evaluate)
 	// When things actually happen
 	RegisterSignal(src, COMSIG_LIVING_STATUS_STUN, .proc/status_indicator_evaluate)
 	RegisterSignal(src, COMSIG_LIVING_STATUS_KNOCKDOWN, .proc/status_indicator_evaluate)
 	RegisterSignal(src, COMSIG_LIVING_STATUS_PARALYZE, .proc/status_indicator_evaluate)
 	RegisterSignal(src, COMSIG_LIVING_STATUS_IMMOBILIZE, .proc/status_indicator_evaluate)
 	RegisterSignal(src, COMSIG_LIVING_STATUS_UNCONSCIOUS, .proc/status_indicator_evaluate)
-	RegisterSignal(src, COMSIG_LIVING_STATUS_SLEEP, .proc/status_indicator_evaluate)
 
 /// Receives signals to update on carbon health updates. Checks if the mob is dead - if true, removes all the indicators. Then, we determine what status indicators the mob should carry or remove.
 /mob/living/proc/status_indicator_evaluate()
@@ -112,9 +106,9 @@
 /// Finds a status indicator on a mob.
 /mob/living/proc/get_status_indicator(image/prospective_indicator)
 
-	for(var/image/I in status_indicators)
-		if(I.icon_state == prospective_indicator)
-			return I
+	for(var/image/indicator in status_indicators)
+		if(indicator.icon_state == prospective_indicator)
+			return indicator
 	return LAZYACCESS(status_indicators, LAZYFIND(status_indicators, prospective_indicator))
 
 /// Cuts all the indicators on a mob in a loop.
@@ -134,8 +128,8 @@
 
 	if(stat == DEAD)
 		return
-	var/mob/living/carbon/carbon = src
-	var/icon_scale = get_icon_scale(carbon)
+	var/mob/living/carbon/my_carbon_mob = src
+	var/icon_scale = get_icon_scale(my_carbon_mob)
 	// Now put them back on in the right spot.
 	var/our_sprite_x = 16 * icon_scale
 	var/our_sprite_y = 24 * icon_scale
@@ -150,29 +144,29 @@
 
 	// In /mob/living's `update_transform()`, the sprite is horizontally shifted when scaled up, so that the center of the sprite doesn't move to the right.
 	// Because of that, this adjustment needs to happen with the future indicator row as well, or it will look bad.
-	current_x_position -= 16 * (icon_scale - 1)
+	current_x_position -= 16 * (icon_scale - DEFAULT_MOB_SCALE)
 
 	// Now the indicator row can actually be built.
 	for(var/prospective_indicator in status_indicators)
-		var/image/I = prospective_indicator
+		var/image/indicator = prospective_indicator
 
 		// This is a semi-HUD element, in a similar manner as medHUDs, in that they're 'above' everything else in the world,
 		// but don't pierce obfuscation layers such as blindness or darkness, unlike actual HUD elements like inventory slots.
-		I.plane = PLANE_STATUS_INDICATOR
-		I.layer = STATUS_LAYER
-		I.appearance_flags = PIXEL_SCALE|TILE_BOUND|NO_CLIENT_COLOR|RESET_COLOR|RESET_ALPHA|RESET_TRANSFORM|KEEP_APART
-		I.pixel_y = y_offset
-		I.pixel_x = current_x_position
-		add_overlay(I)
+		indicator.plane = PLANE_STATUS_INDICATOR
+		indicator.layer = STATUS_LAYER
+		indicator.appearance_flags = PIXEL_SCALE|TILE_BOUND|NO_CLIENT_COLOR|RESET_COLOR|RESET_ALPHA|RESET_TRANSFORM|KEEP_APART
+		indicator.pixel_y = y_offset
+		indicator.pixel_x = current_x_position
+		add_overlay(indicator)
 		// Adding the margin space every time saves a conditional check on the last iteration,
 		// and it won't cause any issues since no more icons will be added, and the var is not used for anything else.
 		current_x_position += STATUS_INDICATOR_ICON_X_SIZE + STATUS_INDICATOR_ICON_MARGIN
 
 /mob/living/proc/get_icon_scale(livingmob)
 	if(!iscarbon(livingmob)) // normal mobs are always 1 for scale - hopefully all borgs and simplemobs get this one
-		return 1
+		return DEFAULT_MOB_SCALE
 	var/mob/living/carbon/passed_mob = livingmob // we're possibly a player! We have size prefs!
-	var/mysize = (passed_mob.dna?.current_body_size ? passed_mob.dna.current_body_size : 1)
+	var/mysize = (passed_mob.dna?.current_body_size ? passed_mob.dna.current_body_size : DEFAULT_MOB_SCALE)
 	return mysize
 
 /atom/movable/screen/plane_master/status
