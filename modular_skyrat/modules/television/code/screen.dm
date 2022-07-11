@@ -67,8 +67,6 @@
 	. = ..()
 	QDEL_NULL(internal_radio)
 
-#define DEFAULT_MAP_SIZE 15
-
 /obj/item/pocket_tv
 	name = "Pocket TV monitor"
 	desc = "A version of TV that you can put in your pocket. Wait, Nanotrazen made TVs out of our old PDAs!?"
@@ -272,7 +270,7 @@
 /obj/item/pocket_tv/proc/show_camera_static()
 	cam_screen.vis_contents.Cut()
 	cam_background.icon_state = "scanline2"
-	cam_background.fill_rect(1, 1, DEFAULT_MAP_SIZE, DEFAULT_MAP_SIZE)
+	cam_background.fill_rect(1, 1, 15, 15)
 
 // Returns the list of cameras accessible from this computer
 /obj/item/pocket_tv/proc/get_available_cameras()
@@ -293,5 +291,3 @@
 		if(tempnetwork.len)
 			D["[C.c_tag]"] = C
 	return D
-
-#undef DEFAULT_MAP_SIZE
