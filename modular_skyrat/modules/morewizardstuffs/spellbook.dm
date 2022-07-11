@@ -3,9 +3,9 @@
 //DEFENSIVE
 
 //MOBILITY
-/datum/spellbook_entry/snapceleritas
+/datum/spellbook_entry/celeritas
 	name = "Celeritas"
-	desc = "With a snap of your finger, You will be able to swap places with someone!"
+	desc = "You will be able to swap places with someone just by snapping your fingers!"
 	spell_type = /datum/action/cooldown/spell/pointed/celeritas
 	cost = 1
 	category = "Mobility"
