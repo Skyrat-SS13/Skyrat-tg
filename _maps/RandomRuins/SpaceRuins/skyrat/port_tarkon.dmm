@@ -2963,7 +2963,8 @@
 "pW" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/power/port_gen/pacman/super{
-	name = "\improper emergency power generator"
+	name = "\improper emergency power generator";
+	time_per_sheet = 40
 	},
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/port_tarkon/atmos)
@@ -4867,18 +4868,12 @@
 "Ck" = (
 /obj/structure/rack,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/stock_parts/cell{
-	charge = 100;
-	maxcharge = 15000
-	},
-/obj/item/stock_parts/cell{
-	charge = 100;
-	maxcharge = 15000
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/tile/yellow/anticorner{
 	dir = 8
 	},
+/obj/item/stock_parts/cell/high,
+/obj/item/stock_parts/cell/high,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/power1)
 "Cm" = (
@@ -5766,7 +5761,8 @@
 /area/ruin/space/has_grav/port_tarkon/atmos)
 "Ha" = (
 /obj/machinery/power/port_gen/pacman/super{
-	name = "\improper emergency power generator"
+	name = "\improper emergency power generator";
+	time_per_sheet = 40
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/greenglow,
