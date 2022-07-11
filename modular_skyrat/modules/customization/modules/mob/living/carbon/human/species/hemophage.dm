@@ -48,15 +48,6 @@
 	new_vampire.set_safe_hunger_level()
 	if(SSevents.holidays && SSevents.holidays[HALLOWEEN])
 		halloween_version = TRUE
-	if(isnull(batform) && halloween_version) // You can only have a batform during Halloween.
-		batform = new
-		new_vampire.AddSpell(batform)
-
-/datum/species/hemophage/on_species_loss(mob/living/carbon/ex_vampire)
-	. = ..()
-	if(!isnull(batform))
-		ex_vampire.RemoveSpell(batform)
-		QDEL_NULL(batform)
 
 /datum/species/hemophage/spec_life(mob/living/carbon/human/vampire, delta_time, times_fired)
 	. = ..()
@@ -93,11 +84,3 @@
     "Historically, Hemophages have caused great societal strife through their very existence. Many have reported dread on having someone reveal they require blood to survive, worse on learning they have been undead, espiecally in 'superstitious' communities. In many places they occupy a sort of second class, unable to live normal lives due to their condition being a sort of skeleton in their closet. Some can actually be found in slaughterhouses or the agricultural industry, gaining easy access to a large supply of animal blood to feed their eternal thirst.",
     "Others find their way into mostly-vampiric communities, turning others into their own kind; though, the virus can only transmit to hosts that are incredibly low on blood, taking advantage of their reduced immune system efficiency and higher rate of blood creation to be able to survive the initial few days within their host.",
     "\"What the fuck does any of this mean?\" - Doctor Micheals, reading their CentCom report about the new 'hires'.")
-
-/obj/effect/proc_holder/spell/targeted/shapeshift/bat
-	name = "Bat Form"
-	desc = "Take on the shape a space bat."
-	invocation = "*snap"
-	charge_max = 5 SECONDS
-	cooldown_min = 5 SECONDS
-	shapeshift_type = /mob/living/simple_animal/hostile/retaliate/bat

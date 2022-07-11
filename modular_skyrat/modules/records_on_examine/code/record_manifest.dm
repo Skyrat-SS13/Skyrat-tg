@@ -70,6 +70,10 @@
 		var/exploitable_id = params["exploitable_id"]
 		var/datum/data/record/general_record = find_record("name", exploitable_id, GLOB.data_core.general)
 		to_chat(usr, "<b>Exploitable information:</b> [general_record.fields["exploitable_records"]]")
+	else if(action == "show_background")
+		var/background_id = params["background_id"]
+		var/datum/data/record/general_record = find_record("name", background_id, GLOB.data_core.general)
+		to_chat(usr, "<b>Background information:</b> [general_record.fields["background_records"]]")
 
 /datum/record_manifest/ui_data(mob/user)
 	var/list/positions = list()

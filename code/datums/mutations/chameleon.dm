@@ -6,10 +6,6 @@
 	difficulty = 16
 	text_gain_indication = "<span class='notice'>You feel one with your surroundings.</span>"
 	text_lose_indication = "<span class='notice'>You feel oddly exposed.</span>"
-	/// SKYRAT EDIT BEGIN
-	instability = 35
-	power = /obj/effect/proc_holder/spell/self/chameleon_skin_activate
-	/// SKYRAT EDIT END
 
 /datum/mutation/human/chameleon/on_acquiring(mob/living/carbon/human/owner)
 	if(..())
