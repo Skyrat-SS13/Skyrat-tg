@@ -204,5 +204,11 @@ SUBSYSTEM_DEF(area_spawn)
 	desired_atom = /obj/effect/landmark/start/customs_agent
 	target_areas = list(/area/station/security/checkpoint/supply, /area/station/cargo/storage)
 
+// Restorers
+/datum/area_spawn/beer_nuke_restorer //If overwritten by a landmark, it respawns itself in maintenance
+	target_areas = list(/area/station/maintenance/department, /area/station/maintenance/central, /area/station/maintenance/port, /area/station/maintenance/starboard, /area/station/maintenance/aft, /area/station/maintenance/fore)
+	desired_atom = /obj/machinery/nuclearbomb/beer
+	max_amount = 1
+
 #undef RESTRICTED_OBJECTS_LIST
 #undef RESTRICTED_CARDINAL_OBJECTS_LIST
