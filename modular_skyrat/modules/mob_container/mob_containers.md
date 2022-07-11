@@ -38,6 +38,6 @@ and ...
 	
 	[ . . . ]
 ```
-`NOTICE:` There is zero reason to customize the behavior of `store_mob_explicitly` and `remove_mob_explicitly`. 
+NOTICE: There is zero reason to customize the behavior of `store_mob_explicitly` and `remove_mob_explicitly`. 
 
 If you for some reason want to halt the entering or exiting process of the container, return `FALSE` inside of the respective proc, and the transfer will be halted.
