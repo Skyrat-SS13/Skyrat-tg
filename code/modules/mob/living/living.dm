@@ -15,7 +15,6 @@
 /mob/living/ComponentInitialize()
 	. = ..()
 	AddElement(/datum/element/movetype_handler)
-	AddComponent(/datum/component/mob_container) // SKYRAT ADDITION - MOB CONTAINERS
 
 /mob/living/prepare_huds()
 	..()

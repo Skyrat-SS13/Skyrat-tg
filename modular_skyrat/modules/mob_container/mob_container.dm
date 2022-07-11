@@ -3,6 +3,8 @@
 #define COMSIG_MOB_ENTER_CONTAINER "mob_enter_container"
 #define COMSIG_MOB_EXIT_CONTAINER "mob_exit_container"
 
+#define COMSIG_MOB_HAS_CONTAINER "mob_has_container"
+
 #define COMSIG_CONTAINER_STORE_MOB "container_store_mob"
 #define COMSIG_CONTAINER_REMOVE_MOB "container_remove_mob"
 #define COMSIG_CONTAINER_DUMP_ALL "container_dump_all"
@@ -35,6 +37,8 @@
 
 	RegisterSignal(mob_holder, COMSIG_MOB_LEAVE_CONTAINER, .proc/leave_container)
 
+	RegisterSignal(mob_holder, COMSIG_MOB_HAS_CONTAINER, .proc/container_exist_check)
+
 /datum/component/mob_container/Destroy()
 	. = ..()
 
@@ -45,6 +49,12 @@
 	mobs_held.Cut()
 
 	UnregisterSignal(mob_holder, list(COMSIG_MOB_CONTAINER_ENTERED, COMSIG_MOB_CONTAINER_EXITED, COMSIG_MOB_ENTER_CONTAINER, COMSIG_MOB_EXIT_CONTAINER, COMSIG_CONTAINER_STORE_MOB, COMSIG_CONTAINER_REMOVE_MOB, COMSIG_CONTAINER_DUMP_ALL, COMSIG_MOB_LEAVE_CONTAINER))
+
+/**
+ * Used to check whether or not a mob has a container. We don't want to contain mobs that don't have containers.
+ */
+/datum/component/mob_container/proc/container_exist_check()
+	return TRUE
 
 /**
  * Proc to leave the container we're currently inside of.
@@ -88,15 +98,19 @@
 	SIGNAL_HANDLER
 
 	for(var/mob/contained in mobs_held)
-		remove_mob_explicitly(mobs_held)
+		remove_mob_explicitly(contained)
 
 /**
  * Stores a mob inside of our parent mob.
  *
  * mob/to_store | the mob to store inside of us
+ * force | if TRUE, we'll store a containerless mob
  */
-/datum/component/mob_container/proc/store_mob_explicitly(mob/to_store)
+/datum/component/mob_container/proc/store_mob_explicitly(mob/to_store, force = FALSE)
 	if(!istype(to_store))
+		return
+
+	if(!SEND_SIGNAL(to_store, COMSIG_MOB_HAS_CONTAINER) && !force)
 		return
 
 	if(!SEND_SIGNAL(mob_holder, COMSIG_MOB_CONTAINER_ENTERED, to_store) || !SEND_SIGNAL(to_store, COMSIG_MOB_ENTER_CONTAINER, mob_holder))
