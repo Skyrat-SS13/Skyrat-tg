@@ -622,7 +622,7 @@
 					/obj/item/clothing/suit/armor/vest/russian,
 					/obj/item/clothing/head/helmet/rus_helmet,
 					/obj/item/clothing/gloves/tackler/combat,
-					/obj/item/clothing/under/syndicate/rus_army,
+					/obj/item/clothing/under/costume/nri,
 					/obj/item/clothing/mask/gas/hecu2,
 					/obj/item/clothing/shoes/combat,
 					/obj/item/clothing/mask/russian_balaclava,
