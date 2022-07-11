@@ -10,6 +10,7 @@ GLOBAL_LIST_INIT(potentialConfigRandomZlevels, generateConfigMapList(directory =
 		map = pick_n_take(GLOB.potentialRandomZlevels)
 	else
 		return to_chat(world, span_boldannounce("No valid away mission files, loading aborted."))
+	SEND_SIGNAL(SSaway_missions, COMSIG_AWAY_MISSION_LOADED, map) //SKYRAT ADDITION: SSaway_missions
 	to_chat(world, span_boldannounce("Loading away mission..."))
 	var/loaded = load_new_z_level(map, "Away Mission", config_gateway)
 	to_chat(world, span_boldannounce("Away mission [loaded ? "loaded" : "aborted due to errors"]."))

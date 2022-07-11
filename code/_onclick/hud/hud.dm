@@ -106,7 +106,11 @@ GLOBAL_LIST_INIT(available_erp_ui_styles, list(
 	var/atom/movable/screen/spacesuit
 	// subtypes can override this to force a specific UI style
 	var/ui_style
-	var/erp_ui_style //SKYRAT EDIT - ADDITION - ERP ICONS FIX
+	//SKYRAT ADDITION START
+	var/erp_ui_style
+	///UI for away mission dialogue/objectives
+	var/atom/movable/screen/screentip/away_dialogue/away_dialogue
+	//SKYRAT ADDITION END
 
 /datum/hud/New(mob/owner)
 	mymob = owner
@@ -135,6 +139,10 @@ GLOBAL_LIST_INIT(available_erp_ui_styles, list(
 	screentips_enabled = preferences?.read_preference(/datum/preference/choiced/enable_screentips)
 	screentip_text = new(null, src)
 	static_inventory += screentip_text
+	//SKYRAT ADDITION START
+	away_dialogue = new(null, src)
+	static_inventory += away_dialogue
+	//SKYRAT ADDITION END
 
 	for(var/mytype in subtypesof(/atom/movable/plane_master_controller))
 		var/atom/movable/plane_master_controller/controller_instance = new mytype(null,src)
