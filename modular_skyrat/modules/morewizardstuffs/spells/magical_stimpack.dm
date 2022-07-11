@@ -10,7 +10,7 @@
 
 /datum/action/cooldown/spell/stimpack/cast(mob/living/cast_on)
 	. = ..()
-	to_chat(cast_on, span_notice("Time appears to slow as your bodily functions rapidly speed up."))
+	cast_on.balloon_alert(cast_on, "speeding up")
 	cast_on.SetKnockdown(0)
 	cast_on.setStaminaLoss(0)
 	cast_on.set_resting(FALSE)
