@@ -63,4 +63,5 @@
 							/datum/language/buzzwords = list(LANGUAGE_ATOM),
 							/datum/language/terrum = list(LANGUAGE_ATOM),
 							/datum/language/sylvan = list(LANGUAGE_ATOM)
-)
+							)
+
