@@ -74,11 +74,6 @@
 		if(istype(loc, /obj/))
 			var/obj/location_as_object = loc
 			location_as_object.handle_internal_lifeform(src,0)
-		// SKYRAT EDIT BEGIN - MOB CONTAINER
-		if(istype(loc, /mob/))
-			var/mob/location_as_mob = loc
-			location_as_mob.handle_internal_lifeform(src)
-		// SKYRAT EDIT END - MOB CONTAINER
 
 //Second link in a breath chain, calls check_breath()
 /mob/living/carbon/proc/breathe(delta_time, times_fired)
@@ -154,6 +149,17 @@
 					breath_moles = environment.total_moles()*BREATH_PERCENTAGE
 
 				breath = loc.remove_air(breath_moles)
+
+			// SKYRAT ADDITION BEGIN - MOB CONTAINERS
+			else if(ismob(loc))
+				var/turf/removal_turf = get_turf(loc)
+				var/breath_moles = 0
+				if(environment)
+					breath_moles = environment.total_moles() * BREATH_PERCENTAGE
+
+				breath = removal_turf.remove_air(breath_moles)
+			// SKYRAT ADDITION END - MOB CONTAINERS
+
 		else //Breathe from loc as obj again
 			if(istype(loc, /obj/))
 				var/obj/loc_as_obj = loc

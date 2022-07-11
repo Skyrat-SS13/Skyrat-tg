@@ -3,14 +3,6 @@
 #define COMSIG_MOB_ENTER_CONTAINER "mob_enter_container"
 #define COMSIG_MOB_EXIT_CONTAINER "mob_exit_container"
 
-#define COMSIG_MOBS_BREATHE_IN_CONTAINER "mob_breathe_in_container"
-
-/mob/proc/handle_internal_lifeform(mob/lifeform_inside)
-	if(SEND_SIGNAL(src, COMSIG_MOBS_BREATHE_IN_CONTAINER))
-		var/datum/gas_mixture/environment = return_air()
-		var/breath_percentage = BREATH_VOLUME / environment.return_volume()
-		return remove_air(environment.total_moles() * breath_percentage)
-
 /datum/component/mob_container
 	/// The mob we're attached to.
 	var/mob/mob_holder
@@ -20,21 +12,16 @@
 	/// The fullscreen overlay we'll add to any mob inside us. Set this to null to add no overlay.
 	var/atom/movable/screen/fullscreen_overlay = /atom/movable/screen/fullscreen/impaired
 
-	/// Whether or not mobs should be able to breathe inside of us.
-	var/container_breathable = TRUE
-
-/datum/component/mob_container/Initialize(mob/mob_holder)
-	if(!istype(mob_holder))
+/datum/component/mob_container/Initialize()
+	if(!ismob(parent))
 		return COMPONENT_INCOMPATIBLE
 
-	src.mob_holder = WEAKREF(mob_holder)
+	mob_holder = parent
 
 	RegisterSignal(mob_holder, COMSIG_MOB_CONTAINER_ENTERED, .proc/on_container_entered)
 	RegisterSignal(mob_holder, COMSIG_MOB_CONTAINER_EXITED, .proc/on_container_exited)
 	RegisterSignal(mob_holder, COMSIG_MOB_ENTER_CONTAINER, .proc/on_enter_container)
 	RegisterSignal(mob_holder, COMSIG_MOB_EXIT_CONTAINER, .proc/on_exit_container)
-
-	RegisterSignal(mob_holder, COMSIG_MOBS_BREATHE_IN_CONTAINER, .proc/mob_breathe_check)
 
 /datum/component/mob_container/Destroy()
 	. = ..()
@@ -47,9 +34,6 @@
 	mobs_held.Cut()
 
 	UnregisterSignal(mob_holder, list(COMSIG_MOB_CONTAINER_ENTERED, COMSIG_MOB_CONTAINER_EXITED, COMSIG_MOB_ENTER_CONTAINER, COMSIG_MOB_EXIT_CONTAINER))
-
-/datum/component/mob_container/proc/mob_breathe_check()
-	return container_breathable
 
 /datum/component/mob_container/proc/store_mob_explicitly(mob/to_store)
 	if(!istype(to_store))
