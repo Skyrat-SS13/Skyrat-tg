@@ -617,7 +617,6 @@
 /datum/supply_pack/security/armory/russian
 	cost = CARGO_CRATE_VALUE * 15
 	contains = list(/obj/item/food/rationpack,
-					/obj/item/ammo_box/a762,
 					/obj/item/storage/toolbox/ammo,
 					/obj/item/storage/toolbox/maint_kit,
 					/obj/item/clothing/suit/armor/vest/russian,
@@ -628,9 +627,7 @@
 					/obj/item/clothing/mask/russian_balaclava,
 					/obj/item/clothing/head/helmet/rus_ushanka,
 					/obj/item/clothing/suit/armor/vest/russian_coat,
+					/obj/item/ammo_box/a762,
 					/obj/item/gun/ballistic/rifle/boltaction,
-					/obj/item/gun/ballistic/rifle/boltaction,
-					/obj/item/clothing/suit/armor/heavy/nri/old,
-					/obj/item/clothing/head/helmet/nri_heavy/old,
 					/obj/item/gun/ballistic/automatic/plastikov,
 					/obj/item/ammo_box/magazine/plastikov9mm)
