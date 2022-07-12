@@ -1,5 +1,5 @@
 /obj/item/clothing/under/costume/nri //Copied from the russian outfit
-	name = "advanced russian tracksuit"
+	name = "advanced imperial fatigues"
 	desc = "The latest in tactical and comfortable russian military outfits."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
@@ -9,7 +9,7 @@
 	strip_delay = 50
 	sensor_mode = SENSOR_COORDS
 	random_sensor = FALSE
-	alt_covers_chest = TRUE
+	can_adjust = FALSE
 
 /obj/item/clothing/under/costume/nri/captain
 	icon_state = "nri_captain"
