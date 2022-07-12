@@ -619,7 +619,6 @@
 	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // Skyrat edit
 	special_desc = "A pair of chameleon shoes employed by the Syndicate in infiltration operations." // Skyrat edit
 
-
 	var/datum/action/item_action/chameleon/change/chameleon_action
 
 /obj/item/clothing/shoes/chameleon/Initialize(mapload)

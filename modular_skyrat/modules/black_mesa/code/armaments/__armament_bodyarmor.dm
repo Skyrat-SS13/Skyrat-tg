@@ -30,11 +30,10 @@
 	icon_state = "box"
 	illustration = null
 
-/obj/item/storage/box/armor_set/ComponentInitialize()
+/obj/item/storage/box/armor_set/Initialize()
 	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	STR.set_holdable(list(/obj/item/clothing/suit/armor,/obj/item/clothing/suit/space/hev_suit/pcv,/obj/item/clothing/head/helmet))
-	STR.max_items = 2
+	atom_storage.set_holdable(list(/obj/item/clothing/suit/armor,/obj/item/clothing/suit/space/hev_suit/pcv,/obj/item/clothing/head/helmet))
+	atom_storage.max_slots = 2
 
 /obj/item/storage/box/armor_set/normal
 	name = "basic armor set"
