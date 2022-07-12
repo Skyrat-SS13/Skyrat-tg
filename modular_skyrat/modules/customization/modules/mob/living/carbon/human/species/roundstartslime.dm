@@ -88,7 +88,7 @@
 		alterer,
 		alterer,
 		list(
-			"Body Colours" = image(icon = 'modular_skyrat/master_files/icons/mob/actions/actions_slime.dmi', icon_state = "rainbow_slime"),
+			"Body Colours" = image(icon = 'modular_skyrat/master_files/icons/mob/actions/actions_slime.dmi', icon_state = "slime_rainbow"),
 			"DNA" = image(icon = 'modular_skyrat/master_files/icons/mob/actions/actions_slime.dmi', icon_state = "dna"),
 			"Hair" = image(icon = 'modular_skyrat/master_files/icons/mob/actions/actions_slime.dmi', icon_state = "scissors"),
 			"Markings" = image(icon = 'modular_skyrat/master_files/icons/mob/actions/actions_slime.dmi', icon_state = "rainbow_spraycan"),
@@ -116,10 +116,10 @@
 		alterer,
 		alterer,
 		list(
-			"Primary" = image(icon = 'modular_skyrat/master_files/icons/mob/actions/actions_slime.dmi', icon_state = "red_slime"),
-			"Secondary" = image(icon = 'modular_skyrat/master_files/icons/mob/actions/actions_slime.dmi', icon_state = "green_slime"),
-			"Tertiary" = image(icon = 'modular_skyrat/master_files/icons/mob/actions/actions_slime.dmi', icon_state = "blue_slime"),
-			"All" = image(icon = 'modular_skyrat/master_files/icons/mob/actions/actions_slime.dmi', icon_state = "rainbow_slime"),
+			"Primary" = image(icon = 'modular_skyrat/master_files/icons/mob/actions/actions_slime.dmi', icon_state = "slime_red"),
+			"Secondary" = image(icon = 'modular_skyrat/master_files/icons/mob/actions/actions_slime.dmi', icon_state = "slime_green"),
+			"Tertiary" = image(icon = 'modular_skyrat/master_files/icons/mob/actions/actions_slime.dmi', icon_state = "slime_blue"),
+			"All" = image(icon = 'modular_skyrat/master_files/icons/mob/actions/actions_slime.dmi', icon_state = "slime_rainbow"),
 		),
 		tooltips = TRUE,
 	)
@@ -365,33 +365,19 @@
 		return
 	switch(dna_alteration)
 		if("Breasts Lactation")
-			alterer.dna.features["breasts_lactation"] = !alterer.dna.features["breasts_lactation"]
-			var/obj/item/organ/external/genital/breasts/melons = alterer.getorganslot(ORGAN_SLOT_BREASTS)
-			if(!melons)
+			if(!alterer.getorganslot(ORGAN_SLOT_BREASTS))
+				alterer.balloon_alert(alterer, "no breasts!")
 				return
+			var/obj/item/organ/external/genital/breasts/melons = alterer.getorganslot(ORGAN_SLOT_BREASTS)
+			alterer.dna.features["breasts_lactation"] = !alterer.dna.features["breasts_lactation"]
 			melons.lactates = alterer.dna.features["breasts_lactation"]
 			alterer.balloon_alert(alterer, "[alterer.dna.features["breasts_lactation"] ? "lactating" : "not lactating"]")
 
 		if("Breasts Size")
+			if(!alterer.getorganslot(ORGAN_SLOT_BREASTS))
+				alterer.balloon_alert(alterer, "no breasts!")
+				return
 			var/obj/item/organ/external/genital/breasts/melons = alterer.getorganslot(ORGAN_SLOT_BREASTS)
-			if(!melons)
-				var/boob_job = tgui_alert(
-					alterer,
-					"You don't have any breasts! Would you like to add some?",
-					"Add Breasts",
-					list("Yes", "No"),
-				)
-				if(boob_job != "Yes")
-					return
-				alterer.dna.mutant_bodyparts["breasts"][MUTANT_INDEX_NAME] = "Pair"
-				var/obj/item/organ/path = new /obj/item/organ/external/genital/breasts
-				path.build_from_dna(alterer.dna, "breasts")
-				path.Insert(
-					alterer,
-					special = FALSE,
-					drop_if_replaced = FALSE,
-				)
-				alterer.update_body(is_creating = TRUE)
 			var/new_size = tgui_input_list(
 				alterer,
 				"Choose your character's breasts size:",
@@ -404,6 +390,10 @@
 			melons.set_size(alterer.dna.features["breasts_size"])
 
 		if("Penis Girth")
+			if(!alterer.getorganslot(ORGAN_SLOT_PENIS))
+				alterer.balloon_alert(alterer, "no penis!")
+				return
+			var/obj/item/organ/external/genital/penis/sausage = alterer.getorganslot(ORGAN_SLOT_PENIS)
 			var/max_girth = PENIS_MAX_GIRTH
 			if(alterer.dna.features["penis_size"] >= max_girth)
 				max_girth = alterer.dna.features["penis_size"]
@@ -416,11 +406,13 @@
 			)
 			if(new_girth)
 				alterer.dna.features["penis_girth"] = new_girth
-				var/obj/item/organ/external/genital/penis/sausage = alterer.getorganslot(ORGAN_SLOT_PENIS)
-				if(sausage)
-					sausage.girth = alterer.dna.features["penis_girth"]
+				sausage.girth = alterer.dna.features["penis_girth"]
 
 		if("Penis Length")
+			var/obj/item/organ/external/genital/penis/wang = alterer.getorganslot(ORGAN_SLOT_PENIS)
+			if(!wang)
+				alterer.balloon_alert(alterer, "no penis!")
+				return
 			var/new_length = tgui_input_number(
 				alterer,
 				"Choose your penis length:\n([PENIS_MIN_LENGTH]-[PENIS_MAX_LENGTH] inches)",
@@ -431,15 +423,16 @@
 			if(!new_length)
 				return
 			alterer.dna.features["penis_size"] = new_length
-			var/obj/item/organ/external/genital/penis/altered_penis = alterer.getorganslot(ORGAN_SLOT_PENIS)
 			if(alterer.dna.features["penis_girth"] >= new_length)
 				alterer.dna.features["penis_girth"] = new_length - 1
-				if(altered_penis)
-					altered_penis.girth = alterer.dna.features["penis_girth"]
-			if(altered_penis)
-				altered_penis.set_size(alterer.dna.features["penis_size"])
+				wang.girth = alterer.dna.features["penis_girth"]
+			wang.set_size(alterer.dna.features["penis_size"])
 
 		if("Penis Sheath")
+			var/obj/item/organ/external/genital/penis/schlong = alterer.getorganslot(ORGAN_SLOT_PENIS)
+			if(!schlong)
+				alterer.balloon_alert(alterer, "no penis!")
+				return
 			var/new_sheath = tgui_input_list(
 				alterer,
 				"Choose your penis sheath",
@@ -448,15 +441,21 @@
 			)
 			if(new_sheath)
 				alterer.dna.features["penis_sheath"] = new_sheath
-				var/obj/item/organ/external/genital/penis/schlong = alterer.getorganslot(ORGAN_SLOT_PENIS)
-				if(schlong)
-					schlong.sheath = new_sheath
+				schlong.sheath = new_sheath
 
 		if("Penis Taur Mode")
+			var/obj/item/organ/external/genital/penis/donger = alterer.getorganslot(ORGAN_SLOT_PENIS)
+			if(!donger)
+				alterer.balloon_alert(alterer, "no penis!")
+				return
 			alterer.dna.features["penis_taur_mode"] = !alterer.dna.features["penis_taur_mode"]
 			alterer.balloon_alert(alterer, "[alterer.dna.features["penis_taur_mode"] ? "using taur penis" : "not using taur penis"]")
 
 		if("Testicles Size")
+			var/obj/item/organ/external/genital/testicles/avocados = alterer.getorganslot(ORGAN_SLOT_TESTICLES)
+			if(!avocados)
+				alterer.balloon_alert(alterer, "no testicles!")
+				return
 			var/new_size = tgui_input_list(
 				alterer,
 				"Choose your character's testicles size:",
@@ -464,7 +463,5 @@
 				GLOB.preference_balls_sizes,
 			)
 			if(new_size)
-				var/obj/item/organ/external/genital/testicles/avocados = alterer.getorganslot(ORGAN_SLOT_TESTICLES)
-				if(avocados)
-					alterer.dna.features["balls_size"] = avocados.balls_description_to_size(new_size)
-					avocados.set_size(alterer.dna.features["balls_size"])
+				alterer.dna.features["balls_size"] = avocados.balls_description_to_size(new_size)
+				avocados.set_size(alterer.dna.features["balls_size"])
