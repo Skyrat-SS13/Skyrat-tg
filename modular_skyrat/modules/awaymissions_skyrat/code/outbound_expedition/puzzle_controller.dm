@@ -14,9 +14,9 @@
 		)
 	/// Weighted list of conditional amounts
 	var/list/conditional_amount_possible = list(
-		3 = 2,
+		3 = 1,
 		4 = 4,
-		5 = 4,
+		5 = 5,
 		6 = 2,
 	)
 	// Wire code end
@@ -40,7 +40,7 @@
 			if(wire_cond_iter > 10)
 				stack_trace("[src] couldn't make enough conditions and panic stopped!")
 				break //should work?
-			for(var/datum/wire as anything in logic_covered_wires)
+			for(var/wire as anything in logic_covered_wires)
 				if(wire in wire_cond.logic_wires)
 					wire_cond.set_up_condition()
 					wire_cond_iter++

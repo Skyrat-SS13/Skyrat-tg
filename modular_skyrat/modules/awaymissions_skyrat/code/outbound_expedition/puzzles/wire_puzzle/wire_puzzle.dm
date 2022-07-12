@@ -1,4 +1,4 @@
-#define WIRE_MAX_LOWER 5
+#define WIRE_MAX_LOWER 10
 #define WIRE_MAX_UPPER 15
 #define WIRE_UNCUT 0
 #define WIRE_CUT 1
@@ -23,13 +23,12 @@ conditionals are static, wires are not
 	/// list of initialized wire datums
 	var/list/wires = list()
 	/// Max amount of wires possible
-	var/wire_amount = 0
+	var/wire_amount = OUTBOUND_WIRE_COUNT
 	/// What colors of wires are possible
-	var/static/list/wire_colors = list(COLOR_RED, COLOR_GRAY, COLOR_ORANGE, COLOR_YELLOW, COLOR_GREEN, COLOR_BLUE, COLOR_PURPLE, COLOR_VIOLET, COLOR_NAVY, COLOR_CYAN, COLOR_MAROON)
+	var/static/list/wire_colors = OUTBOUND_WIRE_COLORS
 
 /datum/outbound_teamwork_puzzle/wires/New()
 	. = ..()
-	wire_amount = rand(WIRE_MAX_LOWER, WIRE_MAX_UPPER)
 	generate_wires()
 
 /datum/outbound_teamwork_puzzle/wires/proc/generate_wires()

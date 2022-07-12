@@ -2,7 +2,7 @@
 	/// Name of the puzzle
 	var/name = "Generic"
 	/// Reference to the terminal that this puzzle is accessable through
-	var/obj/machinery/outbound_puzzle_terminal/terminal
+	var/obj/machinery/outbound_expedition/puzzle_terminal/terminal
 	/// Name of the TGUI UI the terminal will open
 	var/tgui_name = ""
 	/// Name of the terminal

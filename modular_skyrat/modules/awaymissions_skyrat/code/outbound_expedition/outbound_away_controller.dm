@@ -34,7 +34,7 @@
 		for(var/puzzle_name in puzzle_controller.puzzles)
 			var/datum/outbound_teamwork_puzzle/puzzle_datum = puzzle_controller.puzzles[puzzle_name]
 			var/obj/landmark = pick_n_take(landmark_list)
-			var/obj/machinery/outbound_puzzle_terminal/term = new (get_turf(landmark))
+			var/obj/machinery/outbound_expedition/puzzle_terminal/term = new (get_turf(landmark))
 			qdel(landmark)
 			term.puzzle_datum = puzzle_datum
 			term.tgui_id = puzzle_datum.tgui_name
@@ -65,4 +65,4 @@
 // Event stuff
 
 /datum/away_controller/outbound_expedition/proc/select_event()
-	return
+	return //make sure for wires to regen everything

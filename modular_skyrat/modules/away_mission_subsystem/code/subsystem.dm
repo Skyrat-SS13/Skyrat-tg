@@ -6,6 +6,7 @@
 */
 SUBSYSTEM_DEF(away_missions)
 	name = "Away Missions"
+	init_order = INIT_ORDER_AWAY_MISSION
 	flags = SS_KEEP_TIMING
 	runlevels = RUNLEVEL_GAME | RUNLEVEL_POSTGAME
 	wait = 10 MINUTES
