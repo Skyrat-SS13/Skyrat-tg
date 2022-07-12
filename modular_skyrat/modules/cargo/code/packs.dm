@@ -616,7 +616,7 @@
 
 /datum/supply_pack/security/armory/russian
 	cost = CARGO_CRATE_VALUE * 15
-	contains = list(/obj/item/storage/box/nri_rations
+	contains = list(/obj/item/storage/box/nri_rations,
 					/obj/item/storage/box/nri_rations,
 					/obj/item/storage/box/nri_rations,
 					/obj/item/storage/toolbox/ammo,
