@@ -104,23 +104,9 @@ GLOBAL_LIST_INIT(admin_verbs_sounds, list(
 	))
 GLOBAL_PROTECT(admin_verbs_sounds)
 GLOBAL_LIST_INIT(admin_verbs_fun, list(
-<<<<<<< HEAD
-	/client/proc/one_click_antag, // SKYRAT EDIT ADDITION - ONE CLICK ANTAG
-	/client/proc/spawn_mob_spawner, // SKYRAT EDIT ADDITION
-	/client/proc/event_panel, // SKYRAT EDIT ADDITION
-	/client/proc/request_more_opfor, //SKYRAT EDIT ADDITION
-	/client/proc/fix_say, // SKYRAT EDIT ADDITION
-	/client/proc/spawn_sunbeam, // SKYRAT EDIT ADDITION
 	/client/proc/admin_change_title_screen, //SKYRAT EDIT ADDITION
-	/client/proc/change_title_screen_notice, //SKYRAT EDIT ADDITION
 	/client/proc/change_title_screen_html, //SKYRAT EDIT ADDITION
-	/client/proc/cmd_select_equipment,
-	/client/proc/cmd_admin_gib_self,
-	/client/proc/drop_bomb,
-	/client/proc/set_dynex_scale,
-	/client/proc/drop_dynex_bomb,
-=======
->>>>>>> c17acd07e64 (Fixes admin.fun list (#68336))
+	/client/proc/change_title_screen_notice, //SKYRAT EDIT ADDITION
 	/client/proc/cinematic,
 	/client/proc/cmd_admin_emp,
 	/client/proc/cmd_admin_explosion,
@@ -129,7 +115,9 @@ GLOBAL_LIST_INIT(admin_verbs_fun, list(
 	/client/proc/cmd_admin_robotize,
 	/client/proc/drop_bomb,
 	/client/proc/drop_dynex_bomb,
+	/client/proc/event_panel, // SKYRAT EDIT ADDITION
 	/client/proc/everyone_random,
+	/client/proc/fix_say, // SKYRAT EDIT ADDITION
 	/client/proc/forceEvent,
 	/client/proc/give_disease,
 	/client/proc/give_spell,
@@ -139,13 +127,17 @@ GLOBAL_LIST_INIT(admin_verbs_fun, list(
 	/client/proc/mass_zombie_infection,
 	/client/proc/mass_zombie_cure,
 	/client/proc/object_say,
+	/client/proc/one_click_antag, // SKYRAT EDIT ADDITION - ONE CLICK ANTAG
 	/client/proc/play_sound,
 	/client/proc/play_direct_mob_sound,
 	/client/proc/play_local_sound,
 	/client/proc/play_web_sound,
 	/client/proc/polymorph_all,
+	/client/proc/request_more_opfor, //SKYRAT EDIT ADDITION
 	/client/proc/set_round_end_sound,
 	/client/proc/smite,
+	/client/proc/spawn_mob_spawner, // SKYRAT EDIT ADDITION
+	/client/proc/spawn_sunbeam, // SKYRAT EDIT ADDITION
 	/client/proc/summon_ert,
 	/datum/admins/proc/station_traits_panel,
 	/client/proc/spawn_pollution, // SKYRAT EDIT ADDITION
