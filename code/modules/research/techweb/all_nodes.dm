@@ -336,6 +336,7 @@
 		"chem_heater",
 		"chem_mass_spec",
 		//SKYRAT EDIT - RESEARCH DESIGNS
+		"anesthetic_machine",
 		"smartdartgun",
 		//SKYRAT EDIT - END
 		"chem_master",
