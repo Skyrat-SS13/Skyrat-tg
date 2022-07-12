@@ -185,7 +185,9 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/trauma)
 "bg" = (
-/obj/machinery/door/airlock/security/old,
+/obj/machinery/door/airlock/security/old{
+	req_access = list("tarkon")
+	},
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -221,12 +223,12 @@
 /obj/machinery/button/door/incinerator_vent_atmos_aux{
 	pixel_x = -8;
 	pixel_y = -24;
-	req_one_access = list(66)
+	req_one_access = list("tarkon")
 	},
 /obj/machinery/button/door/incinerator_vent_atmos_main{
 	pixel_x = -8;
 	pixel_y = -36;
-	req_one_access = list(66)
+	req_one_access = list("tarkon")
 	},
 /obj/machinery/atmospherics/components/binary/pump/off/general{
 	dir = 8
@@ -1487,7 +1489,7 @@
 /area/ruin/space/has_grav/port_tarkon/kitchen)
 "hY" = (
 /obj/machinery/door/window/brigdoor/security/cell/right/directional/south{
-	req_access = list(210)
+	req_access = list("tarkon")
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -2142,7 +2144,7 @@
 /area/ruin/space/has_grav/port_tarkon/observ)
 "ls" = (
 /obj/machinery/door/window/brigdoor/security/cell{
-	req_access = list(210)
+	req_access = list("tarkon")
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -4728,6 +4730,7 @@
 	dir = 8
 	},
 /obj/item/circuitboard/machine/sleeper,
+/obj/structure/closet/secure_closet/medical1,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/trauma)
 "Bq" = (
@@ -6306,7 +6309,7 @@
 "JY" = (
 /obj/structure/window/reinforced/tinted,
 /obj/structure/closet/secure_closet/medical2{
-	req_access = list(5)
+	req_access = list("medical")
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/tile/blue/half{
@@ -8372,7 +8375,7 @@
 /obj/machinery/computer/cryopod{
 	dir = 4;
 	pixel_x = -24;
-	req_one_access = list(66)
+	req_one_access = list("tarkon")
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
