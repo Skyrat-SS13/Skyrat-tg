@@ -12,15 +12,8 @@
 
 /obj/item/storage/wallet/Initialize()
 	. = ..()
-<<<<<<< HEAD
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage/concrete/wallet)
-	STR.max_items = 5
-	STR.set_holdable(list(
-		/obj/item/reagent_containers/hypospray/medipen,
-=======
 	atom_storage.max_slots = 4
 	atom_storage.set_holdable(list(
->>>>>>> 7d0f393f5d3 (Tsu's Brand Spanking New Storage: or, How I Learned To Pass Github Copilot As My Own Code (#67478))
 		/obj/item/stack/spacecash,
 		/obj/item/holochip,
 		/obj/item/card,

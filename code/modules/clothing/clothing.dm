@@ -296,13 +296,8 @@
 			how_cool_are_your_threads += "[src]'s storage opens when clicked.\n"
 		else
 			how_cool_are_your_threads += "[src]'s storage opens when dragged to yourself.\n"
-<<<<<<< HEAD
-		if (pockets.can_hold?.len) // If pocket type can hold anything, vs only specific itemss
-			how_cool_are_your_threads += "[src] can store [pockets.max_items] <a href='?src=[REF(src)];show_valid_pocket_items=1'>item\s</a>.\n"
-=======
 		if (atom_storage.can_hold?.len) // If pocket type can hold anything, vs only specific items
 			how_cool_are_your_threads += "[src] can store [atom_storage.max_slots] <a href='?src=[REF(src)];show_valid_pocket_items=1'>item\s</a>.\n"
->>>>>>> 7d0f393f5d3 (Tsu's Brand Spanking New Storage: or, How I Learned To Pass Github Copilot As My Own Code (#67478))
 		else
 			how_cool_are_your_threads += "[src] can store [atom_storage.max_slots] item\s that are [weight_class_to_text(atom_storage.max_specific_storage)] or smaller.\n"
 		if(atom_storage.quickdraw)

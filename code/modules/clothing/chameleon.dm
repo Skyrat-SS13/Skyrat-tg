@@ -616,19 +616,15 @@
 	desc = "A pair of black shoes."
 	resistance_flags = NONE
 	armor = list(MELEE = 10, BULLET = 10, LASER = 10, ENERGY = 0, BOMB = 0, BIO = 90, FIRE = 50, ACID = 50)
-<<<<<<< HEAD
-	pocket_storage_component_path = /datum/component/storage/concrete/pockets/shoes
 	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // Skyrat edit
 	special_desc = "A pair of chameleon shoes employed by the Syndicate in infiltration operations." // Skyrat edit
 
-=======
->>>>>>> 7d0f393f5d3 (Tsu's Brand Spanking New Storage: or, How I Learned To Pass Github Copilot As My Own Code (#67478))
 
 	var/datum/action/item_action/chameleon/change/chameleon_action
 
 /obj/item/clothing/shoes/chameleon/Initialize(mapload)
 	. = ..()
-	
+
 	create_storage(type = /datum/storage/pockets/shoes)
 
 	chameleon_action = new(src)

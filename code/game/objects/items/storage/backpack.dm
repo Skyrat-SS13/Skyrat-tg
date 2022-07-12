@@ -56,7 +56,7 @@
 
 /obj/item/storage/backpack/holding/Initialize()
 	. = ..()
-	
+
 	create_storage(max_specific_storage = WEIGHT_CLASS_GIGANTIC, max_total_storage = 35, max_slots = 30, type = /datum/storage/bag_of_holding)
 	atom_storage.allow_big_nesting = TRUE
 
@@ -303,19 +303,9 @@
 
 /obj/item/storage/backpack/satchel/flat/Initialize(mapload)
 	. = ..()
-<<<<<<< HEAD
-	AddElement(/datum/element/undertile, TRAIT_T_RAY_VISIBLE, INVISIBILITY_MAXIMUM, use_anchor = TRUE) // SKYRAT EDIT - ORIGINAL: INVISIBILITY_OBSERVER
-
-/obj/item/storage/backpack/satchel/flat/ComponentInitialize()
-	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	STR.max_combined_w_class = 15
-	STR.set_holdable(null, list(/obj/item/storage/backpack/satchel/flat)) //muh recursive backpacks)
-=======
 	AddElement(/datum/element/undertile, TRAIT_T_RAY_VISIBLE, INVISIBILITY_OBSERVER, use_anchor = TRUE)
 	atom_storage.max_total_storage = 15
 	atom_storage.set_holdable(cant_hold_list = list(/obj/item/storage/backpack/satchel/flat)) //muh recursive backpacks)
->>>>>>> 7d0f393f5d3 (Tsu's Brand Spanking New Storage: or, How I Learned To Pass Github Copilot As My Own Code (#67478))
 
 /obj/item/storage/backpack/satchel/flat/PopulateContents()
 	//SKYRAT EDIT CHANGE BEGIN

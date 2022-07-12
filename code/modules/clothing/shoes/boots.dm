@@ -12,7 +12,7 @@
 
 /obj/item/clothing/shoes/combat/Initialize(mapload)
 	. = ..()
-	
+
 	create_storage(type = /datum/storage/pockets/shoes)
 
 /obj/item/clothing/shoes/combat/sneakboots
@@ -42,7 +42,6 @@
 	resistance_flags = NONE
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 90, FIRE = 0, ACID = 0)
 	can_be_tied = FALSE
-<<<<<<< HEAD
 	// SKYRAT EDIT ADDITION START
 	uses_advanced_reskins = TRUE
 	unique_reskin = list(
@@ -60,14 +59,12 @@
 		)
 	)
 	// SKYRAT EDIT ADDITION END
-=======
 
 /obj/item/clothing/shoes/jackboots/Initialize(mapload)
 	. = ..()
-	
+
 	create_storage(type = /datum/storage/pockets/shoes)
 
->>>>>>> 7d0f393f5d3 (Tsu's Brand Spanking New Storage: or, How I Learned To Pass Github Copilot As My Own Code (#67478))
 /obj/item/clothing/shoes/jackboots/fast
 	slowdown = -1
 
@@ -85,7 +82,7 @@
 
 /obj/item/clothing/shoes/winterboots/Initialize(mapload)
 	. = ..()
-	
+
 	create_storage(type = /datum/storage/pockets/shoes)
 
 /obj/item/clothing/shoes/winterboots/ice_boots
@@ -110,7 +107,7 @@
 
 /obj/item/clothing/shoes/workboots/Initialize(mapload)
 	. = ..()
-	
+
 	create_storage(type = /datum/storage/pockets/shoes)
 
 /obj/item/clothing/shoes/workboots/mining
@@ -128,7 +125,7 @@
 
 /obj/item/clothing/shoes/russian/Initialize(mapload)
 	. = ..()
-	
+
 	create_storage(type = /datum/storage/pockets/shoes)
 
 /obj/item/clothing/shoes/discoshoes
