@@ -439,26 +439,26 @@
 
 /datum/id_trim/away/tarkon
 	assignment = "P-T Cargo Personell"
-	access = list(66, ACCESS_AWAY_GENERAL)
+	access = list(66, ACCESS_AWAY_GENERAL, ACCESS_WEAPONS)
 
 /datum/id_trim/away/tarkon/sec
 	assignment = "P-T Port Guard"
-	access = list(66, ACCESS_AWAY_GENERAL, 210)
+	access = list(66, ACCESS_AWAY_GENERAL, ACCESS_WEAPONS, 210)
 
 /datum/id_trim/away/tarkon/med
 	assignment = "P-T Trauma Medic"
-	access = list(5, 66, ACCESS_AWAY_GENERAL)
+	access = list(5, 66, ACCESS_AWAY_GENERAL, ACCESS_WEAPONS)
 
 /datum/id_trim/away/tarkon/eng
 	assignment = "P-T Maintenance Crew"
 
 /datum/id_trim/away/tarkon/sci
 	assignment = "P-T Field Researcher"
-	access = list(29, 66, ACCESS_AWAY_GENERAL)
+	access = list(29, 66, ACCESS_AWAY_GENERAL, ACCESS_WEAPONS)
 
 /datum/id_trim/away/tarkon/ensign
 	assignment = "Tarkon Ensign"
-	access = list(5, 29, 66, ACCESS_AWAY_GENERAL, 210)
+	access = list(5, 29, 66, ACCESS_AWAY_GENERAL, 210, ACCESS_WEAPONS)
 
 /obj/item/card/id/away/tarkon/sci  //original tarkon ID is defined in fluff
 	name = "P-T field researcher's access card"
