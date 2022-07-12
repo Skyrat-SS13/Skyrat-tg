@@ -16,7 +16,7 @@
 	exotic_blood = /datum/reagent/toxin/slimejelly
 	damage_overlay_type = ""
 	var/datum/action/innate/regenerate_limbs/regenerate_limbs
-	var/datum/action/innate/slime_change/slime_change //SKYRAT EDIT ADDITION - CUSTOMIZATION
+	var/datum/action/innate/alter_form/alter_form //SKYRAT EDIT ADDITION - CUSTOMIZATION
 	liked_food = MEAT | BUGS
 	toxic_food = NONE
 	coldmod = 6   // = 3x cold damage
@@ -41,8 +41,8 @@
 	if(regenerate_limbs)
 		regenerate_limbs.Remove(old_jellyperson)
 	//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
-	if(slime_change)
-		slime_change.Remove(old_jellyperson)
+	if(alter_form)
+		alter_form.Remove(old_jellyperson)
 	//SKYRAT EDIT ADDITION END
 	old_jellyperson.RemoveElement(/datum/element/soft_landing)
 	..()
@@ -53,8 +53,8 @@
 		regenerate_limbs = new
 		regenerate_limbs.Grant(new_jellyperson)
 		//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
-		slime_change = new
-		slime_change.Grant(new_jellyperson)
+		alter_form = new
+		alter_form.Grant(new_jellyperson)
 		//SKYRAT EDIT ADDITION END
 	new_jellyperson.AddElement(/datum/element/soft_landing)
 
