@@ -185,14 +185,13 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/trauma)
 "bg" = (
-/obj/machinery/door/airlock/security/old{
-	req_access = list("tarkon")
-	},
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/door/airlock/security/old,
+/obj/effect/mapping_helpers/airlock/access/all/tarkon/general,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/secoff)
 "bi" = (
@@ -1204,6 +1203,7 @@
 	opacity = 1
 	},
 /obj/effect/turf_decal/sand/plating,
+/obj/effect/mapping_helpers/airlock/access/all/tarkon/general,
 /turf/open/misc/asteroid,
 /area/ruin/space/has_grav/port_tarkon/mining)
 "gD" = (
