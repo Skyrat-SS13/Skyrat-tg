@@ -33,27 +33,27 @@
 
 /// Returns true if the mob is weakened. Also known as floored.
 /mob/living/proc/is_weakened()
-	if(!HAS_TRAIT_FROM(src, TRAIT_FLOORED, BUCKLED_TRAIT) && !buckled && HAS_TRAIT(src, TRAIT_FLOORED) || has_status_effect(/datum/status_effect/incapacitating/knockdown))
+	if(!indicator_fakeouts() && !HAS_TRAIT_FROM(src, TRAIT_FLOORED, BUCKLED_TRAIT) && !buckled && HAS_TRAIT(src, TRAIT_FLOORED) || has_status_effect(/datum/status_effect/incapacitating/knockdown))
 		return TRUE
 
 /// Returns true if the mob is stunned.
 /mob/living/proc/is_stunned()
-	if(HAS_TRAIT_FROM(src, TRAIT_INCAPACITATED, TRAIT_STATUS_EFFECT(STAT_TRAIT)) || HAS_TRAIT(src, TRAIT_CRITICAL_CONDITION) || HAS_TRAIT_FROM(src, TRAIT_IMMOBILIZED, TRAIT_STATUS_EFFECT(STAT_TRAIT)) || HAS_TRAIT_FROM(src, TRAIT_IMMOBILIZED, CHOKEHOLD_TRAIT)  || HAS_TRAIT_FROM(src, TRAIT_INCAPACITATED, TRAIT_STATUS_EFFECT(STAT_TRAIT)) || HAS_TRAIT_FROM(src, TRAIT_IMMOBILIZED, TRAIT_STATUS_EFFECT(STAT_TRAIT)))
+	if(!indicator_fakeouts() && HAS_TRAIT_FROM(src, TRAIT_INCAPACITATED, TRAIT_STATUS_EFFECT(STAT_TRAIT)) || HAS_TRAIT(src, TRAIT_CRITICAL_CONDITION) || HAS_TRAIT_FROM(src, TRAIT_IMMOBILIZED, TRAIT_STATUS_EFFECT(STAT_TRAIT)) || HAS_TRAIT_FROM(src, TRAIT_IMMOBILIZED, CHOKEHOLD_TRAIT)  || HAS_TRAIT_FROM(src, TRAIT_INCAPACITATED, TRAIT_STATUS_EFFECT(STAT_TRAIT)) || HAS_TRAIT_FROM(src, TRAIT_IMMOBILIZED, TRAIT_STATUS_EFFECT(STAT_TRAIT)))
 		return TRUE
 
 /// Returns true if the mob is paralyzed - for can't fight back purposes.
 /mob/living/proc/is_paralyzed()
-	if(HAS_TRAIT_FROM(src, TRAIT_FLOORED, CHOKEHOLD_TRAIT) || HAS_TRAIT_FROM(src, TRAIT_IMMOBILIZED, TRAIT_STATUS_EFFECT(STAT_TRAIT)) || HAS_TRAIT(src, TRAIT_CRITICAL_CONDITION)  || HAS_TRAIT_FROM(src, TRAIT_INCAPACITATED, STAMINA))
+	if(!indicator_fakeouts() && HAS_TRAIT_FROM(src, TRAIT_FLOORED, CHOKEHOLD_TRAIT) || HAS_TRAIT_FROM(src, TRAIT_IMMOBILIZED, TRAIT_STATUS_EFFECT(STAT_TRAIT)) || HAS_TRAIT(src, TRAIT_CRITICAL_CONDITION)  || HAS_TRAIT_FROM(src, TRAIT_INCAPACITATED, STAMINA))
 		return TRUE
 
 /// Returns true if the mob is unconcious for any reason.
 /mob/living/proc/is_unconcious()
-	if(HAS_TRAIT(src, TRAIT_KNOCKEDOUT))
+	if(!indicator_fakeouts() && HAS_TRAIT(src, TRAIT_KNOCKEDOUT))
 		return TRUE
 
 /// Returns true if the mob has confusion.
 /mob/living/proc/is_confused()
-	if(has_status_effect(/datum/status_effect/confusion))
+	if(!indicator_fakeouts() && has_status_effect(/datum/status_effect/confusion))
 		return TRUE
 
 /mob/Initialize(mapload)
@@ -65,12 +65,18 @@
 	// The Basics
 	RegisterSignal(src, COMSIG_LIVING_DEATH, .proc/cut_indicators_overlays)
 	RegisterSignal(src, COMSIG_CARBON_HEALTH_UPDATE, .proc/status_indicator_evaluate)
+	RegisterSignal(src, COMSIG_LIVING_LIFE, .proc/check_indicators)
 	// When things actually happen
-	RegisterSignal(src, COMSIG_LIVING_STATUS_STUN, .proc/status_indicator_evaluate)
-	RegisterSignal(src, COMSIG_LIVING_STATUS_KNOCKDOWN, .proc/status_indicator_evaluate)
-	RegisterSignal(src, COMSIG_LIVING_STATUS_PARALYZE, .proc/status_indicator_evaluate)
+	RegisterSignal(src, COMSIG_LIVING_STATUS_STUN, .proc/stunned_indicator_update)
+	RegisterSignal(src, COMSIG_LIVING_STATUS_KNOCKDOWN, .proc/weaken_indicator_update)
+	RegisterSignal(src, COMSIG_LIVING_STATUS_PARALYZE, .proc/paralyzed_indicator_update)
 	RegisterSignal(src, COMSIG_LIVING_STATUS_IMMOBILIZE, .proc/status_indicator_evaluate)
-	RegisterSignal(src, COMSIG_LIVING_STATUS_UNCONSCIOUS, .proc/status_indicator_evaluate)
+	RegisterSignal(src, COMSIG_LIVING_STATUS_UNCONSCIOUS, .proc/unconcious_indicator_update)
+
+/// This proc makes it so that mobs that have status indicators are checked to remove them, especially in fakeout situations.
+/mob/living/proc/check_indicators()
+	if(status_indicators)
+		status_indicator_evaluate()
 
 /// Receives signals to update on carbon health updates. Checks if the mob is dead - if true, removes all the indicators. Then, we determine what status indicators the mob should carry or remove.
 /mob/living/proc/status_indicator_evaluate()
@@ -78,12 +84,33 @@
 	if(stat == DEAD)
 		return
 	else
-		is_weakened() ? add_status_indicator(WEAKEN) : remove_status_indicator(WEAKEN)
-		is_paralyzed() ? add_status_indicator(PARALYSIS) : remove_status_indicator(PARALYSIS)
-		is_stunned() ? add_status_indicator(STUNNED) : remove_status_indicator(STUNNED)
-		is_unconcious() ? add_status_indicator(SLEEPING) : remove_status_indicator(SLEEPING)
-		is_confused() ? add_status_indicator(CONFUSED) : remove_status_indicator(CONFUSED)
+		weaken_indicator_update()
+		paralyzed_indicator_update()
+		stunned_indicator_update()
+		unconcious_indicator_update()
+		confused_indicator_update()
 		return
+/// Cases in which no status indicators should appear above a mob, such as changeling revive and regen coma.
+/mob/living/proc/indicator_fakeouts()
+	if(HAS_TRAIT(src, TRAIT_DEATHCOMA))
+		return TRUE
+	return FALSE
+
+/mob/living/proc/weaken_indicator_update()
+	SIGNAL_HANDLER
+	is_weakened() ? add_status_indicator(WEAKEN) : remove_status_indicator(WEAKEN)
+/mob/living/proc/paralyzed_indicator_update()
+	SIGNAL_HANDLER
+	is_paralyzed() ? add_status_indicator(PARALYSIS) : remove_status_indicator(PARALYSIS)
+/mob/living/proc/stunned_indicator_update()
+	SIGNAL_HANDLER
+	is_stunned() ? add_status_indicator(STUNNED) : remove_status_indicator(STUNNED)
+/mob/living/proc/unconcious_indicator_update()
+	SIGNAL_HANDLER
+	is_unconcious() ? add_status_indicator(SLEEPING) : remove_status_indicator(SLEEPING)
+/mob/living/proc/confused_indicator_update()
+	SIGNAL_HANDLER
+	is_confused() ? add_status_indicator(CONFUSED) : remove_status_indicator(CONFUSED)
 
 /// Adds a status indicator to the mob. Takes an image as an argument. If it exists, it won't dupe it.
 /mob/living/proc/add_status_indicator(image/prospective_indicator)
