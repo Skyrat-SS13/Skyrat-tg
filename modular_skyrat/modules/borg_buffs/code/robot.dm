@@ -58,12 +58,14 @@
 		/datum/reagent/consumable/sol_dry,\
 		/datum/reagent/consumable/spacemountainwind,\
 		/datum/reagent/consumable/pwr_game,\
-		/datum/reagent/consumable/shamblers\
+		/datum/reagent/consumable/shamblers,\
+		/datum/reagent/consumable/sugar\
 	)
 
 #define BASE_SHAKER_MISC_REAGENTS list(\
 		/datum/reagent/consumable/milk,\
 		/datum/reagent/consumable/soymilk,\
+		/datum/reagent/consumable/coco,\
 		/datum/reagent/consumable/cream,\
 		/datum/reagent/toxin/coffeepowder,\
 		/datum/reagent/toxin/teapowder,\
@@ -71,7 +73,6 @@
 		/datum/reagent/consumable/menthol,\
 		/datum/reagent/consumable/grenadine,\
 		/datum/reagent/consumable/tonic,\
-		/datum/reagent/consumable/sugar,\
 		/datum/reagent/consumable/vanilla,\
 		/datum/reagent/consumable/blackpepper,\
 		/datum/reagent/toxin/mushroom_powder,\
@@ -80,7 +81,6 @@
 		/datum/reagent/water,\
 		/datum/reagent/consumable/eggyolk,\
 		/datum/reagent/consumable/nutriment,\
-		/datum/reagent/consumable/coco,\
 		/datum/reagent/consumable/honey,\
 		/datum/reagent/iron,\
 		/datum/reagent/pax/catnip\
