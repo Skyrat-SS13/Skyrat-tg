@@ -69,13 +69,8 @@
 
 	triggering = TRUE
 	if (alert_observers)
-<<<<<<< HEAD
-		message_admins("Random Event triggering in [RANDOM_EVENT_ADMIN_INTERVENTION_TIME] seconds: [name] (<a href='?src=[REF(src)];cancel=1'>CANCEL</a> | <a href='?src=[REF(src)];something_else=1'>SOMETHING ELSE</a>)") //SKYRAT EDIT CHANGE
-		sleep(RANDOM_EVENT_ADMIN_INTERVENTION_TIME SECONDS)
-=======
-		message_admins("Random Event triggering in [DisplayTimeText(RANDOM_EVENT_ADMIN_INTERVENTION_TIME)]: [name] (<a href='?src=[REF(src)];cancel=1'>CANCEL</a>)")
+		message_admins("Random Event triggering in [DisplayTimeText(RANDOM_EVENT_ADMIN_INTERVENTION_TIME)]: [name] (<a href='?src=[REF(src)];cancel=1'>CANCEL</a> | <a href='?src=[REF(src)];something_else=1'>SOMETHING ELSE</a>)") //SKYRAT EDIT CHANGE
 		sleep(RANDOM_EVENT_ADMIN_INTERVENTION_TIME)
->>>>>>> 100a9eeefb0 (Adds cancel event option for midround random events (#68055))
 		var/players_amt = get_active_player_count(alive_check = TRUE, afk_check = TRUE, human_check = TRUE)
 		if(!canSpawnEvent(players_amt))
 			message_admins("Second pre-condition check for [name] failed, skipping...")
