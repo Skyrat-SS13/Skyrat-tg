@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-#define RANDOM_EVENT_ADMIN_INTERVENTION_TIME 60	// SKYRAT EDIT: Original value (10)
-=======
-#define RANDOM_EVENT_ADMIN_INTERVENTION_TIME (10 SECONDS)
->>>>>>> 100a9eeefb0 (Adds cancel event option for midround random events (#68055))
+#define RANDOM_EVENT_ADMIN_INTERVENTION_TIME (60 SECONDS) // SKYRAT EDIT - ORIGINAL: (10 SECONDS)
 
 //this singleton datum is used by the events controller to dictate how it selects events
 /datum/round_event_control
