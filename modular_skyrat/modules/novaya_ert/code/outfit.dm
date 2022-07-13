@@ -55,7 +55,9 @@
 	gloves = /obj/item/clothing/gloves/color/latex/nitrile
 	belt = /obj/item/storage/belt/military/nri/full_support
 	back = /obj/item/storage/backpack/duffelbag/syndie/nri/medic
-	backpack_contents = list(/obj/item/storage/box/nri_survival_pack, /obj/item/storage/medkit/tactical, /obj/item/storage/medkit/advanced, /obj/item/storage/medkit/surgery, /obj/item/gun/medbeam, /obj/item/gun/energy/cell_loaded/medigun/cmo, /obj/item/storage/box/plastic/medicells)
+	backpack_contents = list(/obj/item/storage/box/nri_survival_pack, /obj/item/storage/medkit/tactical, /obj/item/storage/medkit/advanced, /obj/item/storage/medkit/surgery, /obj/item/gun/medbeam, /obj/item/gun/energy/cell_loaded/medigun/cmo, /obj/item/storage/box/medicells)
+
+	l_hand = /obj/item/shield/riot/pointman/nri
 
 	id_trim = /datum/id_trim/nri/medic
 
