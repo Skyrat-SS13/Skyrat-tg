@@ -7,9 +7,6 @@
 /datum/reagent/medicine/stimulants
 	process_flags = REAGENT_ORGANIC | REAGENT_SYNTHETIC //Syndicate developed 'accelerants' for synths?
 
-/datum/reagent/medicine/omnizine
-	process_flags = REAGENT_ORGANIC | REAGENT_SYNTHETIC
-
 /datum/reagent/medicine/leporazine
 	process_flags = REAGENT_ORGANIC | REAGENT_SYNTHETIC
 
