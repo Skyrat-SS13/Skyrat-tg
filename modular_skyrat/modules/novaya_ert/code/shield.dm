@@ -1,6 +1,6 @@
 /obj/item/shield/riot/pointman/nri
 	name = "heavy corpsman shield"
-	desc = "A shield designed for people that have to sprint to the rescue. Cumbersome as hell."
+	desc = "A shield designed for people that have to sprint to the rescue. Cumbersome as hell. Repair with plasteel."
 	icon_state = "riot"
 	icon = 'modular_skyrat/modules/novaya_ert/icons/riot.dmi'
 	lefthand_file = 'modular_skyrat/modules/novaya_ert/icons/riot_left.dmi'
@@ -21,5 +21,5 @@
 
 /obj/item/corpsman_broken/welder_act(mob/living/user, obj/item/I)
 	..()
-	var/obj/item/shield/riot/pointman/nri = new(get_turf(src))
+	new /obj/item/shield/riot/pointman/nri((get_turf(src)))
 	qdel(src)
