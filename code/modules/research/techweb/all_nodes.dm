@@ -1283,7 +1283,6 @@
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1000)
 
-
 /datum/techweb_node/cyber_organs_upgraded
 	id = "cyber_organs_upgraded"
 	display_name = "Upgraded Cybernetic Organs"
@@ -2134,6 +2133,7 @@
 		"largecrossbow",
 		"rapidsyringe",
 		"suppressor",
+		"super_pointy_tape",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 10000)
 	hidden = TRUE
