@@ -149,7 +149,6 @@
 	var/health_near_death_alarm = FALSE
 	var/health_critical_alarm = FALSE
 	var/health_dropping_alarm = FALSE
-	var/seek_medical_attention_alarm = FALSE
 
 	///Notification modes and current playing voicelines.
 	var/send_notifications = HEV_NOTIFICATION_TEXT_AND_VOICE
