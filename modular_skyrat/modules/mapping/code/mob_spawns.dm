@@ -268,7 +268,7 @@
 		)
 	id = /obj/item/card/id/away/silver/freightqm
 
-//Port Tarkon, 5 people trapped in a revamped charlie-station like ghost role. Survive the aliens and threats, Fix the port and/or finish construction
+//Port Tarkon, 6 people trapped in a revamped charlie-station like ghost role. Survive the aliens and threats, Fix the port and/or finish construction
 
 /obj/effect/mob_spawn/ghost_role/human/tarkon
 	name = "P-T Abandoned Crew"
