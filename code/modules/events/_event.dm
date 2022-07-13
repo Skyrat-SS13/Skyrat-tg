@@ -121,7 +121,7 @@
 	triggering = TRUE
 
 	if (alert_observers)
-		message_admins("Random Event triggering in [DisplayTimeText(RANDOM_EVENT_ADMIN_INTERVENTION_TIME)]: [name] (<a href='?src=[REF(src)];cancel=1'>CANCEL</a>)")
+		message_admins("Random Event triggering in [DisplayTimeText(RANDOM_EVENT_ADMIN_INTERVENTION_TIME)]: [name] (<a href='?src=[REF(src)];cancel=1'>CANCEL</a> | <a href='?src=[REF(src)];something_else=1'>SOMETHING ELSE</a>)") //SKYRAT EDIT CHANGE
 		sleep(RANDOM_EVENT_ADMIN_INTERVENTION_TIME)
 
 	if(!triggering)
