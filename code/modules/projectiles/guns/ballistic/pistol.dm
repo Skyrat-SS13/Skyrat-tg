@@ -1,12 +1,7 @@
 /obj/item/gun/ballistic/automatic/pistol
-<<<<<<< HEAD
-	name = "makarov pistol"
+	name = "\improper Makarov pistol"
 //	desc = "A small, easily concealable 9mm handgun. Has a threaded barrel for suppressors."	// SKYRAT EDIT: Original
 	desc = "A small, easily concealable 9x25mm Mk.12 handgun. Has a threaded barrel for suppressors."	// SKYRAT EDIT: Calibre rename
-=======
-	name = "\improper Makarov pistol"
-	desc = "A small, easily concealable 9mm handgun. Has a threaded barrel for suppressors."
->>>>>>> 09fe98c1035 (Touches up the Makarov sprites one last time, totally doesn't add a shadowy fake 10mm Makarov. (#68160))
 	icon_state = "pistol"
 	w_class = WEIGHT_CLASS_SMALL
 	mag_type = /obj/item/ammo_box/magazine/m9mm
@@ -41,9 +36,6 @@
 	var/obj/item/suppressor/S = new(src)
 	install_suppressor(S)
 
-<<<<<<< HEAD
-/obj/item/gun/ballistic/automatic/pistol/m1911 //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
-=======
 /obj/item/gun/ballistic/automatic/pistol/clandestine
 	name = "\improper Ansem pistol"
 	desc = "The spiritual successor of the Makarov, or maybe someone just dropped their gun in a bucket of paint. The gun is chambered in 10mm."
@@ -52,8 +44,7 @@
 	empty_indicator = TRUE
 	suppressor_x_offset = 12
 
-/obj/item/gun/ballistic/automatic/pistol/m1911
->>>>>>> 09fe98c1035 (Touches up the Makarov sprites one last time, totally doesn't add a shadowy fake 10mm Makarov. (#68160))
+/obj/item/gun/ballistic/automatic/pistol/m1911 //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
 	name = "\improper M1911"
 	desc = "A classic .45 handgun with a small magazine capacity."
 	icon_state = "m1911"
@@ -95,13 +86,8 @@
 	// SKYRAT EDIT END
 
 /obj/item/gun/ballistic/automatic/pistol/aps
-<<<<<<< HEAD
-	name = "stechkin APS machine pistol"
-	desc = "A modernized reproduction of an old Soviet machine pistol. It fires quickly, but kicks like a mule. Uses 9mm ammo. Has a threaded barrel for suppressors." //SKYRAT EDIT
-=======
 	name = "\improper Stechkin APS machine pistol"
-	desc = "An old Soviet machine pistol. It fires quickly, but kicks like a mule. Uses 9mm ammo. Has a threaded barrel for suppressors."
->>>>>>> 09fe98c1035 (Touches up the Makarov sprites one last time, totally doesn't add a shadowy fake 10mm Makarov. (#68160))
+	desc = "A modernized reproduction of an old Soviet machine pistol. It fires quickly, but kicks like a mule. Uses 9mm ammo. Has a threaded barrel for suppressors." //SKYRAT EDIT
 	icon_state = "aps"
 	w_class = WEIGHT_CLASS_NORMAL
 	mag_type = /obj/item/ammo_box/magazine/m9mm_aps
