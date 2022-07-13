@@ -6,7 +6,7 @@
 	mask = /obj/item/clothing/mask/gas/hecu2
 	uniform = /obj/item/clothing/under/costume/nri
 	suit = /obj/item/clothing/suit/space/hev_suit/nri
-	suit_store = /obj/item/gun/ballistic/automatic/akm/modern
+	suit_store = /obj/item/gun/ballistic/automatic/akm
 	gloves = /obj/item/clothing/gloves/combat
 	belt = /obj/item/storage/belt/military/nri/full
 	back = /obj/item/storage/backpack/duffelbag/syndie/nri
@@ -38,7 +38,7 @@
 	uniform = /obj/item/clothing/under/costume/nri/captain
 	belt = /obj/item/storage/belt/military/nri/full
 	suit = /obj/item/clothing/suit/space/hev_suit/nri/captain
-	suit_store = /obj/item/gun/ballistic/automatic/akm/modern
+	suit_store = /obj/item/gun/ballistic/automatic/akm
 	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
 	back = /obj/item/storage/backpack/duffelbag/syndie/nri/captain
 	backpack_contents = list(/obj/item/storage/box/nri_survival_pack, /obj/item/storage/medkit/regular, /obj/item/megaphone, /obj/item/binoculars, /obj/item/clothing/head/beret/sec/nri, /obj/item/ammo_box/magazine/m9mm_aps)
