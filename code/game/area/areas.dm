@@ -434,6 +434,7 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 		SEND_SOUND(src, sound(null, repeat = 0, wait = 0, channel = CHANNEL_BUZZ))
 		return
 
+<<<<<<< HEAD
 	//Lavaland always has it's ambience.
 	if(is_mining_level(my_area.z))
 		SEND_SOUND(src, sound(my_area.ambient_buzz, repeat = 1, wait = 0, volume = 35, channel = CHANNEL_BUZZ))
@@ -446,6 +447,9 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 
 	else
 		SEND_SOUND(src, sound(my_area.ambient_buzz, repeat = 1, wait = 0, volume = 35, channel = CHANNEL_BUZZ))
+=======
+	SEND_SOUND(src, sound(my_area.ambient_buzz, repeat = 1, wait = 0, volume = my_area.ambient_buzz_vol, channel = CHANNEL_BUZZ))
+>>>>>>> fca288d07d8 (Remove the powered requirement for ambience (#68375))
 
 
 /**
