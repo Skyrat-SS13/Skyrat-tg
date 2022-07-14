@@ -51,14 +51,13 @@
 		icon_state = "[icon_state][direction]"
 	return ..()
 
-/obj/structure/railroad/attackby(obj/item/attacking_item, mob/user, params)
-	if(attacking_item.tool_behaviour == TOOL_CROWBAR)
-		if(!attacking_item.use_tool(src, user, 4 SECONDS, volume = 75))
-			return
-		new /obj/item/stack/rail_track(get_turf(src))
-		qdel(src)
+/obj/structure/railroad/crowbar_act(mob/living/user, obj/item/tool)
+	tool.play_tool_sound(src)
+	if(!do_after(user, 2 SECONDS, src))
 		return
-	return ..()
+	tool.play_tool_sound(src)
+	new /obj/item/stack/rail_track(get_turf(src))
+	qdel(src)
 
 /obj/vehicle/ridden/rail_cart
 	name = "rail cart"
