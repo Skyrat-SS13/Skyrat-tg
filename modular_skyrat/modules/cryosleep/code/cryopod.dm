@@ -41,6 +41,7 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 
 /obj/machinery/computer/cryopod/Destroy()
 	GLOB.cryopod_computers -= src
+	QDEL_NULL(radio)
 	return ..()
 
 /obj/machinery/computer/cryopod/update_icon_state()
