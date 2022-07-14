@@ -65,7 +65,7 @@
 	desc = "A wonderful form of locomotion. It will only ride while on tracks. It does have storage"
 	icon = 'modular_skyrat/modules/ashwalkers/icons/railroad.dmi'
 	icon_state = "railcart"
-	// The mutable appearance used for the overlay over buckled mobs.
+	/// The mutable appearance used for the overlay over buckled mobs.
 	var/mutable_appearance/railoverlay
 
 /obj/vehicle/ridden/rail_cart/examine(mob/user)
