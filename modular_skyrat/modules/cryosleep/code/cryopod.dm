@@ -29,8 +29,9 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 	/// The items currently stored in the cryopod control panel.
 	var/list/frozen_item = list()
 
-	/// This is what the announcement system uses. No longer uses the AAS because modularity.
+	/// This is what the announcement system uses to make announcements. Make sure to set a radio that has the channel you want to broadcast on.
 	var/obj/item/radio/headset/radio = /obj/item/radio/headset/silicon/pai
+	/// The channel to be broadcast on, valid values are any of the "RADIO_CHANNEL_" defines.
 	var/announcement_channel = null // RADIO_CHANNEL_COMMON doesn't work here.
 
 
@@ -443,7 +444,7 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 // Wake-up notifications
 
 /obj/effect/mob_spawn/ghost_role
-	// For figuring out where the local cryopod computer is. Must be set for cryo computer announcements.
+	/// For figuring out where the local cryopod computer is. Must be set for cryo computer announcements.
 	var/area/computer_area
 
 /obj/effect/mob_spawn/ghost_role/special(mob/living/spawned_mob, mob/mob_possessor)
@@ -457,12 +458,13 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 		control_computer.announce("CRYO_JOIN", spawned_mob.real_name, name)
 
 /obj/effect/mob_spawn/ghost_role/proc/find_control_computer()
-	if(computer_area)
-		for(var/cryo_console as anything in GLOB.cryopod_computers)
-			var/obj/machinery/computer/cryopod/console = cryo_console
-			var/area/area = get_area(cryo_console) // Define moment
-			if(area.type == computer_area)
-				return console
+	if(!computer_area)
+		return
+	for(var/cryo_console as anything in GLOB.cryopod_computers)
+		var/obj/machinery/computer/cryopod/console = cryo_console
+		var/area/area = get_area(cryo_console) // Define moment
+		if(area.type == computer_area)
+			return console
 
 	return null
 
