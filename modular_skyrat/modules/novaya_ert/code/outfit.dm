@@ -8,7 +8,7 @@
 	suit = /obj/item/clothing/suit/space/hev_suit/nri
 	suit_store = /obj/item/gun/ballistic/automatic/akm
 	gloves = /obj/item/clothing/gloves/combat
-	belt = /obj/item/storage/belt/military/nri/full
+	belt = /obj/item/storage/belt/military/nri/soldier
 	back = /obj/item/storage/backpack/duffelbag/syndie/nri
 	backpack_contents = list(/obj/item/storage/box/nri_survival_pack, /obj/item/storage/medkit/emergency, /obj/item/ammo_box/magazine/m9mm_aps, /obj/item/beamout_tool)
 	l_pocket = /obj/item/gun/ballistic/automatic/pistol/ladon/nri
@@ -24,7 +24,7 @@
 	suit = /obj/item/clothing/suit/armor/heavy/nri
 	glasses = /obj/item/clothing/glasses/hud/security/night
 	mask = /obj/item/clothing/mask/gas/hecu2
-	belt = /obj/item/storage/belt/military/nri/full_heavy
+	belt = /obj/item/storage/belt/military/nri/heavy
 	suit_store = /obj/item/gun/ballistic/automatic/pistol/aps
 	backpack_contents = list(/obj/item/storage/box/nri_survival_pack, /obj/item/storage/medkit/emergency, /obj/item/advanced_choice_beacon/nri/heavy, /obj/item/beamout_tool)
 	l_pocket = /obj/item/wrench/combat
@@ -36,7 +36,7 @@
 	head = /obj/item/clothing/head/helmet/space/hev_suit/nri/captain
 	glasses = /obj/item/clothing/glasses/thermal/eyepatch
 	uniform = /obj/item/clothing/under/costume/nri/captain
-	belt = /obj/item/storage/belt/military/nri/full
+	belt = /obj/item/storage/belt/military/nri/captain/full
 	suit = /obj/item/clothing/suit/space/hev_suit/nri/captain
 	suit_store = /obj/item/gun/ballistic/automatic/akm
 	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
@@ -50,10 +50,10 @@
 	head = /obj/item/clothing/head/helmet/space/hev_suit/nri/medic
 	glasses = /obj/item/clothing/glasses/hud/health/night
 	uniform = /obj/item/clothing/under/costume/nri/medic
+	belt = /obj/item/storage/belt/military/nri/medic/full
 	suit = /obj/item/clothing/suit/space/hev_suit/nri/medic
 	suit_store = /obj/item/gun/ballistic/automatic/plastikov/nri
 	gloves = /obj/item/clothing/gloves/color/latex/nitrile
-	belt = /obj/item/storage/belt/military/nri/full_support
 	back = /obj/item/storage/backpack/duffelbag/syndie/nri/medic
 	backpack_contents = list(/obj/item/storage/box/nri_survival_pack, /obj/item/storage/medkit/tactical, /obj/item/storage/medkit/advanced, /obj/item/storage/medkit/surgery, /obj/item/gun/medbeam, /obj/item/gun/energy/cell_loaded/medigun/cmo, /obj/item/storage/box/medicells, /obj/item/beamout_tool)
 
@@ -66,9 +66,9 @@
 	head = /obj/item/clothing/head/helmet/space/hev_suit/nri/engineer
 	glasses = /obj/item/clothing/glasses/meson/night
 	uniform = /obj/item/clothing/under/costume/nri/engineer
+	belt = /obj/item/storage/belt/military/nri/engineer/full
 	suit = /obj/item/clothing/suit/space/hev_suit/nri/engineer
 	suit_store = /obj/item/gun/ballistic/automatic/plastikov/nri
-	belt = /obj/item/storage/belt/military/nri/full_support
 	back = /obj/item/storage/backpack/duffelbag/syndie/nri/engineer
 	backpack_contents = list(/obj/item/storage/box/nri_survival_pack, /obj/item/construction/rcd/loaded/upgraded, /obj/item/rcd_ammo/large, /obj/item/advanced_choice_beacon/nri/engineer, /obj/item/beamout_tool)
 
