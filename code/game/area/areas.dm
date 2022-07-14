@@ -434,23 +434,7 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 		SEND_SOUND(src, sound(null, repeat = 0, wait = 0, channel = CHANNEL_BUZZ))
 		return
 
-<<<<<<< HEAD
-	//Lavaland always has it's ambience.
-	if(is_mining_level(my_area.z))
-		SEND_SOUND(src, sound(my_area.ambient_buzz, repeat = 1, wait = 0, volume = 35, channel = CHANNEL_BUZZ))
-		return
-
-	//Station ambience is dependant on a functioning and charged APC
-	if(!my_area.apc || !my_area.apc.operating || !my_area.apc.cell?.charge)
-		SEND_SOUND(src, sound(null, repeat = 0, wait = 0, channel = CHANNEL_BUZZ))
-		return
-
-	else
-		SEND_SOUND(src, sound(my_area.ambient_buzz, repeat = 1, wait = 0, volume = 35, channel = CHANNEL_BUZZ))
-=======
 	SEND_SOUND(src, sound(my_area.ambient_buzz, repeat = 1, wait = 0, volume = my_area.ambient_buzz_vol, channel = CHANNEL_BUZZ))
->>>>>>> fca288d07d8 (Remove the powered requirement for ambience (#68375))
-
 
 /**
  * Called when an atom exits an area
