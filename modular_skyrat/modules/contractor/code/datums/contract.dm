@@ -231,6 +231,9 @@
 	for(var/turf/possible_drop in contract.dropoff.contents)
 		if(is_safe_turf(possible_drop))
 			possible_drop_loc += possible_drop
+	if(!length(possible_drop_loc)) //Prioritize safe tiles first, then unsafe
+		for(var/turf/open/possible_unsafe_drop in contract.dropoff.contents)
+			possible_drop_loc += possible_unsafe_drop
 
 	if (length(possible_drop_loc))
 		var/pod_rand_loc = rand(1, length(possible_drop_loc))
