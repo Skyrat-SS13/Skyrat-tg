@@ -30,8 +30,8 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 	var/list/frozen_item = list()
 
 	/// This is what the announcement system uses. No longer uses the AAS because modularity.
-	var/obj/item/radio/headset/radio = /obj/item/radio/headset/silicon/ai
-	var/announcement_channel = RADIO_CHANNEL_COMMON
+	var/obj/item/radio/headset/radio = /obj/item/radio/headset/silicon/pai
+	var/announcement_channel = null // RADIO_CHANNEL_COMMON doesn't work here.
 
 
 /obj/machinery/computer/cryopod/Initialize(mapload)
@@ -448,8 +448,12 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 /obj/effect/mob_spawn/ghost_role/special(mob/living/spawned_mob, mob/mob_possessor)
 	. = ..()
 	var/obj/machinery/computer/cryopod/control_computer = find_control_computer()
+	var/datum/data/record/record = new
+	record.fields["name"] = spawned_mob.real_name
+	record.fields["rank"] = name
+	GLOB.data_core.general.Add(record)
 	if(control_computer)
-		control_computer.announce("CRYO_JOIN", spawned_mob.real_name, null)
+		control_computer.announce("CRYO_JOIN", spawned_mob.real_name, name)
 
 /obj/effect/mob_spawn/ghost_role/proc/find_control_computer()
 	if(computer_area)
