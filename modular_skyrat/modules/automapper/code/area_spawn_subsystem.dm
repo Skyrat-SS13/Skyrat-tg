@@ -210,8 +210,6 @@ SUBSYSTEM_DEF(area_spawn)
 	var/desired_atom
 	/// The amount we want to spawn
 	var/amount_to_spawn = 1
-	/// The max amount that the world can have
-	var/max_amount = 1
 	/// Do we need to be adjacent to a wall? This also checks the other 3 cardinals for no density. Generally useful for objects with density and anchored.
 	var/wall_hug = FALSE
 	/// Map blacklist, this is used to determine what maps we should not spawn on.
