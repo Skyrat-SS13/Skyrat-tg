@@ -501,6 +501,8 @@
 //CRYO CONSOLES
 /obj/machinery/computer/cryopod/interdyne
 	radio = /obj/item/radio/headset/interdyne
+	announcement_channel = RADIO_CHANNEL_INTERDYNE
 
 /obj/machinery/computer/cryopod/tarkon
 	radio = /obj/item/radio/headset/tarkon
+	announcement_channel = RADIO_CHANNEL_TARKON
