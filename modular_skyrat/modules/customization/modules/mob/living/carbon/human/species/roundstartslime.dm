@@ -109,7 +109,7 @@
 
 /**
  * Alter colours handles the changing of mutant colours
- * This affects skin tone primarily, though has the option to change markings and mutant body parts to match
+ * This affects skin tone primarily, though has the option to change hair, markings, and mutant body parts to match
  */
 /datum/action/innate/alter_form/proc/alter_colours(mob/living/carbon/human/alterer)
 	var/color_choice = show_radial_menu(
@@ -155,6 +155,12 @@
 		"Reset mutant parts",
 		list("Yes", "No"),
 	)
+	var/hair_reset = tgui_alert(
+		alterer,
+		"Would you like to reset your hair to match your new colors?",
+		"Reset hair",
+		list("Hair", "Facial Hair", "Both", "None"),
+	)
 
 	if(color_choice == "All")
 		alterer.dna.features["mcolor"] = sanitize_hexcolor(new_mutant_colour)
@@ -187,13 +193,25 @@
 			var/mutant_list = alterer.dna.species.mutant_bodyparts[mutant_key]
 			var/datum/sprite_accessory/changed_accessory = GLOB.sprite_accessories[mutant_key][mutant_list[MUTANT_INDEX_NAME]]
 			mutant_list[MUTANT_INDEX_COLOR_LIST] = changed_accessory.get_default_color(alterer.dna.features, alterer.dna.species)
+
+	if(hair_reset)
+		switch(hair_reset)
+			if("Hair")
+				alterer.hair_color = sanitize_hexcolor(new_mutant_colour)
+				alterer.update_hair(is_creating = TRUE)
+			if("Facial Hair")
+				alterer.facial_hair_color = sanitize_hexcolor(new_mutant_colour)
+				alterer.update_hair(is_creating = TRUE)
+			if("Both")
+				alterer.hair_color = sanitize_hexcolor(new_mutant_colour)
+				alterer.facial_hair_color = sanitize_hexcolor(new_mutant_colour)
+				alterer.update_hair(is_creating = TRUE)
+
 	alterer.update_body(is_creating = TRUE)
-	alterer.update_hair(is_creating = TRUE)
 
 /**
  * Alter hair lets you adjust both the hair on your head as well as your facial hair
  * You can adjust the style of either
- * TODO: Colour
  */
 /datum/action/innate/alter_form/proc/alter_hair(mob/living/carbon/human/alterer)
 	var/target_hair = show_radial_menu(
@@ -262,7 +280,6 @@
 /**
  * Alter parts lets you adjust mutant bodyparts
  * This can be adding (or removing) things like ears, tails, wings, et cetera.
- * TODO: Fix removing ears making you deaf
  */
 /datum/action/innate/alter_form/proc/alter_parts(mob/living/carbon/human/alterer)
 	var/list/key_list = alterer.dna.mutant_bodyparts
@@ -326,7 +343,6 @@
 
 /**
  * Alter markings lets you add a particular body marking
- * TODO: Colour
  */
 /datum/action/innate/alter_form/proc/alter_markings(mob/living/carbon/human/alterer)
 	var/list/candidates = GLOB.body_marking_sets
