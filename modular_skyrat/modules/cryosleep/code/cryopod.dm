@@ -17,24 +17,27 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 	icon = 'modular_skyrat/modules/cryosleep/icons/cryogenics.dmi'
 	icon_state = "cellconsole_1"
 	icon_keyboard = null
-	// circuit = /obj/item/circuitboard/cryopodcontrol
 	density = FALSE
 	interaction_flags_machine = INTERACT_MACHINE_OFFLINE
 	req_one_access = list(ACCESS_COMMAND, ACCESS_ARMORY) // Heads of staff or the warden can go here to claim recover items from their department that people went were cryodormed with.
-	var/mode = null
+	verb_say = "coldly states"
+	verb_ask = "queries"
+	verb_exclaim = "alarms"
 
 	/// Used for logging people entering cryosleep and important items they are carrying.
 	var/list/frozen_crew = list()
 	/// The items currently stored in the cryopod control panel.
 	var/list/frozen_item = list()
 
-	var/storage_type = "crewmembers"
-	var/storage_name = "Cryogenic Oversight Control"
+	/// This is what the announcement system uses. No longer uses the AAS because modularity.
+	var/obj/item/radio/headset/radio = /obj/item/radio/headset/silicon/ai
+	var/announcement_channel = RADIO_CHANNEL_COMMON
 
 
 /obj/machinery/computer/cryopod/Initialize(mapload)
 	. = ..()
 	GLOB.cryopod_computers += src
+	radio = new radio(src)
 
 /obj/machinery/computer/cryopod/Destroy()
 	GLOB.cryopod_computers -= src
@@ -109,6 +112,9 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 
 		else
 			CRASH("Illegal action for ui_act: '[action]'")
+
+/obj/machinery/computer/cryopod/proc/announce(user, rank)
+	radio.talk_into(src, "[user][rank ? ", [rank]" : ""] has been moved to cryo storage.", announcement_channel)
 
 // Cryopods themselves.
 /obj/machinery/cryopod
@@ -312,9 +318,8 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 		control_computer.frozen_crew += list(crew_member)
 
 	// Make an announcement and log the person entering storage. If set to quiet, does not make an announcement.
-	if(GLOB.announcement_systems.len && !quiet)
-		var/obj/machinery/announcement_system/announcer = pick(GLOB.announcement_systems)
-		announcer.announce("CRYOSTORAGE", mob_occupant.real_name, announce_rank, list())
+	if(!quiet)
+		control_computer.announce(mob_occupant.real_name, announce_rank)
 
 	visible_message(span_notice("[src] hums and hisses as it moves [mob_occupant.real_name] into storage."))
 
