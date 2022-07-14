@@ -113,8 +113,11 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 		else
 			CRASH("Illegal action for ui_act: '[action]'")
 
-/obj/machinery/computer/cryopod/proc/announce(user, rank)
-	radio.talk_into(src, "[user][rank ? ", [rank]" : ""] has been moved to cryo storage.", announcement_channel)
+/obj/machinery/computer/cryopod/proc/announce(message_type, user, rank)
+	if(message_type == "CRYO_JOIN")
+		radio.talk_into(src, "[user][rank ? ", [rank]" : ""] has woken up from cryo storage.", announcement_channel)
+	if(message_type == "CRYO_LEAVE")
+		radio.talk_into(src, "[user][rank ? ", [rank]" : ""] has been moved to cryo storage.", announcement_channel)
 
 // Cryopods themselves.
 /obj/machinery/cryopod
@@ -319,7 +322,7 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 
 	// Make an announcement and log the person entering storage. If set to quiet, does not make an announcement.
 	if(!quiet)
-		control_computer.announce(mob_occupant.real_name, announce_rank)
+		control_computer.announce("CRYO_LEAVE", mob_occupant.real_name, announce_rank)
 
 	visible_message(span_notice("[src] hums and hisses as it moves [mob_occupant.real_name] into storage."))
 
@@ -435,5 +438,27 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 // Attacks/effects.
 /obj/machinery/cryopod/blob_act()
 	return // Sorta gamey, but we don't really want these to be destroyed.
+
+// Wake-up notifications
+
+/obj/effect/mob_spawn/ghost_role
+	// For figuring out where the local cryopod computer is. Must be set for cryo computer announcements.
+	var/area/computer_area
+
+/obj/effect/mob_spawn/ghost_role/special(mob/living/spawned_mob, mob/mob_possessor)
+	. = ..()
+	var/obj/machinery/computer/cryopod/control_computer = find_control_computer()
+	if(control_computer)
+		control_computer.announce("CRYO_JOIN", spawned_mob.real_name, null)
+
+/obj/effect/mob_spawn/ghost_role/proc/find_control_computer()
+	if(computer_area)
+		for(var/cryo_console as anything in GLOB.cryopod_computers)
+			var/obj/machinery/computer/cryopod/console = cryo_console
+			var/area/area = get_area(cryo_console) // Define moment
+			if(area.type == computer_area)
+				return console
+
+	return null
 
 #undef AHELP_FIRST_MESSAGE
