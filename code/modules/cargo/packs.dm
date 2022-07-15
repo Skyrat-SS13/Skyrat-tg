@@ -1702,7 +1702,7 @@
 	contains = list(/obj/item/storage/backpack/duffelbag/mining_conscript)
 	crate_name = "shaft miner starter kit"
 	crate_type = /obj/structure/closet/crate/secure
-
+/* //SKYRAT REMOVAL START - GUN CARGO
 /datum/supply_pack/service/survivalknives
 	name = "Survival Knives Crate"
 	desc = "Contains three sharpened survival knives. Each knife guaranteed to fit snugly inside any Nanotrasen-standard boot."
@@ -1711,7 +1711,7 @@
 					/obj/item/knife/combat/survival,
 					/obj/item/knife/combat/survival)
 	crate_name = "survival knife crate"
-
+*/ //SKYRAT REMOVAL END
 /datum/supply_pack/service/wedding
 	name = "Wedding Crate"
 	desc = "Everything you need to host a wedding! Now you just need an officiant."
@@ -2484,8 +2484,7 @@
 		if(prob(50))
 			the_toy = pick_weight(GLOB.arcade_prize_pool)
 		else
-			//the_toy = pick(subtypesof(/obj/item/toy/plush)) // SKYRAT EDIT -- Original
-			the_toy = pick(subtypesof(/obj/item/toy/plush) - typesof(/obj/item/toy/plush/donator)) // SKYRAT EDIT -- No more donator plushies in toy crates
+			the_toy = pick(subtypesof(/obj/item/toy/plush))
 		new the_toy(C)
 
 /datum/supply_pack/costumes_toys/wizard

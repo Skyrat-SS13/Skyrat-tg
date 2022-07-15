@@ -112,7 +112,8 @@ const QuirkList = (props: {
   );
 };
 
-export const StatDisplay: StatelessComponent<{}> = (props) => { // SKYRAT EDIT
+export const StatDisplay: StatelessComponent<{}> = (props) => {
+  // SKYRAT EDIT
   return (
     <Box
       backgroundColor="#eee"
@@ -138,8 +139,9 @@ export const QuirksPage = (props, context) => {
   return (
     <ServerPreferencesFetcher
       // SKYRAT EDIT START - Quirks balance refactor
-      render={quirks_data => {
-        if (!quirks_data) { // SKYRAT EDIT END
+      render={(quirks_data) => {
+        if (!quirks_data) {
+          // SKYRAT EDIT END
           return <Box>Loading quirks...</Box>;
         }
 
@@ -176,11 +178,11 @@ export const QuirksPage = (props, context) => {
 
           // SKYRAT EDIT START - Veteran quirks
           if (quirk.veteran_only && !data.is_veteran) {
-            return "You need to be a veteran to select this quirk, apply today!";
+            return 'You need to be a veteran to select this quirk, apply today!';
           }
           // SKYRAT EDIT END
 
-          const selectedQuirkNames = selectedQuirks.map(quirkKey => {
+          const selectedQuirkNames = selectedQuirks.map((quirkKey) => {
             return quirkInfo[quirkKey].name;
           });
 

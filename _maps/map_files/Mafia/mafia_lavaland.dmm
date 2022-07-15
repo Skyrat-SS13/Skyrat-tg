@@ -2,18 +2,11 @@
 "a" = (
 /turf/closed/indestructible/riveted,
 /area/centcom/mafia)
-"b" = (
-/turf/open/floor/fakebasalt,
-/area/centcom/mafia)
 "c" = (
 /turf/closed/wall/rust,
 /area/centcom/mafia)
 "d" = (
 /turf/open/floor/plating,
-/area/centcom/mafia)
-"e" = (
-/obj/effect/landmark/mafia,
-/turf/open/floor/fakebasalt,
 /area/centcom/mafia)
 "f" = (
 /obj/effect/mapping_helpers/burnt_floor,
@@ -44,6 +37,19 @@
 /obj/mafia_game_board,
 /turf/open/floor/plating,
 /area/centcom/mafia)
+"l" = (
+/obj/structure/closet{
+	desc = "It's a storage unit. For mining stuff. Y'know.";
+	icon_state = "mining";
+	name = "miner equipment locker"
+	},
+/obj/item/clothing/under/rank/cargo/miner/lavaland,
+/turf/open/floor/fakebasalt,
+/area/centcom/mafia)
+"m" = (
+/obj/effect/landmark/mafia,
+/turf/open/floor/fakebasalt,
+/area/centcom/mafia)
 "n" = (
 /obj/effect/landmark/mafia,
 /obj/effect/turf_decal/trimline/brown/filled/line{
@@ -72,6 +78,9 @@
 	name = "Station Night Shutters"
 	},
 /turf/closed/indestructible/fakeglass,
+/area/centcom/mafia)
+"q" = (
+/turf/open/floor/fakebasalt,
 /area/centcom/mafia)
 "r" = (
 /obj/effect/turf_decal/trimline/brown/filled/line{
@@ -334,15 +343,6 @@
 "Y" = (
 /turf/closed/indestructible/reinforced,
 /area/centcom/mafia)
-"Z" = (
-/obj/structure/closet{
-	desc = "It's a storage unit. For mining stuff. Y'know.";
-	icon_state = "mining";
-	name = "miner equipment locker"
-	},
-/obj/item/clothing/under/rank/cargo/miner/lavaland,
-/turf/open/floor/fakebasalt,
-/area/centcom/mafia)
 
 (1,1,1) = {"
 a
@@ -479,8 +479,8 @@ Y
 Y
 j
 Y
-Z
-b
+l
+q
 Y
 s
 H
@@ -504,14 +504,14 @@ Y
 r
 M
 p
-e
-b
+m
+q
 p
 w
 A
 p
-b
-Z
+q
+l
 Y
 d
 c
@@ -530,13 +530,13 @@ L
 N
 Y
 Y
-b
+q
 Y
 x
 Y
 Y
-b
-e
+q
+m
 Y
 d
 d
@@ -555,12 +555,12 @@ p
 O
 P
 p
-b
+q
 p
 y
 p
-b
-b
+q
+q
 p
 Y
 Y
@@ -575,7 +575,7 @@ Y
 c
 d
 Y
-Z
+l
 p
 Y
 p
@@ -600,14 +600,14 @@ Y
 c
 d
 j
-e
-b
-b
-b
+m
+q
+q
+q
 p
-b
+q
 u
-b
+q
 p
 B
 C
@@ -655,14 +655,14 @@ C
 C
 P
 p
-b
+q
 W
-b
+q
 p
-b
-b
-b
-e
+q
+q
+q
+m
 j
 d
 c
@@ -687,7 +687,7 @@ p
 p
 Y
 p
-Z
+l
 Y
 i
 c
@@ -702,12 +702,12 @@ d
 Y
 Y
 p
-b
-b
+q
+q
 p
 S
 p
-b
+q
 p
 B
 D
@@ -726,13 +726,13 @@ c
 f
 d
 Y
-e
-b
+m
+q
 Y
 Y
 T
 Y
-b
+q
 Y
 Y
 E
@@ -751,14 +751,14 @@ c
 c
 d
 Y
-Z
-b
+l
+q
 p
 Q
 U
 p
-b
-e
+q
+m
 p
 F
 I
@@ -782,8 +782,8 @@ Y
 z
 V
 Y
-b
-Z
+q
+l
 Y
 j
 Y

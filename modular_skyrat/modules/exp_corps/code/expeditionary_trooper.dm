@@ -47,7 +47,7 @@
 
 	box = /obj/item/storage/box/survival/expeditionary_corps
 
-	backpack_contents = list(/obj/item/advanced_choice_beacon/exp_corps)
+	backpack_contents = list(/obj/item/summon_beacon/vanguard)
 
 	id = /obj/item/card/id/advanced/silver/exp_corps
 	id_trim = /datum/id_trim/job/expeditionary_trooper

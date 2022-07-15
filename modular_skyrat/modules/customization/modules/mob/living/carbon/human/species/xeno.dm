@@ -55,3 +55,14 @@
 
 /datum/species/xeno/get_species_lore()
 	return list(placeholder_lore)
+
+/datum/species/xeno/prepare_human_for_preview(mob/living/carbon/human/xeno)
+	var/xeno_color = "#525288"
+	xeno.dna.features["mcolor"] = xeno_color
+	xeno.eye_color_left = "#30304F"
+	xeno.eye_color_right = "#30304F"
+	xeno.dna.species.mutant_bodyparts["tail"] = list(MUTANT_INDEX_NAME = "Xenomorph Tail", MUTANT_INDEX_COLOR_LIST = list(xeno_color, xeno_color, xeno_color))
+	xeno.dna.species.mutant_bodyparts["xenodorsal"] = list(MUTANT_INDEX_NAME = "Standard", MUTANT_INDEX_COLOR_LIST = list(xeno_color))
+	xeno.dna.species.mutant_bodyparts["xenohead"] = list(MUTANT_INDEX_NAME = "Standard", MUTANT_INDEX_COLOR_LIST = list(xeno_color, xeno_color, xeno_color))
+	xeno.update_mutant_bodyparts(TRUE)
+	xeno.update_body(TRUE)
