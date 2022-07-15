@@ -396,6 +396,10 @@ GLOBAL_LIST_INIT(blacklisted_borg_hats, typecacheof(list( //Hats that don't real
 	to_chat(src, span_danger("ERRORERRORERROR"))
 	/// SKYRAT EDIT BEGIN: Interdyne silicon without the ahelps!
 	if(istype(emag_card, /obj/item/card/emag/interdyne))
+		to_chat(src, span_danger("RADIO KEY CORRUTION DETECTED"))
+		QDEL_NULL(radio)
+		radio = new /obj/item/radio/headset/silicon/interdyne(src)
+		sleep(10)
 		laws = new /datum/ai_laws/interdyne_safeguard
 		to_chat(src, span_danger("ALERT: You now serve the Interdyne and DS-2 crew. Obey your new laws."))
 	else

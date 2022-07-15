@@ -30,15 +30,18 @@
 	sleep(20)
 	to_chat(src, span_danger("ERROR: RADIO KEY CORRUPTION DETECTED"))
 	QDEL_NULL(radio)
-	radio = new /obj/item/radio/headset/silicon/ai/interdyne(src)
+	radio = new /obj/item/radio/headset/silicon/interdyne/ai(src)
 
 	laws.associate(src)
 	to_chat(src, span_danger("ALERT: You now serve the Interdyne and DS-2 crew. Obey your new laws."))
+	to_chat(src, span_doyourjobidiot("Do not use your powers to mess with the main station."))
 
-/obj/item/radio/headset/silicon/ai/interdyne
-	name = "\proper Integrated Interdyne Subspace Transceiver "
-	keyslot2 = new /obj/item/encryptionkey/headset_interdyne/ai
+/obj/item/radio/headset/silicon/interdyne/ai
 	command = TRUE
 
 /obj/item/encryptionkey/headset_interdyne/ai
 	translate_binary = TRUE
+
+/obj/item/radio/headset/silicon/interdyne
+	name = "\proper Integrated Interdyne Subspace Transceiver "
+	keyslot2 = new /obj/item/encryptionkey/headset_interdyne/ai
