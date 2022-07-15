@@ -110,18 +110,18 @@
 					var/datum/sprite_accessory/SP = GLOB.sprite_accessories[mutant_key][mutant_list[MUTANT_INDEX_NAME]]
 					mutant_list[MUTANT_INDEX_COLOR_LIST] = SP.get_default_color(DNA.features, DNA.species)
 
-			H.update_body()
-			H.update_hair()
+			H.update_body(is_creating = TRUE)
+			H.update_hair(is_creating = TRUE)
 		if("Hair Style")
 			var/new_style = input(owner, "Select a hair style", "Hair Alterations")  as null|anything in GLOB.hairstyles_list
 			if(new_style)
 				H.hairstyle = new_style
-				H.update_hair()
+				H.update_hair(is_creating = TRUE)
 		if("Facial Hair Style")
 			var/new_style = input(H, "Select a facial hair style", "Hair Alterations")  as null|anything in GLOB.facial_hairstyles_list
 			if(new_style)
 				H.facial_hairstyle = new_style
-				H.update_hair()
+				H.update_hair(is_creating = TRUE)
 		if("Mutant Body Parts")
 			var/list/key_list = DNA.mutant_bodyparts
 			var/chosen_key = input(H, "Select the part you want to alter", "Body Part Alterations")  as null|anything in key_list + "Cancel"
@@ -177,7 +177,7 @@
 				return
 			var/datum/body_marking_set/BMS = GLOB.body_marking_sets[chosen_name]
 			DNA.species.body_markings = assemble_body_markings_from_set(BMS, DNA.features, DNA.species)
-			H.update_body()
+			H.update_body(is_creating = TRUE)
 		if("DNA Specifics")
 			var/dna_alteration = input(H, "Select what part of your DNA you'd like to alter", "DNA Alteration", "cancel") in list("Penis Size","Penis Girth", "Penis Sheath", "Penis Taur Mode", "Balls Size", "Breasts Size", "Breasts Lactation", "Body Size", "Cancel")
 			if(!dna_alteration || dna_alteration == "Cancel")

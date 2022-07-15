@@ -46,7 +46,7 @@
 	return BRUTELOSS
 
 /obj/item/healthanalyzer/attack_self(mob/user)
-	if(!user.can_read(src) || user.is_blind())
+	if(!user.can_read(src)) //SKYRAT EDIT: Blind People Can Analyze Again
 		return
 
 	scanmode = (scanmode + 1) % SCANMODE_COUNT
@@ -61,7 +61,7 @@
 	if(!(item_use_power(power_use_amount, user, FALSE) & COMPONENT_POWER_SUCCESS))
 		return
 	//SKYRAT EDIT END
-	if(!user.can_read(src) || user.is_blind())
+	if(!user.can_read(src)) //SKYRAT EDIT: Blind People Can Analyze Again
 		return
 
 	flick("[icon_state]-scan", src) //makes it so that it plays the scan animation upon scanning, including clumsy scanning
@@ -92,7 +92,7 @@
 	add_fingerprint(user)
 
 /obj/item/healthanalyzer/attack_secondary(mob/living/victim, mob/living/user, params)
-	if(!user.can_read(src) || user.is_blind() || !(item_use_power(power_use_amount, user) & COMPONENT_POWER_SUCCESS)) // SKYRAT EDIT CHANGE
+	if(!user.can_read(src) || !(item_use_power(power_use_amount, user) & COMPONENT_POWER_SUCCESS)) // SKYRAT EDIT CHANGE: Blind People Can Analyze Again/Power Cost
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 	chemscan(user, victim)
@@ -462,7 +462,7 @@
 /obj/item/healthanalyzer/AltClick(mob/user)
 	..()
 
-	if(!user.canUseTopic(src, BE_CLOSE) || !user.can_read(src) || user.is_blind())
+	if(!user.canUseTopic(src, BE_CLOSE) || !user.can_read(src)) //SKYRAT EDIT: Blind People Can Analyze Again
 		return
 
 	mode = !mode
@@ -526,7 +526,7 @@
 			L.dropItemToGround(src)
 
 /obj/item/healthanalyzer/wound/attack(mob/living/carbon/patient, mob/living/carbon/human/user)
-	if(!user.can_read(src) || user.is_blind())
+	if(!user.can_read(src)) //SKYRAT EDIT: Blind People Can Analyze Again
 		return
 
 	add_fingerprint(user)
