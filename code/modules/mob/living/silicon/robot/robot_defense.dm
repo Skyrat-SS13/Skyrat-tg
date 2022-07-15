@@ -343,7 +343,7 @@ GLOBAL_LIST_INIT(blacklisted_borg_hats, typecacheof(list( //Hats that don't real
 		to_chat(user, span_warning("You must unexpose the wires first!"))
 		return
 	// SKYRAT ADDITION START - Sanity checks for Interdyne AI conversions
-	if(!istype(emag_card, /obj/item/card/emag/interdyne)) // Prevent gamering
+	if(istype(emag_card, /obj/item/card/emag/interdyne)) // Prevent gamering
 		var/area/emag_area = get_area(src) // Define moment
 		var/obj/item/card/emag/interdyne/dyne_card = emag_card
 		if(!is_type_in_list(emag_area, dyne_card.valid_areas))
