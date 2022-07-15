@@ -387,6 +387,10 @@
 	name = "Emo Short"
 	icon_state = "hair_emoshort"
 
+/datum/sprite_accessory/hair/skyrat/mediumbraid
+	name = "Medium Braid"
+	icon_state = "hair_mediumbraid"
+
 // Facial hair
 
 /datum/sprite_accessory/facial_hair/skyrat
@@ -423,7 +427,3 @@
 /datum/sprite_accessory/facial_hair/skyrat/squid
 	name = "Tentacle Beard"
 	icon_state = "facial_squid"
-
-/datum/sprite_accessory/hair/skyrat/mediumbraid
-	name = "Medium Braid"
-	icon_state = "hair_mediumbraid"
