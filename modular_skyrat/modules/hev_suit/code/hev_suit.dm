@@ -4,8 +4,6 @@
 #define HEV_COLOR_BLUE "#00aeff"
 #define HEV_COLOR_ORANGE "#f88f04"
 
-#define HEV_ARMOR_POWERON_BONUS 60
-
 #define HEV_DAMAGE_POWER_USE_THRESHOLD 10
 
 #define HEV_ARMOR_POWEROFF list(20, 20, 20, 20, 30, 40, 40, 40, 40, 10)
@@ -151,13 +149,12 @@
 	var/health_near_death_alarm = FALSE
 	var/health_critical_alarm = FALSE
 	var/health_dropping_alarm = FALSE
-	var/seek_medical_attention_alarm = FALSE
 
 	///Notification modes and current playing voicelines.
 	var/send_notifications = HEV_NOTIFICATION_TEXT_AND_VOICE
 	var/playing_voice_line
 
-	///Used only for differentiating of HEV and PCV
+	///Used only for differentiating of different (obviously) suits.
 	var/armor_poweroff = HEV_ARMOR_POWEROFF
 	var/armor_poweron = HEV_ARMOR_POWERON
 	var/heal_amount = HEV_HEAL_AMOUNT
@@ -887,7 +884,6 @@
 #undef HEV_COLOR_RED
 #undef HEV_COLOR_BLUE
 #undef HEV_COLOR_ORANGE
-#undef HEV_ARMOR_POWERON_BONUS
 #undef HEV_DAMAGE_POWER_USE_THRESHOLD
 #undef HEV_ARMOR_POWEROFF
 #undef PCV_ARMOR_POWEROFF
