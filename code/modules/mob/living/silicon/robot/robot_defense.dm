@@ -342,6 +342,13 @@ GLOBAL_LIST_INIT(blacklisted_borg_hats, typecacheof(list( //Hats that don't real
 	if(wiresexposed)
 		to_chat(user, span_warning("You must unexpose the wires first!"))
 		return
+	/// SKYRAT ADDITION START - Sanity checks for Interdyne AI conversions
+	if(emag_card.type == /obj/item/card/emag/interdyne) /// Prevent gamering
+		var/area/emag_area = get_area(src) /// Define moment
+		if(!emag_area.type == /area/ruin/syndicate_lava_base/testlab && !emag_area.type == /area/ruin/space/has_grav/skyrat/interdynefob/research)
+			to_chat(user, span_warning("You must do this in the science department of your station for a stable uplink!")) /// Avoid naming DS-2 or Interdyne. This is a secret operation after all.
+			return
+	/// SKYRAT ADDITION END
 
 	to_chat(user, span_notice("You emag [src]'s interface."))
 	emag_cooldown = world.time + 100

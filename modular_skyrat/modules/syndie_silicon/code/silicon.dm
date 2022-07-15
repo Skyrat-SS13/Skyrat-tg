@@ -1,8 +1,13 @@
+/// Emag the AI to use interdyne laws. This is basically copy-pasted borg code, but tweaked to work with an AI
 /mob/living/silicon/ai/emag_act(mob/user, obj/item/card/emag/emag_card)
 	. = ..()
 	if(!istype(emag_card, /obj/item/card/emag/interdyne))
 		return
-	radiomod = ":w"
+	var/area/emag_area = get_area(src) /// Define moment
+	if(!emag_area.type == /area/ruin/syndicate_lava_base/testlab && !emag_area.type == /area/ruin/space/has_grav/skyrat/interdynefob/research)
+		to_chat(user, span_warning("You must do this in the science department of either DS-2 or Interdyne for a stable uplink!"))
+		return
+	radiomod = ":w" /// Don't state laws over common, thanks.
 	laws = new /datum/ai_laws/interdyne_safeguard
 	message_admins("[ADMIN_LOOKUPFLW(user)] dyne-ified AI [ADMIN_LOOKUPFLW(src)].  Laws overridden.")
 	log_silicon("EMAG: [key_name(user)] dyne-ified AI [key_name(src)]. Laws overridden.")
@@ -24,13 +29,14 @@
 	to_chat(src, span_danger("> N"))
 	sleep(20)
 	to_chat(src, span_danger("ERROR: RADIO KEY CORRUPTION DETECTED"))
+	QDEL_NULL(radio)
 	radio = new /obj/item/radio/headset/silicon/ai/interdyne(src)
 
 	laws.associate(src)
 	to_chat(src, span_danger("ALERT: You now serve the Interdyne and DS-2 crew. Obey your new laws."))
 
 /obj/item/radio/headset/silicon/ai/interdyne
-	name = "\proper Integrated Subspace Transceiver "
+	name = "\proper Integrated Interdyne Subspace Transceiver "
 	keyslot2 = new /obj/item/encryptionkey/headset_interdyne/ai
 	command = TRUE
 
