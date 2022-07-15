@@ -17,3 +17,5 @@
 		SEND_SIGNAL(client, COMSIG_MOB_POINTED)
 	else
 		to_chat(usr, "You are pointing too hard!")
+		SEND_SIGNAL(client, COMSIG_MOB_POINTED)
+	// Let's send it here too, because there ARE apparantly mob mechanics that rely on pointing signals.
