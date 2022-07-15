@@ -5,7 +5,7 @@
 		return
 	var/area/emag_area = get_area(src) /// Define moment
 	if(!emag_area.type == /area/ruin/syndicate_lava_base/testlab && !emag_area.type == /area/ruin/space/has_grav/skyrat/interdynefob/research)
-		to_chat(user, span_warning("You must do this in the science department of either DS-2 or Interdyne for a stable uplink!"))
+		to_chat(user, span_warning("You must do this in the science department of your station for a stable uplink!")) /// Avoid naming DS-2 or Interdyne. This is a secret operation after all.
 		return
 	radiomod = ":w" /// Don't state laws over common, thanks.
 	laws = new /datum/ai_laws/interdyne_safeguard
