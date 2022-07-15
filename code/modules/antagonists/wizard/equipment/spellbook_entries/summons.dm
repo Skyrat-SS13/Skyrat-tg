@@ -70,7 +70,7 @@
 	summon_events(user)
 	playsound(get_turf(user), 'sound/magic/castsummon.ogg', 50, TRUE)
 	return ..()
-
+/* //SKYRAT REMOVAL START
 /datum/spellbook_entry/summon/curse_of_madness
 	name = "Curse of Madness"
 	desc = "Curses the station, warping the minds of everyone inside, causing lasting traumas. Warning: this spell can affect you if not cast from a safe distance."
@@ -83,5 +83,6 @@
 	curse_of_madness(user, message)
 	playsound(user, 'sound/magic/mandswap.ogg', 50, TRUE)
 	return ..()
+*/ //SKYRAT REMOVAL END
 
 #undef MINIMUM_THREAT_FOR_RITUALS

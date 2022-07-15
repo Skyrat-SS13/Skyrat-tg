@@ -71,11 +71,13 @@
 	cost = 3
 	no_coexistance_typecache = list(/datum/action/cooldown/spell/conjure_item/infinite_guns/gun)
 
+/* //SKYRAT REMOVAL START
 /datum/spellbook_entry/barnyard
 	name = "Barnyard Curse"
 	desc = "This spell dooms an unlucky soul to possess the speech and facial attributes of a barnyard animal."
 	spell_type = /datum/action/cooldown/spell/pointed/barnyardcurse
 	category = "Offensive"
+*/ //SKYRAT REMOVAL END
 
 /datum/spellbook_entry/item/staffchaos
 	name = "Staff of Chaos"
@@ -83,11 +85,13 @@
 	item_path = /obj/item/gun/magic/staff/chaos
 	category = "Offensive"
 
+/* //SKYRAT REMOVAL START
 /datum/spellbook_entry/item/staffchange
 	name = "Staff of Change"
 	desc = "An artefact that spits bolts of coruscating energy which cause the target's very form to reshape itself."
 	item_path = /obj/item/gun/magic/staff/change
 	category = "Offensive"
+*/ //SKYRAT REMOVAL END
 
 /datum/spellbook_entry/item/mjolnir
 	name = "Mjolnir"
