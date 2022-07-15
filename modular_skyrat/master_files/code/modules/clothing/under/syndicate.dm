@@ -56,6 +56,11 @@
 	has_sensor = HAS_SENSORS
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 0, ACID = 0)
 
+/obj/item/clothing/under/syndicate/skyrat/baseball
+	name = "syndicate baseball tee"
+	desc = "Aaand the Syndicate Snakes are up to bat, ready for one of their signature nuclear home-runs! Lets show these corpos a good time." //NT pitches their plasma/bluespace(something)
+	icon_state = "syndicate_baseball"
+
 /*
 *	TACTICAL (Real)
 */
@@ -104,12 +109,14 @@
 	name = "neo american officer uniform"
 	desc = "Throughout the stars, rumors of mad scientists and angry drill sergeant run rampent, of creatures in armor black as night being led by men or women wearing this uniform, they share one thing, a deep, natonalistic zeal of the dream of America."
 	icon_state = "enclaveo"
+	can_adjust = TRUE
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 0, ACID = 0, WOUND = 0)
 
 /obj/item/clothing/under/syndicate/skyrat/enclave
 	name = "neo american sergeant uniform"
 	desc = "Throughout the stars, rumors of mad scientists and angry drill sergeant run rampent, of creatures in armor black as night being led by men or women wearing this uniform, they share one thing, a deep, natonalistic zeal of the dream of America."
 	icon_state = "enclave"
+	can_adjust = TRUE
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 0, ACID = 0, WOUND = 0)
 
 /obj/item/clothing/under/syndicate/skyrat/enclaveo/real
