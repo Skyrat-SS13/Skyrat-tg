@@ -23,8 +23,7 @@
 	if(method == INJECT)
 		M.adjustOxyLoss(reac_volume)
 		M.emote("cough")
-		//M.DefaultCombatKnockdown(50)
-		if(reac_volume >= 15)
+		if(reac_volume >= 15) // one normal needle's worth
 			M.Stun(reac_volume * 0.25)
 			var/obj/item/toy/plush/PType = pick(GLOB.valid_plushie_paths)
 			var/obj/item/toy/plush/P = new PType(get_turf(M))
@@ -47,14 +46,6 @@
 			if(prob(10))
 				to_chat(M, "You find yourself unable to supress the desire to howl!")
 				M.emote("awoo")
-			if(prob(20))
-				//var/list/seen = M.sight() - M //Sound and sight checkers
-				var/list/datum/weakref/seen = list(ismob(0))
-				for(var/victim in seen)
-					if(isanimal(victim) || !isliving(victim))
-						seen -= victim
-				if(LAZYLEN(seen))
-					to_chat(M, "You notice [pick(seen)]'s bulge [pick("OwO!", "uwu!")]")
 		if(16)
 			T = M.getorganslot(ORGAN_SLOT_TONGUE)
 			var/obj/item/organ/internal/tongue/nT = new /obj/item/organ/internal/tongue/fluffy
@@ -69,18 +60,10 @@
 			if(prob(5))
 				to_chat(M, "You find yourself unable to supress the desire to howl!")
 				M.emote("awoo")
-			if(prob(5))
-//				var/list/seen = M.fov_view() - M //Sound and sight checkers
-				var/list/datum/weakref/seen = list(ismob(0))
-				for(var/victim in seen)
-					if(isanimal(victim) || !isliving(victim))
-						seen -= victim
-				if(LAZYLEN(seen))
-					to_chat(M, "You notice [pick(seen)]'s bulge [pick("OwO!", "uwu!")]")
 	..()
 
 /datum/reagent/OwO/furranium/on_mob_delete(mob/living/carbon/M)
-	if(creation_purity < 0.95)//Only permanent if you're a good chemist.
+	if(creation_purity < 0.95) // Only permanent if you're a good chemist.
 		nT = M.getorganslot(ORGAN_SLOT_TONGUE)
 		nT.Remove()
 		qdel(nT)

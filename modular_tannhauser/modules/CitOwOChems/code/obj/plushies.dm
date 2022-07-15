@@ -4,9 +4,6 @@
 /obj/item/toy/plush/carpplushie/dehy_carp
 	can_random_spawn = FALSE
 
-//	var/snowflake_idvar/snowflake_id
-
-
 GLOBAL_LIST_INIT(valid_plushie_paths, valid_plushie_paths())
 /proc/valid_plushie_paths()
 	. = list()
@@ -15,25 +12,7 @@ GLOBAL_LIST_INIT(valid_plushie_paths, valid_plushie_paths())
 		if(!initial(abstract.can_random_spawn))
 			continue
 		. += i
-/*
-/obj/item/toy/plush/random
-	name = "Illegal plushie"
-	desc = "Something fucked up"
-
-/obj/item/toy/plush/random/Initialize()
-	SHOULD_CALL_PARENT(FALSE)
-	var/newtype = pick(GLOB.valid_plushie_paths)
-//	var/list/snowflake_list = CONFIG_GET(keyed_list/snowflake_plushies)
-
-	/// If there are no snowflake plushies we'll default to base plush, so we grab from the valid list
-//	if (snowflake_list.len)
-//		newtype = prob(CONFIG_GET(number/snowflake_plushie_prob)) ? /obj/item/toy/plush/random_snowflake : pick(GLOB.valid_plushie_paths)
-//	else
-//		newtype = pick(GLOB.valid_plushie_paths)
-
-	new newtype(loc)
-	return INITIALIZE_HINT_QDEL
-*/
+		
 /obj/item/toy/plush/plushling
 	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
 	icon_state = "blue_fox"
@@ -113,17 +92,7 @@ GLOBAL_LIST_INIT(valid_plushie_paths, valid_plushie_paths())
 //	if(!victim)
 //		return
 	visible_message("<span class='warning'>[src] gruesomely mutilliates [victim], leaving nothing more than dust!</span>")
-/*	if(victim.snowflake_id) //Snowflake code for snowflake plushies.
-		set_snowflake_from_config(victim.snowflake_id)
-		desc += " Wait, did it just move..?"
-	else
-		name = victim.name
-		desc = victim.desc + " Wait, did it just move..?"
-		icon_state = victim.icon_state
-		squeak_override = victim.squeak_override
-		attack_verb_simple = victim.attack_verb_simple
-*/
-	new /obj/effect/decal/cleanable/ash(get_turf(victim))
+	new /obj/effect/decal/cleanable/shreds(get_turf(victim), victim.name)
 	qdel(victim)
 
 /obj/item/toy/plush/plushling/plop(obj/item/toy/plush/Daddy)
