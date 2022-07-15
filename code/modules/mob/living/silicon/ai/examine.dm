@@ -1,8 +1,22 @@
 /mob/living/silicon/ai/examine(mob/user)
+<<<<<<< HEAD
 	. = list("<span class='info'>This is [icon2html(src, user)] <EM>[src]</EM>!", EXAMINE_SECTION_BREAK) //SKYRAT EDIT CHANGE
 	if (stat == DEAD)
+=======
+	. = list("<span class='info'>This is [icon2html(src, user)] <EM>[src]</EM>!")
+	if(stat == DEAD)
+>>>>>>> da8359ffc07 (Deconstructing AIs (#68063))
 		. += span_deadsay("It appears to be powered-down.")
-	else
+	. += span_notice("Its floor <b>bolts</b> are [is_anchored ? "tightened" : "loose"].")
+	if(is_anchored)
+		if(!opened)
+			if(!emagged)
+				. += span_notice("Its access panel is [stat == DEAD ? "damaged" : "closed and locked"], but could be <b>pried</b> open.")
+			else
+				. += span_warning("Its access panel lock is sparking, the cover can be <b>pried</b> open.")
+		else
+			. += span_notice("Its neural network connection could be <b>cut</b>, its access panel cover can be <b>pried</b> back into place.")
+	if(stat != DEAD)
 		if (getBruteLoss())
 			if (getBruteLoss() < 30)
 				. += span_warning("It looks slightly dented.")
