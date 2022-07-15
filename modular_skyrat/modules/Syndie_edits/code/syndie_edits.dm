@@ -88,19 +88,19 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "coatsyndie_short"
 
-/obj/item/clothing/under/syndicate/overalls
+/obj/item/clothing/under/syndicate/skyrat/overalls
 	name = "utility overalls turtleneck"
 	desc = "A pair of spiffy overalls with a turtleneck underneath, useful for both engineering and botanical work."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "syndicate_overalls"
+	can_adjust = TRUE
 
-/obj/item/clothing/under/syndicate/skirt/overalls
+/obj/item/clothing/under/syndicate/skyrat/overalls/skirt
 	name = "utility overalls skirtleneck"
 	desc = "A pair of spiffy overalls with a turtleneck underneath, this one is a skirt instead, breezy."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "syndicate_overallskirt"
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
+	dying_key = DYE_REGISTRY_JUMPSKIRT
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/head/soft/sec/syndicate
 	name = "engine tech utility cover"

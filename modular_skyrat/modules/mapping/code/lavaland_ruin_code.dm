@@ -34,7 +34,7 @@
 	return ..()
 
 /datum/outfit/lavaland_syndicate/ice
-	uniform = /obj/item/clothing/under/syndicate
+	uniform = /obj/item/clothing/under/syndicate/skyrat/tactical
 	suit = /obj/item/clothing/suit/hooded/wintercoat/syndicate
 	ears = /obj/item/radio/headset/interdyne
 
@@ -78,7 +78,7 @@
 
 /datum/outfit/lavaland_syndicate/shaftminer/ice
 	name = "Icemoon Syndicate Shaft Miner"
-	uniform = /obj/item/clothing/under/syndicate
+	uniform = /obj/item/clothing/under/syndicate/skyrat/tactical
 	suit = /obj/item/clothing/suit/hooded/wintercoat/syndicate
 
 //ITEMS
