@@ -1430,6 +1430,7 @@
 		"ranged_analyzer",
 		"laserscalpel",
 		"mechanicalpinches",
+		"rangedanalyzer",
 		"searingtool",
 	)
 	//SKYRAT EDIT ADDITION - ("ranged_analyzer"),
