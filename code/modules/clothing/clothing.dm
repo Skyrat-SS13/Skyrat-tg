@@ -53,7 +53,7 @@
 	var/obj/item/food/clothing/moth_snack
 
 /obj/item/clothing/Initialize(mapload)
-	if((clothing_flags & VOICEBOX_TOGGLABLE))
+	if(clothing_flags & VOICEBOX_TOGGLABLE)
 		actions_types += /datum/action/item_action/toggle_voice_box
 	. = ..()
 	AddElement(/datum/element/venue_price, FOOD_PRICE_CHEAP)
@@ -115,12 +115,13 @@
 /obj/item/clothing/attack(mob/living/M, mob/living/user, params)
 	if(user.combat_mode || !ismoth(M) || ispickedupmob(src))
 		return ..()
-	if(moth_edible == TRUE)
-		if(isnull(moth_snack))
-			moth_snack = new
-			moth_snack.name = name
-			moth_snack.clothing = WEAKREF(src)
-		moth_snack.attack(M, user, params)
+	if(clothing_flags & INEDIBLE_CLOTHING)
+		return ..()
+	if(isnull(moth_snack))
+		moth_snack = new
+		moth_snack.name = name
+		moth_snack.clothing = WEAKREF(src)
+	moth_snack.attack(M, user, params)
 
 /obj/item/clothing/attackby(obj/item/W, mob/user, params)
 	if(!istype(W, repairable_by))

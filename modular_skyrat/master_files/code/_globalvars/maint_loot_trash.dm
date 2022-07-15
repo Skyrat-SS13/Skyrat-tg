@@ -16,7 +16,7 @@ GLOBAL_LIST_INIT(trash_loot, list(// junk: useless, very easy to get, or ghetto 
 		/obj/item/grown/bananapeel/bluespace = 5,
 		/obj/item/grown/corncob = 25,
 		/obj/item/inflatable/torn = 25,
-		/obj/item/inflatable/torn/door = 25,
+		/obj/item/inflatable/door/torn = 25,
 		/obj/item/light/bulb/broken = 50,
 		/obj/item/light/tube/broken = 50,
 		/obj/item/paper/crumpled = 25,

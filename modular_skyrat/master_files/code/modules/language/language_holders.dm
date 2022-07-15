@@ -23,7 +23,17 @@
 								/datum/language/vox = list(LANGUAGE_ATOM),
 								/datum/language/yangyu = list(LANGUAGE_ATOM),
 								/datum/language/zolmach = list(LANGUAGE_ATOM),
-								/datum/language/schechi = list(LANGUAGE_ATOM))
+								/datum/language/schechi = list(LANGUAGE_ATOM),
+								/datum/language/xenoknockoff = list(LANGUAGE_ATOM),
+								/datum/language/monkey = list(LANGUAGE_ATOM),
+								/datum/language/slime = list(LANGUAGE_ATOM),
+								/datum/language/beachbum = list(LANGUAGE_ATOM),
+								/datum/language/mushroom = list(LANGUAGE_ATOM),
+								/datum/language/shadowtongue = list(LANGUAGE_ATOM),
+								/datum/language/buzzwords = list(LANGUAGE_ATOM),
+								/datum/language/terrum = list(LANGUAGE_ATOM),
+								/datum/language/sylvan = list(LANGUAGE_ATOM)
+								)
 	spoken_languages = list(/datum/language/common = list(LANGUAGE_ATOM),
 							/datum/language/uncommon = list(LANGUAGE_ATOM),
 							/datum/language/machine = list(LANGUAGE_ATOM),
@@ -41,4 +51,15 @@
 							/datum/language/vox = list(LANGUAGE_ATOM),
 							/datum/language/yangyu = list(LANGUAGE_ATOM),
 							/datum/language/zolmach = list(LANGUAGE_ATOM),
-							/datum/language/schechi = list(LANGUAGE_ATOM))
+							/datum/language/schechi = list(LANGUAGE_ATOM),
+							/datum/language/xenoknockoff = list(LANGUAGE_ATOM),
+							/datum/language/monkey = list(LANGUAGE_ATOM),
+							/datum/language/slime = list(LANGUAGE_ATOM),
+							/datum/language/beachbum = list(LANGUAGE_ATOM),
+							/datum/language/mushroom = list(LANGUAGE_ATOM),
+							/datum/language/shadowtongue = list(LANGUAGE_ATOM),
+							/datum/language/buzzwords = list(LANGUAGE_ATOM),
+							/datum/language/terrum = list(LANGUAGE_ATOM),
+							/datum/language/sylvan = list(LANGUAGE_ATOM)
+							)
+

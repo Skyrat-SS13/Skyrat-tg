@@ -1,3 +1,12 @@
+#define BASE_NINJA_REAGENTS list(\
+		/datum/reagent/medicine/inacusiate,\
+		/datum/reagent/medicine/morphine,\
+		/datum/reagent/medicine/potass_iodide,\
+		/datum/reagent/medicine/syndicate_nanites,\
+		/datum/reagent/consumable/nutriment\
+	)
+
+
 /obj/item/katana/ninja_blade
 	name = "energy katana"
 	desc = "A katana infused with strong energy."
@@ -19,12 +28,6 @@
 	icon_state = "borghypo_n"
 	charge_cost = 20
 	recharge_time = 2
-	reagent_ids = list(
-		/datum/reagent/medicine/syndicate_nanites,
-		/datum/reagent/medicine/inacusiate,
-		/datum/reagent/medicine/potass_iodide,
-		/datum/reagent/medicine/morphine,
-		/datum/reagent/consumable/nutriment //That is for Ninja.
-	)
+	default_reagent_types = BASE_NINJA_REAGENTS //That is for Ninja
 	bypass_protection = TRUE //They still wearing suits, don't they?
-	accepts_reagent_upgrades = FALSE
+

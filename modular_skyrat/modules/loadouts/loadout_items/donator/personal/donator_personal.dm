@@ -1,11 +1,11 @@
 /datum/loadout_item/toys/miafoxplush
 	name = "Mia’s fox plushie"
-	item_path = /obj/item/toy/plush/fox/mia
+	item_path = /obj/item/toy/plush/skyrat/fox/mia
 	ckeywhitelist = list("fuzlet")
 
 /datum/loadout_item/toys/teasefoxplush
 	name = "Teasable fox plushie"
-	item_path = /obj/item/toy/plush/fox/kailyn
+	item_path = /obj/item/toy/plush/skyrat/fox/kailyn
 	ckeywhitelist = list("ratraus")
 
 /datum/loadout_item/pocket_items/drawingtablet
@@ -345,7 +345,7 @@
 
 /datum/loadout_item/toys/voodooplush
 	name = "Voodoo Doll"
-	item_path = /obj/item/toy/plush/donator/voodoo
+	item_path = /obj/item/toy/plush/skyrat/voodoo
 	ckeywhitelist = list("gamerguy14948")
 
 /datum/loadout_item/mask/octusvox
@@ -396,7 +396,7 @@
 
 /datum/loadout_item/toys/zappplush
 	name = "Lil' Zapp Plushie"
-	item_path = /obj/item/toy/plush/zapp
+	item_path = /obj/item/toy/plush/skyrat/zapp
 	donator_only = TRUE
 
 /datum/loadout_item/pocket_items/tacticalbrush
@@ -411,12 +411,12 @@
 
 /datum/loadout_item/toys/immovable_rod_plush
 	name = "Immovable Rod Plushie"
-	item_path = /obj/item/toy/plush/donator/immovable_rod
+	item_path = /obj/item/toy/plush/skyrat/immovable_rod
 	ckeywhitelist = list("tobjv")
 
 /datum/loadout_item/toys/tesh_plush
 	name = "Squish-Me-Tesh Plush"
-	item_path = /obj/item/toy/plush/donator/tesh
+	item_path = /obj/item/toy/plush/skyrat/tesh
 	ckeywhitelist = list("tobjv")
 
 /datum/loadout_item/under/jumpsuit/redhosneck
@@ -433,7 +433,7 @@
 
 /datum/loadout_item/toys/roselia_plush
 	name = "Obscene Sergal Plushie"
-	item_path = /obj/item/toy/plush/roselia
+	item_path = /obj/item/toy/plush/skyrat/roselia
 	ckeywhitelist = list("ultimarifox")
 
 /datum/loadout_item/accessory/mercbadge
@@ -442,22 +442,48 @@
 	ckeywhitelist = list("konstyantyn")
 
 /datum/loadout_item/toys/plushe_winrow
-    name = "Dark and brooding lizard plushie"
-    item_path = /obj/item/toy/plush/donator/plushie_winrow
+    name = "Dark and Brooding Lizard Plushie"
+    item_path = /obj/item/toy/plush/skyrat/plushie_winrow
+
+/datum/loadout_item/head/recruiter_cap
+	name = "Recruiter's Cap"
+	item_path = /obj/item/clothing/head/recruiter_cap
+	ckeywhitelist = list("m97screwsyourparents")
+
+/datum/loadout_item/suit/recruiter_jacket
+	name = "Recruiter's Jacket"
+	item_path = /obj/item/clothing/suit/toggle/recruiter_jacket
+	ckeywhitelist = list("m97screwsyourparents")
+
+/datum/loadout_item/under/jumpsuit/recruiter_uniform
+	name = "Recruiter's Uniform"
+	item_path = /obj/item/clothing/under/recruiter_uniform
+	ckeywhitelist = list("m97screwsyourparents")
+
+/datum/loadout_item/pocket_items/hypno_watch
+	name = "Pocket Watch"
+	item_path = /obj/item/clothing/accessory/hypno_watch
+	ckeywhitelist = list("slippyjoe")
+
+/datum/loadout_item/under/jumpsuit/nt_idol
+	name = "NT Idol's Skirt"
+	item_path = /obj/item/clothing/under/nt_idol_skirt
+	ckeywhitelist = list("tetrako")
+	restricted_roles = list(JOB_NT_REP)
 
 /datum/loadout_item/toys/CFBonnie
 	name = "Chunko Fop: Blue Bunny Plushie"
-	item_path = /obj/item/toy/plush/chunko/bonnie
+	item_path = /obj/item/toy/plush/skyrat/chunko/bonnie
 	donator_only = TRUE
 
 /datum/loadout_item/toys/CFAndrew
 	name = "Chunko Fop: Green Bunny Plushie"
-	item_path = /obj/item/toy/plush/chunko/andrew
+	item_path = /obj/item/toy/plush/skyrat/chunko/andrew
 	donator_only = TRUE
 
 /datum/loadout_item/toys/CFInessa
 	name = "Chunko Fop: Medical Bear Plushie"
-	item_path = /obj/item/toy/plush/chunko/inessa
+	item_path = /obj/item/toy/plush/skyrat/chunko/inessa
 	donator_only = TRUE
 
 //Chunko Fops were donated by SlippyJoe, who requested they are usable by everyone

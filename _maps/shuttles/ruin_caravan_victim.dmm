@@ -250,9 +250,7 @@
 /area/shuttle/caravan/freighter1)
 "lM" = (
 /obj/machinery/light/small/directional/west,
-/obj/structure/sign/warning/vacuum{
-	pixel_x = 32
-	},
+/obj/structure/sign/warning/vacuum/directional/east,
 /turf/open/floor/plating,
 /area/shuttle/caravan/freighter1)
 "mo" = (
@@ -812,6 +810,11 @@
 	initial_gas_mix = "TEMP=2.7"
 	},
 /area/shuttle/caravan/freighter1)
+"Ov" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/iron/airless,
+/area/shuttle/caravan/freighter1)
 "Ow" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/computer/shuttle/caravan/trade1{
@@ -882,11 +885,6 @@
 	},
 /obj/effect/mapping_helpers/broken_floor,
 /turf/open/floor/plating/airless,
-/area/shuttle/caravan/freighter1)
-"Su" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/mapping_helpers/broken_floor,
-/turf/open/floor/iron/airless,
 /area/shuttle/caravan/freighter1)
 "SO" = (
 /obj/machinery/door/airlock{
@@ -1135,7 +1133,7 @@ QY
 if
 Ax
 AO
-Su
+Ov
 eP
 "}
 (10,1,1) = {"
@@ -1160,7 +1158,7 @@ El
 El
 CU
 xz
-Su
+Ov
 Td
 ur
 "}

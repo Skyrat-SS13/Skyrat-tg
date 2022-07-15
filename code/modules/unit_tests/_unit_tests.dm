@@ -68,11 +68,13 @@
 
 // SKYRAT EDIT START
 #include "~skyrat/opposing_force.dm"
+#include "~skyrat/automapper.dm"
 //SKYRAT EDIT END
 #include "achievements.dm"
 #include "anchored_mobs.dm"
 #include "anonymous_themes.dm"
 #include "autowiki.dm"
+#include "barsigns.dm"
 #include "bespoke_id.dm"
 #include "binary_insert.dm"
 #include "bloody_footprints.dm"
@@ -112,6 +114,7 @@
 #include "medical_wounds.dm"
 #include "merge_type.dm"
 #include "metabolizing.dm"
+#include "mindbound_actions.dm"
 #include "mob_faction.dm"
 #include "mob_spawn.dm"
 #include "modsuit.dm"
@@ -140,6 +143,7 @@
 #include "screenshot_basic.dm"
 #include "screenshot_humanoids.dm"
 #include "security_officer_distribution.dm"
+#include "security_levels.dm"
 #include "serving_tray.dm"
 #include "siunit.dm"
 #include "slips.dm"
@@ -148,6 +152,10 @@
 #include "species_config_sanity.dm"
 #include "species_unique_id.dm"
 #include "species_whitelists.dm"
+#include "spell_invocations.dm"
+#include "spell_mindswap.dm"
+#include "spell_names.dm"
+#include "spell_shapeshift.dm"
 #include "stack_singular_name.dm"
 #include "stomach.dm"
 #include "strippable.dm"
@@ -158,7 +166,7 @@
 #include "timer_sanity.dm"
 #include "traitor.dm"
 #include "unit_test.dm"
-#include "wizard.dm"
+#include "wizard_loadout.dm"
 #ifdef REFERENCE_TRACKING_DEBUG //Don't try and parse this file if ref tracking isn't turned on. IE: don't parse ref tracking please mr linter
 #include "find_reference_sanity.dm"
 #endif

@@ -25,6 +25,10 @@
 /obj/structure/door_assembly/door_assembly_med,
 /turf/template_noop,
 /area/ruin/space/has_grav)
+"dy" = (
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav)
 "dV" = (
 /obj/effect/turf_decal/tile/blue{
 	dir = 4
@@ -41,11 +45,6 @@
 /area/ruin/space/has_grav)
 "eP" = (
 /turf/closed/wall,
-/area/ruin/space/has_grav)
-"eX" = (
-/obj/item/stack/rods,
-/obj/effect/mapping_helpers/broken_floor,
-/turf/open/floor/plating/airless,
 /area/ruin/space/has_grav)
 "fc" = (
 /obj/structure/disposalpipe/broken{
@@ -119,10 +118,6 @@
 /obj/effect/mapping_helpers/broken_floor,
 /turf/open/floor/plating/airless,
 /area/ruin/space/has_grav)
-"mM" = (
-/obj/effect/mapping_helpers/broken_floor,
-/turf/open/floor/iron/airless,
-/area/ruin/space/has_grav)
 "nf" = (
 /turf/open/floor/iron/airless,
 /area/ruin/space/has_grav)
@@ -130,10 +125,6 @@
 /obj/item/stack/tile/iron,
 /turf/template_noop,
 /area/template_noop)
-"ox" = (
-/obj/effect/mapping_helpers/broken_floor,
-/turf/open/floor/plating/airless,
-/area/ruin/space/has_grav)
 "oy" = (
 /obj/effect/turf_decal/tile/yellow{
 	dir = 4
@@ -322,6 +313,10 @@
 /obj/item/stack/sheet/iron,
 /turf/template_noop,
 /area/template_noop)
+"FQ" = (
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/iron/airless,
+/area/ruin/space/has_grav)
 "Gb" = (
 /obj/item/shard,
 /obj/effect/mapping_helpers/broken_floor,
@@ -377,6 +372,11 @@
 /obj/structure/disposalpipe/broken{
 	dir = 8
 	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav)
+"Ke" = (
+/obj/item/stack/rods,
 /obj/effect/mapping_helpers/broken_floor,
 /turf/open/floor/plating/airless,
 /area/ruin/space/has_grav)
@@ -551,7 +551,7 @@ DY
 (2,1,1) = {"
 DY
 eP
-ox
+dy
 eP
 eP
 Pi
@@ -588,30 +588,30 @@ Si
 uB
 jk
 hf
-ox
+dy
 jk
 Cc
-ox
+dy
 "}
 (5,1,1) = {"
-ox
+dy
 Ua
 nf
-mM
+FQ
 SE
 Sz
 CT
 wJ
-ox
-mM
-eX
+dy
+FQ
+Ke
 lQ
 wJ
 "}
 (6,1,1) = {"
 CT
 gi
-mM
+FQ
 nf
 JN
 QV
@@ -659,10 +659,10 @@ rt
 Ua
 nf
 CT
-mM
+FQ
 pd
 Jy
-ox
+dy
 oP
 CT
 DY
@@ -670,14 +670,14 @@ DY
 "}
 (10,1,1) = {"
 CT
-eX
+Ke
 eP
 vW
 BX
 nf
 gi
 CT
-ox
+dy
 zw
 eP
 Pi
@@ -687,9 +687,9 @@ DY
 CT
 QV
 rN
-mM
+FQ
 SE
-ox
+dy
 gi
 oP
 CT
@@ -699,12 +699,12 @@ eP
 DY
 "}
 (12,1,1) = {"
-ox
+dy
 rt
 gi
 CT
 xk
-ox
+dy
 eP
 pR
 hf
@@ -715,7 +715,7 @@ DY
 "}
 (13,1,1) = {"
 QV
-ox
+dy
 eP
 tk
 lQ
@@ -725,11 +725,11 @@ aE
 CT
 eP
 QV
-eX
+Ke
 DY
 "}
 (14,1,1) = {"
-ox
+dy
 eP
 eP
 Yu
@@ -751,7 +751,7 @@ nf
 QV
 wz
 Qw
-ox
+dy
 GP
 bS
 AV
@@ -762,8 +762,8 @@ DY
 gi
 eP
 Tb
-mM
-eX
+FQ
+Ke
 Et
 WX
 eP
@@ -777,8 +777,8 @@ DY
 CT
 Cg
 Co
-mM
-ox
+FQ
+dy
 DY
 Di
 eP
@@ -808,13 +808,13 @@ CT
 eP
 eP
 gi
-ox
+dy
 YX
 Vn
 rN
 eP
 lQ
-eX
+Ke
 Pi
 DY
 "}
@@ -839,9 +839,9 @@ CT
 oy
 iB
 Lc
-eX
+Ke
 CT
-ox
+dy
 Lc
 Yt
 QV
@@ -870,7 +870,7 @@ eP
 eP
 CT
 CT
-ox
+dy
 oX
 gX
 eP
@@ -884,7 +884,7 @@ DY
 Pi
 gi
 DY
-ox
+dy
 NM
 CT
 CT
@@ -901,7 +901,7 @@ CT
 pr
 CT
 CT
-ox
+dy
 DY
 DY
 DY
