@@ -17,7 +17,7 @@
  * visuals_only - whether we call special equipped procs, or if we just look like we equipped it
  * preference_source - the preferences of the thing we're equipping
  */
-/mob/living/carbon/human/proc/equip_outfit_and_loadout(datum/outfit/outfit, datum/preferences/preference_source, visuals_only = FALSE, datum/job/equipping_job)
+/mob/living/carbon/human/proc/equip_outfit_and_loadout(datum/outfit/outfit, datum/preferences/preference_source, visuals_only = FALSE, datum/job/equipping_job, datum/outfit/outfit_override)
 	if (!preference_source)
 		return FALSE
 
@@ -29,6 +29,13 @@
 		equipped_outfit = outfit
 	else
 		CRASH("Outfit passed to equip_outfit_and_loadout was neither a path nor an instantiated type!")
+
+	if(outfit_override)
+		for(var/outfit_var in outfit_override)
+			if(!ispath(outfit_override[outfit_var]) && !isnull(outfit_override[outfit_var]))
+				CRASH("outfit_override var on [real_name] spawner has incorrect values! it must be an assoc list with outfit \"var\" = path | null")
+			outfit.vars[outfit_var] = outfit_override[outfit_var]
+
 
 	var/override_preference = preference_source.read_preference(/datum/preference/choiced/loadout_override_preference)
 

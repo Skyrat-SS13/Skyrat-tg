@@ -185,18 +185,6 @@
 
 /obj/effect/mob_spawn/ghost_role/special(mob/living/spawned_mob, mob/mob_possessor)
 	. = ..()
-	// SKYRAT EDIT ADDITION
-	if(!random_appearance && mob_possessor && ishuman(spawned_mob) && mob_possessor.client)
-		var/appearance_choice = tgui_alert(mob_possessor, "Use currently loaded character preferences?", "Appearance Type", list("Yes", "No"))
-		if(appearance_choice == "Yes")
-			var/mob/living/carbon/human/spawned_human = spawned_mob
-			mob_possessor?.client?.prefs?.safe_transfer_prefs_to(spawned_human)
-			spawned_human.dna.update_dna_identity()
-			if(quirks_enabled)
-				SSquirks.AssignQuirks(spawned_human, mob_possessor.client)
-			if(loadout_enabled)
-				spawned_human.equip_outfit_and_loadout(outfit, mob_possessor.client.prefs)
-	// SKYRAT EDIT END
 	if(mob_possessor)
 		spawned_mob.ckey = mob_possessor.ckey
 	if(show_flavor)
@@ -210,6 +198,23 @@
 	if(spawned_mind)
 		spawned_mob.mind.set_assigned_role(SSjob.GetJobType(spawner_job_path))
 		spawned_mind.name = spawned_mob.real_name
+
+// SKYRAT EDIT ADDITION
+/// Allows for prefloaded characters.
+/obj/effect/mob_spawn/ghost_role/equip(mob/living/spawned_mob)
+	if(!random_appearance && ishuman(spawned_mob) && spawned_mob.client)
+		var/appearance_choice = tgui_alert(spawned_mob, "Use currently loaded character preferences?", "Appearance Type", list("Yes", "No"))
+		if(appearance_choice == "Yes")
+			var/mob/living/carbon/human/spawned_human = spawned_mob
+			spawned_mob?.client?.prefs?.safe_transfer_prefs_to(spawned_human)
+			spawned_human.dna.update_dna_identity()
+			if(quirks_enabled)
+				SSquirks.AssignQuirks(spawned_human, spawned_mob.client)
+			if(loadout_enabled)
+				spawned_human.equip_outfit_and_loadout(outfit, spawned_mob.client.prefs, outfit_override = outfit_override)
+		else
+			. = ..()
+// SKYRAT EDIT END
 
 //multiple use mob spawner functionality here- doesn't make sense on corpses
 /obj/effect/mob_spawn/ghost_role/create(mob/mob_possessor, newname)
