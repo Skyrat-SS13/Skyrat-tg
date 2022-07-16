@@ -1,11 +1,6 @@
 /mob/living/silicon/ai/examine(mob/user)
-<<<<<<< HEAD
 	. = list("<span class='info'>This is [icon2html(src, user)] <EM>[src]</EM>!", EXAMINE_SECTION_BREAK) //SKYRAT EDIT CHANGE
-	if (stat == DEAD)
-=======
-	. = list("<span class='info'>This is [icon2html(src, user)] <EM>[src]</EM>!")
 	if(stat == DEAD)
->>>>>>> da8359ffc07 (Deconstructing AIs (#68063))
 		. += span_deadsay("It appears to be powered-down.")
 	. += span_notice("Its floor <b>bolts</b> are [is_anchored ? "tightened" : "loose"].")
 	if(is_anchored)
