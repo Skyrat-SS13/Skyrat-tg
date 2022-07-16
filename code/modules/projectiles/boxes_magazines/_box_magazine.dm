@@ -23,6 +23,8 @@
 	var/max_ammo = 7
 	///Controls how sprites are updated for the ammo box; see defines in combat.dm: AMMO_BOX_ONE_SPRITE; AMMO_BOX_PER_BULLET; AMMO_BOX_FULL_EMPTY
 	var/multiple_sprites = AMMO_BOX_ONE_SPRITE
+	///For sprite updating, do we use initial(icon_state) or base_icon_state?
+	var/multiple_sprite_use_base = FALSE
 	///String, used for checking if ammo of different types but still fits can fit inside it; generally used for magazines
 	var/caliber
 	///Allows multiple bullets to be loaded in from one click of another box/magazine
@@ -173,8 +175,9 @@
 	var/shells_left = LAZYLEN(stored_ammo)
 	switch(multiple_sprites)
 		if(AMMO_BOX_PER_BULLET)
-			icon_state = "[initial(icon_state)]-[shells_left]"
+			icon_state = "[multiple_sprite_use_base ? base_icon_state : initial(icon_state)]-[shells_left]"
 		if(AMMO_BOX_FULL_EMPTY)
+<<<<<<< HEAD
 			icon_state = "[initial(icon_state)]-[shells_left ? "[max_ammo]" : "0"]"
 		//SKYRAT EDIT ADDITION BEGIN - SEC_HAUL
 		if(AMMO_BOX_FULL_EMPTY_BASIC)
@@ -182,6 +185,9 @@
 		//SKYRAT EDIT END
 	desc = "[initial(desc)] There [(shells_left == 1) ? "is" : "are"] [shells_left] shell\s left!"
 	update_custom_materials()
+=======
+			icon_state = "[multiple_sprite_use_base ? base_icon_state : initial(icon_state)]-[shells_left ? "[max_ammo]" : "0"]"
+>>>>>>> 71835a7c1c5 (Nukie Rework Part 2: Nuclear Operative starting gear rework (#68401))
 	return ..()
 
 /// Updates the amount of material in this ammo box according to how many bullets are left in it.
