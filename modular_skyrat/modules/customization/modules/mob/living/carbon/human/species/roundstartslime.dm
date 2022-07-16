@@ -179,7 +179,7 @@
 			if("mcolor3")
 				alterer.dna.update_uf_block(DNA_MUTANT_COLOR_3_BLOCK)
 
-	if(marking_reset && marking_reset == "Yes")
+	if(marking_reset == "Yes")
 		for(var/zone in alterer.dna.species.body_markings)
 			for(var/key in alterer.dna.species.body_markings[zone])
 				var/datum/body_marking/iterated_marking = GLOB.body_markings[key]
@@ -187,7 +187,7 @@
 					continue
 				alterer.dna.species.body_markings[zone][key] = iterated_marking.get_default_color(alterer.dna.features, alterer.dna.species)
 
-	if(mutant_part_reset && mutant_part_reset == "Yes")
+	if(mutant_part_reset == "Yes")
 		alterer.mutant_renderkey = "" //Just in case
 		for(var/mutant_key in alterer.dna.species.mutant_bodyparts)
 			var/mutant_list = alterer.dna.species.mutant_bodyparts[mutant_key]
