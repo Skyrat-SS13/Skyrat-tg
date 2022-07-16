@@ -502,3 +502,12 @@
 /datum/greyscale_config/teshari/hardsuit
 	name = "Teshari Hardsuit"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/teshari_fallbacks/hardsuit.json'
+
+/*
+*	ITEMS
+*/
+
+/datum/greyscale_config/id_card
+	name = "Colourable ID Card"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/id_card.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/items/id_card.json'
