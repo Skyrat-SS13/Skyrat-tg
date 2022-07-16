@@ -1,11 +1,12 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "au" = (
+/obj/machinery/light/directional/south,
 /obj/structure/chair/comfy/shuttle{
 	dir = 1
 	},
-/obj/machinery/light/directional/south,
+/obj/item/toy/plush/skyrat/medihound,
 /turf/open/floor/iron/shuttle/evac{
-	icon_state = "floorsec2"
+	icon_state = "floormed"
 	},
 /area/shuttle/escape/brig)
 "ay" = (
@@ -47,12 +48,6 @@
 	icon_state = "floorplace"
 	},
 /area/shuttle/escape)
-"bR" = (
-/obj/machinery/light/directional/east,
-/turf/open/floor/iron/shuttle/evac{
-	icon_state = "floormed"
-	},
-/area/shuttle/escape)
 "bV" = (
 /obj/structure/table,
 /obj/structure/window/spawner,
@@ -83,14 +78,6 @@
 	icon_state = "5,11"
 	},
 /area/shuttle/escape)
-"dw" = (
-/obj/machinery/door/window/brigdoor/security{
-	dir = 1
-	},
-/turf/open/floor/iron/shuttle/evac{
-	icon_state = "floorsec"
-	},
-/area/shuttle/escape/brig)
 "dH" = (
 /obj/machinery/status_display{
 	pixel_x = 4;
@@ -151,14 +138,11 @@
 	},
 /area/shuttle/escape)
 "fi" = (
-/obj/structure/chair/comfy/shuttle{
+/obj/machinery/sleeper{
 	dir = 8
 	},
-/obj/structure/window/reinforced/spawner{
-	dir = 1
-	},
 /turf/open/floor/iron/shuttle/evac{
-	icon_state = "floorsec2"
+	icon_state = "floormed"
 	},
 /area/shuttle/escape/brig)
 "fN" = (
@@ -301,6 +285,12 @@
 	icon_state = "10,24"
 	},
 /area/shuttle/escape)
+"lz" = (
+/obj/structure/closet/crate/freezer/blood,
+/turf/open/floor/iron/shuttle/evac{
+	icon_state = "floormed"
+	},
+/area/shuttle/escape/brig)
 "lL" = (
 /obj/structure/table,
 /obj/structure/window/spawner,
@@ -373,19 +363,25 @@
 	},
 /area/shuttle/escape)
 "oe" = (
+/obj/machinery/light/directional/east,
 /obj/structure/chair/comfy/shuttle{
 	dir = 8
 	},
-/obj/machinery/light/directional/east,
 /turf/open/floor/iron/shuttle/evac{
-	icon_state = "floorsec2"
+	icon_state = "floormed"
 	},
 /area/shuttle/escape/brig)
 "on" = (
-/obj/structure/table/glass,
-/obj/item/toy/plush/skyrat/medihound,
+/obj/machinery/button/flasher{
+	id = "shuttle_flasher";
+	pixel_x = -25;
+	pixel_y = -6
+	},
+/obj/structure/chair/comfy/shuttle{
+	dir = 4
+	},
 /turf/open/floor/iron/shuttle/evac{
-	icon_state = "floormed"
+	icon_state = "floorsec2"
 	},
 /area/shuttle/escape)
 "ov" = (
@@ -422,21 +418,20 @@
 	},
 /area/shuttle/escape)
 "qb" = (
-/obj/item/storage/medkit/toxin,
-/obj/structure/table/glass,
-/turf/open/floor/iron/shuttle/evac{
-	icon_state = "floormed"
-	},
-/area/shuttle/escape)
-"qh" = (
 /obj/structure/chair/comfy/shuttle{
-	dir = 4
-	},
-/obj/structure/window/reinforced/spawner{
-	dir = 1
+	dir = 8
 	},
 /turf/open/floor/iron/shuttle/evac{
 	icon_state = "floorsec2"
+	},
+/area/shuttle/escape)
+"qh" = (
+/obj/machinery/sleeper{
+	dir = 4
+	},
+/obj/machinery/light/directional/west,
+/turf/open/floor/iron/shuttle/evac{
+	icon_state = "floormed"
 	},
 /area/shuttle/escape/brig)
 "qp" = (
@@ -459,17 +454,22 @@
 	icon_state = "floorplace"
 	},
 /area/shuttle/escape)
-"rh" = (
-/obj/machinery/flasher{
-	id = "shuttle_flasher";
-	pixel_x = -24;
-	pixel_y = 6
+"qX" = (
+/obj/item/storage/medkit/regular,
+/obj/item/storage/medkit/o2{
+	pixel_x = -3;
+	pixel_y = -3
 	},
-/obj/structure/chair/comfy/shuttle{
-	dir = 4
-	},
+/obj/structure/table/glass,
 /turf/open/floor/iron/shuttle/evac{
-	icon_state = "floorsec2"
+	icon_state = "floormed"
+	},
+/area/shuttle/escape/brig)
+"rh" = (
+/obj/item/storage/medkit/toxin,
+/obj/structure/table/glass,
+/turf/open/floor/iron/shuttle/evac{
+	icon_state = "floormed"
 	},
 /area/shuttle/escape/brig)
 "rK" = (
@@ -664,7 +664,7 @@
 	},
 /area/shuttle/escape)
 "zc" = (
-/obj/structure/sign/departments/security,
+/obj/structure/sign/departments/medbay/alt,
 /turf/closed/wall/mineral/titanium/shuttle_wall/evac{
 	icon_state = "14,13"
 	},
@@ -714,12 +714,12 @@
 	},
 /area/shuttle/escape)
 "BA" = (
-/obj/machinery/sleeper{
+/obj/machinery/light/directional/east,
+/obj/structure/chair/comfy/shuttle{
 	dir = 8
 	},
-/obj/machinery/light/directional/east,
 /turf/open/floor/iron/shuttle/evac{
-	icon_state = "floormed"
+	icon_state = "floorsec2"
 	},
 /area/shuttle/escape)
 "BN" = (
@@ -733,7 +733,7 @@
 	},
 /area/shuttle/escape)
 "Cu" = (
-/obj/structure/sign/departments/medbay/alt,
+/obj/structure/sign/departments/security,
 /turf/closed/wall/mineral/titanium/shuttle_wall/evac{
 	icon_state = "4,13"
 	},
@@ -746,6 +746,11 @@
 "CI" = (
 /turf/closed/wall/mineral/titanium/shuttle_wall/evac{
 	icon_state = "14,20"
+	},
+/area/shuttle/escape)
+"CK" = (
+/turf/open/floor/iron/shuttle/evac{
+	icon_state = "floorsec"
 	},
 /area/shuttle/escape)
 "CR" = (
@@ -840,17 +845,6 @@
 	icon_state = "flooreng2"
 	},
 /area/shuttle/escape)
-"Gd" = (
-/obj/item/storage/medkit/regular,
-/obj/item/storage/medkit/o2{
-	pixel_x = -3;
-	pixel_y = -3
-	},
-/obj/structure/table/glass,
-/turf/open/floor/iron/shuttle/evac{
-	icon_state = "floormed"
-	},
-/area/shuttle/escape)
 "Gu" = (
 /turf/closed/wall/mineral/titanium/shuttle_wall/evac{
 	icon_state = "2,5"
@@ -872,18 +866,15 @@
 	},
 /area/shuttle/escape)
 "Hs" = (
-/obj/item/storage/medkit/fire,
-/obj/item/storage/medkit/brute{
-	pixel_x = -3;
-	pixel_y = -3
-	},
-/obj/structure/table/glass,
 /obj/machinery/vending/wallmed{
 	pixel_x = -32
 	},
 /obj/machinery/light/directional/west,
+/obj/structure/chair/comfy/shuttle{
+	dir = 4
+	},
 /turf/open/floor/iron/shuttle/evac{
-	icon_state = "floormed"
+	icon_state = "floorsec2"
 	},
 /area/shuttle/escape)
 "Hv" = (
@@ -892,10 +883,22 @@
 	},
 /area/shuttle/escape)
 "HH" = (
-/obj/structure/bed/roller,
-/obj/machinery/iv_drip,
+/obj/structure/window/reinforced/spawner{
+	dir = 1
+	},
+/obj/structure/chair/comfy/shuttle{
+	dir = 8
+	},
 /turf/open/floor/iron/shuttle/evac{
-	icon_state = "floormed"
+	icon_state = "floorsec2"
+	},
+/area/shuttle/escape)
+"HJ" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 4
+	},
+/turf/open/floor/iron/shuttle/evac{
+	icon_state = "floorsec2"
 	},
 /area/shuttle/escape)
 "HP" = (
@@ -913,11 +916,9 @@
 	icon_state = "12,4"
 	},
 /area/shuttle/escape)
-"Is" = (
-/obj/machinery/door/airlock/security/old/glass{
-	name = "Shuttle Brig";
-	req_access = list("brig")
-	},
+"Ij" = (
+/obj/machinery/door/airlock/security/old/glass,
+/obj/effect/mapping_helpers/airlock/access/all/security/entrance,
 /turf/open/floor/iron/shuttle/evac{
 	icon_state = "floorsec2"
 	},
@@ -938,11 +939,17 @@
 	},
 /area/shuttle/escape)
 "IB" = (
-/obj/machinery/door/airlock/external/glass{
-	req_access = list("brig")
-	},
+/obj/machinery/door/airlock/external/glass,
 /turf/open/floor/iron/shuttle/evac{
 	icon_state = "floorsec2"
+	},
+/area/shuttle/escape/brig)
+"IY" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 8
+	},
+/turf/open/floor/iron/shuttle/evac{
+	icon_state = "floormed"
 	},
 /area/shuttle/escape/brig)
 "JR" = (
@@ -950,18 +957,13 @@
 	icon_state = "10,18"
 	},
 /area/shuttle/escape)
-"JZ" = (
-/turf/open/floor/iron/shuttle/evac{
-	icon_state = "floorsec2"
-	},
-/area/shuttle/escape/brig)
 "Kz" = (
-/obj/machinery/sleeper{
+/obj/machinery/light/directional/west,
+/obj/structure/chair/comfy/shuttle{
 	dir = 4
 	},
-/obj/machinery/light/directional/west,
 /turf/open/floor/iron/shuttle/evac{
-	icon_state = "floormed"
+	icon_state = "floorsec2"
 	},
 /area/shuttle/escape)
 "KI" = (
@@ -1040,17 +1042,22 @@
 	},
 /area/shuttle/escape)
 "NG" = (
+/obj/machinery/flasher{
+	id = "shuttle_flasher";
+	pixel_x = -24;
+	pixel_y = 6
+	},
 /turf/open/floor/iron/shuttle/evac{
-	icon_state = "floormed"
+	icon_state = "floorsec"
 	},
 /area/shuttle/escape)
 "NO" = (
+/obj/machinery/light/directional/south,
 /obj/structure/chair/comfy/shuttle{
 	dir = 1
 	},
-/obj/machinery/light/directional/south,
 /turf/open/floor/iron/shuttle/evac{
-	icon_state = "floormed"
+	icon_state = "floorsec2"
 	},
 /area/shuttle/escape)
 "NU" = (
@@ -1074,7 +1081,7 @@
 /area/shuttle/escape)
 "OG" = (
 /turf/open/floor/iron/shuttle/evac{
-	icon_state = "floorsec"
+	icon_state = "floormed"
 	},
 /area/shuttle/escape/brig)
 "OJ" = (
@@ -1084,11 +1091,18 @@
 	},
 /area/shuttle/escape)
 "OY" = (
-/obj/structure/chair/comfy/shuttle{
-	dir = 4
+/obj/item/storage/medkit/fire,
+/obj/item/storage/medkit/brute{
+	pixel_x = -3;
+	pixel_y = -3
 	},
+/obj/structure/table/glass,
+/obj/machinery/vending/wallmed{
+	pixel_x = -32
+	},
+/obj/machinery/light/directional/west,
 /turf/open/floor/iron/shuttle/evac{
-	icon_state = "floorsec2"
+	icon_state = "floormed"
 	},
 /area/shuttle/escape/brig)
 "Pa" = (
@@ -1216,12 +1230,20 @@
 	},
 /area/shuttle/escape)
 "Uh" = (
-/obj/structure/table/reinforced,
-/obj/item/storage/box/handcuffs,
+/obj/structure/bed/roller,
+/obj/machinery/iv_drip,
 /turf/open/floor/iron/shuttle/evac{
-	icon_state = "floorsec2"
+	icon_state = "floormed"
 	},
 /area/shuttle/escape/brig)
+"UF" = (
+/obj/machinery/door/window/brigdoor/security{
+	dir = 1
+	},
+/turf/open/floor/iron/shuttle/evac{
+	icon_state = "floorsec"
+	},
+/area/shuttle/escape)
 "UG" = (
 /turf/closed/wall/mineral/titanium/shuttle_wall/window/evac{
 	icon_state = "15,14"
@@ -1243,24 +1265,12 @@
 	icon_state = "3,4"
 	},
 /area/shuttle/escape)
-"VB" = (
-/obj/structure/closet/crate/freezer/blood,
-/turf/open/floor/iron/shuttle/evac{
-	icon_state = "floormed"
-	},
-/area/shuttle/escape)
 "VC" = (
 /obj/structure/chair/comfy/shuttle{
 	dir = 4
 	},
-/obj/machinery/button/flasher{
-	id = "shuttle_flasher";
-	pixel_x = -25;
-	pixel_y = -6
-	},
-/obj/machinery/light/directional/west,
 /turf/open/floor/iron/shuttle/evac{
-	icon_state = "floorsec2"
+	icon_state = "floormed"
 	},
 /area/shuttle/escape/brig)
 "Ws" = (
@@ -1284,11 +1294,11 @@
 	},
 /area/shuttle/escape)
 "WW" = (
-/obj/structure/chair/comfy/shuttle{
-	dir = 8
-	},
+/obj/machinery/light/directional/east,
+/obj/structure/bed/roller,
+/obj/machinery/iv_drip,
 /turf/open/floor/iron/shuttle/evac{
-	icon_state = "floorsec2"
+	icon_state = "floormed"
 	},
 /area/shuttle/escape/brig)
 "Xt" = (
@@ -1353,11 +1363,14 @@
 	},
 /area/shuttle/escape)
 "Zu" = (
+/obj/structure/window/reinforced/spawner{
+	dir = 1
+	},
 /obj/structure/chair/comfy/shuttle{
 	dir = 4
 	},
 /turf/open/floor/iron/shuttle/evac{
-	icon_state = "floormed"
+	icon_state = "floorsec2"
 	},
 /area/shuttle/escape)
 "ZA" = (
@@ -1418,12 +1431,12 @@ aY
 MJ
 qQ
 zc
-OY
+qX
 OY
 VC
-JZ
+OG
 qh
-JZ
+OG
 rh
 UT
 mL
@@ -1446,12 +1459,12 @@ Rc
 Rc
 Rc
 Rc
-Is
+gV
 OG
 OG
 OG
 OG
-dw
+OG
 OG
 OG
 au
@@ -1476,8 +1489,8 @@ zC
 Rc
 Rc
 xE
-WW
-WW
+lz
+IY
 oe
 Uh
 fi
@@ -1708,8 +1721,8 @@ tF
 Rc
 oT
 Cu
-Gd
-NG
+HJ
+HJ
 Hs
 on
 Zu
@@ -1736,13 +1749,13 @@ Rc
 Rc
 Rc
 Rc
-gV
-NG
-NG
-NG
-NG
-NG
-NG
+Ij
+CK
+CK
+CK
+CK
+UF
+CK
 NG
 NO
 Bn
@@ -1766,10 +1779,10 @@ bV
 On
 Rc
 dH
-VB
-NG
-bR
-HH
+qb
+qb
+BA
+qb
 HH
 BA
 qb
