@@ -336,6 +336,7 @@
 		"chem_heater",
 		"chem_mass_spec",
 		//SKYRAT EDIT - RESEARCH DESIGNS
+		"anesthetic_machine",
 		"smartdartgun",
 		//SKYRAT EDIT - END
 		"chem_master",
@@ -1282,7 +1283,6 @@
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1000)
 
-
 /datum/techweb_node/cyber_organs_upgraded
 	id = "cyber_organs_upgraded"
 	display_name = "Upgraded Cybernetic Organs"
@@ -1427,12 +1427,11 @@
 		"gene_shears",
 		"handdrill",
 		"jawsoflife",
-		"ranged_analyzer",
 		"laserscalpel",
 		"mechanicalpinches",
+		"rangedanalyzer",
 		"searingtool",
 	)
-	//SKYRAT EDIT ADDITION - ("ranged_analyzer"),
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 7500)
 	discount_experiments = list(/datum/experiment/scanning/random/material/hard/one = 5000)
 
@@ -2133,6 +2132,7 @@
 		"largecrossbow",
 		"rapidsyringe",
 		"suppressor",
+		"super_pointy_tape",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 10000)
 	hidden = TRUE

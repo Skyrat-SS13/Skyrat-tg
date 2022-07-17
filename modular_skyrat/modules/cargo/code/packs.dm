@@ -613,3 +613,25 @@
 	. = ..()
 	for(var/i in 1 to 19)
 		new /obj/item/grown/log(.)
+
+/datum/supply_pack/security/armory/russian
+	cost = CARGO_CRATE_VALUE * 15
+	contains = list(/obj/item/storage/box/nri_rations,
+					/obj/item/storage/box/nri_rations,
+					/obj/item/storage/box/nri_rations,
+					/obj/item/storage/toolbox/ammo,
+					/obj/item/storage/toolbox/maint_kit,
+					/obj/item/clothing/suit/armor/vest/russian,
+					/obj/item/clothing/head/helmet/rus_helmet,
+					/obj/item/storage/belt/military/nri,
+					/obj/item/clothing/gloves/tackler/combat,
+					/obj/item/clothing/under/costume/nri,
+					/obj/item/clothing/mask/gas/hecu2,
+					/obj/item/clothing/shoes/combat,
+					/obj/item/clothing/mask/russian_balaclava,
+					/obj/item/ammo_box/a762,
+					/obj/item/gun/ballistic/rifle/boltaction,
+					/obj/item/gun/ballistic/automatic/plastikov,
+					/obj/item/ammo_box/magazine/plastikov9mm,
+					/obj/item/gun/ballistic/automatic/pistol/ladon/nri,
+					/obj/item/ammo_box/magazine/m9mm_aps)

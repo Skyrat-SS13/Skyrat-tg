@@ -16,6 +16,7 @@
 	name = "black pencilskirt"
 	desc = "A clean white shirt with a tight-fitting black pencilskirt."
 	icon_state = "black_pencil"
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 
 /obj/item/clothing/under/suit/skyrat/pencil/black_really
 	name = "executive pencilskirt"
