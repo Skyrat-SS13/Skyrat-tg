@@ -40,6 +40,7 @@
 			"name" = nifsoft.name,
 			"desc" = nifsoft.program_desc,
 			"active" = nifsoft.active,
+			"active_mode" = nifsoft.active_mode,
 			"activation_cost" = nifsoft.activation_cost,
 			"active_cost" = nifsoft.active_cost,
 			"reference" = REF(nifsoft),
@@ -49,6 +50,7 @@
 	//Power Variables
 	data["power_level"] = power_level
 	data["max_power"] = max_power
+	data["power_usage"] = power_usage
 
 	data["nutrition_drain"] = nutrition_drain
 	data["nutrition_level"] = linked_mob.nutrition
@@ -88,5 +90,11 @@
 
 			if(!target_theme || !(target_theme in ui_themes))
 				return FALSE
-
 			current_theme = target_theme
+
+		if("activate_nifsoft")
+			var/datum/nifsoft/activated_nifsoft = locate(params["activated_nifsoft"]) in loaded_nifsofts
+			if(!activated_nifsoft)
+				return FALSE
+
+			activated_nifsoft.activate()

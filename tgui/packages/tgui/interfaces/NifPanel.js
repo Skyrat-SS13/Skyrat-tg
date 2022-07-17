@@ -5,7 +5,7 @@ import { TableCell, TableRow } from '../components/Table';
 
 export const NifPanel = (props, context) => {
   const { act, data } = useBackend(context);
-  const { linked_mob_name, loaded_nifsofts, max_nifsofts, power_level, current_theme } = data;
+  const { linked_mob_name, loaded_nifsofts, max_nifsofts, max_power, current_theme } = data;
   const [settingsOpen, setSettingsOpen] = useLocalState(
     context,
     settingsOpen,
@@ -39,19 +39,19 @@ export const NifPanel = (props, context) => {
                 {loaded_nifsofts.map((nifsoft) => (
                   <Flex.Item key={nifsoft.name}>
                     <Collapsible title={nifsoft.name} buttons={
-                      <Button icon="play" color="green" />}>
+                      <Button icon="play" color="green" onClick={() => act('activate_nifsoft', { activated_nifsoft : nifsoft.reference })} />}>
                       <Table>
                         <TableRow>
                           <TableCell>
                             <Button icon="bolt" color="yellow" tooltip="What percent of the power is used when activating the NIFSoft" />
-                            {(nifsoft.activation_cost === 0) ? (" No activation cost") : (" " + ((nifsoft.activation_cost / power_level) * 100) + "% per activation")}
+                            {(nifsoft.activation_cost === 0) ? (" No activation cost") : (" " + ((nifsoft.activation_cost / max_power) * 100) + "% per activation")}
                           </TableCell>
                           <TableCell>
                             <Button icon="battery-half" color="orange" tooltip="The power that the NIFSoft uses while active" disabled={nifsoft.active_cost === 0} />
-                            {(nifsoft.active_cost === 0) ? " No active drain" : (" " + nifsoft.active_cost)}
+                            {(nifsoft.active_cost === 0) ? " No active drain" : (" " + ((nifsoft.active_cost/max_power)*100) + "% consumed while active")}
                           </TableCell>
                           <TableCell>
-                            <Button icon="exclamation" color={nifsoft.active ? "green" : "red"}
+                            <Button icon="exclamation" color={nifsoft.active ? "green" : "red"} disabled={!nifsoft.active_mode}
                             tooltip="Shows whether or not a program is currently active or not" />
                             {nifsoft.active ? " The NIFSoft is active!" : " The NIFSoft is inactive!"}
                           </TableCell>
@@ -84,7 +84,7 @@ export const NifPanel = (props, context) => {
 
 const NifSettings = (props, context) => {
   const { act, data } = useBackend(context);
-  const { nutrition_unavalible, nutrition_drain, ui_themes, current_theme } = data;
+  const { nutrition_drain, ui_themes, current_theme, nutrition_level } = data;
   return (
     <LabeledList>
       <LabeledList.Item label="NIF Theme">
@@ -99,7 +99,7 @@ const NifSettings = (props, context) => {
         content={(nutrition_drain === 0) ? "Nutrition Drain Disabled" : "Nutrition Drain Enabled"}
         tooltip="Toggles the ability for the NIF to use your food as an energy source. Enabling this may result in increased hunger."
         onClick={() => act('toggle_nutrition_drain')}
-        disabled={nutrition_unavalible} />
+        disabled={(nutrition_level < 26)} />
       </LabeledList.Item>
     </LabeledList>
   );
@@ -117,7 +117,7 @@ const NifProductNotes = (props, context) => {
 
 const NifStats = (props, context) => {
   const { act, data } = useBackend(context);
-  const { max_power, power_level, durability, nutrition_level, nutrition_drain } = data;
+  const { max_power, power_level, durability, power_usage, nutrition_drain } = data;
 
   return (
     <Box>
@@ -145,8 +145,9 @@ const NifStats = (props, context) => {
               'average': [max_power * 0.33, max_power * 0.66],
               'bad': [0, max_power * 0.33],
             }}
-            alertAfter={max_power * 0.1}
-          />
+            alertAfter={max_power * 0.1}>
+            {((power_level / max_power) * 100) + "%" + (" (") + ((power_usage / max_power) * 100) + "% Usage)"}
+          </ProgressBar>
         </LabeledList.Item>
         {(nutrition_drain === 1) && (
           <LabeledList.Item label="User Nutrition">

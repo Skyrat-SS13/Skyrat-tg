@@ -29,7 +29,7 @@
 	///How fast is nutrition drained from the host?
 	var/nutrition_drain_rate = 1.5
 	///What is the rate of nutrition to power?
-	var/nutrition_conversion_rate = 1
+	var/nutrition_conversion_rate = 10
 	///What is the minimum nutrition someone has to be at for the NIF to convert power?
 	var/minimum_nutrition = 25
 
@@ -103,7 +103,11 @@
 
 /// Subtracts from the power level of the NIF once, this is good for anything that is single use.
 /obj/item/organ/internal/cyberimp/brain/nif/proc/use_power(power_to_use)
+	if(power_level < power_to_use)
+		return FALSE
+
 	power_level = power_level - power_to_use
+	return TRUE
 
 ///Toggles nutrition drain as a power source on NIFs on/off
 /obj/item/organ/internal/cyberimp/brain/nif/proc/toggle_nutrition_drain(bypass = FALSE)

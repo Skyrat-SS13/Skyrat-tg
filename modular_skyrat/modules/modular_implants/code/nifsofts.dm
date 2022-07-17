@@ -9,6 +9,8 @@
 	//What NIF does this program belong to?
 	var/datum/weakref/parent_nif
 
+	///Does the program have an active mode?
+	var/active_mode = FALSE
 	///Is the program active?
 	var/active = FALSE
 	///Does the what power cost does the program have while active?
@@ -27,6 +29,9 @@
 		qdel(src)
 
 /datum/nifsoft/Destroy()
+	if(active)
+		activate()
+
 	if(!parent_nif)
 		return ..()
 
@@ -37,6 +42,27 @@
 	..()
 
 /datum/nifsoft/proc/life(mob/living/carbon/human/attached_human)
+	return TRUE
+
+/datum/nifsoft/proc/activate()
+	var/obj/item/organ/internal/cyberimp/brain/nif/installed_nif = parent_nif
+
+	if(active)
+		active = FALSE
+		to_chat(installed_nif.linked_mob, span_notice("The [src.name] is no longer running"))
+		installed_nif.power_usage -= active_cost
+		return TRUE
+
+	if(!installed_nif.use_power(activation_cost))
+		return FALSE
+
+	if(active_mode)
+		to_chat(installed_nif.linked_mob, span_notice("The [src.name] is now running"))
+		installed_nif.power_usage += active_cost
+		active = TRUE
+
+	///Delete this later
+	to_chat(installed_nif.linked_mob, span_notice("bababoeey"))
 	return TRUE
 
 /obj/item/disk/nifsoft_uploader
