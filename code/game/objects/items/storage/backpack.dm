@@ -61,10 +61,16 @@
 
 /obj/item/storage/backpack/holding/ComponentInitialize()
 	. = ..()
+<<<<<<< HEAD
 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
 	STR.allow_big_nesting = TRUE
 	STR.max_w_class = WEIGHT_CLASS_GIGANTIC
 	STR.max_combined_w_class = 35
+=======
+
+	create_storage(max_specific_storage = WEIGHT_CLASS_GIGANTIC, max_total_storage = 35, max_slots = 30, type = /datum/storage/bag_of_holding)
+	atom_storage.allow_big_nesting = TRUE
+>>>>>>> f0a78409d83 ([MDB Ignore]Suit DMI split p1: Mob icons (#68417))
 
 /obj/item/storage/backpack/holding/suicide_act(mob/living/user)
 	user.visible_message(span_suicide("[user] is jumping into [src]! It looks like [user.p_theyre()] trying to commit suicide."))
@@ -578,7 +584,7 @@
 	new /obj/item/surgicaldrill(src)
 	new /obj/item/cautery(src)
 	new /obj/item/surgical_drapes(src)
-	new /obj/item/clothing/suit/straight_jacket(src)
+	new /obj/item/clothing/suit/jacket/straight_jacket(src)
 	new /obj/item/clothing/mask/muzzle(src)
 	new /obj/item/mmi/syndie(src)
 	new /obj/item/blood_filter(src)

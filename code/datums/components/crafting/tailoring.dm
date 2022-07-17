@@ -124,8 +124,13 @@
 
 /datum/crafting_recipe/ghostsheet
 	name = "Ghost Sheet"
+<<<<<<< HEAD
 	result = /obj/item/clothing/suit/ghost_sheet
 	time = 5
+=======
+	result = /obj/item/clothing/suit/costume/ghost_sheet
+	time = 0.5 SECONDS
+>>>>>>> f0a78409d83 ([MDB Ignore]Suit DMI split p1: Mob icons (#68417))
 	tool_behaviors = list(TOOL_WIRECUTTER)
 	reqs = list(/obj/item/bedsheet = 1)
 	category = CAT_CLOTHING

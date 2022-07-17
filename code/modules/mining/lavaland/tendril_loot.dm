@@ -449,11 +449,18 @@
 
 /obj/item/shared_storage/red/Initialize(mapload)
 	. = ..()
+<<<<<<< HEAD
 	var/datum/component/storage/STR = AddComponent(/datum/component/storage/concrete)
 	STR.max_w_class = WEIGHT_CLASS_NORMAL
 	STR.max_combined_w_class = 15
 	STR.max_items = 21
 	new /obj/item/shared_storage/blue(drop_location(), STR)
+=======
+
+	create_storage(max_total_storage = 15, max_slots = 21)
+
+	new /obj/item/shared_storage/blue(drop_location(), src)
+>>>>>>> f0a78409d83 ([MDB Ignore]Suit DMI split p1: Mob icons (#68417))
 
 /obj/item/shared_storage/blue/Initialize(mapload, datum/component/storage/concrete/master)
 	. = ..()
@@ -596,6 +603,7 @@
 	name = "berserker armor"
 	desc = "Voices echo from the armor, driving the user insane. Is not space-proof."
 	icon_state = "berserker"
+	worn_icon = 'icons/mob/clothing/suits/armor.dmi'
 	hoodtype = /obj/item/clothing/head/hooded/berserker
 	armor = list(MELEE = 30, BULLET = 30, LASER = 10, ENERGY = 20, BOMB = 50, BIO = 0, FIRE = 100, ACID = 100)
 	cold_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
