@@ -655,12 +655,9 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 	if(dna.features["pod_hair"])
 		dna.features["pod_hair"] = GLOB.pod_hair_list[deconstruct_block(get_uni_feature_block(features, DNA_POD_HAIR_BLOCK), GLOB.pod_hair_list.len)]
 
-<<<<<<< HEAD
-=======
 	for(var/obj/item/organ/external/external_organ as anything in external_organs)
 		external_organ.mutate_feature(features, src)
 
->>>>>>> 535d4b4802f (Fixes internal/external organ for checks (#68045))
 	if(icon_update)
 		dna.species.handle_body(src) // We want 'update_body_parts()' to be called only if mutcolor_update is TRUE, so no 'update_body()' here.
 		update_hair(is_creating = TRUE)
