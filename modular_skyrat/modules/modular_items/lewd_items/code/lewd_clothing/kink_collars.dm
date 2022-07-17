@@ -56,7 +56,7 @@
 
 /obj/item/clothing/neck/kink_collar/Initialize()
 	. = ..()
-	create_storage(/datum/storage/pockets/small/kink_collar)
+	create_storage(type = /datum/storage/pockets/small/kink_collar)
 	var/obj/item/key/kink_collar/key
 	if(!treat_path)
 		return
