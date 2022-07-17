@@ -341,13 +341,9 @@ GLOBAL_VAR(restart_counter)
 	if(alert_text)
 		new_status += "<br>Alert: <b>[capitalize(alert_text)]</b>"
 
-<<<<<<< HEAD
-	status = s
-*/
-=======
 	status = new_status
+*/
 
->>>>>>> 8ac99b94522 (Fixes world status runtiming during initialize (#68364))
 /world/proc/update_hub_visibility(new_visibility)
 	if(new_visibility == GLOB.hub_visibility)
 		return
