@@ -50,7 +50,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 
 	// Rate limiting
 	var/mtl = CONFIG_GET(number/minute_topic_limit)
-	if (!holder && mtl)
+	if (!holder && mtl && !locate(src) in GLOB.admins) //SKYRAT EDIT: Admins should be exempt from this
 		var/minute = round(world.time, 600)
 		if (!topiclimiter)
 			topiclimiter = new(LIMITER_SIZE)
@@ -69,7 +69,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 			return
 
 	var/stl = CONFIG_GET(number/second_topic_limit)
-	if (!holder && stl)
+	if (!holder && stl && !locate(src) in GLOB.admins) //SKYRAT EDIT: Admins should be exempt from this
 		var/second = round(world.time, 10)
 		if (!topiclimiter)
 			topiclimiter = new(LIMITER_SIZE)
