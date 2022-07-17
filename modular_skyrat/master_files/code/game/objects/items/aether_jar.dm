@@ -4,10 +4,10 @@
 
 /obj/item/aether_jar/Initialize(mapload)
 	. = ..()
-	START_PROCESSING(src, SSobj)
+	START_PROCESSING(SSobj, src)
 
 /obj/item/aether_jar/Destroy(force)
-	STOP_PROCESSING(src, SSobj)
+	STOP_PROCESSING(SSobj, src)
 	. = ..()
 
 /obj/item/aether_jar/process(delta_time)
