@@ -5,7 +5,7 @@ import { TableCell, TableRow } from '../components/Table';
 
 export const NifPanel = (props, context) => {
   const { act, data } = useBackend(context);
-  const { linked_mob_name, loaded_nifsofts, max_nifsofts, power_level } = data;
+  const { linked_mob_name, loaded_nifsofts, max_nifsofts, power_level, current_theme } = data;
   const [settingsOpen, setSettingsOpen] = useLocalState(
     context,
     settingsOpen,
@@ -17,7 +17,8 @@ export const NifPanel = (props, context) => {
       title={'Nanite Implant Framework'}
       width={500}
       height={400}
-      resizable>
+      resizable
+      theme={current_theme}>
       <Window.Content>
         <Section
           title={'Welcome to your NIF, ' + linked_mob_name}
@@ -83,11 +84,12 @@ export const NifPanel = (props, context) => {
 
 const NifSettings = (props, context) => {
   const { act, data } = useBackend(context);
-  const { theme, nutrition_unavalible, nutrition_drain } = data;
+  const { nutrition_unavalible, nutrition_drain, ui_themes, current_theme } = data;
   return (
     <LabeledList>
       <LabeledList.Item label="NIF Theme">
-        <Dropdown width="100%" />
+        <Dropdown width="100%" selected={current_theme} options={ui_themes}
+        onSelected={(value) => act("change_theme", { target_theme : value })} />
       </LabeledList.Item>
       <LabeledList.Item label="Examine Text">
         <Input onInput={(e, value) => act('change_examine_text', { new_text : value })} width="100%" />

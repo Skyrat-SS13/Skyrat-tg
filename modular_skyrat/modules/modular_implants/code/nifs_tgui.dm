@@ -1,3 +1,16 @@
+/obj/item/organ/internal/cyberimp/brain/nif
+	///Currently Avalible themese for the NIFs
+	var/static/list/ui_themes = list(
+		"abductor",
+		"cardtable",
+		"hackerman",
+		"malfunction",
+		"ntos",
+		"wizard",
+	)
+	///What theme is currently being used on the NIF?
+	var/current_theme = "ntos"
+
 /obj/item/organ/internal/cyberimp/brain/nif/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
@@ -11,6 +24,9 @@
 	data["examine_text"] = linked_mob.nif_examine_text
 	data["product_notes"] = manufacturer_notes
 	data["loaded_nifsofts"] = list()
+
+	data["current_theme"] = current_theme
+	data["ui_themes"] = ui_themes
 
 	//NIFSoft Variables
 	data["max_nifsofts"] = max_nifsofts
@@ -66,3 +82,11 @@
 				return FALSE
 
 			remove_nifsoft(nifsoft_to_remove)
+
+		if("change_theme")
+			var/target_theme = params["target_theme"]
+
+			if(!target_theme || !(target_theme in ui_themes))
+				return FALSE
+
+			current_theme = target_theme
