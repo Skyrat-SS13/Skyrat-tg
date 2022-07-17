@@ -132,7 +132,7 @@
 	if(!SEND_SIGNAL(mob_holder, COMSIG_MOB_CONTAINER_EXITED, to_remove) || !SEND_SIGNAL(to_remove, COMSIG_MOB_EXIT_CONTAINER, mob_holder))
 		return
 
-	to_remove.forceMove(get_turf(mob_holder))
+	to_remove.forceMove(mob_holder.drop_location())
 	to_remove.clear_fullscreen("in_mob_container")
 	mobs_held -= to_remove
 
