@@ -51,16 +51,12 @@
 				if(no_brain && istype(organs, /obj/item/organ/internal/brain))
 					qdel(organs) //so the brain isn't transfered to the head when the head drops.
 					continue
-<<<<<<< HEAD
 				// SKYRAT EDIT START - Non-spillable organs
-				if(!O.drop_when_organ_spilling)
-					qdel(O)
+				if(!organs.drop_when_organ_spilling)
+					qdel(organs)
 					continue
 				// SKYRAT EDIT END
-				var/org_zone = check_zone(O.zone) //both groin and chest organs.
-=======
 				var/org_zone = check_zone(organs.zone) //both groin and chest organs.
->>>>>>> 535d4b4802f (Fixes internal/external organ for checks (#68045))
 				if(org_zone == BODY_ZONE_CHEST)
 					organs.Remove(src)
 					organs.forceMove(Tsec)
@@ -73,21 +69,14 @@
 			if(no_organs && !istype(organs, /obj/item/organ/internal/brain))
 				qdel(organs)
 				continue
-<<<<<<< HEAD
 			// SKYRAT EDIT START - Non-spillable organs
-			if(!I.drop_when_organ_spilling)
-				qdel(I)
+			if(!organs.drop_when_organ_spilling)
+				qdel(organs)
 				continue
 			// SKYRAT EDIT END
-			I.Remove(src)
-			I.forceMove(Tsec)
-			I.throw_at(get_edge_target_turf(src,pick(GLOB.alldirs)),rand(1,3),5)
-
-=======
 			organs.Remove(src)
 			organs.forceMove(Tsec)
 			organs.throw_at(get_edge_target_turf(src,pick(GLOB.alldirs)),rand(1,3),5)
->>>>>>> 535d4b4802f (Fixes internal/external organ for checks (#68045))
 
 /mob/living/carbon/spread_bodyparts()
 	for(var/X in bodyparts)
