@@ -110,7 +110,7 @@
 
 /obj/vehicle/ridden/rail_cart/attack_hand(mob/living/user, list/modifiers)
 	. = ..()
-	atom_storage?.show_to(user)
+	atom_storage?.show_contents(user)
 
 /// searches the cardinal directions to add this cart to another cart's trailer
 /obj/vehicle/ridden/rail_cart/proc/attach_trailer()
