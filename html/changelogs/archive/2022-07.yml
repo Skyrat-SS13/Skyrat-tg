@@ -518,3 +518,75 @@
   - bugfix: Removed some errant loggers left in UIs
   - rscadd: The comedian suit and coat are now available in the AutoDrobe! Wearing
       them may make you feel like you need a psychiatrist.
+2022-07-17:
+  Fikou, NecromancerAnne:
+  - balance: The Biohazard Sprayer, Power Fist, Flamethrower and Dart Pistol are no
+      longer in the nukie uplink, instead being given as bonuses in the keycarded
+      parts of the base.
+  Guillaume Prata:
+  - bugfix: Roller beds can actually fold when right clicked now.
+  Jolly:
+  - rscadd: The Central Command evac shuttle dock has been remapped.
+  - qol: The Interlink outside areas are now properly lighted. No more florescent
+      tubes!
+  - qol: On the interlink, some of the late join spots have been changed. Nothing
+      too dramatic!
+  - rscdel: Removed the trash spawners from the bathrooms.
+  Melbert:
+  - qol: 'Icebox: The Quartermaster''s office has had its windows reinforced.'
+  OrionTheFox:
+  - rscadd: After years of research, the council of elder atmosian created and publish
+      an experimental design for a long range gas analyzer. The design specified it
+      to be coated in gold to signify the glory of atmosia - SESA, however, having
+      already made their own model, opted to keep it pristine White. This slightly
+      updated ranged analyzer is still available where the old(modular) one was.
+  RatFromTheJungle:
+  - bugfix: an expert skirt-fixer has repaired all the universes 'pencil skirts',
+      rejoice!
+  SkyratBot:
+  - rscdel: Removed the ability to have impure or failed chems
+  - balance: A number of impurities in chemicals are now inverses
+  - bugfix: Mannitol now has a working inverse
+  - bugfix: Fixed some strengths on mineral walls, making them harder to break through
+      via hulk and mechs.
+  - rscadd: You can now deconstruct living AIs and turn them back into AI core frames
+      with MMIs/posibrains. The AI can finally be a real boy
+  - qol: AIs that are gibbed now drop MMIs/posibrains
+  - bugfix: You can no longer remove the turbine's rotor if its on or if its panel
+      is closed
+  - imageadd: Unique sprite for the Hypernob crystal from atmos
+  - code_imp: the igniter, mirv, and summoning components and the knockback, lifesteal,
+      light_eater, and venomous elements are now compatible with projectile spells.
+  - code_imp: the lifesteal, light_eater, and venomous elements are now compatible
+      with turrets.
+  - code_imp: deployable turrets (like the ones given to marine engineers) now properly
+      set their fired projectiles' `fired_from` and `firer` vars to themselves and
+      their users, respectively.
+  - refactor: the "fired_from" var for projectiles (/obj/projectile) has been changed
+      to be a /datum instead of an /atom, as there were no instances in code where
+      it had to be an atom.
+  - code_imp: projectile spells set their fired projectiles' `fired_from` var to themselves
+      instead of the turf they were cast from
+  - bugfix: modsuit flamethrower will no longer push objects
+  SuperSlayer:
+  - spellcheck: Traitor codewords are now given by their employer, rather then by
+      The Syndicate
+  Tastyfish:
+  - qol: Automatically placed Skyrat vending machines and closets now have better
+      placement.
+  Zenitheevee:
+  - rscadd: Solid/Opaque firedoor version for Mapping
+  - rscadd: Closed versions of Heavy and Solid firedoors
+  - bugfix: The cells in the Tarkon solar room are now fully charged again
+  - bugfix: Tarkon Incinerator vent doors should be fixed again.
+  - bugfix: Tarkon Personnel have Weapon Access again.
+  - bugfix: Tarkon Accesses have been Modernized
+  - bugfix: All Tarkon Access Requirements have been Fixed
+  - bugfix: Tarkon extracts should now work.
+  - bugfix: Tarkon Cargo doubledoor Fixed.
+  - balance: Replaces all firedoor instances on Tarkon with Solid versions
+  - balance: changes the port-tarkon PACMAN from a sheet-timer of 20 to 40
+  - balance: changes M6PDW's dirt factor from 0.6 to 0.3
+  - balance: Tarkon's Security Room now requires Tarkon access
+  - rscadd: adds 1 hairstyles
+  - imageadd: adds 1 hairstyles sprite
