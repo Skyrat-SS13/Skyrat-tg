@@ -48,6 +48,7 @@
 	name = "Clown"
 	jobtype = /datum/job/clown
 
+	id = /obj/item/card/id/advanced/rainbow
 	id_trim = /datum/id_trim/job/clown
 	uniform = /obj/item/clothing/under/rank/civilian/clown
 	backpack_contents = list(
@@ -101,6 +102,7 @@
 	fan.show_to(H)
 	H.faction |= FACTION_CLOWN
 
+<<<<<<< HEAD
 //Skyrat Edit Start: Floor Demon
 /datum/outfit/job/clown_free
 	name = "Clown"
@@ -145,3 +147,5 @@
 	var/datum/atom_hud/fan = GLOB.huds[DATA_HUD_FAN]
 	fan.show_to(H)
 //Skyrat Edit Stop: Floor Demon
+=======
+>>>>>>> 86ef806f1ae (Greyscale ID Department Colors (+ Rainbow ID Card) (#68217))
