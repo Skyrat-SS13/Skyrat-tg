@@ -148,7 +148,7 @@
 /obj/item/toy/plush/sharknet/Initialize()
 	. = ..()
 
-	create_storage(max_slots = 2, max_specific_storage = WEIGHT_CLASS_SMALL, canhold = list(/obj/item/toy/plush/pintaplush))
+	create_storage(max_slots = 2, max_specific_storage = WEIGHT_CLASS_SMALL, canhold = list(/obj/item/toy/plush/skyrat/pintaplush))
 //End of storage component//
 
 /obj/item/toy/plush/skyrat/pintaplush
