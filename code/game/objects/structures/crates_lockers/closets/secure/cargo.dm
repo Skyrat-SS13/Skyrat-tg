@@ -17,12 +17,8 @@
 	new /obj/item/clothing/head/soft(src) // Why does the QM spawn with a generic soft cap
 	*/
 	new /obj/item/radio/headset/heads/qm(src)
-<<<<<<< HEAD
-	new /obj/item/clothing/suit/fire/firefighter(src)
-=======
 	new /obj/item/clothing/suit/utility/fire/firefighter(src)
 	new /obj/item/clothing/gloves/fingerless(src)
->>>>>>> f0a78409d83 ([MDB Ignore]Suit DMI split p1: Mob icons (#68417))
 	new /obj/item/megaphone/cargo(src)
 	new /obj/item/tank/internals/emergency_oxygen(src)
 	new /obj/item/export_scanner(src)

@@ -63,14 +63,8 @@
 
 /obj/structure/closet/firecloset/PopulateContents()
 	..()
-
-<<<<<<< HEAD
-	new /obj/item/clothing/suit/fire/firefighter(src)
-	new /obj/item/clothing/mask/gas/alt(src) //SKYRAT EDIT CHANGE - ORIGINAL: /obj/item/clothing/mask/gas(src)
-=======
 	new /obj/item/clothing/suit/utility/fire/firefighter(src)
-	new /obj/item/clothing/mask/gas(src)
->>>>>>> f0a78409d83 ([MDB Ignore]Suit DMI split p1: Mob icons (#68417))
+	new /obj/item/clothing/mask/gas/alt(src) //SKYRAT EDIT CHANGE - ORIGINAL: /obj/item/clothing/mask/gas(src)
 	new /obj/item/tank/internals/oxygen/red(src)
 	new /obj/item/extinguisher(src)
 	new /obj/item/clothing/head/hardhat/red(src)
@@ -78,13 +72,8 @@
 	new /obj/item/storage/inflatable(src) //SKYRAT EDIT ADDITION - INFLATABLES
 
 /obj/structure/closet/firecloset/full/PopulateContents()
-<<<<<<< HEAD
-	new /obj/item/clothing/suit/fire/firefighter(src)
-	new /obj/item/clothing/mask/gas/alt(src) //SKYRAT EDIT CHANGE - ORIGINAL: /obj/item/clothing/mask/gas(src)
-=======
 	new /obj/item/clothing/suit/utility/fire/firefighter(src)
-	new /obj/item/clothing/mask/gas(src)
->>>>>>> f0a78409d83 ([MDB Ignore]Suit DMI split p1: Mob icons (#68417))
+	new /obj/item/clothing/mask/gas/alt(src) //SKYRAT EDIT CHANGE - ORIGINAL: /obj/item/clothing/mask/gas(src)
 	new /obj/item/flashlight(src)
 	new /obj/item/tank/internals/oxygen/red(src)
 	new /obj/item/extinguisher(src)
