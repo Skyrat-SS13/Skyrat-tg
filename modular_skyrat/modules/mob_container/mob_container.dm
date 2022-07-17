@@ -97,7 +97,7 @@
 /datum/component/mob_container/proc/dump_all_mobs()
 	SIGNAL_HANDLER
 
-	for(var/mob/contained in mobs_held)
+	for(var/mob/contained as anything in mobs_held)
 		remove_mob_explicitly(contained)
 
 /**
