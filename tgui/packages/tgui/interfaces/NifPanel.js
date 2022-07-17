@@ -1,10 +1,11 @@
 import { useBackend, useLocalState } from '../backend';
 import { Window } from '../layouts';
-import { Box, Dropdown, LabeledList, ProgressBar, Section, Button, Input } from '../components';
+import { Box, Dropdown, LabeledList, ProgressBar, Section, Button, Input, BlockQuote, Flex, Collapsible, Table } from '../components';
+import { TableCell, TableRow } from '../components/Table';
 
 export const NifPanel = (props, context) => {
   const { act, data } = useBackend(context);
-  const { linked_mob_name } = data;
+  const { linked_mob_name, loaded_nifsofts, max_nifsofts, power_level } = data;
   const [settingsOpen, setSettingsOpen] = useLocalState(
     context,
     settingsOpen,
@@ -30,11 +31,50 @@ export const NifPanel = (props, context) => {
             />
           }>
           {(settingsOpen && <NifSettings />) || <NifStats />}
-          {!settingsOpen && (
-            <Section title={'NIFSoft Programs'}>
-              <NifPrograms />
+          {(!settingsOpen &&
+            <Section title={'NIFSoft Programs (' + (max_nifsofts - loaded_nifsofts.length) + " Slots Remaining)"} right>
+              {(loaded_nifsofts.length &&
+              <Flex direction="column">
+                {loaded_nifsofts.map((nifsoft) => (
+                  <Flex.Item key={nifsoft.name}>
+                    <Collapsible title={nifsoft.name} buttons={
+                      <Button icon="play" color="green" />}>
+                      <Table>
+                        <TableRow>
+                          <TableCell>
+                            <Button icon="bolt" color="yellow" tooltip="What percent of the power is used when activating the NIFSoft" />
+                            {(nifsoft.activation_cost === 0) ? (" No activation cost") : (" " + ((nifsoft.activation_cost / power_level) * 100) + "% per activation")}
+                          </TableCell>
+                          <TableCell>
+                            <Button icon="battery-half" color="orange" tooltip="The power that the NIFSoft uses while active" disabled={nifsoft.active_cost === 0} />
+                            {(nifsoft.active_cost === 0) ? " No active drain" : (" " + nifsoft.active_cost)}
+                          </TableCell>
+                          <TableCell>
+                            <Button icon="exclamation" color={nifsoft.active ? "green" : "red"}
+                            tooltip="Shows whether or not a program is currently active or not" />
+                            {nifsoft.active ? " The NIFSoft is active!" : " The NIFSoft is inactive!"}
+                          </TableCell>
+                        </TableRow>
+                      </Table>
+                      <br />
+                      <BlockQuote>
+                        {nifsoft.desc}
+                      </BlockQuote>
+                      <box>
+                        <br />
+                        <Button icon="cogs" content="Configure" color="blue" fluid tooltip="Configure the options on the current NIFSoft" />
+                        <Button.Confirm icon="trash" content="Uninstall" color="red" fluid tooltip="Uninstall the selected NIFSoft" confirmContent="Are you sure?" confirmIcon="question"
+                        onClick={() => act('uninstall_nifsoft', { nifsoft_to_remove : nifsoft.reference })} />
+                      </box>
+                    </Collapsible>
+                  </Flex.Item>
+                ))}
+              </Flex>
+              ) || (<Box> <center><b>There are no NIFSofts currently installed</b></center> </Box>)}
             </Section>
-          )}
+          ) || (<Section title={"Product Info"}>
+                <NifProductNotes />
+                </Section>)}
         </Section>
       </Window.Content>
     </Window>
@@ -43,7 +83,7 @@ export const NifPanel = (props, context) => {
 
 const NifSettings = (props, context) => {
   const { act, data } = useBackend(context);
-  const { theme, product_notes, nutrition_unavalible, nutrition_drain } = data;
+  const { theme, nutrition_unavalible, nutrition_drain } = data;
   return (
     <LabeledList>
       <LabeledList.Item label="NIF Theme">
@@ -54,12 +94,22 @@ const NifSettings = (props, context) => {
       </LabeledList.Item>
       <LabeledList.Item label="Nutrition Drain">
         <Button fluid
-        content={(nutrition_drain === 0) ? "Nutrition Drain Disabled" : "Nutrition Drain enabled"}
+        content={(nutrition_drain === 0) ? "Nutrition Drain Disabled" : "Nutrition Drain Enabled"}
         tooltip="Toggles the ability for the NIF to use your food as an energy source. Enabling this may result in increased hunger."
         onClick={() => act('toggle_nutrition_drain')}
         disabled={nutrition_unavalible} />
       </LabeledList.Item>
     </LabeledList>
+  );
+};
+
+const NifProductNotes = (props, context) => {
+  const { act, data } = useBackend(context);
+  const { product_notes } = data;
+  return (
+    <BlockQuote>
+      {product_notes}
+    </BlockQuote>
   );
 };
 
@@ -122,14 +172,3 @@ const NifNutritionBar = (props, context) => {
   );
 };
 
-const NifPrograms = (props, context) => {
-  const { act, data } = useBackend(context);
-  const { theme, product_notes } = data;
-  return (
-    <LabeledList>
-      <LabeledList.Item label="NIF Theme">
-        <Dropdown />
-      </LabeledList.Item>
-    </LabeledList>
-  );
-};

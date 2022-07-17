@@ -1,8 +1,11 @@
 /// This is the original NIF that other NIFs are based on.
-/obj/item/organ/cyberimp/brain/nif
+/obj/item/organ/internal/cyberimp/brain/nif
 	name = "Nanite Implant Frameworkk"
 	desc = "a brain implant that infuses the user with nanites" //Coder-lore. Change this later
+	icon = 'modular_skyrat/modules/modular_implants/icons/obj/nifs.dmi'
+	icon_state = "base_nif"
 	w_class = WEIGHT_CLASS_NORMAL
+	slot = ORGAN_SLOT_BRAIN_NIF
 	actions_types = list(/datum/action/item_action/nif/open_menu)
 
 	//User Variables
@@ -10,6 +13,8 @@
 	var/mob/living/carbon/human/linked_mob
 	///What access does the user have? This is used for role restricted NIFSofts.
 	var/list/user_access_list = list()
+	///Is the NIF properly calibrated yet? This is set at true for testing purposes
+	var/is_calibrated = TRUE
 
 	//Power Variables
 	///What is the maximum power level of the NIF?
@@ -49,31 +54,32 @@
 	//Software Variables
 	///How many programs can the NIF store at once?
 	var/max_nifsofts = 5
-	///What types of programs are the NIF compatible with?
-	var/list/program_compatibilty = list()
 	///What programs are currently loaded onto the NIF?
-	var/list/loaded_programs = list()
-	///WHat programs come already installed on the NIF?
-	var/list/preinstalled_programs = list()
-	///This shows up in the NIF settings screen, it servers as a way to ICly display lore.
+	var/list/loaded_nifsofts = list()
+	///What programs come already installed on the NIF?
+	var/list/preinstalled_nifsofts = list()
+	///This shows up in the NIF settings screen as a way to ICly display lore.
 	var/manufacturer_notes = "There is no data currently avalible for this product"
 
-/obj/item/organ/cyberimp/brain/nif/Initialize(mapload)
+/obj/item/organ/internal/cyberimp/brain/nif/Initialize(mapload)
 	. = ..()
+
 	power_level = max_power
 
-/obj/item/organ/cyberimp/brain/nif/Insert(mob/living/carbon/insertee)
+/obj/item/organ/internal/cyberimp/brain/nif/Insert(mob/living/carbon/human/insertee)
 	. = ..()
+
 	linked_mob = insertee
 	loc = insertee // This needs to be done, otherwise TGUI will not pull up.
+	insertee.installed_nif = src
 	START_PROCESSING(SSobj, src)
 
-/obj/item/organ/cyberimp/brain/nif/Remove(mob/living/carbon/removee)
+/obj/item/organ/internal/cyberimp/brain/nif/Remove(mob/living/carbon/organ_owner)
 	. = ..()
-	linked_mob = null //This is going to need to be changed later on.
+	linked_mob.installed_nif = null
 	STOP_PROCESSING(SSobj, src)
 
-/obj/item/organ/cyberimp/brain/nif/process(delta_time)
+/obj/item/organ/internal/cyberimp/brain/nif/process(delta_time)
 	. = ..()
 
 	if(!linked_mob)
@@ -88,12 +94,19 @@
 	if(power_level > max_power)
 		power_level = max_power //No Overcharging
 
+/obj/item/organ/internal/cyberimp/brain/nif/Destroy()
+	linked_mob.nif_examine_text = null
+	linked_mob = null
+
+	QDEL_LIST(loaded_nifsofts)
+	return ..()
+
 /// Subtracts from the power level of the NIF once, this is good for anything that is single use.
-/obj/item/organ/cyberimp/brain/nif/proc/use_power(power_to_use)
+/obj/item/organ/internal/cyberimp/brain/nif/proc/use_power(power_to_use)
 	power_level = power_level - power_to_use
 
 ///Toggles nutrition drain as a power source on NIFs on/off
-/obj/item/organ/cyberimp/brain/nif/proc/toggle_nutrition_drain(bypass = FALSE)
+/obj/item/organ/internal/cyberimp/brain/nif/proc/toggle_nutrition_drain(bypass = FALSE)
 	if(!nutrition_check() && !bypass)
 		return FALSE
 
@@ -110,7 +123,7 @@
 	nutrition_drain = TRUE
 
 /// Checks to see if the mob has a nutrition that can be drain from
-/obj/item/organ/cyberimp/brain/nif/proc/nutrition_check() //This is a seperate proc so that TGUI can preform this check on the menu
+/obj/item/organ/internal/cyberimp/brain/nif/proc/nutrition_check() //This is a seperate proc so that TGUI can preform this check on the menu
 	if(!linked_mob || !linked_mob.nutrition)
 		return FALSE
 
@@ -124,6 +137,29 @@
 		return FALSE
 
 	return TRUE
+
+///This is run whenever a nifsoft is installed
+/obj/item/organ/internal/cyberimp/brain/nif/proc/install_nifsoft(datum/nifsoft/loaded_nifsoft)
+	if((length(loaded_nifsofts) >= max_nifsofts))
+		return FALSE
+
+	if(!is_type_in_list(src, loaded_nifsoft.compatible_nifs))
+		return FALSE
+
+	loaded_nifsofts += loaded_nifsoft
+	loaded_nifsoft.parent_nif = src
+
+	to_chat(linked_mob, span_notice("[loaded_nifsoft.name] has been added"))
+	return TRUE
+
+/obj/item/organ/internal/cyberimp/brain/nif/proc/remove_nifsoft(datum/nifsoft/removed_nifsoft, silent = FALSE)
+	if(!is_type_in_list(removed_nifsoft, loaded_nifsofts))
+		return FALSE
+
+	if(!silent)
+		to_chat(linked_mob, span_notice("[removed_nifsoft.name] has been removed."))
+
+	qdel(removed_nifsoft)
 
 // Action used to pull up the NIF menu
 /datum/action/item_action/nif
@@ -147,6 +183,8 @@
 /mob/living/carbon/human
 	///What text is shown upon examining a human with a NIF?
 	var/nif_examine_text
+	//What, if any NIF is currently installed inside of the mob?
+	var/obj/item/organ/internal/cyberimp/brain/nif/installed_nif
 
 /mob/living/carbon/human/examine(mob/user)
 	. = ..()
@@ -156,4 +194,4 @@
 
 //NIF autosurgeon. This is just here so that I can debug faster.
 /obj/item/autosurgeon/organ/nif
-	starting_organ = /obj/item/organ/cyberimp/brain/nif
+	starting_organ = /obj/item/organ/internal/cyberimp/brain/nif
