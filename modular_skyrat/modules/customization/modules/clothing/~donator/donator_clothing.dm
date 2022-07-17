@@ -1173,13 +1173,6 @@
 	hoodtype = /obj/item/clothing/head/hooded/occult
 	supports_variations_flags = NONE
 
-// Donation reward for gamerguy14948
-/obj/item/toy/plush/donator/voodoo
-	name = "voodoo doll"
-	desc = "A not so small voodoo doll made out of cut and sewn potato bags. It almost looks cute."
-	icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
-	icon_state = "voodoo"
-
 // Donation reward for Octus
 /obj/item/clothing/mask/breath/vox/octus
 	name = "sinister visor"
@@ -1321,26 +1314,6 @@
 	icon_state = "tacticalbrush"
 	inhand_icon_state = "tacticalbrush"
 
-// Donation reward for tobjv
-/obj/item/toy/plush/donator/tesh
-	name = "Squish-Me-Tesh"
-	desc = "Winner of Be Made Into A Plushy by ClownCo!"
-	icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
-	icon_state = "teshplush"
-
-// Donation reward for tobjv
-/obj/item/toy/plush/donator/immovable_rod
-	name = "immovable rod"
-	desc = "Realistic! But also squishy and certainly not as dangerous as its real counterpart."
-	icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
-	icon_state = "immrod"
-
-/obj/item/toy/plush/donator/immovable_rod/Bump(atom/clong)
-	. = ..()
-	if(isliving(clong))
-		playsound(src, 'sound/effects/bang.ogg', 50, TRUE)
-		return
-
 // Donation reward for ultimarifox
 /obj/item/clothing/under/rank/security/head_of_security/alt/roselia
 	name = "black and red turtleneck"
@@ -1364,13 +1337,6 @@
     icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
     worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/custom_w.dmi'
     icon_state = "greenbadge"
-
-    // Donation reward for shyshadow
-/obj/item/toy/plush/donator/plushie_winrow
-	name = "dark and brooding lizard plush"
-	desc = "An almost intimidating black lizard plush, this one's got a little beret to come with it! Best not to separate the two. Its eyes shine with suggestion, no maidens?"
-	icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
-	icon_state = "plushie_winrow"
 
 // Donation reward for M97screwsyourparents
 /obj/item/clothing/head/recruiter_cap

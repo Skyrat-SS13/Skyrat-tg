@@ -1,11 +1,3 @@
-/datum/reagent/medicine/c2/libital/borer_version
-	name = "Unknown Libital Isomer"
-	impure_chem = null
-
-/datum/reagent/medicine/c2/lenturi/borer_version
-	name = "Unknown Lenturi Isomer"
-	impure_chem = null
-
 /datum/reagent/drug/methamphetamine/borer_version
 	name = "Unknown Methamphetamine Isomer"
 	overdose_threshold = 40
