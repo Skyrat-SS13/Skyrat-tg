@@ -26,13 +26,8 @@
 			with suppressors."
 	progression_minimum = 10 MINUTES
 	item = /obj/item/gun/ballistic/automatic/pistol
-<<<<<<< HEAD
 	cost = 5 //SKYRAT EDIT: ORIGINAL COST 7
-	purchasable_from = ~UPLINK_CLOWN_OPS
-=======
-	cost = 7
 	purchasable_from = ~(UPLINK_NUKE_OPS | UPLINK_CLOWN_OPS)
->>>>>>> 71835a7c1c5 (Nukie Rework Part 2: Nuclear Operative starting gear rework (#68401))
 
 /datum/uplink_item/dangerous/throwingweapons
 	name = "Box of Throwing Weapons"

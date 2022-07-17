@@ -52,41 +52,26 @@
 	multiple_sprite_use_base = TRUE
 
 /obj/item/ammo_box/magazine/m9mm/fire
-<<<<<<< HEAD
-//	name = "pistol magazine (9mm incendiary)"	// SKYRAT EDIT: Original
-	name = "pistol magazine (9x25mm incendiary)"// SKYRAT EDIT: Calibre rename
-	icon_state = "9x19pI"
-=======
-	name = "pistol magazine (9mm incendiary)"
+	//name = "pistol magazine (9mm incendiary)" // SKYRAT EDIT: Original
+	name = "pistol magazine (9x25mm incendiary)" // SKYRAT EDIT: Calibre rename
 	icon_state = "9x19pI-8"
 	base_icon_state = "9x19pI"
->>>>>>> 71835a7c1c5 (Nukie Rework Part 2: Nuclear Operative starting gear rework (#68401))
 	desc = "A gun magazine. Loaded with rounds which ignite the target."
 	ammo_type = /obj/item/ammo_casing/c9mm/fire
 
 /obj/item/ammo_box/magazine/m9mm/hp
-<<<<<<< HEAD
-//	name = "pistol magazine (9mm HP)"			// SKYRAT EDIT: Original
-	name = "pistol magazine (9x25mm HP)"		// SKYRAT EDIT: Calibre rename
-	icon_state = "9x19pH"
-=======
-	name = "pistol magazine (9mm HP)"
+	//name = "pistol magazine (9mm HP)" // SKYRAT EDIT: Original
+	name = "pistol magazine (9x25mm HP)" // SKYRAT EDIT: Calibre rename
 	icon_state = "9x19pH-8"
 	base_icon_state = "9x19pH"
->>>>>>> 71835a7c1c5 (Nukie Rework Part 2: Nuclear Operative starting gear rework (#68401))
 	desc= "A gun magazine. Loaded with hollow-point rounds, extremely effective against unarmored targets, but nearly useless against protective clothing."
 	ammo_type = /obj/item/ammo_casing/c9mm/hp
 
 /obj/item/ammo_box/magazine/m9mm/ap
-<<<<<<< HEAD
-//	name = "pistol magazine (9mm AP)"			// SKYRAT EDIT: Original
-	name = "pistol magazine (9x25mm AP)"		// SKYRAT EDIT: Calibre rename
-	icon_state = "9x19pA"
-=======
-	name = "pistol magazine (9mm AP)"
+	//name = "pistol magazine (9mm AP)" // SKYRAT EDIT: Original
+	name = "pistol magazine (9x25mm AP)" // SKYRAT EDIT: Calibre rename
 	icon_state = "9x19pA-8"
 	base_icon_state = "9x19pA"
->>>>>>> 71835a7c1c5 (Nukie Rework Part 2: Nuclear Operative starting gear rework (#68401))
 	desc= "A gun magazine. Loaded with rounds which penetrate armour, but are less effective against normal targets."
 	ammo_type = /obj/item/ammo_casing/c9mm/ap
 

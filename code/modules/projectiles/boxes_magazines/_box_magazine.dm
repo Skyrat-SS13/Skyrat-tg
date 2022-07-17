@@ -177,17 +177,11 @@
 		if(AMMO_BOX_PER_BULLET)
 			icon_state = "[multiple_sprite_use_base ? base_icon_state : initial(icon_state)]-[shells_left]"
 		if(AMMO_BOX_FULL_EMPTY)
-<<<<<<< HEAD
-			icon_state = "[initial(icon_state)]-[shells_left ? "[max_ammo]" : "0"]"
+			icon_state = "[[multiple_sprite_use_base ? base_icon_state : initial(icon_state)]-[shells_left ? "[max_ammo]" : "0"]"
 		//SKYRAT EDIT ADDITION BEGIN - SEC_HAUL
 		if(AMMO_BOX_FULL_EMPTY_BASIC)
-			icon_state = "[initial(icon_state)]-[shells_left ? "full" : "empty"]"
+			icon_state = "[[multiple_sprite_use_base ? base_icon_state : initial(icon_state)]-[shells_left ? "full" : "empty"]"
 		//SKYRAT EDIT END
-	desc = "[initial(desc)] There [(shells_left == 1) ? "is" : "are"] [shells_left] shell\s left!"
-	update_custom_materials()
-=======
-			icon_state = "[multiple_sprite_use_base ? base_icon_state : initial(icon_state)]-[shells_left ? "[max_ammo]" : "0"]"
->>>>>>> 71835a7c1c5 (Nukie Rework Part 2: Nuclear Operative starting gear rework (#68401))
 	return ..()
 
 /// Updates the amount of material in this ammo box according to how many bullets are left in it.
