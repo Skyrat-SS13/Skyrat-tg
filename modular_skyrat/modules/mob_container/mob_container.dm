@@ -1,5 +1,3 @@
-#define COMSIG_MOB_CONTAINER_ENTERED "mob_container_entered"
-#define COMSIG_MOB_CONTAINER_EXITED "mob_container_left"
 #define COMSIG_MOB_ENTER_CONTAINER "mob_enter_container"
 #define COMSIG_MOB_EXIT_CONTAINER "mob_exit_container"
 
@@ -26,8 +24,6 @@
 
 	mob_holder = parent
 
-	RegisterSignal(mob_holder, COMSIG_MOB_CONTAINER_ENTERED, .proc/on_container_entered)
-	RegisterSignal(mob_holder, COMSIG_MOB_CONTAINER_EXITED, .proc/on_container_exited)
 	RegisterSignal(mob_holder, COMSIG_MOB_ENTER_CONTAINER, .proc/on_enter_container)
 	RegisterSignal(mob_holder, COMSIG_MOB_EXIT_CONTAINER, .proc/on_exit_container)
 
@@ -48,7 +44,7 @@
 	mob_holder = null
 	mobs_held.Cut()
 
-	UnregisterSignal(mob_holder, list(COMSIG_MOB_CONTAINER_ENTERED, COMSIG_MOB_CONTAINER_EXITED, COMSIG_MOB_ENTER_CONTAINER, COMSIG_MOB_EXIT_CONTAINER, COMSIG_CONTAINER_STORE_MOB, COMSIG_CONTAINER_REMOVE_MOB, COMSIG_CONTAINER_DUMP_ALL, COMSIG_MOB_LEAVE_CONTAINER))
+	UnregisterSignal(mob_holder, list(COMSIG_MOB_ENTER_CONTAINER, COMSIG_MOB_EXIT_CONTAINER, COMSIG_CONTAINER_STORE_MOB, COMSIG_CONTAINER_REMOVE_MOB, COMSIG_CONTAINER_DUMP_ALL, COMSIG_MOB_LEAVE_CONTAINER))
 
 /**
  * Used to check whether or not a mob has a container. We don't want to contain mobs that don't have containers.
@@ -113,7 +109,7 @@
 	if(!SEND_SIGNAL(to_store, COMSIG_MOB_HAS_CONTAINER) && !force)
 		return
 
-	if(!SEND_SIGNAL(mob_holder, COMSIG_MOB_CONTAINER_ENTERED, to_store) || !SEND_SIGNAL(to_store, COMSIG_MOB_ENTER_CONTAINER, mob_holder))
+	if(!on_container_entered(to_store) || !SEND_SIGNAL(to_store, COMSIG_MOB_ENTER_CONTAINER, mob_holder))
 		return
 
 	to_store.forceMove(mob_holder)
@@ -129,7 +125,7 @@
 	if(!istype(to_remove) && !(to_remove in mob_holder || to_remove.loc == mob_holder))
 		return
 
-	if(!SEND_SIGNAL(mob_holder, COMSIG_MOB_CONTAINER_EXITED, to_remove) || !SEND_SIGNAL(to_remove, COMSIG_MOB_EXIT_CONTAINER, mob_holder))
+	if(!on_container_exited(to_remove) || !SEND_SIGNAL(to_remove, COMSIG_MOB_EXIT_CONTAINER, mob_holder))
 		return
 
 	to_remove.forceMove(mob_holder.drop_location())
@@ -161,7 +157,7 @@
  *
  * mob/mob_entering | the mob entering us
  */
-/datum/component/mob_container/proc/on_container_entered(datum/source, mob/mob_entering)
+/datum/component/mob_container/proc/on_container_entered(mob/mob_entering)
 	SIGNAL_HANDLER
 
 	return TRUE
@@ -171,7 +167,5 @@
  *
  * mob/mob_exiting | the mob leaving us
  */
-/datum/component/mob_container/proc/on_container_exited(datum/source, mob/mob_exiting)
-	SIGNAL_HANDLER
-
+/datum/component/mob_container/proc/on_container_exited(mob/mob_exiting)
 	return TRUE
