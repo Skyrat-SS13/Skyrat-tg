@@ -46,6 +46,12 @@
 	cost = PAYCHECK_CREW * 4
 	contains = list(/obj/item/paper_bin)
 
+/datum/supply_pack/goody/nri_rations
+	name = "Surplus NRI Combat Ration"
+	desc = "A single surplus ration pack from the NRI Defense Colleague. Comes with a standard-issue selection of food selected and approved by at least one Imperial regiment."
+	cost = PAYCHECK_COMMAND * 2 //Less nourishing than the mothic one but you get cigarettes and wo'oh.
+	contains = list(/obj/item/storage/box/nri_rations)
+
 /*
 *	WEAPONS / AMMO
 */
@@ -56,12 +62,6 @@
 	cost = PAYCHECK_CREW * 3
 	contains = list(/obj/item/gun_maintenance_supplies,
 					/obj/item/gun_maintenance_supplies)
-
-/datum/supply_pack/goody/sabre
-	name = "Authentic Samshir Sabre"
-	desc = "A shamshir sabre that comes tucked inside of a black leather sheath. Provides a stylish way to exert your authority."
-	cost = PAYCHECK_CREW * 30
-	contains = list(/obj/item/storage/belt/sabre/cargo)
 
 /*
 *	CARPET PACKS

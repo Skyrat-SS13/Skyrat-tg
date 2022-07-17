@@ -128,7 +128,7 @@
 					/obj/item/clothing/suit/armor/vest/alt,
 					/obj/item/clothing/suit/armor/vest/alt)
 	crate_name = "armor crate"
-	
+
 /datum/supply_pack/security/helmets
 	name = "Helmets Crate"
 	desc = "Contains three standard-issue brain buckets. Requires Security access to open."
@@ -222,7 +222,7 @@
 	name = "Gas Miner Delivery Beacon Crate"
 	desc = "Contains a single gas miner delivery beacon, for the ordering of one gas miner."
 	access = ACCESS_ATMOSPHERICS
-	contains = list(/obj/item/gas_miner_beacon)
+	contains = list(/obj/item/summon_beacon/gas_miner)
 	cost = CARGO_CRATE_VALUE * 50
 	crate_name = "gas miner delivery beacon crate"
 	crate_type = /obj/structure/closet/crate/secure/engineering
@@ -613,3 +613,25 @@
 	. = ..()
 	for(var/i in 1 to 19)
 		new /obj/item/grown/log(.)
+
+/datum/supply_pack/security/armory/russian
+	cost = CARGO_CRATE_VALUE * 15
+	contains = list(/obj/item/storage/box/nri_rations,
+					/obj/item/storage/box/nri_rations,
+					/obj/item/storage/box/nri_rations,
+					/obj/item/storage/toolbox/ammo,
+					/obj/item/storage/toolbox/maint_kit,
+					/obj/item/clothing/suit/armor/vest/russian,
+					/obj/item/clothing/head/helmet/rus_helmet,
+					/obj/item/storage/belt/military/nri,
+					/obj/item/clothing/gloves/tackler/combat,
+					/obj/item/clothing/under/costume/nri,
+					/obj/item/clothing/mask/gas/hecu2,
+					/obj/item/clothing/shoes/combat,
+					/obj/item/clothing/mask/russian_balaclava,
+					/obj/item/ammo_box/a762,
+					/obj/item/gun/ballistic/rifle/boltaction,
+					/obj/item/gun/ballistic/automatic/plastikov,
+					/obj/item/ammo_box/magazine/plastikov9mm,
+					/obj/item/gun/ballistic/automatic/pistol/ladon/nri,
+					/obj/item/ammo_box/magazine/m9mm_aps)

@@ -262,13 +262,6 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "uvf"
 
-/obj/item/clothing/under/suit/black/female/skirt
-	name = "feminine skirt"
-	desc = "Perfect for a secretary that does no work."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "black_suit_fem_skirt"
-
 /obj/item/clothing/under/whiterussian
 	name = "army baron uniform"
 	desc = "Space Communism? That's just like...your opinion man."
@@ -282,15 +275,6 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "cia"
-
-
-
-/obj/item/clothing/under/suit/white/scarface
-	name = "cuban suit"
-	desc = "A yayo coloured silk suit with a crimson shirt. You just know how to hide, how to lie. Me, I don't have that problem. Me, I always tell the truth. Even when I lie."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "scarface"
 
 /obj/item/clothing/under/misc/gear_harness/eve
 	name = "collection of leaves"
@@ -322,17 +306,6 @@
 	supports_variations_flags = NONE
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 
-/obj/item/clothing/under/rank/civilian/hydroponics/trouser
-	desc = "A green set of trousers, perfect for making pigs smoke."
-	name = "farmer's trousers"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "workpants_green"
-	body_parts_covered = GROIN
-	can_adjust = FALSE
-	supports_variations_flags = NONE
-	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
-
 /obj/item/clothing/under/rank/security/peacekeeper/trousers
 	name = "peacekeeper's trousers"
 	desc = "Some light blue combat trousers, however you get protected by these, I have no idea."
@@ -350,89 +323,6 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "workpants_red"
-
-/obj/item/clothing/under/rank/civilian/head_of_personnel/imperial //Rank pins of the Grand Moff //MOVE TO SERVICE.DM AFTER ITS PR'D AND MERGED
-	desc = "A pale green naval suit and a rank badge denoting the Personnel Officer. Target, maximum firepower."
-	name = "head of personnel's naval jumpsuit"
-	icon_state = "imphop"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-
-/obj/item/clothing/under/rank/civilian/lawyer/grey/skirtybaby
-	desc = "A white shirt with a grey pancilskirt."
-	name = "grey suit skirt"
-	icon_state = "detective_skirty"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-
-/obj/item/clothing/under/rank/civilian/lawyer/black/skirtybaby
-	desc = "A white shirt with a dark pancilskirt."
-	name = "black suit skirt"
-	icon_state = "internalaffairs_skirt"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-
-/obj/item/clothing/under/rank/civilian/lawyer/gentle/skirtybaby
-	desc = "A black shirt with a grey pancilskirt."
-	name = "gentle suit skirt"
-	icon_state = "gentlesuit_skirt"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-
-/obj/item/clothing/under/rank/civilian/lawyer/red/skirtybaby
-	desc = "A satin white shirt with a dark red pancilskirt."
-	name = "burgundy suit skirt"
-	icon_state = "burgundy_suit_skirt"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-
-/obj/item/clothing/under/rank/civilian/lawyer/tan/skirtybaby
-	desc = "A satin white shirt with a tan pancilskirt."
-	name = "tan suit skirt"
-	icon_state = "tan_suit_skirt"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-
-/obj/item/clothing/under/rank/civilian/lawyer/blue/skirtybaby
-	desc = "A satin white shirt with a light blue pancilskirt."
-	name = "blue suit skirt"
-	icon_state = "bluesuit_suit_skirt"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-
-/obj/item/clothing/under/rank/civilian/lawyer/green/skirtybaby
-	desc = "A satin white shirt with a light green pancilskirt."
-	name = "green suit skirt"
-	icon_state = "greensuit_skirt"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-
-/obj/item/clothing/under/rank/civilian/head_of_personnel/parade
-	name = "head of personnel's male formal uniform"
-	desc = "A luxurious uniform for the head of personnel, woven in a deep blue. On the lapel is a small pin in the shape of a corgi's head."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "hop_parade_male"
-	inhand_icon_state = "hop_parade_male"
-	can_adjust = FALSE
-
-/obj/item/clothing/under/rank/civilian/head_of_personnel/parade/female
-	name = "head of personnel's female formal uniform"
-	icon_state = "hop_parade_female"
-
-/obj/item/clothing/under/suit/helltaker
-	name = "red shirt with white pants"
-	desc = "No time. Busy gathering girls."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "helltaker"
-
-/obj/item/clothing/under/suit/helltaker/skirt
-	name = "red shirt with white skirt"
-	desc = "No time. Busy gathering boys."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "helltakerskirt"
 
 /obj/item/clothing/under/costume/christmas
 	name = "christmas costume"
@@ -459,44 +349,3 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "christmasfemaleg"
-
-/obj/item/clothing/under/rank/civilian/lawyer/inferno
-	name = "inferno suit"
-	desc = "Stylish enough to impress the devil."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "lucifer"
-	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
-	obj_flags = UNIQUE_RENAME
-	unique_reskin = list(
-		"Pride" = "lucifer",
-		"Wrath" = "justice",
-		"Gluttony" = "malina",
-		"Envy" = "zdara",
-		"Vanity" = "cereberus",
-	)
-
-/obj/item/clothing/under/rank/civilian/lawyer/inferno/skirt
-	name = "inferno suitskirt"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "modeus"
-	obj_flags = UNIQUE_RENAME
-	unique_reskin = list(
-		"Lust" = "modeus",
-		"Sloth" = "pande",
-	)
-
-/obj/item/clothing/under/rank/civilian/lawyer/inferno/beeze
-	name = "designer inferno suit"
-	desc = "A fancy tail-coated suit with a fluffy bow emblazoned on the chest, complete with an NT pin."
-	icon_state = "beeze"
-	obj_flags = null
-	unique_reskin = null
-
-/obj/item/clothing/under/suit/black/female/trousers //i swear this already existed, but whatever
-	name = "feminine suit"
-	desc = "Perfect for a secretary that does no work. This time with pants!"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "black_suit_fem"

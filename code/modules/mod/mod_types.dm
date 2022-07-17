@@ -337,8 +337,8 @@
 		/obj/item/mod/module/emp_shield/advanced,
 	)
 
-/obj/item/mod/control/pre_equipped/timeline
-	theme = /datum/mod_theme/timeline
+/obj/item/mod/control/pre_equipped/chrono
+	theme = /datum/mod_theme/chrono
 	applied_core = /obj/item/mod/core/infinite
 	initial_modules = list(
 		/obj/item/mod/module/eradication_lock,

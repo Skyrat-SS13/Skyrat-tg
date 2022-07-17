@@ -725,7 +725,6 @@
 /obj/structure/cable,
 /obj/structure/musician/piano{
 	desc = "Very theatrical.";
-	icon_state = "piano";
 	name = "theatre piano"
 	},
 /turf/open/floor/wood,
@@ -2101,6 +2100,14 @@
 	},
 /turf/open/floor/carpet,
 /area/awaymission/cabin)
+"hf" = (
+/obj/machinery/space_heater,
+/obj/effect/decal/remains/robot,
+/obj/structure/sign/warning/fire/directional/north,
+/obj/machinery/space_heater,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/awaymission/cabin)
 "hg" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Janitor Closet"
@@ -3166,10 +3173,6 @@
 	name = "Reinforced Soviet Hatch"
 	},
 /area/awaymission/cabin/caves/sovietcave)
-"lf" = (
-/obj/structure/sign/warning/no_smoking/directional/east,
-/turf/open/floor/wood/freezing,
-/area/awaymission/cabin/lumbermill)
 "lz" = (
 /obj/structure/sign/poster/official/cleanliness{
 	pixel_y = -32
@@ -3206,10 +3209,6 @@
 	name = "Soviet Hatch"
 	},
 /area/awaymission/cabin/caves/sovietcave)
-"lY" = (
-/obj/structure/sign/warning/no_smoking/directional/west,
-/turf/open/floor/wood/freezing,
-/area/awaymission/cabin/lumbermill)
 "mi" = (
 /obj/effect/decal/cleanable/generic,
 /obj/effect/decal/cleanable/shreds{
@@ -3305,6 +3304,12 @@
 	},
 /turf/open/floor/plating/snowed/smoothed,
 /area/awaymission/cabin/caves)
+"mw" = (
+/obj/structure/sign/warning/directional/west{
+	name = "\improper SAWBLADE WARNING"
+	},
+/turf/open/floor/plating/snowed/snow_cabin,
+/area/awaymission/cabin/snowforest)
 "my" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/item/gun/ballistic/automatic/surplus{
@@ -4343,6 +4348,10 @@
 	},
 /turf/open/misc/asteroid/snow/snow_cabin,
 /area/awaymission/cabin/caves)
+"Lt" = (
+/obj/structure/sign/warning/no_smoking/directional/east,
+/turf/open/floor/wood/freezing,
+/area/awaymission/cabin/lumbermill)
 "LE" = (
 /obj/effect/turf_decal/tile/blue/fourcorners,
 /obj/item/nullrod/claymore/multiverse{
@@ -4654,14 +4663,6 @@
 	},
 /turf/open/floor/wood,
 /area/awaymission/cabin)
-"Su" = (
-/obj/machinery/space_heater,
-/obj/effect/decal/remains/robot,
-/obj/structure/sign/warning/fire/directional/north,
-/obj/machinery/space_heater,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating,
-/area/awaymission/cabin)
 "SQ" = (
 /obj/structure/table/wood,
 /obj/item/hatchet{
@@ -4721,12 +4722,6 @@
 /obj/item/hatchet/wooden,
 /turf/open/misc/asteroid/snow/snow_cabin,
 /area/awaymission/cabin/caves)
-"Ts" = (
-/obj/structure/sign/warning/directional/west{
-	name = "\improper SAWBLADE WARNING"
-	},
-/turf/open/floor/plating/snowed/snow_cabin,
-/area/awaymission/cabin/snowforest)
 "Tt" = (
 /obj/structure/fence,
 /turf/open/misc/asteroid/snow/snow_cabin,
@@ -4768,6 +4763,10 @@
 	slowdown = 0
 	},
 /area/awaymission/cabin/caves)
+"Un" = (
+/obj/structure/sign/warning/no_smoking/directional/west,
+/turf/open/floor/wood/freezing,
+/area/awaymission/cabin/lumbermill)
 "Uu" = (
 /obj/structure/statue/snow/snowlegion{
 	anchored = 1;
@@ -30787,7 +30786,7 @@ an
 an
 an
 an
-Su
+hf
 hy
 aq
 eg
@@ -35885,13 +35884,13 @@ RC
 RC
 ad
 ad
-lY
+Un
 af
 af
 af
 af
 af
-lY
+Un
 ad
 ad
 RC
@@ -39226,13 +39225,13 @@ RC
 ae
 ad
 ad
-lf
+Lt
 af
 af
 af
 af
 af
-lf
+Lt
 ad
 ad
 fb
@@ -39739,7 +39738,7 @@ RC
 RC
 ag
 cZ
-Ts
+mw
 bS
 bS
 eI
@@ -39747,7 +39746,7 @@ eM
 eU
 bS
 bS
-Ts
+mw
 cZ
 fc
 RC
