@@ -214,7 +214,11 @@
 			if(closed[target] || isarea(target))  // avoid infinity situations
 				continue
 
+<<<<<<< HEAD
 			if(isturf(target) || isturf(target.loc) || (target in direct_access) || (ismovable(target) && target.flags_1 & IS_ONTOP_1)) //Directly accessible atoms
+=======
+			if(isturf(target) || isturf(target.loc) || (target in direct_access) || (ismovable(target) && target.flags_1 & IS_ONTOP_1) || target.loc?.atom_storage) //Directly accessible atoms
+>>>>>>> e177956b840 (adds a null check to CanReach() (#68383))
 				if(Adjacent(target) || (tool && CheckToolReach(src, target, tool.reach))) //Adjacent or reaching attacks
 					return TRUE
 
