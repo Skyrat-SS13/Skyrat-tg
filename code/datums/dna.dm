@@ -655,6 +655,12 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 	if(dna.features["pod_hair"])
 		dna.features["pod_hair"] = GLOB.pod_hair_list[deconstruct_block(get_uni_feature_block(features, DNA_POD_HAIR_BLOCK), GLOB.pod_hair_list.len)]
 
+<<<<<<< HEAD
+=======
+	for(var/obj/item/organ/external/external_organ as anything in external_organs)
+		external_organ.mutate_feature(features, src)
+
+>>>>>>> 535d4b4802f (Fixes internal/external organ for checks (#68045))
 	if(icon_update)
 		dna.species.handle_body(src) // We want 'update_body_parts()' to be called only if mutcolor_update is TRUE, so no 'update_body()' here.
 		update_hair(is_creating = TRUE)
@@ -869,8 +875,8 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 				ForceContractDisease(new/datum/disease/decloning()) //slow acting, non-viral clone damage based GBS
 			if(8)
 				var/list/elligible_organs = list()
-				for(var/obj/item/organ/O in internal_organs) //make sure we dont get an implant or cavity item
-					elligible_organs += O
+				for(var/obj/item/organ/internal/internal_organ as anything in internal_organs) //make sure we dont get an implant or cavity item
+					elligible_organs += internal_organ
 				vomit(20, TRUE)
 				if(elligible_organs.len)
 					var/obj/item/organ/O = pick(elligible_organs)

@@ -47,30 +47,33 @@
 				if(no_brain || !istype(X, /obj/item/organ/internal/brain))
 					qdel(X)
 		else //we're going to drop all bodyparts except chest, so the only organs that needs spilling are those inside it.
-			for(var/X in internal_organs)
-				var/obj/item/organ/O = X
-				if(no_brain && istype(O, /obj/item/organ/internal/brain))
-					qdel(O) //so the brain isn't transfered to the head when the head drops.
+			for(var/obj/item/organ/organs as anything in internal_organs)
+				if(no_brain && istype(organs, /obj/item/organ/internal/brain))
+					qdel(organs) //so the brain isn't transfered to the head when the head drops.
 					continue
+<<<<<<< HEAD
 				// SKYRAT EDIT START - Non-spillable organs
 				if(!O.drop_when_organ_spilling)
 					qdel(O)
 					continue
 				// SKYRAT EDIT END
 				var/org_zone = check_zone(O.zone) //both groin and chest organs.
+=======
+				var/org_zone = check_zone(organs.zone) //both groin and chest organs.
+>>>>>>> 535d4b4802f (Fixes internal/external organ for checks (#68045))
 				if(org_zone == BODY_ZONE_CHEST)
-					O.Remove(src)
-					O.forceMove(Tsec)
-					O.throw_at(get_edge_target_turf(src,pick(GLOB.alldirs)),rand(1,3),5)
+					organs.Remove(src)
+					organs.forceMove(Tsec)
+					organs.throw_at(get_edge_target_turf(src,pick(GLOB.alldirs)),rand(1,3),5)
 	else
-		for(var/X in internal_organs)
-			var/obj/item/organ/I = X
-			if(no_brain && istype(I, /obj/item/organ/internal/brain))
-				qdel(I)
+		for(var/obj/item/organ/organs as anything in internal_organs)
+			if(no_brain && istype(organs, /obj/item/organ/internal/brain))
+				qdel(organs)
 				continue
-			if(no_organs && !istype(I, /obj/item/organ/internal/brain))
-				qdel(I)
+			if(no_organs && !istype(organs, /obj/item/organ/internal/brain))
+				qdel(organs)
 				continue
+<<<<<<< HEAD
 			// SKYRAT EDIT START - Non-spillable organs
 			if(!I.drop_when_organ_spilling)
 				qdel(I)
@@ -80,6 +83,11 @@
 			I.forceMove(Tsec)
 			I.throw_at(get_edge_target_turf(src,pick(GLOB.alldirs)),rand(1,3),5)
 
+=======
+			organs.Remove(src)
+			organs.forceMove(Tsec)
+			organs.throw_at(get_edge_target_turf(src,pick(GLOB.alldirs)),rand(1,3),5)
+>>>>>>> 535d4b4802f (Fixes internal/external organ for checks (#68045))
 
 /mob/living/carbon/spread_bodyparts()
 	for(var/X in bodyparts)
