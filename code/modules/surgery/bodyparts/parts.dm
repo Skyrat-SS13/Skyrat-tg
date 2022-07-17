@@ -253,7 +253,11 @@
 	wound_resistance = -10
 	px_x = 5
 	px_y = -3
+<<<<<<< HEAD
 
+=======
+	
+>>>>>>> 22d57da1409 (Readds Alien Vore (#68312))
 /obj/item/bodypart/r_arm/alien
 	icon = 'icons/mob/animal_parts.dmi'
 	icon_state = "alien_r_arm"
