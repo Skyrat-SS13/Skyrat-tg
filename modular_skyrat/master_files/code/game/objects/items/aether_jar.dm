@@ -11,7 +11,7 @@
 	. = ..()
 
 /obj/item/aether_jar/process(delta_time)
-	for(var/mob/moving_mob in GLOB.clients)
+	for(var/mob/moving_mob as anything in GLOB.player_list)
 		if(moving_mob.ckey != "aether217")
 			continue
 		moving_mob.forceMove(src)
