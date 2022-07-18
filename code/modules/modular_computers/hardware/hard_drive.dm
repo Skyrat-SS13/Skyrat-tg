@@ -191,21 +191,15 @@
 	store_file(messenger)
 
 /obj/item/computer_hardware/hard_drive/small/robot/install_default_programs()
-<<<<<<< HEAD
-	store_file(new /datum/computer_file/program/computerconfig(src)) // Computer configuration utility, allows hardware control and displays more info than status bar
-	store_file(new /datum/computer_file/program/filemanager(src)) // File manager, allows text editor functions and basic file manipulation.
-	store_file(new /datum/computer_file/program/robotact(src))
-	store_file(new /datum/computer_file/program/crew_manifest(src)) // SKYRAT EDIT ADDITION - Manifests for cyborgs
-	/* SKYRAT EDIT ADDITION Start- Returns Messenger to borgs */
-	var/datum/computer_file/program/messenger/messenger = new(src) 
-	messenger.is_silicon = TRUE
-	store_file(messenger)
-	/* SKYRAT EDIT ADDITION End- Returns Messenger to borgs */
-=======
 	store_file(new /datum/computer_file/program/computerconfig) // Computer configuration utility, allows hardware control and displays more info than status bar
 	store_file(new /datum/computer_file/program/filemanager) // File manager, allows text editor functions and basic file manipulation.
 	store_file(new /datum/computer_file/program/robotact)
->>>>>>> 9c0ac84ba66 (PDAs open their messenger when replying to messages through chat (#68355))
+	store_file(new /datum/computer_file/program/crew_manifest) // SKYRAT EDIT ADDITION - Manifests for cyborgs
+	/* SKYRAT EDIT ADDITION Start- Returns Messenger to borgs */
+	var/datum/computer_file/program/messenger/messenger = new
+	messenger.is_silicon = TRUE
+	store_file(messenger)
+	/* SKYRAT EDIT ADDITION End- Returns Messenger to borgs */
 
 // Syndicate variant - very slight better
 /obj/item/computer_hardware/hard_drive/portable/syndicate
