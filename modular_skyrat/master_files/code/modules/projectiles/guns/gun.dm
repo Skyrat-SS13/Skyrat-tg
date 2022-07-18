@@ -197,7 +197,7 @@
 		if(COMPANY_SCARBOROUGH)
 			. += "<br>It has <b>[span_orange("Scarborough Arms")]</b> stamped onto the grip."
 		if(COMPANY_DONK)
-			// add smth here
+			. += "<br>It has a <b>[span_green("Donk Corporation")]</b> label visible in the plastic."
 		if(COMPANY_BOLT)
 			. += "<br>It has <b>[span_yellow("Bolt Fabrications")]</b> stamped onto the reciever."
 		if(COMPANY_OLDARMS)
