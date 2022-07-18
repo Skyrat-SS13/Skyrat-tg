@@ -313,7 +313,7 @@
 		for(var/obj/iterated_object in contents)
 			iterated_object.emp_act(severity)
 
-/obj/item/gun/attack_secondary(mob/living/victim, mob/living/user, params)
+/obj/item/gun/afterattack_secondary(mob/living/victim, mob/living/user, params)
 	if(user.GetComponent(/datum/component/gunpoint))
 		balloon_alert(user, "already holding someone up!")
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN

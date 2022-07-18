@@ -4,23 +4,23 @@
 
 //To determine what kind of stuff we can put in collar.
 
-/datum/component/storage/concrete/pockets/small/kink_collar
-	max_items = 1
+/datum/storage/pockets/small/kink_collar
+	max_slots = 1
 
-/datum/component/storage/concrete/pockets/small/kink_collar/Initialize()
+/datum/storage/pockets/small/kink_collar/New()
 	. = ..()
 	can_hold = typecacheof(list(
 	/obj/item/food/cookie,
 	/obj/item/food/cookie/sugar))
 
-/datum/component/storage/concrete/pockets/small/kink_collar/locked/Initialize()
+/datum/storage/pockets/small/kink_collar/locked/New()
 	. = ..()
 	can_hold = typecacheof(list(
 	/obj/item/food/cookie,
 	/obj/item/food/cookie/sugar,
 	/obj/item/key/kink_collar))
 
-/datum/component/storage/concrete/pockets/small/kink_collar/mind_collar/Initialize()
+/datum/storage/pockets/small/kink_collar/mind_collar/New()
 	. = ..()
 	can_hold = typecacheof(/obj/item/mind_controller)
 
@@ -36,7 +36,6 @@
 	body_parts_covered = NECK
 	slot_flags = ITEM_SLOT_NECK
 	w_class = WEIGHT_CLASS_SMALL
-	pocket_storage_component_path = /datum/component/storage/concrete/pockets/small/kink_collar
 	/// What the name on the tag is
 	var/tagname = null
 	/// Item path of on-init creation in the collar's storage
@@ -57,6 +56,7 @@
 
 /obj/item/clothing/neck/kink_collar/Initialize()
 	. = ..()
+	create_storage(type = /datum/storage/pockets/small/kink_collar)
 	var/obj/item/key/kink_collar/key
 	if(!treat_path)
 		return
@@ -91,7 +91,6 @@
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_neck.dmi'
 	icon_state = "lock_collar_cyan"
 	inhand_icon_state = "lock_collar_cyan"
-	pocket_storage_component_path = /datum/component/storage/concrete/pockets/small/kink_collar/locked
 	treat_path = /obj/item/key/kink_collar
 	/// If the collar is currently locked
 	var/locked = FALSE
@@ -108,6 +107,10 @@
 						"Black" = "lock_collar_black",
 						"Black-teal" = "lock_collar_tealblack",
 						"Spike" = "lock_collar_spike")
+
+/obj/item/clothing/neck/kink_collar/locked/Initialize(mapload)
+	. = ..()
+	create_storage(type = /datum/storage/pockets/small/kink_collar/locked)
 
 //spawn thing in collar
 
@@ -289,11 +292,11 @@
 	inhand_icon_state = "mindcollar"
 	/// Reference to the mind control remote
 	var/obj/item/mind_controller/remote = null
-	pocket_storage_component_path = /datum/component/storage/concrete/pockets/small/kink_collar/mind_collar
 	var/emoting = "Shivers."
 
 /obj/item/clothing/neck/mind_collar/Initialize()
 	. = ..()
+	create_storage(type = /datum/storage/pockets/small/kink_collar/mind_collar)
 	remote = new /obj/item/mind_controller(src, src)
 	remote.forceMove(src)
 
