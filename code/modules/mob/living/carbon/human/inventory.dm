@@ -25,16 +25,6 @@
 			return r_store
 		if(ITEM_SLOT_SUITSTORE)
 			return s_store
-		//SKYRAT EDIT ADDITION BEGIN - ERP_SLOT_SYSTEM
-		if(ITEM_SLOT_VAGINA)
-			return vagina
-		if(ITEM_SLOT_ANUS)
-			return anus
-		if(ITEM_SLOT_NIPPLES)
-			return nipples
-		if(ITEM_SLOT_PENIS)
-			return penis
-		//SKYRAT EDIT ADDITION END
 	return ..()
 
 /mob/living/carbon/human/get_slot_by_item(obj/item/looking_for)
