@@ -8327,7 +8327,9 @@
 "cfJ" = (
 /obj/structure/table/reinforced,
 /obj/machinery/computer/security/telescreen{
-	dir = 8
+	dir = 8;
+	name = "Relay monitoring";
+	network = list("tcomms")
 	},
 /turf/open/floor/iron,
 /area/station/tcommsat/computer)
@@ -29984,9 +29986,7 @@
 	},
 /area/station/common/laser_tag)
 "juC" = (
-/obj/machinery/computer/telecomms/monitor{
-	network = "tcommsat"
-	},
+/obj/machinery/computer/message_monitor,
 /obj/machinery/light/directional/north,
 /obj/item/radio/intercom/directional/north,
 /turf/open/floor/iron/dark,
@@ -63484,7 +63484,7 @@
 /turf/open/floor/plating,
 /area/station/maintenance/central)
 "uFI" = (
-/obj/item/toy/plush/fox{
+/obj/item/toy/plush/skyrat/fox{
 	desc = "An adorable stuffed toy of a Fox. This one is obviously a mother. You can tell. You just can.";
 	name = "Foxwife plushie"
 	},
@@ -68120,7 +68120,6 @@
 "wfC" = (
 /obj/structure/table/reinforced,
 /obj/item/clipboard,
-/obj/item/toy/figure/ce,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
@@ -68128,6 +68127,8 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
+/obj/item/paper/monitorkey,
+/obj/item/toy/figure/ce,
 /turf/open/floor/iron/dark,
 /area/station/command/heads_quarters/ce)
 "wfD" = (

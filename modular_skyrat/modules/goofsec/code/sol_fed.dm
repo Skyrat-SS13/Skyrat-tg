@@ -729,7 +729,7 @@ GLOBAL_LIST_INIT(call911_do_and_do_not, list(
 
 /obj/item/beamout_tool/attack_self(mob/user, modifiers)
 	. = ..()
-	if(!user.mind.has_antag_datum(/datum/antagonist/ert/request_911))
+	if(!user.mind.has_antag_datum(/datum/antagonist/ert))
 		to_chat(user, span_warning("You don't understand how to use this device."))
 		return
 	message_admins("[ADMIN_LOOKUPFLW(user)] has begun to beam-out using their beam-out tool.")
