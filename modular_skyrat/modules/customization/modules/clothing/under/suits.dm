@@ -7,3 +7,9 @@
 	greyscale_colors = "#FFFFFA#0075C4#7C787D"
 	flags_1 = IS_PLAYER_COLORABLE_1
 	supports_variations_flags = NONE
+
+
+// Modular Overwrites
+
+/obj/item/clothing/under/suit/black/skirt
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
