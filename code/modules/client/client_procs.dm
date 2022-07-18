@@ -48,6 +48,11 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		if (!asset_cache_job)
 			return
 
+	// SKYRAT ADDITION BEGIN - TAB REMOVAL SPAM
+	if(tgui_Topic(href_list))
+		return
+	// SKYRAT ADDITION END - TAB REMOVAL SPAM
+
 	// Rate limiting
 	var/mtl = CONFIG_GET(number/minute_topic_limit)
 	if (!holder && mtl)
@@ -82,8 +87,10 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 			return
 
 	// Tgui Topic middleware
-	if(tgui_Topic(href_list))
-		return
+	// SKYRAT REMOVAL BEGIN - TAB REMOVAL SPAM
+	// if(tgui_Topic(href_list))
+	//	return
+	// SKYRAT REMOVAL END - TAB REMOVAL SPAM
 	if(href_list["reload_tguipanel"])
 		nuke_chat()
 	if(href_list["reload_statbrowser"])
