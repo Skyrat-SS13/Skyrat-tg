@@ -52,3 +52,9 @@
 
 /obj/item/gun/ballistic/rifle/boltaction/brand_new
 	company_flag = COMPANY_IZHEVSK
+
+/obj/item/gun/energy/shrink_ray
+	company_flag = COMPANY_ABDUCTOR
+
+/obj/item/gun/energy/alien
+	company_flag = COMPANY_ABDUCTOR
