@@ -140,7 +140,7 @@
 	ph = 6
 	taste_description = "flowers"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
-	failed_chem = /datum/reagent/drug/opium/blacktar/liquid
+	inverse_chem = /datum/reagent/drug/opium/blacktar/liquid
 
 /datum/reagent/drug/opium/heroin/on_mob_life(mob/living/carbon/M, delta_time, times_fired)
 	var/high_message = pick("You feel like nothing can stop you.", "You feel like God.")
@@ -159,7 +159,6 @@
 	ph = 8
 	taste_description = "flowers"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
-	failed_chem = null
 
 /datum/reagent/drug/opium/blacktar/on_mob_life(mob/living/carbon/M, delta_time, times_fired)
 	var/high_message = pick("You feel like tar.", "The blood in your veins feel like syrup.")
