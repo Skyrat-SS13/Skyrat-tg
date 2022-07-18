@@ -285,15 +285,12 @@ GLOBAL_LIST_EMPTY(crematoriums)
 				qdel(M)
 
 		for(var/obj/O in conts) //conts defined above, ignores crematorium and tray
-<<<<<<< HEAD
 			// SKYRAT EDIT ADDITION
 			if(istype(O, /obj/item/goldeneye_key))
 				continue
 			// SKYRAT EDIT END
-=======
 			if(istype(O, /obj/effect/dummy/phased_mob)) //they're not physical, don't burn em.
 				continue
->>>>>>> bab62597de7 (Cremator / morgue tray jaunting fixes (#68478))
 			qdel(O)
 
 		if(!locate(/obj/effect/decal/cleanable/ash) in get_step(src, dir))//prevent pile-up
