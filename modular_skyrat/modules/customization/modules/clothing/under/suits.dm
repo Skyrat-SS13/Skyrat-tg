@@ -1,5 +1,3 @@
-/obj/item/clothing/under/suit
-	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 
 /obj/item/clothing/under/suit/fancy
 	name = "fancy suit"
