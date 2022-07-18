@@ -255,6 +255,7 @@
 	missiondesc += "<span class='warningplain'><BR><B>Your Mission</B> : [ert_team.mission.explanation_text]</span>"
 	to_chat(owner,missiondesc)
 
+<<<<<<< HEAD
 
 /datum/antagonist/ert/families
 	name = "Space Police Responder"
@@ -370,6 +371,8 @@
 	. = ..()
 	name_source = GLOB.commando_names
 
+=======
+>>>>>>> caef4900b5d (Removes the Families gamemode (#68480))
 /datum/antagonist/ert/marine
 	name = "Marine Commander"
 	outfit = /datum/outfit/centcom/ert/marine
