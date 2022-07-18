@@ -731,7 +731,7 @@ There are several things that need to be remembered:
 	var/icon/female_clothing_icon = GLOB.female_clothing_icons[index]
 	if(!female_clothing_icon) 	//Create standing/laying icons if they don't exist
 		generate_female_clothing(index, t_color, icon, type)
-	return mutable_appearance(GLOB.female_clothing_icons[index], layer = -layer)
+	return mutable_appearance(GLOB.female_clothing_icons[index], layer = -layer, icon_state = t_color) // SKYRAT EDIT - Taur-friendly uniforms and suits - Adds `icon_state = t_color`
 
 /mob/living/carbon/human/proc/get_overlays_copy(list/unwantedLayers)
 	var/list/out = new
