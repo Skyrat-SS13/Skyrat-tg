@@ -254,7 +254,6 @@
 	log_game("DYNAMIC: [key_name(M)] was selected by the [name] ruleset and has been made into a midround traitor.")
 	return TRUE
 
-<<<<<<< HEAD
 //////////////////////////////////////////////
 //                                          //
 //                 FAMILIES                 //
@@ -333,8 +332,6 @@
 /datum/dynamic_ruleset/midround/families/round_result()
 	return handler.set_round_result_analogue()
 
-=======
->>>>>>> 79c6abad7e5 (Barf a bunch of dynamic logs (#68137))
 //////////////////////////////////////////////
 //                                          //
 //         Malfunctioning AI                //
