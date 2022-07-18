@@ -143,6 +143,7 @@
 	greyscale_config = /datum/greyscale_config/urban_coat
 	greyscale_config_worn = /datum/greyscale_config/urban_coat/worn
 	greyscale_colors = "#252e5a#938060#66562b"
+	flags_1 = IS_PLAYER_COLORABLE_1
 
 /obj/item/clothing/suit/toggle/deckard
 	name = "runner coat"
@@ -164,6 +165,7 @@
 	greyscale_config = /datum/greyscale_config/leather_jacket
 	greyscale_config_worn = /datum/greyscale_config/leather_jacket/worn
 	greyscale_colors = "#FFFFFF"
+	flags_1 = IS_PLAYER_COLORABLE_1
 
 /obj/item/clothing/suit/duster
 	name = "duster"
@@ -173,6 +175,7 @@
 	greyscale_config = /datum/greyscale_config/duster
 	greyscale_config_worn = /datum/greyscale_config/duster/worn
 	greyscale_colors = "#954b21"
+	flags_1 = IS_PLAYER_COLORABLE_1
 
 /obj/item/clothing/suit/toggle/peacoat
 	name = "peacoat"
@@ -182,6 +185,7 @@
 	greyscale_config = /datum/greyscale_config/peacoat
 	greyscale_config_worn = /datum/greyscale_config/peacoat/worn
 	greyscale_colors = "#61618a"
+	flags_1 = IS_PLAYER_COLORABLE_1
 
 /obj/item/clothing/suit/toggle/lawyer/black/better
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
