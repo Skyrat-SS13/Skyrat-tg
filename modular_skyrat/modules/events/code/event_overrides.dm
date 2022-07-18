@@ -43,7 +43,8 @@
  * Upped to ensure lowpop steamroll does not happen
  */
 /datum/round_event_control/spider_infestation
-	min_players = 70
+	// min_players = 70
+	max_occurrences = 0
 
 /**
  * Meteor Waves
