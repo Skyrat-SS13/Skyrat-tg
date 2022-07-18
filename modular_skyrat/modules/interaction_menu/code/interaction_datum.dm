@@ -30,18 +30,6 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 	var/list/user_required_parts = list()
 	/// What parts do they need(IMPORTANT TO GET IT TO THE CORRECT DEFINE, ORGAN SLOT)?
 	var/list/target_required_parts = list()
-	/// The amount of pleasure the target recieves from this interaciton.
-	var/target_pleasure = 0
-	/// The amount of arousal the target recieves from this interaction.
-	var/target_arousal = 0
-	/// The amount of pain the target recieves.
-	var/target_pain = 0
-	/// The amount of pleasure the user recieves.
-	var/user_pleasure = 0
-	/// The amount of arousal the user recieves.
-	var/user_arousal = 0
-	/// The amount of pain the user recieves.
-	var/user_pain = 0
 	/// A list of possible sounds.
 	var/list/sound_possible = list()
 	/// What requirements does this interaction have? See defines.
@@ -118,14 +106,6 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 		for(var/mob/mob in view(sound_range, user))
 			SEND_SOUND(sound_cache, mob)
 
-	if(lewd)
-		user.adjustPleasure(user_pleasure)
-		user.adjustArousal(user_arousal)
-		user.adjustPain(user_pain)
-		target.adjustPleasure(target_pleasure)
-		target.adjustArousal(target_arousal)
-		target.adjustPain(target_pain)
-
 /datum/interaction/proc/load_from_json(path)
 	var/fpath = path
 	if(!fexists(fpath))
@@ -148,14 +128,8 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 
 	user_messages = sanitize_islist(json["user_messages"], list())
 	user_required_parts = sanitize_islist(json["user_required_parts"], list())
-	user_arousal = sanitize_integer(json["user_arousal"], 0, 100, 0)
-	user_pleasure = sanitize_integer(json["user_pleasure"], 0, 100, 0)
-	user_pain = sanitize_integer(json["user_pain"], 0, 100, 0)
 	target_messages = sanitize_islist(json["target_messages"], list())
 	target_required_parts = sanitize_islist(json["target_required_parts"], list())
-	target_arousal = sanitize_integer(json["target_arousal"], 0, 100, 0)
-	target_pleasure = sanitize_integer(json["target_pleasure"], 0, 100, 0)
-	target_pain = sanitize_integer(json["target_pain"], 0, 100, 0)
 	lewd = sanitize_integer(json["lewd"], 0, 1, 0)
 	sexuality = sanitize_text(json["sexuality"])
 	return TRUE
@@ -178,14 +152,8 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 		"color" = color,
 		"user_messages" = user_messages,
 		"user_required_parts" = user_required_parts,
-		"user_arousal" = user_arousal,
-		"user_pleasure" = user_pleasure,
-		"user_pain" = user_pain,
 		"target_messages" = target_messages,
 		"target_required_parts" = target_required_parts,
-		"target_arousal" = target_arousal,
-		"target_pleasure" = target_pleasure,
-		"target_pain" = target_pain,
 		"lewd" = lewd,
 		"sexuality" = sexuality,
 	)
