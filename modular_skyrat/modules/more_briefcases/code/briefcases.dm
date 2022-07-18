@@ -36,7 +36,7 @@
 
 /obj/item/storage/secure/briefcase/update_overlays()
 	. = ..()
-	if(SEND_SIGNAL(src, COMSIG_IS_STORAGE_LOCKED))
+	if(atom_storage.locked)
 		. += "briefcase_locked"
 	else
 		. += "briefcase_open"

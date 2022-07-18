@@ -204,6 +204,7 @@ GLOBAL_PROTECT(admin_verbs_debug)
 	/client/proc/cmd_display_overlay_log,
 	/client/proc/reload_configuration,
 	/client/proc/reload_interactions, //SKYRAT EDIT ADDITION
+	/client/proc/test_area_spawner, // SKYRAT EDIT ADDITION - AUTOMAPPER
 	/client/proc/atmos_control,
 	/client/proc/reload_cards,
 	/client/proc/validate_cards,
@@ -304,6 +305,7 @@ GLOBAL_LIST_INIT(admin_verbs_hideable, list(
 	/client/proc/toggle_combo_hud,
 	/client/proc/admin_open_event_spawners_menu, //SKYRAT EDIT ADDITION - EVENTS
 	/client/proc/spawn_pollution, // SKYRAT EDIT ADDITION
+	/client/proc/test_area_spawner, // SKYRAT EDIT ADDITION - AUTOMAPPER
 	/client/proc/spawn_liquid,
 	/client/proc/debug_huds
 	))
