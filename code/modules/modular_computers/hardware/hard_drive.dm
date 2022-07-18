@@ -180,14 +180,9 @@
 /obj/item/computer_hardware/hard_drive/small/install_default_programs()
 	. = ..()
 
-<<<<<<< HEAD
-	store_file(new /datum/computer_file/program/messenger(src))
-	store_file(new /datum/computer_file/program/notepad(src))
-	store_file(new /datum/computer_file/program/crew_manifest(src)) // SKYRAT EDIT ADD
-=======
 	store_file(new /datum/computer_file/program/messenger)
 	store_file(new /datum/computer_file/program/notepad)
->>>>>>> 9c0ac84ba66 (PDAs open their messenger when replying to messages through chat (#68355))
+	store_file(new /datum/computer_file/program/crew_manifest) // SKYRAT EDIT ADD
 
 // For borg integrated tablets. No downloader.
 /obj/item/computer_hardware/hard_drive/small/ai/install_default_programs()
