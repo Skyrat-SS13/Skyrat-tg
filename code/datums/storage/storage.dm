@@ -448,6 +448,8 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
 	if(!resolve_parent)
 		return
 
+	resolve_parent.update_appearance(UPDATE_ICON_STATE)
+
 	if(animated)
 		animate_parent()
 
@@ -890,6 +892,10 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
 
 	var/obj/item/resolve_location = real_location?.resolve()
 	if(!resolve_location)
+		return
+
+	if(isobserver(toshow))
+		show_contents(toshow)
 		return
 
 	if(!toshow.CanReach(resolve_parent))
