@@ -244,3 +244,33 @@
 		var/obj/item/inducer/cyborg/inducer = locate() in target_robot.model
 		if (inducer)
 			target_robot.model.remove_module(inducer, TRUE)
+
+// Rapid Light Dispensor
+
+/obj/item/borg/upgrade/rapidlightplacer
+	name = "engineering cyborg RLD upgrade"
+	desc = "An inducer device for the engineering cyborg."
+	icon_state = "cyborg_upgrade3"
+	require_model = TRUE
+	model_type = list(/obj/item/robot_model/engineering, /obj/item/robot_model/saboteur)
+	model_flags = BORG_MODEL_ENGINEERING
+
+/obj/item/borg/upgrade/rapidlightplacer/action(mob/living/silicon/robot/target_robot, user = usr)
+	. = ..()
+	if(.)
+
+		var/obj/item/construction/rld/borg/rld = locate() in target_robot
+		if(rld)
+			to_chat(user, span_warning("This unit is already equipped with an inducer module!"))
+			return FALSE
+
+		rld = new(target_robot.model)
+		target_robot.model.basic_modules += rld
+		target_robot.model.add_module(rld, FALSE, TRUE)
+
+/obj/item/borg/upgrade/rapidlightplacer/deactivate(mob/living/silicon/robot/target_robot, user = usr)
+	. = ..()
+	if (.)
+		var/obj/item/construction/rld/borg/rld  = locate() in target_robot.model
+		if (rld)
+			target_robot.model.remove_module(rld, TRUE)

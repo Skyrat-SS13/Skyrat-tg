@@ -457,6 +457,28 @@ GLOBAL_VAR_INIT(icon_holographic_window, init_holographic_window())
 		if("WEST")
 			computer_dir = 8
 
+/obj/item/construction/rcd/proc/change_sofa_dir(mob/user)
+	if(!user)
+		return
+	var/list/sofa_type = list(
+		"CENTER" = image(icon = 'icons/hud/radial.dmi', icon_state = "cnorth"),
+		"RIGHT" = image(icon = 'icons/hud/radial.dmi', icon_state = "ceast"),
+		"CORNER" = image(icon = 'icons/hud/radial.dmi', icon_state = "csouth"),
+		"LEFT" = image(icon = 'icons/hud/radial.dmi', icon_state = "cwest")
+		)
+	var/sofadirs = show_radial_menu(user, src, sofa_type, custom_check = CALLBACK(src, .proc/check_menu, user), require_near = TRUE, tooltips = TRUE)
+	if(!check_menu(user))
+		return
+	switch(sofadirs)
+		if("CENTER")
+			furnish_type = /obj/structure/chair/sofa/corp
+		if("RIGHT")
+			furnish_type = /obj/structure/chair/sofa/corp/right
+		if("CORNER")
+			furnish_type = /obj/structure/chair/sofa/corp/left
+		if("LEFT")
+			furnish_type = /obj/structure/chair/sofa/corp/corner
+
 /**
  * Customizes RCD's airlock settings based on user's choices
  *
@@ -670,7 +692,8 @@ GLOBAL_VAR_INIT(icon_holographic_window, init_holographic_window())
 		"Chair" = image(icon = 'icons/hud/radial.dmi', icon_state = "chair"),
 		"Stool" = image(icon = 'icons/hud/radial.dmi', icon_state = "stool"),
 		"Table" = image(icon = 'icons/hud/radial.dmi', icon_state = "table"),
-		"Glass Table" = image(icon = 'icons/hud/radial.dmi', icon_state = "glass_table")
+		"Glass Table" = image(icon = 'icons/hud/radial.dmi', icon_state = "glass_table"),
+		"Corporate Sofa" = image(icon = 'icons/hud/radial.dmi', icon_state = "glass_table")
 		)
 	var/choice = show_radial_menu(user, src, choices, custom_check = CALLBACK(src, .proc/check_menu, user), require_near = TRUE, tooltips = TRUE)
 	if(!check_menu(user))
@@ -692,6 +715,11 @@ GLOBAL_VAR_INIT(icon_holographic_window, init_holographic_window())
 			furnish_type = /obj/structure/table/glass
 			furnish_cost = 16
 			furnish_delay = 20
+		if("Corporate Sofa")
+			change_sofa_dir(user)
+			furnish_cost = 16
+			furnish_delay = 20
+
 
 /obj/item/construction/rcd/proc/rcd_create(atom/A, mob/user)
 	// SKYRAT EDIT ADDITION
@@ -1133,6 +1161,38 @@ GLOBAL_VAR_INIT(icon_holographic_window, init_holographic_window())
 				G.update_brightness()
 				return TRUE
 			return FALSE
+
+/obj/item/construction/rld/borg
+	no_ammo_message = "<span class='warning'>Insufficient charge.</span>"
+	desc = "A device used to rapidly build walls and floors."
+	var/energyfactor = 72
+
+
+/obj/item/construction/rld/borg/useResource(amount, mob/user)
+	if(!iscyborg(user))
+		return 0
+	var/mob/living/silicon/robot/borgy = user
+	if(!borgy.cell)
+		if(user)
+			to_chat(user, no_ammo_message)
+		return 0
+	. = borgy.cell.use(amount * energyfactor) //borgs get 1.3x the use of their RCDs
+	if(!. && user)
+		to_chat(user, no_ammo_message)
+	return .
+
+/obj/item/construction/rld/borg/checkResource(amount, mob/user)
+	if(!iscyborg(user))
+		return 0
+	var/mob/living/silicon/robot/borgy = user
+	if(!borgy.cell)
+		if(user)
+			to_chat(user, no_ammo_message)
+		return 0
+	. = borgy.cell.charge >= (amount * energyfactor)
+	if(!. && user)
+		to_chat(user, no_ammo_message)
+	return .
 
 /obj/item/construction/rld/mini
 	name = "mini-rapid-light-device (MRLD)"
