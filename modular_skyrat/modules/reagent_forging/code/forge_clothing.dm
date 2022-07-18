@@ -106,24 +106,6 @@
 	. = ..()
 	AddComponent(/datum/component/reagent_clothing, ITEM_SLOT_GLOVES)
 
-/obj/item/clothing/neck/kink_collar/reagent_clothing
-	name = "reagent pet collar"
-	desc = "A pet collar that is ready to be imbued."
-
-/obj/item/clothing/neck/kink_collar/reagent_clothing/Initialize()
-	. = ..()
-	AddComponent(/datum/component/reagent_clothing, ITEM_SLOT_NECK)
-
-/obj/item/clothing/neck/kink_collar/reagent_clothing/attack_self(mob/user)
-	tagname = sanitize_name(stripped_input(user, "Would you like to change the name on the tag?", "Name your new pet", "Spot", MAX_NAME_LEN))
-	name = initial(name)
-	for(var/datum/reagent/clothing_reagent in reagents.reagent_list)
-		if(clothing_reagent.volume < 200)
-			reagents.remove_all_type(clothing_reagent.type)
-			continue
-		name = "[clothing_reagent.name] [name]"
-	name = "[name] [tagname]"
-
 /obj/item/restraints/handcuffs/reagent_clothing
 	name = "reagent handcuffs"
 	desc = "A pair of handcuffs that are ready to be imbued."

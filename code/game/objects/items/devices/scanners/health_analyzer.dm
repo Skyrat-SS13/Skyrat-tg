@@ -177,10 +177,6 @@
 		if(LAZYLEN(carbontarget.get_traumas()))
 			var/list/trauma_text = list()
 			for(var/datum/brain_trauma/trauma in carbontarget.get_traumas())
-				//SKYRAT EDIT: Scary Traits (Bimbo)
-				if(!trauma.display_scanner)
-					continue
-				//SKYRAT EDIT: Scary Traits (Bimbo)
 				var/trauma_desc = ""
 				switch(trauma.resilience)
 					if(TRAUMA_RESILIENCE_SURGERY)
