@@ -40,16 +40,6 @@
 	desired_atom = /obj/machinery/gun_vendor
 	wall_hug = TRUE
 
-/datum/area_spawn/lustwish_public
-	target_areas = list(/area/station/commons/locker, /area/station/commons/dorms/laundry, /area/station/commons/dorms)
-	desired_atom = /obj/machinery/vending/dorms
-	wall_hug = TRUE
-
-/datum/area_spawn/lustwish_prison
-	target_areas = list(/area/station/security/prison, /area/station/security/prison/shower)
-	desired_atom = /obj/machinery/vending/dorms
-	wall_hug = TRUE
-
 // Job spawners
 /datum/area_spawn/secmed_landmark
 	target_areas = list(/area/station/security/medical, /area/station/security/brig)

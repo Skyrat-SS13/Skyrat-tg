@@ -146,10 +146,6 @@ GLOBAL_LIST_INIT(loadout_necks, generate_loadout_items(/datum/loadout_item/neck)
 	name = "Cross Collar"
 	item_path = /obj/item/clothing/neck/human_petcollar/locked/cross
 
-/datum/loadout_item/neck/kinkycollar
-	name = "Kinky Collar"
-	item_path = /obj/item/clothing/neck/kink_collar
-
 /*
 *	PONCHOS
 */

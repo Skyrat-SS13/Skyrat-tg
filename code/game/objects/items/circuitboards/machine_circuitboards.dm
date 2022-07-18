@@ -565,7 +565,6 @@
 		/obj/machinery/vending/modularpc = "Deluxe Silicate Selections",
 		/obj/machinery/vending/tool = "YouTool",
 		/obj/machinery/vending/custom = "Custom Vendor",
-		/obj/machinery/vending/dorms = "LustWish",	//SKYRAT EDIT CHANGE - ERP UPDATE - ORIGINAL: /obj/machinery/vending/dorms = "KinkVend"
 		/obj/machinery/vending/access/command = "Command Outfitting Station", //SKYRAT EDIT ADDITION
 		/obj/machinery/vending/barbervend = "Fab-O-Vend") //SKYRAT EDIT ADDITION
 

@@ -42,7 +42,6 @@
 		"Plated Boots" = /obj/item/clothing/shoes/plated_boots,
 		"Horseshoes" = /obj/item/clothing/shoes/horseshoe,
 		"Ring" = /obj/item/clothing/gloves/ring/reagent_clothing,
-		"Collar" = /obj/item/clothing/neck/kink_collar/reagent_clothing,
 		"Handcuffs" = /obj/item/restraints/handcuffs/reagent_clothing,
 		"Borer Cage" = /obj/item/cortical_cage,
 		"Pavise Shield" = /obj/item/shield/riot/buckler/reagent_weapon/pavise,
