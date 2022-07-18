@@ -212,6 +212,8 @@
 			. += "<br>It has <b>[span_cyan("Micron Control Sys.")]</b> cut in above the cell slot."
 		if(COMPANY_INTERDYNE)
 			. += "<br>It has <b>[span_cyan("Interdyne Pharmaceuticals")]</b> stamped onto the barrel."
+		if(COMPANY_ABDUCTOR)
+			. += "<br>It has <b>[span_abductor("✌︎︎♌︎︎♎︎︎◆︎︎♍︎︎⧫︎︎❄︎♏︎♍︎♒︎")]</b> engraved into the photon accelerator."
 
 /obj/item/gun/proc/fire_select()
 	var/mob/living/carbon/human/user = usr
@@ -315,7 +317,7 @@
 		for(var/obj/iterated_object in contents)
 			iterated_object.emp_act(severity)
 
-/obj/item/gun/attack_secondary(mob/living/victim, mob/living/user, params)
+/obj/item/gun/afterattack_secondary(mob/living/victim, mob/living/user, params)
 	if(user.GetComponent(/datum/component/gunpoint))
 		balloon_alert(user, "already holding someone up!")
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN

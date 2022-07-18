@@ -112,3 +112,10 @@
 
 /obj/item/gun/syringe/syndicate/prototype
 	company_flag = null
+
+/obj/item/gun/energy/shrink_ray
+	company_flag = COMPANY_ABDUCTOR
+
+/obj/item/gun/energy/alien
+	company_flag = COMPANY_ABDUCTOR
+
