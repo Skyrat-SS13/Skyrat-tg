@@ -26,6 +26,7 @@
 	bolt_type = BOLT_TYPE_OPEN
 	show_bolt_icon = FALSE
 	tac_reloads = FALSE
+	company_flag = COMPANY_OLDARMS
 	var/cover_open = FALSE
 
 /obj/item/gun/ballistic/automatic/mg34/ComponentInitialize()
