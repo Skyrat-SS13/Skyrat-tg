@@ -97,7 +97,7 @@
 
 /datum/quirk/freerunning
 	name = "Freerunning"
-	desc = "You're great at quick moves! You can climb tables more quickly and take no damage from short falls."
+	desc = "You're great at quick moves! You can climb tables more quickly and take no damage from short falls, as well as being able to pull off a flip!" // SKYRAT EDIT - LOCKS FLIP TO FREERUNNING
 	icon = "running"
 	value = 8
 	mob_trait = TRAIT_FREERUNNING
