@@ -27,7 +27,7 @@
 	cost = 2
 
 /datum/armament_entry/assault_operatives/implants/hacking
-	item_type = /obj/item/autosurgeon/organ/syndicate/hackerman
+	item_type = /obj/item/autosurgeon/syndicate/hackerman
 	name = "Hacking Arm Implant"
 	description = "An advanced arm implant that comes with cutting edge hacking tools. Perfect for the cybernetically enhanced wirerunners."
 	cost = 2

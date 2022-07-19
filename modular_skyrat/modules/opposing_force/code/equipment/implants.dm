@@ -54,7 +54,7 @@
 
 // Cybernetic Enhancements
 /datum/opposing_force_equipment/implant/nodrop
-	item_type = /obj/item/autosurgeon/organ/syndicate/nodrop
+	item_type = /obj/item/autosurgeon/syndicate/nodrop
 	name = "Anti Drop Implant"
 	description = "An implant that prevents you from dropping items in your hand involuntarily. Comes loaded in a syndicate autosurgeon."
 
