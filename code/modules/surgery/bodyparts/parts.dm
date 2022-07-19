@@ -48,6 +48,7 @@
 /obj/item/bodypart/chest/alien
 	icon = 'icons/mob/animal_parts.dmi'
 	icon_state = "alien_chest"
+	limb_id = BODYPART_TYPE_ALIEN
 	dismemberable = 0
 	max_damage = 500
 	animal_origin = ALIEN_BODYPART
@@ -156,6 +157,7 @@
 /obj/item/bodypart/l_arm/alien
 	icon = 'icons/mob/animal_parts.dmi'
 	icon_state = "alien_l_arm"
+	limb_id = BODYPART_TYPE_ALIEN
 	px_x = 0
 	px_y = 0
 	dismemberable = FALSE
@@ -257,6 +259,7 @@
 /obj/item/bodypart/r_arm/alien
 	icon = 'icons/mob/animal_parts.dmi'
 	icon_state = "alien_r_arm"
+	limb_id = BODYPART_TYPE_ALIEN
 	px_x = 0
 	px_y = 0
 	dismemberable = FALSE
@@ -349,6 +352,7 @@
 /obj/item/bodypart/l_leg/alien
 	icon = 'icons/mob/animal_parts.dmi'
 	icon_state = "alien_l_leg"
+	limb_id = BODYPART_TYPE_ALIEN
 	px_x = 0
 	px_y = 0
 	dismemberable = FALSE
@@ -448,6 +452,7 @@
 /obj/item/bodypart/r_leg/alien
 	icon = 'icons/mob/animal_parts.dmi'
 	icon_state = "alien_r_leg"
+	limb_id = BODYPART_TYPE_ALIEN
 	px_x = 0
 	px_y = 0
 	dismemberable = FALSE
