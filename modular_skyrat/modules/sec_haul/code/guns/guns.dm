@@ -1083,6 +1083,7 @@
 	fire_sound = 'sound/weapons/gun/smg/shot.ogg'
 	emp_damageable = TRUE
 	can_bayonet = TRUE
+	company_flag = COMPANY_ARMADYNE
 
 /obj/item/ammo_box/magazine/multi_sprite/ostwind
 	name = "\improper DTR-6 magazine"
