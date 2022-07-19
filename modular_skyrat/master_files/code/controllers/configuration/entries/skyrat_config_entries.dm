@@ -4,7 +4,11 @@
 /datum/config_entry/string/wikiurlskyrat
 	config_entry_value = "https:// skyrat13.tk/wiki/index.php"
 
+// Rusian autohiss for lizards and creatures with unusual tongues
 /datum/config_entry/flag/russian_text_formation
+
+// Round-end grief
+/datum/config_entry/flag/allow_eorg
 
 // Overflow server HARD pop cap
 /datum/config_entry/number/player_hard_cap

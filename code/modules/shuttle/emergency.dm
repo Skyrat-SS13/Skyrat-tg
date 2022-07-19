@@ -509,7 +509,10 @@
 				setTimer(SSshuttle.emergency_escape_time * engine_coeff)
 				priority_announce("The Emergency Shuttle has left the station. Estimate [timeLeft(600)] minutes until the shuttle docks at Central Command.", null, ANNOUNCER_SHUTTLELEFT, "Priority") //SKYRAT EDIT CHANGE - ANNOUNCER_SHUTTLELEFT
 				INVOKE_ASYNC(SSticker, /datum/controller/subsystem/ticker.proc/poll_hearts)
-				bolt_all_doors() //SKYRAT EDIT ADDITION
+				//SKYRAT ADDITON BEGIN
+				bolt_all_doors()
+				INVOKE_ASYNC(GLOBAL_PROC, /proc/process_eorg_announce)
+				//SKYRAT ADDITON END
 				SSmapping.mapvote() //If no map vote has been run yet, start one.
 
 		if(SHUTTLE_STRANDED, SHUTTLE_DISABLED)
@@ -551,10 +554,12 @@
 					minor_announce("Corruption detected in \
 						shuttle navigation protocols. Please contact your \
 						supervisor.", "SYSTEM ERROR:", alert=TRUE)
-
 				dock_id(destination_dock)
-				unbolt_all_doors() //SKYRAT EDIT ADDITION
-				INVOKE_ASYNC(GLOBAL_PROC, /proc/process_eorg_bans) //SKYRAT EDIT ADDITION
+				//SKYRAT EDIT ADDITON BEGIN
+				unbolt_all_doors()
+				if(CONFIG_GET(flag/allow_eorg))
+					INVOKE_ASYNC(GLOBAL_PROC, /proc/process_eorg_teleport)
+				//SKYRAT EDIT ADDITON END
 				mode = SHUTTLE_ENDGAME
 				timer = 0
 
