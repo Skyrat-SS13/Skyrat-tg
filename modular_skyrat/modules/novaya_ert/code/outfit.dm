@@ -10,7 +10,7 @@
 	gloves = /obj/item/clothing/gloves/combat
 	belt = /obj/item/storage/belt/military/nri/soldier
 	back = /obj/item/storage/backpack/duffelbag/syndie/nri
-	backpack_contents = list(/obj/item/storage/box/nri_survival_pack, /obj/item/storage/medkit/emergency, /obj/item/ammo_box/magazine/m9mm_aps, /obj/item/beamout_tool, /obj/item/crucifix)
+	backpack_contents = list(/obj/item/storage/box/nri_survival_pack, /obj/item/storage/medkit/emergency, /obj/item/ammo_box/magazine/m9mm_aps, /obj/item/advanced_choice_beacon/nri/heavy, /obj/item/beamout_tool, /obj/item/crucifix)
 	l_pocket = /obj/item/gun/ballistic/automatic/pistol/ladon/nri
 	r_pocket = /obj/item/ammo_box/magazine/m9mm_aps
 	shoes = /obj/item/clothing/shoes/magboots/advance
