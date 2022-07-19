@@ -11,6 +11,7 @@
 	name = "NRI border patrol"
 	role = "Private"
 	outfit = /datum/outfit/centcom/ert/nri
+	suicide_cry = "GOD, SAVE THE EMPRESS!!"
 
 /datum/antagonist/ert/nri/on_gain()
 	. = ..()
@@ -22,8 +23,32 @@
 	var/mob/living/carbon/human/H = owner.current
 	H.set_species(/datum/species/human)
 	H.grant_language(/datum/language/neorusskya)
+	H.grant_language(/datum/language/schechi)
 
 	return TRUE
+
+/datum/antagonist/ert/nri/greet()
+	if(!ert_team)
+		return
+
+	to_chat(owner, "<span class='warningplain'><B><font size=3 color=yellow>You are the [name].</font></B></span>")
+
+	var/missiondesc = "Your squad is responding to an emergency situation of [station_name()], with the Novaya Rossiyskaya Imperiya Defense Colleague's approval."
+	if(leader) //If Squad Leader
+		missiondesc += "Lead your squad to ensure the completion of the mission. Board the shuttle when your team is ready."
+
+	missiondesc += "<BR><B><font size=3 color=red>You are NOT a Nanotrasen Employee. You work for Novaya Rossiyskaya Imperiya Defense Colleague.</font></B>"
+	missiondesc += "<BR><B><font size=3 color=red>You are (almost) NOT a deathsquad. You are here to assist the station's Security and Command with alien infestations or enemy activity.</font></B>"
+	missiondesc += "<BR>You are responding to emergency calls from the station for immediate NRI military intervention!\n"
+	missiondesc += "<BR><B>Your Mission</B>:"
+	missiondesc += "<BR> <B>1.</B> Minimise civillian casualties."
+	missiondesc += "<BR> <B>2.</B> Neutralise the threat."
+	missiondesc += "<BR> <B>3.</B> Stabilise the situation."
+	missiondesc += "<BR> <B>4.</B> Contact whoever called you and assist in resolving the matter."
+	missiondesc += "<BR> <B>5.</B> Protect, ensure, and uphold the rights of Novaya Rossiyskaya Imperiya, Kingdom of Agurkrral and Free Teshari League citizens on board [station_name()]. SolFed citizens' wellbeing is up to your discretion."
+
+	missiondesc += "<span class='warningplain'><BR><B>Your Mission</B> : [ert_team.mission.explanation_text]</span>"
+	to_chat(owner,missiondesc)
 
 /datum/antagonist/ert/nri/commander
 	role = "Commander"
