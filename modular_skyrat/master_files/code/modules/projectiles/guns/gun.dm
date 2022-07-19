@@ -210,6 +210,8 @@
 			. += "<br>It has <b>[span_cyan("Micron Control Sys.")]</b> cut in above the cell slot."
 		if(COMPANY_INTERDYNE)
 			. += "<br>It has <b>[span_cyan("Interdyne Pharmaceuticals")]</b> stamped onto the barrel."
+		if(COMPANY_ABDUCTOR)
+			. += "<br>It has <b>[span_abductor("✌︎︎♌︎︎♎︎︎◆︎︎♍︎︎⧫︎︎❄︎♏︎♍︎♒︎")]</b> engraved into the photon accelerator."
 
 /obj/item/gun/proc/fire_select()
 	var/mob/living/carbon/human/user = usr
