@@ -7,11 +7,24 @@
 /obj/effect/turf_decal/siding/dark{
 	dir = 5
 	},
+/obj/machinery/vending/boozeomat/all_access,
 /turf/open/floor/iron,
 /area/centcom/central_command_areas/evacuation)
 "ad" = (
 /turf/open/space,
 /area/space)
+"af" = (
+/obj/machinery/door/airlock/centcom{
+	name = "CentCom Security"
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/centcom/central_command_areas/evacuation)
 "ag" = (
 /obj/structure/chair/sofa/bench/right{
 	dir = 4
@@ -46,12 +59,28 @@
 	},
 /turf/open/floor/iron,
 /area/centcom/central_command_areas/evacuation)
+"am" = (
+/obj/structure/table/reinforced,
+/obj/machinery/door/poddoor/shutters/window{
+	name = "Snack Counter Shutters";
+	id = "cc_snack"
+	},
+/obj/effect/turf_decal/siding/dark/corner{
+	dir = 4
+	},
+/obj/item/reagent_containers/food/condiment/peppermill,
+/turf/open/floor/iron,
+/area/centcom/central_command_areas/evacuation)
 "an" = (
 /obj/effect/turf_decal/siding/dark_blue/corner{
 	dir = 8
 	},
 /turf/open/floor/iron,
 /area/centcom/central_command_areas/evacuation)
+"ap" = (
+/obj/machinery/vending/dinnerware,
+/turf/open/floor/iron/dark,
+/area/centcom/central_command_areas/supplypod)
 "ar" = (
 /obj/effect/turf_decal/tile/yellow/half,
 /obj/effect/turf_decal/tile/yellow/half{
@@ -293,6 +322,11 @@
 /obj/machinery/light/small/directional/south,
 /turf/open/floor/iron/showroomfloor,
 /area/centcom/central_command_areas/holding)
+"aT" = (
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/item/slime_cookie,
+/turf/open/floor/iron,
+/area/centcom/central_command_areas/control)
 "aU" = (
 /obj/structure/chair/stool/directional/west,
 /turf/open/misc/beach/sand,
@@ -521,6 +555,19 @@
 	},
 /turf/open/floor/iron/freezer,
 /area/centcom/syndicate_mothership/control)
+"bz" = (
+/obj/machinery/door/airlock/centcom{
+	name = "CentCom Security"
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/airlock/access/all/security/general,
+/turf/open/floor/iron,
+/area/centcom/central_command_areas/control)
 "bA" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 9
@@ -1406,6 +1453,15 @@
 	dir = 4
 	},
 /area/centcom/central_command_areas/holding)
+"dV" = (
+/obj/structure/table/reinforced,
+/obj/machinery/door/poddoor/shutters/window{
+	name = "Snack Counter Shutters";
+	id = "cc_snack"
+	},
+/obj/item/reagent_containers/food/condiment/saltshaker,
+/turf/open/floor/iron,
+/area/centcom/central_command_areas/evacuation)
 "dW" = (
 /obj/effect/turf_decal/siding/thinplating_new/dark,
 /turf/open/floor/mineral/plastitanium/red,
@@ -1839,6 +1895,14 @@
 	},
 /turf/open/floor/wood/tile,
 /area/centcom/syndicate_mothership/control)
+"fq" = (
+/obj/effect/turf_decal/tile/dark_blue/opposingcorners,
+/obj/character_event_spawner{
+	name = "CentCom Border Patrol";
+	used_outfit = /datum/outfit/job/security
+	},
+/turf/open/floor/iron/dark,
+/area/centcom/central_command_areas/evacuation)
 "fs" = (
 /obj/effect/turf_decal/siding/wood,
 /turf/open/floor/wood/tile,
@@ -2485,6 +2549,23 @@
 /obj/machinery/light/directional/south,
 /obj/effect/turf_decal/tile/dark_blue/opposingcorners,
 /obj/machinery/status_display/evac/directional/south,
+/obj/structure/closet/secure_closet/security/sec,
+/obj/effect/spawner/random/bureaucracy/stamp{
+	pixel_x = 2;
+	pixel_y = -2
+	},
+/obj/item/stamp{
+	pixel_x = -2;
+	pixel_y = -2
+	},
+/obj/item/stamp/denied{
+	pixel_x = -2;
+	pixel_y = 2
+	},
+/obj/item/stamp/centcom{
+	pixel_x = 2;
+	pixel_y = 2
+	},
 /turf/open/floor/iron/dark,
 /area/centcom/central_command_areas/evacuation)
 "hp" = (
@@ -3819,7 +3900,6 @@
 	name = "CentCom Security"
 	},
 /obj/effect/turf_decal/stripes/line,
-/obj/effect/mapping_helpers/airlock/access/all/admin/general,
 /turf/open/floor/iron,
 /area/centcom/central_command_areas/control)
 "la" = (
@@ -5758,6 +5838,14 @@
 	},
 /turf/open/floor/iron,
 /area/centcom/syndicate_mothership/control)
+"qa" = (
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/character_event_spawner{
+	name = "CentCom Chef Spawner";
+	used_outfit = /datum/outfit/job/cook
+	},
+/turf/open/floor/iron/dark,
+/area/centcom/central_command_areas/evacuation)
 "qb" = (
 /obj/structure/table/wood,
 /obj/item/folder/red,
@@ -5977,6 +6065,7 @@
 "qB" = (
 /obj/structure/table/reinforced,
 /obj/effect/turf_decal/tile/dark_blue/opposingcorners,
+/obj/item/storage/box/syndie_kit/chameleon/ghostcafe,
 /turf/open/floor/iron/dark,
 /area/centcom/central_command_areas/evacuation)
 "qC" = (
@@ -6028,6 +6117,11 @@
 	},
 /obj/structure/window/reinforced/spawner/north,
 /turf/open/floor/iron,
+/area/centcom/central_command_areas/evacuation)
+"qM" = (
+/obj/structure/table/wood/fancy/green,
+/obj/item/storage/box/syndie_kit/chameleon/ghostcafe,
+/turf/open/floor/iron/dark,
 /area/centcom/central_command_areas/evacuation)
 "qN" = (
 /obj/effect/turf_decal/tile/neutral/fourcorners,
@@ -6802,12 +6896,10 @@
 /area/centcom/central_command_areas/evacuation)
 "sP" = (
 /obj/structure/table,
-/obj/item/paper/pamphlet/centcom/visitor_info{
-	pixel_x = -4;
-	pixel_y = 4
-	},
-/obj/item/paper/pamphlet/centcom/visitor_info,
 /obj/machinery/light/directional/west,
+/obj/machinery/chem_dispenser/drinks/beer/fullupgrade{
+	dir = 4
+	},
 /turf/open/floor/iron,
 /area/centcom/central_command_areas/evacuation)
 "sQ" = (
@@ -6831,6 +6923,23 @@
 /obj/machinery/light/directional/north,
 /obj/effect/turf_decal/tile/dark_blue/opposingcorners,
 /obj/machinery/status_display/evac/directional/north,
+/obj/structure/closet/secure_closet/security/sec,
+/obj/item/stamp/centcom{
+	pixel_x = 2;
+	pixel_y = 2
+	},
+/obj/item/stamp/denied{
+	pixel_x = -2;
+	pixel_y = 2
+	},
+/obj/item/stamp{
+	pixel_x = -2;
+	pixel_y = -2
+	},
+/obj/effect/spawner/random/bureaucracy/stamp{
+	pixel_x = 2;
+	pixel_y = -2
+	},
 /turf/open/floor/iron/dark,
 /area/centcom/central_command_areas/evacuation)
 "sT" = (
@@ -6841,16 +6950,22 @@
 	pixel_y = 6
 	},
 /obj/item/reagent_containers/food/condiment/rice,
+/obj/item/reagent_containers/food/condiment/flour,
+/obj/item/reagent_containers/food/condiment/flour,
+/obj/item/kitchen/rollingpin,
+/obj/item/knife/kitchen,
+/obj/item/knife/kitchen,
+/obj/item/kitchen/rollingpin,
 /turf/open/floor/iron/dark,
 /area/centcom/central_command_areas/evacuation)
 "sU" = (
 /obj/machinery/door/airlock/centcom{
 	name = "CentCom Security Checkpoint"
 	},
-/obj/effect/mapping_helpers/airlock/access/all/admin/general,
 /obj/effect/turf_decal/siding/dark_blue{
 	dir = 4
 	},
+/obj/effect/mapping_helpers/airlock/access/all/security/general,
 /turf/open/floor/iron,
 /area/centcom/central_command_areas/evacuation)
 "sV" = (
@@ -6880,7 +6995,7 @@
 /obj/machinery/door/airlock/centcom{
 	name = "CentCom Supplypod Loading"
 	},
-/obj/effect/mapping_helpers/airlock/access/all/admin/storage,
+/obj/effect/mapping_helpers/airlock/access/all/service/kitchen,
 /turf/open/floor/iron/dark,
 /area/centcom/central_command_areas/evacuation)
 "sZ" = (
@@ -7201,11 +7316,9 @@
 /area/centcom/central_command_areas/prison)
 "tS" = (
 /obj/structure/table,
-/obj/item/paper/pamphlet/centcom/visitor_info{
-	pixel_x = -4;
-	pixel_y = 4
+/obj/machinery/chem_dispenser/drinks/fullupgrade{
+	dir = 4
 	},
-/obj/item/paper/pamphlet/centcom/visitor_info,
 /turf/open/floor/iron,
 /area/centcom/central_command_areas/evacuation)
 "tT" = (
@@ -7430,14 +7543,10 @@
 /area/centcom/central_command_areas/evacuation)
 "uA" = (
 /obj/structure/table,
-/obj/item/paper/pamphlet/centcom/visitor_info{
-	pixel_x = -4;
-	pixel_y = 4
-	},
-/obj/item/paper/pamphlet/centcom/visitor_info,
 /obj/effect/turf_decal/siding/dark/corner{
 	dir = 4
 	},
+/obj/machinery/reagentgrinder/constructed,
 /turf/open/floor/iron,
 /area/centcom/central_command_areas/evacuation)
 "uB" = (
@@ -7464,6 +7573,12 @@
 /obj/effect/turf_decal/siding/yellow,
 /turf/open/floor/iron,
 /area/centcom/central_command_areas/supply)
+"uH" = (
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/structure/table/wood/fancy/green,
+/obj/item/reagent_containers/food/drinks/shaker,
+/turf/open/floor/iron,
+/area/centcom/central_command_areas/evacuation)
 "uI" = (
 /obj/structure/chair/sofa/bench/right{
 	dir = 4
@@ -9003,6 +9118,12 @@
 	dir = 4
 	},
 /area/centcom/syndicate_mothership/expansion_bombthreat)
+"yM" = (
+/obj/machinery/computer/chef_order{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/centcom/central_command_areas/supplypod)
 "yN" = (
 /obj/effect/turf_decal/delivery,
 /obj/effect/turf_decal/siding/thinplating_new/dark{
@@ -9609,6 +9730,7 @@
 /obj/effect/turf_decal/siding/dark/corner{
 	dir = 4
 	},
+/obj/structure/table/wood/fancy/green,
 /turf/open/floor/iron,
 /area/centcom/central_command_areas/evacuation)
 "Au" = (
@@ -9822,10 +9944,10 @@
 /obj/machinery/door/airlock/centcom{
 	name = "CentCom Security Checkpoint"
 	},
-/obj/effect/mapping_helpers/airlock/access/all/admin/general,
 /obj/effect/turf_decal/siding/dark_blue{
 	dir = 4
 	},
+/obj/effect/mapping_helpers/airlock/access/all/security/general,
 /turf/closed/indestructible/riveted,
 /area/centcom/central_command_areas/evacuation)
 "Be" = (
@@ -10126,7 +10248,7 @@
 	name = "CentCom Security"
 	},
 /obj/effect/turf_decal/stripes/line,
-/obj/effect/mapping_helpers/airlock/access/all/admin/general,
+/obj/effect/mapping_helpers/airlock/access/all/service/general,
 /turf/open/floor/iron,
 /area/centcom/central_command_areas/evacuation)
 "BN" = (
@@ -10222,6 +10344,7 @@
 /area/centcom/central_command_areas/briefing)
 "Cc" = (
 /obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/item/storage/box/syndie_kit/chameleon/ghostcafe,
 /turf/open/floor/iron/dark,
 /area/centcom/central_command_areas/evacuation)
 "Cd" = (
@@ -10230,8 +10353,14 @@
 	id = "cc_snack"
 	},
 /obj/structure/rack,
-/obj/effect/spawner/costume/waiter,
-/obj/effect/spawner/costume/waiter,
+/obj/effect/spawner/random/food_or_drink/donkpockets{
+	pixel_x = 2;
+	pixel_y = -2
+	},
+/obj/effect/spawner/random/food_or_drink/donkpockets{
+	pixel_x = -2;
+	pixel_y = 2
+	},
 /turf/open/floor/iron/dark,
 /area/centcom/central_command_areas/evacuation)
 "Ce" = (
@@ -10525,6 +10654,10 @@
 "CO" = (
 /obj/machinery/light/directional/east,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/character_event_spawner{
+	name = "CentCom Chef Spawner";
+	used_outfit = /datum/outfit/job/cook
+	},
 /turf/open/floor/iron/dark,
 /area/centcom/central_command_areas/evacuation)
 "CP" = (
@@ -10659,12 +10792,7 @@
 /area/centcom/central_command_areas/control)
 "Dc" = (
 /obj/structure/table/reinforced,
-/obj/item/reagent_containers/food/condiment/flour{
-	pixel_x = -6;
-	pixel_y = 6
-	},
-/obj/item/reagent_containers/food/condiment/flour,
-/obj/item/kitchen/rollingpin,
+/obj/machinery/processor,
 /turf/open/floor/iron/dark,
 /area/centcom/central_command_areas/evacuation)
 "Dd" = (
@@ -10853,6 +10981,13 @@
 /obj/item/reagent_containers/food/condiment/soymilk,
 /obj/item/storage/fancy/egg_box,
 /obj/item/storage/fancy/egg_box,
+/obj/item/reagent_containers/food/condiment/milk,
+/obj/item/reagent_containers/food/condiment/milk,
+/obj/item/reagent_containers/food/condiment/milk,
+/obj/item/reagent_containers/food/condiment/soymilk,
+/obj/item/reagent_containers/food/condiment/soymilk,
+/obj/item/reagent_containers/food/condiment/soymilk,
+/obj/item/reagent_containers/food/condiment/mayonnaise,
 /turf/open/floor/iron/kitchen,
 /area/centcom/central_command_areas/evacuation)
 "Dy" = (
@@ -11248,7 +11383,6 @@
 	},
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
-/obj/effect/mapping_helpers/airlock/access/all/admin/general,
 /turf/open/floor/iron,
 /area/centcom/tdome/observation)
 "EC" = (
@@ -11935,7 +12069,6 @@
 	name = "Thunderdome"
 	},
 /obj/effect/turf_decal/stripes/line,
-/obj/effect/mapping_helpers/airlock/access/all/admin/bar,
 /turf/open/floor/iron,
 /area/centcom/tdome/observation)
 "Gy" = (
@@ -12298,14 +12431,13 @@
 /area/centcom/syndicate_mothership/control)
 "Hm" = (
 /obj/structure/table/reinforced,
-/obj/effect/spawner/random/food_or_drink/donkpockets{
-	pixel_x = -4
-	},
-/obj/effect/spawner/random/food_or_drink/donkpockets{
-	pixel_x = 4;
-	pixel_y = 4
-	},
 /obj/machinery/status_display/evac/directional/north,
+/obj/machinery/reagentgrinder/constructed,
+/obj/item/stack/spacecash/c5000{
+	pixel_x = 2;
+	pixel_y = -2
+	},
+/obj/item/stack/spacecash/c5000,
 /turf/open/floor/iron/dark,
 /area/centcom/central_command_areas/evacuation)
 "Hn" = (
@@ -14305,6 +14437,10 @@
 	},
 /turf/open/floor/iron,
 /area/centcom/central_command_areas/evacuation)
+"MJ" = (
+/obj/effect/mapping_helpers/airlock/access/all,
+/turf/closed/indestructible/riveted,
+/area/centcom/central_command_areas/evacuation)
 "ML" = (
 /obj/machinery/light/small/directional/north,
 /turf/open/floor/iron/smooth_half,
@@ -15115,31 +15251,7 @@
 /area/centcom/syndicate_mothership/control)
 "Pe" = (
 /obj/machinery/status_display/evac/directional/south,
-/obj/structure/rack,
-/obj/item/kitchen/fork{
-	pixel_x = 6
-	},
-/obj/item/kitchen/fork{
-	pixel_x = 6
-	},
-/obj/item/kitchen/fork{
-	pixel_x = 6
-	},
-/obj/item/kitchen/fork{
-	pixel_x = 6
-	},
-/obj/item/kitchen/spoon{
-	pixel_x = -6
-	},
-/obj/item/kitchen/spoon{
-	pixel_x = -6
-	},
-/obj/item/kitchen/spoon{
-	pixel_x = -6
-	},
-/obj/item/kitchen/spoon{
-	pixel_x = -6
-	},
+/obj/machinery/oven,
 /turf/open/floor/iron/kitchen,
 /area/centcom/central_command_areas/evacuation)
 "Pf" = (
@@ -15936,10 +16048,30 @@
 "Rv" = (
 /turf/closed/indestructible/riveted,
 /area/centcom/central_command_areas/admin)
+"Rw" = (
+/obj/effect/turf_decal/siding/dark{
+	dir = 5
+	},
+/obj/structure/table/wood/fancy/green,
+/turf/open/floor/iron,
+/area/centcom/central_command_areas/evacuation)
 "Rx" = (
 /obj/machinery/vending/dinnerware,
 /turf/open/floor/catwalk_floor/titanium,
 /area/centcom/syndicate_mothership/control)
+"Ry" = (
+/obj/machinery/door/airlock/centcom{
+	name = "CentCom Security"
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 8
+	},
+/obj/effect/mapping_helpers/airlock/access/all/service/kitchen,
+/turf/open/floor/iron,
+/area/centcom/central_command_areas/evacuation)
 "Rz" = (
 /obj/structure/lattice/catwalk,
 /obj/effect/turf_decal/stripes/line,
@@ -16296,7 +16428,19 @@
 /turf/open/misc/asteroid/snow/airless,
 /area/centcom/syndicate_mothership)
 "SH" = (
-/obj/structure/closet/secure_closet/personal,
+/obj/structure/closet/secure_closet/freezer/fridge,
+/obj/item/food/fishmeat/carp,
+/obj/item/food/fishmeat/carp,
+/obj/item/food/fishmeat/carp,
+/obj/item/food/fishmeat/carp,
+/obj/item/food/fishmeat/carp,
+/obj/item/food/meat/slab,
+/obj/item/food/meat/slab,
+/obj/item/food/meat/slab,
+/obj/item/food/meat/slab,
+/obj/item/food/meat/slab,
+/obj/item/food/meat/slab,
+/obj/item/food/meat/slab,
 /turf/open/floor/iron/dark,
 /area/centcom/central_command_areas/supplypod)
 "SI" = (
@@ -16606,6 +16750,12 @@
 	},
 /turf/open/floor/iron,
 /area/centcom/central_command_areas/supplypod/loading/three)
+"TA" = (
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/structure/table/wood/fancy/green,
+/obj/item/stack/spacecash/c5000,
+/turf/open/floor/iron,
+/area/centcom/central_command_areas/evacuation)
 "TB" = (
 /obj/structure/table,
 /obj/item/paper/pamphlet/centcom/visitor_info{
@@ -16972,9 +17122,27 @@
 "UF" = (
 /turf/open/floor/mineral/plastitanium/red,
 /area/centcom/syndicate_mothership)
+"UG" = (
+/obj/item/kirbyplants{
+	icon_state = "plant-22"
+	},
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/effect/mapping_helpers/trapdoor_placer,
+/turf/open/floor/iron/dark,
+/area/centcom/central_command_areas/courtroom)
 "UH" = (
 /obj/machinery/light/directional/west,
-/obj/structure/closet/secure_closet/personal,
+/obj/structure/closet/secure_closet/freezer/fridge,
+/obj/item/reagent_containers/food/condiment/flour,
+/obj/item/reagent_containers/food/condiment/flour,
+/obj/item/reagent_containers/food/condiment/flour,
+/obj/item/reagent_containers/food/condiment/flour,
+/obj/item/reagent_containers/food/condiment/flour,
+/obj/item/reagent_containers/food/condiment/rice,
+/obj/item/reagent_containers/food/condiment/rice,
+/obj/item/reagent_containers/food/condiment/rice,
+/obj/item/reagent_containers/food/condiment/rice,
+/obj/item/reagent_containers/food/condiment/rice,
 /turf/open/floor/iron/dark,
 /area/centcom/central_command_areas/supplypod)
 "UI" = (
@@ -17027,7 +17195,6 @@
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 4
 	},
-/obj/effect/mapping_helpers/airlock/access/all/admin/medical,
 /turf/open/floor/iron,
 /area/centcom/central_command_areas/control)
 "UP" = (
@@ -17486,7 +17653,7 @@
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 8
 	},
-/obj/effect/mapping_helpers/airlock/access/all/admin/general,
+/obj/effect/mapping_helpers/airlock/access/all/security/general,
 /turf/open/floor/iron,
 /area/centcom/central_command_areas/evacuation)
 "Wd" = (
@@ -17850,6 +18017,12 @@
 "Xa" = (
 /turf/open/floor/iron/showroomfloor,
 /area/centcom/central_command_areas/holding)
+"Xb" = (
+/obj/structure/closet/secure_closet/personal,
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/item/storage/box/syndie_kit/chameleon/ghostcafe,
+/turf/open/floor/iron/dark,
+/area/centcom/tdome/observation)
 "Xc" = (
 /turf/open/floor/iron/grimy,
 /area/centcom/central_command_areas/briefing)
@@ -18253,7 +18426,6 @@
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 1
 	},
-/obj/effect/mapping_helpers/airlock/access/all/admin/general,
 /turf/open/floor/iron,
 /area/centcom/tdome/observation)
 "Yv" = (
@@ -18280,6 +18452,17 @@
 	},
 /turf/open/floor/plating/snowed/icemoon,
 /area/centcom/syndicate_mothership/control)
+"Yy" = (
+/obj/structure/table/reinforced,
+/obj/machinery/door/poddoor/shutters/window{
+	name = "Snack Counter Shutters";
+	id = "cc_snack"
+	},
+/obj/item/plate/oven_tray,
+/obj/item/plate/oven_tray,
+/obj/item/plate/oven_tray,
+/turf/open/floor/iron,
+/area/centcom/central_command_areas/evacuation)
 "Yz" = (
 /obj/structure/sign/nanotrasen,
 /turf/closed/indestructible/riveted,
@@ -18381,6 +18564,16 @@
 	},
 /turf/open/floor/mineral/plastitanium,
 /area/centcom/syndicate_mothership/control)
+"YN" = (
+/obj/effect/turf_decal/siding/dark/corner{
+	dir = 4
+	},
+/obj/character_event_spawner{
+	name = "CentCom Bartender";
+	used_outfit = /datum/outfit/job/bartender
+	},
+/turf/open/floor/iron,
+/area/centcom/central_command_areas/evacuation)
 "YP" = (
 /obj/structure/fence/cut/medium,
 /turf/open/misc/asteroid/snow/airless,
@@ -64939,7 +65132,7 @@ mX
 nw
 io
 mh
-nq
+aT
 nq
 nq
 vc
@@ -65219,7 +65412,7 @@ FP
 Gf
 Ep
 Ep
-dN
+FK
 Ep
 Ep
 Ep
@@ -66240,17 +66433,17 @@ iC
 io
 SH
 UH
-SH
+yM
 Ep
 Fx
 FR
 Gb
 Ep
-GD
-GD
-GD
-GD
-GD
+Xb
+Xb
+Xb
+Xb
+Xb
 Ep
 FH
 Gq
@@ -66469,17 +66662,17 @@ mU
 nt
 nO
 cQ
-XS
+UG
 cQ
 pn
 cr
 qx
 qx
 qx
-vf
+bz
 qx
 qx
-qx
+MJ
 qx
 yU
 xr
@@ -66493,7 +66686,7 @@ qx
 qx
 qV
 qx
-vf
+UO
 qx
 NO
 NO
@@ -66749,12 +66942,12 @@ sM
 BM
 Cc
 CO
-Cc
+qa
 Cc
 sY
 NO
 NO
-NO
+ap
 Ep
 Fz
 FS
@@ -67002,12 +67195,12 @@ qx
 qx
 qx
 qx
-Wc
+af
 qx
 qx
 qx
 qx
-Wc
+Ry
 qx
 Yn
 sZ
@@ -67512,9 +67705,9 @@ uB
 uB
 Ba
 uB
-uB
+uH
 AV
-At
+YN
 vh
 vh
 qx
@@ -67769,9 +67962,9 @@ Ba
 Ba
 Ba
 Ba
-Ba
-uB
-AV
+qM
+TA
+Rw
 At
 vh
 qx
@@ -68031,7 +68224,7 @@ Ba
 gq
 AV
 aP
-BN
+dV
 qy
 qy
 qy
@@ -68288,7 +68481,7 @@ Ba
 Ba
 uB
 AY
-Cf
+am
 CP
 CP
 CP
@@ -68804,7 +68997,7 @@ Ba
 AZ
 BN
 Cf
-BN
+Yy
 qx
 qx
 Yn
@@ -71875,7 +72068,7 @@ aa
 qx
 Tj
 Bb
-Bb
+fq
 ZP
 wK
 rj
@@ -71883,7 +72076,7 @@ qV
 sl
 bC
 Qj
-Bb
+fq
 Bb
 Qh
 qx
