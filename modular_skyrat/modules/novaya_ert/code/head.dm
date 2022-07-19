@@ -15,6 +15,8 @@
 /obj/item/clothing/head/beret/sec/nri
 	name = "imperial security cap"
 	desc = "A robust cap with the NRI Internal Affairs Colleague insignia emblazoned on it. Uses reinforced fabric to offer sufficient protection."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "nri_officer"
 	greyscale_config = null
 	greyscale_config_worn = null
