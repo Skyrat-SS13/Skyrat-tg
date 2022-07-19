@@ -25,7 +25,7 @@
 				manual_emote(pick("grooms [p_their()] fur.", "twitches [p_their()] ears.", "shakes [p_their()] fur."))
 	..()
 
-/mob/living/simple_animal/pet/dog/corgi/ian/Moved()
+/mob/living/simple_animal/pet/dog/corgi/ian/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change = TRUE)
 	. = ..()
 	if(resting_state)
 		manual_emote(pick("gets up and barks.", "walks around.", "stops resting."))
