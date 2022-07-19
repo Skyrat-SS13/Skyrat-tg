@@ -35,7 +35,7 @@
 
 	var/missiondesc = "Your squad is responding to an emergency situation of [station_name()], with the Novaya Rossiyskaya Imperiya Defense Colleague's approval."
 	if(leader) //If Squad Leader
-		missiondesc += "Lead your squad to ensure the completion of the mission. Board the shuttle when your team is ready."
+		missiondesc += "<BR><B>Lead your squad to ensure the completion of the mission. Board the shuttle when your team is ready.</B>"
 
 	missiondesc += "<BR><B><font size=3 color=red>You are NOT a Nanotrasen Employee. You work for Novaya Rossiyskaya Imperiya Defense Colleague.</font></B>"
 	missiondesc += "<BR><B><font size=3 color=red>You are NOT a deathsquad. You are here to assist the station's Security and Command with alien infestations or enemy activity.</font></B>"
