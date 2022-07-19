@@ -557,17 +557,14 @@
 /area/centcom/syndicate_mothership/control)
 "bz" = (
 /obj/machinery/door/airlock/centcom{
-	name = "CentCom Security"
+	name = "Thunderdome Backstage"
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 4
-	},
-/obj/effect/mapping_helpers/airlock/access/all/security/general,
+/obj/effect/mapping_helpers/airlock/access/all/admin/general,
 /turf/open/floor/iron,
-/area/centcom/central_command_areas/control)
+/area/centcom/tdome/observation)
 "bA" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 9
@@ -1895,14 +1892,6 @@
 	},
 /turf/open/floor/wood/tile,
 /area/centcom/syndicate_mothership/control)
-"fq" = (
-/obj/effect/turf_decal/tile/dark_blue/opposingcorners,
-/obj/character_event_spawner{
-	name = "CentCom Border Patrol";
-	used_outfit = /datum/outfit/job/security
-	},
-/turf/open/floor/iron/dark,
-/area/centcom/central_command_areas/evacuation)
 "fs" = (
 /obj/effect/turf_decal/siding/wood,
 /turf/open/floor/wood/tile,
@@ -2566,6 +2555,7 @@
 	pixel_x = 2;
 	pixel_y = 2
 	},
+/obj/item/storage/box/syndie_kit/chameleon/ghostcafe,
 /turf/open/floor/iron/dark,
 /area/centcom/central_command_areas/evacuation)
 "hp" = (
@@ -3900,6 +3890,7 @@
 	name = "CentCom Security"
 	},
 /obj/effect/turf_decal/stripes/line,
+/obj/effect/mapping_helpers/airlock/access/all/admin/general,
 /turf/open/floor/iron,
 /area/centcom/central_command_areas/control)
 "la" = (
@@ -5840,10 +5831,6 @@
 /area/centcom/syndicate_mothership/control)
 "qa" = (
 /obj/effect/turf_decal/tile/neutral/fourcorners,
-/obj/character_event_spawner{
-	name = "CentCom Chef Spawner";
-	used_outfit = /datum/outfit/job/cook
-	},
 /turf/open/floor/iron/dark,
 /area/centcom/central_command_areas/evacuation)
 "qb" = (
@@ -6065,7 +6052,6 @@
 "qB" = (
 /obj/structure/table/reinforced,
 /obj/effect/turf_decal/tile/dark_blue/opposingcorners,
-/obj/item/storage/box/syndie_kit/chameleon/ghostcafe,
 /turf/open/floor/iron/dark,
 /area/centcom/central_command_areas/evacuation)
 "qC" = (
@@ -6940,6 +6926,7 @@
 	pixel_x = 2;
 	pixel_y = -2
 	},
+/obj/item/storage/box/syndie_kit/chameleon/ghostcafe,
 /turf/open/floor/iron/dark,
 /area/centcom/central_command_areas/evacuation)
 "sT" = (
@@ -10654,10 +10641,6 @@
 "CO" = (
 /obj/machinery/light/directional/east,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
-/obj/character_event_spawner{
-	name = "CentCom Chef Spawner";
-	used_outfit = /datum/outfit/job/cook
-	},
 /turf/open/floor/iron/dark,
 /area/centcom/central_command_areas/evacuation)
 "CP" = (
@@ -11383,6 +11366,7 @@
 	},
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
+/obj/effect/mapping_helpers/airlock/access/all/admin/general,
 /turf/open/floor/iron,
 /area/centcom/tdome/observation)
 "EC" = (
@@ -12069,6 +12053,7 @@
 	name = "Thunderdome"
 	},
 /obj/effect/turf_decal/stripes/line,
+/obj/effect/mapping_helpers/airlock/access/all/admin/general,
 /turf/open/floor/iron,
 /area/centcom/tdome/observation)
 "Gy" = (
@@ -17653,7 +17638,7 @@
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 8
 	},
-/obj/effect/mapping_helpers/airlock/access/all/security/general,
+/obj/effect/mapping_helpers/airlock/access/all/admin/general,
 /turf/open/floor/iron,
 /area/centcom/central_command_areas/evacuation)
 "Wd" = (
@@ -18426,6 +18411,7 @@
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 1
 	},
+/obj/effect/mapping_helpers/airlock/access/all/admin/general,
 /turf/open/floor/iron,
 /area/centcom/tdome/observation)
 "Yv" = (
@@ -18567,10 +18553,6 @@
 "YN" = (
 /obj/effect/turf_decal/siding/dark/corner{
 	dir = 4
-	},
-/obj/character_event_spawner{
-	name = "CentCom Bartender";
-	used_outfit = /datum/outfit/job/bartender
 	},
 /turf/open/floor/iron,
 /area/centcom/central_command_areas/evacuation)
@@ -65412,7 +65394,7 @@ FP
 Gf
 Ep
 Ep
-FK
+bz
 Ep
 Ep
 Ep
@@ -66669,7 +66651,7 @@ cr
 qx
 qx
 qx
-bz
+vf
 qx
 qx
 MJ
@@ -72068,7 +72050,7 @@ aa
 qx
 Tj
 Bb
-fq
+Bb
 ZP
 wK
 rj
@@ -72076,7 +72058,7 @@ qV
 sl
 bC
 Qj
-fq
+Bb
 Bb
 Qh
 qx
