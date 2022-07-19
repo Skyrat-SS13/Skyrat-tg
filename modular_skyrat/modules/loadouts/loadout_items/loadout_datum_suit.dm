@@ -122,11 +122,11 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 
 /datum/loadout_item/suit/poncho_green
 	name = "Green Poncho"
-	item_path = /obj/item/clothing/suit/poncho/green
+	item_path = /obj/item/clothing/suit/costume/poncho/green
 
 /datum/loadout_item/suit/poncho_red
 	name = "Red Poncho"
-	item_path = /obj/item/clothing/suit/poncho/red
+	item_path = /obj/item/clothing/suit/costume/poncho/red
 
 
 /*
@@ -325,7 +325,7 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 
 /datum/loadout_item/suit/hawaiian_shirt
 	name = "Hawaiian Shirt"
-	item_path = /obj/item/clothing/suit/hawaiian
+	item_path = /obj/item/clothing/suit/costume/hawaiian
 
 /datum/loadout_item/suit/hawaiian_blue
 	name = "Blue Hawaiian Shirt"
