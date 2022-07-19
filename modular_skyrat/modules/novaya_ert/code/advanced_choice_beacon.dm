@@ -111,7 +111,7 @@
 			span_danger("You bash [src] with [I]!"), null, COMBAT_MESSAGE_RANGE)
 		playsound(src, "sound/items/drill_use.ogg", 80, TRUE, -1)
 		var/obj/machinery/porta_turret/syndicate/pod/toolbox/nri/turret = new(get_turf(loc))
-		turret.faction = list("neutral")
+		turret.faction = list(FACTION_STATION)
 		qdel(src)
 
 	..()
@@ -124,14 +124,14 @@
 	lethal_projectile = /obj/projectile/bullet/a762x39
 	max_integrity = 150
 	req_access = list(ACCESS_CENT_GENERAL)
-	faction = list("neutral")
+	faction = list(FACTION_STATION)
 	shot_delay = 0.5
 
 /mob/living/simple_animal/hostile/viscerator/nri
-	faction = list("neutral")
+	faction = list(FACTION_STATION)
 
 /obj/item/grenade/spawnergrenade/manhacks/nri
-	name = "viscerator delivery grenade"
+	name = "imperial viscerator delivery grenade"
 	spawner_type = /mob/living/simple_animal/hostile/viscerator/nri
 	deliveryamt = 10
 

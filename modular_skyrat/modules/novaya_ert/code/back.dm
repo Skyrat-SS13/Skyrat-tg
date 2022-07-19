@@ -24,3 +24,12 @@
 	desc = "A large brown backpack for holding extra tactical supplies. It appears to be made from lighter yet sturdier materials."
 	icon_state = "russian_brown_backpack"
 	worn_icon_state = "russian_brown_backpack"
+
+/obj/item/storage/backpack/nri //LARPing gear
+	name = "imperial assault pack"
+	desc = "A large green backpack for holding extra tactical supplies. You really doubt its authenticity."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/backpacks.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/back.dmi'
+	icon_state = "russian_green_backpack"
+	worn_icon_state = "russian_green_backpack"
+	inhand_icon_state = "securitypack"

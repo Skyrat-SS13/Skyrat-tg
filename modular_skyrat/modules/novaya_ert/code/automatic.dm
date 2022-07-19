@@ -26,6 +26,7 @@
 	icon = 'modular_skyrat/modules/novaya_ert/icons/pistol.dmi'
 	w_class = WEIGHT_CLASS_SMALL
 	mag_type = /obj/item/ammo_box/magazine/m9mm_aps
+	burst_size = 3
 	dirt_modifier = 0.5
 	emp_damageable = FALSE
 	fire_delay = 3
