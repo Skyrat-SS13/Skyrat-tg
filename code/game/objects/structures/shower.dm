@@ -106,42 +106,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/shower, (-16))
 	QDEL_NULL(reagents)
 	return ..()
 
-<<<<<<< HEAD
-/obj/machinery/shower/interact(mob/M)
-	if(reagents.total_volume < 5)
-		to_chat(M,span_notice("\The [src] is dry."))
-		return FALSE
-	on = !on
-	update_appearance()
-	handle_mist()
-	add_fingerprint(M)
-	if(on)
-		START_PROCESSING(SSmachines, src)
-		process(SSMACHINES_DT)
-		soundloop.start()
-	else
-		soundloop.stop()
-		if(isopenturf(loc))
-			var/turf/open/tile = loc
-			tile.MakeSlippery(TURF_WET_WATER, min_wet_time = 5 SECONDS, wet_time_to_add = 1 SECONDS)
-
-/obj/machinery/shower/attackby(obj/item/I, mob/user, params)
-	if(I.tool_behaviour == TOOL_ANALYZER)
-		to_chat(user, span_notice("The water temperature seems to be [current_temperature]."))
-	else
-		return ..()
-
-//SKYRAT EDIT ADDITION
-/obj/machinery/shower/plunger_act(obj/item/plunger/P, mob/living/user, reinforced)
-	if(do_after(user, 3 SECONDS, src))
-		reagents.remove_any(reagents.total_volume)
-		balloon_alert(user, "reservoir emptied")
-//SKYRAT EDIT END
-
-/obj/machinery/shower/multitool_act(mob/living/user, obj/item/I)
-=======
 /obj/machinery/shower/interact(mob/user)
->>>>>>> e720bb2d453 ([MDB IGNORE] Hydroponics tray, shower, and sink improvements (#67672))
 	. = ..()
 	if(.)
 		return
@@ -154,6 +119,13 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/shower, (-16))
 	balloon_alert(user, "turned [intended_on ? "on" : "off"]")
 
 	return TRUE
+
+//SKYRAT EDIT ADDITION
+/obj/machinery/shower/plunger_act(obj/item/plunger/P, mob/living/user, reinforced)
+	if(do_after(user, 3 SECONDS, src))
+		reagents.remove_any(reagents.total_volume)
+		balloon_alert(user, "reservoir emptied")
+//SKYRAT EDIT END
 
 /obj/machinery/shower/analyzer_act(mob/living/user, obj/item/tool)
 	. = ..()
