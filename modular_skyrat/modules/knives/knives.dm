@@ -24,12 +24,11 @@
 	w_class = WEIGHT_CLASS_BULKY
 	resistance_flags = FLAMMABLE
 
-/obj/item/storage/belt/bowie_sheath/ComponentInitialize()
+/obj/item/storage/belt/bowie_sheath/Initialize()
 	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	STR.max_items = 1
-	STR.max_w_class = WEIGHT_CLASS_BULKY
-	STR.set_holdable(list(
+	atom_storage.max_slots = 1
+	atom_storage.max_total_storage = WEIGHT_CLASS_BULKY
+	atom_storage.set_holdable(list(
 		/obj/item/knife/bowie
 		))
 

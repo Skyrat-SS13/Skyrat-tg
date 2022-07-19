@@ -137,6 +137,10 @@
 		to_chat(owner, span_warning("You already know this chemical!"))
 		cortical_owner.chemical_evolution += 5
 		return
+	if(!(reagent_choice.chemical_flags & REAGENT_CAN_BE_SYNTHESIZED))
+		to_chat(owner, span_warning("You struggle to understand the complexities of this chemical!"))
+		cortical_owner.chemical_evolution += 5
+		return
 	cortical_owner.known_chemicals += reagent_choice.type
 	cortical_owner.blood_chems_learned++
 	if(cortical_owner.blood_chems_learned == 5)
