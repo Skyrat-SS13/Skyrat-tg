@@ -31,7 +31,7 @@
 	if(!ert_team)
 		return
 
-	to_chat(owner, "<span class='warningplain'><B><font size=3 color=yellow>You are the [name].</font></B></span>")
+	to_chat(owner, span_boldwarning("<font size=3 color=yellow>You are the [name]</font>"))
 
 	var/missiondesc = "Your squad is responding to an emergency situation of [station_name()], with the Novaya Rossiyskaya Imperiya Defense Colleague's approval."
 	if(leader) //If Squad Leader
@@ -47,7 +47,7 @@
 	missiondesc += "<BR> <B>4.</B> Contact whoever called you and assist in resolving the matter."
 	missiondesc += "<BR> <B>5.</B> Protect, ensure, and uphold the rights of Novaya Rossiyskaya Imperiya, Kingdom of Agurkrral and Free Teshari League citizens on board [station_name()]. SolFed citizens' wellbeing is up to your discretion."
 
-	missiondesc += "<span class='warningplain'><BR><B>Your Mission</B> : [ert_team.mission.explanation_text]</span>"
+	missiondesc += span_warning("<BR><B>Your Mission</B>: [ert_team.mission.explanation_text]")
 	to_chat(owner,missiondesc)
 
 /datum/antagonist/ert/nri/commander
