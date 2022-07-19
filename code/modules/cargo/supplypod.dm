@@ -249,9 +249,8 @@
 							break
 			if (effectOrgans) //effectOrgans means remove every organ in our mob
 				var/mob/living/carbon/carbon_target_mob = target_living
-				for(var/organ in carbon_target_mob.internal_organs)
+				for(var/obj/item/organ/organ_to_yeet as anything in carbon_target_mob.internal_organs)
 					var/destination = get_edge_target_turf(turf_underneath, pick(GLOB.alldirs)) //Pick a random direction to toss them in
-					var/obj/item/organ/organ_to_yeet = organ
 					// SKYRAT EDIT START - Non-spillable organs
 					if(!organ_to_yeet.drop_when_organ_spilling)
 						qdel(organ_to_yeet)
