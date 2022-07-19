@@ -7,10 +7,18 @@
 	armor = list(MELEE = 30, BULLET = 40, LASER = 20, ENERGY = 30, BOMB = 35, BIO = 0, FIRE = 50, ACID = 50, WOUND = 15)
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/head/beret/sec/nri
+/obj/item/clothing/head/beret/sec/nri_commander
 	name = "commander's beret"
 	desc = "Za rodinu!!"
 	armor = list(MELEE = 40, BULLET = 35, LASER = 30, ENERGY = 40, BOMB = 25, BIO = 0, FIRE = 20, ACID = 50, WOUND = 20)
+
+/obj/item/clothing/head/beret/sec/nri
+	name = "imperial security cap"
+	desc = "A robust cap with the NRI Internal Affairs Colleague insignia emblazoned on it. Uses reinforced fabric to offer sufficient protection."
+	icon_state = "nri_officer"
+	greyscale_config = null
+	greyscale_config_worn = null
+	greyscale_colors = null
 
 /obj/item/clothing/head/helmet/nri_heavy
 	name = "\improper Cordun-M helmet"

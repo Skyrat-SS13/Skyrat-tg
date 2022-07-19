@@ -129,6 +129,11 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	item_path = /obj/item/clothing/under/rank/security/peacekeeper/sol
 	restricted_roles = list(JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_HEAD_OF_SECURITY, JOB_SECURITY_MEDIC)
 
+/datum/loadout_item/under/jumpsuit/nriofficer
+	name = "NRI Officer Uniform"
+	item_path = /obj/item/clothing/under/rank/security/officer/nri
+	restricted_roles = list(JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_HEAD_OF_SECURITY, JOB_SECURITY_MEDIC)
+
 /datum/loadout_item/under/jumpsuit/disco
 	name = "Superstar Cop Uniform"
 	item_path = /obj/item/clothing/under/rank/security/detective/disco

@@ -19,3 +19,9 @@
 
 /obj/item/clothing/under/costume/nri/engineer
 	icon_state = "nri_engineer"
+
+/obj/item/clothing/under/rank/security/officer/nri
+	name = "imperial security jumpsuit"
+	desc = "An incredibly formal security jumpsuit used by NRI police officers."
+	icon_state = "nri_officer"
+	can_adjust = FALSE
