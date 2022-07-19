@@ -82,7 +82,7 @@
 	new /obj/item/clothing/head/beret/sec/navywarden(src)
 	//new /obj/item/clothing/suit/armor/vest/warden/alt(src) //SKYRAT EDIT REMOVAL
 	new /obj/item/clothing/under/rank/security/warden/formal(src)
-	new /obj/item/clothing/suit/security/warden(src) //SKYRAT ADDITION - FORMAL COAT
+	new /obj/item/clothing/suit/jacket/warden/blue(src) //SKYRAT ADDITION - FORMAL COAT
 	//new /obj/item/clothing/under/rank/security/warden/skirt(src) SKYRAT EDIT REMOVAL
 	new /obj/item/clothing/glasses/hud/security/sunglasses(src)
 	new /obj/item/holosign_creator/security(src)

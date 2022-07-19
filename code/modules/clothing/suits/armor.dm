@@ -159,7 +159,7 @@
 		"Basic Warden Armor" = list(
 			RESKIN_ICON = 'icons/obj/clothing/suits.dmi',
 			RESKIN_ICON_STATE = "warden_alt",
-			RESKIN_WORN_ICON = 'icons/mob/clothing/suit.dmi',
+			RESKIN_WORN_ICON = 'icons/mob/clothing/suits/armor.dmi',
 			RESKIN_WORN_ICON_STATE = "warden_alt"
 		),
 		"Standard" = list(
