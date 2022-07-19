@@ -24,6 +24,7 @@
 	load_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/batrifle_magin.ogg'
 	eject_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/batrifle_magout.ogg'
 	eject_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/batrifle_magout.ogg'
+	company_flag = COMPANY_OLDARMS
 
 /obj/item/gun/ballistic/automatic/fg42/Initialize(mapload)
 	. = ..()
