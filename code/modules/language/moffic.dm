@@ -12,6 +12,5 @@
 	)
 	icon_state = "moth"
 	default_priority = 90
-	category = RACE_LANGUAGE // SKYRAT EDIT ADDITION - Language overhaul
 
 // Fuck guest accounts, and fuck language testing.

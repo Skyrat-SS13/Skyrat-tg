@@ -7,4 +7,3 @@
 	default_priority = 80
 
 	icon_state = "animal"
-	category = RACE_LANGUAGE // SKYRAT EDIT ADDITION - Language overhaul

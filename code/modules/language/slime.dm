@@ -6,4 +6,3 @@
 	default_priority = 70
 
 	icon_state = "slime"
-	category = RACE_LANGUAGE // SKYRAT EDIT ADDITION - Language overhaul

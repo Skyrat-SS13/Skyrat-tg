@@ -12,4 +12,3 @@
 	)
 	icon_state = "golem"
 	default_priority = 90
-	category = RACE_LANGUAGE // SKYRAT EDIT ADDITION - Language overhaul

@@ -23,8 +23,6 @@
 	//SKYRAT EDIT
 	/// Should this be hidden on the language buy menu?
 	var/secret = FALSE
-	/// What type of language is this? CORE_LANGUAGE, RACE_LANGUAGE and OTHER_LANGUAGE are acceptable values.
-	var/category = "OTHER"
 	//SKYRAT EDIT END
 
 /datum/language/proc/display_icon(atom/movable/hearer)

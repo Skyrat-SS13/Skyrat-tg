@@ -13,4 +13,3 @@
 	)
 	icon_state = "plant"
 	default_priority = 90
-	category = RACE_LANGUAGE // SKYRAT EDIT ADDITION - Language overhaul

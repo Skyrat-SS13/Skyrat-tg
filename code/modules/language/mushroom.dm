@@ -5,4 +5,3 @@
 	sentence_chance = 0
 	default_priority = 80
 	syllables = list("poof", "pff", "pFfF", "piff", "puff", "pooof", "pfffff", "piffpiff", "puffpuff", "poofpoof", "pifpafpofpuf")
-	secret = TRUE // SKYRAT EDIT ADDITION - No, bad.
