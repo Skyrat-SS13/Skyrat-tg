@@ -363,36 +363,32 @@
  * If you don't own the genital you try to adjust, it'll ask you if you want to add it first
  */
 /datum/action/innate/alter_form/proc/alter_genitals(mob/living/carbon/human/alterer)
+	var/list/genital_list
+	if(alterer.getorganslot(ORGAN_SLOT_BREASTS))
+		genital_list += list("Breasts Lactation", "Breasts Size")
+	if(alterer.getorganslot(ORGAN_SLOT_PENIS))
+		genital_list += list("Penis Girth", "Penis Length", "Penis Sheath", "Penis Taur Mode")
+	if(alterer.getorganslot(ORGAN_SLOT_TESTICLES))
+		genital_list += list("Testicles Size")
+	if(!length(genital_list))
+		alterer.balloon_alert(alterer, "no genitals!")
+
 	var/dna_alteration = tgui_input_list(
 		alterer,
 		"Select what bodypart you'd like to alter",
-		"Genitalia Alteration",
-		list(
-			"Breasts Lactation",
-			"Breasts Size",
-			"Penis Girth",
-			"Penis Sheath",
-			"Penis Length",
-			"Penis Taur Mode",
-			"Testicles Size",
-			),
+		"Genital Alteration",
+		genital_list
 	)
 	if(!dna_alteration)
 		return
 	switch(dna_alteration)
 		if("Breasts Lactation")
-			if(!alterer.getorganslot(ORGAN_SLOT_BREASTS))
-				alterer.balloon_alert(alterer, "no breasts!")
-				return
 			var/obj/item/organ/external/genital/breasts/melons = alterer.getorganslot(ORGAN_SLOT_BREASTS)
 			alterer.dna.features["breasts_lactation"] = !alterer.dna.features["breasts_lactation"]
 			melons.lactates = alterer.dna.features["breasts_lactation"]
 			alterer.balloon_alert(alterer, "[alterer.dna.features["breasts_lactation"] ? "lactating" : "not lactating"]")
 
 		if("Breasts Size")
-			if(!alterer.getorganslot(ORGAN_SLOT_BREASTS))
-				alterer.balloon_alert(alterer, "no breasts!")
-				return
 			var/obj/item/organ/external/genital/breasts/melons = alterer.getorganslot(ORGAN_SLOT_BREASTS)
 			var/new_size = tgui_input_list(
 				alterer,
@@ -406,9 +402,6 @@
 			melons.set_size(alterer.dna.features["breasts_size"])
 
 		if("Penis Girth")
-			if(!alterer.getorganslot(ORGAN_SLOT_PENIS))
-				alterer.balloon_alert(alterer, "no penis!")
-				return
 			var/obj/item/organ/external/genital/penis/sausage = alterer.getorganslot(ORGAN_SLOT_PENIS)
 			var/max_girth = PENIS_MAX_GIRTH
 			if(alterer.dna.features["penis_size"] >= max_girth)
@@ -426,9 +419,6 @@
 
 		if("Penis Length")
 			var/obj/item/organ/external/genital/penis/wang = alterer.getorganslot(ORGAN_SLOT_PENIS)
-			if(!wang)
-				alterer.balloon_alert(alterer, "no penis!")
-				return
 			var/new_length = tgui_input_number(
 				alterer,
 				"Choose your penis length:\n([PENIS_MIN_LENGTH]-[PENIS_MAX_LENGTH] inches)",
@@ -446,9 +436,6 @@
 
 		if("Penis Sheath")
 			var/obj/item/organ/external/genital/penis/schlong = alterer.getorganslot(ORGAN_SLOT_PENIS)
-			if(!schlong)
-				alterer.balloon_alert(alterer, "no penis!")
-				return
 			var/new_sheath = tgui_input_list(
 				alterer,
 				"Choose your penis sheath",
@@ -460,18 +447,11 @@
 				schlong.sheath = new_sheath
 
 		if("Penis Taur Mode")
-			var/obj/item/organ/external/genital/penis/donger = alterer.getorganslot(ORGAN_SLOT_PENIS)
-			if(!donger)
-				alterer.balloon_alert(alterer, "no penis!")
-				return
 			alterer.dna.features["penis_taur_mode"] = !alterer.dna.features["penis_taur_mode"]
 			alterer.balloon_alert(alterer, "[alterer.dna.features["penis_taur_mode"] ? "using taur penis" : "not using taur penis"]")
 
 		if("Testicles Size")
 			var/obj/item/organ/external/genital/testicles/avocados = alterer.getorganslot(ORGAN_SLOT_TESTICLES)
-			if(!avocados)
-				alterer.balloon_alert(alterer, "no testicles!")
-				return
 			var/new_size = tgui_input_list(
 				alterer,
 				"Choose your character's testicles size:",
