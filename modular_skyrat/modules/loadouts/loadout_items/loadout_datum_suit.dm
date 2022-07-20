@@ -277,7 +277,7 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 
 /datum/loadout_item/suit/duster
 	name = "Colorable Duster"
-	item_path = /obj/item/clothing/suit/duster/colorable
+	item_path = /obj/item/clothing/suit/duster
 
 /datum/loadout_item/suit/peacoat
 	name = "Colorable Peacoat"
@@ -365,7 +365,7 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 
 /datum/loadout_item/suit/urban
 	name = "Urban Coat"
-	item_path = /obj/item/clothing/suit/urban/polychromic
+	item_path = /obj/item/clothing/suit/urban
 
 /datum/loadout_item/suit/maxson
 	name = "Fancy Brown Coat"
@@ -391,9 +391,9 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	name = "Bomber Jacket w/ Zipper"
 	item_path = /obj/item/clothing/suit/toggle/jacket
 
-/datum/loadout_item/suit/polyjacketleather
-	name = "Colorable Leather Jacket"
-	item_path = /obj/item/clothing/suit/jacket/leather/polychromic
+/datum/loadout_item/suit/colourable_leather_jacket
+	name = "Colourable Leather Jacket"
+	item_path = /obj/item/clothing/suit/jacket/leather/colourable
 
 /datum/loadout_item/suit/woolcoat
 	name = "Leather Overcoat"

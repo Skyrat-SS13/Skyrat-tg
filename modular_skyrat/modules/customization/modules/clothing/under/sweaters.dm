@@ -6,6 +6,7 @@
 	desc = "Why trade style for comfort? Now you can go commando down south and still be cozy up north."
 	icon_state = "bb_turtle"
 	body_parts_covered = CHEST|GROIN|ARMS
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 	can_adjust = TRUE
 
 /obj/item/clothing/under/sweater/black
