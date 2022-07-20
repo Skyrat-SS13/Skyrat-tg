@@ -90,16 +90,16 @@
 	minimal_access = list(ACCESS_MAINT_TUNNELS, ACCESS_EVA, ACCESS_EXTERNAL_AIRLOCKS, ACCESS_TELEPORTER, ACCESS_GATEWAY, ACCESS_TECH_STORAGE,
 		ACCESS_CENT_GENERAL, ACCESS_RESEARCH, ACCESS_SCIENCE)
 
-/datum/id_trim/job/brigoff
+/datum/id_trim/job/corrections_officer
 	assignment = "Corrections Officer"
 	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
-	trim_state = "trim_brigoff"
+	trim_state = "trim_corrections_officer"
 	sechud_icon_state = SECHUD_CORRECTIONS_OFFICER
 	extra_access = list()
 	minimal_access = list(ACCESS_SECURITY, ACCESS_BRIG_ENTRANCE, ACCESS_BRIG, ACCESS_COURT,
 				ACCESS_MAINT_TUNNELS, ACCESS_WEAPONS)
 	template_access = list(ACCESS_CAPTAIN, ACCESS_HOS, ACCESS_CHANGE_IDS)
-	job = /datum/job/brigoff
+	job = /datum/job/corrections_officer
 
 /datum/id_trim/job/barber
 	assignment = "Barber"

@@ -33,7 +33,7 @@
 /datum/job/bouncer
 	alt_titles = list("Bouncer", "Service Guard")
 
-/datum/job/brigoff
+/datum/job/corrections_officer
 	alt_titles = list("Corrections Officer", "Brig Officer", "Prison Guard")
 
 /datum/job/captain
