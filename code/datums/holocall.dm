@@ -343,9 +343,9 @@
 	DELAY 10
 	PRESET /datum/preset_holoimage/gorilla
 	NAME Gorilla
-	LANGUAGE /datum/language/sol
+	LANGUAGE /datum/language/common
 	SAY OOGA
-	DELAY 20"} // SKYRAT EDIT - Use uh... sol I guess.
+	DELAY 20"}
 
 /datum/preset_holoimage/engineer
 	outfit_type = /datum/outfit/job/engineer
@@ -458,7 +458,7 @@
 	NAME Unknown
 	SAY RISE, MY LORD!!
 	DELAY 10
-	LANGUAGE /datum/language/tajaran
+	LANGUAGE /datum/language/common
 	NAME Plastic
 	PRESET /datum/preset_holoimage/engineer/mod
 	SAY Fuck, fuck, fuck!
@@ -470,4 +470,4 @@
 	PRESET /datum/preset_holoimage/corgi
 	NAME Blackbox Automated Message
 	SAY Connection lost. Dumping audio logs to disk.
-	DELAY 50"} // SKYRAT EDIT - Uhhh... yangyu?
+	DELAY 50"}
