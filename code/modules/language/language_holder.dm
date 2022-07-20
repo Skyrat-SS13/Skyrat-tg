@@ -274,8 +274,6 @@ Key procs
 /datum/language_holder/drone/syndicate
 	blocked_languages = list()
 
-/* SKYRAT EDIT REMOVAL - Moved to modular_skyrat\master_files\code\modules\language\language_holders.dm
-
 /datum/language_holder/jelly
 	understood_languages = list(/datum/language/common = list(LANGUAGE_ATOM),
 								/datum/language/slime = list(LANGUAGE_ATOM))
@@ -416,8 +414,6 @@ Key procs
 								/datum/language/monkey = list(LANGUAGE_ATOM))
 	spoken_languages = list(/datum/language/common = list(LANGUAGE_ATOM),
 							/datum/language/monkey = list(LANGUAGE_ATOM))
-
-*/ /// SKYRAT EDIT END
 
 /datum/language_holder/empty
 	understood_languages = list()
