@@ -5,7 +5,7 @@
 		TRAIT_PLANT_SAFE,
 		TRAIT_LITERATE,
 	)
-	learnable_languages = list(/datum/language/common, /datum/language/sylvan) //I guess plants are smart and they can speak common
+	learnable_languages = list(/datum/language/sylvan)
 	payday_modifier = 0.75
 
 /datum/species/pod/podweak
@@ -28,7 +28,7 @@
 	mutant_bodyparts = list()
 	default_mutant_bodyparts = list()
 
-	learnable_languages = list(/datum/language/common, /datum/language/sylvan)
+	learnable_languages = list(/datum/language/sylvan)
 	always_customizable = FALSE
 
 /datum/species/pod/podweak/spec_life(mob/living/carbon/human/H, delta_time, times_fired)

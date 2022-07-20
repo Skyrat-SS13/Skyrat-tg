@@ -220,7 +220,7 @@
 	var/caller_name = "Unknown" //Caller name
 	var/image/caller_image
 	var/list/entries = list()
-	var/language = /datum/language/common //Initial language, can be changed by HOLORECORD_LANGUAGE entries
+	var/language = /datum/language/panslavic //Initial language, can be changed by HOLORECORD_LANGUAGE entries // SKYRAT EDIT - Use a random core language
 
 /datum/holorecord/proc/set_caller_image(mob/user)
 	var/olddir = user.dir
@@ -343,9 +343,9 @@
 	DELAY 10
 	PRESET /datum/preset_holoimage/gorilla
 	NAME Gorilla
-	LANGUAGE /datum/language/common
+	LANGUAGE /datum/language/sol
 	SAY OOGA
-	DELAY 20"}
+	DELAY 20"} // SKYRAT EDIT - Use uh... sol I guess.
 
 /datum/preset_holoimage/engineer
 	outfit_type = /datum/outfit/job/engineer
@@ -458,7 +458,7 @@
 	NAME Unknown
 	SAY RISE, MY LORD!!
 	DELAY 10
-	LANGUAGE /datum/language/common
+	LANGUAGE /datum/language/yangyu
 	NAME Plastic
 	PRESET /datum/preset_holoimage/engineer/mod
 	SAY Fuck, fuck, fuck!
@@ -470,4 +470,4 @@
 	PRESET /datum/preset_holoimage/corgi
 	NAME Blackbox Automated Message
 	SAY Connection lost. Dumping audio logs to disk.
-	DELAY 50"}
+	DELAY 50"} // SKYRAT EDIT - Uhhh... yangyu?

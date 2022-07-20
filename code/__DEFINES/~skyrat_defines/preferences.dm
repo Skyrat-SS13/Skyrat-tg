@@ -10,3 +10,7 @@
 #define TRICOLOR_CHECK_BOOLEAN 1
 /// checks that the value of type_to_check is associated with a factual sprite accessory (tldr not "None")
 #define TRICOLOR_CHECK_ACCESSORY 2
+
+#define CORE_LANGUAGE "CORE"
+#define RACE_LANGUAGE "RACE"
+#define OTHER_LANGUAGE "OTHER"

@@ -12,7 +12,10 @@ export const KnownLanguage = (props, context) => {
         <Button
           color="bad"
           onClick={() =>
-            act('remove_language', { language_name: props.language.name })
+            act('remove_language', {
+              language_name: props.language.name,
+              language_category: props.language.category,
+            })
           }>
           Forget <Box className={'languages16x16 ' + props.language.icon} />
         </Button>
@@ -31,7 +34,10 @@ export const UnknownLanguage = (props, context) => {
         <Button
           color="good"
           onClick={() =>
-            act('give_language', { language_name: props.language.name })
+            act('give_language', {
+              language_name: props.language.name,
+              language_category: props.language.category,
+            })
           }>
           Learn <Box className={'languages16x16 ' + props.language.icon} />
         </Button>
@@ -45,9 +51,16 @@ export const LanguagesPage = (props, context) => {
   return (
     <Stack>
       <Stack.Item minWidth="33%">
-        <Section title="Available Languages">
+        <Section title="Available Core Languages">
           <Stack vertical>
-            {data.unselected_languages.map((val) => (
+            {data.unselected_core_languages.map((val) => (
+              <UnknownLanguage key={val.icon} language={val} />
+            ))}
+          </Stack>
+        </Section>
+        <Section title="Available Race Languages">
+          <Stack vertical>
+            {data.unselected_race_languages.map((val) => (
               <UnknownLanguage key={val.icon} language={val} />
             ))}
           </Stack>
@@ -56,19 +69,30 @@ export const LanguagesPage = (props, context) => {
       <Stack.Item minWidth="33%">
         <Section
           title={
-            'Points: ' +
-            data.selected_languages.length +
+            'Core Points: ' +
+            data.selected_core_languages.length +
             '/' +
-            data.total_language_points
+            data.total_core_language_points +
+            ' | Core Points: ' +
+            data.selected_race_languages.length +
+            '/' +
+            data.total_race_language_points
           }>
           Here, you can purchase languages using a point buy system. Each
           Language is worth 1 point.
         </Section>
       </Stack.Item>
       <Stack.Item minWidth="33%">
-        <Section title="Known Languages">
+        <Section title="Known Core Languages">
           <Stack vertical>
-            {data.selected_languages.map((val) => (
+            {data.selected_core_languages.map((val) => (
+              <KnownLanguage key={val.icon} language={val} />
+            ))}
+          </Stack>
+        </Section>
+        <Section title="Known Race Languages">
+          <Stack vertical>
+            {data.selected_race_languages.map((val) => (
               <KnownLanguage key={val.icon} language={val} />
             ))}
           </Stack>

@@ -9,6 +9,7 @@
 	default_priority = 90
 
 	icon_state = "eal"
+	category = RACE_LANGUAGE // SKYRAT EDIT ADDITION - Language overhaul
 
 /datum/language/machine/get_random_name()
 	if(prob(70))

@@ -12,5 +12,6 @@
 	)
 	icon_state = "calcic"
 	default_priority = 90
+	category = RACE_LANGUAGE // SKYRAT EDIT ADDITION - Language overhaul
 
 // Yeah, this goes to skeletons too, since it's basically just skeleton clacking.

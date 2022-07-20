@@ -55,7 +55,7 @@
 	the poverty line, often holding feelings of resentment against the other people of Luna."
 	capital = "Selene"
 	economic_power = 1.3
-	additional_langs = list(/datum/language/selenian)
+	additional_langs = list(/datum/language/sol)
 
 
 /datum/cultural_info/location/venus
@@ -100,7 +100,6 @@
 	manage to escape rarely wish to return, though often possess a looser set of morales as a result of their time on the planet."
 	capital = "New Santa Domingo"
 	economic_power = 0.8
-	additional_langs = list(/datum/language/gutter)
 
 /datum/cultural_info/location/cetiepsilon
 	name = "Ceti Epsilon"
@@ -143,7 +142,7 @@
 	distance = "22.5 light years."
 	economic_power = 0.9
 	ruling_body = "Gilgamesh Colonial Confederation"
-	required_lang = /datum/language/neorusskya
+	required_lang = /datum/language/panslavic
 
 /datum/cultural_info/location/tersten
 	name = "Tersten"

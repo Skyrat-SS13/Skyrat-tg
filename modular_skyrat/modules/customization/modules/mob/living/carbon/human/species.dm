@@ -258,7 +258,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	///What accessories can a species have aswell as their default accessory of such type e.g. "frills" = "Aquatic". Default accessory colors is dictated by the accessory properties and mutcolors of the specie
 	var/list/default_mutant_bodyparts = list()
 	/// List of all the languages our species can learn NO MATTER their background
-	var/list/learnable_languages = list(/datum/language/common)
+	var/list/learnable_languages = list()
 
 /datum/species/New()
 	. = ..()
@@ -276,12 +276,12 @@ GLOBAL_LIST_EMPTY(customizable_races)
 /datum/species/human/felinid
 	mutant_bodyparts = list()
 	default_mutant_bodyparts = list("tail" = "Cat", "ears" = "Cat")
-	learnable_languages = list(/datum/language/common, /datum/language/nekomimetic)
+	learnable_languages = list(/datum/language/yangyu)
 
 /datum/species/human
 	mutant_bodyparts = list()
 	default_mutant_bodyparts = list("ears" = "None", "tail" = "None", "wings" = "None")
-	learnable_languages = list(/datum/language/common, /datum/language/uncommon)
+	learnable_languages = list()
 
 /datum/species/mush
 	mutant_bodyparts = list()
@@ -293,18 +293,18 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	mutant_bodyparts = list()
 	can_have_genitals = FALSE
 	can_augment = FALSE
-	learnable_languages = list(/datum/language/common, /datum/language/calcic)
+	learnable_languages = list(/datum/language/calcic)
 
 /datum/species/ethereal
 	mutant_bodyparts = list()
 	can_have_genitals = FALSE
 	can_augment = FALSE
-	learnable_languages = list(/datum/language/common, /datum/language/voltaic)
+	learnable_languages = list(/datum/language/voltaic)
 
 /datum/species/pod
 	name = "Primal Podperson"
 	always_customizable = TRUE
-	learnable_languages = list(/datum/language/common, /datum/language/sylvan)
+	learnable_languages = list(/datum/language/sylvan)
 
 /datum/species/proc/get_random_features()
 	var/list/returned = MANDATORY_FEATURE_LIST

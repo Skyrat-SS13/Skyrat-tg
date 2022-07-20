@@ -1,4 +1,4 @@
-/datum/language/neorusskya
+/datum/language/panslavic
 	name = "Pan-Slavic"
 	desc = "A mish-mash of Eastern European and Balkan languages with similar properties that has since become the official language of the NRI, with a good amount of relevance in SolFed colonies with slavic descendance and trading posts across charted territory."
 	key = "r"
@@ -11,4 +11,5 @@
 	)
 	icon_state = "russian"
 	icon = 'modular_skyrat/master_files/icons/misc/language.dmi'
-	default_priority = 95
+	default_priority = 100
+	category = CORE_LANGUAGE // SKYRAT EDIT ADDITION - Language overhaul

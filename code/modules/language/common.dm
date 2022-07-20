@@ -7,6 +7,7 @@
 	default_priority = 100
 
 	icon_state = "galcom"
+	secret = TRUE // SKYRAT EDIT ADDITION - No common in this sector!
 
 //Syllable Lists
 /*

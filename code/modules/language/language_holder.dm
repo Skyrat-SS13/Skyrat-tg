@@ -38,9 +38,9 @@ Key procs
 
 /datum/language_holder
 	/// Understood languages.
-	var/list/understood_languages = list(/datum/language/common = list(LANGUAGE_MIND))
+	var/list/understood_languages // SKYRAT EDIT - Use core languages
 	/// A list of languages that can be spoken. Tongue organ may also set limits beyond this list.
-	var/list/spoken_languages = list(/datum/language/common = list(LANGUAGE_ATOM))
+	var/list/spoken_languages // SKYRAT EDIT - Use core languages
 	/// A list of blocked languages. Used to prevent understanding and speaking certain languages, ie for certain mobs, mutations etc.
 	var/list/blocked_languages = list()
 	/// If true, overrides tongue limitations.
@@ -58,13 +58,19 @@ Key procs
 	if(_owner && QDELETED(_owner))
 		CRASH("Langauge holder added to a qdeleting thing, what the fuck \ref[_owner]")
 	//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
+	understood_languages = list(pick(/datum/language/sol, /datum/language/yangyu, /datum/language/panslavic))
+	spoken_languages = understood_languages.Copy()
 	if(pref_load)
 		//If we're loading a holder from prefs, override the languages
 		understood_languages.Cut()
 		spoken_languages.Cut()
-		for(var/lang_path in pref_load.languages)
+		for(var/lang_path in pref_load.core_languages)
 			understood_languages[lang_path] = list(LANGUAGE_ATOM)
-			if(pref_load.languages[lang_path] == LANGUAGE_SPOKEN)
+			if(pref_load.core_languages[lang_path] == LANGUAGE_SPOKEN)
+				spoken_languages[lang_path] = list(LANGUAGE_ATOM)
+		for(var/lang_path in pref_load.race_languages)
+			understood_languages[lang_path] = list(LANGUAGE_ATOM)
+			if(pref_load.race_languages[lang_path] == LANGUAGE_SPOKEN)
 				spoken_languages[lang_path] = list(LANGUAGE_ATOM)
 	//SKYRAT EDIT ADDITION END
 	owner = _owner
@@ -255,9 +261,9 @@ Key procs
 	blocked_languages = list(/datum/language/common = list(LANGUAGE_ATOM))
 
 /datum/language_holder/construct
-	understood_languages = list(/datum/language/common = list(LANGUAGE_ATOM),
+	understood_languages = list(/datum/language/sol, // SKYRAT EDIT - Use uhhhh... sol
 								/datum/language/narsie = list(LANGUAGE_ATOM))
-	spoken_languages = list(/datum/language/common = list(LANGUAGE_ATOM),
+	spoken_languages = list(/datum/language/sol, // SKYRAT EDIT - Use uhhhh... sol
 							/datum/language/narsie = list(LANGUAGE_ATOM))
 
 /datum/language_holder/drone
@@ -267,6 +273,8 @@ Key procs
 
 /datum/language_holder/drone/syndicate
 	blocked_languages = list()
+
+/* SKYRAT EDIT REMOVAL - Moved to modular_skyrat\master_files\code\modules\language\language_holders.dm
 
 /datum/language_holder/jelly
 	understood_languages = list(/datum/language/common = list(LANGUAGE_ATOM),
@@ -285,16 +293,8 @@ Key procs
 	spoken_languages = list(/datum/language/common = list(LANGUAGE_ATOM),
 							/datum/language/draconic = list(LANGUAGE_ATOM))
 
-/datum/language_holder/lizard/ash //SKYRAT EDIT BEGIN: Ashtongue for Ashwalkers
-	understood_languages = list(/datum/language/ashtongue = list(LANGUAGE_ATOM))
-	spoken_languages = list(/datum/language/ashtongue = list(LANGUAGE_ATOM))
-	selected_language = /datum/language/ashtongue
-	//SKYRAT EDIT END
-
-/* ORIGINAL
 /datum/language_holder/lizard/ash
 	selected_language = /datum/language/draconic
-*/
 
 /datum/language_holder/lizard/silver
 	understood_languages = list(/datum/language/uncommon = list(LANGUAGE_ATOM),
@@ -329,7 +329,6 @@ Key procs
 	spoken_languages = list(/datum/language/buzzwords = list(LANGUAGE_ATOM))
 	blocked_languages = list(/datum/language/common = list(LANGUAGE_ATOM))
 
-/* SKYRAT EDIT REMOVAL - Moved to modular_skyrat\master_files\code\modules\language\language_holders.dm
 /datum/language_holder/synthetic
 	understood_languages = list(/datum/language/common = list(LANGUAGE_ATOM),
 								/datum/language/uncommon = list(LANGUAGE_ATOM),
@@ -347,7 +346,6 @@ Key procs
 							/datum/language/calcic = list(LANGUAGE_ATOM),
 							/datum/language/voltaic = list(LANGUAGE_ATOM),
 							/datum/language/nekomimetic = list(LANGUAGE_ATOM))
-*/ /// SKYRAT EDIT END
 
 /datum/language_holder/moth
 	understood_languages = list(/datum/language/common = list(LANGUAGE_ATOM),
@@ -418,6 +416,9 @@ Key procs
 								/datum/language/monkey = list(LANGUAGE_ATOM))
 	spoken_languages = list(/datum/language/common = list(LANGUAGE_ATOM),
 							/datum/language/monkey = list(LANGUAGE_ATOM))
+
+*/ /// SKYRAT EDIT END
+
 /datum/language_holder/empty
 	understood_languages = list()
 	spoken_languages = list()

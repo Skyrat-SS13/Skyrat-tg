@@ -21,7 +21,7 @@
 		"taur" = "None",
 		"wings" = "None",
 	)
-	learnable_languages = list(/datum/language/common, /datum/language/draconic)
+	learnable_languages = list(/datum/language/draconic)
 	payday_modifier = 0.75
 
 /datum/species/lizard/get_random_features()

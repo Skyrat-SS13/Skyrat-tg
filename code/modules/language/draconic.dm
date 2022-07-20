@@ -15,3 +15,4 @@
 	)
 	icon_state = "lizard"
 	default_priority = 90
+	category = RACE_LANGUAGE // SKYRAT EDIT ADDITION - Language overhaul

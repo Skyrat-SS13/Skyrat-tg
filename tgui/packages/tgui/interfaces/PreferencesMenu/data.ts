@@ -93,6 +93,7 @@ export type Language = {
   description: string;
   name: string;
   icon: string;
+  category: string;
 };
 
 export type Marking = {
@@ -215,9 +216,12 @@ export type PreferencesMenuData = {
   organs_data: Organ[];
   marking_presets: string[];
 
-  selected_languages: Language[];
-  unselected_languages: Language[];
-  total_language_points: number;
+  selected_core_languages: Language[];
+  unselected_core_languages: Language[];
+  selected_race_languages: Language[];
+  unselected_race_languages: Language[];
+  total_core_language_points: number;
+  total_race_language_points: number;
   quirks_balance: number;
   positive_quirk_count: number;
   species_restricted_jobs?: string[];

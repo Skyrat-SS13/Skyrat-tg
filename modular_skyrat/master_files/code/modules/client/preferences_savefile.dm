@@ -66,8 +66,10 @@
 	exploitable_info = sanitize_text(exploitable_info)
 	loadout_list = sanitize_loadout_list(update_loadout_list(loadout_list))
 
-	READ_FILE(save["languages"] , languages)
-	languages = SANITIZE_LIST(languages)
+	READ_FILE(save["core_languages"] , core_languages)
+	READ_FILE(save["race_languages"] , race_languages)
+	core_languages = SANITIZE_LIST(core_languages)
+	race_languages = SANITIZE_LIST(race_languages)
 
 	READ_FILE(save["tgui_prefs_migration"], tgui_prefs_migration)
 	if(!tgui_prefs_migration)
@@ -136,7 +138,8 @@
 	WRITE_FILE(save["exploitable_info"] , exploitable_info) */
 // SKYRAT EDIT REMOVAL END
 	WRITE_FILE(save["alt_job_titles"], alt_job_titles)
-	WRITE_FILE(save["languages"] , languages)
+	WRITE_FILE(save["core_languages"] , core_languages)
+	WRITE_FILE(save["race_languages"] , race_languages)
 	WRITE_FILE(save["headshot"], headshot)
 
 	WRITE_FILE(save["modular_version"] , MODULAR_SAVEFILE_VERSION_MAX)

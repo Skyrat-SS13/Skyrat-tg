@@ -8,3 +8,4 @@
 	)
 	icon_state = "buzz"
 	default_priority = 90
+	category = RACE_LANGUAGE // SKYRAT EDIT ADDITION - Language overhaul

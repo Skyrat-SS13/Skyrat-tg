@@ -1,3 +1,4 @@
+/// Used by ashies to encourage outsiders to gain their trust and a special translation item of thiers in order to speak their language.
 /datum/language/ashtongue
 	name = "Ashtongue"
 	desc = "A language derived from Draconic, altered and morphed into a strange tongue by the enigmatic will of the Necropolis, a half-successful attempt at patterning its own alien communication methods onto mundane races. It's become nigh-incomprehensible to speakers of the original language."

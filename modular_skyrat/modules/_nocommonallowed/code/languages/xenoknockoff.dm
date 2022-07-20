@@ -6,4 +6,5 @@
 	default_priority = 50
 
 	icon_state = "xeno"
+	category = RACE_LANGUAGE // SKYRAT EDIT ADDITION - Language overhaul
 

@@ -34,13 +34,9 @@
 		/datum/language/shadowtongue,
 		/datum/language/terrum,
 		/datum/language/vox, //SKYRAT EDIT - customization - extra languages
-		/datum/language/dwarf, //SKYRAT EDIT - customization - extra languages
 		/datum/language/nekomimetic,
-		/datum/language/neorusskya,  //SKYRAT EDIT - customization - extra languages
-		/datum/language/spacer,  //SKYRAT EDIT - customization - extra languages
-		/datum/language/selenian,  //SKYRAT EDIT - customization - extra languages
-		/datum/language/gutter,  //SKYRAT EDIT - customization - extra languages
-		/datum/language/zolmach, // SKYRAT EDIT - customization - extra languages
+		/datum/language/panslavic,  //SKYRAT EDIT - customization - extra languages
+		/datum/language/sol,  //SKYRAT EDIT - customization - extra languages
 		/datum/language/xenoknockoff, // SKYRAT EDIT - customization - extra languages
 		/datum/language/yangyu, // SKYRAT EDIT - customization - extra languages
 		/datum/language/schechi, // SKYRAT EDIT - customization - extra languages

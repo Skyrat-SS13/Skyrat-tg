@@ -4,7 +4,9 @@
 	/// Loadout prefs. Assoc list of [typepaths] to [associated list of item info].
 	var/list/loadout_list
 	/// Associative list, keyed by language typepath, pointing to LANGUAGE_UNDERSTOOD, or LANGUAGE_SPOKEN, for whether we understand or speak the language
-	var/list/languages = list()
+	var/list/core_languages = list()
+	/// Associative list, keyed by language typepath, pointing to LANGUAGE_UNDERSTOOD, or LANGUAGE_SPOKEN, for whether we understand or speak the language
+	var/list/race_languages = list()
 	/// List of chosen augmentations. It's an associative list with key name of the slot, pointing to a typepath of an augment define
 	var/augments = list()
 	/// List of chosen preferred styles for limb replacements
@@ -55,8 +57,6 @@
 
 /datum/preferences/proc/species_updated(species_type)
 	all_quirks = list()
-	// Reset cultural stuff
-	try_get_common_language()
 	save_character()
 
 /datum/preferences/proc/print_bodypart_change_line(key)
@@ -91,40 +91,6 @@
 		for(var/key in bml)
 			var/datum/body_marking/BM = GLOB.body_markings[key]
 			bml[key] = BM.get_default_color(features, pref_species)
-
-/datum/preferences/proc/get_linguistic_points()
-	var/points
-	points = (QUIRK_LINGUIST in all_quirks) ? LINGUISTIC_POINTS_LINGUIST : LINGUISTIC_POINTS_DEFAULT
-	for(var/langpath in languages)
-		points -= languages[langpath]
-	return points
-
-/datum/preferences/proc/get_optional_languages()
-	var/list/lang_list = list()
-	for(var/lang in pref_species.learnable_languages)
-		lang_list[lang] = TRUE
-	return lang_list
-
-/datum/preferences/proc/get_available_languages()
-	var/list/lang_list = list()
-	for(var/lang_key in get_optional_languages())
-		lang_list[lang_key] = TRUE
-	return lang_list
-
-/datum/preferences/proc/can_buy_language(language_path, level)
-	var/points = get_linguistic_points()
-	if(languages[language_path])
-		points += languages[language_path]
-	if(points < level)
-		return FALSE
-	return TRUE
-
-// Whenever we switch a species, we'll try to get common if we can to not confuse anyone
-/datum/preferences/proc/try_get_common_language()
-	var/list/langs = get_available_languages()
-	if(langs[/datum/language/common])
-		languages[/datum/language/common] = LANGUAGE_SPOKEN
-
 
 /datum/preferences/proc/validate_species_parts()
 	var/list/target_bodyparts = pref_species.default_mutant_bodyparts.Copy()

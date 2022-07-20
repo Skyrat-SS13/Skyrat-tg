@@ -14,3 +14,4 @@
 	)
 	icon_state = "galuncom"
 	default_priority = 90
+	secret = TRUE
