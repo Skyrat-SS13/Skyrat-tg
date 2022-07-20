@@ -73,7 +73,7 @@ export const LanguagesPage = (props, context) => {
             data.selected_core_languages.length +
             '/' +
             data.total_core_language_points +
-            ' | Core Points: ' +
+            ' | Race Points: ' +
             data.selected_race_languages.length +
             '/' +
             data.total_race_language_points
