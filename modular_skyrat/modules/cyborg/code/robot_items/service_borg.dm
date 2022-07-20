@@ -88,7 +88,7 @@
 
 
 /obj/item/reagent_containers/borghypo/borgshaker/specific
-	icon = 'modular_skyrat/modules/borg_buffs/icons/items_cyborg.dmi'
+	icon = 'modular_skyrat/modules/cyborg/icons/items_cyborg.dmi'
 	icon_state = "shaker"
 
 /obj/item/reagent_containers/borghypo/borgshaker/specific/juice
@@ -111,10 +111,16 @@
 	icon_state = "misc"
 	default_reagent_types = BASE_SHAKER_MISC_REAGENTS
 
+
+
+/*
+*	CYBORG COOKING TOOL
+*/
+
 /obj/item/cooking/cyborg/power
 	name =	"automated cooking tool"
 	desc = "A cyborg fitted module resembling the rolling pins and Knifes"
-	icon = 'modular_skyrat/modules/borg_buffs/icons/items_cyborg.dmi'
+	icon = 'modular_skyrat/modules/cyborg/icons/items_cyborg.dmi'
 	icon_state = "knife_screw_cyborg"
 	hitsound = 'sound/items/drill_hit.ogg'
 	usesound = 'sound/items/drill_use.ogg'
@@ -136,113 +142,113 @@
 		to_chat(user, span_notice("You attach the knife bit to [src]."))
 		icon_state = "knife_screw_cyborg"
 
-/obj/item/inducer/cyborg
-	name = "Cyborg Inducer"
-	desc = "A tool for inductively charging internal power cells using the battery of a cyborg"
-	powertransfer = 250
-	var/power_safety_threshold = 1000
 
+/*
+*	CYBORG SNACK DISPENSER
+*/
 
+/obj/item/borg_snack_dispenser
+	name = "\improper Automated Borg Snack Dispenser"
+	desc = "Has the ability to automatically print many differnt forms of snacks. Now Lizard approved!"
+	icon = 'icons/obj/tools.dmi'
+	icon_state = "rsf"
+	/// Contains the PATH of the selected snack
+	var/atom/selected_snack
+	/// Whether snacks are launched when targeted at a distance
+	var/launch_mode = FALSE
+	/// A list of all valid snacks
+	var/list/valid_snacks = list(
+		/obj/item/food/cookie/bacon,
+		/obj/item/food/cookie/cloth,
+		/obj/item/food/cookie/sugar,
+		/obj/item/food/lollipop/cyborg
+	)
+	/// Minimum amount of charge a borg can have before snack printing is disallowed
+	var/borg_charge_cutoff = 200
+	/// The amount of charge used per print of a snack
+	var/borg_charge_usage = 50
 
-/obj/item/inducer/cyborg/attackby(obj/item/weapon, mob/user)
-	return
+/obj/item/borg_snack_dispenser/Initialize(mapload)
+	. = ..()
+	selected_snack = selected_snack ||  LAZYACCESS(valid_snacks, 1)
 
-/obj/item/inducer/cyborg/recharge(atom/movable/target_atom, mob/user)
-	if(!iscyborg(user))
-		return
-	var/mob/living/silicon/robot/borg_user = user
-	cell = borg_user.cell
-	if(!isturf(target_atom) && user.loc == target_atom)
-		return FALSE
-	if(recharging)
-		return TRUE
+/obj/item/borg_snack_dispenser/examine(mob/user)
+	. = ..()
+	. += "It is currently set to dispense [initial(selected_snack.name)]."
+	. += "You can AltClick it to [(launch_mode ? "disable" : "enable")] launch mode."
+
+/obj/item/borg_snack_dispenser/attack_self(mob/user, modifiers)
+	var/list/choices = list()
+	for(var/atom/snack as anything in valid_snacks)
+		choices[initial(snack.name)] = snack
+	if(!length(choices))
+		to_chat(user, span_warning("No valid snacks in database."))
+	if(length(choices) == 1)
+		selected_snack = choices[1]
 	else
-		recharging = TRUE
-	var/obj/item/stock_parts/cell/target_cell = target_atom.get_cell()
-	var/obj/target_object
-	var/coefficient = 1
-	if(istype(target_atom, /obj/item/gun/energy))
-		to_chat(user, span_alert("Error unable to interface with device."))
-		return FALSE
-	if(istype(target_atom, /obj/item/clothing/suit/space))
-		to_chat(user, span_alert("Error unable to interface with device."))
-		return FALSE
-	if(cell.charge <= power_safety_threshold ) // Cyborg charge safety. Prevents a borg from inducing themself to death.
-		to_chat(user, span_alert("Unable to charge device. User battery safety engaged."))
+		var/selected = tgui_input_list(user, "Select Snack", "Snack Selection", choices)
+		if(!selected)
+			return
+		selected_snack = choices[selected]
+	var/snack_name = initial(selected_snack.name)
+	to_chat(user, span_notice("[src] is now dispensing [snack_name]."))
+
+/obj/item/borg_snack_dispenser/attack(mob/living/patron, mob/living/silicon/robot/user, params)
+	var/empty_hand = LAZYACCESS(patron.get_empty_held_indexes(), 1)
+	if(!empty_hand)
+		to_chat(user, span_warning("[patron] has no free hands!"))
 		return
-	if(istype(target_atom, /obj))
-		target_object = target_atom
-	if(target_cell)
-		var/done_any = FALSE
-		if(target_cell.charge >= target_cell.maxcharge)
-			to_chat(user, span_notice("[target_atom] is fully charged!"))
-			recharging = FALSE
-			return TRUE
-		user.visible_message(span_notice("[user] starts recharging [target_atom] with [src]."), span_notice("You start recharging [target_atom] with [src]."))
-		while(target_cell.charge < target_cell.maxcharge)
-			if(do_after(user, 1 SECONDS, target = user) && cell.charge > (power_safety_threshold + powertransfer))
-				done_any = TRUE
-				induce(target_cell, coefficient)
-				do_sparks(1, FALSE, target_atom)
-				if(target_object)
-					target_object.update_appearance()
-			else
-				break
-		if(done_any) // Only show a message if we succeeded at least once
-			user.visible_message(span_notice("[user] recharged [target_atom]!"), span_notice("You recharged [target_atom]!"))
-		recharging = FALSE
-		return TRUE
-	recharging = FALSE
+	if(!selected_snack)
+		to_chat(user, span_warning("No snack selected."))
+		return
+	if(!istype(user))
+		CRASH("[src] being used by non borg [user]")
+	if(user.cell.charge < borg_charge_cutoff)
+		to_chat(user, span_danger("Automated Safety Measures restrict the operation of [src] while under [borg_charge_cutoff]!"))
+		return
+	if(!user.cell.use(borg_charge_usage))
+		to_chat(user, span_danger("Failure printing snack: power failure!"))
+		return
+	var/atom/snack = new selected_snack(src)
+	patron.put_in_hand(snack, empty_hand)
+	user.do_item_attack_animation(patron, null, snack)
+	playsound(loc, 'sound/machines/click.ogg', 10, TRUE)
+	to_chat(patron, span_notice("[user] dispenses [snack] into your empty hand and you reflexively grasp it."))
+	to_chat(user, span_notice("You dispense [snack] into the hand of [user]."))
 
+/obj/item/borg_snack_dispenser/AltClick(mob/user)
+	launch_mode = !launch_mode
+	to_chat(user, span_notice("[src] is [(launch_mode ? "now" : "no longer")] launching snacks at a distance."))
 
-/obj/item/inducer/attack(mob/target_mob, mob/living/user)
-	if(user.combat_mode)
+/obj/item/borg_snack_dispenser/afterattack(atom/target, mob/living/silicon/robot/user, proximity_flag, click_parameters)
+	if(Adjacent(target) || !launch_mode)
 		return ..()
-
-	if(cantbeused(user))
+	if(!selected_snack)
+		to_chat(user, span_warning("No snack selected."))
 		return
-
-	if(recharge(target_mob, user))
+	if(!istype(user))
+		CRASH("[src] being used by non borg [user]")
+	if(user.cell.charge < borg_charge_cutoff)
+		to_chat(user, span_danger("Automated Safety Measures restrict the operation of [src] while under [borg_charge_cutoff]!"))
 		return
-	return ..()
+	if(!user.cell.use(borg_charge_usage))
+		to_chat(user, span_danger("Failure printing snack: power failure!"))
+		return
+	var/atom/movable/snack = new selected_snack(get_turf(src))
+	snack.throw_at(target, 7, 2, user, TRUE, FALSE)
+	playsound(loc, 'sound/machines/click.ogg', 10, TRUE)
+	user.visible_message(span_notice("[src] launches [snack] at [target]!"))
 
-/obj/item/inducer/cyborg/attack_self(mob/user)
-	return
+/obj/item/food/cookie/bacon
+	name = "strip of bacon"
+	desc = "BACON!!!"
+	icon = 'modular_skyrat/master_files/icons/obj/food/snacks.dmi'
+	icon_state = "bacon_strip"
+	foodtypes = MEAT
 
-// Wirebrush for janiborg
-/datum/design/borg_wirebrush
-	name = "Cyborg Upgrade (Wire-brush)"
-	id = "borg_upgrade_brush"
-	build_type = MECHFAB
-	build_path = /obj/item/borg/upgrade/wirebrush
-	materials = list(/datum/material/iron = 4000)
-	construction_time = 40
-	category = list("Cyborg Upgrade Modules")
-
-/obj/item/borg/upgrade/wirebrush
-	name = "janitor cyborg wire-brush"
-	desc = "A tool to remove rust from walls."
-	icon_state = "cyborg_upgrade3"
-	require_model = TRUE
-	model_type = list(/obj/item/robot_model/janitor)
-	model_flags = BORG_MODEL_JANITOR
-
-/obj/item/borg/upgrade/wirebrush/action(mob/living/silicon/robot/cyborg)
-	. = ..()
-	if(.)
-		for(var/obj/item/wirebrush/brush in cyborg.model.modules)
-			cyborg.model.remove_module(brush, TRUE)
-
-		var/obj/item/wirebrush/brush = new /obj/item/wirebrush(cyborg.model)
-		cyborg.model.basic_modules += brush
-		cyborg.model.add_module(brush, FALSE, TRUE)
-
-/obj/item/borg/upgrade/wirebrush/deactivate(mob/living/silicon/robot/cyborg, user = usr)
-	. = ..()
-	if(.)
-		for(var/obj/item/wirebrush/brush in cyborg.model.modules)
-			cyborg.model.remove_module(brush, TRUE)
-
-		var/obj/item/wirebrush/brush = new (cyborg.model)
-		cyborg.model.basic_modules += brush
-		cyborg.model.add_module(brush, FALSE, TRUE)
+/obj/item/food/cookie/cloth
+	name = "odd cookie"
+	desc = "A cookie that appears to be made out of... some form of cloth?"
+	icon = 'modular_skyrat/master_files/icons/obj/food/snacks.dmi'
+	icon_state = "cookie_cloth"
+	foodtypes = CLOTH

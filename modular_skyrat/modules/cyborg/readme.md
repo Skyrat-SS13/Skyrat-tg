@@ -27,3 +27,6 @@ Most new content relating to cyborgs goes here. Borg skins are in Altborgs curre
 
 Azarak - porting
 DuffCreeper - Code, Spriting
+
+Jake Park - Shakers: Code and Sprite
+Guidesu - Cooking Multitool: Code and Sprite

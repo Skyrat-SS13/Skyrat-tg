@@ -1,4 +1,7 @@
-/// CARGO BORGS ///
+/*
+*	CARGO BORGS
+*/
+
 #define CYBORG_FONT "Consolas"
 #define MAX_PAPER_INTEGRATED_CLIPBOARD 10
 
@@ -300,7 +303,6 @@
 	clamp_sound = 'sound/items/pshoom.ogg'
 
 
-
 /datum/design/borg_upgrade_clamp
 	name = "Cyborg Upgrade (Improved Integrated Hydraulic Clamp)"
 	id = "borg_upgrade_clamp"
@@ -341,7 +343,6 @@
 	var/obj/item/borg/hydraulic_clamp/better/big_clamp = locate() in cyborg.model.modules
 	if(big_clamp)
 		cyborg.model.remove_module(big_clamp, TRUE)
-
 
 
 /// The fabled paper plane crossbow and its hardlight paper planes.

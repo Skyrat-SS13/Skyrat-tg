@@ -54,6 +54,10 @@
 	model_type = list(/obj/item/robot_model/medical)
 	model_flags = BORG_MODEL_MEDICAL
 
+/*
+*	ADVANCED BORG SURGICAL TOOLS
+*/
+
 /obj/item/borg/upgrade/surgerytools/action(mob/living/silicon/robot/borg)
 	. = ..()
 	if(.)
@@ -153,6 +157,8 @@
 	for(var/obj/item/dogborg_nose/dognose in borg.model.modules)
 		borg.model.remove_module(dognose, TRUE)
 
+
+
 /*
 *	ADVANCED ENGINEERING CYBORG MATERIALS
 */
@@ -216,7 +222,12 @@
 	for(var/datum/robot_energy_storage/titanium/titanium_energy in borgo.model.storages)
 		qdel(titanium_energy)
 
-// funny borg inducer upgrade
+
+
+/*
+*	CYBORG INDUCER
+*/
+
 /obj/item/borg/upgrade/inducer
 	name = "engineering cyborg inducer upgrade"
 	desc = "An inducer device for the engineering cyborg."
@@ -244,3 +255,89 @@
 		var/obj/item/inducer/cyborg/inducer = locate() in target_robot.model
 		if (inducer)
 			target_robot.model.remove_module(inducer, TRUE)
+
+/*
+*	CYBORG WIREBRUSH
+*/
+
+/datum/design/borg_wirebrush
+	name = "Cyborg Upgrade (Wire-brush)"
+	id = "borg_upgrade_brush"
+	build_type = MECHFAB
+	build_path = /obj/item/borg/upgrade/wirebrush
+	materials = list(/datum/material/iron = 4000)
+	construction_time = 40
+	category = list("Cyborg Upgrade Modules")
+
+/obj/item/borg/upgrade/wirebrush
+	name = "janitor cyborg wire-brush"
+	desc = "A tool to remove rust from walls."
+	icon_state = "cyborg_upgrade3"
+	require_model = TRUE
+	model_type = list(/obj/item/robot_model/janitor)
+	model_flags = BORG_MODEL_JANITOR
+
+/obj/item/borg/upgrade/wirebrush/action(mob/living/silicon/robot/cyborg)
+	. = ..()
+	if(.)
+		for(var/obj/item/wirebrush/brush in cyborg.model.modules)
+			cyborg.model.remove_module(brush, TRUE)
+
+		var/obj/item/wirebrush/brush = new /obj/item/wirebrush(cyborg.model)
+		cyborg.model.basic_modules += brush
+		cyborg.model.add_module(brush, FALSE, TRUE)
+
+/obj/item/borg/upgrade/wirebrush/deactivate(mob/living/silicon/robot/cyborg, user = usr)
+	. = ..()
+	if(.)
+		for(var/obj/item/wirebrush/brush in cyborg.model.modules)
+			cyborg.model.remove_module(brush, TRUE)
+
+		var/obj/item/wirebrush/brush = new (cyborg.model)
+		cyborg.model.basic_modules += brush
+		cyborg.model.add_module(brush, FALSE, TRUE)
+
+
+
+/*
+*	SNACK DISPENSER
+*/
+
+/datum/design/borg_snack_dispenser
+	name = "Cyborg Upgrade (Snack Dispenser)"
+	id = "borg_upgrade_snacks"
+	build_type = MECHFAB
+	build_path = /obj/item/borg/upgrade/snack_dispenser
+	materials = list(/datum/material/iron = 700, /datum/material/glass = 500)
+	construction_time = 1 SECONDS
+	category = list("Cyborg Upgrade Modules")
+
+/obj/item/borg/upgrade/snack_dispenser
+	name = "Cyborg Upgrade (Snack Dispenser)"
+	desc = "Gives any borg the ability to dispense speciality snacks."
+	/// For storing modules that we remove, since the upgraded snack dispensor automatically removes inferior versions
+	var/list/removed_modules = list()
+
+/obj/item/borg/upgrade/snack_dispenser/action(mob/living/silicon/robot/R, user)
+	. = ..()
+	if(!.)
+		return
+	var/obj/item/borg_snack_dispenser/snack_dispenser = new(R.model)
+	R.model.basic_modules += snack_dispenser
+	R.model.add_module(snack_dispenser, FALSE, TRUE)
+	for(var/obj/item/rsf/cookiesynth/cookiesynth in R.model)
+		removed_modules += cookiesynth
+		R.model.remove_module(cookiesynth)
+	for(var/obj/item/borg/lollipop/lollipop in R.model)
+		removed_modules += lollipop
+		R.model.remove_module(lollipop)
+
+/obj/item/borg/upgrade/snack_dispenser/deactivate(mob/living/silicon/robot/R, user)
+	. = ..()
+	if(!.)
+		return
+	for(var/obj/item/borg_snack_dispenser/dispenser in R.model)
+		R.model.remove_module(dispenser, TRUE)
+	for(var/obj/item as anything in removed_modules)
+		R.model.basic_modules += item
+		R.model.add_module(item, FALSE, TRUE)
