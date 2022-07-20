@@ -56,9 +56,9 @@ Key procs
 ///datum/language_holder/New(atom/_owner) //ORIGINAL
 /datum/language_holder/New(atom/_owner, datum/preferences/pref_load) //SKYRAT EDIT CHANGE - CUSTOMIZATION
 	if(_owner && QDELETED(_owner))
-		CRASH("Langauge holder added to a qdeleting thing, what the fuck \ref[_owner]")
+		CRASH("Langauge holder added to a qdeleting thing, what the fuck [_owner] [_owner.type]")
 	//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
-	understood_languages = list(pick(/datum/language/sol, /datum/language/tajaran, /datum/language/akulan))
+	understood_languages = list(pick(/datum/language/sol, /datum/language/tajaran, /datum/language/akulan) = list(LANGUAGE_ATOM))
 	spoken_languages = understood_languages.Copy()
 	if(pref_load)
 		//If we're loading a holder from prefs, override the languages
