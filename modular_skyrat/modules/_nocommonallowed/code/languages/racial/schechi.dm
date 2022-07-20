@@ -11,3 +11,4 @@
 	icon = 'modular_skyrat/master_files/icons/misc/language.dmi'
 	icon_state = "schechi"
 	default_priority = 90
+	category = RACE_LANGUAGE

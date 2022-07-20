@@ -52,21 +52,21 @@
 	icon_state = "translation_cypherkey"
 	translated_language = /datum/language/uncommon
 
-/obj/item/encryptionkey/yangyu
-	name = "\improper Yangyu translation key"
-	desc = "An encryption key that automatically encodes Yangyu heard through the radio into common."
+/obj/item/encryptionkey/tajaran
+	name = "\improper Tajaran translation key"
+	desc = "An encryption key that automatically encodes Tajaran heard through the radio into common."
 	icon_state = "translation_cypherkey"
-	translated_language = /datum/language/yangyu
+	translated_language = /datum/language/tajaran
 
-/obj/item/encryptionkey/pan_slavic
-	name = "\improper Pan-Slavic translation key"
-	desc = "An encryption key that automatically encodes Pan-Slavic heard through the radio into common."
+/obj/item/encryptionkey/akulan
+	name = "\improper Akulan translation key"
+	desc = "An encryption key that automatically encodes Akulan heard through the radio into common."
 	icon_state = "translation_cypherkey"
-	translated_language = /datum/language/panslavic
+	translated_language = /datum/language/akulan
 
-/obj/item/encryptionkey/sol_common
-	name = "\improper Sol Common translation key"
-	desc = "An encryption key that automatically encodes Sol Common heard through the radio into common."
+/obj/item/encryptionkey/sol
+	name = "\improper Sol translation key"
+	desc = "An encryption key that automatically encodes Sol heard through the radio into common."
 	icon_state = "translation_cypherkey"
 	translated_language = /datum/language/sol
 
@@ -81,12 +81,6 @@
 	desc = "An encryption key that automatically encodes Vox-pidgin heard through the radio into common."
 	icon_state = "translation_cypherkey"
 	translated_language = /datum/language/vox
-
-/obj/item/encryptionkey/xeno_uncommon
-	name = "\improper Xeno Uncommon translation key"
-	desc = "An encryption key that automatically encodes Xeno Uncommon heard through the radio into common."
-	icon_state = "translation_cypherkey"
-	translated_language = /datum/language/xenoknockoff
 
 /obj/item/encryptionkey/teshari
 	name = "\improper Schechi translation key"

@@ -276,7 +276,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 /datum/species/human/felinid
 	mutant_bodyparts = list()
 	default_mutant_bodyparts = list("tail" = "Cat", "ears" = "Cat")
-	learnable_languages = list(/datum/language/yangyu)
+	learnable_languages = list(/datum/language/tajaran)
 
 /datum/species/human
 	mutant_bodyparts = list()

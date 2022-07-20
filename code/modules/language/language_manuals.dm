@@ -4,7 +4,7 @@
 	/// Number of charges the book has, limits the number of times it can be used.
 	var/charges = 1
 	/// Path to a language datum that the book teaches.
-	var/datum/language/language = /datum/language/panslavic // SKYRAT EDIT - Use core languages
+	var/datum/language/language = /datum/language/common
 	/// Flavour text to display when the language is successfully learned.
 	var/flavour_text = "suddenly your mind is filled with codewords and responses"
 

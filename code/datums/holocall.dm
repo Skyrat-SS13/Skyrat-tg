@@ -220,7 +220,7 @@
 	var/caller_name = "Unknown" //Caller name
 	var/image/caller_image
 	var/list/entries = list()
-	var/language = /datum/language/panslavic //Initial language, can be changed by HOLORECORD_LANGUAGE entries // SKYRAT EDIT - Use a random core language
+	var/language = /datum/language/akulan //Initial language, can be changed by HOLORECORD_LANGUAGE entries // SKYRAT EDIT - Use a random core language
 
 /datum/holorecord/proc/set_caller_image(mob/user)
 	var/olddir = user.dir
@@ -458,7 +458,7 @@
 	NAME Unknown
 	SAY RISE, MY LORD!!
 	DELAY 10
-	LANGUAGE /datum/language/yangyu
+	LANGUAGE /datum/language/tajaran
 	NAME Plastic
 	PRESET /datum/preset_holoimage/engineer/mod
 	SAY Fuck, fuck, fuck!

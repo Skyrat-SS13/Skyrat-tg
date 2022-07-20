@@ -58,7 +58,7 @@ Key procs
 	if(_owner && QDELETED(_owner))
 		CRASH("Langauge holder added to a qdeleting thing, what the fuck \ref[_owner]")
 	//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
-	understood_languages = list(pick(/datum/language/sol, /datum/language/yangyu, /datum/language/panslavic))
+	understood_languages = list(pick(/datum/language/sol, /datum/language/tajaran, /datum/language/akulan))
 	spoken_languages = understood_languages.Copy()
 	if(pref_load)
 		//If we're loading a holder from prefs, override the languages

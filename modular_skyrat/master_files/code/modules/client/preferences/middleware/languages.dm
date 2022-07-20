@@ -78,7 +78,7 @@
 	var/max_race_languages = preferences.all_quirks.Find(QUIRK_LINGUIST) ? 2 : 1
 	var/species_type = preferences.read_preference(/datum/preference/choiced/species)
 	var/datum/species/species = new species_type()
-	sanity_check_languages(preferences.core_languages, max_core_languages, list(pick(/datum/language/sol, /datum/language/yangyu, /datum/language/panslavic)), CORE_LANGUAGE)
+	sanity_check_languages(preferences.core_languages, max_core_languages, list(pick(/datum/language/sol, /datum/language/tajaran, /datum/language/akulan)), CORE_LANGUAGE)
 	sanity_check_languages(preferences.race_languages, max_race_languages, species.learnable_languages, RACE_LANGUAGE)
 	var/list/selected_core_languages = list()
 	var/list/selected_race_languages = list()
@@ -86,7 +86,7 @@
 	var/list/unselected_race_languages = list()
 	for (var/language_name in GLOB.all_languages)
 		var/datum/language/language = GLOB.language_datum_instances[language_name]
-		if(language.secret)
+		if(language.category == OTHER_LANGUAGE)
 			continue
 		if(species.always_customizable && !(language.type in species.learnable_languages)) // For the ghostrole species. We don't want ashwalkers speaking beachtongue now.
 			continue

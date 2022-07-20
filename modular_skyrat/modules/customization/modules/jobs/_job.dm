@@ -12,7 +12,7 @@
 	//Blacklist of species for this job.
 	var/list/species_blacklist
 	/// Which languages does the job require, associative to LANGUAGE_UNDERSTOOD or LANGUAGE_SPOKEN
-	var/list/required_languages = list(/datum/language/sol = LANGUAGE_SPOKEN, /datum/language/panslavic = LANGUAGE_SPOKEN, /datum/language/yangyu = LANGUAGE_SPOKEN)
+	var/list/required_languages = list(/datum/language/sol = LANGUAGE_SPOKEN, /datum/language/akulan = LANGUAGE_SPOKEN, /datum/language/tajaran = LANGUAGE_SPOKEN)
 
 	///Is this job veteran only? If so, then this job requires the player to be in the veteran_players.txt
 	var/veteran_only = FALSE

@@ -35,13 +35,11 @@
 		/datum/language/terrum,
 		/datum/language/vox, //SKYRAT EDIT - customization - extra languages
 		/datum/language/nekomimetic,
-		/datum/language/panslavic,  //SKYRAT EDIT - customization - extra languages
+		/datum/language/akulan,   //SKYRAT EDIT - customization - extra languages
 		/datum/language/sol,  //SKYRAT EDIT - customization - extra languages
-		/datum/language/xenoknockoff, // SKYRAT EDIT - customization - extra languages
-		/datum/language/yangyu, // SKYRAT EDIT - customization - extra languages
+		/datum/language/tajaran, // SKYRAT EDIT - customization - extra languages
 		/datum/language/schechi, // SKYRAT EDIT - customization - extra languages
 		/datum/language/ashtongue, // SKYRAT EDIT - customization - extra languages
-		/datum/language/buzzwords, //SKYRAT EDIT - customization - extra languages
 	))
 
 /obj/item/organ/internal/tongue/Initialize(mapload)

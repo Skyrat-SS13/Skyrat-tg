@@ -20,7 +20,7 @@
 		return
 	var/mob/living/carbon/human/H = owner.current
 	H.set_species(/datum/species/human)
-	H.grant_language(/datum/language/panslavic)
+	H.grant_language(/datum/language/akulan)
 
 	return TRUE
 

@@ -8,4 +8,4 @@
 	icon_state = "vox-pidgin"
 	icon = 'modular_skyrat/master_files/icons/misc/language.dmi'
 	default_priority = 99
-	category = RACE_LANGUAGE // SKYRAT EDIT ADDITION - Language overhaul
+	category = RACE_LANGUAGE

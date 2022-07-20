@@ -8,4 +8,4 @@
 	default_priority = 90
 	icon_state = "skrell"
 	icon = 'modular_skyrat/master_files/icons/misc/language.dmi'
-	category = RACE_LANGUAGE // SKYRAT EDIT ADDITION - Language overhaul
+	category = RACE_LANGUAGE

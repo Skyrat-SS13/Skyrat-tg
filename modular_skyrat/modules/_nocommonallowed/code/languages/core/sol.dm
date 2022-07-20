@@ -16,4 +16,4 @@
 	icon_state = "solcommon"
 	icon = 'modular_skyrat/master_files/icons/misc/language.dmi'
 	default_priority = 100
-	category = CORE_LANGUAGE // SKYRAT EDIT ADDITION - Language overhaul
+	category = CORE_LANGUAGE

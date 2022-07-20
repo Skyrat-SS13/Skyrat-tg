@@ -5,4 +5,3 @@
 	An outsider once described Xenohybrids as 'ancestor worshippers', though a more accurate phrase would be 'fetishization'. \
 	Despite how loathed you are, there's one truth among your kind, you stick together."
 	economic_power = 0
-	required_lang = /datum/language/xenoknockoff

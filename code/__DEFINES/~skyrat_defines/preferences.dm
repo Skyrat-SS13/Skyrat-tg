@@ -14,3 +14,4 @@
 #define CORE_LANGUAGE "CORE"
 #define RACE_LANGUAGE "RACE"
 #define OTHER_LANGUAGE "OTHER"
+#define LANGUAGE_PDA "pda"

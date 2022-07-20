@@ -27,4 +27,3 @@
 	icon_state = "ashtongue"
 	icon = 'modular_skyrat/master_files/icons/misc/language.dmi'
 	default_priority = 90
-	secret = TRUE

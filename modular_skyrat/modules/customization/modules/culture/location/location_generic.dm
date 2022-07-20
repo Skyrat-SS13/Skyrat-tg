@@ -142,7 +142,7 @@
 	distance = "22.5 light years."
 	economic_power = 0.9
 	ruling_body = "Gilgamesh Colonial Confederation"
-	required_lang = /datum/language/panslavic
+	required_lang = /datum/language/akulan
 
 /datum/cultural_info/location/tersten
 	name = "Tersten"

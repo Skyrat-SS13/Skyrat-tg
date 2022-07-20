@@ -1,7 +1,7 @@
-/datum/language/panslavic
-	name = "Pan-Slavic"
-	desc = "A mish-mash of Eastern European and Balkan languages with similar properties that has since become the official language of the NRI, with a good amount of relevance in SolFed colonies with slavic descendance and trading posts across charted territory."
-	key = "r"
+/datum/language/akulan
+	name = "Akulan"
+	desc = "The primary language of the Akulan empire, sounds vaguely slav, though decidedly not a slav language."
+	key = "a"
 	flags = TONGUELESS_SPEECH
 	syllables = list(
 		"rus", "zem", "ave", "groz", "ski", "ska", "ven", "konst", "pol", "lin", "svy",
@@ -12,4 +12,4 @@
 	icon_state = "russian"
 	icon = 'modular_skyrat/master_files/icons/misc/language.dmi'
 	default_priority = 100
-	category = CORE_LANGUAGE // SKYRAT EDIT ADDITION - Language overhaul
+	category = CORE_LANGUAGE
