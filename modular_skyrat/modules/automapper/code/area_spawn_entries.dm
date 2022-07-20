@@ -51,12 +51,12 @@
 	mode = AREA_SPAWN_MODE_HUG_WALL
 
 // Wall mounts. Use sparingly as walls are prime real estate
-/datum/area_spawn/posibrain_robotics
+/datum/area_spawn/posialert_robotics
 	target_areas = list(/area/station/science/robotics, /area/station/science/robotics/lab)
 	desired_atom = /obj/machinery/posialert
 	mode = AREA_SPAWN_MODE_MOUNT_WALL
 
-/datum/area_spawn/posibrain_rd
+/datum/area_spawn/posialert_rd
 	target_areas = list(/area/station/command/heads_quarters/rd, /area/station/science/lab)
 	desired_atom = /obj/machinery/posialert
 	mode = AREA_SPAWN_MODE_MOUNT_WALL

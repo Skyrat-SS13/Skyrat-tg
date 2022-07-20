@@ -111,9 +111,10 @@ SUBSYSTEM_DEF(area_spawn)
 		// Some tile conditions for no-go
 		if(mode == AREA_SPAWN_MODE_MOUNT_WALL)
 			// Different blacklist logic than normal. See flip_density_wall_mount_objects_list
+			var/flip_density = is_type_in_list(found_movable, flip_density_wall_mount_objects_list)
 			if(
-				found_movable.density != is_type_in_list(found_movable, flip_density_wall_mount_objects_list) \
-				|| is_type_in_list(found_movable, restricted_objects_list)
+				found_movable.density != flip_density \
+				|| (!flip_density && is_type_in_list(found_movable, restricted_objects_list))
 			)
 				return 0
 
