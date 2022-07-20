@@ -1,8 +1,12 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "as" = (
-/obj/structure/lattice/lava,
 /obj/structure/stone_tile/block,
-/turf/open/lava/plasma/ice_moon,
+/obj/structure/stone_tile/block/cracked{
+	dir = 1
+	},
+/turf/open/indestructible/necropolis{
+	initial_gas_mix = "ICEMOON_ATMOS"
+	},
 /area/ruin/unpowered/ash_walkers)
 "at" = (
 /obj/effect/turf_decal/siding/wideplating/dark,
@@ -74,9 +78,11 @@
 /turf/open/misc/asteroid/snow/icemoon,
 /area/ruin/unpowered/ash_walkers)
 "bI" = (
-/obj/effect/turf_decal/siding/wideplating/dark,
 /obj/structure/table/wood,
 /obj/item/candle/infinite,
+/obj/effect/turf_decal/siding/wideplating/dark/end{
+	dir = 8
+	},
 /turf/open/floor/stone/icemoon{
 	color = "#878787"
 	},
@@ -184,11 +190,15 @@
 /area/ruin/unpowered/ash_walkers)
 "fU" = (
 /obj/structure/stone_tile/center,
-/obj/structure/lattice/lava,
 /obj/structure/stone_tile/surrounding_tile{
 	dir = 8
 	},
-/turf/open/lava/plasma/ice_moon,
+/obj/structure/stone_tile/surrounding/cracked{
+	dir = 4
+	},
+/turf/open/indestructible/necropolis{
+	initial_gas_mix = "ICEMOON_ATMOS"
+	},
 /area/ruin/unpowered/ash_walkers)
 "gd" = (
 /obj/effect/turf_decal/weather/snow/corner{
@@ -319,11 +329,18 @@
 /area/ruin/unpowered/ash_walkers)
 "ih" = (
 /obj/structure/stone_tile/center,
-/obj/structure/lattice/lava,
 /obj/structure/stone_tile/surrounding_tile{
 	dir = 4
 	},
-/turf/open/lava/plasma/ice_moon,
+/obj/structure/stone_tile/surrounding/cracked{
+	dir = 1
+	},
+/obj/structure/stone_tile/surrounding_tile/cracked{
+	dir = 8
+	},
+/turf/open/indestructible/necropolis{
+	initial_gas_mix = "ICEMOON_ATMOS"
+	},
 /area/ruin/unpowered/ash_walkers)
 "it" = (
 /obj/effect/turf_decal/siding/wideplating/dark{
@@ -431,9 +448,11 @@
 /area/ruin/unpowered/ash_walkers)
 "kt" = (
 /obj/structure/stone_tile/center,
-/obj/structure/lattice/lava,
 /obj/structure/stone_tile/surrounding_tile,
-/turf/open/lava/plasma/ice_moon,
+/obj/structure/stone_tile/surrounding/cracked,
+/turf/open/indestructible/necropolis{
+	initial_gas_mix = "ICEMOON_ATMOS"
+	},
 /area/ruin/unpowered/ash_walkers)
 "kP" = (
 /turf/closed/indestructible/stone{
@@ -441,11 +460,13 @@
 	},
 /area/ruin/unpowered/ash_walkers)
 "lo" = (
-/obj/structure/lattice/lava,
 /obj/structure/stone_tile/block{
 	dir = 1
 	},
-/turf/open/lava/plasma/ice_moon,
+/obj/structure/stone_tile/block/cracked,
+/turf/open/indestructible/necropolis{
+	initial_gas_mix = "ICEMOON_ATMOS"
+	},
 /area/ruin/unpowered/ash_walkers)
 "lu" = (
 /obj/effect/turf_decal/siding/wideplating/dark{
@@ -534,17 +555,6 @@
 	},
 /turf/open/floor/wood/icemoon,
 /area/ruin/unpowered/ash_walkers)
-"nC" = (
-/obj/effect/turf_decal/siding/wideplating/dark{
-	dir = 1
-	},
-/obj/structure/statue/bone/rib{
-	dir = 1
-	},
-/turf/open/floor/stone/icemoon{
-	color = "#878787"
-	},
-/area/ruin/unpowered/ash_walkers)
 "nH" = (
 /mob/living/simple_animal/hostile/asteroid/gutlunch/grublunch,
 /turf/open/floor/stone/icemoon{
@@ -553,7 +563,9 @@
 /area/ruin/unpowered/ash_walkers)
 "nY" = (
 /obj/structure/lavaland/ash_walker,
-/turf/open/lava/plasma/ice_moon,
+/turf/open/indestructible/necropolis{
+	initial_gas_mix = "ICEMOON_ATMOS"
+	},
 /area/ruin/unpowered/ash_walkers)
 "oj" = (
 /obj/effect/turf_decal/siding/wideplating/dark{
@@ -730,14 +742,6 @@
 	},
 /turf/open/misc/asteroid/snow/icemoon,
 /area/ruin/unpowered/ash_walkers)
-"sH" = (
-/obj/effect/turf_decal/siding/wideplating/dark{
-	dir = 8
-	},
-/turf/open/floor/stone/icemoon{
-	color = "#878787"
-	},
-/area/ruin/unpowered/ash_walkers)
 "sT" = (
 /obj/structure/deployable_barricade/wooden{
 	dir = 1;
@@ -786,17 +790,6 @@
 	dir = 1
 	},
 /turf/open/lava/plasma/ice_moon,
-/area/ruin/unpowered/ash_walkers)
-"uj" = (
-/obj/effect/turf_decal/siding/wideplating/dark{
-	dir = 4
-	},
-/obj/structure/statue/bone/rib{
-	dir = 1
-	},
-/turf/open/floor/stone/icemoon{
-	color = "#878787"
-	},
 /area/ruin/unpowered/ash_walkers)
 "uk" = (
 /obj/structure/deployable_barricade/metal{
@@ -882,13 +875,6 @@
 /area/ruin/unpowered/ash_walkers)
 "uW" = (
 /turf/closed/wall/mineral/snow,
-/area/ruin/unpowered/ash_walkers)
-"vc" = (
-/obj/effect/turf_decal/siding/wideplating/dark,
-/obj/structure/statue/bone/rib,
-/turf/open/floor/stone/icemoon{
-	color = "#878787"
-	},
 /area/ruin/unpowered/ash_walkers)
 "vu" = (
 /obj/structure/deployable_barricade/metal{
@@ -1121,8 +1107,8 @@
 /turf/open/misc/asteroid/snow/icemoon,
 /area/ruin/unpowered/ash_walkers)
 "Dk" = (
-/obj/effect/turf_decal/siding/wideplating/dark{
-	dir = 1
+/obj/effect/turf_decal/siding/wideplating/dark/end{
+	dir = 8
 	},
 /turf/open/floor/stone/icemoon{
 	color = "#878787"
@@ -1139,15 +1125,6 @@
 	dir = 4
 	},
 /turf/open/misc/sandy_dirt/icemoon,
-/area/ruin/unpowered/ash_walkers)
-"Dx" = (
-/obj/effect/turf_decal/siding/wideplating/dark{
-	dir = 8
-	},
-/obj/structure/statue/bone/rib,
-/turf/open/floor/stone/icemoon{
-	color = "#878787"
-	},
 /area/ruin/unpowered/ash_walkers)
 "DO" = (
 /obj/effect/turf_decal/siding/wideplating/dark/corner{
@@ -1185,14 +1162,6 @@
 	dir = 6
 	},
 /turf/open/floor/stone/icemoon,
-/area/ruin/unpowered/ash_walkers)
-"EF" = (
-/obj/effect/turf_decal/siding/wideplating/dark{
-	dir = 4
-	},
-/turf/open/floor/stone/icemoon{
-	color = "#878787"
-	},
 /area/ruin/unpowered/ash_walkers)
 "EV" = (
 /obj/item/shovel,
@@ -1412,16 +1381,17 @@
 /turf/open/misc/asteroid/snow/icemoon,
 /area/ruin/unpowered/ash_walkers)
 "KT" = (
-/obj/structure/lattice/lava,
 /obj/structure/stone_tile/block{
 	dir = 4
 	},
-/turf/open/lava/plasma/ice_moon,
-/area/ruin/unpowered/ash_walkers)
-"Lp" = (
-/obj/effect/turf_decal/siding/wideplating/dark{
+/obj/structure/stone_tile/block/cracked{
 	dir = 8
 	},
+/turf/open/indestructible/necropolis{
+	initial_gas_mix = "ICEMOON_ATMOS"
+	},
+/area/ruin/unpowered/ash_walkers)
+"Lp" = (
 /obj/structure/rack/shelf{
 	icon = 'modular_skyrat/modules/mapping/icons/unique/furniture.dmi';
 	icon_state = "empty_shelf_1"
@@ -1443,6 +1413,7 @@
 /obj/item/flashlight/flare/torch{
 	on = 1
 	},
+/obj/effect/turf_decal/siding/wideplating/dark/end,
 /turf/open/floor/stone/icemoon{
 	color = "#878787"
 	},
@@ -1498,9 +1469,6 @@
 /turf/open/misc/asteroid/snow/icemoon,
 /area/ruin/unpowered/ash_walkers)
 "NQ" = (
-/obj/effect/turf_decal/siding/wideplating/dark{
-	dir = 1
-	},
 /obj/structure/rack/shelf{
 	icon = 'modular_skyrat/modules/mapping/icons/unique/furniture.dmi';
 	icon_state = "empty_shelf_1"
@@ -1513,6 +1481,9 @@
 /obj/item/ore_sensor{
 	pixel_x = -5;
 	pixel_y = 5
+	},
+/obj/effect/turf_decal/siding/wideplating/dark/end{
+	dir = 4
 	},
 /turf/open/floor/stone/icemoon{
 	color = "#878787"
@@ -1681,11 +1652,15 @@
 /turf/open/misc/sandy_dirt/icemoon,
 /area/ruin/unpowered/ash_walkers)
 "Sz" = (
-/obj/structure/lattice/lava,
 /obj/structure/stone_tile/block{
 	dir = 8
 	},
-/turf/open/lava/plasma/ice_moon,
+/obj/structure/stone_tile/block/cracked{
+	dir = 4
+	},
+/turf/open/indestructible/necropolis{
+	initial_gas_mix = "ICEMOON_ATMOS"
+	},
 /area/ruin/unpowered/ash_walkers)
 "SD" = (
 /obj/effect/turf_decal/siding/wood,
@@ -1756,9 +1731,11 @@
 /turf/open/misc/asteroid/snow/icemoon,
 /area/ruin/unpowered/ash_walkers)
 "Ua" = (
-/obj/effect/turf_decal/siding/wideplating/dark,
 /obj/structure/destructible/cult/pants_altar,
 /obj/item/knife/combat/bone,
+/obj/effect/turf_decal/siding/wideplating/dark/end{
+	dir = 4
+	},
 /turf/open/floor/stone/icemoon{
 	color = "#878787"
 	},
@@ -1891,11 +1868,16 @@
 /area/ruin/unpowered/ash_walkers)
 "WG" = (
 /obj/structure/stone_tile/center,
-/obj/structure/lattice/lava,
 /obj/structure/stone_tile/surrounding_tile{
 	dir = 1
 	},
-/turf/open/lava/plasma/ice_moon,
+/obj/structure/stone_tile/surrounding/cracked{
+	dir = 8
+	},
+/obj/structure/stone_tile/surrounding_tile/cracked,
+/turf/open/indestructible/necropolis{
+	initial_gas_mix = "ICEMOON_ATMOS"
+	},
 /area/ruin/unpowered/ash_walkers)
 "Xe" = (
 /obj/structure/chair/wood{
@@ -2536,9 +2518,9 @@ rC
 rC
 kP
 ZB
-EF
-EF
-uj
+pP
+GX
+rW
 ZB
 kP
 dl
@@ -2564,7 +2546,7 @@ bI
 ih
 Sz
 fU
-nC
+rW
 kP
 LG
 mW
@@ -2610,7 +2592,7 @@ rC
 rC
 kP
 kP
-vc
+ON
 WG
 KT
 kt
@@ -2636,8 +2618,8 @@ rC
 rC
 kP
 ZB
-sH
-Dx
+ON
+pP
 Lp
 ZB
 kP
