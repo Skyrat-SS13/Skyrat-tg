@@ -228,6 +228,9 @@
  * Shows the player a list of current polls, if any.
  */
 /mob/dead/new_player/proc/playerpolls()
+	if(!usr || !client)
+		return
+
 	var/output
 	if (!SSdbcore.Connect())
 		return
