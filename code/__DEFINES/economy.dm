@@ -43,8 +43,6 @@
 #define ACCOUNT_CAR_NAME "Cargo Budget"
 #define ACCOUNT_SEC "SEC"
 #define ACCOUNT_SEC_NAME "Defense Budget"
-#define ACCOUNT_CMD "CMD" // SKYRAT EDIT
-#define ACCOUNT_CMD_NAME "Command Budget" // SKYRAT EDIT
 
 #define NO_FREEBIES "commies go home"
 
