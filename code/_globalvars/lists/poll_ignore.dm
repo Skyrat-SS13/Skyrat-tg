@@ -21,6 +21,7 @@
 #define POLL_IGNORE_ACADEMY_WIZARD "academy_wizard"
 #define POLL_IGNORE_CORTICAL_BORER "cortical_borer" // SKYRAT EDIT - Cortical Borer
 #define POLL_IGNORE_PAI "pai"
+#define POLL_IGNORE_VENUSHUMANTRAP "venus_human_trap"
 
 //Skyrat Edit Start: Cortical Borer
 GLOBAL_LIST_INIT(poll_ignore_desc, list(
@@ -45,6 +46,7 @@ GLOBAL_LIST_INIT(poll_ignore_desc, list(
 	POLL_IGNORE_ACADEMY_WIZARD = "Academy Wizard Defender",
 	POLL_IGNORE_CORTICAL_BORER = "Cortical Borer",
 	POLL_IGNORE_PAI = JOB_PERSONAL_AI,
+	POLL_IGNORE_VENUSHUMANTRAP = "Venus Human Traps",
 ))
 //Skyrat Edit Stop: Cortical Borer
 GLOBAL_LIST_INIT(poll_ignore, init_poll_ignore())
