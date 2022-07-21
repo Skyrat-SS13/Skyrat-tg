@@ -247,50 +247,46 @@
 
 //Consider making all of these behaviours a smart component/element? Something that's only applied wherever it needs to be
 //Could probably have the variables on the turf level, and the behaviours being activated/deactived on the component level as the vars are updated
-/turf/open/CanPass(atom/movable/A, turf/T)
-	if(isliving(A))
-		var/turf/AT = get_turf(A)
-		if(AT && AT.turf_height - turf_height <= -TURF_HEIGHT_BLOCK_THRESHOLD)
+/turf/open/CanPass(atom/movable/mover, turf/location)
+	if(isliving(mover))
+		var/turf/current_turf = get_turf(mover)
+		if(current_turf && current_turf.turf_height - turf_height <= -TURF_HEIGHT_BLOCK_THRESHOLD)
 			return FALSE
 	return ..()
 
 /turf/open/Exit(atom/movable/mover, atom/newloc)
 	. = ..()
 	if(. && isliving(mover) && mover.has_gravity() && isturf(newloc))
-		var/mob/living/L = mover
-		var/turf/T = get_turf(newloc)
-		if(T && T.turf_height - turf_height <= -TURF_HEIGHT_BLOCK_THRESHOLD)
-			L.on_fall()
-			L.onZImpact(T, 1)
+		var/mob/living/moving_mob = mover
+		var/turf/new_turf = get_turf(newloc)
+		if(new_turf && new_turf.turf_height - turf_height <= -TURF_HEIGHT_BLOCK_THRESHOLD)
+			moving_mob.on_fall()
+			moving_mob.onZImpact(new_turf, 1)
 
-
-/turf/open/MouseDrop_T(mob/living/M, mob/living/user)
-	if(!isliving(M) || !isliving(user) || !M.has_gravity() || !Adjacent(user) || !M.Adjacent(user) || !(user.stat == CONSCIOUS) || user.body_position == LYING_DOWN)
+// Handles climbing up and down between turfs with height differences, as well as manipulating others to do the same.
+/turf/open/MouseDrop_T(mob/living/dropped_mob, mob/living/user)
+	if(!isliving(dropped_mob) || !isliving(user) || !dropped_mob.has_gravity() || !Adjacent(user) || !dropped_mob.Adjacent(user) || !(user.stat == CONSCIOUS) || user.body_position == LYING_DOWN)
 		return
-	if(!M.has_gravity())
+	if(!dropped_mob.has_gravity())
 		return
-	var/turf/T = get_turf(M)
-	if(!T)
+	var/turf/mob_turf = get_turf(dropped_mob)
+	if(!mob_turf)
 		return
-	if(T.turf_height - turf_height <= -TURF_HEIGHT_BLOCK_THRESHOLD)
+	if(mob_turf.turf_height - turf_height <= -TURF_HEIGHT_BLOCK_THRESHOLD)
 		//Climb up
-		if(user == M)
-			M.visible_message("<span class='notice'>[user] is climbing onto [src]", \
-								"<span class='notice'>You start climbing onto [src].</span>")
+		if(user == dropped_mob)
+			user.balloon_alert_to_viewers("climbing...")
 		else
-			M.visible_message("<span class='notice'>[user] is pulling [M] onto [src]", \
-								"<span class='notice'>You start pulling [M] onto [src].</span>")
-		if(do_mob(user, M, 2 SECONDS))
-			M.forceMove(src)
+			dropped_mob.balloon_alert_to_viewers("being pulled up...")
+		if(do_mob(user, dropped_mob, 2 SECONDS))
+			dropped_mob.forceMove(src)
 		return
-	if(turf_height - T.turf_height <= -TURF_HEIGHT_BLOCK_THRESHOLD)
+	if(turf_height - mob_turf.turf_height <= -TURF_HEIGHT_BLOCK_THRESHOLD)
 		//Climb down
-		if(user == M)
-			M.visible_message("<span class='notice'>[user] is descending down to [src]", \
-								"<span class='notice'>You start lowering yourself to [src].</span>")
+		if(user == dropped_mob)
+			user.balloon_alert_to_viewers("climbing down...")
 		else
-			M.visible_message("<span class='notice'>[user] is lowering [M] down to [src]", \
-								"<span class='notice'>You start lowering [M] down to [src].</span>")
-		if(do_mob(user, M, 2 SECONDS))
-			M.forceMove(src)
+			dropped_mob.balloon_alert_to_viewers("being lowered...")
+		if(do_mob(user, dropped_mob, 2 SECONDS))
+			dropped_mob.forceMove(src)
 		return
