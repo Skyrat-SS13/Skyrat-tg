@@ -1,5 +1,5 @@
 // Copypasted just to avoid having to make non-modular edits to the medbeam.
-/obj/item/gun/AFAD
+/obj/item/gun/afad
 	name = "Automated First Aid Device"
 	desc = "Usually supplied in medkits, the AFAD is a revolutionary device, or more accurately, a knock-off of the legendary medibeam meant for fixing scrapes and bruises, a label reminds you not to cross the beams."
 	icon = 'icons/obj/chronos.dmi'
@@ -17,27 +17,27 @@
 
 	weapon_weight = WEAPON_MEDIUM
 
-/obj/item/gun/AFAD/Initialize(mapload)
+/obj/item/gun/afad/Initialize(mapload)
 	. = ..()
 	START_PROCESSING(SSobj, src)
 
-/obj/item/gun/AFAD/Destroy(mob/user)
+/obj/item/gun/afad/Destroy(mob/user)
 	STOP_PROCESSING(SSobj, src)
 	LoseTarget()
 	return ..()
 
-/obj/item/gun/AFAD/dropped(mob/user)
+/obj/item/gun/afad/dropped(mob/user)
 	..()
 	LoseTarget()
 
-/obj/item/gun/AFAD/equipped(mob/user)
+/obj/item/gun/afad/equipped(mob/user)
 	..()
 	LoseTarget()
 
 /**
  * Proc that always is called when we want to end the beam and makes sure things are cleaned up, see beam_died()
  */
-/obj/item/gun/AFAD/proc/LoseTarget()
+/obj/item/gun/afad/proc/LoseTarget()
 	if(active)
 		QDEL_NULL(current_beam)
 		active = FALSE
@@ -49,7 +49,7 @@
  * manual disconnection = LoseTarget, so it can silently end
  * automatic disconnection = beam_died, so we can give a warning message first
  */
-/obj/item/gun/AFAD/proc/beam_died()
+/obj/item/gun/afad/proc/beam_died()
 	SIGNAL_HANDLER
 	current_beam = null
 	active = FALSE //skip qdelling the beam again if we're doing this proc, because
@@ -57,7 +57,7 @@
 		to_chat(loc, span_warning("You lose control of the beam!"))
 	LoseTarget()
 
-/obj/item/gun/AFAD/process_fire(atom/target, mob/living/user, message = TRUE, params = null, zone_override = "", bonus_spread = 0)
+/obj/item/gun/afad/process_fire(atom/target, mob/living/user, message = TRUE, params = null, zone_override = "", bonus_spread = 0)
 	if(isliving(user))
 		add_fingerprint(user)
 
@@ -73,7 +73,7 @@
 
 	SSblackbox.record_feedback("tally", "gun_fired", 1, type)
 
-/obj/item/gun/AFAD/process()
+/obj/item/gun/afad/process()
 	if(!mounted && !isliving(loc))
 		LoseTarget()
 		return
@@ -94,7 +94,7 @@
 	if(current_target)
 		on_beam_tick(current_target)
 
-/obj/item/gun/AFAD/proc/los_check(atom/movable/user, mob/target)
+/obj/item/gun/afad/proc/los_check(atom/movable/user, mob/target)
 	var/turf/user_turf = user.loc
 	if(mounted)
 		user_turf = get_turf(user)
@@ -132,10 +132,10 @@
 	qdel(dummy)
 	return TRUE
 
-/obj/item/gun/AFAD/proc/on_beam_hit(mob/living/target)
+/obj/item/gun/afad/proc/on_beam_hit(mob/living/target)
 	return
 
-/obj/item/gun/AFAD/proc/on_beam_tick(mob/living/target)
+/obj/item/gun/afad/proc/on_beam_tick(mob/living/target)
 	if(target.health != target.maxHealth)
 		new /obj/effect/temp_visual/heal(get_turf(target), "#80F5FF")
 	target.adjustBruteLoss(-0.2)
@@ -144,8 +144,8 @@
 	target.adjustOxyLoss(-0.1)
 	return
 
-/obj/item/gun/AFAD/proc/on_beam_release(mob/living/target)
+/obj/item/gun/afad/proc/on_beam_release(mob/living/target)
 	return
 
 /obj/effect/ebeam/medical
-	name = "medical beam"
+	name = "AFAD beam"
