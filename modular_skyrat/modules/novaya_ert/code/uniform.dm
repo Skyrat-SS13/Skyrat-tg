@@ -19,13 +19,3 @@
 
 /obj/item/clothing/under/costume/nri/engineer
 	icon_state = "nri_engineer"
-
-/obj/item/clothing/under/rank/security/officer/nri
-	name = "imperial security jumpsuit"
-	desc = "An incredibly formal security jumpsuit used by NRI police officers."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "nri_officer"
-	can_adjust = FALSE
-	uses_advanced_reskins = FALSE
-	unique_reskin = null
