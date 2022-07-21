@@ -1,4 +1,4 @@
-
+// Slightly improved version of the normal RCD, mostly as an engineering 'I got hella bread' purchase
 /obj/item/construction/rcd/combat/improved
 	name = "Improved RCD"
   	desc = "A device used to rapidly build and deconstruct. Upgraded from the standard model with superior material storage, at the cost of build speed. Reload with iron, plasteel, glass or compressed matter cartridges."
