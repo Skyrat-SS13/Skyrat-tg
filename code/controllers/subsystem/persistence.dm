@@ -46,6 +46,7 @@ SUBSYSTEM_DEF(persistence)
 	SaveRandomizedRecipes()
 	SavePanicBunker()//SKYRAT EDIT ADDITION - PANICBUNKER
 	SaveScars()
+	save_nifs() //SKYRAT EDIT ADDITION - NIFs
 	save_custom_outfits()
 
 /datum/controller/subsystem/persistence/proc/LoadPoly()

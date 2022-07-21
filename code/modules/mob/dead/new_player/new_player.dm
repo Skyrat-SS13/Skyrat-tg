@@ -295,6 +295,7 @@
 
 		humanc.increment_scar_slot()
 		humanc.load_persistent_scars()
+		humanc.load_nif_data() // SKYRAT EDIT - NIFs
 
 		if(GLOB.curse_of_madness_triggered)
 			give_madness(humanc, GLOB.curse_of_madness_triggered)

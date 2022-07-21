@@ -64,6 +64,9 @@
 /obj/item/organ/internal/cyberimp/brain/nif/Initialize(mapload)
 	. = ..()
 
+	durability = max_durability
+	loaded_nifsofts = preinstalled_nifsofts
+
 	power_level = max_power
 
 /obj/item/organ/internal/cyberimp/brain/nif/Insert(mob/living/carbon/human/insertee)
