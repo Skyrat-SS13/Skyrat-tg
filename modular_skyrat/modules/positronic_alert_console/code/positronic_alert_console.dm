@@ -14,6 +14,8 @@
 	/// The radio used to send messages over the science channel.
 	var/obj/item/radio/radio
 
+MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/posialert, 28)
+
 /obj/machinery/posialert/examine(mob/user)
 	. = ..()
 	if(!COOLDOWN_FINISHED(src, robotics_cooldown))

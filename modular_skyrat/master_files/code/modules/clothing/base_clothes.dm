@@ -14,6 +14,8 @@
 	var/greyscale_config_worn_teshari
 	/// The config type to use for greyscaled worn sprites for vox characters. Both this and greyscale_colors must be assigned to work.
 	var/greyscale_config_worn_vox
+	/// The config type to use for greyscaled worn sprites for vox primalis characters. Both this and greyscale_colors must be assigned to work.
+	var/greyscale_config_worn_better_vox
 
 	var/worn_icon_taur_snake
 	var/worn_icon_taur_paw
