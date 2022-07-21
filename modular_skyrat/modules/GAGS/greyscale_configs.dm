@@ -293,6 +293,50 @@
 	name = "Cardigan (Worn)"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/cardigan/cardigan_worn.json'
 
+// URBAN COAT
+
+/datum/greyscale_config/urban_coat
+	name = "Urban Coat"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/urban_coat.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/urban_coat/urban_coat.json'
+
+/datum/greyscale_config/urban_coat/worn
+	name = "Urban Coat (Worn)"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/urban_coat/urban_coat_worn.json'
+
+// LEATHER JACKET
+
+/datum/greyscale_config/leather_jacket
+	name = "Leather Jacket"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/leather_jacket.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/leather_jacket/leather_jacket.json'
+
+/datum/greyscale_config/leather_jacket/worn
+	name = "Leather Jacket (Worn)"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/leather_jacket/leather_jacket_worn.json'
+
+// DUSTER
+
+/datum/greyscale_config/duster
+	name = "Duster"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/duster.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/duster/duster.json'
+
+/datum/greyscale_config/duster/worn
+	name = "Duster (Worn)"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/duster/duster_worn.json'
+
+// PEACOAT
+
+/datum/greyscale_config/peacoat
+	name = "Peacoat"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/peacoat.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/peacoat/peacoat.json'
+
+/datum/greyscale_config/peacoat/worn
+	name = "Peacoat (Worn)"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/peacoat/peacoat_worn.json'
+
 // JUMPSUITS
 
 /datum/greyscale_config/jumpsuit_worn/digi
@@ -307,6 +351,18 @@
 	name = "Worn Jumpsuit - Vox"
 	icon_file = 'modular_skyrat/modules/GAGS/icons/jumpsuit_vox.dmi'
 
+/datum/greyscale_config/jumpsuit_prison_worn/vox
+	name = "Worn Prison Jumpsuit - Vox"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/jumpsuit_vox.dmi'
+
+/datum/greyscale_config/jumpsuit_worn/better_vox
+	name = "Worn Jumpsuit - Better Vox"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/jumpsuit_better_vox.dmi'
+
+/datum/greyscale_config/jumpsuit_prison_worn/better_vox
+	name = "Worn Prison Jumpsuit - Better Vox"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/jumpsuit_better_vox.dmi'
+
 /datum/greyscale_config/jumpsuit_worn/taur/snake
 	name = "Worn Jumpsuit - Naga"
 	icon_file = 'modular_skyrat/modules/GAGS/icons/jumpsuit_snake.dmi'
@@ -314,10 +370,6 @@
 /datum/greyscale_config/jumpsuit_prison_worn/taur/snake
 	name = "Worn Prison Jumpsuit - Naga"
 	icon_file = 'modular_skyrat/modules/GAGS/icons/jumpsuit_snake.dmi'
-
-/datum/greyscale_config/jumpsuit_prison_worn/vox
-	name = "Worn Prison Jumpsuit - Vox"
-	icon_file = 'modular_skyrat/modules/GAGS/icons/jumpsuit_vox.dmi'
 
 /datum/greyscale_config/jumpsuit_worn/teshari
 	name = "Worn Jumpsuit - Teshari"
@@ -458,3 +510,12 @@
 /datum/greyscale_config/teshari/hardsuit
 	name = "Teshari Hardsuit"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/teshari_fallbacks/hardsuit.json'
+
+/*
+*	ITEMS
+*/
+
+/datum/greyscale_config/id_card
+	name = "Colourable ID Card"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/id_card.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/items/id_card.json'

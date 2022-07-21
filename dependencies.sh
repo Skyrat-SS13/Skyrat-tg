@@ -5,7 +5,7 @@
 
 # byond version
 export BYOND_MAJOR=514
-export BYOND_MINOR=1557 #SKYRAT EDIT CHANGE - Compiler failure due to insufficent memory when running previous builds.
+export BYOND_MINOR=1560
 
 #rust_g git tag
 export RUST_G_VERSION=0.5.0

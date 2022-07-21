@@ -12,7 +12,6 @@
 /obj/effect/mob_spawn/ghost_role/human/black_mesa/special(mob/living/carbon/human/spawned_human)
 	. = ..()
 	spawned_human.grant_language(/datum/language/uncommon, TRUE, TRUE, LANGUAGE_MIND)
-	spawned_human.remove_language(/datum/language/common)
 
 /datum/outfit/science_team
 	name = "Scientist"
@@ -42,7 +41,6 @@
 /obj/effect/mob_spawn/ghost_role/human/black_mesa/guard/special(mob/living/carbon/human/spawned_human)
 	. = ..()
 	spawned_human.grant_language(/datum/language/uncommon, TRUE, TRUE, LANGUAGE_MIND)
-	spawned_human.remove_language(/datum/language/common)
 
 /obj/item/clothing/under/rank/security/officer/blueshirt/blackmesa
 	armor = list(MELEE = 10, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 10, FIRE = 30, ACID = 30, WOUND = 10)
@@ -80,7 +78,6 @@
 
 /obj/effect/mob_spawn/ghost_role/human/black_mesa/hecu/special(mob/living/carbon/human/spawned_human)
 	. = ..()
-	spawned_human.remove_language(/datum/language/common)
 	spawned_human.grant_language(/datum/language/uncommon, TRUE, TRUE, LANGUAGE_MIND)
 
 /obj/item/clothing/under/rank/security/officer/hecu
@@ -176,7 +173,6 @@
 	spawned_human.grant_language(/datum/language/uncommon, TRUE, TRUE, LANGUAGE_MIND)
 	spawned_human.grant_language(/datum/language/neorusskya, TRUE, TRUE, LANGUAGE_MIND)
 	spawned_human.grant_language(/datum/language/yangyu, TRUE, TRUE, LANGUAGE_MIND)
-	spawned_human.remove_language(/datum/language/common)
 
 /datum/outfit/hecu/leader
 	name = "HECU Captain"

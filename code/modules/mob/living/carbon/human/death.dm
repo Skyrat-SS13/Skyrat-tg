@@ -54,7 +54,3 @@ GLOBAL_LIST_EMPTY(dead_players_during_shift)
 	//SKYRAT EDIT END
 	blood_volume = 0
 	return TRUE
-/mob/living/carbon/proc/makeUncloneable()
-	ADD_TRAIT(src, TRAIT_BADDNA, MADE_UNCLONEABLE)
-	blood_volume = 0
-	return TRUE

@@ -38,14 +38,14 @@
 	if(!ishuman(parent))
 		return COMPONENT_INCOMPATIBLE
 	human_target = parent
-	ADD_TRAIT(human_target, TRAIT_NO_TELEPORT, src)
+	ADD_TRAIT(human_target, TRAIT_NO_TELEPORT, REF(src))
 	human_target.add_movespeed_modifier(/datum/movespeed_modifier/ash_cursed)
 	RegisterSignal(human_target, COMSIG_MOVABLE_MOVED, .proc/do_move)
 	RegisterSignal(human_target, COMSIG_LIVING_DEATH, .proc/remove_curse)
 
 /datum/component/ash_cursed/Destroy(force, silent)
 	. = ..()
-	REMOVE_TRAIT(human_target, TRAIT_NO_TELEPORT, src)
+	REMOVE_TRAIT(human_target, TRAIT_NO_TELEPORT, REF(src))
 	human_target.remove_movespeed_modifier(/datum/movespeed_modifier/ash_cursed)
 	UnregisterSignal(human_target, list(COMSIG_MOVABLE_MOVED, COMSIG_LIVING_DEATH))
 	human_target = null

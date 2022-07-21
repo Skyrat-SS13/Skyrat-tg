@@ -79,8 +79,12 @@
 	strip_delay = 30
 	equip_delay_other = 50
 	resistance_flags = NONE
-	pocket_storage_component_path = /datum/component/storage/concrete/pockets/shoes
 	can_be_tied = TRUE //SKYRAT EDIT
+
+/obj/item/clothing/shoes/jungleboots/Initialize(mapload)
+	. = ..()
+
+	create_storage(type = /datum/storage/pockets/shoes)
 
 /obj/item/clothing/shoes/jackboots/black
 	name = "dark jackboots"
