@@ -401,8 +401,8 @@
 	new /obj/item/gun/ballistic/automatic/pistol/firefly/nomag(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/firefly(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/firefly(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/firefly(src)
-	new /obj/item/ammo_box/magazine/multi_sprite/firefly(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/firefly/rubber(src)
+	new /obj/item/ammo_box/magazine/multi_sprite/firefly/rubber(src)
 
 /*
 *	LASER

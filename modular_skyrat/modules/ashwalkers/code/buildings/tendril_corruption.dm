@@ -48,6 +48,9 @@
 		human_user.underwear = "Nude"
 		human_user.update_body()
 		human_user.mind.add_antag_datum(/datum/antagonist/ashwalker)
+		if(SSmapping.level_trait(human_user.z, ZTRAIT_ICE_RUINS_UNDERGROUND) || SSmapping.level_trait(human_user.z, ZTRAIT_ICE_RUINS_UNDERGROUND))
+			ADD_TRAIT(human_user, TRAIT_NOBREATH, ROUNDSTART_TRAIT)
+			ADD_TRAIT(human_user, TRAIT_RESISTCOLD, ROUNDSTART_TRAIT)
 		ADD_TRAIT(human_user, TRAIT_PRIMITIVE, ROUNDSTART_TRAIT)
 		playsound(src, 'sound/magic/demon_dies.ogg', 50, TRUE)
 		meat_counter++

@@ -268,7 +268,7 @@
 		)
 	id = /obj/item/card/id/away/silver/freightqm
 
-//Port Tarkon, 5 people trapped in a revamped charlie-station like ghost role. Survive the aliens and threats, Fix the port and/or finish construction
+//Port Tarkon, 6 people trapped in a revamped charlie-station like ghost role. Survive the aliens and threats, Fix the port and/or finish construction
 
 /obj/effect/mob_spawn/ghost_role/human/tarkon
 	name = "P-T Abandoned Crew"
@@ -439,26 +439,26 @@
 
 /datum/id_trim/away/tarkon
 	assignment = "P-T Cargo Personell"
-	access = list(66, ACCESS_AWAY_GENERAL)
+	access = list(ACCESS_AWAY_GENERAL, ACCESS_WEAPONS, ACCESS_TARKON)
 
 /datum/id_trim/away/tarkon/sec
 	assignment = "P-T Port Guard"
-	access = list(66, ACCESS_AWAY_GENERAL, 210)
+	access = list(ACCESS_AWAY_GENERAL, ACCESS_WEAPONS, ACCESS_TARKON)
 
 /datum/id_trim/away/tarkon/med
 	assignment = "P-T Trauma Medic"
-	access = list(5, 66, ACCESS_AWAY_GENERAL)
+	access = list(ACCESS_MEDICAL, ACCESS_AWAY_GENERAL, ACCESS_WEAPONS, ACCESS_TARKON)
 
 /datum/id_trim/away/tarkon/eng
 	assignment = "P-T Maintenance Crew"
 
 /datum/id_trim/away/tarkon/sci
 	assignment = "P-T Field Researcher"
-	access = list(29, 66, ACCESS_AWAY_GENERAL)
+	access = list(ACCESS_ROBOTICS, ACCESS_AWAY_GENERAL, ACCESS_WEAPONS, ACCESS_TARKON)
 
 /datum/id_trim/away/tarkon/ensign
 	assignment = "Tarkon Ensign"
-	access = list(5, 29, 66, ACCESS_AWAY_GENERAL, 210)
+	access = list(ACCESS_MEDICAL, ACCESS_ROBOTICS, ACCESS_AWAY_GENERAL, ACCESS_TARKON, ACCESS_WEAPONS)
 
 /obj/item/card/id/away/tarkon/sci  //original tarkon ID is defined in fluff
 	name = "P-T field researcher's access card"

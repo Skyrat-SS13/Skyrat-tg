@@ -31,7 +31,7 @@
 
 /obj/item/gun/energy/e_gun/cfa_phalanx
 	name = "\improper Mk.II Phalanx plasma blaster"
-	desc = "Fires a disabling and lethal bouncing projectile, as well as a special muscle-seizing projectile that knocks targets down. It has <b><span style='color:purple'>Cantalan Federal Arms</span></b> etched into the grip."
+	desc = "Fires a disabling and lethal bouncing projectile, as well as a special muscle-seizing projectile that knocks targets down."
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/guns/projectile.dmi'
 	icon_state = "phalanx1"
 	w_class = WEIGHT_CLASS_NORMAL
@@ -41,6 +41,7 @@
 	charge_sections = 5
 	has_gun_safety = FALSE
 	cell_type = /obj/item/stock_parts/cell/hos_gun
+	company_flag = COMPANY_CANTALAN
 
 /*
 *	CFA PALADIN
@@ -50,13 +51,14 @@
 
 /obj/item/gun/energy/laser/cfa_paladin
 	name = "\improper Mk.IV Paladin plasma carbine"
-	desc = "Essentially a handheld laser cannon. This is solely for killing, and it's dual-laser system reflects that. It has <b><span style='color:purple'>Cantalan Federal Arms</span></b> etched into the grip."
+	desc = "Essentially a handheld laser cannon. This is solely for killing, and it's dual-laser system reflects that."
 	icon = 'modular_skyrat/modules/modular_weapons/icons/obj/guns/projectile.dmi'
 	icon_state = "paladin"
 	force = 10
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/double)
 	charge_sections = 5
 	has_gun_safety = FALSE
+	company_flag = COMPANY_CANTALAN
 
 /*
 *	BOUNCE DISABLER

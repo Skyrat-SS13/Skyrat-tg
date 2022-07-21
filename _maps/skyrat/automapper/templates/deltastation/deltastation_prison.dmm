@@ -84,11 +84,10 @@
 "ar" = (
 /obj/machinery/door/firedoor,
 /obj/effect/turf_decal/delivery/red,
-/obj/machinery/door/airlock/glass_large{
-	dir = 8;
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/door/airlock/public/glass{
 	name = "Cafeteria"
 	},
-/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/dark,
 /area/station/security/prison/mess)
 "as" = (
@@ -901,9 +900,8 @@
 /area/station/security/prison)
 "gV" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/wood{
-	icon_state = "wood-broken7"
-	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
 /area/station/security/prison)
 "hd" = (
 /obj/structure/bed/roller,
@@ -1684,9 +1682,8 @@
 /obj/effect/spawner/random/contraband/prison,
 /obj/effect/spawner/random/entertainment/toy_figure,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/wood{
-	icon_state = "wood-broken7"
-	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
 /area/station/security/prison)
 "oW" = (
 /obj/structure/table,
@@ -2817,6 +2814,9 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/door/airlock/public/glass{
+	name = "Cafeteria"
+	},
 /turf/open/floor/iron/dark,
 /area/station/security/prison/mess)
 "zl" = (
@@ -4472,12 +4472,6 @@
 	},
 /turf/open/floor/iron,
 /area/station/security/execution/transfer)
-"NF" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/wood{
-	icon_state = "wood-broken4"
-	},
-/area/station/security/prison)
 "NK" = (
 /obj/machinery/door_timer{
 	id = "isolation";
@@ -4752,9 +4746,8 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/wood{
-	icon_state = "wood-broken6"
-	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
 /area/station/security/prison)
 "QT" = (
 /obj/machinery/light/small/directional/south,
@@ -5474,9 +5467,8 @@
 /turf/open/floor/iron,
 /area/station/security/prison/mess)
 "XT" = (
-/turf/open/floor/plating{
-	icon_state = "platingdmg3"
-	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/plating,
 /area/station/security/execution/transfer)
 "XW" = (
 /obj/effect/turf_decal/delivery/red,
@@ -5589,9 +5581,8 @@
 /turf/open/floor/plating,
 /area/station/security/prison/garden)
 "YG" = (
-/turf/open/floor/plating{
-	icon_state = "panelscorched"
-	},
+/obj/effect/mapping_helpers/burnt_floor,
+/turf/open/floor/plating,
 /area/station/security/execution/transfer)
 "YH" = (
 /obj/structure/cable,
@@ -6622,7 +6613,7 @@ rR
 Ch
 Qp
 XN
-NF
+gV
 tp
 MT
 AF
