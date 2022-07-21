@@ -2,7 +2,7 @@
 	name = "ash-corrupted lantern"
 	uses_battery = FALSE
 	light_range = 8
-a
+
 /obj/structure/lavaland/ash_walker/attackby(obj/item/I, mob/living/user, params)
 	if(istype(I, /obj/item/organ/internal/regenerative_core) && user.mind.has_antag_datum(/datum/antagonist/ashwalker))
 		var/obj/item/organ/internal/regenerative_core/regen_core = I
