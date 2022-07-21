@@ -24,6 +24,16 @@
                     /obj/item/clothing/mask/breath)
 
 /*
+*	ENGINEERING STUFF
+*/
+
+/datum/supply_pack/goody/improvedrcd
+	name = "Improved RCD"
+	desc = "An upgraded RCD featuring superior material storage, and a complementary frames, and circuits upgrade to boot!"
+	cost = PAYCHECK_CREW * 80
+	contains = list(/obj/item/construction/rcd/combat/improved)
+
+/*
 *	MISC
 */
 
@@ -111,3 +121,13 @@
 	name = "Blue Carpet Single-Pack"
 	contains = list(/obj/item/stack/tile/carpet/blue/fifty)
 
+/*
+*	MEDICAL STUFF
+*/
+
+
+/datum/supply_pack/goody/afad
+	name = "Automated First Aid Device"
+	desc = "Someone hurt, and it's to much of a bother to manually handle their burns, or cuts? Look no further then the AFAD, a state of the art first-aid device!"
+	cost = PAYCHECK_CREW * 100 // Starting price, to see where it sits balance-wise after a week or two.
+	contains = list(/obj/item/gun/afad)
