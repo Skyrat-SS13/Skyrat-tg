@@ -26,8 +26,6 @@
 
 	var/clothing_flags = NONE
 
-	var/moth_edible = TRUE //Added it because moths were able to eat fucking vibrators. Fucking moths.
-
 	var/can_be_bloody = TRUE
 
 	/// What items can be consumed to repair this clothing (must by an /obj/item/stack)
