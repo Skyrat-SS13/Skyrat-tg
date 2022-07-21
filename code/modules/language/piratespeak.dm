@@ -10,4 +10,3 @@
 	"shiver","timbers","matey","swashbuckler"
 	)
 	icon_state = "pirate"
-	secret = TRUE // SKYRAT EDIT ADDITION - Reduce meme and otherwise redundant languages.
