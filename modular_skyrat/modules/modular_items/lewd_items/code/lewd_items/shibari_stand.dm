@@ -7,7 +7,6 @@
 	layer = 4
 	item_chair = null
 	buildstacktype = null
-	buckle_message = FALSE
 	///Overlays for ropes
 	var/static/mutable_appearance/shibari_rope_overlay
 	var/static/mutable_appearance/shibari_rope_overlay_behind
