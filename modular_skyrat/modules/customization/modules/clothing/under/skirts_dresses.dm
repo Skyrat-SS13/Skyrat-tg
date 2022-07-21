@@ -1,9 +1,3 @@
-/obj/item/clothing/under/dress/sundress/white
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	name = "white sundress"
-	icon_state = "sundress_white"
-
 /obj/item/clothing/under/dress/green
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
@@ -21,16 +15,6 @@
 	desc = "A tight pink dress"
 	icon_state = "dress_pink"
 	body_parts_covered = CHEST|GROIN
-	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
-	can_adjust = FALSE
-
-/obj/item/clothing/under/dress/blacktango
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	name = "black tango dress"
-	desc = "Filled with Latin fire."
-	icon_state = "black_tango"
-	inhand_icon_state = "wcoat"
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 	can_adjust = FALSE
 
@@ -52,17 +36,6 @@
 	icon_state = "flamenco"
 	inhand_icon_state = "wcoat"
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
-	can_adjust = FALSE
-
-/obj/item/clothing/under/dress/striped
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	name = "striped dress"
-	desc = "Fashion in space."
-	icon_state = "striped_dress"
-	inhand_icon_state = "stripeddress"
-	body_parts_covered = CHEST|GROIN|ARMS
-	female_sprite_flags = FEMALE_UNIFORM_FULL
 	can_adjust = FALSE
 
 /obj/item/clothing/under/dress/flower

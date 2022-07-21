@@ -53,18 +53,6 @@ GLOBAL_LIST_INIT(loadout_necks, generate_loadout_items(/datum/loadout_item/neck)
 	name = "Red Scarf"
 	item_path = /obj/item/clothing/neck/scarf/red
 
-/datum/loadout_item/neck/scarf_blue_striped
-	name = "Striped Blue Scarf"
-	item_path = /obj/item/clothing/neck/stripedbluescarf
-
-/datum/loadout_item/neck/scarf_green_striped
-	name = "Striped Green Scarf"
-	item_path = /obj/item/clothing/neck/stripedgreenscarf
-
-/datum/loadout_item/neck/scarf_red_striped
-	name = "Striped Red Scarf"
-	item_path = /obj/item/clothing/neck/stripedredscarf
-
 /datum/loadout_item/neck/scarf_orange
 	name = "Orange Scarf"
 	item_path = /obj/item/clothing/neck/scarf/orange
@@ -76,6 +64,18 @@ GLOBAL_LIST_INIT(loadout_necks, generate_loadout_items(/datum/loadout_item/neck)
 /datum/loadout_item/neck/scarf_white
 	name = "White Scarf"
 	item_path = /obj/item/clothing/neck/scarf
+
+/datum/loadout_item/neck/scarf_red_striped
+	name = "Striped Red Scarf"
+	item_path = /obj/item/clothing/neck/large_scarf/red
+
+/datum/loadout_item/neck/scarf_blue_striped
+	name = "Striped Blue Scarf"
+	item_path = /obj/item/clothing/neck/large_scarf/blue
+
+/datum/loadout_item/neck/scarf_green_striped
+	name = "Striped Green Scarf"
+	item_path = /obj/item/clothing/neck/large_scarf/green
 
 /datum/loadout_item/neck/scarf_zebra
 	name = "Zebra Scarf"

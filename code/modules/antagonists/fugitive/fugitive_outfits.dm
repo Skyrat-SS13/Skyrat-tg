@@ -24,13 +24,8 @@
 /datum/outfit/waldo
 	name = "Waldo"
 	uniform = /obj/item/clothing/under/pants/jeans
-<<<<<<< HEAD
-	suit = /obj/item/clothing/suit/striped_sweater
-	head = /obj/item/clothing/head/beanie/waldo
-=======
 	suit = /obj/item/clothing/suit/costume/striped_sweater
 	head = /obj/item/clothing/head/waldo
->>>>>>> 0310aaa2546 (The GAGening: Clothesmate edition (#68111))
 	shoes = /obj/item/clothing/shoes/sneakers/brown
 	ears = /obj/item/radio/headset
 	glasses = /obj/item/clothing/glasses/regular/circle
