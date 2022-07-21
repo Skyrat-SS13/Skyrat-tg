@@ -241,7 +241,11 @@
 		if(istype(B.target, /atom/movable))
 			var/atom/movable/AM = B.target
 			if(!AM.anchored)
+				AM.set_pulledby(src) //skyrat edit add - setting pulledby to prevent juggling stamcrit mobs back and forth through seeding vines
 				step(AM, get_dir(AM, src))
+				AM.set_pulledby(null) //skyrat edit start - clearing pulledby - also interupts pulling people away, making it a bit of a tug-of-war
+			if(isliving(AM))
+				reset_pull_offsets(AM) //skyrat edit end - making it not break offsets
 		if(get_dist(src, B.target) == 0)
 			qdel(B)
 

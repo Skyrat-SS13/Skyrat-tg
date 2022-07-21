@@ -442,10 +442,10 @@
 /datum/spacevine_mutation/seeding/on_cross(obj/structure/spacevine/vine_object, mob/crosser)
 	if(isliving(crosser))
 		var/mob/living/living_crosser = crosser
-		if(isvineimmune(living_crosser) || living_crosser.stat == DEAD)
+		if(isvineimmune(living_crosser) || living_crosser.stat == DEAD || living_crosser.pulledby)
 			return
 		if(prob(10))
-			addtimer(CALLBACK(living_crosser, /mob/living/proc/plant_kudzu), 1 MINUTES)
+			addtimer(CALLBACK(living_crosser, /mob/living/proc/plant_kudzu), rand(15 SECONDS, 30 SECONDS))
 
 /datum/spacevine_mutation/seeding/on_hit(obj/structure/spacevine/vine_object, mob/hitter, obj/item/weapon, expected_damage)
 	if(isliving(hitter))
@@ -453,7 +453,7 @@
 		if(isvineimmune(living_hitter))
 			return
 		if(prob(10))
-			addtimer(CALLBACK(living_hitter, /mob/living/proc/plant_kudzu), 1 MINUTES)
+			addtimer(CALLBACK(living_hitter, /mob/living/proc/plant_kudzu), 1 MINUTES, TIMER_UNIQUE)
 	. = expected_damage
 
 // Has a chance to electrocute mobs that hit it
