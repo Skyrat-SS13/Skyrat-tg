@@ -17,3 +17,4 @@
 					"tail", "trim", "tube", "wobble", "roll", "gnarly", "epic")
 
 	icon_state = "beach"
+	secret = TRUE // SKYRAT EDIT ADDITION - Reduce meme and otherwise redundant languages.

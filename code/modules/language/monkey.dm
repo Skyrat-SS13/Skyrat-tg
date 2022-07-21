@@ -7,3 +7,4 @@
 	default_priority = 80
 
 	icon_state = "animal"
+	secret = TRUE // SKYRAT EDIT ADDITION - Reduce meme and otherwise redundant languages.
