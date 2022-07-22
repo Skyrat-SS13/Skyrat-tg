@@ -84,7 +84,7 @@ export const NifPanel = (props, context) => {
 
 const NifSettings = (props, context) => {
   const { act, data } = useBackend(context);
-  const { nutrition_drain, ui_themes, current_theme, nutrition_level } = data;
+  const { nutrition_drain, ui_themes, current_theme, nutrition_level, blood_drain, minimum_blood_level, blood_level } = data;
   return (
     <LabeledList>
       <LabeledList.Item label="NIF Theme">
@@ -100,6 +100,13 @@ const NifSettings = (props, context) => {
         tooltip="Toggles the ability for the NIF to use your food as an energy source. Enabling this may result in increased hunger."
         onClick={() => act('toggle_nutrition_drain')}
         disabled={(nutrition_level < 26)} />
+      </LabeledList.Item>
+      <LabeledList.Item label="Blood Drain">
+        <Button fluid
+        content={(blood_drain === 0) ? "Blood Drain Disabled" : "Blood Drain Enabled"}
+        tooltip="Toggles the ability for the NIF to drain blood from you. This will automatically shut off once you get close to an unsafe blood level"
+        onClick={() => act('toggle_blood_drain')}
+        disabled={(blood_level < minimum_blood_level)} />
       </LabeledList.Item>
     </LabeledList>
   );
@@ -117,7 +124,7 @@ const NifProductNotes = (props, context) => {
 
 const NifStats = (props, context) => {
   const { act, data } = useBackend(context);
-  const { max_power, power_level, durability, power_usage, nutrition_drain } = data;
+  const { max_power, power_level, durability, power_usage, nutrition_drain, blood_drain } = data;
 
   return (
     <Box>
@@ -154,6 +161,11 @@ const NifStats = (props, context) => {
             <NifNutritionBar />
           </LabeledList.Item>
         )}
+        {(blood_drain === 1) && (
+          <LabeledList.Item label="User Blood Level">
+            <NifBloodBar />
+          </LabeledList.Item>
+        )}
       </LabeledList>
     </Box>
   );
@@ -171,6 +183,22 @@ const NifNutritionBar = (props, context) => {
         'good' : [250, Infinity],
         'average' : [150, 250],
         'bad' : [0, 150],
+      }} />
+  );
+};
+
+const NifBloodBar = (props, context) => {
+  const { act, data } = useBackend(context);
+  const { blood_level, minimum_blood_level, max_blood_level } = data;
+  return (
+    <ProgressBar
+      value={blood_level}
+      minValue={0}
+      maxValue={max_blood_level}
+      ranges={{
+        'good' : [minimum_blood_level, Infinity],
+        'average' : [336, minimum_blood_level],
+        'bad' : [0, 336],
       }} />
   );
 };

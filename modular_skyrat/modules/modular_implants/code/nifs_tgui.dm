@@ -55,6 +55,11 @@
 	data["nutrition_drain"] = nutrition_drain
 	data["nutrition_level"] = linked_mob.nutrition
 
+	data["blood_level"] = linked_mob.blood_volume
+	data["max_blood_level"] = linked_mob.blood_volume_normal
+	data["blood_drain"] = blood_drain
+	data["minimum_blood_level"] = minimum_blood_level
+
 	//Durability Variables.
 	data["durability"] = durability
 	data["max_durability"] = max_durability
@@ -69,6 +74,9 @@
 	switch(action)
 		if("toggle_nutrition_drain")
 			toggle_nutrition_drain()
+
+		if("toggle_blood_drain")
+			toggle_blood_drain()
 
 		if("change_examine_text")
 			var/text_to_use = html_encode(params["new_text"])

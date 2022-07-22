@@ -29,12 +29,18 @@
 	///How fast is nutrition drained from the host?
 	var/nutrition_drain_rate = 1.5
 	///What is the rate of nutrition to power?
-	var/nutrition_conversion_rate = 10
+	var/nutrition_conversion_rate = 5
 	///What is the minimum nutrition someone has to be at for the NIF to convert power?
 	var/minimum_nutrition = 25
 
-	///Is power being drawn through blood/electricty?
+	///Is power being drawn through blood
 	var/blood_drain = FALSE
+	///The rate of blood to energy
+	var/blood_conversion_rate = 5 //From full blood, this would get someone to 500 charge
+	///How fast is blood being drained?
+	var/blood_drain_rate = 1
+	///When is blood draining disabled?
+	var/minimum_blood_level = BLOOD_VOLUME_SAFE
 
 	///Is power being drawn through the user's power supply?
 	var/electric_drain = FALSE
@@ -93,6 +99,12 @@
 	if((linked_mob.nutrition < minimum_nutrition) && (nutrition_drain)) //Turns nutrition drain off if nutrition is lower than minimum
 		toggle_nutrition_drain(TRUE)
 
+	if(blood_drain && (!blood_check())) //Disables blood draining if the mob fails the blood check
+		toggle_blood_drain(TRUE)
+
+	if(blood_drain)
+		linked_mob.blood_volume -= blood_drain_rate
+
 	power_level += -power_usage
 	if(power_level > max_power)
 		power_level = max_power //No Overcharging
@@ -126,7 +138,7 @@
 		return TRUE
 
 	hunger_modifier *= nutrition_drain_rate
-	power_usage += -(nutrition_drain_rate * nutrition_conversion_rate)
+	power_usage -= (nutrition_drain_rate * nutrition_conversion_rate)
 	nutrition_drain = TRUE
 
 /// Checks to see if the mob has a nutrition that can be drain from
@@ -145,6 +157,32 @@
 
 	return TRUE
 
+///Toggles Blood Drain
+/obj/item/organ/internal/cyberimp/brain/nif/proc/toggle_blood_drain(bypass = FALSE)
+	if(!blood_check() || bypass)
+		return
+
+	if(blood_drain)
+		blood_drain = FALSE
+		power_usage += (blood_drain_rate * blood_conversion_rate)
+
+		to_chat(linked_mob, span_notice("Blood draining is now disabled"))
+		return
+
+	blood_drain = TRUE
+	power_usage -= (blood_drain_rate * blood_conversion_rate)
+
+	to_chat(linked_mob, span_notice("Blood draining is now enabled."))
+
+///Can we take blood from the mob?
+/obj/item/organ/internal/cyberimp/brain/nif/proc/blood_check()
+	if(!linked_mob || !linked_mob.blood_volume)
+		return FALSE
+
+	if(linked_mob.blood_volume < minimum_blood_level)
+		return FALSE
+
+	return TRUE
 ///This is run whenever a nifsoft is installed
 /obj/item/organ/internal/cyberimp/brain/nif/proc/install_nifsoft(datum/nifsoft/loaded_nifsoft)
 	if((length(loaded_nifsofts) >= max_nifsofts))
