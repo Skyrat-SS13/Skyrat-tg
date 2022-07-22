@@ -26,7 +26,7 @@ GLOBAL_LIST_EMPTY(hell) //eorg banned players go here
 
 /datum/outfit/chicken
 	name = "Chicken"
-	suit = /obj/item/clothing/suit/chickensuit
+	suit = /obj/item/clothing/suit/costume/chickensuit
 	head = /obj/item/clothing/head/chicken
 
 /obj/effect/landmark/hell
