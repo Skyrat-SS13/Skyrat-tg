@@ -1,4 +1,3 @@
-// Copypasted just to avoid having to make non-modular edits to the medbeam.
 /obj/item/gun/afad
 	name = "Automated First Aid Device"
 	desc = "Usually supplied in medkits, the AFAD is a revolutionary device, or more accurately, a knock-off of the legendary medibeam meant for fixing scrapes and bruises, a label reminds you not to cross the beams."
