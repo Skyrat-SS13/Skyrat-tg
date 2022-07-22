@@ -100,7 +100,6 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/masks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/mask.dmi'
 	icon_state = "hecu2"
-	flags_inv = HIDEHAIR
 
 /obj/item/clothing/mask/gas/soviet
 	name = "soviet gas mask"

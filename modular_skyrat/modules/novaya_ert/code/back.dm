@@ -33,3 +33,14 @@
 	icon_state = "russian_green_backpack"
 	worn_icon_state = "russian_green_backpack"
 	inhand_icon_state = "securitypack"
+
+/obj/item/storage/backpack/nri/larp/PopulateContents()
+	generate_items_inside(list(
+		/obj/item/clothing/head/helmet/rus_helmet = 1,
+		/obj/item/clothing/suit/armor/vest/russian = 1,
+		/obj/item/storage/belt/military/nri = 1,
+		/obj/item/clothing/gloves/tackler/combat = 1,
+		/obj/item/clothing/under/costume/nri = 1,
+		/obj/item/clothing/mask/gas/hecu2 = 1,
+		/obj/item/clothing/shoes/combat = 1
+	),src)

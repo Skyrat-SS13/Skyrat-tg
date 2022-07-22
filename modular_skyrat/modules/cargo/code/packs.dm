@@ -615,10 +615,16 @@
 		new /obj/item/grown/log(.)
 
 /datum/supply_pack/security/armory/russian
+	name = "Imperial Surplus Crate"
+	desc = "Good time of the day Mister Comrade! We have the most modern imperial military equipment our shop can offer, for the right price of course. Sadly, all our equipment is military-grade and mostly armored so we would kindly ask you not to show it off too much."
+	contraband = TRUE
 	cost = CARGO_CRATE_VALUE * 15
 	contains = list(/obj/item/storage/box/nri_rations,
 					/obj/item/storage/box/nri_rations,
 					/obj/item/storage/box/nri_rations,
+					/obj/item/crucifix,
+					/obj/item/crucifix,
+					/obj/item/crucifix,
 					/obj/item/storage/toolbox/ammo,
 					/obj/item/storage/toolbox/maint_kit,
 					/obj/item/clothing/suit/armor/vest/russian,
@@ -629,7 +635,6 @@
 					/obj/item/clothing/under/costume/nri,
 					/obj/item/clothing/mask/gas/hecu2,
 					/obj/item/clothing/shoes/combat,
-					/obj/item/clothing/mask/russian_balaclava,
 					/obj/item/gun/ballistic/rifle/boltaction,
 					/obj/item/ammo_box/a762,
 					/obj/item/gun/ballistic/automatic/plastikov,
