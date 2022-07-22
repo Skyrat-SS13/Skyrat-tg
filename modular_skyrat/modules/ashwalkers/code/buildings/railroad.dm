@@ -78,11 +78,8 @@
 	railoverlay.layer = ABOVE_MOB_LAYER
 	railoverlay.plane = GAME_PLANE_UPPER
 	AddElement(/datum/element/ridable, /datum/component/riding/vehicle/rail_cart)
-	AddComponent(/datum/component/storage/concrete)
-	var/datum/component/storage/added_storage = GetComponent(/datum/component/storage)
-	added_storage.max_combined_w_class = 21
-	added_storage.max_w_class = WEIGHT_CLASS_NORMAL
-	added_storage.max_items = 21
+
+	create_storage(max_total_storage = 21, max_slots = 21)
 
 /obj/vehicle/ridden/rail_cart/post_buckle_mob(mob/living/M)
 	. = ..()
@@ -113,8 +110,7 @@
 
 /obj/vehicle/ridden/rail_cart/attack_hand(mob/living/user, list/modifiers)
 	. = ..()
-	var/datum/component/storage/rail_storage = GetComponent(/datum/component/storage)
-	rail_storage.open_storage(user)
+	atom_storage?.show_contents(user)
 
 /// searches the cardinal directions to add this cart to another cart's trailer
 /obj/vehicle/ridden/rail_cart/proc/attach_trailer()

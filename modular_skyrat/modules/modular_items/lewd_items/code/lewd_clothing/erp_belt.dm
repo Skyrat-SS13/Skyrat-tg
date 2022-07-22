@@ -11,12 +11,11 @@
 	drop_sound = 'sound/items/handling/toolbelt_drop.ogg'
 	pickup_sound =  'sound/items/handling/toolbelt_pickup.ogg'
 
-/obj/item/storage/belt/erpbelt/ComponentInitialize()
+/obj/item/storage/belt/erpbelt/Initialize()
 	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	STR.max_w_class = WEIGHT_CLASS_NORMAL
-	STR.max_combined_w_class = 21
-	STR.set_holdable(list(
+	atom_storage.max_specific_storage = WEIGHT_CLASS_NORMAL
+	atom_storage.max_total_storage = 21
+	atom_storage.set_holdable(list(
 						//toys
 						/obj/item/clothing/sextoy/eggvib/signalvib,
 						/obj/item/clothing/sextoy/buttplug,
