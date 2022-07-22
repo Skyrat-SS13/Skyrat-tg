@@ -19,7 +19,7 @@ GLOBAL_LIST_INIT(oddity_loot, list(// oddity: strange or crazy items
 	/obj/item/clothing/mask/animal/pig/cursed = 50,
 	/obj/item/clothing/shoes/bhop = 5,
 	/obj/item/clothing/suit/hooded/bloated_human = 100,
-	/obj/item/clothing/suit/poncho/ponchoshame = 50,
+	/obj/item/clothing/suit/costume/poncho/ponchoshame = 50,
 	/obj/item/desynchronizer = 5,
 	/obj/item/dice/d20/fate/stealth/one_use = 100,
 	/obj/item/dice/d20/fate/stealth/cursed/one_use = 100,

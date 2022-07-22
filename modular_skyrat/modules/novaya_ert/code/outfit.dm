@@ -83,7 +83,7 @@
 	ears = /obj/item/radio/headset/headset_cent/alt/with_key
 	mask = null
 	uniform = /obj/item/clothing/under/costume/russian_officer
-	suit = /obj/item/clothing/suit/security/officer/russian
+	suit = /obj/item/clothing/suit/jacket/officer/tan
 	suit_store = null
 	gloves = /obj/item/clothing/gloves/combat
 	belt = /obj/item/gun/ballistic/revolver/nagant
