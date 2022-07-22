@@ -29,7 +29,7 @@
 	var/change_sprite = TRUE
 	w_class = WEIGHT_CLASS_TINY
 	slot_flags = ITEM_SLOT_ANUS|ITEM_SLOT_VAGINA
-	moth_edible = FALSE
+	clothing_flags = INEDIBLE_CLOTHING
 
 /// Create an assoc list of designs for the radial color/design menu
 /obj/item/clothing/sextoy/dildo/proc/populate_dildo_designs()
@@ -192,7 +192,6 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 	var/static/list/dildo_sizes = list()
 	w_class = WEIGHT_CLASS_TINY
 	slot_flags = ITEM_SLOT_ANUS|ITEM_SLOT_VAGINA
-	moth_edible = FALSE
 
 /obj/item/clothing/sextoy/dildo/custom_dildo/populate_dildo_designs()
 	dildo_sizes = list(
@@ -265,7 +264,6 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 	/// Reference to the end of the toy that you can hold when the other end is inserted in you
 	var/obj/item/clothing/sextoy/dildo_side/the_toy
 	change_sprite = FALSE
-	moth_edible = FALSE
 
 /obj/item/clothing/sextoy/dildo/double_dildo/Initialize()
 	. = ..()
@@ -403,7 +401,6 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 	icon_state = "dildo_side"
 	inhand_icon_state = "nothing"
 	item_flags = ABSTRACT | HAND_ITEM
-	moth_edible = FALSE
 	side_double = TRUE
 
 /obj/item/clothing/sextoy/dildo_side/dildo/Initialize()
