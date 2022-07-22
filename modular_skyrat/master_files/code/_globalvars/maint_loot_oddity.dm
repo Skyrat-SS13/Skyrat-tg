@@ -5,7 +5,7 @@ GLOBAL_LIST_INIT(oddity_loot, list(// oddity: strange or crazy items
 	/obj/item/abductor_machine_beacon/chem_dispenser = 25,
 	/obj/item/ai_module/toy_ai = 5,
 	/obj/item/airlock_painter/decal/debug = 25,
-	/obj/item/autosurgeon/organ/cmo = 5,
+	/obj/item/autosurgeon/medical_hud = 5,
 	/obj/item/batterer = 100,
 	/obj/item/book_of_babel = 25,
 	/obj/item/chameleon = 5,
