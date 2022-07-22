@@ -20,10 +20,11 @@
 	var/path = "data/player_saves/[ckey[1]]/[ckey]/nif.sav"
 	var/savefile/save = new /savefile(path)
 
-	var/nif_path = installed_nif.type
-	if(!nif_path)
+	if(!installed_nif)
 		WRITE_FILE(save["nif_path"], FALSE)
 		return
+
+	var/nif_path = installed_nif.type
 
 	WRITE_FILE(save["nif_path"], nif_path)
 	WRITE_FILE(save["nif_durability"], installed_nif.durability)
@@ -40,7 +41,6 @@
 	var/nif_path
 	READ_FILE(save["nif_path"], nif_path)
 
-	to_chat(src, span_warning("[nif_path]"))
 	if(!nif_path)
 		return
 
