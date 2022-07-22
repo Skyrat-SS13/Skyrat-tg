@@ -1156,8 +1156,6 @@
 	burning_volume = 0.2
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	addiction_types = list(/datum/addiction/alcohol = 4)
-	liquid_fire_power = 10 //SKYRAT EDIT ADDITION
-	liquid_fire_burnrate = 0.1 //SKYRAT EDIT ADDITION
 
 /datum/reagent/fuel/expose_mob(mob/living/exposed_mob, methods=TOUCH, reac_volume)//Splashing people with welding fuel to make them easy to ignite!
 	. = ..()
