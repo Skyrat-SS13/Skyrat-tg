@@ -21,6 +21,17 @@
 	armor = list(MELEE = 30, BULLET = 40, LASER = 20, ENERGY = 30, BOMB = 35, BIO = 0, FIRE = 50, ACID = 50, WOUND = 15)
 	supports_variations_flags = CLOTHING_NO_VARIATION
 	inhand_icon_state = "rus_armor"
+	uses_advanced_reskins = TRUE
+	unique_reskin = list(
+		"Basic" = list(
+			RESKIN_ICON_STATE = "russian_green_armor",
+			RESKIN_WORN_ICON_STATE = "russian_green_armor"
+		),
+		"Corpsman" = list(
+			RESKIN_ICON_STATE = "russian_medic_armor",
+			RESKIN_WORN_ICON_STATE = "russian_medic_armor"
+		),
+	)
 
 /obj/item/clothing/suit/armor/vest/russian/mob_can_equip(mob/living/M, mob/living/equipper, slot, disable_warning, bypass_equip_delay_self)
 	if(is_species(M, /datum/species/teshari))

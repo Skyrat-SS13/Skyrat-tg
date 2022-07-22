@@ -10,7 +10,7 @@
 	fire_delay = 1
 	burst_size = 5
 	dual_wield_spread = 10
-	spread = 15
+	spread = 10
 	can_suppress = FALSE
 	projectile_damage_multiplier = 0.75 // It's like ~20 damage per bullet, it's close enough to less than 10 shots
 	mag_display = TRUE

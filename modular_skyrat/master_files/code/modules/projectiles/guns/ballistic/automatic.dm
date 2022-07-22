@@ -82,7 +82,7 @@
 	inhand_icon_state = "plastikov"
 	mag_type = /obj/item/ammo_box/magazine/plastikov9mm
 	burst_size = 5
-	spread = 25
+	spread = 15
 	can_suppress = FALSE
 	projectile_damage_multiplier = 0.35 // It's like 10.5 damage per bullet, it's close enough to 10 shots
 	mag_display = TRUE
