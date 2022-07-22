@@ -145,13 +145,10 @@
 	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/slime_squish.ogg' = 1)
 	young = TRUE //No.
 //Storage component for Sharknet Plushie//
-/obj/item/toy/plush/skyrat/sharknet/ComponentInitialize()
-	var/datum/component/storage/concrete/storage = AddComponent(/datum/component/storage/concrete)
-	storage.max_items = 2
-	storage.max_w_class = WEIGHT_CLASS_SMALL
-	storage.set_holdable(list(
-		/obj/item/toy/plush/skyrat/pintaplush,
-		))
+/obj/item/toy/plush/sharknet/Initialize()
+	. = ..()
+
+	create_storage(max_slots = 2, max_specific_storage = WEIGHT_CLASS_SMALL, canhold = list(/obj/item/toy/plush/skyrat/pintaplush))
 //End of storage component//
 
 /obj/item/toy/plush/skyrat/pintaplush
