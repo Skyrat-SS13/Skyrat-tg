@@ -68,7 +68,7 @@
 	name = "\improper Pan-Slavic translation key"
 	desc = "An encryption key that automatically encodes Pan-Slavic heard through the radio into common."
 	icon_state = "translation_cypherkey"
-	translated_language = /datum/language/neorusskya
+	translated_language = /datum/language/panslavic
 
 /obj/item/encryptionkey/skrellian
 	name = "\improper Skrellian translation key"
