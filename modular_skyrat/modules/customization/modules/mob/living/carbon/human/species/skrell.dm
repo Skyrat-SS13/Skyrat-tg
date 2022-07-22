@@ -110,7 +110,6 @@
 		/datum/language/shadowtongue,
 		/datum/language/terrum,
 		/datum/language/vox,
-		/datum/language/dwarf,
 		/datum/language/nekomimetic,
 		/datum/language/skrell,
 	))
