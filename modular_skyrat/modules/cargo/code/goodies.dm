@@ -30,8 +30,17 @@
 /datum/supply_pack/goody/improvedrcd
 	name = "Improved RCD"
 	desc = "An upgraded RCD featuring superior material storage, and a complementary frames, and circuits upgrade to boot!"
-	cost = PAYCHECK_CREW * 80
+	cost = PAYCHECK_CREW * 38
 	contains = list(/obj/item/construction/rcd/combat/improved)
+	
+	
+/datum/supply_pack/goody/improvedrcdbonus
+	name = "Improved RCD  Value Pack"
+	desc = "A pack of 3 upgraded RCDs featuring superior material storage, and a complementary frames, and circuits upgrade to boot!"
+	cost = PAYCHECK_CREW * 100
+	contains = list(/obj/item/construction/rcd/combat/improved,
+					/obj/item/construction/rcd/combat/improved,
+					/obj/item/construction/rcd/combat/improved)
 
 /*
 *	MISC
@@ -129,5 +138,5 @@
 /datum/supply_pack/goody/afad
 	name = "Automated First Aid Device"
 	desc = "Someone hurt, and it's to much of a bother to manually handle their burns, or cuts? Look no further then the AFAD, a state of the art first-aid device!"
-	cost = PAYCHECK_CREW * 100 // Starting price, to see where it sits balance-wise after a week or two.
+	cost = PAYCHECK_CREW * 65 
 	contains = list(/obj/item/gun/afad)
