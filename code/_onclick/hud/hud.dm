@@ -101,8 +101,11 @@ GLOBAL_LIST_INIT(available_erp_ui_styles, list(
 	var/atom/movable/screen/healths
 	var/atom/movable/screen/stamina
 	var/atom/movable/screen/healthdoll
+<<<<<<< HEAD
 	var/atom/movable/screen/internals
 	var/atom/movable/screen/wanted/wanted_lvl
+=======
+>>>>>>> 8e4327b2905 (Removes Internals HUD element (#68523))
 	var/atom/movable/screen/spacesuit
 	// subtypes can override this to force a specific UI style
 	var/ui_style
@@ -174,8 +177,11 @@ GLOBAL_LIST_INIT(available_erp_ui_styles, list(
 	healths = null
 	stamina = null
 	healthdoll = null
+<<<<<<< HEAD
 	wanted_lvl = null
 	internals = null
+=======
+>>>>>>> 8e4327b2905 (Removes Internals HUD element (#68523))
 	spacesuit = null
 	blobpwrdisplay = null
 	alien_plasma_display = null
@@ -416,6 +422,9 @@ GLOBAL_LIST_INIT(available_erp_ui_styles, list(
 			listed_actions.insert_action(button)
 		if(SCRN_OBJ_IN_PALETTE)
 			palette_actions.insert_action(button)
+		if(SCRN_OBJ_INSERT_FIRST)
+			listed_actions.insert_action(button, index = 1)
+			position = SCRN_OBJ_IN_LIST
 		else // If we don't have it as a define, this is a screen_loc, and we should be floating
 			floating_actions += button
 			button.screen_loc = position
