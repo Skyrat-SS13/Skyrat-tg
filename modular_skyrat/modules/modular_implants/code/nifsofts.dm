@@ -61,10 +61,6 @@
 		installed_nif.power_usage += active_cost
 		active = TRUE
 
-	///Delete this later
-	to_chat(installed_nif.linked_mob, span_notice("bababoeey"))
-	return TRUE
-
 /obj/item/disk/nifsoft_uploader
 	name = "Generic NIFSoft datadisk"
 	desc = "A datadisk that can be used to upload a loaded NIFSoft to the user's NIF"
