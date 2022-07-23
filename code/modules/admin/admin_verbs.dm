@@ -142,6 +142,7 @@ GLOBAL_PROTECT(admin_verbs_server)
 	/datum/admins/proc/restart,
 	/datum/admins/proc/end_round,
 	/datum/admins/proc/delay,
+	/datum/admins/proc/delay_round_end,
 	/datum/admins/proc/toggleaban,
 	/client/proc/everyone_random,
 	/datum/admins/proc/toggleAI,
@@ -238,6 +239,7 @@ GLOBAL_PROTECT(admin_verbs_permissions)
 GLOBAL_LIST_INIT(admin_verbs_poll, list(/client/proc/poll_panel))
 GLOBAL_PROTECT(admin_verbs_poll)
 
+<<<<<<< HEAD
 //verbs which can be hidden - needs work
 GLOBAL_LIST_INIT(admin_verbs_hideable, list(
 	/client/proc/set_ooc,
@@ -311,6 +313,8 @@ GLOBAL_LIST_INIT(admin_verbs_hideable, list(
 	))
 GLOBAL_PROTECT(admin_verbs_hideable)
 
+=======
+>>>>>>> 934728ac406 (Add delay round end to the server tab (#68455))
 /client/proc/add_admin_verbs()
 	if(holder)
 		control_freak = CONTROL_FREAK_SKIN | CONTROL_FREAK_MACROS

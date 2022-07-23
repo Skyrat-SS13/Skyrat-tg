@@ -196,7 +196,9 @@
 			return
 		shuttle_console.admin_controlled = !shuttle_console.admin_controlled
 		to_chat(usr, "[shuttle_console] was [shuttle_console.admin_controlled ? "locked" : "unlocked"].", confidential = TRUE)
+
 	else if(href_list["delay_round_end"])
+<<<<<<< HEAD
 		//SKYRAT EDIT CHANGE BEGIN
 		/*
 		if(!check_rights(R_SERVER))
@@ -223,6 +225,11 @@
 
 		log_admin("[key_name(usr)] delayed the round end for reason: [SSticker.admin_delay_notice]")
 		message_admins("[key_name_admin(usr)] delayed the round end for reason: [SSticker.admin_delay_notice]")
+=======
+		// Permissions are checked in delay_round_end
+		delay_round_end()
+
+>>>>>>> 934728ac406 (Add delay round end to the server tab (#68455))
 	else if(href_list["undelay_round_end"])
 		if(!check_rights(R_SERVER))
 			return
