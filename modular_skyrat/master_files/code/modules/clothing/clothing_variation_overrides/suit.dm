@@ -130,10 +130,10 @@
 	supports_variations_flags = NONE
 
 /obj/item/clothing/suit/costume/sybil_slickers
-supports_variations_flags = NONE
+	supports_variations_flags = NONE
 
 /obj/item/clothing/suit/costume/basil_boys
-supports_variations_flags = NONE
+	supports_variations_flags = NONE
 
 /obj/item/clothing/suit/security
 	supports_variations_flags = NONE
