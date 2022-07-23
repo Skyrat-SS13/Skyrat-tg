@@ -79,7 +79,6 @@
 		return
 	lungs_holding.Insert(carbon_holder, drop_if_replaced = FALSE)
 	lungs_holding.organ_flags &= ~ORGAN_FROZEN
-	carbon_holder.update_internals_hud_icon(1)
 
 /datum/quirk/equipping/lungs/on_equip_item(obj/item/equipped, success)
 	var/mob/living/carbon/human/human_holder = quirk_holder
@@ -135,4 +134,3 @@
 	if (!success || !istype(carbon_holder) || !istype(equipped, /obj/item/tank/internals))
 		return
 	carbon_holder.internal = equipped
-	carbon_holder.update_internals_hud_icon(1)
