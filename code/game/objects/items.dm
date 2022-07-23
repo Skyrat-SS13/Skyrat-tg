@@ -360,6 +360,8 @@ GLOBAL_DATUM_INIT(welding_sparks, /mutable_appearance, mutable_appearance('icons
 		worn_icon_digi = SSgreyscale.GetColoredIconByType(greyscale_config_worn_digi, greyscale_colors)
 	if(greyscale_config_worn_vox)
 		worn_icon_vox = SSgreyscale.GetColoredIconByType(greyscale_config_worn_vox, greyscale_colors)
+	if(greyscale_config_worn_better_vox)
+		worn_icon_better_vox = SSgreyscale.GetColoredIconByType(greyscale_config_worn_better_vox, greyscale_colors)
 	if(greyscale_config_worn_teshari)
 		worn_icon_teshari = SSgreyscale.GetColoredIconByType(greyscale_config_worn_teshari, greyscale_colors)
 	if(greyscale_config_worn_taur_snake)
@@ -562,7 +564,7 @@ GLOBAL_DATUM_INIT(welding_sparks, /mutable_appearance, mutable_appearance('icons
 
 
 	//If the item is in a storage item, take it out
-	SEND_SIGNAL(loc, COMSIG_TRY_STORAGE_TAKE, src, user.loc, TRUE)
+	loc.atom_storage?.attempt_remove(src, user.loc, silent = TRUE)
 	if(QDELETED(src)) //moving it out of the storage to the floor destroyed it.
 		return
 
@@ -597,7 +599,7 @@ GLOBAL_DATUM_INIT(welding_sparks, /mutable_appearance, mutable_appearance('icons
 		return
 
 	//If the item is in a storage item, take it out
-	SEND_SIGNAL(loc, COMSIG_TRY_STORAGE_TAKE, src, user.loc, TRUE)
+	loc.atom_storage?.attempt_remove(src, user.loc, silent = TRUE)
 	if(QDELETED(src)) //moving it out of the storage to the floor destroyed it.
 		return
 
@@ -786,9 +788,9 @@ GLOBAL_DATUM_INIT(welding_sparks, /mutable_appearance, mutable_appearance('icons
 	else
 		return
 
-/obj/item/on_exit_storage(datum/component/storage/concrete/master_storage)
+/obj/item/on_exit_storage(datum/storage/master_storage)
 	. = ..()
-	var/atom/location = master_storage.real_location()
+	var/atom/location = master_storage.real_location?.resolve()
 	do_drop_animation(location)
 
 /obj/item/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
@@ -837,8 +839,8 @@ GLOBAL_DATUM_INIT(welding_sparks, /mutable_appearance, mutable_appearance('icons
 /obj/item/proc/remove_item_from_storage(atom/newLoc) //please use this if you're going to snowflake an item out of a obj/item/storage
 	if(!newLoc)
 		return FALSE
-	if(SEND_SIGNAL(loc, COMSIG_CONTAINS_STORAGE))
-		return SEND_SIGNAL(loc, COMSIG_TRY_STORAGE_TAKE, src, newLoc, TRUE)
+	if(loc.atom_storage)
+		return loc.atom_storage.attempt_remove(src, newLoc, silent = TRUE)
 	return FALSE
 
 /// Returns the icon used for overlaying the object on a belt
@@ -1000,7 +1002,7 @@ GLOBAL_DATUM_INIT(welding_sparks, /mutable_appearance, mutable_appearance('icons
 
 /obj/item/MouseEntered(location, control, params)
 	. = ..()
-	if(get(src, /mob) == usr && !QDELETED(src))
+	if(((get(src, /mob) == usr) || loc?.atom_storage || (item_flags & IN_STORAGE)) && !QDELETED(src)) //nullspace exists.
 		var/mob/living/L = usr
 		if(usr.client.prefs.read_preference(/datum/preference/toggle/enable_tooltips))
 			var/timedelay = usr.client.prefs.read_preference(/datum/preference/numeric/tooltip_delay) / 100
@@ -1021,8 +1023,8 @@ GLOBAL_DATUM_INIT(welding_sparks, /mutable_appearance, mutable_appearance('icons
 	remove_filter("hover_outline")
 
 /obj/item/proc/apply_outline(outline_color = null)
-	if(get(src, /mob) != usr || QDELETED(src) || isobserver(usr)) //cancel if the item isn't in an inventory, is being deleted, or if the person hovering is a ghost (so that people spectating you don't randomly make your items glow)
-		return
+	if(((get(src, /mob) != usr) && !loc?.atom_storage && !(item_flags & IN_STORAGE)) || QDELETED(src) || isobserver(usr)) //cancel if the item isn't in an inventory, is being deleted, or if the person hovering is a ghost (so that people spectating you don't randomly make your items glow)
+		return FALSE
 	var/theme = lowertext(usr.client?.prefs?.read_preference(/datum/preference/choiced/ui_style))
 	if(!outline_color) //if we weren't provided with a color, take the theme's color
 		switch(theme) //yeah it kinda has to be this way
@@ -1447,7 +1449,7 @@ GLOBAL_DATUM_INIT(welding_sparks, /mutable_appearance, mutable_appearance('icons
 	return
 
 /// Whether or not this item can be put into a storage item through attackby
-/obj/item/proc/attackby_storage_insert(datum/component/storage, atom/storage_holder, mob/user)
+/obj/item/proc/attackby_storage_insert(datum/storage, atom/storage_holder, mob/user)
 	return TRUE
 
 /obj/item/proc/do_pickup_animation(atom/target)
@@ -1485,6 +1487,9 @@ GLOBAL_DATUM_INIT(welding_sparks, /mutable_appearance, mutable_appearance('icons
 
 /obj/item/proc/do_drop_animation(atom/moving_from)
 	if(!istype(loc, /turf))
+		return
+
+	if(!istype(moving_from))
 		return
 
 	var/turf/current_turf = get_turf(src)

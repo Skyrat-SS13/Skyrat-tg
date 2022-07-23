@@ -86,6 +86,10 @@
 
 //Called when we bump onto a mob
 /mob/living/proc/MobBump(mob/M)
+	//No bumping/swapping/pushing others if you are on walk intent
+	if(m_intent == MOVE_INTENT_WALK)
+		return TRUE
+
 	SEND_SIGNAL(src, COMSIG_LIVING_MOB_BUMP, M)
 	//Even if we don't push/swap places, we "touched" them, so spread fire
 	spreadFire(M)
@@ -677,7 +681,7 @@
 	var/list/ret = list()
 	ret |= contents //add our contents
 	for(var/atom/iter_atom as anything in ret.Copy()) //iterate storage objects
-		SEND_SIGNAL(iter_atom, COMSIG_TRY_STORAGE_RETURN_INVENTORY, ret)
+		iter_atom.atom_storage?.return_inv(ret)
 	for(var/obj/item/folder/F in ret.Copy()) //very snowflakey-ly iterate folders
 		ret |= F.contents
 	return ret
@@ -919,8 +923,8 @@
 		var/mob/living/L = pulledby
 		L.set_pull_offsets(src, pulledby.grab_state)
 
-	if(active_storage && !((active_storage.parent in important_recursive_contents?[RECURSIVE_CONTENTS_ACTIVE_STORAGE]) || CanReach(active_storage.parent,view_only = TRUE)))
-		active_storage.close(src)
+	if(active_storage && !((active_storage.parent?.resolve() in important_recursive_contents?[RECURSIVE_CONTENTS_ACTIVE_STORAGE]) || CanReach(active_storage.parent?.resolve(),view_only = TRUE)))
+		active_storage.hide_contents(src)
 
 	if(body_position == LYING_DOWN && !buckled && prob(getBruteLoss()*200/maxHealth))
 		makeTrail(newloc, T, old_direction)

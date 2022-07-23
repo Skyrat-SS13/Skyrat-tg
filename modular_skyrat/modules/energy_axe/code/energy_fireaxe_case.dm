@@ -10,5 +10,5 @@
 	new /obj/item/fireaxe/energy(src)
 	new /obj/item/extinguisher/advanced(src)
 	new /obj/item/extinguisher/advanced(src)
-	new /obj/item/clothing/suit/fire/atmos(src)
+	new /obj/item/clothing/suit/utility/fire/atmos(src)
 	new /obj/item/tank/internals/oxygen/red(src)

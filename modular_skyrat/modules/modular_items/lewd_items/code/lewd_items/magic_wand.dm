@@ -24,7 +24,7 @@
 	var/mutable_appearance/magicwand_overlay
 	w_class = WEIGHT_CLASS_TINY
 	slot_flags = ITEM_SLOT_VAGINA|ITEM_SLOT_PENIS
-	moth_edible = FALSE
+	clothing_flags = INEDIBLE_CLOTHING
 
 //some stuff for making overlay of this item. Why? Because.
 /obj/item/clothing/sextoy/magic_wand/worn_overlays(isinhands = FALSE)

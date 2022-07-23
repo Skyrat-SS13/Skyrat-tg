@@ -84,7 +84,7 @@
 
 /obj/machinery/vending/wardrobe/chap_wardrobe
 	skyrat_products = list(
-		/obj/item/clothing/suit/nemes = 1,
+		/obj/item/clothing/suit/costume/nemes = 1,
 		/obj/item/clothing/head/nemes = 1,
 		/obj/item/clothing/head/pharaoh = 1, //dont google camel by camel worst mistake of my life
 		/obj/item/clothing/under/rank/pmarsrobe = 1
