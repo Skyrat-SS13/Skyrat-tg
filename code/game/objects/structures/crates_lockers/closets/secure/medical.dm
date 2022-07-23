@@ -62,7 +62,7 @@
 	new /obj/item/storage/backpack/medic(src)
 	new /obj/item/radio/headset/headset_srvmed(src)
 	new /obj/item/clipboard(src)
-	new /obj/item/clothing/suit/straight_jacket(src)
+	new /obj/item/clothing/suit/jacket/straight_jacket(src)
 	new /obj/item/clothing/ears/earmuffs(src)
 	new /obj/item/clothing/mask/muzzle(src)
 	new /obj/item/clothing/glasses/blindfold(src)
@@ -87,7 +87,7 @@
 	new /obj/item/storage/briefcase/medicalgunset/cmo(src) //SKYRAT ADDITON MEDIGUNS//
 	// new /obj/item/reagent_containers/hypospray/cmo(src) - SKYRAT REMOVAL - New Hyposprays
 	new /obj/item/storage/hypospraykit/cmo(src) //SKYRAT ADDITION - New Hyposprays
-	new /obj/item/autosurgeon/organ/cmo(src)
+	new /obj/item/autosurgeon/medical_hud(src)
 	new /obj/item/door_remote/chief_medical_officer(src)
 	new /obj/item/clothing/neck/petcollar(src)
 	new /obj/item/pet_carrier(src)
