@@ -110,12 +110,12 @@
 
 /datum/job/orderly
 	title = JOB_ORDERLY
-	description = "Defend the medical department, hold down idiots who refuse the vaccine, flex your muscles at people who fuck with medical."
+	description = "Defend the medical department, hold down idiots who refuse the vaccine, flex your muscles at people who fuck with medical, work with the security department."
 	department_head = list(JOB_CHIEF_MEDICAL_OFFICER)
 	faction = FACTION_STATION
 	total_positions = 2
 	spawn_positions = 2
-	supervisors = "the chief medical officer, <b>NOT SECURITY</b>"
+	supervisors = "the chief medical officer"
 	selection_color = "#ffeeee"
 	exp_granted_type = EXP_TYPE_CREW
 
@@ -179,12 +179,12 @@
 
 /datum/job/science_guard
 	title = JOB_SCIENCE_GUARD // I'm a little busy here, Calhoun.
-	description = "Figure out why the emails aren't working, keep an eye on those eggheads, keep them safe from their mistakes."
+	description = "Figure out why the emails aren't working, keep an eye on those eggheads, keep them safe from their mistakes, work with the security department."
 	department_head = list(JOB_RESEARCH_DIRECTOR)
 	faction = FACTION_STATION
 	total_positions = 2
 	spawn_positions = 2
-	supervisors = "the research director, <b>NOT SECURITY</b>"
+	supervisors = "the research director"
 	selection_color = "#ffeeee"
 	exp_granted_type = EXP_TYPE_CREW
 
@@ -248,12 +248,12 @@
 
 /datum/job/bouncer
 	title = JOB_BOUNCER
-	description = "Tell people they aren't on the list. Check people's IDs. Tell them to fuck off and get real ID."
+	description = "Tell people they aren't on the list, check people's IDs, tell them to fuck off and get real ID, work with the security department."
 	department_head = list(JOB_HEAD_OF_PERSONNEL)
 	faction = FACTION_STATION
 	total_positions = 2
 	spawn_positions = 2
-	supervisors = "the head of personnel, <b>NOT SECURITY</b>"
+	supervisors = "the head of personnel"
 	selection_color = "#ffeeee"
 	exp_granted_type = EXP_TYPE_CREW
 
@@ -321,12 +321,12 @@
 
 /datum/job/customs_agent
 	title = JOB_CUSTOMS_AGENT // No, you don't get to ship ten kilograms of cocaine to the Spinward Stellar Coalition.
-	description = "Inspect the packages coming to and from the station, protect the cargo department, beat the shit out of people trying to ship Cocaine to the Spinward Stellar Coalition."
+	description = "Inspect the packages coming to and from the station, protect the cargo department, beat the shit out of people trying to ship Cocaine to the Spinward Stellar Coalition, work with the security department."
 	department_head = list(JOB_QUARTERMASTER)
 	faction = FACTION_STATION
 	total_positions = 2
 	spawn_positions = 2
-	supervisors = "the quartermaster, <b>NOT SECURITY</b>"
+	supervisors = "the quartermaster"
 	selection_color = "#ffeeee"
 	exp_granted_type = EXP_TYPE_CREW
 
@@ -388,12 +388,12 @@
 
 /datum/job/engineering_guard
 	title = JOB_ENGINEERING_GUARD // Listen here, this engine is a restricted area. Please leave if you aren't wearing a radioactive suit.
-	description = "Spy on the supermatter, keep an eye on atmospherics, fall asleep at your desk."
+	description = "Spy on the supermatter, keep an eye on atmospherics, fall asleep at your desk, work with the security department."
 	department_head = list(JOB_CHIEF_ENGINEER)
 	faction = FACTION_STATION
 	total_positions = 2
 	spawn_positions = 2
-	supervisors = "the chief engineer, <b>NOT SECURITY</b>"
+	supervisors = "the chief engineer"
 	selection_color = "#ffeeee"
 	exp_granted_type = EXP_TYPE_CREW
 
