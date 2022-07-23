@@ -410,6 +410,7 @@
 	name = "armor"
 	desc = "A slim armored vest that protects against most types of damage."
 	icon_state = "armor"
+	worn_icon = 'icons/mob/clothing/suits/armor.dmi'
 	inhand_icon_state = "armor"
 	blood_overlay_type = "armor"
 	resistance_flags = NONE
@@ -623,9 +624,7 @@
 
 /obj/item/clothing/shoes/chameleon/Initialize(mapload)
 	. = ..()
-
 	create_storage(type = /datum/storage/pockets/shoes)
-
 	chameleon_action = new(src)
 	chameleon_action.chameleon_type = /obj/item/clothing/shoes
 	chameleon_action.chameleon_name = "Shoes"

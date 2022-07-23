@@ -1,3 +1,7 @@
+// WEE WOO WEE WOO WANTED
+/datum/hud
+	var/atom/movable/screen/wanted/wanted_lvl
+
 /atom/movable/screen/wanted
 	name = "Space Police Alertness"
 	desc = "Shows the current level of hostility the space police is planning to rain down on you. Better be careful."
