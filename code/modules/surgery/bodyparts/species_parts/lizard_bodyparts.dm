@@ -81,11 +81,6 @@
 
 		if((uniform_compatible && suit_compatible && shoes_compatible) || (suit_compatible && shoes_compatible && human_owner.wear_suit?.flags_inv & HIDEJUMPSUIT)) //If the uniform is hidden, it doesnt matter if its compatible
 			limb_id = BODYPART_TYPE_DIGITIGRADE
-
 		else
-<<<<<<< HEAD
-			limb_id = "lizard"
-*/
-=======
 			limb_id = SPECIES_LIZARD
->>>>>>> ffc2a746df3 (Fixes xenomorph corrosive acid being used on mobs & fixes xeno limb examines (#68246))
+*/
