@@ -18,21 +18,6 @@ GLOBAL_PROTECT(config_error_log)
 GLOBAL_VAR(demo_log)
 GLOBAL_PROTECT(demo_log)
 
-<<<<<<< HEAD
-GLOBAL_LIST_EMPTY(bombers)
-GLOBAL_PROTECT(bombers)
-GLOBAL_LIST_EMPTY(admin_log)
-GLOBAL_PROTECT(admin_log)
-GLOBAL_LIST_EMPTY(lastsignalers) //keeps last 100 signals here in format: "[src] used [REF(src)] @ location [src.loc]: [freq]/[code]"
-GLOBAL_PROTECT(lastsignalers)
-GLOBAL_LIST_EMPTY(lawchanges) //Stores who uploaded laws to which silicon-based lifeform, and what the law was
-GLOBAL_PROTECT(lawchanges)
-
-GLOBAL_LIST_EMPTY(combatlog)
-GLOBAL_PROTECT(combatlog)
-GLOBAL_LIST_EMPTY(IClog)
-GLOBAL_PROTECT(IClog)
-=======
 GLOBAL_VAR(dynamic_log)
 GLOBAL_PROTECT(dynamic_log)
 
@@ -61,7 +46,6 @@ GLOBAL_PROTECT(log_directory)
 GLOBAL_VAR(lua_log)
 GLOBAL_PROTECT(lua_log)
 
->>>>>>> d118597b7cf (Puts dynamic logging into its own file (#68532))
 GLOBAL_LIST_EMPTY(OOClog)
 GLOBAL_PROTECT(OOClog)
 

@@ -151,13 +151,6 @@ GLOBAL_VAR(restart_counter)
 	GLOB.world_pda_log = "[GLOB.log_directory]/pda.log"
 	GLOB.world_runtime_log = "[GLOB.log_directory]/runtime.log"
 	GLOB.world_shuttle_log = "[GLOB.log_directory]/shuttle.log"
-<<<<<<< HEAD
-	GLOB.filter_log = "[GLOB.log_directory]/filters.log"
-
-	GLOB.character_creation_log = "[GLOB.log_directory]/creator.log" // SKYRAT EDIT ADDITION
-
-	GLOB.demo_log = "[GLOB.log_directory]/demo.log"
-=======
 	GLOB.world_silicon_log = "[GLOB.log_directory]/silicon.log"
 	GLOB.world_speech_indicators_log = "[GLOB.log_directory]/speech_indicators.log"
 	GLOB.world_suspicious_login_log = "[GLOB.log_directory]/suspicious_logins.log"
@@ -165,8 +158,8 @@ GLOBAL_VAR(restart_counter)
 	GLOB.world_tool_log = "[GLOB.log_directory]/tools.log"
 	GLOB.world_uplink_log = "[GLOB.log_directory]/uplink.log"
 	GLOB.world_virus_log = "[GLOB.log_directory]/virus.log"
->>>>>>> d118597b7cf (Puts dynamic logging into its own file (#68532))
 
+	GLOB.character_creation_log = "[GLOB.log_directory]/creator.log" // SKYRAT EDIT ADDITION
 	GLOB.event_vote_log = "[GLOB.log_directory]/event_vote.log" // SKYRAT EDIT ADDITION
 
 #ifdef UNIT_TESTS
@@ -189,16 +182,14 @@ GLOBAL_VAR(restart_counter)
 	start_log(GLOB.world_qdel_log)
 	start_log(GLOB.world_runtime_log)
 	start_log(GLOB.world_shuttle_log)
-<<<<<<< HEAD
+	start_log(GLOB.world_telecomms_log)
+	start_log(GLOB.world_uplink_log)
+	start_log(GLOB.world_pda_log)
+
 	// SKYRAT EDIT ADDITION
 	start_log(GLOB.event_vote_log)
 	start_log(GLOB.character_creation_log)
 	// SKYRAT EDIT END
-=======
-	start_log(GLOB.world_telecomms_log)
-	start_log(GLOB.world_uplink_log)
-	start_log(GLOB.world_pda_log)
->>>>>>> d118597b7cf (Puts dynamic logging into its own file (#68532))
 
 	var/latest_changelog = file("[global.config.directory]/../html/changelogs/archive/" + time2text(world.timeofday, "YYYY-MM") + ".yml")
 	GLOB.changelog_hash = fexists(latest_changelog) ? md5(latest_changelog) : 0 //for telling if the changelog has changed recently
