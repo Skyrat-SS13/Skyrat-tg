@@ -198,38 +198,9 @@
 		to_chat(usr, "[shuttle_console] was [shuttle_console.admin_controlled ? "locked" : "unlocked"].", confidential = TRUE)
 
 	else if(href_list["delay_round_end"])
-<<<<<<< HEAD
-		//SKYRAT EDIT CHANGE BEGIN
-		/*
-		if(!check_rights(R_SERVER))
-			return
-		*/
-		if(!check_rights(R_ADMIN))
-			return
-		//SKYRAT EDIT END
-		if(SSticker.delay_end)
-			tgui_alert(usr, "The round end is already delayed. The reason for the current delay is: \"[SSticker.admin_delay_notice]\"", "Alert", list("Ok"))
-			return
-
-		var/delay_reason = input(usr, "Enter a reason for delaying the round end", "Round Delay Reason") as null|text
-
-		if(isnull(delay_reason))
-			return
-
-		if(SSticker.delay_end)
-			tgui_alert(usr, "The round end is already delayed. The reason for the current delay is: \"[SSticker.admin_delay_notice]\"", "Alert", list("Ok"))
-			return
-
-		SSticker.delay_end = TRUE
-		SSticker.admin_delay_notice = delay_reason
-
-		log_admin("[key_name(usr)] delayed the round end for reason: [SSticker.admin_delay_notice]")
-		message_admins("[key_name_admin(usr)] delayed the round end for reason: [SSticker.admin_delay_notice]")
-=======
 		// Permissions are checked in delay_round_end
 		delay_round_end()
 
->>>>>>> 934728ac406 (Add delay round end to the server tab (#68455))
 	else if(href_list["undelay_round_end"])
 		if(!check_rights(R_SERVER))
 			return
