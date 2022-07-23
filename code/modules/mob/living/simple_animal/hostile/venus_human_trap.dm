@@ -200,19 +200,6 @@
 		L.Knockdown(1 SECONDS)
 	ranged_cooldown = world.time + ranged_cooldown_time
 
-<<<<<<< HEAD
-/mob/living/simple_animal/hostile/venus_human_trap/Login()
-	. = ..()
-	to_chat(src, span_boldwarning("You are a venus human trap!  Protect the kudzu at all costs, and feast on those who oppose you!"))
-
-/mob/living/simple_animal/hostile/venus_human_trap/attack_ghost(mob/user)
-	. = ..()
-	if(. || !(GLOB.ghost_role_flags & GHOSTROLE_SPAWNER))
-		return
-	//humanize_plant(user) SKYRAT EDIT REMOVAL
-
-=======
->>>>>>> 32e84471a9a ([READY] Venus human trap fix 3.0: Allow ghosts to possess them even when obscured, use better spawning system (#67418))
 /mob/living/simple_animal/hostile/venus_human_trap/Destroy()
 	for(var/datum/beam/vine as anything in vines)
 		qdel(vine) // reference is automatically deleted by remove_vine
