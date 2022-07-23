@@ -119,16 +119,6 @@
 		players = GLOB.player_list
 
 	for(var/mob/target in players)
-<<<<<<< HEAD
-		if(!isnewplayer(target) && target.can_hear())
-			to_chat(target, "[span_minorannounce("<font color = red>[title]</font color><BR>[message]")]<BR>")
-			if(target.client.prefs.toggles & SOUND_ANNOUNCEMENTS)
-				if(alert)
-					SEND_SOUND(target, sound('sound/misc/notice1.ogg'))
-				else
-					SEND_SOUND(M, sound('sound/misc/notice2.ogg'))
-*/
-=======
 		if(isnewplayer(target))
 			continue
 		if(!target.can_hear())
@@ -138,4 +128,4 @@
 		if(target.client?.prefs.toggles & SOUND_ANNOUNCEMENTS)
 			var/sound_to_play = sound_override || (alert ? 'sound/misc/notice1.ogg' : 'sound/misc/notice2.ogg')
 			SEND_SOUND(target, sound(sound_to_play))
->>>>>>> 627de6f1cf6 (Fixes security level alerts playing the incorrect sounds (#68620))
+*/ // SKYRAT EDIT REMOVAL END
