@@ -101,11 +101,6 @@ GLOBAL_LIST_INIT(available_erp_ui_styles, list(
 	var/atom/movable/screen/healths
 	var/atom/movable/screen/stamina
 	var/atom/movable/screen/healthdoll
-<<<<<<< HEAD
-	var/atom/movable/screen/internals
-	var/atom/movable/screen/wanted/wanted_lvl
-=======
->>>>>>> 8e4327b2905 (Removes Internals HUD element (#68523))
 	var/atom/movable/screen/spacesuit
 	// subtypes can override this to force a specific UI style
 	var/ui_style
@@ -177,16 +172,15 @@ GLOBAL_LIST_INIT(available_erp_ui_styles, list(
 	healths = null
 	stamina = null
 	healthdoll = null
-<<<<<<< HEAD
-	wanted_lvl = null
-	internals = null
-=======
->>>>>>> 8e4327b2905 (Removes Internals HUD element (#68523))
 	spacesuit = null
 	blobpwrdisplay = null
 	alien_plasma_display = null
 	alien_queen_finder = null
 	combo_display = null
+
+	//SKYRAT EDIT START - SKYRAT HUD
+	wanted_lvl = null
+	// SKYRAT EDIT END - SKYRAT HUD
 
 	QDEL_LIST_ASSOC_VAL(plane_masters)
 	QDEL_LIST_ASSOC_VAL(plane_master_controllers)
