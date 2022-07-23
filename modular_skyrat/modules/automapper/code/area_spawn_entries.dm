@@ -1,6 +1,6 @@
 // Pets
 /datum/area_spawn/markus
-	target_areas = list(/area/station/cargo/sorting,  /area/station/cargo/storage, /area/station/cargo/office, /area/station/cargo/qm)
+	target_areas = list(/area/station/cargo/sorting,  /area/station/cargo/storage, /area/station/cargo/office, /area/station/command/heads_quarters/qm)
 	desired_atom = /mob/living/simple_animal/pet/dog/markus
 
 /datum/area_spawn/bumbles
