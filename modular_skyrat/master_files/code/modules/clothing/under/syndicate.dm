@@ -1,3 +1,7 @@
+#define RESKIN_CHARCOAL "Charcoal"
+#define RESKIN_NT "NT Blue"
+#define RESKIN_SYNDIE "Syndicate Red"
+
 /obj/item/clothing/under/syndicate
 	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/under/syndicate_digi.dmi' // Anything that was in the syndicate.dmi, should be in the syndicate_digi.dmi
 
@@ -29,13 +33,14 @@
 	can_adjust = TRUE
 	has_sensor = HAS_SENSORS
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 0, ACID = 0)
-	unique_reskin = list("NT Blue" = "tactifool_blue",
-						"Charcoal" = "tactifool"
-						)
+	unique_reskin = list(
+		RESKIN_NT = "tactifool_blue",
+		RESKIN_CHARCOAL = "tactifool"
+	)
 
 /obj/item/clothing/under/syndicate/tacticool/reskin_obj(mob/M)
 	..()
-	if(current_skin && current_skin == "Charcoal")
+	if(current_skin && current_skin == RESKIN_CHARCOAL)
 		desc = "Just looking at it makes you want to buy an SKS, go into the woods, and -operate-." //Default decription of the normal tacticool
 		inhand_icon_state = "bl_suit" //May as well, while we're updating it
 
@@ -48,9 +53,10 @@
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 	dying_key = DYE_REGISTRY_JUMPSKIRT
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
-	unique_reskin = list("NT Blue" = "tactifool_blue_skirt",
-						"Charcoal" = "tactifool_skirt"
-						)
+	unique_reskin = list(
+		RESKIN_NT = "tactifool_blue_skirt",
+		RESKIN_CHARCOAL = "tactifool_skirt"
+	)
 
 /obj/item/clothing/under/syndicate/bloodred/sleepytime/sensors //Halloween-only
 	has_sensor = HAS_SENSORS
@@ -74,13 +80,14 @@
 	can_adjust = TRUE
 	alt_covers_chest = TRUE
 	armor = list(MELEE = 10, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 10, FIRE = 50, ACID = 40)
-	unique_reskin = list("Syndicate Red" = "syndicate_red",
-						"Charcoal" = "syndicate"
-						)
+	unique_reskin = list(
+		RESKIN_SYNDIE = "syndicate_red",
+		RESKIN_CHARCOAL = "syndicate"
+	)
 
 /obj/item/clothing/under/syndicate/skyrat/tactical/reskin_obj(mob/M)
 	..()
-	if(current_skin && current_skin == "Charcoal")
+	if(current_skin && current_skin == RESKIN_CHARCOAL)
 		desc = "A non-descript and slightly suspicious looking turtleneck with digital camouflage cargo pants." //(Digital camo? Brown? What?)
 		inhand_icon_state = "bl_suit"
 
@@ -92,13 +99,14 @@
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 	dying_key = DYE_REGISTRY_JUMPSKIRT
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
-	unique_reskin = list("Syndicate Red" = "syndicate_red_skirt",
-						"Charcoal" = "syndicate_skirt"
-						)
+	unique_reskin = list(
+		RESKIN_SYNDIE = "syndicate_red_skirt",
+		RESKIN_CHARCOAL = "syndicate_skirt"
+	)
 
 /obj/item/clothing/under/syndicate/skyrat/tactical/skirt/reskin_obj(mob/M)
 	..()
-	if(current_skin && current_skin == "Charcoal")
+	if(current_skin && current_skin == RESKIN_CHARCOAL)
 		desc = "A non-descript and slightly suspicious looking skirtleneck."
 		inhand_icon_state = "bl_suit"
 
@@ -130,3 +138,7 @@
 	desc = "Throughout the stars, rumors of mad scientists and angry drill sergeant run rampent, of creatures in armor black as night being led by men or women wearing this uniform, they share one thing, a deep, natonalistic zeal of the dream of America."
 	icon_state = "enclave"
 	armor = list(MELEE = 10, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 10, FIRE = 50, ACID = 40)
+
+#undef RESKIN_CHARCOAL
+#undef RESKIN_NT
+#undef RESKIN_SYNDIE
