@@ -24,7 +24,7 @@
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 	can_adjust = FALSE
 
-/obj/item/clothing/under/dress/blacktango
+/obj/item/clothing/under/dress/tango
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	name = "black tango dress"

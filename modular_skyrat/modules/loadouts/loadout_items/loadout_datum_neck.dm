@@ -55,15 +55,15 @@ GLOBAL_LIST_INIT(loadout_necks, generate_loadout_items(/datum/loadout_item/neck)
 
 /datum/loadout_item/neck/scarf_blue_striped
 	name = "Striped Blue Scarf"
-	item_path = /obj/item/clothing/neck/stripedbluescarf
+	item_path = /obj/item/clothing/neck/large_scarf/blue
 
 /datum/loadout_item/neck/scarf_green_striped
 	name = "Striped Green Scarf"
-	item_path = /obj/item/clothing/neck/stripedgreenscarf
+	item_path = /obj/item/clothing/neck/large_scarf/green
 
 /datum/loadout_item/neck/scarf_red_striped
 	name = "Striped Red Scarf"
-	item_path = /obj/item/clothing/neck/stripedredscarf
+	item_path = /obj/item/clothing/neck/large_scarf/red
 
 /datum/loadout_item/neck/scarf_orange
 	name = "Orange Scarf"

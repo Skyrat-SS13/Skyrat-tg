@@ -70,7 +70,7 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 
 /datum/loadout_item/head/striped_red_beanie
 	name = "Striped Red Beanie"
-	item_path = /obj/item/clothing/head/beanie/stripedred
+	item_path = /obj/item/clothing/head/beanie/red
 
 /datum/loadout_item/head/striped_blue_beanie
 	name = "Striped Blue Beanie"
@@ -82,7 +82,7 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 
 /datum/loadout_item/head/rastafarian
 	name = "Rastafarian Cap"
-	item_path = /obj/item/clothing/head/beanie/rasta
+	item_path = /obj/item/clothing/head/rasta
 
 /*
 *	BERETS

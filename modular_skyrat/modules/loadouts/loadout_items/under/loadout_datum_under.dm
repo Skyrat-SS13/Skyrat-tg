@@ -243,7 +243,7 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 
 /datum/loadout_item/under/miscellaneous/jeans_classic
 	name = "Classic Jeans"
-	item_path = /obj/item/clothing/under/pants/classicjeans
+	item_path = /obj/item/clothing/under/pants/jeans
 
 /datum/loadout_item/under/miscellaneous/jeans_black
 	name = "Black Jeans"
@@ -311,7 +311,7 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 
 /datum/loadout_item/under/miscellaneous/jeans_youngfolk
 	name = "Young Folks Jeans"
-	item_path = /obj/item/clothing/under/pants/youngfolksjeans
+	item_path = /obj/item/clothing/under/pants/jeans
 
 /datum/loadout_item/under/miscellaneous/white
 	name = "White Pants"
@@ -664,7 +664,7 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 
 /datum/loadout_item/under/formal/black_tango
 	name = "Black Tango Dress"
-	item_path = /obj/item/clothing/under/dress/blacktango
+	item_path = /obj/item/clothing/under/dress/tango
 
 /datum/loadout_item/under/formal/black_twopiece
 	name = "Black Two-Piece Suit"
