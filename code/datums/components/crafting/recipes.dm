@@ -1229,7 +1229,7 @@ SKYRAT EDIT STOP: Ash Rituals */
 	if(istype(T, /turf/open/water))
 		return TRUE
 	var/obj/machinery/shower/S = locate() in T
-	if(S?.on)
+	if(S?.actually_on)
 		return TRUE
 
 //Same but with wheat

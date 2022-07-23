@@ -360,6 +360,8 @@ GLOBAL_DATUM_INIT(welding_sparks, /mutable_appearance, mutable_appearance('icons
 		worn_icon_digi = SSgreyscale.GetColoredIconByType(greyscale_config_worn_digi, greyscale_colors)
 	if(greyscale_config_worn_vox)
 		worn_icon_vox = SSgreyscale.GetColoredIconByType(greyscale_config_worn_vox, greyscale_colors)
+	if(greyscale_config_worn_better_vox)
+		worn_icon_better_vox = SSgreyscale.GetColoredIconByType(greyscale_config_worn_better_vox, greyscale_colors)
 	if(greyscale_config_worn_teshari)
 		worn_icon_teshari = SSgreyscale.GetColoredIconByType(greyscale_config_worn_teshari, greyscale_colors)
 	if(greyscale_config_worn_taur_snake)
