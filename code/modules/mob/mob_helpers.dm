@@ -227,38 +227,6 @@
 		if(ghost_sound)
 			SEND_SOUND(ghost, sound(ghost_sound, volume = notify_volume))
 		if(flashwindow)
-<<<<<<< HEAD
-			window_flash(O.client)
-		if(source)
-			var/atom/movable/screen/alert/notify_action/A = O.throw_alert("[REF(source)]_notify_action", /atom/movable/screen/alert/notify_action)
-			if(A)
-				var/ui_style = O.client?.prefs?.read_preference(/datum/preference/choiced/ui_style)
-				var/erp_ui_style = O.client?.prefs?.read_preference(/datum/preference/choiced/ui_style) //SKYRAT EDIT - ADDITION - ERP ICONS FIX
-				if(ui_style)
-					A.icon = ui_style2icon(ui_style)
-					A.icon = erp_ui_style2icon(erp_ui_style) //SKYRAT EDIT - ADDITION - ERP ICONS FIX
-				if (header)
-					A.name = header
-				A.desc = message
-				A.action = action
-				A.target = source
-				if(!alert_overlay)
-					alert_overlay = new(source)
-					var/icon/size_check = icon(source.icon, source.icon_state)
-					var/scale = 1
-					var/width = size_check.Width()
-					var/height = size_check.Height()
-					if(width > world.icon_size || height > world.icon_size)
-						if(width >= height)
-							scale = world.icon_size / width
-						else
-							scale = world.icon_size / height
-					alert_overlay.transform = alert_overlay.transform.Scale(scale)
-					alert_overlay.appearance_flags |= TILE_BOUND
-				alert_overlay.layer = FLOAT_LAYER
-				alert_overlay.plane = FLOAT_PLANE
-				A.add_overlay(alert_overlay)
-=======
 			window_flash(ghost.client)
 		if(!source)
 			continue
@@ -266,8 +234,10 @@
 		if(!alert)
 			continue
 		var/ui_style = ghost.client?.prefs?.read_preference(/datum/preference/choiced/ui_style)
+		var/erp_ui_style = ghost.client?.prefs?.read_preference(/datum/preference/choiced/ui_style) //SKYRAT EDIT - ADDITION - ERP ICONS FIX
 		if(ui_style)
 			alert.icon = ui_style2icon(ui_style)
+			alert.icon = erp_ui_style2icon(erp_ui_style) //SKYRAT EDIT - ADDITION - ERP ICONS FIX
 		if (header)
 			alert.name = header
 		alert.desc = message
@@ -289,7 +259,6 @@
 		alert_overlay.layer = FLOAT_LAYER
 		alert_overlay.plane = FLOAT_PLANE
 		alert.add_overlay(alert_overlay)
->>>>>>> 64737bd5056 (Refactors mob_helpers (#68343))
 
 /**
  * Heal a robotic body part on a mob
