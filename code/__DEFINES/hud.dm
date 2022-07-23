@@ -93,12 +93,12 @@
 #define ui_palette_scroll_offset(north_offset) ("WEST+1:8,NORTH-[6+north_offset]:28")
 
 //Middle right (status indicators)
-#define ui_healthdoll "EAST-1:28,CENTER-2:13"
-#define ui_health "EAST-1:28,CENTER-1:15"
-#define ui_internal "EAST-1:28,CENTER+1:17"
-#define ui_mood "EAST-1:28,CENTER:17"
-#define ui_spacesuit "EAST-1:28,CENTER-4:10"
-#define ui_stamina "EAST-1:28,CENTER-3:10"
+#define ui_healthdoll "EAST-1:28,CENTER-2:17"
+#define ui_health "EAST-1:28,CENTER-1:19"
+#define ui_internal "EAST-1:28,CENTER+1:21"
+#define ui_mood "EAST-1:28,CENTER:21"
+#define ui_spacesuit "EAST-1:28,CENTER-4:14"
+#define ui_stamina "EAST-1:28,CENTER-3:14"
 
 //Pop-up inventory
 #define ui_shoes "WEST+1:8,SOUTH:5"
@@ -201,9 +201,6 @@
 //Blobbernauts
 #define ui_blobbernaut_overmind_health "EAST-1:28,CENTER+0:19"
 
-//Families
-#define ui_wanted_lvl "NORTH,11"
-
 // Defines relating to action button positions
 
 /// Whatever the base action datum thinks is best
@@ -214,3 +211,5 @@
 #define SCRN_OBJ_IN_LIST "list"
 /// In the collapseable palette
 #define SCRN_OBJ_IN_PALETTE "palette"
+///Inserted first in the list
+#define SCRN_OBJ_INSERT_FIRST "first"
