@@ -121,7 +121,7 @@
 	if(power_level < power_to_use)
 		return FALSE
 
-	power_level = power_level - power_to_use
+	power_level -= power_to_use
 	return TRUE
 
 ///Toggles nutrition drain as a power source on NIFs on/off

@@ -19,6 +19,12 @@
 	var/activation_cost = 0
 	///Does the NIFSoft persist inbetween rounds?
 	var/persistence = FALSE
+	///Does the NIFSoft have cooldowns
+	var/cooldown = FALSE
+	///Is the NIFSoft on cooldown?
+	var/on_cooldown = FALSE
+	///How long is the cooldown for?
+	var/cooldown_duration = 5 SECONDS
 	///What NIF models can this software be installed on?
 	var/static/list/compatible_nifs = list(/obj/item/organ/internal/cyberimp/brain/nif)
 
@@ -41,11 +47,16 @@
 
 	..()
 
+///This proc is called every life cycel on the attached human
 /datum/nifsoft/proc/life(mob/living/carbon/human/attached_human)
 	return TRUE
 
+/// Activates a NIFSoft, have this called after the child NIFSoft has successfully ran
 /datum/nifsoft/proc/activate()
 	var/obj/item/organ/internal/cyberimp/brain/nif/installed_nif = parent_nif
+
+	if(cooldown && on_cooldown)
+		to_chat(installed_nif.linked_mob, span_warning("The [src.name] is currently on cooldown"))
 
 	if(active)
 		active = FALSE
@@ -61,6 +72,30 @@
 		installed_nif.power_usage += active_cost
 		active = TRUE
 
+	if(cooldown)
+		addtimer(CALLBACK(src, .proc/remove_cooldown), cooldown_duration)
+		on_cooldown = TRUE
+
+/// Removes the cooldown from a NIFSoft
+/datum/nifsoft/proc/remove_cooldown()
+	on_cooldown = FALSE
+
+/// Checks to see if a NIFSoft can be activated or not.
+/datum/nifsoft/proc/activation_check(obj/item/organ/internal/cyberimp/brain/nif/installed_nif)
+	if(!installed_nif || !installed_nif.linked_mob)
+		return FALSE
+
+	if(on_cooldown && cooldown)
+		to_chat(installed_nif.linked_mob, span_warning("The [src.name] is currently on cooldown"))
+		return FALSE
+
+	if(activation_cost > installed_nif.power_level)
+		to_chat(installed_nif.linked_mob, span_warning("The [installed_nif] does not have enough power to run this program"))
+		return FALSE
+
+	return TRUE
+
+/// A disk that can upload NIFSofts to a recpient with a NIFSoft installed.
 /obj/item/disk/nifsoft_uploader
 	name = "Generic NIFSoft datadisk"
 	desc = "A datadisk that can be used to upload a loaded NIFSoft to the user's NIF"
@@ -69,6 +104,7 @@
 	///Is the datadisk reusable?
 	var/reusable = TRUE
 
+/// Attempts to install the NIFSoft on the disk to the target
 /obj/item/disk/nifsoft_uploader/proc/attempt_software_install(mob/living/carbon/human/target)
 	if(!ishuman(target) || !target.installed_nif)
 		return FALSE
