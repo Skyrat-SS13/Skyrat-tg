@@ -131,7 +131,6 @@
 	target.internal = attached_tank
 	mask_out = TRUE
 	START_PROCESSING(SSmachines, src)
-	target.update_internals_hud_icon(1)
 	update_icon()
 
 /obj/machinery/anesthetic_machine/process()
