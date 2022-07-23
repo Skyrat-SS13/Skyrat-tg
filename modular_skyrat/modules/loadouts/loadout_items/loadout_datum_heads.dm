@@ -52,22 +52,6 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 	name = "Yellow Beanie"
 	item_path = /obj/item/clothing/head/beanie/yellow
 
-/datum/loadout_item/head/striped_beanie
-	name = "Striped Beanie"
-	item_path = /obj/item/clothing/head/beanie/striped
-
-/datum/loadout_item/head/striped_red_beanie
-	name = "Striped Red Beanie"
-	item_path = /obj/item/clothing/head/beanie/red
-
-/datum/loadout_item/head/striped_blue_beanie
-	name = "Striped Blue Beanie"
-	item_path = /obj/item/clothing/head/beanie/stripedblue
-
-/datum/loadout_item/head/striped_green_beanie
-	name = "Striped Green Beanie"
-	item_path = /obj/item/clothing/head/beanie/stripedgreen
-
 /datum/loadout_item/head/rastafarian
 	name = "Rastafarian Cap"
 	item_path = /obj/item/clothing/head/rasta
