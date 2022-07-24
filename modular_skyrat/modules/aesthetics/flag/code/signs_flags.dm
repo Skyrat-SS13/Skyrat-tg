@@ -75,7 +75,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/flag/nri, 32)
 
 /obj/structure/sign/flag/syndicate
 	name = "flag of the Syndicate"
-	desc = "The flag of the Syndicate. Previously used by the Sothran people as a way of declaring opposition against the Nanotrasen, now it became an intergalactic symbol of the same purpose, as more groups of interest have joined the rebellion's side."
+	desc = "The flag of the Sothran Syndicate. Previously used by the Sothran people as a way of declaring opposition against the Nanotrasen, now it became an intergalactic symbol of the same, yet way more skewed purpose, as more groups of interest have joined the rebellion's side for their own gain."
 	icon_state = "flag_syndi"
 	item_flag = /obj/item/sign/flag/syndicate
 
