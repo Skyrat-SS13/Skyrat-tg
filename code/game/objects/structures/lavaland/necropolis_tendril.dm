@@ -100,6 +100,6 @@ GLOBAL_LIST_INIT(tendrils, list())
 			/* Original code
 			T.TerraformTurf(/turf/open/chasm/lavaland, /turf/open/chasm/lavaland, flags = CHANGETURF_INHERIT_AIR)
 			*/
-			T.TerraformTurf(/turf/open/lava/smooth, flags = CHANGETURF_INHERIT_AIR)
+			T.TerraformTurf(/turf/open/lava/smooth/lava_land_surface, flags = CHANGETURF_INHERIT_AIR)
 			// SKYRAT EDIT END
 	qdel(src)
