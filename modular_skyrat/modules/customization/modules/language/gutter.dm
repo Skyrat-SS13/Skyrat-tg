@@ -1,6 +1,6 @@
 /datum/language/gutter
 	name = "Gutter"
-	desc = "This crude pidgin tongue developed in the poorer regions of SolFed. It is common among the lower classes. It is considered a crude language by many that are 'upper class'."
+	desc = "This crude pidgin tongue developed in the poorer regions of SolFed. It is common among the lower classes, and is considered a crude language by many that are 'upper class'."
 	key = "G"
 	flags = TONGUELESS_SPEECH
 	syllables = list (
