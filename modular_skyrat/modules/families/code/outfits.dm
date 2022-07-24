@@ -1,12 +1,12 @@
 /datum/outfit/families_police
 	name = "Families: Base Cop"
 
-/datum/outfit/families_police/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
+/datum/outfit/families_police/post_equip(mob/living/carbon/human/oink, visualsOnly = FALSE)
 	if(visualsOnly)
 		return
 
-	var/obj/item/card/id/W = H.wear_id
-	W.registered_name = H.real_name
+	var/obj/item/card/id/W = oink.wear_id
+	W.registered_name = oink.real_name
 	W.update_label()
 	W.update_icon()
 	..()

@@ -329,9 +329,7 @@
 		temp = "graffiti"
 
 	// SKYRAT EDIT BEGIN
-	var/gang_mode
-	if(user.mind)
-		gang_mode = user.mind.has_antag_datum(/datum/antagonist/gang)
+	var/gang_mode = user?.mind?.has_antag_datum(/datum/antagonist/gang)
 
 	if(gang_mode && (!can_claim_for_gang(user, target, gang_mode)))
 		return

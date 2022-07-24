@@ -39,7 +39,3 @@
 #define SUPERMATTER_CASCADE 21
 /// The emergency shuttle was successfully hijacked
 #define SHUTTLE_HIJACK 24
-/// The gangs on the station were thwarted
-#define GANG_DESTROYED 25
-/// The gangs on the station still exist
-#define GANG_OPERATING 26
