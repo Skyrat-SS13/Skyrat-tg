@@ -620,7 +620,12 @@ SUBSYSTEM_DEF(ticker)
 			news_message = "During routine evacuation procedures, the emergency shuttle of [decoded_station_name] had its navigation protocols corrupted and went off course, but was recovered shortly after."
 		if(SUPERMATTER_CASCADE)
 			news_message = "Officials are advising nearby colonies about a newly declared exclusion zone in the sector surrounding [decoded_station_name]."
-
+		// SKYRAT EDIT START
+		if(GANG_OPERATING)
+			news_message = "The company would like to state that any rumors of criminal organizing on board stations such as [decoded_station_name] are falsehoods, and not to be emulated."
+		if(GANG_DESTROYED)
+			news_message = "The crew of [decoded_station_name] would like to thank the Spinward Stellar Coalition Police Department for quickly resolving a minor terror threat to the station."
+		// SKYRAT EDIT END
 	//SKYRAT EDIT - START
 	if(SSblackbox.first_death)
 		var/list/ded = SSblackbox.first_death

@@ -60,6 +60,10 @@ GLOBAL_LIST_EMPTY(antagonists)
 
 	/// A weakref to the HUD shown to teammates, created by `add_team_hud`
 	var/datum/weakref/team_hud_ref
+	// SKYRAT EDIT BEGIN
+	/// What appearance hud path should we use?
+	var/antag_hud_type_to_use = /datum/atom_hud/alternate_appearance/basic/has_antagonist
+	// SKYRAT EDIT END
 
 /datum/antagonist/New()
 	GLOB.antagonists += src
@@ -417,14 +421,14 @@ GLOBAL_LIST_EMPTY(antagonists)
 /// If an antag typepath is passed to `antag_to_check`, will check that, otherwise will use the source type.
 /datum/antagonist/proc/add_team_hud(mob/target, antag_to_check)
 	QDEL_NULL(team_hud_ref)
-
+	// SKYRAT EDIT BEGIN
 	team_hud_ref = WEAKREF(target.add_alt_appearance(
-		/datum/atom_hud/alternate_appearance/basic/has_antagonist,
+		antag_hud_type_to_use,
 		"antag_team_hud_[REF(src)]",
 		image(hud_icon, target, antag_hud_name),
 		antag_to_check || type,
 	))
-
+	// SKYRAT EDIT END
 	// Add HUDs that they couldn't see before
 	for (var/datum/atom_hud/alternate_appearance/basic/has_antagonist/antag_hud as anything in GLOB.has_antagonist_huds)
 		if (antag_hud.mobShouldSee(owner.current))

@@ -328,6 +328,15 @@
 	else if(drawing in graffiti|oriented)
 		temp = "graffiti"
 
+	// SKYRAT EDIT BEGIN
+	var/gang_mode
+	if(user.mind)
+		gang_mode = user.mind.has_antag_datum(/datum/antagonist/gang)
+
+	if(gang_mode && (!can_claim_for_gang(user, target, gang_mode)))
+		return
+	// SKYRAT EDIT END
+
 	var/graf_rot
 	if(drawing in oriented)
 		switch(user.dir)
@@ -375,6 +384,14 @@
 	var/list/turf/affected_turfs = list()
 
 	if(actually_paints)
+		// SKYRAT EDIT BEGIN
+		if(gang_mode)
+			if(!can_claim_for_gang(user, target))
+				return
+			tag_for_gang(user, target, gang_mode)
+			affected_turfs += target
+			return
+		// SKYRAT EDIT END
 		var/obj/effect/decal/cleanable/crayon/C
 		switch(paint_mode)
 			if(PAINT_NORMAL)

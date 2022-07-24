@@ -70,6 +70,10 @@ GLOBAL_LIST_EMPTY(security_officer_distribution)
 		if(department)
 			announce_latejoin(spawning, department, GLOB.security_officer_distribution)
 	*/
+	if(GLOB.families_handler) // If Families is active, put this guy in the Security Family.
+		var/datum/antagonist/gang/security/security_gangster_datum = new
+		security_gangster_datum.handler = GLOB.families_handler
+		spawning.mind.add_antag_datum(security_gangster_datum)
 	//SKYRAT EDIT END
 
 

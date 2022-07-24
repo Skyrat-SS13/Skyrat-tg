@@ -43,6 +43,8 @@
 #define ROLE_DRIFTING_CONTRACTOR "Drifting Contractor"
 #define ROLE_ASSAULT_OPERATIVE "Assault Operative"
 #define ROLE_MUTANT "Mutated Abomination"
+#define ROLE_FAMILIES "Gangster"
+#define ROLE_FAMILY_HEAD_ASPIRANT "Family Head Aspirant"
 // SKYRAT EDIT END
 
 // Latejoin roles
@@ -116,6 +118,7 @@ GLOBAL_LIST_INIT(special_roles, list(
 	ROLE_CHANGELING = 0,
 	ROLE_CLOWN_OPERATIVE = 14,
 	ROLE_CULTIST = 14,
+	ROLE_FAMILIES = 0, // SKYRAT EDIT
 	ROLE_HERETIC = 0,
 	ROLE_MALF = 0,
 	ROLE_OPERATIVE = 14,
@@ -132,6 +135,7 @@ GLOBAL_LIST_INIT(special_roles, list(
 	ROLE_ALIEN = 0,
 	ROLE_BLOB = 0,
 	ROLE_BLOB_INFECTION = 0,
+	ROLE_FAMILY_HEAD_ASPIRANT = 0, // SKYRAT EDIT
 	ROLE_FUGITIVE = 0,
 	ROLE_LONE_OPERATIVE = 14,
 	ROLE_MALF_MIDROUND = 0,
