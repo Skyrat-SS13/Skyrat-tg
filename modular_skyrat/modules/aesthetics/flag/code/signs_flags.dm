@@ -3,6 +3,7 @@
 	desc = "The flag of nothing. It has nothing on it. Magnificient."
 	icon = 'modular_skyrat/modules/aesthetics/flag/icons/flags.dmi'
 	icon_state = "flag_coder"
+	buildable_sign = FALSE
 
 /obj/structure/sign/flag/ssc
 	name = "flag of the Kingdom of Agurkrral"
@@ -42,6 +43,12 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/flag/syndicate, 32)
 	icon_state = "folded_coder"
 	sign_path = /obj/structure/sign/flag
 	is_editable = FALSE
+
+/obj/item/sign/flag/nanotrasen
+	name = "folded flag of the Nanotrasen"
+	desc = "The folded flag of the Nanotrasen."
+	icon_state = "folded_nt"
+	sign_path = /obj/structure/sign/flag/nanotrasen
 
 /obj/item/sign/flag/ssc
 	name = "folded flag of the Kingdom of Agurkrral"
