@@ -8,7 +8,7 @@
 
 	
 
-/obj/item/gun/medbeam/afad/proc/on_beam_tick(mob/living/target)
+/obj/item/gun/medbeam/afad/on_beam_tick(mob/living/target)
 	if(target.health != target.maxHealth)
 		new /obj/effect/temp_visual/heal(get_turf(target), "#80F5FF")
 	target.adjustBruteLoss(-0.2)
