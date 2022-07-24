@@ -338,7 +338,7 @@
 /datum/uplink_item/implants/antistun_traitor
 	name = "CNS Rebooter Implant"
 	desc = "This implant will help you get back up on your feet faster after being stunned. Comes with an autosurgeon."
-	item = /obj/item/autosurgeon/organ/syndicate/anti_stun
+	item = /obj/item/autosurgeon/syndicate/anti_stun
 	cost = 6
 	surplus = 0
 	progression_minimum = 15 MINUTES

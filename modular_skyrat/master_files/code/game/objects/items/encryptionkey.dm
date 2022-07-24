@@ -52,12 +52,6 @@
 	icon_state = "translation_cypherkey"
 	translated_language = /datum/language/uncommon
 
-/obj/item/encryptionkey/dwarvish
-	name = "\improper Dwarvish translation key"
-	desc = "An encryption key that automatically encodes Dwarvish heard through the radio into common."
-	icon_state = "translation_cypherkey"
-	translated_language = /datum/language/dwarf
-
 /obj/item/encryptionkey/gutter
 	name = "\improper Gutter translation key"
 	desc = "An encryption key that automatically encodes Gutter heard through the radio into common."
@@ -76,12 +70,6 @@
 	icon_state = "translation_cypherkey"
 	translated_language = /datum/language/neorusskya
 
-/obj/item/encryptionkey/sol_common
-	name = "\improper Sol Common translation key"
-	desc = "An encryption key that automatically encodes Sol Common heard through the radio into common."
-	icon_state = "translation_cypherkey"
-	translated_language = /datum/language/selenian
-
 /obj/item/encryptionkey/skrellian
 	name = "\improper Skrellian translation key"
 	desc = "An encryption key that automatically encodes Skrellian heard through the radio into common."
@@ -99,18 +87,6 @@
 	desc = "An encryption key that automatically encodes Vox-pidgin heard through the radio into common."
 	icon_state = "translation_cypherkey"
 	translated_language = /datum/language/vox
-
-/obj/item/encryptionkey/xeno_uncommon
-	name = "\improper Xeno Uncommon translation key"
-	desc = "An encryption key that automatically encodes Xeno Uncommon heard through the radio into common."
-	icon_state = "translation_cypherkey"
-	translated_language = /datum/language/xenoknockoff
-
-/obj/item/encryptionkey/zolmach
-	name = "\improper Zolmach translation key"
-	desc = "An encryption key that automatically encodes Zolmach heard through the radio into common."
-	icon_state = "translation_cypherkey"
-	translated_language = /datum/language/zolmach
 
 /obj/item/encryptionkey/teshari
 	name = "\improper Schechi translation key"

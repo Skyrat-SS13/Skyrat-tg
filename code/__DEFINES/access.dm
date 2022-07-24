@@ -56,11 +56,6 @@
 #define ACCESS_EXTERNAL_AIRLOCKS "external airlocks"
 #define ACCESS_CE "ce"
 
-// SKYRAT EDIT: Start - Modular Access (See Blueshield module for theirs)
-#define ACCESS_ENTER_GENPOP "enter_genpop"
-#define ACCESS_LEAVE_GENPOP "leave_genpop"
-// SKYRAT EDIT: End - Modular Access
-
 /// Medical general access
 #define ACCESS_MEDICAL "medical"
 #define ACCESS_MORGUE "morgue"

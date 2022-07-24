@@ -10,7 +10,7 @@
 /obj/item/card/id/away/tarkon
 	name = "Tarkon visitor's pass"
 	desc = "A dust-collected visitors pass, A small tagline reading \"Port Tarkon, The first step to Civilian Partnership in Space Homesteading\"."
-	trim = /datum/id_trim/away/old
+	trim = /datum/id_trim/away/tarkon
 
 /* ----------------- Lore ----------------- */
 //Tape subtype for adding ruin lore -- the variables below are the ones you need to change

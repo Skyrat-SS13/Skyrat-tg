@@ -55,6 +55,7 @@
 	greyscale_config_worn = /datum/greyscale_config/kilt/worn
 	greyscale_colors = "#008000#777777"
 	flags_1 = IS_PLAYER_COLORABLE_1
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/under/misc/royalkilt
@@ -63,6 +64,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "royalkilt"
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 	body_parts_covered = CHEST|GROIN|ARMS|LEGS
 
 /obj/item/clothing/under/misc/tactical1
@@ -80,6 +82,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "blackwatch"
 	inhand_icon_state = "kilt"
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 	armor = list(MELEE = 30, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 10, ACID = 20, WOUND = 10)
 	body_parts_covered = CHEST|GROIN|ARMS|LEGS
 
@@ -97,6 +100,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "countess_s"
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 	flags_inv = HIDESHOES
 
 /obj/item/clothing/under/misc/formaldressred
@@ -106,6 +110,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "formalred_s"
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 	flags_inv = HIDESHOES
 
 /obj/item/clothing/under/misc/peakyblinder
@@ -217,6 +222,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "pmars_robe"
 	body_parts_covered = CHEST|GROIN|ARMS|LEGS
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 	flags_inv = HIDESHOES
 
 ///COWBOY

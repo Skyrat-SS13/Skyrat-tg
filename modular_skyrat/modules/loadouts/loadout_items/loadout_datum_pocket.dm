@@ -36,12 +36,12 @@ GLOBAL_LIST_INIT(loadout_pocket_items, generate_loadout_items(/datum/loadout_ite
 
 		if(equipper.back)
 			var/list/backpack_stuff = list()
-			SEND_SIGNAL(equipper.back, COMSIG_TRY_STORAGE_RETURN_INVENTORY, backpack_stuff, FALSE)
+			equipper.back.atom_storage?.return_inv(backpack_stuff, FALSE)
 			for(var/obj/item/thing in backpack_stuff)
 				if(wallet.contents.len >= 3)
 					break
 				if(thing.w_class <= WEIGHT_CLASS_SMALL)
-					SEND_SIGNAL(wallet, COMSIG_TRY_STORAGE_INSERT, thing, equipper, TRUE, FALSE)
+					wallet.atom_storage.attempt_insert(src, thing, equipper, TRUE, FALSE)
 	else
 		if(!equipper.equip_to_slot_if_possible(wallet, slot = ITEM_SLOT_BACKPACK, initial = TRUE))
 			wallet.forceMove(equipper.drop_location())

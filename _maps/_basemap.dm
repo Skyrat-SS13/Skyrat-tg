@@ -18,10 +18,6 @@
 		#include "map_files\Blueshift\BlueShift_upper.dmm"
 		#include "map_files\Blueshift\BlueShift_middle.dmm"
 		#include "map_files\Blueshift\BlueShift_lower.dmm"
-		// The mining maps
-		#include "map_files\Mining\Icemoon.dmm"
-		#include "map_files\Mining\Rockplanet.dmm"
-		#include "map_files\Mining\TidalLock.dmm"
 		// SKYRAT EDIT END
 
 		#ifdef CIBUILDING

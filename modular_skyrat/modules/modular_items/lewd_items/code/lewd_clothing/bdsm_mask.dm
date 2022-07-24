@@ -1,8 +1,8 @@
 // Set up the types of items that can be placed in the mask
-/datum/component/storage/concrete/pockets/small/bdsm_mask
-	max_items = 1
+/datum/storage/pockets/small/bdsm_mask
+	max_slots = 1
 
-/datum/component/storage/concrete/pockets/small/bdsm_mask/Initialize()
+/datum/storage/pockets/small/bdsm_mask/New()
 	. = ..()
 	can_hold = typecacheof(/obj/item/reagent_containers/glass/lewd_filter)
 
@@ -16,7 +16,6 @@
 	righthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_right.dmi'
 	icon_state = "mask"
 	inhand_icon_state = "mask"
-	pocket_storage_component_path = /datum/component/storage/concrete/pockets/small/bdsm_mask
 	slot_flags = ITEM_SLOT_MASK
 	var/mask_on = FALSE
 	var/current_mask_color = "pink"
@@ -39,6 +38,10 @@
 	w_class = WEIGHT_CLASS_SMALL
 	modifies_speech = TRUE
 	flags_cover = MASKCOVERSMOUTH
+
+/obj/item/clothing/mask/gas/bdsm_mask/Initialize(mapload)
+	. = ..()
+	create_storage(type = /datum/storage/pockets/small/bdsm_mask)
 
 /obj/item/clothing/mask/gas/bdsm_mask/proc/update_action_buttons_icons()
 	var/datum/action/item_action/button
@@ -146,7 +149,7 @@
 				. = ..()
 
 // Handler for clicking on a slot in a mask by hand with a filter
-/datum/component/storage/concrete/pockets/small/bdsm_mask/attackby(datum/source, obj/item/used_item, mob/user, params)
+/datum/storage/pockets/small/bdsm_mask/attackby(datum/source, obj/item/used_item, mob/user, params)
 	. = ..()
 	var/obj/item/clothing/mask/gas/bdsm_mask/worn_mask = user.get_item_by_slot(ITEM_SLOT_MASK)
 	if(istype(used_item, /obj/item/reagent_containers/glass/lewd_filter))

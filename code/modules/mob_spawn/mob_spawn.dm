@@ -159,6 +159,9 @@
 	if(!SSticker.HasRoundStarted() || !loc)
 		return
 	// SKYRAT EDIT ADDITION
+	if(is_banned_from(user.ckey, BAN_GHOST_ROLE_SPAWNER)) // Ghost role bans
+		to_chat(user, "Error, you are banned from playing ghost roles!")
+		return
 	if(restricted_species && !(user.client?.prefs?.read_preference(/datum/preference/choiced/species) in restricted_species))
 		balloon_alert(user, "incorrect species!")
 		return

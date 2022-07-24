@@ -17,7 +17,7 @@
 	contract_hub = null
 	return ..()
 
-/obj/structure/closet/supplypod/extractionpod/Moved()
+/obj/structure/closet/supplypod/extractionpod/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change = TRUE)
 	if(recieving && (atom_integrity <= 0))
 		to_chat(tied_contract.contract.owner, "<BR>[span_userdanger("Extraction pod destroyed. Contract aborted.")]")
 		var/contract_id = tied_contract.id

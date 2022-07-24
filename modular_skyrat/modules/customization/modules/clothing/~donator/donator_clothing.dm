@@ -586,7 +586,6 @@
 	icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/custom_w.dmi'
 	alternate_worn_layer = UNDER_SUIT_LAYER
-	pocket_storage_component_path = /datum/component/storage/concrete/pockets/small/collar
 	/// What's the name on the tag, if any?
 	var/tagname = null
 	/// What treat item spawns inside the collar?
@@ -594,6 +593,7 @@
 
 /obj/item/clothing/neck/inferno_collar/Initialize()
 	. = ..()
+	create_storage(type = /datum/storage/pockets/small/collar)
 	if(treat_path)
 		new treat_path(src)
 
@@ -631,10 +631,9 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/custom_w.dmi'
 	icon_state = "darksheath"
 
-/obj/item/storage/belt/sabre/darksabre/ComponentInitialize()
+/obj/item/storage/belt/sabre/darksabre/Initialize()
 	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	STR.set_holdable(list(
+	atom_storage.set_holdable(list(
 		/obj/item/toy/darksabre
 		))
 

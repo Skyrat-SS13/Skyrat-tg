@@ -66,8 +66,19 @@
 
 	SScommunications.send_message(M)
 
-///This proc sends an announcement to all currently playing mobs. Use alert to send a more ominious BEEP. Generally used for updating people on minor things, such as CME locaiton. Use priority_announce for large announcements.
-/proc/minor_announce(message, title = "Attention:", alert, html_encode = TRUE, list/players, sound, override_volume = FALSE)
+/**
+ * Sends a minor annoucement to players.
+ * Minor announcements are large text, with the title in red and message in white.
+ * Only mobs that can hear can see the announcements.
+ *
+ * message - the message contents of the announcement.
+ * title - the title of the announcement, which is often "who sent it".
+ * alert - whether this announcement is an alert, or just a notice. Only changes the sound that is played by default.
+ * html_encode - if TRUE, we will html encode our title and message before sending it, to prevent player input abuse.
+ * players - optional, a list mobs to send the announcement to. If unset, sends to all palyers.
+ * sound_override - optional, use the passed sound file instead of the default notice sounds. We're not currently using those on Skyrat, since we use our own sounds.
+ */
+/proc/minor_announce(message, title = "Attention:", alert, html_encode = TRUE, list/players, sound_override, sound, override_volume = FALSE)
 	if(!message)
 		return
 
@@ -78,9 +89,13 @@
 	if(!players)
 		players = GLOB.player_list
 
-	for(var/mob/M in players)
-		if(!isnewplayer(M) && M.can_hear())
-			to_chat(M, span_minorannounce("<font color = red>[title]</font color><BR>[message]</span><BR>"))
+	for(var/mob/target in players)
+		if(isnewplayer(target))
+			continue
+		if(!target.can_hear())
+			continue
+
+		to_chat(target, "[span_minorannounce("<font color = red>[title]</font color><BR>[message]")]<BR>")
 
 	if(sound)
 		if(SSstation.announcer.event_sounds[sound])

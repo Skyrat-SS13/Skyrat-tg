@@ -810,10 +810,9 @@
 	icon_state = "box_metal"
 	w_class = WEIGHT_CLASS_NORMAL
 
-/obj/item/storage/barricade/ComponentInitialize()
+/obj/item/storage/barricade/Initialize()
 	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	STR.max_combined_w_class = 21
+	atom_storage.max_total_storage = 21
 
 /obj/item/storage/barricade/PopulateContents()
 	for(var/i = 0, i < 3, i++)

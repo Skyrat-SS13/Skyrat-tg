@@ -5,7 +5,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/vehicles/vehicles.dmi'
 	var/static/list/snow_typecache = typecacheof(list(/turf/open/misc/asteroid/snow/icemoon, /turf/open/floor/plating/snowed/smoothed/icemoon))
 
-/obj/vehicle/ridden/atv/snowmobile/Moved()
+/obj/vehicle/ridden/atv/snowmobile/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change = TRUE)
 	. = ..()
 	if (QDELETED(src))
 		return

@@ -36,8 +36,6 @@
 	var/no_glasses
 	/// indication that the eyes are undergoing some negative effect
 	var/damaged = FALSE
-	var/is_emissive = FALSE //SKYRAT EDIT ADDITION
-	var/eyes_layer = BODY_LAYER //SKYRAT EDIT ADDITION
 
 /obj/item/organ/internal/eyes/Insert(mob/living/carbon/eye_owner, special = FALSE, drop_if_replaced = FALSE, initialising)
 	. = ..()
@@ -105,7 +103,7 @@
 	eye_owner.set_blurriness(0)
 	eye_owner.clear_fullscreen("eye_damage", 0)
 	eye_owner.update_sight()
-	is_emissive = FALSE
+	is_emissive = FALSE // SKYRAT EDIT ADDITION
 
 #define OFFSET_X 1
 #define OFFSET_Y 2

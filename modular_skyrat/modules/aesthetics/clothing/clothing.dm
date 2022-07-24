@@ -102,6 +102,10 @@
 	icon_state = "bearpelt_black"
 	inhand_icon_state = "bearpelt_black"
 
+/obj/item/clothing/head/pelt/white
+	icon_state = "bearpelt_white"
+	inhand_icon_state = "bearpelt_white"
+
 /obj/item/clothing/head/pelt/wolf
 	name = "wolf pelt"
 	desc = "A fuzzy wolf pelt that demands respect as a hunter... assuming it wasn't just purchased, that is, for all the glory but none of the credit."
@@ -112,6 +116,10 @@
 /obj/item/clothing/head/pelt/wolf/black
 	icon_state = "wolfpelt_gray"
 	inhand_icon_state = "wolfpelt_gray"
+
+/obj/item/clothing/head/pelt/wolf/white
+	icon_state = "wolfpelt_white"
+	inhand_icon_state = "wolfpelt_white"
 
 /obj/item/clothing/head/pelt/tiger
 	name = "shiny tiger pelt"
