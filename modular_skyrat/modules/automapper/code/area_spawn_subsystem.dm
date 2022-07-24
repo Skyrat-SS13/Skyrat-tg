@@ -4,12 +4,13 @@ SUBSYSTEM_DEF(area_spawn)
 
 	// Can't be on tile or a neighbor.
 	// Usually things where it's important to be sure the players can walk up to them, but aren't dense.
+	// See restricted_half_height_objects_list for things that you can also reach over.
 	var/list/restricted_objects_list = list(
 		/obj/machinery/recharge_station,
-		/obj/machinery/disposal/bin,
-		/obj/structure/table,
 		/obj/machinery/door,
 		/obj/structure/closet,
+		/obj/machinery/disposal/bin,
+		/obj/structure/table,
 		/obj/structure/stairs,
 	)
 
@@ -25,7 +26,22 @@ SUBSYSTEM_DEF(area_spawn)
 		/obj/machinery/door,
 	)
 
-	var/list/datum/area_turf_info/area_turf_cache = list()
+	// Wall mounts ironically are better off being on top of squares with dense things since you can click past them,
+	// And dense things aren't on walls. These objects should have normal density logic flipped.
+	var/list/flip_density_wall_mount_objects_list = list(
+		/obj/machinery,
+		/obj/item/radio/intercom,
+		/obj/structure/table,
+		/obj/structure/rack,
+		/obj/structure/noticeboard,
+	)
+
+	/// Cache of area turf info.
+	/// [area/area][stringed of AREA_SPAWN_MODE_*][string of priority #][turf index]
+	var/list/list/list/list/turf/area_turf_cache = list()
+
+	/// Non-optional area spawns that failed to find an area.
+	var/list/datum/area_spawn/failed_area_spawns = list()
 
 /datum/controller/subsystem/area_spawn/Initialize(start_timeofday)
 	for(var/iterating_type in subtypesof(/datum/area_spawn))
@@ -38,8 +54,6 @@ SUBSYSTEM_DEF(area_spawn)
  * Clear the cached tiles for optimization or debugging purposes.
  */
 /datum/controller/subsystem/area_spawn/proc/clear_cache()
-	for(var/datum/cache in area_turf_cache)
-		qdel(cache)
 	LAZYCLEARLIST(area_turf_cache)
 
 /**
@@ -49,32 +63,28 @@ SUBSYSTEM_DEF(area_spawn)
  *
  * Arguments:
  * * area - the area to process
- * * wall_hug - Are we processing for wall_hug case or not?
+ * * mode - The area_spawn_mode we're getting turfs for.
  */
-/datum/controller/subsystem/area_spawn/proc/get_turf_candidates(area/area, wall_hug)
+/datum/controller/subsystem/area_spawn/proc/get_turf_candidates(area/area, mode)
+	var/list/list/list/turf/area_turf_info
+
 	// Get area cache or make a new one.
-	var/datum/area_turf_info/area_turf_info
 	if(!area_turf_cache[area.type])
-		area_turf_info = area_turf_cache[area.type] = new /datum/area_turf_info()
+		area_turf_info = area_turf_cache[area.type] = list(AREA_SPAWN_MODE_COUNT)
 	else
 		area_turf_info = area_turf_cache[area.type]
 
 	// Different use cases have different lists of turfs.
 	// Get or create the cached list.
-	var/list/turf_list
-	if(wall_hug)
-		if(area_turf_info.available_wall_turfs)
-			return area_turf_info.available_wall_turfs
-		turf_list = area_turf_info.available_wall_turfs = list()
-	else
-		if(area_turf_info.available_open_turfs)
-			return area_turf_info.available_open_turfs
-		turf_list = area_turf_info.available_open_turfs = list()
+	var/list/list/turf/turf_list
+	if(area_turf_info["[mode]"])
+		return area_turf_info["[mode]"]
+	turf_list = area_turf_info["[mode]"] = list()
 
 	// Get highest priority items
 	for(var/turf/iterating_turf in area)
 		// Only retain turfs of the highest priority
-		var/priority = process_turf(iterating_turf, wall_hug)
+		var/priority = process_turf(iterating_turf, mode)
 		if(priority > 0)
 			LAZYADDASSOC(turf_list, "[priority]", list(iterating_turf))
 
@@ -88,9 +98,9 @@ SUBSYSTEM_DEF(area_spawn)
  *
  * Arguments:
  * * turf - The turf to process
- * * wall_hug - Are we processing for wall_hug case or not?
+ * * mode - The area_spawn_mode we're getting turfs for.
  */
-/datum/controller/subsystem/area_spawn/proc/process_turf(turf/turf, wall_hug)
+/datum/controller/subsystem/area_spawn/proc/process_turf(turf/turf, mode)
 	// Only spawn on actual floors
 	if(!isfloorturf(turf))
 		return 0
@@ -98,13 +108,33 @@ SUBSYSTEM_DEF(area_spawn)
 	// Turf completely empty?
 	var/totally_empty = TRUE
 	for(var/atom/movable/found_movable in turf)
-		// Same tile conditions for no-go
+		if(istype(found_movable, /obj/effect))
+			continue
+
+		// Some tile conditions for no-go
+		if(mode == AREA_SPAWN_MODE_MOUNT_WALL)
+			// Different blacklist logic than normal. See flip_density_wall_mount_objects_list
+			var/flip_density = is_type_in_list(found_movable, flip_density_wall_mount_objects_list)
+			if(
+				found_movable.density != flip_density \
+				|| (!flip_density && is_type_in_list(found_movable, restricted_objects_list))
+			)
+				return 0
+
+			// For wall mounts, we actually don't want to overlap wall items.
+			if(found_movable.layer > LOW_OBJ_LAYER)
+				totally_empty = FALSE
+
+			continue
+
+		// Every other mode.
 		if(
 			found_movable.density \
 			|| is_type_in_list(found_movable, restricted_objects_list) \
 			|| is_type_in_list(found_movable, restricted_overlap_objects_list)
 		)
 			return 0
+
 		if(found_movable.layer > LOW_OBJ_LAYER && found_movable.layer < ABOVE_MOB_LAYER)
 			totally_empty = FALSE
 
@@ -122,22 +152,28 @@ SUBSYSTEM_DEF(area_spawn)
 			num_walls_found++
 			num_dense_found++
 			continue
-		if(wall_hug)
+		if(mode == AREA_SPAWN_MODE_HUG_WALL)
 			var/turf/long_test_turf = get_step(neighbor_turf, dir)
 			if(isopenturf(long_test_turf))
 				num_very_open_floors++
 		for(var/atom/movable/found_movable in neighbor_turf)
+			if(istype(found_movable, /obj/effect))
+				continue
+
 			if(found_movable.density || is_type_in_list(found_movable, restricted_objects_list))
 				found_dense_object = TRUE
 				num_dense_found++
 				break
 
-	// Wall hugging also, as a low priority, doesn't even want diagnal things
+	// Wall hugging also, as a low priority, doesn't even want diagonal things.
 	var/num_diagonal_objects = 0
-	if(wall_hug)
+	if(mode == AREA_SPAWN_MODE_HUG_WALL)
 		for(var/dir in GLOB.diagonals)
 			var/turf/neighbor_turf = get_step(turf, dir)
 			for(var/atom/movable/found_movable in neighbor_turf)
+				if(istype(found_movable, /obj/effect))
+					continue
+
 				if(
 					!is_type_in_list(found_movable, allowed_diagonal_objects_list) \
 					&& (found_movable.density || is_type_in_list(found_movable, restricted_objects_list))
@@ -145,21 +181,34 @@ SUBSYSTEM_DEF(area_spawn)
 					num_diagonal_objects++
 					break
 
-	if(wall_hug)
-		// For wall hugging, must be against wall, and not touching another dense object as it may completely block it.
-		if(num_walls_found == 0 || found_dense_object || num_walls_found == 4)
-			return 0
+	switch(mode)
+		if(AREA_SPAWN_MODE_OPEN)
+			// For non-wall hug
+			// #1 priority is totally empty
+			// #2 priority is being in the middle of the room
+			return (totally_empty ? 10 : 0) + (4 - num_dense_found)
 
-		// #1 Priority after that: be in a totally empty square
-		// #2 favor being in a cozy wall nook
-		// #3 (marginally) have clear diagnals
-		// #4 be in a big room/hallway so we don't pinch a room down to 1 square of passage.
-		return (totally_empty ? 1000 : 0) + (400 - num_diagonal_objects * 100) + (num_walls_found * 10) + num_very_open_floors
+		if(AREA_SPAWN_MODE_HUG_WALL)
+			// For wall hugging, must be against wall, and not touching another dense object as it may completely block it.
+			if(num_walls_found == 0 || found_dense_object || num_walls_found == 4)
+				return 0
 
-	// For non-wall hug
-	// #1 priority is totally empty
-	// #2 priority is being in the middle of the room
-	return (totally_empty ? 10 : 0) + (4 - num_dense_found)
+			// #1 Priority after that: be in a totally empty square
+			// #2 (marginally) have clear diagnals
+			// #3 favor being in a cozy wall nook
+			// #4 be in a big room/hallway so we don't pinch a room down to 1 square of passage.
+			return (totally_empty ? 1000 : 0) + (400 - num_diagonal_objects * 100) + (num_walls_found * 10) + num_very_open_floors
+
+		if(AREA_SPAWN_MODE_MOUNT_WALL)
+			// For mounting to walls. Must be against wall.
+			if(num_walls_found == 0 || num_walls_found == 4)
+				return 0
+
+			// #1 Priority after that: be in a totally empty square
+			// #2, actually don't be in a nook!
+			return (totally_empty ? 10 : 0) + (4 - num_walls_found)
+
+	CRASH("Invalid area spawn mode [mode]!")
 
 /**
  * Pick a turf candidate and remove from the list.
@@ -190,15 +239,6 @@ SUBSYSTEM_DEF(area_spawn)
 	return winner
 
 /**
- * Turf into for a given area
- */
-/datum/area_turf_info
-	/// Turfs in the middle of the room
-	var/list/list/turf/available_open_turfs
-	/// Turfs hugging the wall
-	var/list/list/turf/available_wall_turfs
-
-/**
  * Area spawn datums
  *
  * Use these to spawn atoms in areas instead of placing them on a map. It will select any available open and entering turf.
@@ -210,10 +250,13 @@ SUBSYSTEM_DEF(area_spawn)
 	var/desired_atom
 	/// The amount we want to spawn
 	var/amount_to_spawn = 1
-	/// Do we need to be adjacent to a wall? This also checks the other 3 cardinals for no density. Generally useful for objects with density and anchored.
-	var/wall_hug = FALSE
+	/// See code/__DEFINES/~skyrat_defines/automapper.dm
+	var/mode = AREA_SPAWN_MODE_OPEN
 	/// Map blacklist, this is used to determine what maps we should not spawn on.
 	var/list/blacklisted_stations = list("Blueshift", "Runtime Station", "MultiZ Debug")
+	/// If failing to find a suitable area is OK, then this should be TRUE or CI will fail.
+	/// Should probably be true if the target_areas are random, such as ruins.
+	var/optional = FALSE
 
 /**
  * Attempts to find a location using an algorithm to spawn the desired atom.
@@ -229,26 +272,38 @@ SUBSYSTEM_DEF(area_spawn)
 		var/area/found_area = GLOB.areas_by_type[area_type]
 		if(!found_area)
 			continue
-		available_turfs = SSarea_spawn.get_turf_candidates(found_area, wall_hug)
+		available_turfs = SSarea_spawn.get_turf_candidates(found_area, mode)
 		if(LAZYLEN(available_turfs))
 			break
 
 	if(!LAZYLEN(available_turfs))
-		CRASH("[src.type] could not find any suitable turfs on map [SSmapping.config.map_name]!")
+		if(!optional)
+			log_mapping("[src.type] could not find any suitable turfs on map [SSmapping.config.map_name]!")
+			SSarea_spawn.failed_area_spawns += src
+		return
 
 	for(var/i in 1 to amount_to_spawn)
-		new desired_atom(SSarea_spawn.pick_turf_candidate(available_turfs))
+		var/turf/candidate_turf = SSarea_spawn.pick_turf_candidate(available_turfs)
+
+		if(mode == AREA_SPAWN_MODE_MOUNT_WALL)
+			// For wall mounts, we have to find the wall and spawn the right directional.
+			for(var/dir in GLOB.cardinals)
+				var/turf/neighbor_turf = get_step(candidate_turf, dir)
+				if(isopenturf(neighbor_turf))
+					continue
+
+				desired_atom = text2path("[desired_atom]/directional/[dir2text(dir)]")
+				break
+
+		new desired_atom(candidate_turf)
 
 /obj/effect/turf_test
 	name = "PASS"
 	icon = 'modular_skyrat/modules/automapper/icons/area_test.dmi'
 	icon_state = "area_test"
-	color = COLOR_RED
-	anchored = TRUE
-
-/obj/effect/turf_test/wall
 	color = COLOR_BLUE
-	maptext_y = 16
+	anchored = TRUE
+	layer = LOW_OBJ_LAYER
 
 /**
  * Show overlay over area of priorities. Wall priority over open priority.
@@ -262,17 +317,12 @@ SUBSYSTEM_DEF(area_spawn)
 		qdel(old_test)
 
 	SSarea_spawn.clear_cache()
-	var/list/list/turf/open_candidates = SSarea_spawn.get_turf_candidates(area, FALSE)
-	var/list/list/turf/wall_candidates = SSarea_spawn.get_turf_candidates(area, TRUE)
+	for(var/mode in 0 to AREA_SPAWN_MODE_COUNT - 1)
+		var/list/list/turf/mode_candidates = SSarea_spawn.get_turf_candidates(area, mode)
 
-	for(var/priority in open_candidates)
-		var/list/turf/turfs = open_candidates[priority]
-		for(var/turf/turf as anything in turfs)
-			var/obj/overlay = new /obj/effect/turf_test(turf)
-			overlay.maptext = MAPTEXT(priority)
-
-	for(var/priority in wall_candidates)
-		var/list/turf/turfs = wall_candidates[priority]
-		for(var/turf/turf as anything in turfs)
-			var/obj/overlay = new /obj/effect/turf_test/wall(turf)
-			overlay.maptext = MAPTEXT(priority)
+		for(var/priority in mode_candidates)
+			var/list/turf/turfs = mode_candidates[priority]
+			for(var/turf/turf as anything in turfs)
+				var/obj/overlay = new /obj/effect/turf_test(turf)
+				overlay.maptext = MAPTEXT(priority)
+				overlay.maptext_y = mode * 10
