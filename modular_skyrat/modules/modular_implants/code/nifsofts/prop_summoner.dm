@@ -12,6 +12,13 @@
 	///The list of items that can be summoned from the NIFSoft.
 	var/static/list/summonable_items = list(
 		/obj/item/toy/katana/nanite,
+		/obj/item/cane/nanite,
+		/obj/item/storage/dice,
+		/obj/item/toy/cards/deck,
+		/obj/item/toy/cards/deck/tarot, //The arcana is the means by which all is revealed
+		/obj/item/toy/cards/deck/kotahi,
+		/obj/item/toy/cattoy,
+		/obj/item/toy/foamblade,
 	)
 
 /datum/nifsoft/summoner/activate()
@@ -32,6 +39,13 @@
 		return FALSE
 
 	var/obj/item/new_item = new choice
+	new_item.name = "nanite constructed " + new_item.name //This is here so that people know the item is created from a NIF.
+
+	//Give the newly created item the same effect that other holographic items have
+	new_item.alpha = 170
+	new_item.set_light(2)
+	new_item.add_atom_colour("#77abff", FIXED_COLOUR_PRIORITY)
+
 	if(!linked_human.put_in_hands(new_item))
 		qdel(new_item)
 		return FALSE
@@ -47,7 +61,10 @@
 //Summonable Items
 ///A somehow wekaer version of the toy katana
 /obj/item/toy/katana/nanite
-	name = "fake replica katana"
-	desc = "Just like the real thing, but somehow worse."
+	force = 0
+	throwforce = 0
+
+///A nanite version of the cane.
+/obj/item/cane/nanite
 	force = 0
 	throwforce = 0
