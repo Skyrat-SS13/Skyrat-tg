@@ -46,6 +46,7 @@
 	missiondesc += "<BR> <B>3.</B> Stabilise the situation."
 	missiondesc += "<BR> <B>4.</B> Contact whoever called you and assist in resolving the matter."
 	missiondesc += "<BR> <B>5.</B> Protect, ensure, and uphold the rights of Novaya Rossiyskaya Imperiya, Kingdom of Agurkrral and Free Teshari League citizens on board [station_name()]. SolFed citizens' wellbeing is up to your discretion."
+	missiondesc += "<BR> <B>6.</B> Attempt to subvert the station's crew in order to shift the station's territory under control of Novaya Rossiyskaya Imperiya."
 
 	missiondesc += span_warning("<BR><B>Your Mission</B>: [ert_team.mission.explanation_text]")
 	to_chat(owner,missiondesc)
