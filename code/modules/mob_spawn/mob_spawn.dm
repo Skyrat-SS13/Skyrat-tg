@@ -212,8 +212,8 @@
 				SSquirks.AssignQuirks(spawned_human, spawned_mob.client)
 			if(loadout_enabled)
 				spawned_human.equip_outfit_and_loadout(outfit, spawned_mob.client.prefs, outfit_override = outfit_override)
-			return
-	. = ..()
+		else
+			. = ..()
 // SKYRAT EDIT END
 
 //multiple use mob spawner functionality here- doesn't make sense on corpses
