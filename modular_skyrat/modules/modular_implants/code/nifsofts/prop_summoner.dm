@@ -4,7 +4,7 @@
 
 /datum/nifsoft/summoner
 	name = "Grimoire Caeruleam"
-	program_desc = "Used to conjure various virtual items and beasts"
+	program_desc = "The Grimoire Caeruleam is an open-source, virtual decentralized directory of summonable objects originally developed by the Altspace Coven, a post-pagan group of witches first digitized into engrams in the year 2544. These summonable constructs, or 'Icons,' are comprised of delicate patterns of nanomachines serving as a framework and projector for hardlight; the name 'Caeruleam' referencing the blue light an Icon casts in the user's hand. While the Grimoire has served thousands thus far, Corporate interests have blocked all access to Icons capable of harming their assets."
 	cost = 200
 	activation_cost = 100 // Around 1/10th the energy of a standard NIF
 	/// Does the resulting object have a holographic like filter appiled to it?
@@ -14,7 +14,7 @@
 	cooldown = TRUE
 
 	///The list of items that can be summoned from the NIFSoft.
-	var/static/list/summonable_items = list(
+	var/list/summonable_items = list(
 		/obj/item/toy/katana/nanite,
 		/obj/item/cane/nanite,
 		/obj/item/storage/dice,
@@ -38,7 +38,7 @@
 
 		summon_choices[summon_item] = obj_icon
 
-	var/obj/item/choice = show_radial_menu(linked_human, linked_human, summon_choices, custom_check = CALLBACK(src, .proc/check_menu, linked_human))
+	var/obj/item/choice = show_radial_menu(linked_human, linked_human, summon_choices, radius = 42, custom_check = CALLBACK(src, .proc/check_menu, linked_human))
 	if(!choice)
 		return FALSE
 
@@ -49,7 +49,7 @@
 		new_item.name = name_tag + new_item.name //This is here so that people know the item is created from a NIF.
 
 	if(holographic_filter)
-		new_item.alpha = 190
+		new_item.alpha = 180
 		new_item.set_light(2)
 		new_item.add_atom_colour("#acccff", FIXED_COLOUR_PRIORITY)
 
