@@ -17,6 +17,7 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 	icon = 'modular_skyrat/modules/cryosleep/icons/cryogenics.dmi'
 	icon_state = "cellconsole_1"
 	icon_keyboard = null
+	use_power = FALSE
 	// circuit = /obj/item/circuitboard/cryopodcontrol
 	density = FALSE
 	interaction_flags_machine = INTERACT_MACHINE_OFFLINE
@@ -116,6 +117,7 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 	desc = "Suited for Cyborgs and Humanoids, the pod is a safe place for personnel affected by the Space Sleep Disorder to get some rest."
 	icon = 'modular_skyrat/modules/cryosleep/icons/cryogenics.dmi'
 	icon_state = "cryopod-open"
+	use_power = FALSE
 	density = TRUE
 	anchored = TRUE
 	state_open = TRUE
