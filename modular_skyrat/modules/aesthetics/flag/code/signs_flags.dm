@@ -73,7 +73,7 @@
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/flag/nri, 32)
 
-/obj/structure/sign/flag/usa //Black Mesa stuff keeps haunting me even now.
+/obj/structure/sign/flag/usa //Black Mesa stuff keeps haunting me even now. Also, please, for the love of God, use this in Black Mesa ONLY. NOWHERE ELSE. Or else some less thick-skinned people will get mad.
 	name = "flag of the United States of America"
 	desc = "'Stars and Stripes', the flag of the United States of America. Its red color represents endurance and valor; blue one shows diligence, vigilance and justice, and the white one signs at pureness. Its thirteen red-and-white stripes show the initial thirteen founding colonies, and fifty stars designate the current fifty states."
 	icon_state = "flag_usa"
@@ -139,7 +139,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/flag/syndicate, 32)
 	icon_state = "folded_nri"
 	sign_path = /obj/structure/sign/flag/nri
 
-/obj/item/sign/flag/usa
+/obj/item/sign/flag/usa //Please, for the love of God, use this in Black Mesa ONLY. NOWHERE ELSE. Or else some less thick-skinned people will get mad.
 	name = "folded flag of the United States of America"
 	desc = "The folded flag of the United States of America."
 	icon_state = "folded_usa"
