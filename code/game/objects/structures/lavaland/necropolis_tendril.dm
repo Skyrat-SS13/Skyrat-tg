@@ -96,5 +96,10 @@ GLOBAL_LIST_INIT(tendrils, list())
 	visible_message(span_boldannounce("The tendril falls inward, the ground around it widening into a yawning chasm!"))
 	for(var/turf/T in RANGE_TURFS(2,src))
 		if(!T.density)
-			T.TerraformTurf(/turf/open/smooth, /turf/open/lava/smooth, flags = CHANGETURF_INHERIT_AIR) // SKYRAT EDIT - No chasms
+			// SKYRAT EDIT - No chasms
+			/* Original code
+			T.TerraformTurf(/turf/open/chasm/lavaland, /turf/open/chasm/lavaland, flags = CHANGETURF_INHERIT_AIR)
+			*/
+			T.TerraformTurf(/turf/open/smooth, /turf/open/lava/smooth, flags = CHANGETURF_INHERIT_AIR)
+			// SKYRAT EDIT END
 	qdel(src)
