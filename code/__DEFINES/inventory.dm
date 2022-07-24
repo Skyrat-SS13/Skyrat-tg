@@ -157,25 +157,22 @@
 #define CLOTHING_DIGITIGRADE_VARIATION (1<<1)
 ///The sprite works fine for digitigrade legs as-is.
 #define CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON (1<<2)
-<<<<<<< HEAD
-// SKYRAT EDIT ADDITION
-/// The sprite works fine for snouts.
-#define CLOTHING_SNOUTED_VARIATION (1<<3)
-/// The sprite works fine for snouts as-is.
-#define CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON (1<<4)
-/// The sprite works fine for vox snouts.
-#define CLOTHING_SNOUTED_VOX_VARIATION (1<<5)
-/// The sprite works fine for vox snouts as is.
-#define CLOTHING_SNOUTED_VOX_VARIATION_NO_NEW_ICON (1<<6)
-/// The sprite works fine for vox snouts.
-#define CLOTHING_SNOUTED_BETTER_VOX_VARIATION (1<<7)
-/// The sprite works fine for vox snouts as is.
-#define CLOTHING_SNOUTED_BETTER_VOX_VARIATION_NO_NEW_ICON (1<<8)
-// SKYRAT EDIT END
-=======
 ///has a sprite for monkeys
 #define CLOTHING_MONKEY_VARIATION (1<<3)
->>>>>>> 071e35519da (PUN PUN DRIP (#68489))
+// SKYRAT EDIT ADDITION
+/// The sprite works fine for snouts.
+#define CLOTHING_SNOUTED_VARIATION (1<<4)
+/// The sprite works fine for snouts as-is.
+#define CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON (1<<5)
+/// The sprite works fine for vox snouts.
+#define CLOTHING_SNOUTED_VOX_VARIATION (1<<6)
+/// The sprite works fine for vox snouts as is.
+#define CLOTHING_SNOUTED_VOX_VARIATION_NO_NEW_ICON (1<<7)
+/// The sprite works fine for vox snouts.
+#define CLOTHING_SNOUTED_BETTER_VOX_VARIATION (1<<8)
+/// The sprite works fine for vox snouts as is.
+#define CLOTHING_SNOUTED_BETTER_VOX_VARIATION_NO_NEW_ICON (1<<9)
+// SKYRAT EDIT END
 
 //flags for covering body parts
 #define GLASSESCOVERSEYES (1<<0)
