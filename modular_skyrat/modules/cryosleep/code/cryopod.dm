@@ -116,10 +116,11 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 			CRASH("Illegal action for ui_act: '[action]'")
 
 /obj/machinery/computer/cryopod/proc/announce(message_type, user, rank)
-	if(message_type == "CRYO_JOIN")
-		radio.talk_into(src, "[user][rank ? ", [rank]" : ""] has woken up from cryo storage.", announcement_channel)
-	if(message_type == "CRYO_LEAVE")
-		radio.talk_into(src, "[user][rank ? ", [rank]" : ""] has been moved to cryo storage.", announcement_channel)
+	switch(message_type)
+		if("CRYO_JOIN")
+			radio.talk_into(src, "[user][rank ? ", [rank]" : ""] has woken up from cryo storage.", announcement_channel)
+		if("CRYO_LEAVE")
+			radio.talk_into(src, "[user][rank ? ", [rank]" : ""] has been moved to cryo storage.", announcement_channel)
 
 // Cryopods themselves.
 /obj/machinery/cryopod
@@ -467,5 +468,8 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 			return console
 
 	return null
+
+/obj/effect/mob_spawn/ghost_role/human/lavaland_syndicate
+	computer_area = /area/ruin/syndicate_lava_base/dormitories
 
 #undef AHELP_FIRST_MESSAGE

@@ -287,7 +287,6 @@
 	loadout_enabled = TRUE // SKYRAT EDIT ADDITION - ghost role loadouts
 	quirks_enabled = TRUE // SKYRAT EDIT ADDITION - ghost role loadouts
 	random_appearance = FALSE // SKYRAT EDIT ADDITION
-	computer_area = /area/ruin/syndicate_lava_base/dormitories // SKYRAT EDIT ADDITION - Announce cryo wake-ups!
 
 /obj/effect/mob_spawn/ghost_role/human/lavaland_syndicate/special(mob/living/new_spawn)
 	. = ..()
