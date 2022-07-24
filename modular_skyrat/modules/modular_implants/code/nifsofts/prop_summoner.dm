@@ -44,7 +44,7 @@
 	//Give the newly created item the same effect that other holographic items have
 	new_item.alpha = 170
 	new_item.set_light(2)
-	new_item.add_atom_colour("#77abff", FIXED_COLOUR_PRIORITY)
+	new_item.add_atom_colour("#acccff", FIXED_COLOUR_PRIORITY)
 
 	if(!linked_human.put_in_hands(new_item))
 		qdel(new_item)
