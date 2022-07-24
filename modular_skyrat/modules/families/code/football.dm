@@ -2,6 +2,8 @@
 	name = "football"
 	desc = "Football! Yeah!"
 	icon = 'modular_skyrat/modules/families/icons/football.dmi'
+	lefthand_file = 'modular_skyrat/master_files/icons/mob/inhands/balls_left.dmi'
+	righthand_file = 'modular_skyrat/master_files/icons/mob/inhands/balls_right.dmi'
 	icon_state = "football"
 	inhand_icon_state = "football"
 	throw_range = 7
