@@ -139,6 +139,6 @@
 
 /datum/supply_pack/goody/afad
 	name = "Automated First Aid Device"
-	desc = "Someone hurt, and it's to much of a bother to manually handle their burns, or cuts? Look no further then the AFAD, a state of the art first-aid device!"
+	desc = "Someone mildly hurt, and it's to much of a bother to manually handle their burns or cuts? Look no further then the AFAD, a state of the art pain-relief device!"
 	cost = PAYCHECK_CREW * 65 
 	contains = list(/obj/item/gun/afad)
