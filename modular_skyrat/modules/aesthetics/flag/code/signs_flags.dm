@@ -147,6 +147,6 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/flag/syndicate, 32)
 
 /obj/item/sign/flag/syndicate
 	name = "folded flag of the Syndicate"
-	desc = "The folded flag of the United States of America."
+	desc = "The folded flag of the Sothran Syndicate."
 	icon_state = "folded_syndi"
 	sign_path = /obj/structure/sign/flag/syndicate
