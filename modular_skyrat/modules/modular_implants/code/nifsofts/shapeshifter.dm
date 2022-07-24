@@ -1,4 +1,4 @@
-/obj/item/disk/nifsoft_uploader
+/obj/item/disk/nifsoft_uploader/shapeshifter
 	loaded_nifsoft = /datum/nifsoft/shapeshifter
 
 /datum/nifsoft/shapeshifter
