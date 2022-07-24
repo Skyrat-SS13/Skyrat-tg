@@ -1,6 +1,6 @@
 /datum/language/yangyu
 	name = "Yangyu"
-	desc = "A language that was formed out of the more Asian regions of Terra. While not as prevalent as Common, it has managed to hold on both in its planet of origin and across space."
+	desc = "A language that was formed out of the more Asian regions of Sol-3. While not as prevalent as Sol, it has managed to hold on both in its planet of origin and across space."
 	key = "Y"
 	flags = TONGUELESS_SPEECH
 	syllables = list (
