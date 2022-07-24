@@ -43,13 +43,13 @@
 /mob/proc/pixel_shift(direction)
 	return
 
-/mob/living/set_pull_offsets(mob/living/M, grab_state)
+/mob/living/set_pull_offsets(mob/living/pull_target, grab_state)
 	unpixel_shift()
-	. = ..()
+	return ..()
 
-/mob/living/reset_pull_offsets(mob/living/M, override)
+/mob/living/reset_pull_offsets(mob/living/pull_target, override)
 	unpixel_shift()
-	. = ..()
+	return ..()
 
 /mob/living/pixel_shift(direction)
 	var/was_out_of_the_way = is_out_of_the_way
@@ -70,12 +70,12 @@
 			if(pixel_x >= -16 + base_pixel_x)
 				pixel_x--
 				is_shifted = TRUE
-	if(pixel_x > 8 || pixel_x < -8)
+	if(abs(pixel_x > 8))
 		is_out_of_the_way = TRUE
-	else if(pixel_y > 8 || pixel_y < -8)
+	else if(abs(pixel_y > 8))
 		is_out_of_the_way = TRUE
 	else
 		is_out_of_the_way = FALSE
 
-	if(is_out_of_the_way != was_out_of_the_way)
-		density = was_out_of_the_way
+
+	density = is_out_of_the_way == FALSE // Inverted, cause we want it set to 0 if we *are* out of the way!
