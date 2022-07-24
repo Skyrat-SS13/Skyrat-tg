@@ -29,7 +29,7 @@
 
 /datum/supply_pack/goody/improvedrcd
 	name = "Improved RCD"
-	desc = "An upgraded RCD featuring superior material storage, and a complementary frames, and circuits upgrade to boot!"
+	desc = "An upgraded RCD featuring superior material storage, and complementary frames and circuit upgrades to boot!"
 	cost = PAYCHECK_CREW * 38
 	contains = list(/obj/item/construction/rcd/combat/improved)
 	
