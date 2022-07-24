@@ -2,6 +2,9 @@
 	loaded_nifsoft = /datum/nifsoft/shapeshifter
 
 /datum/nifsoft/shapeshifter
+	name = "Shapeshifter"
+	desc = "Allows the user to change the apperance of their body at will"
+
 	cost = 500
 	activation_cost = 10
 	active_mode = TRUE
