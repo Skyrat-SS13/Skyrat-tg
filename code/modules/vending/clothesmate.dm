@@ -78,6 +78,7 @@
 		//obj/item/clothing/suit/hooded/wintercoat/custom = 2, SKYRAT EDIT - Moved to modular equivalent
 		/obj/item/clothing/suit/jacket/puffer/vest = 2,
 		/obj/item/clothing/suit/jacket/puffer = 2,
+		/obj/item/clothing/suit/jacket/pink_jacket = 3,
 		/obj/item/clothing/suit/jacket/letterman = 2,
 		/obj/item/clothing/suit/jacket/letterman_red = 2,
 		/obj/item/clothing/glasses/regular = 2,
