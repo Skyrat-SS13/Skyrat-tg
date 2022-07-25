@@ -100,7 +100,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/flag/syndicate, 32)
 /obj/item/sign/flag/Initialize(mapload)
 	. = ..()
 	var/matrix/M = matrix()
-	M.Turn(-90)
+	M.Turn(0)
 	transform = M
 
 /obj/item/sign/flag/nanotrasen
