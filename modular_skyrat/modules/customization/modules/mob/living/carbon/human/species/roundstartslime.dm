@@ -248,7 +248,7 @@
 		"DNA Alteration",
 		list(
 			"Body Size",
-			"Genitals",
+			//"Genitals",
 			"Mutant Parts",
 			),
 	)
@@ -269,8 +269,10 @@
 			new_body_size = new_body_size * 0.01
 			alterer.dna.features["body_size"] = new_body_size
 			alterer.dna.update_body_size()
+/*
 		if("Genitals")
 			alter_genitals(alterer)
+*/
 		if("Mutant Parts")
 			alter_parts(alterer)
 
