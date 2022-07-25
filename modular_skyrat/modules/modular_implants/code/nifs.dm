@@ -1,6 +1,6 @@
 /// This is the original NIF that other NIFs are based on.
 /obj/item/organ/internal/cyberimp/brain/nif
-	name = "Nanite Implant Frameworkk"
+	name = "Nanite Implant Framework"
 	desc = "a brain implant that infuses the user with nanites" //Coder-lore. Change this later
 	icon = 'modular_skyrat/modules/modular_implants/icons/obj/nifs.dmi'
 	icon_state = "base_nif"
@@ -104,6 +104,13 @@
 
 	if(blood_drain)
 		linked_mob.blood_volume -= blood_drain_rate
+
+	if(power_usage > power_level)
+		for(var/datum/nifsoft/nifsoft as anything in loaded_nifsofts)
+			if(!nifsoft.active)
+				continue
+
+			nifsoft.activate()
 
 	power_level += -power_usage
 	if(power_level > max_power)

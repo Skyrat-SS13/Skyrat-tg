@@ -4,11 +4,11 @@
 /datum/nifsoft/virtual_machine
 	name = "Virtual Machine"
 	program_desc = "Provides a virtual machine of a tablet with limited functionality"
-
 	cost = 250
 	active_mode = TRUE
 	activation_cost = 10
 	active_cost = 7.5
+
 	/// What computer does the NIF generate as a "Virtual Machine?"
 	var/obj/item/modular_computer/virtual_machine = /obj/item/modular_computer/tablet/virtual
 	/// The action that opens up the virtual machine
@@ -23,8 +23,8 @@
 	vm_user = installed_nif.linked_mob
 
 	virtual_machine = new virtual_machine
+	virtual_machine.name = "NIF Virtual Machine"
 	virtual_machine.loc = vm_user
-	virtual_machine.device_theme = installed_nif.current_theme
 
 /datum/nifsoft/virtual_machine/Destroy()
 	qdel(virtual_machine)
@@ -65,11 +65,22 @@
 	base_idle_power_usage = 0
 	max_idle_programs = 1 //It's a virtual machine, not a good one.
 	looping_sound = FALSE
+	has_variants = FALSE
+	allow_chunky = TRUE
 	comp_light_luminosity = 0
 	max_bays = 0
 
 /obj/item/modular_computer/tablet/virtual/Initialize(mapload)
 	. = ..()
 	install_component(new /obj/item/computer_hardware/battery(src, /obj/item/stock_parts/cell/computer/micro))
-	install_component(new /obj/item/computer_hardware/hard_drive/small)
+	install_component(new /obj/item/computer_hardware/hard_drive/small/emulated)
 	install_component(new /obj/item/computer_hardware/network_card)
+
+/obj/item/computer_hardware/hard_drive/small/emulated
+	max_capacity = 32
+
+/obj/item/computer_hardware/hard_drive/small/emulated/install_default_programs()
+	store_file(new /datum/computer_file/program/ntnetdownload)
+	store_file(new /datum/computer_file/program/filemanager)
+	store_file(new /datum/computer_file/program/crew_manifest)
+	store_file(new /datum/computer_file/program/notepad)
