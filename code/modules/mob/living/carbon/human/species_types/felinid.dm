@@ -106,7 +106,11 @@
 /datum/species/human/felinid/prepare_human_for_preview(mob/living/carbon/human/human)
 	human.hairstyle = "Hime Cut"
 	human.hair_color = "#ffcccc" // pink
+<<<<<<< HEAD
 	human.update_hair(TRUE) // SKYRAT EDIT - Making the species menu icons work better - ORIGINAL: human.update_hair()
+=======
+	human.update_hair(is_creating = TRUE)
+>>>>>>> 196250c8f78 (Concentrated barbers aid can give hairless species hair + fixes hair updating once and for all (probably) (#68580))
 
 	/** SKYRAT EDIT - Making the species menu icons work better - ORIGINAL:
 	var/obj/item/organ/internal/ears/cat/cat_ears = human.getorgan(/obj/item/organ/internal/ears/cat)
