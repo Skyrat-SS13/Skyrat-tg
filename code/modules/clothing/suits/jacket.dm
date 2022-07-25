@@ -12,7 +12,7 @@
 	
 	/obj/item/clothing/suit/jacket
 	 name = "pink jacket"
-	 desc= "PINK PINK PINK"
+	 desc = "PINK PINK PINK"
 	 icon_state = "pinkjacket"
      inhand_icon_state = "pinkjacket"
 	 body_parts_covered = CHEST|GROIN|ARMS
