@@ -11,11 +11,11 @@
 	new /obj/item/clothing/glasses/sunglasses/robohand(src)
 	new /obj/item/clothing/suit/armor/bulletproof/robohand(src)
 	new /obj/item/autosurgeon/bodypart/r_arm_robotic(src)
-	new /obj/item/autosurgeon/organ/syndicate/esword_arm(src)
-	new /obj/item/autosurgeon/organ/syndicate/nodrop(src)
+	new /obj/item/autosurgeon/syndicate/esword_arm(src)
+	new /obj/item/autosurgeon/syndicate/nodrop(src)
 
 
-/obj/item/autosurgeon/organ/syndicate/esword_arm
+/obj/item/autosurgeon/syndicate/esword_arm
 	starting_organ = /obj/item/organ/internal/cyberimp/arm/esword
 
 /obj/item/clothing/under/pants/black/robohand
@@ -23,7 +23,7 @@
 	desc = "Strangely firm yet soft black pants, these appear to have some armor padding for added protection."
 	armor = list(MELEE = 20, BULLET = 20, LASER = 20, ENERGY = 20, BOMB = 20, BIO = 0, FIRE = 0, ACID = 0, WOUND = 5)
 
-/obj/item/autosurgeon/organ/syndicate/nodrop
+/obj/item/autosurgeon/syndicate/nodrop
 	starting_organ = /obj/item/organ/internal/cyberimp/brain/anti_drop
 
 //What do you mean glasses don't protect your head? Of course they do. Cyberpunk has flying cars(mostly intentional)!
