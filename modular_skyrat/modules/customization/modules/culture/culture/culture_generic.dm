@@ -63,7 +63,6 @@
 	of one of the various corporations, persons hired in service roles in one of the many prefectures or a resident of New Vegas. The 'poor' of Luna typically resent the rich because of their \
 	financial, cultural and political power and influence over their lives."
 	economic_power = 1
-	required_lang = /datum/language/selenian
 
 /datum/cultural_info/culture/luna_rich
 	name = "Luna, Upper Class"
@@ -73,7 +72,6 @@
 	Much of the elite of Luna is embroiled in 'The Game' a state of political manoeuvring and intrigue among various factions and persons of influence and power \
 	with implications far beyond the squabbles of the prefectures."
 	economic_power = 1.3
-	required_lang = /datum/language/selenian
 
 /datum/cultural_info/culture/terran
 	name = "Terran"
@@ -133,5 +131,5 @@
 	Many of these cultures have strict interpersonal hierarchies, though their dwellers are no stranger to betrayal and climbing up the social ladder with blood-stained hands is often the way to go. \
 	A common philosophy in these oft-clashing places is the simple phrase, 'Do as thou wilt'."
 	economic_power = 1
-	additional_langs = list(/datum/language/zolmach, /datum/language/yangyu)
+	additional_langs = list(/datum/language/yangyu)
 
