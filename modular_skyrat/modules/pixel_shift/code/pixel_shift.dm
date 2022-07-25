@@ -2,8 +2,8 @@
 	///Whether the mob is pixel shifted or not
 	var/is_shifted
 	var/shifting //If we are in the shifting setting.
-	///If true, will make the mob passthroughable.
-	var/is_out_of_the_way = FALSE
+
+	var/passthroughable = 0
 
 /datum/keybinding/mob/pixel_shift
 	hotkey_keys = list("B")
@@ -33,26 +33,26 @@
 	return
 
 /mob/living/unpixel_shift()
+	. = ..()
+	passthroughable = 0
 	if(is_shifted)
 		is_shifted = FALSE
 		pixel_x = body_position_pixel_x_offset + base_pixel_x
 		pixel_y = body_position_pixel_y_offset + base_pixel_y
-	if(is_out_of_the_way)
-		density = TRUE
 
 /mob/proc/pixel_shift(direction)
 	return
 
 /mob/living/set_pull_offsets(mob/living/pull_target, grab_state)
-	unpixel_shift()
+	pull_target.unpixel_shift()
 	return ..()
 
 /mob/living/reset_pull_offsets(mob/living/pull_target, override)
-	unpixel_shift()
+	pull_target.unpixel_shift()
 	return ..()
 
 /mob/living/pixel_shift(direction)
-	var/was_out_of_the_way = is_out_of_the_way
+	passthroughable = 0
 	switch(direction)
 		if(NORTH)
 			if(pixel_y <= 16 + base_pixel_y)
@@ -70,12 +70,18 @@
 			if(pixel_x >= -16 + base_pixel_x)
 				pixel_x--
 				is_shifted = TRUE
-	if(abs(pixel_x > 8))
-		is_out_of_the_way = TRUE
-	else if(abs(pixel_y > 8))
-		is_out_of_the_way = TRUE
-	else
-		is_out_of_the_way = FALSE
 
+	// Yes, I know this sets it to true for everything if
+	if(pixel_y > 8)
+		passthroughable |= EAST | SOUTH | WEST
+	if(pixel_x > 8)
+		passthroughable |= NORTH | SOUTH | WEST
+	if(pixel_y < -8)
+		passthroughable |= NORTH | EAST | WEST
+	if(pixel_x < -8)
+		passthroughable |= NORTH | EAST | SOUTH
 
-	density = is_out_of_the_way == FALSE // Inverted, cause we want it set to 0 if we *are* out of the way!
+/mob/living/CanAllowThrough(atom/movable/mover, border_dir)
+	if(passthroughable)
+		return passthroughable & border_dir
+	return ..()
