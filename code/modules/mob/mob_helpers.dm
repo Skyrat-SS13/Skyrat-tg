@@ -234,10 +234,10 @@
 		if(!alert)
 			continue
 		var/ui_style = ghost.client?.prefs?.read_preference(/datum/preference/choiced/ui_style)
-		var/erp_ui_style = ghost.client?.prefs?.read_preference(/datum/preference/choiced/ui_style) //SKYRAT EDIT - ADDITION - ERP ICONS FIX
+		//var/erp_ui_style = ghost.client?.prefs?.read_preference(/datum/preference/choiced/ui_style) //SKYRAT EDIT - ADDITION - ERP ICONS FIX
 		if(ui_style)
 			alert.icon = ui_style2icon(ui_style)
-			alert.icon = erp_ui_style2icon(erp_ui_style) //SKYRAT EDIT - ADDITION - ERP ICONS FIX
+			//alert.icon = erp_ui_style2icon(erp_ui_style) //SKYRAT EDIT - ADDITION - ERP ICONS FIX
 		if (header)
 			alert.name = header
 		alert.desc = message
