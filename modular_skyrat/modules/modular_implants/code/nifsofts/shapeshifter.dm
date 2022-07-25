@@ -10,24 +10,20 @@
 	active_mode = TRUE
 	active_cost = 5
 	///What user is being modified?
-	var/mob/living/carbon/human/modified_human
 	var/datum/action/innate/alter_form/nif/shapeshifter
 
 /datum/nifsoft/shapeshifter/New()
 	. = ..()
 
-	var/obj/item/organ/internal/cyberimp/brain/nif/installed_nif = parent_nif
-	modified_human = installed_nif.linked_mob
-
 /datum/nifsoft/shapeshifter/activate()
 	. = ..()
 	if(active)
 		shapeshifter = new
-		shapeshifter.Grant(modified_human)
+		shapeshifter.Grant(linked_mob)
 		return
 
 	if(shapeshifter)
-		shapeshifter.Remove(modified_human)
+		shapeshifter.Remove(linked_mob)
 
 /// The NIF version of alter form. This lacks the ability to change body color.
 /datum/action/innate/alter_form/nif

@@ -14,17 +14,13 @@
 	/// The action that opens up the virtual machine
 	var/datum/action/item_action/nif/virtual_machine/vm_action
 	/// The person that is using the device
-	var/mob/living/carbon/human/vm_user
 
 /datum/nifsoft/virtual_machine/New()
 	. = ..()
 
-	var/obj/item/organ/internal/cyberimp/brain/nif/installed_nif = parent_nif
-	vm_user = installed_nif.linked_mob
-
 	virtual_machine = new virtual_machine
 	virtual_machine.name = "NIF Virtual Machine"
-	virtual_machine.loc = vm_user
+	virtual_machine.loc = linked_mob
 
 /datum/nifsoft/virtual_machine/Destroy()
 	qdel(virtual_machine)
@@ -36,11 +32,11 @@
 		vm_action = new
 
 		vm_action.target = virtual_machine
-		vm_action.Grant(vm_user)
+		vm_action.Grant(linked_mob)
 		return
 
 	if(vm_action)
-		vm_action.Remove(vm_user)
+		vm_action.Remove(linked_mob)
 		virtual_machine.shutdown_computer(FALSE)
 
 ///The action button to toggle the virtual machine

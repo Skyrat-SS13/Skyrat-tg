@@ -200,6 +200,7 @@
 
 	loaded_nifsofts += loaded_nifsoft
 	loaded_nifsoft.parent_nif = src
+	loaded_nifsoft.linked_mob = linked_mob
 
 	to_chat(linked_mob, span_notice("[loaded_nifsoft.name] has been added"))
 	return TRUE

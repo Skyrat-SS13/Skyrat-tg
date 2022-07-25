@@ -29,7 +29,6 @@
 
 /datum/nifsoft/summoner/activate()
 	var/obj/item/organ/internal/cyberimp/brain/nif/installed_nif = parent_nif
-	var/mob/living/carbon/human/linked_human = installed_nif.linked_mob
 
 	if(!activation_check(installed_nif))
 		return FALSE
@@ -40,7 +39,7 @@
 
 		summon_choices[summon_item] = obj_icon
 
-	var/obj/item/choice = show_radial_menu(linked_human, linked_human, summon_choices, radius = 42, custom_check = CALLBACK(src, .proc/check_menu, linked_human))
+	var/obj/item/choice = show_radial_menu(linked_mob, linked_mob, summon_choices, radius = 42, custom_check = CALLBACK(src, .proc/check_menu, linked_mob))
 	if(!choice)
 		return FALSE
 
@@ -50,29 +49,13 @@
 	if(name_tag)
 		new_item.name = name_tag + new_item.name //This is here so that people know the item is created from a NIF.
 
-	if(istype(new_item, /obj/item/toy/cards/deck))
-		var/obj/item/toy/cards/deck = new_item
-		for(var/obj/item/toy/card as anything in deck.cards)
-			card.nif_generated_item = TRUE
-			card.alpha = 180
-			card.set_light(2)
-			card.add_atom_colour("#acccff", FIXED_COLOUR_PRIORITY)
-
-	else if(istype(new_item, /obj/item/storage))
-		var/obj/item/storage = new_item
-		for(var/obj/item/item as anything in storage.contents)
-			item.nif_generated_item = TRUE
-			item.alpha = 180
-			item.set_light(2)
-			item.add_atom_colour("#4e5664", FIXED_COLOUR_PRIORITY)
-
 	if(holographic_filter)
 		new_item.alpha = 180
 		new_item.set_light(2)
 		new_item.add_atom_colour("#acccff", FIXED_COLOUR_PRIORITY)
 
-	if(!linked_human.put_in_hands(new_item))
-		to_chat(linked_human, span_warning("The [new_item] fails to materialize in your hands!"))
+	if(!linked_mob.put_in_hands(new_item))
+		to_chat(linked_mob, span_warning("The [new_item] fails to materialize in your hands!"))
 		qdel(new_item)
 		return FALSE
 
@@ -102,11 +85,29 @@
 		span_blue("You firmly grasp the [src], causing it to disintegrate into a fine blue ash"))
 		qdel(src)
 
+/obj/item/toy/cards/deck/Initialize(mapload)
+	. = ..()
+	if(nif_generated_item)
+		for(var/obj/item/card/card as anything in cards)
+			card.nif_generated_item = TRUE
+			card.alpha = 180
+			card.set_light(2)
+			card.add_atom_colour("#acccff", FIXED_COLOUR_PRIORITY)
+
+/obj/item/storage/dice/Initialize(mapload)
+	. = ..()
+	if(nif_generated_item)
+		for(var/obj/item/item as anything in contents)
+			item.nif_generated_item = TRUE
+			item.alpha = 180
+			item.set_light(2)
+			item.add_atom_colour("#4e5664", FIXED_COLOUR_PRIORITY)
+
 //Summonable Items
 ///A somehow wekaer version of the toy katana
 /obj/item/toy/katana/nanite
 	name = "hexblade"
-	desc = "One of the first groups to contribute to the Caeruleam Grimoire's repository were the Malatestan Duelists, a group of mercenary-philosophers seeking to become undisputed masters of the principal art of Cutting. Originally intended as a means of generating Icons that are perfectly sharp, perfectly unbreakable, and perfectly capable of the Sanctioned Action: to cut down their opponents. However, these 'blunted' prop Icons are only a mere shadow of what the Duelists originally developed, the only version of the Icon permitted by interstellar law to civilians; normally seen on convention floors or in the hands of those wishing to spar without risk."
+	desc = "One of the first groups to contribute to the Caeruleam Grimoire's repository were the Malatestan Duelists, a group of mercenary-philosophers seeking to become undisputed masters of the principal art of Cutting. Originally intended as a means of generating perfectly sharp, perfectly unbreakable, and perfectly capable of the Sanctioned Action: to cut. However, these 'blunted' prop Icons are only a mere shadow of what the Duelists originally developed, the only version of the Icon permitted by interstellar law to civilians; normally seen on convention floors or in the hands of those wishing to spar without risk."
 	force = 0
 	throwforce = 0
 

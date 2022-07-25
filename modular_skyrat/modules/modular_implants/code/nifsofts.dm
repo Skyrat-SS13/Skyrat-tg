@@ -8,6 +8,8 @@
 	var/cost = 100
 	//What NIF does this program belong to?
 	var/datum/weakref/parent_nif
+	///Who is the NIF currently linked to?
+	var/mob/living/carbon/human/linked_mob
 
 	///Does the program have an active mode?
 	var/active_mode = FALSE
