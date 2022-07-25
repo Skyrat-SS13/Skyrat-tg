@@ -276,8 +276,8 @@
 
 /obj/item/borg/hydraulic_clamp/better
 	name = "improved integrated hydraulic clamp"
-	desc = "A neat way to lift and move around a wrapped crate for quick and painless deliveries!"
-	storage_capacity = 1
+	desc = "A neat way to lift and move around wrapped crates for quick and painless deliveries!"
+	storage_capacity = 2
 	whitelisted_item_types = list(/obj/item/delivery, /obj/item/bounty_cube) // If they want to carry a small package or a bounty cube instead, so be it, honestly.
 	whitelisted_item_description = "wrapped packages"
 	item_weight_limit = NONE
