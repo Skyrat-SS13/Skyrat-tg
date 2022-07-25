@@ -10,13 +10,12 @@
 	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
 	species_exception = list(/datum/species/golem)
 	
-	/obj/item/clothing/suit/jacket/pink_jacket
+/obj/item/clothing/suit/jacket/pink_jacket
 	 name = "pink jacket"
 	 desc = "PINK PINK PINK"
 	 icon_state = "pink_jacket"
      inhand_icon_state = "pink_jacket"
-	 body_parts_covered = CHEST|GROIN|ARMS
-	 armor = list(MELEE = 1, BULLET = 1, LASER = 1,ENERGY = 1, BOMB = 1, FIRE = 1, ACID = 1)
+	
 
 /obj/item/clothing/suit/jacket/leather
 	name = "leather jacket"
