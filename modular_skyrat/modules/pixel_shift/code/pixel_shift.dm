@@ -71,7 +71,8 @@
 				pixel_x--
 				is_shifted = TRUE
 
-	// Yes, I know this sets it to true for everything if
+	// Yes, I know this sets it to true for everything if more than one is matched.
+	// Movement doesn't check diagonals, and instead just checks EAST or WEST, depending on where you are for those.
 	if(pixel_y > 8)
 		passthroughable |= EAST | SOUTH | WEST
 	if(pixel_x > 8)
