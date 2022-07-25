@@ -11,10 +11,10 @@
 	species_exception = list(/datum/species/golem)
 	
 /obj/item/clothing/suit/jacket/pink_jacket
-	 name = "pink jacket"
-	 desc = "PINK PINK PINK"
-	 icon_state = "pink_jacket"
-     inhand_icon_state = "pink_jacket"
+	name = "pink jacket"
+	desc = "Pompadour not included."
+	icon_state = "pink_jacket"
+	inhand_icon_state = "pink_jacket"
 	
 
 /obj/item/clothing/suit/jacket/leather
