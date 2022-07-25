@@ -14,7 +14,7 @@
 	 name = "pink jacket"
 	 desc = "PINK PINK PINK"
 	 icon_state = "pink_jacket"
-     inhand_icon_state = "leatherjacket"
+     inhand_icon_state = "pink_jacket"
 	 body_parts_covered = CHEST|GROIN|ARMS
 	 armor = list(MELEE = 1, BULLET = 1, LASER = 1,ENERGY = 1, BOMB = 1, FIRE = 1, ACID = 1)
 
