@@ -106,7 +106,7 @@
 ///A somehow wekaer version of the toy katana
 /obj/item/toy/katana/nanite
 	name = "hexblade"
-	desc = "One of the first groups to contribute to the Caeruleam Grimoire's repository were the Malatestan Duelists, a group of mercenary-philosophers seeking to become undisputed masters of the principal art of Cutting. Originally intended as a means of generating perfectly sharp, perfectly unbreakable, and perfectly capable of the Sanctioned Action: to cut. However, these 'blunted' prop Icons are only a mere shadow of what the Duelists originally developed, the only version of the Icon permitted by interstellar law to civilians; normally seen on convention floors or in the hands of those wishing to spar without risk."
+	desc = "One of the first groups to contribute to the Caeruleam Grimoire's repository were the Malatestan Duelists, a group of mercenary-philosophers seeking to become undisputed masters of the principal art of Cutting. Originally intended as a means of generating Icons that are perfectly sharp, perfectly unbreakable, and perfectly capable of the Sanctioned Action: to cut down their opponents. However, these 'blunted' prop Icons are only a mere shadow of what the Duelists originally developed, the only version of the Icon permitted by interstellar law to civilians; normally seen on convention floors or in the hands of those wishing to spar without risk."
 	force = 0
 	throwforce = 0
 
