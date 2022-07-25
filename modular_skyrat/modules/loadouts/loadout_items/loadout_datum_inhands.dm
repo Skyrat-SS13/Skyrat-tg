@@ -65,7 +65,7 @@ GLOBAL_LIST_INIT(loadout_inhand_items, generate_loadout_items(/datum/loadout_ite
 	item_path = /obj/item/sign/flag/ssc
 
 /datum/loadout_item/inhand/flag_solfed
-	name = "Folded SolFed Flag"
+	name = "Folded Sol Federation Flag"
 	item_path = /obj/item/sign/flag/terragov
 
 /datum/loadout_item/inhand/flag_moghes
