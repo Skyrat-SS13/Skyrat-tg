@@ -1,4 +1,5 @@
 /datum/language/piratespeak
+	name = "Pirate Gutter"
 	desc = "The language of space pirates. Sounds similar to gutter, though intentionally filled with odd slang to make deciphering hard."
 	space_chance = 60
 	syllables = list(
