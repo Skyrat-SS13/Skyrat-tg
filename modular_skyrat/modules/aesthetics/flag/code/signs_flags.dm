@@ -42,8 +42,8 @@
 	item_flag = /obj/item/sign/flag/nanotrasen
 
 /obj/structure/sign/flag/tizira
-	name = "flag of the Tiziran Empire"
-	desc = "The flag of the Great Empire of Tizira. Depending on who you ask, it represents strength or being stuck in the past."
+	name = "flag of the Republic of Northern Moghes"
+	desc = "The flag of the Great Republic of Northern Moghes. Depending on who you ask, it represents strength or being an ant in the hive."
 	icon_state = "flag_tizira"
 	item_flag = /obj/item/sign/flag/tizira
 
@@ -54,8 +54,8 @@
 	item_flag = /obj/item/sign/flag/mothic
 
 /obj/structure/sign/flag/mars
-	name = "flag of the Martian Republic"
-	desc = "The flag of Mars. Originally a revolutionary flag during the Martian Rebellions, it has since been adopted as the official flag of the planet, as a reminder of how Mars fought for representation and democracy."
+	name = "flag of the Teshari League for Self-Determination"
+	desc = "The flag of the Teshari League for Self-Determination. Originally a revolutionary flag during the time of the Republic of the Golden Feather, it has since been adopted as the official flag of the planet, as a reminder of how Teshari fought for representation and independence."
 	icon_state = "flag_mars"
 	item_flag = /obj/item/sign/flag/mars
 
@@ -97,6 +97,12 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/flag/syndicate, 32)
 	sign_path = /obj/structure/sign/flag
 	is_editable = FALSE
 
+/obj/item/sign/flag/Initialize(mapload)
+	. = ..()
+	var/matrix/M = matrix()
+	M.Turn(-90)
+	transform = M
+
 /obj/item/sign/flag/nanotrasen
 	name = "folded flag of the Nanotrasen"
 	desc = "The folded flag of the Nanotrasen."
@@ -116,8 +122,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/flag/syndicate, 32)
 	sign_path = /obj/structure/sign/flag/terragov
 
 /obj/item/sign/flag/tizira
-	name = "folded flag of the Tiziran Empire"
-	desc = "The folded flag of the Tiziran Empire."
+	name = "folded flag of the Republic of Northern Moghes"
+	desc = "The folded flag of the Republic of Northern Moghes."
 	icon_state = "folded_tizira"
 	sign_path = /obj/structure/sign/flag/tizira
 
@@ -128,8 +134,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/flag/syndicate, 32)
 	sign_path = /obj/structure/sign/flag/mothic
 
 /obj/item/sign/flag/mars
-	name = "folded flag of the Martian Republic"
-	desc = "The folded flag of the Martian Republic."
+	name = "folded flag of the Teshari League for Self-Determination"
+	desc = "The folded flag of the Teshari League for Self-Determination."
 	icon_state = "folded_mars"
 	sign_path = /obj/structure/sign/flag/mars
 
