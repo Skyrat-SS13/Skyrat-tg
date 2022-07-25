@@ -7,13 +7,13 @@
 	custom_materials = null
 	var/item_flag = /obj/item/sign/flag
 
-/obj/structure/sign/wrench_act(mob/living/user, obj/item/wrench/I)
+/obj/structure/sign/flag/wrench_act(mob/living/user, obj/item/wrench/I)
 	return
 
-/obj/structure/sign/welder_act(mob/living/user, obj/item/I)
+/obj/structure/sign/flag/welder_act(mob/living/user, obj/item/I)
 	return
 
-/obj/item/sign/welder_act(mob/living/user, obj/item/I)
+/obj/item/sign/flag/welder_act(mob/living/user, obj/item/I)
 	return
 
 /obj/structure/sign/flag/MouseDrop(over_object, src_location, over_location)
