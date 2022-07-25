@@ -50,6 +50,22 @@
 	if(name_tag)
 		new_item.name = name_tag + new_item.name //This is here so that people know the item is created from a NIF.
 
+	if(istype(new_item, /obj/item/toy/cards/deck))
+		var/obj/item/toy/cards/deck = new_item
+		for(var/obj/item/toy/card as anything in deck.cards)
+			card.nif_generated_item = TRUE
+			card.alpha = 180
+			card.set_light(2)
+			card.add_atom_colour("#acccff", FIXED_COLOUR_PRIORITY)
+
+	else if(istype(new_item, /obj/item/storage))
+		var/obj/item/storage = new_item
+		for(var/obj/item/item as anything in storage.contents)
+			item.nif_generated_item = TRUE
+			item.alpha = 180
+			item.set_light(2)
+			item.add_atom_colour("#4e5664", FIXED_COLOUR_PRIORITY)
+
 	if(holographic_filter)
 		new_item.alpha = 180
 		new_item.set_light(2)
