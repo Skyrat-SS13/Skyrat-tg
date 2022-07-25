@@ -9,7 +9,11 @@
 	cold_protection = CHEST|GROIN|ARMS
 	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
 	species_exception = list(/datum/species/golem)
-
+/obj/item/clothing/suit/jacket/pink_jacket
+	name = "pink jacket"
+    desc = "pink so pink"
+    icon_state = "pink_jacket"
+    inhand_icon_state = "pink_jacket"
 /obj/item/clothing/suit/jacket/leather
 	name = "leather jacket"
 	desc = "Pompadour not included."
