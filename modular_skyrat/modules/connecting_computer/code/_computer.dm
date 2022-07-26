@@ -14,10 +14,10 @@
 /**
  * Find and return a computer at this location that can connect to us.
  * Arguments:
- * * at - the location to look.
+ * * adjacent_turf - the location to look.
  */
-/obj/machinery/computer/proc/find_connectable_computer(turf/at)
-	for(var/obj/machinery/computer/computer in at)
+/obj/machinery/computer/proc/find_connectable_computer(turf/adjacent_turf)
+	for(var/obj/machinery/computer/computer in adjacent_turf)
 		if(computer.dir == dir && computer.connectable)
 			return computer
 
