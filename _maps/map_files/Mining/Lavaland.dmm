@@ -88,6 +88,12 @@
 	},
 /turf/open/floor/carpet/neon/simple/red/nodots,
 /area/mine/cafeteria)
+"ax" = (
+/obj/machinery/shower/directional/west,
+/obj/machinery/door/window/left/directional/west,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/freezer,
+/area/mine/laborcamp)
 "aD" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/cable,
@@ -166,6 +172,12 @@
 /obj/effect/turf_decal/siding/yellow,
 /turf/open/floor/carpet/royalblue,
 /area/mine/living_quarters)
+"br" = (
+/obj/structure/sink/directional/east,
+/obj/structure/mirror/directional/west,
+/obj/machinery/light/small/directional/south,
+/turf/open/floor/iron/freezer,
+/area/mine/living_quarters)
 "bt" = (
 /obj/structure/disposalpipe/segment{
 	dir = 5
@@ -204,29 +216,6 @@
 	},
 /turf/open/floor/plating,
 /area/mine/maintenance/production)
-"bF" = (
-/obj/structure/sink{
-	dir = 4;
-	pixel_x = -12
-	},
-/obj/item/reagent_containers/glass/bucket,
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
-	dir = 4
-	},
-/obj/effect/turf_decal/trimline/green/filled/line{
-	dir = 10
-	},
-/obj/effect/turf_decal/trimline/blue/filled/warning,
-/turf/open/floor/iron/dark,
-/area/mine/hydroponics)
-"bG" = (
-/obj/machinery/shower{
-	dir = 8
-	},
-/obj/machinery/door/window/right/directional/west,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/iron/freezer,
-/area/mine/laborcamp)
 "bH" = (
 /obj/structure/table,
 /obj/item/book/manual/chef_recipes{
@@ -236,15 +225,6 @@
 /obj/machinery/light/small/directional/north,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/smooth,
-/area/mine/laborcamp)
-"bI" = (
-/obj/machinery/shower{
-	pixel_y = 22
-	},
-/obj/machinery/door/window/right/directional/south,
-/obj/effect/decal/cleanable/dirt,
-/obj/item/soap/homemade,
-/turf/open/floor/iron/freezer,
 /area/mine/laborcamp)
 "bK" = (
 /obj/item/kirbyplants/random,
@@ -620,6 +600,15 @@
 /obj/structure/lattice/catwalk/mining,
 /turf/open/lava/smooth/lava_land_surface,
 /area/lavaland/surface/outdoors)
+"dD" = (
+/obj/structure/sink/directional/east,
+/obj/structure/mirror/directional/west,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
+/obj/structure/sign/poster/official/cleanliness{
+	pixel_y = 32
+	},
+/turf/open/floor/iron/freezer,
+/area/mine/living_quarters)
 "dJ" = (
 /obj/structure/lattice/catwalk,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -647,29 +636,6 @@
 	},
 /turf/open/floor/iron/dark/smooth_edge,
 /area/mine/production)
-"dW" = (
-/obj/machinery/shower{
-	dir = 8
-	},
-/obj/effect/turf_decal/stripes/corner{
-	dir = 1
-	},
-/obj/effect/turf_decal/trimline/yellow/filled/arrow_ccw{
-	dir = 4
-	},
-/obj/effect/turf_decal/trimline/red/filled/arrow_ccw{
-	dir = 4
-	},
-/obj/effect/turf_decal/trimline/yellow/filled/mid_joiner{
-	dir = 4
-	},
-/obj/effect/turf_decal/trimline/red/filled/mid_joiner{
-	dir = 4
-	},
-/turf/open/floor/iron/textured_edge{
-	dir = 8
-	},
-/area/mine/lounge)
 "eo" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -1450,6 +1416,15 @@
 	},
 /turf/open/floor/iron/edge,
 /area/mine/living_quarters)
+"iR" = (
+/obj/structure/sink/kitchen/directional/west{
+	desc = "A sink used for washing one's hands and face. It looks rusty and home-made";
+	name = "old sink"
+	},
+/obj/machinery/light/small/directional/south,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/freezer,
+/area/mine/laborcamp/quarters)
 "iX" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/chair/sofa/bench{
@@ -1473,6 +1448,15 @@
 	dir = 1
 	},
 /area/mine/living_quarters)
+"jb" = (
+/obj/structure/sink/kitchen/directional/east{
+	desc = "A sink used for washing one's hands and face. It looks rusty and home-made";
+	name = "old sink"
+	},
+/obj/machinery/light/small/directional/south,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/freezer,
+/area/mine/laborcamp)
 "jc" = (
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
@@ -3142,16 +3126,6 @@
 	},
 /turf/open/floor/plating,
 /area/mine/production)
-"rN" = (
-/obj/structure/sink{
-	dir = 4;
-	pixel_x = -12
-	},
-/obj/structure/mirror/directional/west,
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/turf/open/floor/iron/freezer,
-/area/mine/living_quarters)
 "rO" = (
 /obj/structure/stone_tile/block{
 	dir = 1
@@ -3383,15 +3357,6 @@
 	},
 /turf/open/misc/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/outdoors)
-"tn" = (
-/obj/structure/sink{
-	dir = 4;
-	pixel_x = -12
-	},
-/obj/structure/mirror/directional/west,
-/obj/machinery/light/small/directional/south,
-/turf/open/floor/iron/freezer,
-/area/mine/living_quarters)
 "tr" = (
 /obj/structure/closet/secure_closet/brig,
 /obj/effect/decal/cleanable/dirt,
@@ -3540,18 +3505,6 @@
 /obj/item/crowbar/large/emergency,
 /turf/open/misc/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/outdoors)
-"up" = (
-/obj/structure/sink/kitchen{
-	desc = "A sink used for washing one's hands and face. It looks rusty and home-made";
-	name = "old sink";
-	pixel_y = 28
-	},
-/obj/item/reagent_containers/glass/bucket,
-/obj/effect/turf_decal/trimline/green/filled/line{
-	dir = 1
-	},
-/turf/open/floor/iron/dark,
-/area/mine/laborcamp)
 "uq" = (
 /obj/effect/spawner/structure/window,
 /turf/open/floor/plating,
@@ -3585,6 +3538,12 @@
 /obj/effect/turf_decal/tile/blue/fourcorners,
 /turf/open/floor/iron,
 /area/mine/living_quarters)
+"uB" = (
+/obj/machinery/shower/directional/west,
+/obj/machinery/door/window/right/directional/west,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/freezer,
+/area/mine/laborcamp)
 "uC" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/siding/wideplating_new{
@@ -3696,6 +3655,14 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/smooth,
 /area/mine/laborcamp/quarters)
+"vj" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/trimline/red/filled/line,
+/mob/living/simple_animal/bot/secbot/beepsky/ofitser,
+/turf/open/floor/iron/dark/smooth_edge{
+	dir = 1
+	},
+/area/mine/laborcamp/security)
 "vk" = (
 /obj/effect/spawner/random/trash/garbage{
 	spawn_loot_count = 3;
@@ -3704,14 +3671,6 @@
 /obj/effect/spawner/random/trash/food_packaging,
 /turf/open/misc/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/outdoors)
-"vl" = (
-/obj/machinery/shower{
-	pixel_y = 22
-	},
-/obj/machinery/door/window/left/directional/south,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/iron/freezer,
-/area/mine/laborcamp)
 "vm" = (
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /turf/open/floor/plating,
@@ -4699,15 +4658,10 @@
 /turf/open/floor/iron/checker,
 /area/mine/cafeteria)
 "Co" = (
-/obj/structure/sink{
-	dir = 4;
-	pixel_x = -12
-	},
-/obj/structure/mirror/directional/west,
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
-/obj/structure/sign/poster/official/cleanliness{
-	pixel_y = 32
-	},
+/obj/structure/curtain,
+/obj/structure/window,
+/obj/machinery/shower/directional/south,
+/obj/item/soap,
 /turf/open/floor/iron/freezer,
 /area/mine/living_quarters)
 "Cz" = (
@@ -4881,15 +4835,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/dark/textured_large,
 /area/mine/laborcamp)
-"Dm" = (
-/obj/structure/curtain,
-/obj/structure/window,
-/obj/machinery/shower{
-	pixel_y = 22
-	},
-/obj/item/soap,
-/turf/open/floor/iron/freezer,
-/area/mine/living_quarters)
 "Dn" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -4990,14 +4935,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plating,
 /area/mine/maintenance/living/north)
-"Ej" = (
-/obj/machinery/shower{
-	dir = 8
-	},
-/obj/machinery/door/window/left/directional/west,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/iron/freezer,
-/area/mine/laborcamp)
 "Eo" = (
 /obj/machinery/conveyor{
 	id = "mining_disposals"
@@ -5234,17 +5171,6 @@
 	},
 /turf/open/misc/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/outdoors)
-"FP" = (
-/obj/structure/sink/kitchen{
-	desc = "A sink used for washing one's hands and face. It looks rusty and home-made";
-	dir = 8;
-	name = "old sink";
-	pixel_x = 12
-	},
-/obj/machinery/light/small/directional/south,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/iron/freezer,
-/area/mine/laborcamp/quarters)
 "FT" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 1
@@ -5311,6 +5237,27 @@
 /obj/effect/turf_decal/trimline/green/filled/line,
 /turf/open/floor/iron/dark,
 /area/mine/laborcamp)
+"Gy" = (
+/obj/machinery/shower/directional/west,
+/obj/effect/turf_decal/stripes/corner{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/yellow/filled/arrow_ccw{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/red/filled/arrow_ccw{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/yellow/filled/mid_joiner{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/red/filled/mid_joiner{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/textured_edge{
+	dir = 8
+	},
+/area/mine/production)
 "GA" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -5506,6 +5453,27 @@
 /obj/machinery/power/apc/auto_name/directional/south,
 /turf/open/floor/iron/dark,
 /area/mine/maintenance/service/comms)
+"HL" = (
+/obj/machinery/shower/directional/west,
+/obj/effect/turf_decal/stripes/corner{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/yellow/filled/arrow_ccw{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/red/filled/arrow_ccw{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/yellow/filled/mid_joiner{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/red/filled/mid_joiner{
+	dir = 4
+	},
+/turf/open/floor/iron/textured_edge{
+	dir = 8
+	},
+/area/mine/lounge)
 "HN" = (
 /obj/structure/stone_tile/cracked{
 	dir = 8
@@ -5656,6 +5624,17 @@
 	dir = 8
 	},
 /area/mine/eva)
+"IM" = (
+/obj/structure/sink/kitchen/directional/south{
+	desc = "A sink used for washing one's hands and face. It looks rusty and home-made";
+	name = "old sink"
+	},
+/obj/item/reagent_containers/glass/bucket,
+/obj/effect/turf_decal/trimline/green/filled/line{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/mine/laborcamp)
 "IN" = (
 /obj/structure/stone_tile{
 	dir = 8
@@ -5725,6 +5704,11 @@
 /obj/effect/turf_decal/tile/brown/fourcorners,
 /turf/open/floor/iron/dark,
 /area/mine/production)
+"Ja" = (
+/obj/machinery/shower/directional/west,
+/obj/machinery/door/window/right/directional/west,
+/turf/open/floor/iron/freezer,
+/area/mine/living_quarters)
 "Je" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Labor Camp Maintenance"
@@ -6232,13 +6216,6 @@
 	},
 /turf/open/floor/plating/lavaland_atmos,
 /area/lavaland/surface/outdoors)
-"LT" = (
-/obj/machinery/shower{
-	dir = 8
-	},
-/obj/machinery/door/window/right/directional/west,
-/turf/open/floor/iron/freezer,
-/area/mine/living_quarters)
 "LY" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 8
@@ -6594,29 +6571,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/mine/mechbay)
-"On" = (
-/obj/machinery/shower{
-	dir = 8
-	},
-/obj/effect/turf_decal/stripes/corner{
-	dir = 1
-	},
-/obj/effect/turf_decal/trimline/yellow/filled/arrow_ccw{
-	dir = 4
-	},
-/obj/effect/turf_decal/trimline/red/filled/arrow_ccw{
-	dir = 4
-	},
-/obj/effect/turf_decal/trimline/yellow/filled/mid_joiner{
-	dir = 4
-	},
-/obj/effect/turf_decal/trimline/red/filled/mid_joiner{
-	dir = 4
-	},
-/turf/open/floor/iron/dark/textured_edge{
-	dir = 8
-	},
-/area/mine/production)
 "Op" = (
 /obj/structure/stone_tile/slab,
 /turf/open/misc/asteroid/basalt/lava_land_surface,
@@ -6896,6 +6850,13 @@
 	},
 /turf/open/floor/iron/dark,
 /area/mine/mechbay)
+"Qk" = (
+/obj/machinery/shower/directional/south,
+/obj/machinery/door/window/right/directional/south,
+/obj/effect/decal/cleanable/dirt,
+/obj/item/soap/homemade,
+/turf/open/floor/iron/freezer,
+/area/mine/laborcamp)
 "Qp" = (
 /obj/machinery/power/apc/auto_name/directional/west,
 /obj/structure/cable,
@@ -7310,6 +7271,18 @@
 	},
 /turf/open/floor/iron/dark/smooth_edge,
 /area/mine/eva)
+"Tn" = (
+/obj/structure/sink/directional/east,
+/obj/item/reagent_containers/glass/bucket,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/green/filled/line{
+	dir = 10
+	},
+/obj/effect/turf_decal/trimline/blue/filled/warning,
+/turf/open/floor/iron/dark,
+/area/mine/hydroponics)
 "To" = (
 /obj/structure/table,
 /obj/machinery/reagentgrinder,
@@ -7403,6 +7376,12 @@
 /obj/effect/turf_decal/sand/plating/volcanic,
 /turf/open/floor/plating/lavaland_atmos,
 /area/mine/maintenance/service/disposals)
+"TS" = (
+/obj/machinery/shower/directional/south,
+/obj/machinery/door/window/left/directional/south,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/freezer,
+/area/mine/laborcamp)
 "TT" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -7544,14 +7523,6 @@
 	},
 /turf/open/floor/iron/freezer,
 /area/mine/living_quarters)
-"UE" = (
-/obj/structure/cable,
-/obj/effect/turf_decal/trimline/red/filled/line,
-/mob/living/simple_animal/bot/secbot/beepsky/ofitser,
-/turf/open/floor/iron/dark/smooth_edge{
-	dir = 1
-	},
-/area/mine/laborcamp/security)
 "UK" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/siding/wideplating_new{
@@ -7760,17 +7731,6 @@
 	},
 /turf/open/floor/iron/checker,
 /area/mine/laborcamp)
-"VH" = (
-/obj/structure/sink/kitchen{
-	desc = "A sink used for washing one's hands and face. It looks rusty and home-made";
-	dir = 4;
-	name = "old sink";
-	pixel_x = -12
-	},
-/obj/machinery/light/small/directional/south,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/iron/freezer,
-/area/mine/laborcamp)
 "VJ" = (
 /obj/structure/closet/crate,
 /obj/item/food/mint,
@@ -7953,6 +7913,13 @@
 /obj/effect/mapping_helpers/airlock/access/any/supply/mining_station,
 /turf/open/floor/plating,
 /area/mine/storage)
+"WZ" = (
+/obj/structure/sink/directional/east,
+/obj/structure/mirror/directional/west,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/iron/freezer,
+/area/mine/living_quarters)
 "Xd" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 1
@@ -8021,13 +7988,6 @@
 	},
 /turf/open/floor/iron/edge,
 /area/mine/lounge)
-"Xr" = (
-/obj/machinery/shower{
-	dir = 8
-	},
-/obj/machinery/door/window/left/directional/west,
-/turf/open/floor/iron/freezer,
-/area/mine/living_quarters)
 "Xs" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -8271,6 +8231,11 @@
 /obj/structure/barricade/wooden,
 /turf/open/misc/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/outdoors)
+"YQ" = (
+/obj/machinery/shower/directional/west,
+/obj/machinery/door/window/left/directional/west,
+/turf/open/floor/iron/freezer,
+/area/mine/living_quarters)
 "YR" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -26147,7 +26112,7 @@ st
 nB
 Ge
 pL
-FP
+iR
 Ge
 Ot
 qw
@@ -27431,9 +27396,9 @@ fo
 Rf
 DV
 Zt
-vl
+TS
 hr
-VH
+jb
 Zt
 IA
 VO
@@ -27681,14 +27646,14 @@ aj
 aj
 aj
 Zt
-up
+IM
 sU
 cq
 Di
 fg
 PG
 Zt
-bI
+Qk
 hr
 hr
 Je
@@ -27946,8 +27911,8 @@ tE
 ro
 Zt
 Zt
-bG
-Ej
+uB
+ax
 Zt
 If
 kE
@@ -32056,7 +32021,7 @@ MT
 Po
 Ia
 Gm
-UE
+vj
 he
 ZH
 Ya
@@ -37974,7 +37939,7 @@ aj
 pq
 Vp
 Zq
-dW
+HL
 OE
 Zq
 mF
@@ -38490,7 +38455,7 @@ pU
 gx
 Sn
 Sz
-bF
+Tn
 yX
 PV
 OF
@@ -41306,7 +41271,7 @@ Uf
 JP
 iu
 IS
-tn
+br
 iu
 pU
 pU
@@ -41562,7 +41527,7 @@ iu
 iN
 qZ
 iu
-Dm
+Co
 UD
 iu
 pU
@@ -41812,9 +41777,9 @@ pU
 cW
 Li
 iu
-Co
+dD
 Nt
-rN
+WZ
 zf
 Up
 CI
@@ -42070,8 +42035,8 @@ cW
 CX
 iu
 CU
-LT
-Xr
+Ja
+YQ
 iu
 yH
 KW
@@ -47459,7 +47424,7 @@ aj
 aj
 aj
 Le
-On
+Gy
 ye
 NU
 NU
