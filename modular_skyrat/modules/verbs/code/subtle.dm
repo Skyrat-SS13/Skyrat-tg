@@ -1,3 +1,6 @@
+#define SUBTLE_DEFAULT_DISTANCE 1
+#define SUBTLE_SAME_TILE_DISTANCE 0
+
 /datum/emote/living/subtle
 	key = "subtle"
 	key_third_person = "subtle"
@@ -14,7 +17,7 @@
 
 /datum/emote/living/subtle/run_emote(mob/user, params, type_override = null)
 	if(!can_run_emote(user))
-		user.show_message(span_warning("You can't emote at this time."))
+		to_chat(user, span_warning("You can't emote at this time."))
 		return FALSE
 	var/subtle_message
 	var/subtle_emote = params
@@ -35,6 +38,10 @@
 		if(type_override)
 			emote_type = type_override
 
+	if(!can_run_emote(user))
+		to_chat(user, type = MESSAGE_TYPE_WARNING, "You can't emote at this time.")
+		return FALSE
+
 	var/prefix_log_message = "(SUBTLE) [subtle_message]"
 	user.log_message(prefix_log_message, LOG_EMOTE)
 
@@ -45,9 +52,7 @@
 	var/list/viewers = get_hearers_in_view(1, user)
 
 	for(var/mob/ghost in GLOB.dead_mob_list)
-		if(!ghost.client || isnewplayer(ghost))
-			continue
-		if(ghost.stat == DEAD && ghost.client && (ghost.client.prefs.chat_toggles & CHAT_GHOSTSIGHT) && !(ghost in viewers))
+		if(ghost.stat == DEAD && (ghost.client?.prefs.chat_toggles & CHAT_GHOSTSIGHT) && !(ghost in viewers))
 			ghost.show_message(subtle_message)
 
 	for(var/mob/reciever in viewers)
@@ -76,29 +81,29 @@
 
 /datum/emote/living/subtler/run_emote(mob/user, params, type_override = null)
 	if(!can_run_emote(user))
-		user.show_message(span_warning("You can't emote at this time."))
+		to_chat(user, type = MESSAGE_TYPE_WARNING, "You can't emote at this time.")
 		return FALSE
 	var/subtler_message
 	var/subtler_emote = params
 	var/mob/target
 	if(is_banned_from(user, "emote"))
-		to_chat(user, "You cannot send subtle emotes (banned).")
+		to_chat(user, type = MESSAGE_TYPE_WARNING, "You cannot send subtle emotes (banned).")
 		return FALSE
 	else if(user.client && user.client.prefs.muted & MUTE_IC)
-		to_chat(user, "You cannot send IC messages (muted).")
+		to_chat(user, type = MESSAGE_TYPE_WARNING, "You cannot send IC messages (muted).")
 		return FALSE
 	else if(!subtler_emote)
 		subtler_emote = stripped_multiline_input(user, "Choose an emote to display.", "Subtler" , null, MAX_MESSAGE_LEN)
 		if(subtler_emote && !check_invalid(user, subtler_emote))
-			var/list/inview = get_hearers_in_view(1, user)
-			inview -= GLOB.dead_mob_list
-			inview.Remove(user)
+			var/list/in_view = get_hearers_in_view(1, user)
+			in_view -= GLOB.dead_mob_list
+			in_view.Remove(user)
 
-			for(var/mob/inviewmob in inview)
+			for(var/mob/inviewmob in in_view)
 				if(!istype(inviewmob))
-					inview.Remove(inviewmob)
-			var/list/targets = list("1-Tile Range", "Same Tile") + inview
-			target = input("Pick a target.") as null|anything in targets
+					in_view.Remove(inviewmob)
+			var/list/targets = list("1-Tile Range", "Same Tile") + in_view
+			target = tgui_input_list(user, "Pick a target", "Target Selection", targets)
 			switch(target)
 				if("1-Tile Range")
 					target = 1
@@ -113,6 +118,10 @@
 		if(type_override)
 			emote_type = type_override
 
+	if(!can_run_emote(user))
+		to_chat(user, type = MESSAGE_TYPE_WARNING, "You can't emote at this time.")
+		return FALSE
+
 	user.log_message(subtler_message, LOG_SUBTLER)
 
 	var/space = should_have_space_before_emote(html_decode(subtler_emote)[1]) ? " " : ""
@@ -124,10 +133,9 @@
 		if(get_dist(user.loc, target.loc) <= 1)
 			target.show_message(subtler_message, alt_msg = subtler_message)
 		else
-			user.show_message(span_warning("Your emote was unable to be sent to your target: Too far away."))
+			to_chat(user, type = MESSAGE_TYPE_WARNING, "Your emote was unable to be sent to your target: Too far away.")
 	else
-		var/ghostless = get_hearers_in_view(target, user)
-		ghostless -= GLOB.dead_mob_list
+		var/ghostless = get_hearers_in_view(target, user) - GLOB.dead_mob_list
 		for(var/mob/reciever in ghostless)
 			reciever.show_message(subtler_message, alt_msg = subtler_message)
 
@@ -162,3 +170,6 @@
 		to_chat(usr, span_danger("Speech is currently admin-disabled."))
 		return
 	usr.emote("subtler")
+
+#undef SUBTLE_DEFAULT_DISTANCE
+#undef SUBTLE_SAME_TILE_DISTANCE
