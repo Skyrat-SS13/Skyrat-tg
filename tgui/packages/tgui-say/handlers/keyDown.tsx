@@ -1,4 +1,4 @@
-import { KEY_BACKSPACE, KEY_DELETE, KEY_DOWN, KEY_UP } from 'common/keycodes';
+import { KEY_BACKSPACE, KEY_DELETE, KEY_DOWN, KEY_TAB, KEY_UP } from 'common/keycodes';
 import { isAlphanumeric, getHistoryLength } from '../helpers';
 import { Modal } from '../types';
 
@@ -26,13 +26,11 @@ export const handleKeyDown = function (
     }
     return;
   }
-  // SKYRAT EDIT REMOVAL - Go away tab, I don't want my messages in OOC, thanks.
-  /*
   if (event.keyCode === KEY_TAB) {
     event.preventDefault();
     this.events.onIncrementChannel();
     return;
-  }*/
+  }
   if (event.keyCode === KEY_DELETE || event.keyCode === KEY_BACKSPACE) {
     this.events.onBackspaceDelete();
     return;

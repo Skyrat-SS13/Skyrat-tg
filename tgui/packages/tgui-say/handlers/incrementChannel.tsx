@@ -25,8 +25,12 @@ export const handleIncrementChannel = function (this: Modal) {
       this.timers.channelDebounce({ mode: false });
     }
     this.setState({
-      buttonContent: CHANNELS[channel + 1],
-      channel: channel + 1,
+      // SKYRAT EDIT BEGIN - No OOC channel on tab
+      // buttonContent: CHANNELS[channel + 1],
+      // channel: channel + 1,
+      buttonContent: channel === 2 ? 0 : channel + 1,
+      channel: channel === 2 ? 0 : channel + 1,
+      // SKYRAT EDIT END
     });
   }
 };
