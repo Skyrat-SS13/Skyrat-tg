@@ -40,6 +40,9 @@ SUBSYSTEM_DEF(area_spawn)
 	/// [area/area][stringed of AREA_SPAWN_MODE_*][string of priority #][turf index]
 	var/list/list/list/list/turf/area_turf_cache = list()
 
+	/// Non-optional area spawns that failed to find an area.
+	var/list/datum/area_spawn/failed_area_spawns = list()
+
 /datum/controller/subsystem/area_spawn/Initialize(start_timeofday)
 	for(var/iterating_type in subtypesof(/datum/area_spawn))
 		var/datum/area_spawn/iterating_area_spawn = new iterating_type
@@ -251,6 +254,9 @@ SUBSYSTEM_DEF(area_spawn)
 	var/mode = AREA_SPAWN_MODE_OPEN
 	/// Map blacklist, this is used to determine what maps we should not spawn on.
 	var/list/blacklisted_stations = list("Blueshift", "Runtime Station", "MultiZ Debug")
+	/// If failing to find a suitable area is OK, then this should be TRUE or CI will fail.
+	/// Should probably be true if the target_areas are random, such as ruins.
+	var/optional = FALSE
 
 /**
  * Attempts to find a location using an algorithm to spawn the desired atom.
@@ -271,7 +277,10 @@ SUBSYSTEM_DEF(area_spawn)
 			break
 
 	if(!LAZYLEN(available_turfs))
-		CRASH("[src.type] could not find any suitable turfs on map [SSmapping.config.map_name]!")
+		if(!optional)
+			log_mapping("[src.type] could not find any suitable turfs on map [SSmapping.config.map_name]!")
+			SSarea_spawn.failed_area_spawns += src
+		return
 
 	for(var/i in 1 to amount_to_spawn)
 		var/turf/candidate_turf = SSarea_spawn.pick_turf_candidate(available_turfs)
