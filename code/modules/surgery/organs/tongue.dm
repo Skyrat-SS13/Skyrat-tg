@@ -34,18 +34,13 @@
 		/datum/language/shadowtongue,
 		/datum/language/terrum,
 		/datum/language/vox, //SKYRAT EDIT - customization - extra languages
-		/datum/language/dwarf, //SKYRAT EDIT - customization - extra languages
 		/datum/language/nekomimetic,
 		/datum/language/neorusskya,  //SKYRAT EDIT - customization - extra languages
 		/datum/language/spacer,  //SKYRAT EDIT - customization - extra languages
-		/datum/language/selenian,  //SKYRAT EDIT - customization - extra languages
 		/datum/language/gutter,  //SKYRAT EDIT - customization - extra languages
-		/datum/language/zolmach, // SKYRAT EDIT - customization - extra languages
-		/datum/language/xenoknockoff, // SKYRAT EDIT - customization - extra languages
 		/datum/language/yangyu, // SKYRAT EDIT - customization - extra languages
 		/datum/language/schechi, // SKYRAT EDIT - customization - extra languages
 		/datum/language/ashtongue, // SKYRAT EDIT - customization - extra languages
-		/datum/language/buzzwords, //SKYRAT EDIT - customization - extra languages
 	))
 
 /obj/item/organ/internal/tongue/Initialize(mapload)
@@ -521,6 +516,10 @@
 		new_message = replacetext(new_message, "?", ".")
 	speech_args[SPEECH_MESSAGE] = new_message
 
+	// Cut our last overlay before we replace it
+	if(timeleft(tonal_timerid) > 0 && (question_found || exclamation_found))
+		remove_tonal_indicator()
+		deltimer(tonal_timerid)
 	if(question_found) // Prioritize questions
 		tonal_indicator = mutable_appearance('icons/mob/talk.dmi', "signlang1", TYPING_LAYER)
 		owner.visible_message(span_notice("[owner] lowers [owner.p_their()] eyebrows."))
@@ -529,7 +528,7 @@
 		owner.visible_message(span_notice("[owner] raises [owner.p_their()] eyebrows."))
 	if(!isnull(tonal_indicator) && owner?.client.typing_indicators)
 		owner.add_overlay(tonal_indicator)
-		tonal_timerid = addtimer(CALLBACK(src, .proc/remove_tonal_indicator), 2.5 SECONDS, TIMER_UNIQUE | TIMER_OVERRIDE)
+		tonal_timerid = addtimer(CALLBACK(src, .proc/remove_tonal_indicator), 2.5 SECONDS, TIMER_UNIQUE | TIMER_OVERRIDE | TIMER_STOPPABLE | TIMER_DELETE_ME)
 	else // If we're not gonna use it, just be sure we get rid of it
 		tonal_indicator = null
 
