@@ -93,7 +93,7 @@
 		/obj/item/clothing/under/sweater/purple = 5,
 		/obj/item/clothing/under/sweater/red = 5,
 		/obj/item/clothing/under/sweater/keyhole = 5,
-		/obj/item/clothing/suit/jacket/pink_jacket = 5,
+		/obj/item/clothing/suit/jacket/pnkjacket = 5,
 	)
 
 	skyrat_premium = list( //being here means you're artificially rare, congratulations
