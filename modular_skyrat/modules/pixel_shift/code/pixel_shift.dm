@@ -3,7 +3,7 @@
 	var/is_shifted
 	var/shifting //If we are in the shifting setting.
 
-	var/passthroughable = 0
+	var/passthroughable = NONE
 
 /datum/keybinding/mob/pixel_shift
 	hotkey_keys = list("B")
@@ -34,7 +34,7 @@
 
 /mob/living/unpixel_shift()
 	. = ..()
-	passthroughable = 0
+	passthroughable = NONE
 	if(is_shifted)
 		is_shifted = FALSE
 		pixel_x = body_position_pixel_x_offset + base_pixel_x
@@ -52,7 +52,7 @@
 	return ..()
 
 /mob/living/pixel_shift(direction)
-	passthroughable = 0
+	passthroughable = NONE
 	switch(direction)
 		if(NORTH)
 			if(pixel_y <= 16 + base_pixel_y)
@@ -83,6 +83,6 @@
 		passthroughable |= NORTH | EAST | SOUTH
 
 /mob/living/CanAllowThrough(atom/movable/mover, border_dir)
-	if(passthroughable)
-		return passthroughable & border_dir
+	if(passthroughable & border_dir)
+		return TRUE 
 	return ..()
