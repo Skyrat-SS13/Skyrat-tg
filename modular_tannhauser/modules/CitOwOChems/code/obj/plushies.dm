@@ -1,6 +1,6 @@
 /obj/item/toy/plush
 	var/can_random_spawn = TRUE			//if this is FALSE, don't spawn this for random plushies.
-	
+
 /obj/item/toy/plush/carpplushie/dehy_carp
 	can_random_spawn = FALSE
 
@@ -12,7 +12,7 @@ GLOBAL_LIST_INIT(valid_plushie_paths, valid_plushie_paths())
 		if(!initial(abstract.can_random_spawn))
 			continue
 		. += i
-		
+
 /obj/item/toy/plush/plushling
 	icon = 'modular_skyrat/master_files/icons/obj/plushes.dmi'
 	icon_state = "blue_fox"
@@ -89,9 +89,7 @@ GLOBAL_LIST_INIT(valid_plushie_paths, valid_plushie_paths())
 	plushie_absorb(target)
 
 /obj/item/toy/plush/plushling/proc/plushie_absorb(obj/item/toy/plush/victim)
-//	if(!victim)
-//		return
-	visible_message("<span class='warning'>[src] gruesomely mutilliates [victim], leaving nothing more than dust!</span>")
+	visible_message("<span class='warning'>[src] gruesomely mutilliates [victim], leaving nothing more than shredded fluff!</span>")
 	new /obj/effect/decal/cleanable/shreds(get_turf(victim), victim.name)
 	qdel(victim)
 
