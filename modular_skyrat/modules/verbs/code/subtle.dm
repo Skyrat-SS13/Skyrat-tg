@@ -49,7 +49,7 @@
 
 	subtle_message = span_emote("<b>[user]</b>[space]<i>[user.say_emphasis(subtle_message)]</i>")
 
-	var/list/viewers = get_hearers_in_view(1, user)
+	var/list/viewers = get_hearers_in_view(SUBTLE_DEFAULT_DISTANCE, user)
 
 	for(var/mob/ghost in GLOB.dead_mob_list)
 		if(ghost.stat == DEAD && (ghost.client?.prefs.chat_toggles & CHAT_GHOSTSIGHT) && !(ghost in viewers))
@@ -106,14 +106,14 @@
 			target = tgui_input_list(user, "Pick a target", "Target Selection", targets)
 			switch(target)
 				if("1-Tile Range")
-					target = 1
+					target = SUBTLE_DEFAULT_DISTANCE
 				if("Same Tile")
-					target = 0
+					target = SUBTLE_SAME_TILE_DISTANCE
 			subtler_message = subtler_emote
 		else
 			return FALSE
 	else
-		target = 1
+		target = SUBTLE_DEFAULT_DISTANCE
 		subtler_message = subtler_emote
 		if(type_override)
 			emote_type = type_override
@@ -130,7 +130,7 @@
 
 	if(istype(target))
 		user.show_message(subtler_message, alt_msg = subtler_message)
-		if(get_dist(user.loc, target.loc) <= 1)
+		if(get_dist(user.loc, target.loc) <= SUBTLE_DEFAULT_DISTANCE)
 			target.show_message(subtler_message, alt_msg = subtler_message)
 		else
 			to_chat(user, type = MESSAGE_TYPE_WARNING, "Your emote was unable to be sent to your target: Too far away.")
