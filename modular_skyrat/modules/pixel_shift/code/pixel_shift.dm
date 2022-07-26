@@ -3,6 +3,7 @@
 	var/is_shifted
 	var/shifting //If we are in the shifting setting.
 
+	/// Takes the four cardinal direction defines. Any atoms moving into this atom's tile will be allowed to from the added directions.
 	var/passthroughable = NONE
 
 /datum/keybinding/mob/pixel_shift
