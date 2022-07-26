@@ -46,6 +46,14 @@
 			if(prob(10))
 				to_chat(M, "You find yourself unable to supress the desire to howl!")
 				M.emote("awoo")
+			if(prob(20))
+				var/list/seen = list()
+				for(var/mob/living/carbon/human/victim in oview(7, M))
+					if(!isliving(victim))
+						continue
+					seen += victim
+				if(LAZYLEN(seen))
+					to_chat(M, "You notice [pick(seen)]'s bulge [pick("OwO!", "uwu!")]")
 		if(16)
 			T = M.getorganslot(ORGAN_SLOT_TONGUE)
 			var/obj/item/organ/internal/tongue/nT = new /obj/item/organ/internal/tongue/fluffy
@@ -60,6 +68,14 @@
 			if(prob(5))
 				to_chat(M, "You find yourself unable to supress the desire to howl!")
 				M.emote("awoo")
+			if(prob(5))
+				var/list/seen = list()
+				for(var/mob/living/carbon/human/victim in oview(7, M))
+					if(!isliving(victim))
+						continue
+					seen += victim
+				if(LAZYLEN(seen))
+					to_chat(M, "You notice [pick(seen)]'s bulge [pick("OwO!", "uwu!")]")
 	..()
 
 /datum/reagent/OwO/furranium/on_mob_delete(mob/living/carbon/M)
