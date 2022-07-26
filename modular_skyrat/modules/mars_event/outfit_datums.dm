@@ -32,10 +32,9 @@
 
 /datum/outfit/event_colonizer/post_equip(mob/living/carbon/human/human_target, visualsOnly = FALSE)
 	var/obj/item/card/id/target_id = human_target.wear_id
-	if(target_id)
-		target_id.registered_name = human_target.real_name
-		target_id.update_label()
-		target_id.update_icon()
+	target_id.registered_name = human_target.real_name
+	target_id.update_label()
+	target_id.update_icon()
 	return ..()
 
 /obj/item/storage/box/expeditionary_survival/event/PopulateContents()
@@ -56,6 +55,9 @@
 		/datum/reagent/consumable/nutriment/vitamin = 8,
 		/datum/reagent/water = 40
 	)
+
+/obj/item/storage/belt/utility/full/redtools
+	icon_state = "explorer2"
 
 /obj/item/storage/belt/utility/full/redtools/PopulateContents()
 	SSwardrobe.provide_type(/obj/item/screwdriver/caravan, src)
