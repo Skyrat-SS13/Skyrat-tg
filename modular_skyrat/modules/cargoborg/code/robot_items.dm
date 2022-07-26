@@ -283,6 +283,10 @@
 	item_weight_limit = NONE
 	clamp_sound_volume = 50
 
+/obj/item/borg/hydraulic_clamp/better/examine(mob/user)
+	. = ..()
+	var/crate_count = contents.len
+	. += "There is currently <b>[crate_count > 0 ? crate_count : "no"]</b> crate[crate_count > 1 ? "s" : ""] stored in the clamp's internal storage."
 
 /obj/item/borg/hydraulic_clamp/mail
 	name = "integrated rapid mail delivery device"
