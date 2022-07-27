@@ -284,6 +284,11 @@ GLOBAL_DATUM(everyone_a_traitor, /datum/everyone_is_a_traitor_controller)
 			else
 				holder.only_one_delayed()
 			SSblackbox.record_feedback("nested tally", "admin_secrets_fun_used", 1, list("There Can Be Only One"))
+		if("suitUp")
+			if(!is_funmin)
+				return
+			holder.suit_up_all()
+			SSblackbox.record_feedback("nested tally", "admin_secrets_fun_used", 1, list("Give everyone suits"))
 		if("guns")
 			if(!is_funmin)
 				return

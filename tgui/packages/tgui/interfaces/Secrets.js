@@ -279,12 +279,13 @@ const FunTab = (props, context) => {
             />
           </Stack.Item>
           <Stack.Item>
-            <NoticeBox
-              mb={-0.5}
+            <Button
+              icon="robot"
+              lineHeight={lineHeightNormal}
               width={buttonWidthNormal}
-              height={lineHeightNormal}>
-              Your admin button here, coder!
-            </NoticeBox>
+              content="Suit Up!"
+              onClick={() => act('suitUp')}
+            />
           </Stack.Item>
           <Stack.Item>
             <NoticeBox
