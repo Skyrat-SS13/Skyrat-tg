@@ -15,6 +15,7 @@
 /area/redplanet
 	icon = 'icons/area/areas_station.dmi'
 	icon_state = "mining"
+	name = "Hellas Planitia Outdoors"
 	has_gravity = STANDARD_GRAVITY
 	flags_1 = NONE
 	area_flags = UNIQUE_AREA | NO_ALERTS
