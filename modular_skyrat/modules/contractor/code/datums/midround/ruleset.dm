@@ -14,7 +14,7 @@
 	required_candidates = 2
 	weight = 6
 	cost = 10
-	requirements = list(101,101,101,80,60,50,30,20,10,10)
+	minimum_players = 25
 	flags = HIGH_IMPACT_RULESET
 	/// valid places to spawn
 	var/list/spawn_locs = list()
