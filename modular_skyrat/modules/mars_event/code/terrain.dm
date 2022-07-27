@@ -1,16 +1,23 @@
 #define RED_PLANET_ATMOS "co2=40;o2=3;n2=7;TEMP=210"
 #define RED_ROCK "#934b33"
+#define DARK_ROCK "#747474"
 
 /turf/open/misc/ironsand/redplanet
 	initial_gas_mix = RED_PLANET_ATMOS
+	planetary_atmos = TRUE
 
 /turf/open/misc/asteroid/basalt/redplanet
 	baseturfs = /turf/baseturf_bottom
 	initial_gas_mix = RED_PLANET_ATMOS
+	planetary_atmos = TRUE
 
 /turf/closed/mineral/random/redplanet
 	baseturfs = /turf/baseturf_bottom
 	color = RED_ROCK
+
+/turf/closed/mineral/random/redplanet/dark
+	baseturfs = /turf/open/misc/asteroid/basalt/redplanet
+	color = DARK_ROCK
 
 /area/redplanet
 	icon = 'icons/area/areas_station.dmi'
@@ -30,3 +37,4 @@
 	max_ambience_cooldown = 220 SECONDS
 	ambient_buzz = 'sound/ambience/magma.ogg'
 	outdoors = TRUE
+	luminosity = 2
