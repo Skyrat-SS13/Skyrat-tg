@@ -9,9 +9,9 @@
 /turf/open/misc/ironsand/redplanet/Initialize(mapload)
 	. = ..()
 
-	if(prob(15))
+	if(prob(2))
 		new /obj/structure/flora/rock/style_random(get_turf(src))
-	else if(prob(15))
+	else if(prob(2))
 		new /obj/structure/flora/rock/pile/style_random(get_turf(src))
 
 /turf/open/misc/asteroid/basalt/redplanet
