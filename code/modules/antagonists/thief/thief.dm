@@ -169,12 +169,7 @@
 	thief.dna.update_ui_block(DNA_GENDER_BLOCK)
 	thief.dna.update_ui_block(DNA_HAIR_COLOR_BLOCK)
 	thief.dna.update_ui_block(DNA_SKIN_TONE_BLOCK)
-<<<<<<< HEAD
-	thief.update_hair()
-	thief.update_body()
-=======
 	thief.update_body(is_creating = TRUE)
->>>>>>> 196250c8f78 (Concentrated barbers aid can give hairless species hair + fixes hair updating once and for all (probably) (#68580))
 
 	// This outfit is used by the assets SS, which is ran before the atoms SS
 	if (SSatoms.initialized == INITIALIZATION_INSSATOMS)
