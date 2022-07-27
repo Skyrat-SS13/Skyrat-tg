@@ -172,7 +172,7 @@ There are several things that need to be remembered:
 				icon_file = dna.species.generate_custom_worn_icon(LOADOUT_ITEM_UNIFORM, w_uniform)
 			// SKYRAT EDIT END
 
-			if((dna?.species.bodytype & BODYTYPE_MONKEY) && (uniform.supports_variations_flags & CLOTHING_MONKEY_VARIATION))
+			else if((dna?.species.bodytype & BODYTYPE_MONKEY) && (uniform.supports_variations_flags & CLOTHING_MONKEY_VARIATION)) // SKYRAT EDIT CHANGE: else
 				icon_file = MONKEY_UNIFORM_FILE
 
 			//Female sprites have lower priority than digitigrade sprites
