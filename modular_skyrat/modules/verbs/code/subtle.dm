@@ -52,7 +52,7 @@
 	var/list/viewers = get_hearers_in_view(SUBTLE_DEFAULT_DISTANCE, user)
 
 	for(var/mob/ghost in GLOB.dead_mob_list)
-		if(ghost.stat == DEAD && (ghost.client?.prefs.chat_toggles & CHAT_GHOSTSIGHT) && !(ghost in viewers))
+		if((ghost.client?.prefs.chat_toggles & CHAT_GHOSTSIGHT) && !(ghost in viewers))
 			ghost.show_message(subtle_message)
 
 	for(var/mob/reciever in viewers)
