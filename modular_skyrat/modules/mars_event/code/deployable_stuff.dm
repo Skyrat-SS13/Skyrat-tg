@@ -43,3 +43,8 @@
 	name = "Deployable Hydroponics Tray"
 	desc = "Don't ask how we kept the water from spilling everywhere while this was packed up, you aren't payed to think like that."
 	thing_to_deploy = /obj/machinery/hydroponics/constructable
+
+/obj/item/quickdeploy/barricade/plasteel/orm
+	name = "Deployable ORM"
+	desc = "It's a big furnace in a box, unpack it somewhere with power and insert ores, keep hands out of heating elements."
+	thing_to_deploy = /obj/machinery/mineral/ore_redemption
