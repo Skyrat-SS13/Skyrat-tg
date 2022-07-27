@@ -66,3 +66,20 @@
 		/obj/item/mod/module/status_readout,
 		/obj/item/mod/module/thermal_regulator,
 	)
+
+/obj/item/mod/control/pre_equipped/event/leader
+	theme = /datum/mod_theme/event
+	applied_cell = /obj/item/stock_parts/cell/super
+	initial_modules = list(
+		/obj/item/mod/module/welding,
+		/obj/item/mod/module/magboot,
+		/obj/item/mod/module/storage/large_capacity,
+		/obj/item/mod/module/orebag,
+		/obj/item/mod/module/emp_shield,
+		/obj/item/mod/module/flashlight,
+		/obj/item/mod/module/visor/diaghud,
+		/obj/item/mod/module/quick_carry,
+		/obj/item/mod/module/status_readout,
+		/obj/item/mod/module/thermal_regulator,
+		/obj/item/mod/module/megaphone,
+	)

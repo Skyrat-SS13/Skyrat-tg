@@ -26,6 +26,7 @@
 		/obj/item/stack/ore/titanium = 11,
 		/obj/item/stack/ore/bluespace_crystal = 1
 	)
+	tool_mine_speed = 10 SECONDS
 
 /turf/closed/mineral/random/redplanet/dark
 	baseturfs = /turf/open/misc/asteroid/basalt/redplanet

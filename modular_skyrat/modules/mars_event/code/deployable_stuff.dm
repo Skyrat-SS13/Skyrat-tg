@@ -38,3 +38,8 @@
 	name = "Deployable Cryostasis Pod"
 	desc = "Contains one flat packed cryostasis pod, requires power to function, do not store frozen foods in here."
 	thing_to_deploy = /obj/machinery/cryopod
+
+/obj/item/quickdeploy/barricade/plasteel/hydroponics
+	name = "Deployable Hydroponics Tray"
+	desc = "Don't ask how we kept the water from spilling everywhere while this was packed up, you aren't payed to think like that."
+	thing_to_deploy = /obj/machinery/hydroponics/constructable

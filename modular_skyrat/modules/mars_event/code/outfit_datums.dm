@@ -11,7 +11,7 @@
 	backpack_contents = list(
 		/obj/item/storage/box/nri_rations = 1,
 		/obj/item/construction/rcd/loaded = 1,
-		/obj/item/pipe_dispenser = 1
+		/obj/item/pipe_dispenser = 1,
 	)
 	belt = /obj/item/storage/belt/utility/full/redtools
 	ears = /obj/item/radio/headset/headset_cargo/mining
@@ -37,6 +37,19 @@
 	target_id.update_icon()
 	return ..()
 
+/datum/outfit/event_colonizer/leader
+	id_trim = /datum/id_trim/centcom/ert/commander
+	uniform = /obj/item/clothing/under/rank/centcom/officer
+	suit = /obj/item/clothing/suit/armor/vest/marine
+	back = /obj/item/mod/control/pre_equipped/event/leader
+	backpack_contents = list(
+		/obj/item/storage/box/nri_rations = 1,
+		/obj/item/construction/rcd/loaded = 1,
+		/obj/item/pipe_dispenser = 1,
+		/obj/item/megaphone/command = 1,
+	)
+	ears = /obj/item/radio/headset/headset_cent/alt/with_key
+
 /obj/item/storage/box/expeditionary_survival/event/PopulateContents()
 	new /obj/item/clothing/mask/gas/sechailer (src)
 	new /obj/item/tank/internals/emergency_oxygen/engi(src)
@@ -58,6 +71,8 @@
 
 /obj/item/storage/belt/utility/full/redtools
 	icon_state = "explorer2"
+	inhand_icon_state = "explorer2"
+	worn_icon_state = "explorer2"
 
 /obj/item/storage/belt/utility/full/redtools/PopulateContents()
 	SSwardrobe.provide_type(/obj/item/screwdriver/caravan, src)
