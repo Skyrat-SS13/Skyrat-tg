@@ -33,7 +33,11 @@
 	return TRUE
 
 /obj/item/ammo_casing/proc/tk_firing(mob/living/user, atom/fired_from)
+<<<<<<< HEAD
 	return FALSE // SKYRAT EDIT CHANGE - Shit's broken, wait till upstream fix it.
+=======
+	return !user.contains(fired_from)
+>>>>>>> 731f87895a0 ([NO GBP] fixes tk firing for real (#68804))
 
 /obj/item/ammo_casing/proc/ready_proj(atom/target, mob/living/user, quiet, zone_override = "", atom/fired_from)
 	if (!loaded_projectile)
