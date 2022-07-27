@@ -380,22 +380,67 @@
 	icon_file = 'modular_skyrat/modules/GAGS/icons/jumpsuit_teshari.dmi'
 
 // PANTS / SHORTS
+//Note, these icons are now in master_files per TG's sorting. There's no reason to NOT have these pieces in master files now that they're sorted out.
+//The rest will eventually join them - preferably with a cleaner method too instead of having to have unique configs for every single item's digi state.
 
 /datum/greyscale_config/slacks_worn/digi
 	name = "Worn Slacks - Digitigrade"
-	icon_file = 'modular_skyrat/modules/GAGS/icons/shorts_pants.dmi'
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/shorts_pants_digi.dmi'
 
 /datum/greyscale_config/jeans_worn/digi
 	name = "Worn Jeans - Digitigrade"
-	icon_file = 'modular_skyrat/modules/GAGS/icons/shorts_pants.dmi'
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/shorts_pants_digi.dmi'
 
 /datum/greyscale_config/shorts_worn/digi
 	name = "Worn Shorts - Digitigrade"
-	icon_file = 'modular_skyrat/modules/GAGS/icons/shorts_pants.dmi'
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/shorts_pants_digi.dmi'
 
 /datum/greyscale_config/jeanshorts_worn/digi
 	name = "Worn Jean Shorts - Digitigrade"
-	icon_file = 'modular_skyrat/modules/GAGS/icons/shorts_pants.dmi'
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/shorts_pants_digi.dmi'
+
+//These 9 are for an actual modular item instead of making a TG item digi! Woa!
+/datum/greyscale_config/shorts_ripped
+	name = "Ripped Shorts"
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/shorts_pants.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/pants_shorts_skirts_dresses/jeans_ripped.json'
+
+/datum/greyscale_config/shorts_ripped_worn
+	name = "Worn Ripped Shorts"
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/shorts_pants.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/pants_shorts_skirts_dresses/jeans_ripped_worn.json'
+
+/datum/greyscale_config/shorts_ripped_worn/digi
+	name = "Worn Ripped Shorts - Digitigrade"
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/shorts_pants_digi.dmi'
+
+/datum/greyscale_config/jeans_ripped
+	name = "Ripped Jeans"
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/shorts_pants.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/pants_shorts_skirts_dresses/jeans_ripped.json'
+
+/datum/greyscale_config/jeans_ripped_worn
+	name = "Worn Ripped Jeans"
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/shorts_pants.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/pants_shorts_skirts_dresses/jeans_ripped_worn.json'
+
+/datum/greyscale_config/jeans_ripped_worn/digi
+	name = "Worn Ripped Jeans - Digitigrade"
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/shorts_pants_digi.dmi'
+
+/datum/greyscale_config/yoga_pants
+	name = "Yoga Pants"
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/shorts_pants.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/pants_shorts_skirts_dresses/yoga_pants.json'
+
+/datum/greyscale_config/yoga_pants_worn
+	name = "Worn Yoga Pants"
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/shorts_pants.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/pants_shorts_skirts_dresses/yoga_pants_worn.json'
+
+/datum/greyscale_config/yoga_pants_worn/digi
+	name = "Worn Yoga Pants - Digitigrade"
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/shorts_pants_digi.dmi'
 
 // DRESSES / SKIRTS
 
