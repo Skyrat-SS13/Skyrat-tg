@@ -39,7 +39,7 @@
 			emote_type = type_override
 
 	if(!can_run_emote(user))
-		to_chat(user, type = MESSAGE_TYPE_WARNING, "You can't emote at this time.")
+		to_chat(user, "You can't emote at this time.", type = MESSAGE_TYPE_WARNING)
 		return FALSE
 
 	var/prefix_log_message = "(SUBTLE) [subtle_message]"
@@ -81,16 +81,16 @@
 
 /datum/emote/living/subtler/run_emote(mob/user, params, type_override = null)
 	if(!can_run_emote(user))
-		to_chat(user, type = MESSAGE_TYPE_WARNING, "You can't emote at this time.")
+		to_chat(user, "You can't emote at this time.", type = MESSAGE_TYPE_WARNING)
 		return FALSE
 	var/subtler_message
 	var/subtler_emote = params
 	var/mob/target
 	if(is_banned_from(user, "emote"))
-		to_chat(user, type = MESSAGE_TYPE_WARNING, "You cannot send subtle emotes (banned).")
+		to_chat(user, "You cannot send subtle emotes (banned).", type = MESSAGE_TYPE_WARNING)
 		return FALSE
 	else if(user.client && user.client.prefs.muted & MUTE_IC)
-		to_chat(user, type = MESSAGE_TYPE_WARNING, "You cannot send IC messages (muted).")
+		to_chat(user, "You cannot send IC messages (muted).", type = MESSAGE_TYPE_WARNING)
 		return FALSE
 	else if(!subtler_emote)
 		subtler_emote = stripped_multiline_input(user, "Choose an emote to display.", "Subtler" , null, MAX_MESSAGE_LEN)
@@ -119,7 +119,7 @@
 			emote_type = type_override
 
 	if(!can_run_emote(user))
-		to_chat(user, type = MESSAGE_TYPE_WARNING, "You can't emote at this time.")
+		to_chat(user, "You can't emote at this time.", type = MESSAGE_TYPE_WARNING)
 		return FALSE
 
 	user.log_message(subtler_message, LOG_SUBTLER)
@@ -133,7 +133,7 @@
 		if(get_dist(user.loc, target.loc) <= SUBTLE_DEFAULT_DISTANCE)
 			target.show_message(subtler_message, alt_msg = subtler_message)
 		else
-			to_chat(user, type = MESSAGE_TYPE_WARNING, "Your emote was unable to be sent to your target: Too far away.")
+			to_chat(user, "Your emote was unable to be sent to your target: Too far away.", type = MESSAGE_TYPE_WARNING)
 	else
 		var/ghostless = get_hearers_in_view(target, user) - GLOB.dead_mob_list
 		for(var/mob/reciever in ghostless)
