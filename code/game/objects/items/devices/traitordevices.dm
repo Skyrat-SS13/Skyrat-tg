@@ -323,19 +323,12 @@ effective or pretty fucking useless.
 	//to_chat(user,"<span class='notice'>You [active ? "deactivate" : "activate"] [src].</span>") SKYRAT EDIT REMOVAL
 	active = !active
 	if(active)
-<<<<<<< HEAD
 		turn_on() //SKYRAT EDIT CHANGE
+
 	else
 		turn_off() //SKYRAT EDIT CHANGE
 
 	to_chat(user,"<span class='notice'>You [active ? "activate" : "deactivate"] [src].</span>") //SKYRAT EDIT MOVE
-=======
-		GLOB.active_jammers |= src
-
-	else
-		GLOB.active_jammers -= src
-
->>>>>>> 138b8346386 (Engi syndie sentry can be only activated using combat wrench (#68619))
 	update_appearance()
 
 /obj/item/storage/toolbox/emergency/turret
