@@ -61,15 +61,6 @@
 		/datum/language/yangyu = list(LANGUAGE_ATOM)
 	)
 
-/datum/language_holder/monkey
-	understood_languages = list(
-		/datum/language/common = list(LANGUAGE_ATOM),
-		/datum/language/uncommon = list(LANGUAGE_ATOM)
-	)
-	spoken_languages = list(
-		/datum/language/uncommon = list(LANGUAGE_ATOM)
-	)
-
 /datum/language_holder/mushroom
 	understood_languages = list(
 		/datum/language/common = list(LANGUAGE_ATOM),
