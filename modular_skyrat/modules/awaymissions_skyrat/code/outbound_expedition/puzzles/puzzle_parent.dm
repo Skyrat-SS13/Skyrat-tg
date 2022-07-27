@@ -9,6 +9,8 @@
 	var/terminal_name = ""
 	/// Description of the terminal
 	var/terminal_desc = ""
+	/// Describing how to complete the puzzle
+	var/desc = ""
 
 /datum/outbound_teamwork_puzzle/Destroy(force, ...)
 	if(terminal)

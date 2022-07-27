@@ -4,6 +4,7 @@
  * They all follow the concept of "If X, do Y, else do Z"
  */
 
+/// Note to self: figure out why conditionals occasionally make assocs instead of singleton numbers
 
 /datum/outbound_wire_conditional
 	/// Text that describes the conditional
@@ -20,7 +21,7 @@
 	set_up_condition()
 
 /// The check to see if it was right or wrong. Potentially depreciated.
-/datum/outbound_wire_conditional/proc/conditional_check()
+/datum/outbound_wire_conditional/proc/conditional_check(list/wire_list)
 	return
 
 /**
@@ -34,6 +35,17 @@
 	desc = ""
 	logic_wires.Cut()
 
+/// Basically check to see if another conditional is asking to cut/pulse the same wires
+/datum/outbound_wire_conditional/proc/check_multi_wire_act()
+	OUTBOUND_CONTROLLER
+
+	for(var/puzzle_wire in acting_wires)
+		for(var/datum/outbound_wire_conditional/conditional as anything in outbound_controller.puzzle_controller.wire_conditionals)
+			if(conditional == src)
+				continue
+			if(puzzle_wire in conditional.acting_wires)
+				return FALSE
+	return TRUE
 
 ////////////////////////////////////////////
 //HOLY SHIT TEST THIS ENTIRE FILE THOROUGHLY
@@ -43,11 +55,13 @@
 
 // If certain wires are a certain color, cut X wire
 /datum/outbound_wire_conditional/onecolor
+	var/list/selected_wires = list()
+	var/chosen_color
 
 /datum/outbound_wire_conditional/onecolor/set_up_condition()
 	..()
 
-	var/chosen_color = pick(OUTBOUND_WIRE_COLORS)
+	chosen_color = pick(OUTBOUND_WIRE_COLORS)
 
 	var/wire_check = 0
 	switch(rand(1, 10))
@@ -60,11 +74,14 @@
 		if(10)
 			wire_check = 4
 
-	var/list/selected_wires = list()
 	for(var/i in 1 to wire_check)
 		selected_wires |= rand(1, OUTBOUND_WIRE_COUNT)
 
-	acting_wires |= rand(1, OUTBOUND_WIRE_COUNT)
+	while(!length(acting_wires))
+		var/picked_wire = rand(1, OUTBOUND_WIRE_COUNT)
+		acting_wires += picked_wire
+		if(!check_multi_wire_act())
+			acting_wires -= picked_wire
 
 	var/acting_wire_text = ""
 	for(var/wire in acting_wires)
@@ -74,13 +91,25 @@
 	for(var/wire in selected_wires)
 		wire_text += "[wire][wire == selected_wires[length(selected_wires)] ? "" : (wire == selected_wires[length(selected_wires) - 1] ? " or " : ", ")]"
 
-	logic_wires.Insert(1, selected_wires)
+	logic_wires.Insert(0, selected_wires)
 
 	var/multiple_check = length(selected_wires) > 1 ? TRUE : FALSE
-	desc = "If the wire[multiple_check ? "s" : ""] in the [wire_text] position[multiple_check ? "s are" : " is"] [chosen_color], then [cut_or_pulse] the [acting_wire_text]." //chosen_color will be a hexcode, fix later
+	desc = "If the wire[multiple_check ? "s" : ""] in the [wire_text] position[multiple_check ? "s are" : " is"] [chosen_color], then [cut_or_pulse] [acting_wire_text]."
 
-// If certain wires are A, B, or C color, cut X wire
+/datum/outbound_wire_conditional/onecolor/conditional_check(list/wire_list)
+	var/one_of_them_is_right = FALSE
+	for(var/num in selected_wires)
+		var/datum/outbound_puzzle_wire/wire_datum = wire_list[num]
+		if(wire_datum.color == chosen_color)
+			one_of_them_is_right = TRUE
+			break
+	if(!one_of_them_is_right)
+		acting_wires = list()
+
+// If certain wires are A, B, or C color, cut X, Y, and/or Z wire
 /datum/outbound_wire_conditional/multicolor
+	var/list/selected_colors = list()
+	var/list/selected_wires = list()
 
 /datum/outbound_wire_conditional/multicolor/set_up_condition()
 	..()
@@ -107,15 +136,17 @@
 		if(10)
 			wire_check = 4
 
-	var/list/selected_wires = list()
 	for(var/i in 1 to wire_check)
 		selected_wires |= rand(1, OUTBOUND_WIRE_COUNT)
 
-	var/list/selected_colors = list()
 	for(var/i in 1 to color_check)
 		selected_colors |= pick(OUTBOUND_WIRE_COLORS)
 
-	acting_wires |= rand(1, OUTBOUND_WIRE_COUNT)
+	while(!length(acting_wires))
+		var/picked_wire = rand(1, OUTBOUND_WIRE_COUNT)
+		acting_wires += picked_wire
+		if(!check_multi_wire_act())
+			acting_wires -= picked_wire
 	var/acting_wire_text = ""
 
 	for(var/wire in acting_wires)
@@ -129,19 +160,31 @@
 	for(var/color in selected_colors)
 		color_text += "[color][color == selected_colors[length(selected_colors)] ? "" : (color == selected_colors[length(selected_colors) - 1] ? " or " : ", ")]]"
 
-	logic_wires.Insert(1, selected_wires)
+	logic_wires.Insert(0, selected_wires)
 
 	var/multiple_check = length(selected_wires) > 1 ? TRUE : FALSE
 	desc = "If the wire[multiple_check ? "s" : ""] in the [wire_text] position[multiple_check ? "s are" : " is"] [color_text], then [cut_or_pulse] the [acting_wire_text]." //chosen_color will be a hexcode, fix later
 
+/datum/outbound_wire_conditional/multicolor/conditional_check(list/wire_list)
+	var/one_of_them_is_right = FALSE
+	for(var/num in selected_wires)
+		var/datum/outbound_puzzle_wire/wire_datum = wire_list[num]
+		if(wire_datum.color in selected_colors)
+			one_of_them_is_right = TRUE
+			break
+	if(!one_of_them_is_right)
+		acting_wires = list()
+/* //removed temporarily
 // If X wire is Y color, cut wires A, B, and C
 /datum/outbound_wire_conditional/multiwire
+	var/chosen_wire
+	var/chosen_color
 
 /datum/outbound_wire_conditional/multiwire/set_up_condition()
 	..()
 
-	var/chosen_color = pick(OUTBOUND_WIRE_COLORS)
-	var/chosen_wire = rand(1, OUTBOUND_WIRE_COUNT)
+	chosen_color = pick(OUTBOUND_WIRE_COLORS)
+	chosen_wire = rand(1, OUTBOUND_WIRE_COUNT)
 
 	var/acting_wire_check = 0
 	switch(rand(1, 10))
@@ -155,34 +198,53 @@
 			acting_wire_check = 4
 
 	for(var/i in 1 to acting_wire_check)
-		acting_wires |= rand(1, OUTBOUND_WIRE_COUNT)
+		while(length(acting_wires) == i - 1)
+			var/picked_wire = rand(1, OUTBOUND_WIRE_COUNT)
+			acting_wires += picked_wire
+			if(!check_multi_wire_act())
+				acting_wires -= picked_wire
 
 	var/acting_wire_text = ""
 	for(var/wire in acting_wires)
 		acting_wire_text += "[wire][wire == acting_wires[length(acting_wires)] ? "" : (wire == acting_wires[length(acting_wires) - 1] ? " and " : ", ")]"
 
-	logic_wires.Insert(1, chosen_wire)
+	logic_wires.Insert(0, chosen_wire)
 
 	var/multiple_check = length(acting_wires) > 1 ? TRUE : FALSE
 	desc = "If the wire in the [chosen_wire] position is [chosen_color], then [cut_or_pulse] the [acting_wire_text] wire[multiple_check ? "s" : ""]." //chosen_color will be a hexcode, fix later
 
-// If the amount of wires is even, cut X, else cut Y
-/datum/outbound_wire_conditional/evenorodd
+/datum/outbound_wire_conditional/multiwire/conditional_check(list/wire_list)
+	var/datum/outbound_puzzle_wire/wire_datum = wire_list[chosen_wire]
+	if(wire_datum.color != chosen_color)
+		acting_wires = list()
+*/
+// Cut/Pulse X, Y, and/or Z wire. No strings attached.
+/datum/outbound_wire_conditional/act_wires
 
-/datum/outbound_wire_conditional/evenorodd/set_up_condition()
+/datum/outbound_wire_conditional/act_wires/set_up_condition()
 	..()
 
-	var/even_wire = rand(1, OUTBOUND_WIRE_COUNT)
-	var/odd_wire
-	while(!odd_wire || (odd_wire == even_wire))
-		odd_wire = rand(1, OUTBOUND_WIRE_COUNT)
+	var/acting_wire_check = 0
+	switch(rand(1, 10))
+		if(1 to 5)
+			acting_wire_check = 1
+		if(6 to 8)
+			acting_wire_check = 2
+		if(9)
+			acting_wire_check = 3
+		if(10)
+			acting_wire_check = 4
 
-	var/even_or_odd = pick("even", "odd")
-	if(even_or_odd == "even")
-		acting_wires |= even_wire
-	else
-		acting_wires |= odd_wire
+	for(var/i in 1 to acting_wire_check)
+		while(length(acting_wires) == i - 1)
+			var/picked_wire = rand(1, OUTBOUND_WIRE_COUNT)
+			acting_wires += picked_wire
+			if(!check_multi_wire_act())
+				acting_wires -= picked_wire
 
-	// No logic wires here
+	var/acting_wire_text = ""
+	for(var/wire in acting_wires)
+		acting_wire_text += "[wire][wire == acting_wires[length(acting_wires)] ? "" : (wire == acting_wires[length(acting_wires) - 1] ? " and " : ", ")]"
 
-	desc = "If there are an even amount of wires, cut [even_wire], else cut [odd_wire]."
+	var/multiple_check = length(acting_wires) > 1 ? TRUE : FALSE
+	desc = "[capitalize(cut_or_pulse)] the [acting_wire_text] wire[multiple_check ? "s" : ""]."

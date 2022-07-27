@@ -8,7 +8,7 @@ SUBSYSTEM_DEF(away_missions)
 	name = "Away Missions"
 	init_order = INIT_ORDER_AWAY_MISSION
 	flags = SS_KEEP_TIMING
-	runlevels = RUNLEVEL_GAME | RUNLEVEL_POSTGAME
+	runlevels = RUNLEVEL_LOBBY | RUNLEVEL_SETUP | RUNLEVEL_GAME | RUNLEVEL_POSTGAME
 	wait = 10 MINUTES
 	/// Relevant away controller
 	var/datum/away_controller/selected_controller
@@ -28,7 +28,10 @@ SUBSYSTEM_DEF(away_missions)
 /datum/controller/subsystem/away_missions/proc/controller_setup(datum/source, mapname)
 	SIGNAL_HANDLER
 	var/regex/sanitizing_regex = regex(@"([^A-Za-z])")
-	var/chosen_path = text2path("/datum/away_controller/[lowertext(replacetext(mapname, sanitizing_regex, "_"))]")
+	var/regex/clean_up_regex = regex(@"(\..*)")
+	var/chosen_path = replacetext(mapname, sanitizing_regex, "_")
+	chosen_path = replacetext(chosen_path, clean_up_regex, "")
+	chosen_path = text2path("/datum/away_controller/[lowertext(replacetext(chosen_path, clean_up_regex, ""))]") //this donut work with "outbound_expedition.dmm custom"
 	if(!ispath(chosen_path)) //check if this passes or fails on improper paths
 		return
 	selected_controller = new chosen_path

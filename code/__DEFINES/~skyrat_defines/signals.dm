@@ -78,3 +78,9 @@
 
 /// When an away mission is loaded : (mapname)
 #define COMSIG_AWAY_MISSION_LOADED "away_mission_loaded"
+
+/// When a person enters an away mission cryopod : (mob/living/living_mob)
+#define COMSIG_AWAY_CRYOPOD_ENTERED "away_cryopod_entered"
+
+/// When a person is ejected from an away mission cryopod : (mob/living/living_mob)
+#define COMSIG_AWAY_CRYOPOD_EXITED "away_cryopod_exited"
