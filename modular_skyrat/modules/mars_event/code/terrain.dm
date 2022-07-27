@@ -39,4 +39,8 @@
 	max_ambience_cooldown = 220 SECONDS
 	ambient_buzz = 'sound/ambience/magma.ogg'
 	outdoors = TRUE
-	luminosity = 2
+	base_lighting_alpha = 55
+
+/area/redplanet/Initialize(mapload)
+	. = ..()
+	luminosity = 1
