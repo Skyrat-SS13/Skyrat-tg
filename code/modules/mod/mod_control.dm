@@ -371,7 +371,7 @@
 
 /obj/item/mod/control/attackby(obj/item/attacking_item, mob/living/user, params)
 	// SKYRAT EDIT START - pAIs in MODsuits
-	if(istype(attacking_item, /obj/item/paicard))
+	if(istype(attacking_item, /obj/item/pai_card))
 		if(!open) //mod must be open
 			balloon_alert(user, "suit must be open to transfer!")
 			return FALSE
