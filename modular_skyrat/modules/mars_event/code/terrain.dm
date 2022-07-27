@@ -1,6 +1,6 @@
 #define RED_PLANET_ATMOS "co2=40;o2=3;n2=7;TEMP=210"
 #define RED_ROCK "#934b33"
-#define DARK_ROCK "#747474"
+#define DARK_ROCK "#2b2b2b"
 
 /turf/open/misc/ironsand/redplanet
 	initial_gas_mix = RED_PLANET_ATMOS
