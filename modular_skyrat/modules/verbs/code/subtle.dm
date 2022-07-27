@@ -28,7 +28,7 @@
 		to_chat(user, "You cannot send IC messages (muted).")
 		return FALSE
 	else if(!params)
-		subtle_emote = stripped_multiline_input(user, "Choose an emote to display.", "Subtle", null, MAX_MESSAGE_LEN)
+		subtle_emote = tgui_input_text(user, "Choose an emote to display.", "Subtle", null, MAX_MESSAGE_LEN, TRUE)
 		if(subtle_emote && !check_invalid(user, subtle_emote))
 			subtle_message = subtle_emote
 		else
@@ -93,7 +93,7 @@
 		to_chat(user, "You cannot send IC messages (muted).", type = MESSAGE_TYPE_WARNING)
 		return FALSE
 	else if(!subtler_emote)
-		subtler_emote = stripped_multiline_input(user, "Choose an emote to display.", "Subtler" , null, MAX_MESSAGE_LEN)
+		subtler_emote = tgui_input_text(user, "Choose an emote to display.", "Subtler" , null, MAX_MESSAGE_LEN, TRUE)
 		if(subtler_emote && !check_invalid(user, subtler_emote))
 			var/list/in_view = get_hearers_in_view(1, user)
 			in_view -= GLOB.dead_mob_list
