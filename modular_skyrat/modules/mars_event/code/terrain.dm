@@ -16,6 +16,16 @@
 	mineralChance = 25
 	mineralAmt = 10
 	color = RED_ROCK
+	mineralSpawnChanceList = list(
+		/obj/item/stack/ore/uranium = 5,
+		/obj/item/stack/ore/diamond = 1,
+		/obj/item/stack/ore/gold = 10,
+		/obj/item/stack/ore/silver = 12,
+		/obj/item/stack/ore/plasma = 20,
+		/obj/item/stack/ore/iron = 40,
+		/obj/item/stack/ore/titanium = 11,
+		/obj/item/stack/ore/bluespace_crystal = 1
+	)
 
 /turf/closed/mineral/random/redplanet/dark
 	baseturfs = /turf/open/misc/asteroid/basalt/redplanet
@@ -39,7 +49,7 @@
 	max_ambience_cooldown = 220 SECONDS
 	ambient_buzz = 'sound/ambience/magma.ogg'
 	outdoors = TRUE
-	base_lighting_alpha = 55
+	base_lighting_alpha = 15
 
 /area/redplanet/Initialize(mapload)
 	. = ..()
