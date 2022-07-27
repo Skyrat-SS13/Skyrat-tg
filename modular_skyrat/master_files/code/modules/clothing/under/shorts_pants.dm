@@ -6,11 +6,11 @@
 	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/under/shorts_pants_digi.dmi'
 
 /obj/item/clothing/under/pants/skyrat
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/cargo.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/shorts_pants.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/shorts_pants.dmi'
 
 /obj/item/clothing/under/shorts/skyrat
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/cargo.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/shorts_pants.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/shorts_pants.dmi'
 	//Need to reset all these so our custom stuff can choose independently to be greyscale or not. TG putting these on the basetype was kinda gross.
 	greyscale_config = null
