@@ -36,6 +36,14 @@
 	)
 	var/list/name_to_language
 
+/datum/preference_middleware/languages/New(datum/preferences)
+	. = ..()
+	// Sanitize languages
+	for(var/datum/language/lang_path in src.preferences.languages.Copy())
+		lang_path = new lang_path()
+		if(lang_path.secret)
+			src.preferences.languages.Remove(lang_path)
+
 /datum/preference_middleware/languages/apply_to_human(mob/living/carbon/human/target, datum/preferences/preferences) // SKYRAT EDIT CHANGE
 	target.language_holder.understood_languages.Cut()
 	target.language_holder.spoken_languages.Cut()
