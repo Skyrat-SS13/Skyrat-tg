@@ -6,6 +6,14 @@
 	initial_gas_mix = RED_PLANET_ATMOS
 	planetary_atmos = TRUE
 
+/turf/open/misc/ironsand/redplanet/Initialize(mapload)
+	. = ..()
+
+	if(prob(15))
+		new /obj/structure/flora/rock/style_random(get_turf(src))
+	else if(prob(15))
+		new /obj/structure/flora/rock/pile/style_random(get_turf(src))
+
 /turf/open/misc/asteroid/basalt/redplanet
 	baseturfs = /turf/baseturf_bottom
 	initial_gas_mix = RED_PLANET_ATMOS
@@ -50,7 +58,7 @@
 	max_ambience_cooldown = 220 SECONDS
 	ambient_buzz = 'sound/ambience/magma.ogg'
 	outdoors = TRUE
-	base_lighting_alpha = 15
+	base_lighting_alpha = 45
 
 /area/redplanet/Initialize(mapload)
 	. = ..()

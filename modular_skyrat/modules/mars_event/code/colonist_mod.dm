@@ -1,5 +1,5 @@
 /datum/mod_theme/event
-	name = "colonizer"
+	name = "colonizer type N"
 	desc = "A suit upgraded from civilian standards to better fit the needs of colonizing harsh environments."
 	extended_desc = "Modified from the standard civilian series of suits, the colonizer modification \
 	is special built to help the aspiring colony with increased module storage, less power usage, \
@@ -36,7 +36,7 @@
 			CHESTPLATE_FLAGS = list(
 				UNSEALED_CLOTHING = THICKMATERIAL,
 				SEALED_CLOTHING = STOPSPRESSUREDAMAGE,
-				SEALED_INVISIBILITY = HIDEJUMPSUIT|HIDETAIL,
+				SEALED_INVISIBILITY = HIDEJUMPSUIT,
 			),
 			GAUNTLETS_FLAGS = list(
 				UNSEALED_CLOTHING = THICKMATERIAL,
@@ -82,4 +82,57 @@
 		/obj/item/mod/module/status_readout,
 		/obj/item/mod/module/thermal_regulator,
 		/obj/item/mod/module/megaphone,
+	)
+
+/datum/mod_theme/event/syndie
+	name = "colonizer type S"
+	desc = "Prototype suit design rediscovered and refit for the modern era."
+	extended_desc = "Another suit taken from previous designs, and refit for use by \
+	anyone looking for a suit capable of carrying your crew through the harsh environments \
+	of colonizable exoplanets. The type N isn't fit for everyone, some prefer the safe feel \
+	of a camera operated display instead of a glass panel, and some simply prefer the \
+	orange and black color scheme this suit provides."
+	default_skin = "prototype"
+	armor = list(MELEE = 50, BULLET = 40, LASER = 30, ENERGY = 40, BOMB = 70, BIO = 100, FIRE = 100, ACID = 40, WOUND = 15)
+	skins = list(
+		"prototype" = list(
+			HELMET_FLAGS = list(
+				UNSEALED_LAYER = null,
+				UNSEALED_CLOTHING = SNUG_FIT|THICKMATERIAL,
+				SEALED_CLOTHING = STOPSPRESSUREDAMAGE,
+				UNSEALED_INVISIBILITY = HIDEFACIALHAIR|HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDESNOUT,
+				UNSEALED_COVER = HEADCOVERSMOUTH|HEADCOVERSEYES|PEPPERPROOF,
+			),
+			CHESTPLATE_FLAGS = list(
+				UNSEALED_CLOTHING = THICKMATERIAL,
+				SEALED_CLOTHING = STOPSPRESSUREDAMAGE,
+				SEALED_INVISIBILITY = HIDEJUMPSUIT,
+			),
+			GAUNTLETS_FLAGS = list(
+				UNSEALED_CLOTHING = THICKMATERIAL,
+				SEALED_CLOTHING = STOPSPRESSUREDAMAGE,
+				CAN_OVERSLOT = TRUE,
+			),
+			BOOTS_FLAGS = list(
+				UNSEALED_CLOTHING = THICKMATERIAL,
+				SEALED_CLOTHING = STOPSPRESSUREDAMAGE,
+				CAN_OVERSLOT = TRUE,
+			),
+		),
+	)
+
+/obj/item/mod/control/pre_equipped/event/syndie
+	theme = /datum/mod_theme/event/syndie
+	applied_cell = /obj/item/stock_parts/cell/super
+	initial_modules = list(
+		/obj/item/mod/module/welding,
+		/obj/item/mod/module/magboot,
+		/obj/item/mod/module/storage/large_capacity,
+		/obj/item/mod/module/orebag,
+		/obj/item/mod/module/emp_shield,
+		/obj/item/mod/module/flashlight,
+		/obj/item/mod/module/visor/diaghud,
+		/obj/item/mod/module/quick_carry,
+		/obj/item/mod/module/status_readout,
+		/obj/item/mod/module/thermal_regulator,
 	)
