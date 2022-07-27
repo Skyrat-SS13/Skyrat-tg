@@ -13,6 +13,8 @@
 
 /turf/closed/mineral/random/redplanet
 	baseturfs = /turf/baseturf_bottom
+	mineralChance = 25
+	mineralAmt = 10
 	color = RED_ROCK
 
 /turf/closed/mineral/random/redplanet/dark
