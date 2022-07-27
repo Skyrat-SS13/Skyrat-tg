@@ -1,0 +1,3 @@
+#define RED_PLANET_ATMOS "co2=40;o2=3;n2=7;TEMP=210"
+
+
