@@ -23,7 +23,11 @@
 	REMOVE_TRAIT(M, TRAIT_NOFIRE, REF(src))
 
 /datum/action/cooldown/mob_cooldown/lava_swoop/Activate(atom/target_atom)
+<<<<<<< HEAD
 	StartCooldown(30 SECONDS)
+=======
+	StartCooldown(360 SECONDS, 360 SECONDS)
+>>>>>>> c9e16c44bf5 (Fixes some alien actions not working.  (#68625))
 	attack_sequence(target_atom)
 	StartCooldown()
 

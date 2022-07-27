@@ -118,6 +118,11 @@
 /datum/action/cooldown/proc/PreActivate(atom/target)
 	if(SEND_SIGNAL(owner, COMSIG_MOB_ABILITY_STARTED, src) & COMPONENT_BLOCK_ABILITY_START)
 		return
+<<<<<<< HEAD
+=======
+	// Note, that PreActivate handles no cooldowns at all by default.
+	// Be sure to call StartCooldown() in Activate() where necessary.
+>>>>>>> c9e16c44bf5 (Fixes some alien actions not working.  (#68625))
 	. = Activate(target)
 	// There is a possibility our action (or owner) is qdeleted in Activate().
 	if(!QDELETED(src) && !QDELETED(owner))

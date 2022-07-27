@@ -27,7 +27,11 @@
 		default_projectile_spread = spread
 
 /datum/action/cooldown/mob_cooldown/projectile_attack/Activate(atom/target_atom)
+<<<<<<< HEAD
 	StartCooldown(10 SECONDS)
+=======
+	StartCooldown(360 SECONDS, 360 SECONDS)
+>>>>>>> c9e16c44bf5 (Fixes some alien actions not working.  (#68625))
 	attack_sequence(owner, target_atom)
 	StartCooldown()
 
@@ -286,7 +290,11 @@
 	cooldown_time = 2.5 SECONDS
 
 /datum/action/cooldown/mob_cooldown/projectile_attack/colossus_final/Activate(atom/target_atom)
+<<<<<<< HEAD
 	StartCooldown(30 SECONDS)
+=======
+	StartCooldown(360 SECONDS, 360 SECONDS)
+>>>>>>> c9e16c44bf5 (Fixes some alien actions not working.  (#68625))
 	attack_sequence(owner, target_atom)
 	StartCooldown()
 	Remove(owner)

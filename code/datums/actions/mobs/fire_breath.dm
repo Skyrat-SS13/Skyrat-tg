@@ -12,7 +12,11 @@
 	var/ice_breath = FALSE
 
 /datum/action/cooldown/mob_cooldown/fire_breath/Activate(atom/target_atom)
+<<<<<<< HEAD
 	StartCooldown(10 SECONDS)
+=======
+	StartCooldown(360 SECONDS, 360 SECONDS)
+>>>>>>> c9e16c44bf5 (Fixes some alien actions not working.  (#68625))
 	attack_sequence(target_atom)
 	StartCooldown()
 
@@ -60,4 +64,3 @@
 		for(var/j = 1 to spiral_count)
 			INVOKE_ASYNC(src, .proc/fire_line, target, j * increment + i * increment / 2)
 		SLEEP_CHECK_DEATH(delay_time, owner)
-
