@@ -23,7 +23,7 @@
 		/datum/material/glass = MINERAL_MATERIAL_AMOUNT * 0.75,
 		/datum/material/iron = MINERAL_MATERIAL_AMOUNT * 0.25
 	)
-	mine_experience = 1 //its sand THAT'S EPIC!!!!
+	mine_experience = 1 //its sand but EPIC!!!!
 	merge_type = /obj/item/stack/ore/glass/moon
 
 /turf/closed/mineral/random/moonrock
