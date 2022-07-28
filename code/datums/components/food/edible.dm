@@ -311,7 +311,7 @@ Behavior that's still missing from this component that original food items had t
 	//SKYRAT ADD CHANGE BEGIN - VORACIOUS
 	var/time_to_eat = (eater == feeder) ? eat_time : EAT_TIME_FORCE_FEED
 	if(HAS_TRAIT(eater, TRAIT_VORACIOUS))
-		if(fullness < NUTRITION_LEVEL_FAT)
+		if(fullness < NUTRITION_LEVEL_FAT || (eater != feeder)) // No extra delay when being forcefed
 			time_to_eat *= EAT_TIME_VORACIOUS_MULT
 		else
 			time_to_eat *= (fullness / NUTRITION_LEVEL_FAT) * 2 // takes longer to eat the more well fed you are
