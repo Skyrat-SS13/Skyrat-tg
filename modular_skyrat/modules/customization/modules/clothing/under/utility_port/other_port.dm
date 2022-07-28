@@ -146,22 +146,3 @@
 	desc = "An old-fashioned pair of brown overalls, along with assorted pockets and belt-loops."
 	icon_state = "mechanic"
 
-/obj/item/clothing/under/dress/littleblack
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	name = "short black dress"
-	desc = "An extremely short black dress, for those with no shame."
-	icon_state = "littleblackdress_s"
-	body_parts_covered = CHEST|GROIN
-	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
-	can_adjust = FALSE
-
-/obj/item/clothing/under/dress/pinktutu
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	name = "pink tutu"
-	desc = "A fluffy pink tutu."
-	icon_state = "pinktutu_s"
-	body_parts_covered = CHEST|GROIN
-	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
-	can_adjust = FALSE
