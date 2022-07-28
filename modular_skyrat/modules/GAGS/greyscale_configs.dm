@@ -401,12 +401,12 @@
 
 /datum/greyscale_config/shorts_ripped
 	name = "Ripped Shorts"
-	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/shorts_pants.dmi'
+	icon_file = 'modular_skyrat/master_files/icons/obj/clothing/under/shorts_pants.dmi'
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/pants_shorts_skirts_dresses/shorts_ripped.json'
 
 /datum/greyscale_config/shorts_ripped_worn
 	name = "Worn Ripped Shorts"
-	icon_file = 'modular_skyrat/master_files/icons/obj/clothing/under/shorts_pants.dmi'
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/shorts_pants.dmi'
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/pants_shorts_skirts_dresses/shorts_ripped_worn.json'
 
 /datum/greyscale_config/shorts_ripped_worn/digi
