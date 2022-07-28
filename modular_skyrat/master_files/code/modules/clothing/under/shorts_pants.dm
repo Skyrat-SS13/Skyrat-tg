@@ -38,6 +38,7 @@
 /obj/item/clothing/under/pants/skyrat/yoga
 	name = "yoga pants"
 	desc = "Breathable and stretchy, perfect for exercising comfortably!"
+	icon_state = "yoga_pants"
 	greyscale_config = /datum/greyscale_config/yoga_pants //These configs are defined in the GAGS module for now; the icons and item will remain in these files.
 	greyscale_config_worn = /datum/greyscale_config/yoga_pants_worn
 	greyscale_config_worn_digi = /datum/greyscale_config/yoga_pants_worn/digi
