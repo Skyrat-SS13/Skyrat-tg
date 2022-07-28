@@ -272,6 +272,13 @@
 //Used as an upper limit for species that continuously gain nutriment
 #define NUTRITION_LEVEL_ALMOST_FULL 535
 
+// SKYRAT ADDITION BEGIN - VORACIOUS
+/// Multiplier to eating speed for voracious folk
+#define EAT_TIME_VORACIOUS_MULT 0.65 // 35% faster eating
+/// Base time to forcefeed things to people
+#define EAT_TIME_FORCE_FEED 3 SECONDS
+// SKYRAT ADDITION END
+
 //Charge levels for Ethereals
 #define ETHEREAL_CHARGE_NONE 0
 #define ETHEREAL_CHARGE_LOWPOWER 400

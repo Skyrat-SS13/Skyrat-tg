@@ -308,8 +308,20 @@ Behavior that's still missing from this component that original food items had t
 		return
 	var/fullness = eater.get_fullness() + 10 //The theoretical fullness of the person eating if they were to eat this
 
+	//SKYRAT ADD CHANGE BEGIN - VORACIOUS
+	var/time_to_eat = (eater == feeder) ? eat_time : EAT_TIME_FORCE_FEED
+	if(HAS_TRAIT(eater, TRAIT_VORACIOUS))
+		if(fullness < NUTRITION_LEVEL_FAT)
+			time_to_eat *= EAT_TIME_VORACIOUS_MULT
+		else
+			time_to_eat *= (fullness / NUTRITION_LEVEL_FAT) * 2 // takes longer to eat the more well fed you are
+	//SKYRAT ADD CHANGE END
+
 	if(eater == feeder)//If you're eating it yourself.
-		if(eat_time && !do_mob(feeder, eater, eat_time, timed_action_flags = food_flags & FOOD_FINGER_FOOD ? IGNORE_USER_LOC_CHANGE | IGNORE_TARGET_LOC_CHANGE : NONE)) //Gotta pass the minimal eat time
+		//SKYRAT EDIT CHANGE BEGIN - VORACIOUS
+		//if(eat_time && !do_mob(feeder, eater, eat_time, timed_action_flags = food_flags & FOOD_FINGER_FOOD ? IGNORE_USER_LOC_CHANGE | IGNORE_TARGET_LOC_CHANGE : NONE)) //Gotta pass the minimal eat time - SKYRAT EDIT - ORIGINAL
+		if(eat_time && !do_mob(feeder, eater, time_to_eat, timed_action_flags = food_flags & FOOD_FINGER_FOOD ? IGNORE_USER_LOC_CHANGE | IGNORE_TARGET_LOC_CHANGE : NONE)) //Gotta pass the minimal eat time
+		//SKYRAT EDIT CHANGE END
 			return
 		if(IsFoodGone(owner, feeder))
 			return
@@ -323,16 +335,28 @@ Behavior that's still missing from this component that original food items had t
 			to_chat(eater, span_warning("You don't feel like eating any more junk food at the moment!"))
 			return
 		else if(fullness > (600 * (1 + eater.overeatduration / (4000 SECONDS)))) // The more you eat - the more you can eat
-			message_to_nearby_audience = span_warning("[eater] cannot force any more of \the [parent] to go down [eater.p_their()] throat!")
-			message_to_consumer = span_warning("You cannot force any more of \the [parent] to go down your throat!")
-			message_to_blind_consumer = message_to_consumer
-			eater.show_message(message_to_consumer, MSG_VISUAL, message_to_blind_consumer)
-			eater.visible_message(message_to_nearby_audience, ignored_mobs = eater)
-			//if we're too full, return because we can't eat whatever it is we're trying to eat
-			return
+			//SKYRAT ADD CHANGE BEGIN - VORACIOUS
+			if(HAS_TRAIT(eater, TRAIT_VORACIOUS))
+				message_to_nearby_audience = span_notice("[eater] voraciously forces \the [parent] down [eater.p_their()] throat..")
+				message_to_consumer = span_notice("You voraciously force \the [parent] down your throat.")
+			else
+				message_to_nearby_audience = span_warning("[eater] cannot force any more of \the [parent] to go down [eater.p_their()] throat!")
+				message_to_consumer = span_warning("You cannot force any more of \the [parent] to go down your throat!")
+				message_to_blind_consumer = message_to_consumer
+				eater.show_message(message_to_consumer, MSG_VISUAL, message_to_blind_consumer)
+				eater.visible_message(message_to_nearby_audience, ignored_mobs = eater)
+				//if we're too full, return because we can't eat whatever it is we're trying to eat
+				return
+			//SKYRAT ADD CHANGE END
 		else if(fullness > 500)
-			message_to_nearby_audience = span_notice("[eater] unwillingly [eatverb]s a bit of \the [parent].")
-			message_to_consumer = span_notice("You unwillingly [eatverb] a bit of \the [parent].")
+			//SKYRAT ADD CHANGE BEGIN - VORACIOUS
+			if(HAS_TRAIT(eater, TRAIT_VORACIOUS))
+				message_to_nearby_audience = span_notice("[eater] ravenously [eatverb]s \the [parent].")
+				message_to_consumer = span_notice("You ravenously [eatverb] \the [parent].")
+			else
+				message_to_nearby_audience = span_notice("[eater] unwillingly [eatverb]s a bit of \the [parent].")
+				message_to_consumer = span_notice("You unwillingly [eatverb] a bit of \the [parent].")
+			//SKYRAT ADD CHANGE END
 		else if(fullness > 150)
 			message_to_nearby_audience = span_notice("[eater] [eatverb]s \the [parent].")
 			message_to_consumer = span_notice("You [eatverb] \the [parent].")
@@ -352,7 +376,10 @@ Behavior that's still missing from this component that original food items had t
 		if(isbrain(eater))
 			to_chat(feeder, span_warning("[eater] doesn't seem to have a mouth!"))
 			return
-		if(fullness <= (600 * (1 + eater.overeatduration / (2000 SECONDS))))
+		//SKYRAT EDIT CHANGE BEGIN - VORACIOUS
+		//if(fullness <= (600 * (1 + eater.overeatduration / (2000 SECONDS)))) - SKYRAT EDIT - ORIGINAL
+		if(fullness <= (600 * (1 + eater.overeatduration / (2000 SECONDS))) || HAS_TRAIT(eater, TRAIT_VORACIOUS))
+		//SKYRAT EDIT CHANGE END - VORACIOUS
 			eater.visible_message(
 				span_danger("[feeder] attempts to [eater.get_bodypart(BODY_ZONE_HEAD) ? "feed [eater] [parent]." : "stuff [parent] down [eater]'s throat hole! Gross."]"),
 				span_userdanger("[feeder] attempts to [eater.get_bodypart(BODY_ZONE_HEAD) ? "feed you [parent]." : "stuff [parent] down your throat hole! Gross."]")
@@ -363,7 +390,10 @@ Behavior that's still missing from this component that original food items had t
 				span_userdanger("[feeder] cannot force any more of [parent] down your [eater.get_bodypart(BODY_ZONE_HEAD) ? "throat!" : "throat hole! Eugh."]")
 			)
 			return
-		if(!do_mob(feeder, eater)) //Wait 3 seconds before you can feed
+		//SKYRAT EDIT CHANGE BEGIN - VORACIOUS
+		//if(!do_mob(feeder, eater)) //Wait 3 seconds before you can feed - SKYRAT EDIT - ORIGINAL
+		if(!do_mob(feeder, eater, time = time_to_eat)) //Wait 3 seconds before you can feed
+		//SKYRAT EDIT CHANGE END - VORACIOUS
 			return
 		if(IsFoodGone(owner, feeder))
 			return
