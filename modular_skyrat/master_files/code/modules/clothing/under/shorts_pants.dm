@@ -44,7 +44,6 @@
 	greyscale_colors = "#3d3d3d" //Having all the configs for a single color feels wrong. This is wrong.
 	flags_1 = IS_PLAYER_COLORABLE_1
 
-
 /*
 *	SHORTS
 */

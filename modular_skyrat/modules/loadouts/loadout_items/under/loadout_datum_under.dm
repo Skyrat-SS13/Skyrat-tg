@@ -245,6 +245,14 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Recolorable Jeans"
 	item_path = /obj/item/clothing/under/pants/jeans
 
+/datum/loadout_item/under/miscellaneous/jeansripped
+	name = "Recolorable Ripped Jeans"
+	item_path = /obj/item/clothing/under/pants/skyrat/jeansripped
+
+/datum/loadout_item/under/miscellaneous/yoga
+	name = "Recolorable Yoga Pants"
+	item_path = /obj/item/clothing/under/pants/skyrat/yoga
+
 /datum/loadout_item/under/miscellaneous/track
 	name = "Track Pants"
 	item_path = /obj/item/clothing/under/pants/track
@@ -253,13 +261,17 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Camo Pants"
 	item_path = /obj/item/clothing/under/pants/camo
 
-/datum/loadout_item/under/miscellaneous/shorts
-	name = "Recolorable Shorts"
-	item_path = /obj/item/clothing/under/shorts
-
 /datum/loadout_item/under/miscellaneous/jeanshorts //This doesnt look like a word. Short. Jean-Short. Eugh.
 	name = "Recolorable Jean Shorts"
 	item_path = /obj/item/clothing/under/jeanshorts
+
+/datum/loadout_item/under/miscellaneous/pants_blackshorts
+	name = "Recolorable Ripped Jean Shorts"
+	item_path = /obj/item/clothing/under/shorts/skyrat/shortsripped
+
+/datum/loadout_item/under/miscellaneous/shorts
+	name = "Recolorable Shorts"
+	item_path = /obj/item/clothing/under/shorts
 
 /datum/loadout_item/under/miscellaneous/red_short
 	name = "Red Shorts"
@@ -284,14 +296,6 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /datum/loadout_item/under/miscellaneous/purple_short
 	name = "Purple Shorts"
 	item_path = /obj/item/clothing/under/shorts/purple
-
-/datum/loadout_item/under/miscellaneous/jeansripped
-	name = "Ripped Jeans"
-	item_path = /obj/item/clothing/under/pants/jeanripped
-
-/datum/loadout_item/under/miscellaneous/pants_blackshorts
-	name = "Black ripped shorts"
-	item_path = /obj/item/clothing/under/pants/blackshorts
 
 //TODO: split loadout's miscellaneous to have "Pants/Shorts" and "Dresses/Skirts" as options too. Misc is stupid.
 
@@ -442,10 +446,6 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /datum/loadout_item/under/miscellaneous/arthur
 	name = "Dutch Assistant Suit"
 	item_path = /obj/item/clothing/under/costume/arthur
-
-/datum/loadout_item/under/miscellaneous/yoga
-	name = "Yoga Pants"
-	item_path = /obj/item/clothing/under/pants/yoga
 
 /datum/loadout_item/under/miscellaneous/tacticool_turtleneck
 	name = "Tactitool Turtleneck"

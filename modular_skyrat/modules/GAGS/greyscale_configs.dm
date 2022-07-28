@@ -399,16 +399,15 @@
 	name = "Worn Jean Shorts - Digitigrade"
 	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/shorts_pants_digi.dmi'
 
-//These 9 are for an actual modular item instead of making a TG item digi! Woa!
 /datum/greyscale_config/shorts_ripped
 	name = "Ripped Shorts"
 	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/shorts_pants.dmi'
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/pants_shorts_skirts_dresses/jeans_ripped.json'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/pants_shorts_skirts_dresses/shorts_ripped.json'
 
 /datum/greyscale_config/shorts_ripped_worn
 	name = "Worn Ripped Shorts"
 	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/shorts_pants.dmi'
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/pants_shorts_skirts_dresses/jeans_ripped_worn.json'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/pants_shorts_skirts_dresses/shorts_ripped_worn.json'
 
 /datum/greyscale_config/shorts_ripped_worn/digi
 	name = "Worn Ripped Shorts - Digitigrade"
