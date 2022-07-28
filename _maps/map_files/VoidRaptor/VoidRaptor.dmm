@@ -2619,6 +2619,7 @@
 	},
 /obj/item/clipboard,
 /obj/structure/table/reinforced/rglass,
+/obj/item/pai_card,
 /turf/open/floor/wood/large,
 /area/station/command/heads_quarters/rd)
 "bsr" = (
@@ -6329,16 +6330,11 @@
 /turf/open/floor/wood/tile,
 /area/station/service/bar)
 "dhL" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
-/obj/docking_port/stationary{
-	dwidth = 1;
-	height = 4;
-	roundstart_template = /datum/map_template/shuttle/escape_pod/default;
-	width = 3;
-	dir = 2
-	},
-/turf/open/space/basic,
-/area/space)
+/turf/open/floor/plating,
+/area/station/maintenance/aft)
 "dhM" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
 /turf/open/floor/iron/dark/smooth_edge,
@@ -12201,7 +12197,6 @@
 /turf/open/floor/iron/white/smooth_large,
 /area/station/hallway/primary/central)
 "gdu" = (
-/obj/structure/cable,
 /obj/machinery/door/airlock/external{
 	name = "Escape Pod One";
 	space_dir = 1
@@ -13833,17 +13828,6 @@
 	},
 /turf/open/floor/vault,
 /area/station/command/heads_quarters/captain)
-"gPC" = (
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/shuttle/engine/heater,
-/obj/effect/turf_decal/stripes{
-	dir = 1
-	},
-/obj/structure/window/reinforced/plasma,
-/turf/open/floor/plating,
-/area/station/maintenance/aft)
 "gPG" = (
 /obj/structure/table/wood/fancy/royalblack,
 /obj/machinery/computer/med_data/laptop,
@@ -14165,20 +14149,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/orange/visible,
 /turf/open/floor/engine,
 /area/station/engineering/supermatter/room)
-"gWt" = (
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/shuttle/engine/heater,
-/obj/effect/turf_decal/stripes{
-	dir = 1
-	},
-/obj/structure/window/reinforced/plasma,
-/obj/structure/window/reinforced/plasma{
-	dir = 8
-	},
-/turf/open/floor/plating,
-/area/station/maintenance/aft)
 "gWw" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -28142,6 +28112,8 @@
 /area/station/science/ordnance/testlab)
 "nJx" = (
 /obj/effect/turf_decal/trimline/purple/filled/line,
+/obj/item/pai_card,
+/obj/structure/table,
 /turf/open/floor/iron/white/smooth_edge{
 	dir = 1
 	},
@@ -38259,7 +38231,6 @@
 /area/station/engineering/atmospherics_engine)
 "spv" = (
 /obj/structure/rack,
-/obj/item/paicard,
 /obj/item/assembly/flash/handheld,
 /obj/item/assembly/flash/handheld,
 /turf/open/floor/iron/dark,
@@ -38952,12 +38923,6 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/station/maintenance/solars/port/fore)
-"sFG" = (
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/closed/wall/r_wall,
-/area/station/maintenance/aft)
 "sFH" = (
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/turret_protected/aisat/atmos)
@@ -49604,20 +49569,6 @@
 /obj/effect/turf_decal/siding/wood,
 /turf/open/floor/wood/large,
 /area/station/security/courtroom)
-"xCI" = (
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/shuttle/engine/heater,
-/obj/effect/turf_decal/stripes{
-	dir = 1
-	},
-/obj/structure/window/reinforced/plasma,
-/obj/structure/window/reinforced/plasma{
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/station/maintenance/aft)
 "xCP" = (
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
@@ -82690,7 +82641,7 @@ oCl
 pkp
 pkp
 sLc
-gPC
+wqn
 tfm
 pkp
 gKa
@@ -82946,8 +82897,8 @@ ccf
 oCl
 oCl
 pkp
-pkp
-gPC
+dhL
+wqn
 tfm
 pkp
 gKa
@@ -83203,8 +83154,8 @@ imu
 nBK
 oCl
 pkp
-pkp
-gPC
+dhL
+wqn
 tfm
 pkp
 gKa
@@ -83460,8 +83411,8 @@ bNu
 gzv
 oCl
 pkp
-pkp
-gPC
+dhL
+wqn
 tfm
 pkp
 gKa
@@ -83717,8 +83668,8 @@ bNp
 pxM
 iWf
 pkp
-pkp
-xCI
+dhL
+mZf
 tfm
 pkp
 gKa
@@ -83975,7 +83926,7 @@ gQX
 oCl
 pkp
 sLc
-sFG
+iBF
 iBF
 iBF
 iBF
@@ -84489,9 +84440,9 @@ gQX
 oCl
 gPL
 sLc
-vUW
+pkp
 gdu
-dhL
+wDW
 ttw
 ttw
 ttw
@@ -85003,7 +84954,7 @@ gQX
 oCl
 pkp
 sLc
-sFG
+iBF
 iBF
 iBF
 iBF
@@ -85259,8 +85210,8 @@ bNu
 pxM
 iWf
 pkp
-pkp
-gWt
+sLc
+mRt
 tfm
 pkp
 gKa
@@ -85516,8 +85467,8 @@ bNu
 gQX
 oCl
 pkp
-pkp
-gPC
+sLc
+wqn
 tfm
 pkp
 gKa
@@ -85773,8 +85724,8 @@ vjp
 vrG
 oCl
 pkp
-pkp
-gPC
+sLc
+wqn
 tfm
 pkp
 gKa
@@ -86030,8 +85981,8 @@ wai
 oCl
 oCl
 pkp
-pkp
-gPC
+sLc
+wqn
 tfm
 pkp
 gKa
@@ -86288,7 +86239,7 @@ oCl
 pkp
 pkp
 sLc
-gPC
+wqn
 tfm
 pkp
 gKa
