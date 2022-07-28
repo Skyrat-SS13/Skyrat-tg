@@ -32,6 +32,7 @@
 	body_parts_covered = GROIN
 	greyscale_config = /datum/greyscale_config/loneskirt
 	greyscale_config_worn = /datum/greyscale_config/loneskirt_worn
+	greyscale_colors = "#5f534a"
 //End Topless
 /obj/item/clothing/under/dress/skirt/skyrat/turtleskirt_knit //Essentially the same as the Turtleneck Skirt but with a different texture
 	name = "cableknit skirt"
@@ -88,4 +89,5 @@
 	body_parts_covered = CHEST|GROIN|LEGS
 	greyscale_config = /datum/greyscale_config/strapless_dress
 	greyscale_config_worn = /datum/greyscale_config/strapless_dress_worn
+	greyscale_colors = "#cc0000#5f5f5f"
 	flags_1 = IS_PLAYER_COLORABLE_1
