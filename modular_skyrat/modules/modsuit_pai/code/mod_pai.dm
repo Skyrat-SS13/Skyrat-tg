@@ -5,7 +5,7 @@
  * card - The pAI card we're slotting in the MODsuit.
  */
 
-/obj/item/mod/control/proc/insert_pai(mob/user, obj/item/paicard/card)
+/obj/item/mod/control/proc/insert_pai(mob/user, obj/item/pai_card/card)
 	if(mod_pai)
 		balloon_alert(user, "pAI already installed!")
 		return
@@ -24,7 +24,7 @@
 	balloon_alert(mod_pai, "transferred to a suit")
 	mod_pai.can_transmit = TRUE
 	mod_pai.can_receive = TRUE
-	mod_pai.canholo = FALSE
+	mod_pai.can_holo = FALSE
 	mod_pai.remote_control = src
 	for(var/datum/action/action as anything in actions)
 		action.Grant(mod_pai)
@@ -76,7 +76,7 @@
 	if(feedback)
 		balloon_alert(mod_pai, "removed from a suit")
 	mod_pai.remote_control = null
-	mod_pai.canholo = TRUE
+	mod_pai.can_holo = TRUE
 	mod_pai = null
 
 

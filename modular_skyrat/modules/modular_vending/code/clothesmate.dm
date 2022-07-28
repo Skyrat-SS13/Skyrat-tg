@@ -7,7 +7,6 @@
 		/obj/item/clothing/suit/toggle/jacket/flannel/red = 5,
 		/obj/item/clothing/suit/toggle/jacket/flannel/aqua = 5,
 		/obj/item/clothing/suit/toggle/jacket/flannel/brown = 5,
-		/obj/item/clothing/suit/hooded/wintercoat/custom = 5,
 		/obj/item/clothing/suit/toggle/jacket/hoodie = 5,
 		/obj/item/clothing/suit/toggle/jacket/hoodie/trim = 5,
 		/obj/item/clothing/suit/toggle/jacket/hoodie/trim/alt = 5,
