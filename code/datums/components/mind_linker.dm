@@ -69,8 +69,9 @@
 	else
 		stack_trace("[type] was created without a valid linker_action_path. No one will be able to link to it.")
 
-	master_speech = new(src)
-	master_speech.Grant(owner)
+	if(speech_action) //SKYRAT EDIT - NIFs
+		master_speech = new(src)
+		master_speech.Grant(owner)
 
 	to_chat(owner, span_boldnotice("You establish a [network_name], allowing you to link minds to communicate telepathically."))
 
