@@ -13,20 +13,24 @@
 
 /obj/structure/reagent_water_basin/examine(mob/user)
 	. = ..()
+	/*
 	var/check_fishable = GetComponent(/datum/component/fishing)
 	if(!check_fishable)
 		. += span_notice("[src] can be upgraded through a bluespace crystal or a journeyman smithy!")
 	else
 		. += span_notice("[src] has been upgraded! There is a strange orb that floats within the water... it seems to be replacing the water slowly.")
+	*/
 
 /obj/structure/reagent_water_basin/attack_hand(mob/living/user, list/modifiers)
 	. = ..()
+	/*
 	var/smithing_skill = user.mind.get_skill_level(/datum/skill/smithing)
 	var/check_fishable = GetComponent(/datum/component/fishing)
 	if(smithing_skill < SKILL_LEVEL_JOURNEYMAN || check_fishable)
 		return
 	balloon_alert(user, "the water deepens!")
 	AddComponent(/datum/component/fishing, set_loot = GLOB.fishing_weights, allow_fishes = TRUE)
+	*/
 
 /obj/structure/reagent_water_basin/attackby(obj/item/attacking_item, mob/living/user, params)
 	if(istype(attacking_item, /obj/item/stack/ore/glass))
@@ -37,6 +41,7 @@
 		user.mind.adjust_experience(/datum/skill/production, 1)
 		return
 
+	/*   fishing abusers in shambles
 	if(istype(attacking_item, /obj/item/stack/ore/bluespace_crystal))
 		var/check_fishable = GetComponent(/datum/component/fishing)
 		if(check_fishable)
@@ -47,6 +52,7 @@
 		balloon_alert(user, "the water deepens!")
 		AddComponent(/datum/component/fishing, set_loot = GLOB.fishing_weights, allow_fishes = TRUE)
 		return
+	*/
 
 	return ..()
 

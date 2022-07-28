@@ -1,29 +1,36 @@
-#define RED_PLANET_ATMOS "co2=40;o2=3;n2=7;TEMP=210"
-#define RED_ROCK "#934b33"
-#define DARK_ROCK "#2b2b2b"
+#define ULTRA_THIN_MOON_ATMOS "hydrogen=5;helium=3;TEMP=94"
+#define MOON_ROCK "#a3a3a3"
 
-/turf/open/misc/ironsand/redplanet
-	initial_gas_mix = RED_PLANET_ATMOS
+/turf/open/misc/asteroid/basalt/moon
+	initial_gas_mix = ULTRA_THIN_MOON_ATMOS
 	planetary_atmos = TRUE
-
-/turf/open/misc/ironsand/redplanet/Initialize(mapload)
-	. = ..()
-
-	if(prob(2))
-		new /obj/structure/flora/rock/style_random(get_turf(src))
-	else if(prob(2))
-		new /obj/structure/flora/rock/pile/style_random(get_turf(src))
-
-/turf/open/misc/asteroid/basalt/redplanet
+	name = "lunar regolith"
 	baseturfs = /turf/baseturf_bottom
-	initial_gas_mix = RED_PLANET_ATMOS
-	planetary_atmos = TRUE
+	icon = 'modular_skyrat/modules/mars_event/icons/moon_tiles.dmi'
+	icon_state = "moon"
+	base_icon_state = "moon"
+	floor_variance = 25
+	digResult = /obj/item/stack/ore/glass/moon
+	broken_state = "moon_dug"
 
-/turf/closed/mineral/random/redplanet
+/obj/item/stack/ore/glass/moon
+	name = "lunar regolith"
+	icon_state = "volcanic_sand"
+	inhand_icon_state = "volcanic_sand"
+	singular_name = "lunar regolith pile"
+	points = 2 //HOLY SHIT TWO POINTS!!
+	mats_per_unit = list(
+		/datum/material/glass = MINERAL_MATERIAL_AMOUNT * 0.75,
+		/datum/material/iron = MINERAL_MATERIAL_AMOUNT * 0.25
+	)
+	mine_experience = 1 //its sand THAT'S EPIC!!!!
+	merge_type = /obj/item/stack/ore/glass/moon
+
+/turf/closed/mineral/random/moonrock
 	baseturfs = /turf/baseturf_bottom
 	mineralChance = 25
 	mineralAmt = 10
-	color = RED_ROCK
+	color = MOON_ROCK
 	mineralSpawnChanceList = list(
 		/obj/item/stack/ore/uranium = 5,
 		/obj/item/stack/ore/diamond = 1,
@@ -35,10 +42,6 @@
 		/obj/item/stack/ore/bluespace_crystal = 1
 	)
 	tool_mine_speed = 10 SECONDS
-
-/turf/closed/mineral/random/redplanet/dark
-	baseturfs = /turf/open/misc/asteroid/basalt/redplanet
-	color = DARK_ROCK
 
 /area/redplanet
 	icon = 'icons/area/areas_station.dmi'
