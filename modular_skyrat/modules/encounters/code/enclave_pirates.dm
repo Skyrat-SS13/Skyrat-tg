@@ -37,13 +37,13 @@
 
 	uniform = /obj/item/clothing/under/costume/nri
 	suit = /obj/item/clothing/suit/armor/vest/russian
-	suit_store = /obj/item/gun/ballistic/automatic/ak25
+	suit_store = /obj/item/gun/ballistic/automatic/akm
 
 	gloves = /obj/item/clothing/gloves/combat
 
 	shoes = /obj/item/clothing/shoes/combat
 
-	belt = /obj/item/storage/belt/military/nri/captain/pirate_officer
+	belt = /obj/item/storage/belt/military/nri/soldier
 	back = /obj/item/storage/backpack/duffelbag/syndie/nri
 	backpack_contents = list(/obj/item/storage/box/nri_survival_pack = 1, /obj/item/crucifix = 1, /obj/item/ammo_box/magazine/m9mm_aps = 3)
 	l_pocket = /obj/item/gun/ballistic/automatic/pistol/ladon/nri
