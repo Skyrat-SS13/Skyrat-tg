@@ -44,7 +44,7 @@
 	dir = 5;
 	faction = list("pirate")
 	},
-/turf/closed/wall/mineral/titanium/spaceship/nodiagonal,
+/turf/closed/wall/mineral/titanium/survival/pod,
 /area/shuttle/syndicate/slaver)
 "aG" = (
 /obj/structure/flora/rock/pile/jungle,
@@ -61,7 +61,10 @@
 /turf/open/floor/iron/showroomfloor,
 /area/shuttle/syndicate/slaver)
 "aZ" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
+	dir = 1
+	},
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
 "bi" = (
@@ -86,7 +89,7 @@
 /obj/structure/fans/tiny,
 /obj/machinery/door/airlock/external/glass{
 	id_tag = "prisonshipwreckdock3";
-	req_one_access_txt = "150"
+	req_one_access_txt = "syndicate"
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /obj/effect/mapping_helpers/airlock/cutaiwire,
@@ -104,7 +107,7 @@
 "bS" = (
 /obj/machinery/door/airlock/external/glass{
 	id_tag = null;
-	req_one_access_txt = "150"
+	req_one_access_txt = "syndicate"
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 1
@@ -217,7 +220,7 @@
 	dir = 6;
 	faction = list("pirate")
 	},
-/turf/closed/wall/mineral/titanium/spaceship/nodiagonal,
+/turf/closed/wall/mineral/titanium/survival/pod,
 /area/shuttle/syndicate/slaver)
 "dE" = (
 /obj/machinery/shower/directional/north,
@@ -226,6 +229,7 @@
 /obj/effect/turf_decal/siding/thinplating/dark{
 	dir = 1
 	},
+/obj/item/soap/deluxe,
 /turf/open/floor/iron/showroomfloor,
 /area/shuttle/syndicate/slaver)
 "dG" = (
@@ -262,7 +266,7 @@
 	},
 /obj/machinery/door/airlock/external/glass{
 	id_tag = "prisonshipwreckdock4";
-	req_one_access_txt = "150"
+	req_one_access_txt = "syndicate"
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 1
@@ -291,7 +295,9 @@
 /obj/structure/window/reinforced/survival_pod{
 	dir = 8
 	},
-/obj/machinery/shower/directional/north,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 8
+	},
 /turf/open/floor/iron/shuttle/evac{
 	icon_state = "floorsec2"
 	},
@@ -435,6 +441,8 @@
 	pixel_x = 23;
 	pixel_y = 12
 	},
+/obj/machinery/shower/directional/south,
+/obj/item/soap,
 /turf/open/floor/iron/shuttle/evac{
 	icon_state = "floorsec2"
 	},
@@ -578,6 +586,18 @@
 /obj/machinery/vending/cigarette,
 /turf/open/floor/wood,
 /area/shuttle/syndicate/slaver)
+"jH" = (
+/obj/effect/turf_decal/trimline/yellow/warning{
+	dir = 4
+	},
+/obj/machinery/light/directional/east,
+/obj/machinery/suit_storage_unit/open,
+/obj/item/clothing/head/helmet/space/hev_suit/nri,
+/obj/item/clothing/suit/space/hev_suit/nri,
+/turf/open/floor/iron/dark/brown/side{
+	dir = 8
+	},
+/area/shuttle/syndicate/slaver)
 "jT" = (
 /turf/open/floor/pod/light,
 /area/shuttle/syndicate/slaver)
@@ -606,7 +626,6 @@
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
 "kp" = (
-/obj/structure/showcase/mecha/ripley,
 /obj/effect/turf_decal/siding/brown,
 /obj/effect/turf_decal/siding/brown{
 	dir = 1
@@ -627,6 +646,7 @@
 /obj/effect/turf_decal/siding/brown/corner{
 	dir = 8
 	},
+/obj/item/statuebust/hippocratic,
 /turf/open/floor/iron/dark/textured_large,
 /area/shuttle/syndicate/slaver)
 "kv" = (
@@ -650,6 +670,7 @@
 	name = "Engineering";
 	req_access = list("syndicate")
 	},
+/obj/effect/mapping_helpers/airlock/cutaiwire,
 /turf/open/floor/iron/dark/textured_large,
 /area/shuttle/syndicate/slaver)
 "kE" = (
@@ -824,6 +845,10 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
+/obj/item/storage/barricade,
+/obj/item/storage/barricade,
+/obj/item/minespawner/explosive,
+/obj/item/minespawner/explosive,
 /turf/open/floor/iron/textured_large,
 /area/shuttle/syndicate/slaver)
 "oe" = (
@@ -847,6 +872,7 @@
 "oJ" = (
 /obj/structure/table/reinforced,
 /obj/item/multitool,
+/obj/item/melee/hammer,
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
 "oK" = (
@@ -871,6 +897,7 @@
 /obj/structure/table/reinforced,
 /obj/machinery/door/firedoor,
 /obj/item/camera,
+/obj/structure/curtain/bounty,
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
 "oR" = (
@@ -948,6 +975,20 @@
 /obj/machinery/light/directional/east,
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
+"qu" = (
+/obj/effect/turf_decal/trimline/yellow/warning{
+	dir = 8
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 4
+	},
+/obj/machinery/suit_storage_unit/open,
+/obj/item/clothing/head/helmet/space/hev_suit/nri,
+/obj/item/clothing/suit/space/hev_suit/nri,
+/turf/open/floor/iron/dark/brown/side{
+	dir = 4
+	},
+/area/shuttle/syndicate/slaver)
 "qI" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/backpack/duffelbag/sec/surgery,
@@ -977,12 +1018,10 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/shuttle/syndicate/slaver)
 "ry" = (
-/obj/machinery/suit_storage_unit/syndicate{
-	suit_type = /obj/item/mod/control/pre_equipped/elite
-	},
 /obj/effect/turf_decal/siding/wood{
 	dir = 8
 	},
+/obj/machinery/suit_storage_unit/open,
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
 "rz" = (
@@ -1105,6 +1144,17 @@
 	},
 /turf/open/floor/iron/dark/brown,
 /area/shuttle/syndicate/slaver)
+"ub" = (
+/obj/effect/turf_decal/trimline/yellow/warning{
+	dir = 4
+	},
+/obj/machinery/suit_storage_unit/open,
+/obj/item/clothing/head/helmet/space/hev_suit/nri,
+/obj/item/clothing/suit/space/hev_suit/nri,
+/turf/open/floor/iron/dark/brown/side{
+	dir = 8
+	},
+/area/shuttle/syndicate/slaver)
 "uf" = (
 /obj/machinery/computer/piratepad_control{
 	dir = 4
@@ -1160,6 +1210,9 @@
 	},
 /obj/structure/railing{
 	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 6
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
@@ -1275,7 +1328,7 @@
 "xr" = (
 /obj/machinery/door/airlock/external/glass{
 	id_tag = null;
-	req_one_access_txt = "150"
+	req_one_access_txt = "syndicate"
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /obj/effect/mapping_helpers/airlock/cutaiwire,
@@ -1309,7 +1362,10 @@
 /area/shuttle/syndicate/slaver)
 "xG" = (
 /obj/structure/closet/crate/secure/weapon,
-/obj/item/storage/backpack/duffelbag/syndie/x4,
+/obj/item/storage/backpack/duffelbag/syndie/nri,
+/obj/item/grenade/c4/x4,
+/obj/item/grenade/c4/x4,
+/obj/item/grenade/c4/x4,
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
 "xY" = (
@@ -1346,10 +1402,27 @@
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
 /turf/open/floor/pod/dark,
 /area/shuttle/syndicate/slaver)
+"zm" = (
+/obj/item/virgin_mary{
+	pixel_y = 15
+	},
+/obj/structure/table/wood/fancy/red,
+/obj/item/candle/infinite{
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/obj/item/candle/infinite{
+	pixel_x = -5;
+	pixel_y = 1
+	},
+/obj/item/candle/infinite,
+/turf/open/floor/carpet,
+/area/shuttle/syndicate/slaver)
 "zJ" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 4
 	},
+/obj/machinery/light/directional/south,
 /turf/open/floor/wood,
 /area/shuttle/syndicate/slaver)
 "zQ" = (
@@ -1376,6 +1449,8 @@
 /turf/open/floor/pod,
 /area/shuttle/syndicate/slaver)
 "zT" = (
+/obj/structure/table/reinforced,
+/obj/item/storage/box/nri_rations,
 /turf/open/floor/iron/shuttle/evac{
 	icon_state = "floorsec2"
 	},
@@ -1448,6 +1523,11 @@
 	dir = 8
 	},
 /turf/open/floor/iron/dark,
+/area/shuttle/syndicate/slaver)
+"AB" = (
+/obj/structure/table/wood/fancy/red,
+/obj/item/reagent_containers/food/drinks/bottle/holywater,
+/turf/open/floor/carpet,
 /area/shuttle/syndicate/slaver)
 "AH" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
@@ -1529,6 +1609,7 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 8
 	},
+/obj/item/soap/deluxe,
 /turf/open/floor/iron/showroomfloor,
 /area/shuttle/syndicate/slaver)
 "BF" = (
@@ -1562,7 +1643,8 @@
 /turf/open/floor/wood,
 /area/shuttle/syndicate/slaver)
 "CS" = (
-/obj/structure/bed/maint,
+/obj/structure/bed,
+/obj/item/bedsheet/grey,
 /turf/open/floor/iron/shuttle/evac{
 	icon_state = "floorsec2"
 	},
@@ -1632,8 +1714,8 @@
 "Ed" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/structure/closet/crate,
-/obj/item/clothing/under/enclaveo/real,
-/obj/item/clothing/head/soft/enclaveo,
+/obj/item/clothing/head/beret/sec/nri,
+/obj/item/clothing/under/costume/nri,
 /turf/open/floor/plating,
 /area/shuttle/syndicate/slaver)
 "Ef" = (
@@ -1773,7 +1855,6 @@
 /obj/item/storage/backpack/satchel/flat/empty,
 /obj/item/clothing/glasses/hud/security/chameleon,
 /obj/item/tank/internals/emergency_oxygen/double,
-/obj/item/gun/energy/e_gun/cfa_phalanx,
 /obj/effect/turf_decal/siding/wood{
 	dir = 9
 	},
@@ -1803,6 +1884,24 @@
 	dir = 4
 	},
 /turf/open/floor/wood,
+/area/shuttle/syndicate/slaver)
+"HJ" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/syndicate/slaver)
+"HR" = (
+/obj/effect/turf_decal/trimline/red/warning{
+	color = "#763c3a";
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/red/side{
+	dir = 4
+	},
 /area/shuttle/syndicate/slaver)
 "Il" = (
 /obj/effect/turf_decal/trimline/yellow/warning{
@@ -1937,6 +2036,7 @@
 /area/shuttle/syndicate/slaver)
 "KK" = (
 /obj/machinery/door/firedoor,
+/obj/structure/curtain/bounty,
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
 "KT" = (
@@ -2056,6 +2156,7 @@
 	name = "Engineering";
 	req_access = list("syndicate")
 	},
+/obj/effect/mapping_helpers/airlock/cutaiwire,
 /turf/open/floor/iron/dark/textured_large,
 /area/shuttle/syndicate/slaver)
 "OB" = (
@@ -2078,7 +2179,7 @@
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
 	dir = 6
 	},
-/turf/closed/wall/mineral/titanium/spaceship/nodiagonal,
+/turf/closed/wall/mineral/titanium/survival/pod,
 /area/shuttle/syndicate/slaver)
 "Pe" = (
 /obj/machinery/porta_turret/syndicate/energy/heavy{
@@ -2164,6 +2265,12 @@
 	dir = 8
 	},
 /area/shuttle/syndicate/slaver)
+"Qe" = (
+/obj/structure/table/wood/fancy/red,
+/obj/item/crucifix,
+/obj/structure/sign/departments/holy/directional/west,
+/turf/open/floor/carpet,
+/area/shuttle/syndicate/slaver)
 "Qu" = (
 /obj/structure/chair/office/light{
 	dir = 4
@@ -2175,6 +2282,9 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 4
 	},
+/obj/item/storage/box/nri_rations,
+/obj/item/storage/box/nri_rations,
+/obj/item/storage/box/nri_rations,
 /turf/open/floor/wood,
 /area/shuttle/syndicate/slaver)
 "QE" = (
@@ -2226,6 +2336,10 @@
 	dir = 5
 	},
 /obj/machinery/light/directional/west,
+/obj/item/storage/barricade,
+/obj/item/storage/barricade,
+/obj/item/minespawner/explosive,
+/obj/item/minespawner/explosive,
 /turf/open/floor/iron/textured_large,
 /area/shuttle/syndicate/slaver)
 "Rm" = (
@@ -2259,7 +2373,7 @@
 /obj/structure/fans/tiny,
 /obj/machinery/door/airlock/external/glass{
 	id_tag = "prisonshipwreckdock";
-	req_one_access_txt = "150"
+	req_one_access_txt = "syndicate"
 	},
 /obj/effect/mapping_helpers/airlock/cutaiwire,
 /turf/open/floor/pod/dark,
@@ -2431,7 +2545,7 @@
 /obj/structure/fans/tiny,
 /obj/machinery/door/airlock/external/glass{
 	id_tag = "prisonshipwreckdock2";
-	req_one_access_txt = "150"
+	req_one_access_txt = "syndicate"
 	},
 /obj/effect/mapping_helpers/airlock/cutaiwire,
 /turf/open/floor/pod/dark,
@@ -2516,7 +2630,6 @@
 	lethal = 1;
 	locked = 0;
 	pixel_x = -27;
-	req_access = null;
 	req_access = list("syndicate")
 	},
 /obj/structure/railing,
@@ -2533,7 +2646,7 @@
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
 	dir = 6
 	},
-/turf/open/floor/pod/dark,
+/turf/open/floor/carpet,
 /area/shuttle/syndicate/slaver)
 "WJ" = (
 /obj/effect/turf_decal/trimline/yellow/warning{
@@ -2572,17 +2685,33 @@
 "Xp" = (
 /turf/open/floor/wood,
 /area/shuttle/syndicate/slaver)
+"Xt" = (
+/obj/structure/window/reinforced/survival_pod{
+	dir = 8
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 8
+	},
+/turf/open/floor/iron/shuttle/evac{
+	icon_state = "floorsec2"
+	},
+/area/shuttle/syndicate/slaver)
 "Xu" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/machinery/atmospherics/pipe/layer_manifold/supply/hidden,
 /turf/open/floor/plating,
 /area/shuttle/syndicate/slaver)
 "XA" = (
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
-	dir = 6
+/obj/effect/turf_decal/trimline/yellow/warning{
+	dir = 8
 	},
-/turf/open/floor/iron/dark,
+/obj/machinery/light/directional/west,
+/obj/machinery/suit_storage_unit/open,
+/obj/item/clothing/head/helmet/space/hev_suit/nri,
+/obj/item/clothing/suit/space/hev_suit/nri,
+/turf/open/floor/iron/dark/brown/side{
+	dir = 4
+	},
 /area/shuttle/syndicate/slaver)
 "XD" = (
 /obj/effect/turf_decal/skyrat_decals/enclave/top/middle{
@@ -2724,7 +2853,19 @@
 	},
 /area/shuttle/syndicate/slaver)
 "ZH" = (
-/turf/closed/wall/mineral/titanium/spaceship/nodiagonal,
+/turf/closed/wall/mineral/titanium/survival/pod,
+/area/shuttle/syndicate/slaver)
+"ZI" = (
+/obj/effect/turf_decal/trimline/red/warning{
+	color = "#763c3a";
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/red/side{
+	dir = 4
+	},
 /area/shuttle/syndicate/slaver)
 "ZM" = (
 /obj/structure/table/wood,
@@ -2782,7 +2923,7 @@ AI
 ei
 "}
 (2,1,1) = {"
-wd
+ZH
 ZH
 Ye
 Ye
@@ -2833,7 +2974,7 @@ eo
 KT
 oQ
 Qu
-ZR
+AH
 ZR
 ZR
 nK
@@ -2857,7 +2998,7 @@ ZH
 ZH
 vp
 aZ
-XA
+vc
 jm
 Rv
 aT
@@ -2878,8 +3019,8 @@ ZH
 ef
 oY
 oY
-ZR
-ZR
+HJ
+gE
 Aw
 ZR
 nK
@@ -2901,8 +3042,8 @@ ZH
 ZR
 ZR
 ZR
-ZR
-ZR
+HJ
+gE
 kj
 FC
 ZH
@@ -2924,8 +3065,8 @@ ZH
 sd
 Gt
 sd
-sd
-sd
+HR
+ZI
 ZH
 ZH
 ZH
@@ -2947,7 +3088,7 @@ ZH
 nP
 Df
 Ux
-Df
+Xt
 ez
 ZH
 Ed
@@ -2969,8 +3110,8 @@ ZH
 ZH
 hz
 zT
-zT
-zT
+CS
+CS
 CS
 ZH
 KG
@@ -2989,7 +3130,7 @@ ah
 ZH
 "}
 (11,1,1) = {"
-wd
+ZH
 ZH
 ZH
 ZH
@@ -3029,8 +3170,8 @@ AH
 ZR
 ZR
 ZH
-YB
-qN
+qu
+XA
 Sd
 ZH
 "}
@@ -3133,7 +3274,7 @@ hH
 jl
 ZR
 ZH
-jT
+Qe
 BK
 jT
 ws
@@ -3156,7 +3297,7 @@ dh
 MH
 XV
 ZH
-ws
+zm
 WF
 ac
 ac
@@ -3179,7 +3320,7 @@ ZH
 Pl
 ZH
 ZH
-jT
+AB
 bQ
 sr
 zS
@@ -3591,8 +3732,8 @@ ei
 ei
 ZH
 Ys
-Ey
-Ai
+jH
+ub
 ZH
 oy
 Ad
