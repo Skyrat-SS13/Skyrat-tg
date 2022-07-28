@@ -168,6 +168,9 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
 	icon_state = "polyshortpants"
 	supports_variations_flags = NONE
+	greyscale_config = null //Temporary measures while Polychrom is gutted.
+	greyscale_config_worn = null
+	greyscale_config_worn_digi = null
 	var/list/poly_colors = list("#FFFFFF", "#FF8888", "#FFFFFF")
 
 /obj/item/clothing/under/shorts/polychromic/ComponentInitialize()
