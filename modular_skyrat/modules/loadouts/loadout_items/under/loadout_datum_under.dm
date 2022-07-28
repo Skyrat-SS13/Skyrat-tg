@@ -315,6 +315,10 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Recolorable Turtleneck Skirt"
 	item_path = /obj/item/clothing/under/dress/skirt/turtleskirt
 
+/datum/loadout_item/under/miscellaneous/skirt_cableknit
+	name = "Recolorable Cableknit Skirt"
+	item_path = /obj/item/clothing/under/dress/skirt/skyrat/turtleskirt_knit
+
 /datum/loadout_item/under/miscellaneous/dress_tango
 	name = "Recolorable Tango Dress"
 	item_path = /obj/item/clothing/under/dress/tango
@@ -323,21 +327,33 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Recolorable Sundress"
 	item_path = /obj/item/clothing/under/dress/sundress
 
+/datum/loadout_item/under/miscellaneous/straplessdress
+	name = "Recolorable Strapless Dress"
+	item_path = /obj/item/clothing/under/dress/skyrat/strapless
+
 /datum/loadout_item/under/miscellaneous/swept_skirt
 	name = "Swept Skirt"
-	item_path = /obj/item/clothing/under/dress/skirt/swept
+	item_path = /obj/item/clothing/under/dress/skirt/skyrat/swept
+
+/datum/loadout_item/under/miscellaneous/lone_skirt
+	name = "Recolorable Skirt"
+	item_path = /obj/item/clothing/under/dress/skirt/skyrat/loneskirt
 
 /datum/loadout_item/under/miscellaneous/denim_skirt
-	name = "Denim Skirt"
-	item_path = /obj/item/clothing/under/pants/denimskirt
+	name = "Jean Skirt"
+	item_path = /obj/item/clothing/under/dress/skirt/skyrat/jean
 
 /datum/loadout_item/under/miscellaneous/littleblack
 	name = "Short Black Dress"
-	item_path = /obj/item/clothing/under/dress/littleblack
+	item_path = /obj/item/clothing/under/dress/skyrat/littleblack
 
 /datum/loadout_item/under/miscellaneous/pinktutu
 	name = "Pink Tutu"
-	item_path = /obj/item/clothing/under/dress/pinktutu
+	item_path = /obj/item/clothing/under/dress/skyrat/pinktutu
+
+/datum/loadout_item/under/miscellaneous/flowerdress
+	name = "Flower Dress"
+	item_path = /obj/item/clothing/under/dress/skyrat/flower
 
 /datum/loadout_item/under/miscellaneous/kilt
 	name = "Kilt"
@@ -654,7 +670,7 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 
 /datum/loadout_item/under/formal/formaldressred
 	name = "Formal Red Dress"
-	item_path = /obj/item/clothing/under/misc/formaldressred
+	item_path = /obj/item/clothing/under/dress/skyrat/redformal
 
 /datum/loadout_item/under/formal/assistant
 	name = "Assistant Formal"

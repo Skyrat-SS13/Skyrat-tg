@@ -1,7 +1,7 @@
 /obj/machinery/vending/clothing
 	skyrat_products = list(
-		/obj/item/clothing/under/dress/littleblack = 5,
-		/obj/item/clothing/under/dress/pinktutu = 5,
+		/obj/item/clothing/under/dress/skyrat/littleblack = 5,
+		/obj/item/clothing/under/dress/skyrat/pinktutu = 5,
 		/obj/item/clothing/suit/toggle/jacket = 5,
 		/obj/item/clothing/suit/toggle/jacket/flannel = 5,
 		/obj/item/clothing/suit/toggle/jacket/flannel/red = 5,
