@@ -916,3 +916,82 @@
   - bugfix: Becoming a digitigrade species should properly drop your shoes if they
       don't fit
   - bugfix: Tablets can be used inside lockers again.
+2022-07-27:
+  ShizCalev:
+  - bugfix: The uplink failsafe code traitor item will now actually give you a failsafe
+      code!
+  - bugfix: The uplink failsafe code can no longer be purchased on devices that don't
+      support code entry.
+  SkyratBot:
+  - rscadd: Prison Ofitser has been once again dispatched to the Lavaland security
+      checkpoint after going missing
+  - bugfix: Kilo and Icebox's aux bases construction rooms are now correctly locked
+      behind Aux Base access
+  - balance: Heavily adjusted how much population impacts the chances of midround
+      rulesets, mostly lowering them.
+  - bugfix: The "kill pet" traitor objective can now properly target pets owned by
+      the Head of Personnel, Head of Security, and Quartermaster.
+  Tastyfish:
+  - bugfix: Female digi, vox, and teshari clothing render correctly again.
+2022-07-28:
+  Melbert:
+  - rscadd: Almost the entire bottom half of Deltastation has been remapped.
+  - bugfix: Void Magnet no longer instantly removes itself
+  - code_imp: Convoke Void now handles the self-cast part of Void Magnet.
+  OrionTheFox:
+  - imageadd: Various clothing items have been converted using GAGs, making them recolorable.
+      Check it out at your local clothesmate!
+  - imageadd: (SkyRat) These various items have also been tweaked in the Loadout to
+      account for this, mostly pants/shorts/dresses/skirts. Make sure you repair your
+      loadout with the newly customizable items before headed to work!
+  ShizCalev:
+  - bugfix: Fixed an exploit which would result in Mediborg's Amputation Adventure
+      not amputating properly. Legendary gamers don't have to cheat.
+  - bugfix: Clicking Mediborg's Amputation Adventure's with TK will no longer result
+      in amputation.
+  SkyratBot:
+  - rscadd: Nuke Op reinforcements now come in different flavors.
+  - balance: Nuke Op reinforcements now start with plastikovs.
+  - admin: head-revolutionary demotion logging will now properly display the demoting
+      admin
+  - bugfix: Engineer syndie sentry can only be activated with combat wrench
+  - code_imp: Added balloon alerts and made code easier to read
+  - bugfix: cleanbots will display their cleaning animation and clean at the right
+      speed again
+  - spellcheck: The butcher's cleaver will now kill people in ways accurate to real
+      culinary techniques
+  - qol: tidied up tram's atmospherics piping
+  - admin: moved dynamic logging into its own file
+  SuperDrish:
+  - bugfix: Fixed Heterochromia not knowing where the right and left eyes are
+  Wallem:
+  - imageadd: Resprites the implant pad
+  Zonespace27:
+  - bugfix: Fixes most, if not all harddels related to lua.
+  - bugfix: Fixed lua signal handlers for COMSIG_PARENT_QDELETED.
+  - qol: The lua editor UI will warn when a state's global table has been corrupted
+      or shadowed.
+  - qol: Internal auxlua errors will provide more verbose error messages.
+  - bugfix: Possibly fixed chat by way of removing seemingly unrelated code that turns
+      out to have been unnecessary in the first place.
+  - bugfix: In lua, if you shadow the global table (_G), you will no longer be prevented
+      from running any further code, and as such, can unshadow the global table.
+  jlsnow301, Dejaku51:
+  - refactor: Most pAI code has been rewritten or refactored.
+  - rscadd: pAIs can now be factory reset in card mode if they've been emagged.
+  - rscadd: pAI host scan now be used on their masters at range.
+  - rscadd: pAI photography modules now come bundled with printers and zoom lenses.
+  - balance: pAIs lose both medical and security records in order to gain crew monitors.
+  - rscdel: pAI door jacking no longer gives ominous warnings to the AI about "brute
+      force attacks".
+  - balance: pAI door jack time has been increased 50%.
+  - bugfix: Hopefully prevents invalid pAI candidates from getting downloaded.
+  - bugfix: pAI door jacks no longer have infinite length and will retract if you
+      walk too far away.
+  - bugfix: pAI integrated lights now follow the pAI.
+  - bugfix: pAI PDAs now properly work on both hud and software interface.
+  - bugfix: pAI examine text now properly displays master and holochassis status.
+  - bugfix: pAIs no longer give newscaster alerts without having one installed.
+  - qol: pAI requests no longer make the Byond window flash.
+  - qol: The silicon text for "your laws have been updated" is now easier to see.
+  - qol: Changed the text for camera and printer functions.
