@@ -48,3 +48,13 @@
 	name = "Deployable ORM"
 	desc = "It's a big furnace in a box, unpack it somewhere with power and insert ores, keep hands out of heating elements."
 	thing_to_deploy = /obj/machinery/mineral/ore_redemption
+
+/obj/item/quickdeploy/barricade/plasteel/o2miner
+	name = "Deployable Oxygen Gas Miner"
+	desc = "It's a really, really long drill in a box, will dig down and release subsurface deposits of oxygen."
+	thing_to_deploy = /obj/machinery/atmospherics/miner/oxygen
+
+/obj/item/quickdeploy/barricade/plasteel/n2miner
+	name = "Deployable Nitrogen Gas Miner"
+	desc = "It's a really, really long drill in a box, will dig down and release subsurface deposits of nitrogen."
+	thing_to_deploy = /obj/machinery/atmospherics/miner/nitrogen

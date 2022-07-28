@@ -43,10 +43,10 @@
 	)
 	tool_mine_speed = 10 SECONDS
 
-/area/redplanet
+/area/thefuckinmoon
 	icon = 'icons/area/areas_station.dmi'
 	icon_state = "mining"
-	name = "Hellas Planitia Outdoors"
+	name = "Hadley Rill Outdoors"
 	has_gravity = STANDARD_GRAVITY
 	flags_1 = NONE
 	area_flags = UNIQUE_AREA | NO_ALERTS
@@ -61,7 +61,7 @@
 	max_ambience_cooldown = 220 SECONDS
 	ambient_buzz = 'sound/ambience/magma.ogg'
 	outdoors = TRUE
-	base_lighting_alpha = 45
+	base_lighting_alpha = 115
 
 /area/redplanet/Initialize(mapload)
 	. = ..()
