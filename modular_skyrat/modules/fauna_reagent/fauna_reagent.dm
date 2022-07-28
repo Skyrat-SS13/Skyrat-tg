@@ -16,7 +16,7 @@
 /mob/living/simple_animal/Life(delta_time, times_fired)
 	. = ..()
 	if(reagent_health && reagents)
-		for(var/datum/reagent/reagents_within in reagents.reagent_list)
+		for(var/datum/reagent/reagents_within as anything in reagents.reagent_list)
 			if(istype(reagents_within, /datum/reagent/toxin))
 				var/datum/reagent/toxin/toxin_reagent = reagents_within
 				var/toxin_damage = round(toxin_reagent.toxpwr)
