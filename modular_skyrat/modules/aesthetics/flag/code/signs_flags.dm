@@ -95,14 +95,14 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/flag/syndicate, 32)
 	sign_path = /obj/structure/sign/flag
 	is_editable = FALSE
 
-/obj/item/sign/flag/welder_act(mob/living/user, obj/item/I)
-	return
-
 /obj/item/sign/flag/Initialize(mapload)
 	. = ..()
 	var/matrix/Matrix = matrix()
 	Matrix.Turn(0)
 	transform = Matrix
+
+/obj/item/sign/flag/welder_act(mob/living/user, obj/item/I)
+	return
 
 /obj/item/sign/flag/nanotrasen
 	name = "folded flag of the Nanotrasen"
