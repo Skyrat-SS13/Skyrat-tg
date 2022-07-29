@@ -130,7 +130,7 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 		return
 
 	var/datum/nifsoft/hivemind/target_hivemind
-	var/list/nifsoft_list = person_to_add?.installed_nif?.loaded_nifsofts
+	var/list/nifsoft_list = person_to_remove?.installed_nif?.loaded_nifsofts
 	var/nifsoft_to_find = /datum/nifsoft/hivemind
 
 	for(var/datum/nifsoft/nifsoft as anything in nifsoft_list)

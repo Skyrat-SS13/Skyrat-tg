@@ -117,15 +117,15 @@
 
 /obj/item/toy/cards/deck/nanite
 	name = "main deck"
-	desc = "Another piece of gaming equipment graciously donated from the Selenian Wargaming Society, these cards employ a localized field of near-invisible nanites equipped with advanced eye tracking software; to ensure the display on the cards does not allow for peeking. Additionally, over five hundred thousand variations of the standard fifty two card deck are supported, in all known forms of writing. Lastly, a collaboration with the Altspace Coven has yielded a deck of tarot cards; the witches designing it claiming that the incorporeal nature of the cards allow them a higher connectivity with fate itself. "
+	desc = "Another piece of gaming equipment graciously donated from the Selenian Wargaming Society, these cards employ a localized field of near-invisible nanites equipped with advanced eye tracking software; to ensure the display on the cards does not allow for peeking. Additionally, over five hundred thousand variations of the standard fifty two card deck are supported, in all known forms of writing."
 
 /obj/item/toy/cards/deck/tarot/nanite
 	name = "tarot deck"
-	desc = "Another piece of gaming equipment graciously donated from the Selenian Wargaming Society, these cards employ a localized field of near-invisible nanites equipped with advanced eye tracking software; to ensure the display on the cards does not allow for peeking. Additionally, over five hundred thousand variations of the standard fifty two card deck are supported, in all known forms of writing. Lastly, a collaboration with the Altspace Coven has yielded a deck of tarot cards; the witches designing it claiming that the incorporeal nature of the cards allow them a higher connectivity with fate itself. "
+	desc = "The seventy eight card deck historically used by occultists and esotericists, such as the witches of the Altspace Coven. Containing both the greater secrets of the Major Arcana and the lesser secrets of the Minor Arcana, the full deck is employed as a key tool in cartomancy; and it's said these cards are able to gain insight into the past, present, and future. People who use them for divination ask all sorts of topics, ranging from health to economic issues, but the Coven uses to use them as a guide for traversing their spiritual path, claiming that the non-physical nature of these digitally summonable cards allows readers higher sensitivity to fate itself."
 
 /obj/item/toy/cards/deck/kotahi/nanite
 	name = "kotahi deck"
-	desc = "Another piece of gaming equipment graciously donated from the Selenian Wargaming Society, these cards employ a localized field of near-invisible nanites equipped with advanced eye tracking software; to ensure the display on the cards does not allow for peeking. Additionally, over five hundred thousand variations of the standard fifty two card deck are supported, in all known forms of writing. Lastly, a collaboration with the Altspace Coven has yielded a deck of tarot cards; the witches designing it claiming that the incorporeal nature of the cards allow them a higher connectivity with fate itself. "
+	desc = "Kotahi in long-haul freighters! Kotahi in low orbit! Kotahi on the floor! Kotahi like never before! For nearly six hundred years, Kotahi has dominated the card gaming category as the galaxy's #1 shedding-type card game! But how do you take a brand beloved by thousands of sophonts to the next level? With the cooperation of the Selenian Wargaming Society, we've elevated Kotahi to a brand new playing field: digitally summonable Kotahi cards, for the low low cost of 200cr, Now you know why we call it number one."
 
 /obj/item/cane/nanite
 	name = "staff"
