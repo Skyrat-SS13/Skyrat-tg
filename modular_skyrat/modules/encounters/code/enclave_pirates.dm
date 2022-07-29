@@ -7,7 +7,7 @@
 	mask = /obj/item/clothing/mask/gas/hecu2
 
 	uniform = /obj/item/clothing/under/costume/nri/captain
-	suit = /obj/item/clothing/suit/space/hev_suit/nri/captain
+	suit = /obj/item/clothing/suit/space/hev_suit/nri/captain/pirate
 	suit_store = /obj/item/gun/ballistic/automatic/ak25
 
 	gloves = /obj/item/clothing/gloves/combat
@@ -17,6 +17,8 @@
 	belt = /obj/item/storage/belt/military/nri/captain/pirate_officer
 	back = /obj/item/storage/backpack/duffelbag/syndie/nri/captain
 	backpack_contents = list(/obj/item/storage/box/nri_survival_pack = 1, /obj/item/ammo_box/magazine/automag = 2, /obj/item/clothing/head/helmet/space/hev_suit/nri/captain = 1, /obj/item/gun/ballistic/automatic/pistol/automag = 1, /obj/item/crucifix = 1)
+	l_pocket = /obj/item/ammo_box/magazine/automag
+	r_pocket = /obj/item/storage/bag/ammo
 
 	id = /obj/item/card/id/advanced
 	id_trim = /datum/id_trim/enclave/officer
@@ -152,3 +154,9 @@
 		/obj/item/grenade/smokebomb = 1,
 		/obj/item/grenade/frag = 1,
 	),src)
+
+/obj/item/clothing/suit/space/hev_suit/nri/pirate
+	radio_channel = RADIO_CHANNEL_GUILD
+
+/obj/item/clothing/suit/space/hev_suit/nri/captain/pirate
+	radio_channel = RADIO_CHANNEL_GUILD
