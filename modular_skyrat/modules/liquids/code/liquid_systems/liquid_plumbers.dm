@@ -29,21 +29,21 @@
 	to_chat(user, span_notice("You turn [src] [turned_on ? "off" : "on"]."))
 	turned_on = !turned_on
 
-/obj/machinery/plumbing/liquid_input_pump/CtrlClick(mob/living/user)
+/obj/machinery/plumbing/liquid_input_pump/AltClick(mob/living/user)
 	if(anchored)
 		return ..()
 	if(!user.canUseTopic(src, BE_CLOSE, NO_DEXTERITY, FALSE, TRUE))
 		return
-	var/new_height = input(user, "Set new height regulation:\n([0]-[LIQUID_HEIGHT_CONSIDER_FULL_TILE]. Use 0 to disable the regulation)\nThe pump will only siphon if environment is above the regulation", "Liquid Pump") as num|null
+	var/new_height = tgui_input_number(user, "Set new height regulation:\n([0]-[LIQUID_HEIGHT_CONSIDER_FULL_TILE]. Use 0 to disable the regulation)\nThe pump will only siphon if environment is above the regulation", "Liquid Pump", max_value = LIQUID_HEIGHT_CONSIDER_FULL_TILE, min_value = 0)
 	if(QDELETED(src))
 		return
 	if(new_height)
-		height_regulator = sanitize_integer(new_height, 0, LIQUID_HEIGHT_CONSIDER_FULL_TILE, 0)
+		height_regulator = new_height
 
 /obj/machinery/plumbing/liquid_input_pump/examine(mob/user)
 	. = ..()
 	. += span_notice("It's currently [turned_on ? "ON" : "OFF"].")
-	. += span_notice("It's height regulator [height_regulator ? "points at [height_regulator]" : "is disabled"]. (Ctrl-click to change)")
+	. += span_notice("It's height regulator [height_regulator ? "points at [height_regulator]" : "is disabled"]. (Alt-click to change)")
 
 /obj/machinery/plumbing/liquid_input_pump/Initialize(mapload, bolt)
 	. = ..()
@@ -133,21 +133,21 @@
 	to_chat(user, span_notice("You turn [src] [turned_on ? "off" : "on"]."))
 	turned_on = !turned_on
 
-/obj/machinery/plumbing/liquid_output_pump/CtrlClick(mob/living/user)
+/obj/machinery/plumbing/liquid_output_pump/AltClick(mob/living/user)
 	if(anchored)
 		return ..()
 	if(!user.canUseTopic(src, BE_CLOSE, NO_DEXTERITY, FALSE, TRUE))
 		return
-	var/new_height = input(user, "Set new height regulation:\n([0]-[LIQUID_HEIGHT_CONSIDER_FULL_TILE]. Use 0 to disable the regulation)\nThe pump will only siphon if environment is below the regulation", "Liquid Pump") as num|null
+	var/new_height = tgui_input_number(user, "Set new height regulation:\n([0]-[LIQUID_HEIGHT_CONSIDER_FULL_TILE]. Use 0 to disable the regulation)\nThe pump will only siphon if environment is below the regulation", "Liquid Pump", max_value = LIQUID_HEIGHT_CONSIDER_FULL_TILE, min_value = 0)
 	if(QDELETED(src))
 		return
 	if(new_height)
-		height_regulator = sanitize_integer(new_height, 0, LIQUID_HEIGHT_CONSIDER_FULL_TILE, 0)
+		height_regulator = new_height
 
 /obj/machinery/plumbing/liquid_output_pump/examine(mob/user)
 	. = ..()
 	. += span_notice("It's currently [turned_on ? "ON" : "OFF"].")
-	. += span_notice("It's height regulator [height_regulator ? "points at [height_regulator]" : "is disabled"]. (Ctrl-click to change)")
+	. += span_notice("It's height regulator [height_regulator ? "points at [height_regulator]" : "is disabled"]. (Alt-click to change)")
 	if(over_pressure)
 		. += span_warning("The gas regulator light is blinking.")
 	if(over_volume)
