@@ -3,6 +3,7 @@
 	desc = "A language that was formed out of the more Asian regions of Sol-3. While not as prevalent as Sol, it has managed to hold on both in its planet of origin and across space."
 	key = "Y"
 	flags = TONGUELESS_SPEECH
+	space_chance = 70
 	// Bits of Japanese, Pinyin and Hangul
 	syllables = list (
 		"no","te","de","ka","ga","ta","da","to","do","ni","i","ha","pa","ba","wa","wo","o","ru","shi","ji","na",
