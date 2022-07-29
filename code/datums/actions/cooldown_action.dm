@@ -48,7 +48,7 @@
 	button.maptext_height = 12
 	return button
 
-datum/action/cooldown/Destroy()
+/datum/action/cooldown/Destroy()
 	QDEL_LIST(initialized_actions)
 	return ..()
 
