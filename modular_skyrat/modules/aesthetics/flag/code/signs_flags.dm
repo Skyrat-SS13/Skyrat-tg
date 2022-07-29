@@ -95,11 +95,13 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/flag/syndicate, 32)
 	sign_path = /obj/structure/sign/flag
 	is_editable = FALSE
 
+///Since all of the signs rotate themselves on initialisation, this made folded flags look ugly (and more importantly rotated).
+///And thus, it gets removed to make them aesthetically pleasing once again.
 /obj/item/sign/flag/Initialize(mapload)
 	. = ..()
-	var/matrix/Matrix = matrix()
-	Matrix.Turn(0)
-	transform = Matrix
+	var/matrix/rotation_reset = matrix()
+	rotation_reset.Turn(0)
+	transform = rotation_reset
 
 /obj/item/sign/flag/welder_act(mob/living/user, obj/item/I)
 	return
