@@ -5,13 +5,6 @@
 	desc = "If you're wearing this you're poor or a rebel"
 	icon_state = "jean_ripped"
 
-/obj/item/clothing/under/pants/jeanshort
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	name = "jean shorts"
-	desc = "These are really just jeans cut in half"
-	icon_state = "jean_shorts"
-
 /obj/item/clothing/under/pants/denimskirt
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'

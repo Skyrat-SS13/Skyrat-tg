@@ -379,6 +379,30 @@
 	name = "Worn Prison Jumpsuit - Teshari"
 	icon_file = 'modular_skyrat/modules/GAGS/icons/jumpsuit_teshari.dmi'
 
+// PANTS / SHORTS
+
+/datum/greyscale_config/slacks_worn/digi
+	name = "Worn Slacks - Digitigrade"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/shorts_pants.dmi'
+
+/datum/greyscale_config/jeans_worn/digi
+	name = "Worn Jeans - Digitigrade"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/shorts_pants.dmi'
+
+/datum/greyscale_config/shorts_worn/digi
+	name = "Worn Shorts - Digitigrade"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/shorts_pants.dmi'
+
+/datum/greyscale_config/jeanshorts_worn/digi
+	name = "Worn Jean Shorts - Digitigrade"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/shorts_pants.dmi'
+
+// DRESSES / SKIRTS
+
+/datum/greyscale_config/plaidskirt_worn/digi
+	name = "Worn Plaid Skirt - Digitigrade"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/dress.dmi'
+
 // KILT
 
 /datum/greyscale_config/kilt
