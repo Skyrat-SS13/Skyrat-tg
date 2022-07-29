@@ -220,6 +220,7 @@
 		list(
 			"Hair" = image(icon = 'modular_skyrat/master_files/icons/mob/actions/actions_slime.dmi', icon_state = "scissors"),
 			"Facial Hair" = image(icon = 'modular_skyrat/master_files/icons/mob/actions/actions_slime.dmi', icon_state = "straight_razor"),
+			"Hair Color"
 		),
 		tooltips = TRUE,
 	)
@@ -235,6 +236,11 @@
 			var/new_style = tgui_input_list(alterer, "Select a facial hair style", "Hair Alterations", GLOB.facial_hairstyles_list)
 			if(new_style)
 				alterer.facial_hairstyle = new_style
+				alterer.update_hair(is_creating = TRUE)
+		if("Hair Color")
+			var/new_hair_color = input(alterer, "Select your new hair color", "Hair Color Alterations", alterer.dna.features["mcolor"]) as color|null
+			if(new_hair_color)
+				alterer.hair_color = new_hair_color
 				alterer.update_hair(is_creating = TRUE)
 
 /**
