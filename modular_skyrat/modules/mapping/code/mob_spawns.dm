@@ -35,6 +35,7 @@
 	flavour_text = "Unfortunately, your hated enemy, Nanotrasen, has begun mining in this sector. Continue operating as best you can, and try to keep a low profile."
 	quirks_enabled = TRUE
 	random_appearance = FALSE
+	computer_area = /area/ruin/space/has_grav/skyrat/interdynefob/service/dorms
 
 /obj/effect/mob_spawn/ghost_role/human/ds2/prisoner
 	name = "Syndicate Prisoner"
@@ -282,6 +283,7 @@
 	loadout_enabled = TRUE
 	quirks_enabled = TRUE
 	random_appearance = FALSE
+	computer_area = /area/ruin/space/has_grav/port_tarkon/centerhall
 
 /datum/outfit/tarkon
 	name = "default port tarkon outfit"
@@ -496,3 +498,13 @@
 	name = "Freighter Ship"
 	icon_state = "yellow"
 
+//CRYO CONSOLES
+/obj/machinery/computer/cryopod/interdyne
+	radio = /obj/item/radio/headset/interdyne
+	announcement_channel = RADIO_CHANNEL_INTERDYNE
+	req_one_access = list("syndicate_leader")
+
+/obj/machinery/computer/cryopod/tarkon
+	radio = /obj/item/radio/headset/tarkon
+	announcement_channel = RADIO_CHANNEL_TARKON
+	req_one_access = list("tarkon")
