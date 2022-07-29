@@ -13,6 +13,14 @@
 	digResult = /obj/item/stack/ore/glass/moon
 	broken_state = "moon_dug"
 
+/turf/open/misc/asteroid/basalt/moon/Initialize(mapload)
+	. = ..()
+
+	if(prob(2))
+		new /obj/structure/flora/rock/style_random(get_turf(src))
+	else if(prob(2))
+		new /obj/structure/flora/rock/pile/style_random(get_turf(src))
+
 /obj/item/stack/ore/glass/moon
 	name = "lunar regolith"
 	icon_state = "volcanic_sand"
@@ -63,6 +71,6 @@
 	outdoors = TRUE
 	base_lighting_alpha = 115
 
-/area/redplanet/Initialize(mapload)
+/area/thefuckinmoon/Initialize(mapload)
 	. = ..()
 	luminosity = 1

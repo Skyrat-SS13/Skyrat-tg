@@ -1,18 +1,18 @@
 //Ash storms happen frequently on lavaland. They heavily obscure vision, and cause high fire damage to anyone caught outside.
 /datum/weather/ash_storm
-	name = "ash storm"
-	desc = "An intense atmospheric storm lifts ash off of the planet's surface and billows it down across the area, dealing intense fire damage to the unprotected."
+	name = "particle shower"
+	desc = "A dense cloud of small particles batter the surface of the moon, dealing damage to any caught out in the storm."
 
-	telegraph_message = "<span class='boldwarning'>An eerie moan rises on the wind. Sheets of burning ash blacken the horizon. Seek shelter.</span>"
+	telegraph_message = "<span class='boldwarning'>Tiny shadows dot the ground, the sky fills with a cloud of reflective dust, find shelter!.</span>"
 	telegraph_duration = 300
 	telegraph_overlay = "light_ash"
 
-	weather_message = "<span class='userdanger'><i>Smoldering clouds of scorching ash billow down around you! Get inside!</i></span>"
-	weather_duration_lower = 600
-	weather_duration_upper = 1200
-	weather_overlay = "ash_storm"
+	weather_message = "<span class='userdanger'><i>Small meteorites and metallic particles batter the surface around you, get inside!</i></span>"
+	weather_duration_lower = 1200
+	weather_duration_upper = 2400
+	weather_overlay = "light_snow"
 
-	end_message = "<span class='boldannounce'>The shrieking wind whips away the last of the ash and falls to its usual murmur. It should be safe to go outside now.</span>"
+	end_message = "<span class='boldannounce'>The rain of rocks and metal finally slows down, a new layer of material added to the lunar regolith.</span>"
 	end_duration = 300
 	end_overlay = "light_ash"
 
@@ -22,7 +22,7 @@
 
 	immunity_type = TRAIT_ASHSTORM_IMMUNE
 
-	probability = 90
+	probability = 70
 
 	barometer_predictable = TRUE
 	var/list/weak_sounds = list()
@@ -70,7 +70,7 @@
 		return FALSE
 
 /datum/weather/ash_storm/weather_act(mob/living/victim)
-	victim.adjustFireLoss(4)
+	victim.adjustBruteLoss(4)
 
 /datum/weather/ash_storm/end()
 	. = ..()
@@ -85,15 +85,25 @@
 
 //Emberfalls are the result of an ash storm passing by close to the playable area of lavaland. They have a 10% chance to trigger in place of an ash storm.
 /datum/weather/ash_storm/emberfall
-	name = "emberfall"
-	desc = "A passing ash storm blankets the area in harmless embers."
+	name = "solar flare"
+	desc = "A nearby star has a flare event, causing the surface of the moon to be showered in electromagnetic radiation."
 
-	weather_message = "<span class='notice'>Gentle embers waft down around you like grotesque snow. The storm seems to have passed you by...</span>"
-	weather_overlay = "light_ash"
+	telegraph_message = "<span class='boldwarning'>Solar winds start blowing the lunar regolith around and a wave of heat washes over you, find shelter!.</span>"
+	telegraph_duration = 300
+	telegraph_overlay = "light_ash"
 
-	end_message = "<span class='notice'>The emberfall slows, stops. Another layer of hardened soot to the basalt beneath your feet.</span>"
-	end_sound = null
+	weather_message = "<span class='userdanger'><i>Searing heat washes over the surface, external electronics flickering in the radiation, get inside!</i></span>"
+	weather_duration_lower = 600
+	weather_duration_upper = 1200
+	weather_overlay = "light_snow"
+	weather_color = "#fff38b"
 
-	aesthetic = TRUE
+	end_message = "<span class='boldannounce'>The winds appear the calm down, the regolith coming to rest once again.</span>"
+	end_duration = 300
+	end_overlay = "light_ash"
 
-	probability = 10
+	probability = 30
+
+/datum/weather/ash_storm/emberfall/weather_act(mob/living/victim)
+	victim.adjustFireLoss(4)
+	empulse(victim, 1, 1)
