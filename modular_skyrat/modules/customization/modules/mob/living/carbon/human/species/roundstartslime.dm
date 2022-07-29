@@ -238,8 +238,7 @@
 				alterer.facial_hairstyle = new_style
 				alterer.update_hair(is_creating = TRUE)
 		if("Hair Color")
-			var/hair_area = tgui_input_list(alterer, "Select which color you would like to change", "Hair Color Alterations", list("Hairstyle", "Facial Hair", "Both"))
-
+			var/hair_area = tgui_alert(alterer, "Select which color you would like to change", "Hair Color Alterations", list("Hairstyle", "Facial Hair", "Both"))
 			if(!hair_area)
 				return
 			var/new_hair_color = input(alterer, "Select your new hair color", "Hair Color Alterations", alterer.dna.features["mcolor"]) as color|null
