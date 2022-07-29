@@ -222,3 +222,7 @@
 
 /datum/species/ghoul/get_species_lore()
 	return list(placeholder_lore)
+
+/datum/species/ghoul/prepare_human_for_preview(mob/living/carbon/human/human)
+	human.update_mutant_bodyparts(TRUE)
+	human.update_body(TRUE)
