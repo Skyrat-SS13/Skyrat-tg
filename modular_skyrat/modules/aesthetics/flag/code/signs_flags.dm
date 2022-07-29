@@ -145,7 +145,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/flag/syndicate, 32)
 	icon_state = "folded_nri"
 	sign_path = /obj/structure/sign/flag/nri
 
-/obj/item/sign/flag/usa //Please, for the love of God, use this in Black Mesa ONLY. NOWHERE ELSE. Or else some less thick-skinned people will get mad.
+/// Please, for the love of God, use this in Black Mesa ONLY. NOWHERE ELSE. It's the only reason it was allowed in the game.
+/obj/item/sign/flag/usa
 	name = "folded flag of the United States of America"
 	desc = "The folded flag of the United States of America."
 	icon_state = "folded_usa"
