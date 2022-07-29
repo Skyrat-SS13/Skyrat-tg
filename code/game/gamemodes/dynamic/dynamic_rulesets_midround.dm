@@ -37,7 +37,7 @@
 	if (required_candidates <= dead_count)
 		return TRUE
 
-	log_game("DYNAMIC: FAIL: [src], a from_ghosts ruleset, did not have enough dead candidates: [required_candidates] needed, [dead_count] found")
+	log_dynamic("FAIL: [src], a from_ghosts ruleset, did not have enough dead candidates: [required_candidates] needed, [dead_count] found")
 
 	return FALSE
 
@@ -105,7 +105,7 @@
 	var/threat = round(mode.threat_level/10)
 
 	if (job_check < required_enemies[threat])
-		log_game("DYNAMIC: FAIL: [src] is not ready, because there are not enough enemies: [required_enemies[threat]] needed, [job_check] found")
+		log_dynamic("FAIL: [src] is not ready, because there are not enough enemies: [required_enemies[threat]] needed, [job_check] found")
 		return FALSE
 
 	return TRUE
@@ -126,7 +126,7 @@
 		message_admins("Possible volunteers was 0. This shouldn't appear, because of ready(), unless you forced it!")
 		return
 	message_admins("Polling [possible_volunteers.len] players to apply for the [name] ruleset.")
-	log_game("DYNAMIC: Polling [possible_volunteers.len] players to apply for the [name] ruleset.")
+	log_dynamic("Polling [possible_volunteers.len] players to apply for the [name] ruleset.")
 
 	candidates = poll_ghost_candidates("The mode is looking for volunteers to become [antag_flag] for [name]", antag_flag_override, antag_flag || antag_flag_override, poll_time = 300)
 
@@ -137,7 +137,7 @@
 		return
 
 	message_admins("[candidates.len] players volunteered for the ruleset [name].")
-	log_game("DYNAMIC: [candidates.len] players volunteered for [name].")
+	log_dynamic("[candidates.len] players volunteered for [name].")
 	review_applications()
 
 /// Here is where you can check if your ghost applicants are valid for the ruleset.
@@ -240,7 +240,7 @@
 
 /datum/dynamic_ruleset/midround/autotraitor/ready(forced = FALSE)
 	if (required_candidates > living_players.len)
-		log_game("DYNAMIC: FAIL: [src] does not have enough candidates, using living_players ([required_candidates] needed, [living_players.len] found)")
+		log_dynamic("FAIL: [src] does not have enough candidates, using living_players ([required_candidates] needed, [living_players.len] found)")
 		return FALSE
 	return ..()
 
@@ -251,7 +251,7 @@
 	var/datum/antagonist/traitor/newTraitor = new
 	M.mind.add_antag_datum(newTraitor)
 	message_admins("[ADMIN_LOOKUPFLW(M)] was selected by the [name] ruleset and has been made into a midround traitor.")
-	log_game("DYNAMIC: [key_name(M)] was selected by the [name] ruleset and has been made into a midround traitor.")
+	log_dynamic("[key_name(M)] was selected by the [name] ruleset and has been made into a midround traitor.")
 	return TRUE
 
 
@@ -279,9 +279,9 @@
 	exclusive_roles = list(JOB_AI)
 	required_enemies = list(4,4,4,4,4,4,2,2,2,0)
 	required_candidates = 1
-	weight = 3
+	minimum_players = 25
+	weight = 2
 	cost = 10
-	requirements = list(101,101,101,80,60,50,30,20,10,10)
 	required_type = /mob/living/silicon/ai
 	blocking_rules = list(/datum/dynamic_ruleset/roundstart/malf_ai)
 
@@ -338,7 +338,7 @@
 	required_candidates = 1
 	weight = 1
 	cost = 10
-	requirements = list(90,90,90,80,60,50,40,40,40,40)
+	requirements = REQUIREMENTS_VERY_HIGH_THREAT_NEEDED
 	flags = HIGH_IMPACT_RULESET
 
 /datum/dynamic_ruleset/midround/from_ghosts/wizard/ready(forced = FALSE)
@@ -379,7 +379,7 @@
 	weight = 5
 	cost = 7
 	minimum_round_time = 70 MINUTES
-	requirements = list(90,90,90,80,60,40,30,20,10,10)
+	requirements = REQUIREMENTS_VERY_HIGH_THREAT_NEEDED
 	var/list/operative_cap = list(2,2,3,3,4,5,5,5,5,5)
 	var/datum/team/nuclear/nuke_team
 	flags = HIGH_IMPACT_RULESET
@@ -428,7 +428,7 @@
 	minimum_round_time = 35 MINUTES
 	weight = 3
 	cost = 8
-	requirements = list(101,101,101,80,60,50,30,20,10,10)
+	minimum_players = 25
 	repeatable = TRUE
 
 /datum/dynamic_ruleset/midround/from_ghosts/blob/generate_ruleset_body(mob/applicant)
@@ -466,7 +466,7 @@
 	minimum_round_time = 35 MINUTES
 	weight = 3
 	cost = 10
-	requirements = list(101,101,101,80,60,50,30,20,10,10)
+	minimum_players = 25
 	repeatable = TRUE
 
 /datum/dynamic_ruleset/midround/blob_infection/trim_candidates()
@@ -511,7 +511,7 @@
 	minimum_round_time = 40 MINUTES
 	weight = 5
 	cost = 10
-	requirements = list(101,101,101,70,50,40,20,15,10,10)
+	minimum_players = 25
 	repeatable = TRUE
 	var/list/vents = list()
 
@@ -539,7 +539,7 @@
 	new_xeno.key = applicant.key
 	new_xeno.move_into_vent(vent)
 	message_admins("[ADMIN_LOOKUPFLW(new_xeno)] has been made into an alien by the midround ruleset.")
-	log_game("DYNAMIC: [key_name(new_xeno)] was spawned as an alien by the midround ruleset.")
+	log_dynamic("[key_name(new_xeno)] was spawned as an alien by the midround ruleset.")
 	return new_xeno
 
 //////////////////////////////////////////////
@@ -564,7 +564,7 @@
 	required_candidates = 1
 	weight = 3
 	cost = 5
-	requirements = list(101,101,101,70,50,40,20,15,10,10)
+	minimum_players = 15
 	repeatable = TRUE
 	var/list/spawn_locs = list()
 
@@ -591,7 +591,7 @@
 
 	playsound(S, 'sound/magic/ethereal_exit.ogg', 50, TRUE, -1)
 	message_admins("[ADMIN_LOOKUPFLW(S)] has been made into a Nightmare by the midround ruleset.")
-	log_game("DYNAMIC: [key_name(S)] was spawned as a Nightmare by the midround ruleset.")
+	log_dynamic("[key_name(S)] was spawned as a Nightmare by the midround ruleset.")
 	return S
 
 //////////////////////////////////////////////
@@ -616,7 +616,7 @@
 	required_candidates = 1
 	weight = 4
 	cost = 7
-	requirements = list(101,101,101,80,60,50,30,20,10,10)
+	minimum_players = 25
 	repeatable = TRUE
 	var/list/spawn_locs = list()
 
@@ -640,7 +640,7 @@
 
 	playsound(S, 'sound/magic/ethereal_exit.ogg', 50, TRUE, -1)
 	message_admins("[ADMIN_LOOKUPFLW(S)] has been made into a Space Dragon by the midround ruleset.")
-	log_game("DYNAMIC: [key_name(S)] was spawned as a Space Dragon by the midround ruleset.")
+	log_dynamic("[key_name(S)] was spawned as a Space Dragon by the midround ruleset.")
 	priority_announce("A large organic energy flux has been recorded near of [station_name()], please stand-by.", "Lifesign Alert")
 	return S
 
@@ -667,7 +667,7 @@
 	required_applicants = 2
 	weight = 4
 	cost = 7
-	requirements = list(101,101,101,80,60,50,30,20,10,10)
+	minimum_players = 25
 	repeatable = TRUE
 	var/datum/team/abductor_team/new_team
 
@@ -710,7 +710,7 @@
 	required_candidates = 1
 	weight = 4
 	cost = 8
-	requirements = list(101,101,101,80,60,50,30,20,10,10)
+	minimum_players = 30
 	repeatable = TRUE
 	var/list/spawn_locs = list()
 
@@ -731,7 +731,7 @@
 	ninja.mind.add_antag_datum(/datum/antagonist/ninja)
 
 	message_admins("[ADMIN_LOOKUPFLW(ninja)] has been made into a Space Ninja by the midround ruleset.")
-	log_game("DYNAMIC: [key_name(ninja)] was spawned as a Space Ninja by the midround ruleset.")
+	log_dynamic("[key_name(ninja)] was spawned as a Space Ninja by the midround ruleset.")
 	return ninja
 
 //////////////////////////////////////////////
@@ -755,7 +755,7 @@
 	required_candidates = 0
 	weight = 3
 	cost = 8
-	requirements = list(101,101,101,80,60,50,30,20,10,10)
+	minimum_players = 27
 	repeatable = TRUE
 	var/spawncount = 2
 
@@ -779,7 +779,7 @@
 	required_candidates = 1
 	weight = 4
 	cost = 5
-	requirements = list(101,101,101,70,50,40,20,15,10,10)
+	minimum_players = 15
 	repeatable = TRUE
 	var/dead_mobs_required = 20
 	var/need_extra_spawns_value = 15
@@ -825,7 +825,6 @@
 	minimum_players = 25
 	weight = 4
 	cost = 8
-	requirements = list(101,101,101,80,60,50,30,20,10,10)
 	repeatable = TRUE
 
 /datum/dynamic_ruleset/midround/from_ghosts/sentient_disease/generate_ruleset_body(mob/applicant)
@@ -852,7 +851,7 @@
 	required_candidates = 0
 	weight = 4
 	cost = 8
-	requirements = list(101,101,101,80,60,50,30,20,10,10)
+	minimum_players = 27
 	repeatable = TRUE
 
 /datum/dynamic_ruleset/midround/pirates/acceptable(population=0, threat=0)
@@ -885,7 +884,6 @@
 	required_candidates = 1
 	weight = 4
 	cost = 3 // Doesn't have the same impact on rounds as revenants, dragons, sentient disease (10) or syndicate infiltrators (5).
-	requirements = list(101,101,101,80,60,50,30,20,10,10)
 	repeatable = TRUE
 
 /datum/dynamic_ruleset/midround/obsessed/trim_candidates()
