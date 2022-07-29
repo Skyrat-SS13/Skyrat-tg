@@ -67,9 +67,46 @@
 		/obj/item/mod/module/thermal_regulator,
 	)
 
+/datum/mod_theme/event/leader
+	name = "colonizer type L"
+	desc = "A chief engineer's advanced MODsuit, made even more advanced through the application of high tech (warrantly not included)."
+	extended_desc = "Another suit taken from previous designs, and refit for use by \
+	anyone looking for a suit capable of carrying your crew through the harsh environments \
+	of colonizable exoplanets. The type L isn't fit for everyone, some prefer the safe feel \
+	of a camera operated display instead of a glass panel, and some simply prefer the \
+	orange and black color scheme this suit provides."
+	default_skin = "advanced"
+	armor = list(MELEE = 50, BULLET = 40, LASER = 30, ENERGY = 40, BOMB = 70, BIO = 100, FIRE = 100, ACID = 40, WOUND = 15)
+	skins = list(
+		"advanced" = list(
+			HELMET_FLAGS = list(
+				UNSEALED_LAYER = null,
+				UNSEALED_CLOTHING = SNUG_FIT|THICKMATERIAL,
+				SEALED_CLOTHING = STOPSPRESSUREDAMAGE,
+				UNSEALED_INVISIBILITY = HIDEFACIALHAIR|HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDESNOUT,
+				UNSEALED_COVER = HEADCOVERSMOUTH|HEADCOVERSEYES|PEPPERPROOF,
+			),
+			CHESTPLATE_FLAGS = list(
+				UNSEALED_CLOTHING = THICKMATERIAL,
+				SEALED_CLOTHING = STOPSPRESSUREDAMAGE,
+				SEALED_INVISIBILITY = HIDEJUMPSUIT,
+			),
+			GAUNTLETS_FLAGS = list(
+				UNSEALED_CLOTHING = THICKMATERIAL,
+				SEALED_CLOTHING = STOPSPRESSUREDAMAGE,
+				CAN_OVERSLOT = TRUE,
+			),
+			BOOTS_FLAGS = list(
+				UNSEALED_CLOTHING = THICKMATERIAL,
+				SEALED_CLOTHING = STOPSPRESSUREDAMAGE,
+				CAN_OVERSLOT = TRUE,
+			),
+		),
+	)
+
 /obj/item/mod/control/pre_equipped/event/leader
-	theme = /datum/mod_theme/event
-	applied_cell = /obj/item/stock_parts/cell/super
+	theme = /datum/mod_theme/event/leader
+	applied_cell = /obj/item/stock_parts/cell/hyper
 	initial_modules = list(
 		/obj/item/mod/module/welding,
 		/obj/item/mod/module/magboot,

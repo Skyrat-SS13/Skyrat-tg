@@ -4,7 +4,7 @@
 	id = /obj/item/card/id/advanced/black
 	id_trim = /datum/id_trim/centcom/ert/engineer
 
-	uniform = /obj/item/clothing/under/rank/engineering/engineer/skyrat/utility/syndicate
+	uniform = /obj/item/clothing/under/costume/nri/engineer
 	suit = /obj/item/clothing/suit/hazardvest
 	suit_store = /obj/item/tank/internals/oxygen/yellow
 	back = /obj/item/mod/control/pre_equipped/event
@@ -16,9 +16,9 @@
 	)
 	belt = /obj/item/storage/belt/utility/full/redtools
 	ears = /obj/item/radio/headset/headset_cargo/mining
-	glasses = null
+	glasses = /obj/item/clothing/glasses/welding/up
 	gloves = /obj/item/clothing/gloves/color/chief_engineer
-	head = null
+	head = /obj/item/clothing/head/hardhat/orange
 	mask = /obj/item/clothing/mask/gas/alt
 	neck = null
 	shoes = /obj/item/clothing/shoes/combat/expeditionary_corps
@@ -52,6 +52,7 @@
 		/obj/item/megaphone/command = 1,
 	)
 	ears = /obj/item/radio/headset/headset_cent/alt/with_key
+	head = /obj/item/clothing/head/hardhat/white
 
 /datum/outfit/event_colonizer/syndie
 	name = "Syndie Planetary Colonizer"
@@ -70,16 +71,12 @@
 	)
 	belt = /obj/item/storage/belt/utility/full/redtools
 	ears = /obj/item/radio/headset/interdyne
-	glasses = null
 	gloves = /obj/item/clothing/gloves/combat
-	head = null
+	head = /obj/item/clothing/head/hardhat/dblue
 	mask = /obj/item/clothing/mask/gas/alt
-	neck = null
 	shoes = /obj/item/clothing/shoes/jackboots
 	l_pocket = /obj/item/knife/combat/survival
 	r_pocket = /obj/item/trench_tool
-	l_hand = null
-	r_hand = null
 	accessory = /obj/item/clothing/accessory/armband
 	box = /obj/item/storage/box/expeditionary_survival/event
 	internals_slot = ITEM_SLOT_SUITSTORE
