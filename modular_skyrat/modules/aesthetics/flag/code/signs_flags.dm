@@ -13,9 +13,6 @@
 /obj/structure/sign/flag/welder_act(mob/living/user, obj/item/I)
 	return
 
-/obj/item/sign/flag/welder_act(mob/living/user, obj/item/I)
-	return
-
 /obj/structure/sign/flag/MouseDrop(over_object, src_location, over_location)
 	. = ..()
 	if(over_object == usr && Adjacent(usr))
@@ -73,7 +70,8 @@
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/flag/nri, 32)
 
-/obj/structure/sign/flag/usa //Black Mesa stuff keeps haunting me even now. Also, please, for the love of God, use this in Black Mesa ONLY. NOWHERE ELSE. Or else some less thick-skinned people will get mad.
+/// Please, for the love of God, use this in Black Mesa ONLY. NOWHERE ELSE. It's the only reason it was allowed in the game.
+/obj/structure/sign/flag/usa
 	name = "flag of the United States of America"
 	desc = "'Stars and Stripes', the flag of the United States of America. Its red color represents endurance and valor; blue one shows diligence, vigilance and justice, and the white one signs at pureness. Its thirteen red-and-white stripes show the initial thirteen founding colonies, and fifty stars designate the current fifty states."
 	icon_state = "flag_usa"
@@ -97,11 +95,14 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/flag/syndicate, 32)
 	sign_path = /obj/structure/sign/flag
 	is_editable = FALSE
 
+/obj/item/sign/flag/welder_act(mob/living/user, obj/item/I)
+	return
+
 /obj/item/sign/flag/Initialize(mapload)
 	. = ..()
-	var/matrix/M = matrix()
-	M.Turn(0)
-	transform = M
+	var/matrix/Matrix = matrix()
+	Matrix.Turn(0)
+	transform = Matrix
 
 /obj/item/sign/flag/nanotrasen
 	name = "folded flag of the Nanotrasen"
