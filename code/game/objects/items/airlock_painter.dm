@@ -382,17 +382,10 @@
 	supports_custom_color = TRUE
 	// Colors can have a an alpha component as RGBA, or just be RGB and use default alpha
 	color_list = list(
-<<<<<<< HEAD
-		list("White", "#D4D4D4"),
-		list("Black", "#0e0f0f"),
-		list("Bar Burgundy", "#791500"),
-		list("Sec Blue", "#486091"), // SKYRAT EDIT CHANGE
-=======
 		list("Neutral", "#D4D4D432"),
 		list("Dark", "#0e0f0f"),
 		list("Bar Burgundy", "#79150082"),
-		list("Sec Red", "#DE3A3A"),
->>>>>>> 24aa9bc9d0c (Makes result of decal painter and tile sprayer not cleanable like the map-start decals (#68088))
+		list("Sec Blue", "#486091"), // SKYRAT EDIT CHANGE
 		list("Cargo Brown", "#A46106"),
 		list("Engi Yellow", "#EFB341"),
 		list("Service Green", "#9FED58"),
