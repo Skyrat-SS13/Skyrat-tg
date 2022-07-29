@@ -1,3 +1,6 @@
+///A list containing users of the Hivemind NIFSoft
+GLOBAL_LIST_EMPTY(hivemind_users)
+
 /obj/item/disk/nifsoft_uploader/hivemind
 	loaded_nifsoft = /datum/nifsoft/hivemind
 
@@ -9,6 +12,8 @@
 	active_cost = 1
 	///The network that the user is currently hosting
 	var/datum/component/mind_linker/nif/user_network
+	///What networks are the user connected to?
+	var/list/datum/component/mind_linker/nif/network_list
 	///What network is the user sending messages to? This is saved from the keyboard so the user doesn't have to change the channel every time.
 	var/datum/component/mind_linker/nif/sending_network
 	///The physical keyboard item being used to send messages
@@ -23,6 +28,16 @@
 	)
 
 	sending_network = user_network
+	GLOB.hivemind_users += linked_mob
+
+/datum/nifsoft/hivemind/Destroy()
+	if(linked_mob in GLOB.hivemind_users)
+		GLOB.hivemind_users -= linked_mob
+
+	qdel(user_network)
+
+	//add in a function that scans the mind_links in the network list and remove the user from each one of them.
+	. = ..()
 
 /datum/nifsoft/hivemind/activate()
 	. = ..()
@@ -42,12 +57,89 @@
 	background_icon_state = "android"
 	icon_icon = 'modular_skyrat/master_files/icons/mob/actions/actions_nif.dmi'
 
+/datum/action/innate/hivemind_config/Activate()
+	. = ..()
+	var/datum/component/mind_linker/nif/link = target
+
+	var/choice = tgui_input_list(owner, "Chose your option", "Hivemind Configuration Menu", list("Link a user", "Remove a user", "Leave a Hivemind"))
+	if(!choice)
+		return
+
+	switch(choice)
+		if("Link a user")
+			link.invite_user()
+
+		if("Remove a user")
+			link.remove_user()
+
+		if("Leave a Hivemind")
+			return
+
 /datum/component/mind_linker
 	///Is does the component give an action to speak? By default, yes
 	var/speech_action = TRUE
 
 /datum/component/mind_linker/nif
 	speech_action = FALSE
+
+///Lets the user add someone to their Hivemind through a choice menu that shows everyone that has the Hivemind NIFSoft.
+/datum/component/mind_linker/nif/proc/invite_user()
+	var/list/hivemind_users = GLOB.hivemind_users
+	var/mob/living/carbon/human/owner = parent
+
+	//This way people already linked don't show up in the selection menu
+	for(var/mob/living/user as anything in linked_mobs)
+		if(user in hivemind_users)
+			hivemind_users -= user
+
+	hivemind_users -= owner
+
+	var/mob/living/carbon/human/person_to_add = tgui_input_list(owner, "Chose a person to invite to your Hivemind", "Invite User", hivemind_users)
+	if(!person_to_add)
+		return
+
+/*
+	if(tgui_alert(person_to_add, "[owner] wishes to add you to their Hivemind, do you accept", "Incomming Hivemind Invite", list("Accept", "Reject")) != "Accept")
+		to_chat(owner, span_warning("[person_to_add] denied the request to join your Hivemind"))
+		return
+*/
+
+	linked_mobs += person_to_add
+
+	var/datum/nifsoft/hivemind/target_hivemind
+	var/list/nifsoft_list = person_to_add?.installed_nif?.loaded_nifsofts
+	var/nifsoft_to_find = /datum/nifsoft/hivemind
+
+	for(var/datum/nifsoft/nifsoft as anything in nifsoft_list)
+		if(nifsoft.type == nifsoft_to_find)
+			target_hivemind = nifsoft
+
+	if(!target_hivemind)
+		return
+
+	target_hivemind.network_list += src
+	to_chat(person_to_add, span_abductor("You have now been added to [owner]'s Hivemind"))
+	to_chat(owner, span_abductor("[person_to_add] has now been added to your Hivemind"))
+
+///Removes a user from the list of connected people within a hivemind
+/datum/component/mind_linker/nif/proc/remove_user()
+	var/mob/living/carbon/human/owner = parent
+	var/mob/living/carbon/human/person_to_remove = tgui_input_list(owner, "Chose a person to remove from your Hivemind", "Remove User", linked_mobs)
+
+	if(!person_to_remove)
+		return
+
+	var/datum/nifsoft/hivemind/target_hivemind
+	var/list/nifsoft_list = person_to_add?.installed_nif?.loaded_nifsofts
+	var/nifsoft_to_find = /datum/nifsoft/hivemind
+
+	for(var/datum/nifsoft/nifsoft as anything in nifsoft_list)
+		if(nifsoft.type == nifsoft_to_find)
+			target_hivemind = nifsoft
+
+	target_hivemind.network_list -= src
+	to_chat(person_to_remove, span_abductor("You have now been removed from [owner]'s Hivemind"))
+	to_chat(owner, span_abductor("[person_to_remove] has now been removed from your Hivemind"))
 
 /obj/item/hivemind_keyboard
 	name = "Hivemind Controller"
