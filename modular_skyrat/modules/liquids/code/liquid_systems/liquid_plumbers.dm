@@ -35,10 +35,9 @@
 	if(!user.canUseTopic(src, BE_CLOSE, NO_DEXTERITY, FALSE, TRUE))
 		return
 	var/new_height = tgui_input_number(user, "Set new height regulation:\n([0]-[LIQUID_HEIGHT_CONSIDER_FULL_TILE]. Use 0 to disable the regulation)\nThe pump will only siphon if environment is above the regulation", "Liquid Pump", max_value = LIQUID_HEIGHT_CONSIDER_FULL_TILE, min_value = 0)
-	if(QDELETED(src))
+	if(isnull(new_height) || QDELETED(src))
 		return
-	if(new_height)
-		height_regulator = new_height
+	height_regulator = new_height
 
 /obj/machinery/plumbing/liquid_input_pump/examine(mob/user)
 	. = ..()
@@ -139,10 +138,9 @@
 	if(!user.canUseTopic(src, BE_CLOSE, NO_DEXTERITY, FALSE, TRUE))
 		return
 	var/new_height = tgui_input_number(user, "Set new height regulation:\n([0]-[LIQUID_HEIGHT_CONSIDER_FULL_TILE]. Use 0 to disable the regulation)\nThe pump will only siphon if environment is below the regulation", "Liquid Pump", max_value = LIQUID_HEIGHT_CONSIDER_FULL_TILE, min_value = 0)
-	if(QDELETED(src))
+	if(isnull(new_height) || QDELETED(src))
 		return
-	if(new_height)
-		height_regulator = new_height
+	height_regulator = new_height
 
 /obj/machinery/plumbing/liquid_output_pump/examine(mob/user)
 	. = ..()
