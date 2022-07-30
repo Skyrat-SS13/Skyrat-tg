@@ -501,10 +501,10 @@
 //CRYO CONSOLES
 /obj/machinery/computer/cryopod/interdyne
 	radio = /obj/item/radio/headset/interdyne
-	announcement_channel = "Interdyne"
+	announcement_channel = RADIO_CHANNEL_INTERDYNE
 	req_one_access = list("syndicate_leader")
 
 /obj/machinery/computer/cryopod/tarkon
 	radio = /obj/item/radio/headset/tarkon
-	announcement_channel = "Tarkon"
+	announcement_channel = RADIO_CHANNEL_TARKON
 	req_one_access = list("tarkon")
