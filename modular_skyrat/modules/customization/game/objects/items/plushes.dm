@@ -567,12 +567,5 @@
 /obj/item/toy/plush/skyrat/plushie_star
 	name = "star angel plush"
 	desc = "The plushie of a celestial in the known universe."
-	icon_state = "plushie_star0"
+	icon_state = "plushie_star"
 	gender = FEMALE
-	/// will switch the icon between 0 (FALSE) and 1 (TRUE)
-	var/switching_icon = TRUE
-
-/obj/item/toy/plush/skyrat/plushie_star/attack_self(mob/user)
-	. = ..()
-	switching_icon = !switching_icon
-	icon_state = "plushie_star[switching_icon]"
