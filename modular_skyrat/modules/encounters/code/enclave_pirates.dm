@@ -16,8 +16,8 @@
 
 	belt = /obj/item/storage/belt/military/nri/captain/pirate_officer
 	back = /obj/item/storage/backpack/duffelbag/syndie/nri/captain
-	backpack_contents = list(/obj/item/storage/box/nri_survival_pack = 1, /obj/item/ammo_box/magazine/automag = 2, /obj/item/clothing/head/helmet/space/hev_suit/nri/captain = 1, /obj/item/gun/ballistic/automatic/pistol/automag = 1, /obj/item/crucifix = 1, /obj/item/paper/fluff/nri_document = 1, /obj/item/device/traitor_announcer = 1)
-	l_pocket = /obj/item/ammo_box/magazine/automag
+	backpack_contents = list(/obj/item/storage/box/nri_survival_pack = 1, /obj/item/ammo_box/magazine/automag = 3, /obj/item/clothing/head/helmet/space/hev_suit/nri/captain = 1, /obj/item/gun/ballistic/automatic/pistol/automag = 1, /obj/item/crucifix = 1, /obj/item/device/traitor_announcer = 1)
+	l_pocket = /obj/item/paper/fluff/nri_document
 	r_pocket = /obj/item/storage/bag/ammo
 
 	id = /obj/item/card/id/advanced
@@ -95,6 +95,7 @@
 	return "[rank] [first_name]"
 
 /obj/effect/mob_spawn/ghost_role/human/pirate/enclave/captain
+	name = "NRI Officer sleeper"
 	mob_name = "Novaya Rossiyskaya Imperiya raiding party's field officer"
 	outfit = /datum/outfit/pirate/enclave_officer
 	rank = "Field Officer"
