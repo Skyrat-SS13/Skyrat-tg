@@ -72,9 +72,9 @@
 	mob_name = "Novaya Rossiyskaya Imperiya raiding party's marine"
 	outfit = /datum/outfit/pirate/enclave_trooper
 	rank = "NRI Marine"
-	you_are_text = "You are a Novaya Rossiyskaya Imperiya task force."
-	flavour_text = "The station has refused to pay the fine for breaking Imperial regulations, you are here to recover the debt. Do so by demanding the funds. Force approach is usually recommended, but isn't the only method."
-	important_text = "Allowed races are humans, felinids, Akulas, IPCs. Follow your field officer's orders."
+	you_are_text = "You are a Novaya Rossiyskaya Imperiya task force under the disguise of a deserter group."
+	flavour_text = "The station has refused to pay the fine for breaking Imperial regulations, you are here to recover the debt. Do so by demanding the funds. Force approach is usually recommended, but isn't the only method. It's advised not to break your disguise as deserters."
+	important_text = "Allowed races are humans, felinids, Akulas, IPCs. Follow your field officer's orders. At the very least attempt to keep your cover."
 	spawner_job_path = /datum/job/space_pirate
 	restricted_species = list(/datum/species/human, /datum/species/human/felinid, /datum/species/akula, /datum/species/robotic/ipc)
 	spawn_oldpod = FALSE
