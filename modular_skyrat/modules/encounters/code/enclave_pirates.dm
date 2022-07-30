@@ -166,11 +166,10 @@
 /obj/item/paper/fluff/nri_document
 	name = "NRI Mission Specifications"
 	info = {"On behalf of Novaya Rossiyskaya Imperiya Defense and Economical Colleagues by the order of the Admiral Voronov Platon Aleksandrovich and the Active Privy Councillor Radich Katarina Dinovich:
-	<br> By the Supreme command, a special meeting of representatives from the Imperial Academy of Finances and the Colleagues of Foreign and Internal Affairs, Finance, Defense
-	<br> was convened under the chairmanship of Adjutant General Tarkhanov to consider the issue of the incongruity with the Imperial regulations by the Nanotrasen Research Station.
+	<br> By the Supreme command, a special meeting of representatives from the Imperial Academy of Finances and the Colleagues of Foreign and Internal Affairs, Economy, Defense was convened under the chairmanship of Adjutant General Tarkhanov to consider the issue of the incongruity with the Imperial regulations by the Nanotrasen Research Station.
 	<br> This meeting, having familiarized itself with all the other possible actions and solutions, came to the conviction that the indenture of fines has casus belli to perform a strategic secret operation.
 	<br> The Imperial Regulation has to be enforced in order to minimise any potential threat for the whole Empire, not excluding allied kingdoms, organisations and other partners, and to strengthen our positions in the ongoing Border War.
 	<br>
 	<br> About such a Supreme Will, reported in the recall of the Councillor of the Defense Colleague, No. 217648, We announce to the military department for immediate actions in appropriate cases.
 	<br>
-	<br> <i>Signed by we, the Voronov Platon Aleksandrovich and Radich Katarina Dinovich.</i>"}
+	<br> <i>Signed by We, the Voronov Platon Aleksandrovich and Radich Katarina Dinovich.</i>"}
