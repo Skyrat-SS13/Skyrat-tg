@@ -157,19 +157,21 @@
 #define CLOTHING_DIGITIGRADE_VARIATION (1<<1)
 ///The sprite works fine for digitigrade legs as-is.
 #define CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON (1<<2)
+///has a sprite for monkeys
+#define CLOTHING_MONKEY_VARIATION (1<<3)
 // SKYRAT EDIT ADDITION
 /// The sprite works fine for snouts.
-#define CLOTHING_SNOUTED_VARIATION (1<<3)
+#define CLOTHING_SNOUTED_VARIATION (1<<4)
 /// The sprite works fine for snouts as-is.
-#define CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON (1<<4)
+#define CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON (1<<5)
 /// The sprite works fine for vox snouts.
-#define CLOTHING_SNOUTED_VOX_VARIATION (1<<5)
+#define CLOTHING_SNOUTED_VOX_VARIATION (1<<6)
 /// The sprite works fine for vox snouts as is.
-#define CLOTHING_SNOUTED_VOX_VARIATION_NO_NEW_ICON (1<<6)
+#define CLOTHING_SNOUTED_VOX_VARIATION_NO_NEW_ICON (1<<7)
 /// The sprite works fine for vox snouts.
-#define CLOTHING_SNOUTED_BETTER_VOX_VARIATION (1<<7)
+#define CLOTHING_SNOUTED_BETTER_VOX_VARIATION (1<<8)
 /// The sprite works fine for vox snouts as is.
-#define CLOTHING_SNOUTED_BETTER_VOX_VARIATION_NO_NEW_ICON (1<<8)
+#define CLOTHING_SNOUTED_BETTER_VOX_VARIATION_NO_NEW_ICON (1<<9)
 // SKYRAT EDIT END
 
 //flags for covering body parts

@@ -71,7 +71,6 @@
 	var/datum/outfit/vox/vox_outfit = new /datum/outfit/vox
 	equipping.equipOutfit(vox_outfit, visuals_only)
 	equipping.internal = equipping.get_item_for_held_index(2)
-	equipping.update_internals_hud_icon(1)
 
 /datum/species/vox_primalis/random_name(gender, unique, lastname)
 	if(unique)
