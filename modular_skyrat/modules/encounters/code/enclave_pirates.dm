@@ -16,7 +16,7 @@
 
 	belt = /obj/item/storage/belt/military/nri/captain/pirate_officer
 	back = /obj/item/storage/backpack/duffelbag/syndie/nri/captain
-	backpack_contents = list(/obj/item/storage/box/nri_survival_pack = 1, /obj/item/ammo_box/magazine/automag = 2, /obj/item/clothing/head/helmet/space/hev_suit/nri/captain = 1, /obj/item/gun/ballistic/automatic/pistol/automag = 1, /obj/item/crucifix = 1)
+	backpack_contents = list(/obj/item/storage/box/nri_survival_pack = 1, /obj/item/ammo_box/magazine/automag = 2, /obj/item/clothing/head/helmet/space/hev_suit/nri/captain = 1, /obj/item/gun/ballistic/automatic/pistol/automag = 1, /obj/item/crucifix = 1, /obj/item/paper/fluff/nri_document = 1, /obj/item/device/traitor_announcer = 1)
 	l_pocket = /obj/item/ammo_box/magazine/automag
 	r_pocket = /obj/item/storage/bag/ammo
 
@@ -72,8 +72,8 @@
 	mob_name = "Novaya Rossiyskaya Imperiya raiding party's marine"
 	outfit = /datum/outfit/pirate/enclave_trooper
 	rank = "NRI Marine"
-	you_are_text = "You are an Novaya Rossiyskaya Imperiya outfit."
-	flavour_text = "The station has refused to pay the fine for breaking Imperial regulations, you are here to recover the debt. Do so by ransoming crew and stealing credits."
+	you_are_text = "You are a Novaya Rossiyskaya Imperiya task force."
+	flavour_text = "The station has refused to pay the fine for breaking Imperial regulations, you are here to recover the debt. Do so by demanding the funds. Force approach is usually recommended, but isn't the only method."
 	important_text = "Allowed races are humans, felinids, Akulas, IPCs."
 	spawner_job_path = /datum/job/space_pirate
 	restricted_species = list(/datum/species/human, /datum/species/human/felinid, /datum/species/akula, /datum/species/robotic/ipc)
@@ -160,3 +160,15 @@
 
 /obj/item/clothing/suit/space/hev_suit/nri/captain/pirate
 	radio_channel = RADIO_CHANNEL_GUILD
+
+/obj/item/paper/fluff/nri_document
+	name = "NRI Mission Specifications"
+	info = {"On behalf of Novaya Rossiyskaya Imperiya Defense and Economical Colleagues by the order of the Admiral Voronov Platon Aleksandrovich and the Active Privy Councillor Radich Katarina Dinovich:
+	<br> By the Supreme command, a special meeting of representatives from the Imperial Academy of Finances and the Colleagues of Foreign and Internal Affairs, Finance, Defense
+	<br> was convened under the chairmanship of Adjutant General Tarkhanov to consider the issue of the incongruity with the Imperial regulations by the Nanotrasen Research Station.
+	<br> This meeting, having familiarized itself with all the other possible actions and solutions, came to the conviction that the indenture of fines has casus belli to perform a strategic secret operation.
+	<br> The Imperial Regulation has to be enforced in order to minimise any potential threat for the whole Empire, not excluding allied kingdoms, organisations and other partners, and to strengthen our positions in the ongoing Border War.
+	<br>
+	<br> About such a Supreme Will, reported in the recall of the Councillor of the Defense Colleague , No. 217648, We announce to the military department for immediate actions in appropriate cases.
+	<br>
+	<br> <i>Signed by we, the Voronov Platon Aleksandrovich and Radich Katarina Dinovich.</i>"}
