@@ -41,8 +41,20 @@
 /area/shuttle/syndicate/slaver)
 "aE" = (
 /obj/effect/turf_decal/trimline/yellow/warning,
-/obj/structure/closet/crate/wooden,
-/obj/item/crowbar,
+/obj/effect/turf_decal/delivery,
+/obj/structure/closet/crate/cardboard,
+/obj/item/reagent_containers/food/drinks/soda_cans/monkey_energy,
+/obj/item/reagent_containers/food/drinks/soda_cans/monkey_energy,
+/obj/item/reagent_containers/food/drinks/soda_cans/monkey_energy,
+/obj/item/reagent_containers/food/drinks/soda_cans/monkey_energy,
+/obj/item/reagent_containers/food/drinks/soda_cans/monkey_energy,
+/obj/item/reagent_containers/food/drinks/soda_cans/monkey_energy,
+/obj/item/food/chocolatebar,
+/obj/item/food/chocolatebar,
+/obj/item/food/chocolatebar,
+/obj/item/food/chocolatebar,
+/obj/item/food/chocolatebar,
+/obj/item/food/chocolatebar,
 /turf/open/floor/iron/dark/brown/side{
 	dir = 1
 	},
@@ -190,6 +202,10 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/syndicate/slaver)
+"ds" = (
+/obj/effect/turf_decal/delivery,
+/turf/open/floor/iron/dark,
+/area/shuttle/syndicate/slaver)
 "du" = (
 /obj/machinery/smartfridge/organ{
 	desc = "A refrigerated storage unit for organ storage. This particular unit uses unstable nanites to repair organs faster than standard smartfridges - though they will be lost upon deconstruction.";
@@ -217,17 +233,21 @@
 /turf/open/floor/wood,
 /area/shuttle/syndicate/slaver)
 "dB" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 8
+	},
+/obj/machinery/dryer{
+	dir = 8;
+	pixel_x = 12
+	},
 /turf/open/floor/iron/showroomfloor,
 /area/shuttle/syndicate/slaver)
 "dE" = (
-/obj/machinery/shower/directional/north,
 /obj/structure/curtain,
-/obj/structure/drain,
-/obj/effect/turf_decal/siding/thinplating/dark{
+/obj/structure/toilet{
 	dir = 1
 	},
-/obj/item/soap/deluxe,
-/turf/open/floor/iron/showroomfloor,
+/turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
 "dG" = (
 /obj/effect/turf_decal/siding/thinplating{
@@ -288,6 +308,15 @@
 /obj/structure/rack,
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
+"eu" = (
+/obj/structure/curtain,
+/obj/structure/toilet{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/side{
+	dir = 8
+	},
+/area/shuttle/syndicate/slaver)
 "ez" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 8
@@ -303,6 +332,12 @@
 	},
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
+/area/shuttle/syndicate/slaver)
+"eR" = (
+/obj/effect/turf_decal/loading_area{
+	dir = 1
+	},
+/turf/open/floor/pod/light,
 /area/shuttle/syndicate/slaver)
 "eZ" = (
 /obj/structure/table/optable,
@@ -354,6 +389,12 @@
 	dir = 4
 	},
 /turf/open/floor/iron/dark/brown/side,
+/area/shuttle/syndicate/slaver)
+"gu" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
+/obj/effect/turf_decal/caution,
+/turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
 "gy" = (
 /obj/effect/turf_decal/skyrat_decals/enclave/middle/left{
@@ -435,6 +476,7 @@
 	pixel_y = 12
 	},
 /obj/machinery/shower/directional/south,
+/obj/structure/drain,
 /turf/open/floor/iron/dark/red/side{
 	dir = 4
 	},
@@ -482,16 +524,13 @@
 /area/shuttle/syndicate/slaver)
 "in" = (
 /obj/structure/table/wood,
-/obj/machinery/recharger{
-	pixel_x = 8;
-	pixel_y = 4
-	},
-/obj/item/reagent_containers/food/drinks/mug/coco{
-	desc = "Still hot!";
-	pixel_x = -4;
-	pixel_y = 4
-	},
 /obj/item/storage/secure/safe/directional/east,
+/obj/item/flashlight/lamp/green{
+	on = 0;
+	pixel_x = -4;
+	pixel_y = 10
+	},
+/obj/item/storage/fancy/cigarettes/cigars/havana,
 /turf/open/floor/wood,
 /area/shuttle/syndicate/slaver)
 "iA" = (
@@ -519,9 +558,11 @@
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
 "iZ" = (
-/obj/effect/mob_spawn/ghost_role/human/pirate/enclave/gunner{
-	dir = 8
+/obj/structure/sign/poster/contraband/nri_pistol{
+	pixel_y = 32
 	},
+/obj/structure/sink/directional/west,
+/obj/structure/mirror/directional/east,
 /turf/open/floor/iron,
 /area/shuttle/syndicate/slaver)
 "jd" = (
@@ -556,6 +597,9 @@
 /area/shuttle/syndicate/slaver)
 "jv" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 6
+	},
 /turf/open/floor/iron/showroomfloor,
 /area/shuttle/syndicate/slaver)
 "jC" = (
@@ -667,15 +711,6 @@
 /obj/effect/mapping_helpers/airlock/cutaiwire,
 /turf/open/floor/iron/dark/textured_large,
 /area/shuttle/syndicate/slaver)
-"kD" = (
-/obj/effect/turf_decal/trimline/yellow/warning{
-	dir = 1
-	},
-/obj/structure/deployable_barricade/guardrail{
-	dir = 4
-	},
-/turf/open/floor/iron/dark/brown/side,
-/area/shuttle/syndicate/slaver)
 "kE" = (
 /obj/structure/reagent_dispensers/water_cooler,
 /turf/open/floor/iron/dark,
@@ -695,11 +730,18 @@
 /obj/item/knife{
 	pixel_x = 10
 	},
+/obj/item/reagent_containers/food/drinks/soda_cans/monkey_energy,
+/obj/item/reagent_containers/food/drinks/soda_cans/monkey_energy,
+/obj/item/reagent_containers/food/drinks/soda_cans/monkey_energy,
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
 "kV" = (
 /obj/machinery/atmospherics/components/binary/pump/off/supply,
 /turf/open/floor/plating,
+/area/shuttle/syndicate/slaver)
+"lv" = (
+/obj/structure/filingcabinet,
+/turf/open/floor/wood,
 /area/shuttle/syndicate/slaver)
 "lU" = (
 /obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer4{
@@ -730,6 +772,10 @@
 	dir = 1
 	},
 /turf/open/floor/pod/dark,
+/area/shuttle/syndicate/slaver)
+"mt" = (
+/obj/machinery/photocopier,
+/turf/open/floor/wood,
 /area/shuttle/syndicate/slaver)
 "mv" = (
 /obj/machinery/door/airlock/atmos{
@@ -862,6 +908,12 @@
 /obj/structure/curtain/bounty,
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
+"ov" = (
+/obj/effect/turf_decal/loading_area{
+	dir = 1
+	},
+/turf/open/floor/pod,
+/area/shuttle/syndicate/slaver)
 "oy" = (
 /obj/structure/table/reinforced,
 /obj/machinery/recharger,
@@ -872,6 +924,10 @@
 /turf/open/floor/iron/dark/brown/corner{
 	dir = 8
 	},
+/area/shuttle/syndicate/slaver)
+"oH" = (
+/obj/effect/turf_decal/loading_area,
+/turf/open/floor/pod/light,
 /area/shuttle/syndicate/slaver)
 "oJ" = (
 /obj/structure/table/reinforced,
@@ -884,6 +940,8 @@
 /obj/structure/sign/poster/contraband/nri_radar{
 	pixel_x = 32
 	},
+/obj/item/stamp,
+/obj/item/stamp/denied,
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
 "oO" = (
@@ -945,7 +1003,14 @@
 	pixel_x = -4;
 	pixel_y = 10
 	},
+/obj/item/clothing/accessory/medal/gold/heroism,
+/obj/item/clothing/accessory/medal/silver,
+/obj/item/clothing/accessory/medal/bronze_heart,
 /turf/open/floor/wood,
+/area/shuttle/syndicate/slaver)
+"pK" = (
+/obj/effect/mob_spawn/ghost_role/human/pirate/enclave/gunner,
+/turf/open/floor/iron,
 /area/shuttle/syndicate/slaver)
 "pO" = (
 /obj/effect/turf_decal/skyrat_decals/enclave/top/left{
@@ -957,6 +1022,13 @@
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
 /turf/open/floor/iron/dark/textured_edge,
+/area/shuttle/syndicate/slaver)
+"pT" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 4
+	},
+/obj/structure/reagent_dispensers/watertank,
+/turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
 "pV" = (
 /obj/machinery/light/directional/east,
@@ -995,7 +1067,7 @@
 /area/shuttle/syndicate/slaver)
 "qI" = (
 /obj/structure/table/reinforced,
-/obj/item/storage/backpack/duffelbag/sec/surgery,
+/obj/item/storage/backpack/duffelbag/med/surgery,
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
 "qN" = (
@@ -1064,6 +1136,16 @@
 	},
 /turf/open/floor/pod/light,
 /area/shuttle/syndicate/slaver)
+"rY" = (
+/obj/structure/curtain,
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 1
+	},
+/obj/machinery/shower/directional/north,
+/obj/item/soap/deluxe,
+/obj/structure/drain,
+/turf/open/floor/iron/showroomfloor,
+/area/shuttle/syndicate/slaver)
 "sd" = (
 /obj/structure/window/reinforced/survival_pod{
 	dir = 8
@@ -1076,9 +1158,15 @@
 /area/shuttle/syndicate/slaver)
 "sk" = (
 /obj/structure/table/wood,
-/obj/item/storage/fancy/cigarettes/cigars/havana,
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
+/obj/item/stamp,
+/obj/item/stamp/denied,
+/obj/item/reagent_containers/food/drinks/mug/coco{
+	desc = "Still hot!";
+	pixel_x = -4;
+	pixel_y = 4
+	},
 /turf/open/floor/wood,
 /area/shuttle/syndicate/slaver)
 "sr" = (
@@ -1092,6 +1180,7 @@
 	dir = 6
 	},
 /obj/machinery/light/directional/south,
+/obj/item/binoculars,
 /turf/open/floor/iron/dark/brown/corner{
 	dir = 1
 	},
@@ -1111,9 +1200,18 @@
 /area/shuttle/syndicate/slaver)
 "tn" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
-/obj/structure/sign/poster/contraband/nri_pistol{
-	pixel_y = 32
-	},
+/obj/item/food/canned/beans,
+/obj/item/food/canned/peaches,
+/obj/item/food/canned/tomatoes,
+/obj/item/food/canned/tuna,
+/obj/item/food/canned/tuna,
+/obj/item/food/ready_donk,
+/obj/item/food/ready_donk,
+/obj/item/food/ready_donk/donkhiladas,
+/obj/item/food/ready_donk/donkhiladas,
+/obj/item/food/ready_donk/mac_n_cheese,
+/obj/item/food/ready_donk/mac_n_cheese,
+/obj/structure/closet/crate/freezer,
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
 "to" = (
@@ -1157,6 +1255,7 @@
 	pixel_y = -4
 	},
 /obj/machinery/light/directional/south,
+/obj/effect/turf_decal/delivery,
 /turf/open/floor/iron/dark/brown/side{
 	dir = 1
 	},
@@ -1267,6 +1366,7 @@
 /obj/structure/plaque/static_plaque/atmos{
 	pixel_x = -32
 	},
+/obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
 "vY" = (
@@ -1280,9 +1380,7 @@
 "wb" = (
 /obj/machinery/light/small/directional/west,
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
-	dir = 6
-	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
 /turf/open/floor/iron/showroomfloor,
 /area/shuttle/syndicate/slaver)
 "wd" = (
@@ -1378,12 +1476,8 @@
 	},
 /area/shuttle/syndicate/slaver)
 "xG" = (
-/obj/structure/closet/crate/secure/weapon,
-/obj/item/storage/backpack/duffelbag/syndie/nri,
-/obj/item/grenade/c4/x4,
-/obj/item/grenade/c4/x4,
-/obj/item/grenade/c4/x4,
-/turf/open/floor/iron/dark,
+/obj/effect/turf_decal/loading_area,
+/turf/open/floor/pod,
 /area/shuttle/syndicate/slaver)
 "xY" = (
 /obj/structure/chair/sofa/bench/right{
@@ -1498,11 +1592,16 @@
 "Ah" = (
 /obj/effect/turf_decal/trimline/yellow/warning,
 /obj/structure/closet/crate/trashcart/laundry,
-/obj/item/clothing/under/color/jumpskirt/random,
-/obj/item/clothing/under/color/random,
 /obj/structure/deployable_barricade/guardrail{
 	dir = 4
 	},
+/obj/effect/turf_decal/delivery,
+/obj/item/clothing/under/color/jumpskirt/random,
+/obj/item/clothing/under/color/jumpskirt/random,
+/obj/item/clothing/under/color/jumpskirt/random,
+/obj/item/clothing/under/color/random,
+/obj/item/clothing/under/color/random,
+/obj/item/clothing/under/color/random,
 /turf/open/floor/iron/dark/brown/side{
 	dir = 1
 	},
@@ -1635,10 +1734,8 @@
 /obj/structure/window/reinforced/survival_pod{
 	dir = 8
 	},
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
-	dir = 8
-	},
 /obj/item/soap/deluxe,
+/obj/structure/drain,
 /turf/open/floor/iron/showroomfloor,
 /area/shuttle/syndicate/slaver)
 "BF" = (
@@ -1653,6 +1750,26 @@
 "BK" = (
 /obj/machinery/light/directional/west,
 /turf/open/floor/pod,
+/area/shuttle/syndicate/slaver)
+"BT" = (
+/obj/effect/turf_decal/trimline/yellow/warning{
+	dir = 1
+	},
+/obj/structure/deployable_barricade/guardrail{
+	dir = 4
+	},
+/obj/effect/turf_decal/delivery,
+/obj/structure/closet/crate/cardboard,
+/obj/item/perfume/cologne,
+/obj/item/perfume/cologne,
+/obj/item/soap,
+/obj/item/soap,
+/obj/item/soap/deluxe,
+/obj/item/reagent_containers/spray/cleaner,
+/obj/item/reagent_containers/spray/cleaner,
+/obj/item/mop/advanced,
+/obj/item/mop/advanced,
+/turf/open/floor/iron/dark/brown/side,
 /area/shuttle/syndicate/slaver)
 "Cz" = (
 /obj/structure/closet/crate/internals,
@@ -1739,6 +1856,15 @@
 	id = "enclavecurtain";
 	pixel_y = 25
 	},
+/obj/effect/mob_spawn/ghost_role/human/pirate/enclave/gunner,
+/turf/open/floor/iron/dark,
+/area/shuttle/syndicate/slaver)
+"DY" = (
+/obj/structure/rack,
+/obj/item/airbag,
+/obj/item/airbag,
+/obj/item/airbag,
+/obj/item/airbag,
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
 "Eb" = (
@@ -1955,6 +2081,12 @@
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
+"HZ" = (
+/obj/effect/mob_spawn/ghost_role/human/pirate/enclave/gunner,
+/turf/open/floor/iron/dark/side{
+	dir = 8
+	},
+/area/shuttle/syndicate/slaver)
 "Il" = (
 /obj/effect/turf_decal/trimline/yellow/warning{
 	dir = 10
@@ -1966,10 +2098,10 @@
 	},
 /area/shuttle/syndicate/slaver)
 "Ip" = (
-/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
-	dir = 4
-	},
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
+	dir = 8
+	},
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
 "II" = (
@@ -2057,7 +2189,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/obj/item/storage/backpack/duffelbag/sec/surgery,
+/obj/item/storage/backpack/duffelbag/med/surgery,
 /turf/open/floor/iron,
 /area/shuttle/syndicate/slaver)
 "JR" = (
@@ -2085,6 +2217,18 @@
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
+"KC" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/obj/effect/turf_decal/skyrat_decals/departments/bridge{
+	dir = 4
+	},
+/turf/open/floor/pod/dark,
+/area/shuttle/syndicate/slaver)
 "KG" = (
 /obj/structure/closet/crate,
 /obj/item/clothing/head/beret/sec/nri,
@@ -2092,7 +2236,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 6
 	},
-/obj/structure/railing,
+/obj/structure/deployable_barricade/guardrail,
 /turf/open/floor/plating,
 /area/shuttle/syndicate/slaver)
 "KK" = (
@@ -2102,6 +2246,14 @@
 /area/shuttle/syndicate/slaver)
 "KT" = (
 /obj/item/radio/intercom/directional/east,
+/turf/open/floor/iron/dark,
+/area/shuttle/syndicate/slaver)
+"Ld" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
+/obj/effect/turf_decal/caution{
+	dir = 1
+	},
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
 "Lj" = (
@@ -2115,11 +2267,9 @@
 /turf/open/floor/plating,
 /area/shuttle/syndicate/slaver)
 "Lm" = (
-/obj/structure/sign/poster/contraband/nri_rations{
-	pixel_x = 32
-	},
-/obj/effect/mob_spawn/ghost_role/human/pirate/enclave/gunner{
-	dir = 8
+/obj/machinery/dryer{
+	dir = 8;
+	pixel_x = 12
 	},
 /turf/open/floor/iron,
 /area/shuttle/syndicate/slaver)
@@ -2155,10 +2305,9 @@
 	},
 /area/shuttle/syndicate/slaver)
 "Mr" = (
-/obj/machinery/light/directional/south,
-/turf/open/floor/iron/dark/side{
-	dir = 8
-	},
+/obj/structure/table/reinforced,
+/obj/item/modular_computer/laptop/preset/civilian,
+/turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
 "Mx" = (
 /obj/machinery/door/firedoor,
@@ -2167,6 +2316,7 @@
 "MC" = (
 /obj/structure/table/reinforced,
 /obj/effect/turf_decal/trimline/yellow/warning,
+/obj/item/stack/marker_beacon/thirty,
 /turf/open/floor/iron/dark/brown/side{
 	dir = 1
 	},
@@ -2339,6 +2489,13 @@
 	dir = 8
 	},
 /area/shuttle/syndicate/slaver)
+"PQ" = (
+/obj/effect/turf_decal/delivery,
+/obj/structure/deployable_barricade/guardrail{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/shuttle/syndicate/slaver)
 "Qe" = (
 /obj/structure/table/wood/fancy/red,
 /obj/item/crucifix,
@@ -2489,6 +2646,10 @@
 /obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer4,
 /turf/open/floor/pod/dark,
 /area/shuttle/syndicate/slaver)
+"RY" = (
+/obj/machinery/light/directional/south,
+/turf/open/floor/iron,
+/area/shuttle/syndicate/slaver)
 "Sd" = (
 /obj/machinery/button/door{
 	id = "prisonshipwreckdock4";
@@ -2580,12 +2741,13 @@
 /area/shuttle/syndicate/slaver)
 "Tw" = (
 /obj/structure/table/wood,
-/obj/item/storage/box/donkpockets/donkpocketpizza{
-	pixel_y = 3
-	},
 /obj/effect/turf_decal/siding/wood{
 	dir = 4
 	},
+/obj/structure/sign/poster/contraband/nri_rations{
+	pixel_y = 32
+	},
+/obj/item/storage/box/cups,
 /turf/open/floor/wood,
 /area/shuttle/syndicate/slaver)
 "TG" = (
@@ -2780,6 +2942,8 @@
 /obj/effect/turf_decal/trimline/yellow/warning{
 	dir = 1
 	},
+/obj/effect/turf_decal/delivery,
+/obj/structure/mecha_wreckage/savannah_ivanov,
 /turf/open/floor/iron/dark/brown/side,
 /area/shuttle/syndicate/slaver)
 "Xu" = (
@@ -2871,6 +3035,18 @@
 "YH" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
 /turf/open/floor/pod,
+/area/shuttle/syndicate/slaver)
+"YJ" = (
+/obj/effect/turf_decal/trimline/yellow/warning{
+	dir = 1
+	},
+/obj/structure/closet/crate/secure/weapon,
+/obj/item/storage/backpack/duffelbag/syndie/nri,
+/obj/item/grenade/c4/x4,
+/obj/item/grenade/c4/x4,
+/obj/item/grenade/c4/x4,
+/obj/effect/turf_decal/delivery,
+/turf/open/floor/iron/dark/brown/side,
 /area/shuttle/syndicate/slaver)
 "YL" = (
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
@@ -2972,6 +3148,7 @@
 	pixel_x = 23;
 	pixel_y = 12
 	},
+/obj/structure/drain,
 /turf/open/floor/iron/dark/red/side{
 	dir = 4
 	},
@@ -3067,8 +3244,8 @@ SI
 Oa
 Xp
 dA
-ps
 fc
+mt
 SV
 wd
 "}
@@ -3114,7 +3291,7 @@ Xp
 Xp
 Pv
 in
-Xp
+lv
 GZ
 wd
 "}
@@ -3173,10 +3350,10 @@ Aw
 ez
 oo
 wd
-VE
-ws
+YJ
+ov
 bQ
-ws
+xG
 aE
 wd
 Dk
@@ -3197,9 +3374,9 @@ zT
 ZN
 wd
 Xt
-jT
+eR
 bQ
-jT
+oH
 tN
 wd
 aV
@@ -3219,10 +3396,10 @@ wd
 wd
 wd
 wd
-kD
-ws
+BT
+ov
 bQ
-ws
+xG
 Ah
 wd
 wd
@@ -3247,9 +3424,9 @@ jT
 bQ
 jT
 xD
-AH
-ZR
-ZR
+PQ
+ds
+ds
 wd
 qu
 XA
@@ -3262,7 +3439,7 @@ rG
 ta
 cb
 bS
-jm
+gu
 jm
 vc
 vY
@@ -3272,7 +3449,7 @@ aT
 il
 Ip
 jm
-jm
+Ld
 xr
 nz
 ta
@@ -3293,7 +3470,7 @@ jT
 bQ
 jT
 xD
-ZR
+ez
 ZR
 wd
 wd
@@ -3388,7 +3565,7 @@ ac
 jC
 ws
 wd
-xG
+kE
 MH
 kU
 wd
@@ -3503,10 +3680,10 @@ GQ
 bQ
 jT
 dj
-NP
+HZ
 PG
-Mr
-wd
+NP
+eu
 wd
 "}
 (24,1,1) = {"
@@ -3526,11 +3703,11 @@ ac
 Vm
 ws
 dj
-An
+pK
 nE
-An
-An
-Gh
+RY
+wd
+wd
 "}
 (25,1,1) = {"
 wd
@@ -3551,8 +3728,8 @@ jT
 wd
 iZ
 Lm
-iZ
 An
+rY
 wd
 "}
 (26,1,1) = {"
@@ -3584,8 +3761,8 @@ xd
 kV
 Xu
 vS
-AH
-er
+pT
+DY
 At
 al
 ws
@@ -3677,11 +3854,11 @@ wd
 qV
 vK
 QE
-oY
+Mr
 oK
 wd
 ws
-YF
+KC
 ws
 wd
 QH
