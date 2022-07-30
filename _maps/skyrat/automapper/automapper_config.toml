@@ -6,6 +6,27 @@
 # coordinates - The coordinates of the map template placement. (X, Y, Z). PLEASE NOTE: The Z coordinate is the same as would be shown in SDMM. NOT IN GAME.
 # leave it at 1 if it is not a multi-z map. It is relative to the map file Z, not the one loaded in game.
 # trait_name - The name of the Z level trait that will be used to determine what Z level we use.
+# Traits - Station (for station relatied edits), CentCom (for edits on the CC map), Mining (for edits on Lavaland)
+# More can be found in code\__DEFINES\maps.dm
+
+# CENTRAL COMMAND MAP TEMPLATES
+# CC Shuttle Dock - This is where we drop the players off after the round ends
+# [templates.centcom_shuttle_dock]
+# map_files = ["templates.centcom_shuttle_dock.dmm"]
+# directory = "_maps/skyrat/automapper/templates/centcom/"
+# required_map = "CentCom.dmm"
+# coordinates = [186, 71, 1]
+# trait_name = "CentCom"
+
+# CC Ferry Dock - Admin Shuttle
+# [templates.centcom_ferry_dock]
+# map_files = ["templates.centcom_ferry_dock.dmm"]
+# directory = "_maps/skyrat/automapper/templates/centcom/"
+# required_map = "CentCom.dmm"
+# coordinates = [128, 79, 1]
+# trait_name = "CentCom"
+
+# CC Stuff is commented out for the time being until Cobalt can fix its spawning behavior. - Jolly
 
 # METASTATION MAP TEMPLATES
 # Metastation Arrivals
@@ -62,10 +83,10 @@ trait_name = "Station"
 map_files = ["deltastation_cryo.dmm"]
 directory = "_maps/skyrat/automapper/templates/deltastation/"
 required_map = "DeltaStation2.dmm"
-coordinates = [215, 93, 1]
+coordinates = [209, 93, 1]
 trait_name = "Station"
 
-# Deltastation Armory
+# Deltastation Armorys
 [templates.deltastation_armory]
 map_files = ["deltastation_armory.dmm"]
 directory = "_maps/skyrat/automapper/templates/deltastation/"
@@ -78,7 +99,7 @@ trait_name = "Station"
 map_files = ["deltastation_barber.dmm"]
 directory = "_maps/skyrat/automapper/templates/deltastation/"
 required_map = "DeltaStation2.dmm"
-coordinates = [146, 109, 1]
+coordinates = [121, 124, 1]
 trait_name = "Station"
 
 # Deltastation Prison
@@ -87,14 +108,6 @@ map_files = ["deltastation_prison.dmm"]
 directory = "_maps/skyrat/automapper/templates/deltastation/"
 required_map = "DeltaStation2.dmm"
 coordinates = [189, 154, 1]
-trait_name = "Station"
-
-# Deltastation Med-Sci Sec Post
-[templates.deltastation_med_sci_secpost]
-map_files = ["deltastation_med_sci_secpost.dmm"]
-directory = "_maps/skyrat/automapper/templates/deltastation/"
-required_map = "DeltaStation2.dmm"
-coordinates = [141, 85, 1]
 trait_name = "Station"
 
 # Deltastation NTR Office
