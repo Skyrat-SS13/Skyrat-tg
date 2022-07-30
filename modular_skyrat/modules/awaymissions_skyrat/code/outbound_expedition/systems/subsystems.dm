@@ -6,6 +6,7 @@
 	machine_type = /obj/machinery/outbound_expedition/shuttle_light_controller
 
 /datum/outbound_ship_system/lighting/on_fail()
+	. = ..()
 	var/obj/machinery/power/apc/auto_name/directional/north/vanguard_shuttle/vanguard_apc = locate() in GLOB.areas_by_type[/area/awaymission/outbound_expedition/shuttle]
 	vanguard_apc.light_gen_alive = FALSE
 
@@ -36,9 +37,10 @@
 
 /obj/machinery/power/apc/auto_name/directional/north/vanguard_shuttle/process()
 	. = ..()
-	if(!light_gen_alive)
+	if(!light_gen_alive && (lighting != APC_CHANNEL_OFF))
 		lighting = APC_CHANNEL_OFF
 		update()
+		update_appearance()
 
 /datum/outbound_ship_system/gravity
 	name = "Gravity"
@@ -46,6 +48,7 @@
 	machine_type = /obj/machinery/outbound_expedition/shuttle_grav_gen
 
 /datum/outbound_ship_system/gravity/on_fail()
+	. = ..()
 	var/area/awaymission/outbound_expedition/shuttle/shuttle_area = GLOB.areas_by_type[/area/awaymission/outbound_expedition/shuttle]
 	shuttle_area.has_gravity = FALSE
 

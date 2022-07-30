@@ -4,3 +4,4 @@
 
 /datum/outbound_random_event/mob_harmful/raiders
 	name = "Raiders"
+	weight = 1

@@ -1,3 +1,16 @@
+GLOBAL_LIST_EMPTY(outbound_cryopods)
+
+/obj/machinery/outbound_expedition
+	resistance_flags = LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
+	max_integrity = INFINITY
+
+/obj/machinery/outbound_expedition/Initialize(mapload)
+	. = ..()
+	RegisterSignal(src, COMSIG_AWAY_SYSTEM_FAIL, .proc/on_system_fail)
+
+/obj/machinery/outbound_expedition/proc/on_system_fail(datum/outbound_ship_system/failed_system)
+	return
+
 /obj/machinery/outbound_expedition/cryopod
 	name = "cryogenic freezer"
 	desc = "A cryogenic pod that slows down body functions, enabling long-term journeys with minimal impact to the user.."
@@ -6,7 +19,16 @@
 	density = TRUE
 	anchored = TRUE
 	state_open = TRUE
+	/// Is the machine locked closed, unable to open?
+	var/locked = FALSE
 
+/obj/machinery/outbound_expedition/cryopod/Initialize(mapload)
+	. = ..()
+	GLOB.outbound_cryopods += src
+
+/obj/machinery/outbound_expedition/cryopod/Destroy()
+	GLOB.outbound_cryopods -= src
+	return ..()
 
 /obj/machinery/outbound_expedition/cryopod/close_machine(atom/movable/target)
 	OUTBOUND_CONTROLLER
@@ -22,6 +44,10 @@
 
 /obj/machinery/outbound_expedition/cryopod/open_machine()
 	OUTBOUND_CONTROLLER
+	if(locked)
+		for(var/mob/living/locked_in in contents)
+			to_chat(locked_in, span_warning("[src] seems to be locked, it won't budge!"))
+		return
 	for(var/mob/living/internal_mob in contents)
 		SEND_SIGNAL(outbound_controller, COMSIG_AWAY_CRYOPOD_EXITED, internal_mob)
 	..()
@@ -30,6 +56,9 @@
 	name = initial(name)
 
 /obj/machinery/outbound_expedition/cryopod/container_resist_act(mob/living/user)
+	if(locked)
+		to_chat(user, span_warning("[src] seems to be locked, it won't budge!"))
+		return
 	visible_message(span_notice("[occupant] emerges from [src]!"),
 		span_notice("You climb out of [src]!"))
 	open_machine()
@@ -39,6 +68,11 @@
 
 /obj/machinery/outbound_expedition/cryopod/MouseDrop_T(mob/living/target, mob/user)
 	if(!istype(target) || !can_interact(user) || !target.Adjacent(user) || !ismob(target) || isanimal(target) || !istype(user.loc, /turf) || target.buckled)
+		return
+	OUTBOUND_CONTROLLER
+
+	if(outbound_controller.current_event)
+		to_chat(user, span_notice("You can't cryo at the moment!"))
 		return
 
 	if(occupant)

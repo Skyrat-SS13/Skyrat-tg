@@ -23,21 +23,28 @@ GLOBAL_LIST_EMPTY(outbound_objective_landmarks)
 /// To enable the objective itself
 /obj/effect/landmark/away_objective/proc/enable()
 	OUTBOUND_CONTROLLER
-	for(var/mob/not_dead_mob in outbound_controller.participating_mobs)
-		if(not_dead_mob.stat == DEAD)
-			continue
-		untriggered_mobs |= not_dead_mob
+	if(!length(untriggered_mobs))
+		for(var/mob/not_dead_mob in outbound_controller.participating_mobs)
+			if(not_dead_mob.stat == DEAD)
+				continue
+			untriggered_mobs |= not_dead_mob
 	for(var/turf/iterating_turf in range(range_req, src))
 		RegisterSignal(iterating_turf, COMSIG_ATOM_ENTERED, .proc/trigger)
 	enabled = TRUE
 
+/obj/effect/landmark/away_objective/proc/disable()
+	for(var/turf/iterating_turf in range(range_req, src))
+		UnregisterSignal(iterating_turf, COMSIG_ATOM_ENTERED)
+	enabled = FALSE
+
 /// To get rid of the popup when someone with the objective gets near
 /obj/effect/landmark/away_objective/proc/trigger(datum/source, atom/movable/entered_atom)
+	. = TRUE
 	SIGNAL_HANDLER
 	OUTBOUND_CONTROLLER
 
 	if(!isliving(entered_atom) || !(entered_atom in untriggered_mobs))
-		return
+		return FALSE
 
 	var/mob/living/entered_mob = entered_atom
 
@@ -48,32 +55,76 @@ GLOBAL_LIST_EMPTY(outbound_objective_landmarks)
 		outbound_controller.clear_objective(entered_mob)
 	untriggered_mobs -= entered_mob
 	if(!length(untriggered_mobs))
-		qdel(src)
-
+		disable()
 
 // actual landmarks here
 
 /obj/effect/landmark/away_objective/talk_person
 	id = "talk_person"
 
-/obj/effect/landmark/away_objective/talk_person/trigger(datum/source, atom/movable/entered_atom)
-	. = ..()
-	// add custom code here
-
 /obj/effect/landmark/away_objective/cryo
 	id = "cryo"
 
+/obj/effect/landmark/away_objective/bridge_radio
+	id = "bridge_radio"
+
+/obj/effect/landmark/away_objective/bridge_radio/trigger(datum/source, atom/movable/entered_atom)
+	. = ..()
+	if(!.)
+		return
+	OUTBOUND_CONTROLLER
+	var/turf/our_turf = get_turf(src)
+	for(var/obj/machinery/computer/outbound_radio/radio in our_turf.contents)
+		radio.start_talking("cargo")
+		break
+	outbound_controller.give_objective(entered_atom, outbound_controller.objectives[/datum/outbound_objective/cryo])
+
 
 // other landmark shit that i might move later
+/obj/effect/landmark/objective_update
+
+/obj/effect/landmark/objective_update/Initialize(mapload)
+	. = ..()
+	RegisterSignal(get_turf(src), COMSIG_ATOM_ENTERED, .proc/on_enter)
+
+/obj/effect/landmark/objective_update/proc/on_enter(datum/source, atom/movable/arrived, atom/old_loc, list/atom/old_locs)
+
 /obj/effect/landmark/objective_update/cryo
 
-/obj/effect/landmark/objective_update/cryo/Entered(atom/movable/arrived, atom/old_loc, list/atom/old_locs)
-	. = ..()
+/obj/effect/landmark/objective_update/cryo/on_enter(datum/source, atom/movable/arrived, atom/old_loc, list/atom/old_locs)
 	OUTBOUND_CONTROLLER
-	if(!ismob(arrived))
+	if(!ismob(arrived) || !outbound_controller)
 		return
-	//finish later i've been at this for like five hours
 	var/datum/outbound_objective/cryo_obj = outbound_controller.objectives[/datum/outbound_objective/cryo]
 	if(outbound_controller.participating_mobs[arrived] == cryo_obj)
 		return
 	outbound_controller.give_objective(arrived, cryo_obj)
+
+/obj/effect/landmark/objective_update/elevator
+
+/obj/effect/landmark/objective_update/elevator/on_enter(datum/source, atom/movable/arrived, atom/old_loc, list/atom/old_locs)
+	OUTBOUND_CONTROLLER
+	if(!ismob(arrived) || !outbound_controller)
+		return
+
+	if(outbound_controller.elevator_time == initial(outbound_controller.elevator_time))
+		addtimer(CALLBACK(outbound_controller, /datum/away_controller/outbound_expedition.proc/tick_elevator_time), 1 SECONDS)
+
+	var/mob/arrived_mob = arrived
+	arrived_mob?.hud_used?.away_dialogue.set_text("Waiting... ([round(outbound_controller.elevator_time / 10)] seconds remaining)")
+
+/obj/effect/landmark/objective_update/team_addition
+
+/obj/effect/landmark/objective_update/team_addition/on_enter(datum/source, atom/movable/arrived, atom/old_loc, list/atom/old_locs)
+	OUTBOUND_CONTROLLER
+	if(!isliving(arrived) || !outbound_controller)
+		return
+
+	var/mob/living/living_mob = arrived
+	outbound_controller.participating_mobs |= arrived
+	outbound_controller.give_objective(living_mob, outbound_controller.objectives[/datum/outbound_objective/talk_person])
+	if(!HAS_TRAIT(living_mob, TRAIT_DNR))
+		ADD_TRAIT(living_mob, TRAIT_DNR, src) // leaving for now, might remove idk
+
+/obj/effect/landmark/ship_center
+	name = "Vanguard Corvette Center"

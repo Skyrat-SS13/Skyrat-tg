@@ -6,6 +6,10 @@
 	/// What is the weight of the event within its tier?
 	var/weight = 1
 
+/// What occurs when the event is selected
+/datum/outbound_random_event/proc/on_select()
+	return
+
 /datum/outbound_random_event/harmless
 	event_tier = AWAY_EVENT_HARMLESS
 

@@ -19,10 +19,22 @@
 	var/list/machine_datums = list()
 	/// Time until the elevator hits the bottom, locking anyone else from entering
 	var/elevator_time = 5 MINUTES
-	/// List of elevator doors
-	var/list/elevator_doors = list()
 	/// Assoc list of initialized objective datums, type:datum
 	var/list/objectives = list()
+	/// List of mobs who have yet to cryo
+	var/list/uncryoed_mobs = list()
+	/// Typecache of areas to clear when you move
+	var/static/list/area_clear_whitelist = typecacheof(/area/awaymission/outbound_expedition)
+	/// Typecache of areas NOT to clear when you move
+	var/static/list/area_clear_blacklist = typecacheof(/area/awaymission/outbound_expedition/shuttle)
+	/// Base list of probabilities for events
+	var/list/event_chances = list(
+		/datum/outbound_random_event/harmless = 2,
+		/datum/outbound_random_event/harmful = 3,
+		/datum/outbound_random_event/mob_harmful = 1,
+	)
+	/// Extra list of shit to delete on ship move
+	var/list/deletion_stuff = list()
 
 /datum/away_controller/outbound_expedition/New()
 	. = ..()
@@ -78,13 +90,46 @@
 	away_pinpointer.scan_target = point_to
 
 /datum/away_controller/outbound_expedition/proc/give_objective(mob/living/person_chosen, datum/outbound_objective/chosen_objective)
+	var/datum/status_effect/pinpointer = person_chosen.has_status_effect(/datum/status_effect/agent_pinpointer/away_objective)
+	if(pinpointer)
+		qdel(pinpointer)
+	person_chosen?.hud_used?.away_dialogue.clear_text()
+
 	var/obj/effect/landmark/away_objective/corresponding_landmark = GLOB.outbound_objective_landmarks[chosen_objective.landmark_id]
-	objective_pinpoint(person_chosen, corresponding_landmark)
+	if(corresponding_landmark)
+		objective_pinpoint(person_chosen, corresponding_landmark)
+		corresponding_landmark.enable()
 	person_chosen?.hud_used?.away_dialogue.set_text(chosen_objective.desc)
+	chosen_objective.on_give(person_chosen)
+
+/datum/away_controller/outbound_expedition/proc/give_objective_all(datum/outbound_objective/chosen_objective)
+	for(var/mob/living/person as anything in participating_mobs)
+		give_objective(person, chosen_objective)
 
 // Event stuff
 
 /datum/away_controller/outbound_expedition/proc/select_event()
+	var/calculated_difficulty = 1
+	switch(length(participating_mobs))
+		if(1)
+			calculated_difficulty = 0.75
+		if(5 to INFINITY)
+			calculated_difficulty = length(participating_mobs) * 0.25 //maybe make exponential
+	// add story progression diff mod here
+	var/list/final_event_prob = list()
+	for(var/event_type in event_chances)
+		if(event_type == /datum/outbound_random_event/harmless)
+			final_event_prob[event_type] = event_chances[event_type] / calculated_difficulty
+		else
+			final_event_prob[event_type] = event_chances[event_type] * calculated_difficulty
+	var/event_type = pick_weight(final_event_prob)
+	var/list/possible_events = event_datums.Copy()
+	for(var/datum/event in possible_events)
+		if(!istype(event, event_type))
+			possible_events.Remove(event)
+	var/datum/outbound_random_event/the_actual_event = pick_weight(possible_events)
+	current_event = the_actual_event
+	the_actual_event.on_select()
 	return //make sure for wires to regen everything
 
 
@@ -120,29 +165,62 @@
 		if(!(source == ship_system))
 			continue
 		var/datum/outbound_ship_system/system_datum = machine_datums[source]
-		system_datum.adjust_health(-damage_amount)
+		system_datum.adjust_health(-damage_amount, base_machine = source)
 		break
 
 // """Moving""" the ship
 
-/datum/away_controller/outbound_expedition/proc/move_shuttle(list/affected_areas)
-	for(var/area/affected_area as anything in affected_areas)
-		for(var/atom/to_delete as obj|mob|turf in affected_area)
-			qdel(to_delete) // probably a crime but what can you do
+/datum/away_controller/outbound_expedition/proc/move_shuttle(list/affected_areas = area_clear_whitelist)
+	for(var/affected_area as anything in affected_areas)
+		if(is_type_in_typecache(affected_area, area_clear_blacklist))
+			continue
+		var/area/affected_area_datum = GLOB.areas_by_type[affected_area]
+		for(var/atom/to_delete as obj|mob|turf in affected_area_datum)
+			if(isturf(to_delete))
+				var/turf/to_change = to_delete
+				to_change.ChangeTurf(/turf/open/space)
+			else
+				qdel(to_delete) // probably a crime but what can you do
 		qdel(affected_area)
+	for(var/atom/movable/thing in deletion_stuff)
+		qdel(thing)
 
 /datum/away_controller/outbound_expedition/proc/tick_elevator_time()
 	elevator_time -= 1 SECONDS
 	if(elevator_time > 1 SECONDS)
 		addtimer(CALLBACK(src, .proc/tick_elevator_time), 1 SECONDS)
 	else
-		for(var/obj/machinery/door/poddoor/shutters/indestructible/shutter in elevator_doors)
-			shutter.open()
+		var/area/our_area = GLOB.areas_by_type[/area/awaymission/outbound_expedition/dock]
+		for(var/obj/machinery/door/poddoor/shutters/indestructible/shutter in our_area)
+			addtimer(CALLBACK(shutter, /obj/machinery/door/poddoor/shutters.proc/open), 0 SECONDS)
 
 // Cryopod procs
 
 /datum/away_controller/outbound_expedition/proc/entered_cryopod(datum/source, mob/living/living_mob)
 	SIGNAL_HANDLER
+	uncryoed_mobs -= living_mob
+	if(!length(uncryoed_mobs))
+		everyones_gone_to_the_cryopods()
 
 /datum/away_controller/outbound_expedition/proc/exited_cryopod(datum/source, mob/living/living_mob)
 	SIGNAL_HANDLER
+	if(length(uncryoed_mobs))
+		uncryoed_mobs += living_mob
+
+/datum/away_controller/outbound_expedition/proc/everyones_gone_to_the_cryopods()
+	for(var/obj/machinery/outbound_expedition/cryopod/sleepytime as anything in GLOB.outbound_cryopods)
+		sleepytime.locked = TRUE
+	move_shuttle()
+	//select_event()
+	addtimer(CALLBACK(src, .proc/aaaaa), 5 SECONDS)
+
+/datum/away_controller/outbound_expedition/proc/aaaaa()
+	var/datum/outbound_random_event/our_event
+	for(var/datum/outbound_random_event/event in event_datums)
+		if(!istype(event, /datum/outbound_random_event/harmless/cargo))
+			continue
+		our_event = event
+	current_event = our_event
+	our_event.on_select()
+	for(var/obj/machinery/outbound_expedition/cryopod/wakeytime as anything in GLOB.outbound_cryopods)
+		wakeytime.locked = FALSE

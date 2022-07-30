@@ -19,19 +19,20 @@ GLOBAL_LIST_EMPTY(outbound_ship_systems)
 	health = max_health
 
 /// Called whenever the system takes damage to adjust effects accordingly if any
-/datum/outbound_ship_system/proc/on_damage(damage_amount)
+/datum/outbound_ship_system/proc/on_damage(damage_amount, obj/machinery/base_machine)
 	return
 
 /// Called when the system hits 0% integrity and completely fails
-/datum/outbound_ship_system/proc/on_fail()
-	return
+/datum/outbound_ship_system/proc/on_fail(obj/machinery/base_machine)
+	SHOULD_CALL_PARENT(TRUE)
+	SEND_SIGNAL(base_machine, COMSIG_AWAY_SYSTEM_FAIL)
 
-/datum/outbound_ship_system/proc/adjust_health(amount, count_damage = TRUE)
+/datum/outbound_ship_system/proc/adjust_health(amount, count_damage = TRUE, obj/machinery/base_machine)
 	health = round(clamp(health + amount, 0, max_health))
 	if(!health)
-		on_fail()
+		on_fail(base_machine)
 	else if((amount < 0) && count_damage)
-		on_damage(amount)
+		on_damage(amount, base_machine)
 
 /datum/outbound_ship_system/atmos //iunno if this even needs to be a mechanical system or not
 	name = "Atmospherics"

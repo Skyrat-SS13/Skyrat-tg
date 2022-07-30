@@ -84,3 +84,6 @@
 
 /// When a person is ejected from an away mission cryopod : (mob/living/living_mob)
 #define COMSIG_AWAY_CRYOPOD_EXITED "away_cryopod_exited"
+
+/// When a system machinery is destroyed
+#define COMSIG_AWAY_SYSTEM_FAIL "away_system_fail"

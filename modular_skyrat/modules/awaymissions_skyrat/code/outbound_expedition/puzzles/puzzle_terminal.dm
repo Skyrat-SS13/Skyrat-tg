@@ -39,27 +39,31 @@
 	name = "terminalspawn"
 
 // Fills the "two player" component of certain puzzles by giving the answers
-/obj/machinery/outbound_expedition/puzzle_answers
+/obj/machinery/computer/puzzle_answers
 	name = "digitized instruction manual"
 	desc = "A computer containing an instruction manual for repair of onboard systems."
-	icon_state = "telescreen" //placeholder
+	icon = 'icons/obj/computer.dmi'
+	icon_state = "computer"
 	tgui_id = "OutboundPuzzleAnswer"
+	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
+	max_integrity = INFINITY
 	/// Cached list containing the imporant data
 	var/list/payload = list()
 
-/obj/machinery/outbound_expedition/puzzle_answers/attack_hand(mob/living/user, list/modifiers)
+/obj/machinery/computer/puzzle_answers/attack_hand(mob/living/user, list/modifiers)
 	to_chat(user, span_notice("You begin peering over the [src]..."))
 	if(!do_after(user, 1 SECONDS, src)) //revert to 10 later
 		return
 	return ..()
 
-/obj/machinery/outbound_expedition/puzzle_answers/ui_interact(mob/user, datum/tgui/ui)
+/obj/machinery/computer/puzzle_answers/ui_interact(mob/user, datum/tgui/ui)
+	. = ..()
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, tgui_id, name)
 		ui.open()
 
-/obj/machinery/outbound_expedition/puzzle_answers/ui_data(mob/user)
+/obj/machinery/computer/puzzle_answers/ui_data(mob/user)
 	OUTBOUND_CONTROLLER
 	var/list/data = list()
 	if(!length(payload))
