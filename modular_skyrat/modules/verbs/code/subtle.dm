@@ -51,7 +51,7 @@
 
 	var/list/viewers = get_hearers_in_view(SUBTLE_DEFAULT_DISTANCE, user)
 
-	for(var/mob/ghost in GLOB.dead_mob_list)
+	for(var/mob/ghost as anything in GLOB.dead_mob_list)
 		if((ghost.client?.prefs.chat_toggles & CHAT_GHOSTSIGHT) && !(ghost in viewers))
 			ghost.show_message(subtle_message)
 
@@ -99,9 +99,9 @@
 			in_view -= GLOB.dead_mob_list
 			in_view.Remove(user)
 
-			for(var/mob/inviewmob in in_view)
-				if(!istype(inviewmob))
-					in_view.Remove(inviewmob)
+			for(var/mob/mob_in_view as anything in in_view)
+				if(!istype(mob_in_view))
+					in_view.Remove(mob_in_view)
 			var/list/targets = list("1-Tile Range", "Same Tile") + in_view
 			target = tgui_input_list(user, "Pick a target", "Target Selection", targets)
 			switch(target)
