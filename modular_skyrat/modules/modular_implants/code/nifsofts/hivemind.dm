@@ -35,6 +35,13 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 	if(linked_mob in GLOB.hivemind_users)
 		GLOB.hivemind_users -= linked_mob
 
+	for(var/datum/component/mind_linker/nif/hivemind as anything in network_list)
+		hivemind.linked_mobs -= linked_mob
+		var/mob/living/hivemind_owner = hivemind.parent
+
+		to_chat(hivemind_owner, span_abductor("[linked_mob] has left your Hivemind"))
+		to_chat(linked_mob, span_abductor("You have left [hivemind_owner]'s Hivemind"))
+
 	qdel(user_network)
 
 	//add in a function that scans the mind_links in the network list and remove the user from each one of them.
@@ -46,6 +53,9 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 		linked_keyboard = new
 		linked_keyboard.connected_network = active_network
 		linked_mob.put_in_hands(linked_keyboard)
+		linked_keyboard.source_user = linked_mob
+
+		linked_mob.visible_message(span_notice("The [linked_keyboard] materializes in [linked_mob]'s hands"), span_notice("The [linked_keyboard] appears in your hands"))
 
 		return
 
@@ -62,7 +72,7 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 	. = ..()
 	var/datum/component/mind_linker/nif/link = target
 
-	var/choice = tgui_input_list(owner, "Chose your option", "Hivemind Configuration Menu", list("Link a user","Remove a user","Change Hivemind color","Change active Hivemind","Leave a Hivemind",))
+	var/choice = tgui_input_list(owner, "Chose your option", "Hivemind Configuration Menu", list("Link a user","Remove a user","Change Hivemind color","Change active Hivemind","Leave a Hivemind", "Toggle Invites"))
 	if(!choice)
 		return
 
@@ -81,6 +91,9 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 
 		if("Change Hivemind color")
 			link.change_chat_color()
+
+		if("Toggle Invites")
+			toggle_invites()
 
 /datum/action/innate/hivemind_config/proc/change_hivemind()
 	var/mob/living/carbon/human/user = owner
@@ -109,6 +122,17 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 
 	hivemind.network_list -= hivemind_to_leave
 	hivemind_to_leave.linked_mobs -= user
+
+
+/datum/action/innate/hivemind_config/proc/toggle_invites()
+	var/mob/living/carbon/human/user = owner
+	if(user in GLOB.hivemind_users)
+		GLOB.hivemind_users -= user
+		to_chat(user, span_abductor("You are now unable to receive invites"))
+		return
+
+	GLOB.hivemind_users += user
+	to_chat(user, span_abductor("You are now able to recieve invites again"))
 
 /datum/component/mind_linker
 	///Is does the component give an action to speak? By default, yes
@@ -187,7 +211,7 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 	chat_color = new_chat_color
 
 /obj/item/hivemind_keyboard
-	name = "Hivemind Controller"
+	name = "Hivemind Interface Device"
 	desc = "A holographic gesture controller, hooked to hand and finger signals of the user's own choice. This is paired with the Hivemind program itself, used as a means of filtering out unwanted thoughts from being added to the network, ensuring that only intentional thoughts of communication can go through."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "gangtool-purple"
@@ -195,13 +219,15 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 	righthand_file = 'icons/mob/inhands/misc/devices_righthand.dmi'
 	///What Hivemind are messages being sent to?
 	var/datum/component/mind_linker/nif/connected_network
+	//Who owns the controller?
+	var/datum/weakref/source_user
 
 /obj/item/hivemind_keyboard/attack_self(mob/user, modifiers)
 	. = ..()
 	send_message(user)
 
 /obj/item/hivemind_keyboard/proc/send_message(mob/living/carbon/human/user)
-
+	var/mob/living/carbon/human/kebyoard_owner = source_user
 	var/mob/living/carbon/human/network_owner = connected_network.parent
 	var/message = sanitize(tgui_input_text(user, "Enter a message to transmit.", "[connected_network.network_name] Telepathy"))
 	if(!message || QDELETED(src) || QDELETED(user) || user.stat == DEAD)
@@ -211,7 +237,7 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 		to_chat(user, span_warning("The link seems to have been severed."))
 		return
 
-	var/formatted_message = "<i><font color=[connected_network.chat_color]>\[[network_owner.real_name]'s [connected_network.network_name]\] <b>[user]:</b> [message]</font></i>"
+	var/formatted_message = "<i><font color=[connected_network.chat_color]>\[[network_owner.real_name]'s [connected_network.network_name]\] <b>[kebyoard_owner]:</b> [message]</font></i>"
 	log_directed_talk(user, network_owner, message, LOG_SAY, "mind link ([connected_network.network_name])")
 
 	var/list/all_who_can_hear = assoc_to_keys(connected_network.linked_mobs) +	network_owner
