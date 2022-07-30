@@ -98,7 +98,7 @@
 	mob_name = "Novaya Rossiyskaya Imperiya raiding party's field officer"
 	outfit = /datum/outfit/pirate/enclave_officer
 	rank = "Field Officer"
-	important_text = "Allowed races are humans, felinids, Akulas, IPCs. There is an important document in your backpack I'd advise to read - do NOT dispose of it by throwing it into space, burning it, or otherwise destroying it or making it unreadable. I'd also advise putting it in your locker or keeping it by yourself, but if you do have better ideas do whatever. And the last - at the very least attempt to keep your cover."
+	important_text = "Allowed races are humans, felinids, Akulas, IPCs. There is an important document in your backpack I'd advise you to read - do NOT dispose of it by throwing it into space, burning it, or otherwise destroying it or making it unreadable afterwards. I'd also advise putting it in your locker or keeping it by yourself, but if you do have better ideas do whatever. And the last - at the very least attempt to keep your cover."
 
 /obj/effect/mob_spawn/ghost_role/human/pirate/enclave/captain/special(mob/living/carbon/human/spawned_human)
 	. = ..()
