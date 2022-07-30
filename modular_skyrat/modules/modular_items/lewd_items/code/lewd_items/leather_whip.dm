@@ -13,7 +13,7 @@
 	righthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_right.dmi'
 	w_class = WEIGHT_CLASS_NORMAL
 	hitsound = 'sound/weapons/whip.ogg'
-	moth_edible = FALSE
+	clothing_flags = INEDIBLE_CLOTHING
 	//When taking that thing in mouth
 	modifies_speech = TRUE
 	flags_cover = MASKCOVERSMOUTH

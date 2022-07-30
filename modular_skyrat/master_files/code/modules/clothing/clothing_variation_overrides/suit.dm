@@ -87,46 +87,52 @@
  * Clothing that does not have a digitigrade version, and thus will squash legs to fit.
  */
 
-/obj/item/clothing/suit/yakuza
+/obj/item/clothing/suit/costume/yakuza
 	supports_variations_flags = NONE
 
-/obj/item/clothing/suit/dutch
+/obj/item/clothing/suit/costume/dutch
 	supports_variations_flags = NONE
 
-/obj/item/clothing/suit/driscoll
+/obj/item/clothing/suit/costume/driscoll
 	supports_variations_flags = NONE
 
-/obj/item/clothing/suit/irs
+/obj/item/clothing/suit/costume/irs
 	supports_variations_flags = NONE
 
-/obj/item/clothing/suit/osi
+/obj/item/clothing/suit/costume/osi
 	supports_variations_flags = NONE
 
-/obj/item/clothing/suit/tmc
+/obj/item/clothing/suit/costume/tmc
 	supports_variations_flags = NONE
 
-/obj/item/clothing/suit/pg
+/obj/item/clothing/suit/costume/pg
 	supports_variations_flags = NONE
 
-/obj/item/clothing/suit/deckers
+/obj/item/clothing/suit/costume/deckers
 	supports_variations_flags = NONE
 
-/obj/item/clothing/suit/morningstar
+/obj/item/clothing/suit/costume/morningstar
 	supports_variations_flags = NONE
 
-/obj/item/clothing/suit/saints
+/obj/item/clothing/suit/costume/saints
 	supports_variations_flags = NONE
 
-/obj/item/clothing/suit/phantom
+/obj/item/clothing/suit/costume/phantom
 	supports_variations_flags = NONE
 
-/obj/item/clothing/suit/allies
+/obj/item/clothing/suit/costume/allies
 	supports_variations_flags = NONE
 
-/obj/item/clothing/suit/soviet
+/obj/item/clothing/suit/costume/soviet
 	supports_variations_flags = NONE
 
-/obj/item/clothing/suit/yuri
+/obj/item/clothing/suit/costume/yuri
+	supports_variations_flags = NONE
+
+/obj/item/clothing/suit/costume/sybil_slickers
+	supports_variations_flags = NONE
+
+/obj/item/clothing/suit/costume/basil_boys
 	supports_variations_flags = NONE
 
 /obj/item/clothing/suit/security

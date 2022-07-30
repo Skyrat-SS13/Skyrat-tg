@@ -29,7 +29,7 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 	if (combat_indicator_vehicle)
 		if(world.time > vehicle_next_combat_popup) // As of the time of writing, COMBAT_NOTICE_COOLDOWN is 10 secs, so this is asking "has 10 secs past between last activation of CI?"
 			vehicle_next_combat_popup = world.time + COMBAT_NOTICE_COOLDOWN
-			playsound(src, 'sound/machines/chime.ogg', 10, TRUE, ignore_walls = FALSE)
+			playsound(src, 'sound/machines/chime.ogg', vol = 10, vary = FALSE, extrarange = -6, falloff_exponent = 4, frequency = null, channel = 0, pressure_affected = FALSE, ignore_walls = FALSE, falloff_distance = 1)
 			flick_emote_popup_on_obj("combat", 20)
 			visible_message(span_boldwarning("[src] prepares for combat!"))
 		combat_indicator_vehicle = TRUE
@@ -80,7 +80,7 @@ GLOBAL_VAR_INIT(combat_indicator_overlay, GenerateCombatOverlay())
 	if(combat_indicator)
 		if(world.time > nextcombatpopup) // As of the time of writing, COMBAT_NOTICE_COOLDOWN is 10 secs, so this is asking "has 10 secs past between last activation of CI?"
 			nextcombatpopup = world.time + COMBAT_NOTICE_COOLDOWN
-			playsound(src, 'sound/machines/chime.ogg', 10, ignore_walls = FALSE)
+			playsound(src, 'sound/machines/chime.ogg', vol = 10, vary = FALSE, extrarange = -6, falloff_exponent = 4, frequency = null, channel = 0, pressure_affected = FALSE, ignore_walls = FALSE, falloff_distance = 1)
 			flick_emote_popup_on_mob("combat", 20)
 			var/ciweapon
 			if(get_active_held_item())
