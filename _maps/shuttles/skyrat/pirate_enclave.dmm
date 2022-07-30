@@ -487,9 +487,6 @@
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
 "hK" = (
-/obj/structure/sign/poster/contraband/tools{
-	pixel_y = 32
-	},
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
 /turf/open/floor/pod/light,
 /area/shuttle/syndicate/slaver)
@@ -652,8 +649,6 @@
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
 "kj" = (
-/obj/structure/table/reinforced,
-/obj/item/wallframe/camera,
 /obj/machinery/light/directional/east,
 /obj/effect/turf_decal/trimline/red/warning{
 	color = "#763c3a";
@@ -875,11 +870,6 @@
 "nV" = (
 /obj/item/storage/box,
 /obj/item/storage/box/handcuffs,
-/obj/structure/closet/secure_closet{
-	icon_state = "cargo";
-	name = "Crew Locker";
-	req_access = list("syndicate")
-	},
 /obj/item/grenade/smokebomb,
 /obj/item/grenade/smokebomb,
 /obj/item/grenade/flashbang,
@@ -892,6 +882,9 @@
 /obj/item/storage/barricade,
 /obj/item/minespawner/explosive,
 /obj/item/minespawner/explosive,
+/obj/structure/closet/secure_closet/wall{
+	pixel_x = -32
+	},
 /turf/open/floor/iron/textured_large,
 /area/shuttle/syndicate/slaver)
 "oe" = (
@@ -937,9 +930,6 @@
 /area/shuttle/syndicate/slaver)
 "oK" = (
 /obj/structure/table/reinforced,
-/obj/structure/sign/poster/contraband/nri_radar{
-	pixel_x = 32
-	},
 /obj/item/stamp,
 /obj/item/stamp/denied,
 /turf/open/floor/iron/dark,
@@ -980,6 +970,12 @@
 /area/shuttle/syndicate/slaver)
 "oY" = (
 /obj/structure/table/reinforced,
+/obj/item/screwdriver{
+	pixel_y = 2
+	},
+/obj/item/stack/cable_coil{
+	pixel_y = 7
+	},
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
 "pj" = (
@@ -1083,6 +1079,9 @@
 "qV" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/machinery/portable_atmospherics/canister/oxygen,
+/obj/structure/sign/poster/contraband/tools{
+	pixel_y = 32
+	},
 /turf/open/floor/plating,
 /area/shuttle/syndicate/slaver)
 "rh" = (
@@ -1536,6 +1535,14 @@
 /obj/machinery/light/directional/south,
 /turf/open/floor/wood,
 /area/shuttle/syndicate/slaver)
+"zN" = (
+/obj/structure/sign/poster/contraband/nri_radar{
+	pixel_x = 32
+	},
+/turf/open/floor/iron/dark/brown/side{
+	dir = 4
+	},
+/area/shuttle/syndicate/slaver)
 "zQ" = (
 /turf/open/floor/iron/dark/brown/side{
 	dir = 4
@@ -1607,10 +1614,10 @@
 	},
 /area/shuttle/syndicate/slaver)
 "Ai" = (
-/obj/machinery/suit_storage_unit/syndicate,
 /obj/effect/turf_decal/trimline/yellow/warning{
 	dir = 4
 	},
+/obj/machinery/suit_storage_unit/open,
 /turf/open/floor/iron/dark/brown/side{
 	dir = 8
 	},
@@ -1628,11 +1635,6 @@
 /turf/open/floor/pod/dark,
 /area/shuttle/syndicate/slaver)
 "At" = (
-/obj/structure/closet/secure_closet{
-	icon_state = "eng";
-	name = "Equipment Locker";
-	req_access = list("syndicate")
-	},
 /obj/item/storage/belt,
 /obj/item/holosign_creator/atmos,
 /obj/item/stack/cable_coil,
@@ -1644,6 +1646,7 @@
 /obj/item/stack/sheet/iron/fifty,
 /obj/item/storage/backpack/satchel/flat/empty,
 /obj/item/storage/box,
+/obj/structure/closet/crate/engineering/electrical,
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
 "Aw" = (
@@ -1860,11 +1863,11 @@
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
 "DY" = (
-/obj/structure/rack,
 /obj/item/airbag,
 /obj/item/airbag,
 /obj/item/airbag,
 /obj/item/airbag,
+/obj/structure/closet/crate/engineering,
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
 "Eb" = (
@@ -1908,11 +1911,11 @@
 /turf/open/floor/pod,
 /area/shuttle/syndicate/slaver)
 "Ey" = (
-/obj/machinery/suit_storage_unit/syndicate,
 /obj/effect/turf_decal/trimline/yellow/warning{
 	dir = 4
 	},
 /obj/machinery/light/directional/east,
+/obj/machinery/suit_storage_unit/open,
 /turf/open/floor/iron/dark/brown/side{
 	dir = 8
 	},
@@ -1951,19 +1954,18 @@
 /turf/open/floor/iron,
 /area/shuttle/syndicate/slaver)
 "FC" = (
-/obj/structure/table/reinforced,
 /obj/machinery/button/door/directional/south{
 	id = "privateerslavercellarealockdown";
 	name = "Brig Lockdown";
 	req_access = list("syndicate")
 	},
-/obj/item/stack/cable_coil{
-	pixel_y = 7
+/obj/effect/turf_decal/trimline/red/warning{
+	color = "#763c3a";
+	dir = 8
 	},
-/obj/item/screwdriver{
-	pixel_y = 2
+/turf/open/floor/iron/dark/red/side{
+	dir = 4
 	},
-/turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
 "FQ" = (
 /obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
@@ -2562,11 +2564,6 @@
 "QV" = (
 /obj/item/storage/box,
 /obj/item/storage/box/handcuffs,
-/obj/structure/closet/secure_closet{
-	icon_state = "cargo";
-	name = "Crew Locker";
-	req_access = list("syndicate")
-	},
 /obj/item/grenade/smokebomb,
 /obj/item/grenade/smokebomb,
 /obj/item/grenade/flashbang,
@@ -2580,6 +2577,9 @@
 /obj/item/storage/barricade,
 /obj/item/minespawner/explosive,
 /obj/item/minespawner/explosive,
+/obj/structure/closet/secure_closet/wall{
+	pixel_x = -32
+	},
 /turf/open/floor/iron/textured_large,
 /area/shuttle/syndicate/slaver)
 "Rm" = (
@@ -2913,6 +2913,12 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/pod/dark,
 /area/shuttle/syndicate/slaver)
+"WS" = (
+/obj/structure/window/reinforced/survival_pod{
+	dir = 8
+	},
+/turf/closed/wall/mineral/titanium/spaceship,
+/area/shuttle/syndicate/slaver)
 "Xb" = (
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
 	dir = 4
@@ -3114,6 +3120,11 @@
 	dir = 1
 	},
 /area/shuttle/syndicate/slaver)
+"ZB" = (
+/obj/structure/table/reinforced,
+/obj/item/wallframe/camera,
+/turf/open/floor/iron/dark,
+/area/shuttle/syndicate/slaver)
 "ZH" = (
 /obj/structure/window/reinforced/survival_pod{
 	dir = 8
@@ -3275,7 +3286,7 @@ wd
 (6,1,1) = {"
 wd
 ef
-oY
+ZB
 oY
 HJ
 gE
@@ -3326,7 +3337,7 @@ sd
 HR
 ZI
 ZH
-wd
+WS
 wd
 Mx
 kv
@@ -4021,7 +4032,7 @@ zQ
 zQ
 gU
 zQ
-zQ
+zN
 Ka
 wd
 wd

@@ -171,6 +171,6 @@
 	<br> This meeting, having familiarized itself with all the other possible actions and solutions, came to the conviction that the indenture of fines has casus belli to perform a strategic secret operation.
 	<br> The Imperial Regulation has to be enforced in order to minimise any potential threat for the whole Empire, not excluding allied kingdoms, organisations and other partners, and to strengthen our positions in the ongoing Border War.
 	<br>
-	<br> About such a Supreme Will, reported in the recall of the Councillor of the Defense Colleague , No. 217648, We announce to the military department for immediate actions in appropriate cases.
+	<br> About such a Supreme Will, reported in the recall of the Councillor of the Defense Colleague, No. 217648, We announce to the military department for immediate actions in appropriate cases.
 	<br>
 	<br> <i>Signed by we, the Voronov Platon Aleksandrovich and Radich Katarina Dinovich.</i>"}
