@@ -13,9 +13,9 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 	///The network that the user is currently hosting
 	var/datum/component/mind_linker/nif/user_network
 	///What networks are the user connected to?
-	var/list/datum/component/mind_linker/nif/network_list
+	var/list/network_list = list()
 	///What network is the user sending messages to? This is saved from the keyboard so the user doesn't have to change the channel every time.
-	var/datum/component/mind_linker/nif/sending_network
+	var/datum/component/mind_linker/nif/active_network
 	///The physical keyboard item being used to send messages
 	var/obj/item/hivemind_keyboard/linked_keyboard
 
@@ -27,7 +27,8 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 		linker_action_path = /datum/action/innate/hivemind_config, \
 	)
 
-	sending_network = user_network
+	active_network = user_network
+	network_list += user_network
 	GLOB.hivemind_users += linked_mob
 
 /datum/nifsoft/hivemind/Destroy()
@@ -43,7 +44,7 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 	. = ..()
 	if(active)
 		linked_keyboard = new
-		linked_keyboard.connected_network = sending_network
+		linked_keyboard.connected_network = active_network
 		linked_mob.put_in_hands(linked_keyboard)
 
 		return
@@ -61,7 +62,7 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 	. = ..()
 	var/datum/component/mind_linker/nif/link = target
 
-	var/choice = tgui_input_list(owner, "Chose your option", "Hivemind Configuration Menu", list("Link a user", "Remove a user", "Leave a Hivemind"))
+	var/choice = tgui_input_list(owner, "Chose your option", "Hivemind Configuration Menu", list("Link a user","Remove a user","Change Hivemind color","Change active Hivemind","Leave a Hivemind",))
 	if(!choice)
 		return
 
@@ -73,18 +74,61 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 			link.remove_user()
 
 		if("Leave a Hivemind")
-			return
+			leave_hivemind()
+
+		if("Change active Hivemind")
+			change_hivemind()
+
+		if("Change Hivemind color")
+			link.change_chat_color()
+
+/datum/action/innate/hivemind_config/proc/change_hivemind()
+	var/mob/living/carbon/human/user = owner
+	var/datum/nifsoft/hivemind/hivemind = user.find_nifsoft(/datum/nifsoft/hivemind)
+
+	var/datum/component/mind_linker/nif/new_active_hivemind = tgui_input_list(user, "Chose a Hivemind to set as active", "Switch Hivemind", hivemind.network_list)
+	if(!new_active_hivemind)
+		return FALSE
+
+	hivemind.active_network = new_active_hivemind
+	to_chat(user, span_abductor("You are now sending messages to [new_active_hivemind.name]"))
+
+/datum/action/innate/hivemind_config/proc/leave_hivemind()
+	var/mob/living/carbon/human/user = owner
+	var/datum/nifsoft/hivemind/hivemind = user.find_nifsoft(/datum/nifsoft/hivemind)
+
+	var/list/network_list = hivemind.network_list
+	network_list -= hivemind.user_network
+
+	var/datum/component/mind_linker/nif/hivemind_to_leave = tgui_input_list(user, "Chose a Hivemind to disconnect from", "Remove Hivemind", network_list)
+	if(!hivemind_to_leave)
+		return FALSE
+
+	to_chat(hivemind_to_leave.parent, span_abductor("[user] has been removed from your Hivemind"))
+	to_chat(user, span_abductor("You have left [hivemind_to_leave.parent]'s hivemind"))
+
+	hivemind.network_list -= hivemind_to_leave
+	hivemind_to_leave.linked_mobs -= user
 
 /datum/component/mind_linker
 	///Is does the component give an action to speak? By default, yes
 	var/speech_action = TRUE
 
 /datum/component/mind_linker/nif
+	///What is the name of the hivemind? This is mostly here for the TGUI selection menus.
+	var/name
 	speech_action = FALSE
+
+/datum/component/mind_linker/nif/New()
+	. = ..()
+
+	var/mob/living/owner = parent
+	name = owner.name + "'s " + network_name
 
 ///Lets the user add someone to their Hivemind through a choice menu that shows everyone that has the Hivemind NIFSoft.
 /datum/component/mind_linker/nif/proc/invite_user()
-	var/list/hivemind_users = GLOB.hivemind_users
+	var/list/hivemind_users = list()
+	hivemind_users += GLOB.hivemind_users
 	var/mob/living/carbon/human/owner = parent
 
 	//This way people already linked don't show up in the selection menu
@@ -98,24 +142,17 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 	if(!person_to_add)
 		return
 
-/*
 	if(tgui_alert(person_to_add, "[owner] wishes to add you to their Hivemind, do you accept", "Incomming Hivemind Invite", list("Accept", "Reject")) != "Accept")
 		to_chat(owner, span_warning("[person_to_add] denied the request to join your Hivemind"))
 		return
-*/
 
 	linked_mobs += person_to_add
 
 	var/datum/nifsoft/hivemind/target_hivemind
-	var/list/nifsoft_list = person_to_add?.installed_nif?.loaded_nifsofts
-	var/nifsoft_to_find = /datum/nifsoft/hivemind
-
-	for(var/datum/nifsoft/nifsoft as anything in nifsoft_list)
-		if(nifsoft.type == nifsoft_to_find)
-			target_hivemind = nifsoft
+	target_hivemind = person_to_add.find_nifsoft(/datum/nifsoft/hivemind)
 
 	if(!target_hivemind)
-		return
+		return FALSE
 
 	target_hivemind.network_list += src
 	to_chat(person_to_add, span_abductor("You have now been added to [owner]'s Hivemind"))
@@ -130,16 +167,24 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 		return
 
 	var/datum/nifsoft/hivemind/target_hivemind
-	var/list/nifsoft_list = person_to_remove?.installed_nif?.loaded_nifsofts
-	var/nifsoft_to_find = /datum/nifsoft/hivemind
+	target_hivemind = person_to_remove.find_nifsoft(/datum/nifsoft/hivemind)
 
-	for(var/datum/nifsoft/nifsoft as anything in nifsoft_list)
-		if(nifsoft.type == nifsoft_to_find)
-			target_hivemind = nifsoft
+	if(!target_hivemind)
+		return FALSE
 
+	linked_mobs -= person_to_remove
 	target_hivemind.network_list -= src
 	to_chat(person_to_remove, span_abductor("You have now been removed from [owner]'s Hivemind"))
 	to_chat(owner, span_abductor("[person_to_remove] has now been removed from your Hivemind"))
+
+/datum/component/mind_linker/nif/proc/change_chat_color()
+	var/mob/living/carbon/human/owner = parent
+	var/new_chat_color = input(owner,"","Choose Color", COLOR_ASSEMBLY_GREEN) as color
+
+	if(!new_chat_color)
+		return FALSE
+
+	chat_color = new_chat_color
 
 /obj/item/hivemind_keyboard
 	name = "Hivemind Controller"
@@ -166,7 +211,7 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 		to_chat(user, span_warning("The link seems to have been severed."))
 		return
 
-	var/formatted_message = "<i><font color=[connected_network.chat_color]>\[[user.real_name]'s [connected_network.network_name]\] <b>[user]:</b> [message]</font></i>"
+	var/formatted_message = "<i><font color=[connected_network.chat_color]>\[[network_owner.real_name]'s [connected_network.network_name]\] <b>[user]:</b> [message]</font></i>"
 	log_directed_talk(user, network_owner, message, LOG_SAY, "mind link ([connected_network.network_name])")
 
 	var/list/all_who_can_hear = assoc_to_keys(connected_network.linked_mobs) +	network_owner

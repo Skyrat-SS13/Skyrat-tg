@@ -245,6 +245,16 @@
 	if(nif_examine_text)
 		. += nif_examine_text
 
+///Looks through the human's NIFSoft to find a nifsoft.
+/mob/living/carbon/human/proc/find_nifsoft(nifsoft_to_find)
+	var/list/nifsoft_list = installed_nif?.loaded_nifsofts
+	if(!nifsoft_list)
+		return FALSE
+
+	for(var/datum/nifsoft/nifsoft as anything in nifsoft_list)
+		if(nifsoft.type == nifsoft_to_find)
+			return nifsoft
+
 //NIF autosurgeon. This is just here so that I can debug faster.
 /obj/item/autosurgeon/organ/nif
 	starting_organ = /obj/item/organ/internal/cyberimp/brain/nif
