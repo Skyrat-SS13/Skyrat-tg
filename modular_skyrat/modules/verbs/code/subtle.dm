@@ -1,6 +1,9 @@
 #define SUBTLE_DEFAULT_DISTANCE 1
 #define SUBTLE_SAME_TILE_DISTANCE 0
 
+#define SUBTLE_ONE_TILE_TEXT "1-Tile Range"
+#define SUBTLE_SAME_TILE_TEXT "Same Tile"
+
 /datum/emote/living/subtle
 	key = "subtle"
 	key_third_person = "subtle"
@@ -39,7 +42,7 @@
 			emote_type = type_override
 
 	if(!can_run_emote(user))
-		to_chat(user, "You can't emote at this time.", type = MESSAGE_TYPE_WARNING)
+		to_chat(user, span_warning("You can't emote at this time."))
 		return FALSE
 
 	var/prefix_log_message = "(SUBTLE) [subtle_message]"
@@ -81,16 +84,16 @@
 
 /datum/emote/living/subtler/run_emote(mob/user, params, type_override = null)
 	if(!can_run_emote(user))
-		to_chat(user, "You can't emote at this time.", type = MESSAGE_TYPE_WARNING)
+		to_chat(user, span_warning("You can't emote at this time."))
 		return FALSE
 	var/subtler_message
 	var/subtler_emote = params
 	var/mob/target
 	if(is_banned_from(user, "emote"))
-		to_chat(user, "You cannot send subtle emotes (banned).", type = MESSAGE_TYPE_WARNING)
+		to_chat(user, span_warning("You cannot send subtle emotes (banned)."))
 		return FALSE
 	else if(user.client && user.client.prefs.muted & MUTE_IC)
-		to_chat(user, "You cannot send IC messages (muted).", type = MESSAGE_TYPE_WARNING)
+		to_chat(user, span_warning("You cannot send IC messages (muted)."))
 		return FALSE
 	else if(!subtler_emote)
 		subtler_emote = tgui_input_text(user, "Choose an emote to display.", "Subtler" , null, MAX_MESSAGE_LEN, TRUE)
@@ -102,12 +105,12 @@
 			for(var/mob/mob_in_view as anything in in_view)
 				if(!istype(mob_in_view))
 					in_view.Remove(mob_in_view)
-			var/list/targets = list("1-Tile Range", "Same Tile") + in_view
+			var/list/targets = list(SUBTLE_ONE_TILE_TEXT, SUBTLE_SAME_TILE_TEXT) + in_view
 			target = tgui_input_list(user, "Pick a target", "Target Selection", targets)
 			switch(target)
-				if("1-Tile Range")
+				if(SUBTLE_ONE_TILE_TEXT)
 					target = SUBTLE_DEFAULT_DISTANCE
-				if("Same Tile")
+				if(SUBTLE_SAME_TILE_TEXT)
 					target = SUBTLE_SAME_TILE_DISTANCE
 			subtler_message = subtler_emote
 		else
@@ -119,7 +122,7 @@
 			emote_type = type_override
 
 	if(!can_run_emote(user))
-		to_chat(user, "You can't emote at this time.", type = MESSAGE_TYPE_WARNING)
+		to_chat(user, span_warning("You can't emote at this time."))
 		return FALSE
 
 	user.log_message(subtler_message, LOG_SUBTLER)
@@ -133,7 +136,7 @@
 		if(get_dist(user.loc, target.loc) <= SUBTLE_DEFAULT_DISTANCE)
 			target.show_message(subtler_message, alt_msg = subtler_message)
 		else
-			to_chat(user, "Your emote was unable to be sent to your target: Too far away.", type = MESSAGE_TYPE_WARNING)
+			to_chat(user, span_warning("Your emote was unable to be sent to your target: Too far away."))
 	else
 		var/ghostless = get_hearers_in_view(target, user) - GLOB.dead_mob_list
 		for(var/mob/reciever in ghostless)
@@ -173,3 +176,6 @@
 
 #undef SUBTLE_DEFAULT_DISTANCE
 #undef SUBTLE_SAME_TILE_DISTANCE
+
+#undef SUBTLE_ONE_TILE_TEXT
+#undef SUBTLE_SAME_TILE_TEXT
