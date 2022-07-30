@@ -12,14 +12,10 @@
 /datum/surgery/advanced/wing_reconstruction/can_start(mob/user, mob/living/carbon/target)
 	if(!istype(target))
 		return FALSE
-<<<<<<< HEAD
-	return ..() && target.dna.features["moth_wings"] == "Burnt Off" && ismoth(target)
-=======
 	var/obj/item/organ/external/wings/moth/wings = target.getorganslot(ORGAN_SLOT_EXTERNAL_WINGS)
 	if(!istype(wings, /obj/item/organ/external/wings/moth))
 		return FALSE
 	return ..() && wings?.burnt
->>>>>>> 7082dc4254f (Fixes surgical moth wing reconstruction trying to repair not moth wings. (#68774))
 
 /datum/surgery_step/wing_reconstruction
 	name = "start wing reconstruction"
