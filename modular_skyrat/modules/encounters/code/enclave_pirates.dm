@@ -74,7 +74,7 @@
 	rank = "NRI Marine"
 	you_are_text = "You are a Novaya Rossiyskaya Imperiya task force."
 	flavour_text = "The station has refused to pay the fine for breaking Imperial regulations, you are here to recover the debt. Do so by demanding the funds. Force approach is usually recommended, but isn't the only method."
-	important_text = "Allowed races are humans, felinids, Akulas, IPCs."
+	important_text = "Allowed races are humans, felinids, Akulas, IPCs. Follow your field officer's orders."
 	spawner_job_path = /datum/job/space_pirate
 	restricted_species = list(/datum/species/human, /datum/species/human/felinid, /datum/species/akula, /datum/species/robotic/ipc)
 	spawn_oldpod = FALSE
@@ -97,6 +97,7 @@
 /obj/effect/mob_spawn/ghost_role/human/pirate/enclave/captain
 	rank = "Field Officer"
 	outfit = /datum/outfit/pirate/enclave_officer
+	important_text = "Allowed races are humans, felinids, Akulas, IPCs. There is an important document in your backpack I'd advise to read - do NOT dispose of it by throwing it into space, burning it, or otherwise destroying it or making it unreadable. I'd also advise putting it in your locker or keeping it by yourself, but if you do have better ideas do whatever."
 
 /obj/effect/mob_spawn/ghost_role/human/pirate/enclave/captain/special(mob/living/carbon/human/spawned_human)
 	. = ..()
