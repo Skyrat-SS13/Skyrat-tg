@@ -264,17 +264,12 @@
 
 	var/atom/drop_loc = drop_location()
 	if(IS_ORGANIC_LIMB(src))
-<<<<<<< HEAD
-		playsound(bodypart_turf, 'sound/misc/splort.ogg', 50, TRUE, -1)
+		playsound(drop_loc, 'sound/misc/splort.ogg', 50, TRUE, -1)
 	//seep_gauze(9999) // destroy any existing gauze if any exists
 	if(current_gauze)
 		qdel(current_gauze)
 	if(current_splint)
 		qdel(current_splint)
-=======
-		playsound(drop_loc, 'sound/misc/splort.ogg', 50, TRUE, -1)
-	seep_gauze(9999) // destroy any existing gauze if any exists
->>>>>>> 030ada25132 (Cleans up drop_organ() to use drop_location() (#68772))
 	for(var/obj/item/organ/bodypart_organ in get_organs())
 		bodypart_organ.transfer_to_limb(src, owner)
 	for(var/obj/item/item_in_bodypart in src)
