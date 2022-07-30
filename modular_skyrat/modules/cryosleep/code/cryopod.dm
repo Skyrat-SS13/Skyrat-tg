@@ -312,6 +312,7 @@ GLOBAL_LIST_EMPTY(ghost_records)
 	for(var/datum/data/record/record as anything in GLOB.ghost_records)
 		if(record.fields["name"] == mob_occupant.real_name)
 			announce_rank = record.fields["rank"]
+			GLOB.ghost_records.Remove(record)
 			qdel(record)
 
 	for(var/datum/data/record/medical_record as anything in GLOB.data_core.medical)
