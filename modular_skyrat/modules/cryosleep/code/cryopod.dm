@@ -9,6 +9,8 @@
  */
 GLOBAL_LIST_EMPTY(cryopod_computers)
 
+GLOBAL_LIST_EMPTY(ghost_records)
+
 //Main cryopod console.
 
 /obj/machinery/computer/cryopod
@@ -31,7 +33,7 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 
 	/// This is what the announcement system uses to make announcements. Make sure to set a radio that has the channel you want to broadcast on.
 	var/obj/item/radio/headset/radio = /obj/item/radio/headset/silicon/pai
-	/// The channel to be broadcast on, valid values are any of the "RADIO_CHANNEL_" defines.
+	/// The channel to be broadcast on, valid values are the values of any of the "RADIO_CHANNEL_" defines.
 	var/announcement_channel = null // RADIO_CHANNEL_COMMON doesn't work here.
 
 
@@ -304,8 +306,15 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 	else
 		crew_member["job"] = "N/A"
 
-	// Delete them from datacore.
+	// Delete them from datacore and ghost records.
 	var/announce_rank = null
+
+	for(var/datum/data/record/record as anything in GLOB.ghost_records)
+		if(record.fields["name"] == mob_occupant.real_name)
+			announce_rank = record.fields["rank"]
+			GLOB.ghost_records.Remove(record)
+			qdel(record)
+
 	for(var/datum/data/record/medical_record as anything in GLOB.data_core.medical)
 		if(medical_record.fields["name"] == mob_occupant.real_name)
 			qdel(medical_record)
@@ -454,7 +463,7 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 	var/datum/data/record/record = new
 	record.fields["name"] = spawned_mob.real_name
 	record.fields["rank"] = name
-	GLOB.data_core.general.Add(record)
+	GLOB.ghost_records.Add(record)
 	if(control_computer)
 		control_computer.announce("CRYO_JOIN", spawned_mob.real_name, name)
 
@@ -467,7 +476,7 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 		if(area.type == computer_area)
 			return console
 
-	return null
+	return
 
 /obj/effect/mob_spawn/ghost_role/human/lavaland_syndicate
 	computer_area = /area/ruin/syndicate_lava_base/dormitories
