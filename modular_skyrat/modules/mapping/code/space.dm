@@ -182,4 +182,4 @@
 	always_place = TRUE
 
 /obj/modular_map_root/port_tarkon
-	config_file = "modular_skyrat/modules/mapping/code/modular_map_strings/PortTarkon.toml"
+	config_file = "strings/modular_maps/skyrat/PortTarkon.toml"
