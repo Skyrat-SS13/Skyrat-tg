@@ -108,6 +108,7 @@
 	cost = 2
 	surplus = 0
 	progression_minimum = 10 MINUTES
+	illegal_tech = FALSE
 
 // STEALTHY TOOOLS
 /datum/uplink_item/stealthy_tools/infiltratormask
@@ -215,6 +216,7 @@
 	desc = "A small yet large enough pouch that can fit in your pocket, and has room for three magazines."
 	item = /obj/item/storage/bag/ammo
 	cost = 1
+	illegal_tech = FALSE
 
 /datum/uplink_item/device_tools/syndie_glue
 	name = "Glue"
