@@ -1,5 +1,5 @@
 /obj/item/clothing/under/sweater
-	name = "cream sweater"
+	name = "sweater"
 	desc = "Why trade style for comfort? Now you can go commando down south and still be cozy up north."
 	icon_state = "sweater"
 	greyscale_config = /datum/greyscale_config/sweater
@@ -13,18 +13,6 @@
 /obj/item/clothing/under/sweater/black
 	name = "black sweater"
 	greyscale_colors = "#4f4f4f"
-
-/obj/item/clothing/under/sweater/blue
-	name = "blue sweater"
-	greyscale_colors = "#3434ab"
-
-/obj/item/clothing/under/sweater/green
-	name = "green sweater"
-	greyscale_colors = "#197918"
-
-/obj/item/clothing/under/sweater/purple
-	name = "purple sweater"
-	greyscale_colors = "#6e2793"
 
 /obj/item/clothing/under/sweater/red
 	name = "red sweater"
