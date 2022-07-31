@@ -72,13 +72,13 @@
 	mob_name = "Novaya Rossiyskaya Imperiya raiding party's marine"
 	outfit = /datum/outfit/pirate/enclave_trooper
 	rank = "NRI Marine"
-	you_are_text = "You are a Novaya Rossiyskaya Imperiya task force under the disguise of a deserter group."
-	flavour_text = "The station has refused to pay the fine for breaking Imperial regulations, you are here to recover the debt. Do so by demanding the funds. Force approach is usually recommended, but isn't the only method. It's advised not to break your disguise as deserters."
-	important_text = "Allowed races are humans, felinids, Akulas, IPCs. Follow your field officer's orders. At the very least attempt to keep your cover."
+	you_are_text = "You are a Novaya Rossiyskaya Imperiya task force."
+	flavour_text = "The station has refused to pay the fine for breaking Imperial regulations, you are here to recover the debt. Do so by demanding the funds. Force approach is usually recommended, but isn't the only method."
+	important_text = "Allowed races are humans, felinids, Akulas, IPCs. Follow your field officer's orders."
 	spawner_job_path = /datum/job/space_pirate
 	restricted_species = list(/datum/species/human, /datum/species/human/felinid, /datum/species/akula, /datum/species/robotic/ipc)
 	spawn_oldpod = FALSE
-	random_appearance = TRUE
+	random_appearance = FALSE
 
 /obj/effect/mob_spawn/ghost_role/human/pirate/enclave/special(mob/living/carbon/human/spawned_human)
 	. = ..()
@@ -99,7 +99,7 @@
 	mob_name = "Novaya Rossiyskaya Imperiya raiding party's field officer"
 	outfit = /datum/outfit/pirate/enclave_officer
 	rank = "Field Officer"
-	important_text = "Allowed races are humans, felinids, Akulas, IPCs. There is an important document in your pocket I'd advise you to read - do NOT dispose of it by throwing it into space, burning it, or otherwise destroying it or making it unreadable afterwards. I'd also advise putting it in your locker or keeping it by yourself, but if you do have better ideas do whatever. And the last - at the very least attempt to keep your cover."
+	important_text = "Allowed races are humans, felinids, Akulas, IPCs. There is an important document in your pocket I'd advise you to read - do NOT dispose of it by throwing it into space, burning it, or otherwise destroying it or making it unreadable afterwards. I'd also advise putting it in your locker or keeping it by yourself, but if you do have better ideas do whatever."
 
 /obj/effect/mob_spawn/ghost_role/human/pirate/enclave/captain/special(mob/living/carbon/human/spawned_human)
 	. = ..()

@@ -96,7 +96,7 @@
 			ship_name = pick(strings(PIRATE_NAMES_FILE, "imperial_names"))
 			ship_template = /datum/map_template/shuttle/pirate/imperial_enclave
 			threat.title = "NRI Audit"
-			threat.content = "Greetings, this is the [ship_name]. Due to recent Imperial regulatory violations, your station has been fined [payoff] credits. Failure to comply will result in lethal debt recovery. Novaya Rossiyskaya Imperiya Enforcer out."
+			threat.content = "Greetings, this is the [ship_name]. Due to recent Imperial regulatory violations, your station has been fined [payoff] credits. Failure to comply might result in lethal debt recovery. Novaya Rossiyskaya Imperiya Enforcer out."
 			threat.possible_answers = list("Submit to audit and pay the fine.", "Imperial regulations? What a load of bollocks.")
 		//SKYRAT EDIT ADDITION END
 	threat.answer_callback = CALLBACK(GLOBAL_PROC, .proc/pirates_answered, threat, payoff, ship_name, initial_send_time, response_max_time, ship_template)
