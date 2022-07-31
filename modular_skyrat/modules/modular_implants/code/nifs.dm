@@ -213,6 +213,7 @@
 		to_chat(linked_mob, span_notice("[removed_nifsoft.name] has been removed."))
 
 	qdel(removed_nifsoft)
+	return TRUE
 
 // Action used to pull up the NIF menu
 /datum/action/item_action/nif
@@ -254,6 +255,73 @@
 	for(var/datum/nifsoft/nifsoft as anything in nifsoft_list)
 		if(nifsoft.type == nifsoft_to_find)
 			return nifsoft
+
+///NIFSoft Remover. This is mostly here so that security and antags have a way to remove NIFSofts from someome
+/obj/item/nifsoft_remover
+	name = "NIFSoft Remover"
+	desc = "Removes a NIFSoft from someone." //Placeholder Description and name
+
+/obj/item/nifsoft_remover/attack(mob/living/carbon/human/target_mob, mob/living/user, params)
+	. = ..()
+	var/obj/item/organ/internal/cyberimp/brain/nif/target_nif = target_mob.installed_nif
+
+	if(!target_nif || !length(target_nif.loaded_nifsofts))
+		to_chat(user, span_warning("[user] does not posses a NIF with any installed NIFSofts"))
+		return
+
+	var/list/installed_nifsofts = target_nif.loaded_nifsofts
+	var/datum/nifsoft/nifsoft_to_remove = tgui_input_list(user, "Chose a NIFSoft to remove", "[src]", installed_nifsofts)
+
+	if(!nifsoft_to_remove)
+		return FALSE
+
+	user.visible_message(span_warning("[user] starts to use the [src] on [target_mob]"), span_notice("You start to use the [src] on [target_mob]"))
+	if(!do_after(user, 5 SECONDS, target_mob))
+		return FALSE
+
+	if(!target_nif.remove_nifsoft(nifsoft_to_remove))
+		return FALSE
+
+	to_chat(user, span_notice("You successfully remove the NIFSoft"))
+
+/obj/machinery/nif_repairer
+	name = "NIF Repair Bed"
+	desc = "Lay on this and your NIF will repair over time" //Placeholder Description and name
+	icon = 'icons/obj/machines/stasis.dmi'
+	icon_state = "stasis"
+	base_icon_state = "stasis"
+	density = FALSE
+	obj_flags = NO_BUILD
+	can_buckle = TRUE
+	buckle_lying = 90
+	payment_department = ACCOUNT_MED
+	///How much is the user's NIF repaired by each process cycle?
+	var/nif_repair_rate = 0.2
+
+/obj/machinery/nif_repairer/post_buckle_mob(mob/living/buckled_mob)
+	. = ..()
+	occupant = buckled_mob
+
+/obj/machinery/nif_repairer/post_unbuckle_mob(mob/living/M)
+	. = ..()
+	occupant = null
+
+/obj/machinery/nif_repairer/process()
+	if(!(occupant && isliving(occupant)))
+		return FALSE
+
+	var/mob/living/carbon/human/buckled_human = occupant
+	if(!buckled_human.installed_nif)
+		return FALSE
+
+	var/obj/item/organ/internal/cyberimp/brain/nif/human_nif = buckled_human.installed_nif
+
+	human_nif.durability += nif_repair_rate
+
+	if(human_nif.durability > human_nif.max_durability)
+		human_nif.durability = human_nif.max_durability
+		to_chat(buckled_human, span_notice("[src] detecting that [human_nif] is fully repaired, unbuckles you."))
+		unbuckle_mob(buckled_human)
 
 //NIF autosurgeon. This is just here so that I can debug faster.
 /obj/item/autosurgeon/organ/nif
