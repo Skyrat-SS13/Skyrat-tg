@@ -1341,6 +1341,15 @@
     worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/custom_w.dmi'
     icon_state = "greenbadge"
 
+// Donation reward for Dudewithatude
+/obj/item/clothing/suit/toggle/rainbowcoat
+	name = "rainbow coat"
+	desc = "A wonderfully brilliant coat that displays the color of the rainbow!"
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
+	icon_state = "rainbowcoat"
+	base_icon_state = "rainbowcoat"
+
 // Donation reward for M97screwsyourparents
 /obj/item/clothing/head/recruiter_cap
 	name = "recruiter cap"
