@@ -183,3 +183,6 @@
 
 /obj/modular_map_root/port_tarkon
 	config_file = "modular_skyrat/modules/mapping/code/modular_map_strings/PortTarkon.toml"
+
+/obj/modular_map_root/port_tarkon/defconlvl
+	key = "port"
