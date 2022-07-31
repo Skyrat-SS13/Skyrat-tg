@@ -133,7 +133,7 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 		if(N.new_character)
 			log_manifest(N.ckey,N.new_character.mind,N.new_character)
 		if(ishuman(N.new_character))
-			manifest_inject(N.new_character)
+			manifest_inject(N.new_character, N.client) // SKYRAT EDIT - Alt-titles - ORIGINAL: manifest_inject(N.new_character)
 		CHECK_TICK
 
 /datum/datacore/proc/manifest_modify(name, assignment, trim)
@@ -217,14 +217,14 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 	return dat
 
 
-/datum/datacore/proc/manifest_inject(mob/living/carbon/human/H)
+/datum/datacore/proc/manifest_inject(mob/living/carbon/human/H, client/human_client) // SKYRAT EDIT - Alt-titles - ORIGINAL: /datum/datacore/proc/manifest_inject(mob/living/carbon/human/H)
 	set waitfor = FALSE
 	var/static/list/show_directions = list(SOUTH, WEST)
 	if(H.mind?.assigned_role.job_flags & JOB_CREW_MANIFEST)
 		var/assignment = H.mind.assigned_role.title
 		// SKYRAT EDIT ADDITION BEGIN - ALTERNATIVE_JOB_TITLES
 		// The alt job title, if user picked one, or the default
-		var/chosen_assignment = C?.prefs.alt_job_titles[assignment] || assignment
+		var/chosen_assignment = human_client?.prefs.alt_job_titles[assignment] || assignment
 		// SKYRAT EDIT ADDITION END - ALTERNATIVE_JOB_TITLES
 
 		var/static/record_id_num = 1001
@@ -264,9 +264,9 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 		G.fields["photo_front"] = photo_front
 		G.fields["photo_side"] = photo_side
 		// SKYRAT ADDITION START - RP RECORDS
-		G.fields["past_records"] = C?.prefs?.read_preference(/datum/preference/text/general) || ""
-		G.fields["background_records"] = C?.prefs?.read_preference(/datum/preference/text/background) || ""
-		G.fields["exploitable_records"] = C?.prefs?.read_preference(/datum/preference/text/exploitable) || ""
+		G.fields["past_records"] = human_client?.prefs?.read_preference(/datum/preference/text/general) || ""
+		G.fields["background_records"] = human_client?.prefs?.read_preference(/datum/preference/text/background) || ""
+		G.fields["exploitable_records"] = human_client?.prefs?.read_preference(/datum/preference/text/exploitable) || ""
 		// SKYRAT ADDITION END
 		general += G
 
@@ -285,10 +285,7 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 		M.fields["notes"] = H.get_quirk_string(!medical, CAT_QUIRK_NOTES)
 		M.fields["notes_d"] = H.get_quirk_string(medical, CAT_QUIRK_NOTES)
 		// SKYRAT EDIT ADD - RP RECORDS
-		if(C && C.prefs && C.prefs.read_preference(/datum/preference/text/medical))
-			M.fields["past_records"] = C.prefs.read_preference(/datum/preference/text/medical)
-		else
-			M.fields["past_records"] = ""
+		M.fields["past_records"] = human_client?.prefs?.read_preference(/datum/preference/text/medical) || ""
 		// SKYRAT EDIT END
 		medical += M
 
@@ -301,10 +298,7 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 		S.fields["crim"] = list()
 		S.fields["notes"] = "No notes."
 		// SKYRAT EDIT ADD - RP RECORDS
-		if(C && C.prefs && C.prefs.read_preference(/datum/preference/text/security))
-			S.fields["past_records"] = C.prefs.read_preference(/datum/preference/text/security)
-		else
-			S.fields["past_records"] = ""
+		S.fields["past_records"] = human_client?.prefs?.read_preference(/datum/preference/text/security) || ""
 		// SKYRAT EDIT END
 		security += S
 
