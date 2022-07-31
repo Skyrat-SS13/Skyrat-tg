@@ -16138,7 +16138,7 @@
 	dir = 1;
 	icon_state = "left";
 	name = "Hydroponics Desk";
-	req_access_txt = "35"
+	req_access = list("hydroponics")
 	},
 /obj/item/reagent_containers/glass/bucket,
 /turf/open/floor/iron/dark,
@@ -16149,7 +16149,7 @@
 /obj/machinery/door/window/right/directional/west{
 	dir = 1;
 	name = "Hydroponics Desk";
-	req_access_txt = "35"
+	req_access = list("hydroponics")
 	},
 /obj/item/food/monkeycube,
 /turf/open/floor/iron/dark,
@@ -18409,7 +18409,7 @@
 	dir = 2;
 	icon_state = "left";
 	name = "Robotics Desk";
-	req_access_txt = "29"
+	req_access = list("robotics")
 	},
 /obj/item/paper_bin,
 /obj/item/pen,
@@ -18467,7 +18467,6 @@
 	freq = 1400;
 	location = "Research Division"
 	},
-/obj/effect/mapping_helpers/airlock/access/any/science/general,
 /turf/open/floor/iron/dark,
 /area/station/science/research)
 "bkF" = (
@@ -22867,7 +22866,6 @@
 /obj/structure/cable,
 /obj/effect/mapping_helpers/airlock/access/any/medical/pharmacy,
 /obj/effect/mapping_helpers/airlock/access/any/medical/chemistry,
-/obj/effect/mapping_helpers/airlock/access/all/medical/general,
 /turf/open/floor/iron/white,
 /area/station/medical/chemistry)
 "bzZ" = (
@@ -23522,7 +23520,6 @@
 	name = "Research Shutters"
 	},
 /obj/item/folder/white,
-/obj/effect/mapping_helpers/airlock/access/any/science/general,
 /turf/open/floor/plating,
 /area/station/science/lab)
 "bCQ" = (
@@ -37378,7 +37375,6 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 4
 	},
-/obj/effect/mapping_helpers/airlock/access/any/medical/general,
 /turf/open/floor/iron/dark,
 /area/station/medical/morgue)
 "eUR" = (
@@ -60702,13 +60698,13 @@
 /area/station/security/execution/education)
 "xxM" = (
 /obj/machinery/door/window/left/directional/south{
-	name = "Mass Driver Door"
+	name = "Mass Driver Door";
+	req_access = list("ordnance")
 	},
 /obj/effect/turf_decal/loading_area,
 /obj/machinery/computer/pod/old/mass_driver_controller/ordnancedriver{
 	pixel_x = -24
 	},
-/obj/effect/mapping_helpers/airlock/access/any/science/ordnance,
 /turf/open/floor/iron,
 /area/station/science/ordnance/testlab)
 "xxO" = (
