@@ -37,7 +37,7 @@
 	var/new_height = tgui_input_number(user, "Set new height regulation:\n([0]-[LIQUID_HEIGHT_CONSIDER_FULL_TILE]. Use 0 to disable the regulation)\nThe pump will only siphon if environment is above the regulation", "Liquid Pump", max_value = LIQUID_HEIGHT_CONSIDER_FULL_TILE, min_value = 0)
 	if(isnull(new_height) || QDELETED(src))
 		return
-	height_regulator = new_height
+	height_regulator = sanitize_integer(new_height, 0, LIQUID_HEIGHT_CONSIDER_FULL_TILE, 0)
 
 /obj/machinery/plumbing/liquid_input_pump/examine(mob/user)
 	. = ..()
@@ -140,7 +140,7 @@
 	var/new_height = tgui_input_number(user, "Set new height regulation:\n([0]-[LIQUID_HEIGHT_CONSIDER_FULL_TILE]. Use 0 to disable the regulation)\nThe pump will only siphon if environment is below the regulation", "Liquid Pump", max_value = LIQUID_HEIGHT_CONSIDER_FULL_TILE, min_value = 0)
 	if(isnull(new_height) || QDELETED(src))
 		return
-	height_regulator = new_height
+	height_regulator = sanitize_integer(new_height, 0, LIQUID_HEIGHT_CONSIDER_FULL_TILE, 0)
 
 /obj/machinery/plumbing/liquid_output_pump/examine(mob/user)
 	. = ..()
