@@ -284,45 +284,6 @@
 
 	to_chat(user, span_notice("You successfully remove the NIFSoft"))
 
-/obj/machinery/nif_repairer
-	name = "NIF Repair Bed"
-	desc = "Lay on this and your NIF will repair over time" //Placeholder Description and name
-	icon = 'icons/obj/machines/stasis.dmi'
-	icon_state = "stasis"
-	base_icon_state = "stasis"
-	density = FALSE
-	obj_flags = NO_BUILD
-	can_buckle = TRUE
-	buckle_lying = 90
-	payment_department = ACCOUNT_MED
-	///How much is the user's NIF repaired by each process cycle?
-	var/nif_repair_rate = 0.2
-
-/obj/machinery/nif_repairer/post_buckle_mob(mob/living/buckled_mob)
-	. = ..()
-	occupant = buckled_mob
-
-/obj/machinery/nif_repairer/post_unbuckle_mob(mob/living/M)
-	. = ..()
-	occupant = null
-
-/obj/machinery/nif_repairer/process()
-	if(!(occupant && isliving(occupant)))
-		return FALSE
-
-	var/mob/living/carbon/human/buckled_human = occupant
-	if(!buckled_human.installed_nif)
-		return FALSE
-
-	var/obj/item/organ/internal/cyberimp/brain/nif/human_nif = buckled_human.installed_nif
-
-	human_nif.durability += nif_repair_rate
-
-	if(human_nif.durability > human_nif.max_durability)
-		human_nif.durability = human_nif.max_durability
-		to_chat(buckled_human, span_notice("[src] detecting that [human_nif] is fully repaired, unbuckles you."))
-		unbuckle_mob(buckled_human)
-
 //NIF autosurgeon. This is just here so that I can debug faster.
 /obj/item/autosurgeon/organ/nif
 	starting_organ = /obj/item/organ/internal/cyberimp/brain/nif
