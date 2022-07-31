@@ -48,9 +48,8 @@ GLOBAL_LIST_EMPTY(gangster_cell_phones)
 			continue //Remove if underlying cause (likely byond issue) is fixed. See TG PR #49004.
 		if(player_mob.stat != DEAD) //not dead, not important
 			continue
-		if(get_dist(player_mob, src) > 7 || player_mob.z != z) //they're out of range of normal hearing
-			if(!(player_mob.client.prefs.chat_toggles & CHAT_GHOSTEARS)) //they're talking normally and we have hearing at any range off
-				continue
+		if(!(player_mob.client.prefs.chat_toggles & CHAT_GHOSTRADIO)) // we have ghost radio off so we dont want to hear phones
+			continue
 		var/link = FOLLOW_LINK(player_mob, src)
 		to_chat(player_mob, span_gangradio("[link] <b>[speaker.name]</b> \[CELL: [gang_id]\] says, \"[message]\""))
 
