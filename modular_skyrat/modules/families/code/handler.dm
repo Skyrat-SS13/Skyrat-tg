@@ -114,7 +114,8 @@ GLOBAL_VAR(families_handler)
  */
 /datum/gang_handler/proc/pre_setup_analogue()
 	if(!GLOB.families_override_theme)
-		var/theme_to_use = pick(subtypesof(/datum/gang_theme))
+		var/list/themes_to_pick = subtypesof(/datum/gang_theme) - list(/datum/gang_theme/the_big_game)
+		var/theme_to_use = pick(themes_to_pick)
 		current_theme = new theme_to_use
 	else
 		current_theme = new GLOB.families_override_theme

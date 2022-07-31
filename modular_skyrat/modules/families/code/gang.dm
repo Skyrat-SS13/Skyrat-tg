@@ -329,11 +329,11 @@
 	roundend_category = "The Maintenance Snakes"
 	gang_name = "Maintenance Snakes"
 	gang_id = "TS"
-	acceptable_clothes = list(/obj/item/clothing/under/pants/classicjeans,
+	acceptable_clothes = list(/obj/item/clothing/under/pants/jeans,
 		/obj/item/clothing/suit/jacket,
 		/obj/item/clothing/mask/bandana/skull/black)
 	free_clothes = list(/obj/item/clothing/suit/jacket,
-		/obj/item/clothing/under/pants/classicjeans,
+		/obj/item/clothing/under/pants/jeans,
 		/obj/item/toy/crayon/spraycan)
 	antag_hud_name = "Snakes"
 	gang_team_type = /datum/team/gang/maintenace_snakes
