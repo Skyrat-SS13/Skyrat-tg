@@ -12,10 +12,13 @@
 	var/current_theme = "ntos"
 
 /obj/item/organ/internal/cyberimp/brain/nif/ui_interact(mob/user, datum/tgui/ui)
-	ui = SStgui.try_update_ui(user, src, ui) //I need to find a way to have this setup so that I people can use these while laying down.
+	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "NifPanel", name)
 		ui.open()
+
+/obj/item/organ/internal/cyberimp/brain/nif/ui_state(mob/user)
+	return GLOB.conscious_state
 
 /obj/item/organ/internal/cyberimp/brain/nif/ui_data(mob/user)
 	var/data = list()

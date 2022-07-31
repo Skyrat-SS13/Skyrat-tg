@@ -10,7 +10,9 @@
 
 	//User Variables
 	///What user is currently linked with the NIF?
-	var/mob/living/carbon/human/linked_mob
+	var/mob/living/carbon/human/linked_mob = null
+	///What CKEY does the original user have? Used to prevent theft
+	var/stored_ckey
 	///What access does the user have? This is used for role restricted NIFSofts.
 	var/list/user_access_list = list()
 	///Is the NIF properly calibrated yet? This is set at true for testing purposes
@@ -55,7 +57,11 @@
 	//How much durability is lost per death if any?
 	var/death_durability_loss = 10
 	///Does the NIF stay between rounds? By default, they do.
-	var/nif_persistence
+	var/nif_persistence = TRUE
+	///Is the NIF disabled? This will make it so that the NIF TGUI can still be seen, but not used.
+	var/disabled = FALSE
+	///Is the NIF completely broken? If this is true, the user won't be able to pull up the TGUI menu at all.
+	var/broken = FALSE
 
 	//Software Variables
 	///How many programs can the NIF store at once?
@@ -78,21 +84,28 @@
 /obj/item/organ/internal/cyberimp/brain/nif/Insert(mob/living/carbon/human/insertee)
 	. = ..()
 
-	linked_mob = insertee
+	if(!linked_mob)
+		linked_mob = insertee
+		linked_mob.ckey = stored_ckey
+
+	else if(stored_ckey != insertee.ckey)
+		broken = TRUE //You wouldn't steal a NIF.
+		to_chat(insertee, span_warning("[src] was already linked to a previous user. This implant will no longer work."))
+
 	loc = insertee // This needs to be done, otherwise TGUI will not pull up.
 	insertee.installed_nif = src
 	START_PROCESSING(SSobj, src)
 
 /obj/item/organ/internal/cyberimp/brain/nif/Remove(mob/living/carbon/organ_owner)
 	. = ..()
-	linked_mob.installed_nif = null
 	STOP_PROCESSING(SSobj, src)
 
 /obj/item/organ/internal/cyberimp/brain/nif/process(delta_time)
 	. = ..()
 
-	if(!linked_mob)
+	if(!linked_mob || broken)
 		return FALSE
+
 	if(IS_IN_STASIS(linked_mob))
 		return
 
@@ -192,6 +205,9 @@
 	return TRUE
 ///This is run whenever a nifsoft is installed
 /obj/item/organ/internal/cyberimp/brain/nif/proc/install_nifsoft(datum/nifsoft/loaded_nifsoft)
+	if(broken) //NIFSofts can't be installed to a broken NIF
+		return FALSE
+
 	if((length(loaded_nifsofts) >= max_nifsofts))
 		return FALSE
 
@@ -206,13 +222,23 @@
 	return TRUE
 
 /obj/item/organ/internal/cyberimp/brain/nif/proc/remove_nifsoft(datum/nifsoft/removed_nifsoft, silent = FALSE)
-	if(!is_type_in_list(removed_nifsoft, loaded_nifsofts))
+	if(!is_type_in_list(removed_nifsoft, loaded_nifsofts) || broken)
 		return FALSE
 
 	if(!silent)
 		to_chat(linked_mob, span_notice("[removed_nifsoft.name] has been removed."))
 
 	qdel(removed_nifsoft)
+	return TRUE
+
+/obj/item/organ/internal/cyberimp/brain/nif/proc/repair_nif(repair_amount)
+	if(durability == max_durability)
+		return FALSE
+
+	durability += repair_amount
+	if(durability > max_durability)
+		durability = max_durability
+
 	return TRUE
 
 // Action used to pull up the NIF menu
@@ -261,7 +287,7 @@
 	name = "NIFSoft Remover"
 	desc = "Removes a NIFSoft from someone." //Placeholder Description and name
 
-/obj/item/nifsoft_remover/attack(mob/living/carbon/human/target_mob, mob/living/user, params)
+/obj/item/nifsoft_remover/attack(mob/living/carbon/human/target_mob, mob/living/user)
 	. = ..()
 	var/obj/item/organ/internal/cyberimp/brain/nif/target_nif = target_mob.installed_nif
 
@@ -283,6 +309,37 @@
 		return FALSE
 
 	to_chat(user, span_notice("You successfully remove the NIFSoft"))
+
+///NIF Repair Kit.
+/obj/item/nif_repair_kit
+	name = "NIF repair kit"
+	desc = "Repairs NIFs" //Placeholder
+	icon = 'icons/obj/storage.dmi'
+	icon_state = "plasticbox"
+	w_class = WEIGHT_CLASS_SMALL
+	///How much does this repair each time it is used?
+	var/repair_amount = 20
+	///How many times can this be used?
+	var/uses = 5
+
+/obj/item/nif_repair_kit/attack(mob/living/carbon/human/mob_to_repair, mob/living/user)
+	. = ..()
+	if(!mob_to_repair.installed_nif)
+		to_chat(user, span_warning("[mob_to_repair] lacks a NIF"))
+
+	if(!do_after(user, 5 SECONDS, mob_to_repair))
+		return FALSE
+
+	if(!mob_to_repair.installed_nif.repair_nif(repair_amount))
+		to_chat(user, span_warning("The NIF you are trying to repair is already at max durbility"))
+		return FALSE
+
+	to_chat(user, span_notice("You successfully repair [mob_to_repair]'s NIF"))
+	to_chat(mob_to_repair, span_notice("[user] successfully repairs your NIF"))
+
+	--uses
+	if(!uses)
+		qdel(src)
 
 //NIF autosurgeon. This is just here so that I can debug faster.
 /obj/item/autosurgeon/organ/nif
