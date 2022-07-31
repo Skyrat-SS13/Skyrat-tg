@@ -5,7 +5,7 @@
 	glasses = /obj/item/clothing/glasses/sunglasses
 	ears = /obj/item/radio/headset/guild/command
 
-	uniform = /obj/item/clothing/under/enclaveo
+	uniform = /obj/item/clothing/under/syndicate/skyrat/enclaveo
 	suit = /obj/item/clothing/suit/armor/vest
 	suit_store = /obj/item/gun/ballistic/automatic/pistol/automag
 
@@ -38,7 +38,7 @@
 	glasses = /obj/item/clothing/glasses/sunglasses
 	ears = /obj/item/radio/headset/guild
 
-	uniform = /obj/item/clothing/under/enclave
+	uniform = /obj/item/clothing/under/syndicate/skyrat/enclave
 	suit = /obj/item/clothing/suit/armor/vest/alt
 	suit_store = /obj/item/gun/ballistic/automatic/m16
 
