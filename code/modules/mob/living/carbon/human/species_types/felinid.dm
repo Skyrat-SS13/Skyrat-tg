@@ -108,34 +108,22 @@
 	if(!silent)
 		to_chat(purrbated_human, span_boldnotice("You are no longer a cat."))
 
-<<<<<<< HEAD
-/datum/species/human/felinid/prepare_human_for_preview(mob/living/carbon/human/human)
-	human.hairstyle = "Hime Cut"
-	human.hair_color = "#ffcccc" // pink
-	human.update_hair(TRUE) // SKYRAT EDIT - Making the species menu icons work better - ORIGINAL: human.update_hair()
-
-	/** SKYRAT EDIT - Making the species menu icons work better - ORIGINAL:
-	var/obj/item/organ/internal/ears/cat/cat_ears = human.getorgan(/obj/item/organ/internal/ears/cat)
-	if (cat_ears)
-		cat_ears.color = human.hair_color
-		human.update_body()
-	**/ // START
-	human.dna.species.mutant_bodyparts["tail"] = list(MUTANT_INDEX_NAME = "Cat", MUTANT_INDEX_COLOR_LIST = list(human.hair_color))
-	human.dna.species.mutant_bodyparts["ears"] = list(MUTANT_INDEX_NAME = "Cat", MUTANT_INDEX_COLOR_LIST = list(human.hair_color))
-	human.update_mutant_bodyparts(TRUE)
-	human.update_body(TRUE)
-	// SKYRAT EDIT END
-=======
 /datum/species/human/felinid/prepare_human_for_preview(mob/living/carbon/human/human_for_preview)
 	human_for_preview.hairstyle = "Hime Cut"
 	human_for_preview.hair_color = "#ffcccc" // pink
 	human_for_preview.update_hair(is_creating = TRUE)
 
+	/* SKYRAT EDIT - Making the species menu icons work better - ORIGINAL:
 	var/obj/item/organ/internal/ears/cat/cat_ears = human_for_preview.getorgan(/obj/item/organ/internal/ears/cat)
 	if (cat_ears)
 		cat_ears.color = human_for_preview.hair_color
 		human_for_preview.update_body()
->>>>>>> 8a680eb9ec4 (Purrbation toggle and organ insert code refactor (#68738))
+	*/ // START
+	human_for_preview.dna.species.mutant_bodyparts["tail"] = list(MUTANT_INDEX_NAME = "Cat", MUTANT_INDEX_COLOR_LIST = list(human_for_preview.hair_color))
+	human_for_preview.dna.species.mutant_bodyparts["ears"] = list(MUTANT_INDEX_NAME = "Cat", MUTANT_INDEX_COLOR_LIST = list(human_for_preview.hair_color))
+	human_for_preview.update_mutant_bodyparts(TRUE)
+	human_for_preview.update_body(TRUE)
+	// SKYRAT EDIT END
 
 /datum/species/human/felinid/get_species_description()
 	return "Felinids are one of the many types of bespoke genetic \
