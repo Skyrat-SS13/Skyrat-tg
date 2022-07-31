@@ -84,6 +84,10 @@
 // SKYRAT EDIT ADDITION
 ///The limb fits a modular custom shape
 #define BODYTYPE_CUSTOM (1<<6)
+///The limb fits a taur body
+#define BODYTYPE_TAUR (1<<7)
+///The limb causes shoes to no longer be displayed, useful for taurs.
+#define BODYTYPE_HIDE_SHOES (1<<8)
 // SKYRAT EDIT END
 
 // Defines for Species IDs. Used to refer to the name of a species, for things like bodypart names or species preferences.

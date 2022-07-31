@@ -806,7 +806,7 @@
 
 		if(dna.species.mutant_bodyparts["taur"])
 			var/datum/sprite_accessory/taur/taur_accessory = GLOB.sprite_accessories["taur"][dna.species.mutant_bodyparts["taur"][MUTANT_INDEX_NAME]]
-			if(taur_accessory.hide_legs)
+			if(taur_accessory.flags_for_organ & SPRITE_ACCESSORY_HIDE_SHOES)
 				return
 
 		if(num_legs<2)
