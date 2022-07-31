@@ -86,6 +86,7 @@
 		/obj/item/clothing/head/fedora/fedblack = 5,
 		/obj/item/clothing/head/fedora/fedbrown = 5,
 		/obj/item/clothing/suit/croptop = 5,
+		/obj/item/clothing/under/sweater = 5,
 		/obj/item/clothing/under/sweater/black = 5,
 		/obj/item/clothing/under/sweater/blue = 5,
 		/obj/item/clothing/under/sweater/green = 5,
