@@ -108,7 +108,7 @@
 /obj/item/storage/belt/security/Initialize()
 	. = ..()
 	create_storage(type = /datum/storage/security)
-	Atom_storage.max_slots = 5
+	atom_storage.max_slots = 5
 
 /obj/item/storage/belt/security/webbing
 	uses_advanced_reskins = FALSE
