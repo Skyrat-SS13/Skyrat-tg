@@ -87,7 +87,7 @@
 		passthroughable |= NORTH | EAST | SOUTH
 
 /mob/living/CanAllowThrough(atom/movable/mover, border_dir)
-	// Make sure to not allow projectiles of any kind past.
+	// Make sure to not allow projectiles of any kind past where they normally wouldn't.
 	if(!istype(mover, /obj/projectile) && !mover.throwing && passthroughable & border_dir)
 		return TRUE
 	return ..()
