@@ -112,7 +112,7 @@
 
 /datum/outfit/ds2/syndicate
 	name = "DS-2 Operative"
-	uniform = /obj/item/clothing/under/syndicate
+	uniform = /obj/item/clothing/under/syndicate/skyrat/tactical
 	shoes = /obj/item/clothing/shoes/combat
 	ears = /obj/item/radio/headset/interdyne
 	back = /obj/item/storage/backpack
@@ -122,12 +122,12 @@
 
 /datum/outfit/ds2/syndicate/service
 	name = "DS-2 Staff"
-	uniform = /obj/item/clothing/under/syndicate/overalls
+	uniform = /obj/item/clothing/under/syndicate/skyrat/overalls
 	id_trim = /datum/id_trim/syndicom/skyrat/assault/syndicatestaff
 
 /datum/outfit/ds2/syndicate/enginetech
 	name = "DS-2 Engine Technician"
-	uniform = /obj/item/clothing/under/syndicate/overalls
+	uniform = /obj/item/clothing/under/syndicate/skyrat/overalls
 	head = /obj/item/clothing/head/soft/sec/syndicate
 	id_trim = /datum/id_trim/syndicom/skyratnoicon/enginetechnician
 	gloves = /obj/item/clothing/gloves/combat
