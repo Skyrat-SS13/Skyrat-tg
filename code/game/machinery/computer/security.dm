@@ -578,6 +578,7 @@ What a mess.*/
 						P.info += text("Name: [] ID: []<BR>\nGender: []<BR>\nAge: []<BR>", active1.fields["name"], active1.fields["id"], active1.fields["gender"], active1.fields["age"])
 						P.info += "\nSpecies: [active1.fields["species"]]<BR>"
 						P.info += text("\nFingerprint: []<BR>\nPhysical Status: []<BR>\nMental Status: []<BR>", active1.fields["fingerprint"], active1.fields["p_stat"], active1.fields["m_stat"])
+<<<<<<< HEAD
 						//SKYRAT EDIT ADD - RP RECORDS
 						if(!(active1.fields["past_records"] == ""))
 							P.info += "\nGeneral Records:\n[active1.fields["past_records"]]\n"
@@ -592,6 +593,13 @@ What a mess.*/
 							P.info += "\nSecurity Records:\n[active2.fields["past_records"]]\n"
 						P.info += text("Criminal Status: []", active2.fields["criminal"])
 						//SKYRAT EDIT END
+=======
+					else
+						P.info += "<B>General Record Lost!</B><BR>"
+					if((istype(active2, /datum/data/record) && GLOB.data_core.security.Find(active2)))
+						P.info += text("<BR>\n<CENTER><B>Security Data</B></CENTER><BR>\nCriminal Status: []", active2.fields["criminal"])
+
+>>>>>>> 941a7678dd1 (Revert "unifies security record printing" (#68925))
 						P.info += "<BR>\n<BR>\nCrimes:<BR>\n"
 						P.info +={"<table style="text-align:center;" border="1" cellspacing="0" width="100%">
 <tr>
