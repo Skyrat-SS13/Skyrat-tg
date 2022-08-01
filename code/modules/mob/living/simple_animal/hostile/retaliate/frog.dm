@@ -51,6 +51,7 @@
 		icon_dead = "rare_frog_dead"
 		butcher_results = list(/obj/item/food/nugget = 5)
 		poison_type = /datum/reagent/drug/mushroomhallucinogen
+
 	var/static/list/loc_connections = list(
 		COMSIG_ATOM_ENTERED = .proc/on_entered,
 	)
