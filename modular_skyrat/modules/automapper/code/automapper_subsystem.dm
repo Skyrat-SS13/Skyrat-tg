@@ -95,6 +95,7 @@ SUBSYSTEM_DEF(automapper)
 		/obj/structure/bookcase,
 		/obj/structure/closet,
 		/obj/item/storage,
+		/obj/item/reagent_containers,
 	))
 
 	var/previous_initialized_value = SSatoms.initialized
