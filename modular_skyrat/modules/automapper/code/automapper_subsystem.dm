@@ -90,7 +90,12 @@ SUBSYSTEM_DEF(automapper)
 /datum/controller/subsystem/automapper/proc/init_contents(atom/parent)
 	var/static/list/mapload_args = list(TRUE)
 	// Don't even initialize things in this list. Very specific edge cases.
-	var/static/list/type_blacklist = typecacheof(list(/obj/docking_port/stationary, /obj/structure/bookcase))
+	var/static/list/type_blacklist = typecacheof(list(
+		/obj/docking_port/stationary,
+		/obj/structure/bookcase,
+		/obj/structure/closet,
+		/obj/item/storage,
+	))
 
 	var/previous_initialized_value = SSatoms.initialized
 	SSatoms.initialized = INITIALIZATION_INNEW_MAPLOAD
