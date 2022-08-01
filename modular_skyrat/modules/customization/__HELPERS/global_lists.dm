@@ -6,30 +6,9 @@
 	populate_total_ui_len_by_block()
 	populate_total_uf_len_by_block()
 	make_augment_references()
-	make_culture_references()
 	//We're loading donators here because it's the least intrusive way modularly
 	load_donators()
 	load_veteran_players()
-
-/proc/make_culture_references()
-	for(var/path in subtypesof(/datum/cultural_info/culture))
-		var/datum/cultural_info/L = path
-		if(!initial(L.name))
-			continue
-		L = new path()
-		GLOB.culture_cultures[path] = L
-	for(var/path in subtypesof(/datum/cultural_info/location))
-		var/datum/cultural_info/L = path
-		if(!initial(L.name))
-			continue
-		L = new path()
-		GLOB.culture_locations[path] = L
-	for(var/path in subtypesof(/datum/cultural_info/faction))
-		var/datum/cultural_info/L = path
-		if(!initial(L.name))
-			continue
-		L = new path()
-		GLOB.culture_factions[path] = L
 
 /proc/make_sprite_accessory_references()
 	// Here we build the global list for all accessories
@@ -88,14 +67,14 @@
 /proc/make_augment_references()
 	// Here we build the global loadout lists
 	for(var/path in subtypesof(/datum/augment_item))
-		var/datum/augment_item/L = path
-		if(initial(L.path))
-			L = new path()
-			GLOB.augment_items[L.path] = L
+		var/datum/augment_item/cultural_info = path
+		if(initial(cultural_info.path))
+			cultural_info = new path()
+			GLOB.augment_items[cultural_info.path] = cultural_info
 
-			if(!GLOB.augment_slot_to_items[L.slot])
-				GLOB.augment_slot_to_items[L.slot] = list()
-				if(!GLOB.augment_categories_to_slots[L.category])
-					GLOB.augment_categories_to_slots[L.category] = list()
-				GLOB.augment_categories_to_slots[L.category] += L.slot
-			GLOB.augment_slot_to_items[L.slot] += L.path
+			if(!GLOB.augment_slot_to_items[cultural_info.slot])
+				GLOB.augment_slot_to_items[cultural_info.slot] = list()
+				if(!GLOB.augment_categories_to_slots[cultural_info.category])
+					GLOB.augment_categories_to_slots[cultural_info.category] = list()
+				GLOB.augment_categories_to_slots[cultural_info.category] += cultural_info.slot
+			GLOB.augment_slot_to_items[cultural_info.slot] += cultural_info.path
