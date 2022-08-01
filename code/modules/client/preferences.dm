@@ -113,10 +113,11 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/loaded_preferences_successfully = load_preferences()
 	if(loaded_preferences_successfully)
 		if(load_character())
-			// Sanitize languages.
+			// SKYRAT EDIT START - Sanitizing languages
 			for(var/datum/language/lang_path as anything in languages)
 				if(initial(lang_path.secret))
 					languages.Remove(lang_path)
+			// SKYRAT EDIT END
 	//we couldn't load character data so just randomize the character appearance + name
 	randomise_appearance_prefs() //let's create a random character then - rather than a fat, bald and naked man.
 	if(C)
