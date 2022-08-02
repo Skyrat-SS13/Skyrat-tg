@@ -48,7 +48,7 @@
 
 /datum/supply_pack/goody/nri_rations
 	name = "Surplus NRI Combat Ration"
-	desc = "A single surplus ration pack from the NRI Defense Colleague. Comes with a standard-issue selection of food selected and approved by at least one Imperial regiment."
+	desc = "A single surplus ration pack from the NRI Defense Collegium. Comes with a standard-issue selection of food selected and approved by at least one Imperial regiment."
 	cost = PAYCHECK_COMMAND * 2 //Less nourishing than the mothic one but you get cigarettes and wo'oh.
 	contains = list(/obj/item/storage/box/nri_rations)
 
@@ -65,7 +65,7 @@
 
 /datum/supply_pack/goody/nri_gear
 	name = "NRI Voentorg Gear"
-	desc = "Contains a backpack full of military-grade NRI Defense Colleague standard equipment previously used by the most of their military."
+	desc = "Contains a backpack full of military-grade NRI Defense Collegium standard equipment previously used by the most of their military."
 	cost = PAYCHECK_CREW * 40
 	contains = list(/obj/item/storage/backpack/nri/larp)
 	access_view = ACCESS_BRIG

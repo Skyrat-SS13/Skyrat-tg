@@ -56,7 +56,7 @@
 
 
 /obj/item/advanced_choice_beacon/nri
-	name = "\improper NRI Defense Colleague supply beacon"
+	name = "\improper NRI Defense Collegium supply beacon"
 	desc = "Used to request your job supplies, use in hand to do so!"
 
 /obj/item/advanced_choice_beacon/nri/get_available_options()
@@ -74,13 +74,13 @@
 	return options
 
 /obj/item/advanced_choice_beacon/nri/engineer
-	name = "\improper NRI Defense Colleague engineering supply beacon"
+	name = "\improper NRI Defense Collegium engineering supply beacon"
 	desc = "Used to request your job supplies, use in hand to do so!"
 
 	possible_choices = list(/obj/structure/closet/crate/secure/weapon/nri/engineer/defense, /obj/structure/closet/crate/secure/weapon/nri/engineer/offense)
 
 /obj/item/advanced_choice_beacon/nri/heavy
-	name = "\improper NRI Defense Colleague heavy armaments supply beacon"
+	name = "\improper NRI Defense Collegium heavy armaments supply beacon"
 	desc = "Used to request your job supplies, use in hand to do so!"
 
 	possible_choices = list(/obj/structure/closet/crate/secure/weapon/nri/heavy/defense,/obj/structure/closet/crate/secure/weapon/nri/heavy/offense)
@@ -137,7 +137,7 @@
 
 /obj/structure/closet/crate/secure/weapon/nri
 	name = "military supplies crate"
-	desc = "A secure military-grade crate. According to the markings, -as well as mixed Cyrillics-, it was shipped and provided by the NRI Defense Colleague."
+	desc = "A secure military-grade crate. According to the markings, -as well as mixed Cyrillics-, it was shipped and provided by the NRI Defense Collegium."
 	req_access = list(ACCESS_CENT_GENERAL)
 	var/loadout_desc = "Whoever picks this is might be busy debugging this copypasted code."
 
