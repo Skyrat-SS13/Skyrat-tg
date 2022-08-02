@@ -5,7 +5,7 @@
 /// Progresionless traitor
 /datum/antagonist/traitor/saboteur
 	name = "\improper Syndicate Saboteur"
-	roundend_category = "syndicate saboteurs"
+	roundend_category = "Syndicate Saboteurs"
 	antagpanel_category = "Syndicate Saboteur"
 	job_rank = ROLE_SYNDICATE_SABOTEUR
 	progression_enabled = FALSE
