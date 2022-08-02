@@ -32,7 +32,7 @@
 		/obj/item/clothing/under/misc/polyjumpsuit = 5,
 		/obj/item/clothing/under/dress/skirt/polychromic = 5,
 		/obj/item/clothing/under/dress/skirt/polychromic/pleated = 5,
-		/obj/item/clothing/suit/hooded/wintercoat/polychromic = 5,
+		/obj/item/clothing/suit/hooded/wintercoat/colourable = 5,
 		/obj/item/clothing/neck/cloak/colourable = 5,
 		/obj/item/clothing/neck/cloak/colourable/veil = 5,
 		/obj/item/clothing/neck/cloak/colourable/shroud = 5,
