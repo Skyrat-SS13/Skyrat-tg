@@ -80,13 +80,13 @@
 	. = ..()
 	spawned_human.grant_language(/datum/language/uncommon, TRUE, TRUE, LANGUAGE_MIND)
 
-/obj/item/clothing/under/rank/security/officer/hecu
+/obj/item/clothing/under/rank/security/officer/hecu //Subtype of security for armor (and because I dont want to repath it)
 	name = "urban camouflage BDU"
 	desc = "A baggy military camouflage uniform with an ERDL pattern. The range of whites and greys proves useful in urban environments."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "hecu_uniform"
-	inhand_icon_state = "r_suit"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/syndicate.dmi' //Camo goes into the syndicate.dmi
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/syndicate.dmi'
+	icon_state = "urban_camo"
+	inhand_icon_state = "w_suit"
 	uses_advanced_reskins = FALSE
 	unique_reskin = null
 
