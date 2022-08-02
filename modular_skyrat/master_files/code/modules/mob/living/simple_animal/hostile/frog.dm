@@ -8,4 +8,4 @@
 
 /mob/living/simple_animal/hostile/retaliate/frog/silent/Initialize(mapload)
 	. = ..()
-	RemoveElement(/datum/element/connect_loc, mapload)
+	RemoveElement(/datum/element/connect_loc, loc_connections)
