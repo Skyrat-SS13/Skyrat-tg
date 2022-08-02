@@ -210,7 +210,7 @@
 
 /obj/item/paper/fluff/xenoarch_guide
 	name = "xenoarchaeology guide - MUST READ"
-	info = {"<b><center>Xenoarchaeology Guide</center></b><br> \
+	default_raw_text = {"<b><center>Xenoarchaeology Guide</center></b><br> \
 			Let's start right from the beginning: what is Xenoarchaeology?<br> \
 			Great question! Xenoarchaeology is the study of ancient foreign bodies that are trapped within strange rocks.<br> \
 			Your goal as a xenoarchaeologist is to find these strange rocks and unearth the secrets that are held within.<br> \

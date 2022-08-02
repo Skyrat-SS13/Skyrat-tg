@@ -575,38 +575,25 @@ What a mess.*/
 					var/obj/item/paper/printed_paper = new /obj/item/paper(loc)
 					var/final_paper_text = "<CENTER><B>Security Record - (SR-[GLOB.data_core.securityPrintCount])</B></CENTER><BR>"
 					if((istype(active1, /datum/data/record) && GLOB.data_core.general.Find(active1)))
-<<<<<<< HEAD
-						P.info += text("Name: [] ID: []<BR>\nGender: []<BR>\nAge: []<BR>", active1.fields["name"], active1.fields["id"], active1.fields["gender"], active1.fields["age"])
-						P.info += "\nSpecies: [active1.fields["species"]]<BR>"
-						P.info += text("\nFingerprint: []<BR>\nPhysical Status: []<BR>\nMental Status: []<BR>", active1.fields["fingerprint"], active1.fields["p_stat"], active1.fields["m_stat"])
-						//SKYRAT EDIT ADD - RP RECORDS
-						if(!(active1.fields["past_records"] == ""))
-							P.info += "\nGeneral Records:\n[active1.fields["past_records"]]\n"
-						//SKYRAT EDIT ADD END
-=======
 						final_paper_text += text("Name: [] ID: []<BR>\nGender: []<BR>\nAge: []<BR>", active1.fields["name"], active1.fields["id"], active1.fields["gender"], active1.fields["age"])
 						final_paper_text += "\nSpecies: [active1.fields["species"]]<BR>"
 						final_paper_text += text("\nFingerprint: []<BR>\nPhysical Status: []<BR>\nMental Status: []<BR>", active1.fields["fingerprint"], active1.fields["p_stat"], active1.fields["m_stat"])
->>>>>>> 786ac5c8552 ([MDB Ignore][Bounty][Complete Refactor] Papercode Redux: Too Many Damn Files <Map Conflict Edition> (#68612))
+						//SKYRAT EDIT ADD - RP RECORDS
+						if(!(active1.fields["past_records"] == ""))
+							final_paper_text += "\nGeneral Records:\n[active1.fields["past_records"]]\n"
+						//SKYRAT EDIT ADD END
 					else
 						final_paper_text += "<B>General Record Lost!</B><BR>"
 					if((istype(active2, /datum/data/record) && GLOB.data_core.security.Find(active2)))
-<<<<<<< HEAD
-						// P.info += text("<BR>\n<CENTER><B>Security Data</B></CENTER><BR>\nCriminal Status: []", active2.fields["criminal"]) // SKYRAT EDIT ORIGINAL
-						//SKYRAT EDIT ADD - RP RECORDS
-						P.info += text("<BR>\n<CENTER><B>Security Data</B></CENTER><BR>\n")
+						// final_paper_text += text("<BR>\n<CENTER><B>Security Data</B></CENTER><BR>\nCriminal Status: []", active2.fields["criminal"]) // SKYRAT EDIT ORIGINAL
+						//SKYRAT EDIT ADDITION START - RP RECORDS
+						final_paper_text += text("<BR>\n<CENTER><B>Security Data</B></CENTER><BR>\n")
 						if(!(active2.fields["past_records"] == ""))
-							P.info += "\nSecurity Records:\n[active2.fields["past_records"]]\n"
-						P.info += text("Criminal Status: []", active2.fields["criminal"])
+							final_paper_text += "\nSecurity Records:\n[active2.fields["past_records"]]\n"
+						final_paper_text += text("Criminal Status: []", active2.fields["criminal"])
 						//SKYRAT EDIT END
-						P.info += "<BR>\n<BR>\nCrimes:<BR>\n"
-						P.info +={"<table style="text-align:center;" border="1" cellspacing="0" width="100%">
-=======
-						final_paper_text += text("<BR>\n<CENTER><B>Security Data</B></CENTER><BR>\nCriminal Status: []", active2.fields["criminal"])
-
 						final_paper_text += "<BR>\n<BR>\nCrimes:<BR>\n"
 						final_paper_text +={"<table style="text-align:center;" border="1" cellspacing="0" width="100%">
->>>>>>> 786ac5c8552 ([MDB Ignore][Bounty][Complete Refactor] Papercode Redux: Too Many Damn Files <Map Conflict Edition> (#68612))
 <tr>
 <th>Crime</th>
 <th>Details</th>

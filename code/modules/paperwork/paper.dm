@@ -530,27 +530,8 @@
 				to_chat(usr, pick("You try to stamp but you miss!", "There is no where else you can stamp!"))
 				return TRUE
 
-<<<<<<< HEAD
-			if(paper_len > MAX_PAPER_LENGTH)
-				// Side note, the only way we should get here is if
-				// the javascript was modified, somehow, outside of
-				// byond.  but right now we are logging it as
-				// the generated html might get beyond this limit
-				log_paper("[key_name(ui.user)] writing to paper [name], and overwrote it by [paper_len-MAX_PAPER_LENGTH]")
-			if(paper_len == 0)
-				to_chat(ui.user, pick("Writing block strikes again!", "You forgot to write anthing!"))
-			else
-				log_paper("[key_name(ui.user)] writing to paper [name]")
-				if(info != in_paper)
-					to_chat(ui.user, "You have added to your paper masterpiece!");
-					info = in_paper
-					add_info = null
-					add_info_style = null
-					update_static_data(usr,ui)
-=======
 			add_stamp(stamp_class, stamp_x, stamp_y, stamp_rotation, stamp_icon_state)
 			user.visible_message(span_notice("[user] stamps [src] with \the [holding.name]!"), span_notice("You stamp [src] with \the [holding.name]!"))
->>>>>>> 786ac5c8552 ([MDB Ignore][Bounty][Complete Refactor] Papercode Redux: Too Many Damn Files <Map Conflict Edition> (#68612))
 
 			update_appearance()
 			update_static_data(user, ui)
