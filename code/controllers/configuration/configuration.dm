@@ -378,16 +378,9 @@ Example config:
 		return
 
 	log_config("Loading config file word_filter.toml...")
-<<<<<<< HEAD
-
-	var/list/word_filter = rustg_read_toml_file("[directory]/word_filter.toml")
-	if (!islist(word_filter))
-		var/message = "The word filter configuration did not output a list, contact someone with configuration access to make sure it's setup properly."
-=======
 	var/list/result = rustg_raw_read_toml_file("[directory]/word_filter.toml")
 	if(!result["success"])
 		var/message = "The word filter is not configured correctly! [result["content"]]"
->>>>>>> a1e716b60a7 (Blargedy Blarg Blarg Blarg - Word Filter Error Fix (#68905))
 		log_config(message)
 		DelayedMessageAdmins(message)
 		return
