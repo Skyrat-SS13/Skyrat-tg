@@ -1,24 +1,19 @@
-// Synth bois!
-/obj/item/bodypart/head/robot/mutant/human
-	icon_greyscale = 'modular_skyrat/master_files/icons/mob/species/human_parts_greyscale.dmi'
-	limb_id = SPECIES_HUMAN
+//Skyrat's version of basic (human) limbs.
 
-/obj/item/bodypart/chest/robot/mutant/human
+/obj/item/bodypart/head
 	icon_greyscale = 'modular_skyrat/master_files/icons/mob/species/human_parts_greyscale.dmi'
-	limb_id = SPECIES_HUMAN
 
-/obj/item/bodypart/l_arm/robot/mutant/human
+/obj/item/bodypart/chest
 	icon_greyscale = 'modular_skyrat/master_files/icons/mob/species/human_parts_greyscale.dmi'
-	limb_id = SPECIES_HUMAN
 
-/obj/item/bodypart/r_arm/robot/mutant/human
+/obj/item/bodypart/l_arm
 	icon_greyscale = 'modular_skyrat/master_files/icons/mob/species/human_parts_greyscale.dmi'
-	limb_id = SPECIES_HUMAN
 
-/obj/item/bodypart/l_leg/robot/mutant/human
+/obj/item/bodypart/r_arm
 	icon_greyscale = 'modular_skyrat/master_files/icons/mob/species/human_parts_greyscale.dmi'
-	limb_id = SPECIES_HUMAN
 
-/obj/item/bodypart/r_leg/robot/mutant/human
+/obj/item/bodypart/l_leg
 	icon_greyscale = 'modular_skyrat/master_files/icons/mob/species/human_parts_greyscale.dmi'
-	limb_id = SPECIES_HUMAN
+
+/obj/item/bodypart/r_leg
+	icon_greyscale = 'modular_skyrat/master_files/icons/mob/species/human_parts_greyscale.dmi'
