@@ -592,7 +592,6 @@ What a mess.*/
 							P.info += "\nSecurity Records:\n[active2.fields["past_records"]]\n"
 						P.info += text("Criminal Status: []", active2.fields["criminal"])
 						//SKYRAT EDIT END
-
 						P.info += "<BR>\n<BR>\nCrimes:<BR>\n"
 						P.info +={"<table style="text-align:center;" border="1" cellspacing="0" width="100%">
 <tr>
