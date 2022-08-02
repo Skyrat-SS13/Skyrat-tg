@@ -35,6 +35,7 @@
 	flavour_text = "Unfortunately, your hated enemy, Nanotrasen, has begun mining in this sector. Continue operating as best you can, and try to keep a low profile."
 	quirks_enabled = TRUE
 	random_appearance = FALSE
+	computer_area = /area/ruin/space/has_grav/skyrat/interdynefob/service/dorms
 
 /obj/effect/mob_spawn/ghost_role/human/ds2/prisoner
 	name = "Syndicate Prisoner"
@@ -111,7 +112,7 @@
 
 /datum/outfit/ds2/syndicate
 	name = "DS-2 Operative"
-	uniform = /obj/item/clothing/under/syndicate
+	uniform = /obj/item/clothing/under/syndicate/skyrat/tactical
 	shoes = /obj/item/clothing/shoes/combat
 	ears = /obj/item/radio/headset/interdyne
 	back = /obj/item/storage/backpack
@@ -121,12 +122,12 @@
 
 /datum/outfit/ds2/syndicate/service
 	name = "DS-2 Staff"
-	uniform = /obj/item/clothing/under/syndicate/overalls
+	uniform = /obj/item/clothing/under/syndicate/skyrat/overalls
 	id_trim = /datum/id_trim/syndicom/skyrat/assault/syndicatestaff
 
 /datum/outfit/ds2/syndicate/enginetech
 	name = "DS-2 Engine Technician"
-	uniform = /obj/item/clothing/under/syndicate/overalls
+	uniform = /obj/item/clothing/under/syndicate/skyrat/overalls
 	head = /obj/item/clothing/head/soft/sec/syndicate
 	id_trim = /datum/id_trim/syndicom/skyratnoicon/enginetechnician
 	gloves = /obj/item/clothing/gloves/combat
@@ -282,6 +283,7 @@
 	loadout_enabled = TRUE
 	quirks_enabled = TRUE
 	random_appearance = FALSE
+	computer_area = /area/ruin/space/has_grav/port_tarkon/centerhall
 
 /datum/outfit/tarkon
 	name = "default port tarkon outfit"
@@ -496,3 +498,13 @@
 	name = "Freighter Ship"
 	icon_state = "yellow"
 
+//CRYO CONSOLES
+/obj/machinery/computer/cryopod/interdyne
+	radio = /obj/item/radio/headset/interdyne
+	announcement_channel = RADIO_CHANNEL_INTERDYNE
+	req_one_access = list("syndicate_leader")
+
+/obj/machinery/computer/cryopod/tarkon
+	radio = /obj/item/radio/headset/tarkon
+	announcement_channel = RADIO_CHANNEL_TARKON
+	req_one_access = list("tarkon")

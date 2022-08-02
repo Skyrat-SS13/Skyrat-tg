@@ -449,9 +449,11 @@
 
 					// They equipped an item in the meantime
 					if (!isnull(strippable_item.get_item(owner)))
+						user.put_in_hands(held_item)
 						return
 
 					if (!user.Adjacent(owner))
+						user.put_in_hands(held_item)
 						return
 
 					strippable_item.finish_equip(owner, held_item, user)

@@ -445,6 +445,15 @@
     name = "Dark and Brooding Lizard Plushie"
     item_path = /obj/item/toy/plush/skyrat/plushie_winrow
 
+/datum/loadout_item/toys/plushie_star
+    name = "Star Angel Plushie"
+    item_path = /obj/item/toy/plush/skyrat/plushie_star
+
+/datum/loadout_item/suit/rainbowcoat
+	name = "Rainbow Coat"
+	item_path = /obj/item/clothing/suit/toggle/rainbowcoat
+	ckeywhitelist = list("dudewithatude")
+
 /datum/loadout_item/head/recruiter_cap
 	name = "Recruiter's Cap"
 	item_path = /obj/item/clothing/head/recruiter_cap

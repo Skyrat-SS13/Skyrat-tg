@@ -136,8 +136,8 @@ GLOBAL_VAR_INIT(successful_blood_chem, 0)
 	icon_state = "brainslug"
 	icon_living = "brainslug"
 	icon_dead = "brainslug_dead"
-	maxHealth = 50
-	health = 50
+	maxHealth = 25
+	health = 25
 	//they need to be able to pass tables and mobs
 	pass_flags = PASSTABLE | PASSMOB
 	//they are below mobs, or below tables
