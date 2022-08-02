@@ -17,7 +17,7 @@
 
 /obj/item/clothing/shoes/griffin/Initialize(mapload)
 	. = ..()
-	
+
 	create_storage(type = /datum/storage/pockets/shoes)
 
 /obj/item/clothing/shoes/singery
@@ -50,12 +50,6 @@
 	can_be_tied = FALSE
 	species_exception = list(/datum/species/golem)
 
-/obj/item/clothing/shoes/yakuza
-	name = "tojo clan shoes"
-	desc = "Steel-toed and intimidating."
-	icon_state = "MajimaShoes"
-	inhand_icon_state = "MajimaShoes_worn"
-
 /obj/item/clothing/shoes/jackbros
 	name = "frosty boots"
 	desc = "For when you're stepping on up to the plate."
@@ -68,17 +62,24 @@
 	icon_state = "SwagShoes"
 	inhand_icon_state = "SwagShoes"
 
-/obj/item/clothing/shoes/phantom
-	name = "phantom shoes"
-	desc = "Excellent for when you need to do cool flashy flips."
-	icon_state = "phantom_shoes"
-	inhand_icon_state = "phantom_shoes"
+/obj/item/clothing/shoes/glow
+	name = "glow shoes"
+	desc = "t3h c00L3st sh03z j00'LL 3v3r f1nd."
+	icon_state = "glow_shoes"
+	inhand_icon_state = "glow_shoes"
+
+/obj/item/clothing/shoes/jackbros
+	name = "frosty boots"
+	desc = "For when you're stepping on up to the plate."
+	icon_state = "JackFrostShoes"
+	inhand_icon_state = "JackFrostShoes_worn"
 
 /obj/item/clothing/shoes/saints
 	name = "saints sneakers"
 	desc = "Officially branded Saints sneakers. Incredibly valuable!"
 	icon_state = "saints_shoes"
 	inhand_icon_state = "saints_shoes"
+<<<<<<< HEAD
 
 /obj/item/clothing/shoes/morningstar
 	name = "morningstar boots"
@@ -104,3 +105,5 @@
 	icon_state = "sneakers_red"
 	inhand_icon_state = "sneakers_red"
 
+=======
+>>>>>>> f90b433a4fa (The GAGening: Families edition (#68725))
