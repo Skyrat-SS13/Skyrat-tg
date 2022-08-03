@@ -3,26 +3,16 @@
 	/// Our load turf
 	var/turf/load_turf
 	/// The map for which we load on
-	var/override_map_name
+	var/required_map
+	/// Touches builtin map. Clears the area manually instead of blacklisting
+	var/affects_builtin_map
 
-/**
- * Used to calculate the area affected and set up the template for immediate and easy loading.
- */
-/datum/map_template/automap_template/proc/preload(map_file, incoming_override_map_name, incoming_load_turf, template_name)
-	if(!map_file)
+/datum/map_template/automap_template/New(path, rename, incoming_required_map, incoming_load_turf)
+	. = ..(path, rename, FALSE)
+
+	if(!incoming_required_map || !incoming_load_turf)
 		return
-	mappath = map_file
 
-	if(!incoming_override_map_name)
-		return
-	override_map_name = incoming_override_map_name
-
-	if(template_name)
-		name = template_name
-
-	if(incoming_load_turf)
-		load_turf = incoming_load_turf
-
-	preload_size(mappath) // We need to preload this so we can get the affected turfs to clear them up.
-
-
+	required_map = incoming_required_map
+	load_turf = incoming_load_turf
+	affects_builtin_map = incoming_required_map == AUTOMAPPER_MAP_BUILTIN

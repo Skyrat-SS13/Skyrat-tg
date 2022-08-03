@@ -36,10 +36,15 @@ SUBSYSTEM_DEF(automapper)
 	if(!islist(map_names))
 		map_names = list(map_names)
 	for(var/template in loaded_config["templates"])
-		if(!(loaded_config["templates"][template]["required_map"] in map_names))
-			continue
-
 		var/selected_template = loaded_config["templates"][template]
+		var/required_map = selected_template["required_map"]
+
+		// !builtin is a magic code for built in maps, ie CentCom levels.
+		// We'll pretend it's loaded with the station z-level, because they by definition they are loaded before the station z-levels.
+		var/requires_builtin = (required_map == AUTOMAPPER_MAP_BUILTIN) && ((SSmapping.config.map_file in map_names) || SSmapping.config.map_file == map_names)
+
+		if(!requires_builtin && !(required_map in map_names))
+			continue
 
 		var/list/coordinates = selected_template["coordinates"]
 		if(LAZYLEN(coordinates) != 3)
@@ -57,10 +62,7 @@ SUBSYSTEM_DEF(automapper)
 		if(!fexists(map_file))
 			CRASH("[template] could not find map file [map_file]!")
 
-		var/datum/map_template/automap_template/map = new()
-
-		map.preload(map_file, selected_template["required_map"], load_turf, template)
-
+		var/datum/map_template/automap_template/map = new(map_file, template, required_map, load_turf)
 		preloaded_map_templates += map
 
 /**
@@ -70,11 +72,46 @@ SUBSYSTEM_DEF(automapper)
 	if(!islist(map_names))
 		map_names = list(map_names)
 	for(var/datum/map_template/automap_template/iterating_template as anything in preloaded_map_templates)
-		if(!(iterating_template.override_map_name in map_names))
+		if(iterating_template.affects_builtin_map && ((SSmapping.config.map_file in map_names) || SSmapping.config.map_file == map_names))
+			// CentComm already started loading objects, place them in the netherzone
+			for(var/turf/old_turf as anything in iterating_template.get_affected_turfs(iterating_template.load_turf, FALSE))
+				init_contents(old_turf)
+		else if(!(iterating_template.required_map in map_names))
 			continue
 		if(iterating_template.load(iterating_template.load_turf, FALSE))
-			add_startup_message("AUTOMAPPER: Successfully loaded map template [iterating_template.name] at [iterating_template.load_turf.x], [iterating_template.load_turf.y], [iterating_template.load_turf.z]!")
+			add_startup_message("Loaded [iterating_template.name] at [iterating_template.load_turf.x], [iterating_template.load_turf.y], [iterating_template.load_turf.z]!")
 			log_world("AUTOMAPPER: Successfully loaded map template [iterating_template.name] at [iterating_template.load_turf.x], [iterating_template.load_turf.y], [iterating_template.load_turf.z]!")
+
+/**
+ * CentCom atoms aren't initialized but already exist, so must be properly initialized and then qdel'd.
+ * Arguments:
+ * * parent - parent turf
+ */
+/datum/controller/subsystem/automapper/proc/init_contents(atom/parent)
+	var/static/list/mapload_args = list(TRUE)
+	// Don't even initialize things in this list. Very specific edge cases.
+	var/static/list/type_blacklist = typecacheof(list(
+		/obj/docking_port/stationary,
+		/obj/structure/bookcase,
+		/obj/structure/closet,
+		/obj/item/storage,
+		/obj/item/reagent_containers,
+	))
+
+	var/previous_initialized_value = SSatoms.initialized
+	SSatoms.initialized = INITIALIZATION_INNEW_MAPLOAD
+
+	// Force everything to init as if INITIALIZE_IMMEDIATE was called on them.
+	for(var/atom/atom_to_init as anything in parent.get_all_contents_ignoring(type_blacklist) - parent)
+		if(atom_to_init.flags_1 & INITIALIZED_1)
+			continue
+		SSatoms.InitAtom(atom_to_init, FALSE, mapload_args)
+
+	SSatoms.initialized = previous_initialized_value
+
+	// NOW we can finally delete everything.
+	for(var/atom/atom_to_del as anything in parent.get_all_contents() - parent)
+		qdel(atom_to_del, TRUE)
 
 /**
  * This returns a list of turfs that have been preloaded and preselected using our templates.
@@ -86,7 +123,7 @@ SUBSYSTEM_DEF(automapper)
 		map_names = list(map_names)
 	var/list/blacklisted_turfs = list()
 	for(var/datum/map_template/automap_template/iterating_template as anything in preloaded_map_templates)
-		if(!(iterating_template.override_map_name in map_names))
+		if(!(iterating_template.required_map in map_names))
 			continue
 		for(var/turf/iterating_turf as anything in iterating_template.get_affected_turfs(iterating_template.load_turf, FALSE))
 			blacklisted_turfs += iterating_turf
