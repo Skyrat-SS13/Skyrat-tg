@@ -77,7 +77,7 @@
 			species_target.punchdamagehigh += 5
 			to_chat(human_target, span_notice("Your arms seem denser..."))
 		if(4)
-			ADD_TRAIT(human_target, TRAIT_LAVA_IMMUNE, src)
+			ADD_TRAIT(human_target, TRAIT_LAVA_IMMUNE, REF(src))
 			to_chat(human_target, span_notice("Your body feels hotter..."))
 		if(5)
 			var/datum/action/cooldown/mob_cooldown/fire_breath/granted_action

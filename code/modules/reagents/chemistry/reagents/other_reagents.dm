@@ -1156,8 +1156,6 @@
 	burning_volume = 0.2
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	addiction_types = list(/datum/addiction/alcohol = 4)
-	liquid_fire_power = 10 //SKYRAT EDIT ADDITION
-	liquid_fire_burnrate = 0.1 //SKYRAT EDIT ADDITION
 
 /datum/reagent/fuel/expose_mob(mob/living/exposed_mob, methods=TOUCH, reac_volume)//Splashing people with welding fuel to make them easy to ignite!
 	. = ..()
@@ -1506,15 +1504,10 @@
 	taste_description = "searingly cold"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED|REAGENT_NO_RANDOM_RECIPE
 
-/datum/reagent/hypernoblium/on_mob_metabolize(mob/living/L)
-	. = ..()
-	if(isplasmaman(L))
-		ADD_TRAIT(L, TRAIT_NOFIRE, type)
-
-/datum/reagent/hypernoblium/on_mob_end_metabolize(mob/living/L)
-	if(isplasmaman(L))
-		REMOVE_TRAIT(L, TRAIT_NOFIRE, type)
-	return ..()
+/datum/reagent/hypernoblium/on_mob_life(mob/living/carbon/M, delta_time, times_fired)
+	if(isplasmaman(M))
+		M.set_timed_status_effect(10 SECONDS * REM * delta_time, /datum/status_effect/hypernob_protection)
+	..()
 
 /datum/reagent/healium
 	name = "Healium"
@@ -1539,6 +1532,19 @@
 	breather.adjustBruteLoss(-2 * REM * delta_time, FALSE)
 	..()
 	return TRUE
+
+/datum/reagent/pluoxium
+	name = "Pluoxium"
+	description = "An Oxygen compound that delivers eight times more Oxygen"
+	reagent_state = GAS
+	metabolization_rate = REAGENTS_METABOLISM * 0.5
+	color = "90560B"
+	taste_description = "like air but better"
+	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED|REAGENT_NO_RANDOM_RECIPE
+
+/datum/reagent/pluoxium/on_mob_life(mob/living/breathing_mob, delta_time, times_fired)
+	. = ..()
+	breathing_mob.adjustOxyLoss(-2 * REM * delta_time, FALSE)
 
 /datum/reagent/halon
 	name = "Halon"

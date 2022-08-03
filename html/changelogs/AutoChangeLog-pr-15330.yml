@@ -1,0 +1,6 @@
+author: "GoldenAlpharex"
+delete-after: True
+changes: 
+  - refactor: "Refactored the SQL-based logging to batch queries together and makes those bigger queries asynchronous, which will massively reduce their impact on performance, and negate any perceptible unusual delays when SQL-based logging is enabled in config."
+  - config: "Added missing config entries in their own default config file on the repository, as they were currently missing."
+  - config: "Added a new config to control how many log entries will be bundled up together in a singular query to the database."

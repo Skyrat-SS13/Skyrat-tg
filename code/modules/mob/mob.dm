@@ -129,9 +129,8 @@
 	if(!istext(hud_category))
 		return FALSE
 
-	LAZYREMOVE(active_hud_list, hud_category)
-
 	if(!update_huds)
+		LAZYREMOVE(active_hud_list, hud_category)
 		return TRUE
 
 	if(exclusive_hud)
@@ -139,6 +138,8 @@
 	else
 		for(var/datum/atom_hud/hud_to_update as anything in GLOB.huds_by_category[hud_category])
 			hud_to_update.remove_single_hud_category_on_atom(src, hud_category)
+
+	LAZYREMOVE(active_hud_list, hud_category)
 
 	return TRUE
 
@@ -350,6 +351,14 @@
 /mob/proc/get_item_by_slot(slot_id)
 	return null
 
+/// Gets what slot the item on the mob is held in.
+/// Returns null if the item isn't in any slots on our mob.
+/// Does not check if the passed item is null, which may result in unexpected outcoms.
+/mob/proc/get_slot_by_item(obj/item/looking_for)
+	if(looking_for in held_items)
+		return ITEM_SLOT_HANDS
+
+	return null
 
 ///Is the mob incapacitated
 /mob/proc/incapacitated(flags)
@@ -517,6 +526,10 @@
 	set name = "Examine"
 	set category = "IC"
 
+	DEFAULT_QUEUE_OR_CALL_VERB(VERB_CALLBACK(src, .proc/run_examinate, examinify))
+
+/mob/proc/run_examinate(atom/examinify)
+
 	if(isturf(examinify) && !(sight & SEE_TURFS) && !(examinify in view(client ? client.view : world.view, src)))
 		// shift-click catcher may issue examinate() calls for out-of-sight turfs
 		return
@@ -658,33 +671,6 @@
 		addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, examined_mob, msg), 3)
 
 /**
- * Point at an atom
- *
- * mob verbs are faster than object verbs. See
- * [this byond forum post](https://secure.byond.com/forum/?post=1326139&page=2#comment8198716)
- * for why this isn't atom/verb/pointed()
- *
- * note: ghosts can point, this is intended
- *
- * visible_message will handle invisibility properly
- *
- * overridden here and in /mob/dead/observer for different point span classes and sanity checks
- */
-/mob/verb/pointed(atom/A as mob|obj|turf in view())
-	set name = "Point To"
-	set category = "Object"
-
-	if(client && !(A in view(client.view, src)))
-		return FALSE
-	if(istype(A, /obj/effect/temp_visual/point))
-		return FALSE
-
-	point_at(A)
-
-	SEND_SIGNAL(src, COMSIG_MOB_POINTED, A)
-	return TRUE
-
-/**
  * Called by using Activate Held Object with an empty hand/limb
  *
  * Does nothing by default. The intended use is to allow limbs to call their
@@ -739,6 +725,10 @@
 	set category = "Object"
 	set src = usr
 
+	DEFAULT_QUEUE_OR_CALL_VERB(VERB_CALLBACK(src, .proc/execute_mode))
+
+///proc version to finish /mob/verb/mode() execution. used in case the proc needs to be queued for the tick after its first called
+/mob/proc/execute_mode()
 	if(ismecha(loc))
 		return
 
@@ -856,30 +846,33 @@
 /mob/proc/get_status_tab_items()
 	. = list()
 
-/// Gets all relevant proc holders for the browser statpenl
-/mob/proc/get_proc_holders()
-	. = list()
-	if(mind)
-		. += get_spells_for_statpanel(mind.spell_list)
-	. += get_spells_for_statpanel(mob_spell_list)
-
 /**
  * Convert a list of spells into a displyable list for the statpanel
  *
  * Shows charge and other important info
  */
-/mob/proc/get_spells_for_statpanel(list/spells)
-	var/list/L = list()
-	for(var/obj/effect/proc_holder/spell/S in spells)
-		if(S.can_be_cast_by(src))
-			switch(S.charge_type)
-				if("recharge")
-					L[++L.len] = list("[S.panel]", "[S.charge_counter/10.0]/[S.charge_max/10]", S.name, REF(S))
-				if("charges")
-					L[++L.len] = list("[S.panel]", "[S.charge_counter]/[S.charge_max]", S.name, REF(S))
-				if("holdervar")
-					L[++L.len] = list("[S.panel]", "[S.holder_var_type] [S.holder_var_amount]", S.name, REF(S))
-	return L
+/mob/proc/get_actions_for_statpanel()
+	var/list/data = list()
+	for(var/datum/action/cooldown/action in actions)
+		var/list/action_data = action.set_statpanel_format()
+		if(!length(action_data))
+			return
+
+		data += list(list(
+			// the panel the action gets displayed to
+			// in the future, this could probably be replaced with subtabs (a la admin tabs)
+			action_data[PANEL_DISPLAY_PANEL],
+			// the status of the action, - cooldown, charges, whatever
+			action_data[PANEL_DISPLAY_STATUS],
+			// the name of the action
+			action_data[PANEL_DISPLAY_NAME],
+			// a ref to the action button of this action for this mob
+			// it's a ref to the button specifically, instead of the action itself,
+			// because statpanel href calls click(), which the action button (not the action itself) handles
+			REF(action.viewers[hud_used]),
+		))
+
+	return data
 
 /mob/proc/swap_hand()
 	var/obj/item/held_item = get_active_held_item()
@@ -910,32 +903,6 @@
 	if(ghost)
 		ghost.notify_cloning(message, sound, source, flashwindow)
 		return ghost
-
-///Add a spell to the mobs spell list
-/mob/proc/AddSpell(obj/effect/proc_holder/spell/S)
-	// HACK: Preferences menu creates one of every selectable species.
-	// Some species, like vampires, create spells when they're made.
-	// The "action" is created when those spells Initialize.
-	// Preferences menu can create these assets at *any* time, primarily before
-	// the atoms SS initializes.
-	// That means "action" won't exist.
-	if (isnull(S.action))
-		return
-
-	LAZYADD(mob_spell_list, S)
-	S.action.Grant(src)
-
-///Remove a spell from the mobs spell list
-/mob/proc/RemoveSpell(obj/effect/proc_holder/spell/spell)
-	if(!spell)
-		return
-	for(var/X in mob_spell_list)
-		var/obj/effect/proc_holder/spell/S = X
-		if(istype(S, spell))
-			LAZYREMOVE(mob_spell_list, S)
-			qdel(S)
-	if(client)
-		client.stat_panel.send_message("check_spells")
 
 /**
  * Checks to see if the mob can cast normal magic spells.
@@ -1001,8 +968,13 @@
 	return 9
 
 ///Can the mob interact() with an atom?
-/mob/proc/can_interact_with(atom/A)
-	if(isAdminGhostAI(src) || Adjacent(A))
+/mob/proc/can_interact_with(atom/A, treat_mob_as_adjacent)
+	if(isAdminGhostAI(src))
+		return TRUE
+	//Return early. we do not need to check that we are on adjacent turfs (i.e we are inside a closet)
+	if (treat_mob_as_adjacent && src == A.loc)
+		return TRUE
+	if (Adjacent(A))
 		return TRUE
 	var/datum/dna/mob_dna = has_dna()
 	if(mob_dna?.check_mutation(/datum/mutation/human/telekinesis) && tkMaxRangeCheck(src, A))
@@ -1161,7 +1133,8 @@
 /mob/proc/update_mouse_pointer()
 	if(!client)
 		return
-	client.mouse_pointer_icon = initial(client.mouse_pointer_icon)
+	if(client.mouse_pointer_icon != initial(client.mouse_pointer_icon))//only send changes to the client if theyre needed
+		client.mouse_pointer_icon = initial(client.mouse_pointer_icon)
 	if(examine_cursor_icon && client.keys_held["Shift"]) //mouse shit is hardcoded, make this non hard-coded once we make mouse modifiers bindable
 		client.mouse_pointer_icon = examine_cursor_icon
 	if(istype(loc, /obj/vehicle/sealed))
@@ -1255,7 +1228,6 @@
 	VV_DROPDOWN_OPTION(VV_HK_DIRECT_CONTROL, "Assume Direct Control")
 	VV_DROPDOWN_OPTION(VV_HK_GIVE_DIRECT_CONTROL, "Give Direct Control")
 	VV_DROPDOWN_OPTION(VV_HK_OFFER_GHOSTS, "Offer Control to Ghosts")
-	VV_DROPDOWN_OPTION(VV_HK_SDQL_SPELL, "Give SDQL Spell")
 
 /mob/vv_do_topic(list/href_list)
 	. = ..()
@@ -1307,10 +1279,7 @@
 		if(!check_rights(NONE))
 			return
 		offer_control(src)
-	if(href_list[VV_HK_SDQL_SPELL])
-		if(!check_rights(R_DEBUG))
-			return
-		usr.client.cmd_sdql_spell_menu(src)
+
 /**
  * extra var handling for the logging var
  */

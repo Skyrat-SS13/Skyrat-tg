@@ -6,10 +6,14 @@
 	inhand_icon_state = "helmet"
 	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0.1, "bio" = 0, "fire" = -10, "acid" = -15, "wound" = 1)
 	desc = "A dilapidated helmet used in ancient wars. This one is brittle and essentially useless. An ace of spades is tucked into the band around the outer shell."
-	pocket_storage_component_path = /datum/component/storage/concrete/pockets/tiny/spacenam	//So you can stuff other things in the elastic band instead of it simply being a fluff thing.
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
-/datum/component/storage/concrete/pockets/tiny/spacenam
+/obj/item/clothing/head/flakhelm/Initialize()
+	. = ..()
+
+	create_storage(type = /datum/storage/pockets/tiny/spacenam)
+
+/datum/storage/pockets/tiny/spacenam
 	attack_hand_interact = TRUE		//So you can actually see what you stuff in there
 
 /obj/item/clothing/head/cowboyhat

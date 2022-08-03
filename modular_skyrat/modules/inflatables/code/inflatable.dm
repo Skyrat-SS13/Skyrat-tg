@@ -214,10 +214,9 @@
 	icon_state = "briefcase_inflate"
 	w_class = WEIGHT_CLASS_NORMAL
 
-/obj/item/storage/inflatable/ComponentInitialize()
+/obj/item/storage/inflatable/Initialize()
 	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	STR.max_combined_w_class = 21
+	atom_storage.max_total_storage = 21
 
 /obj/item/storage/inflatable/PopulateContents()
 	for(var/i = 0, i < BOX_DOOR_AMOUNT, i++)

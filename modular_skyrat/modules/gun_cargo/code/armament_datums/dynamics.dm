@@ -146,13 +146,6 @@
 	description = "A box of 35 Rubbershots. Great choice for crowd control."
 	stock_mult = 3
 
-/datum/armament_entry/cargo_gun/dynamics/ammo/shotgun/hunter
-	item_type = /obj/item/ammo_box/advanced/s12gauge/hunter
-	description = "A box of 35 Hunter Buckshots. It is a specialized buckshot that deals more damage to simpler beings."
-	stock_mult = 2
-	lower_cost = CARGO_CRATE_VALUE * 1
-	upper_cost = CARGO_CRATE_VALUE * 2
-
 /datum/armament_entry/cargo_gun/dynamics/ammo/shotgun/express
 	item_type = /obj/item/ammo_box/advanced/s12gauge/express
 	description = "A box of 35 Express Buckshots. It is a shell that has tighter spread and smaller but more projectiles."

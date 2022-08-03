@@ -132,6 +132,7 @@
 #define INIT_ORDER_AI_CONTROLLERS 55 //So the controller can get the ref
 #define INIT_ORDER_TICKER 55
 #define INIT_ORDER_TCG 55
+#define INIT_ORDER_AUTOMAPPER 51 // SKYRAT EDIT ADDITION - We need to load just before mapping.
 #define INIT_ORDER_MAPPING 50
 #define INIT_ORDER_EARLY_ASSETS 48
 #define INIT_ORDER_RESEARCH 47
@@ -207,6 +208,7 @@
 #define FIRE_PRIORITY_TIMER 700
 #define FIRE_PRIORITY_SOUND_LOOPS 800
 #define FIRE_PRIORITY_SPEECH_CONTROLLER 900
+#define FIRE_PRIORITY_DELAYED_VERBS 950
 #define FIRE_PRIORITY_INPUT 1000 // This must always always be the max highest priority. Player input must never be lost.
 
 

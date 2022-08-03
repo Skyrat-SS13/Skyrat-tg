@@ -12,12 +12,11 @@
 	worn_icon_state = "mailbelt"
 	equip_sound = 'sound/items/equip/toolbelt_equip.ogg'
 
-/obj/item/storage/belt/mailbelt/ComponentInitialize()
+/obj/item/storage/belt/mailbelt/Initialize()
 	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	STR.max_items = 14
-	STR.display_numerical_stacking = TRUE
-	STR.set_holdable(list(
+	atom_storage.max_slots = 14
+	atom_storage.numerical_stacking = TRUE
+	atom_storage.set_holdable(list(
 		/obj/item/mail,
 		/obj/item/mail/envelope,
 		/obj/item/paper

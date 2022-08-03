@@ -34,34 +34,6 @@
 /datum/objective_item/steal/low_risk
 	objective_type = OBJECTIVE_ITEM_TYPE_TRAITOR
 
-/datum/objective_item/steal/low_risk/techboard
-	name = "the (TECH BOARD) circuitboard in secure tech storage"
-	var/circuitboard_name
-	excludefromjob = list(
-		JOB_CAPTAIN,
-		JOB_CHIEF_ENGINEER,
-		JOB_RESEARCH_DIRECTOR,
-	)
-	exists_on_map = TRUE
-
-/datum/objective_item/steal/low_risk/techboard/aiupload
-	targetitem = /obj/item/circuitboard/computer/aiupload
-	circuitboard_name = "ai upload"
-
-/obj/item/circuitboard/computer/aiupload/add_stealing_item_objective()
-	ADD_STEAL_ITEM(src, /obj/item/circuitboard/computer/aiupload)
-
-/datum/objective_item/steal/low_risk/techboard/borgupload
-	targetitem = /obj/item/circuitboard/computer/borgupload
-	circuitboard_name = "cyborg upload"
-
-/obj/item/circuitboard/computer/borgupload/add_stealing_item_objective()
-	ADD_STEAL_ITEM(src, /obj/item/circuitboard/computer/borgupload)
-
-/datum/objective_item/steal/low_risk/techboard/New()
-	. = ..()
-	name = replacetext(name, "(TECH BOARD)", circuitboard_name)
-
 /datum/objective_item/steal/low_risk/aicard
 	targetitem = /obj/item/aicard
 	name = "an intelliCard"
@@ -195,14 +167,18 @@
 	ADD_STEAL_ITEM(src, /obj/item/clothing/accessory/medal/gold/captain)
 
 /datum/objective_item/steal/hypo
-	name = "the hypospray"
-	targetitem = /obj/item/reagent_containers/hypospray/cmo
+	//name = "the hypospray" // ORIGINAL
+	name = "the Chief Medical Officer's hypospray" // SKYRAT EDIT CHANGE
+	//targetitem = /obj/item/reagent_containers/hypospray/cmo // ORIGINAL
+	targetitem = /obj/item/hypospray/mkii/cmo // SKYRAT EDIT CHANGE
 	difficulty = 5
 	excludefromjob = list(JOB_CHIEF_MEDICAL_OFFICER)
 	exists_on_map = TRUE
 
-/obj/item/reagent_containers/hypospray/cmo/add_stealing_item_objective()
-	ADD_STEAL_ITEM(src, /obj/item/reagent_containers/hypospray/cmo)
+///obj/item/reagent_containers/hypospray/cmo/add_stealing_item_objective() // ORIGINAL
+/obj/item/hypospray/mkii/cmo/add_stealing_item_objective() // SKYRAT EDIT CHANGE
+	//ADD_STEAL_ITEM(src, /obj/item/reagent_containers/hypospray/cmo) // ORIGINAL
+	ADD_STEAL_ITEM(src, /obj/item/hypospray/mkii/cmo) // SKYRAT EDIT CHANGE
 
 /datum/objective_item/steal/nukedisc
 	name = "the nuclear authentication disk"

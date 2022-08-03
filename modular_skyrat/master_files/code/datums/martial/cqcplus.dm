@@ -25,6 +25,6 @@
 /obj/item/book/granter/martial/cqc/plus
 	martial = /datum/martial_art/cqc/plus
 	name = "old but gold manual"
-	martialname = "close quarters combat plus"
+	martial_name = "close quarters combat plus"
 	desc = "A small, black manual. There are drawn instructions of tactical hand-to-hand combat. This includes how to deflect projectiles too."
 	greet = span_boldannounce("You've mastered the basics of CQC+.")

@@ -227,7 +227,7 @@
 	loot = list(/obj/item/storage/medkit/expeditionary = 20,
 				/obj/item/shield/riot/tele = 12,
 				/obj/item/dnainjector/shock = 10,
-				/obj/item/book/granter/spell/summonitem = 20,
+				/obj/item/book/granter/action/spell/summonitem = 20,
 				/obj/item/storage/backpack/holding = 12,
 				/obj/item/dnainjector/thermal = 5,
 				/obj/item/melee/baton/telescopic = 12)

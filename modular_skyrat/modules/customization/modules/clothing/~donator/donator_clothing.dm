@@ -168,6 +168,9 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
 	icon_state = "polyshortpants"
 	supports_variations_flags = NONE
+	greyscale_config = null //Temporary measures while Polychrom is gutted.
+	greyscale_config_worn = null
+	greyscale_config_worn_digi = null
 	var/list/poly_colors = list("#FFFFFF", "#FF8888", "#FFFFFF")
 
 /obj/item/clothing/under/shorts/polychromic/ComponentInitialize()
@@ -586,7 +589,6 @@
 	icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/custom_w.dmi'
 	alternate_worn_layer = UNDER_SUIT_LAYER
-	pocket_storage_component_path = /datum/component/storage/concrete/pockets/small/collar
 	/// What's the name on the tag, if any?
 	var/tagname = null
 	/// What treat item spawns inside the collar?
@@ -594,6 +596,7 @@
 
 /obj/item/clothing/neck/inferno_collar/Initialize()
 	. = ..()
+	create_storage(type = /datum/storage/pockets/small/collar)
 	if(treat_path)
 		new treat_path(src)
 
@@ -631,10 +634,9 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/custom_w.dmi'
 	icon_state = "darksheath"
 
-/obj/item/storage/belt/sabre/darksabre/ComponentInitialize()
+/obj/item/storage/belt/sabre/darksabre/Initialize()
 	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	STR.set_holdable(list(
+	atom_storage.set_holdable(list(
 		/obj/item/toy/darksabre
 		))
 
@@ -1174,13 +1176,6 @@
 	hoodtype = /obj/item/clothing/head/hooded/occult
 	supports_variations_flags = NONE
 
-// Donation reward for gamerguy14948
-/obj/item/toy/plush/donator/voodoo
-	name = "voodoo doll"
-	desc = "A not so small voodoo doll made out of cut and sewn potato bags. It almost looks cute."
-	icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
-	icon_state = "voodoo"
-
 // Donation reward for Octus
 /obj/item/clothing/mask/breath/vox/octus
 	name = "sinister visor"
@@ -1322,26 +1317,6 @@
 	icon_state = "tacticalbrush"
 	inhand_icon_state = "tacticalbrush"
 
-// Donation reward for tobjv
-/obj/item/toy/plush/donator/tesh
-	name = "Squish-Me-Tesh"
-	desc = "Winner of Be Made Into A Plushy by ClownCo!"
-	icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
-	icon_state = "teshplush"
-
-// Donation reward for tobjv
-/obj/item/toy/plush/donator/immovable_rod
-	name = "immovable rod"
-	desc = "Realistic! But also squishy and certainly not as dangerous as its real counterpart."
-	icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
-	icon_state = "immrod"
-
-/obj/item/toy/plush/donator/immovable_rod/Bump(atom/clong)
-	. = ..()
-	if(isliving(clong))
-		playsound(src, 'sound/effects/bang.ogg', 50, TRUE)
-		return
-
 // Donation reward for ultimarifox
 /obj/item/clothing/under/rank/security/head_of_security/alt/roselia
 	name = "black and red turtleneck"
@@ -1366,12 +1341,14 @@
     worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/custom_w.dmi'
     icon_state = "greenbadge"
 
-    // Donation reward for shyshadow
-/obj/item/toy/plush/donator/plushie_winrow
-	name = "dark and brooding lizard plush"
-	desc = "An almost intimidating black lizard plush, this one's got a little beret to come with it! Best not to separate the two. Its eyes shine with suggestion, no maidens?"
-	icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
-	icon_state = "plushie_winrow"
+// Donation reward for Dudewithatude
+/obj/item/clothing/suit/toggle/rainbowcoat
+	name = "rainbow coat"
+	desc = "A wonderfully brilliant coat that displays the color of the rainbow!"
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
+	icon_state = "rainbowcoat"
+	base_icon_state = "rainbowcoat"
 
 // Donation reward for M97screwsyourparents
 /obj/item/clothing/head/recruiter_cap

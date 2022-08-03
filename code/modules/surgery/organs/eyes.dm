@@ -36,8 +36,6 @@
 	var/no_glasses
 	/// indication that the eyes are undergoing some negative effect
 	var/damaged = FALSE
-	var/is_emissive = FALSE //SKYRAT EDIT ADDITION
-	var/eyes_layer = BODY_LAYER //SKYRAT EDIT ADDITION
 
 /obj/item/organ/internal/eyes/Insert(mob/living/carbon/eye_owner, special = FALSE, drop_if_replaced = FALSE, initialising)
 	. = ..()
@@ -105,7 +103,7 @@
 	eye_owner.set_blurriness(0)
 	eye_owner.clear_fullscreen("eye_damage", 0)
 	eye_owner.update_sight()
-	is_emissive = FALSE
+	is_emissive = FALSE // SKYRAT EDIT ADDITION
 
 #define OFFSET_X 1
 #define OFFSET_Y 2
@@ -256,7 +254,7 @@
 	see_in_dark = NIGHTVISION_FOV_RANGE
 	sight_flags = SEE_MOBS | SEE_OBJS | SEE_TURFS
 
-/obj/item/organ/internal/eyes/robotic/xray/Insert(mob/living/carbon/eye_owner, special = FALSE)
+/obj/item/organ/internal/eyes/robotic/xray/Insert(mob/living/carbon/eye_owner, special = FALSE, drop_if_replaced = TRUE)
 	. = ..()
 	ADD_TRAIT(eye_owner, TRAIT_XRAY_VISION, ORGAN_TRAIT)
 
@@ -530,7 +528,6 @@
 /obj/item/organ/internal/eyes/snail
 	name = "snail eyes"
 	desc = "These eyes seem to have a large range, but might be cumbersome with glasses."
-	icon = 'modular_skyrat/master_files/icons/mob/human_face.dmi' //SKYRAT EDIT - Roundstart Snails
 	eye_icon_state = "snail_eyes"
 	icon_state = "snail_eyeballs"
 	eyes_layer = ABOVE_BODY_FRONT_HEAD_LAYER //SKYRAT EDIT - Roundstart Snails
@@ -541,7 +538,7 @@
 	eye_icon_state = "flyeyes"
 	icon_state = "eyeballs-fly"
 
-/obj/item/organ/internal/eyes/fly/Insert(mob/living/carbon/eye_owner, special = FALSE)
+/obj/item/organ/internal/eyes/fly/Insert(mob/living/carbon/eye_owner, special = FALSE, drop_if_replaced = TRUE)
 	. = ..()
 	ADD_TRAIT(eye_owner, TRAIT_FLASH_SENSITIVE, ORGAN_TRAIT)
 
@@ -560,7 +557,7 @@
 	overlay_ignore_lighting = TRUE
 	var/obj/item/flashlight/eyelight/adapted/adapt_light
 
-/obj/item/organ/internal/eyes/night_vision/maintenance_adapted/Insert(mob/living/carbon/adapted, special = FALSE)
+/obj/item/organ/internal/eyes/night_vision/maintenance_adapted/Insert(mob/living/carbon/adapted, special = FALSE, drop_if_replaced = TRUE)
 	. = ..()
 	//add lighting
 	if(!adapt_light)

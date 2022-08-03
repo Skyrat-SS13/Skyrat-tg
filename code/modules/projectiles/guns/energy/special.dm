@@ -58,6 +58,7 @@
 	modifystate = 1
 	ammo_x_offset = 1
 	selfcharge = 1
+	gun_flags = NOT_A_REAL_GUN
 
 /obj/item/gun/energy/meteorgun
 	name = "meteor gun"
@@ -104,6 +105,7 @@
 	force = 12
 	sharpness = SHARP_EDGED
 	can_charge = FALSE
+	gun_flags = NOT_A_REAL_GUN
 
 	heat = 3800
 	usesound = list('sound/items/welder.ogg', 'sound/items/welder2.ogg')
@@ -113,7 +115,12 @@
 
 /obj/item/gun/energy/plasmacutter/ComponentInitialize()
 	. = ..()
-	AddComponent(/datum/component/butchering, 25, 105, 0, 'sound/weapons/plasma_cutter.ogg')
+	AddComponent(/datum/component/butchering, \
+	speed = 2.5 SECONDS, \
+	effectiveness = 105, \
+	bonus_modifier = 0, \
+	butcher_sound = 'sound/weapons/plasma_cutter.ogg', \
+	)
 	AddElement(/datum/element/update_icon_blocker)
 	AddElement(/datum/element/tool_flash, 1)
 
@@ -198,6 +205,7 @@
 	var/obj/effect/portal/p_blue
 	var/obj/effect/portal/p_orange
 	var/firing_core = FALSE
+	gun_flags = NOT_A_REAL_GUN
 
 /obj/item/gun/energy/wormhole_projector/examine(mob/user)
 	. = ..()
@@ -336,6 +344,7 @@
 	automatic_charge_overlays = FALSE
 	var/power = 4
 	var/firing_core = FALSE
+	gun_flags = NOT_A_REAL_GUN
 
 /obj/item/gun/energy/gravity_gun/attackby(obj/item/C, mob/user)
 	if(istype(C, /obj/item/assembly/signaler/anomaly/grav))
