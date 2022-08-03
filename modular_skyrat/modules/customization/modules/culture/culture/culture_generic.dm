@@ -2,11 +2,13 @@
 	name = "Other Culture"
 	description = "You are from one of the many small, relatively unknown cultures scattered across the galaxy."
 	additional_langs = list(/datum/language/spacer, /datum/language/yangyu)
+	features = list(/datum/cultural_feature/average)
 
 /datum/cultural_info/culture/vatgrown
 	name = "Vat Grown"
 	description = "You were not born like most of the people, instead grown and raised in laboratory conditions, either as clone, gene-adapt or some experiment. Your outlook diverges from baseline humanity accordingly."
 	additional_langs = list(/datum/language/spacer)
+	features = list(/datum/cultural_feature/average)
 
 /datum/cultural_info/culture/spacer_core
 	name = "Spacer, Core Systems"
@@ -15,6 +17,7 @@
 	places, meeting a myriad of people and experiencing many of the cultures and worlds close to humanity's home. As such, Spacers of the core systems tend to be busy, sociable and \
 	mobile, rarely satisfied with settled life. They almost universally know how to live and work in the void and take to such jobs more readily than their planet-bound counterparts."
 	additional_langs = list(/datum/language/spacer, /datum/language/yangyu)
+	features = list(/datum/cultural_feature/average)
 
 /datum/cultural_info/culture/spacer_frontier
 	name = "Spacer, Frontier"
@@ -24,11 +27,13 @@
 	technology. An independent sort, people on the frontier are more likely to be isolationist and self-driven."
 	economic_power = 0.9
 	additional_langs = list(/datum/language/spacer)
+	features = list(/datum/cultural_feature/average)
 
 /datum/cultural_info/culture/generic_human
 	name = "Humankind"
 	description = "You are from one of various planetary cultures of humankind."
 	additional_langs = list(/datum/language/neorusskya, /datum/language/gutter, /datum/language/spacer, /datum/language/yangyu)
+	features = list(/datum/cultural_feature/average)
 
 /datum/cultural_info/culture/martian_surfacer
 	name = "Martian, Surfacer"
@@ -36,6 +41,7 @@
 	are known as Monsians, the largest cultural group on the planet. Most Surfacers have had a decent upbringing and represent the \
 	average level of comfort expected in Sol space. Most surfacers are like many across the galaxy, though a few harbour rivalries with other Martian cultural \
 	groups or are generally overly proud of their heritage, as is the case with the Gideons, to the point that they constantly refer to it."
+	features = list(/datum/cultural_feature/average)
 
 /datum/cultural_info/culture/martian_tunneller
 	name = "Martian, Tunneler"
@@ -45,6 +51,7 @@
 	criminal presence stemming from centuries of poor policing and a focus on the surface by the martian government. Most Tunnellers are resilient, though distrusting \
 	and wary of outsiders, and tend to strongly dislike non-Martians."
 	economic_power = 0.9
+	features = list(/datum/cultural_feature/average)
 
 /datum/cultural_info/culture/earthling
 	name = "Earth"
@@ -55,6 +62,7 @@
 	a content folk who see themselves as close to nature and keepers of the heritage of humanity."
 	economic_power = 1.1
 	additional_langs = list(/datum/language/yangyu)
+	features = list(/datum/cultural_feature/average)
 
 /datum/cultural_info/culture/luna_poor
 	name = "Luna, Lower Class"
@@ -63,6 +71,7 @@
 	of one of the various corporations, persons hired in service roles in one of the many prefectures or a resident of New Vegas. The 'poor' of Luna typically resent the rich because of their \
 	financial, cultural and political power and influence over their lives."
 	economic_power = 1
+	features = list(/datum/cultural_feature/average)
 
 /datum/cultural_info/culture/luna_rich
 	name = "Luna, Upper Class"
@@ -72,6 +81,7 @@
 	Much of the elite of Luna is embroiled in 'The Game' a state of political manoeuvring and intrigue among various factions and persons of influence and power \
 	with implications far beyond the squabbles of the prefectures."
 	economic_power = 1.3
+	features = list(/datum/cultural_feature/good)
 
 /datum/cultural_info/culture/terran
 	name = "Terran"
@@ -81,6 +91,7 @@
 	resentful about their loss in the Gaia Conflict. An upbringing on Terra emphasises an odd mix of service to the state, liberalism and militarism."
 	required_lang = /datum/language/neorusskya
 	economic_power = 0.9
+	features = list(/datum/cultural_feature/average)
 
 /datum/cultural_info/culture/venusian_upper
 	name = "Venusian, Zoner"
@@ -88,6 +99,7 @@
 	SCG. As a Venusian, you know luxury, wealth and entertainment. Primarily a tourist destination, many of the permanent residents work in the tourism industry and are notably middle-income. \
 	Those above are exceptionally wealthy, being hotel, casino, resort owners, politicians, bankers or rich retirees."
 	economic_power = 1.4
+	features = list(/datum/cultural_feature/good)
 
 /datum/cultural_info/culture/venusian_surfacer
 	name = "Venusian, Surfacer"
@@ -96,6 +108,7 @@
 	surfacers are a people who value hard work, solidarity, unity and democracy. Unfortunately, while they support noble ideals, the reality of their situation does not always \
 	match them, and much of the surface of Venus finds itself rife with organised crime, separatist groups and other criminal organisations."
 	economic_power = 0.9
+	features = list(/datum/cultural_feature/average)
 
 /datum/cultural_info/culture/belter
 	name = "Belter"
@@ -105,6 +118,7 @@
 	culture being mainly about embracing change, new people and new experiences, as well as a sense of pride in their work, as the reputation of Ceres shipbuilding is widely known across \
 	human space."
 	economic_power = 1
+	features = list(/datum/cultural_feature/average)
 
 /datum/cultural_info/culture/plutonian
 	name = "Plutionian"
@@ -114,6 +128,7 @@
 	just happy to get off the rock and to healthier locales. Unfortunately, despite the efforts of the wider SCG, many Plutonians tend to maintain criminal ties, even offworld."
 	economic_power = 0.8
 	additional_langs = list(/datum/language/neorusskya, /datum/language/gutter, /datum/language/spacer, /datum/language/yangyu)
+	features = list(/datum/cultural_feature/poor)
 
 /datum/cultural_info/culture/ceti
 	name = "Cetite"
@@ -123,6 +138,7 @@
 	being considered some of the best qualified technical specialists in humanity. Recently there has been a rising transhumanist element in Ceti society resulting in a large \
 	cybernetics culture; it is not uncommon to see many Cetites sporting some chrome."
 	economic_power = 1.1
+	features = list(/datum/cultural_feature/average)
 
 /datum/cultural_info/culture/zolmalchi
 	name = "Zolmalchi"
@@ -132,4 +148,5 @@
 	A common philosophy in these oft-clashing places is the simple phrase, 'Do as thou wilt'."
 	economic_power = 1
 	additional_langs = list(/datum/language/yangyu)
+	features = list(/datum/cultural_feature/average)
 

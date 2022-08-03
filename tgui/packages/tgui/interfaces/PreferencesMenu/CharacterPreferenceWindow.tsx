@@ -10,6 +10,7 @@ import { MainPage } from './MainPage';
 import { SpeciesPage } from './SpeciesPage';
 import { QuirksPage } from './QuirksPage';
 // SKYRAT EDIT
+import { CulturesPage } from './CulturesPage';
 import { LanguagesPage } from './LanguagesMenu';
 import { LimbsPage } from './LimbsPage';
 // SKYRAT EDIT END
@@ -19,6 +20,7 @@ enum Page {
   Jobs,
   // SKYRAT EDIT
   Limbs,
+  Cultures,
   Languages,
   // SKYRAT EDIT END
   Species,
@@ -73,6 +75,9 @@ export const CharacterPreferenceWindow = (props, context) => {
     // SKYRAT EDIT
     case Page.Limbs:
       pageContents = <LimbsPage />;
+      break;
+    case Page.Cultures:
+      pageContents = <CulturesPage />;
       break;
     case Page.Languages:
       pageContents = <LanguagesPage />;
@@ -148,6 +153,15 @@ export const CharacterPreferenceWindow = (props, context) => {
               {
                 // SKYRAT EDIT
               }
+              <Stack.Item grow>
+                <PageButton
+                  currentPage={currentPage}
+                  page={Page.Cultures}
+                  setPage={setCurrentPage}>
+                  Cultures
+                </PageButton>
+              </Stack.Item>
+
               <Stack.Item grow>
                 <PageButton
                   currentPage={currentPage}

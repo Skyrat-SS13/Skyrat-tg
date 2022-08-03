@@ -5,3 +5,4 @@
 		Somehow you've wound up on the civilized world."
 	required_lang = /datum/language/draconic
 	economic_power = 0
+	features = list(/datum/cultural_feature/poor)

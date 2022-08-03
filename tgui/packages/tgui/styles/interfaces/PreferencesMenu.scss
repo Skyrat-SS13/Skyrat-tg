@@ -259,4 +259,14 @@ $department_map: (
       }
     }
   }
+  // SKYRAT EDIT ADDITION START
+  &__Cultures {
+    &__contents {
+      display: none;
+    }
+    &__header:hover .PreferencesMenu__Cultures__contents {
+      display: block;
+      transition: display 0.1s ease-in-out;
+    }
+  }
 }

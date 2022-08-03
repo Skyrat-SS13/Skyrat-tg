@@ -3,12 +3,14 @@
 	description = "The last time someone tried to do a comprehensive encyclopaedia of the known galaxy, their \
 	positronic processor deleted itself rather than face up to the task. You are from nowhere in particular - a \
 	backwater world, or somewhere off the starmaps."
+	features = list(/datum/cultural_feature/average)
 
 /datum/cultural_info/location/stateless
 	name = "Stateless"
 	description = "Sometimes people fall through the cracks... You have nobody to speak on your behalf."
-	economic_power = 0
+	economic_power = 0.7
 	ruling_body = "None"
+	features = list(/datum/cultural_feature/poor)
 
 /datum/cultural_info/location/mars
 	name = "Mars"
@@ -24,6 +26,7 @@
 	distance = "1.5AU"
 	capital = "Olympus"
 	economic_power = 1.1
+	features = list(/datum/cultural_feature/average)
 
 /datum/cultural_info/location/earth
 	name = "Earth"
@@ -37,6 +40,7 @@
 	distance = "1AU"
 	capital = "Geneva"
 	economic_power = 1.2
+	features = list(/datum/cultural_feature/good)
 
 /datum/cultural_info/location/luna
 	name = "Luna"
@@ -55,6 +59,7 @@
 	the poverty line, often holding feelings of resentment against the other people of Luna."
 	capital = "Selene"
 	economic_power = 1.3
+	features = list(/datum/cultural_feature/good)
 
 
 /datum/cultural_info/location/venus
@@ -73,6 +78,7 @@
 	surface. These surfacers often resent and are at odds with their rich, carefree employers."
 	capital = "Central Administration Zone"
 	economic_power = 1.4
+	features = list(/datum/cultural_feature/good)
 
 /datum/cultural_info/location/ceres
 	name = "Ceres"
@@ -85,6 +91,7 @@
 	employed in shipbuilding, manufacturing, vessel services and hospitality. Belters generally regard themselves as adaptive, proud members of the SCG \
 	and some of the best engineers Humanity has to offer."
 	capital = "Government Zone, Ceres Station"
+	features = list(/datum/cultural_feature/average)
 
 /datum/cultural_info/location/pluto
 	name = "Pluto"
@@ -100,6 +107,7 @@
 	capital = "New Santa Domingo"
 	economic_power = 0.8
 	additional_langs = list(/datum/language/gutter)
+	features = list(/datum/cultural_feature/poor)
 
 /datum/cultural_info/location/cetiepsilon
 	name = "Ceti Epsilon"
@@ -116,6 +124,7 @@
 	of Ceti Episilon have developed a reputation for being some of the best and brightest that Sol has to offer."
 	capital = "Verlize"
 	economic_power = 1.4
+	features = list(/datum/cultural_feature/good)
 
 /datum/cultural_info/location/eos
 	name = "Eos"
@@ -129,6 +138,7 @@
 	capital = "Surya"
 	economic_power = 1.3
 	distance = "10 light years"
+	features = list(/datum/cultural_feature/good)
 
 /datum/cultural_info/location/terra
 	name = "Terra"
@@ -143,6 +153,7 @@
 	economic_power = 0.9
 	ruling_body = "Gilgamesh Colonial Confederation"
 	required_lang = /datum/language/neorusskya
+	features = list(/datum/cultural_feature/average)
 
 /datum/cultural_info/location/tersten
 	name = "Tersten"
@@ -161,6 +172,7 @@
 	Many Tersteners serve in the Defence Forces, and many gave their lives in the Gaian Conflict."
 	capital = "Tersten City"
 	economic_power = 1.0
+	features = list(/datum/cultural_feature/average)
 
 /datum/cultural_info/location/lorriman
 	name = "Lorriman"
@@ -175,6 +187,7 @@
 	to the planet, but exceptions have been made. A scientifically driven people, they have served many organisations loyally."
 	capital = "The Hub"
 	economic_power = 1.0
+	features = list(/datum/cultural_feature/average)
 
 /datum/cultural_info/location/cinu
 	name = "Cinu"
@@ -191,6 +204,7 @@
 	with many refusing to participate in the Defence Forces. Instead, they serve as peacekeepers and diplomats. The Cinuan People were controversially non-aligned during the Gaian Conflict."
 	capital = "Al-Mular"
 	economic_power = 1.0
+	features = list(/datum/cultural_feature/average)
 
 /datum/cultural_info/location/yuklid
 	name = "Yuklid"
@@ -204,6 +218,7 @@
 	More recently, a spiritualist movement has developed on the planet, taking aspects of religious theory and the hippocratic oath."
 	capital = "Iyeegi"
 	economic_power = 0.9
+	features = list(/datum/cultural_feature/average)
 
 /datum/cultural_info/location/lordania
 	name = "Lordania"
@@ -218,6 +233,7 @@
 	and often see themselves as better. Most Lordanians are seen as untrustworthy, or selfish. As such, they are rarely seen within Sol's Defence Forces."
 	capital = "New Ares"
 	economic_power = 1.2
+	features = list(/datum/cultural_feature/good)
 
 /datum/cultural_info/location/kingston
 	name = "Kingston"
@@ -232,6 +248,7 @@
 	Typically dark in skin due to the planet's proximity to it's sun, Kingstonians come in various forms."
 	capital = "New Havana"
 	economic_power = 1.1
+	features = list(/datum/cultural_feature/average)
 
 /datum/cultural_info/location/gaia
 	name = "Gaia"
@@ -244,6 +261,7 @@
 	once again.  They suffered hard twenty years prior, and fear they may suffer again."
 	capital = "New Venice"
 	economic_power = 1.0
+	features = list(/datum/cultural_feature/average)
 
 /datum/cultural_info/location/magnitka
 	name = "Magnitka"
@@ -256,3 +274,4 @@
 	capital = "Labortown"
 	economic_power = 0.8
 	ruling_body = "Magnitka"
+	features = list(/datum/cultural_feature/average)
