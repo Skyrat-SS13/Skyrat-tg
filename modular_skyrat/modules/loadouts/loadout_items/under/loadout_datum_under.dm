@@ -448,8 +448,12 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	item_path = /obj/item/clothing/under/pants/yoga
 
 /datum/loadout_item/under/miscellaneous/tacticool_turtleneck
-	name = "Tactitool Turtleneck"
-	item_path = /obj/item/clothing/under/syndicate/tacticool/sensors
+	name = "Tacticool Turtleneck"
+	item_path = /obj/item/clothing/under/syndicate/tacticool //This has been rebalanced in modular_skyrat\master_files\code\modules\clothing\under\syndicate.dm
+
+/datum/loadout_item/under/miscellaneous/tactical_skirt
+	name = "Tacticool Skirtleneck"
+	item_path = /obj/item/clothing/under/syndicate/tacticool/skirt //This has been rebalanced in modular_skyrat\master_files\code\modules\clothing\under\syndicate.dm
 
 /datum/loadout_item/under/miscellaneous/tactical_pants
 	name = "Tactical Pants"
@@ -488,37 +492,13 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "British Tactical Sweater"
 	item_path = /obj/item/clothing/under/uvf
 
-/datum/loadout_item/under/miscellaneous/tactical_skirt
-	name = "Tactitool Skirtleneck"
-	item_path = /obj/item/clothing/under/syndicate/tacticool/skirt/sensors
-
-/datum/loadout_item/under/miscellaneous/cream_sweater
-	name = "Cream Sweater"
+/datum/loadout_item/under/miscellaneous/sweater
+	name = "Sweater"
 	item_path = /obj/item/clothing/under/sweater
-
-/datum/loadout_item/under/miscellaneous/black_sweater
-	name = "Black Sweater"
-	item_path = /obj/item/clothing/under/sweater/black
-
-/datum/loadout_item/under/miscellaneous/purple_sweater
-	name = "Purple Sweater"
-	item_path = /obj/item/clothing/under/sweater/purple
-
-/datum/loadout_item/under/miscellaneous/green_sweater
-	name = "Green Sweater"
-	item_path = /obj/item/clothing/under/sweater/green
-
-/datum/loadout_item/under/miscellaneous/red_sweater
-	name = "Red Sweater"
-	item_path = /obj/item/clothing/under/sweater/red
-
-/datum/loadout_item/under/miscellaneous/blue_sweater
-	name = "Blue Sweater"
-	item_path = /obj/item/clothing/under/sweater/blue
 
 /datum/loadout_item/under/miscellaneous/keyhole
 	name = "Keyhole Sweater"
-	item_path = /obj/item/clothing/under/sweater/keyhole
+	item_path = /obj/item/clothing/under/keyhole_sweater
 
 /datum/loadout_item/under/miscellaneous/blacknwhite
 	name = "Classic Prisoner Jumpsuit"

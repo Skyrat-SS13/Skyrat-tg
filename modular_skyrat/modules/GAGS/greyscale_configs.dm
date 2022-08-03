@@ -293,6 +293,17 @@
 	name = "Cardigan (Worn)"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/cardigan/cardigan_worn.json'
 
+// SWEATERS
+
+/datum/greyscale_config/sweater
+	name = "Sweater"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/sweaters.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/sweater/sweater.json'
+
+/datum/greyscale_config/sweater/worn
+	name = "Sweater (Worn)"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/sweater/sweater_worn.json'
+
 // URBAN COAT
 
 /datum/greyscale_config/urban_coat
