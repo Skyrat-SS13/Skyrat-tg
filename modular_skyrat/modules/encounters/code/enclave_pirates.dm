@@ -173,4 +173,5 @@
 	<br>
 	<br> About such a Supreme Will, reported in the recall of the Councillor of the Defense Collegium, No. 217648, We announce to the military department for immediate actions in appropriate cases.
 	<br>
-	<br> <i>Signed by We, the Voronov Platon Aleksandrovich and Radich Katarina Dinovich.</i>"}
+	<br> Signed by We,
+	<br> <span style=\"color:black;font-family:'Segoe Script';\"><p><b>Voronov Platon Aleksandrovich and Radich Katarina Dinovich.</b></p></span>"}
