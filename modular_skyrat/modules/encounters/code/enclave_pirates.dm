@@ -76,7 +76,7 @@
 	flavour_text = "The station has refused to pay the fine for breaking Imperial regulations, you are here to recover the debt. Do so by demanding the funds. Force approach is usually recommended, but isn't the only method."
 	important_text = "Allowed races are humans, felinids, Akulas, IPCs. Follow your field officer's orders."
 	spawner_job_path = /datum/job/space_pirate
-	restricted_species = list(/datum/species/human, /datum/species/human/felinid, /datum/species/akula, /datum/species/robotic/ipc)
+	restricted_species = list(/datum/species/human, /datum/species/akula, /datum/species/robotic/ipc)
 	spawn_oldpod = FALSE
 	random_appearance = FALSE
 
@@ -166,7 +166,7 @@
 
 /obj/item/paper/fluff/nri_document
 	name = "NRI Mission Specifications"
-	info = {"On behalf of Novaya Rossiyskaya Imperiya Defense and Economical Collegias by the order of the Admiral Voronov Platon Aleksandrovich and the Active Privy Councillor Radich Katarina Dinovich:
+	default_raw_text = {"On behalf of Novaya Rossiyskaya Imperiya Defense and Economical Collegias by the order of the Admiral Voronov Platon Aleksandrovich and the Active Privy Councillor Radich Katarina Dinovich:
 	<br> By the Supreme command, a special meeting of representatives from the Imperial Academy of Finances and the Collegias of Foreign and Internal Affairs, Economy, Defense was convened under the chairmanship of Adjutant General Tarkhanov to consider the issue of the incongruity with the Imperial regulations by the Nanotrasen Research Station.
 	<br> This meeting, having familiarized itself with all the other possible actions and solutions, came to the conviction that the indenture of fines has casus belli to perform a strategic secret operation.
 	<br> The Imperial Regulation has to be enforced in order to minimise any potential threat for the whole Empire, not excluding allied kingdoms, organisations and other partners, and to strengthen our positions in the ongoing Border War.
