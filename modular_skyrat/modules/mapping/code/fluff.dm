@@ -204,19 +204,19 @@
 
 /obj/item/paper/fluff/ruins/tarkon/defcon5
 	name = "paper - 'Tarkon Defcon Alert'"
-	info = "<h1>Tarkon Defcon Level: 5</h1><br><br><h2>Seems everyone partied too hard</h2><br>Company Automated reminder to clean up and get back to work. You aint gonna earn a dime if you dont work on company time."
+	default_raw_text = "<h1>Tarkon Defcon Level: 5</h1><br><br><h2>Seems everyone partied too hard</h2><br>Company Automated reminder to clean up and get back to work. You aint gonna earn a dime if you dont work on company time."
 
 /obj/item/paper/fluff/ruins/tarkon/defcon4
 	name = "paper - 'Tarkon Defcon Alert'"
-	info = "<h1>Tarkon Defcon Level: 4</h1><br><br><h2>Everthing alright there?</h2><br>Port has been struck by a rather large meteor from the port side. Be careful of any local carp population, they tend to make dens everywhere they can."
+	default_raw_text = "<h1>Tarkon Defcon Level: 4</h1><br><br><h2>Everthing alright there?</h2><br>Port has been struck by a rather large meteor from the port side. Be careful of any local carp population, they tend to make dens everywhere they can."
 
 /obj/item/paper/fluff/ruins/tarkon/defcon3
 	name = "paper - 'Tarkon Defcon Alert'"
-	info = "<h1>Tarkon Defcon Level: 3</h1><br><br><h2>Signals been dead, Automated response sent</h2><br>The port has seem to gained some new residents... and not friendly ones. Do your best to survive, Reclaimers are being geared up to be sent if the GPS goes out"
+	default_raw_text = "<h1>Tarkon Defcon Level: 3</h1><br><br><h2>Signals been dead, Automated response sent</h2><br>The port has seem to gained some new residents... and not friendly ones. Do your best to survive, Reclaimers are being geared up to be sent if the GPS goes out"
 
 /obj/item/paper/fluff/ruins/tarkon/defcon2
 	name = "paper - 'Tarkon Defcon Alert'"
-	info = "<h1>Tarkon Defcon Level: 2</h1><br><br><h2>T#E V3IL H@S B3EN BR0K#N</h2><br>$IGN@L L0ST. #OP3 LOST. N0 O%E 1S COM1NG."
+	default_raw_text = "<h1>Tarkon Defcon Level: 2</h1><br><br><h2>T#E V3IL H@S B3EN BR0K#N</h2><br>$IGN@L L0ST. #OP3 LOST. N0 O%E 1S COM1NG."
 
 /obj/item/paper/crumpled/fluff/tarkon
 	name = "Crumpled note"
