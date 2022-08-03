@@ -253,13 +253,13 @@
 /datum/cultural_info/location/grudinov
 	name = "Grudinov"
 	distance = "14 light years"
-	description = "Grudinov is the sole planet in the Galilei system, serving as the DMZ between the SolFed and the NRI. \
-	It is an agricultural world, though various conflicts across the planet's surface have left it scarred. The planet is divided into \
-	Sol-Controlled <b>Southern Grudinov</b> and Imperiya-Controlled <b>Northern Grudinov</b>, with New Venice remaining a neutral zone inside the DMZ. \
-	The planet's population remain divided many years after the start of the Border War. New Venice sits on the edge of Lake Cabot. While Grudinov is divided \
-	the current Mayor of New Venice serves as a vital mediator between both sides. <br><br> The Grudinov People are tired of war, and long to see their families \
-	once again. They suffered hard many years prior, and fear they may suffer again."
-	capital = "New Venice"
+	description = "Grudinov is the sole planet in the Ararat system, serving as the DMZ between the SolFed and the NRI. \
+	It is an urban hive world, though various conflicts across the planet's surface have left it scarred. The planet is divided into \
+	Sol-Controlled <b>Southern Grudinov</b> and Imperiya-Controlled <b>Northern Grudinov</b>, with Vladiburg-by-Lesma remaining a neutral zone inside the DMZ. \
+	The planet's population remain divided many years after the start of the Border War. Vladiburg-by-Lesma sits on the edge of River Lesma accordingly. While Grudinov is divided \
+	the current Mayor of Vladiburg-by-Lesma serves as a vital mediator between both sides. <br><br> The Grudinov People are tired of war, and long to see their families \
+	once again. They suffered hard many years prior, and fear they may suffer more."
+	capital = "Vladiburg-by-Lesma"
 	economic_power = 1.0
 	features = list(/datum/cultural_feature/average)
 
