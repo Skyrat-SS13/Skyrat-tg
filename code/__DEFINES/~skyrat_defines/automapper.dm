@@ -6,3 +6,6 @@
 #define AREA_SPAWN_MODE_MOUNT_WALL	2
 
 #define AREA_SPAWN_MODE_COUNT 3
+
+// "Required map" when we're writing over the centcom map.
+#define AUTOMAPPER_MAP_BUILTIN "builtin"

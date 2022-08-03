@@ -202,6 +202,22 @@
 	name = "paper - 'Tarkon Detainment Record'"
 	default_raw_text = "<h1>Tarkon Industries Detainment Record:</h1><br><br><b>Detainee:</b>Arcus Vilkov<br><b>Rank/Occupation:</b>Junior Scientist<br><b>Reason:</b> Attemptive sabotage of a working generator<br><br><b>Detainee:</b>Tilber Sinns<br><b>Rank/Occupation:</b>Apprentice Miner<br><b>Reason:</b>Detonated a volatile rock cluster close to a wall, Causing 3 hours of reconstruction.<br><br><b>Detainee:</b>Gearalt Antonov<br><b>Rank/Occupation:</b>Engineer Specialist<br><b>Reason:</b>Public Intoxication<br><br><b>Detainee:</b>Minke Arntz<br><b>Rank/Occupation:</b>Field Researcher<br><b>Reason:</b>Deconstructed an M6 to study the effects of space dust on ballistic firearms.<br><br><b>Detainee:</b>Renanta McCrory<br><b>Rank/Occupation:</b>Medical Surgeon<br><b>Reason:</b>Medical Malpractice, Swapped the thumbs of a patient with their big toes. Removed from Premises."
 
+/obj/item/paper/fluff/ruins/tarkon/defcon5
+	name = "paper - 'Tarkon Defcon Alert'"
+	info = "<h1>Tarkon Defcon Level: 5</h1><br><br><h2>Seems everyone partied too hard</h2><br>Company Automated reminder to clean up and get back to work. You aint gonna earn a dime if you dont work on company time."
+
+/obj/item/paper/fluff/ruins/tarkon/defcon4
+	name = "paper - 'Tarkon Defcon Alert'"
+	info = "<h1>Tarkon Defcon Level: 4</h1><br><br><h2>Everthing alright there?</h2><br>Port has been struck by a rather large meteor from the port side. Be careful of any local carp population, they tend to make dens everywhere they can."
+
+/obj/item/paper/fluff/ruins/tarkon/defcon3
+	name = "paper - 'Tarkon Defcon Alert'"
+	info = "<h1>Tarkon Defcon Level: 3</h1><br><br><h2>Signals been dead, Automated response sent</h2><br>The port has seem to gained some new residents... and not friendly ones. Do your best to survive, Reclaimers are being geared up to be sent if the GPS goes out"
+
+/obj/item/paper/fluff/ruins/tarkon/defcon2
+	name = "paper - 'Tarkon Defcon Alert'"
+	info = "<h1>Tarkon Defcon Level: 2</h1><br><br><h2>T#E V3IL H@S B3EN BR0K#N</h2><br>$IGN@L L0ST. #OP3 LOST. N0 O%E 1S COM1NG."
+
 /obj/item/paper/crumpled/fluff/tarkon
 	name = "Crumpled note"
 	default_raw_text = "Look, i dont know where the fuck that suit was found, but i have a hard time believing it was made by him entirely. I already know his less than ethical obtainment methods, But that piece of tech? Its a blasted shame he's just using it for hauling crates..."
