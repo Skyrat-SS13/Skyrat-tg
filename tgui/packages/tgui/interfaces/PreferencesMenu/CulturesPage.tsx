@@ -118,7 +118,10 @@ export const CulturesPage = (props, context) => {
         <Section title="Locations">
           <Stack vertical>
             {data.locations.map((val) => (
-              <Stack.Item minWidth="33%" key={val.name}>
+              <Stack.Item
+                minWidth="33%"
+                key={val.name}
+                className="PreferencesMenu__Cultures__header">
                 <Section title={val.name}>
                   <LocationEntry location={val} />
                   <Stack fill justify="right">
@@ -141,7 +144,10 @@ export const CulturesPage = (props, context) => {
         <Section title="Factions">
           <Stack vertical>
             {data.factions.map((val) => (
-              <Stack.Item minWidth="33%" key={val.name}>
+              <Stack.Item
+                minWidth="33%"
+                key={val.name}
+                className="PreferencesMenu__Cultures__header">
                 <Section title={val.name}>
                   <BackgroundEntry background={val} />
                   <Stack fill justify="right">

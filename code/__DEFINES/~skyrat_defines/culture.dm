@@ -9,3 +9,7 @@
 
 #define LANGUAGE_UNDERSTOOD	1
 #define LANGUAGE_SPOKEN	2
+
+GLOBAL_LIST_EMPTY(culture_cultures)
+GLOBAL_LIST_EMPTY(culture_factions)
+GLOBAL_LIST_EMPTY(culture_locations)
