@@ -76,14 +76,17 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 	//SKYRAT EDIT ADDITION BEGIN
 	#ifndef SPACEMAN_DMM
 	if(CONFIG_GET(flag/sql_game_log) && CONFIG_GET(flag/sql_enabled))
-		var/datum/db_query/query_sql_log_messages = SSdbcore.NewQuery({"
-			INSERT INTO [format_table_name("game_log")] (datetime, round_id, ckey, loc, type, message)
-			VALUES (:time, :round_id, :ckey, :loc, :type, :message)
-		"}, list("time" = SQLtime(), "round_id" = "[GLOB.round_id]", "ckey" = key_name(src), "loc" = loc_name(src), type = message_type, "message" = message))
-		if(!query_sql_log_messages.warn_execute())
-			qdel(query_sql_log_messages)
-			return
-		qdel(query_sql_log_messages)
+		SSdbcore.add_log_to_mass_insert_queue(
+			format_table_name("game_log"),
+			list(
+				"time" = SQLtime(),
+				"round_id" = "[GLOB.round_id]",
+				"ckey" = key_name(src),
+				"loc" = loc_name(src),
+				"type" = message_type,
+				"message" = message,
+			)
+		)
 		if(!CONFIG_GET(flag/file_game_log))
 			return
 	#endif
