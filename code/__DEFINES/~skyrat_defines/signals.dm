@@ -87,3 +87,6 @@
 
 /// When a system machinery is destroyed
 #define COMSIG_AWAY_SYSTEM_FAIL "away_system_fail"
+
+/// When a puzzle is successfully completed : (datum/outbound_teamwork_puzzle)
+#define COMSIG_AWAY_PUZZLE_COMPLETED "away_puzzle_completed"

@@ -1,5 +1,5 @@
 import { useBackend } from '../backend';
-import { Button, LabeledList, ProgressBar, Section, Stack, Table } from '../components';
+import { Button, LabeledList, ProgressBar, Section, Stack } from '../components';
 import { Window } from '../layouts';
 
 export const CapacitatorPuzzle = () => {

@@ -3,6 +3,8 @@ GLOBAL_LIST_EMPTY(outbound_cryopods)
 /obj/machinery/outbound_expedition
 	resistance_flags = LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 	max_integrity = INFINITY
+	density = TRUE
+	anchored = TRUE
 
 /obj/machinery/outbound_expedition/Initialize(mapload)
 	. = ..()
@@ -84,6 +86,8 @@ GLOBAL_LIST_EMPTY(outbound_cryopods)
 		return
 
 	if(tgui_alert(user, "Would you like to place [target] into [src]?", "Place into Cryopod?", list("Yes", "No")) != "No")
+		if(!target.Adjacent(src))
+			return
 		to_chat(user, span_danger("You put [target] into [src]. [target.p_theyre(capitalized = TRUE)] in the cryopod."))
 
 		add_fingerprint(target)

@@ -39,17 +39,40 @@
 	desc = "A computer that appears to have a variety of sensor-reading and communication gizmos."
 
 /obj/machinery/computer/outbound_radio/proc/start_talking(talk_type)
+	OUTBOUND_CONTROLLER
 	var/total_spiel = ""
 	var/title = ""
 	var/list/text_strings = list()
 	var/curr_time = 0 SECONDS
 	switch(talk_type)
-		if("cargo")
+		if(/datum/outbound_random_event/harmless/cargo)
 			title = "sensor readout"
 			text_strings = list("Sensors have detected a cargo pod nearby your corvette.",
 			"Ship has been slowed down to allow for EVA to retrieve the materials if wished.",
 			"Retrieval not mandatory.",
 			)
+
+		if(/datum/outbound_random_event/harmless/salvage)
+			title = "sensor readout"
+			text_strings = list("Sensors have detected a large piece of floating salvage nearby your ship.",
+			"Ship has been slowed down to allow for EVA to retrieve whatever it contains.",
+			"Retrieval not mandatory.",
+			)
+
+		if(/datum/outbound_random_event/mob_harmful/scrappers)
+			title = "sensor readout - URGENT"
+			text_strings = list("Sensors have detected an autonomous structure near your ship.",
+			"The ship has been forcibly slowed down due to a collision course with the structure.",
+			"Prepare for anything.",
+			)
+
+		if(/datum/outbound_random_event/mob_harmful/raiders)
+			title = "sensor readout - URGENT"
+			text_strings = list("Sensors have detected a boarding vessel near your ship.",
+			"The raiding party has forcibly slowed down your ship.",
+			"Prepare for boarding and a counter-attack.",
+			)
+
 	for(var/string in text_strings)
 		curr_time += TIME_PER_MESSAGE
 		addtimer(CALLBACK(src, /atom/movable.proc/say, string), curr_time)
@@ -59,5 +82,7 @@
 	spiel_paper.name = "paper - '[title]'"
 	spiel_paper.info = total_spiel
 	spiel_paper.update_appearance()
+
+	outbound_controller.current_event.on_radio()
 
 #undef TIME_PER_MESSAGE

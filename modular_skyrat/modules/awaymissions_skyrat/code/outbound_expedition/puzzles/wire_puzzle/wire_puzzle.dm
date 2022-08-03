@@ -52,6 +52,12 @@ conditionals are static, wires are not
 		colors[picked_color] = new_wire
 		new_wire.color = picked_color
 		wires += new_wire
+	addtimer(CALLBACK(src, .proc/check_all_conditionals), 1 SECONDS)
+
+/datum/outbound_teamwork_puzzle/wires/proc/check_all_conditionals()
+	OUTBOUND_CONTROLLER
+	for(var/datum/outbound_wire_conditional/conditional as anything in outbound_controller.puzzle_controller.wire_conditionals)
+		conditional.conditional_check(wires)
 
 /datum/outbound_teamwork_puzzle/wires/proc/wire_interact(datum/outbound_puzzle_wire/target_wire, mob/user, cut_or_pulse)
 	OUTBOUND_CONTROLLER
@@ -63,7 +69,7 @@ conditionals are static, wires are not
 					continue
 				to_cut_wires[wire_indiv] = wire_cond.cut_or_pulse
 	if(target_wire in to_cut_wires)
-		var/req_method = to_cut_wires[target_wire] //FIX LATER: THIS SHIT EXPLODED ANYWAY
+		var/req_method = to_cut_wires[target_wire]
 		if(req_method != cut_or_pulse)
 			wrong_wire()
 			return
@@ -73,10 +79,12 @@ conditionals are static, wires are not
 		return
 	if(!length(to_cut_wires))
 		to_chat(user, span_notice("Cables defused"))
-		return //some succeed thing here
+		SEND_SIGNAL(outbound_controller.puzzle_controller, COMSIG_AWAY_PUZZLE_COMPLETED, src)
 
 /datum/outbound_teamwork_puzzle/wires/proc/wrong_wire()
-	explosion(terminal, 1, 2, 4, 0, 0)
+	//explosion(terminal, 1, 2, 4, 0, 0)
+	terminal.balloon_alert_to_viewers("wire failed")
+	return
 
 /datum/outbound_teamwork_puzzle/wires/ui_data(mob/user)
 	var/list/data = list()

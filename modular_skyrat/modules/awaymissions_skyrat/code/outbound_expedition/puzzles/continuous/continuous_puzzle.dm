@@ -33,8 +33,7 @@
 	capacitator_charge = clamp(capacitator_charge + amount, 0, 100)
 
 /datum/outbound_teamwork_puzzle/continuous/capacitator/puzzle_process()
-	OUTBOUND_CONTROLLER
-	if(!istype(outbound_controller.current_event, /datum/outbound_random_event/harmful/part_malf))
+	if(!enabled)
 		return
 	increase_charge(capacitator_increase) //Check if this needs to use delta_time later
 	if(capacitator_charge >= CAPACITATOR_MAX_CHARGE)

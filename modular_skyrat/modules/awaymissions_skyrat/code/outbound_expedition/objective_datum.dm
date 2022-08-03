@@ -40,3 +40,13 @@
 	name = "Listen to Bridge Radio"
 	desc = "Proceed to the bridge."
 	landmark_id = "bridge_radio"
+
+/datum/outbound_objective/raid_ship //raiders
+	name = "Raid the Ship"
+	desc = "Raid the interdicted ship."
+	landmark_id = "bridge_center"
+
+/datum/outbound_objective/part_fix
+	name = "Part Fixing"
+	desc = "Fix the malfunctioning panels!"
+	landmark_id = "part_fix"

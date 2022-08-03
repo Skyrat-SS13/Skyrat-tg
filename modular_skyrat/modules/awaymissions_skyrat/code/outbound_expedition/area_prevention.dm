@@ -47,3 +47,23 @@
 /area/awaymission/outbound_expedition/shuttle
 	name = "Vanguard Shuttle"
 	icon_state = "awaycontent2"
+
+/area/awaymission/outbound_expedition/ruin
+	name = "Outbound Ruin"
+	icon_state = "awaycontent3"
+
+/area/awaymission/outbound_expedition/ruin/scrapper
+	name = "Scrapper Zone"
+	icon_state = "awaycontent4"
+
+/area/awaymission/outbound_expedition/ruin/raider
+	name = "Raider Shuttle"
+	icon_state = "awaycontent5"
+
+/area/awaymission/outbound_expedition/ruin/prison
+	name = "Prison Shuttle"
+	icon_state = "awaycontent6"
+
+/area/awaymission/outbound_expedition/ruin/survival
+	name = "Survival Shelter"
+	icon_state = "awaycontent7"

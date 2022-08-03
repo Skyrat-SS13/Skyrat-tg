@@ -39,12 +39,11 @@ GLOBAL_LIST_EMPTY(outbound_objective_landmarks)
 
 /// To get rid of the popup when someone with the objective gets near
 /obj/effect/landmark/away_objective/proc/trigger(datum/source, atom/movable/entered_atom)
-	. = TRUE
 	SIGNAL_HANDLER
 	OUTBOUND_CONTROLLER
 
 	if(!isliving(entered_atom) || !(entered_atom in untriggered_mobs))
-		return FALSE
+		return
 
 	var/mob/living/entered_mob = entered_atom
 
@@ -75,10 +74,13 @@ GLOBAL_LIST_EMPTY(outbound_objective_landmarks)
 	OUTBOUND_CONTROLLER
 	var/turf/our_turf = get_turf(src)
 	for(var/obj/machinery/computer/outbound_radio/radio in our_turf.contents)
-		radio.start_talking("cargo")
+		radio.start_talking(outbound_controller.current_event.type)
 		break
 	outbound_controller.give_objective(entered_atom, outbound_controller.objectives[/datum/outbound_objective/cryo])
 
+/obj/effect/landmark/away_objective/part_fix
+	id = "part_fix"
+	range_req = 1
 
 // other landmark shit that i might move later
 /obj/effect/landmark/objective_update
@@ -126,5 +128,20 @@ GLOBAL_LIST_EMPTY(outbound_objective_landmarks)
 	if(!HAS_TRAIT(living_mob, TRAIT_DNR))
 		ADD_TRAIT(living_mob, TRAIT_DNR, src) // leaving for now, might remove idk
 
-/obj/effect/landmark/ship_center
+/obj/effect/landmark/outbound/ship_center
 	name = "Vanguard Corvette Center"
+
+/obj/effect/landmark/outbound/meteor_start
+	name = "Meteor Start"
+
+/obj/effect/landmark/outbound/debris_loc
+	name = "Debris Location"
+
+/obj/effect/landmark/outbound/scrapper_evac_point
+	name = "Scrapper Evacuation Point"
+
+/obj/effect/landmark/outbound/raider_spawn
+	name = "Raider Spawn Point"
+
+/obj/effect/landmark/outbound/bridge_center
+	name = "Bridge Center"

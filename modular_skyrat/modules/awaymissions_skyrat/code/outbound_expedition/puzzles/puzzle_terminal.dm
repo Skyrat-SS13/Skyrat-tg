@@ -30,9 +30,9 @@
 
 /obj/machinery/outbound_expedition/puzzle_terminal/attack_hand(mob/living/user, list/modifiers)
 	OUTBOUND_CONTROLLER
-//	if(!istype(outbound_controller.current_event, /datum/outbound_random_event/harmful/part_malf)) //UNDO LATER
-//		to_chat(user, span_warning("You don't feel the need to open this yet."))
-//		return
+	if(!istype(outbound_controller.current_event, /datum/outbound_random_event/harmful/part_malf))
+		to_chat(user, span_warning("You don't feel the need to open this yet."))
+		return
 	. = ..()
 
 /obj/effect/landmark/puzzle_terminal_spawn //Placed on the shuttle, once the controller inits it replaces these
@@ -42,8 +42,6 @@
 /obj/machinery/computer/puzzle_answers
 	name = "digitized instruction manual"
 	desc = "A computer containing an instruction manual for repair of onboard systems."
-	icon = 'icons/obj/computer.dmi'
-	icon_state = "computer"
 	tgui_id = "OutboundPuzzleAnswer"
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 	max_integrity = INFINITY

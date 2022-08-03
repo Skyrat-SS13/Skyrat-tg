@@ -11,6 +11,8 @@
 	var/terminal_desc = ""
 	/// Describing how to complete the puzzle
 	var/desc = ""
+	/// If it's enabled or not
+	var/enabled = FALSE
 
 /datum/outbound_teamwork_puzzle/Destroy(force, ...)
 	if(terminal)

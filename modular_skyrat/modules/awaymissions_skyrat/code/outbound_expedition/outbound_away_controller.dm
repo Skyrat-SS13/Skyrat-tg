@@ -35,13 +35,20 @@
 	)
 	/// Extra list of shit to delete on ship move
 	var/list/deletion_stuff = list()
+	/// Ordered list of events.
+	var/list/event_order = list(
+		"random",
+		"random",
+		"random",
+		"random", //figure out later when i've actually made the story missions
+	)
 
 /datum/away_controller/outbound_expedition/New()
 	. = ..()
 	for(var/ship_sys in subtypesof(/datum/outbound_ship_system))
 		var/datum/outbound_ship_system/new_system = new ship_sys
 		ship_systems[new_system.name] = new_system
-	for(var/type in subtypesof(/datum/outbound_random_event))
+	for(var/type in subtypesof(/datum/outbound_random_event) - list(/datum/outbound_random_event/harmful, /datum/outbound_random_event/harmless, /datum/outbound_random_event/mob_harmful, /datum/outbound_random_event/story)) // all subtypes except the parents
 		var/datum/new_type = new type
 		event_datums += new_type
 	puzzle_controller = new /datum/outbound_puzzle_controller
@@ -57,6 +64,7 @@
 		objectives[objective_type] = new_objective
 	RegisterSignal(src, COMSIG_AWAY_CRYOPOD_EXITED, .proc/exited_cryopod)
 	RegisterSignal(src, COMSIG_AWAY_CRYOPOD_ENTERED, .proc/entered_cryopod)
+	jumps_to_dest += rand(-3, 5)
 
 /datum/away_controller/outbound_expedition/Destroy(force, ...)
 	for(var/datum/system as anything in ship_systems)
@@ -109,6 +117,12 @@
 // Event stuff
 
 /datum/away_controller/outbound_expedition/proc/select_event()
+	if(event_order[1] != "random")
+		current_event = locate(event_order[1]) in event_datums
+		current_event.on_select()
+		event_order.Cut(1, 2)
+		return
+
 	var/calculated_difficulty = 1
 	switch(length(participating_mobs))
 		if(1)
@@ -130,9 +144,6 @@
 	var/datum/outbound_random_event/the_actual_event = pick_weight(possible_events)
 	current_event = the_actual_event
 	the_actual_event.on_select()
-	return //make sure for wires to regen everything
-
-
 
 // Landmark check
 
@@ -171,6 +182,7 @@
 // """Moving""" the ship
 
 /datum/away_controller/outbound_expedition/proc/move_shuttle(list/affected_areas = area_clear_whitelist)
+	jumps_to_dest--
 	for(var/affected_area as anything in affected_areas)
 		if(is_type_in_typecache(affected_area, area_clear_blacklist))
 			continue
@@ -193,6 +205,8 @@
 		var/area/our_area = GLOB.areas_by_type[/area/awaymission/outbound_expedition/dock]
 		for(var/obj/machinery/door/poddoor/shutters/indestructible/shutter in our_area)
 			addtimer(CALLBACK(shutter, /obj/machinery/door/poddoor/shutters.proc/open), 0 SECONDS)
+		for(var/obj/effect/landmark/awaystart/landmark in our_area)
+			qdel(landmark)
 
 // Cryopod procs
 
@@ -217,10 +231,32 @@
 /datum/away_controller/outbound_expedition/proc/aaaaa()
 	var/datum/outbound_random_event/our_event
 	for(var/datum/outbound_random_event/event in event_datums)
-		if(!istype(event, /datum/outbound_random_event/harmless/cargo))
+		if(!istype(event, /datum/outbound_random_event/harmful/part_malf))
 			continue
 		our_event = event
 	current_event = our_event
 	our_event.on_select()
 	for(var/obj/machinery/outbound_expedition/cryopod/wakeytime as anything in GLOB.outbound_cryopods)
 		wakeytime.locked = FALSE
+
+// ???
+
+/datum/away_controller/outbound_expedition/proc/spawn_meteor(list/meteortypes = list(/obj/effect/meteor/medium = 8, /obj/effect/meteor/big = 3, /obj/effect/meteor/flaming = 1, /obj/effect/meteor/irradiated = 3))
+	var/turf/pickedstart
+	var/turf/pickedgoal
+	var/max_i = 10 //number of tries to spawn meteor.
+	var/list/meteor_spawns = list()
+	var/list/ship_turfs = list()
+	for(var/obj/effect/landmark/outbound/meteor_start/start in GLOB.landmarks_list)
+		meteor_spawns += start
+	var/area/ship_area = GLOB.areas_by_type[/area/awaymission/outbound_expedition/shuttle]
+	for(var/turf/shuttle_turf in ship_area)
+		ship_turfs += shuttle_turf
+	while(!isspaceturf(pickedstart) || !isturf(pickedgoal))
+		pickedstart = get_turf(pick(meteor_spawns))
+		pickedgoal = pick(ship_turfs)
+		max_i--
+		if(max_i <= 0)
+			return
+	var/meteor = pick_weight(meteortypes)
+	new meteor(pickedstart, pickedgoal)

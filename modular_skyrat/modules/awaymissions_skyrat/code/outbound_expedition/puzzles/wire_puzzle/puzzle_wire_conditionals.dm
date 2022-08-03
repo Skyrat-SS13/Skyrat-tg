@@ -158,7 +158,7 @@
 
 	var/color_text = ""
 	for(var/color in selected_colors)
-		color_text += "[color][color == selected_colors[length(selected_colors)] ? "" : (color == selected_colors[length(selected_colors) - 1] ? " or " : ", ")]]"
+		color_text += "[color][color == selected_colors[length(selected_colors)] ? "" : (color == selected_colors[length(selected_colors) - 1] ? " or " : ", ")]"
 
 	logic_wires.Insert(0, selected_wires)
 
