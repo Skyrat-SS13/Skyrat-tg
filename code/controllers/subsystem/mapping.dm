@@ -309,8 +309,10 @@ Used by the AI doomsday and the self-destruct nuke.
 		var/datum/parsed_map/pm = P
 		if (!pm.load(1, 1, start_z + parsed_maps[P], no_changeturf = TRUE, blacklisted_turfs = SSautomapper.get_turf_blacklists(files))) // SKYRAT EDIT CHANGE - We use blacklisted turfs to carve out places for our templates.
 			errorList |= pm.original_path
-		else
-			SSautomapper.load_templates_from_cache(files) // SKYRAT EDIT ADDITION - We need to load our templates from cache after our space has been carved out.
+	// SKYRAT EDIT ADDITION BEGIN - We need to load our templates from cache after our space has been carved out.
+	if(!LAZYLEN(errorList))
+		SSautomapper.load_templates_from_cache(files)
+	// SKYRAT EDIT ADDITION END
 	if(!silent)
 		add_startup_message("Loaded [name] in [(REALTIMEOFDAY - start_time)/10]s!") //SKYRAT EDIT CHANGE
 	return parsed_maps
