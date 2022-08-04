@@ -203,23 +203,8 @@
 	worn_icon_state = "peacekeeperbelt"
 	content_overlays = FALSE
 
-/datum/storage/peacekeeper/open_storage(datum/source, mob/user)
-	var/atom/resolve_parent = parent?.resolve()
-	if(!resolve_parent)
-		return
-
-	var/obj/item/gun/ballistic/automatic/pistol/gun_to_draw = locate() in real_location?.resolve()
-	if(!gun_to_draw)
-		return ..()
-	resolve_parent.add_fingerprint(user)
-	attempt_remove(gun_to_draw, get_turf(user))
-	playsound(resolve_parent, 'modular_skyrat/modules/sec_haul/sound/holsterout.ogg', 50, TRUE, -5)
-	INVOKE_ASYNC(user, /mob/.proc/put_in_hands, gun_to_draw)
-	user.visible_message(span_warning("[user] draws [gun_to_draw] from [resolve_parent]!"), span_notice("You draw [gun_to_draw] from [resolve_parent]."))
-
 /obj/item/storage/belt/security/peacekeeper/Initialize()
 	. = ..()
-	create_storage(type = /datum/storage/peacekeeper)
 	atom_storage.max_slots = 5
 	atom_storage.set_holdable(list(
 		/obj/item/gun/ballistic/automatic/pistol,
@@ -263,7 +248,6 @@
 
 /obj/item/storage/belt/security/webbing/peacekeeper/Initialize()
 	. = ..()
-	create_storage(type = /datum/storage/peacekeeper)
 	atom_storage.max_slots = 7
 	atom_storage.set_holdable(list(
 		/obj/item/gun/ballistic/automatic/pistol,

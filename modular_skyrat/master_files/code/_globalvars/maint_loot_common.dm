@@ -343,7 +343,7 @@ GLOBAL_LIST_INIT(common_loot, list( // common: basic items
 		/obj/item/clothing/under/misc/polyshorts = 100,
 		/obj/item/clothing/under/shorts/polychromic = 100,
 		/obj/item/clothing/under/shorts/polychromic/pantsu = 100,
-		/obj/item/clothing/suit/hooded/wintercoat/polychromic = 100
+		/obj/item/clothing/suit/hooded/wintercoat/colourable = 100
 	) = 100,
 	list( // Stuff you'd find in maint but like not really
 		/obj/item/food/meat/slab/human = 1,

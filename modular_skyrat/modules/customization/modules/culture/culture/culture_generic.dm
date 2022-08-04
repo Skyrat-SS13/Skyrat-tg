@@ -28,7 +28,7 @@
 /datum/cultural_info/culture/generic_human
 	name = "Humankind"
 	description = "You are from one of various planetary cultures of humankind."
-	additional_langs = list(/datum/language/neorusskya, /datum/language/gutter, /datum/language/spacer, /datum/language/yangyu)
+	additional_langs = list(/datum/language/panslavic, /datum/language/gutter, /datum/language/spacer, /datum/language/yangyu)
 
 /datum/cultural_info/culture/martian_surfacer
 	name = "Martian, Surfacer"
@@ -79,7 +79,7 @@
 	Unfortunately, the years since the war have not been easy on Terra and the long period of economic recovery has not made life easy. The people of Terra are typically employed \
 	in the military, industrial, government or service sectors, with an emphasis being placed on military service. Terrans today are generally poor, bitter and a somewhat broken people angry and \
 	resentful about their loss in the Gaia Conflict. An upbringing on Terra emphasises an odd mix of service to the state, liberalism and militarism."
-	required_lang = /datum/language/neorusskya
+	required_lang = /datum/language/panslavic
 	economic_power = 0.9
 
 /datum/cultural_info/culture/venusian_upper
@@ -113,7 +113,7 @@
 	the planet has led to the people of Pluto having something of a seedy reputation, its citizens being viewed with disrepute. The people themselves, however, are usually \
 	just happy to get off the rock and to healthier locales. Unfortunately, despite the efforts of the wider SCG, many Plutonians tend to maintain criminal ties, even offworld."
 	economic_power = 0.8
-	additional_langs = list(/datum/language/neorusskya, /datum/language/gutter, /datum/language/spacer, /datum/language/yangyu)
+	additional_langs = list(/datum/language/panslavic, /datum/language/gutter, /datum/language/spacer, /datum/language/yangyu)
 
 /datum/cultural_info/culture/ceti
 	name = "Cetite"
