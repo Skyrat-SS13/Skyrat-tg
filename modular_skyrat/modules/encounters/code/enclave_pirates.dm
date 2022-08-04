@@ -1,3 +1,10 @@
+#define NRI_COOLDOWN_HEAL 15 SECONDS
+#define NRI_COOLDOWN_RADS 30 SECONDS
+#define NRI_COOLDOWN_ACID 30 SECONDS
+
+#define NRI_HEAL_AMOUNT 5
+#define NRI_BLOOD_REPLENISHMENT 10
+
 /datum/outfit/pirate/enclave_officer
 	name = "Imperial Enclave Officer"
 
@@ -169,20 +176,20 @@
 /obj/item/clothing/suit/space/hev_suit/nri/pirate
 	cell = /obj/item/stock_parts/cell/super
 	radio_channel = RADIO_CHANNEL_GUILD
-	heal_amount = PCV_HEAL_AMOUNT
-	blood_replenishment = PCV_BLOOD_REPLENISHMENT
-	health_static_cooldown = PCV_COOLDOWN_HEAL
-	rads_static_cooldown = PCV_COOLDOWN_RADS
-	acid_static_cooldown = PCV_COOLDOWN_ACID
+	heal_amount = NRI_HEAL_AMOUNT
+	blood_replenishment = NRI_BLOOD_REPLENISHMENT
+	health_static_cooldown = NRI_COOLDOWN_HEAL
+	rads_static_cooldown = NRI_COOLDOWN_RADS
+	acid_static_cooldown = NRI_COOLDOWN_ACID
 
 /obj/item/clothing/suit/space/hev_suit/nri/captain/pirate
 	cell = /obj/item/stock_parts/cell/super
 	radio_channel = RADIO_CHANNEL_GUILD
-	heal_amount = PCV_HEAL_AMOUNT
-	blood_replenishment = PCV_BLOOD_REPLENISHMENT
-	health_static_cooldown = PCV_COOLDOWN_HEAL
-	rads_static_cooldown = PCV_COOLDOWN_RADS
-	acid_static_cooldown = PCV_COOLDOWN_ACID
+	heal_amount = NRI_HEAL_AMOUNT
+	blood_replenishment = NRI_BLOOD_REPLENISHMENT
+	health_static_cooldown = NRI_COOLDOWN_HEAL
+	rads_static_cooldown = NRI_COOLDOWN_RADS
+	acid_static_cooldown = NRI_COOLDOWN_ACID
 
 /obj/item/paper/fluff/nri_document
 	name = "NRI Mission Specifications"
@@ -195,3 +202,10 @@
 	<br>
 	<br> Signed by We,
 	<br> <span style=\"color:black;font-family:'Segoe Script';\"><p><b>Voronov Platon Aleksandrovich and Radich Katarina Dinovich.</b></p></span>"}
+
+#undef NRI_COOLDOWN_HEAL
+#undef NRI_COOLDOWN_RADS
+#undef NRI_COOLDOWN_ACID
+
+#undef NRI_HEAL_AMOUNT
+#undef NRI_BLOOD_REPLENISHMENT
