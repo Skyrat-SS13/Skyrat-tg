@@ -265,7 +265,7 @@
 	features = list(/datum/cultural_feature/poor)
 
 /datum/cultural_info/location/gagarin
-	name = "Gagarin"
+	name = "Gagarin-4"
 	distance = "24 light years"
 	description = "Gagarin is a scientific colony located in the Potemkin-Tauric system close to the anomalous Sector 13. \
 	Given an explicit approval of both the Innovations Collegia and the Eternal Empress, it acquired a unique status of an independent people-owned research institute. \
