@@ -6365,7 +6365,9 @@
 /turf/open/floor/plating,
 /area/station/commons/fitness/recreation)
 "avp" = (
-/obj/docking_port/stationary/laborcamp_home,
+/obj/docking_port/stationary/laborcamp_home{
+	dir = 8
+	},
 /turf/open/space/basic,
 /area/space)
 "avq" = (
@@ -15115,7 +15117,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/chair/stool/bar,
+/obj/structure/chair/stool/bar/directional/north,
 /obj/effect/landmark/start/assistant,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -15464,7 +15466,7 @@
 /turf/open/floor/iron/dark,
 /area/station/service/kitchen)
 "bae" = (
-/obj/structure/chair/stool/bar,
+/obj/structure/chair/stool/bar/directional/west,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
@@ -15883,7 +15885,7 @@
 /turf/open/floor/iron/dark,
 /area/station/service/kitchen)
 "bbm" = (
-/obj/structure/chair/stool/bar,
+/obj/structure/chair/stool/bar/directional/west,
 /obj/effect/landmark/start/assistant,
 /turf/open/floor/iron/dark,
 /area/station/service/bar)
@@ -16187,7 +16189,7 @@
 /turf/open/floor/iron/dark,
 /area/station/service/bar)
 "bcm" = (
-/obj/structure/chair/stool/bar,
+/obj/structure/chair/stool/bar/directional/west,
 /turf/open/floor/iron/dark,
 /area/station/service/bar)
 "bco" = (
@@ -21962,10 +21964,10 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/door/airlock/maintenance{
-	req_access_txt = "12";
 	name = "Maintenance Access"
 	},
 /obj/structure/cable,
+/obj/effect/mapping_helpers/airlock/access/any/science/maintenance,
 /turf/open/floor/plating,
 /area/station/maintenance/department/engine)
 "bxf" = (
@@ -30294,8 +30296,7 @@
 /area/station/service/chapel/office)
 "ceg" = (
 /obj/machinery/door/airlock/grunge{
-	name = "Chapel Office";
-	req_access_txt = "22"
+	name = "Chapel Office"
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 8
@@ -30303,6 +30304,7 @@
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/mapping_helpers/airlock/access/all/service/chapel_office,
 /turf/open/floor/iron/dark,
 /area/station/service/chapel)
 "cei" = (
@@ -32475,7 +32477,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/chair/stool/bar,
+/obj/structure/chair/stool/bar/directional/north,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/station/service/bar)
@@ -32483,7 +32485,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/chair/stool/bar,
+/obj/structure/chair/stool/bar/directional/north,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
@@ -50040,9 +50042,9 @@
 /area/station/commons/fitness)
 "pkM" = (
 /obj/machinery/door/airlock/external{
-	req_access_txt = "22";
 	name = "External Airlock"
 	},
+/obj/effect/mapping_helpers/airlock/access/all/service/chapel_office,
 /turf/open/floor/plating,
 /area/station/service/chapel/office)
 "pkU" = (
@@ -51452,7 +51454,6 @@
 	},
 /obj/machinery/door/airlock/medical/glass{
 	id_tag = "MedbayFoyer";
-	req_access_txt = "5";
 	name = "Medical Foyer"
 	},
 /obj/machinery/door/firedoor,
@@ -51462,6 +51463,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
+/obj/effect/mapping_helpers/airlock/access/all/medical/general,
 /turf/open/floor/iron/white,
 /area/station/medical/medbay/lobby)
 "qqW" = (
@@ -60316,11 +60318,12 @@
 /area/station/service/library)
 "xje" = (
 /obj/machinery/door/airlock/maintenance{
-	req_access_txt = "12";
 	name = "Maintenance Access"
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/mapping_helpers/airlock/access/any/science/maintenance,
+/obj/effect/mapping_helpers/airlock/access/any/medical/maintenance,
 /turf/open/floor/plating,
 /area/station/maintenance/department/engine)
 "xjK" = (
