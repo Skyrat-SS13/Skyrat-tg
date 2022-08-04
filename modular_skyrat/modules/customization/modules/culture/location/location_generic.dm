@@ -140,21 +140,6 @@
 	distance = "10 light years"
 	features = list(/datum/cultural_feature/good)
 
-/datum/cultural_info/location/terra
-	name = "Terra"
-	description = "Terra, in the Gilgamesh system. Is not the planet Earth as some may be lead to believe. No, Terra is the home of the Novaya Rossiyskaya Imperiya, and the capital of that \
-	particular superpower. Terra is one of the many affiliated planets in the NRI and the one that is perhaps the most important. Terra, much like most of the NRI, is isolationist, with a minimal \
-	non-human presence. Much of Terra is heavily industrialised, with a lower standard of living than on equivalent SolFed planets. Much of the population works in services, industry or the military. \
-	Still recovering from an economic crash toward the end of the Gaia conflict, much of Terra is in decline, with public services and works being minimal and much of the population burdened by \
-	increasingly high taxes. This state of affairs has seen the immigration of many Terran citizens to the SolFed in recent years, hoping to escape the poor conditions they found themselves in. Despite this,\
-	the people of Terra are a proud and unbroken people who are heavily patriotic and tend to bring this with them wherever they go."
-	capital = "Ameranth"
-	distance = "22.5 light years."
-	economic_power = 0.9
-	ruling_body = "Novaya Rossiyskaya Imperiya"
-	required_lang = /datum/language/neorusskya
-	features = list(/datum/cultural_feature/average)
-
 /datum/cultural_info/location/tersten
 	name = "Tersten"
 	distance = "52 light years"
@@ -250,28 +235,51 @@
 	economic_power = 1.1
 	features = list(/datum/cultural_feature/average)
 
+/datum/cultural_info/location/providence
+	name = "Providence"
+	distance = "22.5 light years."
+	description = "Providence, in the Ararat system, is the home planet of the Novaya Rossiyskaya Imperiya, and the capital of that particular superpower.\
+	Established during the early days of imperial colonisation and named after the colonists' capital ship, it soon became a cultural and economical centre of the whole empire. Or rather, the more inhabitable and stabilised regions.\
+	Much of the planet has been heavily scarred by the early days of the colonisation, leaving certain areas of the planet heavily polluted or practically uninhabitable, which became the main focus of the Geological and Ecological Collegium's efforts. \
+	In an effort to keep people from immigrating from the planet, the empire has been heavily subsidizing various ecological and charity NGOs to help counteract the disaster.\
+	This state of affairs has seen the immigration of many imperial citizens to the SolFed in recent years, hoping to escape the poor conditions they found themselves in.\
+	The more stable regions near the approximated location of the first landings, now becoming the New St. Petersburg, however, have become thriving with life and various cultural points of interests, as lots of tourists come here to become familiar with the imperial history.\
+	Despite everything unfortunate that have happened to the people of Providence, they remain proud and unbroken, heavily patriotic and tend to bring this with them wherever they go."
+	capital = "New St. Petersburg"
+	economic_power = 1.0
+	ruling_body = "Novaya Rossiyskaya Imperiya"
+	required_lang = /datum/language/neorusskya
+	features = list(/datum/cultural_feature/good)
+
 /datum/cultural_info/location/grudinov
 	name = "Grudinov"
 	distance = "14 light years"
-	description = "Grudinov is the sole planet in the Ararat system, serving as the DMZ between the SolFed and the NRI. \
+	description = "Grudinov is the sole inhabitable planet in the Solutio system, serving as the DMZ between the SolFed and the NRI. \
 	It is an urban hive world, though various conflicts across the planet's surface have left it scarred. The planet is divided into \
-	Sol-Controlled <b>Southern Grudinov</b> and Imperiya-Controlled <b>Northern Grudinov</b>, with Vladiburg-by-Lesma remaining a neutral zone inside the DMZ. \
-	The planet's population remain divided many years after the start of the Border War. Vladiburg-by-Lesma sits on the edge of River Lesma accordingly. While Grudinov is divided \
-	the current Mayor of Vladiburg-by-Lesma serves as a vital mediator between both sides. <br><br> The Grudinov People are tired of war, and long to see their families \
-	once again. They suffered hard many years prior, and fear they may suffer more."
-	capital = "Vladiburg-by-Lesma"
-	economic_power = 1.0
-	features = list(/datum/cultural_feature/average)
+	Sol-Controlled <b>Northern Grudinov</b> and Imperiya-Controlled <b>Southern Grudinov</b>, with Antioch the Second remaining a neutral zone inside the DMZ. \
+	The planet's population remain divided many years after the start of the Border War. While Grudinov is divided the current Mayor of Antioch the Second serves as a vital mediator between both sides. \
+	<br><br> The Grudinov People are tired of war, and long to see their families once again. They suffered hard many years prior, and fear they may suffer more."
+	capital = "Antioch the Second"
+	economic_power = 0.8
+	ruling_body = "SolFed (Northern hemisphere); NRI (Southern hemisphere); Neutral (Antioch the Second)"
+	features = list(/datum/cultural_feature/poor)
 
 /datum/cultural_info/location/gagarin
 	name = "Gagarin"
 	distance = "24 light years"
-	description = "Gagarin is an independent, industrialized mining and ore processing colony located in the Ursa system. \
-	Ruled by an authoritarian government heavily associated with the corporations that founded it, Magnitka's recent history is marked by civil war. Even today, a large number of rebel groups populate the planet. \
-	Founded by German companies in the 2300s, the overwhelming majority of Magnitka's population is descended from Eastern European laborers and their German managers. \
-	Unfortunately, Magnitka's economy is in a decline as its principle export, iron, grows cheaper by the day. The primary careers available to Magnitkans are military service, mining, or organized crime.  \
-	Though historically relatively isolationist, today Magnitka finds itself more and more closely associated with the Novaya Rossiyskaya Imperiya, in an effort to offset its economic decline."
-	capital = "New Antioch"
-	economic_power = 0.8
-	ruling_body = "Novaya Rossiyskaya Imperiya"
+	description = "Gagarin is a scientific colony located in the Potemkin-Tauric system close to the anomalous Sector 13. \
+	Given an explicit approval of both the Innovations Collegia and the Eternal Empress, it acquired a unique status of an independent people-owned research institute. \
+	Ruled by a court of well-known scientists and researchers, known as the Academic Senate, Gagarin's recent history is a wave of peaceful protests-gone-wrong. \
+	In an attempt to keep science away from any political influence and attempts to militarise it, a huge group of scientists, academics and workers, led by the \
+	professor of xenobiological sciences Vladislav Shatynbai, formed an undercover organisation formally known as the <b>Astro Orientalis</b>, which soon became a turning point in the colony's life. \
+	Wave after wave of various political activism, it spread through the people's minds, as their ideas became more widespread and agreeable by most of the population, with more people joining this organisation, until it reached its climax. \
+	An all-colonial peaceful protest, led by the Shatynbai, happened, gathering a massive collection of people of all sorts, and making their way through the colony's main square. \
+	Such an act didn't go unnoticed, and, being afraid of a possible riot, the local police department's chief of police had assembled a sizeable amount of people to disrupt the gathering. Resulting in a massacre. \
+	Lots of scientists got killed during this march, with Vladislav suffering a grave wound and soon after dying in a hospital, after giving an interview to an independent news reporter, who made this event well-known across the empire and an important topic to talk about. \
+	This event has got interest of the Empress herself, who, after a personal visit of the people on the planet and listening to their demands, gave them a permission to become an independent organ protected by the Imperiya, \
+	as long as they would be assisting them with their research. This event has marked the creation of an Academic Senate and the formation of the Gagarin colony as it's currently known.\
+	People of Gagarin are very independent and strong-willed, commonly acting in the opposition to the known methodics in order to discover something new."
+	economic_power = 0.9
+	ruling_body = "Formally, Novaya Rossiyskaya Imperiya; Factually, Gagarin's Academic Senate"
+	required_lang = /datum/language/neorusskya
 	features = list(/datum/cultural_feature/average)
