@@ -151,24 +151,37 @@
 	bordered by the Sol Federation towards the galactic centre. The capital of the Empire is the city of New Saint Petersburg on the planet of Providence \
 	in the Ararat system. Externally heavily militant and isolationist, the NRI, internally, is heavily democratical, with \
 	a strong focus on independent regional government with the NRI itself only handling defence, foreign relations and some intergalactic trade. \
-	Increasingly anti non-human, the NRI is in an active war with the Sol Federation known as the Border War, a large \
+	Increasingly anti non-human to everyone but the few allied Groups of Interest, the NRI is in an active war with the Sol Federation known as the Border War, a large \
 	scale conflict between the SolFed and NRI that sees a great deal of death and destruction. In Sol space they are heavily mistrusted \
 	and in some instances, met with downright hostility. Today the NRI continues to be an economic powerhouse following \
-	a period of steady economic recovery, with most of its exports being manufactured goods, primarily armaments."
-	economic_power = 0.9
+	a period of steady economic recovery, with most of its exports being manufactured goods, primarily armaments.\
+	It is very likely that you do not belong to any governmental organisation or Collegium, simply being born there, likely taught and lived there, and then contracted by the Nanotrasen.\
+	Not like this station is even barely good to begin with."
+	economic_power = 0.85
 	features = list(/datum/cultural_feature/average)
 
 /datum/cultural_info/faction/nri_police_military
 	name = "Novaya Rossiyskaya Imperiya Defense and Peacekeeping Collegium"
-	description = "The \"New Russian Empire\", commonly referred to as the Novaya Rossiyskaya Imperiya (NRI), is a regional power in human space,\
-	bordered by the Sol Federation towards the galactic centre. The capital of the Empire is the city of New Saint Petersburg on the planet of Providence \
-	in the Ararat system. Externally heavily militant and isolationist, the NRI, internally, is heavily democratical, with \
-	a strong focus on independent regional government with the NRI itself only handling defence, foreign relations and some intergalactic trade. \
-	Increasingly anti non-human, the NRI is in an active war with the Sol Federation known as the Border War, a large \
-	scale conflict between the SolFed and NRI that sees a great deal of death and destruction. In Sol space they are heavily mistrusted \
-	and in some instances, met with downright hostility. Today the NRI continues to be an economic powerhouse following \
-	a period of steady economic recovery, with most of its exports being manufactured goods, primarily armaments."
-	economic_power = 0.95
+	description = "NRI's Defense and Peacekeeping Collegium, is the empire's main military and police forces. Empire's police force is well-known for \
+	their field efficiency and ruthlesness when it comes to terroristic operations, as well as heavily rumored to be incredibly corrupt and barely capable of responding \
+	due to an incredibly inefficient bureaucracy. It's very likely that an imperial police officer would be waiting for the order longer than they would be actually doing their job. \
+	It's mainly comprised of different precincts spread across the territory, with an on-site SWAT and paramedical teams for fast assistance in case of an emergency, \
+	all under control of a headquarter that dispatches additional manpower and delegates orders.\
+	To become a part of it, person with an adequate level of physical training would have to go through a police academy for at least two years, earning themselves a rank of a Patrolman. \
+	Additionaly, having a degree in Law, as well as previous military training will be a quick and easy way to get yourself promoted. \
+	<br> \
+	Imperial Defense Collegia is a state military force mainly comprised of ground troops and mechanised infantry of the empire, being the second largest human military currently known. \
+	It's well funded and receives a huge amount of permissions from the higher offices, as they're usually considered to be highly professional and efficient. \
+	All of this, however, is once again partially hindered by the inefficient bureaucracy that slows down their deployment times, which is an issue that was partially solved by making most squads and bases partially autonomous. \
+	Their military is comprised of the Naval branch; Infantry and Armored Divisions; Border Patrol and Marine Corps; Space Aviation and Troops, all of them under control of the Admiralty of different branches. \
+	It's very likely that an average male person living in the NRI has went through the mandatory three year enlistment. Unless they have decided to pay themselves out or used some less legal ways to avoid it. \
+	It is very likely that if the person did, in fact, serve in the military, they have participated in the ongoing Border War and had some military experience. \
+	<br> \
+	In the end, It's unlikely that with all the knowledge acquired you'd been very willing to work here, as there're better enlistment and job opportunities around. \
+	Maybe it was one of the higher-up orders, a punishment, or some other reasoning, up to your own choice, but what matters now is that you are here. \
+	Still, likely a better alternative to dying from either delinquents or the Solarians."
+
+	economic_power = 0.95 //Slightly higher pay for all the collegium folks as they're likely receiving additional governmental paychecks.
 	features = list(/datum/cultural_feature/average)
 
 /datum/cultural_info/faction/nri_healthcare_science
