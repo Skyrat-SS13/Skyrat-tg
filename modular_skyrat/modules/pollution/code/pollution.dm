@@ -165,17 +165,23 @@
 	var/new_heights = CalculateHeight(total_share_amount)
 	var/mutable_appearance/new_overlay = GetOverlay(total_share_pollutants, total_share_amount)
 	for(var/turf/open/open_turf as anything in sharing_turfs)
+		if(istype(open_turf, /turf/open/space)) // Space should be voiding pollution, basically.
+			continue
+
 		AssertPollution(open_turf)
 		var/datum/pollution/cached_pollution = open_turf.pollution
 		if(cached_pollution.managed_overlay)
 			cached_pollution.my_turf.underlays -= cached_pollution.managed_overlay
+
 		cached_pollution.managed_overlay = new_overlay
 		if(new_overlay)
 			cached_pollution.my_turf.underlays += new_overlay
+
 		cached_pollution.pollutants = total_share_pollutants.Copy()
 		cached_pollution.total_amount = total_share_amount
 		cached_pollution.height = new_heights
 		SET_ACTIVE_POLLUTION(cached_pollution)
+
 	for(var/turf/open/open_turf as anything in potential_activers)
 		if(open_turf.pollution && open_turf.pollution.CanShareWith(my_turf))
 			SET_ACTIVE_POLLUTION(open_turf.pollution)

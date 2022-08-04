@@ -1,3 +1,9 @@
+/turf/proc/PolluteTurf(pollution_type, amount, cap)
+	return
+
+/turf/proc/PolluteListTurf(list/pollutions, cap)
+	return
+
 /turf/open/PolluteTurf(pollution_type, amount, cap)
 	if(!pollution)
 		pollution = new(src)
@@ -12,8 +18,8 @@
 		return
 	pollution.AddPollutantList(pollutions)
 
-/turf/proc/PolluteTurf(pollution_type, amount, cap)
+/turf/open/space/PolluteTurf(pollution_type, amount, cap)
 	return
 
-/turf/proc/PolluteListTurf(list/pollutions, cap)
+/turf/open/space/PolluteListTurf(list/pollutions, cap)
 	return
