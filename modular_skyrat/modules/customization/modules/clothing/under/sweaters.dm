@@ -1,36 +1,28 @@
 /obj/item/clothing/under/sweater
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/uniform_digi.dmi'
-	name = "cream sweater"
+	name = "sweater"
 	desc = "Why trade style for comfort? Now you can go commando down south and still be cozy up north."
-	icon_state = "bb_turtle"
+	icon_state = "sweater"
+	greyscale_config = /datum/greyscale_config/sweater
+	greyscale_config_worn = /datum/greyscale_config/sweater/worn
+	greyscale_colors = "#b2a484"
 	body_parts_covered = CHEST|GROIN|ARMS
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 	can_adjust = TRUE
+	flags_1 = IS_PLAYER_COLORABLE_1
 
 /obj/item/clothing/under/sweater/black
 	name = "black sweater"
-	icon_state = "bb_turtleblk"
-
-/obj/item/clothing/under/sweater/purple
-	name = "purple sweater"
-	icon_state = "bb_turtlepur"
-
-/obj/item/clothing/under/sweater/green
-	name = "green sweater"
-	icon_state = "bb_turtlegrn"
+	greyscale_colors = "#4f4f4f"
 
 /obj/item/clothing/under/sweater/red
 	name = "red sweater"
-	icon_state = "bb_turtlered"
+	greyscale_colors = "#9a0000"
 
-/obj/item/clothing/under/sweater/blue
-	name = "blue sweater"
-	icon_state = "bb_turtleblu"
-
-/obj/item/clothing/under/sweater/keyhole
+/obj/item/clothing/under/keyhole_sweater
 	name = "keyhole sweater"
 	desc = "What is the point of this, anyway?"
 	icon_state = "keyholesweater"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/uniform_digi.dmi'
 	can_adjust = FALSE

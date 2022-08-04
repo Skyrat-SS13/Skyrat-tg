@@ -353,7 +353,7 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 
 /datum/loadout_item/suit/poly
 	name = "Polychromic Wintercoat"
-	item_path = /obj/item/clothing/suit/hooded/wintercoat/polychromic
+	item_path = /obj/item/clothing/suit/hooded/wintercoat/colourable
 
 /datum/loadout_item/suit/urban
 	name = "Urban Coat"

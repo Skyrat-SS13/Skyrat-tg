@@ -448,8 +448,12 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	item_path = /obj/item/clothing/under/pants/yoga
 
 /datum/loadout_item/under/miscellaneous/tacticool_turtleneck
-	name = "Tactitool Turtleneck"
-	item_path = /obj/item/clothing/under/syndicate/tacticool/sensors
+	name = "Tacticool Turtleneck"
+	item_path = /obj/item/clothing/under/syndicate/tacticool //This has been rebalanced in modular_skyrat\master_files\code\modules\clothing\under\syndicate.dm
+
+/datum/loadout_item/under/miscellaneous/tactical_skirt
+	name = "Tacticool Skirtleneck"
+	item_path = /obj/item/clothing/under/syndicate/tacticool/skirt //This has been rebalanced in modular_skyrat\master_files\code\modules\clothing\under\syndicate.dm
 
 /datum/loadout_item/under/miscellaneous/tactical_pants
 	name = "Tactical Pants"
@@ -488,37 +492,13 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "British Tactical Sweater"
 	item_path = /obj/item/clothing/under/uvf
 
-/datum/loadout_item/under/miscellaneous/tactical_skirt
-	name = "Tactitool Skirtleneck"
-	item_path = /obj/item/clothing/under/syndicate/tacticool/skirt/sensors
-
-/datum/loadout_item/under/miscellaneous/cream_sweater
-	name = "Cream Sweater"
+/datum/loadout_item/under/miscellaneous/sweater
+	name = "Sweater"
 	item_path = /obj/item/clothing/under/sweater
-
-/datum/loadout_item/under/miscellaneous/black_sweater
-	name = "Black Sweater"
-	item_path = /obj/item/clothing/under/sweater/black
-
-/datum/loadout_item/under/miscellaneous/purple_sweater
-	name = "Purple Sweater"
-	item_path = /obj/item/clothing/under/sweater/purple
-
-/datum/loadout_item/under/miscellaneous/green_sweater
-	name = "Green Sweater"
-	item_path = /obj/item/clothing/under/sweater/green
-
-/datum/loadout_item/under/miscellaneous/red_sweater
-	name = "Red Sweater"
-	item_path = /obj/item/clothing/under/sweater/red
-
-/datum/loadout_item/under/miscellaneous/blue_sweater
-	name = "Blue Sweater"
-	item_path = /obj/item/clothing/under/sweater/blue
 
 /datum/loadout_item/under/miscellaneous/keyhole
 	name = "Keyhole Sweater"
-	item_path = /obj/item/clothing/under/sweater/keyhole
+	item_path = /obj/item/clothing/under/keyhole_sweater
 
 /datum/loadout_item/under/miscellaneous/blacknwhite
 	name = "Classic Prisoner Jumpsuit"
@@ -897,37 +877,6 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "TMC Uniform"
 	item_path = /obj/item/clothing/under/costume/tmc
 
-/datum/loadout_item/under/formal/pg
-	name = "PG Uniform"
-	item_path = /obj/item/clothing/under/costume/pg
-
-/datum/loadout_item/under/formal/driscol
-	name = "Driscol Uniform"
-	item_path = /obj/item/clothing/under/costume/driscoll
-
-/datum/loadout_item/under/formal/deckers
-	name = "Deckers Uniform"
-	item_path = /obj/item/clothing/under/costume/deckers
-
-/datum/loadout_item/under/formal/morningstar
-	name = "Morningstar Uniform"
-	item_path = /obj/item/clothing/under/costume/morningstar
-
-/datum/loadout_item/under/formal/saints
-	name = "Saints Uniform"
-	item_path = /obj/item/clothing/under/costume/saints
-
-/datum/loadout_item/under/formal/phantom
-	name = "Phantom Uniform"
-	item_path = /obj/item/clothing/under/costume/phantom
-
-/datum/loadout_item/under/formal/sybil
-	name = "Sybil Uniform"
-	item_path = /obj/item/clothing/under/costume/sybil_slickers
-
-/datum/loadout_item/under/formal/basil
-	name = "Basil Uniform"
-	item_path = /obj/item/clothing/under/costume/basil_boys
 
 /datum/loadout_item/under/formal/inferno
 	name = "Inferno Suit"
