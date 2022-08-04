@@ -9,13 +9,12 @@ GLOBAL_LIST_EMPTY(startup_messages)
 	if(SSticker.current_state == GAME_STATE_STARTUP)
 		dat += {"<img src="loading_screen.gif" class="bg" alt="">"}
 		dat += {"<div class="container_terminal" id="terminal"></div>"}
-		dat += {"<div class="container_progress" id="progress_container"><div class="progress_bar" id="progress"></div></div>"}
+		dat += {"<div class="container_progress" id="progress_container"><div class="progress_bar" id="progress"><div class="sub_progress_bar" id="sub_progress"></div></div></div>"}
 
 		dat += {"
 		<script language="JavaScript">
 			var terminal = document.getElementById("terminal");
 			var terminal_lines = \[
-				"<p class='terminal_text'>SYSTEMS INITIALIZING:</p>",
 		"}
 
 		for(var/message in GLOB.startup_messages)
@@ -38,12 +37,19 @@ GLOBAL_LIST_EMPTY(startup_messages)
 			append_terminal_text();
 
 			var progress_bar = document.getElementById("progress");
+			var sub_progress_bar = document.getElementById("sub_progress");
 			var progress_container = document.getElementById("progress_container");
-			// Times are all in 10ths of a second, like byond.
-			var progress_current_time = [world.timeofday - SStitle.progress_reference_time];
-			var progress_current_position = 0;
-			var progress_completion_time = [SStitle.average_completion_time];
+			// milliseconds, the actual realtime tick number
 			var previous_tick = new Date().getTime();
+			// These times are all in 10ths of a second, like byond.
+			var progress_current_time = [world.timeofday - SStitle.progress_reference_time];
+			var progress_completion_time = [SStitle.average_completion_time];
+			// Current progress bar position from 0-100
+			var progress_current_position = 0;
+			// Current start position from 0-100 of subprogress area. Zooming towards target_sub_start.
+			var progress_sub_start = 0;
+			// Target start position of progress area. A captured value of progress_current_position.
+			var target_sub_start = 0;
 
 			setInterval(function() {
 				// Compensate for shakey execution.
@@ -53,25 +59,28 @@ GLOBAL_LIST_EMPTY(startup_messages)
 					previous_tick = current_tick;
 				}
 
-				var new_position = Math.min(progress_current_time / progress_completion_time * 100, 100);
+				// Bound the new position between the old pos and 100: only go forwards
+				progress_current_position = Math.min(Math.max(progress_current_time / progress_completion_time * 100, progress_current_position), 100);
 
-				// Only go forward
-				if(new_position < progress_current_position) {
-					return;
+				if(progress_sub_start == 0) {
+					// person just connected, jump to current real progress pos.
+					progress_sub_start = target_sub_start = progress_current_position;
+				} else {
+					// Animate the sub-progress position; requires old and new progress bar pos to know speed.
+					progress_sub_start = Math.min(progress_sub_start + 0.1, target_sub_start);
 				}
-				progress_current_position = new_position;
+
+				// Recalculate gap as a % within a % since they're nested.
+				const progress_sub_current_position = (progress_current_position - progress_sub_start) / progress_current_position * 100;
 
 				progress_bar.style.width = "" + progress_current_position + "%";
-
-				if(progress_current_position === 100) {
-					// fade out
-					progress_container.classList.add("fade_out");
-				}
-			}, 50);
+				sub_progress_bar.style.width = "" + progress_sub_current_position + "%";
+			}, 16.666666667);
 
 			function update_loading_progress(current_time, total_time) {
 				progress_current_time = parseFloat(current_time);
 				progress_completion_time = parseFloat(total_time);
+				target_sub_start = progress_current_position;
 			}
 
 			function update_current_character() {}
