@@ -315,6 +315,27 @@
 	name = "Urban Coat (Worn)"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/urban_coat/urban_coat_worn.json'
 
+// WINTER COAT
+
+/datum/greyscale_config/winter_coat
+	name = "Winter Coat"
+	icon_file = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/winter_coat/winter_coat.json'
+
+/datum/greyscale_config/winter_coat_worn
+	name = "Winter Coat (Worn)"
+	icon_file = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/winter_coat/winter_coat_worn.json'
+
+/datum/greyscale_config/winter_hood
+	name = "Winter Coat Hood"
+	icon_file = 'modular_skyrat/master_files/icons/donator/obj/clothing/hats.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/winter_coat/winter_hood.json'
+
+/datum/greyscale_config/winter_hood/worn
+	name = "Winter Coat Hood (Worn)"
+	icon_file = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
+
 // LEATHER JACKET
 
 /datum/greyscale_config/leather_jacket
