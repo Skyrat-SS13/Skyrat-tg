@@ -8,7 +8,7 @@
 
 	uniform = /obj/item/clothing/under/costume/nri/captain
 	suit = /obj/item/clothing/suit/space/hev_suit/nri/captain/pirate
-	suit_store = /obj/item/gun/ballistic/automatic/ak25
+	suit_store = /obj/item/gun/ballistic/automatic/plastikov/nri
 
 	gloves = /obj/item/clothing/gloves/combat
 
@@ -39,13 +39,13 @@
 
 	uniform = /obj/item/clothing/under/costume/nri
 	suit = /obj/item/clothing/suit/armor/vest/russian
-	suit_store = /obj/item/gun/ballistic/automatic/akm
+	suit_store = /obj/item/gun/ballistic/automatic/plastikov/nri
 
 	gloves = /obj/item/clothing/gloves/combat
 
 	shoes = /obj/item/clothing/shoes/combat
 
-	belt = /obj/item/storage/belt/military/nri/soldier
+	belt = /obj/item/storage/belt/military/nri/pirate
 	back = /obj/item/storage/backpack/duffelbag/syndie/nri
 	backpack_contents = list(/obj/item/storage/box/nri_survival_pack = 1, /obj/item/crucifix = 1, /obj/item/ammo_box/magazine/m9mm_aps = 3)
 	l_pocket = /obj/item/gun/ballistic/automatic/pistol/ladon/nri
@@ -152,7 +152,15 @@
 
 /obj/item/storage/belt/military/nri/captain/pirate_officer/PopulateContents()
 	generate_items_inside(list(
-		/obj/item/ammo_box/magazine/ak25 = 4,
+		/obj/item/ammo_box/magazine/plastikov9mm = 4,
+		/obj/item/knife/combat = 1,
+		/obj/item/grenade/smokebomb = 1,
+		/obj/item/grenade/frag = 1,
+	),src)
+
+/obj/item/storage/belt/military/nri/pirate/PopulateContents()
+	generate_items_inside(list(
+		/obj/item/ammo_box/magazine/plastikov9mm = 4,
 		/obj/item/knife/combat = 1,
 		/obj/item/grenade/smokebomb = 1,
 		/obj/item/grenade/frag = 1,
