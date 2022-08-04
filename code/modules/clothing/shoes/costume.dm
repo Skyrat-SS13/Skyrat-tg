@@ -79,31 +79,3 @@
 	desc = "Officially branded Saints sneakers. Incredibly valuable!"
 	icon_state = "saints_shoes"
 	inhand_icon_state = "saints_shoes"
-<<<<<<< HEAD
-
-/obj/item/clothing/shoes/morningstar
-	name = "morningstar boots"
-	desc = "The most expensive boots on this station. Wearing them dropped the value by about 50%."
-	icon_state = "morningstar_shoes"
-	inhand_icon_state = "morningstar_shoes"
-
-/obj/item/clothing/shoes/deckers
-	name = "deckers rollerskates"
-	desc = "t3h c00L3st sh03z j00'LL 3v3r f1nd."
-	icon_state = "decker_shoes"
-	inhand_icon_state = "decker_shoes"
-
-/obj/item/clothing/shoes/sybil_slickers
-	name = "sybil slickers shoes"
-	desc = "FOOTBALL! YEAH!"
-	icon_state = "sneakers_blue"
-	inhand_icon_state = "sneakers_blue"
-
-/obj/item/clothing/shoes/basil_boys
-	name = "basil boys shoes"
-	desc = "FOOTBALL! YEAH!"
-	icon_state = "sneakers_red"
-	inhand_icon_state = "sneakers_red"
-
-=======
->>>>>>> f90b433a4fa (The GAGening: Families edition (#68725))
