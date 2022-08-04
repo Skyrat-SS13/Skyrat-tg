@@ -19,9 +19,9 @@
 	var/scent
 
 ///When a pollutant touches an unprotected carbon mob
-/datum/pollutant/proc/TouchAct(mob/living/carbon/victim, amount)
+/datum/pollutant/proc/touch_act(mob/living/carbon/victim, amount)
 	return
 
 ///When a carbon mob breathes in the pollutant
-/datum/pollutant/proc/BreatheAct(mob/living/carbon/victim, amount)
+/datum/pollutant/proc/breathe_act(mob/living/carbon/victim, amount)
 	return
