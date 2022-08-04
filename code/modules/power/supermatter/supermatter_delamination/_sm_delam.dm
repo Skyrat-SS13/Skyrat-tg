@@ -20,13 +20,13 @@ GLOBAL_LIST_INIT(sm_delam_list, list(
 /datum/sm_delam/proc/delaminate(obj/machinery/power/supermatter_crystal/sm)
 	qdel(sm)
 
-/// Whatever we're supposed to do when a delam is currently in progress. 
+/// Whatever we're supposed to do when a delam is currently in progress.
 /// Mostly just to tell people how useless engi is, and play some alarm sounds.
 /// Returns TRUE if we just told people a delam is going on. FALSE if its healing or we didnt say anything.
 /// [/obj/machinery/power/supermatter_crystal/proc/process_atmos]
 /datum/sm_delam/proc/delam_progress(obj/machinery/power/supermatter_crystal/sm)
 	if(sm.damage <= sm.warning_point) // Damage is too low, lets not
-		return FALSE 
+		return FALSE
 
 	if (sm.damage >= sm.emergency_point && sm.damage_archived < sm.emergency_point)
 		sm.investigate_log("has entered the emergency point.", INVESTIGATE_ENGINE)
@@ -38,8 +38,16 @@ GLOBAL_LIST_INIT(sm_delam_list, list(
 
 	switch(sm.get_status())
 		if(SUPERMATTER_DELAMINATING)
+			// SKYRAT EDIT ADDITION
+			alert_sound_to_playing('modular_skyrat/master_files/sound/effects/reactor/meltdown.ogg', override_volume = TRUE)
+			alert_sound_to_playing('modular_skyrat/modules/alerts/sound/alerts/alert1.ogg', override_volume = TRUE)
+			// SKYRAT EDIT END
 			playsound(sm, 'sound/misc/bloblarm.ogg', 100, FALSE, 40, 30, falloff_distance = 10)
 		if(SUPERMATTER_EMERGENCY)
+			// SKYRAT EDIT ADDITION
+			alert_sound_to_playing('modular_skyrat/master_files/sound/effects/reactor/core_overheating.ogg', override_volume = TRUE)
+			alert_sound_to_playing('modular_skyrat/modules/alerts/sound/alerts/alert1.ogg', override_volume = TRUE)
+			// SKYRAT EDIT END
 			playsound(sm, 'sound/machines/engine_alert1.ogg', 100, FALSE, 30, 30, falloff_distance = 10)
 		if(SUPERMATTER_DANGER)
 			playsound(sm, 'sound/machines/engine_alert2.ogg', 100, FALSE, 30, 30, falloff_distance = 10)
