@@ -1,27 +1,33 @@
 /**************SKYRAT REWARDS**************/
 //SUITS
-/obj/item/clothing/suit/hooded/wintercoat/polychromic
-	name = "polychromic winter coat"
-	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
-	icon_state = "coatpoly"
-	hoodtype = /obj/item/clothing/head/hooded/winterhood/polychromic
+/obj/item/clothing/suit/hooded/wintercoat/colourable
+	name = "custom winter coat"
+	icon_state = "winter_coat"
+	hoodtype = /obj/item/clothing/head/hooded/winterhood/colourable
+	greyscale_config = /datum/greyscale_config/winter_coat
+	greyscale_config_worn = /datum/greyscale_config/winter_coat_worn
+	greyscale_colors = "#666666#CCBBAA#0000FF"
+	flags_1 = IS_PLAYER_COLORABLE_1
 
-/obj/item/clothing/suit/hooded/wintercoat/polychromic/ComponentInitialize()
-	. = ..()
-	AddElement(/datum/element/polychromic, list("#666666", "#CCBBAA", "#0000FF"))
-
-//We need this to color the hood that comes up
-/obj/item/clothing/suit/hooded/wintercoat/polychromic/ToggleHood()
+//In case colors are changed after initialization
+/obj/item/clothing/suit/hooded/wintercoat/colourable/set_greyscale(list/colors, new_config, new_worn_config, new_inhand_left, new_inhand_right)
 	. = ..()
 	if(hood)
-		hood.color = color
-		hood.update_slot_icon()
+		var/list/coat_colors = SSgreyscale.ParseColorString(greyscale_colors)
+		var/list/new_coat_colors = coat_colors.Copy(1,3)
+		hood.set_greyscale(new_coat_colors) //Adopt the suit's grayscale coloring for visual clarity.
 
-/obj/item/clothing/head/hooded/winterhood/polychromic
-	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
-	icon_state = "winterhood_poly"
+//But also keep old method in case the hood is (re-)created later
+/obj/item/clothing/suit/hooded/wintercoat/colourable/MakeHood()
+	. = ..()
+	var/list/coat_colors = (SSgreyscale.ParseColorString(greyscale_colors))
+	var/list/new_coat_colors = coat_colors.Copy(1,3)
+	hood.set_greyscale(new_coat_colors) //Adopt the suit's grayscale coloring for visual clarity.
+
+/obj/item/clothing/head/hooded/winterhood/colourable
+	icon_state = "winter_hood"
+	greyscale_config = /datum/greyscale_config/winter_hood
+	greyscale_config_worn = /datum/greyscale_config/winter_hood/worn
 
 // NECK
 
