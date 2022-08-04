@@ -530,53 +530,54 @@
 					GLOB.data_core.medicalPrintCount++
 					playsound(loc, 'sound/items/poster_being_created.ogg', 100, TRUE)
 					sleep(30)
-					var/obj/item/paper/P = new /obj/item/paper( loc )
-					P.info = "<CENTER><B>Medical Record - (MR-[GLOB.data_core.medicalPrintCount])</B></CENTER><BR>"
+					var/obj/item/paper/printed_paper = new /obj/item/paper(loc)
+					var/final_paper_text = "<CENTER><B>Medical Record - (MR-[GLOB.data_core.medicalPrintCount])</B></CENTER><BR>"
 					if(active1 in GLOB.data_core.general)
-						P.info += text("Name: [] ID: []<BR>\nGender: []<BR>\nAge: []<BR>", active1.fields["name"], active1.fields["id"], active1.fields["gender"], active1.fields["age"])
-						P.info += "\nSpecies: [active1.fields["species"]]<BR>"
-						P.info += text("\nFingerprint: []<BR>\nPhysical Status: []<BR>\nMental Status: []<BR>", active1.fields["fingerprint"], active1.fields["p_stat"], active1.fields["m_stat"])
+						final_paper_text += text("Name: [] ID: []<BR>\nGender: []<BR>\nAge: []<BR>", active1.fields["name"], active1.fields["id"], active1.fields["gender"], active1.fields["age"])
+						final_paper_text += "\nSpecies: [active1.fields["species"]]<BR>"
+						final_paper_text += text("\nFingerprint: []<BR>\nPhysical Status: []<BR>\nMental Status: []<BR>", active1.fields["fingerprint"], active1.fields["p_stat"], active1.fields["m_stat"])
 						//SKYRAT EDIT ADD - RP RECORDS
 						if(!(active1.fields["past_records"] == ""))
-							P.info += "\nGeneral Records:\n[active1.fields["past_records"]]\n"
+							final_paper_text += "\nGeneral Records:\n[active1.fields["past_records"]]\n"
 						//SKYRAT EDIT ADD END
 					else
-						P.info += "<B>General Record Lost!</B><BR>"
+						final_paper_text += "<B>General Record Lost!</B><BR>"
 					if(active2 in GLOB.data_core.medical)
-						// P.info += text("<BR>\n<CENTER><B>Medical Data</B></CENTER><BR>\nBlood Type: []<BR>\nDNA: []<BR>\n<BR>\nMinor Disabilities: []<BR>\nDetails: []<BR>\n<BR>\nMajor Disabilities: []<BR>\nDetails: []<BR>\n<BR>\nAllergies: []<BR>\nDetails: []<BR>\n<BR>\nCurrent Diseases: [] (per disease info placed in log/comment section)<BR>\nDetails: []<BR>\n<BR>\nImportant Notes:<BR>\n\t[]<BR>\n<BR>\n<CENTER><B>Comments/Log</B></CENTER><BR>", active2.fields["blood_type"], active2.fields["b_dna"], active2.fields["mi_dis"], active2.fields["mi_dis_d"], active2.fields["ma_dis"], active2.fields["ma_dis_d"], active2.fields["alg"], active2.fields["alg_d"], active2.fields["cdi"], active2.fields["cdi_d"], active2.fields["notes"]) // SKYRAT EDIT ORIGINAL - WHAT THE FUCK IS THIS CODE WHY IS THIS SO UNREADABLE KILL ME
-						//SKYRAT EDIT - THANK YOU TO AZARAK FOR DOING ALL THE WORK HENK
-						P.info += "<BR>\n<CENTER><B>Medical Data</B></CENTER>"
+						// final_paper_text += text("<BR>\n<CENTER><B>Medical Data</B></CENTER><BR>\nBlood Type: []<BR>\nDNA: []<BR>\n<BR>\nMinor Disabilities: []<BR>\nDetails: []<BR>\n<BR>\nMajor Disabilities: []<BR>\nDetails: []<BR>\n<BR>\nAllergies: []<BR>\nDetails: []<BR>\n<BR>\nCurrent Diseases: [] (per disease info placed in log/comment section)<BR>\nDetails: []<BR>\n<BR>\nImportant Notes:<BR>\n\t[]<BR>\n<BR>\n<CENTER><B>Comments/Log</B></CENTER><BR>", active2.fields["blood_type"], active2.fields["b_dna"], active2.fields["mi_dis"], active2.fields["mi_dis_d"], active2.fields["ma_dis"], active2.fields["ma_dis_d"], active2.fields["alg"], active2.fields["alg_d"], active2.fields["cdi"], active2.fields["cdi_d"], active2.fields["notes"]) // SKYRAT EDIT ORIGINAL - WHAT THE FUCK IS THIS CODE WHY IS THIS SO UNREADABLE KILL ME
+						//SKYRAT EDIT START - THANK YOU TO AZARAK FOR DOING ALL THE WORK HENK
+						final_paper_text += "<BR>\n<CENTER><B>Medical Data</B></CENTER>"
 						if(!(active2.fields["past_records"] == ""))
-							P.info += "\nMedical Records:\n[active2.fields["past_records"]]<BR>\n"
-						P.info += "<BR>\nBlood Type: [active2.fields["blood_type"]]"
-						P.info += "<BR>\nDNA: [active2.fields["b_dna"]]"
-						P.info += "<BR>\n"
-						P.info += "<BR>\nMinor Disabilities: [active2.fields["mi_dis"]]"
-						P.info += "<BR>\nDetails: [active2.fields["mi_dis_d"]]"
-						P.info += "<BR>\n"
-						P.info += "<BR>\nMajor Disabilities: [active2.fields["ma_dis"]]"
-						P.info += "<BR>\nDetails: [active2.fields["ma_dis_d"]]"
-						P.info += "<BR>\n"
-						P.info += "<BR>\nAllergies: [active2.fields["alg"]]"
-						P.info += "<BR>\nDetails: [active2.fields["alg_d"]]"
-						P.info += "<BR>\n"
-						P.info += "<BR>\nCurrent Diseases: [active2.fields["cdi"]] (per disease info placed in log/comment section)"
-						P.info += "<BR>\nDetails: [active2.fields["cdi_d"]]"
-						P.info += "<BR>\n"
-						P.info += "<BR>\nImportant Notes:"
-						P.info += "<BR>\n\t[active2.fields["notes"]]"
-						P.info += "<BR>\n"
+							final_paper_text += "\nMedical Records:\n[active2.fields["past_records"]]<BR>\n"
+						final_paper_text += "<BR>\nBlood Type: [active2.fields["blood_type"]]"
+						final_paper_text += "<BR>\nDNA: [active2.fields["b_dna"]]"
+						final_paper_text += "<BR>\n"
+						final_paper_text += "<BR>\nMinor Disabilities: [active2.fields["mi_dis"]]"
+						final_paper_text += "<BR>\nDetails: [active2.fields["mi_dis_d"]]"
+						final_paper_text += "<BR>\n"
+						final_paper_text += "<BR>\nMajor Disabilities: [active2.fields["ma_dis"]]"
+						final_paper_text += "<BR>\nDetails: [active2.fields["ma_dis_d"]]"
+						final_paper_text += "<BR>\n"
+						final_paper_text += "<BR>\nAllergies: [active2.fields["alg"]]"
+						final_paper_text += "<BR>\nDetails: [active2.fields["alg_d"]]"
+						final_paper_text += "<BR>\n"
+						final_paper_text += "<BR>\nCurrent Diseases: [active2.fields["cdi"]] (per disease info placed in log/comment section)"
+						final_paper_text += "<BR>\nDetails: [active2.fields["cdi_d"]]"
+						final_paper_text += "<BR>\n"
+						final_paper_text += "<BR>\nImportant Notes:"
+						final_paper_text += "<BR>\n\t[active2.fields["notes"]]"
+						final_paper_text += "<BR>\n"
 						//SKYRAT EDIT END
 						var/counter = 1
 						while(active2.fields[text("com_[]", counter)])
-							P.info += text("[]<BR>", active2.fields[text("com_[]", counter)])
+							final_paper_text += text("[]<BR>", active2.fields[text("com_[]", counter)])
 							counter++
-						P.name = text("MR-[] '[]'", GLOB.data_core.medicalPrintCount, active1.fields["name"])
+						printed_paper.name = text("MR-[] '[]'", GLOB.data_core.medicalPrintCount, active1.fields["name"])
 					else
-						P.info += "<B>Medical Record Lost!</B><BR>"
-						P.name = text("MR-[] '[]'", GLOB.data_core.medicalPrintCount, "Record Lost")
-					P.info += "</TT>"
-					P.update_appearance()
+						final_paper_text += "<B>Medical Record Lost!</B><BR>"
+						printed_paper.name = text("MR-[] '[]'", GLOB.data_core.medicalPrintCount, "Record Lost")
+					final_paper_text += "</TT>"
+					printed_paper.add_raw_text(final_paper_text)
+					printed_paper.update_appearance()
 					printing = null
 
 	add_fingerprint(usr)
