@@ -82,7 +82,7 @@
 
 /obj/effect/mob_spawn/ghost_role/human/pirate/enclave/special(mob/living/carbon/human/spawned_human)
 	. = ..()
-	spawned_human.grant_language(/datum/language/neorusskya, TRUE, TRUE, LANGUAGE_MIND)
+	spawned_human.grant_language(/datum/language/panslavic, TRUE, TRUE, LANGUAGE_MIND)
 	spawned_human.remove_language(/datum/language/piratespeak)
 
 /datum/job/fugitive_hunter
@@ -104,7 +104,7 @@
 /obj/effect/mob_spawn/ghost_role/human/pirate/enclave/captain/special(mob/living/carbon/human/spawned_human)
 	. = ..()
 	spawned_human.grant_language(/datum/language/uncommon, TRUE, TRUE, LANGUAGE_MIND)
-	spawned_human.grant_language(/datum/language/neorusskya, TRUE, TRUE, LANGUAGE_MIND)
+	spawned_human.grant_language(/datum/language/panslavic, TRUE, TRUE, LANGUAGE_MIND)
 	spawned_human.grant_language(/datum/language/yangyu, TRUE, TRUE, LANGUAGE_MIND)
 	spawned_human.remove_language(/datum/language/piratespeak)
 
