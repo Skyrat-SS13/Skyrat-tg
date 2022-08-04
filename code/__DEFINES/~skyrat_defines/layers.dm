@@ -2,4 +2,3 @@
 #define BLACK_FADE 9997
 #define SKYRAT_LOGO 9999
 
-#define CHAT_INDICATOR_LAYER 6 // 1 above BYOND's FLY_LAYER
