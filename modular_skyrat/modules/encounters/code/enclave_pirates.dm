@@ -168,9 +168,19 @@
 
 /obj/item/clothing/suit/space/hev_suit/nri/pirate
 	radio_channel = RADIO_CHANNEL_GUILD
+	heal_amount = PCV_HEAL_AMOUNT
+	blood_replenishment = PCV_BLOOD_REPLENISHMENT
+	health_static_cooldown = PCV_COOLDOWN_HEAL
+	rads_static_cooldown = PCV_COOLDOWN_RADS
+	acid_static_cooldown = PCV_COOLDOWN_ACID
 
 /obj/item/clothing/suit/space/hev_suit/nri/captain/pirate
 	radio_channel = RADIO_CHANNEL_GUILD
+	heal_amount = PCV_HEAL_AMOUNT
+	blood_replenishment = PCV_BLOOD_REPLENISHMENT
+	health_static_cooldown = PCV_COOLDOWN_HEAL
+	rads_static_cooldown = PCV_COOLDOWN_RADS
+	acid_static_cooldown = PCV_COOLDOWN_ACID
 
 /obj/item/paper/fluff/nri_document
 	name = "NRI Mission Specifications"
