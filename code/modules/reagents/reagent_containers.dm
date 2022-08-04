@@ -234,6 +234,7 @@
 		return
 
 	else
+<<<<<<< HEAD
 		if(isturf(target)) //SKYRAT EDIT CHANGE
 			var/turf/T = target
 			T.add_liquid_from_reagents(reagents)
@@ -246,6 +247,14 @@
 		//SKYRAT EDIT END
 		visible_message("<span class='notice'>[src] spills its contents all over [target].</span>")
 		//reagents.expose(target, TOUCH) //SKYRAT EDIT REMOVAL
+=======
+		if(isturf(target) && reagents.reagent_list.len && thrown_by)
+			log_combat(thrown_by, target, "splashed (thrown) [english_list(reagents.reagent_list)]", "in [AREACOORD(target)]")
+			thrown_by.log_message("splashed (thrown) [english_list(reagents.reagent_list)] on [target].", LOG_ATTACK)
+			message_admins("[ADMIN_LOOKUPFLW(thrown_by)] splashed (thrown) [english_list(reagents.reagent_list)] on [target] in [ADMIN_VERBOSEJMP(target)].")
+		visible_message(span_notice("[src] spills its contents all over [target]."))
+		reagents.expose(target, TOUCH)
+>>>>>>> b09f3868f85 (individual LOG_GAME  (#68683))
 		if(QDELETED(src))
 			return
 

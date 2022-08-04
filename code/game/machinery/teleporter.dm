@@ -87,6 +87,7 @@
 						if(human.dna && human.dna.species.id != initial(species_to_transform.id))
 							to_chat(M, span_hear("You hear a buzzing in your ears."))
 							human.set_species(species_to_transform)
+<<<<<<< HEAD
 							log_game("[human] ([key_name(human)]) was turned into a [initial(species_to_transform.name)] through [src].")
 
 					*/ //SKYRAT EDIT REMOVAL END
@@ -107,6 +108,9 @@
 						bodyparts_dismember.Remove(BP) //GC optimisation
 						qdel(BP)
 					//SKYRAT EDIT CHANGE END
+=======
+							human.log_message("was turned into a [initial(species_to_transform.name)] through [src].", LOG_GAME)
+>>>>>>> b09f3868f85 (individual LOG_GAME  (#68683))
 			calibrated = FALSE
 	return
 
