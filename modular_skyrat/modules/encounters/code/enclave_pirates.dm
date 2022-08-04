@@ -167,6 +167,7 @@
 	),src)
 
 /obj/item/clothing/suit/space/hev_suit/nri/pirate
+	cell = /obj/item/stock_parts/cell/super
 	radio_channel = RADIO_CHANNEL_GUILD
 	heal_amount = PCV_HEAL_AMOUNT
 	blood_replenishment = PCV_BLOOD_REPLENISHMENT
@@ -175,6 +176,7 @@
 	acid_static_cooldown = PCV_COOLDOWN_ACID
 
 /obj/item/clothing/suit/space/hev_suit/nri/captain/pirate
+	cell = /obj/item/stock_parts/cell/super
 	radio_channel = RADIO_CHANNEL_GUILD
 	heal_amount = PCV_HEAL_AMOUNT
 	blood_replenishment = PCV_BLOOD_REPLENISHMENT
