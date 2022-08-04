@@ -158,7 +158,7 @@
 	if(health <= (maxHealth * 0.5) && stat != DEAD)
 		. += "tyrant_damage"
 
-/mob/living/simple_animal/hostile/fleshmind/tyrant/Moved()
+/mob/living/simple_animal/hostile/fleshmind/tyrant/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change = TRUE)
 	. = ..()
 	playsound(src, pick(footstep_sounds), 100, TRUE)
 

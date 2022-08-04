@@ -756,7 +756,7 @@
 	if(faking_death)
 		stop_automated_movement = TRUE
 
-/mob/living/simple_animal/hostile/fleshmind/himan/Moved()
+/mob/living/simple_animal/hostile/fleshmind/himan/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change = TRUE)
 	. = ..()
 	if(faking_death)
 		awake()
@@ -1377,7 +1377,7 @@
 	to_chat(contained_mob, span_userdanger(pick(torment_lines)))
 	playsound(src, 'sound/weapons/drill.ogg', 70, 1)
 
-/mob/living/simple_animal/hostile/fleshmind/mechiver/Moved()
+/mob/living/simple_animal/hostile/fleshmind/mechiver/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change = TRUE)
 	. = ..()
 	update_appearance()
 
