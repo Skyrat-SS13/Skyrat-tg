@@ -212,7 +212,7 @@
 		to_chat(owner, span_warning("You do not have any upgrade points for stats!"))
 		return
 	cortical_owner.stat_evolution--
-	cortical_owner.maxHealth += 10
+	cortical_owner.maxHealth += 5
 	cortical_owner.health_regen += 0.02
 	cortical_owner.max_chemical_storage += 20
 	cortical_owner.chemical_regen++

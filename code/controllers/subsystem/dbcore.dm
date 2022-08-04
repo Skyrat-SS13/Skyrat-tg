@@ -154,6 +154,11 @@ SUBSYSTEM_DEF(dbcore)
 		for(var/datum/db_query/query in queries_current)
 			run_query(query)
 
+		// SKYRAT EDIT START - SQL-based logging
+		for(var/table in queued_log_entries_by_table)
+			MassInsert(table, rows = queued_log_entries_by_table[table], duplicate_key = FALSE, ignore_errors = FALSE, delayed = FALSE, warn = FALSE, async = TRUE, special_columns = null)
+		// SKYRAT EDIT END
+
 		var/datum/db_query/query_round_shutdown = SSdbcore.NewQuery(
 			"UPDATE [format_table_name("round")] SET shutdown_datetime = Now(), end_state = :end_state WHERE id = :round_id",
 			list("end_state" = SSticker.end_state, "round_id" = GLOB.round_id)
