@@ -7,7 +7,7 @@
 	if(isopenturf(loc))
 		var/turf/open/my_our_turf = loc
 		if(my_our_turf.pollution)
-			my_our_turf.pollution.TouchAct(src)
+			my_our_turf.pollution.touch_act(src)
 	//SKYRAT EDIT END
 
 	if(damageoverlaytemp)
@@ -141,8 +141,8 @@
 					if(open_turf.pollution)
 						if(next_smell <= world.time)
 							next_smell = world.time + SMELL_COOLDOWN
-							open_turf.pollution.SmellAct(src)
-						open_turf.pollution.BreatheAct(src)
+							open_turf.pollution.smell_act(src)
+						open_turf.pollution.breathe_act(src)
 				//SKYRAT EDIT END
 				var/breath_moles = 0
 				if(environment)

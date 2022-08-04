@@ -9,14 +9,14 @@
 		pollution = new(src)
 	if(cap && pollution.total_amount >= cap)
 		return
-	pollution.AddPollutant(pollution_type, amount)
+	pollution.add_pollutant(pollution_type, amount)
 
 /turf/open/PolluteListTurf(list/pollutions, cap)
 	if(!pollution)
 		pollution = new(src)
 	if(cap && pollution.total_amount >= cap)
 		return
-	pollution.AddPollutantList(pollutions)
+	pollution.add_pollutant_list(pollutions)
 
 /turf/open/space/PolluteTurf(pollution_type, amount, cap)
 	return

@@ -61,5 +61,5 @@
 	if(on && isopenturf(get_turf(src)))
 		var/turf/open/open_turf = get_turf(src)
 		if(open_turf.pollution)
-			open_turf.pollution.ScrubAmount(scrub_amount)
+			open_turf.pollution.scrub_amount(scrub_amount)
 			use_power(100)
