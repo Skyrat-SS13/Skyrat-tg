@@ -1,6 +1,6 @@
-/datum/job/brigoff
+/datum/job/corrections_officer
 	title = JOB_CORRECTIONS_OFFICER
-	description = "Guard the Permabrig, stand around looking imposing, get fired for abusing the prisoners"
+	description = "Guard the permabrig, stand around looking imposing, get fired for abusing the prisoners"
 	auto_deadmin_role_flags = DEADMIN_POSITION_SECURITY
 	department_head = list("The Warden and Head of Security")
 	faction = FACTION_STATION
@@ -16,9 +16,9 @@
 	paycheck = PAYCHECK_CREW
 	paycheck_department = ACCOUNT_SEC
 
-	outfit = /datum/outfit/job/brigoff
+	outfit = /datum/outfit/job/corrections_officer
 	plasmaman_outfit = /datum/outfit/plasmaman/security
-	display_order = JOB_DISPLAY_ORDER_BRIGOFF
+	display_order = JOB_DISPLAY_ORDER_CORRECTIONS_OFFICER
 	mind_traits = list(TRAIT_DONUT_LOVER)
 	liver_traits = list(TRAIT_LAW_ENFORCEMENT_METABOLISM)
 	departments_list = list(
@@ -38,11 +38,12 @@
 
 	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS | JOB_CAN_BE_INTERN
 
-/datum/outfit/job/brigoff
+// OUTFIT
+/datum/outfit/job/corrections_officer
 	name = "Corrections Officer"
-	jobtype = /datum/job/brigoff
-	uniform = /obj/item/clothing/under/rank/security/brigguard/sweater
-	suit = /obj/item/clothing/suit/toggle/jacket/brigoff
+	jobtype = /datum/job/corrections_officer
+	uniform = /obj/item/clothing/under/rank/security/corrections_officer/sweater
+	suit = /obj/item/clothing/suit/toggle/jacket/corrections_officer
 	shoes = /obj/item/clothing/shoes/laceup
 	ears = /obj/item/radio/headset/headset_sec
 	glasses = /obj/item/clothing/glasses/sunglasses
@@ -51,11 +52,11 @@
 	backpack = /obj/item/storage/backpack/security
 	satchel = /obj/item/storage/backpack/satchel/sec
 	duffelbag = /obj/item/storage/backpack/duffelbag/sec
-	head = /obj/item/clothing/head/brigoff
+	head = /obj/item/clothing/head/corrections_officer
 	box = /obj/item/storage/box/survival/security
 	belt = /obj/item/modular_computer/tablet/pda/security
 
-	id_trim = /datum/id_trim/job/brigoff
+	id_trim = /datum/id_trim/job/corrections_officer
 
 
 
