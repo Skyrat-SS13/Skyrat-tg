@@ -72,6 +72,7 @@
 		var/datum/outbound_teamwork_puzzle/puzzle = pick_n_take(possible_systems)
 		puzzle = outbound_controller.puzzle_controller.puzzles[puzzle]
 		puzzle.enabled = TRUE
+		puzzle.terminal.woop_woop.start()
 		if(istype(puzzle, /datum/outbound_teamwork_puzzle/continuous))
 			broken_cont_systems += puzzle
 		else

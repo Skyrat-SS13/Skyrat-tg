@@ -65,6 +65,7 @@
 					if(dials[dial_number] == important_list[number])
 						dials_matching++
 			if(dials_matching >= DIAL_NUM)
+				terminal.balloon_alert_to_viewers("dials adjusted", vision_distance = 3)
 				SEND_SIGNAL(outbound_controller.puzzle_controller, COMSIG_AWAY_PUZZLE_COMPLETED, src)
 			return TRUE
 

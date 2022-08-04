@@ -36,11 +36,13 @@
 	if(puzzle in malf_event.broken_systems)
 		malf_event.broken_systems -= puzzle
 	puzzle.enabled = FALSE
+	puzzle.terminal.woop_woop.stop()
 	if(length(malf_event.broken_systems))
 		return
 	for(var/datum/outbound_teamwork_puzzle/continuous/cont_puzzle as anything in malf_event.broken_cont_systems)
 		cont_puzzle.enabled = FALSE
 		malf_event.broken_cont_systems -= cont_puzzle
+		cont_puzzle.terminal.woop_woop.stop()
 	outbound_controller.current_event.clear_objective()
 
 /datum/outbound_puzzle_controller/proc/set_up_wire_conditionals()
@@ -62,22 +64,14 @@
 		var/datum/outbound_teamwork_puzzle/wires/wire_puzzle = puzzles["Wires"]
 		wire_cond.conditional_check(wire_puzzle.wires)
 		var/passed = FALSE
-		var/wire_cond_iter = 0
 		while(!passed) //god only knows if ANY of this works
 			if(!length(logic_covered_wires))
 				passed = TRUE
-			if(wire_cond_iter > 10)
-				stack_trace("[src] couldn't make enough conditions and panic stopped!")
-				break //should work?
 			for(var/wire as anything in logic_covered_wires)
 				if(wire in wire_cond.logic_wires)
-				/*	wire_cond.set_up_condition()
-					wire_cond.conditional_check(wire_puzzle.wires)
-					wire_cond_iter++*/
 					passed = "abort" //making a bool into this, cursed ik
 					break
 				else
-					wire_cond_iter = 0
 					passed = TRUE
 		if(passed == "abort")
 			continue

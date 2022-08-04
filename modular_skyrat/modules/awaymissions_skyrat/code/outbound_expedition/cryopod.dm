@@ -5,13 +5,16 @@ GLOBAL_LIST_EMPTY(outbound_cryopods)
 	max_integrity = INFINITY
 	density = TRUE
 	anchored = TRUE
+	/// If the system has failed
+	var/failed = FALSE
 
 /obj/machinery/outbound_expedition/Initialize(mapload)
 	. = ..()
 	RegisterSignal(src, COMSIG_AWAY_SYSTEM_FAIL, .proc/on_system_fail)
 
 /obj/machinery/outbound_expedition/proc/on_system_fail(datum/outbound_ship_system/failed_system)
-	return
+	SHOULD_CALL_PARENT(TRUE)
+	failed = TRUE
 
 /obj/machinery/outbound_expedition/cryopod
 	name = "cryogenic freezer"
@@ -85,15 +88,18 @@ GLOBAL_LIST_EMPTY(outbound_cryopods)
 		to_chat(user, span_notice("Dead people can not be put into cryo."))
 		return
 
-	if(tgui_alert(user, "Would you like to place [target] into [src]?", "Place into Cryopod?", list("Yes", "No")) != "No")
-		if(!target.Adjacent(src))
-			return
-		to_chat(user, span_danger("You put [target] into [src]. [target.p_theyre(capitalized = TRUE)] in the cryopod."))
+	if(tgui_alert(user, "Would you like to place [target] into [src]?", "Place into Cryopod?", list("Yes", "No")) == "No")
+		return
 
-		add_fingerprint(target)
+	if(!target.Adjacent(src))
+		return
 
-		close_machine(target)
-		name = "[name] ([target.name])"
+	to_chat(user, span_danger("You put [target] into [src]. [target.p_theyre(capitalized = TRUE)] in the cryopod."))
+
+	add_fingerprint(target)
+
+	close_machine(target)
+	name = "[name] ([target.name])"
 
 	if(LAZYLEN(target.buckled_mobs) > 0)
 		if(target == user)

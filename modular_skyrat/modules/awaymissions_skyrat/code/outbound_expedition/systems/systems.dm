@@ -34,9 +34,6 @@ GLOBAL_LIST_EMPTY(outbound_ship_systems)
 	else if((amount < 0) && count_damage)
 		on_damage(amount, base_machine)
 
-/datum/outbound_ship_system/atmos //iunno if this even needs to be a mechanical system or not
-	name = "Atmospherics"
-
 /datum/outbound_ship_system/thrusters
 	name = "Thrusters"
 	max_health = MAX_HEALTH_REGULAR * 1.5
@@ -45,16 +42,32 @@ GLOBAL_LIST_EMPTY(outbound_ship_systems)
 /obj/machinery/outbound_expedition/shuttle_thruster_controller
 	name = "thruster control system"
 	desc = "A system that manages the power and fuel distribution of on-shuttle thrusters."
-	icon = 'icons/obj/power.dmi'
-	icon_state = "smes"
+	icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/outbound_expedition/thruster_control.dmi'
+	icon_state = "thruster_control"
+	light_range = 2
+	light_power = 3
+	light_color = LIGHT_COLOR_YELLOW
 
 /obj/machinery/outbound_expedition/shuttle_thruster_controller/Initialize(mapload)
 	. = ..()
 	GLOB.outbound_ship_systems += src
+	update_overlays()
 
 /obj/machinery/outbound_expedition/shuttle_thruster_controller/Destroy()
 	GLOB.outbound_ship_systems -= src
 	return ..()
+
+/obj/machinery/outbound_expedition/shuttle_thruster_controller/on_system_fail(datum/outbound_ship_system/failed_system)
+	. = ..()
+	update_overlays()
+
+/obj/machinery/outbound_expedition/shuttle_thruster_controller/update_overlays()
+	. = ..()
+	if(!failed)
+		. += "online_overlay"
+		set_light(light_range, light_power, light_color, TRUE)
+	else
+		set_light(light_range, light_power, light_color, FALSE)
 
 /datum/outbound_ship_system/sensors
 	name = "Sensors"

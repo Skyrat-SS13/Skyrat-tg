@@ -89,7 +89,7 @@
 /obj/structure/closet/crate/secure/outbound_cargo/Initialize(mapload)
 	. = ..()
 	var/picked_color = pick(GLOB.marker_beacon_colors)
-	set_light(light_range, light_power, GLOB.marker_beacon_colors[picked_color])
+	set_light(light_range, light_power, GLOB.marker_beacon_colors[picked_color], TRUE)
 
 /obj/structure/closet/crate/secure/outbound_cargo/PopulateContents()
 	var/selected_type = pick(loot_cats)

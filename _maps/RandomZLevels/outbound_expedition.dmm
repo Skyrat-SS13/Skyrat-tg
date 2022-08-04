@@ -112,7 +112,11 @@
 /area/awaymission/outbound_expedition/shuttle)
 "eB" = (
 /obj/structure/rack/shelf,
-/obj/item/storage/toolbox/electrical,
+/obj/item/door_seal,
+/obj/item/door_seal,
+/obj/item/door_seal,
+/obj/item/clothing/glasses/meson/engine,
+/obj/item/tank/internals/emergency_oxygen/engi,
 /obj/effect/turf_decal/bot_red,
 /turf/open/floor/iron/dark/textured_large,
 /area/awaymission/outbound_expedition/shuttle)
@@ -638,11 +642,11 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/awaymission/outbound_expedition/shuttle)
 "ws" = (
-/obj/machinery/vending/engineering,
 /obj/effect/turf_decal/bot_red,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 8
 	},
+/obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/iron/dark/textured_large,
 /area/awaymission/outbound_expedition/shuttle)
 "wN" = (
@@ -786,11 +790,6 @@
 	},
 /turf/open/floor/iron/dark/textured_large,
 /area/awaymission/outbound_expedition/shuttle)
-"BH" = (
-/obj/structure/reagent_dispensers/fueltank,
-/obj/effect/turf_decal/bot_red,
-/turf/open/floor/iron/dark/textured_large,
-/area/awaymission/outbound_expedition/shuttle)
 "BI" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/bag/tray,
@@ -829,7 +828,9 @@
 /area/awaymission/outbound_expedition/shuttle)
 "CI" = (
 /obj/structure/grille/broken,
-/obj/item/toy/plush/beeplushie,
+/obj/item/toy/plush/beeplushie{
+	desc = "A cute toy that resembles an even cuter bee. This one even has an engineering degree!"
+	},
 /turf/open/floor/plating,
 /area/awaymission/outbound_expedition/shuttle)
 "CT" = (
@@ -901,11 +902,6 @@
 "EP" = (
 /obj/effect/turf_decal/bot_red,
 /obj/structure/reagent_dispensers/watertank,
-/turf/open/floor/iron/dark/textured_large,
-/area/awaymission/outbound_expedition/shuttle)
-"Fb" = (
-/obj/effect/turf_decal/bot_red,
-/obj/machinery/portable_atmospherics/scrubber,
 /turf/open/floor/iron/dark/textured_large,
 /area/awaymission/outbound_expedition/shuttle)
 "Fv" = (
@@ -1099,8 +1095,8 @@
 /turf/open/floor/iron/shuttle/exploration,
 /area/awaymission/outbound_expedition/shuttle)
 "LT" = (
-/obj/effect/spawner/random/engineering/atmospherics_portable,
-/obj/effect/turf_decal/bot_red,
+/obj/effect/turf_decal/bot,
+/obj/machinery/holopad,
 /turf/open/floor/iron/dark/textured_large,
 /area/awaymission/outbound_expedition/shuttle)
 "Mb" = (
@@ -1122,17 +1118,10 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/awaymission/outbound_expedition/shuttle)
 "Mq" = (
-/obj/structure/rack/shelf,
-/obj/item/door_seal,
-/obj/item/door_seal,
-/obj/item/door_seal,
-/obj/item/clothing/glasses/meson/engine,
-/obj/item/tank/internals/emergency_oxygen/engi,
-/obj/effect/turf_decal/bot_red,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
-	dir = 1
+	dir = 4
 	},
-/turf/open/floor/iron/dark/textured_large,
+/turf/open/floor/iron/shuttle/cargo,
 /area/awaymission/outbound_expedition/shuttle)
 "Mu" = (
 /obj/effect/turf_decal/delivery/white,
@@ -1223,7 +1212,10 @@
 /turf/open/floor/plating,
 /area/awaymission/outbound_expedition/shuttle)
 "Oj" = (
-/obj/machinery/exoscanner,
+/obj/machinery/exoscanner{
+	desc = "A sophisticated device used to extend the distance sensors go. Doesn't actually do anything on its own.";
+	name = "scan extrapolator"
+	},
 /obj/structure/lattice/catwalk,
 /obj/structure/fluff/metalpole/end{
 	dir = 4;
@@ -1292,12 +1284,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/catwalk_floor,
-/area/awaymission/outbound_expedition/shuttle)
-"Qi" = (
-/obj/effect/turf_decal/bot_red,
-/obj/machinery/space_heater,
-/obj/machinery/light/cold/directional/west,
-/turf/open/floor/iron/dark/textured_large,
 /area/awaymission/outbound_expedition/shuttle)
 "Qk" = (
 /obj/effect/turf_decal/bot_red,
@@ -1376,9 +1362,6 @@
 "Tb" = (
 /obj/structure/chair/comfy/shuttle/tactical,
 /turf/open/floor/iron/shuttle/cargo,
-/area/awaymission/outbound_expedition/shuttle)
-"Tn" = (
-/turf/open/floor/iron/dark/textured_large,
 /area/awaymission/outbound_expedition/shuttle)
 "Tr" = (
 /obj/effect/turf_decal/bot_red,
@@ -33285,7 +33268,7 @@ CH
 BD
 CT
 be
-HB
+eB
 jq
 Mp
 Nb
@@ -33796,7 +33779,7 @@ hd
 hd
 be
 ws
-BH
+hd
 CH
 be
 HV
@@ -34818,7 +34801,7 @@ Zl
 Zl
 Zl
 be
-eB
+SH
 hd
 hd
 Ad
@@ -36376,7 +36359,7 @@ Nm
 be
 OV
 Ad
-Tn
+hd
 tL
 jL
 Zl
@@ -39194,9 +39177,9 @@ Zl
 jL
 yb
 CH
-Qi
-be
-Fb
+bg
+hd
+hd
 rV
 vv
 CH

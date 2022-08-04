@@ -78,7 +78,7 @@ conditionals are static, wires are not
 		wrong_wire()
 		return
 	if(!length(to_cut_wires))
-		to_chat(user, span_notice("Cables defused"))
+		terminal.balloon_alert_to_viewers("wires fixed", vision_distance = 3)
 		SEND_SIGNAL(outbound_controller.puzzle_controller, COMSIG_AWAY_PUZZLE_COMPLETED, src)
 
 /datum/outbound_teamwork_puzzle/wires/proc/wrong_wire()

@@ -5,6 +5,12 @@
 	//icon_state = "" //figure out later when I can get some sprites
 	/// The puzzle datum this is referencing
 	var/datum/outbound_teamwork_puzzle/puzzle_datum
+	/// Looping warning klaxon (might move off terminal later)
+	var/datum/looping_sound/klaxon/woop_woop
+
+/obj/machinery/outbound_expedition/puzzle_terminal/Initialize(mapload)
+	. = ..()
+	woop_woop = new(src)
 
 /obj/machinery/outbound_expedition/puzzle_terminal/Destroy()
 	OUTBOUND_CONTROLLER

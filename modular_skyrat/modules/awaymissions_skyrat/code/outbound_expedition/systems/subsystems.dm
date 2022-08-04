@@ -13,8 +13,8 @@
 /obj/machinery/outbound_expedition/shuttle_light_controller
 	name = "light collator"
 	desc = "A generator that keeps the lights on, literally."
-	icon = 'icons/obj/power.dmi'
-	icon_state = "smes"
+	icon = 'icons/obj/machines/telecomms.dmi'
+	icon_state = "bus"
 
 /obj/machinery/outbound_expedition/shuttle_light_controller/Initialize(mapload)
 	. = ..()
@@ -22,6 +22,15 @@
 
 /obj/machinery/outbound_expedition/shuttle_light_controller/Destroy()
 	GLOB.outbound_ship_systems -= src
+	return ..()
+
+/obj/machinery/outbound_expedition/shuttle_light_controller/on_system_fail(datum/outbound_ship_system/failed_system)
+	. = ..()
+	update_icon_state()
+
+/obj/machinery/outbound_expedition/shuttle_light_controller/update_icon_state()
+	if(failed)
+		icon_state = "bus_off"
 	return ..()
 
 /obj/machinery/power/apc/auto_name/directional/north/vanguard_shuttle
@@ -56,13 +65,23 @@
 /obj/machinery/outbound_expedition/shuttle_grav_gen
 	name = "gravity generator"
 	desc = "A highly experimental, compacted generator for creating localized gravity in small spaces."
-	icon = 'icons/obj/power.dmi'
-	icon_state = "smes"
+	icon = 'icons/obj/machines/field_generator.dmi'
+	icon_state = "Field_Gen"
 
 /obj/machinery/outbound_expedition/shuttle_grav_gen/Initialize(mapload)
 	. = ..()
 	GLOB.outbound_ship_systems += src
+	update_overlays()
 
 /obj/machinery/outbound_expedition/shuttle_grav_gen/Destroy()
 	GLOB.outbound_ship_systems -= src
 	return ..()
+
+/obj/machinery/outbound_expedition/shuttle_grav_gen/on_system_fail(datum/outbound_ship_system/failed_system)
+	. = ..()
+	update_overlays()
+
+/obj/machinery/outbound_expedition/shuttle_grav_gen/update_overlays()
+	. = ..()
+	if(!failed)
+		. += "+on"

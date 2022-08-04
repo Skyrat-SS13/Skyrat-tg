@@ -141,9 +141,7 @@
 	for(var/datum/event in possible_events)
 		if(!istype(event, event_type))
 			possible_events.Remove(event)
-	var/datum/outbound_random_event/the_actual_event = pick_weight(possible_events)
-	current_event = the_actual_event
-	the_actual_event.on_select()
+	return pick_weight(possible_events)
 
 // Landmark check
 
@@ -191,6 +189,8 @@
 			if(isturf(to_delete))
 				var/turf/to_change = to_delete
 				to_change.ChangeTurf(/turf/open/space)
+			else if(isobserver(to_delete))
+				continue
 			else
 				qdel(to_delete) // probably a crime but what can you do
 		qdel(affected_area)
@@ -224,11 +224,18 @@
 /datum/away_controller/outbound_expedition/proc/everyones_gone_to_the_cryopods()
 	for(var/obj/machinery/outbound_expedition/cryopod/sleepytime as anything in GLOB.outbound_cryopods)
 		sleepytime.locked = TRUE
+		var/mob/living/carbon/human/human_content = locate(/mob/living/carbon/human) in sleepytime
+		if(!human_content)
+			continue
+		human_content.playsound_local(get_turf(human_content), 'sound/runtime/hyperspace/hyperspace_begin.ogg', 100)
+		human_content.overlay_fullscreen("cryopod", /atom/movable/screen/fullscreen/impaired, 2)
+		addtimer(CALLBACK(human_content, /mob.proc/playsound_local, get_turf(human_content), 'sound/runtime/hyperspace/hyperspace_progress.ogg', 100), 7.8 SECONDS)
+
 	move_shuttle()
 	//select_event()
-	addtimer(CALLBACK(src, .proc/aaaaa), 5 SECONDS)
+	addtimer(CALLBACK(src, .proc/post_move_act, select_event()), 13 SECONDS)
 
-/datum/away_controller/outbound_expedition/proc/aaaaa()
+/datum/away_controller/outbound_expedition/proc/post_move_act(datum/outbound_random_event/picked_event)
 	var/datum/outbound_random_event/our_event
 	for(var/datum/outbound_random_event/event in event_datums)
 		if(!istype(event, /datum/outbound_random_event/harmful/part_malf))
@@ -236,8 +243,19 @@
 		our_event = event
 	current_event = our_event
 	our_event.on_select()
+
 	for(var/obj/machinery/outbound_expedition/cryopod/wakeytime as anything in GLOB.outbound_cryopods)
 		wakeytime.locked = FALSE
+		var/mob/living/carbon/human/human_content = locate(/mob/living/carbon/human) in wakeytime
+		human_content?.playsound_local(get_turf(human_content), 'sound/runtime/hyperspace/hyperspace_end.ogg', 100)
+
+	addtimer(CALLBACK(src, .proc/cause_event), 6 SECONDS)
+
+/datum/away_controller/outbound_expedition/proc/cause_event(datum/outbound_random_event/picked_event)
+	for(var/mob/living/carbon/human/person as anything in participating_mobs)
+		person.clear_fullscreen("cryopod", FALSE)
+	//current_event = picked_event
+	//picked_event.on_select()
 
 // ???
 
