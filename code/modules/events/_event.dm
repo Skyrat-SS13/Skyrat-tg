@@ -3,6 +3,8 @@
 //this singleton datum is used by the events controller to dictate how it selects events
 /datum/round_event_control
 	var/name //The human-readable name of the event
+	var/category //The category of the event
+	var/description //The description of the event
 	var/typepath //The typepath of the event datum /datum/round_event
 
 	var/weight = 10 //The weight this event has in the random-selection process.
@@ -34,6 +36,7 @@
 		min_players = CEILING(min_players * CONFIG_GET(number/events_min_players_mul), 1)
 
 /datum/round_event_control/wizard
+	category = EVENT_CATEGORY_WIZARD
 	wizardevent = TRUE
 
 // Checks if the event can be spawned. Used by event controller and "false alarm" event.
@@ -102,7 +105,13 @@
 		log_admin_private("[key_name(usr)] requested a new event be spawned instead of [name].")
 	//SKYRAT EDIT END
 
-/datum/round_event_control/proc/runEvent(random = FALSE)
+/*
+Runs the event
+* Arguments:
+* - random: shows if the event was triggered randomly, or by on purpose by an admin or an item
+* - announce_chance_override: if the value is not null, overrides the announcement chance when an admin calls an event
+*/
+/datum/round_event_control/proc/runEvent(random = FALSE, announce_chance_override = null, admin_forced = FALSE)
 	/*
 	* We clear our signals first so we dont cancel a wanted event by accident,
 	* the majority of time the admin will probably want to cancel a single midround spawned random events
@@ -115,13 +124,23 @@
 	E.control = src
 	occurrences++
 
+<<<<<<< HEAD
 	SSevents.previously_run += src //SKYRAT EDIT ADDITION
+=======
+	if(announce_chance_override != null)
+		E.announceChance = announce_chance_override
+>>>>>>> b5e57216ee6 (Event menu rewrite (#68472))
 
 	testing("[time2text(world.time, "hh:mm:ss")] [E.type]")
 	triggering = TRUE
 
+<<<<<<< HEAD
 	if (alert_observers)
 		message_admins("Random Event triggering in [DisplayTimeText(RANDOM_EVENT_ADMIN_INTERVENTION_TIME)]: [name] (<a href='?src=[REF(src)];cancel=1'>CANCEL</a> | <a href='?src=[REF(src)];something_else=1'>SOMETHING ELSE</a>)") //SKYRAT EDIT CHANGE
+=======
+	if (alert_observers && !admin_forced)
+		message_admins("Random Event triggering in [DisplayTimeText(RANDOM_EVENT_ADMIN_INTERVENTION_TIME)]: [name] (<a href='?src=[REF(src)];cancel=1'>CANCEL</a>)")
+>>>>>>> b5e57216ee6 (Event menu rewrite (#68472))
 		sleep(RANDOM_EVENT_ADMIN_INTERVENTION_TIME)
 
 	if(!triggering)
@@ -154,7 +173,7 @@
 
 	var/startWhen = 0 //When in the lifetime to call start().
 	var/announceWhen = 0 //When in the lifetime to call announce(). If you don't want it to announce use announceChance, below.
-	var/announceChance = 100 // Probability of announcing, used in prob(), 0 to 100, default 100. Used in ion storms currently.
+	var/announceChance = 100 // Probability of announcing, used in prob(), 0 to 100, default 100. Called in process, and for a second time in the ion storm event.
 	var/endWhen = 0 //When in the lifetime the event should end.
 
 	var/activeFor = 0 //How long the event has existed. You don't need to change this.
