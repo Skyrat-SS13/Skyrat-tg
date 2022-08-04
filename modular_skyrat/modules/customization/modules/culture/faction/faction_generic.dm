@@ -157,3 +157,56 @@
 	a period of steady economic recovery, with most of its exports being manufactured goods, primarily armaments."
 	economic_power = 0.9
 	features = list(/datum/cultural_feature/average)
+
+/datum/cultural_info/faction/nri_police_military
+	name = "Novaya Rossiyskaya Imperiya Defense and Peacekeeping Collegium"
+	description = "The \"New Russian Empire\", commonly referred to as the Novaya Rossiyskaya Imperiya (NRI), is a regional power in human space,\
+	bordered by the Sol Federation towards the galactic centre. The capital of the Empire is the city of New Saint Petersburg on the planet of Providence \
+	in the Ararat system. Externally heavily militant and isolationist, the NRI, internally, is heavily democratical, with \
+	a strong focus on independent regional government with the NRI itself only handling defence, foreign relations and some intergalactic trade. \
+	Increasingly anti non-human, the NRI is in an active war with the Sol Federation known as the Border War, a large \
+	scale conflict between the SolFed and NRI that sees a great deal of death and destruction. In Sol space they are heavily mistrusted \
+	and in some instances, met with downright hostility. Today the NRI continues to be an economic powerhouse following \
+	a period of steady economic recovery, with most of its exports being manufactured goods, primarily armaments."
+	economic_power = 0.95
+	features = list(/datum/cultural_feature/average)
+
+/datum/cultural_info/faction/nri_healthcare_science
+	name = "Novaya Rossiyskaya Imperiya Healthcare and Innovations Collegium"
+	description = "The \"New Russian Empire\", commonly referred to as the Novaya Rossiyskaya Imperiya (NRI), is a regional power in human space,\
+	bordered by the Sol Federation towards the galactic centre. The capital of the Empire is the city of New Saint Petersburg on the planet of Providence \
+	in the Ararat system. Externally heavily militant and isolationist, the NRI, internally, is heavily democratical, with \
+	a strong focus on independent regional government with the NRI itself only handling defence, foreign relations and some intergalactic trade. \
+	Increasingly anti non-human, the NRI is in an active war with the Sol Federation known as the Border War, a large \
+	scale conflict between the SolFed and NRI that sees a great deal of death and destruction. In Sol space they are heavily mistrusted \
+	and in some instances, met with downright hostility. Today the NRI continues to be an economic powerhouse following \
+	a period of steady economic recovery, with most of its exports being manufactured goods, primarily armaments."
+	economic_power = 0.95
+	features = list(/datum/cultural_feature/average)
+
+/datum/cultural_info/faction/nri_industries
+	name = "Novaya Rossiyskaya Imperiya Industrial and Colonial Development Collegium"
+	description = "The \"New Russian Empire\", commonly referred to as the Novaya Rossiyskaya Imperiya (NRI), is a regional power in human space,\
+	bordered by the Sol Federation towards the galactic centre. The capital of the Empire is the city of New Saint Petersburg on the planet of Providence \
+	in the Ararat system. Externally heavily militant and isolationist, the NRI, internally, is heavily democratical, with \
+	a strong focus on independent regional government with the NRI itself only handling defence, foreign relations and some intergalactic trade. \
+	Increasingly anti non-human, the NRI is in an active war with the Sol Federation known as the Border War, a large \
+	scale conflict between the SolFed and NRI that sees a great deal of death and destruction. In Sol space they are heavily mistrusted \
+	and in some instances, met with downright hostility. Today the NRI continues to be an economic powerhouse following \
+	a period of steady economic recovery, with most of its exports being manufactured goods, primarily armaments."
+	economic_power = 0.95
+	features = list(/datum/cultural_feature/average)
+
+
+/datum/cultural_info/faction/nri_bureaucracy
+	name = "Novaya Rossiyskaya Imperiya External Relationships and Cultural Collegium"
+	description = "The \"New Russian Empire\", commonly referred to as the Novaya Rossiyskaya Imperiya (NRI), is a regional power in human space,\
+	bordered by the Sol Federation towards the galactic centre. The capital of the Empire is the city of New Saint Petersburg on the planet of Providence \
+	in the Ararat system. Externally heavily militant and isolationist, the NRI, internally, is heavily democratical, with \
+	a strong focus on independent regional government with the NRI itself only handling defence, foreign relations and some intergalactic trade. \
+	Increasingly anti non-human, the NRI is in an active war with the Sol Federation known as the Border War, a large \
+	scale conflict between the SolFed and NRI that sees a great deal of death and destruction. In Sol space they are heavily mistrusted \
+	and in some instances, met with downright hostility. Today the NRI continues to be an economic powerhouse following \
+	a period of steady economic recovery, with most of its exports being manufactured goods, primarily armaments."
+	economic_power = 0.95
+	features = list(/datum/cultural_feature/average)
