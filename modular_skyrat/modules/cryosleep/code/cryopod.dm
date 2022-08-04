@@ -19,6 +19,7 @@ GLOBAL_LIST_EMPTY(ghost_records)
 	icon = 'modular_skyrat/modules/cryosleep/icons/cryogenics.dmi'
 	icon_state = "cellconsole_1"
 	icon_keyboard = null
+	use_power = FALSE
 	density = FALSE
 	interaction_flags_machine = INTERACT_MACHINE_OFFLINE
 	req_one_access = list(ACCESS_COMMAND, ACCESS_ARMORY) // Heads of staff or the warden can go here to claim recover items from their department that people went were cryodormed with.
@@ -130,6 +131,7 @@ GLOBAL_LIST_EMPTY(ghost_records)
 	desc = "Suited for Cyborgs and Humanoids, the pod is a safe place for personnel affected by the Space Sleep Disorder to get some rest."
 	icon = 'modular_skyrat/modules/cryosleep/icons/cryogenics.dmi'
 	icon_state = "cryopod-open"
+	use_power = FALSE
 	density = TRUE
 	anchored = TRUE
 	state_open = TRUE
