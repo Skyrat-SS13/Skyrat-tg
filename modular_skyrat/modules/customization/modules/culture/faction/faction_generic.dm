@@ -210,7 +210,6 @@
 	economic_power = 0.95
 	features = list(/datum/cultural_feature/average)
 
-
 /datum/cultural_info/faction/nri_bureaucracy
 	name = "Novaya Rossiyskaya Imperiya External Relationships and Cultural Collegium"
 	description = "The \"New Russian Empire\", commonly referred to as the Novaya Rossiyskaya Imperiya (NRI), is a regional power in human space,\
