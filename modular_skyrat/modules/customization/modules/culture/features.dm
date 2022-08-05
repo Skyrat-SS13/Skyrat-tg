@@ -27,3 +27,9 @@
 	description = "You start with a normal amount of money, and have normal paychecks."
 	icon_state = "spacecash100"
 	icon_path = "icons/obj/economy.dmi"
+
+/datum/cultural_feature/lavaland
+	name = "Lavaland \"Native\""
+	description = "You do not need money, and you instead have the blessing of the necropolis."
+	icon_state = "talisman"
+	icon_path = "icons/obj/lavaland/artefacts.dmi"

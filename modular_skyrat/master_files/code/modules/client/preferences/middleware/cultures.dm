@@ -9,12 +9,46 @@
 		Insert(sanitize_css_class_name(initial(cultural_feature.name)), language_icon)
 
 /datum/preference_middleware/cultures
+	action_delegations = list(
+		"select_culture" = .proc/verify_culture,
+		"select_faction" = .proc/verify_faction,
+		"select_location" = .proc/verify_location,
+	)
 
 /datum/preference_middleware/get_ui_assets()
 	return list(
 		get_asset_datum(/datum/asset/spritesheet/cultures)
 	)
 
+/datum/preference_middleware/cultures/proc/get_ui_data_entry(datum/cultural_info/cultural_info, selected, valid)
+	cultural_info = new cultural_info()
+	var/required_lang_name = initial(cultural_info.required_lang.name)
+	var/list/additional_langs = list()
+	for(var/datum/language/language as anything in cultural_info.additional_langs)
+		language = GLOB.language_datum_instances[language]
+		additional_langs += list(initial(language.name))
+	var/list/feature_names = list()
+	for(var/datum/cultural_feature/feature as anything in cultural_info.features)
+		feature_names += list(initial(feature.name))
+	var/list/data = list(
+		"name" = cultural_info.name,
+		"description" = cultural_info.description,
+		"economic_power" = cultural_info.economic_power,
+		"required_lang" = required_lang_name,
+		"additional_langs" = additional_langs,
+		"features" = feature_names,
+		"valid" = valid,
+		"selected" = selected,
+		"path" = "[cultural_info.type]"
+	)
+	if(istype(cultural_info, /datum/cultural_info/location))
+		var/datum/cultural_info/location/location = cultural_info
+		data += list(
+			"ruler" = location.ruling_body,
+			"distance" = location.distance,
+			"capital" = location.capital,
+		)
+	return data
 
 /datum/preference_middleware/cultures/get_ui_data(mob/user)
 	var/list/cultures = list()
@@ -32,69 +66,13 @@
 		))
 
 	for(var/datum/cultural_info/cultural_info as anything in subtypesof(/datum/cultural_info/culture))
-		cultural_info = new cultural_info()
-		var/datum/language/required_lang = cultural_info.required_lang
-		var/required_lang_name = initial(required_lang.name)
-		world.log << required_lang
-		var/list/additional_langs = list()
-		for(var/datum/language/language as anything in cultural_info.additional_langs)
-			language = GLOB.language_datum_instances[language]
-			additional_langs += list(initial(language.name))
-		var/list/feature_names = list()
-		for(var/datum/cultural_feature/feature as anything in cultural_info.features)
-			feature_names += list(initial(feature.name))
-		cultures += list(list(
-			"name" = cultural_info.name,
-			"description" = cultural_info.description,
-			"economic_power" = cultural_info.economic_power,
-			"required_lang" = required_lang_name,
-			"additional_langs" = additional_langs,
-			"features" = feature_names,
-			"css_class" = sanitize_css_class_name(cultural_info.name),
-		))
+		cultures += list(get_ui_data_entry(cultural_info, cultural_info == preferences.culture_culture, TRUE))
+
+	for(var/datum/cultural_info/cultural_info as anything in subtypesof(/datum/cultural_info/location))
+		locations += list(get_ui_data_entry(cultural_info, cultural_info == preferences.culture_location, check_valid(cultural_info, preferences.culture_culture)))
 
 	for(var/datum/cultural_info/cultural_info as anything in subtypesof(/datum/cultural_info/faction))
-		cultural_info = new cultural_info()
-		var/datum/language/required_lang = cultural_info.required_lang
-		var/required_lang_name = initial(required_lang.name)
-		var/list/additional_langs = list()
-		for(var/datum/language/language as anything in cultural_info.additional_langs)
-			language = GLOB.language_datum_instances[language]
-			additional_langs += list(initial(language.name))
-		var/list/feature_names = list()
-		for(var/datum/cultural_feature/feature as anything in cultural_info.features)
-			feature_names += list(initial(feature.name))
-		factions += list(list(
-			"name" = cultural_info.name,
-			"description" = cultural_info.description,
-			"economic_power" = cultural_info.economic_power,
-			"required_lang" = required_lang_name,
-			"additional_langs" = additional_langs,
-			"features" = feature_names,
-		))
-
-	for(var/datum/cultural_info/location/cultural_info as anything in subtypesof(/datum/cultural_info/location))
-		cultural_info = new cultural_info()
-		var/datum/language/required_lang = cultural_info.required_lang
-		var/required_lang_name = initial(required_lang.name)
-		var/list/additional_langs = list()
-		for(var/datum/language/language as anything in cultural_info.additional_langs)
-			language = GLOB.language_datum_instances[language]
-			additional_langs += list(initial(language.name))
-		var/list/feature_names = list()
-		for(var/datum/cultural_feature/feature as anything in cultural_info.features)
-			feature_names += list(initial(feature.name))
-		locations += list(list(
-			"name" = cultural_info.name,
-			"description" = cultural_info.description,
-			"economic_power" = cultural_info.economic_power,
-			"required_lang" = required_lang_name,
-			"additional_langs" = additional_langs,
-			"features" = feature_names,
-			"ruler" = cultural_info.ruling_body,
-			"distance" = cultural_info.distance,
-			"capital" = cultural_info.capital,
-		))
+		factions += list(get_ui_data_entry(cultural_info, cultural_info == preferences.culture_faction, check_valid(cultural_info, preferences.culture_culture) && check_valid(cultural_info, preferences.culture_location)))
 
 	return list(
 		"cultures" = cultures,
@@ -102,3 +80,77 @@
 		"factions" = factions,
 		"features" = features,
 	)
+
+/datum/preference_middleware/cultures/proc/check_valid(datum/cultural_info/cultural_info, datum/cultural_info/loaded_cultural_info)
+	if(!cultural_info || !loaded_cultural_info)
+		return FALSE
+	if(initial(cultural_info.groups) == CULTURE_ALL || initial(loaded_cultural_info.groups) == CULTURE_ALL)
+		return TRUE
+	if(initial(cultural_info.groups) & initial(loaded_cultural_info.groups))
+		return TRUE
+	return FALSE
+
+/datum/preference_middleware/cultures/proc/verify_culture(list/params, mob/user)
+	var/datum/cultural_info/culture = text2path(params["culture"])
+
+	// If a preresiquite isn't selected, yeet everything that shouldn't be selected.
+	if(preferences.culture_faction && !culture)
+		preferences.culture_faction = null
+		return TRUE
+	if(preferences.culture_location && !(culture || preferences.culture_faction))
+		preferences.culture_faction = null
+		preferences.culture_location = null
+		return TRUE
+
+	if(GLOB.culture_cultures[culture])
+		if(!check_valid(culture, preferences.culture_location))
+			preferences.culture_location = null
+			preferences.culture_faction = null
+		if(!check_valid(culture, preferences.culture_faction))
+			preferences.culture_faction = null
+		preferences.culture_culture = culture
+		return TRUE
+
+	// It isn't valid, let's not let the game try to use whatever was sent.
+	preferences.culture_culture = null
+	return TRUE
+
+/datum/preference_middleware/cultures/proc/verify_location(list/params, mob/user)
+	var/datum/cultural_info/location = text2path(params["culture"])
+
+	// If a preresiquite isn't selected, yeet everything that shouldn't be selected.
+	if(!preferences.culture_culture)
+		preferences.culture_faction = null
+		preferences.culture_location = null
+		return TRUE
+
+	if(GLOB.culture_locations[location])
+		if(!check_valid(location, preferences.culture_faction))
+			preferences.culture_faction = null
+		preferences.culture_location = location
+		return TRUE
+
+	// It isn't valid, let's not let the game try to use whatever was sent.
+	preferences.culture_location = null
+	return TRUE
+
+/datum/preference_middleware/cultures/proc/verify_faction(list/params, mob/user)
+	var/datum/cultural_info/faction = text2path(params["culture"])
+
+	// If a preresiquite isn't selected, yeet everything that shouldn't be selected.
+	if(!preferences.culture_culture)
+		preferences.culture_faction = null
+		preferences.culture_location = null
+		return TRUE
+	if(!preferences.culture_location)
+		preferences.culture_location = null
+		return TRUE
+
+	// Nothing to validate.
+	if(GLOB.culture_factions[faction])
+		preferences.culture_faction = faction
+		return TRUE
+
+	// It isn't valid, let's not let the game try to use whatever was sent.
+	preferences.culture_faction = null
+	return TRUE

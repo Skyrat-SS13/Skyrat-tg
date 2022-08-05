@@ -1,5 +1,5 @@
-/datum/cultural_info/culture/xenoknockoff
-	name = "Xenohybrids"
+/datum/cultural_info/culture/xenohybrid
+	name = "Xenohybrid"
 	description =  "You still don't understand what you're dealing with, do you? Perfect organism. Its structural perfection is matched only by its hostility. \
 	You're one of them, a bastardization of a human and Xenomorph. You lot tend to be outcasts, Domeheads, Jerries, those sort of insults are common.  \
 	An outsider once described Xenohybrids as 'ancestor worshippers', though a more accurate phrase would be 'fetishization'. \
@@ -7,3 +7,4 @@
 	economic_power = 0.7
 	required_lang = /datum/language/common
 	features = list(/datum/cultural_feature/poor)
+	groups = CULTURE_GROUP_HUMAN

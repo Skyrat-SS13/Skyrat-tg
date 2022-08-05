@@ -20,6 +20,7 @@
 	technology, means their installations are often considered unsafe and hazardous."
 	economic_power = 1.2
 	features = list(/datum/cultural_feature/good)
+	groups = CULTURE_NT | CULTURE_SYNTH
 
 //To-Do: change to SolFed
 /datum/cultural_info/faction/solgov
@@ -36,6 +37,7 @@
 	its massive bureaucracy and the distance between worlds. Through its member states, the SolFed governs as one of the \
 	most advanced and powerful civilisations in the known galaxy."
 	features = list(/datum/cultural_feature/good)
+	groups = CULTURE_SOL | CULTURE_SYNTH
 
 /datum/cultural_info/faction/freetrade
 	name = "Free Trade Union"
@@ -47,6 +49,7 @@
 	selling a great many restricted items and supplying all manner of goods indiscriminately."
 	economic_power = 1.3
 	features = list(/datum/cultural_feature/good)
+	groups = CULTURE_GROUP_SPACE_FARING
 
 /datum/cultural_info/faction/fleet
 	name = "SolFed Fleet"
@@ -60,6 +63,7 @@
 	Bachelor degree and go through a lengthy training process before being assigned to a warship. \
 	Recently Sol-made IPCs were also permitted to enlist, provided they agree to install a law shackle."
 	features = list(/datum/cultural_feature/average)
+	groups = CULTURE_GROUP_SPACE_FARING
 
 /datum/cultural_info/faction/torchco
 	name = "Expeditionary Corps Organisation"
@@ -73,6 +77,7 @@
 	reluctant to harpoon their own project."
 	economic_power = 1.2
 	features = list(/datum/cultural_feature/good)
+	groups = CULTURE_GROUP_SPACE_FARING
 
 /datum/cultural_info/faction/remote
 	name = "Expeditionary Corps"
@@ -85,6 +90,7 @@
 	Any SolFed citizen of age (18 and older) with no outstanding SolFed-wide warrants can sign up for a 2-year contract. \
 	Officer candidates are required to have at least a bachelor's degree in a relevant field (astrogation, engineering, xenoarcheology, etc)."
 	features = list(/datum/cultural_feature/average)
+	groups = CULTURE_GROUP_SPACE_FARING
 
 /datum/cultural_info/faction/police
 	name = "Sol Federal Police"
@@ -95,6 +101,7 @@
 	Special Investigations (sensitive and urgent cases) and Fugitive Recovery Division (for when local authorities are unable or unwilling to arrest someone). \
 	The contractor SFP Trackers are also used find and arrest low-profile fugitives from justice."
 	features = list(/datum/cultural_feature/average)
+	groups = CULTURE_SOL
 
 /datum/cultural_info/faction/xynergy
 	name = "Xynergy"
@@ -104,6 +111,7 @@
 	training the giant armoured serpentids."
 	economic_power = 1.1
 	features = list(/datum/cultural_feature/average)
+	groups = CULTURE_GROUP_SPACE_FARING
 
 /datum/cultural_info/faction/hephaestus
 	name = "Hephaestus Industries"
@@ -115,6 +123,7 @@
 	many employee benefits and focus on employee development, though many dread being transferred to one of the 'remote' branches."
 	economic_power = 1.2
 	features = list(/datum/cultural_feature/good)
+	groups = CULTURE_GROUP_SPACE_FARING
 
 /datum/cultural_info/faction/pcrc
 	name = "Proxima Centauri Risk Control"
@@ -124,6 +133,7 @@
 	it has quickly established itself as a reliable and effective provider of security solutions. This has often put it at odds with its main \
 	competitor, SAARE."
 	features = list(/datum/cultural_feature/average)
+	groups = CULTURE_GROUP_HUMAN
 
 /datum/cultural_info/faction/saare
 	name = "Strategic Assault and Asset Retention Enterprises"
@@ -133,6 +143,7 @@
 	contractors include private law enforcement, ship escort, location security, VIP escort, and VIP or asset recovery. In the last decade, the \
 	company has recently signed onto a number of contracts with Nanotrasen to complement their own Asset Protection forces."
 	features = list(/datum/cultural_feature/average)
+	groups = CULTURE_GROUP_HUMAN
 
 /datum/cultural_info/faction/dais
 	name = "Deimos Advanced Information Systems"
@@ -144,6 +155,7 @@
 	and related products, they still remain the market leader in computer technologies."
 	economic_power = 1.1
 	features = list(/datum/cultural_feature/average)
+	groups = CULTURE_GROUP_HUMAN
 
 /datum/cultural_info/faction/nri
 	name = "Novaya Rossiyskaya Imperiya"

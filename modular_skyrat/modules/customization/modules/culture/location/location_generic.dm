@@ -3,7 +3,8 @@
 	description = "The last time someone tried to do a comprehensive encyclopaedia of the known galaxy, their \
 	positronic processor deleted itself rather than face up to the task. You are from nowhere in particular - a \
 	backwater world, or somewhere off the starmaps."
-	features = list(/datum/cultural_feature/average)
+	economic_power = 0.8
+	features = list(/datum/cultural_feature/poor)
 
 /datum/cultural_info/location/stateless
 	name = "Stateless"
@@ -27,6 +28,7 @@
 	capital = "Olympus"
 	economic_power = 1.1
 	features = list(/datum/cultural_feature/average)
+	groups = CULTURE_GROUP_HUMAN
 
 /datum/cultural_info/location/earth
 	name = "Earth"
@@ -41,6 +43,7 @@
 	capital = "Geneva"
 	economic_power = 1.2
 	features = list(/datum/cultural_feature/good)
+	groups = CULTURE_GROUP_HUMAN
 
 /datum/cultural_info/location/luna
 	name = "Luna"
@@ -60,6 +63,7 @@
 	capital = "Selene"
 	economic_power = 1.3
 	features = list(/datum/cultural_feature/good)
+	groups = CULTURE_GROUP_HUMAN
 
 
 /datum/cultural_info/location/venus
@@ -79,6 +83,7 @@
 	capital = "Central Administration Zone"
 	economic_power = 1.4
 	features = list(/datum/cultural_feature/good)
+	groups = CULTURE_GROUP_HUMAN
 
 /datum/cultural_info/location/ceres
 	name = "Ceres"
@@ -92,6 +97,7 @@
 	and some of the best engineers Humanity has to offer."
 	capital = "Government Zone, Ceres Station"
 	features = list(/datum/cultural_feature/average)
+	groups = CULTURE_GROUP_HUMAN
 
 /datum/cultural_info/location/pluto
 	name = "Pluto"
@@ -108,6 +114,7 @@
 	economic_power = 0.8
 	additional_langs = list(/datum/language/gutter)
 	features = list(/datum/cultural_feature/poor)
+	groups = CULTURE_GROUP_HUMAN
 
 /datum/cultural_info/location/cetiepsilon
 	name = "Ceti Epsilon"
@@ -125,6 +132,7 @@
 	capital = "Verlize"
 	economic_power = 1.4
 	features = list(/datum/cultural_feature/good)
+	groups = CULTURE_GROUP_HUMAN
 
 /datum/cultural_info/location/eos
 	name = "Eos"
@@ -139,6 +147,7 @@
 	economic_power = 1.3
 	distance = "10 light years"
 	features = list(/datum/cultural_feature/good)
+	groups = CULTURE_GROUP_HUMAN
 
 /datum/cultural_info/location/tersten
 	name = "Tersten"
@@ -158,6 +167,7 @@
 	capital = "Tersten City"
 	economic_power = 1.0
 	features = list(/datum/cultural_feature/average)
+	groups = CULTURE_GROUP_HUMAN
 
 /datum/cultural_info/location/lorriman
 	name = "Lorriman"
@@ -173,6 +183,7 @@
 	capital = "The Hub"
 	economic_power = 1.0
 	features = list(/datum/cultural_feature/average)
+	groups = CULTURE_GROUP_HUMAN
 
 /datum/cultural_info/location/cinu
 	name = "Cinu"
@@ -190,6 +201,7 @@
 	capital = "Al-Mular"
 	economic_power = 1.0
 	features = list(/datum/cultural_feature/average)
+	groups = CULTURE_GROUP_HUMAN
 
 /datum/cultural_info/location/yuklid
 	name = "Yuklid"
@@ -204,6 +216,7 @@
 	capital = "Iyeegi"
 	economic_power = 0.9
 	features = list(/datum/cultural_feature/average)
+	groups = CULTURE_GROUP_HUMAN
 
 /datum/cultural_info/location/lordania
 	name = "Lordania"
@@ -219,6 +232,7 @@
 	capital = "New Ares"
 	economic_power = 1.2
 	features = list(/datum/cultural_feature/good)
+	groups = CULTURE_GROUP_HUMAN
 
 /datum/cultural_info/location/kingston
 	name = "Kingston"
@@ -234,6 +248,7 @@
 	capital = "New Havana"
 	economic_power = 1.1
 	features = list(/datum/cultural_feature/average)
+	groups = CULTURE_AKULAN
 
 /datum/cultural_info/location/providence
 	name = "Providence"
@@ -250,6 +265,7 @@
 	ruling_body = "Novaya Rossiyskaya Imperiya"
 	required_lang = /datum/language/neorusskya
 	features = list(/datum/cultural_feature/good)
+	groups = CULTURE_NRI
 
 /datum/cultural_info/location/grudinov
 	name = "Grudinov"
@@ -263,6 +279,7 @@
 	economic_power = 0.8
 	ruling_body = "SolFed (Northern hemisphere); NRI (Southern hemisphere); Neutral (Antioch the Second)"
 	features = list(/datum/cultural_feature/poor)
+	groups = CULTURE_GROUP_HUMAN
 
 /datum/cultural_info/location/gagarin
 	name = "Gagarin-4"
@@ -283,3 +300,4 @@
 	ruling_body = "Formally, Novaya Rossiyskaya Imperiya; Factually, Gagarin's Academic Senate"
 	required_lang = /datum/language/neorusskya
 	features = list(/datum/cultural_feature/average)
+	groups = CULTURE_GROUP_HUMAN

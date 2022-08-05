@@ -53,6 +53,10 @@
 	/// A photo of the character, visible on close examine
 	var/headshot = ""
 
+	var/datum/cultural_info/culture/culture_culture
+	var/datum/cultural_info/faction/culture_faction
+	var/datum/cultural_info/location/culture_location
+
 /datum/preferences/proc/species_updated(species_type)
 	all_quirks = list()
 	// Reset cultural stuff

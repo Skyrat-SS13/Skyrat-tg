@@ -264,9 +264,20 @@ $department_map: (
     &__contents {
       display: none;
     }
-    &__header:hover .PreferencesMenu__Cultures__contents {
-      display: block;
-      transition: display 0.1s ease-in-out;
+    &__selected {
+      background-color: #41791c;
+      border-color: #41791c;
+      border-radius: 3px;
+      border-style: solid;
+      border-width: 6px 6px 0px 6px;
+    }
+    &__pointer {
+      cursor: pointer;
+    }
+    &__nobad {
+      animation: shake 0.1s linear;
+      animation-iteration-count: 3;
     }
   }
+  // SKYRAT EDIT END
 }

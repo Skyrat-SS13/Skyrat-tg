@@ -265,6 +265,9 @@ export type Culture = {
   required_lang: string;
   features: string[];
   css_class: string;
+  valid: number;
+  selected: number;
+  path: string;
 };
 
 export type CultureLocation = Culture & {

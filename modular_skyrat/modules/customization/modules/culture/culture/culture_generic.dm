@@ -34,6 +34,7 @@
 	description = "You are from one of various planetary cultures of humankind."
 	additional_langs = list(/datum/language/neorusskya, /datum/language/gutter, /datum/language/spacer, /datum/language/yangyu)
 	features = list(/datum/cultural_feature/average)
+	groups = CULTURE_GROUP_HUMAN
 
 /datum/cultural_info/culture/martian_surfacer
 	name = "Martian, Surfacer"
@@ -42,6 +43,7 @@
 	average level of comfort expected in Sol space. Most surfacers are like many across the galaxy, though a few harbour rivalries with other Martian cultural \
 	groups or are generally overly proud of their heritage, as is the case with the Gideons, to the point that they constantly refer to it."
 	features = list(/datum/cultural_feature/average)
+	groups = CULTURE_GROUP_HUMAN
 
 /datum/cultural_info/culture/martian_tunneller
 	name = "Martian, Tunneler"
@@ -52,6 +54,7 @@
 	and wary of outsiders, and tend to strongly dislike non-Martians."
 	economic_power = 0.9
 	features = list(/datum/cultural_feature/average)
+	groups = CULTURE_GROUP_HUMAN
 
 /datum/cultural_info/culture/earthling
 	name = "Earth"
@@ -63,6 +66,7 @@
 	economic_power = 1.1
 	additional_langs = list(/datum/language/yangyu)
 	features = list(/datum/cultural_feature/average)
+	groups = CULTURE_GROUP_HUMAN
 
 /datum/cultural_info/culture/luna_poor
 	name = "Luna, Lower Class"
@@ -72,6 +76,7 @@
 	financial, cultural and political power and influence over their lives."
 	economic_power = 1
 	features = list(/datum/cultural_feature/average)
+	groups = CULTURE_GROUP_HUMAN
 
 /datum/cultural_info/culture/luna_rich
 	name = "Luna, Upper Class"
@@ -82,6 +87,7 @@
 	with implications far beyond the squabbles of the prefectures."
 	economic_power = 1.3
 	features = list(/datum/cultural_feature/good)
+	groups = CULTURE_GROUP_HUMAN
 
 /datum/cultural_info/culture/terran
 	name = "Terran"
@@ -92,6 +98,7 @@
 	required_lang = /datum/language/neorusskya
 	economic_power = 0.9
 	features = list(/datum/cultural_feature/average)
+	groups = CULTURE_GROUP_HUMAN
 
 /datum/cultural_info/culture/venusian_upper
 	name = "Venusian, Zoner"
@@ -100,6 +107,7 @@
 	Those above are exceptionally wealthy, being hotel, casino, resort owners, politicians, bankers or rich retirees."
 	economic_power = 1.4
 	features = list(/datum/cultural_feature/good)
+	groups = CULTURE_GROUP_HUMAN
 
 /datum/cultural_info/culture/venusian_surfacer
 	name = "Venusian, Surfacer"
@@ -109,6 +117,7 @@
 	match them, and much of the surface of Venus finds itself rife with organised crime, separatist groups and other criminal organisations."
 	economic_power = 0.9
 	features = list(/datum/cultural_feature/average)
+	groups = CULTURE_GROUP_HUMAN
 
 /datum/cultural_info/culture/belter
 	name = "Belter"
@@ -119,6 +128,7 @@
 	human space."
 	economic_power = 1
 	features = list(/datum/cultural_feature/average)
+	groups = CULTURE_GROUP_HUMAN
 
 /datum/cultural_info/culture/plutonian
 	name = "Plutionian"
@@ -129,6 +139,7 @@
 	economic_power = 0.8
 	additional_langs = list(/datum/language/neorusskya, /datum/language/gutter, /datum/language/spacer, /datum/language/yangyu)
 	features = list(/datum/cultural_feature/poor)
+	groups = CULTURE_GROUP_HUMAN
 
 /datum/cultural_info/culture/ceti
 	name = "Cetite"
@@ -139,14 +150,31 @@
 	cybernetics culture; it is not uncommon to see many Cetites sporting some chrome."
 	economic_power = 1.1
 	features = list(/datum/cultural_feature/average)
+	groups = CULTURE_GROUP_HUMAN
 
-/datum/cultural_info/culture/zolmalchi
-	name = "Zolmalchi"
-	description =  "You are from any number of shadowy fleets, tumultuous colonies, or starless pocket dimensions alien beings called 'Demons' typically reside in. \
-	These places tend to enjoy high levels of technology and denizens of quick wit, but often get stuck in battling with deeply ingrained archaic customs and obscure norms. \
-	Many of these cultures have strict interpersonal hierarchies, though their dwellers are no stranger to betrayal and climbing up the social ladder with blood-stained hands is often the way to go. \
-	A common philosophy in these oft-clashing places is the simple phrase, 'Do as thou wilt'."
-	economic_power = 1
-	additional_langs = list(/datum/language/yangyu)
-	features = list(/datum/cultural_feature/average)
+/datum/cultural_info/culture/akulan_core
+	name = "Ousted Coreworld Akulan Aristocrat"
+	description = "You were raised as a traditional Akulan aristocrat on their homeworld of Azulea or one of their many coreworlds in the Kingdom of Agurkrral. \
+	You are simultaneously pampered and also rigidly disciplined with a military-styled education that would be comparable to aristocrats born in the ancient human Kingdom of Prussia. \
+	You value intellectualism but not of the idle variety, as you thirst for discipline, strength, and brutality. \
+	You live for no one, but the king and the collective will of the nation, and you have either served or sought to serve the state as a mid-level state official or military officer. \
+	For some reason, despite your inherent superiority, you have ended up in this godforsaken piece of the universe. \
+	Most likely, you were a traitor in the great Agurkrral-Taj War where you temporarily betrayed your nation in the hopes that you could save it. \
+	You will have to make do for now in this temporary pitstop. \
+	Note: You most likely prefer to be called an Azulean, not the foreign name of \"Akulan\" given to you."
+	economic_power = 1.3
+	additional_langs = list()
+	features = list(/datum/cultural_feature/good)
+	groups = CULTURE_AKULAN
 
+/datum/cultural_info/culture/akulan_rim
+	name = "Ousted Rimworld Akulan Aristocrat"
+	description = "You were raised as a non-traditional Akulan aristocrat on the rimworlds of the Kingdom of Agurkrral. \
+	Unlike the coreworld aristocrats, power struggles are common, and education comes in the form of experience, not books or philosophy. \
+	Your ancestors earned their place through iron and blood, raiding trading ships, outposts, and colonies as official privateers of your great kingdom. \
+	Yet, despite your cunning and usefulness, you have ended up in this godforsaken piece of the universe. \
+	You will make your mark one way or another."
+	economic_power = 1.3
+	additional_langs = list()
+	features = list(/datum/cultural_feature/good)
+	groups = CULTURE_AKULAN
