@@ -167,7 +167,7 @@
 	scale conflict between the SolFed and NRI that sees a great deal of death and destruction. In Sol space they are heavily mistrusted \
 	and in some instances, met with downright hostility. Today the NRI continues to be an economic powerhouse following \
 	a period of steady economic recovery, with most of its exports being manufactured goods, primarily armaments.\
-	It is very likely that you do not belong to any governmental organisation or Collegium, simply being born there, likely taught and lived there, and then contracted by the Nanotrasen.\
+	It is very likely that you do not belong to nor was contracted with the assistance of any governmental organisation or Collegium, simply being born there, likely taught and lived there, and then contracted by the Nanotrasen.\
 	Not like this station is even barely good to begin with."
 	economic_power = 0.85
 	features = list(/datum/cultural_feature/average)
@@ -198,14 +198,23 @@
 
 /datum/cultural_info/faction/nri_healthcare_science
 	name = "Novaya Rossiyskaya Imperiya Healthcare and Innovations Collegium"
-	description = "The \"New Russian Empire\", commonly referred to as the Novaya Rossiyskaya Imperiya (NRI), is a regional power in human space,\
-	bordered by the Sol Federation towards the galactic centre. The capital of the Empire is the city of New Saint Petersburg on the planet of Providence \
-	in the Ararat system. Externally heavily militant and isolationist, the NRI, internally, is heavily democratical, with \
-	a strong focus on independent regional government with the NRI itself only handling defence, foreign relations and some intergalactic trade. \
-	Increasingly anti non-human, the NRI is in an active war with the Sol Federation known as the Border War, a large \
-	scale conflict between the SolFed and NRI that sees a great deal of death and destruction. In Sol space they are heavily mistrusted \
-	and in some instances, met with downright hostility. Today the NRI continues to be an economic powerhouse following \
-	a period of steady economic recovery, with most of its exports being manufactured goods, primarily armaments."
+	description = "Imperial Healthcare Collegia is a government-controlled and somewhat loose collaboration of various medical clinics, compliant pharmaceutical organisations and small-scale medical research facilities \
+	that make sure that people stay healthy and develop new means of medical treatment, often in collaboration with the Innovations Collegia. Most of the medical facilities that the Empire utilises are highly technological, \
+	with treatment being free of charge for all citizens and allies of the empire, provided that they have the necessary paperwork filled in. \
+	It's very likely that an average person living in the NRI would have to study in the medical college for at least four years and go through a 2-year paid government-approved internship. \
+	It's very likely for a person either working for or being contracted by the Healthcare Collegia to be at least moderately proficient with their skills and to have a certain amount of knowledge regarding anatomy, chemistry or other sciences. \
+	It's incredibly likely for a person being a NRI doctor to have given a Hippocratic Oath. \
+	<br> \
+	Innovations Collegia is a mostly government-regulated collection of research institutes and laboratories, sometimes independent, with the goal of advancing various research fields. NRI is well-known for their advances in genetical and biological research, \
+	being essentially the pioneers in those fields, as well as notorious for being one of the few superpowers capable of creating smart combat armor, complex mechanised units and ultra-precise ballistic weaponry. \
+	Despite all of the good parts, a good amount of research establishments suffers from being undefunded; with the currently overbloated weapon-related research occupying most of the subsidies. \
+	It's very likely that an average person living in the NRI would have to study in the certain science field for at least six years, and then go through a 2-year government-approved internship. \
+	It's very likely for a person working for or contracted by the Innovations Collegia to be either highly proficient in genetical, medical or weapons research or moderately proficient in other fields. \
+	It's unlikely for a NRI researcher to be a SolFed immigrant or otherwise affiliated with them. \
+	It's unlikely for a NRI researcher to be in bad physical condition. \
+	<br> \
+	Either being a medical or science professional (or, at the very least, a sound amateur), you would have more luck knitting flesh together somewhere in a field hospital or developing niche calibres for the military than being here. \
+	Likely it's the ongoing internship that sent you here, your own volition, or something else. It's not the best workplace, obviously, but it does have everything you'd possibly need.
 	economic_power = 0.95
 	features = list(/datum/cultural_feature/average)
 
@@ -232,5 +241,6 @@
 	scale conflict between the SolFed and NRI that sees a great deal of death and destruction. In Sol space they are heavily mistrusted \
 	and in some instances, met with downright hostility. Today the NRI continues to be an economic powerhouse following \
 	a period of steady economic recovery, with most of its exports being manufactured goods, primarily armaments."
-	economic_power = 0.95
+	///Bureaucrats embezzle funds.
+	economic_power = 1.10
 	features = list(/datum/cultural_feature/average)
