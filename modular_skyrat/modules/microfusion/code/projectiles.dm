@@ -18,6 +18,11 @@
 	icon = 'modular_skyrat/modules/microfusion/icons/projectiles.dmi'
 	damage = 20
 
+/obj/projectile/beam/laser/microfusion/on_hit(atom/target, blocked)
+	if(istype(target, /obj/structure/blob) || istype(target, /mob/living/simple_animal/hostile/blob))
+		damage = damage / 2
+	return ..()
+
 /obj/projectile/beam/microfusion_disabler
 	name = "microfusion disabler laser"
 	icon = 'modular_skyrat/modules/microfusion/icons/projectiles.dmi'
