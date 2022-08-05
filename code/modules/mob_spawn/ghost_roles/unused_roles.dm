@@ -39,24 +39,6 @@
 //spawners for the space hotel, which isn't currently in the code but heyoo secret away missions or something
 
 //Space Hotel Staff
-
-// SKYRAT EDIT ADD - BEGIN
-/obj/effect/mob_spawn/ghost_role/human/hotel_staff/manager
-	name = "staff manager sleeper"
-	mob_name = "hotel staff manager"
-	outfit = /datum/outfit/hotelstaff/manager
-	you_are_text = "You are the manager of a top-of-the-line space hotel!"
-	flavour_text = "You are the manager of a top-of-the-line space hotel! Make sure the guests are looked after, the hotel is advertised, and your employees aren't slacking off!"
-
-/datum/outfit/hotelstaff/manager
-	name = "Hotel Staff Manager"
-	uniform = /obj/item/clothing/under/suit/red
-	shoes = /obj/item/clothing/shoes/laceup
-	r_pocket = /obj/item/radio/off
-	back = /obj/item/storage/backpack
-	implants = list(/obj/item/implant/mindshield, /obj/item/implant/exile/noteleport)
-// SKYRAT EDIT ADD - END
-
 /obj/effect/mob_spawn/ghost_role/human/hotel_staff //not free antag u little shits
 	name = "staff sleeper"
 	desc = "A sleeper designed for long-term stasis between guest visits."
@@ -68,7 +50,6 @@
 	flavour_text = "Cater to visiting guests with your fellow staff, advertise the hotel, and make sure the manager doesn't fire you. Remember, the customer is always right!"
 	important_text = "Do NOT leave the hotel, as that is grounds for contract termination."
 	spawner_job_path = /datum/job/hotel_staff
-	random_appearance = FALSE // SKYRAT EDIT ADDITION
 
 /datum/outfit/hotelstaff
 	name = "Hotel Staff"
@@ -95,7 +76,6 @@
 	head = /obj/item/clothing/head/helmet/blueshirt
 	back = /obj/item/storage/backpack/security
 	belt = /obj/item/storage/belt/security/full
-	r_hand = /obj/item/gun/energy/laser/scatter/shotty // SKYRAT EDIT ADD - SPAWNS IN HAND INSTEAD OF ON MAP
 
 /obj/effect/mob_spawn/ghost_role/human/hotel_staff/Destroy()
 	new/obj/structure/fluff/empty_sleeper/syndicate(get_turf(src))
