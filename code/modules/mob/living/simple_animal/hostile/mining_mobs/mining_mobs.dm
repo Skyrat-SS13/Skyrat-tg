@@ -13,14 +13,23 @@
 	response_harm_simple = "strike"
 	status_flags = 0
 	combat_mode = TRUE
-	var/crusher_loot
 	var/throw_message = "bounces off of"
 	var/fromtendril = FALSE
 	see_in_dark = 8
 	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 	mob_size = MOB_SIZE_LARGE
 	var/icon_aggro = null
+
+	///what trophy this mob drops
+	var/crusher_loot
+	///what is the chance the mob drops it if all their health was taken by crusher attacks
 	var/crusher_drop_mod = 25
+
+/mob/living/simple_animal/hostile/asteroid/Initialize(mapload)
+	. = ..()
+	if(crusher_loot)
+		AddElement(/datum/element/crusher_loot, crusher_loot, crusher_drop_mod, del_on_death)
+	AddElement(/datum/element/mob_killed_tally, "mobs_killed_mining")
 
 /mob/living/simple_animal/hostile/asteroid/Aggro()
 	..()
@@ -50,6 +59,7 @@
 			visible_message(span_notice("The [T.name] [throw_message] [src.name]!"))
 			return
 	..()
+<<<<<<< HEAD
 
 /mob/living/simple_animal/hostile/asteroid/death(gibbed)
 	SSblackbox.record_feedback("tally", "mobs_killed_mining", 1, type)
@@ -68,3 +78,5 @@
 
 /mob/living/simple_animal/hostile/asteroid/proc/spawn_crusher_loot()
 	butcher_results[crusher_loot] = 1
+=======
+>>>>>>> 0728fb3840d (New Lavaland Monster: Bileworms (#68967))
