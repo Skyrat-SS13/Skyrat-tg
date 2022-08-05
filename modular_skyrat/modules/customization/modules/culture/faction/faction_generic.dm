@@ -172,6 +172,8 @@
 	economic_power = 0.85
 	features = list(/datum/cultural_feature/average)
 
+///All of this better be condensed into a single selectable entry.
+
 /datum/cultural_info/faction/nri_police_military
 	name = "Novaya Rossiyskaya Imperiya Defense and Peacekeeping Collegium"
 	description = "NRI's Defense and Peacekeeping Collegium, is the empire's main military and police forces. Empire's police force is well-known for \
