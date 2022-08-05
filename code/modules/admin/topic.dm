@@ -47,7 +47,6 @@
 			to_chat(usr, span_danger("ERROR: Mob not found."), confidential = TRUE)
 			return
 		cmd_show_exp_panel(M.client)
-<<<<<<< HEAD
 
 // SKYRAT EDIT BEGIN -- ONE CLICK ANTAG
 	else if(href_list["makeAntag"])
@@ -108,8 +107,6 @@
 			message_admins("[key_name_admin(usr)] has triggered an event. ([E.name])")
 			log_admin("[key_name(usr)] has triggered an event. ([E.name])")
 		return
-=======
->>>>>>> b5e57216ee6 (Event menu rewrite (#68472))
 
 	else if(href_list["editrightsbrowser"])
 		edit_admin_permissions(0)
