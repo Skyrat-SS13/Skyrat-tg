@@ -157,15 +157,10 @@
 	if(H.dna && H.dna.species && (H.dna.features["wings"] != "None"))
 		return TRUE
 
-<<<<<<< HEAD
-//Ayy lmao
-
-=======
 /datum/emote/living/carbon/human/clear_throat
 	key = "clear"
 	key_third_person = "clears throat"
 	message = "clears their throat."
->>>>>>> b4f19a7e0fc (Greatly increases Pun Pun's abilities and strengths (using desk bells, cross stun immunity) (#68870))
 
 ///Snowflake emotes only for le epic chimp
 /datum/emote/living/carbon/human/monkey
