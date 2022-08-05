@@ -1,4 +1,4 @@
 /datum/cultural_info/location
-	var/distance
-	var/ruling_body
-	var/capital
+	var/distance = "Unknown"
+	var/ruling_body = "Unknown"
+	var/capital = "Unknown"

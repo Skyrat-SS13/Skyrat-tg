@@ -20,6 +20,36 @@
 		get_asset_datum(/datum/asset/spritesheet/cultures)
 	)
 
+/datum/preference_middleware/cultures/proc/get_ui_data_entries(datum/cultural_info/cultural_info, valid)
+	var/selected = FALSE
+	var/list/sub_cultures = list()
+	if(valid)
+		if(ispath(cultural_info, /datum/cultural_info/culture))
+			selected = ispath(cultural_info, preferences.culture_culture)
+			for(var/datum/cultural_info/culture as anything in subtypesof(cultural_info))
+				var/value = get_ui_data_entry(culture, culture == preferences.culture_culture, TRUE)
+				if(value["selected"])
+					selected = 2 // TODO: CHILD_SELECTED
+				sub_cultures += list(value)
+		if(ispath(cultural_info, /datum/cultural_info/location))
+			selected = ispath(cultural_info, preferences.culture_location)
+			for(var/datum/cultural_info/culture as anything in subtypesof(cultural_info))
+				var/value = get_ui_data_entry(culture, culture == preferences.culture_location, check_valid(culture, preferences.culture_culture))
+				if(value["selected"])
+					selected = 2 // TODO: CHILD_SELECTED
+				sub_cultures += list(value)
+		if(ispath(cultural_info, /datum/cultural_info/faction))
+			selected = ispath(cultural_info, preferences.culture_faction)
+			for(var/datum/cultural_info/culture as anything in subtypesof(cultural_info))
+				var/value = get_ui_data_entry(culture, culture == preferences.culture_faction, check_valid(culture, preferences.culture_culture) && check_valid(cultural_info, preferences.culture_location))
+				if(value["selected"])
+					selected = 2 // TODO: CHILD_SELECTED
+				sub_cultures += list(value)
+
+	var/list/data = get_ui_data_entry(cultural_info, selected, valid)
+	data["sub_cultures"] = sub_cultures
+	return data
+
 /datum/preference_middleware/cultures/proc/get_ui_data_entry(datum/cultural_info/cultural_info, selected, valid)
 	cultural_info = new cultural_info()
 	var/required_lang_name = initial(cultural_info.required_lang.name)
@@ -50,6 +80,14 @@
 		)
 	return data
 
+/datum/preference_middleware/cultures/proc/get_immediate_subtypes(obj/type)
+	var/list/types = list()
+	for(var/datum/subtype as anything in subtypesof(type))
+		subtype = new subtype()
+		if(subtype.parent_type == type)
+			types += list(subtype.type)
+	return types
+
 /datum/preference_middleware/cultures/get_ui_data(mob/user)
 	var/list/cultures = list()
 	var/list/locations = list()
@@ -65,14 +103,14 @@
 			"css_class" = cultural_feature.css_class,
 		))
 
-	for(var/datum/cultural_info/cultural_info as anything in subtypesof(/datum/cultural_info/culture))
-		cultures += list(get_ui_data_entry(cultural_info, cultural_info == preferences.culture_culture, TRUE))
+	for(var/datum/cultural_info/cultural_info as anything in get_immediate_subtypes(/datum/cultural_info/culture))
+		cultures += list(get_ui_data_entries(cultural_info, TRUE))
 
-	for(var/datum/cultural_info/cultural_info as anything in subtypesof(/datum/cultural_info/location))
-		locations += list(get_ui_data_entry(cultural_info, cultural_info == preferences.culture_location, check_valid(cultural_info, preferences.culture_culture)))
+	for(var/datum/cultural_info/cultural_info as anything in get_immediate_subtypes(/datum/cultural_info/location))
+		locations += list(get_ui_data_entries(cultural_info, check_valid(cultural_info, preferences.culture_culture)))
 
-	for(var/datum/cultural_info/cultural_info as anything in subtypesof(/datum/cultural_info/faction))
-		factions += list(get_ui_data_entry(cultural_info, cultural_info == preferences.culture_faction, check_valid(cultural_info, preferences.culture_culture) && check_valid(cultural_info, preferences.culture_location)))
+	for(var/datum/cultural_info/cultural_info as anything in get_immediate_subtypes(/datum/cultural_info/faction))
+		factions += list(get_ui_data_entries(cultural_info, check_valid(cultural_info, preferences.culture_culture) && check_valid(cultural_info, preferences.culture_location)))
 
 	return list(
 		"cultures" = cultures,
@@ -92,6 +130,7 @@
 
 /datum/preference_middleware/cultures/proc/verify_culture(list/params, mob/user)
 	var/datum/cultural_info/culture = text2path(params["culture"])
+	world.log << "[culture]"
 
 	// If a preresiquite isn't selected, yeet everything that shouldn't be selected.
 	if(preferences.culture_faction && !culture)
@@ -117,6 +156,7 @@
 
 /datum/preference_middleware/cultures/proc/verify_location(list/params, mob/user)
 	var/datum/cultural_info/location = text2path(params["culture"])
+	world.log << "[location]"
 
 	// If a preresiquite isn't selected, yeet everything that shouldn't be selected.
 	if(!preferences.culture_culture)
@@ -136,6 +176,7 @@
 
 /datum/preference_middleware/cultures/proc/verify_faction(list/params, mob/user)
 	var/datum/cultural_info/faction = text2path(params["culture"])
+	world.log << "[faction]"
 
 	// If a preresiquite isn't selected, yeet everything that shouldn't be selected.
 	if(!preferences.culture_culture)

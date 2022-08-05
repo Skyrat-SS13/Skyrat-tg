@@ -96,27 +96,31 @@ export const tryAct = (type, valid, data, context) => {
 };
 
 export const CategoryEntry = (props, context) => {
-  const { val, type } = props;
+  const { val, type, parentSelected } = props;
   const { data } = useBackend<PreferencesMenuData>(context);
   return (
     <Stack.Item
       minWidth="33%"
-      key={val.name}
-      class={
-        val.selected
-          ? 'PreferencesMenu__Cultures__selected'
-          : val.valid
-            ? 'PreferencesMenu__Cultures__pointer'
-            : ''
-      }>
+      class={val.selected ? 'PreferencesMenu__Cultures__selected' : ''}>
       <div
         class={
           'Section ' + val.valid ? '' : 'PreferencesMenu__Cultures__invalid'
-        }
-        onClick={() =>
-          tryAct(type, val.valid, { 'culture': val.path }, context)
         }>
-        <div class="Section__title">
+        <div
+          class="Section__title"
+          className={
+            val.valid && !val.selected
+              ? 'PreferencesMenu__Cultures__pointer'
+              : ''
+          }
+          onClick={() =>
+            tryAct(
+              type,
+              val.valid && !val.selected,
+              { 'culture': val.path },
+              context
+            )
+          }>
           <span
             class="Section__titleText"
             style={val.valid ? '' : 'color: grey'}>
@@ -129,10 +133,19 @@ export const CategoryEntry = (props, context) => {
             <Stack fill>
               {val.features.map((val2) => (
                 <Stack.Item key={val2}>
-                  <FeatureEntry key={val2} feature={data.features[val2]} />
+                  <FeatureEntry key={val2.name} feature={data.features[val2]} />
                 </Stack.Item>
               ))}
             </Stack>
+            {parentSelected ? (
+              <Stack vertical>
+                {val.sub_cultures.map((val2) => (
+                  <CategoryEntry key={val2.name} val={val2} type={type} />
+                ))}
+              </Stack>
+            ) : (
+              ''
+            )}
           </div>
         </div>
       </div>
@@ -147,27 +160,58 @@ export const CulturesPage = (props, context) => {
       <Stack.Item minWidth="33%">
         <Section title="Cultures">
           <Stack vertical>
-            {data.cultures.map((val) => (
-              <CategoryEntry key={val.name} val={val} type="select_culture" />
-            ))}
+            {data.cultures.map((val) =>
+              val.selected ? (
+                <CategoryEntry
+                  key={val.name}
+                  val={val}
+                  type="select_culture"
+                  parentSelected
+                />
+              ) : (
+                <CategoryEntry key={val.name} val={val} type="select_culture" />
+              )
+            )}
           </Stack>
         </Section>
       </Stack.Item>
       <Stack.Item minWidth="33%">
         <Section title="Locations">
           <Stack vertical>
-            {data.locations.map((val) => (
-              <CategoryEntry key={val.name} val={val} type="select_location" />
-            ))}
+            {data.locations.map((val) =>
+              val.selected ? (
+                <CategoryEntry
+                  key={val.name}
+                  val={val}
+                  type="select_location"
+                  parentSelected
+                />
+              ) : (
+                <CategoryEntry
+                  key={val.name}
+                  val={val}
+                  type="select_location"
+                />
+              )
+            )}
           </Stack>
         </Section>
       </Stack.Item>
       <Stack.Item minWidth="33%">
         <Section title="Factions">
           <Stack vertical>
-            {data.factions.map((val) => (
-              <CategoryEntry key={val.name} val={val} type="select_faction" />
-            ))}
+            {data.factions.map((val) =>
+              val.selected ? (
+                <CategoryEntry
+                  key={val.name}
+                  val={val}
+                  type="select_faction"
+                  parentSelected
+                />
+              ) : (
+                <CategoryEntry key={val.name} val={val} type="select_faction" />
+              )
+            )}
           </Stack>
         </Section>
       </Stack.Item>

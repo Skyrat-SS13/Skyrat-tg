@@ -29,7 +29,6 @@
 		if(!initial(culture.name))
 			continue
 		culture = new path()
-		world.log << "[path]"
 		GLOB.culture_factions[path] = culture
 
 /proc/make_sprite_accessory_references()
