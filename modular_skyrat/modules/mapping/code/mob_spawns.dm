@@ -35,6 +35,7 @@
 	flavour_text = "Unfortunately, your hated enemy, Nanotrasen, has begun mining in this sector. Continue operating as best you can, and try to keep a low profile."
 	quirks_enabled = TRUE
 	random_appearance = FALSE
+	computer_area = /area/ruin/space/has_grav/skyrat/interdynefob/service/dorms
 
 /obj/effect/mob_spawn/ghost_role/human/ds2/prisoner
 	name = "Syndicate Prisoner"
@@ -82,6 +83,16 @@
 /obj/effect/mob_spawn/ghost_role/human/ds2/syndicate/admiral
 	outfit = /datum/outfit/ds2/syndicate/admiral
 
+/obj/effect/mob_spawn/ghost_role/human/hotel_staff
+	random_appearance = FALSE
+
+/obj/effect/mob_spawn/ghost_role/human/hotel_staff/manager
+	name = "staff manager sleeper"
+	mob_name = "hotel staff manager"
+	outfit = /datum/outfit/hotelstaff/manager
+	you_are_text = "You are the manager of a top-of-the-line space hotel!"
+	flavour_text = "You are the manager of a top-of-the-line space hotel! Make sure the guests are looked after, the hotel is advertised, and your employees aren't slacking off!"
+
 //OUTFITS//
 /datum/outfit/syndicatespace/syndicrew
 	ears = /obj/item/radio/headset/cybersun
@@ -111,7 +122,7 @@
 
 /datum/outfit/ds2/syndicate
 	name = "DS-2 Operative"
-	uniform = /obj/item/clothing/under/syndicate
+	uniform = /obj/item/clothing/under/syndicate/skyrat/tactical
 	shoes = /obj/item/clothing/shoes/combat
 	ears = /obj/item/radio/headset/interdyne
 	back = /obj/item/storage/backpack
@@ -121,12 +132,12 @@
 
 /datum/outfit/ds2/syndicate/service
 	name = "DS-2 Staff"
-	uniform = /obj/item/clothing/under/syndicate/overalls
+	uniform = /obj/item/clothing/under/syndicate/skyrat/overalls
 	id_trim = /datum/id_trim/syndicom/skyrat/assault/syndicatestaff
 
 /datum/outfit/ds2/syndicate/enginetech
 	name = "DS-2 Engine Technician"
-	uniform = /obj/item/clothing/under/syndicate/overalls
+	uniform = /obj/item/clothing/under/syndicate/skyrat/overalls
 	head = /obj/item/clothing/head/soft/sec/syndicate
 	id_trim = /datum/id_trim/syndicom/skyratnoicon/enginetechnician
 	gloves = /obj/item/clothing/gloves/combat
@@ -188,6 +199,31 @@
 /datum/outfit/ds2/syndicate/post_equip(mob/living/carbon/human/syndicate)
 	syndicate.faction |= ROLE_SYNDICATE
 	return ..()
+
+/datum/outfit/hotelstaff
+	id = /obj/item/card/id/away/hotel
+
+/datum/outfit/hotelstaff/post_equip(mob/living/carbon/human/staff, visualsOnly = FALSE)
+	var/obj/item/card/id/id_card = staff.wear_id
+	if(istype(id_card))
+		id_card.registered_name = staff.real_name
+		id_card.update_label()
+		id_card.update_icon()
+
+	return ..()
+
+/datum/outfit/hotelstaff/manager
+	name = "Hotel Staff Manager"
+	uniform = /obj/item/clothing/under/suit/red
+	shoes = /obj/item/clothing/shoes/laceup
+	r_pocket = /obj/item/radio/off
+	back = /obj/item/storage/backpack
+	implants = list(/obj/item/implant/mindshield, /obj/item/implant/exile/noteleport)
+	id = /obj/item/card/id/away/hotel/manager
+
+/datum/outfit/hotelstaff/security
+	r_hand = /obj/item/gun/energy/laser/scatter/shotty // SKYRAT EDIT ADD - SPAWNS IN HAND INSTEAD OF ON MAP
+	id = /obj/item/card/id/away/hotel/security
 
 //Lost Space Truckers: Six people stranded in deep space aboard a cargo freighter. They must survive their marooning and cooperate.
 
@@ -282,10 +318,12 @@
 	loadout_enabled = TRUE
 	quirks_enabled = TRUE
 	random_appearance = FALSE
+	computer_area = /area/ruin/space/has_grav/port_tarkon/centerhall
 
 /datum/outfit/tarkon
 	name = "default port tarkon outfit"
 	uniform = /obj/item/clothing/under/rank/cargo/tech/skyrat/utility
+	back = /obj/item/storage/backpack
 	shoes = /obj/item/clothing/shoes/winterboots
 	gloves = /obj/item/clothing/gloves/fingerless
 	glasses = /obj/item/clothing/glasses/sunglasses
@@ -436,6 +474,18 @@
 	desc = "An ID card marked with the rank of Freight Deck Chief."
 	trim = /datum/id_trim/job/quartermaster
 
+/obj/item/card/id/away/hotel/manager
+	name = "Manager ID"
+	trim = /datum/id_trim/away/hotel/manager
+
+/datum/id_trim/away/hotel
+	assignment = "Hotel Staff"
+
+/datum/id_trim/away/hotel/manager
+	assignment = "Hotel Manager"
+
+/datum/id_trim/away/hotel/security
+	assignment = "Hotel Security"
 
 /datum/id_trim/away/tarkon
 	assignment = "P-T Cargo Personell"
@@ -496,3 +546,13 @@
 	name = "Freighter Ship"
 	icon_state = "yellow"
 
+//CRYO CONSOLES
+/obj/machinery/computer/cryopod/interdyne
+	radio = /obj/item/radio/headset/interdyne
+	announcement_channel = RADIO_CHANNEL_INTERDYNE
+	req_one_access = list("syndicate_leader")
+
+/obj/machinery/computer/cryopod/tarkon
+	radio = /obj/item/radio/headset/tarkon
+	announcement_channel = RADIO_CHANNEL_TARKON
+	req_one_access = list("tarkon")

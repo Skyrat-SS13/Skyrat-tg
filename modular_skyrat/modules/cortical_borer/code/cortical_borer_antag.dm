@@ -147,7 +147,7 @@
 	required_candidates = 1
 	weight = 3
 	cost = 15
-	requirements = list(101,101,101,70,50,40,20,15,10,10)
+	minimum_players = 20
 	repeatable = TRUE
 	var/list/vents = list()
 

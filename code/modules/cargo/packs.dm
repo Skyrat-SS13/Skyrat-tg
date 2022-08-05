@@ -48,6 +48,8 @@
 	if(paying_account)
 		C = new /obj/structure/closet/crate/secure/owned(A, paying_account)
 		C.name = "[crate_name] - Purchased by [paying_account.account_holder]"
+	else if(!crate_type)
+		CRASH("tried to generate a supply pack without a valid crate type")
 	else
 		C = new crate_type(A)
 		C.name = crate_name
@@ -2221,6 +2223,13 @@
 	contains = list(/mob/living/simple_animal/hostile/retaliate/goat)
 	crate_name = "goat crate"
 
+/datum/supply_pack/critter/mothroach
+	name = "Mothroach Crate"
+	desc = "Put the mothroach on your head and find out what true cuteness looks like."
+	cost = CARGO_CRATE_VALUE * 4
+	contains = list(/mob/living/basic/mothroach)
+	crate_name = "mothroach crate"
+
 /datum/supply_pack/critter/monkey
 	name = "Monkey Cube Crate"
 	desc = "Stop monkeying around! Contains seven monkey cubes. Just add water!"
@@ -2254,6 +2263,14 @@
 					/mob/living/simple_animal/hostile/retaliate/snake,
 					/mob/living/simple_animal/hostile/retaliate/snake)
 	crate_name = "snake crate"
+
+/datum/supply_pack/critter/lizard
+	name = "Lizard Crate"
+	desc = "Hisss! Containssss a friendly lizard. Not to be confusssed with a lizardperssson."
+	cost = CARGO_CRATE_VALUE * 4
+	access_view = ACCESS_JANITOR
+	contains = list(/mob/living/simple_animal/hostile/lizard)
+	crate_name = "lizard crate"
 
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////// Costumes & Toys /////////////////////////////////
@@ -2347,7 +2364,7 @@
 	name = "Formalwear Crate"
 	desc = "You're gonna like the way you look, I guaranteed it. Contains an asston of fancy clothing."
 	cost = CARGO_CRATE_VALUE * 4 //Lots of very expensive items. You gotta pay up to look good!
-	contains = list(/obj/item/clothing/under/dress/blacktango,
+	contains = list(/obj/item/clothing/under/dress/tango,
 					/obj/item/clothing/under/misc/assistantformal,
 					/obj/item/clothing/under/misc/assistantformal,
 					/obj/item/clothing/under/rank/civilian/lawyer/bluesuit,
@@ -2744,6 +2761,9 @@
 	drop_pod_only = TRUE
 	crate_type = null
 	special_pod = /obj/structure/closet/supplypod/bluespacepod
+
+/datum/supply_pack/misc/empty/generate(atom/A, datum/bank_account/paying_account)
+	return
 
 /datum/supply_pack/misc/religious_supplies
 	name = "Religious Supplies Crate"

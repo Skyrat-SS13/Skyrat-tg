@@ -80,16 +80,8 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 *	SUSPENDERS
 */
 
-/datum/loadout_item/suit/suspenders_blue
-	name = "Blue Suspenders"
-	item_path = /obj/item/clothing/suit/toggle/suspenders/blue
-
-/datum/loadout_item/suit/suspenders_grey
-	name = "Grey Suspenders"
-	item_path = /obj/item/clothing/suit/toggle/suspenders/gray
-
-/datum/loadout_item/suit/suspenders_red
-	name = "Red Suspenders"
+/datum/loadout_item/suit/suspenders
+	name = "Recolorable Suspenders"
 	item_path = /obj/item/clothing/suit/toggle/suspenders
 
 /*
@@ -361,7 +353,7 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 
 /datum/loadout_item/suit/poly
 	name = "Polychromic Wintercoat"
-	item_path = /obj/item/clothing/suit/hooded/wintercoat/polychromic
+	item_path = /obj/item/clothing/suit/hooded/wintercoat/colourable
 
 /datum/loadout_item/suit/urban
 	name = "Urban Coat"
@@ -377,7 +369,7 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 
 /datum/loadout_item/suit/dutchjacket
 	name = "Dutch Jacket"
-	item_path = /obj/item/clothing/suit/dutch
+	item_path = /obj/item/clothing/suit/costume/dutch
 
 /datum/loadout_item/suit/caretaker
 	name = "Caretaker Jacket"
@@ -385,7 +377,7 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 
 /datum/loadout_item/suit/yakuzajacket
 	name = "Asian Jacket"
-	item_path = /obj/item/clothing/suit/yakuza
+	item_path = /obj/item/clothing/suit/costume/yakuza
 
 /datum/loadout_item/suit/jacketbomber_alt
 	name = "Bomber Jacket w/ Zipper"
@@ -621,35 +613,35 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 
 /datum/loadout_item/suit/osi
 	name = "OSI Coat"
-	item_path = /obj/item/clothing/suit/osi
+	item_path = /obj/item/clothing/suit/costume/osi
 
 /datum/loadout_item/suit/tmc
 	name = "TMC Coat"
-	item_path = /obj/item/clothing/suit/tmc
+	item_path = /obj/item/clothing/suit/costume/tmc
 
 /datum/loadout_item/suit/pg
 	name = "PG Coat"
-	item_path = /obj/item/clothing/suit/pg
+	item_path = /obj/item/clothing/suit/costume/pg
 
 /datum/loadout_item/suit/driscoll
 	name = "Driscoll Coat"
-	item_path = /obj/item/clothing/suit/driscoll
+	item_path = /obj/item/clothing/suit/costume/driscoll
 
 /datum/loadout_item/suit/deckers
 	name = "Deckers Coat"
-	item_path = /obj/item/clothing/suit/deckers
+	item_path = /obj/item/clothing/suit/costume/deckers
 
 /datum/loadout_item/suit/morningstar
 	name = "Morningstar Coat"
-	item_path = /obj/item/clothing/suit/morningstar
+	item_path = /obj/item/clothing/suit/costume/morningstar
 
 /datum/loadout_item/suit/saints
 	name = "Saints Coat"
-	item_path = /obj/item/clothing/suit/saints
+	item_path = /obj/item/clothing/suit/costume/saints
 
 /datum/loadout_item/suit/phantom
 	name = "Phantom Coat"
-	item_path = /obj/item/clothing/suit/phantom
+	item_path = /obj/item/clothing/suit/costume/phantom
 
 /datum/loadout_item/suit/sybil
 	name = "Sybil Coat"
@@ -661,15 +653,15 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 
 /datum/loadout_item/suit/soviet
 	name = "Soviet Coat"
-	item_path = /obj/item/clothing/suit/soviet
+	item_path = /obj/item/clothing/suit/costume/soviet
 
 /datum/loadout_item/suit/allies
 	name = "Allies Coat"
-	item_path = /obj/item/clothing/suit/allies
+	item_path = /obj/item/clothing/suit/costume/allies
 
 /datum/loadout_item/suit/yuri
 	name = "Yuri Coat"
-	item_path = /obj/item/clothing/suit/yuri
+	item_path = /obj/item/clothing/suit/costume/yuri
 
 /*
 *	DONATOR

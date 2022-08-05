@@ -562,3 +562,10 @@
 	name = "dark and brooding lizard plush"
 	desc = "An almost intimidating black lizard plush, this one's got a little beret to come with it! Best not to separate the two. Its eyes shine with suggestion, no maidens?"
 	icon_state = "plushie_shyshadow"
+
+// Donation reward for Dudewithatude
+/obj/item/toy/plush/skyrat/plushie_star
+	name = "star angel plush"
+	desc = "The plushie of a celestial in the known universe."
+	icon_state = "plushie_star"
+	gender = FEMALE

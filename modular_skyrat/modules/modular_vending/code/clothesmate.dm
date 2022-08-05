@@ -7,7 +7,6 @@
 		/obj/item/clothing/suit/toggle/jacket/flannel/red = 5,
 		/obj/item/clothing/suit/toggle/jacket/flannel/aqua = 5,
 		/obj/item/clothing/suit/toggle/jacket/flannel/brown = 5,
-		/obj/item/clothing/suit/hooded/wintercoat/custom = 5,
 		/obj/item/clothing/suit/toggle/jacket/hoodie = 5,
 		/obj/item/clothing/suit/toggle/jacket/hoodie/trim = 5,
 		/obj/item/clothing/suit/toggle/jacket/hoodie/trim/alt = 5,
@@ -33,7 +32,7 @@
 		/obj/item/clothing/under/misc/polyjumpsuit = 5,
 		/obj/item/clothing/under/dress/skirt/polychromic = 5,
 		/obj/item/clothing/under/dress/skirt/polychromic/pleated = 5,
-		/obj/item/clothing/suit/hooded/wintercoat/polychromic = 5,
+		/obj/item/clothing/suit/hooded/wintercoat/colourable = 5,
 		/obj/item/clothing/neck/cloak/colourable = 5,
 		/obj/item/clothing/neck/cloak/colourable/veil = 5,
 		/obj/item/clothing/neck/cloak/colourable/shroud = 5,
@@ -87,12 +86,8 @@
 		/obj/item/clothing/head/fedora/fedblack = 5,
 		/obj/item/clothing/head/fedora/fedbrown = 5,
 		/obj/item/clothing/suit/croptop = 5,
-		/obj/item/clothing/under/sweater/black = 5,
-		/obj/item/clothing/under/sweater/blue = 5,
-		/obj/item/clothing/under/sweater/green = 5,
-		/obj/item/clothing/under/sweater/purple = 5,
-		/obj/item/clothing/under/sweater/red = 5,
-		/obj/item/clothing/under/sweater/keyhole = 5,
+		/obj/item/clothing/under/sweater = 5,
+		/obj/item/clothing/under/keyhole_sweater = 5,
 	)
 
 	skyrat_premium = list( //being here means you're artificially rare, congratulations
