@@ -118,6 +118,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if(initial(lang_path.secret))
 					languages.Remove(lang_path)
 			// SKYRAT EDIT END
+			return // SKYRAT EDIT - Don't remove this. Just don't. Nothing is worth forced random characters.
 	//we couldn't load character data so just randomize the character appearance + name
 	randomise_appearance_prefs() //let's create a random character then - rather than a fat, bald and naked man.
 	if(C)
