@@ -455,9 +455,9 @@
 							span_userlove("You shoot string after string of hot cum, hitting the floor!"))
 					else
 						var/mob/living/carbon/human/target_human = interactable_inrange_humans[target_choice]
-						var/obj/item/organ/external/genital/vagina/target_vagina = getorganslot(ORGAN_SLOT_VAGINA)
-						var/obj/item/organ/external/genital/anus/target_anus = getorganslot(ORGAN_SLOT_ANUS)
-						var/obj/item/organ/external/genital/penis/target_penis = getorganslot(ORGAN_SLOT_PENIS)
+						var/obj/item/organ/external/genital/vagina/target_vagina = target_human.getorganslot(ORGAN_SLOT_VAGINA)
+						var/obj/item/organ/external/genital/anus/target_anus = target_human.getorganslot(ORGAN_SLOT_ANUS)
+						var/obj/item/organ/external/genital/penis/target_penis = target_human.getorganslot(ORGAN_SLOT_PENIS)
 
 						var/list/target_buttons = list()
 
@@ -470,7 +470,7 @@
 						if(target_anus && target_anus?.is_exposed())
 							target_buttons += "asshole"
 
-						if(target_penis && target_penis?.is_exposed() && target_penis.sheath)
+						if(target_penis && target_penis?.is_exposed() && target_penis.sheath != "None")
 							target_buttons += "sheath"
 
 						target_buttons += "On them"
