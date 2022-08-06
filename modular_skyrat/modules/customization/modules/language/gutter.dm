@@ -1,10 +1,11 @@
 /datum/language/gutter
 	name = "Gutter"
-	desc = "This crude pidgin tongue developed on Pluto during its busier days. It is common among the lower classes of Pluto. It is a common language among Plutonians. It is considered a crude language by many that are 'upper class'."
+	desc = "This crude pidgin tongue developed in the poorer regions of SolFed. It is common among the lower classes, and is considered a crude language by many that are 'upper class'."
 	key = "G"
 	flags = TONGUELESS_SPEECH
 	syllables = list (
-		"yayo", "aiya", "chiksa", "tikat", "bazar","oi", "yo", "meit", "grok", "ken", "berk", "cohon", "pendeo"
+		"yayo", "aiya", "chiksa", "tikat", "bazar", "oi", "yo", "meit", "grok", "ken", "berk", "cohon", "pendeo", "mark",
+		"ha", "take", "yaer", "cur", "yoro", "armn", "tirtu", "ren", "wap", "wop", "ran", "cra", "wih"
 	)
 	icon_state = "gutter"
 	icon = 'modular_skyrat/master_files/icons/misc/language.dmi'

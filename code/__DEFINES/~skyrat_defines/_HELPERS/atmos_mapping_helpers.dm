@@ -1,0 +1,7 @@
+//Port Tarkon Incinerator
+#define INCINERATOR_TARKON_IGNITER "tarkon_igniter"
+#define INCINERATOR_TARKON_DP_VENTPUMP "tarkon_airlock_pump"
+#define INCINERATOR_TARKON_AIRLOCK_SENSOR "tarkon_airlock_sensor"
+#define INCINERATOR_TARKON_AIRLOCK_CONTROLLER "tarkon_airlock_controller"
+#define INCINERATOR_TARKON_AIRLOCK_INTERIOR "tarkon_airlock_interior"
+#define INCINERATOR_TARKON_AIRLOCK_EXTERIOR "tarkon_airlock_exterior"

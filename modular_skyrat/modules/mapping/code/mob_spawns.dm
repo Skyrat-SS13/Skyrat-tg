@@ -83,6 +83,16 @@
 /obj/effect/mob_spawn/ghost_role/human/ds2/syndicate/admiral
 	outfit = /datum/outfit/ds2/syndicate/admiral
 
+/obj/effect/mob_spawn/ghost_role/human/hotel_staff
+	random_appearance = FALSE
+
+/obj/effect/mob_spawn/ghost_role/human/hotel_staff/manager
+	name = "staff manager sleeper"
+	mob_name = "hotel staff manager"
+	outfit = /datum/outfit/hotelstaff/manager
+	you_are_text = "You are the manager of a top-of-the-line space hotel!"
+	flavour_text = "You are the manager of a top-of-the-line space hotel! Make sure the guests are looked after, the hotel is advertised, and your employees aren't slacking off!"
+
 //OUTFITS//
 /datum/outfit/syndicatespace/syndicrew
 	ears = /obj/item/radio/headset/cybersun
@@ -190,6 +200,31 @@
 	syndicate.faction |= ROLE_SYNDICATE
 	return ..()
 
+/datum/outfit/hotelstaff
+	id = /obj/item/card/id/away/hotel
+
+/datum/outfit/hotelstaff/post_equip(mob/living/carbon/human/staff, visualsOnly = FALSE)
+	var/obj/item/card/id/id_card = staff.wear_id
+	if(istype(id_card))
+		id_card.registered_name = staff.real_name
+		id_card.update_label()
+		id_card.update_icon()
+
+	return ..()
+
+/datum/outfit/hotelstaff/manager
+	name = "Hotel Staff Manager"
+	uniform = /obj/item/clothing/under/suit/red
+	shoes = /obj/item/clothing/shoes/laceup
+	r_pocket = /obj/item/radio/off
+	back = /obj/item/storage/backpack
+	implants = list(/obj/item/implant/mindshield, /obj/item/implant/exile/noteleport)
+	id = /obj/item/card/id/away/hotel/manager
+
+/datum/outfit/hotelstaff/security
+	r_hand = /obj/item/gun/energy/laser/scatter/shotty // SKYRAT EDIT ADD - SPAWNS IN HAND INSTEAD OF ON MAP
+	id = /obj/item/card/id/away/hotel/security
+
 //Lost Space Truckers: Six people stranded in deep space aboard a cargo freighter. They must survive their marooning and cooperate.
 
 /obj/effect/mob_spawn/ghost_role/human/lostcargo
@@ -288,6 +323,7 @@
 /datum/outfit/tarkon
 	name = "default port tarkon outfit"
 	uniform = /obj/item/clothing/under/rank/cargo/tech/skyrat/utility
+	back = /obj/item/storage/backpack
 	shoes = /obj/item/clothing/shoes/winterboots
 	gloves = /obj/item/clothing/gloves/fingerless
 	glasses = /obj/item/clothing/glasses/sunglasses
@@ -438,6 +474,18 @@
 	desc = "An ID card marked with the rank of Freight Deck Chief."
 	trim = /datum/id_trim/job/quartermaster
 
+/obj/item/card/id/away/hotel/manager
+	name = "Manager ID"
+	trim = /datum/id_trim/away/hotel/manager
+
+/datum/id_trim/away/hotel
+	assignment = "Hotel Staff"
+
+/datum/id_trim/away/hotel/manager
+	assignment = "Hotel Manager"
+
+/datum/id_trim/away/hotel/security
+	assignment = "Hotel Security"
 
 /datum/id_trim/away/tarkon
 	assignment = "P-T Cargo Personell"
