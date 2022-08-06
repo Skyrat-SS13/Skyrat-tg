@@ -27,14 +27,17 @@
 	body_parts_covered = HEAD
 	flags_inv = HIDEHAIR|HIDEFACE|HIDEEARS
 	cold_protection = HEAD
+	heat_protection = HEAD
 	max_heat_protection_temperature = FIRE_IMMUNITY_MAX_TEMP_PROTECT
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 10, BIO = 50, FIRE= 100, ACID = 25, WOUND = 1)
 	resistance_flags = FIRE_PROOF
+	supports_variations_flags = CLOTHING_SNOUTED_VARIATION //I can't find the snout sprite so I'm just gonna force it to do this
 
 /obj/item/clothing/mask/gas/seva
 	name = "SEVA mask"
-	desc = "A face-covering plate that can be connected to an air supply. Intended for use with the SEVA Suit."
+	desc = "A head-covering mask that can be connected to an external air supply. Intended for use with the SEVA Suit."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/masks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/mask.dmi'
 	icon_state = "seva"
 	resistance_flags = FIRE_PROOF
+	flags_inv = HIDEFACIALHAIR|HIDEFACE|HIDEEYES|HIDEEARS|HIDEHAIR
