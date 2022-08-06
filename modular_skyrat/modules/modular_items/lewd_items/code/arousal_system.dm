@@ -490,9 +490,10 @@
 						else if(climax_into_choice == "face")
 							visible_message(span_userlove("[src] shoots their sticky load onto [target_human]'s face!"), \
 								span_userlove("You shoot string after string of hot cum onto [target_human]'s face!"))
-							if(target_human.GetComponent(/datum/component/cumfaced))
-								if(!target_human.GetComponent(/datum/component/cumfaced/big))
-									target_human.TakeComponent(/datum/component/cumfaced)
+							var/datum/component/cumfaced/has_load = target_human.GetComponent(/datum/component/cumfaced)
+							if(has_load)
+								if(!has_load.big_load)
+									qdel(has_load)
 									target_human.AddComponent(/datum/component/cumfaced/big)
 								else
 									create_cum_decal = TRUE // cum dripping on the floor from the face
@@ -764,7 +765,7 @@
 //you got cum on your face bro *licks it off*
 /datum/component/cumfaced
 	dupe_mode = COMPONENT_DUPE_UNIQUE_PASSARGS
-
+	var/big_load = 0 
 	var/mutable_appearance/cumface
 
 /datum/component/cumfaced/Initialize()
@@ -822,7 +823,7 @@
 
 /datum/component/cumfaced/big
 	dupe_mode = COMPONENT_DUPE_UNIQUE_PASSARGS
-
+	big_load = 1
 	var/mutable_appearance/bigcumface
 
 /datum/component/cumfaced/big/Initialize()
