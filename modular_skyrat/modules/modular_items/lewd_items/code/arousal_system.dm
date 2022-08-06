@@ -472,7 +472,7 @@
 						if(target_anus && target_anus?.is_exposed())
 							target_buttons += "asshole"
 
-						if(target_penis && target_penis?.is_exposed() && target_penis.sheath != "None")
+						if(target_penis && target_penis.is_exposed() && target_penis.sheath != "None")
 							target_buttons += "sheath"
 
 						target_buttons += "On them"
