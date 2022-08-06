@@ -108,7 +108,7 @@
 	new /obj/item/clothing/under/rank/security/peacekeeper/tactical(src)
 	new /obj/item/radio/headset/headset_medsec(src)
 	new /obj/item/storage/medkit/emergency(src)
-	new /obj/item/clothing/suit/straight_jacket(src)
+	new /obj/item/clothing/suit/jacket/straight_jacket(src)
 	new /obj/item/storage/belt/medical(src)
 	new /obj/item/storage/belt/security/medic/full(src)
 	new /obj/item/clothing/under/rank/medical/scrubs/skyrat/red/sec(src)
