@@ -653,7 +653,7 @@ Basically, we fill the time between now and 2s from now with hands based off the
 		/datum/brain_trauma/hypnosis // Hypnosis, same reason as obsessed, plus a bug makes it remain even after the neurowhine purges and then turn into "nothing" on the med reading upon a second application
 		)
 	// SKYRAT EDIT ADDITION START - No very special quirks gained by inverse neurine
-	forbiddentraumas += typesof(/datum/brain_trauma/very_special)
+	//forbiddentraumas += typesof(/datum/brain_trauma/very_special)
 	// SKYRAT EDIT END
 	traumalist -= forbiddentraumas
 	var/obj/item/organ/internal/brain/brain = owner.getorganslot(ORGAN_SLOT_BRAIN)
