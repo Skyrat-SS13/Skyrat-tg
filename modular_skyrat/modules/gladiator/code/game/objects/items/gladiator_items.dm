@@ -41,6 +41,10 @@
 	// aughhghghgh this really should be elementized but this works for now
 	var/faction_bonus_force = 100
 	var/static/list/nemesis_factions = list("mining", "boss")
+	/// how much stamina does it cost to roll
+	var/roll_stamcost = 15
+	/// how far do we roll?
+	var/roll_range = 3
 
 /obj/item/claymore/agateram/attack(mob/living/target, mob/living/carbon/human/user)
 	var/is_nemesis_faction = FALSE
@@ -52,6 +56,45 @@
 	. = ..()
 	if(is_nemesis_faction)
 		force -= faction_bonus_force
+
+/obj/item/claymore/agateram/afterattack_secondary(atom/target, mob/living/user, params) // dark souls
+	if(!user.IsImmobilized()) // no free dodgerolls
+		var/turf/where_to = get_turf(target)
+		user.apply_damage(damage = roll_stamcost, damagetype = STAMINA)
+		user.Immobilize(0.5 SECONDS) // you dont get to adjust your roll
+		user.throw_at(where_to, range = roll_range, speed = 1, force = MOVE_FORCE_NORMAL)
+		user.apply_status_effect(/datum/status_effect/dodgeroll_iframes)
+		playsound(user, 'modular_skyrat/master_files/sound/effects/body-armor-rolling.wav', 50, FALSE)
+	. = ..()
+
+/datum/status_effect/dodgeroll_iframes
+	id = "dodgeroll_dodging"
+	alert_type = null
+	status_type = STATUS_EFFECT_REFRESH
+	duration = 1.5 SECONDS // todo: figure out how long the dodgeroll lasts
+
+/datum/status_effect/dodgeroll_iframes/on_apply()
+	RegisterSignal(owner, COMSIG_HUMAN_CHECK_SHIELDS, .proc/whiff)
+	return TRUE
+
+/datum/status_effect/dodgeroll_iframes/on_remove()
+	UnregisterSignal(owner, list(
+		COMSIG_HUMAN_CHECK_SHIELDS
+		))
+	return ..()
+
+/datum/status_effect/dodgeroll_iframes/proc/whiff(
+	mob/living/carbon/human/source,
+	atom/movable/hitby,
+	damage = 0,
+	attack_text = "the attack",
+	attack_type = MELEE_ATTACK,
+	armour_penetration = 0,
+)
+	SIGNAL_HANDLER
+	owner.balloon_alert_to_viewers("MISS!")
+	playsound(src, 'sound/weapons/thudswoosh.ogg', 50, TRUE, -1)
+	return SHIELD_BLOCK
 
 /obj/structure/closet/crate/necropolis/gladiator
 	name = "gladiator chest"
