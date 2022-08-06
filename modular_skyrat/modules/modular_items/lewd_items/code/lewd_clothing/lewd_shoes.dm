@@ -17,7 +17,7 @@
 	. = ..()
 	AddComponent(/datum/component/squeak, list('modular_skyrat/modules/modular_items/lewd_items/sounds/highheel1.ogg' = 1, 'modular_skyrat/modules/modular_items/lewd_items/sounds/highheel2.ogg' = 1), 70)
 
-/obj/item/clothing/shoes/latex_heels/dominaheels
+/obj/item/clothing/shoes/latex_heels/domina_heels
 	name = "dominant heels"
 	desc = "A pair of aesthetically pleasing heels."
 	icon_state = "dominaheels"
