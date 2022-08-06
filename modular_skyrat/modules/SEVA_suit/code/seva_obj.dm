@@ -25,7 +25,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "seva"
 	body_parts_covered = HEAD
-	flags_inv = HIDEHAIR|HIDEFACE|HIDEEARS
+	flags_inv = HIDEHAIR | HIDEFACE | HIDEEARS
 	cold_protection = HEAD
 	heat_protection = HEAD
 	max_heat_protection_temperature = FIRE_IMMUNITY_MAX_TEMP_PROTECT
@@ -40,3 +40,4 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/mask.dmi'
 	icon_state = "seva"
 	resistance_flags = FIRE_PROOF
+	flags_inv = HIDEFACIALHAIR | HIDEFACE | HIDEEYES | HIDEEARS | HIDEHAIR
