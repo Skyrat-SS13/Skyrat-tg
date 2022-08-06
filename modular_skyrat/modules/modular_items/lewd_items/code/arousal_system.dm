@@ -463,7 +463,7 @@
 
 						if(!target_human.wear_mask)
 							target_buttons += "mouth"
-							if(target_human.client.prefs.read_preference(/datum/preference/toggle/erp/cum_face))
+							if(target_human.client?.prefs.read_preference(/datum/preference/toggle/erp/cum_face))
 								target_buttons += "face"
 
 						if(target_vagina && target_vagina?.is_exposed())
