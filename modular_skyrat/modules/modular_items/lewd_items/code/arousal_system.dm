@@ -463,6 +463,8 @@
 
 						if(!target_human.wear_mask)
 							target_buttons += "mouth"
+							if(target_human.client.prefs.read_preference(/datum/preference/toggle/erp/cum_face))
+								target_buttons += "face"
 
 						if(target_vagina && target_vagina?.is_exposed())
 							target_buttons += "vagina"
@@ -485,6 +487,17 @@
 							create_cum_decal = TRUE
 							visible_message(span_userlove("[src] shoots their sticky load onto the [target_human]!"), \
 								span_userlove("You shoot string after string of hot cum onto [target_human]!"))
+						else if(climax_into_choice == "face")
+							visible_message(span_userlove("[src] shoots their sticky load onto the [target_human] face!"), \
+								span_userlove("You shoot string after string of hot cum onto [target_human] face!"))
+							if(target_human.GetComponent(/datum/component/cumfaced))
+								if(!target_human.GetComponent(/datum/component/cumfaced/big))
+									target_human.TakeComponent(/datum/component/cumfaced)
+									target_human.AddComponent(/datum/component/cumfaced/big)
+								else
+									create_cum_decal = TRUE // cum dripping on the floor from the face
+							else
+								target_human.AddComponent(/datum/component/cumfaced)
 						else
 							visible_message(span_userlove("[src] hilts [p_their()] cock into [target_human]'s [climax_into_choice], shooting cum into it!"), \
 								span_userlove("You hilt your cock into [target_human]'s [climax_into_choice], shooting cum into it!"))
@@ -803,8 +816,9 @@
 
 	. = NONE
 	if(!(clean_types & CLEAN_TYPE_BLOOD))
-		qdel(src)
-		return COMPONENT_CLEANED
+		return
+	qdel(src)
+	return COMPONENT_CLEANED
 
 /datum/component/cumfaced/big
 	dupe_mode = COMPONENT_DUPE_UNIQUE_PASSARGS
