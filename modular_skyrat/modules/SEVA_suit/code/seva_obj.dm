@@ -35,7 +35,7 @@
 
 /obj/item/clothing/mask/gas/seva
 	name = "SEVA mask"
-	desc = "A head-covering mask that can be linked to an external air supply. Intended for use with the SEVA Suit."
+	desc = "A head-covering mask that can be connected to an external air supply. Intended for use with the SEVA Suit."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/masks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/mask.dmi'
 	icon_state = "seva"
