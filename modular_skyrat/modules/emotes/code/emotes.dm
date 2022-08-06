@@ -52,12 +52,6 @@
 		return 'modular_skyrat/modules/emotes/sound/emotes/female/female_sneeze.ogg'
 	return
 
-/datum/emote/flip/can_run_emote(mob/user, status_check, intentional)
-	if(!HAS_TRAIT(user, TRAIT_FREERUNNING))
-		user.balloon_alert(user, "not nimble enough!")
-		return FALSE
-	return ..()
-
 /datum/emote/living/peep
 	key = "peep"
 	key_third_person = "peeps"
