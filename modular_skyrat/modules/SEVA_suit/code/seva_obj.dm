@@ -30,6 +30,7 @@
 	max_heat_protection_temperature = FIRE_IMMUNITY_MAX_TEMP_PROTECT
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 10, BIO = 50, FIRE= 100, ACID = 25, WOUND = 1)
 	resistance_flags = FIRE_PROOF
+	supports_variations_flags = CLOTHING_SNOUTED_VARIATION //I can't find the snout sprite so I'm just gonna force it to do this
 
 /obj/item/clothing/mask/gas/seva
 	name = "SEVA mask"
