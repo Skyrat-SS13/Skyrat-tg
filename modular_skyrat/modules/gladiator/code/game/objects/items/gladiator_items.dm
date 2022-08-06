@@ -61,7 +61,7 @@
 	if(!user.IsImmobilized()) // no free dodgerolls
 		var/turf/where_to = get_turf(target)
 		user.apply_damage(damage = roll_stamcost, damagetype = STAMINA)
-		user.Immobilize(0.5 SECONDS) // you dont get to adjust your roll
+		user.Immobilize(0.3 SECONDS) // you dont get to adjust your roll
 		user.throw_at(where_to, range = roll_range, speed = 1, force = MOVE_FORCE_NORMAL)
 		user.apply_status_effect(/datum/status_effect/dodgeroll_iframes)
 		playsound(user, 'modular_skyrat/master_files/sound/effects/body-armor-rolling.wav', 50, FALSE)
@@ -71,7 +71,7 @@
 	id = "dodgeroll_dodging"
 	alert_type = null
 	status_type = STATUS_EFFECT_REFRESH
-	duration = 1.5 SECONDS // todo: figure out how long the dodgeroll lasts
+	duration = 0.8 SECONDS // worth tweaking?
 
 /datum/status_effect/dodgeroll_iframes/on_apply()
 	RegisterSignal(owner, COMSIG_HUMAN_CHECK_SHIELDS, .proc/whiff)
