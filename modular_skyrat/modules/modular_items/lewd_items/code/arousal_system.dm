@@ -488,7 +488,7 @@
 							visible_message(span_userlove("[src] shoots their sticky load onto the [target_human]!"), \
 								span_userlove("You shoot string after string of hot cum onto [target_human]!"))
 						else if(climax_into_choice == "face")
-							visible_message(span_userlove("[src] shoots their sticky load onto the [target_human] face!"), \
+							visible_message(span_userlove("[src] shoots their sticky load onto [target_human]'s face!"), \
 								span_userlove("You shoot string after string of hot cum onto [target_human] face!"))
 							if(target_human.GetComponent(/datum/component/cumfaced))
 								if(!target_human.GetComponent(/datum/component/cumfaced/big))
