@@ -765,7 +765,7 @@
 //you got cum on your face bro *licks it off*
 /datum/component/cumfaced
 	dupe_mode = COMPONENT_DUPE_UNIQUE_PASSARGS
-	var/big_load = false 
+	var/big_load = FALSE
 	var/mutable_appearance/cumface
 
 /datum/component/cumfaced/Initialize()
@@ -823,7 +823,7 @@
 
 /datum/component/cumfaced/big
 	dupe_mode = COMPONENT_DUPE_UNIQUE_PASSARGS
-	big_load = true
+	big_load = TRUE
 	var/mutable_appearance/bigcumface
 
 /datum/component/cumfaced/big/Initialize()
