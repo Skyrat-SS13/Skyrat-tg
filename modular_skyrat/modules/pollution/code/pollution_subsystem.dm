@@ -41,7 +41,7 @@ SUBSYSTEM_DEF(pollution)
 			var/datum/pollution/pollution = current_run_cache[current_run_cache.len]
 			current_run_cache.len--
 			processed_this_run[pollution] = TRUE
-			pollution.ProcessCell()
+			pollution.process_cell()
 			if(MC_TICK_CHECK)
 				return
 		dissapation_ticker++
@@ -53,7 +53,7 @@ SUBSYSTEM_DEF(pollution)
 		while(current_run_cache.len)
 			var/datum/pollution/pollution = current_run_cache[current_run_cache.len]
 			current_run_cache.len--
-			pollution.ScrubAmount(POLLUTION_HEIGHT_DIVISOR, FALSE, TRUE)
+			pollution.scrub_amount(POLLUTION_HEIGHT_DIVISOR, FALSE, TRUE)
 			if(MC_TICK_CHECK)
 				return
 		pollution_task = POLLUTION_TASK_PROCESS

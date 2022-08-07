@@ -20,11 +20,18 @@
 	desc = "A utility uniform worn by Engineering personnel."
 	icon_state = "util_eng"
 	can_adjust = FALSE
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 60, ACID = 20) // Same stats as default engineering jumpsuit
 
 /obj/item/clothing/under/rank/engineering/engineer/skyrat/utility/syndicate
 	armor = list(MELEE = 10, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 40) // Same stats as the tactical turtleneck.
 	has_sensor = NO_SENSORS
+
+/obj/item/clothing/under/rank/engineering/engineer/skyrat/trouser
+	name = "engineer's trousers"
+	desc = "An engineering-orange set of trousers. Their waistband proudly displays an 'anti-radiation' symbol, though the effectiveness of radiation-proof-pants-only is still up for debate."
+	icon_state = "workpants_orange"
+	body_parts_covered = GROIN
+	can_adjust = FALSE
+	female_sprite_flags = FEMALE_UNIFORM_NO_BREASTS
 
 /obj/item/clothing/under/rank/engineering/engineer/skyrat/hazard_chem
 	name = "chemical hazard jumpsuit"

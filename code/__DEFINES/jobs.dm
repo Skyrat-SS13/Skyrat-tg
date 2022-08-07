@@ -163,7 +163,7 @@
 #define JOB_DISPLAY_ORDER_SECURITY_OFFICER 35
 #define JOB_DISPLAY_ORDER_SECURITY_MEDIC 36 //SKYRAT EDIT ADDITON
 #define JOB_DISPLAY_ORDER_PRISONER 37
-#define JOB_DISPLAY_ORDER_BRIGOFF 38 //SKYRAT EDIT ADDITON
+#define JOB_DISPLAY_ORDER_CORRECTIONS_OFFICER 38 //SKYRAT EDIT ADDITON
 #define JOB_DISPLAY_ORDER_NANOTRASEN_CONSULTANT 39 //SKYRAT EDIT ADDITON
 #define JOB_DISPLAY_ORDER_BLUESHIELD 40 //SKYRAT EDIT ADDITON
 #define JOB_DISPLAY_ORDER_ORDERLY 41 //SKYRAT EDIT ADDITION
@@ -217,6 +217,14 @@
 /// Whether this job can be an intern.
 #define JOB_CAN_BE_INTERN (1<<8)
 
-
 #define FACTION_NONE "None"
 #define FACTION_STATION "Station"
+
+// Variable macros used to declare who is the supervisor for a given job, announced to the player when they join as any given job.
+#define SUPERVISOR_CAPTAIN "the Captain"
+#define SUPERVISOR_CE "the Chief Engineer"
+#define SUPERVISOR_CMO "the Chief Medical Officer"
+#define SUPERVISOR_HOP "the Head of Personnel"
+#define SUPERVISOR_HOS "the Head of Security"
+#define SUPERVISOR_QM "the Quartermaster"
+#define SUPERVISOR_RD "the Research Director"

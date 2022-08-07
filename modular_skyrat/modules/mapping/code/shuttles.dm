@@ -167,8 +167,8 @@
 
 /*----- Tarkon Shuttle Datum + related code -----*/
 /datum/map_template/shuttle/ruin/tarkon_driver
-	prefix = "_maps/skyrat/shuttles/"
-	suffix = "tarkon_driver"
+	prefix = "_maps/shuttles/skyrat/"
+	suffix = "tarkon_driverdc54"
 	name = "Tarkon Drill Driver"
 
 /obj/machinery/computer/shuttle/tarkon_driver
@@ -190,4 +190,10 @@
 /obj/item/circuitboard/computer/tarkon_driver
 	name = "Tarkon Driver Control Console (Computer Board)"
 	build_path = /obj/machinery/computer/shuttle/tarkon_driver
+
+/datum/map_template/shuttle/ruin/tarkon_driver/defcon3
+	suffix = "tarkon_driverdc3"
+
+/datum/map_template/shuttle/ruin/tarkon_driver/defcon2
+	suffix = "tarkon_driverdc2"
 /*----- End of Tarkon Shuttle Code -----*/
