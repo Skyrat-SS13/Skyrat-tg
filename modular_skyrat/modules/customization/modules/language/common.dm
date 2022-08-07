@@ -12,3 +12,5 @@
 		"amet", "que", "eius", "modi", "inci","ad", "vel", "eum", "iure", "hic", "pa", "mit", "dis", "du",
 		"di", "tol", "mi", "solari", "ite", "domum"
 	)
+	icon_state = "solcommon"
+	icon = 'modular_skyrat/master_files/icons/misc/language.dmi'
