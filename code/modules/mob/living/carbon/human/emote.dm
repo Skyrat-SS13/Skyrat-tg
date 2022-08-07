@@ -54,6 +54,7 @@
 	only_forced_audio = TRUE
 	vary = TRUE
 
+<<<<<<< HEAD
 /* - SKYRAT EDIT REMOVAL: EMOTES
 /datum/emote/living/carbon/human/scream/get_sound(mob/living/user)
 	if(!ishuman(user))
@@ -63,6 +64,13 @@
 		return
 	return human.dna.species.get_scream_sound(human)
 */
+=======
+/datum/emote/living/carbon/human/scream/get_sound(mob/living/carbon/human/user)
+	if(!istype(user))
+		return
+
+	return user.dna.species.get_scream_sound(user)
+>>>>>>> 3e47dac6b36 (Fix audible emotes playing sounds while mob is gagged, mute, tongueless, or under a vow of silence (#68954))
 
 /datum/emote/living/carbon/human/scream/screech //If a human tries to screech it'll just scream.
 	key = "screech"
