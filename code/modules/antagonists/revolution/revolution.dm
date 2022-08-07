@@ -459,18 +459,13 @@
 			<b>You have been chosen out of your fellow provocateurs to rename the station. Choose wisely.</b> Message ends.\""))
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_REVOLUTION_TAX_REMOVAL)
 
-<<<<<<< HEAD
-			if (!(player_mind.assigned_role.departments_bitflags & (DEPARTMENT_BITFLAG_SECURITY|DEPARTMENT_BITFLAG_COMMAND|DEPARTMENT_BITFLAG_CENTRAL_COMMAND)))//SKYRAT EDIT CHANGE
-				continue
-=======
 	for (var/mob/living/player as anything in GLOB.player_list)
 		var/datum/mind/player_mind = player.mind
->>>>>>> 0a29ded0f68 (Revolution victories now call the shuttle when enough of the station is revolutionaries (#68630))
 
 		if (isnull(player_mind))
 			continue
 
-		if (!(player_mind.assigned_role.departments_bitflags & (DEPARTMENT_BITFLAG_SECURITY|DEPARTMENT_BITFLAG_COMMAND)))
+		if (!(player_mind.assigned_role.departments_bitflags & (DEPARTMENT_BITFLAG_SECURITY|DEPARTMENT_BITFLAG_COMMAND|DEPARTMENT_BITFLAG_CENTRAL_COMMAND)))//SKYRAT EDIT CHANGE
 			continue
 
 		if (player_mind in ex_revs + ex_headrevs)
@@ -478,16 +473,8 @@
 
 		player_mind.add_antag_datum(/datum/antagonist/enemy_of_the_revolution)
 
-<<<<<<< HEAD
-		for(var/datum/job/job as anything in SSjob.joinable_occupations)
-			if(!(job.departments_bitflags & (DEPARTMENT_BITFLAG_SECURITY|DEPARTMENT_BITFLAG_COMMAND|DEPARTMENT_BITFLAG_CENTRAL_COMMAND)))//SKYRAT EDIT CHANGE
-				continue
-			job.allow_bureaucratic_error = FALSE
-			job.total_positions = 0
-=======
 		if (!istype(player))
 			continue
->>>>>>> 0a29ded0f68 (Revolution victories now call the shuttle when enough of the station is revolutionaries (#68630))
 
 		if(player_mind.assigned_role.departments_bitflags & DEPARTMENT_BITFLAG_COMMAND)
 			ADD_TRAIT(player, TRAIT_DEFIB_BLACKLISTED, REF(src))
