@@ -761,7 +761,6 @@
 		to_chat(usr, span_boldnotice("You must be dead to use this!"))
 		return
 
-<<<<<<< HEAD
 	//SKYRAT EDIT ADDITION
 	if(ckey)
 		if(is_banned_from(ckey, BAN_RESPAWN))
@@ -769,10 +768,7 @@
 			return
 	//SKYRAT EDIT END
 
-	log_game("[key_name(usr)] used the respawn button.")
-=======
 	usr.log_message("used the respawn button.", LOG_GAME)
->>>>>>> b09f3868f85 (individual LOG_GAME  (#68683))
 
 	to_chat(usr, span_boldnotice("Please roleplay correctly!"))
 
