@@ -1,7 +1,7 @@
 /datum/language/common
 	name = "Sol"
 	desc = "A mixture of Esperanto and Modern Latin established as \"The language of Humanity\" by the Sol Federation in its early days. "
-	flags = TONGUELESS_SPEECH
+	flags = TONGUELESS_SPEECH | LANGUAGE_HIDE_ICON_IF_UNDERSTOOD
 	space_chance = 60
 	syllables = list(
 		"al", "an", "ar", "as", "at", "ed", "er", "ha", "he", "hi", "is", "le", "me", "on", "se", "ti",
