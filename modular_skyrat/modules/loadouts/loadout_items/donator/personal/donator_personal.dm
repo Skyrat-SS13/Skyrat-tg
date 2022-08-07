@@ -98,7 +98,7 @@
 
 /datum/loadout_item/head/goldengoggles
 	name = "Steampunk Goggles"
-	item_path = /obj/item/clothing/glasses/welding/goldengoggles
+	item_path = /obj/item/clothing/glasses/welding/steampunk_goggles
 	ckeywhitelist = list("goldenalpharex")
 
 /datum/loadout_item/head/bio_jax
