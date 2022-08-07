@@ -6,13 +6,11 @@
 /datum/cultural_info/culture/generic/generic
 	name = "Other Culture"
 	description = "You are from one of the many small, relatively unknown cultures scattered across the galaxy."
-	additional_langs = list(/datum/language/spacer, /datum/language/yangyu)
 
 /datum/cultural_info/culture/generic/vatgrown
 	name = "Vat Grown"
 	description = "You were not born like most of the people, instead grown and raised in laboratory conditions, either as clone, gene-adapt or some experiment. \
 	Your outlook diverges from baseline humanity accordingly."
-	additional_langs = list(/datum/language/spacer)
 
 /datum/cultural_info/culture/generic/spacer_core
 	name = "Spacer, Core Systems"
@@ -23,7 +21,6 @@
 	places, meeting a myriad of people and experiencing many of the cultures in your empire. \
 	As such, Spacers of the core systems tend to be busy, sociable and mobile, rarely satisfied with settled life. \
 	They almost universally know how to live and work in the void and take to such jobs more readily than their planet-bound counterparts."
-	additional_langs = list(/datum/language/spacer, /datum/language/yangyu)
 
 /datum/cultural_info/culture/generic/spacer_frontier
 	name = "Spacer, Frontier"
@@ -34,4 +31,3 @@
 	and tend to be most familiar with older, reliable but outdated technology. \
 	An independent sort, people on the frontier are more likely to be isolationist and self-driven."
 	economic_power = 0.9
-	additional_langs = list(/datum/language/spacer)

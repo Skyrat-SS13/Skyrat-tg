@@ -1,3 +1,5 @@
+#define CHILD_CULTURE_SELECTED 2
+
 /datum/asset/spritesheet/cultures
 	name = "cultures"
 	early = TRUE
@@ -29,25 +31,26 @@
 			for(var/datum/cultural_info/culture as anything in subtypesof(cultural_info))
 				var/value = get_ui_data_entry(culture, culture == preferences.culture_culture, TRUE)
 				if(value["selected"])
-					selected = 2 // TODO: CHILD_SELECTED
+					selected = CHILD_CULTURE_SELECTED
 				sub_cultures += list(value)
 		if(ispath(cultural_info, /datum/cultural_info/location))
 			selected = ispath(cultural_info, preferences.culture_location)
 			for(var/datum/cultural_info/culture as anything in subtypesof(cultural_info))
 				var/value = get_ui_data_entry(culture, culture == preferences.culture_location, check_valid(culture, preferences.culture_culture))
 				if(value["selected"])
-					selected = 2 // TODO: CHILD_SELECTED
+					selected = CHILD_CULTURE_SELECTED
 				sub_cultures += list(value)
 		if(ispath(cultural_info, /datum/cultural_info/faction))
 			selected = ispath(cultural_info, preferences.culture_faction)
 			for(var/datum/cultural_info/culture as anything in subtypesof(cultural_info))
 				var/value = get_ui_data_entry(culture, culture == preferences.culture_faction, check_valid(culture, preferences.culture_culture) && check_valid(cultural_info, preferences.culture_location))
 				if(value["selected"])
-					selected = 2 // TODO: CHILD_SELECTED
+					selected = CHILD_CULTURE_SELECTED
 				sub_cultures += list(value)
 
 	var/list/data = get_ui_data_entry(cultural_info, selected, valid)
 	data["sub_cultures"] = sub_cultures
+	data["sub_culture_amount"] = sub_cultures.len
 	return data
 
 /datum/preference_middleware/cultures/proc/get_ui_data_entry(datum/cultural_info/cultural_info, selected, valid)
@@ -195,3 +198,5 @@
 	// It isn't valid, let's not let the game try to use whatever was sent.
 	preferences.culture_faction = null
 	return TRUE
+
+#undef CHILD_CULTURE_SELECTED

@@ -9,6 +9,6 @@
 	An outsider once described Xenohybrids as 'ancestor worshippers', though a more accurate word would be 'fetishizations'. \
 	Despite how loathed you are, there's one truth among your kind, you stick together."
 	economic_power = 0.7
-	required_lang = /datum/language/common
+	required_lang = /datum/language/moffic
 	features = list(/datum/cultural_feature/poor)
 	groups = CULTURE_GROUP_HUMAN

@@ -1,8 +1,8 @@
 /datum/cultural_info/location/generic
 	name = "Other Location"
-	description = "The last time someone tried to do a comprehensive encyclopaedia of the known galaxy, their \
-	positronic processor deleted itself rather than face up to the task. You are from nowhere in particular - a \
-	backwater world, or somewhere off the starmaps."
+	description = "The last time someone tried to do a comprehensive encyclopaedia of the known galaxy, \
+	their positronic processor deleted itself rather than face up to the task. \
+	You are from nowhere in particular - a backwater world, or somewhere off the starmaps."
 	economic_power = 0.8
 	features = list(/datum/cultural_feature/poor)
 

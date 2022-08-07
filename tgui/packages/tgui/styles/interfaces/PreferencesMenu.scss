@@ -271,12 +271,19 @@ $department_map: (
       border-style: solid;
       border-width: 6px 6px 0px 6px;
     }
+    &__selectedChild {
+      background-color: colors.$label;
+      border-color: colors.$label;
+    }
     &__pointer {
       cursor: pointer;
     }
-    &__nobad {
-      animation: shake 0.1s linear;
-      animation-iteration-count: 3;
+    &__entry {
+      margin-top: 5px;
+    }
+    &__subAmount {
+      color: rgba(170, 170, 170, 0.667);
+      float: right;
     }
   }
   // SKYRAT EDIT END

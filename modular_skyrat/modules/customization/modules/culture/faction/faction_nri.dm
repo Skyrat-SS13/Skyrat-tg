@@ -33,10 +33,8 @@
 	<br> \
 	In the end, It's unlikely that with all the knowledge acquired you'd been very willing to work here, as there're better enlistment and job opportunities around. \
 	Maybe it was one of the higher-up orders, a punishment, or some other reasoning, up to your own choice, but what matters now is that you are here. \
-	Still, a better alternative to dying to delinquents or the Solarians."
-
-	///Slightly higher decorative pay for all the collegium folks as they're likely receiving additional governmental paychecks.
-	economic_power = 0.95
+	Still, likely a better alternative to dying from either delinquents or the Solarians."
+	economic_power = 0.95 // Slightly higher pay for all the collegium folks as they're likely receiving additional governmental paychecks.
 
 /datum/cultural_info/faction/nri/healthcare_science
 	name = "Healthcare and Innovations Collegium"
@@ -80,6 +78,4 @@
 	scale conflict between the SolFed and NRI that sees a great deal of death and destruction. In Sol space they are heavily mistrusted \
 	and in some instances, met with downright hostility. Today the NRI continues to be an economic powerhouse following \
 	a period of steady economic recovery, with most of its exports being manufactured goods, primarily armaments."
-
-	///Bureaucrats embezzle funds.
-	economic_power = 1.1
+	economic_power = 1.1 // Bureaucrats embezzle funds.

@@ -268,12 +268,15 @@ export type Culture = {
   valid: number;
   selected: number;
   path: string;
+  sub_cultures: Culture[];
+  sub_culture_amount: number;
 };
 
 export type CultureLocation = Culture & {
   ruler: string;
   distance: string;
   capital: string;
+  sub_cultures: CultureLocation[];
 };
 
 export type CultureFeature = {

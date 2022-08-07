@@ -3,7 +3,7 @@ import { useBackend } from '../../backend';
 import { CultureFeature, PreferencesMenuData } from './data';
 
 export const BackgroundEntry = (props) => {
-  const { background, distance, ruler, capital } = props;
+  const { background } = props;
   let lang_string: string = '';
   let not_first_iteration: boolean = false;
   for (let language_string in background.additional_langs) {
@@ -22,30 +22,54 @@ export const BackgroundEntry = (props) => {
         background.selected ? '' : 'PreferencesMenu__Cultures__contents'
       }>
       <Stack.Item>{background.description}</Stack.Item>
-      <Stack.Item>{'Economic Power: ' + background.economic_power}</Stack.Item>
+      <Stack.Item>
+        <b>Economic Power:</b> {' : ' + background.economic_power}
+      </Stack.Item>
       {ifExists(
-        'Language: ' + background.required_lang,
+        <Stack.Item>
+          <b>Primary Language:</b> {' : ' + background.required_lang}
+        </Stack.Item>,
         background.required_lang,
         (val: string) => {
           return val;
         }
       )}
       {ifExists(
-        'Optional Languages: ' + lang_string,
+        <Stack.Item>
+          <b>Suggested Languages:</b> {' : ' + lang_string}
+        </Stack.Item>,
         lang_string,
         (val: string) => {
           return val.length > 0;
         }
       )}
-      {ifExists('Distance: ' + distance, distance, (val: string) => {
-        return val;
-      })}
-      {ifExists('Ruler: ' + ruler, ruler, (val: string) => {
-        return val;
-      })}
-      {ifExists('Capital: ' + capital, capital, (val: string) => {
-        return val;
-      })}
+      {ifExists(
+        <Stack.Item>
+          <b>Distance:</b> {' : ' + background.distance}
+        </Stack.Item>,
+        background.distance,
+        (val: string) => {
+          return val;
+        }
+      )}
+      {ifExists(
+        <Stack.Item>
+          <b>Ruler:</b> {' : ' + background.ruler}
+        </Stack.Item>,
+        background.ruler,
+        (val: string) => {
+          return val;
+        }
+      )}
+      {ifExists(
+        <Stack.Item>
+          <b>Capital:</b> {' : ' + background.capital}
+        </Stack.Item>,
+        background.capital,
+        (val: string) => {
+          return val;
+        }
+      )}
     </Stack>
   );
 };
@@ -56,18 +80,6 @@ export const ifExists = (valueToReturn, val, functionToCheckWith) => {
   } else {
     return '';
   }
-};
-
-export const LocationEntry = (props) => {
-  const { location } = props;
-  return (
-    <BackgroundEntry
-      background={location}
-      distance={location.distance}
-      ruler={location.ruler}
-      capital={location.capital}
-    />
-  );
 };
 
 export const FeatureEntry = (props: { feature: CultureFeature }) => {
@@ -101,7 +113,13 @@ export const CategoryEntry = (props, context) => {
   return (
     <Stack.Item
       minWidth="33%"
-      class={val.selected ? 'PreferencesMenu__Cultures__selected' : ''}>
+      class={
+        val.selected
+          ? val.selected === 2
+            ? 'PreferencesMenu__Cultures__entry PreferencesMenu__Cultures__selected PreferencesMenu__Cultures__selectedChild'
+            : 'PreferencesMenu__Cultures__entry PreferencesMenu__Cultures__selected'
+          : 'PreferencesMenu__Cultures__entry'
+      }>
       <div
         class={
           'Section ' + val.valid ? '' : 'PreferencesMenu__Cultures__invalid'
@@ -109,14 +127,14 @@ export const CategoryEntry = (props, context) => {
         <div
           class="Section__title"
           className={
-            val.valid && !val.selected
+            val.valid && !(val.selected === 1)
               ? 'PreferencesMenu__Cultures__pointer'
               : ''
           }
           onClick={() =>
             tryAct(
               type,
-              val.valid && !val.selected,
+              val.valid && !(val.selected === 1),
               { 'culture': val.path },
               context
             )
@@ -126,10 +144,17 @@ export const CategoryEntry = (props, context) => {
             style={val.valid ? '' : 'color: grey'}>
             {val.name}
           </span>
+          {val.sub_culture_amount > 0 ? (
+            <span className="PreferencesMenu__Cultures__subAmount">
+              {'+' + val.sub_culture_amount}
+            </span>
+          ) : (
+            ''
+          )}
         </div>
         <div class="Section__rest">
           <div class="Section__content">
-            <LocationEntry location={val} />
+            <BackgroundEntry background={val} />
             <Stack fill>
               {val.features.map((val2) => (
                 <Stack.Item key={val2}>

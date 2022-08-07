@@ -9,7 +9,7 @@
 	technology, means their installations are often considered unsafe and hazardous."
 	economic_power = 1.2
 	features = list(/datum/cultural_feature/good)
-	groups = CULTURE_NT | CULTURE_SYNTH
+	groups = CULTURE_NT
 
 /datum/cultural_info/faction/nanotrasen/asset_retention
 	name = "Nanotrasen Asset Retention"

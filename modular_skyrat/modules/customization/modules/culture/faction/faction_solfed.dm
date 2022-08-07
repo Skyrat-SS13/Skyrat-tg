@@ -11,7 +11,7 @@
 	its massive bureaucracy and the distance between worlds. Through its member states, the SolFed governs as one of the \
 	most advanced and powerful civilisations in the known galaxy."
 	features = list(/datum/cultural_feature/average)
-	groups = CULTURE_SOL | CULTURE_SYNTH
+	groups = CULTURE_SOL
 
 /datum/cultural_info/faction/solfed/fleet
 	name = "SolFed Fleet"

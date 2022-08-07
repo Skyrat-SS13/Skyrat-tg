@@ -10,4 +10,3 @@
 	name = "None"
 	description = "You don't belong to any faction. Unfortunately due to this, you are exploited severely."
 	economic_power = 0.7
-	features = list(/datum/cultural_feature/poor)

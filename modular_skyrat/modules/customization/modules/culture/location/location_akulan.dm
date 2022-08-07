@@ -1,3 +1,5 @@
+// !!PLACEHOLDERS!!
+
 /datum/cultural_info/location/akulan
 	name = "Kingston"
 	distance = "40 light years"

@@ -1,4 +1,11 @@
-/datum/cultural_info/location/providence
+/datum/cultural_info/location/nri
+	name = "Novaya Rossiyskaya Imperiya Space"
+	description = "Somewhere in space governed by the NRI, this relatively large imperial state has plenty of history and culture around it."
+	required_lang = /datum/language/neorusskya
+	features = list(/datum/cultural_feature/average)
+	groups = CULTURE_GROUP_HUMAN
+
+/datum/cultural_info/location/nri/providence
 	name = "Providence"
 	distance = "22.5 light years."
 	description = "Providence, in the Ararat system, is the home planet of the Novaya Rossiyskaya Imperiya, and the capital of that particular superpower.\
@@ -15,7 +22,7 @@
 	features = list(/datum/cultural_feature/average)
 	groups = CULTURE_NRI
 
-/datum/cultural_info/location/gagarin
+/datum/cultural_info/location/nri/gagarin
 	name = "Gagarin-4"
 	distance = "24 light years"
 	description = "Gagarin is a scientific colony located in the Potemkin-Tauric system close to the anomalous Sector 13. \
@@ -34,3 +41,4 @@
 	ruling_body = "Formally, Novaya Rossiyskaya Imperiya; Factually, Gagarin's Academic Senate"
 	required_lang = /datum/language/neorusskya
 	features = list(/datum/cultural_feature/average)
+	groups = CULTURE_NRI
