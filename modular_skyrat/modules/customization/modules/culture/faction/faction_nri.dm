@@ -7,7 +7,7 @@
 	Increasingly anti non-human to everyone but the few allied Groups of Interest, the NRI is in an active war with the Sol Federation known as the Border War, a large \
 	scale conflict between the SolFed and NRI that sees a great deal of death and destruction. In Sol space they are heavily mistrusted \
 	and in some instances, met with downright hostility. Today the NRI continues to be an economic powerhouse following \
-	a period of steady economic recovery, with most of its exports being manufactured goods, primarily armaments.\
+	a period of steady economic recovery, with most of its exports being manufactured goods, primarily military equipment.\
 	It is very likely that you do not belong to nor was contracted with the assistance of any governmental organisation or Collegium, simply being born there, likely taught and lived there, and then contracted by the Nanotrasen.\
 	Not like this station is even barely good to begin with."
 	economic_power = 0.85
@@ -33,9 +33,10 @@
 	<br> \
 	In the end, It's unlikely that with all the knowledge acquired you'd been very willing to work here, as there're better enlistment and job opportunities around. \
 	Maybe it was one of the higher-up orders, a punishment, or some other reasoning, up to your own choice, but what matters now is that you are here. \
-	Still, likely a better alternative to dying from either delinquents or the Solarians."
+	Still, a better alternative to dying to delinquents or the Solarians."
 
-	economic_power = 0.95 //Slightly higher pay for all the collegium folks as they're likely receiving additional governmental paychecks.
+	///Slightly higher decorative pay for all the collegium folks as they're likely receiving additional governmental paychecks.
+	economic_power = 0.95
 
 /datum/cultural_info/faction/nri/healthcare_science
 	name = "Healthcare and Innovations Collegium"
@@ -60,14 +61,13 @@
 
 /datum/cultural_info/faction/nri/industries
 	name = "Industrial and Colonial Development Collegium"
-	description = "The \"New Russian Empire\", commonly referred to as the Novaya Rossiyskaya Imperiya (NRI), is a regional power in human space,\
-	bordered by the Sol Federation towards the galactic centre. The capital of the Empire is the city of New Saint Petersburg on the planet of Providence \
-	in the Ararat system. Externally heavily militant and isolationist, the NRI, internally, is heavily democratical, with \
-	a strong focus on independent regional government with the NRI itself only handling defence, foreign relations and some intergalactic trade. \
-	Increasingly anti non-human, the NRI is in an active war with the Sol Federation known as the Border War, a large \
-	scale conflict between the SolFed and NRI that sees a great deal of death and destruction. In Sol space they are heavily mistrusted \
-	and in some instances, met with downright hostility. Today the NRI continues to be an economic powerhouse following \
-	a period of steady economic recovery, with most of its exports being manufactured goods, primarily armaments."
+	description = "Empire's Industrial and Colonial Development Collegium, despite its name, is a single governmental body with the purpose of expanding, maintaining and improving the empire's infrastructure, as well as \
+	creating additional colonies on the newly colonised worlds. It consists of a big variety of industrial and civillian infrastructure facilities, ranging from simple storage warehouses to city-scale automated factories and supermatter power plants to newly built residential districts, \
+	all with a purpose of making sure that their citizens have everything they'd virtually need to be a good taxpayer and a beneficial citizen of the empire. \
+	Still, separating the collegias' functionality, the Industrial's purpose would be to expand and maintain the existing infrastructure; to make sure that the needed electricity and water supplies are provided to the citizens, and so on. \
+	Their another function consists of planning, restructuring and modernising the outdated constructions in accordance with the tightly regulated plans. \
+	A certain amount of workers, however, suffer from a significant lack of qualifications
+	"
 	economic_power = 0.95
 
 /datum/cultural_info/faction/nri/bureaucrat
@@ -80,5 +80,6 @@
 	scale conflict between the SolFed and NRI that sees a great deal of death and destruction. In Sol space they are heavily mistrusted \
 	and in some instances, met with downright hostility. Today the NRI continues to be an economic powerhouse following \
 	a period of steady economic recovery, with most of its exports being manufactured goods, primarily armaments."
+
 	///Bureaucrats embezzle funds.
 	economic_power = 1.1
