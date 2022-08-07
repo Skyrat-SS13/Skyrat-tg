@@ -142,11 +142,7 @@
 		return
 	if(riftTimer >= maxRiftTimer)
 		to_chat(src, span_boldwarning("You've failed to summon the rift in a timely manner! You're being pulled back from whence you came!"))
-<<<<<<< HEAD
-		destroy_rifts()
-=======
 		death(TRUE)
->>>>>>> 0728fb3840d (New Lavaland Monster: Bileworms (#68967))
 		playsound(src, 'sound/magic/demon_dies.ogg', 100, TRUE)
 		qdel(src)
 
