@@ -87,7 +87,7 @@
 						if(human.dna && human.dna.species.id != initial(species_to_transform.id))
 							to_chat(M, span_hear("You hear a buzzing in your ears."))
 							human.set_species(species_to_transform)
-							human.log_message("was turned into a [initial(species_to_transform.name)] through [src].", LOG_GAME)
+							log_game("[human] ([key_name(human)]) was turned into a [initial(species_to_transform.name)] through [src].")
 
 					*/ //SKYRAT EDIT REMOVAL END
 					//SKRYAT EDIT CHANGE BEGIN
@@ -103,8 +103,8 @@
 						if(!istype(BP))
 							rad_mod += 300 //Bad snowflake, take more rads!
 							break
-						bodyparts_dismember.Rem
-						BP.dismember()ove(BP) //GC optimisation
+						bodyparts_dismember.Remove(BP) //GC optimisation
+						BP.dismember()
 						qdel(BP)
 					//SKYRAT EDIT CHANGE END
 			calibrated = FALSE
