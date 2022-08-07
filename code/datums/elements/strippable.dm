@@ -157,24 +157,16 @@
 	if (HAS_TRAIT(item, TRAIT_NO_STRIP))
 		return FALSE
 
-<<<<<<< HEAD
 	//SKYRAT EDIT CHANGE START - THIEVING GLOVES
 	var/is_silent = can_be_silent && HAS_TRAIT(user, TRAIT_STICKY_FINGERS)
 	if (!is_silent)
 		source.visible_message(
 			span_warning("[user] tries to remove [source]'s [item.name]."),
 			span_userdanger("[user] tries to remove your [item.name]."),
+			blind_message = span_hear("You hear rustling."),
 			ignored_mobs = user,
 		)
 	//SKYRAT EDIT CHANGE END
-=======
-	source.visible_message(
-		span_warning("[user] tries to remove [source]'s [item.name]."),
-		span_userdanger("[user] tries to remove your [item.name]."),
-		blind_message = span_hear("You hear rustling."),
-		ignored_mobs = user,
-	)
->>>>>>> f340897498e (blind people know when things happen to them (#68950))
 
 	to_chat(user, span_danger("You try to remove [source]'s [item]..."))
 	user.log_message("is stripping [key_name(source)] of [item]", LOG_ATTACK, color="red")
