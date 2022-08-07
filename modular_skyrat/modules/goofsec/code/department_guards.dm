@@ -115,7 +115,7 @@
 	faction = FACTION_STATION
 	total_positions = 2
 	spawn_positions = 2
-	supervisors = "the chief medical officer, <b>NOT SECURITY</b>"
+	supervisors = SUPERVISOR_CMO
 	selection_color = "#ffeeee"
 	exp_granted_type = EXP_TYPE_CREW
 
@@ -184,7 +184,7 @@
 	faction = FACTION_STATION
 	total_positions = 2
 	spawn_positions = 2
-	supervisors = "the research director, <b>NOT SECURITY</b>"
+	supervisors = SUPERVISOR_RD
 	selection_color = "#ffeeee"
 	exp_granted_type = EXP_TYPE_CREW
 
@@ -253,7 +253,7 @@
 	faction = FACTION_STATION
 	total_positions = 2
 	spawn_positions = 2
-	supervisors = "the head of personnel, <b>NOT SECURITY</b>"
+	supervisors = SUPERVISOR_HOP
 	selection_color = "#ffeeee"
 	exp_granted_type = EXP_TYPE_CREW
 
@@ -326,7 +326,7 @@
 	faction = FACTION_STATION
 	total_positions = 2
 	spawn_positions = 2
-	supervisors = "the quartermaster, <b>NOT SECURITY</b>"
+	supervisors = SUPERVISOR_QM
 	selection_color = "#ffeeee"
 	exp_granted_type = EXP_TYPE_CREW
 
@@ -393,7 +393,7 @@
 	faction = FACTION_STATION
 	total_positions = 2
 	spawn_positions = 2
-	supervisors = "the chief engineer, <b>NOT SECURITY</b>"
+	supervisors = SUPERVISOR_CE
 	selection_color = "#ffeeee"
 	exp_granted_type = EXP_TYPE_CREW
 

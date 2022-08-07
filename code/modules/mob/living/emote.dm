@@ -34,6 +34,11 @@
 
 #undef BLUSH_DURATION
 
+/datum/emote/living/sing_tune
+	key = "tunesing"
+	key_third_person = "sings a tune"
+	message = "sings a tune."
+
 /datum/emote/living/bow
 	key = "bow"
 	key_third_person = "bows"
@@ -382,7 +387,7 @@
 				if(carbon_user.internal) //Breathing from internals means we cant smell
 					return
 				carbon_user.next_smell = world.time + SMELL_COOLDOWN
-			current_turf.pollution.SmellAct(user)
+			current_turf.pollution.smell_act(user)
 //SKYRAT EDIT END
 
 /datum/emote/living/snore
