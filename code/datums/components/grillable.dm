@@ -54,7 +54,7 @@
 	//SKYRAT EDIT ADDITION
 	if(pollutant_type)
 		var/turf/parent_turf = get_turf(parent)
-		parent_turf.PolluteTurf(pollutant_type, 10)
+		parent_turf.pollute_turf(pollutant_type, 10)
 	//SKYRAT EDIT END
 
 	current_cook_time += delta_time * 10 //turn it into ds
@@ -85,7 +85,7 @@
 		currently_grilling = FALSE
 		grill_source.visible_message("<span class='[positive_result ? "notice" : "warning"]'>[parent] turns into \a [grilled_result]!</span>")
 		grilled_result.pixel_x = original_object.pixel_x
-		grilled_result.pixel_y = original_object.pixel_y	
+		grilled_result.pixel_y = original_object.pixel_y
 		qdel(parent)
 		return
 
@@ -97,7 +97,7 @@
 	grilled_result.pixel_x = original_object.pixel_x
 	grilled_result.pixel_y = original_object.pixel_y
 
-	
+
 	grill_source.visible_message("<span class='[positive_result ? "notice" : "warning"]'>[parent] turns into \a [grilled_result]!</span>")
 	SEND_SIGNAL(parent, COMSIG_GRILL_COMPLETED, grilled_result)
 	currently_grilling = FALSE
