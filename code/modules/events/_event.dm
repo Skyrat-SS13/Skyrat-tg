@@ -124,23 +124,16 @@ Runs the event
 	E.control = src
 	occurrences++
 
-<<<<<<< HEAD
 	SSevents.previously_run += src //SKYRAT EDIT ADDITION
-=======
+
 	if(announce_chance_override != null)
 		E.announceChance = announce_chance_override
->>>>>>> b5e57216ee6 (Event menu rewrite (#68472))
 
 	testing("[time2text(world.time, "hh:mm:ss")] [E.type]")
 	triggering = TRUE
 
-<<<<<<< HEAD
-	if (alert_observers)
-		message_admins("Random Event triggering in [DisplayTimeText(RANDOM_EVENT_ADMIN_INTERVENTION_TIME)]: [name] (<a href='?src=[REF(src)];cancel=1'>CANCEL</a> | <a href='?src=[REF(src)];something_else=1'>SOMETHING ELSE</a>)") //SKYRAT EDIT CHANGE
-=======
 	if (alert_observers && !admin_forced)
-		message_admins("Random Event triggering in [DisplayTimeText(RANDOM_EVENT_ADMIN_INTERVENTION_TIME)]: [name] (<a href='?src=[REF(src)];cancel=1'>CANCEL</a>)")
->>>>>>> b5e57216ee6 (Event menu rewrite (#68472))
+		message_admins("Random Event triggering in [DisplayTimeText(RANDOM_EVENT_ADMIN_INTERVENTION_TIME)]: [name] (<a href='?src=[REF(src)];cancel=1'>CANCEL</a> | <a href='?src=[REF(src)];something_else=1'>SOMETHING ELSE</a>)") //SKYRAT EDIT CHANGE
 		sleep(RANDOM_EVENT_ADMIN_INTERVENTION_TIME)
 
 	if(!triggering)
