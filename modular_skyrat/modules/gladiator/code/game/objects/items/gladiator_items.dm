@@ -62,7 +62,7 @@
 		return
 	var/turf/where_to = get_turf(target)
 	user.apply_damage(damage = roll_stamcost, damagetype = STAMINA)
-	user.Immobilize(0.3 SECONDS) // you dont get to adjust your roll
+	user.Immobilize(0.8 SECONDS) // you dont get to adjust your roll
 	user.throw_at(where_to, range = roll_range, speed = 1, force = MOVE_FORCE_NORMAL)
 	user.apply_status_effect(/datum/status_effect/dodgeroll_iframes)
 	playsound(user, SFX_BODYFALL, 50, TRUE)
@@ -80,19 +80,10 @@
 	return TRUE
 
 /datum/status_effect/dodgeroll_iframes/on_remove()
-	UnregisterSignal(owner, list(
-		COMSIG_HUMAN_CHECK_SHIELDS
-		))
+	UnregisterSignal(owner, COMSIG_HUMAN_CHECK_SHIELDS)
 	return ..()
 
-/datum/status_effect/dodgeroll_iframes/proc/whiff(
-	mob/living/carbon/human/source,
-	atom/movable/hitby,
-	damage = 0,
-	attack_text = "the attack",
-	attack_type = MELEE_ATTACK,
-	armour_penetration = 0,
-)
+/datum/status_effect/dodgeroll_iframes/proc/whiff()
 	SIGNAL_HANDLER
 	owner.balloon_alert_to_viewers("MISS!")
 	playsound(src, 'sound/weapons/thudswoosh.ogg', 50, TRUE, -1)
