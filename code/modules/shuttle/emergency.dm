@@ -319,7 +319,7 @@
 
 	. = ..()
 
-/obj/docking_port/mobile/emergency/request(obj/docking_port/stationary/S, area/signal_origin, reason, red_alert, silent=FALSE) //SKYRAT EDIT CHANGE - AUTOTRANSFER
+/obj/docking_port/mobile/emergency/request(obj/docking_port/stationary/S, area/signal_origin, reason, red_alert, set_coefficient=null, silent=FALSE) //SKYRAT EDIT CHANGE - AUTOTRANSFER
 	if(!isnum(set_coefficient))
 		var/security_num = SSsecurity_level.get_current_level_as_number()
 		switch(security_num)
