@@ -234,10 +234,7 @@ GLOBAL_LIST_EMPTY(antagonists)
 /datum/antagonist/proc/greet()
 	if(!silent)
 		to_chat(owner.current, span_big("You are \the [src]."))
-		//SKYRAT ADDITION START
-		to_chat(owner.current, span_infoplain(span_doyourjobidiot("Remember that being an antagonist does not exclude you from the server rules regarding RP standards.")))
-		to_chat(owner.current, span_infoplain(span_boldnotice("Done or bored with your objectives? Make an OPFOR application for more to do!")))
-		//SKYRAT ADDITON END
+		to_chat(owner.current, span_infoplain(span_doyourjobidiot("Remember that being an antagonist does not exclude you from the server rules regarding RP standards."))) //SKYRAT EDIT - RP REMINDER
 
 /**
  * Proc that sends fluff or instructional messages to the player when they lose this antag datum.

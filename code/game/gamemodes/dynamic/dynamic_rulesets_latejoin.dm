@@ -55,7 +55,7 @@
 
 /datum/dynamic_ruleset/latejoin/infiltrator
 	name = "Syndicate Infiltrator"
-	antag_datum = /datum/antagonist/traitor/saboteur //SKYRAT EDIT - PROGRESSIONLESS TRAITORS
+	antag_datum = /datum/antagonist/traitor
 	antag_flag = ROLE_SYNDICATE_INFILTRATOR
 	antag_flag_override = ROLE_TRAITOR
 	protected_roles = list(

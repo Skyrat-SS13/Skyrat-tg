@@ -8,7 +8,7 @@
 /datum/dynamic_ruleset/roundstart/traitor
 	name = "Traitors"
 	antag_flag = ROLE_TRAITOR
-	antag_datum = /datum/antagonist/traitor/saboteur //SKYRAT EDIT - PROGRESSIONLESS TRAITROS
+	antag_datum = /datum/antagonist/traitor
 	minimum_required_age = 0
 	protected_roles = list(
 		JOB_CAPTAIN,
