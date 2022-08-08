@@ -21,7 +21,7 @@ export const BackgroundEntry = (props) => {
       className={
         background.selected ? '' : 'PreferencesMenu__Cultures__contents'
       }>
-      <Stack.Item>{background.description}</Stack.Item>
+      <Stack.Item>{background.description.replace(/< ?br ?\/?>/gi)}</Stack.Item>
       <Stack.Item>
         <b>Economic Power:</b> {background.economic_power}
       </Stack.Item>
