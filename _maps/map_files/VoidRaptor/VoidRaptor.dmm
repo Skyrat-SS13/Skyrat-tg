@@ -278,7 +278,6 @@
 	name = "Danger: Conveyor Access";
 	req_access = list("maint_tunnels")
 	},
-/obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/bot,
 /turf/open/floor/iron/smooth,
 /area/station/maintenance/disposal)
@@ -927,12 +926,11 @@
 /turf/closed/wall,
 /area/station/maintenance/disposal/incinerator)
 "ats" = (
-/obj/machinery/conveyor{
-	dir = 5;
-	id = "garbage"
+/obj/structure/sign/poster/contraband/dancing_honk{
+	pixel_y = -32
 	},
-/turf/open/floor/iron/smooth,
-/area/station/maintenance/disposal)
+/turf/open/floor/catwalk_floor/iron_smooth,
+/area/station/science/robotics/mechbay)
 "att" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 8
@@ -3763,6 +3761,16 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/wood/large,
 /area/station/service/library)
+"bEt" = (
+/obj/machinery/conveyor{
+	dir = 1;
+	id = "garbage"
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/turf/open/floor/iron/smooth,
+/area/station/maintenance/disposal)
 "bES" = (
 /obj/effect/turf_decal/bot,
 /obj/machinery/holopad/secure,
@@ -11834,10 +11842,12 @@
 /area/station/service/hydroponics)
 "eKw" = (
 /obj/machinery/conveyor{
-	dir = 9;
+	dir = 5;
 	id = "garbage"
 	},
-/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
 /turf/open/floor/iron/smooth,
 /area/station/maintenance/disposal)
 "eKN" = (
@@ -21838,6 +21848,16 @@
 	},
 /turf/open/floor/iron/dark/smooth_edge,
 /area/station/engineering/main)
+"iPO" = (
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/machinery/conveyor{
+	dir = 8;
+	id = "garbage"
+	},
+/turf/open/floor/iron/smooth,
+/area/station/maintenance/disposal)
 "iPZ" = (
 /turf/open/space/openspace,
 /area/station/maintenance/port/greater)
@@ -23984,11 +24004,16 @@
 	},
 /area/station/service/hydroponics)
 "jHd" = (
-/obj/effect/spawner/structure/window/reinforced,
-/obj/structure/disposalpipe/segment{
+/obj/structure/disposalpipe/trunk{
+	dir = 8
+	},
+/obj/structure/disposaloutlet{
 	dir = 4
 	},
-/turf/open/floor/plating,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/turf/open/floor/iron/smooth,
 /area/station/maintenance/disposal)
 "jHi" = (
 /obj/effect/turf_decal/trimline/red/filled/corner{
@@ -36034,10 +36059,12 @@
 /turf/open/floor/grass,
 /area/station/science/research)
 "oel" = (
-/obj/structure/disposaloutlet{
-	dir = 4
+/obj/machinery/conveyor{
+	dir = 9;
+	id = "garbage"
 	},
-/obj/structure/disposalpipe/trunk{
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
 	dir = 8
 	},
 /turf/open/floor/iron/smooth,
@@ -36218,12 +36245,15 @@
 /turf/open/floor/iron/smooth,
 /area/station/engineering/atmos)
 "ohv" = (
-/obj/machinery/conveyor{
-	dir = 1;
-	id = "garbage"
+/obj/structure/sign/poster/contraband/crocin_pool{
+	pixel_y = -32
 	},
-/turf/open/floor/iron/smooth,
-/area/station/maintenance/disposal)
+/turf/open/water/overlay{
+	desc = "It's a pool for swimming in!";
+	icon_state = "hotspring_tile";
+	name = "pool"
+	},
+/area/station/common/pool)
 "oia" = (
 /obj/structure/cable,
 /obj/effect/landmark/start/chaplain,
@@ -44728,9 +44758,6 @@
 /turf/open/floor/iron/dark,
 /area/station/security/prison/mess)
 "rvw" = (
-/obj/machinery/mineral/stacking_machine{
-	input_dir = 2
-	},
 /obj/structure/window/reinforced{
 	dir = 4
 	},
@@ -44738,6 +44765,9 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/bot,
+/obj/machinery/mineral/stacking_machine{
+	input_dir = 2
+	},
 /turf/open/floor/iron/smooth,
 /area/station/maintenance/disposal)
 "rvR" = (
@@ -54777,7 +54807,6 @@
 /turf/open/floor/engine/reinforced,
 /area/station/engineering/supermatter/room)
 "viA" = (
-/obj/effect/spawner/liquids_spawner,
 /obj/structure/railing,
 /turf/open/floor/iron/stairs{
 	dir = 8
@@ -94466,7 +94495,7 @@ iLH
 hfp
 pdi
 pGl
-xfM
+ats
 avA
 avA
 avA
@@ -99930,7 +99959,7 @@ eWh
 eWh
 eWh
 eWh
-eWh
+ohv
 aCq
 vHX
 vHX
@@ -106642,9 +106671,9 @@ vlh
 vlh
 ify
 jPC
-uHh
-uHh
-uHh
+eKw
+bEt
+oel
 jHd
 jPC
 icj
@@ -106899,10 +106928,10 @@ xMq
 vlh
 vlh
 gsU
-ats
-ohv
-eKw
-oel
+mET
+ghA
+ubd
+mET
 jPC
 icj
 esT
@@ -107157,7 +107186,7 @@ xMq
 xMq
 uHh
 mET
-ghA
+iPO
 kub
 mET
 nee
