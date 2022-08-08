@@ -41,9 +41,10 @@
 
 /datum/armament_entry/cargo_gun/izhevsk/rifle/mosin
 	item_type = /obj/item/gun/ballistic/rifle/boltaction
+	magazine = /obj/item/ammo_box/a762
 	lower_cost = CARGO_CRATE_VALUE * 5
 	upper_cost = CARGO_CRATE_VALUE * 6
-	
+
 /datum/armament_entry/cargo_gun/izhevsk/rifle/mosin/brandnew
 	item_type = /obj/item/gun/ballistic/rifle/boltaction/brand_new
 	lower_cost = CARGO_CRATE_VALUE * 12

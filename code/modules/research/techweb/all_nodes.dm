@@ -340,7 +340,6 @@
 		//SKYRAT EDIT - END
 		"chem_master",
 		"chem_pack",
-		"crewpinpointerprox",
 		"defibmount",
 		"defibrillator",
 		"genescanner",

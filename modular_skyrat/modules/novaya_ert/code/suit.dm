@@ -19,11 +19,29 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "russian_green_armor"
 	armor = list(MELEE = 30, BULLET = 40, LASER = 20, ENERGY = 30, BOMB = 35, BIO = 0, FIRE = 50, ACID = 50, WOUND = 15)
+	supports_variations_flags = CLOTHING_NO_VARIATION
 	inhand_icon_state = "rus_armor"
+	uses_advanced_reskins = TRUE
+	unique_reskin = list(
+		"Basic" = list(
+			RESKIN_ICON_STATE = "russian_green_armor",
+			RESKIN_WORN_ICON_STATE = "russian_green_armor"
+		),
+		"Corpsman" = list(
+			RESKIN_ICON_STATE = "russian_medic_armor",
+			RESKIN_WORN_ICON_STATE = "russian_medic_armor"
+		),
+	)
+
+/obj/item/clothing/suit/armor/vest/russian/mob_can_equip(mob/living/M, mob/living/equipper, slot, disable_warning, bypass_equip_delay_self)
+	if(is_species(M, /datum/species/teshari))
+		to_chat(M, span_warning("[src] is far too big for you!"))
+		return FALSE
+	return ..()
 
 /obj/item/clothing/suit/armor/heavy/nri
 	name = "\improper Cordun-M armor system"
-	desc = "A robust set of full-body armor designed for the harshest of environments. A modern set of heavy armor recently implemented by NRI Defense Colleague to accomodate with modern specifications. While a combination of lighter materials and a passive internal exoskeleton might assist the user's movement, you'll still be as slow as a snail."
+	desc = "A robust set of full-body armor designed for the harshest of environments. A modern set of heavy armor recently implemented by NRI Defense Collegium to accomodate with modern specifications. While a combination of lighter materials and a passive internal exoskeleton might assist the user's movement, you'll still be as slow as a snail."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "russian_heavy_armor"
@@ -114,6 +132,12 @@
 	acid_static_cooldown = NRI_COOLDOWN_ACID
 	suit_name = "VOSKHOD"
 	first_use = FALSE //No nice song.
+
+/obj/item/clothing/suit/space/hev_suit/nri/mob_can_equip(mob/living/M, mob/living/equipper, slot, disable_warning, bypass_equip_delay_self)
+	if(is_species(M, /datum/species/teshari))
+		to_chat(M, span_warning("[src] is far too big for you!"))
+		return FALSE
+	return ..()
 
 /datum/action/item_action/hev_toggle/nri
 	name = "Toggle VOSKHOD Suit"

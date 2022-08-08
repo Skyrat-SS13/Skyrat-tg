@@ -16,7 +16,7 @@
 /obj/item/storage/belt/military/nri/medic
 	name = "blue tactical belt"
 	desc = "A blue tactical belt made for storing military grade hardware."
-	icon_state = "russian_white_belt" //Consistency with backpacks and other gear.
+	icon_state = "russian_white_belt"
 	worn_icon_state = "russian_white_belt"
 
 /obj/item/storage/belt/military/nri/engineer

@@ -24,7 +24,7 @@
 	/// A list of possible events for us to select from. Cached the first time it's run.
 	var/list/possible_events = list()
 
-/datum/round_event_control/preset/runEvent(random)
+/datum/round_event_control/preset/runEvent(random = FALSE, announce_chance_override = null, admin_forced = FALSE)
 	log_game("Preset Event Triggering: [name] ([typepath])")
 	if(random)
 		deadchat_broadcast(" has just been [random ? "randomly " : ""]triggered!", "<b>[name] preset</b>", message_type=DEADCHAT_ANNOUNCEMENT)
