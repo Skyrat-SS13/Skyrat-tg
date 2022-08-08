@@ -319,8 +319,7 @@
 
 	. = ..()
 
-///obj/docking_port/mobile/emergency/request(obj/docking_port/stationary/S, area/signalOrigin, reason, redAlert, set_coefficient=null) //ORIGINAL
-/obj/docking_port/mobile/emergency/request(obj/docking_port/stationary/S, area/signalOrigin, reason, redAlert, set_coefficient=null, silent=FALSE) //SKYRAT EDIT CHANGE - AUTOTRANSFER
+/obj/docking_port/mobile/emergency/request(obj/docking_port/stationary/S, area/signal_origin, reason, red_alert, set_coefficient=null, silent=FALSE) //SKYRAT EDIT CHANGE - AUTOTRANSFER
 	if(!isnum(set_coefficient))
 		var/security_num = SSsecurity_level.get_current_level_as_number()
 		switch(security_num)
@@ -343,15 +342,13 @@
 	SSshuttle.emergencyCallAmount++
 
 	if(prob(70))
-		SSshuttle.emergency_last_call_loc = signalOrigin
+		SSshuttle.emergency_last_call_loc = signal_origin
 	else
 		SSshuttle.emergency_last_call_loc = null
 
-	//priority_announce("The emergency shuttle has been called. [redAlert ? "Red Alert state confirmed: Dispatching priority shuttle. " : "" ]It will arrive in [timeLeft(600)] minutes.[reason][SSshuttle.emergencyLastCallLoc ? "\n\nCall signal traced. Results can be viewed on any communications console." : "" ][SSshuttle.adminEmergencyNoRecall ? "\n\nWarning: Shuttle recall subroutines disabled; Recall not possible." : ""]", null, 'sound/ai/shuttlecalled.ogg', "Priority") //ORIGINAL
-	//SKYRAT EDIT CHANGE BEGIN - AUTOTRANSFER
-	if(!silent)
-		priority_announce("The emergency shuttle has been called. [redAlert ? "Red Alert state confirmed: Dispatching priority shuttle. " : "" ]It will arrive in [timeLeft(600)] minutes.[reason][SSshuttle.emergency_last_call_loc ? "\n\nCall signal traced. Results can be viewed on any communications console." : "" ][SSshuttle.admin_emergency_no_recall ? "\n\nWarning: Shuttle recall subroutines disabled; Recall not possible." : ""]", null, ANNOUNCER_SHUTTLECALLED, "Priority")
-	//SKYRAT EDIT CHANGE END - AUTOTRANSFER
+
+	if(!silent) // SKYRAT EDIT ADDITION
+		priority_announce("The emergency shuttle has been called. [red_alert ? "Red Alert state confirmed: Dispatching priority shuttle. " : "" ]It will arrive in [timeLeft(600)] minutes.[reason][SSshuttle.emergency_last_call_loc ? "\n\nCall signal traced. Results can be viewed on any communications console." : "" ][SSshuttle.admin_emergency_no_recall ? "\n\nWarning: Shuttle recall subroutines disabled; Recall not possible." : ""]", null, ANNOUNCER_SHUTTLECALLED, "Priority")
 
 /obj/docking_port/mobile/emergency/cancel(area/signalOrigin)
 	if(mode != SHUTTLE_CALL)
