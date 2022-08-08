@@ -63,7 +63,7 @@
 	var/mob/living/silicon/robot/borgy = user
 	. = borgy.cell?.use(amount * energyfactor) //borgs get 1.3x the use of their RCDs
 	if(!. && user)
-		to_chat(user, no_ammo_message)
+		user.balloon_alert(user, no_ammo_message)
 	return .
 
 /obj/item/construction/rld/borg/checkResource(amount, mob/user)
