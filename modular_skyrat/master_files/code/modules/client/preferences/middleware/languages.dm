@@ -36,14 +36,6 @@
 	)
 	var/list/name_to_language
 
-/datum/preference_middleware/languages/New(datum/preferences)
-	. = ..()
-	// Sanitize languages. "src." is required because of typing, and creating a new variable when one exists makes no sense.
-	if(src.preferences?.languages)
-		for(var/datum/language/lang_path as anything in src.preferences.languages)
-			if(initial(lang_path.secret))
-				src.preferences.languages.Remove(lang_path)
-
 /datum/preference_middleware/languages/apply_to_human(mob/living/carbon/human/target, datum/preferences/preferences) // SKYRAT EDIT CHANGE
 	target.language_holder.understood_languages.Cut()
 	target.language_holder.spoken_languages.Cut()

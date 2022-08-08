@@ -105,10 +105,6 @@
 		),
 	)
 
-/obj/item/storage/belt/security/Initialize()
-	. = ..()
-	create_storage(type = /datum/storage/security)
-
 /obj/item/storage/belt/security/webbing
 	uses_advanced_reskins = FALSE
 	unique_reskin = NONE
