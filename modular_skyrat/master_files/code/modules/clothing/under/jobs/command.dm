@@ -145,6 +145,11 @@
 *	MISC
 */
 
+/obj/item/clothing/under/rank/captain/skyrat/baseball
+	name = "nanotrasen baseball tee"
+	desc = "Up to throw we have the NanoTrasen Thuggers, already winding up a plasma-fuelled pitch!"
+	icon_state = "nanotrasen_baseball"
+
 /obj/item/clothing/under/rank/captain/skyrat/pilot
 	name = "shuttle pilot's jumpsuit"
 	desc = "It's a blue jumpsuit with some silver markings denoting the wearer as a certified pilot."

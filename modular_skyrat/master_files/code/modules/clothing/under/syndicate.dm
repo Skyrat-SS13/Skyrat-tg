@@ -64,7 +64,7 @@
 
 /obj/item/clothing/under/syndicate/skyrat/baseball
 	name = "syndicate baseball tee"
-	desc = "Aaand the Syndicate Snakes are up to bat, ready for one of their signature nuclear home-runs! Lets show these corpos a good time." //NT pitches their plasma/bluespace(something)
+	desc = "Aaand the Syndicate Snakes are up to bat, ready for one of their signature nuclear home-runs!"
 	icon_state = "syndicate_baseball"
 
 /*
