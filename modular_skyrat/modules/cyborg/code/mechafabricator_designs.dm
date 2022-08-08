@@ -53,7 +53,7 @@
 	category = list("Cyborg Upgrade Modules")
 
 /datum/design/borg_upgrade_rapidlightplacer
-	name = "Cyborg Upgrade (Rapid Light Dispensor)"
+	name = "Cyborg Upgrade (Rapid Light Dispenser)"
 	id = "borg_upgrade_rapidlightplacer"
 	build_type = MECHFAB
 	build_path = /obj/item/borg/upgrade/rapidlightplacer
