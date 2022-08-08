@@ -74,8 +74,14 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 
 	var/keyname = key
 
-	if(CONFIG_GET(flag/enable_cross_server_ooc)) //SKYRAT EDIT ADDITION
-		send_ooc_to_other_server(ckey, msg) //SKYRAT EDIT ADDITION
+	//SKYRAT EDIT ADDITION
+	if(CONFIG_GET(flag/enable_cross_server_ooc))
+		send_ooc_to_other_server(ckey, msg)
+
+	if(is_admin(src) && prefs.read_preference(/datum/preference/toggle/admin/ooc_admin_tag))
+		var/datum/asset/spritesheet/sheet = get_asset_datum(/datum/asset/spritesheet/chat)
+		keyname = "[sheet.icon_tag("emoji-admin")][keyname]"
+	//SKYRAT EDIT END
 
 	if(prefs.unlock_content)
 		if(prefs.toggles & MEMBER_PUBLIC)
