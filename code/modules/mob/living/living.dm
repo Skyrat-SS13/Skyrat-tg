@@ -1419,6 +1419,7 @@
 // Generally the mob we are currently in is about to be deleted
 /mob/living/proc/wabbajack_act(mob/living/new_mob)
 	log_message("was wabbajack polymorphed into: [new_mob.name]([new_mob.type]).", LOG_GAME)
+	SEND_SIGNAL(src, COMSIG_LIVING_WABBAJACKED, new_mob)
 	new_mob.name = real_name
 	new_mob.real_name = real_name
 
