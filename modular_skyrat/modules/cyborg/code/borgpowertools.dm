@@ -51,6 +51,7 @@
 
 // Rapid Light Dispenser 
 
+// Sets the energy cost to use the RLD - Fail Message when out of energy. 
 /obj/item/construction/rld/borg
 	no_ammo_message = "<span class='warning'>Insufficient charge.</span>"
 	desc = "A device used to rapidly build walls and floors."
@@ -58,12 +59,11 @@
 
 /obj/item/construction/rld/borg/useResource(amount, mob/user)
 	if(!iscyborg(user))
-		return 0
+		return FALSE
 	var/mob/living/silicon/robot/borgy = user
 	if(!borgy.cell)
-		if(user)
-			to_chat(user, no_ammo_message)
-		return 0
+		to_chat(user, no_ammo_message)
+		return FALSE
 	. = borgy.cell.use(amount * energyfactor) //borgs get 1.3x the use of their RCDs
 	if(!. && user)
 		to_chat(user, no_ammo_message)
@@ -71,13 +71,12 @@
 
 /obj/item/construction/rld/borg/checkResource(amount, mob/user)
 	if(!iscyborg(user))
-		return 0
+		return FALSE
 	var/mob/living/silicon/robot/borgy = user
 	if(!borgy.cell)
-		if(user)
-			to_chat(user, no_ammo_message)
-		return 0
+		to_chat(user, no_ammo_message)
+		return FALSE
 	. = borgy.cell.charge >= (amount * energyfactor)
-	if(!. && user)
+	if(!.)
 		to_chat(user, no_ammo_message)
 	return .
