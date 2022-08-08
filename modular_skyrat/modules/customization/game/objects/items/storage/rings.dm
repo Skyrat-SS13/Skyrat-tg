@@ -10,6 +10,7 @@
 	base_icon_state = "gold ringbox"
 	w_class = WEIGHT_CLASS_TINY
 	spawn_type = /obj/item/clothing/gloves/ring
+	spawn_count = 1
 
 /obj/item/storage/fancy/ringbox/Initialize()
 	. = ..()
