@@ -1,5 +1,5 @@
 /obj/item/clothing/glasses/nerve_staple
-	name = "nerve staple"
+	name = "\proper a nerve staple"
 	desc = "A horrific looking device that is stapled into your face"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/glasses.dmi'
 	icon_state = "nerve_staple"

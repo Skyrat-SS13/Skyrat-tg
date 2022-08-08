@@ -224,7 +224,7 @@
 		var/list/choices = GLOB.body_markings_per_limb[limb].Copy()
 		if (!allow_mismatched_parts)
 			for (var/name in choices)
-				var/datum/body_marking/marking = choices[name]
+				var/datum/body_marking/marking = GLOB.body_markings[name]
 				if (marking.recommended_species && !(initial(species_type.id) in marking.recommended_species))
 					choices -= name
 		limbs_data += list(list(

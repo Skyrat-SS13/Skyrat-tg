@@ -55,6 +55,7 @@
 	greyscale_config_worn = /datum/greyscale_config/kilt/worn
 	greyscale_colors = "#008000#777777"
 	flags_1 = IS_PLAYER_COLORABLE_1
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/under/misc/royalkilt
@@ -63,6 +64,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "royalkilt"
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 	body_parts_covered = CHEST|GROIN|ARMS|LEGS
 
 /obj/item/clothing/under/misc/tactical1
@@ -80,6 +82,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "blackwatch"
 	inhand_icon_state = "kilt"
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 	armor = list(MELEE = 30, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 10, ACID = 20, WOUND = 10)
 	body_parts_covered = CHEST|GROIN|ARMS|LEGS
 
@@ -97,6 +100,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "countess_s"
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 	flags_inv = HIDESHOES
 
 /obj/item/clothing/under/misc/formaldressred
@@ -106,6 +110,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "formalred_s"
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 	flags_inv = HIDESHOES
 
 /obj/item/clothing/under/misc/peakyblinder
@@ -129,42 +134,6 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "tracksuit_blue"
-
-/obj/item/clothing/under/enclaveo
-	name = "neo american officer uniform"
-	desc = "Throughout the stars, rumors of mad scientists and angry drill sergeant run rampent, of creatures in armor black as night being led by men or women wearing this uniform, they share one thing, a deep, natonalistic zeal of the dream of America."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "enclaveo"
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 0, ACID = 0, WOUND = 0)
-	body_parts_covered = CHEST|GROIN|ARMS|LEGS
-
-/obj/item/clothing/under/enclave
-	name = "neo american sergeant uniform"
-	desc = "Not as high ranking as the officers often standing in front of them, this outfit is less armored than it's sister."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "enclave"
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 0, ACID = 0, WOUND = 0)
-	body_parts_covered = CHEST|GROIN|ARMS|LEGS
-
-/obj/item/clothing/under/enclaveo/real
-	name = "neo american officer uniform"
-	desc = "Throughout the stars, rumors of mad scientists and angry drill sergeant run rampent, of creatures in armor black as night being led by men or women wearing this uniform, they share one thing, a deep, natonalistic zeal of the dream of America."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "enclaveo"
-	armor = list(MELEE = 0, BULLET = 10, LASER = 20,ENERGY = 20, BOMB = 0, BIO = 0, FIRE = 0, ACID = 10, WOUND = 10)
-	body_parts_covered = CHEST|GROIN|ARMS|LEGS
-
-/obj/item/clothing/under/enclave/real
-	name = "neo american sergeant uniform"
-	desc = "Not as high ranking as the officers often standing in front of them, this outfit is less armored than it's sister."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "enclave"
-	armor = list(MELEE = 0, BULLET = 10, LASER = 10,ENERGY = 10, BOMB = 0, BIO = 0, FIRE = 0, ACID = 10, WOUND = 10)
-	body_parts_covered = CHEST|GROIN|ARMS|LEGS
 
 /obj/item/clothing/under/tachawaiian
 	name = "orange tactical hawaiian outfit"
@@ -217,6 +186,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "pmars_robe"
 	body_parts_covered = CHEST|GROIN|ARMS|LEGS
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 	flags_inv = HIDESHOES
 
 ///COWBOY
@@ -294,17 +264,6 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "scrubswhite"
-
-/obj/item/clothing/under/rank/engineering/engineer/trouser
-	desc = "A yellow set of trousers that somehow protect against radiation."
-	name = "engineer's trousers"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "workpants_orange"
-	body_parts_covered = GROIN
-	can_adjust = FALSE
-	supports_variations_flags = NONE
-	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 
 /obj/item/clothing/under/rank/security/peacekeeper/trousers
 	name = "peacekeeper's trousers"

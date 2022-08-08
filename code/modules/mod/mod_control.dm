@@ -254,7 +254,7 @@
 	if(slot == slot_flags)
 		return TRUE
 
-/obj/item/mod/control/Moved(atom/old_loc, movement_dir, forced = FALSE, list/old_locs)
+/obj/item/mod/control/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change = TRUE)
 	. = ..()
 	if(!wearer || old_loc != wearer || loc == wearer)
 		return
@@ -371,7 +371,7 @@
 
 /obj/item/mod/control/attackby(obj/item/attacking_item, mob/living/user, params)
 	// SKYRAT EDIT START - pAIs in MODsuits
-	if(istype(attacking_item, /obj/item/paicard))
+	if(istype(attacking_item, /obj/item/pai_card))
 		if(!open) //mod must be open
 			balloon_alert(user, "suit must be open to transfer!")
 			return FALSE
@@ -556,9 +556,6 @@
 	new_module.on_install()
 	if(wearer)
 		new_module.on_equip()
-		var/datum/action/item_action/mod/pinned_module/action = new_module.pinned_to[REF(wearer)]
-		if(action)
-			action.Grant(wearer)
 	// SKYRAT EDIT START - pAIs in MODsuits
 	if(mod_pai)
 		var/datum/action/item_action/mod/pinned_module/action = new_module.pinned_to[ref(mod_pai)]
@@ -577,7 +574,7 @@
 		if(old_module.active)
 			old_module.on_deactivation(display_message = !deleting, deleting = deleting)
 	old_module.on_uninstall(deleting = deleting)
-	QDEL_LIST(old_module.pinned_to)
+	QDEL_LIST_ASSOC_VAL(old_module.pinned_to)
 	old_module.mod = null
 
 /obj/item/mod/control/proc/update_access(mob/user, obj/item/card/id/card)
