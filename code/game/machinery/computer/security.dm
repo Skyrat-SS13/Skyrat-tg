@@ -568,10 +568,10 @@ What a mess.*/
 
 			if("Print Record")
 				if(!( printing ))
-					printing = 1
-					GLOB.data_core.securityPrintCount++
-					playsound(loc, 'sound/items/poster_being_created.ogg', 100, TRUE)
+					printing = TRUE
+					playsound(src, 'sound/items/poster_being_created.ogg', 100, TRUE)
 					sleep(30)
+<<<<<<< HEAD
 					var/obj/item/paper/printed_paper = new /obj/item/paper(loc)
 					var/final_paper_text = "<CENTER><B>Security Record - (SR-[GLOB.data_core.securityPrintCount])</B></CENTER><BR>"
 					if((istype(active1, /datum/data/record) && GLOB.data_core.general.Find(active1)))
@@ -621,6 +621,10 @@ What a mess.*/
 					printed_paper.add_raw_text(final_paper_text)
 					printed_paper.update_appearance()
 					printing = null
+=======
+					print_security_record(active1, active2, loc)
+					printing = FALSE
+>>>>>>> f24d50be33e (unifies security record printing (#68926))
 			if("Print Poster")
 				if(!( printing ))
 					var/wanted_name = tgui_input_text(usr, "Enter an alias for the criminal", "Print Wanted Poster", active1.fields["name"])
