@@ -61,10 +61,7 @@
 	if(!iscyborg(user))
 		return FALSE
 	var/mob/living/silicon/robot/borgy = user
-	if(!borgy.cell)
-		to_chat(user, no_ammo_message)
-		return FALSE
-	. = borgy.cell.use(amount * energyfactor) //borgs get 1.3x the use of their RCDs
+	. = borgy.cell?.use(amount * energyfactor) //borgs get 1.3x the use of their RCDs
 	if(!. && user)
 		to_chat(user, no_ammo_message)
 	return .
