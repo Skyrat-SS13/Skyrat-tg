@@ -379,3 +379,21 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "christmashatg"
+
+/obj/item/clothing/head/soft/nt_baseball
+	name = "nanotrasen baseball cap"
+	desc = "\"Scientia. Potentia. Securitas.\"" //Fun fact, per Exadv1's original SS13 lore (2003-ish), NT's motto was this in english: "Knowledge. Power. Security."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	icon_state = "nanotrasen_bbsoft"
+	soft_type = "nanotrasen_bb" //Did you know that the 'soft' caps force-add soft to the end of icon_states, but only after being equipped once? TG sure is wacky!
+	dog_fashion = null
+
+/obj/item/clothing/head/soft/syndie_baseball
+	name = "syndicate baseball cap"
+	desc = "\"Sic semper tyrannis.\""
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	icon_state = "syndicate_bbsoft"
+	soft_type = "syndicate_bb"
+	dog_fashion = null
