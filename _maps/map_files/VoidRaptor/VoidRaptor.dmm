@@ -926,11 +926,15 @@
 /turf/closed/wall,
 /area/station/maintenance/disposal/incinerator)
 "ats" = (
-/obj/structure/sign/poster/contraband/dancing_honk{
-	pixel_y = -32
+/obj/machinery/conveyor{
+	dir = 1;
+	id = "garbage"
 	},
-/turf/open/floor/catwalk_floor/iron_smooth,
-/area/station/science/robotics/mechbay)
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/turf/open/floor/iron/smooth,
+/area/station/maintenance/disposal)
 "att" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 8
@@ -3761,16 +3765,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/wood/large,
 /area/station/service/library)
-"bEt" = (
-/obj/machinery/conveyor{
-	dir = 1;
-	id = "garbage"
-	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/turf/open/floor/iron/smooth,
-/area/station/maintenance/disposal)
 "bES" = (
 /obj/effect/turf_decal/bot,
 /obj/machinery/holopad/secure,
@@ -7171,21 +7165,10 @@
 /turf/open/floor/engine/reinforced,
 /area/station/science/auxlab/firing_range)
 "cVP" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
-	dir = 1
-	},
 /obj/effect/turf_decal/trimline/neutral/filled/line,
 /obj/effect/turf_decal/trimline/neutral/filled/line,
 /obj/effect/turf_decal/trimline/neutral/filled/line,
 /obj/machinery/light/directional/south,
-/obj/structure/closet/secure_closet/personal{
-	name = "Commissary Locker"
-	},
-/obj/effect/spawner/random/trash/janitor_supplies,
-/obj/effect/spawner/random/bureaucracy/briefcase{
-	spawn_loot_count = 2;
-	spawn_random_offset = 1
-	},
 /obj/item/storage/secure/safe/directional/south,
 /turf/open/floor/iron/edge{
 	dir = 1
@@ -11449,13 +11432,12 @@
 /area/station/medical/morgue)
 "eDF" = (
 /obj/structure/chair/stool/directional/west,
-/obj/machinery/mineral/stacking_unit_console{
-	machinedir = 8;
-	pixel_y = -32;
-	pixel_x = -32
-	},
 /obj/machinery/power/apc/auto_name/directional/south,
 /obj/structure/cable,
+/obj/machinery/mineral/stacking_unit_console{
+	pixel_x = -32;
+	pixel_y = -32
+	},
 /turf/open/floor/catwalk_floor/iron_smooth,
 /area/station/maintenance/disposal)
 "eDN" = (
@@ -11700,9 +11682,15 @@
 /turf/open/floor/iron/large,
 /area/station/security/checkpoint/customs)
 "eHk" = (
-/obj/machinery/duct,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/machinery/conveyor{
+	dir = 8;
+	id = "garbage"
+	},
 /turf/open/floor/iron/smooth,
-/area/station/commons/vacant_room)
+/area/station/maintenance/disposal)
 "eHu" = (
 /obj/machinery/air_sensor/air_tank,
 /turf/open/floor/engine/air,
@@ -11842,9 +11830,10 @@
 /area/station/service/hydroponics)
 "eKw" = (
 /obj/machinery/conveyor{
-	dir = 5;
+	dir = 9;
 	id = "garbage"
 	},
+/obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
 	dir = 8
 	},
@@ -12181,7 +12170,6 @@
 /turf/open/floor/iron/smooth,
 /area/station/maintenance/disposal)
 "eSl" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/disposalpipe/segment{
 	dir = 6
 	},
@@ -14887,10 +14875,11 @@
 /turf/open/floor/iron/grimy,
 /area/station/commons/lounge)
 "gcr" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/disposalpipe/segment{
 	dir = 9
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 1
 	},
 /turf/open/floor/iron/large,
 /area/station/commons/vacant_room)
@@ -18004,6 +17993,7 @@
 /obj/effect/turf_decal/trimline/neutral/filled/line{
 	dir = 1
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/edge,
 /area/station/commons/vacant_room)
 "hhX" = (
@@ -21848,16 +21838,6 @@
 	},
 /turf/open/floor/iron/dark/smooth_edge,
 /area/station/engineering/main)
-"iPO" = (
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/machinery/conveyor{
-	dir = 8;
-	id = "garbage"
-	},
-/turf/open/floor/iron/smooth,
-/area/station/maintenance/disposal)
 "iPZ" = (
 /turf/open/space/openspace,
 /area/station/maintenance/port/greater)
@@ -28449,6 +28429,7 @@
 	dir = 8
 	},
 /obj/structure/disposalpipe/segment,
+/obj/effect/landmark/start/security_officer,
 /turf/open/floor/iron/dark/smooth_edge{
 	dir = 4
 	},
@@ -28695,6 +28676,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
+/obj/effect/landmark/start/warden,
 /turf/open/floor/iron/dark/smooth_edge{
 	dir = 4
 	},
@@ -28897,7 +28879,6 @@
 /obj/effect/turf_decal/trimline/red/filled/warning{
 	dir = 1
 	},
-/obj/effect/landmark/start/security_officer,
 /turf/open/floor/iron/edge,
 /area/station/hallway/primary/fore)
 "lze" = (
@@ -36060,10 +36041,9 @@
 /area/station/science/research)
 "oel" = (
 /obj/machinery/conveyor{
-	dir = 9;
+	dir = 5;
 	id = "garbage"
 	},
-/obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
 	dir = 8
 	},
@@ -36245,15 +36225,11 @@
 /turf/open/floor/iron/smooth,
 /area/station/engineering/atmos)
 "ohv" = (
-/obj/structure/sign/poster/contraband/crocin_pool{
+/obj/structure/sign/poster/contraband/dancing_honk{
 	pixel_y = -32
 	},
-/turf/open/water/overlay{
-	desc = "It's a pool for swimming in!";
-	icon_state = "hotspring_tile";
-	name = "pool"
-	},
-/area/station/common/pool)
+/turf/open/floor/catwalk_floor/iron_smooth,
+/area/station/science/robotics/mechbay)
 "oia" = (
 /obj/structure/cable,
 /obj/effect/landmark/start/chaplain,
@@ -40804,7 +40780,11 @@
 /obj/effect/turf_decal/trimline/neutral/filled/warning{
 	dir = 9
 	},
-/obj/item/radio/intercom/directional/north,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 4
+	},
+/obj/structure/sink/directional/south,
+/obj/structure/mirror/directional/north,
 /turf/open/floor/iron,
 /area/station/commons/vacant_room)
 "pXL" = (
@@ -41889,7 +41869,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
-/obj/effect/landmark/start/warden,
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/security/warden)
 "qpy" = (
@@ -45050,7 +45029,6 @@
 	dir = 10
 	},
 /obj/structure/disposalpipe/segment,
-/obj/effect/landmark/start/security_officer,
 /turf/open/floor/vault,
 /area/station/hallway/secondary/command)
 "rBO" = (
@@ -45662,6 +45640,7 @@
 	dir = 6
 	},
 /obj/structure/disposalpipe/segment,
+/obj/effect/landmark/start/security_officer,
 /turf/open/floor/iron/dark/smooth_edge{
 	dir = 1
 	},
@@ -47145,6 +47124,16 @@
 /obj/structure/lattice/catwalk,
 /turf/open/space,
 /area/station/solars/starboard/fore)
+"soP" = (
+/obj/structure/sign/poster/contraband/crocin_pool{
+	pixel_y = -32
+	},
+/turf/open/water/overlay{
+	desc = "It's a pool for swimming in!";
+	icon_state = "hotspring_tile";
+	name = "pool"
+	},
+/area/station/common/pool)
 "soS" = (
 /obj/structure/dresser,
 /obj/item/toy/figure/hos{
@@ -52576,9 +52565,6 @@
 /turf/open/floor/iron/white/smooth_edge,
 /area/station/science/auxlab)
 "uqY" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
-	dir = 4
-	},
 /obj/effect/turf_decal/trimline/neutral/filled/line{
 	dir = 8
 	},
@@ -52588,12 +52574,15 @@
 /obj/effect/turf_decal/trimline/neutral/filled/line{
 	dir = 8
 	},
-/obj/structure/sink{
-	dir = 4;
-	pixel_x = -12;
-	pixel_y = -6
+/obj/item/radio/intercom/directional/west,
+/obj/structure/closet/secure_closet/personal{
+	name = "Commissary Locker"
 	},
-/obj/structure/mirror/directional/west,
+/obj/effect/spawner/random/trash/janitor_supplies,
+/obj/effect/spawner/random/bureaucracy/briefcase{
+	spawn_loot_count = 2;
+	spawn_random_offset = 1
+	},
 /turf/open/floor/iron/edge{
 	dir = 4
 	},
@@ -55180,6 +55169,7 @@
 	dir = 1
 	},
 /obj/structure/chair/office,
+/obj/effect/landmark/start/warden,
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/security/warden)
 "vpA" = (
@@ -62679,6 +62669,7 @@
 /obj/effect/turf_decal/siding/red{
 	dir = 4
 	},
+/obj/effect/landmark/start/security_medic,
 /turf/open/floor/iron/dark/smooth_edge{
 	dir = 4
 	},
@@ -93193,7 +93184,7 @@ xvd
 kuc
 kSM
 jss
-vwo
+wMT
 wMT
 pAw
 nKV
@@ -93451,7 +93442,7 @@ xjX
 hhw
 jss
 wMT
-eHk
+eZa
 oMC
 mVv
 exy
@@ -94495,7 +94486,7 @@ iLH
 hfp
 pdi
 pGl
-ats
+ohv
 avA
 avA
 avA
@@ -99959,7 +99950,7 @@ eWh
 eWh
 eWh
 eWh
-ohv
+soP
 aCq
 vHX
 vHX
@@ -106671,9 +106662,9 @@ vlh
 vlh
 ify
 jPC
-eKw
-bEt
 oel
+ats
+eKw
 jHd
 jPC
 icj
@@ -107186,7 +107177,7 @@ xMq
 xMq
 uHh
 mET
-iPO
+eHk
 kub
 mET
 nee
