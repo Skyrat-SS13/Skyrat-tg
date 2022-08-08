@@ -74,13 +74,8 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 
 	var/keyname = key
 
-	//SKYRAT EDIT ADDITION
-	if(CONFIG_GET(flag/enable_cross_server_ooc))
-		send_ooc_to_other_server(ckey, msg)
-
-	if(prefs.read_preference(/datum/preference/toggle/admin/ooc_admin_tag))
-		keyname = "[icon2html('modular_skyrat/modules/admin_chat_icon/icons/admin_chat_icon.dmi', world, "admin")][keyname]"
-	//SKYRAT EDIT END
+	if(CONFIG_GET(flag/enable_cross_server_ooc)) //SKYRAT EDIT ADDITION
+		send_ooc_to_other_server(ckey, msg) //SKYRAT EDIT ADDITION
 
 	if(prefs.unlock_content)
 		if(prefs.toggles & MEMBER_PUBLIC)
