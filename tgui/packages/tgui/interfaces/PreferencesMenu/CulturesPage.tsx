@@ -23,11 +23,11 @@ export const BackgroundEntry = (props) => {
       }>
       <Stack.Item>{background.description}</Stack.Item>
       <Stack.Item>
-        <b>Economic Power:</b> {' : ' + background.economic_power}
+        <b>Economic Power:</b> {background.economic_power}
       </Stack.Item>
       {ifExists(
         <Stack.Item>
-          <b>Primary Language:</b> {' : ' + background.required_lang}
+          <b>Primary Language:</b> {background.required_lang}
         </Stack.Item>,
         background.required_lang,
         (val: string) => {
@@ -36,7 +36,7 @@ export const BackgroundEntry = (props) => {
       )}
       {ifExists(
         <Stack.Item>
-          <b>Suggested Languages:</b> {' : ' + lang_string}
+          <b>Suggested Languages:</b> {lang_string}
         </Stack.Item>,
         lang_string,
         (val: string) => {
@@ -45,7 +45,7 @@ export const BackgroundEntry = (props) => {
       )}
       {ifExists(
         <Stack.Item>
-          <b>Distance:</b> {' : ' + background.distance}
+          <b>Distance:</b> {background.distance}
         </Stack.Item>,
         background.distance,
         (val: string) => {
@@ -54,7 +54,7 @@ export const BackgroundEntry = (props) => {
       )}
       {ifExists(
         <Stack.Item>
-          <b>Ruler:</b> {' : ' + background.ruler}
+          <b>Ruler:</b> {background.ruler}
         </Stack.Item>,
         background.ruler,
         (val: string) => {
@@ -63,7 +63,7 @@ export const BackgroundEntry = (props) => {
       )}
       {ifExists(
         <Stack.Item>
-          <b>Capital:</b> {' : ' + background.capital}
+          <b>Capital:</b> {background.capital}
         </Stack.Item>,
         background.capital,
         (val: string) => {

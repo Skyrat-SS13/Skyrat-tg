@@ -133,7 +133,6 @@
 
 /datum/preference_middleware/cultures/proc/verify_culture(list/params, mob/user)
 	var/datum/cultural_info/culture = text2path(params["culture"])
-	world.log << "[culture]"
 
 	// If a preresiquite isn't selected, yeet everything that shouldn't be selected.
 	if(preferences.culture_faction && !culture)
@@ -159,7 +158,6 @@
 
 /datum/preference_middleware/cultures/proc/verify_location(list/params, mob/user)
 	var/datum/cultural_info/location = text2path(params["culture"])
-	world.log << "[location]"
 
 	// If a preresiquite isn't selected, yeet everything that shouldn't be selected.
 	if(!preferences.culture_culture)
@@ -179,7 +177,6 @@
 
 /datum/preference_middleware/cultures/proc/verify_faction(list/params, mob/user)
 	var/datum/cultural_info/faction = text2path(params["culture"])
-	world.log << "[faction]"
 
 	// If a preresiquite isn't selected, yeet everything that shouldn't be selected.
 	if(!preferences.culture_culture)
