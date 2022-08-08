@@ -53,7 +53,7 @@
 
 // Sets the energy cost to use the RLD - Fail Message when out of energy. 
 /obj/item/construction/rld/borg
-	no_ammo_message = "<span class='warning'>Insufficient charge.</span>"
+	no_ammo_message = "Insufficient charge."
 	desc = "A device used to rapidly build walls and floors."
 	var/energyfactor = 72
 
