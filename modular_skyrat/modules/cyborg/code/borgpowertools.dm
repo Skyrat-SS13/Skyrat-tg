@@ -48,3 +48,36 @@
 		tool_behaviour = TOOL_SCREWDRIVER
 		to_chat(user, span_notice("You attach the screw bit to [src]."))
 		icon_state = "drill_screw_cyborg"
+
+// Rapid Light Dispenser 
+
+/obj/item/construction/rld/borg
+	no_ammo_message = "<span class='warning'>Insufficient charge.</span>"
+	desc = "A device used to rapidly build walls and floors."
+	var/energyfactor = 72
+
+/obj/item/construction/rld/borg/useResource(amount, mob/user)
+	if(!iscyborg(user))
+		return 0
+	var/mob/living/silicon/robot/borgy = user
+	if(!borgy.cell)
+		if(user)
+			to_chat(user, no_ammo_message)
+		return 0
+	. = borgy.cell.use(amount * energyfactor) //borgs get 1.3x the use of their RCDs
+	if(!. && user)
+		to_chat(user, no_ammo_message)
+	return .
+
+/obj/item/construction/rld/borg/checkResource(amount, mob/user)
+	if(!iscyborg(user))
+		return 0
+	var/mob/living/silicon/robot/borgy = user
+	if(!borgy.cell)
+		if(user)
+			to_chat(user, no_ammo_message)
+		return 0
+	. = borgy.cell.charge >= (amount * energyfactor)
+	if(!. && user)
+		to_chat(user, no_ammo_message)
+	return .
