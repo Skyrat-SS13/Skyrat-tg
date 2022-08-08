@@ -7,6 +7,3 @@
 		/obj/item/mod/module/jetpack/advanced,
 		/obj/item/mod/module/chameleon,
 	)
-
-/obj/item/mod/control/pre_equipped/nuclear/infiltrator
-	req_access = null
