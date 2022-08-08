@@ -147,7 +147,7 @@
 
 /obj/item/clothing/under/rank/captain/skyrat/baseball
 	name = "nanotrasen baseball tee"
-	desc = "Up to throw we have the NanoTrasen Thuggers, already winding up a plasma-fuelled pitch!"
+	desc = "Up to throw we have the Nanotrasen Thuggers, already winding up a plasma-fuelled pitch!"
 	icon_state = "nanotrasen_baseball"
 
 /obj/item/clothing/under/rank/captain/skyrat/pilot
