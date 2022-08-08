@@ -7,7 +7,7 @@
 	if(isopenturf(loc))
 		var/turf/open/my_our_turf = loc
 		if(my_our_turf.pollution)
-			my_our_turf.pollution.TouchAct(src)
+			my_our_turf.pollution.touch_act(src)
 	//SKYRAT EDIT END
 
 	if(damageoverlaytemp)
@@ -141,8 +141,8 @@
 					if(open_turf.pollution)
 						if(next_smell <= world.time)
 							next_smell = world.time + SMELL_COOLDOWN
-							open_turf.pollution.SmellAct(src)
-						open_turf.pollution.BreatheAct(src)
+							open_turf.pollution.smell_act(src)
+						open_turf.pollution.breathe_act(src)
 				//SKYRAT EDIT END
 				var/breath_moles = 0
 				if(environment)
@@ -346,14 +346,11 @@
 
 /mob/living/carbon/proc/get_breath_from_internal(volume_needed)
 	if(internal)
-		if(internal.loc != src)
+		if(internal.loc != src && !(wear_mask.clothing_flags & MASK_EXTEND_RANGE)) //SKYRAT EDIT ANESTHETIC MACHINE. ORIGNIAL CODE: if(internal.loc != src)
 			internal = null
-			update_internals_hud_icon(0)
 		else if ((!wear_mask || !(wear_mask.clothing_flags & MASKINTERNALS)) && !getorganslot(ORGAN_SLOT_BREATHING_TUBE))
 			internal = null
-			update_internals_hud_icon(0)
 		else
-			update_internals_hud_icon(1)
 			. = internal.remove_air_volume(volume_needed)
 			if(!.)
 				return FALSE //to differentiate between no internals and active, but empty internals

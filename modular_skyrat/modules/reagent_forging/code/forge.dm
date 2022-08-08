@@ -67,6 +67,8 @@
 		"Pickaxe" = /obj/item/forging/incomplete/pickaxe,
 		"Shovel" = /obj/item/forging/incomplete/shovel,
 		"Arrowhead" = /obj/item/forging/incomplete/arrowhead,
+		"Rail Nail" = /obj/item/forging/incomplete/rail_nail,
+		"Rail Cart" = /obj/item/forging/incomplete/rail_cart,
 	)
 	///radial button for acting as an oven on a food object
 	var/static/radial_oven = image(icon = 'modular_skyrat/modules/reagent_forging/icons/hud/forge_radials.dmi', icon_state = "oven")

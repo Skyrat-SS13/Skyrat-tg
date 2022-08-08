@@ -55,7 +55,6 @@
 	the poverty line, often holding feelings of resentment against the other people of Luna."
 	capital = "Selene"
 	economic_power = 1.3
-	additional_langs = list(/datum/language/selenian)
 
 
 /datum/cultural_info/location/venus
@@ -143,7 +142,7 @@
 	distance = "22.5 light years."
 	economic_power = 0.9
 	ruling_body = "Gilgamesh Colonial Confederation"
-	required_lang = /datum/language/neorusskya
+	required_lang = /datum/language/panslavic
 
 /datum/cultural_info/location/tersten
 	name = "Tersten"

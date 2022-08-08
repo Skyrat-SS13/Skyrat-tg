@@ -42,11 +42,7 @@
 /obj/structure/toilet{
 	pixel_y = 16
 	},
-/obj/structure/sink{
-	dir = 4;
-	pixel_x = -12;
-	pixel_y = -6
-	},
+/obj/structure/sink/directional/east,
 /obj/structure/mirror/directional/north,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 4
@@ -1290,8 +1286,8 @@
 /obj/item/storage/belt/utility/syndicate,
 /obj/item/inducer/syndicate,
 /obj/item/clothing/head/soft/sec/syndicate,
-/obj/item/clothing/under/syndicate/overalls,
-/obj/item/clothing/under/syndicate/skirt/overalls,
+/obj/item/clothing/under/syndicate/skyrat/overalls,
+/obj/item/clothing/under/syndicate/skyrat/overalls/skirt,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "eD" = (
@@ -1308,10 +1304,7 @@
 /obj/effect/turf_decal/siding/wideplating/corner{
 	dir = 1
 	},
-/obj/structure/sink{
-	dir = 8;
-	pixel_x = 12
-	},
+/obj/structure/sink/directional/west,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/grass,
 /area/ruin/space/has_grav/skyrat/interdynefob/maintenance/southwest)
@@ -1461,9 +1454,7 @@
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/maintenance/southwest)
 "fo" = (
-/obj/machinery/shower{
-	dir = 4
-	},
+/obj/machinery/shower/directional/east,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
 /turf/open/floor/iron/freezer,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
@@ -1596,10 +1587,11 @@
 /area/template_noop)
 "fH" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/turnstile{
-	dir = 1;
-	req_one_access_txt = "151"
+/obj/machinery/door/airlock/security/old{
+	name = "Long-Term Brig"
 	},
+/obj/effect/mapping_helpers/airlock/access/all/syndicate,
+/obj/effect/mapping_helpers/airlock/cutaiwire,
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/security)
 "fJ" = (
@@ -1728,9 +1720,7 @@
 	},
 /area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
 "gd" = (
-/obj/machinery/shower{
-	pixel_y = 12
-	},
+/obj/machinery/shower/directional/south,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 4
 	},
@@ -1883,7 +1873,7 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge)
 "gD" = (
 /obj/effect/spawner/liquids_spawner{
-	reagent_list = list(/datum/reagent/water = 600)
+	reagent_list = list(/datum/reagent/water=600)
 	},
 /turf/open/misc/asteroid,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge)
@@ -3064,9 +3054,7 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge/eva)
 "kL" = (
-/obj/machinery/shower{
-	dir = 8
-	},
+/obj/machinery/shower/directional/west,
 /turf/open/floor/iron/freezer,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
 "kM" = (
@@ -3173,7 +3161,7 @@
 /turf/open/floor/iron/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/research)
 "kZ" = (
-/obj/machinery/cryopod/quiet{
+/obj/machinery/cryopod{
 	dir = 4
 	},
 /turf/open/floor/iron/dark,
@@ -3958,11 +3946,7 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 4
 	},
-/obj/structure/sink{
-	dir = 8;
-	pixel_x = 12;
-	pixel_y = -6
-	},
+/obj/structure/sink/directional/west,
 /obj/structure/sign/poster/contraband/lusty_xenomorph{
 	pixel_x = 32
 	},
@@ -4107,9 +4091,7 @@
 /turf/open/floor/mineral/plastitanium/red,
 /area/ruin/space/has_grav/skyrat/interdynefob/halls)
 "oE" = (
-/obj/structure/sink{
-	pixel_y = 22
-	},
+/obj/structure/sink/directional/south,
 /obj/structure/mirror/directional/north,
 /turf/open/floor/iron/freezer,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
@@ -4141,7 +4123,7 @@
 /obj/structure/flora/ocean/seaweed,
 /obj/machinery/light/directional/east,
 /obj/effect/spawner/liquids_spawner{
-	reagent_list = list(/datum/reagent/water = 600)
+	reagent_list = list(/datum/reagent/water=600)
 	},
 /turf/open/misc/asteroid,
 /area/ruin/space/has_grav/skyrat/interdynefob/service/diner)
@@ -4300,9 +4282,7 @@
 /turf/open/floor/grass,
 /area/ruin/space/has_grav/skyrat/interdynefob/service/dorms/fitness)
 "pi" = (
-/obj/machinery/shower{
-	dir = 4
-	},
+/obj/machinery/shower/directional/east,
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
 	dir = 5
 	},
@@ -4354,7 +4334,7 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/service/diner)
 "pr" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/item/clothing/suit/nerdshirt,
+/obj/item/clothing/suit/costume/nerdshirt,
 /obj/effect/decal/cleanable/blood/footprints{
 	dir = 8
 	},
@@ -4401,18 +4381,18 @@
 /obj/item/storage/box/ingredients/fiesta,
 /obj/item/storage/box/ingredients/american,
 /obj/item/reagent_containers/food/condiment/flour{
-	list_reagents = list(/datum/reagent/consumable/flour = 600);
+	list_reagents = list(/datum/reagent/consumable/flour=600);
 	name = "Premium All-Purpose Flour (16KG)";
 	volume = 600
 	},
 /obj/item/reagent_containers/food/condiment/milk,
 /obj/item/reagent_containers/food/condiment/enzyme{
-	list_reagents = list(/datum/reagent/consumable/enzyme = 500);
+	list_reagents = list(/datum/reagent/consumable/enzyme=500);
 	name = "universe-sized universal enyzyme";
 	volume = 500
 	},
 /obj/item/reagent_containers/food/condiment/rice{
-	list_reagents = list(/datum/reagent/consumable/rice = 150);
+	list_reagents = list(/datum/reagent/consumable/rice=150);
 	name = "Basmati Rice Sack (4KG)";
 	volume = 150
 	},
@@ -4473,9 +4453,7 @@
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/skyrat/interdynefob/service/library)
 "pK" = (
-/obj/machinery/shower{
-	pixel_y = 12
-	},
+/obj/machinery/shower/directional/south,
 /obj/effect/turf_decal/siding/thinplating,
 /obj/item/soap/syndie,
 /turf/open/floor/iron/showroomfloor,
@@ -4645,9 +4623,7 @@
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/maintenance/southeast)
 "qi" = (
-/obj/machinery/shower{
-	dir = 4
-	},
+/obj/machinery/shower/directional/east,
 /obj/effect/turf_decal/trimline/darkblue/end{
 	dir = 4
 	},
@@ -4795,9 +4771,7 @@
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/skyrat/interdynefob/service/library)
 "qC" = (
-/obj/machinery/shower{
-	dir = 4
-	},
+/obj/machinery/shower/directional/east,
 /obj/structure/drain,
 /turf/open/floor/iron/white/side{
 	dir = 4
@@ -4821,7 +4795,7 @@
 /obj/structure/flora/ocean/longseaweed,
 /obj/structure/flora/ocean/glowweed,
 /obj/effect/spawner/liquids_spawner{
-	reagent_list = list(/datum/reagent/water = 600)
+	reagent_list = list(/datum/reagent/water=600)
 	},
 /turf/open/misc/asteroid,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge)
@@ -5214,16 +5188,15 @@
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/halls)
 "sg" = (
-/obj/machinery/computer/cryopod{
-	dir = 4;
-	pixel_x = -24;
-	req_one_access = list(150)
-	},
 /obj/effect/turf_decal/delivery/white{
 	color = "#00ff00";
 	name = "green"
 	},
-/obj/machinery/cryopod/quiet{
+/obj/machinery/computer/cryopod/interdyne{
+	dir = 4;
+	pixel_x = -24
+	},
+/obj/machinery/cryopod{
 	dir = 4
 	},
 /turf/open/floor/iron/dark,
@@ -6394,7 +6367,7 @@
 "we" = (
 /obj/structure/flora/ocean/longseaweed,
 /obj/effect/spawner/liquids_spawner{
-	reagent_list = list(/datum/reagent/water = 600)
+	reagent_list = list(/datum/reagent/water=600)
 	},
 /turf/open/misc/asteroid,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge)
@@ -6449,11 +6422,7 @@
 /obj/structure/toilet{
 	pixel_y = 16
 	},
-/obj/structure/sink{
-	dir = 8;
-	pixel_x = 12;
-	pixel_y = -6
-	},
+/obj/structure/sink/directional/west,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/mirror/directional/north,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
@@ -6465,7 +6434,7 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
 "wo" = (
 /obj/machinery/light/directional/north,
-/obj/machinery/cryopod/quiet{
+/obj/machinery/cryopod{
 	dir = 4
 	},
 /turf/open/floor/iron/dark,
@@ -6529,9 +6498,7 @@
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/armory)
 "ww" = (
-/obj/structure/sink/kitchen{
-	dir = 1
-	},
+/obj/structure/sink/kitchen/directional/north,
 /turf/open/floor/iron/kitchen{
 	dir = 4
 	},
@@ -6646,9 +6613,7 @@
 /turf/open/floor/catwalk_floor/iron,
 /area/ruin/space/has_grav/skyrat/interdynefob/maintenance/southwest)
 "wR" = (
-/obj/machinery/shower{
-	dir = 4
-	},
+/obj/machinery/shower/directional/east,
 /obj/machinery/airalarm/directional/north{
 	req_access = list(150)
 	},
@@ -6746,9 +6711,7 @@
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/maintenance/southeast)
 "xl" = (
-/obj/machinery/shower{
-	dir = 8
-	},
+/obj/machinery/shower/directional/west,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
 /turf/open/floor/iron/freezer,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
@@ -6885,10 +6848,7 @@
 /turf/open/floor/catwalk_floor/iron,
 /area/ruin/space/has_grav/skyrat/interdynefob/maintenance/southeast)
 "xL" = (
-/obj/structure/sink{
-	dir = 4;
-	pixel_x = -12;
-	pixel_y = -6;
+/obj/structure/sink/directional/east{
 	reclaim_rate = 5
 	},
 /turf/open/floor/iron/kitchen,
@@ -7679,7 +7639,7 @@
 	color = "#00ff00";
 	name = "green"
 	},
-/obj/machinery/cryopod/quiet{
+/obj/machinery/cryopod{
 	dir = 4
 	},
 /turf/open/floor/iron/dark,
@@ -8861,10 +8821,7 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo/hangar)
 "Ew" = (
 /obj/effect/turf_decal/siding/blue,
-/obj/structure/sink{
-	dir = 4;
-	pixel_x = -12;
-	pixel_y = -6;
+/obj/structure/sink/directional/east{
 	reclaim_rate = 5
 	},
 /turf/open/floor/iron/dark/textured_edge,
@@ -9136,7 +9093,7 @@
 "Fu" = (
 /obj/structure/flora/rock,
 /obj/effect/spawner/liquids_spawner{
-	reagent_list = list(/datum/reagent/water = 600)
+	reagent_list = list(/datum/reagent/water=600)
 	},
 /turf/open/misc/asteroid,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge)
@@ -9252,7 +9209,7 @@
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo/hangar)
 "FQ" = (
-/obj/machinery/cryopod/quiet{
+/obj/machinery/cryopod{
 	dir = 8
 	},
 /turf/open/floor/iron/dark,
@@ -9309,10 +9266,10 @@
 "Gb" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/security/old{
-	name = "Long-Term Brig";
-	req_access = list("syndicate_leader")
+	name = "Long-Term Brig"
 	},
 /obj/effect/mapping_helpers/airlock/cutaiwire,
+/obj/effect/mapping_helpers/airlock/access/all/syndicate,
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/security)
 "Gc" = (
@@ -9389,7 +9346,7 @@
 "Gl" = (
 /obj/structure/flora/rock,
 /obj/effect/spawner/liquids_spawner{
-	reagent_list = list(/datum/reagent/water = 600)
+	reagent_list = list(/datum/reagent/water=600)
 	},
 /turf/open/misc/asteroid,
 /area/ruin/space/has_grav/skyrat/interdynefob/service/diner)
@@ -9534,7 +9491,7 @@
 "GT" = (
 /obj/structure/flora/rock/pile,
 /obj/effect/spawner/liquids_spawner{
-	reagent_list = list(/datum/reagent/water = 600)
+	reagent_list = list(/datum/reagent/water=600)
 	},
 /turf/open/misc/asteroid,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge)
@@ -9649,7 +9606,7 @@
 "Ht" = (
 /obj/structure/flora/ocean/seaweed,
 /obj/effect/spawner/liquids_spawner{
-	reagent_list = list(/datum/reagent/water = 600)
+	reagent_list = list(/datum/reagent/water=600)
 	},
 /turf/open/misc/asteroid,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge)
@@ -9821,9 +9778,7 @@
 /turf/open/floor/iron/smooth_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge/eva)
 "HY" = (
-/obj/structure/sink{
-	pixel_y = 20
-	},
+/obj/structure/sink/directional/south,
 /obj/effect/mob_spawn/ghost_role/human/ds2/syndicate/service,
 /turf/open/floor/iron/dark/smooth_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/service/hydroponics)
@@ -10237,7 +10192,7 @@
 /obj/item/bikehorn,
 /obj/item/paper/crumpled{
 	desc = "A letter from Donk co. it has a clown stamp on it, garish.";
-	info = "Hey there Deep Space 2 crew, sorry about your stolen book, hope this horn helps! HONK! -Love Donk Co.";
+	default_raw_text = "Hey there Deep Space 2 crew, sorry about your stolen book, hope this horn helps! HONK! -Love Donk Co.";
 	name = "A Note from Donk co."
 	},
 /turf/open/floor/iron/dark,
@@ -10540,9 +10495,7 @@
 "Kg" = (
 /obj/machinery/light/directional/west,
 /obj/structure/mirror/directional/south,
-/obj/structure/sink{
-	dir = 1
-	},
+/obj/structure/sink/directional/north,
 /turf/open/floor/iron/showroomfloor,
 /area/ruin/space/has_grav/skyrat/interdynefob/service/dorms/fitness)
 "Kh" = (
@@ -10784,7 +10737,7 @@
 /obj/structure/flora/ocean/coral,
 /obj/structure/flora/ocean/glowweed,
 /obj/effect/spawner/liquids_spawner{
-	reagent_list = list(/datum/reagent/water = 600)
+	reagent_list = list(/datum/reagent/water=600)
 	},
 /turf/open/misc/asteroid,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge)
@@ -10943,9 +10896,7 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/skyrat/interdynefob/maintenance/southeast)
 "Ly" = (
-/obj/machinery/shower{
-	dir = 1
-	},
+/obj/machinery/shower/directional/north,
 /obj/effect/turf_decal/siding/thinplating{
 	dir = 1
 	},
@@ -11045,7 +10996,7 @@
 /obj/structure/flora/rock/pile,
 /obj/structure/flora/ocean/glowweed,
 /obj/effect/spawner/liquids_spawner{
-	reagent_list = list(/datum/reagent/water = 600)
+	reagent_list = list(/datum/reagent/water=600)
 	},
 /turf/open/misc/asteroid,
 /area/ruin/space/has_grav/skyrat/interdynefob/service/diner)
@@ -11486,7 +11437,7 @@
 "No" = (
 /obj/machinery/light/directional/south,
 /obj/effect/spawner/liquids_spawner{
-	reagent_list = list(/datum/reagent/water = 600)
+	reagent_list = list(/datum/reagent/water=600)
 	},
 /turf/open/misc/asteroid,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge)
@@ -11648,9 +11599,7 @@
 	},
 /area/ruin/space/has_grav/skyrat/interdynefob/security)
 "NR" = (
-/obj/machinery/shower{
-	pixel_y = 12
-	},
+/obj/machinery/shower/directional/south,
 /obj/effect/turf_decal/siding/thinplating,
 /turf/open/floor/iron/showroomfloor,
 /area/ruin/space/has_grav/skyrat/interdynefob/service/dorms/fitness)
@@ -11661,8 +11610,8 @@
 	},
 /obj/structure/closet/crate,
 /obj/item/inflatable/door,
-/obj/item/clothing/suit/fire/atmos{
-	armor = list("melee" = 20, "bullet" = 30, "laser" = 20, "energy" = 20, "bomb" = 20, "bio" = 10, "fire" = 80, "acid" = 50);
+/obj/item/clothing/suit/utility/fire/atmos{
+	armor = list("melee"=20,"bullet"=30,"laser"=20,"energy"=20,"bomb"=20,"bio"=10,"fire"=80,"acid"=50);
 	desc = "An old, reinforced and obviously stolen firesuit. There's an expiry date for the thermal padding, safe to say it's well past the expiration date.";
 	name = "padded firesuit";
 	slowdown = 0.25
@@ -11723,11 +11672,7 @@
 /obj/structure/toilet{
 	pixel_y = 16
 	},
-/obj/structure/sink{
-	dir = 8;
-	pixel_x = 12;
-	pixel_y = -6
-	},
+/obj/structure/sink/directional/west,
 /obj/structure/mirror/directional/north,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 8
@@ -11786,7 +11731,7 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/maintenance/southwest)
 "Og" = (
 /obj/effect/spawner/liquids_spawner{
-	reagent_list = list(/datum/reagent/water = 600)
+	reagent_list = list(/datum/reagent/water=600)
 	},
 /obj/structure/flora/ocean/seaweed,
 /turf/open/misc/asteroid,
@@ -12063,8 +12008,8 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/service/dorms/fitness)
 "Pg" = (
 /obj/structure/table/glass,
-/obj/item/clothing/under/syndicate/overalls,
-/obj/item/clothing/under/syndicate/skirt/overalls{
+/obj/item/clothing/under/syndicate/skyrat/overalls,
+/obj/item/clothing/under/syndicate/skyrat/overalls/skirt{
 	pixel_x = -6;
 	pixel_y = 6
 	},
@@ -12226,10 +12171,9 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/service/chapel)
 "PE" = (
-/obj/machinery/computer/cryopod{
+/obj/machinery/computer/cryopod/interdyne{
 	dir = 8;
-	pixel_x = 32;
-	req_one_access = list(150)
+	pixel_x = 24
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/service/dorms)
@@ -12352,9 +12296,7 @@
 	dir = 1
 	},
 /obj/structure/drain,
-/obj/machinery/shower{
-	dir = 8
-	},
+/obj/machinery/shower/directional/west,
 /obj/structure/curtain,
 /obj/item/soap/syndie,
 /turf/open/floor/iron/showroomfloor,
@@ -12922,10 +12864,7 @@
 /turf/open/floor/iron/kitchen_coldroom/freezerfloor,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
 "RS" = (
-/obj/structure/sink{
-	dir = 8;
-	pixel_x = 12
-	},
+/obj/structure/sink/directional/west,
 /obj/structure/reagent_dispensers/watertank/high,
 /obj/item/reagent_containers/glass/bucket,
 /obj/machinery/airalarm/directional/east{
@@ -13079,7 +13018,7 @@
 "Sr" = (
 /obj/structure/flora/ocean/longseaweed,
 /obj/effect/spawner/liquids_spawner{
-	reagent_list = list(/datum/reagent/water = 600)
+	reagent_list = list(/datum/reagent/water=600)
 	},
 /turf/open/misc/asteroid,
 /area/ruin/space/has_grav/skyrat/interdynefob/service/diner)
@@ -13265,8 +13204,8 @@
 /obj/item/storage/belt/utility/syndicate,
 /obj/item/inducer/syndicate,
 /obj/item/clothing/head/soft/sec/syndicate,
-/obj/item/clothing/under/syndicate/overalls,
-/obj/item/clothing/under/syndicate/skirt/overalls,
+/obj/item/clothing/under/syndicate/skyrat/overalls,
+/obj/item/clothing/under/syndicate/skyrat/overalls/skirt,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
 "Tf" = (
@@ -13545,6 +13484,10 @@
 "TX" = (
 /obj/structure/loom,
 /obj/machinery/light/small/directional/north,
+/obj/machinery/door/airlock/security/old{
+	name = "Long-Term Brig";
+	req_access = list("syndicate_leader")
+	},
 /turf/open/floor/vault/rock,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
 "Ua" = (
@@ -13654,9 +13597,7 @@
 	},
 /area/ruin/space/has_grav/skyrat/interdynefob/medbay)
 "Uu" = (
-/obj/structure/sink{
-	dir = 1
-	},
+/obj/structure/sink/directional/north,
 /turf/open/floor/iron/dark/smooth_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/service/hydroponics)
 "Uv" = (
@@ -13805,9 +13746,7 @@
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo/hangar)
 "Vb" = (
-/obj/machinery/shower{
-	dir = 8
-	},
+/obj/machinery/shower/directional/west,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
 	dir = 10
@@ -13972,11 +13911,7 @@
 /obj/structure/toilet{
 	pixel_y = 16
 	},
-/obj/structure/sink{
-	dir = 4;
-	pixel_x = -12;
-	pixel_y = -6
-	},
+/obj/structure/sink/directional/east,
 /obj/structure/mirror/directional/north,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 4
@@ -14414,9 +14349,7 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/skyrat/interdynefob/maintenance/southwest)
 "Xk" = (
-/obj/machinery/shower{
-	dir = 4
-	},
+/obj/machinery/shower/directional/east,
 /obj/structure/drain,
 /turf/open/floor/iron/dark/smooth_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/engineering)
@@ -14545,12 +14478,12 @@
 /obj/structure/cable,
 /obj/item/clothing/head/sec/navywarden/syndicate,
 /obj/item/clothing/suit/armor/hos/trenchcoat{
-	armor = list("melee" = 35, "bullet" = 30, "laser" = 30, "energy" = 40, "bomb" = 25, "bio" = 0, "fire" = 50, "acid" = 50, "wound" = 10);
+	armor = list("melee"=35,"bullet"=30,"laser"=30,"energy"=40,"bomb"=25,"bio"=0,"fire"=50,"acid"=50,"wound"=10);
 	desc = "A trenchcoat enhanced with a special lightweight kevlar. It has little Syndicate logos sewn onto the shoulder badges with the letters 'MAA' just under it.";
 	name = "Master at arms' armored trenchcoat"
 	},
 /obj/item/clothing/suit/armor/hos{
-	armor = list("melee" = 35, "bullet" = 30, "laser" = 30, "energy" = 40, "bomb" = 25, "bio" = 0, "fire" = 50, "acid" = 50, "wound" = 10);
+	armor = list("melee"=35,"bullet"=30,"laser"=30,"energy"=40,"bomb"=25,"bio"=0,"fire"=50,"acid"=50,"wound"=10);
 	desc = "A greatcoat enhanced with a special alloy for some extra protection and style for those with a likely chance to get bullied for being outside of the brig";
 	name = "Master at arms' armored greatcoat"
 	},

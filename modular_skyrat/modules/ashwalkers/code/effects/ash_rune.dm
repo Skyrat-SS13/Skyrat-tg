@@ -5,6 +5,7 @@ GLOBAL_LIST_EMPTY(ash_rituals)
 	desc = "A remnant of a civilization that was once powerful enough to harness strange energy for transmutations."
 	icon = 'modular_skyrat/modules/ashwalkers/icons/ash_ritual.dmi'
 	icon_state = "rune"
+	anchored = TRUE
 
 	/// the current chosen ritual
 	var/datum/ash_ritual/current_ritual = null
@@ -63,6 +64,7 @@ GLOBAL_LIST_EMPTY(ash_rituals)
 	desc = "This rune seems to have some weird vacuum to it."
 	icon = 'modular_skyrat/modules/ashwalkers/icons/ash_ritual.dmi'
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF | FREEZE_PROOF
+	anchored = TRUE
 	/// the central rune that this is connected to
 	var/obj/effect/ash_rune/connected_rune
 

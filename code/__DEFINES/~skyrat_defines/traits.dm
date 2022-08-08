@@ -45,9 +45,6 @@
 //Makes sure that people cant be cult sacrificed twice.
 #define TRAIT_SACRIFICED "sacrificed"
 
-//Adds 2 seconds to the Goliath tentacle stun timer.
-#define TRAIT_GOLIATH_STUN "goliath_stun"
-
 /// The trait that determines if someone has the oversized quirk.
 #define TRAIT_OVERSIZED "trait_oversized"
 
