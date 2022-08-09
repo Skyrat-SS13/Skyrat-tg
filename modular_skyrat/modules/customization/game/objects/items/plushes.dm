@@ -145,13 +145,10 @@
 	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/slime_squish.ogg' = 1)
 	young = TRUE //No.
 //Storage component for Sharknet Plushie//
-/obj/item/toy/plush/skyrat/sharknet/ComponentInitialize()
-	var/datum/component/storage/concrete/storage = AddComponent(/datum/component/storage/concrete)
-	storage.max_items = 2
-	storage.max_w_class = WEIGHT_CLASS_SMALL
-	storage.set_holdable(list(
-		/obj/item/toy/plush/skyrat/pintaplush,
-		))
+/obj/item/toy/plush/sharknet/Initialize()
+	. = ..()
+
+	create_storage(max_slots = 2, max_specific_storage = WEIGHT_CLASS_SMALL, canhold = list(/obj/item/toy/plush/skyrat/pintaplush))
 //End of storage component//
 
 /obj/item/toy/plush/skyrat/pintaplush
@@ -565,3 +562,10 @@
 	name = "dark and brooding lizard plush"
 	desc = "An almost intimidating black lizard plush, this one's got a little beret to come with it! Best not to separate the two. Its eyes shine with suggestion, no maidens?"
 	icon_state = "plushie_shyshadow"
+
+// Donation reward for Dudewithatude
+/obj/item/toy/plush/skyrat/plushie_star
+	name = "star angel plush"
+	desc = "The plushie of a celestial in the known universe."
+	icon_state = "plushie_star"
+	gender = FEMALE

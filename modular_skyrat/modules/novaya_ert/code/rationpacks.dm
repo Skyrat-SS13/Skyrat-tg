@@ -38,10 +38,9 @@
 	icon_state = "mre_package"
 	illustration = null
 
-/obj/item/storage/box/nri_rations/ComponentInitialize()
+/obj/item/storage/box/nri_rations/Initialize()
 	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	STR.max_items = 7
+	atom_storage.max_slots = 7
 
 /obj/item/storage/box/nri_rations/PopulateContents()
 	new /obj/item/food/nri_course/entree(src)

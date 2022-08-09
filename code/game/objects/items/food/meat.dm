@@ -169,6 +169,15 @@
 	icon_state = "vegetariansushislice"
 	desc = "A slice of customized sushi."
 
+/obj/item/food/nigiri_sushi
+	name = "nigiri sushi"
+	desc = "A simple nigiri of fish atop a packed rice ball with a seaweed wrapping and a side of soy sauce."
+	icon = 'icons/obj/food/food.dmi'
+	icon_state = "nigiri_sushi"
+	food_reagents = list(/datum/reagent/consumable/nutriment = 4, /datum/reagent/consumable/nutriment/vitamin = 2, /datum/reagent/consumable/nutriment/protein = 2)
+	tastes = list("boiled rice" = 4, "fish filet" = 2, "soy sauce" = 2)
+	foodtypes = SEAFOOD | VEGETABLES
+	w_class = WEIGHT_CLASS_SMALL
 
 ////////////////////////////////////////////MEATS AND ALIKE////////////////////////////////////////////
 
@@ -461,7 +470,7 @@
 		bananas.faction = faction
 	if (!QDELETED(bananas))
 		visible_message(span_notice("[src] expands!"))
-		bananas.log_message("Spawned via [src] at [AREACOORD(src)], Last attached mob: [key_name(spammer)].", LOG_ATTACK)
+		bananas.log_message("spawned via [src], Last attached mob: [key_name(spammer)].", LOG_ATTACK)
 	else if (!spammer) // Visible message in case there are no fingerprints
 		visible_message(span_notice("[src] fails to expand!"))
 	qdel(src)
@@ -481,6 +490,7 @@
 	playsound(user, 'sound/items/eatfood.ogg', rand(10, 50), TRUE)
 	user.temporarilyRemoveItemFromInventory(src) //removes from hands, keeps in M
 	addtimer(CALLBACK(src, .proc/finish_suicide, user), 15) //you've eaten it, you can run now
+
 	return MANUAL_SUICIDE
 
 /obj/item/food/monkeycube/proc/finish_suicide(mob/living/user) ///internal proc called by a monkeycube's suicide_act using a timer and callback. takes as argument the mob/living who activated the suicide
@@ -837,6 +847,11 @@
 	name = "monkey meat"
 	foodtypes = RAW | MEAT
 
+/obj/item/food/meat/slab/bugmeat
+	name = "bug meat"
+	icon_state = "spidermeat"
+	foodtypes = RAW | MEAT | BUGS
+
 /obj/item/food/meat/slab/mouse
 	name = "mouse meat"
 	desc = "A slab of mouse meat. Best not eat it raw."
@@ -855,6 +870,15 @@
 /obj/item/food/meat/slab/corgi/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/swabable, CELL_LINE_TABLE_CORGI, CELL_VIRUS_TABLE_GENERIC_MOB)
+
+/obj/item/food/meat/slab/mothroach
+	name = "mothroach meat"
+	desc = "A light slab of meat."
+	foodtypes = RAW | MEAT | GROSS
+
+/obj/item/food/meat/slab/mothroach/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/swabable, CELL_VIRUS_TABLE_GENERIC_MOB)
 
 /obj/item/food/meat/slab/pug
 	name = "pug meat"

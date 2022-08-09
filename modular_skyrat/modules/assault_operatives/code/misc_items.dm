@@ -5,14 +5,13 @@
 	icon_state = "medpen_pouch"
 	slot_flags = ITEM_SLOT_BELT | ITEM_SLOT_POCKETS
 
-/obj/item/storage/bag/medpens/ComponentInitialize()
+/obj/item/storage/bag/medpens/Initialize()
 	. = ..()
-	var/datum/component/storage/storage_component = GetComponent(/datum/component/storage)
-	storage_component.max_w_class = WEIGHT_CLASS_NORMAL
-	storage_component.max_combined_w_class = 30
-	storage_component.max_items = 4
-	storage_component.display_numerical_stacking = FALSE
-	storage_component.can_hold = typecacheof(list(/obj/item/reagent_containers/hypospray))
+	atom_storage.max_specific_storage = WEIGHT_CLASS_NORMAL
+	atom_storage.max_total_storage = 30
+	atom_storage.max_slots = 4
+	atom_storage.numerical_stacking = FALSE
+	atom_storage.can_hold = typecacheof(list(/obj/item/reagent_containers/hypospray))
 
 
 /obj/item/storage/bag/medpens/PopulateContents()

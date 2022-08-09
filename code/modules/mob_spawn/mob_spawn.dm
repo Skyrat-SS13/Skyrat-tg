@@ -74,8 +74,7 @@
 			spawned_human.skin_tone = skin_tone
 		else
 			spawned_human.skin_tone = random_skin_tone()
-		spawned_human.update_hair()
-		spawned_human.update_body()
+		spawned_human.update_body(is_creating = TRUE)
 
 /obj/effect/mob_spawn/proc/name_mob(mob/living/spawned_mob, forced_name)
 	var/chosen_name
@@ -159,6 +158,9 @@
 	if(!SSticker.HasRoundStarted() || !loc)
 		return
 	// SKYRAT EDIT ADDITION
+	if(is_banned_from(user.ckey, BAN_GHOST_ROLE_SPAWNER)) // Ghost role bans
+		to_chat(user, "Error, you are banned from playing ghost roles!")
+		return
 	if(restricted_species && !(user.client?.prefs?.read_preference(/datum/preference/choiced/species) in restricted_species))
 		balloon_alert(user, "incorrect species!")
 		return
@@ -180,7 +182,7 @@
 		return
 	if(QDELETED(src) || QDELETED(user))
 		return
-	log_game("[key_name(user)] became a [prompt_name]")
+	user.log_message("became a [prompt_name].", LOG_GAME)
 	create(user)
 
 /obj/effect/mob_spawn/ghost_role/special(mob/living/spawned_mob, mob/mob_possessor)

@@ -136,8 +136,8 @@ GLOBAL_VAR_INIT(successful_blood_chem, 0)
 	icon_state = "brainslug"
 	icon_living = "brainslug"
 	icon_dead = "brainslug_dead"
-	maxHealth = 50
-	health = 50
+	maxHealth = 25
+	health = 25
 	//they need to be able to pass tables and mobs
 	pass_flags = PASSTABLE | PASSMOB
 	//they are below mobs, or below tables
@@ -157,8 +157,8 @@ GLOBAL_VAR_INIT(successful_blood_chem, 0)
 										/datum/reagent/toxin/formaldehyde,
 										/datum/reagent/impurity/libitoil,
 										/datum/reagent/impurity/mannitol,
-										/datum/reagent/medicine/c2/libital/borer_version,
-										/datum/reagent/medicine/c2/lenturi/borer_version,
+										/datum/reagent/medicine/c2/libital,
+										/datum/reagent/medicine/c2/lenturi,
 										/datum/reagent/medicine/c2/convermol,
 										/datum/reagent/medicine/c2/seiver,
 										/datum/reagent/lithium,

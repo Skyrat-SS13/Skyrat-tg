@@ -321,7 +321,7 @@
 		var/obj/effect/decal/cleanable/blood/drip/drop = locate() in T
 		if(drop)
 			if(drop.drips < 5)
-				T.PolluteTurf(/datum/pollutant/metallic_scent, 5) //SKYRAT EDIT ADDITION
+				T.pollute_turf(/datum/pollutant/metallic_scent, 5) //SKYRAT EDIT ADDITION
 				drop.drips++
 				drop.add_overlay(pick(drop.random_icon_states))
 				drop.transfer_mob_blood_dna(src)
@@ -330,14 +330,14 @@
 				temp_blood_DNA = GET_ATOM_BLOOD_DNA(drop) //we transfer the dna from the drip to the splatter
 				qdel(drop)//the drip is replaced by a bigger splatter
 		else
-			T.PolluteTurf(/datum/pollutant/metallic_scent, 5) //SKYRAT EDIT ADDITION
+			T.pollute_turf(/datum/pollutant/metallic_scent, 5) //SKYRAT EDIT ADDITION
 			drop = new(T, get_static_viruses())
 			drop.transfer_mob_blood_dna(src)
 			return
 
 	//SKYRAT EDIT ADDITION
 	// Create a bit of metallic pollution, as that's how blood smells
-	T.PolluteTurf(/datum/pollutant/metallic_scent, 30)
+	T.pollute_turf(/datum/pollutant/metallic_scent, 30)
 	//SKYRAT EDIT END
 
 	// Find a blood decal or create a new one.

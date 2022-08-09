@@ -179,14 +179,11 @@
 	content_overlays = FALSE
 	custom_premium_price = PAYCHECK_CREW * 2
 
-/obj/item/storage/belt/utility/xenoarch/ComponentInitialize()
+/obj/item/storage/belt/utility/xenoarch/Initialize()
 	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	STR.max_w_class = WEIGHT_CLASS_NORMAL
-	STR.max_combined_w_class = 100
-	STR.max_items = 15
-	STR.max_combined_w_class = 1000
-	STR.set_holdable(list(
+	atom_storage.max_total_storage = 100
+	atom_storage.max_slots = 15
+	atom_storage.set_holdable(list(
 		/obj/item/xenoarch/hammer,
 		/obj/item/xenoarch/brush,
 		/obj/item/xenoarch/tape_measure,
@@ -211,15 +208,14 @@
 
 	var/spam_protection = FALSE //If this is TRUE, the holder won't receive any messages when they fail to pick up ore through crossing it
 
-/obj/item/storage/bag/xenoarch/ComponentInitialize()
+/obj/item/storage/bag/xenoarch/Initialize()
 	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	STR.max_w_class = WEIGHT_CLASS_GIGANTIC
-	STR.allow_quick_empty = TRUE
-	STR.max_combined_w_class = 1000
-	STR.max_items = 25
-	STR.display_numerical_stacking = FALSE
-	STR.can_hold = typecacheof(list(/obj/item/xenoarch/strange_rock))
+	atom_storage.max_specific_storage = WEIGHT_CLASS_GIGANTIC
+	atom_storage.allow_quick_empty = TRUE
+	atom_storage.max_total_storage = 1000
+	atom_storage.max_slots = 25
+	atom_storage.numerical_stacking = FALSE
+	atom_storage.can_hold = typecacheof(list(/obj/item/xenoarch/strange_rock))
 
 /obj/item/storage/bag/xenoarch/equipped(mob/user)
 	. = ..()
@@ -243,12 +239,11 @@
 	if (!isturf(tile))
 		return
 
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	if(STR)
+	if(atom_storage)
 		for(var/A in tile)
-			if (!is_type_in_typecache(A, STR.can_hold))
+			if (!is_type_in_typecache(A, atom_storage.can_hold))
 				continue
-			else if(SEND_SIGNAL(src, COMSIG_TRY_STORAGE_INSERT, A, user, TRUE))
+			else if(atom_storage.attempt_insert(src, A, user))
 				show_message = TRUE
 			else
 				if(!spam_protection)
@@ -266,10 +261,9 @@
 	icon_state = "adv_satchel"
 	insert_speed = 0.1 SECONDS
 
-/obj/item/storage/bag/xenoarch/adv/ComponentInitialize()
+/obj/item/storage/bag/xenoarch/adv/Initialize()
 	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	STR.max_items = 50
+	atom_storage.max_slots = 50
 
 /obj/structure/closet/xenoarch
 	name = "xenoarchaeology equipment locker"

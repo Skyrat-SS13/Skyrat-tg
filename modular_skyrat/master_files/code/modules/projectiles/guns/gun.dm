@@ -196,6 +196,8 @@
 			. += "<br>It has <b>[span_red("Armadyne Corporation")]</b> etched into the barrel."
 		if(COMPANY_SCARBOROUGH)
 			. += "<br>It has <b>[span_orange("Scarborough Arms")]</b> stamped onto the grip."
+		if(COMPANY_DONK)
+			. += "<br>It has a <b>[span_green("Donk Corporation")]</b> label visible in the plastic."
 		if(COMPANY_BOLT)
 			. += "<br>It has <b>[span_yellow("Bolt Fabrications")]</b> stamped onto the reciever."
 		if(COMPANY_OLDARMS)
@@ -210,6 +212,8 @@
 			. += "<br>It has <b>[span_cyan("Micron Control Sys.")]</b> cut in above the cell slot."
 		if(COMPANY_INTERDYNE)
 			. += "<br>It has <b>[span_cyan("Interdyne Pharmaceuticals")]</b> stamped onto the barrel."
+		if(COMPANY_ABDUCTOR)
+			. += "<br>It has <b>[span_abductor("✌︎︎♌︎︎♎︎︎◆︎︎♍︎︎⧫︎︎❄︎♏︎♍︎♒︎")]</b> engraved into the photon accelerator."
 
 /obj/item/gun/proc/fire_select()
 	var/mob/living/carbon/human/user = usr
@@ -262,7 +266,7 @@
 	return TRUE
 
 /obj/item/gun/proc/tk_firing(mob/living/user)
-	return loc != user ? TRUE : FALSE
+	return !user.contains(src)
 
 /obj/item/gun/proc/shoot_with_empty_chamber(mob/living/user as mob|obj)
 	balloon_alert(user, "*click*")
@@ -313,7 +317,9 @@
 		for(var/obj/iterated_object in contents)
 			iterated_object.emp_act(severity)
 
-/obj/item/gun/attack_secondary(mob/living/victim, mob/living/user, params)
+/obj/item/gun/afterattack_secondary(mob/living/victim, mob/living/user, params)
+	if(!ismob(victim))
+		return
 	if(user.GetComponent(/datum/component/gunpoint))
 		balloon_alert(user, "already holding someone up!")
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
