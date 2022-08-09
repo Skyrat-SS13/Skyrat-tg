@@ -13,6 +13,7 @@
 GLOBAL_LIST_EMPTY(culture_cultures)
 GLOBAL_LIST_EMPTY(culture_factions)
 GLOBAL_LIST_EMPTY(culture_locations)
+GLOBAL_LIST_EMPTY(culture_features)
 
 // Bitflags for groups of culture entries that should not be allowed to mix.
 #define CULTURE_ALL 0

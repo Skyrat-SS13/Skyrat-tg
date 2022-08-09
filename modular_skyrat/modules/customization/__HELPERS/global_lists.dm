@@ -30,6 +30,14 @@
 			continue
 		culture = new path()
 		GLOB.culture_factions[path] = culture
+	for(var/datum/cultural_feature/cultural_feature as anything in subtypesof(/datum/cultural_feature))
+		cultural_feature = new cultural_feature()
+		GLOB.culture_features += list("[cultural_feature.name]" = list(
+			"name" = cultural_feature.name,
+			"description" = cultural_feature.description,
+			"icon" = sanitize_css_class_name(cultural_feature.name),
+			"css_class" = cultural_feature.css_class,
+		))
 
 /proc/make_sprite_accessory_references()
 	// Here we build the global list for all accessories

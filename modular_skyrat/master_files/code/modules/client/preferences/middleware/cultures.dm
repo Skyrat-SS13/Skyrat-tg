@@ -26,24 +26,26 @@
 	var/selected = FALSE
 	var/list/sub_cultures = list()
 	if(valid)
-		if(ispath(cultural_info, /datum/cultural_info/culture))
-			selected = ispath(cultural_info, preferences.culture_culture)
-			for(var/datum/cultural_info/culture as anything in subtypesof(cultural_info))
-				var/value = get_ui_data_entry(culture, culture == preferences.culture_culture, TRUE)
+		var/value
+		if(istype(cultural_info, /datum/cultural_info/culture))
+			selected = cultural_info.type == preferences.culture_culture
+			for(var/datum/cultural_info/culture as anything in subtypesof(cultural_info.type))
+				value = get_ui_data_entry(GLOB.culture_cultures[culture], culture == preferences.culture_culture, TRUE)
+				if(value["selected"])
+					world.log << "Yes [value["name"]]"
+					selected = CHILD_CULTURE_SELECTED
+				sub_cultures += list(value)
+		else if(istype(cultural_info, /datum/cultural_info/location))
+			selected = cultural_info.type == preferences.culture_location
+			for(var/datum/cultural_info/culture as anything in subtypesof(cultural_info.type))
+				value = get_ui_data_entry(GLOB.culture_locations[culture], culture == preferences.culture_location, check_valid(culture, preferences.culture_culture))
 				if(value["selected"])
 					selected = CHILD_CULTURE_SELECTED
 				sub_cultures += list(value)
-		if(ispath(cultural_info, /datum/cultural_info/location))
-			selected = ispath(cultural_info, preferences.culture_location)
-			for(var/datum/cultural_info/culture as anything in subtypesof(cultural_info))
-				var/value = get_ui_data_entry(culture, culture == preferences.culture_location, check_valid(culture, preferences.culture_culture))
-				if(value["selected"])
-					selected = CHILD_CULTURE_SELECTED
-				sub_cultures += list(value)
-		if(ispath(cultural_info, /datum/cultural_info/faction))
-			selected = ispath(cultural_info, preferences.culture_faction)
-			for(var/datum/cultural_info/culture as anything in subtypesof(cultural_info))
-				var/value = get_ui_data_entry(culture, culture == preferences.culture_faction, check_valid(culture, preferences.culture_culture) && check_valid(cultural_info, preferences.culture_location))
+		else if(istype(cultural_info, /datum/cultural_info/faction))
+			selected = cultural_info.type == preferences.culture_faction
+			for(var/datum/cultural_info/culture as anything in subtypesof(cultural_info.type))
+				value = get_ui_data_entry(GLOB.culture_factions[culture], culture == preferences.culture_faction, check_valid(culture, preferences.culture_culture) && check_valid(cultural_info, preferences.culture_location))
 				if(value["selected"])
 					selected = CHILD_CULTURE_SELECTED
 				sub_cultures += list(value)
@@ -54,8 +56,10 @@
 	return data
 
 /datum/preference_middleware/cultures/proc/get_ui_data_entry(datum/cultural_info/cultural_info, selected, valid)
-	cultural_info = new cultural_info()
-	var/required_lang_name = initial(cultural_info.required_lang.name)
+	var/required_lang_name = null
+	if(cultural_info.required_lang)
+		var/datum/language/required_lang = GLOB.language_datum_instances[cultural_info.required_lang]
+		required_lang_name = initial(required_lang.name)
 	var/list/additional_langs = list()
 	for(var/datum/language/language as anything in cultural_info.additional_langs)
 		language = GLOB.language_datum_instances[language]
@@ -76,17 +80,15 @@
 	)
 	if(istype(cultural_info, /datum/cultural_info/location))
 		var/datum/cultural_info/location/location = cultural_info
-		data += list(
-			"ruler" = location.ruling_body,
-			"distance" = location.distance,
-			"capital" = location.capital,
-		)
+		data["ruler"] = location.ruling_body
+		data["distance"] = location.distance
+		data["capital"] = location.capital
 	return data
 
-/datum/preference_middleware/cultures/proc/get_immediate_subtypes(obj/type)
+/datum/preference_middleware/cultures/proc/get_immediate_subtypes(type, list/type_list)
 	var/list/types = list()
 	for(var/datum/subtype as anything in subtypesof(type))
-		subtype = new subtype()
+		subtype = type_list[subtype]
 		if(subtype.parent_type == type)
 			types += list(subtype.type)
 	return types
@@ -95,31 +97,21 @@
 	var/list/cultures = list()
 	var/list/locations = list()
 	var/list/factions = list()
-	var/list/features = list()
 
-	for(var/datum/cultural_feature/cultural_feature as anything in subtypesof(/datum/cultural_feature))
-		cultural_feature = new cultural_feature()
-		features += list("[cultural_feature.name]" = list(
-			"name" = cultural_feature.name,
-			"description" = cultural_feature.description,
-			"icon" = sanitize_css_class_name(cultural_feature.name),
-			"css_class" = cultural_feature.css_class,
-		))
+	for(var/datum/cultural_info/cultural_info as anything in get_immediate_subtypes(/datum/cultural_info/culture, GLOB.culture_cultures))
+		cultures += list(get_ui_data_entries(GLOB.culture_cultures[cultural_info], TRUE))
 
-	for(var/datum/cultural_info/cultural_info as anything in get_immediate_subtypes(/datum/cultural_info/culture))
-		cultures += list(get_ui_data_entries(cultural_info, TRUE))
+	for(var/datum/cultural_info/cultural_info as anything in get_immediate_subtypes(/datum/cultural_info/location, GLOB.culture_locations))
+		locations += list(get_ui_data_entries(GLOB.culture_locations[cultural_info], check_valid(cultural_info, preferences.culture_culture)))
 
-	for(var/datum/cultural_info/cultural_info as anything in get_immediate_subtypes(/datum/cultural_info/location))
-		locations += list(get_ui_data_entries(cultural_info, check_valid(cultural_info, preferences.culture_culture)))
-
-	for(var/datum/cultural_info/cultural_info as anything in get_immediate_subtypes(/datum/cultural_info/faction))
-		factions += list(get_ui_data_entries(cultural_info, check_valid(cultural_info, preferences.culture_culture) && check_valid(cultural_info, preferences.culture_location)))
+	for(var/datum/cultural_info/cultural_info as anything in get_immediate_subtypes(/datum/cultural_info/faction, GLOB.culture_factions))
+		factions += list(get_ui_data_entries(GLOB.culture_factions[cultural_info], check_valid(cultural_info, preferences.culture_culture) && check_valid(cultural_info, preferences.culture_location)))
 
 	return list(
 		"cultures" = cultures,
 		"locations" = locations,
 		"factions" = factions,
-		"features" = features,
+		"features" = GLOB.culture_features,
 	)
 
 /datum/preference_middleware/cultures/proc/check_valid(datum/cultural_info/cultural_info, datum/cultural_info/loaded_cultural_info)
@@ -132,7 +124,7 @@
 	return FALSE
 
 /datum/preference_middleware/cultures/proc/verify_culture(list/params, mob/user)
-	var/datum/cultural_info/culture = text2path(params["culture"])
+	var/datum/cultural_info/culture/culture = GLOB.culture_cultures[text2path(params["culture"])]
 
 	// If a preresiquite isn't selected, yeet everything that shouldn't be selected.
 	if(preferences.culture_faction && !culture)
@@ -143,13 +135,13 @@
 		preferences.culture_location = null
 		return TRUE
 
-	if(GLOB.culture_cultures[culture])
+	if(culture)
 		if(!check_valid(culture, preferences.culture_location))
 			preferences.culture_location = null
 			preferences.culture_faction = null
 		if(!check_valid(culture, preferences.culture_faction))
 			preferences.culture_faction = null
-		preferences.culture_culture = culture
+		preferences.culture_culture = culture.type
 		return TRUE
 
 	// It isn't valid, let's not let the game try to use whatever was sent.
@@ -157,7 +149,7 @@
 	return TRUE
 
 /datum/preference_middleware/cultures/proc/verify_location(list/params, mob/user)
-	var/datum/cultural_info/location = text2path(params["culture"])
+	var/datum/cultural_info/location/location = GLOB.culture_locations[text2path(params["culture"])]
 
 	// If a preresiquite isn't selected, yeet everything that shouldn't be selected.
 	if(!preferences.culture_culture)
@@ -165,10 +157,10 @@
 		preferences.culture_location = null
 		return TRUE
 
-	if(GLOB.culture_locations[location])
+	if(location)
 		if(!check_valid(location, preferences.culture_faction))
 			preferences.culture_faction = null
-		preferences.culture_location = location
+		preferences.culture_location = location.type
 		return TRUE
 
 	// It isn't valid, let's not let the game try to use whatever was sent.
@@ -176,7 +168,7 @@
 	return TRUE
 
 /datum/preference_middleware/cultures/proc/verify_faction(list/params, mob/user)
-	var/datum/cultural_info/faction = text2path(params["culture"])
+	var/datum/cultural_info/faction/faction = GLOB.culture_factions[text2path(params["culture"])]
 
 	// If a preresiquite isn't selected, yeet everything that shouldn't be selected.
 	if(!preferences.culture_culture)
@@ -188,8 +180,8 @@
 		return TRUE
 
 	// Nothing to validate.
-	if(GLOB.culture_factions[faction])
-		preferences.culture_faction = faction
+	if(faction)
+		preferences.culture_faction = faction.type
 		return TRUE
 
 	// It isn't valid, let's not let the game try to use whatever was sent.
