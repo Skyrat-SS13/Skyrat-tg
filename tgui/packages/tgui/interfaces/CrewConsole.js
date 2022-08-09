@@ -1,27 +1,27 @@
-import { sortBy } from 'common/collections';
-import { useBackend } from '../backend';
-import { Box, Button, Section, Table, Icon } from '../components'; // SKYRAT EDIT - ORIGINAL: import { Box, Button, Section, Colorbox Table }
-import { COLORS } from '../constants';
-import { Window } from '../layouts';
+import { sortBy } from "common/collections";
+import { useBackend } from "../backend";
+import { Box, Button, Section, Table, Icon } from "../components";
+import { COLORS } from "../constants";
+import { Window } from "../layouts";
 
 const HEALTH_COLOR_BY_LEVEL = [
-  '#17d568',
-  '#c4cf2d', // SKYRAT EDIT - Original'#2ecc71' - moved to make it visually different,
-  '#e67e22',
-  '#ed5100',
-  '#e74c3c',
-  '#801308', // SKYRAT EDIT - Original'#ed2814' - darker to help distinguish better,
+  "#17d568",
+  "#c4cf2d",
+  "#e67e22",
+  "#ed5100",
+  "#e74c3c",
+  "#801308",
 ];
-// SKYRAT ADDITION  - Icon status list
+
 const HEALTH_ICON_BY_LEVEL = [
-  'heart',
-  'heart',
-  'heart',
-  'heart',
-  'heartbeat',
-  'skull',
+  "heart",
+  "heart",
+  "heart",
+  "heart",
+  "heartbeat",
+  "skull",
 ];
-// SKRAY ADDITION - END:
+
 const jobIsHead = (jobId) => jobId % 10 === 0;
 
 const jobToColor = (jobId) => {
@@ -43,22 +43,15 @@ const jobToColor = (jobId) => {
   if (jobId >= 50 && jobId < 60) {
     return COLORS.department.cargo;
   }
-  // SKYRAT EDIT - Crew Monitor Updates to add Service Dept
-  if (jobId >= 60 && jobId < 80) {
-    return COLORS.department.service;
-  }
-  // SKYRAT EDIT - ORIGINAL: if (jobId >= 200 && jobId < 230) {
-  if (jobId >= 200 && jobId < 240) {
+  if (jobId >= 200 && jobId < 230) {
     return COLORS.department.centcom;
   }
   return COLORS.department.other;
 };
 
-// SKYRAT EDIT - START:
 const healthToAttribute = (oxy, tox, burn, brute, attributeList) => {
   const healthSum = oxy + tox + burn + brute;
-  const level = Math.min(Math.max(Math.ceil(healthSum / 31), 0), 5);
-  // SKYRAT EDIT END: Health bump from 25 to 31 for SR's health pool
+  const level = Math.min(Math.max(Math.ceil(healthSum / 25), 0), 5);
   return attributeList[level];
 };
 
@@ -87,33 +80,26 @@ const CrewTable = (props, context) => {
   const { act, data } = useBackend(context);
   const sensors = sortBy((s) => s.ijob)(data.sensors ?? []);
   return (
-    // SKYRAT EDIT START - Various adjustments to re-align columns
-    <Table cellpadding="3">
-      {/* SKYRAT EDIT - gives a buffer to flush text*/}
+    <Table>
       <Table.Row>
-        <Table.Cell bold colspan="2">
-          {' '}
-          {/* SKYRAT EDIT - Expands the first column to account for robotic wrench*/}
-          Name
-        </Table.Cell>
-        <Table.Cell bold collapsing textAlign="center">
-          {' '}
-          {/* SKYRAT EDIT - Removal of false column and changes to alignment*/}
-          Status
-        </Table.Cell>
+        <Table.Cell bold>Name</Table.Cell>
+        <Table.Cell bold collapsing />
         <Table.Cell bold collapsing textAlign="center">
           Vitals
         </Table.Cell>
-        <Table.Cell bold width="180px" collapsing textAlign="center">
-          {/* SKYRAT EDIT - Centers the text*/}
+        <Table.Cell bold textAlign="center">
           Position
         </Table.Cell>
+        {!!data.link_allowed && (
+          <Table.Cell bold collapsing textAlign="center">
+            Tracking
+          </Table.Cell>
+        )}
       </Table.Row>
       {sensors.map((sensor) => (
         <CrewTableEntry sensor_data={sensor} key={sensor.ref} />
       ))}
     </Table>
-    // SKYRAT EDIT START - Various adjustments to re-align columns
   );
 };
 
@@ -125,7 +111,6 @@ const CrewTableEntry = (props, context) => {
     name,
     assignment,
     ijob,
-    is_robot, // SKYRAT EDIT ADDITION - Displaying robotic species Icon
     life_status,
     oxydam,
     toxdam,
@@ -139,15 +124,9 @@ const CrewTableEntry = (props, context) => {
     <Table.Row>
       <Table.Cell bold={jobIsHead(ijob)} color={jobToColor(ijob)}>
         {name}
-        {assignment !== undefined ? ` (${assignment})` : ''}
+        {assignment !== undefined ? ` (${assignment})` : ""}
       </Table.Cell>
-      {/* SKYRAT EDIT START - Displaying robotic species Icon */}
       <Table.Cell collapsing textAlign="center">
-        {is_robot ? <Icon name="wrench" color="#B7410E" size={1} /> : ''}
-      </Table.Cell>
-      {/* SKYRAT EDIT END */}
-      <Table.Cell collapsing textAlign="center">
-        {/* SKYRAT EDIT START - Displaying status Icons */}
         {oxydam !== undefined ? (
           <Icon
             name={healthToAttribute(
@@ -168,28 +147,25 @@ const CrewTableEntry = (props, context) => {
           />
         ) : life_status ? (
           <Icon name="heart" color="#17d568" size={1} />
-        ) : life_status ? (
-          <Icon name="heart" color="#17d568" size={1} />
         ) : (
-          <Icon name="skull" color="#B7410E" size={1} />
+          <Icon name="skull" color="#801308" size={1} />
         )}
-        {/* SKYRAT EDIT END */}
       </Table.Cell>
       <Table.Cell collapsing textAlign="center">
         {oxydam !== undefined ? (
           <Box inline>
             <HealthStat type="oxy" value={oxydam} />
-            {'/'}
+            {"/"}
             <HealthStat type="toxin" value={toxdam} />
-            {'/'}
+            {"/"}
             <HealthStat type="burn" value={burndam} />
-            {'/'}
+            {"/"}
             <HealthStat type="brute" value={brutedam} />
           </Box>
         ) : life_status ? (
-          'Alive'
+          "Alive"
         ) : (
-          'Dead'
+          "Dead"
         )}
       </Table.Cell>
       <Table.Cell>
@@ -197,8 +173,7 @@ const CrewTableEntry = (props, context) => {
           area
         ) : (
           <Icon name="question" color="#ffffff" size={1} />
-        )}{' '}
-        {/* SKYRAT EDIT - Icon from text 'N/A'*/}
+        )}
       </Table.Cell>
       {!!link_allowed && (
         <Table.Cell collapsing>
@@ -206,7 +181,7 @@ const CrewTableEntry = (props, context) => {
             content="Track"
             disabled={!can_track}
             onClick={() =>
-              act('select_person', {
+              act("select_person", {
                 name: name,
               })
             }
