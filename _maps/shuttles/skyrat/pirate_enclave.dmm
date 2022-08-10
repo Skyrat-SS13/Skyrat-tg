@@ -43,7 +43,6 @@
 "aE" = (
 /obj/effect/turf_decal/trimline/yellow/warning,
 /obj/effect/turf_decal/delivery,
-/obj/structure/closet/crate/cardboard,
 /obj/item/reagent_containers/food/drinks/soda_cans/monkey_energy,
 /obj/item/reagent_containers/food/drinks/soda_cans/monkey_energy,
 /obj/item/reagent_containers/food/drinks/soda_cans/monkey_energy,
@@ -56,6 +55,7 @@
 /obj/item/food/chocolatebar,
 /obj/item/food/chocolatebar,
 /obj/item/food/chocolatebar,
+/obj/structure/closet/crate/freezer,
 /turf/open/floor/iron/dark/brown/side{
 	dir = 1
 	},
@@ -359,7 +359,6 @@
 	pixel_y = 3
 	},
 /obj/item/pen/fountain,
-/obj/item/modular_computer/tablet/preset/advanced,
 /turf/open/floor/wood,
 /area/shuttle/syndicate/slaver)
 "ff" = (
@@ -558,7 +557,7 @@
 "iY" = (
 /obj/structure/cable,
 /obj/structure/table/reinforced,
-/obj/item/construction/rcd/loaded/upgraded,
+/obj/item/storage/box/stockparts/deluxe,
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
 "iZ" = (
@@ -577,11 +576,12 @@
 /turf/open/floor/wood,
 /area/shuttle/syndicate/slaver)
 "je" = (
-/obj/structure/closet/secure_closet/personal/wall{
-	pixel_y = 32
+/obj/machinery/button/curtain{
+	id = "enclavecurtain";
+	pixel_x = -25
 	},
 /obj/structure/closet/secure_closet/personal/wall{
-	pixel_x = -32
+	pixel_y = 32
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
@@ -736,6 +736,7 @@
 /area/shuttle/syndicate/slaver)
 "lv" = (
 /obj/structure/filingcabinet,
+/obj/structure/sign/calendar/directional/east,
 /turf/open/floor/wood,
 /area/shuttle/syndicate/slaver)
 "lU" = (
@@ -751,8 +752,9 @@
 /turf/open/floor/pod/dark,
 /area/shuttle/syndicate/slaver)
 "lW" = (
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
-	dir = 4
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 9
 	},
 /turf/open/floor/iron/dark/textured_edge{
 	dir = 8
@@ -838,9 +840,11 @@
 /area/shuttle/syndicate/slaver)
 "nv" = (
 /obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/hidden/layer2{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer4,
 /turf/open/floor/iron/dark/textured_large,
 /area/shuttle/syndicate/slaver)
 "nz" = (
@@ -961,6 +965,9 @@
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
 	dir = 9
 	},
+/obj/structure/closet/secure_closet/personal/wall{
+	pixel_y = -32
+	},
 /turf/open/floor/carpet/red,
 /area/shuttle/syndicate/slaver)
 "oY" = (
@@ -1008,8 +1015,9 @@
 /turf/open/floor/iron/dark/brown/corner,
 /area/shuttle/syndicate/slaver)
 "pQ" = (
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
+/obj/structure/closet/secure_closet/personal/wall{
+	pixel_y = 32
+	},
 /turf/open/floor/iron/dark/textured_edge,
 /area/shuttle/syndicate/slaver)
 "pT" = (
@@ -1141,11 +1149,6 @@
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
 /obj/item/stamp,
 /obj/item/stamp/denied,
-/obj/item/reagent_containers/food/drinks/mug/coco{
-	desc = "Still hot!";
-	pixel_x = -4;
-	pixel_y = 4
-	},
 /obj/item/modular_computer/laptop/preset/civilian,
 /turf/open/floor/wood,
 /area/shuttle/syndicate/slaver)
@@ -1386,7 +1389,6 @@
 /obj/effect/turf_decal/trimline/yellow/warning{
 	dir = 9
 	},
-/obj/item/modular_computer/tablet/preset/advanced,
 /obj/item/modular_computer/laptop/preset/civilian,
 /turf/open/floor/iron/dark/brown/corner,
 /area/shuttle/syndicate/slaver)
@@ -1659,7 +1661,7 @@
 	dir = 5
 	},
 /obj/structure/table/reinforced,
-/obj/machinery/cell_charger,
+/obj/machinery/cell_charger_multi,
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
 "Bg" = (
@@ -1826,14 +1828,6 @@
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
 /turf/open/floor/pod/dark,
-/area/shuttle/syndicate/slaver)
-"DU" = (
-/obj/machinery/button/curtain{
-	id = "enclavecurtain";
-	pixel_y = 25
-	},
-/obj/effect/mob_spawn/ghost_role/human/pirate/enclave/gunner,
-/turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
 "DY" = (
 /obj/item/airbag,
@@ -2096,9 +2090,6 @@
 /obj/structure/closet/secure_closet/personal/wall{
 	pixel_y = -32
 	},
-/obj/structure/closet/secure_closet/personal/wall{
-	pixel_x = -32
-	},
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
 "IK" = (
@@ -2265,10 +2256,8 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/machinery/power/smes/engineering{
-	charge = 1e+006
-	},
 /obj/structure/cable,
+/obj/machinery/power/smes/engineering,
 /turf/open/floor/plating,
 /area/shuttle/syndicate/slaver)
 "Mi" = (
@@ -2345,12 +2334,6 @@
 /turf/open/floor/iron/dark/side{
 	dir = 8
 	},
-/area/shuttle/syndicate/slaver)
-"NU" = (
-/obj/structure/table/reinforced,
-/obj/item/modular_computer/tablet/preset/advanced,
-/obj/item/modular_computer/laptop/preset/civilian,
-/turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
 "Oa" = (
 /obj/structure/chair/sofa/right{
@@ -2462,7 +2445,7 @@
 	dir = 5
 	},
 /obj/structure/table/reinforced,
-/obj/item/modular_computer/tablet/preset/advanced,
+/obj/item/storage/part_replacer,
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
 "PG" = (
@@ -2525,9 +2508,7 @@
 	pixel_y = 25
 	},
 /obj/structure/table/reinforced,
-/obj/item/storage/box/lights/bulbs{
-	pixel_y = 7
-	},
+/obj/item/storage/box/lights/mixed,
 /obj/item/storage/inflatable,
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
@@ -2616,9 +2597,9 @@
 	name = "Crew Quarters";
 	req_access = list("syndicate")
 	},
-/obj/effect/mapping_helpers/airlock/cutaiwire,
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
+/obj/effect/mapping_helpers/airlock/cutaiwire,
 /turf/open/floor/iron/dark/textured_large,
 /area/shuttle/syndicate/slaver)
 "RW" = (
@@ -2630,6 +2611,7 @@
 /area/shuttle/syndicate/slaver)
 "RY" = (
 /obj/machinery/light/directional/south,
+/obj/effect/mob_spawn/ghost_role/human/pirate/enclave/gunner,
 /turf/open/floor/iron,
 /area/shuttle/syndicate/slaver)
 "Sd" = (
@@ -2679,6 +2661,7 @@
 /area/shuttle/syndicate/slaver)
 "SI" = (
 /obj/machinery/light/directional/north,
+/obj/structure/table/wood,
 /turf/open/floor/carpet/red,
 /area/shuttle/syndicate/slaver)
 "SV" = (
@@ -3011,6 +2994,7 @@
 	pixel_y = 9
 	},
 /obj/item/lighter,
+/obj/item/reagent_containers/food/drinks/mug/coco,
 /turf/open/floor/carpet/red,
 /area/shuttle/syndicate/slaver)
 "YF" = (
@@ -3128,7 +3112,6 @@
 	pixel_x = -32
 	},
 /obj/structure/sign/clock/directional/south,
-/obj/item/modular_computer/tablet/preset/advanced,
 /obj/item/modular_computer/laptop/preset/civilian,
 /turf/open/floor/wood,
 /area/shuttle/syndicate/slaver)
@@ -3623,9 +3606,9 @@ aG
 kp
 cB
 bY
-mj
-gG
-RH
+YF
+jT
+wd
 pQ
 nv
 RB
@@ -3646,10 +3629,10 @@ vO
 mx
 Rm
 sR
-bQ
-ws
-wd
-DU
+mj
+aT
+RH
+jm
 lW
 ZR
 dE
@@ -3846,7 +3829,7 @@ wd
 qV
 vK
 QE
-NU
+Mr
 oK
 wd
 ws
