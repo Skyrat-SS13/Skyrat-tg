@@ -1,3 +1,5 @@
+// Skyrat area ruins
+
 /area/ruin/powered/miningfacility
 	name = "Abandoned Nanotrasen Mining Facility"
 	icon_state = "dk_yellow"
