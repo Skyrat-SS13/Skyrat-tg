@@ -67,7 +67,7 @@
 
 /obj/structure/sign/poster/contraband/nri_rations
 	name = "NRI military rations advertisement"
-	desc = "This poster presumably is an advertisement for military rations produced by a certain private company as a part of the Defense Colleague's state order. This admiral's right hand man sure does look excited."
+	desc = "This poster presumably is an advertisement for military rations produced by a certain private company as a part of the Defense Collegia's state order. This admiral's right hand man sure does look excited."
 	icon_state = "nri_rations"
 
 /obj/structure/sign/poster/contraband/nri_voskhod
