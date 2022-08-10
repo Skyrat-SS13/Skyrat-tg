@@ -47,3 +47,101 @@
 	body_parts_covered = CHEST|GROIN|ARMS
 	dying_key = DYE_REGISTRY_JUMPSKIRT
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
+
+/*
+*     BARTENDER
+*/
+
+/obj/item/clothing/under/civilian/bartender/sleeky
+    name = "Sleek Bartender Suit"
+    desc = "A Post-Postmodern take on a Retrofuturistic garment, how innovative!"
+    icon = 'modular_skyrat/master_files/icons/obj/clothing/under/civilian.dmi'
+    icon_state = "sleekbartender"
+    worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/civilian.dmi'
+    can_adjust = FALSE
+
+/obj/item/clothing/under/civilian/bartender/sleeky/skirt
+    name = "Sleek Bartender Skirt"
+    desc = "A Post-Postmodern take on a Retrofuturistic garment, how innovative!"
+    icon = 'modular_skyrat/master_files/icons/obj/clothing/under/civilian.dmi'
+    icon_state = "sleekbartender_skirt"
+    worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/civilian.dmi'
+    can_adjust = FALSE
+    body_parts_covered = CHEST|GROIN|ARMS
+    female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
+
+/*
+*	RETRO CLOTHES
+*/
+
+/obj/item/clothing/under/civilian/retro/skirt
+	name = "Retro Skirt"
+	desc = "A Post-Postmodern take on a Retrofuturistic garment, how innovative!"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/civilian.dmi'
+	icon_state = "retro_skirt"
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/civilian.dmi'
+	can_adjust = FALSE
+
+/obj/item/clothing/under/civilian/retro/croptop
+	name = "Retro Croptop"
+	desc = "A Post-Postmodern take on a Retrofuturistic garment, how innovative!"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/civilian.dmi'
+	icon_state = "retro_croptop"
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/civilian.dmi'
+	can_adjust = FALSE
+
+/obj/item/clothing/under/civilian/retro/club
+	name = "Retro Club Outfit"
+	desc = "A outfit to go to, Da Club."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/civilian.dmi'
+	icon_state = "retro_club_outfit"
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/civilian.dmi'
+	can_adjust = FALSE
+
+/obj/item/clothing/under/civilian/retro/dress
+	name = "Retro Dress"
+	desc = "A Post-Postmodern take on a Retrofuturistic garment, how innovative!"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/civilian.dmi'
+	icon_state = "retro_dress"
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/civilian.dmi'
+	can_adjust = FALSE
+
+/obj/item/clothing/under/civilian/flashy/croptop
+	name = "Flashy Croptop"
+	desc = "A Post-Postmodern take on a Retrofuturistic garment, how innovative!"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/civilian.dmi'
+	icon_state = "flashy_croptop"
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/civilian.dmi'
+	can_adjust = FALSE
+
+/obj/item/clothing/under/civilian/flashy/skirt
+	name = "Flash Skirt"
+	desc = "A Post-Postmodern take on a Retrofuturistic garment, how innovative!"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/civilian.dmi'
+	icon_state = "flashy_skirt"
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/civilian.dmi'
+	can_adjust = FALSE
+
+/obj/item/clothing/under/civilian/retro/fishnet/croptop
+	name = "Retro Fishnet Croptop"
+	desc = "A Post-Postmodern take on a Retrofuturistic garment, how innovative!"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/civilian.dmi'
+	icon_state = "retro_fishnet_croptop"
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/civilian.dmi'
+	can_adjust = FALSE
+
+/obj/item/clothing/under/civilian/retro/tracksuit
+	name = "Retro Tracksuit"
+	desc = "A Post-Postmodern take on a Retrofuturistic garment, how innovative!"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/civilian.dmi'
+	icon_state = "retro_suit"
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/civilian.dmi'
+	can_adjust = FALSE
+
+/obj/item/clothing/under/civilian/retro/bouncer
+	name = "Retro Bouncer Uniform"
+	desc = "A Post-Postmodern take on a Retrofuturistic garment, how innovative!"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/civilian.dmi'
+	icon_state = "retro_bouncer"
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/civilian.dmi'
+	can_adjust = FALSE

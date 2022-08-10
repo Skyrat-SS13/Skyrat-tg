@@ -88,6 +88,19 @@
 		/obj/item/clothing/suit/croptop = 5,
 		/obj/item/clothing/under/sweater = 5,
 		/obj/item/clothing/under/keyhole_sweater = 5,
+		/obj/item/clothing/under/civilian/retro/tracksuit = 2,
+		/obj/item/clothing/under/civilian/retro/fishnet/croptop = 2,
+		/obj/item/clothing/under/civilian/flashy/skirt = 2,
+		/obj/item/clothing/under/civilian/flashy/croptop = 2,
+		/obj/item/clothing/under/civilian/retro/dress = 2,
+		/obj/item/clothing/under/civilian/retro/club = 2,
+		/obj/item/clothing/under/civilian/retro/croptop = 2,
+		/obj/item/clothing/under/civilian/retro/skirt = 2,
+		/obj/item/clothing/shoes/retro/kneeboots = 4,
+		/obj/item/clothing/shoes/retro/boots = 4,
+		/obj/item/clothing/shoes/retro/shoes = 4,
+		/obj/item/clothing/suit/flashy/jacket = 1,
+
 	)
 
 	skyrat_premium = list( //being here means you're artificially rare, congratulations
