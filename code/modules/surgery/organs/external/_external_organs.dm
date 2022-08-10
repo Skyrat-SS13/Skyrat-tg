@@ -249,12 +249,9 @@
 ///The horns of a lizard!
 /obj/item/organ/external/horns
 	name = "horns"
-<<<<<<< HEAD
-=======
 	desc = "Why do lizards even have horns? Well, this one obviously doesn't."
 	icon_state = "horns"
 
->>>>>>> 7db523ec3e6 (The Great Species Dedatumming 2: Makes external organs operable (#68877))
 	zone = BODY_ZONE_HEAD
 	slot = ORGAN_SLOT_EXTERNAL_HORNS
 	layers = EXTERNAL_ADJACENT
@@ -271,12 +268,9 @@
 ///The frills of a lizard (like weird fin ears)
 /obj/item/organ/external/frills
 	name = "frills"
-<<<<<<< HEAD
-=======
 	desc = "Ear-like external organs often seen on aquatic reptillians."
 	icon_state = "frills"
 
->>>>>>> 7db523ec3e6 (The Great Species Dedatumming 2: Makes external organs operable (#68877))
 	zone = BODY_ZONE_HEAD
 	slot = ORGAN_SLOT_EXTERNAL_FRILLS
 	layers = EXTERNAL_ADJACENT
@@ -295,14 +289,10 @@
 
 ///Guess what part of the lizard this is?
 /obj/item/organ/external/snout
-<<<<<<< HEAD
-	name = "snout"
-=======
-	name = "lizard snout"
+	name = "snout" // SKYRAT EDIT - ORIGINAL: name = "lizard snout"
 	desc = "Take a closer look at that snout!"
 	icon_state = "snout"
 
->>>>>>> 7db523ec3e6 (The Great Species Dedatumming 2: Makes external organs operable (#68877))
 	zone = BODY_ZONE_HEAD
 	slot = ORGAN_SLOT_EXTERNAL_SNOUT
 	layers = EXTERNAL_ADJACENT
@@ -321,14 +311,10 @@
 
 ///A moth's antennae
 /obj/item/organ/external/antennae
-<<<<<<< HEAD
-	name = "antennae"
-=======
 	name = "moth antennae"
 	desc = "A moths antennae. What is it telling them? What are they sensing?"
 	icon_state = "antennae"
 
->>>>>>> 7db523ec3e6 (The Great Species Dedatumming 2: Makes external organs operable (#68877))
 	zone = BODY_ZONE_HEAD
 	slot = ORGAN_SLOT_EXTERNAL_ANTENNAE
 	layers = EXTERNAL_FRONT | EXTERNAL_BEHIND
