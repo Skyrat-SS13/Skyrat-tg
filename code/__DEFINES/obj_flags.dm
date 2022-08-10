@@ -68,6 +68,7 @@
 ///Moths can't eat the clothing that has this flag.
 #define INEDIBLE_CLOTHING (1<<20)
 
+<<<<<<< HEAD
 //SKYRAT DEFINE
 /// Allows for masks to use tanks on adjacentadjecent tiles.
 #define MASK_EXTEND_RANGE (1<<21)
@@ -95,6 +96,8 @@ DEFINE_BITFIELD(organ_flags, list(
 ))
 
 
+=======
+>>>>>>> 7db523ec3e6 (The Great Species Dedatumming 2: Makes external organs operable (#68877))
 /// Integrity defines for clothing (not flags but close enough)
 #define CLOTHING_PRISTINE 0 // We have no damage on the clothing
 #define CLOTHING_DAMAGED 1 // There's some damage on the clothing but it still has at least one functioning bodypart and can be equipped
