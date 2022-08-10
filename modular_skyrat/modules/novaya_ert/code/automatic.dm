@@ -10,7 +10,7 @@
 	fire_delay = 1
 	burst_size = 5
 	dual_wield_spread = 10
-	spread = 15
+	spread = 10
 	can_suppress = FALSE
 	projectile_damage_multiplier = 0.75 // It's like ~20 damage per bullet, it's close enough to less than 10 shots
 	mag_display = TRUE
@@ -26,6 +26,7 @@
 	icon = 'modular_skyrat/modules/novaya_ert/icons/pistol.dmi'
 	w_class = WEIGHT_CLASS_SMALL
 	mag_type = /obj/item/ammo_box/magazine/m9mm_aps
+	burst_size = 3
 	dirt_modifier = 0.5
 	emp_damageable = FALSE
 	fire_delay = 3

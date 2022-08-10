@@ -963,7 +963,7 @@
 	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
 
 // Donation reward for GoldenAlpharex
-/obj/item/clothing/glasses/welding/goldengoggles
+/obj/item/clothing/glasses/welding/steampunk_goggles
 	name = "steampunk goggles"
 	desc = "This really feels like something you'd expect to see sitting on top of a certain ginger's head... They have a rather fancy brass trim around the lenses."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/glasses.dmi'
@@ -983,36 +983,36 @@
 	/// The sound played when toggling the shutters.
 	var/shutters_sound = 'sound/effects/clock_tick.ogg'
 
-/obj/item/clothing/glasses/welding/goldengoggles/Initialize()
+/obj/item/clothing/glasses/welding/steampunk_goggles/Initialize()
 	. = ..()
 	visor_toggling()
 
-/obj/item/clothing/glasses/welding/goldengoggles/examine(mob/user)
+/obj/item/clothing/glasses/welding/steampunk_goggles/examine(mob/user)
 	. = ..()
 	if(welding_upgraded)
 		. += "It has been upgraded with welding shutters, which are currently [welding_protection ? "closed" : "opened"]."
 
-/obj/item/clothing/glasses/welding/goldengoggles/item_action_slot_check(slot, mob/user)
+/obj/item/clothing/glasses/welding/steampunk_goggles/item_action_slot_check(slot, mob/user)
 	. = ..()
 	if(. && slot == ITEM_SLOT_HEAD)
 		return FALSE
 
-/obj/item/clothing/glasses/welding/goldengoggles/attack_self(mob/user)
+/obj/item/clothing/glasses/welding/steampunk_goggles/attack_self(mob/user)
 	if(user.get_item_by_slot(ITEM_SLOT_HEAD) == src)
 		to_chat(user, span_warning("You can't seem to slip those on your eyes from the top of your head!"))
 		return
 	. = ..()
 
-/obj/item/clothing/glasses/welding/goldengoggles/visor_toggling()
+/obj/item/clothing/glasses/welding/steampunk_goggles/visor_toggling()
 	. = ..()
 	slot_flags = up ? ITEM_SLOT_EYES | ITEM_SLOT_HEAD : ITEM_SLOT_EYES
 	toggle_vision_effects()
 
-/obj/item/clothing/glasses/welding/goldengoggles/weldingvisortoggle(mob/user)
+/obj/item/clothing/glasses/welding/steampunk_goggles/weldingvisortoggle(mob/user)
 	. = ..()
 	handle_sight_updating(user)
 
-/obj/item/clothing/glasses/welding/goldengoggles/attackby(obj/item/attacking_item, mob/living/user, params)
+/obj/item/clothing/glasses/welding/steampunk_goggles/attackby(obj/item/attacking_item, mob/living/user, params)
 	if(!istype(attacking_item, /obj/item/clothing/glasses/welding))
 		..()
 	if(welding_upgraded)
@@ -1024,7 +1024,7 @@
 	actions += new /datum/action/item_action/toggle_steampunk_goggles_welding_protection(src)
 
 /// Proc that handles the whole toggling the welding protection on and off, with user feedback.
-/obj/item/clothing/glasses/welding/goldengoggles/proc/toggle_shutters(mob/user)
+/obj/item/clothing/glasses/welding/steampunk_goggles/proc/toggle_shutters(mob/user)
 	if(!can_use(user) || !user)
 		return FALSE
 	if(!toggle_welding_protection(user))
@@ -1039,7 +1039,7 @@
 	return TRUE
 
 /// This is the proc that handles toggling the welding protection, while also making sure to update the sight of a mob wearing it.
-/obj/item/clothing/glasses/welding/goldengoggles/proc/toggle_welding_protection(mob/user)
+/obj/item/clothing/glasses/welding/steampunk_goggles/proc/toggle_welding_protection(mob/user)
 	if(!welding_upgraded)
 		return FALSE
 	welding_protection = !welding_protection
@@ -1051,7 +1051,7 @@
 	return TRUE
 
 /// Proc handling changing the flash protection and the tint of the goggles.
-/obj/item/clothing/glasses/welding/goldengoggles/proc/toggle_vision_effects()
+/obj/item/clothing/glasses/welding/steampunk_goggles/proc/toggle_vision_effects()
 	if(welding_protection)
 		if(visor_vars_to_toggle & VISOR_FLASHPROTECT)
 			flash_protect = up ? FLASH_PROTECTION_NONE : FLASH_PROTECTION_WELDER
@@ -1060,7 +1060,7 @@
 	tint = flash_protect
 
 /// Proc handling to update the sight of the user, while forcing an update_tint() call every time, due to how the welding protection toggle works.
-/obj/item/clothing/glasses/welding/goldengoggles/proc/handle_sight_updating(mob/user)
+/obj/item/clothing/glasses/welding/steampunk_goggles/proc/handle_sight_updating(mob/user)
 	if(user && (user.get_item_by_slot(ITEM_SLOT_HEAD) == src || user.get_item_by_slot(ITEM_SLOT_EYES) == src))
 		user.update_sight()
 		if(iscarbon(user))
@@ -1068,7 +1068,7 @@
 			carbon_user.update_tint()
 			carbon_user.head_update(src, forced = TRUE)
 
-/obj/item/clothing/glasses/welding/goldengoggles/ui_action_click(mob/user, actiontype, is_welding_toggle = FALSE)
+/obj/item/clothing/glasses/welding/steampunk_goggles/ui_action_click(mob/user, actiontype, is_welding_toggle = FALSE)
 	if(!is_welding_toggle)
 		return ..()
 	else
@@ -1084,10 +1084,10 @@
 		return FALSE
 	if(SEND_SIGNAL(src, COMSIG_ACTION_TRIGGER, src) & COMPONENT_ACTION_BLOCK_TRIGGER)
 		return FALSE
-	if(!target || !istype(target, /obj/item/clothing/glasses/welding/goldengoggles))
+	if(!target || !istype(target, /obj/item/clothing/glasses/welding/steampunk_goggles))
 		return FALSE
 
-	var/obj/item/clothing/glasses/welding/goldengoggles/goggles = target
+	var/obj/item/clothing/glasses/welding/steampunk_goggles/goggles = target
 	goggles.ui_action_click(owner, src, is_welding_toggle = TRUE)
 	return TRUE
 
