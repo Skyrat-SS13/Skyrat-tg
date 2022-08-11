@@ -228,7 +228,7 @@
 	cme_heavy_range_lower = CME_ARMAGEDDON_HEAVY_RANGE_LOWER
 	cme_heavy_range_upper = CME_ARMAGEDDON_HEAVY_RANGE_UPPER
 
-/obj/effect/cme/Initialize()
+/obj/effect/cme/Initialize(mapload)
 	. = ..()
 	playsound(src,'sound/weapons/resonator_fire.ogg',75,TRUE)
 	var/turf/open/T = get_turf(src)

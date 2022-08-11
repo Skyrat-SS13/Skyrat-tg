@@ -153,7 +153,7 @@
 	var/pain_limit = 0
 	var/arousal_status = AROUSAL_NONE
 
-/mob/living/carbon/human/Initialize()
+/mob/living/carbon/human/Initialize(mapload)
 	. = ..()
 	if(!istype(src, /mob/living/carbon/human/species/monkey))
 		apply_status_effect(/datum/status_effect/aroused)
@@ -178,7 +178,7 @@
 		to_chat(src, span_warning("You can't cum right now!"))
 
 //Removing ERP IC verb depending on config
-/mob/living/carbon/human/Initialize()
+/mob/living/carbon/human/Initialize(mapload)
 	. = ..()
 	if(CONFIG_GET(flag/disable_erp_preferences))
 		verbs -= /mob/living/carbon/human/verb/arousal_panel
@@ -680,7 +680,7 @@
 	var/pain_level = "small"
 	var/pleasure_level = "small"
 
-/atom/movable/screen/alert/aroused_x/Initialize()
+/atom/movable/screen/alert/aroused_x/Initialize(mapload)
 	.=..()
 	pain_overlay = update_pain()
 	pleasure_overlay = update_pleasure()

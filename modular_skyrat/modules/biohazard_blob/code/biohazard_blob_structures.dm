@@ -71,7 +71,7 @@
 /obj/structure/biohazard_blob/structure/core/radioactive
 	blob_type = BIO_BLOB_TYPE_RADIOACTIVE
 
-/obj/structure/biohazard_blob/structure/core/Initialize()
+/obj/structure/biohazard_blob/structure/core/Initialize(mapload)
 	if(!blob_type)
 		blob_type = pick(ALL_BIO_BLOB_TYPES)
 	. = ..()
@@ -257,7 +257,7 @@
 	var/list/registered_turfs = list()
 	max_integrity = 100
 
-/obj/structure/biohazard_blob/structure/bulb/Initialize()
+/obj/structure/biohazard_blob/structure/bulb/Initialize(mapload)
 	. = ..()
 	make_full()
 	for(var/t in get_adjacent_open_turfs(src))
@@ -408,7 +408,7 @@
 		our_controller.other_structures -= src
 	return ..()
 
-/obj/structure/biohazard_blob/structure/conditioner/Initialize()
+/obj/structure/biohazard_blob/structure/conditioner/Initialize(mapload)
 	. = ..()
 	switch(blob_type)
 		if(BIO_BLOB_TYPE_FUNGUS)
@@ -452,7 +452,7 @@
 		our_controller.other_structures -= src
 	return ..()
 
-/obj/structure/biohazard_blob/structure/spawner/Initialize()
+/obj/structure/biohazard_blob/structure/spawner/Initialize(mapload)
 	. = ..()
 	switch(blob_type)
 		if(BIO_BLOB_TYPE_FUNGUS)

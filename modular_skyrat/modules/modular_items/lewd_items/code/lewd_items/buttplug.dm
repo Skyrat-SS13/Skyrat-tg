@@ -69,7 +69,7 @@
 			update_icon()
 			form_changed = TRUE
 
-/obj/item/clothing/sextoy/buttplug/Initialize()
+/obj/item/clothing/sextoy/buttplug/Initialize(mapload)
 	. = ..()
 	set_light(0)
 	update_light()

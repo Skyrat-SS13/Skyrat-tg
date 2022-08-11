@@ -69,7 +69,7 @@
 	density = TRUE
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 
-/obj/structure/railing/stone/Initialize()
+/obj/structure/railing/stone/Initialize(mapload)
 	.=..()
 	if(dir == 2)
 		layer = ABOVE_MOB_LAYER

@@ -480,7 +480,7 @@
 	for(var/i in 1 to 6)
 		new donktype(src)
 
-/obj/item/storage/box/donkpockets/Initialize()
+/obj/item/storage/box/donkpockets/Initialize(mapload)
 	. = ..()
 	atom_storage.set_holdable(list(/obj/item/food/donkpocket))
 
@@ -521,7 +521,7 @@
 	illustration = null
 	var/cube_type = /obj/item/food/monkeycube
 
-/obj/item/storage/box/monkeycubes/Initialize()
+/obj/item/storage/box/monkeycubes/Initialize(mapload)
 	. = ..()
 	atom_storage.max_slots = 7
 	atom_storage.set_holdable(list(/obj/item/food/monkeycube))
@@ -540,7 +540,7 @@
 	icon_state = "monkeycubebox"
 	illustration = null
 
-/obj/item/storage/box/gorillacubes/Initialize()
+/obj/item/storage/box/gorillacubes/Initialize(mapload)
 	. = ..()
 	atom_storage.max_slots = 3
 	atom_storage.set_holdable(list(/obj/item/food/monkeycube))
@@ -697,7 +697,7 @@
 	icon_state = "spbox"
 	illustration = ""
 
-/obj/item/storage/box/snappops/Initialize()
+/obj/item/storage/box/snappops/Initialize(mapload)
 	. = ..()
 	atom_storage.set_holdable(list(/obj/item/toy/snappop))
 	atom_storage.max_slots = 8
@@ -721,7 +721,7 @@
 	base_icon_state = "matchbox"
 	illustration = null
 
-/obj/item/storage/box/matches/Initialize()
+/obj/item/storage/box/matches/Initialize(mapload)
 	. = ..()
 	atom_storage.max_slots = 10
 	atom_storage.set_holdable(list(/obj/item/match))
@@ -756,7 +756,7 @@
 	righthand_file = 'icons/mob/inhands/equipment/medical_righthand.dmi'
 	foldable = /obj/item/stack/sheet/cardboard //BubbleWrap
 
-/obj/item/storage/box/lights/Initialize()
+/obj/item/storage/box/lights/Initialize(mapload)
 	. = ..()
 	atom_storage.max_slots = 21
 	atom_storage.set_holdable(list(/obj/item/light/tube, /obj/item/light/bulb))
@@ -1258,7 +1258,7 @@
 	foldable = null
 	custom_price = PAYCHECK_CREW
 
-/obj/item/storage/box/gum/Initialize()
+/obj/item/storage/box/gum/Initialize(mapload)
 	. = ..()
 	atom_storage.set_holdable(list(/obj/item/food/bubblegum))
 	atom_storage.max_slots = 4

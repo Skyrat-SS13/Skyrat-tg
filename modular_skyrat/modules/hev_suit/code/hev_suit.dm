@@ -166,7 +166,7 @@
 	/// On first activation, we play the user a nice song!
 	var/first_use = TRUE
 
-/obj/item/clothing/suit/space/hev_suit/Initialize()
+/obj/item/clothing/suit/space/hev_suit/Initialize(mapload)
 	. = ..()
 	internal_radio = new(src)
 	internal_radio.subspace_transmission = TRUE

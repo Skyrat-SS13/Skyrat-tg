@@ -129,7 +129,7 @@
 		return FALSE
 	return TRUE
 
-/obj/item/clothing/mask/leatherwhip/Initialize()
+/obj/item/clothing/mask/leatherwhip/Initialize(mapload)
 	. = ..()
 	update_icon_state()
 	update_icon()

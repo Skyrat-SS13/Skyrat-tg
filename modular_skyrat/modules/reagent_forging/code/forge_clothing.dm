@@ -10,7 +10,7 @@
 	resistance_flags = FIRE_PROOF
 	armor = list(MELEE = 40, BULLET = 40, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 0, WOUND = 30)
 
-/obj/item/clothing/suit/armor/reagent_clothing/Initialize()
+/obj/item/clothing/suit/armor/reagent_clothing/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/armor_plate, 4)
 	AddComponent(/datum/component/reagent_clothing, ITEM_SLOT_OCLOTHING)
@@ -25,7 +25,7 @@
 	resistance_flags = FIRE_PROOF
 	armor = list(MELEE = 40, BULLET = 40, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 0, WOUND = 30)
 
-/obj/item/clothing/gloves/reagent_clothing/Initialize()
+/obj/item/clothing/gloves/reagent_clothing/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/armor_plate, 4)
 	AddComponent(/datum/component/reagent_clothing, ITEM_SLOT_GLOVES)
@@ -40,7 +40,7 @@
 	resistance_flags = FIRE_PROOF
 	armor = list(MELEE = 40, BULLET = 40, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 0, WOUND = 30)
 
-/obj/item/clothing/head/helmet/reagent_clothing/Initialize()
+/obj/item/clothing/head/helmet/reagent_clothing/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/armor_plate, 4)
 	AddComponent(/datum/component/reagent_clothing, ITEM_SLOT_HEAD)
@@ -57,7 +57,7 @@
 	resistance_flags = FIRE_PROOF
 	can_be_tied = FALSE
 
-/obj/item/clothing/shoes/chain_boots/Initialize()
+/obj/item/clothing/shoes/chain_boots/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/armor_plate, 2)
 	AddComponent(/datum/component/reagent_clothing, ITEM_SLOT_FEET)
@@ -74,7 +74,7 @@
 	resistance_flags = FIRE_PROOF
 	can_be_tied = FALSE
 
-/obj/item/clothing/shoes/plated_boots/Initialize()
+/obj/item/clothing/shoes/plated_boots/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/armor_plate, 2)
 	AddComponent(/datum/component/reagent_clothing, ITEM_SLOT_FEET)
@@ -90,7 +90,7 @@
 	resistance_flags = FIRE_PROOF
 	can_be_tied = FALSE
 
-/obj/item/clothing/shoes/horseshoe/Initialize()
+/obj/item/clothing/shoes/horseshoe/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/armor_plate, 2)
 	AddComponent(/datum/component/reagent_clothing, ITEM_SLOT_FEET)
@@ -102,7 +102,7 @@
 	inhand_icon_state = "sring"
 	worn_icon_state = "sring"
 
-/obj/item/clothing/gloves/ring/reagent_clothing/Initialize()
+/obj/item/clothing/gloves/ring/reagent_clothing/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/reagent_clothing, ITEM_SLOT_GLOVES)
 
@@ -110,7 +110,7 @@
 	name = "reagent pet collar"
 	desc = "A pet collar that is ready to be imbued."
 
-/obj/item/clothing/neck/kink_collar/reagent_clothing/Initialize()
+/obj/item/clothing/neck/kink_collar/reagent_clothing/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/reagent_clothing, ITEM_SLOT_NECK)
 
@@ -128,6 +128,6 @@
 	name = "reagent handcuffs"
 	desc = "A pair of handcuffs that are ready to be imbued."
 
-/obj/item/restraints/handcuffs/reagent_clothing/Initialize()
+/obj/item/restraints/handcuffs/reagent_clothing/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/reagent_clothing, ITEM_SLOT_HANDCUFFED)
