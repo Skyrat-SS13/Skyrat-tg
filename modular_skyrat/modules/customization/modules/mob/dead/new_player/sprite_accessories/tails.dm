@@ -169,6 +169,10 @@
 /datum/sprite_accessory/tails/mammal/wagging/bee
 	name = "Bee"
 	icon_state = "bee"
+	
+/datum/sprite_accessory/tails/mammal/wagging/queenbee
+	name = "Queen Bee"
+	icon_state = "queenbee"
 
 /datum/sprite_accessory/tails/mammal/wagging/tajaran/cat_big
 	name = "Cat (Big)"
@@ -257,6 +261,10 @@
 /datum/sprite_accessory/tails/mammal/wagging/insect
 	name = "Insect"
 	icon_state = "insect"
+	
+/datum/sprite_accessory/tails/mammal/wagging/queeninsect
+	name = "Queen Insect"
+	icon_state = "queeninsect"
 
 /datum/sprite_accessory/tails/mammal/wagging/kangaroo
 	name = "Kangaroo"

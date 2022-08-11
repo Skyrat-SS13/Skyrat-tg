@@ -56,7 +56,7 @@
 	update_icon()
 	color_changed = TRUE
 
-/obj/item/clothing/sextoy/vibrator/Initialize()
+/obj/item/clothing/sextoy/vibrator/Initialize(mapload)
 	. = ..()
 	update_icon_state()
 	update_icon()

@@ -53,7 +53,7 @@
 	return
 /*
 /datum/emote/flip/can_run_emote(mob/user, status_check, intentional)
-	if(!HAS_TRAIT(user, TRAIT_FREERUNNING))
+	if(!HAS_TRAIT(user, TRAIT_FREERUNNING) && !isobserver(user))
 		user.balloon_alert(user, "not nimble enough!")
 		return FALSE
 	return ..()

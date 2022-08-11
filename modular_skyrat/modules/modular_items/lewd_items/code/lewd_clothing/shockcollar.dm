@@ -71,7 +71,7 @@
 	else
 		return ..()
 
-/obj/item/electropack/shockcollar/Initialize()
+/obj/item/electropack/shockcollar/Initialize(mapload)
 	if(random)
 		code = rand(1, 100)
 		frequency = rand(MIN_FREE_FREQ, MAX_FREE_FREQ)

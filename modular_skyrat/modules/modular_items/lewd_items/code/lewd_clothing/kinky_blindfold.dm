@@ -48,7 +48,7 @@
 		return FALSE
 	return TRUE
 
-/obj/item/clothing/glasses/blindfold/kinky/Initialize()
+/obj/item/clothing/glasses/blindfold/kinky/Initialize(mapload)
 	. = ..()
 	update_icon_state()
 	update_icon()

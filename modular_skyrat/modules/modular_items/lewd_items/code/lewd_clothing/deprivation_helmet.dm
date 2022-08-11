@@ -323,7 +323,7 @@
 		return FALSE
 	return TRUE
 
-/obj/item/clothing/head/helmet/space/deprivation_helmet/Initialize()
+/obj/item/clothing/head/helmet/space/deprivation_helmet/Initialize(mapload)
 	. = ..()
 	update_icon_state()
 	update_icon()

@@ -94,7 +94,7 @@
 	return TRUE
 
 // Initializing stuff
-/obj/item/clothing/mask/gas/bdsm_mask/Initialize()
+/obj/item/clothing/mask/gas/bdsm_mask/Initialize(mapload)
 	. = ..()
 	update_icon_state()
 	update_icon()
@@ -291,7 +291,7 @@
 	list_reagents = list(/datum/reagent/drug/aphrodisiac/crocin = 50)
 
 // Standard initialize code for filter
-/obj/item/reagent_containers/glass/lewd_filter/Initialize()
+/obj/item/reagent_containers/glass/lewd_filter/Initialize(mapload)
 	. = ..()
 	update_icon()
 

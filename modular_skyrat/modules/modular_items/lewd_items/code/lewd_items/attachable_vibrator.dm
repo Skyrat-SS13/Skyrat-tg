@@ -64,7 +64,7 @@
 		update_icon()
 		update_icon_state()
 
-/obj/item/clothing/sextoy/eggvib/Initialize()
+/obj/item/clothing/sextoy/eggvib/Initialize(mapload)
 	. = ..()
 	update_icon_state()
 	update_icon()
@@ -157,7 +157,7 @@
 	/// The default frequency of the toy
 	var/frequency = FREQ_ELECTROPACK
 
-/obj/item/clothing/sextoy/eggvib/signalvib/Initialize()
+/obj/item/clothing/sextoy/eggvib/signalvib/Initialize(mapload)
 	if(random)
 		code = rand(1, 100)
 		frequency = rand(MIN_FREE_FREQ, MAX_FREE_FREQ)

@@ -42,7 +42,7 @@
 	juice_results = list(/datum/reagent/consumable/banana = 10)
 
 
-/obj/item/reagent_containers/food/snacks/deadbanana_spider/Initialize()
+/obj/item/reagent_containers/food/snacks/deadbanana_spider/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/slippery, 20)
 

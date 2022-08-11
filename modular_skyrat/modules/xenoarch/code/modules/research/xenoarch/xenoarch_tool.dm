@@ -179,7 +179,7 @@
 	content_overlays = FALSE
 	custom_premium_price = PAYCHECK_CREW * 2
 
-/obj/item/storage/belt/utility/xenoarch/Initialize()
+/obj/item/storage/belt/utility/xenoarch/Initialize(mapload)
 	. = ..()
 	atom_storage.max_total_storage = 100
 	atom_storage.max_slots = 15
@@ -208,7 +208,7 @@
 
 	var/spam_protection = FALSE //If this is TRUE, the holder won't receive any messages when they fail to pick up ore through crossing it
 
-/obj/item/storage/bag/xenoarch/Initialize()
+/obj/item/storage/bag/xenoarch/Initialize(mapload)
 	. = ..()
 	atom_storage.max_specific_storage = WEIGHT_CLASS_GIGANTIC
 	atom_storage.allow_quick_empty = TRUE
@@ -261,7 +261,7 @@
 	icon_state = "adv_satchel"
 	insert_speed = 0.1 SECONDS
 
-/obj/item/storage/bag/xenoarch/adv/Initialize()
+/obj/item/storage/bag/xenoarch/adv/Initialize(mapload)
 	. = ..()
 	atom_storage.max_slots = 50
 

@@ -112,7 +112,7 @@
 		return FALSE
 	return TRUE
 
-/obj/machinery/vending/dorms/Initialize()
+/obj/machinery/vending/dorms/Initialize(mapload)
 	. = ..()
 	update_icon_state()
 	update_icon()

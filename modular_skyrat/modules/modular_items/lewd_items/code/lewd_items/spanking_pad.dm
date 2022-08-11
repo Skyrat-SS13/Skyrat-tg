@@ -32,7 +32,7 @@
 		return FALSE
 	return TRUE
 
-/obj/item/spanking_pad/Initialize()
+/obj/item/spanking_pad/Initialize(mapload)
 	. = ..()
 	update_icon()
 	update_icon_state()

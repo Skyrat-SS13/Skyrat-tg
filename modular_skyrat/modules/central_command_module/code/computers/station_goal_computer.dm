@@ -16,7 +16,7 @@
 	greyscale_colors = CIRCUIT_COLOR_ENGINEERING
 	build_path = /obj/machinery/computer/station_goal
 
-/obj/machinery/computer/station_goal/Initialize()
+/obj/machinery/computer/station_goal/Initialize(mapload)
 	. = ..()
 	station_goal_cache = subtypesof(/datum/station_goal)
 

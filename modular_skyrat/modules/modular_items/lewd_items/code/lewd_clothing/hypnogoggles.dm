@@ -84,7 +84,7 @@
 		return FALSE
 	return TRUE
 
-/obj/item/clothing/glasses/hypno/Initialize()
+/obj/item/clothing/glasses/hypno/Initialize(mapload)
 	. = ..()
 	update_icon_state()
 	update_icon()

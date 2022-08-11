@@ -278,3 +278,199 @@
   - bugfix: Things that are ventcrawling can no longer alt click tiles to see what
       is outside the pipes.
   - bugfix: Purrbation now properly adds and removes tails
+2022-08-07:
+  Capybara Holly:
+  - bugfix: Trying to remove rust from walls with a welding tool will now blind you
+      like it should
+  Paxilmaniac:
+  - imageadd: the SEVA mining suit has been resprited
+  - bugfix: SEVA is now once again actually going to protect you from fire
+  ShizCalev:
+  - bugfix: Grilles are now anchorable with screwdrivers again.
+  SkyratBot:
+  - bugfix: The air scrubber in atmos near the northern maintenance airlock is now
+      connected to waste.
+  - bugfix: fixed hplc not displaying purity. Also fixed incorrect display of volume
+      if beaker is inserted in output slot
+  - bugfix: Banana now have correct right hand sprite
+2022-08-08:
+  Foxtrot (Funce):
+  - balance: Mime's are now veteran only
+  GoldenAlpharex:
+  - bugfix: The bomber jacket should now work in the loadout once again.
+  - bugfix: Sol's language icon will now only appear if you don't speak Sol, at long
+      last.
+  - bugfix: Belts will now change appearance when items are inserted into them as
+      well, instead of only doing so when an item was removed from them.
+  Hardly:
+  - bugfix: fixes security belts having 7 slots instead of 5.
+  Hatterhat:
+  - rscadd: The energies stored within the ancient blade Agateram can now be utilized
+      to quite literally throw yourself at your problems, giving you a moment's reprieve
+      from getting hit by projectiles or melee hits at a decent stamina cost.
+  OrionTheFox:
+  - bugfix: Ninja MODsuits are now digitigrade-compatiable. No more error textures!
+  Paxilmaniac:
+  - balance: The SEVA now has minimal amounts of armor, still nowhere near as good
+      as a base mining suit, but it's more protection than running around in your
+      overalls
+  - balance: The SEVA no longer adds an extra two seconds onto goliath tentacle stun
+      time
+  SkyratBot:
+  - bugfix: Attempting to send back a reply to an ahelp after it is closed now sends
+      the reply to a new ticket, rather then just dropping it and leaving you for
+      dead with a runtime
+  - admin: see above
+  - bugfix: Blind people will now only be able to 'hear' audible emotes.
+  - bugfix: Blind and deaf people will see and hear no emotes, for obvious reasons.
+  - bugfix: deleted unconnected lavabase pump
+  - bugfix: removed unecessary bridge pipes from kilomos
+  - bugfix: Fix audible emotes playing sounds while mob is gagged, mute, tongueless,
+      or under a vow of silence.
+  - balance: the mining modsuit now costs 3000 from 2500
+  - balance: the mining modsuit now still slows you down over lava, though you still
+      resist it
+  - qol: the plasma core now accepts plasma both in sheet form and ore form
+  - bugfix: the plasma core should no longer buggily not refill you
+  - bugfix: the mining modsuit bombs should now have enemies target you
+  - bugfix: Blind support added to some actions like stripping, being hit, and force-feeding.
+  - admin: A lot of game logs will now also be in individual game logs, for convenience
+      in log diving.
+  - admin: Added logging for bluespace launchpad x and y offset changes, which go
+      to individual game logs.
+  - admin: Attack logs will now be slightly shorter, one useless word was removed.
+  - code_imp: Radiation pulses will ask MC if they should continue processing for
+      every turf they iterate through, rather than just every pulse.
+  - rscadd: Revolution victories now call the shuttle when enough of the station is
+      revolutionaries.
+  - rscadd: Kilo whiteship now has shit so that it can actually maintain power now
+  - rscadd: Kilo whiteship now has both the bar and crew quarters area to increase
+      information hell
+  - refactor: The Force Event UI has been refactored
+  - refactor: Events now have categories and descriptions
+  - refactor: Admin triggered events happen immediately
+  - balance: Fake Virus and Electric Storms are shown to admins, making them cancelable
+  - bugfix: makes verb queuing work again
+  - rscadd: Pun Pun now gives stuff in their hand frequently and rings desk bells.
+  - rscadd: Pun Pun now has gentleman-like emotes, rather than screeching and roaring.
+  - balance: Pun Pun no longer looks for weapons in their off time.
+  - balance: Pun Pun is no longer vulnerable to stuns by being walked into.
+  - qol: Monkeys can now use desk bells.
+  Stalkeros, Lukaster42 for existing and screaming at me the whole time:
+  - rscadd: Adds a "weaker" version of a standard NRI backpack for all your LARPing
+      needs, available in hacked Cargo's Russian crate.
+  - balance: Szabo-Ivanek service pistol now has a 3-burst fire mode. As a result,
+      it's no longer available in Cargo, being replaced with a Makarov.
+  - bugfix: NRI turrets and viscerators now properly react to threats.
+  - spellcheck: Edits a bunch of miscellaneous weapon descriptions related to NRI.
+  Zonespace27:
+  - spellcheck: Baton holster module no longer tells you that you can remove the baton.
+  tf-4:
+  - bugfix: The corrections officer area is now a proper security area with all that
+      entails.
+  - bugfix: Your character will look at your mouse cursor once again when in combat
+      mode. Provided you haven't turned that off.
+  theselfish:
+  - rscdel: Removed the Icon for Common.
+  - imagedel: Removed the Icon for Common.
+2022-08-09:
+  Hatterhat:
+  - bugfix: Loadouts with the option selected to place all items in a suitcase now
+      properly apply the GAGS/grayscaling system to applicable items.
+  Melbert:
+  - rscadd: Paramedic PDAs now start with the Lifeline pinpointer app
+  - rscadd: Replaced the "proximity crew pinpointer" in the paramedic's belt with
+      a bottle of Calomel
+  - rscdel: Removed the "proximity crew pinpointer"
+  MortoSasye:
+  - balance: Head roles and security cannot have the Illiterate quirk. Head roles
+      also can't have the brain tumor quirk.
+  PositiveEntropy, AxieTheAxolotl:
+  - rscadd: Adds the Chief Medical Officer's Scrubs, making it the default clothing
+      option when they spawn!
+  - rscadd: Adds Surgery Caps! Doctors now spawn with them, and can buy some from
+      the MediDrobe! The CMO gets a special fancy one!
+  - qol: All scrubs are now adjustable, making surgery less of a pain!
+  - imageadd: Resprites the biosuits, making you look less bloated.
+  - imageadd: Resprites every labcoat in the game, including the paramedic's.
+  - imageadd: Resprites the entire medical department (again)!
+  ShizCalev:
+  - bugfix: The eye of god will now send a provide a message when its scan is recharged.
+  SkyratBot:
+  - rscadd: Added new VOID stamp
+  - bugfix: Photocopier paperforms
+  - rscadd: Bileworms have appeared on lavaland!
+  - rscadd: Concentrated barbers aid will give hairless species hair after it has
+      remained in them for a number of cycles inversely proportional to the purity
+      (20 cycles at 100% purity). Additionally, at 100% purity, it removes the smooth-headed
+      quirk at the same time that it grants hairless species hair.
+  - bugfix: Most effects that change your hairstyle are no longer delayed until certain
+      effects occur.
+  - bugfix: You cannot bypass the smooth-headed quirk with the genetics console (even
+      if you were somehow able to figure out how to get a specific hairstyle)
+  - bugfix: The species and antagonist character icons in the preferences menu are
+      no longer all bald.
+  - bugfix: Fixes ash walker tendrils dropping typeless anomaly cores.
+  - bugfix: Labor camp Prisoners without a sentence can no longer send themselves
+      back up whenever they wanted by clicking the button fast enough.
+  - bugfix: Prisoners can no longer get infinite labor camp points by clicking the
+      stacking machine with ores.
+  - bugfix: All ore machines now properly change their direction when they dock a
+      shuttle in a separate direction, fixing Lavaland's labor camp stacking machine.
+  - qol: Labor camp's point checker now states all the information you need, rather
+      than being a paragraph of text that just appears in chat.
+  Vishenka0704:
+  - rscadd: Cum on face action in Climax verb
+  - bugfix: now you cum on chosen target, not on you.
+  - bugfix: now the choice of sheath in the menu is only available with those who
+      have sheath
+  YakumoChen:
+  - bugfix: Ring boxes now once again initially contain the rings they're supposed
+      to carry.
+2022-08-10:
+  Melbert:
+  - bugfix: Heretic stalkers are able again to return back to their normal form after
+      casting shapeshift.
+  ShizCalev:
+  - bugfix: Right-clicking a non-carbon based mob (humans, xeno, ect) will now bite
+      them instead of doing nothing.
+  - server: Added a configurable probability for nonhuman species to spawn in the
+      morgue at round start!
+  - qol: Cadavers in the morgue at round start will now spawn in bodybags.
+  - bugfix: Adminspawned morgue cadavers will now only spawn inside closed morguetrays
+      (the bodies could get stuck inside them!)
+  - bugfix: Morguetrays are now less likely to end up having multiple cadavers in
+      them.
+  SkyratBot:
+  - code_imp: add proc create_atmos_zone which detect an isolated atmos zone while
+      ignoring walls and non atmos_can_pass tiles (zas zone)
+  Zonespace27:
+  - bugfix: Ghosts can now flip
+2022-08-11:
+  GoldenAlpharex:
+  - spellcheck: The long-range gas analyzer's name is no longer capitalized, as it's
+      not a proper name.
+  Nano:
+  - soundadd: 'Added 2 new sounds to the synthesizer''s ''fun'' category: MeowSynth
+      and Spaceman'
+  ShizCalev:
+  - bugfix: The Quartermaster and his items will now trigger phobias related to command
+      staff!
+  - bugfix: Command rank bedsheets, jackets, cloaks, and headsets will now trigger
+      phobias related to command staff.
+  - bugfix: The QM's bedsheets will now make you dream of authority and silvery IDs!
+  - bugfix: Cutting open someone's heart will now actually make them bleed properly!
+  - bugfix: Fixed traitors not getting a new kidnapping objective if they previously
+      failed to kidnap someone else.
+  SkyratBot:
+  - balance: munchies now impact hunger at a rate similar to running nonstop
+  - bugfix: Butcher's meat hook no longer fails when the user has TRAIT_NOGUNS
+  - bugfix: Newly built turrets start unlocked.
+  - imageadd: new dead body spawner icons
+  - bugfix: emitter examine text now displays minimum maximum delay.
+  - spellcheck: changes the text on the emitter examine blurb.
+  - spellcheck: Calomel now properly states that it only purges toxins, rather than
+      all chemicals, like it already does.
+  - spellcheck: Fixes grammar for solar panel construction
+  Wallem:
+  - imageadd: Updates the sprite for the metal & homerun bat

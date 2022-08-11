@@ -54,7 +54,7 @@
 	update_icon()
 	color_changed = TRUE
 
-/obj/item/clothing/sextoy/dildo/Initialize()
+/obj/item/clothing/sextoy/dildo/Initialize(mapload)
 	. = ..()
 	update_icon_state()
 	update_icon()
@@ -265,7 +265,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 	var/obj/item/clothing/sextoy/dildo_side/the_toy
 	change_sprite = FALSE
 
-/obj/item/clothing/sextoy/dildo/double_dildo/Initialize()
+/obj/item/clothing/sextoy/dildo/double_dildo/Initialize(mapload)
 	. = ..()
 	update_action_buttons_icons()
 
@@ -403,7 +403,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 	item_flags = ABSTRACT | HAND_ITEM
 	side_double = TRUE
 
-/obj/item/clothing/sextoy/dildo_side/dildo/Initialize()
+/obj/item/clothing/sextoy/dildo_side/dildo/Initialize(mapload)
 	. = ..()
 	ADD_TRAIT(src, TRAIT_NODROP, STRAPON_TRAIT)
 

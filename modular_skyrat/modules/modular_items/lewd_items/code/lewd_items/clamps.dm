@@ -24,7 +24,7 @@
 	. = ..()
 	AddElement(/datum/element/update_icon_updates_onmob)
 
-/obj/item/clothing/sextoy/nipple_clamps/Initialize()
+/obj/item/clothing/sextoy/nipple_clamps/Initialize(mapload)
 	. = ..()
 
 	update_icon_state()
