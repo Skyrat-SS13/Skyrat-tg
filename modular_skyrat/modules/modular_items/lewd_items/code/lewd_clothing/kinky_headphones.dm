@@ -74,7 +74,7 @@
 
 //to make it change model on click
 
-/obj/item/clothing/ears/kinky_headphones/Initialize()
+/obj/item/clothing/ears/kinky_headphones/Initialize(mapload)
 	. = ..()
 	update_icon_state()
 	update_icon()

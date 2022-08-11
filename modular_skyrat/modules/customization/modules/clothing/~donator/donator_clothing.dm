@@ -600,7 +600,7 @@
 	/// What treat item spawns inside the collar?
 	var/treat_path = /obj/item/food/cookie
 
-/obj/item/clothing/neck/inferno_collar/Initialize()
+/obj/item/clothing/neck/inferno_collar/Initialize(mapload)
 	. = ..()
 	create_storage(type = /datum/storage/pockets/small/collar)
 	if(treat_path)
@@ -640,7 +640,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/custom_w.dmi'
 	icon_state = "darksheath"
 
-/obj/item/storage/belt/sabre/darksabre/Initialize()
+/obj/item/storage/belt/sabre/darksabre/Initialize(mapload)
 	. = ..()
 	atom_storage.set_holdable(list(
 		/obj/item/toy/darksabre
@@ -674,7 +674,7 @@
 	actions_types = list(/datum/action/item_action/hheart)
 	supports_variations_flags = NONE
 
-/obj/item/clothing/mask/hheart/Initialize()
+/obj/item/clothing/mask/hheart/Initialize(mapload)
 	. = ..()
 	update_icon()
 
@@ -983,7 +983,7 @@
 	/// The sound played when toggling the shutters.
 	var/shutters_sound = 'sound/effects/clock_tick.ogg'
 
-/obj/item/clothing/glasses/welding/steampunk_goggles/Initialize()
+/obj/item/clothing/glasses/welding/steampunk_goggles/Initialize(mapload)
 	. = ..()
 	visor_toggling()
 

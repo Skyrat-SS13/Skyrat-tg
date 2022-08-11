@@ -98,7 +98,7 @@
 	else
 		..()
 
-/obj/item/gun/Initialize()
+/obj/item/gun/Initialize(mapload)
 	. = ..()
 	if(pin && !pinless)
 		pin = new pin(src)

@@ -214,7 +214,7 @@
 	icon_state = "briefcase_inflate"
 	w_class = WEIGHT_CLASS_NORMAL
 
-/obj/item/storage/inflatable/Initialize()
+/obj/item/storage/inflatable/Initialize(mapload)
 	. = ..()
 	atom_storage.max_total_storage = 21
 

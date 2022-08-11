@@ -66,7 +66,7 @@
 	light_power = 0.8
 	light_on = FALSE
 
-/mob/living/simple_animal/pet/dog/corgi/borgi/Initialize()
+/mob/living/simple_animal/pet/dog/corgi/borgi/Initialize(mapload)
 	. = ..()
 	var/datum/component/overlay_lighting/lighting_object = src.GetComponent(/datum/component/overlay_lighting)
 	var/image/cone = lighting_object.cone

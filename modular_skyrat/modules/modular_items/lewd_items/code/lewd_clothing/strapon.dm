@@ -49,7 +49,7 @@
 		return FALSE
 	return TRUE
 
-/obj/item/clothing/strapon/Initialize()
+/obj/item/clothing/strapon/Initialize(mapload)
 	. = ..()
 	update_icon_state()
 	update_icon()
@@ -180,7 +180,7 @@
 	item_flags = ABSTRACT | HAND_ITEM | DROPDEL
 	var/strapon_type = "human" //Default var, but we always getting var from strapon_type from item on top
 
-/obj/item/strapon_dildo/Initialize()
+/obj/item/strapon_dildo/Initialize(mapload)
 	. = ..()
 	update_icon_state()
 	update_icon()

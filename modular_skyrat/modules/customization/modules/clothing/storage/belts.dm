@@ -75,7 +75,7 @@
 	. = ..()
 	AddElement(/datum/element/update_icon_updates_onmob)
 
-/obj/item/storage/belt/crusader/Initialize()
+/obj/item/storage/belt/crusader/Initialize(mapload)
 	. = ..()
 
 	atom_storage.max_slots = 2
@@ -126,7 +126,7 @@
 
 	atom_storage.show_contents(user)
 
-/obj/item/storage/belt/storage_pouch/Initialize()
+/obj/item/storage/belt/storage_pouch/Initialize(mapload)
 	. = ..()
 
 	atom_storage.max_slots = 6
@@ -149,7 +149,7 @@
 	icon_state = "med_bandolier"
 	worn_icon_state = "med_bandolier"
 
-/obj/item/storage/belt/medbandolier/Initialize()
+/obj/item/storage/belt/medbandolier/Initialize(mapload)
 	. = ..()
 	atom_storage.max_specific_storage = WEIGHT_CLASS_NORMAL
 	atom_storage.max_slots = 14

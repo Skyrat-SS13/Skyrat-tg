@@ -60,7 +60,7 @@
 		return FALSE
 	return TRUE
 
-/obj/item/clothing/suit/straight_jacket/shackles/Initialize()
+/obj/item/clothing/suit/straight_jacket/shackles/Initialize(mapload)
 	. = ..()
 	update_icon_state()
 	update_icon()

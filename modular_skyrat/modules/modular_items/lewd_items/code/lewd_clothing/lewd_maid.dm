@@ -32,7 +32,7 @@
 	/// List of all apron designs, used in selecting one in the radial menu
 	var/static/list/apron_designs
 
-/obj/item/clothing/under/costume/lewdmaid/Initialize()
+/obj/item/clothing/under/costume/lewdmaid/Initialize(mapload)
 	. = ..()
 	var/obj/item/clothing/accessory/lewdapron/apron_accessory = new(src)
 	attach_accessory(apron_accessory)
@@ -73,7 +73,7 @@
 		return FALSE
 	return TRUE
 
-/obj/item/clothing/accessory/lewdapron/Initialize()
+/obj/item/clothing/accessory/lewdapron/Initialize(mapload)
 	if(!length(apron_designs))
 		populate_apron_designs()
 	update_icon_state()

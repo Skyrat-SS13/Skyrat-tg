@@ -3,7 +3,7 @@
 	lefthand_file = 'modular_skyrat/modules/reagent_forging/icons/mob/forge_weapon_l.dmi'
 	righthand_file = 'modular_skyrat/modules/reagent_forging/icons/mob/forge_weapon_r.dmi'
 
-/obj/item/forging/reagent_weapon/Initialize()
+/obj/item/forging/reagent_weapon/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/reagent_weapon)
 
@@ -156,7 +156,7 @@
 		/obj/structure/reagent_crafting_bench
 	)
 
-/obj/item/forging/reagent_weapon/hammer/Initialize()
+/obj/item/forging/reagent_weapon/hammer/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/kneejerk)
 
@@ -181,7 +181,7 @@
 	max_integrity = 150 //over double that of a wooden one
 	w_class = WEIGHT_CLASS_NORMAL
 
-/obj/item/shield/riot/buckler/reagent_weapon/Initialize()
+/obj/item/shield/riot/buckler/reagent_weapon/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/reagent_weapon)
 
@@ -293,7 +293,7 @@
 
 #undef INCREASE_BLOCK_CHANGE
 
-/obj/item/forging/reagent_weapon/bokken/Initialize()
+/obj/item/forging/reagent_weapon/bokken/Initialize(mapload)
 	. = ..()
 	RegisterSignal(src, COMSIG_TWOHANDED_WIELD, .proc/on_wield)
 	RegisterSignal(src, COMSIG_TWOHANDED_UNWIELD, .proc/on_unwield)

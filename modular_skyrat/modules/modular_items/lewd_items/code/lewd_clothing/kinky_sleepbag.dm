@@ -91,7 +91,7 @@
 		return FALSE
 	return TRUE
 
-/obj/item/clothing/suit/straight_jacket/kinky_sleepbag/Initialize()
+/obj/item/clothing/suit/straight_jacket/kinky_sleepbag/Initialize(mapload)
 	. = ..()
 	update_icon_state()
 	update_icon()

@@ -73,7 +73,7 @@
 		return FALSE
 	return TRUE
 
-/obj/item/pillow/Initialize()
+/obj/item/pillow/Initialize(mapload)
 	. = ..()
 	update_icon_state()
 	update_icon()
@@ -176,7 +176,7 @@
 
 	buildstacktype = /obj/item/stack/sheet/cloth
 
-/obj/structure/bed/pillow_tiny/Initialize()
+/obj/structure/bed/pillow_tiny/Initialize(mapload)
 	.=..()
 	update_icon_state()
 	update_icon()
@@ -272,7 +272,7 @@
 
 	buildstacktype = /obj/item/stack/sheet/cloth
 
-/obj/structure/chair/pillow_small/Initialize()
+/obj/structure/chair/pillow_small/Initialize(mapload)
 	update_icon()
 	return ..()
 
@@ -400,7 +400,7 @@
 
 	buildstacktype = /obj/item/stack/sheet/cloth
 
-/obj/structure/bed/pillow_large/Initialize()
+/obj/structure/bed/pillow_large/Initialize(mapload)
     update_icon()
     return ..()
 
