@@ -172,7 +172,7 @@
 	internal_radio.subspace_transmission = TRUE
 	internal_radio.canhear_range = 0 // anything greater will have the bot broadcast the channel as if it were saying it out loud.
 	internal_radio.recalculateChannels()
-	AddComponent(/datum/component/cell, cell_override = cell, _has_cell_overlays = FALSE)
+	AddComponent(/datum/component/cell, cell_override = initial(cell), _has_cell_overlays = FALSE)
 
 /obj/item/clothing/suit/space/hev_suit/equipped(mob/user, slot)
 	. = ..()
