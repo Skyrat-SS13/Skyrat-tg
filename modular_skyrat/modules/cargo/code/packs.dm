@@ -146,6 +146,15 @@
 					/obj/item/storage/barricade,)
 	crate_name = "C.U.C.K.S Crate"
 
+/datum/supply_pack/security/armory/laserguns
+	name = "SC-1 Carbines Crate"
+	desc = "Three basic, rechargeable SC-1 laser carbines."
+	cost = CARGO_CRATE_VALUE * 8
+	contains = list(/obj/item/gun/energy/laser,
+					/obj/item/gun/energy/laser,
+					/obj/item/gun/energy/laser,)
+	crate_name = "SC-1 Carbine Crate"
+
 /*
 *	ENGINEERING
 */
