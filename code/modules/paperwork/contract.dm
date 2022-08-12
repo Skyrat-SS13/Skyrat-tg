@@ -7,13 +7,6 @@
 	item_flags = NOBLUDGEON
 	var/employee_name = ""
 
-<<<<<<< HEAD
-/obj/item/paper/employment_contract/Initialize()
-	. = ..()
-	AddElement(/datum/element/update_icon_blocker)
-
-=======
->>>>>>> 952c3ee0d30 (Removes ComponentInitialize() (#69118))
 /obj/item/paper/employment_contract/Initialize(mapload, new_employee_name)
 	if(!new_employee_name)
 		return INITIALIZE_HINT_QDEL
