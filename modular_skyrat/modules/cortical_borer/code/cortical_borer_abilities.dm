@@ -709,6 +709,7 @@
 	var/logging_text = "[key_name(cortical_owner)] went into [key_name(cortical_owner.human_host)] at [loc_name(human_turfthree)]"
 	cortical_owner.log_message(logging_text, LOG_GAME)
 	cortical_owner.human_host.log_message(logging_text, LOG_GAME)
+	owner.balloon_alert(owner, "entered host")
 	StartCooldown()
 
 //you can force your host to speak... dont abuse this
@@ -781,6 +782,7 @@
 	playsound(borer_turf, 'sound/effects/splat.ogg', 50, TRUE)
 	var/logging_text = "[key_name(cortical_owner)] gave birth at [loc_name(borer_turf)]"
 	cortical_owner.log_message(logging_text, LOG_GAME)
+	owner.balloon_alert(owner, "egg laid")
 	StartCooldown()
 
 //revive your host
@@ -820,6 +822,7 @@
 		cortical_owner.human_host.blood_volume = BLOOD_VOLUME_BAD
 	cortical_owner.human_host.revive()
 	to_chat(cortical_owner.human_host, span_boldwarning("Your heart jumpstarts!"))
+	owner.balloon_alert(owner, "host revived")
 	var/turf/human_turf = get_turf(cortical_owner.human_host)
 	var/logging_text = "[key_name(cortical_owner)] revived [key_name(cortical_owner.human_host)] at [loc_name(human_turf)]"
 	cortical_owner.log_message(logging_text, LOG_GAME)
@@ -875,6 +878,7 @@
 		owner.balloon_alert(owner, "ability not selected")
 		cortical_owner.stat_evolution += 2
 		return
+	owner.balloon_alert(owner, "ability learned")
 	switch(ability_choice)
 		if("Produce Offspring")
 			var/datum/action/attack_action = new /datum/action/cooldown/produce_offspring()
