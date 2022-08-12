@@ -127,7 +127,7 @@
 	unbuckle_all_mobs()
 
 // Object initialization
-/obj/structure/chair/milking_machine/Initialize()
+/obj/structure/chair/milking_machine/Initialize(mapload)
 	. = ..()
 	machine_color = machine_color_list[1]
 
@@ -1036,7 +1036,7 @@
 	var/current_color = "pink"
 
 // Default initialization
-/obj/item/milking_machine/constructionkit/Initialize()
+/obj/item/milking_machine/constructionkit/Initialize(mapload)
 	. = ..()
 	update_icon_state()
 	update_icon()

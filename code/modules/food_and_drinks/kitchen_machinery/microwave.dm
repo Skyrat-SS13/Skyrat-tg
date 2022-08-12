@@ -378,7 +378,7 @@
 /obj/machinery/microwave/hell
 	desc = "Cooks and boils stuff. This one appears to be a bit... off."
 
-/obj/machinery/microwave/hell/Initialize()
+/obj/machinery/microwave/hell/Initialize(mapload)
 	. = ..()
 	//We want there to be some chance of them getting a working microwave (eventually).
 	if(prob(95))

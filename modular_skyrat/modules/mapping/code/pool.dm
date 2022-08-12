@@ -22,7 +22,7 @@
 	layer = BELOW_MOB_LAYER
 	vis_flags = NONE
 
-/turf/open/water/overlay/Initialize()
+/turf/open/water/overlay/Initialize(mapload)
 	.  = ..()
 	var/obj/effect/overlay/water/water_overlay = new()
 	var/obj/effect/overlay/water/top/water_top_overlay = new()

@@ -50,7 +50,7 @@
 		current_eye = "_L"
 	src.icon_state = current_sprite_state + current_eye
 
-/obj/item/clothing/glasses/Initialize()
+/obj/item/clothing/glasses/Initialize(mapload)
 	. = ..()
 	current_sprite_state = icon_state //Stores the standard sprite state.
 	if(!can_switch_eye)	//Just runs the normal code for any item that we havent manually set this as TRUE for

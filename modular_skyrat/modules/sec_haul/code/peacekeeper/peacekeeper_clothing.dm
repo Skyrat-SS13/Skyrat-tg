@@ -203,7 +203,7 @@
 	worn_icon_state = "peacekeeperbelt"
 	content_overlays = FALSE
 
-/obj/item/storage/belt/security/peacekeeper/Initialize()
+/obj/item/storage/belt/security/peacekeeper/Initialize(mapload)
 	. = ..()
 	atom_storage.max_slots = 5
 	atom_storage.set_holdable(list(
@@ -246,7 +246,7 @@
 	content_overlays = FALSE
 	custom_premium_price = PAYCHECK_CREW * 3
 
-/obj/item/storage/belt/security/webbing/peacekeeper/Initialize()
+/obj/item/storage/belt/security/webbing/peacekeeper/Initialize(mapload)
 	. = ..()
 	atom_storage.max_slots = 7
 	atom_storage.set_holdable(list(

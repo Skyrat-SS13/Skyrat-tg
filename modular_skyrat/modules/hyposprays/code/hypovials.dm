@@ -35,7 +35,7 @@
         chem_color = filling.color
         . += filling
 
-/obj/item/reagent_containers/glass/vial/Initialize()
+/obj/item/reagent_containers/glass/vial/Initialize(mapload)
 	. = ..()
 	update_icon()
 
