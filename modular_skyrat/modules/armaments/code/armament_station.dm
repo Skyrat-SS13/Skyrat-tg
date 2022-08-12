@@ -21,7 +21,7 @@
 	/// The access needed to use the vendor
 	var/list/required_access = list()
 
-/obj/machinery/armament_station/ComponentInitialize()
+/obj/machinery/armament_station/Initialize(mapload)
 	. = ..()
 	if(!armament_type)
 		return

@@ -20,10 +20,6 @@
 		"pink" = image (icon = src.icon, icon_state = "spankpad_pink"),
 		"teal" = image(icon = src.icon, icon_state = "spankpad_teal"))
 
-/obj/item/spanking_pad/ComponentInitialize()
-	. = ..()
-	AddElement(/datum/element/update_icon_updates_onmob)
-
 /// A check to ensure the user can use the radial menu
 /obj/item/spanking_pad/proc/check_menu(mob/living/user)
 	if(!istype(user))
@@ -34,6 +30,7 @@
 
 /obj/item/spanking_pad/Initialize(mapload)
 	. = ..()
+	AddElement(/datum/element/update_icon_updates_onmob)
 	update_icon()
 	update_icon_state()
 	if(!length(spankpad_designs))

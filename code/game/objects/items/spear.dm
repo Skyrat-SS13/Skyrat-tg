@@ -209,7 +209,7 @@
 	armour_penetration = 15 //Enhanced armor piercing
 
 
-/obj/item/spear/bonespear/ComponentInitialize()
+/obj/item/spear/bonespear/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/two_handed, force_unwielded=8, force_wielded=16, icon_wielded="[icon_prefix]1") //SKYRAT EDIT
 
