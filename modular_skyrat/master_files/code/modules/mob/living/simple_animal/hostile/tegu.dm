@@ -30,3 +30,14 @@
 	can_be_held = TRUE
 	ai_controller = /datum/ai_controller/dog //Tegus can be taught to fetch
 	stop_automated_movement = TRUE
+
+/mob/living/simple_animal/hostile/retaliate/tegu/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/pet_bonus, "sticks its tongue out contentedly!")
+
+/mob/living/simple_animal/hostile/retaliate/tegu/gus
+	name = "Gus"
+	real_name = "Gus"
+	desc = "The Research Department's beloved pet tegu."
+	gender = MALE
+	gold_core_spawnable = NO_SPAWN
