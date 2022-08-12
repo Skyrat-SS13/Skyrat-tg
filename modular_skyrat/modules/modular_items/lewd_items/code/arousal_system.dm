@@ -398,20 +398,19 @@
 												'modular_skyrat/modules/modular_items/lewd_items/sounds/final_f3.ogg'), 50, TRUE, ignore_walls = FALSE)
 			if(penis)
 				if(!testicles) //If we have no god damn balls, we can't cum anywhere... GET BALLS!
-					if(penis?.is_exposed())
-						visible_message(span_userlove("[src] orgasms, but nothing comes out of [p_their()] dick!"), \
-							span_userlove("You orgasm, it feels great, but nothing comes out of your dick!"))
-						apply_status_effect(/datum/status_effect/climax)
-						apply_status_effect(/datum/status_effect/climax_cooldown)
-						SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "orgasm", /datum/mood_event/climaxself)
-						return TRUE
-					else
-						visible_message(span_userlove("[src] cums into their clothes!"), \
-							span_userlove("You shoot your load, but you weren't naked, so you mess up your clothes!"))
-						apply_status_effect(/datum/status_effect/climax)
-						apply_status_effect(/datum/status_effect/climax_cooldown)
-						SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "orgasm", /datum/mood_event/climaxself)
-						return TRUE
+					visible_message(span_userlove("[src] orgasms, but nothing comes out of [p_their()] dick!"), \
+						span_userlove("You orgasm, it feels great, but nothing comes out of your dick!"))
+					apply_status_effect(/datum/status_effect/climax)
+					apply_status_effect(/datum/status_effect/climax_cooldown)
+					SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "orgasm", /datum/mood_event/climaxself)
+					return TRUE
+				if(!is_bottomless() && penis.visibility_preference != GENITAL_ALWAYS_SHOW)
+					visible_message(span_userlove("[src] cums into their clothes!"), \
+						span_userlove("You shoot your load, but you weren't naked, so you mess up your clothes!"))
+					apply_status_effect(/datum/status_effect/climax)
+					apply_status_effect(/datum/status_effect/climax_cooldown)
+					SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "orgasm", /datum/mood_event/climaxself)
+					return TRUE
 
 				var/list/interactable_inrange_humans = list()
 
@@ -516,6 +515,8 @@
 					apply_status_effect(/datum/status_effect/climax)
 					apply_status_effect(/datum/status_effect/climax_cooldown)
 					visible_message(span_purple("[src] is cumming!"), span_purple("You are cumming!"))
+					var/turf/our_turf = get_turf(src)
+					new /obj/effect/decal/cleanable/femcum(our_turf)
 				else
 					apply_status_effect(/datum/status_effect/climax)
 					apply_status_effect(/datum/status_effect/climax_cooldown)
