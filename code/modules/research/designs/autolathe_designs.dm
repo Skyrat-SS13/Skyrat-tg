@@ -7,7 +7,7 @@
 	id = "bucket"
 	build_type = AUTOLATHE | PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = 200)
-	build_path = /obj/item/reagent_containers/glass/bucket
+	build_path = /obj/item/reagent_containers/cup/bucket
 	category = list("initial","Tools","Tool Designs")
 	departmental_flags = DEPARTMENT_BITFLAG_SERVICE
 
@@ -16,7 +16,7 @@
 	id = "watering_can"
 	build_type = AUTOLATHE | PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = 200)
-	build_path = /obj/item/reagent_containers/glass/watering_can
+	build_path = /obj/item/reagent_containers/cup/watering_can
 	category = list("initial","Tools","Tool Designs")
 	departmental_flags = DEPARTMENT_BITFLAG_SERVICE
 
@@ -514,9 +514,14 @@
 	id = "bowl"
 	build_type = AUTOLATHE | PROTOLATHE // SKYRAT EDIT - Original line: build_type = AUTOLATHE
 	materials = list(/datum/material/glass = 500)
+<<<<<<< HEAD
 	build_path = /obj/item/reagent_containers/glass/bowl
 	category = list("initial", "Tool Designs", "Dinnerware") // SKYRAT EDIT - Original line: 	category = list("initial","Dinnerware")
 	departmental_flags = DEPARTMENT_BITFLAG_SERVICE //SKYRAT EDIT: added to service techfab
+=======
+	build_path = /obj/item/reagent_containers/cup/bowl
+	category = list("initial","Dinnerware")
+>>>>>>> 4a274a6e4b1 ([MDB IGNORE] Refactors drinks and fixes a lot of food problems (#69081))
 
 /datum/design/drinking_glass
 	name = "Drinking Glass"
@@ -524,26 +529,36 @@
 	//build_type = AUTOLATHE	SKYRAT EDIT: Original Line
 	build_type = AUTOLATHE | PROTOLATHE	// SKRAT EDIT
 	materials = list(/datum/material/glass = 500)
+<<<<<<< HEAD
 	build_path = /obj/item/reagent_containers/food/drinks/drinkingglass
 	//category = list("initial","Dinnerware")	SKYRAT EDIT: Original line
 	category = list("initial", "Tool Designs", "Dinnerware") // SKYRAT EDIT
 	departmental_flags = DEPARTMENT_BITFLAG_SERVICE //SKYRAT EDIT: added to service techfab
+=======
+	build_path = /obj/item/reagent_containers/cup/glass/drinkingglass
+	category = list("initial","Dinnerware")
+>>>>>>> 4a274a6e4b1 ([MDB IGNORE] Refactors drinks and fixes a lot of food problems (#69081))
 
 /datum/design/shot_glass
 	name = "Shot Glass"
 	id = "shot_glass"
 	build_type = AUTOLATHE | PROTOLATHE // SKYRAT EDIT - Original line: build_type = AUTOLATHE
 	materials = list(/datum/material/glass = 100)
+<<<<<<< HEAD
 	build_path = /obj/item/reagent_containers/food/drinks/drinkingglass/shotglass
 	category = list("initial", "Tool Designs", "Dinnerware") // SKYRAT EDIT - Original line: 	category = list("initial","Dinnerware")
 	departmental_flags = DEPARTMENT_BITFLAG_SERVICE //SKYRAT EDIT: added to service techfab
+=======
+	build_path = /obj/item/reagent_containers/cup/glass/drinkingglass/shotglass
+	category = list("initial","Dinnerware")
+>>>>>>> 4a274a6e4b1 ([MDB IGNORE] Refactors drinks and fixes a lot of food problems (#69081))
 
 /datum/design/shaker
 	name = "Shaker"
 	id = "shaker"
 	build_type = AUTOLATHE
 	materials = list(/datum/material/iron = 1500)
-	build_path = /obj/item/reagent_containers/food/drinks/shaker
+	build_path = /obj/item/reagent_containers/cup/glass/shaker
 	category = list("initial","Dinnerware")
 
 /datum/design/cultivator
@@ -694,7 +709,7 @@
 	id = "beaker"
 	build_type = AUTOLATHE | PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/glass = 500)
-	build_path = /obj/item/reagent_containers/glass/beaker
+	build_path = /obj/item/reagent_containers/cup/beaker
 	category = list("initial", "Medical", "Medical Designs")
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL | DEPARTMENT_BITFLAG_SERVICE
 
@@ -703,7 +718,7 @@
 	id = "large_beaker"
 	build_type = AUTOLATHE | PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/glass = 2500)
-	build_path = /obj/item/reagent_containers/glass/beaker/large
+	build_path = /obj/item/reagent_containers/cup/beaker/large
 	category = list("initial", "Medical", "Medical Designs")
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL | DEPARTMENT_BITFLAG_SERVICE
 
