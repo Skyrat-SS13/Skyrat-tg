@@ -46,11 +46,6 @@
 		"teal" = image(icon = src.icon, icon_state = "lewdapron_teal"),
 		"yellow" = image (icon = src.icon, icon_state = "lewdapron_yellow"))
 
-//to update model lol
-/obj/item/clothing/accessory/lewdapron/ComponentInitialize()
-	. = ..()
-	AddElement(/datum/element/update_icon_updates_onmob)
-
 //to change model
 /obj/item/clothing/accessory/lewdapron/AltClick(mob/user)
 	if(color_changed)
@@ -74,6 +69,7 @@
 	return TRUE
 
 /obj/item/clothing/accessory/lewdapron/Initialize(mapload)
+	AddElement(/datum/element/update_icon_updates_onmob)
 	if(!length(apron_designs))
 		populate_apron_designs()
 	update_icon_state()
