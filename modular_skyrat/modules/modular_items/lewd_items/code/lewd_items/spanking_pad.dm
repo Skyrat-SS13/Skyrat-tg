@@ -79,7 +79,7 @@
 			target.adjustPain(4)
 			target.apply_status_effect(/datum/status_effect/spanked)
 			if(HAS_TRAIT(target, TRAIT_MASOCHISM || TRAIT_BIMBO))
-				SEND_SIGNAL(target, COMSIG_ADD_MOOD_EVENT, "pervert spanked", /datum/mood_event/perv_spanked)
+				target.add_mood_event("pervert spanked", /datum/mood_event/perv_spanked)
 			if(prob(10) && (target.stat != DEAD))
 				target.apply_status_effect(/datum/status_effect/subspace)
 			user.visible_message(span_purple("[user] [message]!"))
