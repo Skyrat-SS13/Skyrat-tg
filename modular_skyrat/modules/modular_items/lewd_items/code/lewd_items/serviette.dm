@@ -83,7 +83,7 @@
 	. = ..()
 	icon_state = "[initial(icon_state)]_[number_remaining]"
 
-/obj/item/serviette_pack/Initialize()
+/obj/item/serviette_pack/Initialize(mapload)
 	. = ..()
 	update_icon_state()
 	update_icon()

@@ -123,7 +123,7 @@
 	/// Have we overheated?
 	var/overheated = FALSE
 
-/obj/item/gun/ballistic/automatic/mg34/mg42/Initialize()
+/obj/item/gun/ballistic/automatic/mg34/mg42/Initialize(mapload)
 	. = ..()
 	RegisterSignal(src, COMSIG_GUN_FIRED, .proc/process_heat)
 	START_PROCESSING(SSobj, src)

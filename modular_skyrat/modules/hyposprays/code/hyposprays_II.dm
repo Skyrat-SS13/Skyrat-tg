@@ -62,7 +62,7 @@
 	inject_self = DELUXE_SELF_INJECT
 	penetrates = INJECT_CHECK_PENETRATE_THICK
 
-/obj/item/hypospray/mkii/Initialize()
+/obj/item/hypospray/mkii/Initialize(mapload)
 	. = ..()
 	if(!spawnwithvial)
 		update_appearance()

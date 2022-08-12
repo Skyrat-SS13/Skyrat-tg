@@ -439,7 +439,7 @@
 		else
 			to_chat(M, span_userdanger("You fall in the water!"))
 
-/obj/effect/abstract/liquid_turf/Initialize()
+/obj/effect/abstract/liquid_turf/Initialize(mapload)
 	. = ..()
 	if(!SSliquids)
 		CRASH("Liquid Turf created with the liquids sybsystem not yet initialized!")
@@ -596,7 +596,7 @@
 /obj/effect/abstract/liquid_turf/immutable/ocean/warm
 	starting_temp = T20C+20
 
-/obj/effect/abstract/liquid_turf/immutable/Initialize()
+/obj/effect/abstract/liquid_turf/immutable/Initialize(mapload)
 	. = ..()
 	reagent_list = starting_mixture.Copy()
 	total_reagents = 0

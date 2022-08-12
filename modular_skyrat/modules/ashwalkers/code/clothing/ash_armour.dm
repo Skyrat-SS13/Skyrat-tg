@@ -17,7 +17,7 @@
 	name = "Ash Headdress"
 	result = /obj/item/clothing/head/ash_headdress
 
-/obj/item/clothing/head/ash_headdress/Initialize()
+/obj/item/clothing/head/ash_headdress/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/armor_plate, 2, /obj/item/stack/sheet/animalhide/goliath_hide, list(MELEE = 5, BULLET = 2, LASER = 2))
 
@@ -46,7 +46,7 @@
 	name = "Ash Robes"
 	result = /obj/item/clothing/under/costume/gladiator/ash_walker/ash_robes
 
-/obj/item/clothing/under/costume/gladiator/ash_walker/ash_robes/Initialize()
+/obj/item/clothing/under/costume/gladiator/ash_walker/ash_robes/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/armor_plate, 2, /obj/item/stack/sheet/animalhide/goliath_hide, list(MELEE = 5, BULLET = 2, LASER = 2))
 
@@ -68,7 +68,7 @@
 	name = "Ash Combat Plates"
 	result = /obj/item/clothing/suit/ash_plates
 
-/obj/item/clothing/suit/ash_plates/Initialize()
+/obj/item/clothing/suit/ash_plates/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/armor_plate, 2, /obj/item/stack/sheet/animalhide/goliath_hide, list(MELEE = 5, BULLET = 2, LASER = 2))
 

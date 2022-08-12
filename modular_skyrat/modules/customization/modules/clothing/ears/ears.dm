@@ -10,7 +10,7 @@
 	var/headphones_on = FALSE
 	custom_price = 60
 
-/obj/item/clothing/ears/headphones/Initialize()
+/obj/item/clothing/ears/headphones/Initialize(mapload)
 	. = ..()
 	update_icon()
 
