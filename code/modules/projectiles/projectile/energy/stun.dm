@@ -21,7 +21,7 @@
 	else if(iscarbon(target))
 		var/mob/living/carbon/C = target
 		C.adjust_timed_status_effect(15 SECONDS, /datum/status_effect/confusion) //SKYRAT EDIT ADDITION
-		SEND_SIGNAL(C, COMSIG_ADD_MOOD_EVENT, "tased", /datum/mood_event/tased)
+		C.add_mood_event("tased", /datum/mood_event/tased)
 		SEND_SIGNAL(C, COMSIG_LIVING_MINOR_SHOCK)
 		if(C.dna && C.dna.check_mutation(/datum/mutation/human/hulk))
 			C.say(pick(";RAAAAAAAARGH!", ";HNNNNNNNNNGGGGGGH!", ";GWAAAAAAAARRRHHH!", "NNNNNNNNGGGGGGGGHH!", ";AAAAAAARRRGH!" ), forced = "hulk")

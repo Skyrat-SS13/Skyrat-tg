@@ -29,7 +29,7 @@
 	company_flag = COMPANY_OLDARMS
 	var/cover_open = FALSE
 
-/obj/item/gun/ballistic/automatic/mg34/ComponentInitialize()
+/obj/item/gun/ballistic/automatic/mg34/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/update_icon_updates_onmob)
 

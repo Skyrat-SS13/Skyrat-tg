@@ -266,11 +266,8 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 
 /obj/item/clothing/sextoy/dildo/double_dildo/Initialize(mapload)
 	. = ..()
-	update_action_buttons_icons()
-
-/obj/item/clothing/sextoy/dildo/double_dildo/ComponentInitialize()
-	. = ..()
 	AddElement(/datum/element/update_icon_updates_onmob)
+	update_action_buttons_icons()
 
 /obj/item/clothing/sextoy/dildo/double_dildo/populate_dildo_designs()
 	return
