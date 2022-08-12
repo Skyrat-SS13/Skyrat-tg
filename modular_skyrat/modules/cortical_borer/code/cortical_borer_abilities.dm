@@ -639,7 +639,7 @@
 			return
 		to_chat(cortical_owner, span_notice("You forcefully detach from the host."))
 		to_chat(cortical_owner.human_host, span_notice("Something carefully tickles your inner ear..."))
-		var/obj/item/organ/borer_body/borer_organ = locate() in cortical_owner.human_host.internal_organs
+		var/obj/item/organ/internal/borer_body/borer_organ = locate() in cortical_owner.human_host.internal_organs
 		//log the interaction
 		var/turf/human_turfone = get_turf(cortical_owner.human_host)
 		var/logging_text = "[key_name(cortical_owner)] left [key_name(cortical_owner.human_host)] at [loc_name(human_turfone)]"
@@ -690,7 +690,7 @@
 		cortical_owner.forceMove(cortical_owner.human_host)
 		to_chat(cortical_owner.human_host, span_notice("A chilling sensation goes down your spine..."))
 		cortical_owner.copy_languages(cortical_owner.human_host)
-		var/obj/item/organ/borer_body/borer_organ = new(cortical_owner.human_host)
+		var/obj/item/organ/internal/borer_body/borer_organ = new(cortical_owner.human_host)
 		borer_organ.Insert(cortical_owner.human_host)
 		var/turf/human_turftwo = get_turf(cortical_owner.human_host)
 		var/logging_text = "[key_name(cortical_owner)] went into [key_name(cortical_owner.human_host)] at [loc_name(human_turftwo)]"
@@ -718,7 +718,7 @@
 	cortical_owner.forceMove(cortical_owner.human_host)
 	to_chat(cortical_owner.human_host, span_notice("A chilling sensation goes down your spine..."))
 	cortical_owner.copy_languages(cortical_owner.human_host)
-	var/obj/item/organ/borer_body/borer_organ = new(cortical_owner.human_host)
+	var/obj/item/organ/internal/borer_body/borer_organ = new(cortical_owner.human_host)
 	borer_organ.Insert(cortical_owner.human_host)
 	var/turf/human_turfthree = get_turf(cortical_owner.human_host)
 	var/logging_text = "[key_name(cortical_owner)] went into [key_name(cortical_owner.human_host)] at [loc_name(human_turfthree)]"

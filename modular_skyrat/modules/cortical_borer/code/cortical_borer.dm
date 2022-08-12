@@ -31,7 +31,7 @@ GLOBAL_VAR_INIT(successful_blood_chem, 0)
 		cb_inside.leave_host()
 
 //borers also create an organ, so you dont need to debrain someone
-/obj/item/organ/borer_body
+/obj/item/organ/internal/borer_body
 	name = "engorged cortical borer"
 	desc = "the body of a cortical borer, full of human viscera, blood, and more."
 	zone = BODY_ZONE_HEAD
@@ -114,13 +114,13 @@ GLOBAL_VAR_INIT(successful_blood_chem, 0)
 		if(HAS_TRAIT_FROM(carbon_target, TRAIT_SILENT_FOOTSTEPS, cb_inside))
 			REMOVE_TRAIT(carbon_target, TRAIT_SILENT_FOOTSTEPS, cb_inside)
 
-/obj/item/organ/borer_body/Insert(mob/living/carbon/carbon_target, special, drop_if_replaced)
+/obj/item/organ/internal/borer_body/Insert(mob/living/carbon/carbon_target, special, drop_if_replaced)
 	. = ..()
 	borer_focus_add(carbon_target)
 	carbon_target.hal_screwyhud = SCREWYHUD_HEALTHY
 
 //on removal, force the borer out
-/obj/item/organ/borer_body/Remove(mob/living/carbon/carbon_target, special)
+/obj/item/organ/internal/borer_body/Remove(mob/living/carbon/carbon_target, special)
 	. = ..()
 	var/mob/living/simple_animal/cortical_borer/cb_inside = carbon_target.has_borer()
 	borer_focus_remove(carbon_target)
@@ -378,7 +378,7 @@ GLOBAL_VAR_INIT(successful_blood_chem, 0)
 /mob/living/simple_animal/cortical_borer/proc/leave_host()
 	if(!human_host)
 		return
-	var/obj/item/organ/borer_body/borer_organ = locate() in human_host.internal_organs
+	var/obj/item/organ/internal/borer_body/borer_organ = locate() in human_host.internal_organs
 	if(borer_organ)
 		borer_organ.Remove(human_host)
 	var/turf/human_turf = get_turf(human_host)
