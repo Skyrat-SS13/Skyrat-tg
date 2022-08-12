@@ -1,14 +1,14 @@
-GLOBAL_VAR_INIT(objective_egg_borer_number, 5)
-GLOBAL_VAR_INIT(objective_egg_egg_number, 10)
-GLOBAL_VAR_INIT(objective_willing_hosts, 10)
-GLOBAL_VAR_INIT(objective_blood_chem, 5)
-GLOBAL_VAR_INIT(objective_blood_borer, 5)
+GLOBAL_VAR_INIT(objective_egg_borer_number, 2)
+GLOBAL_VAR_INIT(objective_egg_egg_number, 5)
+GLOBAL_VAR_INIT(objective_willing_hosts, 2)
+GLOBAL_VAR_INIT(objective_blood_chem, 3)
+GLOBAL_VAR_INIT(objective_blood_borer, 3)
 
 GLOBAL_VAR_INIT(successful_egg_number, 0)
 GLOBAL_LIST_EMPTY(willing_hosts)
 GLOBAL_VAR_INIT(successful_blood_chem, 0)
 
-//we need a way of buffing leg speed... here
+//we need a way of buffing leg speed
 /datum/movespeed_modifier/borer_speed
 	multiplicative_slowdown = -0.4
 
@@ -161,15 +161,20 @@ GLOBAL_VAR_INIT(successful_blood_chem, 0)
 										/datum/reagent/medicine/c2/lenturi,
 										/datum/reagent/medicine/c2/convermol,
 										/datum/reagent/medicine/c2/seiver,
+										/datum/reagent/medicine/c2/multiver,
 										/datum/reagent/lithium,
 										/datum/reagent/medicine/salglu_solution,
 										/datum/reagent/medicine/mutadone,
 										/datum/reagent/toxin/heparin,
-										/datum/reagent/medicine/mannitol,
 										/datum/reagent/drug/methamphetamine/borer_version,
 										/datum/reagent/medicine/morphine,
 										/datum/reagent/medicine/inacusiate,
 										/datum/reagent/medicine/oculine,
+										/datum/reagent/toxin/mindbreaker,
+	)
+	//blacklisted chemicals - separate from chemicals that cannot be synthesized, borers specifically cannot learn these
+	var/list/blacklisted_chemicals = list(/datum/reagent/medicine/mannitol,
+										/datum/reagent/medicine/neurine,
 	)
 	///how old the borer is, starting from zero. Goes up only when inside a host
 	var/maturity_age = 0
@@ -289,12 +294,12 @@ GLOBAL_VAR_INIT(successful_blood_chem, 0)
 
 /mob/living/simple_animal/cortical_borer/Life(delta_time, times_fired)
 	. = ..()
-	//can only do stuff when we are inside a human
-	if(!inside_human())
+	//can only do stuff when we are inside a LIVING human
+	if(!inside_human() || human_host?.stat == DEAD)
 		return
 
 	//there needs to be a negative to having a borer
-	if(prob(5) && human_host.getToxLoss() <= 20)
+	if(prob(5) && human_host.getToxLoss() <= 80)
 		human_host.adjustToxLoss(5, TRUE, TRUE)
 
 	if(human_host.hal_screwyhud != SCREWYHUD_HEALTHY)
@@ -324,11 +329,11 @@ GLOBAL_VAR_INIT(successful_blood_chem, 0)
 		//20:40, 15:30, 10:20, 5:10
 		var/maturity_threshold = 20
 		if(GLOB.successful_egg_number >= GLOB.objective_egg_borer_number)
-			maturity_threshold -= 5
+			maturity_threshold -= 2
 		if(length(GLOB.willing_hosts) >= GLOB.objective_willing_hosts)
-			maturity_threshold -= 5
+			maturity_threshold -= 10
 		if(GLOB.successful_blood_chem >= GLOB.objective_blood_borer)
-			maturity_threshold -= 5
+			maturity_threshold -= 3
 
 		if(maturity_age == maturity_threshold)
 			if(chemical_evolution < limited_borer) //you can only have a default of 10 at a time
