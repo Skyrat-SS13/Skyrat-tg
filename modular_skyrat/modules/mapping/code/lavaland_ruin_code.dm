@@ -89,7 +89,7 @@
 	icon_state = "syndie_headset"
 	inhand_icon_state = "syndie_headset"
 	radiosound = 'modular_skyrat/modules/radiosound/sound/radio/syndie.ogg'
-	keyslot = new /obj/item/encryptionkey/headset_interdyne
+	keyslot = new /obj/item/encryptionkey/headset_syndicate/interdyne
 
 /obj/item/radio/headset/interdyne/ComponentInitialize()
 	. = ..()
@@ -101,7 +101,7 @@
 	icon_state = "syndie_headset"
 	inhand_icon_state = "syndie_headset"
 	radiosound = 'modular_skyrat/modules/radiosound/sound/radio/syndie.ogg'
-	keyslot = new /obj/item/encryptionkey/headset_interdyne
+	keyslot = new /obj/item/encryptionkey/headset_syndicate/interdyne
 	command = TRUE
 
 /obj/item/radio/headset/interdyne/command/ComponentInitialize()
@@ -109,5 +109,5 @@
 	AddComponent(/datum/component/wearertargeting/earprotection, list(ITEM_SLOT_EARS))
 
 /obj/item/radio/headset/interdyne/comms
-	keyslot = new /obj/item/encryptionkey/headset_interdyne
+	keyslot = new /obj/item/encryptionkey/headset_syndicate/interdyne
 	keyslot2 = new /obj/item/encryptionkey/syndicate
