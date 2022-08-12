@@ -215,7 +215,7 @@ GLOBAL_VAR_INIT(successful_blood_chem, 0)
 	//just a flavor kind of thing
 	var/generation = 1
 	///what the borer focuses to increase the hosts capabilities
-	var/body_focus = null
+	var/datum/borer_focus/body_focus = null
 	///how many children the borer has produced
 	var/children_produced = 0
 	///how many blood chems have been learned through the blood
@@ -228,6 +228,8 @@ GLOBAL_VAR_INIT(successful_blood_chem, 0)
 	var/organic_restricted = TRUE
 	///borers are unable to enter changelings if true
 	var/changeling_restricted = TRUE
+	/// List of focus datums
+	var/list/possible_focuses = list()
 
 /mob/living/simple_animal/cortical_borer/Initialize(mapload)
 	. = ..()
@@ -248,6 +250,8 @@ GLOBAL_VAR_INIT(successful_blood_chem, 0)
 	if(mind)
 		if(!mind.has_antag_datum(/datum/antagonist/cortical_borer))
 			mind.add_antag_datum(/datum/antagonist/cortical_borer)
+	for(var/focus_path in subtypesof(/datum/borer_focus))
+		possible_focuses += new focus_path
 
 /mob/living/simple_animal/cortical_borer/Destroy()
 	human_host = null
