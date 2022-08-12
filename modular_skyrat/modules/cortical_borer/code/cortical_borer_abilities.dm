@@ -66,7 +66,7 @@
 		return
 	var/list/fancy_list = list()
 	for(var/datum/borer_focus/foci as anything in cortical_owner.possible_focuses)
-		if(cortical_owner.focus == foci)
+		if(cortical_owner.body_focus == foci)
 			continue
 		fancy_list["[foci.name] ([foci.cost] points)"] = foci
 	var/focus_choice = tgui_input_list(cortical_owner, "Choose your focus!", "Focus Choice", fancy_list)
