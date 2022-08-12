@@ -42,15 +42,11 @@
 			exposed_mob.add_mood_event("quality_drink", /datum/mood_event/quality_fantastic)
 			exposed_mob.mind?.add_memory(MEMORY_DRINK, list(DETAIL_DRINK = src), story_value = STORY_VALUE_OKAY)
 		if (FOOD_AMAZING)
-<<<<<<< HEAD
-			SEND_SIGNAL(exposed_mob, COMSIG_ADD_MOOD_EVENT, "quality_food", /datum/mood_event/amazingtaste)
-		// SKYRAT ADDITION BEGIN
-		if (RACE_DRINK)
-			SEND_SIGNAL(exposed_mob, COMSIG_ADD_MOOD_EVENT, "quality_drink", /datum/mood_event/race_drink)
-		// SKYRAT ADDITION END
-=======
 			exposed_mob.add_mood_event("quality_food", /datum/mood_event/amazingtaste)
->>>>>>> 34b40347770 (Replaces the mood component with a mood datum (#68592))
+		// SKYRAT ADDITION BEGIN - Racial Drinks
+		if (RACE_DRINK)
+			exposed_mob.add_mood_event("quality_drink", /datum/mood_event/race_drink)
+		// SKYRAT ADDITION END
 
 /datum/reagent/consumable/nutriment
 	name = "Nutriment"

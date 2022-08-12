@@ -85,7 +85,7 @@
 	overdose_threshold = 10
 
 /datum/reagent/drug/dopamine/on_mob_add(mob/living/carbon/human/affected_mob)
-	SEND_SIGNAL(affected_mob, COMSIG_ADD_MOOD_EVENT, "[type]_start", /datum/mood_event/orgasm, name)
+	affected_mob.add_mood_event("[type]_start", /datum/mood_event/orgasm, name)
 	..()
 
 /datum/reagent/drug/dopamine/on_mob_life(mob/living/carbon/affected_mob, delta_time, times_fired)
@@ -98,7 +98,7 @@
 	if(HAS_TRAIT(human_mob, TRAIT_BIMBO))
 		return
 	to_chat(human_mob, span_userdanger("You don't want to cum anymore!"))
-	SEND_SIGNAL(human_mob, COMSIG_ADD_MOOD_EVENT, "[type]_overdose", /datum/mood_event/overgasm, name)
+	human_mob.add_mood_event("[type]_overdose", /datum/mood_event/overgasm, name)
 
 /datum/reagent/drug/dopamine/overdose_process(mob/living/carbon/human/affected_mob)
 	affected_mob.adjustArousal(0.5)
@@ -403,14 +403,14 @@
 							span_userlove("You orgasm, it feels great, but nothing comes out of your dick!"))
 						apply_status_effect(/datum/status_effect/climax)
 						apply_status_effect(/datum/status_effect/climax_cooldown)
-						SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "orgasm", /datum/mood_event/climaxself)
+						add_mood_event("orgasm", /datum/mood_event/climaxself)
 						return TRUE
 					else
 						visible_message(span_userlove("[src] cums into their clothes!"), \
 							span_userlove("You shoot your load, but you weren't naked, so you mess up your clothes!"))
 						apply_status_effect(/datum/status_effect/climax)
 						apply_status_effect(/datum/status_effect/climax_cooldown)
-						SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "orgasm", /datum/mood_event/climaxself)
+						add_mood_event("orgasm", /datum/mood_event/climaxself)
 						return TRUE
 
 				var/list/interactable_inrange_humans = list()
@@ -521,7 +521,7 @@
 					apply_status_effect(/datum/status_effect/climax_cooldown)
 					visible_message(span_purple("[src] cums in their underwear!"), \
 								span_purple("You cum in your underwear! Eww."))
-					SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "orgasm", /datum/mood_event/climaxself)
+					add_mood_event("orgasm", /datum/mood_event/climaxself)
 				return TRUE
 		else
 			visible_message(span_purple("[src] twitches, trying to cum, but with no result."), \
@@ -627,12 +627,12 @@
 /datum/status_effect/subspace/on_apply()
 	. = ..()
 	var/mob/living/carbon/human/target = owner
-	SEND_SIGNAL(target, COMSIG_ADD_MOOD_EVENT, "subspace", /datum/mood_event/subspace)
+	target.add_mood_event("subspace", /datum/mood_event/subspace)
 
 /datum/status_effect/subspace/on_remove()
 	. = ..()
 	var/mob/living/carbon/human/target = owner
-	SEND_SIGNAL(target, COMSIG_CLEAR_MOOD_EVENT, "subspace", /datum/mood_event/subspace)
+	target.clear_mood_event("subspace")
 
 /datum/mood_event/subspace
 	description = span_purple("Everything is so woozy... Pain feels so... Awesome.\n")
@@ -646,12 +646,12 @@
 /datum/status_effect/ropebunny/on_apply()
 	. = ..()
 	var/mob/living/carbon/human/target = owner
-	SEND_SIGNAL(target, COMSIG_ADD_MOOD_EVENT, "ropebunny", /datum/mood_event/ropebunny)
+	target.add_mood_event("ropebunny", /datum/mood_event/ropebunny)
 
 /datum/status_effect/ropebunny/on_remove()
 	. = ..()
 	var/mob/living/carbon/human/target = owner
-	SEND_SIGNAL(target, COMSIG_CLEAR_MOOD_EVENT, "ropebunny", /datum/mood_event/ropebunny)
+	target.clear_mood_event("ropebunny")
 
 /datum/mood_event/ropebunny
 	description = span_purple("I'm tied! Cannot move! These ropes... Ah!~")
