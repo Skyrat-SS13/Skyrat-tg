@@ -230,7 +230,7 @@
 /obj/machinery/chem_dispenser/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "ChemDispenser", name)
+		ui = new(user, src, "BorerChem", name)
 		if(user.hallucinating())
 			ui.set_autoupdate(FALSE) //to not ruin the immersion by constantly changing the fake chemicals
 		ui.open()
@@ -395,7 +395,7 @@
 		//SKYRAT EDIT ADDITION BEGIN - CHEMISTRY QOL
 		if("custom_amount")
 			if(!beaker)
-				to_chat(usr, "<span class ='notice'>Insert a container first!</span>")
+				to_chat(usr, span_warning("Insert a container first!"))
 				return
 			if(customTransferAmount)
 				transferAmounts -= customTransferAmount

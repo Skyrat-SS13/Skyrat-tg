@@ -1,3 +1,6 @@
+#define CHEMICALS_PER_UNIT 2
+#define CHEMICAL_SECOND_DIVISOR 5 SECONDS
+
 GLOBAL_VAR_INIT(objective_egg_borer_number, 5)
 GLOBAL_VAR_INIT(objective_egg_egg_number, 10)
 GLOBAL_VAR_INIT(objective_willing_hosts, 10)
@@ -129,6 +132,9 @@ GLOBAL_VAR_INIT(successful_blood_chem, 0)
 	carbon_target.hal_screwyhud = SCREWYHUD_NONE
 	qdel(src)
 
+/obj/item/reagent_containers/borer
+	volume = 100
+
 /mob/living/simple_animal/cortical_borer
 	name = "cortical borer"
 	desc = "A slimy creature that is known to go into the ear canal of unsuspecting victims."
@@ -228,6 +234,21 @@ GLOBAL_VAR_INIT(successful_blood_chem, 0)
 	var/organic_restricted = TRUE
 	///borers are unable to enter changelings if true
 	var/changeling_restricted = TRUE
+	/// Assoc list of chemical injection rates that the borer can have
+	var/static/list/injection_rates = list(
+		5,
+		10,
+		25,
+		50,
+	)
+	/// Which injection rates the borer has unlocked
+	var/list/injection_rates_unlocked = list(
+		5,
+	)
+	/// What is the current injection rate of the borer
+	var/injection_rate_current = 5
+	/// Cooldown between injecting chemicals
+	COOLDOWN_DECLARE(injection_cooldown)
 
 /mob/living/simple_animal/cortical_borer/Initialize(mapload)
 	. = ..()
@@ -241,7 +262,7 @@ GLOBAL_VAR_INIT(successful_blood_chem, 0)
 			if(2)
 				name = "cortical vorer ([generation]-[rand(100,999)])"
 	GLOB.cortical_borers += src
-	reagent_holder = new /obj/item/reagent_containers(src)
+	reagent_holder = new /obj/item/reagent_containers/borer(src)
 	for(var/action_type in known_abilities)
 		var/datum/action/attack_action = new action_type()
 		attack_action.Grant(src)
@@ -427,3 +448,6 @@ GLOBAL_VAR_INIT(successful_blood_chem, 0)
 /mob/living/simple_animal/cortical_borer/start_pulling(atom/movable/AM, state, force, supress_message)
 	to_chat(src, span_warning("You cannot pull things!"))
 	return
+
+#undef CHEMICALS_PER_UNIT
+#undef CHEMICAL_SECOND_DIVISOR
