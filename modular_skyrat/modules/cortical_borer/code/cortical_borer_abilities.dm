@@ -22,26 +22,7 @@
 	if(cortical_owner.host_sugar())
 		owner.balloon_alert(owner, "cannot function with sugar in host")
 		return
-	if(!cortical_owner.known_chemicals.len)
-		to_chat(cortical_owner, span_warning("You need to learn chemicals first!"))
-		return
-	if(cortical_owner.chemical_storage < 10)
-		owner.balloon_alert(owner, "10 chemical units required")
-		return
-	cortical_owner.chemical_storage -= 10
-	var/choice = tgui_input_list(cortical_owner, "Choose a chemical to inject!", "Chemical Selection", cortical_owner.known_chemicals)
-	if(!choice)
-		owner.balloon_alert(owner, "no chemical selected")
-		return
-	cortical_owner.reagent_holder.reagents.add_reagent(choice, 5, added_purity = 1)
-	cortical_owner.reagent_holder.reagents.trans_to(cortical_owner.human_host, 30, methods = INGEST)
-	to_chat(cortical_owner.human_host, span_warning("You feel something cool inside of you!"))
-	var/turf/human_turf = get_turf(cortical_owner.human_host)
-	var/datum/reagent/reagent_name = initial(choice)
-	var/logging_text = "[key_name(cortical_owner)] injected [key_name(cortical_owner.human_host)] with [reagent_name] at [loc_name(human_turf)]"
-	cortical_owner.log_message(logging_text, LOG_GAME)
-	cortical_owner.human_host.log_message(logging_text, LOG_GAME)
-	StartCooldown()
+	ui_interact(owner)
 
 /datum/action/cooldown/inject_chemical/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
