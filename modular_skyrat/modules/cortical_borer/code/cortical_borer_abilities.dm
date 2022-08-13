@@ -60,7 +60,6 @@
 /datum/action/cooldown/borer/inject_chemical
 	name = "Open Chemical Injector"
 	cooldown_time = 1 SECONDS
-	icon_icon = 'modular_skyrat/modules/cortical_borer/icons/actions.dmi'
 	button_icon_state = "chemical"
 
 /datum/action/cooldown/borer/inject_chemical/Trigger(trigger_flags)
@@ -69,13 +68,13 @@
 		return
 	ui_interact(owner)
 
-/datum/action/cooldown/inject_chemical/ui_interact(mob/user, datum/tgui/ui)
+/datum/action/cooldown/borer/inject_chemical/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "BorerChem", name)
 		ui.open()
 
-/datum/action/cooldown/inject_chemical/ui_data(mob/user)
+/datum/action/cooldown/borer/inject_chemical/ui_data(mob/user)
 	var/data = list()
 	var/mob/living/simple_animal/cortical_borer/cortical_owner = owner
 	data["amount"] = cortical_owner.injection_rate_current
@@ -95,7 +94,7 @@
 
 	return data
 
-/datum/action/cooldown/inject_chemical/ui_act(action, params)
+/datum/action/cooldown/borer/inject_chemical/ui_act(action, params)
 	. = ..()
 	if(.)
 		return
@@ -125,10 +124,10 @@
 			cortical_owner.human_host.log_message(logging_text, LOG_GAME)
 			. = TRUE
 
-/datum/action/cooldown/inject_chemical/ui_state(mob/user)
+/datum/action/cooldown/borer/inject_chemical/ui_state(mob/user)
 	return GLOB.always_state
 
-/datum/action/cooldown/inject_chemical/ui_status(mob/user, datum/ui_state/state)
+/datum/action/cooldown/borer/inject_chemical/ui_status(mob/user, datum/ui_state/state)
 	if(!iscorticalborer(user))
 		return UI_CLOSE
 	var/mob/living/simple_animal/cortical_borer/borer = user
@@ -175,8 +174,8 @@
 	cooldown_time = 1 SECONDS
 	button_icon_state = "bloodchem"
 	required_points = list(
-		BORER_CHEM_POINTS = 5,
-		BORER_EVO_POINTS = 0,
+		BORER_CHEM_POINTS = 0,
+		BORER_EVO_POINTS = 5,
 		BORER_STAT_POINTS = 0,
 	)
 	starting_ability = FALSE
@@ -876,6 +875,8 @@
 		cortical_owner.human_host.adjustOxyLoss(-(cortical_owner.human_host.getOxyLoss()*0.5))
 	if(cortical_owner.human_host.blood_volume < BLOOD_VOLUME_BAD)
 		cortical_owner.human_host.blood_volume = BLOOD_VOLUME_BAD
+	for(var/obj/item/organ/internal/internal_target in cortical_owner.human_host.internal_organs)
+		internal_target.applyOrganDamage(-internal_target.damage * 0.5)
 	cortical_owner.human_host.revive()
 	to_chat(cortical_owner.human_host, span_boldwarning("Your heart jumpstarts!"))
 	owner.balloon_alert(owner, "host revived")
