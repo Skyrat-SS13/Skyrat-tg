@@ -30,8 +30,10 @@
 	zone = BODY_ZONE_CHEST
 	slot = ORGAN_SLOT_EXTERNAL_TAUR
 	layers = ALL_EXTERNAL_OVERLAYS
+	organ_flags = ORGAN_EXTERNAL
 	external_bodytypes = BODYTYPE_TAUR
 	color_source = ORGAN_COLOR_OVERRIDE
+	use_mob_sprite_as_obj_sprite = TRUE
 
 	feature_key = "taur"
 	preference = "feature_taur"

@@ -12,12 +12,6 @@ GLOBAL_VAR_INIT(bsa_unlock, FALSE)
 	name = "Bluespace Artillery"
 
 /datum/station_goal/bluespace_cannon/get_report()
-<<<<<<< HEAD
-	return {"Our military presence is inadequate in your sector.
-		We need you to construct BSA-[rand(1,99)] Artillery position aboard your station.
-		Base parts are available for shipping via cargo.
-		-Nanotrasen Naval Command"}
-=======
 	return list(
 		"<blockquote>Our military presence is inadequate in your sector.",
 		"We need you to construct BSA-[rand(1,99)] Artillery position aboard your station.",
@@ -25,7 +19,6 @@ GLOBAL_VAR_INIT(bsa_unlock, FALSE)
 		"Base parts are available for shipping via cargo.",
 		"-Nanotrasen Naval Command</blockquote>",
 	).Join("\n")
->>>>>>> 5a4f85f5338 (Spends 6 hours teaching Papercode how to conform to better standards and practices, and also fixes a trivial 5 minute bug with command reports. (#69071))
 
 /datum/station_goal/bluespace_cannon/on_report()
 	//Unlock BSA parts

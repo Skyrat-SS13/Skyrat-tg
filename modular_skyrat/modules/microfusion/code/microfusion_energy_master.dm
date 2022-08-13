@@ -104,14 +104,11 @@
 	phase_emitter.parent_gun = src
 	update_microfusion_lens()
 	recharge_newshot(TRUE)
+	AddElement(/datum/element/update_icon_updates_onmob)
 	update_appearance()
 	AddComponent(/datum/component/ammo_hud)
 	RegisterSignal(src, COMSIG_ITEM_RECHARGED, .proc/instant_recharge)
 	base_fire_delay = fire_delay
-
-/obj/item/gun/microfusion/ComponentInitialize()
-	. = ..()
-	AddElement(/datum/element/update_icon_updates_onmob)
 
 /obj/item/gun/microfusion/add_weapon_description()
 	AddElement(/datum/element/weapon_description, attached_proc = .proc/add_notes_energy)
