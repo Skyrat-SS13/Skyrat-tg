@@ -8,6 +8,8 @@ GLOBAL_VAR_INIT(successful_egg_number, 0)
 GLOBAL_LIST_EMPTY(willing_hosts)
 GLOBAL_VAR_INIT(successful_blood_chem, 0)
 
+GLOBAL_LIST_EMPTY(cortical_borers)
+
 //we need a way of buffing leg speed
 /datum/movespeed_modifier/borer_speed
 	multiplicative_slowdown = -0.4
@@ -44,14 +46,16 @@ GLOBAL_VAR_INIT(successful_blood_chem, 0)
 
 /obj/item/organ/internal/borer_body/Insert(mob/living/carbon/carbon_target, special, drop_if_replaced)
 	. = ..()
-	borer.body_focus?.on_add()
+	for(var/datum/borer_focus/body_focus as anything in borer.body_focuses)
+		body_focus.on_add()
 	carbon_target.hal_screwyhud = SCREWYHUD_HEALTHY
 
 //on removal, force the borer out
 /obj/item/organ/internal/borer_body/Remove(mob/living/carbon/carbon_target, special)
 	. = ..()
 	var/mob/living/simple_animal/cortical_borer/cb_inside = carbon_target.has_borer()
-	cb_inside.body_focus?.on_remove()
+	for(var/datum/borer_focus/body_focus as anything in cb_inside.body_focuses)
+		body_focus.on_remove()
 	if(cb_inside)
 		cb_inside.leave_host()
 	carbon_target.hal_screwyhud = SCREWYHUD_NONE
@@ -120,28 +124,27 @@ GLOBAL_VAR_INIT(successful_blood_chem, 0)
 	///how fast chemicals are gained. Goes up only when inside a host
 	var/chemical_regen = 1
 	///the list of actions that the borer has
-	var/list/known_abilities = list(/datum/action/cooldown/toggle_hiding,
-									/datum/action/cooldown/choosing_host,
-									/datum/action/cooldown/inject_chemical,
-									/datum/action/cooldown/upgrade_chemical,
-									/datum/action/cooldown/choose_focus,
-									/datum/action/cooldown/upgrade_stat,
-									/datum/action/cooldown/learn_ability,
-									/datum/action/cooldown/force_speak,
-									/datum/action/cooldown/fear_human,
-									/datum/action/cooldown/check_blood,
+	var/list/known_abilities = list(/datum/action/cooldown/borer/toggle_hiding,
+									/datum/action/cooldown/borer/choosing_host,
+									/datum/action/cooldown/borer/inject_chemical,
+									/datum/action/cooldown/borer/upgrade_chemical,
+									/datum/action/cooldown/borer/learn_focus,
+									/datum/action/cooldown/borer/upgrade_stat,
+									/datum/action/cooldown/borer/learn_ability,
+									/datum/action/cooldown/borer/force_speak,
+									/datum/action/cooldown/borer/fear_human,
+									/datum/action/cooldown/borer/check_blood,
 	)
 	///the list of actions that the borer could learn
-	var/possible_abilities = list(	/datum/action/cooldown/produce_offspring,
-									/datum/action/cooldown/learn_bloodchemical,
-									/datum/action/cooldown/revive_host,
-									/datum/action/cooldown/willing_host,)
+	var/possible_abilities = list(/datum/action/cooldown/borer/produce_offspring,
+								/datum/action/cooldown/borer/learn_bloodchemical,
+								/datum/action/cooldown/borer/revive_host,
+								/datum/action/cooldown/borer/willing_host,
+	)
 	///the host
 	var/mob/living/carbon/human/human_host
 	//what the host gains or loses with the borer
-	var/list/hosts_abilities = list(
-
-	)
+	var/list/hosts_abilities = list()
 	//just a little "timer" to compare to world.time
 	var/timed_maturity = 0
 	///multiplies the current health up to the max health
@@ -150,8 +153,10 @@ GLOBAL_VAR_INIT(successful_blood_chem, 0)
 	var/obj/item/reagent_containers/reagent_holder
 	//just a flavor kind of thing
 	var/generation = 1
-	///what the borer focuses to increase the hosts capabilities
-	var/datum/borer_focus/body_focus = null
+	/// List of focus datums
+	var/list/possible_focuses = list()
+	/// What focuses the borer has unlocked
+	var/list/body_focuses = list()
 	///how many children the borer has produced
 	var/children_produced = 0
 	///how many blood chems have been learned through the blood
@@ -179,8 +184,6 @@ GLOBAL_VAR_INIT(successful_blood_chem, 0)
 	var/injection_rate_current = 5
 	/// Cooldown between injecting chemicals
 	COOLDOWN_DECLARE(injection_cooldown)
-	/// List of focus datums
-	var/list/possible_focuses = list()
 
 /mob/living/simple_animal/cortical_borer/Initialize(mapload)
 	. = ..()
