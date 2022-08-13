@@ -1,5 +1,5 @@
 import { toFixed } from 'common/math';
-import { useBackend} from '../backend';
+import { useBackend } from '../backend';
 import { Box, Button, LabeledList, ProgressBar, Section } from '../components';
 import { Window } from '../layouts';
 
@@ -7,14 +7,9 @@ export const BorerChem = (props, context) => {
   const { act, data } = useBackend(context);
   const borerTransferAmounts = data.borerTransferAmounts || [];
   return (
-    <Window
-      width={565}
-      height={400}
-      title='Injector'
-      theme='wizard'>
+    <Window width={565} height={400} title="Injector" theme="wizard">
       <Window.Content scrollable>
-        <Section
-          title="Status">
+        <Section title="Status">
           <LabeledList>
             <LabeledList.Item label="Storage">
               <ProgressBar value={data.energy / data.maxEnergy}>
@@ -46,9 +41,7 @@ export const BorerChem = (props, context) => {
                 width="129.5px"
                 lineHeight={1.75}
                 content={chemical.title}
-                disabled={
-                  data.onCooldown ||
-                  data.notEnoughChemicals}
+                disabled={data.onCooldown || data.notEnoughChemicals}
                 onClick={() =>
                   act('inject', {
                     reagent: chemical.id,
