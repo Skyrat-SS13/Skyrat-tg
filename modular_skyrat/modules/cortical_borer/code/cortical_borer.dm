@@ -183,29 +183,8 @@ GLOBAL_VAR_INIT(successful_blood_chem, 0)
 	var/chemical_storage = 50
 	///how fast chemicals are gained. Goes up only when inside a host
 	var/chemical_regen = 1
-	///the list of actions that the borer has
-	var/list/known_abilities = list(/datum/action/cooldown/toggle_hiding,
-									/datum/action/cooldown/choosing_host,
-									/datum/action/cooldown/inject_chemical,
-									/datum/action/cooldown/upgrade_chemical,
-									/datum/action/cooldown/choose_focus,
-									/datum/action/cooldown/upgrade_stat,
-									/datum/action/cooldown/learn_ability,
-									/datum/action/cooldown/force_speak,
-									/datum/action/cooldown/fear_human,
-									/datum/action/cooldown/check_blood,
-	)
-	///the list of actions that the borer could learn
-	var/possible_abilities = list(	/datum/action/cooldown/produce_offspring,
-									/datum/action/cooldown/learn_bloodchemical,
-									/datum/action/cooldown/revive_host,
-									/datum/action/cooldown/willing_host,)
 	///the host
 	var/mob/living/carbon/human/human_host
-	//what the host gains or loses with the borer
-	var/list/hosts_abilities = list(
-
-	)
 	//just a little "timer" to compare to world.time
 	var/timed_maturity = 0
 	///multiplies the current health up to the max health
@@ -244,14 +223,16 @@ GLOBAL_VAR_INIT(successful_blood_chem, 0)
 				name = "cortical vorer ([generation]-[rand(100,999)])"
 	GLOB.cortical_borers += src
 	reagent_holder = new /obj/item/reagent_containers(src)
-	for(var/action_type in known_abilities)
-		var/datum/action/attack_action = new action_type()
-		attack_action.Grant(src)
 	if(mind)
 		if(!mind.has_antag_datum(/datum/antagonist/cortical_borer))
 			mind.add_antag_datum(/datum/antagonist/cortical_borer)
 	for(var/focus_path in subtypesof(/datum/borer_focus))
 		possible_focuses += new focus_path
+	for(var/action_path as anything in subtypesof(/datum/action/cooldown/borer))
+		var/datum/action/cooldown/borer/borer_path = new action_path()
+		if(!borer_path.starting_ability)
+			continue
+		borer_path.Grant(src)
 
 /mob/living/simple_animal/cortical_borer/Destroy()
 	human_host = null
