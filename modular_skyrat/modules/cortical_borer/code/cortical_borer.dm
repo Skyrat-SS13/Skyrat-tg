@@ -1,6 +1,3 @@
-#define CHEMICALS_PER_UNIT 2
-#define CHEMICAL_SECOND_DIVISOR 5 SECONDS
-
 GLOBAL_VAR_INIT(objective_egg_borer_number, 5)
 GLOBAL_VAR_INIT(objective_egg_egg_number, 10)
 GLOBAL_VAR_INIT(objective_willing_hosts, 10)
@@ -374,6 +371,3 @@ GLOBAL_VAR_INIT(successful_blood_chem, 0)
 /mob/living/simple_animal/cortical_borer/start_pulling(atom/movable/AM, state, force, supress_message)
 	to_chat(src, span_warning("You cannot pull things!"))
 	return
-
-#undef CHEMICALS_PER_UNIT
-#undef CHEMICAL_SECOND_DIVISOR
