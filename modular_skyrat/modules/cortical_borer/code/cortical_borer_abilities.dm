@@ -29,6 +29,11 @@
 	if(!ui)
 		ui = new(user, src, "BorerChem", name)
 		ui.open()
+	RegisterSignal(owner, COMSIG_BORER_CHANGE_HOST, .proc/close_ui)
+
+/datum/action/cooldown/inject_chemical/proc/close_ui()
+	UnregisterSignal(owner, COMSIG_BORER_CHANGE_HOST)
+	ui_close(owner)
 
 /datum/action/cooldown/inject_chemical/ui_data(mob/user)
 	var/data = list()
@@ -663,6 +668,7 @@
 			return
 		owner.balloon_alert(owner, "detached from host")
 		to_chat(cortical_owner.human_host, span_notice("Something carefully tickles your inner ear..."))
+		SEND_SIGNAL(owner, COMSIG_BORER_CHANGE_HOST)
 		var/obj/item/organ/internal/borer_body/borer_organ = locate() in cortical_owner.human_host.internal_organs
 		//log the interaction
 		var/turf/human_turfone = get_turf(cortical_owner.human_host)
@@ -713,6 +719,7 @@
 		cortical_owner.human_host = singular_host
 		cortical_owner.forceMove(cortical_owner.human_host)
 		to_chat(cortical_owner.human_host, span_notice("A chilling sensation goes down your spine..."))
+		SEND_SIGNAL(owner, COMSIG_BORER_CHANGE_HOST)
 		cortical_owner.copy_languages(cortical_owner.human_host)
 		var/obj/item/organ/internal/borer_body/borer_organ = new(cortical_owner.human_host)
 		borer_organ.Insert(cortical_owner.human_host)
@@ -741,6 +748,7 @@
 	cortical_owner.human_host = choose_host
 	cortical_owner.forceMove(cortical_owner.human_host)
 	to_chat(cortical_owner.human_host, span_notice("A chilling sensation goes down your spine..."))
+	SEND_SIGNAL(owner, COMSIG_BORER_CHANGE_HOST)
 	cortical_owner.copy_languages(cortical_owner.human_host)
 	var/obj/item/organ/internal/borer_body/borer_organ = new(cortical_owner.human_host)
 	borer_organ.Insert(cortical_owner.human_host)

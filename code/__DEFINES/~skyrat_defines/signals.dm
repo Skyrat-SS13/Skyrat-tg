@@ -75,3 +75,7 @@
 
 /// To chambered round on gun's `process_fire()`: (list/iff_factions)
 #define COMSIG_CHAMBERED_BULLET_FIRE "chambered_bullet_fire"
+
+
+/// When a borer inhabits/uninhabets a target
+#define COMSIG_BORER_CHANGE_HOST "borer_change_host"
