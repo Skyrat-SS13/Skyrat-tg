@@ -1,6 +1,9 @@
+#define CHEMICALS_PER_UNIT 2
+#define CHEMICAL_SECOND_DIVISOR 5 SECONDS
+
 //inject chemicals into your host
 /datum/action/cooldown/inject_chemical
-	name = "Inject 5u Chemical (10 chemicals)"
+	name = "Open Chemical Injector"
 	cooldown_time = 1 SECONDS
 	icon_icon = 'modular_skyrat/modules/cortical_borer/icons/actions.dmi'
 	button_icon_state = "chemical"
@@ -19,30 +22,74 @@
 	if(cortical_owner.host_sugar())
 		owner.balloon_alert(owner, "cannot function with sugar in host")
 		return
-	if(!length(cortical_owner.known_chemicals))
-		owner.balloon_alert(owner, "no chemicals learned")
+	ui_interact(owner)
+
+/datum/action/cooldown/inject_chemical/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "BorerChem", name)
+		ui.open()
+
+/datum/action/cooldown/inject_chemical/ui_data(mob/user)
+	var/data = list()
+	var/mob/living/simple_animal/cortical_borer/cortical_owner = owner
+	data["amount"] = cortical_owner.injection_rate_current
+	data["energy"] = cortical_owner.chemical_storage / CHEMICALS_PER_UNIT
+	data["maxEnergy"] = cortical_owner.max_chemical_storage / CHEMICALS_PER_UNIT
+	data["borerTransferAmounts"] = cortical_owner.injection_rates_unlocked
+	data["onCooldown"] = !COOLDOWN_FINISHED(cortical_owner, injection_cooldown)
+	data["notEnoughChemicals"] = ((cortical_owner.injection_rate_current * CHEMICALS_PER_UNIT) > cortical_owner.chemical_storage) ? TRUE : FALSE
+
+	var/chemicals[0]
+	for(var/reagent in cortical_owner.known_chemicals)
+		var/datum/reagent/temp = GLOB.chemical_reagents_list[reagent]
+		if(temp)
+			var/chemname = temp.name
+			chemicals.Add(list(list("title" = chemname, "id" = ckey(temp.name))))
+	data["chemicals"] = chemicals
+
+	return data
+
+/datum/action/cooldown/inject_chemical/ui_act(action, params)
+	. = ..()
+	if(.)
 		return
-	if(cortical_owner.chemical_storage < 10)
-		owner.balloon_alert(owner, "10 chemical units required")
-		return
-	cortical_owner.chemical_storage -= 10
-	var/choice = tgui_input_list(cortical_owner, "Choose a chemical to inject!", "Chemical Selection", cortical_owner.known_chemicals)
-	if(!choice)
-		owner.balloon_alert(owner, "no chemical selected")
-		return
-	cortical_owner.reagent_holder.reagents.add_reagent(choice, 5, added_purity = 1)
-	cortical_owner.reagent_holder.reagents.trans_to(cortical_owner.human_host, 30, methods = INGEST)
-	var/obj/item/organ/internal/brain/victim_brain = cortical_owner.human_host.getorganslot(ORGAN_SLOT_BRAIN)
-	if(victim_brain)
-		cortical_owner.human_host.adjustOrganLoss(ORGAN_SLOT_BRAIN, 5)
-	to_chat(cortical_owner.human_host, span_warning("You feel something cool inside of you and a dull ache in your head!"))
-	var/turf/human_turf = get_turf(cortical_owner.human_host)
-	var/datum/reagent/reagent_name = initial(choice)
-	var/logging_text = "[key_name(cortical_owner)] injected [key_name(cortical_owner.human_host)] with [reagent_name] at [loc_name(human_turf)]"
-	cortical_owner.log_message(logging_text, LOG_GAME)
-	cortical_owner.human_host.log_message(logging_text, LOG_GAME)
-	owner.balloon_alert(owner, "chemical injected")
-	StartCooldown()
+	var/mob/living/simple_animal/cortical_borer/cortical_owner = owner
+	switch(action)
+		if("amount")
+			var/target = text2num(params["target"])
+			if(target in cortical_owner.injection_rates)
+				cortical_owner.injection_rate_current = target
+				. = TRUE
+		if("inject")
+			if(!iscorticalborer(usr) || !COOLDOWN_FINISHED(cortical_owner, injection_cooldown))
+				return
+			var/reagent_name = params["reagent"]
+			var/reagent = GLOB.name2reagent[reagent_name]
+			cortical_owner.reagent_holder.reagents.add_reagent(reagent, cortical_owner.injection_rate_current, added_purity = 1)
+			cortical_owner.reagent_holder.reagents.trans_to(cortical_owner.human_host, cortical_owner.injection_rate_current, methods = INGEST)
+			var/obj/item/organ/internal/brain/victim_brain = cortical_owner.human_host.getorganslot(ORGAN_SLOT_BRAIN)
+			if(victim_brain)
+				cortical_owner.human_host.adjustOrganLoss(ORGAN_SLOT_BRAIN, 5)
+			to_chat(cortical_owner.human_host, span_warning("You feel something cool inside of you and a dull ache in your head!"))
+			cortical_owner.chemical_storage -= cortical_owner.injection_rate_current * CHEMICALS_PER_UNIT
+			COOLDOWN_START(cortical_owner, injection_cooldown, (cortical_owner.injection_rate_current / CHEMICAL_SECOND_DIVISOR))
+			var/turf/human_turf = get_turf(cortical_owner.human_host)
+			var/logging_text = "[key_name(cortical_owner)] injected [key_name(cortical_owner.human_host)] with [reagent_name] at [loc_name(human_turf)]"
+			cortical_owner.log_message(logging_text, LOG_GAME)
+			cortical_owner.human_host.log_message(logging_text, LOG_GAME)
+			. = TRUE
+
+/datum/action/cooldown/inject_chemical/ui_state(mob/user)
+	return GLOB.always_state
+
+/datum/action/cooldown/inject_chemical/ui_status(mob/user, datum/ui_state/state)
+	if(!iscorticalborer(user))
+		return UI_CLOSE
+	var/mob/living/simple_animal/cortical_borer/borer = user
+	if(!borer.human_host)
+		return UI_CLOSE
+	return ..()
 
 /datum/action/cooldown/choose_focus
 	name = "Choose Focus"
@@ -703,6 +750,7 @@
 		to_chat(cortical_owner.human_host, span_notice("A chilling sensation goes down your spine..."))
 		cortical_owner.copy_languages(cortical_owner.human_host)
 		var/obj/item/organ/internal/borer_body/borer_organ = new(cortical_owner.human_host)
+		borer_organ.borer = owner
 		borer_organ.Insert(cortical_owner.human_host)
 		var/turf/human_turftwo = get_turf(cortical_owner.human_host)
 		var/logging_text = "[key_name(cortical_owner)] went into [key_name(cortical_owner.human_host)] at [loc_name(human_turftwo)]"
@@ -731,6 +779,7 @@
 	to_chat(cortical_owner.human_host, span_notice("A chilling sensation goes down your spine..."))
 	cortical_owner.copy_languages(cortical_owner.human_host)
 	var/obj/item/organ/internal/borer_body/borer_organ = new(cortical_owner.human_host)
+	borer_organ.borer = owner
 	borer_organ.Insert(cortical_owner.human_host)
 	var/turf/human_turfthree = get_turf(cortical_owner.human_host)
 	var/logging_text = "[key_name(cortical_owner)] went into [key_name(cortical_owner.human_host)] at [loc_name(human_turfthree)]"
@@ -896,7 +945,7 @@
 		owner.balloon_alert(owner, "2 stat points required")
 		return
 	cortical_owner.stat_evolution -= 2
-	var/list/abil_list = list("Produce Offspring", "Learn Chemical from Blood", "Revive Host", "Willing Host")
+	var/list/abil_list = list("Produce Offspring", "Learn Chemical from Blood", "Revive Host", "Willing Host", "Upgrade Injection")
 	for(var/ability in abil_list)
 		switch(ability)
 			if("Produce Offspring")
@@ -911,6 +960,9 @@
 			if("Willing Host")
 				if(locate(/datum/action/cooldown/willing_host) in cortical_owner.known_abilities)
 					abil_list.Remove("Willing Host")
+			if("Upgrade Injection")
+				if(length(cortical_owner.injection_rates_unlocked) >= length(cortical_owner.injection_rates))
+					abil_list.Remove("Upgrade Injection")
 	if(!length(abil_list))
 		owner.balloon_alert(owner, "all abilites learned")
 		cortical_owner.stat_evolution += 2
@@ -942,6 +994,11 @@
 			attack_action.Grant(cortical_owner)
 			cortical_owner.known_abilities += /datum/action/cooldown/willing_host
 			return
+		if("Upgrade Injection")
+			if(length(cortical_owner.injection_rates_unlocked) >= length(cortical_owner.injection_rates)) // Extra insurance
+				owner.balloon_alert(owner, "injection already maximized")
+				return
+			cortical_owner.injection_rates_unlocked += cortical_owner.injection_rates[length(cortical_owner.injection_rates_unlocked) + 1]
 	StartCooldown()
 
 //to ask if a host is willing
@@ -983,3 +1040,6 @@
 	to_chat(cortical_owner.human_host, span_notice("You have accepted being a willing host!"))
 	GLOB.willing_hosts += cortical_owner.human_host.ckey
 	StartCooldown()
+
+#undef CHEMICALS_PER_UNIT
+#undef CHEMICAL_SECOND_DIVISOR
