@@ -3,7 +3,7 @@
 
 //inject chemicals into your host
 /datum/action/cooldown/inject_chemical
-	name = "Inject 5u Chemical (10 chemicals)"
+	name = "Open Chemical Injector"
 	cooldown_time = 1 SECONDS
 	icon_icon = 'modular_skyrat/modules/cortical_borer/icons/actions.dmi'
 	button_icon_state = "chemical"
