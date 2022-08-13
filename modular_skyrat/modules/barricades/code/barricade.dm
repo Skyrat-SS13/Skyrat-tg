@@ -26,7 +26,7 @@
 	///is this barriade wired?
 	var/is_wired = FALSE
 
-/obj/structure/deployable_barricade/Initialize()
+/obj/structure/deployable_barricade/Initialize(mapload)
 	. = ..()
 	update_icon()
 	var/static/list/connections = list(
@@ -810,7 +810,7 @@
 	icon_state = "box_metal"
 	w_class = WEIGHT_CLASS_NORMAL
 
-/obj/item/storage/barricade/Initialize()
+/obj/item/storage/barricade/Initialize(mapload)
 	. = ..()
 	atom_storage.max_total_storage = 21
 

@@ -127,7 +127,7 @@
 	unbuckle_all_mobs()
 
 // Object initialization
-/obj/structure/chair/milking_machine/Initialize()
+/obj/structure/chair/milking_machine/Initialize(mapload)
 	. = ..()
 	machine_color = machine_color_list[1]
 
@@ -329,9 +329,9 @@
 	if(handcuffed)
 		drop_all_held_items()
 		stop_pulling()
-		SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "handcuffed", /datum/mood_event/handcuffed)
+		add_mood_event("handcuffed", /datum/mood_event/handcuffed)
 	else
-		SEND_SIGNAL(src, COMSIG_CLEAR_MOOD_EVENT, "handcuffed")
+		clear_mood_event("handcuffed")
 	update_action_buttons_icon() //some of our action buttons might be unusable when we're handcuffed.
 	update_inv_handcuffed()
 	update_hud_handcuffed()
@@ -1027,7 +1027,7 @@
 	var/current_color = "pink"
 
 // Default initialization
-/obj/item/milking_machine/constructionkit/Initialize()
+/obj/item/milking_machine/constructionkit/Initialize(mapload)
 	. = ..()
 	update_icon_state()
 	update_icon()

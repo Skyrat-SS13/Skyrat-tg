@@ -373,3 +373,180 @@
   theselfish:
   - rscdel: Removed the Icon for Common.
   - imagedel: Removed the Icon for Common.
+2022-08-09:
+  Hatterhat:
+  - bugfix: Loadouts with the option selected to place all items in a suitcase now
+      properly apply the GAGS/grayscaling system to applicable items.
+  Melbert:
+  - rscadd: Paramedic PDAs now start with the Lifeline pinpointer app
+  - rscadd: Replaced the "proximity crew pinpointer" in the paramedic's belt with
+      a bottle of Calomel
+  - rscdel: Removed the "proximity crew pinpointer"
+  MortoSasye:
+  - balance: Head roles and security cannot have the Illiterate quirk. Head roles
+      also can't have the brain tumor quirk.
+  PositiveEntropy, AxieTheAxolotl:
+  - rscadd: Adds the Chief Medical Officer's Scrubs, making it the default clothing
+      option when they spawn!
+  - rscadd: Adds Surgery Caps! Doctors now spawn with them, and can buy some from
+      the MediDrobe! The CMO gets a special fancy one!
+  - qol: All scrubs are now adjustable, making surgery less of a pain!
+  - imageadd: Resprites the biosuits, making you look less bloated.
+  - imageadd: Resprites every labcoat in the game, including the paramedic's.
+  - imageadd: Resprites the entire medical department (again)!
+  ShizCalev:
+  - bugfix: The eye of god will now send a provide a message when its scan is recharged.
+  SkyratBot:
+  - rscadd: Added new VOID stamp
+  - bugfix: Photocopier paperforms
+  - rscadd: Bileworms have appeared on lavaland!
+  - rscadd: Concentrated barbers aid will give hairless species hair after it has
+      remained in them for a number of cycles inversely proportional to the purity
+      (20 cycles at 100% purity). Additionally, at 100% purity, it removes the smooth-headed
+      quirk at the same time that it grants hairless species hair.
+  - bugfix: Most effects that change your hairstyle are no longer delayed until certain
+      effects occur.
+  - bugfix: You cannot bypass the smooth-headed quirk with the genetics console (even
+      if you were somehow able to figure out how to get a specific hairstyle)
+  - bugfix: The species and antagonist character icons in the preferences menu are
+      no longer all bald.
+  - bugfix: Fixes ash walker tendrils dropping typeless anomaly cores.
+  - bugfix: Labor camp Prisoners without a sentence can no longer send themselves
+      back up whenever they wanted by clicking the button fast enough.
+  - bugfix: Prisoners can no longer get infinite labor camp points by clicking the
+      stacking machine with ores.
+  - bugfix: All ore machines now properly change their direction when they dock a
+      shuttle in a separate direction, fixing Lavaland's labor camp stacking machine.
+  - qol: Labor camp's point checker now states all the information you need, rather
+      than being a paragraph of text that just appears in chat.
+  Vishenka0704:
+  - rscadd: Cum on face action in Climax verb
+  - bugfix: now you cum on chosen target, not on you.
+  - bugfix: now the choice of sheath in the menu is only available with those who
+      have sheath
+  YakumoChen:
+  - bugfix: Ring boxes now once again initially contain the rings they're supposed
+      to carry.
+2022-08-10:
+  Melbert:
+  - bugfix: Heretic stalkers are able again to return back to their normal form after
+      casting shapeshift.
+  ShizCalev:
+  - bugfix: Right-clicking a non-carbon based mob (humans, xeno, ect) will now bite
+      them instead of doing nothing.
+  - server: Added a configurable probability for nonhuman species to spawn in the
+      morgue at round start!
+  - qol: Cadavers in the morgue at round start will now spawn in bodybags.
+  - bugfix: Adminspawned morgue cadavers will now only spawn inside closed morguetrays
+      (the bodies could get stuck inside them!)
+  - bugfix: Morguetrays are now less likely to end up having multiple cadavers in
+      them.
+  SkyratBot:
+  - code_imp: add proc create_atmos_zone which detect an isolated atmos zone while
+      ignoring walls and non atmos_can_pass tiles (zas zone)
+  Zonespace27:
+  - bugfix: Ghosts can now flip
+2022-08-11:
+  GoldenAlpharex:
+  - spellcheck: The long-range gas analyzer's name is no longer capitalized, as it's
+      not a proper name.
+  Nano:
+  - soundadd: 'Added 2 new sounds to the synthesizer''s ''fun'' category: MeowSynth
+      and Spaceman'
+  ShizCalev:
+  - bugfix: The Quartermaster and his items will now trigger phobias related to command
+      staff!
+  - bugfix: Command rank bedsheets, jackets, cloaks, and headsets will now trigger
+      phobias related to command staff.
+  - bugfix: The QM's bedsheets will now make you dream of authority and silvery IDs!
+  - bugfix: Cutting open someone's heart will now actually make them bleed properly!
+  - bugfix: Fixed traitors not getting a new kidnapping objective if they previously
+      failed to kidnap someone else.
+  SkyratBot:
+  - balance: munchies now impact hunger at a rate similar to running nonstop
+  - bugfix: Butcher's meat hook no longer fails when the user has TRAIT_NOGUNS
+  - bugfix: Newly built turrets start unlocked.
+  - imageadd: new dead body spawner icons
+  - bugfix: emitter examine text now displays minimum maximum delay.
+  - spellcheck: changes the text on the emitter examine blurb.
+  - spellcheck: Calomel now properly states that it only purges toxins, rather than
+      all chemicals, like it already does.
+  - spellcheck: Fixes grammar for solar panel construction
+  Wallem:
+  - imageadd: Updates the sprite for the metal & homerun bat
+2022-08-12:
+  GoldenAlpharex:
+  - bugfix: Conveyor belts now properly update their sprites when flipped or inverted
+      using a screwdriver, without the need to being turned on and off to take effect.
+  - bugfix: Food exports now follow export value elasticity, as intended.
+  Melbert:
+  - admin: Heretic starting research and ascending is logged in the Blackbox
+  ShizCalev:
+  - qol: You can now use wallets & PDAs with IDs in them to play roulette!
+  - bugfix: Fixed a runtime when hitting a roulette table with an ID that doesn't
+      have a linked bank account!
+  SkyratBot:
+  - bugfix: fixed an incorrect count down message if SM changed it's delam twice.
+  - balance: Made a pure BZ SM a tad stronger, made a mixed BZ + high power gas SM
+      a lot weaker.
+  - balance: Freon power nuking can be negated slightly by other high power gases.
+      Moved the power nuking threshold from 30% to 33.33%
+  - balance: Water vapor SM will only lower power transmission instead of dampening
+      it both ways.
+  - balance: CO2 power increase can also be modified by other gases.
+  - code_imp: Perish, individual logging runtime.
+  - bugfix: Kitchen sinks will now be functional if placed facing against a window
+      and some other closed structures, up-facing sinks also look somewhat better
+      as a result.
+  - bugfix: golden wheelchairs will now spawn
+  - bugfix: Fixes broken command report formatting for station goals.
+  - bugfix: Fixes markdown paragraphing not working in paper code.
+  SuperDrish:
+  - rscadd: Introducing new tails! Queen Bee and Queen Insect(totally not queen bee
+      without secondary colours).
+2022-08-13:
+  AnywayFarus:
+  - bugfix: now female leaves decal when ends an organic action
+  - bugfix: male cannot end on somebody or something through clothes
+  Higgin:
+  - bugfix: Cryopods now display accurate time before you can cryo somebody who's
+      AFK/SSD.
+  Melbert:
+  - bugfix: Either ladders will no longer show screentips relating to "warping", or
+      fake teleportation runes will no longer show screentips related to "climbing".
+      Honestly not sure but one of them was wrong
+  OrionTheFox:
+  - imageadd: Biosuits, labcoats, scrubs, and medical gear have all been updated to
+      TG standard on humanoid AND digitigrade/muzzled crew! Robotics' labcoat has
+      kept its black and red colors, dont worry. Firesuits and Radiation suits have
+      been updated for digi/muzzled crew as well!
+  PositiveEntropy:
+  - imageadd: Holopads are now shinier and more elegant!
+  SkyratBot:
+  - qol: Made mime emotes more consistent
+  - admin: Added two new procs into the VV dropdown menu to add and remove mood events
+      from living mobs.
+  - bugfix: Fixes the formatting of the admin lua editor
+  - qol: In the admin lua editor, there will be a "jump to bottom" button in the log
+      viewer if the log is longer than can be shown in the window.
+  - qol: The lua editor log viewer is now split into pages of at most 50 log entries.
+  - imageadd: The Profane Scholar outfit has been resprited
+  - bugfix: Dorms rooms D and R on tramstation now bolt properly.
+  - rscadd: Species now have custom damage examines, so Androids now have denting
+      and charring, rather than bruising and burning.
+  - refactor: Blind stripping and feeding alerts are smaller than gigantic now.
+  Time-Green:
+  - rscadd: You can now remove/add all those ugly species features with the power
+      of surgery! A lizards frills, horns, snout and spines, a moths wings and antennae,
+      podperson hair and just wings in general
+  - rscadd: Species features can be altered by organ manipulation or the new 'feature
+      manipulation' surgery! 'Feature manipulation' is a shorter version of organ
+      manip that let's you only operate on external features
+  - balance: Organ manipulation only works on internal organs now. Use 'feature manipulation'
+      for external organs.
+  - code_imp: cleans up magic numbers in surgery
+  Zonespace27:
+  - qol: Borer abilities use balloon alerts instead of chat messages
+  - refactor: Datumized borer focuses
+  jjpark-kb:
+  - bugfix: you can remove borers from bodies again

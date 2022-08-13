@@ -27,7 +27,7 @@
 	job_rank = ROLE_BORER
 	show_in_antagpanel = TRUE
 	roundend_category = "cortical borers"
-	antagpanel_category = "Cortical borers"
+	antagpanel_category = "Cortical Borers"
 	prevent_roundtype_conversion = FALSE
 	show_to_ghosts = TRUE
 	var/datum/team/cortical_borers/borers
@@ -55,7 +55,7 @@
 	borers = new_team
 
 /datum/team/cortical_borers
-	name = "Cortical borers"
+	name = "Cortical Borers"
 
 /datum/team/cortical_borers/roundend_report()
 	var/list/parts = list()
@@ -149,6 +149,7 @@
 	cost = 15
 	minimum_players = 20
 	repeatable = TRUE
+	/// List of on-station vents
 	var/list/vents = list()
 
 /datum/dynamic_ruleset/midround/from_ghosts/cortical_borer/execute()
@@ -161,11 +162,11 @@
 				continue // No parent vent
 			// Stops Borers getting stuck in small networks.
 			// See: Security, Virology
-			if(temp_vent_parent.other_atmos_machines.len > 20)
+			if(length(temp_vent_parent.other_atmos_machines) > 20)
 				vents += temp_vent
-	if(!vents.len)
+	if(!length(vents))
 		return FALSE
-	. = ..()
+	return ..()
 
 /datum/dynamic_ruleset/midround/from_ghosts/cortical_borer/generate_ruleset_body(mob/applicant)
 	var/obj/vent = pick_n_take(vents)

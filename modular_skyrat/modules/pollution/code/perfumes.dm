@@ -17,7 +17,7 @@
 	/// Whether we have a cap or not
 	var/has_cap = TRUE
 
-/obj/item/perfume/Initialize()
+/obj/item/perfume/Initialize(mapload)
 	. = ..()
 	update_appearance()
 

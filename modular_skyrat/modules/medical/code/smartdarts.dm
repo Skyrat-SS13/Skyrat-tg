@@ -49,7 +49,7 @@
 	has_gun_safety = TRUE
 	item_flags = null
 
-/obj/item/gun/syringe/smartdart/Initialize()
+/obj/item/gun/syringe/smartdart/Initialize(mapload)
 	. = ..()
 	chambered = new /obj/item/ammo_casing/syringegun/dart(src)
 
