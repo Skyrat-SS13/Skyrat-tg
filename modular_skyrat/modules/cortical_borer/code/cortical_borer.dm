@@ -1,14 +1,14 @@
-GLOBAL_VAR_INIT(objective_egg_borer_number, 5)
-GLOBAL_VAR_INIT(objective_egg_egg_number, 10)
-GLOBAL_VAR_INIT(objective_willing_hosts, 10)
-GLOBAL_VAR_INIT(objective_blood_chem, 5)
-GLOBAL_VAR_INIT(objective_blood_borer, 5)
+GLOBAL_VAR_INIT(objective_egg_borer_number, 2)
+GLOBAL_VAR_INIT(objective_egg_egg_number, 5)
+GLOBAL_VAR_INIT(objective_willing_hosts, 2)
+GLOBAL_VAR_INIT(objective_blood_chem, 3)
+GLOBAL_VAR_INIT(objective_blood_borer, 3)
 
 GLOBAL_VAR_INIT(successful_egg_number, 0)
 GLOBAL_LIST_EMPTY(willing_hosts)
 GLOBAL_VAR_INIT(successful_blood_chem, 0)
 
-//we need a way of buffing leg speed... here
+//we need a way of buffing leg speed
 /datum/movespeed_modifier/borer_speed
 	multiplicative_slowdown = -0.4
 
@@ -35,99 +35,30 @@ GLOBAL_VAR_INIT(successful_blood_chem, 0)
 	name = "engorged cortical borer"
 	desc = "the body of a cortical borer, full of human viscera, blood, and more."
 	zone = BODY_ZONE_HEAD
+	/// Ref to the borer who this organ belongs to
+	var/mob/living/simple_animal/cortical_borer/borer
 
-/proc/borer_focus_add(mob/living/carbon/carbon_target)
-	var/mob/living/simple_animal/cortical_borer/cb_inside = carbon_target.has_borer()
-	if(!cb_inside)
-		return
-	if(cb_inside.body_focus & FOCUS_HEAD)
-		to_chat(carbon_target, span_notice("Your eyes begin to feel strange..."))
-		if(!HAS_TRAIT(carbon_target, TRAIT_NOFLASH))
-			ADD_TRAIT(carbon_target, TRAIT_NOFLASH, cb_inside)
-		if(!HAS_TRAIT(carbon_target, TRAIT_TRUE_NIGHT_VISION))
-			ADD_TRAIT(carbon_target, TRAIT_TRUE_NIGHT_VISION, cb_inside)
-		if(!HAS_TRAIT(carbon_target, TRAIT_KNOW_ENGI_WIRES))
-			ADD_TRAIT(carbon_target, TRAIT_KNOW_ENGI_WIRES, cb_inside)
-		carbon_target.update_sight()
-	if(cb_inside.body_focus & FOCUS_CHEST)
-		to_chat(carbon_target, span_notice("Your chest begins to slow down..."))
-		if(!HAS_TRAIT(carbon_target, TRAIT_NOBREATH))
-			ADD_TRAIT(carbon_target, TRAIT_NOBREATH, cb_inside)
-		if(!HAS_TRAIT(carbon_target, TRAIT_NOHUNGER))
-			ADD_TRAIT(carbon_target, TRAIT_NOHUNGER, cb_inside)
-		if(!HAS_TRAIT(carbon_target, TRAIT_STABLEHEART))
-			ADD_TRAIT(carbon_target, TRAIT_STABLEHEART, cb_inside)
-	if(cb_inside.body_focus & FOCUS_ARMS)
-		to_chat(carbon_target, span_notice("Your arm starts to feel funny..."))
-		cb_inside.human_host.add_actionspeed_modifier(/datum/actionspeed_modifier/borer_speed)
-		if(!HAS_TRAIT(carbon_target, TRAIT_QUICKER_CARRY))
-			ADD_TRAIT(carbon_target, TRAIT_QUICKER_CARRY, cb_inside)
-		if(!HAS_TRAIT(carbon_target, TRAIT_QUICK_BUILD))
-			ADD_TRAIT(carbon_target, TRAIT_QUICK_BUILD, cb_inside)
-		if(!HAS_TRAIT(carbon_target, TRAIT_SHOCKIMMUNE))
-			ADD_TRAIT(carbon_target, TRAIT_SHOCKIMMUNE, cb_inside)
-	if(cb_inside.body_focus & FOCUS_LEGS)
-		to_chat(carbon_target, span_notice("You feel faster..."))
-		carbon_target.add_movespeed_modifier(/datum/movespeed_modifier/borer_speed)
-		if(!HAS_TRAIT(carbon_target, TRAIT_LIGHT_STEP))
-			ADD_TRAIT(carbon_target, TRAIT_LIGHT_STEP, cb_inside)
-		if(!HAS_TRAIT(carbon_target, TRAIT_FREERUNNING))
-			ADD_TRAIT(carbon_target, TRAIT_FREERUNNING, cb_inside)
-		if(!HAS_TRAIT(carbon_target, TRAIT_SILENT_FOOTSTEPS))
-			ADD_TRAIT(carbon_target, TRAIT_SILENT_FOOTSTEPS, cb_inside)
-
-/proc/borer_focus_remove(mob/living/carbon/carbon_target)
-	var/mob/living/simple_animal/cortical_borer/cb_inside = carbon_target.has_borer()
-	if(cb_inside.body_focus & FOCUS_HEAD)
-		to_chat(carbon_target, span_notice("Your eyes begin to return to normal..."))
-		if(HAS_TRAIT_FROM(carbon_target, TRAIT_NOFLASH, cb_inside))
-			REMOVE_TRAIT(carbon_target, TRAIT_NOFLASH, cb_inside)
-		if(HAS_TRAIT_FROM(carbon_target, TRAIT_TRUE_NIGHT_VISION, cb_inside))
-			REMOVE_TRAIT(carbon_target, TRAIT_TRUE_NIGHT_VISION, cb_inside)
-		if(HAS_TRAIT_FROM(carbon_target, TRAIT_KNOW_ENGI_WIRES, cb_inside))
-			REMOVE_TRAIT(carbon_target, TRAIT_KNOW_ENGI_WIRES, cb_inside)
-		carbon_target.update_sight()
-	if(cb_inside.body_focus & FOCUS_CHEST)
-		to_chat(carbon_target, span_notice("Your chest begins to heave again..."))
-		if(HAS_TRAIT_FROM(carbon_target, TRAIT_NOBREATH, cb_inside))
-			REMOVE_TRAIT(carbon_target, TRAIT_NOBREATH, cb_inside)
-		if(HAS_TRAIT_FROM(carbon_target, TRAIT_NOHUNGER, cb_inside))
-			REMOVE_TRAIT(carbon_target, TRAIT_NOHUNGER, cb_inside)
-		if(HAS_TRAIT_FROM(carbon_target, TRAIT_STABLEHEART, cb_inside))
-			REMOVE_TRAIT(carbon_target, TRAIT_STABLEHEART, cb_inside)
-	if(cb_inside.body_focus & FOCUS_ARMS)
-		to_chat(carbon_target, span_notice("Your arm starts to feel normal again..."))
-		cb_inside.human_host.remove_actionspeed_modifier(ACTIONSPEED_ID_BORER)
-		if(HAS_TRAIT_FROM(carbon_target, TRAIT_QUICK_BUILD, cb_inside))
-			REMOVE_TRAIT(carbon_target, TRAIT_QUICK_BUILD, cb_inside)
-		if(HAS_TRAIT_FROM(carbon_target, TRAIT_QUICKER_CARRY, cb_inside))
-			REMOVE_TRAIT(carbon_target, TRAIT_QUICKER_CARRY, cb_inside)
-		if(HAS_TRAIT_FROM(carbon_target, TRAIT_SHOCKIMMUNE, cb_inside))
-			REMOVE_TRAIT(carbon_target, TRAIT_SHOCKIMMUNE, cb_inside)
-	if(cb_inside.body_focus & FOCUS_LEGS)
-		to_chat(carbon_target, span_notice("You feel slower..."))
-		carbon_target.remove_movespeed_modifier(/datum/movespeed_modifier/borer_speed)
-		if(HAS_TRAIT_FROM(carbon_target, TRAIT_LIGHT_STEP, cb_inside))
-			REMOVE_TRAIT(carbon_target, TRAIT_LIGHT_STEP, cb_inside)
-		if(HAS_TRAIT_FROM(carbon_target, TRAIT_FREERUNNING, cb_inside))
-			REMOVE_TRAIT(carbon_target, TRAIT_FREERUNNING, cb_inside)
-		if(HAS_TRAIT_FROM(carbon_target, TRAIT_SILENT_FOOTSTEPS, cb_inside))
-			REMOVE_TRAIT(carbon_target, TRAIT_SILENT_FOOTSTEPS, cb_inside)
+/obj/item/organ/internal/borer_body/Destroy()
+	borer = null
+	return ..()
 
 /obj/item/organ/internal/borer_body/Insert(mob/living/carbon/carbon_target, special, drop_if_replaced)
 	. = ..()
-	borer_focus_add(carbon_target)
+	borer.body_focus?.on_add()
 	carbon_target.hal_screwyhud = SCREWYHUD_HEALTHY
 
 //on removal, force the borer out
 /obj/item/organ/internal/borer_body/Remove(mob/living/carbon/carbon_target, special)
 	. = ..()
 	var/mob/living/simple_animal/cortical_borer/cb_inside = carbon_target.has_borer()
-	borer_focus_remove(carbon_target)
+	cb_inside.body_focus?.on_remove()
 	if(cb_inside)
 		cb_inside.leave_host()
 	carbon_target.hal_screwyhud = SCREWYHUD_NONE
 	qdel(src)
+
+/obj/item/reagent_containers/borer
+	volume = 100
 
 /mob/living/simple_animal/cortical_borer
 	name = "cortical borer"
@@ -161,15 +92,20 @@ GLOBAL_VAR_INIT(successful_blood_chem, 0)
 										/datum/reagent/medicine/c2/lenturi,
 										/datum/reagent/medicine/c2/convermol,
 										/datum/reagent/medicine/c2/seiver,
+										/datum/reagent/medicine/c2/multiver,
 										/datum/reagent/lithium,
 										/datum/reagent/medicine/salglu_solution,
 										/datum/reagent/medicine/mutadone,
 										/datum/reagent/toxin/heparin,
-										/datum/reagent/medicine/mannitol,
 										/datum/reagent/drug/methamphetamine/borer_version,
 										/datum/reagent/medicine/morphine,
 										/datum/reagent/medicine/inacusiate,
 										/datum/reagent/medicine/oculine,
+										/datum/reagent/toxin/mindbreaker,
+	)
+	//blacklisted chemicals - separate from chemicals that cannot be synthesized, borers specifically cannot learn these
+	var/list/blacklisted_chemicals = list(/datum/reagent/medicine/mannitol,
+										/datum/reagent/medicine/neurine,
 	)
 	///how old the borer is, starting from zero. Goes up only when inside a host
 	var/maturity_age = 0
@@ -207,6 +143,21 @@ GLOBAL_VAR_INIT(successful_blood_chem, 0)
 	var/organic_restricted = TRUE
 	///borers are unable to enter changelings if true
 	var/changeling_restricted = TRUE
+	/// Assoc list of chemical injection rates that the borer can have
+	var/static/list/injection_rates = list(
+		5,
+		10,
+		25,
+		50,
+	)
+	/// Which injection rates the borer has unlocked
+	var/list/injection_rates_unlocked = list(
+		5,
+	)
+	/// What is the current injection rate of the borer
+	var/injection_rate_current = 5
+	/// Cooldown between injecting chemicals
+	COOLDOWN_DECLARE(injection_cooldown)
 	/// List of focus datums
 	var/list/possible_focuses = list()
 
@@ -222,7 +173,7 @@ GLOBAL_VAR_INIT(successful_blood_chem, 0)
 			if(2)
 				name = "cortical vorer ([generation]-[rand(100,999)])"
 	GLOB.cortical_borers += src
-	reagent_holder = new /obj/item/reagent_containers(src)
+	reagent_holder = new /obj/item/reagent_containers/borer(src)
 	if(mind)
 		if(!mind.has_antag_datum(/datum/antagonist/cortical_borer))
 			mind.add_antag_datum(/datum/antagonist/cortical_borer)
@@ -274,12 +225,12 @@ GLOBAL_VAR_INIT(successful_blood_chem, 0)
 
 /mob/living/simple_animal/cortical_borer/Life(delta_time, times_fired)
 	. = ..()
-	//can only do stuff when we are inside a human
-	if(!inside_human())
+	//can only do stuff when we are inside a LIVING human
+	if(!inside_human() || human_host?.stat == DEAD)
 		return
 
 	//there needs to be a negative to having a borer
-	if(prob(5) && human_host.getToxLoss() <= 20)
+	if(prob(5) && human_host.getToxLoss() <= 80)
 		human_host.adjustToxLoss(5, TRUE, TRUE)
 
 	if(human_host.hal_screwyhud != SCREWYHUD_HEALTHY)
@@ -309,11 +260,11 @@ GLOBAL_VAR_INIT(successful_blood_chem, 0)
 		//20:40, 15:30, 10:20, 5:10
 		var/maturity_threshold = 20
 		if(GLOB.successful_egg_number >= GLOB.objective_egg_borer_number)
-			maturity_threshold -= 5
+			maturity_threshold -= 2
 		if(length(GLOB.willing_hosts) >= GLOB.objective_willing_hosts)
-			maturity_threshold -= 5
+			maturity_threshold -= 10
 		if(GLOB.successful_blood_chem >= GLOB.objective_blood_borer)
-			maturity_threshold -= 5
+			maturity_threshold -= 3
 
 		if(maturity_age == maturity_threshold)
 			if(chemical_evolution < limited_borer) //you can only have a default of 10 at a time
