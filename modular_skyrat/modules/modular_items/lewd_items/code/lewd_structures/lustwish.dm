@@ -75,7 +75,7 @@
 					/obj/item/clothing/under/misc/stripper/bunnysuit/white = 5,
 					/obj/item/clothing/under/misc/gear_harness = 4,
 					/obj/item/clothing/under/dress/corset = 4,
-					/obj/item/clothing/under/misc/retro/skimpy/retro/suit = 2,
+					/obj/item/clothing/under/misc/retro/skimpy/retro = 2,
 
 					//hands
 					/obj/item/clothing/gloves/ball_mittens = 8,

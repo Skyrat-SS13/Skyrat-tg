@@ -80,9 +80,9 @@
 		/obj/item/storage/fancy/candle_box/jasmine = 1,
 		/obj/item/storage/fancy/candle_box/mint = 1,
 		/obj/item/clothing/suit/hooded/wintercoat/bartender = 2,
-		/obj/item/clothing/under/civilian/bartender/sleeky/skirt = 1,
-		/obj/item/clothing/under/civilian/bartender/sleeky = 1,
-		/obj/item/clothing/under/civilian/retro/bouncer = 1,
+		/obj/item/clothing/under/civilian/bartender/skyrat/sleeky/skirt = 1,
+		/obj/item/clothing/under/civilian/bartender/skyrat/sleeky = 1,
+		/obj/item/clothing/under/civilian/rettro/skyrat/bouncer = 1,
 	)
 
 /obj/machinery/vending/wardrobe/chap_wardrobe

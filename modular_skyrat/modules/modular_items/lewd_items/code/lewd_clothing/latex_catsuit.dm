@@ -96,9 +96,10 @@
 	breasts_icon_overlay = mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_uniform.dmi', "none")
 	breasts_icon_overlay.icon_state = "breasts"
 
-/obj/item/clothing/under/misc/retro/skimpy/retro/suit
+/obj/item/clothing/under/misc/retro/skimpy/retro
 	name = "Skimpy Retro Suit"
 	desc = "A Post-Postmodern take on a Retrofuturistic garment, how innovative!"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_uniform.dmi'
 	icon_state = "skimpy_retro_suit"
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_uniform/lewd_uniform.dmi'
+	supports_variations_flags = CLOTHING_NO_VARIATION
