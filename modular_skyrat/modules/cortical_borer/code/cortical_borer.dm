@@ -128,7 +128,7 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 									/datum/action/cooldown/borer/choosing_host,
 									/datum/action/cooldown/borer/inject_chemical,
 									/datum/action/cooldown/borer/upgrade_chemical,
-									/datum/action/cooldown/borer/choose_focus,
+									/datum/action/cooldown/borer/learn_focus,
 									/datum/action/cooldown/borer/upgrade_stat,
 									/datum/action/cooldown/borer/learn_ability,
 									/datum/action/cooldown/borer/force_speak,

@@ -100,11 +100,11 @@
 		return UI_CLOSE
 	return ..()
 
-/datum/action/cooldown/borer/choose_focus
-	name = "Choose Focus"
+/datum/action/cooldown/borer/learn_focus
+	name = "Learn Focus"
 	button_icon_state = "getfocus"
 
-/datum/action/cooldown/borer/choose_focus/Trigger(trigger_flags)
+/datum/action/cooldown/borer/learn_focus/Trigger(trigger_flags)
 	. = ..()
 	if(!.)
 		return FALSE
@@ -123,7 +123,7 @@
 		if(foci in cortical_owner.body_focuses)
 			continue
 		fancy_list["[foci.name] ([foci.cost] points)"] = foci
-	var/focus_choice = tgui_input_list(cortical_owner, "Choose your focus!", "Focus Choice", fancy_list)
+	var/focus_choice = tgui_input_list(cortical_owner, "Learn a focus!", "Focus Choice", fancy_list)
 	if(!focus_choice)
 		owner.balloon_alert(owner, "focus not chosen")
 		return
