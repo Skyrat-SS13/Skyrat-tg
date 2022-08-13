@@ -75,7 +75,7 @@
 	var/fail_prob = 0//100 - fail_prob = success_prob
 	var/advance = FALSE
 
-	if(preop(user, target, target_zone, tool, surgery) == -1)
+	if(preop(user, target, target_zone, tool, surgery) == SURGERY_STEP_FAIL)
 		surgery.step_in_progress = FALSE
 		return FALSE
 
@@ -246,13 +246,13 @@
 	if(target.stat >= UNCONSCIOUS) //the unconscious do not worry about pain
 		return
 	if(HAS_TRAIT(target, TRAIT_NUMBED)) //numbing helps but is not perfect - this is the tradeoff for being awake
-		SEND_SIGNAL(target, COMSIG_ADD_MOOD_EVENT, "mild_surgery", /datum/mood_event/mild_surgery)
+		target.add_mood_event("mild_surgery", /datum/mood_event/mild_surgery)
 		return
 	if(mechanical_surgery == TRUE) //robots can't benefit from numbing agents like most but have no reason not to sleep - their debuff falls in-between
-		SEND_SIGNAL(target, COMSIG_ADD_MOOD_EVENT, "robot_surgery", /datum/mood_event/robot_surgery)
+		target.add_mood_event("robot_surgery", /datum/mood_event/robot_surgery)
 		return
 	to_chat(target, span_userdanger(pain_message))
-	SEND_SIGNAL(target, COMSIG_ADD_MOOD_EVENT, "severe_surgery", /datum/mood_event/severe_surgery)
+	target.add_mood_event("severe_surgery", /datum/mood_event/severe_surgery)
 	if(prob(30))
 		target.emote("scream")
 //SKYRAT EDIT END

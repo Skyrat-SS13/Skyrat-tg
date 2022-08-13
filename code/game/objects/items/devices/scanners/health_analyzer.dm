@@ -36,7 +36,7 @@
 	. += span_notice("Alt-click [src] to toggle the limb damage readout.")
 
 //SKYRAT EDIT ADDITION BEGIN
-/obj/item/healthanalyzer/ComponentInitialize()
+/obj/item/healthanalyzer/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/cell)
 //SKYRAT EDIT END

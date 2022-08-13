@@ -71,6 +71,8 @@
 		vial = new start_vial
 		update_appearance()
 
+	AddElement(/datum/element/update_icon_updates_onmob)
+
 /obj/item/hypospray/mkii/update_overlays()
 	. = ..()
 	if(!vial)
@@ -85,10 +87,6 @@
 	var/mutable_appearance/chem_loaded = mutable_appearance('modular_skyrat/modules/hyposprays/icons/hyposprays.dmi', vial_spritetype)
 	chem_loaded.color = vial.chem_color
 	. += chem_loaded
-
-/obj/item/hypospray/mkii/ComponentInitialize()
-	. = ..()
-	AddElement(/datum/element/update_icon_updates_onmob)
 
 /obj/item/hypospray/mkii/update_icon_state()
 	. = ..()

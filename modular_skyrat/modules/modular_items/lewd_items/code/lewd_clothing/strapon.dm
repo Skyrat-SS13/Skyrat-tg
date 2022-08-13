@@ -21,11 +21,6 @@
 		"equine" = image (icon = src.icon, icon_state = "strapon_equine"),
 		"human" = image (icon = src.icon, icon_state = "strapon_human"))
 
-//to update model
-/obj/item/clothing/strapon/ComponentInitialize()
-	. = ..()
-	AddElement(/datum/element/update_icon_updates_onmob)
-
 //to change model
 /obj/item/clothing/strapon/AltClick(mob/user)
 	if(type_changed == FALSE)
@@ -51,6 +46,7 @@
 
 /obj/item/clothing/strapon/Initialize(mapload)
 	. = ..()
+	AddElement(/datum/element/update_icon_updates_onmob)
 	update_icon_state()
 	update_icon()
 	update_action_buttons_icons()
