@@ -35,17 +35,23 @@ GLOBAL_VAR_INIT(successful_blood_chem, 0)
 	name = "engorged cortical borer"
 	desc = "the body of a cortical borer, full of human viscera, blood, and more."
 	zone = BODY_ZONE_HEAD
+	/// Ref to the borer who this organ belongs to
+	var/mob/living/simple_animal/cortical_borer/borer
+
+/obj/item/organ/internal/borer_body/Destroy()
+	borer = null
+	return ..()
 
 /obj/item/organ/internal/borer_body/Insert(mob/living/carbon/carbon_target, special, drop_if_replaced)
 	. = ..()
-	borer_focus_add(carbon_target)
+	borer.body_focus?.on_add()
 	carbon_target.hal_screwyhud = SCREWYHUD_HEALTHY
 
 //on removal, force the borer out
 /obj/item/organ/internal/borer_body/Remove(mob/living/carbon/carbon_target, special)
 	. = ..()
 	var/mob/living/simple_animal/cortical_borer/cb_inside = carbon_target.has_borer()
-	borer_focus_remove(carbon_target)
+	cb_inside.body_focus?.on_remove()
 	if(cb_inside)
 		cb_inside.leave_host()
 	carbon_target.hal_screwyhud = SCREWYHUD_NONE
