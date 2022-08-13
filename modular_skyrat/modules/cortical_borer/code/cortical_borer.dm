@@ -8,6 +8,8 @@ GLOBAL_VAR_INIT(successful_egg_number, 0)
 GLOBAL_LIST_EMPTY(willing_hosts)
 GLOBAL_VAR_INIT(successful_blood_chem, 0)
 
+GLOBAL_LIST_EMPTY(cortical_borers)
+
 //we need a way of buffing leg speed
 /datum/movespeed_modifier/borer_speed
 	multiplicative_slowdown = -0.4
