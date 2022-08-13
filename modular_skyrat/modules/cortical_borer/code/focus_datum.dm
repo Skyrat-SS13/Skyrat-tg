@@ -41,6 +41,7 @@
 
 /datum/borer_focus/chest/on_add(mob/living/carbon/human/host, mob/living/simple_animal/cortical_borer/borer)
 	to_chat(host, span_notice("Your chest begins to slow down..."))
+	host.nutrition = NUTRITION_LEVEL_WELL_FED
 	return ..()
 
 /datum/borer_focus/chest/on_remove(mob/living/carbon/human/host, mob/living/simple_animal/cortical_borer/borer)
