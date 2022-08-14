@@ -21,7 +21,9 @@
 		var/obj/item/bodypart/BP = new path(H)
 		var/obj/item/bodypart/oldBP = H.get_bodypart(BP.body_zone)
 		if(uses_robotic_styles && prefs.augment_limb_styles[slot])
-			BP.set_icon_static(GLOB.robotic_styles_list[prefs.augment_limb_styles[slot]])
+			var/chosen_style = GLOB.robotic_styles_list[prefs.augment_limb_styles[slot]]
+			BP.set_icon_static(chosen_style)
+			BP.current_style = chosen_style
 		BP.organic_render = FALSE
 		BP.replace_limb(H)
 		qdel(oldBP)
