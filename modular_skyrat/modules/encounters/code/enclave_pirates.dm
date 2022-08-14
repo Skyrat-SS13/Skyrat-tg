@@ -99,8 +99,8 @@
 
 
 /obj/effect/mob_spawn/ghost_role/human/pirate/enclave/generate_pirate_name(spawn_gender)
-	var/first_name = pick(GLOB.commando_names)
-	return "[rank] [first_name]"
+	var/last_name = pick(GLOB.last_names)
+	return "[rank] [last_name]"
 
 /obj/effect/mob_spawn/ghost_role/human/pirate/enclave/captain
 	name = "NRI Officer sleeper"
@@ -126,7 +126,7 @@
 
 /obj/item/gun/ballistic/automatic/pistol/automag
 	name = "\improper Automag"
-	desc = "A .44 AMP handgun with a seek metallic finish."
+	desc = "A .44 AMP handgun with a sleek metallic finish."
 	icon_state = "automag"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/automag.dmi'
 	w_class = WEIGHT_CLASS_NORMAL
