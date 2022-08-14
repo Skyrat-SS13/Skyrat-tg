@@ -140,7 +140,7 @@
 	var/praying = FALSE
 	var/deity_name = "Coderbus" // This is the default, hopefully won't actually appear if the religion subsystem is running properly
 
-/obj/item/nullrod/rosary/Initialize()
+/obj/item/nullrod/rosary/Initialize(mapload)
 	.=..()
 	if(GLOB.deity)
 		deity_name = GLOB.deity

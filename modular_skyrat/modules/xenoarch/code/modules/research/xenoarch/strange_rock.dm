@@ -36,7 +36,7 @@
 	///The tier of the item that was chosen, 1-100 then 1-3
 	var/choose_tier
 
-/obj/item/xenoarch/strange_rock/Initialize()
+/obj/item/xenoarch/strange_rock/Initialize(mapload)
 	. = ..()
 	create_item()
 	create_depth()

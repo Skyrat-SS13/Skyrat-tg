@@ -54,7 +54,7 @@
 
 //spawn thing in collar
 
-/obj/item/clothing/neck/kink_collar/Initialize()
+/obj/item/clothing/neck/kink_collar/Initialize(mapload)
 	. = ..()
 	create_storage(type = /datum/storage/pockets/small/kink_collar)
 	var/obj/item/key/kink_collar/key
@@ -294,7 +294,7 @@
 	var/obj/item/mind_controller/remote = null
 	var/emoting = "Shivers."
 
-/obj/item/clothing/neck/mind_collar/Initialize()
+/obj/item/clothing/neck/mind_collar/Initialize(mapload)
 	. = ..()
 	create_storage(type = /datum/storage/pockets/small/kink_collar/mind_collar)
 	remote = new /obj/item/mind_controller(src, src)

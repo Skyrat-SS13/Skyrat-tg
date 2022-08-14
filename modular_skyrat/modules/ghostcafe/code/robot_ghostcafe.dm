@@ -3,7 +3,7 @@
 	scrambledcodes = TRUE // Roleplay borgs aren't real
 	set_model = /obj/item/robot_model/roleplay
 
-/mob/living/silicon/robot/model/roleplay/Initialize()
+/mob/living/silicon/robot/model/roleplay/Initialize(mapload)
 	. = ..()
 	cell = new /obj/item/stock_parts/cell/infinite(src, 30000)
 	laws = new /datum/ai_laws/roleplay()

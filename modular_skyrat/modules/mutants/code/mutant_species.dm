@@ -161,7 +161,7 @@
 	sharpness = NONE
 	wound_bonus = -40
 
-/obj/item/mutant_hand/Initialize()
+/obj/item/mutant_hand/Initialize(mapload)
 	. = ..()
 	ADD_TRAIT(src, TRAIT_NODROP, HAND_REPLACEMENT_TRAIT)
 

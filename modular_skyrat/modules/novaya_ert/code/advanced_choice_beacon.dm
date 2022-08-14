@@ -99,8 +99,9 @@
 	w_class = WEIGHT_CLASS_BULKY
 	has_latches = FALSE
 
-/obj/item/storage/toolbox/emergency/turret/nri/ComponentInitialize()
-	AddComponent(/datum/component/two_handed, require_twohands=TRUE)
+/obj/item/storage/toolbox/emergency/turret/nri/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/two_handed, require_twohands = TRUE)
 
 /obj/item/storage/toolbox/emergency/turret/nri/PopulateContents()
 	return null

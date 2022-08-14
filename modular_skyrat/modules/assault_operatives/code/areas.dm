@@ -58,7 +58,7 @@
 	icon_state = "snukeop_spawn"
 	delete_after_roundstart = FALSE
 
-/obj/effect/landmark/start/assaultop/Initialize()
+/obj/effect/landmark/start/assaultop/Initialize(mapload)
 	. = ..()
 	GLOB.assault_operative_start += get_turf(src)
 
