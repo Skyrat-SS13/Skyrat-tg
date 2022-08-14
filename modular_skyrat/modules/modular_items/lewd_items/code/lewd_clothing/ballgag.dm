@@ -54,7 +54,7 @@
 	var/gag_size = "small"
 
 // To update the sprite
-/obj/item/clothing/mask/ballgag/ComponentInitialize()
+/obj/item/clothing/mask/ballgag/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/update_icon_updates_onmob)
 

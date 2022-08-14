@@ -124,7 +124,9 @@
 	var/duration = tgui_input_number(src, "How long would you like to feign [impairment] for?", "Duration in seconds", DEFAULT_TIME, MAX_TIME)
 	switch(impairment)
 		if("drunkenness")
-			SEND_SIGNAL(usr, COMSIG_ADD_MOOD_EVENT, "drunk", /datum/mood_event/drunk)
+			var/mob/living/living_user = usr
+			if(istype(living_user))
+				living_user.add_mood_event("drunk", /datum/mood_event/drunk)
 			set_timed_status_effect(duration SECONDS, /datum/status_effect/speech/slurring/drunk, only_if_higher = TRUE)
 		if("stuttering")
 			set_timed_status_effect(duration SECONDS, /datum/status_effect/speech/stutter, only_if_higher = TRUE)
@@ -139,7 +141,9 @@
 	if(impairment)
 		// Procs when fake impairment duration ends, useful for calling extra events to wrap up too
 		if(impairment == "drunkenness")
-			SEND_SIGNAL(usr, COMSIG_CLEAR_MOOD_EVENT, "drunk")
+			var/mob/living/living_user = usr
+			if(istype(living_user))
+				living_user.clear_mood_event("drunk")
 		// Notify the user
 		to_chat(src, "You are no longer feigning [impairment].")
 

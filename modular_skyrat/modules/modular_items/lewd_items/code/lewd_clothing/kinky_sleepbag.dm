@@ -52,11 +52,6 @@
 		"inflated" = image (icon = src.icon, icon_state = "sleepbag_pink_deflated_folded"),
 		"deflated" = image(icon = src.icon, icon_state = "sleepbag_teal_deflated_folded"))
 
-//to update model lol
-/obj/item/clothing/suit/straight_jacket/kinky_sleepbag/ComponentInitialize()
-	. = ..()
-	AddElement(/datum/element/update_icon_updates_onmob)
-
 //to change model
 /obj/item/clothing/suit/straight_jacket/kinky_sleepbag/AltClick(mob/user)
 	var/mob/living/carbon/human/clicking_human = user
@@ -94,6 +89,7 @@
 
 /obj/item/clothing/suit/straight_jacket/kinky_sleepbag/Initialize(mapload)
 	. = ..()
+	AddElement(/datum/element/update_icon_updates_onmob)
 	update_icon_state()
 	update_icon()
 	if(!length(bag_colors))

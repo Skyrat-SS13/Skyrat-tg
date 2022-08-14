@@ -27,7 +27,7 @@
 	var/projectile_density = TRUE		// griffons get shot
 	del_on_death = TRUE
 
-/mob/living/simple_animal/banana_spider/ComponentInitialize()
+/mob/living/simple_animal/banana_spider/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/slippery, 40)
 

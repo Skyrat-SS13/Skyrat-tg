@@ -57,11 +57,6 @@
 		"pink" = image (icon = src.icon, icon_state = "hypnogoggles_pink"),
 		"teal" = image(icon = src.icon, icon_state = "hypnogoggles_teal"))
 
-//to update model lol
-/obj/item/clothing/glasses/hypno/ComponentInitialize()
-	. = ..()
-	AddElement(/datum/element/update_icon_updates_onmob)
-
 //to change model
 /obj/item/clothing/glasses/hypno/AltClick(mob/user)
 	if(color_changed)
@@ -86,6 +81,7 @@
 
 /obj/item/clothing/glasses/hypno/Initialize(mapload)
 	. = ..()
+	AddElement(/datum/element/update_icon_updates_onmob)
 	update_icon_state()
 	update_icon()
 	if(!length(hypnogoggles_designs))

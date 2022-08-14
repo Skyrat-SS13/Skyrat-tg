@@ -115,9 +115,9 @@
 	reach = 2
 	sharpness = SHARP_POINTY
 
-/obj/item/forging/reagent_weapon/spear/ComponentInitialize()
+/obj/item/forging/reagent_weapon/spear/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/two_handed, force_unwielded=10, force_wielded=17) //better than the bone spear
+	AddComponent(/datum/component/two_handed, force_unwielded = 10, force_wielded = 17) //better than the bone spear
 
 /obj/item/forging/reagent_weapon/axe
 	name = "reagent axe"
@@ -221,9 +221,9 @@
 	slot_flags = ITEM_SLOT_BACK
 	max_integrity = 300 //tanky
 
-/obj/item/shield/riot/buckler/reagent_weapon/pavise/ComponentInitialize()
+/obj/item/shield/riot/buckler/reagent_weapon/pavise/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/two_handed, require_twohands=TRUE, force_wielded=15)
+	AddComponent(/datum/component/two_handed, require_twohands = TRUE, force_wielded = 15)
 
 /obj/item/pickaxe/reagent_weapon
 	name = "reagent pickaxe"

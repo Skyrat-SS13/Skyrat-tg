@@ -20,11 +20,6 @@
 		"pink" = image (icon = src.icon, icon_state = "kblindfold_pink"),
 		"teal" = image(icon = src.icon, icon_state = "kblindfold_teal"))
 
-//to update model lol
-/obj/item/clothing/glasses/blindfold/kinky/ComponentInitialize()
-	. = ..()
-	AddElement(/datum/element/update_icon_updates_onmob)
-
 //to change model
 /obj/item/clothing/glasses/blindfold/kinky/AltClick(mob/user)
 	if(color_changed)
@@ -50,6 +45,7 @@
 
 /obj/item/clothing/glasses/blindfold/kinky/Initialize(mapload)
 	. = ..()
+	AddElement(/datum/element/update_icon_updates_onmob)
 	update_icon_state()
 	update_icon()
 	if(!length(kinkfold_designs))
