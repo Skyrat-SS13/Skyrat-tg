@@ -204,3 +204,21 @@
 			continue
 		found_rock.dug_depth = found_rock.item_depth
 		found_rock.try_uncover()
+
+/datum/ash_ritual/summon_borer_egg
+	name = "Summon Borer Egg"
+	required_components = list(
+		"north" = /obj/item/stack/sheet/animalhide/bileworm,
+		"south" = /obj/structure/ash_walker_eggshell,
+		"east" = /obj/item/organ/internal/regenerative_core,
+		"west" = /obj/item/tendril_seed,
+	)
+	consumed_components = list(
+		/obj/item/stack/sheet/animalhide/bileworm,
+		/obj/structure/ash_walker_eggshell,
+		/obj/item/organ/internal/regenerative_core,
+		/obj/item/tendril_seed,
+	)
+	ritual_success_items = list(
+		/obj/effect/mob_spawn/ghost_role/borer_egg,
+	)
