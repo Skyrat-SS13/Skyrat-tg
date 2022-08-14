@@ -43,8 +43,6 @@ GLOBAL_LIST_INIT(gas_id_to_canister, init_gas_id_to_canister())
 	integrity_failure = 0.4
 	pressure_resistance = 7 * ONE_ATMOSPHERE
 	req_access = list()
-	temp_limit = 10000
-	pressure_limit = 500000
 
 	var/icon/canister_overlay_file = 'icons/obj/atmospherics/canisters.dmi'
 
@@ -61,7 +59,7 @@ GLOBAL_LIST_INIT(gas_id_to_canister, init_gas_id_to_canister())
 	///Player controlled var that set the release pressure of the canister
 	var/release_pressure = ONE_ATMOSPHERE
 	///Maximum pressure allowed for release_pressure var
-	var/can_max_release_pressure = (ONE_ATMOSPHERE * 10)
+	var/can_max_release_pressure = (ONE_ATMOSPHERE * 25)
 	///Minimum pressure allower for release_pressure var
 	var/can_min_release_pressure = (ONE_ATMOSPHERE * 0.1)
 	///Maximum amount of external heat that the canister can handle before taking damage
@@ -482,7 +480,7 @@ GLOBAL_LIST_INIT(gas_id_to_canister, init_gas_id_to_canister())
 	if(pressure > 300)
 		to_chat(user, span_alert("The pressure gauge on [src] indicates a high pressure inside... maybe you want to reconsider?"))
 		message_admins("[src] deconstructed by [ADMIN_LOOKUPFLW(user)]")
-		log_game("[src] deconstructed by [key_name(user)]")
+		user.log_message("deconstructed [src] with a welder.", LOG_GAME)
 	to_chat(user, span_notice("You begin cutting [src] apart..."))
 	if(I.use_tool(src, user, 3 SECONDS, volume=50))
 		to_chat(user, span_notice("You cut [src] apart."))

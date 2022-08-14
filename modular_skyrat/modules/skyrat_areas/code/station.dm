@@ -1,5 +1,10 @@
 //Modular areas for mapping that don't exist on /TG/ already
 
+
+/*
+ * BLUE SHIFT AREAS
+*/
+
 // Department/Area specific maints
 /area/station/maintenance/port/upper
 	name = "Upper Port Maintenance"
@@ -447,3 +452,47 @@
 	name = "Atmospherics Testing Chambers"
 	icon = 'modular_skyrat/modules/skyrat_areas/icons/areas_station.dmi'
 	icon_state = "atmos_test"
+
+// Department power rooms
+
+/area/station/cargo/power_station
+	name = "Cargo Power Station"
+	icon = 'modular_skyrat/modules/skyrat_areas/icons/areas_station.dmi'
+	icon_state = "cargo_power"
+
+/area/station/cargo/power_station/lower
+	name = "Lower Cargo Power Station"
+
+/area/station/cargo/power_station/upper
+	name = "Upper Cargo Power Station"
+
+/area/station/engineering/power_station
+	name = "Engineering Power Station"
+	icon = 'modular_skyrat/modules/skyrat_areas/icons/areas_station.dmi'
+	icon_state = "engie_power"
+
+/area/station/engineering/power_station/lower
+	name = "Lower Engineering Power Station"
+
+/area/station/engineering/power_station/upper
+	name = "Upper Engineering Power Station"
+
+/area/station/medical/power_station
+	name = "Medical Power Station"
+	icon = 'modular_skyrat/modules/skyrat_areas/icons/areas_station.dmi'
+	icon_state = "med_power"
+
+/area/station/science/power_station
+	name = "Science Power Station"
+	icon = 'modular_skyrat/modules/skyrat_areas/icons/areas_station.dmi'
+	icon_state = "sci_power"
+
+/area/station/security/power_station
+	name = "Security Power Station"
+	icon = 'modular_skyrat/modules/skyrat_areas/icons/areas_station.dmi'
+	icon_state = "sec_power"
+
+/area/station/service/power_station
+	name = "Service Power Station"
+	icon = 'modular_skyrat/modules/skyrat_areas/icons/areas_station.dmi'
+	icon_state = "serv_power"

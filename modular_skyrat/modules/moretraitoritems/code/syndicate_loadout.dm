@@ -204,7 +204,7 @@
 	new /obj/item/gun/ballistic/revolver/ocelot(src)
 	new /obj/item/ammo_box/a357/peacemaker(src)
 	new /obj/item/ammo_box/a357/peacemaker(src)
-	new /obj/item/toy/plush/fox (src)
+	new /obj/item/toy/plush/skyrat/fox (src)
 	new /obj/item/clothing/suit/det_suit/noir/ocelot(src)
 	new /obj/item/clothing/head/beret/sec/ocelot(src)
 	new /obj/item/storage/belt/holster/chameleon(src)

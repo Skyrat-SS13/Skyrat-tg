@@ -39,7 +39,7 @@
 	var/mob/living/silicon/robot/user // needed for process()
 	var/animation_playing = FALSE
 
-/obj/item/borg_shapeshifter/Initialize()
+/obj/item/borg_shapeshifter/Initialize(mapload)
 	. = ..()
 
 /obj/item/borg_shapeshifter/Destroy()

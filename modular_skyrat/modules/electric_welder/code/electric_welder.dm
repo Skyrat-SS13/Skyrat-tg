@@ -15,7 +15,7 @@
 	var/powered = FALSE
 	max_fuel = 20
 
-/obj/item/weldingtool/electric/ComponentInitialize()
+/obj/item/weldingtool/electric/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/cell, cell_override, CALLBACK(src, .proc/switched_off))
 

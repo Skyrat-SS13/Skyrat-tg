@@ -164,7 +164,7 @@
 	pushed_mob.visible_message(span_danger("[user] slams [pushed_mob] onto \the [src]!"), \
 								span_userdanger("[user] slams you onto \the [src]!"))
 	log_combat(user, pushed_mob, "tabled", null, "onto [src]")
-	SEND_SIGNAL(pushed_mob, COMSIG_ADD_MOOD_EVENT, "table", /datum/mood_event/table)
+	pushed_mob.add_mood_event("table", /datum/mood_event/table)
 
 /obj/structure/table/proc/tablelimbsmash(mob/living/user, mob/living/pushed_mob)
 	pushed_mob.Knockdown(30)
@@ -181,7 +181,7 @@
 	pushed_mob.visible_message(span_danger("[user] smashes [pushed_mob]'s [banged_limb.name] against \the [src]!"),
 								span_userdanger("[user] smashes your [banged_limb.name] against \the [src]"))
 	log_combat(user, pushed_mob, "head slammed", null, "against [src]")
-	SEND_SIGNAL(pushed_mob, COMSIG_ADD_MOOD_EVENT, "table", /datum/mood_event/table_limbsmash, banged_limb)
+	pushed_mob.add_mood_event("table", /datum/mood_event/table_limbsmash, banged_limb)
 
 /obj/structure/table/screwdriver_act_secondary(mob/living/user, obj/item/tool)
 	if(flags_1 & NODECONSTRUCT_1 || !deconstruction_ready)
@@ -209,7 +209,7 @@
 			for(var/x in T.contents)
 				var/obj/item/item = x
 				AfterPutItemOnTable(item, user)
-			SEND_SIGNAL(I, COMSIG_TRY_STORAGE_QUICK_EMPTY, drop_location())
+			I.atom_storage.remove_all(drop_location())
 			user.visible_message(span_notice("[user] empties [I] on [src]."))
 			return
 		// If the tray IS empty, continue on (tray will be placed on the table like other items)
@@ -356,16 +356,15 @@
 	attached_items -= source
 	UnregisterSignal(source, COMSIG_MOVABLE_MOVED)
 
-/obj/structure/table/rolling/Moved(atom/OldLoc, Dir)
+/obj/structure/table/rolling/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change = TRUE)
 	. = ..()
 	if(!loc)
 		return
-	for(var/mob/living/living_mob in OldLoc.contents)//Kidnap everyone on top
+	for(var/mob/living/living_mob in old_loc.contents)//Kidnap everyone on top
 		living_mob.forceMove(loc)
-	for(var/x in attached_items)
-		var/atom/movable/AM = x
-		if(!AM.Move(loc))
-			RemoveItemFromTable(AM, AM.loc)
+	for(var/atom/movable/attached_movable as anything in attached_items)
+		if(!attached_movable.Move(loc))
+			RemoveItemFromTable(attached_movable, attached_movable.loc)
 
 /*
  * Glass tables

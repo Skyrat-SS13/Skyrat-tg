@@ -11,7 +11,7 @@
 	lefthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_left.dmi'
 	righthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_right.dmi'
 	slot_flags = ITEM_SLOT_PENIS | ITEM_SLOT_VAGINA | ITEM_SLOT_NIPPLES | ITEM_SLOT_ANUS
-	moth_edible = FALSE
+	clothing_flags = INEDIBLE_CLOTHING
 	/// Is the toy currently on
 	var/toy_on = FALSE
 	/// The current color of the toy, affects sprite
@@ -63,7 +63,7 @@
 		update_icon()
 		update_icon_state()
 
-/obj/item/clothing/sextoy/eggvib/Initialize()
+/obj/item/clothing/sextoy/eggvib/Initialize(mapload)
 	. = ..()
 	update_icon_state()
 	update_icon()
@@ -156,7 +156,7 @@
 	/// The default frequency of the toy
 	var/frequency = FREQ_ELECTROPACK
 
-/obj/item/clothing/sextoy/eggvib/signalvib/Initialize()
+/obj/item/clothing/sextoy/eggvib/signalvib/Initialize(mapload)
 	if(random)
 		code = rand(1, 100)
 		frequency = rand(MIN_FREE_FREQ, MAX_FREE_FREQ)

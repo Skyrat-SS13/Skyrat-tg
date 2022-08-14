@@ -15,7 +15,7 @@
 	var/datum/looping_sound/vibrator/medium/soundloop
 	w_class = WEIGHT_CLASS_TINY
 	slot_flags = ITEM_SLOT_PENIS
-	moth_edible = FALSE
+	clothing_flags = INEDIBLE_CLOTHING
 
 /obj/item/clothing/sextoy/vibroring/attack_self(mob/user)
 	toy_on = !toy_on
@@ -48,7 +48,7 @@
 	update_icon()
 	color_changed = TRUE
 
-/obj/item/clothing/sextoy/vibroring/Initialize()
+/obj/item/clothing/sextoy/vibroring/Initialize(mapload)
 	. = ..()
 	update_icon_state()
 	update_icon()

@@ -46,6 +46,7 @@
 	name = "supply skirtleneck"
 	desc = "A snug turtleneck sweater worn by Supply, this time with a skirt attached!"
 	icon_state = "skirtleneck"
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 
 /obj/item/clothing/under/rank/cargo/tech/skyrat/evil
 	name = "black cargo uniform"
@@ -78,6 +79,7 @@
 	name = "quartermaster's skirtleneck"
 	desc = "A snug turtleneck sweater worn by the Quartermaster, as shown by the elegant double-lining of its silk skirt."
 	icon_state = "skirtleneckQM"
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 
 /obj/item/clothing/under/rank/cargo/qm/skyrat/syndie
 	name = "deck officer's jumpsuit"

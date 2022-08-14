@@ -1,12 +1,12 @@
-/datum/component/storage/concrete/pockets/small/collar
-	max_items = 1
+/datum/storage/pockets/small/collar
+	max_slots = 1
 
-/datum/component/storage/concrete/pockets/small/collar/Initialize()
+/datum/storage/pockets/small/collar/New()
 	. = ..()
 	can_hold = typecacheof(list(
 	/obj/item/food/cookie))
 
-/datum/component/storage/concrete/pockets/small/collar/locked/Initialize()
+/datum/storage/pockets/small/collar/locked/New()
 	. = ..()
 	can_hold = typecacheof(list(
 	/obj/item/food/cookie,
@@ -21,14 +21,14 @@
 	greyscale_colors = "#44BBEE#FFCC00"
 	flags_1 = IS_PLAYER_COLORABLE_1
 	alternate_worn_layer = UNDER_SUIT_LAYER
-	pocket_storage_component_path = /datum/component/storage/concrete/pockets/small/collar
 	/// What's the name on the tag, if any?
 	var/tagname = null
 	/// What treat item spawns inside the collar?
 	var/treat_path = /obj/item/food/cookie
 
-/obj/item/clothing/neck/human_petcollar/Initialize()
+/obj/item/clothing/neck/human_petcollar/Initialize(mapload)
 	. = ..()
+	create_storage(type = /datum/storage/pockets/small/collar)
 	if(treat_path)
 		new treat_path(src)
 
@@ -59,10 +59,14 @@
 /obj/item/clothing/neck/human_petcollar/locked
 	name = "locked collar"
 	desc = "A collar that has a small lock on it to keep it from being removed."
-	pocket_storage_component_path = /datum/component/storage/concrete/pockets/small/collar/locked
 	treat_path = /obj/item/key/collar
 	/// Is the collar currently locked?
 	var/locked = FALSE
+
+/obj/item/clothing/neck/human_petcollar/locked/Initialize(mapload)
+	. = ..()
+
+	create_storage(type = /datum/storage/pockets/small/collar/locked)
 
 /obj/item/clothing/neck/human_petcollar/locked/attackby(obj/item/attacking_item, mob/user, params)
 	if(istype(attacking_item, /obj/item/key/collar))

@@ -180,7 +180,10 @@ GLOBAL_LIST_EMPTY(total_uf_len_by_block)
 	//We update the translation to make sure our character doesn't go out of the southern bounds of the tile
 	var/translate = ((change_multiplier-1) * 32)/2
 	holder.transform = holder.transform.Scale(change_multiplier)
-	holder.transform = holder.transform.Translate(0, translate)
+	// Splits the updated translation into X and Y based on the user's rotation.
+	var/translate_x = translate * ( holder.transform.b / features["body_size"] )
+	var/translate_y = translate * ( holder.transform.e / features["body_size"] )
+	holder.transform = holder.transform.Translate(translate_x, translate_y)
 	holder.maptext_height = 32 * features["body_size"] // Adjust runechat height
 	current_body_size = features["body_size"]
 
@@ -249,19 +252,29 @@ GLOBAL_LIST_EMPTY(total_uf_len_by_block)
 /mob/living/carbon/human/updateappearance(icon_update=1, mutcolor_update=0, mutations_overlay_update=0, eyeorgancolor_update=0)
 	..()
 	var/structure = dna.unique_identity
+
 	hair_color = sanitize_hexcolor(get_uni_identity_block(structure, DNA_HAIR_COLOR_BLOCK))
 	facial_hair_color = sanitize_hexcolor(get_uni_identity_block(structure, DNA_FACIAL_HAIR_COLOR_BLOCK))
+
 	skin_tone = GLOB.skin_tones[deconstruct_block(get_uni_identity_block(structure, DNA_SKIN_TONE_BLOCK), GLOB.skin_tones.len)]
+
 	eye_color_left = sanitize_hexcolor(get_uni_identity_block(structure, DNA_EYE_COLOR_LEFT_BLOCK))
 	eye_color_right = sanitize_hexcolor(get_uni_identity_block(structure, DNA_EYE_COLOR_RIGHT_BLOCK))
+
 	if(eyeorgancolor_update)
 		var/obj/item/organ/internal/eyes/eye_organ = getorganslot(ORGAN_SLOT_EYES)
 		eye_organ.eye_color_left = eye_color_left
 		eye_organ.eye_color_right = eye_color_right
 		eye_organ.old_eye_color_left = eye_color_left
 		eye_organ.old_eye_color_right = eye_color_right
+
 	facial_hairstyle = GLOB.facial_hairstyles_list[deconstruct_block(get_uni_identity_block(structure, DNA_FACIAL_HAIRSTYLE_BLOCK), GLOB.facial_hairstyles_list.len)]
-	hairstyle = GLOB.hairstyles_list[deconstruct_block(get_uni_identity_block(structure, DNA_HAIRSTYLE_BLOCK), GLOB.hairstyles_list.len)]
+
+	if(HAS_TRAIT(src, TRAIT_BALD))
+		hairstyle = "Bald"
+	else
+		hairstyle = GLOB.hairstyles_list[deconstruct_block(get_uni_identity_block(structure, DNA_HAIRSTYLE_BLOCK), GLOB.hairstyles_list.len)]
+
 	var/features = dna.unique_features
 	if(dna.features["mcolor"])
 		dna.features["mcolor"] = sanitize_hexcolor(get_uni_identity_block(features, DNA_MUTANT_COLOR_BLOCK))

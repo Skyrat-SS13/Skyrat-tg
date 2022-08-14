@@ -48,3 +48,13 @@
 	build_path = /obj/item/gun/syringe/smartdart
 	category = list("Weapons")
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
+
+/datum/design/anesthetic_machine
+	name = "anesthetic machine parts kit"
+	desc = "All-in-one kit containing the parts to create a portable anesthetic stand, tank not included."
+	id = "anesthetic_machine"
+	build_type = PROTOLATHE | AWAY_LATHE
+	materials = list(/datum/material/iron = 10000, /datum/material/plastic = 10000, /datum/material/silver = 4000)
+	build_path = /obj/item/anesthetic_machine_kit
+	category = list("Equipment")
+	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL

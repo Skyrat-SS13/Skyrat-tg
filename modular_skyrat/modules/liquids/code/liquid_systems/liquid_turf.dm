@@ -236,3 +236,57 @@
 			T.add_liquid_list(liquids.reagent_list, TRUE, liquids.temp)
 	if(!any_share)
 		SSliquids.active_immutables -= src
+
+
+/*
+*	OPEN TURFS
+*/
+/turf/open
+	/// Pollution stored on this turf
+	var/datum/pollution/pollution
+
+//Consider making all of these behaviours a smart component/element? Something that's only applied wherever it needs to be
+//Could probably have the variables on the turf level, and the behaviours being activated/deactived on the component level as the vars are updated
+/turf/open/CanPass(atom/movable/mover, turf/location)
+	if(isliving(mover))
+		var/turf/current_turf = get_turf(mover)
+		if(current_turf && current_turf.turf_height - turf_height <= -TURF_HEIGHT_BLOCK_THRESHOLD)
+			return FALSE
+	return ..()
+
+/turf/open/Exit(atom/movable/mover, atom/newloc)
+	. = ..()
+	if(. && isliving(mover) && mover.has_gravity() && isturf(newloc))
+		var/mob/living/moving_mob = mover
+		var/turf/new_turf = get_turf(newloc)
+		if(new_turf && new_turf.turf_height - turf_height <= -TURF_HEIGHT_BLOCK_THRESHOLD)
+			moving_mob.on_fall()
+			moving_mob.onZImpact(new_turf, 1)
+
+// Handles climbing up and down between turfs with height differences, as well as manipulating others to do the same.
+/turf/open/MouseDrop_T(mob/living/dropped_mob, mob/living/user)
+	if(!isliving(dropped_mob) || !isliving(user) || !dropped_mob.has_gravity() || !Adjacent(user) || !dropped_mob.Adjacent(user) || !(user.stat == CONSCIOUS) || user.body_position == LYING_DOWN)
+		return
+	if(!dropped_mob.has_gravity())
+		return
+	var/turf/mob_turf = get_turf(dropped_mob)
+	if(!mob_turf)
+		return
+	if(mob_turf.turf_height - turf_height <= -TURF_HEIGHT_BLOCK_THRESHOLD)
+		//Climb up
+		if(user == dropped_mob)
+			user.balloon_alert_to_viewers("climbing...")
+		else
+			dropped_mob.balloon_alert_to_viewers("being pulled up...")
+		if(do_mob(user, dropped_mob, 2 SECONDS))
+			dropped_mob.forceMove(src)
+		return
+	if(turf_height - mob_turf.turf_height <= -TURF_HEIGHT_BLOCK_THRESHOLD)
+		//Climb down
+		if(user == dropped_mob)
+			user.balloon_alert_to_viewers("climbing down...")
+		else
+			dropped_mob.balloon_alert_to_viewers("being lowered...")
+		if(do_mob(user, dropped_mob, 2 SECONDS))
+			dropped_mob.forceMove(src)
+		return

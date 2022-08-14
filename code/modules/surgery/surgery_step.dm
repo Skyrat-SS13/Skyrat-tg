@@ -75,7 +75,7 @@
 	var/fail_prob = 0//100 - fail_prob = success_prob
 	var/advance = FALSE
 
-	if(preop(user, target, target_zone, tool, surgery) == -1)
+	if(preop(user, target, target_zone, tool, surgery) == SURGERY_STEP_FAIL)
 		surgery.step_in_progress = FALSE
 		return FALSE
 
@@ -149,11 +149,11 @@
 	if(!preop_sound)
 		return
 	var/sound_file_use
-	if(islist(preop_sound))	
+	if(islist(preop_sound))
 		for(var/typepath in preop_sound)//iterate and assign subtype to a list, works best if list is arranged from subtype first and parent last
 			if(istype(tool, typepath))
-				sound_file_use = preop_sound[typepath]	
-				break	
+				sound_file_use = preop_sound[typepath]
+				break
 	else
 		sound_file_use = preop_sound
 	playsound(get_turf(target), sound_file_use, 75, TRUE, falloff_exponent = 12, falloff_distance = 1)
@@ -225,6 +225,13 @@
 	user.visible_message(detailed_message, self_message, vision_distance = 1, ignored_mobs = target_detailed ? null : target)
 	if(!target_detailed)
 		var/you_feel = pick("a brief pain", "your body tense up", "an unnerving sensation")
+		if(!vague_message)
+			if(detailed_message)
+				stack_trace("DIDN'T GET PASSED A VAGUE MESSAGE.")
+				vague_message = detailed_message
+			else
+				stack_trace("NO MESSAGES TO SEND TO TARGET!")
+				vague_message = span_notice("You feel [you_feel] as you are operated on.")
 		target.show_message(vague_message, MSG_VISUAL, span_notice("You feel [you_feel] as you are operated on."))
 /**
  * Sends a pain message to the target, including a chance of screaming.
@@ -239,13 +246,13 @@
 	if(target.stat >= UNCONSCIOUS) //the unconscious do not worry about pain
 		return
 	if(HAS_TRAIT(target, TRAIT_NUMBED)) //numbing helps but is not perfect - this is the tradeoff for being awake
-		SEND_SIGNAL(target, COMSIG_ADD_MOOD_EVENT, "mild_surgery", /datum/mood_event/mild_surgery)
+		target.add_mood_event("mild_surgery", /datum/mood_event/mild_surgery)
 		return
 	if(mechanical_surgery == TRUE) //robots can't benefit from numbing agents like most but have no reason not to sleep - their debuff falls in-between
-		SEND_SIGNAL(target, COMSIG_ADD_MOOD_EVENT, "robot_surgery", /datum/mood_event/robot_surgery)
+		target.add_mood_event("robot_surgery", /datum/mood_event/robot_surgery)
 		return
 	to_chat(target, span_userdanger(pain_message))
-	SEND_SIGNAL(target, COMSIG_ADD_MOOD_EVENT, "severe_surgery", /datum/mood_event/severe_surgery)
+	target.add_mood_event("severe_surgery", /datum/mood_event/severe_surgery)
 	if(prob(30))
 		target.emote("scream")
 //SKYRAT EDIT END

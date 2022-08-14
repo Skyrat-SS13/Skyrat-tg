@@ -22,8 +22,8 @@
 							)
 	required_candidates = 1
 	weight = 4 //Slightly less common than normal midround traitors.
-	cost = 15 //But also slightly more costly.
-	requirements = list(50,40,30,20,10,10,10,10,10,10)
+	cost = 10 //But also slightly more costly.
+	minimum_players = 10
 	var/list/spawn_locs = list()
 
 /datum/dynamic_ruleset/midround/from_ghosts/lone_infiltrator/execute()

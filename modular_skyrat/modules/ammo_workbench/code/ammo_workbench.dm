@@ -41,7 +41,7 @@
 		/obj/item/stock_parts/micro_laser = 2
 		)
 
-/obj/machinery/ammo_workbench/Initialize()
+/obj/machinery/ammo_workbench/Initialize(mapload)
 	AddComponent(/datum/component/material_container, SSmaterials.materials_by_category[MAT_CATEGORY_ITEM_MATERIAL], 0, MATCONTAINER_EXAMINE, allowed_items = /obj/item/stack, _after_insert = CALLBACK(src, .proc/AfterMaterialInsert))
 	. = ..()
 	wires = new /datum/wires/ammo_workbench(src)

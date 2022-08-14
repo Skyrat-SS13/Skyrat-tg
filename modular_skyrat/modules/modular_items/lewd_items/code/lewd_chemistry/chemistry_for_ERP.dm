@@ -154,7 +154,7 @@
 		return ..()
 
 	to_chat(exposed_mob, span_purple("Your libido is going haywire! It feels like speaking is much harder..."))
-	exposed_mob.gain_trauma(/datum/brain_trauma/special/bimbo, TRAUMA_RESILIENCE_BASIC)
+	exposed_mob.gain_trauma(/datum/brain_trauma/very_special/bimbo, TRAUMA_RESILIENCE_BASIC)
 	ADD_TRAIT(exposed_mob, TRAIT_BIMBO, LEWDCHEM_TRAIT)
 
 //Dopamine. Generates in character after orgasm.
@@ -181,7 +181,7 @@
 /datum/reagent/drug/aphrodisiac/dopamine/on_mob_add(mob/living/carbon/human/exposed_mob)
 	if(!(exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/aphro)))
 		return ..()
-	SEND_SIGNAL(exposed_mob, COMSIG_ADD_MOOD_EVENT, "[type]_start", /datum/mood_event/orgasm, name)
+	exposed_mob.add_mood_event("[type]_start", /datum/mood_event/orgasm, name)
 	..()
 
 /datum/reagent/drug/aphrodisiac/dopamine/life_effects(mob/living/carbon/human/exposed_mob)
@@ -192,7 +192,7 @@
 /datum/reagent/drug/aphrodisiac/dopamine/overdose_start(mob/living/carbon/human/exposed_mob)
 	. = ..()
 	to_chat(exposed_mob, span_purple("You feel so happy!"))
-	SEND_SIGNAL(exposed_mob, COMSIG_ADD_MOOD_EVENT, "[type]_overdose", /datum/mood_event/overgasm, name)
+	exposed_mob.add_mood_event("[type]_overdose", /datum/mood_event/overgasm, name)
 
 /datum/reagent/drug/aphrodisiac/dopamine/overdose_effects(mob/living/carbon/human/exposed_mob)
 	if(!(exposed_mob.hallucination < volume && prob(20)))
@@ -319,7 +319,7 @@
 		ADD_TRAIT(exposed_mob, TRAIT_NEVERBONER, LEWDCHEM_TRAIT)
 	if(!HAS_TRAIT(exposed_mob, TRAIT_BIMBO))
 		return
-	exposed_mob.cure_trauma_type(/datum/brain_trauma/special/bimbo, TRAUMA_RESILIENCE_ABSOLUTE)
+	exposed_mob.cure_trauma_type(/datum/brain_trauma/very_special/bimbo, TRAUMA_RESILIENCE_ABSOLUTE)
 	to_chat(exposed_mob, span_notice("Your mind is free. Your thoughts are pure and innocent once more."))
 	REMOVE_TRAIT(exposed_mob, TRAIT_BIMBO, LEWDCHEM_TRAIT)
 

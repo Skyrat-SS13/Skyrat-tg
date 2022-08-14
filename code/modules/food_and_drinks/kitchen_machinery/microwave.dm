@@ -183,7 +183,7 @@
 			if(ingredients.len >= max_n_of_items)
 				to_chat(user, span_warning("\The [src] is full, you can't put anything in!"))
 				return TRUE
-			if(SEND_SIGNAL(T, COMSIG_TRY_STORAGE_TAKE, S, src))
+			if(T.atom_storage.attempt_remove(S, src))
 				loaded++
 				ingredients += S
 		if(loaded)
@@ -378,7 +378,7 @@
 /obj/machinery/microwave/hell
 	desc = "Cooks and boils stuff. This one appears to be a bit... off."
 
-/obj/machinery/microwave/hell/Initialize()
+/obj/machinery/microwave/hell/Initialize(mapload)
 	. = ..()
 	//We want there to be some chance of them getting a working microwave (eventually).
 	if(prob(95))
