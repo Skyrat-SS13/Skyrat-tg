@@ -85,7 +85,6 @@ GLOBAL_LIST_INIT(rod_recipes, list ( \
 		user.put_in_inactive_hand(new_item)
 		return TOOL_ACT_TOOLTYPE_SUCCESS
 
-<<<<<<< HEAD
 		if(W.use_tool(src, user, 0, volume=40))
 			var/obj/item/stack/sheet/iron/new_item = new(usr.loc)
 			user.visible_message(span_notice("[user.name] shaped [src] into iron sheets with [W]."), \
@@ -109,7 +108,7 @@ GLOBAL_LIST_INIT(rod_recipes, list ( \
 	// SKYRAT EDIT ADDITION END
 	else
 		return ..()
-=======
+
 /obj/item/stack/rods/welder_act_secondary(mob/living/user, obj/item/tool)
 	if(tool.use_tool(src, user, delay = 0, volume = 40))
 		var/obj/item/stack/tile/iron/two/new_item = new(user.loc)
@@ -122,7 +121,6 @@ GLOBAL_LIST_INIT(rod_recipes, list ( \
 		use(1)
 		user.put_in_inactive_hand(new_item)
 		return TOOL_ACT_TOOLTYPE_SUCCESS
->>>>>>> 2a4bec28b95 (Adds "welder crafting" to iron sheets, rods and tiles. (#68987))
 
 /obj/item/stack/rods/cyborg/Initialize(mapload)
 	AddElement(/datum/element/update_icon_blocker)
