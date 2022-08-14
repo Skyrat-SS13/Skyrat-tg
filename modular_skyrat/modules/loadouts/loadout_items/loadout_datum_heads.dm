@@ -567,6 +567,11 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 	item_path = /obj/item/clothing/head/imperial/white
 	restricted_roles = list(JOB_CAPTAIN, JOB_HEAD_OF_PERSONNEL, JOB_BLUESHIELD, JOB_HEAD_OF_SECURITY, JOB_RESEARCH_DIRECTOR, JOB_QUARTERMASTER, JOB_CHIEF_MEDICAL_OFFICER, JOB_CHIEF_ENGINEER)
 
+/datum/loadout_item/head/nun
+	name = "Nun headdress"
+	item_path = /obj/item/clothing/head/nun
+	restricted_roles = list(JOB_CHAPLAIN)
+
 /*
 *	JOB BERETS
 */

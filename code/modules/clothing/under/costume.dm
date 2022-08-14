@@ -347,3 +347,12 @@
 	inhand_icon_state = "tmc_jumpsuit"
 	can_adjust = FALSE
 
+/obj/item/clothing/under/costume/nunrobes // new style of nun robes, only available in loadout. Added 2022-08, paired with Nun headdress
+	name = "nun robes"
+	desc = "Plain black robes in a feminine style, meant to display piety and turn thoughts away from sin."
+	body_parts_covered = CHEST|GROIN|ARMS
+	alternate_worn_layer = GLOVES_LAYER // since the sleeves cover a part of the hands, this way gloves still covers it up.
+	can_adjust = FALSE
+	female_sprite_flags = NO_FEMALE_UNIFORM
+	icon_state = "nun"
+	inhand_icon_state = "judge"

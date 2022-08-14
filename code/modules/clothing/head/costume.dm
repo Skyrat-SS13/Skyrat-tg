@@ -192,3 +192,10 @@
 	name = "allies helmet"
 	icon_state = "allies_helmet"
 	inhand_icon_state = "allies_helmet"
+
+/obj/item/clothing/head/nun // Alternative version of old nun headdress with a lot more detail. Added 2022-08, paired with Nun robes
+	name = "nun headdress"
+	desc = "A cloth headpiece that covers the hair and ears. The iconic uniform of nuns across the galaxy."
+	icon_state = "nun_alt"
+	inhand_icon_state = "cowboy_hat_black"
+	flags_inv = HIDEHAIR | HIDEEARS

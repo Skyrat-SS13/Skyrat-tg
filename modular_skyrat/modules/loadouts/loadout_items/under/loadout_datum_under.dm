@@ -868,6 +868,12 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Red Victorian Vest"
 	item_path = /obj/item/clothing/under/costume/vic_vest/red_alt
 
+/datum/loadout_item/under/formal/nun
+	name = "Nun robes"
+	item_path = /obj/item/clothing/under/costume/nunrobes
+	restricted_roles = list(JOB_CHAPLAIN)
+
+
 //FAMILIES GEAR
 /datum/loadout_item/under/formal/osi
 	name = "OSI Uniform"
