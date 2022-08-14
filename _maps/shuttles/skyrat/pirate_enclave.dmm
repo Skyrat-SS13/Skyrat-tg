@@ -390,7 +390,6 @@
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
 	dir = 4
 	},
-/obj/structure/chair/comfy/shuttle,
 /obj/effect/turf_decal/trimline/yellow/warning{
 	dir = 9
 	},
@@ -528,16 +527,17 @@
 /turf/open/floor/wood,
 /area/shuttle/syndicate/slaver)
 "iA" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
-	dir = 8
-	},
 /obj/effect/turf_decal/trimline/yellow/warning{
 	dir = 1
 	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/structure/chair/comfy/shuttle,
 /turf/open/floor/iron/dark/brown/side,
 /area/shuttle/syndicate/slaver)
 "iB" = (
-/obj/machinery/porta_turret/syndicate/energy/heavy{
+/obj/machinery/porta_turret/syndicate/pod{
 	dir = 6;
 	faction = list("pirate")
 	},
@@ -861,7 +861,6 @@
 /obj/item/grenade/smokebomb,
 /obj/item/grenade/flashbang,
 /obj/item/grenade/flashbang,
-/obj/item/grenade/c4,
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
@@ -872,7 +871,6 @@
 /obj/structure/closet/secure_closet/wall{
 	pixel_x = -32
 	},
-/obj/item/minespawner/explosive,
 /turf/open/floor/iron/textured_large,
 /area/shuttle/syndicate/slaver)
 "oe" = (
@@ -897,12 +895,12 @@
 /area/shuttle/syndicate/slaver)
 "oy" = (
 /obj/structure/table/reinforced,
-/obj/machinery/recharger,
 /obj/machinery/light/directional/north,
 /obj/structure/sign/flag/mars/directional/north,
 /obj/effect/turf_decal/trimline/yellow/warning{
 	dir = 1
 	},
+/obj/item/modular_computer/laptop/preset/civilian,
 /turf/open/floor/iron/dark/brown/side,
 /area/shuttle/syndicate/slaver)
 "oH" = (
@@ -1012,6 +1010,7 @@
 /obj/structure/sign/poster/contraband/missing_gloves{
 	pixel_y = -32
 	},
+/obj/machinery/blackbox_recorder,
 /turf/open/floor/plating,
 /area/shuttle/syndicate/slaver)
 "pZ" = (
@@ -1041,6 +1040,9 @@
 	id = "privateerslaverbridgeshutters";
 	name = "Bridge Blast Doors";
 	req_access = list("syndicate")
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 8
 	},
 /turf/open/floor/iron/dark/brown/corner{
 	dir = 1
@@ -1145,9 +1147,9 @@
 "sM" = (
 /obj/structure/table/reinforced,
 /obj/machinery/light/directional/south,
-/obj/item/binoculars,
 /obj/structure/sign/flag/mars/directional/south,
 /obj/effect/turf_decal/trimline/yellow/warning,
+/obj/item/modular_computer/laptop/preset/civilian,
 /turf/open/floor/iron/dark/brown/side{
 	dir = 1
 	},
@@ -1191,7 +1193,7 @@
 /turf/open/floor/pod/light,
 /area/shuttle/syndicate/slaver)
 "tv" = (
-/obj/machinery/porta_turret/syndicate/energy/heavy{
+/obj/machinery/porta_turret/syndicate/pod{
 	dir = 9;
 	faction = list("pirate")
 	},
@@ -1374,7 +1376,7 @@
 /obj/effect/turf_decal/trimline/yellow/warning{
 	dir = 9
 	},
-/obj/item/modular_computer/laptop/preset/civilian,
+/obj/item/stack/marker_beacon/thirty,
 /turf/open/floor/iron/dark/brown/corner,
 /area/shuttle/syndicate/slaver)
 "wV" = (
@@ -1503,6 +1505,9 @@
 /obj/effect/turf_decal/trimline/yellow/warning{
 	dir = 5
 	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 8
+	},
 /turf/open/floor/iron/dark/brown/corner{
 	dir = 8
 	},
@@ -1539,10 +1544,13 @@
 	},
 /area/shuttle/syndicate/slaver)
 "Ad" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
-	dir = 8
-	},
 /obj/effect/turf_decal/trimline/yellow/warning,
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/chair/comfy/shuttle{
+	dir = 1
+	},
 /turf/open/floor/iron/dark/brown/side{
 	dir = 1
 	},
@@ -1627,7 +1635,7 @@
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
 "AI" = (
-/obj/machinery/porta_turret/syndicate/energy/heavy{
+/obj/machinery/porta_turret/syndicate/pod{
 	dir = 10;
 	faction = list("pirate")
 	},
@@ -2145,9 +2153,13 @@
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
 "Ka" = (
-/obj/machinery/loot_locator,
 /obj/effect/turf_decal/trimline/yellow/warning{
 	dir = 6
+	},
+/obj/structure/table/reinforced,
+/obj/machinery/fax{
+	name = "NRI ship fax machine";
+	fax_name = "NRI Ship"
 	},
 /turf/open/floor/iron/dark/brown/corner{
 	dir = 1
@@ -2260,10 +2272,7 @@
 /obj/effect/turf_decal/trimline/yellow/warning{
 	dir = 10
 	},
-/obj/machinery/fax{
-	name = "NRI ship fax machine";
-	fax_name = "NRI Ship"
-	},
+/obj/item/binoculars,
 /turf/open/floor/iron/dark/brown/corner{
 	dir = 4
 	},
@@ -2345,7 +2354,7 @@
 /turf/closed/wall/mineral/titanium/spaceship/nodiagonal,
 /area/shuttle/syndicate/slaver)
 "Pe" = (
-/obj/machinery/porta_turret/syndicate/energy/heavy{
+/obj/machinery/porta_turret/syndicate/pod{
 	dir = 5;
 	faction = list("pirate")
 	},
@@ -2505,7 +2514,6 @@
 /obj/item/grenade/smokebomb,
 /obj/item/grenade/flashbang,
 /obj/item/grenade/flashbang,
-/obj/item/grenade/c4,
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
 	},
@@ -2517,7 +2525,6 @@
 /obj/structure/closet/secure_closet/wall{
 	pixel_x = -32
 	},
-/obj/item/minespawner/explosive,
 /turf/open/floor/iron/textured_large,
 /area/shuttle/syndicate/slaver)
 "Rm" = (
@@ -2759,9 +2766,6 @@
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
 	dir = 4
 	},
-/obj/structure/chair/comfy/shuttle{
-	dir = 1
-	},
 /obj/effect/turf_decal/trimline/yellow/warning{
 	dir = 10
 	},
@@ -2804,11 +2808,13 @@
 /turf/open/floor/iron/dark/brown/side,
 /area/shuttle/syndicate/slaver)
 "VJ" = (
-/obj/machinery/shuttle_scrambler,
 /obj/structure/extinguisher_cabinet/directional/north,
 /obj/effect/turf_decal/trimline/yellow/warning{
 	dir = 5
 	},
+/obj/structure/table/reinforced,
+/obj/machinery/recharger,
+/obj/machinery/newscaster/directional/east,
 /turf/open/floor/iron/dark/brown/corner{
 	dir = 8
 	},
@@ -2987,10 +2993,10 @@
 	},
 /obj/structure/closet/crate/secure/weapon,
 /obj/item/storage/backpack/duffelbag/syndie/nri,
-/obj/item/grenade/c4/x4,
-/obj/item/grenade/c4/x4,
-/obj/item/grenade/c4/x4,
 /obj/effect/turf_decal/delivery,
+/obj/item/grenade/c4,
+/obj/item/grenade/c4,
+/obj/item/grenade/c4,
 /turf/open/floor/iron/dark/brown/side,
 /area/shuttle/syndicate/slaver)
 "YL" = (
