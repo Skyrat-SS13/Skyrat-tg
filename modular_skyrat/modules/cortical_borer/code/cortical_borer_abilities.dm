@@ -7,11 +7,11 @@
 	cooldown_time = 1 SECONDS
 
 /datum/action/cooldown/borer/Trigger(trigger_flags, atom/target)
-	..()
+	. = ..()
 	if(!iscorticalborer(owner))
 		to_chat(owner, span_warning("You must be a cortical borer to use this action!"))
 		return FALSE
-	return TRUE
+	return . == FALSE ? FALSE : TRUE //. can be null, true, or false. There's a difference between null and false here
 
 //inject chemicals into your host
 /datum/action/cooldown/borer/inject_chemical
