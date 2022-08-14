@@ -869,6 +869,8 @@
 		cortical_owner.human_host.adjustOxyLoss(-(cortical_owner.human_host.getOxyLoss()*0.5))
 	if(cortical_owner.human_host.blood_volume < BLOOD_VOLUME_BAD)
 		cortical_owner.human_host.blood_volume = BLOOD_VOLUME_BAD
+	for(var/obj/item/organ/internal/internal_target in cortical_owner.human_host.internal_organs)
+		internal_target.applyOrganDamage(-internal_target.damage * 0.5)
 	cortical_owner.human_host.revive()
 	to_chat(cortical_owner.human_host, span_boldwarning("Your heart jumpstarts!"))
 	owner.balloon_alert(owner, "host revived")
