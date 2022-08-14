@@ -260,7 +260,11 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 
 	//cant do anything if the host has sugar
 	if(host_sugar())
-		return
+		if(!has_status_effect(/datum/status_effect/borer_sugar))
+			apply_status_effect(/datum/status_effect/borer_sugar)
+	else
+		if(has_status_effect(/datum/status_effect/borer_sugar))
+			remove_status_effect(/datum/status_effect/borer_sugar)
 
 	//this is regenerating chemical_storage
 	if(chemical_storage < max_chemical_storage)
