@@ -99,7 +99,7 @@
 	if(reagent_forging)
 		. += span_warning("[src] has a red tinge, it is ready to imbue chemicals into reagent objects.")
 
-/obj/structure/reagent_forge/Initialize()
+/obj/structure/reagent_forge/Initialize(mapload)
 	. = ..()
 	START_PROCESSING(SSobj, src)
 	if(is_mining_level(z))

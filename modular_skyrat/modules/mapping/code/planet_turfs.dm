@@ -65,7 +65,7 @@
 	anchored = TRUE
 	vis_flags = NONE
 
-/turf/open/misc/asteroid/snow/indestructible/overlay/Initialize()
+/turf/open/misc/asteroid/snow/indestructible/overlay/Initialize(mapload)
 	..()
 	vis_contents += snow_overlay
 */

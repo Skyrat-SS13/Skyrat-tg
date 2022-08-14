@@ -84,7 +84,7 @@
 	icon_state = "cent_headset_alt"
 	inhand_icon_state = "cent_headset_alt"
 
-/obj/item/radio/headset/heads/nanotrasen_consultant/alt/ComponentInitialize()
+/obj/item/radio/headset/heads/nanotrasen_consultant/alt/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/wearertargeting/earprotection, list(ITEM_SLOT_EARS))
 
