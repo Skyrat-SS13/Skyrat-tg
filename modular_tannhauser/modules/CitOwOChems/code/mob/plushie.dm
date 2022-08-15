@@ -30,7 +30,7 @@
 	minbodytemp = 0
 	pressure_resistance = 200
 
-/mob/living/simple_animal/pet/plushie/ComponentInitialize()
+/mob/living/simple_animal/pet/plushie/Initialize()
 	. = ..()
 //	AddElement(/datum/element/mob_holder, "plushie")
 

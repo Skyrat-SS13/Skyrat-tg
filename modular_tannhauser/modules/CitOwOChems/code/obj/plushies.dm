@@ -31,10 +31,12 @@ GLOBAL_LIST_INIT(valid_plushie_paths, valid_plushie_paths())
 
 //Overrides parent proc
 /obj/item/toy/plush/plushling/attack_self(mob/user)
-	if(!user) //hmmmmm
-		return
+	. = ..()
+	user.changeNext_move(CLICK_CD_MELEE) // To avoid spam, in some cases (sadly not all of them)
+	var/mob/living/living_user = user
+	if(istype(living_user))
+		living_user.add_mood_event("plush_bite", /datum/mood_event/plush_bite)
 	to_chat(user, "<span class='warning'>You try to pet the plushie, but recoil as it bites your hand instead! OW!</span>")
-	SEND_SIGNAL(user, COMSIG_ADD_MOOD_EVENT,"plush_bite", /datum/mood_event/plush_bite)
 	var/mob/living/carbon/human/H = user
 	if(!H)
 		return //Type safety.
