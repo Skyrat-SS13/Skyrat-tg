@@ -58,7 +58,7 @@
 	if(do_after(hooman, HAS_TRAIT(hooman, TRAIT_RIGGER) ? 2 SECONDS : 10 SECONDS, target = src))
 		dropped(user)
 
-/obj/item/clothing/under/shibari/ComponentInitialize()
+/obj/item/clothing/under/shibari/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/update_icon_updates_onmob)
 
