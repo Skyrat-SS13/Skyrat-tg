@@ -95,16 +95,12 @@
 // Initializing stuff
 /obj/item/clothing/mask/gas/bdsm_mask/Initialize(mapload)
 	. = ..()
+	AddElement(/datum/element/update_icon_updates_onmob)
 	update_icon_state()
 	update_icon()
 	update_action_buttons_icons()
 	if(!length(mask_designs))
 		populate_mask_designs()
-
-// To update icon by magic
-/obj/item/clothing/mask/gas/bdsm_mask/ComponentInitialize()
-	. = ..()
-	AddElement(/datum/element/update_icon_updates_onmob)
 
 // To update icon state properly
 /obj/item/clothing/mask/gas/bdsm_mask/update_icon_state()

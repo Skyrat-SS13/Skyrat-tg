@@ -77,11 +77,6 @@
 		"weak" = image (icon = src.icon, icon_state = "leather_whip_pink_weak"),
 		"hard" = image(icon = src.icon, icon_state = "leather_crotch_pink_hard"))
 
-//to update model lol
-/obj/item/clothing/mask/leatherwhip/ComponentInitialize()
-	. = ..()
-	AddElement(/datum/element/update_icon_updates_onmob)
-
 /obj/item/clothing/mask/leatherwhip/equipped(mob/target, slot)
 	. = ..()
 
@@ -131,6 +126,7 @@
 
 /obj/item/clothing/mask/leatherwhip/Initialize(mapload)
 	. = ..()
+	AddElement(/datum/element/update_icon_updates_onmob)
 	update_icon_state()
 	update_icon()
 	if(!length(whip_designs))

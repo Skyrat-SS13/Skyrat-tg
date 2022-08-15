@@ -395,7 +395,7 @@
 		//SKYRAT EDIT ADDITION BEGIN - CHEMISTRY QOL
 		if("custom_amount")
 			if(!beaker)
-				to_chat(usr, "<span class ='notice'>Insert a container first!</span>")
+				to_chat(usr, span_warning("Insert a container first!"))
 				return
 			if(customTransferAmount)
 				transferAmounts -= customTransferAmount

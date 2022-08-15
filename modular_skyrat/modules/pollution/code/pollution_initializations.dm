@@ -22,14 +22,14 @@
 	. = ..()
 	AddElement(/datum/element/pollution_emitter, /datum/pollutant/decaying_waste, 30)
 
-/obj/item/reagent_containers/food/drinks/coffee/ComponentInitialize()
+/obj/item/reagent_containers/food/drinks/coffee/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/temporary_pollution_emission, /datum/pollutant/food/coffee, 5, 3 MINUTES)
 
-/obj/item/reagent_containers/food/drinks/mug/tea/ComponentInitialize()
+/obj/item/reagent_containers/food/drinks/mug/tea/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/temporary_pollution_emission, /datum/pollutant/food/tea, 5, 3 MINUTES)
 
-/obj/item/reagent_containers/food/drinks/mug/coco/ComponentInitialize()
+/obj/item/reagent_containers/food/drinks/mug/coco/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/temporary_pollution_emission, /datum/pollutant/food/chocolate, 5, 3 MINUTES)
