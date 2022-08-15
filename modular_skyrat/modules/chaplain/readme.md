@@ -4,6 +4,7 @@ MODULE ID: chaplain
 
 ### Description:
 
+PR 15652
 Adds nun outfit, also adds it to the loadout module marked Chaplain module addition
 
 ### TG Proc Changes:
