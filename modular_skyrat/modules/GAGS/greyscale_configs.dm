@@ -515,6 +515,15 @@
 	name = "Worn Jean Skirt - Digitigrade"
 	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/skirts_dresses_digi.dmi'
 
+/datum/greyscale_config/shortdress
+	name = "Short Dress"
+	icon_file = 'modular_skyrat/master_files/icons/obj/clothing/under/skirts_dresses.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/pants_shorts_skirts_dresses/shortdress.json'
+
+/datum/greyscale_config/shortdress/worn
+	name = "Worn Short Dress"
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/skirts_dresses.dmi'
+
 /datum/greyscale_config/strapless_dress
 	name = "Strapless Dress"
 	icon_file = 'modular_skyrat/master_files/icons/obj/clothing/under/skirts_dresses.dmi'
