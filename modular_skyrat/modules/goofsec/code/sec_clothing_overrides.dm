@@ -105,10 +105,6 @@
 		),
 	)
 
-/obj/item/storage/belt/security/Initialize()
-	. = ..()
-	create_storage(type = /datum/storage/security)
-
 /obj/item/storage/belt/security/webbing
 	uses_advanced_reskins = FALSE
 	unique_reskin = NONE
@@ -125,6 +121,16 @@
 	var/atom/resolve_parent = parent?.resolve()
 	if(!resolve_parent)
 		return
+	if(isobserver(user))
+		show_contents(user)
+		return
+
+	if(!user.CanReach(resolve_parent))
+		resolve_parent.balloon_alert(user, "can't reach!")
+		return FALSE
+
+	if(!isliving(user) || user.incapacitated())
+		return FALSE
 
 	var/obj/item/gun/gun_to_draw = locate() in real_location?.resolve()
 	if(!gun_to_draw)

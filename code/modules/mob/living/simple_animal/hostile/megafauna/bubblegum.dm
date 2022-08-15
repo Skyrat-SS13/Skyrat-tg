@@ -84,7 +84,7 @@ Difficulty: Hard
 	/// Blood warp ability
 	var/datum/action/cooldown/mob_cooldown/blood_warp/blood_warp
 
-/mob/living/simple_animal/hostile/megafauna/bubblegum/Initialize()
+/mob/living/simple_animal/hostile/megafauna/bubblegum/Initialize(mapload)
 	. = ..()
 	ADD_TRAIT(src, TRAIT_NO_FLOATING_ANIM, INNATE_TRAIT)
 	triple_charge = new /datum/action/cooldown/mob_cooldown/charge/triple_charge()
@@ -228,7 +228,11 @@ Difficulty: Hard
 				addtimer(CALLBACK(src, .proc/devour, L), 2)
 	SLEEP_CHECK_DEATH(1, src)
 
-
+/mob/living/simple_animal/hostile/megafauna/bubblegum/devour(mob/living/yummy_food)
+	. = ..()
+	if(. == TRUE) // a corpse was devoured
+		// bubblegum bubblegum in a dish, how many corpses do you wish?
+		new /obj/item/food/bubblegum/bubblegum(loc)
 
 /mob/living/simple_animal/hostile/megafauna/bubblegum/proc/be_aggressive()
 	if(BUBBLEGUM_IS_ENRAGED)
@@ -326,7 +330,7 @@ Difficulty: Hard
 	true_spawn = FALSE
 	var/move_through_mob
 
-/mob/living/simple_animal/hostile/megafauna/bubblegum/hallucination/Initialize()
+/mob/living/simple_animal/hostile/megafauna/bubblegum/hallucination/Initialize(mapload)
 	. = ..()
 	toggle_ai(AI_OFF)
 

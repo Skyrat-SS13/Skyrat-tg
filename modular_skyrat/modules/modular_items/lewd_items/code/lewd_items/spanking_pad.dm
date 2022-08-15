@@ -20,10 +20,6 @@
 		"pink" = image (icon = src.icon, icon_state = "spankpad_pink"),
 		"teal" = image(icon = src.icon, icon_state = "spankpad_teal"))
 
-/obj/item/spanking_pad/ComponentInitialize()
-	. = ..()
-	AddElement(/datum/element/update_icon_updates_onmob)
-
 /// A check to ensure the user can use the radial menu
 /obj/item/spanking_pad/proc/check_menu(mob/living/user)
 	if(!istype(user))
@@ -32,8 +28,9 @@
 		return FALSE
 	return TRUE
 
-/obj/item/spanking_pad/Initialize()
+/obj/item/spanking_pad/Initialize(mapload)
 	. = ..()
+	AddElement(/datum/element/update_icon_updates_onmob)
 	update_icon()
 	update_icon_state()
 	if(!length(spankpad_designs))
@@ -79,7 +76,7 @@
 			target.adjustPain(4)
 			target.apply_status_effect(/datum/status_effect/spanked)
 			if(HAS_TRAIT(target, TRAIT_MASOCHISM || TRAIT_BIMBO))
-				SEND_SIGNAL(target, COMSIG_ADD_MOOD_EVENT, "pervert spanked", /datum/mood_event/perv_spanked)
+				target.add_mood_event("pervert spanked", /datum/mood_event/perv_spanked)
 			if(prob(10) && (target.stat != DEAD))
 				target.apply_status_effect(/datum/status_effect/subspace)
 			user.visible_message(span_purple("[user] [message]!"))

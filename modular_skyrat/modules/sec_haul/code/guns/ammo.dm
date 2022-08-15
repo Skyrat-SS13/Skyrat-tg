@@ -146,7 +146,7 @@
 	var/base_name = ""
 	var/list/possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_HOLLOWPOINT, AMMO_TYPE_RUBBER, AMMO_TYPE_IHDF)
 
-/obj/item/ammo_box/magazine/multi_sprite/Initialize()
+/obj/item/ammo_box/magazine/multi_sprite/Initialize(mapload)
 	. = ..()
 	base_name = name
 	name = "[base_name] [round_type]"

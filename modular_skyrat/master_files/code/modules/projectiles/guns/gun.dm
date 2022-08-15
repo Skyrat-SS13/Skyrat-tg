@@ -98,7 +98,7 @@
 	else
 		..()
 
-/obj/item/gun/Initialize()
+/obj/item/gun/Initialize(mapload)
 	. = ..()
 	if(pin && !pinless)
 		pin = new pin(src)
@@ -125,9 +125,6 @@
 		firemode_action.UpdateButtons()
 		add_item_action(firemode_action)
 
-
-/obj/item/gun/ComponentInitialize()
-	. = ..()
 	if(SELECT_FULLY_AUTOMATIC in fire_select_modes)
 		AddComponent(/datum/component/automatic_fire, fire_delay)
 
@@ -266,7 +263,7 @@
 	return TRUE
 
 /obj/item/gun/proc/tk_firing(mob/living/user)
-	return loc != user ? TRUE : FALSE
+	return !user.contains(src)
 
 /obj/item/gun/proc/shoot_with_empty_chamber(mob/living/user as mob|obj)
 	balloon_alert(user, "*click*")

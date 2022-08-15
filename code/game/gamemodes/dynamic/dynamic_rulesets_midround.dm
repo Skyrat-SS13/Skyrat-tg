@@ -37,7 +37,7 @@
 	if (required_candidates <= dead_count)
 		return TRUE
 
-	log_game("DYNAMIC: FAIL: [src], a from_ghosts ruleset, did not have enough dead candidates: [required_candidates] needed, [dead_count] found")
+	log_dynamic("FAIL: [src], a from_ghosts ruleset, did not have enough dead candidates: [required_candidates] needed, [dead_count] found")
 
 	return FALSE
 
@@ -105,7 +105,7 @@
 	var/threat = round(mode.threat_level/10)
 
 	if (job_check < required_enemies[threat])
-		log_game("DYNAMIC: FAIL: [src] is not ready, because there are not enough enemies: [required_enemies[threat]] needed, [job_check] found")
+		log_dynamic("FAIL: [src] is not ready, because there are not enough enemies: [required_enemies[threat]] needed, [job_check] found")
 		return FALSE
 
 	return TRUE
@@ -126,7 +126,7 @@
 		message_admins("Possible volunteers was 0. This shouldn't appear, because of ready(), unless you forced it!")
 		return
 	message_admins("Polling [possible_volunteers.len] players to apply for the [name] ruleset.")
-	log_game("DYNAMIC: Polling [possible_volunteers.len] players to apply for the [name] ruleset.")
+	log_dynamic("Polling [possible_volunteers.len] players to apply for the [name] ruleset.")
 
 	candidates = poll_ghost_candidates("The mode is looking for volunteers to become [antag_flag] for [name]", antag_flag_override, antag_flag || antag_flag_override, poll_time = 300)
 
@@ -137,7 +137,7 @@
 		return
 
 	message_admins("[candidates.len] players volunteered for the ruleset [name].")
-	log_game("DYNAMIC: [candidates.len] players volunteered for [name].")
+	log_dynamic("[candidates.len] players volunteered for [name].")
 	review_applications()
 
 /// Here is where you can check if your ghost applicants are valid for the ruleset.
@@ -157,18 +157,22 @@
 			else // Not dead? Disregard them, pick a new applicant
 				i--
 				continue
-
 		if(!applicant)
 			i--
 			continue
-
-		var/mob/new_character = applicant
-
-		if (makeBody)
-			new_character = generate_ruleset_body(applicant)
-
-		finish_setup(new_character, i)
 		assigned += applicant
+	finish_applications()
+
+/// Here the accepted applications get generated bodies and their setup is finished.
+/// Called by review_applications()
+/datum/dynamic_ruleset/midround/from_ghosts/proc/finish_applications()
+	var/i = 0
+	for(var/mob/applicant as anything in assigned)
+		i++
+		var/mob/new_character = applicant
+		if(makeBody)
+			new_character = generate_ruleset_body(applicant)
+		finish_setup(new_character, i)
 		notify_ghosts("[applicant.name] has been picked for the ruleset [name]!", source = new_character, action = NOTIFY_ORBIT, header="Something Interesting!")
 
 /datum/dynamic_ruleset/midround/from_ghosts/proc/generate_ruleset_body(mob/applicant)
@@ -240,7 +244,7 @@
 
 /datum/dynamic_ruleset/midround/autotraitor/ready(forced = FALSE)
 	if (required_candidates > living_players.len)
-		log_game("DYNAMIC: FAIL: [src] does not have enough candidates, using living_players ([required_candidates] needed, [living_players.len] found)")
+		log_dynamic("FAIL: [src] does not have enough candidates, using living_players ([required_candidates] needed, [living_players.len] found)")
 		return FALSE
 	return ..()
 
@@ -251,7 +255,7 @@
 	var/datum/antagonist/traitor/newTraitor = new
 	M.mind.add_antag_datum(newTraitor)
 	message_admins("[ADMIN_LOOKUPFLW(M)] was selected by the [name] ruleset and has been made into a midround traitor.")
-	log_game("DYNAMIC: [key_name(M)] was selected by the [name] ruleset and has been made into a midround traitor.")
+	log_dynamic("[key_name(M)] was selected by the [name] ruleset and has been made into a midround traitor.")
 	return TRUE
 
 
@@ -381,6 +385,7 @@
 	minimum_round_time = 70 MINUTES
 	requirements = REQUIREMENTS_VERY_HIGH_THREAT_NEEDED
 	var/list/operative_cap = list(2,2,3,3,4,5,5,5,5,5)
+	/// The nuke ops team datum.
 	var/datum/team/nuclear/nuke_team
 	flags = HIGH_IMPACT_RULESET
 
@@ -396,15 +401,22 @@
 		return FALSE
 	return ..()
 
+/datum/dynamic_ruleset/midround/from_ghosts/nuclear/finish_applications()
+	var/mob/leader = get_most_experienced(assigned, ROLE_NUCLEAR_OPERATIVE)
+	if(leader)
+		assigned.Remove(leader)
+		assigned.Insert(1, leader)
+	return ..()
+
 /datum/dynamic_ruleset/midround/from_ghosts/nuclear/finish_setup(mob/new_character, index)
 	new_character.mind.set_assigned_role(SSjob.GetJobType(/datum/job/nuclear_operative))
 	new_character.mind.special_role = ROLE_NUCLEAR_OPERATIVE
-	if (index == 1) // Our first guy is the leader
-		var/datum/antagonist/nukeop/leader/new_role = new
-		nuke_team = new_role.nuke_team
-		new_character.mind.add_antag_datum(new_role)
-	else
-		return ..()
+	if(index == 1)
+		var/datum/antagonist/nukeop/leader/leader_antag_datum = new()
+		nuke_team = leader_antag_datum.nuke_team
+		new_character.mind.add_antag_datum(leader_antag_datum)
+		return
+	return ..()
 
 //////////////////////////////////////////////
 //                                          //
@@ -539,7 +551,7 @@
 	new_xeno.key = applicant.key
 	new_xeno.move_into_vent(vent)
 	message_admins("[ADMIN_LOOKUPFLW(new_xeno)] has been made into an alien by the midround ruleset.")
-	log_game("DYNAMIC: [key_name(new_xeno)] was spawned as an alien by the midround ruleset.")
+	log_dynamic("[key_name(new_xeno)] was spawned as an alien by the midround ruleset.")
 	return new_xeno
 
 //////////////////////////////////////////////
@@ -591,7 +603,7 @@
 
 	playsound(S, 'sound/magic/ethereal_exit.ogg', 50, TRUE, -1)
 	message_admins("[ADMIN_LOOKUPFLW(S)] has been made into a Nightmare by the midround ruleset.")
-	log_game("DYNAMIC: [key_name(S)] was spawned as a Nightmare by the midround ruleset.")
+	log_dynamic("[key_name(S)] was spawned as a Nightmare by the midround ruleset.")
 	return S
 
 //////////////////////////////////////////////
@@ -640,7 +652,7 @@
 
 	playsound(S, 'sound/magic/ethereal_exit.ogg', 50, TRUE, -1)
 	message_admins("[ADMIN_LOOKUPFLW(S)] has been made into a Space Dragon by the midround ruleset.")
-	log_game("DYNAMIC: [key_name(S)] was spawned as a Space Dragon by the midround ruleset.")
+	log_dynamic("[key_name(S)] was spawned as a Space Dragon by the midround ruleset.")
 	priority_announce("A large organic energy flux has been recorded near of [station_name()], please stand-by.", "Lifesign Alert")
 	return S
 
@@ -731,7 +743,7 @@
 	ninja.mind.add_antag_datum(/datum/antagonist/ninja)
 
 	message_admins("[ADMIN_LOOKUPFLW(ninja)] has been made into a Space Ninja by the midround ruleset.")
-	log_game("DYNAMIC: [key_name(ninja)] was spawned as a Space Ninja by the midround ruleset.")
+	log_dynamic("[key_name(ninja)] was spawned as a Space Ninja by the midround ruleset.")
 	return ninja
 
 //////////////////////////////////////////////

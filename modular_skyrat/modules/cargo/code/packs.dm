@@ -150,16 +150,6 @@
 *	ENGINEERING
 */
 
-/datum/supply_pack/engineering/industrial_rcd
-	name = "Industrial RCD Crate"
-	desc = "Manufactured at a high-tech NT production facility, this pack contains 2 industrial RCDs with expanded matter reserves and upgraded deconstructors. Requires CE Access to open."
-	access = ACCESS_CE //These contain all upgrades and ~2.5x as much matter. The least we can do is lock it behind CE.
-	contains = list(/obj/item/construction/rcd/combat,
-					/obj/item/construction/rcd/combat)
-	cost = CARGO_CRATE_VALUE * 40
-	crate_name = "industrial RCD crate"
-	crate_type = /obj/structure/closet/crate/secure/engineering
-
 /datum/supply_pack/engineering/material_pouches
 	name = "Material Pouches Crate"
 	desc = "Contains three material pouches."
@@ -285,22 +275,6 @@
 					/obj/item/storage/fancy/candle_box,
 					/obj/item/storage/box/matches)
 	crate_name = "candle crate"
-
-/*
-/datum/supply_pack/misc/jukebox
-	name = "Jukebox Crate"
-	desc = "Contains a regular old jukebox. It can play music!"
-	cost = CARGO_CRATE_VALUE * 20
-	contains = list(/obj/machinery/jukebox)
-	crate_name = "jukebox crate"
-
-/datum/supply_pack/misc/jukebox_disco
-	name = "Radiant Dance Machine Crate"
-	desc = "Contains the new and improved Radiant Dance Machine Mark IV! Capable of playing a large selections of music, while projecting a fabulous lightshow."
-	cost = CARGO_CRATE_VALUE * 50
-	contains = list(/obj/machinery/jukebox/disco)
-	crate_name = "dance machine crate"
-*/
 
 
 /datum/supply_pack/service/snowmobile
@@ -615,23 +589,29 @@
 		new /obj/item/grown/log(.)
 
 /datum/supply_pack/security/armory/russian
+	name = "Imperial Surplus Crate"
+	desc = "Good time of the day Mister Comrade! We have the most modern imperial military equipment our shop can offer, for the right price of course. Sadly, all our equipment is military-grade and mostly armored so we would kindly ask you not to show it off too much."
+	contraband = TRUE
 	cost = CARGO_CRATE_VALUE * 15
 	contains = list(/obj/item/storage/box/nri_rations,
 					/obj/item/storage/box/nri_rations,
 					/obj/item/storage/box/nri_rations,
+					/obj/item/crucifix,
+					/obj/item/crucifix,
+					/obj/item/crucifix,
 					/obj/item/storage/toolbox/ammo,
 					/obj/item/storage/toolbox/maint_kit,
 					/obj/item/clothing/suit/armor/vest/russian,
 					/obj/item/clothing/head/helmet/rus_helmet,
+					/obj/item/storage/backpack/nri,
 					/obj/item/storage/belt/military/nri,
 					/obj/item/clothing/gloves/tackler/combat,
 					/obj/item/clothing/under/costume/nri,
 					/obj/item/clothing/mask/gas/hecu2,
 					/obj/item/clothing/shoes/combat,
-					/obj/item/clothing/mask/russian_balaclava,
-					/obj/item/ammo_box/a762,
 					/obj/item/gun/ballistic/rifle/boltaction,
+					/obj/item/ammo_box/a762,
 					/obj/item/gun/ballistic/automatic/plastikov,
 					/obj/item/ammo_box/magazine/plastikov9mm,
-					/obj/item/gun/ballistic/automatic/pistol/ladon/nri,
-					/obj/item/ammo_box/magazine/m9mm_aps)
+					/obj/item/gun/ballistic/automatic/pistol,
+					/obj/item/ammo_box/magazine/m9mm)

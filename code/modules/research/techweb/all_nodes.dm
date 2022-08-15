@@ -292,7 +292,6 @@
 		"comp_ntnet_send",
 		"comp_pinpointer",
 		"comp_pressuresensor",
-		"comp_printer",
 		"comp_radio",
 		"comp_random",
 		"comp_reagents",
@@ -341,7 +340,6 @@
 		//SKYRAT EDIT - END
 		"chem_master",
 		"chem_pack",
-		"crewpinpointerprox",
 		"defibmount",
 		"defibrillator",
 		"genescanner",

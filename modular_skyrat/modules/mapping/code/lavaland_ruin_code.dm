@@ -34,7 +34,7 @@
 	return ..()
 
 /datum/outfit/lavaland_syndicate/ice
-	uniform = /obj/item/clothing/under/syndicate
+	uniform = /obj/item/clothing/under/syndicate/skyrat/tactical
 	suit = /obj/item/clothing/suit/hooded/wintercoat/syndicate
 	ears = /obj/item/radio/headset/interdyne
 
@@ -78,7 +78,7 @@
 
 /datum/outfit/lavaland_syndicate/shaftminer/ice
 	name = "Icemoon Syndicate Shaft Miner"
-	uniform = /obj/item/clothing/under/syndicate
+	uniform = /obj/item/clothing/under/syndicate/skyrat/tactical
 	suit = /obj/item/clothing/suit/hooded/wintercoat/syndicate
 
 //ITEMS
@@ -91,22 +91,14 @@
 	radiosound = 'modular_skyrat/modules/radiosound/sound/radio/syndie.ogg'
 	keyslot = new /obj/item/encryptionkey/headset_interdyne
 
-/obj/item/radio/headset/interdyne/ComponentInitialize()
+/obj/item/radio/headset/interdyne/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/wearertargeting/earprotection, list(ITEM_SLOT_EARS))
 
 /obj/item/radio/headset/interdyne/command
 	name = "interdyne command headset"
 	desc = "A commanding headset to gather your underlings. Protects the ears from flashbangs."
-	icon_state = "syndie_headset"
-	inhand_icon_state = "syndie_headset"
-	radiosound = 'modular_skyrat/modules/radiosound/sound/radio/syndie.ogg'
-	keyslot = new /obj/item/encryptionkey/headset_interdyne
 	command = TRUE
-
-/obj/item/radio/headset/interdyne/command/ComponentInitialize()
-	. = ..()
-	AddComponent(/datum/component/wearertargeting/earprotection, list(ITEM_SLOT_EARS))
 
 /obj/item/radio/headset/interdyne/comms
 	keyslot = new /obj/item/encryptionkey/headset_interdyne

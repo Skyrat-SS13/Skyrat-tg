@@ -19,7 +19,7 @@
 	. = ..()
 	. += span_notice("Ctrl-Shift-Click to reskin this")
 
-/obj/item/storage/hypospraykit/Initialize()
+/obj/item/storage/hypospraykit/Initialize(mapload)
 	. = ..()
 	if(!length(case_designs))
 		populate_case_designs()

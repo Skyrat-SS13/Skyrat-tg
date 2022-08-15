@@ -20,12 +20,9 @@
 	if(!isinhands)
 		. += clamps_overlay
 
-/obj/item/clothing/sextoy/nipple_clamps/ComponentInitialize()
+/obj/item/clothing/sextoy/nipple_clamps/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/update_icon_updates_onmob)
-
-/obj/item/clothing/sextoy/nipple_clamps/Initialize()
-	. = ..()
 
 	update_icon_state()
 
