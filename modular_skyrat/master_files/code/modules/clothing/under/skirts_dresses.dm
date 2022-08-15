@@ -13,7 +13,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/skirts_dresses.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/skirts_dresses.dmi'
 
-//TG's icons only have a dress.dmi, but that means its not ABC-sorted beside shorts_pants.dmi. So its skirts_dresses for us.
+//TG's icons only have a dress.dmi, but that means its not ABC-sorted to be beside shorts_pants_shirts.dmi. So its skirts_dresses for us.
 
 /*
 *	Skirts
