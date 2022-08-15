@@ -1,7 +1,7 @@
 /obj/item/clothing/under/dress
 	body_parts_covered = CHEST|GROIN	//For reference
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY //For reference - We dont want to cut a random hole in dresses
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON	//For reference - keep in mind some dresses will need adjusted for digi thighs
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON	//For reference - keep in mind some dresses will need adjusted for digi thighs - hence the link below
 	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/under/skirts_dresses_digi.dmi'
 	//God bless the skirt being a subtype of the dress, only need one worn_digi_icon definition
 
@@ -14,6 +14,15 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/skirts_dresses.dmi'
 
 //TG's icons only have a dress.dmi, but that means its not ABC-sorted to be beside shorts_pants_shirts.dmi. So its skirts_dresses for us.
+
+/*
+*	TG DIGI VERSION DRESSES
+*/
+/obj/item/clothing/under/dress/striped
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
+
+/obj/item/clothing/under/dress/skirt/plaid
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
 
 /*
 *	Skirts
@@ -32,7 +41,7 @@
 	icon_state = "lone_skirt"
 	body_parts_covered = GROIN
 	greyscale_config = /datum/greyscale_config/loneskirt
-	greyscale_config_worn = /datum/greyscale_config/loneskirt_worn
+	greyscale_config_worn = /datum/greyscale_config/loneskirt/worn
 	greyscale_colors = "#5f534a"
 	flags_1 = IS_PLAYER_COLORABLE_1
 //End Topless
@@ -42,7 +51,7 @@
 	icon_state = "turtleskirt_knit"
 	custom_price = PAYCHECK_CREW
 	greyscale_config = /datum/greyscale_config/turtleskirt_knit
-	greyscale_config_worn = /datum/greyscale_config/turtleskirt_knit_worn
+	greyscale_config_worn = /datum/greyscale_config/turtleskirt_knit/worn
 	greyscale_colors = "#cc0000#5f5f5f"
 	flags_1 = IS_PLAYER_COLORABLE_1
 
@@ -51,9 +60,10 @@
 	desc = "Technically, is there much difference between these and jorts? It's just one big hole instead of two. Does that make this a jirt?"
 	icon_state = "jeanskirt"
 	female_sprite_flags = NO_FEMALE_UNIFORM
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
 	greyscale_config = /datum/greyscale_config/jeanskirt
-	greyscale_config_worn = /datum/greyscale_config/jeanskirt_worn
-	greyscale_config_worn_digi = /datum/greyscale_config/jeanskirt_worn/digi
+	greyscale_config_worn = /datum/greyscale_config/jeanskirt/worn
+	greyscale_config_worn_digi = /datum/greyscale_config/jeanskirt/worn/digi
 	greyscale_colors = "#787878#723E0E#4D7EAC"
 	flags_1 = IS_PLAYER_COLORABLE_1
 
@@ -90,6 +100,6 @@
 	icon_state = "dress_strapless"
 	body_parts_covered = CHEST|GROIN|LEGS
 	greyscale_config = /datum/greyscale_config/strapless_dress
-	greyscale_config_worn = /datum/greyscale_config/strapless_dress_worn
+	greyscale_config_worn = /datum/greyscale_config/strapless_dress/worn
 	greyscale_colors = "#cc0000#5f5f5f"
 	flags_1 = IS_PLAYER_COLORABLE_1

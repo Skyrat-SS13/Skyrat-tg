@@ -444,12 +444,11 @@
 	icon_file = 'modular_skyrat/master_files/icons/obj/clothing/under/shorts_pants_shirts.dmi'
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/pants_shorts_skirts_dresses/shorts_ripped.json'
 
-/datum/greyscale_config/shorts_ripped_worn
+/datum/greyscale_config/shorts_ripped/worn //TG will hopefully start having worn as a subtype, it means only needing 1 .json
 	name = "Worn Ripped Shorts"
 	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/shorts_pants_shirts.dmi'
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/pants_shorts_skirts_dresses/shorts_ripped_worn.json'
 
-/datum/greyscale_config/shorts_ripped_worn/digi
+/datum/greyscale_config/shorts_ripped/worn/digi
 	name = "Worn Ripped Shorts - Digitigrade"
 	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/shorts_pants_shirts_digi.dmi'
 
@@ -458,12 +457,11 @@
 	icon_file = 'modular_skyrat/master_files/icons/obj/clothing/under/shorts_pants_shirts.dmi'
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/pants_shorts_skirts_dresses/jeans_ripped.json'
 
-/datum/greyscale_config/jeans_ripped_worn
+/datum/greyscale_config/jeans_ripped/worn
 	name = "Worn Ripped Jeans"
 	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/shorts_pants_shirts.dmi'
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/pants_shorts_skirts_dresses/jeans_ripped_worn.json'
 
-/datum/greyscale_config/jeans_ripped_worn/digi
+/datum/greyscale_config/jeans_ripped/worn/digi
 	name = "Worn Ripped Jeans - Digitigrade"
 	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/shorts_pants_shirts_digi.dmi'
 
@@ -472,12 +470,11 @@
 	icon_file = 'modular_skyrat/master_files/icons/obj/clothing/under/shorts_pants_shirts.dmi'
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/pants_shorts_skirts_dresses/yoga_pants.json'
 
-/datum/greyscale_config/yoga_pants_worn
+/datum/greyscale_config/yoga_pants/worn
 	name = "Worn Yoga Pants"
 	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/shorts_pants_shirts.dmi'
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/pants_shorts_skirts_dresses/yoga_pants_worn.json'
 
-/datum/greyscale_config/yoga_pants_worn/digi
+/datum/greyscale_config/yoga_pants/worn/digi
 	name = "Worn Yoga Pants - Digitigrade"
 	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/shorts_pants_shirts_digi.dmi'
 
@@ -492,32 +489,29 @@
 	icon_file = 'modular_skyrat/master_files/icons/obj/clothing/under/skirts_dresses.dmi'
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/pants_shorts_skirts_dresses/lone_skirt.json'
 
-/datum/greyscale_config/loneskirt_worn
+/datum/greyscale_config/loneskirt/worn
 	name = "Worn Skirt"
 	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/skirts_dresses.dmi'
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/pants_shorts_skirts_dresses/lone_skirt_worn.json'
 
 /datum/greyscale_config/turtleskirt_knit
 	name = "Cableknit Skirtleneck"
 	icon_file = 'modular_skyrat/master_files/icons/obj/clothing/under/skirts_dresses.dmi'
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/pants_shorts_skirts_dresses/turtleskirt_knit.json'
 
-/datum/greyscale_config/turtleskirt_knit_worn
+/datum/greyscale_config/turtleskirt_knit/worn
 	name = "Worn Cableknit Skirtleneck"
 	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/skirts_dresses.dmi'
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/pants_shorts_skirts_dresses/turtleskirt_knit_worn.json'
 
 /datum/greyscale_config/jeanskirt
 	name = "Jean Skirt"
 	icon_file = 'modular_skyrat/master_files/icons/obj/clothing/under/skirts_dresses.dmi'
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/pants_shorts_skirts_dresses/jeanskirt.json'
 
-/datum/greyscale_config/jeanskirt_worn
+/datum/greyscale_config/jeanskirt/worn
 	name = "Worn Jean Skirt"
 	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/skirts_dresses.dmi'
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/pants_shorts_skirts_dresses/jeanskirt_worn.json'
 
-/datum/greyscale_config/jeanskirt_worn/digi
+/datum/greyscale_config/jeanskirt/worn/digi
 	name = "Worn Jean Skirt - Digitigrade"
 	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/skirts_dresses_digi.dmi'
 
@@ -526,10 +520,9 @@
 	icon_file = 'modular_skyrat/master_files/icons/obj/clothing/under/skirts_dresses.dmi'
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/pants_shorts_skirts_dresses/strapless_dress.json'
 
-/datum/greyscale_config/strapless_dress_worn
+/datum/greyscale_config/strapless_dress/worn
 	name = "Worn Strapless Dress"
 	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/skirts_dresses.dmi'
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/pants_shorts_skirts_dresses/strapless_dress_worn.json'
 
 // KILT
 

@@ -30,8 +30,8 @@
 	desc = "A nondescript pair of tough jeans, with several rips and tears. The staple pants choice of both rebels and the poor."
 	icon_state = "jeans_ripped"
 	greyscale_config = /datum/greyscale_config/jeans_ripped //These configs are defined in the GAGS module for now; the icons and item will remain in these files.
-	greyscale_config_worn = /datum/greyscale_config/jeans_ripped_worn
-	greyscale_config_worn_digi = /datum/greyscale_config/jeans_ripped_worn/digi
+	greyscale_config_worn = /datum/greyscale_config/jeans_ripped/worn
+	greyscale_config_worn_digi = /datum/greyscale_config/jeans_ripped/worn/digi
 	greyscale_colors = "#787878#723E0E#4D7EAC"
 	flags_1 = IS_PLAYER_COLORABLE_1
 
@@ -40,8 +40,8 @@
 	desc = "Breathable and stretchy, perfect for exercising comfortably!"
 	icon_state = "yoga_pants"
 	greyscale_config = /datum/greyscale_config/yoga_pants //These configs are defined in the GAGS module for now; the icons and item will remain in these files.
-	greyscale_config_worn = /datum/greyscale_config/yoga_pants_worn
-	greyscale_config_worn_digi = /datum/greyscale_config/yoga_pants_worn/digi
+	greyscale_config_worn = /datum/greyscale_config/yoga_pants/worn
+	greyscale_config_worn_digi = /datum/greyscale_config/yoga_pants/worn/digi
 	greyscale_colors = "#3d3d3d" //Having all the configs for a single color feels wrong. This is wrong.
 	flags_1 = IS_PLAYER_COLORABLE_1
 
@@ -63,7 +63,7 @@
 	desc = "A nondescript pair of tough jean shorts, with the ends of the pantlegs frayed and torn. No one will ever know if this was done intentionally."
 	icon_state = "shorts_ripped"
 	greyscale_config = /datum/greyscale_config/shorts_ripped //These configs are defined in the GAGS module for now; the icons and item will remain in these files.
-	greyscale_config_worn = /datum/greyscale_config/shorts_ripped_worn
-	greyscale_config_worn_digi = /datum/greyscale_config/shorts_ripped_worn/digi
+	greyscale_config_worn = /datum/greyscale_config/shorts_ripped/worn
+	greyscale_config_worn_digi = /datum/greyscale_config/shorts_ripped/worn/digi
 	greyscale_colors = "#787878#723E0E#202020"
 	flags_1 = IS_PLAYER_COLORABLE_1
