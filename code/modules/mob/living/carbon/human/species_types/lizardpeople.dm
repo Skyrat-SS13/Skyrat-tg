@@ -71,6 +71,7 @@
 
 	return randname
 
+<<<<<<< HEAD
 //SKYRAT EDIT REMOVAL BEGIN
 /*
 /datum/species/lizard/randomize_main_appearance_element(mob/living/carbon/human/human_mob)
@@ -80,6 +81,12 @@
 	human_mob.update_body()
 */
 //SKYRAT EDIT REMOVAL END
+=======
+
+/datum/species/lizard/randomize_features(mob/living/carbon/human/human_mob)
+	human_mob.dna.features["body_markings"] = pick(GLOB.body_markings_list)
+	randomize_external_organs(human_mob)
+>>>>>>> aa2eee2ded1 (De-hardcodes randomize_human() and fixes some related issues along the way (#68876))
 
 /datum/species/lizard/get_scream_sound(mob/living/carbon/human/lizard)
 	return pick(

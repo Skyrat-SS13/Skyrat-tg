@@ -814,6 +814,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 			return "FRONT"
 		//SKYRAT EDIT ADDITION END
 
+<<<<<<< HEAD
 ///Proc that will randomise the hair, or primary appearance element (i.e. for moths wings) of a species' associated mob
 /datum/species/proc/randomize_main_appearance_element(mob/living/carbon/human/human_mob)
 	//SKYRAT EDIT ADDITION BEGIN
@@ -828,6 +829,8 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	//SKYRAT EDIT ADDITION END
 	human_mob.hairstyle = random_hairstyle(human_mob.gender)
 	human_mob.update_hair(is_creating = TRUE)
+=======
+>>>>>>> aa2eee2ded1 (De-hardcodes randomize_human() and fixes some related issues along the way (#68876))
 
 ///Proc that will randomise the underwear (i.e. top, pants and socks) of a species' associated mob
 /datum/species/proc/randomize_active_underwear(mob/living/carbon/human/human_mob)
@@ -835,6 +838,19 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	human_mob.underwear = random_underwear(human_mob.gender)
 	human_mob.socks = random_socks(human_mob.gender)
 	human_mob.update_body()
+
+///Proc that will randomize all the external organs (i.e. horns, frills, tails etc.) of a species' associated mob
+/datum/species/proc/randomize_external_organs(mob/living/carbon/human/human_mob)
+	for(var/obj/item/organ/external/organ_path as anything in external_organs)
+		var/obj/item/organ/external/randomized_organ = human_mob.getorgan(organ_path)
+		if(randomized_organ)
+			var/new_look = pick(randomized_organ.get_global_feature_list())
+			human_mob.dna.features["[randomized_organ.feature_key]"] = new_look
+			mutant_bodyparts["[randomized_organ.feature_key]"] = new_look
+
+///Proc that randomizes all the appearance elements (external organs, markings, hair etc.) of a species' associated mob. Function set by child procs
+/datum/species/proc/randomize_features(mob/living/carbon/human/human_mob)
+	return
 
 /datum/species/proc/spec_life(mob/living/carbon/human/H, delta_time, times_fired)
 	if(HAS_TRAIT(H, TRAIT_NOBREATH))
