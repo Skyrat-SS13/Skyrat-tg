@@ -37,8 +37,6 @@
 	return list("Make sure you fill out your own custom species lore!")
 
 /datum/species/humanoid/prepare_human_for_preview(mob/living/carbon/human/human)
-
-/datum/species/humanoid/prepare_human_for_preview(mob/living/carbon/human/human)
 	var/main_color = skintone2hex("caucasian1")
 	human.dna.features["mcolor"] = main_color
 	human.dna.features["mcolor2"] = main_color
