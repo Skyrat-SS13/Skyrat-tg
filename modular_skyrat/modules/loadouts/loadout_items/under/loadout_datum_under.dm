@@ -931,3 +931,10 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name  = "Captains Black Uniform"
 	item_path = /obj/item/clothing/under/rank/captain/skyrat/black
 	restricted_roles = list(JOB_CAPTAIN)
+
+// Start Chaplain module addition
+/datum/loadout_item/under/formal/nun
+	name = "Nun robes"
+	item_path = /obj/item/clothing/under/nunrobes
+	restricted_roles = list(JOB_CHAPLAIN)
+// End Chaplain module addition

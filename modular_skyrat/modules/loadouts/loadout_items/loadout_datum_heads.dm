@@ -702,3 +702,10 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 /datum/loadout_item/head/donator/enclaveo
 	name = "Enclave Cap - Officer"
 	item_path = /obj/item/clothing/head/soft/enclaveo
+
+// Start Chaplain module addition
+/datum/loadout_item/head/nun
+	name = "Nun headdress"
+	item_path = /obj/item/clothing/head/nun
+	restricted_roles = list(JOB_CHAPLAIN)
+// End Chaplain module addition
