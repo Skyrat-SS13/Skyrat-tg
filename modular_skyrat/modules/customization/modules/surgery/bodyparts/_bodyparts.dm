@@ -3,6 +3,17 @@
 	/// meaning that you can have one and not the other, both or none, and all will still work. This only
 	/// affects amputation and augmentation surgeries.
 	var/can_be_surgically_removed = TRUE
+	/// The bodypart's currently applied style's name. Only necessary for bodyparts that come in multiple
+	/// variants, like prosthetics and cyborg bodyparts.
+	var/current_style = null
+
+/obj/item/bodypart/generate_icon_key()
+	RETURN_TYPE(/list)
+	. = ..()
+	if(current_style)
+		. += "-[current_style]"
+
+	return .
 
 /**
  * # This should only be ran by augments, if you don't know what you're doing, you shouldn't be touching this.
