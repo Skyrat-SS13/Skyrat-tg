@@ -62,7 +62,7 @@
 	all with a purpose of making sure that their citizens have everything they'd virtually need to be a good taxpayer and a beneficial citizen of the empire. \
 	Still, separating the collegias' functionality, the Industrial's purpose would be to expand and maintain the existing infrastructure; to make sure that the needed electricity and water supplies are provided to the citizens, and so on. \
 	Their another function consists of planning, restructuring and modernising the outdated constructions in accordance with the tightly regulated plans. \
-	A certain amount of workers, however, suffer from a significant lack of qualifications, which sometimes shows up in a form of poorly built infrastucture. \"
+	A certain amount of workers, however, suffer from a significant lack of qualifications, which sometimes shows up in a form of poorly built infrastucture."
 	economic_power = 0.95
 
 /datum/cultural_info/faction/nri/bureaucrat

@@ -32,7 +32,6 @@
 			for(var/datum/cultural_info/culture as anything in subtypesof(cultural_info.type))
 				value = get_ui_data_entry(GLOB.culture_cultures[culture], culture == preferences.culture_culture, TRUE)
 				if(value["selected"])
-					world.log << "Yes [value["name"]]"
 					selected = CHILD_CULTURE_SELECTED
 				sub_cultures += list(value)
 		else if(istype(cultural_info, /datum/cultural_info/location))
