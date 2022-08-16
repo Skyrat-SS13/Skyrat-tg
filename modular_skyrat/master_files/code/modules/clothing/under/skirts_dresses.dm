@@ -70,10 +70,11 @@
 /obj/item/clothing/under/dress/skyrat/shortdress
 	name = "short dress"
 	desc = "An extremely short dress with a lovely sash and flower - only for those with good self-confidence."
+	icon_state = "shortdress"
 	greyscale_config = /datum/greyscale_config/shortdress
 	greyscale_config_worn = /datum/greyscale_config/shortdress/worn
 	greyscale_colors = "#ff3636#363030"
-	icon_state = "shortdress"
+	flags_1 = IS_PLAYER_COLORABLE_1
 
 /obj/item/clothing/under/dress/skyrat/pinktutu
 	name = "pink tutu"
