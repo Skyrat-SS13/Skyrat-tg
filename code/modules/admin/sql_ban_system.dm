@@ -594,7 +594,7 @@
 			"global_ban" = global_ban, // SKYRAT EDIT CHANGE - MULTISERVER
 			"expiration_time" = duration,
 			"applies_to_admins" = applies_to_admins,
-			"reason" = reason,
+			"reason" = note_reason, // SKYRAT EDIT - Discord Ban Reports - ORIGINAL: "reason" = reason,
 			"ckey" = player_ckey || null,
 			"ip" = player_ip || null,
 			"computerid" = player_cid || null,
