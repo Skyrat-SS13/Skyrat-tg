@@ -97,7 +97,6 @@ GLOBAL_PROTECT(admin_verbs_sounds)
 GLOBAL_LIST_INIT(admin_verbs_fun, list(
 	/client/proc/one_click_antag, // SKYRAT EDIT ADDITION - ONE CLICK ANTAG
 	/client/proc/spawn_mob_spawner, // SKYRAT EDIT ADDITION
-	/client/proc/event_panel, // SKYRAT EDIT ADDITION
 	/client/proc/request_more_opfor, //SKYRAT EDIT ADDITION
 	/client/proc/fix_say, // SKYRAT EDIT ADDITION
 	/client/proc/spawn_sunbeam, // SKYRAT EDIT ADDITION

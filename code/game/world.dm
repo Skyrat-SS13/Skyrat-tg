@@ -160,7 +160,6 @@ GLOBAL_VAR(restart_counter)
 	GLOB.world_virus_log = "[GLOB.log_directory]/virus.log"
 
 	GLOB.character_creation_log = "[GLOB.log_directory]/creator.log" // SKYRAT EDIT ADDITION
-	GLOB.event_vote_log = "[GLOB.log_directory]/event_vote.log" // SKYRAT EDIT ADDITION
 
 	GLOB.lua_log = "[GLOB.log_directory]/lua.log"
 
@@ -189,7 +188,6 @@ GLOBAL_VAR(restart_counter)
 	start_log(GLOB.world_pda_log)
 
 	// SKYRAT EDIT ADDITION
-	start_log(GLOB.event_vote_log)
 	start_log(GLOB.character_creation_log)
 	// SKYRAT EDIT END
 
