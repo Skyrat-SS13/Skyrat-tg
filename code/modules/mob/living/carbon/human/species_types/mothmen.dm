@@ -68,7 +68,7 @@
 
 
 /datum/species/moth/randomize_features(mob/living/carbon/human/human_mob)
-	human_mob.dna.features["moth_markings"] = pick(GLOB.moth_markings_list)
+	human_mob.dna.features["moth_markings"] = pick(GLOB.moth_wings_list)
 	randomize_external_organs(human_mob)
 
 /datum/species/moth/get_scream_sound(mob/living/carbon/human/human)

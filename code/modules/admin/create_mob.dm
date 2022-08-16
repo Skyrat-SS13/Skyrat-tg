@@ -26,23 +26,8 @@
 	human.eye_color_left = random_eye_color
 	human.eye_color_right = random_eye_color
 
-	// Mutant randomizing, doesn't affect the mob appearance unless it's the specific mutant.
-	/* SKYRAT EDIT REMOVAL
-	human.dna.features["mcolor"] = "#[random_color()]"
-	human.dna.features["ethcolor"] = GLOB.color_list_ethereal[pick(GLOB.color_list_ethereal)]
-	human.dna.features["tail_cat"] = pick(GLOB.tails_list_human)
-	human.dna.features["tail_lizard"] = pick(GLOB.tails_list_lizard)
-	human.dna.features["snout"] = pick(GLOB.snouts_list)
-	human.dna.features["horns"] = pick(GLOB.horns_list)
-	human.dna.features["frills"] = pick(GLOB.frills_list)
-	human.dna.features["spines"] = pick(GLOB.spines_list)
-	human.dna.features["body_markings"] = pick(GLOB.body_markings_list)
-	human.dna.features["moth_wings"] = pick(GLOB.moth_wings_list)
-	human.dna.features["moth_antennae"] = pick(GLOB.moth_antennae_list)
-	human.dna.features["pod_hair"] = pick(GLOB.pod_hair_list)
-	*/
 	//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
-	human.dna.features = human.dna.species.get_random_features()
+	//human.dna.features = human.dna.species.get_random_features()
 	human.dna.mutant_bodyparts = human.dna.species.get_random_mutant_bodyparts(human.dna.features)
 	human.dna.body_markings = human.dna.species.get_random_body_markings(human.dna.features)
 	human.dna.species.mutant_bodyparts = human.dna.mutant_bodyparts.Copy()

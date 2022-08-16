@@ -83,12 +83,10 @@
 
 	return randname
 
-/datum/species/vox/get_random_features()
-	var/list/returned = MANDATORY_FEATURE_LIST
-	returned["mcolor"] = pick("#77DD88", "#77DDAA", "#77CCDD", "#77DDCC")
-	returned["mcolor2"] = pick("#EEDD88", "#EECC88")
-	returned["mcolor3"] = pick("#222222", "#44EEFF", "#44FFBB", "#8844FF", "#332233")
-	return returned
+/datum/species/vox/randomize_features(mob/living/carbon/human/human_mob)
+	human_mob.dna.features["mcolor"] = pick("#77DD88", "#77DDAA", "#77CCDD", "#77DDCC")
+	human_mob.dna.features["mcolor2"] = pick("#EEDD88", "#EECC88")
+	human_mob.dna.features["mcolor3"] = pick("#222222", "#44EEFF", "#44FFBB", "#8844FF", "#332233")
 
 /datum/species/vox/get_random_body_markings(list/passed_features)
 	var/name = pick(list("Vox", "Vox Hive", "Vox Nightling", "Vox Heart", "Vox Tiger"))
