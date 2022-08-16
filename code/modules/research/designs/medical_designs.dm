@@ -70,7 +70,7 @@
 	materials = list(/datum/material/glass = 2500, /datum/material/plastic = 3000, /datum/material/gold = 1000, /datum/material/titanium = 1000)
 	build_path = /obj/item/reagent_containers/glass/beaker/meta
 	category = list(RND_CATEGORY_MEDICAL_DESIGNS)
-	build_path = /obj/item/reagent_containers/cup/beaker/meta
+	build_path = /obj/item/reagent_containers/glass/beaker/meta
 
 /datum/design/ph_meter
 	name = "Chemical Analyzer"
