@@ -26,9 +26,6 @@
 	human.eye_color_left = random_eye_color
 	human.eye_color_right = random_eye_color
 
-	human.dna.blood_type = random_blood_type()
-<<<<<<< HEAD
-
 	// Mutant randomizing, doesn't affect the mob appearance unless it's the specific mutant.
 	/* SKYRAT EDIT REMOVAL
 	human.dna.features["mcolor"] = "#[random_color()]"
@@ -51,10 +48,10 @@
 	human.dna.species.mutant_bodyparts = human.dna.mutant_bodyparts.Copy()
 	human.dna.species.body_markings = human.dna.body_markings.Copy()
 	//SKYRAT EDIT ADDITION END
-=======
+
+	human.dna.blood_type = random_blood_type()
 	human.dna.features["mcolor"] = "#[random_color()]"
 	human.dna.species.randomize_active_underwear(human)
->>>>>>> aa2eee2ded1 (De-hardcodes randomize_human() and fixes some related issues along the way (#68876))
 
 	for(var/datum/species/species_path as anything in subtypesof(/datum/species))
 		var/datum/species/new_species = new species_path
