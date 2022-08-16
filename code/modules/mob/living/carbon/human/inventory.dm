@@ -125,13 +125,13 @@
 			if(belt)
 				return
 			belt = I
-			update_inv_belt()
+			update_worn_belt()
 		if(ITEM_SLOT_ID)
 			if(wear_id)
 				return
 			wear_id = I
 			sec_hud_set_ID()
-			update_inv_wear_id()
+			update_worn_id()
 		if(ITEM_SLOT_EARS)
 			if(ears)
 				return
@@ -150,11 +150,12 @@
 				clear_fullscreen("nearsighted")
 			if(G.vision_flags || G.darkness_view || G.invis_override || G.invis_view || !isnull(G.lighting_alpha))
 				update_sight()
-			update_inv_glasses()
+			update_worn_glasses()
 		if(ITEM_SLOT_GLOVES)
 			if(gloves)
 				return
 			gloves = I
+<<<<<<< HEAD
 			//SKYRAT EDIT ADDITION - ERP UPDATE
 			if(gloves.breakouttime)
 				ADD_TRAIT(src, TRAIT_RESTRAINED, GLOVES_TRAIT)
@@ -162,11 +163,14 @@
 				update_action_buttons_icon()
 			//SKYRAT EDIT ADDITION END
 			update_inv_gloves()
+=======
+			update_worn_gloves()
+>>>>>>> 2eccf3cea0a (Cleans up update_icons, makes the update_icon_updates_onmob element bespoke, updates CODEOWNERS (#69179))
 		if(ITEM_SLOT_FEET)
 			if(shoes)
 				return
 			shoes = I
-			update_inv_shoes()
+			update_worn_shoes()
 		if(ITEM_SLOT_OCLOTHING)
 			if(wear_suit)
 				return
@@ -174,6 +178,7 @@
 			wear_suit = I
 
 			if(I.flags_inv & HIDEJUMPSUIT)
+<<<<<<< HEAD
 				update_inv_w_uniform()
 			//SKYRAT EDIT ADDITION - ERP UPDATE
 			if(I.flags_inv & HIDESEXTOY)
@@ -182,27 +187,31 @@
 				update_inv_penis()
 				update_inv_nipples()
 			//SKYRAT EDIT ADDITION END
+=======
+				update_worn_undersuit()
+>>>>>>> 2eccf3cea0a (Cleans up update_icons, makes the update_icon_updates_onmob element bespoke, updates CODEOWNERS (#69179))
 			if(wear_suit.breakouttime) //when equipping a straightjacket
 				ADD_TRAIT(src, TRAIT_RESTRAINED, SUIT_TRAIT)
 				stop_pulling() //can't pull if restrained
 				update_action_buttons_icon() //certain action buttons will no longer be usable.
-			update_inv_wear_suit()
+			update_worn_oversuit()
 		if(ITEM_SLOT_ICLOTHING)
 			if(w_uniform)
 				return
 			w_uniform = I
 			update_suit_sensors()
-			update_inv_w_uniform()
+			update_worn_undersuit()
 		if(ITEM_SLOT_LPOCKET)
 			l_store = I
-			update_inv_pockets()
+			update_pockets()
 		if(ITEM_SLOT_RPOCKET)
 			r_store = I
-			update_inv_pockets()
+			update_pockets()
 		if(ITEM_SLOT_SUITSTORE)
 			if(s_store)
 				return
 			s_store = I
+<<<<<<< HEAD
 			update_inv_s_store()
 
 		//SKYRAT EDIT ADDITION BEGIN - ERP_SLOT_SYSTEM
@@ -244,6 +253,9 @@
 
 		//SKYRAT EDIT ADDITION END
 
+=======
+			update_suit_storage()
+>>>>>>> 2eccf3cea0a (Cleans up update_icons, makes the update_icon_updates_onmob element bespoke, updates CODEOWNERS (#69179))
 		else
 			to_chat(src, span_danger("You are trying to equip this item to an unsupported inventory slot. Report this to a coder!"))
 
@@ -280,6 +292,7 @@
 		wear_suit = null
 		if(!QDELETED(src)) //no need to update we're getting deleted anyway
 			if(I.flags_inv & HIDEJUMPSUIT)
+<<<<<<< HEAD
 				update_inv_w_uniform()
 			if(I.flags_inv & HIDESEXTOY)
 				update_inv_anus()
@@ -287,6 +300,10 @@
 				update_inv_penis()
 				update_inv_nipples()
 			update_inv_wear_suit()
+=======
+				update_worn_undersuit()
+			update_worn_oversuit()
+>>>>>>> 2eccf3cea0a (Cleans up update_icons, makes the update_icon_updates_onmob element bespoke, updates CODEOWNERS (#69179))
 	else if(I == w_uniform)
 		if(invdrop)
 			if(r_store)
@@ -300,7 +317,7 @@
 		w_uniform = null
 		update_suit_sensors()
 		if(!QDELETED(src))
-			update_inv_w_uniform()
+			update_worn_undersuit()
 	else if(I == gloves)
 		//SKYRAT EDIT ADDITION - ERP UPDATE
 		if(gloves.breakouttime) //when unequipping a straightjacket
@@ -310,7 +327,7 @@
 		//SKYRAT EDIT ADDITION END
 		gloves = null
 		if(!QDELETED(src))
-			update_inv_gloves()
+			update_worn_gloves()
 	else if(I == glasses)
 		glasses = null
 		var/obj/item/clothing/glasses/G = I
@@ -324,7 +341,7 @@
 		if(G.vision_flags || G.darkness_view || G.invis_override || G.invis_view || !isnull(G.lighting_alpha))
 			update_sight()
 		if(!QDELETED(src))
-			update_inv_glasses()
+			update_worn_glasses()
 	else if(I == ears)
 		ears = null
 		if(!QDELETED(src))
@@ -332,27 +349,28 @@
 	else if(I == shoes)
 		shoes = null
 		if(!QDELETED(src))
-			update_inv_shoes()
+			update_worn_shoes()
 	else if(I == belt)
 		belt = null
 		if(!QDELETED(src))
-			update_inv_belt()
+			update_worn_belt()
 	else if(I == wear_id)
 		wear_id = null
 		sec_hud_set_ID()
 		if(!QDELETED(src))
-			update_inv_wear_id()
+			update_worn_id()
 	else if(I == r_store)
 		r_store = null
 		if(!QDELETED(src))
-			update_inv_pockets()
+			update_pockets()
 	else if(I == l_store)
 		l_store = null
 		if(!QDELETED(src))
-			update_inv_pockets()
+			update_pockets()
 	else if(I == s_store)
 		s_store = null
 		if(!QDELETED(src))
+<<<<<<< HEAD
 			update_inv_s_store()
 
 	//SKYRAT EDIT ADDITION BEGIN - ERP_SLOT_SYSTEM
@@ -374,6 +392,9 @@
 			update_inv_penis()
 	//SKYRAT EDIT ADDITION END
 
+=======
+			update_suit_storage()
+>>>>>>> 2eccf3cea0a (Cleans up update_icons, makes the update_icon_updates_onmob element bespoke, updates CODEOWNERS (#69179))
 	update_equipment_speed_mods()
 
 	// Send a signal for when we unequip an item that used to cover our feet/shoes. Used for bloody feet
@@ -386,7 +407,7 @@
 	if(toggle_off && internal && !getorganslot(ORGAN_SLOT_BREATHING_TUBE))
 		internal = null
 	if(I.flags_inv & HIDEEYES)
-		update_inv_glasses()
+		update_worn_glasses()
 	sec_hud_set_security_status()
 	..()
 
@@ -394,7 +415,7 @@
 	if((I.flags_inv & (HIDEHAIR|HIDEFACIALHAIR)) || forced)
 		update_hair()
 	if(I.flags_inv & HIDEEYES || forced)
-		update_inv_glasses()
+		update_worn_glasses()
 	if(I.flags_inv & HIDEEARS || forced)
 		update_body()
 	sec_hud_set_security_status()
@@ -434,7 +455,7 @@
 			to_chat(src, span_warning("You have no [slot_item_name] to take something out of!"))
 			return
 		if(equip_to_slot_if_possible(thing, slot_type))
-			update_inv_hands()
+			update_held_items()
 		return
 	var/datum/storage/storage = equipped_item.atom_storage
 	if(!storage)

@@ -213,7 +213,7 @@
 
 	if(src && choice && !user.incapacitated() && in_range(user,src))
 		icon_state = options[choice]
-		user.update_inv_wear_mask()
+		user.update_worn_mask()
 		update_action_buttons()
 		to_chat(user, span_notice("Your Clown Mask has now morphed into [choice], all praise the Honkmother!"))
 		return TRUE
@@ -284,8 +284,12 @@
 			icon_state = options[choice]
 		/* SKYRAT ADDITION END
 		icon_state = options[choice]
+<<<<<<< HEAD
 		*/
 		user.update_inv_wear_mask()
+=======
+		user.update_worn_mask()
+>>>>>>> 2eccf3cea0a (Cleans up update_icons, makes the update_icon_updates_onmob element bespoke, updates CODEOWNERS (#69179))
 		update_action_buttons()
 		to_chat(user, span_notice("Your Mime Mask has now morphed into [choice]!"))
 		return TRUE
@@ -373,7 +377,7 @@
 
 	if(src && choice && !M.stat && in_range(M,src))
 		icon_state = options[choice]
-		user.update_inv_wear_mask()
+		user.update_worn_mask()
 		update_action_buttons()
 		to_chat(M, span_notice("The Tiki Mask has now changed into the [choice] Mask!"))
 		return 1
