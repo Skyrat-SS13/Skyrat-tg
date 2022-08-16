@@ -46,6 +46,7 @@
 #define ROLE_BORER "Borer"
 #define ROLE_DRIFTING_CONTRACTOR "Drifting Contractor"
 #define ROLE_MUTANT "Mutated Abomination"
+#define ROLE_SLEEPER_SABOTEUR "Sleeper Saboteur"
 // SKYRAT EDIT END
 
 // Latejoin roles
