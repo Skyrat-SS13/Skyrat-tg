@@ -7,13 +7,8 @@
 	id = "bucket"
 	build_type = AUTOLATHE | PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = 200)
-<<<<<<< HEAD
 	build_path = /obj/item/reagent_containers/glass/bucket
-	category = list("initial","Tools","Tool Designs")
-=======
-	build_path = /obj/item/reagent_containers/cup/bucket
 	category = list(RND_CATEGORY_INITIAL, RND_CATEGORY_TOOLS, RND_CATEGORY_TOOL_DESIGNS)
->>>>>>> 4a0847db525 (Converts all research categories into defines (#69161))
 	departmental_flags = DEPARTMENT_BITFLAG_SERVICE
 
 /datum/design/watering_can
@@ -21,13 +16,8 @@
 	id = "watering_can"
 	build_type = AUTOLATHE | PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = 200)
-<<<<<<< HEAD
 	build_path = /obj/item/reagent_containers/glass/watering_can
-	category = list("initial","Tools","Tool Designs")
-=======
-	build_path = /obj/item/reagent_containers/cup/watering_can
 	category = list(RND_CATEGORY_INITIAL, RND_CATEGORY_TOOLS, RND_CATEGORY_TOOL_DESIGNS)
->>>>>>> 4a0847db525 (Converts all research categories into defines (#69161))
 	departmental_flags = DEPARTMENT_BITFLAG_SERVICE
 
 /datum/design/mop
@@ -524,14 +514,9 @@
 	id = "bowl"
 	build_type = AUTOLATHE | PROTOLATHE // SKYRAT EDIT - Original line: build_type = AUTOLATHE
 	materials = list(/datum/material/glass = 500)
-<<<<<<< HEAD
 	build_path = /obj/item/reagent_containers/glass/bowl
-	category = list("initial", "Tool Designs", "Dinnerware") // SKYRAT EDIT - Original line: 	category = list("initial","Dinnerware")
+	category = list(RND_CATEGORY_INITIAL, RND_CATEGORY_TOOL_DESIGNS, RND_CATEGORY_DINNERWARE) // SKYRAT EDIT - Original line: 	category = list("initial","Dinnerware")
 	departmental_flags = DEPARTMENT_BITFLAG_SERVICE //SKYRAT EDIT: added to service techfab
-=======
-	category = list(RND_CATEGORY_INITIAL, RND_CATEGORY_DINNERWARE)
-	build_path = /obj/item/reagent_containers/cup/bowl
->>>>>>> 4a0847db525 (Converts all research categories into defines (#69161))
 
 /datum/design/drinking_glass
 	name = "Drinking Glass"
@@ -539,42 +524,26 @@
 	//build_type = AUTOLATHE	SKYRAT EDIT: Original Line
 	build_type = AUTOLATHE | PROTOLATHE	// SKRAT EDIT
 	materials = list(/datum/material/glass = 500)
-<<<<<<< HEAD
 	build_path = /obj/item/reagent_containers/food/drinks/drinkingglass
-	//category = list("initial","Dinnerware")	SKYRAT EDIT: Original line
-	category = list("initial", "Tool Designs", "Dinnerware") // SKYRAT EDIT
+	category = list(RND_CATEGORY_INITIAL, RND_CATEGORY_TOOL_DESIGNS, RND_CATEGORY_DINNERWARE) // SKYRAT EDIT
 	departmental_flags = DEPARTMENT_BITFLAG_SERVICE //SKYRAT EDIT: added to service techfab
-=======
-	category = list(RND_CATEGORY_INITIAL, RND_CATEGORY_DINNERWARE)
-	build_path = /obj/item/reagent_containers/cup/glass/drinkingglass
->>>>>>> 4a0847db525 (Converts all research categories into defines (#69161))
 
 /datum/design/shot_glass
 	name = "Shot Glass"
 	id = "shot_glass"
 	build_type = AUTOLATHE | PROTOLATHE // SKYRAT EDIT - Original line: build_type = AUTOLATHE
 	materials = list(/datum/material/glass = 100)
-<<<<<<< HEAD
 	build_path = /obj/item/reagent_containers/food/drinks/drinkingglass/shotglass
-	category = list("initial", "Tool Designs", "Dinnerware") // SKYRAT EDIT - Original line: 	category = list("initial","Dinnerware")
+	category = list(RND_CATEGORY_INITIAL, RND_CATEGORY_TOOL_DESIGNS, RND_CATEGORY_DINNERWARE) // SKYRAT EDIT - Original line: 	category = list("initial","Dinnerware")
 	departmental_flags = DEPARTMENT_BITFLAG_SERVICE //SKYRAT EDIT: added to service techfab
-=======
-	category = list(RND_CATEGORY_INITIAL, RND_CATEGORY_DINNERWARE)
-	build_path = /obj/item/reagent_containers/cup/glass/drinkingglass/shotglass
->>>>>>> 4a0847db525 (Converts all research categories into defines (#69161))
 
 /datum/design/shaker
 	name = "Shaker"
 	id = "shaker"
 	build_type = AUTOLATHE
 	materials = list(/datum/material/iron = 1500)
-<<<<<<< HEAD
 	build_path = /obj/item/reagent_containers/food/drinks/shaker
-	category = list("initial","Dinnerware")
-=======
 	category = list(RND_CATEGORY_INITIAL, RND_CATEGORY_DINNERWARE)
-	build_path = /obj/item/reagent_containers/cup/glass/shaker
->>>>>>> 4a0847db525 (Converts all research categories into defines (#69161))
 
 /datum/design/cultivator
 	name = "Cultivator"
@@ -724,13 +693,8 @@
 	id = "beaker"
 	build_type = AUTOLATHE | PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/glass = 500)
-<<<<<<< HEAD
-	build_path = /obj/item/reagent_containers/glass/beaker
-	category = list("initial", "Medical", "Medical Designs")
-=======
 	category = list(RND_CATEGORY_INITIAL, RND_CATEGORY_MEDICAL, RND_CATEGORY_MEDICAL_DESIGNS)
 	build_path = /obj/item/reagent_containers/cup/beaker
->>>>>>> 4a0847db525 (Converts all research categories into defines (#69161))
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL | DEPARTMENT_BITFLAG_SERVICE
 
 /datum/design/large_beaker
@@ -738,13 +702,8 @@
 	id = "large_beaker"
 	build_type = AUTOLATHE | PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/glass = 2500)
-<<<<<<< HEAD
-	build_path = /obj/item/reagent_containers/glass/beaker/large
-	category = list("initial", "Medical", "Medical Designs")
-=======
 	category = list(RND_CATEGORY_INITIAL, RND_CATEGORY_MEDICAL, RND_CATEGORY_MEDICAL_DESIGNS)
 	build_path = /obj/item/reagent_containers/cup/beaker/large
->>>>>>> 4a0847db525 (Converts all research categories into defines (#69161))
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL | DEPARTMENT_BITFLAG_SERVICE
 
 /datum/design/pillbottle

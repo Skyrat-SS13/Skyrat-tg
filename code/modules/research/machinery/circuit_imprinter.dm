@@ -4,21 +4,6 @@
 	icon_state = "circuit_imprinter"
 	circuit = /obj/item/circuitboard/machine/circuit_imprinter
 	categories = list(
-<<<<<<< HEAD
-								"AI Modules",
-								"Computer Boards",
-								"Teleportation Machinery",
-								"Medical Machinery",
-								"Engineering Machinery",
-								"Exosuit Modules",
-								"Hydroponics Machinery",
-								"Subspace Telecomms",
-								"Research Machinery",
-								"Misc. Machinery",
-								"Computer Parts",
-								"Circuitry",
-								"Weapons Machinery" //SKYRAT EDIT CHANGE
-=======
 								RND_CATEGORY_AI_MODULES,
 								RND_CATEGORY_COMPUTER_BOARDS,
 								RND_CATEGORY_TELEPORTATION_MACHINERY,
@@ -30,8 +15,8 @@
 								RND_CATEGORY_RESEARCH_MACHINERY,
 								RND_CATEGORY_MISC_MACHINERY,
 								RND_CATEGORY_COMPUTER_PARTS,
-								RND_CATEGORY_CIRCUITRY
->>>>>>> 4a0847db525 (Converts all research categories into defines (#69161))
+								RND_CATEGORY_CIRCUITRY,
+								RND_CATEGORY_WEAPONS_MACHINERY
 								)
 	production_animation = "circuit_imprinter_ani"
 	allowed_buildtypes = IMPRINTER

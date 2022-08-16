@@ -103,13 +103,8 @@
 	id = "mauna_mug"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = 1000, /datum/material/glass = 100)
-<<<<<<< HEAD
 	build_path = /obj/item/reagent_containers/glass/maunamug
-	category = list("Equipment")
-=======
 	category = list(RND_CATEGORY_EQUIPMENT)
-	build_path = /obj/item/reagent_containers/cup/maunamug
->>>>>>> 4a0847db525 (Converts all research categories into defines (#69161))
 
 
 /datum/design/rolling_table
@@ -454,13 +449,8 @@
 	id = "adv_watering_can"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = 2500, /datum/material/glass = 200)
-<<<<<<< HEAD
 	build_path = /obj/item/reagent_containers/glass/watering_can/advanced
-	category = list("initial","Tools","Tool Designs")
-=======
 	category = list(RND_CATEGORY_INITIAL, RND_CATEGORY_TOOLS, RND_CATEGORY_TOOL_DESIGNS)
-	build_path = /obj/item/reagent_containers/cup/watering_can/advanced
->>>>>>> 4a0847db525 (Converts all research categories into defines (#69161))
 	departmental_flags = DEPARTMENT_BITFLAG_SERVICE
 
 /////////////////////////////////////////

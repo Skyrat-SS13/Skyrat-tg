@@ -924,7 +924,7 @@
 	construction_time = 120
 	category = list(RND_CATEGORY_CYBORG_UPGRADE_MODULES)
 
-/*
+/* //SKYRAT REMOVAL START
 /datum/design/borg_upgrade_pinpointer
 	name = "Cyborg Upgrade (Crew pinpointer)"
 	id = "borg_upgrade_pinpointer"
@@ -932,12 +932,8 @@
 	build_path = /obj/item/borg/upgrade/pinpointer
 	materials = list(/datum/material/iron = 1000, /datum/material/glass = 500)
 	construction_time = 120
-<<<<<<< HEAD
-	category = list("Cyborg Upgrade Modules")
-*/
-=======
 	category = list(RND_CATEGORY_CYBORG_UPGRADE_MODULES)
->>>>>>> 4a0847db525 (Converts all research categories into defines (#69161))
+*/ //SKYRAT REMOVAL END
 
 /datum/design/borg_upgrade_broomer
 	name = "Cyborg Upgrade (Experimental Push Broom)"
