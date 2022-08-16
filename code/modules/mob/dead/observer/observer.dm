@@ -429,7 +429,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	to_chat(src, span_boldnotice("You can no longer be brought back into your body."))
 	//SKYRAT EDIT ADDITION - DNR TRAIT - If they really somehow need back in, might as well have the message of how an admin can solve it
-	to_chat(src, span_italics("If this was a mistake in any way, ask an admin to either 'proc_call revive(TRUE, TRUE)' to fullheal you and keep the DNR trait, or 'vv, remove the DNR Quirk and do_not_revive Trait, then have someone do defib/revival surgery'."))
+	to_chat(src, span_italics("If this was a mistake in any way, ask an admin to either 'proc_call revive(TRUE, TRUE)' to fullheal you and keep the DNR trait, or 'vv, remove the DNR Quirk and do_not_revive Trait, call med_hud_set_status(), then have someone do defib/revival surgery'."))
 	//SKYRAT EDIT ADDITION END - DNR TRAIT
 
 	return TRUE
