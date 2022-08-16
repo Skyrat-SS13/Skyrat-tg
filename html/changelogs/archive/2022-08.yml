@@ -616,3 +616,72 @@
   - balance: Replaced the upgraded baton with a regular one for drifting contractors.
   - balance: Replaced the drifting contractor's SWAT boots with combat boots.
   - balance: Drifting contractors now get +3 starting TC.
+2022-08-15:
+  Ghommie:
+  - bugfix: Features such as but not limited to Blastoff, the golden bikehorn and
+      voice of god should once again make spessmen flip.
+  Higgin:
+  - bugfix: Nerve Stapled no longer acts as a workaround to Security not hiring Pacifists.
+  - balance: Department Guards can no longer be Pacifists, Nerve Stapled, or Foreigners.
+  Melbert:
+  - bugfix: Revolution victory correctly removes lathe taxes
+  - bugfix: Someone completing the weakpoint / hack traitor objectives correctly fails
+      everyone else doing it
+  - bugfix: Having a dog no longer be ai controlled doesn't keep it keen on playing
+      fetch
+  - rscadd: Added support for elevator doors.
+  - rscadd: Elevators now have travel time, and make sound when moving. Emagging the
+      elevator button will speed them up.
+  - rscadd: Added support for less-than-lethal elevators, which crush your bones instead
+      of gibbing you. Emagging the elevator button will revert them to gibbing.
+  - rscadd: Added support for elevators to warn people below that they're moving down.
+      Emagging the elevator button will disable this.
+  - rscadd: Added elevator panels, and support for using elevators without a radial.
+  - qol: Elevator call buttons and the trapdoor now use balloon alerts.
+  OrionTheFox:
+  - bugfix: Armor Vests will now display properly for Digitigrade legs.
+  - imageadd: Alongside fixing the Syndicate's de-motivational posters, 'As Above,
+      So Below' and 'Syndie-med, Stay Winning''s icons have been updated!
+  SkyratBot:
+  - code_imp: Removes an unused bible proc
+  - bugfix: Normal items once again do not fit into bibles.
+  - rscadd: Fax Machine
+  - rscadd: You can now make trapdoors. Craft a trapdoor kit and use it on an openspace
+      tile to make one, then link and activate it with some trapdoor electronics (printable
+      at an autolathe or the engineering lathe) and optionally a trapdoor remote (crafted
+      in personal crafting menu).
+  - qol: You can now unlink trapdoors by using a multitool on them.
+  - balance: Trapdoors now won't break if you just crowbar them. You need to block
+      them from closing, such as with a lattice, cover it up with a wall, or fully
+      destroy the floor tile its on to get rid of them.
+  Wallem:
+  - imageadd: GAGSifies most of the radio encryption key sprites
+  Zonespace27:
+  - qol: Borers now have a status effect when sugar is in their or their host's system
+  jjpark-kb:
+  - rscadd: borer "revive host" now heals organ damage by half
+2022-08-16:
+  GoldenAlpharex:
+  - bugfix: Cybernetics will no longer be subject to bluespace-entangled-appearancificating,
+      meaning that they should no longer change appearance during the shift for no
+      apparent reason!
+  GoldenAlpharex, but really Valtosin for suggesting the fix:
+  - bugfix: Chat saving will no longer break if the CSS stylesheets contain unsupported
+      CSS rules.
+  Onule, PositiveEntropy, TetraZeta, Axietheaxolotl, Thgvr, AdipemDragon:
+  - imageadd: Completely resprites all medkits!
+  - imageadd: Completely resprites all medical tools!
+  - imageadd: Removes the clamp sprite and instead creates separate hemostat and retractor
+      inhand sprites!
+  - imageadd: Adds missing inhands for the bonesetter, advanced med tools, tactical
+      medkit, surgical drill and bone gel!
+  ShizCalev:
+  - imageadd: You can now see through glass tables again!
+  SkyratBot:
+  - rscdel: Reverts https://github.com/tgstation/tgstation/pull/49103. Krav Maga is
+      back to a much older state. Mostly.
+  - balance: Krav maga right click shoves again, and can have a chance of stealing
+      held items.
+  - balance: Most attacks with krav maga no longer check armor, and do a flat amount
+      of damage.
+  - balance: Legsweep deals 5 brute instead of stamina damage.
