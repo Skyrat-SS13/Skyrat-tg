@@ -58,15 +58,9 @@
 	reqs = list(/datum/reagent/fuel = 50,
 				/obj/item/stack/cable_coil = 1,
 				/obj/item/assembly/igniter = 1,
-<<<<<<< HEAD
-				/obj/item/reagent_containers/food/drinks/soda_cans = 1)
-	parts = list(/obj/item/reagent_containers/food/drinks/soda_cans = 1)
-	time = 15
-=======
 				/obj/item/reagent_containers/cup/soda_cans = 1)
 	parts = list(/obj/item/reagent_containers/cup/soda_cans = 1)
 	time = 1.5 SECONDS
->>>>>>> 4a274a6e4b1 ([MDB IGNORE] Refactors drinks and fixes a lot of food problems (#69081))
 	category = CAT_WEAPONRY
 	subcategory = CAT_WEAPON
 
@@ -98,19 +92,11 @@
 
 /datum/crafting_recipe/molotov
 	name = "Molotov"
-<<<<<<< HEAD
-	result = /obj/item/reagent_containers/food/drinks/bottle/molotov
-	reqs = list(/obj/item/reagent_containers/glass/rag = 1,
-				/obj/item/reagent_containers/food/drinks/bottle = 1)
-	parts = list(/obj/item/reagent_containers/food/drinks/bottle = 1)
-	time = 40
-=======
 	result = /obj/item/reagent_containers/cup/glass/bottle/molotov
 	reqs = list(/obj/item/reagent_containers/cup/rag = 1,
 				/obj/item/reagent_containers/cup/glass/bottle = 1)
 	parts = list(/obj/item/reagent_containers/cup/glass/bottle = 1)
 	time = 4 SECONDS
->>>>>>> 4a274a6e4b1 ([MDB IGNORE] Refactors drinks and fixes a lot of food problems (#69081))
 	category = CAT_WEAPONRY
 	subcategory = CAT_WEAPON
 

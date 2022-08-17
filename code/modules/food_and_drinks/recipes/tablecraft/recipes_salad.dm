@@ -76,15 +76,9 @@
 /datum/crafting_recipe/food/junglesalad
 	name = "Jungle salad"
 	reqs = list(
-<<<<<<< HEAD
-		/obj/item/reagent_containers/glass/bowl = 1,
-		/obj/item/food/grown/apple = 1,
-		/obj/item/food/grown/grapes = 1,
-=======
 		/obj/item/reagent_containers/cup/bowl = 1,
 		/obj/item/food/grown/apple = 2,
 		/obj/item/food/grown/grapes = 2,
->>>>>>> 4a274a6e4b1 ([MDB IGNORE] Refactors drinks and fixes a lot of food problems (#69081))
 		/obj/item/food/grown/banana = 2,
 		/obj/item/food/watermelonslice = 2
 

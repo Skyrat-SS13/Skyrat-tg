@@ -22,12 +22,8 @@
 	desc = "Yarr."
 	icon_state = "pirate"
 	inhand_icon_state = "pirate"
-<<<<<<< HEAD
-	allowed = list(/obj/item/melee/energy/sword/pirate, /obj/item/clothing/glasses/eyepatch, /obj/item/reagent_containers/food/drinks/bottle/rum)
-=======
 	body_parts_covered = CHEST|GROIN|ARMS
 	allowed = list(/obj/item/melee/energy/sword/pirate, /obj/item/clothing/glasses/eyepatch, /obj/item/reagent_containers/cup/glass/bottle/rum)
->>>>>>> 4a274a6e4b1 ([MDB IGNORE] Refactors drinks and fixes a lot of food problems (#69081))
 	species_exception = list(/datum/species/golem)
 
 /obj/item/clothing/suit/costume/pirate/armored
