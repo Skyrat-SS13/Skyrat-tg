@@ -509,17 +509,8 @@
 			if(!R.add_reagent(reagent.type, transfer_amount * multiplier, trans_data, chem_temp, reagent.purity, reagent.ph, no_react = TRUE, ignore_splitting = reagent.chemical_flags & REAGENT_DONOTSPLIT)) //we only handle reaction after every reagent has been transfered.
 				continue
 			if(methods)
-<<<<<<< HEAD
-				if(istype(target_atom, /obj/item/organ))
-					R.expose_single(reagent, target, methods, part, show_message)
-				else
-					R.expose_single(reagent, target_atom, methods, part, show_message)
-				reagent.on_transfer(target_atom, methods, transfer_amount * multiplier)
-			remove_reagent(reagent.type, transfer_amount, no_react) //SKYRAT EDIT CHANGE
-=======
 				r_to_send += reagent
-			remove_reagent(reagent.type, transfer_amount)
->>>>>>> a2f0aeeba72 (Fixes taste messages (#69035))
+			remove_reagent(reagent.type, transfer_amount, no_react) //SKYRAT EDIT CHANGE
 			var/list/reagent_qualities = list(REAGENT_TRANSFER_AMOUNT = transfer_amount, REAGENT_PURITY = reagent.purity)
 			transfer_log[reagent.type] = reagent_qualities
 
