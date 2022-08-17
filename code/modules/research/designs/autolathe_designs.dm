@@ -514,14 +514,9 @@
 	id = "bowl"
 	build_type = AUTOLATHE | PROTOLATHE // SKYRAT EDIT - Original line: build_type = AUTOLATHE
 	materials = list(/datum/material/glass = 500)
-<<<<<<< HEAD
-	build_path = /obj/item/reagent_containers/glass/bowl
+	build_path = /obj/item/reagent_containers/cup/bowl
 	category = list("initial", "Tool Designs", "Dinnerware") // SKYRAT EDIT - Original line: 	category = list("initial","Dinnerware")
 	departmental_flags = DEPARTMENT_BITFLAG_SERVICE //SKYRAT EDIT: added to service techfab
-=======
-	build_path = /obj/item/reagent_containers/cup/bowl
-	category = list("initial","Dinnerware")
->>>>>>> 4a274a6e4b1 ([MDB IGNORE] Refactors drinks and fixes a lot of food problems (#69081))
 
 /datum/design/drinking_glass
 	name = "Drinking Glass"
@@ -529,29 +524,19 @@
 	//build_type = AUTOLATHE	SKYRAT EDIT: Original Line
 	build_type = AUTOLATHE | PROTOLATHE	// SKRAT EDIT
 	materials = list(/datum/material/glass = 500)
-<<<<<<< HEAD
-	build_path = /obj/item/reagent_containers/food/drinks/drinkingglass
+	build_path = /obj/item/reagent_containers/cup/glass/drinkingglass
 	//category = list("initial","Dinnerware")	SKYRAT EDIT: Original line
 	category = list("initial", "Tool Designs", "Dinnerware") // SKYRAT EDIT
 	departmental_flags = DEPARTMENT_BITFLAG_SERVICE //SKYRAT EDIT: added to service techfab
-=======
-	build_path = /obj/item/reagent_containers/cup/glass/drinkingglass
-	category = list("initial","Dinnerware")
->>>>>>> 4a274a6e4b1 ([MDB IGNORE] Refactors drinks and fixes a lot of food problems (#69081))
 
 /datum/design/shot_glass
 	name = "Shot Glass"
 	id = "shot_glass"
 	build_type = AUTOLATHE | PROTOLATHE // SKYRAT EDIT - Original line: build_type = AUTOLATHE
 	materials = list(/datum/material/glass = 100)
-<<<<<<< HEAD
-	build_path = /obj/item/reagent_containers/food/drinks/drinkingglass/shotglass
+	build_path = /obj/item/reagent_containers/cup/glass/drinkingglass/shotglass
 	category = list("initial", "Tool Designs", "Dinnerware") // SKYRAT EDIT - Original line: 	category = list("initial","Dinnerware")
 	departmental_flags = DEPARTMENT_BITFLAG_SERVICE //SKYRAT EDIT: added to service techfab
-=======
-	build_path = /obj/item/reagent_containers/cup/glass/drinkingglass/shotglass
-	category = list("initial","Dinnerware")
->>>>>>> 4a274a6e4b1 ([MDB IGNORE] Refactors drinks and fixes a lot of food problems (#69081))
 
 /datum/design/shaker
 	name = "Shaker"

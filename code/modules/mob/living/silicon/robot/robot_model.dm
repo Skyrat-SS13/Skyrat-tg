@@ -737,14 +737,9 @@
 	name = "Service"
 	basic_modules = list(
 		/obj/item/assembly/flash/cyborg,
-<<<<<<< HEAD
-		/obj/item/reagent_containers/glass/beaker/large, //I know a shaker is more appropiate but this is for ease of identification
+		/obj/item/reagent_containers/cup/beaker/large, //I know a shaker is more appropiate but this is for ease of identification
 		//Skyrat Edit Start: Borg Buff
 		//obj/item/reagent_containers/food/condiment/enzyme, //edit
-=======
-		/obj/item/reagent_containers/cup/beaker/large, //I know a shaker is more appropiate but this is for ease of identification
-		/obj/item/reagent_containers/condiment/enzyme,
->>>>>>> 4a274a6e4b1 ([MDB IGNORE] Refactors drinks and fixes a lot of food problems (#69081))
 		/obj/item/pen,
 		/obj/item/toy/crayon/spraycan/borg,
 		/obj/item/extinguisher/mini,

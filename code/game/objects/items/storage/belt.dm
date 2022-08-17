@@ -242,14 +242,9 @@
 		/obj/item/radio,
 		/obj/item/reagent_containers/blood,
 		/obj/item/reagent_containers/dropper,
-<<<<<<< HEAD
-		/obj/item/reagent_containers/glass/beaker,
-		/obj/item/reagent_containers/glass/bottle,
-		/obj/item/reagent_containers/glass/vial, //SKYRAT EDIT HYPOSPRAYS
-=======
 		/obj/item/reagent_containers/cup/beaker,
 		/obj/item/reagent_containers/cup/bottle,
->>>>>>> 4a274a6e4b1 ([MDB IGNORE] Refactors drinks and fixes a lot of food problems (#69081))
+		/obj/item/reagent_containers/glass/vial, //SKYRAT EDIT HYPOSPRAYS
 		/obj/item/reagent_containers/hypospray,
 		/obj/item/reagent_containers/medigel,
 		/obj/item/reagent_containers/pill,
