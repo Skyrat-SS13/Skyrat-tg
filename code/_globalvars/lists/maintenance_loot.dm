@@ -1,3 +1,4 @@
+/* SKYRAT EDIT - MOVED TO MODULAR
 //as of:10/28/2019:
 //boxstation: ~153 loot items spawned
 //metastation: ~183 loot items spawned
@@ -396,3 +397,4 @@ GLOBAL_LIST_INIT(ratking_coins, list(//Coins: Used by the regal rat mob when spa
 
 // List of all maintenance loot spawners, for easy finding at roundstart.
 GLOBAL_LIST_EMPTY(maintenance_loot_spawners)
+*/
