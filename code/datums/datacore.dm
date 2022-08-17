@@ -299,6 +299,11 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 		S.fields["notes"] = "No notes."
 		// SKYRAT EDIT ADD - RP RECORDS
 		S.fields["past_records"] = human_client?.prefs?.read_preference(/datum/preference/text/security) || ""
+		GLOB.name_to_datacore_entry += list("[H.real_name]" = list(
+			"general" = G,
+			"medical" = M,
+			"security" = S,
+		)) // Yes, this uses name, no, it does not matter, TG uses names...
 		// SKYRAT EDIT END
 		security += S
 

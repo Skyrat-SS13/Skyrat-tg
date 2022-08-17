@@ -463,7 +463,14 @@ GLOBAL_LIST_EMPTY(ghost_records)
 	var/datum/data/record/record = new
 	record.fields["name"] = spawned_mob.real_name
 	record.fields["rank"] = name
+	var/datum/picture/picture = new
+	picture.picture_name = "[spawned_mob]"
+	picture.picture_desc = "This is [spawned_mob]"
+	picture.picture_image = get_flat_existing_human_icon(spawned_mob, list(SOUTH))
+	record.fields["photo_front"] = new /obj/item/photo(null, picture)
 	GLOB.ghost_records.Add(record)
+	world.log << "[spawned_mob.real_name]"
+	GLOB.name_to_datacore_entry += list("[spawned_mob.real_name]" = list("general" = record))
 	if(control_computer)
 		control_computer.announce("CRYO_JOIN", spawned_mob.real_name, name)
 

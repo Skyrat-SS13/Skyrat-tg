@@ -21,6 +21,10 @@
 /datum/outfit/lavaland_syndicate
 	uniform = /obj/item/clothing/under/rank/rnd/scientist/skyrat/utility/syndicate
 	ears = /obj/item/radio/headset/interdyne
+	r_hand = null
+	backpack_contents = list(
+		/obj/item/gun/ballistic/automatic/sniper_rifle=1,
+		)
 
 /datum/outfit/lavaland_syndicate/post_equip(mob/living/carbon/human/syndicate, visualsOnly = FALSE)
 	syndicate.faction |= ROLE_SYNDICATE
@@ -49,15 +53,18 @@
 	name = "Lavaland Syndicate Shaft Miner"
 	uniform = /obj/item/clothing/under/rank/cargo/tech/skyrat/utility/syndicate
 	suit = null //Subtype moment
+	r_hand = null
 	r_pocket = /obj/item/storage/bag/ore
 	id_trim = /datum/id_trim/syndicom/skyrat/interdyne
 	backpack_contents = list(
-		/obj/item/flashlight/seclite=1,\
+		/obj/item/flashlight/seclite=1,
 		/obj/item/knife/combat/survival=1,
 		/obj/item/mining_voucher=1,
 		/obj/item/t_scanner/adv_mining_scanner/lesser=1,
-		/obj/item/gun/energy/recharge/kinetic_accelerator=1,\
-		/obj/item/stack/marker_beacon/ten=1)
+		/obj/item/gun/energy/recharge/kinetic_accelerator=1,
+		/obj/item/stack/marker_beacon/ten=1,
+		/obj/item/gun/ballistic/automatic/sniper_rifle=1,
+		)
 
 /datum/outfit/lavaland_syndicate/shaftminer/deckofficer
 	name = "Lavaland Syndicate Deck Officer"
