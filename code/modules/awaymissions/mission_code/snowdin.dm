@@ -175,16 +175,10 @@
 	immunity_resistance_flags = FREEZE_PROOF
 
 /turf/open/lava/plasma/attackby(obj/item/I, mob/user, params)
-<<<<<<< HEAD
-	var/obj/item/reagent_containers/glass/C = I
-	if(C.reagents.total_volume >= C.volume)
-		to_chat(user, span_danger("[C] is full."))
-=======
 	if(!I.is_open_container())
 		return ..()
 	if(!I.reagents.add_reagent(/datum/reagent/toxin/plasma, rand(5, 10)))
 		to_chat(user, span_warning("[I] is full."))
->>>>>>> f62db18cd42 (Fixes runtime when attacking liquid plasma with anything that isn't a cup.... (#69199))
 		return
 	user.visible_message(span_notice("[user] scoops some plasma from the [src] with [I]."), span_notice("You scoop out some plasma from the [src] using [I]."))
 
