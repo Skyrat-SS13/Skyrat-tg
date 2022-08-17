@@ -15,6 +15,7 @@
 	economic_power = 1.3
 	features = list(/datum/cultural_feature/good)
 	groups = CULTURE_GROUP_HUMAN
+	passport = /obj/item/passport/ftu
 
 /datum/cultural_info/faction/remote
 	name = "Expeditionary Corps"
@@ -28,6 +29,7 @@
 	Officer candidates are required to have at least a bachelor's degree in a relevant field (astrogation, engineering, xenoarcheology, etc)."
 	features = list(/datum/cultural_feature/average)
 	groups = CULTURE_GROUP_HUMAN
+	passport = /obj/item/passport/sol
 
 /datum/cultural_info/faction/xynergy
 	name = "Xynergy"
@@ -38,6 +40,7 @@
 	economic_power = 1.1
 	features = list(/datum/cultural_feature/average)
 	groups = CULTURE_GROUP_HUMAN
+	passport = /obj/item/passport/sol
 
 /datum/cultural_info/faction/armadyne
 	name = "Armadyne"
@@ -49,3 +52,4 @@
 	economic_power = 1.2
 	features = list(/datum/cultural_feature/good)
 	groups = CULTURE_GROUP_HUMAN
+	passport = /obj/item/passport/sol

@@ -11,6 +11,7 @@
 	economic_power = 0.85
 	features = list(/datum/cultural_feature/average)
 	groups = CULTURE_NRI
+	passport = /obj/item/passport/nri
 
 /datum/cultural_info/faction/nri/police_military
 	name = "Defense and Peacekeeping Collegium"

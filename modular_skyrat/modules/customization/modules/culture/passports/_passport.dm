@@ -13,22 +13,29 @@
 	var/tgui_style = "retro"
 
 	// User specific stuff
-	var/user_name
 	var/datum/weakref/user_weakref
-	var/obj/item/photo/user_photo
+
+	var/cached_faction
+	var/cached_locale
+	var/list/cached_data
 
 /obj/item/passport/Initialize(mapload)
 	. = ..()
 	icon_state = "[icon_state_base]_[icon_state_ext]"
 
 /obj/item/passport/CtrlClick(mob/living/carbon/human/user)
-	if(istype(user))
-		balloon_alert(user, "imprinting...")
-		if(icon_state_ext == PASSPORT_CLOSED)
-			icon_state_ext = PASSPORT_OPENED
-			icon_state = "[icon_state_base]_[icon_state_ext]"
-		user_name = user.name
+	. = ..()
+	balloon_alert(user, "imprinting...")
+	imprint_owner(user)
+
+/obj/item/passport/proc/imprint_owner(mob/living/carbon/human/user)
+	if(istype(user) && user.client)
 		user_weakref = WEAKREF(user)
+		var/datum/cultural_info/faction = GLOB.culture_factions[user.client.prefs.culture_faction]
+		cached_faction = faction?.name
+		var/datum/cultural_info/locale = GLOB.culture_locations[user.client.prefs.culture_location]
+		cached_locale = locale?.name
+		cached_data = null
 
 /obj/item/passport/AltClick(mob/user)
 	switch(icon_state_ext)
@@ -55,17 +62,17 @@
 		ui.open()
 
 /obj/item/passport/ui_data(mob/user)
-	var/mob/living/carbon/human/passport_holder = user_weakref.resolve()
-	var/datum/cultural_info/faction = GLOB.culture_cultures[passport_holder.client.prefs.culture_culture]
-	var/datum/cultural_info/locale = GLOB.culture_locations[passport_holder.client.prefs.culture_location]
-	return list(
-		"name" = passport_holder.real_name,
-		"tgui_style" = tgui_style,
-		"headshot_data" = icon2base64(get_headshot_from_datacore(passport_holder.real_name)),
-		"empire" = faction?.name,
-		"locale" = locale?.name,
-		"year_of_birth" = text2num(time2text(world.realtime, "YYYY")) + 540 - passport_holder.age,
-	)
+	if(!cached_data)
+		var/mob/living/carbon/human/passport_holder = user_weakref.resolve()
+		cached_data = list(
+			"name" = passport_holder.real_name,
+			"tgui_style" = tgui_style,
+			"headshot_data" = icon2base64(get_headshot_from_datacore(passport_holder.real_name)),
+			"empire" = cached_faction,
+			"locale" = cached_locale,
+			"year_of_birth" = text2num(time2text(world.realtime, "YYYY")) + 540 - passport_holder.age,
+		)
+	return cached_data
 
 /obj/item/passport/proc/get_headshot_from_datacore(name)
 	var/list/datacore_entry = GLOB.name_to_datacore_entry[name]

@@ -1,7 +1,7 @@
 /datum/cultural_info/location/nri
 	name = "Novaya Rossiyskaya Imperiya Space"
 	description = "Somewhere in space governed by the NRI, this relatively large imperial state has plenty of history and culture around it."
-	required_lang = /datum/language/neorusskya
+	required_lang = /datum/language/panslavic
 	features = list(/datum/cultural_feature/average)
 	groups = CULTURE_GROUP_HUMAN
 
@@ -16,10 +16,7 @@
 	The more stable regions near the approximated location of the first landings, now becoming the New St. Petersburg, however, have become thriving with life and various cultural points of interests, as lots of tourists come here to become familiar with the imperial history.\
 	Despite everything unfortunate that have happened to the people of Providence, they remain proud and unbroken, heavily patriotic and tend to bring this with them wherever they go."
 	capital = "New St. Petersburg"
-	economic_power = 1.0
 	ruling_body = "Novaya Rossiyskaya Imperiya"
-	required_lang = /datum/language/neorusskya
-	features = list(/datum/cultural_feature/average)
 	groups = CULTURE_NRI
 
 /datum/cultural_info/location/nri/gagarin
@@ -39,6 +36,4 @@
 	People of Gagarin are very independent and strong-willed, commonly acting in the opposition to the known methodics in order to discover something new."
 	economic_power = 0.9
 	ruling_body = "Formally, Novaya Rossiyskaya Imperiya; Factually, Gagarin's Academic Senate"
-	required_lang = /datum/language/neorusskya
-	features = list(/datum/cultural_feature/average)
 	groups = CULTURE_NRI
