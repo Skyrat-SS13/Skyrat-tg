@@ -37,7 +37,7 @@
 	icon = 'modular_skyrat/master_files/icons/mob/newmobs.dmi'
 	icon_state = "bananaspider_peel"
 	list_reagents = list(/datum/reagent/consumable/nutriment = 3, /datum/reagent/consumable/nutriment/vitamin = 2)
-	foodtype = GROSS | MEAT | RAW
+	foodtype = GORE | MEAT | RAW
 	grind_results = list(/datum/reagent/blood = 20, /datum/reagent/liquidgibs = 5)
 	juice_results = list(/datum/reagent/consumable/banana = 10)
 
