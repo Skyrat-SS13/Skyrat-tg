@@ -90,7 +90,7 @@
 			stored_products += P
 		//SKYRAT EDIT HYPOVIALS
 		else if (product == "vial")
-			var/obj/item/reagent_containers/glass/vial/small/P = new(src)
+			var/obj/item/reagent_containers/cup/vial/small/P = new(src)
 			reagents.trans_to(P, current_volume)
 			P.name = trim("[product_name] vial")
 			stored_products += P

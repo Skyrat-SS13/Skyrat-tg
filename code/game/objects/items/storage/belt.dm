@@ -244,7 +244,7 @@
 		/obj/item/reagent_containers/dropper,
 		/obj/item/reagent_containers/cup/beaker,
 		/obj/item/reagent_containers/cup/bottle,
-		/obj/item/reagent_containers/glass/vial, //SKYRAT EDIT HYPOSPRAYS
+		/obj/item/reagent_containers/cup/vial, //SKYRAT EDIT HYPOSPRAYS
 		/obj/item/reagent_containers/hypospray,
 		/obj/item/reagent_containers/medigel,
 		/obj/item/reagent_containers/pill,
@@ -692,7 +692,7 @@
 		/obj/item/paint/paint_remover,
 		/obj/item/plunger,
 		/obj/item/pushbroom,
-		/obj/item/reagent_containers/glass/bucket, //SKYRAT EDIT - Bucket
+		/obj/item/reagent_containers/cup/bucket, //SKYRAT EDIT - Bucket
 		/obj/item/reagent_containers/spray,
 		/obj/item/soap,
 		))

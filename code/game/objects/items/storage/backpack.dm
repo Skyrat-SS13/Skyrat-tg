@@ -330,7 +330,7 @@
 		/obj/item/storage/pill_bottle/lsd = 10,
 		/obj/item/storage/fancy/cigarettes/cigpack_syndicate = 8,
 		/obj/item/storage/fancy/cigarettes/cigpack_shadyjims = 10,
-		/obj/item/reagent_containers/food/drinks/bottle/absinthe = 12,
+		/obj/item/reagent_containers/cup/glass/bottle/absinthe = 12,
 		/obj/item/storage/box/fireworks/dangerous = 11,
 		/obj/item/food/grown/cannabis/white = 9,
 		/obj/item/food/grown/cannabis = 13,

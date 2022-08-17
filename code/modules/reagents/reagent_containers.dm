@@ -29,7 +29,7 @@
 
 	add_initial_reagents()
 	//SKYRAT EDIT ADDITION
-	AddElement(/datum/element/liquids_interaction, on_interaction_callback = /obj/item/reagent_containers/glass/beaker/.proc/attack_on_liquids_turf)
+	AddElement(/datum/element/liquids_interaction, on_interaction_callback = /obj/item/reagent_containers/cup/beaker/.proc/attack_on_liquids_turf)
 
 /obj/item/reagent_containers/proc/attack_on_liquids_turf(obj/item/reagent_containers/my_beaker, turf/T, mob/living/user, obj/effect/abstract/liquid_turf/liquids)
 	if(user.combat_mode)

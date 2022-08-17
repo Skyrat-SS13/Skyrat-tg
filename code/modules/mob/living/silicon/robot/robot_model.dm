@@ -143,7 +143,7 @@
 
 /obj/item/robot_model/proc/respawn_consumable(mob/living/silicon/robot/cyborg, coeff = 1)
 	SHOULD_CALL_PARENT(TRUE)
-	
+
 	for(var/datum/robot_energy_storage/storage_datum in storages)
 		storage_datum.energy = min(storage_datum.max_energy, storage_datum.energy + coeff * storage_datum.recharge_rate)
 
@@ -742,7 +742,7 @@
 		/obj/item/assembly/flash/cyborg,
 		/obj/item/reagent_containers/cup/beaker/large, //I know a shaker is more appropiate but this is for ease of identification
 		//Skyrat Edit Start: Borg Buff
-		//obj/item/reagent_containers/food/condiment/enzyme, //edit
+		//obj/item/reagent_containers/condiment/enzyme, //edit
 		/obj/item/pen,
 		/obj/item/toy/crayon/spraycan/borg,
 		/obj/item/extinguisher/mini,

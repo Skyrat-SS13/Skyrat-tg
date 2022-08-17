@@ -429,9 +429,9 @@
 			return TRUE
 		//SKYRAT EDIT ADDTION START
 		if(item_type == "vial")
-			var/obj/item/reagent_containers/glass/vial/small/P
+			var/obj/item/reagent_containers/cup/vial/small/P
 			for(var/i = 0; i < amount; i++)
-				P = new/obj/item/reagent_containers/glass/vial/small(drop_location())
+				P = new/obj/item/reagent_containers/cup/vial/small(drop_location())
 				P.name = trim("[name] vial")
 				adjust_item_drop_location(P)
 				reagents.trans_to(P, vol_each, transfered_by = usr)
