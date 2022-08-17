@@ -240,6 +240,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if(!(language.type in subtypesof(/datum/language)) || language.secret)
 					languages.Remove(lang_path)
 					languages_edited = TRUE
+
 			if(languages_edited)
 				save_character()
 			// SKYRAT EDIT END
