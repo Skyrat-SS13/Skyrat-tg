@@ -49,7 +49,7 @@
 
 /obj/item/hypospray/mkii/cmo
 	name = "hypospray mk.II deluxe"
-	allowed_containers = list(/obj/item/reagent_containers/cup/vial/small, /obj/item/reagent_containers/glass/vial/large)
+	allowed_containers = list(/obj/item/reagent_containers/cup/vial/small, /obj/item/reagent_containers/cup/vial/large)
 	icon_state = "cmo2"
 	desc = "The deluxe hypospray can take larger 120-unit vials. It also acts faster and can deliver more reagents per spray."
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF
