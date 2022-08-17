@@ -765,8 +765,5 @@
 #undef SPREAD_CAP_LINEAR_COEFF
 #undef SPREAD_CAP_CONSTANT_TERM
 #undef SPREAD_MULTIPLIER_MAX
-<<<<<<< HEAD
-*/
-=======
 #undef IDEAL_MAX_SEVERITY
->>>>>>> e4f9afa0aee (Kudzu Fixes v4, hopefully the last one: Fix kudzu possibly obtaining duplicate mutations when being planted from a seed that already has mutations (#68821))
+*/
