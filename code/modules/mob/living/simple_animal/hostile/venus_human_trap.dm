@@ -134,15 +134,9 @@
 	melee_damage_upper = 20
 	minbodytemp = 100
 	combat_mode = TRUE
-<<<<<<< HEAD
-	//del_on_death = TRUE //SKYRAT EDIT REMOVAL
-	flip_on_death = TRUE
-	deathmessage = "collapses into bits of plant matter."
-=======
 	ranged_cooldown_time = 4 SECONDS
-	del_on_death = TRUE
+	//del_on_death = TRUE //SKYRAT EDIT REMOVAL
 	death_message = "collapses into bits of plant matter."
->>>>>>> 4e97d036578 (Bileworm post-merge feedback and qol (#69007))
 	attacked_sound = 'sound/creatures/venus_trap_hurt.ogg'
 	death_sound = 'sound/creatures/venus_trap_death.ogg'
 	attack_sound = 'sound/creatures/venus_trap_hit.ogg'
