@@ -272,13 +272,8 @@
 	// The integrity to max_integrity ratio is still preserved.
 	set_custom_materials(custom_materials)
 
-<<<<<<< HEAD
-	ComponentInitialize()
-	InitializeAIController()
-=======
 	if(ispath(ai_controller))
 		ai_controller = new ai_controller(src)
->>>>>>> ae4d338fc0e (removes InitializeAIController(), moves it to Initialize (#69129))
 
 	return INITIALIZE_HINT_NORMAL
 
@@ -295,10 +290,6 @@
  */
 /atom/proc/LateInitialize()
 	set waitfor = FALSE
-
-/// Put your [AddComponent] calls here
-/atom/proc/ComponentInitialize()
-	return
 
 /**
  * Top level of the destroy chain for most atoms

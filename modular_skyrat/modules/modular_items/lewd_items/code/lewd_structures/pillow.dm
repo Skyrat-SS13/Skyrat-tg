@@ -21,11 +21,6 @@
 	var/static/list/pillow_forms
 	w_class = WEIGHT_CLASS_SMALL
 
-// To update model
-/obj/item/pillow/ComponentInitialize()
-	. = ..()
-	AddElement(/datum/element/update_icon_updates_onmob)
-
 // Create radial menu
 /obj/item/pillow/proc/populate_pillow_colors()
 	pillow_colors = list(
@@ -75,6 +70,7 @@
 
 /obj/item/pillow/Initialize(mapload)
 	. = ..()
+	AddElement(/datum/element/update_icon_updates_onmob)
 	update_icon_state()
 	update_icon()
 	if(!length(pillow_colors))
