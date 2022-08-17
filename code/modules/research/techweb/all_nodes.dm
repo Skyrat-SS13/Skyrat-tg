@@ -391,13 +391,10 @@
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000)
 	required_experiments = list(/datum/experiment/dissection/nonhuman)
-<<<<<<< HEAD
-	// ORIGINAL: discount_experiments = list(/datum/experiment/scanning/random/material/meat = 4000) //Big discount to reinforce doing it.
-	discount_experiments = list(/datum/experiment/scanning/random/material/silver = 4000) //Big discount to reinforce doing it.
+	// ORIGINAL: discount_experiments = list(/datum/experiment/scanning/random/material/meat = 4000)
+	discount_experiments = list(/datum/experiment/scanning/random/material/silver = 4000)
 	// SKYRAT EDIT END - MATERIAL MEAT WAS REMOVED
-=======
-	discount_experiments = list(/datum/experiment/scanning/random/material/meat = 4000)
->>>>>>> ac2059eb1b3 (Replaces non-departmental required experisci experiments with extremely expensive discount experiments (#69205))
+
 
 /datum/techweb_node/xenoorgan_biotech
 	id = "xenoorgan_bio"
