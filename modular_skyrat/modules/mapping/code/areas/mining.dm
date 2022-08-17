@@ -1,3 +1,6 @@
+// Skyrat mining-related areas
+
+// Xeno arch
 /area/mine/xenoarch
 	icon = 'modular_skyrat/modules/xenoarch/icons/xenoarch_area.dmi'
 
