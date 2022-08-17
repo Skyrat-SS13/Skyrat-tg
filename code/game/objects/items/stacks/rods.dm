@@ -85,25 +85,14 @@ GLOBAL_LIST_INIT(rod_recipes, list ( \
 		user.put_in_inactive_hand(new_item)
 		return TOOL_ACT_TOOLTYPE_SUCCESS
 
-		if(W.use_tool(src, user, 0, volume=40))
-			var/obj/item/stack/sheet/iron/new_item = new(usr.loc)
-			user.visible_message(span_notice("[user.name] shaped [src] into iron sheets with [W]."), \
-				span_notice("You shape [src] into iron sheets with [W]."), \
-				span_hear("You hear welding."))
-			var/obj/item/stack/rods/R = src
-			src = null
-			var/replace = (user.get_inactive_held_item()==R)
-			R.use(2)
-			if (!R && replace)
-				user.put_in_hands(new_item)
 	// SKYRAT EDIT ADDITION BEGIN: Reagent Forging
-	else if(istype(W, /obj/item/forging/tongs))
-		var/obj/searchObj = locate(/obj) in W.contents
+	else if(istype(user, /obj/item/forging/tongs))
+		var/obj/searchObj = locate(/obj) in user.contents
 		if(searchObj)
 			to_chat(user, span_warning("The tongs are already holding something, make room."))
 			return
-		forceMove(W)
-		W.icon_state = "tong_full"
+		forceMove(user)
+		user.icon_state = "tong_full"
 		return
 	// SKYRAT EDIT ADDITION END
 	else
