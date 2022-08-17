@@ -114,10 +114,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	if(loaded_preferences_successfully)
 		if(load_character())
 			// SKYRAT EDIT START - Sanitizing languages
-			for(var/lang_path as anything in languages)
-				var/datum/language/language = new lang_path()
-				if(!(language.type in subtypesof(/datum/language)) || language.secret)
-					languages.Remove(lang_path)
+			sanitize_languages()
 			// SKYRAT EDIT END
 			return // SKYRAT EDIT - Don't remove this. Just don't. Nothing is worth forced random characters.
 	//we couldn't load character data so just randomize the character appearance + name
@@ -234,14 +231,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				save_character()
 
 			// SKYRAT EDIT START - Sanitizing languages
-			var/languages_edited = FALSE
-			for(var/lang_path as anything in languages)
-				var/datum/language/language = new lang_path()
-				if(!(language.type in subtypesof(/datum/language)) || language.secret)
-					languages.Remove(lang_path)
-					languages_edited = TRUE
-
-			if(languages_edited)
+			if(sanitize_languages())
 				save_character()
 			// SKYRAT EDIT END
 
