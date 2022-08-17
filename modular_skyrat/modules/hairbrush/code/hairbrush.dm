@@ -18,7 +18,7 @@
 	brush(target, user)
 	return COMPONENT_CANCEL_ATTACK_CHAIN
 
-// Brushes someone, giving them a small mood boost
+/// Brushes someone, giving them a small mood boost
 /obj/item/hairbrush/proc/brush(mob/living/target, mob/user)
 	if(ishuman(target))
 		var/mob/living/carbon/human/human_target = target
@@ -28,7 +28,7 @@
 		if(!head)
 			to_chat(user, span_warning("[human_target] has no head!"))
 			return
-		if(human_target.is_mouth_covered(head_only = 1))
+		if(human_target.is_mouth_covered(head_only = TRUE))
 			to_chat(user, span_warning("You can't brush [human_target]'s hair while [human_target.p_their()] head is covered!"))
 			return
 		if(!do_after(user, brush_speed, human_target))
@@ -43,14 +43,16 @@
 		// Brush their hair
 		if(human_target == user)
 			human_target.visible_message(span_notice("[usr] brushes [usr.p_their()] hair!"), span_notice("You brush your hair."))
-			SEND_SIGNAL(user, COMSIG_ADD_MOOD_EVENT, "brushed", /datum/mood_event/brushed/self)
+			human_target.add_mood_event("brushed", /datum/mood_event/brushed/self)
 		else
 			user.visible_message(span_notice("[usr] brushes [human_target]'s hair!"), span_notice("You brush [human_target]'s hair."), ignored_mobs=list(human_target))
 			human_target.show_message(span_notice("[usr] brushes your hair!"), MSG_VISUAL)
-			SEND_SIGNAL(human_target, COMSIG_ADD_MOOD_EVENT, "brushed", /datum/mood_event/brushed, user)
+			human_target.add_mood_event("brushed", /datum/mood_event/brushed, user)
 
 	else if(istype(target, /mob/living/simple_animal/pet))
 		if(!do_after(usr, brush_speed, target))
 			return
 		to_chat(user, span_notice("[target] closes [target.p_their()] eyes as you brush [target.p_them()]!"))
-		SEND_SIGNAL(user, COMSIG_ADD_MOOD_EVENT, "brushed", /datum/mood_event/brushed/pet, target)
+		var/mob/living/living_user = user
+		if(istype(living_user))
+			living_user.add_mood_event("brushed", /datum/mood_event/brushed/pet, target)

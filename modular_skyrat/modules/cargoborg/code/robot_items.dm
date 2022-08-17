@@ -20,7 +20,7 @@
 	var/paper_charge_cost = 50
 
 
-/obj/item/clipboard/cyborg/Initialize()
+/obj/item/clipboard/cyborg/Initialize(mapload)
 	. = ..()
 	pen = new /obj/item/pen/cyborg
 
@@ -360,7 +360,7 @@
 	alpha = 150 // It's hardlight, it's gotta be see-through.
 
 
-/obj/item/paperplane/syndicate/hardlight/Initialize()
+/obj/item/paperplane/syndicate/hardlight/Initialize(mapload)
 	. = ..()
 	color = color_hex2color_matrix(pick(paper_colors))
 	alpha = initial(alpha) // It's hardlight, it's gotta be see-through.

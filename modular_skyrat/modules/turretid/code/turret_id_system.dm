@@ -3,7 +3,7 @@ GLOBAL_LIST_EMPTY(turret_id_refs)
 /obj/machinery/porta_turret
 	var/system_id //The ID for this turret
 
-/obj/machinery/porta_turret/Initialize()
+/obj/machinery/porta_turret/Initialize(mapload)
 	. = ..()
 	if(system_id)
 		if(!GLOB.turret_id_refs[system_id])

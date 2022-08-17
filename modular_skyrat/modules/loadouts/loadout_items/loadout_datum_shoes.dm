@@ -213,34 +213,6 @@ GLOBAL_LIST_INIT(loadout_shoes, generate_loadout_items(/datum/loadout_item/shoes
 	restricted_roles = list(JOB_CLOWN)
 
 /*
-*	FAMILIES
-*/
-
-/datum/loadout_item/shoes/deckers
-	name = "Deckers Shoes"
-	item_path = /obj/item/clothing/shoes/deckers
-
-/datum/loadout_item/shoes/morningstar
-	name = "Morningstar Shoes"
-	item_path = /obj/item/clothing/shoes/morningstar
-
-/datum/loadout_item/shoes/saints
-	name = "Saints Shoes"
-	item_path = /obj/item/clothing/shoes/saints
-
-/datum/loadout_item/shoes/phantom
-	name = "Phantom Shoes"
-	item_path = /obj/item/clothing/shoes/phantom
-
-/datum/loadout_item/shoes/sybil
-	name = "Sybil Shoes"
-	item_path = /obj/item/clothing/shoes/sybil_slickers
-
-/datum/loadout_item/shoes/basil
-	name = "Basil Shoes"
-	item_path = /obj/item/clothing/shoes/basil_boys
-
-/*
 *	DONATOR
 */
 

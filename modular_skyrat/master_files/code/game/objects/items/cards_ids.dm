@@ -20,7 +20,7 @@
 	greyscale_config = /datum/greyscale_config/id_card
 	greyscale_colors = "#FF0000#00FF00#0000FF"
 
-/obj/item/card/id/advanced/colourable/ComponentInitialize()
+/obj/item/card/id/advanced/colourable/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/gags_recolorable)
 

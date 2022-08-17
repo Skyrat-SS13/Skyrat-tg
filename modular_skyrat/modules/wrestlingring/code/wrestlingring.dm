@@ -66,7 +66,7 @@
 	max_integrity = 75
 	var/ini_dir
 
-/obj/structure/wrestling_corner/Initialize()
+/obj/structure/wrestling_corner/Initialize(mapload)
 	. = ..()
 	ini_dir = dir
 

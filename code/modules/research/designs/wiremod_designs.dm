@@ -328,11 +328,6 @@
 	id = "comp_typecast"
 	build_path = /obj/item/circuit_component/typecast
 
-/datum/design/component/printer
-	name = "Printer Component"
-	id = "comp_printer"
-	build_path = /obj/item/circuit_component/printer
-
 /datum/design/component/pinpointer
 	name = "Proximity Pinpointer Component"
 	id = "comp_pinpointer"
@@ -446,6 +441,15 @@
 	build_path = /obj/item/wiremod_scanner
 	build_type = PROTOLATHE | COMPONENT_PRINTER
 	materials = list(/datum/material/glass = 2000, /datum/material/iron = 7000)
+	category = list("Circuitry", "Shells")
+
+/datum/design/keyboard_shell
+	name = "Keyboard Shell"
+	desc = "A handheld shell that allows the user to input a string"
+	id = "keyboard_shell"
+	build_path = /obj/item/keyboard_shell
+	materials = list(/datum/material/glass = 2000, /datum/material/iron = 10000)
+	build_type = PROTOLATHE | COMPONENT_PRINTER
 	category = list("Circuitry", "Shells")
 
 /datum/design/gun_shell
