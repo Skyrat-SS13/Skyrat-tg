@@ -233,6 +233,17 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				randomise_appearance_prefs()
 				save_character()
 
+			// SKYRAT EDIT START - Sanitizing languages
+			var/languages_edited = FALSE
+			for(var/lang_path as anything in languages)
+				var/datum/language/language = new lang_path()
+				if(!(language.type in subtypesof(/datum/language)) || language.secret)
+					languages.Remove(lang_path)
+					languages_edited = TRUE
+			if(languages_edited)
+				save_character()
+			// SKYRAT EDIT END
+
 			for (var/datum/preference_middleware/preference_middleware as anything in middleware)
 				preference_middleware.on_new_character(usr)
 
