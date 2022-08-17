@@ -455,14 +455,16 @@
 							span_userlove("You shoot string after string of hot cum, hitting the floor!"))
 					else
 						var/mob/living/carbon/human/target_human = interactable_inrange_humans[target_choice]
-						var/obj/item/organ/external/genital/vagina/target_vagina = getorganslot(ORGAN_SLOT_VAGINA)
-						var/obj/item/organ/external/genital/anus/target_anus = getorganslot(ORGAN_SLOT_ANUS)
-						var/obj/item/organ/external/genital/penis/target_penis = getorganslot(ORGAN_SLOT_PENIS)
+						var/obj/item/organ/external/genital/vagina/target_vagina = target_human.getorganslot(ORGAN_SLOT_VAGINA)
+						var/obj/item/organ/external/genital/anus/target_anus = target_human.getorganslot(ORGAN_SLOT_ANUS)
+						var/obj/item/organ/external/genital/penis/target_penis = target_human.getorganslot(ORGAN_SLOT_PENIS)
 
 						var/list/target_buttons = list()
 
 						if(!target_human.wear_mask)
 							target_buttons += "mouth"
+							if(target_human.client?.prefs.read_preference(/datum/preference/toggle/erp/cum_face))
+								target_buttons += "face"
 
 						if(target_vagina && target_vagina?.is_exposed())
 							target_buttons += "vagina"
@@ -470,7 +472,7 @@
 						if(target_anus && target_anus?.is_exposed())
 							target_buttons += "asshole"
 
-						if(target_penis && target_penis?.is_exposed() && target_penis.sheath)
+						if(target_penis && target_penis.is_exposed() && target_penis.sheath != "None")
 							target_buttons += "sheath"
 
 						target_buttons += "On them"
@@ -485,6 +487,18 @@
 							create_cum_decal = TRUE
 							visible_message(span_userlove("[src] shoots their sticky load onto the [target_human]!"), \
 								span_userlove("You shoot string after string of hot cum onto [target_human]!"))
+						else if(climax_into_choice == "face")
+							visible_message(span_userlove("[src] shoots their sticky load onto [target_human]'s face!"), \
+								span_userlove("You shoot string after string of hot cum onto [target_human]'s face!"))
+							var/datum/component/cumfaced/has_load = target_human.GetComponent(/datum/component/cumfaced)
+							if(has_load)
+								if(!has_load.big_load)
+									qdel(has_load)
+									target_human.AddComponent(/datum/component/cumfaced/big)
+								else
+									create_cum_decal = TRUE // cum dripping on the floor from the face
+							else
+								target_human.AddComponent(/datum/component/cumfaced)
 						else
 							visible_message(span_userlove("[src] hilts [p_their()] cock into [target_human]'s [climax_into_choice], shooting cum into it!"), \
 								span_userlove("You hilt your cock into [target_human]'s [climax_into_choice], shooting cum into it!"))
@@ -751,7 +765,7 @@
 //you got cum on your face bro *licks it off*
 /datum/component/cumfaced
 	dupe_mode = COMPONENT_DUPE_UNIQUE_PASSARGS
-
+	var/big_load = FALSE
 	var/mutable_appearance/cumface
 
 /datum/component/cumfaced/Initialize()
@@ -803,12 +817,13 @@
 
 	. = NONE
 	if(!(clean_types & CLEAN_TYPE_BLOOD))
-		qdel(src)
-		return COMPONENT_CLEANED
+		return
+	qdel(src)
+	return COMPONENT_CLEANED
 
 /datum/component/cumfaced/big
 	dupe_mode = COMPONENT_DUPE_UNIQUE_PASSARGS
-
+	big_load = TRUE
 	var/mutable_appearance/bigcumface
 
 /datum/component/cumfaced/big/Initialize()

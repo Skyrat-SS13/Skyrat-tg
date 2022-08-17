@@ -300,7 +300,7 @@
 	if(antag_team)
 		antag_team.add_member(src)
 	INVOKE_ASYNC(A, /datum/antagonist.proc/on_gain)
-	log_game("[key_name(src)] has gained antag datum [A.name]([A.type])")
+	log_game("[key_name(src)] has gained antag datum [A.name]([A.type]).")
 	handle_exploitables() //SKYRAT EDIT ADDITION - EXPLOITABLES MENU
 	return A
 
