@@ -99,7 +99,7 @@
 	outfit = /datum/outfit/guild/slaver/captain
 
 /obj/item/radio/headset/guild
-	keyslot = new /obj/item/encryptionkey/headset_guild
+	keyslot = new /obj/item/encryptionkey/headset_syndicate/guild
 
 /obj/item/radio/headset/guild/command
 	command = TRUE

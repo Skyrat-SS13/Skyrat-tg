@@ -262,6 +262,7 @@
 	name = "combat medical kit"
 	desc = "I hope you've got insurance."
 	icon_state = "medkit_tactical"
+	inhand_icon_state = "medkit-tactical"
 	damagetype_healed = "all"
 
 /obj/item/storage/medkit/tactical/Initialize(mapload)

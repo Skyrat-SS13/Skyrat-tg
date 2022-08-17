@@ -5817,17 +5817,15 @@
 /obj/item/paper/fluff/gateway{
 	pixel_x = 9
 	},
-/obj/item/paper_bin{
-	pixel_y = 3
-	},
-/obj/item/pen/fountain{
-	pixel_y = 5
-	},
 /obj/item/radio/intercom{
 	dir = 8;
 	freerange = 1;
 	name = "Station Intercom (Captain)";
 	pixel_y = 20
+	},
+/obj/machinery/fax{
+	fax_name = "Captain's Office";
+	name = "Captain's Fax Machine"
 	},
 /turf/open/floor/carpet,
 /area/station/command/heads_quarters/captain/private)
@@ -29153,9 +29151,9 @@
 	},
 /obj/structure/rack,
 /obj/machinery/camera/directional/south{
-	network = list("ss13","ce");
 	c_tag = "Medical - Power Station";
-	name = "engineering camera"
+	name = "engineering camera";
+	network = list("ss13","ce")
 	},
 /turf/open/floor/iron/dark,
 /area/station/medical/power_station)
@@ -35795,11 +35793,9 @@
 /area/station/commons/dorms)
 "lUO" = (
 /obj/structure/table/wood,
-/obj/item/paper_bin/carbon{
-	pixel_y = 3
-	},
-/obj/item/pen/fountain{
-	pixel_y = 5
+/obj/machinery/fax{
+	fax_name = "Nanotrasen Consultant's Office";
+	name = "Nanotrasen Consultant's Fax Machine"
 	},
 /turf/open/floor/carpet/green,
 /area/command/heads_quarters/captain/private/nt_rep)
@@ -38110,6 +38106,9 @@
 /obj/effect/turf_decal/siding/wood,
 /obj/structure/window/reinforced/tinted{
 	dir = 4
+	},
+/obj/item/paper/fluff/gateway{
+	pixel_x = 9
 	},
 /turf/open/floor/carpet,
 /area/station/command/heads_quarters/captain/private)
@@ -58871,9 +58870,9 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/stripes,
 /obj/machinery/camera/directional/north{
-	network = list("ss13","ce");
 	c_tag = "Science - Power Station";
-	name = "engineering camera"
+	name = "engineering camera";
+	network = list("ss13","ce")
 	},
 /turf/open/floor/iron/dark,
 /area/station/science/power_station)
