@@ -20,10 +20,6 @@
 	mutant_bodyparts = list()
 	hair_color = "mutcolor"
 	hair_alpha = 160 //a notch brighter so it blends better.
-	learnable_languages = list(
-		/datum/language/common,
-		/datum/language/slime
-	)
 
 /datum/species/jelly/get_species_description()
 	return placeholder_description
