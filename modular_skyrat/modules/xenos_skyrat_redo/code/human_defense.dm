@@ -15,12 +15,12 @@
 				to_chat(user, span_warning("You attempt to touch [src]!"))
 				return FALSE
 			playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, TRUE, -1) //The sounds of these are changed so the xenos can actually hear they are being non-lethal
-			Knockdown(5 SECONDS)
+			src.Knockdown(3 SECONDS)
 			apply_damage(disarm_damage, STAMINA, BODY_ZONE_CHEST)
 			visible_message(span_danger("[user] knocks [src] down!"), \
 				span_userdanger("[user] knocks you down!"), span_hear("You hear aggressive shuffling follow by a loud thud!"), null, user)
 			to_chat(user, span_danger("You knock [src] down!"))
-			return FALSE
+			return TRUE
 		else
 			playsound(loc, 'sound/effects/hit_kick.ogg', 25, TRUE, -1)
 			apply_damage(disarm_damage, STAMINA, BODY_ZONE_CHEST)

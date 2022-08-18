@@ -5,7 +5,6 @@
 	health = 200
 	icon_state = "alienrunner"
 	var/datum/action/cooldown/alien/skyrat/evade/evade_ability
-	move_delay_add = -1
 	melee_damage_lower = 20
 	melee_damage_upper = 25
 

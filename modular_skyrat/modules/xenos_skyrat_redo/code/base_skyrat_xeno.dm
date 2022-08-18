@@ -13,3 +13,14 @@
 
 /datum/action/cooldown/alien/skyrat
 	icon_icon = 'modular_skyrat/modules/xenos_skyrat_redo/icons/xeno_actions.dmi'
+
+/datum/config_entry/keyed_list/multiplicative_movespeed //I couldn't find a better way to do this :(
+	default = list(
+	/mob/living/simple_animal = 1,
+	/mob/living/silicon/pai = 1,
+	/mob/living/carbon/alien/humanoid/hunter = -1,
+	/mob/living/carbon/alien/humanoid/royal/praetorian = 1,
+	/mob/living/carbon/alien/humanoid/royal/queen = 3,
+	/mob/living/carbon/alien/humanoid/skyrat/runner = -1,
+	/mob/living/carbon/alien/humanoid/skyrat/defender = 0.5,
+	)
