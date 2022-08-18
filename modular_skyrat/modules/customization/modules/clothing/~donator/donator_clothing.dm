@@ -700,7 +700,7 @@
 			index = c_color_index + 1
 		c_color_index = index
 		update_icon()
-		ooser.update_inv_wear_mask()
+		ooser.update_worn_mask()
 		ooser.update_action_buttons_icon()
 		to_chat(ooser, span_notice("You toggle the [src] to [possible_colors[c_color_index]]."))
 
