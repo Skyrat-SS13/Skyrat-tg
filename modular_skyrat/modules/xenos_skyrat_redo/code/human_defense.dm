@@ -1,10 +1,4 @@
 /mob/living/carbon/human/attack_alien(mob/living/carbon/alien/humanoid/user, list/modifiers)
-	if(check_shields(user, 0, "the [user.name]"))
-		playsound(loc, 'sound/weapons/parry.ogg', 25, TRUE, -1) //Audio feedback to the fact you just got blocked
-		visible_message(span_danger("[user] attempts to touch [src]!"), \
-						span_danger("[user] attempts to touch you!"), span_hear("You hear a swoosh!"), null, user)
-		to_chat(user, span_warning("You attempt to touch [src]!"))
-		return FALSE
 	. = ..()
 	if(!.)
 		return
@@ -13,12 +7,20 @@
 		var/obj/item/mob_held_item = get_active_held_item()
 		var/disarm_damage = rand(user.melee_damage_lower * 1.5, user.melee_damage_upper * 1.5)
 		if(mob_held_item)
+			if(check_shields(user, 0, "the [user.name]"))
+				playsound(loc, 'sound/weapons/parry.ogg', 25, TRUE, -1) //Audio feedback to the fact you just got blocked
+				apply_damage(disarm_damage, STAMINA, BODY_ZONE_CHEST)
+				visible_message(span_danger("[user] attempts to touch [src]!"), \
+					span_danger("[user] attempts to touch you!"), span_hear("You hear a swoosh!"), null, user)
+				to_chat(user, span_warning("You attempt to touch [src]!"))
+				return FALSE
 			playsound(loc, 'sound/weapons/thudswoosh.ogg', 25, TRUE, -1) //The sounds of these are changed so the xenos can actually hear they are being non-lethal
 			Knockdown(5 SECONDS)
 			apply_damage(disarm_damage, STAMINA, BODY_ZONE_CHEST)
 			visible_message(span_danger("[user] knocks [src] down!"), \
-							span_userdanger("[user] knocks you down!"), span_hear("You hear aggressive shuffling follow by a loud thud!"), null, user)
+				span_userdanger("[user] knocks you down!"), span_hear("You hear aggressive shuffling follow by a loud thud!"), null, user)
 			to_chat(user, span_danger("You knock [src] down!"))
+			return FALSE
 		else
 			playsound(loc, 'sound/effects/hit_kick.ogg', 25, TRUE, -1)
 			apply_damage(disarm_damage, STAMINA, BODY_ZONE_CHEST)

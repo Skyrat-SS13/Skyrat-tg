@@ -1,0 +1,70 @@
+/mob/living/carbon/alien/humanoid/skyrat/runner
+	name = "alien runner"
+	caste = "runner"
+	maxHealth = 200
+	health = 200
+	icon_state = "alienrunner"
+	var/datum/action/cooldown/alien/skyrat/evade/evade_ability
+	move_delay_add = -1
+	melee_damage_lower = 20
+	melee_damage_upper = 25
+
+/mob/living/carbon/alien/humanoid/skyrat/runner/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/tackler, stamina_cost = 0, base_knockdown = 2, range = 10, speed = 2, skill_mod = 7, min_distance = 0)
+	evade_ability = new
+	evade_ability.Grant(src)
+
+/mob/living/carbon/alien/humanoid/skyrat/runner/Destroy()
+	QDEL_NULL(evade_ability)
+	return ..()
+
+/mob/living/carbon/alien/humanoid/skyrat/runner/create_internal_organs()
+	internal_organs += new /obj/item/organ/internal/alien/plasmavessel/small
+	..()
+
+/datum/action/cooldown/alien/skyrat/evade
+	name = "Evade"
+	desc = "Allows you to evade any projectile that hits you for a few seconds."
+	button_icon_state = "evade"
+	plasma_cost = 100
+	cooldown_time = 60 SECONDS
+	var/evade_active = FALSE
+	var/evasion_duration = 10 SECONDS
+
+/datum/action/cooldown/alien/skyrat/evade/Activate()
+	. = ..()
+	if(evade_active) //Can't evade while we're already evading.
+		owner.balloon_alert(owner, "already evading")
+		return FALSE
+	owner.balloon_alert(owner, "evasive movements began")
+	to_chat(owner, span_danger("We take evasive action, making us impossible to hit with projectiles for the next [evasion_duration/10] seconds."))
+	addtimer(CALLBACK(src, .proc/evasion_deactivate), evasion_duration)
+	evade_active = TRUE
+	RegisterSignal(owner, COMSIG_PROJECTILE_ON_HIT, .proc/on_projectile_hit)
+	return TRUE
+
+/datum/action/cooldown/alien/skyrat/evade/proc/evasion_deactivate()
+	evade_active = FALSE
+	owner.balloon_alert(owner, "evasion ended")
+	UnregisterSignal(owner, COMSIG_PROJECTILE_ON_HIT)
+
+/datum/action/cooldown/alien/skyrat/evade/proc/on_projectile_hit()
+	if(owner.incapacitated(IGNORE_GRAB))
+		return BULLET_ACT_HIT
+	if(!isturf(owner.loc))
+		return BULLET_ACT_HIT
+	if(evade_active)
+		owner.visible_message(span_danger("[owner] effortlessly dodges the projectile!"), span_userdanger("You dodge the projectile!"))
+		playsound(get_turf(owner), pick('sound/weapons/bulletflyby.ogg', 'sound/weapons/bulletflyby2.ogg', 'sound/weapons/bulletflyby3.ogg'), 75, TRUE)
+		owner.add_filter("runner_evasion", 2, gauss_blur_filter(5))
+		addtimer(CALLBACK(owner, /atom.proc/remove_filter, "runner_evasion"), 0.5 SECONDS)
+		return BULLET_ACT_FORCE_PIERCE
+	return BULLET_ACT_HIT
+
+/mob/living/carbon/alien/humanoid/skyrat/runner/bullet_act(obj/projectile/P, def_zone, piercing_hit = FALSE)
+	if(evade_ability)
+		var/evade_result = evade_ability.on_projectile_hit()
+		if(!(evade_result == BULLET_ACT_HIT))
+			return evade_result
+	. = ..()
