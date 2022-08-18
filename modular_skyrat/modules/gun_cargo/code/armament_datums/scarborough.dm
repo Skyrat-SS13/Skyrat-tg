@@ -8,7 +8,7 @@
 	subcategory = ARMAMENT_SUBCATEGORY_PISTOL
 
 /datum/armament_entry/cargo_gun/scarborough/pistol/makarov
-	item_type = /obj/item/gun/ballistic/automatic/pistol
+	item_type = /obj/item/gun/ballistic/automatic/pistol/clandestine
 	lower_cost = CARGO_CRATE_VALUE * 10
 	upper_cost = CARGO_CRATE_VALUE * 15
 

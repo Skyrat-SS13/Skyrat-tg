@@ -600,6 +600,8 @@
 					/obj/item/crucifix,
 					/obj/item/crucifix,
 					/obj/item/storage/toolbox/ammo,
+					/obj/item/storage/toolbox/ammo,
+					/obj/item/storage/toolbox/ammo,
 					/obj/item/storage/toolbox/maint_kit,
 					/obj/item/clothing/suit/armor/vest/russian,
 					/obj/item/clothing/head/helmet/rus_helmet,
@@ -610,8 +612,8 @@
 					/obj/item/clothing/mask/gas/hecu2,
 					/obj/item/clothing/shoes/combat,
 					/obj/item/gun/ballistic/rifle/boltaction,
-					/obj/item/ammo_box/a762,
+					/obj/item/storage/toolbox/ammo/mosin,
 					/obj/item/gun/ballistic/automatic/plastikov,
-					/obj/item/ammo_box/magazine/plastikov9mm,
+					/obj/item/storage/toolbox/ammo/bison,
 					/obj/item/gun/ballistic/automatic/pistol,
-					/obj/item/ammo_box/magazine/m9mm)
+					/obj/item/storage/toolbox/ammo/makarov)

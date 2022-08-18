@@ -36,7 +36,7 @@
 	company_flag = COMPANY_INTERDYNE
 
 /obj/item/gun/ballistic/automatic/pistol
-	company_flag = COMPANY_SCARBOROUGH
+	company_flag = COMPANY_IZHEVSK
 
 /obj/item/gun/ballistic/revolver/detective
 	company_flag = COMPANY_NANOTRASEN

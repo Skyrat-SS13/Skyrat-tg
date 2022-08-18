@@ -217,19 +217,20 @@
 	name = "offensive heavy supplies"
 	loadout_desc = "An assortment of heavy soldier supplies finely tuned for rapid approach and munition support.\
 	 Features FTU's standard pulse MMG with two spare ammo boxes, as well as ammunition for Krinkov and PP-542.\
-		And a bonus frag grenade."
+		And some bonus frag grenades."
 
 
 /obj/structure/closet/crate/secure/weapon/nri/heavy/offense/PopulateContents()
 	new /obj/item/gun/ballistic/automatic/pitbull/pulse/r40(src)
 	new /obj/item/ammo_box/magazine/pulse/r40(src)
 	new /obj/item/ammo_box/magazine/pulse/r40(src)
-	new /obj/item/ammo_box/magazine/akm(src)
-	new /obj/item/ammo_box/magazine/akm(src)
-	new /obj/item/ammo_box/magazine/akm(src)
-	new /obj/item/ammo_box/magazine/akm(src)
-	new /obj/item/ammo_box/magazine/plastikov9mm(src)
-	new /obj/item/ammo_box/magazine/plastikov9mm(src)
-	new /obj/item/ammo_box/magazine/plastikov9mm(src)
-	new /obj/item/ammo_box/magazine/plastikov9mm(src)
+	new /obj/item/storage/toolbox/ammo/krinkov(src)
+	new /obj/item/storage/toolbox/ammo/krinkov_xeno(src)
+	new /obj/item/storage/toolbox/ammo/bison/ert(src)
+	new /obj/item/ammo_box/magazine/akm/emp(src)
+	new /obj/item/ammo_box/magazine/akm/fire(src)
+	new /obj/item/ammo_box/magazine/akm/ricochet(src)
+	new /obj/item/grenade/frag(src)
+	new /obj/item/grenade/frag(src)
+	new /obj/item/grenade/frag(src)
 	new /obj/item/grenade/frag(src)

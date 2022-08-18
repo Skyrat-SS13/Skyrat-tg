@@ -26,11 +26,6 @@
 	upper_cost = CARGO_CRATE_VALUE * 8
 	stock_mult = 2
 
-/datum/armament_entry/cargo_gun/nanotrasen/shotgun/doublebarrel
-	item_type = /obj/item/gun/ballistic/shotgun/doublebarrel
-	lower_cost = CARGO_CRATE_VALUE * 3
-	upper_cost = CARGO_CRATE_VALUE * 6
-
 /datum/armament_entry/cargo_gun/nanotrasen/shotgun/combat
 	item_type = /obj/item/gun/ballistic/shotgun/automatic/combat
 	lower_cost = CARGO_CRATE_VALUE * 10

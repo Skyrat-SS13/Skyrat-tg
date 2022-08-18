@@ -33,11 +33,54 @@
 	caliber = "a762x39"
 	max_ammo = 30
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
-	
+
+/obj/item/ammo_box/magazine/akm/ricochet
+	name = "marksman Krinkov magazine"
+	desc = "a banana-shaped double-stack magazine able to hold 30 rounds of 5.6mm ammo. It's said that in the early days of SolFed's spread, Spanish colony rebels often referred to these as 'Goat Horns'. Contains highly ricocheting ammunition."
+	icon_state = "akm_ricochet"
+	ammo_type = /obj/item/ammo_casing/realistic/a762x39/ricochet
+
+/obj/item/ammo_box/magazine/akm/fire
+	name = "incendiary Krinkov magazine"
+	desc = "a banana-shaped double-stack magazine able to hold 30 rounds of 5.6mm ammo. It's said that in the early days of SolFed's spread, Spanish colony rebels often referred to these as 'Goat Horns'. Contains incendiary ammunition."
+	icon_state = "akm_fire"
+	ammo_type = /obj/item/ammo_casing/realistic/a762x39/fire
+
+/obj/item/ammo_box/magazine/akm/xeno
+	name = "anti-acid Krinkov magazine"
+	desc = "a banana-shaped double-stack magazine able to hold 30 rounds of 5.6mm ammo. It's said that in the early days of SolFed's spread, Spanish colony rebels often referred to these as 'Goat Horns'. Contains anti-acid ammunition, highly efficient against Aliens."
+	icon_state = "akm_xeno"
+	ammo_type = /obj/item/ammo_casing/realistic/a762x39/xeno
+
+/obj/item/ammo_box/magazine/akm/ap
+	name = "armor-piercing Krinkov magazine"
+	desc = "a banana-shaped double-stack magazine able to hold 30 rounds of 5.6mm ammo. It's said that in the early days of SolFed's spread, Spanish colony rebels often referred to these as 'Goat Horns'. Contains armor-piercing ammunition."
+	icon_state = "akm_ap"
+	ammo_type = /obj/item/ammo_casing/realistic/a762x39/ap
+
+/obj/item/ammo_box/magazine/akm/emp
+	name = "ion Krinkov magazine"
+	desc = "a banana-shaped double-stack magazine able to hold 30 rounds of 5.6mm ammo. It's said that in the early days of SolFed's spread, Spanish colony rebels often referred to these as 'Goat Horns'. Contains ion ammunition, good for disrupting electronics and wrecking mechas."
+	icon_state = "akm_emp"
+	ammo_type = /obj/item/ammo_casing/realistic/a762x39/emp
+
+/obj/item/ammo_box/magazine/akm/rubber
+	name = "rubber Krinkov magazine"
+	desc = "a banana-shaped double-stack magazine able to hold 30 rounds of 5.6mm ammo. It's said that in the early days of SolFed's spread, Spanish colony rebels often referred to these as 'Goat Horns'. Contains less-than-lethal rubber ammunition."
+	icon_state = "akm_rubber"
+	ammo_type = /obj/item/ammo_casing/realistic/a762x39/rubber
+
 /obj/item/ammo_box/magazine/akm/banana
 	name = "\improper Krinkov extended magazine"
 	desc = "a banana-shaped double-stack magazine able to hold 45 rounds of 5.6x40mm ammunition. It's meant to be used on a light machine gun, but it's just a longer Krinkov magazine."
 	max_ammo = 45
+
+/obj/item/ammo_box/magazine/akm/civvie
+	name = "\improper Sabel magazine"
+	desc = "a shortened double-stack magazine able to hold 15 rounds of 5.6mm ammo."
+	icon_state = "akm_civ"
+	max_ammo = 15
+	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
 /obj/item/gun/ballistic/automatic/akm/modern
 	name = "\improper Bubba's Krinkov"
@@ -46,3 +89,27 @@
 	inhand_icon_state = "akm"
 	worn_icon_state = "akm"
 	fire_delay = 1
+
+/obj/item/gun/ballistic/automatic/akm/civvie
+	name = "\improper Sabel-42 smoothbore carbine"
+	desc = "A timeless human design of a carbine chambered in the NRI's 5.6mm ammo. Internal modifications to the receiver and magwell in order to accomodate it for civillian use made it incompatible with the conventional magazines, as well as removed its fully automatic capabilities. Smooth bore negatively impacts its accuracy."
+	icon_state = "akm_civ"
+	inhand_icon_state = "akm_civ"
+	fire_select_modes = SELECT_SEMI_AUTOMATIC
+	mag_type = /obj/item/ammo_box/magazine/akm/civvie
+	burst_size = 1
+	fire_delay = 5
+	dual_wield_spread = 15
+	spread = 5
+	worn_icon_state = "akm_civ"
+	dirt_modifier = 1
+	recoil = 0.5
+
+/obj/item/gun/ballistic/automatic/akm/nri
+	name = "\improper KV-62 carbine"
+	desc = "A modified version of the most iconic human firearm ever made, re-engineered for better weight, handling and accuracy, chambered in the NRI's 5.6mm ammo. The 'НРИ - Оборонная Коллегия' is etched on the bolt."
+	icon_state = "akm_nri"
+	inhand_icon_state = "akm_nri"
+	worn_icon_state = "akm_nri"
+	dirt_modifier = 0.6
+	can_suppress = TRUE
