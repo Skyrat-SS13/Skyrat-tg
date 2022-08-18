@@ -101,13 +101,9 @@
 		var/mob/living/carbon/human/H = user
 		if(H.dna.species.bodytype & BODYTYPE_DIGITIGRADE)
 			adjusted = DIGITIGRADE_STYLE
-<<<<<<< HEAD
-		H.update_inv_w_uniform()
-	*/ // SKYRAT EDIT END
-=======
 		H.update_worn_undersuit()
+	*/ // SKYRAT EDIT END
 
->>>>>>> 2eccf3cea0a (Cleans up update_icons, makes the update_icon_updates_onmob element bespoke, updates CODEOWNERS (#69179))
 	if(attached_accessory && slot != ITEM_SLOT_HANDS && ishuman(user))
 		var/mob/living/carbon/human/H = user
 		attached_accessory.on_uniform_equip(src, user)

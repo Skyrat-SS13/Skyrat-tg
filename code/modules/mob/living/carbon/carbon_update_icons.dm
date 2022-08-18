@@ -72,8 +72,8 @@
 		overlays_standing[cache_index] = null
 
 //used when putting/removing clothes that hide certain mutant body parts to just update those and not update the whole body.
-/mob/living/carbon/human/proc/update_mutant_bodyparts()
-	dna.species.handle_mutant_bodyparts(src)
+/mob/living/carbon/human/proc/update_mutant_bodyparts(force_update = FALSE) // SKYRAT EDIT CHANGE
+	dna.species.handle_mutant_bodyparts(src, force_update = force_update) // SKYRAT EDIT CHANGE
 	update_body_parts()
 
 /mob/living/carbon/update_body(is_creating = FALSE)
@@ -169,13 +169,9 @@
 
 	apply_overlay(WOUND_LAYER)
 
-<<<<<<< HEAD
 //SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
 /*
-/mob/living/carbon/update_inv_wear_mask()
-=======
 /mob/living/carbon/update_worn_mask()
->>>>>>> 2eccf3cea0a (Cleans up update_icons, makes the update_icon_updates_onmob element bespoke, updates CODEOWNERS (#69179))
 	remove_overlay(FACEMASK_LAYER)
 
 	if(!get_bodypart(BODY_ZONE_HEAD)) //Decapitated
@@ -208,13 +204,9 @@
 */
 //SKYRAT EDIT REMOVAL END
 
-<<<<<<< HEAD
 //SKYRAT EDIT REMOVAL BEGIN - TESHARI CLOTHES (moved to modular)
 /*
-/mob/living/carbon/update_inv_back()
-=======
 /mob/living/carbon/update_worn_back()
->>>>>>> 2eccf3cea0a (Cleans up update_icons, makes the update_icon_updates_onmob element bespoke, updates CODEOWNERS (#69179))
 	remove_overlay(BACK_LAYER)
 
 	if(client && hud_used?.inv_slots[TOBITSHIFT(ITEM_SLOT_BACK) + 1])
@@ -229,13 +221,9 @@
 */
 //SKYRAT EDIT REMOVAL END
 
-<<<<<<< HEAD
 //SKYRAT EDIT REMOVAL BEGIN - CUSTOMIZATION (moved to modular)
 /*
-/mob/living/carbon/update_inv_head()
-=======
 /mob/living/carbon/update_worn_head()
->>>>>>> 2eccf3cea0a (Cleans up update_icons, makes the update_icon_updates_onmob element bespoke, updates CODEOWNERS (#69179))
 	remove_overlay(HEAD_LAYER)
 
 	if(!get_bodypart(BODY_ZONE_HEAD)) //Decapitated

@@ -155,17 +155,13 @@
 			if(gloves)
 				return
 			gloves = I
-<<<<<<< HEAD
 			//SKYRAT EDIT ADDITION - ERP UPDATE
 			if(gloves.breakouttime)
 				ADD_TRAIT(src, TRAIT_RESTRAINED, GLOVES_TRAIT)
 				stop_pulling()
 				update_action_buttons_icon()
 			//SKYRAT EDIT ADDITION END
-			update_inv_gloves()
-=======
 			update_worn_gloves()
->>>>>>> 2eccf3cea0a (Cleans up update_icons, makes the update_icon_updates_onmob element bespoke, updates CODEOWNERS (#69179))
 		if(ITEM_SLOT_FEET)
 			if(shoes)
 				return
@@ -178,8 +174,7 @@
 			wear_suit = I
 
 			if(I.flags_inv & HIDEJUMPSUIT)
-<<<<<<< HEAD
-				update_inv_w_uniform()
+				update_worn_undersuit()
 			//SKYRAT EDIT ADDITION - ERP UPDATE
 			if(I.flags_inv & HIDESEXTOY)
 				update_inv_anus()
@@ -187,9 +182,6 @@
 				update_inv_penis()
 				update_inv_nipples()
 			//SKYRAT EDIT ADDITION END
-=======
-				update_worn_undersuit()
->>>>>>> 2eccf3cea0a (Cleans up update_icons, makes the update_icon_updates_onmob element bespoke, updates CODEOWNERS (#69179))
 			if(wear_suit.breakouttime) //when equipping a straightjacket
 				ADD_TRAIT(src, TRAIT_RESTRAINED, SUIT_TRAIT)
 				stop_pulling() //can't pull if restrained
@@ -211,8 +203,7 @@
 			if(s_store)
 				return
 			s_store = I
-<<<<<<< HEAD
-			update_inv_s_store()
+			update_suit_storage()
 
 		//SKYRAT EDIT ADDITION BEGIN - ERP_SLOT_SYSTEM
 		if(ITEM_SLOT_PENIS)
@@ -250,12 +241,8 @@
 				update_inv_nipples()
 			else
 				to_chat(usr, "[src] is not topless, you cannot access [usr == src ? "your" : src.p_their()] nipples!")
-
 		//SKYRAT EDIT ADDITION END
 
-=======
-			update_suit_storage()
->>>>>>> 2eccf3cea0a (Cleans up update_icons, makes the update_icon_updates_onmob element bespoke, updates CODEOWNERS (#69179))
 		else
 			to_chat(src, span_danger("You are trying to equip this item to an unsupported inventory slot. Report this to a coder!"))
 
@@ -292,18 +279,17 @@
 		wear_suit = null
 		if(!QDELETED(src)) //no need to update we're getting deleted anyway
 			if(I.flags_inv & HIDEJUMPSUIT)
-<<<<<<< HEAD
-				update_inv_w_uniform()
+				update_worn_undersuit()
+
+			// SKYRAT EDIT ADDITION START
 			if(I.flags_inv & HIDESEXTOY)
 				update_inv_anus()
 				update_inv_vagina()
 				update_inv_penis()
 				update_inv_nipples()
-			update_inv_wear_suit()
-=======
-				update_worn_undersuit()
+			// SKYRAT EDIT ADDITION END
+
 			update_worn_oversuit()
->>>>>>> 2eccf3cea0a (Cleans up update_icons, makes the update_icon_updates_onmob element bespoke, updates CODEOWNERS (#69179))
 	else if(I == w_uniform)
 		if(invdrop)
 			if(r_store)
@@ -370,8 +356,7 @@
 	else if(I == s_store)
 		s_store = null
 		if(!QDELETED(src))
-<<<<<<< HEAD
-			update_inv_s_store()
+			update_suit_storage()
 
 	//SKYRAT EDIT ADDITION BEGIN - ERP_SLOT_SYSTEM
 	else if(I == vagina)
@@ -392,9 +377,6 @@
 			update_inv_penis()
 	//SKYRAT EDIT ADDITION END
 
-=======
-			update_suit_storage()
->>>>>>> 2eccf3cea0a (Cleans up update_icons, makes the update_icon_updates_onmob element bespoke, updates CODEOWNERS (#69179))
 	update_equipment_speed_mods()
 
 	// Send a signal for when we unequip an item that used to cover our feet/shoes. Used for bloody feet

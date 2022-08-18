@@ -284,12 +284,8 @@
 			icon_state = options[choice]
 		/* SKYRAT ADDITION END
 		icon_state = options[choice]
-<<<<<<< HEAD
 		*/
-		user.update_inv_wear_mask()
-=======
 		user.update_worn_mask()
->>>>>>> 2eccf3cea0a (Cleans up update_icons, makes the update_icon_updates_onmob element bespoke, updates CODEOWNERS (#69179))
 		update_action_buttons()
 		to_chat(user, span_notice("Your Mime Mask has now morphed into [choice]!"))
 		return TRUE

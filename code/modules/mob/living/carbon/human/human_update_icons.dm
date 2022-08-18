@@ -58,19 +58,6 @@ There are several things that need to be remembered:
 	my_head.update_limb(FALSE, is_creating)
 	update_body_parts()
 
-<<<<<<< HEAD
-
-//used when putting/removing clothes that hide certain mutant body parts to just update those and not update the whole body.
-/mob/living/carbon/human/proc/update_mutant_bodyparts(force_update = FALSE) // SKYRAT EDIT CHANGE
-	dna.species.handle_mutant_bodyparts(src, force_update = force_update) // SKYRAT EDIT CHANGE
-	update_body_parts()
-
-/mob/living/carbon/human/update_body(is_creating = FALSE)
-	dna.species.handle_body(src)
-	..()
-
-=======
->>>>>>> 2eccf3cea0a (Cleans up update_icons, makes the update_icon_updates_onmob element bespoke, updates CODEOWNERS (#69179))
 /* --------------------------------------- */
 //For legacy support.
 /mob/living/carbon/human/regenerate_icons()
@@ -197,12 +184,7 @@ There are several things that need to be remembered:
 
 	apply_overlay(ID_LAYER)
 
-<<<<<<< HEAD
-/mob/living/carbon/human/update_inv_gloves()
-=======
-
 /mob/living/carbon/human/update_worn_gloves()
->>>>>>> 2eccf3cea0a (Cleans up update_icons, makes the update_icon_updates_onmob element bespoke, updates CODEOWNERS (#69179))
 	remove_overlay(GLOVES_LAYER)
 
 	if(client && hud_used && hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_GLOVES) + 1])
@@ -326,12 +308,7 @@ There are several things that need to be remembered:
 		overlays_standing[EARS_LAYER] = ears_overlay
 	apply_overlay(EARS_LAYER)
 
-<<<<<<< HEAD
-
-/mob/living/carbon/human/update_inv_neck()
-=======
 /mob/living/carbon/human/update_worn_neck()
->>>>>>> 2eccf3cea0a (Cleans up update_icons, makes the update_icon_updates_onmob element bespoke, updates CODEOWNERS (#69179))
 	remove_overlay(NECK_LAYER)
 
 	if(client && hud_used && hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_NECK) + 1])
@@ -561,12 +538,8 @@ There are several things that need to be remembered:
 
 	apply_overlay(SUIT_LAYER)
 
-<<<<<<< HEAD
-/mob/living/carbon/human/update_inv_pockets()
-=======
 
 /mob/living/carbon/human/update_pockets()
->>>>>>> 2eccf3cea0a (Cleans up update_icons, makes the update_icon_updates_onmob element bespoke, updates CODEOWNERS (#69179))
 	if(client && hud_used)
 		var/atom/movable/screen/inventory/inv
 
@@ -960,7 +933,6 @@ taur_bodytype: The taur bodytype associated to the item we're trying to wear. Ca
 					missing_eyes.pixel_x += dna.species.offset_features[OFFSET_FACE][1]
 					missing_eyes.pixel_y += dna.species.offset_features[OFFSET_FACE][2]
 				add_overlay(missing_eyes)
-<<<<<<< HEAD
 			//SKYRAT EDIT ADDITION
 			if (parent_eyes && parent_eyes.is_emissive)
 				var/mutable_appearance/emissive_appearance = emissive_appearance('icons/mob/human_face.dmi', parent_eyes ? parent_eyes.eye_icon_state : "eyes_missing", -BODY_LAYER)
@@ -970,12 +942,8 @@ taur_bodytype: The taur bodytype associated to the item we're trying to wear. Ca
 					emissive_appearance.pixel_y += dna.species.offset_features[OFFSET_FACE][2]
 				add_overlay(emissive_appearance)
 			//SKYRAT EDIT END
-	update_inv_head()
-	update_inv_wear_mask()
-=======
 
 	update_worn_head()
 	update_worn_mask()
->>>>>>> 2eccf3cea0a (Cleans up update_icons, makes the update_icon_updates_onmob element bespoke, updates CODEOWNERS (#69179))
 
 #undef RESOLVE_ICON_STATE
