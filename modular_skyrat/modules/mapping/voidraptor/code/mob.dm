@@ -85,7 +85,7 @@
 /mob/living/simple_animal/hostile/bear/wojtek
 	name = "Wojtek"
 	real_name = "Wojtek"
-	desc = "The bearer of Bluespace Artillery"
+	desc = "The bearer of Bluespace Artillery."
 	faction = list("neutral")
 	gender = MALE
 
