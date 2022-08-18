@@ -785,7 +785,7 @@
 		grab_ghost()
 	if(full_heal)
 		fully_heal(admin_revive = admin_revive)
-	if(stat == DEAD && can_be_revived()) //in some cases you can't revive (e.g. no brain)
+	if(stat == DEAD && can_be_revived() || admin_revive) //in some cases you can't revive (e.g. no brain) //SKYRAT EDIT ADDITION - DNR TRAIT - Added: " || admin_revive"
 		set_suicide(FALSE)
 		set_stat(UNCONSCIOUS) //the mob starts unconscious,
 		updatehealth() //then we check if the mob should wake up.

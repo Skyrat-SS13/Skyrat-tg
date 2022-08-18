@@ -124,6 +124,7 @@
 #include "ntnetwork_tests.dm"
 #include "nuke_cinematic.dm"
 #include "objectives.dm"
+#include "operating_table.dm"
 #include "outfit_sanity.dm"
 #include "paintings.dm"
 #include "pills.dm"
