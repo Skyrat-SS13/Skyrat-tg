@@ -215,17 +215,10 @@
 		wearer.update_inv_w_uniform()
 	if(part == helmet)
 		helmet.icon_state = "[skin]-helmet[seal ? "-sealed" : ""]"
-<<<<<<< HEAD
 		wearer.update_inv_head()
 		wearer.update_inv_wear_mask()
 		wearer.update_inv_glasses()
-		wearer.update_hair()
-=======
-		wearer.update_worn_head()
-		wearer.update_worn_mask()
-		wearer.update_worn_glasses()
 		wearer.update_body_parts()
->>>>>>> dcd84e1bdc7 (It's 2 am and im having a manic episode so i fixed hair (#69092))
 
 /// Finishes the suit's activation, starts processing
 /obj/item/mod/control/proc/finish_activation(on)

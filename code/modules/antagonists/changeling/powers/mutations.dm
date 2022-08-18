@@ -93,15 +93,9 @@
 		H.visible_message(span_warning("[H] casts off [H.p_their()] [suit_name_simple]!"), span_warning("We cast off our [suit_name_simple]."), span_hear("You hear the organic matter ripping and tearing!"))
 		H.temporarilyRemoveItemFromInventory(H.head, TRUE) //The qdel on dropped() takes care of it
 		H.temporarilyRemoveItemFromInventory(H.wear_suit, TRUE)
-<<<<<<< HEAD
 		H.update_inv_wear_suit()
 		H.update_inv_head()
-		H.update_hair(is_creating = TRUE)
-=======
-		H.update_worn_oversuit()
-		H.update_worn_head()
 		H.update_body_parts()
->>>>>>> dcd84e1bdc7 (It's 2 am and im having a manic episode so i fixed hair (#69092))
 
 		if(blood_on_castoff)
 			H.add_splatter_floor()

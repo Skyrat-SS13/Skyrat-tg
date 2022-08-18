@@ -18,7 +18,7 @@
 
 /obj/item/straight_razor/proc/shave(mob/living/carbon/human/target_human)
 	target_human.facial_hairstyle = "Shaved"
-	target_human.update_hair(is_creating = TRUE)
+	target_human.update_body_parts()
 	playsound(loc, 'sound/items/unsheath.ogg', 20, TRUE)
 
 /obj/item/straight_razor/attack(mob/attacked_mob, mob/living/user)

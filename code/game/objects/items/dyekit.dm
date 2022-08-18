@@ -53,18 +53,5 @@
 	human_target.grad_style[gradient_key] = new_grad_style
 	human_target.grad_color[gradient_key] = sanitize_hexcolor(new_grad_color)
 	playsound(src, 'sound/effects/spray.ogg', 5, TRUE, 5)
-<<<<<<< HEAD
-	human_target.update_hair(is_creating = TRUE)
-
-	//SKYRAT EDIT ADDITION
-	uses--
-
-/obj/item/dyespray/examine(mob/user)
-	. = ..()
-	. += "It has [uses] uses left."
-
-	//SKYRAT EDIT END
-*/
-=======
 	human_target.update_body_parts()
->>>>>>> dcd84e1bdc7 (It's 2 am and im having a manic episode so i fixed hair (#69092))
+*/
