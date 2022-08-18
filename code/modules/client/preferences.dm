@@ -114,8 +114,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	if(loaded_preferences_successfully)
 		if(load_character())
 			// SKYRAT EDIT START - Sanitizing languages
-			for(var/datum/language/lang_path as anything in languages)
-				if(initial(lang_path.secret))
+			for(var/lang_path as anything in languages)
+				var/datum/language/language = GLOB.language_datum_instances[lang_path]
+				if(!language || language.secret)
 					languages.Remove(lang_path)
 			// SKYRAT EDIT END
 			return // SKYRAT EDIT - Don't remove this. Just don't. Nothing is worth forced random characters.
