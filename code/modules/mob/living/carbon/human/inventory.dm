@@ -25,6 +25,7 @@
 			return r_store
 		if(ITEM_SLOT_SUITSTORE)
 			return s_store
+/*
 		//SKYRAT EDIT ADDITION BEGIN - ERP_SLOT_SYSTEM
 		if(ITEM_SLOT_VAGINA)
 			return vagina
@@ -35,6 +36,7 @@
 		if(ITEM_SLOT_PENIS)
 			return penis
 		//SKYRAT EDIT ADDITION END
+*/
 	return ..()
 
 /mob/living/carbon/human/get_slot_by_item(obj/item/looking_for)
@@ -155,12 +157,14 @@
 			if(gloves)
 				return
 			gloves = I
+/*
 			//SKYRAT EDIT ADDITION - ERP UPDATE
 			if(gloves.breakouttime)
 				ADD_TRAIT(src, TRAIT_RESTRAINED, GLOVES_TRAIT)
 				stop_pulling()
 				update_action_buttons_icon()
 			//SKYRAT EDIT ADDITION END
+*/
 			update_worn_gloves()
 		if(ITEM_SLOT_FEET)
 			if(shoes)
@@ -175,6 +179,7 @@
 
 			if(I.flags_inv & HIDEJUMPSUIT)
 				update_worn_undersuit()
+/*
 			//SKYRAT EDIT ADDITION - ERP UPDATE
 			if(I.flags_inv & HIDESEXTOY)
 				update_inv_anus()
@@ -182,6 +187,7 @@
 				update_inv_penis()
 				update_inv_nipples()
 			//SKYRAT EDIT ADDITION END
+*/
 			if(wear_suit.breakouttime) //when equipping a straightjacket
 				ADD_TRAIT(src, TRAIT_RESTRAINED, SUIT_TRAIT)
 				stop_pulling() //can't pull if restrained
@@ -204,7 +210,7 @@
 				return
 			s_store = I
 			update_suit_storage()
-
+/*
 		//SKYRAT EDIT ADDITION BEGIN - ERP_SLOT_SYSTEM
 		if(ITEM_SLOT_PENIS)
 			if(src.is_bottomless())
@@ -242,7 +248,7 @@
 			else
 				to_chat(usr, "[src] is not topless, you cannot access [usr == src ? "your" : src.p_their()] nipples!")
 		//SKYRAT EDIT ADDITION END
-
+*/
 		else
 			to_chat(src, span_danger("You are trying to equip this item to an unsupported inventory slot. Report this to a coder!"))
 
@@ -305,12 +311,14 @@
 		if(!QDELETED(src))
 			update_worn_undersuit()
 	else if(I == gloves)
+/*
 		//SKYRAT EDIT ADDITION - ERP UPDATE
 		if(gloves.breakouttime) //when unequipping a straightjacket
 			REMOVE_TRAIT(src, TRAIT_RESTRAINED, GLOVES_TRAIT)
 			drop_all_held_items() //suit is restraining
 			update_action_buttons_icon() //certain action buttons may be usable again.
 		//SKYRAT EDIT ADDITION END
+*/
 		gloves = null
 		if(!QDELETED(src))
 			update_worn_gloves()
@@ -357,7 +365,7 @@
 		s_store = null
 		if(!QDELETED(src))
 			update_suit_storage()
-
+/*
 	//SKYRAT EDIT ADDITION BEGIN - ERP_SLOT_SYSTEM
 	else if(I == vagina)
 		vagina = null
@@ -376,7 +384,7 @@
 		if(!QDELETED(src))
 			update_inv_penis()
 	//SKYRAT EDIT ADDITION END
-
+*/
 	update_equipment_speed_mods()
 
 	// Send a signal for when we unequip an item that used to cover our feet/shoes. Used for bloody feet
