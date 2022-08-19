@@ -1,3 +1,9 @@
+// Skyrat CC area defines
+
+/*
+* Ghost Cafe
+*/
+
 /area/centcom/holding
 	name = "Holding Facility"
 
@@ -24,3 +30,6 @@
 
 /area/centcom/holding/cafeplumbing
 	name = "Ghost Cafe Plumbing"
+
+/area/centcom/interlink
+	name = "The Interlink"

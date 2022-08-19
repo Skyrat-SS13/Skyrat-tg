@@ -312,7 +312,7 @@
 	build_path = /obj/item/borg/upgrade/better_clamp
 	materials = list(/datum/material/titanium = 4000, /datum/material/gold = 500, /datum/material/bluespace = 50)
 	construction_time = 12 SECONDS
-	category = list("Cyborg Upgrade Modules")
+	category = list(RND_CATEGORY_CYBORG_UPGRADE_MODULES)
 
 
 /obj/item/borg/upgrade/better_clamp
