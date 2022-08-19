@@ -69,7 +69,7 @@
 	name = "Funky"
 	real_name = "Funky"
 	desc = "Gondola is the silent walker. Having no hands he embodies the Taoist principle of wu-wei (non-action) while his smiling facial expression shows his utter and complete acceptance of the world as it is. Its hide is extremely valuable. This one seems a little skinny and attached to the Theater."
-	loot = list(/obj/effect/decal/cleanable/blood/gibs, /obj/item/stack/sheet/animalhide/gondola = 1)
+	loot = list(/obj/effect/decal/cleanable/blood/gibs)
 
 /mob/living/simple_animal/pet/dog/dobermann/walter
 	name = "Walter"
