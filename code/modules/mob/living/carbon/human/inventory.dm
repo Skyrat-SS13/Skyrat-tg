@@ -286,7 +286,7 @@
 		if(!QDELETED(src)) //no need to update we're getting deleted anyway
 			if(I.flags_inv & HIDEJUMPSUIT)
 				update_worn_undersuit()
-
+/*
 			// SKYRAT EDIT ADDITION START
 			if(I.flags_inv & HIDESEXTOY)
 				update_inv_anus()
@@ -294,7 +294,7 @@
 				update_inv_penis()
 				update_inv_nipples()
 			// SKYRAT EDIT ADDITION END
-
+*/
 			update_worn_oversuit()
 	else if(I == w_uniform)
 		if(invdrop)
