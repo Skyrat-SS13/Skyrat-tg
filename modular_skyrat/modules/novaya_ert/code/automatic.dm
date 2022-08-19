@@ -27,12 +27,13 @@
 	righthand_file = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_righthand.dmi'
 	icon_state = "bizon"
 	inhand_icon_state = "bizon"
-	mag_type = /obj/item/ammo_box/magazine/plastikov9mm
 	fire_delay = 1
 	burst_size = 5
 	dual_wield_spread = 10
 	spread = 10
 	projectile_damage_multiplier = 0.35 // It's like 10.5 damage per bullet, it's close enough to 10 shots
+	mag_display = TRUE
+	empty_indicator = TRUE
 	dirt_modifier = 1.25
 
 /obj/item/gun/ballistic/automatic/pistol/ladon/nri
