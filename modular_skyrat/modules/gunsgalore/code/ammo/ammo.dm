@@ -104,7 +104,7 @@
 	name = "5.6x40mm anti-acid bullet casing"
 	desc = "A 5.6x40mm anti-acid bullet casing. Special chemical treatment and an additional layer of water-absorbent materials dissipates and absorbs water from the target's body, making any acid-blooded target melt from the inside.\
 	<br><br>\
-	<i>XENO BUSTER: Deals huge additional damage against Xenomorphs.</i>"
+	<i>XENO BUSTER: Deals huge additional damage against Xenomorphs. (Player-controlled ones, not simplemobs.)</i>"
 	projectile_type = /obj/projectile/bullet/a762x39/xeno
 
 /obj/projectile/bullet/a762x39/xeno
@@ -155,9 +155,23 @@
 	empulse(target, emp_radius, emp_radius)
 	return BULLET_ACT_HIT
 
-/obj/item/ammo_casing/realistic/a762x39/rubber
+/obj/item/ammo_casing/realistic/a762x39/civillian
+	name = "5.6x40mm civillian bullet casing"
+	desc = "A 5.6x40mm civillian-grade surplus bullet casing.\
+	<br><br>\
+	<i>LOW-GRADE: Less-than-average quality ammunition. Worse overall performance.</i>"
+	projectile_type = /obj/projectile/bullet/a762x39/civillian
+
+/obj/projectile/bullet/a762x39/civillian
+	name = "5.6mm surplus bullet"
+	damage = 30
+	wound_bonus = 15
+	armour_penetration = 10
+	wound_falloff_tile = 3
+
+/obj/item/ammo_casing/realistic/a762x39/civillian/rubber
 	name = "5.6x40mm rubber bullet casing"
-	desc = "A 5.6x40mm rubber bullet casing.\
+	desc = "A 5.6x40mm civillian-grade rubber bullet casing.\
 	<br><br>\
 	<i>RUBBER: Less than lethal ammo. Deals both stamina damage and regular damage.</i>"
 	projectile_type = /obj/projectile/bullet/a762x39/rubber
@@ -167,7 +181,7 @@
 	name = "5.6mm rubber bullet"
 	damage = 12
 	armour_penetration = 10
-	stamina = 38
+	stamina = 30
 	ricochets_max = 6
 	ricochet_incidence_leeway = 0
 	ricochet_chance = 130
@@ -176,3 +190,49 @@
 	sharpness = NONE
 	embedding = null
 	wound_bonus = -50
+
+/obj/item/ammo_casing/realistic/a762x39/civillian/hunting
+	name = "5.6x40mm hunting bullet casing"
+	desc = "A 5.6x40mm civillian-grade hunting bullet casing.\
+	<br><br>\
+	<i>HUNTING: Hunting-grade ammunition. Worse overall performance against people. Increased damage against simplemobs.</i>"
+	projectile_type = /obj/projectile/bullet/a762x39/hunting
+
+/obj/projectile/bullet/a762x39/hunting
+	name = "5.6mm hunting bullet"
+	damage = 20
+	wound_bonus = 10
+	armour_penetration = 10
+	wound_falloff_tile = 3
+		/// Bonus force dealt against certain mobs
+	var/faction_bonus_force = 25
+		/// List of mobs we deal bonus damage to
+	var/list/nemesis_path = /mob/living/simple_animal
+
+/obj/projectile/bullet/a762x39/hunting/prehit_pierce(mob/living/target, mob/living/carbon/human/user)
+	if(istype(target, nemesis_path))
+		damage += faction_bonus_force
+	.=..()
+
+/obj/item/ammo_casing/realistic/a762x39/civillian/blank
+	name = "5.6x40mm blank bullet casing"
+	desc = "A 5.6x40mm civillian-grade blank bullet casing.\
+	<br><br>\
+	<i>BLANK: Projectile-less ammunition. Deals no real damage besides a hot exhaust of gas. Because it has no bullet. Good for LARPing?</i>"
+	projectile_type = /obj/projectile/bullet/a762x39/blank
+	harmful = FALSE
+
+/obj/projectile/bullet/a762x39/blank
+	name = "hot gas"
+	icon = 'icons/obj/guns/projectiles_muzzle.dmi'
+	icon_state = "muzzle_bullet"
+	damage = 5
+	damage_type = BURN
+	wound_bonus = -100
+	armour_penetration = 0
+	wound_falloff_tile = 15
+	weak_against_armour = TRUE
+	range = 0.01
+	shrapnel_type = null
+	sharpness = NONE
+	embedding = null

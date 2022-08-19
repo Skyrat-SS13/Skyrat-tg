@@ -68,7 +68,7 @@
 	name = "rubber Krinkov magazine"
 	desc = "a banana-shaped double-stack magazine able to hold 30 rounds of 5.6mm ammo. It's said that in the early days of SolFed's spread, Spanish colony rebels often referred to these as 'Goat Horns'. Contains less-than-lethal rubber ammunition."
 	icon_state = "akm_rubber"
-	ammo_type = /obj/item/ammo_casing/realistic/a762x39/rubber
+	ammo_type = /obj/item/ammo_casing/realistic/a762x39/civillian/rubber
 
 /obj/item/ammo_box/magazine/akm/banana
 	name = "\improper Krinkov extended magazine"
@@ -77,10 +77,10 @@
 
 /obj/item/ammo_box/magazine/akm/civvie
 	name = "\improper Sabel magazine"
-	desc = "a shortened double-stack magazine able to hold 15 rounds of 5.6mm ammo."
+	desc = "a shortened double-stack magazine able to hold 15 rounds of civillian-grade 5.6mm ammo."
 	icon_state = "akm_civ"
 	max_ammo = 15
-	multiple_sprites = AMMO_BOX_FULL_EMPTY
+	ammo_type = /obj/item/ammo_casing/realistic/a762x39/civillian
 
 /obj/item/gun/ballistic/automatic/akm/modern
 	name = "\improper Bubba's Krinkov"
@@ -92,7 +92,7 @@
 
 /obj/item/gun/ballistic/automatic/akm/civvie
 	name = "\improper Sabel-42 smoothbore carbine"
-	desc = "A timeless human design of a carbine chambered in the NRI's 5.6mm ammo. Internal modifications to the receiver and magwell in order to accomodate it for civillian use made it incompatible with the conventional magazines, as well as removed its fully automatic capabilities. Smooth bore negatively impacts its accuracy."
+	desc = "A timeless human design of a carbine chambered in the NRI's 5.6mm ammo. Internal modifications to the receiver and magwell in order to accomodate it for the civillian use made it incompatible with the conventional magazines, as well as removed its fully automatic capabilities. Smooth, low-quality bore negatively impacts its accuracy and doesn't let you use any but the civillian-grade ammunition."
 	icon_state = "akm_civ"
 	inhand_icon_state = "akm_civ"
 	fire_select_modes = SELECT_SEMI_AUTOMATIC
