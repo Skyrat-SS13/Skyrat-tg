@@ -8,9 +8,9 @@
 	subcategory = ARMAMENT_SUBCATEGORY_PISTOL
 
 /datum/armament_entry/cargo_gun/izhevsk/pistol/makarov
-	item_type = /obj/item/gun/ballistic/automatic/pistol
-	lower_cost = CARGO_CRATE_VALUE * 5
-	upper_cost = CARGO_CRATE_VALUE * 7
+	item_type = /obj/item/gun/ballistic/automatic/pistol/makarov
+	lower_cost = CARGO_CRATE_VALUE * 4
+	upper_cost = CARGO_CRATE_VALUE * 5
 
 /datum/armament_entry/cargo_gun/izhevsk/smg
 	subcategory = ARMAMENT_SUBCATEGORY_SUBMACHINEGUN
