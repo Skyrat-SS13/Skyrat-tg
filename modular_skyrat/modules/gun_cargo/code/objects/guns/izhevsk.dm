@@ -23,7 +23,8 @@
 	alt_icons = TRUE
 	dirt_modifier = 1
 	company_flag = COMPANY_IZHEVSK
-	spread = 29
+	spread = 18
+	recoil = 0.1
 
 /obj/item/ammo_box/magazine/ak25
 	name = "\improper AK-25 magazine"
