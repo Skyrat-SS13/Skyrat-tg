@@ -155,23 +155,23 @@
 	empulse(target, emp_radius, emp_radius)
 	return BULLET_ACT_HIT
 
-/obj/item/ammo_casing/realistic/a762x39/civillian
-	name = "5.6x40mm civillian bullet casing"
-	desc = "A 5.6x40mm civillian-grade surplus bullet casing.\
+/obj/item/ammo_casing/realistic/a762x39/civilian
+	name = "5.6x40mm civilian bullet casing"
+	desc = "A 5.6x40mm civilian-grade surplus bullet casing.\
 	<br><br>\
 	<i>LOW-GRADE: Less-than-average quality ammunition. Worse overall performance.</i>"
-	projectile_type = /obj/projectile/bullet/a762x39/civillian
+	projectile_type = /obj/projectile/bullet/a762x39/civilian
 
-/obj/projectile/bullet/a762x39/civillian
+/obj/projectile/bullet/a762x39/civilian
 	name = "5.6mm surplus bullet"
 	damage = 30
 	wound_bonus = 15
 	armour_penetration = 10
 	wound_falloff_tile = 3
 
-/obj/item/ammo_casing/realistic/a762x39/civillian/rubber
+/obj/item/ammo_casing/realistic/a762x39/civilian/rubber
 	name = "5.6x40mm rubber bullet casing"
-	desc = "A 5.6x40mm civillian-grade rubber bullet casing.\
+	desc = "A 5.6x40mm civilian-grade rubber bullet casing.\
 	<br><br>\
 	<i>RUBBER: Less than lethal ammo. Deals both stamina damage and regular damage.</i>"
 	projectile_type = /obj/projectile/bullet/a762x39/rubber
@@ -191,9 +191,9 @@
 	embedding = null
 	wound_bonus = -50
 
-/obj/item/ammo_casing/realistic/a762x39/civillian/hunting
+/obj/item/ammo_casing/realistic/a762x39/civilian/hunting
 	name = "5.6x40mm hunting bullet casing"
-	desc = "A 5.6x40mm civillian-grade hunting bullet casing.\
+	desc = "A 5.6x40mm civilian-grade hunting bullet casing.\
 	<br><br>\
 	<i>HUNTING: Hunting-grade ammunition. Worse overall performance against people. Increased damage against simplemobs.</i>"
 	projectile_type = /obj/projectile/bullet/a762x39/hunting
@@ -214,9 +214,9 @@
 		damage += faction_bonus_force
 	.=..()
 
-/obj/item/ammo_casing/realistic/a762x39/civillian/blank
+/obj/item/ammo_casing/realistic/a762x39/civilian/blank
 	name = "5.6x40mm blank bullet casing"
-	desc = "A 5.6x40mm civillian-grade blank bullet casing.\
+	desc = "A 5.6x40mm civilian-grade blank bullet casing.\
 	<br><br>\
 	<i>BLANK: Projectile-less ammunition. Deals no real damage besides a hot exhaust of gas. Because it has no bullet. Good for LARPing?</i>"
 	projectile_type = /obj/projectile/bullet/a762x39/blank

@@ -68,7 +68,7 @@
 	name = "rubber Krinkov magazine"
 	desc = "a banana-shaped double-stack magazine able to hold 30 rounds of 5.6mm ammo. It's said that in the early days of SolFed's spread, Spanish colony rebels often referred to these as 'Goat Horns'. Contains less-than-lethal rubber ammunition."
 	icon_state = "akm_rubber"
-	ammo_type = /obj/item/ammo_casing/realistic/a762x39/civillian/rubber
+	ammo_type = /obj/item/ammo_casing/realistic/a762x39/civilian/rubber
 
 /obj/item/ammo_box/magazine/akm/banana
 	name = "\improper Krinkov extended magazine"
@@ -77,10 +77,10 @@
 
 /obj/item/ammo_box/magazine/akm/civvie
 	name = "\improper Sabel magazine"
-	desc = "a shortened double-stack magazine able to hold 15 rounds of civillian-grade 5.6mm ammo."
+	desc = "a shortened double-stack magazine able to hold 15 rounds of civilian-grade 5.6mm ammo."
 	icon_state = "akm_civ"
 	max_ammo = 15
-	ammo_type = /obj/item/ammo_casing/realistic/a762x39/civillian
+	ammo_type = /obj/item/ammo_casing/realistic/a762x39/civilian
 
 /obj/item/gun/ballistic/automatic/akm/modern
 	name = "\improper Bubba's Krinkov"
