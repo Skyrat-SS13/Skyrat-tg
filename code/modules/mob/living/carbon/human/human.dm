@@ -1017,7 +1017,7 @@
 		if(prob(50)) //50% chance to break bone/rupture a muscle, etc
 			wound_bon = 100
 			to_chat(src, span_danger("You are crushed under the weight of [target]!"))
-			to_chat(target, span_danger("You accidentaly crush [src]!"))
+			to_chat(target, span_danger("You accidentally crush [src]!"))
 		else
 			to_chat(src, span_danger("You hurt your [affecting.name] while trying to endure the weight of [target]!"))
 		apply_damage(25, BRUTE, affecting, wound_bonus=wound_bon) //Try to lift a 2 centner creature. 
