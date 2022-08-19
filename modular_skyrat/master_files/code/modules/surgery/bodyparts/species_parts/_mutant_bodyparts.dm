@@ -73,7 +73,6 @@
 
 /obj/item/bodypart/r_leg/digitigrade
 	icon_greyscale = 'modular_skyrat/master_files/icons/mob/species/mammal_parts_greyscale.dmi'
-	uses_mutcolor = TRUE
 	limb_id = "digitigrade"
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ORGANIC | BODYTYPE_DIGITIGRADE
 
