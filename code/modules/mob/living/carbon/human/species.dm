@@ -827,7 +827,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	human_mob.update_mutant_bodyparts()
 	//SKYRAT EDIT ADDITION END
 	human_mob.hairstyle = random_hairstyle(human_mob.gender)
-	human_mob.update_hair(is_creating = TRUE)
+	human_mob.update_body_parts()
 
 ///Proc that will randomise the underwear (i.e. top, pants and socks) of a species' associated mob
 /datum/species/proc/randomize_active_underwear(mob/living/carbon/human/human_mob)
@@ -1103,7 +1103,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 		return
 	target.facial_hairstyle = "Shaved"
 	target.hairstyle = "Bald"
-	target.update_hair(is_creating = TRUE)
+	target.update_body_parts()
 
 //////////////////
 // ATTACK PROCS //
