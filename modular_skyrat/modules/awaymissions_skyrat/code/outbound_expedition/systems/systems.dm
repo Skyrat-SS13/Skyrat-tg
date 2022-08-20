@@ -67,7 +67,7 @@ GLOBAL_LIST_EMPTY(outbound_ship_systems)
 		. += "online_overlay"
 		set_light(light_range, light_power, light_color, TRUE)
 	else
-		set_light(light_range, light_power, light_color, FALSE)
+		set_light(0, 0, light_color, FALSE)
 
 /datum/outbound_ship_system/sensors
 	name = "Sensors"
@@ -87,6 +87,10 @@ GLOBAL_LIST_EMPTY(outbound_ship_systems)
 	GLOB.outbound_ship_systems -= src
 	return ..()
 
+/obj/machinery/outbound_expedition/shuttle_thruster_controller/on_system_fail(datum/outbound_ship_system/failed_system)
+	. = ..()
+	icon_state = "[initial(icon_state)]-off"
+
 /datum/outbound_ship_system/power
 	name = "Power"
 	machine_type = /obj/machinery/power/smes/vanguard
@@ -95,6 +99,10 @@ GLOBAL_LIST_EMPTY(outbound_ship_systems)
 	name = "power controller"
 	desc = "A deep-storage superconducting magnetic energy storage (SMES) unit, built to passively harvest power from space radiation."
 	circuit = null
+	resistance_flags = LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
+	max_integrity = INFINITY
+	density = TRUE
+	anchored = TRUE
 
 /obj/machinery/power/smes/vanguard/Initialize(mapload)
 	. = ..()

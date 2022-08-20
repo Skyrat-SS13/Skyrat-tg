@@ -1,5 +1,4 @@
 #define TRIGGER_RANGE 2
-#define TIME_PER_MESSAGE 2.5 SECONDS
 
 /mob/living/carbon/human/npc
 	var/list/text_strings = list()
@@ -25,4 +24,3 @@
 	equipOutfit(/datum/outfit/centcom/naval/commander) //they're not actually CC so change later
 
 #undef TRIGGER_RANGE
-#undef TIME_PER_MESSAGE

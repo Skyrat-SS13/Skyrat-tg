@@ -36,11 +36,20 @@
 	. = ..()
 	OUTBOUND_CONTROLLER
 	ADD_TRAIT(src, TRAIT_SPACEWALK, INNATE_TRAIT)
+	/* //debugging method
 	for(var/obj/machinery/machine as anything in outbound_controller.machine_datums)
 		if(outbound_controller.machine_datums[machine] != outbound_controller.ship_systems["Sensors"])
 			continue
 		system_to_attack = machine
-		RegisterSignal(system_to_attack, COMSIG_AWAY_SYSTEM_FAIL, .proc/on_destruction)
+		RegisterSignal(system_to_attack, COMSIG_AWAY_SYSTEM_FAIL, .proc/on_destruction)*/
+	while(!system_to_attack)
+		if(!length(outbound_controller.machine_datums))
+			break
+		var/obj/machinery/picked_machine = pick(outbound_controller.machine_datums)
+		var/datum/outbound_ship_system/ship_sys = outbound_controller.machine_datums[picked_machine]
+		if(ship_sys.health > 0)
+			system_to_attack = picked_machine
+			RegisterSignal(system_to_attack, COMSIG_AWAY_SYSTEM_FAIL, .proc/on_destruction)
 
 /mob/living/simple_animal/hostile/auto_scrapper/ListTargets()
 	. = ..()

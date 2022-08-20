@@ -19,6 +19,12 @@
 		///datum/outbound_wire_conditional/multiwire = 2,
 		)
 	// Wire code end
+	// Arguably a puzzle, sensor computer start
+	/// If we've scanned this jump
+	var/has_scanned = FALSE
+	/// If we can scan currently
+	var/can_scan = FALSE
+	// Sensor computer end
 
 
 /datum/outbound_puzzle_controller/New()
@@ -83,3 +89,20 @@
 	compiled_desc += "[act_cond.desc]"
 	var/datum/outbound_teamwork_puzzle/wires/wire_puzz = puzzles["Wires"]
 	wire_puzz.desc = compiled_desc
+
+/// We succeeded scanning for a signal after the betrayal
+/datum/outbound_puzzle_controller/proc/on_computer_scan()
+	OUTBOUND_CONTROLLER
+	for(var/i in 1 to rand(3, 5))
+		outbound_controller.event_order += "random"
+	outbound_controller.event_order += /datum/outbound_random_event/story/radar
+	outbound_controller.real_jumps_to_dest = outbound_controller.event_order.Find(/datum/outbound_random_event/story/radar)
+	outbound_controller.jumps_to_dest = outbound_controller.real_jumps_to_dest + rand(-1, 2)
+
+/// What happens after a jump is made by the ship
+/datum/outbound_puzzle_controller/proc/on_jump()
+	has_scanned = FALSE
+	var/datum/outbound_teamwork_puzzle/wires/wire_puzzle = puzzles["Wires"]
+	wire_puzzle.generate_wires()
+	var/datum/outbound_teamwork_puzzle/dials/dial_puzzle = puzzles["Dials"]
+	dial_puzzle.choose_phrase()

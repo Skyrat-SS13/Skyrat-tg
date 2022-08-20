@@ -1,3 +1,4 @@
+#define TIME_PER_MESSAGE 2.5 SECONDS
 // A very simple component meant to create NPC characters that react in specific ways (usually talking) to people being near
 // Please expand upon this if you need more functionality
 
@@ -29,3 +30,5 @@
 	for(var/string in say_strings)
 		curr_time += TIME_PER_MESSAGE
 		addtimer(CALLBACK(parent, /atom/movable.proc/say, string), curr_time)
+
+#undef TIME_PER_MESSAGE

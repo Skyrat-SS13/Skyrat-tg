@@ -21,6 +21,18 @@
 	if(!length(outbound_controller.uncryoed_mobs))
 		outbound_controller.uncryoed_mobs = outbound_controller.participating_mobs.Copy()
 
+/datum/outbound_objective/cryo/betrayal
+	name = "Cryo (Betrayal)"
+	desc = "Find a way to get new coordinates and cryo when ready."
+
+/datum/outbound_objective/cryo/resonance_cascade
+	name = "Cryo (Resonance Cascade)"
+	desc = "Kill the enemies and cryo when ready."
+
+/datum/outbound_objective/cryo/salvage
+	name = "Cryo (Salvage)"
+	desc = "Cryo or search the nearby ruin."
+
 /datum/outbound_objective/talk_person
 	name = "Commander Talk"
 	desc = "Talk with the commander before departing."
@@ -48,5 +60,10 @@
 
 /datum/outbound_objective/part_fix
 	name = "Part Fixing"
-	desc = "Fix the malfunctioning panels!"
+	desc = "Fix the malfunctioning panels."
 	landmark_id = "part_fix"
+
+/datum/outbound_objective/radar_station
+	name = "Extract Data"
+	desc = "Find a way to extract data from the radar station."
+	landmark_id = "radar_station" //unused

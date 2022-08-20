@@ -71,7 +71,7 @@
 /obj/machinery/outbound_expedition/shuttle_grav_gen/Initialize(mapload)
 	. = ..()
 	GLOB.outbound_ship_systems += src
-	update_overlays()
+	overlays += "+on"
 
 /obj/machinery/outbound_expedition/shuttle_grav_gen/Destroy()
 	GLOB.outbound_ship_systems -= src
@@ -79,9 +79,4 @@
 
 /obj/machinery/outbound_expedition/shuttle_grav_gen/on_system_fail(datum/outbound_ship_system/failed_system)
 	. = ..()
-	update_overlays()
-
-/obj/machinery/outbound_expedition/shuttle_grav_gen/update_overlays()
-	. = ..()
-	if(!failed)
-		. += "+on"
+	overlays -= "+on"

@@ -1,3 +1,7 @@
+#define STORY_STAGE_PRE_BETRAYAL 1
+#define STORY_STAGE_POST_BETRAYAL 2
+#define STORY_STAGE_POST_RADAR 3
+
 /datum/away_controller/outbound_expedition
 	name = "Away Controller: Outbound Expedition"
 	ss_delay = 10 SECONDS
@@ -15,6 +19,8 @@
 	var/datum/outbound_random_event/current_event
 	/// How many jumps to our destination (not always accurate)
 	var/jumps_to_dest = 0
+	/// How many ACTUAL jumps to the destination
+	var/real_jumps_to_dest = 0
 	/// Assoc list of machine-to-datum for ship systems
 	var/list/machine_datums = list()
 	/// Time until the elevator hits the bottom, locking anyone else from entering
@@ -24,7 +30,7 @@
 	/// List of mobs who have yet to cryo
 	var/list/uncryoed_mobs = list()
 	/// Typecache of areas to clear when you move
-	var/static/list/area_clear_whitelist = typecacheof(/area/awaymission/outbound_expedition)
+	var/static/list/area_clear_whitelist = typecacheof(list(/area/awaymission/outbound_expedition, /area/space/outbound_space))
 	/// Typecache of areas NOT to clear when you move
 	var/static/list/area_clear_blacklist = typecacheof(/area/awaymission/outbound_expedition/shuttle)
 	/// Base list of probabilities for events
@@ -33,15 +39,20 @@
 		/datum/outbound_random_event/harmful = 3,
 		/datum/outbound_random_event/mob_harmful = 1,
 	)
-	/// Extra list of shit to delete on ship move
-	var/list/deletion_stuff = list()
 	/// Ordered list of events.
 	var/list/event_order = list(
+		///datum/outbound_random_event/harmless/nothing,
+/*		"random",
 		"random",
 		"random",
 		"random",
-		"random", //figure out later when i've actually made the story missions
+		"random",
+		/datum/outbound_random_event/story/betrayal,*/
+		"random",
+		/datum/outbound_random_event/story/betrayal,
 	)
+	/// Current story stage. Used for calculating difficulty
+	var/current_stage = STORY_STAGE_PRE_BETRAYAL
 
 /datum/away_controller/outbound_expedition/New()
 	. = ..()
@@ -64,7 +75,8 @@
 		objectives[objective_type] = new_objective
 	RegisterSignal(src, COMSIG_AWAY_CRYOPOD_EXITED, .proc/exited_cryopod)
 	RegisterSignal(src, COMSIG_AWAY_CRYOPOD_ENTERED, .proc/entered_cryopod)
-	jumps_to_dest += rand(-3, 5)
+	real_jumps_to_dest = event_order.Find(/datum/outbound_random_event/story/betrayal)
+	jumps_to_dest = real_jumps_to_dest + rand(-3, 5)
 
 /datum/away_controller/outbound_expedition/Destroy(force, ...)
 	for(var/datum/system as anything in ship_systems)
@@ -107,7 +119,8 @@
 	if(corresponding_landmark)
 		objective_pinpoint(person_chosen, corresponding_landmark)
 		corresponding_landmark.enable()
-	person_chosen?.hud_used?.away_dialogue.set_text(chosen_objective.desc)
+	INVOKE_ASYNC(person_chosen.hud_used?.away_dialogue, /atom/movable/screen/screentip/away_dialogue.proc/set_text_slow, chosen_objective.desc)
+	//person_chosen?.hud_used?.away_dialogue.set_text(chosen_objective.desc)
 	chosen_objective.on_give(person_chosen)
 
 /datum/away_controller/outbound_expedition/proc/give_objective_all(datum/outbound_objective/chosen_objective)
@@ -117,31 +130,40 @@
 // Event stuff
 
 /datum/away_controller/outbound_expedition/proc/select_event()
+	if(jumps_to_dest == -1)
+		event_order += "random"
+
 	if(event_order[1] != "random")
-		current_event = locate(event_order[1]) in event_datums
-		current_event.on_select()
+		var/datum/current_event_sel = locate(event_order[1]) in event_datums
 		event_order.Cut(1, 2)
-		return
+		return current_event_sel
 
 	var/calculated_difficulty = 1
 	switch(length(participating_mobs))
 		if(1)
 			calculated_difficulty = 0.75
+		// 2-4 people have a difficulty of 1
 		if(5 to INFINITY)
 			calculated_difficulty = length(participating_mobs) * 0.25 //maybe make exponential
-	// add story progression diff mod here
+	switch(current_stage)
+		if(STORY_STAGE_POST_BETRAYAL)
+			calculated_difficulty *= 1.5
+		if(STORY_STAGE_POST_RADAR)
+			calculated_difficulty *= 2
 	var/list/final_event_prob = list()
 	for(var/event_type in event_chances)
 		if(event_type == /datum/outbound_random_event/harmless)
-			final_event_prob[event_type] = event_chances[event_type] / calculated_difficulty
+			final_event_prob[event_type] = round(event_chances[event_type] / calculated_difficulty)
 		else
-			final_event_prob[event_type] = event_chances[event_type] * calculated_difficulty
+			final_event_prob[event_type] = round(event_chances[event_type] * calculated_difficulty)
 	var/event_type = pick_weight(final_event_prob)
 	var/list/possible_events = event_datums.Copy()
-	for(var/datum/event in possible_events)
+	for(var/datum/event as anything in possible_events)
 		if(!istype(event, event_type))
 			possible_events.Remove(event)
-	return pick_weight(possible_events)
+	var/pos_num = event_order.Find("random")
+	event_order.Cut(pos_num, pos_num + 1)
+	return pick(possible_events)
 
 // Landmark check
 
@@ -180,22 +202,20 @@
 // """Moving""" the ship
 
 /datum/away_controller/outbound_expedition/proc/move_shuttle(list/affected_areas = area_clear_whitelist)
-	jumps_to_dest--
+	if(real_jumps_to_dest != -1)
+		jumps_to_dest--
+	var/area/important_space_region = GLOB.areas_by_type[/area/space/outbound_space]
 	for(var/affected_area as anything in affected_areas)
 		if(is_type_in_typecache(affected_area, area_clear_blacklist))
 			continue
 		var/area/affected_area_datum = GLOB.areas_by_type[affected_area]
-		for(var/atom/to_delete as obj|mob|turf in affected_area_datum)
-			if(isturf(to_delete))
-				var/turf/to_change = to_delete
-				to_change.ChangeTurf(/turf/open/space)
-			else if(isobserver(to_delete))
-				continue
-			else
-				qdel(to_delete) // probably a crime but what can you do
-		qdel(affected_area)
-	for(var/atom/movable/thing in deletion_stuff)
-		qdel(thing)
+		for(var/turf/to_delete in affected_area_datum)
+			var/turf/to_change = to_delete
+			to_change.empty(/turf/open/space)
+			for(var/obj/effect/landmark/objective_update/outbound_landmark in to_change.contents)
+				qdel(outbound_landmark)
+			important_space_region.contents += to_change
+			to_change.transfer_area_lighting(affected_area_datum, important_space_region)
 
 /datum/away_controller/outbound_expedition/proc/tick_elevator_time()
 	elevator_time -= 1 SECONDS
@@ -219,7 +239,7 @@
 /datum/away_controller/outbound_expedition/proc/exited_cryopod(datum/source, mob/living/living_mob)
 	SIGNAL_HANDLER
 	if(length(uncryoed_mobs))
-		uncryoed_mobs += living_mob
+		uncryoed_mobs |= living_mob
 
 /datum/away_controller/outbound_expedition/proc/everyones_gone_to_the_cryopods()
 	for(var/obj/machinery/outbound_expedition/cryopod/sleepytime as anything in GLOB.outbound_cryopods)
@@ -232,30 +252,32 @@
 		addtimer(CALLBACK(human_content, /mob.proc/playsound_local, get_turf(human_content), 'sound/runtime/hyperspace/hyperspace_progress.ogg', 100), 7.8 SECONDS)
 
 	move_shuttle()
-	//select_event()
+	puzzle_controller.on_jump()
 	addtimer(CALLBACK(src, .proc/post_move_act, select_event()), 13 SECONDS)
 
 /datum/away_controller/outbound_expedition/proc/post_move_act(datum/outbound_random_event/picked_event)
-	var/datum/outbound_random_event/our_event
+/*	var/datum/outbound_random_event/our_event //remove later when not debugging
 	for(var/datum/outbound_random_event/event in event_datums)
-		if(!istype(event, /datum/outbound_random_event/harmful/part_malf))
+		if(!istype(event, /datum/outbound_random_event/))
 			continue
 		our_event = event
 	current_event = our_event
-	our_event.on_select()
+	our_event.on_select()*/
 
 	for(var/obj/machinery/outbound_expedition/cryopod/wakeytime as anything in GLOB.outbound_cryopods)
 		wakeytime.locked = FALSE
 		var/mob/living/carbon/human/human_content = locate(/mob/living/carbon/human) in wakeytime
 		human_content?.playsound_local(get_turf(human_content), 'sound/runtime/hyperspace/hyperspace_end.ogg', 100)
+		human_content?.clear_fullscreen("cryopod", FALSE)
 
-	addtimer(CALLBACK(src, .proc/cause_event), 6 SECONDS)
+	//addtimer(CALLBACK(src, .proc/cause_event), 6 SECONDS) //add picked event arg when not debugging
+	addtimer(CALLBACK(src, .proc/cause_event, picked_event), 6 SECONDS)
 
 /datum/away_controller/outbound_expedition/proc/cause_event(datum/outbound_random_event/picked_event)
-	for(var/mob/living/carbon/human/person as anything in participating_mobs)
-		person.clear_fullscreen("cryopod", FALSE)
-	//current_event = picked_event
-	//picked_event.on_select()
+	//for(var/mob/living/carbon/human/person as anything in participating_mobs)
+	//	person.clear_fullscreen("cryopod", FALSE)
+	current_event = picked_event
+	picked_event.on_select()
 
 // ???
 
@@ -278,3 +300,7 @@
 			return
 	var/meteor = pick_weight(meteortypes)
 	new meteor(pickedstart, pickedgoal)
+
+#undef STORY_STAGE_PRE_BETRAYAL
+#undef STORY_STAGE_POST_BETRAYAL
+#undef STORY_STAGE_POST_RADAR

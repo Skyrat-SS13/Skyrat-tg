@@ -24,6 +24,7 @@ GLOBAL_LIST_EMPTY(outbound_cryopods)
 	density = TRUE
 	anchored = TRUE
 	state_open = TRUE
+	interaction_flags_machine = INTERACT_MACHINE_OFFLINE|INTERACT_MACHINE_WIRES_IF_OPEN|INTERACT_MACHINE_ALLOW_SILICON|INTERACT_MACHINE_OPEN_SILICON|INTERACT_MACHINE_SET_MACHINE
 	/// Is the machine locked closed, unable to open?
 	var/locked = FALSE
 

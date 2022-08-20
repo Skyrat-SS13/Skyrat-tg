@@ -37,8 +37,11 @@
 /turf/open/space/no_travel/Adjacent(atom/neighbor, atom/target, atom/movable/mover)
 	return FALSE
 
+/area/space/outbound_space
+	icon_state = "space_near" // replace later
+
 /area/awaymission/outbound_expedition
-	name = "Outbound Expediton"
+	name = "Outbound Expedition"
 
 /area/awaymission/outbound_expedition/dock
 	name = "Vanguard Dock"
@@ -67,3 +70,31 @@
 /area/awaymission/outbound_expedition/ruin/survival
 	name = "Survival Shelter"
 	icon_state = "awaycontent7"
+
+/area/awaymission/outbound_expedition/ruin/clock
+	name = "Clock Cult Ruin"
+	icon_state = "awaycontent8"
+
+/area/awaymission/outbound_expedition/ruin/blood
+	name = "Blood Cult Ruin"
+	icon_state = "awaycontent9"
+
+/area/awaymission/outbound_expedition/ruin/syndicate_frigate
+	name = "Syndicate Frigate"
+	icon_state = "awaycontent10"
+
+/area/awaymission/outbound_expedition/ruin/holdout
+	name = "Holdout AI Core"
+	icon_state = "awaycontent11"
+
+/area/awaymission/outbound_expedition/ruin/old_shipyard
+	name = "Old Shipyard"
+	icon_state = "awaycontent12"
+
+/area/awaymission/outbound_expedition/ruin/radar_station
+	name = "Deep-Space Radar Station"
+	icon_state = "awaycontent13"
+
+/area/awaymission/outbound_expedition/ruin/gateway_ruin
+	name = "Ruined Gateway"
+	icon_state = "awaycontent15"

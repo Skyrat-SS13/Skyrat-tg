@@ -1,6 +1,6 @@
-/obj/structure/closet/crate/secure/outbound_cargo
-	name = "abandoned crate"
-	desc = "A weathered, pressure-sealed container"
+/obj/structure/closet/crate/secure/loot/outbound_cargo
+	name = "sealed crate"
+	desc = "A weathered, pressure-sealed container."
 	req_access = (ACCESS_SYNDICATE)
 	light_range = 1
 	light_power = 2
@@ -86,13 +86,14 @@
 		),
 	)
 
-/obj/structure/closet/crate/secure/outbound_cargo/Initialize(mapload)
+/obj/structure/closet/crate/secure/loot/outbound_cargo/Initialize(mapload)
 	. = ..()
 	var/picked_color = pick(GLOB.marker_beacon_colors)
 	set_light(light_range, light_power, GLOB.marker_beacon_colors[picked_color], TRUE)
 
-/obj/structure/closet/crate/secure/outbound_cargo/PopulateContents()
+/obj/structure/closet/crate/secure/loot/outbound_cargo/spawn_loot()
 	var/selected_type = pick(loot_cats)
 	for(var/i in 1 to rand(3, 6))
 		var/obj/item/picked_item = pick_weight(loot_cats[selected_type])
 		new picked_item(src)
+	spawned_loot = TRUE

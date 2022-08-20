@@ -27,8 +27,7 @@
 		for(var/turf/open/space/space_tile in range(25, center))
 			space_turfs += space_tile
 	var/turf/chosen_turf = pick(space_turfs)
-	var/obj/structure/closet/crate/secure/outbound_cargo/crate = new (chosen_turf)
-	outbound_controller.deletion_stuff += crate
+	new /obj/structure/closet/crate/secure/loot/outbound_cargo(chosen_turf)
 
 /datum/outbound_random_event/harmless/cargo/clear_objective()
 	OUTBOUND_CONTROLLER
@@ -44,6 +43,11 @@
 	var/static/list/possible_templates = list(
 		/datum/map_template/ruin/outbound_expedition/prison_shuttle = 1,
 		/datum/map_template/ruin/outbound_expedition/survival_bunker = 1,
+		/datum/map_template/ruin/outbound_expedition/clock_cult = 1,
+		/datum/map_template/ruin/outbound_expedition/blood_cult = 1,
+		/datum/map_template/ruin/outbound_expedition/holdout_ai = 1,
+		/datum/map_template/ruin/outbound_expedition/syndicate_frigate = 1,
+		/datum/map_template/ruin/outbound_expedition/old_shipyard = 1,
 	)
 
 /datum/outbound_random_event/harmless/salvage/on_select()
@@ -63,7 +67,7 @@
 /datum/outbound_random_event/harmless/salvage/clear_objective()
 	OUTBOUND_CONTROLLER
 	outbound_controller.current_event = null
-	outbound_controller.give_objective_all(outbound_controller.objectives[/datum/outbound_objective/cryo])
+	outbound_controller.give_objective_all(outbound_controller.objectives[/datum/outbound_objective/cryo/salvage])
 
 /datum/outbound_random_event/harmless/salvage/on_radio()
 	clear_objective()

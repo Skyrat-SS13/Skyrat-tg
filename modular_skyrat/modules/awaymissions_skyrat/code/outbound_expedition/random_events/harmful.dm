@@ -63,10 +63,6 @@
 
 /datum/outbound_random_event/harmful/part_malf/on_select()
 	OUTBOUND_CONTROLLER
-	var/datum/outbound_teamwork_puzzle/wires/wire_puzzle = outbound_controller.puzzle_controller.puzzles["Wires"]
-	wire_puzzle.generate_wires()
-	var/datum/outbound_teamwork_puzzle/dials/dial_puzzle = outbound_controller.puzzle_controller.puzzles["Dials"]
-	dial_puzzle.choose_phrase() //maybe refactor these into the controller or smth? Seems unsustainable currently
 	var/list/possible_systems = outbound_controller.puzzle_controller.puzzles.Copy()
 	for(var/i in 1 to 3) //change later to be scaling
 		var/datum/outbound_teamwork_puzzle/puzzle = pick_n_take(possible_systems)

@@ -29,7 +29,7 @@ GLOBAL_LIST_EMPTY(outbound_objective_landmarks)
 				continue
 			untriggered_mobs |= not_dead_mob
 	for(var/turf/iterating_turf in range(range_req, src))
-		RegisterSignal(iterating_turf, COMSIG_ATOM_ENTERED, .proc/trigger)
+		RegisterSignal(iterating_turf, COMSIG_ATOM_ENTERED, .proc/trigger, override = TRUE)
 	enabled = TRUE
 
 /obj/effect/landmark/away_objective/proc/disable()
@@ -42,7 +42,7 @@ GLOBAL_LIST_EMPTY(outbound_objective_landmarks)
 	SIGNAL_HANDLER
 	OUTBOUND_CONTROLLER
 
-	if(!isliving(entered_atom) || !(entered_atom in untriggered_mobs))
+	if(!enabled || !isliving(entered_atom) || !(entered_atom in untriggered_mobs))
 		return
 
 	var/mob/living/entered_mob = entered_atom
@@ -55,6 +55,7 @@ GLOBAL_LIST_EMPTY(outbound_objective_landmarks)
 	untriggered_mobs -= entered_mob
 	if(!length(untriggered_mobs))
 		disable()
+	return TRUE
 
 // actual landmarks here
 
@@ -66,17 +67,23 @@ GLOBAL_LIST_EMPTY(outbound_objective_landmarks)
 
 /obj/effect/landmark/away_objective/bridge_radio
 	id = "bridge_radio"
+	/// If the computer has talked before this movement
+	var/talked_before = FALSE
+
+/obj/effect/landmark/away_objective/bridge_radio/enable()
+	. = ..()
+	talked_before = FALSE
 
 /obj/effect/landmark/away_objective/bridge_radio/trigger(datum/source, atom/movable/entered_atom)
 	. = ..()
-	if(!.)
+	if(!. || talked_before)
 		return
 	OUTBOUND_CONTROLLER
 	var/turf/our_turf = get_turf(src)
 	for(var/obj/machinery/computer/outbound_radio/radio in our_turf.contents)
 		radio.start_talking(outbound_controller.current_event.type)
+		talked_before = TRUE
 		break
-	outbound_controller.give_objective(entered_atom, outbound_controller.objectives[/datum/outbound_objective/cryo])
 
 /obj/effect/landmark/away_objective/part_fix
 	id = "part_fix"

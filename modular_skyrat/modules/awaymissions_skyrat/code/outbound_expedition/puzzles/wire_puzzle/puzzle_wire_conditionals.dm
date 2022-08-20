@@ -107,7 +107,7 @@
 		acting_wires = list()
 
 // If certain wires are A, B, or C color, cut X, Y, and/or Z wire
-/datum/outbound_wire_conditional/multicolor
+/datum/outbound_wire_conditional/multicolor //may not work?
 	var/list/selected_colors = list()
 	var/list/selected_wires = list()
 
