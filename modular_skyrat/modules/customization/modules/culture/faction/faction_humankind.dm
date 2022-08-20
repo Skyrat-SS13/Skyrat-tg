@@ -3,6 +3,7 @@
 	description = "Your faction was subsidized by SolFed to expand into Sector 13."
 	features = list(/datum/cultural_feature/average)
 	groups = CULTURE_GROUP_HUMAN
+	passport = /obj/item/passport/sol
 
 /datum/cultural_info/faction/freetrade
 	name = "Free Trade Union"

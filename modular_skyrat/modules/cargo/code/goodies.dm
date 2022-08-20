@@ -32,8 +32,8 @@
 	desc = "An upgraded RCD featuring superior material storage. Comes with complimentary frames and circuitry upgrades to boot!"
 	cost = PAYCHECK_CREW * 38
 	contains = list(/obj/item/construction/rcd/improved)
-	
-	
+
+
 /datum/supply_pack/goody/improvedrcdbonus
 	name = "Improved RCD  Value Pack"
 	desc = "A pack of 3 upgraded RCDs featuring superior material storage. Each comes with complimentary frames and circuitry upgrades to boot!"
@@ -72,6 +72,12 @@
 	desc = "A single surplus ration pack from the NRI Defense Collegium. Comes with a standard-issue selection of food selected and approved by at least one Imperial regiment."
 	cost = PAYCHECK_COMMAND * 2 //Less nourishing than the mothic one but you get cigarettes and wo'oh.
 	contains = list(/obj/item/storage/box/nri_rations)
+
+/datum/supply_pack/goody/passport
+	name = "SolFed-standard Replacement Passport"
+	desc = "Keep your identity always legitimate, with a single replacement passport."
+	cost = PAYCHECK_CREW * 2
+	contains = list(/obj/item/passport/sol)
 
 /*
 *	WEAPONS / AMMO

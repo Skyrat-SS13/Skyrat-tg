@@ -7,6 +7,7 @@
 	name = "Invalid Passport"
 	icon = 'modular_skyrat/master_files/icons/obj/passports.dmi'
 	desc = "An invalid passport. How did you get this?"
+	w_class = WEIGHT_CLASS_SMALL
 	var/icon_state_base = "invalid"
 	var/icon_state_ext = "closed"
 	var/has_animation = FALSE
@@ -18,6 +19,7 @@
 	var/cached_faction
 	var/cached_locale
 	var/list/cached_data
+	var/imprinted = FALSE
 
 /obj/item/passport/Initialize(mapload)
 	. = ..()
@@ -25,8 +27,12 @@
 
 /obj/item/passport/CtrlClick(mob/living/carbon/human/user)
 	. = ..()
-	balloon_alert(user, "imprinting...")
-	imprint_owner(user)
+	if (imprinted == FALSE)
+		balloon_alert(user, "imprinting...")
+		imprint_owner(user)
+		return
+	balloon_alert(user, "already imprinted!")
+	return
 
 /obj/item/passport/proc/imprint_owner(mob/living/carbon/human/user)
 	if(istype(user) && user.client)
@@ -36,6 +42,7 @@
 		var/datum/cultural_info/locale = GLOB.culture_locations[user.client.prefs.culture_location]
 		cached_locale = locale?.name
 		cached_data = null
+		imprinted = TRUE
 
 /obj/item/passport/AltClick(mob/user)
 	switch(icon_state_ext)
@@ -70,7 +77,7 @@
 			"headshot_data" = icon2base64(get_headshot_from_datacore(passport_holder.real_name)),
 			"empire" = cached_faction,
 			"locale" = cached_locale,
-			"year_of_birth" = text2num(time2text(world.realtime, "YYYY")) + 540 - passport_holder.age,
+			"age" = passport_holder.age,
 		)
 	return cached_data
 

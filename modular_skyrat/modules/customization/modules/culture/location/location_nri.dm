@@ -4,10 +4,12 @@
 	required_lang = /datum/language/panslavic
 	features = list(/datum/cultural_feature/average)
 	groups = CULTURE_GROUP_HUMAN
+	distance = "Roughly 4000ly"
+	ruling_body = "Pasha Semenov, Eternal Empress"
+	capital = "Planet Providence"
 
 /datum/cultural_info/location/nri/providence
 	name = "Providence"
-	distance = "22.5 light years."
 	description = "Providence, in the Ararat system, is the home planet of the Novaya Rossiyskaya Imperiya, and the capital of that particular superpower.\
 	Established during the early days of imperial colonisation and named after the colonists' capital ship, it soon became a cultural and economical centre of the whole empire. Or rather, the more inhabitable and stabilised regions.\
 	Much of the planet has been heavily scarred by the early days of the colonisation, leaving certain areas of the planet heavily polluted or practically uninhabitable, which became the main focus of the Geological and Ecological Collegium's efforts. \
@@ -15,13 +17,13 @@
 	This state of affairs has seen the immigration of many imperial citizens to the SolFed in recent years, hoping to escape the poor conditions they found themselves in.\
 	The more stable regions near the approximated location of the first landings, now becoming the New St. Petersburg, however, have become thriving with life and various cultural points of interests, as lots of tourists come here to become familiar with the imperial history.\
 	Despite everything unfortunate that have happened to the people of Providence, they remain proud and unbroken, heavily patriotic and tend to bring this with them wherever they go."
+	distance = "Roughly 3800ly"
 	capital = "New St. Petersburg"
 	ruling_body = "Novaya Rossiyskaya Imperiya"
 	groups = CULTURE_NRI
 
 /datum/cultural_info/location/nri/gagarin
 	name = "Gagarin-4"
-	distance = "24 light years"
 	description = "Gagarin is a scientific colony located in the Potemkin-Tauric system close to the anomalous Sector 13. \
 	Given an explicit approval of both the Innovations Collegia and the Eternal Empress, it acquired a unique status of an independent people-owned research institute. \
 	Ruled by a court of well-known scientists and researchers, known as the Academic Senate, Gagarin's recent history is a wave of peaceful protests-gone-wrong. \
@@ -34,6 +36,7 @@
 	This event has got interest of the Empress herself, who, after a personal visit of the people on the planet and listening to their demands, gave them a permission to become an independent organ protected by the Imperiya, \
 	as long as they would be assisting them with their research. This event has marked the creation of an Academic Senate and the formation of the Gagarin colony as it's currently known.\
 	People of Gagarin are very independent and strong-willed, commonly acting in the opposition to the known methodics in order to discover something new."
+	distance = "Roughly 2500ly"
 	economic_power = 0.9
 	ruling_body = "Formally, Novaya Rossiyskaya Imperiya; Factually, Gagarin's Academic Senate"
 	groups = CULTURE_NRI
