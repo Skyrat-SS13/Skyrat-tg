@@ -5,7 +5,7 @@
 #define TRAIT_OXYIMMUNE	"oxyimmune"		// Immune to oxygen damage, ideally give this to all non-breathing species or bad stuff will happen
 #define TRAIT_PERSONALSPACE "personalspace" // Block/counter-attack ass-slaps
 #define TRAIT_MOOD_NOEXAMINE "mood_noexamine" // Can't assess your own mood
-#define TRAIT_DNR "cant_revive" //You just can't be revived without supernatural means
+#define TRAIT_DNR "do_not_revive" // Can't be revived without supernatural means or admin intervention
 #define TRAIT_HARD_SOLES "hard_soles" // No step on glass
 #define TRAIT_SENSITIVESNOUT "sensitive_snout" // Snout hurts when booped
 #define TRAIT_DETECTIVE "detective_ability" //Given to the detective, if they have this, they can see syndicate special descriptions.

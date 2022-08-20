@@ -24,7 +24,7 @@
 	/// The area that we use to trigger other alarms.
 	var/area/myarea = null
 
-/obj/machinery/base_alarm/Initialize()
+/obj/machinery/base_alarm/Initialize(mapload)
 	. = ..()
 	update_icon()
 	myarea = get_area(src)

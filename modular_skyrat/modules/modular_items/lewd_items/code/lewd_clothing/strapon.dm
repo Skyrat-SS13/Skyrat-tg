@@ -21,11 +21,6 @@
 		"equine" = image (icon = src.icon, icon_state = "strapon_equine"),
 		"human" = image (icon = src.icon, icon_state = "strapon_human"))
 
-//to update model
-/obj/item/clothing/strapon/ComponentInitialize()
-	. = ..()
-	AddElement(/datum/element/update_icon_updates_onmob)
-
 //to change model
 /obj/item/clothing/strapon/AltClick(mob/user)
 	if(type_changed == FALSE)
@@ -49,8 +44,9 @@
 		return FALSE
 	return TRUE
 
-/obj/item/clothing/strapon/Initialize()
+/obj/item/clothing/strapon/Initialize(mapload)
 	. = ..()
+	AddElement(/datum/element/update_icon_updates_onmob)
 	update_icon_state()
 	update_icon()
 	update_action_buttons_icons()
@@ -180,7 +176,7 @@
 	item_flags = ABSTRACT | HAND_ITEM | DROPDEL
 	var/strapon_type = "human" //Default var, but we always getting var from strapon_type from item on top
 
-/obj/item/strapon_dildo/Initialize()
+/obj/item/strapon_dildo/Initialize(mapload)
 	. = ..()
 	update_icon_state()
 	update_icon()

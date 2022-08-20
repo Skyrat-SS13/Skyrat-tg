@@ -9,7 +9,7 @@
 	dispensedreagent = /datum/reagent/fuel
 	color = "#742912"	//Gives it a weldingfuel hue
 
-/obj/structure/sink/fuel_well/Initialize()
+/obj/structure/sink/fuel_well/Initialize(mapload)
 	.=..()
 	create_reagents(20)
 	reagents.add_reagent(dispensedreagent, 20)
