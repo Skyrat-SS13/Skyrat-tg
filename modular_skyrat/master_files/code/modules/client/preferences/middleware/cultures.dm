@@ -22,7 +22,7 @@
 		get_asset_datum(/datum/asset/spritesheet/cultures)
 	)
 
-/datum/preference_middleware/cultures/proc/get_ui_data_entries(/datum/background_info/cultural_info, valid)
+/datum/preference_middleware/cultures/proc/get_ui_data_entries(datum/background_info/cultural_info, valid)
 	var/selected = FALSE
 	var/list/sub_cultures = list()
 	if(valid)
@@ -54,7 +54,7 @@
 	data["sub_culture_amount"] = sub_cultures.len
 	return data
 
-/datum/preference_middleware/cultures/proc/get_ui_data_entry(/datum/background_info/cultural_info, selected, valid)
+/datum/preference_middleware/cultures/proc/get_ui_data_entry(datum/background_info/cultural_info, selected, valid)
 	var/required_lang_name = null
 	if(cultural_info.required_lang)
 		var/datum/language/required_lang = GLOB.language_datum_instances[cultural_info.required_lang]
@@ -113,7 +113,7 @@
 		"features" = GLOB.culture_features,
 	)
 
-/datum/preference_middleware/cultures/proc/check_valid(/datum/background_info/cultural_info, /datum/background_info/loaded_cultural_info)
+/datum/preference_middleware/cultures/proc/check_valid(datum/background_info/cultural_info, datum/background_info/loaded_cultural_info)
 	if(!cultural_info || !loaded_cultural_info)
 		return FALSE
 	if(initial(cultural_info.groups) == CULTURE_ALL || initial(loaded_cultural_info.groups) == CULTURE_ALL)
