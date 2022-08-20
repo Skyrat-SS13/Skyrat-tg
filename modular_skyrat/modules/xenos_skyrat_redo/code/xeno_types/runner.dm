@@ -19,14 +19,14 @@
 	return ..()
 
 /mob/living/carbon/alien/humanoid/skyrat/runner/create_internal_organs()
-	internal_organs += new /obj/item/organ/internal/alien/plasmavessel/small
+	internal_organs += new /obj/item/organ/internal/alien/plasmavessel/tiny
 	..()
 
 /datum/action/cooldown/alien/skyrat/evade
 	name = "Evade"
 	desc = "Allows you to evade any projectile that hits you for a few seconds."
 	button_icon_state = "evade"
-	plasma_cost = 100
+	plasma_cost = 50
 	cooldown_time = 60 SECONDS
 	var/evade_active = FALSE
 	var/evasion_duration = 10 SECONDS

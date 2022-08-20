@@ -5,8 +5,9 @@
 	base_pixel_x = -16 //All of the xeno sprites are 64x64, and we want them to be level with the tile they are on, much like oversized quirk users
 	var/damage_coeff = 1 //Do we want this xeno to take less damage
 	var/datum/action/small_sprite/skyrat_xeno/small_sprite
+	mob_size = MOB_SIZE_LARGE
 
-/mob/living/carbon/alien/humanoid/skyrat/defender/Initialize(mapload)
+/mob/living/carbon/alien/humanoid/skyrat/Initialize(mapload)
 	. = ..()
 	small_sprite = new /datum/action/small_sprite/skyrat_xeno()
 	small_sprite.Grant(src)
