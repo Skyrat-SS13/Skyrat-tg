@@ -508,8 +508,7 @@
 				apply_status_effect(/datum/status_effect/climax)
 				apply_status_effect(/datum/status_effect/climax_cooldown)
 				if(create_cum_decal)
-					var/turf/our_turf = get_turf(src)
-					new /obj/effect/decal/cleanable/cum(our_turf)
+					add_cum_splatter_floor(get_turf(src))
 				return TRUE
 			if(vagina)
 				if(is_bottomless() || vagina.visibility_preference == GENITAL_ALWAYS_SHOW)
@@ -987,10 +986,9 @@
 	else
 		user.visible_message(span_warning("[user] starts masturbating onto [target]!"), span_danger("You start masturbating onto [target]!"))
 		if(do_after(user, 60))
-			var/turf/target_turf = get_turf(target)
 			user.visible_message(span_warning("[user] cums on [target]!"), span_danger("You cum on [target]!"))
 			playsound(target, SFX_DESECRATION, 50, TRUE, ignore_walls = FALSE)
-			new/obj/effect/decal/cleanable/cum(target_turf)
+			add_cum_splatter_floor(get_turf(target))
 			if(prob(40))
 				affected_human.try_lewd_autoemote("moan")
 
