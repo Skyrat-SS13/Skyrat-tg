@@ -166,7 +166,7 @@
 				vents += temp_vent
 	if(!length(vents))
 		return FALSE
-	return ..()
+	return TRUE
 
 /datum/dynamic_ruleset/midround/from_ghosts/cortical_borer/generate_ruleset_body(mob/applicant)
 	var/obj/vent = pick_n_take(vents)
