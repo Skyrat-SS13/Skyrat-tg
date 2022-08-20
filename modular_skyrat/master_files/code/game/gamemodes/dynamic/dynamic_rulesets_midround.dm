@@ -1,6 +1,7 @@
 /datum/dynamic_ruleset/midround/autotraitor
 	antag_datum = /datum/antagonist/traitor/saboteur
 
+// modular override of `/datum/dynamic_ruleset/midround/autotraitor/execute()`'s original function, keep as similar to the original ruleset's code as possible
 /datum/dynamic_ruleset/midround/autotraitor/execute()
 	var/mob/M = pick(living_players)
 	assigned += M
