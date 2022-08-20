@@ -39,13 +39,8 @@
 		/obj/item/storage/belt/holster/detective/full = 1
 	)
 
-<<<<<<< HEAD
 	family_heirlooms = list(/obj/item/reagent_containers/food/drinks/bottle/whiskey)
-	rpg_title = "Thiefcatcher"
-=======
-	family_heirlooms = list(/obj/item/reagent_containers/cup/glass/bottle/whiskey)
 	rpg_title = "Thiefcatcher" //I guess they caught them all rip thief...
->>>>>>> 39885334ea4 (Removes Thieves (#69304))
 	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS | JOB_CAN_BE_INTERN
 
 
