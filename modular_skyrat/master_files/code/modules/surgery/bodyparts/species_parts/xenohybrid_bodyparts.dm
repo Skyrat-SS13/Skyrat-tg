@@ -22,7 +22,6 @@
 
 /obj/item/bodypart/r_leg/mutant/xenohybrid
 	icon_greyscale = 'modular_skyrat/master_files/icons/mob/species/xeno_parts_greyscale.dmi'
-	uses_mutcolor = TRUE
 	limb_id = SPECIES_XENO
 	digitigrade_type = /obj/item/bodypart/r_leg/digitigrade/xenohybrid
 

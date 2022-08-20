@@ -28,7 +28,7 @@
 	modkit_design = /datum/design/unique_modkit/bounty
 
 /datum/design/unique_modkit
-	category = list("Mining Designs", "Cyborg Upgrade Modules") //can't be normally obtained
+	category = list(RND_CATEGORY_MINING_DESIGNS, RND_CATEGORY_CYBORG_UPGRADE_MODULES) //can't be normally obtained
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
 	departmental_flags = DEPARTMENT_BITFLAG_CARGO
 
@@ -780,10 +780,13 @@
 
 	owner.playsound_local(get_turf(owner), 'sound/magic/smoke.ogg', 50, TRUE)
 	owner.balloon_alert(owner, "[living_scanned] scanned")
-	addtimer(CALLBACK(src, /atom/.proc/balloon_alert, owner, "scan recharged"), cooldown_time)
+	addtimer(CALLBACK(src, .proc/send_cooldown_end_message, cooldown_time))
 
 	StartCooldown()
 	return TRUE
+
+/datum/action/cooldown/scan/proc/send_cooldown_end_message()
+	owner?.balloon_alert(owner, "scan recharged")
 
 /datum/status_effect/agent_pinpointer/scan
 	duration = 15 SECONDS

@@ -29,7 +29,7 @@
 	company_flag = COMPANY_OLDARMS
 	var/cover_open = FALSE
 
-/obj/item/gun/ballistic/automatic/mg34/ComponentInitialize()
+/obj/item/gun/ballistic/automatic/mg34/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/update_icon_updates_onmob)
 
@@ -123,7 +123,7 @@
 	/// Have we overheated?
 	var/overheated = FALSE
 
-/obj/item/gun/ballistic/automatic/mg34/mg42/Initialize()
+/obj/item/gun/ballistic/automatic/mg34/mg42/Initialize(mapload)
 	. = ..()
 	RegisterSignal(src, COMSIG_GUN_FIRED, .proc/process_heat)
 	START_PROCESSING(SSobj, src)

@@ -75,13 +75,14 @@
 				msg += "[scar_text]"
 
 
-	//On closer inspection, this man isnt a man at all!
-	var/list/covered_zones = get_covered_body_zones()
-	for(var/obj/item/bodypart/part as anything in bodyparts)
-		if(part.body_zone in covered_zones)
-			continue
-		if(part.limb_id != (dna.species.examine_limb_id ? dna.species.examine_limb_id : dna.species.id))
-			msg += "[span_info("[p_they(TRUE)] [p_have()] \an [part.name].")]"
+	if(dna) //not all carbons have it. eg - xenos
+		//On closer inspection, this man isnt a man at all!
+		var/list/covered_zones = get_covered_body_zones()
+		for(var/obj/item/bodypart/part as anything in bodyparts)
+			if(part.body_zone in covered_zones)
+				continue
+			if(part.limb_id != (dna.species.examine_limb_id ? dna.species.examine_limb_id : dna.species.id))
+				. += "[span_info("[p_they(TRUE)] [p_have()] \an [part.name].")]"
 
 
 	return msg

@@ -15,6 +15,3 @@
 		humi.coretemperature = humi.get_body_temp_normal()
 	..()
 
-/mob/living/simple_animal/hostile/asteroid/ice_demon/spawn_crusher_loot()
-	for(var/item_path in crusher_loot)
-		new item_path(loc)

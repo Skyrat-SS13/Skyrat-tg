@@ -522,6 +522,12 @@
 /obj/effect/turf_decal/stripes{
 	dir = 6
 	},
+/obj/machinery/button/door{
+	id = "ptatmos";
+	name = "shutter controls";
+	pixel_x = -39;
+	pixel_y = -10
+	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/port_tarkon/atmos)
 "dg" = (
@@ -1699,12 +1705,17 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/afthall)
 "jv" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
 /obj/machinery/button/door{
 	id = "ptobservatory";
-	name = "shutter controls"
+	name = "shutter controls";
+	pixel_y = -32
 	},
-/turf/closed/wall,
-/area/ruin/space/has_grav/port_tarkon/developement)
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/port_tarkon/observ)
 "jz" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/effect/decal/cleanable/dirt,
@@ -2601,6 +2612,9 @@
 /area/ruin/space/has_grav)
 "of" = (
 /obj/effect/spawner/structure/window/reinforced/no_firelock,
+/obj/machinery/door/poddoor/shutters{
+	id = "ptafthall"
+	},
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/port_tarkon/afthall)
 "og" = (
@@ -3005,6 +3019,15 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/observ)
+"qf" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/button/door{
+	id = "ptafthall";
+	name = "shutter controls";
+	pixel_x = -26
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/port_tarkon/afthall)
 "qh" = (
 /obj/machinery/door/poddoor/shutters/preopen{
 	id = "tarkonouter";
@@ -5358,6 +5381,10 @@
 	dir = 4
 	},
 /obj/item/tape/ruins/tarkon,
+/obj/machinery/button/door{
+	id = "ptcomms";
+	name = "shutter controls"
+	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/port_tarkon/comms)
 "EH" = (
@@ -5540,11 +5567,11 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/table,
 /obj/effect/turf_decal/tile/blue/half,
-/obj/item/encryptionkey/headset_tarkon,
-/obj/item/encryptionkey/headset_tarkon,
-/obj/item/encryptionkey/headset_tarkon,
-/obj/item/encryptionkey/headset_tarkon,
-/obj/item/encryptionkey/headset_tarkon,
+/obj/item/encryptionkey/headset_cargo/tarkon,
+/obj/item/encryptionkey/headset_cargo/tarkon,
+/obj/item/encryptionkey/headset_cargo/tarkon,
+/obj/item/encryptionkey/headset_cargo/tarkon,
+/obj/item/encryptionkey/headset_cargo/tarkon,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/port_tarkon/comms)
 "FS" = (
@@ -8432,6 +8459,9 @@
 /obj/effect/spawner/structure/window/reinforced/no_firelock,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/door/firedoor/solid/closed,
+/obj/machinery/door/poddoor/shutters{
+	id = "ptatmos"
+	},
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/port_tarkon/atmos)
 "WQ" = (
@@ -8693,6 +8723,9 @@
 /area/ruin/space/has_grav/port_tarkon/developement)
 "YK" = (
 /obj/effect/spawner/structure/window/reinforced/no_firelock,
+/obj/machinery/door/poddoor/shutters{
+	id = "ptcomms"
+	},
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/port_tarkon/comms)
 "YT" = (
@@ -9773,8 +9806,8 @@ La
 eu
 Tc
 Uw
-qe
 jv
+nP
 nP
 nP
 nP
@@ -11414,7 +11447,7 @@ mu
 Pz
 LN
 jr
-LN
+qf
 Wp
 of
 of

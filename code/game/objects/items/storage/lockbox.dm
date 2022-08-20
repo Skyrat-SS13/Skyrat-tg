@@ -13,7 +13,7 @@
 	var/icon_closed = "lockbox"
 	var/icon_broken = "lockbox+b"
 
-/obj/item/storage/lockbox/Initialize()
+/obj/item/storage/lockbox/Initialize(mapload)
 	. = ..()
 	atom_storage.max_specific_storage = WEIGHT_CLASS_NORMAL
 	atom_storage.max_total_storage = 14
@@ -96,7 +96,7 @@
 	icon_closed = "medalbox"
 	icon_broken = "medalbox+b"
 
-/obj/item/storage/lockbox/medal/Initialize()
+/obj/item/storage/lockbox/medal/Initialize(mapload)
 	. = ..()
 	atom_storage.max_specific_storage = WEIGHT_CLASS_SMALL
 	atom_storage.max_slots = 10
@@ -245,4 +245,3 @@
 	privacy_lock = atom_storage.locked
 	user.visible_message(span_notice("[user] [privacy_lock ? "" : "un"]locks [src]'s privacy lock."),
 					span_notice("You [privacy_lock ? "" : "un"]lock [src]'s privacy lock."))
-

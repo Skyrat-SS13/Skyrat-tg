@@ -8,3 +8,6 @@
 #define UNDERWEAR_HIDE_SOCKS (1<<0)
 #define UNDERWEAR_HIDE_SHIRT (1<<1)
 #define UNDERWEAR_HIDE_UNDIES (1<<2)
+
+//Appends to the bottom of Defib fails - DNR TRAIT
+#define DEFIB_FAIL_DNR (1<<11)

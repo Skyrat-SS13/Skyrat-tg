@@ -51,7 +51,7 @@
 	//when off of cooldown, will process
 	COOLDOWN_DECLARE(process_timer)
 
-/obj/structure/flora/ash_farming/Initialize()
+/obj/structure/flora/ash_farming/Initialize(mapload)
 	. = ..()
 	START_PROCESSING(SSobj, src)
 	COOLDOWN_START(src, harvest_timer, harvesting_cooldown)

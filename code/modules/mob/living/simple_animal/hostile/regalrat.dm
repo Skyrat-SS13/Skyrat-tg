@@ -82,7 +82,7 @@
 		to_chat(user, span_warning("Someone else already took the rat!"))
 		return
 	key = user.key
-	log_game("[key_name(src)] took control of [name].")
+	src.log_message("took control of [name].", LOG_GAME)
 
 /mob/living/simple_animal/hostile/regalrat/handle_automated_action()
 	if(prob(20))
@@ -315,7 +315,9 @@
 			var/obj/item/food/deadmouse/mouse = new(loc)
 			mouse.icon_state = icon_dead
 			mouse.name = name
-	SSmobs.cheeserats -= src // remove rats on death
+		qdel(src)
+	else
+		SSmobs.cheeserats -= src // remove rats on death
 	return ..()
 
 /mob/living/simple_animal/hostile/rat/revive(full_heal = FALSE, admin_revive = FALSE)

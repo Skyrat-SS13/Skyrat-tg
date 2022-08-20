@@ -4,27 +4,29 @@
 	///Hardcoded styles that can be chosen from and apply to limb, if it's true
 	var/uses_robotic_styles = TRUE
 
-/datum/augment_item/limb/apply(mob/living/carbon/human/H, character_setup = FALSE, datum/preferences/prefs)
+/datum/augment_item/limb/apply(mob/living/carbon/human/augmented, character_setup = FALSE, datum/preferences/prefs)
 	if(character_setup)
 		//Cheaply "faking" the appearance of the prosthetic. Species code sets this back if it doesnt exist anymore
-		var/obj/item/bodypart/BP = path
-		var/obj/item/bodypart/oldBP = H.get_bodypart(initial(BP.body_zone))
-		oldBP.organic_render = FALSE
+		var/obj/item/bodypart/new_limb = path
+		var/obj/item/bodypart/old_limb = augmented.get_bodypart(initial(new_limb.body_zone))
+		old_limb.organic_render = FALSE
 		if(uses_robotic_styles && prefs.augment_limb_styles[slot])
-			oldBP.icon = GLOB.robotic_styles_list[prefs.augment_limb_styles[slot]]
+			old_limb.icon = GLOB.robotic_styles_list[prefs.augment_limb_styles[slot]]
 		else
-			oldBP.icon = initial(BP.icon)
-		oldBP.rendered_bp_icon = initial(BP.icon)
-		oldBP.icon_state = initial(BP.icon_state)
-		oldBP.should_draw_greyscale = FALSE
+			old_limb.icon = initial(new_limb.icon)
+		old_limb.rendered_bp_icon = initial(new_limb.icon)
+		old_limb.icon_state = initial(new_limb.icon_state)
+		old_limb.should_draw_greyscale = FALSE
 	else
-		var/obj/item/bodypart/BP = new path(H)
-		var/obj/item/bodypart/oldBP = H.get_bodypart(BP.body_zone)
+		var/obj/item/bodypart/new_limb = new path(augmented)
+		var/obj/item/bodypart/old_limb = augmented.get_bodypart(new_limb.body_zone)
 		if(uses_robotic_styles && prefs.augment_limb_styles[slot])
-			BP.set_icon_static(GLOB.robotic_styles_list[prefs.augment_limb_styles[slot]])
-		BP.organic_render = FALSE
-		BP.replace_limb(H)
-		qdel(oldBP)
+			var/chosen_style = GLOB.robotic_styles_list[prefs.augment_limb_styles[slot]]
+			new_limb.set_icon_static(chosen_style)
+			new_limb.current_style = chosen_style
+		new_limb.organic_render = FALSE
+		new_limb.replace_limb(augmented)
+		qdel(old_limb)
 
 //HEADS
 /datum/augment_item/limb/head

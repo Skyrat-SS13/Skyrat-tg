@@ -1935,6 +1935,13 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/security/brig)
+"aoZ" = (
+/obj/machinery/computer/security,
+/obj/effect/turf_decal/bot,
+/turf/open/floor/iron/dark/purple/side{
+	dir = 5
+	},
+/area/station/security/corrections_officer)
 "apb" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 8
@@ -2569,6 +2576,29 @@
 /obj/effect/turf_decal/bot,
 /turf/open/floor/iron/dark,
 /area/station/security/brig)
+"awS" = (
+/obj/effect/turf_decal/siding/wood,
+/obj/machinery/newscaster/directional/west,
+/obj/structure/table/reinforced{
+	name = "Jim Norton's Quebecois Coffee table"
+	},
+/obj/item/paper{
+	default_raw_text = "Jim Norton's Quebecois Coffee.         You see, in 2265 the Quebecois had finally had enough of Canada's shit, and went to the one place that wasn't corrupted by Canuckistan.Je vais au seul endroit qui n'a pas ??? corrompu par les Canadiens ... ESPACE.";
+	name = "Coffee Shop";
+	pixel_x = -4;
+	pixel_y = 6
+	},
+/obj/item/reagent_containers/glass/rag,
+/obj/item/food/hotcrossbun{
+	pixel_x = 7;
+	pixel_y = 5
+	},
+/obj/item/food/cakeslice/pound_cake_slice{
+	pixel_x = 15;
+	pixel_y = -6
+	},
+/turf/open/floor/iron/dark,
+/area/station/service/cafeteria)
 "awX" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/security/glass{
@@ -2915,17 +2945,6 @@
 	},
 /turf/open/floor/iron,
 /area/station/hallway/secondary/construction/engineering)
-"aBx" = (
-/obj/item/toy/plush/skyrat/fox{
-	desc = "An adorable stuffed toy of a Fox. This one is obviously a mother. You can tell. You just can.";
-	name = "Foxwife plushie"
-	},
-/obj/item/food/lasagna,
-/obj/item/paper/fluff/stations/centcom/disk_memo{
-	default_raw_text = "hey hun, i brought you lasagna <3 keep working hard, i love you!"
-	},
-/turf/open/floor/plating,
-/area/station/hallway/primary/starboard)
 "aBz" = (
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
 	dir = 10
@@ -4158,6 +4177,22 @@
 /obj/structure/inflatable/door,
 /turf/open/floor/plating/airless,
 /area/station/maintenance/port/fore)
+"aTV" = (
+/obj/effect/turf_decal/stripes{
+	dir = 1
+	},
+/obj/item/paper/fluff{
+	default_raw_text = "Do NOT build a singularity in this thing, it is meant for teslas only and it is not safe to operate with the intense gravitational distortions and EMPs the singularity makes, if you get your ass sucked in by a T5 black hole don't blame the ship design team.";
+	name = "Note to Engineering"
+	},
+/obj/item/paper/fluff{
+	default_raw_text = "This place is linked up to the atmospherics EVA pit below.. could be a good way to set up experimental engines in a relatively safe enviroment.";
+	name = "Thoughts";
+	pixel_x = 3;
+	pixel_y = 6
+	},
+/turf/open/floor/plating/airless,
+/area/space/nearstation)
 "aTX" = (
 /obj/item/kirbyplants/random,
 /turf/open/floor/wood,
@@ -4353,6 +4388,17 @@
 /obj/machinery/light/directional/east,
 /turf/open/floor/wood,
 /area/station/service/abandoned_gambling_den)
+"aWr" = (
+/obj/item/paper/fluff{
+	default_raw_text = "Going to miss this spot once the shift ends, wonder who'll be the next one to find it.. whoever reads this, the stash is yours.";
+	name = "Assistant's note"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random/trash/garbage,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
+/area/station/maintenance/department/security/prison_upper)
 "aWz" = (
 /obj/effect/turf_decal/box/white/corners{
 	dir = 8
@@ -8082,13 +8128,6 @@
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
 /turf/open/floor/iron,
 /area/station/construction/mining/aux_base)
-"can" = (
-/obj/structure/railing/corner,
-/obj/structure/cable,
-/turf/open/floor/iron/dark/purple/side{
-	dir = 4
-	},
-/area/corrections_officer)
 "cao" = (
 /obj/structure/table,
 /obj/item/stack/sheet/plasteel{
@@ -10898,29 +10937,6 @@
 /obj/structure/chair/stool/bar/directional/north,
 /turf/open/floor/carpet,
 /area/station/maintenance/rus_gambling)
-"cXI" = (
-/obj/effect/turf_decal/delivery,
-/obj/structure/closet/secure_closet/corrections_officer,
-/obj/machinery/button/flasher{
-	id = "IsolationFlash2";
-	pixel_x = 10;
-	pixel_y = -24
-	},
-/obj/machinery/button/flasher{
-	id = "IsolationFlash";
-	pixel_x = -10;
-	pixel_y = -24
-	},
-/obj/machinery/computer/security/telescreen/interrogation{
-	dir = 1;
-	name = "isolation room monitor";
-	network = list("isolation");
-	pixel_y = -36
-	},
-/turf/open/floor/iron/dark/purple/side{
-	dir = 10
-	},
-/area/corrections_officer)
 "cXL" = (
 /obj/structure/grille,
 /obj/structure/window{
@@ -11890,6 +11906,11 @@
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
 /turf/open/floor/plating,
 /area/station/cargo/power_station/upper)
+"doT" = (
+/turf/open/floor/iron/stairs{
+	dir = 1
+	},
+/area/station/security/corrections_officer)
 "dpe" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -11943,9 +11964,6 @@
 /obj/effect/landmark/start/assistant,
 /turf/open/floor/wood,
 /area/station/service/cafeteria)
-"dpG" = (
-/turf/open/floor/iron/dark,
-/area/corrections_officer)
 "dpI" = (
 /obj/machinery/door/firedoor,
 /obj/effect/turf_decal/delivery,
@@ -12967,6 +12985,22 @@
 /obj/effect/spawner/random/trash/mess,
 /turf/open/floor/plating,
 /area/station/maintenance/department/engineering/engine_aft_port)
+"dKy" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/table/reinforced,
+/obj/effect/turf_decal/tile/yellow{
+	dir = 8
+	},
+/obj/item/paper/fluff{
+	default_raw_text = "Do NOT build a singularity in this thing, it is meant for teslas only and it is not safe to operate with the intense gravitational distortions and EMPs the singularity makes, if you get your ass sucked in by a T5 black hole don't blame the ship design team.";
+	name = "Note to Engineering"
+	},
+/turf/open/floor/iron/dark/side{
+	dir = 5
+	},
+/area/station/engineering/lobby)
 "dKB" = (
 /obj/structure/railing/corner{
 	dir = 8
@@ -13269,9 +13303,6 @@
 /obj/structure/grille/broken,
 /turf/open/floor/plating/airless,
 /area/space/nearstation)
-"dQR" = (
-/turf/closed/wall/r_wall,
-/area/corrections_officer)
 "dQS" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 1
@@ -14093,12 +14124,19 @@
 /obj/structure/cable,
 /obj/machinery/computer/monitor,
 /obj/machinery/camera/directional/north{
-	network = list("ss13","ce");
 	c_tag = "Science - Power Station";
-	name = "engineering camera"
+	name = "engineering camera";
+	network = list("ss13","ce")
 	},
 /turf/open/floor/iron/dark,
 /area/station/engineering/power_station/upper)
+"efJ" = (
+/obj/structure/table/reinforced,
+/obj/machinery/computer/secure_data/laptop,
+/turf/open/floor/iron/dark/purple/side{
+	dir = 1
+	},
+/area/station/security/corrections_officer)
 "efN" = (
 /obj/effect/turf_decal/bot,
 /obj/machinery/vending/tool,
@@ -14533,19 +14571,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/station/maintenance/department/security/prison_upper)
-"emv" = (
-/obj/structure/rack,
-/obj/item/storage/toolbox/drone,
-/obj/item/restraints/handcuffs,
-/obj/effect/turf_decal/bot,
-/obj/structure/railing{
-	dir = 4
-	},
-/obj/machinery/light/directional/south,
-/turf/open/floor/iron/dark/purple/side{
-	dir = 6
-	},
-/area/corrections_officer)
 "emG" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 4
@@ -15316,6 +15341,24 @@
 /obj/item/storage/cans/sixbeer,
 /turf/open/openspace,
 /area/station/maintenance/starboard/central)
+"eAj" = (
+/obj/machinery/door/airlock/security/glass{
+	name = "Perma Office"
+	},
+/obj/machinery/door/firedoor,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/effect/mapping_helpers/airlock/access/all/security/brig,
+/turf/open/floor/iron/dark,
+/area/station/security/corrections_officer)
 "eAm" = (
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
 	dir = 5
@@ -16076,6 +16119,13 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/security/execution/transfer)
+"eOq" = (
+/obj/structure/railing/corner,
+/obj/structure/cable,
+/turf/open/floor/iron/dark/purple/side{
+	dir = 4
+	},
+/area/station/security/corrections_officer)
 "eOE" = (
 /obj/effect/spawner/random/trash/moisture_trap,
 /turf/open/floor/plating,
@@ -16597,13 +16647,6 @@
 	},
 /turf/open/floor/iron,
 /area/station/hallway/primary/central/aft)
-"fag" = (
-/obj/structure/railing{
-	dir = 4
-	},
-/obj/structure/cable,
-/turf/open/floor/iron/stairs,
-/area/corrections_officer)
 "fah" = (
 /obj/structure/closet/lawcloset,
 /obj/item/storage/briefcase{
@@ -20536,8 +20579,11 @@
 /obj/effect/turf_decal/siding/wood{
 	dir = 4
 	},
-/obj/item/modular_computer/laptop/preset/civilian,
 /obj/machinery/newscaster/directional/north,
+/obj/machinery/fax{
+	fax_name = "Detective's Office";
+	name = "Detective's Fax Machine"
+	},
 /turf/open/floor/carpet,
 /area/station/security/detectives_office)
 "goI" = (
@@ -20864,6 +20910,25 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/common/tailoring)
+"gtK" = (
+/obj/item/kirbyplants/random,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/side{
+	dir = 10
+	},
+/area/station/security/corrections_officer)
+"gtP" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/station/security/corrections_officer)
 "gtU" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
@@ -21151,6 +21216,11 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/iron,
 /area/station/hallway/primary/central/aft)
+"gzz" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/station/security/corrections_officer)
 "gzE" = (
 /obj/structure/cable,
 /obj/structure/chair/office,
@@ -22893,14 +22963,6 @@
 /obj/item/radio/intercom/directional/west,
 /turf/open/floor/iron/dark,
 /area/station/service/janitor)
-"hga" = (
-/obj/structure/chair/office{
-	dir = 8
-	},
-/obj/effect/landmark/start/corrections_officer,
-/obj/structure/cable,
-/turf/open/floor/iron/dark/purple,
-/area/corrections_officer)
 "hgd" = (
 /obj/machinery/door/firedoor,
 /obj/effect/turf_decal/delivery,
@@ -24407,17 +24469,6 @@
 /obj/effect/landmark/start/assistant,
 /turf/open/floor/eighties,
 /area/station/common/arcade)
-"hFX" = (
-/obj/item/paper/fluff{
-	default_raw_text = "Going to miss this spot once the shift ends, wonder who'll be the next one to find it.. whoever reads this, the stash is yours.";
-	name = "Assistant's note"
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/random/trash/garbage,
-/obj/effect/mapping_helpers/broken_floor,
-/turf/open/floor/wood,
-/area/station/maintenance/department/security/prison_upper)
 "hGf" = (
 /obj/structure/railing{
 	dir = 1
@@ -24914,6 +24965,24 @@
 	dir = 8
 	},
 /area/station/security/office)
+"hQh" = (
+/obj/machinery/door/airlock/security/glass{
+	name = "Perma Office"
+	},
+/obj/machinery/door/firedoor,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/effect/mapping_helpers/airlock/access/all/security/brig,
+/turf/open/floor/iron/dark,
+/area/station/security/corrections_officer)
 "hQl" = (
 /obj/effect/turf_decal/tile/neutral,
 /obj/structure/cable,
@@ -26812,21 +26881,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/hallway/secondary/construction/engineering)
-"iuh" = (
-/obj/machinery/modular_computer/console/preset/engineering{
-	dir = 4
-	},
-/obj/effect/turf_decal/stripes{
-	dir = 6
-	},
-/obj/machinery/keycard_auth/directional/west,
-/obj/structure/cable,
-/obj/item/paper/fluff{
-	default_raw_text = "To the Engineers of BlueShift, we would like to inform you that the power draw at the start of your shift may be something you're not used to while working on stations. BlueShift is equipped with departmental power banks. You should NEVER connect departments into the main power net to avoid issues. These power banks are located in maintenance around their respective departments, and the head of said department may come in at their leisure. If you ever encounter issues, please have your Chief Engineer contact Central Command. Have a secure shift.";
-	name = "Note to Electricians"
-	},
-/turf/open/floor/iron/dark,
-/area/station/command/heads_quarters/ce)
 "iut" = (
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
@@ -27266,6 +27320,13 @@
 /obj/machinery/light/directional/east,
 /turf/open/floor/carpet/red,
 /area/station/command/heads_quarters/hos)
+"iAy" = (
+/obj/structure/closet/crate/bin,
+/obj/structure/cable,
+/turf/open/floor/iron/dark/side{
+	dir = 6
+	},
+/area/station/security/corrections_officer)
 "iAB" = (
 /obj/machinery/door/airlock/maintenance_hatch,
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
@@ -27541,12 +27602,6 @@
 	},
 /turf/closed/wall,
 /area/station/command/heads_quarters/qm)
-"iFX" = (
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
-/turf/open/floor/iron/dark/side{
-	dir = 8
-	},
-/area/corrections_officer)
 "iGe" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/mapping_helpers/broken_floor,
@@ -28783,22 +28838,6 @@
 /obj/machinery/light/small/directional/north,
 /turf/open/floor/plating,
 /area/station/maintenance/starboard/fore)
-"jbb" = (
-/obj/structure/window/reinforced,
-/obj/structure/cable,
-/obj/effect/turf_decal/stripes,
-/obj/machinery/modular_computer/console/preset/engineering{
-	dir = 4
-	},
-/obj/effect/turf_decal/stripes/end{
-	dir = 1
-	},
-/obj/item/paper/fluff{
-	default_raw_text = "Chief Engineer, we would like to inform you that BlueShift may be unlike any vessel or station you've been on before. The power net is divided up into power banks which supply the departments. These can be found in the tunnels behind, or around most departments. Please inform yourself, and your engineers, to NEVER directly wire you main power net into these departments. If you ever run into issues, please contact your Captain so they may send us a message. Have a secure shift.";
-	name = "Note to the Chief Engineer"
-	},
-/turf/open/floor/iron/dark,
-/area/station/engineering/engine_smes)
 "jbf" = (
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
@@ -29097,29 +29136,6 @@
 /obj/structure/flora/bush/flowers_yw,
 /turf/open/floor/grass,
 /area/station/hallway/primary/central)
-"jeL" = (
-/obj/effect/turf_decal/siding/wood,
-/obj/machinery/newscaster/directional/west,
-/obj/structure/table/reinforced{
-	name = "Jim Norton's Quebecois Coffee table"
-	},
-/obj/item/paper{
-	default_raw_text = "Jim Norton's Quebecois Coffee.         You see, in 2265 the Quebecois had finally had enough of Canada's shit, and went to the one place that wasn't corrupted by Canuckistan.Je vais au seul endroit qui n'a pas ??? corrompu par les Canadiens ... ESPACE.";
-	name = "Coffee Shop";
-	pixel_x = -4;
-	pixel_y = 6
-	},
-/obj/item/reagent_containers/glass/rag,
-/obj/item/food/hotcrossbun{
-	pixel_x = 7;
-	pixel_y = 5
-	},
-/obj/item/food/cakeslice/pound_cake_slice{
-	pixel_x = 15;
-	pixel_y = -6
-	},
-/turf/open/floor/iron/dark,
-/area/station/service/cafeteria)
 "jeT" = (
 /obj/effect/turf_decal/stripes,
 /obj/machinery/suit_storage_unit/hos,
@@ -29675,6 +29691,22 @@
 /obj/structure/cable,
 /turf/open/floor/engine,
 /area/station/engineering/supermatter/room)
+"jnl" = (
+/obj/structure/window/reinforced,
+/obj/structure/cable,
+/obj/effect/turf_decal/stripes,
+/obj/machinery/modular_computer/console/preset/engineering{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/end{
+	dir = 1
+	},
+/obj/item/paper/fluff{
+	default_raw_text = "Chief Engineer, we would like to inform you that BlueShift may be unlike any vessel or station you've been on before. The power net is divided up into power banks which supply the departments. These can be found in the tunnels behind, or around most departments. Please inform yourself, and your engineers, to NEVER directly wire you main power net into these departments. If you ever run into issues, please contact your Captain so they may send us a message. Have a secure shift.";
+	name = "Note to the Chief Engineer"
+	},
+/turf/open/floor/iron/dark,
+/area/station/engineering/engine_smes)
 "jnr" = (
 /obj/structure/table/reinforced,
 /obj/item/phone{
@@ -30292,9 +30324,9 @@
 /area/station/security/checkpoint/escape)
 "jyu" = (
 /obj/machinery/camera/directional/north{
-	network = list("ss13","ce");
 	c_tag = "Security - Power Station";
-	name = "engineering camera"
+	name = "engineering camera";
+	network = list("ss13","ce")
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -32312,6 +32344,12 @@
 	},
 /turf/open/floor/wood,
 /area/station/service/library)
+"kgm" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
+/turf/open/floor/iron/dark/side{
+	dir = 8
+	},
+/area/station/security/corrections_officer)
 "kgo" = (
 /obj/structure/reagent_dispensers/cooking_oil,
 /obj/structure/window/reinforced{
@@ -32854,18 +32892,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/station/maintenance/port/fore)
-"kqu" = (
-/obj/structure/table/reinforced,
-/obj/item/book/manual/wiki/security_space_law,
-/obj/item/clothing/glasses/sunglasses{
-	pixel_x = 3;
-	pixel_y = 3
-	},
-/obj/structure/cable,
-/turf/open/floor/iron/dark/purple/side{
-	dir = 8
-	},
-/area/corrections_officer)
 "kqS" = (
 /obj/effect/mapping_helpers/broken_floor,
 /turf/open/floor/plating,
@@ -32989,6 +33015,14 @@
 	},
 /turf/open/floor/iron,
 /area/station/engineering/supermatter/room)
+"ksO" = (
+/obj/structure/chair/office{
+	dir = 8
+	},
+/obj/effect/landmark/start/corrections_officer,
+/obj/structure/cable,
+/turf/open/floor/iron/dark/purple,
+/area/station/security/corrections_officer)
 "ktb" = (
 /obj/effect/turf_decal/tile/yellow{
 	dir = 4
@@ -33041,11 +33075,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/iron,
 /area/station/hallway/primary/aft)
-"ktQ" = (
-/obj/effect/spawner/structure/window/reinforced,
-/obj/structure/cable,
-/turf/open/floor/plating,
-/area/corrections_officer)
 "kun" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/curtain/cloth/fancy/mechanical{
@@ -33348,15 +33377,6 @@
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/station/maintenance/aux_eva)
-"kzi" = (
-/obj/structure/table,
-/obj/item/storage/fancy/donut_box,
-/obj/machinery/light/directional/east,
-/obj/structure/cable,
-/turf/open/floor/iron/dark/side{
-	dir = 4
-	},
-/area/corrections_officer)
 "kzj" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/railing/corner,
@@ -33525,6 +33545,29 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/security/checkpoint/customs/auxiliary)
+"kBK" = (
+/obj/effect/turf_decal/delivery,
+/obj/structure/closet/secure_closet/corrections_officer,
+/obj/machinery/button/flasher{
+	id = "IsolationFlash2";
+	pixel_x = 10;
+	pixel_y = -24
+	},
+/obj/machinery/button/flasher{
+	id = "IsolationFlash";
+	pixel_x = -10;
+	pixel_y = -24
+	},
+/obj/machinery/computer/security/telescreen/interrogation{
+	dir = 1;
+	name = "isolation room monitor";
+	network = list("isolation");
+	pixel_y = -36
+	},
+/turf/open/floor/iron/dark/purple/side{
+	dir = 10
+	},
+/area/station/security/corrections_officer)
 "kBW" = (
 /obj/effect/turf_decal/tile/neutral,
 /obj/machinery/camera/directional/east{
@@ -34208,6 +34251,19 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/station/maintenance/department/engineering/central)
+"kLM" = (
+/obj/structure/rack,
+/obj/item/storage/toolbox/drone,
+/obj/item/restraints/handcuffs,
+/obj/effect/turf_decal/bot,
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/machinery/light/directional/south,
+/turf/open/floor/iron/dark/purple/side{
+	dir = 6
+	},
+/area/station/security/corrections_officer)
 "kLT" = (
 /obj/structure/table,
 /obj/item/screwdriver{
@@ -34857,22 +34913,6 @@
 	name = "pool"
 	},
 /area/station/security/prison/workout)
-"kWL" = (
-/obj/structure/table/reinforced,
-/obj/item/paper_bin{
-	pixel_y = 3
-	},
-/obj/item/pen{
-	pixel_y = 5
-	},
-/obj/machinery/recharger{
-	pixel_x = 16;
-	pixel_y = 4
-	},
-/turf/open/floor/iron/dark/purple/side{
-	dir = 9
-	},
-/area/corrections_officer)
 "kWZ" = (
 /obj/effect/turf_decal/delivery,
 /obj/structure/closet,
@@ -35033,12 +35073,6 @@
 /obj/structure/railing/corner,
 /turf/open/floor/wood,
 /area/station/service/cafeteria)
-"lat" = (
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
-/turf/open/floor/iron/dark/side{
-	dir = 8
-	},
-/area/corrections_officer)
 "lau" = (
 /obj/structure/frame/computer{
 	dir = 1
@@ -36539,17 +36573,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/engineering/supermatter/room)
-"lEF" = (
-/obj/structure/chair{
-	dir = 1;
-	name = "Command Station"
-	},
-/obj/effect/landmark/start/corrections_officer,
-/obj/structure/cable,
-/turf/open/floor/iron/dark/side{
-	dir = 4
-	},
-/area/corrections_officer)
 "lEO" = (
 /obj/structure/girder,
 /obj/structure/grille/broken,
@@ -36563,6 +36586,14 @@
 /obj/effect/spawner/random/techstorage/security_all,
 /turf/open/floor/iron/dark,
 /area/station/engineering/storage/tech)
+"lEY" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/machinery/power/apc/auto_name/directional/north,
+/turf/open/floor/iron/dark/purple,
+/area/station/security/corrections_officer)
 "lFi" = (
 /obj/item/stack/sheet/cardboard,
 /obj/effect/decal/cleanable/dirt,
@@ -37437,21 +37468,6 @@
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/station/security/brig)
-"lVV" = (
-/obj/structure/table,
-/obj/item/storage/fancy/cigarettes/cigpack_robustgold{
-	pixel_x = -2;
-	pixel_y = 10
-	},
-/obj/item/paper/fluff{
-	default_raw_text = "Here you go Ney, left these here for you in case you ever got stuck or lost in any bum fucked quadrants.. Good luck, chitter thing.  -Max";
-	name = "From Max to Ney"
-	},
-/obj/item/lighter/greyscale{
-	pixel_x = 6
-	},
-/turf/open/floor/plating,
-/area/station/maintenance/department/security)
 "lVY" = (
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
 	dir = 10
@@ -37601,12 +37617,6 @@
 /obj/machinery/status_display/ai/directional/west,
 /turf/open/floor/iron,
 /area/station/hallway/primary/aft)
-"lYi" = (
-/obj/structure/cable,
-/turf/open/floor/iron/dark/side{
-	dir = 5
-	},
-/area/corrections_officer)
 "lYs" = (
 /obj/effect/turf_decal/tile/yellow{
 	dir = 1
@@ -37826,6 +37836,18 @@
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
 /turf/open/floor/iron/dark,
 /area/station/service/library/lounge)
+"mbW" = (
+/obj/structure/table/reinforced,
+/obj/item/book/manual/wiki/security_space_law,
+/obj/item/clothing/glasses/sunglasses{
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/dark/purple/side{
+	dir = 8
+	},
+/area/station/security/corrections_officer)
 "mcf" = (
 /obj/machinery/door/airlock/engineering/glass{
 	name = "Gravity Generator Corridor"
@@ -37867,18 +37889,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/iron,
 /area/station/maintenance/port/aft)
-"mcK" = (
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
-	dir = 10
-	},
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
-	dir = 9
-	},
-/obj/structure/cable,
-/turf/open/floor/iron/dark/side{
-	dir = 8
-	},
-/area/corrections_officer)
 "mdd" = (
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
 	dir = 4
@@ -40611,6 +40621,10 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/iron,
 /area/station/engineering/main)
+"mZx" = (
+/obj/structure/cable,
+/turf/open/floor/iron/dark/purple/side,
+/area/station/security/corrections_officer)
 "mZy" = (
 /obj/effect/turf_decal/tile/neutral,
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
@@ -42469,24 +42483,6 @@
 	},
 /turf/open/floor/iron,
 /area/station/command/heads_quarters/ce)
-"nEp" = (
-/obj/machinery/door/airlock/security/glass{
-	name = "Perma Office"
-	},
-/obj/machinery/door/firedoor,
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
-	dir = 4
-	},
-/obj/structure/cable,
-/obj/effect/mapping_helpers/airlock/access/all/security/brig,
-/turf/open/floor/iron/dark,
-/area/corrections_officer)
 "nEs" = (
 /turf/open/floor/iron/dark/side{
 	dir = 8
@@ -42632,6 +42628,17 @@
 	dir = 8
 	},
 /area/station/engineering/main)
+"nGS" = (
+/obj/structure/chair{
+	dir = 1;
+	name = "Command Station"
+	},
+/obj/effect/landmark/start/corrections_officer,
+/obj/structure/cable,
+/turf/open/floor/iron/dark/side{
+	dir = 4
+	},
+/area/station/security/corrections_officer)
 "nHl" = (
 /obj/structure/closet/secure_closet/personal,
 /obj/effect/turf_decal/bot_white,
@@ -44375,6 +44382,22 @@
 /obj/machinery/atmospherics/pipe/layer_manifold/general/visible,
 /turf/open/floor/iron/dark,
 /area/station/engineering/supermatter/room)
+"onA" = (
+/obj/structure/table/reinforced,
+/obj/item/paper_bin{
+	pixel_y = 3
+	},
+/obj/item/pen{
+	pixel_y = 5
+	},
+/obj/machinery/recharger{
+	pixel_x = 16;
+	pixel_y = 4
+	},
+/turf/open/floor/iron/dark/purple/side{
+	dir = 9
+	},
+/area/station/security/corrections_officer)
 "onO" = (
 /obj/item/radio/intercom/directional/north,
 /obj/structure/cable,
@@ -44928,6 +44951,12 @@
 	},
 /turf/open/floor/iron,
 /area/station/hallway/primary/aft)
+"oxL" = (
+/obj/structure/cable,
+/turf/open/floor/iron/dark/side{
+	dir = 5
+	},
+/area/station/security/corrections_officer)
 "oxQ" = (
 /turf/open/floor/iron/stairs,
 /area/station/security/brig)
@@ -44995,15 +45024,6 @@
 /obj/effect/mapping_helpers/airlock/access/all/security/court,
 /turf/open/floor/carpet,
 /area/station/security/courtroom)
-"ozf" = (
-/obj/item/kirbyplants/random,
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
-	dir = 1
-	},
-/turf/open/floor/iron/dark/side{
-	dir = 10
-	},
-/area/corrections_officer)
 "ozh" = (
 /obj/structure/plasticflaps/opaque,
 /obj/effect/turf_decal/bot,
@@ -45673,6 +45693,21 @@
 "oJd" = (
 /turf/closed/wall,
 /area/station/maintenance/department/engineering/engine_aft_starboard)
+"oJj" = (
+/obj/machinery/modular_computer/console/preset/engineering{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes{
+	dir = 6
+	},
+/obj/machinery/keycard_auth/directional/west,
+/obj/structure/cable,
+/obj/item/paper/fluff{
+	default_raw_text = "To the Engineers of BlueShift, we would like to inform you that the power draw at the start of your shift may be something you're not used to while working on stations. BlueShift is equipped with departmental power banks. You should NEVER connect departments into the main power net to avoid issues. These power banks are located in maintenance around their respective departments, and the head of said department may come in at their leisure. If you ever encounter issues, please have your Chief Engineer contact Central Command. Have a secure shift.";
+	name = "Note to Electricians"
+	},
+/turf/open/floor/iron/dark,
+/area/station/command/heads_quarters/ce)
 "oJX" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
@@ -45685,13 +45720,15 @@
 /area/station/hallway/primary/port)
 "oJZ" = (
 /obj/structure/table/reinforced,
-/obj/item/stack/package_wrap,
-/obj/item/hand_labeler,
 /obj/effect/turf_decal/tile/yellow{
 	dir = 8
 	},
 /obj/effect/turf_decal/tile/yellow,
 /obj/machinery/light/directional/south,
+/obj/machinery/fax{
+	fax_name = "Chief Engineer's Office";
+	name = "Chief Engineer's Fax Machine"
+	},
 /turf/open/floor/iron,
 /area/station/command/heads_quarters/ce)
 "oKf" = (
@@ -47836,9 +47873,12 @@
 /obj/item/clipboard{
 	pixel_x = 15
 	},
-/obj/item/modular_computer/laptop,
 /obj/item/toy/figure/qm{
 	pixel_x = 15
+	},
+/obj/machinery/fax{
+	fax_name = "Quartermaster's Office";
+	name = "Quartermaster's Fax Machine"
 	},
 /turf/open/floor/carpet/royalblack,
 /area/station/command/heads_quarters/qm)
@@ -48245,15 +48285,19 @@
 /obj/structure/chair/stool,
 /turf/open/floor/wood,
 /area/station/service/abandoned_gambling_den)
+"pAB" = (
+/obj/item/kirbyplants/random,
+/turf/open/floor/iron/dark/purple/side,
+/area/station/security/corrections_officer)
 "pAC" = (
 /obj/effect/turf_decal/stripes{
 	dir = 8
 	},
 /obj/structure/rack,
 /obj/machinery/camera/directional/north{
-	network = list("ss13","ce");
 	c_tag = "Service - Power Station";
-	name = "engineering camera"
+	name = "engineering camera";
+	network = list("ss13","ce")
 	},
 /turf/open/floor/iron/dark,
 /area/station/service/power_station)
@@ -49582,13 +49626,6 @@
 /obj/effect/turf_decal/stripes/box,
 /turf/open/floor/plating,
 /area/station/maintenance/starboard/fore)
-"pXj" = (
-/obj/effect/turf_decal/bot,
-/obj/structure/closet/firecloset,
-/turf/open/floor/iron/dark/purple/side{
-	dir = 1
-	},
-/area/corrections_officer)
 "pXp" = (
 /obj/effect/spawner/random/structure/closet_maintenance,
 /obj/machinery/light/small/directional/west,
@@ -50100,22 +50137,6 @@
 	},
 /turf/open/floor/wood,
 /area/station/service/bar/atrium)
-"qfV" = (
-/obj/effect/turf_decal/stripes{
-	dir = 1
-	},
-/obj/item/paper/fluff{
-	default_raw_text = "Do NOT build a singularity in this thing, it is meant for teslas only and it is not safe to operate with the intense gravitational distortions and EMPs the singularity makes, if you get your ass sucked in by a T5 black hole don't blame the ship design team.";
-	name = "Note to Engineering"
-	},
-/obj/item/paper/fluff{
-	default_raw_text = "This place is linked up to the atmospherics EVA pit below.. could be a good way to set up experimental engines in a relatively safe enviroment.";
-	name = "Thoughts";
-	pixel_x = 3;
-	pixel_y = 6
-	},
-/turf/open/floor/plating/airless,
-/area/space/nearstation)
 "qfW" = (
 /obj/effect/decal/remains/human,
 /turf/open/floor/plating,
@@ -50359,19 +50380,6 @@
 	},
 /turf/open/floor/iron,
 /area/station/hallway/primary/port)
-"qkP" = (
-/obj/structure/chair,
-/obj/effect/landmark/start/corrections_officer,
-/obj/structure/cable,
-/obj/machinery/camera/directional/north{
-	c_tag = " Prison - Perma office";
-	dir = 6;
-	network = list("ss13","prison")
-	},
-/turf/open/floor/iron/dark/side{
-	dir = 4
-	},
-/area/corrections_officer)
 "qkV" = (
 /obj/effect/turf_decal/stripes{
 	dir = 4
@@ -50456,6 +50464,17 @@
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/iron,
 /area/station/maintenance/port/aft)
+"qmt" = (
+/obj/item/toy/plush/skyrat/fox{
+	desc = "An adorable stuffed toy of a Fox. This one is obviously a mother. You can tell. You just can.";
+	name = "Foxwife plushie"
+	},
+/obj/item/food/lasagna,
+/obj/item/paper/fluff/stations/centcom/disk_memo{
+	default_raw_text = "hey hun, i brought you lasagna <3 keep working hard, i love you!"
+	},
+/turf/open/floor/plating,
+/area/station/hallway/primary/starboard)
 "qmx" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
@@ -51093,10 +51112,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/engineering/supermatter/room)
-"qxS" = (
-/obj/structure/cable,
-/turf/open/floor/iron/dark/purple/side,
-/area/corrections_officer)
 "qxW" = (
 /obj/effect/turf_decal/siding/wood/corner{
 	dir = 4
@@ -51296,6 +51311,16 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/engineering/main)
+"qAx" = (
+/obj/machinery/door/airlock/security/glass{
+	name = "Perma Office"
+	},
+/obj/machinery/door/firedoor,
+/obj/effect/mapping_helpers/airlock/access/all/security/brig,
+/turf/open/floor/iron/dark/purple/side{
+	dir = 1
+	},
+/area/station/security/corrections_officer)
 "qAN" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/spawner/random/trash/garbage,
@@ -52296,6 +52321,18 @@
 /obj/structure/flora/ocean/glowweed,
 /turf/open/floor/grass/fairy,
 /area/station/common/night_club)
+"qSi" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 10
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 9
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/dark/side{
+	dir = 8
+	},
+/area/station/security/corrections_officer)
 "qSp" = (
 /obj/effect/landmark/start/security_officer,
 /turf/open/floor/iron,
@@ -52600,14 +52637,6 @@
 /obj/structure/trash_pile,
 /turf/open/floor/plating,
 /area/station/maintenance/starboard/aft)
-"qYF" = (
-/obj/structure/railing{
-	dir = 4
-	},
-/obj/structure/cable,
-/obj/machinery/power/apc/auto_name/directional/north,
-/turf/open/floor/iron/dark/purple,
-/area/corrections_officer)
 "qYI" = (
 /obj/effect/turf_decal/tile/red,
 /obj/effect/turf_decal/tile/red{
@@ -52808,11 +52837,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/security/office)
-"rbi" = (
-/turf/open/floor/iron/stairs{
-	dir = 1
-	},
-/area/corrections_officer)
 "rbq" = (
 /obj/effect/turf_decal/bot,
 /obj/item/kirbyplants/random,
@@ -53896,22 +53920,6 @@
 /obj/item/radio/intercom/directional/west,
 /turf/open/floor/plating,
 /area/station/maintenance/central)
-"rvT" = (
-/obj/structure/railing{
-	dir = 4
-	},
-/obj/structure/table/reinforced,
-/obj/effect/turf_decal/tile/yellow{
-	dir = 8
-	},
-/obj/item/paper/fluff{
-	default_raw_text = "Do NOT build a singularity in this thing, it is meant for teslas only and it is not safe to operate with the intense gravitational distortions and EMPs the singularity makes, if you get your ass sucked in by a T5 black hole don't blame the ship design team.";
-	name = "Note to Engineering"
-	},
-/turf/open/floor/iron/dark/side{
-	dir = 5
-	},
-/area/station/engineering/lobby)
 "rwf" = (
 /obj/machinery/power/apc/highcap/ten_k{
 	dir = 1;
@@ -54622,13 +54630,6 @@
 	dir = 4
 	},
 /area/station/common/wrestling/arena)
-"rGc" = (
-/obj/structure/table/reinforced,
-/obj/machinery/computer/secure_data/laptop,
-/turf/open/floor/iron/dark/purple/side{
-	dir = 1
-	},
-/area/corrections_officer)
 "rGd" = (
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/bar{
@@ -55140,6 +55141,14 @@
 /obj/machinery/light/directional/south,
 /turf/open/floor/iron/telecomms,
 /area/station/tcommsat/server)
+"rQZ" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
+/obj/structure/cable,
+/obj/machinery/airalarm/directional/west,
+/turf/open/floor/iron/dark/side{
+	dir = 9
+	},
+/area/station/security/corrections_officer)
 "rRB" = (
 /obj/item/stack/ore/iron,
 /turf/open/floor/plating/airless,
@@ -55967,6 +55976,15 @@
 	},
 /turf/open/floor/iron,
 /area/station/cargo/warehouse/upper)
+"seI" = (
+/obj/structure/table,
+/obj/item/storage/fancy/donut_box,
+/obj/machinery/light/directional/east,
+/obj/structure/cable,
+/turf/open/floor/iron/dark/side{
+	dir = 4
+	},
+/area/station/security/corrections_officer)
 "seN" = (
 /obj/structure/sign/painting/library{
 	pixel_y = 32
@@ -56314,13 +56332,6 @@
 /obj/effect/spawner/random/entertainment/gambling,
 /turf/open/floor/wood,
 /area/station/service/abandoned_gambling_den)
-"skW" = (
-/obj/machinery/computer/security,
-/obj/effect/turf_decal/bot,
-/turf/open/floor/iron/dark/purple/side{
-	dir = 5
-	},
-/area/corrections_officer)
 "skZ" = (
 /obj/structure/table,
 /turf/open/floor/plating,
@@ -58878,7 +58889,10 @@
 /area/station/hallway/primary/central/fore)
 "tiE" = (
 /obj/structure/table/wood,
-/obj/item/modular_computer/laptop/preset/civilian,
+/obj/machinery/fax{
+	fax_name = "Law Office";
+	name = "Law Office Fax Machine"
+	},
 /turf/open/floor/carpet/blue,
 /area/station/service/lawoffice)
 "tiG" = (
@@ -59194,24 +59208,6 @@
 /obj/machinery/airalarm/directional/west,
 /turf/open/floor/wood,
 /area/station/security/prison/rec)
-"tny" = (
-/obj/machinery/door/airlock/security/glass{
-	name = "Perma Office"
-	},
-/obj/machinery/door/firedoor,
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
-	dir = 4
-	},
-/obj/structure/cable,
-/obj/effect/mapping_helpers/airlock/access/all/security/brig,
-/turf/open/floor/iron/dark,
-/area/corrections_officer)
 "tnC" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -59560,8 +59556,10 @@
 /area/station/maintenance/rus_gambling)
 "ttQ" = (
 /obj/structure/table/reinforced,
-/obj/item/paper_bin,
-/obj/item/pen,
+/obj/machinery/fax{
+	fax_name = "Security Office";
+	name = "Security Office Fax Machine"
+	},
 /turf/open/floor/iron/dark,
 /area/station/security/office)
 "ttR" = (
@@ -59968,6 +59966,12 @@
 /obj/item/storage/belt/utility/full/engi,
 /turf/open/floor/plating,
 /area/station/maintenance/department/security)
+"tBd" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
+/turf/open/floor/iron/dark/side{
+	dir = 8
+	},
+/area/station/security/corrections_officer)
 "tBm" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
@@ -61319,9 +61323,11 @@
 /obj/effect/turf_decal/trimline/yellow/filled/warning{
 	dir = 4
 	},
-/obj/item/screwdriver,
-/obj/item/reagent_containers/food/drinks/coffee,
 /obj/machinery/status_display/ai/directional/east,
+/obj/machinery/fax{
+	fax_name = "Engineering Lobby";
+	name = "Engineering Lobby Fax Machine"
+	},
 /turf/open/floor/iron/dark,
 /area/station/engineering/break_room)
 "tVz" = (
@@ -61356,22 +61362,12 @@
 /turf/open/floor/plating,
 /area/station/maintenance/central)
 "tVW" = (
-/obj/structure/table/reinforced,
 /obj/effect/turf_decal/trimline/brown/filled/line{
 	dir = 6
 	},
 /obj/effect/turf_decal/trimline/yellow/filled/warning{
 	dir = 6
 	},
-/obj/item/radio{
-	pixel_x = 5;
-	pixel_y = 5
-	},
-/obj/item/radio{
-	pixel_x = -4;
-	pixel_y = 3
-	},
-/obj/item/radio,
 /obj/structure/extinguisher_cabinet/directional/east,
 /turf/open/floor/iron/dark,
 /area/station/engineering/break_room)
@@ -62968,6 +62964,9 @@
 	},
 /turf/open/floor/plating,
 /area/station/security/prison/upper)
+"uxJ" = (
+/turf/open/floor/iron/dark,
+/area/station/security/corrections_officer)
 "uxK" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/iron,
@@ -63763,16 +63762,6 @@
 /obj/machinery/light/small/directional/south,
 /turf/open/floor/iron/freezer,
 /area/station/command/heads_quarters/hos)
-"uMn" = (
-/obj/machinery/door/airlock/security/glass{
-	name = "Perma Office"
-	},
-/obj/machinery/door/firedoor,
-/obj/effect/mapping_helpers/airlock/access/all/security/brig,
-/turf/open/floor/iron/dark/purple/side{
-	dir = 1
-	},
-/area/corrections_officer)
 "uMt" = (
 /obj/structure/flora/bush/stalky,
 /obj/structure/flora/ocean/longseaweed,
@@ -64339,14 +64328,6 @@
 /obj/effect/turf_decal/vg_decals/numbers/two,
 /turf/open/floor/iron,
 /area/station/hallway/primary/central)
-"uXT" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
-/obj/structure/cable,
-/obj/machinery/airalarm/directional/west,
-/turf/open/floor/iron/dark/side{
-	dir = 9
-	},
-/area/corrections_officer)
 "uYe" = (
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/visible,
 /obj/machinery/light/small/directional/east,
@@ -65136,6 +65117,13 @@
 	},
 /turf/open/floor/iron,
 /area/station/construction/mining/aux_base)
+"vkL" = (
+/obj/effect/turf_decal/bot,
+/obj/structure/closet/firecloset,
+/turf/open/floor/iron/dark/purple/side{
+	dir = 1
+	},
+/area/station/security/corrections_officer)
 "vll" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -65581,27 +65569,15 @@
 /area/station/engineering/gravity_generator)
 "vsE" = (
 /obj/structure/table,
-/obj/item/stack/package_wrap{
-	pixel_x = -11;
-	pixel_y = 9
-	},
-/obj/item/folder/yellow{
-	pixel_x = 3;
-	pixel_y = 1
-	},
-/obj/item/folder/yellow{
-	pixel_x = 3;
-	pixel_y = 3
-	},
-/obj/item/folder/yellow{
-	pixel_x = 3;
-	pixel_y = 5
-	},
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
 	dir = 4
+	},
+/obj/machinery/fax{
+	fax_name = "Cargo Office";
+	name = "Cargo Office Fax Machine"
 	},
 /turf/open/floor/iron/dark,
 /area/station/cargo/sorting)
@@ -65772,6 +65748,19 @@
 /obj/effect/mapping_helpers/airlock/access/all/engineering/external,
 /turf/open/floor/plating,
 /area/station/maintenance/port/aft)
+"vwj" = (
+/obj/structure/chair,
+/obj/effect/landmark/start/corrections_officer,
+/obj/structure/cable,
+/obj/machinery/camera/directional/north{
+	c_tag = " Prison - Perma office";
+	dir = 6;
+	network = list("ss13","prison")
+	},
+/turf/open/floor/iron/dark/side{
+	dir = 4
+	},
+/area/station/security/corrections_officer)
 "vwl" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 6
@@ -66106,13 +66095,6 @@
 /obj/effect/mapping_helpers/airlock/access/all/security/hos,
 /turf/open/floor/iron,
 /area/station/command/heads_quarters/hos)
-"vAT" = (
-/obj/structure/closet/crate/bin,
-/obj/structure/cable,
-/turf/open/floor/iron/dark/side{
-	dir = 6
-	},
-/area/corrections_officer)
 "vAZ" = (
 /obj/effect/turf_decal/siding/thinplating/dark/corner{
 	dir = 1
@@ -66148,9 +66130,9 @@
 "vCb" = (
 /obj/effect/turf_decal/stripes/corner,
 /obj/machinery/camera/directional/north{
-	network = list("ss13","ce");
 	c_tag = "Cargo - Upper Power Station";
-	name = "engineering camera"
+	name = "engineering camera";
+	network = list("ss13","ce")
 	},
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 8
@@ -66908,8 +66890,6 @@
 	dir = 4
 	},
 /obj/structure/table/reinforced,
-/obj/item/clipboard,
-/obj/item/toy/figure/hos,
 /obj/machinery/requests_console/directional/north{
 	announcementConsole = 1;
 	department = "Head of Security's Desk";
@@ -66919,6 +66899,10 @@
 	pixel_y = 0
 	},
 /obj/machinery/light/directional/west,
+/obj/machinery/fax{
+	fax_name = "Head of Security's Office";
+	name = "Head of Security's Fax Machine"
+	},
 /turf/open/floor/iron/dark,
 /area/station/command/heads_quarters/hos)
 "vMH" = (
@@ -67061,6 +67045,9 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/station/maintenance/starboard/central)
+"vOo" = (
+/turf/closed/wall/r_wall,
+/area/station/security/corrections_officer)
 "vOu" = (
 /turf/closed/wall,
 /area/station/security/checkpoint/engineering)
@@ -67470,10 +67457,6 @@
 "vWA" = (
 /turf/open/floor/iron/dark,
 /area/station/common/laser_tag)
-"vWL" = (
-/obj/item/kirbyplants/random,
-/turf/open/floor/iron/dark/purple/side,
-/area/corrections_officer)
 "vWM" = (
 /obj/effect/turf_decal/bot,
 /obj/effect/turf_decal/tile/yellow,
@@ -69732,6 +69715,13 @@
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
 /turf/open/floor/iron,
 /area/station/hallway/primary/central/fore)
+"wJZ" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/stairs,
+/area/station/security/corrections_officer)
 "wKd" = (
 /obj/structure/table/wood,
 /obj/effect/turf_decal/siding/wood{
@@ -70573,6 +70563,7 @@
 	pixel_x = 3
 	},
 /obj/item/clothing/mask/cigarette/cigar,
+/obj/item/toy/figure/hos,
 /turf/open/floor/carpet/red,
 /area/station/command/heads_quarters/hos)
 "wWo" = (
@@ -73558,16 +73549,21 @@
 "xRU" = (
 /turf/open/floor/plating,
 /area/station/hallway/secondary/construction)
-"xSp" = (
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
-	dir = 4
+"xRV" = (
+/obj/structure/table,
+/obj/item/storage/fancy/cigarettes/cigpack_robustgold{
+	pixel_x = -2;
+	pixel_y = 10
 	},
-/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
-	dir = 4
+/obj/item/paper/fluff{
+	default_raw_text = "Here you go Ney, left these here for you in case you ever got stuck or lost in any bum fucked quadrants.. Good luck, chitter thing.  -Max";
+	name = "From Max to Ney"
 	},
-/obj/structure/cable,
-/turf/open/floor/iron/dark,
-/area/corrections_officer)
+/obj/item/lighter/greyscale{
+	pixel_x = 6
+	},
+/turf/open/floor/plating,
+/area/station/maintenance/department/security)
 "xSs" = (
 /obj/item/stack/ore/titanium,
 /obj/effect/mapping_helpers/broken_floor,
@@ -102424,7 +102420,7 @@ sjY
 lHf
 kLF
 orw
-iuh
+oJj
 rCB
 rSo
 mpz
@@ -103458,7 +103454,7 @@ eyA
 rMx
 yhe
 raj
-jbb
+jnl
 gic
 swy
 fhu
@@ -104845,7 +104841,7 @@ vGD
 dPK
 lNu
 qpc
-lVV
+xRV
 dPK
 tAO
 fcQ
@@ -106509,7 +106505,7 @@ wln
 fNG
 aMD
 xXV
-rvT
+dKy
 jrv
 kvi
 vow
@@ -106682,7 +106678,7 @@ ror
 uEB
 jQt
 xSF
-jeL
+awS
 qeF
 iIk
 tzh
@@ -107016,7 +107012,7 @@ fbS
 sok
 sHv
 xjE
-qfV
+aTV
 sok
 sok
 gql
@@ -110885,7 +110881,7 @@ tbf
 fOI
 uCs
 uhD
-aBx
+qmt
 uhD
 vJY
 sZy
@@ -116939,11 +116935,11 @@ kIv
 ajl
 jWt
 nTD
-ktQ
-ktQ
-ktQ
-dQR
-dQR
+gzz
+gzz
+gzz
+vOo
+vOo
 enZ
 tgi
 gQo
@@ -117196,14 +117192,14 @@ aMd
 ajl
 jWt
 nTD
-ktQ
-kWL
-kqu
-cXI
-dQR
-ktQ
-nEp
-ktQ
+gzz
+onA
+mbW
+kBK
+vOo
+gzz
+hQh
+gzz
 jdF
 dlm
 qgc
@@ -117453,14 +117449,14 @@ gZc
 hdP
 ofc
 nTD
-ktQ
-rGc
-hga
-qxS
-ktQ
-pXj
-xSp
-vWL
+gzz
+efJ
+ksO
+mZx
+gzz
+vkL
+gtP
+pAB
 sle
 iZL
 qgc
@@ -117710,14 +117706,14 @@ aMd
 jNs
 jEd
 nTD
-ktQ
-skW
-can
-emv
-dQR
-ktQ
-tny
-ktQ
+gzz
+aoZ
+eOq
+kLM
+vOo
+gzz
+eAj
+gzz
 jdF
 jdF
 xyf
@@ -117967,15 +117963,15 @@ kIv
 vWa
 aQi
 cii
-dQR
-dQR
-qYF
-fag
-uXT
-iFX
-mcK
-lat
-ozf
+vOo
+vOo
+lEY
+wJZ
+rQZ
+tBd
+qSi
+kgm
+gtK
 klT
 tLf
 xMN
@@ -118224,15 +118220,15 @@ aMd
 jNs
 aQi
 nTD
-rbi
-uMn
-dpG
-dpG
-lYi
-qkP
-kzi
-lEF
-vAT
+doT
+qAx
+uxJ
+uxJ
+oxL
+vwj
+seI
+nGS
+iAy
 klT
 tLf
 xMN
@@ -118481,12 +118477,12 @@ aMd
 jNs
 aQi
 luC
-dQR
-dQR
-ktQ
-ktQ
-ktQ
-dQR
+vOo
+vOo
+gzz
+gzz
+gzz
+vOo
 dTL
 klT
 klT
@@ -118974,7 +118970,7 @@ cXk
 cXk
 cXk
 hjN
-hFX
+aWr
 lAB
 vJf
 kyh
