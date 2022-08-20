@@ -1,7 +1,7 @@
 /// Chance that the traitor could roll hijack if the pop limit is met.
 #define HIJACK_PROB 10
 /// Hijack is unavailable as a random objective below this player count.
-#define HIJACK_MIN_PLAYERS 80
+#define HIJACK_MIN_PLAYERS 50
 
 /// Chance the traitor gets a martyr objective instead of having to escape alive, as long as all the objectives are martyr compatible.
 #define MARTYR_PROB 20
@@ -19,7 +19,7 @@
 
 	var/objective_count = 0
 
-	if((GLOB.joined_player_list.len >= HIJACK_MIN_PLAYERS) && prob(HIJACK_PROB))
+	if((length(GLOB.joined_player_list) >= HIJACK_MIN_PLAYERS) && prob(HIJACK_PROB))
 		is_hijacker = TRUE
 		objective_count++
 
@@ -35,7 +35,7 @@
 /datum/antagonist/traitor/saboteur/proc/forge_single_generic_objective()
 	if(prob(KILL_PROB))
 		var/list/active_ais = active_ais()
-		if(active_ais.len && prob(DESTROY_AI_PROB(GLOB.joined_player_list.len)))
+		if(length(active_ais) && prob(DESTROY_AI_PROB(length(GLOB.joined_player_list))))
 			var/datum/objective/destroy/destroy_objective = new
 			destroy_objective.owner = owner
 			destroy_objective.find_target()
