@@ -4,6 +4,14 @@
 	rotate_on_lying = FALSE
 	base_pixel_x = -16 //All of the xeno sprites are 64x64, and we want them to be level with the tile they are on, much like oversized quirk users
 	var/damage_coeff = 1 //Do we want this xeno to take less damage
+	var/datum/action/small_sprite/skyrat_xeno/small_sprite
+
+/mob/living/carbon/alien/humanoid/skyrat/defender/Initialize(mapload)
+	. = ..()
+	small_sprite = new /datum/action/small_sprite/skyrat_xeno()
+	small_sprite.Grant(src)
+
+	pixel_x = -16
 
 /mob/living/carbon/alien/humanoid/skyrat/adjustBruteLoss(amount, updating_health = TRUE, forced = FALSE)
 	. = apply_damage(amount * damage_coeff, BRUTE, BODY_ZONE_CHEST)
@@ -24,3 +32,7 @@
 	/mob/living/carbon/alien/humanoid/skyrat/runner = -1,
 	/mob/living/carbon/alien/humanoid/skyrat/defender = 0.5,
 	)
+
+/datum/action/small_sprite/skyrat_xeno
+	small_icon = 'icons/obj/plushes.dmi'
+	small_icon_state = "rouny"
