@@ -5,6 +5,7 @@
 	Unfortunately, your faction is typically left to the waysides by the larger corporations."
 	economic_power = 0.8
 	features = list(/datum/cultural_feature/poor)
+	passport = /obj/item/passport/sol/generic
 
 /datum/cultural_info/faction/generic/none
 	name = "None"

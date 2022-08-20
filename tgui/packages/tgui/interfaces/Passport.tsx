@@ -8,16 +8,16 @@ export type PassportData = {
   headshot_data: string;
   empire: string;
   locale: string;
-  year_of_birth: string;
+  age: string;
 };
 
 export const EmpireEntry = (props, context) => {
   let contents;
   const { data } = useBackend<PassportData>(context);
   if (data.empire) {
-    contents = <p>Citizen of {data.empire}.</p>;
+    contents = <p>{data.empire}</p>;
   } else {
-    contents = <p>Independent Citizen.</p>;
+    contents = <p>Independent Citizen</p>;
   }
   return contents;
 };
@@ -26,9 +26,9 @@ export const LocaleEntry = (props, context) => {
   let contents;
   const { data } = useBackend<PassportData>(context);
   if (data.empire) {
-    contents = <p>{data.locale}.</p>;
+    contents = <p>{data.locale}</p>;
   } else {
-    contents = <p>Unknown.</p>;
+    contents = <p>Unknown</p>;
   }
   return contents;
 };
@@ -72,9 +72,9 @@ export const Passport = (props, context) => {
           </TableRow>
           <TableRow>
             <TableCell>
-              <b>Year of Birth:</b>
+              <b>Age:</b>
             </TableCell>
-            <TableCell>{data.year_of_birth}</TableCell>
+            <TableCell>{data.age}</TableCell>
           </TableRow>
         </Table>
       </Window.Content>
