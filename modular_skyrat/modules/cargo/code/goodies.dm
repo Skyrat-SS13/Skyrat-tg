@@ -74,10 +74,10 @@
 	contains = list(/obj/item/storage/box/nri_rations)
 
 /datum/supply_pack/goody/passport
-	name = "SolFed-standard Replacement Passport"
+	name = "Generic Replacement Passport"
 	desc = "Keep your identity always legitimate, with a single replacement passport."
 	cost = PAYCHECK_CREW * 2
-	contains = list(/obj/item/passport/sol)
+	contains = list(/obj/item/passport/sol/generic)
 
 /*
 *	WEAPONS / AMMO
