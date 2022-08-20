@@ -7,7 +7,7 @@
 	materials = list(/datum/material/plastic = 2000, /datum/material/glass = 2000, /datum/material/plasma = 1000)
 	reagents_list = list(/datum/reagent/medicine/c2/libital = 10)
 	build_path = /obj/item/weaponcell/medical/brute/better
-	category = list("Ammo")
+	category = list(RND_CATEGORY_AMMO)
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/burn2medicell
@@ -18,7 +18,7 @@
 	materials = list(/datum/material/plastic = 2000, /datum/material/glass = 2000, /datum/material/plasma = 1000)
 	reagents_list = list(/datum/reagent/medicine/c2/aiuri = 10)
 	build_path = /obj/item/weaponcell/medical/burn/better
-	category = list("Ammo")
+	category = list(RND_CATEGORY_AMMO)
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/toxin2medicell
@@ -29,7 +29,7 @@
 	materials = list(/datum/material/plastic = 2000, /datum/material/glass = 2000, /datum/material/plasma = 1000)
 	reagents_list = list(/datum/reagent/medicine/c2/multiver = 10)
 	build_path = /obj/item/weaponcell/medical/toxin/better
-	category = list("Ammo")
+	category = list(RND_CATEGORY_AMMO)
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/oxy2medicell
@@ -40,7 +40,7 @@
 	materials = list(/datum/material/plastic = 2000, /datum/material/glass = 2000, /datum/material/plasma = 1000)
 	reagents_list = list(/datum/reagent/medicine/c2/convermol = 10)
 	build_path = /obj/item/weaponcell/medical/oxygen/better
-	category = list("Ammo")
+	category = list(RND_CATEGORY_AMMO)
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 //Tier 3 Medicells//
@@ -52,7 +52,7 @@
 	materials = list(/datum/material/plastic = 2000, /datum/material/glass = 2000, /datum/material/plasma = 1000, /datum/material/diamond = 500)
 	reagents_list = list(/datum/reagent/medicine/sal_acid = 10)
 	build_path = /obj/item/weaponcell/medical/brute/better/best
-	category = list("Ammo")
+	category = list(RND_CATEGORY_AMMO)
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/burn3medicell
@@ -63,7 +63,7 @@
 	materials = list(/datum/material/plastic = 3000, /datum/material/glass = 3000, /datum/material/plasma = 1000, /datum/material/diamond = 500)
 	reagents_list = list(/datum/reagent/medicine/oxandrolone = 10)
 	build_path = /obj/item/weaponcell/medical/burn/better/best
-	category = list("Ammo")
+	category = list(RND_CATEGORY_AMMO)
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/toxin3medicell
@@ -74,7 +74,7 @@
 	materials = list(/datum/material/plastic = 3000, /datum/material/glass = 3000, /datum/material/plasma = 1000, /datum/material/diamond = 500)
 	reagents_list = list(/datum/reagent/medicine/pen_acid = 10)
 	build_path = /obj/item/weaponcell/medical/toxin/better/best
-	category = list("Ammo")
+	category = list(RND_CATEGORY_AMMO)
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/oxy3medicell
@@ -85,7 +85,7 @@
 	materials = list(/datum/material/plastic = 2000, /datum/material/glass = 2000, /datum/material/plasma = 1000, /datum/material/diamond = 500)
 	build_path = /obj/item/weaponcell/medical/oxygen/better/best
 	reagents_list = list(/datum/reagent/medicine/salbutamol = 10)
-	category = list("Ammo")
+	category = list(RND_CATEGORY_AMMO)
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 //Utility Medicells
@@ -97,7 +97,7 @@
 	materials = list(/datum/material/plastic = 2000, /datum/material/glass = 2000, /datum/material/plasma = 1000, /datum/material/diamond = 500)
 	build_path = /obj/item/weaponcell/medical/utility/clotting
 	reagents_list = list(/datum/reagent/medicine/salglu_solution = 5, /datum/reagent/blood = 5)
-	category = list("Ammo")
+	category = list(RND_CATEGORY_AMMO)
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/tempmedicell
@@ -108,7 +108,7 @@
 	materials = list(/datum/material/plastic = 2000, /datum/material/glass = 2000, /datum/material/plasma = 1000, /datum/material/diamond = 500)
 	build_path = /obj/item/weaponcell/medical/utility/temperature
 	reagents_list = list(/datum/reagent/medicine/leporazine = 10)
-	category = list("Ammo")
+	category = list(RND_CATEGORY_AMMO)
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/gownmedicell
@@ -118,7 +118,7 @@
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/plastic = 2000, /datum/material/glass = 2000)
 	build_path = /obj/item/weaponcell/medical/utility/hardlight_gown
-	category = list("Ammo")
+	category = list(RND_CATEGORY_AMMO)
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/bedmedicell
@@ -128,7 +128,7 @@
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/plastic = 2000, /datum/material/glass = 2000)
 	build_path = /obj/item/weaponcell/medical/utility/bed
-	category = list("Ammo")
+	category = list(RND_CATEGORY_AMMO)
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/salvemedicell
@@ -138,7 +138,7 @@
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/plastic = 2000, /datum/material/glass = 2000)
 	build_path = /obj/item/device/custom_kit/empty_cell
-	category = list("Ammo")
+	category = list(RND_CATEGORY_AMMO)
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/bodymedicell
@@ -148,7 +148,7 @@
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/plastic = 2000, /datum/material/glass = 2000, /datum/material/plasma = 1000, /datum/material/diamond = 500, /datum/material/bluespace = 2000)
 	build_path = /obj/item/device/custom_kit/empty_cell/body_teleporter
-	category = list("Ammo")
+	category = list(RND_CATEGORY_AMMO)
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/relocatemedicell
@@ -159,7 +159,7 @@
 	materials = list(/datum/material/plastic = 2000, /datum/material/glass = 2000, /datum/material/plasma = 1000, /datum/material/diamond = 500, /datum/material/bluespace = 2000)
 	reagents_list = list(/datum/reagent/eigenstate = 10)
 	build_path = /obj/item/weaponcell/medical/utility/relocation
-	category = list("Ammo")
+	category = list(RND_CATEGORY_AMMO)
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 //Upgrade Kit//
@@ -170,5 +170,5 @@
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/uranium = 5000, /datum/material/glass = 4000, /datum/material/plasma = 2000, /datum/material/diamond = 500)
 	build_path = /obj/item/device/custom_kit/medigun_fastcharge
-	category = list("Weapons")
+	category = list(RND_CATEGORY_WEAPONS)
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
