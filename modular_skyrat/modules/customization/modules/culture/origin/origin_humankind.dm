@@ -9,13 +9,13 @@
 	name = "Sol Federation"
 	description = "Placeholder."
 
-/datum/background_info/origin/human/free_trade_union
+/datum/background_info/origin/human/ftu
 	name = "Free Trade Union"
 	description = "You are part of the Free Trade Union due to either being born into one of their colonies \
 	that have been absorbed into the Sol Federation or because the power of collective bargaining compels you."
 	economic_power = 1.1
 
-/datum/background_info/origin/human/novaya_rossiyskaya_imperiya
+/datum/background_info/origin/human/nri
 	name = "Novaya Rossiyskaya Imperiya"
 	description = "You were born and raised as Novaya Rossiyskaya Imperiya citizen. \
 	A relatively huge human exclave with a strong sense of pride and an equally strong industrial power, \
