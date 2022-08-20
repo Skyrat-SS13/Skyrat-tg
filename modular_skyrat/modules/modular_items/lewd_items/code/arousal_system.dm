@@ -988,7 +988,7 @@
 		if(do_after(user, 60))
 			user.visible_message(span_warning("[user] cums on [target]!"), span_danger("You cum on [target]!"))
 			playsound(target, SFX_DESECRATION, 50, TRUE, ignore_walls = FALSE)
-			add_cum_splatter_floor(get_turf(target))
+			affected_human.add_cum_splatter_floor(get_turf(target))
 			if(prob(40))
 				affected_human.try_lewd_autoemote("moan")
 
