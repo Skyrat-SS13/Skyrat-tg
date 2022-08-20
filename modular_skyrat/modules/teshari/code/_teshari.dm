@@ -81,3 +81,13 @@
 		randname += " [lastname]"
 
 	return randname
+
+/datum/species/teshari/prepare_human_for_preview(mob/living/carbon/human/tesh)
+	var/base_color = "#c0965f"
+	var/ear_color = "#e4c49b"
+
+	tesh.dna.features["mcolor"] = base_color
+	tesh.dna.species.mutant_bodyparts["ears"] = list(MUTANT_INDEX_NAME = "Teshari Feathers Upright", MUTANT_INDEX_COLOR_LIST = list(ear_color, ear_color, ear_color))
+	tesh.dna.species.mutant_bodyparts["tail"] = list(MUTANT_INDEX_NAME = "Teshari (Default)", MUTANT_INDEX_COLOR_LIST = list(base_color, base_color, ear_color))
+	tesh.update_mutant_bodyparts(TRUE)
+	tesh.update_body(TRUE)
