@@ -918,6 +918,7 @@
 	obsessed.gain_trauma(/datum/brain_trauma/special/obsessed)
 	message_admins("[ADMIN_LOOKUPFLW(obsessed)] has been made Obsessed by the midround ruleset.")
 	log_game("[key_name(obsessed)] was made Obsessed by the midround ruleset.")
+<<<<<<< HEAD
 	return ..()
 
 /// Thief ruleset
@@ -977,3 +978,6 @@
 #undef MALF_ION_PROB
 /// The probability to replace an existing law with an ion law instead of adding a new ion law.
 #undef REPLACE_LAW_WITH_ION_PROB
+=======
+	return TRUE
+>>>>>>> 39885334ea4 (Removes Thieves (#69304))
