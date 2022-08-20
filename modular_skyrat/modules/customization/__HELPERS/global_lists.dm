@@ -12,20 +12,20 @@
 	load_veteran_players()
 
 /proc/make_culture_references()
-	for(var/path in subtypesof(/datum/cultural_info/culture))
-		var/datum/cultural_info/culture = path
+	for(var/path in subtypesof(/datum/background_info/employment))
+		var/datum/background_info/employment = path
 		if(!initial(culture.name))
 			continue
 		culture = new path()
 		GLOB.culture_cultures[path] = culture
-	for(var/path in subtypesof(/datum/cultural_info/location))
-		var/datum/cultural_info/culture = path
+	for(var/path in subtypesof(/datum/background_info/origin))
+		var/datum/background_info/employment = path
 		if(!initial(culture.name))
 			continue
 		culture = new path()
 		GLOB.culture_locations[path] = culture
-	for(var/path in subtypesof(/datum/cultural_info/faction))
-		var/datum/cultural_info/culture = path
+	for(var/path in subtypesof(/datum/background_info/social_background))
+		var/datum/background_info/employment = path
 		if(!initial(culture.name))
 			continue
 		culture = new path()

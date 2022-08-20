@@ -37,9 +37,9 @@
 /obj/item/passport/proc/imprint_owner(mob/living/carbon/human/user)
 	if(istype(user) && user.client)
 		user_weakref = WEAKREF(user)
-		var/datum/cultural_info/faction = GLOB.culture_factions[user.client.prefs.culture_faction]
-		cached_faction = faction?.name
-		var/datum/cultural_info/locale = GLOB.culture_locations[user.client.prefs.culture_location]
+		var/datum/background_info/social_background = GLOB.culture_factions[user.client.prefs.culture_faction]
+		cached_faction = social_background? social_background.name : null
+		var/datum/background_info/locale = GLOB.culture_locations[user.client.prefs.culture_location]
 		cached_locale = locale?.name
 		cached_data = null
 		imprinted = TRUE

@@ -1,4 +1,4 @@
-/datum/cultural_info
+/datum/background_info
 	/// Name of the cultural thing, be it place, faction, or culture
 	var/name
 	/// It's description
