@@ -703,7 +703,6 @@
 	build_type = AUTOLATHE | PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/glass = 500)
 	build_path = /obj/item/reagent_containers/cup/beaker
-	build_path = /obj/item/reagent_containers/glass/beaker
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL | DEPARTMENT_BITFLAG_SERVICE
 
 /datum/design/large_beaker
@@ -712,7 +711,6 @@
 	build_type = AUTOLATHE | PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/glass = 2500)
 	build_path = /obj/item/reagent_containers/cup/beaker/large
-	build_path = /obj/item/reagent_containers/glass/beaker/large
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL | DEPARTMENT_BITFLAG_SERVICE
 
 /datum/design/pillbottle
