@@ -3,11 +3,11 @@
 
 // modular override of `/datum/dynamic_ruleset/midround/autotraitor/execute()`'s original function, keep as similar to the original ruleset's code as possible
 /datum/dynamic_ruleset/midround/autotraitor/execute()
-	var/mob/M = pick(living_players)
-	assigned += M
-	living_players -= M
-	var/datum/antagonist/traitor/saboteur/newTraitor = new
-	M.mind.add_antag_datum(newTraitor)
-	message_admins("[ADMIN_LOOKUPFLW(M)] was selected by the [name] ruleset and has been made into a midround traitor.")
-	log_game("DYNAMIC: [key_name(M)] was selected by the [name] ruleset and has been made into a midround traitor.")
+	var/mob/picked_mob = pick(living_players)
+	assigned += picked_mob
+	living_players -= picked_mob
+	var/datum/antagonist/traitor/saboteur/new_traitor = new
+	picked_mob.mind.add_antag_datum(new_traitor)
+	message_admins("[ADMIN_LOOKUPFLW(picked_mob)] was selected by the [name] ruleset and has been made into a midround traitor.")
+	log_game("DYNAMIC: [key_name(picked_mob)] was selected by the [name] ruleset and has been made into a midround traitor.")
 	return TRUE
