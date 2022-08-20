@@ -22,28 +22,28 @@
 		get_asset_datum(/datum/asset/spritesheet/cultures)
 	)
 
-/datum/preference_middleware/cultures/proc/get_ui_data_entries(datum/cultural_info/cultural_info, valid)
+/datum/preference_middleware/cultures/proc/get_ui_data_entries(/datum/background_info/cultural_info, valid)
 	var/selected = FALSE
 	var/list/sub_cultures = list()
 	if(valid)
 		var/value
 		if(istype(cultural_info, /datum/background_info/employment))
 			selected = cultural_info.type == preferences.culture_culture
-			for(var/datum/background_info/employment as anything in subtypesof(cultural_info.type))
+			for(var/datum/background_info/culture as anything in subtypesof(cultural_info.type))
 				value = get_ui_data_entry(GLOB.culture_cultures[culture], culture == preferences.culture_culture, TRUE)
 				if(value["selected"])
 					selected = CHILD_CULTURE_SELECTED
 				sub_cultures += list(value)
 		else if(istype(cultural_info, /datum/background_info/origin))
 			selected = cultural_info.type == preferences.culture_location
-			for(var/datum/background_info/employment as anything in subtypesof(cultural_info.type))
+			for(var/datum/background_info/culture as anything in subtypesof(cultural_info.type))
 				value = get_ui_data_entry(GLOB.culture_locations[culture], culture == preferences.culture_location, check_valid(culture, preferences.culture_culture))
 				if(value["selected"])
 					selected = CHILD_CULTURE_SELECTED
 				sub_cultures += list(value)
 		else if(istype(cultural_info, /datum/background_info/social_background))
 			selected = cultural_info.type == preferences.culture_faction
-			for(var/datum/background_info/employment as anything in subtypesof(cultural_info.type))
+			for(var/datum/background_info/culture as anything in subtypesof(cultural_info.type))
 				value = get_ui_data_entry(GLOB.culture_factions[culture], culture == preferences.culture_faction, check_valid(culture, preferences.culture_culture) && check_valid(cultural_info, preferences.culture_location))
 				if(value["selected"])
 					selected = CHILD_CULTURE_SELECTED
@@ -54,7 +54,7 @@
 	data["sub_culture_amount"] = sub_cultures.len
 	return data
 
-/datum/preference_middleware/cultures/proc/get_ui_data_entry(datum/cultural_info/cultural_info, selected, valid)
+/datum/preference_middleware/cultures/proc/get_ui_data_entry(/datum/background_info/cultural_info, selected, valid)
 	var/required_lang_name = null
 	if(cultural_info.required_lang)
 		var/datum/language/required_lang = GLOB.language_datum_instances[cultural_info.required_lang]
@@ -113,7 +113,7 @@
 		"features" = GLOB.culture_features,
 	)
 
-/datum/preference_middleware/cultures/proc/check_valid(datum/cultural_info/cultural_info, datum/cultural_info/loaded_cultural_info)
+/datum/preference_middleware/cultures/proc/check_valid(/datum/background_info/cultural_info, /datum/background_info/loaded_cultural_info)
 	if(!cultural_info || !loaded_cultural_info)
 		return FALSE
 	if(initial(cultural_info.groups) == CULTURE_ALL || initial(loaded_cultural_info.groups) == CULTURE_ALL)
