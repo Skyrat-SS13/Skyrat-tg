@@ -1,3 +1,5 @@
+// Skyrat space area defines - Mostly for ruins
+
 ///Cybersun, Forgotten Ship
 /area/ruin/space/has_grav/cybersun
 	name = "Cybersun"

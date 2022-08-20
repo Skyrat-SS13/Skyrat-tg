@@ -41,4 +41,4 @@
 		smoked.lit = FALSE
 		smoked.name = copytext_char(smoked.name, 5) //5 == length_char("lit ") + 1
 	smoked.update_icon()
-	smoker.update_inv_wear_mask()
+	smoker.update_worn_mask()

@@ -796,7 +796,7 @@
 
 	apply_overlay(PENIS_LAYER)
 	update_mutant_bodyparts()
-
+  
 // Updating vagina hud slot
 /mob/living/carbon/human/update_hud_vagina(obj/item/contained_item)
 	contained_item.screen_loc = ui_vagina
