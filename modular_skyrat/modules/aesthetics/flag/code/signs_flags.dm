@@ -87,6 +87,14 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/flag/usa, 32)
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/flag/syndicate, 32)
 
+/obj/structure/sign/flag/assembly
+	name = "flag of the Assembly"
+	desc = "The flag of the Vulpkan-Skrell'aan Assembly. Being an alliance between both species, this flag denotes the cooperative strength of the Assembly, designed to promote the unity of the two species' unique societies. It's a rare sight outside Sector 13, but its twin half-circle design clearly passes the notion of alliance well."
+	icon_state = "flag_assembly"
+	item_flag = /obj/item/sign/flag/assembly
+
+MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/flag/assembly, 32)
+
 /obj/item/sign/flag
 	name = "folded blank flag"
 	desc = "The folded flag of nothing. It has nothing on it. Beautiful."
@@ -94,6 +102,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/flag/syndicate, 32)
 	icon_state = "folded_coder"
 	sign_path = /obj/structure/sign/flag
 	is_editable = FALSE
+	custom_materials = null
 
 ///Since all of the signs rotate themselves on initialisation, this made folded flags look ugly (and more importantly rotated).
 ///And thus, it gets removed to make them aesthetically pleasing once again.
@@ -160,3 +169,9 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/flag/syndicate, 32)
 	desc = "The folded flag of the Sothran Syndicate."
 	icon_state = "folded_syndi"
 	sign_path = /obj/structure/sign/flag/syndicate
+
+/obj/item/sign/flag/assembly
+	name = "folded flag of the Assembly"
+	desc = "The folded flag of the Vulpkan-Skrell'aan Assembly."
+	icon_state = "folded_assembly"
+	sign_path = /obj/structure/sign/flag/assembly
