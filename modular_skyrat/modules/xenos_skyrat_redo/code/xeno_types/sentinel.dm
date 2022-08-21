@@ -14,7 +14,7 @@
 
 /datum/action/cooldown/alien/acid/skyrat
 	name = "Spit Neurotoxin"
-	desc = "Spits neurotoxin at someone, exhausting and confusing them."
+	desc = "Spits neurotoxin at someone, exhausting them."
 	icon_icon = 'modular_skyrat/modules/xenos_skyrat_redo/icons/xeno_actions.dmi'
 	button_icon_state = "neurospit_0"
 	plasma_cost = 25
@@ -79,15 +79,13 @@
 /obj/projectile/neurotoxin/skyrat
 	name = "neurotoxin spit"
 	icon_state = "neurotoxin"
-	damage = 30
+	damage = 40
 	damage_type = STAMINA
 	nodamage = FALSE
 	armor_flag = BIO
-	slur = 3 SECONDS
 
 /obj/projectile/neurotoxin/on_hit(atom/target, blocked = FALSE)
 	if(isalien(target))
-		slur = 0
 		nodamage = TRUE
 	return ..()
 
@@ -102,9 +100,8 @@
 /obj/projectile/neurotoxin/skyrat/acid
 	name = "acid spit"
 	icon_state = "toxin"
-	damage = 20
+	damage = 25
 	damage_type = BURN
-	slur = 0 SECONDS
 
 /obj/item/organ/internal/alien/neurotoxin/sentinel
 	name = "neurotoxin gland"

@@ -27,7 +27,7 @@
 		defender.name = "Defender"
 		defender.image  = image(icon = 'modular_skyrat/modules/xenos_skyrat_redo/icons/xeno_actions.dmi', icon_state = "preview_defender")
 		defender.info = span_info("Slow, tough, hard hitting, the defender is well and capable of what the name implies, \
-		the defender's thick armor makes it take a bit less damage from attacks, which can be paired with a deadly tail club \
+		the defender's thick armor allows it to take a few more hits than other castes, which can be paired with a deadly tail club \
 		and ability to make short charges to cause some real damage. Eventually, it will be able to evolve into the feared crusher, \
 		destroyer of stationary objects should the hive have the capacity.")
 
@@ -39,7 +39,7 @@
 		drone.info = span_info("Drones are a somewhat weak, although fairly quick caste that fills a mainly \
 		support role in a hive, having a higher plasma capacity than most first evolutions, and the ability to \
 		make a healing aura for nearby xenos. Drones are the only caste that can evolve into both praetorians and \
-		queens, though promotion past the first of their kind may require the help of an existing royal.")
+		queens, though only one queen and one praetorian may exist at any time.")
 
 		caste_options["Drone"] = drone
 
