@@ -41,7 +41,7 @@
 	drop_sound = 'sound/items/handling/toolbelt_drop.ogg'
 	pickup_sound = 'sound/items/handling/toolbelt_pickup.ogg'
 
-/obj/item/storage/belt/utility/Initialize()
+/obj/item/storage/belt/utility/Initialize(mapload)
 	. = ..()
 	atom_storage.max_specific_storage = WEIGHT_CLASS_NORMAL
 	atom_storage.max_total_storage = 21
@@ -205,7 +205,7 @@
 	inhand_icon_state = "medical"
 	worn_icon_state = "medical"
 
-/obj/item/storage/belt/medical/Initialize()
+/obj/item/storage/belt/medical/Initialize(mapload)
 	. = ..()
 	atom_storage.max_specific_storage = WEIGHT_CLASS_NORMAL
 	atom_storage.max_total_storage = 21
@@ -271,22 +271,22 @@
 
 /obj/item/storage/belt/medical/paramedic/PopulateContents()
 	SSwardrobe.provide_type(/obj/item/sensor_device, src)
-	SSwardrobe.provide_type(/obj/item/pinpointer/crew/prox, src)
 	SSwardrobe.provide_type(/obj/item/stack/medical/gauze/twelve, src)
-	SSwardrobe.provide_type(/obj/item/reagent_containers/syringe, src)
 	SSwardrobe.provide_type(/obj/item/stack/medical/bone_gel, src)
 	SSwardrobe.provide_type(/obj/item/stack/sticky_tape/surgical, src)
+	SSwardrobe.provide_type(/obj/item/reagent_containers/syringe, src)
+	SSwardrobe.provide_type(/obj/item/reagent_containers/glass/bottle/calomel, src)
 	SSwardrobe.provide_type(/obj/item/reagent_containers/glass/bottle/formaldehyde, src)
 	update_appearance()
 
 /obj/item/storage/belt/medical/paramedic/get_types_to_preload()
 	var/list/to_preload = list() //Yes this is a pain. Yes this is the point
 	to_preload += /obj/item/sensor_device
-	to_preload += /obj/item/pinpointer/crew/prox
 	to_preload += /obj/item/stack/medical/gauze/twelve
-	to_preload += /obj/item/reagent_containers/syringe
 	to_preload += /obj/item/stack/medical/bone_gel
 	to_preload += /obj/item/stack/sticky_tape/surgical
+	to_preload += /obj/item/reagent_containers/syringe
+	to_preload += /obj/item/reagent_containers/glass/bottle/calomel
 	to_preload += /obj/item/reagent_containers/glass/bottle/formaldehyde
 	return to_preload
 
@@ -339,7 +339,7 @@
 	)
 	// SKYRAT EDIT ADDITION END
 
-/obj/item/storage/belt/security/Initialize()
+/obj/item/storage/belt/security/Initialize(mapload)
 	. = ..()
 	atom_storage.max_slots = 5
 	atom_storage.max_specific_storage = WEIGHT_CLASS_NORMAL
@@ -380,7 +380,7 @@
 	content_overlays = FALSE
 	custom_premium_price = PAYCHECK_COMMAND * 3
 
-/obj/item/storage/belt/security/webbing/Initialize()
+/obj/item/storage/belt/security/webbing/Initialize(mapload)
 	. = ..()
 	atom_storage.max_slots = 6
 
@@ -392,7 +392,7 @@
 	worn_icon_state = "explorer1"
 	w_class = WEIGHT_CLASS_BULKY
 
-/obj/item/storage/belt/mining/Initialize()
+/obj/item/storage/belt/mining/Initialize(mapload)
 	. = ..()
 	atom_storage.max_slots = 6
 	atom_storage.max_specific_storage = WEIGHT_CLASS_NORMAL
@@ -453,7 +453,7 @@
 	inhand_icon_state = "ebelt"
 	worn_icon_state = "ebelt"
 
-/obj/item/storage/belt/mining/primitive/Initialize()
+/obj/item/storage/belt/mining/primitive/Initialize(mapload)
 	. = ..()
 	atom_storage.max_slots = 5
 
@@ -464,7 +464,7 @@
 	inhand_icon_state = "soulstonebelt"
 	worn_icon_state = "soulstonebelt"
 
-/obj/item/storage/belt/soulstone/Initialize()
+/obj/item/storage/belt/soulstone/Initialize(mapload)
 	. = ..()
 	atom_storage.max_slots = 6
 	atom_storage.set_holdable(list(
@@ -487,7 +487,7 @@
 	worn_icon_state = "championbelt"
 	custom_materials = list(/datum/material/gold=400)
 
-/obj/item/storage/belt/champion/Initialize()
+/obj/item/storage/belt/champion/Initialize(mapload)
 	. = ..()
 	atom_storage.max_slots = 1
 	atom_storage.set_holdable(list(
@@ -509,7 +509,7 @@
 	worn_icon_state = "militarywebbing"
 	resistance_flags = FIRE_PROOF
 
-/obj/item/storage/belt/military/Initialize()
+/obj/item/storage/belt/military/Initialize(mapload)
 	. = ..()
 	atom_storage.max_specific_storage = WEIGHT_CLASS_SMALL
 
@@ -521,7 +521,7 @@
 	var/sponsor = pick("Donk Co.", "Waffle Co.", "Roffle Co.", "Gorlax Marauders", "Tiger Cooperative")
 	desc = "A set of snack-tical webbing worn by athletes of the [sponsor] VR sports division."
 
-/obj/item/storage/belt/military/snack/Initialize()
+/obj/item/storage/belt/military/snack/Initialize(mapload)
 	. = ..()
 	atom_storage.max_slots = 6
 	atom_storage.max_specific_storage = WEIGHT_CLASS_SMALL
@@ -591,7 +591,7 @@
 	inhand_icon_state = "security"
 	worn_icon_state = "assault"
 
-/obj/item/storage/belt/military/assault/Initialize()
+/obj/item/storage/belt/military/assault/Initialize(mapload)
 	. = ..()
 	atom_storage.max_slots = 6
 
@@ -608,7 +608,7 @@
 	inhand_icon_state = "security"
 	worn_icon_state = "grenadebeltnew"
 
-/obj/item/storage/belt/grenade/Initialize()
+/obj/item/storage/belt/grenade/Initialize(mapload)
 	. = ..()
 	atom_storage.max_slots = 30
 	atom_storage.numerical_stacking = TRUE
@@ -647,7 +647,7 @@
 	inhand_icon_state = "soulstonebelt"
 	worn_icon_state = "soulstonebelt"
 
-/obj/item/storage/belt/wands/Initialize()
+/obj/item/storage/belt/wands/Initialize(mapload)
 	. = ..()
 	atom_storage.max_slots = 6
 	atom_storage.set_holdable(list(
@@ -673,7 +673,7 @@
 	inhand_icon_state = "janibelt"
 	worn_icon_state = "janibelt"
 
-/obj/item/storage/belt/janitor/Initialize()
+/obj/item/storage/belt/janitor/Initialize(mapload)
 	. = ..()
 	atom_storage.max_slots = 6
 	atom_storage.max_specific_storage = WEIGHT_CLASS_NORMAL // Set to this so the  light replacer can fit.
@@ -711,7 +711,7 @@
 	inhand_icon_state = "bandolier"
 	worn_icon_state = "bandolier"
 
-/obj/item/storage/belt/bandolier/Initialize()
+/obj/item/storage/belt/bandolier/Initialize(mapload)
 	. = ..()
 	atom_storage.max_slots = 18
 	atom_storage.max_total_storage = 18
@@ -730,7 +730,7 @@
 	dying_key = DYE_REGISTRY_FANNYPACK
 	custom_price = PAYCHECK_CREW * 2
 
-/obj/item/storage/belt/fannypack/Initialize()
+/obj/item/storage/belt/fannypack/Initialize(mapload)
 	. = ..()
 	atom_storage.max_slots = 3
 	atom_storage.max_specific_storage = WEIGHT_CLASS_SMALL
@@ -803,16 +803,18 @@
 	worn_icon_state = "sheath"
 	w_class = WEIGHT_CLASS_BULKY
 
-/obj/item/storage/belt/sabre/Initialize()
+/obj/item/storage/belt/sabre/Initialize(mapload)
 	. = ..()
-	AddElement(/datum/element/update_icon_updates_onmob)
+	AddElement(/datum/element/update_icon_updates_onmob, ITEM_SLOT_BELT)
 
 	atom_storage.max_slots = 1
 	atom_storage.rustle_sound = FALSE
 	atom_storage.max_specific_storage = WEIGHT_CLASS_BULKY
-	atom_storage.set_holdable(list(
-		/obj/item/melee/sabre,
-		))
+	atom_storage.set_holdable(
+		list(
+			/obj/item/melee/sabre,
+		)
+	)
 
 /obj/item/storage/belt/sabre/examine(mob/user)
 	. = ..()
@@ -828,7 +830,7 @@
 		user.put_in_hands(I)
 		update_appearance()
 	else
-		to_chat(user, span_warning("[src] is empty!"))
+		balloon_alert(user, "it's empty!")
 
 /obj/item/storage/belt/sabre/update_icon_state()
 	icon_state = initial(inhand_icon_state)
@@ -852,7 +854,7 @@
 	worn_icon_state = "plantbelt"
 	content_overlays = TRUE
 
-/obj/item/storage/belt/plant/Initialize()
+/obj/item/storage/belt/plant/Initialize(mapload)
 	. = ..()
 	atom_storage.max_slots = 6
 	atom_storage.max_specific_storage = WEIGHT_CLASS_NORMAL

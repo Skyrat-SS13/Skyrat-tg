@@ -56,7 +56,7 @@
 
 
 /obj/item/advanced_choice_beacon/nri
-	name = "\improper NRI Defense Colleague supply beacon"
+	name = "\improper NRI Defense Collegium supply beacon"
 	desc = "Used to request your job supplies, use in hand to do so!"
 
 /obj/item/advanced_choice_beacon/nri/get_available_options()
@@ -74,13 +74,13 @@
 	return options
 
 /obj/item/advanced_choice_beacon/nri/engineer
-	name = "\improper NRI Defense Colleague engineering supply beacon"
+	name = "\improper NRI Defense Collegium engineering supply beacon"
 	desc = "Used to request your job supplies, use in hand to do so!"
 
 	possible_choices = list(/obj/structure/closet/crate/secure/weapon/nri/engineer/defense, /obj/structure/closet/crate/secure/weapon/nri/engineer/offense)
 
 /obj/item/advanced_choice_beacon/nri/heavy
-	name = "\improper NRI Defense Colleague heavy armaments supply beacon"
+	name = "\improper NRI Defense Collegium heavy armaments supply beacon"
 	desc = "Used to request your job supplies, use in hand to do so!"
 
 	possible_choices = list(/obj/structure/closet/crate/secure/weapon/nri/heavy/defense,/obj/structure/closet/crate/secure/weapon/nri/heavy/offense)
@@ -99,8 +99,9 @@
 	w_class = WEIGHT_CLASS_BULKY
 	has_latches = FALSE
 
-/obj/item/storage/toolbox/emergency/turret/nri/ComponentInitialize()
-	AddComponent(/datum/component/two_handed, require_twohands=TRUE)
+/obj/item/storage/toolbox/emergency/turret/nri/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/two_handed, require_twohands = TRUE)
 
 /obj/item/storage/toolbox/emergency/turret/nri/PopulateContents()
 	return null
@@ -111,7 +112,7 @@
 			span_danger("You bash [src] with [I]!"), null, COMBAT_MESSAGE_RANGE)
 		playsound(src, "sound/items/drill_use.ogg", 80, TRUE, -1)
 		var/obj/machinery/porta_turret/syndicate/pod/toolbox/nri/turret = new(get_turf(loc))
-		turret.faction = list("neutral")
+		turret.faction = list("neutral", FACTION_ERT)
 		qdel(src)
 
 	..()
@@ -124,20 +125,23 @@
 	lethal_projectile = /obj/projectile/bullet/a762x39
 	max_integrity = 150
 	req_access = list(ACCESS_CENT_GENERAL)
-	faction = list("neutral")
-	shot_delay = 0.5
+	faction = list("neutral", FACTION_ERT)
+	shot_delay = 0.25
+
+/obj/machinery/porta_turret/syndicate/pod/toolbox/nri/assess_perp(mob/living/carbon/human/perp)
+	return 0
 
 /mob/living/simple_animal/hostile/viscerator/nri
-	faction = list("neutral")
+	faction = list("neutral", FACTION_ERT)
 
 /obj/item/grenade/spawnergrenade/manhacks/nri
-	name = "viscerator delivery grenade"
+	name = "imperial viscerator delivery grenade"
 	spawner_type = /mob/living/simple_animal/hostile/viscerator/nri
 	deliveryamt = 10
 
 /obj/structure/closet/crate/secure/weapon/nri
 	name = "military supplies crate"
-	desc = "A secure military-grade crate. According to the markings, -as well as mixed Cyrillics-, it was shipped and provided by the NRI Defense Colleague."
+	desc = "A secure military-grade crate. According to the markings, -as well as mixed Cyrillics-, it was shipped and provided by the NRI Defense Collegium."
 	req_access = list(ACCESS_CENT_GENERAL)
 	var/loadout_desc = "Whoever picks this is might be busy debugging this copypasted code."
 

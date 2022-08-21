@@ -85,7 +85,7 @@
 	overdose_threshold = 10
 
 /datum/reagent/drug/dopamine/on_mob_add(mob/living/carbon/human/affected_mob)
-	SEND_SIGNAL(affected_mob, COMSIG_ADD_MOOD_EVENT, "[type]_start", /datum/mood_event/orgasm, name)
+	affected_mob.add_mood_event("[type]_start", /datum/mood_event/orgasm, name)
 	..()
 
 /datum/reagent/drug/dopamine/on_mob_life(mob/living/carbon/affected_mob, delta_time, times_fired)
@@ -98,7 +98,7 @@
 	if(HAS_TRAIT(human_mob, TRAIT_BIMBO))
 		return
 	to_chat(human_mob, span_userdanger("You don't want to cum anymore!"))
-	SEND_SIGNAL(human_mob, COMSIG_ADD_MOOD_EVENT, "[type]_overdose", /datum/mood_event/overgasm, name)
+	human_mob.add_mood_event("[type]_overdose", /datum/mood_event/overgasm, name)
 
 /datum/reagent/drug/dopamine/overdose_process(mob/living/carbon/human/affected_mob)
 	affected_mob.adjustArousal(0.5)
@@ -153,7 +153,7 @@
 	var/pain_limit = 0
 	var/arousal_status = AROUSAL_NONE
 
-/mob/living/carbon/human/Initialize()
+/mob/living/carbon/human/Initialize(mapload)
 	. = ..()
 	if(!istype(src, /mob/living/carbon/human/species/monkey))
 		apply_status_effect(/datum/status_effect/aroused)
@@ -178,7 +178,7 @@
 		to_chat(src, span_warning("You can't cum right now!"))
 
 //Removing ERP IC verb depending on config
-/mob/living/carbon/human/Initialize()
+/mob/living/carbon/human/Initialize(mapload)
 	. = ..()
 	if(CONFIG_GET(flag/disable_erp_preferences))
 		verbs -= /mob/living/carbon/human/verb/arousal_panel
@@ -398,20 +398,20 @@
 												'modular_skyrat/modules/modular_items/lewd_items/sounds/final_f3.ogg'), 50, TRUE, ignore_walls = FALSE)
 			if(penis)
 				if(!testicles) //If we have no god damn balls, we can't cum anywhere... GET BALLS!
-					if(penis?.is_exposed())
-						visible_message(span_userlove("[src] orgasms, but nothing comes out of [p_their()] dick!"), \
-							span_userlove("You orgasm, it feels great, but nothing comes out of your dick!"))
-						apply_status_effect(/datum/status_effect/climax)
-						apply_status_effect(/datum/status_effect/climax_cooldown)
-						SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "orgasm", /datum/mood_event/climaxself)
-						return TRUE
-					else
-						visible_message(span_userlove("[src] cums into their clothes!"), \
-							span_userlove("You shoot your load, but you weren't naked, so you mess up your clothes!"))
-						apply_status_effect(/datum/status_effect/climax)
-						apply_status_effect(/datum/status_effect/climax_cooldown)
-						SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "orgasm", /datum/mood_event/climaxself)
-						return TRUE
+					visible_message(span_userlove("[src] orgasms, but nothing comes out of [p_their()] dick!"), \
+						span_userlove("You orgasm, it feels great, but nothing comes out of your dick!"))
+					apply_status_effect(/datum/status_effect/climax)
+					apply_status_effect(/datum/status_effect/climax_cooldown)
+					add_mood_event("orgasm", /datum/mood_event/climaxself)
+					return TRUE
+
+				if(!is_bottomless() && penis.visibility_preference != GENITAL_ALWAYS_SHOW)
+					visible_message(span_userlove("[src] cums into their clothes!"), \
+						span_userlove("You shoot your load, but you weren't naked, so you mess up your clothes!"))
+					apply_status_effect(/datum/status_effect/climax)
+					apply_status_effect(/datum/status_effect/climax_cooldown)
+					add_mood_event("orgasm", /datum/mood_event/climaxself)
+					return TRUE
 
 				var/list/interactable_inrange_humans = list()
 
@@ -455,14 +455,16 @@
 							span_userlove("You shoot string after string of hot cum, hitting the floor!"))
 					else
 						var/mob/living/carbon/human/target_human = interactable_inrange_humans[target_choice]
-						var/obj/item/organ/external/genital/vagina/target_vagina = getorganslot(ORGAN_SLOT_VAGINA)
-						var/obj/item/organ/external/genital/anus/target_anus = getorganslot(ORGAN_SLOT_ANUS)
-						var/obj/item/organ/external/genital/penis/target_penis = getorganslot(ORGAN_SLOT_PENIS)
+						var/obj/item/organ/external/genital/vagina/target_vagina = target_human.getorganslot(ORGAN_SLOT_VAGINA)
+						var/obj/item/organ/external/genital/anus/target_anus = target_human.getorganslot(ORGAN_SLOT_ANUS)
+						var/obj/item/organ/external/genital/penis/target_penis = target_human.getorganslot(ORGAN_SLOT_PENIS)
 
 						var/list/target_buttons = list()
 
 						if(!target_human.wear_mask)
 							target_buttons += "mouth"
+							if(target_human.client?.prefs.read_preference(/datum/preference/toggle/erp/cum_face))
+								target_buttons += "face"
 
 						if(target_vagina && target_vagina?.is_exposed())
 							target_buttons += "vagina"
@@ -470,7 +472,7 @@
 						if(target_anus && target_anus?.is_exposed())
 							target_buttons += "asshole"
 
-						if(target_penis && target_penis?.is_exposed() && target_penis.sheath)
+						if(target_penis && target_penis.is_exposed() && target_penis.sheath != "None")
 							target_buttons += "sheath"
 
 						target_buttons += "On them"
@@ -485,6 +487,18 @@
 							create_cum_decal = TRUE
 							visible_message(span_userlove("[src] shoots their sticky load onto the [target_human]!"), \
 								span_userlove("You shoot string after string of hot cum onto [target_human]!"))
+						else if(climax_into_choice == "face")
+							visible_message(span_userlove("[src] shoots their sticky load onto [target_human]'s face!"), \
+								span_userlove("You shoot string after string of hot cum onto [target_human]'s face!"))
+							var/datum/component/cumfaced/has_load = target_human.GetComponent(/datum/component/cumfaced)
+							if(has_load)
+								if(!has_load.big_load)
+									qdel(has_load)
+									target_human.AddComponent(/datum/component/cumfaced/big)
+								else
+									create_cum_decal = TRUE // cum dripping on the floor from the face
+							else
+								target_human.AddComponent(/datum/component/cumfaced)
 						else
 							visible_message(span_userlove("[src] hilts [p_their()] cock into [target_human]'s [climax_into_choice], shooting cum into it!"), \
 								span_userlove("You hilt your cock into [target_human]'s [climax_into_choice], shooting cum into it!"))
@@ -502,12 +516,14 @@
 					apply_status_effect(/datum/status_effect/climax)
 					apply_status_effect(/datum/status_effect/climax_cooldown)
 					visible_message(span_purple("[src] is cumming!"), span_purple("You are cumming!"))
+					var/turf/our_turf = get_turf(src)
+					new /obj/effect/decal/cleanable/femcum(our_turf)
 				else
 					apply_status_effect(/datum/status_effect/climax)
 					apply_status_effect(/datum/status_effect/climax_cooldown)
 					visible_message(span_purple("[src] cums in their underwear!"), \
 								span_purple("You cum in your underwear! Eww."))
-					SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "orgasm", /datum/mood_event/climaxself)
+					add_mood_event("orgasm", /datum/mood_event/climaxself)
 				return TRUE
 		else
 			visible_message(span_purple("[src] twitches, trying to cum, but with no result."), \
@@ -613,12 +629,12 @@
 /datum/status_effect/subspace/on_apply()
 	. = ..()
 	var/mob/living/carbon/human/target = owner
-	SEND_SIGNAL(target, COMSIG_ADD_MOOD_EVENT, "subspace", /datum/mood_event/subspace)
+	target.add_mood_event("subspace", /datum/mood_event/subspace)
 
 /datum/status_effect/subspace/on_remove()
 	. = ..()
 	var/mob/living/carbon/human/target = owner
-	SEND_SIGNAL(target, COMSIG_CLEAR_MOOD_EVENT, "subspace", /datum/mood_event/subspace)
+	target.clear_mood_event("subspace")
 
 /datum/mood_event/subspace
 	description = span_purple("Everything is so woozy... Pain feels so... Awesome.\n")
@@ -632,12 +648,12 @@
 /datum/status_effect/ropebunny/on_apply()
 	. = ..()
 	var/mob/living/carbon/human/target = owner
-	SEND_SIGNAL(target, COMSIG_ADD_MOOD_EVENT, "ropebunny", /datum/mood_event/ropebunny)
+	target.add_mood_event("ropebunny", /datum/mood_event/ropebunny)
 
 /datum/status_effect/ropebunny/on_remove()
 	. = ..()
 	var/mob/living/carbon/human/target = owner
-	SEND_SIGNAL(target, COMSIG_CLEAR_MOOD_EVENT, "ropebunny", /datum/mood_event/ropebunny)
+	target.clear_mood_event("ropebunny")
 
 /datum/mood_event/ropebunny
 	description = span_purple("I'm tied! Cannot move! These ropes... Ah!~")
@@ -666,7 +682,7 @@
 	var/pain_level = "small"
 	var/pleasure_level = "small"
 
-/atom/movable/screen/alert/aroused_x/Initialize()
+/atom/movable/screen/alert/aroused_x/Initialize(mapload)
 	.=..()
 	pain_overlay = update_pain()
 	pleasure_overlay = update_pleasure()
@@ -751,7 +767,7 @@
 //you got cum on your face bro *licks it off*
 /datum/component/cumfaced
 	dupe_mode = COMPONENT_DUPE_UNIQUE_PASSARGS
-
+	var/big_load = FALSE
 	var/mutable_appearance/cumface
 
 /datum/component/cumfaced/Initialize()
@@ -803,12 +819,13 @@
 
 	. = NONE
 	if(!(clean_types & CLEAN_TYPE_BLOOD))
-		qdel(src)
-		return COMPONENT_CLEANED
+		return
+	qdel(src)
+	return COMPONENT_CLEANED
 
 /datum/component/cumfaced/big
 	dupe_mode = COMPONENT_DUPE_UNIQUE_PASSARGS
-
+	big_load = TRUE
 	var/mutable_appearance/bigcumface
 
 /datum/component/cumfaced/big/Initialize()

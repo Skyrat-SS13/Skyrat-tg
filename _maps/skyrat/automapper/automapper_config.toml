@@ -6,6 +6,25 @@
 # coordinates - The coordinates of the map template placement. (X, Y, Z). PLEASE NOTE: The Z coordinate is the same as would be shown in SDMM. NOT IN GAME.
 # leave it at 1 if it is not a multi-z map. It is relative to the map file Z, not the one loaded in game.
 # trait_name - The name of the Z level trait that will be used to determine what Z level we use.
+# Traits - Station (for station relatied edits), CentCom (for edits on the CC map), Mining (for edits on Lavaland)
+# More can be found in code\__DEFINES\maps.dm
+
+# CENTRAL COMMAND MAP TEMPLATES
+# CC Shuttle Dock - This is where we drop the players off after the round ends
+[templates.centcom_shuttle_dock]
+map_files = ["centcom_shuttle_dock.dmm"]
+directory = "_maps/skyrat/automapper/templates/centcom/"
+required_map = "builtin"
+coordinates = [186, 71, 1]
+trait_name = "CentCom"
+
+# CC Ferry Dock - Admin Shuttle
+[templates.centcom_ferry_dock]
+map_files = ["centcom_ferry_dock.dmm"]
+directory = "_maps/skyrat/automapper/templates/centcom/"
+required_map = "builtin"
+coordinates = [128, 79, 1]
+trait_name = "CentCom"
 
 # METASTATION MAP TEMPLATES
 # Metastation Arrivals
@@ -29,7 +48,7 @@ trait_name = "Station"
 map_files = ["metastation_barber.dmm"]
 directory = "_maps/skyrat/automapper/templates/metastation/"
 required_map = "MetaStation.dmm"
-coordinates = [101, 117, 1]
+coordinates = [101, 116, 1]
 trait_name = "Station"
 
 # Metastation Armory
@@ -62,10 +81,10 @@ trait_name = "Station"
 map_files = ["deltastation_cryo.dmm"]
 directory = "_maps/skyrat/automapper/templates/deltastation/"
 required_map = "DeltaStation2.dmm"
-coordinates = [215, 93, 1]
+coordinates = [209, 93, 1]
 trait_name = "Station"
 
-# Deltastation Armory
+# Deltastation Armorys
 [templates.deltastation_armory]
 map_files = ["deltastation_armory.dmm"]
 directory = "_maps/skyrat/automapper/templates/deltastation/"
@@ -78,7 +97,7 @@ trait_name = "Station"
 map_files = ["deltastation_barber.dmm"]
 directory = "_maps/skyrat/automapper/templates/deltastation/"
 required_map = "DeltaStation2.dmm"
-coordinates = [146, 107, 1]
+coordinates = [121, 124, 1]
 trait_name = "Station"
 
 # Deltastation Prison

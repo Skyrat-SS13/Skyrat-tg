@@ -1,8 +1,8 @@
 /obj/item/paper/contractor_guide
 	name = "Contractor Guide"
 
-/obj/item/paper/contractor_guide/Initialize()
-	info = {"<p>Welcome agent, congratulations on your new position as contractor. On top of your already assigned objectives,
+/obj/item/paper/contractor_guide/Initialize(mapload)
+	default_raw_text = {"<p>Welcome agent, congratulations on your new position as contractor. On top of your already assigned objectives,
 			this kit will provide you contracts to take on for TC payments.</p>
 
 			<p>You likely already have your Contractor MODSuit equipped. It has a built in chameleon module, which only works when the MODSuit is undeployed,
@@ -65,7 +65,7 @@
 	name = "Contractor Guide"
 
 /obj/item/paper/contractor_guide/midround/Initialize(mapload)
-	info = {"<p>Welcome agent, congratulations on successfully getting in range of the station.</p>
+	default_raw_text = {"<p>Welcome agent, congratulations on successfully getting in range of the station.</p>
 
 			<p>You likely already have your Contractor MODSuit equipped. It has a built in chameleon module, which only works when the MODSuit is undeployed,
 			but is highly useful for on-station infiltrations. We also provide your chameleon jumpsuit and mask, both of which can be changed

@@ -9,7 +9,7 @@
 	pixel_y = -32
 	var/timeleft = 62
 
-/obj/effect/singularity_creation/Initialize()
+/obj/effect/singularity_creation/Initialize(mapload)
 	. = ..()
 	if(timeleft)
 		QDEL_IN(src, timeleft)

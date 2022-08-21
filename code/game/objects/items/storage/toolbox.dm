@@ -38,7 +38,7 @@
 	if(has_latches)
 		. += latches
 
-/obj/item/storage/toolbox/Initialize()
+/obj/item/storage/toolbox/Initialize(mapload)
 	. = ..()
 	atom_storage.max_specific_storage = WEIGHT_CLASS_NORMAL
 
@@ -101,7 +101,7 @@
 	force = 5
 	w_class = WEIGHT_CLASS_NORMAL
 
-/obj/item/storage/toolbox/mechanical/old/heirloom/Initialize()
+/obj/item/storage/toolbox/mechanical/old/heirloom/Initialize(mapload)
 	. = ..()
 	atom_storage.max_specific_storage = WEIGHT_CLASS_SMALL
 
@@ -170,7 +170,7 @@
 	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // Skyrat edit
 	special_desc = "A toolbox manufactured by the Syndicate containing extra tactical tools. Made of more robust materials than the average toolbox." // Skyrat edit
 
-/obj/item/storage/toolbox/syndicate/Initialize()
+/obj/item/storage/toolbox/syndicate/Initialize(mapload)
 	. = ..()
 	atom_storage.silent = TRUE
 
@@ -207,7 +207,7 @@
 	w_class = WEIGHT_CLASS_GIGANTIC //Holds more than a regular toolbox!
 	material_flags = NONE
 
-/obj/item/storage/toolbox/artistic/Initialize()
+/obj/item/storage/toolbox/artistic/Initialize(mapload)
 	. = ..()
 	atom_storage.max_total_storage = 20
 	atom_storage.max_slots = 10
@@ -273,7 +273,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	has_latches = FALSE
 
-/obj/item/storage/toolbox/infiltrator/Initialize()
+/obj/item/storage/toolbox/infiltrator/Initialize(mapload)
 	. = ..()
 	atom_storage.max_slots = 10
 	atom_storage.max_specific_storage = WEIGHT_CLASS_NORMAL
@@ -312,7 +312,7 @@
 	if(!is_type_in_list(src, allowed_toolbox) && (type != /obj/item/storage/toolbox))
 		return
 	if(contents.len >= 1)
-		to_chat(user, span_warning("They won't fit in, as there is already stuff inside!"))
+		balloon_alert(user, "not empty!")
 		return
 	if(T.use(10))
 		var/obj/item/bot_assembly/floorbot/B = new
@@ -330,16 +330,13 @@
 				B.toolbox_color = "s"
 		user.put_in_hands(B)
 		B.update_appearance()
-		to_chat(user, span_notice("You add the tiles into the empty [name]. They protrude from the top."))
+		B.balloon_alert(user, "tiles added")
 		qdel(src)
 	else
-		to_chat(user, span_warning("You need 10 floor tiles to start building a floorbot!"))
+		balloon_alert(user, "needs 10 tiles!")
 		return
 
 
 /obj/item/storage/toolbox/haunted
 	name = "old toolbox"
 	custom_materials = list(/datum/material/hauntium = 500)
-
-
-

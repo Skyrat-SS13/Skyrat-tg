@@ -55,7 +55,7 @@
 	minbodytemp = 0
 	loot = list(/obj/effect/decal/cleanable/oil/slippery)
 	butcher_results = list(/obj/item/clothing/head/corgi/en = 1, /obj/item/clothing/suit/corgisuit/en = 1)
-	deathmessage = "beeps, its mechanical parts hissing before the chassis collapses in a loud thud."
+	death_message = "beeps, its mechanical parts hissing before the chassis collapses in a loud thud."
 	gold_core_spawnable = NO_SPAWN
 	animal_species = /mob/living/simple_animal/pet/dog/corgi
 	nofur = TRUE
@@ -66,7 +66,7 @@
 	light_power = 0.8
 	light_on = FALSE
 
-/mob/living/simple_animal/pet/dog/corgi/borgi/Initialize()
+/mob/living/simple_animal/pet/dog/corgi/borgi/Initialize(mapload)
 	. = ..()
 	var/datum/component/overlay_lighting/lighting_object = src.GetComponent(/datum/component/overlay_lighting)
 	var/image/cone = lighting_object.cone

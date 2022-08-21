@@ -176,7 +176,7 @@ SUBSYSTEM_DEF(title)
 /proc/add_startup_message(msg)
 	var/msg_dat = {"<p class="terminal_text">[msg]</p>"}
 
-	GLOB.startup_messages.Insert(1, msg_dat)
+	GLOB.startup_messages += msg_dat
 
 	// If we ran before SStitle initialized, set the ref time now.
 	SStitle.check_progress_reference_time()

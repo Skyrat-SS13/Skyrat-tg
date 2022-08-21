@@ -1,6 +1,3 @@
-///Dummy mob reserve slot for manifest
-#define DUMMY_HUMAN_SLOT_MANIFEST "dummy_manifest_generation"
-
 GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 
 //TODO: someone please get rid of this shit
@@ -136,7 +133,7 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 		if(N.new_character)
 			log_manifest(N.ckey,N.new_character.mind,N.new_character)
 		if(ishuman(N.new_character))
-			manifest_inject(N.new_character, N.client)
+			manifest_inject(N.new_character, N.client) // SKYRAT EDIT - Alt-titles - ORIGINAL: manifest_inject(N.new_character)
 		CHECK_TICK
 
 /datum/datacore/proc/manifest_modify(name, assignment, trim)
@@ -220,21 +217,19 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 	return dat
 
 
-/datum/datacore/proc/manifest_inject(mob/living/carbon/human/H, client/C)
+/datum/datacore/proc/manifest_inject(mob/living/carbon/human/H, client/human_client) // SKYRAT EDIT - Alt-titles - ORIGINAL: /datum/datacore/proc/manifest_inject(mob/living/carbon/human/H)
 	set waitfor = FALSE
 	var/static/list/show_directions = list(SOUTH, WEST)
 	if(H.mind?.assigned_role.job_flags & JOB_CREW_MANIFEST)
 		var/assignment = H.mind.assigned_role.title
 		// SKYRAT EDIT ADDITION BEGIN - ALTERNATIVE_JOB_TITLES
 		// The alt job title, if user picked one, or the default
-		var/chosen_assignment = C?.prefs.alt_job_titles[assignment] || assignment
+		var/chosen_assignment = human_client?.prefs.alt_job_titles[assignment] || assignment
 		// SKYRAT EDIT ADDITION END - ALTERNATIVE_JOB_TITLES
 
 		var/static/record_id_num = 1001
 		var/id = num2hex(record_id_num++,6)
-		if(!C)
-			C = H.client
-		var/image = get_id_photo(H, C, show_directions)
+		var/image = get_id_photo(H, show_directions)
 		var/datum/picture/pf = new
 		var/datum/picture/ps = new
 		pf.picture_name = "[H]"
@@ -269,9 +264,9 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 		G.fields["photo_front"] = photo_front
 		G.fields["photo_side"] = photo_side
 		// SKYRAT ADDITION START - RP RECORDS
-		G.fields["past_records"] = C?.prefs?.read_preference(/datum/preference/text/general) || ""
-		G.fields["background_records"] = C?.prefs?.read_preference(/datum/preference/text/background) || ""
-		G.fields["exploitable_records"] = C?.prefs?.read_preference(/datum/preference/text/exploitable) || ""
+		G.fields["past_records"] = human_client?.prefs?.read_preference(/datum/preference/text/general) || ""
+		G.fields["background_records"] = human_client?.prefs?.read_preference(/datum/preference/text/background) || ""
+		G.fields["exploitable_records"] = human_client?.prefs?.read_preference(/datum/preference/text/exploitable) || ""
 		// SKYRAT ADDITION END
 		general += G
 
@@ -290,10 +285,7 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 		M.fields["notes"] = H.get_quirk_string(!medical, CAT_QUIRK_NOTES)
 		M.fields["notes_d"] = H.get_quirk_string(medical, CAT_QUIRK_NOTES)
 		// SKYRAT EDIT ADD - RP RECORDS
-		if(C && C.prefs && C.prefs.read_preference(/datum/preference/text/medical))
-			M.fields["past_records"] = C.prefs.read_preference(/datum/preference/text/medical)
-		else
-			M.fields["past_records"] = ""
+		M.fields["past_records"] = human_client?.prefs?.read_preference(/datum/preference/text/medical) || ""
 		// SKYRAT EDIT END
 		medical += M
 
@@ -306,10 +298,7 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 		S.fields["crim"] = list()
 		S.fields["notes"] = "No notes."
 		// SKYRAT EDIT ADD - RP RECORDS
-		if(C && C.prefs && C.prefs.read_preference(/datum/preference/text/security))
-			S.fields["past_records"] = C.prefs.read_preference(/datum/preference/text/security)
-		else
-			S.fields["past_records"] = ""
+		S.fields["past_records"] = human_client?.prefs?.read_preference(/datum/preference/text/security) || ""
 		// SKYRAT EDIT END
 		security += S
 
@@ -338,61 +327,64 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 		locked += L
 	return
 
-/**
- * Supporing proc for getting general records
- * and using them as pAI ui data. This gets
- * medical information - or what I would deem
- * medical information - and sends it as a list.
- *
- * @return - list(general_records_out)
- */
-/datum/datacore/proc/get_general_records()
-	if(!GLOB.data_core.general)
-		return list()
-	/// The array of records
-	var/list/general_records_out = list()
-	for(var/datum/data/record/gen_record as anything in GLOB.data_core.general)
-		/// The object containing the crew info
-		var/list/crew_record = list()
-		crew_record["ref"] = REF(gen_record)
-		crew_record["name"] = gen_record.fields["name"]
-		crew_record["physical_health"] = gen_record.fields["p_stat"]
-		crew_record["mental_health"] = gen_record.fields["m_stat"]
-		general_records_out += list(crew_record)
-	return general_records_out
+/datum/datacore/proc/get_id_photo(mob/living/carbon/human/human, show_directions = list(SOUTH))
+	return get_flat_existing_human_icon(human, show_directions)
 
-/**
- * Supporing proc for getting secrurity records
- * and using them as pAI ui data. Sends it as a
- * list.
- *
- * @return - list(security_records_out)
- */
-/datum/datacore/proc/get_security_records()
-	if(!GLOB.data_core.security)
-		return list()
-	/// The array of records
-	var/list/security_records_out = list()
-	for(var/datum/data/record/sec_record as anything in GLOB.data_core.security)
-		/// The object containing the crew info
-		var/list/crew_record = list()
-		crew_record["ref"] = REF(sec_record)
-		crew_record["name"] = sec_record.fields["name"]
-		crew_record["status"] = sec_record.fields["criminal"] // wanted status
-		crew_record["crimes"] = length(sec_record.fields["crim"])
-		security_records_out += list(crew_record)
-	return security_records_out
+//Todo: Add citations to the prinout - you get them from sec record's "citation" field, same as "crim" (which is frankly a terrible fucking field name)
+///Standardized printed records. SPRs. Like SATs but for bad guys who probably didn't actually finish school. Input the records and out comes a paper.
+/proc/print_security_record(datum/data/record/general_data, datum/data/record/security, atom/location)
+	if(!istype(general_data) && !istype(security))
+		stack_trace("called without any datacores! this may or may not be intentional!")
+	if(!isatom(location)) //can't drop the paper if we didn't get passed an atom.
+		CRASH("NO VALID LOCATION PASSED.")
 
-/datum/datacore/proc/get_id_photo(mob/living/carbon/human/human, client/client, show_directions = list(SOUTH))
-	var/datum/job/humans_job = human.mind.assigned_role
-	var/datum/preferences/humans_prefs
-	if(!client)
-		client = human.client
-	if(client)
-		humans_prefs = client.prefs
-	if (human.dna.species.roundstart_changed)
-		return get_flat_human_icon(null, humans_job, null, DUMMY_HUMAN_SLOT_MANIFEST, show_directions)
+	GLOB.data_core.securityPrintCount++ //just alters the name of the paper.
+	var/obj/item/paper/printed_paper = new(location)
+	var/final_paper_text = "<CENTER><B>Security Record - (SR-[GLOB.data_core.securityPrintCount])</B></CENTER><BR>"
+	if((istype(general_data, /datum/data/record) && GLOB.data_core.general.Find(general_data)))
+		final_paper_text += text("Name: [] ID: []<BR>\nGender: []<BR>\nAge: []<BR>", general_data.fields["name"], general_data.fields["id"], general_data.fields["gender"], general_data.fields["age"])
+		final_paper_text += "\nSpecies: [general_data.fields["species"]]<BR>"
+		final_paper_text += text("\nFingerprint: []<BR>\nPhysical Status: []<BR>\nMental Status: []<BR>", general_data.fields["fingerprint"], general_data.fields["p_stat"], general_data.fields["m_stat"])
+		//SKYRAT EDIT ADD - RP RECORDS
+		if(!(general_data.fields["past_records"] == ""))
+			final_paper_text += "\nGeneral Records:\n[general_data.fields["past_records"]]\n"
+		//SKYRAT EDIT ADD END
 	else
-		return get_flat_human_icon(null, humans_job, humans_prefs, DUMMY_HUMAN_SLOT_MANIFEST, show_directions)
+		final_paper_text += "<B>General Record Lost!</B><BR>"
+	if((istype(security, /datum/data/record) && GLOB.data_core.security.Find(security)))
+		//final_paper_text += text("<BR>\n<CENTER><B>Security Data</B></CENTER><BR>\nCriminal Status: []", security.fields["criminal"]) // ORIGINAL
+		//SKYRAT EDIT ADDITION START - RP RECORDS
+		final_paper_text += text("<BR>\n<CENTER><B>Security Data</B></CENTER><BR>\n")
+		if(!(security.fields["past_records"] == ""))
+			final_paper_text += "\nSecurity Records:\n[security.fields["past_records"]]\n"
+		final_paper_text += text("Criminal Status: []", security.fields["criminal"])
+		//SKYRAT EDIT END
 
-#undef DUMMY_HUMAN_SLOT_MANIFEST
+		final_paper_text += "<BR>\n<BR>\nCrimes:<BR>\n"
+		final_paper_text +={"<table style="text-align:center;" border="1" cellspacing="0" width="100%">
+<tr>
+<th>Crime</th>
+<th>Details</th>
+<th>Author</th>
+<th>Time Added</th>
+</tr>"}
+		for(var/datum/data/crime/c in security.fields["crim"])
+			final_paper_text += "<tr><td>[c.crimeName]</td>"
+			final_paper_text += "<td>[c.crimeDetails]</td>"
+			final_paper_text += "<td>[c.author]</td>"
+			final_paper_text += "<td>[c.time]</td>"
+			final_paper_text += "</tr>"
+		final_paper_text += "</table>"
+
+		final_paper_text += text("<BR>\nImportant Notes:<BR>\n\t[]<BR>\n<BR>\n<CENTER><B>Comments/Log</B></CENTER><BR>", security.fields["notes"])
+		var/counter = 1
+		while(security.fields[text("com_[]", counter)])
+			final_paper_text += text("[]<BR>", security.fields[text("com_[]", counter)])
+			counter++
+		printed_paper.name = text("SR-[] '[]'", GLOB.data_core.securityPrintCount, general_data.fields["name"])
+	else //if no security record
+		final_paper_text += "<B>Security Record Lost!</B><BR>"
+		printed_paper.name = text("SR-[] '[]'", GLOB.data_core.securityPrintCount, "Record Lost")
+	final_paper_text += "</TT>"
+	printed_paper.add_raw_text(final_paper_text)
+	printed_paper.update_appearance() //make sure we make the paper look like it has writing on it.

@@ -13,11 +13,11 @@
 /obj/machinery/vending/wardrobe/engi_wardrobe
 	skyrat_products = list(
 		/obj/item/radio/headset/headset_eng = 3,
-		/obj/item/clothing/under/rank/engineering/engineer/trouser = 3,
+		/obj/item/clothing/under/rank/engineering/engineer/skyrat/trouser = 3,
 		/obj/item/clothing/under/rank/engineering/engineer/skyrat/utility = 3,
-		/obj/item/clothing/suit/toggle/jacket/engi = 3,
-		/obj/item/clothing/under/misc/overalls = 3,
 		/obj/item/clothing/under/rank/engineering/engineer/skyrat/hazard_chem = 3,
+		/obj/item/clothing/under/misc/overalls = 3,
+		/obj/item/clothing/suit/toggle/jacket/engi = 3,
 		/obj/item/clothing/head/hardhat/orange = 2,
 		/obj/item/clothing/head/hardhat/weldhat/orange = 2,
 		/obj/item/clothing/head/hardhat/dblue = 2,

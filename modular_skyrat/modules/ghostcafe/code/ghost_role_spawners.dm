@@ -5,7 +5,7 @@
 	flavour_text = "You are a robot. This probably shouldn't be happening."
 	mob_type = /mob/living/silicon/robot
 
-/obj/effect/mob_spawn/ghost_role/robot/Initialize()
+/obj/effect/mob_spawn/ghost_role/robot/Initialize(mapload)
 	. = ..()
 
 /obj/effect/mob_spawn/ghost_role/robot/equip(mob/living/silicon/robot/R)

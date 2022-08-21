@@ -45,7 +45,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		return
 	//SKYRAT EDIT ADDITION
 	var/turf/my_turf = get_turf(src)
-	my_turf.PolluteTurf(/datum/pollutant/sulphur, 5)
+	my_turf.pollute_turf(/datum/pollutant/sulphur, 5)
 	//SKYRAT EDIT END
 	playsound(src, 'sound/items/match_strike.ogg', 15, TRUE)
 	lit = TRUE
@@ -90,7 +90,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 	if(lit && M.ignite_mob())
 		message_admins("[ADMIN_LOOKUPFLW(user)] set [key_name_admin(M)] on fire with [src] at [AREACOORD(user)]")
-		log_game("[key_name(user)] set [key_name(M)] on fire with [src] at [AREACOORD(user)]")
+		user.log_message("set [key_name(M)] on fire with [src]", LOG_ATTACK)
 
 	var/obj/item/clothing/mask/cigarette/cig = help_light_cig(M)
 	if(!lit || !cig || user.combat_mode)
@@ -177,7 +177,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	if(starts_lit)
 		light()
 	AddComponent(/datum/component/knockoff, 90, list(BODY_ZONE_PRECISE_MOUTH), slot_flags) //90% to knock off when wearing a mask
-	AddElement(/datum/element/update_icon_updates_onmob)
+	AddElement(/datum/element/update_icon_updates_onmob, ITEM_SLOT_MASK|ITEM_SLOT_HANDS)
 	icon_state = icon_off
 	inhand_icon_state = inhand_icon_off
 
@@ -278,8 +278,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	//can't think of any other way to update the overlays :<
 	if(ismob(loc))
 		var/mob/M = loc
-		M.update_inv_wear_mask()
-		M.update_inv_hands()
+		M.update_worn_mask()
+		M.update_held_items()
 
 /obj/item/clothing/mask/cigarette/extinguish()
 	if(!lit)
@@ -297,8 +297,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	if(ismob(loc))
 		var/mob/living/M = loc
 		to_chat(M, span_notice("Your [name] goes out."))
-		M.update_inv_wear_mask()
-		M.update_inv_hands()
+		M.update_worn_mask()
+		M.update_held_items()
 
 /// Handles processing the reagents in the cigarette.
 /obj/item/clothing/mask/cigarette/proc/handle_reagents()
@@ -332,7 +332,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 	// SKYRAT EDIT ADDITION START - Pollution
 	var/turf/location = get_turf(src)
-	location.PolluteTurf(pollution_type, 5, POLLUTION_PASSIVE_EMITTER_CAP)
+	location.pollute_turf(pollution_type, 5, POLLUTION_PASSIVE_EMITTER_CAP)
 	// SKYRAT EDIT END
 
 	smoketime -= delta_time * (1 SECONDS)
@@ -625,7 +625,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	update_icon()
 
 	inhand_icon_state = icon_off
-	user?.update_inv_wear_mask()
+	user?.update_worn_mask()
 	STOP_PROCESSING(SSobj, src)
 
 /obj/item/clothing/mask/cigarette/pipe/attackby(obj/item/thing, mob/user, params)
@@ -815,7 +815,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		span_warning("After a few attempts, [user] manages to light [src] - however, [user.p_they()] burn [user.p_their()] finger in the process."),
 		span_warning("You burn yourself while lighting the lighter!")
 	)
-	SEND_SIGNAL(user, COMSIG_ADD_MOOD_EVENT, "burnt_thumb", /datum/mood_event/burnt_thumb)
+	user.add_mood_event("burnt_thumb", /datum/mood_event/burnt_thumb)
 
 
 /obj/item/lighter/attack(mob/living/carbon/M, mob/living/carbon/user)
@@ -1082,7 +1082,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	//SKYRAT EDIT ADDITION
 	//open flame removed because vapes are a closed system, they won't light anything on fire
 	var/turf/my_turf = get_turf(src)
-	my_turf.PolluteTurf(/datum/pollutant/smoke/vape, 5, POLLUTION_PASSIVE_EMITTER_CAP)
+	my_turf.pollute_turf(/datum/pollutant/smoke/vape, 5, POLLUTION_PASSIVE_EMITTER_CAP)
 	//SKYRAT EDIT END
 
 	if(obj_flags & EMAGGED)

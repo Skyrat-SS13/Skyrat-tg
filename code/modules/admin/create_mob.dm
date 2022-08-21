@@ -51,5 +51,4 @@
 	//SKYRAT EDIT ADDITION END
 
 	human.update_body(is_creating = TRUE)
-	human.update_hair(is_creating = TRUE)
 	human.dna.species.spec_updatehealth(human)
