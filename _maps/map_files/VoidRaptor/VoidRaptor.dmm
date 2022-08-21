@@ -594,14 +594,6 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/structure/mark_turf{
-	icon_state = "borgmat";
-	icon = 'modular_skyrat/master_files/icons/effects/turf_effects_64.dmi';
-	pixel_x = -16;
-	pixel_y = -4;
-	desc = "It's a rolled out mat, doesn't include wireless charging.";
-	name = "soft-foam mat"
-	},
 /turf/open/floor/iron/dark/smooth_edge,
 /area/station/science/robotics/lab)
 "ajE" = (
@@ -11258,12 +11250,6 @@
 /obj/effect/turf_decal/bot,
 /turf/open/floor/carpet/executive,
 /area/station/command/heads_quarters/hop)
-"dxs" = (
-/obj/item/clothing/under/rank/prisoner,
-/obj/item/wirecutters/advanced,
-/obj/structure/lattice/catwalk,
-/turf/open/space/basic,
-/area/space/nearstation)
 "dxD" = (
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 4
@@ -16609,7 +16595,7 @@
 	dir = 4
 	},
 /turf/open/floor/catwalk_floor/iron_smooth,
-/area/space)
+/area/station/commons/fitness/recreation/entertainment)
 "eYU" = (
 /obj/structure/railing/corner,
 /turf/open/floor/iron/smooth,
@@ -21391,6 +21377,7 @@
 	},
 /obj/effect/turf_decal/tile/purple,
 /obj/structure/bed/pod,
+/obj/machinery/light/warm/directional/north,
 /turf/open/floor/iron/vaporwave,
 /area/station/service/barber)
 "gAC" = (
@@ -31704,7 +31691,6 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/components/binary/pump/on{
 	dir = 8
 	},
@@ -38311,6 +38297,7 @@
 	pixel_x = 6
 	},
 /obj/item/lipstick/random,
+/obj/machinery/light/warm/directional/west,
 /turf/open/floor/iron/vaporwave,
 /area/station/service/barber)
 "luo" = (
@@ -39949,7 +39936,8 @@
 /obj/machinery/button/door/directional/north{
 	id = "UnitB";
 	name = "Lock Control";
-	normaldoorcontrol = 1
+	normaldoorcontrol = 1;
+	specialfunctions = 4
 	},
 /turf/open/floor/iron/freezer,
 /area/station/commons/toilet)
@@ -46347,7 +46335,6 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/tile/purple,
-/obj/machinery/light/warm/directional/north,
 /obj/item/kirbyplants/random,
 /turf/open/floor/iron/vaporwave,
 /area/station/service/barber)
@@ -46438,6 +46425,13 @@
 /obj/machinery/light/warm/directional/east,
 /turf/open/floor/iron/smooth_large,
 /area/station/command/cc_dock)
+"nIg" = (
+/obj/structure/cable,
+/obj/structure/lattice/catwalk,
+/obj/item/clothing/under/rank/prisoner,
+/obj/item/wirecutters/advanced,
+/turf/open/space/basic,
+/area/space/nearstation)
 "nIi" = (
 /obj/machinery/telecomms/server/presets/command,
 /obj/effect/turf_decal/bot,
@@ -58916,10 +58910,6 @@
 /obj/effect/spawner/random/trash/garbage,
 /turf/open/floor/catwalk_floor,
 /area/station/hallway/secondary/construction)
-"rlJ" = (
-/obj/effect/landmark/start/hangover,
-/turf/open/floor/glass/reinforced,
-/area/station/security/execution/transfer)
 "rlT" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -63051,6 +63041,7 @@
 /obj/machinery/power/apc/auto_name/directional/south,
 /obj/structure/cable,
 /obj/effect/landmark/start/assistant,
+/obj/machinery/light/warm/directional/south,
 /turf/open/floor/iron/vaporwave,
 /area/station/service/barber)
 "suj" = (
@@ -67736,7 +67727,6 @@
 	dir = 1
 	},
 /obj/machinery/firealarm/directional/south,
-/obj/machinery/light/warm/directional/south,
 /turf/open/floor/iron/vaporwave,
 /area/station/service/barber)
 "tKo" = (
@@ -71723,7 +71713,8 @@
 /obj/machinery/button/door/directional/north{
 	id = "UnitS";
 	name = "Lock Control";
-	normaldoorcontrol = 1
+	normaldoorcontrol = 1;
+	specialfunctions = 4
 	},
 /obj/structure/drain,
 /obj/effect/spawner/random/trash/soap,
@@ -125242,7 +125233,7 @@ ttw
 ttw
 ttw
 oao
-rlJ
+rPq
 rPq
 cDj
 cDj
@@ -126771,11 +126762,10 @@ ttw
 mQl
 ioM
 hBA
-kNS
+nIg
 xLD
 oao
 rPq
-rlJ
 rPq
 rPq
 rPq
@@ -126783,7 +126773,8 @@ rPq
 rPq
 rPq
 rPq
-rlJ
+rPq
+rPq
 rPq
 rPq
 oao
@@ -127034,14 +127025,14 @@ oao
 rPq
 rPq
 rPq
-rlJ
+rPq
 bMa
 rPq
-rlJ
 rPq
 rPq
 rPq
-rlJ
+rPq
+rPq
 ljZ
 cDj
 oao
@@ -127285,7 +127276,7 @@ ttw
 mQl
 iWD
 hBA
-dxs
+odJ
 kNS
 oao
 rPq
