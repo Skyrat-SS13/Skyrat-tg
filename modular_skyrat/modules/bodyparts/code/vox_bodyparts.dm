@@ -27,7 +27,6 @@
 
 /obj/item/bodypart/r_leg/mutant/vox
 	icon_greyscale = 'modular_skyrat/modules/bodyparts/icons/vox_parts_greyscale.dmi'
-	uses_mutcolor = TRUE
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ORGANIC | BODYTYPE_CUSTOM
 	limb_id = SPECIES_VOX
 	digitigrade_type = /obj/item/bodypart/r_leg/digitigrade/vox

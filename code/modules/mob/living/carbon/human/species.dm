@@ -827,7 +827,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	human_mob.update_mutant_bodyparts()
 	//SKYRAT EDIT ADDITION END
 	human_mob.hairstyle = random_hairstyle(human_mob.gender)
-	human_mob.update_hair(is_creating = TRUE)
+	human_mob.update_body_parts()
 
 ///Proc that will randomise the underwear (i.e. top, pants and socks) of a species' associated mob
 /datum/species/proc/randomize_active_underwear(mob/living/carbon/human/human_mob)
@@ -1103,7 +1103,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 		return
 	target.facial_hairstyle = "Shaved"
 	target.hairstyle = "Bald"
-	target.update_hair(is_creating = TRUE)
+	target.update_body_parts()
 
 //////////////////
 // ATTACK PROCS //
@@ -1355,13 +1355,13 @@ GLOBAL_LIST_EMPTY(features_by_species)
 			if(bloody) //Apply blood
 				if(human.wear_mask)
 					human.wear_mask.add_mob_blood(human)
-					human.update_inv_wear_mask()
+					human.update_worn_mask()
 				if(human.head)
 					human.head.add_mob_blood(human)
-					human.update_inv_head()
+					human.update_worn_head()
 				if(human.glasses && prob(33))
 					human.glasses.add_mob_blood(human)
-					human.update_inv_glasses()
+					human.update_worn_glasses()
 
 		if(BODY_ZONE_CHEST)
 			if(human.stat == CONSCIOUS && !weapon.get_sharpness() && armor_block < 50)
@@ -1373,10 +1373,10 @@ GLOBAL_LIST_EMPTY(features_by_species)
 			if(bloody)
 				if(human.wear_suit)
 					human.wear_suit.add_mob_blood(human)
-					human.update_inv_wear_suit()
+					human.update_worn_oversuit()
 				if(human.w_uniform)
 					human.w_uniform.add_mob_blood(human)
-					human.update_inv_w_uniform()
+					human.update_worn_undersuit()
 
 	/// Triggers force say events
 	if(weapon.force > 10 || weapon.force >= 5 && prob(33))

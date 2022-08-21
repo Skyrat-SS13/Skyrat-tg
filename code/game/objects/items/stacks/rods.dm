@@ -84,17 +84,6 @@ GLOBAL_LIST_INIT(rod_recipes, list ( \
 		use(2)
 		user.put_in_inactive_hand(new_item)
 		return TOOL_ACT_TOOLTYPE_SUCCESS
-
-	// SKYRAT EDIT ADDITION BEGIN: Reagent Forging
-	else if(istype(user, /obj/item/forging/tongs))
-		var/obj/searchObj = locate(/obj) in user.contents
-		if(searchObj)
-			to_chat(user, span_warning("The tongs are already holding something, make room."))
-			return
-		forceMove(user)
-		user.icon_state = "tong_full"
-		return
-	// SKYRAT EDIT ADDITION END
 	else
 		return ..()
 
