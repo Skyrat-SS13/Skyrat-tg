@@ -1,15 +1,15 @@
-/mob/living/carbon/alien/humanoid/skyrat/spitter
-	name = "alien spitter"
-	caste = "spitter"
-	maxHealth = 200
-	health = 200
-	icon_state = "alienspitter"
+/mob/living/carbon/alien/humanoid/skyrat/sentinel
+	name = "alien sentinel"
+	caste = "sentinel"
+	maxHealth = 250
+	health = 250
+	icon_state = "aliensentinel"
 	melee_damage_lower = 10
 	melee_damage_upper = 15
 
-/mob/living/carbon/alien/humanoid/skyrat/spitter/create_internal_organs()
+/mob/living/carbon/alien/humanoid/skyrat/sentinel/create_internal_organs()
 	internal_organs += new /obj/item/organ/internal/alien/plasmavessel/small
-	internal_organs += new /obj/item/organ/internal/alien/neurotoxin/spitter
+	internal_organs += new /obj/item/organ/internal/alien/neurotoxin/sentinel
 	..()
 
 /datum/action/cooldown/alien/acid/skyrat
@@ -106,7 +106,7 @@
 	damage_type = BURN
 	slur = 0 SECONDS
 
-/obj/item/organ/internal/alien/neurotoxin/spitter
+/obj/item/organ/internal/alien/neurotoxin/sentinel
 	name = "neurotoxin gland"
 	icon_state = "neurotox"
 	zone = BODY_ZONE_PRECISE_MOUTH

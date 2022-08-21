@@ -19,7 +19,7 @@
 	return ..()
 
 /mob/living/carbon/alien/humanoid/skyrat/runner/create_internal_organs()
-	internal_organs += new /obj/item/organ/internal/alien/plasmavessel/tiny
+	internal_organs += new /obj/item/organ/internal/alien/plasmavessel/small/tiny
 	..()
 
 /datum/action/cooldown/alien/skyrat/evade

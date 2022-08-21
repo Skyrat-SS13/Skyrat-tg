@@ -4,33 +4,42 @@
 	if(!caste_options)
 		caste_options = list()
 
-		// This can probably be genericized in the future.
-		var/mob/hunter_path = /mob/living/carbon/alien/humanoid/hunter
-		var/datum/radial_menu_choice/hunter = new()
-		hunter.name = "Hunter"
-		hunter.image  = image(icon = initial(hunter_path.icon), icon_state = initial(hunter_path.icon_state))
-		hunter.info = span_info("Hunters are the most agile caste, tasked with hunting for hosts. \
-			They are faster than a human and can even pounce, but are not much tougher than a drone.")
+		// This --can probably-- (will not) be genericized in the future.
+		var/datum/radial_menu_choice/runner = new()
+		runner.name = "Runner"
+		runner.image  = image(icon = 'modular_skyrat/modules/xenos_skyrat_redo/icons/xeno_actions.dmi', icon_state = "preview_runner")
+		runner.info = span_info("Runners are the most agile caste, the short stature of running on all fours \
+		gives them great speed, the ability to dodge projectiles, and allows them to tackle while holding throw and clicking. \
+		Eventually, runners can evolve onwards into the fearsome ravager, should the hive permit it.")
 
-		caste_options["Hunter"] = hunter
+		caste_options["Runner"] = runner
 
-		var/mob/sentinel_path = /mob/living/carbon/alien/humanoid/sentinel
 		var/datum/radial_menu_choice/sentinel = new()
 		sentinel.name = "Sentinel"
-		sentinel.image  = image(icon = initial(sentinel_path.icon), icon_state = initial(sentinel_path.icon_state))
-		sentinel.info = span_info("Sentinels are tasked with protecting the hive. \
-			With their ranged spit, invisibility, and high health, they make formidable guardians \
-			and acceptable secondhand hunters.")
+		sentinel.image  = image(icon = 'modular_skyrat/modules/xenos_skyrat_redo/icons/xeno_actions.dmi', icon_state = "preview_sentinel")
+		sentinel.info = span_info("Sentinels are a caste similar in shape to a drone, forfeiting the ability to \
+		become royalty in exchange for spitting either acid, or a potent neurotoxin. They aren't as strong in close combat \
+		as the other options, but can eventually evolve into a more dangerous form of acid spitter, should the hive have capacity.")
 
 		caste_options["Sentinel"] = sentinel
 
-		var/mob/drone_path = /mob/living/carbon/alien/humanoid/drone
+		var/datum/radial_menu_choice/defender = new()
+		defender.name = "Defender"
+		defender.image  = image(icon = 'modular_skyrat/modules/xenos_skyrat_redo/icons/xeno_actions.dmi', icon_state = "preview_defender")
+		defender.info = span_info("Slow, tough, hard hitting, the defender is well and capable of what the name implies, \
+		the defender's thick armor makes it take a bit less damage from attacks, which can be paired with a deadly tail club \
+		and ability to make short charges to cause some real damage. Eventually, it will be able to evolve into the feared crusher, \
+		destroyer of stationary objects should the hive have the capacity.")
+
+		caste_options["Defender"] = defender
+
 		var/datum/radial_menu_choice/drone = new()
 		drone.name = "Drone"
-		drone.image  = image(icon = initial(drone_path.icon), icon_state = initial(drone_path.icon_state))
-		drone.info = span_info("Drones are the weakest and slowest of the castes, \
-			but can grow into a praetorian and then queen if no queen exists, \
-			and are vital to maintaining a hive with their resin secretion abilities.")
+		drone.image  = image(icon = 'modular_skyrat/modules/xenos_skyrat_redo/icons/xeno_actions.dmi', icon_state = "preview_drone")
+		drone.info = span_info("Drones are a somewhat weak, although fairly quick caste that fills a mainly \
+		support role in a hive, having a higher plasma capacity than most first evolutions, and the ability to \
+		make a healing aura for nearby xenos. Drones are the only caste that can evolve into both praetorians and \
+		queens, though promotion past the first of their kind may require the help of an existing royal.")
 
 		caste_options["Drone"] = drone
 
@@ -40,12 +49,14 @@
 
 	var/mob/living/carbon/alien/humanoid/new_xeno
 	switch(alien_caste)
-		if("Hunter")
-			new_xeno = new /mob/living/carbon/alien/humanoid/hunter(larva.loc)
+		if("Runner")
+			new_xeno = new /mob/living/carbon/alien/humanoid/skyrat/runner(larva.loc)
 		if("Sentinel")
-			new_xeno = new /mob/living/carbon/alien/humanoid/sentinel(larva.loc)
+			new_xeno = new /mob/living/carbon/alien/humanoid/skyrat/sentinel(larva.loc)
+		if("Defender")
+			new_xeno = new /mob/living/carbon/alien/humanoid/skyrat/defender(larva.loc)
 		if("Drone")
-			new_xeno = new /mob/living/carbon/alien/humanoid/drone(larva.loc)
+			new_xeno = new /mob/living/carbon/alien/humanoid/skyrat/drone(larva.loc)
 		else
 			CRASH("Alien evolve was given an invalid / incorrect alien cast type. Got: [alien_caste]")
 

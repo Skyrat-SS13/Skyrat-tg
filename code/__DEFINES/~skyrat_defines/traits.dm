@@ -53,3 +53,8 @@
 
 /// Cargo Loader trait
 #define TRAIT_TRASHMAN "trait_trashman"
+
+/// Trait source for xeno stuff
+#define TRAIT_XENO_INNATE "xeno_innate"
+/// Determines if something can receive healing from a xeno
+#define TRAIT_XENO_HEAL_AURA "trait_xeno_heal_aura"

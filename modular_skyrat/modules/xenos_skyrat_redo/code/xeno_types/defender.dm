@@ -7,7 +7,6 @@
 	var/datum/action/cooldown/alien/skyrat/evade/evade_ability
 	melee_damage_lower = 25
 	melee_damage_upper = 30
-	damage_coeff = 0.8
 	var/datum/action/cooldown/mob_cooldown/charge/basic_charge/defender/charge
 	var/datum/action/cooldown/spell/aoe/repulse/xeno/crushing/tail_sweep
 
@@ -42,6 +41,8 @@
 	sparkle_path = /obj/effect/temp_visual/dir_setting/tailsweep/defender
 
 /datum/action/cooldown/spell/aoe/repulse/xeno/crushing/cast_on_thing_in_aoe(atom/movable/victim, atom/caster)
+	if(isalien(victim))
+		return
 	var/turf/throwtarget = get_edge_target_turf(caster, get_dir(caster, get_step_away(victim, caster)))
 	var/dist_from_caster = get_dist(victim, caster)
 
