@@ -1,5 +1,5 @@
 /obj/item/bodypart/r_leg/taur
-	icon_greyscale = 'modular_skyrat/modules/bodyparts/icons/taur_invisible_legs.dmi'
+	icon_greyscale = BODYPART_ICON_TAUR
 	limb_id = LIMBS_TAUR
 	dismemberable = FALSE
 	can_be_surgically_removed = FALSE
@@ -13,7 +13,7 @@
 
 
 /obj/item/bodypart/l_leg/taur
-	icon_greyscale = 'modular_skyrat/modules/bodyparts/icons/taur_invisible_legs.dmi'
+	icon_greyscale = BODYPART_ICON_TAUR
 	limb_id = LIMBS_TAUR
 	dismemberable = FALSE
 	can_be_surgically_removed = FALSE

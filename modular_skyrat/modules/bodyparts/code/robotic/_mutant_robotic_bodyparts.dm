@@ -1,6 +1,6 @@
 // Synth bois!
 /obj/item/bodypart/head/robot/mutant
-	icon_greyscale = 'modular_skyrat/modules/bodyparts/icons/synthmammal_parts_greyscale.dmi'
+	icon_greyscale = BODYPART_ICON_SYNTHMAMMAL
 	limb_id = SPECIES_SYNTHMAMMAL
 	is_dimorphic = TRUE
 	should_draw_greyscale = TRUE
@@ -9,7 +9,7 @@
 	burn_reduction = 0
 
 /obj/item/bodypart/chest/robot/mutant
-	icon_greyscale = 'modular_skyrat/modules/bodyparts/icons/synthmammal_parts_greyscale.dmi'
+	icon_greyscale = BODYPART_ICON_SYNTHMAMMAL
 	should_draw_greyscale = TRUE
 	limb_id = SPECIES_SYNTHMAMMAL
 	is_dimorphic = TRUE
@@ -17,21 +17,21 @@
 	burn_reduction = 0
 
 /obj/item/bodypart/l_arm/robot/mutant
-	icon_greyscale = 'modular_skyrat/modules/bodyparts/icons/synthmammal_parts_greyscale.dmi'
+	icon_greyscale = BODYPART_ICON_SYNTHMAMMAL
 	limb_id = SPECIES_SYNTHMAMMAL
 	should_draw_greyscale = TRUE
 	brute_reduction = 0
 	burn_reduction = 0
 
 /obj/item/bodypart/r_arm/robot/mutant
-	icon_greyscale = 'modular_skyrat/modules/bodyparts/icons/synthmammal_parts_greyscale.dmi'
+	icon_greyscale = BODYPART_ICON_SYNTHMAMMAL
 	limb_id = SPECIES_SYNTHMAMMAL
 	should_draw_greyscale = TRUE
 	brute_reduction = 0
 	burn_reduction = 0
 
 /obj/item/bodypart/l_leg/robot/mutant
-	icon_greyscale = 'modular_skyrat/modules/bodyparts/icons/synthmammal_parts_greyscale.dmi'
+	icon_greyscale = BODYPART_ICON_SYNTHMAMMAL
 	limb_id = SPECIES_SYNTHMAMMAL
 	should_draw_greyscale = TRUE
 	digitigrade_type = /obj/item/bodypart/l_leg/robot/digitigrade
@@ -39,7 +39,7 @@
 	burn_reduction = 0
 
 /obj/item/bodypart/r_leg/robot/mutant
-	icon_greyscale = 'modular_skyrat/modules/bodyparts/icons/synthmammal_parts_greyscale.dmi'
+	icon_greyscale = BODYPART_ICON_SYNTHMAMMAL
 	should_draw_greyscale = TRUE
 	limb_id = SPECIES_SYNTHMAMMAL
 	digitigrade_type = /obj/item/bodypart/r_leg/robot/digitigrade
@@ -47,9 +47,9 @@
 	burn_reduction = 0
 
 /obj/item/bodypart/l_leg/robot/digitigrade
-	icon = 'modular_skyrat/modules/bodyparts/icons/synthmammal_parts_greyscale.dmi'
-	icon_static = 'modular_skyrat/modules/bodyparts/icons/synthmammal_parts_greyscale.dmi'
-	icon_greyscale = 'modular_skyrat/modules/bodyparts/icons/synthmammal_parts_greyscale.dmi'
+	icon = BODYPART_ICON_SYNTHMAMMAL
+	icon_static = BODYPART_ICON_SYNTHMAMMAL
+	icon_greyscale = BODYPART_ICON_SYNTHMAMMAL
 	should_draw_greyscale = TRUE
 	limb_id = "digitigrade"
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ROBOTIC | BODYTYPE_DIGITIGRADE
@@ -62,9 +62,9 @@
 	check_mutant_compatability()
 
 /obj/item/bodypart/r_leg/robot/digitigrade
-	icon = 'modular_skyrat/modules/bodyparts/icons/synthmammal_parts_greyscale.dmi'
-	icon_static = 'modular_skyrat/modules/bodyparts/icons/synthmammal_parts_greyscale.dmi'
-	icon_greyscale = 'modular_skyrat/modules/bodyparts/icons/synthmammal_parts_greyscale.dmi'
+	icon = BODYPART_ICON_SYNTHMAMMAL
+	icon_static = BODYPART_ICON_SYNTHMAMMAL
+	icon_greyscale = BODYPART_ICON_SYNTHMAMMAL
 	should_draw_greyscale = TRUE
 	limb_id = "digitigrade"
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ROBOTIC | BODYTYPE_DIGITIGRADE

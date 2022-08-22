@@ -37,33 +37,33 @@
 
 /// General mutant bodyparts. Used in most mutant species.
 /obj/item/bodypart/head/mutant
-	icon_greyscale = 'modular_skyrat/modules/bodyparts/icons/mammal_parts_greyscale.dmi'
+	icon_greyscale = BODYPART_ICON_MAMMAL
 	limb_id = SPECIES_MAMMAL
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ORGANIC
 
 /obj/item/bodypart/chest/mutant
-	icon_greyscale = 'modular_skyrat/modules/bodyparts/icons/mammal_parts_greyscale.dmi'
+	icon_greyscale = BODYPART_ICON_MAMMAL
 	limb_id = SPECIES_MAMMAL
 	is_dimorphic = TRUE
 
 /obj/item/bodypart/l_arm/mutant
-	icon_greyscale = 'modular_skyrat/modules/bodyparts/icons/mammal_parts_greyscale.dmi'
+	icon_greyscale = BODYPART_ICON_MAMMAL
 	limb_id = SPECIES_MAMMAL
 
 /obj/item/bodypart/r_arm/mutant
-	icon_greyscale = 'modular_skyrat/modules/bodyparts/icons/mammal_parts_greyscale.dmi'
+	icon_greyscale = BODYPART_ICON_MAMMAL
 	limb_id = SPECIES_MAMMAL
 
 /obj/item/bodypart/l_leg/mutant
-	icon_greyscale = 'modular_skyrat/modules/bodyparts/icons/mammal_parts_greyscale.dmi'
+	icon_greyscale = BODYPART_ICON_MAMMAL
 	limb_id = SPECIES_MAMMAL
 
 /obj/item/bodypart/r_leg/mutant
-	icon_greyscale = 'modular_skyrat/modules/bodyparts/icons/mammal_parts_greyscale.dmi'
+	icon_greyscale = BODYPART_ICON_MAMMAL
 	limb_id = SPECIES_MAMMAL
 
 /obj/item/bodypart/l_leg/digitigrade
-	icon_greyscale = 'modular_skyrat/modules/bodyparts/icons/mammal_parts_greyscale.dmi'
+	icon_greyscale = BODYPART_ICON_MAMMAL
 	limb_id = "digitigrade"
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ORGANIC | BODYTYPE_DIGITIGRADE
 
@@ -72,7 +72,7 @@
 	check_mutant_compatability()
 
 /obj/item/bodypart/r_leg/digitigrade
-	icon_greyscale = 'modular_skyrat/modules/bodyparts/icons/mammal_parts_greyscale.dmi'
+	icon_greyscale = BODYPART_ICON_MAMMAL
 	limb_id = "digitigrade"
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ORGANIC | BODYTYPE_DIGITIGRADE
 
