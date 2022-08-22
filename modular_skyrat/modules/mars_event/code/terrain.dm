@@ -1,12 +1,13 @@
-#define RED_PLANET_ATMOS "co2=40;o2=3;n2=7;TEMP=210"
-#define RED_ROCK "#934b33"
+#define RED_PLANET_ATMOS "co2=40;o2=3;n2=7;TEMP=347"
 #define DARK_ROCK "#2b2b2b"
 
 /turf/open/misc/ironsand/redplanet
 	initial_gas_mix = RED_PLANET_ATMOS
 	planetary_atmos = TRUE
 
-/turf/open/misc/ironsand/redplanet/Initialize(mapload)
+/turf/open/misc/ironsand/redplanet/randomrocks
+
+/turf/open/misc/ironsand/redplanet/randomrocks/Initialize(mapload)
 	. = ..()
 
 	if(prob(2))
@@ -19,11 +20,32 @@
 	initial_gas_mix = RED_PLANET_ATMOS
 	planetary_atmos = TRUE
 
-/turf/closed/mineral/random/redplanet
+/turf/open/misc/asteroid/basalt/redplanet/randomrocks
+
+/turf/open/misc/asteroid/basalt/redplanet/randomrocks/Initialize(mapload)
+	. = ..()
+
+	if(prob(2))
+		new /obj/structure/flora/rock/style_random(get_turf(src))
+	else if(prob(2))
+		new /obj/structure/flora/rock/pile/style_random(get_turf(src))
+	else if(prob(1))
+		new /obj/structure/ore_vein/iron/more_than_one_ore(get_turf(src))
+
+/obj/structure/ore_vein/iron/more_than_one_ore
+	ore_amount = 7
+	regeneration_time = 30 SECONDS
+
+/turf/open/lava/smooth/redplanet
+	initial_gas_mix = RED_PLANET_ATMOS
+	planetary_atmos = TRUE
+	baseturfs = /turf/open/lava/smooth/redplanet
+
+/turf/closed/mineral/random/dark_lavaland_rock
 	baseturfs = /turf/baseturf_bottom
 	mineralChance = 25
 	mineralAmt = 10
-	color = RED_ROCK
+	color = DARK_ROCK
 	mineralSpawnChanceList = list(
 		/obj/item/stack/ore/uranium = 5,
 		/obj/item/stack/ore/diamond = 1,
@@ -36,14 +58,10 @@
 	)
 	tool_mine_speed = 10 SECONDS
 
-/turf/closed/mineral/random/redplanet/dark
-	baseturfs = /turf/open/misc/asteroid/basalt/redplanet
-	color = DARK_ROCK
-
-/area/redplanet
+/area/lavaplanet
 	icon = 'icons/area/areas_station.dmi'
 	icon_state = "mining"
-	name = "Hellas Planitia Outdoors"
+	name = "Molten Valley Outdoors"
 	has_gravity = STANDARD_GRAVITY
 	flags_1 = NONE
 	area_flags = UNIQUE_AREA | NO_ALERTS
@@ -60,6 +78,6 @@
 	outdoors = TRUE
 	base_lighting_alpha = 45
 
-/area/redplanet/Initialize(mapload)
+/area/lavaplanet/Initialize(mapload)
 	. = ..()
 	luminosity = 1

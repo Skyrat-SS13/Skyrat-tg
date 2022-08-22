@@ -4,7 +4,7 @@
 	id = /obj/item/card/id/advanced/black
 	id_trim = /datum/id_trim/centcom/ert/engineer
 
-	uniform = /obj/item/clothing/under/rank/engineering/engineer/skyrat/utility/syndicate
+	uniform = /obj/item/clothing/under/costume/nri/engineer
 	suit = /obj/item/clothing/suit/hazardvest
 	suit_store = /obj/item/tank/internals/oxygen/yellow
 	back = /obj/item/mod/control/pre_equipped/event
@@ -37,6 +37,15 @@
 	target_id.update_label()
 	target_id.update_icon()
 	return ..()
+
+/datum/outfit/event_colonizer/pre_equip(/mob/living/carbon/human/human_target, visualsOnly = FALSE)
+	. = ..()
+	if(HAS_TRAIT(human_target, TRAIT_NEARSIGHT))
+		glasses = /obj/item/clothing/glasses/regular
+	if(human_target.getorganslot(ORGAN_SLOT_LUNGS) == /obj/item/organ/internal/lungs/nitrogen)
+		suit_store = /obj/item/tank/internals/nitrogen
+	if(isplasmaman(human_target))
+		back = /obj/item/mod/control/pre_equipped/event/plasmaperson
 
 /datum/outfit/event_colonizer/leader
 	name = "Planetary Colonizer Leader"
@@ -93,6 +102,11 @@
 	. = ..()
 
 	access = list(ACCESS_SYNDICATE, ACCESS_SYNDICATE_LEADER) | (SSid_access.get_region_access_list(list(REGION_ALL_STATION)) - ACCESS_CHANGE_IDS)
+
+/datum/outfit/event_colonizer/syndie/pre_equip(/mob/living/carbon/human/human_target, visualsOnly = FALSE)
+	. = ..()
+	if(isplasmaman(human_target))
+		back = /obj/item/mod/control/pre_equipped/event/syndie/plasmaperson
 
 /obj/effect/mob_spawn/ghost_role/human/ds2/syndicate/event_colonizer
 	name = "Syndicate Colonizer"
