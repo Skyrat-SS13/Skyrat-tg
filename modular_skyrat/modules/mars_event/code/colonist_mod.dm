@@ -53,6 +53,16 @@
 
 /datum/mod_theme/event/leader
 	name = "colonizer type N-L"
+	default_skin = "advanced"
+	allowed_suit_storage = list(
+		/obj/item/flashlight,
+		/obj/item/tank/internals,
+		/obj/item/analyzer,
+		/obj/item/construction/rcd,
+		/obj/item/pipe_dispenser,
+		/obj/item/t_scanner,
+		/obj/item/storage/bag/construction,
+	)
 	skins = list(
 		"advanced" = list(
 			HELMET_FLAGS = list(
