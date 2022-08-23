@@ -43,16 +43,25 @@
 	var/list/EORG_outfits_rare_survivor = list(\
 		/datum/outfit/butler, /datum/outfit/prisoner, /datum/outfit/job/assistant, /datum/outfit/chicken, /datum/outfit/ashwalker)
 
-	for(var/area/centcom/tdome/arena/eorg_zone in GLOB.sortedAreas)
-		for(var/turf/open/floor/circuit/green/eorg_turf in eorg_zone)
-			EORG_teleports += eorg_turf
+	for(var/area/centcom/ctf/eorg_zone in GLOB.sortedAreas)
+		for(var/turf/open/floor/eorg_turf in eorg_zone)
+			if(!eorg_turf.is_blocked_turf(TRUE)) //the turf should be at least not blocked
+				EORG_teleports += eorg_turf
 
 		if(!EORG_teleports) //empty list, for some reason
 			EORG_teleports += eorg_zone.loc
 
-		//temporary before a real map will be made
-		for(var/obj/machinery/door/poddoor/door in eorg_zone)
-			INVOKE_ASYNC(door, /obj/machinery/door/poddoor.proc/open)
+	if(!EORG_teleports) //literally a safe check if CTF area will be lost somehow (should never happend)
+		for(var/area/centcom/tdome/arena/eorg_zone in GLOB.sortedAreas)
+			for(var/turf/open/floor/circuit/green/eorg_turf in eorg_zone)
+				EORG_teleports += eorg_turf
+
+			if(!EORG_teleports)
+				EORG_teleports += eorg_zone.loc
+
+			//temporary before a real map will be made
+			for(var/obj/machinery/door/poddoor/door in eorg_zone)
+				INVOKE_ASYNC(door, /obj/machinery/door/poddoor.proc/open)
 
 	for(var/mob/living/carbon/human/eorg_player in GLOB.human_list)
 		if(eorg_player.ckey)
