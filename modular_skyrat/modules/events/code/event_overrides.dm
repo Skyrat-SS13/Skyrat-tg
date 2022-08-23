@@ -83,3 +83,13 @@
  */
 /datum/round_event_control/operative
 	max_occurrences = 0
+
+/**
+ * Ninja
+ *
+ * Removed:
+ * 
+ */
+/datum/round_event_control/space_ninja
+	max_occurrences = 0
+	weight = 0
