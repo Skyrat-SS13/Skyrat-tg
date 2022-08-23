@@ -33,7 +33,7 @@
 	if(!queued_log_entries_by_table[table])
 		queued_log_entries_by_table[table] = list()
 
-	queued_log_entries_by_table[table] += log_entry
+	queued_log_entries_by_table[table] += list(log_entry)
 
 	if(length(queued_log_entries_by_table[table]) < CONFIG_GET(number/sql_game_log_min_bundle_size))
 		return
