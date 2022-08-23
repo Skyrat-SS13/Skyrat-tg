@@ -8,7 +8,7 @@
 	desc = "A dilapidated helmet used in ancient wars. This one is brittle and essentially useless. An ace of spades is tucked into the band around the outer shell."
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/head/flakhelm/Initialize()
+/obj/item/clothing/head/flakhelm/Initialize(mapload)
 	. = ..()
 
 	create_storage(type = /datum/storage/pockets/tiny/spacenam)

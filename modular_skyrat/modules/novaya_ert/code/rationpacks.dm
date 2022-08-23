@@ -38,7 +38,7 @@
 	icon_state = "mre_package"
 	illustration = null
 
-/obj/item/storage/box/nri_rations/Initialize()
+/obj/item/storage/box/nri_rations/Initialize(mapload)
 	. = ..()
 	atom_storage.max_slots = 7
 

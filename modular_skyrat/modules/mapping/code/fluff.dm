@@ -29,7 +29,7 @@
 	storedinfo_otherside = list()
 	timestamp_otherside = list()
 
-/obj/item/tape/ruins/random/Initialize()
+/obj/item/tape/ruins/random/Initialize(mapload)
 	icon_state = "tape_[pick("white", "blue", "red", "yellow", "purple", "greyscale")]"
 	. = ..()
 //End of lore tape subtype

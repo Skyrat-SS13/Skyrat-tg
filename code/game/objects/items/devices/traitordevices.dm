@@ -288,7 +288,7 @@ effective or pretty fucking useless.
 	var/cell_override = /obj/item/stock_parts/cell/bluespace //SKYRAT ADDITION
 
 	//SKYRAT EDIT ADDITION BEGIN
-/obj/item/jammer/ComponentInitialize()
+/obj/item/jammer/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/cell, cell_override, CALLBACK(src, .proc/turn_off))
 

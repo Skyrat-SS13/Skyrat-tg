@@ -38,7 +38,7 @@
 	genital_size = size
 	update_sprite_suffix()
 
-/obj/item/organ/external/genital/Initialize()
+/obj/item/organ/external/genital/Initialize(mapload)
 	. = ..()
 	update_sprite_suffix()
 
@@ -447,7 +447,7 @@
 	return
 
 //Removing ERP IC verb depending on config
-/mob/living/carbon/human/Initialize()
+/mob/living/carbon/human/Initialize(mapload)
 	. = ..()
 	if(CONFIG_GET(flag/disable_erp_preferences))
 		verbs -= /mob/living/carbon/human/verb/toggle_genitals

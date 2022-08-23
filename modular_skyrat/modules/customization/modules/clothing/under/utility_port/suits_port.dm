@@ -117,7 +117,7 @@
 	icon_state = "labcoat_pmedred"
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/suit/toggle/labcoat/para_red/Initialize()
+/obj/item/clothing/suit/toggle/labcoat/para_red/Initialize(mapload)
 	. = ..()
 	allowed += list(
 		/obj/item/storage/medkit,

@@ -39,10 +39,6 @@
 		"medium" = image(icon = src.icon, icon_state = "buttplug_pink_medium"),
 		"big" = image(icon = src.icon, icon_state = "buttplug_pink_big"))
 
-/obj/item/clothing/sextoy/buttplug/ComponentInitialize()
-	. = ..()
-	AddElement(/datum/element/update_icon_updates_onmob)
-
 /obj/item/clothing/sextoy/buttplug/AltClick(mob/user)
 	if(!color_changed)
 		. = ..()
@@ -69,8 +65,9 @@
 			update_icon()
 			form_changed = TRUE
 
-/obj/item/clothing/sextoy/buttplug/Initialize()
+/obj/item/clothing/sextoy/buttplug/Initialize(mapload)
 	. = ..()
+	AddElement(/datum/element/update_icon_updates_onmob)
 	set_light(0)
 	update_light()
 	update_icon_state()
