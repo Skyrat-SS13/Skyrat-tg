@@ -32,7 +32,7 @@
 	if(!spawn_locs.len)
 		message_admins("No valid spawn locations found, aborting...")
 		return MAP_ERROR
-	. = ..()
+	return TRUE
 
 /datum/dynamic_ruleset/midround/from_ghosts/lone_infiltrator/generate_ruleset_body(mob/applicant)
 	var/datum/mind/player_mind = new /datum/mind(applicant.key)

@@ -122,7 +122,7 @@
 	build_type = PROTOLATHE
 	materials = list(/datum/material/silver = 10000, /datum/material/gold = 10000, /datum/material/glass = 10000)
 	build_path = /obj/item/ammo_box/advanced/smartgun
-	category = list("Ammo")
+	category = list(RND_CATEGORY_AMMO)
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 
 /obj/item/ammo_box/advanced/smartgun
