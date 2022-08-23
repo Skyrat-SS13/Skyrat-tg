@@ -509,10 +509,10 @@
 				setTimer(SSshuttle.emergency_escape_time * engine_coeff)
 				priority_announce("The Emergency Shuttle has left the station. Estimate [timeLeft(600)] minutes until the shuttle docks at Central Command.", null, ANNOUNCER_SHUTTLELEFT, "Priority") //SKYRAT EDIT CHANGE - ANNOUNCER_SHUTTLELEFT
 				INVOKE_ASYNC(SSticker, /datum/controller/subsystem/ticker.proc/poll_hearts)
-				//SKYRAT ADDITON BEGIN
-				bolt_all_doors()
+				bolt_all_doors() //SKYRAT ADDITON BEGIN
+				//SKYRAT EDIT ADDITION BEGIN - EORG MODULE
 				INVOKE_ASYNC(GLOBAL_PROC, /proc/process_eorg_announce)
-				//SKYRAT ADDITON END
+				//SKYRAT EDIT ADDITION END - EORG MODULE
 				SSmapping.mapvote() //If no map vote has been run yet, start one.
 
 		if(SHUTTLE_STRANDED, SHUTTLE_DISABLED)

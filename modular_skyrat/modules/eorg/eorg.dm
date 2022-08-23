@@ -18,7 +18,6 @@
 		var/eorg_choice = client.prefs.read_preference(/datum/preference/toggle/eorg_join)
 		to_chat(src, "You choose to [eorg_choice ?  "end the round in peace." : "fight. Prepare for blood!"]")
 		preferences.write_preference(GLOB.preference_entries[/datum/preference/toggle/eorg_join], !eorg_choice)
-		return
 
 /proc/process_eorg_announce()
 	if(!(CONFIG_GET(flag/allow_eorg)))
@@ -32,15 +31,15 @@
 /proc/process_eorg_teleport()
 	if(!(CONFIG_GET(flag/allow_eorg)))
 		return
-	var/list/EORG_teleports = list()
-	var/list/EORG_outfits = list(\
+	var/static/llist/EORG_teleports = list()
+	var/static/llist/EORG_outfits = list(\
 		/datum/outfit/spacepol, /datum/outfit/russian_hunter, \
 		/datum/outfit/bountyarmor, /datum/outfit/syndicate, \
 		/datum/outfit/ctf/medisim, /datum/outfit/centcom/ert/marine/security)
-	var/list/EORG_outfits_rare = list(\
+	var/static/llist/EORG_outfits_rare = list(\
 		/datum/outfit/syndicate/clownop, /datum/outfit/ctf/assault/red, \
 		/datum/outfit/centcom/spec_ops, /datum/outfit/mobster, /datum/outfit/pirate/enclave_officer)
-	var/list/EORG_outfits_rare_survivor = list(\
+	var/static/llist/EORG_outfits_rare_survivor = list(\
 		/datum/outfit/butler, /datum/outfit/prisoner, /datum/outfit/job/assistant, /datum/outfit/chicken, /datum/outfit/ashwalker)
 
 	for(var/area/centcom/ctf/eorg_zone in GLOB.sortedAreas)
