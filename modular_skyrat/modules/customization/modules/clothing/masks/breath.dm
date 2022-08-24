@@ -50,9 +50,9 @@
 				icon_state = initial(icon_state)
 				to_chat(user, "You pull the balaclava up to cover your whole head.")
 				open = 0
-		user.update_hair(0)
+		user.update_body_parts()
 		user.update_inv_ears(0)
-		user.update_inv_wear_mask() //Updates mob icons
+		user.update_worn_mask() //Updates mob icons
 
 /obj/item/clothing/mask/balaclavaadjust/attack_self(mob/user)
 	adjust_mask(user)

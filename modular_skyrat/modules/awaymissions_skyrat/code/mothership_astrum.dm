@@ -328,8 +328,8 @@
 	attack_verb_simple = "attacks"
 	attack_sound = 'sound/weapons/sonic_jackhammer.ogg'
 	mouse_opacity = MOUSE_OPACITY_ICON
-	deathsound = 'sound/magic/repulse.ogg'
-	deathmessage = "falls to their knees, before exploding into a ball of gore."
+	death_sound = 'sound/magic/repulse.ogg'
+	death_message = "falls to their knees, before exploding into a ball of gore."
 	gps_name = "Captain's Signal"
 
 /mob/living/simple_animal/hostile/megafauna/hierophant/astrum/bullet_act(obj/projectile/P)

@@ -391,9 +391,10 @@
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000)
 	required_experiments = list(/datum/experiment/dissection/nonhuman)
-	// ORIGINAL: discount_experiments = list(/datum/experiment/scanning/random/material/meat = 4000) //Big discount to reinforce doing it.
-	discount_experiments = list(/datum/experiment/scanning/random/material/silver = 4000) //Big discount to reinforce doing it.
+	// ORIGINAL: discount_experiments = list(/datum/experiment/scanning/random/material/meat = 4000)
+	discount_experiments = list(/datum/experiment/scanning/random/material/silver = 4000)
 	// SKYRAT EDIT END - MATERIAL MEAT WAS REMOVED
+
 
 /datum/techweb_node/xenoorgan_biotech
 	id = "xenoorgan_bio"
@@ -594,9 +595,11 @@
 		"plumbing_sci"
 		//SKYRAT EDIT END - RESEARCH DESIGNS
 	)
-	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000)
-	required_experiments = list(/datum/experiment/ordnance/gaseous/bz)
-	discount_experiments = list(/datum/experiment/scanning/random/material/medium/one = 4000)
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 15000)
+	discount_experiments = list(
+		/datum/experiment/scanning/random/material/medium/one = 4000,
+		/datum/experiment/ordnance/gaseous/bz = 10000,
+	)
 
 /datum/techweb_node/anomaly
 	id = "anomaly_research"
@@ -1046,9 +1049,11 @@
 	design_ids = list(
 		"quadultra_micro_laser",
 	)
-	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000)
-	discount_experiments = list(/datum/experiment/scanning/points/machinery_pinpoint_scan/tier3_microlaser = 4000)
-	required_experiments = list(/datum/experiment/ordnance/gaseous/noblium)
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 15000)
+	discount_experiments = list(
+		/datum/experiment/scanning/points/machinery_pinpoint_scan/tier3_microlaser = 4000,
+		/datum/experiment/ordnance/gaseous/noblium = 10000,
+	)
 
 /////////////////////////Clown tech/////////////////////////
 /datum/techweb_node/clown
@@ -1489,8 +1494,8 @@
 		"tele_shield",
 		"ammoworkbench_disk_lethal", //SKYRAT EDIT ADDITION
 	)
-	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 10000)
-	required_experiments = list(/datum/experiment/ordnance/explosive/pressurebomb)
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 20000)
+	discount_experiments = list(/datum/experiment/ordnance/explosive/pressurebomb = 10000)
 
 /datum/techweb_node/adv_weaponry
 	id = "adv_weaponry"
@@ -2083,8 +2088,8 @@
 		/obj/item/wrench/abductor,
 	)
 
-	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
-	required_experiments = list(/datum/experiment/scanning/points/slime/hard)
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 12500)
+	discount_experiments = list(/datum/experiment/scanning/points/slime/hard = 10000)
 	hidden = TRUE
 
 /datum/techweb_node/alien_engi

@@ -799,7 +799,7 @@
 
 /*
 // Shoes update extention for supporting correct removing shoe in sleepbag
-/mob/living/carbon/human/update_inv_shoes()
+/mob/living/carbon/human/update_worn_shoes()
 
 	if(istype(src.wear_suit, /obj/item/clothing/suit/straight_jacket/kinky_sleepbag))
 		remove_overlay(SHOES_LAYER)
