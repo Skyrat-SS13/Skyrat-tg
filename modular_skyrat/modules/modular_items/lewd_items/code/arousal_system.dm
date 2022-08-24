@@ -32,7 +32,7 @@
 	random_icon_states = list("cum_1", "cum_2", "cum_3", "cum_4")
 	beauty = -50
 
-/obj/effect/decal/cleanable/femcum
+/obj/effect/decal/cleanable/cum/femcum
 	name = "female cum"
 	desc = "Uhh... Someone had fun..."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_decals/lewd_decals.dmi'
@@ -516,7 +516,7 @@
 					apply_status_effect(/datum/status_effect/climax_cooldown)
 					visible_message(span_purple("[src] is cumming!"), span_purple("You are cumming!"))
 					var/turf/our_turf = get_turf(src)
-					new /obj/effect/decal/cleanable/femcum(our_turf)
+					new /obj/effect/decal/cleanable/cum/femcum(our_turf)
 				else
 					apply_status_effect(/datum/status_effect/climax)
 					apply_status_effect(/datum/status_effect/climax_cooldown)
