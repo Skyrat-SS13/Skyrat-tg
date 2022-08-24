@@ -64,7 +64,7 @@
 	id = /obj/item/card/id/advanced/chameleon
 	glasses = /obj/item/clothing/glasses/night
 	mask = /obj/item/clothing/mask/gas/syndicate
-	back = /obj/item/mod/control/pre_equipped/nuclear
+	back = /obj/item/mod/control/pre_equipped/nuclear/chameleon
 	r_pocket = /obj/item/tank/internals/emergency_oxygen/engi
 	internals_slot = ITEM_SLOT_RPOCKET
 	belt = /obj/item/storage/belt/military
