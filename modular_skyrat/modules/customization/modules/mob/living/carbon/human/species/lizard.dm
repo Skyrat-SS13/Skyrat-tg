@@ -23,8 +23,7 @@
 	)
 	payday_modifier = 0.75
 
-/datum/species/lizard/get_random_features()
-	var/list/returned = MANDATORY_FEATURE_LIST
+/datum/species/lizard/randomize_features(mob/living/carbon/human/human_mob)
 	var/main_color = "#[random_color()]"
 	var/second_color
 	var/third_color
@@ -39,10 +38,9 @@
 		if(3) //Third case, more randomisation
 			second_color = "#[random_color()]"
 			third_color = "#[random_color()]"
-	returned["mcolor"] = main_color
-	returned["mcolor2"] = second_color
-	returned["mcolor3"] = third_color
-	return returned
+	human_mob.dna.features["mcolor"] = main_color
+	human_mob.dna.features["mcolor2"] = second_color
+	human_mob.dna.features["mcolor3"] = third_color
 
 /datum/species/lizard/prepare_human_for_preview(mob/living/carbon/human/lizard, lizard_color = "#009999")
 	lizard.dna.features["mcolor"] = lizard_color
