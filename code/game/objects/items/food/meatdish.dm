@@ -6,6 +6,7 @@
 /obj/item/food/cubancarp
 	name = "\improper Cuban carp"
 	desc = "A grifftastic sandwich that burns your tongue and then leaves it numb!"
+	icon = 'icons/obj/food/meat.dmi'
 	icon_state = "cubancarp"
 	bite_consumption = 3
 	food_reagents = list(/datum/reagent/consumable/nutriment = 2, /datum/reagent/consumable/nutriment/protein = 6,  /datum/reagent/consumable/capsaicin = 1, /datum/reagent/consumable/nutriment/vitamin = 4)
@@ -17,6 +18,7 @@
 /obj/item/food/fishmeat
 	name = "fish fillet"
 	desc = "A fillet of some fish meat."
+	icon = 'icons/obj/food/meat.dmi'
 	icon_state = "fishfillet"
 	food_reagents = list(/datum/reagent/consumable/nutriment/protein = 4, /datum/reagent/consumable/nutriment/vitamin = 2)
 	bite_consumption = 6
@@ -74,6 +76,7 @@
 /obj/item/food/fishfingers
 	name = "fish fingers"
 	desc = "A finger of fish."
+	icon = 'icons/obj/food/meat.dmi'
 	icon_state = "fishfingers"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 2, /datum/reagent/consumable/nutriment/protein = 5, /datum/reagent/consumable/nutriment/vitamin = 2)
 	bite_consumption = 1
@@ -85,6 +88,7 @@
 /obj/item/food/fishandchips
 	name = "fish and chips"
 	desc = "I do say so myself chap."
+	icon = 'icons/obj/food/meat.dmi'
 	icon_state = "fishandchips"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 3, /datum/reagent/consumable/nutriment/protein = 5, /datum/reagent/consumable/nutriment/vitamin = 2)
 	tastes = list("fish" = 1, "chips" = 1)
@@ -94,6 +98,7 @@
 /obj/item/food/fishfry
 	name = "fish fry"
 	desc = "All that and no bag of chips..."
+	icon = 'icons/obj/food/meat.dmi'
 	icon_state = "fishfry"
 	food_reagents = list (/datum/reagent/consumable/nutriment = 6, /datum/reagent/consumable/nutriment/vitamin = 3)
 	tastes = list("fish" = 1, "pan seared vegtables" = 1)
@@ -235,6 +240,7 @@
 /obj/item/food/spiderleg
 	name = "spider leg"
 	desc = "A still twitching leg of a giant spider... you don't really want to eat this, do you?"
+	icon = 'icons/obj/food/meat.dmi'
 	icon_state = "spiderleg"
 	food_reagents = list(/datum/reagent/consumable/nutriment/protein = 3, /datum/reagent/toxin = 2)
 	tastes = list("cobwebs" = 1)
@@ -247,6 +253,7 @@
 /obj/item/food/cornedbeef
 	name = "corned beef and cabbage"
 	desc = "Now you can feel like a real tourist vacationing in Ireland."
+	icon = 'icons/obj/food/meat.dmi'
 	icon_state = "cornedbeef"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 2, /datum/reagent/consumable/nutriment/protein = 6, /datum/reagent/consumable/nutriment/vitamin = 4)
 	tastes = list("meat" = 1, "cabbage" = 1)
@@ -256,6 +263,7 @@
 /obj/item/food/bearsteak
 	name = "Filet migrawr"
 	desc = "Because eating bear wasn't manly enough."
+	icon = 'icons/obj/food/meat.dmi'
 	icon_state = "bearsteak"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 4, /datum/reagent/consumable/nutriment/vitamin = 9, /datum/reagent/consumable/ethanol/manly_dorf = 5)
 	tastes = list("meat" = 1, "salmon" = 1)
@@ -266,6 +274,7 @@
 /obj/item/food/raw_meatball
 	name = "raw meatball"
 	desc = "A great meal all round. Not a cord of wood. Kinda raw"
+	icon = 'icons/obj/food/meat.dmi'
 	icon_state = "raw_meatball"
 	food_reagents = list(/datum/reagent/consumable/nutriment/protein = 2)
 	tastes = list("meat" = 1)
@@ -308,6 +317,7 @@
 /obj/item/food/meatball
 	name = "meatball"
 	desc = "A great meal all round. Not a cord of wood."
+	icon = 'icons/obj/food/meat.dmi'
 	icon_state = "meatball"
 	food_reagents = list(/datum/reagent/consumable/nutriment/protein = 2)
 	tastes = list("meat" = 1)
@@ -339,6 +349,7 @@
 /obj/item/food/raw_patty
 	name = "raw patty"
 	desc = "I'm.....NOT REAAADDYY."
+	icon = 'icons/obj/food/meat.dmi'
 	icon_state = "raw_patty"
 	food_reagents = list(/datum/reagent/consumable/nutriment/protein = 2)
 	tastes = list("meat" = 1)
@@ -375,6 +386,7 @@
 /obj/item/food/patty
 	name = "patty"
 	desc = "The nanotrasen patty is the patty for you and me!"
+	icon = 'icons/obj/food/meat.dmi'
 	icon_state = "patty"
 	food_reagents = list(/datum/reagent/consumable/nutriment/protein = 2)
 	tastes = list("meat" = 1)
@@ -406,7 +418,8 @@
 
 /obj/item/food/raw_sausage
 	name = "raw sausage"
-	desc = "A piece of mixed, long meat, but then raw"
+	desc = "A piece of mixed, long meat, but then raw."
+	icon = 'icons/obj/food/meat.dmi'
 	icon_state = "raw_sausage"
 	food_reagents = list(/datum/reagent/consumable/nutriment/protein = 5, /datum/reagent/consumable/nutriment/vitamin = 2)
 	tastes = list("meat" = 1)
@@ -420,6 +433,7 @@
 /obj/item/food/sausage
 	name = "sausage"
 	desc = "A piece of mixed, long meat."
+	icon = 'icons/obj/food/meat.dmi'
 	icon_state = "sausage"
 	food_reagents = list(/datum/reagent/consumable/nutriment/protein = 5, /datum/reagent/consumable/nutriment/vitamin = 2)
 	tastes = list("meat" = 1)
@@ -445,6 +459,7 @@
 /obj/item/food/salami
 	name = "salami"
 	desc = "A slice of cured salami."
+	icon = 'icons/obj/food/meat.dmi'
 	icon_state = "salami"
 	food_reagents = list(/datum/reagent/consumable/nutriment/protein = 1)
 	tastes = list("meat" = 1, "smoke" = 1)
@@ -455,6 +470,7 @@
 /obj/item/food/rawkhinkali
 	name = "raw khinkali"
 	desc = "One hundred khinkalis? Do I look like a pig?"
+	icon = 'icons/obj/food/meat.dmi'
 	icon_state = "khinkali"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 1, /datum/reagent/consumable/nutriment/protein = 1, /datum/reagent/consumable/nutriment/vitamin = 1, /datum/reagent/consumable/garlic = 1)
 	tastes = list("meat" = 1, "onions" = 1, "garlic" = 1)
@@ -467,6 +483,7 @@
 /obj/item/food/khinkali
 	name = "khinkali"
 	desc = "One hundred khinkalis? Do I look like a pig?"
+	icon = 'icons/obj/food/meat.dmi'
 	icon_state = "khinkali"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 1, /datum/reagent/consumable/nutriment/protein = 1, /datum/reagent/consumable/nutriment/vitamin = 1, /datum/reagent/consumable/garlic = 1)
 	bite_consumption = 3
@@ -478,92 +495,13 @@
 /obj/item/food/meatbun
 	name = "meat bun"
 	desc = "Has the potential to not be Dog."
+	icon = 'icons/obj/food/meat.dmi'
 	icon_state = "meatbun"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 7, /datum/reagent/consumable/nutriment/vitamin = 4)
 	tastes = list("bun" = 3, "meat" = 2)
 	foodtypes = GRAIN | MEAT | VEGETABLES
 	w_class = WEIGHT_CLASS_SMALL
 	venue_value = FOOD_PRICE_CHEAP
-
-/obj/item/food/monkeycube
-	name = "monkey cube"
-	desc = "Just add water!"
-	icon_state = "monkeycube"
-	bite_consumption = 12
-	food_reagents = list(/datum/reagent/monkey_powder = 30)
-	tastes = list("the jungle" = 1, "bananas" = 1)
-	foodtypes = MEAT | SUGAR
-	food_flags = FOOD_FINGER_FOOD
-	w_class = WEIGHT_CLASS_TINY
-	var/faction
-	var/spawned_mob = /mob/living/carbon/human/species/monkey
-
-/obj/item/food/monkeycube/proc/Expand()
-	var/mob/spammer = get_mob_by_key(fingerprintslast)
-	var/mob/living/bananas = new spawned_mob(drop_location(), TRUE, spammer)
-	if(faction)
-		bananas.faction = faction
-	if (!QDELETED(bananas))
-		visible_message(span_notice("[src] expands!"))
-		bananas.log_message("spawned via [src], Last attached mob: [key_name(spammer)].", LOG_ATTACK)
-	else if (!spammer) // Visible message in case there are no fingerprints
-		visible_message(span_notice("[src] fails to expand!"))
-	qdel(src)
-
-/obj/item/food/monkeycube/suicide_act(mob/living/user)
-	user.visible_message(span_suicide("[user] is putting [src] in [user.p_their()] mouth! It looks like [user.p_theyre()] trying to commit suicide!"))
-	var/eating_success = do_after(user, 1 SECONDS, src)
-	if(QDELETED(user)) //qdeletion: the nuclear option of self-harm
-		return SHAME
-	if(!eating_success || QDELETED(src)) //checks if src is gone or if they failed to wait for a second
-		user.visible_message(span_suicide("[user] chickens out!"))
-		return SHAME
-	if(HAS_TRAIT(user, TRAIT_NOHUNGER)) //plasmamen don't have saliva/stomach acid
-		user.visible_message(span_suicide("[user] realizes [user.p_their()] body won't activate [src]!")
-		,span_warning("Your body won't activate [src]..."))
-		return SHAME
-	playsound(user, 'sound/items/eatfood.ogg', rand(10, 50), TRUE)
-	user.temporarilyRemoveItemFromInventory(src) //removes from hands, keeps in M
-	addtimer(CALLBACK(src, .proc/finish_suicide, user), 15) //you've eaten it, you can run now
-
-	return MANUAL_SUICIDE
-
-/obj/item/food/monkeycube/proc/finish_suicide(mob/living/user) ///internal proc called by a monkeycube's suicide_act using a timer and callback. takes as argument the mob/living who activated the suicide
-	if(QDELETED(user) || QDELETED(src))
-		return
-	if(src.loc != user) //how the hell did you manage this
-		to_chat(user, span_warning("Something happened to [src]..."))
-		return
-	Expand()
-	user.visible_message(span_danger("[user]'s torso bursts open as a primate emerges!"))
-	user.gib(null, TRUE, null, TRUE)
-
-/obj/item/food/monkeycube/syndicate
-	faction = list("neutral", ROLE_SYNDICATE)
-
-/obj/item/food/monkeycube/gorilla
-	name = "gorilla cube"
-	desc = "A Waffle Co. brand gorilla cube. Now with extra molecules!"
-	bite_consumption = 20
-	food_reagents = list(/datum/reagent/monkey_powder = 30, /datum/reagent/medicine/strange_reagent = 5)
-	tastes = list("the jungle" = 1, "bananas" = 1, "jimmies" = 1)
-	spawned_mob = /mob/living/simple_animal/hostile/gorilla
-
-/obj/item/food/monkeycube/chicken
-	name = "chicken cube"
-	desc = "A new Nanotrasen classic, the chicken cube. Tastes like everything!"
-	bite_consumption = 20
-	food_reagents = list(/datum/reagent/consumable/eggyolk = 30, /datum/reagent/medicine/strange_reagent = 1)
-	tastes = list("chicken" = 1, "the country" = 1, "chicken bouillon" = 1)
-	spawned_mob = /mob/living/simple_animal/chicken
-
-/obj/item/food/monkeycube/bee
-	name = "bee cube"
-	desc = "We were sure it was a good idea. Just add water."
-	bite_consumption = 20
-	food_reagents = list(/datum/reagent/consumable/honey = 10, /datum/reagent/toxin = 5, /datum/reagent/medicine/strange_reagent = 1)
-	tastes = list("buzzing" = 1, "honey" = 1, "regret" = 1)
-	spawned_mob = /mob/living/simple_animal/hostile/bee
 
 /obj/item/food/stewedsoymeat
 	name = "stewed soy meat"
@@ -578,6 +516,7 @@
 /obj/item/food/boiledspiderleg
 	name = "boiled spider leg"
 	desc = "A giant spider's leg that's still twitching after being cooked. Gross!"
+	icon = 'icons/obj/food/meat.dmi'
 	icon_state = "spiderlegcooked"
 	food_reagents = list(/datum/reagent/consumable/nutriment/protein = 4, /datum/reagent/consumable/capsaicin = 4, /datum/reagent/consumable/nutriment/vitamin = 2)
 	tastes = list("hot peppers" = 1, "cobwebs" = 1)
@@ -588,6 +527,7 @@
 /obj/item/food/spidereggsham
 	name = "green eggs and ham"
 	desc = "Would you eat them on a train? Would you eat them on a plane? Would you eat them on a state of the art corporate deathtrap floating through space?"
+	icon = 'icons/obj/food/meat.dmi'
 	icon_state = "spidereggsham"
 	food_reagents = list(/datum/reagent/consumable/nutriment/protein = 8, /datum/reagent/consumable/nutriment/vitamin = 3)
 	bite_consumption = 4
@@ -598,6 +538,7 @@
 /obj/item/food/sashimi
 	name = "carp sashimi"
 	desc = "Celebrate surviving attack from hostile alien lifeforms by hospitalising yourself. You sure hope whoever made this is skilled."
+	icon = 'icons/obj/food/meat.dmi'
 	icon_state = "sashimi"
 	food_reagents = list(/datum/reagent/consumable/nutriment/protein = 10, /datum/reagent/consumable/capsaicin = 9, /datum/reagent/consumable/nutriment/vitamin = 4)
 	tastes = list("fish" = 1, "hot peppers" = 1)
@@ -613,6 +554,7 @@
 /obj/item/food/nugget
 	name = "chicken nugget"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 2, /datum/reagent/consumable/nutriment/protein = 2, /datum/reagent/consumable/nutriment/vitamin = 1)
+	icon = 'icons/obj/food/meat.dmi'
 	tastes = list("\"chicken\"" = 1)
 	foodtypes = MEAT
 	food_flags = FOOD_FINGER_FOOD
@@ -628,6 +570,7 @@
 /obj/item/food/pigblanket
 	name = "pig in a blanket"
 	desc = "A tiny sausage wrapped in a flakey, buttery roll. Free this pig from its blanket prison by eating it."
+	icon = 'icons/obj/food/meat.dmi'
 	icon_state = "pigblanket"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 5, /datum/reagent/consumable/nutriment/protein = 5, /datum/reagent/consumable/nutriment/vitamin = 2)
 	tastes = list("meat" = 1, "butter" = 1)
@@ -637,6 +580,7 @@
 /obj/item/food/bbqribs
 	name = "bbq ribs"
 	desc = "BBQ ribs, slathered in a healthy coating of BBQ sauce. The least vegan thing to ever exist."
+	icon = 'icons/obj/food/meat.dmi'
 	icon_state = "ribs"
 	w_class = WEIGHT_CLASS_NORMAL
 	food_reagents = list(/datum/reagent/consumable/nutriment/protein = 10, /datum/reagent/consumable/nutriment/vitamin = 3, /datum/reagent/consumable/bbqsauce = 10)
@@ -646,6 +590,7 @@
 /obj/item/food/meatclown
 	name = "meat clown"
 	desc = "A delicious, round piece of meat clown. How horrifying."
+	icon = 'icons/obj/food/meat.dmi'
 	icon_state = "meatclown"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 5, /datum/reagent/consumable/nutriment/vitamin = 1, /datum/reagent/consumable/banana = 2)
 	tastes = list("meat" = 5, "clowns" = 3, "sixteen teslas" = 1)
@@ -668,6 +613,7 @@
 
 /obj/item/food/kebab
 	trash_type = /obj/item/stack/rods
+	icon = 'icons/obj/food/meat.dmi'
 	icon_state = "kebab"
 	w_class = WEIGHT_CLASS_NORMAL
 	food_reagents = list(/datum/reagent/consumable/nutriment/protein = 14)
@@ -728,6 +674,7 @@
 	tastes = list("tex-mex" = 3, "cumin" = 2)
 	food_reagents = list(/datum/reagent/consumable/nutriment/protein = 12, /datum/reagent/consumable/nutriment/vitamin = 6, /datum/reagent/consumable/capsaicin = 3)
 
+<<<<<<< HEAD:code/game/objects/items/food/meat.dm
 /obj/item/food/meat
 	custom_materials = list(/datum/material/meat = MINERAL_MATERIAL_AMOUNT * 4)
 	w_class = WEIGHT_CLASS_SMALL
@@ -1369,6 +1316,8 @@
 	name = "chicken cutlet"
 	tastes = list("chicken" = 1)
 
+=======
+>>>>>>> b83c7deee4c (Splitting some meat files (+ bonus fixes) (#69386)):code/game/objects/items/food/meatdish.dm
 /obj/item/food/fried_chicken
 	name = "fried chicken"
 	desc = "A juicy hunk of chicken meat, fried to perfection."
