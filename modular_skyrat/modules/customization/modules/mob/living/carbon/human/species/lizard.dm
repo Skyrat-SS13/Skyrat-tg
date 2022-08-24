@@ -21,7 +21,6 @@
 		"taur" = "None",
 		"wings" = "None",
 	)
-	learnable_languages = list(/datum/language/common, /datum/language/draconic)
 	payday_modifier = 0.75
 
 /datum/species/lizard/get_random_features()
@@ -67,7 +66,6 @@
 		FACEHAIR
 	)
 	always_customizable = TRUE
-	learnable_languages = list(/datum/language/ashtongue)
 
 /datum/species/lizard/ashwalker/prepare_human_for_preview(mob/living/carbon/human/lizard, lizard_color = "#990000")
 	. = ..(lizard, lizard_color)
