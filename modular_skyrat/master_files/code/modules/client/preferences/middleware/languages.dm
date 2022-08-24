@@ -37,12 +37,11 @@
 	var/list/name_to_language
 
 /datum/preference_middleware/languages/apply_to_human(mob/living/carbon/human/target, datum/preferences/preferences) // SKYRAT EDIT CHANGE
-	target.language_holder.understood_languages.Cut()
-	target.language_holder.spoken_languages.Cut()
-	target.language_holder.omnitongue = TRUE // a crappy hack but it works
+	var/datum/language_holder/language_holder = target.get_language_holder()
+	language_holder.remove_all_languages()
+	language_holder.omnitongue = TRUE // a crappy hack but it works
 	for(var/lang_path in preferences.languages)
-		target.language_holder.understood_languages[lang_path] = list(LANGUAGE_ATOM)
-		target.language_holder.spoken_languages[lang_path] = list(LANGUAGE_ATOM)
+		language_holder.grant_language(lang_path, TRUE, TRUE, LANGUAGE_ATOM)
 
 /datum/preference_middleware/languages/get_ui_assets()
 	return list(
