@@ -350,7 +350,3 @@
 /datum/sprite_accessory/ears/mutant/mouse_two
 	name = "Mouse II"
 	icon_state = "mouse_two"
-
-/datum/sprite_accessory/ears/mutant/mousecomparison
-	name = "Mouse Comparison"
-	icon_state = "mousecomparison"
