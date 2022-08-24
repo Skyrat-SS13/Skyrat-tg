@@ -38,7 +38,6 @@
 	mutantheart = /obj/item/organ/internal/heart/skrell
 	mutantliver = /obj/item/organ/internal/liver/skrell
 	mutanttongue = /obj/item/organ/internal/tongue/skrell
-	learnable_languages = list(/datum/language/common, /datum/language/skrell)
 	bodypart_overrides = list(
 		BODY_ZONE_HEAD = /obj/item/bodypart/head/mutant/skrell,
 		BODY_ZONE_CHEST = /obj/item/bodypart/chest/mutant/skrell,
