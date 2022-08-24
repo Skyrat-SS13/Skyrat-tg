@@ -27,7 +27,6 @@
 	human.eye_color_right = random_eye_color
 
 	//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
-	//human.dna.features = human.dna.species.get_random_features()
 	human.dna.mutant_bodyparts = human.dna.species.get_random_mutant_bodyparts(human.dna.features)
 	human.dna.body_markings = human.dna.species.get_random_body_markings(human.dna.features)
 	human.dna.species.mutant_bodyparts = human.dna.mutant_bodyparts.Copy()
