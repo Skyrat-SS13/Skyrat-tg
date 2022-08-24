@@ -516,7 +516,7 @@
 					apply_status_effect(/datum/status_effect/climax_cooldown)
 					visible_message(span_purple("[src] is cumming!"), span_purple("You are cumming!"))
 					var/turf/our_turf = get_turf(src)
-					new /obj/effect/decal/cleanable/cum/femcum(our_turf)
+					add_cum_splatter_floor(our_turf, female = TRUE)
 				else
 					apply_status_effect(/datum/status_effect/climax)
 					apply_status_effect(/datum/status_effect/climax_cooldown)
