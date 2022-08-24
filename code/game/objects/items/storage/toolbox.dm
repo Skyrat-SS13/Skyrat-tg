@@ -38,7 +38,7 @@
 	if(has_latches)
 		. += latches
 
-/obj/item/storage/toolbox/Initialize()
+/obj/item/storage/toolbox/Initialize(mapload)
 	. = ..()
 	atom_storage.max_specific_storage = WEIGHT_CLASS_NORMAL
 
@@ -101,7 +101,7 @@
 	force = 5
 	w_class = WEIGHT_CLASS_NORMAL
 
-/obj/item/storage/toolbox/mechanical/old/heirloom/Initialize()
+/obj/item/storage/toolbox/mechanical/old/heirloom/Initialize(mapload)
 	. = ..()
 	atom_storage.max_specific_storage = WEIGHT_CLASS_SMALL
 
@@ -170,7 +170,7 @@
 	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // Skyrat edit
 	special_desc = "A toolbox manufactured by the Syndicate containing extra tactical tools. Made of more robust materials than the average toolbox." // Skyrat edit
 
-/obj/item/storage/toolbox/syndicate/Initialize()
+/obj/item/storage/toolbox/syndicate/Initialize(mapload)
 	. = ..()
 	atom_storage.silent = TRUE
 
@@ -207,7 +207,7 @@
 	w_class = WEIGHT_CLASS_GIGANTIC //Holds more than a regular toolbox!
 	material_flags = NONE
 
-/obj/item/storage/toolbox/artistic/Initialize()
+/obj/item/storage/toolbox/artistic/Initialize(mapload)
 	. = ..()
 	atom_storage.max_total_storage = 20
 	atom_storage.max_slots = 10
@@ -273,7 +273,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	has_latches = FALSE
 
-/obj/item/storage/toolbox/infiltrator/Initialize()
+/obj/item/storage/toolbox/infiltrator/Initialize(mapload)
 	. = ..()
 	atom_storage.max_slots = 10
 	atom_storage.max_specific_storage = WEIGHT_CLASS_NORMAL
@@ -340,6 +340,3 @@
 /obj/item/storage/toolbox/haunted
 	name = "old toolbox"
 	custom_materials = list(/datum/material/hauntium = 500)
-
-
-

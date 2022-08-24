@@ -166,16 +166,13 @@
 	/// On first activation, we play the user a nice song!
 	var/first_use = TRUE
 
-/obj/item/clothing/suit/space/hev_suit/Initialize()
+/obj/item/clothing/suit/space/hev_suit/Initialize(mapload)
 	. = ..()
 	internal_radio = new(src)
 	internal_radio.subspace_transmission = TRUE
 	internal_radio.canhear_range = 0 // anything greater will have the bot broadcast the channel as if it were saying it out loud.
 	internal_radio.recalculateChannels()
-
-/obj/item/clothing/suit/space/hev_suit/ComponentInitialize()
-	. = ..()
-	AddComponent(/datum/component/cell, cell_override = cell, _has_cell_overlays = FALSE)
+	AddComponent(/datum/component/cell, cell_override = initial(cell), _has_cell_overlays = FALSE)
 
 /obj/item/clothing/suit/space/hev_suit/equipped(mob/user, slot)
 	. = ..()
