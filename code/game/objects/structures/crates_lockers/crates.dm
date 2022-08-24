@@ -1,7 +1,11 @@
 /obj/structure/closet/crate
 	name = "crate"
 	desc = "A rectangular steel crate."
+<<<<<<< HEAD
 	icon = 'icons/obj/crates.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
+=======
+	icon = 'icons/obj/storage/crates.dmi'
+>>>>>>> d91390a4474 ([IDB IGNORE] The Great Sweep: Moving dmis into subfolders (part 1)  (#69416))
 	icon_state = "crate"
 	req_access = null
 	can_weld_shut = FALSE

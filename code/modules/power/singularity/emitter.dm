@@ -1,7 +1,11 @@
 /obj/machinery/power/emitter
 	name = "emitter"
 	desc = "A heavy-duty industrial laser, often used in containment fields and power generation."
+<<<<<<< HEAD
 	icon = 'icons/obj/singularity.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
+=======
+	icon = 'icons/obj/engine/singularity.dmi'
+>>>>>>> d91390a4474 ([IDB IGNORE] The Great Sweep: Moving dmis into subfolders (part 1)  (#69416))
 	icon_state = "emitter"
 	base_icon_state = "emitter"
 
@@ -381,7 +385,7 @@
 
 /obj/machinery/power/emitter/prototype
 	name = "Prototype Emitter"
-	icon = 'icons/obj/turrets.dmi'
+	icon = 'icons/obj/weapons/turrets.dmi'
 	icon_state = "proto_emitter"
 	base_icon_state = "proto_emitter"
 	icon_state_on = "proto_emitter_+a"

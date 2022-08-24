@@ -2,7 +2,11 @@
 /obj/singularity
 	name = "gravitational singularity"
 	desc = "A gravitational singularity."
+<<<<<<< HEAD
 	icon = 'modular_skyrat/modules/aesthetics/singularity/singularity_s1.dmi' //SKYRAT EDIT CHANGE
+=======
+	icon = 'icons/obj/engine/singularity.dmi'
+>>>>>>> d91390a4474 ([IDB IGNORE] The Great Sweep: Moving dmis into subfolders (part 1)  (#69416))
 	icon_state = "singularity_s1"
 	anchored = TRUE
 	density = TRUE
@@ -191,7 +195,11 @@
 	switch(temp_allowed_size)
 		if(STAGE_ONE)
 			current_size = STAGE_ONE
+<<<<<<< HEAD
 			icon = 'modular_skyrat/modules/aesthetics/singularity/singularity_s1.dmi' //SKYRAT EDIT CHANGE
+=======
+			icon = 'icons/obj/engine/singularity.dmi'
+>>>>>>> d91390a4474 ([IDB IGNORE] The Great Sweep: Moving dmis into subfolders (part 1)  (#69416))
 			icon_state = "singularity_s1"
 			pixel_x = 0
 			pixel_y = 0

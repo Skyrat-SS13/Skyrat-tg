@@ -1,7 +1,11 @@
 /obj/item/extinguisher
 	name = "fire extinguisher"
 	desc = "A traditional red fire extinguisher."
+<<<<<<< HEAD
 	icon = 'icons/obj/items_and_weapons.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
+=======
+	icon = 'icons/obj/weapons/items_and_weapons.dmi'
+>>>>>>> d91390a4474 ([IDB IGNORE] The Great Sweep: Moving dmis into subfolders (part 1)  (#69416))
 	icon_state = "fire_extinguisher0"
 	worn_icon_state = "fire_extinguisher"
 	inhand_icon_state = "fire_extinguisher"

@@ -2,7 +2,11 @@
 	gender = PLURAL
 	name = "red lipstick"
 	desc = "A generic brand of lipstick."
+<<<<<<< HEAD
 	icon =  'modular_skyrat/modules/salon/icons/items.dmi' //SKYRAT EDIT CHANGE
+=======
+	icon = 'icons/obj/weapons/items_and_weapons.dmi'
+>>>>>>> d91390a4474 ([IDB IGNORE] The Great Sweep: Moving dmis into subfolders (part 1)  (#69416))
 	icon_state = "lipstick"
 	w_class = WEIGHT_CLASS_TINY
 	var/colour = "red"
@@ -104,7 +108,7 @@
 /obj/item/razor
 	name = "electric razor"
 	desc = "The latest and greatest power razor born from the science of shaving."
-	icon = 'icons/obj/items_and_weapons.dmi'
+	icon = 'icons/obj/weapons/items_and_weapons.dmi'
 	icon_state = "razor"
 	flags_1 = CONDUCT_1
 	w_class = WEIGHT_CLASS_TINY

@@ -40,7 +40,7 @@
 /obj/item/reagent_containers/glass/bottle/morphine
 	name = "morphine bottle"
 	desc = "A small bottle of morphine."
-	icon = 'icons/obj/chemical.dmi'
+	icon = 'icons/obj/medical/chemical.dmi'
 	list_reagents = list(/datum/reagent/medicine/morphine = 30)
 
 /obj/item/reagent_containers/glass/bottle/chloralhydrate
@@ -119,7 +119,7 @@
 /obj/item/reagent_containers/glass/bottle/traitor
 	name = "syndicate bottle"
 	desc = "A small bottle. Contains a random nasty chemical."
-	icon = 'icons/obj/chemical.dmi'
+	icon = 'icons/obj/medical/chemical.dmi'
 	var/extra_reagent = null
 
 /obj/item/reagent_containers/glass/bottle/traitor/Initialize(mapload)

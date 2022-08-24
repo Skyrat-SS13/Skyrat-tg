@@ -1,7 +1,11 @@
 /obj/item/gun/grenadelauncher
 	name = "grenade launcher"
 	desc = "A terrible, terrible thing. It's really awful!"
+<<<<<<< HEAD
 	icon = 'modular_skyrat/modules/fixing_missing_icons/ballistic.dmi' //skyrat edit
+=======
+	icon = 'icons/obj/weapons/guns/ballistic.dmi'
+>>>>>>> d91390a4474 ([IDB IGNORE] The Great Sweep: Moving dmis into subfolders (part 1)  (#69416))
 	icon_state = "riotgun"
 	inhand_icon_state = "riotgun"
 	w_class = WEIGHT_CLASS_BULKY
