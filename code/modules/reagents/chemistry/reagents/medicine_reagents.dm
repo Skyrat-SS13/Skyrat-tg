@@ -1093,7 +1093,7 @@
 	var/mob/living/carbon/human/exposed_human = exposed_mob
 	exposed_human.hair_color = "#CC22FF"
 	exposed_human.facial_hair_color = "#CC22FF"
-	exposed_human.update_hair()
+	exposed_human.update_body_parts()
 	// SKYRAT EDIT ADDITION BEGIN
 	exposed_human.update_mutant_bodyparts(force_update=TRUE)
 	// SKYRAT EDIT END
@@ -1467,7 +1467,7 @@
 		return
 	exposed_human.hair_color = "#9922ff"
 	exposed_human.facial_hair_color = "#9922ff"
-	exposed_human.update_hair()
+	exposed_human.update_body_parts()
 
 /datum/reagent/medicine/polypyr/overdose_process(mob/living/M, delta_time, times_fired)
 	M.adjustOrganLoss(ORGAN_SLOT_LUNGS, 0.5 * REM * delta_time)
