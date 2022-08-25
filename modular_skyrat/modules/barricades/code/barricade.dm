@@ -690,7 +690,7 @@
 	if(.)
 		return
 
-	if(do_after(user, 20, src))
+	if(do_after(user, 2 SECONDS, src))
 		toggle_open(null, user)
 
 /obj/structure/deployable_barricade/metal/plasteel/proc/toggle_open(state, mob/living/user)
