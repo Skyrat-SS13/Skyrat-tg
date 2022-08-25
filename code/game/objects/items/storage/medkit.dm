@@ -71,8 +71,8 @@
 		/obj/item/healthanalyzer,
 		/obj/item/dnainjector,
 		/obj/item/reagent_containers/dropper,
-		/obj/item/reagent_containers/glass/beaker,
-		/obj/item/reagent_containers/glass/bottle,
+		/obj/item/reagent_containers/cup/beaker,
+		/obj/item/reagent_containers/cup/bottle,
 		/obj/item/reagent_containers/pill,
 		/obj/item/reagent_containers/syringe,
 		/obj/item/reagent_containers/medigel,
@@ -262,6 +262,7 @@
 	name = "combat medical kit"
 	desc = "I hope you've got insurance."
 	icon_state = "medkit_tactical"
+	inhand_icon_state = "medkit-tactical"
 	damagetype_healed = "all"
 
 /obj/item/storage/medkit/tactical/Initialize(mapload)

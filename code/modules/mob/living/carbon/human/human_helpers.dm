@@ -195,7 +195,7 @@
 
 /mob/living/carbon/human/get_biological_state()
 	return dna.species.get_biological_state()
-/* SKYRAT EDIT MOVAL - MOVED TO MASTER FILES
+
 ///Returns death message for mob examine text
 /mob/living/carbon/human/proc/generate_death_examine_text()
 	var/mob/dead/observer/ghost = get_ghost(TRUE, TRUE)
@@ -206,7 +206,7 @@
 	if(key || !getorgan(/obj/item/organ/internal/brain) || ghost?.can_reenter_corpse)
 		return span_deadsay("[t_He] [t_is] limp and unresponsive; there are no signs of life...")
 	else
-		return span_deadsay("[t_He] [t_is] limp and unresponsive; there are no signs of life and [t_his] soul has departed...") */ // SKYRAT EDIT MOVAL END
+		return span_deadsay("[t_He] [t_is] limp and unresponsive; there are no signs of life and [t_his] soul has departed...")
 
 ///copies over clothing preferences like underwear to another human
 /mob/living/carbon/human/proc/copy_clothing_prefs(mob/living/carbon/human/destination)
