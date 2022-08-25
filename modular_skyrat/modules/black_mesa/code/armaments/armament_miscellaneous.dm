@@ -43,6 +43,6 @@
 	cost = 1
 
 /datum/armament_entry/hecu/misc/whiskey
-	item_type = /obj/item/reagent_containers/food/drinks/bottle/whiskey
+	item_type = /obj/item/reagent_containers/cup/glass/bottle/whiskey
 	max_purchase = 2
 	cost = 1
