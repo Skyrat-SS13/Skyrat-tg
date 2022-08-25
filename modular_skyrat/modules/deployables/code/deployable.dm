@@ -451,3 +451,4 @@
 #undef PUMP_MODE
 
 #undef MAX_POWER
+#undef setup_time
