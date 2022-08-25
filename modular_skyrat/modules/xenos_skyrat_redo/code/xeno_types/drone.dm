@@ -1,8 +1,10 @@
+/// SKYRAT MODULE SKYRAT_XENO_REDO
+
 /mob/living/carbon/alien/humanoid/skyrat/drone
 	name = "alien drone"
 	caste = "drone"
-	maxHealth = 250
-	health = 250
+	maxHealth = 200
+	health = 200
 	icon_state = "aliendrone"
 	var/datum/action/cooldown/alien/skyrat/heal_aura/heal_aura_ability
 	melee_damage_lower = 15

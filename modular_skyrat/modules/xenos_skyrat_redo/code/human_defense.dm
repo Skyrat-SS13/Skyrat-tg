@@ -1,3 +1,5 @@
+/// SKYRAT MODULE SKYRAT_XENO_REDO
+
 /mob/living/carbon/human/attack_alien(mob/living/carbon/alien/humanoid/user, list/modifiers)
 	. = ..()
 	if(!.)

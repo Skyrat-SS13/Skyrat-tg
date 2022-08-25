@@ -1,10 +1,11 @@
+/// SKYRAT MODULE SKYRAT_XENO_REDO
+
 /mob/living/carbon/alien/humanoid/skyrat/defender
 	name = "alien defender"
 	caste = "defender"
 	maxHealth = 300
 	health = 300
 	icon_state = "aliendefender"
-	var/datum/action/cooldown/alien/skyrat/evade/evade_ability
 	melee_damage_lower = 25
 	melee_damage_upper = 30
 	var/datum/action/cooldown/mob_cooldown/charge/basic_charge/defender/charge
@@ -51,6 +52,8 @@
 			var/mob/living/victim_living = victim
 			victim_living.Knockdown(10 SECONDS)
 			victim_living.apply_damage(30,BRUTE,BODY_ZONE_CHEST,wound_bonus=20)
+			shake_camera(victim, 4, 3)
+			playsound(victim, 'sound/effects/clang.ogg', 50, TRUE) //the defender's tail is literally just a small wrecking ball, CLANG
 			to_chat(victim, span_userdanger("You're slammed into the floor by [caster]'s tail!"))
 	else
 		if(sparkle_path)
@@ -60,6 +63,8 @@
 			var/mob/living/victim_living = victim
 			victim_living.Knockdown(4 SECONDS)
 			victim_living.apply_damage(30,BRUTE,BODY_ZONE_CHEST,wound_bonus=20)
+			shake_camera(victim, 4, 3)
+			playsound(victim, 'sound/effects/clang.ogg', 25, TRUE)
 			to_chat(victim, span_userdanger("[caster]'s tail slams into you, throwing you back!"))
 
 		victim.safe_throw_at(throwtarget, ((clamp((max_throw - (clamp(dist_from_caster - 2, 0, dist_from_caster))), 3, max_throw))), 1, caster, force = repulse_force)
@@ -70,6 +75,7 @@
 
 /datum/action/cooldown/mob_cooldown/charge/basic_charge/defender
 	name = "Charge Attack"
+	desc = "Allows you to charge at a position, trampling any in your path."
 	cooldown_time = 15 SECONDS
 	charge_delay = 0.3 SECONDS
 	charge_distance = 5
@@ -78,3 +84,7 @@
 	icon_icon = 'modular_skyrat/modules/xenos_skyrat_redo/icons/xeno_actions.dmi'
 	button_icon_state = "defender_charge"
 	unset_after_click = TRUE
+
+/datum/action/cooldown/mob_cooldown/charge/basic_charge/defender/do_charge_indicator(atom/charger, atom/charge_target)
+	. = ..()
+	playsound(charger, 'modular_skyrat/modules/xenos_skyrat_redo/sound/alien_roar1.ogg', 100, TRUE)

@@ -1,9 +1,11 @@
+/// SKYRAT MODULE SKYRAT_XENO_REDO
+
 /mob/living/carbon/alien/humanoid/skyrat/runner
 	name = "alien runner"
 	caste = "runner"
-	maxHealth = 200
-	health = 200
-	icon_state = "alienrunner"
+	maxHealth = 350
+	health = 350
+	icon_state = "alienravager"
 	var/datum/action/cooldown/alien/skyrat/evade/evade_ability
 	melee_damage_lower = 20
 	melee_damage_upper = 25
@@ -24,7 +26,7 @@
 
 /datum/action/cooldown/alien/skyrat/evade
 	name = "Evade"
-	desc = "Allows you to evade any projectile that hits you for a few seconds."
+	desc = "Allows you to evade any projectile that would hit you for a few seconds."
 	button_icon_state = "evade"
 	plasma_cost = 50
 	cooldown_time = 60 SECONDS
@@ -37,6 +39,7 @@
 		owner.balloon_alert(owner, "already evading")
 		return FALSE
 	owner.balloon_alert(owner, "evasive movements began")
+	playsound(owner, 'modular_skyrat/modules/xenos_skyrat_redo/sound/alien_hiss.ogg', 25, TRUE)
 	to_chat(owner, span_danger("We take evasive action, making us impossible to hit with projectiles for the next [evasion_duration/10] seconds."))
 	addtimer(CALLBACK(src, .proc/evasion_deactivate), evasion_duration)
 	evade_active = TRUE

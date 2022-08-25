@@ -1,8 +1,10 @@
+/// SKYRAT MODULE SKYRAT_XENO_REDO
+
 /mob/living/carbon/alien/humanoid/skyrat/sentinel
 	name = "alien sentinel"
 	caste = "sentinel"
-	maxHealth = 250
-	health = 250
+	maxHealth = 200
+	health = 200
 	icon_state = "aliensentinel"
 	melee_damage_lower = 10
 	melee_damage_upper = 15
@@ -18,9 +20,13 @@
 	icon_icon = 'modular_skyrat/modules/xenos_skyrat_redo/icons/xeno_actions.dmi'
 	button_icon_state = "neurospit_0"
 	plasma_cost = 25
+	/// A singular projectile? Use this one and leave acid_casing null
 	var/acid_projectile = /obj/projectile/neurotoxin/skyrat
+	/// You want it to be more like a shotgun style attack? Use this one and make acid_projectile null
+	var/acid_casing
 	var/projectile_name = "neurotoxin" //Used in to_chat messages
 	var/button_base_icon = "neurospit"
+	var/spit_sound = 'modular_skyrat/modules/xenos_skyrat_redo/sound/alien_spitacid.ogg'
 	shared_cooldown = MOB_SHARED_COOLDOWN_3
 	cooldown_time = 5 SECONDS
 
@@ -66,12 +72,23 @@
 		span_danger("[caller] spits [projectile_name]!"),
 		span_alertalien("You spit [projectile_name]."),
 	)
-	var/obj/projectile/spit_projectile = new acid_projectile(caller.loc)
-	spit_projectile.preparePixelProjectile(target, caller, modifiers)
-	spit_projectile.firer = caller
-	spit_projectile.fire()
-	caller.newtonian_move(get_dir(target_turf, user_turf))
-	return TRUE
+	if(acid_projectile)
+		var/obj/projectile/spit_projectile = new acid_projectile(caller.loc)
+		spit_projectile.preparePixelProjectile(target, caller, modifiers)
+		spit_projectile.firer = caller
+		spit_projectile.fire()
+		playsound(caller, spit_sound, 100, TRUE)
+		caller.newtonian_move(get_dir(target_turf, user_turf))
+		return TRUE
+
+	if(acid_casing)
+		var/obj/item/ammo_casing/casing = new acid_casing(caller.loc)
+		playsound(caller, spit_sound, 100, TRUE)
+		casing.fire_casing(target, caller, null, null, null, ran_zone(), 0,  caller)
+		caller.newtonian_move(get_dir(target_turf, user_turf))
+		return TRUE
+
+	CRASH("Neither acid_projectile or acid_casing are set on [caller]'s spit attack!")
 
 /datum/action/cooldown/alien/acid/skyrat/Activate(atom/target)
 	return TRUE
