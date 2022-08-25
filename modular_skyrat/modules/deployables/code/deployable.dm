@@ -8,7 +8,7 @@
 #define PUMP_MODE "pump"
 
 #define MAX_POWER 40000	/// BS cell capacity, a potato battery would still outplay this
-#define setup_time 1.4 SECONDS /// How quick does it (un)fold? Warning: this tries to match an animation
+#define SETUP_TIME 1.4 SECONDS /// How quick does it (un)fold? Warning: this tries to match an animation
 
 // Automapper
 /datum/area_spawn/borg_action_pacifier
@@ -18,10 +18,11 @@
 	mode = AREA_SPAWN_MODE_OPEN
 
 /datum/area_spawn/borg_action_pacifier_deployed
-	target_areas = list(/area/station/science/robotics/mechbay, /area/station/science/robotics/lab, /area/station/science)
+	target_areas = list(/area/station/science/robotics/mechbay, /area/station/science/robotics/lab)
 	desired_atom = /obj/structure/bed/borg_action_pacifier
+	optional = TRUE
 	amount_to_spawn = 2
-	mode = AREA_SPAWN_MODE_HUG_WALL
+	mode = AREA_SPAWN_MODE_OPEN
 
 // Research
 /datum/techweb_node/cyborg_security
@@ -191,7 +192,7 @@
 
 	balloon_alert_to_viewers("unfolding...")
 	playsound(src, 'modular_skyrat/master_files/sound/effects/robot_trap.ogg', 25, TRUE, falloff_exponent = 20)
-	addtimer(CALLBACK(src, .proc/finish_deploy), setup_time)
+	addtimer(CALLBACK(src, .proc/finish_deploy), SETUP_TIME)
 	flick("deploying", src)
 
 /obj/structure/bed/borg_action_pacifier/proc/finish_deploy()
@@ -365,7 +366,7 @@
 
 	balloon_alert_to_viewers("resetting...")
 	if(do_after(clicker, 3 SECONDS))
-		addtimer(CALLBACK(src, .proc/finish_undeploy), setup_time)
+		addtimer(CALLBACK(src, .proc/finish_undeploy), SETUP_TIME)
 		flick("undeploying", src)
 	else
 		return
@@ -474,4 +475,4 @@
 #undef PUMP_MODE
 
 #undef MAX_POWER
-#undef setup_time
+#undef SETUP_TIME
