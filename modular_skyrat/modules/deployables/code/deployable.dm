@@ -11,17 +11,37 @@
 #define setup_time 1.4 SECONDS /// How quick does it (un)fold? Warning: this tries to match an animation
 
 // Automapper
-/*
 /datum/area_spawn/borg_action_pacifier
 	target_areas = list(/area/station/security/office, /area/station/security/lockers)
 	desired_atom = /obj/item/grenade/borg_action_pacifier_grenade
 	amount_to_spawn = 3
+	mode = AREA_SPAWN_MODE_OPEN
 
 /datum/area_spawn/borg_action_pacifier_deployed
-	target_areas = list(/area/station/science/robotics/mechbay)
+	target_areas = list(/area/station/science/robotics/mechbay, /area/station/science/robotics/lab, /area/station/science/lobby)
 	desired_atom = /obj/structure/bed/borg_action_pacifier
 	amount_to_spawn = 2
-*/
+	mode = AREA_SPAWN_MODE_HUG_WALL
+
+// Research
+/datum/techweb_node/cyborg_security
+	id = "cyborg_security"
+	display_name = "Cyborg security"
+	description = "Tools for security."
+	prereq_ids = list("robotics", "sec_basic")
+	design_ids = list(
+		"BAPgrenade",
+	)
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 3500)
+
+/datum/design/BAPgrenade
+	name = "B.A.P. unit"
+	id = "BAPgrenade"
+	materials = list(/datum/material/iron = 1000, /datum/material/glass = 1000, /datum/material/gold = 2000, /datum/material/silver = 2000)
+	build_path = /obj/item/grenade/borg_action_pacifier_grenade
+	build_type = AUTOLATHE | PROTOLATHE
+	departmental_flags = DEPARTMENT_BITFLAG_SECURITY | DEPARTMENT_BITFLAG_SCIENCE
+	category = list(RND_CATEGORY_EQUIPMENT)
 
 //	The item
 /obj/structure/bed/borg_action_pacifier
@@ -75,6 +95,7 @@
 	worn_icon_state = "folded"
 	w_class = WEIGHT_CLASS_NORMAL
 
+	custom_price = PAYCHECK_CREW * 2
 	det_time = 3 SECONDS
 	/// Amount of power drained from the cyborg, from when we were still deployed
 	var/power_storage = 0
