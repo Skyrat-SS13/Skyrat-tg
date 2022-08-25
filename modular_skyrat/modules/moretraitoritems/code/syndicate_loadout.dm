@@ -111,7 +111,7 @@
 	new /obj/item/card/id/advanced/chameleon(src)
 	new /obj/item/card/emag/doorjack(src)
 	new /obj/item/reagent_containers/hypospray/medipen/stimulants(src)
-	new /obj/item/reagent_containers/glass/rag(src)
+	new /obj/item/reagent_containers/cup/rag(src)
 
 /obj/item/storage/backpack/duffelbag/syndie/loadout/darklord/PopulateContents()
 	new /obj/item/dualsaber(src)
@@ -134,7 +134,7 @@
 	new /obj/item/storage/belt/fannypack/yellow(src)
 	new /obj/item/grenade/spawnergrenade/buzzkill(src)
 	new /obj/item/grenade/spawnergrenade/buzzkill(src)
-	new /obj/item/reagent_containers/glass/bottle/beesease(src)
+	new /obj/item/reagent_containers/cup/bottle/beesease(src)
 	new /obj/item/melee/beesword(src)
 
 /obj/item/storage/backpack/duffelbag/syndie/loadout/cryomancer/PopulateContents()
@@ -193,7 +193,7 @@
 	new /obj/item/switchblade(src)
 	new /obj/item/clothing/shoes/laceup(src)
 	new /obj/item/virgin_mary(src)
-	new /obj/item/reagent_containers/food/drinks/bottle/whiskey(src)
+	new /obj/item/reagent_containers/cup/glass/bottle/whiskey(src)
 	new /obj/item/storage/box/drinkingglasses(src)
 	new /obj/item/storage/fancy/candle_box(src)
 	new /obj/item/clothing/glasses/sunglasses(src)
