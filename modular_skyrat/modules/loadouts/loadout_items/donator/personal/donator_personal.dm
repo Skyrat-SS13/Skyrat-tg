@@ -496,3 +496,9 @@
 	donator_only = TRUE
 
 //Chunko Fops were donated by SlippyJoe, who requested they are usable by everyone
+
+/datum/loadout_item/clothing/under/bubblyclown
+	name = "Bubbly Clown Dress"
+	item_path = /obj/item/clothing/under/bubblyclown
+	restricted_roles = list(JOB_CLOWN)
+	ckeywhitelist = list("boisterousbeebz","aether217")

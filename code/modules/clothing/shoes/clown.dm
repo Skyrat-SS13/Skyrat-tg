@@ -46,3 +46,9 @@
 	name = "jester shoes"
 	desc = "A court jester's shoes, updated with modern squeaking technology."
 	icon_state = "jester_shoes"
+
+/obj/item/clothing/shoes/clown_shoes/pink
+	name = "Pink Clown Shoes"
+	desc = "A particularly pink pair of punny shoes."
+	icon_state = "pink_clown_shoes"
+	inhand_icon_state = "pink_clown_shoes"
