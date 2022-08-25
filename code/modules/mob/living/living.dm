@@ -785,7 +785,7 @@
 		grab_ghost()
 	if(full_heal)
 		fully_heal(admin_revive = admin_revive)
-	if(stat == DEAD && can_be_revived()) //in some cases you can't revive (e.g. no brain)
+	if(stat == DEAD && can_be_revived() || admin_revive) //in some cases you can't revive (e.g. no brain) //SKYRAT EDIT ADDITION - DNR TRAIT - Added: " || admin_revive"
 		set_suicide(FALSE)
 		set_stat(UNCONSCIOUS) //the mob starts unconscious,
 		updatehealth() //then we check if the mob should wake up.
@@ -2182,8 +2182,8 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 
 		REMOVE_TRAIT(src, TRAIT_FAT, OBESITY)
 		remove_movespeed_modifier(/datum/movespeed_modifier/obesity)
-		update_inv_w_uniform()
-		update_inv_wear_suit()
+		update_worn_undersuit()
+		update_worn_oversuit()
 
 	// Reset overeat duration.
 	overeatduration = 0

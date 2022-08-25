@@ -202,7 +202,7 @@
 			//End of our only change
 			to_chat(user, span_notice("[up ? alt_toggle_message : toggle_message] \the [src]."))
 
-			user.update_inv_head()
+			user.update_worn_head()
 			if(iscarbon(user))
 				var/mob/living/carbon/C = user
 				C.head_update(src, forced = 1)
@@ -360,7 +360,7 @@
 	else
 		worn_icon_state = "[icon_state]_left"
 
-	usr.update_inv_neck()
+	usr.update_worn_neck()
 
 /*
 * GLOVES
