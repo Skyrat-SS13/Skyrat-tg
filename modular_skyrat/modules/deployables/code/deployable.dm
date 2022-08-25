@@ -92,8 +92,11 @@
 	desc = "A deactivated device to restrain silicons with."
 	icon = 'modular_skyrat/modules/deployables/icons/deployable.dmi'
 	icon_state = "folded"
-	inhand_icon_state = "folded"
-	worn_icon_state = "folded"
+	lefthand_file = 'modular_skyrat/modules/deployables/icons/mob/inhand/deployable_lefthand.dmi'
+	righthand_file = 'modular_skyrat/modules/deployables/icons/mob/inhand/deployable_righthand.dmi'
+	inhand_icon_state = "BAPer_inhand"
+	worn_icon = 'modular_skyrat/modules/deployables/icons/mob/deployable_worn.dmi'
+	worn_icon_state = "BAPer_worn"
 	w_class = WEIGHT_CLASS_NORMAL
 
 	custom_price = PAYCHECK_CREW * 2
@@ -186,7 +189,6 @@
 	if(deployed)
 		return
 	name = "deploying B.A.P. unit"
-	resistance_flags = NONE
 
 	balloon_alert_to_viewers("unfolding...")
 	playsound(src, 'modular_skyrat/master_files/sound/effects/robot_trap.ogg', 25, TRUE, falloff_exponent = 20)
