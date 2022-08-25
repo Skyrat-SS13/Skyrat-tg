@@ -44,7 +44,7 @@
 
 /obj/item/toy/waterballoon/Initialize(mapload)
 	. = ..()
-	AddElement(/datum/element/update_icon_updates_onmob)
+	AddElement(/datum/element/update_icon_updates_onmob, ITEM_SLOT_HANDS)
 	create_reagents(10)
 
 /obj/item/toy/waterballoon/attack(mob/living/carbon/human/M, mob/user)
@@ -67,7 +67,7 @@
 			update_appearance()
 
 /obj/item/toy/waterballoon/attackby(obj/item/I, mob/user, params)
-	if(istype(I, /obj/item/reagent_containers/glass))
+	if(istype(I, /obj/item/reagent_containers/cup))
 		if(I.reagents)
 			if(I.reagents.total_volume <= 0)
 				to_chat(user, span_warning("[I] is empty."))

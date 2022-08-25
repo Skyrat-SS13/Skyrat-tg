@@ -54,8 +54,10 @@
 		preferences.languages = list()
 		var/species_type = preferences.read_preference(/datum/preference/choiced/species)
 		var/datum/species/species = new species_type()
-		for(var/language in species.learnable_languages)
+		var/datum/language_holder/lang_holder = new species.species_language_holder()
+		for(var/language in lang_holder.spoken_languages)
 			preferences.languages[language] = LANGUAGE_SPOKEN
+		qdel(lang_holder)
 		qdel(species)
 
 	. = ..()
@@ -72,9 +74,10 @@
 	var/max_languages = preferences.all_quirks.Find(QUIRK_LINGUIST) ? 4 : 3
 	var/species_type = preferences.read_preference(/datum/preference/choiced/species)
 	var/datum/species/species = new species_type()
+	var/datum/language_holder/lang_holder = new species.species_language_holder()
 	if(!preferences.languages || !preferences.languages.len || (preferences.languages && preferences.languages.len > max_languages)) // Too many languages, or no languages.
 		preferences.languages = list()
-		for(var/language in species.learnable_languages)
+		for(var/language in lang_holder.spoken_languages)
 			preferences.languages[language] = LANGUAGE_SPOKEN
 	var/list/selected_languages = list()
 	var/list/unselected_languages = list()
@@ -82,7 +85,7 @@
 		var/datum/language/language = GLOB.language_datum_instances[language_name]
 		if(language.secret)
 			continue
-		if(species.always_customizable && !(language.type in species.learnable_languages)) // For the ghostrole species. We don't want ashwalkers speaking beachtongue now.
+		if(species.always_customizable && !(language.type in lang_holder.spoken_languages)) // For the ghostrole species. We don't want ashwalkers speaking beachtongue now.
 			continue
 		if(preferences.languages[language.type])
 			selected_languages += list(list(
@@ -96,6 +99,7 @@
 				"name" = language.name,
 				"icon" = sanitize_css_class_name(language.name)
 			))
+	qdel(lang_holder)
 	qdel(species)
 
 	data["total_language_points"] = max_languages

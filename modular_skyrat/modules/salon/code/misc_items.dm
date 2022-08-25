@@ -90,7 +90,7 @@
 	else
 		target_human.hairstyle = "Bald"
 
-	target_human.update_hair(is_creating = TRUE)
+	target_human.update_body_parts()
 	playsound(loc, 'sound/items/unsheath.ogg', 20, TRUE)
 
 
