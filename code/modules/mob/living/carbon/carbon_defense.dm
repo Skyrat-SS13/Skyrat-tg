@@ -495,7 +495,7 @@
 		if(HAS_TRAIT(src, TRAIT_EXCITABLE))
 			var/obj/item/organ/external/tail/src_tail = getorganslot(ORGAN_SLOT_EXTERNAL_TAIL)
 			if(src_tail && !(src_tail.wag_flags & WAG_WAGGING))
-				src.emote("wag")
+				emote("wag")
 		//SKYRAT EDIT ADDITION END
 	else if ((helper.zone_selected == BODY_ZONE_PRECISE_GROIN) && !isnull(src.getorgan(/obj/item/organ/external/tail)))
 		helper.visible_message(span_notice("[helper] pulls on [src]'s tail!"), \
