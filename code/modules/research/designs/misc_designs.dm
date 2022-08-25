@@ -780,4 +780,3 @@
 	materials = list(/datum/material/plastic = 1000)
 	build_path = /obj/item/blank_coffee_cartridge
 	category = list(RND_CATEGORY_EQUIPMENT)
->>>>>>> 6f71a7ea48b (The Ambrosia of the Corporate Masses: Coffeemakers (#68178))
