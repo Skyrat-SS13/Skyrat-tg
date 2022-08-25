@@ -163,7 +163,7 @@
 /obj/structure/bed/borg_action_pacifier/proc/deploy()
 	if(deployed)
 		return
-	name = "Deploying B.A.P. unit"
+	name = "deploying B.A.P. unit"
 	resistance_flags = NONE
 
 	balloon_alert_to_viewers("unfolding...")
