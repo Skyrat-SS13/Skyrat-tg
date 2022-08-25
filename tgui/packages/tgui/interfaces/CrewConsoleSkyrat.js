@@ -1,24 +1,24 @@
-import { sortBy } from "common/collections";
-import { useBackend } from "../backend";
-import { Box, Button, Section, Table, Icon } from "../components";
-import { COLORS } from "../constants";
-import { Window } from "../layouts";
+import { sortBy } from 'common/collections';
+import { useBackend } from '../backend';
+import { Box, Button, Section, Table, Icon } from '../components';
+import { COLORS } from '../constants';
+import { Window } from '../layouts';
 
 const HEALTH_COLOR_BY_LEVEL = [
-  "#17d568",
-  "#c4cf2d",
-  "#e67e22",
-  "#ed5100",
-  "#e74c3c",
-  "#801308",
+  '#17d568',
+  '#c4cf2d',
+  '#e67e22',
+  '#ed5100',
+  '#e74c3c',
+  '#801308',
 ];
 const HEALTH_ICON_BY_LEVEL = [
-  "heart",
-  "heart",
-  "heart",
-  "heart",
-  "heartbeat",
-  "skull",
+  'heart',
+  'heart',
+  'heart',
+  'heart',
+  'heartbeat',
+  'skull',
 ];
 const jobIsHead = (jobId) => jobId % 10 === 0;
 
@@ -66,7 +66,7 @@ const HealthStat = (props) => {
   );
 };
 
-export const CrewConsole = () => {
+export const CrewConsoleSkyrat = () => {
   return (
     <Window title="Crew Monitor" width={600} height={600}>
       <Window.Content scrollable>
@@ -126,10 +126,10 @@ const CrewTableEntry = (props, context) => {
     <Table.Row>
       <Table.Cell bold={jobIsHead(ijob)} color={jobToColor(ijob)}>
         {name}
-        {assignment !== undefined ? ` (${assignment})` : ""}
+        {assignment !== undefined ? ` (${assignment})` : ''}
       </Table.Cell>
       <Table.Cell collapsing textAlign="center">
-        {is_robot ? <Icon name="wrench" color="#B7410E" size={1} /> : ""}
+        {is_robot ? <Icon name="wrench" color="#B7410E" size={1} /> : ''}
       </Table.Cell>
       <Table.Cell collapsing textAlign="center">
         {oxydam !== undefined ? (
@@ -160,17 +160,17 @@ const CrewTableEntry = (props, context) => {
         {oxydam !== undefined ? (
           <Box inline>
             <HealthStat type="oxy" value={oxydam} />
-            {"/"}
+            {'/'}
             <HealthStat type="toxin" value={toxdam} />
-            {"/"}
+            {'/'}
             <HealthStat type="burn" value={burndam} />
-            {"/"}
+            {'/'}
             <HealthStat type="brute" value={brutedam} />
           </Box>
         ) : life_status ? (
-          "Alive"
+          'Alive'
         ) : (
-          "Dead"
+          'Dead'
         )}
       </Table.Cell>
       <Table.Cell>
@@ -186,7 +186,7 @@ const CrewTableEntry = (props, context) => {
             content="Track"
             disabled={!can_track}
             onClick={() =>
-              act("select_person", {
+              act('select_person', {
                 name: name,
               })
             }
