@@ -41,7 +41,7 @@
 	language_holder.remove_all_languages()
 	language_holder.omnitongue = TRUE // a crappy hack but it works
 	for(var/lang_path in preferences.languages)
-		language_holder.grant_language(lang_path, TRUE, TRUE, LANGUAGE_ATOM)
+		language_holder.grant_language(lang_path, TRUE, TRUE, LANGUAGE_MIND)
 
 /datum/preference_middleware/languages/get_ui_assets()
 	return list(
