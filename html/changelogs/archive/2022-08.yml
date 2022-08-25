@@ -870,3 +870,87 @@
       to simply 2 (south), as they should be.
   - bugfix: tempeh starter uses the correct icon, desc fixes
   - bugfix: Fix haunted tarot deck exploit
+2022-08-24:
+  Jolly:
+  - rscdel: Space Ninjas no longer roll in random events, in favor of being controlled
+      entirely by dynamic.
+  Melbert:
+  - bugfix: Some things that made you BOMBIMMUNE now actually make you BOMBIMMUNE,
+      probably
+  ShizCalev:
+  - bugfix: The syndicate outpost intercom is now an actual functional syndicate intercom!
+  - admin: Fixed Abyssal Gaze being logged when it wasn't actually being used
+2022-08-25:
+  GoldenAlpharex:
+  - code_imp: Vastly improved the code of the Examine menu's Character Preview, making
+      it a lot more reflective of what the character currently looks like, while also
+      making it much more performant at the same time!
+  - bugfix: Cyborgs will now appear in the Character Preview (without their lights,
+      sadly) of the Examine panel too!
+  Jolly:
+  - qol: NanoTrasen will no longer force their employees to submit their papers in
+      a painful manner when entering CC from the evac shuttle. Glory to NanoTrasen.
+  - bugfix: On KS13, the northern most solar room no longer has duped windows.
+  Paxilmaniac:
+  - bugfix: mothic and tizirian supply boxes will no longer attempt to use sprites
+      that don't exist
+  PositiveEntropy:
+  - bugfix: Fixes faxes playing the "fax_contain" animation and makes it actually
+      use the "fax_receive" animation when receiving.
+  - imageadd: Resprites fax machines!
+  - imageadd: Wood flooring now looks browner.
+  RimiNosha:
+  - bugfix: Languages are actually fixed for good. Also fixes them for all your characters.
+  ShizCalev:
+  - rscadd: Space ants will now turn into space fire ants when burned with fire.
+  - bugfix: Drones will no longer by shy when invisible mobs are around! (eg phased
+      revenants, bloodcrawling slaughter demons, ect)
+  - qol: Drones now have multitools, pipe dispensers, t-scanners, and analyzers!
+  - bugfix: Toggling breakers via the power flow control console now actually works.
+  SkyratBot:
+  - qol: Vending machines now support categories. Premium/contraband is moved to categories,
+      and the ClothesMate has special categories for different levels.
+  - code_imp: changed the randomize_human() proc to call species procs instead of
+      being mostly hardcoded and cleaned up some code
+  - bugfix: randomize_human() can now assign plural gender to a mob and will always
+      do so for species without sexes
+  - bugfix: the external features of non-humans are now randomized properly by randomize_human()
+      and all mechanics that call the proc, such as mulligans
+  - bugfix: Lockers now give proper feedback when you are unable to close them and
+      no longer try to toggle lock status when you fail to close them.
+  - admin: Whenever a turf is lit up by fire (like plasma floors combusting due to
+      fire above them), the name of that turf is now explicitly logged.
+  - balance: Reduces CO2 heat penalty to 2, from 6.
+  - balance: Removes CO2 power transmission bonus.
+  - bugfix: Midround traitors can happen again.
+  - rscadd: Added a meat and fish poke
+  - rscadd: Meat and fish poke was added to robo-tourist order
+  - refactor: Refactored Space Dragon's antag datum to separate the antagonist objectives
+      from the mob itself.
+  - qol: Added a holopad to Mining Labor Camp.
+  - bugfix: On IceBoxStation, the Psychologist's Locker should now be accessible once
+      again.
+  - bugfix: Asimov supremacy shows up as a human perk for default servers
+  - config: Added a config option to make Asimov supremacy show up as a perk for humans
+      even if the default lawset is not Asimov (intended for use with Asimov variants,
+      notably Asimov++)
+  - imageadd: Resprites many of the grenades used and made in-game.
+  - admin: Admin deletion messages are now a little more verbose.
+  - qol: Adds contextual screentips to explain whether you are going to destroy, remove,
+      or place a trap into a poster.
+  - rscadd: Pig crate from cargo
+  - rscadd: feeding carrots to pigs lets you tame them and ride them
+  - rscadd: raw pork from killing a pig
+  - rscadd: pork chops from cooking raw pork
+  - rscadd: You can now ask critters their name with voice of god. Their ACTUAL name.
+  - soundadd: Virology got new mysterious ambient sounds.
+  SuperDrish:
+  - rscadd: Mortar now gives you an option. Do you want to grind or juice your thing?
+  Tastyfish:
+  - bugfix: Fixes species selection preview for Teshari.
+  - bugfix: Fixes teshari food preferences.
+  Zonespace27:
+  - balance: Lone Infiltrators now get a chameleon module in their modsuit
+  - bugfix: Lone Infiltrators can now access their modsuit
+  timothymtorres, antropod:
+  - bugfix: Fix protolathe displaying duplicate stock parts categories
