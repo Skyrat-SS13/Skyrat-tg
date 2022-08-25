@@ -13,9 +13,9 @@ const HEALTH_COLOR_BY_LEVEL = [
   '#ed2814',
 ];
 
-const jobIsHead = jobId => jobId % 10 === 0;
+const jobIsHead = (jobId) => jobId % 10 === 0;
 
-const jobToColor = jobId => {
+const jobToColor = (jobId) => {
   if (jobId === 0) {
     return COLORS.department.captain;
   }
@@ -46,14 +46,10 @@ const healthToColor = (oxy, tox, burn, brute) => {
   return HEALTH_COLOR_BY_LEVEL[level];
 };
 
-const HealthStat = props => {
+const HealthStat = (props) => {
   const { type, value } = props;
   return (
-    <Box
-      inline
-      width={2}
-      color={COLORS.damageType[type]}
-      textAlign="center">
+    <Box inline width={2} color={COLORS.damageType[type]} textAlign="center">
       {value}
     </Box>
   );
@@ -61,10 +57,7 @@ const HealthStat = props => {
 
 export const CrewConsole = () => {
   return (
-    <Window
-      title="Crew Monitor"
-      width={600}
-      height={600}>
+    <Window title="Crew Monitor" width={600} height={600}>
       <Window.Content scrollable>
         <Section minHeight="540px">
           <CrewTable />
@@ -76,29 +69,23 @@ export const CrewConsole = () => {
 
 const CrewTable = (props, context) => {
   const { act, data } = useBackend(context);
-  const sensors = sortBy(
-    s => s.ijob
-  )(data.sensors ?? []);
+  const sensors = sortBy((s) => s.ijob)(data.sensors ?? []);
   return (
     <Table>
       <Table.Row>
-        <Table.Cell bold>
-          Name
-        </Table.Cell>
+        <Table.Cell bold>Name</Table.Cell>
         <Table.Cell bold collapsing />
         <Table.Cell bold collapsing textAlign="center">
           Vitals
         </Table.Cell>
-        <Table.Cell bold>
-          Position
-        </Table.Cell>
+        <Table.Cell bold>Position</Table.Cell>
         {!!data.link_allowed && (
           <Table.Cell bold collapsing>
             Tracking
           </Table.Cell>
         )}
       </Table.Row>
-      {sensors.map(sensor => (
+      {sensors.map((sensor) => (
         <CrewTableEntry sensor_data={sensor} key={sensor.ref} />
       ))}
     </Table>
@@ -124,19 +111,13 @@ const CrewTableEntry = (props, context) => {
 
   return (
     <Table.Row>
-      <Table.Cell
-        bold={jobIsHead(ijob)}
-        color={jobToColor(ijob)}>
-        {name}{assignment !== undefined ? ` (${assignment})` : ""}
+      <Table.Cell bold={jobIsHead(ijob)} color={jobToColor(ijob)}>
+        {name}
+        {assignment !== undefined ? ` (${assignment})` : ''}
       </Table.Cell>
       <Table.Cell collapsing textAlign="center">
         {life_status ? (
-          <ColorBox
-            color={healthToColor(
-              oxydam,
-              toxdam,
-              burndam,
-              brutedam)} />
+          <ColorBox color={healthToColor(oxydam, toxdam, burndam, brutedam)} />
         ) : (
           <ColorBox color={'#ed2814'} />
         )}
@@ -152,21 +133,24 @@ const CrewTableEntry = (props, context) => {
             {'/'}
             <HealthStat type="brute" value={brutedam} />
           </Box>
+        ) : life_status ? (
+          'Alive'
         ) : (
-          life_status ? 'Alive' : 'Dead'
+          'Dead'
         )}
       </Table.Cell>
-      <Table.Cell>
-        {area !== undefined ? area : 'N/A'}
-      </Table.Cell>
+      <Table.Cell>{area !== undefined ? area : 'N/A'}</Table.Cell>
       {!!link_allowed && (
         <Table.Cell collapsing>
           <Button
             content="Track"
             disabled={!can_track}
-            onClick={() => act('select_person', {
-              name: name,
-            })} />
+            onClick={() =>
+              act('select_person', {
+                name: name,
+              })
+            }
+          />
         </Table.Cell>
       )}
     </Table.Row>
