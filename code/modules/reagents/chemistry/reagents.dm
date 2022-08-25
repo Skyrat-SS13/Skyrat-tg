@@ -80,15 +80,11 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	var/penetrates_skin = VAPOR
 	/// See fermi_readme.dm REAGENT_DEAD_PROCESS, REAGENT_DONOTSPLIT, REAGENT_INVISIBLE, REAGENT_SNEAKYNAME, REAGENT_SPLITRETAINVOL, REAGENT_CANSYNTH, REAGENT_IMPURE
 	var/chemical_flags = NONE
-	///impure chem values (see fermi_readme.dm for more details on impure/inverse/failed mechanics):
-	/// What chemical path is made when metabolised as a function of purity
-	var/impure_chem = /datum/reagent/impurity
 	/// If the impurity is below 0.5, replace ALL of the chem with inverse_chem upon metabolising
 	var/inverse_chem_val = 0.25
 	/// What chem is metabolised when purity is below inverse_chem_val
 	var/inverse_chem = /datum/reagent/inverse
 	///what chem is made at the end of a reaction IF the purity is below the recipies purity_min at the END of a reaction only
-	var/failed_chem = /datum/reagent/consumable/failed_reaction
 	///Thermodynamic vars
 	///How hot this reagent burns when it's on fire - null means it can't burn
 	var/burning_temperature = null
@@ -98,16 +94,6 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	var/list/addiction_types = null
 	///The amount a robot will pay for a glass of this (20 units but can be higher if you pour more, be frugal!)
 	var/glass_price
-	///Whether it will evaporate if left untouched on a liquids simulated puddle
-	//SKYRAT EDIT ADDITION
-	var/evaporates = FALSE
-	///How much fire power does the liquid have, for burning on simulated liquids. Not enough fire power/unit of entire mixture may result in no fire
-	var/liquid_fire_power = 0
-	///How fast does the liquid burn on simulated turfs, if it does
-	var/liquid_fire_burnrate = 0
-	///Whether a fire from this requires oxygen in the atmosphere
-	var/fire_needs_oxygen = TRUE
-	//SKYRAT EDIT END
 
 /datum/reagent/New()
 	SHOULD_CALL_PARENT(TRUE)
@@ -183,7 +169,7 @@ Primarily used in reagents/reaction_agents
 
 /// Called when this reagent is removed while inside a mob
 /datum/reagent/proc/on_mob_delete(mob/living/L)
-	SEND_SIGNAL(L, COMSIG_CLEAR_MOOD_EVENT, "[type]_overdose")
+	L.clear_mood_event("[type]_overdose")
 	return
 
 /// Called when this reagent first starts being metabolized by a liver
@@ -231,11 +217,11 @@ Primarily used in reagents/reaction_agents
 		return
 	if(name == "succubus milk" || name == "incubus draft" || name == "Camphor" || name == "Pentacamphor")
 		to_chat(M, span_userdanger("You feel like you took too much [name]!"))
-		SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "[type]_overdose", /datum/mood_event/minor_overdose, name)
+		M.add_mood_event("[type]_overdose", /datum/mood_event/minor_overdose, name)
 		return
 	///SKYRAT EDIT END
 	to_chat(M, span_userdanger("You feel like you took too much of [name]!"))
-	SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "[type]_overdose", /datum/mood_event/overdose, name)
+	M.add_mood_event("[type]_overdose", /datum/mood_event/overdose, name)
 	return
 
 /**

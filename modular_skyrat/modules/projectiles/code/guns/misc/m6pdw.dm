@@ -17,7 +17,7 @@
 	bolt_drop_sound = 'sound/weapons/gun/pistol/slide_drop.ogg'
 	bolt_type = BOLT_TYPE_OPEN
 	realistic = TRUE
-	dirt_modifier = 0.6
+	dirt_modifier = 0.3
 	projectile_damage_multiplier = 1
 	burst_size = 2
 	fire_delay = 1.9

@@ -29,12 +29,13 @@
 	pin = /obj/item/firing_pin/implant/mindshield
 	mag_display_ammo = FALSE
 	mag_display = FALSE
+	company_flag = COMPANY_NANOTRASEN
 	/// If the gun's dustcover is open or not
 	var/cover_open = FALSE
 	/// Factions that the gun cannot shoot under any circumstances
 	var/list/iff_factions = list("ert")
 
-/obj/item/gun/ballistic/automatic/smart_machine_gun/ComponentInitialize()
+/obj/item/gun/ballistic/automatic/smart_machine_gun/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/update_icon_updates_onmob)
 

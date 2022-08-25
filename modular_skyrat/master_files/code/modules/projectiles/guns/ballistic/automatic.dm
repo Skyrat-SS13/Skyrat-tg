@@ -52,7 +52,7 @@
 /obj/item/gun/ballistic/automatic/c20r/unrestricted
 	pin = /obj/item/firing_pin
 
-/obj/item/gun/ballistic/automatic/c20r/Initialize()
+/obj/item/gun/ballistic/automatic/c20r/Initialize(mapload)
 	. = ..()
 	update_appearance()
 
@@ -82,7 +82,7 @@
 	inhand_icon_state = "plastikov"
 	mag_type = /obj/item/ammo_box/magazine/plastikov9mm
 	burst_size = 5
-	spread = 25
+	spread = 15
 	can_suppress = FALSE
 	projectile_damage_multiplier = 0.35 // It's like 10.5 damage per bullet, it's close enough to 10 shots
 	mag_display = TRUE
@@ -122,7 +122,7 @@
 	fire_sound = 'sound/weapons/gun/smg/shot_alt.ogg'
 	company_flag = COMPANY_SCARBOROUGH
 
-/obj/item/gun/ballistic/automatic/m90/Initialize()
+/obj/item/gun/ballistic/automatic/m90/Initialize(mapload)
 	. = ..()
 	underbarrel = new /obj/item/gun/ballistic/revolver/grenadelauncher(src)
 	update_appearance()
@@ -130,7 +130,7 @@
 /obj/item/gun/ballistic/automatic/m90/unrestricted
 	pin = /obj/item/firing_pin
 
-/obj/item/gun/ballistic/automatic/m90/unrestricted/Initialize()
+/obj/item/gun/ballistic/automatic/m90/unrestricted/Initialize(mapload)
 	. = ..()
 	underbarrel = new /obj/item/gun/ballistic/revolver/grenadelauncher/unrestricted(src)
 	update_appearance()
@@ -214,7 +214,7 @@
 /obj/item/gun/ballistic/automatic/l6_saw/unrestricted
 	pin = /obj/item/firing_pin
 
-/obj/item/gun/ballistic/automatic/l6_saw/ComponentInitialize()
+/obj/item/gun/ballistic/automatic/l6_saw/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/update_icon_updates_onmob)
 

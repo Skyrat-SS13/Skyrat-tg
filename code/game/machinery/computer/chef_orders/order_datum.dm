@@ -226,7 +226,7 @@
 /datum/orderable_item/tiziran_cans
 	name = "Tiziran Canned Goods Pack"
 	category_index = CATEGORY_MILK_EGGS
-	item_instance = /obj/item/storage/box/tiziran_goods
+	item_instance = /obj/item/storage/box/tiziran_cans
 	cost_per_order = 120
 
 /datum/orderable_item/tiziran_meats
@@ -314,3 +314,9 @@
 	category_index = CATEGORY_SAUCES_REAGENTS
 	item_instance = /obj/item/reagent_containers/food/condiment/quality_oil
 	cost_per_order = 50 //Extra Virgin, just like you, the reader
+
+/datum/orderable_item/peanut_butter
+	name = "Peanut Butter"
+	category_index = CATEGORY_SAUCES_REAGENTS
+	item_instance = /obj/item/reagent_containers/food/condiment/peanut_butter
+	cost_per_order = 30

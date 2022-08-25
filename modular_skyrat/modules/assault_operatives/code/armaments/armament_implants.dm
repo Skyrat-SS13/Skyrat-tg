@@ -27,7 +27,7 @@
 	cost = 2
 
 /datum/armament_entry/assault_operatives/implants/hacking
-	item_type = /obj/item/autosurgeon/organ/syndicate/hackerman
+	item_type = /obj/item/autosurgeon/syndicate/hackerman
 	name = "Hacking Arm Implant"
 	description = "An advanced arm implant that comes with cutting edge hacking tools. Perfect for the cybernetically enhanced wirerunners."
 	cost = 2
@@ -47,17 +47,17 @@
 /datum/armament_entry/assault_operatives/implants/thermal
 	name = "Thermal Vision Implant"
 	description = "These cybernetic eyes will give you thermal vision."
-	item_type = /obj/item/autosurgeon/organ/syndicate/thermal_eyes
+	item_type = /obj/item/autosurgeon/syndicate/thermal_eyes
 	cost = 5
 
 /datum/armament_entry/assault_operatives/implants/nodrop
 	name = "Anti-Drop Implant"
 	description = "When activated forces your hand muscles to tightly grip the object you are holding, preventing you from dropping it involuntarily."
-	item_type = /obj/item/autosurgeon/organ/syndicate/nodrop
+	item_type = /obj/item/autosurgeon/syndicate/nodrop
 	cost = 6
 
 /datum/armament_entry/assault_operatives/implants/xray
 	name = "X-Ray Vision Implant"
 	description = "These cybernetic eyes will give you X-ray vision."
-	item_type = /obj/item/autosurgeon/organ/syndicate/xray_eyes
+	item_type = /obj/item/autosurgeon/syndicate/xray_eyes
 	cost = 7

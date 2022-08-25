@@ -110,7 +110,7 @@
 	var/high_message = pick("You feel euphoric.", "You feel on top of the world.")
 	if(DT_PROB(2.5, delta_time))
 		to_chat(M, span_notice("[high_message]"))
-	SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "smacked out", /datum/mood_event/narcotic_heavy, name)
+	M.add_mood_event("smacked out", /datum/mood_event/narcotic_heavy, name)
 	M.adjustBruteLoss(-0.1 * REM * delta_time, 0) //can be used as a (shitty) painkiller
 	M.adjustFireLoss(-0.1 * REM * delta_time, 0)
 	M.hal_screwyhud = SCREWYHUD_HEALTHY
@@ -140,7 +140,7 @@
 	ph = 6
 	taste_description = "flowers"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
-	failed_chem = /datum/reagent/drug/opium/blacktar/liquid
+	inverse_chem = /datum/reagent/drug/opium/blacktar/liquid
 
 /datum/reagent/drug/opium/heroin/on_mob_life(mob/living/carbon/M, delta_time, times_fired)
 	var/high_message = pick("You feel like nothing can stop you.", "You feel like God.")
@@ -159,7 +159,6 @@
 	ph = 8
 	taste_description = "flowers"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
-	failed_chem = null
 
 /datum/reagent/drug/opium/blacktar/on_mob_life(mob/living/carbon/M, delta_time, times_fired)
 	var/high_message = pick("You feel like tar.", "The blood in your veins feel like syrup.")

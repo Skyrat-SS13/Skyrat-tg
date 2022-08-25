@@ -5,7 +5,7 @@
 	build_path = /obj/item/borg/upgrade/snack_dispenser
 	materials = list(/datum/material/iron = 700, /datum/material/glass = 500)
 	construction_time = 1 SECONDS
-	category = list("Cyborg Upgrade Modules")
+	category = list(RND_CATEGORY_CYBORG_UPGRADE_MODULES)
 
 /obj/item/borg/upgrade/snack_dispenser
 	name = "Cyborg Upgrade (Snack Dispenser)"

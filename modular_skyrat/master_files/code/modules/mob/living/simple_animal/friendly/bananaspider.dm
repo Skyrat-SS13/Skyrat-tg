@@ -27,7 +27,7 @@
 	var/projectile_density = TRUE		// griffons get shot
 	del_on_death = TRUE
 
-/mob/living/simple_animal/banana_spider/ComponentInitialize()
+/mob/living/simple_animal/banana_spider/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/slippery, 40)
 
@@ -37,12 +37,12 @@
 	icon = 'modular_skyrat/master_files/icons/mob/newmobs.dmi'
 	icon_state = "bananaspider_peel"
 	list_reagents = list(/datum/reagent/consumable/nutriment = 3, /datum/reagent/consumable/nutriment/vitamin = 2)
-	foodtype = GROSS | MEAT | RAW
+	foodtype = GORE | MEAT | RAW
 	grind_results = list(/datum/reagent/blood = 20, /datum/reagent/liquidgibs = 5)
 	juice_results = list(/datum/reagent/consumable/banana = 10)
 
 
-/obj/item/reagent_containers/food/snacks/deadbanana_spider/Initialize()
+/obj/item/reagent_containers/food/snacks/deadbanana_spider/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/slippery, 20)
 

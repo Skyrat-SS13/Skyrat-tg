@@ -6,7 +6,7 @@
 	assigned_icon_state = "assigned_centcom"
 
 /datum/id_trim/nri
-	assignment = "Novaya Rossiyskaya Imperiya Soldier"
+	assignment = "NRI Soldier"
 	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
 	trim_state = "trim_nri"
 	sechud_icon_state = "hud_nri"
@@ -17,10 +17,29 @@
 
 
 /datum/id_trim/nri/commander
-	assignment = "Novaya Rossiyskaya Imperiya Platoon Commander"
+	assignment = "NRI Platoon Commander"
 	trim_state = "trim_nri_commander"
 	sechud_icon_state = "hud_nri_commander"
 
 /datum/id_trim/nri/heavy
-	assignment = "Novaya Rossiyskaya Imperiya Heavy Soldier"
-	trim_state = "trim_nri"
+	assignment = "NRI Heavy Soldier"
+
+/datum/id_trim/nri/medic
+	assignment = "NRI Corpsman"
+
+/datum/id_trim/nri/engineer
+	assignment = "NRI Combat Engineer"
+
+/datum/id_trim/nri/diplomat
+	assignment = "NRI Diplomat"
+	trim_state = "trim_nri_commander"
+	sechud_icon_state = "hud_nri_commander"
+
+/datum/id_trim/nri/diplomat/major
+	assignment = "NRI Major"
+
+/datum/id_trim/nri/diplomat/scientist
+	assignment = "NRI Research Inspector"
+
+/datum/id_trim/nri/diplomat/doctor
+	assignment = "NRI Medical Inspector"

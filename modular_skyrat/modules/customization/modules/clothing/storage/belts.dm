@@ -7,31 +7,67 @@
 	worn_icon_state = "crusader_belt"
 	inhand_icon_state = "utility"
 	w_class = WEIGHT_CLASS_BULKY //Cant fit a sheath in your bag
-	component_type = /datum/component/storage/concrete/belt/crusader
+
+/obj/item/storage/belt/crusader/Initialize(mapload)
+	. = ..()
+
+	create_storage(
+		max_slots = 2,
+		max_specific_storage = WEIGHT_CLASS_BULKY,	//This makes sure swords and the pouches can fit in here - the whitelist keeps the bad stuff out
+		type = /datum/storage/belt/crusader,
+		canhold = list(
+			/obj/item/storage/belt/storage_pouch,
+			/obj/item/forging/reagent_weapon/sword,
+			/obj/item/melee/sabre,
+			/obj/item/claymore,
+			/obj/item/melee/cleric_mace,
+			/obj/item/knife,
+			/obj/item/melee/baton,
+			/obj/item/melee/baton,
+			/obj/item/nullrod,	//holds any subset of nullrod in the sheath-storage - - -
+		),
+		canthold = list(	// - - - except the second list's items (no fedora in the sheath)
+			/obj/item/nullrod/armblade,
+			/obj/item/nullrod/carp,
+			/obj/item/nullrod/chainsaw,
+			/obj/item/nullrod/claymore/bostaff,
+			/obj/item/nullrod/hammer,
+			/obj/item/nullrod/pitchfork,
+			/obj/item/nullrod/pride_hammer,
+			/obj/item/nullrod/spear,
+			/obj/item/nullrod/staff,
+			/obj/item/nullrod/fedora,
+			/obj/item/nullrod/godhand,
+			/obj/item/nullrod/staff,
+			/obj/item/nullrod/whip,
+		),
+	)
+	atom_storage.allow_big_nesting = TRUE // Lets the pouch work
+	AddElement(/datum/element/update_icon_updates_onmob)
 
 //Credit to Funce for this chunk of code directly below, which overrides normal dumping code and instead dumps from the pouch item inside
-/datum/component/storage/concrete/belt/crusader/dump_content_at(atom/dest_object, mob/M)
-    var/atom/used_belt = parent
-    var/atom/dump_destination = dest_object.get_dumping_location()
-    if(used_belt.Adjacent(M) && dump_destination && M.Adjacent(dump_destination))
-        var/obj/item/storage/belt/storage_pouch/pouch = locate() in real_location()
-        if (!pouch)
-            to_chat(M, span_warning("[parent] doesn't seem to have a pouch to empty."))
-            return FALSE //oopsie!! If we don't have a pouch! You're fucked!
-        var/datum/component/storage/STR = pouch.GetComponent(/datum/component/storage)
-        if(locked)
-            to_chat(M, span_warning("[parent] seems to be locked!"))
-            return FALSE
-        if(dump_destination.storage_contents_dump_act(STR, M))
-            playsound(used_belt, SFX_RUSTLE, 50, TRUE, -5)
-            used_belt.do_squish(0.8, 1.2)
-            return TRUE
-    return FALSE
+/datum/storage/belt/crusader/dump_content_at(atom/dest_object, mob/M)
+	var/atom/used_belt = parent?.resolve()
+	if(!used_belt)
+		return
+	var/atom/dump_destination = dest_object.get_dumping_location()
+	if(used_belt.Adjacent(M) && dump_destination && M.Adjacent(dump_destination))
+		var/obj/item/storage/belt/storage_pouch/pouch = locate() in real_location?.resolve()
+		if (!pouch)
+			to_chat(M, span_warning("[parent] doesn't seem to have a pouch to empty."))
+			return FALSE //oopsie!! If we don't have a pouch! You're fucked!
+		if(locked)
+			to_chat(M, span_warning("[parent] seems to be locked!"))
+			return FALSE
+		if(dump_destination.storage_contents_dump_act(src, M))
+			playsound(used_belt, SFX_RUSTLE, 50, TRUE, -5)
+			used_belt.do_squish(0.8, 1.2)
+			return TRUE
+	return FALSE
 
 /obj/item/storage/belt/crusader/CtrlClick(mob/user)	//Makes ctrl-click also open the inventory, so that you can open it with full hands without dropping the sword
 	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	STR.user_show_to_mob(user)
+	atom_storage.show_contents(user)
 	return
 
 /obj/item/storage/belt/crusader/AltClick(mob/user)	//This is basically the same as the normal sheath, but because there's always an item locked in the first slot it uses the second slot for swords
@@ -67,40 +103,6 @@
 		. += span_notice("Alt-click it to quickly draw the blade.")
 		return
 
-/obj/item/storage/belt/crusader/ComponentInitialize()
-	. = ..()
-	AddElement(/datum/element/update_icon_updates_onmob)
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-
-	STR.max_items = 2
-	STR.rustle_sound = TRUE
-	STR.max_w_class = WEIGHT_CLASS_BULKY	//This makes sure swords and the pouches can fit in here - the whitelist keeps the bad stuff out
-	STR.allow_big_nesting = TRUE //Same as above, lets the pouch work
-	STR.set_holdable(list(
-		/obj/item/storage/belt/storage_pouch,
-		/obj/item/forging/reagent_weapon/sword,
-		/obj/item/melee/sabre,
-		/obj/item/claymore,
-		/obj/item/melee/cleric_mace,
-		/obj/item/knife,
-		/obj/item/melee/baton,
-		/obj/item/melee/baton,
-		/obj/item/nullrod	//holds any subset of nullrod in the sheath-storage - - -
-		), list(	// - - - except the second list's items (no fedora in the sheath)
-		/obj/item/nullrod/armblade,
-		/obj/item/nullrod/carp,
-		/obj/item/nullrod/chainsaw,
-		/obj/item/nullrod/claymore/bostaff,
-		/obj/item/nullrod/hammer,
-		/obj/item/nullrod/pitchfork,
-		/obj/item/nullrod/pride_hammer,
-		/obj/item/nullrod/spear,
-		/obj/item/nullrod/staff,
-		/obj/item/nullrod/fedora,
-		/obj/item/nullrod/godhand,
-		/obj/item/nullrod/staff,
-		/obj/item/nullrod/whip
-		))
 
 /obj/item/storage/belt/crusader/PopulateContents()
 	. = ..()
@@ -118,16 +120,14 @@
 
 /obj/item/storage/belt/storage_pouch/attack_hand(mob/user, list/modifiers)	//Opens the bag on click - considering it's already anchored, this makes it function similar to how ghosts can open all nested inventories
 	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	STR.user_show_to_mob(user)
 
-/obj/item/storage/belt/storage_pouch/ComponentInitialize()
+	atom_storage.show_contents(user)
+
+/obj/item/storage/belt/storage_pouch/Initialize(mapload)
 	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
 
-	STR.max_items = 6
-	STR.rustle_sound = TRUE
-	STR.max_w_class = WEIGHT_CLASS_SMALL //Rather than have a huge whitelist, the belt can simply hold anything a pocket can hold - Can easily be changed if it somehow becomes an issue
+	atom_storage.max_slots = 6
+	atom_storage.max_specific_storage = WEIGHT_CLASS_SMALL //Rather than have a huge whitelist, the belt can simply hold anything a pocket can hold - Can easily be changed if it somehow becomes an issue
 
 /obj/item/storage/belt/holster/cowboy
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/belts.dmi'
@@ -146,13 +146,12 @@
 	icon_state = "med_bandolier"
 	worn_icon_state = "med_bandolier"
 
-/obj/item/storage/belt/medbandolier/ComponentInitialize()
+/obj/item/storage/belt/medbandolier/Initialize(mapload)
 	. = ..()
-	var/datum/component/storage/bandolier_storage = GetComponent(/datum/component/storage)
-	bandolier_storage.max_w_class = WEIGHT_CLASS_NORMAL
-	bandolier_storage.max_items = 14
-	bandolier_storage.max_combined_w_class = 35
-	bandolier_storage.set_holdable(list(
+	atom_storage.max_specific_storage = WEIGHT_CLASS_NORMAL
+	atom_storage.max_slots = 14
+	atom_storage.max_total_storage = 35
+	atom_storage.set_holdable(list(
 		/obj/item/dnainjector,
 		/obj/item/reagent_containers/dropper,
 		/obj/item/reagent_containers/glass/bottle,

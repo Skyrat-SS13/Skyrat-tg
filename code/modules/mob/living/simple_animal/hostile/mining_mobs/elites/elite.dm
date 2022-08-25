@@ -28,6 +28,7 @@
 //Gives player-controlled variants the ability to swap attacks
 /mob/living/simple_animal/hostile/asteroid/elite/Initialize(mapload)
 	. = ..()
+	ADD_TRAIT(src, TRAIT_ALERT_GHOSTS_ON_DEATH, INNATE_TRAIT)
 	for(var/action_type in attack_action_types)
 		var/datum/action/innate/elite_attack/attack_action = new action_type()
 		attack_action.Grant(src)
@@ -203,6 +204,7 @@ While using this makes the system rely on OnFire, it still gives options for tim
 		mychild.key = elitemind.key
 		mychild.sentience_act()
 		notify_ghosts("\A [mychild] has been awakened in \the [get_area(src)]!", source = mychild, action = NOTIFY_ORBIT, flashwindow = FALSE, header = "Lavaland Elite awakened")
+	mychild.log_message("has been awakened by [key_name(activator)]!", LOG_GAME, color="#960000")
 	icon_state = "tumor_popped"
 	RegisterSignal(mychild, COMSIG_PARENT_QDELETING, .proc/onEliteLoss)
 	INVOKE_ASYNC(src, .proc/arena_checks)
@@ -216,6 +218,7 @@ While using this makes the system rely on OnFire, it still gives options for tim
 		mychild.maxHealth = mychild.maxHealth * 2
 		mychild.health = mychild.maxHealth
 		notify_ghosts("\A [mychild] has been challenged in \the [get_area(src)]!", source = mychild, action = NOTIFY_ORBIT, flashwindow = FALSE, header = "Lavaland Elite challenged")
+	mychild.log_message("has been challenged by [key_name(activator)]!", LOG_GAME, color="#960000")
 
 /obj/structure/elite_tumor/Initialize(mapload)
 	. = ..()
@@ -234,6 +237,7 @@ While using this makes the system rely on OnFire, it still gives options for tim
 	activator = user
 	ADD_TRAIT(user, TRAIT_ELITE_CHALLENGER, REF(src))
 	RegisterSignal(user, COMSIG_PARENT_QDELETING, .proc/clear_activator)
+	user.log_message("has activated an elite tumor!", LOG_GAME, color="#960000")
 
 /obj/structure/elite_tumor/proc/clear_activator(mob/source)
 	SIGNAL_HANDLER

@@ -1,5 +1,6 @@
 /mob/living/Initialize(mapload)
 	. = ..()
+	AddElement(/datum/element/movetype_handler)
 	register_init_signals()
 	if(unique_name)
 		set_name()
@@ -11,10 +12,6 @@
 	GLOB.mob_living_list += src
 	SSpoints_of_interest.make_point_of_interest(src)
 	update_fov()
-
-/mob/living/ComponentInitialize()
-	. = ..()
-	AddElement(/datum/element/movetype_handler)
 
 /mob/living/prepare_huds()
 	..()
@@ -33,8 +30,6 @@
 		else
 			effect.be_replaced()
 
-	if(ranged_ability)
-		ranged_ability.remove_ranged_ability(src)
 	if(buckled)
 		buckled.unbuckle_mob(src,force=1)
 
@@ -88,6 +83,10 @@
 
 //Called when we bump onto a mob
 /mob/living/proc/MobBump(mob/M)
+	//No bumping/swapping/pushing others if you are on walk intent
+	if(m_intent == MOVE_INTENT_WALK)
+		return TRUE
+
 	SEND_SIGNAL(src, COMSIG_LIVING_MOB_BUMP, M)
 	//Even if we don't push/swap places, we "touched" them, so spread fire
 	spreadFire(M)
@@ -447,12 +446,14 @@
 /mob/living/pointed(atom/A as mob|obj|turf in view(client.view, src))
 	if(incapacitated())
 		return FALSE
+
+	return ..()
+
+/mob/living/_pointed(atom/pointing_at)
 	if(!..())
 		return FALSE
-	visible_message("<span class='infoplain'>[span_name("[src]")] points at [A].</span>", span_notice("You point at [A]."))
-	log_message("points at [A]", LOG_EMOTE)
-	return TRUE
-
+	log_message("points at [pointing_at]", LOG_EMOTE)
+	visible_message("<span class='infoplain'>[span_name("[src]")] points at [pointing_at].</span>", span_notice("You point at [pointing_at]."))
 
 /mob/living/verb/succumb(whispered as null)
 	set hidden = TRUE
@@ -679,7 +680,7 @@
 	var/list/ret = list()
 	ret |= contents //add our contents
 	for(var/atom/iter_atom as anything in ret.Copy()) //iterate storage objects
-		SEND_SIGNAL(iter_atom, COMSIG_TRY_STORAGE_RETURN_INVENTORY, ret)
+		iter_atom.atom_storage?.return_inv(ret)
 	for(var/obj/item/folder/F in ret.Copy()) //very snowflakey-ly iterate folders
 		ret |= F.contents
 	return ret
@@ -773,11 +774,10 @@
 			if(!(C.dna?.species && (NOBLOOD in C.dna.species.species_traits)))
 				C.blood_volume += (excess_healing*2)//1 excess = 10 blood
 
-			for(var/i in C.internal_organs)
-				var/obj/item/organ/O = i
-				if(O.organ_flags & ORGAN_SYNTHETIC)
+			for(var/obj/item/organ/organ as anything in C.internal_organs)
+				if(organ.organ_flags & ORGAN_SYNTHETIC)
 					continue
-				O.applyOrganDamage(excess_healing*-1)//1 excess = 5 organ damage healed
+				organ.applyOrganDamage(excess_healing * -1)//1 excess = 5 organ damage healed
 
 		adjustOxyLoss(-20, TRUE)
 		adjustToxLoss(-20, TRUE, TRUE) //slime friendly
@@ -785,7 +785,7 @@
 		grab_ghost()
 	if(full_heal)
 		fully_heal(admin_revive = admin_revive)
-	if(stat == DEAD && can_be_revived()) //in some cases you can't revive (e.g. no brain)
+	if(stat == DEAD && can_be_revived() || admin_revive) //in some cases you can't revive (e.g. no brain) //SKYRAT EDIT ADDITION - DNR TRAIT - Added: " || admin_revive"
 		set_suicide(FALSE)
 		set_stat(UNCONSCIOUS) //the mob starts unconscious,
 		updatehealth() //then we check if the mob should wake up.
@@ -795,10 +795,6 @@
 		clear_alert(ALERT_NOT_ENOUGH_OXYGEN)
 		reload_fullscreen()
 		. = TRUE
-		if(mind)
-			for(var/S in mind.spell_list)
-				var/obj/effect/proc_holder/spell/spell = S
-				spell.updateButtons()
 		if(excess_healing)
 			INVOKE_ASYNC(src, .proc/emote, "gasp")
 			log_combat(src, src, "revived")
@@ -926,8 +922,8 @@
 		var/mob/living/L = pulledby
 		L.set_pull_offsets(src, pulledby.grab_state)
 
-	if(active_storage && !((active_storage.parent in important_recursive_contents?[RECURSIVE_CONTENTS_ACTIVE_STORAGE]) || CanReach(active_storage.parent,view_only = TRUE)))
-		active_storage.close(src)
+	if(active_storage && !((active_storage.parent?.resolve() in important_recursive_contents?[RECURSIVE_CONTENTS_ACTIVE_STORAGE]) || CanReach(active_storage.parent?.resolve(),view_only = TRUE)))
+		active_storage.hide_contents(src)
 
 	if(body_position == LYING_DOWN && !buckled && prob(getBruteLoss()*200/maxHealth))
 		makeTrail(newloc, T, old_direction)
@@ -1041,6 +1037,10 @@
 	set name = "Resist"
 	set category = "IC"
 
+	DEFAULT_QUEUE_OR_CALL_VERB(VERB_CALLBACK(src, .proc/execute_resist))
+
+///proc extender of [/mob/living/verb/resist] meant to make the process queable if the server is overloaded when the verb is called
+/mob/living/proc/execute_resist()
 	if(!can_resist())
 		return
 	changeNext_move(CLICK_CD_RESIST)
@@ -1065,7 +1065,6 @@
 			resist_fire() //stop, drop, and roll
 		else if(last_special <= world.time)
 			resist_restraints() //trying to remove cuffs.
-
 
 /mob/proc/resist_grab(moving_resist)
 	return 1 //returning 0 means we successfully broke free
@@ -1369,6 +1368,7 @@
 				/mob/living/simple_animal/pet/fox,
 				/mob/living/simple_animal/butterfly,
 				/mob/living/simple_animal/pet/cat/cak,
+				/mob/living/simple_animal/pet/dog/breaddog,
 				/mob/living/simple_animal/chick,
 			)
 			new_mob = new path(loc)
@@ -1416,7 +1416,8 @@
 // Called when we are hit by a bolt of polymorph and changed
 // Generally the mob we are currently in is about to be deleted
 /mob/living/proc/wabbajack_act(mob/living/new_mob)
-	log_game("[key_name(src)] is being wabbajack polymorphed into: [new_mob.name]([new_mob.type]).")
+	log_message("was wabbajack polymorphed into: [new_mob.name]([new_mob.type]).", LOG_GAME)
+	SEND_SIGNAL(src, COMSIG_LIVING_WABBAJACKED, new_mob)
 	new_mob.name = real_name
 	new_mob.real_name = real_name
 
@@ -1548,7 +1549,7 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 		adjust_fire_stacks(-fire_stacks / 2, fire_status.type)
 		spread_to.adjust_fire_stacks(fire_stacks, fire_status.type)
 		if(spread_to.ignite_mob())
-			log_game("[key_name(src)] bumped into [key_name(spread_to)] and set them on fire")
+			log_message("bumped into [key_name(spread_to)] and set them on fire.", LOG_ATTACK)
 		return
 
 	if(!their_fire_status || !their_fire_status.on_fire)
@@ -1606,24 +1607,6 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 /// Called when mob changes from a standing position into a prone while lacking the ability to stand up at the moment.
 /mob/living/proc/on_fall()
 	return
-
-/mob/living/proc/AddAbility(obj/effect/proc_holder/A)
-	abilities.Add(A)
-	A.on_gain(src)
-	if(A.has_action)
-		A.action.Grant(src)
-
-/mob/living/proc/RemoveAbility(obj/effect/proc_holder/A)
-	abilities.Remove(A)
-	A.on_lose(src)
-	if(A.action)
-		A.action.Remove(src)
-
-/mob/living/proc/add_abilities_to_panel()
-	var/list/L = list()
-	for(var/obj/effect/proc_holder/A in abilities)
-		L[++L.len] = list("[A.panel]",A.get_panel_text(),A.name,"[REF(A)]")
-	return L
 
 /mob/living/forceMove(atom/destination)
 	if(!currently_z_moving)
@@ -1729,12 +1712,6 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 	else
 		clear_fullscreen("remote_view", 0)
 
-/mob/living/update_mouse_pointer()
-	..()
-	if (client && ranged_ability?.ranged_mousepointer)
-		client.mouse_pointer_icon = ranged_ability.ranged_mousepointer
-
-
 /mob/living/vv_edit_var(var_name, var_value)
 	switch(var_name)
 		if (NAMEOF(src, maxHealth))
@@ -1802,6 +1779,8 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 	. = ..()
 	VV_DROPDOWN_OPTION("", "---------")
 	VV_DROPDOWN_OPTION(VV_HK_GIVE_SPEECH_IMPEDIMENT, "Impede Speech (Slurring, stuttering, etc)")
+	VV_DROPDOWN_OPTION(VV_HK_ADD_MOOD, "Add Mood Event")
+	VV_DROPDOWN_OPTION(VV_HK_REMOVE_MOOD, "Remove Mood Event")
 
 /mob/living/vv_do_topic(list/href_list)
 	. = ..()
@@ -1810,6 +1789,10 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 		if(!check_rights(NONE))
 			return
 		admin_give_speech_impediment(usr)
+	if (href_list[VV_HK_ADD_MOOD])
+		admin_add_mood_event(usr)
+	if (href_list[VV_HK_REMOVE_MOOD])
+		admin_remove_mood_event(usr)
 
 /mob/living/proc/move_to_error_room()
 	var/obj/effect/landmark/error/error_landmark = locate(/obj/effect/landmark/error) in GLOB.landmarks_list
@@ -2199,8 +2182,8 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 
 		REMOVE_TRAIT(src, TRAIT_FAT, OBESITY)
 		remove_movespeed_modifier(/datum/movespeed_modifier/obesity)
-		update_inv_w_uniform()
-		update_inv_wear_suit()
+		update_worn_undersuit()
+		update_worn_oversuit()
 
 	// Reset overeat duration.
 	overeatduration = 0
@@ -2356,3 +2339,47 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 		return
 
 	adjust_timed_status_effect(duration SECONDS, impediments[chosen])
+
+/mob/living/proc/admin_add_mood_event(mob/admin)
+	if (!admin || !check_rights(NONE))
+		return
+
+	var/list/mood_events = typesof(/datum/mood_event)
+
+	var/chosen = tgui_input_list(admin, "What mood event?", "Add Mood Event", mood_events)
+	if (!chosen || QDELETED(src) || !check_rights(NONE))
+		return
+
+	mob_mood.add_mood_event("[rand(1, 50)]", chosen)
+
+/mob/living/proc/admin_remove_mood_event(mob/admin)
+	if (!admin || !check_rights(NONE))
+		return
+
+	var/list/mood_events = list()
+	for (var/category in mob_mood.mood_events)
+		var/datum/mood_event/event = mob_mood.mood_events[category]
+		mood_events[event] = category
+
+
+	var/datum/mood_event/chosen = tgui_input_list(admin, "What mood event?", "Remove Mood Event", mood_events)
+	if (!chosen || QDELETED(src) || !check_rights(NONE))
+		return
+
+	mob_mood.clear_mood_event(mood_events[chosen])
+
+/// Adds a mood event to the mob
+/mob/living/proc/add_mood_event(category, type, ...)
+	if(QDELETED(mob_mood))
+		return
+	mob_mood.add_mood_event(arglist(args))
+
+/// Clears a mood event from the mob
+/mob/living/proc/clear_mood_event(category)
+	if(QDELETED(mob_mood))
+		return
+	mob_mood.clear_mood_event(category)
+
+/mob/living/played_game()
+	. = ..()
+	add_mood_event("gaming", /datum/mood_event/gaming)

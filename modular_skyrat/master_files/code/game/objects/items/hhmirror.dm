@@ -81,7 +81,7 @@
 						to_chat(human_user, span_notice("Invalid color. Your color is not bright enough."))
 
 			human_user.update_body()
-			human_user.update_hair()
+			human_user.update_body_parts()
 			human_user.update_body_parts()
 			human_user.update_mutations_overlay() // no hulk lizard
 
@@ -123,7 +123,7 @@
 					if(new_face_color)
 						human_user.facial_hair_color = sanitize_hexcolor(new_face_color)
 						human_user.dna.update_ui_block(DNA_FACIAL_HAIR_COLOR_BLOCK)
-				human_user.update_hair()
+				human_user.update_body_parts()
 
 		if(BODY_ZONE_PRECISE_EYES)
 			var/new_eye_color = input(human_user, "Choose your eye color", "Eye Color", human_user.eye_color_left) as color|null
@@ -207,7 +207,7 @@
 						if(new_face_color)
 							human_user.facial_hair_color = sanitize_hexcolor(new_face_color)
 							human_user.dna.update_ui_block(DNA_FACIAL_HAIR_COLOR_BLOCK)
-					human_user.update_hair()
+					human_user.update_body_parts()
 
 			if(BODY_ZONE_PRECISE_EYES)
 				var/new_eye_color = input(human_user, "Choose your eye color", "Eye Color", human_user.eye_color_left) as color|null

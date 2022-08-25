@@ -5,10 +5,6 @@
 	max_integrity = 250
 	volume = 1000
 
-	///Max amount of heat allowed inside of the canister before it starts to melt (different tiers have different limits)
-	var/heat_limit = 5000
-	///Max amount of pressure allowed inside of the canister before it starts to break (different tiers have different limits)
-	var/pressure_limit = 50000
 	///Is the machine on?
 	var/on = FALSE
 	///the rate the machine will scrub air
@@ -54,11 +50,7 @@
 		. += "scrubber-connector"
 
 /obj/machinery/portable_atmospherics/scrubber/process_atmos()
-	var/pressure = air_contents.return_pressure()
-	var/temperature = air_contents.return_temperature()
-	///function used to check the limit of the scrubbers and also set the amount of damage that the scrubber can receive, if the heat and pressure are way higher than the limit the more damage will be done
-	if(temperature > heat_limit || pressure > pressure_limit)
-		take_damage(clamp((temperature/heat_limit) * (pressure/pressure_limit), 5, 50), BURN, 0)
+	if(take_atmos_damage())
 		excited = TRUE
 		return ..()
 
@@ -69,13 +61,11 @@
 
 	var/atom/target = holding || get_turf(src)
 	scrub(target.return_air())
-
 	//SKYRAT EDIT ADDITION
 	for(var/turf/open/open_turf in view(3, src))
 		if(open_turf.pollution)
-			open_turf.pollution.ScrubAmount(POLLUTION_HEIGHT_DIVISOR)
+			open_turf.pollution.scrub_amount(POLLUTION_HEIGHT_DIVISOR)
 	//SKYRAT EDIT END
-
 	return ..()
 
 /**

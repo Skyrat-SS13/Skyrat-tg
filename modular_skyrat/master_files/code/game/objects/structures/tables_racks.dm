@@ -24,7 +24,7 @@
 		return
 
 	// If stasis isn't an option, only numbing is applied
-	ADD_TRAIT(target, TRAIT_NUMBED, src)
+	ADD_TRAIT(target, TRAIT_NUMBED, REF(src))
 
 ///Used to remove the effects of stasis and numbing when a patient is unbuckled
 /obj/structure/table/optable/proc/thaw_them(mob/living/target)
@@ -33,14 +33,14 @@
 		REMOVE_TRAIT(target, TRAIT_TUMOR_SUPPRESSED, TRAIT_GENERIC)
 		return
 
-	REMOVE_TRAIT(target, TRAIT_NUMBED, src)
+	REMOVE_TRAIT(target, TRAIT_NUMBED, REF(src))
 
 /obj/structure/table/optable/post_buckle_mob(mob/living/patient)
-	set_patient(patient)
+	mark_patient(potential_patient = patient)
 	if(numbing_capable)
 		chill_out(patient)
 
 /obj/structure/table/optable/post_unbuckle_mob(mob/living/patient)
-	set_patient(null)
+	unmark_patient(potential_patient = patient)
 	if(numbing_capable)
 		thaw_them(patient)

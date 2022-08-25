@@ -43,7 +43,7 @@
 	name = "Report: Combat Holodeck"
 	icon_state = "alienpaper_words"
 	show_written_words = FALSE
-	info = {"While we've had problems integrating the primitives into other decks, the subjects of the Combat Deck have begun experiments without the usual issues.<br>
+	default_raw_text = {"While we've had problems integrating the primitives into other decks, the subjects of the Combat Deck have begun experiments without the usual issues.<br>
 	Hypothesis: the subjects have a tendency for violence over a tendency for anything else? Perhaps it has something to do with their coloured uniforms.<br>"}
 
 /obj/item/paper/fluff/awaymissions/astrum1/AltClick()
@@ -53,7 +53,7 @@
 	name = "Report: Reproductive Studies"
 	icon_state = "alienpaper_words"
 	show_written_words = FALSE
-	info = {"No matter WHAT we do, the primitives won't display their rituals for courtship, perhaps we've done something wrong with setting up the simulation?.<br>
+	default_raw_text = {"No matter WHAT we do, the primitives won't display their rituals for courtship, perhaps we've done something wrong with setting up the simulation?.<br>
 	Thoughts: put out more ethanol-based liquids, the primitives seem to enjoy consuming it to lower their inhibitions.<br>"}
 
 /obj/item/paper/fluff/awaymissions/astrum2/AltClick()
@@ -63,7 +63,7 @@
 	name = "Report: Frozen Holodeck"
 	icon_state = "alienpaper_words"
 	show_written_words = FALSE
-	info = {"Not much to be learned here, the primitives die when exposed to extremely cold temperatures and hostile fauna.<br>
+	default_raw_text = {"Not much to be learned here, the primitives die when exposed to extremely cold temperatures and hostile fauna.<br>
 	Conclusion: Replace Frozen Holodeck with something more condusive to our research, the chasm keeps killing the cleaning menials.<br>"}
 
 /obj/item/paper/fluff/awaymissions/astrum3/AltClick()
@@ -73,7 +73,7 @@
 	name = "Report: Xeno-studies Holodeck"
 	icon_state = "alienpaper_words"
 	show_written_words = FALSE
-	info = {"Nope nope nope nope nope nope nope I am closing this experiment down NOW.<br>
+	default_raw_text = {"Nope nope nope nope nope nope nope I am closing this experiment down NOW.<br>
 	Conlusion: What does this have to do with studying primitives AT ALL?!<br>"}
 
 /obj/item/paper/fluff/awaymissions/astrum4/AltClick()
@@ -83,7 +83,7 @@
 	name = "Report: Beach Holodeck"
 	icon_state = "alienpaper_words"
 	show_written_words = FALSE
-	info = {"Well, we've found little success here, primitives when introduced to a relaxing beach environment continue to scream and arm themselves.<br>
+	default_raw_text = {"Well, we've found little success here, primitives when introduced to a relaxing beach environment continue to scream and arm themselves.<br>
 	Conclusion: We can't learn anything from this batch, make sure to dispose of them at some point and bring in new ones.<br>"}
 
 /obj/item/paper/fluff/awaymissions/astrum5/AltClick()
@@ -227,7 +227,7 @@
 	loot = list(/obj/item/storage/medkit/expeditionary = 20,
 				/obj/item/shield/riot/tele = 12,
 				/obj/item/dnainjector/shock = 10,
-				/obj/item/book/granter/spell/summonitem = 20,
+				/obj/item/book/granter/action/spell/summonitem = 20,
 				/obj/item/storage/backpack/holding = 12,
 				/obj/item/dnainjector/thermal = 5,
 				/obj/item/melee/baton/telescopic = 12)
@@ -328,8 +328,8 @@
 	attack_verb_simple = "attacks"
 	attack_sound = 'sound/weapons/sonic_jackhammer.ogg'
 	mouse_opacity = MOUSE_OPACITY_ICON
-	deathsound = 'sound/magic/repulse.ogg'
-	deathmessage = "falls to their knees, before exploding into a ball of gore."
+	death_sound = 'sound/magic/repulse.ogg'
+	death_message = "falls to their knees, before exploding into a ball of gore."
 	gps_name = "Captain's Signal"
 
 /mob/living/simple_animal/hostile/megafauna/hierophant/astrum/bullet_act(obj/projectile/P)

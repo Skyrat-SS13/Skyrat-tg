@@ -19,13 +19,12 @@
 	. = ..()
 	. += span_notice("Ctrl-Shift-Click to reskin this")
 
-/obj/item/storage/hypospraykit/Initialize()
+/obj/item/storage/hypospraykit/Initialize(mapload)
 	. = ..()
 	if(!length(case_designs))
 		populate_case_designs()
-	var/datum/component/storage/stored = GetComponent(/datum/component/storage)
-	stored.max_items = 12
-	stored.can_hold = typecacheof(list(
+	atom_storage.max_slots = 12
+	atom_storage.can_hold = typecacheof(list(
 		/obj/item/hypospray/mkii,
 		/obj/item/reagent_containers/glass/vial
 	))

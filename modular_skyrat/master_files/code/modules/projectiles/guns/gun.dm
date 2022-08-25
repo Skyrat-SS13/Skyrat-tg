@@ -72,7 +72,7 @@
 
 	var/safety = FALSE /// Internal variable for keeping track whether the safety is on or off
 	var/has_gun_safety = FALSE /// Whether the gun actually has a gun safety
-	var/datum/action/item_action/toggle_safety/tsafety
+	var/datum/action/item_action/toggle_safety/toggle_safety_action
 
 	var/datum/action/item_action/toggle_firemode/firemode_action
 	/// Current fire selection, can choose between burst, single, and full auto.
@@ -93,12 +93,12 @@
 /obj/item/gun/ui_action_click(mob/user, actiontype)
 	if(istype(actiontype, /datum/action/item_action/toggle_firemode))
 		fire_select()
-	else if(istype(actiontype, tsafety))
+	else if(istype(actiontype, toggle_safety_action))
 		toggle_safety(user)
 	else
 		..()
 
-/obj/item/gun/Initialize()
+/obj/item/gun/Initialize(mapload)
 	. = ..()
 	if(pin && !pinless)
 		pin = new pin(src)
@@ -107,7 +107,8 @@
 
 	if(has_gun_safety)
 		safety = TRUE
-		tsafety = new(src)
+		toggle_safety_action = new(src)
+		add_item_action(toggle_safety_action)
 
 	if(burst_size > 1 && !(SELECT_BURST_SHOT in fire_select_modes))
 		fire_select_modes.Add(SELECT_BURST_SHOT)
@@ -122,9 +123,8 @@
 		firemode_action = new(src)
 		firemode_action.button_icon_state = "fireselect_[fire_select]"
 		firemode_action.UpdateButtons()
+		add_item_action(firemode_action)
 
-/obj/item/gun/ComponentInitialize()
-	. = ..()
 	if(SELECT_FULLY_AUTOMATIC in fire_select_modes)
 		AddComponent(/datum/component/automatic_fire, fire_delay)
 
@@ -137,8 +137,8 @@
 		QDEL_NULL(chambered)
 	if(isatom(suppressed))
 		QDEL_NULL(suppressed)
-	if(tsafety)
-		QDEL_NULL(tsafety)
+	if(toggle_safety_action)
+		QDEL_NULL(toggle_safety_action)
 	if(firemode_action)
 		QDEL_NULL(firemode_action)
 	. = ..()
@@ -193,6 +193,8 @@
 			. += "<br>It has <b>[span_red("Armadyne Corporation")]</b> etched into the barrel."
 		if(COMPANY_SCARBOROUGH)
 			. += "<br>It has <b>[span_orange("Scarborough Arms")]</b> stamped onto the grip."
+		if(COMPANY_DONK)
+			. += "<br>It has a <b>[span_green("Donk Corporation")]</b> label visible in the plastic."
 		if(COMPANY_BOLT)
 			. += "<br>It has <b>[span_yellow("Bolt Fabrications")]</b> stamped onto the reciever."
 		if(COMPANY_OLDARMS)
@@ -207,6 +209,8 @@
 			. += "<br>It has <b>[span_cyan("Micron Control Sys.")]</b> cut in above the cell slot."
 		if(COMPANY_INTERDYNE)
 			. += "<br>It has <b>[span_cyan("Interdyne Pharmaceuticals")]</b> stamped onto the barrel."
+		if(COMPANY_ABDUCTOR)
+			. += "<br>It has <b>[span_abductor("✌︎︎♌︎︎♎︎︎◆︎︎♍︎︎⧫︎︎❄︎♏︎♍︎♒︎")]</b> engraved into the photon accelerator."
 
 /obj/item/gun/proc/fire_select()
 	var/mob/living/carbon/human/user = usr
@@ -259,7 +263,7 @@
 	return TRUE
 
 /obj/item/gun/proc/tk_firing(mob/living/user)
-	return loc != user ? TRUE : FALSE
+	return !user.contains(src)
 
 /obj/item/gun/proc/shoot_with_empty_chamber(mob/living/user as mob|obj)
 	balloon_alert(user, "*click*")
@@ -277,19 +281,30 @@
 	fire_sounds()
 	if(!suppressed)
 		if(message)
-			if(pointblank)
-				user.visible_message(span_danger("[user] fires [src] point blank at [pbtarget]!"), \
-								span_danger("You fire [src] point blank at [pbtarget]!"), \
-								span_hear("You hear a gunshot!"), COMBAT_MESSAGE_RANGE, pbtarget)
+			if(tk_firing(user))
+				visible_message(
+						span_danger("[src] fires itself[pointblank ? " point blank at [pbtarget]!" : "!"]"),
+						blind_message = span_hear("You hear a gunshot!"),
+						vision_distance = COMBAT_MESSAGE_RANGE
+				)
+			else if(pointblank)
+				user.visible_message(
+						span_danger("[user] fires [src] point blank at [pbtarget]!"),
+						span_danger("You fire [src] point blank at [pbtarget]!"),
+						span_hear("You hear a gunshot!"), COMBAT_MESSAGE_RANGE, pbtarget
+				)
 				to_chat(pbtarget, span_userdanger("[user] fires [src] point blank at you!"))
 				if(pb_knockback > 0 && ismob(pbtarget))
 					var/mob/PBT = pbtarget
 					var/atom/throw_target = get_edge_target_turf(PBT, user.dir)
 					PBT.throw_at(throw_target, pb_knockback, 2)
-			else
-				user.visible_message(span_danger("[user] fires [src]!"), \
-								span_danger("You fire [src]!"), \
-								span_hear("You hear a gunshot!"), COMBAT_MESSAGE_RANGE)
+			else if(!tk_firing(user))
+				user.visible_message(
+						span_danger("[user] fires [src]!"),
+						blind_message = span_hear("You hear a gunshot!"),
+						vision_distance = COMBAT_MESSAGE_RANGE,
+						ignored_mobs = user
+				)
 	if(user.resting) // SKYRAT EDIT ADD - no crawlshooting
 		user.Immobilize(20, TRUE) // SKYRAT EDIT END
 
@@ -299,8 +314,13 @@
 		for(var/obj/iterated_object in contents)
 			iterated_object.emp_act(severity)
 
-/obj/item/gun/attack_secondary(mob/living/victim, mob/living/user, params)
-	if(user.GetComponent(/datum/component/gunpoint))
+/obj/item/gun/afterattack_secondary(mob/living/victim, mob/living/user, params)
+	if(!isliving(victim) || !IN_GIVEN_RANGE(user, victim, GUNPOINT_SHOOTER_STRAY_RANGE))
+		return ..() //if they're out of range, just shootem.
+	var/datum/component/gunpoint/gunpoint_component = user.GetComponent(/datum/component/gunpoint)
+	if (gunpoint_component)
+		if(gunpoint_component.target == victim)
+			return ..() //we're already holding them up, shoot that mans instead of complaining
 		balloon_alert(user, "already holding someone up!")
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	if(user == victim)
@@ -378,7 +398,8 @@
 				var/shot_leg = pick(BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
 				process_fire(user, user, FALSE, params, shot_leg)
 				SEND_SIGNAL(user, COMSIG_MOB_CLUMSY_SHOOT_FOOT)
-				user.dropItemToGround(src, TRUE)
+				if(!tk_firing(user) && !HAS_TRAIT(src, TRAIT_NODROP))
+					user.dropItemToGround(src, TRUE)
 				return TRUE
 
 /obj/item/gun/can_trigger_gun(mob/living/user)
@@ -399,11 +420,13 @@
 			safety = TRUE
 	else
 		safety = !safety
-	tsafety.button_icon_state = "safety_[safety ? "on" : "off"]"
-	tsafety.UpdateButtons()
+	toggle_safety_action.button_icon_state = "safety_[safety ? "on" : "off"]"
+	toggle_safety_action.UpdateButtons()
 	playsound(src, 'sound/weapons/empty.ogg', 100, TRUE)
-	user.visible_message(span_notice("[user] toggles [src]'s safety [safety ? "<font color='#00ff15'>ON</font>" : "<font color='#ff0000'>OFF</font>"]."),
-	span_notice("You toggle [src]'s safety [safety ? "<font color='#00ff15'>ON</font>" : "<font color='#ff0000'>OFF</font>"]."))
+	user.visible_message(
+		span_notice("[user] toggles [src]'s safety [safety ? "<font color='#00ff15'>ON</font>" : "<font color='#ff0000'>OFF</font>"]."),
+		span_notice("You toggle [src]'s safety [safety ? "<font color='#00ff15'>ON</font>" : "<font color='#ff0000'>OFF</font>"].")
+	)
 	SEND_SIGNAL(src, COMSIG_UPDATE_AMMO_HUD)
 
 /obj/item/gun/proc/handle_pins(mob/living/user)
@@ -513,7 +536,7 @@
 		addtimer(CALLBACK(src, .proc/reset_semicd), fire_delay)
 
 	if(user)
-		user.update_inv_hands()
+		user.update_held_items()
 	SSblackbox.record_feedback("tally", "gun_fired", 1, type)
 
 	SEND_SIGNAL(src, COMSIG_UPDATE_AMMO_HUD)

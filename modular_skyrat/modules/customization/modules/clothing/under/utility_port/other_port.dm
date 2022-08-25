@@ -85,6 +85,7 @@
 	name = "black victorian dress"
 	desc = "An extremely old-style dress, worn during ancient Earth's victorian period."
 	icon_state = "victorianblackdress"
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 	body_parts_covered = CHEST|GROIN|ARMS|LEGS
 
 /obj/item/clothing/under/costume/vic_dress/red

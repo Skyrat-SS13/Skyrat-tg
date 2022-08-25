@@ -14,13 +14,12 @@
 	var/buildstacktype = /obj/item/stack/sheet/iron
 	var/buildstackamount = 1
 	var/item_chair = /obj/item/chair // if null it can't be picked up
-	var/buckle_message = TRUE //SKYRAT EDIT ADDITION -- chair buckle messages
 
 
 /obj/structure/chair/examine(mob/user)
 	. = ..()
 	. += span_notice("It's held together by a couple of <b>bolts</b>.")
-	if(!has_buckled_mobs() && can_buckle && buckle_message)  //SKYRAT EDIT ADDITION -- chair buckle messages
+	if(!has_buckled_mobs() && can_buckle)
 		. += span_notice("While standing on [src], drag and drop your sprite onto [src] to buckle to it.")
 
 /obj/structure/chair/Initialize(mapload)
@@ -244,7 +243,7 @@
 	icon_state = "officechair_dark"
 
 
-/obj/structure/chair/office/Moved()
+/obj/structure/chair/office/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change = TRUE)
 	. = ..()
 	if(has_gravity())
 		playsound(src, 'sound/effects/roll.ogg', 100, TRUE)
@@ -469,7 +468,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/chair/stool/bar, 0)
 	if(turns >= 8)
 		STOP_PROCESSING(SSfastprocess, src)
 
-/obj/structure/chair/bronze/Moved()
+/obj/structure/chair/bronze/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change = TRUE)
 	. = ..()
 	if(has_gravity())
 		playsound(src, 'sound/machines/clockcult/integration_cog_install.ogg', 50, TRUE)

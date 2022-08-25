@@ -144,7 +144,7 @@ GLOBAL_LIST_INIT(uncommon_loot, list(// uncommon: useful items
 		/obj/item/a_gift = 200,
 		/obj/item/banhammer = 25,
 		/obj/item/bikehorn/airhorn = 25,
-		/obj/item/book/granter/spell/smoke/lesser = 5,
+		/obj/item/book/granter/action/spell/smoke/lesser = 5,
 		/obj/item/book/granter/crafting_recipe/pipegun_prime = 5,
 		/obj/item/book/granter/crafting_recipe/trash_cannon = 5,
 		/obj/item/bountytrap = 25,

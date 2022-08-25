@@ -140,7 +140,7 @@
 	return TRUE
 
 /obj/item/gun/proc/tk_firing(mob/living/user)
-	return loc != user ? TRUE : FALSE
+	return !user.contains(src)
 
 /obj/item/gun/proc/shoot_with_empty_chamber(mob/living/user as mob|obj)
 	visible_message(span_warning("*click*"), vision_distance = COMBAT_MESSAGE_RANGE)
@@ -159,22 +159,29 @@
 	if(!suppressed)
 		if(message)
 			if(tk_firing(user))
-				visible_message(span_danger("[src] fires itself[pointblank ? " point blank at [pbtarget]!" : "!"]"), \
-								blind_message = span_hear("You hear a gunshot!"), \
-								vision_distance = COMBAT_MESSAGE_RANGE)
+				visible_message(
+						span_danger("[src] fires itself[pointblank ? " point blank at [pbtarget]!" : "!"]"),
+						blind_message = span_hear("You hear a gunshot!"),
+						vision_distance = COMBAT_MESSAGE_RANGE
+				)
 			else if(pointblank)
-				user.visible_message(span_danger("[user] fires [src] point blank at [pbtarget]!"), \
-								span_danger("You fire [src] point blank at [pbtarget]!"), \
-								span_hear("You hear a gunshot!"), COMBAT_MESSAGE_RANGE, pbtarget)
+				user.visible_message(
+						span_danger("[user] fires [src] point blank at [pbtarget]!"),
+						span_danger("You fire [src] point blank at [pbtarget]!"),
+						span_hear("You hear a gunshot!"), COMBAT_MESSAGE_RANGE, pbtarget
+				)
 				to_chat(pbtarget, span_userdanger("[user] fires [src] point blank at you!"))
 				if(pb_knockback > 0 && ismob(pbtarget))
 					var/mob/PBT = pbtarget
 					var/atom/throw_target = get_edge_target_turf(PBT, user.dir)
 					PBT.throw_at(throw_target, pb_knockback, 2)
 			else if(!tk_firing(user))
-				user.visible_message(span_danger("[user] fires [src]!"), \
-								span_danger("You fire [src]!"), \
-								span_hear("You hear a gunshot!"), COMBAT_MESSAGE_RANGE)
+				user.visible_message(
+						span_danger("[user] fires [src]!"),
+						blind_message = span_hear("You hear a gunshot!"),
+						vision_distance = COMBAT_MESSAGE_RANGE,
+						ignored_mobs = user
+				)
 
 /obj/item/gun/emp_act(severity)
 	. = ..()
@@ -182,8 +189,13 @@
 		for(var/obj/O in contents)
 			O.emp_act(severity)
 
-/obj/item/gun/attack_secondary(mob/living/victim, mob/living/user, params)
-	if (user.GetComponent(/datum/component/gunpoint))
+/obj/item/gun/afterattack_secondary(mob/living/victim, mob/living/user, params)
+	if(!isliving(victim) || !IN_GIVEN_RANGE(user, victim, GUNPOINT_SHOOTER_STRAY_RANGE))
+		return ..() //if they're out of range, just shootem.
+	var/datum/component/gunpoint/gunpoint_component = user.GetComponent(/datum/component/gunpoint)
+	if (gunpoint_component)
+		if(gunpoint_component.target == victim)
+			return ..() //we're already holding them up, shoot that mans instead of complaining
 		to_chat(user, span_warning("You are already holding someone up!"))
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	if (user == victim)
@@ -262,7 +274,7 @@
 				var/shot_leg = pick(BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
 				process_fire(user, user, FALSE, null, shot_leg)
 				SEND_SIGNAL(user, COMSIG_MOB_CLUMSY_SHOOT_FOOT)
-				if(!HAS_TRAIT(src, TRAIT_NODROP))
+				if(!tk_firing(user) && !HAS_TRAIT(src, TRAIT_NODROP))
 					user.dropItemToGround(src, TRUE)
 				return TRUE
 
@@ -381,7 +393,7 @@
 		addtimer(CALLBACK(src, .proc/reset_semicd), modified_delay)
 
 	if(user)
-		user.update_inv_hands()
+		user.update_held_items()
 	SSblackbox.record_feedback("tally", "gun_fired", 1, type)
 
 	return TRUE

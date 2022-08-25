@@ -43,7 +43,8 @@
  * Upped to ensure lowpop steamroll does not happen
  */
 /datum/round_event_control/spider_infestation
-	min_players = 70
+	// min_players = 70
+	max_occurrences = 0
 
 /**
  * Meteor Waves
@@ -82,3 +83,13 @@
  */
 /datum/round_event_control/operative
 	max_occurrences = 0
+
+/**
+ * Ninja
+ *
+ * Removed: It's already apart of dynamic, we don't need it both as an event and as a part of dynamic. Leaving it in dynamic for finer control over how often it rolls.
+ * 
+ */
+/datum/round_event_control/space_ninja
+	max_occurrences = 0
+	weight = 0

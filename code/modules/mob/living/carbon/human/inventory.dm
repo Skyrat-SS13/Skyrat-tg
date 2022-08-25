@@ -1,19 +1,8 @@
 /mob/living/carbon/human/can_equip(obj/item/I, slot, disable_warning = FALSE, bypass_equip_delay_self = FALSE)
 	return dna.species.can_equip(I, slot, disable_warning, src, bypass_equip_delay_self)
 
-// Return the item currently in the slot ID
 /mob/living/carbon/human/get_item_by_slot(slot_id)
 	switch(slot_id)
-		if(ITEM_SLOT_BACK)
-			return back
-		if(ITEM_SLOT_MASK)
-			return wear_mask
-		if(ITEM_SLOT_NECK)
-			return wear_neck
-		if(ITEM_SLOT_HANDCUFFED)
-			return handcuffed
-		if(ITEM_SLOT_LEGCUFFED)
-			return legcuffed
 		if(ITEM_SLOT_BELT)
 			return belt
 		if(ITEM_SLOT_ID)
@@ -24,8 +13,6 @@
 			return glasses
 		if(ITEM_SLOT_GLOVES)
 			return gloves
-		if(ITEM_SLOT_HEAD)
-			return head
 		if(ITEM_SLOT_FEET)
 			return shoes
 		if(ITEM_SLOT_OCLOTHING)
@@ -38,7 +25,6 @@
 			return r_store
 		if(ITEM_SLOT_SUITSTORE)
 			return s_store
-
 		//SKYRAT EDIT ADDITION BEGIN - ERP_SLOT_SYSTEM
 		if(ITEM_SLOT_VAGINA)
 			return vagina
@@ -49,8 +35,46 @@
 		if(ITEM_SLOT_PENIS)
 			return penis
 		//SKYRAT EDIT ADDITION END
+	return ..()
 
-	return null
+/mob/living/carbon/human/get_slot_by_item(obj/item/looking_for)
+	if(looking_for == belt)
+		return ITEM_SLOT_BELT
+
+	if(looking_for == wear_id)
+		return ITEM_SLOT_ID
+
+	if(looking_for == ears)
+		return ITEM_SLOT_EARS
+
+	if(looking_for == glasses)
+		return ITEM_SLOT_EYES
+
+	if(looking_for == gloves)
+		return ITEM_SLOT_GLOVES
+
+	if(looking_for == head)
+		return ITEM_SLOT_HEAD
+
+	if(looking_for == shoes)
+		return ITEM_SLOT_FEET
+
+	if(looking_for == wear_suit)
+		return ITEM_SLOT_OCLOTHING
+
+	if(looking_for == w_uniform)
+		return ITEM_SLOT_ICLOTHING
+
+	if(looking_for == r_store)
+		return ITEM_SLOT_RPOCKET
+
+	if(looking_for == l_store)
+		return ITEM_SLOT_LPOCKET
+
+	if(looking_for == s_store)
+		return ITEM_SLOT_SUITSTORE
+
+	return ..()
 
 /mob/living/carbon/human/get_all_worn_items()
 	. = get_head_slots() | get_body_slots()
@@ -101,13 +125,13 @@
 			if(belt)
 				return
 			belt = I
-			update_inv_belt()
+			update_worn_belt()
 		if(ITEM_SLOT_ID)
 			if(wear_id)
 				return
 			wear_id = I
 			sec_hud_set_ID()
-			update_inv_wear_id()
+			update_worn_id()
 		if(ITEM_SLOT_EARS)
 			if(ears)
 				return
@@ -126,7 +150,7 @@
 				clear_fullscreen("nearsighted")
 			if(G.vision_flags || G.darkness_view || G.invis_override || G.invis_view || !isnull(G.lighting_alpha))
 				update_sight()
-			update_inv_glasses()
+			update_worn_glasses()
 		if(ITEM_SLOT_GLOVES)
 			if(gloves)
 				return
@@ -137,12 +161,12 @@
 				stop_pulling()
 				update_action_buttons_icon()
 			//SKYRAT EDIT ADDITION END
-			update_inv_gloves()
+			update_worn_gloves()
 		if(ITEM_SLOT_FEET)
 			if(shoes)
 				return
 			shoes = I
-			update_inv_shoes()
+			update_worn_shoes()
 		if(ITEM_SLOT_OCLOTHING)
 			if(wear_suit)
 				return
@@ -150,7 +174,7 @@
 			wear_suit = I
 
 			if(I.flags_inv & HIDEJUMPSUIT)
-				update_inv_w_uniform()
+				update_worn_undersuit()
 			//SKYRAT EDIT ADDITION - ERP UPDATE
 			if(I.flags_inv & HIDESEXTOY)
 				update_inv_anus()
@@ -162,24 +186,24 @@
 				ADD_TRAIT(src, TRAIT_RESTRAINED, SUIT_TRAIT)
 				stop_pulling() //can't pull if restrained
 				update_action_buttons_icon() //certain action buttons will no longer be usable.
-			update_inv_wear_suit()
+			update_worn_oversuit()
 		if(ITEM_SLOT_ICLOTHING)
 			if(w_uniform)
 				return
 			w_uniform = I
 			update_suit_sensors()
-			update_inv_w_uniform()
+			update_worn_undersuit()
 		if(ITEM_SLOT_LPOCKET)
 			l_store = I
-			update_inv_pockets()
+			update_pockets()
 		if(ITEM_SLOT_RPOCKET)
 			r_store = I
-			update_inv_pockets()
+			update_pockets()
 		if(ITEM_SLOT_SUITSTORE)
 			if(s_store)
 				return
 			s_store = I
-			update_inv_s_store()
+			update_suit_storage()
 
 		//SKYRAT EDIT ADDITION BEGIN - ERP_SLOT_SYSTEM
 		if(ITEM_SLOT_PENIS)
@@ -217,7 +241,6 @@
 				update_inv_nipples()
 			else
 				to_chat(usr, "[src] is not topless, you cannot access [usr == src ? "your" : src.p_their()] nipples!")
-
 		//SKYRAT EDIT ADDITION END
 
 		else
@@ -256,13 +279,17 @@
 		wear_suit = null
 		if(!QDELETED(src)) //no need to update we're getting deleted anyway
 			if(I.flags_inv & HIDEJUMPSUIT)
-				update_inv_w_uniform()
+				update_worn_undersuit()
+
+			// SKYRAT EDIT ADDITION START
 			if(I.flags_inv & HIDESEXTOY)
 				update_inv_anus()
 				update_inv_vagina()
 				update_inv_penis()
 				update_inv_nipples()
-			update_inv_wear_suit()
+			// SKYRAT EDIT ADDITION END
+
+			update_worn_oversuit()
 	else if(I == w_uniform)
 		if(invdrop)
 			if(r_store)
@@ -276,7 +303,7 @@
 		w_uniform = null
 		update_suit_sensors()
 		if(!QDELETED(src))
-			update_inv_w_uniform()
+			update_worn_undersuit()
 	else if(I == gloves)
 		//SKYRAT EDIT ADDITION - ERP UPDATE
 		if(gloves.breakouttime) //when unequipping a straightjacket
@@ -286,7 +313,7 @@
 		//SKYRAT EDIT ADDITION END
 		gloves = null
 		if(!QDELETED(src))
-			update_inv_gloves()
+			update_worn_gloves()
 	else if(I == glasses)
 		glasses = null
 		var/obj/item/clothing/glasses/G = I
@@ -300,7 +327,7 @@
 		if(G.vision_flags || G.darkness_view || G.invis_override || G.invis_view || !isnull(G.lighting_alpha))
 			update_sight()
 		if(!QDELETED(src))
-			update_inv_glasses()
+			update_worn_glasses()
 	else if(I == ears)
 		ears = null
 		if(!QDELETED(src))
@@ -308,28 +335,28 @@
 	else if(I == shoes)
 		shoes = null
 		if(!QDELETED(src))
-			update_inv_shoes()
+			update_worn_shoes()
 	else if(I == belt)
 		belt = null
 		if(!QDELETED(src))
-			update_inv_belt()
+			update_worn_belt()
 	else if(I == wear_id)
 		wear_id = null
 		sec_hud_set_ID()
 		if(!QDELETED(src))
-			update_inv_wear_id()
+			update_worn_id()
 	else if(I == r_store)
 		r_store = null
 		if(!QDELETED(src))
-			update_inv_pockets()
+			update_pockets()
 	else if(I == l_store)
 		l_store = null
 		if(!QDELETED(src))
-			update_inv_pockets()
+			update_pockets()
 	else if(I == s_store)
 		s_store = null
 		if(!QDELETED(src))
-			update_inv_s_store()
+			update_suit_storage()
 
 	//SKYRAT EDIT ADDITION BEGIN - ERP_SLOT_SYSTEM
 	else if(I == vagina)
@@ -358,20 +385,19 @@
 
 /mob/living/carbon/human/wear_mask_update(obj/item/I, toggle_off = 1)
 	if((I.flags_inv & (HIDEHAIR|HIDEFACIALHAIR)) || (initial(I.flags_inv) & (HIDEHAIR|HIDEFACIALHAIR)))
-		update_hair()
+		update_body_parts()
 	if(toggle_off && internal && !getorganslot(ORGAN_SLOT_BREATHING_TUBE))
-		update_internals_hud_icon(0)
 		internal = null
 	if(I.flags_inv & HIDEEYES)
-		update_inv_glasses()
+		update_worn_glasses()
 	sec_hud_set_security_status()
 	..()
 
 /mob/living/carbon/human/head_update(obj/item/I, forced)
 	if((I.flags_inv & (HIDEHAIR|HIDEFACIALHAIR)) || forced)
-		update_hair()
+		update_body_parts()
 	if(I.flags_inv & HIDEEYES || forced)
-		update_inv_glasses()
+		update_worn_glasses()
 	if(I.flags_inv & HIDEEARS || forced)
 		update_body()
 	sec_hud_set_security_status()
@@ -411,9 +437,9 @@
 			to_chat(src, span_warning("You have no [slot_item_name] to take something out of!"))
 			return
 		if(equip_to_slot_if_possible(thing, slot_type))
-			update_inv_hands()
+			update_held_items()
 		return
-	var/datum/component/storage/storage = equipped_item.GetComponent(/datum/component/storage)
+	var/datum/storage/storage = equipped_item.atom_storage
 	if(!storage)
 		if(!thing)
 			equipped_item.attack_hand(src)
@@ -421,10 +447,10 @@
 			to_chat(src, span_warning("You can't fit [thing] into your [equipped_item.name]!"))
 		return
 	if(thing) // put thing in storage item
-		if(!SEND_SIGNAL(equipped_item, COMSIG_TRY_STORAGE_INSERT, thing, src))
+		if(!equipped_item.atom_storage?.attempt_insert(equipped_item, thing, src))
 			to_chat(src, span_warning("You can't fit [thing] into your [equipped_item.name]!"))
 		return
-	var/atom/real_location = storage.real_location()
+	var/atom/real_location = storage.real_location?.resolve()
 	if(!real_location.contents.len) // nothing to take out
 		to_chat(src, span_warning("There's nothing in your [equipped_item.name] to take out!"))
 		return
