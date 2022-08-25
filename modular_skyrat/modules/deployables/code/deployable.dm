@@ -18,10 +18,9 @@
 	mode = AREA_SPAWN_MODE_OPEN
 
 /datum/area_spawn/borg_action_pacifier_deployed
-	target_areas = list(/area/station/science/robotics/mechbay, /area/station/science/robotics/lab, /area/station/science/lobby)
+	target_areas = list(/area/station/science/robotics/mechbay, /area/station/science/robotics/lab, /area/station/science)
 	desired_atom = /obj/structure/bed/borg_action_pacifier
 	amount_to_spawn = 2
-	optional = TRUE //Why is Kilo so small...
 	mode = AREA_SPAWN_MODE_HUG_WALL
 
 // Research
