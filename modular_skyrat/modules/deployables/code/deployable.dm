@@ -7,7 +7,8 @@
 #define DRAIN_MODE "drain"
 #define PUMP_MODE "pump"
 
-#define MAX_POWER 40000	// BS cell capacity, a potato battery would still outplay this
+#define MAX_POWER 40000	/// BS cell capacity, a potato battery would still outplay this
+#define setup_time 1.4 SECONDS /// How quick does it (un)fold? Warning: this tries to match an animation
 
 // Automapper
 /*
@@ -22,7 +23,7 @@
 	amount_to_spawn = 2
 */
 
-//	The item in its functional state
+//	The item
 /obj/structure/bed/borg_action_pacifier
 	name = "deployed B.A.P. unit"
 	desc = "An inactivated device to constrain silicons with."
@@ -91,8 +92,12 @@
 	if(!.)
 		return
 
-	var/obj/structure/bed/borg_action_pacifier/undeployed/deploying/deploying = new (get_turf(src))
-	deploying.power_storage = power_storage
+	var/obj/structure/bed/borg_action_pacifier/BAPer = new (get_turf(src))
+	BAPer.power_storage = power_storage
+
+	BAPer.deployed = FALSE //Unlike roundstarts we have to perform the whole song and dance
+	BAPer.icon_state = "down"
+	BAPer.deploy()
 	qdel(src)
 
 /obj/item/grenade/borg_action_pacifier_grenade/examine(mob/user)
@@ -101,46 +106,7 @@
 	if(power_storage == MAX_POWER)
 		. += span_warning("It cannot store any more power.")
 
-//		// Subject to change
-/obj/structure/bed/borg_action_pacifier/undeployed/deploying
-	name = "Deploying B.A.P. unit"
-
-/obj/structure/bed/borg_action_pacifier/undeployed/deploying/Initialize(mapload)
-	. = ..()
-	balloon_alert_to_viewers("unfolding...")
-	playsound(src, 'modular_skyrat/master_files/sound/effects/robot_trap.ogg', 25, TRUE, falloff_exponent = 20)
-	addtimer(CALLBACK(src, .proc/deploy), 0.8 SECONDS)
-
-/obj/structure/bed/borg_action_pacifier/undeployed/deploying/proc/deploy()
-	var/obj/structure/bed/borg_action_pacifier/deployed = new /obj/structure/bed/borg_action_pacifier(get_turf(src))
-	deployed.balloon_alert_to_viewers("deployed")
-	deployed.power_storage = power_storage
-	qdel(src)
-
-//	The item in its retrieval state
-/obj/structure/bed/borg_action_pacifier/undeployed
-	name = "undeployed B.A.P. unit"
-	icon_state = "down"
-	resistance_flags = NONE
-	deployed = FALSE
-
-/obj/structure/bed/borg_action_pacifier/undeployed/MouseDrop(over_object, src_location, over_location)
-	. = ..()
-	if((over_object == usr) && Adjacent(usr))
-		if(!ishuman(usr) || !usr.canUseTopic(src, BE_CLOSE))
-			return FALSE
-		if(has_buckled_mobs() || deployed)
-			return FALSE
-
-		usr.visible_message(span_notice("[usr] collapses [src]."), span_notice("You collapse [src]."))
-		var/obj/item/grenade/borg_action_pacifier_grenade/BAPer = new (get_turf(src))
-		usr.put_in_hands(BAPer)
-		BAPer.power_storage = power_storage
-		qdel(src)
-
-
-//	Alt-click control
-
+// Alt-click control
 // Venting the power out of the grenade-form
 /obj/item/grenade/borg_action_pacifier_grenade/proc/check_alt_clicked_grenade(datum/source, mob/living/clicker)
 	SIGNAL_HANDLER
@@ -193,6 +159,39 @@
 
 		turfs_to_spread = new_spread_list
 		spread_stage--
+
+/obj/structure/bed/borg_action_pacifier/proc/deploy()
+	if(deployed)
+		return
+	name = "Deploying B.A.P. unit"
+	resistance_flags = NONE
+
+	balloon_alert_to_viewers("unfolding...")
+	playsound(src, 'modular_skyrat/master_files/sound/effects/robot_trap.ogg', 25, TRUE, falloff_exponent = 20)
+	addtimer(CALLBACK(src, .proc/finish_deploy), setup_time)
+	flick("deploying", src)
+
+/obj/structure/bed/borg_action_pacifier/proc/finish_deploy()
+	name = "deployed B.A.P. unit"
+	icon_state = "up"
+	deployed = TRUE
+
+	balloon_alert_to_viewers("deployed")
+	playsound(src, 'sound/machines/ping.ogg', 50, FALSE, falloff_exponent = 10)
+
+/obj/structure/bed/borg_action_pacifier/MouseDrop(over_object, src_location, over_location)
+	. = ..()
+	if((over_object == usr) && Adjacent(usr))
+		if(!ishuman(usr) || !usr.canUseTopic(src, BE_CLOSE))
+			return FALSE
+		if(has_buckled_mobs() || deployed)
+			return FALSE
+
+		usr.visible_message(span_notice("[usr] collapses [src]."), span_notice("You collapse [src]."))
+		var/obj/item/grenade/borg_action_pacifier_grenade/BAPer = new (get_turf(src))
+		usr.put_in_hands(BAPer)
+		BAPer.power_storage = power_storage
+		qdel(src)
 
 // Radial menu for the deployed model's function controls
 /obj/structure/bed/borg_action_pacifier/proc/check_alt_clicked_radial(datum/source, mob/living/clicker)
@@ -338,20 +337,21 @@
 	buckled_cyborg.regenerate_icons()
 
 /obj/structure/bed/borg_action_pacifier/proc/undeploy(mob/living/clicker)
-	if(!clicker)
+	if(!clicker || !deployed)
 		return
 
+	balloon_alert_to_viewers("resetting...")
 	if(do_after(clicker, 3 SECONDS))
-		var/obj/structure/bed/borg_action_pacifier/undeployed/undeployed
-
-		undeployed = new /obj/structure/bed/borg_action_pacifier/undeployed(get_turf(src))
-		undeployed.balloon_alert_to_viewers("reset")
-		undeployed.power_storage = power_storage
-		qdel(src)
-
+		addtimer(CALLBACK(src, .proc/finish_undeploy), setup_time)
+		flick("undeploying", src)
 	else
 		return
 
+/obj/structure/bed/borg_action_pacifier/proc/finish_undeploy()
+	var/obj/item/grenade/borg_action_pacifier_grenade/BAPer = new (get_turf(src))
+	BAPer.power_storage = power_storage
+	BAPer.balloon_alert_to_viewers("reset")
+	qdel(src)
 
 // Buckle overwrites
 /obj/structure/bed/borg_action_pacifier/buckle_mob(mob/living/target, force, check_loc)
@@ -436,11 +436,10 @@
 
 
 // Fluff
-/obj/structure/bed/borg_action_pacifier/Moved()
+/obj/structure/bed/borg_action_pacifier/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change = TRUE)
 	. = ..()
 	if(has_gravity())
 		playsound(src, 'sound/effects/roll.ogg', 50, TRUE)
-
 
 #undef FOLD
 
