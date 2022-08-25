@@ -10,6 +10,7 @@
 #define MAX_POWER 40000	// BS cell capacity, a potato battery would still outplay this
 
 // Automapper
+/*
 /datum/area_spawn/borg_action_pacifier
 	target_areas = list(/area/station/security/office, /area/station/security/lockers)
 	desired_atom = /obj/item/grenade/borg_action_pacifier_grenade
@@ -19,6 +20,7 @@
 	target_areas = list(/area/station/science/robotics/mechbay)
 	desired_atom = /obj/structure/bed/borg_action_pacifier
 	amount_to_spawn = 2
+*/
 
 //	The item in its functional state
 /obj/structure/bed/borg_action_pacifier
