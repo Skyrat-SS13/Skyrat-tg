@@ -4,6 +4,15 @@
  * Events can be overriden for a multitude of reasons however each override will have a reason.
  */
 
+/**
+ * Event subsystem
+ *
+ * Overriden min and max start times:
+ * To accomodate for much longer rounds.
+ */
+/datum/controller/subsystem/events
+	frequency_lower = 10 MINUTES
+	frequency_upper = 15 MINUTES
 
 /**
  * Brain truama
@@ -83,3 +92,13 @@
  */
 /datum/round_event_control/operative
 	max_occurrences = 0
+
+/**
+ * Ninja
+ *
+ * Removed: It's already apart of dynamic, we don't need it both as an event and as a part of dynamic. Leaving it in dynamic for finer control over how often it rolls.
+ *
+ */
+/datum/round_event_control/space_ninja
+	max_occurrences = 0
+	weight = 0
