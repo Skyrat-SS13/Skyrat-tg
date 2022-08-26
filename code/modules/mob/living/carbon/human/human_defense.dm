@@ -268,7 +268,7 @@
 				apply_damage(damage, BRUTE, affecting, run_armor_check(affecting, MELEE))
 		return TRUE
 
-//SKYRAT EDIT REMOVAL BEGIN - XENO REBALANCE - Moved to:
+//SKYRAT EDIT REMOVAL BEGIN - SKYRAT_XENO_REDO - Moved to:
 /*
 /mob/living/carbon/human/attack_alien(mob/living/carbon/alien/humanoid/user, list/modifiers)
 	if(check_shields(user, 0, "the [user.name]"))

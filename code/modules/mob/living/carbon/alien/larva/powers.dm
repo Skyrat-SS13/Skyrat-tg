@@ -46,7 +46,7 @@
 
 	return TRUE
 
-//SKYRAT EDIT REMOVAL BEGIN - XENO REBALANCE - Moved to: modular_skyrat\modules\xenos_skyrat_redo\code\xeno_types\larva.dm
+//SKYRAT EDIT REMOVAL BEGIN - SKYRAT_XENO_REDO - Moved to: modular_skyrat\modules\xenos_skyrat_redo\code\xeno_types\larva.dm
 /*
 /datum/action/cooldown/alien/larva_evolve/Activate(atom/target)
 	var/mob/living/carbon/alien/larva/larva = owner

@@ -8,11 +8,23 @@ Reworks and rebalances xenomorphs to be more in line a tgmc style of alien, espe
 
 ### TG Proc/File Changes:
 
-<!-- If you had to edit, or append to any core procs in the process of making this PR, list them here. APPEND: Also, please include any files that you've changed. .DM files that is. -->
+- MOVED:
+	code\modules\mob\living\carbon\alien\larva\powers.dm > /datum/action/cooldown/alien/larva_evolve/Activate
+	TO:
+	modular_skyrat\modules\xenos_skyrat_redo\code\larva.dm
+
+- MOVED:
+	code\modules\mob\living\carbon\human\human_defense.dm > /mob/living/carbon/human/attack_alien
+	TO:
+	modular_skyrat\modules\xenos_skyrat_redo\code\human_defense.dm
 
 ### Defines:
 
-- N/A
+IN: code/__DEFINES/~skyrat_defines/traits.dm
+
+- TRAIT_XENO_INNATE
+- TRAIT_XENO_ABILITY_GIVEN
+- TRAIT_XENO_HEAL_AURA
 
 ### Master file additions
 
@@ -26,3 +38,4 @@ Reworks and rebalances xenomorphs to be more in line a tgmc style of alien, espe
 
 @Paxilmaniac - Porting the xenos from TGMC, adopting their stuff to work with our code
 TGMC - Where the sprites, sound, and ideas for caste abilities came from
+Those two rounds where xenos curbstomped the whole station - Inspiration for doing this in the first place
