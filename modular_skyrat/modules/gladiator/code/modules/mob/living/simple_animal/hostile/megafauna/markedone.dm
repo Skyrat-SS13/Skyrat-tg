@@ -379,7 +379,7 @@
 		if(3)
 			if(prob(35))
 				INVOKE_ASYNC(src, .proc/bone_knife_throw, target)
-				ranged_cooldown += 1 SECOND
+				ranged_cooldown += 1 SECONDS
 			else
 				INVOKE_ASYNC(src, .proc/teleport, target)
 				ranged_cooldown += 2 SECONDS
