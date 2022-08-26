@@ -8,9 +8,10 @@
 	icon_state = "aliendefender"
 	melee_damage_lower = 25
 	melee_damage_upper = 30
+	/// Holds the basic charge ability that the defender will be granted
 	var/datum/action/cooldown/mob_cooldown/charge/basic_charge/defender/charge
+	/// Holds the wrecking ball tail sweep that the defender will be granted
 	var/datum/action/cooldown/spell/aoe/repulse/xeno/crushing/tail_sweep
-	/// var/datum/action/cooldown/alien/skyrat/crest_defence/crest_defending
 	next_evolution = /mob/living/carbon/alien/humanoid/skyrat/warrior
 
 /mob/living/carbon/alien/humanoid/skyrat/defender/Initialize(mapload)
@@ -112,35 +113,3 @@
 /datum/action/cooldown/mob_cooldown/charge/basic_charge/defender/Activate(atom/target_atom)
 	. = ..()
 	return TRUE
-
-/* I'm not quite sure how to give mobs like this armor yet
-/datum/action/cooldown/alien/skyrat/crest_defence
-	name = "Crest Defense"
-	desc = "Trades speed for damage reduction, useful for getting into big fights where you don't need to run."
-	button_icon_state = "fucking_invincible"
-	cooldown_time = 1 SECONDS
-	var/crest_defending = FALSE
-
-/datum/action/cooldown/alien/skyrat/crest_defence/Activate()
-	. = ..()
-	var/mob/living/carbon/alien/humanoid/skyrat/defender = owner
-	if(!crest_defending)
-		defender.balloon_alert(defender, "crest defense active")
-		to_chat(defender, span_danger("We drop into a defensive stance, using our large crest to protect ourselves from oncoming damage at the cost of being slower."))
-		defender.alien_damage_multiplier = 0.4
-		playsound(defender, 'modular_skyrat/modules/xenos_skyrat_redo/sound/alien_hiss.ogg', 100, TRUE)
-		crest_defending = TRUE
-		defender.icon_state = "alien[defender.caste]_crest"
-		defender.add_movespeed_modifier(/datum/movespeed_modifier/defender_crest)
-		return TRUE
-	if(crest_defending)
-		defender.balloon_alert(defender, "crest defense ended")
-		defender.alien_damage_multiplier = 0.8
-		crest_defending = FALSE
-		defender.icon_state = "alien[defender.caste]"
-		defender.remove_movespeed_modifier(/datum/movespeed_modifier/defender_crest)
-		return TRUE
-
-/datum/movespeed_modifier/defender_crest
-	multiplicative_slowdown = 2
-*/

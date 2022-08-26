@@ -8,8 +8,11 @@
 	icon_state = "alienwarrior"
 	melee_damage_lower = 30
 	melee_damage_upper = 35
+	/// Holds the charge ability that will be given to the warrior later
 	var/datum/action/cooldown/mob_cooldown/charge/basic_charge/defender/charge
+	/// Holds the tail sweep ability that will be given to the warrior later
 	var/datum/action/cooldown/spell/aoe/repulse/xeno/hard_throwing/tail_sweep
+	/// Holds the agility ability that will be given to the warrior later
 	var/datum/action/cooldown/alien/skyrat/warrior_agility/agility
 
 /mob/living/carbon/alien/humanoid/skyrat/warrior/Initialize(mapload)
@@ -43,6 +46,7 @@
 	button_icon_state = "the_speed_is_alot"
 	cooldown_time = 1 SECONDS
 	can_be_used_always = TRUE
+	/// Is the warrior currently running around on all fours?
 	var/being_agile = FALSE
 
 /datum/action/cooldown/alien/skyrat/warrior_agility/Activate()

@@ -6,8 +6,11 @@
 	maxHealth = 350
 	health = 350
 	icon_state = "alienravager"
+	/// Holds the triple charge ability to be granted to the ravager later
 	var/datum/action/cooldown/mob_cooldown/charge/triple_charge/ravager/triple_charge
+	/// Holds the slicing tail sweep ability to be granted to the ravager later
 	var/datum/action/cooldown/spell/aoe/repulse/xeno/slicing/tailsweep_slice
+	/// Holds the endure ability to be granted to the ravager later
 	var/datum/action/cooldown/alien/skyrat/literally_too_angry_to_die/you_cant_hurt_me_jack
 	melee_damage_lower = 30
 	melee_damage_upper = 35
@@ -107,7 +110,9 @@
 	desc = "Imbue your body with unimaginable amounts of rage (and plasma) to allow yourself to ignore all pain for a short time."
 	button_icon_state = "literally_too_angry"
 	plasma_cost = 250 //This requires full plasma to do, so there can be some time between armstrong moments
+	/// If the endure ability is currently active or not
 	var/endure_active = FALSE
+	/// How long the endure ability should last when activated
 	var/endure_duration = 20 SECONDS
 
 /datum/action/cooldown/alien/skyrat/literally_too_angry_to_die/Activate()

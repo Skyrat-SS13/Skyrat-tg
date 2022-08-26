@@ -6,7 +6,9 @@
 	maxHealth = 400
 	health = 400
 	icon_state = "alienpraetorian"
+	/// Holds the improved healing aura ability to be granted to the praetorian later
 	var/datum/action/cooldown/alien/skyrat/heal_aura/juiced/heal_aura_ability
+	/// Holds the less lethal tail sweep ability to be granted to the praetorian later
 	var/datum/action/cooldown/spell/aoe/repulse/xeno/hard_throwing/tail_sweep
 	melee_damage_lower = 25
 	melee_damage_upper = 30
@@ -45,7 +47,8 @@
 	aura_healing_color = COLOR_RED_LIGHT
 
 /datum/action/cooldown/spell/aoe/repulse/xeno/hard_throwing
-	name = "Tail Sweep"
+	name = "Flinging Tail Sweep"
+	desc = "Throw back attackers with a sweep of your tail that is much stronger than other aliens."
 
 	cooldown_time = 60 SECONDS
 

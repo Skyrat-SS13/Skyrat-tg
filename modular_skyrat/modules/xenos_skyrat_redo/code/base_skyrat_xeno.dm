@@ -5,8 +5,11 @@
 	icon = 'modular_skyrat/modules/xenos_skyrat_redo/icons/big_xenos.dmi'
 	rotate_on_lying = FALSE
 	base_pixel_x = -16 //All of the xeno sprites are 64x64, and we want them to be level with the tile they are on, much like oversized quirk users
+	/// Holds the ability for making an alien's sprite smaller to only themselves
 	var/datum/action/small_sprite/skyrat_xeno/small_sprite
-	var/datum/action/cooldown/alien/skyrat/sleepytime/rest_button //There's no resting on the hud for xenos, and I don't think players want to use the ic panel
+	/// Holds the ability for quick resting without using the ic panel, and without editing xeno huds
+	var/datum/action/cooldown/alien/skyrat/sleepytime/rest_button
+	/// Holds the ability for allowing a xeno to devolve back into a larve if they so choose
 	var/datum/action/cooldown/alien/skyrat/devolve/devolve_ability
 	mob_size = MOB_SIZE_LARGE
 	layer = LARGE_MOB_LAYER //above most mobs, but below speechbubbles
@@ -14,9 +17,13 @@
 	maptext_height = 64
 	maptext_width = 64
 	pressure_resistance = 200
+	/// What icon file update_held_items will look for when making inhands for xenos
 	var/alt_inhands_file = 'modular_skyrat/modules/xenos_skyrat_redo/icons/big_xenos.dmi'
+	/// Setting this will give a xeno generic_evolve set to evolve them into this type
 	var/next_evolution
+	/// Holds the ability for evolving into whatever type next_evolution is set to
 	var/datum/action/cooldown/alien/skyrat/generic_evolve/evolve_ability
+	/// Determines if a xeno is unable to use abilities
 	var/unable_to_use_abilities = FALSE
 
 /mob/living/carbon/alien/humanoid/skyrat/Initialize(mapload)
@@ -49,7 +56,8 @@
 
 /datum/action/cooldown/alien/skyrat
 	icon_icon = 'modular_skyrat/modules/xenos_skyrat_redo/icons/xeno_actions.dmi'
-	var/can_be_used_always = FALSE //Some xeno abilities block other abilities being used, sometimes we need to override that
+	/// Some xeno abilities block other abilities from being used, this allows them to get around that in cases where it is needed
+	var/can_be_used_always = FALSE
 
 /datum/action/cooldown/alien/skyrat/IsAvailable()
 	. = ..()
@@ -84,6 +92,7 @@
 	name = "Evolve"
 	desc = "Allows us to evolve to a higher caste of our type, if there is not one already."
 	button_icon_state = "evolution"
+	/// What type this ability will turn the owner into upon completion
 	var/type_to_evolve_into
 
 /datum/action/cooldown/alien/skyrat/generic_evolve/Grant(mob/grant_to)

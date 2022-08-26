@@ -6,7 +6,6 @@
 	maxHealth = 300
 	health = 300
 	icon_state = "alienspitter"
-	var/datum/action/cooldown/alien/skyrat/heal_aura/heal_aura_ability
 	melee_damage_lower = 15
 	melee_damage_upper = 20
 

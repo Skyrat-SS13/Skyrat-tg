@@ -6,6 +6,7 @@
 	maxHealth = 150
 	health = 150
 	icon_state = "alienrunner"
+	/// Holds the evade ability to be granted to the runner later
 	var/datum/action/cooldown/alien/skyrat/evade/evade_ability
 	melee_damage_lower = 20
 	melee_damage_upper = 25
@@ -33,7 +34,9 @@
 	button_icon_state = "evade"
 	plasma_cost = 50
 	cooldown_time = 60 SECONDS
+	/// If the evade ability is currently active or not
 	var/evade_active = FALSE
+	/// How long evasion should last
 	var/evasion_duration = 10 SECONDS
 
 /datum/action/cooldown/alien/skyrat/evade/Activate()

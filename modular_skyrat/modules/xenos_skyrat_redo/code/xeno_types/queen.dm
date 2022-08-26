@@ -6,7 +6,9 @@
 	maxHealth = 500
 	health = 500
 	icon_state = "alienqueen"
+	/// Holds the less lethal tail sweep ability to be granted to the queen later
 	var/datum/action/cooldown/spell/aoe/repulse/xeno/hard_throwing/tail_sweep
+	/// Holds the queen screech ability to be granted to her later
 	var/datum/action/cooldown/alien/skyrat/queen_screech/screech
 	melee_damage_lower = 30
 	melee_damage_upper = 35

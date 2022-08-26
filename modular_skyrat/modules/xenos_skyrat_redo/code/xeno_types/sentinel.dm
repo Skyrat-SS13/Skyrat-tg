@@ -30,8 +30,11 @@
 	var/acid_projectile = /obj/projectile/neurotoxin/skyrat
 	/// You want it to be more like a shotgun style attack? Use this one and make acid_projectile null
 	var/acid_casing
-	var/projectile_name = "neurotoxin" //Used in to_chat messages
+	/// Used in to_chat messages to the owner
+	var/projectile_name = "neurotoxin"
+	/// The base icon for the ability, so a red box can be put on it using _0 or _1
 	var/button_base_icon = "neurospit"
+	/// The sound that should be played when the xeno actually spits
 	var/spit_sound = 'modular_skyrat/modules/xenos_skyrat_redo/sound/alien_spitacid.ogg'
 	shared_cooldown = MOB_SHARED_COOLDOWN_3
 	cooldown_time = 5 SECONDS
