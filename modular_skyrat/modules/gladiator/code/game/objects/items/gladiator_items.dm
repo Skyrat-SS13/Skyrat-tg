@@ -21,7 +21,7 @@
 
 /obj/item/clothing/suit/hooded/berserker/gatsu
 	name = "berserker armor"
-	desc = "A suit of ancient body armor imbued with potent spiritual magnetism, capable of massively boosting a wearer's close combat skills at the cost of ravaging their mind and overexerting their body."
+	desc = "A suit of ancient body armor imbued with potent spiritual magnetism, capable of massively boosting a wearer's close combat skills at the cost of ravaging their mind and overexerting their body. <b>Berserk mode requires the suit's helmet to be equipped, and can only be charged by taking damage.</b>"
 	icon_state = "berk_suit"
 	icon = 'modular_skyrat/modules/gladiator/icons/berserk_icons.dmi'
 	worn_icon = 'modular_skyrat/modules/gladiator/icons/berserk_suit.dmi'
@@ -83,7 +83,7 @@
 
 /obj/item/claymore/dragonslayer
 	name = "dragonslayer"
-	desc = "A blade that seems too big to be called a sword. Too big, too thick, too heavy, and too rough, it's more like a large hunk of raw iron. Countless slain foes have given it a supernatural tempering. <b>Use inhand to dodge roll forwards at the cost of stamina.</b>"
+	desc = "A blade that seems too big to be called a sword. Too big, too thick, too heavy, and too rough, it's more like a large hunk of raw iron. Countless slain foes have given it a supernatural tempering. <b>Right click to dodge roll a maximum of three tiles at the cost of stamina.</b>"
 	icon = 'modular_skyrat/modules/gladiator/icons/dragonslayer.dmi'
 	icon_state = "dragonslayer"
 	inhand_icon_state = "dslayer"
