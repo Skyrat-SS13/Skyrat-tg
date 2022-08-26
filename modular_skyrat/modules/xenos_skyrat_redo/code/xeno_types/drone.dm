@@ -9,6 +9,7 @@
 	var/datum/action/cooldown/alien/skyrat/heal_aura/heal_aura_ability
 	melee_damage_lower = 15
 	melee_damage_upper = 20
+	next_evolution = /mob/living/carbon/alien/humanoid/skyrat/praetorian
 
 /mob/living/carbon/alien/humanoid/skyrat/drone/Initialize(mapload)
 	. = ..()
@@ -21,6 +22,7 @@
 
 /mob/living/carbon/alien/humanoid/skyrat/drone/create_internal_organs()
 	internal_organs += new /obj/item/organ/internal/alien/plasmavessel
+	internal_organs += new /obj/item/organ/internal/alien/resinspinner
 	..()
 
 /datum/action/cooldown/alien/skyrat/heal_aura

@@ -8,6 +8,12 @@
 	icon_state = "aliensentinel"
 	melee_damage_lower = 10
 	melee_damage_upper = 15
+	next_evolution = /mob/living/carbon/alien/humanoid/skyrat/spitter
+
+/mob/living/carbon/alien/humanoid/skyrat/sentinel/Initialize(mapload)
+	. = ..()
+
+	add_movespeed_modifier(/datum/movespeed_modifier/alien_slow)
 
 /mob/living/carbon/alien/humanoid/skyrat/sentinel/create_internal_organs()
 	internal_organs += new /obj/item/organ/internal/alien/plasmavessel/small
@@ -84,7 +90,7 @@
 	if(acid_casing)
 		var/obj/item/ammo_casing/casing = new acid_casing(caller.loc)
 		playsound(caller, spit_sound, 100, TRUE)
-		casing.fire_casing(target, caller, null, null, null, ran_zone(), 0,  caller)
+		casing.fire_casing(target, caller, null, null, null, ran_zone(), 0, caller)
 		caller.newtonian_move(get_dir(target_turf, user_turf))
 		return TRUE
 

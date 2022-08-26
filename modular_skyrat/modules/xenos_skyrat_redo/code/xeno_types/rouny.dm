@@ -3,9 +3,9 @@
 /mob/living/carbon/alien/humanoid/skyrat/runner
 	name = "alien runner"
 	caste = "runner"
-	maxHealth = 350
-	health = 350
-	icon_state = "alienravager"
+	maxHealth = 150
+	health = 150
+	icon_state = "alienrunner"
 	var/datum/action/cooldown/alien/skyrat/evade/evade_ability
 	melee_damage_lower = 20
 	melee_damage_upper = 25
@@ -15,6 +15,8 @@
 	AddComponent(/datum/component/tackler, stamina_cost = 0, base_knockdown = 2, range = 10, speed = 2, skill_mod = 7, min_distance = 0)
 	evade_ability = new /datum/action/cooldown/alien/skyrat/evade()
 	evade_ability.Grant(src)
+
+	add_movespeed_modifier(/datum/movespeed_modifier/alien_quick)
 
 /mob/living/carbon/alien/humanoid/skyrat/runner/Destroy()
 	QDEL_NULL(evade_ability)

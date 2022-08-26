@@ -3,8 +3,8 @@
 /mob/living/carbon/alien/humanoid/skyrat/ravager
 	name = "alien ravager"
 	caste = "ravager"
-	maxHealth = 150
-	health = 150
+	maxHealth = 350
+	health = 350
 	icon_state = "alienravager"
 	var/datum/action/cooldown/mob_cooldown/charge/triple_charge/ravager/triple_charge
 	var/datum/action/cooldown/spell/aoe/repulse/xeno/slicing/tailsweep_slice
@@ -23,6 +23,8 @@
 	you_cant_hurt_me_jack = new /datum/action/cooldown/alien/skyrat/literally_too_angry_to_die
 	you_cant_hurt_me_jack.Grant(src)
 
+	REMOVE_TRAIT(src, TRAIT_VENTCRAWLER_ALWAYS, INNATE_TRAIT)
+
 /mob/living/carbon/alien/humanoid/skyrat/ravager/Destroy()
 	QDEL_NULL(triple_charge)
 	QDEL_NULL(tailsweep_slice)
@@ -38,16 +40,20 @@
 	desc = "Allows you to charge thrice at a location, trampling any in your path."
 	cooldown_time = 30 SECONDS
 	charge_delay = 0.3 SECONDS
-	charge_distance = 5
+	charge_distance = 7
+	charge_past = 3
 	destroy_objects = FALSE
-	charge_damage = 40
+	charge_damage = 50
 	icon_icon = 'modular_skyrat/modules/xenos_skyrat_redo/icons/xeno_actions.dmi'
 	button_icon_state = "ravager_charge"
 	unset_after_click = TRUE
 
 /datum/action/cooldown/mob_cooldown/charge/triple_charge/ravager/do_charge_indicator(atom/charger, atom/charge_target)
-	. = ..()
 	playsound(charger, 'modular_skyrat/modules/xenos_skyrat_redo/sound/alien_roar2.ogg', 100, TRUE)
+
+/datum/action/cooldown/mob_cooldown/charge/triple_charge/ravager/Activate(atom/target_atom)
+	. = ..()
+	return TRUE
 
 /datum/action/cooldown/spell/aoe/repulse/xeno/slicing
 	name = "Slicing Tail Sweep"
@@ -102,7 +108,7 @@
 	button_icon_state = "literally_too_angry"
 	plasma_cost = 250 //This requires full plasma to do, so there can be some time between armstrong moments
 	var/endure_active = FALSE
-	var/endure_duration = 30 SECONDS
+	var/endure_duration = 20 SECONDS
 
 /datum/action/cooldown/alien/skyrat/literally_too_angry_to_die/Activate()
 	. = ..()
@@ -127,4 +133,3 @@
 	REMOVE_TRAIT(owner, TRAIT_STUNIMMUNE, TRAIT_XENO_ABILITY_GIVEN)
 	REMOVE_TRAIT(owner, TRAIT_NOSOFTCRIT, TRAIT_XENO_ABILITY_GIVEN)
 	REMOVE_TRAIT(owner, TRAIT_NOHARDCRIT, TRAIT_XENO_ABILITY_GIVEN)
-	owner.balloon_alert(owner, "endure ended")
