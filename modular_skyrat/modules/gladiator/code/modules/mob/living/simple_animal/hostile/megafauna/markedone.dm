@@ -285,7 +285,7 @@
 	for(var/turf/targeted as anything in spinningturfs)
 		dir = get_dir(src, targeted)
 		var/obj/effect/temp_visual/small_smoke/halfsecond/smonk = new /obj/effect/temp_visual/small_smoke/halfsecond(targeted)
-		QDEL_IN(smonk, 1.25)
+		QDEL_IN(smonk, 0.50)
 		for(var/mob/living/slapped in targeted)
 			if(!faction_check(faction, slapped.faction) && !(slapped in hit_things))
 				playsound(src, 'sound/weapons/slash.ogg', 75, 0)
@@ -297,7 +297,7 @@
 				hit_things |= slapped
 		if(!spinning)
 			break
-		sleep(1.25)
+		sleep(0.50)
 	animate(src, color = initial(color), 3)
 	sleep(3)
 	spinning = FALSE
