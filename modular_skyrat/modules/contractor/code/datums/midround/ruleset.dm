@@ -30,7 +30,7 @@
 		log_admin("Cannot accept Drifting Contractors ruleset. Couldn't find any carp spawn points.")
 		message_admins("Cannot accept Drifting Contractors ruleset. Couldn't find any carp spawn points.")
 		return FALSE
-	return ..()
+	return TRUE
 
 /datum/dynamic_ruleset/midround/from_ghosts/contractor/finish_setup(mob/new_character, index)
 	..()

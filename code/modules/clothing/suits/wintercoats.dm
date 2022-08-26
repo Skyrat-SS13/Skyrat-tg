@@ -132,7 +132,7 @@
 		/obj/item/hatchet,
 		/obj/item/plant_analyzer,
 		/obj/item/reagent_containers/spray/plantbgone,
-		/obj/item/reagent_containers/glass/bottle,
+		/obj/item/reagent_containers/cup/bottle,
 		/obj/item/reagent_containers/spray/pestspray,
 		/obj/item/seeds,
 		/obj/item/storage/bag/plants,
@@ -152,8 +152,8 @@
 	allowed = list(
 		/obj/item/grenade/chem_grenade,
 		/obj/item/holosign_creator,
-		/obj/item/reagent_containers/glass/beaker,
-		/obj/item/reagent_containers/glass/bottle,
+		/obj/item/reagent_containers/cup/beaker,
+		/obj/item/reagent_containers/cup/bottle,
 		/obj/item/reagent_containers/spray,
 	)
 	hoodtype = /obj/item/clothing/head/hooded/winterhood/janitor
@@ -204,8 +204,8 @@
 		/obj/item/gun/syringe,
 		/obj/item/healthanalyzer,
 		/obj/item/reagent_containers/dropper,
-		/obj/item/reagent_containers/glass/beaker,
-		/obj/item/reagent_containers/glass/bottle,
+		/obj/item/reagent_containers/cup/beaker,
+		/obj/item/reagent_containers/cup/bottle,
 		/obj/item/reagent_containers/hypospray,
 		/obj/item/reagent_containers/pill,
 		/obj/item/reagent_containers/syringe,
@@ -296,8 +296,8 @@
 		/obj/item/dnainjector,
 		/obj/item/paper,
 		/obj/item/reagent_containers/dropper,
-		/obj/item/reagent_containers/glass/beaker,
-		/obj/item/reagent_containers/glass/bottle,
+		/obj/item/reagent_containers/cup/beaker,
+		/obj/item/reagent_containers/cup/bottle,
 		/obj/item/reagent_containers/hypospray,
 		/obj/item/reagent_containers/pill,
 		/obj/item/reagent_containers/syringe,
@@ -447,7 +447,7 @@
 	allowed += list(
 		/obj/item/melee/baton/telescopic,
 	)
-	
+
 /obj/item/clothing/head/hooded/winterhood/cargo/qm
 	desc = "A dark brown winter hood"
 	icon_state = "hood_qm"

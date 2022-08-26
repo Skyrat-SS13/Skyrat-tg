@@ -42,7 +42,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/mopbucket,
 /obj/item/mop,
-/obj/item/reagent_containers/glass/bucket,
+/obj/item/reagent_containers/cup/bucket,
 /obj/item/soap/nanotrasen,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/port_tarkon/afthall)
@@ -522,6 +522,12 @@
 /obj/effect/turf_decal/stripes{
 	dir = 6
 	},
+/obj/machinery/button/door{
+	id = "ptatmos";
+	name = "shutter controls";
+	pixel_x = -39;
+	pixel_y = -10
+	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/port_tarkon/atmos)
 "dg" = (
@@ -687,12 +693,12 @@
 "dW" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/closet/secure_closet/freezer/fridge/open,
-/obj/item/reagent_containers/food/condiment/flour,
-/obj/item/reagent_containers/food/condiment/flour,
-/obj/item/reagent_containers/food/condiment/flour,
-/obj/item/reagent_containers/food/condiment/flour,
-/obj/item/reagent_containers/food/condiment/sugar,
-/obj/item/reagent_containers/food/condiment/sugar,
+/obj/item/reagent_containers/condiment/flour,
+/obj/item/reagent_containers/condiment/flour,
+/obj/item/reagent_containers/condiment/flour,
+/obj/item/reagent_containers/condiment/flour,
+/obj/item/reagent_containers/condiment/sugar,
+/obj/item/reagent_containers/condiment/sugar,
 /turf/open/floor/iron/cafeteria,
 /area/ruin/space/has_grav/port_tarkon/kitchen)
 "dX" = (
@@ -1699,12 +1705,17 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/afthall)
 "jv" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
 /obj/machinery/button/door{
 	id = "ptobservatory";
-	name = "shutter controls"
+	name = "shutter controls";
+	pixel_y = -32
 	},
-/turf/closed/wall,
-/area/ruin/space/has_grav/port_tarkon/developement)
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/port_tarkon/observ)
 "jz" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/effect/decal/cleanable/dirt,
@@ -1968,17 +1979,17 @@
 /area/ruin/space/has_grav)
 "kI" = (
 /obj/structure/table/reinforced,
-/obj/item/reagent_containers/food/condiment/saltshaker{
+/obj/item/reagent_containers/condiment/saltshaker{
 	pixel_x = -2
 	},
-/obj/item/reagent_containers/food/condiment/saltshaker{
+/obj/item/reagent_containers/condiment/saltshaker{
 	pixel_x = -2
 	},
-/obj/item/reagent_containers/food/condiment/peppermill{
+/obj/item/reagent_containers/condiment/peppermill{
 	pixel_x = 2;
 	pixel_y = 2
 	},
-/obj/item/reagent_containers/food/condiment/peppermill{
+/obj/item/reagent_containers/condiment/peppermill{
 	pixel_x = 2;
 	pixel_y = 1
 	},
@@ -2601,6 +2612,9 @@
 /area/ruin/space/has_grav)
 "of" = (
 /obj/effect/spawner/structure/window/reinforced/no_firelock,
+/obj/machinery/door/poddoor/shutters{
+	id = "ptafthall"
+	},
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/port_tarkon/afthall)
 "og" = (
@@ -3005,6 +3019,15 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/port_tarkon/observ)
+"qf" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/button/door{
+	id = "ptafthall";
+	name = "shutter controls";
+	pixel_x = -26
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/port_tarkon/afthall)
 "qh" = (
 /obj/machinery/door/poddoor/shutters/preopen{
 	id = "tarkonouter";
@@ -3756,7 +3779,7 @@
 	pixel_y = 8
 	},
 /obj/effect/spawner/random/entertainment/cigarette_pack,
-/obj/item/reagent_containers/glass/rag,
+/obj/item/reagent_containers/cup/rag,
 /turf/open/floor/iron/white,
 /area/ruin/space/has_grav/port_tarkon/centerhall)
 "uD" = (
@@ -5358,6 +5381,10 @@
 	dir = 4
 	},
 /obj/item/tape/ruins/tarkon,
+/obj/machinery/button/door{
+	id = "ptcomms";
+	name = "shutter controls"
+	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/port_tarkon/comms)
 "EH" = (
@@ -5549,9 +5576,9 @@
 /area/ruin/space/has_grav/port_tarkon/comms)
 "FS" = (
 /obj/structure/table/reinforced,
-/obj/item/reagent_containers/food/condiment/enzyme,
+/obj/item/reagent_containers/condiment/enzyme,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/reagent_containers/food/condiment/sugar,
+/obj/item/reagent_containers/condiment/sugar,
 /turf/open/floor/iron/cafeteria,
 /area/ruin/space/has_grav/port_tarkon/kitchen)
 "FT" = (
@@ -6491,8 +6518,8 @@
 /area/ruin/space/has_grav/port_tarkon/forehall)
 "KZ" = (
 /obj/structure/table/reinforced,
-/obj/item/reagent_containers/glass/beaker/large,
-/obj/item/reagent_containers/glass/beaker/large,
+/obj/item/reagent_containers/cup/beaker/large,
+/obj/item/reagent_containers/cup/beaker/large,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/cafeteria,
 /area/ruin/space/has_grav/port_tarkon/kitchen)
@@ -8432,6 +8459,9 @@
 /obj/effect/spawner/structure/window/reinforced/no_firelock,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/door/firedoor/solid/closed,
+/obj/machinery/door/poddoor/shutters{
+	id = "ptatmos"
+	},
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/port_tarkon/atmos)
 "WQ" = (
@@ -8693,6 +8723,9 @@
 /area/ruin/space/has_grav/port_tarkon/developement)
 "YK" = (
 /obj/effect/spawner/structure/window/reinforced/no_firelock,
+/obj/machinery/door/poddoor/shutters{
+	id = "ptcomms"
+	},
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/port_tarkon/comms)
 "YT" = (
@@ -9773,8 +9806,8 @@ La
 eu
 Tc
 Uw
-qe
 jv
+nP
 nP
 nP
 nP
@@ -11414,7 +11447,7 @@ mu
 Pz
 LN
 jr
-LN
+qf
 Wp
 of
 of

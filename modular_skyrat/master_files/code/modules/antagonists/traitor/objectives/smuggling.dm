@@ -24,7 +24,7 @@
 	var/list/possible_contrabands = list(
 		/obj/item/pen/edagger/prototype = 2,
 		/obj/item/gun/syringe/syndicate/prototype = 4,
-		/obj/item/reagent_containers/glass/bottle/ritual_wine = 6, // poison kit price
+		/obj/item/reagent_containers/cup/bottle/ritual_wine = 6, // poison kit price
 	)
 
 /datum/traitor_objective/smuggle/is_duplicate(datum/traitor_objective/smuggle/objective_to_compare)
