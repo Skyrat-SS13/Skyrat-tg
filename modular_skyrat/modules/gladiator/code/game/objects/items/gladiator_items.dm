@@ -28,6 +28,13 @@
 	hoodtype = /obj/item/clothing/head/hooded/berserker/gatsu
 	armor = list(MELEE = 45, BULLET = 40, LASER = 30, ENERGY = 30, BOMB = 80, BIO = 100, FIRE = 100, ACID = 100)
 
+#define MAX_BERSERK_CHARGE 100
+#define PROJECTILE_HIT_MULTIPLIER 1.5
+#define DAMAGE_TO_CHARGE_SCALE 1
+#define CHARGE_DRAINED_PER_SECOND 3
+#define BERSERK_MELEE_ARMOR_ADDED 50
+#define BERSERK_ATTACK_SPEED_MODIFIER 0.25
+
 /obj/item/clothing/head/hooded/berserker/gatsu
 	name = "berserker helmet"
 	desc = "An oddly shaped helmet that seems to close in on it's wearer. Peering into the eyes of the helmet reveals an untold number of screams."
@@ -36,6 +43,8 @@
 	worn_icon = 'modular_skyrat/modules/gladiator/icons/berserk_suit.dmi'
 	armor = list(MELEE = 45, BULLET = 40, LASER = 30, ENERGY = 30, BOMB = 80, BIO = 100, FIRE = 100, ACID = 100)
 	actions_types = list(/datum/action/item_action/berserk_mode)
+	var/berserk_charge = 0
+	var/berserk_active = FALSE
 
 /obj/item/clothing/head/hooded/berserker/gatsu/Initialize(mapload)
 	. = ..()
