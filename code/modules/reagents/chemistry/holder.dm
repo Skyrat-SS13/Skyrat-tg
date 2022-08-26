@@ -510,14 +510,23 @@
 				continue
 			if(methods)
 				r_to_send += reagent
+<<<<<<< HEAD
 			remove_reagent(reagent.type, transfer_amount, no_react) //SKYRAT EDIT CHANGE
 			var/list/reagent_qualities = list(REAGENT_TRANSFER_AMOUNT = transfer_amount, REAGENT_PURITY = reagent.purity)
 			transfer_log[reagent.type] = reagent_qualities
+=======
+>>>>>>> 1e5083f4274 (Fixes strange reagent, and possibly other chems too (#69432))
 
 		if(istype(target_atom, /obj/item/organ))
 			R.expose_multiple(r_to_send, target, methods, part, show_message)
 		else
 			R.expose_multiple(r_to_send, target_atom, methods, part, show_message)
+
+		for(var/datum/reagent/reagent as anything in r_to_send)
+			var/transfer_amount = reagent.volume * part
+			remove_reagent(reagent.type, transfer_amount)
+			var/list/reagent_qualities = list(REAGENT_TRANSFER_AMOUNT = transfer_amount, REAGENT_PURITY = reagent.purity)
+			transfer_log[reagent.type] = reagent_qualities
 
 	else
 		var/to_transfer = amount
