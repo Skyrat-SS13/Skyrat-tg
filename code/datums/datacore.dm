@@ -298,17 +298,12 @@ GLOBAL_DATUM_INIT(data_core, /datum/datacore, new)
 			G.fields["gender"] = "Female"
 		else
 			G.fields["gender"] = "Other"
-<<<<<<< HEAD
-		G.fields["photo_front"] = photo_front
-		G.fields["photo_side"] = photo_side
+		G.fields["character_appearance"] = character_appearance
 		// SKYRAT ADDITION START - RP RECORDS
 		G.fields["past_records"] = human_client?.prefs?.read_preference(/datum/preference/text/general) || ""
 		G.fields["background_records"] = human_client?.prefs?.read_preference(/datum/preference/text/background) || ""
 		G.fields["exploitable_records"] = human_client?.prefs?.read_preference(/datum/preference/text/exploitable) || ""
 		// SKYRAT ADDITION END
-=======
-		G.fields["character_appearance"] = character_appearance
->>>>>>> bc83fc1e9f4 (Makes the game start faster by optimizing round-start manifest injections (#69393))
 		general += G
 
 		//Medical Record
