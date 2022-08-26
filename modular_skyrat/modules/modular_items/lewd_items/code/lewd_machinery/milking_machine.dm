@@ -65,7 +65,7 @@
 */
 
 	var/obj/item/organ/external/genital/current_selected_organ = null // Organ selected in UI
-	var/obj/item/reagent_containers/glass/beaker = null // Beaker inserted in machine
+	var/obj/item/reagent_containers/cup/beaker = null // Beaker inserted in machine
 	var/mob/living/carbon/human/current_mob = null // Mob buckled to the machine
 	var/obj/item/organ/external/genital/breasts/current_breasts = null // Buckled mob breasts
 	var/obj/item/organ/external/genital/testicles/current_testicles = null // Buckled mob testicles
@@ -333,7 +333,7 @@
 	else
 		clear_mood_event("handcuffed")
 	update_action_buttons_icon() //some of our action buttons might be unusable when we're handcuffed.
-	update_inv_handcuffed()
+	update_worn_handcuffs()
 	update_hud_handcuffed()
 
 /obj/item

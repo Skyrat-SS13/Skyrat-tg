@@ -98,13 +98,13 @@
 				if(affecting.body_zone == BODY_ZONE_HEAD)
 					if(wear_mask)
 						wear_mask.add_mob_blood(src)
-						update_inv_wear_mask()
+						update_worn_mask()
 					if(wear_neck)
 						wear_neck.add_mob_blood(src)
-						update_inv_neck()
+						update_worn_neck()
 					if(head)
 						head.add_mob_blood(src)
-						update_inv_head()
+						update_worn_head()
 
 		return TRUE //successful attack
 
@@ -493,8 +493,9 @@
 			to_chat(helper, span_warning("[src] looks visibly upset as you pat [p_them()] on the head."))
 		//SKYRAT EDIT ADDITION BEGIN - EMOTES
 		if(HAS_TRAIT(src, TRAIT_EXCITABLE))
-			if(!src.dna.species.is_wagging_tail(src))
-				src.emote("wag")
+			var/obj/item/organ/external/tail/src_tail = getorganslot(ORGAN_SLOT_EXTERNAL_TAIL)
+			if(src_tail && !(src_tail.wag_flags & WAG_WAGGING))
+				emote("wag")
 		//SKYRAT EDIT ADDITION END
 	else if ((helper.zone_selected == BODY_ZONE_PRECISE_GROIN) && !isnull(src.getorgan(/obj/item/organ/external/tail)))
 		helper.visible_message(span_notice("[helper] pulls on [src]'s tail!"), \

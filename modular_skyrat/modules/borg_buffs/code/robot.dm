@@ -217,7 +217,7 @@
 	build_path = /obj/item/borg/upgrade/wirebrush
 	materials = list(/datum/material/iron = 4000)
 	construction_time = 40
-	category = list("Cyborg Upgrade Modules")
+	category = list(RND_CATEGORY_CYBORG_UPGRADE_MODULES)
 
 /obj/item/borg/upgrade/wirebrush
 	name = "janitor cyborg wire-brush"

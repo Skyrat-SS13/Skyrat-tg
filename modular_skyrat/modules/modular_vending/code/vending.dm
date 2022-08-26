@@ -3,6 +3,8 @@
 /obj/machinery/vending
 	/// Additions to the `products` list  of the vending machine, modularly. Will become null after Initialize, to free up memory.
 	var/list/skyrat_products
+	/// Additions to the `product_categories` list of the vending machine, modularly. Will become null after Initialize, to free up memory.
+	var/list/skyrat_product_categories
 	/// Additions to the `premium` list  of the vending machine, modularly. Will become null after Initialize, to free up memory.
 	var/list/skyrat_premium
 	/// Additions to the `contraband` list  of the vending machine, modularly. Will become null after Initialize, to free up memory.
@@ -11,8 +13,22 @@
 /obj/machinery/vending/Initialize(mapload)
 	if(skyrat_products)
 		products += skyrat_products
+
+	if(skyrat_product_categories)
+		for(var/category in skyrat_product_categories)
+			var/already_exists = FALSE
+			for(var/existing_category in product_categories)
+				if(existing_category["name"] == category["name"])
+					existing_category["products"] += category["products"]
+					already_exists = TRUE
+					break
+
+			if(!already_exists)
+				product_categories += category
+
 	if(skyrat_premium)
 		premium += skyrat_premium
+
 	if(skyrat_contraband)
 		contraband += skyrat_contraband
 
@@ -20,11 +36,18 @@
 	for (var/obj/item/clothing/item in products)
 		if(products[item] < MINIMUM_CLOTHING_STOCK && allow_increase(item))
 			products[item] = MINIMUM_CLOTHING_STOCK
+
+	for (var/category in product_categories)
+		for(var/obj/item/clothing/item in category["products"])
+			if(category["products"][item] < MINIMUM_CLOTHING_STOCK && allow_increase(item))
+				category["products"][item] = MINIMUM_CLOTHING_STOCK
+
 	for (var/obj/item/clothing/item in premium)
 		if(premium[item] < MINIMUM_CLOTHING_STOCK && allow_increase(item))
 			premium[item] = MINIMUM_CLOTHING_STOCK
 
 	QDEL_NULL(skyrat_products)
+	QDEL_NULL(skyrat_product_categories)
 	QDEL_NULL(skyrat_premium)
 	QDEL_NULL(skyrat_contraband)
 	return ..()
