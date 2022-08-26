@@ -58,6 +58,7 @@
 	if(!berserk_charge)
 		if(ishuman(loc))
 			end_berserk(loc)
+			icon_state = "berk_helm"
 
 /obj/item/clothing/head/hooded/berserker/gatsu/dropped(mob/user)
 	. = ..()
@@ -66,6 +67,7 @@
 /obj/item/clothing/head/hooded/berserker/gatsu/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
 	if(berserk_active)
 		return
+		icon_state = "berk_helm"
 	var/berserk_value = damage * DAMAGE_TO_CHARGE_SCALE
 	if(attack_type == PROJECTILE_ATTACK)
 		berserk_value *= PROJECTILE_HIT_MULTIPLIER
@@ -73,40 +75,11 @@
 	if(berserk_charge >= MAX_BERSERK_CHARGE)
 		to_chat(owner, span_notice("Berserk mode is fully charged."))
 		balloon_alert(owner, "berserk charged")
+		icon_state = "berk_helm_rage"
 
 /obj/item/clothing/head/hooded/berserker/gatsu/IsReflect()
 	if(berserk_active)
 		return TRUE
-
-/obj/item/clothing/head/hooded/berserker/gatsu/proc/berserk_mode(mob/living/carbon/human/user)
-	to_chat(user, span_warning("You enter berserk mode."))
-	playsound(user, 'sound/magic/staff_healing.ogg', 50)
-	berserk_active = TRUE
-	user.add_movespeed_modifier(/datum/movespeed_modifier/berserk)
-	user.physiology.armor.melee += BERSERK_MELEE_ARMOR_ADDED
-	user.next_move_modifier *= BERSERK_ATTACK_SPEED_MODIFIER
-	user.add_atom_colour(COLOR_BUBBLEGUM_RED, TEMPORARY_COLOUR_PRIORITY)
-	ADD_TRAIT(user, TRAIT_NOGUNS, BERSERK_TRAIT)
-	ADD_TRAIT(src, TRAIT_NODROP, BERSERK_TRAIT)
-	icon_state = "berk_helm_rage"
-	START_PROCESSING(SSobj, src)
-
-/obj/item/clothing/head/hooded/berserker/gatsu/proc/end_berserk(mob/living/carbon/human/user)
-	if(!berserk_active)
-		return
-	berserk_active = FALSE
-	if(QDELETED(user))
-		return
-	to_chat(user, span_warning("You exit berserk mode."))
-	playsound(user, 'sound/magic/summonitems_generic.ogg', 50)
-	icon_state = "berk_helm"
-	user.remove_movespeed_modifier(/datum/movespeed_modifier/berserk)
-	user.physiology.armor.melee -= BERSERK_MELEE_ARMOR_ADDED
-	user.next_move_modifier /= BERSERK_ATTACK_SPEED_MODIFIER
-	user.remove_atom_colour(TEMPORARY_COLOUR_PRIORITY, COLOR_BUBBLEGUM_RED)
-	REMOVE_TRAIT(user, TRAIT_NOGUNS, BERSERK_TRAIT)
-	REMOVE_TRAIT(src, TRAIT_NODROP, BERSERK_TRAIT)
-	STOP_PROCESSING(SSobj, src)
 
 /obj/item/claymore/dragonslayer
 	name = "dragonslayer"
