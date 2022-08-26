@@ -15,8 +15,12 @@
 /datum/examine_panel/ui_interact(mob/user, datum/tgui/ui)
 	if(!examine_panel_screen)
 		examine_panel_screen = new
-		var/mutable_appearance/current_mob_appearance = new(user)
+		var/mutable_appearance/current_mob_appearance = new(holder)
 		current_mob_appearance.setDir(SOUTH)
+		// In case they're pixel-shifted, we bring 'em back!
+		current_mob_appearance.pixel_x = 0
+		current_mob_appearance.pixel_y = 0
+
 		examine_panel_screen.add_overlay(current_mob_appearance)
 		examine_panel_screen.name = "screen"
 		examine_panel_screen.assigned_map = "examine_panel_[REF(holder)]_map"
