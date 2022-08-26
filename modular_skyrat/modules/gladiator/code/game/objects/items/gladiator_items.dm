@@ -19,19 +19,100 @@
 	if(.)
 		incomingchance.block_chance -= bonus_value
 
-/obj/item/claymore/agateram //it just works
-	name = "ancient blade agateram"
-	desc = "A millenia-old blade made from a material that you can't even begin to fathom. It flows with the power of the Marked One who once held it." //That thing was too big to be called a sword. Too big, too thick, too heavy, and too rough, it was more like a large hunk of iron.
-	icon = 'modular_skyrat/master_files/icons/obj/agateram.dmi'
-	icon_state = "demonsword"
-	inhand_icon_state = "demonsword"
-	lefthand_file = 'modular_skyrat/master_files/icons/mob/agateraminhandsleft.dmi'
-	righthand_file = 'modular_skyrat/master_files/icons/mob/agateraminhandsright.dmi'
+/obj/item/clothing/suit/hooded/berserker/gatsu
+	name = "berserker armor"
+	desc = "A suit of ancient body armor imbued with potent spiritual magnetism, capable of massively boosting a wearer's close combat skills at the cost of ravaging their mind and overexerting their body."
+	icon_state = "berk_suit"
+	icon = 'modular_skyrat/modules/gladiator/icons/berserk_icons.dmi'
+	worn_icon = 'modular_skyrat/modules/gladiator/icons/berserk_suit.dmi'
+	hoodtype = /obj/item/clothing/head/hooded/berserker/gatsu
+	armor = list(MELEE = 45, BULLET = 40, LASER = 30, ENERGY = 30, BOMB = 80, BIO = 100, FIRE = 100, ACID = 100)
+
+/obj/item/clothing/head/hooded/berserker/gatsu
+	name = "berserker helmet"
+	desc = "An oddly shaped helmet that seems to close in on it's wearer. Peering into the eyes of the helmet reveals an untold number of screams."
+	icon_state = "berk_helm"
+	icon = 'modular_skyrat/modules/gladiator/icons/berserk_icons.dmi'
+	worn_icon = 'modular_skyrat/modules/gladiator/icons/berserk_suit.dmi'
+	armor = list(MELEE = 45, BULLET = 40, LASER = 30, ENERGY = 30, BOMB = 80, BIO = 100, FIRE = 100, ACID = 100)
+	actions_types = list(/datum/action/item_action/berserk_mode)
+
+/obj/item/clothing/head/hooded/berserker/gatsu/Initialize(mapload)
+	. = ..()
+	ADD_TRAIT(src, TRAIT_NODROP, LOCKED_HELMET_TRAIT)
+
+/obj/item/clothing/head/hooded/berserker/gatsu/examine()
+	. = ..()
+	. += span_notice("Berserk mode is [berserk_charge]% charged.")
+
+/obj/item/clothing/head/hooded/berserke/gatsur/process(delta_time)
+	if(berserk_active)
+		berserk_charge = clamp(berserk_charge - CHARGE_DRAINED_PER_SECOND * delta_time, 0, MAX_BERSERK_CHARGE)
+	if(!berserk_charge)
+		if(ishuman(loc))
+			end_berserk(loc)
+
+/obj/item/clothing/head/hooded/berserker/gatsu/dropped(mob/user)
+	. = ..()
+	end_berserk(user)
+
+/obj/item/clothing/head/hooded/berserker/gatsu/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
+	if(berserk_active)
+		return
+	var/berserk_value = damage * DAMAGE_TO_CHARGE_SCALE
+	if(attack_type == PROJECTILE_ATTACK)
+		berserk_value *= PROJECTILE_HIT_MULTIPLIER
+	berserk_charge = clamp(round(berserk_charge + berserk_value), 0, MAX_BERSERK_CHARGE)
+	if(berserk_charge >= MAX_BERSERK_CHARGE)
+		to_chat(owner, span_notice("Berserk mode is fully charged."))
+		balloon_alert(owner, "berserk charged")
+
+/obj/item/clothing/head/hooded/berserker/gatsu/IsReflect()
+	if(berserk_active)
+		return TRUE
+
+/obj/item/clothing/head/hooded/berserker/gatsu/proc/berserk_mode(mob/living/carbon/human/user)
+	to_chat(user, span_warning("You enter berserk mode."))
+	playsound(user, 'sound/magic/staff_healing.ogg', 50)
+	berserk_active = TRUE
+	user.add_movespeed_modifier(/datum/movespeed_modifier/berserk)
+	user.physiology.armor.melee += BERSERK_MELEE_ARMOR_ADDED
+	user.next_move_modifier *= BERSERK_ATTACK_SPEED_MODIFIER
+	user.add_atom_colour(COLOR_BUBBLEGUM_RED, TEMPORARY_COLOUR_PRIORITY)
+	ADD_TRAIT(user, TRAIT_NOGUNS, BERSERK_TRAIT)
+	ADD_TRAIT(src, TRAIT_NODROP, BERSERK_TRAIT)
+	icon_state = "berk_helm_rage"
+	START_PROCESSING(SSobj, src)
+
+/obj/item/clothing/head/hooded/berserker/gatsu/proc/end_berserk(mob/living/carbon/human/user)
+	if(!berserk_active)
+		return
+	berserk_active = FALSE
+	if(QDELETED(user))
+		return
+	to_chat(user, span_warning("You exit berserk mode."))
+	playsound(user, 'sound/magic/summonitems_generic.ogg', 50)
+	icon_state = "berk_helm"
+	user.remove_movespeed_modifier(/datum/movespeed_modifier/berserk)
+	user.physiology.armor.melee -= BERSERK_MELEE_ARMOR_ADDED
+	user.next_move_modifier /= BERSERK_ATTACK_SPEED_MODIFIER
+	user.remove_atom_colour(TEMPORARY_COLOUR_PRIORITY, COLOR_BUBBLEGUM_RED)
+	REMOVE_TRAIT(user, TRAIT_NOGUNS, BERSERK_TRAIT)
+	REMOVE_TRAIT(src, TRAIT_NODROP, BERSERK_TRAIT)
+	STOP_PROCESSING(SSobj, src)
+
+/obj/item/claymore/dragonslayer
+	name = "dragonslayer"
+	desc = "A blade that seems too big to be called a sword. Too big, too thick, too heavy, and too rough, it's more like a large hunk of raw iron. Countless slain foes have given it a supernatural tempering."
+	icon = 'master-skyrat/modular_skyrat/modules/gladiator/icons/dragonslayer.dmi'
+	icon_state = "dragonslayer"
+	inhand_icon_state = "dslayer"
+	lefthand_file = 'modular_skyrat/modules/gladiator/icons/dragonslayer_inhand_L.dmi'
+	righthand_file = 'modular_skyrat/modules/gladiator/icons/dragonslayer_inhand_R.dmi'
 	hitsound = 'modular_skyrat/master_files/sound/weapons/bloodyslice.ogg'
 	w_class = WEIGHT_CLASS_HUGE
 	slot_flags = null
 	force = 20
-	// This is a fuck off huge weapon that literally can only be held or dragged around, this is fine imho
 	wound_bonus = 10
 	bare_wound_bonus = 5
 	resistance_flags = INDESTRUCTIBLE
@@ -46,7 +127,7 @@
 	/// how far do we roll?
 	var/roll_range = 3
 
-/obj/item/claymore/agateram/attack(mob/living/target, mob/living/carbon/human/user)
+/obj/item/claymore/dragonslayer/attack(mob/living/target, mob/living/carbon/human/user)
 	var/is_nemesis_faction = FALSE
 	for(var/found_faction in target.faction)
 		if(found_faction in nemesis_factions)
@@ -57,7 +138,7 @@
 	if(is_nemesis_faction)
 		force -= faction_bonus_force
 
-/obj/item/claymore/agateram/afterattack_secondary(atom/target, mob/living/user, params) // dark souls
+/obj/item/claymore/dragonslayer/afterattack_secondary(atom/target, mob/living/user, params) // dark souls
 	if(user.IsImmobilized()) // no free dodgerolls
 		return
 	var/turf/where_to = get_turf(target)
@@ -96,8 +177,8 @@
 	name = "dreadful gladiator chest"
 
 /obj/structure/closet/crate/necropolis/gladiator/PopulateContents()
-	new /obj/item/claymore/agateram(src)
+	new /obj/item/claymore/dragonslayer(src)
 
 /obj/structure/closet/crate/necropolis/gladiator/crusher/PopulateContents()
-	new /obj/item/claymore/agateram(src)
+	new /obj/item/claymore/dragonslayer(src)
 	new /obj/item/crusher_trophy/gladiator(src)
