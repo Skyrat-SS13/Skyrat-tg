@@ -244,7 +244,6 @@
 			if(phase == 2)
 				phase = 3
 				AddElement(/datum/element/cult_halo)
-				AddElement(/datum/element/blood_walk, /obj/effect/decal/cleanable/blood/drip)
 				swordslam()
 				playsound(src, 'sound/effects/clockcult_gateway_charging.ogg', 200, 1, 2)
 				rapid_melee = 4
@@ -389,10 +388,10 @@
 				ranged_cooldown += 3 SECONDS
 			else
 				INVOKE_ASYNC(src, .proc/charge, target, 21)
-				anged_cooldown += 2 SECONDS
+				ranged_cooldown += 2 SECONDS
 				
 
-/procs/ground_pound(atom/source, range, delay, throw_range)
+/proc/ground_pound(atom/source, range, delay, throw_range)
 	var/turf/orgin = get_turf(source)
 	if(!orgin)
 		return
@@ -415,10 +414,7 @@
 		sleep(delay)
 		
 /mob/living/simple_animal/hostile/megafauna/gladiator/proc/swordslam()
-	can_move = FALSE
 	ground_pound(src, 5, 3, 8)
-	update_cooldowns(list(COOLDOWN_UPDATE_SET_MELEE = 0 SECONDS, COOLDOWN_UPDATE_SET_RANGED = 0 SECONDS))
-	can_move = TRUE
 
 #undef MARKED_ONE_STUN_DURATION
 #undef MARKED_ONE_ANGER_DURATION
