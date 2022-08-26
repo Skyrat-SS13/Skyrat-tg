@@ -16,7 +16,6 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror, 28)
 	if(icon_state == "mirror_broke" && !broken)
 		atom_break(null, mapload)
 
-/* SKYRAT EDIT REMOVAL
 /obj/structure/mirror/attack_hand(mob/user, list/modifiers)
 	. = ..()
 	if(.)
@@ -51,7 +50,6 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror, 28)
 	hairdresser.hairstyle = new_style
 
 	hairdresser.update_body_parts()
-*/
 
 /obj/structure/mirror/examine_status(mob/user)
 	if(broken)
