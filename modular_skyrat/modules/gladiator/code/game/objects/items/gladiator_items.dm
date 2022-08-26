@@ -54,7 +54,7 @@
 	. = ..()
 	. += span_notice("Berserk mode is [berserk_charge]% charged.")
 
-/obj/item/clothing/head/hooded/berserke/gatsur/process(delta_time)
+/obj/item/clothing/head/hooded/berserker/gatsur/process(delta_time)
 	if(berserk_active)
 		berserk_charge = clamp(berserk_charge - CHARGE_DRAINED_PER_SECOND * delta_time, 0, MAX_BERSERK_CHARGE)
 	if(!berserk_charge)
@@ -193,3 +193,10 @@
 	new /obj/item/claymore/dragonslayer(src)
 	new /obj/item/clothing/suit/hooded/berserker/gatsu(src)
 	new /obj/item/crusher_trophy/gladiator(src)
+
+#undef MAX_BERSERK_CHARGE
+#undef PROJECTILE_HIT_MULTIPLIER
+#undef DAMAGE_TO_CHARGE_SCALE
+#undef CHARGE_DRAINED_PER_SECOND
+#undef BERSERK_MELEE_ARMOR_ADDED
+#undef BERSERK_ATTACK_SPEED_MODIFIER
