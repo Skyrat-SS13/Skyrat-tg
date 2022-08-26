@@ -16,6 +16,7 @@
 	death_sound = 'sound/creatures/space_dragon_roar.ogg'
 	death_message = "falls on his sword, ash evaporating from every hole in his armor."
 	gps_name = "Forgotten Signal"
+	gender = MALE
 	rapid_melee = 1
 	melee_queue_distance = 2
 	melee_damage_lower = 40
@@ -231,7 +232,7 @@
 			move_to_delay = initial(move_to_delay)
 			melee_damage_upper = initial(melee_damage_upper)
 			melee_damage_lower = initial(melee_damage_lower)
-		if(30 to 75)
+		if(40 to 75)
 			if(phase == 1)
 				phase = 2
 				playsound(src, 'sound/effects/clockcult_gateway_disrupted.ogg', 200, 1, 2)
@@ -240,7 +241,7 @@
 				move_to_delay = 2
 				melee_damage_upper = 30
 				melee_damage_lower = 30
-		if(15 to 30)
+		if(15 to 40)
 			if(phase == 2)
 				phase = 3
 				AddElement(/datum/element/cult_halo)
