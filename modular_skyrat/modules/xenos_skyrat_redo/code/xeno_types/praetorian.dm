@@ -2,10 +2,10 @@
 
 /mob/living/carbon/alien/humanoid/skyrat/praetorian
 	name = "alien praetorian"
-	caste = "prae"
+	caste = "praetorian"
 	maxHealth = 400
 	health = 400
-	icon_state = "alienprae"
+	icon_state = "alienpraetorian"
 	var/datum/action/cooldown/alien/skyrat/heal_aura/juiced/heal_aura_ability
 	var/datum/action/cooldown/spell/aoe/repulse/xeno/hard_throwing/tail_sweep
 	melee_damage_lower = 25
@@ -21,6 +21,8 @@
 	tail_sweep.Grant(src)
 
 	REMOVE_TRAIT(src, TRAIT_VENTCRAWLER_ALWAYS, INNATE_TRAIT)
+
+	add_movespeed_modifier(/datum/movespeed_modifier/alien_big)
 
 /mob/living/carbon/alien/humanoid/skyrat/praetorian/Destroy()
 	QDEL_NULL(heal_aura_ability)
@@ -47,14 +49,21 @@
 
 	cooldown_time = 60 SECONDS
 
-	aoe_radius = 3
+	aoe_radius = 2
+	repulse_force = MOVE_FORCE_OVERPOWERING //Fuck everyone who gets hit by this tail in particular
 
 	icon_icon = 'modular_skyrat/modules/xenos_skyrat_redo/icons/xeno_actions.dmi'
 	button_icon_state = "throw_tail"
 
 	sparkle_path = /obj/effect/temp_visual/dir_setting/tailsweep/praetorian
 
-	sound = 'modular_skyrat/modules/xenos_skyrat_redo/sound/alien_tail_swipe.ogg' //The defender's tail sound isn't changed because its big and heavy, this isn't
+/datum/action/cooldown/spell/aoe/repulse/xeno/hard_throwing/IsAvailable()
+	. = ..()
+	if(!isalien(owner))
+		return FALSE
+	var/mob/living/carbon/alien/humanoid/skyrat/owner_alien = owner
+	if(owner_alien.unable_to_use_abilities)
+		return FALSE
 
 /datum/action/cooldown/spell/aoe/repulse/xeno/hard_throwing/cast_on_thing_in_aoe(atom/movable/victim, atom/caster)
 	if(isalien(victim))
@@ -68,7 +77,7 @@
 			victim_living.Knockdown(10 SECONDS)
 			victim_living.apply_damage(20,BRUTE,BODY_ZONE_CHEST,wound_bonus=10) //It doesn't hurt as hard as other xenos because praetorians aren't meant to be frontlining
 			shake_camera(victim, 4, 3)
-			playsound(victim, 'sound/weapons/slap.ogg', 50, TRUE) //Ayo HOS this xeno ain't shi- SMACK
+			playsound(victim, 'sound/weapons/slap.ogg', 100, TRUE, 8, 0.9) //Ayo HOS this xeno ain't shi- SMACK
 			to_chat(victim, span_userdanger("You're slapped into the floor by [caster]'s tail!"))
 	else
 		if(sparkle_path)
@@ -79,7 +88,7 @@
 			victim_living.Knockdown(4 SECONDS)
 			victim_living.apply_damage(20,BRUTE,BODY_ZONE_CHEST,wound_bonus=10)
 			shake_camera(victim, 4, 3)
-			playsound(victim, 'sound/weapons/slap.ogg', 25, TRUE)
+			playsound(victim, 'sound/weapons/slap.ogg', 100, TRUE, 8, 0.9)
 			to_chat(victim, span_userdanger("[caster]'s tail crashes into you, throwing you back!"))
 
 		victim.safe_throw_at(throwtarget, ((clamp((max_throw - (clamp(dist_from_caster - 2, 0, dist_from_caster))), 3, max_throw))), 1, caster, force = repulse_force)

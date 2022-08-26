@@ -17,7 +17,7 @@
 	var/alt_inhands_file = 'modular_skyrat/modules/xenos_skyrat_redo/icons/big_xenos.dmi'
 	var/next_evolution
 	var/datum/action/cooldown/alien/skyrat/generic_evolve/evolve_ability
-	var/has_evolved_recently = FALSE
+	var/unable_to_use_abilities = FALSE
 
 /mob/living/carbon/alien/humanoid/skyrat/Initialize(mapload)
 	. = ..()
@@ -37,6 +37,7 @@
 	pixel_x = -16
 
 	ADD_TRAIT(src, TRAIT_XENO_HEAL_AURA, TRAIT_XENO_INNATE)
+	real_name = "alien [caste]"
 
 /mob/living/carbon/alien/humanoid/skyrat/Destroy()
 	QDEL_NULL(small_sprite)
@@ -48,6 +49,16 @@
 
 /datum/action/cooldown/alien/skyrat
 	icon_icon = 'modular_skyrat/modules/xenos_skyrat_redo/icons/xeno_actions.dmi'
+	var/can_be_used_always = FALSE //Some xeno abilities block other abilities being used, sometimes we need to override that
+
+/datum/action/cooldown/alien/skyrat/IsAvailable()
+	. = ..()
+	if(!isalien(owner))
+		return FALSE
+	var/mob/living/carbon/alien/humanoid/skyrat/owner_alien = owner
+	if(!can_be_used_always)
+		if(owner_alien.unable_to_use_abilities)
+			return FALSE
 
 /datum/action/small_sprite/skyrat_xeno
 	small_icon = 'icons/obj/plushes.dmi'
@@ -73,13 +84,17 @@
 	name = "Evolve"
 	desc = "Allows us to evolve to a higher caste of our type, if there is not one already."
 	button_icon_state = "evolution"
-	var/mob/living/carbon/alien/humanoid/skyrat/evolver = owner
 	var/type_to_evolve_into
 
+/datum/action/cooldown/alien/skyrat/generic_evolve/Grant(mob/grant_to)
+	. = ..()
+	if(isalien(owner))
+		var/mob/living/carbon/alien/target_alien = owner
+		plasma_cost = target_alien.get_max_plasma() //This ability should always require that a xeno be at their max plasma capacity to use
+
 /datum/action/cooldown/alien/skyrat/generic_evolve/Activate()
+	var/mob/living/carbon/alien/humanoid/skyrat/evolver = owner
 	type_to_evolve_into = evolver.next_evolution
-	if(evolver.has_evolved_recently)
-		evolver.balloon_alert(evolver, "evolved too recently")
 	if(!type_to_evolve_into)
 		to_chat(evolver, span_bolddanger("Something is wrong... we can't evolve into anything? (This is broken report it on github)"))
 		return FALSE
@@ -93,13 +108,7 @@
 		return FALSE
 	var/new_beno = new type_to_evolve_into(evolver.loc)
 	evolver.alien_evolve(new_beno)
-	evolver.has_evolved_recently = TRUE
-	addtimer(CALLBACK(src, .proc/allow_evolution_again), 5 MINUTES)
 	return TRUE
-
-/datum/action/cooldown/alien/skyrat/proc/allow_evolution_again()
-	evolver.has_evolved_recently = FALSE
-	evolver.balloon_alert(owner, "can evolve once again")
 
 /datum/action/cooldown/alien/skyrat/devolve
 	name = "Devolve"
@@ -156,3 +165,16 @@
 
 	overlays_standing[HANDS_LAYER] = hands
 	apply_overlay(HANDS_LAYER)
+
+/mob/living/carbon/proc/get_max_plasma()
+	var/obj/item/organ/internal/alien/plasmavessel/vessel = getorgan(/obj/item/organ/internal/alien/plasmavessel)
+	if(!vessel)
+		return -1
+	return vessel.max_plasma
+
+/mob/living/carbon/alien/humanoid/skyrat/alien_evolve(mob/living/carbon/alien/new_xeno)
+	new_xeno.setDir(dir)
+	if(mind)
+		mind.name = new_xeno.real_name
+		mind.transfer_to(new_xeno)
+	qdel(src)

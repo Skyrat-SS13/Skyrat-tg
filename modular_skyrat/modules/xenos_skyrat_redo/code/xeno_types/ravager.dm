@@ -49,7 +49,7 @@
 	unset_after_click = TRUE
 
 /datum/action/cooldown/mob_cooldown/charge/triple_charge/ravager/do_charge_indicator(atom/charger, atom/charge_target)
-	playsound(charger, 'modular_skyrat/modules/xenos_skyrat_redo/sound/alien_roar2.ogg', 100, TRUE)
+	playsound(charger, 'modular_skyrat/modules/xenos_skyrat_redo/sound/alien_roar2.ogg', 100, TRUE, 8, 0.9)
 
 /datum/action/cooldown/mob_cooldown/charge/triple_charge/ravager/Activate(atom/target_atom)
 	. = ..()
@@ -82,7 +82,7 @@
 			victim_living.Knockdown(10 SECONDS)
 			victim_living.apply_damage(40,BRUTE,BODY_ZONE_CHEST,wound_bonus=20,sharpness=SHARP_EDGED)
 			shake_camera(victim, 4, 3)
-			playsound(victim, 'modular_skyrat/master_files/sound/weapons/bloodyslice.ogg', 50, TRUE)
+			playsound(victim, 'modular_skyrat/master_files/sound/weapons/bloodyslice.ogg', 100, TRUE, 8, 0.9)
 			to_chat(victim, span_userdanger("You're slammed into the floor by [caster]'s tail!"))
 	else
 		if(sparkle_path)
@@ -93,7 +93,7 @@
 			victim_living.Knockdown(4 SECONDS)
 			victim_living.apply_damage(40,BRUTE,BODY_ZONE_CHEST,wound_bonus=20,sharpness=SHARP_EDGED)
 			shake_camera(victim, 4, 3)
-			playsound(victim, 'modular_skyrat/master_files/sound/weapons/bloodyslice.ogg', 25, TRUE)
+			playsound(victim, 'modular_skyrat/master_files/sound/weapons/bloodyslice.ogg', 100, TRUE, 8, 0.9)
 			to_chat(victim, span_userdanger("[caster]'s tail slashes you, throwing you back!"))
 
 		victim.safe_throw_at(throwtarget, ((clamp((max_throw - (clamp(dist_from_caster - 2, 0, dist_from_caster))), 3, max_throw))), 1, caster, force = repulse_force)
@@ -116,7 +116,7 @@
 		owner.balloon_alert(owner, "already enduring")
 		return FALSE
 	owner.balloon_alert(owner, "endure began")
-	playsound(owner, 'modular_skyrat/modules/xenos_skyrat_redo/sound/alien_roar1.ogg', 100, TRUE)
+	playsound(owner, 'modular_skyrat/modules/xenos_skyrat_redo/sound/alien_roar1.ogg', 100, TRUE, 8, 0.9)
 	to_chat(owner, span_danger("We numb our ability to feel pain, allowing us to fight until the very last for the next [endure_duration/10] seconds."))
 	addtimer(CALLBACK(src, .proc/endure_deactivate), endure_duration)
 	owner.add_filter("ravager_endure_outline", 4, outline_filter(1, COLOR_RED_LIGHT))

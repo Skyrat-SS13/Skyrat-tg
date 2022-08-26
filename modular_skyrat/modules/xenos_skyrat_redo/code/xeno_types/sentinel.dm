@@ -83,13 +83,13 @@
 		spit_projectile.preparePixelProjectile(target, caller, modifiers)
 		spit_projectile.firer = caller
 		spit_projectile.fire()
-		playsound(caller, spit_sound, 100, TRUE)
+		playsound(caller, spit_sound, 100, TRUE, 5, 0.9)
 		caller.newtonian_move(get_dir(target_turf, user_turf))
 		return TRUE
 
 	if(acid_casing)
 		var/obj/item/ammo_casing/casing = new acid_casing(caller.loc)
-		playsound(caller, spit_sound, 100, TRUE)
+		playsound(caller, spit_sound, 100, TRUE, 5, 0.9)
 		casing.fire_casing(target, caller, null, null, null, ran_zone(), 0, caller)
 		caller.newtonian_move(get_dir(target_turf, user_turf))
 		return TRUE

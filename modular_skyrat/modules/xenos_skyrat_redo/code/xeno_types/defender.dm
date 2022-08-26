@@ -11,7 +11,7 @@
 	var/datum/action/cooldown/mob_cooldown/charge/basic_charge/defender/charge
 	var/datum/action/cooldown/spell/aoe/repulse/xeno/crushing/tail_sweep
 	/// var/datum/action/cooldown/alien/skyrat/crest_defence/crest_defending
-	next_evolution = /mob/living/carbon/alien/humanoid/skyrat/ravager
+	next_evolution = /mob/living/carbon/alien/humanoid/skyrat/warrior
 
 /mob/living/carbon/alien/humanoid/skyrat/defender/Initialize(mapload)
 	. = ..()
@@ -53,6 +53,14 @@
 
 	sparkle_path = /obj/effect/temp_visual/dir_setting/tailsweep/defender
 
+/datum/action/cooldown/spell/aoe/repulse/xeno/crushing/IsAvailable()
+	. = ..()
+	if(!isalien(owner))
+		return FALSE
+	var/mob/living/carbon/alien/humanoid/skyrat/owner_alien = owner
+	if(owner_alien.unable_to_use_abilities)
+		return FALSE
+
 /datum/action/cooldown/spell/aoe/repulse/xeno/crushing/cast_on_thing_in_aoe(atom/movable/victim, atom/caster)
 	if(isalien(victim))
 		return
@@ -65,7 +73,7 @@
 			victim_living.Knockdown(10 SECONDS)
 			victim_living.apply_damage(30,BRUTE,BODY_ZONE_CHEST,wound_bonus=20)
 			shake_camera(victim, 4, 3)
-			playsound(victim, 'sound/effects/clang.ogg', 50, TRUE) //the defender's tail is literally just a small wrecking ball, CLANG
+			playsound(victim, 'sound/effects/clang.ogg', 100, TRUE, 8, 0.9) //the defender's tail is literally just a small wrecking ball, CLANG
 			to_chat(victim, span_userdanger("You're slammed into the floor by [caster]'s tail!"))
 	else
 		if(sparkle_path)
@@ -76,7 +84,7 @@
 			victim_living.Knockdown(4 SECONDS)
 			victim_living.apply_damage(30,BRUTE,BODY_ZONE_CHEST,wound_bonus=20)
 			shake_camera(victim, 4, 3)
-			playsound(victim, 'sound/effects/clang.ogg', 25, TRUE)
+			playsound(victim, 'sound/effects/clang.ogg', 100, TRUE, 8, 0.9)
 			to_chat(victim, span_userdanger("[caster]'s tail slams into you, throwing you back!"))
 
 		victim.safe_throw_at(throwtarget, ((clamp((max_throw - (clamp(dist_from_caster - 2, 0, dist_from_caster))), 3, max_throw))), 1, caster, force = repulse_force)
@@ -99,7 +107,7 @@
 
 /datum/action/cooldown/mob_cooldown/charge/basic_charge/defender/do_charge_indicator(atom/charger, atom/charge_target)
 	. = ..()
-	playsound(charger, 'modular_skyrat/modules/xenos_skyrat_redo/sound/alien_roar1.ogg', 100, TRUE)
+	playsound(charger, 'modular_skyrat/modules/xenos_skyrat_redo/sound/alien_roar1.ogg', 100, TRUE, 8, 0.9)
 
 /datum/action/cooldown/mob_cooldown/charge/basic_charge/defender/Activate(atom/target_atom)
 	. = ..()

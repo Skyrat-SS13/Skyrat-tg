@@ -7,6 +7,7 @@
 	health = 500
 	icon_state = "alienqueen"
 	var/datum/action/cooldown/spell/aoe/repulse/xeno/hard_throwing/tail_sweep
+	var/datum/action/cooldown/alien/skyrat/queen_screech/screech
 	melee_damage_lower = 30
 	melee_damage_upper = 35
 
@@ -15,10 +16,16 @@
 	tail_sweep = new /datum/action/cooldown/spell/aoe/repulse/xeno/hard_throwing()
 	tail_sweep.Grant(src)
 
+	screech = new /datum/action/cooldown/alien/skyrat/queen_screech()
+	screech.Grant(src)
+
 	REMOVE_TRAIT(src, TRAIT_VENTCRAWLER_ALWAYS, INNATE_TRAIT)
+
+	add_movespeed_modifier(/datum/movespeed_modifier/alien_big)
 
 /mob/living/carbon/alien/humanoid/skyrat/queen/Destroy()
 	QDEL_NULL(tail_sweep)
+	QDEL_NULL(screech)
 	return ..()
 
 /mob/living/carbon/alien/humanoid/skyrat/queen/create_internal_organs()
@@ -29,7 +36,7 @@
 	..()
 
 /obj/item/organ/internal/alien/neurotoxin/queen
-	name = "queenly neurotoxin gland"
+	name = "neurotoxin gland"
 	icon_state = "neurotox"
 	zone = BODY_ZONE_PRECISE_MOUTH
 	slot = ORGAN_SLOT_XENO_NEUROTOXINGLAND
@@ -51,3 +58,29 @@
 			node.queen_death()
 
 	return ..()
+
+/datum/action/cooldown/alien/skyrat/queen_screech
+	name = "Deafening Screech"
+	desc = "Let out a screech so deafeningly loud that anything with the ability to hear around you will likely be incapacitated for a short time."
+	button_icon_state = "screech"
+	cooldown_time = 5 MINUTES
+
+/datum/action/cooldown/alien/skyrat/queen_screech/Activate()
+	. = ..()
+	var/mob/living/carbon/alien/humanoid/skyrat/queenie = owner
+	playsound(queenie, 'modular_skyrat/modules/xenos_skyrat_redo/sound/alien_queen_screech.ogg', 100, FALSE, 8, 0.9)
+	queenie.create_shriekwave()
+	shake_camera(owner, 2, 2)
+	for(var/mob/living/carbon/human/screech_target in get_hearers_in_view(7, get_turf(queenie)))
+		screech_target.soundbang_act(intensity = 5, stun_pwr = 50, damage_pwr = 10, deafen_pwr = 30) //Only being deaf will save you from the screech
+		shake_camera(screech_target, 4, 3)
+	return TRUE
+
+/mob/living/carbon/alien/humanoid/skyrat/proc/create_shriekwave()
+	remove_overlay(HALO_LAYER)
+	overlays_standing[HALO_LAYER] = image("icon" = 'modular_skyrat/modules/xenos_skyrat_redo/icons/big_xenos.dmi', "icon_state" = "shriek_waves") //Ehh, suit layer's not being used.
+	apply_overlay(HALO_LAYER)
+	addtimer(CALLBACK(src, .proc/remove_shriekwave), 3 SECONDS)
+
+/mob/living/carbon/alien/humanoid/skyrat/proc/remove_shriekwave()
+	remove_overlay(HALO_LAYER)
