@@ -6,8 +6,8 @@
  */
 /mob/living/simple_animal/hostile/megafauna/gladiator
 	name = "\proper The Marked One"
-	desc = "An ancient miner lost to time, chosen and changed by the Necropolis, encased in a suit of armor. His sword glows with unusual light..."
-	icon = 'modular_skyrat/master_files/icons/mob/markedone.dmi'
+	desc = "An ancient miner lost to time, chosen and changed by the Necropolis, encased in a suit of armor. Only a chosen few can match his speed and strength."
+	icon = 'modular_skyrat/modules/gladiator/icons/markedone.dmi'
 	icon_state = "marked1"
 	icon_dead = "marked_dying"
 	attack_verb_simple = "cleave"
@@ -26,8 +26,8 @@
 	ranged = 1
 	ranged_cooldown_time = 30
 	minimum_distance = 1
-	health = 2000
-	maxHealth = 2000
+	health = 3000
+	maxHealth = 3000
 	movement_type = GROUND
 	loot = list(/obj/structure/closet/crate/necropolis/gladiator)
 	crusher_loot = list(/obj/structure/closet/crate/necropolis/gladiator/crusher)
@@ -187,19 +187,19 @@
 		// The gladiator hates non-humans, he especially hates ash walkers.
 		if(targetspecies.id == SPECIES_HUMAN)
 			var/static/list/human_messages = list(
-									"When you are ready, you may end the madness. Give me an honorable death.", \
-									"Only you can send me to the necropolis with honor. Will you?", \
-									"I have done all that can be done. There is nothing left. You are my last challenge.", \
-									"Beware that, when fighting monsters, you yourself do not become a monster... \
-									For when you gaze long into the abyss. The abyss gazes also into you.")
+									"Is this all that is left?", \
+									"Show the necropolis it was wrong to choose me.", \
+									"Ironic that I become what I once fought like you.", \
+									"Sometimes, the abyss gazes back.", \
+									"Show me a good time, miner!")
 			say(message = pick(human_messages))
 			introduced |= WEAKREF(target)
 		else if(targetspecies.id == SPECIES_LIZARD_ASH)
 			var/static/list/ashie_messages = list(
-									"Another slow wit comes to die!",\
-									"Let my blade help you to see, walker!",\
-									"Go back to your camp, farm tool!", \
-									"Die, fetcher!")
+									"Foolishness, ash walker!",\
+									"I've had enough of you for a lifetime!",\
+									"I don't need a crusher to KICK YOUR ASS!", \
+									"GET OVER HERE!!")
 			say(message = pick(ashie_messages), language = /datum/language/draconic)
 			introduced |= WEAKREF(target)
 			get_angry()
@@ -207,7 +207,7 @@
 		else
 			var/static/list/other_humanoid_messages = list(
 									"I will smite you!", \
-									"I will make you squeal!", \
+									"I will show you true power!", \
 									"Let us see how worthy you are!", \
 									"You will make a fine rug!", \
 									"For the necropolis!")
@@ -232,19 +232,34 @@
 			melee_damage_upper = initial(melee_damage_upper)
 			melee_damage_lower = initial(melee_damage_lower)
 		if(30 to 75)
-			phase = 2
-			icon_state = "marked2"
-			rapid_melee = 2
-			move_to_delay = 2
-			melee_damage_upper = 30
-			melee_damage_lower = 30
-		if(0 to 30)
-			phase = 3
-			icon_state = "marked3"
-			rapid_melee = 4
-			melee_damage_upper = 25
-			melee_damage_lower = 25
-			move_to_delay = 1.7
+			if(phase == 1)
+				phase = 2
+				playsound(src, 'sound/effects/clockcult_gateway_disrupted.ogg', 200, 1, 2)
+				icon_state = "marked2"
+				rapid_melee = 2
+				move_to_delay = 2
+				melee_damage_upper = 30
+				melee_damage_lower = 30
+		if(15 to 30)
+			if(phase == 2)
+				phase = 3
+				AddElement(/datum/element/cult_halo)
+				AddElement(/datum/element/blood_walk, /obj/effect/decal/cleanable/blood/drip)
+				swordslam()
+				playsound(src, 'sound/effects/clockcult_gateway_charging.ogg', 200, 1, 2)
+				rapid_melee = 4
+				melee_damage_upper = 25
+				melee_damage_lower = 25
+				move_to_delay = 1.7
+		if(0 to 15)
+			if (phase == 3)
+				phase = 4
+				playsound(src, 'sound/effects/clockcult_gateway_active.ogg', 200, 1, 2)
+				icon_state = "marked3"
+				rapid_melee = 1
+				melee_damage_upper = 50
+				melee_damage_lower = 50
+				move_to_delay = 2.5
 	if(charging)
 		move_to_delay = move_to_delay_charge
 
@@ -269,7 +284,7 @@
 	spinning = TRUE
 	for(var/turf/targeted as anything in spinningturfs)
 		dir = get_dir(src, targeted)
-		var/obj/effect/temp_visual/small_smoke/smonk = new /obj/effect/temp_visual/small_smoke(targeted)
+		var/obj/effect/temp_visual/small_smoke/halfsecond/smonk = new /obj/effect/temp_visual/small_smoke/halfsecond(targeted)
 		QDEL_IN(smonk, 1.25)
 		for(var/mob/living/slapped in targeted)
 			if(!faction_check(faction, slapped.faction) && !(slapped in hit_things))
@@ -357,17 +372,53 @@
 			else
 				if(prob(40))
 					INVOKE_ASYNC(src, .proc/bone_knife_throw, target)
-					ranged_cooldown += 3.5 SECONDS
+					ranged_cooldown += 2 SECONDS
 				else
 					INVOKE_ASYNC(src, .proc/teleport, target)
 					ranged_cooldown += 3 SECONDS
 		if(3)
 			if(prob(35))
 				INVOKE_ASYNC(src, .proc/bone_knife_throw, target)
-				ranged_cooldown += 3 SECONDS
+				ranged_cooldown += 1 SECOND
 			else
 				INVOKE_ASYNC(src, .proc/teleport, target)
 				ranged_cooldown += 2 SECONDS
+		if(4)
+			if(prob(40))
+				INVOKE_ASYNC(src, .proc/swordslam)
+				ranged_cooldown += 3 SECONDS
+			else
+				INVOKE_ASYNC(src, .proc/charge, target, 21)
+				anged_cooldown += 2 SECONDS
+				
+
+/procs/ground_pound(atom/source, range, delay, throw_range)
+	var/turf/orgin = get_turf(source)
+	if(!orgin)
+		return
+	var/list/all_turfs = RANGE_TURFS(range, orgin)
+	for(var/i = 0 to range)
+		playsound(orgin,'sound/effects/bamf.ogg', 600, TRUE, 10)
+		for(var/turf/stomp_turf in all_turfs)
+			if(get_dist(orgin, stomp_turf) > i)
+				continue
+			new /obj/effect/temp_visual/small_smoke/halfsecond(stomp_turf)
+			for(var/mob/living/L in stomp_turf)
+				if(L == source || L.throwing)
+					continue
+				to_chat(L, span_userdanger("[source]'s ground slam shockwave sends you flying!"))
+				var/turf/thrownat = get_ranged_target_turf_direct(source, L, throw_range, rand(-10, 10))
+				L.throw_at(thrownat, 8, 2, null, TRUE, force = MOVE_FORCE_OVERPOWERING, gentle = TRUE)
+				L.apply_damage(20, BRUTE, wound_bonus=CANT_WOUND)
+				shake_camera(L, 2, 1)
+			all_turfs -= stomp_turf
+		sleep(delay)
+		
+/mob/living/simple_animal/hostile/megafauna/gladiator/proc/swordslam()
+	can_move = FALSE
+	ground_pound(src, 5, 3, 8)
+	update_cooldowns(list(COOLDOWN_UPDATE_SET_MELEE = 0 SECONDS, COOLDOWN_UPDATE_SET_RANGED = 0 SECONDS))
+	can_move = TRUE
 
 #undef MARKED_ONE_STUN_DURATION
 #undef MARKED_ONE_ANGER_DURATION
