@@ -54,7 +54,7 @@
 	. = ..()
 	. += span_notice("Berserk mode is [berserk_charge]% charged.")
 
-/obj/item/clothing/head/hooded/berserker/gatsur/process(delta_time)
+/obj/item/clothing/head/hooded/berserker/gatsu/process(delta_time)
 	if(berserk_active)
 		berserk_charge = clamp(berserk_charge - CHARGE_DRAINED_PER_SECOND * delta_time, 0, MAX_BERSERK_CHARGE)
 	if(!berserk_charge)
@@ -113,7 +113,7 @@
 /obj/item/claymore/dragonslayer
 	name = "dragonslayer"
 	desc = "A blade that seems too big to be called a sword. Too big, too thick, too heavy, and too rough, it's more like a large hunk of raw iron. Countless slain foes have given it a supernatural tempering."
-	icon = 'master-skyrat/modular_skyrat/modules/gladiator/icons/dragonslayer.dmi'
+	icon = 'modular_skyrat/modules/gladiator/icons/dragonslayer.dmi'
 	icon_state = "dragonslayer"
 	inhand_icon_state = "dslayer"
 	lefthand_file = 'modular_skyrat/modules/gladiator/icons/dragonslayer_inhand_L.dmi'
