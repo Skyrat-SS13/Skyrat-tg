@@ -178,7 +178,9 @@
 
 /obj/structure/closet/crate/necropolis/gladiator/PopulateContents()
 	new /obj/item/claymore/dragonslayer(src)
+	new /obj/item/clothing/suit/hooded/berserker/gatsu(src)
 
 /obj/structure/closet/crate/necropolis/gladiator/crusher/PopulateContents()
 	new /obj/item/claymore/dragonslayer(src)
+	new /obj/item/clothing/suit/hooded/berserker/gatsu(src)
 	new /obj/item/crusher_trophy/gladiator(src)
