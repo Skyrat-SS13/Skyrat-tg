@@ -79,14 +79,13 @@
 
 /datum/action/cooldown/alien/skyrat/sleepytime/Activate()
 	var/mob/living/carbon/sleepytime_mob = owner
-	if(isalien(owner))
-		if(!sleepytime_mob.resting)
-			sleepytime_mob.set_resting(new_resting = TRUE, silent = FALSE, instant = TRUE)
-			return TRUE
-		sleepytime_mob.set_resting(new_resting = FALSE, silent = FALSE, instant = FALSE)
+	if(!isalien(owner))
+		return FALSE
+	if(!sleepytime_mob.resting)
+		sleepytime_mob.set_resting(new_resting = TRUE, silent = FALSE, instant = TRUE)
 		return TRUE
-	else
-		return FALSE //Somehow you failed standing up/lying down school, congrats
+	sleepytime_mob.set_resting(new_resting = FALSE, silent = FALSE, instant = FALSE)
+	return TRUE
 
 /datum/action/cooldown/alien/skyrat/generic_evolve
 	name = "Evolve"
@@ -97,9 +96,10 @@
 
 /datum/action/cooldown/alien/skyrat/generic_evolve/Grant(mob/grant_to)
 	. = ..()
-	if(isalien(owner))
-		var/mob/living/carbon/alien/target_alien = owner
-		plasma_cost = target_alien.get_max_plasma() //This ability should always require that a xeno be at their max plasma capacity to use
+	if(!isalien(owner))
+		return
+	var/mob/living/carbon/alien/target_alien = owner
+	plasma_cost = target_alien.get_max_plasma() //This ability should always require that a xeno be at their max plasma capacity to use
 
 /datum/action/cooldown/alien/skyrat/generic_evolve/Activate()
 	var/mob/living/carbon/alien/humanoid/skyrat/evolver = owner
