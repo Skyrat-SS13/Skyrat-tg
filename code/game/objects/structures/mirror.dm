@@ -16,6 +16,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror, 28)
 	if(icon_state == "mirror_broke" && !broken)
 		atom_break(null, mapload)
 
+/* SKYRAT EDIT REMOVAL
 /obj/structure/mirror/attack_hand(mob/user, list/modifiers)
 	. = ..()
 	if(.)
@@ -49,7 +50,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror, 28)
 
 	hairdresser.hairstyle = new_style
 
-	hairdresser.update_hair(is_creating = TRUE)
+	hairdresser.update_body_parts()
+*/
 
 /obj/structure/mirror/examine_status(mob/user)
 	if(broken)
@@ -257,7 +259,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/mirror, 28)
 					if(new_face_color)
 						amazed_human.facial_hair_color = sanitize_hexcolor(new_face_color)
 						amazed_human.dna.update_ui_block(DNA_FACIAL_HAIR_COLOR_BLOCK)
-				amazed_human.update_hair()
+				amazed_human.update_body_parts()
 				amazed_human.update_mutant_bodyparts(force_update = TRUE) /// SKYRAT EDIT - Mirrors are no longer scared of colored ears
 
 		if(BODY_ZONE_PRECISE_EYES)
