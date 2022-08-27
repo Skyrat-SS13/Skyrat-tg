@@ -173,7 +173,7 @@
 	name = "dreadful gladiator chest"
 
 /obj/structure/closet/crate/necropolis/gladiator/PopulateContents()
-	if(prob(5)
+	if(prob(5))
 		new /obj/item/claymore/dragonslayer/veryfuckingloud(src)
 	else
 		new /obj/item/claymore/dragonslayer(src)
