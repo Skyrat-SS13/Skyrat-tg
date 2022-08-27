@@ -119,7 +119,7 @@ GLOBAL_LIST_EMPTY(outbound_objective_landmarks)
 
 	if(length(all_people_entered) >= OUTBOUND_MAXIMUM_PLAYER_COUNT)
 		for(var/datum/gateway_destination/point/dest_point in GLOB.gateway_destinations)
-			target_turfs = list()
+			dest_point.target_turfs = list()
 
 	if(outbound_controller.elevator_time == initial(outbound_controller.elevator_time))
 		addtimer(CALLBACK(outbound_controller, /datum/away_controller/outbound_expedition.proc/tick_elevator_time), 1 SECONDS)

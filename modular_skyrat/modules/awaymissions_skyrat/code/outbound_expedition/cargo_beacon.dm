@@ -95,10 +95,10 @@
 
 /obj/structure/closet/crate/secure/loot/outbound_cargo/spawn_loot()
 	var/selected_type = pick(loot_cats)
-	for(var/i in 1 to rand(LOOT_MINIMUM_AMOUNT, LOOT_MAXMIMUM_AMOUNT))
+	for(var/i in 1 to rand(LOOT_MINIMUM_AMOUNT, LOOT_MAXIMUM_AMOUNT))
 		var/obj/item/picked_item = pick_weight(loot_cats[selected_type])
 		new picked_item(src)
 	spawned_loot = TRUE
 
 #undef LOOT_MINIMUM_AMOUNT
-#undef LOOT_MAXMIMUM_AMOUNT
+#undef LOOT_MAXIMUM_AMOUNT
