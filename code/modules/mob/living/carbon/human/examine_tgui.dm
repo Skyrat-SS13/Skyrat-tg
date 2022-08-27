@@ -1,7 +1,7 @@
 /datum/examine_panel
 	var/mob/living/holder //client of whoever is using this datum
-	var/mob/living/carbon/human/dummy/dummy_holder
-	var/atom/movable/screen/examine_panel_dummy/examine_panel_screen
+	/// The screen containing the appearance of the mob
+	var/atom/movable/screen/examine_panel_screen/examine_panel_screen
 
 /datum/examine_panel/ui_state(mob/user)
 	return GLOB.always_state
@@ -9,24 +9,19 @@
 /datum/examine_panel/ui_close(mob/user)
 	user.client.clear_map(examine_panel_screen.assigned_map)
 
-/atom/movable/screen/examine_panel_dummy
-	name = "examine panel dummy"
+/atom/movable/screen/examine_panel_screen
+	name = "examine panel screen"
 
 /datum/examine_panel/ui_interact(mob/user, datum/tgui/ui)
 	if(!examine_panel_screen)
-		if(ishuman(holder))
-			dummy_holder = generate_dummy_lookalike(REF(holder), holder)
-			var/datum/job/job_ref = SSjob.GetJob(holder.job)
-			if(job_ref && job_ref.outfit)
-				var/datum/outfit/outfit_ref = new()
-				outfit_ref.copy_outfit_from_target(holder)
-				outfit_ref.equip(dummy_holder, visualsOnly=TRUE)
-		/*
-		else if(issilicon(holder))
-			dummy_holder = image('icons/mob/robots.dmi', icon_state = "robot", dir = SOUTH) // this doesn't work and just shows a black screen, idk a solution though feel free to pitch in
-		*/
 		examine_panel_screen = new
-		examine_panel_screen.vis_contents += dummy_holder
+		var/mutable_appearance/current_mob_appearance = new(holder)
+		current_mob_appearance.setDir(SOUTH)
+		// In case they're pixel-shifted, we bring 'em back!
+		current_mob_appearance.pixel_x = 0
+		current_mob_appearance.pixel_y = 0
+
+		examine_panel_screen.add_overlay(current_mob_appearance)
 		examine_panel_screen.name = "screen"
 		examine_panel_screen.assigned_map = "examine_panel_[REF(holder)]_map"
 		examine_panel_screen.del_on_map_removal = FALSE

@@ -49,7 +49,7 @@
 		"Buckler Shield" = /obj/item/shield/riot/buckler/reagent_weapon,
 		"Coil" = /obj/item/forging/coil,
 		"Seed Mesh" = /obj/item/seed_mesh,
-		"Primitive Centrifuge" = /obj/item/reagent_containers/glass/primitive_centrifuge,
+		"Primitive Centrifuge" = /obj/item/reagent_containers/cup/primitive_centrifuge,
 		"Bokken" = /obj/item/forging/reagent_weapon/bokken,
 		"Bow" = /obj/item/forging/incomplete_bow,
 	)
