@@ -417,7 +417,7 @@
 				getfucked.apply_damage(20, BRUTE, wound_bonus=CANT_WOUND)
 				shake_camera(getfucked, 2, 1)
 			all_turfs -= stomp_turf
-		addtimer(CALLBACK(...))
+		addtimer(CALLBACK(src), delay)
 		
 /mob/living/simple_animal/hostile/megafauna/gladiator/proc/swordslam()
 	ground_pound(src, 5, 3, 8)
