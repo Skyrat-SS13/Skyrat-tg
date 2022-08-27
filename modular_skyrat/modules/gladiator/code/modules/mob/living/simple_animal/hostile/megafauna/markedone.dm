@@ -290,7 +290,7 @@
 	for(var/turf/targeted as anything in spinningturfs)
 		dir = get_dir(src, targeted)
 		var/obj/effect/temp_visual/small_smoke/halfsecond/smonk = new /obj/effect/temp_visual/small_smoke/halfsecond(targeted)
-		QDEL_IN(smonk, 0.50)
+		QDEL_IN(smonk, 0.05 SECONDS)
 		for(var/mob/living/slapped in targeted)
 			if(!faction_check(faction, slapped.faction) && !(slapped in hit_things))
 				playsound(src, 'sound/weapons/slash.ogg', 75, 0)
@@ -302,7 +302,7 @@
 				hit_things |= slapped
 		if(!spinning)
 			break
-		sleep(0.50)
+		sleep(0.05 SECONDS)
 	animate(src, color = initial(color), 3)
 	sleep(3)
 	spinning = FALSE
@@ -408,16 +408,16 @@
 			if(get_dist(orgin, stomp_turf) > i)
 				continue
 			new /obj/effect/temp_visual/small_smoke/halfsecond(stomp_turf)
-			for(var/mob/living/L in stomp_turf)
-				if(L == source || L.throwing)
+			for(var/mob/living/getfucked in stomp_turf)
+				if(getfucked == source || getfucked.throwing)
 					continue
-				to_chat(L, span_userdanger("[source]'s ground slam shockwave sends you flying!"))
-				var/turf/thrownat = get_ranged_target_turf_direct(source, L, throw_range, rand(-10, 10))
-				L.throw_at(thrownat, 8, 2, null, TRUE, force = MOVE_FORCE_OVERPOWERING, gentle = TRUE)
-				L.apply_damage(20, BRUTE, wound_bonus=CANT_WOUND)
-				shake_camera(L, 2, 1)
+				to_chat(getfucked, span_userdanger("[source]'s ground slam shockwave sends you flying!"))
+				var/turf/thrownat = get_ranged_target_turf_direct(source, getfucked, throw_range, rand(-10, 10))
+				getfucked.throw_at(thrownat, 8, 2, null, TRUE, force = MOVE_FORCE_OVERPOWERING, gentle = TRUE)
+				getfucked.apply_damage(20, BRUTE, wound_bonus=CANT_WOUND)
+				shake_camera(getfucked, 2, 1)
 			all_turfs -= stomp_turf
-		sleep(delay)
+		addtimer(CALLBACK(...))
 		
 /mob/living/simple_animal/hostile/megafauna/gladiator/proc/swordslam()
 	ground_pound(src, 5, 3, 8)
