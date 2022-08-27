@@ -181,7 +181,7 @@
 	new /obj/item/clothing/neck/warrior_cape(src)
 
 /obj/structure/closet/crate/necropolis/gladiator/crusher/PopulateContents()
-	if(prob(5)
+	if(prob(5))
 		new /obj/item/claymore/dragonslayer/veryfuckingloud(src)
 	else
 		new /obj/item/claymore/dragonslayer(src)
