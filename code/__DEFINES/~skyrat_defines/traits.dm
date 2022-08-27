@@ -56,3 +56,6 @@
 
 /// Cargo Loader trait
 #define TRAIT_TRASHMAN "trait_trashman"
+
+/// Unable to walk on space tiles
+#define TRAIT_NO_SPACE "trait_no_space"

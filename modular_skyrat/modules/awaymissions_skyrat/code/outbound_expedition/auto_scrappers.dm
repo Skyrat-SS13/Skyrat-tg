@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/auto_scrapper
-	name = "Drone"
-	desc = "A maintenance drone, an expendable robot built to perform station repairs."
+	name = "drone"
+	desc = "An autonomous scrapping drone, carrying out its programming to the letter."
 	icon = 'icons/mob/drone.dmi'
 	icon_state = "drone_maint_grey"
 	icon_living = "drone_maint_grey"
@@ -47,7 +47,7 @@
 			break
 		var/obj/machinery/picked_machine = pick(outbound_controller.machine_datums)
 		var/datum/outbound_ship_system/ship_sys = outbound_controller.machine_datums[picked_machine]
-		if(ship_sys.health > 0)
+		if(!outbound_controller.is_system_dead(ship_sys))
 			system_to_attack = picked_machine
 			RegisterSignal(system_to_attack, COMSIG_AWAY_SYSTEM_FAIL, .proc/on_destruction)
 

@@ -7,7 +7,7 @@
 	ss_delay = 10 SECONDS
 	/// Assoc list of mobs hooked up to the away mission, mob:objective datum
 	var/list/participating_mobs = list()
-	/// List of systems on the ship, destroyed ones still stay in the list
+	/// List of systems on the ship, destroyed ones still stay in the list, "Name":reference
 	var/list/ship_systems = list()
 	/// Reference to the puzzle controller
 	var/datum/outbound_puzzle_controller/puzzle_controller
@@ -36,30 +36,35 @@
 	/// Base list of probabilities for events
 	var/list/event_chances = list(
 		/datum/outbound_random_event/harmless = 2,
-		/datum/outbound_random_event/harmful = 3,
-		/datum/outbound_random_event/mob_harmful = 1,
+		/datum/outbound_random_event/harmful = 5,
+		/datum/outbound_random_event/ruin = 3,
 	)
 	/// Ordered list of events.
 	var/list/event_order = list(
-		///datum/outbound_random_event/harmless/nothing,
-/*		"random",
+		/datum/outbound_random_event/harmless/nothing,
 		"random",
 		"random",
 		"random",
 		"random",
-		/datum/outbound_random_event/story/betrayal,*/
 		"random",
 		/datum/outbound_random_event/story/betrayal,
 	)
 	/// Current story stage. Used for calculating difficulty
 	var/current_stage = STORY_STAGE_PRE_BETRAYAL
+	/// What extra landmarks to get rid of
+	var/static/list/landmark_del_types = list(
+		/obj/effect/landmark/outbound/ruin_shuttle_interdictor,
+		/obj/effect/landmark/outbound/raider_spawn,
+		/obj/effect/landmark/objective_update,
+		/obj/effect/landmark/outbound/scrapper_evac_point,
+	)
 
 /datum/away_controller/outbound_expedition/New()
 	. = ..()
 	for(var/ship_sys in subtypesof(/datum/outbound_ship_system))
 		var/datum/outbound_ship_system/new_system = new ship_sys
 		ship_systems[new_system.name] = new_system
-	for(var/type in subtypesof(/datum/outbound_random_event) - list(/datum/outbound_random_event/harmful, /datum/outbound_random_event/harmless, /datum/outbound_random_event/mob_harmful, /datum/outbound_random_event/story)) // all subtypes except the parents
+	for(var/type in subtypesof(/datum/outbound_random_event) - list(/datum/outbound_random_event/harmful, /datum/outbound_random_event/harmless, /datum/outbound_random_event/ruin, /datum/outbound_random_event/story)) // all subtypes except the parents
 		var/datum/new_type = new type
 		event_datums += new_type
 	puzzle_controller = new /datum/outbound_puzzle_controller
@@ -120,7 +125,6 @@
 		objective_pinpoint(person_chosen, corresponding_landmark)
 		corresponding_landmark.enable()
 	INVOKE_ASYNC(person_chosen.hud_used?.away_dialogue, /atom/movable/screen/screentip/away_dialogue.proc/set_text_slow, chosen_objective.desc)
-	//person_chosen?.hud_used?.away_dialogue.set_text(chosen_objective.desc)
 	chosen_objective.on_give(person_chosen)
 
 /datum/away_controller/outbound_expedition/proc/give_objective_all(datum/outbound_objective/chosen_objective)
@@ -130,14 +134,33 @@
 // Event stuff
 
 /datum/away_controller/outbound_expedition/proc/select_event()
-	if(jumps_to_dest == -1)
+	if(real_jumps_to_dest == -1)
 		event_order += "random"
 
 	if(event_order[1] != "random")
 		var/datum/current_event_sel = locate(event_order[1]) in event_datums
 		event_order.Cut(1, 2)
 		return current_event_sel
+	var/list/final_event_prob = list()
+	var/calculated_difficulty = calculate_difficulty()
+	for(var/event_type in event_chances)
+		if(event_type == /datum/outbound_random_event/harmless)
+			final_event_prob[event_type] = round(event_chances[event_type] / calculated_difficulty)
+		else
+			final_event_prob[event_type] = round(event_chances[event_type] * calculated_difficulty)
+	var/event_type = pick_weight(final_event_prob)
+	var/list/possible_events = event_datums.Copy()
+	for(var/datum/event as anything in possible_events)
+		if(!istype(event, event_type))
+			possible_events.Remove(event)
+	var/pos_num = event_order.Find("random")
+	if(!is_system_dead("Sensors")) //thrusters shot? You'll only make a jump half the time
+		event_order.Cut(pos_num, pos_num + 1)
+	else if(prob(50))
+		event_order.Cut(pos_num, pos_num + 1)
+	return pick(possible_events)
 
+/datum/away_controller/outbound_expedition/proc/calculate_difficulty()
 	var/calculated_difficulty = 1
 	switch(length(participating_mobs))
 		if(1)
@@ -150,20 +173,7 @@
 			calculated_difficulty *= 1.5
 		if(STORY_STAGE_POST_RADAR)
 			calculated_difficulty *= 2
-	var/list/final_event_prob = list()
-	for(var/event_type in event_chances)
-		if(event_type == /datum/outbound_random_event/harmless)
-			final_event_prob[event_type] = round(event_chances[event_type] / calculated_difficulty)
-		else
-			final_event_prob[event_type] = round(event_chances[event_type] * calculated_difficulty)
-	var/event_type = pick_weight(final_event_prob)
-	var/list/possible_events = event_datums.Copy()
-	for(var/datum/event as anything in possible_events)
-		if(!istype(event, event_type))
-			possible_events.Remove(event)
-	var/pos_num = event_order.Find("random")
-	event_order.Cut(pos_num, pos_num + 1)
-	return pick(possible_events)
+	return calculated_difficulty
 
 // Landmark check
 
@@ -199,6 +209,18 @@
 		system_datum.adjust_health(-damage_amount, base_machine = source)
 		break
 
+/// A check that takes a system (by name or by reference) and outputs if it is destroyed or not
+/datum/away_controller/outbound_expedition/proc/is_system_dead(sys_name_or_type)
+	if(isdatum(sys_name_or_type))
+		var/datum/outbound_ship_system/typed_system = sys_name_or_type
+		if(typed_system.health <= 0)
+			return TRUE
+		return FALSE
+	var/datum/outbound_ship_system/gotten_system = ship_systems[sys_name_or_type]
+	if(gotten_system.health <= 0)
+		return TRUE
+	return FALSE
+
 // """Moving""" the ship
 
 /datum/away_controller/outbound_expedition/proc/move_shuttle(list/affected_areas = area_clear_whitelist)
@@ -212,8 +234,9 @@
 		for(var/turf/to_delete in affected_area_datum)
 			var/turf/to_change = to_delete
 			to_change.empty(/turf/open/space)
-			for(var/obj/effect/landmark/objective_update/outbound_landmark in to_change.contents)
-				qdel(outbound_landmark)
+			for(var/obj/effect/landmark/outbound_landmark in to_change.contents)
+				if(is_type_in_list(outbound_landmark, landmark_del_types))
+					qdel(outbound_landmark)
 			important_space_region.contents += to_change
 			to_change.transfer_area_lighting(affected_area_datum, important_space_region)
 
@@ -256,13 +279,6 @@
 	addtimer(CALLBACK(src, .proc/post_move_act, select_event()), 13 SECONDS)
 
 /datum/away_controller/outbound_expedition/proc/post_move_act(datum/outbound_random_event/picked_event)
-/*	var/datum/outbound_random_event/our_event //remove later when not debugging
-	for(var/datum/outbound_random_event/event in event_datums)
-		if(!istype(event, /datum/outbound_random_event/))
-			continue
-		our_event = event
-	current_event = our_event
-	our_event.on_select()*/
 
 	for(var/obj/machinery/outbound_expedition/cryopod/wakeytime as anything in GLOB.outbound_cryopods)
 		wakeytime.locked = FALSE
@@ -270,7 +286,6 @@
 		human_content?.playsound_local(get_turf(human_content), 'sound/runtime/hyperspace/hyperspace_end.ogg', 100)
 		human_content?.clear_fullscreen("cryopod", FALSE)
 
-	//addtimer(CALLBACK(src, .proc/cause_event), 6 SECONDS) //add picked event arg when not debugging
 	addtimer(CALLBACK(src, .proc/cause_event, picked_event), 6 SECONDS)
 
 /datum/away_controller/outbound_expedition/proc/cause_event(datum/outbound_random_event/picked_event)
@@ -281,7 +296,7 @@
 
 // ???
 
-/datum/away_controller/outbound_expedition/proc/spawn_meteor(list/meteortypes = list(/obj/effect/meteor/medium = 8, /obj/effect/meteor/big = 3, /obj/effect/meteor/flaming = 1, /obj/effect/meteor/irradiated = 3))
+/datum/away_controller/outbound_expedition/proc/spawn_meteor(list/meteortypes = list(/obj/effect/meteor/medium = 5, /obj/effect/meteor/big = 4, /obj/effect/meteor/flaming = 2, /obj/effect/meteor/irradiated = 4))
 	var/turf/pickedstart
 	var/turf/pickedgoal
 	var/max_i = 10 //number of tries to spawn meteor.

@@ -3,6 +3,7 @@
 
 /datum/outbound_random_event/story/betrayal/on_select()
 	OUTBOUND_CONTROLLER
+	outbound_controller.current_stage = 2 // I should really make the defines for this global
 	for(var/mob/living/carbon/human/listener as anything in outbound_controller.participating_mobs)
 		to_chat(listener, span_notice("<i>You hear a faint, static crackling noise come from the bridge.</i>"))
 	outbound_controller.give_objective_all(outbound_controller.objectives[/datum/outbound_objective/radio_listen])
@@ -19,6 +20,7 @@
 
 /datum/outbound_random_event/story/radar/on_select()
 	OUTBOUND_CONTROLLER
+	outbound_controller.current_stage = 3 // I should really make the defines for this global
 	for(var/mob/living/carbon/human/listener as anything in outbound_controller.participating_mobs)
 		to_chat(listener, span_notice("<i>You hear a faint, static crackling noise come from the bridge.</i>"))
 	outbound_controller.give_objective_all(outbound_controller.objectives[/datum/outbound_objective/radio_listen])

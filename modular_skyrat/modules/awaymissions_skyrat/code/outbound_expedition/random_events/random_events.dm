@@ -24,8 +24,8 @@
 /datum/outbound_random_event/harmful
 	event_tier = AWAY_EVENT_HARMFUL
 
-/datum/outbound_random_event/mob_harmful
-	event_tier = AWAY_EVENT_MOB_HARMFUL
+/datum/outbound_random_event/ruin
+	event_tier = AWAY_EVENT_RUIN
 
 /datum/outbound_random_event/story
 	event_tier = AWAY_EVENT_STORY

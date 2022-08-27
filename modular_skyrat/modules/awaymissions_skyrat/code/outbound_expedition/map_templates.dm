@@ -11,8 +11,8 @@
 
 /datum/map_template/ruin/outbound_expedition/raider_shuttle
 	name = "Raider Shuttle"
-	suffix = "raider_shuttle.dmm"
-	id = "raider_shuttle"
+	suffix = "raidershitbox.dmm"
+	id = "raidershitbox"
 	description = "A small shuttle containing some raiders. Odd to find so deep in space. Bluespace, perhaps?"
 
 /datum/map_template/ruin/outbound_expedition/prison_shuttle

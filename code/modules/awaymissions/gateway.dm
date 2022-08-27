@@ -259,6 +259,12 @@ GLOBAL_LIST_EMPTY(gateway_destinations)
 /obj/machinery/gateway/proc/Transfer(atom/movable/AM)
 	if(!target || !target.incoming_pass_check(AM))
 		return
+	// SKYRAT ADDITION START
+	if(istype(target, /datum/gateway_destination/point))
+		var/datum/gateway_destination/point/target_point = target
+		if(!length(target_point.target_turfs))
+			return
+	// SKYRAT ADDITION END
 	AM.forceMove(target.get_target_turf())
 	target.post_transfer(AM)
 

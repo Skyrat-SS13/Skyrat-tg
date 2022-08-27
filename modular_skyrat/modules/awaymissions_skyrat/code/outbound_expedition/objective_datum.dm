@@ -33,6 +33,10 @@
 	name = "Cryo (Salvage)"
 	desc = "Cryo or search the nearby ruin."
 
+/datum/outbound_objective/cryo/supply
+	name = "Cryo (Supply)"
+	desc = "Cryo or search for the supply pod."
+
 /datum/outbound_objective/talk_person
 	name = "Commander Talk"
 	desc = "Talk with the commander before departing."

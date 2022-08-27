@@ -1,3 +1,6 @@
+#define LOOT_MINIMUM_AMOUNT 4
+#define LOOT_MAXIMUM_AMOUNT 8
+
 /obj/structure/closet/crate/secure/loot/outbound_cargo
 	name = "sealed crate"
 	desc = "A weathered, pressure-sealed container."
@@ -29,8 +32,7 @@
 			/obj/item/clothing/suit/armor/vest = 2,
 			/obj/item/storage/box/hecu_rations = 2,
 			/obj/item/storage/box/mothic_rations = 2,
-			///obj/item/storage/box/tiziran_cans = 2, //no sprite
-			/obj/item/storage/box/beanbag = 2,
+			/obj/item/ammo_box/advanced/s12gauge/buckshot = 2,
 		),
 		"robotics" = list( // pretty powerful but requires someone else to work on the person
 			/obj/item/organ/internal/heart/cybernetic/tier2 = 2,
@@ -73,9 +75,9 @@
 			/obj/item/assembly/flash/handheld = 3,
 			/obj/item/melee/baton/security = 3,
 			/obj/item/gun/ballistic/automatic/pistol/g17 = 1,
-			/obj/item/ammo_box/magazine/multi_sprite/g17 = 2,
+			/obj/item/ammo_box/magazine/multi_sprite/g17 = 1,
 			/obj/item/gun/ballistic/automatic/pistol/g18 = 1,
-			/obj/item/ammo_box/magazine/multi_sprite/g18 = 2,
+			/obj/item/ammo_box/magazine/multi_sprite/g18 = 1,
 			/obj/item/gun/ballistic/shotgun/riot = 1,
 			/obj/item/storage/box/ammo_box/shotgun_12g = 2,
 			/obj/item/gun/ballistic/automatic/cmg = 1,
@@ -93,7 +95,10 @@
 
 /obj/structure/closet/crate/secure/loot/outbound_cargo/spawn_loot()
 	var/selected_type = pick(loot_cats)
-	for(var/i in 1 to rand(3, 6))
+	for(var/i in 1 to rand(LOOT_MINIMUM_AMOUNT, LOOT_MAXMIMUM_AMOUNT))
 		var/obj/item/picked_item = pick_weight(loot_cats[selected_type])
 		new picked_item(src)
 	spawned_loot = TRUE
+
+#undef LOOT_MINIMUM_AMOUNT
+#undef LOOT_MAXMIMUM_AMOUNT

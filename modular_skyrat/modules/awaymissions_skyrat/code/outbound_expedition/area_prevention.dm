@@ -37,6 +37,10 @@
 /turf/open/space/no_travel/Adjacent(atom/neighbor, atom/target, atom/movable/mover)
 	return FALSE
 
+/turf/open/space/no_travel/see_through
+	opacity = FALSE
+	mouse_opacity = MOUSE_OPACITY_ICON
+
 /area/space/outbound_space
 	icon_state = "space_near" // replace later
 

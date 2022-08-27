@@ -91,5 +91,8 @@
 /// When a puzzle is successfully completed : (datum/outbound_teamwork_puzzle)
 #define COMSIG_AWAY_PUZZLE_COMPLETED "away_puzzle_completed"
 
+/// When a shuttle interdictor is deconstructed
+#define COMSIG_AWAY_INTERDICTOR_DECONSTRUCTED "away_interdictor_deconstructed"
+
 /// When a mob/living bleeds, creating a decal
 #define COMSIG_LIVING_BLEED_DECAL "living_bleed_decal"

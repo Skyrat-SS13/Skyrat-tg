@@ -52,21 +52,28 @@
 			"Retrieval not mandatory.",
 			)
 
-		if(/datum/outbound_random_event/harmless/salvage)
+		if(/datum/outbound_random_event/ruin/salvage)
 			title = "sensor readout"
 			text_strings = list("Sensors have detected a large piece of floating salvage nearby your ship.",
 			"Ship has been slowed down to allow for EVA to retrieve whatever it contains.",
 			"Retrieval not mandatory.",
 			)
 
-		if(/datum/outbound_random_event/mob_harmful/scrappers)
+		if(/datum/outbound_random_event/ruin/salvage/interdiction)
+			title = "sensor readout - IMPORTANT"
+			text_strings = list("Sensors have detected a large piece of floating salvage nearby your ship.",
+			"Structure is interdicting the shuttle.",
+			"Proceed to destroy the interference. GPS signal locked.",
+			)
+
+		if(/datum/outbound_random_event/harmful/scrappers)
 			title = "sensor readout - URGENT"
 			text_strings = list("Sensors have detected an autonomous structure near your ship.",
 			"The ship has been forcibly slowed down due to a collision course with the structure.",
 			"Prepare for anything.",
 			)
 
-		if(/datum/outbound_random_event/mob_harmful/raiders)
+		if(/datum/outbound_random_event/harmful/raiders)
 			title = "sensor readout - URGENT"
 			text_strings = list("Sensors have detected a boarding vessel near your ship.",
 			"The raiding party has forcibly slowed down your ship.",
@@ -130,7 +137,7 @@
 	if(!do_after(user, 10 SECONDS, src))
 		to_chat(user, span_warning("You need to stand still to scan with the console!"))
 		return
-	if(!prob(succeed_odds))
+	if(!prob(outbound_controller.is_system_dead("Sensors") ? (succeed_odds / 2) : succeed_odds)) //good luck lmao
 		to_chat(user, span_notice("You don't find anything nearby this jump, maybe the next one?"))
 		outbound_controller.puzzle_controller.has_scanned = TRUE
 		return

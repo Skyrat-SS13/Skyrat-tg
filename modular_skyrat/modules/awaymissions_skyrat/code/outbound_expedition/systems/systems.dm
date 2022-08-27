@@ -127,5 +127,6 @@ GLOBAL_LIST_EMPTY(outbound_ship_systems)
 
 /obj/machinery/power/smes/vanguard/default_deconstruction_crowbar(obj/item/crowbar/C)
 	to_chat(C.loc, span_notice("You can't seem to disassemble this!"))
+	return FALSE
 
 #undef MAX_HEALTH_REGULAR

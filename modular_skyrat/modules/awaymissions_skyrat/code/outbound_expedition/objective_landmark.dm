@@ -81,7 +81,7 @@ GLOBAL_LIST_EMPTY(outbound_objective_landmarks)
 	OUTBOUND_CONTROLLER
 	var/turf/our_turf = get_turf(src)
 	for(var/obj/machinery/computer/outbound_radio/radio in our_turf.contents)
-		radio.start_talking(outbound_controller.current_event.type)
+		radio.start_talking(outbound_controller?.current_event.type)
 		talked_before = TRUE
 		break
 
@@ -110,16 +110,22 @@ GLOBAL_LIST_EMPTY(outbound_objective_landmarks)
 	outbound_controller.give_objective(arrived, cryo_obj)
 
 /obj/effect/landmark/objective_update/elevator
+	var/static/list/all_people_entered = list()
 
 /obj/effect/landmark/objective_update/elevator/on_enter(datum/source, atom/movable/arrived, atom/old_loc, list/atom/old_locs)
 	OUTBOUND_CONTROLLER
 	if(!ismob(arrived) || !outbound_controller)
 		return
 
+	if(length(all_people_entered) >= OUTBOUND_MAXIMUM_PLAYER_COUNT)
+		for(var/datum/gateway_destination/point/dest_point in GLOB.gateway_destinations)
+			target_turfs = list()
+
 	if(outbound_controller.elevator_time == initial(outbound_controller.elevator_time))
 		addtimer(CALLBACK(outbound_controller, /datum/away_controller/outbound_expedition.proc/tick_elevator_time), 1 SECONDS)
 
 	var/mob/arrived_mob = arrived
+	all_people_entered |= arrived_mob
 	arrived_mob?.hud_used?.away_dialogue.set_text("Waiting... ([round(outbound_controller.elevator_time / 10)] seconds remaining)")
 
 /obj/effect/landmark/objective_update/team_addition
@@ -152,3 +158,12 @@ GLOBAL_LIST_EMPTY(outbound_objective_landmarks)
 
 /obj/effect/landmark/outbound/bridge_center
 	name = "Bridge Center"
+
+/obj/effect/landmark/outbound/gateway_portal_spawn
+	name = "Gateway Portal Spawn"
+
+/obj/effect/landmark/outbound/ruin_shuttle_interdictor
+	name = "Ruin Shuttle Interdictor"
+
+/obj/effect/landmark/outbound/gateway_space_edge
+	name = "Gateway Space Edge"
