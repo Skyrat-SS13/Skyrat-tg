@@ -98,7 +98,7 @@
 
 /datum/loadout_item/head/goldengoggles
 	name = "Steampunk Goggles"
-	item_path = /obj/item/clothing/glasses/welding/goldengoggles
+	item_path = /obj/item/clothing/glasses/welding/steampunk_goggles
 	ckeywhitelist = list("goldenalpharex")
 
 /datum/loadout_item/head/bio_jax
@@ -444,6 +444,15 @@
 /datum/loadout_item/toys/plushe_winrow
     name = "Dark and Brooding Lizard Plushie"
     item_path = /obj/item/toy/plush/skyrat/plushie_winrow
+
+/datum/loadout_item/toys/plushie_star
+    name = "Star Angel Plushie"
+    item_path = /obj/item/toy/plush/skyrat/plushie_star
+
+/datum/loadout_item/suit/rainbowcoat
+	name = "Rainbow Coat"
+	item_path = /obj/item/clothing/suit/toggle/rainbowcoat
+	ckeywhitelist = list("dudewithatude")
 
 /datum/loadout_item/head/recruiter_cap
 	name = "Recruiter's Cap"

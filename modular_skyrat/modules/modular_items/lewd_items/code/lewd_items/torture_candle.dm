@@ -45,7 +45,7 @@
 		return FALSE
 	return TRUE
 
-/obj/item/bdsm_candle/Initialize()
+/obj/item/bdsm_candle/Initialize(mapload)
 	. = ..()
 	update_icon()
 	update_icon_state()

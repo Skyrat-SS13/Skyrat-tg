@@ -8,14 +8,13 @@
 	resistance_flags = FLAMMABLE
 	custom_price = PAYCHECK_CREW * 4
 
-/obj/item/storage/bag/ammo/ComponentInitialize()
+/obj/item/storage/bag/ammo/Initialize(mapload)
 	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	STR.max_w_class = WEIGHT_CLASS_NORMAL
-	STR.max_combined_w_class = 30
-	STR.max_items = 3
-	STR.display_numerical_stacking = FALSE
-	STR.can_hold = typecacheof(list(/obj/item/ammo_box/magazine, /obj/item/ammo_casing, /obj/item/ammo_box/revolver, /obj/item/stock_parts/cell/microfusion))
+	atom_storage.max_specific_storage = WEIGHT_CLASS_NORMAL
+	atom_storage.max_total_storage = 30
+	atom_storage.max_slots = 3
+	atom_storage.numerical_stacking = FALSE
+	atom_storage.can_hold = typecacheof(list(/obj/item/ammo_box/magazine, /obj/item/ammo_casing, /obj/item/ammo_box/revolver, /obj/item/stock_parts/cell/microfusion))
 
 /obj/item/storage/bag/material
 	name = "material pouch"
@@ -27,14 +26,13 @@
 	resistance_flags = FLAMMABLE
 	custom_price = PAYCHECK_CREW * 4
 
-/obj/item/storage/bag/material/ComponentInitialize()
+/obj/item/storage/bag/material/Initialize(mapload)
 	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	STR.max_w_class = WEIGHT_CLASS_NORMAL
-	STR.max_combined_w_class = INFINITY
-	STR.max_items = 2
-	STR.display_numerical_stacking = TRUE
-	STR.can_hold = typecacheof(list(/obj/item/rcd_ammo, /obj/item/stack/sheet))
+	atom_storage.max_specific_storage = WEIGHT_CLASS_NORMAL
+	atom_storage.max_total_storage = INFINITY
+	atom_storage.max_slots = 2
+	atom_storage.numerical_stacking = TRUE
+	atom_storage.can_hold = typecacheof(list(/obj/item/rcd_ammo, /obj/item/stack/sheet))
 
 /obj/item/storage/bag/trash
 	slot_flags = ITEM_SLOT_BELT //QoL by Gandalf

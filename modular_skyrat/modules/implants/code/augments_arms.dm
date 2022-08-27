@@ -79,7 +79,7 @@
 /obj/item/organ/internal/cyberimp/arm/janitor
 	name = "janitorial tools implant"
 	desc = "A set of janitorial tools on the user's arm."
-	items_to_create = list(/obj/item/lightreplacer, /obj/item/holosign_creator, /obj/item/soap/nanotrasen, /obj/item/reagent_containers/spray/cyborg_drying, /obj/item/mop/advanced, /obj/item/paint/paint_remover, /obj/item/reagent_containers/glass/beaker/large, /obj/item/reagent_containers/spray/cleaner) //Beaker if for refilling sprays
+	items_to_create = list(/obj/item/lightreplacer, /obj/item/holosign_creator, /obj/item/soap/nanotrasen, /obj/item/reagent_containers/spray/cyborg_drying, /obj/item/mop/advanced, /obj/item/paint/paint_remover, /obj/item/reagent_containers/cup/beaker/large, /obj/item/reagent_containers/spray/cleaner) //Beaker if for refilling sprays
 
 /obj/item/organ/internal/cyberimp/arm/janitor/emag_act()
 	for(var/datum/weakref/created_item in items_list)

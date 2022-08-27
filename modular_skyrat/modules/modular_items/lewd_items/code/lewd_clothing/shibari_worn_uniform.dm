@@ -58,7 +58,7 @@
 	if(do_after(hooman, HAS_TRAIT(hooman, TRAIT_RIGGER) ? 2 SECONDS : 10 SECONDS, target = src))
 		dropped(user)
 
-/obj/item/clothing/under/shibari/ComponentInitialize()
+/obj/item/clothing/under/shibari/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/update_icon_updates_onmob)
 
@@ -149,16 +149,9 @@
 	greyscale_colors = "#bd8fcf"
 
 //stuff to apply processing on equip and add mood event for perverts
-/obj/item/clothing/under/shibari/groin/equipped(mob/user, slot)
+/obj/item/clothing/under/shibari/groin/equipped(mob/living/user, slot)
 	var/mob/living/carbon/human/hooman = user
-	if(!hooman?.dna?.mutant_bodyparts["taur"])
-		slowdown = 0
-		return ..()
-	var/datum/sprite_accessory/taur/taur_accessory = GLOB.sprite_accessories["taur"][hooman.dna.species.mutant_bodyparts["taur"][MUTANT_INDEX_NAME]]
-	if(taur_accessory.hide_legs)
-		slowdown = 4
-	else
-		slowdown = 0
+	slowdown = hooman?.dna?.species?.bodytype & BODYTYPE_TAUR ? 4 : 0
 	return..()
 
 //processing stuff

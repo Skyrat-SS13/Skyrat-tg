@@ -94,9 +94,8 @@
 		M.blood_volume = BLOOD_VOLUME_NORMAL
 
 	M.cure_all_traumas(TRAUMA_RESILIENCE_MAGIC)
-	for(var/organ in M.internal_organs)
-		var/obj/item/organ/O = organ
-		O.setOrganDamage(0)
+	for(var/obj/item/organ/organ as anything in M.internal_organs)
+		organ.setOrganDamage(0)
 	for(var/thing in M.diseases)
 		var/datum/disease/D = thing
 		if(D.severity == DISEASE_SEVERITY_POSITIVE)
@@ -430,7 +429,7 @@
 
 /datum/reagent/medicine/calomel
 	name = "Calomel"
-	description = "Quickly purges the body of all chemicals. Toxin damage is dealt if the patient is in good condition."
+	description = "Quickly purges the body of toxic chemicals. Toxin damage is dealt if the patient is in good condition."
 	reagent_state = LIQUID
 	color = "#19C832"
 	metabolization_rate = 0.5 * REAGENTS_METABOLISM
@@ -627,7 +626,7 @@
 
 /datum/reagent/medicine/morphine/on_mob_life(mob/living/carbon/M, delta_time, times_fired)
 	if(current_cycle >= 5)
-		SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "numb", /datum/mood_event/narcotic_medium, name)
+		M.add_mood_event("numb", /datum/mood_event/narcotic_medium, name)
 	switch(current_cycle)
 		if(11)
 			to_chat(M, span_warning("You start to feel tired...") )
@@ -1094,7 +1093,7 @@
 	var/mob/living/carbon/human/exposed_human = exposed_mob
 	exposed_human.hair_color = "#CC22FF"
 	exposed_human.facial_hair_color = "#CC22FF"
-	exposed_human.update_hair()
+	exposed_human.update_body_parts()
 	// SKYRAT EDIT ADDITION BEGIN
 	exposed_human.update_mutant_bodyparts(force_update=TRUE)
 	// SKYRAT EDIT END
@@ -1373,6 +1372,7 @@
 			M.adjustOxyLoss(0.1 * REM * delta_time, 0)
 			M.adjustStaminaLoss(0.1 * REM * delta_time, 0)
 		if(82 to INFINITY)
+			REMOVE_TRAIT(M, TRAIT_SLEEPIMMUNE, type)
 			M.Sleeping(100 * REM * delta_time)
 			M.adjustOxyLoss(1.5 * REM * delta_time, 0)
 			M.adjustStaminaLoss(1.5 * REM * delta_time, 0)
@@ -1402,9 +1402,8 @@
 	M.adjust_timed_status_effect(-12 SECONDS * REM * delta_time, /datum/status_effect/dizziness)
 	M.adjust_timed_status_effect(-6 SECONDS * REM * delta_time, /datum/status_effect/confusion)
 	M.disgust = max(M.disgust - (6 * REM * delta_time), 0)
-	var/datum/component/mood/mood = M.GetComponent(/datum/component/mood)
-	if(mood != null && mood.sanity <= SANITY_NEUTRAL) // only take effect if in negative sanity and then...
-		mood.setSanity(min(mood.sanity + (5 * REM * delta_time), SANITY_NEUTRAL)) // set minimum to prevent unwanted spiking over neutral
+	if(M.mob_mood != null && M.mob_mood.sanity <= SANITY_NEUTRAL) // only take effect if in negative sanity and then...
+		M.mob_mood.set_sanity(min(M.mob_mood.sanity + (5 * REM * delta_time), SANITY_NEUTRAL)) // set minimum to prevent unwanted spiking over neutral
 	..()
 	. = TRUE
 
@@ -1468,7 +1467,7 @@
 		return
 	exposed_human.hair_color = "#9922ff"
 	exposed_human.facial_hair_color = "#9922ff"
-	exposed_human.update_hair()
+	exposed_human.update_body_parts()
 
 /datum/reagent/medicine/polypyr/overdose_process(mob/living/M, delta_time, times_fired)
 	M.adjustOrganLoss(ORGAN_SLOT_LUNGS, 0.5 * REM * delta_time)

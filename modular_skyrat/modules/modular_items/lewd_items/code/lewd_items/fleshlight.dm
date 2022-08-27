@@ -14,7 +14,7 @@
 	/// A list of toy designs for use in the radial color choice menu
 	var/static/list/fleshlight_designs
 	slot_flags = NONE
-	moth_edible = FALSE
+	clothing_flags = INEDIBLE_CLOTHING
 
 /// Generates a list of toy colors (or designs) for use in the radial color choice menu
 /obj/item/clothing/sextoy/fleshlight/proc/populate_fleshlight_designs()
@@ -25,7 +25,7 @@
 		"red" = image (icon = src.icon, icon_state = "[initial(icon_state)]_red"),
 		"yellow" = image(icon = src.icon, icon_state = "[initial(icon_state)]_yellow"))
 
-/obj/item/clothing/sextoy/fleshlight/Initialize()
+/obj/item/clothing/sextoy/fleshlight/Initialize(mapload)
 	. = ..()
 	update_icon()
 	update_icon_state()

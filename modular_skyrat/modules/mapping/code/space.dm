@@ -180,3 +180,6 @@
 	id = "escapefromtarkon"
 	description = "An ambitious goal, A step forward, A trial run for the Tarkon drill, ment to implant mining stations within meteors. Decades of disaster have, however, left this one... Unattended for far too long."
 	always_place = TRUE
+
+/obj/modular_map_root/port_tarkon
+	config_file = "strings/modular_maps/skyrat/PortTarkon.toml"

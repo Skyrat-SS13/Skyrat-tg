@@ -38,7 +38,6 @@
 	mutantheart = /obj/item/organ/internal/heart/skrell
 	mutantliver = /obj/item/organ/internal/liver/skrell
 	mutanttongue = /obj/item/organ/internal/tongue/skrell
-	learnable_languages = list(/datum/language/common, /datum/language/skrell)
 	bodypart_overrides = list(
 		BODY_ZONE_HEAD = /obj/item/bodypart/head/mutant/skrell,
 		BODY_ZONE_CHEST = /obj/item/bodypart/chest/mutant/skrell,
@@ -54,8 +53,7 @@
 /datum/species/skrell/get_species_lore()
 	return list(placeholder_lore)
 
-/datum/species/skrell/get_random_features()
-	var/list/returned = MANDATORY_FEATURE_LIST
+/datum/species/skrell/randomize_features(mob/living/carbon/human/human_mob)
 	var/main_color
 	var/random = rand(1,6)
 	//Choose from a range of green-blue colors
@@ -72,10 +70,9 @@
 			main_color = "#22BBFF"
 		if(6)
 			main_color = "#2266FF"
-	returned["mcolor"] = main_color
-	returned["mcolor2"] = main_color
-	returned["mcolor3"] = main_color
-	return returned
+	human_mob.dna.features["mcolor"] = main_color
+	human_mob.dna.features["mcolor2"] = main_color
+	human_mob.dna.features["mcolor3"] = main_color
 
 /datum/species/skrell/prepare_human_for_preview(mob/living/carbon/human/skrell)
 	var/skrell_color = "#22BBFF"
@@ -110,7 +107,6 @@
 		/datum/language/shadowtongue,
 		/datum/language/terrum,
 		/datum/language/vox,
-		/datum/language/dwarf,
 		/datum/language/nekomimetic,
 		/datum/language/skrell,
 	))

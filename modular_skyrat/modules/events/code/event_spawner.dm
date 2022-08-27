@@ -108,7 +108,7 @@
 				new_headset.forceMove(get_turf(H))
 
 	var/obj/item/back_item
-	if(H.back && SEND_SIGNAL(H.back, COMSIG_CONTAINS_STORAGE))
+	if(H.back && H.back.atom_storage)
 		back_item = H.back
 	//Spawn our character a backpack if they dont have any
 	if(!back_item)

@@ -30,7 +30,7 @@
 	/// Static list of designs of the toy, used for the color selection radial menu
 	var/static/list/vibrator_designs
 	w_class = WEIGHT_CLASS_TINY
-	moth_edible = FALSE
+	clothing_flags = INEDIBLE_CLOTHING
 
 //create radial menu
 /obj/item/clothing/sextoy/vibrator/proc/populate_vibrator_designs()
@@ -55,7 +55,7 @@
 	update_icon()
 	color_changed = TRUE
 
-/obj/item/clothing/sextoy/vibrator/Initialize()
+/obj/item/clothing/sextoy/vibrator/Initialize(mapload)
 	. = ..()
 	update_icon_state()
 	update_icon()

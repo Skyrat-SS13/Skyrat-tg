@@ -22,6 +22,7 @@
 	load_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/smg_magin.ogg'
 	load_empty_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/smg_magin.ogg'
 	eject_sound = 'modular_skyrat/modules/gunsgalore/sound/guns/interact/smg_magout.ogg'
+	company_flag = COMPANY_OLDARMS
 
 /obj/item/ammo_box/magazine/pps
 	name = "pps magazine (7.62x25mm)"

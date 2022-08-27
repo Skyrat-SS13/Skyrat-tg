@@ -15,6 +15,7 @@
 	sound_environment = SOUND_AREA_TUNNEL_ENCLOSED
 	forced_ambience = TRUE
 	ambient_buzz = 'sound/ambience/source_corridor2.ogg'
+	ambient_buzz_vol = 20
 
 //Maintenance - Departmental
 
@@ -38,6 +39,9 @@
 /area/station/maintenance/department/eva
 	name = "EVA Maintenance"
 	icon_state = "maint_eva"
+
+/area/station/maintenance/department/eva/abandoned
+	name = "Abandoned EVA Storage"
 
 /area/station/maintenance/department/electrical
 	name = "Electrical Maintenance"
@@ -402,6 +406,10 @@
 	name = "\improper Research Director's Office"
 	icon_state = "rd_office"
 
+/area/station/command/heads_quarters/qm
+	name = "\improper Quartermaster's Office"
+	icon_state = "qm_office"
+
 //Command - Teleporters
 
 /area/station/command/teleporter
@@ -544,6 +552,10 @@
 /area/station/service/cafeteria
 	name = "\improper Cafeteria"
 	icon_state = "cafeteria"
+
+/area/station/service/barber
+	name = "\improper Barber"
+	icon_state = "barber"
 
 /area/station/service/kitchen
 	name = "\improper Kitchen"
@@ -989,6 +1001,7 @@
 /area/station/medical/virology
 	name = "Virology"
 	icon_state = "virology"
+	ambience_index = AMBIENCE_VIROLOGY
 
 /area/station/medical/morgue
 	name = "\improper Morgue"
@@ -1189,6 +1202,9 @@
 	name = "Security Post - Medbay"
 	icon_state = "checkpoint_med"
 
+/area/station/security/checkpoint/medical/medsci
+	name = "Security Post - Medsci"
+
 /area/station/security/checkpoint/science
 	name = "Security Post - Science"
 	icon_state = "checkpoint_sci"
@@ -1250,10 +1266,6 @@
 /area/station/cargo/lobby
 	name = "\improper Cargo Lobby"
 	icon_state = "cargo_lobby"
-
-/area/station/cargo/qm
-	name = "\improper Quartermaster's Office"
-	icon_state = "quart_office"
 
 /area/station/cargo/miningdock
 	name = "\improper Mining Dock"
@@ -1348,6 +1360,10 @@
 	name = "\improper Research Division Server Room"
 	icon_state = "server"
 
+/area/station/science/circuits
+	name = "\improper Circuit Lab"
+	icon_state = "cir_lab"
+
 /area/station/science/explab
 	name = "\improper Experimentation Lab"
 	icon_state = "exp_lab"
@@ -1356,6 +1372,9 @@
 /area/station/science/auxlab
 	name = "\improper Auxillary Lab"
 	icon_state = "aux_lab"
+
+/area/station/science/auxlab/firing_range
+	name = "\improper Research Firing Range"
 
 /area/station/science/robotics
 	name = "Robotics"

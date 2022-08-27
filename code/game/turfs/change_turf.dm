@@ -193,7 +193,7 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 		//SKYRAT EDIT ADDITION
 		if(stashed_pollution)
 			newTurf.pollution = stashed_pollution
-			stashed_pollution.HandleOverlay()
+			stashed_pollution.handle_overlay()
 		//SKYRAT EDIT END
 		newTurf.air.copy_from(stashed_air)
 		newTurf.excited = stashed_state

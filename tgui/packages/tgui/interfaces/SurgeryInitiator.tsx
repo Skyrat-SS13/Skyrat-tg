@@ -10,6 +10,7 @@ import { Window } from '../layouts';
 type Surgery = {
   name: string;
   blocked?: BooleanLike;
+  blocked_reason?: string; // SKYRAT EDIT ADDITION - Surgically unremovable limb
 };
 
 type SurgeryInitiatorData = {
@@ -94,8 +95,11 @@ class SurgeryInitiatorInner extends Component<
                     disabled={surgery.blocked}
                     selected={index === this.state.selectedSurgeryIndex}
                     tooltip={
-                      surgery.blocked ? 'Their body is covered!' : undefined
-                    }
+                      surgery.blocked
+                        ? surgery.blocked_reason ??
+                        'That surgery is unavailable!'
+                        : undefined
+                    } // SKYRAT EDIT - ORIGINAL: tooltip={surgery.blocked ? "Their body is covered!" : undefined}
                     key={surgery.name}
                     fluid>
                     {surgery.name}

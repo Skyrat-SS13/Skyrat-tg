@@ -7,7 +7,6 @@
 	layer = 4
 	item_chair = null
 	buildstacktype = null
-	buckle_message = FALSE
 	///Overlays for ropes
 	var/static/mutable_appearance/shibari_rope_overlay
 	var/static/mutable_appearance/shibari_rope_overlay_behind
@@ -42,9 +41,8 @@
 //Examine changes for this structure
 /obj/structure/chair/shibari_stand/examine(mob/user)
 	. = ..()
-	. += span_notice("Looks like it can be customized with a <b>screwdriver</b>.")
 	if(!has_buckled_mobs() && can_buckle)
-		. += span_notice("While standing on [src], drag and drop character <b>with shibari full-body bondage</b> onto [src] to tie a person to it, <b>while holding ropes in your hands</b>.")
+		. += span_notice("They need to be wearing <b>full-body shibari</b>, and you need to be <b>holding ropes</b>!")
 
 /obj/structure/chair/shibari_stand/user_unbuckle_mob(mob/living/buckled_mob, mob/living/user)
 	var/mob/living/buckled = buckled_mob

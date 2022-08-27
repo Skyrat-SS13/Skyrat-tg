@@ -86,7 +86,12 @@
 		to_chat(target, "<span class='userdanger'>[CONFIG_GET(string/blackoutpolicy)]</span>") //SKYRAT EDIT ADDITION
 		return TRUE
 	else
-		target.visible_message(span_warning("...[target.p_they()] convulses, then lies still."))
+	//SKYRAT EDIT ADDITION - DNR TRAIT - need this so that people dont just keep spamming the revival surgery; it runs success just bc the surgery steps are done
+		if(HAS_TRAIT(target, TRAIT_DNR))
+			target.visible_message(span_warning("...[target.p_they()] lies still, unaffected. Further attempts are futile, they're gone."))
+		else
+			target.visible_message(span_warning("...[target.p_they()] convulses, then lies still."))
+	//SKYRAT EDIT ADDITION END - DNR TRAIT - ORIGINAL: target.visible_message(span_warning("...[target.p_they()] convulses, then lies still."))
 		return FALSE
 
 /datum/surgery_step/revive/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)

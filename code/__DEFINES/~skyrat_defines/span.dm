@@ -22,3 +22,4 @@
 #define span_largebrass(str) ("<span class='largebrass'>" + str + "</span>")
 #define span_leaderbrass(str) ("<span class='leaderbrass'>" + str + "</span>")
 #define span_bigbrass(str) ("<span class='bigbrass'>" + str + "</span>")
+#define span_gangradio(str) ("<span class='gangradio'>" + str + "</span>")

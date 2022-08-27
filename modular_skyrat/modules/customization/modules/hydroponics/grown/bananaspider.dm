@@ -17,7 +17,7 @@
 	desc = "You do not know what it is, but you can bet the clown would love it."
 	icon = 'modular_skyrat/master_files/icons/obj/hydroponics/harvest.dmi'
 	icon_state = "spibanana"
-	foodtypes = GROSS | MEAT | RAW | FRUIT
+	foodtypes = GORE | MEAT | RAW | FRUIT
 	var/awakening = FALSE
 
 /obj/item/food/grown/banana/banana_spider_spawnable/attack_self(mob/user)

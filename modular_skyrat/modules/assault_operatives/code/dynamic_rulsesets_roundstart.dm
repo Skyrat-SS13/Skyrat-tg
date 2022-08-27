@@ -19,7 +19,7 @@
 	required_candidates = 5
 	weight = 3
 	cost = 20
-	requirements = list(90, 90, 90, 80, 60, 40, 30, 20, 10, 10)
+	minimum_players = 50
 	flags = HIGH_IMPACT_RULESET
 	antag_cap = list("denominator" = 18, "offset" = 1)
 	var/datum/team/assault_operatives/assault_operatives_team

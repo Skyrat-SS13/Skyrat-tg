@@ -19,8 +19,10 @@
 	special_desc_requirement = EXAMINE_CHECK_SYNDICATE
 	special_desc = "An energized fire axe used in Syndicate bases for breaking glass, and people."
 
-/obj/item/fireaxe/energy/ComponentInitialize()
+/obj/item/fireaxe/energy/Initialize(mapload)
 	. = ..()
+	RegisterSignal(src, COMSIG_TWOHANDED_WIELD, .proc/energy_wield, override = TRUE)
+	RegisterSignal(src, COMSIG_TWOHANDED_UNWIELD, .proc/energy_unwield, override = TRUE)
 	AddComponent(/datum/component/two_handed, force_unwielded = 10, force_wielded = 33, icon_wielded = "[base_icon_state]1", wieldsound = 'sound/weapons/saberon.ogg', unwieldsound = 'sound/weapons/saberoff.ogg')
 
 /obj/item/fireaxe/energy/proc/energy_wield(obj/item/source, mob/living/carbon/user)
@@ -38,8 +40,3 @@
 	hitsound = SFX_SWING_HIT
 	STOP_PROCESSING(SSobj, src)
 	set_light_on(FALSE)
-
-/obj/item/fireaxe/energy/Initialize(mapload)
-	. = ..()
-	RegisterSignal(src, COMSIG_TWOHANDED_WIELD, .proc/energy_wield, override = TRUE)
-	RegisterSignal(src, COMSIG_TWOHANDED_UNWIELD, .proc/energy_unwield, override = TRUE)

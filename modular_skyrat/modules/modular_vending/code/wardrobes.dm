@@ -13,11 +13,11 @@
 /obj/machinery/vending/wardrobe/engi_wardrobe
 	skyrat_products = list(
 		/obj/item/radio/headset/headset_eng = 3,
-		/obj/item/clothing/under/rank/engineering/engineer/trouser = 3,
+		/obj/item/clothing/under/rank/engineering/engineer/skyrat/trouser = 3,
 		/obj/item/clothing/under/rank/engineering/engineer/skyrat/utility = 3,
-		/obj/item/clothing/suit/toggle/jacket/engi = 3,
-		/obj/item/clothing/under/misc/overalls = 3,
 		/obj/item/clothing/under/rank/engineering/engineer/skyrat/hazard_chem = 3,
+		/obj/item/clothing/under/misc/overalls = 3,
+		/obj/item/clothing/suit/toggle/jacket/engi = 3,
 		/obj/item/clothing/head/hardhat/orange = 2,
 		/obj/item/clothing/head/hardhat/weldhat/orange = 2,
 		/obj/item/clothing/head/hardhat/dblue = 2,
@@ -53,7 +53,7 @@
 		/obj/item/clothing/under/rank/rnd/roboticist/skyrat/sleek = 2,
 		/obj/item/tank/internals/anesthetic = 2,
 		/obj/item/clothing/mask/breath = 2,
-		/obj/item/reagent_containers/glass/bottle/morphine = 2,
+		/obj/item/reagent_containers/cup/bottle/morphine = 2,
 		/obj/item/reagent_containers/syringe = 2,
 	)
 
@@ -84,7 +84,7 @@
 
 /obj/machinery/vending/wardrobe/chap_wardrobe
 	skyrat_products = list(
-		/obj/item/clothing/suit/nemes = 1,
+		/obj/item/clothing/suit/costume/nemes = 1,
 		/obj/item/clothing/head/nemes = 1,
 		/obj/item/clothing/head/pharaoh = 1, //dont google camel by camel worst mistake of my life
 		/obj/item/clothing/under/rank/pmarsrobe = 1

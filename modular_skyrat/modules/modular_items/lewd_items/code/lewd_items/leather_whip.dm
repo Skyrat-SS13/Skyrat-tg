@@ -13,7 +13,7 @@
 	righthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_right.dmi'
 	w_class = WEIGHT_CLASS_NORMAL
 	hitsound = 'sound/weapons/whip.ogg'
-	moth_edible = FALSE
+	clothing_flags = INEDIBLE_CLOTHING
 	//When taking that thing in mouth
 	modifies_speech = TRUE
 	flags_cover = MASKCOVERSMOUTH
@@ -77,11 +77,6 @@
 		"weak" = image (icon = src.icon, icon_state = "leather_whip_pink_weak"),
 		"hard" = image(icon = src.icon, icon_state = "leather_crotch_pink_hard"))
 
-//to update model lol
-/obj/item/clothing/mask/leatherwhip/ComponentInitialize()
-	. = ..()
-	AddElement(/datum/element/update_icon_updates_onmob)
-
 /obj/item/clothing/mask/leatherwhip/equipped(mob/target, slot)
 	. = ..()
 
@@ -129,8 +124,9 @@
 		return FALSE
 	return TRUE
 
-/obj/item/clothing/mask/leatherwhip/Initialize()
+/obj/item/clothing/mask/leatherwhip/Initialize(mapload)
 	. = ..()
+	AddElement(/datum/element/update_icon_updates_onmob)
 	update_icon_state()
 	update_icon()
 	if(!length(whip_designs))
@@ -244,7 +240,7 @@
 				target.adjustPain(5)
 				target.apply_status_effect(/datum/status_effect/spanked)
 				if(HAS_TRAIT(target, TRAIT_MASOCHISM || TRAIT_BIMBO))
-					SEND_SIGNAL(target, COMSIG_ADD_MOOD_EVENT, "pervert spanked", /datum/mood_event/perv_spanked)
+					target.add_mood_event("pervert spanked", /datum/mood_event/perv_spanked)
 				playsound(loc, 'sound/weapons/whip.ogg', 60)
 
 			if(current_whip_type == "hard")
@@ -258,7 +254,7 @@
 				target.adjustPain(8)
 				target.apply_status_effect(/datum/status_effect/spanked)
 				if(HAS_TRAIT(target, TRAIT_MASOCHISM || TRAIT_BIMBO))
-					SEND_SIGNAL(target, COMSIG_ADD_MOOD_EVENT, "pervert spanked", /datum/mood_event/perv_spanked)
+					target.add_mood_event("pervert spanked", /datum/mood_event/perv_spanked)
 				playsound(loc, 'sound/weapons/whip.ogg', 100)
 		else
 			if(current_whip_type == "hard")

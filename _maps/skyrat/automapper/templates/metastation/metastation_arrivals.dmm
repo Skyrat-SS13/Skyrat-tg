@@ -38,13 +38,13 @@
 /area/station/hallway/secondary/entry)
 "aT" = (
 /obj/structure/table/wood,
-/obj/item/reagent_containers/glass/beaker{
+/obj/item/reagent_containers/cup/beaker{
 	pixel_x = 8;
 	pixel_y = 2
 	},
 /obj/item/reagent_containers/dropper,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/reagent_containers/food/drinks/shaker,
+/obj/item/reagent_containers/cup/glass/shaker,
 /turf/open/floor/wood,
 /area/station/maintenance/port/aft)
 "bb" = (
@@ -644,9 +644,8 @@
 /obj/structure/bed/dogbed,
 /obj/effect/decal/cleanable/blood/old,
 /obj/structure/sign/poster/contraband/random/directional/west,
-/turf/open/floor/wood{
-	icon_state = "wood-broken3"
-	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/wood,
 /area/station/maintenance/port/aft)
 "tP" = (
 /obj/effect/turf_decal/stripes/line{
@@ -1401,11 +1400,9 @@
 /turf/open/floor/iron,
 /area/station/hallway/secondary/entry)
 "MU" = (
-/obj/structure/sink/kitchen{
+/obj/structure/sink/kitchen/directional/east{
 	desc = "A sink used for washing one's hands and face. It looks rusty and home-made";
-	dir = 4;
-	name = "old sink";
-	pixel_x = -12
+	name = "old sink"
 	},
 /obj/structure/mirror/directional/west,
 /turf/open/floor/wood,
@@ -1617,9 +1614,8 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
-/turf/open/floor/plating{
-	icon_state = "platingdmg2"
-	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/plating,
 /area/station/maintenance/port)
 "RG" = (
 /obj/effect/spawner/random/vending/colavend,
@@ -1664,9 +1660,8 @@
 "SL" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/effect/spawner/random/trash/janitor_supplies,
-/turf/open/floor/plating{
-	icon_state = "platingdmg2"
-	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/plating,
 /area/station/maintenance/port)
 "SO" = (
 /obj/effect/mapping_helpers/airlock/access/all/engineering/maintenance,
@@ -1896,9 +1891,8 @@
 "YI" = (
 /obj/machinery/portable_atmospherics/canister/air,
 /obj/effect/spawner/random/maintenance,
-/turf/open/floor/plating{
-	icon_state = "platingdmg2"
-	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/plating,
 /area/station/maintenance/port)
 "Zf" = (
 /obj/effect/turf_decal/stripes{

@@ -225,6 +225,9 @@ GLOBAL_DATUM_INIT(welding_sparks, /mutable_appearance, mutable_appearance('icons
 	if(species_exception)
 		species_exception = string_list(species_exception)
 
+	if(sharpness && force > 5) //give sharp objects butchering functionality, for consistency
+		AddComponent(/datum/component/butchering, speed = 8 SECONDS * toolspeed)
+
 	. = ..()
 
 	// Handle adding item associated actions
@@ -324,12 +327,6 @@ GLOBAL_DATUM_INIT(welding_sparks, /mutable_appearance, mutable_appearance('icons
 	if(B && B.loc == loc)
 		atom_destruction(MELEE)
 
-/obj/item/ComponentInitialize()
-	. = ..()
-
-	if(sharpness && force > 5) //give sharp objects butchering functionality, for consistency
-		AddComponent(/datum/component/butchering, 80 * toolspeed)
-
 /**Makes cool stuff happen when you suicide with an item
  *
  *Outputs a creative message and then return the damagetype done
@@ -360,6 +357,8 @@ GLOBAL_DATUM_INIT(welding_sparks, /mutable_appearance, mutable_appearance('icons
 		worn_icon_digi = SSgreyscale.GetColoredIconByType(greyscale_config_worn_digi, greyscale_colors)
 	if(greyscale_config_worn_vox)
 		worn_icon_vox = SSgreyscale.GetColoredIconByType(greyscale_config_worn_vox, greyscale_colors)
+	if(greyscale_config_worn_better_vox)
+		worn_icon_better_vox = SSgreyscale.GetColoredIconByType(greyscale_config_worn_better_vox, greyscale_colors)
 	if(greyscale_config_worn_teshari)
 		worn_icon_teshari = SSgreyscale.GetColoredIconByType(greyscale_config_worn_teshari, greyscale_colors)
 	if(greyscale_config_worn_taur_snake)
@@ -562,7 +561,7 @@ GLOBAL_DATUM_INIT(welding_sparks, /mutable_appearance, mutable_appearance('icons
 
 
 	//If the item is in a storage item, take it out
-	SEND_SIGNAL(loc, COMSIG_TRY_STORAGE_TAKE, src, user.loc, TRUE)
+	loc.atom_storage?.attempt_remove(src, user.loc, silent = TRUE)
 	if(QDELETED(src)) //moving it out of the storage to the floor destroyed it.
 		return
 
@@ -597,7 +596,7 @@ GLOBAL_DATUM_INIT(welding_sparks, /mutable_appearance, mutable_appearance('icons
 		return
 
 	//If the item is in a storage item, take it out
-	SEND_SIGNAL(loc, COMSIG_TRY_STORAGE_TAKE, src, user.loc, TRUE)
+	loc.atom_storage?.attempt_remove(src, user.loc, silent = TRUE)
 	if(QDELETED(src)) //moving it out of the storage to the floor destroyed it.
 		return
 
@@ -786,9 +785,9 @@ GLOBAL_DATUM_INIT(welding_sparks, /mutable_appearance, mutable_appearance('icons
 	else
 		return
 
-/obj/item/on_exit_storage(datum/component/storage/concrete/master_storage)
+/obj/item/on_exit_storage(datum/storage/master_storage)
 	. = ..()
-	var/atom/location = master_storage.real_location()
+	var/atom/location = master_storage.real_location?.resolve()
 	do_drop_animation(location)
 
 /obj/item/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
@@ -837,8 +836,8 @@ GLOBAL_DATUM_INIT(welding_sparks, /mutable_appearance, mutable_appearance('icons
 /obj/item/proc/remove_item_from_storage(atom/newLoc) //please use this if you're going to snowflake an item out of a obj/item/storage
 	if(!newLoc)
 		return FALSE
-	if(SEND_SIGNAL(loc, COMSIG_CONTAINS_STORAGE))
-		return SEND_SIGNAL(loc, COMSIG_TRY_STORAGE_TAKE, src, newLoc, TRUE)
+	if(loc.atom_storage)
+		return loc.atom_storage.attempt_remove(src, newLoc, silent = TRUE)
 	return FALSE
 
 /// Returns the icon used for overlaying the object on a belt
@@ -854,29 +853,29 @@ GLOBAL_DATUM_INIT(welding_sparks, /mutable_appearance, mutable_appearance('icons
 	var/mob/owner = loc
 	var/flags = slot_flags
 	if(flags & ITEM_SLOT_OCLOTHING)
-		owner.update_inv_wear_suit()
+		owner.update_worn_oversuit()
 	if(flags & ITEM_SLOT_ICLOTHING)
-		owner.update_inv_w_uniform()
+		owner.update_worn_undersuit()
 	if(flags & ITEM_SLOT_GLOVES)
-		owner.update_inv_gloves()
+		owner.update_worn_gloves()
 	if(flags & ITEM_SLOT_EYES)
-		owner.update_inv_glasses()
+		owner.update_worn_glasses()
 	if(flags & ITEM_SLOT_EARS)
 		owner.update_inv_ears()
 	if(flags & ITEM_SLOT_MASK)
-		owner.update_inv_wear_mask()
+		owner.update_worn_mask()
 	if(flags & ITEM_SLOT_HEAD)
-		owner.update_inv_head()
+		owner.update_worn_head()
 	if(flags & ITEM_SLOT_FEET)
-		owner.update_inv_shoes()
+		owner.update_worn_shoes()
 	if(flags & ITEM_SLOT_ID)
-		owner.update_inv_wear_id()
+		owner.update_worn_id()
 	if(flags & ITEM_SLOT_BELT)
-		owner.update_inv_belt()
+		owner.update_worn_belt()
 	if(flags & ITEM_SLOT_BACK)
-		owner.update_inv_back()
+		owner.update_worn_back()
 	if(flags & ITEM_SLOT_NECK)
-		owner.update_inv_neck()
+		owner.update_worn_neck()
 
 	//SKYRAT EDIT ADDITION BEGIN - ERP_SLOT_SYSTEM
 	if(flags & ITEM_SLOT_VAGINA)
@@ -1000,7 +999,7 @@ GLOBAL_DATUM_INIT(welding_sparks, /mutable_appearance, mutable_appearance('icons
 
 /obj/item/MouseEntered(location, control, params)
 	. = ..()
-	if(get(src, /mob) == usr && !QDELETED(src))
+	if(((get(src, /mob) == usr) || loc?.atom_storage || (item_flags & IN_STORAGE)) && !QDELETED(src)) //nullspace exists.
 		var/mob/living/L = usr
 		if(usr.client.prefs.read_preference(/datum/preference/toggle/enable_tooltips))
 			var/timedelay = usr.client.prefs.read_preference(/datum/preference/numeric/tooltip_delay) / 100
@@ -1013,16 +1012,16 @@ GLOBAL_DATUM_INIT(welding_sparks, /mutable_appearance, mutable_appearance('icons
 
 /obj/item/MouseDrop(atom/over, src_location, over_location, src_control, over_control, params)
 	. = ..()
-	remove_filter("hover_outline") //get rid of the hover effect in case the mouse exit isn't called if someone drags and drops an item and somthing goes wrong
+	remove_filter(HOVER_OUTLINE_FILTER) //get rid of the hover effect in case the mouse exit isn't called if someone drags and drops an item and somthing goes wrong
 
 /obj/item/MouseExited()
 	deltimer(tip_timer) //delete any in-progress timer if the mouse is moved off the item before it finishes
 	closeToolTip(usr)
-	remove_filter("hover_outline")
+	remove_filter(HOVER_OUTLINE_FILTER)
 
 /obj/item/proc/apply_outline(outline_color = null)
-	if(get(src, /mob) != usr || QDELETED(src) || isobserver(usr)) //cancel if the item isn't in an inventory, is being deleted, or if the person hovering is a ghost (so that people spectating you don't randomly make your items glow)
-		return
+	if(((get(src, /mob) != usr) && !loc?.atom_storage && !(item_flags & IN_STORAGE)) || QDELETED(src) || isobserver(usr)) //cancel if the item isn't in an inventory, is being deleted, or if the person hovering is a ghost (so that people spectating you don't randomly make your items glow)
+		return FALSE
 	var/theme = lowertext(usr.client?.prefs?.read_preference(/datum/preference/choiced/ui_style))
 	if(!outline_color) //if we weren't provided with a color, take the theme's color
 		switch(theme) //yeah it kinda has to be this way
@@ -1045,7 +1044,7 @@ GLOBAL_DATUM_INIT(welding_sparks, /mutable_appearance, mutable_appearance('icons
 	if(color)
 		outline_color = COLOR_WHITE //if the item is recolored then the outline will be too, let's make the outline white so it becomes the same color instead of some ugly mix of the theme and the tint
 
-	add_filter("hover_outline", 1, list("type" = "outline", "size" = 1, "color" = outline_color))
+	add_filter(HOVER_OUTLINE_FILTER, 1, list("type" = "outline", "size" = 1, "color" = outline_color))
 
 /// Called when a mob tries to use the item as a tool. Handles most checks.
 /obj/item/proc/use_tool(atom/target, mob/living/user, delay, amount=0, volume=0, datum/callback/extra_checks)
@@ -1136,7 +1135,7 @@ GLOBAL_DATUM_INIT(welding_sparks, /mutable_appearance, mutable_appearance('icons
 		var/hand_index = M.get_held_index_of_item(src)
 		if(hand_index)
 			M.held_items[hand_index] = null
-			M.update_inv_hands()
+			M.update_held_items()
 			if(M.client)
 				M.client.screen -= src
 			layer = initial(layer)
@@ -1447,7 +1446,7 @@ GLOBAL_DATUM_INIT(welding_sparks, /mutable_appearance, mutable_appearance('icons
 	return
 
 /// Whether or not this item can be put into a storage item through attackby
-/obj/item/proc/attackby_storage_insert(datum/component/storage, atom/storage_holder, mob/user)
+/obj/item/proc/attackby_storage_insert(datum/storage, atom/storage_holder, mob/user)
 	return TRUE
 
 /obj/item/proc/do_pickup_animation(atom/target)
@@ -1485,6 +1484,9 @@ GLOBAL_DATUM_INIT(welding_sparks, /mutable_appearance, mutable_appearance('icons
 
 /obj/item/proc/do_drop_animation(atom/moving_from)
 	if(!istype(loc, /turf))
+		return
+
+	if(!istype(moving_from))
 		return
 
 	var/turf/current_turf = get_turf(src)
@@ -1575,3 +1577,10 @@ GLOBAL_DATUM_INIT(welding_sparks, /mutable_appearance, mutable_appearance('icons
 /obj/item/proc/mark_silver_slime_reaction()
 	SIGNAL_HANDLER
 	SEND_SIGNAL(src, COMSIG_FOOD_SILVER_SPAWNED)
+
+/**
+ * Returns null if this object cannot be used to interact with physical writing mediums such as paper.
+ * Returns a list of key attributes for this object interacting with paper otherwise.
+ */
+/obj/item/proc/get_writing_implement_details()
+	return null

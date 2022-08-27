@@ -33,19 +33,19 @@
 		return
 	switch(quality)
 		if (DRINK_NICE)
-			SEND_SIGNAL(exposed_mob, COMSIG_ADD_MOOD_EVENT, "quality_drink", /datum/mood_event/quality_nice)
+			exposed_mob.add_mood_event("quality_drink", /datum/mood_event/quality_nice)
 		if (DRINK_GOOD)
-			SEND_SIGNAL(exposed_mob, COMSIG_ADD_MOOD_EVENT, "quality_drink", /datum/mood_event/quality_good)
+			exposed_mob.add_mood_event("quality_drink", /datum/mood_event/quality_good)
 		if (DRINK_VERYGOOD)
-			SEND_SIGNAL(exposed_mob, COMSIG_ADD_MOOD_EVENT, "quality_drink", /datum/mood_event/quality_verygood)
+			exposed_mob.add_mood_event("quality_drink", /datum/mood_event/quality_verygood)
 		if (DRINK_FANTASTIC)
-			SEND_SIGNAL(exposed_mob, COMSIG_ADD_MOOD_EVENT, "quality_drink", /datum/mood_event/quality_fantastic)
+			exposed_mob.add_mood_event("quality_drink", /datum/mood_event/quality_fantastic)
 			exposed_mob.mind?.add_memory(MEMORY_DRINK, list(DETAIL_DRINK = src), story_value = STORY_VALUE_OKAY)
 		if (FOOD_AMAZING)
-			SEND_SIGNAL(exposed_mob, COMSIG_ADD_MOOD_EVENT, "quality_food", /datum/mood_event/amazingtaste)
-		// SKYRAT ADDITION BEGIN
+			exposed_mob.add_mood_event("quality_food", /datum/mood_event/amazingtaste)
+		// SKYRAT ADDITION BEGIN - Racial Drinks
 		if (RACE_DRINK)
-			SEND_SIGNAL(exposed_mob, COMSIG_ADD_MOOD_EVENT, "quality_drink", /datum/mood_event/race_drink)
+			exposed_mob.add_mood_event("quality_drink", /datum/mood_event/race_drink)
 		// SKYRAT ADDITION END
 
 /datum/reagent/consumable/nutriment
@@ -179,7 +179,7 @@
 	if(is_type_in_typecache(exposed_obj, GLOB.oilfry_blacklisted_items) || (exposed_obj.resistance_flags & INDESTRUCTIBLE))
 		exposed_obj.loc.visible_message(span_notice("The hot oil has no effect on [exposed_obj]!"))
 		return
-	if(SEND_SIGNAL(exposed_obj, COMSIG_CONTAINS_STORAGE))
+	if(exposed_obj.atom_storage)
 		exposed_obj.loc.visible_message(span_notice("The hot oil splatters about as [exposed_obj] touches it. It seems too full to cook properly!"))
 		return
 	exposed_obj.loc.visible_message(span_warning("[exposed_obj] rapidly fries as it's splashed with hot oil! Somehow."))
@@ -1013,11 +1013,12 @@
 	description = "A rich, creamy spread produced by grinding peanuts."
 	taste_description = "peanuts"
 	color = "#D9A066"
+	nutriment_factor = 15 * REAGENTS_METABOLISM
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 
 /datum/reagent/consumable/peanut_butter/on_mob_life(mob/living/carbon/M, delta_time, times_fired) //ET loves peanut butter
 	if(isabductor(M))
-		SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "ET_pieces", /datum/mood_event/et_pieces, name)
+		M.add_mood_event("ET_pieces", /datum/mood_event/et_pieces, name)
 		M.set_timed_status_effect(30 SECONDS * REM * delta_time, /datum/status_effect/drugginess)
 	..()
 
