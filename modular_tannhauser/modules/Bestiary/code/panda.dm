@@ -8,11 +8,11 @@
 	speak = list("Churip","Chuuriip","Cheep-cheep","Chiteurp","squueeaacipt")
 	speak_emote = list("chirps", "huff-quacks")
 	emote_hear = list("squeak-chrips.", "huff-squacks.")
-	emote_see = list("shakes its head.", "rolls about.")
+	emote_see = list("shakes its head.", "rolls about.", "attempts to look big.")
 	speak_chance = 1
 	turns_per_move = 5
 	see_in_dark = 6
-	butcher_results = list(/obj/item/reagent_containers/food/drinks/mug/coco = 3)
+	butcher_results = list(/obj/item/reagent_containers/cup/glass/mug/coco = 3)
 	response_help_continuous = "pets"
 	response_help_simple = "pet"
 	response_disarm_continuous = "gently pushes aside"
@@ -25,7 +25,7 @@
 /mob/living/simple_animal/pet/redpanda/zesty
 	name = "Zesty"
 	desc = "Wah't a dork. Wash with Like colors"
-	butcher_results = list(/obj/item/reagent_containers/food/drinks/mug/tea = 6)
+	butcher_results = list(/obj/item/reagent_containers/cup/glass/mug/tea = 6)
 	icon_state = "zest_panda"
 	icon_living = "zest_panda"
 	icon_dead = "blue_dead_panda"
