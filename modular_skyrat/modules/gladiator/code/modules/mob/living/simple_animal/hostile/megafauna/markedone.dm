@@ -219,8 +219,8 @@
 			get_angry()
 			GiveTarget(target)
 	else
-		//FUNNY SKYRIM REFERENCE LOL!!!! XD!!!!
-		say("Never should have come here!")
+		//im gonna b-b-b-bEEEERK
+		say("It's berkin' time!")
 		introduced |= WEAKREF(target)
 
 /mob/living/simple_animal/hostile/megafauna/gladiator/proc/update_phase()
