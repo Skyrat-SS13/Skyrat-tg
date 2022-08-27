@@ -25,7 +25,7 @@
 /obj/item/clothing/suit/jacket
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/suit/ianshirt
+/obj/item/clothing/suit/costume/ianshirt
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/suit/poncho
