@@ -234,7 +234,7 @@
 			move_to_delay = initial(move_to_delay)
 			melee_damage_upper = initial(melee_damage_upper)
 			melee_damage_lower = initial(melee_damage_lower)
-		if(40 to 75)
+		if(50 to 75)
 			if(phase == 1)
 				phase = 2
 				playsound(src, 'sound/effects/clockcult_gateway_disrupted.ogg', 200, 1, 2)
@@ -243,17 +243,16 @@
 				move_to_delay = 2
 				melee_damage_upper = 30
 				melee_damage_lower = 30
-		if(15 to 40)
+		if(25 to 50)
 			if(phase == 2)
 				phase = 3
-				AddElement(/datum/element/cult_halo)
 				swordslam()
 				playsound(src, 'sound/effects/clockcult_gateway_charging.ogg', 200, 1, 2)
 				rapid_melee = 4
 				melee_damage_upper = 25
 				melee_damage_lower = 25
 				move_to_delay = 1.7
-		if(0 to 15)
+		if(0 to 25)
 			if (phase == 3)
 				phase = 4
 				playsound(src, 'sound/effects/clockcult_gateway_active.ogg', 200, 1, 2)
