@@ -28,6 +28,7 @@
 	icon_state = "berk_cape"
 	inhand_icon_state = "" //lul
 	uses_advanced_reskins = FALSE
+	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 
 /obj/item/clothing/suit/hooded/berserker/gatsu
 	name = "berserker armor"
@@ -37,6 +38,7 @@
 	worn_icon = 'modular_skyrat/modules/gladiator/icons/berserk_suit.dmi'
 	hoodtype = /obj/item/clothing/head/hooded/berserker/gatsu
 	armor = list(MELEE = 45, BULLET = 40, LASER = 30, ENERGY = 30, BOMB = 80, BIO = 100, FIRE = 100, ACID = 100)
+	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 
 #define MAX_BERSERK_CHARGE 100
 #define PROJECTILE_HIT_MULTIPLIER 1.5
@@ -53,6 +55,7 @@
 	worn_icon = 'modular_skyrat/modules/gladiator/icons/berserk_suit.dmi'
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT
 	armor = list(MELEE = 45, BULLET = 40, LASER = 30, ENERGY = 30, BOMB = 80, BIO = 100, FIRE = 100, ACID = 100)
+	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 	actions_types = list(/datum/action/item_action/berserk_mode)
 
 /obj/item/clothing/head/hooded/berserker/gatsu/Initialize(mapload)
@@ -91,7 +94,7 @@
 
 /obj/item/claymore/dragonslayer
 	name = "dragonslayer"
-	desc = "A blade that seems too big to be called a sword. Too big, too thick, too heavy, and too rough, it's more like a large hunk of raw iron. Countless slain foes have given it a supernatural tempering. <b>Right click to dodge roll a maximum of three tiles at the cost of stamina.</b>"
+	desc = "A blade that seems too big to be called a sword. Too big, too thick, too heavy, and too rough, it's more like a large hunk of raw iron. <b><p style='color:red;'>Countless slain foes have given it a supernatural tempering against foes in lavaland or massive, unruly enemies. Right click to dodge at the cost of stamina.</p></b>"
 	icon = 'modular_skyrat/modules/gladiator/icons/dragonslayer.dmi'
 	icon_state = "dragonslayer"
 	inhand_icon_state = "dragonslayer"
@@ -103,7 +106,7 @@
 	force = 20
 	wound_bonus = 10
 	bare_wound_bonus = 5
-	resistance_flags = INDESTRUCTIBLE
+	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 	armour_penetration = 20
 	block_chance = 30
 	sharpness = SHARP_EDGED
