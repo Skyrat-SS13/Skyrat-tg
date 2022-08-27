@@ -1,3 +1,10 @@
+#define MAX_BERSERK_CHARGE 100
+#define PROJECTILE_HIT_MULTIPLIER 1.5
+#define DAMAGE_TO_CHARGE_SCALE 1
+#define CHARGE_DRAINED_PER_SECOND 3
+#define BERSERK_MELEE_ARMOR_ADDED 50
+#define BERSERK_ATTACK_SPEED_MODIFIER 0.25
+
 /obj/item/crusher_trophy/gladiator
 	name = "ashen bones"
 	desc = "A set of soot-coated ribs from a worthy warrior. Suitable as a trophy for a kinetic crusher."
@@ -39,13 +46,6 @@
 	hoodtype = /obj/item/clothing/head/hooded/berserker/gatsu
 	armor = list(MELEE = 45, BULLET = 40, LASER = 30, ENERGY = 30, BOMB = 80, BIO = 100, FIRE = 100, ACID = 100)
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
-
-#define MAX_BERSERK_CHARGE 100
-#define PROJECTILE_HIT_MULTIPLIER 1.5
-#define DAMAGE_TO_CHARGE_SCALE 1
-#define CHARGE_DRAINED_PER_SECOND 3
-#define BERSERK_MELEE_ARMOR_ADDED 50
-#define BERSERK_ATTACK_SPEED_MODIFIER 0.25
 
 /obj/item/clothing/head/hooded/berserker/gatsu
 	name = "\proper berserker helmet"
