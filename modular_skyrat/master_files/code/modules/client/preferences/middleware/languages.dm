@@ -36,12 +36,18 @@
 	)
 	var/list/name_to_language
 
+// Clears all languages, but INTENTIONALLY doesn't clear blocked languages.
+// This is to prevent getting around the foreigner quirk and other things that restrict your languages, such as being high or severely brain damaged.
 /datum/preference_middleware/languages/apply_to_human(mob/living/carbon/human/target, datum/preferences/preferences) // SKYRAT EDIT CHANGE
 	var/datum/language_holder/language_holder = target.get_language_holder()
 	language_holder.remove_all_languages()
 	language_holder.omnitongue = TRUE // a crappy hack but it works
 	for(var/lang_path in preferences.languages)
-		language_holder.grant_language(lang_path, TRUE, TRUE, LANGUAGE_MIND)
+		language_holder.grant_language(lang_path)
+
+	if(target.has_quirk(/datum/quirk/foreigner))
+		language_holder.grant_language(/datum/language/uncommon)
+		language_holder.add_blocked_language(/datum/language/common)
 
 /datum/preference_middleware/languages/get_ui_assets()
 	return list(
