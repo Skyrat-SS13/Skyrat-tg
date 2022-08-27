@@ -45,6 +45,14 @@
 /obj/item/gun/energy/recharge/kinetic_accelerator,
 /turf/open/indestructible/boss,
 /area/lavaland/surface/outdoors)
+"bm" = (
+/obj/item/paper/crumpled/bloody{
+	color = "#D2B48C";
+	default_raw_text = "The myth was more than real - I now stand as a paragon of my ancestors' might before the arena of the Great Necropolis. The tales tell of a warrior inside, an outsider given favor by the holy city. It is blasphemous. If such a creature truly lies within, it is my duty as tribemaster to slay them with great prejudice. Such abhorrent things cannot be allowed to defile the Necropolis's blessed lands.";
+	name = "ash-coated note"
+	},
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
 "bZ" = (
 /obj/structure/stone_tile{
 	dir = 4
@@ -70,7 +78,7 @@
 /obj/structure/stone_tile/slab,
 /obj/effect/gibspawner/human,
 /obj/item/kinetic_crusher,
-/turf/open/indestructible/boss,
+/turf/open/lava/smooth/lava_land_surface,
 /area/lavaland/surface/outdoors)
 "dR" = (
 /obj/structure/stone_tile/block{
@@ -82,7 +90,7 @@
 /obj/structure/stone_tile{
 	dir = 8
 	},
-/turf/open/misc/asteroid/basalt/lava_land_surface,
+/turf/open/lava/smooth/lava_land_surface,
 /area/lavaland/surface/outdoors)
 "ey" = (
 /obj/structure/stone_tile/block{
@@ -94,14 +102,19 @@
 /obj/structure/stone_tile{
 	dir = 4
 	},
-/obj/effect/mob_spawn/corpse/human/legioninfested,
-/turf/open/indestructible/boss,
+/mob/living/simple_animal/hostile/asteroid/hivelord{
+	color = "red";
+	name = "gate guardian";
+	wander = 0
+	},
+/turf/open/lava/smooth/lava_land_surface,
 /area/lavaland/surface/outdoors)
 "ga" = (
 /obj/structure/stone_tile/slab,
 /obj/item/paper/crumpled/bloody{
 	color = "#D2B48C";
-	text = "i just want to see them again"
+	default_raw_text = "i just want to see them again";
+	text = null
 	},
 /turf/open/indestructible/boss,
 /area/lavaland/surface/outdoors)
@@ -109,6 +122,20 @@
 /obj/structure/stone_tile/block{
 	dir = 1
 	},
+/turf/open/lava/smooth/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"ia" = (
+/obj/structure/stone_tile,
+/obj/structure/stone_tile{
+	dir = 8
+	},
+/obj/structure/stone_tile{
+	dir = 4
+	},
+/obj/structure/stone_tile{
+	dir = 1
+	},
+/obj/item/knife/combat/bone,
 /turf/open/lava/smooth/lava_land_surface,
 /area/lavaland/surface/outdoors)
 "ie" = (
@@ -119,13 +146,14 @@
 /obj/structure/stone_tile{
 	dir = 8
 	},
-/turf/open/indestructible/boss,
+/turf/open/lava/smooth/lava_land_surface,
 /area/lavaland/surface/outdoors)
 "ii" = (
 /obj/structure/stone_tile/slab,
 /obj/item/paper/crumpled/bloody{
 	color = "#D2B48C";
-	text = "i understand"
+	default_raw_text = "i understand";
+	text = null
 	},
 /turf/open/indestructible/boss,
 /area/lavaland/surface/outdoors)
@@ -162,7 +190,7 @@
 /obj/structure/stone_tile{
 	dir = 4
 	},
-/turf/open/misc/asteroid/basalt/lava_land_surface,
+/turf/open/lava/smooth/lava_land_surface,
 /area/lavaland/surface/outdoors)
 "ly" = (
 /obj/structure/stone_tile{
@@ -196,7 +224,7 @@
 	},
 /obj/structure/stone_tile,
 /obj/item/knife/combat/bone,
-/turf/open/indestructible/boss,
+/turf/open/lava/smooth/lava_land_surface,
 /area/lavaland/surface/outdoors)
 "mZ" = (
 /obj/structure/stone_tile,
@@ -214,7 +242,7 @@
 	layer = 33
 	},
 /obj/item/clothing/head/helmet/gladiator,
-/turf/open/indestructible/boss,
+/turf/open/lava/smooth/lava_land_surface,
 /area/lavaland/surface/outdoors)
 "nc" = (
 /obj/structure/stone_tile/block{
@@ -233,7 +261,7 @@
 	dir = 1
 	},
 /obj/structure/stone_tile,
-/turf/open/misc/asteroid/basalt/lava_land_surface,
+/turf/open/lava/smooth/lava_land_surface,
 /area/lavaland/surface/outdoors)
 "nA" = (
 /obj/structure/stone_tile/block{
@@ -243,7 +271,12 @@
 /obj/structure/stone_tile{
 	dir = 1
 	},
-/turf/open/indestructible/boss,
+/mob/living/simple_animal/hostile/asteroid/hivelord{
+	color = "red";
+	name = "gate guardian";
+	wander = 0
+	},
+/turf/open/lava/smooth/lava_land_surface,
 /area/lavaland/surface/outdoors)
 "ot" = (
 /obj/structure/stone_tile/slab,
@@ -264,12 +297,17 @@
 /turf/open/lava/smooth/lava_land_surface,
 /area/lavaland/surface/outdoors)
 "pF" = (
-/obj/structure/stone_tile/slab,
-/obj/item/paper/crumpled{
-	default_raw_text = "they wennt intoo th earenaa but th avent come ouut yet and the soundds are gett ggig ntgc closer";
-	name = "torn paper"
+/obj/structure/stone_tile,
+/obj/structure/stone_tile{
+	dir = 8
 	},
-/turf/open/indestructible/boss,
+/obj/structure/stone_tile{
+	dir = 4
+	},
+/obj/structure/stone_tile{
+	dir = 1
+	},
+/turf/open/lava/smooth/lava_land_surface,
 /area/lavaland/surface/outdoors)
 "pJ" = (
 /obj/structure/stone_tile{
@@ -284,6 +322,11 @@
 	},
 /turf/open/lava/smooth/lava_land_surface,
 /area/lavaland/surface/outdoors)
+"pM" = (
+/obj/structure/stone_tile/surrounding,
+/obj/structure/stone_tile/center,
+/turf/open/lava/smooth/lava_land_surface,
+/area/lavaland/surface/outdoors)
 "qU" = (
 /obj/structure/stone_tile/block{
 	dir = 1
@@ -293,7 +336,7 @@
 	dir = 8
 	},
 /obj/item/knife/combat/bone,
-/turf/open/indestructible/boss,
+/turf/open/lava/smooth/lava_land_surface,
 /area/lavaland/surface/outdoors)
 "si" = (
 /obj/structure/stone_tile/slab,
@@ -301,17 +344,21 @@
 /turf/open/indestructible/boss,
 /area/lavaland/surface/outdoors)
 "tJ" = (
-/obj/structure/stone_tile,
-/obj/structure/stone_tile{
+/obj/item/paper/crumpled/bloody{
+	color = "#D2B48C";
+	default_raw_text = "the ash is so warm but the air is so cold where did they go why am i left here"
+	},
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"ug" = (
+/obj/structure/stone_tile/block{
 	dir = 8
 	},
-/obj/structure/stone_tile{
-	dir = 4
-	},
+/obj/structure/stone_tile,
 /obj/structure/stone_tile{
 	dir = 1
 	},
-/turf/open/misc/asteroid/basalt/lava_land_surface,
+/turf/open/indestructible/boss,
 /area/lavaland/surface/outdoors)
 "up" = (
 /obj/structure/stone_tile/slab,
@@ -357,7 +404,7 @@
 /area/lavaland/surface/outdoors)
 "wQ" = (
 /obj/structure/stone_tile/slab,
-/turf/open/misc/asteroid/basalt/lava_land_surface,
+/turf/open/lava/smooth/lava_land_surface,
 /area/lavaland/surface/outdoors)
 "xc" = (
 /obj/structure/stone_tile,
@@ -377,17 +424,39 @@
 /turf/open/indestructible/boss,
 /area/lavaland/surface/outdoors)
 "xh" = (
-/obj/structure/stone_tile/block{
+/obj/structure/stone_tile/block,
+/obj/structure/stone_tile{
+	dir = 4
+	},
+/obj/structure/stone_tile{
 	dir = 1
 	},
+/turf/open/lava/smooth/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"xn" = (
+/obj/structure/stone_tile,
 /obj/structure/stone_tile{
 	dir = 8
 	},
-/obj/structure/stone_tile,
-/turf/open/misc/asteroid/basalt/lava_land_surface,
+/obj/structure/stone_tile{
+	dir = 4
+	},
+/obj/structure/stone_tile{
+	dir = 1
+	},
+/obj/effect/decal/remains/human{
+	desc = "They look like remains, whether ash walker or miner you cannot tell. They have a strange aura about them.";
+	layer = 33
+	},
+/turf/open/lava/smooth/lava_land_surface,
 /area/lavaland/surface/outdoors)
-"xn" = (
-/turf/template_noop,
+"xF" = (
+/obj/item/spear/bonespear{
+	color = "#c9554d";
+	desc = "A more intricately constructed tribal bone spear with ritualistic carvings across the blade and shaft.";
+	name = "the chosen's spear"
+	},
+/turf/open/misc/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/outdoors)
 "Aw" = (
 /obj/structure/stone_tile/slab,
@@ -399,14 +468,25 @@
 /turf/open/indestructible/boss,
 /area/lavaland/surface/outdoors)
 "CJ" = (
-/obj/structure/stone_tile/block,
+/obj/structure/stone_tile/block{
+	dir = 1
+	},
 /obj/structure/stone_tile{
-	dir = 4
+	dir = 8
+	},
+/obj/structure/stone_tile,
+/turf/open/lava/smooth/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"CK" = (
+/obj/structure/stone_tile/block{
+	dir = 8
 	},
 /obj/structure/stone_tile{
 	dir = 1
 	},
-/turf/open/misc/asteroid/basalt/lava_land_surface,
+/obj/structure/stone_tile,
+/obj/item/claymore/bone,
+/turf/open/lava/smooth/lava_land_surface,
 /area/lavaland/surface/outdoors)
 "CR" = (
 /obj/structure/stone_tile/block,
@@ -416,7 +496,7 @@
 /obj/structure/stone_tile{
 	dir = 4
 	},
-/turf/open/indestructible/boss,
+/turf/open/lava/smooth/lava_land_surface,
 /area/lavaland/surface/outdoors)
 "Dc" = (
 /obj/structure/stone_tile/slab,
@@ -424,7 +504,7 @@
 /obj/structure/necropolis_gate{
 	desc = "A massive stone gateway into a gladitorial arena. You feel like entering this unprepared would be your doom."
 	},
-/turf/open/indestructible/boss,
+/turf/open/lava/smooth/lava_land_surface,
 /area/lavaland/surface/outdoors)
 "Df" = (
 /obj/structure/stone_tile,
@@ -444,6 +524,21 @@
 /obj/item/clothing/under/costume/gladiator/ash_walker,
 /turf/open/indestructible/boss,
 /area/lavaland/surface/outdoors)
+"DE" = (
+/obj/structure/stone_tile/block{
+	dir = 8
+	},
+/obj/structure/stone_tile,
+/obj/structure/stone_tile{
+	dir = 1
+	},
+/mob/living/simple_animal/hostile/asteroid/hivelord{
+	color = "red";
+	name = "gate guardian";
+	wander = 0
+	},
+/turf/open/indestructible/boss,
+/area/lavaland/surface/outdoors)
 "DM" = (
 /obj/structure/stone_tile/block{
 	dir = 4
@@ -458,7 +553,20 @@
 	desc = "They look like remains, whether ash walker or miner you cannot tell. They have a strange aura about them.";
 	layer = 33
 	},
-/turf/open/indestructible/boss,
+/turf/open/lava/smooth/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"FE" = (
+/obj/structure/stone_tile{
+	dir = 8
+	},
+/obj/structure/stone_tile,
+/obj/structure/stone_tile{
+	dir = 4
+	},
+/obj/structure/stone_tile{
+	dir = 1
+	},
+/turf/open/lava/smooth/lava_land_surface,
 /area/lavaland/surface/outdoors)
 "GM" = (
 /obj/structure/stone_tile/block{
@@ -474,7 +582,7 @@
 	desc = "A green card issued to temporary citizens of Nanotrasen-governed space, used to transfer between stations for work orders. This one's over fifty years out of date.";
 	name = "station transfer card"
 	},
-/turf/open/indestructible/boss,
+/turf/open/lava/smooth/lava_land_surface,
 /area/lavaland/surface/outdoors)
 "GU" = (
 /obj/structure/stone_tile/block{
@@ -484,6 +592,13 @@
 /obj/structure/stone_tile{
 	dir = 8
 	},
+/turf/open/indestructible/boss,
+/area/lavaland/surface/outdoors)
+"Ir" = (
+/obj/effect/mob_spawn/corpse/human/damaged{
+	mob_type = /datum/species/lizard/ashwalker;
+	outfit = /datum/outfit/consumed_ashwalker
+	},
 /turf/open/misc/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/outdoors)
 "Jk" = (
@@ -491,12 +606,11 @@
 	dir = 4
 	},
 /obj/structure/stone_tile{
-	dir = 4
-	},
-/obj/structure/stone_tile{
 	dir = 8
 	},
-/obj/item/claymore/bone,
+/obj/structure/stone_tile{
+	dir = 4
+	},
 /turf/open/indestructible/boss,
 /area/lavaland/surface/outdoors)
 "JM" = (
@@ -507,11 +621,28 @@
 /area/lavaland/surface/outdoors)
 "JS" = (
 /obj/structure/stone_tile/slab/burnt,
-/turf/open/misc/asteroid/basalt/lava_land_surface,
+/turf/open/lava/smooth/lava_land_surface,
 /area/lavaland/surface/outdoors)
 "LS" = (
 /obj/structure/statue/bone/rib,
 /turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"MF" = (
+/obj/structure/stone_tile/block{
+	dir = 4
+	},
+/obj/structure/stone_tile{
+	dir = 8
+	},
+/obj/structure/stone_tile{
+	dir = 4
+	},
+/mob/living/simple_animal/hostile/asteroid/hivelord{
+	color = "red";
+	name = "gate guardian";
+	wander = 0
+	},
+/turf/open/indestructible/boss,
 /area/lavaland/surface/outdoors)
 "MP" = (
 /obj/structure/stone_tile,
@@ -525,7 +656,7 @@
 	dir = 1
 	},
 /obj/item/claymore/bone,
-/turf/open/indestructible/boss,
+/turf/open/lava/smooth/lava_land_surface,
 /area/lavaland/surface/outdoors)
 "Ng" = (
 /obj/structure/stone_tile/block{
@@ -606,7 +737,7 @@
 /obj/structure/stone_tile{
 	dir = 1
 	},
-/turf/open/misc/asteroid/basalt/lava_land_surface,
+/turf/open/lava/smooth/lava_land_surface,
 /area/lavaland/surface/outdoors)
 "Qj" = (
 /obj/structure/stone_tile/block{
@@ -621,13 +752,13 @@
 	layer = 33
 	},
 /obj/item/clothing/under/costume/gladiator/ash_walker,
-/turf/open/indestructible/boss,
+/turf/open/lava/smooth/lava_land_surface,
 /area/lavaland/surface/outdoors)
 "Qs" = (
 /obj/structure/stone_tile/slab,
 /obj/effect/gibspawner/human,
 /obj/item/clothing/suit/hooded/explorer,
-/turf/open/misc/asteroid/basalt/lava_land_surface,
+/turf/open/indestructible/boss,
 /area/lavaland/surface/outdoors)
 "RQ" = (
 /obj/structure/stone_tile/slab/cracked,
@@ -689,7 +820,12 @@
 /obj/structure/stone_tile{
 	dir = 4
 	},
-/turf/open/indestructible/boss,
+/obj/item/language_manual{
+	language = /datum/language_holder/lizard/ash;
+	name = "SSSchwifty SSSlick SSSpeaking Guide";
+	text = "A tattered booklet that details the language of the Ash Walkers.
+	},
+/turf/open/lava/smooth/lava_land_surface,
 /area/lavaland/surface/outdoors)
 "Wc" = (
 /obj/structure/stone_tile{
@@ -716,7 +852,7 @@
 /area/lavaland/surface/outdoors)
 "WF" = (
 /obj/structure/stone_tile/slab/cracked,
-/turf/open/misc/asteroid/basalt/lava_land_surface,
+/turf/open/lava/smooth/lava_land_surface,
 /area/lavaland/surface/outdoors)
 "WK" = (
 /obj/structure/stone_tile/block{
@@ -756,7 +892,8 @@
 	},
 /obj/item/paper/crumpled/bloody{
 	color = "#D2B48C";
-	text = "why me goddammit why me why did that fucking tomb do this to me where are the others"
+	default_raw_text = "why me goddammit why me why did that fucking tomb do this to me where are the others";
+	text = null
 	},
 /turf/open/indestructible/boss,
 /area/lavaland/surface/outdoors)
@@ -817,13 +954,13 @@ XY
 XY
 Tf
 Tf
+XY
 Tf
 Tf
+XY
 Tf
 Tf
-Tf
-Tf
-Tf
+XY
 Tf
 Tf
 XY
@@ -884,11 +1021,11 @@ XY
 XY
 XY
 Wr
-Wr
 wQ
+Wr
 uv
-wQ
 Wr
+wQ
 Wr
 XY
 XY
@@ -917,11 +1054,11 @@ Wr
 Wr
 Wr
 XL
-kO
-wQ
+CJ
+Wr
 uv
-wQ
-TP
+Wr
+xh
 XL
 Wr
 Wr
@@ -946,19 +1083,19 @@ XY
 XY
 Wr
 ga
-XL
-vF
-vF
-XL
-kO
+pF
+ne
+ne
+pF
+CJ
 wQ
 uv
 wQ
-TP
-XL
-vF
-vF
-XL
+xh
+pF
+ne
+ne
+pF
 Wr
 ot
 XY
@@ -984,14 +1121,14 @@ XY
 XY
 CR
 kO
-wQ
+Wr
 WF
 Qs
 TP
 Qj
 XY
 XY
-TP
+xh
 cA
 XL
 Wr
@@ -1018,13 +1155,13 @@ XY
 CR
 kO
 Wr
-Wr
+wQ
 Wr
 TP
 qU
 XY
 XY
-TP
+xh
 XL
 XL
 XL
@@ -1045,19 +1182,19 @@ RQ
 XL
 XL
 XL
-XL
-Vj
-Vj
+pF
+lf
+lf
 MP
 kO
 Wr
-Wr
+wQ
 Wr
 TP
-XL
-Vj
-Vj
-XL
+pF
+lf
+lf
+pF
 XL
 XL
 So
@@ -1074,27 +1211,27 @@ XY
 Tf
 XY
 si
+pF
+ne
+ne
+pF
 XL
-vF
-vF
 XL
-XL
-XL
-xc
+xn
 Wr
 Wr
 Wr
+wQ
 Wr
 Wr
 Wr
-Wr
+pF
 XL
 XL
-XL
-XL
-vF
-vF
-XL
+pF
+ne
+ne
+pF
 Wr
 XY
 Tf
@@ -1110,27 +1247,27 @@ up
 ie
 XY
 XY
-TP
+xh
 XL
 XL
+wQ
 Wr
 Wr
 Wr
+wQ
 Wr
 Wr
 Wr
-Wr
-Wr
-Wr
+wQ
 XL
 XL
 ie
 XY
 XY
-TP
+xh
 Wr
 XY
-Tf
+bm
 Tf
 Tf
 "}
@@ -1143,56 +1280,56 @@ Wr
 ie
 XY
 XY
-TP
-XL
-Wr
-Wr
-Wr
-kO
-Wr
-Wr
-Wr
-TP
-BX
-Wr
-Wr
-XL
+xh
+pF
+wQ
+wQ
+wQ
+CJ
+wQ
+wQ
+wQ
+xh
+JS
+wQ
+wQ
+pF
 ie
 XY
 XY
-TP
+xh
 Wr
 XY
-Tf
-Tf
+Ir
+xF
 Tf
 "}
 (13,1,1) = {"
 ND
-Tf
+XY
 XY
 Wr
 XL
-XL
+pF
 DM
-Vj
+lf
+pF
+Wr
+Wr
+wQ
 XL
+vF
 Wr
-Wr
-Wr
-tJ
-ne
 wQ
-wQ
-wQ
-ne
-tJ
 Wr
-Wr
-Wr
+vF
 XL
-Vj
-Vj
+wQ
+Wr
+Wr
+pF
+lf
+lf
 XY
 XY
 XY
@@ -1204,14 +1341,14 @@ Tf
 Tf
 Tf
 XY
-Wr
-vF
+wQ
+ne
 lT
 vF
 vF
 vF
 Wr
-wQ
+Wr
 Qe
 GU
 Tu
@@ -1219,7 +1356,7 @@ nc
 WF
 WK
 Tu
-CJ
+TP
 ne
 Wr
 Wr
@@ -1228,7 +1365,7 @@ vF
 vF
 XY
 nA
-nA
+DE
 XY
 Tf
 lJ
@@ -1237,14 +1374,14 @@ lJ
 Tf
 Tf
 XY
-wQ
-wQ
-wQ
-JS
-Wr
 Wr
 Wr
 wQ
+BX
+Wr
+Wr
+Wr
+Wr
 lH
 Za
 vw
@@ -1254,7 +1391,7 @@ Pg
 pJ
 Wc
 wQ
-wQ
+Wr
 Wr
 Wr
 Wr
@@ -1262,55 +1399,55 @@ Wr
 XY
 Wr
 Wr
-Wr
-Tf
-Tf
+ug
+vF
+vF
 "}
 (16,1,1) = {"
 Tf
-Tf
+XY
 XY
 uv
 uv
 uv
 wQ
-Wr
-Wr
-Wr
 wQ
 wQ
-Tf
-Tf
-Tf
+wQ
+wQ
+wQ
+pF
+pF
+pF
 ar
-Tf
-Tf
-Tf
+pF
+pF
+FE
 hN
 wQ
-Wr
-RQ
-Wr
-Wr
+wQ
+WF
+wQ
+wQ
 Dc
-Wr
-Wr
-Wr
-Tf
-Tf
+wQ
+pM
+wQ
+wQ
+wQ
 "}
 (17,1,1) = {"
 Tf
 Tf
 XY
+Wr
+Wr
 wQ
-wQ
-wQ
-wQ
+Wr
 Wr
 RQ
 Wr
-wQ
+Wr
 bZ
 oW
 UM
@@ -1320,77 +1457,77 @@ ly
 jg
 uM
 wQ
-wQ
+Wr
 Wr
 Wr
 Wr
 Wr
 XY
-pF
-RQ
 Wr
-Tf
-Tf
+RQ
+Jk
+Jk
+Jk
 "}
 (18,1,1) = {"
 ND
 Tf
 XY
+wQ
+dR
+dR
+Pj
+Pj
+Pj
 Wr
-Pj
-Pj
-Pj
-Pj
-Pj
-Wr
-JS
+BX
 lf
-xh
+kO
 JM
 Ng
 wQ
 al
 JM
-CJ
+TP
 dR
 Wr
 Wr
 Pj
-Jk
+Pj
 Pj
 XY
 ey
-Vj
+MF
 XY
 Tf
 LS
 "}
 (19,1,1) = {"
 Tf
-Tf
+XY
 XY
 Wr
 XL
+pF
+ne
+ne
+pF
+Wr
+Wr
+wQ
 XL
-vF
-vF
+Jk
+Wr
+wQ
+Wr
+Pj
 XL
-Wr
-Wr
-Wr
-tJ
-lf
 wQ
-wQ
-wQ
-dR
-tJ
-Wr
 Wr
 Wr
 mZ
-vF
-vF
+CK
+ne
 XY
 XY
 XY
@@ -1407,24 +1544,24 @@ ii
 ie
 XY
 XY
-TP
-XL
-Wr
+xh
+pF
+wQ
 cN
-Wr
+wQ
 ie
-Wr
-Wr
-Wr
+wQ
+wQ
+wQ
 CR
-Wr
-Wr
-RQ
-XL
+wQ
+wQ
+WF
+pF
 ie
 XY
 XY
-TP
+xh
 Wr
 XY
 Tf
@@ -1440,24 +1577,24 @@ Wr
 ie
 XY
 XY
-TP
+xh
 XL
 XL
+wQ
 Wr
 Wr
 Wr
+wQ
 Wr
 Wr
 Wr
-Wr
-Wr
-Wr
+wQ
 bc
 XL
 ie
 XY
 XY
-TP
+xh
 Aw
 XY
 Tf
@@ -1470,27 +1607,27 @@ XY
 Tf
 XY
 Wr
-XL
+pF
 Vj
-Vj
+lf
+pF
 XL
 XL
-XL
-XL
+pF
 Wr
 Wr
 BX
+wQ
 Wr
 Wr
 Wr
-Wr
-XL
+pF
 XL
 YA
-XL
-Vj
-Vj
-XL
+pF
+lf
+lf
+pF
 Wr
 XY
 Tf
@@ -1507,19 +1644,19 @@ Wr
 XL
 Df
 XL
-XL
-vF
-vF
-XL
+pF
+ne
+ne
+pF
 kO
 Wr
-Wr
+wQ
 Wr
 TP
-XL
-vF
-vF
-XL
+pF
+ne
+ne
+pF
 XL
 XL
 XL
@@ -1543,16 +1680,16 @@ PO
 ie
 XY
 XY
-TP
+xh
 kO
 Wr
-Wr
+wQ
 Wr
 TP
 ie
 XY
 XY
-TP
+xh
 XL
 XL
 No
@@ -1576,16 +1713,16 @@ XL
 ie
 XY
 XY
-TP
+xh
 kO
+Wr
 wQ
-wQ
-wQ
+Wr
 TP
 ie
 XY
 XY
-TP
+xh
 XL
 XL
 XL
@@ -1606,19 +1743,19 @@ XY
 XY
 Wr
 Wr
-XL
+pF
 GM
-Vj
-XL
-kO
+lf
+pF
+CJ
 wQ
 uv
 wQ
-TP
-No
-Vj
-Vj
-XL
+xh
+ia
+lf
+lf
+pF
 Wr
 Wr
 XY
@@ -1643,11 +1780,11 @@ Wr
 Wr
 Wr
 XL
-kO
-wQ
+CJ
+Wr
 uv
-wQ
-TP
+Wr
+xh
 xc
 Aw
 Wr
@@ -1676,11 +1813,11 @@ XY
 XY
 XY
 Wr
-RQ
-wQ
-uv
-wQ
+WF
 Wr
+uv
+Wr
+wQ
 Wr
 XY
 XY
@@ -1700,9 +1837,9 @@ ND
 ND
 XY
 XY
-xn
+ND
 Tf
-Tf
+tJ
 Tf
 Tf
 Tf
@@ -1741,13 +1878,13 @@ XY
 XY
 Tf
 Tf
+XY
 Tf
 Tf
+XY
 Tf
 Tf
-Tf
-Tf
-Tf
+XY
 Tf
 Tf
 XY
