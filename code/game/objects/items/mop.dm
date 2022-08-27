@@ -29,6 +29,8 @@
 	AddElement(/datum/element/liquids_interaction, on_interaction_callback = /obj/item/mop/.proc/attack_on_liquids_turf)
 
 /obj/item/mop/proc/attack_on_liquids_turf(obj/item/mop/the_mop, turf/T, mob/user, obj/effect/abstract/liquid_turf/liquids)
+	if(!in_range(user, T))
+		return
 	var/free_space = the_mop.reagents.maximum_volume - the_mop.reagents.total_volume
 	if(free_space <= 0)
 		to_chat(user, "<span class='warning'>Your mop can't absorb any more!</span>")
