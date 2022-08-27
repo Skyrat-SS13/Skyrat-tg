@@ -132,7 +132,7 @@ const CrewTableEntry = (props, context) => {
         {is_robot ? <Icon name="wrench" color="#B7410E" size={1} /> : ''}
       </Table.Cell>
       <Table.Cell collapsing textAlign="center">
-        {oxydam !== undefined ? (
+        {oxydam !== undefined && life_status ? (
           <Icon
             name={healthToAttribute(
               oxydam,
