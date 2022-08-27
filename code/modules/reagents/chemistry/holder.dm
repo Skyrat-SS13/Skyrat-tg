@@ -515,26 +515,20 @@
 			var/list/reagent_qualities = list(REAGENT_TRANSFER_AMOUNT = transfer_amount, REAGENT_PURITY = reagent.purity)
 			transfer_log[reagent.type] = reagent_qualities
 
-<<<<<<< HEAD
-		if(istype(target_atom, /obj/item/organ))
-=======
+		if(isorgan(target_atom))
 			reagents_to_remove += reagent
 
 		if(isorgan(target_atom))
->>>>>>> 92396364a04 (Adds unit test for reagent transfer and fixes infinite reagent transfer bug. (#69487))
 			R.expose_multiple(r_to_send, target, methods, part, show_message)
 		else
 			R.expose_multiple(r_to_send, target_atom, methods, part, show_message)
 
-<<<<<<< HEAD
-=======
 		for(var/datum/reagent/reagent as anything in reagents_to_remove)
 			var/transfer_amount = reagent.volume * part
 			remove_reagent(reagent.type, transfer_amount)
 			var/list/reagent_qualities = list(REAGENT_TRANSFER_AMOUNT = transfer_amount, REAGENT_PURITY = reagent.purity)
 			transfer_log[reagent.type] = reagent_qualities
 
->>>>>>> 92396364a04 (Adds unit test for reagent transfer and fixes infinite reagent transfer bug. (#69487))
 	else
 		var/to_transfer = amount
 		for(var/datum/reagent/reagent as anything in cached_reagents)
