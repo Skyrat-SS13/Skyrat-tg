@@ -21,7 +21,7 @@
 		incomingchance.block_chance -= bonus_value
 
 /obj/item/clothing/neck/warrior_cape
-	name = "cloak of the marked one"
+	name = "\proper cloak of the marked one"
 	desc = "A cloak worn by those that have faced death in the eyes and prevailed. <b><p style='color:red;'>Struggle against the tide, no matter how strong it may be.</p></b>"
 	icon = 'modular_skyrat/modules/gladiator/icons/berserk_icons.dmi'
 	worn_icon = 'modular_skyrat/modules/gladiator/icons/berserk_suit.dmi'
@@ -31,7 +31,7 @@
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 
 /obj/item/clothing/suit/hooded/berserker/gatsu
-	name = "berserker armor"
+	name = "\proper berserker armor"
 	desc = "A suit of ancient body armor imbued with potent spiritual magnetism, capable of massively boosting a wearer's close combat skills at the cost of ravaging their mind and overexerting their body. <b><p style='color:red;'>Berserk mode requires the suit's helmet to be equipped, and can only be charged by taking damage.</p></b>"
 	icon_state = "berk_suit"
 	icon = 'modular_skyrat/modules/gladiator/icons/berserk_icons.dmi'
@@ -48,7 +48,7 @@
 #define BERSERK_ATTACK_SPEED_MODIFIER 0.25
 
 /obj/item/clothing/head/hooded/berserker/gatsu
-	name = "berserker helmet"
+	name = "\proper berserker helmet"
 	desc = "A uniquely styled helmet with ghastly red eyes that seals it's user inside. <b><p style='color:red;'>Gods must be strong, but what of their slayers?</p></b>"
 	icon_state = "berk_helm"
 	icon = 'modular_skyrat/modules/gladiator/icons/berserk_icons.dmi'
@@ -93,7 +93,7 @@
 		return TRUE
 
 /obj/item/claymore/dragonslayer
-	name = "dragonslayer"
+	name = "\proper dragonslayer"
 	desc = "A blade that seems too big to be called a sword. Too big, too thick, too heavy, and too rough, it's more like a large hunk of raw iron. <b><p style='color:red;'>Countless slain foes have given it a supernatural tempering against foes in lavaland or massive, unruly enemies. Right click to dodge at the cost of stamina.</p></b>"
 	icon = 'modular_skyrat/modules/gladiator/icons/dragonslayer.dmi'
 	icon_state = "dragonslayer"
@@ -162,7 +162,7 @@
 	return SHIELD_BLOCK
 
 /obj/item/claymore/dragonslayer/veryfuckingloud
-	name = "<b>tempered dragonslayer</b>"
+	name = "\proper <b>tempered dragonslayer</b>"
 	desc = "<b><p style='color:red;'>CLANG</p></b>"
 	hitsound = 'modular_skyrat/modules/gladiator/Clang_1.ogg'
 
