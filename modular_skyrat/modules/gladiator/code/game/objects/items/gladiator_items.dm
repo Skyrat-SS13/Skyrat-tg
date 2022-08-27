@@ -120,6 +120,7 @@
 /obj/item/claymore/dragonslayer/Initialize(mapload)
 	. = ..()
 	var/mutable_appearance/overlay = mutable_appearance('modular_skyrat/modules/gladiator/icons/dragonslayer.dmi', "dragonslayer")
+	
 	update_overlays()
 
 /obj/item/claymore/dragonslayer/attack(mob/living/target, mob/living/carbon/human/user)
@@ -132,6 +133,11 @@
 	. = ..()
 	if(is_nemesis_faction)
 		force -= faction_bonus_force
+
+/obj/item/claymore/dragonslayer/update_overlays()
+	. = ..()
+	overlay.pixel_x = 0
+	overlay.pixel_y = 0
 
 /obj/item/claymore/dragonslayer/afterattack_secondary(atom/target, mob/living/user, params) // dark souls
 	if(user.IsImmobilized()) // no free dodgerolls
