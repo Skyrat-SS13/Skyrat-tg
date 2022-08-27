@@ -68,7 +68,6 @@
 	if(!berserk_charge)
 		if(ishuman(loc))
 			end_berserk(loc)
-			icon_state = "berk_helm"
 
 /obj/item/clothing/head/hooded/berserker/gatsu/dropped(mob/user)
 	. = ..()
@@ -77,7 +76,6 @@
 /obj/item/clothing/head/hooded/berserker/gatsu/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
 	if(berserk_active)
 		return
-		icon_state = "berk_helm"
 	var/berserk_value = damage * DAMAGE_TO_CHARGE_SCALE
 	if(attack_type == PROJECTILE_ATTACK)
 		berserk_value *= PROJECTILE_HIT_MULTIPLIER
@@ -85,7 +83,6 @@
 	if(berserk_charge >= MAX_BERSERK_CHARGE)
 		to_chat(owner, span_notice("Berserk mode is fully charged."))
 		balloon_alert(owner, "berserk charged")
-		icon_state = "berk_helm_rage"
 
 /obj/item/clothing/head/hooded/berserker/gatsu/IsReflect()
 	if(berserk_active)
