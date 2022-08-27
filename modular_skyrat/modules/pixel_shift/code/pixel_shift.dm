@@ -2,9 +2,10 @@
 #define PASSABLE_SHIFT_THRESHOLD 8
 
 /mob
-	///Whether the mob is pixel shifted or not
-	var/is_shifted
-	var/shifting //If we are in the shifting setting.
+	/// Whether the mob is pixel shifted or not
+	var/is_shifted = FALSE
+	/// If we are in the shifting setting.
+	var/shifting = FALSE
 
 	/// Takes the four cardinal direction defines. Any atoms moving into this atom's tile will be allowed to from the added directions.
 	var/passthroughable = NONE
