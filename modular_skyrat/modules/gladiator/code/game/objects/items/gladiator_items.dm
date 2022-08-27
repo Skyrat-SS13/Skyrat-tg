@@ -49,7 +49,7 @@
 
 /obj/item/clothing/head/hooded/berserker/gatsu
 	name = "berserker helmet"
-	desc = "<b><p style='color:red;'>Gods must be strong, but what of their slayers?</p></b>"
+	desc = "A uniquely styled helmet with ghastly red eyes that seals it's user inside. <b><p style='color:red;'>Gods must be strong, but what of their slayers?</p></b>"
 	icon_state = "berk_helm"
 	icon = 'modular_skyrat/modules/gladiator/icons/berserk_icons.dmi'
 	worn_icon = 'modular_skyrat/modules/gladiator/icons/berserk_suit.dmi'
@@ -161,6 +161,11 @@
 	playsound(src, 'sound/weapons/thudswoosh.ogg', 50, TRUE, -1)
 	return SHIELD_BLOCK
 
+/obj/item/claymore/dragonslayer/veryfuckingloud
+	name = "<b><p style='color:red;'>tempered dragonslayer</p></b>"
+	desc = "<b><p style='color:red;'>CLANG</p></b>
+	hitsound = 'modular_skyrat/modules/gladiator/Clang_1.ogg'
+
 /obj/structure/closet/crate/necropolis/gladiator
 	name = "gladiator chest"
 
@@ -168,12 +173,18 @@
 	name = "dreadful gladiator chest"
 
 /obj/structure/closet/crate/necropolis/gladiator/PopulateContents()
-	new /obj/item/claymore/dragonslayer(src)
+	if(prob(5)
+		new /obj/item/claymore/dragonslayer/veryfuckingloud(src)
+	else
+		new /obj/item/claymore/dragonslayer(src)
 	new /obj/item/clothing/suit/hooded/berserker/gatsu(src)
 	new /obj/item/clothing/neck/warrior_cape(src)
 
 /obj/structure/closet/crate/necropolis/gladiator/crusher/PopulateContents()
-	new /obj/item/claymore/dragonslayer(src)
+	if(prob(5)
+		new /obj/item/claymore/dragonslayer/veryfuckingloud(src)
+	else
+		new /obj/item/claymore/dragonslayer(src)
 	new /obj/item/clothing/suit/hooded/berserker/gatsu(src)
 	new /obj/item/clothing/neck/warrior_cape(src)
 	new /obj/item/crusher_trophy/gladiator(src)
