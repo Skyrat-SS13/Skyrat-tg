@@ -117,7 +117,7 @@
 /datum/uplink_handler/proc/try_add_objective(datum/traitor_objective/objective_typepath)
 	var/datum/traitor_objective/objective = new objective_typepath(src)
 	var/should_abort = SEND_SIGNAL(objective, COMSIG_TRAITOR_OBJECTIVE_PRE_GENERATE, owner, potential_duplicate_objectives[objective_typepath]) & COMPONENT_TRAITOR_OBJECTIVE_ABORT_GENERATION
-	if((objective.population_requirement > length(get_crewmember_minds())) || should_abort || !objective.generate_objective(owner, potential_duplicate_objectives[objective_typepath])) //SKYRRAT EDIT: POPULATION REQUIREMNT
+	if(should_abort || !objective.generate_objective(owner, potential_duplicate_objectives[objective_typepath]))
 		qdel(objective)
 		return
 	if(!handle_duplicate(objective))
