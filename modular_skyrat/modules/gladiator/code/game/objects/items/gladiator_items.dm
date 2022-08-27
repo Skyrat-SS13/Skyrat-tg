@@ -162,7 +162,7 @@
 	return SHIELD_BLOCK
 
 /obj/item/claymore/dragonslayer/veryfuckingloud
-	name = "<b><p style='color:red;'>tempered dragonslayer</p></b>"
+	name = "<b>tempered dragonslayer</b>"
 	desc = "<b><p style='color:red;'>CLANG</p></b>"
 	hitsound = 'modular_skyrat/modules/gladiator/Clang_1.ogg'
 
