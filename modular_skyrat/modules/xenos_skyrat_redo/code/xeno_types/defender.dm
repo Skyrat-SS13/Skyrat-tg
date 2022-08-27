@@ -24,17 +24,11 @@
 
 	REMOVE_TRAIT(src, TRAIT_VENTCRAWLER_ALWAYS, INNATE_TRAIT)
 
-/*
-	crest_defending = new /datum/action/cooldown/alien/skyrat/crest_defence()
-	crest_defending.Grant(src)
-*/
-
 	add_movespeed_modifier(/datum/movespeed_modifier/alien_heavy)
 
 /mob/living/carbon/alien/humanoid/skyrat/defender/Destroy()
 	QDEL_NULL(charge)
 	QDEL_NULL(tail_sweep)
-	/// QDEL_NULL(crest_defending)
 	return ..()
 
 /mob/living/carbon/alien/humanoid/skyrat/defender/create_internal_organs()
@@ -68,11 +62,11 @@
 	var/turf/throwtarget = get_edge_target_turf(caster, get_dir(caster, get_step_away(victim, caster)))
 	var/dist_from_caster = get_dist(victim, caster)
 
-	if(dist_from_caster == 0)
+	if(dist_from_caster <= 0)
 		if(isliving(victim))
 			var/mob/living/victim_living = victim
 			victim_living.Knockdown(10 SECONDS)
-			victim_living.apply_damage(30,BRUTE,BODY_ZONE_CHEST,wound_bonus=20)
+			victim_living.apply_damage(30, BRUTE,BODY_ZONE_CHEST, wound_bonus = 20)
 			shake_camera(victim, 4, 3)
 			playsound(victim, 'sound/effects/clang.ogg', 100, TRUE, 8, 0.9) //the defender's tail is literally just a small wrecking ball, CLANG
 			to_chat(victim, span_userdanger("You're slammed into the floor by [caster]'s tail!"))
@@ -83,7 +77,7 @@
 		if(isliving(victim))
 			var/mob/living/victim_living = victim
 			victim_living.Knockdown(4 SECONDS)
-			victim_living.apply_damage(30,BRUTE,BODY_ZONE_CHEST,wound_bonus=20)
+			victim_living.apply_damage(30, BRUTE,BODY_ZONE_CHEST, wound_bonus = 20)
 			shake_camera(victim, 4, 3)
 			playsound(victim, 'sound/effects/clang.ogg', 100, TRUE, 8, 0.9)
 			to_chat(victim, span_userdanger("[caster]'s tail slams into you, throwing you back!"))
