@@ -21,7 +21,7 @@
 
 /obj/item/clothing/suit/hooded/berserker/gatsu
 	name = "berserker armor"
-	desc = "A suit of ancient body armor imbued with potent spiritual magnetism, capable of massively boosting a wearer's close combat skills at the cost of ravaging their mind and overexerting their body. <b>Berserk mode requires the suit's helmet to be equipped, and can only be charged by taking damage.</b>"
+	desc = "A suit of ancient body armor imbued with potent spiritual magnetism, capable of massively boosting a wearer's close combat skills at the cost of ravaging their mind and overexerting their body. <b><p style="color:red;">Berserk mode requires the suit's helmet to be equipped, and can only be charged by taking damage.</p></b>"
 	icon_state = "berk_suit"
 	icon = 'modular_skyrat/modules/gladiator/icons/berserk_icons.dmi'
 	worn_icon = 'modular_skyrat/modules/gladiator/icons/berserk_suit.dmi'
@@ -37,7 +37,7 @@
 
 /obj/item/clothing/head/hooded/berserker/gatsu
 	name = "berserker helmet"
-	desc = "An oddly shaped helmet that seems to close in on it's wearer. Peering into the eyes of the helmet reveals an untold number of screams."
+	desc = "<b><p style="color:red;">Gods must be strong, but what of their slayers?</p></b>"
 	icon_state = "berk_helm"
 	icon = 'modular_skyrat/modules/gladiator/icons/berserk_icons.dmi'
 	worn_icon = 'modular_skyrat/modules/gladiator/icons/berserk_suit.dmi'
