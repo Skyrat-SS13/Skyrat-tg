@@ -360,51 +360,6 @@
 	required_reagents = list(/datum/reagent/consumable/ethanol/hooch = 1, /datum/reagent/consumable/ethanol/absinthe = 1, /datum/reagent/consumable/ethanol/manly_dorf = 1, /datum/reagent/consumable/ethanol/syndicatebomb = 1)
 	mix_message = "<span class='warning'>The mixture turns to a sickening froth.</span>"
 
-<<<<<<< HEAD:code/modules/food_and_drinks/recipes/drinks_recipes.dm
-/datum/chemical_reaction/drink/lemonade
-	results = list(/datum/reagent/consumable/lemonade = 5)
-	required_reagents = list(/datum/reagent/consumable/lemonjuice = 2, /datum/reagent/water = 2, /datum/reagent/consumable/sugar = 1, /datum/reagent/consumable/ice = 1)
-	mix_message = "You're suddenly reminded of home."
-
-/datum/chemical_reaction/drink/arnold_palmer
-	results = list(/datum/reagent/consumable/tea/arnold_palmer = 2)
-	required_reagents = list(/datum/reagent/consumable/icetea = 1, /datum/reagent/consumable/lemonade = 1)
-	mix_message = "The smells of fresh green grass and sand traps waft through the air as the mixture turns a friendly yellow-orange."
-
-/datum/chemical_reaction/drink/chocolate_milk
-	results = list(/datum/reagent/consumable/milk/chocolate_milk = 5)
-	required_reagents = list(/datum/reagent/consumable/hot_coco = 3, /datum/reagent/consumable/coco = 2)
-	mix_message = "The color changes as the mixture blends smoothly."
-	required_temp = 300
-	is_cold_recipe = TRUE
-	optimal_temp = 280
-	overheat_temp = 5
-	thermic_constant= -1
-
-/datum/chemical_reaction/drink/hot_coco
-	results = list(/datum/reagent/consumable/hot_coco = 6)
-	required_reagents = list(/datum/reagent/consumable/milk = 5, /datum/reagent/consumable/coco = 1)
-	required_temp = 320
-
-/datum/chemical_reaction/drink/hot_coco_from_chocolate_milk
-	results = list(/datum/reagent/consumable/hot_coco = 3)
-	required_reagents = list(/datum/reagent/consumable/milk/chocolate_milk = 1, /datum/reagent/consumable/milk = 2)
-	required_temp = 320
-
-/datum/chemical_reaction/drink/coffee
-	results = list(/datum/reagent/consumable/coffee = 5)
-	required_reagents = list(/datum/reagent/toxin/coffeepowder = 1, /datum/reagent/water = 5)
-
-	pollutant_type = /datum/pollutant/food/coffee //SKYRAT EDIT ADDITION
-
-/datum/chemical_reaction/drink/tea
-	results = list(/datum/reagent/consumable/tea = 5)
-	required_reagents = list(/datum/reagent/toxin/teapowder = 1, /datum/reagent/water = 5)
-
-	pollutant_type = /datum/pollutant/food/tea //SKYRAT EDIT ADDITION
-
-=======
->>>>>>> 7c247bf7db1 (Splits drinks_recipe into separate files (#69250)):code/modules/food_and_drinks/recipes/drinks/drinks_alcoholic.dm
 /datum/chemical_reaction/drink/eggnog
 	results = list(/datum/reagent/consumable/ethanol/eggnog = 15)
 	required_reagents = list(/datum/reagent/consumable/ethanol/rum = 5, /datum/reagent/consumable/cream = 5, /datum/reagent/consumable/eggyolk = 2)
