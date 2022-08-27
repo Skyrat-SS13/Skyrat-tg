@@ -23,6 +23,8 @@
 	melee_damage_upper = 40
 	speed = 1
 	move_to_delay = 2.25
+	pixel_x = -32
+	pixel_y = -9
 	wander = FALSE
 	ranged = 1
 	ranged_cooldown_time = 30
