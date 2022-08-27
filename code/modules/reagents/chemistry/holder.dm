@@ -474,7 +474,7 @@
 		R = target
 		target_atom = R.my_atom
 	else
-		if(!ignore_stomach && (methods & INGEST) && istype(target, /mob/living/carbon))
+		if(!ignore_stomach && (methods & INGEST) && iscarbon(target))
 			var/mob/living/carbon/eater = target
 			var/obj/item/organ/internal/stomach/belly = eater.getorganslot(ORGAN_SLOT_STOMACH)
 			if(!belly)
@@ -511,11 +511,7 @@
 				continue
 			if(methods)
 				r_to_send += reagent
-			remove_reagent(reagent.type, transfer_amount, no_react) //SKYRAT EDIT CHANGE
-			var/list/reagent_qualities = list(REAGENT_TRANSFER_AMOUNT = transfer_amount, REAGENT_PURITY = reagent.purity)
-			transfer_log[reagent.type] = reagent_qualities
 
-		if(isorgan(target_atom))
 			reagents_to_remove += reagent
 
 		if(isorgan(target_atom))
@@ -525,7 +521,7 @@
 
 		for(var/datum/reagent/reagent as anything in reagents_to_remove)
 			var/transfer_amount = reagent.volume * part
-			remove_reagent(reagent.type, transfer_amount)
+			remove_reagent(reagent.type, transfer_amount, no_react) //SKYRAT EDIT CHANGE
 			var/list/reagent_qualities = list(REAGENT_TRANSFER_AMOUNT = transfer_amount, REAGENT_PURITY = reagent.purity)
 			transfer_log[reagent.type] = reagent_qualities
 
@@ -547,7 +543,7 @@
 				continue
 			to_transfer = max(to_transfer - transfer_amount , 0)
 			if(methods)
-				if(istype(target_atom, /obj/item/organ))
+				if(isorgan(target_atom))
 					R.expose_single(reagent, target, methods, transfer_amount, show_message)
 				else
 					R.expose_single(reagent, target_atom, methods, transfer_amount, show_message)
