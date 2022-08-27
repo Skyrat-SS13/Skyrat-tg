@@ -117,13 +117,6 @@
 	/// how far do we roll?
 	var/roll_range = 3
 
-/obj/item/claymore/dragonslayer/Initialize(mapload)
-	. = ..()
-	var/mutable_appearance/overlay = mutable_appearance('modular_skyrat/modules/gladiator/icons/dragonslayer.dmi', "dragonslayer")
-		overlay.pixel_x = 0
-		overlay.pixel_y = 0
-	update_overlays()
-
 /obj/item/claymore/dragonslayer/attack(mob/living/target, mob/living/carbon/human/user)
 	var/is_nemesis_faction = FALSE
 	for(var/found_faction in target.faction)
