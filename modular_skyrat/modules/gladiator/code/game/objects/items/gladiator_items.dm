@@ -119,7 +119,7 @@
 
 /obj/item/claymore/dragonslayer/Initialize(mapload)
 	. = ..()
-	var/mutable_appearance(icon, "dragonslayer")
+	var/mutable_appearance/overlay = mutable_appearance('modular_skyrat/modules/gladiator/icons/dragonslayer.dmi', "dragonslayer")
 	update_overlays()
 
 /obj/item/claymore/dragonslayer/attack(mob/living/target, mob/living/carbon/human/user)
