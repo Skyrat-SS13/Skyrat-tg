@@ -2,7 +2,7 @@
 #define MARKED_ONE_ANGER_DURATION 10 MINUTES
 
 /**
- * Too Lazy to write a proper description here. Find out ingame!
+ * A mean-ass single-combat sword-wielding nigh-demigod that is nothing but a walking, talking, breathing Berserk reference. He do kill shit doe!
  */
 /mob/living/simple_animal/hostile/megafauna/gladiator
 	name = "\proper The Marked One"
@@ -84,6 +84,10 @@
 	if(!anger_timer_id)
 		return list()
 	return ..()
+
+/mob/living/simple_animal/hostile/megafauna/gladiator/examine()
+    . = ..()
+    . += "<b><p style='color:red;'>They are currently in Phase [phase]</p></b>"
 
 /mob/living/simple_animal/hostile/megafauna/gladiator/adjustHealth(amount, updating_health, forced)
 	get_angry()
