@@ -3,7 +3,8 @@
 /area/station/commons/arcade
 	name = "\improper Arcade"
 	icon_state = "lounge"
-	sound_environment = SOUND_ENVIRONMENT_PADDED_CELL
+	sound_environment = SOUND_AREA_SMALL_SOFTFLOOR
+
 /area/station/service/chapel/asteroid/monastery
 	sound_environment = SOUND_ENVIRONMENT_PADDED_CELL
 
