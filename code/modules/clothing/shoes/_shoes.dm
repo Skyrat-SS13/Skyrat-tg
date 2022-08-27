@@ -59,7 +59,8 @@
 	. = ..()
 
 	if(!ishuman(loc))
-		return ..()
+		return
+
 	if(tied == SHOES_UNTIED)
 		. += "The shoelaces are untied."
 	else if(tied == SHOES_KNOTTED)
