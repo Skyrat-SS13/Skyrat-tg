@@ -501,4 +501,4 @@
 	name = "Bubbly Clown Dress"
 	item_path = /obj/item/clothing/under/bubblyclown/skirt
 	restricted_roles = list(JOB_CLOWN)
-	ckeywhitelist = list("boisterousbeebz", "aether217",)
+	ckeywhitelist = list("boisterousbeebz", "aether217")
