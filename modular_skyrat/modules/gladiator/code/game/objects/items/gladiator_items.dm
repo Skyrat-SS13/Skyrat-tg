@@ -2,9 +2,10 @@
 	name = "ashen bones"
 	desc = "A set of soot-coated ribs from a worthy warrior. Suitable as a trophy for a kinetic crusher."
 	icon_state = "demon_claws"
+	color = "#808080"
 	gender = PLURAL
 	denied_type = /obj/item/crusher_trophy/gladiator
-	bonus_value = 10
+	bonus_value = 15
 
 /obj/item/crusher_trophy/gladiator/effect_desc()
 	return "the crusher to have a <b>[bonus_value]%</b> chance to block incoming attacks."
@@ -18,6 +19,15 @@
 	. = ..()
 	if(.)
 		incomingchance.block_chance -= bonus_value
+
+/obj/item/clothing/neck/warrior_cape
+	name = "cloak of the marked one"
+	desc = "A cloak worn by those that have faced death in the eyes and prevailed. <b><p style='color:red;'>Struggle against the tide, no matter how strong it may be.</p></b>"
+	icon = 'modular_skyrat/modules/gladiator/icons/berserk_icons.dmi'
+	worn_icon = 'modular_skyrat/modules/gladiator/icons/berserk_suit.dmi'
+	icon_state = "berk_cape"
+	inhand_icon_state = "" //lul
+	uses_advanced_reskins = FALSE
 
 /obj/item/clothing/suit/hooded/berserker/gatsu
 	name = "berserker armor"
@@ -86,9 +96,9 @@
 	desc = "A blade that seems too big to be called a sword. Too big, too thick, too heavy, and too rough, it's more like a large hunk of raw iron. Countless slain foes have given it a supernatural tempering. <b>Right click to dodge roll a maximum of three tiles at the cost of stamina.</b>"
 	icon = 'modular_skyrat/modules/gladiator/icons/dragonslayer.dmi'
 	icon_state = "dragonslayer"
-	inhand_icon_state = "dslayer"
-	lefthand_file = 'modular_skyrat/modules/gladiator/icons/dragonslayer_inhand_L.dmi'
-	righthand_file = 'modular_skyrat/modules/gladiator/icons/dragonslayer_inhand_R.dmi'
+	inhand_icon_state = "dragonslayer"
+	lefthand_file = 'modular_skyrat/modules/gladiator/icons/dragonslayer_inhand_R.dmi'
+	righthand_file = 'modular_skyrat/modules/gladiator/icons/dragonslayer_inhand_L.dmi' //confusing, right? hahahaha im not fixing those fucken dmis
 	hitsound = 'modular_skyrat/master_files/sound/weapons/bloodyslice.ogg'
 	w_class = WEIGHT_CLASS_HUGE
 	slot_flags = null
@@ -159,10 +169,12 @@
 /obj/structure/closet/crate/necropolis/gladiator/PopulateContents()
 	new /obj/item/claymore/dragonslayer(src)
 	new /obj/item/clothing/suit/hooded/berserker/gatsu(src)
+	new /obj/item/clothing/neck/warrior_cape(src)
 
 /obj/structure/closet/crate/necropolis/gladiator/crusher/PopulateContents()
 	new /obj/item/claymore/dragonslayer(src)
 	new /obj/item/clothing/suit/hooded/berserker/gatsu(src)
+	new /obj/item/clothing/neck/warrior_cape(src)
 	new /obj/item/crusher_trophy/gladiator(src)
 
 #undef MAX_BERSERK_CHARGE
