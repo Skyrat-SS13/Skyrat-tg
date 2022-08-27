@@ -474,7 +474,7 @@
 		R = target
 		target_atom = R.my_atom
 	else
-		if(!ignore_stomach && (methods & INGEST) && istype(target, /mob/living/carbon))
+		if(!ignore_stomach && (methods & INGEST) && iscarbon(target))
 			var/mob/living/carbon/eater = target
 			var/obj/item/organ/internal/stomach/belly = eater.getorganslot(ORGAN_SLOT_STOMACH)
 			if(!belly)
@@ -496,6 +496,7 @@
 	var/trans_data = null
 	var/transfer_log = list()
 	var/r_to_send = list()	// Validated list of reagents to be exposed
+	var/reagents_to_remove = list()
 	if(!round_robin)
 		var/part = amount / src.total_volume
 		for(var/datum/reagent/reagent as anything in cached_reagents)
@@ -510,21 +511,17 @@
 				continue
 			if(methods)
 				r_to_send += reagent
-<<<<<<< HEAD
-			remove_reagent(reagent.type, transfer_amount, no_react) //SKYRAT EDIT CHANGE
-			var/list/reagent_qualities = list(REAGENT_TRANSFER_AMOUNT = transfer_amount, REAGENT_PURITY = reagent.purity)
-			transfer_log[reagent.type] = reagent_qualities
-=======
->>>>>>> 1e5083f4274 (Fixes strange reagent, and possibly other chems too (#69432))
 
-		if(istype(target_atom, /obj/item/organ))
+			reagents_to_remove += reagent
+
+		if(isorgan(target_atom))
 			R.expose_multiple(r_to_send, target, methods, part, show_message)
 		else
 			R.expose_multiple(r_to_send, target_atom, methods, part, show_message)
 
-		for(var/datum/reagent/reagent as anything in r_to_send)
+		for(var/datum/reagent/reagent as anything in reagents_to_remove)
 			var/transfer_amount = reagent.volume * part
-			remove_reagent(reagent.type, transfer_amount)
+			remove_reagent(reagent.type, transfer_amount, no_react) //SKYRAT EDIT CHANGE
 			var/list/reagent_qualities = list(REAGENT_TRANSFER_AMOUNT = transfer_amount, REAGENT_PURITY = reagent.purity)
 			transfer_log[reagent.type] = reagent_qualities
 
@@ -546,7 +543,7 @@
 				continue
 			to_transfer = max(to_transfer - transfer_amount , 0)
 			if(methods)
-				if(istype(target_atom, /obj/item/organ))
+				if(isorgan(target_atom))
 					R.expose_single(reagent, target, methods, transfer_amount, show_message)
 				else
 					R.expose_single(reagent, target_atom, methods, transfer_amount, show_message)
