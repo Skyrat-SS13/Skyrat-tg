@@ -35,13 +35,13 @@
 	back = /obj/item/storage/backpack/satchel
 	l_hand = /obj/item/gun/ballistic/rifle/lionhunter // sue me
 	r_hand = /obj/item/ammo_box/a762/lionhunter
-	suit = /obj/item/clothing/suit/armor/riot/chaplain/clock
+	suit = /obj/item/clothing/suit/chaplainsuit/armor/clock
 	head = /obj/item/clothing/head/helmet/chaplain/clock
 
 /datum/outfit/clock_cultist/corpse
 	name = "Clock Cultist (Corpse)"
 	l_hand = null
 	r_hand = null
-	suit = /obj/item/clothing/suit/bronze
+	suit = /obj/item/clothing/suit/costume/bronze
 	head = /obj/item/clothing/head/bronze
 	gloves = null

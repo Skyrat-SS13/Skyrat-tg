@@ -110,7 +110,7 @@
 
 	var/obj/item/paper/spiel_paper = new /obj/item/paper(get_turf(src))
 	spiel_paper.name = "paper - '[title]'"
-	spiel_paper.info = total_spiel
+	spiel_paper.add_raw_text(total_spiel)
 	spiel_paper.update_appearance()
 
 	outbound_controller.current_event.on_radio()
