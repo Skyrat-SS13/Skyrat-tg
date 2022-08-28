@@ -3,7 +3,7 @@
 	name = "PanD.E.M.I.C 2200"
 	desc = "Used to work with viruses."
 	density = TRUE
-	icon = 'icons/obj/chemical.dmi'
+	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "pandemic0"
 	icon_keyboard = null
 	base_icon_state = "pandemic"
@@ -58,7 +58,7 @@
 	return ..()
 
 /obj/machinery/computer/pandemic/attackby(obj/item/held_item, mob/user, params)
-	if(!istype(held_item, /obj/item/reagent_containers) || held_item.item_flags & ABSTRACT || !held_item.is_open_container())
+	if(!is_reagent_container(held_item) || held_item.item_flags & ABSTRACT || !held_item.is_open_container())
 		return ..()
 	. = TRUE //no afterattack
 	if(machine_stat & (NOPOWER|BROKEN))

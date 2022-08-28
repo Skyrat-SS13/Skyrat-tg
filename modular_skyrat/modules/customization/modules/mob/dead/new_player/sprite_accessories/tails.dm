@@ -309,6 +309,10 @@
 	name = "Murid"
 	icon_state = "murid"
 
+/datum/sprite_accessory/tails/mammal/wagging/murid_two
+	name = "Murid II"
+	icon_state = "murid_two"
+
 /datum/sprite_accessory/tails/mammal/wagging/orca
 	name = "Orca"
 	icon_state = "orca"
