@@ -741,7 +741,7 @@
 	if(potential_patient.body_position == LYING_DOWN && potential_patient.loc == loc)
 		patient = potential_patient
 		return
-	
+
 	// Find another lying mob as a replacement.
 	for (var/mob/living/carbon/replacement_patient in loc.contents)
 		if(replacement_patient.body_position == LYING_DOWN)
@@ -776,7 +776,7 @@
 
 /obj/structure/rack/MouseDrop_T(obj/O, mob/user)
 	. = ..()
-	if ((!( istype(O, /obj/item) ) || user.get_active_held_item() != O))
+	if ((!( isitem(O) ) || user.get_active_held_item() != O))
 		return
 	if(!user.dropItemToGround(O))
 		return

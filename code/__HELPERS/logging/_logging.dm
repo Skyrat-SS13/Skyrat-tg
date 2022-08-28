@@ -79,7 +79,7 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 		SSdbcore.add_log_to_mass_insert_queue(
 			format_table_name("game_log"),
 			list(
-				"time" = SQLtime(),
+				"datetime" = SQLtime(),
 				"round_id" = "[GLOB.round_id]",
 				"ckey" = key_name(src),
 				"loc" = loc_name(src),
@@ -191,7 +191,7 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 		if(istype(whom, /atom))
 			var/atom/A = whom
 			swhom = "[A.name]"
-		else if(istype(whom, /datum))
+		else if(isdatum(whom))
 			swhom = "[whom]"
 
 		if(!swhom)
