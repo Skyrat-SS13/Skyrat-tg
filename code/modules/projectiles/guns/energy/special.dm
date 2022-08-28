@@ -306,11 +306,7 @@
 	name = "cyborg lmg"
 	desc = "An LMG that fires 3D-printed flechettes. They are slowly resupplied using the cyborg's internal power source."
 	icon_state = "l6_cyborg"
-<<<<<<< HEAD
-	icon = 'modular_skyrat/modules/fixing_missing_icons/ballistic.dmi' //skyrat edit
-=======
 	icon = 'icons/obj/weapons/guns/ballistic.dmi'
->>>>>>> d91390a4474 ([IDB IGNORE] The Great Sweep: Moving dmis into subfolders (part 1)  (#69416))
 	cell_type = "/obj/item/stock_parts/cell/secborg"
 	ammo_type = list(/obj/item/ammo_casing/energy/c3dbullet)
 	can_charge = FALSE

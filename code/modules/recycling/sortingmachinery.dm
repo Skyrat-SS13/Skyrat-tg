@@ -1,9 +1,5 @@
 /obj/item/delivery
-<<<<<<< HEAD
-	icon = 'icons/obj/storage.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
-=======
-	icon = 'icons/obj/storage/storage.dmi'
->>>>>>> d91390a4474 ([IDB IGNORE] The Great Sweep: Moving dmis into subfolders (part 1)  (#69416))
+	icon = 'icons/obj/storage/storage.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
 	var/giftwrapped = 0
 	var/sort_tag = 0
 	var/obj/item/paper/note

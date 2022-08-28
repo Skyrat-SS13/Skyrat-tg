@@ -2,11 +2,7 @@
 /obj/item/gun/ballistic/bow
 	name = "longbow"
 	desc = "While pretty finely crafted, surely you can find something better to use in the current year."
-<<<<<<< HEAD
-	icon = 'modular_skyrat/modules/fixing_missing_icons/ballistic.dmi' //skyrat edit
-=======
 	icon = 'icons/obj/weapons/guns/ballistic.dmi'
->>>>>>> d91390a4474 ([IDB IGNORE] The Great Sweep: Moving dmis into subfolders (part 1)  (#69416))
 	icon_state = "bow"
 	inhand_icon_state = "bow"
 	load_sound = null

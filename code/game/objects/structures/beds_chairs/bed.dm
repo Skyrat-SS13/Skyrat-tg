@@ -53,11 +53,7 @@
  */
 /obj/structure/bed/roller
 	name = "roller bed"
-<<<<<<< HEAD
-	icon = 'icons/obj/rollerbed.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
-=======
-	icon = 'icons/obj/medical/rollerbed.dmi'
->>>>>>> d91390a4474 ([IDB IGNORE] The Great Sweep: Moving dmis into subfolders (part 1)  (#69416))
+	icon = 'icons/obj/medical/rollerbed.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
 	icon_state = "down"
 	anchored = FALSE
 	resistance_flags = NONE
@@ -132,11 +128,7 @@
 /obj/item/roller
 	name = "roller bed"
 	desc = "A collapsed roller bed that can be carried around."
-<<<<<<< HEAD
-	icon = 'icons/obj/rollerbed.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
-=======
-	icon = 'icons/obj/medical/rollerbed.dmi'
->>>>>>> d91390a4474 ([IDB IGNORE] The Great Sweep: Moving dmis into subfolders (part 1)  (#69416))
+	icon = 'icons/obj/medical/rollerbed.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
 	icon_state = "folded"
 	w_class = WEIGHT_CLASS_NORMAL // No more excuses, stop getting blood everywhere
 

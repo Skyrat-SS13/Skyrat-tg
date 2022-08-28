@@ -689,13 +689,8 @@ GLOBAL_LIST_INIT(gun_saw_types, typecacheof(list(
 
 /obj/item/suppressor
 	name = "suppressor"
-<<<<<<< HEAD
-	desc = "A Scarborough Arms small-arms suppressor for maximum espionage." //SKYRAT EDIT
-	icon = 'icons/obj/guns/ballistic.dmi'
-=======
-	desc = "A syndicate small-arms suppressor for maximum espionage."
+	desc = "A Scarborough Arms small-arms suppressor for maximum espionage." //SKYRAT EDIT - ORIGINAL: desc = "A syndicate small-arms suppressor for maximum espionage."
 	icon = 'icons/obj/weapons/guns/ballistic.dmi'
->>>>>>> d91390a4474 ([IDB IGNORE] The Great Sweep: Moving dmis into subfolders (part 1)  (#69416))
 	icon_state = "suppressor"
 	w_class = WEIGHT_CLASS_TINY
 
