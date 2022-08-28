@@ -54,6 +54,7 @@
 	ties. Most of the people of Luna are rich, cultured and refined. Not all are, however, and many of the people of the city of New Vegas are on \
 	the poverty line, often holding feelings of resentment against the other people of Luna."
 	capital = "Selene"
+	additional_langs = list(/datum/language/selenian)
 	economic_power = 1.3
 
 
