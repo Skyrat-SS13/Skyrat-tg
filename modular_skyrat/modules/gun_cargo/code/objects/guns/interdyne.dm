@@ -7,7 +7,7 @@
 	company_flag = COMPANY_INTERDYNE
 	var/obj/item/gun/syringe/smartdart/underbarrel/underbarrel
 
-/obj/item/gun/ballistic/automatic/pistol/firefly/smartdart/Initialize()
+/obj/item/gun/ballistic/automatic/pistol/firefly/smartdart/Initialize(mapload)
 	. = ..()
 	underbarrel = new(src)
 	update_appearance()

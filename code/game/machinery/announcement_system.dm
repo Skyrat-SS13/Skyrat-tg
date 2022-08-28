@@ -87,10 +87,6 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 		message = CompileText(newhead, user, rank)
 	else if(message_type == "ARRIVALS_BROKEN")
 		message = "The arrivals shuttle has been damaged. Docking for repairs..."
-	//SKYRAT EDIT ADDITION
-	else if(message_type == "CRYOSTORAGE")
-		message = "[user][rank ? ", [rank]" : ""] has been moved to cryo storage."
-	//SKYRAT EDIT END
 
 	broadcast(message, channels)
 
@@ -141,14 +137,14 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 				return
 			if(NewMessage)
 				arrival = NewMessage
-				log_game("The arrivals announcement was updated: [NewMessage] by:[key_name(usr)]")
+				usr.log_message("updated the arrivals announcement to: [NewMessage]", LOG_GAME)
 		if("NewheadText")
 			var/NewMessage = trim(html_encode(param["newText"]), MAX_MESSAGE_LEN)
 			if(!usr.canUseTopic(src, !issilicon(usr)))
 				return
 			if(NewMessage)
 				newhead = NewMessage
-				log_game("The head announcement was updated: [NewMessage] by:[key_name(usr)]")
+				usr.log_message("updated the head announcement to: [NewMessage]", LOG_GAME)
 		if("NewheadToggle")
 			newheadToggle = !newheadToggle
 			update_appearance()

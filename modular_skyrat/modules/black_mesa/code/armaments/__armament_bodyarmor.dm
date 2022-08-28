@@ -30,7 +30,7 @@
 	icon_state = "box"
 	illustration = null
 
-/obj/item/storage/box/armor_set/Initialize()
+/obj/item/storage/box/armor_set/Initialize(mapload)
 	. = ..()
 	atom_storage.set_holdable(list(/obj/item/clothing/suit/armor,/obj/item/clothing/suit/space/hev_suit/pcv,/obj/item/clothing/head/helmet))
 	atom_storage.max_slots = 2

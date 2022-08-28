@@ -4,6 +4,7 @@
 
 	max_occurrences = 1
 	weight = 15
+	description = "This anomaly randomly teleports all items and mobs in a large area."
 
 /datum/round_event/anomaly/anomaly_bluespace
 	startWhen = 3
@@ -11,4 +12,4 @@
 	anomaly_path = /obj/effect/anomaly/bluespace
 
 /datum/round_event/anomaly/anomaly_bluespace/announce(fake)
-	priority_announce("Unstable bluespace anomaly detected on long range scanners. Expected location: [impact_area.name].", "Anomaly Alert", ANNOUNCER_VORTEXANOMALIES)
+	priority_announce("Unstable bluespace anomaly detected on long range scanners. Expected location: [impact_area.name].", "Anomaly Alert", ANNOUNCER_MASSIVEBSPACEANOMALIES)

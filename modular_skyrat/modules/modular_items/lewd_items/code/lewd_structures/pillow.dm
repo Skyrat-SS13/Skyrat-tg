@@ -21,11 +21,6 @@
 	var/static/list/pillow_forms
 	w_class = WEIGHT_CLASS_SMALL
 
-// To update model
-/obj/item/pillow/ComponentInitialize()
-	. = ..()
-	AddElement(/datum/element/update_icon_updates_onmob)
-
 // Create radial menu
 /obj/item/pillow/proc/populate_pillow_colors()
 	pillow_colors = list(
@@ -73,8 +68,9 @@
 		return FALSE
 	return TRUE
 
-/obj/item/pillow/Initialize()
+/obj/item/pillow/Initialize(mapload)
 	. = ..()
+	AddElement(/datum/element/update_icon_updates_onmob)
 	update_icon_state()
 	update_icon()
 	if(!length(pillow_colors))
@@ -176,7 +172,7 @@
 
 	buildstacktype = /obj/item/stack/sheet/cloth
 
-/obj/structure/bed/pillow_tiny/Initialize()
+/obj/structure/bed/pillow_tiny/Initialize(mapload)
 	.=..()
 	update_icon_state()
 	update_icon()
@@ -272,7 +268,7 @@
 
 	buildstacktype = /obj/item/stack/sheet/cloth
 
-/obj/structure/chair/pillow_small/Initialize()
+/obj/structure/chair/pillow_small/Initialize(mapload)
 	update_icon()
 	return ..()
 
@@ -400,7 +396,7 @@
 
 	buildstacktype = /obj/item/stack/sheet/cloth
 
-/obj/structure/bed/pillow_large/Initialize()
+/obj/structure/bed/pillow_large/Initialize(mapload)
     update_icon()
     return ..()
 

@@ -14,9 +14,12 @@
 #define ROLE_HERETIC "Heretic"
 #define ROLE_MALF "Malf AI"
 #define ROLE_OPERATIVE "Operative"
-#define ROLE_THIEF "Thief"
 #define ROLE_TRAITOR "Traitor"
 #define ROLE_WIZARD "Wizard"
+// SKYRAT EDIT START
+#define ROLE_ASSAULT_OPERATIVE "Assault Operative"
+#define ROLE_SYNDICATE_SABOTEUR "Syndicate Saboteur"
+// SKYRAT EDIT END
 
 // Midround roles
 #define ROLE_ABDUCTOR "Abductor"
@@ -30,7 +33,6 @@
 #define ROLE_NINJA "Space Ninja"
 #define ROLE_OBSESSED "Obsessed"
 #define ROLE_OPERATIVE_MIDROUND "Operative (Midround)"
-#define ROLE_OPPORTUNIST "Opportunist"
 #define ROLE_REV_HEAD "Head Revolutionary"
 #define ROLE_SENTIENT_DISEASE "Sentient Disease"
 #define ROLE_SLEEPER_AGENT "Syndicate Sleeper Agent"
@@ -41,8 +43,8 @@
 #define ROLE_LONE_INFILTRATOR "Lone Infiltrator"
 #define ROLE_BORER "Borer"
 #define ROLE_DRIFTING_CONTRACTOR "Drifting Contractor"
-#define ROLE_ASSAULT_OPERATIVE "Assault Operative"
 #define ROLE_MUTANT "Mutated Abomination"
+#define ROLE_SLEEPER_SABOTEUR "Sleeper Saboteur"
 // SKYRAT EDIT END
 
 // Latejoin roles
@@ -120,11 +122,11 @@ GLOBAL_LIST_INIT(special_roles, list(
 	ROLE_MALF = 0,
 	ROLE_OPERATIVE = 14,
 	ROLE_REV_HEAD = 14,
-	ROLE_THIEF = 0,
 	ROLE_TRAITOR = 0,
 	ROLE_WIZARD = 14,
 	// SKYRAT EDIT ADDITION
 	ROLE_ASSAULT_OPERATIVE = 14,
+	ROLE_SYNDICATE_SABOTEUR = 0,
 	// SKYRAT EDIT END
 
 	// Midround
@@ -139,7 +141,6 @@ GLOBAL_LIST_INIT(special_roles, list(
 	ROLE_NINJA = 0,
 	ROLE_OBSESSED = 0,
 	ROLE_OPERATIVE_MIDROUND = 14,
-	ROLE_OPPORTUNIST = 0,
 	ROLE_REVENANT = 0,
 	ROLE_SENTIENT_DISEASE = 0,
 	ROLE_SLEEPER_AGENT = 0,
@@ -151,6 +152,7 @@ GLOBAL_LIST_INIT(special_roles, list(
 	ROLE_BORER = 0,
 	ROLE_DRIFTING_CONTRACTOR = 14,
 	ROLE_MUTANT = 0,
+	ROLE_SLEEPER_SABOTEUR = 0,
 	//SKYRAT EDIT END
 
 	// Latejoin

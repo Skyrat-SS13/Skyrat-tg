@@ -69,7 +69,7 @@
     update_icon()
     update_brightness()
 
-/obj/structure/pole/Initialize()
+/obj/structure/pole/Initialize(mapload)
 	. = ..()
 	update_icon_state()
 	update_icon()

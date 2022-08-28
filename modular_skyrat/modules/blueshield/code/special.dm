@@ -35,7 +35,7 @@
 	chargerate = 300
 	var/obj/item/gun/energy/e_gun/revolver/pdw9/parent
 
-/obj/item/stock_parts/cell/pdw9/Initialize()
+/obj/item/stock_parts/cell/pdw9/Initialize(mapload)
 	. = ..()
 	parent = loc
 

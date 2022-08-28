@@ -15,7 +15,7 @@
 	var/powered = FALSE
 	max_fuel = 20
 
-/obj/item/weldingtool/electric/ComponentInitialize()
+/obj/item/weldingtool/electric/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/cell, cell_override, CALLBACK(src, .proc/switched_off))
 
@@ -94,5 +94,5 @@
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = 1000, /datum/material/glass = 500, /datum/material/plasma = 1500, /datum/material/uranium = 200)
 	build_path = /obj/item/weldingtool/electric
-	category = list("Tool Designs")
+	category = list(RND_CATEGORY_TOOL_DESIGNS)
 	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE | DEPARTMENT_BITFLAG_ENGINEERING

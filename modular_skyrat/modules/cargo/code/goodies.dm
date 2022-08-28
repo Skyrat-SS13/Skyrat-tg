@@ -24,6 +24,27 @@
                     /obj/item/clothing/mask/breath)
 
 /*
+*	ENGINEERING STUFF
+*/
+
+/datum/supply_pack/goody/improvedrcd
+	name = "Improved RCD"
+	desc = "An upgraded RCD featuring superior material storage. Comes with complimentary frames and circuitry upgrades to boot!"
+	cost = PAYCHECK_CREW * 38
+	contains = list(/obj/item/construction/rcd/improved)
+	
+	
+/datum/supply_pack/goody/improvedrcdbonus
+	name = "Improved RCD  Value Pack"
+	desc = "A pack of 3 upgraded RCDs featuring superior material storage. Each comes with complimentary frames and circuitry upgrades to boot!"
+	cost = PAYCHECK_CREW * 100
+	contains = list(
+		/obj/item/construction/rcd/improved,
+		/obj/item/construction/rcd/improved,
+		/obj/item/construction/rcd/improved,
+	)
+
+/*
 *	MISC
 */
 
@@ -48,7 +69,7 @@
 
 /datum/supply_pack/goody/nri_rations
 	name = "Surplus NRI Combat Ration"
-	desc = "A single surplus ration pack from the NRI Defense Colleague. Comes with a standard-issue selection of food selected and approved by at least one Imperial regiment."
+	desc = "A single surplus ration pack from the NRI Defense Collegium. Comes with a standard-issue selection of food selected and approved by at least one Imperial regiment."
 	cost = PAYCHECK_COMMAND * 2 //Less nourishing than the mothic one but you get cigarettes and wo'oh.
 	contains = list(/obj/item/storage/box/nri_rations)
 
@@ -62,6 +83,13 @@
 	cost = PAYCHECK_CREW * 3
 	contains = list(/obj/item/gun_maintenance_supplies,
 					/obj/item/gun_maintenance_supplies)
+
+/datum/supply_pack/goody/nri_gear
+	name = "NRI Voentorg Gear"
+	desc = "Contains a backpack full of military-grade NRI Defense Collegium standard equipment previously used by the most of their military."
+	cost = PAYCHECK_CREW * 40
+	contains = list(/obj/item/storage/backpack/nri/larp)
+	access_view = ACCESS_BRIG
 
 /*
 *	CARPET PACKS
@@ -111,3 +139,13 @@
 	name = "Blue Carpet Single-Pack"
 	contains = list(/obj/item/stack/tile/carpet/blue/fifty)
 
+/*
+*	MEDICAL STUFF
+*/
+
+
+/datum/supply_pack/goody/afad
+	name = "Automated First Aid Device"
+	desc = "Someone mildly hurt and it's too much of a bother to manually handle their burns or cuts? Look no further than the AFAD, a state-of-the-art pain-relief device!"
+	cost = PAYCHECK_CREW * 40
+	contains = list(/obj/item/gun/medbeam/afad)
