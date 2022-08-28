@@ -90,7 +90,6 @@
 	new /obj/item/reagent_containers/pill/patch/aiuri(src)
 	new /obj/item/reagent_containers/pill/patch/aiuri(src)
 	new	/obj/item/holosign_creator/medical (src)
-	new /obj/item/pinpointer/crew/prox (src)
 
 /obj/item/clothing/gloves/color/latex/nitrile/ntrauma
 	name = "trauma specialist gloves"

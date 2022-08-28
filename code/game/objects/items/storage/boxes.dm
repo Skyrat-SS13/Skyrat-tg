@@ -60,12 +60,12 @@
 	if(!foldable || (flags_1 & HOLOGRAM_1))
 		return
 	if(contents.len)
-		to_chat(user, span_warning("You can't fold this box with items still inside!"))
+		balloon_alert(user, "items inside!")
 		return
 	if(!ispath(foldable))
 		return
 
-	to_chat(user, span_notice("You fold [src] flat."))
+	balloon_alert(user, "folded")
 	var/obj/item/I = new foldable
 	qdel(src)
 	user.put_in_hands(I)
@@ -263,7 +263,7 @@
 
 /obj/item/storage/box/beakers/PopulateContents()
 	for(var/i in 1 to 7)
-		new /obj/item/reagent_containers/glass/beaker( src )
+		new /obj/item/reagent_containers/cup/beaker( src )
 
 /obj/item/storage/box/beakers/bluespace
 	name = "box of bluespace beakers"
@@ -271,18 +271,18 @@
 
 /obj/item/storage/box/beakers/bluespace/PopulateContents()
 	for(var/i in 1 to 7)
-		new /obj/item/reagent_containers/glass/beaker/bluespace(src)
+		new /obj/item/reagent_containers/cup/beaker/bluespace(src)
 
 /obj/item/storage/box/beakers/variety
 	name = "beaker variety box"
 
 /obj/item/storage/box/beakers/variety/PopulateContents()
-	new /obj/item/reagent_containers/glass/beaker(src)
-	new /obj/item/reagent_containers/glass/beaker/large(src)
-	new /obj/item/reagent_containers/glass/beaker/plastic(src)
-	new /obj/item/reagent_containers/glass/beaker/meta(src)
-	new /obj/item/reagent_containers/glass/beaker/noreact(src)
-	new /obj/item/reagent_containers/glass/beaker/bluespace(src)
+	new /obj/item/reagent_containers/cup/beaker(src)
+	new /obj/item/reagent_containers/cup/beaker/large(src)
+	new /obj/item/reagent_containers/cup/beaker/plastic(src)
+	new /obj/item/reagent_containers/cup/beaker/meta(src)
+	new /obj/item/reagent_containers/cup/beaker/noreact(src)
+	new /obj/item/reagent_containers/cup/beaker/bluespace(src)
 
 /obj/item/storage/box/medigels
 	name = "box of medical gels"
@@ -449,7 +449,7 @@
 
 /obj/item/storage/box/drinkingglasses/PopulateContents()
 	for(var/i in 1 to 6)
-		new /obj/item/reagent_containers/food/drinks/drinkingglass(src)
+		new /obj/item/reagent_containers/cup/glass/drinkingglass(src)
 
 /obj/item/storage/box/condimentbottles
 	name = "box of condiment bottles"
@@ -458,7 +458,7 @@
 
 /obj/item/storage/box/condimentbottles/PopulateContents()
 	for(var/i in 1 to 6)
-		new /obj/item/reagent_containers/food/condiment(src)
+		new /obj/item/reagent_containers/condiment(src)
 
 /obj/item/storage/box/cups
 	name = "box of paper cups"
@@ -467,7 +467,7 @@
 
 /obj/item/storage/box/cups/PopulateContents()
 	for(var/i in 1 to 7)
-		new /obj/item/reagent_containers/food/drinks/sillycup( src )
+		new /obj/item/reagent_containers/cup/glass/sillycup( src )
 
 /obj/item/storage/box/donkpockets
 	name = "box of donk-pockets"
@@ -480,7 +480,7 @@
 	for(var/i in 1 to 6)
 		new donktype(src)
 
-/obj/item/storage/box/donkpockets/Initialize()
+/obj/item/storage/box/donkpockets/Initialize(mapload)
 	. = ..()
 	atom_storage.set_holdable(list(/obj/item/food/donkpocket))
 
@@ -521,7 +521,7 @@
 	illustration = null
 	var/cube_type = /obj/item/food/monkeycube
 
-/obj/item/storage/box/monkeycubes/Initialize()
+/obj/item/storage/box/monkeycubes/Initialize(mapload)
 	. = ..()
 	atom_storage.max_slots = 7
 	atom_storage.set_holdable(list(/obj/item/food/monkeycube))
@@ -540,7 +540,7 @@
 	icon_state = "monkeycubebox"
 	illustration = null
 
-/obj/item/storage/box/gorillacubes/Initialize()
+/obj/item/storage/box/gorillacubes/Initialize(mapload)
 	. = ..()
 	atom_storage.max_slots = 3
 	atom_storage.set_holdable(list(/obj/item/food/monkeycube))
@@ -697,7 +697,7 @@
 	icon_state = "spbox"
 	illustration = ""
 
-/obj/item/storage/box/snappops/Initialize()
+/obj/item/storage/box/snappops/Initialize(mapload)
 	. = ..()
 	atom_storage.set_holdable(list(/obj/item/toy/snappop))
 	atom_storage.max_slots = 8
@@ -721,7 +721,7 @@
 	base_icon_state = "matchbox"
 	illustration = null
 
-/obj/item/storage/box/matches/Initialize()
+/obj/item/storage/box/matches/Initialize(mapload)
 	. = ..()
 	atom_storage.max_slots = 10
 	atom_storage.set_holdable(list(/obj/item/match))
@@ -756,7 +756,7 @@
 	righthand_file = 'icons/mob/inhands/equipment/medical_righthand.dmi'
 	foldable = /obj/item/stack/sheet/cardboard //BubbleWrap
 
-/obj/item/storage/box/lights/Initialize()
+/obj/item/storage/box/lights/Initialize(mapload)
 	. = ..()
 	atom_storage.max_slots = 21
 	atom_storage.set_holdable(list(/obj/item/light/tube, /obj/item/light/bulb))
@@ -844,12 +844,12 @@
 /obj/item/storage/box/clown/attackby(obj/item/I, mob/user, params)
 	if((istype(I, /obj/item/bodypart/l_arm/robot)) || (istype(I, /obj/item/bodypart/r_arm/robot)))
 		if(contents.len) //prevent accidently deleting contents
-			to_chat(user, span_warning("You need to empty [src] out first!"))
+			balloon_alert(user, "items inside!")
 			return
 		if(!user.temporarilyRemoveItemFromInventory(I))
 			return
 		qdel(I)
-		to_chat(user, span_notice("You add some wheels to the [src]! You've got a honkbot assembly now! Honk!"))
+		balloon_alert(user, "wheels added, honk!")
 		var/obj/item/bot_assembly/honkbot/A = new
 		qdel(src)
 		user.put_in_hands(A)
@@ -1008,7 +1008,7 @@
 				desc = "A paper sack with a crude smile etched onto the side."
 			else
 				return FALSE
-		to_chat(user, span_notice("You make some modifications to [src] using your pen."))
+		balloon_alert(user, "modified")
 		icon_state = "paperbag_[choice]"
 		inhand_icon_state = "paperbag_[choice]"
 		return FALSE
@@ -1039,10 +1039,10 @@
 	if(user.incapacitated())
 		return FALSE
 	if(contents.len)
-		to_chat(user, span_warning("You can't modify [src] with items still inside!"))
+		balloon_alert(user, "items inside!")
 		return FALSE
 	if(!P || !user.is_holding(P))
-		to_chat(user, span_warning("You need a pen to modify [src]!"))
+		balloon_alert(user, "needs pen!")
 		return FALSE
 	return TRUE
 
@@ -1258,7 +1258,7 @@
 	foldable = null
 	custom_price = PAYCHECK_CREW
 
-/obj/item/storage/box/gum/Initialize()
+/obj/item/storage/box/gum/Initialize(mapload)
 	. = ..()
 	atom_storage.set_holdable(list(/obj/item/food/bubblegum))
 	atom_storage.max_slots = 4
@@ -1483,7 +1483,7 @@
 	for(var/i in 1 to 3)
 		new /obj/item/food/grown/tomato(src)
 		new /obj/item/food/meatball(src)
-	new /obj/item/reagent_containers/food/drinks/bottle/wine(src)
+	new /obj/item/reagent_containers/cup/glass/bottle/wine(src)
 
 /obj/item/storage/box/ingredients/vegetarian
 	theme_name = "vegetarian"
@@ -1582,6 +1582,18 @@
 		new /obj/item/food/fishmeat/armorfish(src)
 		new /obj/item/food/fishmeat/moonfish(src)
 	new /obj/item/food/fishmeat/gunner_jellyfish(src)
+
+/obj/item/storage/box/ingredients/salads
+	theme_name = "salads"
+
+/obj/item/storage/box/ingredients/salads/PopulateContents()
+	new /obj/item/food/grown/onion/red(src)
+	new /obj/item/food/grown/onion/red(src)
+	new /obj/item/food/grown/cabbage(src)
+	new /obj/item/food/grown/tomato(src)
+	new /obj/item/food/grown/carrot(src)
+	new /obj/item/food/grown/olive(src)
+	new /obj/item/reagent_containers/condiment/quality_oil(src)
 
 /obj/item/storage/box/ingredients/random
 	theme_name = "random"
@@ -1772,9 +1784,9 @@
 /obj/item/storage/box/mothic_goods/PopulateContents()
 	for(var/i in 1 to 12)
 		var/randomFood = pick_weight(list(/obj/item/food/grown/toechtauese = 10,
-										  /obj/item/reagent_containers/food/condiment/cornmeal = 5,
-										  /obj/item/reagent_containers/food/condiment/yoghurt = 5,
-										  /obj/item/reagent_containers/food/condiment/quality_oil = 5,
+										  /obj/item/reagent_containers/condiment/cornmeal = 5,
+										  /obj/item/reagent_containers/condiment/yoghurt = 5,
+										  /obj/item/reagent_containers/condiment/quality_oil = 5,
 										  /obj/item/food/cheese/mozzarella = 5,
 										  /obj/item/food/cheese/firm_cheese = 5,
 										  /obj/item/food/cheese/wheel = 5,

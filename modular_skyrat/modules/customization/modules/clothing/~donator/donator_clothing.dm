@@ -1,27 +1,33 @@
 /**************SKYRAT REWARDS**************/
 //SUITS
-/obj/item/clothing/suit/hooded/wintercoat/polychromic
-	name = "polychromic winter coat"
-	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
-	icon_state = "coatpoly"
-	hoodtype = /obj/item/clothing/head/hooded/winterhood/polychromic
+/obj/item/clothing/suit/hooded/wintercoat/colourable
+	name = "custom winter coat"
+	icon_state = "winter_coat"
+	hoodtype = /obj/item/clothing/head/hooded/winterhood/colourable
+	greyscale_config = /datum/greyscale_config/winter_coat
+	greyscale_config_worn = /datum/greyscale_config/winter_coat_worn
+	greyscale_colors = "#666666#CCBBAA#0000FF"
+	flags_1 = IS_PLAYER_COLORABLE_1
 
-/obj/item/clothing/suit/hooded/wintercoat/polychromic/ComponentInitialize()
-	. = ..()
-	AddElement(/datum/element/polychromic, list("#666666", "#CCBBAA", "#0000FF"))
-
-//We need this to color the hood that comes up
-/obj/item/clothing/suit/hooded/wintercoat/polychromic/ToggleHood()
+//In case colors are changed after initialization
+/obj/item/clothing/suit/hooded/wintercoat/colourable/set_greyscale(list/colors, new_config, new_worn_config, new_inhand_left, new_inhand_right)
 	. = ..()
 	if(hood)
-		hood.color = color
-		hood.update_slot_icon()
+		var/list/coat_colors = SSgreyscale.ParseColorString(greyscale_colors)
+		var/list/new_coat_colors = coat_colors.Copy(1,3)
+		hood.set_greyscale(new_coat_colors) //Adopt the suit's grayscale coloring for visual clarity.
 
-/obj/item/clothing/head/hooded/winterhood/polychromic
-	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
-	icon_state = "winterhood_poly"
+//But also keep old method in case the hood is (re-)created later
+/obj/item/clothing/suit/hooded/wintercoat/colourable/MakeHood()
+	. = ..()
+	var/list/coat_colors = (SSgreyscale.ParseColorString(greyscale_colors))
+	var/list/new_coat_colors = coat_colors.Copy(1,3)
+	hood.set_greyscale(new_coat_colors) //Adopt the suit's grayscale coloring for visual clarity.
+
+/obj/item/clothing/head/hooded/winterhood/colourable
+	icon_state = "winter_hood"
+	greyscale_config = /datum/greyscale_config/winter_hood
+	greyscale_config_worn = /datum/greyscale_config/winter_hood/worn
 
 // NECK
 
@@ -61,7 +67,7 @@
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 	var/list/poly_colors = list("#FFFFFF", "#FF8888", "#888888")
 
-/obj/item/clothing/under/dress/skirt/polychromic/ComponentInitialize()
+/obj/item/clothing/under/dress/skirt/polychromic/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/polychromic, poly_colors)
 
@@ -80,7 +86,7 @@
 	icon_state = "polysuit"
 	supports_variations_flags = NONE
 
-/obj/item/clothing/under/misc/poly_shirt/ComponentInitialize()
+/obj/item/clothing/under/misc/poly_shirt/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/polychromic, list("#FFFFFF", "#333333", "#333333"))
 
@@ -94,7 +100,7 @@
 	body_parts_covered = CHEST|GROIN|ARMS
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/under/misc/polyshorts/ComponentInitialize()
+/obj/item/clothing/under/misc/polyshorts/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/polychromic, list("#333333", "#888888", "#888888"))
 
@@ -107,7 +113,7 @@
 	can_adjust = FALSE
 	supports_variations_flags = NONE
 
-/obj/item/clothing/under/misc/polyjumpsuit/ComponentInitialize()
+/obj/item/clothing/under/misc/polyjumpsuit/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/polychromic, list("#FFFFFF", "#888888", "#333333"))
 
@@ -121,7 +127,7 @@
 	can_adjust = FALSE
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/under/misc/poly_bottomless/ComponentInitialize()
+/obj/item/clothing/under/misc/poly_bottomless/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/polychromic, list("#888888", "#FF3333", "#FFFFFF"))
 
@@ -136,7 +142,7 @@
 	can_adjust = FALSE
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/under/misc/polysweater/ComponentInitialize()
+/obj/item/clothing/under/misc/polysweater/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/polychromic, list("#FFFFFF"))
 
@@ -151,7 +157,7 @@
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 	var/list/poly_colors = list("#888888", "#FFFFFF", "#88CCFF")
 
-/obj/item/clothing/under/misc/poly_tanktop/ComponentInitialize()
+/obj/item/clothing/under/misc/poly_tanktop/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/polychromic, poly_colors)
 
@@ -168,9 +174,12 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
 	icon_state = "polyshortpants"
 	supports_variations_flags = NONE
+	greyscale_config = null //Temporary measures while Polychrom is gutted.
+	greyscale_config_worn = null
+	greyscale_config_worn_digi = null
 	var/list/poly_colors = list("#FFFFFF", "#FF8888", "#FFFFFF")
 
-/obj/item/clothing/under/shorts/polychromic/ComponentInitialize()
+/obj/item/clothing/under/shorts/polychromic/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/polychromic, poly_colors)
 
@@ -591,7 +600,7 @@
 	/// What treat item spawns inside the collar?
 	var/treat_path = /obj/item/food/cookie
 
-/obj/item/clothing/neck/inferno_collar/Initialize()
+/obj/item/clothing/neck/inferno_collar/Initialize(mapload)
 	. = ..()
 	create_storage(type = /datum/storage/pockets/small/collar)
 	if(treat_path)
@@ -631,7 +640,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/custom_w.dmi'
 	icon_state = "darksheath"
 
-/obj/item/storage/belt/sabre/darksabre/Initialize()
+/obj/item/storage/belt/sabre/darksabre/Initialize(mapload)
 	. = ..()
 	atom_storage.set_holdable(list(
 		/obj/item/toy/darksabre
@@ -665,7 +674,7 @@
 	actions_types = list(/datum/action/item_action/hheart)
 	supports_variations_flags = NONE
 
-/obj/item/clothing/mask/hheart/Initialize()
+/obj/item/clothing/mask/hheart/Initialize(mapload)
 	. = ..()
 	update_icon()
 
@@ -691,7 +700,7 @@
 			index = c_color_index + 1
 		c_color_index = index
 		update_icon()
-		ooser.update_inv_wear_mask()
+		ooser.update_worn_mask()
 		ooser.update_action_buttons_icon()
 		to_chat(ooser, span_notice("You toggle the [src] to [possible_colors[c_color_index]]."))
 
@@ -954,7 +963,7 @@
 	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
 
 // Donation reward for GoldenAlpharex
-/obj/item/clothing/glasses/welding/goldengoggles
+/obj/item/clothing/glasses/welding/steampunk_goggles
 	name = "steampunk goggles"
 	desc = "This really feels like something you'd expect to see sitting on top of a certain ginger's head... They have a rather fancy brass trim around the lenses."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/glasses.dmi'
@@ -974,36 +983,36 @@
 	/// The sound played when toggling the shutters.
 	var/shutters_sound = 'sound/effects/clock_tick.ogg'
 
-/obj/item/clothing/glasses/welding/goldengoggles/Initialize()
+/obj/item/clothing/glasses/welding/steampunk_goggles/Initialize(mapload)
 	. = ..()
 	visor_toggling()
 
-/obj/item/clothing/glasses/welding/goldengoggles/examine(mob/user)
+/obj/item/clothing/glasses/welding/steampunk_goggles/examine(mob/user)
 	. = ..()
 	if(welding_upgraded)
 		. += "It has been upgraded with welding shutters, which are currently [welding_protection ? "closed" : "opened"]."
 
-/obj/item/clothing/glasses/welding/goldengoggles/item_action_slot_check(slot, mob/user)
+/obj/item/clothing/glasses/welding/steampunk_goggles/item_action_slot_check(slot, mob/user)
 	. = ..()
 	if(. && slot == ITEM_SLOT_HEAD)
 		return FALSE
 
-/obj/item/clothing/glasses/welding/goldengoggles/attack_self(mob/user)
+/obj/item/clothing/glasses/welding/steampunk_goggles/attack_self(mob/user)
 	if(user.get_item_by_slot(ITEM_SLOT_HEAD) == src)
 		to_chat(user, span_warning("You can't seem to slip those on your eyes from the top of your head!"))
 		return
 	. = ..()
 
-/obj/item/clothing/glasses/welding/goldengoggles/visor_toggling()
+/obj/item/clothing/glasses/welding/steampunk_goggles/visor_toggling()
 	. = ..()
 	slot_flags = up ? ITEM_SLOT_EYES | ITEM_SLOT_HEAD : ITEM_SLOT_EYES
 	toggle_vision_effects()
 
-/obj/item/clothing/glasses/welding/goldengoggles/weldingvisortoggle(mob/user)
+/obj/item/clothing/glasses/welding/steampunk_goggles/weldingvisortoggle(mob/user)
 	. = ..()
 	handle_sight_updating(user)
 
-/obj/item/clothing/glasses/welding/goldengoggles/attackby(obj/item/attacking_item, mob/living/user, params)
+/obj/item/clothing/glasses/welding/steampunk_goggles/attackby(obj/item/attacking_item, mob/living/user, params)
 	if(!istype(attacking_item, /obj/item/clothing/glasses/welding))
 		..()
 	if(welding_upgraded)
@@ -1015,7 +1024,7 @@
 	actions += new /datum/action/item_action/toggle_steampunk_goggles_welding_protection(src)
 
 /// Proc that handles the whole toggling the welding protection on and off, with user feedback.
-/obj/item/clothing/glasses/welding/goldengoggles/proc/toggle_shutters(mob/user)
+/obj/item/clothing/glasses/welding/steampunk_goggles/proc/toggle_shutters(mob/user)
 	if(!can_use(user) || !user)
 		return FALSE
 	if(!toggle_welding_protection(user))
@@ -1030,7 +1039,7 @@
 	return TRUE
 
 /// This is the proc that handles toggling the welding protection, while also making sure to update the sight of a mob wearing it.
-/obj/item/clothing/glasses/welding/goldengoggles/proc/toggle_welding_protection(mob/user)
+/obj/item/clothing/glasses/welding/steampunk_goggles/proc/toggle_welding_protection(mob/user)
 	if(!welding_upgraded)
 		return FALSE
 	welding_protection = !welding_protection
@@ -1042,7 +1051,7 @@
 	return TRUE
 
 /// Proc handling changing the flash protection and the tint of the goggles.
-/obj/item/clothing/glasses/welding/goldengoggles/proc/toggle_vision_effects()
+/obj/item/clothing/glasses/welding/steampunk_goggles/proc/toggle_vision_effects()
 	if(welding_protection)
 		if(visor_vars_to_toggle & VISOR_FLASHPROTECT)
 			flash_protect = up ? FLASH_PROTECTION_NONE : FLASH_PROTECTION_WELDER
@@ -1051,7 +1060,7 @@
 	tint = flash_protect
 
 /// Proc handling to update the sight of the user, while forcing an update_tint() call every time, due to how the welding protection toggle works.
-/obj/item/clothing/glasses/welding/goldengoggles/proc/handle_sight_updating(mob/user)
+/obj/item/clothing/glasses/welding/steampunk_goggles/proc/handle_sight_updating(mob/user)
 	if(user && (user.get_item_by_slot(ITEM_SLOT_HEAD) == src || user.get_item_by_slot(ITEM_SLOT_EYES) == src))
 		user.update_sight()
 		if(iscarbon(user))
@@ -1059,7 +1068,7 @@
 			carbon_user.update_tint()
 			carbon_user.head_update(src, forced = TRUE)
 
-/obj/item/clothing/glasses/welding/goldengoggles/ui_action_click(mob/user, actiontype, is_welding_toggle = FALSE)
+/obj/item/clothing/glasses/welding/steampunk_goggles/ui_action_click(mob/user, actiontype, is_welding_toggle = FALSE)
 	if(!is_welding_toggle)
 		return ..()
 	else
@@ -1075,10 +1084,10 @@
 		return FALSE
 	if(SEND_SIGNAL(src, COMSIG_ACTION_TRIGGER, src) & COMPONENT_ACTION_BLOCK_TRIGGER)
 		return FALSE
-	if(!target || !istype(target, /obj/item/clothing/glasses/welding/goldengoggles))
+	if(!target || !istype(target, /obj/item/clothing/glasses/welding/steampunk_goggles))
 		return FALSE
 
-	var/obj/item/clothing/glasses/welding/goldengoggles/goggles = target
+	var/obj/item/clothing/glasses/welding/steampunk_goggles/goggles = target
 	goggles.ui_action_click(owner, src, is_welding_toggle = TRUE)
 	return TRUE
 
@@ -1338,6 +1347,15 @@
     worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/custom_w.dmi'
     icon_state = "greenbadge"
 
+// Donation reward for Dudewithatude
+/obj/item/clothing/suit/toggle/rainbowcoat
+	name = "rainbow coat"
+	desc = "A wonderfully brilliant coat that displays the color of the rainbow!"
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
+	icon_state = "rainbowcoat"
+	base_icon_state = "rainbowcoat"
+
 // Donation reward for M97screwsyourparents
 /obj/item/clothing/head/recruiter_cap
 	name = "recruiter cap"
@@ -1403,3 +1421,15 @@
 /obj/item/clothing/accessory/hypno_watch/examine()
 	. = ..()
 	. += span_boldwarning("Who knows what it could be used for?")
+
+// Donation reward for BoisterousBeebz
+
+/obj/item/clothing/under/bubbly_clown/skirt
+	name = "bubbly clown dress"
+	desc = "A bright and cheerful clown dress, honk!"
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
+	icon_state = "bubbly_clown_dress"
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
+	body_parts_covered = CHEST|GROIN|ARMS
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON

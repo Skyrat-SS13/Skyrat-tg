@@ -93,7 +93,7 @@
 // Paper instructions for shibari kit
 
 /obj/item/paper/shibari_kit_instructions
-	info = "Hello! Congratulations on your purchase of the shibari kit by LustWish! Some newbies may get confused by our ropes, so we prepared a small instructions for you! First of all, you have to have a wrench to construct the stand itself. Secondly, you can use screwdrivers to change the color of your shibari stand. Just replace the plastic fittings! Thirdly, if you want to tie somebody to a bondage stand you need to fully tie their body, on both groin and chest!. To do that you need to use rope on body and then on groin of character, then you can just buckle them to the stand like any chair. Don't forget to have some ropes on your hand to actually tie them to the stand, as there's no ropes included with it! And that's it!"
+	default_raw_text = "Hello! Congratulations on your purchase of the shibari kit by LustWish! Some newbies may get confused by our ropes, so we prepared a small instructions for you! First of all, you have to have a wrench to construct the stand itself. Secondly, you can use screwdrivers to change the color of your shibari stand. Just replace the plastic fittings! Thirdly, if you want to tie somebody to a bondage stand you need to fully tie their body, on both groin and chest!. To do that you need to use rope on body and then on groin of character, then you can just buckle them to the stand like any chair. Don't forget to have some ropes on your hand to actually tie them to the stand, as there's no ropes included with it! And that's it!"
 
 /*
 *	This code is supposed to be placed in "code/modules/mob/living/carbon/human/inventory.dm"
@@ -438,40 +438,6 @@
 				return TRUE
 	return FALSE
 
-/*
-*	This code needed for neckleash
-*/
-
-/datum/component/redirect
-	dupe_mode = COMPONENT_DUPE_ALLOWED
-	var/list/signals
-	var/datum/callback/turfchangeCB
-
-/datum/component/redirect/Initialize(list/_signals, flags = NONE)
-	//It's not our job to verify the right signals are registered here, just do it.
-	if(!LAZYLEN(_signals))
-		return COMPONENT_INCOMPATIBLE
-	if(flags & REDIRECT_TRANSFER_WITH_TURF && isturf(parent))
-		// If they also want to listen to the turf change then we need to set it up so both callbacks run
-		if(_signals[COMSIG_TURF_CHANGE])
-			turfchangeCB = _signals[COMSIG_TURF_CHANGE]
-			if(!istype(turfchangeCB))
-				. = COMPONENT_INCOMPATIBLE
-				CRASH("Redirect components must be given instanced callbacks, not proc paths.")
-		_signals[COMSIG_TURF_CHANGE] = CALLBACK(src, .proc/turf_change)
-
-	signals = _signals
-
-/datum/component/redirect/RegisterWithParent()
-	for(var/signal in signals)
-		RegisterSignal(parent, signal, signals[signal])
-
-/datum/component/redirect/UnregisterFromParent()
-	UnregisterSignal(parent, signals)
-
-/datum/component/redirect/proc/turf_change(datum/source, path, new_baseturfs, flags, list/transfers)
-	transfers += src
-	return turfchangeCB?.InvokeAsync(arglist(args))
 
 /*
 *	This code needed for changing character's gender by chems
@@ -833,14 +799,14 @@
 
 /*
 // Shoes update extention for supporting correct removing shoe in sleepbag
-/mob/living/carbon/human/update_inv_shoes()
+/mob/living/carbon/human/update_worn_shoes()
 
 	if(istype(src.wear_suit, /obj/item/clothing/suit/straight_jacket/kinky_sleepbag))
 		remove_overlay(SHOES_LAYER)
 
 		if(dna.species.mutant_bodyparts["taur"])
 			var/datum/sprite_accessory/taur/taur_accessory = GLOB.sprite_accessories["taur"][dna.species.mutant_bodyparts["taur"][MUTANT_INDEX_NAME]]
-			if(taur_accessory.hide_legs)
+			if(taur_accessory.flags_for_organ & SPRITE_ACCESSORY_HIDE_SHOES)
 				return
 
 		if(num_legs<2)

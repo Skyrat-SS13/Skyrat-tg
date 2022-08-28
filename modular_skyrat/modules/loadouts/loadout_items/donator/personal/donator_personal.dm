@@ -98,7 +98,7 @@
 
 /datum/loadout_item/head/goldengoggles
 	name = "Steampunk Goggles"
-	item_path = /obj/item/clothing/glasses/welding/goldengoggles
+	item_path = /obj/item/clothing/glasses/welding/steampunk_goggles
 	ckeywhitelist = list("goldenalpharex")
 
 /datum/loadout_item/head/bio_jax
@@ -445,6 +445,15 @@
     name = "Dark and Brooding Lizard Plushie"
     item_path = /obj/item/toy/plush/skyrat/plushie_winrow
 
+/datum/loadout_item/toys/plushie_star
+    name = "Star Angel Plushie"
+    item_path = /obj/item/toy/plush/skyrat/plushie_star
+
+/datum/loadout_item/suit/rainbowcoat
+	name = "Rainbow Coat"
+	item_path = /obj/item/clothing/suit/toggle/rainbowcoat
+	ckeywhitelist = list("dudewithatude")
+
 /datum/loadout_item/head/recruiter_cap
 	name = "Recruiter's Cap"
 	item_path = /obj/item/clothing/head/recruiter_cap
@@ -487,3 +496,9 @@
 	donator_only = TRUE
 
 //Chunko Fops were donated by SlippyJoe, who requested they are usable by everyone
+
+/datum/loadout_item/under/jumpsuit/bubbly_clown
+	name = "Bubbly Clown Dress"
+	item_path = /obj/item/clothing/under/bubbly_clown/skirt
+	restricted_roles = list(JOB_CLOWN)
+	ckeywhitelist = list("boisterousbeebz", "aether217")
