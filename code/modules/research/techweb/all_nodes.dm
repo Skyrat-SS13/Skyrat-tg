@@ -20,12 +20,9 @@
 		"c-reader",
 		"circuit_imprinter",
 		"circuit_imprinter_offstation",
-<<<<<<< HEAD
-=======
 		"coffeemaker",
 		"coffeepot",
 		"coffee_cartridge",
->>>>>>> 540afdc04b5 (Coffeemaker Fixes (#69347))
 		"conveyor_belt",
 		"conveyor_switch",
 		"design_disk",
@@ -715,6 +712,7 @@
 	design_ids = list(
 		"bluespacebeaker",
 		"bluespacesyringe",
+		"bluespace_coffeepot",
 		"bs_rped",
 		"minerbag_holding",
 		"ore_silo",

@@ -417,7 +417,7 @@
 		return
 	if(default_deconstruction_crowbar(I))
 		return
-	if(istype(I, /obj/item/reagent_containers) && !(I.item_flags & ABSTRACT) && I.is_open_container())
+	if(is_reagent_container(I) && !(I.item_flags & ABSTRACT) && I.is_open_container())
 		var/obj/item/reagent_containers/B = I
 		//SKYRAT EDIT BEGIN - CHEMISTRY QOL
 		if(customTransferAmount)
