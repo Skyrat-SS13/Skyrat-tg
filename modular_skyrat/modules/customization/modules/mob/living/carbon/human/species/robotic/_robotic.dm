@@ -36,7 +36,6 @@
 	mutantheart = /obj/item/organ/internal/heart/robot_ipc
 	mutantliver = /obj/item/organ/internal/liver/robot_ipc
 	exotic_blood = /datum/reagent/fuel/oil
-	learnable_languages = list(/datum/language/common, /datum/language/machine)
 
 /datum/species/robotic/spec_life(mob/living/carbon/human/H)
 	if(H.stat == SOFT_CRIT || H.stat == HARD_CRIT)

@@ -1,4 +1,5 @@
 /obj/item/clothing/suit/armor
+	icon = 'icons/obj/clothing/suits/armor.dmi'
 	worn_icon = 'icons/mob/clothing/suits/armor.dmi'
 	allowed = null
 	body_parts_covered = CHEST
@@ -90,13 +91,13 @@
 	uses_advanced_reskins = TRUE
 	unique_reskin = list(
 		"Greatcoat" = list(
-			RESKIN_ICON = 'icons/obj/clothing/suits.dmi',
+			RESKIN_ICON = 'icons/obj/clothing/suits/armor.dmi',
 			RESKIN_ICON_STATE = "hos",
 			RESKIN_WORN_ICON = 'icons/mob/clothing/suits/armor.dmi',
 			RESKIN_WORN_ICON_STATE = "hos"
 		),
 		"Trenchcoat" = list(
-			RESKIN_ICON = 'icons/obj/clothing/suits.dmi',
+			RESKIN_ICON = 'icons/obj/clothing/suits/armor.dmi',
 			RESKIN_ICON_STATE = "hostrench",
 			RESKIN_WORN_ICON = 'icons/mob/clothing/suits/armor.dmi',
 			RESKIN_WORN_ICON_STATE = "hostrench"
@@ -158,7 +159,7 @@
 	uses_advanced_reskins = TRUE
 	unique_reskin = list(
 		"Basic Warden Armor" = list(
-			RESKIN_ICON = 'icons/obj/clothing/suits.dmi',
+			RESKIN_ICON = 'icons/obj/clothing/suits/armor.dmi',
 			RESKIN_ICON_STATE = "warden_alt",
 			RESKIN_WORN_ICON = 'icons/mob/clothing/suits/armor.dmi',
 			RESKIN_WORN_ICON_STATE = "warden_alt"

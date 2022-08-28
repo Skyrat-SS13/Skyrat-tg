@@ -92,7 +92,7 @@
 		O.play_tool_sound(src)
 		deconstruct()
 		return 1
-	if(istype(O, /obj/item/reagent_containers)) //Refilling bottles with oil
+	if(is_reagent_container(O)) //Refilling bottles with oil
 		var/obj/item/reagent_containers/RG = O
 		if(RG.is_refillable())
 			if(!RG.reagents.holder_full())
@@ -152,7 +152,7 @@
 			new /obj/item/hemostat(src)
 
 		if(6)
-			new /obj/item/reagent_containers/glass/beaker(src)
+			new /obj/item/reagent_containers/cup/beaker(src)
 			new /obj/item/clothing/glasses/science(src)
 		if(7)
 			new /obj/item/clothing/glasses/sunglasses(src)
