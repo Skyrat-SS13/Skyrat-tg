@@ -1,8 +1,9 @@
 // Tenhauser Gate Custom Map Areas//
 
-/area/station/commons/arcade
-	name = "\improper Arcade"
-	icon_state = "lounge"
+/area/station/common/arcade
+	mood_bonus = 3
+	mood_message = "I feel the need to drink a verification can to continue"
+	mood_trait = TRAIT_GAMER
 	sound_environment = SOUND_AREA_SMALL_SOFTFLOOR
 
 /area/station/service/chapel/asteroid/monastery
