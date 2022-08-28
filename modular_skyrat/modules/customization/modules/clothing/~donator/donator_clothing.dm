@@ -1424,8 +1424,8 @@
 
 // Donation reward for BoisterousBeebz
 
-/obj/item/clothing/under/bubblyclown/skirt
-	name = "Bubbly Clown Dress"
+/obj/item/clothing/under/bubbly_clown/skirt
+	name = "bubbly clown dress"
 	desc = "A bright and cheerful clown dress, honk!"
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
 	icon_state = "bubbly_clown_dress"
