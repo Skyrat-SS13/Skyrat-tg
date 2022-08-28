@@ -35,7 +35,7 @@
 		/datum/language/terrum,
 		/datum/language/vox, //SKYRAT EDIT - customization - extra languages
 		/datum/language/nekomimetic,
-		/datum/language/arabic,  //SKYRAT EDIT - customization - extra languages
+		/datum/language/xerxian,  //SKYRAT EDIT - customization - extra languages
 		/datum/language/selenian,  //SKYRAT EDIT - customization - extra languages
 		/datum/language/panslavic,  //SKYRAT EDIT - customization - extra languages
 		/datum/language/spacer,  //SKYRAT EDIT - customization - extra languages
