@@ -38,7 +38,7 @@
 	if(CONFIG_GET(flag/disable_lewd_items))
 		return INITIALIZE_HINT_QDEL
 
-/obj/item/reagent_containers/glass/lewd_filter/Initialize(mapload)
+/obj/item/reagent_containers/cup/lewd_filter/Initialize(mapload)
 	. = ..()
 	if(CONFIG_GET(flag/disable_lewd_items))
 		return INITIALIZE_HINT_QDEL
