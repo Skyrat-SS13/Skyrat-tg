@@ -1,6 +1,6 @@
 /datum/language/selenian
 	name = "Selenian"
-	desc = "A bastardization of Old World Latin. The language is primarily spoken by the inhabitants of Luna."
+	desc = "A bastardization of Old World Latin, with traces of several other prominent Old Earth languages, mostly those of the powerful Dynasties and corporate forerunners who first reached the stars. The language is primarily spoken by the inhabitants of Luna, though as Lunar progress boomed Selenian spread fairly far."
 	key = "S"
 	flags = TONGUELESS_SPEECH
 	space_chance = 60
