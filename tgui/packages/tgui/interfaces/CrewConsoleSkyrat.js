@@ -1,18 +1,25 @@
 import { sortBy } from 'common/collections';
 import { useBackend } from '../backend';
-import { Box, Button, ColorBox, Section, Table } from '../components';
+import { Box, Button, Section, Table, Icon } from '../components';
 import { COLORS } from '../constants';
 import { Window } from '../layouts';
 
 const HEALTH_COLOR_BY_LEVEL = [
   '#17d568',
-  '#2ecc71',
+  '#c4cf2d',
   '#e67e22',
   '#ed5100',
   '#e74c3c',
-  '#ed2814',
+  '#801308',
 ];
-
+const HEALTH_ICON_BY_LEVEL = [
+  'heart',
+  'heart',
+  'heart',
+  'heart',
+  'heartbeat',
+  'skull',
+];
 const jobIsHead = (jobId) => jobId % 10 === 0;
 
 const jobToColor = (jobId) => {
@@ -34,16 +41,20 @@ const jobToColor = (jobId) => {
   if (jobId >= 50 && jobId < 60) {
     return COLORS.department.cargo;
   }
-  if (jobId >= 200 && jobId < 230) {
+  if (jobId >= 60 && jobId < 80) {
+    return COLORS.department.service;
+  }
+  if (jobId >= 200 && jobId < 240) {
     return COLORS.department.centcom;
   }
   return COLORS.department.other;
 };
 
-const healthToColor = (oxy, tox, burn, brute) => {
+const healthToAttribute = (oxy, tox, burn, brute, attributeList) => {
   const healthSum = oxy + tox + burn + brute;
-  const level = Math.min(Math.max(Math.ceil(healthSum / 25), 0), 5);
-  return HEALTH_COLOR_BY_LEVEL[level];
+  const level = Math.min(Math.max(Math.ceil(healthSum / 50), 0), 5);
+  // 200 Default Health, Sum Divided by 50, 6 Health States
+  return attributeList[level];
 };
 
 const HealthStat = (props) => {
@@ -55,7 +66,7 @@ const HealthStat = (props) => {
   );
 };
 
-export const CrewConsole = () => {
+export const CrewConsoleSkyrat = () => {
   return (
     <Window title="Crew Monitor" width={600} height={600}>
       <Window.Content scrollable>
@@ -71,19 +82,20 @@ const CrewTable = (props, context) => {
   const { act, data } = useBackend(context);
   const sensors = sortBy((s) => s.ijob)(data.sensors ?? []);
   return (
-    <Table>
+    <Table cellpadding="3">
       <Table.Row>
-        <Table.Cell bold>Name</Table.Cell>
-        <Table.Cell bold collapsing />
+        <Table.Cell bold colspan="2">
+          Name
+        </Table.Cell>
+        <Table.Cell bold collapsing textAlign="center">
+          Status
+        </Table.Cell>
         <Table.Cell bold collapsing textAlign="center">
           Vitals
         </Table.Cell>
-        <Table.Cell bold>Position</Table.Cell>
-        {!!data.link_allowed && (
-          <Table.Cell bold collapsing>
-            Tracking
-          </Table.Cell>
-        )}
+        <Table.Cell bold width="180px" collapsing textAlign="center">
+          Position
+        </Table.Cell>
       </Table.Row>
       {sensors.map((sensor) => (
         <CrewTableEntry sensor_data={sensor} key={sensor.ref} />
@@ -100,6 +112,7 @@ const CrewTableEntry = (props, context) => {
     name,
     assignment,
     ijob,
+    is_robot,
     life_status,
     oxydam,
     toxdam,
@@ -116,10 +129,31 @@ const CrewTableEntry = (props, context) => {
         {assignment !== undefined ? ` (${assignment})` : ''}
       </Table.Cell>
       <Table.Cell collapsing textAlign="center">
-        {life_status ? (
-          <ColorBox color={healthToColor(oxydam, toxdam, burndam, brutedam)} />
+        {is_robot ? <Icon name="wrench" color="#B7410E" size={1} /> : ''}
+      </Table.Cell>
+      <Table.Cell collapsing textAlign="center">
+        {oxydam !== undefined && life_status ? (
+          <Icon
+            name={healthToAttribute(
+              oxydam,
+              toxdam,
+              burndam,
+              brutedam,
+              HEALTH_ICON_BY_LEVEL
+            )}
+            color={healthToAttribute(
+              oxydam,
+              toxdam,
+              burndam,
+              brutedam,
+              HEALTH_COLOR_BY_LEVEL
+            )}
+            size={1}
+          />
+        ) : life_status ? (
+          <Icon name="heart" color="#17d568" size={1} />
         ) : (
-          <ColorBox color={'#ed2814'} />
+          <Icon name="skull" color="#801308" size={1} />
         )}
       </Table.Cell>
       <Table.Cell collapsing textAlign="center">
@@ -139,7 +173,13 @@ const CrewTableEntry = (props, context) => {
           'Dead'
         )}
       </Table.Cell>
-      <Table.Cell>{area !== undefined ? area : 'N/A'}</Table.Cell>
+      <Table.Cell>
+        {area !== undefined ? (
+          area
+        ) : (
+          <Icon name="question" color="#ffffff" size={1} />
+        )}
+      </Table.Cell>
       {!!link_allowed && (
         <Table.Cell collapsing>
           <Button
