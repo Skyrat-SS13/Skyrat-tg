@@ -1,28 +1,28 @@
 // Ghouls!
 /obj/item/bodypart/head/mutant/ghoul
-	icon_greyscale = 'modular_skyrat/master_files/icons/mob/species/ghoul_bodyparts.dmi'
+	icon_greyscale = BODYPART_ICON_GHOUL
 	is_dimorphic = FALSE
 	limb_id = SPECIES_GHOUL
 
 /obj/item/bodypart/chest/mutant/ghoul
-	icon_greyscale = 'modular_skyrat/master_files/icons/mob/species/ghoul_bodyparts.dmi'
+	icon_greyscale = BODYPART_ICON_GHOUL
 	limb_id = SPECIES_GHOUL
 	is_dimorphic = FALSE
 
 /obj/item/bodypart/l_arm/mutant/ghoul
-	icon_greyscale = 'modular_skyrat/master_files/icons/mob/species/ghoul_bodyparts.dmi'
+	icon_greyscale = BODYPART_ICON_GHOUL
 	limb_id = SPECIES_GHOUL
 
 /obj/item/bodypart/r_arm/mutant/ghoul
-	icon_greyscale = 'modular_skyrat/master_files/icons/mob/species/ghoul_bodyparts.dmi'
+	icon_greyscale = BODYPART_ICON_GHOUL
 	limb_id = SPECIES_GHOUL
 
 /obj/item/bodypart/l_leg/mutant/ghoul
-	icon_greyscale = 'modular_skyrat/master_files/icons/mob/species/ghoul_bodyparts.dmi'
+	icon_greyscale = BODYPART_ICON_GHOUL
 	limb_id = SPECIES_GHOUL
 
 /obj/item/bodypart/r_leg/mutant/ghoul
-	icon_greyscale = 'modular_skyrat/master_files/icons/mob/species/ghoul_bodyparts.dmi'
+	icon_greyscale = BODYPART_ICON_GHOUL
 	limb_id = SPECIES_GHOUL
 
 // LIMBS
