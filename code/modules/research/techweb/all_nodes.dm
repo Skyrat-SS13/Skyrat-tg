@@ -20,6 +20,8 @@
 		"c-reader",
 		"circuit_imprinter",
 		"circuit_imprinter_offstation",
+		"coffeepot",
+		"coffee_cartridge",
 		"conveyor_belt",
 		"conveyor_switch",
 		"design_disk",
@@ -709,6 +711,7 @@
 	design_ids = list(
 		"bluespacebeaker",
 		"bluespacesyringe",
+		"bluespace_coffeepot",
 		"bs_rped",
 		"minerbag_holding",
 		"ore_silo",
