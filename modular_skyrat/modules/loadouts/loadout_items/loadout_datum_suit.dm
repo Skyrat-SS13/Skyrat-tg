@@ -257,7 +257,7 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 
 /datum/loadout_item/suit/ianshirt
 	name = "Ian Shirt"
-	item_path = /obj/item/clothing/suit/ianshirt
+	item_path = /obj/item/clothing/suit/costume/ianshirt
 
 /datum/loadout_item/suit/wornshirt
 	name = "Worn Shirt"

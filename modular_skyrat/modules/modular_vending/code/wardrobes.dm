@@ -53,7 +53,7 @@
 		/obj/item/clothing/under/rank/rnd/roboticist/skyrat/sleek = 2,
 		/obj/item/tank/internals/anesthetic = 2,
 		/obj/item/clothing/mask/breath = 2,
-		/obj/item/reagent_containers/glass/bottle/morphine = 2,
+		/obj/item/reagent_containers/cup/bottle/morphine = 2,
 		/obj/item/reagent_containers/syringe = 2,
 	)
 

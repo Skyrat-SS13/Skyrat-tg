@@ -1421,3 +1421,15 @@
 /obj/item/clothing/accessory/hypno_watch/examine()
 	. = ..()
 	. += span_boldwarning("Who knows what it could be used for?")
+
+// Donation reward for BoisterousBeebz
+
+/obj/item/clothing/under/bubbly_clown/skirt
+	name = "bubbly clown dress"
+	desc = "A bright and cheerful clown dress, honk!"
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
+	icon_state = "bubbly_clown_dress"
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
+	body_parts_covered = CHEST|GROIN|ARMS
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON

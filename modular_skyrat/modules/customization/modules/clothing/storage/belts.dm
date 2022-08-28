@@ -154,12 +154,12 @@
 	atom_storage.set_holdable(list(
 		/obj/item/dnainjector,
 		/obj/item/reagent_containers/dropper,
-		/obj/item/reagent_containers/glass/bottle,
+		/obj/item/reagent_containers/cup/bottle,
 		/obj/item/reagent_containers/pill,
 		/obj/item/reagent_containers/syringe,
 		/obj/item/reagent_containers/medigel,
 		/obj/item/storage/pill_bottle,
 		/obj/item/implanter,
-		/obj/item/reagent_containers/glass/vial,
+		/obj/item/reagent_containers/cup/vial,
 		/obj/item/weaponcell/medical
 		))

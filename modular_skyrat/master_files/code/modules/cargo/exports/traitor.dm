@@ -16,5 +16,5 @@
 	cost = CARGO_CRATE_VALUE * 15
 	unit_name = "super high value contraband"
 	export_types = list(
-		/obj/item/reagent_containers/glass/bottle/ritual_wine
+		/obj/item/reagent_containers/cup/bottle/ritual_wine
 	)

@@ -47,8 +47,7 @@
 		BODY_ZONE_R_LEG = /obj/item/bodypart/r_leg/lizard,
 	)
 
-/datum/species/unathi/get_random_features()
-	var/list/returned = MANDATORY_FEATURE_LIST
+/datum/species/unathi/randomize_features(mob/living/carbon/human/human_mob)
 	var/main_color
 	var/second_color
 	var/random = rand(1,5)
@@ -69,10 +68,9 @@
 		if(5)
 			main_color = "#33BB11"
 			second_color = "#339911"
-	returned["mcolor"] = main_color
-	returned["mcolor2"] = second_color
-	returned["mcolor3"] = second_color
-	return returned
+	human_mob.dna.features["mcolor"] = main_color
+	human_mob.dna.features["mcolor2"] = second_color
+	human_mob.dna.features["mcolor3"] = second_color
 
 /datum/species/unathi/get_species_description()
 	return placeholder_description
