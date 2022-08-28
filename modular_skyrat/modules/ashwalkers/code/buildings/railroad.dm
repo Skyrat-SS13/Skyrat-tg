@@ -70,6 +70,7 @@
 /obj/vehicle/ridden/rail_cart/examine(mob/user)
 	. = ..()
 	. += span_notice("<br><b>Alt-Click</b> to attach a rail cart to this cart.")
+	. += span_notice("<br>10 sand will allow a seed to be planted!")
 
 /obj/vehicle/ridden/rail_cart/Initialize(mapload)
 	. = ..()
@@ -111,6 +112,15 @@
 /obj/vehicle/ridden/rail_cart/attack_hand(mob/living/user, list/modifiers)
 	. = ..()
 	atom_storage?.show_contents(user)
+
+/obj/vehicle/ridden/rail_cart/attackby(obj/item/I, mob/user, params)
+	if(istype(I, /obj/item/stack/ore/glass))
+		var/obj/item/stack/ore/glass/use_item = I
+		if(GetComponent(/datum/component/simple_farm) || !use_item.use(10))
+			return ..()
+		AddComponent(/datum/component/simple_farm, TRUE, TRUE, list(0, 16))
+		return
+	return ..()
 
 /// searches the cardinal directions to add this cart to another cart's trailer
 /obj/vehicle/ridden/rail_cart/proc/attach_trailer()
