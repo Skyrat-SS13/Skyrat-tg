@@ -45,7 +45,7 @@
 							/datum/language/skrell = list(LANGUAGE_ATOM),
 							/datum/language/spacer = list(LANGUAGE_ATOM),
 							/datum/language/selenian = list(LANGUAGE_ATOM),
-							/datum/language/arabic = list(LANGUAGE_ATOM),
+							/datum/language/xerxian = list(LANGUAGE_ATOM),
 							/datum/language/vox = list(LANGUAGE_ATOM),
 							/datum/language/yangyu = list(LANGUAGE_ATOM),
 							/datum/language/schechi = list(LANGUAGE_ATOM),
