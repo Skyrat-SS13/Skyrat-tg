@@ -129,11 +129,7 @@
 	if (should_halt_effects(parent))
 		return
 
-<<<<<<< HEAD
-	var/obj/affected_limb = human_parent.get_bodypart(ran_zone())
-=======
 	var/obj/item/bodypart/affected_limb = human_parent.get_bodypart(human_parent.get_random_valid_zone())
->>>>>>> b477a620e54 (Limb targeting fix (#69405))
 	human_parent.visible_message(
 		span_boldwarning("[human_parent]'s [affected_limb.plaintext_zone] bubbles unnaturally, then bursts into blisters!"),
 		span_boldwarning("Your [affected_limb.plaintext_zone] bubbles unnaturally, then bursts into blisters!"),
