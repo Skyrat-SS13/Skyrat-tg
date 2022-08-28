@@ -565,7 +565,7 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 		if(target_type > LIVING)
 			continue
 
-		if(istype(test, /mob/living/))
+		if(isliving(test))
 			var/mob/living/alive = test
 			if(!(HAS_TRAIT(alive, TRAIT_TESLA_SHOCKIMMUNE)) && !(alive.flags_1 & SHOCKED_1) && alive.stat != DEAD && prob(20))//let's not hit all the engineers with every beam and/or segment of the arc
 				if(target_type != LIVING)
@@ -576,7 +576,7 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 		if(target_type > MACHINERY)
 			continue
 
-		if(istype(test, /obj/machinery/))
+		if(ismachinery(test))
 			var/obj/machinery/machine = test
 			if(!(machine.obj_flags & BEING_SHOCKED) && prob(40))
 				if(target_type != MACHINERY)
@@ -587,7 +587,7 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 		if(target_type > OBJECT)
 			continue
 
-		if(istype(test, /obj/))
+		if(isobj(test))
 			var/obj/object = test
 			if(!(object.obj_flags & BEING_SHOCKED))
 				if(target_type != OBJECT)

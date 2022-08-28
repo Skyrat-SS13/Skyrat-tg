@@ -79,9 +79,6 @@
 	return ..()
 
 /obj/machinery/computer/pandemic/attackby(obj/item/held_item, mob/user, params)
-<<<<<<< HEAD
-	if(!istype(held_item, /obj/item/reagent_containers) || held_item.item_flags & ABSTRACT || !held_item.is_open_container())
-=======
 	//Advanced science! Percision instruments (eg droppers and syringes) are precise enough to modify the loaded sample!
 	if(istype(held_item, /obj/item/reagent_containers/dropper) || istype(held_item, /obj/item/reagent_containers/syringe))
 		if(!beaker)
@@ -96,7 +93,6 @@
 		return TRUE
 
 	if(!is_reagent_container(held_item) || held_item.item_flags & ABSTRACT || !held_item.is_open_container())
->>>>>>> 4dd5296cb79 (Allows you to directly interact with beakers inserted in a PanD.E.M.I.C. with droppers and syringes (#69322))
 		return ..()
 	. = TRUE //no afterattack
 	if(machine_stat & (NOPOWER|BROKEN))
