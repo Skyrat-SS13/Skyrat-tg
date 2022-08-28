@@ -2,7 +2,7 @@
 	name = "Drifting Salvage"
 	weight = 1
 	/// Map templates that can appear
-	var/static/list/possible_templates = list(
+	var/list/possible_templates = list(
 		/datum/map_template/ruin/outbound_expedition/prison_shuttle = 1,
 		/datum/map_template/ruin/outbound_expedition/survival_bunker = 1,
 		/datum/map_template/ruin/outbound_expedition/clock_cult = 1,
@@ -36,6 +36,15 @@
 
 /datum/outbound_random_event/ruin/salvage/interdiction
 	name = "Drifting Interdiction"
+	possible_templates = list(
+		/datum/map_template/ruin/outbound_expedition/prison_shuttle = 1,
+		/datum/map_template/ruin/outbound_expedition/survival_bunker = 1,
+		/datum/map_template/ruin/outbound_expedition/clock_cult = 1,
+		/datum/map_template/ruin/outbound_expedition/blood_cult = 1,
+		/datum/map_template/ruin/outbound_expedition/holdout_ai = 1,
+		// Syndicate frigate removed: too dangerous
+		/datum/map_template/ruin/outbound_expedition/old_shipyard = 1,
+	)
 
 /datum/outbound_random_event/ruin/salvage/interdiction/on_select()
 	OUTBOUND_CONTROLLER

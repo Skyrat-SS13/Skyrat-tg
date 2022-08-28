@@ -66,9 +66,9 @@
 /area/awaymission/outbound_expedition/shuttle)
 "cL" = (
 /obj/structure/rack/shelf,
-/obj/item/storage/box/nri_flares,
-/obj/item/storage/box/metalfoam,
 /obj/effect/turf_decal/bot_red,
+/obj/item/storage/box/stockparts/advanced,
+/obj/item/storage/box/stockparts/advanced,
 /turf/open/floor/iron/dark/textured_large,
 /area/awaymission/outbound_expedition/shuttle)
 "da" = (
@@ -104,8 +104,9 @@
 /turf/open/floor/iron/shuttle/exploration,
 /area/awaymission/outbound_expedition/shuttle)
 "eq" = (
-/obj/effect/spawner/random/vending/snackvend,
+/obj/structure/closet/crate/bin,
 /obj/effect/turf_decal/bot_red,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
 /turf/open/floor/iron/dark/textured_large,
 /area/awaymission/outbound_expedition/shuttle)
 "eB" = (
@@ -370,9 +371,9 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/awaymission/outbound_expedition/shuttle)
 "nY" = (
-/obj/machinery/light/cold/directional/north,
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
-/turf/open/floor/iron/shuttle/cargo,
+/obj/effect/spawner/random/vending/snackvend,
+/obj/effect/turf_decal/bot_red,
+/turf/open/floor/iron/dark/textured_large,
 /area/awaymission/outbound_expedition/shuttle)
 "of" = (
 /obj/structure/fluff/metalpole/end,
@@ -497,6 +498,7 @@
 "rV" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/shuttle/cargo,
 /area/awaymission/outbound_expedition/shuttle)
 "tp" = (
@@ -587,6 +589,25 @@
 /obj/effect/turf_decal/tile/dark/opposingcorners,
 /turf/open/floor/iron/showroomfloor,
 /area/awaymission/outbound_expedition/shuttle)
+"vb" = (
+/obj/effect/landmark/awaystart,
+/obj/effect/landmark/objective_update/elevator,
+/obj/machinery/light/warm/directional/west,
+/turf/open/floor/mineral/plastitanium,
+/area/awaymission/outbound_expedition/dock)
+"vn" = (
+/obj/structure/window/reinforced/spawner{
+	dir = 4
+	},
+/obj/machinery/vending/coffee,
+/turf/open/floor/iron/shuttle/cargo,
+/area/awaymission/outbound_expedition/shuttle)
+"vs" = (
+/obj/effect/landmark/awaystart,
+/obj/effect/landmark/objective_update/elevator,
+/obj/machinery/light/warm/directional/east,
+/turf/open/floor/mineral/plastitanium,
+/area/awaymission/outbound_expedition/dock)
 "vt" = (
 /obj/effect/turf_decal/tile/neutral/diagonal_edge,
 /obj/effect/turf_decal/tile/neutral/diagonal_centre,
@@ -601,7 +622,6 @@
 /obj/item/reagent_containers/condiment/yoghurt,
 /obj/item/reagent_containers/condiment/yoghurt,
 /obj/item/reagent_containers/condiment/mayonnaise,
-/obj/structure/closet/crate/cardboard/mothic,
 /obj/item/reagent_containers/cup/glass/bottle/navy_rum,
 /turf/open/floor/iron/dark/diagonal,
 /area/awaymission/outbound_expedition/shuttle)
@@ -620,6 +640,11 @@
 /area/awaymission/outbound_expedition/shuttle)
 "vL" = (
 /turf/closed/wall/mineral/titanium,
+/area/awaymission/outbound_expedition/shuttle)
+"wb" = (
+/obj/machinery/recharge_station,
+/obj/effect/turf_decal/bot_red,
+/turf/open/floor/iron/dark/textured_large,
 /area/awaymission/outbound_expedition/shuttle)
 "ws" = (
 /obj/effect/turf_decal/bot_red,
@@ -647,6 +672,9 @@
 "xC" = (
 /obj/effect/spawner/random/vending/colavend,
 /obj/effect/turf_decal/bot_red,
+/obj/structure/window/reinforced/spawner{
+	dir = 1
+	},
 /turf/open/floor/iron/dark/textured_large,
 /area/awaymission/outbound_expedition/shuttle)
 "xH" = (
@@ -839,11 +867,12 @@
 /area/awaymission/outbound_expedition/shuttle)
 "DX" = (
 /turf/open/space/basic,
+/turf/open/space/basic,
 /area/space/outbound_space)
 "Ea" = (
 /obj/effect/turf_decal/bot_red,
-/obj/machinery/vending/coffee,
 /obj/machinery/light/cold/no_nightlight/directional/south,
+/obj/machinery/vending/games,
 /turf/open/floor/iron/dark/textured_large,
 /area/awaymission/outbound_expedition/shuttle)
 "Ee" = (
@@ -925,6 +954,22 @@
 /obj/item/clipboard,
 /obj/item/folder/white,
 /obj/item/pen/blue,
+/obj/item/gps{
+	pixel_x = 8;
+	pixel_y = 13
+	},
+/obj/item/gps{
+	pixel_x = 10;
+	pixel_y = 5
+	},
+/obj/item/gps{
+	pixel_x = 8;
+	pixel_y = -4
+	},
+/obj/item/gps{
+	pixel_x = -7;
+	pixel_y = -6
+	},
 /turf/open/floor/iron/dark/textured_large,
 /area/awaymission/outbound_expedition/shuttle)
 "GI" = (
@@ -987,6 +1032,22 @@
 "HV" = (
 /obj/structure/reagent_dispensers/watertank,
 /obj/effect/turf_decal/bot_red,
+/turf/open/floor/iron/dark/textured_large,
+/area/awaymission/outbound_expedition/shuttle)
+"Ir" = (
+/obj/structure/closet/emcloset,
+/obj/effect/turf_decal/bot_red,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
+/turf/open/floor/iron/dark/textured_large,
+/area/awaymission/outbound_expedition/shuttle)
+"Ix" = (
+/obj/machinery/portable_atmospherics/scrubber,
+/obj/effect/turf_decal/bot_red,
+/turf/open/floor/iron/dark/textured_large,
+/area/awaymission/outbound_expedition/shuttle)
+"Ji" = (
+/obj/effect/turf_decal/bot_red,
+/obj/machinery/suit_storage_unit/standard_unit,
 /turf/open/floor/iron/dark/textured_large,
 /area/awaymission/outbound_expedition/shuttle)
 "Jm" = (
@@ -1486,13 +1547,6 @@
 /obj/effect/landmark/objective_update/team_addition,
 /turf/open/floor/iron/dark,
 /area/awaymission/outbound_expedition/dock)
-"ZL" = (
-/obj/machinery/recharge_station,
-/obj/effect/turf_decal/bot_red,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/iron/dark/textured_large,
-/area/awaymission/outbound_expedition/shuttle)
 
 (1,1,1) = {"
 aa
@@ -32704,7 +32758,7 @@ be
 be
 qB
 hd
-ZL
+CH
 be
 pz
 be
@@ -33733,7 +33787,7 @@ hd
 hd
 be
 ws
-hd
+wb
 CH
 be
 HV
@@ -35021,7 +35075,7 @@ be
 be
 be
 be
-dj
+Ir
 CH
 be
 yv
@@ -35278,7 +35332,7 @@ wY
 BI
 DC
 be
-be
+eq
 CH
 be
 yv
@@ -35535,7 +35589,7 @@ uZ
 uZ
 uZ
 be
-nY
+zk
 CH
 be
 be
@@ -35792,7 +35846,7 @@ xo
 BX
 uZ
 be
-hd
+wb
 CH
 be
 Nd
@@ -35814,7 +35868,7 @@ Vq
 Zz
 PE
 gw
-ou
+vb
 ou
 ou
 OB
@@ -36301,12 +36355,12 @@ ab
 be
 hc
 lq
-hd
-eq
+vn
+nY
 CH
 DN
 be
-hd
+Ix
 hd
 be
 Nm
@@ -36563,7 +36617,7 @@ xC
 CH
 DV
 be
-lq
+be
 hd
 be
 be
@@ -36585,7 +36639,7 @@ Vq
 Zz
 PE
 gw
-ou
+vs
 ou
 ou
 OB
@@ -36820,7 +36874,7 @@ hd
 CH
 Ea
 be
-be
+Ji
 hd
 be
 yv
@@ -37077,7 +37131,7 @@ be
 CH
 Ee
 be
-hd
+Ji
 hd
 be
 yv

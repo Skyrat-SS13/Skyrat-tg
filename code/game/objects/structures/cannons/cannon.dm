@@ -117,9 +117,10 @@
 	anchored = FALSE
 	anchorable_cannon = FALSE
 	var/fires_before_deconstruction = 5
+	var/explode_chance = 10 //SKYRAT ADDITION
 
 /obj/structure/cannon/trash/fire()
-	var/explode_chance = 10
+	//var/explode_chance = 10 //SKYRAT REMOVAL
 	var/used_alt_fuel = reagents.has_reagent(/datum/reagent/fuel, charge_size)
 	if(used_alt_fuel)
 		explode_chance += BAD_FUEL_EXPLODE_PROBABILTY

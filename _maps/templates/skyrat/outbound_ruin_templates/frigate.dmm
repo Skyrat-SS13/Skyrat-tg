@@ -1,11 +1,4 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"aO" = (
-/obj/structure/cable,
-/obj/machinery/door/airlock/external{
-	name = "Nacelle Airlock"
-	},
-/turf/open/floor/plating,
-/area/awaymission/outbound_expedition/ruin/syndicate_frigate)
 "bl" = (
 /obj/structure/chair/comfy/shuttle{
 	dir = 4
@@ -148,9 +141,10 @@
 /mob/living/simple_animal/hostile/syndicate/melee/space/stormtrooper{
 	desc = "Running at one's enemies high on cocaine with a knife and combat armor isn't too rare in a place like spinward sector.";
 	dodge_prob = 100;
-	move_to_delay = 0;
+	health = 150;
+	move_to_delay = 0.5;
 	name = "Coked-Up Syndicate Stormtrooper";
-	rapid_melee = 4
+	rapid_melee = 3
 	},
 /obj/structure/sign/poster/contraband/masked_men{
 	pixel_y = 32
@@ -247,6 +241,13 @@
 	},
 /turf/template_noop,
 /area/template_noop)
+"mw" = (
+/obj/structure/cable,
+/obj/machinery/door/airlock/external{
+	name = "Nacelle Airlock"
+	},
+/turf/open/floor/plating,
+/area/awaymission/outbound_expedition/ruin/syndicate_frigate)
 "mz" = (
 /obj/item/melee/energy/sword/bananium{
 	pixel_x = 14
@@ -409,7 +410,7 @@
 "rH" = (
 /obj/structure/table/reinforced,
 /obj/item/paper/crumpled{
-	default_raw_text = "still working on finding a functioning firing pin for your L6, itll be in the tooling area until we can get a new one or fix the old one. -tedd";
+	info = "still working on finding a functioning firing pin for your L6, itll be in the tooling area until we can get a new one or fix the old one. -tedd";
 	pixel_x = 7
 	},
 /obj/item/reagent_containers/cup/glass/coffee{
@@ -522,7 +523,7 @@
 /area/awaymission/outbound_expedition/ruin/syndicate_frigate)
 "yp" = (
 /obj/machinery/door/airlock/external{
-	name = "Nacelle Airlock"
+	name = "nacelle airlock"
 	},
 /obj/structure/cable,
 /turf/open/floor/plating,
@@ -590,13 +591,6 @@
 /obj/machinery/door/airlock/maintenance_hatch,
 /obj/structure/cable,
 /turf/open/floor/plating,
-/area/awaymission/outbound_expedition/ruin/syndicate_frigate)
-"CE" = (
-/obj/machinery/door/airlock/external{
-	name = "Nacelle Airlock"
-	},
-/obj/structure/cable,
-/turf/open/floor/mineral/plastitanium,
 /area/awaymission/outbound_expedition/ruin/syndicate_frigate)
 "CH" = (
 /obj/structure/rack/shelf,
@@ -954,6 +948,13 @@
 	},
 /turf/open/floor/plating,
 /area/awaymission/outbound_expedition/ruin/syndicate_frigate)
+"Uy" = (
+/obj/machinery/door/airlock/external{
+	name = "Nacelle Airlock"
+	},
+/obj/structure/cable,
+/turf/open/floor/mineral/plastitanium,
+/area/awaymission/outbound_expedition/ruin/syndicate_frigate)
 "Vw" = (
 /obj/structure/fluff/tram_rail/end{
 	desc = "Front towards... friend?";
@@ -1284,7 +1285,7 @@ RD
 cm
 lF
 su
-aO
+mw
 su
 eI
 Rd
@@ -1297,7 +1298,7 @@ nF
 qu
 tu
 tu
-CE
+Uy
 su
 su
 yp
@@ -1502,7 +1503,7 @@ wQ
 RD
 gt
 tu
-aO
+mw
 dA
 su
 Rd
@@ -1514,7 +1515,7 @@ tu
 Rd
 su
 TV
-aO
+mw
 Is
 sz
 RD

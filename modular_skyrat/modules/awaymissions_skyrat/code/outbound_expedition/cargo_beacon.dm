@@ -92,6 +92,7 @@
 	. = ..()
 	var/picked_color = pick(GLOB.marker_beacon_colors)
 	set_light(light_range, light_power, GLOB.marker_beacon_colors[picked_color], TRUE)
+	AddComponent(/datum/component/gps, "Encrypted Signal")
 
 /obj/structure/closet/crate/secure/loot/outbound_cargo/spawn_loot()
 	var/selected_type = pick(loot_cats)

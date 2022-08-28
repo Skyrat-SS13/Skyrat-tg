@@ -2,6 +2,8 @@
 #define STORY_STAGE_POST_BETRAYAL 2
 #define STORY_STAGE_POST_RADAR 3
 
+#define IDEAL_PLAYER_COUNT 4
+
 /datum/away_controller/outbound_expedition
 	name = "Away Controller: Outbound Expedition"
 	ss_delay = 10 SECONDS
@@ -242,6 +244,8 @@
 
 /datum/away_controller/outbound_expedition/proc/tick_elevator_time()
 	elevator_time -= 1 SECONDS
+	if((elevator_time > 60 SECONDS) && (length(participating_mobs) >= IDEAL_PLAYER_COUNT))
+		elevator_time = 60 SECONDS
 	if(elevator_time > 1 SECONDS)
 		addtimer(CALLBACK(src, .proc/tick_elevator_time), 1 SECONDS)
 	else
@@ -319,3 +323,5 @@
 #undef STORY_STAGE_PRE_BETRAYAL
 #undef STORY_STAGE_POST_BETRAYAL
 #undef STORY_STAGE_POST_RADAR
+
+#undef IDEAL_PLAYER_COUNT

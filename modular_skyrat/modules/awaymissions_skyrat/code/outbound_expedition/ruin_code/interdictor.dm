@@ -13,6 +13,30 @@
 	OUTBOUND_CONTROLLER
 	. = ..()
 	SEND_SIGNAL(outbound_controller, COMSIG_AWAY_INTERDICTOR_DECONSTRUCTED)
+	for(var/i in 1 to rand(4, 8))
+		new/obj/effect/spawner/random/stock_parts/t4(get_turf(src))
 
 /obj/machinery/outbound_expedition/shuttle_interdictor/screwdriver_act(mob/living/user, obj/item/tool)
 	return TOOL_ACT_SIGNAL_BLOCKING
+
+/obj/effect/spawner/random/stock_parts
+	name = "stock parts spawner"
+	loot = list(
+		/obj/item/stock_parts/capacitor,
+		/obj/item/stock_parts/scanning_module,
+		/obj/item/stock_parts/cell,
+		/obj/item/stock_parts/manipulator,
+		/obj/item/stock_parts/matter_bin,
+		/obj/item/stock_parts/micro_laser,
+	)
+
+/obj/effect/spawner/random/stock_parts/t4
+	name = "t4 stock parts spawner"
+	loot = list(
+		/obj/item/stock_parts/capacitor/quadratic,
+		/obj/item/stock_parts/scanning_module/triphasic,
+		/obj/item/stock_parts/cell/bluespace,
+		/obj/item/stock_parts/manipulator/femto,
+		/obj/item/stock_parts/matter_bin/bluespace,
+		/obj/item/stock_parts/micro_laser/quadultra,
+	)

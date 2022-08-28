@@ -83,3 +83,12 @@
 	contents = list(
 		/obj/item/ammo_box/a762 = 3,
 	)
+
+
+/obj/structure/cannon/trash/raider
+	name = "\proper the prototype"
+	desc = "You suddenly wonder just how much you had to drink last night."
+	fires_before_deconstruction = INFINITY
+	can_be_unanchored = TRUE
+	anchorable_cannon = TRUE
+	explode_chance = 0
