@@ -83,7 +83,7 @@
 			RESKIN_WORN_ICON_STATE = "coneshell"
 		),
 		"Round Shell" = list(
-			RESKIN_ICON = 'icons/obj/storage.dmi',
+			RESKIN_ICON = 'icons/obj/storage/storage.dmi',
 			RESKIN_ICON_STATE = "snailshell",
 			RESKIN_WORN_ICON = 'icons/mob/clothing/back.dmi',
 			RESKIN_WORN_ICON_STATE = "snailshell"
