@@ -17,7 +17,7 @@
 	company_flag = COMPANY_BOLT
 
 /obj/item/gun/ballistic/automatic/pistol/pepperball/add_seclight_point()
-	AddComponent(/datum/component/seclite_attachable, light_overlay_icon = 'icons/obj/guns/flashlights.dmi', light_overlay = "flight")
+	AddComponent(/datum/component/seclite_attachable, light_overlay_icon = 'icons/obj/weapons/guns/flashlights.dmi', light_overlay = "flight")
 
 /obj/item/ammo_box/magazine/pepperball
 	name = "pistol magazine (pepperball)"
