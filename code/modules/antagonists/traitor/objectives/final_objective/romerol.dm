@@ -44,4 +44,3 @@
 				"style" = STYLE_SYNDICATE,
 				"spawn" = /obj/item/storage/box/syndie_kit/romerol,
 			))
-			priority_announce("Attention crew: sensors just detected an unregistered drop pod on final approach to your station. The pod appears to have decloaked and engaged thrusters after a remote activation signal likely sent from your vessel. Long-range scans suggest it may contain a highly-secured biohazardous agent. Estimated impact site: [initial(romerol_spawnarea_type.name)].", "[command_name()] High-Priority Update") //skyrat add: comm announcement on romerol call
