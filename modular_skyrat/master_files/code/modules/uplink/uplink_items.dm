@@ -467,6 +467,7 @@
 			but you never know. Contents are sorted to always be worth 50 TC."
 	item = /obj/effect/gibspawner/generic
 	cost = 20
+	/// The contents of the surplus crate will be equal to this var in TC
 	var/telecrystal_count = 50
 
 /datum/uplink_item/bundles_tc/surplus_crate/spawn_item(spawn_path, mob/user, datum/uplink_handler/uplink_handler, atom/movable/source)
