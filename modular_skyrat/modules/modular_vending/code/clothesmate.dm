@@ -33,10 +33,11 @@
 			"name" = "Under",
 			"icon" = "shirt",
 			"products" = list(
+				/obj/item/clothing/under/pants/skyrat/jeansripped = 5,
+				/obj/item/clothing/under/shorts/skyrat/shortsripped = 5,
+				/obj/item/clothing/under/pants/skyrat/yoga = 5,
 				/obj/item/clothing/under/misc/mechanic = 5,
 				/obj/item/clothing/under/misc/greyshirt = 5,
-				/obj/item/clothing/under/costume/deckers/alt = 5,
-				/obj/item/clothing/under/costume/bathrobe = 5,
 				/obj/item/clothing/under/misc/bluetracksuit = 5,
 				/obj/item/clothing/under/misc/poly_shirt = 5,
 				/obj/item/clothing/under/misc/colourable_kilt = 5,
@@ -80,8 +81,13 @@
 			"name" = "Suits & Skirts",
 			"icon" = "vest",
 			"products" = list(
-				/obj/item/clothing/under/dress/littleblack = 5,
-				/obj/item/clothing/under/dress/pinktutu = 5,
+				/obj/item/clothing/under/dress/skirt/skyrat/loneskirt = 5,
+				/obj/item/clothing/under/dress/skirt/skyrat/turtleskirt_knit = 5,
+				/obj/item/clothing/under/dress/skyrat/shortdress = 5,
+				/obj/item/clothing/under/dress/skyrat/pinktutu = 5,
+				/obj/item/clothing/under/dress/skirt/skyrat/jean = 5,
+				/obj/item/clothing/under/dress/skyrat/flower = 5,
+				/obj/item/clothing/under/dress/skyrat/strapless = 5,
 				/obj/item/clothing/suit/toggle/jacket = 5,
 				/obj/item/clothing/suit/toggle/jacket/flannel = 5,
 				/obj/item/clothing/suit/toggle/jacket/flannel/red = 5,
@@ -122,6 +128,17 @@
 				/obj/item/clothing/shoes/jackboots/knee = 5,
 			),
 		),
+
+		//Only put clothing in Special thats either Families or exteremly out-of-place
+		list(
+			"name" = "Special",
+			"icon" = "star",
+			"products" = list(
+				/obj/item/clothing/under/costume/deckers/alt = 5,
+
+				/obj/item/clothing/under/costume/bathrobe = 5,
+			)
+		)
 	)
 
 	skyrat_premium = list( //being here means you're artificially rare, congratulations
