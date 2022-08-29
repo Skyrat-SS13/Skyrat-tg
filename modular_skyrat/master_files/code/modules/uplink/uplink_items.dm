@@ -469,7 +469,7 @@
 	cost = 20
 	var/telecrystal_count = 50
 
-/datum/uplink_item/bundles_tc/surplus_crate/on_issue(mob/living/target)
+/datum/uplink_item/bundles_tc/surplus_crate/spawn_item(spawn_path, mob/user, datum/uplink_handler/uplink_handler, atom/movable/source)
 	var/list/uplink_items = list()
 	var/obj/structure/closet/crate/holder_crate = new(get_turf(target))
 	for(var/datum/uplink_item/item_path as anything in SStraitor.uplink_items_by_type)
