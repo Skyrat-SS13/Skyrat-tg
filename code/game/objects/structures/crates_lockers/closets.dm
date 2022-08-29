@@ -3,7 +3,7 @@
 /obj/structure/closet
 	name = "closet"
 	desc = "It's a basic storage unit."
-	icon = 'icons/obj/closet.dmi'
+	icon = 'icons/obj/storage/closet.dmi'
 	icon_state = "generic"
 	density = TRUE
 	drag_slowdown = 1.5 // Same as a prone mob
@@ -100,7 +100,7 @@
 
 /obj/structure/closet/update_icon()
 	. = ..()
-	if(istype(src, /obj/structure/closet/supplypod))
+	if(issupplypod(src))
 		return
 
 	layer = opened ? BELOW_OBJ_LAYER : OBJ_LAYER
