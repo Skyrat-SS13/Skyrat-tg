@@ -164,6 +164,7 @@
 /mob/living/simple_animal/hostile/venus_human_trap/Life(delta_time = SSMOBS_DT, times_fired)
 	. = ..()
 	pull_vines()
+	check_vines() //SKYRAT EDIT ADDITION: Re-nerfs vines (requires to be on vines to heal)
 
 /mob/living/simple_animal/hostile/venus_human_trap/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change = TRUE)
 	. = ..()
@@ -174,7 +175,7 @@
 	if(isliving(target))
 		var/mob/living/L = target
 		if(L.stat != DEAD)
-			adjustHealth(-maxHealth * 0.1)
+			adjustHealth(-maxHealth * 0.05) //SKYRAT EDIT: Nerfs vines (from 0.1 to 0.05-- lets see with less health)
 
 /mob/living/simple_animal/hostile/venus_human_trap/OpenFire(atom/the_target)
 	for(var/datum/beam/B in vines)
@@ -245,6 +246,13 @@
 		to_chat(src, span_boldwarning("You cannot drag living things!"))
 		return
 	return ..()
+
+/mob/living/simple_animal/hostile/venus_human_trap/proc/check_vines()
+	var/obj/structure/spacevine/find_vine = locate() in get_turf(src)
+	if(!find_vine)
+		adjustHealth(maxHealth * 0.05)
+	else
+		adjustHealth(maxHealth * -0.05)
 //SKYRAT EDIT END
 
 #undef FINAL_BUD_GROWTH_ICON
