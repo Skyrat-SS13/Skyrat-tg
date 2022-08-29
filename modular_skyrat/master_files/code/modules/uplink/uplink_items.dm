@@ -471,8 +471,9 @@
 	var/telecrystal_count = 50
 
 /datum/uplink_item/bundles_tc/surplus_crate/spawn_item(spawn_path, mob/user, datum/uplink_handler/uplink_handler, atom/movable/source)
+	telecrystal_count = initial(telecrystal_count)
 	var/list/uplink_items = list()
-	var/obj/structure/closet/crate/holder_crate = new(get_turf(target))
+	var/obj/structure/closet/crate/holder_crate = new(get_turf(user))
 	for(var/datum/uplink_item/item_path as anything in SStraitor.uplink_items_by_type)
 		var/datum/uplink_item/item = SStraitor.uplink_items_by_type[item_path]
 		if(item.purchasable_from & UPLINK_TRAITORS)
