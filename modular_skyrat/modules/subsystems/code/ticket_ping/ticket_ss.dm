@@ -7,7 +7,7 @@ SUBSYSTEM_DEF(ticket_ping)
 
 /datum/controller/subsystem/ticket_ping/fire(resumed)
 	if(!CONFIG_GET(flag/ticket_ping))
-		flags = SS_NO_FIRE
+		flags = SS_NO_FIRE | SS_NO_INIT 
 	var/valid_ahelps
 	var/valid_opfors
 	for(var/datum/admin_help/ahelp in GLOB.ahelp_tickets.active_tickets)
