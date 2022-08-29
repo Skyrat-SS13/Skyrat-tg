@@ -1,7 +1,7 @@
 /obj/item/gun/grenadelauncher
 	name = "grenade launcher"
 	desc = "A terrible, terrible thing. It's really awful!"
-	icon = 'modular_skyrat/modules/fixing_missing_icons/ballistic.dmi' //skyrat edit
+	icon = 'icons/obj/weapons/guns/ballistic.dmi'
 	icon_state = "riotgun"
 	inhand_icon_state = "riotgun"
 	w_class = WEIGHT_CLASS_BULKY

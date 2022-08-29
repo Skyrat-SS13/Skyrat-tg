@@ -9,7 +9,7 @@
 	desc = "Used to separate chemicals and distribute them in a variety of forms."
 	density = TRUE
 	layer = BELOW_OBJ_LAYER
-	icon = 'icons/obj/chemical.dmi'
+	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "mixer0"
 	base_icon_state = "mixer"
 	idle_power_usage = BASE_MACHINE_IDLE_CONSUMPTION * 0.2
@@ -111,7 +111,7 @@
 		bottle = null
 
 /obj/machinery/chem_master/update_icon_state()
-	icon_state = "[base_icon_state][beaker ? 1 : 0]"
+	icon_state = "[base_icon_state][beaker ? 1 : 0][(machine_stat & BROKEN) ? "_b" : (powered() ? null : "_nopower")]"
 	return ..()
 
 /obj/machinery/chem_master/update_overlays()
