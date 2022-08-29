@@ -161,9 +161,9 @@
 	return SHIELD_BLOCK
 
 /obj/item/claymore/dragonslayer/veryfuckingloud
-	name = "\proper <b>tempered dragonslayer</b>"
+	name = "\proper tempered dragonslayer"
 	desc = "<b><p style='color:red;'>CLANG</p></b>"
-	hitsound = 'modular_skyrat/modules/gladiator/Clang_1.ogg'
+	hitsound = 'modular_skyrat/modules/gladiator/Clang_cut.ogg'
 
 /obj/structure/closet/crate/necropolis/gladiator
 	name = "gladiator chest"
