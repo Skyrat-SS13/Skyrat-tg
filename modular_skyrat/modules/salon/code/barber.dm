@@ -58,7 +58,7 @@
 	new /obj/item/reagent_containers/spray/quantum_hair_dye(src)
 	new /obj/item/reagent_containers/spray/barbers_aid(src)
 	new /obj/item/reagent_containers/spray/cleaner(src)
-	new /obj/item/reagent_containers/glass/rag(src)
+	new /obj/item/reagent_containers/cup/rag(src)
 	new /obj/item/storage/medkit(src)
 
 /obj/effect/landmark/start/barber

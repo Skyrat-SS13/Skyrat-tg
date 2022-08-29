@@ -5,7 +5,7 @@
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = 1000, /datum/material/glass = 500, /datum/material/gold = 1000)
 	build_path = /obj/item/clothing/head/helmet/monkey_sentience
-	category = list("Equipment")
+	category = list(RND_CATEGORY_EQUIPMENT)
 	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
 
 /datum/design/plumbing_chem
@@ -15,7 +15,7 @@
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = 75000, /datum/material/glass = 10000, /datum/material/gold = 1000)
 	build_path = /obj/item/construction/plumbing
-	category = list("Tools")
+	category = list(RND_CATEGORY_TOOLS)
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 
@@ -26,7 +26,7 @@
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = 75000, /datum/material/glass = 10000, /datum/material/gold = 1000)
 	build_path = /obj/item/construction/plumbing/engineering
-	category = list("Tools")
+	category = list(RND_CATEGORY_TOOLS)
 	departmental_flags = DEPARTMENT_BITFLAG_ENGINEERING
 
 /datum/design/plumbing_sci
@@ -36,7 +36,7 @@
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = 75000, /datum/material/glass = 10000, /datum/material/gold = 1000)
 	build_path = /obj/item/construction/plumbing/research
-	category = list("Tools")
+	category = list(RND_CATEGORY_TOOLS)
 	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
 
 /datum/design/smartdartgun
@@ -46,7 +46,7 @@
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = 2000, /datum/material/glass = 10000, /datum/material/silver = 4000)
 	build_path = /obj/item/gun/syringe/smartdart
-	category = list("Weapons")
+	category = list(RND_CATEGORY_WEAPONS)
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/anesthetic_machine
@@ -56,5 +56,5 @@
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = 10000, /datum/material/plastic = 10000, /datum/material/silver = 4000)
 	build_path = /obj/item/anesthetic_machine_kit
-	category = list("Equipment")
+	category = list(RND_CATEGORY_EQUIPMENT)
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL

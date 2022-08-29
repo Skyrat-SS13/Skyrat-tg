@@ -312,7 +312,7 @@
 	build_path = /obj/item/borg/upgrade/better_clamp
 	materials = list(/datum/material/titanium = 4000, /datum/material/gold = 500, /datum/material/bluespace = 50)
 	construction_time = 12 SECONDS
-	category = list("Cyborg Upgrade Modules")
+	category = list(RND_CATEGORY_CYBORG_UPGRADE_MODULES)
 
 
 /obj/item/borg/upgrade/better_clamp
@@ -369,7 +369,7 @@
 /obj/item/borg/paperplane_crossbow
 	name = "paper plane crossbow"
 	desc = "Be careful, don't aim for the eyes- Who am I kidding, <i>definitely</i> aim for the eyes!"
-	icon = 'icons/obj/guns/energy.dmi'
+	icon = 'icons/obj/weapons/guns/energy.dmi'
 	icon_state = "crossbow"
 	/// How many planes does the crossbow currently have in its internal magazine?
 	var/planes = 4

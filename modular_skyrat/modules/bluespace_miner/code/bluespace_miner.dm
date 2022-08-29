@@ -160,7 +160,7 @@
 	desc = "Allows for the construction of circuit boards used to build a bluespace miner."
 	id = "bluespace_miner"
 	build_path = /obj/item/circuitboard/machine/bluespace_miner
-	category = list("Misc. Machinery")
+	category = list(RND_CATEGORY_MISC_MACHINERY)
 	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE | DEPARTMENT_BITFLAG_CARGO | DEPARTMENT_BITFLAG_ENGINEERING
 
 /datum/experiment/scanning/points/bluespace_miner

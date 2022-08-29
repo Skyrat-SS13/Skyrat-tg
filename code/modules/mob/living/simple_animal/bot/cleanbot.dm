@@ -99,14 +99,16 @@
 	bot_mode_flags = ~(BOT_MODE_ON | BOT_MODE_REMOTE_ENABLED)
 
 /mob/living/simple_animal/bot/cleanbot/proc/deputize(obj/item/W, mob/user)
-	if(in_range(src, user))
-		to_chat(user, span_notice("You attach \the [W] to \the [src]."))
-		user.transferItemToLoc(W, src)
+	if(in_range(src, user) && user.transferItemToLoc(W, src))
+		balloon_alert(user, "attached")
 		weapon = W
 		weapon_orig_force = weapon.force
 		if(!(bot_cover_flags & BOT_COVER_EMAGGED))
 			weapon.force = weapon.force / 2
 		add_overlay(image(icon=weapon.lefthand_file,icon_state=weapon.inhand_icon_state))
+		return TRUE
+	balloon_alert(user, "couldn't attach!")
+	return FALSE
 
 /mob/living/simple_animal/bot/cleanbot/proc/update_titles()
 	var/working_title = ""
@@ -359,20 +361,20 @@
 		target = null
 		mode = BOT_IDLE
 
-	else if(istype(A, /obj/item) || istype(A, /obj/effect/decal/remains))
+	else if(isitem(A) || istype(A, /obj/effect/decal/remains))
 		visible_message(span_danger("[src] sprays hydrofluoric acid at [A]!"))
 		playsound(src, 'sound/effects/spray2.ogg', 50, TRUE, -6)
 		A.acid_act(75, 10)
 		target = null
-	else if(istype(A, /mob/living/basic/cockroach) || istype(A, /mob/living/simple_animal/mouse))
-		var/mob/living/living_target = target
+	else if(istype(A, /mob/living/basic/cockroach) || ismouse(A))
+		var/mob/living/living_target = A
 		if(!living_target.stat)
 			visible_message(span_danger("[src] smashes [living_target] with its mop!"))
 			living_target.death()
-		living_target = null
+		target = null
 
 	else if(bot_cover_flags & BOT_COVER_EMAGGED) //Emag functions
-		if(istype(A, /mob/living/carbon))
+		if(iscarbon(A))
 			var/mob/living/carbon/victim = A
 			if(victim.stat == DEAD)//cleanbots always finish the job
 				return
@@ -408,7 +410,7 @@
 
 /mob/living/simple_animal/bot/cleanbot/explode()
 	var/atom/Tsec = drop_location()
-	new /obj/item/reagent_containers/glass/bucket(Tsec)
+	new /obj/item/reagent_containers/cup/bucket(Tsec)
 	new /obj/item/assembly/prox_sensor(Tsec)
 	return ..()
 

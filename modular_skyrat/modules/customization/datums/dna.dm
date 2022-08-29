@@ -64,7 +64,7 @@ GLOBAL_LIST_EMPTY(total_uf_len_by_block)
 	unique_identity = generate_unique_identity()
 	if(!skip_index) //I hate this
 		generate_dna_blocks()
-	features = species.get_random_features()
+	features = random_features()
 	mutant_bodyparts = species.get_random_mutant_bodyparts(features)
 	unique_features = generate_unique_features()
 
@@ -198,7 +198,7 @@ GLOBAL_LIST_EMPTY(total_uf_len_by_block)
 			new_race = mrace
 		else
 			return
-		deathsound = new_race.deathsound
+		death_sound = new_race.death_sound
 		dna.species.on_species_loss(src, new_race, pref_load)
 		var/datum/species/old_species = dna.species
 		dna.species = new_race
@@ -288,9 +288,9 @@ GLOBAL_LIST_EMPTY(total_uf_len_by_block)
 		dna.features["skin_color"] = sanitize_hexcolor(get_uni_identity_block(features, DNA_SKIN_COLOR_BLOCK))
 
 	if(icon_update)
-		dna.species.handle_body(src) // We want 'update_body_parts()' to be called only if mutcolor_update is TRUE, so no 'update_body()' here.
-		update_hair()
+		dna.species.handle_body(src) // We want 'update_body_parts(update_limb_data = TRUE)' to be called only if mutcolor_update is TRUE, so no 'update_body()' here.
+		update_body_parts() //We can call this because it doesnt refresh limb data, and it handles hair and such.
 		if(mutcolor_update)
-			update_body_parts()
+			update_body_parts(update_limb_data = TRUE)
 		if(mutations_overlay_update)
 			update_mutations_overlay()
