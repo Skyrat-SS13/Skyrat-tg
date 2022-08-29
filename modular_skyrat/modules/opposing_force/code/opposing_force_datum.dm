@@ -882,7 +882,7 @@
 	return report.Join("\n")
 
 /datum/opposing_force/proc/add_to_ping_ss()
-	if(status != OPFOR_STATUS_APPROVED)
+	if(status == OPFOR_STATUS_APPROVED)
 		return
 	ticket_ping = TRUE
 

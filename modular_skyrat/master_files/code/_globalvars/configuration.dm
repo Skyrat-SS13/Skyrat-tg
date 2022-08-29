@@ -45,3 +45,5 @@ GLOBAL_VAR_INIT(looc_allowed, TRUE)
 	default = 15 MINUTES
 
 /datum/config_entry/flag/admin_event_uses_chaos
+
+/datum/config_entry/flag/ticket_ping

@@ -6,6 +6,8 @@ SUBSYSTEM_DEF(ticket_ping)
 	wait = 3 MINUTES
 
 /datum/controller/subsystem/ticket_ping/fire(resumed)
+	if(!CONFIG_GET(flag/ticket_ping))
+		flags = SS_NO_FIRE
 	var/valid_ahelps
 	var/valid_opfors
 	for(var/datum/admin_help/ahelp in GLOB.ahelp_tickets.active_tickets)
