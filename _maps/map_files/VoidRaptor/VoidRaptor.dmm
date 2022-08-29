@@ -2825,6 +2825,18 @@
 	},
 /turf/open/floor/wood/parquet,
 /area/station/common/night_club)
+"aUX" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/trimline/yellow/filled/warning,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/duct,
+/obj/effect/landmark/start/station_engineer,
+/turf/open/floor/iron/smooth_large,
+/area/station/engineering/main)
 "aUY" = (
 /obj/structure/rack,
 /obj/item/storage/toolbox/electrical,
@@ -4530,6 +4542,10 @@
 "bxu" = (
 /obj/effect/spawner/random/vending/snackvend,
 /obj/effect/turf_decal/bot,
+/obj/machinery/camera/directional/north{
+	c_tag = "Dormitories - Art Storage";
+	name = "dormitories camera"
+	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/engineering/power_room)
 "bxL" = (
@@ -7926,6 +7942,10 @@
 /obj/structure/chair/wood,
 /turf/open/floor/carpet/stellar,
 /area/station/service/chapel/funeral)
+"cyI" = (
+/obj/effect/landmark/start/station_engineer,
+/turf/open/floor/iron/smooth_large,
+/area/station/engineering/power_room)
 "cyN" = (
 /obj/machinery/holopad,
 /obj/effect/turf_decal/bot,
@@ -8445,6 +8465,11 @@
 	},
 /obj/machinery/power/apc/auto_name/directional/west,
 /obj/structure/cable,
+/obj/machinery/camera/directional/west{
+	c_tag = "Technology Storage";
+	name = "engineering camera";
+	dir = 10
+	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/engineering/break_room)
 "cHc" = (
@@ -10030,6 +10055,11 @@
 /obj/item/kirbyplants/random,
 /obj/item/radio/intercom/directional/north,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/camera/directional/north{
+	c_tag = "Telecomms Storage";
+	name = "engineering camera";
+	network = list("ss13","engine")
+	},
 /turf/open/floor/engine,
 /area/station/engineering/supermatter/room)
 "dfA" = (
@@ -12698,6 +12728,10 @@
 /obj/effect/turf_decal/bot,
 /obj/machinery/cell_charger,
 /obj/item/stock_parts/cell/high,
+/obj/machinery/camera/directional/north{
+	c_tag = "Dormitories - Art Storage";
+	name = "dormitories camera"
+	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/engineering/power_room)
 "dPD" = (
@@ -14297,6 +14331,10 @@
 	dir = 4
 	},
 /obj/machinery/firealarm/directional/east,
+/obj/machinery/camera/directional/east{
+	c_tag = "Technology Storage - Secure";
+	name = "engineering camera"
+	},
 /turf/open/floor/iron/smooth_edge{
 	dir = 8
 	},
@@ -16143,6 +16181,9 @@
 "ePj" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/orange/visible,
 /obj/effect/turf_decal/stripes/line,
+/obj/machinery/camera/directional/south{
+	name = "engineering camera"
+	},
 /turf/open/floor/engine,
 /area/station/engineering/supermatter/room)
 "ePk" = (
@@ -22896,6 +22937,11 @@
 /obj/item/wrench,
 /obj/item/crowbar/red,
 /obj/machinery/status_display/ai/directional/north,
+/obj/machinery/camera/directional/north{
+	c_tag = "Telecomms Storage";
+	name = "engineering camera";
+	network = list("ss13","engine")
+	},
 /turf/open/floor/iron/smooth,
 /area/station/engineering/atmos)
 "gUy" = (
@@ -23918,6 +23964,11 @@
 	dir = 1
 	},
 /obj/machinery/light_switch/directional/north,
+/obj/machinery/camera/directional/north{
+	c_tag = "Telecomms Storage";
+	name = "engineering camera";
+	network = list("ss13","engine")
+	},
 /turf/open/floor/iron/smooth_edge,
 /area/station/engineering/storage_shared)
 "hhY" = (
@@ -26860,6 +26911,14 @@
 	},
 /turf/open/floor/iron,
 /area/station/commons/fitness/recreation/entertainment)
+"iex" = (
+/obj/machinery/camera/directional/north{
+	c_tag = "Telecomms Storage";
+	name = "engineering camera";
+	network = list("ss13","engine")
+	},
+/turf/open/floor/engine,
+/area/station/engineering/supermatter)
 "ieO" = (
 /obj/structure/window/reinforced/survival_pod{
 	dir = 8
@@ -32007,13 +32066,6 @@
 	},
 /turf/open/floor/iron,
 /area/station/hallway/primary/fore)
-"jDp" = (
-/obj/effect/turf_decal/trimline/yellow/filled/warning{
-	dir = 6
-	},
-/obj/effect/landmark/start/station_engineer,
-/turf/open/floor/iron/smooth,
-/area/station/engineering/storage)
 "jDw" = (
 /obj/structure/sink/directional/east,
 /obj/structure/toilet{
@@ -42558,9 +42610,17 @@
 /turf/open/floor/pod/dark,
 /area/station/service/chapel)
 "mwr" = (
+/obj/effect/turf_decal/trimline/yellow/filled/warning{
+	dir = 6
+	},
 /obj/effect/landmark/start/station_engineer,
-/turf/open/floor/iron/smooth_large,
-/area/station/engineering/power_room)
+/obj/machinery/camera/directional/east{
+	c_tag = "Technology Storage - Secure";
+	name = "engineering camera";
+	dir = 6
+	},
+/turf/open/floor/iron/smooth,
+/area/station/engineering/storage)
 "mwx" = (
 /obj/effect/turf_decal/trimline/purple/filled/warning{
 	dir = 1
@@ -46894,6 +46954,11 @@
 "nFb" = (
 /obj/structure/closet/secure_closet/engineering_electrical,
 /obj/effect/turf_decal/bot,
+/obj/machinery/camera/directional/west{
+	c_tag = "Technology Storage";
+	name = "engineering camera";
+	dir = 10
+	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/engineering/power_room)
 "nFw" = (
@@ -48242,6 +48307,10 @@
 /obj/structure/cable,
 /obj/effect/turf_decal/trimline/yellow/filled/line,
 /obj/machinery/firealarm/directional/south,
+/obj/machinery/camera/directional/south{
+	dir = 5;
+	name = "engineering camera"
+	},
 /turf/open/floor/iron/smooth_edge{
 	dir = 1
 	},
@@ -49886,6 +49955,11 @@
 /obj/machinery/atmospherics/pipe/smart/simple/orange/visible{
 	dir = 5
 	},
+/obj/machinery/camera/directional/west{
+	c_tag = "Technology Storage";
+	name = "engineering camera";
+	dir = 10
+	},
 /turf/open/floor/iron/smooth,
 /area/station/engineering/main)
 "owY" = (
@@ -50991,6 +51065,12 @@
 	dir = 5
 	},
 /obj/item/kirbyplants/random,
+/obj/machinery/camera/directional/north{
+	c_tag = "Telecomms Storage";
+	name = "engineering camera";
+	network = list("ss13","engine");
+	dir = 9
+	},
 /turf/open/floor/engine,
 /area/station/engineering/supermatter/room)
 "oNL" = (
@@ -55469,6 +55549,17 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/catwalk_floor/iron_smooth,
 /area/station/medical/medbay/central)
+"qcu" = (
+/obj/effect/turf_decal/trimline/yellow/filled/line{
+	dir = 1
+	},
+/obj/machinery/camera/directional/north{
+	c_tag = "Telecomms Storage";
+	name = "engineering camera";
+	network = list("ss13","engine")
+	},
+/turf/open/floor/iron/smooth_edge,
+/area/station/engineering/main)
 "qcx" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/plastic,
@@ -56245,6 +56336,15 @@
 /obj/effect/spawner/random/structure/barricade,
 /turf/open/floor/iron/smooth,
 /area/station/maintenance/aft)
+"qnM" = (
+/obj/machinery/camera/directional/north{
+	c_tag = "Telecomms Storage";
+	name = "engineering camera";
+	network = list("ss13","engine");
+	dir = 9
+	},
+/turf/open/floor/engine,
+/area/station/engineering/supermatter)
 "qnX" = (
 /obj/structure/table,
 /obj/machinery/reagentgrinder{
@@ -57272,13 +57372,6 @@
 /obj/machinery/portable_atmospherics/canister/air,
 /turf/open/floor/iron/smooth,
 /area/station/maintenance/port/central)
-"qDk" = (
-/obj/effect/turf_decal/trimline/yellow/filled/warning{
-	dir = 10
-	},
-/obj/effect/landmark/start/station_engineer,
-/turf/open/floor/iron/smooth,
-/area/station/engineering/storage)
 "qDp" = (
 /obj/structure/chair/office/light,
 /obj/effect/turf_decal/trimline/neutral/filled/warning,
@@ -57555,6 +57648,18 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/smooth_large,
 /area/station/engineering/break_room)
+"qGK" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/machinery/power/emitter,
+/obj/machinery/camera/directional/west{
+	c_tag = "Technology Storage";
+	name = "engineering camera";
+	dir = 10
+	},
+/turf/open/floor/engine,
+/area/station/engineering/main)
 "qGO" = (
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 4
@@ -60146,6 +60251,11 @@
 "rsu" = (
 /obj/effect/turf_decal/bot,
 /obj/structure/sign/poster/official/random/directional/north,
+/obj/machinery/camera/directional/north{
+	c_tag = "Telecomms Storage";
+	name = "engineering camera";
+	network = list("ss13","engine")
+	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/engineering/main)
 "rsC" = (
@@ -64575,6 +64685,11 @@
 	},
 /obj/effect/spawner/random/vending/colavend,
 /obj/effect/turf_decal/bot,
+/obj/machinery/camera/directional/west{
+	c_tag = "Technology Storage";
+	name = "engineering camera";
+	dir = 10
+	},
 /turf/open/floor/iron/smooth,
 /area/station/engineering/lobby)
 "sDV" = (
@@ -67465,6 +67580,17 @@
 	},
 /turf/open/floor/catwalk_floor/iron_smooth,
 /area/station/engineering/main)
+"tsF" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/machinery/camera/directional/east{
+	c_tag = "Technology Storage - Secure";
+	name = "engineering camera";
+	dir = 6
+	},
+/turf/open/floor/engine,
+/area/station/engineering/main)
 "tsG" = (
 /obj/structure/table/reinforced,
 /obj/machinery/door/poddoor/shutters/preopen{
@@ -70035,8 +70161,8 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/duct,
 /obj/effect/landmark/start/station_engineer,
 /turf/open/floor/iron/smooth_large,
@@ -74737,18 +74863,6 @@
 	dir = 1
 	},
 /area/station/science/lab)
-"vvj" = (
-/obj/structure/cable,
-/obj/effect/turf_decal/trimline/yellow/filled/warning,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/duct,
-/obj/effect/landmark/start/station_engineer,
-/turf/open/floor/iron/smooth_large,
-/area/station/engineering/main)
 "vvq" = (
 /obj/structure/table/reinforced,
 /turf/open/floor/carpet/purple,
@@ -75517,6 +75631,13 @@
 /obj/structure/cable,
 /turf/open/floor/circuit,
 /area/station/ai_monitored/turret_protected/aisat/foyer)
+"vFa" = (
+/obj/effect/turf_decal/trimline/yellow/filled/warning{
+	dir = 10
+	},
+/obj/effect/landmark/start/station_engineer,
+/turf/open/floor/iron/smooth,
+/area/station/engineering/storage)
 "vFg" = (
 /obj/machinery/door/firedoor,
 /obj/effect/turf_decal/stripes/line,
@@ -83035,6 +83156,10 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/visible,
 /obj/effect/turf_decal/stripes/line,
 /obj/structure/cable,
+/obj/machinery/camera/directional/south{
+	dir = 5;
+	name = "engineering camera"
+	},
 /turf/open/floor/engine,
 /area/station/engineering/supermatter/room)
 "xQK" = (
@@ -114533,7 +114658,7 @@ hxy
 rHF
 wlT
 cJV
-cJV
+qGK
 uyC
 gUJ
 deE
@@ -115818,7 +115943,7 @@ eML
 hxy
 rAc
 nyv
-nyv
+tsF
 jIW
 cCO
 iPJ
@@ -117374,7 +117499,7 @@ hsy
 qmb
 vzo
 bZi
-pdq
+iex
 ufd
 pdq
 bZi
@@ -117879,7 +118004,7 @@ qdp
 ppy
 hGJ
 iTd
-ugd
+aUX
 cbe
 fCh
 npy
@@ -118393,7 +118518,7 @@ tJZ
 ujA
 jtv
 mKi
-vvj
+ugd
 cLS
 fCh
 nmG
@@ -118649,7 +118774,7 @@ nUY
 hRO
 qPT
 rAU
-uBH
+qcu
 kyu
 fgi
 oCl
@@ -118916,7 +119041,7 @@ eGQ
 aqp
 qJt
 bZi
-pdq
+qnM
 ufd
 pdq
 bZi
@@ -120193,7 +120318,7 @@ imC
 hxy
 xAs
 cpZ
-qDk
+vFa
 rrz
 eEu
 sKE
@@ -121234,7 +121359,7 @@ yel
 nhE
 ona
 lwi
-mwr
+cyI
 xwt
 xwt
 xwt
@@ -121735,7 +121860,7 @@ tTt
 sRR
 ubB
 uUA
-jDp
+mwr
 rrz
 eEu
 qrr
