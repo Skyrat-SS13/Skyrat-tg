@@ -615,5 +615,6 @@
 					/obj/item/storage/toolbox/ammo/mosin,
 					/obj/item/gun/ballistic/automatic/plastikov,
 					/obj/item/storage/toolbox/ammo/bison,
-					/obj/item/gun/ballistic/automatic/pistol,
-					/obj/item/storage/toolbox/ammo/makarov)
+					/obj/item/storage/toolbox/ammo/makarov,
+					/obj/item/ammo_box/magazine/plastikov9mm,
+					/obj/item/gun/ballistic/automatic/pistol/makarov)
