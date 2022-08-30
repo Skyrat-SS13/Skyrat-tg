@@ -5,6 +5,7 @@ MODULE ID: SCYTHE
 ### Description:
 
 It is known that vines become quite intense if left alone for some. Enter the scythe additions.
+Contains some venus nerfs as well
 
 ### TG Proc Changes:
 
