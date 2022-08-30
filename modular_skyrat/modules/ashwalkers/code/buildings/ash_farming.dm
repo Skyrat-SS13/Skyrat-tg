@@ -27,6 +27,9 @@
 	atom_parent = null
 	return ..()
 
+/**
+ * check_attack is meant to listen for the comsig_parent_attackby signal, where it essentially functions like the attackby proc
+ */
 /datum/component/simple_farm/proc/check_attack(datum/source, obj/item/attacking_item, mob/user)
 	SIGNAL_HANDLER
 	//if it behaves like a shovel
@@ -52,6 +55,9 @@
 		locate_farm.update_appearance()
 		locate_farm.late_setup()
 
+/**
+ * check_examine is meant to listen for the comsig_parent_examine signal, where it will put additional information in the examine
+ */
 /datum/component/simple_farm/proc/check_examine(datum/source, mob/user, list/examine_list)
 	if(allow_plant)
 		examine_list += span_notice("You are able to plant seeds here!")
@@ -167,14 +173,23 @@
 
 	return ..()
 
+/**
+ * used during the component so that it can move when its attached atom moves
+ */
 /obj/structure/simple_farm/proc/late_setup()
 	if(!ismovable(attached_atom))
 		return
 	RegisterSignal(attached_atom, COMSIG_MOVABLE_MOVED, .proc/move_plant)
 
+/**
+ * a simple proc to forcemove the plant on top of the movable atom its attached to
+ */
 /obj/structure/simple_farm/proc/move_plant()
 	forceMove(get_turf(attached_atom))
 
+/**
+ * will create a harvest of the seeds product, with a chance to create a mutated version
+ */
 /obj/structure/simple_farm/proc/create_harvest()
 	if(!planted_seed)
 		return

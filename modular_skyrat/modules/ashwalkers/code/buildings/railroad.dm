@@ -70,7 +70,7 @@
 /obj/vehicle/ridden/rail_cart/examine(mob/user)
 	. = ..()
 	. += span_notice("<br><b>Alt-Click</b> to attach a rail cart to this cart.")
-	. += span_notice("<br>10 sand will allow a seed to be planted!")
+	. += span_notice("<br>Filling it with <b>10 sand</b> will allow it to be used as a planter!")
 
 /obj/vehicle/ridden/rail_cart/Initialize(mapload)
 	. = ..()
@@ -113,9 +113,9 @@
 	. = ..()
 	atom_storage?.show_contents(user)
 
-/obj/vehicle/ridden/rail_cart/attackby(obj/item/I, mob/user, params)
-	if(istype(I, /obj/item/stack/ore/glass))
-		var/obj/item/stack/ore/glass/use_item = I
+/obj/vehicle/ridden/rail_cart/attackby(obj/item/attacking_item, mob/user, params)
+	if(istype(attacking_item, /obj/item/stack/ore/glass))
+		var/obj/item/stack/ore/glass/use_item = attacking_item
 		if(GetComponent(/datum/component/simple_farm) || !use_item.use(10))
 			return ..()
 		AddComponent(/datum/component/simple_farm, TRUE, TRUE, list(0, 16))
