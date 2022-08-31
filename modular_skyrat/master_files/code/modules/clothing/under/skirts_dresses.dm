@@ -54,6 +54,7 @@
 	greyscale_config_worn = /datum/greyscale_config/turtleskirt_knit/worn
 	greyscale_colors = "#cc0000#5f5f5f"
 	flags_1 = IS_PLAYER_COLORABLE_1
+	can_adjust = TRUE
 
 /obj/item/clothing/under/dress/skirt/skyrat/jean
 	name = "jean skirt"
