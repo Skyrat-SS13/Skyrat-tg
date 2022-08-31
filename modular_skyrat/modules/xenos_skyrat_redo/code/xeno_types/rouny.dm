@@ -44,6 +44,7 @@
 	if(evade_active) //Can't evade while we're already evading.
 		owner.balloon_alert(owner, "already evading")
 		return FALSE
+
 	owner.balloon_alert(owner, "evasive movements began")
 	playsound(owner, 'modular_skyrat/modules/xenos_skyrat_redo/sound/alien_hiss.ogg', 100, TRUE, 8, 0.9)
 	to_chat(owner, span_danger("We take evasive action, making us impossible to hit with projectiles for the next [evasion_duration/10] seconds."))
@@ -60,17 +61,14 @@
 
 /// Handles if either BULLET_ACT_HIT or BULLET_ACT_FORCE_PIERCE happens to something using the xeno evade ability
 /datum/action/cooldown/alien/skyrat/evade/proc/on_projectile_hit()
-	if(owner.incapacitated(IGNORE_GRAB))
+	if(owner.incapacitated(IGNORE_GRAB) || !isturf(owner.loc) || !evade_active)
 		return BULLET_ACT_HIT
-	if(!isturf(owner.loc))
-		return BULLET_ACT_HIT
-	if(evade_active)
-		owner.visible_message(span_danger("[owner] effortlessly dodges the projectile!"), span_userdanger("You dodge the projectile!"))
-		playsound(get_turf(owner), pick('sound/weapons/bulletflyby.ogg', 'sound/weapons/bulletflyby2.ogg', 'sound/weapons/bulletflyby3.ogg'), 75, TRUE)
-		owner.add_filter("runner_evasion", 2, gauss_blur_filter(5))
-		addtimer(CALLBACK(owner, /atom.proc/remove_filter, "runner_evasion"), 0.5 SECONDS)
-		return BULLET_ACT_FORCE_PIERCE
-	return BULLET_ACT_HIT
+
+	owner.visible_message(span_danger("[owner] effortlessly dodges the projectile!"), span_userdanger("You dodge the projectile!"))
+	playsound(get_turf(owner), pick('sound/weapons/bulletflyby.ogg', 'sound/weapons/bulletflyby2.ogg', 'sound/weapons/bulletflyby3.ogg'), 75, TRUE)
+	owner.add_filter("runner_evasion", 2, gauss_blur_filter(5))
+	addtimer(CALLBACK(owner, /atom.proc/remove_filter, "runner_evasion"), 0.5 SECONDS)
+	return BULLET_ACT_FORCE_PIERCE
 
 /mob/living/carbon/alien/humanoid/skyrat/runner/bullet_act(obj/projectile/P, def_zone, piercing_hit = FALSE)
 	if(evade_ability)

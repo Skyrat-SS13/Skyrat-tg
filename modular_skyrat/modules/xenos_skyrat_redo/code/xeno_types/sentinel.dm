@@ -81,6 +81,7 @@
 		span_danger("[caller] spits [projectile_name]!"),
 		span_alertalien("You spit [projectile_name]."),
 	)
+
 	if(acid_projectile)
 		var/obj/projectile/spit_projectile = new acid_projectile(caller.loc)
 		spit_projectile.preparePixelProjectile(target, caller, modifiers)
