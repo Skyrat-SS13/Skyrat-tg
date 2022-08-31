@@ -75,9 +75,11 @@
 	playsound(queenie, 'modular_skyrat/modules/xenos_skyrat_redo/sound/alien_queen_screech.ogg', 100, FALSE, 8, 0.9)
 	queenie.create_shriekwave()
 	shake_camera(owner, 2, 2)
+
 	for(var/mob/living/carbon/human/screech_target in get_hearers_in_view(7, get_turf(queenie)))
 		screech_target.soundbang_act(intensity = 5, stun_pwr = 50, damage_pwr = 10, deafen_pwr = 30) //Only being deaf will save you from the screech
 		shake_camera(screech_target, 4, 3)
+
 	return TRUE
 
 /mob/living/carbon/alien/humanoid/skyrat/proc/create_shriekwave()
