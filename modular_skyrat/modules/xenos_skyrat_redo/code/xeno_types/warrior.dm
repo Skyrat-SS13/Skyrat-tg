@@ -53,14 +53,14 @@
 	. = ..()
 	var/mob/living/carbon/alien/humanoid/skyrat/agility_target = owner
 	if(!being_agile)
-		begin_agility()
+		begin_agility(agility_target)
 		return TRUE
 	if(being_agile)
-		end_agility()
+		end_agility(agility_target)
 		return TRUE
 
 /// Handles the visual indication and code activation of the warrior agility ability (say that five times fast)
-/datum/action/cooldown/alien/skyrat/warrior_agility/proc/begin_agility()
+/datum/action/cooldown/alien/skyrat/warrior_agility/proc/begin_agility(/mob/living/carbon/alien/humanoid/skyrat/agility_target)
 	agility_target.balloon_alert(agility_target, "agility active")
 	to_chat(agility_target, span_danger("We drop onto all fours, allowing us to move at much greater speed at expense of being able to use most abilities."))
 	playsound(agility_target, 'modular_skyrat/modules/xenos_skyrat_redo/sound/alien_hiss.ogg', 100, TRUE, 8, 0.9)
@@ -71,7 +71,7 @@
 	agility_target.unable_to_use_abilities = TRUE
 
 /// Handles the visual indicators and code side of deactivating the agility ability
-/datum/action/cooldown/alien/skyrat/warrior_agility/proc/end_agility()
+/datum/action/cooldown/alien/skyrat/warrior_agility/proc/end_agility(/mob/living/carbon/alien/humanoid/skyrat/agility_target)
 		agility_target.balloon_alert(agility_target, "agility ended")
 		playsound(agility_target, 'modular_skyrat/modules/xenos_skyrat_redo/sound/alien_roar2.ogg', 100, TRUE, 8, 0.9) //Warrior runs up on all fours, stands upright, screams at you
 		agility_target.icon_state = "alien[agility_target.caste]"
