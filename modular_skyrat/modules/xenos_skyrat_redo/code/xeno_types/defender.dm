@@ -72,32 +72,30 @@
 		return FALSE
 
 /datum/action/cooldown/spell/aoe/repulse/xeno/skyrat_tailsweep/cast_on_thing_in_aoe(atom/movable/victim, atom/caster)
+	if(!isliving(victim))
+		return
+
 	if(isalien(victim))
 		return
+
 	var/turf/throwtarget = get_edge_target_turf(caster, get_dir(caster, get_step_away(victim, caster)))
 	var/dist_from_caster = get_dist(victim, caster)
+	var/mob/living/victim_living = victim
 
 	if(dist_from_caster <= 0)
-		if(isliving(victim))
-			var/mob/living/victim_living = victim
-			victim_living.Knockdown(knockdown_time * 2)
-			victim_living.apply_damage(impact_damage, impact_damage_type, BODY_ZONE_CHEST, impact_wound_bonus, sharpness = impact_sharpness)
-			shake_camera(victim, 4, 3)
-			playsound(victim, impact_sound, 100, TRUE, 8, 0.9) //the defender's tail is literally just a small wrecking ball, CLANG
-			to_chat(victim, span_userdanger("You're slammed into the floor by [caster]'s tail!"))
-	else
+		victim_living.Knockdown(knockdown_time)
 		if(sparkle_path)
-			new sparkle_path(get_turf(victim), get_dir(caster, victim))
+			new sparkle_path(get_turf(victim_living), get_dir(caster, victim_living))
 
-		if(isliving(victim))
-			var/mob/living/victim_living = victim
-			victim_living.Knockdown(knockdown_time)
-			victim_living.apply_damage(impact_damage, impact_damage_type, BODY_ZONE_CHEST, impact_wound_bonus, sharpness = impact_sharpness)
-			shake_camera(victim, 4, 3)
-			playsound(victim, impact_sound, 100, TRUE, 8, 0.9)
-			to_chat(victim, span_userdanger("[caster]'s tail slams into you, throwing you back!"))
+	else
+		victim_living.Knockdown(knockdown_time * 2) //They are on the same turf as us, or... somewhere else, I'm not sure how but they are getting smacked down
 
-		victim.safe_throw_at(throwtarget, ((clamp((max_throw - (clamp(dist_from_caster - 2, 0, dist_from_caster))), 3, max_throw))), 1, caster, force = repulse_force)
+	victim_living.apply_damage(impact_damage, impact_damage_type, BODY_ZONE_CHEST, impact_wound_bonus, sharpness = impact_sharpness)
+	shake_camera(victim_living, 4, 3)
+	playsound(victim_living, impact_sound, 100, TRUE, 8, 0.9)
+	to_chat(victim_living, span_userdanger("[caster]'s tail slams into you, throwing you back!"))
+
+	victim_living.safe_throw_at(throwtarget, ((clamp((max_throw - (clamp(dist_from_caster - 2, 0, dist_from_caster))), 3, max_throw))), 1, caster, force = repulse_force)
 
 /obj/effect/temp_visual/dir_setting/tailsweep/defender
 	icon = 'modular_skyrat/modules/xenos_skyrat_redo/icons/xeno_actions.dmi'
