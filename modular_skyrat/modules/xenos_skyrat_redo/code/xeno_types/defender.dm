@@ -103,7 +103,7 @@
 
 /datum/action/cooldown/mob_cooldown/charge/basic_charge/defender
 	name = "Charge Attack"
-	desc = "Allows you to charge at a position, trampling any in your path."
+	desc = "Allows you to charge at a position, trampling anything in your path."
 	cooldown_time = 15 SECONDS
 	charge_delay = 0.3 SECONDS
 	charge_distance = 5
