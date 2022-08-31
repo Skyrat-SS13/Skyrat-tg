@@ -52,7 +52,9 @@
 	. = ..()
 	if(!isalien(owner))
 		return FALSE
+
 	var/mob/living/carbon/alien/humanoid/skyrat/owner_alien = owner
+
 	if(owner_alien.unable_to_use_abilities)
 		return FALSE
 
