@@ -77,7 +77,7 @@
 /obj/item/ammo_casing/caseless/xenospit //This is probably really bad, however I couldn't find any other nice way to do this
 	name = "big glob of neurotoxin"
 	projectile_type = /obj/projectile/neurotoxin/skyrat/spitter_spread
-	pellets = 5
+	pellets = 3
 	variance = 20
 
 /obj/item/ammo_casing/caseless/xenospit/tk_firing(mob/living/user, atom/fired_from)
@@ -86,7 +86,7 @@
 /obj/projectile/neurotoxin/skyrat/spitter_spread //Slightly nerfed because its a shotgun spread of these
 	name = "neurotoxin spit"
 	icon_state = "neurotoxin"
-	damage = 30
+	damage = 25
 
 /datum/action/cooldown/alien/acid/skyrat/spread/lethal
 	name = "Spit Acid Spread"
@@ -100,13 +100,13 @@
 /obj/item/ammo_casing/caseless/xenospit/spread/lethal
 	name = "big glob of acid"
 	projectile_type = /obj/projectile/neurotoxin/skyrat/acid/spitter_spread
-	pellets = 6
-	variance = 25
+	pellets = 4
+	variance = 30
 
 /obj/projectile/neurotoxin/skyrat/acid/spitter_spread
 	name = "acid spit"
 	icon_state = "toxin"
-	damage = 20
+	damage = 15
 	damage_type = BURN
 
 /obj/item/organ/internal/alien/neurotoxin/spitter
