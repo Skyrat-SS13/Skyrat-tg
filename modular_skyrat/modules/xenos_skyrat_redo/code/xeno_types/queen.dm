@@ -55,7 +55,9 @@
 	for(var/mob/living/carbon/carbon_mob in GLOB.alive_mob_list)
 		if(carbon_mob == src)
 			continue
+
 		var/obj/item/organ/internal/alien/hivenode/node = carbon_mob.getorgan(/obj/item/organ/internal/alien/hivenode)
+
 		if(istype(node))
 			node.queen_death()
 
