@@ -22,7 +22,7 @@
 							)
 	required_candidates = 1
 	weight = 4 //Slightly less common than normal midround traitors.
-	cost = 10 //But also slightly more costly.
+	cost = 4 //But also slightly more costly.
 	minimum_players = 10
 	var/list/spawn_locs = list()
 

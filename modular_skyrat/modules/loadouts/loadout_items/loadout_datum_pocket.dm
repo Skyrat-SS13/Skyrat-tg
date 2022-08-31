@@ -88,7 +88,7 @@ GLOBAL_LIST_INIT(loadout_pocket_items, generate_loadout_items(/datum/loadout_ite
 
 /datum/loadout_item/pocket_items/rag
 	name = "Rag"
-	item_path = /obj/item/reagent_containers/glass/rag
+	item_path = /obj/item/reagent_containers/cup/rag
 
 /datum/loadout_item/pocket_items/razor
 	name = "Razor"
@@ -124,7 +124,7 @@ GLOBAL_LIST_INIT(loadout_pocket_items, generate_loadout_items(/datum/loadout_ite
 
 /datum/loadout_item/pocket_items/flask
 	name = "Flask"
-	item_path = /obj/item/reagent_containers/food/drinks/flask
+	item_path = /obj/item/reagent_containers/cup/glass/flask
 
 /datum/loadout_item/pocket_items/skub
 	name = "Skub"
