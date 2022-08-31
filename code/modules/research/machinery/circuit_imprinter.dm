@@ -3,7 +3,6 @@
 	desc = "Manufactures circuit boards for the construction of machines."
 	icon_state = "circuit_imprinter"
 	circuit = /obj/item/circuitboard/machine/circuit_imprinter
-<<<<<<< HEAD
 	categories = list(
 								RND_CATEGORY_AI_MODULES,
 								RND_CATEGORY_COMPUTER_BOARDS,
@@ -19,8 +18,6 @@
 								RND_CATEGORY_CIRCUITRY,
 								RND_CATEGORY_WEAPONS_MACHINERY
 								)
-=======
->>>>>>> 8be2c1e2d26 (TGUI for techfabs (#69353))
 	production_animation = "circuit_imprinter_ani"
 	allowed_buildtypes = IMPRINTER
 
