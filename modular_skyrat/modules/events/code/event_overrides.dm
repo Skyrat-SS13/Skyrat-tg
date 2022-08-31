@@ -4,6 +4,15 @@
  * Events can be overriden for a multitude of reasons however each override will have a reason.
  */
 
+/**
+ * Event subsystem
+ *
+ * Overriden min and max start times:
+ * To accomodate for much longer rounds.
+ */
+/datum/controller/subsystem/events
+	frequency_lower = 15 MINUTES
+	frequency_upper = 25 MINUTES
 
 /**
  * Brain truama
@@ -17,15 +26,11 @@
 /**
  * Blob
  *
- * Min players:
- * Raised to accomodate for lower population not being able to cope with the blob.
- *
- * Weight:
- * Decreased to accomodate for the blob being a bit more difficult.
+ * Removed for:
+ * Already being handled by dynamic, it shouldn't be spawning from two places at once.
  */
 /datum/round_event_control/blob
-	min_players = 60
-	weight = 3
+	max_occurrences = 0
 
 /**
  * Radiation storm
