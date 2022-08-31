@@ -133,14 +133,14 @@
 	button_icon_state = "larba"
 
 /datum/action/cooldown/alien/skyrat/devolve/Activate()
-	var/mob/living/carbon/alien/reddit_user = owner
-	if(!isalien(reddit_user))
-		to_chat(reddit_user, span_bolddanger("Wait a minute... You're not an alien, why would you even think of that?! How did you even get to this point???"))
+	var/mob/living/carbon/alien/devolve_target = owner
+	if(!isalien(devolve_target))
+		to_chat(devolve_target, span_bolddanger("Wait a minute... You're not an alien, why would you even think of that?! How did you even get to this point???"))
 		return FALSE
-	if(tgui_alert(reddit_user, "Do you REALLY want to devolve?", "Message", list("Yes", "No")) != "Yes")
+	if(tgui_alert(devolve_target, "Do you REALLY want to devolve?", "Message", list("Yes", "No")) != "Yes")
 		return FALSE
-	var/new_larva = new /mob/living/carbon/alien/larva(reddit_user.loc)
-	reddit_user.alien_evolve(new_larva)
+	var/new_larva = new /mob/living/carbon/alien/larva(devolve_target.loc)
+	devolve_target.alien_evolve(new_larva)
 	return TRUE
 
 /datum/movespeed_modifier/alien_quick
