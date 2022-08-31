@@ -9,7 +9,7 @@
 	/// Holds the triple charge ability to be granted to the ravager later
 	var/datum/action/cooldown/mob_cooldown/charge/triple_charge/ravager/triple_charge
 	/// Holds the slicing tail sweep ability to be granted to the ravager later
-	var/datum/action/cooldown/spell/aoe/repulse/xeno/slicing/tailsweep_slice
+	var/datum/action/cooldown/spell/aoe/repulse/xeno/skyrat_tailsweep/slicing/tailsweep_slice
 	/// Holds the endure ability to be granted to the ravager later
 	var/datum/action/cooldown/alien/skyrat/literally_too_angry_to_die/you_cant_hurt_me_jack
 	melee_damage_lower = 30
@@ -20,7 +20,7 @@
 	triple_charge = new /datum/action/cooldown/mob_cooldown/charge/triple_charge/ravager()
 	triple_charge.Grant(src)
 
-	tailsweep_slice = new /datum/action/cooldown/spell/aoe/repulse/xeno/slicing()
+	tailsweep_slice = new /datum/action/cooldown/spell/aoe/repulse/xeno/skyrat_tailsweep/slicing()
 	tailsweep_slice.Grant(src)
 
 	you_cant_hurt_me_jack = new /datum/action/cooldown/alien/skyrat/literally_too_angry_to_die
@@ -58,48 +58,21 @@
 	. = ..()
 	return TRUE
 
-/datum/action/cooldown/spell/aoe/repulse/xeno/slicing
+/datum/action/cooldown/spell/aoe/repulse/xeno/skyrat_tailsweep/slicing
 	name = "Slicing Tail Sweep"
-	desc = "Throw back attackers with a swipe of your tail, slicing them with it's sharpened tip."
-
-	cooldown_time = 60 SECONDS
+	desc = "Throw back attackers with a swipe of your tail, slicing them with its sharpened tip."
 
 	aoe_radius = 2
 
-	icon_icon = 'modular_skyrat/modules/xenos_skyrat_redo/icons/xeno_actions.dmi'
 	button_icon_state = "slice_tail"
 
 	sparkle_path = /obj/effect/temp_visual/dir_setting/tailsweep/ravager
 
 	sound = 'modular_skyrat/modules/xenos_skyrat_redo/sound/alien_tail_swipe.ogg' //The defender's tail sound isn't changed because its big and heavy, this isn't
 
-/datum/action/cooldown/spell/aoe/repulse/xeno/slicing/cast_on_thing_in_aoe(atom/movable/victim, atom/caster)
-	if(isalien(victim))
-		return
-	var/turf/throwtarget = get_edge_target_turf(caster, get_dir(caster, get_step_away(victim, caster)))
-	var/dist_from_caster = get_dist(victim, caster)
-
-	if(dist_from_caster <= 0)
-		if(isliving(victim))
-			var/mob/living/victim_living = victim
-			victim_living.Knockdown(10 SECONDS)
-			victim_living.apply_damage(40, BRUTE,BODY_ZONE_CHEST, wound_bonus = 20, sharpness = SHARP_EDGED)
-			shake_camera(victim, 4, 3)
-			playsound(victim, 'modular_skyrat/master_files/sound/weapons/bloodyslice.ogg', 100, TRUE, 8, 0.9)
-			to_chat(victim, span_userdanger("You're slammed into the floor by [caster]'s tail!"))
-	else
-		if(sparkle_path)
-			new sparkle_path(get_turf(victim), get_dir(caster, victim))
-
-		if(isliving(victim))
-			var/mob/living/victim_living = victim
-			victim_living.Knockdown(4 SECONDS)
-			victim_living.apply_damage(40, BRUTE,BODY_ZONE_CHEST, wound_bonus = 20, sharpness = SHARP_EDGED)
-			shake_camera(victim, 4, 3)
-			playsound(victim, 'modular_skyrat/master_files/sound/weapons/bloodyslice.ogg', 100, TRUE, 8, 0.9)
-			to_chat(victim, span_userdanger("[caster]'s tail slashes you, throwing you back!"))
-
-		victim.safe_throw_at(throwtarget, ((clamp((max_throw - (clamp(dist_from_caster - 2, 0, dist_from_caster))), 3, max_throw))), 1, caster, force = repulse_force)
+	impact_sound = 'modular_skyrat/master_files/sound/weapons/bloodyslice.ogg'
+	impact_damage = 40
+	impact_sharpness = SHARP_EDGED
 
 /obj/effect/temp_visual/dir_setting/tailsweep/ravager
 	icon = 'modular_skyrat/modules/xenos_skyrat_redo/icons/xeno_actions.dmi'

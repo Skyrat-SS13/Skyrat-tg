@@ -11,12 +11,12 @@
 	/// Holds the basic charge ability that the defender will be granted
 	var/datum/action/cooldown/mob_cooldown/charge/basic_charge/defender/charge
 	/// Holds the wrecking ball tail sweep that the defender will be granted
-	var/datum/action/cooldown/spell/aoe/repulse/xeno/crushing/tail_sweep
+	var/datum/action/cooldown/spell/aoe/repulse/xeno/skyrat_tailsweep/tail_sweep
 	next_evolution = /mob/living/carbon/alien/humanoid/skyrat/warrior
 
 /mob/living/carbon/alien/humanoid/skyrat/defender/Initialize(mapload)
 	. = ..()
-	tail_sweep = new /datum/action/cooldown/spell/aoe/repulse/xeno/crushing()
+	tail_sweep = new /datum/action/cooldown/spell/aoe/repulse/xeno/skyrat_tailsweep()
 	tail_sweep.Grant(src)
 
 	charge = new /datum/action/cooldown/mob_cooldown/charge/basic_charge/defender()
@@ -35,7 +35,7 @@
 	internal_organs += new /obj/item/organ/internal/alien/plasmavessel/small
 	..()
 
-/datum/action/cooldown/spell/aoe/repulse/xeno/crushing
+/datum/action/cooldown/spell/aoe/repulse/xeno/skyrat_tailsweep
 	name = "Crushing Tail Sweep"
 	desc = "Throw back attackers with a sweep of your tail, likely breaking some bones in the process."
 
@@ -47,6 +47,19 @@
 	button_icon_state = "crush_tail"
 
 	sparkle_path = /obj/effect/temp_visual/dir_setting/tailsweep/defender
+
+	/// The sound that the tail sweep will make upon hitting something
+	var/impact_sound = 'sound/effects/clang.ogg'
+	/// How long mobs hit by the tailsweep should be knocked down for
+	var/knockdown_time = 4 SECONDS
+	/// How much damage tail sweep impacts should do to a mob
+	var/impact_damage = 30
+	/// What wound bonus should the tai sweep impact have
+	var/impact_wound_bonus = 20
+	/// What type of sharpness should this tail sweep have
+	var/impact_sharpness = FALSE
+	/// What type of damage should the tail sweep do
+	var/impact_damage_type = BRUTE
 
 /datum/action/cooldown/spell/aoe/repulse/xeno/crushing/IsAvailable()
 	. = ..()
@@ -67,10 +80,10 @@
 	if(dist_from_caster <= 0)
 		if(isliving(victim))
 			var/mob/living/victim_living = victim
-			victim_living.Knockdown(10 SECONDS)
-			victim_living.apply_damage(30, BRUTE,BODY_ZONE_CHEST, wound_bonus = 20)
+			victim_living.Knockdown(knockdown_time * 2)
+			victim_living.apply_damage(impact_damage, impact_damage_type, BODY_ZONE_CHEST, impact_wound_bonus, sharpness = impact_sharpness)
 			shake_camera(victim, 4, 3)
-			playsound(victim, 'sound/effects/clang.ogg', 100, TRUE, 8, 0.9) //the defender's tail is literally just a small wrecking ball, CLANG
+			playsound(victim, impact_sound, 100, TRUE, 8, 0.9) //the defender's tail is literally just a small wrecking ball, CLANG
 			to_chat(victim, span_userdanger("You're slammed into the floor by [caster]'s tail!"))
 	else
 		if(sparkle_path)
@@ -78,10 +91,10 @@
 
 		if(isliving(victim))
 			var/mob/living/victim_living = victim
-			victim_living.Knockdown(4 SECONDS)
-			victim_living.apply_damage(30, BRUTE,BODY_ZONE_CHEST, wound_bonus = 20)
+			victim_living.Knockdown(knockdown_time)
+			victim_living.apply_damage(impact_damage, impact_damage_type, BODY_ZONE_CHEST, impact_wound_bonus, sharpness = impact_sharpness)
 			shake_camera(victim, 4, 3)
-			playsound(victim, 'sound/effects/clang.ogg', 100, TRUE, 8, 0.9)
+			playsound(victim, impact_sound, 100, TRUE, 8, 0.9)
 			to_chat(victim, span_userdanger("[caster]'s tail slams into you, throwing you back!"))
 
 		victim.safe_throw_at(throwtarget, ((clamp((max_throw - (clamp(dist_from_caster - 2, 0, dist_from_caster))), 3, max_throw))), 1, caster, force = repulse_force)
