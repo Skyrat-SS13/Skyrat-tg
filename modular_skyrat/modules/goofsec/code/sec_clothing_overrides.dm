@@ -636,18 +636,18 @@
 */
 
 /obj/item/storage/backpack/security/redsec
-	icon = 'icons/obj/storage.dmi'
+	icon = 'icons/obj/storage/storage.dmi'
 	worn_icon = 'icons/mob/clothing/back.dmi'
 	icon_state = "securitypack"
 	current_skin = "securitypack"	//prevents reskinning
 
 /obj/item/storage/backpack/satchel/sec/redsec
-	icon = 'icons/obj/storage.dmi'
+	icon = 'icons/obj/storage/storage.dmi'
 	worn_icon = 'icons/mob/clothing/back.dmi'
 	icon_state = "satchel-sec"
 
 /obj/item/storage/backpack/duffelbag/sec/redsec
-	icon = 'icons/obj/storage.dmi'
+	icon = 'icons/obj/storage/storage.dmi'
 	worn_icon = 'icons/mob/clothing/back.dmi'
 	icon_state = "duffel-sec"
 	current_skin = "duffel-sec"	//prevents reskinning

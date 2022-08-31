@@ -144,9 +144,9 @@
 				return
 			var/obj/item/photo/photo_from_record = null
 			if(href_list["photo_front"])
-				photo_from_record = general_record.fields["photo_front"] // SKYRAT EDIT CHANGE
+				photo_from_record = general_record.get_front_photo() // SKYRAT EDIT - Examine Records - ORIGINAL: photo_from_record = target_record.get_front_photo()
 			else if(href_list["photo_side"])
-				photo_from_record = general_record.fields["photo_side"] // SKYRAT EDIT CHANGE
+				photo_from_record = general_record.get_side_photo() // SKYRAT EDIT - Examine Records - ORIGINAL: photo_from_record = target_record.get_side_photo()
 			if(photo_from_record)
 				photo_from_record.show(human_user)
 			return
