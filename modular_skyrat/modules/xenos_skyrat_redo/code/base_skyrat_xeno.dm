@@ -69,7 +69,7 @@
 			return FALSE
 
 /datum/action/small_sprite/skyrat_xeno
-	small_icon = 'icons/obj/plushes.dmi'
+	small_icon = 'icons/obj/toys/plushes.dmi'
 	small_icon_state = "rouny"
 
 /datum/action/cooldown/alien/skyrat/sleepytime //I don't think this has a mechanical advantage but they have cool resting sprites so...
