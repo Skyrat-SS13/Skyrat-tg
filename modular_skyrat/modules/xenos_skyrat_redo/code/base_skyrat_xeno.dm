@@ -103,18 +103,27 @@
 
 /datum/action/cooldown/alien/skyrat/generic_evolve/Activate()
 	var/mob/living/carbon/alien/humanoid/skyrat/evolver = owner
+	if(!istype(evolver)
+		to_chat(owner, span_warning("You aren't an alien, you can't evolve!"))
+		return FALSE
+
 	type_to_evolve_into = evolver.next_evolution
 	if(!type_to_evolve_into)
-		to_chat(evolver, span_bolddanger("Something is wrong... we can't evolve into anything? (This is broken report it on github)"))
+		to_chat(evolver, span_bolddanger("Something is wrong... We can't evolve into anything? (This is broken report it on GitHub)"))
+		CRASH("Couldn't find an evolution for [owner] ([owner.type]).)
 		return FALSE
+
 	if(!isturf(evolver.loc))
 		return FALSE
+
 	if(get_alien_type(type_to_evolve_into))
 		evolver.balloon_alert(evolver, "too many of our evolution already")
 		return FALSE
+
 	var/obj/item/organ/internal/alien/hivenode/node = evolver.getorgan(/obj/item/organ/internal/alien/hivenode)
 	if(!node || node.recent_queen_death)
 		return FALSE
+
 	var/new_beno = new type_to_evolve_into(evolver.loc)
 	evolver.alien_evolve(new_beno)
 	return TRUE
