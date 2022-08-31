@@ -53,22 +53,32 @@
 	. = ..()
 	var/mob/living/carbon/alien/humanoid/skyrat/agility_target = owner
 	if(!being_agile)
-		agility_target.balloon_alert(agility_target, "agility active")
-		to_chat(agility_target, span_danger("We drop onto all fours, allowing us to move at much greater speed at expense of being able to use most abilities."))
-		playsound(agility_target, 'modular_skyrat/modules/xenos_skyrat_redo/sound/alien_hiss.ogg', 100, TRUE, 8, 0.9)
-		being_agile = TRUE
-		agility_target.icon_state = "alien[agility_target.caste]_mobility"
-		agility_target.add_movespeed_modifier(/datum/movespeed_modifier/warrior_agility)
-		agility_target.unable_to_use_abilities = TRUE
+		begin_agility()
 		return TRUE
 	if(being_agile)
+		end_agility()
+		return TRUE
+
+/// Handles the visual indication and code activation of the warrior agility ability (say that five times fast)
+/datum/action/cooldown/alien/skyrat/warrior_agility/proc/begin_agility()
+	agility_target.balloon_alert(agility_target, "agility active")
+	to_chat(agility_target, span_danger("We drop onto all fours, allowing us to move at much greater speed at expense of being able to use most abilities."))
+	playsound(agility_target, 'modular_skyrat/modules/xenos_skyrat_redo/sound/alien_hiss.ogg', 100, TRUE, 8, 0.9)
+	agility_target.icon_state = "alien[agility_target.caste]_mobility"
+
+	being_agile = TRUE
+	agility_target.add_movespeed_modifier(/datum/movespeed_modifier/warrior_agility)
+	agility_target.unable_to_use_abilities = TRUE
+
+/// Handles the visual indicators and code side of deactivating the agility ability
+/datum/action/cooldown/alien/skyrat/warrior_agility/proc/end_agility()
 		agility_target.balloon_alert(agility_target, "agility ended")
 		playsound(agility_target, 'modular_skyrat/modules/xenos_skyrat_redo/sound/alien_roar2.ogg', 100, TRUE, 8, 0.9) //Warrior runs up on all fours, stands upright, screams at you
-		being_agile = FALSE
 		agility_target.icon_state = "alien[agility_target.caste]"
+
+		being_agile = FALSE
 		agility_target.remove_movespeed_modifier(/datum/movespeed_modifier/warrior_agility)
 		agility_target.unable_to_use_abilities = FALSE
-		return TRUE
 
 /datum/movespeed_modifier/warrior_agility
 	multiplicative_slowdown = -2
