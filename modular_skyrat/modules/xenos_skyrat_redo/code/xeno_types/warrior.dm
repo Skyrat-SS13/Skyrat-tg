@@ -11,13 +11,13 @@
 	/// Holds the charge ability that will be given to the warrior later
 	var/datum/action/cooldown/mob_cooldown/charge/basic_charge/defender/charge
 	/// Holds the tail sweep ability that will be given to the warrior later
-	var/datum/action/cooldown/spell/aoe/repulse/xeno/hard_throwing/tail_sweep
+	var/datum/action/cooldown/spell/aoe/repulse/xeno/skyrat_tailsweep/tail_sweep
 	/// Holds the agility ability that will be given to the warrior later
 	var/datum/action/cooldown/alien/skyrat/warrior_agility/agility
 
 /mob/living/carbon/alien/humanoid/skyrat/warrior/Initialize(mapload)
 	. = ..()
-	tail_sweep = new /datum/action/cooldown/spell/aoe/repulse/xeno/hard_throwing()
+	tail_sweep = new /datum/action/cooldown/spell/aoe/repulse/xeno/skyrat_tailsweep()
 	tail_sweep.Grant(src)
 
 	charge = new /datum/action/cooldown/mob_cooldown/charge/basic_charge/defender()

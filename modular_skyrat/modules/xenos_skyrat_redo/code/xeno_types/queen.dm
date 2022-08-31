@@ -7,7 +7,7 @@
 	health = 500
 	icon_state = "alienqueen"
 	/// Holds the less lethal tail sweep ability to be granted to the queen later
-	var/datum/action/cooldown/spell/aoe/repulse/xeno/hard_throwing/tail_sweep
+	var/datum/action/cooldown/spell/aoe/repulse/xeno/skyrat_tailsweep/hard_throwing/tail_sweep
 	/// Holds the queen screech ability to be granted to her later
 	var/datum/action/cooldown/alien/skyrat/queen_screech/screech
 	melee_damage_lower = 30
@@ -15,7 +15,7 @@
 
 /mob/living/carbon/alien/humanoid/skyrat/queen/Initialize(mapload)
 	. = ..()
-	tail_sweep = new /datum/action/cooldown/spell/aoe/repulse/xeno/hard_throwing()
+	tail_sweep = new /datum/action/cooldown/spell/aoe/repulse/xeno/skyrat_tailsweep/hard_throwing()
 	tail_sweep.Grant(src)
 
 	screech = new /datum/action/cooldown/alien/skyrat/queen_screech()

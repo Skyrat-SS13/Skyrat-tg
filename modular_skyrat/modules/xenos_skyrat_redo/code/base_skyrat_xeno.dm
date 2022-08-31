@@ -103,15 +103,14 @@
 
 /datum/action/cooldown/alien/skyrat/generic_evolve/Activate()
 	var/mob/living/carbon/alien/humanoid/skyrat/evolver = owner
-	if(!istype(evolver)
+	if(!istype(evolver))
 		to_chat(owner, span_warning("You aren't an alien, you can't evolve!"))
 		return FALSE
 
 	type_to_evolve_into = evolver.next_evolution
 	if(!type_to_evolve_into)
 		to_chat(evolver, span_bolddanger("Something is wrong... We can't evolve into anything? (This is broken report it on GitHub)"))
-		CRASH("Couldn't find an evolution for [owner] ([owner.type]).)
-		return FALSE
+		CRASH("Couldn't find an evolution for [owner] ([owner.type]).")
 
 	if(!isturf(evolver.loc))
 		return FALSE
@@ -145,7 +144,7 @@
 	return TRUE
 
 /datum/movespeed_modifier/alien_quick
-	multiplicative_slowdown = -1
+	multiplicative_slowdown = -0.5
 
 /datum/movespeed_modifier/alien_slow
 	multiplicative_slowdown = 0.5
