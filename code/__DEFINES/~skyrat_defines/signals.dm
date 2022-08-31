@@ -7,8 +7,6 @@
 #define COMSIG_LIVING_UPDATED_RESTING "living_updated_resting" //from base of (/mob/living/proc/update_resting): (resting)
 ///Horror form bombastic flag
 #define COMSIG_HORRORFORM_EXPLODE "horrorform_explode"
-///Overlay for whitestuff
-#define COMSIG_MOB_CUMFACED "mob_cumfaced" //from /datum/component/cumfaced/Initialize(), when you get covered in cum
 ///Fired in combat_indicator.dm, used for syncing CI between mech and pilot
 #define COMSIG_MOB_CI_TOGGLED "mob_ci_toggled"
 /// When a hostile simple mob loses it's target.
