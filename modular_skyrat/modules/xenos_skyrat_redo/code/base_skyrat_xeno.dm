@@ -103,6 +103,10 @@
 
 /datum/action/cooldown/alien/skyrat/generic_evolve/Activate()
 	var/mob/living/carbon/alien/humanoid/skyrat/evolver = owner
+	if(!istype(evolver)
+		to_chat(owner, span_warning("You aren't an alien, you can't evolve!"))
+		return FALSE
+
 	type_to_evolve_into = evolver.next_evolution
 	if(!type_to_evolve_into)
 		to_chat(evolver, span_bolddanger("Something is wrong... We can't evolve into anything? (This is broken report it on GitHub)"))
