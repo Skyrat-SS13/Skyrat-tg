@@ -52,11 +52,13 @@
 	RegisterSignal(owner, COMSIG_PROJECTILE_ON_HIT, .proc/on_projectile_hit)
 	return TRUE
 
+/// Handles deactivation of the xeno evasion ability, mainly unregistering the signal and giving a balloon alert
 /datum/action/cooldown/alien/skyrat/evade/proc/evasion_deactivate()
 	evade_active = FALSE
 	owner.balloon_alert(owner, "evasion ended")
 	UnregisterSignal(owner, COMSIG_PROJECTILE_ON_HIT)
 
+/// Handles if either BULLET_ACT_HIT or BULLET_ACT_FORCE_PIERCE happens to something using the xeno evade ability
 /datum/action/cooldown/alien/skyrat/evade/proc/on_projectile_hit()
 	if(owner.incapacitated(IGNORE_GRAB))
 		return BULLET_ACT_HIT
