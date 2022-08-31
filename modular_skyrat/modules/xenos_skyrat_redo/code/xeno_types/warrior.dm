@@ -72,13 +72,13 @@
 
 /// Handles the visual indicators and code side of deactivating the agility ability
 /datum/action/cooldown/alien/skyrat/warrior_agility/proc/end_agility(/mob/living/carbon/alien/humanoid/skyrat/agility_target)
-		agility_target.balloon_alert(agility_target, "agility ended")
-		playsound(agility_target, 'modular_skyrat/modules/xenos_skyrat_redo/sound/alien_roar2.ogg', 100, TRUE, 8, 0.9) //Warrior runs up on all fours, stands upright, screams at you
-		agility_target.icon_state = "alien[agility_target.caste]"
+	agility_target.balloon_alert(agility_target, "agility ended")
+	playsound(agility_target, 'modular_skyrat/modules/xenos_skyrat_redo/sound/alien_roar2.ogg', 100, TRUE, 8, 0.9) //Warrior runs up on all fours, stands upright, screams at you
+	agility_target.icon_state = "alien[agility_target.caste]"
 
-		being_agile = FALSE
-		agility_target.remove_movespeed_modifier(/datum/movespeed_modifier/warrior_agility)
-		agility_target.unable_to_use_abilities = FALSE
+	being_agile = FALSE
+	agility_target.remove_movespeed_modifier(/datum/movespeed_modifier/warrior_agility)
+	agility_target.unable_to_use_abilities = FALSE
 
 /datum/movespeed_modifier/warrior_agility
 	multiplicative_slowdown = -2

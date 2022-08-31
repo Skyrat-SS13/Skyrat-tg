@@ -1,5 +1,7 @@
 /// SKYRAT MODULE SKYRAT_XENO_REDO
 
+#define RAVAGER_OUTLINE_EFFECT "ravager_endure_outline"
+
 /mob/living/carbon/alien/humanoid/skyrat/ravager
 	name = "alien ravager"
 	caste = "ravager"
@@ -97,7 +99,7 @@
 	playsound(owner, 'modular_skyrat/modules/xenos_skyrat_redo/sound/alien_roar1.ogg', 100, TRUE, 8, 0.9)
 	to_chat(owner, span_danger("We numb our ability to feel pain, allowing us to fight until the very last for the next [endure_duration/10] seconds."))
 	addtimer(CALLBACK(src, .proc/endure_deactivate), endure_duration)
-	owner.add_filter("ravager_endure_outline", 4, outline_filter(1, COLOR_RED_LIGHT))
+	owner.add_filter(RAVAGER_OUTLINE_EFFECT, 4, outline_filter(1, COLOR_RED_LIGHT))
 	ADD_TRAIT(owner, TRAIT_STUNIMMUNE, TRAIT_XENO_ABILITY_GIVEN)
 	ADD_TRAIT(owner, TRAIT_NOSOFTCRIT, TRAIT_XENO_ABILITY_GIVEN)
 	ADD_TRAIT(owner, TRAIT_NOHARDCRIT, TRAIT_XENO_ABILITY_GIVEN)
@@ -107,7 +109,9 @@
 /datum/action/cooldown/alien/skyrat/literally_too_angry_to_die/proc/endure_deactivate()
 	endure_active = FALSE
 	owner.balloon_alert(owner, "endure ended")
-	owner.remove_filter("ravager_endure_outline")
+	owner.remove_filter(RAVAGER_OUTLINE_EFFECT)
 	REMOVE_TRAIT(owner, TRAIT_STUNIMMUNE, TRAIT_XENO_ABILITY_GIVEN)
 	REMOVE_TRAIT(owner, TRAIT_NOSOFTCRIT, TRAIT_XENO_ABILITY_GIVEN)
 	REMOVE_TRAIT(owner, TRAIT_NOHARDCRIT, TRAIT_XENO_ABILITY_GIVEN)
+
+#undef RAVAGER_OUTLINE_EFFECT

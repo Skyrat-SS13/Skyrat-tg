@@ -1,5 +1,7 @@
 /// SKYRAT MODULE SKYRAT_XENO_REDO
 
+#define RUNNER_BLUR_EFFECT "runner_evasion"
+
 /mob/living/carbon/alien/humanoid/skyrat/runner
 	name = "alien runner"
 	caste = "runner"
@@ -66,8 +68,8 @@
 
 	owner.visible_message(span_danger("[owner] effortlessly dodges the projectile!"), span_userdanger("You dodge the projectile!"))
 	playsound(get_turf(owner), pick('sound/weapons/bulletflyby.ogg', 'sound/weapons/bulletflyby2.ogg', 'sound/weapons/bulletflyby3.ogg'), 75, TRUE)
-	owner.add_filter("runner_evasion", 2, gauss_blur_filter(5))
-	addtimer(CALLBACK(owner, /atom.proc/remove_filter, "runner_evasion"), 0.5 SECONDS)
+	owner.add_filter(RUNNER_BLUR_EFFECT, 2, gauss_blur_filter(5))
+	addtimer(CALLBACK(owner, /atom.proc/remove_filter, RUNNER_BLUR_EFFECT), 0.5 SECONDS)
 	return BULLET_ACT_FORCE_PIERCE
 
 /mob/living/carbon/alien/humanoid/skyrat/runner/bullet_act(obj/projectile/P, def_zone, piercing_hit = FALSE)
@@ -76,3 +78,5 @@
 		if(!(evade_result == BULLET_ACT_HIT))
 			return evade_result
 	. = ..()
+
+#undef RUNNER_BLUR_EFFECT
