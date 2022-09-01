@@ -755,7 +755,6 @@
 	key = "cum"
 	key_third_person = "cums"
 	cooldown = 30 SECONDS
-*/
 
 /datum/emote/living/cum/check_config()
 	return !CONFIG_GET(flag/disable_erp_preferences)
