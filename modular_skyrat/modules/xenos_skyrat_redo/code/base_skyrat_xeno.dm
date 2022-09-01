@@ -23,8 +23,17 @@
 	var/next_evolution
 	/// Holds the ability for evolving into whatever type next_evolution is set to
 	var/datum/action/cooldown/alien/skyrat/generic_evolve/evolve_ability
+	/// Keeps track of if a xeno has evolved recently, if so then we prevent them from evolving until that time is up
+	var/has_evolved_recently = FALSE
+	/// How long xenos should be unable to evolve after recently evolving
+	var/evolution_cooldown_time = 1.5 MINUTES
 	/// Determines if a xeno is unable to use abilities
 	var/unable_to_use_abilities = FALSE
+	/// Pixel X shifting of the on fire overlay
+	var/on_fire_pixel_x = 16
+	/// Pixel Y shifting of the on fire overlay
+	var/on_fire_pixel_y = 16
+
 
 /mob/living/carbon/alien/humanoid/skyrat/Initialize(mapload)
 	. = ..()
@@ -53,6 +62,19 @@
 	if(evolve_ability)
 		QDEL_NULL(evolve_ability)
 	return ..()
+
+/// Called when a larva or xeno evolves, adds a configurable timer on evolving again to the xeno
+/mob/living/carbon/alien/humanoid/skyrat/proc/has_just_evolved()
+	if(has_evolved_recently)
+		return
+	has_evolved_recently = TRUE
+	addtimer(CALLBACK(src, .proc/can_evolve_once_again), evolution_cooldown_time)
+
+/// Allows xenos to evolve again if they are currently unable to
+/mob/living/carbon/alien/humanoid/skyrat/proc/can_evolve_once_again()
+	if(!has_evolved_recently)
+		return
+	has_evolved_recently = FALSE
 
 /datum/action/cooldown/alien/skyrat
 	icon_icon = 'modular_skyrat/modules/xenos_skyrat_redo/icons/xeno_actions.dmi'
@@ -103,6 +125,7 @@
 
 /datum/action/cooldown/alien/skyrat/generic_evolve/Activate()
 	var/mob/living/carbon/alien/humanoid/skyrat/evolver = owner
+
 	if(!istype(evolver))
 		to_chat(owner, span_warning("You aren't an alien, you can't evolve!"))
 		return FALSE
@@ -120,7 +143,16 @@
 		return FALSE
 
 	var/obj/item/organ/internal/alien/hivenode/node = evolver.getorgan(/obj/item/organ/internal/alien/hivenode)
-	if(!node || node.recent_queen_death)
+	if(!node)
+		to_chat(evolver, span_bolddanger("We can't sense our node's connection to the hive... We can't evolve!"))
+		return FALSE
+
+	if(node.recent_queen_death)
+		to_chat(evolver, span_bolddanger("The death of our queen... We can't seem to gather the mental energy required to evolve..."))
+		return FALSE
+
+	if(evolver.has_evolved_recently)
+		evolver.balloon_alert(evolver, "can evolve in [round(evolver.evolution_cooldown_time / 1 MINUTES, 0.01)] minutes")
 		return FALSE
 
 	var/new_beno = new type_to_evolve_into(evolver.loc)
@@ -190,8 +222,36 @@
 	return vessel.max_plasma
 
 /mob/living/carbon/alien/humanoid/skyrat/alien_evolve(mob/living/carbon/alien/new_xeno)
+	var/mob/living/carbon/alien/humanoid/skyrat/new_xeno = new_xeno
+
 	new_xeno.setDir(dir)
+	new_xeno.has_just_evolved()
 	if(mind)
 		mind.name = new_xeno.real_name
 		mind.transfer_to(new_xeno)
 	qdel(src)
+
+/mob/living/carbon/alien/humanoid/skyrat/update_fire_overlay(stacks, on_fire, last_icon_state, suffix = "")
+	var/fire_icon = "generic_fire[suffix]"
+
+	if(!GLOB.fire_appearances[fire_icon])
+		var/mutable_appearance/xeno_fire_overlay = mutable_appearance('icons/mob/onfire.dmi', fire_icon, -FIRE_LAYER, appearance_flags = RESET_COLOR)
+		xeno_fire_overlay.pixel_x = on_fire_pixel_x
+		xeno_fire_overlay.pixel_y = on_fire_pixel_y
+		GLOB.fire_appearances[fire_icon] = xeno_fire_overlay
+
+	if((stacks > 0 && on_fire) || HAS_TRAIT(src, TRAIT_PERMANENTLY_ONFIRE))
+		if(fire_icon == last_icon_state)
+			return last_icon_state
+
+		remove_overlay(FIRE_LAYER)
+		overlays_standing[FIRE_LAYER] = GLOB.fire_appearances[fire_icon]
+		apply_overlay(FIRE_LAYER)
+		return fire_icon
+
+	if(!last_icon_state)
+		return last_icon_state
+
+	remove_overlay(FIRE_LAYER)
+	apply_overlay(FIRE_LAYER)
+	return null

@@ -4,6 +4,7 @@
 
 /mob/living/carbon/alien/humanoid/skyrat/runner
 	name = "alien runner"
+	desc = "A short alien with sleek red chitin, clearly abiding by the 'red ones go faster' theorem and almost always running on all fours."
 	caste = "runner"
 	maxHealth = 150
 	health = 150
@@ -13,6 +14,7 @@
 	melee_damage_lower = 20
 	melee_damage_upper = 25
 	next_evolution = /mob/living/carbon/alien/humanoid/skyrat/ravager
+	on_fire_pixel_y = 0
 
 /mob/living/carbon/alien/humanoid/skyrat/runner/Initialize(mapload)
 	. = ..()

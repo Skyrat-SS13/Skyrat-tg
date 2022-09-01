@@ -2,6 +2,7 @@
 
 /mob/living/carbon/alien/humanoid/skyrat/spitter
 	name = "alien spitter"
+	desc = "A fairly heavy looking alien with prominent acid glands, it's mouth dripping with... some kind of toxin or acid."
 	caste = "spitter"
 	maxHealth = 300
 	health = 300

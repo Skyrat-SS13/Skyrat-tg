@@ -2,6 +2,7 @@
 
 /mob/living/carbon/alien/humanoid/skyrat/praetorian
 	name = "alien praetorian"
+	desc = "An alien that looks like the awkward half-way point between a queen and a drone, in fact that's likely what it is."
 	caste = "praetorian"
 	maxHealth = 400
 	health = 400

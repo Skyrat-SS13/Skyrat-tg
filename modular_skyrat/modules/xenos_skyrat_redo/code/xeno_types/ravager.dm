@@ -4,6 +4,7 @@
 
 /mob/living/carbon/alien/humanoid/skyrat/ravager
 	name = "alien ravager"
+	desc = "An alien with angry red chitin, with equally intimidating looking blade-like claws in place of normal hands. That sharp tail looks like it'd probably hurt."
 	caste = "ravager"
 	maxHealth = 350
 	health = 350

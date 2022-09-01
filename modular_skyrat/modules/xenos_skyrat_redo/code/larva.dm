@@ -63,7 +63,7 @@
 	caste_options[caste_name] = caste_option
 
 /datum/action/cooldown/alien/larva_evolve/proc/spawn_new_xeno(alien_caste)
-	var/mob/living/carbon/alien/humanoid/new_xeno
+	var/mob/living/carbon/alien/humanoid/skyrat/new_xeno
 	var/mob/living/carbon/alien/larva/larva = owner
 
 	switch(alien_caste)
@@ -78,4 +78,5 @@
 		else
 			CRASH("Alien evolve was given an invalid / incorrect alien cast type. Got: [alien_caste]")
 
+	new_xeno.has_just_evolved()
 	larva.alien_evolve(new_xeno)

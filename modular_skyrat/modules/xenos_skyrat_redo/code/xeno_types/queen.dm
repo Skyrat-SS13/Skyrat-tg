@@ -2,6 +2,7 @@
 
 /mob/living/carbon/alien/humanoid/skyrat/queen
 	name = "alien queen"
+	desc = "A hulking beast of an alien, for some reason this one seems more important than the others, you should probably quit staring at it and do something."
 	caste = "queen"
 	maxHealth = 500
 	health = 500
@@ -36,6 +37,9 @@
 	internal_organs += new /obj/item/organ/internal/alien/neurotoxin/queen
 	internal_organs += new /obj/item/organ/internal/alien/eggsac
 	..()
+
+/mob/living/carbon/alien/humanoid/skyrat/queen/alien_talk(message, shown_name = name)
+	..(message, shown_name, TRUE)
 
 /obj/item/organ/internal/alien/neurotoxin/queen
 	name = "neurotoxin gland"

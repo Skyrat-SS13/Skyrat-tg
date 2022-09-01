@@ -2,6 +2,7 @@
 
 /mob/living/carbon/alien/humanoid/skyrat/defender
 	name = "alien defender"
+	desc = "A heavy looking alien with a wrecking ball-like tail that'd probably hurt to get hit by."
 	caste = "defender"
 	maxHealth = 300
 	health = 300

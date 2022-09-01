@@ -2,6 +2,7 @@
 
 /mob/living/carbon/alien/humanoid/skyrat/sentinel
 	name = "alien sentinel"
+	desc = "An alien that'd be unremarkable if not for the bright coloring and visible acid glands that cover it."
 	caste = "sentinel"
 	maxHealth = 200
 	health = 200

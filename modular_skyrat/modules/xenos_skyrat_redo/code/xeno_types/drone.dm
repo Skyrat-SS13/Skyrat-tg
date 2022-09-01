@@ -2,6 +2,7 @@
 
 /mob/living/carbon/alien/humanoid/skyrat/drone
 	name = "alien drone"
+	desc = "As plain looking as you could call an alien with armored black chitin and large claws."
 	caste = "drone"
 	maxHealth = 200
 	health = 200
