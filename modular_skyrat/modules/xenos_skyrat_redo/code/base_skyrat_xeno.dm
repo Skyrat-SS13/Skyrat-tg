@@ -222,13 +222,13 @@
 	return vessel.max_plasma
 
 /mob/living/carbon/alien/humanoid/skyrat/alien_evolve(mob/living/carbon/alien/new_xeno)
-	var/mob/living/carbon/alien/humanoid/skyrat/new_xeno = new_xeno
+	var/mob/living/carbon/alien/humanoid/skyrat/xeno_to_transfer_to = new_xeno
 
-	new_xeno.setDir(dir)
-	new_xeno.has_just_evolved()
+	xeno_to_transfer_to.setDir(dir)
+	xeno_to_transfer_to.has_just_evolved()
 	if(mind)
-		mind.name = new_xeno.real_name
-		mind.transfer_to(new_xeno)
+		mind.name = xeno_to_transfer_to.real_name
+		mind.transfer_to(xeno_to_transfer_to)
 	qdel(src)
 
 /mob/living/carbon/alien/humanoid/skyrat/update_fire_overlay(stacks, on_fire, last_icon_state, suffix = "")
