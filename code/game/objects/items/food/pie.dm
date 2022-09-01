@@ -48,15 +48,24 @@
 	new/obj/effect/decal/cleanable/food/pie_smudge(hit_turf)
 	if(reagents?.total_volume)
 		reagents.expose(hit_atom, TOUCH)
+	var/is_creamable = TRUE
 	if(isliving(hit_atom))
 		var/mob/living/living_target_getting_hit = hit_atom
 		if(stunning)
+<<<<<<< HEAD
 			//living_target_getting_hit.Paralyze(2 SECONDS) //splat! //ORIGINAL
 			living_target_getting_hit.StaminaKnockdown(1 SECONDS, TRUE) //SKYRAT EDIT CHANGE - COMBAT
 		living_target_getting_hit.adjust_blurriness(1)
+=======
+			living_target_getting_hit.Paralyze(2 SECONDS) //splat!
+		if(iscarbon(living_target_getting_hit))
+			is_creamable = !!(living_target_getting_hit.get_bodypart(BODY_ZONE_HEAD))
+		if(is_creamable)
+			living_target_getting_hit.adjust_blurriness(1)
+>>>>>>> 431b0d72e25 (Headless humans can no longer recieve facial creampies. (#69547))
 		living_target_getting_hit.visible_message(span_warning("[living_target_getting_hit] is creamed by [src]!"), span_userdanger("You've been creamed by [src]!"))
 		playsound(living_target_getting_hit, SFX_DESECRATION, 50, TRUE)
-	if(is_type_in_typecache(hit_atom, GLOB.creamable))
+	if(is_creamable && is_type_in_typecache(hit_atom, GLOB.creamable))
 		hit_atom.AddComponent(/datum/component/creamed, src)
 	qdel(src)
 
