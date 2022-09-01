@@ -1,4 +1,6 @@
 /obj/item/clothing/suit/armor
+	icon = 'icons/obj/clothing/suits/armor.dmi'
+	worn_icon = 'icons/mob/clothing/suits/armor.dmi'
 	allowed = null
 	body_parts_covered = CHEST
 	cold_protection = CHEST|GROIN
@@ -53,6 +55,7 @@
 /obj/item/clothing/suit/armor/vest/marine/medic
 	name = "tactical medic's armor vest"
 	icon_state = "marine_medic"
+	body_parts_covered = CHEST|GROIN
 
 /obj/item/clothing/suit/armor/vest/old
 	name = "degrading armor vest"
@@ -88,15 +91,15 @@
 	uses_advanced_reskins = TRUE
 	unique_reskin = list(
 		"Greatcoat" = list(
-			RESKIN_ICON = 'icons/obj/clothing/suits.dmi',
+			RESKIN_ICON = 'icons/obj/clothing/suits/armor.dmi',
 			RESKIN_ICON_STATE = "hos",
-			RESKIN_WORN_ICON = 'icons/mob/clothing/suit.dmi',
+			RESKIN_WORN_ICON = 'icons/mob/clothing/suits/armor.dmi',
 			RESKIN_WORN_ICON_STATE = "hos"
 		),
 		"Trenchcoat" = list(
-			RESKIN_ICON = 'icons/obj/clothing/suits.dmi',
+			RESKIN_ICON = 'icons/obj/clothing/suits/armor.dmi',
 			RESKIN_ICON_STATE = "hostrench",
-			RESKIN_WORN_ICON = 'icons/mob/clothing/suit.dmi',
+			RESKIN_WORN_ICON = 'icons/mob/clothing/suits/armor.dmi',
 			RESKIN_WORN_ICON_STATE = "hostrench"
 		),
 		"Navy Blue Jacket" = list(
@@ -156,9 +159,9 @@
 	uses_advanced_reskins = TRUE
 	unique_reskin = list(
 		"Basic Warden Armor" = list(
-			RESKIN_ICON = 'icons/obj/clothing/suits.dmi',
+			RESKIN_ICON = 'icons/obj/clothing/suits/armor.dmi',
 			RESKIN_ICON_STATE = "warden_alt",
-			RESKIN_WORN_ICON = 'icons/mob/clothing/suit.dmi',
+			RESKIN_WORN_ICON = 'icons/mob/clothing/suits/armor.dmi',
 			RESKIN_WORN_ICON_STATE = "warden_alt"
 		),
 		"Standard" = list(

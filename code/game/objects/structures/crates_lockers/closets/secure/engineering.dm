@@ -22,7 +22,6 @@
 	new /obj/item/storage/box/gas_miner_beacons(src) // SKYRAT EDIT ADDITION
 	new /obj/item/construction/plumbing/engineering(src) //SKYRAT EDIT ADDITION
 	new /obj/item/circuitboard/machine/rodstopper(src) //SKYRAT EDIT ADDITION
-	new /obj/item/summon_beacon/poppy(src) //SKYRAT EDIT ADDITION
 
 /obj/structure/closet/secure_closet/engineering_electrical
 	name = "electrical supplies locker"
@@ -84,7 +83,7 @@
 	new /obj/item/tank/internals/emergency_oxygen/engi(src)
 	new /obj/item/holosign_creator/atmos(src)
 	new /obj/item/watertank/atmos(src)
-	new /obj/item/clothing/suit/fire/atmos(src)
+	new /obj/item/clothing/suit/utility/fire/atmos(src)
 	new /obj/item/clothing/mask/gas/atmos(src)
 	new /obj/item/clothing/head/hardhat/atmos(src)
 	new /obj/item/clothing/glasses/meson/engine/tray(src)

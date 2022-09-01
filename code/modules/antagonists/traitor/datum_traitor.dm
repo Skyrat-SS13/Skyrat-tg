@@ -47,10 +47,10 @@
 			uplink.uplink_handler = uplink_handler
 		else
 			uplink_handler = uplink.uplink_handler
-		uplink_handler.has_progression = TRUE
+		uplink_handler.has_progression = progression_enabled //SKYRAT EDIT
 		SStraitor.register_uplink_handler(uplink_handler)
 
-		uplink_handler.has_objectives = TRUE
+		uplink_handler.has_objectives = progression_enabled //SKYRAT EDIT
 		uplink_handler.generate_objectives()
 
 		if(uplink_handler.progression_points < SStraitor.current_global_progression)
@@ -66,8 +66,7 @@
 					uplink_items += item
 					continue
 		uplink_handler.extra_purchasable += create_uplink_sales(uplink_sale_count, /datum/uplink_category/discounts, -1, uplink_items)
-
-	if(give_objectives)
+	if(give_objectives && progression_enabled) //SKYRAT EDIT - progression_enabled
 		forge_traitor_objectives()
 
 	pick_employer()
@@ -204,8 +203,7 @@
 /datum/antagonist/traitor/proc/forge_traitor_objectives()
 	objectives.Cut()
 
-	//SKYRAT EDIT START - OBJECTIVE REMOVAL
-	/*
+
 	var/datum/objective/traitor_progression/final_objective = new /datum/objective/traitor_progression()
 	final_objective.owner = owner
 	objectives += final_objective
@@ -213,8 +211,6 @@
 	var/datum/objective/traitor_objectives/objective_completion = new /datum/objective/traitor_objectives()
 	objective_completion.owner = owner
 	objectives += objective_completion
-	*/
-	//SKYRAT EDIT END
 
 /datum/antagonist/traitor/apply_innate_effects(mob/living/mob_override)
 	. = ..()
@@ -335,4 +331,4 @@
 	sword.icon_state = "e_sword_on_red"
 	sword.worn_icon_state = "e_sword_on_red"
 
-	H.update_inv_hands()
+	H.update_held_items()

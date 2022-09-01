@@ -362,30 +362,38 @@
 /datum/sprite_accessory/hair/skyrat/hyenamane
 	name = "Hyena mane"
 	icon_state = "hair_hyenamane"
-	
+
 /datum/sprite_accessory/hair/skyrat/halfshavedlong
 	name = "Half-shaved long"
 	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/more_hair.dmi'
 	icon_state = "halfshave_long"
-	
+
 /datum/sprite_accessory/hair/skyrat/halfshavedmessy
 	name = "Half-shaved messy"
 	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/more_hair.dmi'
 	icon_state = "halfshave_messy"
-	
+
 /datum/sprite_accessory/hair/skyrat/halfshavedmessylong
 	name = "Half-shave long messy"
 	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/more_hair.dmi'
 	icon_state = "halfshave_messylong"
-	
+
 /datum/sprite_accessory/hair/skyrat/halfshavedglamorous
 	name = "Half-shave glamorous"
 	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/more_hair.dmi'
 	icon_state = "halfshave_glamorous"
-	
+
 /datum/sprite_accessory/hair/skyrat/emoshort
 	name = "Emo Short"
 	icon_state = "hair_emoshort"
+
+/datum/sprite_accessory/hair/skyrat/mediumbraid
+	name = "Medium Braid"
+	icon_state = "hair_mediumbraid"
+
+/datum/sprite_accessory/hair/skyrat/long_over_eye_alt
+	name = "Long Over Eye Alt"
+	icon_state = "hair_longovereye_alt"
 
 // Facial hair
 
@@ -423,5 +431,3 @@
 /datum/sprite_accessory/facial_hair/skyrat/squid
 	name = "Tentacle Beard"
 	icon_state = "facial_squid"
-
-

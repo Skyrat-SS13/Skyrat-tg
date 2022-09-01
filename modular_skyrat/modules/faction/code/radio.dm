@@ -16,7 +16,7 @@
 	icon_state = "com_headset_alt"
 	inhand_icon_state = "com_headset_alt"
 
-/obj/item/radio/headset/headset_faction/bowman/ComponentInitialize()
+/obj/item/radio/headset/headset_faction/bowman/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/wearertargeting/earprotection, list(ITEM_SLOT_EARS))
 

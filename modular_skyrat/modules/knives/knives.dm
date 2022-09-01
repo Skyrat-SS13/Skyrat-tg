@@ -6,6 +6,7 @@
 	desc = "A frontiersman's classic, closer to a shortsword than a knife. It boasts a full-tanged build, a brass handguard and pommel, a wicked sharp point, and a large, heavy blade, It's almost everything you could want in a knife, besides portability."
 	icon = 'modular_skyrat/modules/knives/icons/bowie.dmi'
 	icon_state = "bowiehand"
+	inhand_icon_state = "bowiehand"
 	lefthand_file = 'modular_skyrat/modules/knives/icons/bowie_lefthand.dmi'
 	righthand_file = 'modular_skyrat/modules/knives/icons/bowie_righthand.dmi'
 	worn_icon_state = "knife"
@@ -24,12 +25,11 @@
 	w_class = WEIGHT_CLASS_BULKY
 	resistance_flags = FLAMMABLE
 
-/obj/item/storage/belt/bowie_sheath/ComponentInitialize()
+/obj/item/storage/belt/bowie_sheath/Initialize(mapload)
 	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	STR.max_items = 1
-	STR.max_w_class = WEIGHT_CLASS_BULKY
-	STR.set_holdable(list(
+	atom_storage.max_slots = 1
+	atom_storage.max_total_storage = WEIGHT_CLASS_BULKY
+	atom_storage.set_holdable(list(
 		/obj/item/knife/bowie
 		))
 
@@ -45,9 +45,7 @@
 		to_chat(user, span_warning("[src] is empty!"))
 
 /obj/item/storage/belt/bowie_sheath/update_icon_state()
-	icon_state = initial(inhand_icon_state)
-	inhand_icon_state = initial(inhand_icon_state)
-	worn_icon_state = initial(worn_icon_state)
+	icon_state = initial(icon_state)
 	if(contents.len)
 		icon_state += "e-knife"
 	return ..()

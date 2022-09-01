@@ -11,12 +11,11 @@
 	drop_sound = 'sound/items/handling/toolbelt_drop.ogg'
 	pickup_sound =  'sound/items/handling/toolbelt_pickup.ogg'
 
-/obj/item/storage/belt/erpbelt/ComponentInitialize()
+/obj/item/storage/belt/erpbelt/Initialize(mapload)
 	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	STR.max_w_class = WEIGHT_CLASS_NORMAL
-	STR.max_combined_w_class = 21
-	STR.set_holdable(list(
+	atom_storage.max_specific_storage = WEIGHT_CLASS_NORMAL
+	atom_storage.max_total_storage = 21
+	atom_storage.set_holdable(list(
 						//toys
 						/obj/item/clothing/sextoy/eggvib/signalvib,
 						/obj/item/clothing/sextoy/buttplug,
@@ -37,7 +36,7 @@
 						/obj/item/spanking_pad,
 						/obj/item/clothing/sextoy/vibrator,
 						/obj/item/restraints/handcuffs/lewd,
-						/obj/item/reagent_containers/glass/lewd_filter,
+						/obj/item/reagent_containers/cup/lewd_filter,
 						/obj/item/assembly/signaler, //because it's used for several toys
 
 						//clothing
@@ -83,9 +82,9 @@
 						//chems
 						/obj/item/reagent_containers/pill/crocin,
 						/obj/item/reagent_containers/pill/camphor,
-						/obj/item/reagent_containers/glass/bottle/breast_enlarger,
-						/obj/item/reagent_containers/glass/bottle/penis_enlarger,
+						/obj/item/reagent_containers/cup/bottle/breast_enlarger,
+						/obj/item/reagent_containers/cup/bottle/penis_enlarger,
 						/obj/item/reagent_containers/pill/hexacrocin,
 						/obj/item/reagent_containers/pill/pentacamphor,
-						/obj/item/reagent_containers/glass/bottle/hexacrocin,
-						/obj/item/reagent_containers/glass/bottle/pentacamphor))
+						/obj/item/reagent_containers/cup/bottle/hexacrocin,
+						/obj/item/reagent_containers/cup/bottle/pentacamphor))

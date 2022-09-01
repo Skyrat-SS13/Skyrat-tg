@@ -20,7 +20,6 @@
 	new /obj/item/circuitboard/machine/techfab/department/science(src)
 	new /obj/item/storage/photo_album/rd(src)
 	new /obj/item/storage/box/skillchips/science(src)
-	new /obj/item/summon_beacon/borgi(src) // SKYRAT EDIT ADDITION
 
 
 

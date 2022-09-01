@@ -151,7 +151,6 @@
 			affected.react(src)
 			location.assume_air(affected)
 
-	location.PolluteListTurf(list(/datum/pollutant/smoke = 15, /datum/pollutant/carbon_air_pollution = 5), POLLUTION_ACTIVE_EMITTER_CAP) //SKYRAT EDIT ADDITION
 	if(reference)
 		volume = 0
 		var/list/cached_results = reference.reaction_results

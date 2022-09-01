@@ -42,6 +42,14 @@ GLOBAL_LIST_INIT(gondola_recipes, list ( \
 	new/datum/stack_recipe("gondola suit", /obj/item/clothing/under/costume/gondola, 2), \
 	))
 
+/obj/item/stack/sheet/animalhide/mothroach
+	name = "mothroach hide"
+	desc = "A thin layer of mothroach hide."
+	singular_name = "mothroach hide piece"
+	icon_state = "sheet-mothroach"
+	inhand_icon_state = "sheet-mothroach"
+	merge_type = /obj/item/stack/sheet/animalhide/mothroach
+
 /obj/item/stack/sheet/animalhide/gondola
 	name = "gondola hide"
 	desc = "The extremely valuable product of gondola hunting."
@@ -80,7 +88,7 @@ GLOBAL_LIST_INIT(corgi_recipes, list ( \
 
 GLOBAL_LIST_INIT(monkey_recipes, list ( \
 	new/datum/stack_recipe("monkey mask", /obj/item/clothing/mask/gas/monkeymask, 1), \
-	new/datum/stack_recipe("monkey suit", /obj/item/clothing/suit/monkeysuit, 2), \
+	new/datum/stack_recipe("monkey suit", /obj/item/clothing/suit/costume/monkeysuit, 2), \
 	))
 
 /obj/item/stack/sheet/animalhide/monkey/get_main_recipes()
@@ -105,7 +113,7 @@ GLOBAL_LIST_INIT(monkey_recipes, list ( \
 
 GLOBAL_LIST_INIT(xeno_recipes, list ( \
 	new/datum/stack_recipe("alien helmet", /obj/item/clothing/head/xenos, 1), \
-	new/datum/stack_recipe("alien suit", /obj/item/clothing/suit/xenos, 2), \
+	new/datum/stack_recipe("alien suit", /obj/item/clothing/suit/costume/xenos, 2), \
 	))
 
 /obj/item/stack/sheet/animalhide/xeno/get_main_recipes()
@@ -236,7 +244,7 @@ GLOBAL_LIST_INIT(sinew_recipes, list ( \
 /obj/item/stack/sheet/animalhide/goliath_hide
 	name = "goliath hide plates"
 	desc = "Pieces of a goliath's rocky hide, these might be able to make your suit a bit more durable to attack from the local fauna."
-	icon = 'icons/obj/mining.dmi'
+	icon = 'icons/obj/stack_objects.dmi'
 	icon_state = "goliath_hide"
 	singular_name = "hide plate"
 	max_amount = 6
@@ -256,7 +264,7 @@ GLOBAL_LIST_INIT(sinew_recipes, list ( \
 /obj/item/stack/sheet/animalhide/ashdrake
 	name = "ash drake hide"
 	desc = "The strong, scaled hide of an ash drake."
-	icon = 'icons/obj/mining.dmi'
+	icon = 'icons/obj/stack_objects.dmi'
 	icon_state = "dragon_hide"
 	singular_name = "drake plate"
 	max_amount = 10

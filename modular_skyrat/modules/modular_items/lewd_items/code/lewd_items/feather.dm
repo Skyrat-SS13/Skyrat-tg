@@ -68,7 +68,7 @@
 		return
 	target.do_jitter_animation()
 	target.adjustStaminaLoss(4)
-	SEND_SIGNAL(target, COMSIG_ADD_MOOD_EVENT, "tickled", /datum/mood_event/tickled)
+	target.add_mood_event("tickled", /datum/mood_event/tickled)
 	target.adjustArousal(3)
 	user.visible_message(span_purple("[user] [message]!"))
 	playsound(loc, pick('sound/items/handling/cloth_drop.ogg', // I duplicate this part of code because im useless shitcoder that can't make it work properly without tons of repeating code blocks

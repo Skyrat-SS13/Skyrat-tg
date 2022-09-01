@@ -70,16 +70,13 @@
 	///the path of the item that will be spawned upon completion
 	var/spawn_item
 
-/obj/item/forging/incomplete/attackby(obj/item/I, mob/living/user, params)
+/obj/item/forging/incomplete/tong_act(mob/living/user, obj/item/tool)
 	. = ..()
-	if(istype(I, /obj/item/forging/tongs))
-		var/obj/search_obj = locate(/obj) in I.contents
-		if(search_obj)
-			to_chat(user, span_warning("The tongs are already holding something, make room."))
-			return
-		forceMove(I)
-		I.icon_state = "tong_full"
+	if(length(tool.contents) > 0)
+		user.balloon_alert("tongs are full already!")
 		return
+	forceMove(tool)
+	tool.icon_state = "tong_full"
 
 /obj/item/forging/incomplete/chain
 	name = "incomplete chain"
@@ -146,6 +143,20 @@
 	average_hits = 12
 	average_wait = 0.5 SECONDS
 	spawn_item = /obj/item/forging/complete/arrowhead
+
+/obj/item/forging/incomplete/rail_nail
+	name = "incomplete rail nail"
+	icon = 'modular_skyrat/modules/ashwalkers/icons/railroad.dmi'
+	icon_state = "hot_nail"
+	average_hits = 10
+	average_wait = 0.5 SECONDS
+	spawn_item = /obj/item/forging/complete/rail_nail
+
+/obj/item/forging/incomplete/rail_cart
+	name = "incomplete rail cart"
+	icon = 'modular_skyrat/modules/ashwalkers/icons/railroad.dmi'
+	icon_state = "hot_cart"
+	spawn_item = /obj/vehicle/ridden/rail_cart
 
 //"complete" pre-complete items
 /obj/item/forging/complete
@@ -227,6 +238,13 @@
 	icon_state = "arrowhead"
 	spawning_item = /obj/item/arrow_spawner
 
+/obj/item/forging/complete/rail_nail
+	name = "rail nail"
+	desc = "A nail, ready to be used with some wood in order to make tracks."
+	icon = 'modular_skyrat/modules/ashwalkers/icons/railroad.dmi'
+	icon_state = "nail"
+	spawning_item = /obj/item/stack/rail_track/ten
+
 /obj/item/forging/coil
 	name = "coil"
 	desc = "A simple coil, comprised of coiled iron rods."
@@ -267,3 +285,11 @@
 		qdel(src)
 		return
 	return ..()
+
+/obj/item/stack/rods/tong_act(mob/living/user, obj/item/tool)
+	. = ..()
+	if(length(tool.contents) > 0)
+		user.balloon_alert("tongs are full already!")
+		return
+	forceMove(tool)
+	tool.icon_state = "tong_full"

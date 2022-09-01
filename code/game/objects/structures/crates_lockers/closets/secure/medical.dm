@@ -7,14 +7,14 @@
 /obj/structure/closet/secure_closet/medical1/PopulateContents()
 	..()
 	var/static/items_inside = list(
-		/obj/item/reagent_containers/glass/beaker = 2,
+		/obj/item/reagent_containers/cup/beaker = 2,
 		/obj/item/reagent_containers/dropper = 2,
 		/obj/item/storage/belt/medical = 1,
 		/obj/item/storage/box/syringes = 1,
-		/obj/item/reagent_containers/glass/bottle/toxin = 1,
-		/obj/item/reagent_containers/glass/bottle/morphine = 2,
-		/obj/item/reagent_containers/glass/bottle/epinephrine= 3,
-		/obj/item/reagent_containers/glass/bottle/multiver = 3,
+		/obj/item/reagent_containers/cup/bottle/toxin = 1,
+		/obj/item/reagent_containers/cup/bottle/morphine = 2,
+		/obj/item/reagent_containers/cup/bottle/epinephrine= 3,
+		/obj/item/reagent_containers/cup/bottle/multiver = 3,
 		/obj/item/storage/box/rxglasses = 1)
 	generate_items_inside(items_inside,src)
 
@@ -62,7 +62,7 @@
 	new /obj/item/storage/backpack/medic(src)
 	new /obj/item/radio/headset/headset_srvmed(src)
 	new /obj/item/clipboard(src)
-	new /obj/item/clothing/suit/straight_jacket(src)
+	new /obj/item/clothing/suit/jacket/straight_jacket(src)
 	new /obj/item/clothing/ears/earmuffs(src)
 	new /obj/item/clothing/mask/muzzle(src)
 	new /obj/item/clothing/glasses/blindfold(src)
@@ -87,7 +87,7 @@
 	new /obj/item/storage/briefcase/medicalgunset/cmo(src) //SKYRAT ADDITON MEDIGUNS//
 	// new /obj/item/reagent_containers/hypospray/cmo(src) - SKYRAT REMOVAL - New Hyposprays
 	new /obj/item/storage/hypospraykit/cmo(src) //SKYRAT ADDITION - New Hyposprays
-	new /obj/item/autosurgeon/organ/cmo(src)
+	new /obj/item/autosurgeon/medical_hud(src)
 	new /obj/item/door_remote/chief_medical_officer(src)
 	new /obj/item/clothing/neck/petcollar(src)
 	new /obj/item/pet_carrier(src)
@@ -123,7 +123,7 @@
 	new /obj/item/storage/box/hypospray(src) //SKYRAT EDIT ADDITION - HYPOSPRAYS
 	new /obj/item/ph_booklet(src)
 	new /obj/item/reagent_containers/dropper(src)
-	new /obj/item/reagent_containers/glass/bottle/acidic_buffer(src) //hopefully they get the hint
+	new /obj/item/reagent_containers/cup/bottle/acidic_buffer(src) //hopefully they get the hint
 
 /obj/structure/closet/secure_closet/chemical/heisenberg //contains one of each beaker, syringe etc.
 	name = "advanced chemical closet"

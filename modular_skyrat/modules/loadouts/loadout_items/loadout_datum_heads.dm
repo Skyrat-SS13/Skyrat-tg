@@ -24,65 +24,37 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 *	BEANIES
 */
 
+/datum/loadout_item/head/white_beanie
+	name = "Recolorable Beanie"
+	item_path = /obj/item/clothing/head/beanie
+
 /datum/loadout_item/head/black_beanie
 	name = "Black Beanie"
 	item_path = /obj/item/clothing/head/beanie/black
-
-/datum/loadout_item/head/christmas_beanie
-	name = "Christmas Beanie"
-	item_path = /obj/item/clothing/head/beanie/christmas
-
-/datum/loadout_item/head/cyan_beanie
-	name = "Cyan Beanie"
-	item_path = /obj/item/clothing/head/beanie/cyan
-
-/datum/loadout_item/head/dark_blue_beanie
-	name = "Dark Blue Beanie"
-	item_path = /obj/item/clothing/head/beanie/darkblue
-
-/datum/loadout_item/head/green_beanie
-	name = "Green Beanie"
-	item_path = /obj/item/clothing/head/beanie/green
-
-/datum/loadout_item/head/orange_beanie
-	name = "Orange Beanie"
-	item_path = /obj/item/clothing/head/beanie/orange
-
-/datum/loadout_item/head/purple_beanie
-	name = "Purple Beanie"
-	item_path = /obj/item/clothing/head/beanie/purple
 
 /datum/loadout_item/head/red_beanie
 	name = "Red Beanie"
 	item_path = /obj/item/clothing/head/beanie/red
 
-/datum/loadout_item/head/white_beanie
-	name = "White Beanie"
-	item_path = /obj/item/clothing/head/beanie
+/datum/loadout_item/head/dark_blue_beanie
+	name = "Dark Blue Beanie"
+	item_path = /obj/item/clothing/head/beanie/darkblue
 
 /datum/loadout_item/head/yellow_beanie
 	name = "Yellow Beanie"
 	item_path = /obj/item/clothing/head/beanie/yellow
 
-/datum/loadout_item/head/striped_beanie
-	name = "Striped Beanie"
-	item_path = /obj/item/clothing/head/beanie/striped
-
-/datum/loadout_item/head/striped_red_beanie
-	name = "Striped Red Beanie"
-	item_path = /obj/item/clothing/head/beanie/stripedred
-
-/datum/loadout_item/head/striped_blue_beanie
-	name = "Striped Blue Beanie"
-	item_path = /obj/item/clothing/head/beanie/stripedblue
-
-/datum/loadout_item/head/striped_green_beanie
-	name = "Striped Green Beanie"
-	item_path = /obj/item/clothing/head/beanie/stripedgreen
+/datum/loadout_item/head/orange_beanie
+	name = "Orange Beanie"
+	item_path = /obj/item/clothing/head/beanie/orange
 
 /datum/loadout_item/head/rastafarian
 	name = "Rastafarian Cap"
-	item_path = /obj/item/clothing/head/beanie/rasta
+	item_path = /obj/item/clothing/head/rasta
+
+/datum/loadout_item/head/christmas_beanie
+	name = "Christmas Beanie"
+	item_path = /obj/item/clothing/head/beanie/christmas
 
 /*
 *	BERETS
@@ -224,6 +196,42 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 	name = "Bowler Hat"
 	item_path = /obj/item/clothing/head/bowler
 
+/datum/loadout_item/head/bearpelt
+	name = "Brown Bear Pelt"
+	item_path = /obj/item/clothing/head/pelt
+
+/datum/loadout_item/head/bearpeltblack
+	name = "Black Bear Pelt"
+	item_path = /obj/item/clothing/head/pelt/black
+
+/datum/loadout_item/head/bearpeltwhite
+	name = "White Bear Pelt"
+	item_path = /obj/item/clothing/head/pelt/white
+
+/datum/loadout_item/head/wolfpelt
+	name = "Brown Wolf Pelt"
+	item_path = /obj/item/clothing/head/pelt/wolf
+
+/datum/loadout_item/head/wolfpeltblack
+	name = "Black Wolf Pelt"
+	item_path = /obj/item/clothing/head/pelt/wolf/black
+
+/datum/loadout_item/head/wolfpeltwhite
+	name = "White Wolf Pelt"
+	item_path = /obj/item/clothing/head/pelt/wolf/white
+
+/datum/loadout_item/head/tigerpelt
+	name = "Shiny Tiger Pelt"
+	item_path = /obj/item/clothing/head/pelt/tiger
+
+/datum/loadout_item/head/tigerpeltsnow
+	name = "Snow Tiger Pelt"
+	item_path = /obj/item/clothing/head/pelt/snow_tiger
+
+/datum/loadout_item/head/tigerpeltpink
+	name = "Pink Tiger Pelt"
+	item_path = /obj/item/clothing/head/pelt/pink_tiger
+
 /*
 *	CHRISTMAS
 */
@@ -319,9 +327,6 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 	name = "Ushanka"
 	item_path = /obj/item/clothing/head/ushanka
 
-/datum/loadout_item/head/ushanka/soviet
-	name = "Soviet Ushanka"
-	item_path = /obj/item/clothing/head/ushanka/soviet
 
 /datum/loadout_item/head/wrussian
 	name = "Black Papakha"

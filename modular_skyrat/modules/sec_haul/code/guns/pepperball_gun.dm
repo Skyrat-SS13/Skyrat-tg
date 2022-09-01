@@ -17,7 +17,7 @@
 	company_flag = COMPANY_BOLT
 
 /obj/item/gun/ballistic/automatic/pistol/pepperball/add_seclight_point()
-	AddComponent(/datum/component/seclite_attachable, light_overlay_icon = 'icons/obj/guns/flashlights.dmi', light_overlay = "flight")
+	AddComponent(/datum/component/seclite_attachable, light_overlay_icon = 'icons/obj/weapons/guns/flashlights.dmi', light_overlay = "flight")
 
 /obj/item/ammo_box/magazine/pepperball
 	name = "pistol magazine (pepperball)"
@@ -64,7 +64,7 @@
 	build_type = AUTOLATHE | PROTOLATHE
 	materials = list(/datum/material/iron = 5000)
 	build_path = /obj/item/ammo_box/advanced/pepperballs
-	category = list("intial", "Security", "Ammo")
+	category = list(RND_CATEGORY_INITIAL, RND_CATEGORY_SECURITY, RND_CATEGORY_AMMO)
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 
 /obj/item/ammo_box/advanced/pepperballs

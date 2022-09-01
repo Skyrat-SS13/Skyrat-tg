@@ -6,7 +6,7 @@
 	faction = FACTION_STATION
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the head of security and any security sergeants"
+	supervisors = SUPERVISOR_HOS
 	selection_color = "#ffeeee"
 	minimal_player_age = 7
 	exp_requirements = 120
@@ -59,7 +59,6 @@
 	head = /obj/item/clothing/head/beret/sec/peacekeeper/security_medic
 	backpack_contents = list(
 		/obj/item/storage/box/gunset/firefly = 1,
-		/obj/item/summon_beacon/secmed = 1,
 		)
 	backpack = /obj/item/storage/backpack/security
 	satchel = /obj/item/storage/backpack/satchel/sec

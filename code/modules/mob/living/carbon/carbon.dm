@@ -222,6 +222,13 @@
 		SEND_SIGNAL(src, COMSIG_CARBON_EMBED_RIP, I, L)
 		return
 
+	if(href_list["show_paper_note"])
+		var/obj/item/paper/paper_note = locate(href_list["show_paper_note"])
+		if(!paper_note)
+			return
+
+		paper_note.show_through_camera(usr)
+
 /mob/living/carbon/on_fall()
 	. = ..()
 	loc.handle_fall(src)//it's loc so it doesn't call the mob's handle_fall which does nothing
@@ -335,7 +342,7 @@
 	if (legcuffed)
 		var/obj/item/W = legcuffed
 		legcuffed = null
-		update_inv_legcuffed()
+		update_worn_legcuffs()
 		if (client)
 			client.screen -= W
 		if (W)
@@ -373,7 +380,7 @@
 			legcuffed.forceMove(drop_location())
 			legcuffed = null
 			I.dropped(src)
-			update_inv_legcuffed()
+			update_worn_legcuffs()
 			return TRUE
 
 /mob/living/carbon/proc/accident(obj/item/I)
@@ -436,13 +443,13 @@
 		if(message)
 			visible_message(span_danger("[src] throws up all over [p_them()]self!"), \
 							span_userdanger("You throw up all over yourself!"))
-			SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "vomit", /datum/mood_event/vomitself)
+			add_mood_event("vomit", /datum/mood_event/vomitself)
 		distance = 0
 	else
 		if(message)
 			visible_message(span_danger("[src] throws up!"), span_userdanger("You throw up!"))
 			if(!isflyperson(src))
-				SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "vomit", /datum/mood_event/vomit)
+				add_mood_event("vomit", /datum/mood_event/vomit)
 
 	if(stun)
 		Paralyze(80)
@@ -789,10 +796,6 @@
 		else
 			hud_used.stamina.icon_state = "stamina6"
 
-/mob/living/carbon/proc/update_internals_hud_icon(internal_state = 0)
-	if(hud_used?.internals)
-		hud_used.internals.icon_state = "internal[internal_state]"
-
 /mob/living/carbon/proc/update_spacesuit_hud_icon(cell_state = "empty")
 	if(hud_used?.spacesuit)
 		hud_used.spacesuit.icon_state = "spacesuit_[cell_state]"
@@ -840,12 +843,12 @@
 		drop_all_held_items()
 		stop_pulling()
 		throw_alert(ALERT_HANDCUFFED, /atom/movable/screen/alert/restrained/handcuffed, new_master = src.handcuffed)
-		SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "handcuffed", /datum/mood_event/handcuffed)
+		add_mood_event("handcuffed", /datum/mood_event/handcuffed)
 	else
 		clear_alert(ALERT_HANDCUFFED)
-		SEND_SIGNAL(src, COMSIG_CLEAR_MOOD_EVENT, "handcuffed")
+		clear_mood_event("handcuffed")
 	update_action_buttons_icon() //some of our action buttons might be unusable when we're handcuffed.
-	update_inv_handcuffed()
+	update_worn_handcuffs()
 	update_hud_handcuffed()
 
 /mob/living/carbon/heal_and_revive(heal_to = 75, revive_message)
@@ -869,8 +872,7 @@
 	if(mind)
 		for(var/addiction_type in subtypesof(/datum/addiction))
 			mind.remove_addiction_points(addiction_type, MAX_ADDICTION_POINTS) //Remove the addiction!
-	for(var/O in internal_organs)
-		var/obj/item/organ/organ = O
+	for(var/obj/item/organ/organ as anything in internal_organs)
 		organ.setOrganDamage(0)
 	for(var/thing in diseases)
 		var/datum/disease/D = thing
@@ -894,13 +896,16 @@
 	. = ..()
 	if(!getorgan(/obj/item/organ/internal/brain) && (!mind || !mind.has_antag_datum(/datum/antagonist/changeling)) || HAS_TRAIT(src, TRAIT_HUSK))
 		return FALSE
-//SKYRAT EDIT ADDITION BEGIN - TRAIT_DNR
+//SKYRAT EDIT ADDITION - DNR TRAIT
 	if(HAS_TRAIT(src, TRAIT_DNR))
 		return FALSE
-//SKYRAT EDIT ADDITION END
+//SKYRAT EDIT ADDITION END - DNR TRAIT
 
 /mob/living/carbon/proc/can_defib()
-
+//SKYRAT EDIT ADDITION - DNR TRAIT
+	if(HAS_TRAIT(src, TRAIT_DNR)) //This is also added when a ghost DNR's!
+		return DEFIB_FAIL_DNR
+//SKYRAT EDIT ADDITION END - DNR TRAIT
 
 	if (suiciding)
 		return DEFIB_FAIL_SUICIDE
@@ -944,12 +949,11 @@
 	if(QDELETED(src))
 		return
 	var/organs_amt = 0
-	for(var/X in internal_organs)
-		var/obj/item/organ/O = X
+	for(var/obj/item/organ/internal_organ as anything in internal_organs)
 		if(prob(50))
 			organs_amt++
-			O.Remove(src)
-			O.forceMove(drop_location())
+			internal_organ.Remove(src)
+			internal_organ.forceMove(drop_location())
 	if(organs_amt)
 		to_chat(user, span_notice("You retrieve some of [src]\'s internal organs!"))
 	remove_all_embedded_objects()
@@ -1004,9 +1008,8 @@
 
 
 /mob/living/carbon/proc/create_internal_organs()
-	for(var/X in internal_organs)
-		var/obj/item/organ/I = X
-		I.Insert(src)
+	for(var/obj/item/organ/internal/internal_organ in internal_organs)
+		internal_organ.Insert(src)
 
 /proc/cmp_organ_slot_asc(slot_a, slot_b)
 	return GLOB.organ_process_order.Find(slot_a) - GLOB.organ_process_order.Find(slot_b)
@@ -1150,10 +1153,8 @@
 		return TRUE
 	if(HAS_TRAIT(src, TRAIT_DUMB))
 		return TRUE
-	var/datum/component/mood/mood = src.GetComponent(/datum/component/mood)
-	if(mood)
-		if(mood.sanity < SANITY_UNSTABLE)
-			return TRUE
+	if(mob_mood.sanity < SANITY_UNSTABLE)
+		return TRUE
 
 /mob/living/carbon/wash(clean_types)
 	. = ..()
@@ -1164,11 +1165,11 @@
 			. = TRUE
 
 	if(back?.wash(clean_types))
-		update_inv_back(0)
+		update_worn_back(0)
 		. = TRUE
 
 	if(head?.wash(clean_types))
-		update_inv_head()
+		update_worn_head()
 		. = TRUE
 
 	// Check and wash stuff that can be covered
@@ -1176,11 +1177,11 @@
 
 	// If the eyes are covered by anything but glasses, that thing will be covering any potential glasses as well.
 	if(glasses && is_eyes_covered(FALSE, TRUE, TRUE) && glasses.wash(clean_types))
-		update_inv_glasses()
+		update_worn_glasses()
 		. = TRUE
 
 	if(wear_mask && !(obscured & ITEM_SLOT_MASK) && wear_mask.wash(clean_types))
-		update_inv_wear_mask()
+		update_worn_mask()
 		. = TRUE
 
 	if(ears && !(obscured & ITEM_SLOT_EARS) && ears.wash(clean_types))
@@ -1188,15 +1189,15 @@
 		. = TRUE
 
 	if(wear_neck && !(obscured & ITEM_SLOT_NECK) && wear_neck.wash(clean_types))
-		update_inv_neck()
+		update_worn_neck()
 		. = TRUE
 
 	if(shoes && !(obscured & ITEM_SLOT_FEET) && shoes.wash(clean_types))
-		update_inv_shoes()
+		update_worn_shoes()
 		. = TRUE
 
 	if(gloves && !(obscured & ITEM_SLOT_GLOVES) && gloves.wash(clean_types))
-		update_inv_gloves()
+		update_worn_gloves()
 		. = TRUE
 
 /// if any of our bodyparts are bleeding
@@ -1364,7 +1365,7 @@
 	target.visible_message(span_danger("[shover] shoves [target.name] into [name]!"),
 		span_userdanger("You're shoved into [name] by [shover]!"), span_hear("You hear aggressive shuffling followed by a loud thud!"), COMBAT_MESSAGE_RANGE, src)
 	to_chat(src, span_danger("You shove [target.name] into [name]!"))
-	log_combat(src, target, "shoved", "into [name]")
+	log_combat(shover, target, "shoved", addition = "into [name]")
 	return COMSIG_CARBON_SHOVE_HANDLED
 
 // Checks to see how many hands this person has to sign with.

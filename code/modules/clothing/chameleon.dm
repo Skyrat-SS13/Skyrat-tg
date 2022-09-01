@@ -41,7 +41,7 @@
 
 	var/mob/living/simple_animal/drone/D
 
-	if(istype(owner, /mob/living/simple_animal/drone))
+	if(isdrone(owner))
 		D = owner
 	else
 		return
@@ -234,7 +234,7 @@
 				item_target.righthand_file = SSgreyscale.GetColoredIconByType(initial(picked_item.greyscale_config_inhand_right), initial(picked_item.greyscale_colors))
 		item_target.worn_icon_state = initial(picked_item.worn_icon_state)
 		item_target.inhand_icon_state = initial(picked_item.inhand_icon_state)
-		if(istype(item_target, /obj/item/clothing) && ispath(picked_item, /obj/item/clothing))
+		if(isclothing(item_target) && ispath(picked_item, /obj/item/clothing))
 			var/obj/item/clothing/clothing_target = item_target
 			var/obj/item/clothing/picked_clothing = picked_item
 			clothing_target.flags_cover = initial(picked_clothing.flags_cover)
@@ -410,6 +410,8 @@
 	name = "armor"
 	desc = "A slim armored vest that protects against most types of damage."
 	icon_state = "armor"
+	icon = 'icons/obj/clothing/suits/armor.dmi'
+	worn_icon = 'icons/mob/clothing/suits/armor.dmi'
 	inhand_icon_state = "armor"
 	blood_overlay_type = "armor"
 	resistance_flags = NONE
@@ -616,15 +618,14 @@
 	desc = "A pair of black shoes."
 	resistance_flags = NONE
 	armor = list(MELEE = 10, BULLET = 10, LASER = 10, ENERGY = 0, BOMB = 0, BIO = 90, FIRE = 50, ACID = 50)
-	pocket_storage_component_path = /datum/component/storage/concrete/pockets/shoes
 	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // Skyrat edit
 	special_desc = "A pair of chameleon shoes employed by the Syndicate in infiltration operations." // Skyrat edit
-
 
 	var/datum/action/item_action/chameleon/change/chameleon_action
 
 /obj/item/clothing/shoes/chameleon/Initialize(mapload)
 	. = ..()
+	create_storage(type = /datum/storage/pockets/shoes)
 	chameleon_action = new(src)
 	chameleon_action.chameleon_type = /obj/item/clothing/shoes
 	chameleon_action.chameleon_name = "Shoes"
@@ -691,10 +692,7 @@
 	chameleon_action.initialize_disguises()
 	add_item_action(chameleon_action)
 
-/obj/item/storage/belt/chameleon/ComponentInitialize()
-	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	STR.silent = TRUE
+	atom_storage.silent = TRUE
 
 /obj/item/storage/belt/chameleon/emp_act(severity)
 	. = ..()
@@ -820,7 +818,7 @@
 	/// The badmin mode. Makes your projectiles act like the real deal.
 	var/real_hits = FALSE
 
-/obj/item/gun/energy/laser/chameleon/Initialize()
+/obj/item/gun/energy/laser/chameleon/Initialize(mapload)
 	. = ..()
 	chameleon_action = new(src)
 	chameleon_action.chameleon_type = /obj/item/gun
@@ -925,7 +923,7 @@
 		stack_trace("[template_projectile] is not a valid projectile.")
 		return FALSE
 
-	chameleon_projectile_vars = list("name" = "practice laser", "icon" = 'icons/obj/guns/projectiles.dmi', "icon_state" = "laser")
+	chameleon_projectile_vars = list("name" = "practice laser", "icon" = 'icons/obj/weapons/guns/projectiles.dmi', "icon_state" = "laser")
 
 	var/default_state = isnull(template_projectile.icon_state) ? "laser" : template_projectile.icon_state
 

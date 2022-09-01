@@ -12,19 +12,13 @@
 	abstract_type = /datum/traitor_objective/final
 	progression_minimum = 140 MINUTES
 
-	var/progression_points_in_objectives = 60 MINUTES //skyrat edit: original value 20 MINUTES
+	var/progression_points_in_objectives = 20 MINUTES
 
 /// Determines if this final objective can be taken. Should be put into every final objective's generate function.
 /datum/traitor_objective/final/proc/can_take_final_objective()
 	if(handler.get_completion_progression(/datum/traitor_objective) < progression_points_in_objectives)
 		return FALSE
 	if(SStraitor.get_taken_count(type) > 0) // Prevents multiple people from ever getting the same final objective.
-		return FALSE
-	var/valid_crystal = FALSE
-	for(var/obj/machinery/power/supermatter_crystal/engine/crystal in GLOB.machines)
-		if(is_station_level(crystal.z) || is_mining_level(crystal.z))
-			valid_crystal = TRUE
-	if(!valid_crystal)
 		return FALSE
 	return TRUE
 

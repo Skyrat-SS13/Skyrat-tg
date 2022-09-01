@@ -79,10 +79,9 @@
 
 /obj/item/storage/box/emergency_spacesuit/Initialize(mapload)
 	. = ..()
-	var/datum/component/storage/storage_component = GetComponent(/datum/component/storage)
-	storage_component.max_w_class = WEIGHT_CLASS_BULKY
-	storage_component.max_items = 2
-	storage_component.set_holdable(list(
+	atom_storage.max_specific_storage = WEIGHT_CLASS_BULKY
+	atom_storage.max_slots = 2
+	atom_storage.set_holdable(list(
 		/obj/item/clothing/head/helmet/space/emergency,
 		/obj/item/clothing/suit/space/emergency,
 		))

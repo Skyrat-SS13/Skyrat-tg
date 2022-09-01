@@ -6,7 +6,7 @@
 	anchored = TRUE
 	density = TRUE
 
-/obj/structure/reagent_water_basin/Initialize()
+/obj/structure/reagent_water_basin/Initialize(mapload)
 	. = ..()
 	if(is_mining_level(z))
 		icon_state = "primitive_water_basin"

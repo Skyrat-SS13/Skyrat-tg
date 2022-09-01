@@ -5,7 +5,7 @@
 	faction = FACTION_STATION
 	total_positions = 4
 	spawn_positions = 4
-	supervisors = "the captain"
+	supervisors = SUPERVISOR_CAPTAIN
 	selection_color = "#ffeeff"
 	minimal_player_age = 40
 	exp_requirements = 400
@@ -77,7 +77,7 @@
 	new /obj/item/storage/box/donkpockets(src)
 	new /obj/item/flashlight/glowstick(src)
 	new /obj/item/tank/internals/emergency_oxygen/double(src)
-	new /obj/item/reagent_containers/food/drinks/waterbottle(src)
+	new /obj/item/reagent_containers/cup/glass/waterbottle(src)
 	new /obj/item/reagent_containers/blood/universal(src)
 	new /obj/item/reagent_containers/syringe(src)
 	new /obj/item/storage/pill_bottle/multiver(src)

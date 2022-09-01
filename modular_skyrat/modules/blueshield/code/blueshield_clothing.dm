@@ -22,7 +22,7 @@
 /obj/item/radio/headset/headset_bs/alt
 	icon_state = "bshield_headset_alt"
 
-/obj/item/radio/headset/headset_bs/alt/ComponentInitialize()
+/obj/item/radio/headset/headset_bs/alt/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/wearertargeting/earprotection, list(ITEM_SLOT_EARS))
 
@@ -115,7 +115,7 @@
 	allowed = list(/obj/item/melee/baton/security/loaded)
 	armor = list("melee" = 35, "bullet" = 25, "laser" = 25,"energy" = 25, "bomb" = 30, "bio" = 0, "fire" = 75, "acid" = 75)
 
-/obj/item/clothing/suit/hooded/wintercoat/blueshield/Initialize()
+/obj/item/clothing/suit/hooded/wintercoat/blueshield/Initialize(mapload)
 	. = ..()
 	allowed += GLOB.security_vest_allowed
 
