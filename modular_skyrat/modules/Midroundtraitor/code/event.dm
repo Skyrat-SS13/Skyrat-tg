@@ -22,7 +22,7 @@
 							)
 	required_candidates = 1
 	weight = 4 //Slightly less common than normal midround traitors.
-	cost = 10 //But also slightly more costly.
+	cost = 4 //But also slightly more costly.
 	minimum_players = 10
 	var/list/spawn_locs = list()
 
@@ -64,7 +64,7 @@
 	id = /obj/item/card/id/advanced/chameleon
 	glasses = /obj/item/clothing/glasses/night
 	mask = /obj/item/clothing/mask/gas/syndicate
-	back = /obj/item/mod/control/pre_equipped/nuclear
+	back = /obj/item/mod/control/pre_equipped/nuclear/chameleon
 	r_pocket = /obj/item/tank/internals/emergency_oxygen/engi
 	internals_slot = ITEM_SLOT_RPOCKET
 	belt = /obj/item/storage/belt/military

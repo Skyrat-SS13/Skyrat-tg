@@ -99,5 +99,3 @@
 	/// Base damage for oversized piggyback riding.
 	var/oversized_piggydam = 25
 	///SKYRAT EDIT END
-
-

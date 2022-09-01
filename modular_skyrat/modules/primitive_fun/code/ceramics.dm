@@ -60,8 +60,8 @@
 	cost = CARGO_CRATE_VALUE * 2
 	unit_name = "ceramic product"
 	export_types = list(/obj/item/plate/ceramic,
-						/obj/item/reagent_containers/glass/bowl/ceramic,
-						/obj/item/reagent_containers/glass/beaker/large/ceramic)
+						/obj/item/reagent_containers/cup/bowl/ceramic,
+						/obj/item/reagent_containers/cup/beaker/large/ceramic)
 
 /datum/export/ceramics/sell_object(obj/O, datum/export_report/report, dry_run, apply_elastic = FALSE) //I really dont want them to feel gimped
 	. = ..()
@@ -91,9 +91,9 @@
 	name =  "ceramic bowl"
 	desc = "A piece of clay with a raised lip, in the shape of a bowl."
 	icon_state = "clay_bowl"
-	forge_item = /obj/item/reagent_containers/glass/bowl/ceramic
+	forge_item = /obj/item/reagent_containers/cup/bowl/ceramic
 
-/obj/item/reagent_containers/glass/bowl/ceramic
+/obj/item/reagent_containers/cup/bowl/ceramic
 	name = "ceramic bowl"
 	icon = 'modular_skyrat/modules/primitive_fun/icons/prim_fun.dmi'
 	icon_state = "clay_bowl"
@@ -103,9 +103,9 @@
 	name = "ceramic cup"
 	desc = "A piece of clay with high walls, in the shape of a cup. It can hold 120 units."
 	icon_state = "clay_cup"
-	forge_item = /obj/item/reagent_containers/glass/beaker/large/ceramic
+	forge_item = /obj/item/reagent_containers/cup/beaker/large/ceramic
 
-/obj/item/reagent_containers/glass/beaker/large/ceramic
+/obj/item/reagent_containers/cup/beaker/large/ceramic
 	name = "ceramic cup"
 	desc = "A cup that is made from ceramic."
 	icon = 'modular_skyrat/modules/primitive_fun/icons/prim_fun.dmi'

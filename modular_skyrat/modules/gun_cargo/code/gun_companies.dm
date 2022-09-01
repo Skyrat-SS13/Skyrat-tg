@@ -88,6 +88,9 @@
 
 /obj/item/gun/energy/laser/instakill
 	company_flag = null
+	
+/obj/item/gun/energy/laser/chameleon
+	company_flag = null
 
 /obj/item/gun/energy/e_gun/old
 	company_flag = COMPANY_NANOTRASEN

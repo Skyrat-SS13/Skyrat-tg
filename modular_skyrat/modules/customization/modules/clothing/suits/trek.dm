@@ -18,8 +18,8 @@
 				/obj/item/hypospray,
 				/obj/item/healthanalyzer,
 				/obj/item/reagent_containers/syringe,
-				/obj/item/reagent_containers/glass/vial,
-				/obj/item/reagent_containers/glass/beaker,
+				/obj/item/reagent_containers/cup/vial,
+				/obj/item/reagent_containers/cup/beaker,
 				/obj/item/storage/pill_bottle,
 				/obj/item/taperecorder)
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
