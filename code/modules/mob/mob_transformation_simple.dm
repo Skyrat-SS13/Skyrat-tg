@@ -40,6 +40,7 @@
 		M.name = src.name
 		M.real_name = src.real_name
 
+<<<<<<< HEAD
 	if(has_dna() && M.has_dna())
 		var/mob/living/carbon/C = src
 		var/mob/living/carbon/D = M
@@ -49,6 +50,18 @@
 		var/mob/living/carbon/human/H = M
 		client?.prefs.safe_transfer_prefs_to(H)
 		H.dna.update_dna_identity()
+=======
+	if(has_dna() && desired_mob.has_dna())
+		var/mob/living/carbon/old_mob = src
+		var/mob/living/carbon/new_mob = desired_mob
+		old_mob.dna.transfer_identity(new_mob, transfer_species = FALSE)
+		new_mob.updateappearance(mutcolor_update=1, mutations_overlay_update=1)
+	else if(ishuman(desired_mob) && (!ismonkey(desired_mob)))
+		var/mob/living/carbon/human/new_human = desired_mob
+		client?.prefs.safe_transfer_prefs_to(new_human)
+		new_human.dna.update_dna_identity()
+		new_human.updateappearance(mutcolor_update=1, mutations_overlay_update=1)
+>>>>>>> b156c71e425 (Fixed quick admin spawned humans from observes not keeping preferences (#69580))
 
 	if(mind && isliving(M))
 		mind.transfer_to(M, 1) // second argument to force key move to new mob
