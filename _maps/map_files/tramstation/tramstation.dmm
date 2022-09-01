@@ -11861,14 +11861,6 @@
 /obj/structure/musician/piano,
 /turf/open/floor/carpet,
 /area/station/service/theater)
-"ecc" = (
-/obj/machinery/vending/wardrobe/robo_wardrobe,
-/obj/effect/turf_decal/trimline/purple/filled/line{
-	dir = 4
-	},
-/obj/structure/noticeboard/directional/east,
-/turf/open/floor/iron,
-/area/station/science/robotics/lab)
 "ech" = (
 /obj/structure/window/reinforced/spawner/west,
 /turf/open/floor/grass,
@@ -14301,13 +14293,6 @@
 "eVz" = (
 /turf/open/floor/grass,
 /area/station/service/hydroponics)
-"eVQ" = (
-/obj/machinery/computer/camera_advanced/base_construction,
-/obj/effect/turf_decal/trimline/yellow/filled/line{
-	dir = 1
-	},
-/turf/open/floor/iron,
-/area/station/construction/mining/aux_base)
 "eVY" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/public/glass{
@@ -29385,15 +29370,6 @@
 /obj/effect/landmark/start/assistant,
 /turf/open/floor/iron,
 /area/station/commons/fitness/recreation)
-"kjt" = (
-/obj/effect/turf_decal/trimline/purple/filled/line{
-	dir = 9
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
-/turf/open/floor/iron,
-/area/station/science/robotics/lab)
 "kjB" = (
 /obj/structure/sign/poster/contraband/space_cube{
 	pixel_y = 32
@@ -30884,6 +30860,13 @@
 /obj/machinery/airalarm/directional/south,
 /turf/open/floor/iron/freezer,
 /area/station/security/prison/shower)
+"kIu" = (
+/obj/effect/turf_decal/trimline/yellow/filled/line{
+	dir = 1
+	},
+/obj/machinery/computer/camera_advanced/base_construction/aux,
+/turf/open/floor/iron,
+/area/station/construction/mining/aux_base)
 "kIv" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/camera/directional/south{
@@ -32355,6 +32338,16 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/station/maintenance/tram/right)
+"lje" = (
+/obj/effect/turf_decal/trimline/purple/filled/line{
+	dir = 9
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/machinery/vending/wardrobe/robo_wardrobe,
+/turf/open/floor/iron,
+/area/station/science/robotics/lab)
 "ljh" = (
 /obj/effect/turf_decal/trimline/yellow/warning,
 /obj/effect/turf_decal/trimline/neutral/filled/arrow_cw{
@@ -37562,17 +37555,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/smooth,
 /area/station/maintenance/department/cargo)
-"mPD" = (
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/table,
-/obj/item/scalpel{
-	pixel_y = 16
-	},
-/obj/item/circular_saw,
-/turf/open/floor/iron/white,
-/area/station/science/robotics/lab)
 "mPE" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/stack/rods,
@@ -48360,6 +48342,18 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/science/robotics/lab)
+"qFc" = (
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/table,
+/obj/item/scalpel{
+	pixel_y = 16
+	},
+/obj/item/circular_saw,
+/obj/structure/noticeboard/directional/west,
+/turf/open/floor/iron/white,
+/area/station/science/robotics/lab)
 "qFi" = (
 /obj/effect/turf_decal/trimline/purple/filled/line{
 	dir = 4
@@ -49608,6 +49602,17 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,
 /area/station/hallway/secondary/exit)
+"rbx" = (
+/obj/effect/turf_decal/trimline/purple/filled/line{
+	dir = 4
+	},
+/obj/machinery/button/door/directional/east{
+	id = "robotics2";
+	name = "Robotics Lockdown";
+	req_access = list("robotics")
+	},
+/turf/open/floor/iron,
+/area/station/science/robotics/lab)
 "rbC" = (
 /obj/machinery/suit_storage_unit/cmo,
 /obj/effect/turf_decal/bot,
@@ -149338,7 +149343,7 @@ rlv
 rlv
 rlv
 sXa
-eVQ
+kIu
 bMe
 oQF
 vTB
@@ -176095,7 +176100,7 @@ rVC
 kcF
 aDg
 qtN
-mPD
+qFc
 syn
 soq
 wJO
@@ -177118,7 +177123,7 @@ nql
 moz
 niI
 wdT
-kjt
+lje
 iKY
 lPf
 aCY
@@ -177633,7 +177638,7 @@ nUg
 fla
 wdT
 dAU
-ecc
+rbx
 ucl
 ugm
 bze
