@@ -50,9 +50,9 @@
 				icon_state = initial(icon_state)
 				to_chat(user, "You pull the balaclava up to cover your whole head.")
 				open = 0
-		user.update_hair(0)
+		user.update_body_parts()
 		user.update_inv_ears(0)
-		user.update_inv_wear_mask() //Updates mob icons
+		user.update_worn_mask() //Updates mob icons
 
 /obj/item/clothing/mask/balaclavaadjust/attack_self(mob/user)
 	adjust_mask(user)
@@ -100,7 +100,12 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/masks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/mask.dmi'
 	icon_state = "hecu2"
-	flags_inv = HIDEHAIR
+
+/obj/item/clothing/mask/gas/hecu2/mob_can_equip(mob/living/M, mob/living/equipper, slot, disable_warning, bypass_equip_delay_self)
+	if(is_species(M, /datum/species/teshari))
+		to_chat(M, span_warning("[src] is far too big for you!"))
+		return FALSE
+	return ..()
 
 /obj/item/clothing/mask/gas/soviet
 	name = "soviet gas mask"

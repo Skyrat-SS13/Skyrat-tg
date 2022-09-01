@@ -31,7 +31,7 @@
 	inherent_biotypes = MOB_UNDEAD | MOB_HUMANOID
 	mutanttongue = /obj/item/organ/internal/tongue/zombie
 	disliked_food = NONE
-	liked_food = GROSS | MEAT | RAW
+	liked_food = GROSS | MEAT | RAW | GORE
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | ERT_SPAWN
 	bodytemp_normal = T0C // They have no natural body heat, the environment regulates body temp
 	bodytemp_heat_damage_limit = FIRE_MINIMUM_TEMPERATURE_TO_SPREAD // Take damage at fire temp
@@ -161,7 +161,7 @@
 	sharpness = NONE
 	wound_bonus = -40
 
-/obj/item/mutant_hand/Initialize()
+/obj/item/mutant_hand/Initialize(mapload)
 	. = ..()
 	ADD_TRAIT(src, TRAIT_NODROP, HAND_REPLACEMENT_TRAIT)
 

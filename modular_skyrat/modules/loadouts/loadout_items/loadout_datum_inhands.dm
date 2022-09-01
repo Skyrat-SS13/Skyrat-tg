@@ -55,3 +55,31 @@ GLOBAL_LIST_INIT(loadout_inhand_items, generate_loadout_items(/datum/loadout_ite
 /datum/loadout_item/inhand/smokingpipe
 	name = "Smoking Pipe"
 	item_path = /obj/item/clothing/mask/cigarette/pipe
+
+/datum/loadout_item/inhand/flag_nt
+	name = "Folded Nanotrasen Flag"
+	item_path = /obj/item/sign/flag/nanotrasen
+
+/datum/loadout_item/inhand/flag_agurk
+	name = "Folded Kingdom Of Agurkrral Flag"
+	item_path = /obj/item/sign/flag/ssc
+
+/datum/loadout_item/inhand/flag_solfed
+	name = "Folded Sol Federation Flag"
+	item_path = /obj/item/sign/flag/terragov
+
+/datum/loadout_item/inhand/flag_moghes
+	name = "Folded Republic Of Northern Moghes Flag"
+	item_path = /obj/item/sign/flag/tizira
+
+/datum/loadout_item/inhand/flag_mothic
+	name = "Folded Grand Nomad Fleet Flag"
+	item_path = /obj/item/sign/flag/mothic
+
+/datum/loadout_item/inhand/flag_teshari
+	name = "Folded Teshari League For Self-Determination Flag"
+	item_path = /obj/item/sign/flag/mars
+
+/datum/loadout_item/inhand/flag_nri
+	name = "Folded Novaya Rossiyskaya Imperiya Flag"
+	item_path = /obj/item/sign/flag/nri

@@ -113,7 +113,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/loaded_preferences_successfully = load_preferences()
 	if(loaded_preferences_successfully)
 		if(load_character())
-			return
+			// SKYRAT EDIT START - Sanitizing languages
+			sanitize_languages()
+			// SKYRAT EDIT END
+			return // SKYRAT EDIT - Don't remove this. Just don't. Nothing is worth forced random characters.
 	//we couldn't load character data so just randomize the character appearance + name
 	randomise_appearance_prefs() //let's create a random character then - rather than a fat, bald and naked man.
 	if(C)
@@ -226,6 +229,11 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				tainted_character_profiles = TRUE
 				randomise_appearance_prefs()
 				save_character()
+
+			// SKYRAT EDIT START - Sanitizing languages
+			if(sanitize_languages())
+				save_character()
+			// SKYRAT EDIT END
 
 			for (var/datum/preference_middleware/preference_middleware as anything in middleware)
 				preference_middleware.on_new_character(usr)

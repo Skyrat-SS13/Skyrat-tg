@@ -4,7 +4,7 @@
 	build_type = PROTOLATHE | AWAY_LATHE
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 	construction_time = 10 SECONDS //dunno if this is for mechfabs or what but I'll keep this anyway
-	category = list("Weapons")
+	category = list(RND_CATEGORY_WEAPONS)
 
 // EMITTERS
 /datum/design/microfusion/enhanced_phase_emitter
@@ -32,7 +32,7 @@
 /datum/design/microfusion/cell
 	name = "Microfusion Cell"
 	desc = "A microfusion cell."
-	category = list("Ammo")
+	category = list(RND_CATEGORY_AMMO)
 
 /datum/design/microfusion/cell/basic
 	name = "Basic Microfusion Cell"
@@ -41,7 +41,7 @@
 	build_type = PROTOLATHE | AWAY_LATHE | AUTOLATHE
 	materials = list(/datum/material/iron = 1000, /datum/material/glass = 200)
 	build_path = /obj/item/stock_parts/cell/microfusion
-	category = list("Ammo", "Security", "initial")
+	category = list(RND_CATEGORY_AMMO, RND_CATEGORY_SECURITY, "initial")
 
 /datum/design/microfusion/cell/enhanced
 	name = "Enhanced Microfusion Cell"

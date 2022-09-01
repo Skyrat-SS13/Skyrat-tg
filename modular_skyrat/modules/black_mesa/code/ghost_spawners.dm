@@ -19,7 +19,7 @@
 	suit = /obj/item/clothing/suit/toggle/labcoat
 	shoes = /obj/item/clothing/shoes/laceup
 	back = /obj/item/storage/backpack
-	backpack_contents = list(/obj/item/radio, /obj/item/reagent_containers/glass/beaker)
+	backpack_contents = list(/obj/item/radio, /obj/item/reagent_containers/cup/beaker)
 	id = /obj/item/card/id
 	id_trim = /datum/id_trim/science_team
 
@@ -80,13 +80,13 @@
 	. = ..()
 	spawned_human.grant_language(/datum/language/uncommon, TRUE, TRUE, LANGUAGE_MIND)
 
-/obj/item/clothing/under/rank/security/officer/hecu
+/obj/item/clothing/under/rank/security/officer/hecu //Subtype of security for armor (and because I dont want to repath it)
 	name = "urban camouflage BDU"
 	desc = "A baggy military camouflage uniform with an ERDL pattern. The range of whites and greys proves useful in urban environments."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "hecu_uniform"
-	inhand_icon_state = "r_suit"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/syndicate.dmi' //Camo goes into the syndicate.dmi
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/syndicate.dmi'
+	icon_state = "urban_camo"
+	inhand_icon_state = "w_suit"
 	uses_advanced_reskins = FALSE
 	unique_reskin = null
 
@@ -136,7 +136,7 @@
 	belt = /obj/item/storage/belt/military/assault/hecu
 	ears = /obj/item/radio/headset/headset_faction
 	shoes = /obj/item/clothing/shoes/combat
-	l_pocket = /obj/item/reagent_containers/food/drinks/flask
+	l_pocket = /obj/item/reagent_containers/cup/glass/flask
 	r_pocket = /obj/item/flashlight/flare
 	back = /obj/item/storage/backpack/ert/odst/hecu
 	backpack_contents = list(
@@ -171,7 +171,7 @@
 /obj/effect/mob_spawn/ghost_role/human/black_mesa/hecu/leader/special(mob/living/carbon/human/spawned_human)
 	. = ..()
 	spawned_human.grant_language(/datum/language/uncommon, TRUE, TRUE, LANGUAGE_MIND)
-	spawned_human.grant_language(/datum/language/neorusskya, TRUE, TRUE, LANGUAGE_MIND)
+	spawned_human.grant_language(/datum/language/panslavic, TRUE, TRUE, LANGUAGE_MIND)
 	spawned_human.grant_language(/datum/language/yangyu, TRUE, TRUE, LANGUAGE_MIND)
 
 /datum/outfit/hecu/leader

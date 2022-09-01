@@ -13,7 +13,7 @@
 	/// The current color of the condom, can be changed and affects sprite
 	var/current_color = "pink"
 
-/obj/item/condom_pack/Initialize()
+/obj/item/condom_pack/Initialize(mapload)
 	. = ..()
 	//color chosen randomly when item spawned
 	current_color = "pink"
@@ -55,7 +55,7 @@
 	var/condom_state = "unused"
 	slot_flags = ITEM_SLOT_PENIS
 
-/obj/item/clothing/sextoy/condom/Initialize()
+/obj/item/clothing/sextoy/condom/Initialize(mapload)
 	. = ..()
 	update_icon_state()
 	update_icon()

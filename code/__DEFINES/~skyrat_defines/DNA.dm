@@ -41,6 +41,9 @@
 //The color list that is passed to color matrixed things when a person is husked
 #define HUSK_COLOR_LIST list(list(0.64, 0.64, 0.64, 0), list(0.64, 0.64, 0.64, 0), list(0.64, 0.64, 0.64, 0), list(0, 0, 0, 1))
 
+/// Organ slot external
+#define ORGAN_SLOT_EXTERNAL_TAUR "taur"
+
 //Defines for an accessory to be randomed
 #define ACC_RANDOM		"random"
 
@@ -119,3 +122,6 @@
 #define SPECIES_MUTANT_INFECTIOUS "infectious_mutant"
 #define SPECIES_MUTANT_SLOW "slow_mutant"
 #define SPECIES_MUTANT_FAST "fast_mutant"
+
+// Leaving this here because it's used for bodyparts, like SPECIES_X are, but since taurs aren't a species... Named it LIMBS instead.
+#define LIMBS_TAUR "taur"

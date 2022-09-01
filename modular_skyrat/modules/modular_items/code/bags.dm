@@ -8,11 +8,12 @@
 	resistance_flags = FLAMMABLE
 	custom_price = PAYCHECK_CREW * 4
 
-/obj/item/storage/bag/ammo/Initialize()
+/obj/item/storage/bag/ammo/Initialize(mapload)
 	. = ..()
 	atom_storage.max_specific_storage = WEIGHT_CLASS_NORMAL
 	atom_storage.max_total_storage = 30
 	atom_storage.max_slots = 3
+	atom_storage.numerical_stacking = FALSE
 	atom_storage.can_hold = typecacheof(list(/obj/item/ammo_box/magazine, /obj/item/ammo_casing, /obj/item/ammo_box/revolver, /obj/item/stock_parts/cell/microfusion))
 
 /obj/item/storage/bag/material
@@ -25,7 +26,7 @@
 	resistance_flags = FLAMMABLE
 	custom_price = PAYCHECK_CREW * 4
 
-/obj/item/storage/bag/material/Initialize()
+/obj/item/storage/bag/material/Initialize(mapload)
 	. = ..()
 	atom_storage.max_specific_storage = WEIGHT_CLASS_NORMAL
 	atom_storage.max_total_storage = INFINITY

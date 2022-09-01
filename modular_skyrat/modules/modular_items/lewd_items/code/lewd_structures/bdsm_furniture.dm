@@ -75,7 +75,7 @@
 	var/mob/living/carbon/human/current_mob = null
 
 //to make it have model when we constructing the thingy
-/obj/structure/chair/x_stand/Initialize()
+/obj/structure/chair/x_stand/Initialize(mapload)
 	. = ..()
 	update_icon_state()
 	update_icon()

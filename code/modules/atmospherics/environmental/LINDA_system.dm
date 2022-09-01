@@ -78,7 +78,7 @@
 	src.atmos_adjacent_turfs = atmos_adjacent_turfs
 	SEND_SIGNAL(src, COMSIG_TURF_CALCULATED_ADJACENT_ATMOS)
 
-	UpdateAdjacentPollutants() //SKYRAT EDIT ADDITION //Atmos adjacency could unlock/block adjacent pollutants, this is dirty flags anyway so its fine having it here
+	update_adjacent_pollutants() //SKYRAT EDIT ADDITION //Atmos adjacency could unlock/block adjacent pollutants, this is dirty flags anyway so its fine having it here
 
 /**
  * returns a list of adjacent turfs that can share air with this one.

@@ -933,3 +933,236 @@
       the Head of Personnel, Head of Security, and Quartermaster.
   Tastyfish:
   - bugfix: Female digi, vox, and teshari clothing render correctly again.
+2022-07-28:
+  Melbert:
+  - rscadd: Almost the entire bottom half of Deltastation has been remapped.
+  - bugfix: Void Magnet no longer instantly removes itself
+  - code_imp: Convoke Void now handles the self-cast part of Void Magnet.
+  OrionTheFox:
+  - imageadd: Various clothing items have been converted using GAGs, making them recolorable.
+      Check it out at your local clothesmate!
+  - imageadd: (SkyRat) These various items have also been tweaked in the Loadout to
+      account for this, mostly pants/shorts/dresses/skirts. Make sure you repair your
+      loadout with the newly customizable items before headed to work!
+  ShizCalev:
+  - bugfix: Fixed an exploit which would result in Mediborg's Amputation Adventure
+      not amputating properly. Legendary gamers don't have to cheat.
+  - bugfix: Clicking Mediborg's Amputation Adventure's with TK will no longer result
+      in amputation.
+  SkyratBot:
+  - rscadd: Nuke Op reinforcements now come in different flavors.
+  - balance: Nuke Op reinforcements now start with plastikovs.
+  - admin: head-revolutionary demotion logging will now properly display the demoting
+      admin
+  - bugfix: Engineer syndie sentry can only be activated with combat wrench
+  - code_imp: Added balloon alerts and made code easier to read
+  - bugfix: cleanbots will display their cleaning animation and clean at the right
+      speed again
+  - spellcheck: The butcher's cleaver will now kill people in ways accurate to real
+      culinary techniques
+  - qol: tidied up tram's atmospherics piping
+  - admin: moved dynamic logging into its own file
+  SuperDrish:
+  - bugfix: Fixed Heterochromia not knowing where the right and left eyes are
+  Wallem:
+  - imageadd: Resprites the implant pad
+  Zonespace27:
+  - bugfix: Fixes most, if not all harddels related to lua.
+  - bugfix: Fixed lua signal handlers for COMSIG_PARENT_QDELETED.
+  - qol: The lua editor UI will warn when a state's global table has been corrupted
+      or shadowed.
+  - qol: Internal auxlua errors will provide more verbose error messages.
+  - bugfix: Possibly fixed chat by way of removing seemingly unrelated code that turns
+      out to have been unnecessary in the first place.
+  - bugfix: In lua, if you shadow the global table (_G), you will no longer be prevented
+      from running any further code, and as such, can unshadow the global table.
+  jlsnow301, Dejaku51:
+  - refactor: Most pAI code has been rewritten or refactored.
+  - rscadd: pAIs can now be factory reset in card mode if they've been emagged.
+  - rscadd: pAI host scan now be used on their masters at range.
+  - rscadd: pAI photography modules now come bundled with printers and zoom lenses.
+  - balance: pAIs lose both medical and security records in order to gain crew monitors.
+  - rscdel: pAI door jacking no longer gives ominous warnings to the AI about "brute
+      force attacks".
+  - balance: pAI door jack time has been increased 50%.
+  - bugfix: Hopefully prevents invalid pAI candidates from getting downloaded.
+  - bugfix: pAI door jacks no longer have infinite length and will retract if you
+      walk too far away.
+  - bugfix: pAI integrated lights now follow the pAI.
+  - bugfix: pAI PDAs now properly work on both hud and software interface.
+  - bugfix: pAI examine text now properly displays master and holochassis status.
+  - bugfix: pAIs no longer give newscaster alerts without having one installed.
+  - qol: pAI requests no longer make the Byond window flash.
+  - qol: The silicon text for "your laws have been updated" is now easier to see.
+  - qol: Changed the text for camera and printer functions.
+2022-07-29:
+  Higgin:
+  - balance: CI sounds no longer carry nearly so far and drop off much closer to a
+      screen's distance.
+  Jolly:
+  - qol: On Delta, the barber shop has moved! Its now above robotics. NT has also
+      reinstalled the Showroom thats under Tcomms.
+  - bugfix: On Delta, the cryopods room is now connected to the main power net again.
+      Sorry about that!
+  - bugfix: The Barber Shop and NT Consultant office are no longer hard-baked into
+      Tram. Oops!
+  - qol: On Kilo (when NT decides to ship crew to the station), NT Consultants now
+      have an office. Huzza!
+  RimiNosha:
+  - bugfix: Fixed invisible uninteractable languages on the prefs menu, as well as
+      being able to be assigned unobtainable languages because of said bug.
+  ShizCalev:
+  - bugfix: Fixed an exploit which would result in Mediborg's Amputation Adventure
+      not amputating properly. Legendary gamers don't have to cheat.
+  - bugfix: Clicking Mediborg's Amputation Adventure's with TK will no longer result
+      in amputation.
+  SkyratBot:
+  - spellcheck: minor grammatical change to the golden wheelchair.
+  - qol: Ladders now take left/right clicks to go up or down. Radial menus for them
+      should only show up when you reach the floor above or below but the ladder goes
+      beyond it, so that you don't have to bother clicking a sprite covered by that
+      of your mob.
+  - qol: Added contextual screen info (shows up top-center of the screen when hovering
+      your cursor over the object) and similar information when examining the ladder.
+  - qol: Improved messages for using ladders. They also make use of balloon messages
+      now.
+  - balance: Climbing up or down a ladder now takes 1 second by default. Less spammable,
+      barely more immersive.
+  - bugfix: fixes the stress experiment
+  - balance: changes the stress experiment to allow values 2% below or above the target
+      integrity
+  - spellcheck: oh hi mark changed to oh hi daniel.
+  - refactor: Mining items have been refactored to make better use of components.
+  Stalkeros, Lukaster42 for making sure former doesn't starve to death.:
+  - rscadd: Adds six NRI-themed posters to contraband poster rotation.
+  Tastyfish:
+  - bugfix: Central Command finally gave the orderly the correct computer console
+      case on Metastation.
+  Zenitheevee:
+  - rscadd: Adds more shuttle to the P-T shuttle.
+  dawsonkeyes:
+  - bugfix: the marked one's arena now spawns on lavaland properly
+2022-07-30:
+  Ebin-Halcyon:
+  - imageadd: Synth lizards have had a few sprite issues addressed.
+  Fikou, TeomanTheGreat:
+  - rscadd: the nuke ops leader is now the highest nuke ops playtime player on the
+      team
+  - qol: the nuke ops leader now starts with their radio loud mode on
+  GuiltyNeko:
+  - rscdel: deleted unused, entirely commented out code, the neckleash
+  Jolly:
+  - qol: The salons have been demolished! They're now called barber shops.
+  Melbert:
+  - qol: Swaps a prosthetics freezer for a blood freezer on Delta medical
+  RatFromTheJungle:
+  - bugfix: the bowie knife once again, has an inhand, and thanks to ironnhawk who
+      is very smart, the sheath will once more, actually be visible.
+  Reco201:
+  - balance: Cargoborgs upgraded clamp can now carry two wrapped crates instead of
+      one.
+  RimiNosha:
+  - rscadd: Port Tarkon, Interdyne and DS-2 now have cryo wake up and sleep announcements.
+  - code_imp: Cryo announcements no longer use the Automated Announcement System.
+  - code_imp: Ghost roles that cryo will have their ghost role name in the cryo message.
+  SkyratBot:
+  - bugfix: organ boxes no longer freeze the box instead of the organs
+  - bugfix: xenos now take fire damage in accordance to how many firestacks they have
+      instead of a set amount
+  - bugfix: removed a way that you could send items into the void using just a windoor
+      and a pal
+  - qol: the NtOS messenger has a scrollbar now.
+  - balance: Toy guns are only available to clown operatives.
+  - rscdel: 'Removes from both operative uplinks: Camera Bug, Combat Gloves Plus (already
+      removed from leaders), Guerrilla Gloves, FRAME disc, Radioactive Microlaser,
+      Blood-Red Magboots (the standalone ones, not the modules), Power Beacon, Bioterror
+      everything (including the bundle), Stechkin APS machine pistol and ammo, AI
+      Detector.'
+  - balance: Air alarms USB now support controlling scrubbers, vents and operating
+      mode as well as the alarm.
+  - rscadd: Airlocks can now be made into shells by ticking the 'shell' option in
+      airlock electronic UI. This can only be done during construction.
+  - rscadd: Voracious properly speeds up eating. It also allows you to eat and be
+      fed even while you're full, albeit more slowly the fulller you are.
+  - bugfix: Fixed legionnaire's charge when hitting an ally.
+  - qol: USB cables can connect directly to bluespace launchpads. As a consequence,
+      You do not need a console for a launchpad if you only intend to control it via
+      circuits.
+  - bugfix: you can no longer push puzzle doors
+  - bugfix: Fixed some odd pipes menacingly laying around above tiles in Tramstation
+      engineering.
+  - bugfix: Fixed misplaced requests console and light fixture.
+  - rscadd: The results of the tile sprayer and decal painter can now only be removed
+      by crowbarring the tile, just like map-start.
+  - bugfix: Tile sprayer's "white" replaced with "neutral", the most common tile overlay
+      color.
+  jjpark-kb:
+  - rscadd: mining mobs and megafauna are now impacted slightly by toxins and medicine
+2022-07-31:
+  GoldenAlpharex:
+  - refactor: Refactored taur body extensions into an external organ, to make its
+      code slightly less cursed.
+  - bugfix: Not all taur body extensions show shoes anymore, as intended.
+  - bugfix: Taurs no longer will display legs that they should not be displaying underneath
+      their body extension, and will instead have invisible, non-removable legs there
+      instead, to avoid any balance concern.
+  Jureiia:
+  - rscadd: 'A new cyborg module: Engineering MEKA.'
+  Melbert:
+  - bugfix: Plant bags transfer seeds in bulk again.
+  - admin: DNR-ing is now logged
+  - bugfix: Slime Transformation doesn't require wizard clothes
+  ShizCalev:
+  - bugfix: Necropolis chest will no longer consume your key if it fails to generate
+      a reward. Also, if it fails to generate, it'll allow you to attempt it again.
+  - bugfix: Leather satchels no longer have a rogue crotch height pixel sticking through
+      your clothing when facing left.
+  - bugfix: Transferring a carded AI to an empty core will no longer result in a second
+      AI core appearing.
+  - bugfix: Cyborg flashes will no longer fail to drop from the heads of borgs.
+  - bugfix: Butchering a bodypart for it's organs while inside a locker will no longer
+      drop the organs /outside/ the locker.
+  - balance: People with epilepsy now have a chance to have a seizure when they're
+      flashed!
+  SkyratBot:
+  - rscadd: Urban legend says that people have been hiding sharp glass behind posters
+      to hurt anyone who tries to remove them. Who would do that? Make sure you're
+      wearing gloves when pulling down posters...
+  - rscadd: Adds two new traitor objectives to upset the crew by placing syndicate
+      posters or drawing the syndicate logo.
+  - bugfix: Using candy bars as an ingredient in salad now drops a candy wrapper.
+  - bugfix: RPEDs can pick up beakers and assemblies once again
+  - spellcheck: adds extra information to objective explanation text.
+  - bugfix: makes the photo objective more specific
+  - bugfix: Construction and ape-crushing behaviour should be more consistent between
+      manual and motorised wheelchairs.
+  - bugfix: the all-in-one-grinder shakes (again?)
+  - bugfix: Fixes APCs clicking constantly during a Grid Check.
+  - bugfix: everyone is a traitor mode disables progression
+  - bugfix: Fixed some cases where the highlighted text in the lua editor was out
+      of place with the actual text.
+  - bugfix: Basic cyberstomach digestion speed dropped down to be in line with the
+      other stomachs
+  - bugfix: Nanotrasen should no longer place single bedsheets on double beds.
+  - bugfix: holoparasite renaming text will no longer display to others
+  - balance: Non-functional livers and stomachs can now be repaired with their respective
+      surgeries once in the organ's lifetime.
+  - balance: Regular Windows are now stronger and take about 10 toolbox hits to destroy
+  - bugfix: storage UI no longer gets stuck on the screen due to an oversight
+  - bugfix: fixes nuke ops leaders not spawning
+  - refactor: Refactored the Addition, Binary Decimal, Comparison, Logic, List Literal,
+      (and so on) components. Several of these components can now add/remove their
+      input and output ports.
+  - qol: Dragging circuit components from the component menu in the integrated circuit
+      UI will now show the component that you are dragging. This'll also happen with
+      the variable menu too.
+  - balance: Increased the health of drone shells and also made them repairable with
+      a welder. They can also now charge in borg chargers.
+  - admin: added logging for when you fail to tip something over
+  - bugfix: The Pants Altar's pants' icons are now fixed
+  ghommie, dragomagol:
+  - bugfix: admin-triggered xeno event now works!
+  mcmeiler:
+  - rscadd: Slimepeople can now change their hair color.
+  timothymtorres:
+  - rscadd: Bubblegum now spawns demonic bubblegum candy when they devour corpses.

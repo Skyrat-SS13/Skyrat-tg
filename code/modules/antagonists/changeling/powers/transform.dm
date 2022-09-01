@@ -142,17 +142,7 @@
 		return
 	..()
 	changeling.transform(user, chosen_prof)
-	
-	// SKYRAT EDIT START
-	var/mob/dum = user.tgui.dummy_holder
-	dum.name = chosen_prof.name
-	for(var/obj/item/item in dum)
-		if(!dum.dropItemToGround(item))
-			qdel(item)
-			dum.regenerate_icons()
-	changeling.transform(dum, chosen_prof)
-	// SKYRAT EDIT END
-	
+
 	SEND_SIGNAL(user, COMSIG_CHANGELING_TRANSFORM)
 	return TRUE
 

@@ -11,7 +11,39 @@
 /obj/item/storage/belt/crusader/Initialize(mapload)
 	. = ..()
 
-	create_storage(type = /datum/storage/belt/crusader)
+	create_storage(
+		max_slots = 2,
+		max_specific_storage = WEIGHT_CLASS_BULKY,	//This makes sure swords and the pouches can fit in here - the whitelist keeps the bad stuff out
+		type = /datum/storage/belt/crusader,
+		canhold = list(
+			/obj/item/storage/belt/storage_pouch,
+			/obj/item/forging/reagent_weapon/sword,
+			/obj/item/melee/sabre,
+			/obj/item/claymore,
+			/obj/item/melee/cleric_mace,
+			/obj/item/knife,
+			/obj/item/melee/baton,
+			/obj/item/melee/baton,
+			/obj/item/nullrod,	//holds any subset of nullrod in the sheath-storage - - -
+		),
+		canthold = list(	// - - - except the second list's items (no fedora in the sheath)
+			/obj/item/nullrod/armblade,
+			/obj/item/nullrod/carp,
+			/obj/item/nullrod/chainsaw,
+			/obj/item/nullrod/claymore/bostaff,
+			/obj/item/nullrod/hammer,
+			/obj/item/nullrod/pitchfork,
+			/obj/item/nullrod/pride_hammer,
+			/obj/item/nullrod/spear,
+			/obj/item/nullrod/staff,
+			/obj/item/nullrod/fedora,
+			/obj/item/nullrod/godhand,
+			/obj/item/nullrod/staff,
+			/obj/item/nullrod/whip,
+		),
+	)
+	atom_storage.allow_big_nesting = TRUE // Lets the pouch work
+	AddElement(/datum/element/update_icon_updates_onmob)
 
 //Credit to Funce for this chunk of code directly below, which overrides normal dumping code and instead dumps from the pouch item inside
 /datum/storage/belt/crusader/dump_content_at(atom/dest_object, mob/M)
@@ -71,41 +103,6 @@
 		. += span_notice("Alt-click it to quickly draw the blade.")
 		return
 
-/obj/item/storage/belt/crusader/ComponentInitialize()
-	. = ..()
-	AddElement(/datum/element/update_icon_updates_onmob)
-
-/obj/item/storage/belt/crusader/Initialize()
-	. = ..()
-
-	atom_storage.max_slots = 2
-	atom_storage.max_specific_storage = WEIGHT_CLASS_BULKY	//This makes sure swords and the pouches can fit in here - the whitelist keeps the bad stuff out
-	atom_storage.allow_big_nesting = TRUE //Same as above, lets the pouch work
-	atom_storage.set_holdable(list(
-		/obj/item/storage/belt/storage_pouch,
-		/obj/item/forging/reagent_weapon/sword,
-		/obj/item/melee/sabre,
-		/obj/item/claymore,
-		/obj/item/melee/cleric_mace,
-		/obj/item/knife,
-		/obj/item/melee/baton,
-		/obj/item/melee/baton,
-		/obj/item/nullrod	//holds any subset of nullrod in the sheath-storage - - -
-		), list(	// - - - except the second list's items (no fedora in the sheath)
-		/obj/item/nullrod/armblade,
-		/obj/item/nullrod/carp,
-		/obj/item/nullrod/chainsaw,
-		/obj/item/nullrod/claymore/bostaff,
-		/obj/item/nullrod/hammer,
-		/obj/item/nullrod/pitchfork,
-		/obj/item/nullrod/pride_hammer,
-		/obj/item/nullrod/spear,
-		/obj/item/nullrod/staff,
-		/obj/item/nullrod/fedora,
-		/obj/item/nullrod/godhand,
-		/obj/item/nullrod/staff,
-		/obj/item/nullrod/whip
-		))
 
 /obj/item/storage/belt/crusader/PopulateContents()
 	. = ..()
@@ -126,7 +123,7 @@
 
 	atom_storage.show_contents(user)
 
-/obj/item/storage/belt/storage_pouch/Initialize()
+/obj/item/storage/belt/storage_pouch/Initialize(mapload)
 	. = ..()
 
 	atom_storage.max_slots = 6
@@ -149,7 +146,7 @@
 	icon_state = "med_bandolier"
 	worn_icon_state = "med_bandolier"
 
-/obj/item/storage/belt/medbandolier/Initialize()
+/obj/item/storage/belt/medbandolier/Initialize(mapload)
 	. = ..()
 	atom_storage.max_specific_storage = WEIGHT_CLASS_NORMAL
 	atom_storage.max_slots = 14
@@ -157,12 +154,12 @@
 	atom_storage.set_holdable(list(
 		/obj/item/dnainjector,
 		/obj/item/reagent_containers/dropper,
-		/obj/item/reagent_containers/glass/bottle,
+		/obj/item/reagent_containers/cup/bottle,
 		/obj/item/reagent_containers/pill,
 		/obj/item/reagent_containers/syringe,
 		/obj/item/reagent_containers/medigel,
 		/obj/item/storage/pill_bottle,
 		/obj/item/implanter,
-		/obj/item/reagent_containers/glass/vial,
+		/obj/item/reagent_containers/cup/vial,
 		/obj/item/weaponcell/medical
 		))

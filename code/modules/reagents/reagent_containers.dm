@@ -1,7 +1,7 @@
 /obj/item/reagent_containers
 	name = "Container"
 	desc = "..."
-	icon = 'icons/obj/chemical.dmi'
+	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = null
 	w_class = WEIGHT_CLASS_TINY
 	var/amount_per_transfer_from_this = 5
@@ -29,7 +29,7 @@
 
 	add_initial_reagents()
 	//SKYRAT EDIT ADDITION
-	AddElement(/datum/element/liquids_interaction, on_interaction_callback = /obj/item/reagent_containers/glass/beaker/.proc/attack_on_liquids_turf)
+	AddElement(/datum/element/liquids_interaction, on_interaction_callback = /obj/item/reagent_containers/cup/beaker/.proc/attack_on_liquids_turf)
 
 /obj/item/reagent_containers/proc/attack_on_liquids_turf(obj/item/reagent_containers/my_beaker, turf/T, mob/living/user, obj/effect/abstract/liquid_turf/liquids)
 	if(user.combat_mode)
@@ -71,7 +71,7 @@
 	RegisterSignal(reagents, list(COMSIG_REAGENTS_NEW_REAGENT, COMSIG_REAGENTS_ADD_REAGENT, COMSIG_REAGENTS_DEL_REAGENT, COMSIG_REAGENTS_REM_REAGENT), .proc/on_reagent_change)
 	RegisterSignal(reagents, COMSIG_PARENT_QDELETING, .proc/on_reagents_del)
 
-/obj/item/reagent_containers/attack(mob/living/M, mob/living/user, params)
+/obj/item/reagent_containers/attack(mob/living/target_mob, mob/living/user, params)
 	if (!user.combat_mode)
 		return
 	return ..()
@@ -200,9 +200,10 @@
 	reagents.expose_temperature(exposed_temperature)
 	..()
 
-/obj/item/reagent_containers/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
+/obj/item/reagent_containers/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum, do_splash = TRUE)
 	. = ..()
-	SplashReagents(hit_atom, TRUE)
+	if(do_splash)
+		SplashReagents(hit_atom, TRUE)
 
 /obj/item/reagent_containers/proc/bartender_check(atom/target)
 	. = FALSE

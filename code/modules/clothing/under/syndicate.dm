@@ -6,8 +6,8 @@
 	has_sensor = NO_SENSORS
 	armor = list(MELEE = 10, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 10, FIRE = 50, ACID = 40)
 	alt_covers_chest = TRUE
-//	icon = 'icons/obj/clothing/under/syndicate.dmi' //SKYRAT EDIT - ICON OVERRIDDEN BY modular_skyrat\modules\aesthetics\clothing
-//	worn_icon = 'icons/mob/clothing/under/syndicate.dmi' //SKYRAT EDIT - ICON OVERRIDDEN BY modular_skyrat\modules\aesthetics\clothing
+	icon = 'icons/obj/clothing/under/syndicate.dmi'
+	worn_icon = 'icons/mob/clothing/under/syndicate.dmi'
 
 /obj/item/clothing/under/syndicate/skirt
 	name = "tactical skirtleneck"
@@ -93,9 +93,9 @@
 
 /obj/item/clothing/under/syndicate/scrubs
 	name = "tactical scrubs"
-	desc = "A deep purple set of scrubs, made tactically for tactical reasons."
+	desc = "A deep burgundy set of scrubs, made tactically for tactical reasons."
 	icon = 'icons/obj/clothing/under/medical.dmi'
 	worn_icon = 'icons/mob/clothing/under/medical.dmi'
-	icon_state = "scrubspurple"
+	icon_state = "scrubswine"
 	can_adjust = FALSE
 	armor = list(MELEE = 10, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 50, FIRE = 50, ACID = 40)

@@ -103,8 +103,8 @@
 						if(!istype(BP))
 							rad_mod += 300 //Bad snowflake, take more rads!
 							break
-						BP.dismember()
 						bodyparts_dismember.Remove(BP) //GC optimisation
+						BP.dismember()
 						qdel(BP)
 					//SKYRAT EDIT CHANGE END
 			calibrated = FALSE
