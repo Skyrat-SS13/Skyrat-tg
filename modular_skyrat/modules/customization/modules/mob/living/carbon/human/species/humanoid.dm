@@ -37,9 +37,13 @@
 	return list("Make sure you fill out your own custom species lore!")
 
 /datum/species/humanoid/prepare_human_for_preview(mob/living/carbon/human/human)
-	var/main_color = skintone2hex("caucasian1")
+	var/main_color = "#722011"
+	var/secondary_color = "#161616"
 	human.dna.features["mcolor"] = main_color
 	human.dna.features["mcolor2"] = main_color
 	human.dna.features["mcolor3"] = main_color
+	human.dna.species.mutant_bodyparts["horns"] = list(MUTANT_INDEX_NAME = "Curled", MUTANT_INDEX_COLOR_LIST = list(secondary_color, secondary_color, secondary_color))
+	human.hairstyle = "Cornrows"
+	human.hair_color = "#2b2b2b"
 	human.update_mutant_bodyparts(TRUE)
 	human.update_body(TRUE)
