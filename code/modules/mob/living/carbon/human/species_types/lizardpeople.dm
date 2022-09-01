@@ -9,7 +9,11 @@
 		TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_CAN_STRIP,
 		TRAIT_CAN_USE_FLIGHT_POTION,
+<<<<<<< HEAD
 		TRAIT_LITERATE,
+=======
+		TRAIT_TACKLING_TAILED_DEFENDER,
+>>>>>>> aec14ffc8fd (Wings and tails give anyone better tackling values. Moths and lizards that lose theirs will have worse values instead. (#69078))
 	)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID|MOB_REPTILE
 	mutant_bodyparts = list("body_markings" = "None", "legs" = "Normal Legs")
