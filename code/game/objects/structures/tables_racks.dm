@@ -677,7 +677,7 @@
 /obj/structure/table/optable//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "operating table"
 	desc = "Used for advanced medical procedures."
-	icon = 'icons/obj/medical/surgery.dmi'
+	icon = 'icons/obj/medical/organs/organs.dmi'
 	icon_state = "optable"
 	buildstack = /obj/item/stack/sheet/mineral/silver
 	smoothing_flags = NONE
