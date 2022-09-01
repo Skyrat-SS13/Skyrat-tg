@@ -78,7 +78,7 @@
  * players - optional, a list mobs to send the announcement to. If unset, sends to all palyers.
  * sound_override - optional, use the passed sound file instead of the default notice sounds. We're not currently using those on Skyrat, since we use our own sounds.
  */
-/proc/minor_announce(message, title = "Attention:", alert, html_encode = TRUE, list/players, sound_override, sound, override_volume = FALSE)
+/proc/minor_announce(message, title = "Attention:", alert, html_encode = TRUE, list/players, sound_override, override_volume = FALSE)
 	if(!message)
 		return
 
@@ -97,13 +97,13 @@
 
 		to_chat(target, "[span_minorannounce("<font color = red>[title]</font color><BR>[message]")]<BR>")
 
-	if(sound)
-		if(SSstation.announcer.event_sounds[sound])
-			var/list/picked = SSstation.announcer.event_sounds[sound]
-			sound = pick(picked)
-		alert_sound_to_playing(sound, override_volume = override_volume, players = players)
+	if(sound_override)
+		if(SSstation.announcer.event_sounds[sound_override])
+			var/list/picked = SSstation.announcer.event_sounds[sound_override]
+			sound_override = pick(picked)
+		alert_sound_to_playing(sound_override, override_volume = override_volume, players = players)
 
-	if(alert)
+	else if(alert)
 		alert_sound_to_playing(sound('modular_skyrat/modules/alerts/sound/alerts/alert1.ogg'), players = players)
 	else
 		alert_sound_to_playing(sound('sound/misc/notice2.ogg'), players = players)
