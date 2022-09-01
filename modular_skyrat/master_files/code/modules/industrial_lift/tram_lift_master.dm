@@ -1,5 +1,5 @@
 /**
- * Damage calculation for getting hit by the tram. 120 to 240 damage to the player. A chance of death, but it's going to hurt.
+ * Damage calculation for getting hit by the tram. 120 to 240 damage to the player at a lethality of 4. A chance of death, but it's going to hurt.
 var/damage = rand(5, 10) * collision_lethality
 				collided.apply_damage(2 * damage, BRUTE, BODY_ZONE_HEAD)
 				collided.apply_damage(2 * damage, BRUTE, BODY_ZONE_CHEST)
