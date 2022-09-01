@@ -994,6 +994,7 @@
 
 	msg_stage++
 
+<<<<<<< HEAD
 /datum/status_effect/corrosion_curse
 	id = "corrosion_curse"
 	status_type = STATUS_EFFECT_REPLACE
@@ -1092,6 +1093,8 @@
 	. = ..()
 	QDEL_NULL(mob_overlay)
 
+=======
+>>>>>>> bc90ded5b8b (Buffs Heretic Curses, Living Heart, Leeching Walk, and technically Entropic Plume by fixing some bugs (#69181))
 //Deals with ants covering someone.
 /datum/status_effect/ants
 	id = "ants"
