@@ -26,7 +26,7 @@
 	/// Keeps track of if a xeno has evolved recently, if so then we prevent them from evolving until that time is up
 	var/has_evolved_recently = FALSE
 	/// How long xenos should be unable to evolve after recently evolving
-	var/evolution_cooldown_time = 1.5 MINUTES
+	var/evolution_cooldown_time = 90 SECONDS
 	/// Determines if a xeno is unable to use abilities
 	var/unable_to_use_abilities = FALSE
 	/// Pixel X shifting of the on fire overlay
@@ -152,7 +152,7 @@
 		return FALSE
 
 	if(evolver.has_evolved_recently)
-		evolver.balloon_alert(evolver, "can evolve in [round(evolver.evolution_cooldown_time / 1 MINUTES, 0.01)] minutes")
+		evolver.balloon_alert(evolver, "can evolve in [evolver.evolution_cooldown_time / 1 MINUTES] minutes")
 		return FALSE
 
 	var/new_beno = new type_to_evolve_into(evolver.loc)
