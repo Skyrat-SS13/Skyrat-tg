@@ -63,7 +63,6 @@
 		/obj/item/mod/module/visor/thermal,
 		/obj/item/mod/module/emp_shield,
 		/obj/item/mod/module/jetpack/advanced,
-		/obj/item/mod/module/tether,
 		/obj/item/mod/module/magboot/advanced
 	)
 
@@ -98,11 +97,11 @@
 	var/reagent_max_amount = 120
 	/// Health threshold above which the module won't heal.
 	var/health_threshold = 80
-
+	/// Amount of raw damage heal per treatment.
 	var/heal_amount = 10
-
+	/// Amount of raw stamdamage heal per treatment.
 	var/stamina_heal_amount = 50
-
+	/// You will never guess what this is. (heal cooldown time)
 	var/heal_cooldown = 30 SECONDS
 
 	/// Timer for the cooldown
@@ -169,6 +168,17 @@
 	addtimer(CALLBACK(src, .proc/boost_aftereffects, mod.wearer), 45 SECONDS)
 	COOLDOWN_START(src, heal_timer, heal_cooldown)
 
+/obj/item/mod/module/auto_doc/proc/charge_boost(obj/item/attacking_item, mob/user)
+	if(!attacking_item.is_open_container())
+		return FALSE
+	if(reagents.has_reagent(reagent_required, reagent_max_amount))
+		balloon_alert(mod.wearer, "already full!")
+		return FALSE
+	if(!attacking_item.reagents.trans_id_to(src, reagent_required, reagent_required_amount))
+		return FALSE
+	balloon_alert(mod.wearer, "charge reloaded")
+	return TRUE
+
 /obj/item/mod/module/auto_doc/on_deactivation(display_message = TRUE, deleting = FALSE)
 	. = ..()
 	UnregisterSignal(mod.wearer, COMSIG_CARBON_HEALTH_UPDATE)
@@ -190,17 +200,6 @@
 	if(charge_boost(attacking_item, user))
 		return COMPONENT_NO_AFTERATTACK
 	return NONE
-
-/obj/item/mod/module/auto_doc/proc/charge_boost(obj/item/attacking_item, mob/user)
-	if(!attacking_item.is_open_container())
-		return FALSE
-	if(reagents.holder_full)
-		balloon_alert(mod.wearer, "already full!")
-		return FALSE
-	if(!attacking_item.reagents.trans_to)
-		return FALSE
-	balloon_alert(mod.wearer, "charge [reagents.has_reagent(reagent_required, reagent_required_amount) ? "fully" : "partially"] reloaded")
-	return TRUE
 
 /obj/item/mod/module/auto_doc/proc/boost_aftereffects(mob/affected_mob)
 	if(!affected_mob)
