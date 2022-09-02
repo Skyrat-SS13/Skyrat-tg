@@ -14,8 +14,9 @@ FORBID_INCLUDE = [
 ]
 
 lines = []
-
+total = 0
 for line in sys.stdin:
+    total+=1
     line = line.strip()
 
     if line == "// BEGIN_INCLUDE":
@@ -28,6 +29,8 @@ for line in sys.stdin:
 
     lines.append(line)
 
+offset = total - len(lines)
+print(f"{offset} lines were ignored in output")
 fail_no_include = False
 
 code_files = glob.glob("code/**/*.dm", recursive=True) + glob.glob("modular_skyrat/**/*.dm", recursive=True) # SKYRAT EDIT CHANGE
@@ -85,9 +88,8 @@ def compare_lines(a, b):
     raise f"Two lines were exactly the same ({a} vs. {b})"
 
 sorted_lines = sorted(lines, key = functools.cmp_to_key(compare_lines))
-
 for (index, line) in enumerate(lines):
     if sorted_lines[index] != line:
-        print(f"The include at line {index + 1} is out of order ({line})")
-        print(f"::error file=tgstation.dme,line={index+1},title=DME Validator::The include at line {index + 1} is out of order ({line})")
+        print(f"The include at line {index + offset} is out of order ({line}, expected {sorted_lines[index]})")
+        print(f"::error file=tgstation.dme,line={index+offset},title=DME Validator::The include at line {index + offset} is out of order ({line}, expected {sorted_lines[index]})")
         sys.exit(1)
