@@ -314,7 +314,7 @@
 /obj/item/nif_repair_kit
 	name = "NIF repair kit"
 	desc = "Repairs NIFs" //Placeholder
-	icon = 'icons/obj/storage.dmi'
+	icon = 'icons/obj/storage/storage.dmi'
 	icon_state = "plasticbox"
 	w_class = WEIGHT_CLASS_SMALL
 	///How much does this repair each time it is used?

@@ -1,3 +1,6 @@
+/// How much damage is done to the NIF if the user ends the round with it uninstalled?
+#define LOSS_WITH_NIF_UNINSTALLED 25
+
 ///Saves the NIF data for everyone inside of the server.
 /datum/controller/subsystem/persistence/proc/save_nifs()
 	for(var/i in GLOB.joined_player_list)
@@ -20,7 +23,19 @@
 	var/path = "data/player_saves/[ckey[1]]/[ckey]/nif.sav"
 	var/savefile/save = new /savefile(path)
 
+	var/saved_nif
+
 	if(!installed_nif)
+		if(READ_FILE(save["nif_path"], saved_nif) != FALSE) // If you have a NIF on file but leave the round without one installed, you only take a durability loss instead of losing the implant.
+			var/stored_nif_durability = save["nif_durability"]
+			stored_nif_durability -= LOSS_WITH_NIF_UNINSTALLED
+
+			if(stored_nif_durability <= 0)
+				stored_nif_durability = 0
+
+			WRITE_FILE(save["nif_durability"], stored_nif_durability)
+			return
+
 		WRITE_FILE(save["nif_path"], FALSE)
 		return
 
@@ -50,3 +65,5 @@
 
 	new_nif.durability = save["nif_durability"]
 	new_nif.current_theme = save["saved_nif_theme"]
+
+#undef LOSS_WITH_NIF_UNINSTALLED
