@@ -40,7 +40,6 @@
 	color = LIGHT_COLOR_FIRE
 	light_color = LIGHT_COLOR_FIRE
 
-
 /obj/projectile/beam/laser/microfusion/superheated/on_hit(atom/target, blocked)
 	. = ..()
 	if(isliving(target))
@@ -59,11 +58,9 @@
 
 /obj/projectile/beam/laser/microfusion/scatter
 	name = "scatter microfusion laser"
-	damage = 30 // This damage is split into pellet amount
 
 /obj/projectile/beam/laser/microfusion/scattermax
 	name = "scatter microfusion laser"
-	damage = 45 // This damage is split into pellet amount
 
 /obj/projectile/beam/laser/microfusion/repeater
 	name = "scatter microfusion laser"

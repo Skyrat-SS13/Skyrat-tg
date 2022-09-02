@@ -20,12 +20,10 @@
 	)
 	design_ids = list(
 		"enhanced_microfusion_cell",
-		"microfusion_cell_attachment_rechargeable",
 		"enhanced_microfusion_phase_emitter",
 		"microfusion_gun_attachment_black_camo",
 		"microfusion_gun_attachment_nt_camo",
 		"microfusion_gun_attachment_heatsink",
-		"microfusion_gun_attachment_rgb",
 		"microfusion_cell_attachment_tactical",
 		"microfusion_cell_attachment_reloader",
 	)

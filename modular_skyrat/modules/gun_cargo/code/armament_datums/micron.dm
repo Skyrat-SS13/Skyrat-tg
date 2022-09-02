@@ -8,9 +8,9 @@
 	subcategory = ARMAMENT_SUBCATEGORY_ASSAULTRIFLE
 
 /datum/armament_entry/cargo_gun/micron/rifle/mcr
-	item_type = /obj/item/gun/microfusion/mcr01
-	lower_cost = CARGO_CRATE_VALUE * 10
-	upper_cost = CARGO_CRATE_VALUE * 14
+	item_type = /obj/item/gun/microfusion/mcr01 // Considering that you also have to buy mods, this is about as expensive as an allstar SC-2
+	lower_cost = CARGO_CRATE_VALUE * 6
+	upper_cost = CARGO_CRATE_VALUE * 8
 
 /datum/armament_entry/cargo_gun/micron/ammo
 	subcategory = ARMAMENT_SUBCATEGORY_AMMO

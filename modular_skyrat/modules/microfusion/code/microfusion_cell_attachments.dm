@@ -11,7 +11,7 @@ For adding unique abilities to microfusion cells. These cannot directly interact
 	w_class = WEIGHT_CLASS_NORMAL
 	/// The overlay that will be automatically added, must be in the cells icon.
 	var/attachment_overlay_icon_state
-	 /// Does this attachment process with the cell?
+	/// Does this attachment process with the cell?
 	var/processing_attachment = FALSE
 
 
@@ -33,6 +33,7 @@ rechargeable ATTACHMENT
 
 Allows the cell to be recharged at a gun recharger OR cell recharger.
 */
+
 /obj/item/microfusion_cell_attachment/rechargeable
 	name = "rechargeable microfusion cell attachment"
 	desc = "An adapter meant to be plugged into a microfusion cell, allowing the cell to be recharged at recharge stations for both weapons and civilian-grade batteries. Neither Allstar Lasers Incorporated or Micron Control Systems Incorporated suggest licking the prongs."
@@ -54,6 +55,7 @@ OVERCAPACITY ATTACHMENT
 
 Increases the cell capacity by a set percentage.
 */
+
 /obj/item/microfusion_cell_attachment/overcapacity
 	name = "overcapacity microfusion cell attachment"
 	desc = "An attachment which increases the capacity of the microfusion cell it's attached to. These are an additional, smaller capacitor, using a system to automatically switch from the cell to the capacitor as it's depleted, maximizing the weapon's charge."
@@ -102,6 +104,7 @@ SELFCHARGE ATTACHMENT
 The cell will charge itself.
 If the cell isn't stabilised by a stabiliser, it may emit a radiation pulse.
 */
+
 /obj/item/microfusion_cell_attachment/selfcharging
 	name = "self-charging microfusion cell attachment"
 	desc = "While microfusion cells are normally shipped without their fuel source, this attachment comes with fifteen grams of hydrogen fuel; allowing the cell to sustain a small, yet active reaction to self-charge. These can keep going for weeks to months in ideal conditions, making them more than enough for most campaigns."
@@ -130,13 +133,12 @@ If the cell isn't stabilised by a stabiliser, it may emit a radiation pulse.
 		if(!microfusion_cell.stabilised && DT_PROB(1, delta_time))
 			radiation_pulse(src, 1, RAD_MEDIUM_INSULATION)
 
-
-
 /*
 RELOAD GRIP ATTACHMENT
 
 Makes normal reloads easier
 */
+
 /obj/item/microfusion_cell_attachment/reloader
 	name = "reloading handle microfusion cell attachment"
 	desc = "An aftermarket modification that makes the process of loading a MF cell far easier."
@@ -156,6 +158,7 @@ TACTICAL GRIP ATTACHMENT
 
 Makes tactical reloads easier
 */
+
 /obj/item/microfusion_cell_attachment/tactical
 	name = "tac-reload handle microfusion cell attachment"
 	desc = "An aftermarket modification that makes the process of tactically loading a MF cell far easier and cooler."
