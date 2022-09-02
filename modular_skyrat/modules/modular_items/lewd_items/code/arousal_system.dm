@@ -942,17 +942,19 @@
 		return TRUE
 
 	user.visible_message(span_warning("[user] starts masturbating onto [target]!"), span_danger("You start masturbating onto [target]!"))
-	if(do_after(user, 60))
-		var/turf/target_turf = get_turf(target)
-		user.visible_message(span_warning("[user] cums on [target]!"), span_danger("You cum on [target]!"))
-		playsound(target, SFX_DESECRATION, 50, TRUE, ignore_walls = FALSE)
-		new/obj/effect/decal/cleanable/cum(target_turf)
-		if(prob(40))
-			affected_human.try_lewd_autoemote("moan")
+	if(!(do_after(user, 60)))
+		return FALSE
 
-		if(target.icon_state=="stickyweb1" || target.icon_state=="stickyweb2")
-			target.icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_decals/lewd_decals.dmi'
+	var/turf/target_turf = get_turf(target)
+	user.visible_message(span_warning("[user] cums on [target]!"), span_danger("You cum on [target]!"))
+	playsound(target, SFX_DESECRATION, 50, TRUE, ignore_walls = FALSE)
+	new/obj/effect/decal/cleanable/cum(target_turf)
+	if(prob(40))
+		affected_human.try_lewd_autoemote("moan")
 
-		qdel(src)
+	if(target.icon_state=="stickyweb1" || target.icon_state=="stickyweb2")
+		target.icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_decals/lewd_decals.dmi'
+
+	qdel(src)
 
 	return TRUE
