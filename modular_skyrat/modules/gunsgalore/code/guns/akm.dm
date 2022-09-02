@@ -95,7 +95,7 @@
 	desc = "A timeless human design of a carbine chambered in the NRI's 5.6mm ammo. Internal modifications to the receiver and magwell in order to accomodate it for the civillian use made it incompatible with the conventional magazines, as well as removed its fully automatic capabilities. Smooth, low-quality bore negatively impacts its accuracy and doesn't let you use any but the civillian-grade ammunition."
 	icon_state = "akm_civ"
 	inhand_icon_state = "akm_civ"
-	fire_select_modes = SELECT_SEMI_AUTOMATIC
+	fire_select_modes = list(SELECT_SEMI_AUTOMATIC)
 	mag_type = /obj/item/ammo_box/magazine/akm/civvie
 	burst_size = 1
 	fire_delay = 5
