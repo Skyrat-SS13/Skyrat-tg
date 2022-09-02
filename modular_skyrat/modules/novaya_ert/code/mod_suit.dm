@@ -46,9 +46,6 @@
 		/obj/item/mod/module/storage/large_capacity,
 		/obj/item/mod/module/thermal_regulator,
 		/obj/item/mod/module/status_readout/generic,
-		/obj/item/mod/module/visor/night,
-		/obj/item/mod/module/emp_shield,
-		/obj/item/mod/module/jetpack,
 		/obj/item/mod/module/tether,
 		/obj/item/mod/module/magboot
 	)
