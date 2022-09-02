@@ -8,6 +8,7 @@
 #define PUMP_MODE "pump"
 
 #define MAX_POWER 40000	/// BS cell capacity, a potato battery would still outplay this
+#define TRANSFER_INC 1000 /// Amount of power per tick pumped/drained
 #define SETUP_TIME 1.4 SECONDS /// How quick does it (un)fold? Warning: this tries to match an animation
 
 // Automapper
@@ -288,15 +289,13 @@
 
 	/// The cyborg's current cell
 	var/obj/item/stock_parts/cell/cell = buckled_cyborg.cell
-	/// How many power units per tick are transferred
-	var/transfer_inc = 1000
 
 	switch(enabled_function)
 		if(DRAIN_MODE)
 			if(cell.charge > 0)
-				drain_cell(cell, transfer_inc)
+				drain_cell(cell, TRANSFER_INC)
 
-			if(cell.charge < 0)
+			if(cell.charge <= 0)
 				cell.charge = 0
 				stop_mode()
 
@@ -306,9 +305,9 @@
 
 		if(PUMP_MODE)
 			if(power_storage > 0)
-				pump_cell(cell, transfer_inc)
+				pump_cell(cell, TRANSFER_INC)
 
-			if(power_storage < 0)
+			if(power_storage <= 0)
 				power_storage = 0
 				stop_mode()
 
@@ -319,15 +318,27 @@
 		if(NONE)
 			return
 
-/obj/structure/bed/borg_action_pacifier/proc/drain_cell(obj/item/stock_parts/cell/cell, transfer_inc)
-	cell.charge = cell.charge - transfer_inc
-	power_storage = power_storage + transfer_inc
+/obj/structure/bed/borg_action_pacifier/proc/drain_cell(obj/item/stock_parts/cell/cell)
+	if(locked)
+		render_lock()
+	else
+		buckled_cyborg.regenerate_icons()
+
+	cell.charge = cell.charge - TRANSFER_INC
+	power_storage = power_storage + TRANSFER_INC
+
 	playsound(src, 'modular_skyrat/master_files/sound/effects/robot_drain.ogg', 25, FALSE, falloff_exponent = 20)
 	do_sparks(1, TRUE, buckled_cyborg)
 
-/obj/structure/bed/borg_action_pacifier/proc/pump_cell(obj/item/stock_parts/cell/cell, transfer_inc)
-	power_storage = power_storage - transfer_inc
-	cell.charge = cell.charge + transfer_inc
+/obj/structure/bed/borg_action_pacifier/proc/pump_cell(obj/item/stock_parts/cell/cell)
+	if(locked)
+		render_lock()
+	else
+		buckled_cyborg.regenerate_icons()
+
+	power_storage = power_storage - TRANSFER_INC
+	cell.charge = cell.charge + TRANSFER_INC
+
 	playsound(src, 'modular_skyrat/master_files/sound/effects/robot_pump.ogg', 25, FALSE, falloff_exponent = 20)
 	do_sparks(1, TRUE, buckled_cyborg)
 
@@ -340,13 +351,19 @@
 /obj/structure/bed/borg_action_pacifier/proc/stop_mode()
 	playsound(src, 'sound/machines/ping.ogg', 50, FALSE, falloff_exponent = 10)
 	enabled_function = NONE
-	buckled_cyborg.regenerate_icons()
 
 /obj/structure/bed/borg_action_pacifier/proc/lock()
 	playsound(src, 'modular_skyrat/master_files/sound/effects/robot_lock.ogg', 50, TRUE, falloff_exponent = 10)
 	locked = TRUE
 	buckled_cyborg.SetLockdown(TRUE)
+	render_lock()
 
+/obj/structure/bed/borg_action_pacifier/proc/unlock()
+	locked = FALSE
+	buckled_cyborg.SetLockdown(FALSE)
+	buckled_cyborg.regenerate_icons()
+
+/obj/structure/bed/borg_action_pacifier/proc/render_lock()
 	// Emergency lights which are otherwise shamefully unused
 	buckled_cyborg.cut_overlay(buckled_cyborg.eye_lights)
 	buckled_cyborg.eye_lights = new()
@@ -355,18 +372,13 @@
 	buckled_cyborg.eye_lights.icon = buckled_cyborg.icon
 	buckled_cyborg.add_overlay(buckled_cyborg.eye_lights)
 
-/obj/structure/bed/borg_action_pacifier/proc/unlock()
-	locked = FALSE
-	buckled_cyborg.SetLockdown(FALSE)
-	buckled_cyborg.regenerate_icons()
-
 /obj/structure/bed/borg_action_pacifier/proc/undeploy(mob/living/clicker)
 	if(!clicker || !deployed)
 		return
 
-	balloon_alert_to_viewers("resetting...")
 	if(do_after(clicker, 3 SECONDS))
 		addtimer(CALLBACK(src, .proc/finish_undeploy), SETUP_TIME)
+		balloon_alert(clicker, "resetting...")
 		flick("undeploying", src)
 	else
 		return
@@ -375,6 +387,7 @@
 	var/obj/item/grenade/borg_action_pacifier_grenade/BAPer = new (get_turf(src))
 	BAPer.power_storage = power_storage
 	BAPer.balloon_alert_to_viewers("reset")
+	playsound(src, 'modular_skyrat/master_files/sound/effects/robot_trap.ogg', 25, TRUE, falloff_exponent = 20)
 	qdel(src)
 
 // Buckle overwrites
@@ -475,4 +488,5 @@
 #undef PUMP_MODE
 
 #undef MAX_POWER
+#undef TRANSFER_INC
 #undef SETUP_TIME
