@@ -62,6 +62,8 @@
 	var/disabled = FALSE
 	///Is the NIF completely broken? If this is true, the user won't be able to pull up the TGUI menu at all.
 	var/broken = FALSE
+	///Does the NIF have theft protection? This should only be disabled if admins need to fix something.
+	var/theft_protection = TRUE
 
 	//Software Variables
 	///How many programs can the NIF store at once?
@@ -84,13 +86,17 @@
 /obj/item/organ/internal/cyberimp/brain/nif/Insert(mob/living/carbon/human/insertee)
 	. = ..()
 
-	if(!linked_mob)
-		linked_mob = insertee
-		linked_mob.ckey = stored_ckey
+	if(linked_mob && stored_ckey != insertee.ckey && theft_protection)
+		insertee.audible_message(span_warning("The [src] lets out a negative buzz before forcefully removing itself from [insertee]'s brain."))
+		playsound(insertee, 'sound/machines/buzz-sigh.ogg', 30, TRUE)
+		src.Remove(insertee)
+		src.forceMove(get_turf(insertee))
 
-	else if(stored_ckey != insertee.ckey)
-		broken = TRUE //You wouldn't steal a NIF.
-		to_chat(insertee, span_warning("[src] was already linked to a previous user. This implant will no longer work."))
+		return FALSE
+
+
+	linked_mob = insertee
+	stored_ckey = linked_mob.ckey
 
 	loc = insertee // This needs to be done, otherwise TGUI will not pull up.
 	insertee.installed_nif = src
