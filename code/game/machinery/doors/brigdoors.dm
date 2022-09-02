@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-#define CHARS_PER_LINE 5
-#define FONT_SIZE "5pt"
-#define FONT_COLOR "#09f"
-#define FONT_STYLE "Small Fonts"
 //#define MAX_TIMER 15 MINUTES //ORIGINAL
 #define MAX_TIMER 60 MINUTES //SKYRAT EDIT CHANGE
 //#define PRESET_SHORT 2 MINUTES //ORIGINAL
@@ -12,21 +7,6 @@
 //#define PRESET_LONG 5 MINUTES //ORIGINAL
 #define PRESET_LONG 15 MINUTES //SKYRAT EDIT CHANGE
 
-///////////////////////////////////////////////////////////////////////////////////////////////
-// Brig Door control displays.
-//  Description: This is a controls the timer for the brig doors, displays the timer on itself and
-//               has a popup window when used, allowing to set the timer.
-//  Code Notes: Combination of old brigdoor.dm code from rev4407 and the status_display.dm code
-//  Date: 01/September/2010
-//  Programmer: Veryinky
-/////////////////////////////////////////////////////////////////////////////////////////////////
-/obj/machinery/door_timer
-=======
-#define MAX_TIMER 15 MINUTES
-#define PRESET_SHORT 2 MINUTES
-#define PRESET_MEDIUM 3 MINUTES
-#define PRESET_LONG 5 MINUTES
-
 /**
  * Brig Door control displays.
  *
@@ -34,7 +14,6 @@
  * has a popup window when used, allowing to set the timer.
  */
 /obj/machinery/status_display/door_timer
->>>>>>> e9d4eb45d1f ([MDB IGNORE] Improves status display even more, makes the brig door timers based on status displays (#69153))
 	name = "door timer"
 	desc = "A remote control for a door."
 	current_mode = SD_MESSAGE
@@ -91,7 +70,7 @@
 	if(!timing)
 		return PROCESS_KILL
 
-	if(world.time - activation_time >= timer_duration)
+	if(REALTIMEOFDAY - activation_time >= timer_duration) // SKYRAT EDIT CHANGE: original was world.time
 		timer_end() // open doors, reset timer, clear status screen
 	update_content()
 
@@ -105,17 +84,9 @@
 		set_messages("", "")
 		return
 
-<<<<<<< HEAD
-	if(timing)
-		//if(world.time - activation_time >= timer_duration) //ORIGINAL
-		if(world.realtime - activation_time >= timer_duration) //SKYRAT EDIT CHANGE
-			timer_end() // open doors, reset timer, clear status screen
-		update_appearance()
-=======
 	var/disp1 = name
 	var/disp2 = "[add_leading(num2text((time_left / 60) % 60), 2, "0")]:[add_leading(num2text(time_left % 60), 2, "0")]"
 	set_messages(disp1, disp2)
->>>>>>> e9d4eb45d1f ([MDB IGNORE] Improves status display even more, makes the brig door timers based on status displays (#69153))
 
 /**
  * Starts counting down the timer and closes linked the door.
@@ -125,8 +96,7 @@
 	if(machine_stat & (NOPOWER|BROKEN))
 		return 0
 
-	//activation_time = world.time //ORIGINAL
-	activation_time = world.realtime //SKYRAT EDIT CHANGE
+	activation_time = REALTIMEOFDAY // SKYRAT EDIT CHANGE: original was world.time
 	timing = TRUE
 	begin_processing()
 
@@ -193,20 +163,13 @@
 
 	return 1
 
-<<<<<<< HEAD
-
-/obj/machinery/door_timer/proc/time_left(seconds = FALSE)
-	//. = max(0,timer_duration - (activation_time ? world.time - activation_time : 0)) //ORIGINAL
-	. = max(0,timer_duration - (activation_time ? world.realtime - activation_time : 0)) //SKYRAT EDIT CHANGE
-=======
 /**
  * Return time left.
  * Arguments:
  * * seconds - return time in seconds it TRUE, else deciseconds.
  */
 /obj/machinery/status_display/door_timer/proc/time_left(seconds = FALSE)
-	. = max(0, timer_duration - (activation_time ? world.time - activation_time : 0))
->>>>>>> e9d4eb45d1f ([MDB IGNORE] Improves status display even more, makes the brig door timers based on status displays (#69153))
+	. = max(0,timer_duration - (activation_time ? REALTIMEOFDAY - activation_time : 0))  // SKYRAT EDIT CHANGE: original was world.time
 	if(seconds)
 		. /= 10
 
@@ -298,8 +261,7 @@
 			investigate_log("[key_name(usr)] set cell [id]'s timer to [preset_time/10] seconds", INVESTIGATE_RECORDS)
 			user.log_message("set cell [id]'s timer to [preset_time/10] seconds", LOG_ATTACK)
 			if(timing)
-				//activation_time = world.time //ORIGINAL
-				activation_time = world.realtime
+				activation_time = REALTIMEOFDAY // SKYRAT EDIT CHANGE: original was world.time
 		else
 			. = FALSE
 
