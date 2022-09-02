@@ -63,7 +63,6 @@
 	name = "scatter microfusion laser"
 
 /obj/projectile/beam/laser/microfusion/repeater
-	name = "scatter microfusion laser"
 	damage = 15 // No more a x2 damage buff
 
 /obj/projectile/beam/laser/microfusion/penetrator
