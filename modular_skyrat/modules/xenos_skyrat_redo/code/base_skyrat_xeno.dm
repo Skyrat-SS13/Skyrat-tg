@@ -221,11 +221,12 @@
 		return -1
 	return vessel.max_plasma
 
-/mob/living/carbon/alien/humanoid/skyrat/alien_evolve(mob/living/carbon/alien/new_xeno)
+/mob/living/carbon/alien/humanoid/skyrat/alien_evolve(mob/living/carbon/alien/new_xeno, is_it_a_larva)
 	var/mob/living/carbon/alien/humanoid/skyrat/xeno_to_transfer_to = new_xeno
 
 	xeno_to_transfer_to.setDir(dir)
-	xeno_to_transfer_to.has_just_evolved()
+	if(!islarva(xeno_to_transfer_to))
+		xeno_to_transfer_to.has_just_evolved()
 	if(mind)
 		mind.name = xeno_to_transfer_to.real_name
 		mind.transfer_to(xeno_to_transfer_to)
