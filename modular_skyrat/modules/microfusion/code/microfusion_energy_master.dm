@@ -13,6 +13,7 @@
 	righthand_file = 'modular_skyrat/modules/microfusion/icons/guns_righthand.dmi'
 	has_gun_safety = TRUE
 	can_bayonet = FALSE
+	weapon_weight = WEAPON_HEAVY
 	w_class = WEIGHT_CLASS_BULKY
 	obj_flags = UNIQUE_RENAME
 	ammo_x_offset = 2
