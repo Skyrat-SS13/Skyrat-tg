@@ -58,7 +58,6 @@
 		/obj/item/mod/module/status_readout/generic,
 		/obj/item/mod/module/auto_doc,
 		/obj/item/mod/module/visor/thermal,
-		/obj/item/mod/module/emp_shield,
 		/obj/item/mod/module/jetpack/advanced,
 		/obj/item/mod/module/magboot/advanced
 	)
