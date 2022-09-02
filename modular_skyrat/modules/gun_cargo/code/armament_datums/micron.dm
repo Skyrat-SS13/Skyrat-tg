@@ -110,11 +110,6 @@
 	subcategory = ARMAMENT_SUBCATEGORY_CELL_UPGRADE
 	interest_addition = COMPANY_INTEREST_ATTACHMENT
 
-/datum/armament_entry/cargo_gun/micron/cell_upgrade/recharge
-	item_type = /obj/item/microfusion_cell_attachment/rechargeable
-	lower_cost = CARGO_CRATE_VALUE * 4
-	upper_cost = CARGO_CRATE_VALUE * 6
-
 /datum/armament_entry/cargo_gun/micron/cell_upgrade/stabilize
 	item_type = /obj/item/microfusion_cell_attachment/stabiliser
 	lower_cost = CARGO_CRATE_VALUE * 2

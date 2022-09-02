@@ -8,7 +8,7 @@ Essentially, power cells that malfunction if not used in an MCR, and should only
 
 /obj/item/stock_parts/cell/microfusion //Just a standard cell.
 	name = "microfusion cell"
-	desc = "A standard-issue microfusion cell, produced by Micron Control Systems. Smaller than a can of soda, these fulfill the need for a power source where plugging into a recharger is inconvenient or unavailable; although they will eventually run dry due to being shipped without a fuel source."
+	desc = "A standard-issue microfusion cell, produced by Micron Control Systems. For safety reasons, they cannot be charged unless they are inside of a compatible Micron Control Systems firearm."
 	icon = 'modular_skyrat/modules/microfusion/icons/microfusion_cells.dmi'
 	charging_icon = "mf_in" //This is stored in cell.dmi in the aesthetics module
 	icon_state = "microfusion"
