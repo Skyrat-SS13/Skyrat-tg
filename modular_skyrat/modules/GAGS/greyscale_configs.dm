@@ -293,6 +293,17 @@
 	name = "Cardigan (Worn)"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/cardigan/cardigan_worn.json'
 
+// SWEATERS
+
+/datum/greyscale_config/sweater
+	name = "Sweater"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/sweaters.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/sweater/sweater.json'
+
+/datum/greyscale_config/sweater/worn
+	name = "Sweater (Worn)"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/sweater/sweater_worn.json'
+
 // URBAN COAT
 
 /datum/greyscale_config/urban_coat
@@ -303,6 +314,27 @@
 /datum/greyscale_config/urban_coat/worn
 	name = "Urban Coat (Worn)"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/urban_coat/urban_coat_worn.json'
+
+// WINTER COAT
+
+/datum/greyscale_config/winter_coat
+	name = "Winter Coat"
+	icon_file = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/winter_coat/winter_coat.json'
+
+/datum/greyscale_config/winter_coat_worn
+	name = "Winter Coat (Worn)"
+	icon_file = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/winter_coat/winter_coat_worn.json'
+
+/datum/greyscale_config/winter_hood
+	name = "Winter Coat Hood"
+	icon_file = 'modular_skyrat/master_files/icons/donator/obj/clothing/hats.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/winter_coat/winter_hood.json'
+
+/datum/greyscale_config/winter_hood/worn
+	name = "Winter Coat Hood (Worn)"
+	icon_file = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
 
 // LEATHER JACKET
 
@@ -378,6 +410,30 @@
 /datum/greyscale_config/jumpsuit_prison_worn/teshari
 	name = "Worn Prison Jumpsuit - Teshari"
 	icon_file = 'modular_skyrat/modules/GAGS/icons/jumpsuit_teshari.dmi'
+
+// PANTS / SHORTS
+
+/datum/greyscale_config/slacks_worn/digi
+	name = "Worn Slacks - Digitigrade"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/shorts_pants.dmi'
+
+/datum/greyscale_config/jeans_worn/digi
+	name = "Worn Jeans - Digitigrade"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/shorts_pants.dmi'
+
+/datum/greyscale_config/shorts_worn/digi
+	name = "Worn Shorts - Digitigrade"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/shorts_pants.dmi'
+
+/datum/greyscale_config/jeanshorts_worn/digi
+	name = "Worn Jean Shorts - Digitigrade"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/shorts_pants.dmi'
+
+// DRESSES / SKIRTS
+
+/datum/greyscale_config/plaidskirt_worn/digi
+	name = "Worn Plaid Skirt - Digitigrade"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/dress.dmi'
 
 // KILT
 

@@ -22,9 +22,8 @@
 	disliked_food = DAIRY | ORANGES | SUGAR //SKYRAT EDIT: Roundstart Snails - As it turns out, you can't give a snail processed sugar or citrus.
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | RACE_SWAP
 	sexes = FALSE //snails are hermaphrodites
-	veteran_only = TRUE //SKYRAT EDIT - Roundstart Snails
 
-	eyes_icon = 'modular_skyrat/master_files/icons/mob/species/snail_eyes.dmi'
+	eyes_icon = 'modular_skyrat/modules/organs/icons/snail_eyes.dmi' // SKYRAT EDIT - Roundstart Snails
 	mutanteyes = /obj/item/organ/internal/eyes/snail
 	mutanttongue = /obj/item/organ/internal/tongue/snail
 	mutantliver = /obj/item/organ/internal/liver/snail //SKYRAT EDIT - Roundstart Snails
@@ -84,7 +83,7 @@
 			RESKIN_WORN_ICON_STATE = "coneshell"
 		),
 		"Round Shell" = list(
-			RESKIN_ICON = 'icons/obj/storage.dmi',
+			RESKIN_ICON = 'icons/obj/storage/storage.dmi',
 			RESKIN_ICON_STATE = "snailshell",
 			RESKIN_WORN_ICON = 'icons/mob/clothing/back.dmi',
 			RESKIN_WORN_ICON_STATE = "snailshell"

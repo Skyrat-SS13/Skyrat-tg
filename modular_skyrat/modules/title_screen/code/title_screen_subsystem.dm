@@ -176,7 +176,7 @@ SUBSYSTEM_DEF(title)
 /proc/add_startup_message(msg)
 	var/msg_dat = {"<p class="terminal_text">[msg]</p>"}
 
-	GLOB.startup_messages.Insert(1, msg_dat)
+	GLOB.startup_messages += msg_dat
 
 	// If we ran before SStitle initialized, set the ref time now.
 	SStitle.check_progress_reference_time()
@@ -193,5 +193,7 @@ SUBSYSTEM_DEF(title)
 	SStitle.startup_message_timings[msg] = new_timing
 
 	for(var/mob/dead/new_player/new_player in GLOB.new_player_list)
+		#ifndef LOWMEMORYMODE // Prevents the pre-load screen from running but ensures that the bare minimum of errors happen, doesn't happen on live
 		new_player.client << output(msg_dat, "title_browser:append_terminal_text")
 		new_player.client << output(list2params(list(new_timing, SStitle.average_completion_time)), "title_browser:update_loading_progress")
+		#endif

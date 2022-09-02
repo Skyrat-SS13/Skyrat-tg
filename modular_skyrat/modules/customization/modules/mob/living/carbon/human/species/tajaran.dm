@@ -42,8 +42,7 @@
 		BODY_ZONE_R_LEG = /obj/item/bodypart/r_leg/mutant,
 	)
 
-/datum/species/tajaran/get_random_features()
-	var/list/returned = MANDATORY_FEATURE_LIST
+/datum/species/tajaran/randomize_features(mob/living/carbon/human/human_mob)
 	var/main_color
 	var/second_color
 	var/random = rand(1,5)
@@ -64,10 +63,9 @@
 		if(5)
 			main_color = "#DDCC99"
 			second_color = "#DDCCAA"
-	returned["mcolor"] = main_color
-	returned["mcolor2"] = second_color
-	returned["mcolor3"] = second_color
-	return returned
+	human_mob.dna.features["mcolor"] = main_color
+	human_mob.dna.features["mcolor2"] = second_color
+	human_mob.dna.features["mcolor3"] = second_color
 
 /datum/species/tajaran/get_random_body_markings(list/passed_features)
 	var/name = pick("Tajaran", "Floof", "Floofer")

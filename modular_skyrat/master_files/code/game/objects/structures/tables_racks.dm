@@ -36,11 +36,11 @@
 	REMOVE_TRAIT(target, TRAIT_NUMBED, REF(src))
 
 /obj/structure/table/optable/post_buckle_mob(mob/living/patient)
-	set_patient(patient)
+	mark_patient(potential_patient = patient)
 	if(numbing_capable)
 		chill_out(patient)
 
 /obj/structure/table/optable/post_unbuckle_mob(mob/living/patient)
-	set_patient(null)
+	unmark_patient(potential_patient = patient)
 	if(numbing_capable)
 		thaw_them(patient)

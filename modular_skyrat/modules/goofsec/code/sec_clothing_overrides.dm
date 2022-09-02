@@ -105,10 +105,6 @@
 		),
 	)
 
-/obj/item/storage/belt/security/Initialize()
-	. = ..()
-	create_storage(type = /datum/storage/security)
-
 /obj/item/storage/belt/security/webbing
 	uses_advanced_reskins = FALSE
 	unique_reskin = NONE
@@ -125,6 +121,16 @@
 	var/atom/resolve_parent = parent?.resolve()
 	if(!resolve_parent)
 		return
+	if(isobserver(user))
+		show_contents(user)
+		return
+
+	if(!user.CanReach(resolve_parent))
+		resolve_parent.balloon_alert(user, "can't reach!")
+		return FALSE
+
+	if(!isliving(user) || user.incapacitated())
+		return FALSE
 
 	var/obj/item/gun/gun_to_draw = locate() in real_location?.resolve()
 	if(!gun_to_draw)
@@ -196,7 +202,7 @@
 			//End of our only change
 			to_chat(user, span_notice("[up ? alt_toggle_message : toggle_message] \the [src]."))
 
-			user.update_inv_head()
+			user.update_worn_head()
 			if(iscarbon(user))
 				var/mob/living/carbon/C = user
 				C.head_update(src, forced = 1)
@@ -354,7 +360,7 @@
 	else
 		worn_icon_state = "[icon_state]_left"
 
-	usr.update_inv_neck()
+	usr.update_worn_neck()
 
 /*
 * GLOVES
@@ -630,18 +636,18 @@
 */
 
 /obj/item/storage/backpack/security/redsec
-	icon = 'icons/obj/storage.dmi'
+	icon = 'icons/obj/storage/storage.dmi'
 	worn_icon = 'icons/mob/clothing/back.dmi'
 	icon_state = "securitypack"
 	current_skin = "securitypack"	//prevents reskinning
 
 /obj/item/storage/backpack/satchel/sec/redsec
-	icon = 'icons/obj/storage.dmi'
+	icon = 'icons/obj/storage/storage.dmi'
 	worn_icon = 'icons/mob/clothing/back.dmi'
 	icon_state = "satchel-sec"
 
 /obj/item/storage/backpack/duffelbag/sec/redsec
-	icon = 'icons/obj/storage.dmi'
+	icon = 'icons/obj/storage/storage.dmi'
 	worn_icon = 'icons/mob/clothing/back.dmi'
 	icon_state = "duffel-sec"
 	current_skin = "duffel-sec"	//prevents reskinning

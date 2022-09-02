@@ -4,7 +4,7 @@ MODULE ID: CUSTOMIZATION
 
 ### Description:
 
- IF YOU WANT TO ADD AN EXTRA FEATURE TO SOMEONES DNA LOOK AT "code/__DEFINES/~skyrat_defines/DNA.dm"
+IF YOU WANT TO ADD AN EXTRA FEATURE TO SOMEONES DNA LOOK AT "code/__DEFINES/~skyrat_defines/DNA.dm"
 
 Re-writes how mutant bodyparts exist and how they're handled. Adds in a per limb body marking system. Adds in loadout, with lots of clothing ported over. Adds in all the missing species. Adds in flavor text and OOC prefs. Adds in special rendering cases for digitigrades, taurs, snouts, voxes etc. Adds in changeable PDA ringtone message.
 
@@ -27,11 +27,11 @@ Re-writes how mutant bodyparts exist and how they're handled. Adds in a per limb
  ./code/modules/mob/living/carbon/human/species_types/lizardpeople.dm the 5 procs related to wagging tail and - /datum/species/lizard/on_species_gain()
  ./code/modules/surgery/bodyparts/_bodyparts.dm > /obj/item/bodypart/proc/get_limb_icon()
  ./code/modules/surgery/organs/ears.dm > /obj/item/organ/internal/ears/cat/Insert(), /obj/item/organ/internal/ears/cat/Remove()
- ./code/modules/surgery/organs/tails.dm > /obj/item/organ/external/tail/cat/Insert(), /obj/item/organ/external/tail/cat/Remove(), /obj/item/organ/external/tail/lizard/Initialize(), /obj/item/organ/external/tail/lizard/Insert(), /obj/item/organ/external/tail/lizard/Remove()
+ ./code/modules/surgery/organs/tails.dm > /obj/item/organ/external/tail/cat/Insert(), /obj/item/organ/external/tail/cat/Remove(), /obj/item/organ/external/tail/lizard/Initialize(mapload), /obj/item/organ/external/tail/lizard/Insert(), /obj/item/organ/external/tail/lizard/Remove()
  ./code/modules/surgery/bodyparts/dismemberment.dm > /mob/living/carbon/regenerate_limb()
  ./code/modules/mob/living/carbon/human/status_procs.dm > /mob/living/carbon/human/become_husk() > APPENDED
  ./code/modules/reagents/chemistry/holder.dm > /datum/reagents/metabolize()
- ./code/modules/food_and_drinks/drinks/drinks/drinkingglass.dm > /obj/item/reagent_containers/food/drinks/drinkingglass/on_reagent_change()
+ ./code/modules/food_and_drinks/drinks/drinks/drinkingglass.dm > /obj/item/reagent_containers/cup/glass/drinkingglass/on_reagent_change()
  ./code/modules/mob/living/carbon/human/human_defense.dm > /mob/living/carbon/human/emp_act()
  ./code/modules/mob/living/carbon/human.dm > /mob/living/carbon/human/revive() > APPENDED
  ./code/modules/reagents/chemistry/reagents/food_reagents.dm > datum/reagent/consumable/on_mob_life()
@@ -46,45 +46,46 @@ Re-writes how mutant bodyparts exist and how they're handled. Adds in a per limb
 
 ### Defines:
 
- ./code/modules/surgery/organs/tongue.dm > var/static/list/languages_possible_base - added 2 languages
- ./code/modules/mob/living/carbon/human/species_types/lizardpeople.dm > commented out "mutant_organs = list(/obj/item/organ/external/tail/lizard)"
- ./code/modules/mob/living/carbon/human/species_types/felinid.dm > commented out "mutantears = /obj/item/organ/internal/ears/cat" and "mutant_organs = list(/obj/item/organ/external/tail/cat)"
- ./code/modules/mob/living/carbon/human/species.dm > var/list/list/mutant_bodyparts (added typed list type)
- ./code/_globalvars/lists/flavor_misc.dm > Removed accessory list defines
- .\code\datums\keybindings\living.dm > /datum/keybinding/living/look_up > from L to P
+./code/modules/surgery/organs/tongue.dm > var/static/list/languages_possible_base - added 2 languages
+./code/modules/mob/living/carbon/human/species_types/lizardpeople.dm > commented out "mutant_organs = list(/obj/item/organ/external/tail/lizard)"
+./code/modules/mob/living/carbon/human/species_types/felinid.dm > commented out "mutantears = /obj/item/organ/internal/ears/cat" and "mutant_organs = list(/obj/item/organ/external/tail/cat)"
+./code/modules/mob/living/carbon/human/species.dm > var/list/list/mutant_bodyparts (added typed list type)
+./code/_globalvars/lists/flavor_misc.dm > Removed accessory list defines
+.\code\datums\keybindings\living.dm > /datum/keybinding/living/look_up > from L to P
 
- ./code/modules/surgery/bodyparts/_bodyparts.dm > var/rendered_bp_icon
+./code/modules/surgery/bodyparts/_bodyparts.dm > var/rendered_bp_icon
 
- ./code/__DEFINES/~skyrat_defines/DNA.dm > A TON of defines
- ./code/__DEFINES/~skyrat_defines/obj_flags.dm  > Organ flags
- ./code/__DEFINES/~skyrat_defines/say.dm > MAX_FLAVOR_LEN
- ./code/__DEFINES/~skyrat_defines/traits.dm > TRAIT_NO_HUSK
+./code/__DEFINES/~skyrat_defines/DNA.dm > A TON of defines
+./code/__DEFINES/~skyrat_defines/obj_flags.dm  > Organ flags
+./code/__DEFINES/~skyrat_defines/say.dm > MAX_FLAVOR_LEN
+./code/__DEFINES/~skyrat_defines/traits.dm > TRAIT_NO_HUSK
 
- .\modular_skyrat\modules\customization\modules\reagents\chemistry\reagents.dm > var/process_flags
+.\modular_skyrat\modules\customization\modules\reagents\chemistry\reagents.dm > var/process_flags
 
 ### Master file additions
 
- .\modular_skyrat\master_files\icons\mob\clothing\eyes_vox.dmi
- .\modular_skyrat\master_files\icons\mob\clothing\feet_digi.dmi
- .\modular_skyrat\master_files\icons\mob\clothing\head_muzzled.dmi
- .\modular_skyrat\master_files\icons\mob\clothing\head_vox.dmi
- .\modular_skyrat\master_files\icons\mob\clothing\mask_muzzled.dmi
- .\modular_skyrat\master_files\icons\mob\clothing\mask_vox.dmi
- .\modular_skyrat\master_files\icons\mob\clothing\suit_digi.dmi
- .\modular_skyrat\master_files\icons\mob\clothing\suit_taur_hoof.dmi
- .\modular_skyrat\master_files\icons\mob\clothing\suit_taur_paw.dmi
- .\modular_skyrat\master_files\icons\mob\clothing\suit_taur_snake.dmi
- .\modular_skyrat\master_files\icons\mob\clothing\uniform_digi.dmi
- .\modular_skyrat\master_files\icons\mob\clothing\under\uniform_digi.dmi
- .\modular_skyrat\master_files\icons\mob\clothing\under\uniform_taur_hoof.dmi
- .\modular_skyrat\master_files\icons\mob\clothing\under\uniform_taur_paw.dmi
- .\modular_skyrat\master_files\icons\mob\clothing\under\uniform_taur_snake.dmi
+.\modular_skyrat\master_files\icons\mob\clothing\eyes_vox.dmi
+.\modular_skyrat\master_files\icons\mob\clothing\feet_digi.dmi
+.\modular_skyrat\master_files\icons\mob\clothing\head_muzzled.dmi
+.\modular_skyrat\master_files\icons\mob\clothing\head_vox.dmi
+.\modular_skyrat\master_files\icons\mob\clothing\mask_muzzled.dmi
+.\modular_skyrat\master_files\icons\mob\clothing\mask_vox.dmi
+.\modular_skyrat\master_files\icons\mob\clothing\suit_digi.dmi
+.\modular_skyrat\master_files\icons\mob\clothing\suit_taur_hoof.dmi
+.\modular_skyrat\master_files\icons\mob\clothing\suit_taur_paw.dmi
+.\modular_skyrat\master_files\icons\mob\clothing\suit_taur_snake.dmi
+.\modular_skyrat\master_files\icons\mob\clothing\uniform_digi.dmi
+.\modular_skyrat\master_files\icons\mob\clothing\under\uniform_digi.dmi
+.\modular_skyrat\master_files\icons\mob\clothing\under\uniform_taur_hoof.dmi
+.\modular_skyrat\master_files\icons\mob\clothing\under\uniform_taur_paw.dmi
+.\modular_skyrat\master_files\icons\mob\clothing\under\uniform_taur_snake.dmi
 
- ./modular_skyrat/master_files/icons/obj/drinks.dmi
+./modular_skyrat/master_files/icons/obj/drinks.dmi
 
 ### Included files that are not contained in this module:
 
 - N/A
 
 ### Credits:
+
 Azarak

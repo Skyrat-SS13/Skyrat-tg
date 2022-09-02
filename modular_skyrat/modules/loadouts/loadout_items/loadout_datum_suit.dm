@@ -80,16 +80,8 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 *	SUSPENDERS
 */
 
-/datum/loadout_item/suit/suspenders_blue
-	name = "Blue Suspenders"
-	item_path = /obj/item/clothing/suit/toggle/suspenders/blue
-
-/datum/loadout_item/suit/suspenders_grey
-	name = "Grey Suspenders"
-	item_path = /obj/item/clothing/suit/toggle/suspenders/gray
-
-/datum/loadout_item/suit/suspenders_red
-	name = "Red Suspenders"
+/datum/loadout_item/suit/suspenders
+	name = "Recolorable Suspenders"
 	item_path = /obj/item/clothing/suit/toggle/suspenders
 
 /*
@@ -135,7 +127,7 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 
 /datum/loadout_item/suit/bomber_jacket
 	name = "Bomber Jacket"
-	item_path = /obj/item/clothing/suit/jacket
+	item_path = /obj/item/clothing/suit/jacket/bomber
 
 /datum/loadout_item/suit/military_jacket
 	name = "Military Jacket"
@@ -265,7 +257,7 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 
 /datum/loadout_item/suit/ianshirt
 	name = "Ian Shirt"
-	item_path = /obj/item/clothing/suit/ianshirt
+	item_path = /obj/item/clothing/suit/costume/ianshirt
 
 /datum/loadout_item/suit/wornshirt
 	name = "Worn Shirt"
@@ -361,7 +353,7 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 
 /datum/loadout_item/suit/poly
 	name = "Polychromic Wintercoat"
-	item_path = /obj/item/clothing/suit/hooded/wintercoat/polychromic
+	item_path = /obj/item/clothing/suit/hooded/wintercoat/colourable
 
 /datum/loadout_item/suit/urban
 	name = "Urban Coat"
@@ -376,8 +368,8 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	item_path = /obj/item/clothing/suit/blackfurrich
 
 /datum/loadout_item/suit/dutchjacket
-	name = "Dutch Jacket"
-	item_path = /obj/item/clothing/suit/costume/dutch
+	name = "Western Jacket"
+	item_path = /obj/item/clothing/suit/dutchjacketsr
 
 /datum/loadout_item/suit/caretaker
 	name = "Caretaker Jacket"

@@ -11,6 +11,18 @@
 /obj/machinery/computer/proc/callback_proc_issue()
 	update_overlays()
 
+/**
+ * Find and return a computer at this location that can connect to us.
+ * Arguments:
+ * * adjacent_turf - the location to look.
+ */
+/obj/machinery/computer/proc/find_connectable_computer(turf/adjacent_turf)
+	for(var/obj/machinery/computer/computer in adjacent_turf)
+		if(computer.dir == dir && computer.connectable)
+			return computer
+
+	return null
+
 /obj/machinery/computer/update_overlays()
 	. = ..()
 	if(icon_keyboard)
@@ -26,20 +38,20 @@
 		var/obj/machinery/computer/right_turf = null
 		switch(dir)
 			if(NORTH)
-				left_turf = locate(/obj/machinery/computer) in get_step(src, WEST)
-				right_turf = locate(/obj/machinery/computer) in get_step(src, EAST)
+				left_turf = find_connectable_computer(get_step(src, WEST))
+				right_turf = find_connectable_computer(get_step(src, EAST))
 			if(EAST)
-				left_turf = locate(/obj/machinery/computer) in get_step(src, NORTH)
-				right_turf = locate(/obj/machinery/computer) in get_step(src, SOUTH)
+				left_turf = find_connectable_computer(get_step(src, NORTH))
+				right_turf = find_connectable_computer(get_step(src, SOUTH))
 			if(SOUTH)
-				left_turf = locate(/obj/machinery/computer) in get_step(src, EAST)
-				right_turf = locate(/obj/machinery/computer) in get_step(src, WEST)
+				left_turf = find_connectable_computer(get_step(src, EAST))
+				right_turf = find_connectable_computer(get_step(src, WEST))
 			if(WEST)
-				left_turf = locate(/obj/machinery/computer) in get_step(src, SOUTH)
-				right_turf = locate(/obj/machinery/computer) in get_step(src, NORTH)
-		if(left_turf?.dir == dir && left_turf.connectable)
+				left_turf = find_connectable_computer(get_step(src, SOUTH))
+				right_turf = find_connectable_computer(get_step(src, NORTH))
+		if(left_turf)
 			icon_state = "[icon_state]_L"
-		if(right_turf?.dir == dir && right_turf.connectable)
+		if(right_turf)
 			icon_state = "[icon_state]_R"
 	if(machine_stat & BROKEN)
 		overlay_state = "[icon_state]_broken"

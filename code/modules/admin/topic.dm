@@ -970,7 +970,7 @@
 			return
 		var/obj/item/new_item = new H.dna.species.species_cookie(H)
 		if(H.put_in_hands(new_item))
-			H.update_inv_hands()
+			H.update_held_items()
 		else
 			qdel(new_item)
 			log_admin("[key_name(H)] has their hands full, so they did not receive their [new_item.name], spawned by [key_name(src.owner)].")
@@ -2003,3 +2003,20 @@
 		if(!datum_to_mark)
 			return
 		return usr.client?.mark_datum(datum_to_mark)
+
+	else if(href_list["lua_state"])
+		if(!check_rights(R_DEBUG))
+			return
+		var/datum/lua_state/state_to_view = locate(href_list["lua_state"])
+		if(!state_to_view)
+			return
+		var/datum/lua_editor/editor = new(state_to_view)
+		var/log_index = href_list["log_index"]
+		if(log_index)
+			log_index = text2num(log_index)
+		if(log_index <= state_to_view.log.len)
+			var/list/log_entry = state_to_view.log[log_index]
+			if(log_entry["chunk"])
+				editor.force_view_chunk = log_entry["chunk"]
+				editor.force_modal = "viewChunk"
+		editor.ui_interact(usr)

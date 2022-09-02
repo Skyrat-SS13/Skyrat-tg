@@ -14,13 +14,6 @@ export const erp_pref: FeatureToggle = {
   component: CheckboxInput,
 };
 
-export const cum_face_pref: FeatureToggle = {
-  name: 'Cum face',
-  category: 'ERP',
-  description: "Toggles if you are able to recieve the 'cumface' trait.",
-  component: CheckboxInput,
-};
-
 export const bimbofication_pref: FeatureToggle = {
   name: 'Bimbofication',
   category: 'ERP',

@@ -10,7 +10,7 @@
 	)
 	l_hand = null
 	r_hand = null
-	
+
 /datum/outfit/centcom/ert/marine/security //generic and/or heavy
 	suit_store = /obj/item/gun/ballistic/automatic/ar/modular/m44a/shotgun
 	belt = /obj/item/storage/belt/military/assault/full/m44a
@@ -23,7 +23,7 @@
 	)
 	l_hand = null
 	r_hand = null
-	
+
 /datum/outfit/centcom/ert/marine/medic //medic
 	suit_store = /obj/item/gun/ballistic/automatic/ar/modular/m44a/scoped
 	belt = /obj/item/storage/belt/military/assault/full/m44a
@@ -34,15 +34,14 @@
 		/obj/item/storage/medkit/regular = 1,
 		/obj/item/storage/medkit/advanced = 1,
 		/obj/item/sensor_device = 1,
-		/obj/item/pinpointer/crew/prox = 1,
 		/obj/item/stack/medical/gauze/twelve = 1,
 		/obj/item/reagent_containers/syringe = 1,
-		/obj/item/reagent_containers/glass/bottle/formaldehyde = 1,
+		/obj/item/reagent_containers/cup/bottle/formaldehyde = 1,
 		/obj/item/stack/sticky_tape/surgical = 1,
 	)
 	l_hand = /obj/item/gun/medbeam
 	r_hand = null
-	
+
 /datum/outfit/centcom/ert/marine/engineer //engineer
 	suit_store = /obj/item/melee/hammer //doesn't need a rifle
 	back = /obj/item/mod/control/pre_equipped/marine/engineer

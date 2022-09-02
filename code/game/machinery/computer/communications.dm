@@ -123,7 +123,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 	return ACCESS_CAPTAIN in authorize_access //Skyrat Edit End
 
 /obj/machinery/computer/communications/attackby(obj/I, mob/user, params)
-	if(istype(I, /obj/item/card/id))
+	if(isidcard(I))
 		attack_hand(user)
 	else
 		return ..()
@@ -154,8 +154,6 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 
 /obj/machinery/computer/communications/ui_act(action, list/params)
 	var/static/list/approved_states = list(STATE_BUYING_SHUTTLE, STATE_CHANGING_STATUS, STATE_MAIN, STATE_MESSAGES)
-	var/static/list/approved_status_pictures = list("biohazard", "blank", "default", "lockdown", "redalert", "shuttle")
-	var/static/list/state_status_pictures = list("blank", "shuttle")
 
 	. = ..()
 	if (.)
@@ -223,7 +221,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 			playsound(src, 'sound/machines/terminal_prompt_confirm.ogg', 50, FALSE)
 
 			// Only notify people if an actual change happened
-			log_game("[key_name(usr)] has changed the security level to [params["newSecurityLevel"]] with [src] at [AREACOORD(usr)].")
+			usr.log_message("changed the security level to [params["newSecurityLevel"]] with [src].", LOG_GAME)
 			message_admins("[ADMIN_LOOKUPFLW(usr)] has changed the security level to [params["newSecurityLevel"]] with [src] at [AREACOORD(usr)].")
 			deadchat_broadcast(" has changed the security level to [params["newSecurityLevel"]] with [src] at [span_name("[get_area_name(usr, TRUE)]")].", span_name("[usr.real_name]"), usr, message_type=DEADCHAT_ANNOUNCEMENT)
 
@@ -337,7 +335,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 
 			var/destination = params["destination"]
 
-			log_game("[key_name(usr)] is about to send the following message to [destination]: [message]")
+			usr.log_message("is about to send the following message to [destination]: [message]", LOG_GAME)
 			to_chat(
 				GLOB.admins,
 				span_adminnotice( \
@@ -363,9 +361,8 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 		if ("setStatusMessage")
 			if (!authenticated(usr))
 				return
-			var/line_one = reject_bad_text(params["lineOne"] || "", MAX_STATUS_LINE_LENGTH)
-			var/line_two = reject_bad_text(params["lineTwo"] || "", MAX_STATUS_LINE_LENGTH)
-			post_status("alert", "blank")
+			var/line_one = reject_bad_text(params["upperText"] || "", MAX_STATUS_LINE_LENGTH)
+			var/line_two = reject_bad_text(params["lowerText"] || "", MAX_STATUS_LINE_LENGTH)
 			post_status("message", line_one, line_two)
 			last_status_display = list(line_one, line_two)
 			playsound(src, SFX_TERMINAL_TYPE, 50, FALSE)
@@ -373,9 +370,9 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 			if (!authenticated(usr))
 				return
 			var/picture = params["picture"]
-			if (!(picture in approved_status_pictures))
+			if (!(picture in GLOB.status_display_approved_pictures))
 				return
-			if(picture in state_status_pictures)
+			if(picture in GLOB.status_display_state_pictures)
 				post_status(picture)
 			else
 				post_status("alert", picture)
@@ -412,12 +409,12 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 				return
 			if (GLOB.emergency_access)
 				revoke_maint_all_access()
-				log_game("[key_name(usr)] disabled emergency maintenance access.")
+				usr.log_message("disabled emergency maintenance access.", LOG_GAME)
 				message_admins("[ADMIN_LOOKUPFLW(usr)] disabled emergency maintenance access.")
 				deadchat_broadcast(" disabled emergency maintenance access at [span_name("[get_area_name(usr, TRUE)]")].", span_name("[usr.real_name]"), usr, message_type = DEADCHAT_ANNOUNCEMENT)
 			else
 				make_maint_all_access()
-				log_game("[key_name(usr)] enabled emergency maintenance access.")
+				usr.log_message("enabled emergency maintenance access.", LOG_GAME)
 				message_admins("[ADMIN_LOOKUPFLW(usr)] enabled emergency maintenance access.")
 				deadchat_broadcast(" enabled emergency maintenance access at [span_name("[get_area_name(usr, TRUE)]")].", span_name("[usr.real_name]"), usr, message_type = DEADCHAT_ANNOUNCEMENT)
 		// Request codes for the Captain's Spare ID safe.
@@ -556,7 +553,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 				data["alertLevel"] = SSsecurity_level.get_current_level_as_text()
 				data["authorizeName"] = authorize_name
 				data["canLogOut"] = !issilicon(user)
-				data["shuttleCanEvacOrFailReason"] = SSshuttle.canEvac(user)
+				data["shuttleCanEvacOrFailReason"] = SSshuttle.canEvac()
 				if(syndicate)
 					data["shuttleCanEvacOrFailReason"] = "You cannot summon the shuttle from this console!"
 
@@ -635,8 +632,8 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 				data["budget"] = bank_account.account_balance
 				data["shuttles"] = shuttles
 			if (STATE_CHANGING_STATUS)
-				data["lineOne"] = last_status_display ? last_status_display[1] : ""
-				data["lineTwo"] = last_status_display ? last_status_display[2] : ""
+				data["upperText"] = last_status_display ? last_status_display[1] : ""
+				data["lowerText"] = last_status_display ? last_status_display[2] : ""
 
 	return data
 
@@ -657,7 +654,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 /obj/machinery/computer/communications/Topic(href, href_list)
 	if (href_list["reject_cross_comms_message"])
 		if (!usr.client?.holder)
-			log_game("[key_name(usr)] tried to reject a cross-comms message without being an admin.")
+			usr.log_message("tried to reject a cross-comms message without being an admin.", LOG_ADMIN)
 			message_admins("[key_name(usr)] tried to reject a cross-comms message without being an admin.")
 			return
 
@@ -784,8 +781,8 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 	var/datum/signal/status_signal = new(list("command" = command))
 	switch(command)
 		if("message")
-			status_signal.data["msg1"] = data1
-			status_signal.data["msg2"] = data2
+			status_signal.data["top_text"] = data1
+			status_signal.data["bottom_text"] = data2
 		if("alert")
 			status_signal.data["picture_state"] = data1
 
@@ -867,7 +864,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 	switch(picked_option)
 		if(HACK_PIRATE) // Triggers pirates, which the crew may be able to pay off to prevent
 			priority_announce(
-				"Attention crew, it appears that someone on your station has made unexpected communication with a Syndicate ship in nearby space.",
+				"Attention crew: sector monitoring reports a massive jump-trace from an enemy vessel destined for your system. Prepare for imminent hostile contact.",
 				"[command_name()] High-Priority Update",
 			)
 
@@ -878,7 +875,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 
 		if(HACK_FUGITIVES) // Triggers fugitives, which can cause confusion / chaos as the crew decides which side help
 			priority_announce(
-				"Attention crew, it appears that someone on your station has made unexpected communication with an unmarked ship in nearby space.",
+				"Attention crew: sector monitoring reports a jump-trace from an unidentified vessel destined for your system. Prepare for probable contact.",
 				"[command_name()] High-Priority Update",
 			)
 
@@ -889,7 +886,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 
 		if(HACK_THREAT) // Force an unfavorable situation on the crew
 			priority_announce(
-				SSmapping.config.orbit_shift_replacement,
+				"Attention crew, the Nanotrasen Department of Intelligence has received intel suggesting increased enemy activity in your sector beyond that initially reported in today's threat advisory.",
 				"[command_name()] High-Priority Update",
 			)
 
@@ -902,7 +899,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 			dynamic.unfavorable_situation()
 
 		if(HACK_SLEEPER) // Trigger one or multiple sleeper agents with the crew (or for latejoining crew)
-			var/datum/dynamic_ruleset/midround/sleeper_agent_type = /datum/dynamic_ruleset/midround/autotraitor
+			var/datum/dynamic_ruleset/midround/sleeper_agent_type = /datum/dynamic_ruleset/midround/from_living/autotraitor
 			var/datum/game_mode/dynamic/dynamic = SSticker.mode
 			var/max_number_of_sleepers = clamp(round(length(GLOB.alive_player_list) / 20), 1, 3)
 			var/num_agents_created = 0
@@ -918,7 +915,7 @@ GLOBAL_VAR_INIT(cops_arrived, FALSE)
 			else
 				// We spawned some sleeper agents, nice - give them a report to kickstart the paranoia
 				priority_announce(
-					"Attention crew, it appears that someone on your station has hijacked your telecommunications, broadcasting a Syndicate radio signal to your fellow employees.",
+					"Attention crew, it appears that someone on your station has hijacked your telecommunications and broadcasted an unknown signal.",
 					"[command_name()] High-Priority Update",
 				)
 

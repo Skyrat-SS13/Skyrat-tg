@@ -70,3 +70,9 @@
 //! General defines for vatgrowing
 /// Past how much growth can the other cell_lines affect a finished cell line negatively
 #define VATGROWING_DANGER_MINIMUM 30
+
+#define SCIPAPER_COOPERATION_INDEX 1
+#define SCIPAPER_FUNDING_INDEX 2
+#define SCIENTIFIC_COOPERATION_PURCHASE_MULTIPLIER 0.01
+/// How much money is one point of gain worth.
+#define SCIPAPER_GAIN_TO_MONEY 125

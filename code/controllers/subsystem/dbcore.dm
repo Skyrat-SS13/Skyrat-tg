@@ -154,6 +154,11 @@ SUBSYSTEM_DEF(dbcore)
 		for(var/datum/db_query/query in queries_current)
 			run_query(query)
 
+		// SKYRAT EDIT START - SQL-based logging
+		for(var/table in queued_log_entries_by_table)
+			MassInsert(table, rows = queued_log_entries_by_table[table], duplicate_key = FALSE, ignore_errors = FALSE, delayed = FALSE, warn = FALSE, async = TRUE, special_columns = null)
+		// SKYRAT EDIT END
+
 		var/datum/db_query/query_round_shutdown = SSdbcore.NewQuery(
 			"UPDATE [format_table_name("round")] SET shutdown_datetime = Now(), end_state = :end_state WHERE id = :round_id",
 			list("end_state" = SSticker.end_state, "round_id" = GLOB.round_id)
@@ -318,21 +323,33 @@ SUBSYSTEM_DEF(dbcore)
 		return FALSE
 	return new /datum/db_query(connection, sql_query, arguments)
 
-/datum/controller/subsystem/dbcore/proc/QuerySelect(list/querys, warn = FALSE, qdel = FALSE)
-	if (!islist(querys))
-		if (!istype(querys, /datum/db_query))
-			CRASH("Invalid query passed to QuerySelect: [querys]")
-		querys = list(querys)
+/** QuerySelect
+	Run a list of query datums in parallel, blocking until they all complete.
+	* queries - List of queries or single query datum to run.
+	* warn - Controls rather warn_execute() or Execute() is called.
+	* qdel - If you don't care about the result or checking for errors, you can have the queries be deleted afterwards.
+		This can be combined with invoke_async as a way of running queries async without having to care about waiting for them to finish so they can be deleted.
+*/
+/datum/controller/subsystem/dbcore/proc/QuerySelect(list/queries, warn = FALSE, qdel = FALSE)
+	if (!islist(queries))
+		if (!istype(queries, /datum/db_query))
+			CRASH("Invalid query passed to QuerySelect: [queries]")
+		queries = list(queries)
+	else
+		queries = queries.Copy() //we don't want to hide bugs in the parent caller by removing invalid values from this list.
 
-	for (var/thing in querys)
-		var/datum/db_query/query = thing
+	for (var/datum/db_query/query as anything in queries)
+		if (!istype(query))
+			queries -= query
+			stack_trace("Invalid query passed to QuerySelect: `[query]` [REF(query)]")
+			continue
+		
 		if (warn)
 			INVOKE_ASYNC(query, /datum/db_query.proc/warn_execute)
 		else
 			INVOKE_ASYNC(query, /datum/db_query.proc/Execute)
 
-	for (var/thing in querys)
-		var/datum/db_query/query = thing
+	for (var/datum/db_query/query as anything in queries)
 		query.sync()
 		if (qdel)
 			qdel(query)

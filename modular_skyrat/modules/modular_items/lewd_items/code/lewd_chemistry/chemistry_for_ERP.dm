@@ -181,7 +181,7 @@
 /datum/reagent/drug/aphrodisiac/dopamine/on_mob_add(mob/living/carbon/human/exposed_mob)
 	if(!(exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/aphro)))
 		return ..()
-	SEND_SIGNAL(exposed_mob, COMSIG_ADD_MOOD_EVENT, "[type]_start", /datum/mood_event/orgasm, name)
+	exposed_mob.add_mood_event("[type]_start", /datum/mood_event/orgasm, name)
 	..()
 
 /datum/reagent/drug/aphrodisiac/dopamine/life_effects(mob/living/carbon/human/exposed_mob)
@@ -192,7 +192,7 @@
 /datum/reagent/drug/aphrodisiac/dopamine/overdose_start(mob/living/carbon/human/exposed_mob)
 	. = ..()
 	to_chat(exposed_mob, span_purple("You feel so happy!"))
-	SEND_SIGNAL(exposed_mob, COMSIG_ADD_MOOD_EVENT, "[type]_overdose", /datum/mood_event/overgasm, name)
+	exposed_mob.add_mood_event("[type]_overdose", /datum/mood_event/overgasm, name)
 
 /datum/reagent/drug/aphrodisiac/dopamine/overdose_effects(mob/living/carbon/human/exposed_mob)
 	if(!(exposed_mob.hallucination < volume && prob(20)))
@@ -657,37 +657,37 @@
 
 // BOTTLES
 
-/obj/item/reagent_containers/glass/bottle/crocin
+/obj/item/reagent_containers/cup/bottle/crocin
 	name = "crocin bottle"
 	desc = "A bottle of mild aphrodisiac. Increases libido."
 	list_reagents = list(/datum/reagent/drug/aphrodisiac/crocin = 30)
 
-/obj/item/reagent_containers/glass/bottle/hexacrocin
+/obj/item/reagent_containers/cup/bottle/hexacrocin
 	name = "hexacrocin bottle"
 	desc = "A bottle of strong aphrodisiac. Increases libido. Potentially  dangerous."
 	list_reagents = list(/datum/reagent/drug/aphrodisiac/crocin/hexacrocin = 30)
 
-/obj/item/reagent_containers/glass/bottle/dopamine
+/obj/item/reagent_containers/cup/bottle/dopamine
 	name = "dopamine bottle"
 	desc = "Pure pleasure and happines in a bottle."
 	list_reagents = list(/datum/reagent/drug/aphrodisiac/dopamine = 30)
 
-/obj/item/reagent_containers/glass/bottle/camphor
+/obj/item/reagent_containers/cup/bottle/camphor
 	name = "camphor bottle"
 	desc = "A bottle of mild anaphrodisiac. Reduces libido."
 	list_reagents = list(/datum/reagent/drug/aphrodisiac/camphor = 30)
 
-/obj/item/reagent_containers/glass/bottle/pentacamphor
+/obj/item/reagent_containers/cup/bottle/pentacamphor
 	name = "pentacamphor bottle"
 	desc = "A bottle of strong anaphrodisiac. Reduces libido."
 	list_reagents = list(/datum/reagent/drug/aphrodisiac/camphor/pentacamphor = 30)
 
-/obj/item/reagent_containers/glass/bottle/breast_enlarger
+/obj/item/reagent_containers/cup/bottle/breast_enlarger
 	name = "succubus milk bottle"
 	desc = "A bottle of strong breast enlargement reagent."
 	list_reagents = list(/datum/reagent/drug/aphrodisiac/breast_enlarger = 30)
 
-/obj/item/reagent_containers/glass/bottle/penis_enlarger
+/obj/item/reagent_containers/cup/bottle/penis_enlarger
 	name = "incubus draft bottle"
 	desc = "A bottle of strong penis enlargement reagent."
 	list_reagents = list(/datum/reagent/drug/aphrodisiac/penis_enlarger = 30)

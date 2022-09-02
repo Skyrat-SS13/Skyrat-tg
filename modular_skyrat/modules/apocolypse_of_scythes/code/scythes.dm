@@ -63,7 +63,7 @@
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = 500, /datum/material/glass = 500)
 	build_path = /obj/item/scythe/tier1
-	category = list("Equipment")
+	category = list(RND_CATEGORY_EQUIPMENT)
 	departmental_flags = DEPARTMENT_BITFLAG_SERVICE
 
 /datum/design/scythe_t2
@@ -73,7 +73,7 @@
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = 500, /datum/material/glass = 500)
 	build_path = /obj/item/scythe/tier2
-	category = list("Equipment")
+	category = list(RND_CATEGORY_EQUIPMENT)
 	departmental_flags = DEPARTMENT_BITFLAG_SERVICE
 
 /datum/techweb_node/scythe_t1
