@@ -261,14 +261,17 @@
 
 	arousal_status = arousal_flag
 	if(!istype(src, /mob/living/carbon/human))
-		var/mob/living/carbon/human/target = src
-		for(var/i = 1, i <= target.external_organs.len, i++)
-			if(istype(target.external_organs[i], /obj/item/organ/external/genital))
-				var/obj/item/organ/external/genital/target_genital = target.external_organs[i]
-				if(!target_genital.aroused == AROUSAL_CANT)
-					target_genital.aroused = arousal_status
-					target_genital.update_sprite_suffix()
-		target.update_body()
+		return FALSE
+
+	var/mob/living/carbon/human/target = src
+	for(var/i in 1 to length(target.external_organs))
+		if(istype(target.external_organs[i], /obj/item/organ/external/genital))
+			var/obj/item/organ/external/genital/target_genital = target.external_organs[i]
+			if(!target_genital.aroused == AROUSAL_CANT)
+				target_genital.aroused = arousal_status
+				target_genital.update_sprite_suffix()
+
+	target.update_body()
 
 /datum/status_effect/aroused
 	id = "aroused"
@@ -452,7 +455,6 @@
 		for(var/mob/living/carbon/human/iterating_human in view(1, src))
 			if(iterating_human == src)
 				continue
-			//if(iterating_human.client?.prefs?.read_preference(/datum/preference/toggle/erp))
 			interactable_inrange_humans[iterating_human.name] = iterating_human
 
 		var/list/buttons = list("On the floor")
@@ -535,6 +537,7 @@
 		if(create_cum_decal)
 			var/turf/our_turf = get_turf(src)
 			new /obj/effect/decal/cleanable/cum(our_turf)
+
 		return TRUE
 
 	if(vagina)
@@ -947,8 +950,9 @@
 		if(prob(40))
 			affected_human.try_lewd_autoemote("moan")
 
-		if(target.icon_state=="stickyweb1"|target.icon_state=="stickyweb2")
+		if(target.icon_state=="stickyweb1" || target.icon_state=="stickyweb2")
 			target.icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_decals/lewd_decals.dmi'
+
 		qdel(src)
 
 	return TRUE
