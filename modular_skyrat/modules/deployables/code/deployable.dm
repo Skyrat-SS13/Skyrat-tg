@@ -9,7 +9,7 @@
 
 #define MAX_POWER 40000	/// BS cell capacity, a potato battery would still outplay this
 #define TRANSFER_INC 1000 /// Amount of power per tick pumped/drained
-#define SETUP_TIME 1.4 SECONDS /// How quick does it (un)fold? Warning: this tries to match an animation
+#define SETUP_TIME 2.2 SECONDS /// How quick does it (un)fold? Warning: this tries to match an animation
 
 // Automapper
 /datum/area_spawn/borg_action_pacifier
@@ -76,6 +76,14 @@
 	UnregisterSignal(src, COMSIG_CLICK_ALT)
 	if(buckled_cyborg)
 		unlock()
+
+/obj/structure/bed/borg_action_pacifier/atom_destruction(damage_flag)
+	var/turf/debris = get_turf(src)
+	if(power_storage)
+		explosion(src, -1, (power_storage / 15000), (power_storage / 12000), (power_storage / 5000), (power_storage / 2500))
+
+	new /obj/effect/decal/cleanable/robot_debris(debris)
+	return ..()
 
 /obj/structure/bed/borg_action_pacifier/examine(mob/user)
 	. = ..()
@@ -146,7 +154,7 @@
 	if(!power_storage || !clicker)
 		return
 
-	var/turf/open/pos = get_turf(clicker)
+	var/turf/open/pos = get_turf(src)
 	var/vent_scale // A factor of how big the fake vapor will be
 	vent_scale = (power_storage / (MAX_POWER / 6)) // Max tile-range of 6
 
@@ -192,7 +200,7 @@
 	name = "deploying B.A.P. unit"
 
 	balloon_alert_to_viewers("unfolding...")
-	playsound(src, 'modular_skyrat/master_files/sound/effects/robot_trap.ogg', 25, TRUE, falloff_exponent = 20)
+	playsound(src, 'modular_skyrat/master_files/sound/effects/robot_trap.ogg', 25, TRUE, falloff_exponent = 10)
 	addtimer(CALLBACK(src, .proc/finish_deploy), SETUP_TIME)
 	flick("deploying", src)
 
@@ -202,7 +210,7 @@
 	deployed = TRUE
 
 	balloon_alert_to_viewers("deployed")
-	playsound(src, 'sound/machines/ping.ogg', 50, FALSE, falloff_exponent = 10)
+	playsound(src, 'sound/machines/ping.ogg', 25, FALSE, falloff_exponent = 10)
 
 /obj/structure/bed/borg_action_pacifier/MouseDrop(over_object, src_location, over_location)
 	. = ..()
@@ -258,10 +266,10 @@
 	switch(choice)
 		if(LOCK)
 			balloon_alert_to_viewers("locked")
-			lock()
+			lock(clicker)
 		if(UNLOCK)
 			balloon_alert_to_viewers("unlocked")
-			unlock()
+			unlock(clicker)
 		if(STOP_MODE)
 			balloon_alert(clicker, "stopped [enabled_function]ing")
 			stop_mode()
@@ -327,7 +335,7 @@
 	cell.charge = cell.charge - TRANSFER_INC
 	power_storage = power_storage + TRANSFER_INC
 
-	playsound(src, 'modular_skyrat/master_files/sound/effects/robot_drain.ogg', 25, FALSE, falloff_exponent = 20)
+	playsound(src, 'modular_skyrat/master_files/sound/effects/robot_drain.ogg', 25, FALSE, falloff_exponent = 10)
 	do_sparks(1, TRUE, buckled_cyborg)
 
 /obj/structure/bed/borg_action_pacifier/proc/pump_cell(obj/item/stock_parts/cell/cell)
@@ -339,7 +347,7 @@
 	power_storage = power_storage - TRANSFER_INC
 	cell.charge = cell.charge + TRANSFER_INC
 
-	playsound(src, 'modular_skyrat/master_files/sound/effects/robot_pump.ogg', 25, FALSE, falloff_exponent = 20)
+	playsound(src, 'modular_skyrat/master_files/sound/effects/robot_pump.ogg', 25, FALSE, falloff_exponent = 10)
 	do_sparks(1, TRUE, buckled_cyborg)
 
 /obj/structure/bed/borg_action_pacifier/proc/drain_mode()
@@ -352,16 +360,22 @@
 	playsound(src, 'sound/machines/ping.ogg', 50, FALSE, falloff_exponent = 10)
 	enabled_function = NONE
 
-/obj/structure/bed/borg_action_pacifier/proc/lock()
+/obj/structure/bed/borg_action_pacifier/proc/lock(mob/living/clicker)
+	if(clicker)
+		log_combat(clicker, buckled_cyborg, "locked down cyborg")
+
 	playsound(src, 'modular_skyrat/master_files/sound/effects/robot_lock.ogg', 50, TRUE, falloff_exponent = 10)
-	locked = TRUE
 	buckled_cyborg.SetLockdown(TRUE)
+	locked = TRUE
 	render_lock()
 
-/obj/structure/bed/borg_action_pacifier/proc/unlock()
-	locked = FALSE
+/obj/structure/bed/borg_action_pacifier/proc/unlock(mob/living/clicker)
+	if(clicker)
+		log_combat(clicker, buckled_cyborg, "released cyborg")
+
 	buckled_cyborg.SetLockdown(FALSE)
 	buckled_cyborg.regenerate_icons()
+	locked = FALSE
 
 /obj/structure/bed/borg_action_pacifier/proc/render_lock()
 	// Emergency lights which are otherwise shamefully unused
@@ -379,6 +393,7 @@
 	if(do_after(clicker, 3 SECONDS))
 		addtimer(CALLBACK(src, .proc/finish_undeploy), SETUP_TIME)
 		balloon_alert(clicker, "resetting...")
+		playsound(src, 'modular_skyrat/master_files/sound/effects/robot_trap.ogg', 25, TRUE, falloff_exponent = 10)
 		flick("undeploying", src)
 	else
 		return
@@ -387,7 +402,6 @@
 	var/obj/item/grenade/borg_action_pacifier_grenade/BAPer = new (get_turf(src))
 	BAPer.power_storage = power_storage
 	BAPer.balloon_alert_to_viewers("reset")
-	playsound(src, 'modular_skyrat/master_files/sound/effects/robot_trap.ogg', 25, TRUE, falloff_exponent = 20)
 	qdel(src)
 
 // Buckle overwrites
@@ -411,17 +425,34 @@
 			return
 	..()
 
-/obj/structure/bed/borg_action_pacifier/post_buckle_mob(mob/living/target)
-	set_density(TRUE)
-	target.pixel_y = (target.base_pixel_y + 8)
-
-	buckled_cyborg = target
-	START_PROCESSING(SSobj, src)
-
 /obj/structure/bed/borg_action_pacifier/unbuckle_mob(mob/living/buckled_mob, force, can_fall)
 	if(!force)
 		return
 	..()
+
+/obj/structure/bed/borg_action_pacifier/post_buckle_mob(mob/living/target)
+	buckled_cyborg = target
+	set_density(TRUE)
+
+	// Offset managing
+	if(R_TRAIT_TALL in buckled_cyborg.model.model_features)
+		buckled_cyborg.pixel_y = (buckled_cyborg.base_pixel_y + 18)
+	if(R_TRAIT_SMALL in buckled_cyborg.model.model_features)
+		buckled_cyborg.pixel_y = (buckled_cyborg.base_pixel_y + 12)
+	else if(!((R_TRAIT_SMALL || R_TRAIT_TALL) in buckled_cyborg.model.model_features))
+		buckled_cyborg.pixel_y = (buckled_cyborg.base_pixel_y + 16)
+
+	START_PROCESSING(SSobj, src)
+
+/obj/structure/bed/borg_action_pacifier/post_unbuckle_mob(mob/living/target)
+	unlock() // Just in case
+	buckled_cyborg = null
+	set_density(FALSE)
+
+	target.pixel_y = target.base_pixel_y + target.body_position_pixel_y_offset
+
+	enabled_function = NONE
+	STOP_PROCESSING(SSobj, src)
 
 /obj/structure/bed/borg_action_pacifier/user_unbuckle_mob(mob/living/buckled_mob, mob/user)
 	if(!(buckled_mob in buckled_mobs) || !user.CanReach(buckled_mob))
@@ -462,21 +493,11 @@
 	var/mob/living/target = unbuckle_mob(buckled_mob, TRUE)
 	return target
 
-/obj/structure/bed/borg_action_pacifier/post_unbuckle_mob(mob/living/target)
-	set_density(FALSE)
-	target.pixel_y = target.base_pixel_y + target.body_position_pixel_y_offset
-
-	unlock() // Just in case
-	buckled_cyborg = null
-	enabled_function = NONE
-	STOP_PROCESSING(SSobj, src)
-
-
 // Fluff
 /obj/structure/bed/borg_action_pacifier/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change = TRUE)
 	. = ..()
 	if(has_gravity())
-		playsound(src, 'sound/effects/roll.ogg', 50, TRUE)
+		playsound(src, 'modular_skyrat/master_files/sound/effects/robot_step.ogg', 100, TRUE)
 
 #undef FOLD
 
