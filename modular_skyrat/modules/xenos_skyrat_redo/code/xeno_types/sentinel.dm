@@ -108,6 +108,7 @@
 	name = "neurotoxin spit"
 	icon_state = "neurotoxin"
 	damage = 40
+	paralyze = 0
 	damage_type = STAMINA
 	nodamage = FALSE
 	armor_flag = BIO
@@ -129,6 +130,7 @@
 	name = "acid spit"
 	icon_state = "toxin"
 	damage = 25
+	paralyze = 0
 	damage_type = BURN
 
 /obj/item/organ/internal/alien/neurotoxin/sentinel
