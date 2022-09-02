@@ -6,7 +6,11 @@
 	var/t_has = p_have()
 	var/t_is = p_are()
 
+<<<<<<< HEAD
 	. = list("<span class='info'>This is [icon2html(src, user)] \a <EM>[src]</EM>!>", EXAMINE_SECTION_BREAK) // SKYRAT EDIT CHANGE - HR padding
+=======
+	. = list("<span class='info'>This is [icon2html(src, user)] \a <EM>[src]</EM>!")
+>>>>>>> 33439189412 (fixes rogue > in carbon/examine() message (#69627))
 	var/obscured = check_obscured_slots()
 
 	if (handcuffed)
