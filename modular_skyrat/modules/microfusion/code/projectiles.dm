@@ -51,7 +51,7 @@
 	name = "hellfire microfusion laser"
 	icon_state = "laser_greyscale"
 	wound_bonus = 0
-	damage = 25 // Basically a hellfire beam
+	damage = 15 // You are trading damage for a significant wound bonus and speed increase
 	speed = 0.6
 	color = LIGHT_COLOR_FLARE
 	light_color = LIGHT_COLOR_FLARE
