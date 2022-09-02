@@ -101,7 +101,7 @@
 	var/heal_amount = 10
 	/// Amount of raw stamdamage heal per treatment.
 	var/stamina_heal_amount = 50
-	/// You will never guess what this is. (heal cooldown time)
+	/// Cooldown betwen each treatment.
 	var/heal_cooldown = 30 SECONDS
 
 	/// Timer for the cooldown
