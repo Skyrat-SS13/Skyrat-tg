@@ -13,7 +13,7 @@
 
 			if(check_shields(user, 0, "[user.name]"))
 				playsound(loc, 'sound/weapons/parry.ogg', 25, TRUE, -1) //Audio feedback to the fact you just got blocked
-				apply_damage(disarm_damage, STAMINA, BODY_ZONE_CHEST)
+				apply_damage(disarm_damage / 2, STAMINA, BODY_ZONE_CHEST)
 				visible_message(span_danger("[user] attempts to touch [src]!"), \
 					span_danger("[user] attempts to touch you!"), span_hear("You hear a swoosh!"), null, user)
 				to_chat(user, span_warning("You attempt to touch [src]!"))
