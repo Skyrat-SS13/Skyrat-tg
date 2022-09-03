@@ -65,7 +65,7 @@
 */
 
 	var/obj/item/organ/external/genital/current_selected_organ = null // Organ selected in UI
-	var/obj/item/reagent_containers/glass/beaker = null // Beaker inserted in machine
+	var/obj/item/reagent_containers/cup/beaker = null // Beaker inserted in machine
 	var/mob/living/carbon/human/current_mob = null // Mob buckled to the machine
 	var/obj/item/organ/external/genital/breasts/current_breasts = null // Buckled mob breasts
 	var/obj/item/organ/external/genital/testicles/current_testicles = null // Buckled mob testicles

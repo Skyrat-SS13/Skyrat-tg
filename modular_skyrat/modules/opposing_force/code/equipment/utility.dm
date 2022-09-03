@@ -51,7 +51,7 @@
 	item_type = /obj/item/suppressor
 
 /datum/opposing_force_equipment/gear/extendedrag
-	item_type = /obj/item/reagent_containers/glass/rag/large
+	item_type = /obj/item/reagent_containers/cup/rag/large
 	description = "A damp rag made with extra absorbant materials. The perfectly innocent tool to kidnap your local assistant. \
 			Apply up to 30u liquids and use combat mode to smother anyone not covering their mouth."
 

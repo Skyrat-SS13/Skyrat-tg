@@ -10,39 +10,39 @@ Re-writes how mutant bodyparts exist and how they're handled. Adds in a per limb
 
 ### TG Proc Changes:
 
-./code/__HELPERS/global_lists.dm > /proc/make_datum_references_lists()
-./code/__HELPERS/mobs.dm > /proc/random_features()
-./code/controllers/subsystem/job.dm > /datum/controller/subsystem/job/proc/EquipRank()
-./code/datums/dna.dm > /datum/dna/proc/initialize_dna() , /mob/living/carbon/set_species()
-./code/modules/admin/create_mob.dm > /proc/randomize_human()
-./code/modules/client/preferences.dm > ALMOST THE ENTIRETY OF THE FILE
-./code/modules/client/preferences_savefile.dm > ONCE AGAIN, THE ENTIRE FILE
-./code/modules/mob/dead/new_player/preferences_setup.dm > /datum/preferences/proc/random_character(), /datum/preferences/proc/random_species(), /datum/preferences/proc/update_preview_icon()
-./code/modules/mob/living/carbon/carbon_update_icons.dm > /mob/living/carbon/update_worn_mask(), /mob/living/carbon/update_worn_head(), /mob/living/carbon/proc/update_body_parts(), /mob/living/carbon/proc/generate_icon_render_key()
-./code/modules/mob/living/carbon/human/emote.dm > /datum/emote/living/carbon/human/wag/run_emote(), /datum/emote/living/carbon/human/wag/can_run_emote()
-./code/modules/mob/living/carbon/human/examine.dm > /mob/living/carbon/human/examine()
-./code/modules/mob/living/carbon/human/human_update_icons.dm > /mob/living/carbon/human/update_worn_undersuit(), /mob/living/carbon/human/update_worn_glasses(), /mob/living/carbon/human/update_worn_shoes(), /mob/living/carbon/human/update_worn_oversuit(), /obj/item/proc/build_worn_icon(), /mob/living/carbon/human/generate_icon_render_key()
-./code/modules/mob/living/carbon/human/species.dm > /datum/species/proc/on_species_gain(), /datum/species/proc/handle_body(), /datum/species/proc/handle_mutant_bodyparts(), /datum/species/proc/can_equip(), /datum/species/proc/can_wag_tail(), /datum/species/proc/stop_wagging_tail(), /datum/species/proc/start_wagging_tail(), /datum/species/proc/is_wagging_tail(), /datum/species/proc/handle_hair()
-./code/modules/mob/living/carbon/human/species_types/felinid.dm > the 5 procs related to wagging tail
-./code/modules/mob/living/carbon/human/species_types/lizardpeople.dm the 5 procs related to wagging tail and - /datum/species/lizard/on_species_gain()
-./code/modules/surgery/bodyparts/_bodyparts.dm > /obj/item/bodypart/proc/get_limb_icon()
-./code/modules/surgery/organs/ears.dm > /obj/item/organ/internal/ears/cat/Insert(), /obj/item/organ/internal/ears/cat/Remove()
-./code/modules/surgery/organs/tails.dm > /obj/item/organ/external/tail/cat/Insert(), /obj/item/organ/external/tail/cat/Remove(), /obj/item/organ/external/tail/lizard/Initialize(mapload), /obj/item/organ/external/tail/lizard/Insert(), /obj/item/organ/external/tail/lizard/Remove()
-./code/modules/surgery/bodyparts/dismemberment.dm > /mob/living/carbon/regenerate_limb()
-./code/modules/mob/living/carbon/human/status_procs.dm > /mob/living/carbon/human/become_husk() > APPENDED
-./code/modules/reagents/chemistry/holder.dm > /datum/reagents/metabolize()
-./code/modules/food_and_drinks/drinks/drinks/drinkingglass.dm > /obj/item/reagent_containers/food/drinks/drinkingglass/on_reagent_change()
-./code/modules/mob/living/carbon/human/human_defense.dm > /mob/living/carbon/human/emp_act()
-./code/modules/mob/living/carbon/human.dm > /mob/living/carbon/human/revive() > APPENDED
-./code/modules/reagents/chemistry/reagents/food_reagents.dm > datum/reagent/consumable/on_mob_life()
-./code/datums/traits/negative.dm > /datum/quirk/prosthetic_limb
-.\code\modules\client.dm > /client/proc/update_special_keybinds()
-./code/datums/traits/negative.dm > /datum/quirk/prosthetic_limb
+ ./code/__HELPERS/global_lists.dm > /proc/make_datum_references_lists()
+ ./code/__HELPERS/mobs.dm > /proc/random_features()
+ ./code/controllers/subsystem/job.dm > /datum/controller/subsystem/job/proc/EquipRank()
+ ./code/datums/dna.dm > /datum/dna/proc/initialize_dna() , /mob/living/carbon/set_species()
+ ./code/modules/admin/create_mob.dm > /proc/randomize_human()
+ ./code/modules/client/preferences.dm > ALMOST THE ENTIRETY OF THE FILE
+ ./code/modules/client/preferences_savefile.dm > ONCE AGAIN, THE ENTIRE FILE
+ ./code/modules/mob/dead/new_player/preferences_setup.dm > /datum/preferences/proc/random_character(), /datum/preferences/proc/random_species(), /datum/preferences/proc/update_preview_icon()
+ ./code/modules/mob/living/carbon/carbon_update_icons.dm > /mob/living/carbon/update_inv_wear_mask(), /mob/living/carbon/update_inv_head(), /mob/living/carbon/proc/update_body_parts(), /mob/living/carbon/proc/generate_icon_render_key()
+ ./code/modules/mob/living/carbon/human/emote.dm > /datum/emote/living/carbon/human/wag/run_emote(), /datum/emote/living/carbon/human/wag/can_run_emote()
+ ./code/modules/mob/living/carbon/human/examine.dm > /mob/living/carbon/human/examine()
+ ./code/modules/mob/living/carbon/human/human_update_icons.dm > /mob/living/carbon/human/update_inv_w_uniform(), /mob/living/carbon/human/update_inv_glasses(), /mob/living/carbon/human/update_inv_shoes(), /mob/living/carbon/human/update_inv_wear_suit(), /obj/item/proc/build_worn_icon(), /mob/living/carbon/human/generate_icon_render_key()
+ ./code/modules/mob/living/carbon/human/species.dm > /datum/species/proc/on_species_gain(), /datum/species/proc/handle_body(), /datum/species/proc/handle_mutant_bodyparts(), /datum/species/proc/can_equip(), /datum/species/proc/can_wag_tail(), /datum/species/proc/stop_wagging_tail(), /datum/species/proc/start_wagging_tail(), /datum/species/proc/is_wagging_tail(), /datum/species/proc/handle_hair()
+ ./code/modules/mob/living/carbon/human/species_types/felinid.dm > the 5 procs related to wagging tail
+ ./code/modules/mob/living/carbon/human/species_types/lizardpeople.dm the 5 procs related to wagging tail and - /datum/species/lizard/on_species_gain()
+ ./code/modules/surgery/bodyparts/_bodyparts.dm > /obj/item/bodypart/proc/get_limb_icon()
+ ./code/modules/surgery/organs/ears.dm > /obj/item/organ/internal/ears/cat/Insert(), /obj/item/organ/internal/ears/cat/Remove()
+ ./code/modules/surgery/organs/tails.dm > /obj/item/organ/external/tail/cat/Insert(), /obj/item/organ/external/tail/cat/Remove(), /obj/item/organ/external/tail/lizard/Initialize(mapload), /obj/item/organ/external/tail/lizard/Insert(), /obj/item/organ/external/tail/lizard/Remove()
+ ./code/modules/surgery/bodyparts/dismemberment.dm > /mob/living/carbon/regenerate_limb()
+ ./code/modules/mob/living/carbon/human/status_procs.dm > /mob/living/carbon/human/become_husk() > APPENDED
+ ./code/modules/reagents/chemistry/holder.dm > /datum/reagents/metabolize()
+ ./code/modules/food_and_drinks/drinks/drinks/drinkingglass.dm > /obj/item/reagent_containers/cup/glass/drinkingglass/on_reagent_change()
+ ./code/modules/mob/living/carbon/human/human_defense.dm > /mob/living/carbon/human/emp_act()
+ ./code/modules/mob/living/carbon/human.dm > /mob/living/carbon/human/revive() > APPENDED
+ ./code/modules/reagents/chemistry/reagents/food_reagents.dm > datum/reagent/consumable/on_mob_life()
+ ./code/datums/traits/negative.dm > /datum/quirk/prosthetic_limb
+ .\code\modules\client.dm > /client/proc/update_special_keybinds()
+  ./code/datums/traits/negative.dm > /datum/quirk/prosthetic_limb
 
-./code/modules/mob/living/carbon/human/species.dm > /datum/species/regenerate_organs() > APPENDED
+ ./code/modules/mob/living/carbon/human/species.dm > /datum/species/regenerate_organs() > APPENDED
 
-./code/controllers/subsystem/job.dm > /datum/controller/subsystem/job/proc/FindOccupationCandidates(), /datum/controller/subsystem/job/proc/GiveRandomJob(), /datum/controller/subsystem/job/proc/DivideOccupations(), /datum/controller/subsystem/job/proc/AssignRole()
-./code/modules/mob/dead/new_player/new_player.dm > /mob/dead/new_player/proc/IsJobUnavailable(), /proc/get_job_unavailable_error_message()
+ ./code/controllers/subsystem/job.dm > /datum/controller/subsystem/job/proc/FindOccupationCandidates(), /datum/controller/subsystem/job/proc/GiveRandomJob(), /datum/controller/subsystem/job/proc/DivideOccupations(), /datum/controller/subsystem/job/proc/AssignRole()
+ ./code/modules/mob/dead/new_player/new_player.dm > /mob/dead/new_player/proc/IsJobUnavailable(), /proc/get_job_unavailable_error_message()
 
 ### Defines:
 

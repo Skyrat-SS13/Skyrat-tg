@@ -81,7 +81,7 @@
 	dirt_modifier = 0.7
 
 /obj/item/gun/ballistic/automatic/pistol/g18/add_seclight_point()
-	AddComponent(/datum/component/seclite_attachable, light_overlay_icon = 'icons/obj/guns/flashlights.dmi', light_overlay = "flight")
+	AddComponent(/datum/component/seclite_attachable, light_overlay_icon = 'icons/obj/weapons/guns/flashlights.dmi', light_overlay = "flight")
 
 /obj/item/ammo_box/magazine/multi_sprite/g18
 	name = "\improper GK-18 magazine"
@@ -124,7 +124,7 @@
 	company_flag = null
 
 /obj/item/gun/ballistic/automatic/pistol/g17/mesa/add_seclight_point()
-	AddComponent(/datum/component/seclite_attachable, light_overlay_icon = 'icons/obj/guns/flashlights.dmi', light_overlay = "flight")
+	AddComponent(/datum/component/seclite_attachable, light_overlay_icon = 'icons/obj/weapons/guns/flashlights.dmi', light_overlay = "flight")
 
 /*
 * PDH 40x32
@@ -151,7 +151,7 @@
 	company_flag = COMPANY_ARMADYNE
 
 /obj/item/gun/ballistic/automatic/pistol/pdh/add_seclight_point()
-	AddComponent(/datum/component/seclite_attachable, light_overlay_icon = 'icons/obj/guns/flashlights.dmi', light_overlay = "flight")
+	AddComponent(/datum/component/seclite_attachable, light_overlay_icon = 'icons/obj/weapons/guns/flashlights.dmi', light_overlay = "flight")
 
 /obj/item/gun/ballistic/automatic/pistol/pdh/alt
 	name = "\improper PDH-6C 'SOCOM'"
@@ -276,7 +276,7 @@
 	company_flag = COMPANY_ARMADYNE
 
 /obj/item/gun/ballistic/automatic/pistol/ladon/add_seclight_point()
-	AddComponent(/datum/component/seclite_attachable, light_overlay_icon = 'icons/obj/guns/flashlights.dmi', light_overlay = "flight")
+	AddComponent(/datum/component/seclite_attachable, light_overlay_icon = 'icons/obj/weapons/guns/flashlights.dmi', light_overlay = "flight")
 
 /obj/item/ammo_box/magazine/multi_sprite/ladon
 	name = "\improper Ladon magazine"
@@ -405,7 +405,7 @@
 	company_flag = COMPANY_ARMADYNE
 
 /obj/item/gun/ballistic/automatic/pistol/firefly/add_seclight_point()
-	AddComponent(/datum/component/seclite_attachable, light_overlay_icon = 'icons/obj/guns/flashlights.dmi', light_overlay = "flight")
+	AddComponent(/datum/component/seclite_attachable, light_overlay_icon = 'icons/obj/weapons/guns/flashlights.dmi', light_overlay = "flight")
 
 
 /obj/item/ammo_box/magazine/multi_sprite/firefly
@@ -870,7 +870,7 @@
 	AddComponent(/datum/component/scope, range_modifier = 1.75)
 
 /obj/item/gun/ballistic/automatic/norwind/add_seclight_point()
-	AddComponent(/datum/component/seclite_attachable, light_overlay_icon = 'icons/obj/guns/flashlights.dmi', light_overlay = "flight")
+	AddComponent(/datum/component/seclite_attachable, light_overlay_icon = 'icons/obj/weapons/guns/flashlights.dmi', light_overlay = "flight")
 
 /obj/item/ammo_box/magazine/multi_sprite/norwind
 	name = "\improper Norwind magazine"
@@ -979,7 +979,7 @@
 	company_flag = COMPANY_BOLT
 
 /obj/item/gun/ballistic/automatic/pcr/add_seclight_point()
-	AddComponent(/datum/component/seclite_attachable, light_overlay_icon = 'icons/obj/guns/flashlights.dmi', light_overlay = "flight")
+	AddComponent(/datum/component/seclite_attachable, light_overlay_icon = 'icons/obj/weapons/guns/flashlights.dmi', light_overlay = "flight")
 
 /obj/item/ammo_box/magazine/multi_sprite/pcr
 	name = "\improper PCR-9 magazine"
@@ -1029,7 +1029,7 @@
 	company_flag = COMPANY_BOLT
 
 /obj/item/gun/ballistic/automatic/pitbull/add_seclight_point()
-	AddComponent(/datum/component/seclite_attachable, light_overlay_icon = 'icons/obj/guns/flashlights.dmi', light_overlay = "flight")
+	AddComponent(/datum/component/seclite_attachable, light_overlay_icon = 'icons/obj/weapons/guns/flashlights.dmi', light_overlay = "flight")
 
 /obj/item/ammo_box/magazine/multi_sprite/pitbull
 	name = "\improper Pitbull magazine"

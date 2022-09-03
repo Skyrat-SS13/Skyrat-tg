@@ -9,7 +9,7 @@
 /datum/species/teshari
 	name = "Teshari"
 	id = SPECIES_TESHARI
-	eyes_icon = 'modular_skyrat/master_files/icons/mob/species/teshari_eyes.dmi'
+	eyes_icon = 'modular_skyrat/modules/organs/icons/teshari_eyes.dmi'
 	species_traits = list(MUTCOLORS,
 		EYECOLOR,
 		NO_UNDERWEAR,
@@ -28,7 +28,7 @@
 		"legs" = "Normal Legs"
 	)
 	disliked_food = GROSS | GRAIN | GORE
-	liked_food = MEAT | GORE
+	liked_food = MEAT
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	attack_verb = "slash"
 	attack_effect = ATTACK_EFFECT_CLAW

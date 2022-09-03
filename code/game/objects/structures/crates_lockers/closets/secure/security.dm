@@ -121,7 +121,7 @@
 	name = "\proper customs agent's locker"
 	req_access = list(ACCESS_BRIG_ENTRANCE, ACCESS_CARGO)
 	icon_state = "qm"
-	icon = 'icons/obj/closet.dmi'
+	icon = 'icons/obj/storage/closet.dmi'
 
 /obj/structure/closet/secure_closet/security/cargo/PopulateContents()
 	new /obj/item/radio/headset/headset_cargo(src)
@@ -141,7 +141,7 @@
 	name = "\proper engineering guard's locker"
 	req_access = list(ACCESS_BRIG_ENTRANCE, ACCESS_ENGINE_EQUIP)
 	icon_state = "eng_secure"
-	icon = 'icons/obj/closet.dmi'
+	icon = 'icons/obj/storage/closet.dmi'
 
 /obj/structure/closet/secure_closet/security/engine/PopulateContents()
 	new /obj/item/radio/headset/headset_eng(src)
@@ -160,7 +160,7 @@
 	name = "\proper science guard's locker"
 	req_access = list(ACCESS_BRIG_ENTRANCE, ACCESS_RESEARCH)
 	icon_state = "science"
-	icon = 'icons/obj/closet.dmi'
+	icon = 'icons/obj/storage/closet.dmi'
 
 /obj/structure/closet/secure_closet/security/science/PopulateContents()
 	new /obj/item/radio/headset/headset_sci(src)
@@ -179,7 +179,7 @@
 	name = "\proper orderly's locker"
 	req_access = list(ACCESS_BRIG_ENTRANCE, ACCESS_MEDICAL)
 	icon_state = "med_secure"
-	icon = 'icons/obj/closet.dmi'
+	icon = 'icons/obj/storage/closet.dmi'
 
 /obj/structure/closet/secure_closet/security/med/PopulateContents()
 	new /obj/item/radio/headset/headset_med(src)

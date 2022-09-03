@@ -45,25 +45,19 @@
 	atom_storage.allow_big_nesting = TRUE // Lets the pouch work
 	AddElement(/datum/element/update_icon_updates_onmob)
 
-//Credit to Funce for this chunk of code directly below, which overrides normal dumping code and instead dumps from the pouch item inside
-/datum/storage/belt/crusader/dump_content_at(atom/dest_object, mob/M)
+//Overrides normal dumping code to instead dump from the pouch item inside
+/datum/storage/belt/crusader/dump_content_at(atom/dest_object, mob/dumping_mob)
 	var/atom/used_belt = parent?.resolve()
 	if(!used_belt)
 		return
-	var/atom/dump_destination = dest_object.get_dumping_location()
-	if(used_belt.Adjacent(M) && dump_destination && M.Adjacent(dump_destination))
-		var/obj/item/storage/belt/storage_pouch/pouch = locate() in real_location?.resolve()
-		if (!pouch)
-			to_chat(M, span_warning("[parent] doesn't seem to have a pouch to empty."))
-			return FALSE //oopsie!! If we don't have a pouch! You're fucked!
-		if(locked)
-			to_chat(M, span_warning("[parent] seems to be locked!"))
-			return FALSE
-		if(dump_destination.storage_contents_dump_act(src, M))
-			playsound(used_belt, SFX_RUSTLE, 50, TRUE, -5)
-			used_belt.do_squish(0.8, 1.2)
-			return TRUE
-	return FALSE
+	var/obj/item/storage/belt/storage_pouch/pouch = locate() in real_location?.resolve()
+	if(!pouch)
+		pouch.balloon_alert(dumping_mob, "no pouch!")
+		return //oopsie!! If we don't have a pouch! You're fucked!
+	if(locked)
+		pouch.balloon_alert(dumping_mob, "locked!")
+		return
+	pouch.atom_storage.dump_content_at(dest_object, dumping_mob)
 
 /obj/item/storage/belt/crusader/CtrlClick(mob/user)	//Makes ctrl-click also open the inventory, so that you can open it with full hands without dropping the sword
 	. = ..()
@@ -154,12 +148,12 @@
 	atom_storage.set_holdable(list(
 		/obj/item/dnainjector,
 		/obj/item/reagent_containers/dropper,
-		/obj/item/reagent_containers/glass/bottle,
+		/obj/item/reagent_containers/cup/bottle,
 		/obj/item/reagent_containers/pill,
 		/obj/item/reagent_containers/syringe,
 		/obj/item/reagent_containers/medigel,
 		/obj/item/storage/pill_bottle,
 		/obj/item/implanter,
-		/obj/item/reagent_containers/glass/vial,
+		/obj/item/reagent_containers/cup/vial,
 		/obj/item/weaponcell/medical
 		))

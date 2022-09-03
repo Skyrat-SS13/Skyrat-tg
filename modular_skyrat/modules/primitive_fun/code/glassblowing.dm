@@ -13,8 +13,8 @@
 	unit_name = "glassblowing product"
 	export_types = list(/obj/item/glassblowing/glass_lens,
 						/obj/item/glassblowing/glass_globe,
-						/obj/item/reagent_containers/glass/bowl/blowing_glass,
-						/obj/item/reagent_containers/glass/beaker/large/blowing_glass,
+						/obj/item/reagent_containers/cup/bowl/blowing_glass,
+						/obj/item/reagent_containers/cup/beaker/large/blowing_glass,
 						/obj/item/plate/blowing_glass)
 
 /datum/export/glassblowing/sell_object(obj/O, datum/export_report/report, dry_run, apply_elastic = FALSE) //I really dont want them to feel gimped
@@ -25,13 +25,13 @@
 	desc = "A glass bowl that is capable of carrying things."
 	icon_state = "glass_lens"
 
-/obj/item/reagent_containers/glass/bowl/blowing_glass
+/obj/item/reagent_containers/cup/bowl/blowing_glass
 	name = "glass bowl"
 	desc = "A glass bowl that is capable of carrying things."
 	icon = 'modular_skyrat/modules/primitive_fun/icons/prim_fun.dmi'
 	icon_state = "glass_bowl"
 
-/obj/item/reagent_containers/glass/beaker/large/blowing_glass
+/obj/item/reagent_containers/cup/beaker/large/blowing_glass
 	name = "glass cup"
 	desc = "A glass cup that is capable of carrying liquids."
 	icon = 'modular_skyrat/modules/primitive_fun/icons/prim_fun.dmi'
@@ -183,13 +183,13 @@
 					find_glass.chosen_item = /obj/item/plate/blowing_glass
 					find_glass.required_actions = list(3,3,3,0,0) //blowing, spinning, paddling
 				if("Bowl")
-					find_glass.chosen_item = /obj/item/reagent_containers/glass/bowl/blowing_glass
+					find_glass.chosen_item = /obj/item/reagent_containers/cup/bowl/blowing_glass
 					find_glass.required_actions = list(2,2,2,0,3) //blowing, spinning, paddling
 				if("Globe")
 					find_glass.chosen_item = /obj/item/glassblowing/glass_globe
 					find_glass.required_actions = list(6,3,0,0,0) //blowing, spinning
 				if("Cup")
-					find_glass.chosen_item = /obj/item/reagent_containers/glass/beaker/large/blowing_glass
+					find_glass.chosen_item = /obj/item/reagent_containers/cup/beaker/large/blowing_glass
 					find_glass.required_actions = list(3,3,3,0,0) //blowing, spinning, paddling
 				if("Lens")
 					find_glass.chosen_item = /obj/item/glassblowing/glass_lens

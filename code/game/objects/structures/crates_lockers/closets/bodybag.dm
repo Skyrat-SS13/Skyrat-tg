@@ -99,7 +99,7 @@
 		to_chat(the_folder, span_warning("You wrestle with [src], but it won't fold while unzipped."))
 		return
 	for(var/content_thing in contents)
-		if(istype(content_thing, /mob) || istype(content_thing, /obj))
+		if(istype(content_thing, /mob) || isobj(content_thing))
 			to_chat(the_folder, span_warning("There are too many things inside of [src] to fold it up!"))
 			return
 	// toto we made it!
@@ -137,6 +137,11 @@
 	if(contents.len >= mob_storage_capacity / 2)
 		to_chat(the_folder, span_warning("There are too many things inside of [src] to fold it up!"))
 		return
+
+	if(the_folder.in_contents_of(src))
+		to_chat(the_folder, span_warning("You can't fold [src] while you're inside of it!"))
+		return
+
 	for(var/obj/item/bodybag/bluespace/B in src)
 		to_chat(the_folder, span_warning("You can't recursively fold bluespace body bags!") )
 		return
