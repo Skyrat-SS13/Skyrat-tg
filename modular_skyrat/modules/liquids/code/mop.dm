@@ -15,11 +15,11 @@
 		return
 	var/free_space = the_mop.reagents.maximum_volume - the_mop.reagents.total_volume
 	if(free_space <= 0)
-		to_chat(user, "<span class='warning'>Your mop can't absorb any more!</span>")
+		to_chat(user, span_warning("Your mop can't absorb any more!"))
 		return TRUE
 	var/datum/reagents/tempr = liquids.take_reagents_flat(free_space)
 	tempr.trans_to(the_mop.reagents, tempr.total_volume)
-	to_chat(user, "<span class='notice'>You soak the mop with some liquids.</span>")
+	to_chat(user, span_notice("You soak the mop with some liquids."))
 	qdel(tempr)
 	user.changeNext_move(CLICK_CD_MELEE)
 	return TRUE
