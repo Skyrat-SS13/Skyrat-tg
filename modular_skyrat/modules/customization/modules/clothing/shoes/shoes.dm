@@ -142,5 +142,6 @@
 /obj/item/clothing/shoes/clown_shoes/pink
 	name = "pink clown shoes"
 	desc = "A particularly pink pair of punny shoes."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/shoes.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/feet.dmi'
 	icon_state = "pink_clown_shoes"
-	inhand_icon_state = "pink_clown_shoes"
