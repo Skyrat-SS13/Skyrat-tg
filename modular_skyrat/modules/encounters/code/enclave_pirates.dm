@@ -191,7 +191,6 @@
 	storage_type = /obj/item/tank/internals/oxygen/yellow
 
 /obj/machinery/suit_storage_unit/nri/captain
-	mod_type = /obj/item/mod/control/pre_equipped/frontline/ert
 
 #undef NRI_COOLDOWN_HEAL
 #undef NRI_COOLDOWN_RADS
