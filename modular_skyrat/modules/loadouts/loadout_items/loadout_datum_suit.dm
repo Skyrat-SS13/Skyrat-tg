@@ -257,7 +257,7 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 
 /datum/loadout_item/suit/ianshirt
 	name = "Ian Shirt"
-	item_path = /obj/item/clothing/suit/ianshirt
+	item_path = /obj/item/clothing/suit/costume/ianshirt
 
 /datum/loadout_item/suit/wornshirt
 	name = "Worn Shirt"
@@ -368,8 +368,8 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	item_path = /obj/item/clothing/suit/blackfurrich
 
 /datum/loadout_item/suit/dutchjacket
-	name = "Dutch Jacket"
-	item_path = /obj/item/clothing/suit/costume/dutch
+	name = "Western Jacket"
+	item_path = /obj/item/clothing/suit/dutchjacketsr
 
 /datum/loadout_item/suit/caretaker
 	name = "Caretaker Jacket"

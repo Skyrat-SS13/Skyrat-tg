@@ -44,7 +44,7 @@
 
 /obj/item/storage/wallet/Exited(atom/movable/gone, direction)
 	. = ..()
-	if(istype(gone, /obj/item/card/id))
+	if(isidcard(gone))
 		refreshID()
 
 /**
@@ -89,7 +89,7 @@
 
 /obj/item/storage/wallet/Entered(atom/movable/arrived, atom/old_loc, list/atom/old_locs)
 	. = ..()
-	if(istype(arrived, /obj/item/card/id))
+	if(isidcard(arrived))
 		refreshID()
 
 /obj/item/storage/wallet/update_overlays()

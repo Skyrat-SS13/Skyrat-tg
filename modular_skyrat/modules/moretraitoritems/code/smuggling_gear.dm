@@ -15,7 +15,7 @@
 	hidden_icon = "eprototypedagger"
 
 //smuggling container
-/obj/item/reagent_containers/glass/bottle/ritual_wine
+/obj/item/reagent_containers/cup/bottle/ritual_wine
 	name = "ritual wine bottle"
 	desc = "Contains an incredibly potent mix of various hallucinogenics, herbal extracts, and hard drugs. \
 	the Tiger Cooperative praises it as a link to higher powers, but for all intents and purposes this should \

@@ -19,7 +19,7 @@
 	suit = /obj/item/clothing/suit/toggle/labcoat
 	shoes = /obj/item/clothing/shoes/laceup
 	back = /obj/item/storage/backpack
-	backpack_contents = list(/obj/item/radio, /obj/item/reagent_containers/glass/beaker)
+	backpack_contents = list(/obj/item/radio, /obj/item/reagent_containers/cup/beaker)
 	id = /obj/item/card/id
 	id_trim = /datum/id_trim/science_team
 
@@ -136,7 +136,7 @@
 	belt = /obj/item/storage/belt/military/assault/hecu
 	ears = /obj/item/radio/headset/headset_faction
 	shoes = /obj/item/clothing/shoes/combat
-	l_pocket = /obj/item/reagent_containers/food/drinks/flask
+	l_pocket = /obj/item/reagent_containers/cup/glass/flask
 	r_pocket = /obj/item/flashlight/flare
 	back = /obj/item/storage/backpack/ert/odst/hecu
 	backpack_contents = list(

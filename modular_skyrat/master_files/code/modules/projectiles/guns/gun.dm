@@ -59,7 +59,7 @@
 
 	var/can_bayonet = FALSE // if a bayonet can be added or removed if it already has one.
 	var/bayonet_state = "bayonet"
-	var/bayonet_icon = 'icons/obj/guns/bayonets.dmi'
+	var/bayonet_icon = 'icons/obj/weapons/guns/bayonets.dmi'
 	var/obj/item/knife/bayonet
 	var/knife_x_offset = 0
 	var/knife_y_offset = 0

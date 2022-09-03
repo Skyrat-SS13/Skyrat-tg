@@ -101,8 +101,10 @@
 
 /datum/preferences/proc/get_optional_languages()
 	var/list/lang_list = list()
-	for(var/lang in pref_species.learnable_languages)
+	var/datum/language_holder/lang_holder = new pref_species.species_language_holder()
+	for(var/lang in lang_holder.spoken_languages)
 		lang_list[lang] = TRUE
+	qdel(lang_holder)
 	return lang_list
 
 /datum/preferences/proc/get_available_languages()

@@ -9,7 +9,7 @@
 /datum/species/teshari
 	name = "Teshari"
 	id = SPECIES_TESHARI
-	eyes_icon = 'modular_skyrat/master_files/icons/mob/species/teshari_eyes.dmi'
+	eyes_icon = 'modular_skyrat/modules/organs/icons/teshari_eyes.dmi'
 	species_traits = list(MUTCOLORS,
 		EYECOLOR,
 		NO_UNDERWEAR,
@@ -28,7 +28,7 @@
 		"legs" = "Normal Legs"
 	)
 	disliked_food = GROSS | GRAIN | GORE
-	liked_food = MEAT | GORE
+	liked_food = MEAT
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	attack_verb = "slash"
 	attack_effect = ATTACK_EFFECT_CLAW
@@ -61,7 +61,6 @@
 	bodytemp_cold_damage_limit = (BODYTEMP_COLD_DAMAGE_LIMIT + TESHARI_TEMP_OFFSET)
 	species_language_holder = /datum/language_holder/teshari
 	body_size_restricted = TRUE
-	learnable_languages = list(/datum/language/common, /datum/language/vox, /datum/language/schechi)
 	bodypart_overrides = list(
 		BODY_ZONE_HEAD = /obj/item/bodypart/head/mutant/teshari,
 		BODY_ZONE_CHEST = /obj/item/bodypart/chest/mutant/teshari,
@@ -81,3 +80,13 @@
 		randname += " [lastname]"
 
 	return randname
+
+/datum/species/teshari/prepare_human_for_preview(mob/living/carbon/human/tesh)
+	var/base_color = "#c0965f"
+	var/ear_color = "#e4c49b"
+
+	tesh.dna.features["mcolor"] = base_color
+	tesh.dna.species.mutant_bodyparts["ears"] = list(MUTANT_INDEX_NAME = "Teshari Feathers Upright", MUTANT_INDEX_COLOR_LIST = list(ear_color, ear_color, ear_color))
+	tesh.dna.species.mutant_bodyparts["tail"] = list(MUTANT_INDEX_NAME = "Teshari (Default)", MUTANT_INDEX_COLOR_LIST = list(base_color, base_color, ear_color))
+	tesh.update_mutant_bodyparts(TRUE)
+	tesh.update_body(TRUE)

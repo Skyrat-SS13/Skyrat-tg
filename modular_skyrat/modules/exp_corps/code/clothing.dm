@@ -56,9 +56,9 @@
 	name = "pointman's chest rig"
 
 /obj/item/storage/belt/military/expeditionary_corps/pointman/PopulateContents()
-	new /obj/item/reagent_containers/food/drinks/bottle/whiskey(src)
+	new /obj/item/reagent_containers/cup/glass/bottle/whiskey(src)
 	new /obj/item/stack/sheet/plasteel(src,5)
-	new /obj/item/reagent_containers/glass/bottle/morphine(src)
+	new /obj/item/reagent_containers/cup/bottle/morphine(src)
 
 /obj/item/storage/belt/military/expeditionary_corps/marksman
 	name = "marksman's chest rig"

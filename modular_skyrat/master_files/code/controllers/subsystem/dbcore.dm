@@ -17,7 +17,7 @@
  * * log_entry - Associative list representing all of the information that needs to be logged.
  * Default format is as follows, for the `game_log` table (even if this could be used for another table):
  * 	list(
- * 		"time" = SQLtime(),
+ * 		"datetime" = SQLtime(),
  * 		"round_id" = "[GLOB.round_id]",
  * 		"ckey" = key_name(src),
  * 		"loc" = loc_name(src),
@@ -33,7 +33,7 @@
 	if(!queued_log_entries_by_table[table])
 		queued_log_entries_by_table[table] = list()
 
-	queued_log_entries_by_table[table] += log_entry
+	queued_log_entries_by_table[table] += list(log_entry)
 
 	if(length(queued_log_entries_by_table[table]) < CONFIG_GET(number/sql_game_log_min_bundle_size))
 		return

@@ -3,7 +3,7 @@
 
 /obj/projectile
 	name = "projectile"
-	icon = 'icons/obj/guns/projectiles.dmi'
+	icon = 'icons/obj/weapons/guns/projectiles.dmi'
 	icon_state = "bullet"
 	density = FALSE
 	anchored = TRUE

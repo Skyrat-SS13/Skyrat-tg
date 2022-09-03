@@ -36,7 +36,7 @@
 						/obj/item/spanking_pad,
 						/obj/item/clothing/sextoy/vibrator,
 						/obj/item/restraints/handcuffs/lewd,
-						/obj/item/reagent_containers/glass/lewd_filter,
+						/obj/item/reagent_containers/cup/lewd_filter,
 						/obj/item/assembly/signaler, //because it's used for several toys
 
 						//clothing
@@ -82,9 +82,9 @@
 						//chems
 						/obj/item/reagent_containers/pill/crocin,
 						/obj/item/reagent_containers/pill/camphor,
-						/obj/item/reagent_containers/glass/bottle/breast_enlarger,
-						/obj/item/reagent_containers/glass/bottle/penis_enlarger,
+						/obj/item/reagent_containers/cup/bottle/breast_enlarger,
+						/obj/item/reagent_containers/cup/bottle/penis_enlarger,
 						/obj/item/reagent_containers/pill/hexacrocin,
 						/obj/item/reagent_containers/pill/pentacamphor,
-						/obj/item/reagent_containers/glass/bottle/hexacrocin,
-						/obj/item/reagent_containers/glass/bottle/pentacamphor))
+						/obj/item/reagent_containers/cup/bottle/hexacrocin,
+						/obj/item/reagent_containers/cup/bottle/pentacamphor))
