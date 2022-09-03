@@ -613,5 +613,5 @@
 					/obj/item/ammo_box/a762,
 					/obj/item/gun/ballistic/automatic/plastikov,
 					/obj/item/ammo_box/magazine/plastikov9mm,
-					/obj/item/gun/ballistic/automatic/pistol,
-					/obj/item/ammo_box/magazine/m9mm)
+					/obj/item/gun/ballistic/automatic/pistol/makarov,
+					/obj/item/ammo_box/magazine/multi_sprite/makarov)

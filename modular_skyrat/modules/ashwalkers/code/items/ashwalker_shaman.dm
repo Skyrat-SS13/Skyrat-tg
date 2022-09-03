@@ -3,7 +3,7 @@
 	name = "staff of the ashlands"
 	desc = "A gnarly and twisted branch that is imbued with some ancient power."
 
-	icon = 'icons/obj/guns/magic.dmi'
+	icon = 'icons/obj/weapons/guns/magic.dmi'
 	lefthand_file = 'icons/mob/inhands/weapons/staves_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/staves_righthand.dmi'
 	icon_state = "staffofanimation"

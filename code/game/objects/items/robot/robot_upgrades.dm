@@ -590,7 +590,7 @@
 /obj/item/borg/upgrade/rped//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "engineering cyborg RPED"
 	desc = "A rapid part exchange device for the engineering cyborg."
-	icon = 'icons/obj/storage.dmi'
+	icon = 'icons/obj/storage/storage.dmi'
 	icon_state = "borgrped"
 	require_model = TRUE
 	model_type = list(/obj/item/robot_model/engineering, /obj/item/robot_model/saboteur)
