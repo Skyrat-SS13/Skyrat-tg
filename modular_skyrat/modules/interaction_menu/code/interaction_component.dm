@@ -100,16 +100,19 @@
 	if(ishuman(user) && can_lewd_strip(user, self))
 		if(self.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 			if(self.has_vagina())
-				parts += list(list("name" = NAME_VAGINA, "img" = self.vagina? icon2base64(icon(self.vagina.icon, self.vagina.icon_state, SOUTH, 1)) : null))
+				parts += generate_strip_entry(NAME_VAGINA, self, user, self.vagina)
 			if(self.has_penis())
-				parts += list(list("name" = NAME_PENIS, "img" = self.penis? icon2base64(icon(self.penis.icon, self.penis.icon_state, SOUTH, 1)) : null))
+				parts += generate_strip_entry(NAME_PENIS, self, user, self.penis)
 			if(self.has_anus())
-				parts += list(list("name" = NAME_ANUS, "img" = self.anus? icon2base64(icon(self.anus.icon, self.anus.icon_state, SOUTH, 1)) : null))
-			parts += list(list("name" = NAME_NIPPLES, "img" = self.nipples? icon2base64(icon(self.nipples.icon, self.nipples.icon_state, SOUTH, 1)) : null))
+				parts += generate_strip_entry(NAME_ANUS, self, user, self.anus)
+			parts += generate_strip_entry(NAME_NIPPLES, self, user, self.nipples)
 
 	data["lewd_slots"] = parts
 
 	return data
+
+/datum/component/interactable/proc/generate_strip_entry(name, mob/living/carbon/human/self, mob/living/carbon/human/user, obj/item/clothing/sextoy/item)
+	return list(list("name" = name, "img" = (item && can_lewd_strip(user, self, name))? icon2base64(icon(item.icon, item.icon_state, SOUTH, 1)) : null))
 
 /datum/component/interactable/ui_act(action, list/params)
 	. = ..()

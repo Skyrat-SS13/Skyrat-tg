@@ -71,17 +71,22 @@ export const InteractionMenu = (props, context) => {
             <Stack fill>
               {lewd_slots.map((element: LewdSlot) => {
                 return (
-                  <Stack.Item key={element.name} style={{}}>
+                  <Stack.Item key={element.name}>
                     <Button
                       onClick={() =>
                         act('remove_lewd_item', {
-                          slot: element,
+                          slot: element.name,
                           selfref: ref_self,
                           userref: ref_user,
                         })
                       }
-                      tooltip={element}>
-                      <Box width="26px" height="34px">
+                      tooltip={element.name}>
+                      <Box
+                        style={{
+                          'width': '32px',
+                          'height': '32px',
+                          'margin': '0.5em 0',
+                        }}>
                         {element.img ? (
                           <img
                             src={'data:image/png;base64,' + element.img}
@@ -94,9 +99,9 @@ export const InteractionMenu = (props, context) => {
                         ) : (
                           <Icon
                             name="eye-slash"
-                            size={1.5}
+                            size={2}
                             ml={0}
-                            mt={1.3}
+                            mt={0.75}
                             style={{
                               'text-align': 'center',
                             }}
