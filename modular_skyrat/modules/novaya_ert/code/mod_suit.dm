@@ -3,7 +3,7 @@
 	desc = "A Novaya Rossiyskaya Imperiya Defense Collegia protective suit, designed for fortified positions operation and humanitarian aid."
 	extended_desc = "PLACEHOLDER WOOOOOOOOOOOOOOOOOOOOOOO"
 	default_skin = "frontline"
-	armor = list(MELEE = 30, BULLET = 40, LASER = 25, ENERGY = 20, BOMB = 30, BIO = 100, FIRE = 40, ACID = 75, WOUND = 15)
+	armor = list(MELEE = 40, BULLET = 50, LASER = 30, ENERGY = 40, BOMB = 50, BIO = 100, FIRE = 40, ACID = 75, WOUND = 20)
 	complexity_max = DEFAULT_MAX_COMPLEXITY
 	charge_drain = DEFAULT_CHARGE_DRAIN * 1.5
 	skins = list(
