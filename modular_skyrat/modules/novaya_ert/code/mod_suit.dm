@@ -6,6 +6,18 @@
 	armor = list(MELEE = 40, BULLET = 50, LASER = 30, ENERGY = 40, BOMB = 50, BIO = 100, FIRE = 40, ACID = 75, WOUND = 20)
 	complexity_max = DEFAULT_MAX_COMPLEXITY
 	charge_drain = DEFAULT_CHARGE_DRAIN * 1.5
+	allowed_suit_storage = list(
+		/obj/item/flashlight,
+		/obj/item/tank/internals,
+		/obj/item/ammo_box,
+		/obj/item/ammo_casing,
+		/obj/item/restraints/handcuffs,
+		/obj/item/assembly/flash,
+		/obj/item/melee/baton,
+		/obj/item/knife/combat,
+		/obj/item/shield/riot,
+		/obj/item/gun
+	)
 	skins = list(
 		"frontline" = list(
 			MOD_ICON_OVERRIDE = 'modular_skyrat/modules/novaya_ert/icons/mod.dmi',
