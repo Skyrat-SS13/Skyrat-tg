@@ -455,6 +455,28 @@
 	icon_file = 'icons/mob/clothing/suits/moth.dmi'
 	json_config = 'code/datums/greyscale/json_configs/moth_coat_winter_worn.json'
 
+<<<<<<< HEAD
+=======
+/datum/greyscale_config/eth_raincoat
+	name = "Ethereal Raincoat"
+	icon_file = 'icons/obj/clothing/suits/ethereal.dmi'
+	json_config = 'code/datums/greyscale/json_configs/eth_raincoat.json'
+
+/datum/greyscale_config/eth_raincoat_worn
+	name = "Worn Ethereal Raincoat"
+	icon_file = 'icons/mob/clothing/suits/ethereal.dmi'
+	json_config = 'code/datums/greyscale/json_configs/eth_raincoat_worn.json'
+
+/datum/greyscale_config/eth_tunic
+	name = "Ethereal Tunic"
+	icon_file = 'icons/obj/clothing/under/ethereal.dmi'
+	json_config = 'code/datums/greyscale/json_configs/eth_tunic.json'
+
+/datum/greyscale_config/eth_tunic_worn
+	name = "Worn Ethereal Tunic"
+	icon_file = 'icons/mob/clothing/under/ethereal.dmi'
+	json_config = 'code/datums/greyscale/json_configs/eth_tunic_worn.json'
+>>>>>>> 9f2372ea772 (Adds Ethereal Fashion (#69494))
 
 /datum/greyscale_config/bandana
 	name = "Bandana"
