@@ -533,6 +533,15 @@
 	name = "Worn Strapless Dress"
 	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/skirts_dresses.dmi'
 
+/datum/greyscale_config/pentagram_dress
+	name = "Pentagram Strapped Dress"
+	icon_file = 'modular_skyrat/master_files/icons/obj/clothing/under/skirts_dresses.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/pants_shorts_skirts_dresses/pentagram_dress.json'
+
+/datum/greyscale_config/pentagram_dress/worn
+	name = "Worn Pentagram Strapped Dress"
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/skirts_dresses.dmi'
+
 // KILT
 
 /datum/greyscale_config/kilt

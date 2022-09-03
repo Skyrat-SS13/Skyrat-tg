@@ -331,6 +331,10 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Recolorable Strapless Dress"
 	item_path = /obj/item/clothing/under/dress/skyrat/strapless
 
+/datum/loadout_item/under/miscellaneous/pentagramdress
+	name = "Recolorable Pentagram Strapped Dress"
+	item_path = /obj/item/clothing/under/dress/skyrat/pentagram
+
 /datum/loadout_item/under/miscellaneous/swept_skirt
 	name = "Swept Skirt"
 	item_path = /obj/item/clothing/under/dress/skirt/skyrat/swept
