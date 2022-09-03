@@ -49,6 +49,7 @@
 	greyscale_config = /datum/greyscale_config/plaidskirt
 	greyscale_config_worn = /datum/greyscale_config/plaidskirt_worn
 	greyscale_config_worn_digi = /datum/greyscale_config/plaidskirt_worn/digi //SKYRAT EDIT - DigiGreyscale
+	greyscale_config_worn_teshari = /datum/greyscale_config/plaidskirt_worn/teshari //SKYRAT EDIT - Teshari greyscale
 	flags_1 = IS_PLAYER_COLORABLE_1
 
 /obj/item/clothing/under/dress/skirt/turtleskirt
@@ -79,4 +80,5 @@
 	greyscale_colors = "#FFE60F#9194A5#1F243C"
 	greyscale_config = /datum/greyscale_config/sundress
 	greyscale_config_worn = /datum/greyscale_config/sundress_worn
+	greyscale_config_worn_teshari = /datum/greyscale_config/sundress_worn/teshari
 	flags_1 = IS_PLAYER_COLORABLE_1

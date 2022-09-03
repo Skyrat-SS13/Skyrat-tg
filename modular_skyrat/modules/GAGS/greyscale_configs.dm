@@ -435,6 +435,15 @@
 	name = "Worn Plaid Skirt - Digitigrade"
 	icon_file = 'modular_skyrat/modules/GAGS/icons/dress.dmi'
 
+/datum/greyscale_config/plaidskirt_worn/teshari
+	name = "Worn Plaid Skirt - Teshari"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/dressteshari.dmi'
+
+/datum/greyscale_config/sundress_worn/teshari
+	name = "Worn Sundress - Teshari"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/dressteshari.dmi'
+	json_config = 'code/datums/greyscale/json_configs/sundress_worn.json'
+
 // KILT
 
 /datum/greyscale_config/kilt
