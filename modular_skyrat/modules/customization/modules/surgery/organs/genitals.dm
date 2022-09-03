@@ -86,13 +86,13 @@
 
 
 /obj/item/organ/external/genital/penis
-	name = "penis"
+	name = NAME_PEINS
 	desc = "A male reproductive organ."
-	icon_state = "penis"
+	icon_state = NAME_PEINS
 	icon = 'modular_skyrat/master_files/icons/obj/genitals/penis.dmi'
 	zone = BODY_ZONE_PRECISE_GROIN
 	slot = ORGAN_SLOT_PENIS
-	mutantpart_key = "penis"
+	mutantpart_key = NAME_PEINS
 	mutantpart_info = list(MUTANT_INDEX_NAME = "Human", MUTANT_INDEX_COLOR_LIST = list("#FFEEBB"))
 	drop_when_organ_spilling = FALSE
 	var/girth = 9
@@ -181,7 +181,7 @@
 		uses_skintones = accessory.has_skintone_shading
 
 /obj/item/organ/external/genital/penis/get_global_feature_list()
-	return GLOB.sprite_accessories["penis"]
+	return GLOB.sprite_accessories[NAME_PEINS]
 
 
 /obj/item/organ/external/genital/testicles
@@ -247,10 +247,10 @@
 
 
 /obj/item/organ/external/genital/vagina
-	name = "vagina"
+	name = NAME_VAGINA
 	icon = 'modular_skyrat/master_files/icons/obj/genitals/vagina.dmi'
-	icon_state = "vagina"
-	mutantpart_key = "vagina"
+	icon_state = NAME_VAGINA
+	mutantpart_key = NAME_VAGINA
 	mutantpart_info = list(MUTANT_INDEX_NAME = "Human", MUTANT_INDEX_COLOR_LIST = list("#FFEEBB"))
 	zone = BODY_ZONE_PRECISE_GROIN
 	slot = ORGAN_SLOT_VAGINA
@@ -285,7 +285,7 @@
 		uses_skintones = accessory.has_skintone_shading
 
 /obj/item/organ/external/genital/vagina/get_global_feature_list()
-	return GLOB.sprite_accessories["vagina"]
+	return GLOB.sprite_accessories[NAME_VAGINA]
 
 
 /obj/item/organ/external/genital/womb
@@ -307,11 +307,11 @@
 
 
 /obj/item/organ/external/genital/anus
-	name = "anus"
+	name = NAME_ANUS
 	desc = "What do you want me to tell you?"
 	icon = 'modular_skyrat/master_files/icons/obj/genitals/anus.dmi'
-	icon_state = "anus"
-	mutantpart_key = "anus"
+	icon_state = NAME_ANUS
+	mutantpart_key = NAME_ANUS
 	mutantpart_info = list(MUTANT_INDEX_NAME = "Normal", MUTANT_INDEX_COLOR_LIST = list("FEB"))
 	zone = BODY_ZONE_PRECISE_GROIN
 	slot = ORGAN_SLOT_ANUS
@@ -327,7 +327,7 @@
 	return returned_string
 
 /obj/item/organ/external/genital/anus/get_global_feature_list()
-	return GLOB.sprite_accessories["anus"]
+	return GLOB.sprite_accessories[NAME_ANUS]
 
 
 /obj/item/organ/external/genital/breasts

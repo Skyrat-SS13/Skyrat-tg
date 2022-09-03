@@ -473,14 +473,6 @@
 #define ITEM_SLOT_ERP_INSERTABLE (ITEM_SLOT_VAGINA|ITEM_SLOT_ANUS)
 #define ITEM_SLOT_ERP_ATTACHABLE (ITEM_SLOT_NIPPLES|ITEM_SLOT_PENIS)
 
-// Strippable Defines
-#define ERP_SLOT_EQUIP_DELAY (5 SECONDS) // Lamella TODO: delay need to be balanced
-
-#define STRIPPABLE_ITEM_VAGINA "vagina"
-#define STRIPPABLE_ITEM_ANUS "anus"
-#define STRIPPABLE_ITEM_NIPPLES "nipples"
-#define STRIPPABLE_ITEM_PEINS "penis"
-
 // Just by analogy with the TG code. No ideas for what this is.
 /mob/proc/update_inv_vagina()
 	return

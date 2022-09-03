@@ -20,10 +20,10 @@ GLOBAL_LIST_INIT(bodyparts_to_convert, list("body_markings", \
 "taur", \
 "xenodorsal", \
 "xenohead", \
-"penis", \
+NAME_PEINS, \
 "testicles", \
 "womb", \
-"vagina", \
+NAME_VAGINA, \
 "breasts",))
 
 /datum/preferences/proc/migrate_skyrat(savefile/S)

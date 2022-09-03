@@ -132,7 +132,7 @@
 			if(!(target.is_topless() || breasts.visibility_preference == GENITAL_ALWAYS_SHOW))
 				to_chat(user, span_danger("Looks like [target]'s chest is covered!"))
 				return
-			message = (user == target) ? pick("massages their [breasts ? "breasts" : "nipples"] with the [src]", "[vibration_mode == "low" ? "gently" : ""][vibration_mode = "hard" ? "roughly" : ""] teases their [breasts ? "tits" : "nipples"] with [src]") : pick("[vibration_mode == "low" ? "delicately" : ""][vibration_mode = "hard" ? "aggressively" : ""] teases [target]'s [breasts ? "breasts" : "nipples"] with [src]", "uses [src] to[vibration_mode == "low" ? " slowly" : ""] massage [target]'s [breasts ? "tits" : "nipples"]", "uses [src] to tease [target]'s [breasts ? "boobs" : "nipples"]")
+			message = (user == target) ? pick("massages their [breasts ? "breasts" : NAME_NIPPLES] with the [src]", "[vibration_mode == "low" ? "gently" : ""][vibration_mode = "hard" ? "roughly" : ""] teases their [breasts ? "tits" : NAME_NIPPLES] with [src]") : pick("[vibration_mode == "low" ? "delicately" : ""][vibration_mode = "hard" ? "aggressively" : ""] teases [target]'s [breasts ? "breasts" : NAME_NIPPLES] with [src]", "uses [src] to[vibration_mode == "low" ? " slowly" : ""] massage [target]'s [breasts ? "tits" : NAME_NIPPLES]", "uses [src] to tease [target]'s [breasts ? "boobs" : NAME_NIPPLES]")
 			target.adjustArousal((vibration_mode == "low" ? 3 : (vibration_mode == "hard" ? 7 : 4)))
 			target.adjustPleasure((vibration_mode == "low" ? 1 : (vibration_mode == "hard" ? 9 : 4)))
 

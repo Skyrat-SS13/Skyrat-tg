@@ -93,7 +93,7 @@
 
 /datum/preference/choiced/genital/penis
 	savefile_key = "feature_penis"
-	relevant_mutant_bodypart = "penis"
+	relevant_mutant_bodypart = NAME_PEINS
 
 /datum/preference/choiced/genital/penis/create_default_value()
 	var/datum/sprite_accessory/genital/penis/none/default = /datum/sprite_accessory/genital/penis/none
@@ -101,7 +101,7 @@
 
 /datum/preference/toggle/genital_skin_tone/penis
 	savefile_key = "penis_skin_tone"
-	relevant_mutant_bodypart = "penis"
+	relevant_mutant_bodypart = NAME_PEINS
 	genital_pref_type = /datum/preference/choiced/genital/penis
 
 /datum/preference/toggle/genital_skin_tone/penis/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
@@ -109,7 +109,7 @@
 
 /datum/preference/toggle/genital_skin_color/penis
 	savefile_key = "penis_skin_color"
-	relevant_mutant_bodypart = "penis"
+	relevant_mutant_bodypart = NAME_PEINS
 	genital_pref_type = /datum/preference/choiced/genital/penis
 
 /datum/preference/toggle/genital_skin_color/penis/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
@@ -119,7 +119,7 @@
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
 	savefile_identifier = PREFERENCE_CHARACTER
 	savefile_key = "penis_length"
-	relevant_mutant_bodypart = "penis"
+	relevant_mutant_bodypart = NAME_PEINS
 	minimum = PENIS_MIN_LENGTH
 	maximum = PENIS_MAX_LENGTH
 
@@ -139,7 +139,7 @@
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
 	savefile_identifier = PREFERENCE_CHARACTER
 	savefile_key = "penis_girth"
-	relevant_mutant_bodypart = "penis"
+	relevant_mutant_bodypart = NAME_PEINS
 	minimum = PENIS_MIN_LENGTH
 	maximum = PENIS_MAX_GIRTH
 
@@ -157,13 +157,13 @@
 
 /datum/preference/tri_color/genital/penis
 	savefile_key = "penis_color"
-	relevant_mutant_bodypart = "penis"
+	relevant_mutant_bodypart = NAME_PEINS
 	type_to_check = /datum/preference/choiced/genital/penis
 	skin_color_type = /datum/preference/toggle/genital_skin_color/penis
 
 /datum/preference/tri_bool/genital/penis
 	savefile_key = "penis_emissive"
-	relevant_mutant_bodypart = "penis"
+	relevant_mutant_bodypart = NAME_PEINS
 	type_to_check = /datum/preference/choiced/genital/penis
 	skin_color_type = /datum/preference/toggle/genital_skin_color/penis
 
@@ -172,7 +172,7 @@
 	savefile_identifier = PREFERENCE_CHARACTER
 	savefile_key = "penis_taur_mode_toggle"
 	default_value = FALSE
-	relevant_mutant_bodypart = "penis"
+	relevant_mutant_bodypart = NAME_PEINS
 
 /datum/preference/toggle/penis_taur_mode/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	target.dna.features["penis_taur"] = value
@@ -187,7 +187,7 @@
 	savefile_key = "penis_sheath"
 	savefile_identifier = PREFERENCE_CHARACTER
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
-	relevant_mutant_bodypart = "penis"
+	relevant_mutant_bodypart = NAME_PEINS
 
 /datum/preference/choiced/penis_sheath/is_accessible(datum/preferences/preferences)
 	var/passed_initial_check = ..(preferences)
@@ -266,11 +266,11 @@
 
 /datum/preference/choiced/genital/vagina
 	savefile_key = "feature_vagina"
-	relevant_mutant_bodypart = "vagina"
+	relevant_mutant_bodypart = NAME_VAGINA
 
 /datum/preference/toggle/genital_skin_tone/vagina
 	savefile_key = "vagina_skin_tone"
-	relevant_mutant_bodypart = "vagina"
+	relevant_mutant_bodypart = NAME_VAGINA
 	genital_pref_type = /datum/preference/choiced/genital/vagina
 
 /datum/preference/toggle/genital_skin_tone/vagina/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
@@ -278,7 +278,7 @@
 
 /datum/preference/toggle/genital_skin_color/vagina
 	savefile_key = "vagina_skin_color"
-	relevant_mutant_bodypart = "vagina"
+	relevant_mutant_bodypart = NAME_VAGINA
 	genital_pref_type = /datum/preference/choiced/genital/vagina
 
 /datum/preference/toggle/genital_skin_color/vagina/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
@@ -290,13 +290,13 @@
 
 /datum/preference/tri_color/genital/vagina
 	savefile_key = "vagina_color"
-	relevant_mutant_bodypart = "vagina"
+	relevant_mutant_bodypart = NAME_VAGINA
 	type_to_check = /datum/preference/choiced/genital/vagina
 	skin_color_type = /datum/preference/toggle/genital_skin_color/vagina
 
 /datum/preference/tri_bool/genital/vagina
 	savefile_key = "vagina_emissive"
-	relevant_mutant_bodypart = "vagina"
+	relevant_mutant_bodypart = NAME_VAGINA
 	type_to_check = /datum/preference/choiced/genital/vagina
 	skin_color_type = /datum/preference/toggle/genital_skin_color/vagina
 
@@ -388,7 +388,7 @@
 
 /datum/preference/choiced/genital/anus
 	savefile_key = "feature_anus"
-	relevant_mutant_bodypart = "anus"
+	relevant_mutant_bodypart = NAME_ANUS
 
 /datum/preference/choiced/genital/anus/create_default_value()
 	var/datum/sprite_accessory/genital/anus/none/default = /datum/sprite_accessory/genital/anus/none

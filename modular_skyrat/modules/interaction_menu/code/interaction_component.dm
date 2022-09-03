@@ -94,15 +94,20 @@
 	data["self"] = self.name
 	data["block_interact"] = interact_next >= world.time
 	data["interactions"] = categories
+
+	var/list/parts = list()
+
 	if(ishuman(user) && can_lewd_strip(user, self))
-		data["lewd_slots"] = list(
-			"vagina",
-			"penis",
-			"anus",
-			"nipples",
-			)
-	else
-		data["lewd_slots"] = list()
+		if(self.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
+			if(self.has_vagina())
+				parts.Add(NAME_VAGINA)
+			if(self.has_penis())
+				parts.Add(NAME_PEINS)
+			if(self.has_anus())
+				parts.Add(NAME_ANUS)
+			parts.Add(NAME_NIPPLES)
+
+	data["lewd_slots"] = parts
 
 	return data
 
@@ -124,34 +129,58 @@
 			return TRUE
 	if(params["slot"]) // TODO: More detailed warnings and messages
 		var/lewd_item_index = params["slot"]
-		var/mob/living/carbon/human/user_self = locate(params["userref"])
-		var/mob/living/carbon/human/user_other = locate(params["selfref"])
-		if(can_lewd_strip(user_self, user_other, lewd_item_index) && !(!user_other.vars[lewd_item_index] && !user_self.get_active_held_item()))
-			user_self.visible_message(self_message = "[user_self.name] starts adjusting [user_other.name]'s toys.")
+		var/mob/living/carbon/human/source = locate(params["userref"])
+		var/mob/living/carbon/human/target = locate(params["selfref"])
+		var/obj/item/new_item = source.get_active_held_item()
+		var/obj/item/existing_item = target.vars[lewd_item_index]
+
+		if(!existing_item && !new_item)
+			return
+
+		if(can_lewd_strip(source, target, lewd_item_index) && can_insert(new_item, lewd_item_index))
+			var/internal = (lewd_item_index in list(NAME_VAGINA, NAME_ANUS))
+			var/insert_or_attach = internal ? "insert" : "attach"
+			var/into_or_onto = internal ? "into" : "onto"
+
+			if(existing_item)
+				source.visible_message(span_purple("[source.name] starts trying to remove something from [target.name]'s [lewd_item_index]."), span_purple("You start to remove [existing_item.name] from [target.name]'s [lewd_item_index]."), span_purple("You hear someone trying to remove something from someone nearby."), vision_distance = 1, ignored_mobs = list(target))
+			else if (new_item)
+				source.visible_message(span_purple("[source.name] starts trying to [insert_or_attach] the [new_item.name] [into_or_onto] [target.name]'s [lewd_item_index]."), span_purple("You start to [insert_or_attach] the [new_item.name] [into_or_onto] [target.name]'s [lewd_item_index]."), span_purple("You hear someone trying to [insert_or_attach] something [into_or_onto] someone nearby."), vision_distance = 1, ignored_mobs = list(target))
+			if (source != target)
+				target.show_message(span_warning("[source.name] is trying to [existing_item ? "remove the [existing_item.name] [internal ? "in" : "on"]" : new_item ? "is trying to [insert_or_attach] the [new_item.name] [into_or_onto]" : span_alert("What the fuck, impossible condition? interaction_component.dm!")] your [lewd_item_index]!"))
 			if(do_after(
-				user_self,
+				source,
 				5 SECONDS,
-				user_other,
-				interaction_key = "interation_[lewd_item_index]" // prevent spamming
-				) && can_lewd_strip(user_self, user_other, user_other.vars[lewd_item_index], lewd_item_index))
-				if(user_other.vars[lewd_item_index])
-					var/obj/item/item = user_other.vars[lewd_item_index]
-					user_self.visible_message(self_message = "[user_self.name] removes [user_other.name]'s [item.name].")
-					user_other.dropItemToGround(item, force = TRUE) // Force is true, cause nodrop shouldn't affect lewd items.
-					user_other.vars[lewd_item_index] = null
-				else if (user_self.get_active_held_item())
-					var/obj/item/item = user_self.get_active_held_item()
-					user_other.vars[lewd_item_index] = item
-					item.forceMove(user_other)
-					user_self.visible_message(self_message = "[user_self.name] inserts [item.name] into [user_other.name].")
+				target,
+				interaction_key = "interation_[lewd_item_index]"
+				) && can_lewd_strip(source, target, lewd_item_index))
+				if(existing_item)
+					source.visible_message(span_purple("[source.name] removes [existing_item.name] from [target.name]'s [lewd_item_index]."), span_purple("You remove [existing_item.name] from [target.name]'s [lewd_item_index]."), span_purple("You hear someone remove something from someone nearby."), vision_distance = 1)
+					target.dropItemToGround(existing_item, force = TRUE) // Force is true, cause nodrop shouldn't affect lewd items.
+					target.vars[lewd_item_index] = null
+					target.update_inv_vagina()
+					target.update_inv_penis()
+					target.update_inv_anus()
+					target.update_inv_nipples()
+				else if (new_item)
+					source.visible_message(span_purple("[source.name] [internal ? "inserts" : "attaches"] the [new_item.name] [into_or_onto] [target.name]'s [lewd_item_index]."), span_purple("You [insert_or_attach] the [new_item.name] [into_or_onto] [target.name]'s [lewd_item_index]."), span_purple("You hear someone [insert_or_attach] something [into_or_onto] someone nearby."), vision_distance = 1)
+					target.vars[lewd_item_index] = new_item
+					new_item.forceMove(target)
+					target.update_inv_vagina()
+					target.update_inv_penis()
+					target.update_inv_anus()
+					target.update_inv_nipples()
+
 		else
-			user_self.show_message(span_warning("Failed to adjust [user_other.name]'s toys!"))
+			source.show_message(span_warning("Failed to adjust [target.name]'s toys!"))
 
 		return TRUE
 
 	message_admins("Unhandled interaction '[params["interaction"]]'. Inform coders.")
 
 /datum/component/interactable/proc/can_lewd_strip(mob/living/carbon/human/user, mob/living/carbon/human/other_user, slot_index)
+	if(!other_user.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
+		return FALSE
 	if(!(user.loc == other_user.loc || user.Adjacent(other_user)))
 		return FALSE
 	if(!user.has_arms())
@@ -161,3 +190,19 @@
 	if(slot_index == "slot_nipples" && !other_user.is_topless())
 		return FALSE
 	return other_user.is_bottomless()
+
+// Used to decide if a player should be able to insert or remove an item from a provided slot.
+/datum/component/interactable/proc/can_insert(obj/item/item, slot_index)
+	if(!item)
+		return TRUE
+	switch(slot_index)
+		if(NAME_VAGINA)
+			return item.slot_flags & ITEM_SLOT_VAGINA
+		if(NAME_PEINS)
+			return item.slot_flags & ITEM_SLOT_PENIS
+		if(NAME_ANUS)
+			return item.slot_flags & ITEM_SLOT_ANUS
+		if(NAME_NIPPLES)
+			return item.slot_flags & ITEM_SLOT_NIPPLES
+		else
+			return FALSE // Just in case.

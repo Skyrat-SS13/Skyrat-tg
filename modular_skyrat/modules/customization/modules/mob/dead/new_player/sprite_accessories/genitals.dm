@@ -35,7 +35,7 @@
 	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/genitals/penis_onmob.dmi'
 	organ_type = /obj/item/organ/external/genital/penis
 	associated_organ_slot = ORGAN_SLOT_PENIS
-	key = "penis"
+	key = NAME_PEINS
 	color_src = USE_MATRIXED_COLORS
 	always_color_customizable = TRUE
 	center = TRUE
@@ -168,7 +168,7 @@
 	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/genitals/vagina_onmob.dmi'
 	organ_type = /obj/item/organ/external/genital/vagina
 	associated_organ_slot = ORGAN_SLOT_VAGINA
-	key = "vagina"
+	key = NAME_VAGINA
 	always_color_customizable = TRUE
 	default_color = "#FFCCCC"
 	relevent_layers = list(BODY_FRONT_LAYER)
@@ -241,7 +241,7 @@
 /datum/sprite_accessory/genital/anus
 	organ_type = /obj/item/organ/external/genital/anus
 	associated_organ_slot = ORGAN_SLOT_ANUS
-	key = "anus"
+	key = NAME_ANUS
 	genetic = TRUE
 
 /datum/sprite_accessory/genital/anus/is_hidden(mob/living/carbon/human/owner, obj/item/bodypart/bodypart)
@@ -256,7 +256,7 @@
 	color_src = null
 
 /datum/sprite_accessory/genital/anus/normal
-	icon_state = "anus"
+	icon_state = NAME_ANUS
 	name = "Anus"
 	color_src = null
 

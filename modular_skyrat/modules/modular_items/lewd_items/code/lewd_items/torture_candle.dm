@@ -178,7 +178,7 @@
 			targeted_somewhere = TRUE
 			var/obj/item/organ/external/genital/breasts = attacked.getorganslot(ORGAN_SLOT_BREASTS)
 			if(attacked.is_topless() || breasts.visibility_preference == GENITAL_ALWAYS_SHOW)
-				message = (user == attacked) ? pick("drips some wax on [attacked.p_their()] [breasts ? "breasts" : "nipples"], releasing all [attacked.p_their()] lustness", "drips some wax right on [attacked.p_their()] [breasts ? "tits" : "chest"], making [attacked.p_their()] feel faint.") : pick("pours the wax that is slowly dripping from [src] onto [attacked]'s [breasts ? "breasts" : "nipples"], [attacked.p_they()] shows pure enjoyment.", "tilts the candle. Right in the moment when wax drips on [attacked]'s [breasts ? "breasts" : "nipples"], [attacked.p_they()] shivers", "tilts the candle. Just when hot drops of wax fell on [attacked]'s [breasts ? "breasts" : "nipples"], [attacked.p_they()] quietly moans in pleasure")
+				message = (user == attacked) ? pick("drips some wax on [attacked.p_their()] [breasts ? "breasts" : NAME_NIPPLES], releasing all [attacked.p_their()] lustness", "drips some wax right on [attacked.p_their()] [breasts ? "tits" : "chest"], making [attacked.p_their()] feel faint.") : pick("pours the wax that is slowly dripping from [src] onto [attacked]'s [breasts ? "breasts" : NAME_NIPPLES], [attacked.p_they()] shows pure enjoyment.", "tilts the candle. Right in the moment when wax drips on [attacked]'s [breasts ? "breasts" : NAME_NIPPLES], [attacked.p_they()] shivers", "tilts the candle. Just when hot drops of wax fell on [attacked]'s [breasts ? "breasts" : NAME_NIPPLES], [attacked.p_they()] quietly moans in pleasure")
 				attacked.adjustPain(PAIN_DEFAULT * 0.66)
 
 			else
