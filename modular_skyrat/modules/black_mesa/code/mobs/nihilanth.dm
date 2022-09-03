@@ -88,7 +88,7 @@
 			balloon_alert(user, "link already weak!")
 			return
 		cascade_chance -= 15
-		to_chat(user, span_warning("You can feel how its link between worlds weakens as the crystal disappears."))
+		balloon_alert(user, "world link weakened")
 		playsound(user, 'modular_skyrat/modules/black_mesa/sound/tc_13_teleport.ogg', 100)
 		qdel(W)
 		return
