@@ -85,7 +85,7 @@
 	. = ..()
 	if(istype(W, /obj/item/grenade/xen_crystal))
 		if(cascade_chance == 0)
-			to_chat(user, span_warning("Link between worlds is already at its weakest."))
+			balloon_alert(user, "link already weak!")
 			return
 		cascade_chance -= 15
 		to_chat(user, span_warning("You can feel how its link between worlds weakens as the crystal disappears."))
