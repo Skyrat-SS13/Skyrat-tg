@@ -100,12 +100,12 @@
 	if(ishuman(user) && can_lewd_strip(user, self))
 		if(self.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 			if(self.has_vagina())
-				parts.Add(NAME_VAGINA)
+				parts += list(list("name" = NAME_VAGINA, "img" = self.vagina? icon2base64(icon(self.vagina.icon, self.vagina.icon_state, SOUTH, 1)) : null))
 			if(self.has_penis())
-				parts.Add(NAME_PEINS)
+				parts += list(list("name" = NAME_PENIS, "img" = self.penis? icon2base64(icon(self.penis.icon, self.penis.icon_state, SOUTH, 1)) : null))
 			if(self.has_anus())
-				parts.Add(NAME_ANUS)
-			parts.Add(NAME_NIPPLES)
+				parts += list(list("name" = NAME_ANUS, "img" = self.anus? icon2base64(icon(self.anus.icon, self.anus.icon_state, SOUTH, 1)) : null))
+			parts += list(list("name" = NAME_NIPPLES, "img" = self.nipples? icon2base64(icon(self.nipples.icon, self.nipples.icon_state, SOUTH, 1)) : null))
 
 	data["lewd_slots"] = parts
 
@@ -203,7 +203,7 @@
 	switch(slot_index)
 		if(NAME_VAGINA)
 			return item.lewd_slot_flags & LEWD_SLOT_VAGINA
-		if(NAME_PEINS)
+		if(NAME_PENIS)
 			return item.lewd_slot_flags & LEWD_SLOT_PENIS
 		if(NAME_ANUS)
 			return item.lewd_slot_flags & LEWD_SLOT_ANUS

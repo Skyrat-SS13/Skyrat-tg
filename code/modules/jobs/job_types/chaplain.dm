@@ -71,7 +71,7 @@
 	B.deity_name = new_deity
 
 	switch(lowertext(new_religion))
-		if("homosexuality", "gay", NAME_PEINS, "ass", "cock", "cocks")
+		if("homosexuality", "gay", NAME_PENIS, "ass", "cock", "cocks")
 			new_bible = pick("Guys Gone Wild","Coming Out of The Closet","War of Cocks")
 			switch(new_bible)
 				if("War of Cocks")

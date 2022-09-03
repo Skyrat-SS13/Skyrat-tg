@@ -35,7 +35,7 @@
 	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/genitals/penis_onmob.dmi'
 	organ_type = /obj/item/organ/external/genital/penis
 	associated_organ_slot = ORGAN_SLOT_PENIS
-	key = NAME_PEINS
+	key = NAME_PENIS
 	color_src = USE_MATRIXED_COLORS
 	always_color_customizable = TRUE
 	center = TRUE

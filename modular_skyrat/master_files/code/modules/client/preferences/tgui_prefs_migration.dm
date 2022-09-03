@@ -20,7 +20,7 @@ GLOBAL_LIST_INIT(bodyparts_to_convert, list("body_markings", \
 "taur", \
 "xenodorsal", \
 "xenohead", \
-NAME_PEINS, \
+NAME_PENIS, \
 "testicles", \
 "womb", \
 NAME_VAGINA, \

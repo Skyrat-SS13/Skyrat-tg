@@ -267,7 +267,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 		default_mutant_bodyparts["testicles"] = "None"
 		default_mutant_bodyparts["breasts"] = "None"
 		default_mutant_bodyparts[NAME_ANUS] = "None"
-		default_mutant_bodyparts[NAME_PEINS] = "None"
+		default_mutant_bodyparts[NAME_PENIS] = "None"
 
 /datum/species/dullahan
 	mutant_bodyparts = list()

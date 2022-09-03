@@ -14,4 +14,4 @@
 #define NAME_VAGINA "vagina"
 #define NAME_ANUS "anus"
 #define NAME_NIPPLES "nipples"
-#define NAME_PEINS "penis"
+#define NAME_PENIS "penis"

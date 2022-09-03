@@ -5,7 +5,7 @@
 		switch(href_list["lookup_info"])
 			if("genitals")
 				var/list/line = list()
-				for(var/genital in list(NAME_PEINS, "testicles", NAME_VAGINA, "breasts", NAME_ANUS))
+				for(var/genital in list(NAME_PENIS, "testicles", NAME_VAGINA, "breasts", NAME_ANUS))
 					if(!dna.species.mutant_bodyparts[genital])
 						continue
 					var/datum/sprite_accessory/genital/G = GLOB.sprite_accessories[genital][dna.species.mutant_bodyparts[genital][MUTANT_INDEX_NAME]]

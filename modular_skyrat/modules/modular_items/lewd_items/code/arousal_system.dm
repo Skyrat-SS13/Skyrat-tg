@@ -776,7 +776,7 @@
 	var/mob/living/carbon/human/target = user
 	var/obj/item/held = user.get_active_held_item()
 	var/obj/item/unheld = user.get_inactive_held_item()
-	if(user.put_in_hands(coomer) && target.dna.species.mutant_bodyparts["testicles"] && target.dna.species.mutant_bodyparts[NAME_PEINS])
+	if(user.put_in_hands(coomer) && target.dna.species.mutant_bodyparts["testicles"] && target.dna.species.mutant_bodyparts[NAME_PENIS])
 		if(held || unheld)
 			if(!((held.name == "cum" && held.item_flags == DROPDEL | ABSTRACT | HAND_ITEM) || (unheld.name == "cum" && unheld.item_flags == DROPDEL | ABSTRACT | HAND_ITEM)))
 				to_chat(user, span_notice("You mentally prepare yourself to masturbate."))
@@ -814,7 +814,7 @@
 	var/mob/living/carbon/human/affected_human = user
 	var/obj/item/organ/external/genital/testicles/testicles = affected_human.getorganslot(ORGAN_SLOT_TESTICLES)
 	var/obj/item/organ/external/genital/penis/penis = affected_human.getorganslot(ORGAN_SLOT_PENIS)
-	var/datum/sprite_accessory/genital/penis_accessory = GLOB.sprite_accessories[NAME_PEINS][affected_human.dna.species.mutant_bodyparts[NAME_PEINS][MUTANT_INDEX_NAME]]
+	var/datum/sprite_accessory/genital/penis_accessory = GLOB.sprite_accessories[NAME_PENIS][affected_human.dna.species.mutant_bodyparts[NAME_PENIS][MUTANT_INDEX_NAME]]
 	if(penis_accessory.is_hidden(affected_human))
 		to_chat(user, span_notice("You need to expose yourself in order to masturbate."))
 		return
@@ -853,7 +853,7 @@
 	var/mob/living/carbon/human/affected_human = user
 	var/obj/item/organ/external/genital/testicles/testicles = affected_human.getorganslot(ORGAN_SLOT_TESTICLES)
 	var/obj/item/organ/external/genital/penis/penis = affected_human.getorganslot(ORGAN_SLOT_PENIS)
-	var/datum/sprite_accessory/genital/spriteP = GLOB.sprite_accessories[NAME_PEINS][affected_human.dna.species.mutant_bodyparts[NAME_PEINS][MUTANT_INDEX_NAME]]
+	var/datum/sprite_accessory/genital/spriteP = GLOB.sprite_accessories[NAME_PENIS][affected_human.dna.species.mutant_bodyparts[NAME_PENIS][MUTANT_INDEX_NAME]]
 	if(spriteP.is_hidden(affected_human))
 		to_chat(user, span_notice("You need to expose yourself in order to masturbate."))
 		return

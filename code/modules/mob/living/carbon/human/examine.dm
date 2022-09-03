@@ -473,7 +473,7 @@
 	//SKYRAT EDIT ADDITION END
 
 	//SKYRAT EDIT ADDITION BEGIN - CUSTOMIZATION
-	for(var/genital in list(NAME_PEINS, "testicles", NAME_VAGINA, "breasts", NAME_ANUS))
+	for(var/genital in list(NAME_PENIS, "testicles", NAME_VAGINA, "breasts", NAME_ANUS))
 		if(dna.species.mutant_bodyparts[genital])
 			var/datum/sprite_accessory/genital/G = GLOB.sprite_accessories[genital][dna.species.mutant_bodyparts[genital][MUTANT_INDEX_NAME]]
 			if(G)

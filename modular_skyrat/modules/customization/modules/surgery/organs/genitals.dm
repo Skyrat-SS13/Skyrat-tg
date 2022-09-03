@@ -86,13 +86,13 @@
 
 
 /obj/item/organ/external/genital/penis
-	name = NAME_PEINS
+	name = NAME_PENIS
 	desc = "A male reproductive organ."
-	icon_state = NAME_PEINS
+	icon_state = NAME_PENIS
 	icon = 'modular_skyrat/master_files/icons/obj/genitals/penis.dmi'
 	zone = BODY_ZONE_PRECISE_GROIN
 	slot = ORGAN_SLOT_PENIS
-	mutantpart_key = NAME_PEINS
+	mutantpart_key = NAME_PENIS
 	mutantpart_info = list(MUTANT_INDEX_NAME = "Human", MUTANT_INDEX_COLOR_LIST = list("#FFEEBB"))
 	drop_when_organ_spilling = FALSE
 	var/girth = 9
@@ -181,7 +181,7 @@
 		uses_skintones = accessory.has_skintone_shading
 
 /obj/item/organ/external/genital/penis/get_global_feature_list()
-	return GLOB.sprite_accessories[NAME_PEINS]
+	return GLOB.sprite_accessories[NAME_PENIS]
 
 
 /obj/item/organ/external/genital/testicles

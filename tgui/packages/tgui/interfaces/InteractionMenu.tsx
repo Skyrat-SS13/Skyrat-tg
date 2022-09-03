@@ -7,11 +7,16 @@ class Interaction {
   interactions;
   descriptions;
   colors;
-  lewd_slots;
+  lewd_slots: LewdSlot[];
   self;
   ref_self;
   ref_user;
   block_interact;
+}
+
+class LewdSlot {
+  img;
+  name;
 }
 
 export const InteractionMenu = (props, context) => {
@@ -64,9 +69,9 @@ export const InteractionMenu = (props, context) => {
         {lewd_slots.length > 0 ? (
           <Section key="lewd_slots" title={'Lewd Slots'}>
             <Stack fill>
-              {lewd_slots.map((element: string) => {
+              {lewd_slots.map((element: LewdSlot) => {
                 return (
-                  <Stack.Item key={element} style={{}}>
+                  <Stack.Item key={element.name} style={{}}>
                     <Button
                       onClick={() =>
                         act('remove_lewd_item', {
@@ -77,15 +82,26 @@ export const InteractionMenu = (props, context) => {
                       }
                       tooltip={element}>
                       <Box width="26px" height="34px">
-                        <Icon
-                          name="eye-slash"
-                          size={1.5}
-                          ml={0}
-                          mt={1.3}
-                          style={{
-                            'text-align': 'center',
-                          }}
-                        />
+                        {element.img ? (
+                          <img
+                            src={'data:image/png;base64,' + element.img}
+                            style={{
+                              '-ms-interpolation-mode': 'nearest-neighbor',
+                              'width': '100%',
+                              'height': '100%',
+                            }}
+                          />
+                        ) : (
+                          <Icon
+                            name="eye-slash"
+                            size={1.5}
+                            ml={0}
+                            mt={1.3}
+                            style={{
+                              'text-align': 'center',
+                            }}
+                          />
+                        )}
                       </Box>
                     </Button>
                   </Stack.Item>
