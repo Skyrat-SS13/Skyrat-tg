@@ -131,11 +131,12 @@
 			interaction_component.interact_next = interact_next
 			return TRUE
 	if(params["slot"])
-		var/lewd_item_index = params["slot"]
+		// This code should be easy enough to follow... I hope.
+		var/item_index = params["slot"]
 		var/mob/living/carbon/human/source = locate(params["userref"])
 		var/mob/living/carbon/human/target = locate(params["selfref"])
 		var/obj/item/new_item = source.get_active_held_item()
-		var/obj/item/existing_item = target.vars[lewd_item_index]
+		var/obj/item/existing_item = target.vars[item_index]
 
 		if(!existing_item && !new_item)
 			source.show_message(span_warning("No item to insert or remove!"))
@@ -145,34 +146,34 @@
 			source.show_message(span_warning("The item you're holding is not a toy!"))
 			return
 
-		if(can_lewd_strip(source, target, lewd_item_index) && can_insert(new_item, lewd_item_index))
-			var/internal = (lewd_item_index in list(NAME_VAGINA, NAME_ANUS))
+		if(can_lewd_strip(source, target, item_index) && is_toy_compatible(new_item, item_index))
+			var/internal = (item_index in list(NAME_VAGINA, NAME_ANUS))
 			var/insert_or_attach = internal ? "insert" : "attach"
 			var/into_or_onto = internal ? "into" : "onto"
 
 			if(existing_item)
-				source.visible_message(span_purple("[source.name] starts trying to remove something from [target.name]'s [lewd_item_index]."), span_purple("You start to remove [existing_item.name] from [target.name]'s [lewd_item_index]."), span_purple("You hear someone trying to remove something from someone nearby."), vision_distance = 1, ignored_mobs = list(target))
+				source.visible_message(span_purple("[source.name] starts trying to remove something from [target.name]'s [item_index]."), span_purple("You start to remove [existing_item.name] from [target.name]'s [item_index]."), span_purple("You hear someone trying to remove something from someone nearby."), vision_distance = 1, ignored_mobs = list(target))
 			else if (new_item)
-				source.visible_message(span_purple("[source.name] starts trying to [insert_or_attach] the [new_item.name] [into_or_onto] [target.name]'s [lewd_item_index]."), span_purple("You start to [insert_or_attach] the [new_item.name] [into_or_onto] [target.name]'s [lewd_item_index]."), span_purple("You hear someone trying to [insert_or_attach] something [into_or_onto] someone nearby."), vision_distance = 1, ignored_mobs = list(target))
+				source.visible_message(span_purple("[source.name] starts trying to [insert_or_attach] the [new_item.name] [into_or_onto] [target.name]'s [item_index]."), span_purple("You start to [insert_or_attach] the [new_item.name] [into_or_onto] [target.name]'s [item_index]."), span_purple("You hear someone trying to [insert_or_attach] something [into_or_onto] someone nearby."), vision_distance = 1, ignored_mobs = list(target))
 			if (source != target)
-				target.show_message(span_warning("[source.name] is trying to [existing_item ? "remove the [existing_item.name] [internal ? "in" : "on"]" : new_item ? "is trying to [insert_or_attach] the [new_item.name] [into_or_onto]" : span_alert("What the fuck, impossible condition? interaction_component.dm!")] your [lewd_item_index]!"))
+				target.show_message(span_warning("[source.name] is trying to [existing_item ? "remove the [existing_item.name] [internal ? "in" : "on"]" : new_item ? "is trying to [insert_or_attach] the [new_item.name] [into_or_onto]" : span_alert("What the fuck, impossible condition? interaction_component.dm!")] your [item_index]!"))
 			if(do_after(
 				source,
 				5 SECONDS,
 				target,
-				interaction_key = "interation_[lewd_item_index]"
-				) && can_lewd_strip(source, target, lewd_item_index))
+				interaction_key = "interation_[item_index]"
+				) && can_lewd_strip(source, target, item_index))
 				if(existing_item)
-					source.visible_message(span_purple("[source.name] removes [existing_item.name] from [target.name]'s [lewd_item_index]."), span_purple("You remove [existing_item.name] from [target.name]'s [lewd_item_index]."), span_purple("You hear someone remove something from someone nearby."), vision_distance = 1)
+					source.visible_message(span_purple("[source.name] removes [existing_item.name] from [target.name]'s [item_index]."), span_purple("You remove [existing_item.name] from [target.name]'s [item_index]."), span_purple("You hear someone remove something from someone nearby."), vision_distance = 1)
 					target.dropItemToGround(existing_item, force = TRUE) // Force is true, cause nodrop shouldn't affect lewd items.
-					target.vars[lewd_item_index] = null
+					target.vars[item_index] = null
 					target.update_inv_vagina()
 					target.update_inv_penis()
 					target.update_inv_anus()
 					target.update_inv_nipples()
 				else if (new_item)
-					source.visible_message(span_purple("[source.name] [internal ? "inserts" : "attaches"] the [new_item.name] [into_or_onto] [target.name]'s [lewd_item_index]."), span_purple("You [insert_or_attach] the [new_item.name] [into_or_onto] [target.name]'s [lewd_item_index]."), span_purple("You hear someone [insert_or_attach] something [into_or_onto] someone nearby."), vision_distance = 1)
-					target.vars[lewd_item_index] = new_item
+					source.visible_message(span_purple("[source.name] [internal ? "inserts" : "attaches"] the [new_item.name] [into_or_onto] [target.name]'s [item_index]."), span_purple("You [insert_or_attach] the [new_item.name] [into_or_onto] [target.name]'s [item_index]."), span_purple("You hear someone [insert_or_attach] something [into_or_onto] someone nearby."), vision_distance = 1)
+					target.vars[item_index] = new_item
 					new_item.forceMove(target)
 					target.update_inv_vagina()
 					target.update_inv_penis()
@@ -186,6 +187,7 @@
 
 	message_admins("Unhandled interaction '[params["interaction"]]'. Inform coders.")
 
+/// Checks if the target has ERP toys enabled, and can be logially reached by the user.
 /datum/component/interactable/proc/can_lewd_strip(mob/living/carbon/human/user, mob/living/carbon/human/other_user, slot_index)
 	if(!other_user.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 		return FALSE
@@ -193,15 +195,15 @@
 		return FALSE
 	if(!user.has_arms())
 		return FALSE
-	if(!slot_index) // Logic for displaying the icons in the first place.
+	if(!slot_index) // This condition is for the UI to decide if the button is shown at all. Slot index should never be null otherwise.
 		return TRUE
 	if(slot_index == "slot_nipples" && !other_user.is_topless())
 		return FALSE
 	return other_user.is_bottomless()
 
-// Used to decide if a player should be able to insert or remove an item from a provided slot.
-/datum/component/interactable/proc/can_insert(obj/item/clothing/sextoy/item, slot_index)
-	if(!item)
+/// Decides if a player should be able to insert or remove an item from a provided lewd slot.
+/datum/component/interactable/proc/is_toy_compatible(obj/item/clothing/sextoy/item, slot_index)
+	if(!item) // Used for UI code, should never be actually null during actual logic code.
 		return TRUE
 	switch(slot_index)
 		if(NAME_VAGINA)
@@ -213,4 +215,4 @@
 		if(NAME_NIPPLES)
 			return item.lewd_slot_flags & LEWD_SLOT_NIPPLES
 		else
-			return FALSE // Just in case.
+			return FALSE
