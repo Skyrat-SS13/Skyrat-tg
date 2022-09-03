@@ -9,7 +9,7 @@
 /datum/species/teshari
 	name = "Teshari"
 	id = SPECIES_TESHARI
-	eyes_icon = 'modular_skyrat/master_files/icons/mob/species/teshari_eyes.dmi'
+	eyes_icon = 'modular_skyrat/modules/organs/icons/teshari_eyes.dmi'
 	species_traits = list(MUTCOLORS,
 		EYECOLOR,
 		NO_UNDERWEAR,
