@@ -6,7 +6,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/costume.dmi'
 	can_adjust = FALSE
 
-//My least favorite file. Just... try to keep it sorted. And nothing over the top (The victorian dresses are already way too much)
+//My least favorite file. Just... try to keep it sorted. And nothing over the top (The victorian dresses were way too much)
 
 /*
 *	UNSORTED
