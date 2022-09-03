@@ -92,10 +92,3 @@
 	var/hal_screwydoll
 	/// When an braindead player has their equipment fiddled with, we log that info here for when they come back so they know who took their ID while they were DC'd for 30 seconds
 	var/list/afk_thefts
-
-	///SKYRAT EDIT BEGIN. Oversized variables
-	/// Chance for oversized to wound someone smaller, if they try to piggyback ride them. 
-	var/oversized_piggywound_chance = 50
-	/// Base damage for oversized piggyback riding.
-	var/oversized_piggydam = 25
-	///SKYRAT EDIT END
