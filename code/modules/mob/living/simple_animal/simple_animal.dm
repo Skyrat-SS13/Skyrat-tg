@@ -1,7 +1,7 @@
 /// Simple, mostly AI-controlled critters, such as pets, bots, and drones.
 /mob/living/simple_animal
 	name = "animal"
-	icon = 'icons/mob/animal.dmi'
+	icon = 'icons/mob/simple/animal.dmi'
 	health = 20
 	maxHealth = 20
 	gender = PLURAL //placeholder
@@ -487,7 +487,28 @@
 	return TRUE
 
 /mob/living/simple_animal/ignite_mob()
+<<<<<<< HEAD
 	return FALSE
+=======
+	if(!flammable)
+		return FALSE
+	return ..()
+
+/mob/living/simple_animal/on_fire_stack(delta_time, times_fired, datum/status_effect/fire_handler/fire_stacks/fire_handler)
+	adjust_bodytemperature((maxbodytemp + (fire_handler.stacks * 12)) * 0.5 * delta_time)
+
+/mob/living/simple_animal/update_fire_overlay(stacks, on_fire, last_icon_state, suffix = "")
+	var/mutable_appearance/fire_overlay = mutable_appearance('icons/mob/effects/onfire.dmi', "generic_fire")
+	if(on_fire && isnull(last_icon_state))
+		add_overlay(fire_overlay)
+		return fire_overlay
+	else if(!on_fire && !isnull(last_icon_state))
+		cut_overlay(fire_overlay)
+		return null
+	else if(on_fire && !isnull(last_icon_state))
+		return last_icon_state
+	return null
+>>>>>>> be0e6efdf6b ([IDB IGNORE] [MDB IGNORE] Makes the icons/mob folder sane (#69302))
 
 /mob/living/simple_animal/extinguish_mob()
 	return

@@ -113,10 +113,16 @@
 	if(!istype(parent) || parent.getorgan(/obj/item/organ/internal/eyes) != src)
 		CRASH("Generating a body overlay for [src] targeting an invalid parent '[parent]'.")
 
+<<<<<<< HEAD
 	var/eye_icon = parent.dna?.species.eyes_icon || 'icons/mob/human_face.dmi' // SKYRAT EDIT ADDITION
 
 	var/mutable_appearance/eye_left = mutable_appearance(eye_icon, "[eye_icon_state]_l", -eyes_layer) // SKYRAT EDIT CHANGE - Customization - ORIGINAL: var/mutable_appearance/eye_left = mutable_appearance('icons/mob/human_face.dmi', "[eye_icon_state]_l", -BODY_LAYER)
 	var/mutable_appearance/eye_right = mutable_appearance(eye_icon, "[eye_icon_state]_r", -eyes_layer) // SKYRAT EDIT CHANGE - Customization - ORIGINAL: var/mutable_appearance/eye_right = mutable_appearance('icons/mob/human_face.dmi', "[eye_icon_state]_r", -BODY_LAYER)
+=======
+	var/mutable_appearance/eye_left = mutable_appearance('icons/mob/species/human/human_face.dmi', "[eye_icon_state]_l", -BODY_LAYER)
+	var/mutable_appearance/eye_right = mutable_appearance('icons/mob/species/human/human_face.dmi', "[eye_icon_state]_r", -BODY_LAYER)
+	var/list/overlays = list(eye_left, eye_right)
+>>>>>>> be0e6efdf6b ([IDB IGNORE] [MDB IGNORE] Makes the icons/mob folder sane (#69302))
 
 	if(EYECOLOR in parent.dna?.species.species_traits)
 		eye_right.color = eye_color_right
@@ -134,7 +140,23 @@
 		eye_left.overlays += emissive_appearance(eye_left.icon, eye_left.icon_state, alpha = eye_left.alpha)
 		eye_right.overlays += emissive_appearance(eye_right.icon, eye_right.icon_state, alpha = eye_right.alpha)
 
+<<<<<<< HEAD
 	return list(eye_left, eye_right)
+=======
+	// Cry emote overlay
+	if (HAS_TRAIT(parent, TRAIT_CRYING)) // Caused by the *cry emote
+		var/mutable_appearance/tears_overlay = mutable_appearance('icons/mob/species/human/human_face.dmi', "tears", -BODY_ADJ_LAYER)
+		tears_overlay.color = COLOR_DARK_CYAN
+		overlays += tears_overlay
+
+	if(OFFSET_FACE in parent.dna?.species.offset_features)
+		var/offset = parent.dna.species.offset_features[OFFSET_FACE]
+		for(var/mutable_appearance/overlay in overlays)
+			overlay.pixel_x += offset[OFFSET_X]
+			overlay.pixel_y += offset[OFFSET_Y]
+
+	return overlays
+>>>>>>> be0e6efdf6b ([IDB IGNORE] [MDB IGNORE] Makes the icons/mob folder sane (#69302))
 
 #undef OFFSET_X
 #undef OFFSET_Y
@@ -333,7 +355,11 @@
 
 /obj/item/organ/internal/eyes/robotic/glow/Initialize(mapload)
 	. = ..()
+<<<<<<< HEAD
 	mob_overlay = image('modular_skyrat/master_files/icons/mob/human_face.dmi', "eyes_glow_gs") //SKURAT EDIT CHANGE
+=======
+	mob_overlay = image('icons/mob/species/human/human_face.dmi', "eyes_glow_gs")
+>>>>>>> be0e6efdf6b ([IDB IGNORE] [MDB IGNORE] Makes the icons/mob folder sane (#69302))
 
 /obj/item/organ/internal/eyes/robotic/glow/Destroy()
 	terminate_effects()
