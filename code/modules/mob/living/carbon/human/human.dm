@@ -1023,7 +1023,7 @@
 		else
 			to_chat(src, span_danger("You hurt your [affecting.name] while trying to endure the weight of [target]!"))
 		apply_damage(oversized_piggydam, BRUTE, affecting, wound_bonus=wound_bon) //Try to lift a 2 centner creature. 
-		Knockdown(30)
+		Knockdown(oversized_piggyknock)
 		return //SKYRAT EDIT END
 
 	return buckle_mob(target, TRUE, TRUE, RIDER_NEEDS_ARMS)
