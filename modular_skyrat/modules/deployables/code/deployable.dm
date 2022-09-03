@@ -77,6 +77,13 @@
 	if(buckled_cyborg)
 		unlock()
 
+/obj/structure/bed/borg_action_pacifier/update_overlays()
+	. = ..()
+	if(deployed)
+		. += emissive_appearance(icon, "up-em", alpha = alpha)
+	else
+		. += emissive_appearance(icon, "down-em", alpha = alpha)
+
 /obj/structure/bed/borg_action_pacifier/atom_destruction(damage_flag)
 	var/turf/debris = get_turf(src)
 	if(power_storage && power_storage >= 5000)
@@ -492,7 +499,7 @@
 	icon = 'modular_skyrat/modules/deployables/icons/deployable.dmi'
 	icon_state = "emagged"
 	faction = list("silicon")
-	friends = list(/mob/living/silicon, /mob/living/simple_animal/pet/dog/corgi/borgi)
+	friends = list(/mob/living/silicon)
 	layer = LOW_MOB_LAYER
 	stat_attack = HARD_CRIT
 	gender = NEUTER
@@ -526,10 +533,16 @@
 /mob/living/simple_animal/hostile/borg_action_pacifier/Initialize(mapload)
 	. = ..()
 	RegisterSignal(src, COMSIG_ATOM_DIR_CHANGE, .proc/dir_change)
+//	update_overlays()
 
 /mob/living/simple_animal/hostile/borg_action_pacifier/Destroy()
 	. = ..()
 	UnregisterSignal(src, COMSIG_ATOM_DIR_CHANGE)
+
+/mob/living/simple_animal/hostile/borg_action_pacifier/update_overlays()
+	. = ..()
+	. += mutable_appearance(icon, "up-em", alpha = src.alpha)
+	. += emissive_appearance(icon, "up-em", alpha = src.alpha)
 
 /obj/structure/bed/borg_action_pacifier/emag_act(mob/clicker)
 	if(obj_flags & EMAGGED)
