@@ -470,8 +470,8 @@
 */
 
 // SLOT GROUP HELPERS
-#define ITEM_SLOT_ERP_INSERTABLE (ITEM_SLOT_VAGINA|ITEM_SLOT_ANUS)
-#define ITEM_SLOT_ERP_ATTACHABLE (ITEM_SLOT_NIPPLES|ITEM_SLOT_PENIS)
+#define ITEM_SLOT_ERP_INSERTABLE (LEWD_SLOT_VAGINA|LEWD_SLOT_ANUS)
+#define ITEM_SLOT_ERP_ATTACHABLE (LEWD_SLOT_NIPPLES|LEWD_SLOT_PENIS)
 
 // Just by analogy with the TG code. No ideas for what this is.
 /mob/proc/update_inv_vagina()
@@ -501,7 +501,7 @@
 	equip_sound = 'modular_skyrat/modules/modular_items/lewd_items/sounds/bang1.ogg'
 	drop_sound = 'modular_skyrat/modules/modular_items/lewd_items/sounds/bang2.ogg'
 	pickup_sound =  'sound/items/handling/cloth_pickup.ogg'
-	slot_flags = ITEM_SLOT_VAGINA | ITEM_SLOT_ANUS | ITEM_SLOT_PENIS | ITEM_SLOT_NIPPLES
+	var/lewd_slot_flags = NONE
 
 /obj/item/clothing/sextoy/dropped(mob/user)
 	..()

@@ -6,7 +6,7 @@
 
 #define CUM_MALE 1
 #define CUM_FEMALE 2
-// #define ITEM_SLOT_PENIS (1<<20)
+// #define LEWD_SLOT_PENIS (1<<20)
 
 #define TRAIT_MASOCHISM		"masochism"
 #define TRAIT_SADISM		"sadism"
@@ -434,7 +434,7 @@
 
 				if(!climax_choice || climax_choice == "On the floor")
 					if(wear_condom())
-						var/obj/item/clothing/sextoy/condom/condom = get_item_by_slot(ITEM_SLOT_PENIS)
+						var/obj/item/clothing/sextoy/condom/condom = get_item_by_slot(LEWD_SLOT_PENIS)
 						if(condom.condom_state == "broken")
 							create_cum_decal = TRUE
 							visible_message(span_userlove("[src] shoots [p_their()] load into [condom], sending cum onto the floor!"), \

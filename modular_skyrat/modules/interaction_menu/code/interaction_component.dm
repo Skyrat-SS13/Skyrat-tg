@@ -135,6 +135,11 @@
 		var/obj/item/existing_item = target.vars[lewd_item_index]
 
 		if(!existing_item && !new_item)
+			source.show_message(span_warning("No item to insert or remove!"))
+			return
+
+		if(!existing_item && !istype(new_item, /obj/item/clothing/sextoy))
+			source.show_message(span_warning("The item you're holding is not a toy!"))
 			return
 
 		if(can_lewd_strip(source, target, lewd_item_index) && can_insert(new_item, lewd_item_index))
@@ -192,17 +197,17 @@
 	return other_user.is_bottomless()
 
 // Used to decide if a player should be able to insert or remove an item from a provided slot.
-/datum/component/interactable/proc/can_insert(obj/item/item, slot_index)
+/datum/component/interactable/proc/can_insert(obj/item/clothing/sextoy/item, slot_index)
 	if(!item)
 		return TRUE
 	switch(slot_index)
 		if(NAME_VAGINA)
-			return item.slot_flags & ITEM_SLOT_VAGINA
+			return item.lewd_slot_flags & LEWD_SLOT_VAGINA
 		if(NAME_PEINS)
-			return item.slot_flags & ITEM_SLOT_PENIS
+			return item.lewd_slot_flags & LEWD_SLOT_PENIS
 		if(NAME_ANUS)
-			return item.slot_flags & ITEM_SLOT_ANUS
+			return item.lewd_slot_flags & LEWD_SLOT_ANUS
 		if(NAME_NIPPLES)
-			return item.slot_flags & ITEM_SLOT_NIPPLES
+			return item.lewd_slot_flags & LEWD_SLOT_NIPPLES
 		else
 			return FALSE // Just in case.

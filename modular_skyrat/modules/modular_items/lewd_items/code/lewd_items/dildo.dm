@@ -27,7 +27,7 @@
 	/// If the toy can have its sprite changed
 	var/change_sprite = TRUE
 	w_class = WEIGHT_CLASS_TINY
-	slot_flags = ITEM_SLOT_ANUS|ITEM_SLOT_VAGINA
+	lewd_slot_flags = LEWD_SLOT_ANUS | LEWD_SLOT_VAGINA
 	clothing_flags = INEDIBLE_CLOTHING
 
 /// Create an assoc list of designs for the radial color/design menu
@@ -190,7 +190,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 
 	var/static/list/dildo_sizes = list()
 	w_class = WEIGHT_CLASS_TINY
-	slot_flags = ITEM_SLOT_ANUS|ITEM_SLOT_VAGINA
+	lewd_slot_flags = LEWD_SLOT_ANUS | LEWD_SLOT_VAGINA
 
 /obj/item/clothing/sextoy/dildo/custom_dildo/populate_dildo_designs()
 	dildo_sizes = list(
@@ -256,7 +256,7 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 	lefthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_left.dmi'
 	righthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_right.dmi'
 	w_class = WEIGHT_CLASS_TINY
-	slot_flags = ITEM_SLOT_ANUS|ITEM_SLOT_VAGINA
+	lewd_slot_flags = LEWD_SLOT_ANUS | LEWD_SLOT_VAGINA
 	actions_types = list(/datum/action/item_action/take_dildo)
 	/// If one end of the toy is in your hand
 	var/in_hands = FALSE

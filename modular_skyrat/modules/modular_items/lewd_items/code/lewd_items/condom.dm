@@ -53,7 +53,7 @@
 	w_class = WEIGHT_CLASS_TINY
 	var/current_color = "pink"
 	var/condom_state = "unused"
-	slot_flags = ITEM_SLOT_PENIS
+	lewd_slot_flags = LEWD_SLOT_PENIS
 
 /obj/item/clothing/sextoy/condom/Initialize(mapload)
 	. = ..()
@@ -85,7 +85,7 @@
 //When condom equipped we doing stuff
 /obj/item/clothing/sextoy/condom/equipped(mob/user, slot, initial)
 	. = ..()
-	if(slot == ITEM_SLOT_PENIS && condom_state == "unused")
+	if(slot == LEWD_SLOT_PENIS && condom_state == "unused")
 		condom_state = "used"
 		update_icon_state()
 		update_icon()
