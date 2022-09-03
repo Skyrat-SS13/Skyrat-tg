@@ -35,9 +35,3 @@
 	name = "Mushpunch Mushroom"
 	item_type = /obj/item/mushpunch
 	description = "Consume this mushroom to learn the Mushroom Punch! A powerful attack that allows you to send people flying."
-
-/datum/opposing_force_equipment/martial_art/cqcplus //Is this too much? Maybe, but it's up to the admins to approve it
-	name = "CQC+ Manual"
-	item_type = /obj/item/book/granter/martial/cqc/plus
-	description = "A manual that teaches a single user tactical Close-Quarters Combat and how to deflect projectiles before self-destructing."
-	admin_note = "BIG WARNING: This is CQC with Sleeping Carp's bullet reflection."
