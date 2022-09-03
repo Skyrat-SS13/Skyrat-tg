@@ -4,13 +4,13 @@
 	var/target = null
 
 /obj/effect/portal/cryo/Initialize(mapload)
-	SHOULD_CALL_PARENT(FALSE)
 	playsound(src.loc, 'sound/magic/Repulse.ogg', 100, 1)
 	var/datum/effect_system/spark_spread/quantum/sparks = new
 	sparks.set_up(10, 1, src.loc)
 	sparks.attach(src.loc)
 	sparks.start()
 	QDEL_IN(src, 5 SECONDS)
+	. = ..()
 
 /obj/effect/portal/cryo/Destroy() // get info from proc, and try to put player in cryo. if player destroyed, just delete portal
 	if(target)
