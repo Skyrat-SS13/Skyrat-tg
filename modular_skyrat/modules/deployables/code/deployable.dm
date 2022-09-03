@@ -70,6 +70,7 @@
 /obj/structure/bed/borg_action_pacifier/Initialize(mapload)
 	. = ..()
 	RegisterSignal(src, COMSIG_CLICK_ALT, .proc/check_alt_clicked_radial)
+	update_appearance(UPDATE_ICON)
 
 /obj/structure/bed/borg_action_pacifier/Destroy()
 	. = ..()
@@ -79,10 +80,7 @@
 
 /obj/structure/bed/borg_action_pacifier/update_overlays()
 	. = ..()
-	if(deployed)
-		. += emissive_appearance(icon, "up-em", alpha = alpha)
-	else
-		. += emissive_appearance(icon, "down-em", alpha = alpha)
+	. += emissive_appearance(icon, "[icon_state]-em", alpha = src.alpha)
 
 /obj/structure/bed/borg_action_pacifier/atom_destruction(damage_flag)
 	var/turf/debris = get_turf(src)
@@ -189,7 +187,7 @@
 	deployed = TRUE
 
 	if(obj_flags & EMAGGED)
-		// MEATBAG TERMINATION MODE ONLINE - line 478
+		// MEATBAG TERMINATION MODE ONLINE - line 478~
 		var/mob/living/simple_animal/hostile/borg_action_pacifier/BAPer = new (get_turf(src))
 		BAPer.power_storage = power_storage // Gotta keep that boom
 		BAPer.check_smoke() // Telegraph how bigly we explode on death
@@ -379,11 +377,14 @@
 /obj/structure/bed/borg_action_pacifier/proc/undeploy(mob/living/clicker)
 	if(!deployed)
 		return
+	if(locked)
+		unlock()
+	if(buckled_cyborg)
+		unbuckle_mob(buckled_cyborg, TRUE)
 
 	addtimer(CALLBACK(src, .proc/finish_undeploy), SETUP_TIME)
 	playsound(src, 'modular_skyrat/master_files/sound/effects/robot_trap.ogg', 25, TRUE, falloff_exponent = 10)
 	flick("undeploying", src)
-
 
 /obj/structure/bed/borg_action_pacifier/proc/finish_undeploy()
 	var/obj/item/grenade/borg_action_pacifier_grenade/BAPer = new (get_turf(src))
@@ -533,7 +534,7 @@
 /mob/living/simple_animal/hostile/borg_action_pacifier/Initialize(mapload)
 	. = ..()
 	RegisterSignal(src, COMSIG_ATOM_DIR_CHANGE, .proc/dir_change)
-//	update_overlays()
+	update_appearance(UPDATE_ICON)
 
 /mob/living/simple_animal/hostile/borg_action_pacifier/Destroy()
 	. = ..()
@@ -541,7 +542,6 @@
 
 /mob/living/simple_animal/hostile/borg_action_pacifier/update_overlays()
 	. = ..()
-	. += mutable_appearance(icon, "up-em", alpha = src.alpha)
 	. += emissive_appearance(icon, "up-em", alpha = src.alpha)
 
 /obj/structure/bed/borg_action_pacifier/emag_act(mob/clicker)
