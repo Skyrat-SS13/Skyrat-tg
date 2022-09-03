@@ -67,14 +67,6 @@
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 	body_parts_covered = CHEST|GROIN|ARMS|LEGS
 
-/obj/item/clothing/under/misc/tactical1
-	name = "irish tactical uniform"
-	desc = "The SAM missiles are in the sky! Faint whiffs of cheap booze and Libyan semtex come off this getup, someone was so kind as to leave a book in one of the pockets, too bad it's all in Gaelic!"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "tactical1"
-	body_parts_covered = CHEST|GROIN|ARMS|LEGS
-
 /obj/item/clothing/under/rank/security/blackwatch
 	name = "security kilt"
 	desc = "Youve heard about the B-men, the cruel RUC. Well theres another regiment the devil calls his own. Theyre known as the Black Watch commissioned by the Crown"
@@ -179,16 +171,6 @@
 	icon_state = "westender"
 	supports_variations_flags = NONE
 
-/obj/item/clothing/under/rank/pmarsrobe
-	name = "priestess robe"
-	desc = "A thick woolly robe adorned with black furs of a wolf. Keepers of the Flame of utter boredom. Sadly not flameproof"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "pmars_robe"
-	body_parts_covered = CHEST|GROIN|ARMS|LEGS
-	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
-	flags_inv = HIDESHOES
-
 ///COWBOY
 /obj/item/clothing/under/rancher
 	name = "rancher outfit"
@@ -225,27 +207,6 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "checkered"
 
-/obj/item/clothing/under/uvf
-	name = "british combat sweater"
-	desc = "Thankfully doesn't include the sash your father wore."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "uvf"
-
-/obj/item/clothing/under/whiterussian
-	name = "army baron uniform"
-	desc = "Space Communism? That's just like...your opinion man."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "rusuni"
-
-/obj/item/clothing/under/nostalgiacritic
-	name = "nostalgic outfit"
-	desc = "He remembers it so you don't have to."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "cia"
-
 /obj/item/clothing/under/misc/gear_harness/eve
 	name = "collection of leaves"
 	desc = "Three leaves, designed to cover the nipples and genetalia of the wearer. A foe so proud will first the weaker seek."
@@ -257,13 +218,6 @@
 	icon_state = "adam"
 	body_parts_covered = GROIN
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
-
-/obj/item/clothing/under/rank/medical/doctor/white
-	name = "white scrubs"
-	desc = "It's made of a special fiber that provides minor protection against biohazards. This one is in a cream white colour."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "scrubswhite"
 
 /obj/item/clothing/under/rank/security/peacekeeper/trousers
 	name = "peacekeeper's trousers"
@@ -282,29 +236,3 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "workpants_red"
-
-/obj/item/clothing/under/costume/christmas
-	name = "christmas costume"
-	desc = "Can you believe it guys? Christmas. Just a lightyear away!"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "christmasmaler"
-
-/obj/item/clothing/under/costume/christmas/green
-	name = "green christmas costume"
-	desc = "Alright buddy, you have two options here. You can be a saint, or you can be a Grinch. Those are your two choices. Choose wisely."
-	icon_state = "christmasmaleg"
-
-/obj/item/clothing/under/croptop/christmas
-	name = "sexy christmas costume"
-	desc = "Can you believe it guys? Christmas. Just a lightyear away!"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "christmasfemaler"
-
-/obj/item/clothing/under/croptop/christmas/green
-	name = "sexy green christmas costume"
-	desc = "Alright buddy, you have two options here. You can be a saint, or you can be a Grinch. Those are your two choices. Choose wisely."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "christmasfemaleg"

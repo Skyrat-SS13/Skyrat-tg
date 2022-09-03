@@ -483,14 +483,6 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /datum/loadout_item/under/miscellaneous/villain
 	name = "Villain Suit"
 	item_path = /obj/item/clothing/under/costume/villain
-//November 1st
-/datum/loadout_item/under/miscellaneous/tactical_irish
-	name = "Irish Tactical Sweater"
-	item_path = /obj/item/clothing/under/misc/tactical1
-
-/datum/loadout_item/under/miscellaneous/tactical_british
-	name = "British Tactical Sweater"
-	item_path = /obj/item/clothing/under/uvf
 
 /datum/loadout_item/under/miscellaneous/sweater
 	name = "Sweater"
@@ -619,14 +611,6 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 */
 
 /datum/loadout_item/under/formal
-
-/datum/loadout_item/under/formal/vic_dress
-	name = "Black victorian dress"
-	item_path = /obj/item/clothing/under/costume/vic_dress
-
-/datum/loadout_item/under/formal/vic_dress_red
-	name = "Red victorian dress"
-	item_path = /obj/item/clothing/under/costume/vic_dress/red
 
 /datum/loadout_item/under/formal/amish_suit
 	name = "Amish Suit"

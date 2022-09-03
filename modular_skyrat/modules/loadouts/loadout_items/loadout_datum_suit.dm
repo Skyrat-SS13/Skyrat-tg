@@ -275,14 +275,6 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	name = "Colorable Peacoat"
 	item_path = /obj/item/clothing/suit/toggle/peacoat
 
-/datum/loadout_item/suit/dresscoat
-	name = "Black Dresscoat"
-	item_path = /obj/item/clothing/suit/costume/vic_dresscoat
-
-/datum/loadout_item/suit/dresscoat_red
-	name = "Red Dresscoat"
-	item_path = /obj/item/clothing/suit/costume/vic_dresscoat/red
-
 /datum/loadout_item/suit/trackjacket
 	name = "Track Jacket"
 	item_path = /obj/item/clothing/suit/toggle/trackjacket
