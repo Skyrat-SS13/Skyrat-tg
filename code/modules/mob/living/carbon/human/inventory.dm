@@ -226,7 +226,7 @@
 			if(I.flags_inv & HIDEJUMPSUIT)
 				update_worn_undersuit()
 
-			// SKYRAT EDIT ADDITION START
+			// SKYRAT EDIT ADDITION START - ERP Overlays
 			if(I.flags_inv & HIDESEXTOY)
 				update_inv_anus()
 				update_inv_vagina()

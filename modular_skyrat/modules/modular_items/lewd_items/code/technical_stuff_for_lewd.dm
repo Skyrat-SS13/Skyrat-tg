@@ -639,13 +639,6 @@
 
 // Extends default proc check for hidden ears for supporting our sleepbag and catsuit to
 /datum/sprite_accessory/ears/is_hidden(mob/living/carbon/human/target_human, obj/item/bodypart/HD)
-	/*
-	// Default proc code
-	if(target_human.head && (target_human.head.flags_inv & HIDEHAIR) || (target_human.wear_mask && (target_human.wear_mask.flags_inv & HIDEHAIR)) || !HD)
-		//return TRUE
-	return FALSE
-	*/
-
 	// First lets proc default code
 	. = ..()
 	if(!.) // If true, ears already hidden
@@ -661,13 +654,6 @@
 
 // Extends default proc check for hidden frills for supporting our sleepbag and catsuit to
 /datum/sprite_accessory/frills/is_hidden(mob/living/carbon/human/target_human, obj/item/bodypart/HD)
-	/*
-	// Default proc code
-	if(target_human.head && (target_human.try_hide_mutant_parts || (target_human.head.flags_inv & HIDEEARS) || !HD || HD.status == BODYPART_ROBOTIC))
-		//return TRUE
-	return FALSE
-	*/
-
 	. = ..()
 	if(!.) // If true, frills already hidden
 		if(target_human.wear_suit && istype(target_human.wear_suit, /obj/item/clothing/suit/straight_jacket/kinky_sleepbag))
@@ -682,13 +668,6 @@
 
 // Extends default proc check for hidden head accessory for supporting our sleepbag and catsuit to
 /datum/sprite_accessory/head_accessory/is_hidden(mob/living/carbon/human/target_human, obj/item/bodypart/HD)
-	/*
-	// Default proc code
-	if(target_human.head && (target_human.head.flags_inv & HIDEHAIR) || (target_human.wear_mask && (target_human.wear_mask.flags_inv & HIDEHAIR)))
-		//return TRUE
-	return FALSE
-	*/
-
 	. = ..()
 	if(!.) // If true, head accessory already hidden
 		if(target_human.wear_suit && istype(target_human.wear_suit, /obj/item/clothing/suit/straight_jacket/kinky_sleepbag))
@@ -703,13 +682,6 @@
 
 // Extends default proc check for hidden horns for supporting our sleepbag and catsuit to
 /datum/sprite_accessory/horns/is_hidden(mob/living/carbon/human/target_human, obj/item/bodypart/HD)
-	/*
-	// Default proc code
-	if(target_human.head && (target_human.head.flags_inv & HIDEHAIR) || (target_human.wear_mask && (target_human.wear_mask.flags_inv & HIDEHAIR)) || !HD)
-		return TRUE
-	return FALSE
-	*/
-
 	. = ..()
 	if(!.) // If true, horns already hidden
 		if(target_human.wear_suit && istype(target_human.wear_suit, /obj/item/clothing/suit/straight_jacket/kinky_sleepbag))
@@ -724,13 +696,6 @@
 
 // Extends default proc check for hidden antenna for supporting our sleepbag and catsuit to
 /datum/sprite_accessory/antenna/is_hidden(mob/living/carbon/human/target_human, obj/item/bodypart/HD)
-	/*
-	// Default proc code
-	if(target_human.head && (target_human.head.flags_inv & HIDEHAIR) || (target_human.wear_mask && (target_human.wear_mask.flags_inv & HIDEHAIR)) || !HD)
-		//return TRUE
-	return FALSE
-	*/
-
 	. = ..()
 	if(!.) // If true, antenna already hidden
 		if(target_human.wear_suit && istype(target_human.wear_suit, /obj/item/clothing/suit/straight_jacket/kinky_sleepbag))
@@ -745,13 +710,6 @@
 
 // Extends default proc check for hidden moth antenna for supporting our sleepbag and catsuit to
 /datum/sprite_accessory/moth_antennae/is_hidden(mob/living/carbon/human/target_human, obj/item/bodypart/HD)
-	/*
-	// Default proc code
-	if(target_human.head && (target_human.head.flags_inv & HIDEHAIR) || (target_human.wear_mask && (target_human.wear_mask.flags_inv & HIDEHAIR)) || !HD)
-		//return TRUE
-	return FALSE
-	*/
-
 	. = ..()
 	if(!.) // If true, moth antenna already hidden
 		if(target_human.wear_suit && istype(target_human.wear_suit, /obj/item/clothing/suit/straight_jacket/kinky_sleepbag))
@@ -766,13 +724,6 @@
 
 // Extends default proc check for hidden skrell hair for supporting our sleepbag and catsuit to
 /datum/sprite_accessory/skrell_hair/is_hidden(mob/living/carbon/human/target_human, obj/item/bodypart/HD)
-	/*
-	// Default proc code
-	if(target_human.head && (target_human.head.flags_inv & HIDEHAIR) || (target_human.wear_mask && (target_human.wear_mask.flags_inv & HIDEHAIR)))
-		return TRUE
-	return FALSE
-	*/
-
 	. = ..()
 	if(!.) // If true, skrell hair already hidden
 		if(target_human.wear_suit && istype(target_human.wear_suit, /obj/item/clothing/suit/straight_jacket/kinky_sleepbag))
@@ -787,7 +738,6 @@
 
 // Extends default proc check for hidden skrell hair for supporting our sleepbag and catsuit to
 /datum/sprite_accessory/tails/is_hidden(mob/living/carbon/human/target_human, obj/item/bodypart/HD)
-
 	. = ..()
 	if(!.) // If true, tail already hidden
 		if(target_human.wear_suit && istype(target_human.wear_suit, /obj/item/clothing/suit/straight_jacket/kinky_sleepbag))
