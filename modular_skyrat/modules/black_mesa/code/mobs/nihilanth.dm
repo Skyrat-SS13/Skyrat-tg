@@ -81,14 +81,14 @@
 	. = ..()
 	set_combat_mode(FALSE)
 
-/mob/living/simple_animal/hostile/blackmesa/xen/nihilanth/attackby(obj/item/W, mob/living/user, params)
+/mob/living/simple_animal/hostile/blackmesa/xen/nihilanth/attackby(obj/item/attacking_item, mob/living/user, params)
 	. = ..()
-	if(istype(W, /obj/item/grenade/xen_crystal))
+	if(istype(attacking_item, /obj/item/grenade/xen_crystal))
 		if(cascade_chance == 0)
 			balloon_alert(user, "link already weak!")
 			return
 		cascade_chance -= 15
 		balloon_alert(user, "world link weakened")
 		playsound(user, 'modular_skyrat/modules/black_mesa/sound/tc_13_teleport.ogg', 100)
-		qdel(W)
+		qdel(attacking_item)
 		return
