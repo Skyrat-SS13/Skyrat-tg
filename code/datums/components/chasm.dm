@@ -159,15 +159,9 @@ GLOBAL_LIST_INIT(chasm_storage, list())
 		dropped_thing.pixel_y--
 		sleep(2)
 
-<<<<<<< HEAD
-		if(iscyborg(AM))
-			var/mob/living/silicon/robot/S = AM
-			qdel(S.mmi)
-=======
 	//Make sure the item is still there after our sleep
 	if(!dropped_thing || QDELETED(dropped_thing))
 		return
->>>>>>> bcadead566b (Chasm Fishing (#69252))
 
 	if (!storage)
 		storage = new(get_turf(parent))
