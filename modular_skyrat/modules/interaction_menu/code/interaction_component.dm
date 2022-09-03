@@ -61,7 +61,6 @@
 	return TRUE
 
 /// UI Control
-
 /datum/component/interactable/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
@@ -95,6 +94,16 @@
 	data["self"] = self.name
 	data["block_interact"] = interact_next >= world.time
 	data["interactions"] = categories
+	if(ishuman(user) && can_lewd_strip(user, self))
+		data["lewd_slots"] = list(
+			"vagina",
+			"penis",
+			"anus",
+			"nipples",
+			)
+	else
+		data["lewd_slots"] = list()
+
 	return data
 
 /datum/component/interactable/ui_act(action, list/params)
@@ -113,4 +122,42 @@
 			interact_next = interaction_component.interact_last + INTERACTION_COOLDOWN
 			interaction_component.interact_next = interact_next
 			return TRUE
+	if(params["slot"]) // TODO: More detailed warnings and messages
+		var/lewd_item_index = params["slot"]
+		var/mob/living/carbon/human/user_self = locate(params["userref"])
+		var/mob/living/carbon/human/user_other = locate(params["selfref"])
+		if(can_lewd_strip(user_self, user_other, lewd_item_index) && !(!user_other.vars[lewd_item_index] && !user_self.get_active_held_item()))
+			user_self.visible_message(self_message = "[user_self.name] starts adjusting [user_other.name]'s toys.")
+			if(do_after(
+				user_self,
+				5 SECONDS,
+				user_other,
+				interaction_key = "interation_[lewd_item_index]" // prevent spamming
+				) && can_lewd_strip(user_self, user_other, user_other.vars[lewd_item_index], lewd_item_index))
+				if(user_other.vars[lewd_item_index])
+					var/obj/item/item = user_other.vars[lewd_item_index]
+					user_self.visible_message(self_message = "[user_self.name] removes [user_other.name]'s [item.name].")
+					user_other.dropItemToGround(item, force = TRUE) // Force is true, cause nodrop shouldn't affect lewd items.
+					user_other.vars[lewd_item_index] = null
+				else if (user_self.get_active_held_item())
+					var/obj/item/item = user_self.get_active_held_item()
+					user_other.vars[lewd_item_index] = item
+					item.forceMove(user_other)
+					user_self.visible_message(self_message = "[user_self.name] inserts [item.name] into [user_other.name].")
+		else
+			user_self.show_message(span_warning("Failed to adjust [user_other.name]'s toys!"))
+
+		return TRUE
+
 	message_admins("Unhandled interaction '[params["interaction"]]'. Inform coders.")
+
+/datum/component/interactable/proc/can_lewd_strip(mob/living/carbon/human/user, mob/living/carbon/human/other_user, slot_index)
+	if(!(user.loc == other_user.loc || user.Adjacent(other_user)))
+		return FALSE
+	if(!user.has_arms())
+		return FALSE
+	if(!slot_index) // Logic for displaying the icons in the first place.
+		return TRUE
+	if(slot_index == "slot_nipples" && !other_user.is_topless())
+		return FALSE
+	return other_user.is_bottomless()

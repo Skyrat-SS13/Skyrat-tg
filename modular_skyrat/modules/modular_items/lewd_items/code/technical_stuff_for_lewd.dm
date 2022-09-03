@@ -469,24 +469,6 @@
 *	INVENTORY SYSTEM EXTENTION
 */
 
-/*
-*	ERP INVENTORY ITEM SLOTS
-*/
-
-/*
-/// Vagina slot
-#define ITEM_SLOT_VAGINA (1<<21)
-
-/// Anus slot
-#define ITEM_SLOT_ANUS (1<<22)
-
-/// Nipples slot
-#define ITEM_SLOT_NIPPLES (1<<23)
-
-/// Penis slot
-#define ITEM_SLOT_PENIS (1<<20)
-*/
-
 // SLOT GROUP HELPERS
 #define ITEM_SLOT_ERP_INSERTABLE (ITEM_SLOT_VAGINA|ITEM_SLOT_ANUS)
 #define ITEM_SLOT_ERP_ATTACHABLE (ITEM_SLOT_NIPPLES|ITEM_SLOT_PENIS)
@@ -498,84 +480,6 @@
 #define STRIPPABLE_ITEM_ANUS "anus"
 #define STRIPPABLE_ITEM_NIPPLES "nipples"
 #define STRIPPABLE_ITEM_PEINS "penis"
-
-/*
-*	OUTFIT SYSTEM ERP SLOT SUPPORT
-*/
-
-// Variables for ERP slots
-/datum/outfit
-	/// Type path of item for vagina slot
-	var/vagina = null
-	/// Type path of item for anus slot
-	var/anus = null
-	/// Type path of item for nipples slot
-	var/nipples = null
-	/// Type path of item for penis slot
-	var/penis = null
-
-// Complementing the equipment procedure
-/datum/outfit/equip(mob/living/carbon/human/target, visualsOnly = FALSE)
-	. = ..()
-	if(.)
-		var/need_updating = FALSE
-		if(vagina)
-			target.equip_to_slot_or_del(new vagina(target), ITEM_SLOT_VAGINA, TRUE)
-			need_updating = TRUE
-
-		if(anus)
-			target.equip_to_slot_or_del(new anus(target), ITEM_SLOT_ANUS, TRUE)
-			need_updating = TRUE
-
-		if(nipples)
-			target.equip_to_slot_or_del(new nipples(target), ITEM_SLOT_NIPPLES, TRUE)
-			need_updating = TRUE
-
-		if(penis)
-			target.equip_to_slot_or_del(new penis(target), ITEM_SLOT_PENIS, TRUE)
-			need_updating = TRUE
-
-		if(need_updating)
-			target.update_body()
-			target?.hud_used?.hidden_inventory_update(target)
-
-		return TRUE
-
-	return .
-
-
-// Support fingerprints when working with ERP slots
-/datum/outfit/apply_fingerprints(mob/living/carbon/human/target)
-	. = ..()
-	if(.)
-		if(!istype(target))
-			return
-		if(target.vagina)
-			target.vagina.add_fingerprint(target, 1)
-		if(target.anus)
-			target.anus.add_fingerprint(target, 1)
-		if(target.nipples)
-			target.nipples.add_fingerprint(target, 1)
-		if(target.penis)
-			target.penis.add_fingerprint(target, 1)
-	return 1
-
-// Supplementing the data structure with ERP slot data
-/datum/outfit/get_json_data()
-	var/list/genital_list = ..()
-
-	genital_list["vagina"] = vagina
-	genital_list["anus"] = anus
-	genital_list["nipples"] = nipples
-	genital_list["penis"] = penis
-
-// Supplementing the data structure with ERP slot data
-/datum/outfit/load_from(list/outfit_data)
-	vagina = text2path(outfit_data["vagina"])
-	anus = text2path(outfit_data["anus"])
-	nipples = text2path(outfit_data["nipples"])
-	penis = text2path(outfit_data["penis"])
-	. = ..()
 
 // Just by analogy with the TG code. No ideas for what this is.
 /mob/proc/update_inv_vagina()
@@ -633,31 +537,8 @@
 *	ICON UPDATING EXTENTION
 */
 
-// Regenerate ERP icons to
-/mob/living/carbon/human/regenerate_icons()
-	.=..()
-	update_inv_vagina()
-	update_inv_anus()
-	update_inv_nipples()
-	update_inv_penis()
-
 // Updating vagina slot
 /mob/living/carbon/human/update_inv_vagina()
-	if(client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
-		if(client && hud_used && hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_VAGINA) + 1])
-			var/atom/movable/screen/inventory/inv = hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_VAGINA) + 1]
-			inv.update_icon()
-
-		if(vagina)
-			if(hud_used.inventory_shown && hud_used)
-				vagina?.screen_loc = ui_vagina
-			else
-				vagina?.screen_loc = ui_vagina_down
-			if(hud_used.hud_shown)
-				client.screen += vagina
-			update_observer_view(vagina)
-			hud_used.hidden_inventory_update(src)
-
 	// on_mob stuff
 	remove_overlay(VAGINA_LAYER)
 
@@ -682,21 +563,6 @@
 
 // Updating anus slot
 /mob/living/carbon/human/update_inv_anus()
-	if(client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
-		if(client && hud_used && hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_ANUS) + 1])
-			var/atom/movable/screen/inventory/inv = hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_ANUS) + 1]
-			inv.update_icon()
-
-		if(anus)
-			if(hud_used.inventory_shown && hud_used)
-				anus?.screen_loc = ui_anus
-			else
-				anus?.screen_loc = ui_anus_down
-			if(hud_used.hud_shown)
-				client.screen += anus
-			update_observer_view(anus)
-			hud_used.hidden_inventory_update(src)
-
 	// on_mob stuff
 	remove_overlay(ANUS_LAYER)
 
@@ -721,21 +587,6 @@
 
 // Updating nipples slot
 /mob/living/carbon/human/update_inv_nipples()
-	if(client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
-		if(client && hud_used && hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_NIPPLES) + 1])
-			var/atom/movable/screen/inventory/inv = hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_NIPPLES) + 1]
-			inv.update_icon()
-
-		if(nipples)
-			if(hud_used.inventory_shown && hud_used)
-				nipples?.screen_loc = ui_nipples
-			else
-				nipples?.screen_loc = ui_nipples_down
-			if(hud_used.hud_shown)
-				client.screen += nipples
-			update_observer_view(nipples)
-			hud_used.hidden_inventory_update(src)
-
 	// on_mob stuff
 	remove_overlay(NIPPLES_LAYER)
 
@@ -760,21 +611,6 @@
 
 // Updating penis slot
 /mob/living/carbon/human/update_inv_penis()
-	if(client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
-		if(client && hud_used && hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_PENIS) + 1])
-			var/atom/movable/screen/inventory/inv = hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_PENIS) + 1]
-			inv.update_icon()
-
-		if(penis)
-			if(hud_used.inventory_shown && hud_used)
-				penis?.screen_loc = ui_penis
-			else
-				penis?.screen_loc = ui_penis_down
-			if(hud_used.hud_shown)
-				client.screen += penis
-			update_observer_view(penis)
-			hud_used.hidden_inventory_update(src)
-
 	// on_mob stuff
 	remove_overlay(PENIS_LAYER)
 
@@ -798,215 +634,7 @@
 	update_mutant_bodyparts()
 
 /*
-// Shoes update extention for supporting correct removing shoe in sleepbag
-/mob/living/carbon/human/update_worn_shoes()
-
-	if(istype(src.wear_suit, /obj/item/clothing/suit/straight_jacket/kinky_sleepbag))
-		remove_overlay(SHOES_LAYER)
-
-		if(dna.species.mutant_bodyparts["taur"])
-			var/datum/sprite_accessory/taur/taur_accessory = GLOB.sprite_accessories["taur"][dna.species.mutant_bodyparts["taur"][MUTANT_INDEX_NAME]]
-			if(taur_accessory.flags_for_organ & SPRITE_ACCESSORY_HIDE_SHOES)
-				return
-
-		if(num_legs<2)
-			return
-
-		if(client && hud_used)
-			var/atom/movable/screen/inventory/inv = hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_FEET) + 1]
-			inv.update_icon()
-
-		if(shoes)
-			shoes.screen_loc = ui_shoes					//move the item to the appropriate screen loc
-			if(client && hud_used && hud_used.hud_shown)
-				if(hud_used.inventory_shown)			//if the inventory is open
-					client.screen += shoes					//add it to client's screen
-			update_observer_view(shoes, 1)
-			var/icon_file = shoes.worn_icon
-			if((shoes.supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION) && (shoes.supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION))
-				icon_file = shoes.worn_icon_digi || 'modular_skyrat/master_files/icons/mob/clothing/feet_digi.dmi'
-
-			overlays_standing[SHOES_LAYER] = shoes.build_worn_icon(default_layer = SHOES_LAYER, default_icon_file = 'icons/mob/clothing/feet.dmi', override_file = icon_file)
-			var/mutable_appearance/shoes_overlay = overlays_standing[SHOES_LAYER]
-			if(OFFSET_SHOES in dna.species.offset_features)
-				shoes_overlay.pixel_x += dna.species.offset_features[OFFSET_SHOES][1]
-				shoes_overlay.pixel_y += dna.species.offset_features[OFFSET_SHOES][2]
-			overlays_standing[SHOES_LAYER] = shoes_overlay
-
-		// apply_overlay(SHOES_LAYER)
-
-		return
-	else
-		..()
-*/
-
-// Updating vagina hud slot
-/mob/living/carbon/human/update_hud_vagina(obj/item/contained_item)
-	contained_item.screen_loc = ui_vagina
-	if(client && src.hud_used?.hud_shown)
-		if(src.hud_used.inventory_shown)
-			client.screen += contained_item
-	update_observer_view(contained_item, 1)
-
-// Updating anus hud slot
-/mob/living/carbon/human/update_hud_anus(obj/item/contained_item)
-	contained_item.screen_loc = ui_anus
-	if(client && src.hud_used?.hud_shown)
-		if(src.hud_used.inventory_shown)
-			client.screen += contained_item
-	update_observer_view(contained_item, 1)
-
-// Updating nipples hud slot
-/mob/living/carbon/human/update_hud_nipples(obj/item/contained_item)
-	contained_item.screen_loc = ui_nipples
-	if(client && src.hud_used?.hud_shown)
-		if(src.hud_used.inventory_shown)
-			client.screen += contained_item
-	update_observer_view(contained_item, 1)
-
-// Updating penis hud slot
-/mob/living/carbon/human/update_hud_penis(obj/item/contained_item)
-	contained_item.screen_loc = ui_penis
-	if(client && src.hud_used?.hud_shown)
-		if(src.hud_used.inventory_shown)
-			client.screen += contained_item
-	update_observer_view(contained_item, 1)
-
-// Update whether our back item appears on our hud.
-/mob/living/carbon/proc/update_hud_vagina(obj/item/contained_item)
-	return
-
-// Update whether our back item appears on our hud.
-/mob/living/carbon/proc/update_hud_anus(obj/item/contained_item)
-	return
-
-// Update whether our back item appears on our hud.
-/mob/living/carbon/proc/update_hud_nipples(obj/item/contained_item)
-	return
-
-// Update whether our back item appears on our hud.
-/mob/living/carbon/proc/update_hud_penis(obj/item/contained_item)
-	return
-
-/*
-*	UI CONSTRUCTION AND HANDLING
-*/
-
-// Add to hud class additional ERP variable boolean for check inventiry status (equipped or not)
-/datum/hud
-	/// The screen ERP objects which can be hidden
-	var/list/erp_toggleable_inventory = list()
-	/// Equipped item ERP inventory
-	var/ERP_inventory_shown = FALSE
-
-// Define additional button for ERP hud slots for expand/collapse like default inventory
-/atom/movable/screen/human/erp_toggle
-	name = "erp_toggle"
-	icon_state = "toggle"
-
-// ERP inventory button logic. Just expand/collapse
-/atom/movable/screen/human/erp_toggle/Click()
-
-	var/mob/target_mob = usr
-
-	if(isobserver(usr))
-		if(ishuman(usr.client.eye) && (usr.client.eye != usr))
-			var/mob/target_eye = usr.client.eye
-			target_mob = target_eye
-
-	if(usr.hud_used.ERP_inventory_shown && target_mob.hud_used)
-		usr.hud_used.ERP_inventory_shown = FALSE
-		usr.client.screen -= target_mob.hud_used.erp_toggleable_inventory
-	else
-		usr.hud_used.ERP_inventory_shown = TRUE
-		usr.client.screen += target_mob.hud_used.erp_toggleable_inventory
-
-	target_mob.hud_used.hidden_inventory_update(usr)
-
-/*
 *	STRIPPING ERP SYSTEM EXTENTION
-*/
-
-// Extend stripping menus with ERP slots
-/datum/strippable_item/mob_item_slot/vagina
-	key = STRIPPABLE_ITEM_VAGINA
-	item_slot = ITEM_SLOT_VAGINA
-
-/datum/strippable_item/mob_item_slot/anus
-	key = STRIPPABLE_ITEM_ANUS
-	item_slot = ITEM_SLOT_ANUS
-
-/datum/strippable_item/mob_item_slot/nipples
-	key = STRIPPABLE_ITEM_NIPPLES
-	item_slot = ITEM_SLOT_NIPPLES
-
-/datum/strippable_item/mob_item_slot/penis
-	key = STRIPPABLE_ITEM_PEINS
-	item_slot = ITEM_SLOT_PENIS
-
-// Obscuring for ERP slots
-/datum/strippable_item/mob_item_slot/vagina/get_obscuring(atom/source)
-	var/mob/source_mob = source
-	if(source_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
-		return isnull(get_item(source)) \
-			? STRIPPABLE_OBSCURING_NONE \
-			: STRIPPABLE_OBSCURING_HIDDEN
-	else
-		return STRIPPABLE_OBSCURING_COMPLETELY
-// Obscuring for ERP slots
-/datum/strippable_item/mob_item_slot/anus/get_obscuring(atom/source)
-	var/mob/source_mob = source
-	if(source_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
-		return isnull(get_item(source)) \
-			? STRIPPABLE_OBSCURING_NONE \
-			: STRIPPABLE_OBSCURING_HIDDEN
-	else
-		return STRIPPABLE_OBSCURING_COMPLETELY
-// Obscuring for ERP slots
-/datum/strippable_item/mob_item_slot/nipples/get_obscuring(atom/source)
-	var/mob/source_mob = source
-	if(source_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
-		return isnull(get_item(source)) \
-			? STRIPPABLE_OBSCURING_NONE \
-			: STRIPPABLE_OBSCURING_HIDDEN
-	else
-		return STRIPPABLE_OBSCURING_COMPLETELY
-// Obscuring for ERP slots
-/datum/strippable_item/mob_item_slot/penis/get_obscuring(atom/source)
-	var/mob/source_mob = source
-	if(source_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
-		return isnull(get_item(source)) \
-			? STRIPPABLE_OBSCURING_NONE \
-			: STRIPPABLE_OBSCURING_HIDDEN
-	else
-		return STRIPPABLE_OBSCURING_COMPLETELY
-
-// Strippable ERP items slot list
-GLOBAL_LIST_INIT(strippable_human_erp_items, create_erp_strippable_list(list(
-	/datum/strippable_item/mob_item_slot/vagina,
-	/datum/strippable_item/mob_item_slot/anus,
-	/datum/strippable_item/mob_item_slot/nipples,
-	/datum/strippable_item/mob_item_slot/penis,
-)))
-
-// This list is only needed in order to immediately add the necessary elements to a typical global list
-/proc/create_erp_strippable_list(types)
-	var/list/strippable_items = list()
-
-	for (var/strippable_type in types)
-		var/datum/strippable_item/strippable_item = new strippable_type
-		strippable_items[strippable_item.key] = strippable_item
-	GLOB.strippable_human_items += strippable_items
-	return strippable_items
-
-//Disables ERP strippable inventory depending on config
-/datum/element/strippable/Attach(datum/target, list/items, should_strip_proc_path)
-	. = ..()
-	if(CONFIG_GET(flag/disable_erp_preferences))
-		src.items -= GLOB.strippable_human_erp_items
-
-/*
-*	EXTENTIONS FOR SPRITE_ACCESSORY IS_HIDDEN CHECKS FOR ERP STUFF
 */
 
 // Extends default proc check for hidden ears for supporting our sleepbag and catsuit to
@@ -1205,12 +833,7 @@ GLOBAL_LIST_INIT(strippable_human_erp_items, create_erp_strippable_list(list(
 
 /datum/preference/toggle/erp/sex_toy/apply_to_client_updated(client/client, value)
 	. = ..()
-	if(client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
-		if(client.mob.hud_used)
-			for(var/atom/movable/screen/human/erp_toggle/toggle in client.mob.hud_used.static_inventory)
-				if(istype(toggle, /atom/movable/screen/human/erp_toggle))
-					toggle.invisibility = 0
-	else
+	if(!client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 		if(ishuman(client.mob))
 			var/mob/living/carbon/human/target = client.mob
 			if(target.vagina != null)
@@ -1221,14 +844,6 @@ GLOBAL_LIST_INIT(strippable_human_erp_items, create_erp_strippable_list(list(
 				target.dropItemToGround(target.nipples, TRUE, target.loc, TRUE, FALSE, TRUE)
 			if(target.penis != null)
 				target.dropItemToGround(target.penis, TRUE, target.loc, TRUE, FALSE, TRUE)
-		if(client.mob.hud_used)
-			if(client.mob.hud_used.ERP_inventory_shown)
-				client.mob.hud_used.ERP_inventory_shown = FALSE
-				client.screen -= client.mob.hud_used.erp_toggleable_inventory
-
-			for(var/atom/movable/screen/human/erp_toggle/erp_button in client.mob.hud_used.static_inventory)
-				if(istype(erp_button, /atom/movable/screen/human/erp_toggle))
-					erp_button.invisibility = 100
 
 
 	client.mob.hud_used.hidden_inventory_update(client.mob)

@@ -322,21 +322,6 @@ GLOBAL_LIST_INIT(available_erp_ui_styles, list(
 	ui_style = new_ui_style
 	build_hand_slots()
 
-//SKYRAT EDIT - ADDITION - ERP ICONS FIX
-
-/datum/hud/proc/update_erp_ui_style(new_erp_ui_style)
-	// do nothing if overridden by a subtype or already on that style
-	if (initial(erp_ui_style) || erp_ui_style == new_erp_ui_style)
-		return
-
-	for(var/atom/item in erp_toggleable_inventory)
-		if (item.icon == erp_ui_style)
-			item.icon = new_erp_ui_style
-
-	erp_ui_style = new_erp_ui_style
-
-//SKYRAT EDIT - ADDITION - ERP ICONS FIX - END
-
 //Triggered when F12 is pressed (Unless someone changed something in the DMF)
 /mob/verb/button_pressed_F12()
 	set name = "F12"
