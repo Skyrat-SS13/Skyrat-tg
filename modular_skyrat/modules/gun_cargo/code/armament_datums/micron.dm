@@ -125,13 +125,3 @@
 	interest_required = HIGH_INTEREST
 	lower_cost = CARGO_CRATE_VALUE * 5
 	upper_cost = CARGO_CRATE_VALUE * 6
-
-/datum/armament_entry/cargo_gun/micron/cell_upgrade/tactical
-	item_type = /obj/item/microfusion_cell_attachment/tactical
-	lower_cost = CARGO_CRATE_VALUE * 2
-	upper_cost = CARGO_CRATE_VALUE * 3
-
-/datum/armament_entry/cargo_gun/micron/cell_upgrade/reloader
-	item_type = /obj/item/microfusion_cell_attachment/reloader
-	lower_cost = CARGO_CRATE_VALUE * 2
-	upper_cost = CARGO_CRATE_VALUE * 3
