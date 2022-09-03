@@ -181,15 +181,17 @@
 	icon_state = "up"
 	deployed = TRUE
 
-	balloon_alert_to_viewers("deployed")
-	playsound(src, 'sound/machines/ping.ogg', 25, FALSE, falloff_exponent = 10)
-
 	if(obj_flags & EMAGGED)
 		// MEATBAG TERMINATION MODE ONLINE - line 478
 		var/mob/living/simple_animal/hostile/borg_action_pacifier/BAPer = new (get_turf(src))
 		BAPer.power_storage = power_storage // Gotta keep that boom
 		BAPer.check_smoke() // Telegraph how bigly we explode on death
+		BAPer.balloon_alert_to_viewers("ERROR!")
+		BAPer.emote("exclaim")
 		qdel(src)
+	else
+		balloon_alert_to_viewers("deployed")
+		playsound(src, 'sound/machines/ping.ogg', 25, FALSE, falloff_exponent = 10)
 
 /obj/structure/bed/borg_action_pacifier/MouseDrop(over_object, src_location, over_location)
 	. = ..()
