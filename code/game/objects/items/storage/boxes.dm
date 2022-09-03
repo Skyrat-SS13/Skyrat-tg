@@ -1463,7 +1463,8 @@
 							  /obj/item/food/grown/soybeans,
 							  /obj/item/food/grown/corn,
 							  /obj/item/food/grown/mushroom/plumphelmet,
-							  /obj/item/food/grown/mushroom/chanterelle)
+							  /obj/item/food/grown/mushroom/chanterelle,
+							  /obj/item/food/grown/cucumber)
 		new randomFood(src)
 
 /obj/item/storage/box/ingredients/fiesta
