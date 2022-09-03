@@ -29,7 +29,7 @@
 		overlay_y = 10)
 
 /obj/item/ammo_box/magazine/multi_sprite/cmg
-	name = ".9 Peacekeeper PDW magazine"
+	name = "9mm Peacekeeper PDW magazine"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "g11"
 	ammo_type = /obj/item/ammo_casing/b9mm/rubber
