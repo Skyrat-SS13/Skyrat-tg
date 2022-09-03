@@ -130,7 +130,7 @@
 			interact_next = interaction_component.interact_last + INTERACTION_COOLDOWN
 			interaction_component.interact_next = interact_next
 			return TRUE
-	if(params["slot"]) // TODO: More detailed warnings and messages
+	if(params["slot"])
 		var/lewd_item_index = params["slot"]
 		var/mob/living/carbon/human/source = locate(params["userref"])
 		var/mob/living/carbon/human/target = locate(params["selfref"])
