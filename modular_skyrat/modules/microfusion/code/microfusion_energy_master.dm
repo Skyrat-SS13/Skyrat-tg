@@ -618,11 +618,11 @@
 	reload_time = inserting_cell.reloading_time_tactical
 	if(cell)
 		if(reload_time && !HAS_TRAIT(user, TRAIT_INSTANT_RELOAD)) //This only happens when you're attempting a tactical reload, e.g. there's a mag already inserted.
-			if(display_message)
-				to_chat(user, span_notice("You start to insert [inserting_cell] into [src]!"))
 			if(inserting_cell.charge)
 				to_chat(user, span_warning("It would be far too dangerous to insert [inserting_cell] into [src] without <b>discharging it first</b>."))
 				return FALSE
+			if(display_message)
+				to_chat(user, span_notice("You start to insert [inserting_cell] into [src]!"))
 			if(!do_after(user, reload_time, src))
 				if(display_message)
 					to_chat(user, span_warning("You fail to insert [inserting_cell] into [src]!"))
@@ -632,11 +632,11 @@
 		tactical_reload = TRUE
 		eject_cell(user, FALSE, FALSE)
 	else
-		if(display_message)
-			to_chat(user, span_notice("You start to insert [inserting_cell] into [src]!"))
 		if(inserting_cell.charge)
 			to_chat(user, span_warning("It would be far too dangerous to insert [inserting_cell] into [src] without <b>discharging it first</b>."))
 			return FALSE
+		if(display_message)
+			to_chat(user, span_notice("You start to insert [inserting_cell] into [src]!"))
 		if(!do_after(user, reload_time_slow, src))
 			if(display_message)
 				to_chat(user, span_warning("You fail to insert [inserting_cell] into [src]!"))
