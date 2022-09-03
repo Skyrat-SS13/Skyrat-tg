@@ -84,9 +84,12 @@
 	new /obj/item/defibrillator/compact/loaded(src)
 	new /obj/item/healthanalyzer/advanced(src)
 	new /obj/item/assembly/flash/handheld(src)
+<<<<<<< HEAD
 	new /obj/item/storage/briefcase/medicalgunset/cmo(src) //SKYRAT ADDITON MEDIGUNS//
 	// new /obj/item/reagent_containers/hypospray/cmo(src) - SKYRAT REMOVAL - New Hyposprays
 	new /obj/item/storage/hypospraykit/cmo(src) //SKYRAT ADDITION - New Hyposprays
+=======
+>>>>>>> 73d471637b5 (Closets now initialize their contents on demand (more than 1.6 seconds of init time saved) (#69587))
 	new /obj/item/autosurgeon/medical_hud(src)
 	new /obj/item/door_remote/chief_medical_officer(src)
 	new /obj/item/clothing/neck/petcollar(src)
@@ -96,6 +99,11 @@
 	new /obj/item/storage/photo_album/cmo(src)
 	new /obj/item/storage/lockbox/medal/med(src)
 
+/obj/structure/closet/secure_closet/chief_medical/populate_contents_immediate()
+	. = ..()
+
+	// Traitor steal objective
+	new /obj/item/reagent_containers/hypospray/cmo(src)
 
 /obj/structure/closet/secure_closet/animal
 	name = "animal control"
