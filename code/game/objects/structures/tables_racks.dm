@@ -677,13 +677,8 @@
 /obj/structure/table/optable//SKYRAT EDIT - ICON OVERRIDEN BY AESTHETICS - SEE MODULE
 	name = "operating table"
 	desc = "Used for advanced medical procedures."
-<<<<<<< HEAD
-	icon = 'icons/obj/medical/surgery.dmi'
-	icon_state = "optable"
-=======
 	icon = 'icons/obj/medical/surgery_table.dmi'
 	icon_state = "surgery_table"
->>>>>>> c3bd2d30063 (Replaces Missing Surgery Table Sprite (#69654))
 	buildstack = /obj/item/stack/sheet/mineral/silver
 	smoothing_flags = NONE
 	smoothing_groups = null
