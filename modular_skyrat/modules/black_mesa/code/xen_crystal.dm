@@ -44,8 +44,8 @@
 /obj/item/grenade/xen_crystal
 	name = "xen crystal"
 	desc = "A crystal with anomalous properties. Perhaps its powers could be used to weaken the link between worlds. \
-	<br> \
-	Use on the Nihilanth to reduce the Resonance Cascade's chance of spawning by 15%, up to 0% if used four times."
+	<br> <br>\
+	Use on the Nihilanth to reduce the Resonance Cascade's chance of spawning by 15%, down to 0% if used four times."
 	icon = 'modular_skyrat/modules/black_mesa/icons/plants.dmi'
 	icon_state = "crystal_grenade"
 	/// What range do we effect mobs?
