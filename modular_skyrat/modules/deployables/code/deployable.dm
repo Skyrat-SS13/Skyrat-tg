@@ -132,9 +132,9 @@
 		return
 
 	var/obj/structure/bed/borg_action_pacifier/BAPer = new (get_turf(src))
-	BAPer.power_storage = power_storage
 	if(obj_flags & EMAGGED)
 		BAPer.obj_flags |= EMAGGED
+	BAPer.power_storage = power_storage
 	BAPer.deployed = FALSE //Unlike roundstarts we have to perform the whole song and dance
 	BAPer.icon_state = "down"
 	BAPer.deploy()
@@ -167,6 +167,7 @@
 	if(istype(pos))
 		for(var/i in 1 to vent_scale)
 			ventilate_effect(pos, vent_scale)
+
 	clicker.visible_message(span_warning("[clicker] ventilates the power stored inside [src]..."))
 	playsound(src, 'sound/effects/spray.ogg', (vent_scale * 10), TRUE)
 	power_storage = 0
