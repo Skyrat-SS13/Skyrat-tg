@@ -51,7 +51,7 @@
 	icon_state = "moonfish_fillet"
 
 /obj/item/food/fishmeat/moonfish/MakeGrillable()
-	AddComponent(/datum/component/grillable, /obj/item/food/grilled_moonfish, rand(40 SECONDS, 50 SECONDS), TRUE, TRUE, /datum/pollutant/food/fried_fish) //SKYRAT EDIT CHANGE
+	AddComponent(/datum/component/grillable, /obj/item/food/grilled_moonfish, rand(40 SECONDS, 50 SECONDS), TRUE, TRUE)
 
 /obj/item/food/fishmeat/gunner_jellyfish
 	name = "filleted gunner jellyfish"
@@ -179,8 +179,28 @@
 	desc = "A simple nigiri of fish atop a packed rice ball with a seaweed wrapping and a side of soy sauce."
 	icon = 'icons/obj/food/food.dmi'
 	icon_state = "nigiri_sushi"
-	food_reagents = list(/datum/reagent/consumable/nutriment = 4, /datum/reagent/consumable/nutriment/vitamin = 2, /datum/reagent/consumable/nutriment/protein = 2)
+	food_reagents = list(/datum/reagent/consumable/nutriment = 10, /datum/reagent/consumable/nutriment/vitamin = 6, /datum/reagent/consumable/nutriment/protein = 2)
 	tastes = list("boiled rice" = 4, "fish filet" = 2, "soy sauce" = 2)
+	foodtypes = SEAFOOD | VEGETABLES
+	w_class = WEIGHT_CLASS_SMALL
+
+/obj/item/food/meat_poke
+	name = "meat poke"
+	desc = "Simple poke, rice on the bottom, vegetables and meat on top. Should be mixed before eating."
+	icon = 'icons/obj/food/soupsalad.dmi'
+	icon_state = "pokemeat"
+	food_reagents = list(/datum/reagent/consumable/nutriment = 11, /datum/reagent/consumable/nutriment/vitamin = 5, /datum/reagent/consumable/nutriment/protein = 2)
+	tastes = list("rice and meat" = 4, "lettuce" = 2, "soy sauce" = 2)
+	foodtypes = SEAFOOD | MEAT | VEGETABLES
+	w_class = WEIGHT_CLASS_SMALL
+
+/obj/item/food/fish_poke
+	name = "fish poke"
+	desc = "Simple poke, rice on the bottom, vegetables and fish on top. Should be mixed before eating."
+	icon = 'icons/obj/food/soupsalad.dmi'
+	icon_state = "pokefish"
+	food_reagents = list(/datum/reagent/consumable/nutriment = 5, /datum/reagent/consumable/nutriment/vitamin = 4, /datum/reagent/consumable/nutriment/protein = 2)
+	tastes = list("rice and fish" = 4, "lettuce" = 2, "soy sauce" = 2)
 	foodtypes = SEAFOOD | VEGETABLES
 	w_class = WEIGHT_CLASS_SMALL
 
@@ -248,7 +268,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/food/spiderleg/MakeGrillable()
-	AddComponent(/datum/component/grillable, /obj/item/food/boiledspiderleg, rand(50 SECONDS, 60 SECONDS), TRUE, TRUE, /datum/pollutant/food/fried_meat) //SKYRAT EDIT CHANGE
+	AddComponent(/datum/component/grillable, /obj/item/food/boiledspiderleg, rand(50 SECONDS, 60 SECONDS), TRUE, TRUE)
 
 /obj/item/food/cornedbeef
 	name = "corned beef and cabbage"
@@ -284,7 +304,7 @@
 	var/patty_type = /obj/item/food/raw_patty
 
 /obj/item/food/raw_meatball/MakeGrillable()
-	AddComponent(/datum/component/grillable, meatball_type, rand(30 SECONDS, 40 SECONDS), TRUE, /datum/pollutant/food/fried_meat) //SKYRAT EDIT CHANGE
+	AddComponent(/datum/component/grillable, meatball_type, rand(30 SECONDS, 40 SECONDS), TRUE)
 
 /obj/item/food/raw_meatball/MakeProcessable()
 	AddElement(/datum/element/processable, TOOL_ROLLINGPIN, patty_type, 1, table_required = TRUE)
@@ -358,7 +378,7 @@
 	var/patty_type = /obj/item/food/patty/plain
 
 /obj/item/food/raw_patty/MakeGrillable()
-	AddComponent(/datum/component/grillable, patty_type, rand(30 SECONDS, 40 SECONDS), TRUE, /datum/pollutant/food/fried_meat) //SKYRAT EDIT CHANGE
+	AddComponent(/datum/component/grillable, patty_type, rand(30 SECONDS, 40 SECONDS), TRUE)
 
 /obj/item/food/raw_patty/human
 	name = "strange raw patty"
@@ -428,7 +448,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/food/raw_sausage/MakeGrillable()
-	AddComponent(/datum/component/grillable, /obj/item/food/sausage, rand(60 SECONDS, 75 SECONDS), TRUE, /datum/pollutant/food/fried_meat) //SKYRAT EDIT CHANGE
+	AddComponent(/datum/component/grillable, /obj/item/food/sausage, rand(60 SECONDS, 75 SECONDS), TRUE)
 
 /obj/item/food/sausage
 	name = "sausage"
@@ -677,6 +697,7 @@
 /obj/item/food/fried_chicken
 	name = "fried chicken"
 	desc = "A juicy hunk of chicken meat, fried to perfection."
+	icon = 'icons/obj/food/meat.dmi'
 	icon_state = "fried_chicken1"
 	food_reagents = list(/datum/reagent/consumable/nutriment/protein = 6, /datum/reagent/consumable/nutriment/vitamin = 2)
 	tastes = list("chicken" = 3, "fried batter" = 1)
@@ -704,6 +725,7 @@
 /obj/item/food/beef_wellington
 	name = "beef wellington"
 	desc = "A luxurious log of beef, covered in a fine mushroom duxelle and pancetta ham, then bound in puff pastry."
+	icon = 'icons/obj/food/meat.dmi'
 	icon_state = "beef_wellington"
 	food_reagents = list(/datum/reagent/consumable/nutriment/protein = 21, /datum/reagent/consumable/nutriment/vitamin = 6)
 	tastes = list("beef" = 3, "mushrooms" = 1, "pancetta" = 1)
@@ -717,6 +739,7 @@
 /obj/item/food/beef_wellington_slice
 	name = "beef wellington slice"
 	desc = "A slice of beef wellington, topped with a rich gravy. Simply delicious."
+	icon = 'icons/obj/food/meat.dmi'
 	icon_state = "beef_wellington_slice"
 	food_reagents = list(/datum/reagent/consumable/nutriment/protein = 7, /datum/reagent/consumable/nutriment/vitamin = 2)
 	tastes = list("beef" = 3, "mushrooms" = 1, "pancetta" = 1)
@@ -727,6 +750,7 @@
 /obj/item/food/full_english
 	name = "full english breakfast"
 	desc = "A hearty plate with all the trimmings, representing the pinnacle of the breakfast art."
+	icon = 'icons/obj/food/meat.dmi'
 	icon_state = "full_english"
 	food_reagents = list(/datum/reagent/consumable/nutriment/protein = 8, /datum/reagent/consumable/nutriment/vitamin = 4)
 	tastes = list("sausage" = 1, "bacon" = 1, "egg" = 1, "tomato" = 1, "mushrooms" = 1, "bread" = 1, "beans" = 1)
