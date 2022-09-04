@@ -4,11 +4,7 @@
 	species_traits = list(MUTCOLORS, EYECOLOR, HAS_FLESH, HAIR, FACEHAIR) //SKYRAT EDIT - Roundstart Snails - Customization
 	inherent_traits = list(
 		TRAIT_NOSLIPALL,
-<<<<<<< HEAD
-		TRAIT_LITERATE,
 		TRAIT_WATER_BREATHING, //SKYRAT EDIT - Roundstart Snails
-=======
->>>>>>> 497fa7b23f5 (Monkey trip mechanic removed from AI controller and added to brain. Adds organ based trait system. (#69496))
 	)
 	attack_verb = "slap"
 	attack_effect = ATTACK_EFFECT_DISARM
