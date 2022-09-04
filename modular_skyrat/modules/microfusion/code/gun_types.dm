@@ -47,14 +47,6 @@
 	desc = "A box filled with microfusion cells."
 
 /obj/item/storage/box/ammo_box/microfusion/advanced/PopulateContents()
-	new /obj/item/storage/bag/ammo(src)
-	new /obj/item/stock_parts/cell/microfusion/advanced(src)
-	new /obj/item/stock_parts/cell/microfusion/advanced(src)
-	new /obj/item/stock_parts/cell/microfusion/advanced(src)
-
-/obj/item/storage/box/ammo_box/microfusion/advanced/bagless
-
-/obj/item/storage/box/ammo_box/microfusion/advanced/bagless/PopulateContents()
 	new /obj/item/stock_parts/cell/microfusion/advanced(src)
 	new /obj/item/stock_parts/cell/microfusion/advanced(src)
 	new /obj/item/stock_parts/cell/microfusion/advanced(src)
