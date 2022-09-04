@@ -5,8 +5,8 @@
 	dynamic_should_hijack = TRUE
 
 /datum/round_event/mutant_infestation
-	announceWhen = 300
-	announceChance = 100
+	announce_when = 300
+	announce_chance = 100
 	fakeable = TRUE
 	var/infected = 1
 
