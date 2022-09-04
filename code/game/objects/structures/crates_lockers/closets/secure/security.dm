@@ -66,8 +66,6 @@
 	new /obj/item/circuitboard/machine/techfab/department/security(src)
 	new /obj/item/storage/photo_album/hos(src)
 
-<<<<<<< HEAD
-=======
 /obj/structure/closet/secure_closet/hos/populate_contents_immediate()
 	. = ..()
 
@@ -75,7 +73,6 @@
 	new /obj/item/gun/energy/e_gun/hos(src)
 	new /obj/item/pinpointer/nuke(src)
 
->>>>>>> 73d471637b5 (Closets now initialize their contents on demand (more than 1.6 seconds of init time saved) (#69587))
 /obj/structure/closet/secure_closet/warden
 	name = "\proper warden's locker"
 	req_access = list(ACCESS_ARMORY)

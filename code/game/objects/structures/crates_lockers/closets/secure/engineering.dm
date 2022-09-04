@@ -18,18 +18,15 @@
 	new /obj/item/extinguisher/advanced(src)
 	new /obj/item/storage/photo_album/ce(src)
 	new /obj/item/storage/box/skillchips/engineering(src)
-<<<<<<< HEAD
 	new /obj/item/storage/box/gas_miner_beacons(src) // SKYRAT EDIT ADDITION
 	new /obj/item/construction/plumbing/engineering(src) //SKYRAT EDIT ADDITION
 	new /obj/item/circuitboard/machine/rodstopper(src) //SKYRAT EDIT ADDITION
-=======
 
 /obj/structure/closet/secure_closet/engineering_chief/populate_contents_immediate()
 	. = ..()
 
 	// Traitor steal objective
 	new /obj/item/areaeditor/blueprints(src)
->>>>>>> 73d471637b5 (Closets now initialize their contents on demand (more than 1.6 seconds of init time saved) (#69587))
 
 /obj/structure/closet/secure_closet/engineering_electrical
 	name = "electrical supplies locker"

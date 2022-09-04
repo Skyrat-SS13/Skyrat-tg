@@ -27,15 +27,12 @@
 	new /obj/item/storage/photo_album/qm(src)
 	new /obj/item/circuitboard/machine/ore_silo(src)
 	new /obj/item/clothing/suit/hooded/wintercoat/cargo/qm(src)
-<<<<<<< HEAD
 	new /obj/item/gun/ballistic/rifle/boltaction/brand_new/quartermaster(src) // SKYRAT EDIT - The QM's 'special' head item. It spawns loaded, but you have to find more ammo if you run out and get ready to manually load rounds in!
 	new /obj/item/cargo_teleporter(src) // SKYRAT EDIT - Adds a cargo teleporter to QM locker, so they can intice others to research it
 	new /obj/item/clothing/glasses/hud/gun_permit/sunglasses(src) //SKYRAT EDIT - GUN CARGO
-=======
 
 /obj/structure/closet/secure_closet/quartermaster/populate_contents_immediate()
 	. = ..()
 
 	// Traitor steal objective
 	new /obj/item/card/id/departmental_budget/car(src)
->>>>>>> 73d471637b5 (Closets now initialize their contents on demand (more than 1.6 seconds of init time saved) (#69587))

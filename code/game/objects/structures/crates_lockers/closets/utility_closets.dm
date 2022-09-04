@@ -20,17 +20,13 @@
 /obj/structure/closet/emcloset/anchored
 	anchored = TRUE
 
-<<<<<<< HEAD
-/obj/structure/closet/emcloset/PopulateContents() // SKYRAT EDIT OVERRIDE - emergency_spacesuit.dm
-=======
 /obj/structure/closet/emcloset/Initialize(mapload)
 	. = ..()
 
 	if (prob(1))
 		return INITIALIZE_HINT_QDEL
 
-/obj/structure/closet/emcloset/PopulateContents()
->>>>>>> 73d471637b5 (Closets now initialize their contents on demand (more than 1.6 seconds of init time saved) (#69587))
+/obj/structure/closet/emcloset/PopulateContents() // SKYRAT EDIT OVERRIDE - emergency_spacesuit.dm
 	..()
 
 	if (prob(40))

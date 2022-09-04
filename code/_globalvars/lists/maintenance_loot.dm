@@ -394,10 +394,4 @@ GLOBAL_LIST_INIT(ratking_coins, list(//Coins: Used by the regal rat mob when spa
 			/obj/item/coin/silver,
 			/obj/item/coin/titanium,
 		))
-<<<<<<< HEAD
-
-// List of all maintenance loot spawners, for easy finding at roundstart.
-GLOBAL_LIST_EMPTY(maintenance_loot_spawners)
 */
-=======
->>>>>>> 73d471637b5 (Closets now initialize their contents on demand (more than 1.6 seconds of init time saved) (#69587))
