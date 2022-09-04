@@ -93,6 +93,11 @@
 
 /obj/structure/bed/borg_action_pacifier/examine(mob/user)
 	. = ..()
+	if(buckled_cyborg)
+		. += span_notice("Alt+Click to operate.")
+	else
+		. += span_notice("Alt+Click to undeploy.")
+
 	if(power_storage)
 		. += span_notice("Its currently holding [power_storage] units worth of charge.")
 	if(power_storage >= MAX_POWER)
@@ -152,6 +157,7 @@
 
 /obj/item/grenade/borg_action_pacifier_grenade/examine(mob/user)
 	. = ..()
+	. += span_notice("Alt+Click to ventilate its powerstorage.")
 	if(power_storage)
 		. += span_notice("Its currently holding [power_storage] units worth of charge.")
 	if(power_storage == MAX_POWER)
