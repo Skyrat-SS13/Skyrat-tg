@@ -613,6 +613,10 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Leaf"
 	item_path = /obj/item/clothing/under/misc/gear_harness/adam
 
+/datum/loadout_item/under/miscellaneous/ethereal_tunic
+	name = "Ethereal Tunic"
+	item_path = /obj/item/clothing/under/ethereal_tunic
+
 
 /*
 *	FORMAL UNDERSUITS
