@@ -146,12 +146,9 @@ have ways of interacting with a specific mob and control it.
 		return FALSE
 
 	if(!weapon || (weapon in living_pawn.held_items))
-<<<<<<< HEAD
-=======
 		return FALSE
 
 	if(weapon.force < 2) // our bite does 2 damage on avarage, no point in settling for anything less
->>>>>>> 85394d6b0ab (Fixes monkey ai runtime (#69601))
 		return FALSE
 
 	blackboard[BB_MONKEY_PICKUPTARGET] = weapon
