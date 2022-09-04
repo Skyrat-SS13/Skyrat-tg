@@ -668,6 +668,13 @@
 	if(has_gravity())
 		playsound(src, 'modular_skyrat/master_files/sound/effects/robot_step.ogg', 100, TRUE)
 
+/mob/living/simple_animal/hostile/borg_action_pacifier/emp_act(severity)
+	. = ..()
+	if (. & EMP_PROTECT_SELF)
+		return
+	power_storage = 0
+	QDEL_NULL(particles)
+
 /obj/structure/bed/borg_action_pacifier/emp_act(severity)
 	. = ..()
 	if (. & EMP_PROTECT_SELF)
