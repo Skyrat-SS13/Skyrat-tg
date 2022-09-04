@@ -113,16 +113,11 @@
 	if(!istype(parent) || parent.getorgan(/obj/item/organ/internal/eyes) != src)
 		CRASH("Generating a body overlay for [src] targeting an invalid parent '[parent]'.")
 
-<<<<<<< HEAD
 	var/eye_icon = parent.dna?.species.eyes_icon || 'icons/mob/human_face.dmi' // SKYRAT EDIT ADDITION
 
 	var/mutable_appearance/eye_left = mutable_appearance(eye_icon, "[eye_icon_state]_l", -eyes_layer) // SKYRAT EDIT CHANGE - Customization - ORIGINAL: var/mutable_appearance/eye_left = mutable_appearance('icons/mob/human_face.dmi', "[eye_icon_state]_l", -BODY_LAYER)
 	var/mutable_appearance/eye_right = mutable_appearance(eye_icon, "[eye_icon_state]_r", -eyes_layer) // SKYRAT EDIT CHANGE - Customization - ORIGINAL: var/mutable_appearance/eye_right = mutable_appearance('icons/mob/human_face.dmi', "[eye_icon_state]_r", -BODY_LAYER)
-=======
-	var/mutable_appearance/eye_left = mutable_appearance('icons/mob/human_face.dmi', "[eye_icon_state]_l", -BODY_LAYER)
-	var/mutable_appearance/eye_right = mutable_appearance('icons/mob/human_face.dmi', "[eye_icon_state]_r", -BODY_LAYER)
 	var/list/overlays = list(eye_left, eye_right)
->>>>>>> 3504684b120 (visualizes *cry emote + getting peppersprayed makes you cry (#69492))
 
 	if(EYECOLOR in parent.dna?.species.species_traits)
 		eye_right.color = eye_color_right
