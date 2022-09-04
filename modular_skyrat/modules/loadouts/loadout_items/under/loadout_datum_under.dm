@@ -134,10 +134,10 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	item_path = /obj/item/clothing/under/rank/security/detective/disco
 	restricted_roles = list(JOB_DETECTIVE)
 
-/datum/loadout_item/under/jumpsuit/seckilt
-	name = "Security Kilt"
-	item_path = /obj/item/clothing/under/rank/security/blackwatch
-	restricted_roles = list(JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_HEAD_OF_SECURITY, JOB_SECURITY_MEDIC)
+/datum/loadout_item/under/jumpsuit/kim
+	name = "Aerostatic Suit"
+	item_path = /obj/item/clothing/under/rank/security/detective/kim
+	restricted_roles = list(JOB_DETECTIVE)
 
 /datum/loadout_item/under/jumpsuit/paramed_dark
 	name = "Dark Paramedic Jumpsuit"
@@ -218,10 +218,10 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 
 /datum/loadout_item/under/miscellaneous
 
-//christmas stuff, remove afterword
-/*/datum/loadout_item/under/miscellaneous/christmas
+/datum/loadout_item/under/miscellaneous/christmas
 	name = "Christmas Suit"
 	item_path = /obj/item/clothing/under/costume/christmas
+	required_season = CHRISTMAS
 
 /datum/loadout_item/under/miscellaneous/christmas/green
 	name = "Green Christmas Suit"
@@ -233,9 +233,7 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 
 /datum/loadout_item/under/miscellaneous/christmas/female/green
 	name = "Revealing Green Christmas Suit"
-	item_path = /obj/item/clothing/under/croptop/christmas/green*/
-
-//christmas ends, because every christmas is last christmas
+	item_path = /obj/item/clothing/under/croptop/christmas/green
 
 /datum/loadout_item/under/miscellaneous/slacks
 	name = "Recolorable Slacks"
@@ -395,14 +393,6 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Maid Costume"
 	item_path = /obj/item/clothing/under/costume/maid
 
-/datum/loadout_item/under/miscellaneous/croptop
-	name = "Croptop"
-	item_path = /obj/item/clothing/under/croptop
-
-/datum/loadout_item/under/miscellaneous/royalkilt
-	name = "Royal Kilt"
-	item_path = /obj/item/clothing/under/misc/royalkilt
-
 /datum/loadout_item/under/miscellaneous/qipao_black
 	name = "Qipao, Black"
 	item_path = /obj/item/clothing/under/costume/qipao
@@ -438,10 +428,6 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /datum/loadout_item/under/miscellaneous/dutch
 	name = "Dutch Suit"
 	item_path = /obj/item/clothing/under/costume/dutch
-
-/datum/loadout_item/under/miscellaneous/arthur
-	name = "Dutch Assistant Suit"
-	item_path = /obj/item/clothing/under/costume/arthur
 
 /datum/loadout_item/under/miscellaneous/yoga
 	name = "Yoga Pants"
@@ -531,10 +517,6 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Gear Harness"
 	item_path = /obj/item/clothing/under/misc/gear_harness
 
-/datum/loadout_item/under/miscellaneous/kimunder
-	name = "Aerostatic Suit"
-	item_path = /obj/item/clothing/under/misc/kimunder
-
 /datum/loadout_item/under/miscellaneous/countess
 	name = "Countess Dress"
 	item_path = /obj/item/clothing/under/misc/countess
@@ -546,26 +528,6 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /datum/loadout_item/under/miscellaneous/taccas
 	name = "Tacticasual Uniform"
 	item_path = /obj/item/clothing/under/misc/taccas
-
-/datum/loadout_item/under/miscellaneous/rancher
-	name = "Rancher Outfit"
-	item_path = /obj/item/clothing/under/rancher
-
-/datum/loadout_item/under/miscellaneous/rancher_pioneer
-	name = "Pioneer Outfit"
-	item_path = /obj/item/clothing/under/rancher/pioneer
-
-/datum/loadout_item/under/miscellaneous/rancher_worker
-	name = "Western Worker Outfit"
-	item_path = /obj/item/clothing/under/rancher/worker
-
-/datum/loadout_item/under/miscellaneous/rancher_cowboy
-	name = "Cowboy Outfit"
-	item_path = /obj/item/clothing/under/rancher/cowboy
-
-/datum/loadout_item/under/miscellaneous/rancher_checkered
-	name = "Western Checkered Outfit"
-	item_path = /obj/item/clothing/under/rancher/checkered
 
 /datum/loadout_item/under/miscellaneous/cargo_casual
 	name = "Cargo Tech Casualwear"

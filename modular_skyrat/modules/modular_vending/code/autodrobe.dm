@@ -12,8 +12,6 @@
 		/obj/item/clothing/under/costume/vic_vest/blue = 5,
 		/obj/item/clothing/under/costume/vic_vest/red_alt = 5,
 		/obj/item/clothing/suit/costume/tailcoat = 5,
-		/obj/item/clothing/under/costume/dutch = 5,
-		/obj/item/clothing/under/costume/arthur = 5,
 		/obj/item/clothing/under/doug_dimmadome = 5,
 		/obj/item/clothing/glasses/biker = 5, //remind me to give these an up state later
 		/obj/item/clothing/head/cowboyhat/blackwide = 5,
@@ -49,7 +47,6 @@
 		/obj/item/clothing/head/fedora/beige = 5,
 		/obj/item/clothing/head/fedora/fedblack = 5,
 		/obj/item/clothing/head/fedora/fedbrown = 5,
-		/obj/item/clothing/under/misc/royalkilt = 5,
 		/obj/item/clothing/under/pants/tactical = 5,
 		)
 

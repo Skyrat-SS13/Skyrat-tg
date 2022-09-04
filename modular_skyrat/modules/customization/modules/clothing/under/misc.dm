@@ -27,16 +27,6 @@
 	icon_state = "whitebunnysuit"
 	can_adjust = FALSE
 
-/obj/item/clothing/under/croptop
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	name = "crop top"
-	desc = "We've saved money by giving you half a shirt!"
-	icon_state = "croptop"
-	body_parts_covered = CHEST|GROIN|ARMS
-	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
-	can_adjust = FALSE
-
 /obj/item/clothing/under/misc/gear_harness
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
@@ -57,33 +47,6 @@
 	flags_1 = IS_PLAYER_COLORABLE_1
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
-
-/obj/item/clothing/under/misc/royalkilt
-	name = "royal kilt"
-	desc = "A far more modern kilt, the tunic's been tossed for a combat sweater, the Hunting tartan swapped for Royal Stuart, the itchy green socks are now not itchy or green!"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "royalkilt"
-	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
-	body_parts_covered = CHEST|GROIN|ARMS|LEGS
-
-/obj/item/clothing/under/rank/security/blackwatch
-	name = "security kilt"
-	desc = "Youve heard about the B-men, the cruel RUC. Well theres another regiment the devil calls his own. Theyre known as the Black Watch commissioned by the Crown"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "blackwatch"
-	inhand_icon_state = "kilt"
-	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
-	armor = list(MELEE = 30, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 10, ACID = 20, WOUND = 10)
-	body_parts_covered = CHEST|GROIN|ARMS|LEGS
-
-/obj/item/clothing/under/misc/kimunder
-	name = "aerostatic suit"
-	desc = "A crisp and well-pressed suit; professional, comfortable and curiously authoritative."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "aerostatic_suit"
 
 /obj/item/clothing/under/misc/countess
 	name = "countess dress"
@@ -162,50 +125,6 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "doug_dimmadome"
 	supports_variations_flags = NONE
-
-/obj/item/clothing/under/westender
-	name = "westender outfit"
-	desc = "An outfit harking back to a pre-industrial revolution era."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "westender"
-	supports_variations_flags = NONE
-
-///COWBOY
-/obj/item/clothing/under/rancher
-	name = "rancher outfit"
-	desc = "An outfit from the desert outback, phrases around family murder or revenge seem to echo from this get-up."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "rancher"
-
-/obj/item/clothing/under/rancher/pioneer
-	name = "pioneer outfit"
-	desc = "An outfit from the desert outback, this one seems like one on the frontline, don't trust a german, or anyone trying to get you to go to Callifornia."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "pioneer"
-
-/obj/item/clothing/under/rancher/worker
-	name = "western worker outfit"
-	desc = "An outfit from the desert outback, this one seems something a coffin maker would wear, hope you're good at eyeballing size."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "worker"
-
-/obj/item/clothing/under/rancher/cowboy
-	name = "cowboy outfit"
-	desc = "An outfit from the desert outback, this one seems fitting for a hat and poncho, maybe a long flowing coat."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "cowboy"
-
-/obj/item/clothing/under/rancher/checkered
-	name = "western checkered outfit"
-	desc = "An outfit from the desert outback, this one seems like something someone with no fashion sense would wear."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "checkered"
 
 /obj/item/clothing/under/misc/gear_harness/eve
 	name = "collection of leaves"
