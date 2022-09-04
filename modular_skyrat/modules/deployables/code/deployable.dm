@@ -672,8 +672,10 @@
 	. = ..()
 	if (. & EMP_PROTECT_SELF)
 		return
-	power_storage = 0
-	QDEL_NULL(particles)
+	if(power_storage)
+		power_storage = 0
+	if(particles)
+		QDEL_NULL(particles)
 
 /obj/structure/bed/borg_action_pacifier/emp_act(severity)
 	. = ..()
