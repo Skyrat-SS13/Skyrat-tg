@@ -6,7 +6,7 @@
 
 /obj/item/gun/ballistic/automatic/cmg
 	name = "\improper NT CMG-2 PDW"
-	desc = "A bullpup, two round burst submachinegun chambered in 9mm peacekeeper that (after lawsuits from unnamed companies) now uses a fully unique design."
+	desc = "A bullpup, two-round burst PDW chambered in 9mm Peacekeeper, developed by Nanotrasen R&D and based on a licensed Scarborough Arms design. It features a folding stock and comes pre-attached with a dot sight."
 	icon_state = "cmg1"
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
 	inhand_icon_state = "c20r"
