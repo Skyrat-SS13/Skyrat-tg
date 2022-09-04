@@ -90,7 +90,7 @@
 	if(!ishuman(loc))
 		return TRUE
 	var/mob/living/carbon/human/wearer = loc
-	wearer.update_inv_w_uniform()
-	wearer.update_inv_wear_suit()
+	wearer.update_worn_undersuit()
+	wearer.update_worn_oversuit()
 	wearer.fan_hud_set_fandom()
 	return TRUE

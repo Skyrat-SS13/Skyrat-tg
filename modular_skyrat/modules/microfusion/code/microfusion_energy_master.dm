@@ -432,7 +432,7 @@
 		addtimer(CALLBACK(src, .proc/reset_semicd), fire_delay + fire_delay_to_add)
 
 	if(user)
-		user.update_inv_hands()
+		user.update_held_items()
 	SSblackbox.record_feedback("tally", "gun_fired", 1, type)
 
 	SEND_SIGNAL(src, COMSIG_UPDATE_AMMO_HUD)

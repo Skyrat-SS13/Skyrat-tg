@@ -20,10 +20,6 @@
 	mutant_bodyparts = list()
 	hair_color = "mutcolor"
 	hair_alpha = 160 //a notch brighter so it blends better.
-	learnable_languages = list(
-		/datum/language/common,
-		/datum/language/slime
-	)
 
 /datum/species/jelly/get_species_description()
 	return placeholder_description
@@ -198,14 +194,14 @@
 		switch(hair_reset)
 			if("Hair")
 				alterer.hair_color = sanitize_hexcolor(new_mutant_colour)
-				alterer.update_hair(is_creating = TRUE)
+				alterer.update_body_parts()
 			if("Facial Hair")
 				alterer.facial_hair_color = sanitize_hexcolor(new_mutant_colour)
-				alterer.update_hair(is_creating = TRUE)
+				alterer.update_body_parts()
 			if("Both")
 				alterer.hair_color = sanitize_hexcolor(new_mutant_colour)
 				alterer.facial_hair_color = sanitize_hexcolor(new_mutant_colour)
-				alterer.update_hair(is_creating = TRUE)
+				alterer.update_body_parts()
 
 	alterer.update_body(is_creating = TRUE)
 
@@ -231,12 +227,12 @@
 			var/new_style = tgui_input_list(owner, "Select a hair style", "Hair Alterations", GLOB.hairstyles_list)
 			if(new_style)
 				alterer.hairstyle = new_style
-				alterer.update_hair(is_creating = TRUE)
+				alterer.update_body_parts()
 		if("Facial Hair")
 			var/new_style = tgui_input_list(alterer, "Select a facial hair style", "Hair Alterations", GLOB.facial_hairstyles_list)
 			if(new_style)
 				alterer.facial_hairstyle = new_style
-				alterer.update_hair(is_creating = TRUE)
+				alterer.update_body_parts()
 		if("Hair Color")
 			var/hair_area = tgui_alert(alterer, "Select which color you would like to change", "Hair Color Alterations", list("Hairstyle", "Facial Hair", "Both"))
 			if(!hair_area)
@@ -249,14 +245,14 @@
 
 				if("Hairstyle")
 					alterer.hair_color = new_hair_color
-					alterer.update_hair(is_creating = TRUE)
+					alterer.update_body_parts()
 				if("Facial Hair")
 					alterer.facial_hair_color = new_hair_color
-					alterer.update_hair(is_creating = TRUE)
+					alterer.update_body_parts()
 				if("Both")
 					alterer.hair_color = new_hair_color
 					alterer.facial_hair_color = new_hair_color
-					alterer.update_hair(is_creating = TRUE)
+					alterer.update_body_parts()
 
 /**
  * Alter DNA is an intermediary proc for the most part

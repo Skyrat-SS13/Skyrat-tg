@@ -10,7 +10,7 @@
 	maxHealth = 1
 	turns_per_move = 5			// this isn't player speed =|
 	speed = 2				// this is player speed
-	loot = list(/obj/item/reagent_containers/food/snacks/deadbanana_spider)
+	loot = list(/obj/item/food/deadbanana_spider)
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	minbodytemp = 270
 	maxbodytemp = INFINITY
@@ -31,18 +31,18 @@
 	. = ..()
 	AddComponent(/datum/component/slippery, 40)
 
-/obj/item/reagent_containers/food/snacks/deadbanana_spider
+/obj/item/food/deadbanana_spider
 	name = "dead banana spider"
 	desc = "Thank god it's gone...but it does look slippery."
 	icon = 'modular_skyrat/master_files/icons/mob/newmobs.dmi'
 	icon_state = "bananaspider_peel"
-	list_reagents = list(/datum/reagent/consumable/nutriment = 3, /datum/reagent/consumable/nutriment/vitamin = 2)
-	foodtype = GORE | MEAT | RAW
+	food_reagents = list(/datum/reagent/consumable/nutriment = 3, /datum/reagent/consumable/nutriment/vitamin = 2)
+	foodtypes = GORE | MEAT | RAW
 	grind_results = list(/datum/reagent/blood = 20, /datum/reagent/liquidgibs = 5)
 	juice_results = list(/datum/reagent/consumable/banana = 10)
 
 
-/obj/item/reagent_containers/food/snacks/deadbanana_spider/Initialize(mapload)
+/obj/item/food/deadbanana_spider/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/slippery, 20)
 

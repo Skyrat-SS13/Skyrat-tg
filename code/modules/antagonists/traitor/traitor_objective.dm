@@ -44,10 +44,6 @@
 	var/original_progression = 0
 	/// Abstract type that won't be included as a possible objective
 	var/abstract_type = /datum/traitor_objective
-	// SKYRAT EDIT START
-	/// The amount of crew required for the objective to appeaar
-	var/population_requirement = 0
-	// SKYRAT EDIT END
 
 /// Returns a list of variables that can be changed by config, allows for balance through configuration.
 /// It is not recommended to finetweak any values of objectives on your server.

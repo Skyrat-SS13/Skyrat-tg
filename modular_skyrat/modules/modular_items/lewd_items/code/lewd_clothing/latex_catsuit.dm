@@ -36,11 +36,11 @@
 	if(src == affected_human.w_uniform)
 		if(affected_mob.gender == FEMALE)
 			icon_state = "latex_catsuit_female"
-			affected_mob.update_inv_w_uniform()
+			affected_mob.update_worn_undersuit()
 
 		if(affected_mob.gender == MALE)
 			icon_state = "latex_catsuit_male"
-			affected_mob.update_inv_w_uniform()
+			affected_mob.update_worn_undersuit()
 
 	//For giving taurs proper sprites
 	if(affected_human.dna.species.mutant_bodyparts["taur"])

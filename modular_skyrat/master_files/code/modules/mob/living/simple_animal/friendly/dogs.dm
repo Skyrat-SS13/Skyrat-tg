@@ -147,7 +147,7 @@
 	if(!source_turf || !target_turf)
 		return
 	var/obj/projectile/bullet/reusable/foam_dart/fired_dart = new /obj/projectile/bullet/reusable/foam_dart(loc)
-	fired_dart.icon = 'icons/obj/guns/toy.dmi'
+	fired_dart.icon = 'icons/obj/weapons/guns/toy.dmi'
 	fired_dart.icon_state = "foamdart_proj"
 	playsound(loc, 'sound/items/syringeproj.ogg', 75, 1)
 	fired_dart.preparePixelProjectile(target, source_turf)

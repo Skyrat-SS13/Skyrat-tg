@@ -3,7 +3,7 @@
 	id = "large_hypovial"
 	build_type = AUTOLATHE | PROTOLATHE
 	materials = list(/datum/material/iron = 2500)
-	build_path = /obj/item/reagent_containers/glass/vial/large
+	build_path = /obj/item/reagent_containers/cup/vial/large
 	category = list(RND_CATEGORY_INITIAL, RND_CATEGORY_MEDICAL, "Medical Designs")
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 

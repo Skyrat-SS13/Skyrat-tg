@@ -263,7 +263,7 @@
 
 /obj/item/storage/box/beakers/PopulateContents()
 	for(var/i in 1 to 7)
-		new /obj/item/reagent_containers/glass/beaker( src )
+		new /obj/item/reagent_containers/cup/beaker( src )
 
 /obj/item/storage/box/beakers/bluespace
 	name = "box of bluespace beakers"
@@ -271,18 +271,18 @@
 
 /obj/item/storage/box/beakers/bluespace/PopulateContents()
 	for(var/i in 1 to 7)
-		new /obj/item/reagent_containers/glass/beaker/bluespace(src)
+		new /obj/item/reagent_containers/cup/beaker/bluespace(src)
 
 /obj/item/storage/box/beakers/variety
 	name = "beaker variety box"
 
 /obj/item/storage/box/beakers/variety/PopulateContents()
-	new /obj/item/reagent_containers/glass/beaker(src)
-	new /obj/item/reagent_containers/glass/beaker/large(src)
-	new /obj/item/reagent_containers/glass/beaker/plastic(src)
-	new /obj/item/reagent_containers/glass/beaker/meta(src)
-	new /obj/item/reagent_containers/glass/beaker/noreact(src)
-	new /obj/item/reagent_containers/glass/beaker/bluespace(src)
+	new /obj/item/reagent_containers/cup/beaker(src)
+	new /obj/item/reagent_containers/cup/beaker/large(src)
+	new /obj/item/reagent_containers/cup/beaker/plastic(src)
+	new /obj/item/reagent_containers/cup/beaker/meta(src)
+	new /obj/item/reagent_containers/cup/beaker/noreact(src)
+	new /obj/item/reagent_containers/cup/beaker/bluespace(src)
 
 /obj/item/storage/box/medigels
 	name = "box of medical gels"
@@ -449,7 +449,7 @@
 
 /obj/item/storage/box/drinkingglasses/PopulateContents()
 	for(var/i in 1 to 6)
-		new /obj/item/reagent_containers/food/drinks/drinkingglass(src)
+		new /obj/item/reagent_containers/cup/glass/drinkingglass(src)
 
 /obj/item/storage/box/condimentbottles
 	name = "box of condiment bottles"
@@ -458,7 +458,7 @@
 
 /obj/item/storage/box/condimentbottles/PopulateContents()
 	for(var/i in 1 to 6)
-		new /obj/item/reagent_containers/food/condiment(src)
+		new /obj/item/reagent_containers/condiment(src)
 
 /obj/item/storage/box/cups
 	name = "box of paper cups"
@@ -467,7 +467,7 @@
 
 /obj/item/storage/box/cups/PopulateContents()
 	for(var/i in 1 to 7)
-		new /obj/item/reagent_containers/food/drinks/sillycup( src )
+		new /obj/item/reagent_containers/cup/glass/sillycup( src )
 
 /obj/item/storage/box/donkpockets
 	name = "box of donk-pockets"
@@ -693,7 +693,7 @@
 /obj/item/storage/box/snappops
 	name = "snap pop box"
 	desc = "Eight wrappers of fun! Ages 8 and up. Not suitable for children."
-	icon = 'icons/obj/toy.dmi'
+	icon = 'icons/obj/toys/toy.dmi'
 	icon_state = "spbox"
 	illustration = ""
 
@@ -748,7 +748,7 @@
 
 /obj/item/storage/box/lights
 	name = "box of replacement bulbs"
-	icon = 'icons/obj/storage.dmi'
+	icon = 'icons/obj/storage/storage.dmi'
 	illustration = "light"
 	desc = "This box is shaped on the inside so that only light tubes and bulbs fit."
 	inhand_icon_state = "syringe_kit"
@@ -1483,7 +1483,7 @@
 	for(var/i in 1 to 3)
 		new /obj/item/food/grown/tomato(src)
 		new /obj/item/food/meatball(src)
-	new /obj/item/reagent_containers/food/drinks/bottle/wine(src)
+	new /obj/item/reagent_containers/cup/glass/bottle/wine(src)
 
 /obj/item/storage/box/ingredients/vegetarian
 	theme_name = "vegetarian"
@@ -1583,6 +1583,18 @@
 		new /obj/item/food/fishmeat/moonfish(src)
 	new /obj/item/food/fishmeat/gunner_jellyfish(src)
 
+/obj/item/storage/box/ingredients/salads
+	theme_name = "salads"
+
+/obj/item/storage/box/ingredients/salads/PopulateContents()
+	new /obj/item/food/grown/onion/red(src)
+	new /obj/item/food/grown/onion/red(src)
+	new /obj/item/food/grown/cabbage(src)
+	new /obj/item/food/grown/tomato(src)
+	new /obj/item/food/grown/carrot(src)
+	new /obj/item/food/grown/olive(src)
+	new /obj/item/reagent_containers/condiment/quality_oil(src)
+
 /obj/item/storage/box/ingredients/random
 	theme_name = "random"
 	desc = "This box should not exist, contact the proper authorities."
@@ -1636,7 +1648,7 @@
 
 /obj/item/storage/box/hero/mothpioneer
 	name = "Mothic Fleet Pioneer - 2100's."
-	desc = "Some claim that the fleet engineers are directly responsible for most modern advancement in spacefaring design. Although the exact details of their past contributions are somewhat fuzzy, their ingenuity remains unmatched and unquestioned to this day."
+	desc = "Some claim that the fleet engineers are directly responsible for most modern advancements in spacefaring designs. Although the exact details of their past contributions are somewhat fuzzy, their ingenuity remains unmatched and unquestioned to this day."
 
 /obj/item/storage/box/hero/mothpioneer/PopulateContents()
 	new /obj/item/clothing/suit/mothcoat/original(src)
@@ -1647,6 +1659,15 @@
 	new /obj/item/crowbar(src)
 	new /obj/item/stack/sheet/iron/fifty(src)
 	new /obj/item/stack/sheet/glass/fifty(src)
+
+/obj/item/storage/box/hero/etherealwarden
+	name = "Ethereal Trailwarden - 2450's."
+	desc = "Many fantastical stories are told of valiant trail wardens, even by offworlders who, thanks to their guidance, avoided an untimely demise while traveling the sometimes treacherous roads of Sprout. In truth their job entails far more walking and fixing roads than slaying dragons, but it is no less important and well respected: keeping the roads and trails safe and well maintained is for many settlements a matter of survival."
+
+/obj/item/storage/box/hero/etherealwarden/PopulateContents()
+	new /obj/item/clothing/suit/hooded/ethereal_raincoat/trailwarden(src)
+	new /obj/item/clothing/under/ethereal_tunic/trailwarden(src)
+	new /obj/item/storage/backpack/saddlepack(src)
 
 /obj/item/storage/box/holy/clock
 	name = "Forgotten kit"
@@ -1772,9 +1793,9 @@
 /obj/item/storage/box/mothic_goods/PopulateContents()
 	for(var/i in 1 to 12)
 		var/randomFood = pick_weight(list(/obj/item/food/grown/toechtauese = 10,
-										  /obj/item/reagent_containers/food/condiment/cornmeal = 5,
-										  /obj/item/reagent_containers/food/condiment/yoghurt = 5,
-										  /obj/item/reagent_containers/food/condiment/quality_oil = 5,
+										  /obj/item/reagent_containers/condiment/cornmeal = 5,
+										  /obj/item/reagent_containers/condiment/yoghurt = 5,
+										  /obj/item/reagent_containers/condiment/quality_oil = 5,
 										  /obj/item/food/cheese/mozzarella = 5,
 										  /obj/item/food/cheese/firm_cheese = 5,
 										  /obj/item/food/cheese/wheel = 5,

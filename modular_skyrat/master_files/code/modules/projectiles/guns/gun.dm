@@ -59,7 +59,7 @@
 
 	var/can_bayonet = FALSE // if a bayonet can be added or removed if it already has one.
 	var/bayonet_state = "bayonet"
-	var/bayonet_icon = 'icons/obj/guns/bayonets.dmi'
+	var/bayonet_icon = 'icons/obj/weapons/guns/bayonets.dmi'
 	var/obj/item/knife/bayonet
 	var/knife_x_offset = 0
 	var/knife_y_offset = 0
@@ -315,9 +315,12 @@
 			iterated_object.emp_act(severity)
 
 /obj/item/gun/afterattack_secondary(mob/living/victim, mob/living/user, params)
-	if(!ismob(victim))
-		return
-	if(user.GetComponent(/datum/component/gunpoint))
+	if(!isliving(victim) || !IN_GIVEN_RANGE(user, victim, GUNPOINT_SHOOTER_STRAY_RANGE))
+		return ..() //if they're out of range, just shootem.
+	var/datum/component/gunpoint/gunpoint_component = user.GetComponent(/datum/component/gunpoint)
+	if (gunpoint_component)
+		if(gunpoint_component.target == victim)
+			return ..() //we're already holding them up, shoot that mans instead of complaining
 		balloon_alert(user, "already holding someone up!")
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	if(user == victim)
@@ -533,7 +536,7 @@
 		addtimer(CALLBACK(src, .proc/reset_semicd), fire_delay)
 
 	if(user)
-		user.update_inv_hands()
+		user.update_held_items()
 	SSblackbox.record_feedback("tally", "gun_fired", 1, type)
 
 	SEND_SIGNAL(src, COMSIG_UPDATE_AMMO_HUD)

@@ -14,10 +14,8 @@
 		MUTCOLORS,
 	)
 
-/datum/species/moth/get_random_features()
-	var/list/returned = MANDATORY_FEATURE_LIST
-	returned["mcolor"] = "#E5CD99"
-	return returned
+/datum/species/moth/randomize_features(mob/living/carbon/human/human_mob)
+	human_mob.dna.features["mcolor"] = "#E5CD99"
 
 /datum/species/moth/get_random_body_markings(list/passed_features)
 	var/name = "None"

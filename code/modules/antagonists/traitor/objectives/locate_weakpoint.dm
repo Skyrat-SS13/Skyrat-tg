@@ -12,7 +12,6 @@
 	progression_minimum = 45 MINUTES
 	progression_reward = list(15 MINUTES, 20 MINUTES)
 	telecrystal_reward = list(3, 5)
-	population_requirement = BOMB_POP_REQUIREMENT //SKYRAT EDIT
 
 	var/progression_objectives_minimum = 20 MINUTES
 
@@ -133,8 +132,8 @@
 	icon = 'icons/obj/device.dmi'
 	icon_state = "weakpoint_locator"
 	inhand_icon_state = "weakpoint_locator"
-	lefthand_file = 'icons/mob/inhands/misc/devices_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/misc/devices_righthand.dmi'
+	lefthand_file = 'icons/mob/inhands/items/devices_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/items/devices_righthand.dmi'
 	throwforce = 0
 	w_class = WEIGHT_CLASS_SMALL
 	throw_speed = 3

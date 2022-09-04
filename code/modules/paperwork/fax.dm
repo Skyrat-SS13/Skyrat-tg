@@ -60,6 +60,7 @@
 			if (syndicate_network != TRUE && obj_flags != EMAGGED)
 				to_chat(user, span_warning("There is already a fax machine with this name on the network."))
 				return TOOL_ACT_TOOLTYPE_SUCCESS
+		user.log_message("renamed [fax_name] (fax machine) to [new_fax_name].", LOG_GAME)
 		fax_name = new_fax_name
 	return TOOL_ACT_TOOLTYPE_SUCCESS
 
@@ -117,6 +118,7 @@
 			return TRUE
 		if("send")
 			if(send(paper_contain, params["id"]))
+				log_paper("[usr] has sent a fax with the message \"[paper_contain.get_raw_text()]\" to [params["id"]].")
 				paper_contain = null
 				update_appearance()
 				return TRUE
@@ -154,7 +156,7 @@
  */
 /obj/machinery/fax/proc/receive(obj/item/paper/paper, sender_name)
 	playsound(src, 'sound/machines/printer.ogg', 50, FALSE)
-	flick(paper_contain ? "fax_contain_receive" : "fax_contain", src)
+	flick(paper_contain ? "fax_contain_receive" : "fax_receive", src)
 	say("Received correspondence from [sender_name].")
 	history_add("Receive", sender_name)
 	paper.forceMove(drop_location())

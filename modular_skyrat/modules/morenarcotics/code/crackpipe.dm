@@ -18,7 +18,7 @@
 			lit = FALSE
 			icon_state = icon_off
 			inhand_icon_state = icon_off
-			smoking_mob.update_inv_wear_mask()
+			smoking_mob.update_worn_mask()
 			packeditem = FALSE
 			name = "empty [initial(name)]"
 		STOP_PROCESSING(SSobj, src)

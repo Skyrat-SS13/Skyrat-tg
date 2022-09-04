@@ -78,7 +78,7 @@
 
 	var/atom/original_object = parent
 
-	if(istype(parent, /obj/item/stack)) //Check if its a sheet, for grilling multiple things in a stack
+	if(isstack(parent)) //Check if its a sheet, for grilling multiple things in a stack
 		var/obj/item/stack/itemstack = original_object
 		var/atom/grilled_result = new cook_result(original_object.loc, itemstack.amount)
 		SEND_SIGNAL(parent, COMSIG_GRILL_COMPLETED, grilled_result)

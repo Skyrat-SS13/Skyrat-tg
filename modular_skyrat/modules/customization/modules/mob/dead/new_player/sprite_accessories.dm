@@ -777,3 +777,7 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 /datum/sprite_accessory/undershirt/leotard/turtleneck
 	name = "Shirt - Turtleneck Leotard"
 	icon_state = "leotard_turtleneck"
+
+/datum/sprite_accessory/undershirt/leotard/turtleneck/sleeveless
+	name = "Shirt - Turtleneck Leotard Sleeveless"
+	icon_state = "leotard_turtleneck_sleeveless"
