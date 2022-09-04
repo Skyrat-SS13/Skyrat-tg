@@ -170,7 +170,7 @@
 
 /datum/chemical_reaction/drink/catnip_tea
 	results = list(/datum/reagent/consumable/catnip_tea = 10)
-	required_reagents = list(/datum/reagent/consumable/tea = 5, /datum/reagent/pax/catnip = 2)
+	required_reagents = list(/datum/reagent/consumable/tea = 5, /datum/reagent/catnip = 2)
 
 /datum/chemical_reaction/drink/beerbatter
 	results = list(/datum/reagent/consumable/beerbatter = 4)

@@ -13,7 +13,7 @@
 	growthstages = 5
 	icon_dead = "tea-dead"
 	genes = list(/datum/plant_gene/trait/repeated_harvest)
-	mutatelist = list(/obj/item/seeds/tea/astra)
+	mutatelist = list(/obj/item/seeds/tea/astra, /obj/item/seeds/tea/catnip) // SKYRAT EDIT - ADD CATNIP
 	reagents_add = list(/datum/reagent/consumable/nutriment/vitamin = 0.04, /datum/reagent/toxin/teapowder = 0.1)
 
 /obj/item/food/grown/tea

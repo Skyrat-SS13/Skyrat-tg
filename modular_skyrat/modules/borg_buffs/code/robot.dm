@@ -83,7 +83,7 @@
 		/datum/reagent/consumable/nutriment,\
 		/datum/reagent/consumable/honey,\
 		/datum/reagent/iron,\
-		/datum/reagent/pax/catnip\
+		/datum/reagent/catnip\
 	)
 
 
