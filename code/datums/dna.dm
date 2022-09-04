@@ -131,11 +131,6 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 	destination.dna.unique_enzymes = unique_enzymes
 	destination.dna.unique_identity = unique_identity
 	destination.dna.blood_type = blood_type
-<<<<<<< HEAD
-	//destination.set_species(species.type, icon_update=0) //ORIGINAL
-	destination.set_species(species.type, TRUE, null, features.Copy(), mutant_bodyparts.Copy(), body_markings.Copy()) //SKYRAT EDIT CHANGE - CUSTOMIZATION
-=======
->>>>>>> 458a42cdf91 (Fixes The human and monkey rudimentary transform commands in the player menu for admins. Makes the change_mob_type() proc more readable. (#69481))
 	destination.dna.unique_features = unique_features
 	destination.dna.features = features.Copy()
 	destination.dna.real_name = real_name
@@ -144,7 +139,8 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 		destination.dna.mutation_index = mutation_index
 		destination.dna.default_mutation_genes = default_mutation_genes
 	if(transfer_species)
-		destination.set_species(species.type, icon_update=0)
+		//destination.set_species(species.type, icon_update=0) - ORIGINAL
+		destination.set_species(species.type, TRUE, null, features.Copy(), mutant_bodyparts.Copy(), body_markings.Copy()) //SKYRAT EDIT CHANGE - CUSTOMIZATION
 
 /datum/dna/proc/copy_dna(datum/dna/new_dna)
 	new_dna.unique_enzymes = unique_enzymes
