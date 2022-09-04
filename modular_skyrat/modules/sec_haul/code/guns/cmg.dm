@@ -5,7 +5,7 @@
  */
 
 /obj/item/gun/ballistic/automatic/cmg
-	name = "\improper NT CMG-1-A1"
+	name = "\improper NT CMG-2 PDW"
 	desc = "A bullpup, two round burst submachinegun chambered in 9mm peacekeeper that (after lawsuits from unnamed companies) now uses a fully unique design."
 	icon_state = "cmg1"
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
