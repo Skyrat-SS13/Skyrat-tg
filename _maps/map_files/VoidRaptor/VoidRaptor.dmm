@@ -25532,6 +25532,7 @@
 "hMQ" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/landmark/start/roboticist,
 /turf/open/floor/circuit/red,
 /area/station/science/robotics/mechbay)
 "hNn" = (
@@ -54644,12 +54645,18 @@
 	dir = 4
 	},
 /obj/structure/table,
-/obj/item/restraints/handcuffs,
-/obj/item/assembly/flash/handheld,
+/obj/item/restraints/handcuffs{
+	pixel_y = 4
+	},
 /obj/effect/turf_decal/siding/wood/end{
 	dir = 4
 	},
 /obj/machinery/firealarm/directional/north,
+/obj/item/radio{
+	pixel_x = -6;
+	pixel_y = 6
+	},
+/obj/item/assembly/flash/handheld,
 /turf/open/floor/iron/smooth_large,
 /area/station/security/brig)
 "qaH" = (
@@ -61490,9 +61497,12 @@
 /obj/machinery/camera/directional/south{
 	c_tag = "Security - Office Aft"
 	},
-/obj/item/radio{
+/obj/item/grenade/borg_action_pacifier_grenade{
 	pixel_x = -6;
-	pixel_y = 6
+	pixel_y = -4
+	},
+/obj/item/grenade/borg_action_pacifier_grenade{
+	pixel_x = -6
 	},
 /turf/open/floor/iron/dark/smooth_edge{
 	dir = 1
@@ -66266,8 +66276,8 @@
 /area/station/medical/storage)
 "tox" = (
 /obj/machinery/airalarm/directional/north,
-/obj/effect/landmark/start/roboticist,
 /obj/machinery/light/warm/directional/north,
+/obj/structure/bed/borg_action_pacifier,
 /turf/open/floor/iron/recharge_floor,
 /area/station/science/robotics/mechbay)
 "toL" = (
