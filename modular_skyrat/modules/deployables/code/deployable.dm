@@ -157,18 +157,22 @@
 	INVOKE_ASYNC(src, .proc/alt_clicked_grenade, clicker)
 
 /obj/item/grenade/borg_action_pacifier_grenade/proc/alt_clicked_grenade(mob/living/clicker)
-	if(!power_storage || !clicker)
+	if(!power_storage)
 		return
 
 	var/turf/open/pos = get_turf(src)
 	var/vent_scale // A factor of how big the fake vapor will be
 	vent_scale = (power_storage / (MAX_POWER / 6)) // Max tile-range of 6
 
+	if(clicker)
+		clicker.visible_message(span_warning("[clicker] ventilates the power stored inside [src]..."))
+	if(obj_flags & EMPED)
+		obj_flags &= ~EMPED
+		visible_message(span_warning("[src] overloads and ventilates all its stored power!"))
 	if(istype(pos))
 		for(var/i in 1 to vent_scale)
 			ventilate_effect(pos, vent_scale)
 
-	clicker.visible_message(span_warning("[clicker] ventilates the power stored inside [src]..."))
 	playsound(src, 'sound/effects/spray.ogg', (vent_scale * 10), TRUE)
 	power_storage = 0
 
@@ -393,6 +397,11 @@
 	BAPer.balloon_alert_to_viewers("reset")
 	if(obj_flags & EMAGGED)
 		BAPer.obj_flags |= EMAGGED
+	if(obj_flags & EMPED)
+		BAPer.obj_flags |= EMPED
+		BAPer.do_sparks(2, TRUE)
+		if(BAPer.power_storage)
+			BAPer.alt_clicked_grenade()
 	qdel(src)
 
 // Buckle overwrites
@@ -658,6 +667,13 @@
 	. = ..()
 	if(has_gravity())
 		playsound(src, 'modular_skyrat/master_files/sound/effects/robot_step.ogg', 100, TRUE)
+
+/obj/structure/bed/borg_action_pacifier/emp_act(severity)
+	. = ..()
+	if (. & EMP_PROTECT_SELF)
+		return
+	obj_flags |= EMPED
+	undeploy()
 
 /obj/item/grenade/borg_action_pacifier_grenade/proc/ventilate_effect(turf/open/location, vent_scale)
 	var/list/turfs_affected = list(location)
