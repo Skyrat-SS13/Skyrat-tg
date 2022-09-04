@@ -85,7 +85,7 @@
 /obj/structure/bed/borg_action_pacifier/atom_destruction(damage_flag)
 	var/turf/debris = get_turf(src)
 	if(power_storage && power_storage >= 5000)
-		explosion(src, -1, (power_storage / 12500), (power_storage / 12500), (power_storage / 5000), -1)
+		explosion(src, -1, (power_storage / 12500), (power_storage / 12500), (power_storage / 10000), -1)
 
 	new /obj/effect/decal/cleanable/robot_debris(debris)
 	return ..()
@@ -608,7 +608,7 @@
 
 /mob/living/simple_animal/hostile/borg_action_pacifier/death(gibbed)
 	if(power_storage && power_storage >= 5000)
-		explosion(src, -1, (power_storage / 12500), (power_storage / 12500), (power_storage / 5000), -1)
+		explosion(src, -1, (power_storage / 12500), (power_storage / 12500), (power_storage / 10000), -1)
 	QDEL_NULL(particles)
 	return ..()
 
