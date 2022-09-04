@@ -519,3 +519,18 @@
 	vary = TRUE
 	sound = 'sound/weapons/bite.ogg'
 
+/datum/emote/living/wcat
+	key = "wcat"
+	key_third_person = "emits a weird cat noise"
+	message = "emits a weird cat noise."
+	emote_type = EMOTE_AUDIBLE
+	vary = TRUE
+	sound = 'modular_skyrat/modules/emotes/sound/voice/wcat.ogg'
+	
+/datum/emote/living/wdog
+	key = "wdog"
+	key_third_person = "lets out a weird dog noise"
+	message = "lets out a weird dog noise."
+	emote_type = EMOTE_AUDIBLE
+	vary = TRUE
+	sound = 'modular_skyrat/modules/emotes/sound/voice/wdog.ogg'
