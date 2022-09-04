@@ -15,7 +15,7 @@
 /datum/area_spawn/borg_action_pacifier
 	target_areas = list(/area/station/security/lockers, /area/station/security/office)
 	desired_atom = /obj/item/grenade/borg_action_pacifier_grenade
-	amount_to_spawn = 3
+	amount_to_spawn = 2
 	mode = AREA_SPAWN_MODE_OPEN
 
 /datum/area_spawn/borg_action_pacifier_deployed
@@ -28,16 +28,17 @@
 // Research
 /datum/techweb_node/cyborg_security
 	id = "cyborg_security"
-	display_name = "Cyborg security"
-	description = "Tools for security."
+	display_name = "Silicon Malfunction Solutions"
+	description = "A portable device which manually overrides and controls a cyborg's OS."
 	prereq_ids = list("robotics", "sec_basic")
 	design_ids = list(
 		"BAPgrenade",
 	)
-	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 3500)
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 7500)
+	discount_experiments = list(/datum/experiment/ordnance/explosive/highyieldbomb = 5000)
 
 /datum/design/BAPgrenade
-	name = "B.A.P. unit"
+	name = "Deployable Control-Bay"
 	id = "BAPgrenade"
 	materials = list(/datum/material/iron = 1000, /datum/material/glass = 1000, /datum/material/gold = 2000, /datum/material/silver = 2000)
 	build_path = /obj/item/grenade/borg_action_pacifier_grenade
@@ -47,8 +48,8 @@
 
 // The item
 /obj/structure/bed/borg_action_pacifier
-	name = "deployed B.A.P. unit"
-	desc = "An inactivated device to constrain silicons with."
+	name = "cyborg control-bay"
+	desc = "A nimble device with an electric port suited to connect with station-approved cyborgs. Once attached the control-bay supersedes the cyborg's OS hierarchy to allow for maintenance."
 	icon = 'modular_skyrat/modules/deployables/icons/deployable.dmi'
 	icon_state = "up"
 	anchored = FALSE
@@ -92,18 +93,19 @@
 
 /obj/structure/bed/borg_action_pacifier/examine(mob/user)
 	. = ..()
-	if(locked)
-		. += span_notice("It's locked.")
-	if(enabled_function != NONE)
-		. += span_notice("It's [enabled_function]ing power...")
-	. += span_notice("It's currently holding [power_storage] units worth of charge.")
-	if(power_storage == MAX_POWER)
+	if(power_storage)
+		. += span_notice("Its currently holding [power_storage] units worth of charge.")
+	if(power_storage >= MAX_POWER)
 		. += span_warning("It cannot store any more power.")
+	if(enabled_function != NONE)
+		. += span_notice("Its [enabled_function]ing power...")
+	if(locked)
+		. += span_notice("Its locking mode is enabled!")
 
 // The grenade
 /obj/item/grenade/borg_action_pacifier_grenade
-	name = "B.A.P. grenade"
-	desc = "A deactivated device to restrain silicons with."
+	name = "deployable control-bay"
+	desc = "A portable device with an electric port suited to connect with station-approved cyborgs."
 	icon = 'modular_skyrat/modules/deployables/icons/deployable.dmi'
 	icon_state = "folded"
 	lefthand_file = 'modular_skyrat/modules/deployables/icons/mob/inhand/deployable_lefthand.dmi'
@@ -113,18 +115,26 @@
 	worn_icon_state = "BAPer_worn"
 	w_class = WEIGHT_CLASS_NORMAL
 
-	custom_price = PAYCHECK_CREW * 2
+	custom_price = PAYCHECK_CREW * 3.3
 	det_time = 3 SECONDS
+	display_timer = FALSE
 	/// Amount of power drained from the cyborg, from when we were still deployed
 	var/power_storage = 0
 
 /obj/item/grenade/borg_action_pacifier_grenade/Initialize(mapload)
 	. = ..()
 	RegisterSignal(src, COMSIG_CLICK_ALT, .proc/check_alt_clicked_grenade)
+	AddElement(/datum/element/item_scaling, 0.75, 0.75)
 
 /obj/item/grenade/borg_action_pacifier_grenade/Destroy()
 	. = ..()
 	UnregisterSignal(src, COMSIG_CLICK_ALT)
+
+/obj/item/grenade/borg_action_pacifier_grenade/multitool_act(mob/living/user, obj/item/tool)
+	return FALSE
+
+/obj/item/grenade/borg_action_pacifier_grenade/screwdriver_act(mob/living/user, obj/item/tool)
+	return FALSE
 
 /obj/item/grenade/borg_action_pacifier_grenade/detonate(mob/living/lanced_by)
 	. = ..()
@@ -142,7 +152,8 @@
 
 /obj/item/grenade/borg_action_pacifier_grenade/examine(mob/user)
 	. = ..()
-	. += span_notice("It's currently holding [power_storage] units worth of charge.")
+	if(power_storage)
+		. += span_notice("Its currently holding [power_storage] units worth of charge.")
 	if(power_storage == MAX_POWER)
 		. += span_warning("It cannot store any more power.")
 
@@ -179,7 +190,7 @@
 /obj/structure/bed/borg_action_pacifier/proc/deploy()
 	if(deployed)
 		return
-	name = "deploying B.A.P. unit"
+	name = "deploying control-bay"
 
 	balloon_alert_to_viewers("unfolding...")
 	playsound(src, 'modular_skyrat/master_files/sound/effects/robot_trap.ogg', 25, TRUE, falloff_exponent = 10)
@@ -187,7 +198,7 @@
 	flick("deploying", src)
 
 /obj/structure/bed/borg_action_pacifier/proc/finish_deploy()
-	name = "deployed B.A.P. unit"
+	name = "cyborg control-bay"
 	icon_state = "up"
 	deployed = TRUE
 
@@ -211,7 +222,7 @@
 		if(has_buckled_mobs() || deployed)
 			return FALSE
 
-		usr.visible_message(span_notice("[usr] collapses [src]."), span_notice("You collapse [src]."))
+		usr.visible_message(span_notice("[usr] shuts off [src]."), span_notice("You shut off [src]."))
 		var/obj/item/grenade/borg_action_pacifier_grenade/BAPer = new (get_turf(src))
 		usr.put_in_hands(BAPer)
 		BAPer.power_storage = power_storage
@@ -356,6 +367,7 @@
 /obj/structure/bed/borg_action_pacifier/proc/lock(mob/living/clicker)
 	if(clicker)
 		log_combat(clicker, buckled_cyborg, "locked down cyborg")
+		log_silicon("[key_name(clicker)] locked down [key_name(buckled_cyborg)].")
 
 	playsound(src, 'modular_skyrat/master_files/sound/effects/robot_lock.ogg', 50, TRUE, falloff_exponent = 10)
 	buckled_cyborg.SetLockdown(TRUE)
@@ -365,6 +377,7 @@
 /obj/structure/bed/borg_action_pacifier/proc/unlock(mob/living/clicker)
 	if(clicker)
 		log_combat(clicker, buckled_cyborg, "released cyborg")
+		log_silicon("[key_name(clicker)] released [key_name(buckled_cyborg)] from lockdown.")
 
 	buckled_cyborg.SetLockdown(FALSE)
 	buckled_cyborg.regenerate_icons()
@@ -399,7 +412,6 @@
 		BAPer.obj_flags |= EMAGGED
 	if(obj_flags & EMPED)
 		BAPer.obj_flags |= EMPED
-		BAPer.do_sparks(2, TRUE)
 		if(BAPer.power_storage)
 			BAPer.alt_clicked_grenade()
 	qdel(src)
@@ -408,9 +420,6 @@
 /obj/structure/bed/borg_action_pacifier/buckle_mob(mob/living/target, force, check_loc)
 	if(!deployed)
 		return
-	if(iscarbon(target))
-		var/mob/living/carbon/carbon = target
-		carbon.rotate_on_lying = 0
 	..()
 
 /obj/structure/bed/borg_action_pacifier/user_buckle_mob(mob/living/target, mob/user, check_loc)
@@ -426,15 +435,14 @@
 	..()
 
 /obj/structure/bed/borg_action_pacifier/unbuckle_mob(mob/living/buckled_mob, force, can_fall)
-	if(iscarbon(buckled_mob))
-		var/mob/living/carbon/carbon = buckled_mob
-		carbon.rotate_on_lying = 1
-		return ..()
 	if(!force)
 		return
 	..()
 
 /obj/structure/bed/borg_action_pacifier/post_buckle_mob(mob/living/target)
+	if(iscarbon(target))
+		var/mob/living/carbon/carbon = target
+		carbon.set_lying_angle(0)
 	if(!iscyborg(target))
 		target.pixel_y = (target.base_pixel_y + 18)
 		return
@@ -505,8 +513,8 @@
 
 // Fluff
 /mob/living/simple_animal/hostile/borg_action_pacifier
-	name = "BAPer"
-	desc = ""
+	name = "cyborg control-bay"
+	desc = "A nimble device with an electric port suited to connect with station-approved cyborgs. Why is it glowing red...?"
 	icon = 'modular_skyrat/modules/deployables/icons/deployable.dmi'
 	icon_state = "emagged"
 	faction = list("silicon")
@@ -515,10 +523,10 @@
 	stat_attack = HARD_CRIT
 	gender = NEUTER
 	mob_biotypes = MOB_ROBOTIC
-	speak_chance = 25
-	speak = list("Die, meatbags!")
-	maxHealth = 180
-	health = 180
+	speak_chance = 5
+	speak = list("Device encountered an error!", "Please contact device administration.", "If the issue persists, try a reboot cycle.")
+	maxHealth = 140
+	health = 140
 	damage_coeff = list(BRUTE = 1, BURN = 1.2, TOX = 0, CLONE = 0, STAMINA = 0, OXY = 0)
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_plas" = 0, "max_plas" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	speed = 0.5
@@ -557,10 +565,8 @@
 /obj/structure/bed/borg_action_pacifier/emag_act(mob/clicker)
 	if(obj_flags & EMAGGED)
 		return
-	to_chat(clicker, span_notice("You override the cheat code menu and skip to Cheat #[rand(1, 50)]: Realism Mode."))
-	clicker.log_message("emagged [src], activating Realism Mode.", LOG_GAME)
-	name = "The Orion Trail: Realism Edition"
-	desc = "Learn how our ancestors got to Orion, and try not to die in the process!"
+	to_chat(clicker, span_notice("You activate a sequence remnant from early development, initiating a combat program once the device deploys."))
+	clicker.log_message("emagged [src], activating its combat mode.", LOG_GAME)
 	undeploy()
 	do_sparks(2, TRUE, src)
 	obj_flags |= EMAGGED
@@ -568,10 +574,8 @@
 /obj/item/grenade/borg_action_pacifier_grenade/emag_act(mob/clicker)
 	if(obj_flags & EMAGGED)
 		return
-	to_chat(clicker, span_notice("You override the cheat code menu and skip to Cheat #[rand(1, 50)]: Realism Mode."))
-	clicker.log_message("emagged [src], activating Realism Mode.", LOG_GAME)
-	name = "The Orion Trail: Realism Edition"
-	desc = "Learn how our ancestors got to Orion, and try not to die in the process!"
+	to_chat(clicker, span_notice("You activate a sequence remnant from early development, initiating a combat program once the device deploys."))
+	clicker.log_message("emagged [src], activating its combat mode.", LOG_GAME)
 	do_sparks(2, TRUE, src)
 	obj_flags |= EMAGGED
 
