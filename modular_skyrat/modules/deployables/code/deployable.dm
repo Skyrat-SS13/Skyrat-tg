@@ -417,7 +417,7 @@
 	..()
 
 /obj/structure/bed/borg_action_pacifier/unbuckle_mob(mob/living/buckled_mob, force, can_fall)
-	if(!iscarbon(buckled_mob))
+	if(iscarbon(buckled_mob))
 		var/mob/living/carbon/carbon = buckled_mob
 		carbon.rotate_on_lying = 1
 		return ..()
