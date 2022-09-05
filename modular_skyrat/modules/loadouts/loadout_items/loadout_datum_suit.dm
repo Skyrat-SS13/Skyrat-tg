@@ -263,10 +263,6 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	name = "Worn Shirt"
 	item_path = /obj/item/clothing/suit/wornshirt
 
-/datum/loadout_item/suit/tailcoat
-	name = "Tailcoat"
-	item_path = /obj/item/clothing/suit/costume/tailcoat
-
 /datum/loadout_item/suit/duster
 	name = "Colorable Duster"
 	item_path = /obj/item/clothing/suit/duster

@@ -7,11 +7,6 @@
 		/obj/item/clothing/under/costume/kamishimo = 5,
 		/obj/item/clothing/head/costume/kabuto = 5,
 		/obj/item/clothing/suit/costume/samurai = 5,
-		/obj/item/clothing/under/costume/vic_vest = 5,
-		/obj/item/clothing/under/costume/vic_vest/red = 5,
-		/obj/item/clothing/under/costume/vic_vest/blue = 5,
-		/obj/item/clothing/under/costume/vic_vest/red_alt = 5,
-		/obj/item/clothing/suit/costume/tailcoat = 5,
 		/obj/item/clothing/under/doug_dimmadome = 5,
 		/obj/item/clothing/glasses/biker = 5, //remind me to give these an up state later
 		/obj/item/clothing/head/cowboyhat/blackwide = 5,

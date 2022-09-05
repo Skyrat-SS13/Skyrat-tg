@@ -794,26 +794,6 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "French Marshall's Uniform"
 	item_path = /obj/item/clothing/under/trek/q
 
-/datum/loadout_item/under/formal/vic_vest
-	name = "Victorian Vest"
-	item_path = /obj/item/clothing/under/costume/vic_vest
-
-/datum/loadout_item/under/formal/vic_vest/red
-	name = "Red Victorian Shirt with Vest"
-	item_path = /obj/item/clothing/under/costume/vic_vest/red
-
-/datum/loadout_item/under/formal/vic_vest/green
-	name = "Green victorian vest"
-	item_path = /obj/item/clothing/under/costume/vic_vest/green
-
-/datum/loadout_item/under/formal/vic_vest/blue
-	name = "Blue Victorian Vest"
-	item_path = /obj/item/clothing/under/costume/vic_vest/blue
-
-/datum/loadout_item/under/formal/vic_vest/red/shirt
-	name = "Red Victorian Vest"
-	item_path = /obj/item/clothing/under/costume/vic_vest/red_alt
-
 //FAMILIES GEAR
 /datum/loadout_item/under/formal/osi
 	name = "OSI Uniform"

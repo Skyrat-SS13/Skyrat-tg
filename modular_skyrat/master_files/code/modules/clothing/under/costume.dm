@@ -83,25 +83,6 @@
 	body_parts_covered = CHEST|GROIN|ARMS
 
 /*
-*	VICTORIAN CLOTHES
-*/
-
-/obj/item/clothing/under/costume/vic_vest
-	name = "victorian vest"
-	desc = "An extremely old-style suit, worn during ancient Earth's victorian period. Its still often worn by those aiming to appear wealthy."
-	icon_state = "victorianvest"
-	body_parts_covered = CHEST|GROIN|ARMS|LEGS
-//GAGS
-/obj/item/clothing/under/costume/vic_vest/red
-	icon_state = "victorianvest_red"
-/obj/item/clothing/under/costume/vic_vest/green
-	icon_state = "victorianvest_green"
-/obj/item/clothing/under/costume/vic_vest/blue
-	icon_state = "victorianvest_blue"
-/obj/item/clothing/under/costume/vic_vest/red_alt
-	icon_state = "victorianvest_red_alt"
-
-/*
 *	CHRISTMAS CLOTHES
 */
 
