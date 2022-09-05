@@ -400,8 +400,6 @@
 		tray.set_pestlevel(rand(8, 10))
 		tray.set_weedlevel(rand(8, 10))
 		tray.set_toxic(rand(45, 55))
-<<<<<<< HEAD
-=======
 
 /datum/action/cooldown/spell/aoe/revenant/haunt_object
 	name = "Haunt Object"
@@ -456,4 +454,3 @@
 
 #undef REVENANT_DEFILE_MIN_DAMAGE
 #undef REVENANT_DEFILE_MAX_DAMAGE
->>>>>>> b46c0bd7a7e (Adds a new revenant spell, Haunt Object, which imbues nearby objects with ghostly energy (#69348))
