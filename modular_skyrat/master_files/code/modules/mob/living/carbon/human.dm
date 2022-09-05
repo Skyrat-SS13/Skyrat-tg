@@ -2,7 +2,7 @@
 	if(stat != CONSCIOUS) // you're not The One
 		return ..()
 	// Cat-people always land on their feet
-	if(isfeline(src))
+	if(isfelinid(src) || istajaran(src))
 		// Check to make sure legs are working
 		var/obj/item/bodypart/left_leg = get_bodypart(BODY_ZONE_L_LEG)
 		var/obj/item/bodypart/right_leg = get_bodypart(BODY_ZONE_R_LEG)
