@@ -1,6 +1,9 @@
 /obj/item/clothing/under/costume
 	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/under/costume_digi.dmi'
 
+/obj/item/clothing/under/costume/russian_officer
+	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/under/security_digi.dmi'
+
 /obj/item/clothing/under/costume/skyrat
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/costume.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/costume.dmi'
