@@ -66,13 +66,13 @@
 
 /obj/item/ammo_casing/realistic/a762x39/ricochet
 	name = "5.6x40mm marksman bullet casing"
-	desc = "A 5.6x40mm marksman bullet casing.\
+	desc = "A 5.6x40mm match bullet casing.\
 	<br><br>\
-	<i>MARKSMAN: High ricochet and autoaim chance.</i>"
+	<i>MATCH: Ricochets everywhere. Like crazy.</i>"
 	projectile_type = /obj/projectile/bullet/a762x39/ricochet
 
 /obj/projectile/bullet/a762x39/ricochet
-	name = "5.6mm marksman bullet"
+	name = "5.6mm match bullet"
 	damage = 30
 	wound_bonus = 25
 	armour_penetration = 25
@@ -104,7 +104,7 @@
 	name = "5.6x40mm anti-acid bullet casing"
 	desc = "A 5.6x40mm anti-acid bullet casing. Special chemical treatment and an additional layer of water-absorbent materials dissipates and absorbs water from the target's body, making any acid-blooded target melt from the inside.\
 	<br><br>\
-	<i>XENO BUSTER: Deals huge additional damage against Xenomorphs. (Player-controlled ones, not simplemobs.)</i>"
+	<i>ANTI-ACID: Deals additional damage against player-controlled Xenomorphs.</i>"
 	projectile_type = /obj/projectile/bullet/a762x39/xeno
 
 /obj/projectile/bullet/a762x39/xeno
@@ -126,7 +126,7 @@
 	name = "5.6x40mm armor-piercing bullet casing"
 	desc = "A 5.6x40mm armor-piercing bullet casing.\
 	<br><br>\
-	<i>ARMOR-PIERCING: Practically ignores armor. Reduced damage and wounding chance.</i>"
+	<i>ARMOR PIERCING: Increased armor piercing capabilities. What did you expect?</i>"
 	projectile_type = /obj/projectile/bullet/a762x39
 
 /obj/projectile/bullet/a762x39/ap
@@ -140,7 +140,7 @@
 	name = "5.6x40mm ion bullet casing"
 	desc = "A 5.6x40mm ion bullet casing.\
 	<br><br>\
-	<i>ION: EMPs on hit. Reduced conventional damage.</i>"
+	<i>EMP: Produces an Electro-Magnetic Pulse on impact, damaging electronics severely.</i>"
 	projectile_type = /obj/projectile/bullet/a762x39/emp
 
 /obj/projectile/bullet/a762x39/emp
@@ -159,7 +159,7 @@
 	name = "5.6x40mm civilian bullet casing"
 	desc = "A 5.6x40mm civilian-grade surplus bullet casing.\
 	<br><br>\
-	<i>LOW-GRADE: Less-than-average quality ammunition. Worse overall performance.</i>"
+	<i>CIVILIAN: Non-military ammunition with a low powder load. Performs worse in every aspect in comparison to its military variant.</i>"
 	projectile_type = /obj/projectile/bullet/a762x39/civilian
 
 /obj/projectile/bullet/a762x39/civilian
@@ -193,9 +193,9 @@
 
 /obj/item/ammo_casing/realistic/a762x39/civilian/hunting
 	name = "5.6x40mm hunting bullet casing"
-	desc = "A 5.6x40mm civilian-grade hunting bullet casing.\
+	desc = "A 5.6x40mm jacketed soft point bullet casing.\
 	<br><br>\
-	<i>HUNTING: Hunting-grade ammunition. Worse overall performance against people. Increased damage against simplemobs.</i>"
+	<i>HUNTING: Ammo purpose-built to deal more damage against simplemobs than other Humans.</i>"
 	projectile_type = /obj/projectile/bullet/a762x39/hunting
 
 /obj/projectile/bullet/a762x39/hunting
@@ -216,9 +216,9 @@
 
 /obj/item/ammo_casing/realistic/a762x39/civilian/blank
 	name = "5.6x40mm blank bullet casing"
-	desc = "A 5.6x40mm civilian-grade blank bullet casing.\
+	desc = "A 5.6x40mm blank bullet casing.\
 	<br><br>\
-	<i>BLANK: Projectile-less ammunition. Deals no real damage besides a hot exhaust of gas. Because it has no bullet. Good for LARPing?</i>"
+	<i>BLANK: Projectile-less ammunition that is usually employed in training exercises or Live-Action Roleplay. Potentially harmful.</i>"
 	projectile_type = /obj/projectile/bullet/a762x39/blank
 	harmful = FALSE
 

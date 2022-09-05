@@ -28,7 +28,7 @@
 	icon_state = "bizon"
 	inhand_icon_state = "bizon"
 	fire_delay = 1
-	burst_size = 5
+	burst_size = 3
 	dual_wield_spread = 10
 	spread = 10
 	projectile_damage_multiplier = 0.35 // It's like 10.5 damage per bullet, it's close enough to 10 shots
