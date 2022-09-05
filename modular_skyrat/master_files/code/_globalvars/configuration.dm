@@ -46,4 +46,4 @@ GLOBAL_VAR_INIT(looc_allowed, TRUE)
 
 /datum/config_entry/flag/admin_event_uses_chaos
 
-/datum/config_entry/flag/ticket_ping
+/datum/config_entry/number/ticket_ping_frequency
