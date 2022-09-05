@@ -237,6 +237,14 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 
 //christmas ends, because every christmas is last christmas
 
+/datum/loadout_item/under/miscellaneous/buttondown
+	name = "Recolorable Buttondown Shirt with Slacks"
+	item_path = /obj/item/clothing/under/costume/buttondown/slacks
+
+/datum/loadout_item/under/miscellaneous/buttondown_shorts
+	name = "Recolorable Buttondown Shirt with Shorts"
+	item_path = /obj/item/clothing/under/costume/buttondown/shorts
+
 /datum/loadout_item/under/miscellaneous/slacks
 	name = "Recolorable Slacks"
 	item_path = /obj/item/clothing/under/pants/slacks
