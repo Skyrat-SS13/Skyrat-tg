@@ -65,7 +65,7 @@
 	wound_falloff_tile = 0
 
 /obj/item/ammo_casing/realistic/a762x39/ricochet
-	name = "5.6x40mm marksman bullet casing"
+	name = "5.6x40mm match bullet casing"
 	desc = "A 5.6x40mm match bullet casing.\
 	<br><br>\
 	<i>MATCH: Ricochets everywhere. Like crazy.</i>"
