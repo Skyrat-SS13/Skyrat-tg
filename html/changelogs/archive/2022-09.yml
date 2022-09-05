@@ -1,0 +1,75 @@
+2022-09-01:
+  GoldenAlpharex:
+  - bugfix: Fixes the Dutch Jacket being invisible when selected in the loadout.
+  - spellcheck: Renames the Dutch Jacket's loadout entry to Western Jacket, as that's
+      the name of the item in-game.
+  Jolly:
+  - bugfix: Deltas armory is now correct.
+  Melbert:
+  - qol: The statue spawner mapping helper spawns its statues anchored
+  - code_imp: Remove some hardcoding from random loot spawners
+  SkyratBot:
+  - bugfix: Tramstation robotics gets its shutters button, but it's not on a desk
+      so you can't crush people what's the point?
+  - bugfix: Fax no longer blocks access to the card reader on the MetaStation in the
+      QM's office.
+  - qol: The Status Display app can now do everything the communications console status
+      display screen can do.
+  - bugfix: Increases PDA immersion
+  - balance: Space Dragons can no longer place rifts on open space
+  - bugfix: fixed High capacity inheritance structure
+  - bugfix: The aux base construction console is once again present on Tramstation
+  coldud13:
+  - qol: You can now use the Navigate verb to find cryo on most maps
+  itseasytosee:
+  - bugfix: Monkeys won't stay on combat mode forever after getting pissed off.
+  theOOZ:
+  - bugfix: Characters who are illiterate no longer need to depend on an admin or
+      random peer to call the Interlink shuttle
+2022-09-02:
+  ShizCalev:
+  - bugfix: Supplypods can no longer be destroyed by explosions BEFORE they land.
+  - bugfix: Monkeys can now actually resist things!
+  SkyratBot:
+  - rscdel: There is no longer an air alarm in the central island of atmospherics
+      on MetaStation.
+  - balance: Regular windows now have 50 melee armor and take 3 deconstruction steps.
+  - balance: Metastation has new windows
+2022-09-03:
+  SkyratBot:
+  - bugfix: Fix legion dead miners not spawning species
+  - qol: heretic sacrifices will drop their legcuffs before entering the minigame
+      (bolas, bear traps)
+  - balance: nerfs scipaper paper publication money across the board
+  - balance: nerfs scipaper ghost writing partner.
+  - balance: CO2 powerloss inhibition now works immediately based on gas composition
+      instead of slowly ramping up.
+  - refactor: refactored how the SM fetches it's gas info and data. No changes expected
+      except for the co2 thing.
+  - code_imp: The time between the round starting and the game like, actually starting
+      has been reduced by 66%
+  - refactor: I've slightly changed how ban caches are generated, admins please let
+      me know if anything goes fuckey
+  - server: I'm using the blocking_query_timeout config. Make sure it's up to date
+      and all.
+  - balance: Heads are no longer tasked to kill their own pets
+  - qol: Newly created Shades will be told much more clearly that they're supposed
+      to be bound to their master, if they have one.
+  - admin: The lua function `SS13.await` can now await non-sleeping, but extremely
+      expensive procs, such as `getFlatIcon`
+  - bugfix: Stray cargo event pods now don't runtime if a canister supply pack is
+      chosen, meaning that you should actually see them in the pods now
+  - spellcheck: Just to clarify, sonic jackhammers do NOT go through walls. Their
+      printing design text has been modified to reflect this.
+  - bugfix: Brought a portion of the admin deadsay command up to date. Revenants and
+      EOR players will now see admin deadchat messages in their chat tab.
+2022-09-04:
+  Melbert:
+  - bugfix: Fixes storage to storage mass transfering not being instant
+  - bugfix: Fixes two do_afters for storage mass transfer
+  - bugfix: Dumping storage spreads its items around again
+  - bugfix: Drag-opening a storage won't try to dump inside you
+  - bugfix: Transferring a ton of things into a fridge won't deafen you anymore
+  - rscadd: You can now mass transfer onto griddles
+  itseasytosee:
+  - bugfix: Fixed balistic helmet sprites with flashlights looking weird
