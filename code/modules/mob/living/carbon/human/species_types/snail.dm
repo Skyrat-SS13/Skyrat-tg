@@ -3,10 +3,7 @@
 	id = SPECIES_SNAIL
 	species_traits = list(MUTCOLORS, EYECOLOR, HAS_FLESH, HAIR, FACEHAIR) //SKYRAT EDIT - Roundstart Snails - Customization
 	inherent_traits = list(
-		TRAIT_ADVANCEDTOOLUSER,
-		TRAIT_CAN_STRIP,
 		TRAIT_NOSLIPALL,
-		TRAIT_LITERATE,
 		TRAIT_WATER_BREATHING, //SKYRAT EDIT - Roundstart Snails
 	)
 	attack_verb = "slap"

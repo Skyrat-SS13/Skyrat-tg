@@ -5,14 +5,8 @@
 	say_mod = "flutters"
 	species_traits = list(LIPS, HAS_FLESH, HAS_BONE, HAS_MARKINGS, TRAIT_ANTENNAE)
 	inherent_traits = list(
-		TRAIT_ADVANCEDTOOLUSER,
-		TRAIT_CAN_STRIP,
 		TRAIT_CAN_USE_FLIGHT_POTION,
-<<<<<<< HEAD
-		TRAIT_LITERATE,
-=======
 		TRAIT_TACKLING_WINGED_ATTACKER,
->>>>>>> aec14ffc8fd (Wings and tails give anyone better tackling values. Moths and lizards that lose theirs will have worse values instead. (#69078))
 	)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID|MOB_BUG
 	mutant_bodyparts = list("moth_markings" = "None")

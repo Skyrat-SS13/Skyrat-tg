@@ -6,14 +6,8 @@
 	say_mod = "hisses"
 	species_traits = list(MUTCOLORS, EYECOLOR, LIPS, HAS_FLESH, HAS_BONE)
 	inherent_traits = list(
-		TRAIT_ADVANCEDTOOLUSER,
-		TRAIT_CAN_STRIP,
 		TRAIT_CAN_USE_FLIGHT_POTION,
-<<<<<<< HEAD
-		TRAIT_LITERATE,
-=======
 		TRAIT_TACKLING_TAILED_DEFENDER,
->>>>>>> aec14ffc8fd (Wings and tails give anyone better tackling values. Moths and lizards that lose theirs will have worse values instead. (#69078))
 	)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID|MOB_REPTILE
 	mutant_bodyparts = list("body_markings" = "None", "legs" = "Normal Legs")
@@ -138,9 +132,8 @@ Lizard subspecies: ASHWALKERS
 	id = SPECIES_LIZARD_ASH
 	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,HAS_FLESH,HAS_BONE)
 	mutantlungs = /obj/item/organ/internal/lungs/ashwalker
+	mutantbrain = /obj/item/organ/internal/brain/primitive
 	inherent_traits = list(
-		TRAIT_ADVANCEDTOOLUSER,
-		TRAIT_CAN_STRIP,
 		TRAIT_CHUNKYFINGERS,
 		//TRAIT_LITERATE,
 		TRAIT_VIRUSIMMUNE,
@@ -156,9 +149,6 @@ Lizard subspecies: SILVER SCALED
 	id = SPECIES_LIZARD_SILVER
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID|MOB_REPTILE
 	inherent_traits = list(
-		TRAIT_ADVANCEDTOOLUSER,
-		TRAIT_CAN_STRIP,
-		TRAIT_LITERATE,
 		TRAIT_HOLY,
 		TRAIT_NOBREATH,
 		TRAIT_PIERCEIMMUNE,
