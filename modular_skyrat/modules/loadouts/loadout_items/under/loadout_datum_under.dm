@@ -220,20 +220,20 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 
 /datum/loadout_item/under/miscellaneous/christmas
 	name = "Christmas Suit"
-	item_path = /obj/item/clothing/under/costume/christmas
+	item_path = /obj/item/clothing/under/costume/skyrat/christmas
 	required_season = CHRISTMAS
 
 /datum/loadout_item/under/miscellaneous/christmas/green
 	name = "Green Christmas Suit"
-	item_path = /obj/item/clothing/under/costume/christmas/green
+	item_path = /obj/item/clothing/under/costume/skyrat/christmas/green
 
 /datum/loadout_item/under/miscellaneous/christmas/female
 	name = "Revealing Christmas Suit"
-	item_path = /obj/item/clothing/under/croptop/christmas
+	item_path = /obj/item/clothing/under/costume/skyrat/christmas/croptop
 
 /datum/loadout_item/under/miscellaneous/christmas/female/green
 	name = "Revealing Green Christmas Suit"
-	item_path = /obj/item/clothing/under/croptop/christmas/green
+	item_path = /obj/item/clothing/under/costume/skyrat/christmas/croptop/green
 
 /datum/loadout_item/under/miscellaneous/slacks
 	name = "Recolorable Slacks"
@@ -394,20 +394,12 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	item_path = /obj/item/clothing/under/costume/maid
 
 /datum/loadout_item/under/miscellaneous/qipao_black
-	name = "Qipao, Black"
-	item_path = /obj/item/clothing/under/costume/qipao
-
-/datum/loadout_item/under/miscellaneous/qipao_white
-	name = "Qipao, White"
-	item_path = /obj/item/clothing/under/costume/qipao/white
-
-/datum/loadout_item/under/miscellaneous/qipao_red
-	name = "Qipao, Red"
-	item_path = /obj/item/clothing/under/costume/qipao/red
+	name = "Recolorable Qipao"
+	item_path = /obj/item/clothing/under/costume/skyrat/qipao
 
 /datum/loadout_item/under/miscellaneous/cheongsam
-	name = "Cheongsam, Black"
-	item_path = /obj/item/clothing/under/costume/cheongsam
+	name = "Recolorable Cheongsam"
+	item_path = /obj/item/clothing/under/costume/skyrat/cheongsam
 
 /datum/loadout_item/under/miscellaneous/chaps
 	name = "Black Chaps"
@@ -734,21 +726,9 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Fancy Suit"
 	item_path = /obj/item/clothing/under/suit/fancy
 
-/datum/loadout_item/under/formal/kimono
-	name = "Kimono"
-	item_path = /obj/item/clothing/under/costume/kimono
-
-/datum/loadout_item/under/formal/kimono_dark
-	name = "Dark Kimono"
-	item_path = /obj/item/clothing/under/costume/kimono/dark
-
-/datum/loadout_item/under/formal/kimono_sakura
-	name = "Sakura Kimono"
-	item_path = /obj/item/clothing/under/costume/kimono/sakura
-
-/datum/loadout_item/under/formal/kimono_fancy
-	name = "Fancy Kimono"
-	item_path =  /obj/item/clothing/under/costume/kimono/fancy
+/datum/loadout_item/under/formal/yukata
+	name = "Recolorable Yukata"
+	item_path = /obj/item/clothing/under/costume/skyrat/yukata
 
 /datum/loadout_item/under/formal/trek
 	name = "Trekkie Uniform"

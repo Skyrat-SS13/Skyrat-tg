@@ -20,7 +20,7 @@
 	icon_state = "decking_jumpsuit"
 	can_adjust = FALSE
 
-/obj/item/clothing/under/costume/bathrobe
+/obj/item/clothing/under/costume/skyrat/bathrobe
 	name = "bathrobe"
 	desc = "A warm fluffy bathrobe, perfect for relaxing after finally getting clean."
 	icon_state = "bathrobe"
@@ -30,7 +30,7 @@
 *	LUNAR AND JAPANESE CLOTHES
 */
 
-/obj/item/clothing/under/costume/qipao
+/obj/item/clothing/under/costume/skyrat/qipao
 	name = "black qipao"
 	desc = "A qipao, traditionally worn in ancient Earth China by women during social events and lunar new years. This one is black."
 	icon_state = "qipao"
@@ -44,7 +44,7 @@
 /obj/item/clothing/under/costume/qipao/red
 	icon_state = "qipao_red"
 
-/obj/item/clothing/under/costume/cheongsam
+/obj/item/clothing/under/costume/skyrat/cheongsam
 	name = "black cheongsam"
 	desc = "A cheongsam, traditionally worn in ancient Earth China by men during social events and lunar new years. This one is black."
 	icon_state = "cheong"
@@ -72,11 +72,11 @@
 	name = "sakura kimono"
 	icon_state = "sakura_kimono"
 
-/obj/item/clothing/under/costume/kimono/fancy
+/obj/item/clothing/under/costume/skyrat/yukata
 	name = "fancy kimono"
 	icon_state = "fancy_kimono"
 
-/obj/item/clothing/under/costume/kamishimo //wtf do i do with this??
+/obj/item/clothing/under/costume/skyrat/kamishimo
 	name = "kamishimo"
 	desc = "A traditional ancient Earth Japanese Kamishimo."
 	icon_state = "kamishimo"
@@ -86,22 +86,24 @@
 *	CHRISTMAS CLOTHES
 */
 
-/obj/item/clothing/under/costume/christmas
+/obj/item/clothing/under/costume/skyrat/christmas
 	name = "christmas costume"
 	desc = "Can you believe it guys? Christmas. Just a lightyear away!" //Lightyear is a measure of distance I hate it being used for this joke :(
 	icon_state = "christmasmaler"
 
-/obj/item/clothing/under/costume/christmas/green
+/obj/item/clothing/under/costume/skyrat/christmas/green
 	name = "green christmas costume"
 	desc = "4:00, wallow in self-pity. 4:30, stare into the abyss. 5:00, solve world hunger, tell no one. 5:30, jazzercize; 6:30, dinner with me. I can't cancel that again. 7:00, wrestle with my self-loathing. I'm booked. Of course, if I bump the loathing to 9, I could still be done in time to lay in bed, stare at the ceiling and slip slowly into madness."
 	icon_state = "christmasmaleg"
 
-/obj/item/clothing/under/croptop/christmas
+/obj/item/clothing/under/costume/skyrat/christmas/croptop
 	name = "sexy christmas costume"
 	desc = "About 550 years since the release of Mariah Carey's \"All I Want For Christmas is You\", society has yet to properly recover from its repercussions. Some still keep a gun as their christmas mantlepiece, just in case she's heard singing on their rooftop late in the night..."
 	icon_state = "christmasfemaler"
+	body_parts_covered = CHEST|GROIN
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 
-/obj/item/clothing/under/croptop/christmas/green
+/obj/item/clothing/under/costume/skyrat/christmas/croptop/green
 	name = "sexy green christmas costume"
 	desc = "Stupid. Ugly. Out of date. If I can't find something nice to wear I'm not going."
 	icon_state = "christmasfemaleg"
