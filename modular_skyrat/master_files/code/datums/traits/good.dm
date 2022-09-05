@@ -70,3 +70,13 @@
 	lose_text = span_danger("Somehow, you've completely cleaned yourself of glitter..")
 	medical_record_text = "Patient seems to be looking fabulous."
 	icon = "hand-sparkles"
+
+/datum/quirk/feline_aspect
+	name = "Feline Traits"
+	desc = "You happen to act like a feline, for whatever reason."
+	gain_text = span_notice("Nya could go for some catnip right about now...")
+	lose_text = span_notice("You feel less attracted to lasers.")
+	medical_record_text = "Patient seems to possess behavior much like a feline."
+	value = 5
+	mob_trait = TRAIT_FELINE
+	icon = "cat"
