@@ -262,12 +262,12 @@ GLOBAL_LIST_EMPTY(customizable_races)
 /datum/species/New()
 	. = ..()
 	if(can_have_genitals)
-		default_mutant_bodyparts[NAME_VAGINA] = "None"
-		default_mutant_bodyparts["womb"] = "None"
-		default_mutant_bodyparts["testicles"] = "None"
-		default_mutant_bodyparts["breasts"] = "None"
-		default_mutant_bodyparts[NAME_ANUS] = "None"
-		default_mutant_bodyparts[NAME_PENIS] = "None"
+		default_mutant_bodyparts[ORGAN_SLOT_VAGINA] = "None"
+		default_mutant_bodyparts[ORGAN_SLOT_WOMB] = "None"
+		default_mutant_bodyparts[ORGAN_SLOT_TESTICLES] = "None"
+		default_mutant_bodyparts[ORGAN_SLOT_BREASTS] = "None"
+		default_mutant_bodyparts[ORGAN_SLOT_ANUS] = "None"
+		default_mutant_bodyparts[ORGAN_SLOT_PENIS] = "None"
 
 /datum/species/dullahan
 	mutant_bodyparts = list()

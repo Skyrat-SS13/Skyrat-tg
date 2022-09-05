@@ -20,11 +20,11 @@ GLOBAL_LIST_INIT(bodyparts_to_convert, list("body_markings", \
 "taur", \
 "xenodorsal", \
 "xenohead", \
-NAME_PENIS, \
-"testicles", \
-"womb", \
-NAME_VAGINA, \
-"breasts",))
+ORGAN_SLOT_PENIS, \
+ORGAN_SLOT_TESTICLES, \
+ORGAN_SLOT_WOMB, \
+ORGAN_SLOT_VAGINA, \
+ORGAN_SLOT_BREASTS,))
 
 /datum/preferences/proc/migrate_skyrat(savefile/S)
 	if(features["flavor_text"])

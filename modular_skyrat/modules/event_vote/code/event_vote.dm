@@ -505,9 +505,9 @@
 		log_data += "Sex: [iterating_human.gender]"
 		log_data += "Age: [iterating_human.age]"
 		log_data += "Body Type: [iterating_human.physique]"
-		log_data += "Penis: [iterating_human.dna.mutant_bodyparts[NAME_PENIS]["name"]]"
-		log_data += "Vagina: [iterating_human.dna.mutant_bodyparts[NAME_VAGINA]["name"]]"
-		log_data += "Breasts: [iterating_human.dna.mutant_bodyparts["breasts"]["name"]]"
+		log_data += "Penis: [iterating_human.dna.mutant_bodyparts[ORGAN_SLOT_PENIS]["name"]]"
+		log_data += "Vagina: [iterating_human.dna.mutant_bodyparts[ORGAN_SLOT_VAGINA]["name"]]"
+		log_data += "Breasts: [iterating_human.dna.mutant_bodyparts[ORGAN_SLOT_BREASTS]["name"]]"
 		log_data += "Body size: [iterating_human.dna.features["body_size"]]"
 		log_data += "END ENTRY"
 

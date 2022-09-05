@@ -152,7 +152,7 @@
 			targetedsomewhere = TRUE
 			var/obj/item/organ/external/genital/breasts = target.getorganslot(ORGAN_SLOT_BREASTS)
 			if(target.is_topless() || breasts.visibility_preference == GENITAL_ALWAYS_SHOW)
-				message = (user == target) ? pick("massages their [breasts ? "breasts" : NAME_NIPPLES] with the [src]", "[vibration_mode == "low" ? "gently" : ""][vibration_mode = "hard" ? "roughly" : ""] teases their tits with [src]") : pick("[vibration_mode == "low" ? "delicately" : ""][vibration_mode = "hard" ? "aggressively" : ""] teases [target]'s [breasts ? "breasts" : NAME_NIPPLES] with [src]", "uses [src] to[vibration_mode == "low" ? " slowly" : ""] massage [target]'s [breasts ? "tits" : NAME_NIPPLES]", "uses [src] to tease [target]'s [breasts ? "boobs" : NAME_NIPPLES]", "rubs [target]'s [breasts ? "tits" : NAME_NIPPLES] with [src]")
+				message = (user == target) ? pick("massages their [breasts ? ORGAN_SLOT_BREASTS : ORGAN_SLOT_NIPPLES] with the [src]", "[vibration_mode == "low" ? "gently" : ""][vibration_mode = "hard" ? "roughly" : ""] teases their tits with [src]") : pick("[vibration_mode == "low" ? "delicately" : ""][vibration_mode = "hard" ? "aggressively" : ""] teases [target]'s [breasts ? ORGAN_SLOT_BREASTS : ORGAN_SLOT_NIPPLES] with [src]", "uses [src] to[vibration_mode == "low" ? " slowly" : ""] massage [target]'s [breasts ? "tits" : ORGAN_SLOT_NIPPLES]", "uses [src] to tease [target]'s [breasts ? "boobs" : ORGAN_SLOT_NIPPLES]", "rubs [target]'s [breasts ? "tits" : ORGAN_SLOT_NIPPLES] with [src]")
 				target.adjustArousal(DEFAULT_AROUSAL_INCREASE)
 				target.adjustPleasure(DEFAULT_PLEASURE_INCREASE * 0.5)
 				if(prob(30) && (target.stat != DEAD))

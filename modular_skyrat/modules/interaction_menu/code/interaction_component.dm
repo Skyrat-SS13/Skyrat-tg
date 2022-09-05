@@ -100,19 +100,24 @@
 	if(ishuman(user) && can_lewd_strip(user, self))
 		if(self.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 			if(self.has_vagina())
-				parts += generate_strip_entry(NAME_VAGINA, self, user, self.vagina)
+				parts += list(generate_strip_entry(ORGAN_SLOT_VAGINA, self, user, self.vagina))
 			if(self.has_penis())
-				parts += generate_strip_entry(NAME_PENIS, self, user, self.penis)
+				parts += list(generate_strip_entry(ORGAN_SLOT_PENIS, self, user, self.penis))
 			if(self.has_anus())
-				parts += generate_strip_entry(NAME_ANUS, self, user, self.anus)
-			parts += generate_strip_entry(NAME_NIPPLES, self, user, self.nipples)
+				parts += list(generate_strip_entry(ORGAN_SLOT_ANUS, self, user, self.anus))
+			parts += list(generate_strip_entry(ORGAN_SLOT_NIPPLES, self, user, self.nipples))
 
 	data["lewd_slots"] = parts
 
 	return data
 
+/// Takes the organ slot name, along with a source and a target, along with the item on the target that the source can potentially interact with.
+/// If the source can't interact with said slot, or there is no item in the first place, it'll set the icon to null to indicate that TGUI to put a placeholder sprite.
 /datum/component/interactable/proc/generate_strip_entry(name, mob/living/carbon/human/self, mob/living/carbon/human/user, obj/item/clothing/sextoy/item)
-	return list(list("name" = name, "img" = (item && can_lewd_strip(user, self, name))? icon2base64(icon(item.icon, item.icon_state, SOUTH, 1)) : null))
+	return list(
+		"name" = name,
+		"img" = (item && can_lewd_strip(user, self, name))? icon2base64(icon(item.icon, item.icon_state, SOUTH, 1)) : null
+		)
 
 /datum/component/interactable/ui_act(action, list/params)
 	. = ..()
@@ -130,9 +135,9 @@
 			interact_next = interaction_component.interact_last + INTERACTION_COOLDOWN
 			interaction_component.interact_next = interact_next
 			return TRUE
-	if(params["slot"])
+	if(params["item_slot"])
 		// This code should be easy enough to follow... I hope.
-		var/item_index = params["slot"]
+		var/item_index = params["item_slot"]
 		var/mob/living/carbon/human/source = locate(params["userref"])
 		var/mob/living/carbon/human/target = locate(params["selfref"])
 		var/obj/item/new_item = source.get_active_held_item()
@@ -147,7 +152,7 @@
 			return
 
 		if(can_lewd_strip(source, target, item_index) && is_toy_compatible(new_item, item_index))
-			var/internal = (item_index in list(NAME_VAGINA, NAME_ANUS))
+			var/internal = (item_index in list(ORGAN_SLOT_VAGINA, ORGAN_SLOT_ANUS))
 			var/insert_or_attach = internal ? "insert" : "attach"
 			var/into_or_onto = internal ? "into" : "onto"
 
@@ -206,13 +211,13 @@
 	if(!item) // Used for UI code, should never be actually null during actual logic code.
 		return TRUE
 	switch(slot_index)
-		if(NAME_VAGINA)
+		if(ORGAN_SLOT_VAGINA)
 			return item.lewd_slot_flags & LEWD_SLOT_VAGINA
-		if(NAME_PENIS)
+		if(ORGAN_SLOT_PENIS)
 			return item.lewd_slot_flags & LEWD_SLOT_PENIS
-		if(NAME_ANUS)
+		if(ORGAN_SLOT_ANUS)
 			return item.lewd_slot_flags & LEWD_SLOT_ANUS
-		if(NAME_NIPPLES)
+		if(ORGAN_SLOT_NIPPLES)
 			return item.lewd_slot_flags & LEWD_SLOT_NIPPLES
 		else
 			return FALSE

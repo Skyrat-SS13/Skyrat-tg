@@ -428,9 +428,9 @@
 		/// Makes above comment actually work.
 		if(!exposed_mob.getorganslot(ORGAN_SLOT_BREASTS))
 			var/obj/item/organ/path = /obj/item/organ/external/genital/breasts
-			exposed_mob.dna.mutant_bodyparts["breasts"][MUTANT_INDEX_NAME] = "Pair"
+			exposed_mob.dna.mutant_bodyparts[ORGAN_SLOT_BREASTS][MUTANT_INDEX_NAME] = "Pair"
 			path = new /obj/item/organ/external/genital/breasts
-			path.build_from_dna(exposed_mob.dna, "breasts")
+			path.build_from_dna(exposed_mob.dna, ORGAN_SLOT_BREASTS)
 			path.Insert(exposed_mob, 0, FALSE)
 			var/obj/item/organ/external/genital/new_breasts = exposed_mob.getorganslot(ORGAN_SLOT_BREASTS)
 			new_breasts.genital_size = 2
@@ -505,9 +505,9 @@
 		/// Words for the cock when huge.
 		var/static/list/words_for_bigger_cock = list("huge", "massive", "gigantic", "rather lengthy", "colossal", "hefty", )
 		/// Synonyms for cock.
-		var/static/list/cock_text_list = list("cock", NAME_PENIS, "dick", "member", "richard", "johnston", "johnson", )
+		var/static/list/cock_text_list = list("cock", "penis", "dick", "member", "richard", "johnston", "johnson", )
 		/// Synonyms for bigger cock.
-		var/static/list/bigger_cock_text_list = list("rod", "shaft", "cock", NAME_PENIS, "dick", "member", "richard", "johnston", "johnson", )
+		var/static/list/bigger_cock_text_list = list("rod", "shaft", "cock", "penis", "dick", "member", "richard", "johnston", "johnson", )
 		/// Wording chosen to extend the cock, shown only to the mob.
 		var/static/list/cock_action_text_list = list("extends to ", "grows out to ", "begins to enlarge, growing to ", "suddenly expands to ", "lengthens out to ", )
 		/// Wording chosen to be seen by other mobs, while mob is unclothed.
@@ -551,33 +551,33 @@
 		if(!exposed_mob.getorganslot(ORGAN_SLOT_PENIS))
 			///Check if human. If not do messy code. (This only supports lizards and human penises (for now))
 			exposed_mob.dna.features["penis_sheath"] = SHEATH_NONE
-			exposed_mob.dna.mutant_bodyparts[NAME_PENIS][MUTANT_INDEX_NAME] = "Human"
-			exposed_mob.dna.mutant_bodyparts["testicles"][MUTANT_INDEX_NAME] = "Pair"
+			exposed_mob.dna.mutant_bodyparts[ORGAN_SLOT_PENIS][MUTANT_INDEX_NAME] = "Human"
+			exposed_mob.dna.mutant_bodyparts[ORGAN_SLOT_TESTICLES][MUTANT_INDEX_NAME] = "Pair"
 			if((exposed_mob.dna.species.id == SPECIES_HUMAN) && (exposed_mob.dna.species.id != SPECIES_LIZARD) && (exposed_mob.dna.species.id != SPECIES_LIZARD_ASH))
 				if (!exposed_mob.getorganslot(ORGAN_SLOT_TESTICLES))
 					var/obj/item/organ/balls_path = /obj/item/organ/external/genital/testicles
 					balls_path = new /obj/item/organ/external/genital/testicles
-					balls_path.build_from_dna(exposed_mob.dna, "testicles")
+					balls_path.build_from_dna(exposed_mob.dna, ORGAN_SLOT_TESTICLES)
 					balls_path.Insert(exposed_mob, 0, FALSE)
 					var/obj/item/organ/external/genital/new_balls = exposed_mob.getorganslot(ORGAN_SLOT_TESTICLES)
 					new_balls.genital_size = 1
 					new_balls.update_sprite_suffix()
 			if((exposed_mob.dna.species.id == SPECIES_LIZARD) || (exposed_mob.dna.species.id == SPECIES_LIZARD_ASH))
 				exposed_mob.dna.features["penis_sheath"] = SHEATH_SLIT
-				exposed_mob.dna.mutant_bodyparts[NAME_PENIS][MUTANT_INDEX_NAME] = "Flared"
-				exposed_mob.dna.mutant_bodyparts[NAME_PENIS][MUTANT_INDEX_COLOR_LIST] = list("#FFB6C1")
-				exposed_mob.dna.mutant_bodyparts["testicles"][MUTANT_INDEX_NAME] = "Internal"
+				exposed_mob.dna.mutant_bodyparts[ORGAN_SLOT_PENIS][MUTANT_INDEX_NAME] = "Flared"
+				exposed_mob.dna.mutant_bodyparts[ORGAN_SLOT_PENIS][MUTANT_INDEX_COLOR_LIST] = list("#FFB6C1")
+				exposed_mob.dna.mutant_bodyparts[ORGAN_SLOT_TESTICLES][MUTANT_INDEX_NAME] = "Internal"
 				if (!exposed_mob.getorganslot(ORGAN_SLOT_TESTICLES))
 					var/obj/item/organ/balls_path = /obj/item/organ/external/genital/testicles
 					balls_path = new /obj/item/organ/external/genital/testicles
-					balls_path.build_from_dna(exposed_mob.dna, "testicles")
+					balls_path.build_from_dna(exposed_mob.dna, ORGAN_SLOT_TESTICLES)
 					balls_path.Insert(exposed_mob, 0, FALSE)
 					var/obj/item/organ/external/genital/new_balls = exposed_mob.getorganslot(ORGAN_SLOT_TESTICLES)
 					new_balls.genital_size = 1
 					new_balls.update_sprite_suffix()
 			var/obj/item/organ/cock_path = /obj/item/organ/external/genital/penis
 			cock_path = new /obj/item/organ/external/genital/penis
-			cock_path.build_from_dna(exposed_mob.dna, NAME_PENIS)
+			cock_path.build_from_dna(exposed_mob.dna, ORGAN_SLOT_PENIS)
 			cock_path.Insert(exposed_mob, 0, FALSE)
 			var/obj/item/organ/external/genital/penis/new_penis = exposed_mob.getorganslot(ORGAN_SLOT_PENIS)
 			new_penis.genital_size = 4

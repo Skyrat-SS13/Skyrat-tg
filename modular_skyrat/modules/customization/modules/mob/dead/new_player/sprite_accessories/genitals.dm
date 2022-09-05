@@ -35,7 +35,7 @@
 	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/genitals/penis_onmob.dmi'
 	organ_type = /obj/item/organ/external/genital/penis
 	associated_organ_slot = ORGAN_SLOT_PENIS
-	key = NAME_PENIS
+	key = ORGAN_SLOT_PENIS
 	color_src = USE_MATRIXED_COLORS
 	always_color_customizable = TRUE
 	center = TRUE
@@ -117,7 +117,7 @@
 	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/genitals/testicles_onmob.dmi'
 	organ_type = /obj/item/organ/external/genital/testicles
 	associated_organ_slot = ORGAN_SLOT_TESTICLES
-	key = "testicles"
+	key = ORGAN_SLOT_TESTICLES
 	always_color_customizable = TRUE
 	special_icon_case = TRUE
 	special_x_dimension = TRUE
@@ -168,7 +168,7 @@
 	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/genitals/vagina_onmob.dmi'
 	organ_type = /obj/item/organ/external/genital/vagina
 	associated_organ_slot = ORGAN_SLOT_VAGINA
-	key = NAME_VAGINA
+	key = ORGAN_SLOT_VAGINA
 	always_color_customizable = TRUE
 	default_color = "#FFCCCC"
 	relevent_layers = list(BODY_FRONT_LAYER)
@@ -224,7 +224,7 @@
 /datum/sprite_accessory/genital/womb
 	organ_type = /obj/item/organ/external/genital/womb
 	associated_organ_slot = ORGAN_SLOT_WOMB
-	key = "womb"
+	key = ORGAN_SLOT_WOMB
 	genetic = TRUE
 
 /datum/sprite_accessory/genital/womb/none
@@ -241,7 +241,7 @@
 /datum/sprite_accessory/genital/anus
 	organ_type = /obj/item/organ/external/genital/anus
 	associated_organ_slot = ORGAN_SLOT_ANUS
-	key = NAME_ANUS
+	key = ORGAN_SLOT_ANUS
 	genetic = TRUE
 
 /datum/sprite_accessory/genital/anus/is_hidden(mob/living/carbon/human/owner, obj/item/bodypart/bodypart)
@@ -256,7 +256,7 @@
 	color_src = null
 
 /datum/sprite_accessory/genital/anus/normal
-	icon_state = NAME_ANUS
+	icon_state = ORGAN_SLOT_ANUS
 	name = "Anus"
 	color_src = null
 
@@ -264,7 +264,7 @@
 	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/genitals/breasts_onmob.dmi'
 	organ_type = /obj/item/organ/external/genital/breasts
 	associated_organ_slot = ORGAN_SLOT_BREASTS
-	key = "breasts"
+	key = ORGAN_SLOT_BREASTS
 	always_color_customizable = TRUE
 	default_color = DEFAULT_SKIN_OR_PRIMARY
 	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER)

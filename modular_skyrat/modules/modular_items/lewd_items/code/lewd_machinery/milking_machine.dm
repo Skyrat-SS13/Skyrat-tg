@@ -765,7 +765,7 @@
 					organ_overlay.icon_state = organ_overlay_new_icon_state
 
 		if(istype(current_selected_organ, /obj/item/organ/external/genital/testicles))
-			current_selected_organ_type = NAME_PENIS
+			current_selected_organ_type = ORGAN_SLOT_PENIS
 			current_selected_organ_size = current_selected_organ.genital_size
 			if(current_mode == mode_list[1])
 				pump_state = pump_state_list[1]
@@ -779,7 +779,7 @@
 					organ_overlay.icon_state = organ_overlay_new_icon_state
 
 		if(istype(current_selected_organ, /obj/item/organ/external/genital/vagina))
-			current_selected_organ_type = NAME_VAGINA
+			current_selected_organ_type = ORGAN_SLOT_VAGINA
 			current_selected_organ_size = current_selected_organ.genital_size
 			if(current_mode == mode_list[1])
 				pump_state = pump_state_list[1]

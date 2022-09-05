@@ -86,13 +86,13 @@
 
 
 /obj/item/organ/external/genital/penis
-	name = NAME_PENIS
+	name = ORGAN_SLOT_PENIS
 	desc = "A male reproductive organ."
-	icon_state = NAME_PENIS
+	icon_state = ORGAN_SLOT_PENIS
 	icon = 'modular_skyrat/master_files/icons/obj/genitals/penis.dmi'
 	zone = BODY_ZONE_PRECISE_GROIN
 	slot = ORGAN_SLOT_PENIS
-	mutantpart_key = NAME_PENIS
+	mutantpart_key = ORGAN_SLOT_PENIS
 	mutantpart_info = list(MUTANT_INDEX_NAME = "Human", MUTANT_INDEX_COLOR_LIST = list("#FFEEBB"))
 	drop_when_organ_spilling = FALSE
 	var/girth = 9
@@ -181,15 +181,15 @@
 		uses_skintones = accessory.has_skintone_shading
 
 /obj/item/organ/external/genital/penis/get_global_feature_list()
-	return GLOB.sprite_accessories[NAME_PENIS]
+	return GLOB.sprite_accessories[ORGAN_SLOT_PENIS]
 
 
 /obj/item/organ/external/genital/testicles
-	name = "testicles"
+	name = ORGAN_SLOT_TESTICLES
 	desc = "A male reproductive organ."
-	icon_state = "testicles"
+	icon_state = ORGAN_SLOT_TESTICLES
 	icon = 'modular_skyrat/master_files/icons/obj/genitals/testicles.dmi'
-	mutantpart_key = "testicles"
+	mutantpart_key = ORGAN_SLOT_TESTICLES
 	mutantpart_info = list(MUTANT_INDEX_NAME = "Pair", MUTANT_INDEX_COLOR_LIST = list("#FFEEBB"))
 	zone = BODY_ZONE_PRECISE_GROIN
 	slot = ORGAN_SLOT_TESTICLES
@@ -228,7 +228,7 @@
 	return passed_string
 
 /obj/item/organ/external/genital/testicles/get_global_feature_list()
-	return GLOB.sprite_accessories["testicles"]
+	return GLOB.sprite_accessories[ORGAN_SLOT_TESTICLES]
 
 
 /obj/item/organ/external/genital/testicles/proc/balls_size_to_description(number)
@@ -247,10 +247,10 @@
 
 
 /obj/item/organ/external/genital/vagina
-	name = NAME_VAGINA
+	name = ORGAN_SLOT_VAGINA
 	icon = 'modular_skyrat/master_files/icons/obj/genitals/vagina.dmi'
-	icon_state = NAME_VAGINA
-	mutantpart_key = NAME_VAGINA
+	icon_state = ORGAN_SLOT_VAGINA
+	mutantpart_key = ORGAN_SLOT_VAGINA
 	mutantpart_info = list(MUTANT_INDEX_NAME = "Human", MUTANT_INDEX_COLOR_LIST = list("#FFEEBB"))
 	zone = BODY_ZONE_PRECISE_GROIN
 	slot = ORGAN_SLOT_VAGINA
@@ -285,15 +285,15 @@
 		uses_skintones = accessory.has_skintone_shading
 
 /obj/item/organ/external/genital/vagina/get_global_feature_list()
-	return GLOB.sprite_accessories[NAME_VAGINA]
+	return GLOB.sprite_accessories[ORGAN_SLOT_VAGINA]
 
 
 /obj/item/organ/external/genital/womb
-	name = "womb"
+	name = ORGAN_SLOT_WOMB
 	desc = "A female reproductive organ."
 	icon = 'modular_skyrat/master_files/icons/obj/genitals/vagina.dmi'
-	icon_state = "womb"
-	mutantpart_key = "womb"
+	icon_state = ORGAN_SLOT_WOMB
+	mutantpart_key = ORGAN_SLOT_WOMB
 	mutantpart_info = list(MUTANT_INDEX_NAME = "Normal", MUTANT_INDEX_COLOR_LIST = list("FFEEBB"))
 	zone = BODY_ZONE_PRECISE_GROIN
 	slot = ORGAN_SLOT_WOMB
@@ -303,15 +303,15 @@
 	drop_when_organ_spilling = FALSE
 
 /obj/item/organ/external/genital/womb/get_global_feature_list()
-	return GLOB.sprite_accessories["womb"]
+	return GLOB.sprite_accessories[ORGAN_SLOT_WOMB]
 
 
 /obj/item/organ/external/genital/anus
-	name = NAME_ANUS
+	name = ORGAN_SLOT_ANUS
 	desc = "What do you want me to tell you?"
 	icon = 'modular_skyrat/master_files/icons/obj/genitals/anus.dmi'
-	icon_state = NAME_ANUS
-	mutantpart_key = NAME_ANUS
+	icon_state = ORGAN_SLOT_ANUS
+	mutantpart_key = ORGAN_SLOT_ANUS
 	mutantpart_info = list(MUTANT_INDEX_NAME = "Normal", MUTANT_INDEX_COLOR_LIST = list("FEB"))
 	zone = BODY_ZONE_PRECISE_GROIN
 	slot = ORGAN_SLOT_ANUS
@@ -327,16 +327,16 @@
 	return returned_string
 
 /obj/item/organ/external/genital/anus/get_global_feature_list()
-	return GLOB.sprite_accessories[NAME_ANUS]
+	return GLOB.sprite_accessories[ORGAN_SLOT_ANUS]
 
 
 /obj/item/organ/external/genital/breasts
-	name = "breasts"
+	name = ORGAN_SLOT_BREASTS
 	desc = "Female milk producing organs."
-	icon_state = "breasts"
+	icon_state = ORGAN_SLOT_BREASTS
 	icon = 'modular_skyrat/master_files/icons/obj/genitals/breasts.dmi'
 	genital_type = "pair"
-	mutantpart_key = "breasts"
+	mutantpart_key = ORGAN_SLOT_BREASTS
 	mutantpart_info = list(MUTANT_INDEX_NAME = "Pair", MUTANT_INDEX_COLOR_LIST = list("#FFEEBB"))
 	zone = BODY_ZONE_CHEST
 	slot = ORGAN_SLOT_BREASTS
@@ -400,7 +400,7 @@
 		uses_skintones = accessory.has_skintone_shading
 
 /obj/item/organ/external/genital/breasts/get_global_feature_list()
-	return GLOB.sprite_accessories["breasts"]
+	return GLOB.sprite_accessories[ORGAN_SLOT_BREASTS]
 
 /obj/item/organ/external/genital/breasts/proc/breasts_size_to_cup(number)
 	if(number < 0)

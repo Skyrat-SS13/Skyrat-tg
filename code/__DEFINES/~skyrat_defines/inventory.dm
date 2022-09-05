@@ -10,8 +10,3 @@
 #define LEWD_SLOT_PENIS (1<<1)
 #define LEWD_SLOT_ANUS (1<<2)
 #define LEWD_SLOT_NIPPLES (1<<3)
-
-#define NAME_VAGINA "vagina"
-#define NAME_ANUS "anus"
-#define NAME_NIPPLES "nipples"
-#define NAME_PENIS "penis"

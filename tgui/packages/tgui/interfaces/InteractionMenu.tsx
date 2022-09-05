@@ -67,7 +67,7 @@ export const InteractionMenu = (props, context) => {
           ))}
         </Section>
         {lewd_slots.length > 0 ? (
-          <Section key="lewd_slots" title={'Lewd Slots'}>
+          <Section key="item_slots" title={'Lewd Slots'}>
             <Stack fill>
               {lewd_slots.map((element: LewdSlot) => {
                 return (
@@ -75,7 +75,7 @@ export const InteractionMenu = (props, context) => {
                     <Button
                       onClick={() =>
                         act('remove_lewd_item', {
-                          slot: element.name,
+                          item_slot: element.name,
                           selfref: ref_self,
                           userref: ref_user,
                         })
