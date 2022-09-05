@@ -791,5 +791,16 @@
 	client.mob.hud_used.hidden_inventory_update(client.mob)
 	client.mob.hud_used.persistent_inventory_update(client.mob)
 
+/// If the item this is called in, is in a genital slot of the target
 /obj/item/proc/is_in_genital(mob/living/carbon/human/the_guy)
-	return !!(src == the_guy.penis || src == the_guy.vagina || src == the_guy.anus || src == the_guy.nipples)
+	return (src == the_guy.penis || src == the_guy.vagina || src == the_guy.anus || src == the_guy.nipples)
+
+/// Used to add a cum decal to the floor while transferring viruses and DNA to it
+/mob/living/proc/add_cum_splatter_floor(turf/the_turf, female = FALSE)
+	if(!the_turf)
+		the_turf = get_turf(src)
+
+	var/selected_type = female ? /obj/effect/decal/cleanable/cum/femcum : /obj/effect/decal/cleanable/cum
+	var/atom/stain = new selected_type(the_turf, get_static_viruses())
+
+	stain.transfer_mob_blood_dna(src) //I'm not adding a new forensics category for cumstains

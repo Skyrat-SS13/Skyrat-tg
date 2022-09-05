@@ -145,7 +145,7 @@
 				. = ..()
 
 // Handler for clicking on a slot in a mask by hand with a filter
-/datum/storage/pockets/small/bdsm_mask/attackby(datum/source, obj/item/used_item, mob/user, params)
+/datum/storage/pockets/small/bdsm_mask/on_attackby(datum/source, obj/item/used_item, mob/user, params)
 	. = ..()
 	var/obj/item/clothing/mask/gas/bdsm_mask/worn_mask = user.get_item_by_slot(ITEM_SLOT_MASK)
 	if(istype(used_item, /obj/item/reagent_containers/cup/lewd_filter))

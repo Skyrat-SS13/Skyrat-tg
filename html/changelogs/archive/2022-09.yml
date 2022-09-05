@@ -35,3 +35,208 @@
       on MetaStation.
   - balance: Regular windows now have 50 melee armor and take 3 deconstruction steps.
   - balance: Metastation has new windows
+2022-09-03:
+  SkyratBot:
+  - bugfix: Fix legion dead miners not spawning species
+  - qol: heretic sacrifices will drop their legcuffs before entering the minigame
+      (bolas, bear traps)
+  - balance: nerfs scipaper paper publication money across the board
+  - balance: nerfs scipaper ghost writing partner.
+  - balance: CO2 powerloss inhibition now works immediately based on gas composition
+      instead of slowly ramping up.
+  - refactor: refactored how the SM fetches it's gas info and data. No changes expected
+      except for the co2 thing.
+  - code_imp: The time between the round starting and the game like, actually starting
+      has been reduced by 66%
+  - refactor: I've slightly changed how ban caches are generated, admins please let
+      me know if anything goes fuckey
+  - server: I'm using the blocking_query_timeout config. Make sure it's up to date
+      and all.
+  - balance: Heads are no longer tasked to kill their own pets
+  - qol: Newly created Shades will be told much more clearly that they're supposed
+      to be bound to their master, if they have one.
+  - admin: The lua function `SS13.await` can now await non-sleeping, but extremely
+      expensive procs, such as `getFlatIcon`
+  - bugfix: Stray cargo event pods now don't runtime if a canister supply pack is
+      chosen, meaning that you should actually see them in the pods now
+  - spellcheck: Just to clarify, sonic jackhammers do NOT go through walls. Their
+      printing design text has been modified to reflect this.
+  - bugfix: Brought a portion of the admin deadsay command up to date. Revenants and
+      EOR players will now see admin deadchat messages in their chat tab.
+2022-09-04:
+  Melbert:
+  - bugfix: Fixes storage to storage mass transfering not being instant
+  - bugfix: Fixes two do_afters for storage mass transfer
+  - bugfix: Dumping storage spreads its items around again
+  - bugfix: Drag-opening a storage won't try to dump inside you
+  - bugfix: Transferring a ton of things into a fridge won't deafen you anymore
+  - rscadd: You can now mass transfer onto griddles
+  itseasytosee:
+  - bugfix: Fixed balistic helmet sprites with flashlights looking weird
+2022-09-05:
+  Fikou, thgvr, Snakebitten:
+  - balance: makes the standard quick carry modsuit module have nitrile level carrying
+      speed instead of latex level
+  - qol: environmental bodybags are now always pressurized
+  - rscadd: adds a medical version of the prisoner capture modsuit module, for patient
+      transport, prisoner capture and patient transport now use new medical/security
+      hardlight bodybags, medical one deploying them faster. and security one being
+      able to be locked down. when you move too far out of range the holobag dissipates
+  - rscadd: adds a defibrillator modsuit module, extends shock paddles
+  - rscadd: adds a thread ripper modsuit module, this module temporarily rips away
+      the matter of clothing, to allow stuff like injections, surgery, defibrillation
+      etc through it
+  - rscadd: adds a surgery processor modsuit module, essentially a portable surgery
+      computer like borgs have
+  - bugfix: fixes a bug where you can unwield defibrillator paddles just after starting
+      the do_after to defib onehanded
+  - bugfix: fixes a bug where the modsuit gps would have a broken name when renamed
+  Guillaume Prata:
+  - balance: 'The pluoxium reagent won''t heal suffocation damage and instead will
+      slowly heals organ damage if the target is sleeping. Hint: Cryotubes.'
+  - balance: Metal Hydrogen axe was reworked. It now work as a crowbar, can be stored
+      on most engineering/atmos suits and deal less damage than the default fireaxe
+      (15) against mobs while still doing the same damage (30) to structures or machinery.
+  LT3:
+  - balance: Tramstation's tram now actually packs a punch when it hits you. It will
+      hurt. Think twice before crossing on red!
+  Melbert:
+  - balance: 'Heretic: Curses have been reworked. You can now curse any member of
+      the crew, granted they''re not too far away. If you additionally provide an
+      item in the ritual containing a sample of the target''s blood or fingerprints,
+      the curse''s duration will be increased and have its range uncapped.'
+  - balance: 'Heretic: The Curse of Corrosion has been nerfed slightly due to this
+      rework, and can no longer cause vital organs to fail.'
+  - balance: 'Heretic: The Living Heart should now provide better directions, and
+      had its cooldown halved to 4 seconds.'
+  - balance: 'Heretic: Leeching Walk (rust healing) now restores lost blood.'
+  - balance: 'Heretic: If you apply Amok (Entropic Plume) to someone holding a gun,
+      they''ll try to shoot it at people nearby.'
+  - bugfix: Entropic Plume's effect now blinds, as it should.
+  - bugfix: Entropic Plume no longer sometimes applies the stink effect forever.
+  - bugfix: Entropic Plume no longer always applies the lowest amount of poison, and
+      properly scales on distance.
+  - bugfix: Fixed an exploit which allowed people to figure out if a Heretic's heart
+      was a previously a Living Heart after being removed.
+  - bugfix: If a heretic is fully healed by something (such as ahealed), they'll not
+      lose their living heart
+  - bugfix: Nightmares heal in darkness again
+  ShizCalev:
+  - bugfix: bodybags / crates will now be explicit about what is ontop of them if
+      you can't close them due to other bodybags / crates being in the same tile.
+  - qol: 'Added multi-z support to: Wizard teleporting, AI law upload computers, chemical
+      / tracking implants, robotics control consoles, camera bugs, blob spores, and
+      the apocalypse rune''s visual effects.'
+  - bugfix: Hiding inside lockers/objects when the SM delams will protect you from
+      it's effects again.
+  - bugfix: Headless humans can no longer receive facial creampies.
+  SkyratBot:
+  - rscadd: Cows can now eat wheat by interacting with it on the ground, healing them
+      a little.
+  - rscadd: Cows controlled by AI will seek out the food they like and eat it.
+  - rscadd: Even moonicorns.
+  - rscadd: But not wisdom cows, who refuse to be tamed or show their weak side because
+      of space station 13 socially enforced toxic wisdom cow standards
+  - bugfix: MMI piloted mecha can now open doors using access granted through the
+      ID card reader!
+  - bugfix: Mecha will now properly open doors when approaching from unrestricted
+      sides.
+  - rscadd: Added two new ethereal themed pieces of clothing, find them in your local
+      clothesmate
+  - rscadd: 'New curator bundle: Ethereal Trail Warden'
+  - bugfix: surprise eggs once again have a sprite
+  - imageadd: landmark icon sprites have been updated!
+  - bugfix: cooked pig meat is no longer GROSS, raw pig meat is GORE instead of GROSS
+  - code_imp: meat.dm has been split into several different files
+  - bugfix: Surgery tables are now no longer transparent.
+  - rscadd: Added a Trekkie Costume Crate! Now you can wear NT's scrapped jumpsuit
+      designs for only a small cost, all of which will go to NT's emergency anti-copyright
+      savings!
+  - imageadd: Updated the Trekkie uniforms to modern sprite standards, as well as
+      adding Voyager uniforms!
+  - rscadd: Status displays are now a bit more colorful and have gapless marquee text.
+  - refactor: Brig door timers were massively refactored behind the scenes. Door control
+      should still work as before but be mindful.
+  - bugfix: Putting a budget card into NIRN now gives the proper error message if
+      you are trying to buy something privately, and treat you as a normal cargo request
+      order by someone without any permissions otherwise
+  - bugfix: NIRN orders should now charge the department that bought it only if a
+      head of staff ordered it
+  - rscadd: Shadowpeople now heal from their brains! Their brain-tumor-thingy!
+  - code_imp: split up surgery.dmi
+  - admin: fax messages and book printings are now logged in paper.log
+  - admin: renaming fax machines is logged in game log
+  - bugfix: fixed plasma mat ignition spitting room temperature plasma.
+  - rscadd: Spiders can now be caught on fire
+  - rscadd: Spiders take significant damage from fly swatters and stamina damage from
+      pesticide
+  - balance: Spiders have been re-balanced. Their toxins can no longer kill but they
+      are not as susceptible to freezing
+  - balance: General stats of spider broodmothers have been buffed with more health,
+      damage, and faster web and egg placement
+  - balance: Flesh spiders cannot regenerate whilst on fire
+  - balance: Simplemobs change their internal temperature twice as fast
+  - bugfix: Basic mobs no longer glitchily catch on fire.
+  - bugfix: Creating shades with soulstones won't affect the chance of midround antagonist
+      spawns.
+  - qol: CTF will now only load when players/admins request it, for performance.
+  - rscadd: Re-adds the scrubber overflow event as a random event
+  - rscdel: You can no longer see maint spawners before the round starts (but your
+      rounds start faster now :) )
+  - rscadd: You can now fish in chasms, and might manage to catch things that careless
+      miners have dropped in there.
+  - rscadd: If your pole is long enough to reach into a deep hole, you might catch
+      crabs.
+  - balance: Changelings can climb out of chasms if you throw them into one.
+  - imageadd: An icon of a nice little crab, who will grow up into something less
+      nice.
+  - rscadd: You can craft fishing equipment from various lavaland materials, so that
+      Ashwalkers can fish up dead miners before you.
+  - rscadd: You can sometimes find worms while digging up tiles, if appropriate for
+      that material.
+  - rscadd: added an animation for using the *cry emote
+  - rscadd: getting peppersprayed causes you to cry
+  - code_imp: the blush overlay is now affected by the face offset
+  - qol: Subsystem initialization times now show to 2 decimal points.
+  - bugfix: Fixed autonamed/newly-built security cameras in areas using \improper
+      in their name showing up as static in security camera consoles. No, this is
+      the first attempt to do so, why do you ask?
+  - rscadd: techfab inspect blocks
+  - refactor: techfabs (and circuit imprinters, and protolathes) now use tgui
+  - balance: the scrubber overflow event now only triggers for half of scrubbers
+  - balance: removed peaceborg tire, peaceborg confuse, morphine, space drugs, acid,
+      mindbreaker, rotatium and plant-b-gone from the scrubber "safer" reagents list
+  - balance: added orange carpet, royal blue carpet, blue glitter, yoghurt, tinea
+      luxor, hydrogen peroxide, gravitum, and yuck to the "safer" reagents list
+  - bugfix: Fix slimepeople soft landing showing message for stairs and self
+  - bugfix: Fixes a couple of hard-deletes related to lua signal handlers.
+  itseasytosee:
+  - bugfix: The monkey and human rudimentary transform commands now function as intended.
+  - bugfix: Monkeys will no longer attack with items worse than their basic bite.
+  - admin: Fixed quick admin spawned humans from observes not keeping preferences
+      (sorry)
+  - qol: Monkeys wont trip over each other anymore, and will only trip if you run
+      into them with combat mode on.
+  - qol: Player monkeys can now opt in to tripping like a regular monkey.
+  - refactor: Stores monkey tripping in the brain, rather than the AI controller
+  - refactor: Traits such as literacy and advanced tool use are now tied to the brain
+      rather than the species
+  jjpark-kb:
+  - balance: vines heal less when hurting alive things
+  - rscadd: vines now take damage when off vines / heal when on vines
+  - rscdel: vines no longer heal while moving through vines
+  tf-4:
+  - admin: the admin modsuit now has the advanced jetpack instead of the normal one
+  - bugfix: fixes modsuit chestplate unequipping no longer retracting the suit storage
+      item
+  - bugfix: fixes modsuits breaking when going into gulag
+  - balance: Instead of directly lowering body temperature by a small amount, the
+      Grasp of Void and Mark of Void heretic abilities now inflict a status condition
+      called void chill, which steadily lowers the victim's body temperature and also
+      inflicts a mild slowdown.
+  - balance: The void storm summoned by ascended void heretics now inflicts less direct
+      burn damage, but lowers body temperature much more strongly.
+  - bugfix: The void storm visual overlays now properly update when the heretic exits
+      an area, making them a more accurate indicator of which area the heretic is
+      in.
+  - balance: Ghouls now appear dead to health scanners and other detections of life

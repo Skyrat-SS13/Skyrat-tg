@@ -31,7 +31,7 @@
 	random_icon_states = list("cum_1", "cum_2", "cum_3", "cum_4")
 	beauty = -50
 
-/obj/effect/decal/cleanable/femcum
+/obj/effect/decal/cleanable/cum/femcum
 	name = "female cum"
 	desc = "Uhh... Someone had fun..."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_decals/lewd_decals.dmi'
@@ -498,8 +498,7 @@
 				apply_status_effect(/datum/status_effect/climax)
 				apply_status_effect(/datum/status_effect/climax_cooldown)
 				if(create_cum_decal)
-					var/turf/our_turf = get_turf(src)
-					new /obj/effect/decal/cleanable/cum(our_turf)
+					add_cum_splatter_floor(get_turf(src))
 				return TRUE
 			if(vagina)
 				if(is_bottomless() || vagina.visibility_preference == GENITAL_ALWAYS_SHOW)
@@ -507,7 +506,7 @@
 					apply_status_effect(/datum/status_effect/climax_cooldown)
 					visible_message(span_purple("[src] is cumming!"), span_purple("You are cumming!"))
 					var/turf/our_turf = get_turf(src)
-					new /obj/effect/decal/cleanable/femcum(our_turf)
+					add_cum_splatter_floor(our_turf, female = TRUE)
 				else
 					apply_status_effect(/datum/status_effect/climax)
 					apply_status_effect(/datum/status_effect/climax_cooldown)
@@ -877,10 +876,9 @@
 	else
 		user.visible_message(span_warning("[user] starts masturbating onto [target]!"), span_danger("You start masturbating onto [target]!"))
 		if(do_after(user, 60))
-			var/turf/target_turf = get_turf(target)
 			user.visible_message(span_warning("[user] cums on [target]!"), span_danger("You cum on [target]!"))
 			playsound(target, SFX_DESECRATION, 50, TRUE, ignore_walls = FALSE)
-			new/obj/effect/decal/cleanable/cum(target_turf)
+			affected_human.add_cum_splatter_floor(get_turf(target))
 			if(prob(40))
 				affected_human.try_lewd_autoemote("moan")
 
