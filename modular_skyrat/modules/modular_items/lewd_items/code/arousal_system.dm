@@ -490,15 +490,6 @@
 						else if(climax_into_choice == "face")
 							visible_message(span_userlove("[src] shoots their sticky load onto [target_human]'s face!"), \
 								span_userlove("You shoot string after string of hot cum onto [target_human]'s face!"))
-							var/datum/component/cumfaced/has_load = target_human.GetComponent(/datum/component/cumfaced)
-							if(has_load)
-								if(!has_load.big_load)
-									qdel(has_load)
-									target_human.AddComponent(/datum/component/cumfaced/big)
-								else
-									create_cum_decal = TRUE // cum dripping on the floor from the face
-							else
-								target_human.AddComponent(/datum/component/cumfaced)
 						else
 							visible_message(span_userlove("[src] hilts [p_their()] cock into [target_human]'s [climax_into_choice], shooting cum into it!"), \
 								span_userlove("You hilt your cock into [target_human]'s [climax_into_choice], shooting cum into it!"))
@@ -760,112 +751,10 @@
 			if(arousal_alert?.pain_level in list("small", "medium", "high", "max"))
 				arousal_alert.cut_overlay(arousal_alert.pain_overlay)
 
-/*
-*	CUM FACE
-*/
-
-//you got cum on your face bro *licks it off*
-/datum/component/cumfaced
-	dupe_mode = COMPONENT_DUPE_UNIQUE_PASSARGS
-	var/big_load = FALSE
-	var/mutable_appearance/cumface
-
-/datum/component/cumfaced/Initialize()
-	if(!is_type_in_typecache(parent, GLOB.creamable))
-		return COMPONENT_INCOMPATIBLE
-
-	SEND_SIGNAL(parent, COMSIG_MOB_CUMFACED)
-
-	cumface = mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_decals/lewd_decals.dmi')
-
-	if(ishuman(parent))
-		var/mob/living/carbon/human/target = parent
-		if(target.dna.species.id == SPECIES_LIZARD)
-			cumface.icon_state = "cumface_lizard"
-		else if(target.dna.species.id == SPECIES_MONKEY)
-			cumface.icon_state = "cumface_monkey"
-		else if(target.dna.species.id == SPECIES_VOX || target.dna.species.id == SPECIES_VOX_PRIMALIS)
-			cumface.icon_state = "cumface_vox"
-		else if(target.dna.species.mutant_bodyparts["snout"])
-			cumface.icon_state = "cumface_lizard"
-		else
-			cumface.icon_state = "cumface_human"
-	else if(isAI(parent))
-		cumface.icon_state = "cumface_ai"
-
-	var/atom/overlayed_atom = parent
-	overlayed_atom.add_overlay(cumface)
-
-/datum/component/cumfaced/Destroy(force, silent)
-	var/atom/overlayed_atom = parent
-	overlayed_atom.cut_overlay(cumface)
-	qdel(cumface)
-	return ..()
-
-/datum/component/cumfaced/RegisterWithParent()
-	RegisterSignal(parent, list(
-		COMSIG_COMPONENT_CLEAN_ACT,
-		COMSIG_COMPONENT_CLEAN_FACE_ACT),
-		.proc/clean_up)
-
-/datum/component/cumfaced/UnregisterFromParent()
-	UnregisterSignal(parent, list(
-		COMSIG_COMPONENT_CLEAN_ACT,
-		COMSIG_COMPONENT_CLEAN_FACE_ACT))
-
-///Callback to remove pieface
-/datum/component/cumfaced/proc/clean_up(datum/source, clean_types)
-	SIGNAL_HANDLER
-
-	. = NONE
-	if(!(clean_types & CLEAN_TYPE_BLOOD))
-		return
-	qdel(src)
-	return COMPONENT_CLEANED
-
-/datum/component/cumfaced/big
-	dupe_mode = COMPONENT_DUPE_UNIQUE_PASSARGS
-	big_load = TRUE
-	var/mutable_appearance/bigcumface
-
-/datum/component/cumfaced/big/Initialize()
-	if(!is_type_in_typecache(parent, GLOB.creamable))
-		return COMPONENT_INCOMPATIBLE
-
-	SEND_SIGNAL(parent, COMSIG_MOB_CUMFACED)
-
-	bigcumface = mutable_appearance('modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_decals/lewd_decals.dmi')
-
-	if(ishuman(parent))
-		var/mob/living/carbon/human/target = parent
-		if(target.dna.species.id == "lizard")
-			bigcumface.icon_state = "bigcumface_lizard"
-		else if(target.dna.species.id == "monkey")
-			bigcumface.icon_state = "bigcumface_monkey"
-		else if(target.dna.species.id == "vox")
-			bigcumface.icon_state = "bigcumface_vox"
-		else if(target.dna.species.mutant_bodyparts["snout"])
-			bigcumface.icon_state = "bigcumface_lizard"
-		else
-			bigcumface.icon_state = "bigcumface_human"
-	else if(isAI(parent))
-		bigcumface.icon_state = "cumface_ai"
-
-	var/atom/overlayed_atom = parent
-	overlayed_atom.add_overlay(bigcumface)
-
-/datum/component/cumfaced/big/Destroy(force, silent)
-	var/atom/overlayed_atom = parent
-	overlayed_atom.cut_overlay(bigcumface)
-	qdel(bigcumface)
-	return ..()
-
-/*
 /datum/emote/living/cum
 	key = "cum"
 	key_third_person = "cums"
 	cooldown = 30 SECONDS
-*/
 
 /datum/emote/living/cum/check_config()
 	return !CONFIG_GET(flag/disable_erp_preferences)
