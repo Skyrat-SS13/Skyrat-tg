@@ -155,7 +155,7 @@
 
 /datum/chemical_reaction/drink/frisky_kitty
 	results = list(/datum/reagent/consumable/ethanol/frisky_kitty = 2)
-	required_reagents = list(/datum/reagent/consumable/catnip_tea = 1,  /datum/reagent/consumable/milk = 1)
+	required_reagents = list(/datum/reagent/catnip/tea = 1,  /datum/reagent/consumable/milk = 1)
 	required_temp = 296 //Just above room temp (22.85'C)
 
 // Non-Booze, see modular_skyrat\modules\customization\modules\reagents\chemistry\reagents\drink_reagents.dm
@@ -169,7 +169,7 @@
 	required_reagents = list(/datum/reagent/consumable/berryjuice = 1, /datum/reagent/consumable/tea/arnold_palmer = 1, /datum/reagent/consumable/sugar = 1)
 
 /datum/chemical_reaction/drink/catnip_tea
-	results = list(/datum/reagent/consumable/catnip_tea = 10)
+	results = list(/datum/reagent/catnip/tea = 10)
 	required_reagents = list(/datum/reagent/consumable/tea = 5, /datum/reagent/catnip = 2)
 
 /datum/chemical_reaction/drink/beerbatter

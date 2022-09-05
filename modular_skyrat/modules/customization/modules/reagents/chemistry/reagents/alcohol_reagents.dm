@@ -287,7 +287,10 @@
 	glass_name = "glass of zen star"
 	glass_desc = "You'd think something so balanced would actually taste nice... you'd be dead wrong."
 
-// RACE SPECIFIC DRINKS
+
+/*
+*	RACE DRINKS
+*/
 
 /datum/reagent/consumable/ethanol/coldscales
 	name = "Coldscales"
@@ -473,6 +476,10 @@
 		quality = DRINK_GOOD
 	return ..()
 
+/**
+ * FRISKY KITTY
+ * If you're a cat, it gives you a brain trauma that makes you hallucinate laser pointers around your person that you dive for
+ */
 /datum/reagent/consumable/ethanol/frisky_kitty
 	name = "Frisky Kitty"
 	color = "#FCF7D4" //(252, 247, 212)
@@ -483,13 +490,22 @@
 	glass_icon_state = "frisky_kitty"
 	glass_name = "cup of frisky kitty"
 	glass_desc = "Warm milk and some catnip."
+	/// The brain trauma the reagent gives
+	var/datum/brain_trauma/special/laser_pointer/laser_hallucination
 
-/datum/reagent/consumable/ethanol/frisky_kitty/on_mob_life(mob/living/carbon/M)
-	if(ismammal(M) || isfelinid(M) || istajaran(M))
+/datum/reagent/consumable/ethanol/frisky_kitty/on_mob_metabolize(mob/living/carbon/drinker)
+	. = ..()
+	if(isfeline(drinker))
 		quality = RACE_DRINK
+		laser_hallucination = new()
+		drinker.gain_trauma(laser_hallucination, TRAUMA_RESILIENCE_ABSOLUTE)
 	else
 		quality = DRINK_GOOD
-	return ..()
+
+/datum/reagent/consumable/ethanol/frisky_kitty/on_mob_end_metabolize(mob/living/carbon/drinker)
+	. = ..()
+	if(laser_hallucination)
+		QDEL_NULL(laser_hallucination)
 
 /datum/reagent/consumable/ethanol/appletini
 	name = "Appletini"

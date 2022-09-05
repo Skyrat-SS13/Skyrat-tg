@@ -1,7 +1,7 @@
 /datum/brain_trauma/special/laser_pointer
-	name = "Laser"
+	name = "laser pointers"
 	desc = "Patient seems to be a feline."
-	scan_desc = "feline mind"
+	scan_desc = "feline tendencies"
 	gain_text = "<span class='warning'>LIGHT.</span>"
 	lose_text = "<span class='notice'>Where'd that light go?</span>"
 	random_gain = FALSE
@@ -42,7 +42,7 @@
 		owner.visible_message(span_warning("[owner] pounces at nothing!"), span_userdanger("LIGHT!"))
 		owner.Knockdown(knockdown_time, ignore_canstun = TRUE)
 		owner.adjustStaminaLoss(stamina_usage)
-		owner.throw_at(target_turf, range = 1, speed = 1, thrower = owner, spin = FALSE)
+		owner.throw_at(target_turf, range = spawn_range, speed = 1, thrower = owner, spin = FALSE)
 	else
 		owner.visible_message(span_notice("[owner] suddenly becomes fixated on the floor."), span_warning("You're briefly tempted by the shiny light..."))
 
@@ -55,6 +55,14 @@
 			var/turf/squeaking_turf = locate(owner.x + rand(-10, 10), owner.y + rand(-10, 10), owner.z)
 			owner.playsound_local(squeaking_turf, 'sound/effects/mousesqueek.ogg', 20)
 	..()
+
+/datum/brain_trauma/special/laser_pointer/strong
+	name = "laser pointers (strong)"
+	scan_desc = "strong feline tendencies"
+	hallucination_chance = 20
+	spawn_range = 2
+	stamina_usage = 50
+	knockdown_time = 1.25 SECONDS
 
 /obj/effect/hallucination/simple/laser_pointer
 	name = "laser"

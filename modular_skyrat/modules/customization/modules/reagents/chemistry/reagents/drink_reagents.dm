@@ -34,27 +34,6 @@
 	..()
 	. = TRUE
 
-/datum/reagent/consumable/catnip_tea
-	name = "Catnip Tea"
-	description = "A sleepy and tasty catnip tea!"
-	color = "#101000" // rgb: 16, 16, 0
-	taste_description = "sugar and catnip"
-	glass_icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
-	glass_icon_state = "catnip_tea"
-	glass_name = "glass of catnip tea"
-	glass_desc = "A purrfect drink for a cat."
-
-/datum/reagent/consumable/catnip_tea/on_mob_life(mob/living/carbon/M)
-	M.adjustStaminaLoss(min(50 - M.getStaminaLoss(), 3))
-	if(isfelinid(M) || istajaran(M))
-		if(prob(20))
-			M.emote("nya")
-		if(prob(20))
-			to_chat(M, span_notice("[pick("Headpats feel nice.", "Backrubs would be nice.", "Mew")]"))
-	else
-		to_chat(M, span_notice("[pick("I feel oddly calm.", "I feel relaxed.", "Mew?")]"))
-	..()
-
 /datum/reagent/consumable/beerbatter
 	name = "Beer Batter"
 	description = "Probably not the greatest idea to drink...sludge."
