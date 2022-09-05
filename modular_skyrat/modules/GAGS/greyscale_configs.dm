@@ -436,6 +436,10 @@
 	icon_file = 'modular_skyrat/modules/GAGS/icons/dress.dmi'
 
 // COSTUMES
+
+/datum/greyscale_config/football_suit_worn/digi
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/costume_digi.dmi'
+
 /datum/greyscale_config/qipao
 	name = "Qipao"
 	icon_file = 'modular_skyrat/master_files/icons/obj/clothing/under/costume.dmi'

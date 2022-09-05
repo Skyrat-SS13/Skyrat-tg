@@ -25,7 +25,7 @@
 	desc = "A warm fluffy bathrobe, perfect for relaxing after finally getting clean."
 	icon_state = "bathrobe"
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
-	greyscale_colors = "#343749" //THATS RIGHT, FUCK YOU! THE BATHROBE CAN BE RECOLORED!
+	greyscale_colors = "#434d7a" //THATS RIGHT, FUCK YOU! THE BATHROBE CAN BE RECOLORED!
 	greyscale_config = /datum/greyscale_config/bathrobe
 	greyscale_config_worn = /datum/greyscale_config/bathrobe/worn
 	greyscale_config_worn_digi = /datum/greyscale_config/bathrobe/worn/digi
