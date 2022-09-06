@@ -856,7 +856,7 @@
 	VV_DROPDOWN_OPTION(VV_HK_MOD_QUIRKS, "Add/Remove Quirks")
 	VV_DROPDOWN_OPTION(VV_HK_SET_SPECIES, "Set Species")
 	VV_DROPDOWN_OPTION(VV_HK_PURRBATION, "Toggle Purrbation")
-	VV_DROPDOWN_OPTION(VV_HK_SEND_CRYO, "Send in Cryopod") //SKYRAT EDIT ADDITION - CRYO SEND
+	VV_DROPDOWN_OPTION(VV_HK_SEND_CRYO, "Send to Cryogenic Storage") //SKYRAT EDIT ADDITION - CRYO SEND
 
 /mob/living/carbon/human/vv_do_topic(list/href_list)
 	. = ..()
@@ -941,9 +941,9 @@
 	if(href_list[VV_HK_SEND_CRYO])
 		if(!check_rights(R_SPAWN))
 			return
-		src.send_to_cryo()
+		send_to_cryo()
 		to_chat(usr, "Put [src] in cryopod.")
-		log_admin("[key_name(usr)] has put [key_name(src)] to cryopod.")
+		log_admin("[key_name(usr)] has put [key_name(src)] into a cryopod.")
 		var/msg = span_notice("[key_name_admin(usr)] has put [key_name(src)] in cryopod.")
 		message_admins(msg)
 		admin_ticket_log(src, msg)

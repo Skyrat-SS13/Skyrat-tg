@@ -162,7 +162,7 @@ GLOBAL_LIST_EMPTY(station_cryopods)
 
 /obj/machinery/cryopod/Initialize(mapload)
 	..()
-	if(!quiet && src.z != 2) // maybe I should change the list to not_quiet_cryopods and dont block interlink cryo?
+	if(!quiet)
 		GLOB.station_cryopods += src
 	return INITIALIZE_HINT_LATELOAD //Gotta populate the cryopod computer GLOB first
 
@@ -172,8 +172,7 @@ GLOBAL_LIST_EMPTY(station_cryopods)
 
 // This is not a good situation
 /obj/machinery/cryopod/Destroy()
-	if(!quiet && src.z != 2)
-		GLOB.station_cryopods -= src
+	GLOB.station_cryopods -= src
 	control_computer_weakref = null
 	return ..()
 
