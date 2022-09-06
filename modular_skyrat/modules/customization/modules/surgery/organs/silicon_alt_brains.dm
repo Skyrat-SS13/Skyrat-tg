@@ -37,4 +37,4 @@
 // Otherwise there's no MMI machine at all
 /obj/item/organ/internal/brain/ipc_positron/mmi/update_overlays()
 	. = ..()
-		. += "mmi_dead"
+	. += "mmi_dead"
