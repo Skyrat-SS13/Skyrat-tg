@@ -7,6 +7,11 @@
 	lefthand_file = 'icons/mob/inhands/items/devices_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/items/devices_righthand.dmi'
 
+/obj/item/mmi/posibrain/circuit/update_overlays()
+	. = ..()
+	if(brainmob && brainmob.stat != DEAD)
+		. += "datadisk_gene"
+
 /obj/item/organ/internal/brain/ipc_positron/circuit
 	name = "compact AI circuit"
 	desc = "A compact and extremely complex circuit, perfectly dimensioned to fit in the same slot as a synthetic-compatiblepositronic brain. It is usually slotted into the chest of synthetic crewmembers."
