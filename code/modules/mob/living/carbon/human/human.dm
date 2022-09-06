@@ -1008,6 +1008,24 @@
 	if(target.incapacitated(IGNORE_GRAB) || incapacitated(IGNORE_GRAB))
 		target.visible_message(span_warning("[target] can't hang onto [src]!"))
 		return
+	//SKYRAT EDIT START
+	if(HAS_TRAIT(target, TRAIT_OVERSIZED) && !HAS_TRAIT(src, TRAIT_OVERSIZED))
+		target.visible_message(span_warning("[target] is too heavy for [src] to carry!"))
+		var/dam_zone = pick(BODY_ZONE_CHEST, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
+		var/obj/item/bodypart/affecting = get_bodypart(ran_zone(dam_zone))
+		var/wound_bon = 0
+		if(!affecting) //If one leg is missing, then it might break. Snap their spine instead
+			affecting = get_bodypart(BODY_ZONE_CHEST)
+		if(prob(oversized_piggywound_chance	))
+			wound_bon = 100
+			to_chat(src, span_danger("You are crushed under the weight of [target]!"))
+			to_chat(target, span_danger("You accidentally crush [src]!"))
+		else
+			to_chat(src, span_danger("You hurt your [affecting.name] while trying to endure the weight of [target]!"))
+		apply_damage(oversized_piggydam, BRUTE, affecting, wound_bonus=wound_bon) //Try to lift a 2 centner creature. 
+		Knockdown(oversized_piggyknock)
+		return
+		//SKYRAT EDIT END
 
 	return buckle_mob(target, TRUE, TRUE, RIDER_NEEDS_ARMS)
 
