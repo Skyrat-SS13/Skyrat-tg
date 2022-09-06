@@ -941,12 +941,20 @@
 	if(href_list[VV_HK_SEND_CRYO])
 		if(!check_rights(R_SPAWN))
 			return
-		send_to_cryo()
-		to_chat(usr, "Put [src] in cryopod.")
-		log_admin("[key_name(usr)] has put [key_name(src)] into a cryopod.")
-		var/msg = span_notice("[key_name_admin(usr)] has put [key_name(src)] in cryopod.")
-		message_admins(msg)
-		admin_ticket_log(src, msg)
+		var/choisen = tgui_alert(usr, "Add a paper notice about sending [name] into a cryopod?", "Leave a paper?", list("Yes", "No", "Cancel"))
+		if(choisen == "Cancel" || !choisen)
+			return
+		else
+			//log/message
+			to_chat(usr, "Put [src] in cryopod.")
+			log_admin("[key_name(usr)] has put [key_name(src)] into a cryopod.")
+			var/msg = span_notice("[key_name_admin(usr)] has put [key_name(src)] into a cryopod from [ADMIN_VERBOSEJMP(src)].")
+			message_admins(msg)
+			admin_ticket_log(src, msg)
+			
+			choisen = choisen == "Yes"
+		send_to_cryo(choisen)
+
 	//SKYRAT EDIT ADDITION END
 
 /mob/living/carbon/human/limb_attack_self()
