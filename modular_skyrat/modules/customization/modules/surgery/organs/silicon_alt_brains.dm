@@ -17,7 +17,7 @@
 // Make it a little more obvious that the thing's active, mmh?
 /obj/item/mmi/posibrain/circuit/add_mmi_overlay()
 	if(brainmob && brainmob.stat != DEAD)
-		. += "charger_lambda"
+		. += "datadisk_gene"
 
 /obj/item/organ/internal/brain/ipc_positron/circuit
 	name = "compact AI circuit"
