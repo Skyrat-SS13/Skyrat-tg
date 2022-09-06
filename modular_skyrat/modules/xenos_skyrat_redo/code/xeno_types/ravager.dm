@@ -10,24 +10,29 @@
 	health = 350
 	icon_state = "alienravager"
 	/// Holds the triple charge ability to be granted to the ravager later
-	var/datum/action/cooldown/mob_cooldown/charge/triple_charge/ravager/triple_charge
+	//var/datum/action/cooldown/mob_cooldown/charge/triple_charge/ravager/triple_charge
 	/// Holds the slicing tail sweep ability to be granted to the ravager later
 	var/datum/action/cooldown/spell/aoe/repulse/xeno/skyrat_tailsweep/slicing/tailsweep_slice
 	/// Holds the endure ability to be granted to the ravager later
 	var/datum/action/cooldown/alien/skyrat/literally_too_angry_to_die/you_cant_hurt_me_jack
+	/// Holds the basic charge ability that the alien will be granted
+	var/datum/action/cooldown/mob_cooldown/charge/basic_charge/defender/charge
 	melee_damage_lower = 30
 	melee_damage_upper = 35
 
 /mob/living/carbon/alien/humanoid/skyrat/ravager/Initialize(mapload)
 	. = ..()
-	triple_charge = new /datum/action/cooldown/mob_cooldown/charge/triple_charge/ravager()
-	triple_charge.Grant(src)
+	//triple_charge = new /datum/action/cooldown/mob_cooldown/charge/triple_charge/ravager()
+	//triple_charge.Grant(src)
 
 	tailsweep_slice = new /datum/action/cooldown/spell/aoe/repulse/xeno/skyrat_tailsweep/slicing()
 	tailsweep_slice.Grant(src)
 
 	you_cant_hurt_me_jack = new /datum/action/cooldown/alien/skyrat/literally_too_angry_to_die
 	you_cant_hurt_me_jack.Grant(src)
+
+	charge = new /datum/action/cooldown/mob_cooldown/charge/basic_charge/defender()
+	charge.Grant(src)
 
 	REMOVE_TRAIT(src, TRAIT_VENTCRAWLER_ALWAYS, INNATE_TRAIT)
 
@@ -41,6 +46,7 @@
 	internal_organs += new /obj/item/organ/internal/alien/plasmavessel
 	..()
 
+/*
 /datum/action/cooldown/mob_cooldown/charge/triple_charge/ravager
 	name = "Triple Charge Attack"
 	desc = "Allows you to charge thrice at a location, trampling any in your path."
@@ -60,6 +66,7 @@
 /datum/action/cooldown/mob_cooldown/charge/triple_charge/ravager/Activate(atom/target_atom)
 	. = ..()
 	return TRUE
+*/
 
 /datum/action/cooldown/spell/aoe/repulse/xeno/skyrat_tailsweep/slicing
 	name = "Slicing Tail Sweep"
