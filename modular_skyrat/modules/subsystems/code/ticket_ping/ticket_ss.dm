@@ -1,4 +1,4 @@
-/// Pings admins every (time choisen in config) for all open tickets/OPFOR applications
+/// Pings admins every (time chosen in config) for all open tickets/OPFOR applications
 SUBSYSTEM_DEF(ticket_ping)
 	name = "Ticket Ping"
 	flags = SS_BACKGROUND
