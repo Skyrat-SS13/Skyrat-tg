@@ -28,7 +28,6 @@
 *	Skirts
 */
 
-//Topless
 /obj/item/clothing/under/dress/skirt/skyrat/swept
 	name = "swept skirt"
 	desc = "Formal skirt."
@@ -44,7 +43,7 @@
 	greyscale_config_worn = /datum/greyscale_config/loneskirt/worn
 	greyscale_colors = "#5f534a"
 	flags_1 = IS_PLAYER_COLORABLE_1
-//End Topless
+
 /obj/item/clothing/under/dress/skirt/skyrat/turtleskirt_knit //Essentially the same as the Turtleneck Skirt but with a different texture
 	name = "cableknit skirt"
 	desc = "A casual turtleneck skirt, with a cableknit pattern."
