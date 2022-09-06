@@ -37,9 +37,10 @@
 	REMOVE_TRAIT(src, TRAIT_VENTCRAWLER_ALWAYS, INNATE_TRAIT)
 
 /mob/living/carbon/alien/humanoid/skyrat/ravager/Destroy()
-	QDEL_NULL(triple_charge)
+	//QDEL_NULL(triple_charge)
 	QDEL_NULL(tailsweep_slice)
 	QDEL_NULL(you_cant_hurt_me_jack)
+	QDEL_NULL(charge)
 	return ..()
 
 /mob/living/carbon/alien/humanoid/skyrat/ravager/create_internal_organs()
