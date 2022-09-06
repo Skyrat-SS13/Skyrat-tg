@@ -240,3 +240,71 @@
       an area, making them a more accurate indicator of which area the heretic is
       in.
   - balance: Ghouls now appear dead to health scanners and other detections of life
+2022-09-06:
+  GoldenAlpharex:
+  - qol: There is now a bit more time between events.
+  - bugfix: Blob is now only handled via dynamic, rather than being handled both by
+      dynamic and by the events subsystem.
+  - bugfix: You can no longer use MODsuit modules when your MODsuit isn't fully deployed,
+      unless the modules are intended to be usable when the MODsuit is inactive.
+  - bugfix: Coffee machines are now visible again!
+  Guillaume Prata:
+  - balance: Anyone with wings or a wagging lizard tail will have a small bonus to
+      their tacklling offense/defense.
+  - balance: Moths and lizards that lose their wings/tail will have worse tackling
+      values instead.
+  - balance: Fly people don't take splatting themselves on windows/walls easily and
+      have a higher chance to get a bad result from that.
+  ShizCalev:
+  - bugfix: Admin event spawned blobs will no longer immediately announce when the
+      event is triggered.
+  - bugfix: Admin events which poll candidates from ghosts will no longer announce
+      the event if the event failed to spawn a mob.
+  SkyratBot:
+  - code_imp: Removes a unnecesary function blind_eyes
+  - rscadd: A new kind of anomaly which transforms the area into some other kind of
+      material.
+  - bugfix: Supermatter delaminations can spawn bioscramblers again.
+  - rscadd: You can now send photos or trading cards through the fax machine.
+  - rscadd: You can now hack the wires of a fax machine to have it throw items harder
+      or accept additional flat input items such as material sheets, ID cards, and
+      pizza slices.
+  - qol: Screentips should tell you what using a particular item on a fax machine
+      will do.
+  - bugfix: Fixed runtime when using AmpCheck without connecting the console with
+      a wire.
+  - bugfix: Fixed a few runtimes that could occur when using APC controller consoles.
+  - qol: Sucked soul out of APC controller code and UI.
+  - rscdel: Removed "secret" power monitor console.
+  - qol: techfab tgui now supports old-school bulk sheet ejection
+  - qol: techfab tgui no longer overflows its window if you have six million categories
+  - qol: techfab tgui no longer consumes your screen's free real estate on an unprecedented
+      scale
+  - code_imp: Removes erroneous code from bananium meteor. This should not affect
+      players in any way.
+  - bugfix: An APC and a Television Monitor in MetaStation Engineering Hallway will
+      no longer conflict visually.
+  - bugfix: The shrink ray now spawns with an abductor firing pin instead of a normal
+      one.
+  - balance: Sleeping carp deflects hand spells, CQC reflects hand spells
+  - bugfix: Monkeys can correctly find weapons again
+  - bugfix: fixes infinite locker timer runtiming
+  Stalkeros, Lukaster42:
+  - imageadd: 5.6x40mm finally gets its own sprite.
+  SuperDrish:
+  - rscadd: Oversized can't piggyback ride someone smaller.
+  Vishenka0704:
+  - bugfix: mop can no longer suck liquid further than one tile
+  Vishenka0704 and Ying-The-Pando:
+  - rscadd: Cucumbers and pickles
+  - rscadd: Danish hot dog
+  - balance: add cucumbers in dishes where they need
+  - qol: add to bounty cubes, orders - new vegetables
+  Zonespace27:
+  - bugfix: Bodily fluid now carries DNA of the person who created it
+  ma44:
+  - code_imp: Trader NPCs have been given some needed frontend and backend changes
+  tf-4:
+  - rscdel: Removed deluxe agent IDs.
+  - balance: Regular agent IDs can now hold one addition common-level access and one
+      additional command-level access.
