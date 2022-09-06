@@ -856,7 +856,6 @@
 	VV_DROPDOWN_OPTION(VV_HK_MOD_QUIRKS, "Add/Remove Quirks")
 	VV_DROPDOWN_OPTION(VV_HK_SET_SPECIES, "Set Species")
 	VV_DROPDOWN_OPTION(VV_HK_PURRBATION, "Toggle Purrbation")
-	VV_DROPDOWN_OPTION(VV_HK_SEND_CRYO, "Send to Cryogenic Storage") //SKYRAT EDIT ADDITION - CRYO SEND
 
 /mob/living/carbon/human/vv_do_topic(list/href_list)
 	. = ..()
@@ -937,25 +936,6 @@
 			var/msg = span_notice("[key_name_admin(usr)] has removed [key_name(src)] from purrbation.")
 			message_admins(msg)
 			admin_ticket_log(src, msg)
-	//SKYRAT EDIT ADDITION BEGIN - CRYO SEND
-	if(href_list[VV_HK_SEND_CRYO])
-		if(!check_rights(R_SPAWN))
-			return
-		var/choisen = tgui_alert(usr, "Add a paper notice about sending [name] into a cryopod?", "Leave a paper?", list("Yes", "No", "Cancel"))
-		if(choisen == "Cancel" || !choisen)
-			return
-		else
-			//log/message
-			to_chat(usr, "Put [src] in cryopod.")
-			log_admin("[key_name(usr)] has put [key_name(src)] into a cryopod.")
-			var/msg = span_notice("[key_name_admin(usr)] has put [key_name(src)] into a cryopod from [ADMIN_VERBOSEJMP(src)].")
-			message_admins(msg)
-			admin_ticket_log(src, msg)
-			
-			choisen = choisen == "Yes"
-		send_to_cryo(choisen)
-
-	//SKYRAT EDIT ADDITION END
 
 /mob/living/carbon/human/limb_attack_self()
 	var/obj/item/bodypart/arm = hand_bodyparts[active_hand_index]

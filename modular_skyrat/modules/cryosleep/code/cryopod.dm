@@ -11,6 +11,7 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 
 GLOBAL_LIST_EMPTY(ghost_records)
 
+/// A list of all cryopods that aren't quiet, to be used by the "Send to Cryogenic Storage" VV action.
 GLOBAL_LIST_EMPTY(valid_cryopods)
 
 //Main cryopod console.
