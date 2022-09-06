@@ -417,27 +417,27 @@
 
 /datum/greyscale_config/buttondown_slacks_worn/digi
 	name = "Worn Buttondown with Slacks - Digitigrade"
-	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/shorts_pants_shirts_digi.dmi'
+	icon_file = SHORTS_PANTS_SHIRTS_DIGIFILE
 
 /datum/greyscale_config/buttondown_shorts_worn/digi
 	name = "Worn Buttondown with Shorts - Digitigrade"
-	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/shorts_pants_shirts_digi.dmi'
+	icon_file = SHORTS_PANTS_SHIRTS_DIGIFILE
 
 /datum/greyscale_config/slacks_worn/digi
 	name = "Worn Slacks - Digitigrade"
-	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/shorts_pants_shirts_digi.dmi'
+	icon_file = SHORTS_PANTS_SHIRTS_DIGIFILE
 
 /datum/greyscale_config/jeans_worn/digi
 	name = "Worn Jeans - Digitigrade"
-	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/shorts_pants_shirts_digi.dmi'
+	icon_file = SHORTS_PANTS_SHIRTS_DIGIFILE
 
 /datum/greyscale_config/shorts_worn/digi
 	name = "Worn Shorts - Digitigrade"
-	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/shorts_pants_shirts_digi.dmi'
+	icon_file = SHORTS_PANTS_SHIRTS_DIGIFILE
 
 /datum/greyscale_config/jeanshorts_worn/digi
 	name = "Worn Jean Shorts - Digitigrade"
-	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/shorts_pants_shirts_digi.dmi'
+	icon_file = SHORTS_PANTS_SHIRTS_DIGIFILE
 
 /datum/greyscale_config/shorts_ripped
 	name = "Ripped Shorts"
@@ -450,7 +450,7 @@
 
 /datum/greyscale_config/shorts_ripped/worn/digi
 	name = "Worn Ripped Shorts - Digitigrade"
-	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/shorts_pants_shirts_digi.dmi'
+	icon_file = SHORTS_PANTS_SHIRTS_DIGIFILE
 
 /datum/greyscale_config/jeans_ripped
 	name = "Ripped Jeans"
@@ -463,7 +463,7 @@
 
 /datum/greyscale_config/jeans_ripped/worn/digi
 	name = "Worn Ripped Jeans - Digitigrade"
-	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/shorts_pants_shirts_digi.dmi'
+	icon_file = SHORTS_PANTS_SHIRTS_DIGIFILE
 
 /datum/greyscale_config/yoga_pants
 	name = "Yoga Pants"
@@ -476,13 +476,13 @@
 
 /datum/greyscale_config/yoga_pants/worn/digi
 	name = "Worn Yoga Pants - Digitigrade"
-	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/shorts_pants_shirts_digi.dmi'
+	icon_file = SHORTS_PANTS_SHIRTS_DIGIFILE
 
 // DRESSES / SKIRTS
 
 /datum/greyscale_config/plaidskirt_worn/digi
 	name = "Worn Plaid Skirt - Digitigrade"
-	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/skirts_dresses_digi.dmi'
+	icon_file = SKIRTS_DRESSES_DIGIFILE
 
 /datum/greyscale_config/loneskirt
 	name = "Skirt"
@@ -513,7 +513,7 @@
 
 /datum/greyscale_config/jeanskirt/worn/digi
 	name = "Worn Jean Skirt - Digitigrade"
-	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/skirts_dresses_digi.dmi'
+	icon_file = SKIRTS_DRESSES_DIGIFILE
 
 /datum/greyscale_config/shortdress
 	name = "Short Dress"
