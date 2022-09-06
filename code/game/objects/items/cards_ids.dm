@@ -1329,7 +1329,7 @@
 	name = "agent card"
 	desc = "A highly advanced chameleon ID card. Touch this card on another ID card or player to choose which accesses to copy. Has special magnetic properties which force it to the front of wallets."
 	trim = /datum/id_trim/chameleon
-	wildcard_slots = WILDCARD_LIMIT_CHAMELEON
+	wildcard_slots = WILDCARD_LIMIT_CHAMELEON_PLUS // SKYRAT EDIT - Original WILDCARD_LIMIT_CHAMELEON
 
 	/// Have we set a custom name and job assignment, or will we use what we're given when we chameleon change?
 	var/forged = FALSE
@@ -1611,20 +1611,11 @@
 	return ..()
 
 /// A special variant of the classic chameleon ID card which accepts all access.
-//SKYRAT EDIT BEGIN..
-
-#define WILDCARD_LIMIT_CHAMELEON_ADVANCED list( \
-	WILDCARD_NAME_CENTCOM = list(limit = 2, usage = list()), \
-	WILDCARD_NAME_SYNDICATE = list(limit = -1, usage = list()), \
-	WILDCARD_NAME_CAPTAIN = list(limit = -1, usage = list()) \
-)
-
 /obj/item/card/id/advanced/chameleon/black
 	icon_state = "card_black"
 	worn_icon_state = "card_black"
 	assigned_icon_state = "assigned_syndicate"
-	wildcard_slots = WILDCARD_LIMIT_CHAMELEON_ADVANCED
-//SKYRAT EDIT END
+	wildcard_slots = WILDCARD_LIMIT_GOLD
 
 /obj/item/card/id/advanced/engioutpost
 	registered_name = "George 'Plastic' Miller"
