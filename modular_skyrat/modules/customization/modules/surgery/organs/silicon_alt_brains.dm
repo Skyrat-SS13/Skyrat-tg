@@ -7,16 +7,17 @@
 	lefthand_file = 'icons/mob/inhands/items/devices_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/items/devices_righthand.dmi'
 
-	var/begin_activation_message = "<span class='notice'>You carefully locate the manual activation switch and start the compact AI circuit's boot process.</span>"
-	var/success_message = "<span class='notice'>The compact AI circuit pings, and its lights start flashing. Success!</span>"
-	var/fail_message = "<span class='notice'>The compact AI circuit buzzes quietly, and the golden lights fade away. Perhaps you could try again?</span>"
-	var/new_mob_message = "<span class='notice'>The compact AI circuit chimes quietly.</span>"
-	var/recharge_message = "<span class='warning'>The compact AI circuit isn't ready to activate again yet! Give it some time to recharge.</span>"
+	// It pains me to copy-paste so much, but I can't do it any other way
+	begin_activation_message = "<span class='notice'>You carefully locate the manual activation switch and start the compact AI circuit's boot process.</span>"
+	success_message = "<span class='notice'>The compact AI circuit pings, and its lights start flashing. Success!</span>"
+	fail_message = "<span class='notice'>The compact AI circuit buzzes quietly, and the golden lights fade away. Perhaps you could try again?</span>"
+	new_mob_message = "<span class='notice'>The compact AI circuit chimes quietly.</span>"
+	recharge_message = "<span class='warning'>The compact AI circuit isn't ready to activate again yet! Give it some time to recharge.</span>"
 
-/obj/item/mmi/posibrain/circuit/update_overlays()
-	. = ..()
+// Make it a little more obvious that the thing's active, mmh?
+/obj/item/mmi/posibrain/circuit/add_mmi_overlay()
 	if(brainmob && brainmob.stat != DEAD)
-		. += "datadisk_gene"
+		. += "charger_lambda"
 
 /obj/item/organ/internal/brain/ipc_positron/circuit
 	name = "compact AI circuit"
@@ -33,6 +34,7 @@
 	icon = 'icons/obj/assemblies/assemblies.dmi'
 	icon_state = "mmi_brain"
 
+// Otherwise there's no MMI machine at all
 /obj/item/organ/internal/brain/ipc_positron/mmi/update_overlays()
 	. = ..()
-	. += "mmi_dead"
+		. += "mmi_dead"
