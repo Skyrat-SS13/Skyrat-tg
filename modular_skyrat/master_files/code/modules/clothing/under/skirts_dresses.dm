@@ -56,6 +56,7 @@
 	greyscale_colors = "#cc0000#5f5f5f"
 	flags_1 = IS_PLAYER_COLORABLE_1
 	can_adjust = TRUE
+	alt_covers_chest = TRUE
 
 /obj/item/clothing/under/dress/skirt/skyrat/jean
 	name = "jean skirt"
