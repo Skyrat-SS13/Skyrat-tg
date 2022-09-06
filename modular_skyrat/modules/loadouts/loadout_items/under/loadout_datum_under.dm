@@ -255,7 +255,7 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 
 /datum/loadout_item/under/miscellaneous/jeansripped
 	name = "Recolorable Ripped Jeans"
-	item_path = /obj/item/clothing/under/pants/skyrat/jeansripped
+	item_path = /obj/item/clothing/under/pants/skyrat/jeans_ripped
 
 /datum/loadout_item/under/miscellaneous/yoga
 	name = "Recolorable Yoga Pants"
@@ -275,7 +275,7 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 
 /datum/loadout_item/under/miscellaneous/pants_blackshorts
 	name = "Recolorable Ripped Jean Shorts"
-	item_path = /obj/item/clothing/under/shorts/skyrat/shortsripped
+	item_path = /obj/item/clothing/under/shorts/skyrat/shorts_ripped
 
 /datum/loadout_item/under/miscellaneous/shorts
 	name = "Recolorable Shorts"
@@ -349,7 +349,7 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 
 /datum/loadout_item/under/miscellaneous/lone_skirt
 	name = "Recolorable Skirt"
-	item_path = /obj/item/clothing/under/dress/skirt/skyrat/loneskirt
+	item_path = /obj/item/clothing/under/dress/skirt/skyrat/lone_skirt
 
 /datum/loadout_item/under/miscellaneous/denim_skirt
 	name = "Jean Skirt"
@@ -357,7 +357,7 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 
 /datum/loadout_item/under/miscellaneous/littleblack
 	name = "Short Black Dress"
-	item_path = /obj/item/clothing/under/dress/skyrat/shortdress
+	item_path = /obj/item/clothing/under/dress/skyrat/short_dress
 
 /datum/loadout_item/under/miscellaneous/pinktutu
 	name = "Pink Tutu"

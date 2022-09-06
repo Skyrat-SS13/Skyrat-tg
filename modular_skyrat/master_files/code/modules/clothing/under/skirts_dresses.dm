@@ -36,13 +36,13 @@
 	icon_state = "skirt_swept"
 	body_parts_covered = GROIN
 
-/obj/item/clothing/under/dress/skirt/skyrat/loneskirt
+/obj/item/clothing/under/dress/skirt/skyrat/lone_skirt
 	name = "skirt"
 	desc = "Just a skirt! Hope you have a tanktop to wear with this."
 	icon_state = "lone_skirt"
 	body_parts_covered = GROIN
-	greyscale_config = /datum/greyscale_config/loneskirt
-	greyscale_config_worn = /datum/greyscale_config/loneskirt/worn
+	greyscale_config = /datum/greyscale_config/lone_skirt
+	greyscale_config_worn = /datum/greyscale_config/lone_skirt/worn
 	greyscale_colors = "#5f534a"
 	flags_1 = IS_PLAYER_COLORABLE_1
 
@@ -60,28 +60,28 @@
 /obj/item/clothing/under/dress/skirt/skyrat/jean
 	name = "jean skirt"
 	desc = "Technically, is there much difference between these and jorts? It's just one big hole instead of two. Does that make this a jirt?"
-	icon_state = "jeanskirt"
+	icon_state = "jean_skirt"
 	female_sprite_flags = NO_FEMALE_UNIFORM
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
-	greyscale_config = /datum/greyscale_config/jeanskirt
-	greyscale_config_worn = /datum/greyscale_config/jeanskirt/worn
-	greyscale_config_worn_digi = /datum/greyscale_config/jeanskirt/worn/digi
+	greyscale_config = /datum/greyscale_config/jean_skirt
+	greyscale_config_worn = /datum/greyscale_config/jean_skirt/worn
+	greyscale_config_worn_digi = /datum/greyscale_config/jean_skirt/worn/digi
 	greyscale_colors = "#787878#723E0E#4D7EAC"
 	flags_1 = IS_PLAYER_COLORABLE_1
 
-/obj/item/clothing/under/dress/skyrat/shortdress
+/obj/item/clothing/under/dress/skyrat/short_dress
 	name = "short dress"
 	desc = "An extremely short dress with a lovely sash and flower - only for those with good self-confidence."
-	icon_state = "shortdress"
-	greyscale_config = /datum/greyscale_config/shortdress
-	greyscale_config_worn = /datum/greyscale_config/shortdress/worn
+	icon_state = "short_dress"
+	greyscale_config = /datum/greyscale_config/short_dress
+	greyscale_config_worn = /datum/greyscale_config/short_dress/worn
 	greyscale_colors = "#ff3636#363030"
 	flags_1 = IS_PLAYER_COLORABLE_1
 
 /obj/item/clothing/under/dress/skyrat/pinktutu
 	name = "pink tutu"
 	desc = "A fluffy pink tutu."
-	icon_state = "pinktutu_s"
+	icon_state = "pinktutu"
 
 /*
 *	Dresses
@@ -96,7 +96,7 @@
 /obj/item/clothing/under/dress/skyrat/redformal
 	name = "formal red dress"
 	desc = "Not too wide flowing, but big enough to make an impression."
-	icon_state = "formalred"
+	icon_state = "formal_red"
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS
 	flags_inv = HIDESHOES
 

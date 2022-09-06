@@ -26,7 +26,7 @@
 *	PANTS
 */
 
-/obj/item/clothing/under/pants/skyrat/jeansripped
+/obj/item/clothing/under/pants/skyrat/jeans_ripped
 	name = "ripped jeans"
 	desc = "A nondescript pair of tough jeans, with several rips and tears. The staple pants choice of both rebels and the poor."
 	icon_state = "jeans_ripped"
@@ -59,7 +59,7 @@
 *	SHORTS
 */
 
-/obj/item/clothing/under/shorts/skyrat/shortsripped
+/obj/item/clothing/under/shorts/skyrat/shorts_ripped
 	name = "ripped shorts"
 	desc = "A nondescript pair of tough jean shorts, with the ends of the pantlegs frayed and torn. No one will ever know if this was done intentionally."
 	icon_state = "shorts_ripped"

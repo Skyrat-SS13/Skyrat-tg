@@ -484,12 +484,12 @@
 	name = "Worn Plaid Skirt - Digitigrade"
 	icon_file = SKIRTS_DRESSES_DIGIFILE
 
-/datum/greyscale_config/loneskirt
+/datum/greyscale_config/lone_skirt
 	name = "Skirt"
 	icon_file = 'modular_skyrat/master_files/icons/obj/clothing/under/skirts_dresses.dmi'
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/pants_shorts_skirts_dresses/lone_skirt.json'
 
-/datum/greyscale_config/loneskirt/worn
+/datum/greyscale_config/lone_skirt/worn
 	name = "Worn Skirt"
 	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/skirts_dresses.dmi'
 
@@ -502,25 +502,25 @@
 	name = "Worn Cableknit Skirtleneck"
 	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/skirts_dresses.dmi'
 
-/datum/greyscale_config/jeanskirt
+/datum/greyscale_config/jean_skirt
 	name = "Jean Skirt"
 	icon_file = 'modular_skyrat/master_files/icons/obj/clothing/under/skirts_dresses.dmi'
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/pants_shorts_skirts_dresses/jeanskirt.json'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/pants_shorts_skirts_dresses/jean_skirt.json'
 
-/datum/greyscale_config/jeanskirt/worn
+/datum/greyscale_config/jean_skirt/worn
 	name = "Worn Jean Skirt"
 	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/skirts_dresses.dmi'
 
-/datum/greyscale_config/jeanskirt/worn/digi
+/datum/greyscale_config/jean_skirt/worn/digi
 	name = "Worn Jean Skirt - Digitigrade"
 	icon_file = SKIRTS_DRESSES_DIGIFILE
 
-/datum/greyscale_config/shortdress
+/datum/greyscale_config/short_dress
 	name = "Short Dress"
 	icon_file = 'modular_skyrat/master_files/icons/obj/clothing/under/skirts_dresses.dmi'
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/pants_shorts_skirts_dresses/shortdress.json'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/pants_shorts_skirts_dresses/short_dress.json'
 
-/datum/greyscale_config/shortdress/worn
+/datum/greyscale_config/short_dress/worn
 	name = "Worn Short Dress"
 	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/skirts_dresses.dmi'
 

@@ -33,8 +33,8 @@
 			"name" = "Under",
 			"icon" = "shirt",
 			"products" = list(
-				/obj/item/clothing/under/pants/skyrat/jeansripped = 5,
-				/obj/item/clothing/under/shorts/skyrat/shortsripped = 5,
+				/obj/item/clothing/under/pants/skyrat/jeans_ripped = 5,
+				/obj/item/clothing/under/shorts/skyrat/shorts_ripped = 5,
 				/obj/item/clothing/under/pants/skyrat/yoga = 5,
 				/obj/item/clothing/under/misc/mechanic = 5,
 				/obj/item/clothing/under/misc/greyshirt = 5,
@@ -81,9 +81,9 @@
 			"name" = "Suits & Skirts",
 			"icon" = "vest",
 			"products" = list(
-				/obj/item/clothing/under/dress/skirt/skyrat/loneskirt = 5,
+				/obj/item/clothing/under/dress/skirt/skyrat/lone_skirt = 5,
 				/obj/item/clothing/under/dress/skirt/skyrat/turtleskirt_knit = 5,
-				/obj/item/clothing/under/dress/skyrat/shortdress = 5,
+				/obj/item/clothing/under/dress/skyrat/short_dress = 5,
 				/obj/item/clothing/under/dress/skyrat/pinktutu = 5,
 				/obj/item/clothing/under/dress/skirt/skyrat/jean = 5,
 				/obj/item/clothing/under/dress/skyrat/flower = 5,
