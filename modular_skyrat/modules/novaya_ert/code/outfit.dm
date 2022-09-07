@@ -10,7 +10,13 @@
 	gloves = /obj/item/clothing/gloves/combat
 	belt = /obj/item/storage/belt/military/nri/soldier
 	back = /obj/item/mod/control/pre_equipped/frontline/ert
-	backpack_contents = list(/obj/item/storage/box/nri_survival_pack, /obj/item/storage/medkit/emergency, /obj/item/ammo_box/magazine/m9mm_aps, /obj/item/advanced_choice_beacon/nri/heavy, /obj/item/beamout_tool, /obj/item/crucifix, /obj/item/reagent_containers/cup/glass/waterbottle/large/cryptobiolin)
+	backpack_contents = list(/obj/item/storage/box/nri_survival_pack,
+							/obj/item/storage/medkit/emergency,
+							/obj/item/ammo_box/magazine/m9mm_aps,
+							/obj/item/advanced_choice_beacon/nri/heavy,
+							/obj/item/beamout_tool,
+							/obj/item/crucifix,
+							/obj/item/reagent_containers/cup/glass/waterbottle/large/cryptobiolin)
 	l_pocket = /obj/item/gun/ballistic/automatic/pistol/ladon/nri
 	r_pocket = /obj/item/ammo_box/magazine/m9mm_aps
 	shoes = /obj/item/clothing/shoes/combat
@@ -29,7 +35,11 @@
 	belt = /obj/item/storage/belt/military/nri/heavy
 	suit_store = null
 	back = /obj/item/storage/backpack/duffelbag/syndie/nri
-	backpack_contents = list(/obj/item/storage/box/nri_survival_pack, /obj/item/storage/medkit/emergency, /obj/item/advanced_choice_beacon/nri/heavy, /obj/item/beamout_tool, /obj/item/crucifix)
+	backpack_contents = list(/obj/item/storage/box/nri_survival_pack,
+							/obj/item/storage/medkit/emergency,
+							/obj/item/advanced_choice_beacon/nri/heavy,
+							/obj/item/beamout_tool,
+							/obj/item/crucifix)
 	l_pocket = /obj/item/wrench/combat
 
 	l_hand = /obj/item/gun/ballistic/automatic/pistol/aps
@@ -46,7 +56,15 @@
 	suit_store = null
 	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
 	back = /obj/item/mod/control/pre_equipped/frontline/ert
-	backpack_contents = list(/obj/item/storage/box/nri_survival_pack, /obj/item/storage/medkit/regular, /obj/item/megaphone, /obj/item/binoculars, /obj/item/clothing/head/beret/sec/nri, /obj/item/ammo_box/magazine/m9mm_aps, /obj/item/beamout_tool, /obj/item/crucifix, /obj/item/reagent_containers/cup/glass/waterbottle/large/cryptobiolin)
+	backpack_contents = list(/obj/item/storage/box/nri_survival_pack,
+							/obj/item/storage/medkit/regular,
+							/obj/item/megaphone,
+							/obj/item/binoculars,
+							/obj/item/clothing/head/beret/sec/nri,
+							/obj/item/ammo_box/magazine/m9mm_aps,
+							/obj/item/beamout_tool,
+							/obj/item/crucifix,
+							/obj/item/reagent_containers/cup/glass/waterbottle/large/cryptobiolin)
 
 	l_hand = /obj/item/gun/ballistic/automatic/akm
 
@@ -62,7 +80,16 @@
 	suit_store = null
 	gloves = /obj/item/clothing/gloves/color/latex/nitrile
 	back = /obj/item/mod/control/pre_equipped/frontline/ert
-	backpack_contents = list(/obj/item/storage/box/nri_survival_pack, /obj/item/storage/medkit/tactical, /obj/item/storage/medkit/advanced, /obj/item/storage/medkit/surgery, /obj/item/gun/medbeam, /obj/item/gun/energy/cell_loaded/medigun/cmo, /obj/item/storage/box/medicells, /obj/item/beamout_tool, /obj/item/crucifix, /obj/item/reagent_containers/cup/glass/waterbottle/large/cryptobiolin)
+	backpack_contents = list(/obj/item/storage/box/nri_survival_pack,
+							/obj/item/storage/medkit/tactical,
+							/obj/item/storage/medkit/advanced,
+							/obj/item/storage/medkit/surgery,
+							/obj/item/gun/medbeam,
+							/obj/item/gun/energy/cell_loaded/medigun/cmo,
+							/obj/item/storage/box/medicells,
+							/obj/item/beamout_tool,
+							/obj/item/crucifix,
+							/obj/item/reagent_containers/cup/glass/waterbottle/large/cryptobiolin)
 
 	l_hand = /obj/item/shield/riot/pointman/nri
 	r_hand = /obj/item/gun/ballistic/automatic/plastikov/nri
@@ -78,7 +105,13 @@
 	suit = null
 	suit_store = null
 	back = /obj/item/mod/control/pre_equipped/frontline/ert
-	backpack_contents = list(/obj/item/storage/box/nri_survival_pack, /obj/item/construction/rcd/loaded/upgraded, /obj/item/rcd_ammo/large, /obj/item/advanced_choice_beacon/nri/engineer, /obj/item/beamout_tool, /obj/item/crucifix, /obj/item/reagent_containers/cup/glass/waterbottle/large/cryptobiolin)
+	backpack_contents = list(/obj/item/storage/box/nri_survival_pack,
+							/obj/item/construction/rcd/loaded/upgraded,
+							/obj/item/rcd_ammo/large,
+							/obj/item/advanced_choice_beacon/nri/engineer,
+							/obj/item/beamout_tool,
+							/obj/item/crucifix,
+							/obj/item/reagent_containers/cup/glass/waterbottle/large/cryptobiolin)
 
 	l_hand = /obj/item/storage/belt/utility/full/powertools
 	r_hand = /obj/item/gun/ballistic/automatic/plastikov/nri
