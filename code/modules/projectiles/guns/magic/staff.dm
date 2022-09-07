@@ -121,14 +121,6 @@
 	recharge_rate = 2
 	no_den_usage = 1
 	school = SCHOOL_FORBIDDEN //this staff is evil. okay? it just is. look at this projectile type list. this is wrong.
-<<<<<<< HEAD
-	var/allowed_projectile_types = list(/obj/projectile/magic/change, /obj/projectile/magic/animate, /obj/projectile/magic/resurrection,
-	/obj/projectile/magic/death, /obj/projectile/magic/teleport, /obj/projectile/magic/door, /obj/projectile/magic/fireball,
-	/obj/projectile/magic/spellblade, /obj/projectile/magic/arcane_barrage, /obj/projectile/magic/locker, /obj/projectile/magic/flying,
-	/obj/projectile/magic/bounty, /obj/projectile/magic/antimagic, /obj/projectile/magic/fetch, /obj/projectile/magic/sapping,
-	/obj/projectile/magic/necropotence, /obj/projectile/magic, /obj/projectile/temp/chill, /obj/projectile/magic/wipe) //SKYRAT EDIT - Removes /obj/projectile/magic/change
-=======
-
 	/// Static list of all projectiles we can fire from our staff.
 	/// Doesn't contain all subtypes of magic projectiles, unlike what it looks like
 	var/static/list/allowed_projectile_types = list(
@@ -136,7 +128,7 @@
 		/obj/projectile/magic/antimagic,
 		/obj/projectile/magic/arcane_barrage,
 		/obj/projectile/magic/bounty,
-		/obj/projectile/magic/change,
+		///obj/projectile/magic/change, //SKYRAT EDIT REMOVAL
 		/obj/projectile/magic/death,
 		/obj/projectile/magic/door,
 		/obj/projectile/magic/fetch,
@@ -151,7 +143,6 @@
 		/obj/projectile/magic/wipe,
 		/obj/projectile/temp/chill,
 	)
->>>>>>> de04b3be808 (Kills `/obj/shapeshift_holder`, replaces it with `/datum/status_effect/shapechange_mob`, also does a lot of Wabbajack refactoring (#69091))
 
 /obj/item/gun/magic/staff/chaos/unrestricted
 	allow_intruder_use = TRUE

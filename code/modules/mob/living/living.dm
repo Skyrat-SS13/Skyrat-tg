@@ -1439,15 +1439,9 @@
 
 // Called when we are hit by a bolt of polymorph and changed
 // Generally the mob we are currently in is about to be deleted
-<<<<<<< HEAD
-/mob/living/proc/wabbajack_act(mob/living/new_mob)
-	log_message("was wabbajack polymorphed into: [new_mob.name]([new_mob.type]).", LOG_GAME)
-	SEND_SIGNAL(src, COMSIG_LIVING_WABBAJACKED, new_mob)
-=======
 /mob/living/proc/on_wabbajacked(mob/living/new_mob)
 	log_message("became [new_mob.name] ([new_mob.type])", LOG_ATTACK, color = "orange")
 	SEND_SIGNAL(src, COMSIG_LIVING_ON_WABBAJACKED, new_mob)
->>>>>>> de04b3be808 (Kills `/obj/shapeshift_holder`, replaces it with `/datum/status_effect/shapechange_mob`, also does a lot of Wabbajack refactoring (#69091))
 	new_mob.name = real_name
 	new_mob.real_name = real_name
 

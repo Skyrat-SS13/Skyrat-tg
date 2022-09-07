@@ -146,9 +146,6 @@
 /obj/projectile/magic/change/on_hit(mob/living/target)
 	. = ..()
 	if(isliving(target))
-<<<<<<< HEAD
-		target.wabbajack()
-=======
 		var/mob/living/victim = target
 		victim.wabbajack(set_wabbajack_effect, set_wabbajack_changeflags)
 
@@ -157,7 +154,6 @@
 		if(!plant_tray.myseed)
 			return
 		plant_tray.polymorph()
->>>>>>> de04b3be808 (Kills `/obj/shapeshift_holder`, replaces it with `/datum/status_effect/shapechange_mob`, also does a lot of Wabbajack refactoring (#69091))
 
 /obj/projectile/magic/animate
 	name = "bolt of animation"
