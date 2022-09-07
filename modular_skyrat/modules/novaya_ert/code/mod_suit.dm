@@ -22,7 +22,7 @@
 		/obj/item/melee/baton,
 		/obj/item/knife/combat,
 		/obj/item/shield/riot,
-		/obj/item/gun
+		/obj/item/gun,
 	)
 	skins = list(
 		"frontline" = list(
@@ -57,7 +57,8 @@
 	theme = /datum/mod_theme/frontline
 	initial_modules = list(
 		/obj/item/mod/module/storage,
-		/obj/item/mod/module/flashlight)
+		/obj/item/mod/module/flashlight,
+	)
 
 /obj/item/mod/control/pre_equipped/frontline/pirate
 	initial_modules = list(
@@ -65,7 +66,7 @@
 		/obj/item/mod/module/thermal_regulator,
 		/obj/item/mod/module/status_readout/generic,
 		/obj/item/mod/module/tether,
-		/obj/item/mod/module/magboot
+		/obj/item/mod/module/magboot,
 	)
 
 /obj/item/mod/control/pre_equipped/frontline/ert
@@ -77,7 +78,7 @@
 		/obj/item/mod/module/auto_doc,
 		/obj/item/mod/module/visor/thermal,
 		/obj/item/mod/module/jetpack/advanced,
-		/obj/item/mod/module/magboot/advanced
+		/obj/item/mod/module/magboot/advanced,
 	)
 
 ///Unrelated-to-Spider-Clan version of the module.
@@ -102,7 +103,7 @@
 	incompatible_modules = list(/obj/item/mod/module/adrenaline_boost, /obj/item/mod/module/auto_doc)
 	cooldown_time = null
 	complexity = 4
-	use_power_cost = DEFAULT_CHARGE_DRAIN*20
+	use_power_cost = DEFAULT_CHARGE_DRAIN * 20
 	/// What reagent we need to refill?
 	var/reagent_required = /datum/reagent/cryptobiolin
 	/// How much of a reagent we need to refill a single boost.
@@ -136,46 +137,57 @@
 /obj/item/mod/module/auto_doc/on_use()
 	if(!COOLDOWN_FINISHED(src, heal_timer))
 		return FALSE
+
 	if(!check_power(use_power_cost))
 		balloon_alert(mod.wearer, "not enough charge!")
 		SEND_SIGNAL(src, COMSIG_MODULE_DEACTIVATED)
 		return FALSE
+
 	if(!allowed_in_phaseout && istype(mod.wearer.loc, /obj/effect/dummy/phased_mob))
 		to_chat(mod.wearer, span_warning("You cannot activate this right now."))
 		return FALSE
+
 	if(SEND_SIGNAL(src, COMSIG_MODULE_TRIGGERED) & MOD_ABORT_USE)
 		return FALSE
+
 	if(!reagents.has_reagent(reagent_required, reagent_required_amount))
 		balloon_alert(mod.wearer, "not enough chems!")
 		SEND_SIGNAL(src, COMSIG_MODULE_DEACTIVATED)
 		return FALSE
+
 	if(mod.wearer.health > health_threshold)
 		return
+
 	var/new_bruteloss = mod.wearer.getBruteLoss()
 	var/new_fireloss = mod.wearer.getFireLoss()
 	var/new_toxloss = mod.wearer.getToxLoss()
 	var/new_stamloss = mod.wearer.getStaminaLoss()
 	playsound(mod.wearer, 'modular_skyrat/modules/hev_suit/sound/hev/hiss.ogg', 100)
+
 	if(new_bruteloss)
 		mod.wearer.adjustBruteLoss(-heal_amount)
 		mod.wearer.reagents.add_reagent(/datum/reagent/medicine/mine_salve, 10)
 		mod.wearer.reagents.add_reagent(/datum/reagent/medicine/sal_acid, 5)
 		to_chat(mod.wearer, span_warning("Brute treatment administered. Overdose risks present on further use, consult your first-aid analyzer."))
+
 	if(new_fireloss)
 		mod.wearer.adjustFireLoss(-heal_amount)
 		mod.wearer.reagents.add_reagent(/datum/reagent/medicine/mine_salve, 10)
 		mod.wearer.reagents.add_reagent(/datum/reagent/medicine/oxandrolone, 5)
 		to_chat(mod.wearer, span_warning("Burn treatment administered. Overdose risks present on further use, consult your first-aid analyzer."))
+
 	if(new_toxloss)
 		mod.wearer.adjustToxLoss(-heal_amount)
 		mod.wearer.reagents.add_reagent(/datum/reagent/medicine/mine_salve, 10)
 		mod.wearer.reagents.add_reagent(/datum/reagent/medicine/pen_acid, 5)
 		to_chat(mod.wearer, span_warning("Toxin treatment administered. Overdose risks present on further use, consult your first-aid analyzer."))
+
 	if(new_stamloss)
 		mod.wearer.adjustStaminaLoss(-stamina_heal_amount)
 		mod.wearer.reagents.add_reagent(/datum/reagent/medicine/mine_salve, 10)
 		mod.wearer.reagents.add_reagent(/datum/reagent/medicine/stimulants, 10)
 		to_chat(mod.wearer, span_warning("Combat stimulants administered. Overdose risks present on further use, consult your first-aid analyzer."))
+
 	mod.wearer.reagents.add_reagent(/datum/reagent/medicine/coagulant, 5)
 	reagents.remove_reagent(reagent_required, reagent_required_amount)
 	drain_power(use_power_cost*10)
@@ -185,11 +197,14 @@
 /obj/item/mod/module/auto_doc/proc/charge_boost(obj/item/attacking_item, mob/user)
 	if(!attacking_item.is_open_container())
 		return FALSE
+
 	if(reagents.has_reagent(reagent_required, reagent_max_amount))
 		balloon_alert(mod.wearer, "already full!")
 		return FALSE
+
 	if(!attacking_item.reagents.trans_id_to(src, reagent_required, reagent_required_amount))
 		return FALSE
+
 	balloon_alert(mod.wearer, "charge reloaded")
 	return TRUE
 
@@ -213,11 +228,13 @@
 
 	if(charge_boost(attacking_item, user))
 		return COMPONENT_NO_AFTERATTACK
+
 	return NONE
 
 /obj/item/mod/module/auto_doc/proc/boost_aftereffects(mob/affected_mob)
 	if(!affected_mob)
 		return
+
 	mod.wearer.reagents.add_reagent(/datum/reagent/cryptobiolin, 10)
 	mod.wearer.reagents.add_reagent(/datum/reagent/drug/maint/sludge, 5)
 	to_chat(affected_mob, span_danger("Your head starts slightly spinning, and your chest hurts."))
