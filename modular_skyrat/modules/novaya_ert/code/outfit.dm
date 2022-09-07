@@ -28,6 +28,7 @@
 	mask = /obj/item/clothing/mask/gas/hecu2
 	belt = /obj/item/storage/belt/military/nri/heavy
 	suit_store = null
+	back = /obj/item/storage/backpack/duffelbag/syndie/nri
 	backpack_contents = list(/obj/item/storage/box/nri_survival_pack, /obj/item/storage/medkit/emergency, /obj/item/advanced_choice_beacon/nri/heavy, /obj/item/beamout_tool, /obj/item/crucifix)
 	l_pocket = /obj/item/wrench/combat
 

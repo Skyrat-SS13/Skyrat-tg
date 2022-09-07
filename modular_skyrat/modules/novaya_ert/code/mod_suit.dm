@@ -112,10 +112,6 @@
 	var/reagent_max_amount = 120
 	/// Health threshold above which the module won't heal.
 	var/health_threshold = 80
-	/// Amount of raw damage heal per treatment.
-	var/heal_amount = 10
-	/// Amount of raw stamdamage heal per treatment.
-	var/stamina_heal_amount = 50
 	/// Cooldown betwen each treatment.
 	var/heal_cooldown = 30 SECONDS
 
@@ -165,25 +161,21 @@
 	playsound(mod.wearer, 'modular_skyrat/modules/hev_suit/sound/hev/hiss.ogg', 100)
 
 	if(new_bruteloss)
-		mod.wearer.adjustBruteLoss(-heal_amount)
 		mod.wearer.reagents.add_reagent(/datum/reagent/medicine/mine_salve, 10)
 		mod.wearer.reagents.add_reagent(/datum/reagent/medicine/sal_acid, 5)
 		to_chat(mod.wearer, span_warning("Brute treatment administered. Overdose risks present on further use, consult your first-aid analyzer."))
 
 	if(new_fireloss)
-		mod.wearer.adjustFireLoss(-heal_amount)
 		mod.wearer.reagents.add_reagent(/datum/reagent/medicine/mine_salve, 10)
 		mod.wearer.reagents.add_reagent(/datum/reagent/medicine/oxandrolone, 5)
 		to_chat(mod.wearer, span_warning("Burn treatment administered. Overdose risks present on further use, consult your first-aid analyzer."))
 
 	if(new_toxloss)
-		mod.wearer.adjustToxLoss(-heal_amount)
 		mod.wearer.reagents.add_reagent(/datum/reagent/medicine/mine_salve, 10)
 		mod.wearer.reagents.add_reagent(/datum/reagent/medicine/pen_acid, 5)
 		to_chat(mod.wearer, span_warning("Toxin treatment administered. Overdose risks present on further use, consult your first-aid analyzer."))
 
 	if(new_stamloss)
-		mod.wearer.adjustStaminaLoss(-stamina_heal_amount)
 		mod.wearer.reagents.add_reagent(/datum/reagent/medicine/mine_salve, 10)
 		mod.wearer.reagents.add_reagent(/datum/reagent/medicine/stimulants, 10)
 		to_chat(mod.wearer, span_warning("Combat stimulants administered. Overdose risks present on further use, consult your first-aid analyzer."))
