@@ -16,8 +16,13 @@
 
 // Make it a little more obvious that the thing's active, mmh?
 /obj/item/mmi/posibrain/circuit/add_mmi_overlay()
+	. = ..()
 	if(brainmob && brainmob.stat != DEAD)
-		. += "datadisk_gene"
+		return . + list("datadisk_gene")
+
+// I have no sprites for this.
+/obj/item/mmi/posibrain/circuit/update_icon_state()
+	return
 
 /obj/item/organ/internal/brain/ipc_positron/circuit
 	name = "compact AI circuit"
@@ -37,4 +42,4 @@
 // Otherwise there's no MMI machine at all
 /obj/item/organ/internal/brain/ipc_positron/mmi/update_overlays()
 	. = ..()
-	. += "mmi_dead"
+	return . + list("mmi_dead")
