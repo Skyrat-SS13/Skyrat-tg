@@ -1,4 +1,12 @@
-//NEW CARTRIDGES
+//NEW CARTRIDGES + EXTENDED DESCRIPTIONS FOR THE FUTURE AND CURRENT PRS
+/obj/item/ammo_casing
+	///To be honest, I do believe that this should be an object atom's variable. But oh well.
+	var/extended_desc = null
+
+/obj/item/ammo_casing/examine_more(mob/user)
+	. = ..()
+	. += "<i>[extended_desc]</i>"
+
 /obj/item/ammo_casing/realistic
 	icon = 'modular_skyrat/modules/gunsgalore/icons/ammo/ammo.dmi'
 
@@ -66,9 +74,8 @@
 
 /obj/item/ammo_casing/realistic/a762x39/ricochet
 	name = "5.6x40mm match bullet casing"
-	desc = "A 5.6x40mm match bullet casing.\
-	<br><br>\
-	<i>MATCH: Ricochets everywhere. Like crazy.</i>"
+	desc = "A 5.6x40mm match bullet casing."
+	extended_desc = "MATCH: Ricochets everywhere. Like crazy."
 	projectile_type = /obj/projectile/bullet/a762x39/ricochet
 
 /obj/projectile/bullet/a762x39/ricochet
@@ -86,9 +93,8 @@
 
 /obj/item/ammo_casing/realistic/a762x39/fire
 	name = "5.6x40mm incendiary bullet casing"
-	desc = "A 5.6x40mm incendiary bullet casing.\
-	<br><br>\
-	<i>TARGETED INCENDIARY: Leaves no trail when shot, sets targets aflame.</i>"
+	desc = "A 5.6x40mm incendiary bullet casing."
+	extended_desc = "TARGETED INCENDIARY: Leaves no trail when shot, sets targets aflame."
 	projectile_type = /obj/projectile/bullet/incendiary/a762x39
 
 /obj/projectile/bullet/incendiary/a762x39
@@ -102,9 +108,8 @@
 
 /obj/item/ammo_casing/realistic/a762x39/xeno
 	name = "5.6x40mm anti-acid bullet casing"
-	desc = "A 5.6x40mm anti-acid bullet casing. Special chemical treatment and an additional layer of water-absorbent materials dissipates and absorbs water from the target's body, making any acid-blooded target melt from the inside.\
-	<br><br>\
-	<i>ANTI-ACID: Deals additional damage against player-controlled Xenomorphs.</i>"
+	desc = "A 5.6x40mm anti-acid bullet casing. Special chemical treatment and an additional layer of water-absorbent materials dissipates and absorbs water from the target's body, making any acid-blooded target melt from the inside."
+	extended_desc = "ANTI-ACID: Deals additional damage against player-controlled Xenomorphs."
 	projectile_type = /obj/projectile/bullet/a762x39/xeno
 
 /obj/projectile/bullet/a762x39/xeno
@@ -113,20 +118,19 @@
 	wound_bonus = 15
 	armour_penetration = 0
 		/// Bonus force dealt against certain mobs
-	var/faction_bonus_force = 25
+	var/nemesis_bonus_force = 25
 		/// List of mobs we deal bonus damage to
-	var/list/nemesis_path = /mob/living/carbon/alien
+	var/list/nemesis_path = list(/mob/living/carbon/alien)
 
 /obj/projectile/bullet/a762x39/xeno/prehit_pierce(mob/living/target, mob/living/carbon/human/user)
 	if(istype(target, nemesis_path))
-		damage += faction_bonus_force
+		damage += nemesis_bonus_force
 	.=..()
 
 /obj/item/ammo_casing/realistic/a762x39/ap
 	name = "5.6x40mm armor-piercing bullet casing"
-	desc = "A 5.6x40mm armor-piercing bullet casing.\
-	<br><br>\
-	<i>ARMOR PIERCING: Increased armor piercing capabilities. What did you expect?</i>"
+	desc = "A 5.6x40mm armor-piercing bullet casing."
+	extended_desc = "ARMOR PIERCING: Increased armor piercing capabilities. What did you expect?"
 	projectile_type = /obj/projectile/bullet/a762x39
 
 /obj/projectile/bullet/a762x39/ap
@@ -138,9 +142,8 @@
 
 /obj/item/ammo_casing/realistic/a762x39/emp
 	name = "5.6x40mm ion bullet casing"
-	desc = "A 5.6x40mm ion bullet casing.\
-	<br><br>\
-	<i>EMP: Produces an Electro-Magnetic Pulse on impact, damaging electronics severely.</i>"
+	desc = "A 5.6x40mm ion bullet casing."
+	extended_desc = "EMP: Produces an Electro-Magnetic Pulse on impact, damaging electronics severely."
 	projectile_type = /obj/projectile/bullet/a762x39/emp
 
 /obj/projectile/bullet/a762x39/emp
@@ -157,9 +160,8 @@
 
 /obj/item/ammo_casing/realistic/a762x39/civilian
 	name = "5.6x40mm civilian bullet casing"
-	desc = "A 5.6x40mm civilian-grade surplus bullet casing.\
-	<br><br>\
-	<i>CIVILIAN: Non-military ammunition with a low powder load. Performs worse in every aspect in comparison to its military variant.</i>"
+	desc = "A 5.6x40mm civilian-grade surplus bullet casing."
+	extended_desc = "CIVILIAN: Non-military ammunition with a low powder load. Performs worse in every aspect in comparison to its military variant."
 	projectile_type = /obj/projectile/bullet/a762x39/civilian
 
 /obj/projectile/bullet/a762x39/civilian
@@ -171,9 +173,8 @@
 
 /obj/item/ammo_casing/realistic/a762x39/civilian/rubber
 	name = "5.6x40mm rubber bullet casing"
-	desc = "A 5.6x40mm civilian-grade rubber bullet casing.\
-	<br><br>\
-	<i>RUBBER: Less than lethal ammo. Deals both stamina damage and regular damage.</i>"
+	desc = "A 5.6x40mm civilian-grade rubber bullet casing."
+	extended_desc = "RUBBER: Less than lethal ammo. Deals both stamina and brute damage."
 	projectile_type = /obj/projectile/bullet/a762x39/rubber
 	harmful = FALSE
 
@@ -193,9 +194,8 @@
 
 /obj/item/ammo_casing/realistic/a762x39/civilian/hunting
 	name = "5.6x40mm hunting bullet casing"
-	desc = "A 5.6x40mm jacketed soft point bullet casing.\
-	<br><br>\
-	<i>HUNTING: Ammo purpose-built to deal more damage against simplemobs than other Humans.</i>"
+	desc = "A 5.6x40mm jacketed soft point bullet casing."
+	extended_desc = "HUNTING: Ammo purpose-built to deal more damage against simplemobs than other Humans."
 	projectile_type = /obj/projectile/bullet/a762x39/hunting
 
 /obj/projectile/bullet/a762x39/hunting
@@ -205,21 +205,21 @@
 	armour_penetration = 10
 	wound_falloff_tile = 3
 		/// Bonus force dealt against certain mobs
-	var/faction_bonus_force = 25
+	var/nemesis_bonus_force = 25
 		/// List of mobs we deal bonus damage to
-	var/list/nemesis_path = /mob/living/simple_animal
+	var/list/nemesis_path = list(/mob/living/simple_animal)
 
 /obj/projectile/bullet/a762x39/hunting/prehit_pierce(mob/living/target, mob/living/carbon/human/user)
 	if(istype(target, nemesis_path))
-		damage += faction_bonus_force
+		damage += nemesis_bonus_force
 	.=..()
 
 /obj/item/ammo_casing/realistic/a762x39/civilian/blank
 	name = "5.6x40mm blank bullet casing"
-	desc = "A 5.6x40mm blank bullet casing.\
-	<br><br>\
-	<i>BLANK: Projectile-less ammunition that is usually employed in training exercises or Live-Action Roleplay. Potentially harmful.</i>"
+	desc = "A 5.6x40mm blank bullet casing."
+	extended_desc = "BLANK: Projectile-less ammunition that is usually employed in training exercises or Live-Action Roleplay. Potentially harmful."
 	projectile_type = /obj/projectile/bullet/a762x39/blank
+	///"Potentially."
 	harmful = FALSE
 
 /obj/projectile/bullet/a762x39/blank
