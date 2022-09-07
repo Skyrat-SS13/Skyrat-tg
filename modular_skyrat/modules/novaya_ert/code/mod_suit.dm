@@ -94,10 +94,9 @@
 	name = "MOD automatic paramedical module"
 	desc = "The reverse-engineered and redesigned medical assistance system, previously used by the now decommissioned VOSKHOD combat armor. \
 		The technology it uses is very similar to the one of Spider Clan, yet Innovations and Defense Collegium reject any similarities. \
-		Using a built-in storage of chemical compounds and miniature surgical robots capable of pinpoint damage treatment,\
-		it's capable of injecting its user with simple painkillers and coagulants, assisting them with their restoration, as long as they don't overdose themselves. \
-		However, this system heavily relies on some rarely combat-available chemical compounds to prepare its injections, mainly Cryptobiolin, which appear in the user's bloodstream from time to time, \
-		and its trivial damage assesment systems are inadequate for complete restoration purposes."
+		Using a built-in storage of chemical compounds and miniature chemical mixer, it's capable of injecting its user with simple painkillers and coagulants, \
+		assisting them with their restoration, as long as they don't overdose themselves. However, this system heavily relies on some rarely combat-available chemical compounds to prepare its injections, \
+		mainly Cryptobiolin, which appear in the user's bloodstream from time to time, and its trivial damage assesment systems are inadequate for complete restoration purposes."
 	icon_state = "adrenaline_boost"
 	module_type = MODULE_TOGGLE
 	incompatible_modules = list(/obj/item/mod/module/adrenaline_boost, /obj/item/mod/module/auto_doc)
@@ -115,9 +114,10 @@
 	/// Cooldown betwen each treatment.
 	var/heal_cooldown = 30 SECONDS
 
-	/// Timer for the cooldown
+	/// Timer for the cooldown.
 	COOLDOWN_DECLARE(heal_timer)
 
+/// Creates chemical container for chemicals and fills it with chemicals. Chemception.
 /obj/item/mod/module/auto_doc/Initialize(mapload)
 	. = ..()
 	create_reagents(reagent_max_amount)
@@ -130,6 +130,7 @@
 	RegisterSignal(mod.wearer, COMSIG_CARBON_HEALTH_UPDATE, .proc/on_use)
 	drain_power(use_power_cost)
 
+///	Heals damage (in fact, injects chems) based on the damage received and certain other variables (a single one), i.e. having more than X amount of health, not having enough needed chemicals or so on.
 /obj/item/mod/module/auto_doc/on_use()
 	if(!COOLDOWN_FINISHED(src, heal_timer))
 		return FALSE
@@ -183,9 +184,11 @@
 	mod.wearer.reagents.add_reagent(/datum/reagent/medicine/coagulant, 5)
 	reagents.remove_reagent(reagent_required, reagent_required_amount)
 	drain_power(use_power_cost*10)
+	///Debuff so it's "balanced", as well as a cooldown.
 	addtimer(CALLBACK(src, .proc/boost_aftereffects, mod.wearer), 45 SECONDS)
 	COOLDOWN_START(src, heal_timer, heal_cooldown)
 
+/// Refills MODsuit module with the needed chemicals. That's all it does.
 /obj/item/mod/module/auto_doc/proc/charge_boost(obj/item/attacking_item, mob/user)
 	if(!attacking_item.is_open_container())
 		return FALSE
@@ -223,6 +226,7 @@
 
 	return NONE
 
+/// Drawbacks to make this module less self-sufficient and so it feels "balanced" (there's no balance).
 /obj/item/mod/module/auto_doc/proc/boost_aftereffects(mob/affected_mob)
 	if(!affected_mob)
 		return
