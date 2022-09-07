@@ -1,11 +1,11 @@
 GLOBAL_VAR_INIT(objective_egg_borer_number, 2)
 GLOBAL_VAR_INIT(objective_egg_egg_number, 5)
-GLOBAL_VAR_INIT(objective_willing_hosts, 2)
+GLOBAL_VAR_INIT(objective_gifted_hosts, 2)
 GLOBAL_VAR_INIT(objective_blood_chem, 3)
 GLOBAL_VAR_INIT(objective_blood_borer, 3)
 
 GLOBAL_VAR_INIT(successful_egg_number, 0)
-GLOBAL_LIST_EMPTY(willing_hosts)
+GLOBAL_LIST_EMPTY(gifted_hosts)
 GLOBAL_VAR_INIT(successful_blood_chem, 0)
 
 GLOBAL_LIST_EMPTY(cortical_borers)
@@ -105,11 +105,12 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 										/datum/reagent/medicine/morphine,
 										/datum/reagent/medicine/inacusiate,
 										/datum/reagent/medicine/oculine,
+										/datum/reagent/medicine/mannitol,
 										/datum/reagent/toxin/mindbreaker,
+										/datum/reagent/medicine/insulin,
 	)
 	//blacklisted chemicals - separate from chemicals that cannot be synthesized, borers specifically cannot learn these
-	var/list/blacklisted_chemicals = list(/datum/reagent/medicine/mannitol,
-										/datum/reagent/medicine/neurine,
+	var/list/blacklisted_chemicals = list(/datum/reagent/medicine/adminordrazine,
 	)
 	///how old the borer is, starting from zero. Goes up only when inside a host
 	var/maturity_age = 0
@@ -139,7 +140,7 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 	var/possible_abilities = list(/datum/action/cooldown/borer/produce_offspring,
 								/datum/action/cooldown/borer/learn_bloodchemical,
 								/datum/action/cooldown/borer/revive_host,
-								/datum/action/cooldown/borer/willing_host,
+								/datum/action/cooldown/borer/gift_host,
 	)
 	///the host
 	var/mob/living/carbon/human/human_host
@@ -164,11 +165,11 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 	///we dont want to spam the chat
 	var/deathgasp_once = FALSE
 	//the limit to the chemical and stat evolution
-	var/limited_borer = 10
+	var/limited_borer = 20
 	///borers can only enter biologicals if true
 	var/organic_restricted = TRUE
 	///borers are unable to enter changelings if true
-	var/changeling_restricted = TRUE
+	var/changeling_restricted = FALSE
 	/// Assoc list of chemical injection rates that the borer can have
 	var/static/list/injection_rates = list(
 		5,
@@ -242,7 +243,7 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 		. += ""
 	. += "OBJECTIVES:"
 	. += "1) [GLOB.objective_egg_borer_number] borers producing [GLOB.objective_egg_egg_number] eggs: [GLOB.successful_egg_number]/[GLOB.objective_egg_borer_number]"
-	. += "2) [GLOB.objective_willing_hosts] willing hosts: [length(GLOB.willing_hosts)]/[GLOB.objective_willing_hosts]"
+	. += "2) [GLOB.objective_gifted_hosts] willing hosts: [length(GLOB.gifted_hosts)]/[GLOB.objective_gifted_hosts]"
 	. += "3) [GLOB.objective_blood_borer] borers learning [GLOB.objective_blood_chem] from the blood: [GLOB.successful_blood_chem]/[GLOB.objective_blood_borer]"
 
 /mob/living/simple_animal/cortical_borer/Life(delta_time, times_fired)
@@ -287,7 +288,7 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 		var/maturity_threshold = 20
 		if(GLOB.successful_egg_number >= GLOB.objective_egg_borer_number)
 			maturity_threshold -= 2
-		if(length(GLOB.willing_hosts) >= GLOB.objective_willing_hosts)
+		if(length(GLOB.gifted_hosts) >= GLOB.objective_gifted_hosts)
 			maturity_threshold -= 10
 		if(GLOB.successful_blood_chem >= GLOB.objective_blood_borer)
 			maturity_threshold -= 3
