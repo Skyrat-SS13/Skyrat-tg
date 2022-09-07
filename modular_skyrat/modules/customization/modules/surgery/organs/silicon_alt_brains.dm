@@ -1,6 +1,6 @@
 /obj/item/mmi/posibrain/circuit
 	name = "compact AI circuit"
-	desc = "A compact circuit, perfectly dimensioned to fit in the same slot as a cyborg's positronic brain."
+	desc = "A compact circuit, perfectly dimensioned to fit in the same slot as a cyborgs positronic brain."
 	icon = 'icons/obj/module.dmi'
 	icon_state = "mainboard"
 	inhand_icon_state = "electronic"
