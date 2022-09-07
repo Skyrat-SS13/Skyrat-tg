@@ -22,7 +22,8 @@
 
 // I have no sprites for this.
 /obj/item/mmi/posibrain/circuit/update_icon_state()
-	return ..()
+	. = ..()
+	icon_state = initial(icon_state) // Begone parent proc code. No, there is no way around this.
 
 /obj/item/organ/internal/brain/ipc_positron/circuit
 	name = "compact AI circuit"
@@ -36,10 +37,44 @@
 /obj/item/organ/internal/brain/ipc_positron/mmi
 	name = "compact man-machine interface"
 	desc = "A compact man-machine interface, perfectly dimensioned to fit in the same slot as a synthetic-compatible positronic brain. Unfortunately, the brain seems to be permanently attached to the circuitry, and it seems relatively sensitive to it's environment. It is usually slotted into the chest of synthetic crewmembers."
-	icon = 'icons/obj/assemblies/assemblies.dmi'
-	icon_state = "mmi_brain"
+	icon = 'modular_skyrat/master_files/icons/obj/surgery.dmi'
+	icon_state = "mmi-ipc"
 
-// Otherwise there's no MMI machine at all
-/obj/item/organ/internal/brain/ipc_positron/mmi/update_overlays()
+// CODE THAT ACTUALLY APPLIES THE BRAINS.
+// See modular_skyrat/master_files/code/modules/client/preferences/brain.dm for Synth/IPC application.
+
+/proc/prefs_get_brain_to_use(value, is_cyborg = FALSE)
+	switch(value)
+		if(ORGAN_PREF_POSI_BRAIN)
+			return is_cyborg ? /obj/item/mmi/posibrain : null
+		if(ORGAN_PREF_MMI_BRAIN)
+			return is_cyborg ? /obj/item/mmi : /obj/item/organ/internal/brain/ipc_positron/mmi
+		if(ORGAN_PREF_CIRCUIT_BRAIN)
+			return is_cyborg ? /obj/item/mmi/posibrain/circuit : /obj/item/organ/internal/brain/ipc_positron/circuit
+
+/mob/living/silicon/robot/Initialize(mapload)
 	. = ..()
-	return . + list("mmi_dead")
+	// Intentionally set like this, because people have different lore for their cyborgs, and there's no real non-invasive way to print posibrains that match.
+	RegisterSignal(src, COMSIG_MOB_MIND_TRANSFERRED_INTO, .proc/update_brain_type)
+
+/// Sets the MMI type for a cyborg, if applicable.
+/mob/living/silicon/robot/proc/update_brain_type()
+	var/obj/item/mmi/new_mmi = prefs_get_brain_to_use(client?.prefs?.read_preference(/datum/preference/choiced/brain_type), TRUE)
+	if(!new_mmi)
+		return
+	new_mmi = new new_mmi()
+
+	// Probably shitcode, but silicon code is spaghetti as fuck.
+	new_mmi.brain = new /obj/item/organ/internal/brain(new_mmi)
+	new_mmi.brain.organ_flags |= ORGAN_FROZEN
+	new_mmi.brain.name = "[real_name]'s brain"
+	new_mmi.name = "[initial(new_mmi.name)]: [real_name]"
+	new_mmi.set_brainmob(new /mob/living/brain(new_mmi))
+	new_mmi.brainmob.name = src.real_name
+	new_mmi.brainmob.real_name = src.real_name
+	new_mmi.brainmob.container = new_mmi
+	new_mmi.update_appearance()
+
+	QDEL_NULL(mmi)
+
+	mmi = new_mmi
