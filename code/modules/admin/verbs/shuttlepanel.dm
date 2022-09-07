@@ -17,6 +17,7 @@
 			continue  // please don't do this
 		var/obj/docking_port/stationary/S = port
 		if (canDock(S) == SHUTTLE_CAN_DOCK)
+<<<<<<< HEAD
 			options[S.name || S.id] = S
 	//SKYRAT EDIT ADDITION START
 	options += "-----INCOMPATABLE DOCKS:" //I WILL CRASH THIS SHIP WITH NO SURVIVORS!
@@ -27,13 +28,16 @@
 		if(!(canDock(S) == SHUTTLE_CAN_DOCK))
 			options[S.name || S.id] = S
 	//SKYRAT EDIT END
+=======
+			options[S.name || S.shuttle_id] = S
+>>>>>>> 253613c1c31 ([MDB IGNORE] Shuttle engine code improvement and fixes (#69516))
 
 	options += "--------"
 	options += "Infinite Transit"
 	options += "Delete Shuttle"
 	options += "Into The Sunset (delete & greentext 'escape')"
 
-	var/selection = tgui_input_list(user, "Select where to fly [name || id]:", "Fly Shuttle", options)
+	var/selection = tgui_input_list(user, "Select where to fly [name || shuttle_id]:", "Fly Shuttle", options)
 	if(isnull(selection))
 		return
 
@@ -44,12 +48,12 @@
 			setTimer(ignitionTime)
 
 		if("Delete Shuttle")
-			if(tgui_alert(user, "Really delete [name || id]?", "Delete Shuttle", list("Cancel", "Really!")) != "Really!")
+			if(tgui_alert(user, "Really delete [name || shuttle_id]?", "Delete Shuttle", list("Cancel", "Really!")) != "Really!")
 				return
 			jumpToNullSpace()
 
 		if("Into The Sunset (delete & greentext 'escape')")
-			if(tgui_alert(user, "Really delete [name || id] and greentext escape objectives?", "Delete Shuttle", list("Cancel", "Really!")) != "Really!")
+			if(tgui_alert(user, "Really delete [name || shuttle_id] and greentext escape objectives?", "Delete Shuttle", list("Cancel", "Really!")) != "Really!")
 				return
 			intoTheSunset()
 
@@ -75,7 +79,7 @@
 			continue  // please don't do this
 		var/obj/docking_port/stationary/S = port
 		if (canDock(S) == SHUTTLE_CAN_DOCK)
-			options[S.name || S.id] = S
+			options[S.name || S.shuttle_id] = S
 
 	var/selection = tgui_input_list(user, "New arrivals destination", "Fly Shuttle", options)
 	if(isnull(selection))
