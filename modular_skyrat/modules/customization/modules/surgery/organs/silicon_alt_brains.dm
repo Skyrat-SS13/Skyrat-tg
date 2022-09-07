@@ -1,8 +1,9 @@
 /obj/item/mmi/posibrain/circuit
 	name = "compact AI circuit"
 	desc = "A compact circuit, perfectly dimensioned to fit in the same slot as a cyborgs positronic brain."
-	icon = 'icons/obj/module.dmi'
-	icon_state = "mainboard"
+	icon = 'modular_skyrat/master_files/icons/obj/alt_silicon_brains.dmi'
+	icon_state = "circuit"
+	base_icon_state = "circuit"
 	inhand_icon_state = "electronic"
 	lefthand_file = 'icons/mob/inhands/items/devices_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/items/devices_righthand.dmi'
@@ -14,22 +15,11 @@
 	new_mob_message = "<span class='notice'>The compact AI circuit chimes quietly.</span>"
 	recharge_message = "<span class='warning'>The compact AI circuit isn't ready to activate again yet! Give it some time to recharge.</span>"
 
-// Make it a little more obvious that the thing's active, mmh?
-/obj/item/mmi/posibrain/circuit/add_mmi_overlay()
-	. = ..()
-	if(brainmob && brainmob.stat != DEAD)
-		return . + list("datadisk_gene")
-
-// I have no sprites for this.
-/obj/item/mmi/posibrain/circuit/update_icon_state()
-	. = ..()
-	icon_state = initial(icon_state) // Begone parent proc code. No, there is no way around this.
-
 /obj/item/organ/internal/brain/ipc_positron/circuit
 	name = "compact AI circuit"
 	desc = "A compact and extremely complex circuit, perfectly dimensioned to fit in the same slot as a synthetic-compatible positronic brain. It is usually slotted into the chest of synthetic crewmembers."
-	icon = 'icons/obj/module.dmi'
-	icon_state = "mainboard"
+	icon = 'modular_skyrat/master_files/icons/obj/alt_silicon_brains.dmi'
+	icon_state = "circuit-occupied"
 	inhand_icon_state = "electronic"
 	lefthand_file = 'icons/mob/inhands/items/devices_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/items/devices_righthand.dmi'
