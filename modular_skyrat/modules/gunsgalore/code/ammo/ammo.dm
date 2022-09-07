@@ -110,7 +110,7 @@
 	name = "5.6x40mm anti-acid bullet casing"
 	desc = "A 5.6x40mm anti-acid bullet casing. Special chemical treatment and an additional layer of water-absorbent materials dissipates and absorbs water from the target's body, making any acid-blooded target melt from the inside."
 	extended_desc = "ANTI-ACID: Deals additional damage against player-controlled Xenomorphs."
-	projectile_type = /obj/projectile/bullet/a762x39/xeno
+	projectile_type = /obj/projectile/bullet/a762x39/hunting/xeno
 
 /obj/projectile/bullet/a762x39/xeno
 	name = "5.6mm anti-acid bullet"
@@ -213,6 +213,13 @@
 	if(istype(target, nemesis_path))
 		damage += nemesis_bonus_force
 	.=..()
+
+/obj/projectile/bullet/a762x39/hunting/xeno
+	name = "5.6mm anti-acid bullet"
+	damage = 25
+	wound_bonus = 15
+	armour_penetration = 10
+	nemesis_path = list(/mob/living/carbon/alien)
 
 /obj/item/ammo_casing/realistic/a762x39/civilian/blank
 	name = "5.6x40mm blank bullet casing"
