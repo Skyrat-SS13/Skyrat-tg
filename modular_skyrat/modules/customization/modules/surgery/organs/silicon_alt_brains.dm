@@ -22,7 +22,7 @@
 
 // I have no sprites for this.
 /obj/item/mmi/posibrain/circuit/update_icon_state()
-	return
+	return ..()
 
 /obj/item/organ/internal/brain/ipc_positron/circuit
 	name = "compact AI circuit"
