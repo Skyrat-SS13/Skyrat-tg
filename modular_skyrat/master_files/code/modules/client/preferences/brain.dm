@@ -7,7 +7,7 @@
 /datum/preference/choiced/brain_type/init_possible_values()
 	return list(ORGAN_PREF_POSI_BRAIN, ORGAN_PREF_MMI_BRAIN, ORGAN_PREF_CIRCUIT_BRAIN)
 
-/datum/preference/choiced/create_default_value()
+/datum/preference/choiced/brain_type/create_default_value()
 	return ORGAN_PREF_POSI_BRAIN
 
 /datum/preference/choiced/brain_type/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
