@@ -109,7 +109,7 @@
 /obj/item/ammo_casing/realistic/a762x39/xeno
 	name = "5.6x40mm anti-acid bullet casing"
 	desc = "A 5.6x40mm anti-acid bullet casing. Special chemical treatment and an additional layer of water-absorbent materials dissipates and absorbs water from the target's body, making any acid-blooded target melt from the inside."
-	extended_desc = "ANTI-ACID: Deals additional damage against player-controlled Xenomorphs."
+	extended_desc = "ANTI-ACID: Deals additional damage against advanced sentient Xenomorphs."
 	projectile_type = /obj/projectile/bullet/a762x39/hunting/xeno
 
 /obj/projectile/bullet/a762x39/xeno
