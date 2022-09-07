@@ -217,7 +217,7 @@
 	if(regen_cooldown < world.time)
 		heal_overall_damage(2 * delta_time)
 
-/mob/living/simple_animal/hostile/carp/lia
+/mob/living/simple_animal/hostile/carp/lia // SKYRAT EDIT - ICON OVERRIDDEN: SEE aesthetics module
 	name = "Lia"
 	real_name = "Lia"
 	desc = "A failed experiment of Nanotrasen to create weaponised carp technology. This less than intimidating carp now serves as the Head of Security's pet."
