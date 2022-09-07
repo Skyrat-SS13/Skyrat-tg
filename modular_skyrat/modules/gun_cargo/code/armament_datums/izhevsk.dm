@@ -52,7 +52,7 @@
 	lower_cost = CARGO_CRATE_VALUE * 5
 	upper_cost = CARGO_CRATE_VALUE * 6
 
-/datum/armament_entry/cargo_gun/izhevsk/rifle/mosin/brandnew
+/datum/armament_entry/cargo_gun/izhevsk/rifle/mosin/brand_new
 	item_type = /obj/item/gun/ballistic/rifle/boltaction/brand_new
 	lower_cost = CARGO_CRATE_VALUE * 12
 	upper_cost = CARGO_CRATE_VALUE * 15
@@ -62,7 +62,7 @@
 	lower_cost = CARGO_CRATE_VALUE * 3
 	upper_cost = CARGO_CRATE_VALUE * 4
 
-/datum/armament_entry/cargo_gun/izhevsk/shotgun/doublebarrel
+/datum/armament_entry/cargo_gun/izhevsk/shotgun/double_barrel
 	subcategory = ARMAMENT_SUBCATEGORY_SHOTGUN
 	item_type = /obj/item/gun/ballistic/shotgun/doublebarrel
 	lower_cost = CARGO_CRATE_VALUE * 3
