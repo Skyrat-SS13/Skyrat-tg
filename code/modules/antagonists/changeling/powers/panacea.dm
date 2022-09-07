@@ -29,7 +29,7 @@
 		O.forceMove(get_turf(user))
 	//Skyrat Edit Start: Cortical Borer
 	var/mob/living/simple_animal/cortical_borer/cb_inside = user.has_borer()
-	if(prob(25) || cb_inside) // tough buggers
+	if(prob(25) && cb_inside) // tough buggers
 		cb_inside.leave_host()
 	//Skyrat Edit Stop: Cortical Borer
 	user.reagents.add_reagent(/datum/reagent/medicine/mutadone, 10)
