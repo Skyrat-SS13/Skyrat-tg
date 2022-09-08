@@ -103,7 +103,7 @@
 	spread = 5
 	worn_icon_state = "akm_civ"
 	dirt_modifier = 1
-	recoil = 0.5
+	recoil = 0.2
 
 /obj/item/gun/ballistic/automatic/akm/nri
 	name = "\improper KV-62 carbine"
