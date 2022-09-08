@@ -286,10 +286,20 @@
 	resistance_flags = NONE
 	can_be_tied = FALSE
 
-/obj/item/clothing/shoes/combat/peacekeeper/Initialize(mapload)
+/datum/storage/proc/add_holdable(list/can_hold_list)
+	if(can_hold_list)
+		var/unique_key = can_hold_list.Join("-")
+		if(!GLOB.cached_storage_typecaches[unique_key])
+			GLOB.cached_storage_typecaches[unique_key] = typecacheof(can_hold_list)
+		can_hold += GLOB.cached_storage_typecaches[unique_key]
+
+/obj/item/clothing/shoes/combat/Initialize(mapload)
 	. = ..()
 
-	create_storage(type = /datum/storage/pockets/shoes)
+	atom_storage.add_holdable(list(
+		/obj/item/ammo_box/magazine/multi_sprite/makarov,
+		/obj/item/ammo_box/magazine/multi_sprite/cfa_snub
+	))
 
 /obj/item/clothing/suit/armor/riot/peacekeeper
 	name = "peacekeeper riotsuit"

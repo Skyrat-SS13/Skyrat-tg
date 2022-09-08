@@ -90,8 +90,6 @@
 		/obj/item/ammo_box/magazine/m9mm,
 		/obj/item/ammo_box/magazine/m10mm,
 		/obj/item/ammo_box/magazine/m45,
-		/obj/item/ammo_box/magazine/multi_sprite/makarov, //SKYRAT ADD
-		/obj/item/ammo_box/magazine/multi_sprite/cfa_snub, //SKYRAT ADD
 		/obj/item/ammo_casing,
 		/obj/item/lipstick,
 		/obj/item/clothing/mask/cigarette,
