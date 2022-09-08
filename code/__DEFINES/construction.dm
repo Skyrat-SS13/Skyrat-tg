@@ -107,6 +107,9 @@
 #define CAT_SANDWICH "Sandwiches"
 #define CAT_SOUP "Soups"
 #define CAT_SPAGHETTI "Spaghettis"
+		// SKYRAT ADDITION BEGIN - Teshari food define
+#define CAT_TESHARI "Teshari Food"
+		// SKYRAT ADDITION END
 #define CAT_ICE "Frozen"
 #define CAT_DRINK "Drinks"
 #define CAT_CHEMISTRY "Chemistry"
