@@ -601,7 +601,7 @@
 					/obj/item/crucifix,
 					/obj/item/storage/toolbox/ammo,
 					/obj/item/storage/toolbox/maint_kit,
-					/obj/item/clothing/suit/armor/vest/russian,
+					/obj/item/clothing/suit/armor/vest/russian/nri,
 					/obj/item/clothing/head/helmet/rus_helmet,
 					/obj/item/storage/backpack/nri,
 					/obj/item/storage/belt/military/nri,
