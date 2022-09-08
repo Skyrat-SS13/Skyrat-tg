@@ -11,6 +11,9 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 
 GLOBAL_LIST_EMPTY(ghost_records)
 
+/// A list of all cryopods that aren't quiet, to be used by the "Send to Cryogenic Storage" VV action.
+GLOBAL_LIST_EMPTY(valid_cryopods)
+
 //Main cryopod console.
 
 /obj/machinery/computer/cryopod
@@ -160,6 +163,8 @@ GLOBAL_LIST_EMPTY(ghost_records)
 
 /obj/machinery/cryopod/Initialize(mapload)
 	..()
+	if(!quiet)
+		GLOB.valid_cryopods += src
 	return INITIALIZE_HINT_LATELOAD //Gotta populate the cryopod computer GLOB first
 
 /obj/machinery/cryopod/LateInitialize()
@@ -168,6 +173,7 @@ GLOBAL_LIST_EMPTY(ghost_records)
 
 // This is not a good situation
 /obj/machinery/cryopod/Destroy()
+	GLOB.valid_cryopods -= src
 	control_computer_weakref = null
 	return ..()
 
