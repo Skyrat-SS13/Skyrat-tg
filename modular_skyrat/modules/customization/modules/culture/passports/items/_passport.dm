@@ -3,11 +3,16 @@
 #define PASSPORT_CLOSING "closing"
 #define PASSPORT_OPENING "opening"
 
+/obj/item/proc/get_passport()
+	return
+
 /obj/item/passport
 	name = "Invalid Passport"
 	icon = 'modular_skyrat/master_files/icons/obj/passports.dmi'
 	desc = "An invalid passport. How did you get this?"
 	w_class = WEIGHT_CLASS_SMALL
+	slot_flags = ITEM_SLOT_ID
+
 	var/icon_state_base = "invalid"
 	var/icon_state_ext = "closed"
 	var/has_animation = FALSE
@@ -33,6 +38,9 @@
 		return
 	balloon_alert(user, "already imprinted!")
 	return
+
+/obj/item/passport/get_passport()
+	return src
 
 /obj/item/passport/proc/imprint_owner(mob/living/carbon/human/user)
 	if(istype(user) && user.client)
@@ -69,17 +77,7 @@
 		ui.open()
 
 /obj/item/passport/ui_data(mob/user)
-	if(!cached_data)
-		var/mob/living/carbon/human/passport_holder = user_weakref.resolve()
-		cached_data = list(
-			"name" = passport_holder.real_name,
-			"tgui_style" = tgui_style,
-			"headshot_data" = icon2base64(get_headshot_from_datacore(passport_holder.real_name)),
-			"empire" = cached_faction,
-			"locale" = cached_locale,
-			"age" = passport_holder.age,
-		)
-	return cached_data
+	return get_data()
 
 /obj/item/passport/proc/get_headshot_from_datacore(name)
 	var/list/datacore_entry = GLOB.name_to_datacore_entry[name]
@@ -89,6 +87,22 @@
 		var/icon/headshot_crop = icon(photo.picture.picture_image)
 		headshot_crop.Crop(9, 32, 24, 17)
 		return headshot_crop
+
+/obj/item/passport/proc/get_data()
+	RETURN_TYPE(/list)
+	if(!cached_data)
+		var/mob/living/carbon/human/passport_holder = user_weakref.resolve()
+		cached_data = list(
+			"name" = passport_holder.real_name,
+			"tgui_style" = tgui_style,
+			"headshot_data" = icon2base64(get_headshot_from_datacore(passport_holder.real_name)),
+			"empire" = cached_faction,
+			"locale" = cached_locale,
+			"age" = passport_holder.age,
+			"current_wages" = 500,
+			"space_faring" = TRUE,
+		)
+	return cached_data
 
 #undef PASSPORT_CLOSED
 #undef PASSPORT_OPENED

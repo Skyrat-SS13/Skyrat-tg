@@ -105,7 +105,8 @@
 
 /obj/machinery/scanner_gate/attackby(obj/item/W, mob/user, params)
 	var/obj/item/card/id/card = W.GetID()
-	if(card)
+	// if(card) original code
+	if(card && !req_one_access) // SKYRAT EDIT - Passport gate support
 		if(locked)
 			if(allowed(user))
 				locked = FALSE

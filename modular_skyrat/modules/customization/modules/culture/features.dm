@@ -7,8 +7,6 @@
 	var/icon_state
 	/// The path to the icon file.
 	var/icon_path
-	/// The CSS classes to be used by the
-	var/css_class = ""
 
 /datum/cultural_feature/good
 	name = "Good Wages"
