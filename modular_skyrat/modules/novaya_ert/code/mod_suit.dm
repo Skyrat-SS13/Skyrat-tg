@@ -1,7 +1,7 @@
 /datum/mod_theme/frontline
 	name = "frontline"
 	desc = "A Novaya Rossiyskaya Imperiya Defense Collegia protective suit, designed for fortified positions operation and humanitarian aid."
-	extended_desc = "A cheaper and more versatile replacement of the dated VOSKHOD Power Armor designed by the Novaya Rossiyskaya Imperiya Innovations Collegia in \
+	extended_desc = "A cheaper and more versatile replacement of the dated VOSKHOD Power Armor, designed by the Novaya Rossiyskaya Imperiya Innovations Collegia in \
 	collaboration with Agurkrral researchers. Instead of the polyurea coated durathread-lined plasteel plates it utilises thin plates of Kevlar-backed titanium, making it lighter and more compact \
 	while leaving place for other modules; yet due to its lack of energy dissipation systems, making its user more vulnerable against conventional laser weaponry. \
 	Built-in projectile trajectory and munition assistance computer informs the operator of better places to aim, as well as the remaining munitions for \
@@ -184,22 +184,24 @@
 	mod.wearer.reagents.add_reagent(/datum/reagent/medicine/coagulant, 5)
 	reagents.remove_reagent(reagent_required, reagent_required_amount)
 	drain_power(use_power_cost*10)
+
 	///Debuff so it's "balanced", as well as a cooldown.
 	addtimer(CALLBACK(src, .proc/boost_aftereffects, mod.wearer), 45 SECONDS)
 	COOLDOWN_START(src, heal_timer, heal_cooldown)
 
 /// Refills MODsuit module with the needed chemicals. That's all it does.
 /obj/item/mod/module/auto_doc/proc/charge_boost(obj/item/attacking_item, mob/user)
+/// Oh, and it also doesn't work if it's (the chemical container) closed.
 	if(!attacking_item.is_open_container())
 		return FALSE
-
+/// And if it's already full (:flushed:)
 	if(reagents.has_reagent(reagent_required, reagent_max_amount))
 		balloon_alert(mod.wearer, "already full!")
 		return FALSE
-
+/// And if the reagent's wrong.
 	if(!attacking_item.reagents.trans_id_to(src, reagent_required, reagent_required_amount))
 		return FALSE
-
+/// And if you got to that point without screwing up then it awards you with being refilled.
 	balloon_alert(mod.wearer, "charge reloaded")
 	return TRUE
 
