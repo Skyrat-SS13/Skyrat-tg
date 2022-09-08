@@ -117,15 +117,6 @@
 	item = /obj/item/clothing/mask/infiltrator
 	cost = 2
 
-/datum/uplink_item/stealthy_tools/deluxe_agent_card
-	name = "Deluxe Agent Identification Card"
-	desc = "Created by Cybersun Industries to be the ultimate for field operations, this upgraded Agent ID \
-	comes with all the fluff of the original, but with an upgraded microchip - allowing for the storage of all \
-	standard Nanotrasen access codes in one conveinent package. Now in glossy olive by default!"
-	item = /obj/item/card/id/advanced/chameleon/black
-	cost = 5 // Since this gives the possibility for All Access, this is a BIGBOY tool. Compared to oldbases' skeleton key, though, you still have to steal it somehow.
-	progression_minimum = 20 MINUTES
-
 /datum/uplink_item/stealthy_tools/advanced_cham_headset
 	name = "Advanced Chameleon Headset" // Consider this a standin for the oldbase headset upgrader.
 	desc = "A premium model Chameleon Headset. All the features you love of the original, but now with flashbang \

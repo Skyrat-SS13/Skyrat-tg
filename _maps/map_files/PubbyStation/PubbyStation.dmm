@@ -3232,9 +3232,9 @@
 /turf/open/floor/wood,
 /area/station/command/heads_quarters/hos)
 "akV" = (
-/obj/item/storage/secure/safe{
-	pixel_x = -22;
-	pixel_y = 32
+/obj/item/storage/secure/safe/hos{
+	pixel_x = -24;
+	pixel_y = 30
 	},
 /turf/open/floor/wood,
 /area/station/command/heads_quarters/hos)
@@ -4220,9 +4220,7 @@
 /turf/open/floor/wood,
 /area/station/command/heads_quarters/hos)
 "anS" = (
-/obj/machinery/keycard_auth{
-	pixel_y = -24
-	},
+/obj/machinery/keycard_auth/directional/south,
 /mob/living/simple_animal/hostile/retaliate/bat/sgt_araneus,
 /turf/open/floor/wood,
 /area/station/command/heads_quarters/hos)
@@ -6634,6 +6632,7 @@
 	pixel_y = 4
 	},
 /obj/item/storage/box/pdas,
+/obj/machinery/coffeemaker,
 /turf/open/floor/iron/dark,
 /area/station/command/bridge)
 "avW" = (
@@ -8206,10 +8205,7 @@
 /turf/open/floor/iron/dark,
 /area/station/command/bridge)
 "aBz" = (
-/obj/item/storage/secure/safe{
-	pixel_x = -22;
-	pixel_y = 4
-	},
+/obj/item/storage/secure/safe/directional/west,
 /obj/structure/table/wood,
 /obj/item/paper_bin{
 	layer = 2.9
@@ -8669,10 +8665,7 @@
 /turf/open/floor/iron/dark,
 /area/station/command/bridge)
 "aCP" = (
-/obj/machinery/keycard_auth{
-	pixel_x = -26;
-	pixel_y = 6
-	},
+/obj/machinery/keycard_auth/directional/west,
 /obj/structure/cable,
 /obj/machinery/photocopier,
 /turf/open/floor/wood,
@@ -15886,8 +15879,7 @@
 /turf/open/floor/iron/dark,
 /area/station/service/bar)
 "bbu" = (
-/obj/structure/grille,
-/obj/structure/window/fulltile,
+/obj/effect/spawner/structure/window/reinforced/damaged,
 /turf/open/floor/plating,
 /area/station/service/bar)
 "bbv" = (
@@ -18594,6 +18586,7 @@
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 5
 	},
+/obj/machinery/coffeemaker,
 /turf/open/floor/iron/white,
 /area/station/medical/medbay/lobby)
 "bls" = (
@@ -19028,9 +19021,7 @@
 /obj/item/stack/sheet/iron/fifty,
 /obj/item/stack/sheet/iron/fifty,
 /obj/item/stack/sheet/iron/fifty,
-/obj/structure/extinguisher_cabinet{
-	pixel_x = 27
-	},
+/obj/structure/extinguisher_cabinet/directional/east,
 /turf/open/floor/iron/dark,
 /area/station/science/robotics/lab)
 "bmS" = (
@@ -19524,7 +19515,7 @@
 /area/station/science/robotics/lab)
 "boZ" = (
 /obj/structure/table,
-/obj/machinery/cell_charger,
+/obj/machinery/cell_charger_multi,
 /obj/item/stock_parts/cell/high,
 /obj/machinery/light/directional/east,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -19900,9 +19891,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
-/obj/machinery/posialert{
-	pixel_x = 32
-	},
+/obj/machinery/posialert/directional/east,
 /turf/open/floor/iron/dark,
 /area/station/science/robotics/lab)
 "bql" = (
@@ -20040,16 +20029,9 @@
 	name = "Containment Blast Door"
 	},
 /obj/structure/cable,
-/obj/structure/grille,
-/obj/structure/window/reinforced{
-	dir = 1;
-	pixel_y = 1
+/obj/effect/spawner/structure/window/hollow/reinforced/end{
+	dir = 8
 	},
-/obj/structure/window/reinforced{
-	dir = 8;
-	layer = 2.9
-	},
-/obj/structure/window/reinforced,
 /turf/open/floor/engine,
 /area/station/science/xenobiology)
 "bqJ" = (
@@ -20059,16 +20041,9 @@
 	},
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable,
-/obj/structure/grille,
-/obj/structure/window/reinforced{
-	dir = 1;
-	pixel_y = 1
+/obj/effect/spawner/structure/window/hollow/reinforced/end{
+	dir = 4
 	},
-/obj/structure/window/reinforced{
-	dir = 4;
-	layer = 2.9
-	},
-/obj/structure/window/reinforced,
 /turf/open/floor/engine,
 /area/station/science/xenobiology)
 "bqK" = (
@@ -20091,16 +20066,9 @@
 	name = "Containment Blast Door"
 	},
 /obj/structure/cable,
-/obj/structure/grille,
-/obj/structure/window/reinforced{
-	dir = 1;
-	pixel_y = 1
+/obj/effect/spawner/structure/window/hollow/reinforced/end{
+	dir = 8
 	},
-/obj/structure/window/reinforced{
-	dir = 8;
-	layer = 2.9
-	},
-/obj/structure/window/reinforced,
 /turf/open/floor/engine,
 /area/station/science/xenobiology)
 "bqO" = (
@@ -20420,16 +20388,9 @@
 /turf/open/floor/iron,
 /area/station/science/robotics/lab)
 "brz" = (
-/obj/item/circular_saw,
-/obj/item/scalpel{
-	pixel_y = 12
-	},
 /obj/structure/window/reinforced{
 	dir = 1;
 	pixel_y = 1
-	},
-/obj/item/razor{
-	pixel_y = 5
 	},
 /obj/structure/window/reinforced{
 	dir = 8;
@@ -20439,9 +20400,9 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 9
 	},
-/obj/item/cautery{
-	pixel_x = 5;
-	pixel_y = 2
+/obj/item/storage/backpack/duffelbag/robo/surgery{
+	pixel_x = 4;
+	pixel_y = -16
 	},
 /turf/open/floor/iron/white,
 /area/station/science/robotics/lab)
@@ -20461,7 +20422,6 @@
 /area/station/science/robotics/lab)
 "brC" = (
 /obj/item/clothing/gloves/color/latex,
-/obj/item/surgical_drapes,
 /obj/structure/window/reinforced{
 	dir = 1;
 	pixel_y = 1
@@ -20956,8 +20916,6 @@
 /turf/open/floor/iron,
 /area/station/science/robotics/lab)
 "bta" = (
-/obj/item/retractor,
-/obj/item/hemostat,
 /obj/structure/window/reinforced{
 	dir = 8;
 	layer = 2.9
@@ -20977,7 +20935,7 @@
 /area/station/science/robotics/lab)
 "btc" = (
 /obj/machinery/computer/operating{
-	dir = 8;
+	dir = 1;
 	name = "Robotics Operating Computer"
 	},
 /turf/open/floor/iron/white,
@@ -22466,15 +22424,8 @@
 	},
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable,
-/obj/structure/grille,
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 1;
-	pixel_y = 1
-	},
-/obj/structure/window/reinforced{
-	dir = 4;
-	layer = 2.9
+/obj/effect/spawner/structure/window/hollow/reinforced/end{
+	dir = 4
 	},
 /turf/open/floor/engine,
 /area/station/science/xenobiology)
@@ -22499,15 +22450,8 @@
 	name = "Containment Blast Door"
 	},
 /obj/structure/cable,
-/obj/structure/grille,
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 1;
-	pixel_y = 1
-	},
-/obj/structure/window/reinforced{
-	dir = 8;
-	layer = 2.9
+/obj/effect/spawner/structure/window/hollow/reinforced/end{
+	dir = 8
 	},
 /turf/open/floor/engine,
 /area/station/science/xenobiology)
@@ -22518,15 +22462,8 @@
 	},
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable,
-/obj/structure/grille,
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 1;
-	pixel_y = 1
-	},
-/obj/structure/window/reinforced{
-	dir = 4;
-	layer = 2.9
+/obj/effect/spawner/structure/window/hollow/reinforced/end{
+	dir = 4
 	},
 /turf/open/floor/engine,
 /area/station/science/xenobiology)
@@ -22536,15 +22473,8 @@
 	name = "Containment Blast Door"
 	},
 /obj/structure/cable,
-/obj/structure/grille,
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 1;
-	pixel_y = 1
-	},
-/obj/structure/window/reinforced{
-	dir = 8;
-	layer = 2.9
+/obj/effect/spawner/structure/window/hollow/reinforced/end{
+	dir = 8
 	},
 /turf/open/floor/engine,
 /area/station/science/xenobiology)
@@ -22555,15 +22485,8 @@
 	},
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable,
-/obj/structure/grille,
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 1;
-	pixel_y = 1
-	},
-/obj/structure/window/reinforced{
-	dir = 4;
-	layer = 2.9
+/obj/effect/spawner/structure/window/hollow/reinforced/end{
+	dir = 4
 	},
 /turf/open/floor/engine,
 /area/station/science/xenobiology)
@@ -22588,15 +22511,8 @@
 	name = "Containment Blast Door"
 	},
 /obj/structure/cable,
-/obj/structure/grille,
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 1;
-	pixel_y = 1
-	},
-/obj/structure/window/reinforced{
-	dir = 8;
-	layer = 2.9
+/obj/effect/spawner/structure/window/hollow/reinforced/end{
+	dir = 8
 	},
 /turf/open/floor/engine,
 /area/station/science/xenobiology)
@@ -23617,7 +23533,7 @@
 /area/station/science/auxlab)
 "bDV" = (
 /obj/structure/table/reinforced,
-/obj/machinery/cell_charger,
+/obj/machinery/cell_charger_multi,
 /obj/item/stock_parts/cell/high,
 /obj/effect/turf_decal/trimline/purple/filled/line{
 	dir = 8
@@ -24423,6 +24339,7 @@
 "bIH" = (
 /obj/structure/table/glass,
 /obj/effect/turf_decal/trimline/purple/filled/line,
+/obj/machinery/coffeemaker,
 /turf/open/floor/iron/dark,
 /area/station/science/lab)
 "bII" = (
@@ -25629,7 +25546,7 @@
 /area/station/maintenance/department/engine)
 "bNZ" = (
 /obj/structure/table,
-/obj/machinery/cell_charger,
+/obj/machinery/cell_charger_multi,
 /obj/item/stock_parts/cell/high,
 /obj/item/stock_parts/cell/high,
 /obj/effect/turf_decal/trimline/purple/filled/line{
@@ -27654,6 +27571,7 @@
 "bUn" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/box/donkpockets,
+/obj/machinery/coffeemaker,
 /turf/open/floor/iron,
 /area/station/engineering/lobby)
 "bUo" = (
@@ -27760,6 +27678,7 @@
 /area/station/maintenance/department/engine)
 "bUG" = (
 /obj/machinery/power/emitter,
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/station/maintenance/department/engine)
 "bUH" = (
@@ -27781,6 +27700,7 @@
 /obj/effect/turf_decal/trimline/yellow/filled/line{
 	dir = 9
 	},
+/obj/machinery/coffeemaker,
 /turf/open/floor/iron,
 /area/station/command/heads_quarters/ce)
 "bUJ" = (
@@ -27823,6 +27743,7 @@
 /obj/effect/turf_decal/trimline/yellow/filled/line{
 	dir = 5
 	},
+/obj/machinery/keycard_auth/directional/east,
 /turf/open/floor/iron,
 /area/station/command/heads_quarters/ce)
 "bUN" = (
@@ -28110,10 +28031,6 @@
 /obj/item/lighter,
 /obj/item/stamp/ce,
 /obj/item/stock_parts/cell/high,
-/obj/machinery/keycard_auth{
-	pixel_x = 26;
-	pixel_y = 26
-	},
 /obj/machinery/power/apc/auto_name/directional/east,
 /obj/item/clothing/glasses/meson/engine,
 /obj/structure/cable,
@@ -28294,9 +28211,7 @@
 /area/station/maintenance/department/engine)
 "bWn" = (
 /obj/structure/closet/secure_closet/engineering_chief,
-/obj/structure/extinguisher_cabinet{
-	pixel_x = -27
-	},
+/obj/structure/extinguisher_cabinet/directional/west,
 /obj/item/clothing/glasses/meson/gar,
 /obj/effect/turf_decal/trimline/yellow/filled/line{
 	dir = 8
@@ -29480,8 +29395,7 @@
 /turf/closed/wall,
 /area/station/service/chapel/asteroid/monastery)
 "caT" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/tinted/fulltile,
+/obj/effect/spawner/structure/window/reinforced/tinted,
 /turf/open/floor/iron/dark,
 /area/station/service/chapel)
 "caV" = (
@@ -29603,7 +29517,7 @@
 /area/station/engineering/main)
 "cbo" = (
 /obj/structure/table,
-/obj/machinery/cell_charger,
+/obj/machinery/cell_charger_multi,
 /turf/open/floor/iron,
 /area/station/engineering/main)
 "cbp" = (
@@ -30283,7 +30197,7 @@
 /turf/open/floor/plating,
 /area/station/engineering/supermatter/room)
 "ceB" = (
-/obj/structure/window/reinforced/fulltile,
+/obj/effect/spawner/structure/window/reinforced/no_firelock,
 /turf/open/floor/plating,
 /area/station/service/chapel/office)
 "ceC" = (
@@ -30625,7 +30539,7 @@
 /turf/open/floor/engine,
 /area/station/engineering/supermatter/room)
 "cgG" = (
-/obj/structure/window/reinforced/fulltile,
+/obj/effect/spawner/structure/window/reinforced/no_firelock,
 /turf/open/floor/plating,
 /area/station/service/chapel/monastery)
 "cgH" = (
@@ -33175,7 +33089,7 @@
 /turf/open/floor/iron/dark,
 /area/station/service/chapel)
 "csU" = (
-/obj/effect/spawner/structure/window/reinforced,
+/obj/effect/spawner/structure/window/reinforced/no_firelock,
 /turf/open/floor/plating/airless,
 /area/station/service/chapel)
 "csY" = (
@@ -34119,7 +34033,7 @@
 /turf/open/floor/iron/dark,
 /area/station/service/library/lounge)
 "cxM" = (
-/obj/structure/window/reinforced/fulltile,
+/obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/station/service/library/lounge)
 "cxX" = (
@@ -35674,7 +35588,7 @@
 /area/station/cargo/office)
 "duF" = (
 /obj/structure/table/reinforced,
-/obj/machinery/cell_charger,
+/obj/machinery/cell_charger_multi,
 /obj/item/stock_parts/cell/high,
 /obj/item/stock_parts/cell/high,
 /turf/open/floor/iron,
@@ -36322,16 +36236,9 @@
 	name = "Containment Blast Door"
 	},
 /obj/structure/cable,
-/obj/structure/grille,
-/obj/structure/window/reinforced{
-	dir = 1;
-	pixel_y = 1
+/obj/effect/spawner/structure/window/hollow/reinforced/end{
+	dir = 8
 	},
-/obj/structure/window/reinforced{
-	dir = 8;
-	layer = 2.9
-	},
-/obj/structure/window/reinforced,
 /turf/open/floor/engine,
 /area/station/science/xenobiology)
 "ecB" = (
@@ -40432,15 +40339,8 @@
 	name = "Containment Blast Door"
 	},
 /obj/structure/cable,
-/obj/structure/grille,
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 1;
-	pixel_y = 1
-	},
-/obj/structure/window/reinforced{
-	dir = 8;
-	layer = 2.9
+/obj/effect/spawner/structure/window/hollow/reinforced/end{
+	dir = 8
 	},
 /turf/open/floor/engine,
 /area/station/science/xenobiology)
@@ -46330,15 +46230,8 @@
 	},
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable,
-/obj/structure/grille,
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 1;
-	pixel_y = 1
-	},
-/obj/structure/window/reinforced{
-	dir = 4;
-	layer = 2.9
+/obj/effect/spawner/structure/window/hollow/reinforced/end{
+	dir = 4
 	},
 /turf/open/floor/engine,
 /area/station/science/xenobiology)
@@ -49575,16 +49468,9 @@
 	name = "Containment Blast Door"
 	},
 /obj/structure/cable,
-/obj/structure/grille,
-/obj/structure/window/reinforced{
-	dir = 1;
-	pixel_y = 1
+/obj/effect/spawner/structure/window/hollow/reinforced/end{
+	dir = 4
 	},
-/obj/structure/window/reinforced{
-	dir = 4;
-	layer = 2.9
-	},
-/obj/structure/window/reinforced,
 /turf/open/floor/engine,
 /area/station/science/xenobiology)
 "oSn" = (
@@ -49999,16 +49885,9 @@
 	},
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable,
-/obj/structure/grille,
-/obj/structure/window/reinforced{
-	dir = 1;
-	pixel_y = 1
+/obj/effect/spawner/structure/window/hollow/reinforced/end{
+	dir = 4
 	},
-/obj/structure/window/reinforced{
-	dir = 4;
-	layer = 2.9
-	},
-/obj/structure/window/reinforced,
 /turf/open/floor/engine,
 /area/station/science/xenobiology)
 "plb" = (
@@ -55303,16 +55182,9 @@
 	name = "Containment Blast Door"
 	},
 /obj/structure/cable,
-/obj/structure/grille,
-/obj/structure/window/reinforced{
-	dir = 1;
-	pixel_y = 1
+/obj/effect/spawner/structure/window/hollow/reinforced/end{
+	dir = 8
 	},
-/obj/structure/window/reinforced{
-	dir = 8;
-	layer = 2.9
-	},
-/obj/structure/window/reinforced,
 /turf/open/floor/engine,
 /area/station/science/xenobiology)
 "txB" = (
@@ -59655,8 +59527,7 @@
 /turf/open/floor/iron/white,
 /area/station/medical/virology)
 "wMM" = (
-/obj/structure/grille,
-/obj/structure/cable,
+/obj/effect/spawner/structure/electrified_grille,
 /turf/open/floor/plating,
 /area/station/maintenance/department/engine)
 "wMQ" = (
@@ -59719,16 +59590,9 @@
 	},
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable,
-/obj/structure/grille,
-/obj/structure/window/reinforced{
-	dir = 1;
-	pixel_y = 1
+/obj/effect/spawner/structure/window/hollow/reinforced/end{
+	dir = 4
 	},
-/obj/structure/window/reinforced{
-	dir = 4;
-	layer = 2.9
-	},
-/obj/structure/window/reinforced,
 /turf/open/floor/engine,
 /area/station/science/xenobiology)
 "wOX" = (
