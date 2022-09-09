@@ -1,3 +1,4 @@
+/*
 // Moved from my old interactions file 'cause skyrats already did interactions
 
 #define REQUIRE_NONE 0
@@ -1204,3 +1205,4 @@ GLOBAL_LIST_INIT(strippable_human_erp_items, create_erp_strippable_list(list(
 	var/atom/stain = new selected_type(the_turf, get_static_viruses())
 
 	stain.transfer_mob_blood_dna(src) //I'm not adding a new forensics category for cumstains
+*/
