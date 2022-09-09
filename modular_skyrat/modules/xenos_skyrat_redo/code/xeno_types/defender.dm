@@ -91,7 +91,7 @@
 	else
 		victim_living.Knockdown(knockdown_time * 2) //They are on the same turf as us, or... somewhere else, I'm not sure how but they are getting smacked down
 
-	victim_living.apply_damage(impact_damage, impact_damage_type, BODY_ZONE_CHEST, impact_wound_bonus, sharpness = impact_sharpness)
+	victim_living.apply_damage(impact_damage, impact_damage_type, BODY_ZONE_CHEST, wound_bonus = impact_wound_bonus, sharpness = impact_sharpness)
 	shake_camera(victim_living, 4, 3)
 	playsound(victim_living, impact_sound, 100, TRUE, 8, 0.9)
 	to_chat(victim_living, span_userdanger("[caster]'s tail slams into you, throwing you back!"))

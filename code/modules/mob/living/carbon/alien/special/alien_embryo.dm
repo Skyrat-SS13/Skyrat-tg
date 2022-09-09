@@ -121,16 +121,8 @@
 	new_xeno.visible_message("<span class='danger'>[new_xeno] bursts out of [owner] in a shower of gore!</span>", "<span class='userdanger'>You exit [owner], your previous host.</span>", "<span class='hear'>You hear organic matter ripping and tearing!</span>")
 	//owner.gib(TRUE) - ORIGINAL
 	//SKYRAT EDIT CHANGE - ALIEN QOL
-	if(owner.getBruteLoss() >= 150)
-		for(var/obj/item/bodypart/BP in owner.bodyparts) //We want to check if there is a chest to dismember.
-			if(BP.name == "chest")
-				BP.dismember()
-				break
-	else
-		var/obj/item/bodypart/affecting = owner.get_bodypart("chest")
-		if(affecting)
-			affecting.receive_damage(40)
-		owner.spawn_gibs()
+	owner.apply_damage(150, BRUTE, BODY_ZONE_CHEST, wound_bonus = 30, sharpness = SHARP_POINTY) //You aren't getting gibbed but you aren't going to be having fun
+	owner.spawn_gibs()
 	//SKYRAT EDIT END
 	owner.cut_overlay(overlay)
 	qdel(src)
