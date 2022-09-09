@@ -30,7 +30,7 @@
 			to_chat(owner, span_warning("Alert: System corruption in central processing unit."))
 
 /obj/item/organ/internal/stomach/robot_ipc
-	name = "IPC micro cell"
+	name = "synthetic micro cell"
 	icon = 'modular_skyrat/master_files/icons/obj/surgery.dmi'
 	icon_state = "stomach-ipc"
 	w_class = WEIGHT_CLASS_NORMAL
@@ -81,7 +81,7 @@
 			to_chat(owner, span_warning("Your system reports anomalous feedback from your auditory sensors."))
 
 /obj/item/organ/internal/tongue/robot_ipc
-	name = "robotic voicebox"
+	name = "synthetic voicebox"
 	desc = "A voice synthesizer that can interface with organic lifeforms."
 	status = ORGAN_ROBOTIC
 	icon = 'modular_skyrat/master_files/icons/obj/surgery.dmi'
