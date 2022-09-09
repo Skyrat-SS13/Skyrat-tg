@@ -25,7 +25,7 @@
 		"red" = image (icon = src.icon, icon_state = "[initial(icon_state)]_red"),
 		"yellow" = image(icon = src.icon, icon_state = "[initial(icon_state)]_yellow"))
 
-/obj/item/clothing/sextoy/fleshlight/Initialize()
+/obj/item/clothing/sextoy/fleshlight/Initialize(mapload)
 	. = ..()
 	update_icon()
 	update_icon_state()

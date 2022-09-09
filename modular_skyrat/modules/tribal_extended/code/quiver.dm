@@ -6,7 +6,7 @@
 	icon_state = "quiverlazy" //codersprite
 	worn_icon_state = "quiver"
 
-/obj/item/storage/belt/quiver/Initialize()
+/obj/item/storage/belt/quiver/Initialize(mapload)
 	. = ..()
 	atom_storage.max_slots = 15
 	atom_storage.numerical_stacking = TRUE

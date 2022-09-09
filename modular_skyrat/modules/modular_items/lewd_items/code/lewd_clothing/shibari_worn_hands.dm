@@ -36,7 +36,7 @@
 		hooman.remove_status_effect(/datum/status_effect/ropebunny)
 	return ..()
 
-/obj/item/clothing/gloves/shibari_hands/ComponentInitialize()
+/obj/item/clothing/gloves/shibari_hands/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/update_icon_updates_onmob)
 

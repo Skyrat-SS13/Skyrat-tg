@@ -51,11 +51,6 @@
 		"inflated" = image (icon = src.icon, icon_state = "sleepbag_pink_deflated_folded"),
 		"deflated" = image(icon = src.icon, icon_state = "sleepbag_teal_deflated_folded"))
 
-//to update model lol
-/obj/item/clothing/suit/straight_jacket/kinky_sleepbag/ComponentInitialize()
-	. = ..()
-	AddElement(/datum/element/update_icon_updates_onmob)
-
 //to change model
 /obj/item/clothing/suit/straight_jacket/kinky_sleepbag/AltClick(mob/user)
 	var/mob/living/carbon/human/clicking_human = user
@@ -91,8 +86,9 @@
 		return FALSE
 	return TRUE
 
-/obj/item/clothing/suit/straight_jacket/kinky_sleepbag/Initialize()
+/obj/item/clothing/suit/straight_jacket/kinky_sleepbag/Initialize(mapload)
 	. = ..()
+	AddElement(/datum/element/update_icon_updates_onmob)
 	update_icon_state()
 	update_icon()
 	if(!length(bag_colors))
@@ -172,7 +168,7 @@
 			to_chat(user, span_purple("You are finally free! The bag is no longer constricting your movements."))
 
 			affected_human.add_overlay(affected_human.overlays_standing[SHOES_LAYER])
-			affected_human.update_inv_shoes()
+			affected_human.update_worn_shoes()
 			affected_human.add_overlay(affected_human.overlays_standing[BELT_LAYER])
 			affected_human.add_overlay(affected_human.overlays_standing[NECK_LAYER])
 			affected_human.add_overlay(affected_human.overlays_standing[BACK_LAYER])
@@ -182,7 +178,7 @@
 			affected_human.add_overlay(affected_human.overlays_standing[HAIR_LAYER])
 			affected_human.add_overlay(affected_human.overlays_standing[SHOES_LAYER])
 
-			affected_human.update_inv_shoes()
+			affected_human.update_worn_shoes()
 			affected_human.regenerate_icons()
 	STOP_PROCESSING(SSobj, src)
 	. = ..()
@@ -200,5 +196,5 @@
 
 /obj/item/clothing/suit/straight_jacket/kinky_sleepbag/doStrip(mob/stripper, mob/owner)
 	. = ..()
-	owner.update_inv_hands()
-	stripper.update_inv_hands()
+	owner.update_held_items()
+	stripper.update_held_items()

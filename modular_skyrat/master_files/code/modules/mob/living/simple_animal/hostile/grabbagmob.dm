@@ -609,7 +609,7 @@
 	mob_biotypes = MOB_ORGANIC|MOB_BUG
 	speak_chance = 0
 	turns_per_move = 5
-	loot = list(/obj/item/reagent_containers/glass/bottle/rezadone)
+	loot = list(/obj/item/reagent_containers/cup/bottle/rezadone)
 	response_help_continuous = "pokes"
 	response_help_simple = "poke"
 	response_disarm_continuous = "gently pushes aside"

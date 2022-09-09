@@ -32,11 +32,6 @@
 		"teal" = image (icon = src.icon, icon_state = "shackles_teal"),
 		"metal" = image (icon = src.icon, icon_state = "shackles_metal"))
 
-//to update model lol
-/obj/item/clothing/suit/straight_jacket/shackles/ComponentInitialize()
-	. = ..()
-	AddElement(/datum/element/update_icon_updates_onmob)
-
 //to change model
 /obj/item/clothing/suit/straight_jacket/shackles/AltClick(mob/user)
 	if(color_changed == FALSE)
@@ -60,8 +55,9 @@
 		return FALSE
 	return TRUE
 
-/obj/item/clothing/suit/straight_jacket/shackles/Initialize()
+/obj/item/clothing/suit/straight_jacket/shackles/Initialize(mapload)
 	. = ..()
+	AddElement(/datum/element/update_icon_updates_onmob)
 	update_icon_state()
 	update_icon()
 	if(!length(shackles_designs))

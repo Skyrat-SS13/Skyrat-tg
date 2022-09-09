@@ -22,7 +22,7 @@
   var/list/modes_msg = list(MODE_ON = "You activate the optical matrix on the ", MODE_OFF = "You deactivate the optical matrix on the ")
 
 /// Reuse logic from engine_goggles.dm
-/obj/item/clothing/glasses/hud/ar/ComponentInitialize()
+/obj/item/clothing/glasses/hud/ar/Initialize(mapload)
   . = ..()
   AddElement(/datum/element/update_icon_updates_onmob)
 

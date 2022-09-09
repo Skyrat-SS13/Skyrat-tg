@@ -9,7 +9,7 @@
 	var/polling = FALSE/// if the helmet is currently polling for targets (special code for removal)
 	var/light_colors = 1 /// which icon state color this is (red, blue, yellow)
 
-/obj/item/clothing/head/helmet/monkey_sentience/Initialize()
+/obj/item/clothing/head/helmet/monkey_sentience/Initialize(mapload)
 	. = ..()
 	light_colors = rand(1, 3)
 	update_appearance()

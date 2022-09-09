@@ -52,7 +52,7 @@
 			for(var/i in 1 to 10)
 				new /obj/item/food/canned/beans(src)
 			for(var/i in 1 to 10)
-				new /obj/item/reagent_containers/food/drinks/waterbottle(src)
+				new /obj/item/reagent_containers/cup/glass/waterbottle(src)
 		if(2)
 			new /obj/item/stack/sheet/iron/fifty(src)
 			new /obj/item/stack/rods/fifty(src)
@@ -157,9 +157,9 @@
 		if(2) //Energy weapons + energy knives
 			new /obj/item/gun/energy/e_gun(src)
 			new /obj/item/gun/energy/e_gun(src)
+			new /obj/item/gun/energy/e_gun(src)
 			new /obj/item/gun/energy/e_gun/mini(src)
 			new /obj/item/gun/energy/recharge/ebow(src)
-			new /obj/item/gun/energy/e_gun/nuclear(src)
 			new /obj/item/melee/energy/sword(src)
 			new /obj/item/melee/energy/sword(src)
 		if(3) //Ballistics + knives

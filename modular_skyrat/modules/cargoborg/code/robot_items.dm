@@ -20,7 +20,7 @@
 	var/paper_charge_cost = 50
 
 
-/obj/item/clipboard/cyborg/Initialize()
+/obj/item/clipboard/cyborg/Initialize(mapload)
 	. = ..()
 	pen = new /obj/item/pen/cyborg
 
@@ -312,7 +312,7 @@
 	build_path = /obj/item/borg/upgrade/better_clamp
 	materials = list(/datum/material/titanium = 4000, /datum/material/gold = 500, /datum/material/bluespace = 50)
 	construction_time = 12 SECONDS
-	category = list("Cyborg Upgrade Modules")
+	category = list(RND_CATEGORY_CYBORG_UPGRADE_MODULES)
 
 
 /obj/item/borg/upgrade/better_clamp
@@ -360,7 +360,7 @@
 	alpha = 150 // It's hardlight, it's gotta be see-through.
 
 
-/obj/item/paperplane/syndicate/hardlight/Initialize()
+/obj/item/paperplane/syndicate/hardlight/Initialize(mapload)
 	. = ..()
 	color = color_hex2color_matrix(pick(paper_colors))
 	alpha = initial(alpha) // It's hardlight, it's gotta be see-through.
@@ -369,7 +369,7 @@
 /obj/item/borg/paperplane_crossbow
 	name = "paper plane crossbow"
 	desc = "Be careful, don't aim for the eyes- Who am I kidding, <i>definitely</i> aim for the eyes!"
-	icon = 'icons/obj/guns/energy.dmi'
+	icon = 'icons/obj/weapons/guns/energy.dmi'
 	icon_state = "crossbow"
 	/// How many planes does the crossbow currently have in its internal magazine?
 	var/planes = 4

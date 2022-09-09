@@ -1,4 +1,4 @@
-/obj/machinery/computer/cargo/ComponentInitialize()
+/obj/machinery/computer/cargo/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/armament/cargo_gun, subtypesof(/datum/armament_entry/cargo_gun), 0)
 

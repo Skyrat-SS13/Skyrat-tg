@@ -420,7 +420,7 @@
 
 //ITEMS//
 /obj/item/radio/headset/cybersun
-	keyslot = new /obj/item/encryptionkey/headset_cybersun
+	keyslot = new /obj/item/encryptionkey/headset_syndicate/cybersun
 
 /obj/item/radio/headset/cybersun/captain
 	name = "cybersun captain headset"
@@ -431,7 +431,7 @@
 	name = "tarkon headset"
 	freerange = TRUE
 	freqlock = TRUE
-	keyslot = new /obj/item/encryptionkey/headset_tarkon
+	keyslot = new /obj/item/encryptionkey/headset_cargo/tarkon
 
 /obj/item/radio/headset/tarkon/ensign //spoiler for upcoming update
 	name = "tarkon ensign headset"

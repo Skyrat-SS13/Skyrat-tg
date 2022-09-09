@@ -67,7 +67,7 @@
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 	var/list/poly_colors = list("#FFFFFF", "#FF8888", "#888888")
 
-/obj/item/clothing/under/dress/skirt/polychromic/ComponentInitialize()
+/obj/item/clothing/under/dress/skirt/polychromic/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/polychromic, poly_colors)
 
@@ -86,7 +86,7 @@
 	icon_state = "polysuit"
 	supports_variations_flags = NONE
 
-/obj/item/clothing/under/misc/poly_shirt/ComponentInitialize()
+/obj/item/clothing/under/misc/poly_shirt/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/polychromic, list("#FFFFFF", "#333333", "#333333"))
 
@@ -100,7 +100,7 @@
 	body_parts_covered = CHEST|GROIN|ARMS
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/under/misc/polyshorts/ComponentInitialize()
+/obj/item/clothing/under/misc/polyshorts/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/polychromic, list("#333333", "#888888", "#888888"))
 
@@ -113,7 +113,7 @@
 	can_adjust = FALSE
 	supports_variations_flags = NONE
 
-/obj/item/clothing/under/misc/polyjumpsuit/ComponentInitialize()
+/obj/item/clothing/under/misc/polyjumpsuit/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/polychromic, list("#FFFFFF", "#888888", "#333333"))
 
@@ -127,7 +127,7 @@
 	can_adjust = FALSE
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/under/misc/poly_bottomless/ComponentInitialize()
+/obj/item/clothing/under/misc/poly_bottomless/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/polychromic, list("#888888", "#FF3333", "#FFFFFF"))
 
@@ -142,7 +142,7 @@
 	can_adjust = FALSE
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/under/misc/polysweater/ComponentInitialize()
+/obj/item/clothing/under/misc/polysweater/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/polychromic, list("#FFFFFF"))
 
@@ -157,7 +157,7 @@
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 	var/list/poly_colors = list("#888888", "#FFFFFF", "#88CCFF")
 
-/obj/item/clothing/under/misc/poly_tanktop/ComponentInitialize()
+/obj/item/clothing/under/misc/poly_tanktop/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/polychromic, poly_colors)
 
@@ -179,7 +179,7 @@
 	greyscale_config_worn_digi = null
 	var/list/poly_colors = list("#FFFFFF", "#FF8888", "#FFFFFF")
 
-/obj/item/clothing/under/shorts/polychromic/ComponentInitialize()
+/obj/item/clothing/under/shorts/polychromic/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/polychromic, poly_colors)
 
@@ -221,8 +221,8 @@
 	desc = "A portable tablet that allows you to draw. Legends say these can earn the owner a fortune in some sectors of space."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
 	icon_state = "drawingtablet"
-	lefthand_file = 'icons/mob/inhands/misc/devices_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/misc/devices_righthand.dmi'
+	lefthand_file = 'icons/mob/inhands/items/devices_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/items/devices_righthand.dmi'
 	inhand_icon_state = "electronic"
 	item_flags = NOBLUDGEON
 	w_class = WEIGHT_CLASS_TINY
@@ -600,7 +600,7 @@
 	/// What treat item spawns inside the collar?
 	var/treat_path = /obj/item/food/cookie
 
-/obj/item/clothing/neck/inferno_collar/Initialize()
+/obj/item/clothing/neck/inferno_collar/Initialize(mapload)
 	. = ..()
 	create_storage(type = /datum/storage/pockets/small/collar)
 	if(treat_path)
@@ -640,7 +640,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/custom_w.dmi'
 	icon_state = "darksheath"
 
-/obj/item/storage/belt/sabre/darksabre/Initialize()
+/obj/item/storage/belt/sabre/darksabre/Initialize(mapload)
 	. = ..()
 	atom_storage.set_holdable(list(
 		/obj/item/toy/darksabre
@@ -674,7 +674,7 @@
 	actions_types = list(/datum/action/item_action/hheart)
 	supports_variations_flags = NONE
 
-/obj/item/clothing/mask/hheart/Initialize()
+/obj/item/clothing/mask/hheart/Initialize(mapload)
 	. = ..()
 	update_icon()
 
@@ -700,7 +700,7 @@
 			index = c_color_index + 1
 		c_color_index = index
 		update_icon()
-		ooser.update_inv_wear_mask()
+		ooser.update_worn_mask()
 		ooser.update_action_buttons_icon()
 		to_chat(ooser, span_notice("You toggle the [src] to [possible_colors[c_color_index]]."))
 
@@ -983,7 +983,7 @@
 	/// The sound played when toggling the shutters.
 	var/shutters_sound = 'sound/effects/clock_tick.ogg'
 
-/obj/item/clothing/glasses/welding/steampunk_goggles/Initialize()
+/obj/item/clothing/glasses/welding/steampunk_goggles/Initialize(mapload)
 	. = ..()
 	visor_toggling()
 
@@ -1421,3 +1421,15 @@
 /obj/item/clothing/accessory/hypno_watch/examine()
 	. = ..()
 	. += span_boldwarning("Who knows what it could be used for?")
+
+// Donation reward for BoisterousBeebz
+
+/obj/item/clothing/under/bubbly_clown/skirt
+	name = "bubbly clown dress"
+	desc = "A bright and cheerful clown dress, honk!"
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
+	icon_state = "bubbly_clown_dress"
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
+	body_parts_covered = CHEST|GROIN|ARMS
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON

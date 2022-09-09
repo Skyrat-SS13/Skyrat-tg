@@ -35,7 +35,7 @@
 	attack_sound = 'sound/weapons/slash.ogg'
 	miss_sound = 'sound/weapons/slashmiss.ogg'
 	liked_food = GRAIN | MEAT
-	disliked_food = CLOTH | GROSS
+	disliked_food = CLOTH | GROSS | GORE
 	toxic_food = TOXIC
 	payday_modifier = 0.75
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
@@ -48,8 +48,7 @@
 		BODY_ZONE_R_LEG = /obj/item/bodypart/r_leg/mutant,
 	)
 
-/datum/species/mammal/get_random_features()
-	var/list/returned = MANDATORY_FEATURE_LIST
+/datum/species/mammal/randomize_features(mob/living/carbon/human/human_mob)
 	var/main_color
 	var/second_color
 	var/third_color
@@ -83,10 +82,9 @@
 			main_color = "#[random_color()]"
 			second_color = "#[random_color()]"
 			third_color = "#[random_color()]"
-	returned["mcolor"] = main_color
-	returned["mcolor2"] = second_color
-	returned["mcolor3"] = third_color
-	return returned
+	human_mob.dna.features["mcolor"] = main_color
+	human_mob.dna.features["mcolor2"] = second_color
+	human_mob.dna.features["mcolor3"] = third_color
 
 /datum/species/mammal/get_random_body_markings(list/passed_features)
 	var/name = "None"

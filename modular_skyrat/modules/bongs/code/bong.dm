@@ -32,7 +32,7 @@
 	///How far does the smoke reach per use?
 	var/smoke_range = 2
 
-/obj/item/bong/Initialize()
+/obj/item/bong/Initialize(mapload)
 	. = ..()
 	create_reagents(chem_volume, INJECTABLE | NO_REACT)
 

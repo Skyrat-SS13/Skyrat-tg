@@ -308,7 +308,7 @@
 	if(ishuman(target))
 		var/mob/living/carbon/human/H = target
 		H.emote("scream")
-		SEND_SIGNAL(H, COMSIG_ADD_MOOD_EVENT, "tased", /datum/mood_event/tased)
+		H.add_mood_event("tased", /datum/mood_event/tased)
 		if((H.status_flags & CANKNOCKDOWN) && !HAS_TRAIT(H, TRAIT_STUNIMMUNE))
 			addtimer(CALLBACK(H, /mob/living/carbon.proc/do_jitter_animation, jitter), 5)
 

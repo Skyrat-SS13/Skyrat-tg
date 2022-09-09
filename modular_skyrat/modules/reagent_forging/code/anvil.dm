@@ -9,7 +9,7 @@
 	///if on the mining zlevel, it is primitive and has a different icon
 	var/primitive = FALSE
 
-/obj/structure/reagent_anvil/Initialize()
+/obj/structure/reagent_anvil/Initialize(mapload)
 	. = ..()
 	if(is_mining_level(z))
 		primitive = TRUE

@@ -54,7 +54,7 @@
 	inhand_icon_state = "cultrobes"
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS
 	armor = list(MELEE = 50, BULLET = 10, LASER = 10, ENERGY = 10, BOMB = 0, BIO = 0, FIRE = 80, ACID = 80, WOUND = 20) // Chaplain Riot armor
-	allowed = list(/obj/item/storage/book/bible, /obj/item/nullrod, /obj/item/reagent_containers/food/drinks/bottle/holywater, /obj/item/storage/fancy/candle_box, /obj/item/candle, /obj/item/tank/internals/emergency_oxygen, /obj/item/tank/internals/plasmaman)
+	allowed = list(/obj/item/storage/book/bible, /obj/item/nullrod, /obj/item/reagent_containers/cup/glass/bottle/holywater, /obj/item/storage/fancy/candle_box, /obj/item/candle, /obj/item/tank/internals/emergency_oxygen, /obj/item/tank/internals/plasmaman)
 	hoodtype = /obj/item/clothing/head/hooded/cultlain_hood
 
 /obj/item/clothing/head/hooded/cultlain_hood
@@ -140,7 +140,7 @@
 	var/praying = FALSE
 	var/deity_name = "Coderbus" // This is the default, hopefully won't actually appear if the religion subsystem is running properly
 
-/obj/item/nullrod/rosary/Initialize()
+/obj/item/nullrod/rosary/Initialize(mapload)
 	.=..()
 	if(GLOB.deity)
 		deity_name = GLOB.deity

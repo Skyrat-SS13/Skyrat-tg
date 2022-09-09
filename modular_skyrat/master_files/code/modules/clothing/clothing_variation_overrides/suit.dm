@@ -25,7 +25,7 @@
 /obj/item/clothing/suit/jacket
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/suit/ianshirt
+/obj/item/clothing/suit/costume/ianshirt
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/suit/poncho
@@ -68,17 +68,23 @@
 /obj/item/clothing/suit/armor/riot/knight/greyscale
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/suit/toggle/armor/vest/centcom_formal
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
-
 /obj/item/clothing/suit/hooded/cultrobes/void
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/suit/hooded/cultrobes/eldritch
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/suit/armor/vest/marine
+/obj/item/clothing/suit/armor/vest
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+
+/obj/item/clothing/suit/armor/vest/marine/security
+	supports_variations_flags = NONE
+
+/obj/item/clothing/suit/armor/vest/marine/engineer
+	supports_variations_flags = NONE
+
+/obj/item/clothing/suit/armor/vest/leather //This item blows
+	supports_variations_flags = NONE
 
 /obj/item/clothing/suit/changeling
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON

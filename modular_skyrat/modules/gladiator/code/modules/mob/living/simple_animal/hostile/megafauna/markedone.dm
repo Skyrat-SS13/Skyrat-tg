@@ -13,8 +13,8 @@
 	attack_verb_simple = "cleave"
 	attack_verb_continuous = "cleaves"
 	attack_sound = 'modular_skyrat/master_files/sound/weapons/bloodyslice.ogg'
-	deathsound = 'sound/creatures/space_dragon_roar.ogg'
-	deathmessage = "falls on his sword, ash evaporating from every hole in his armor."
+	death_sound = 'sound/creatures/space_dragon_roar.ogg'
+	death_message = "falls on his sword, ash evaporating from every hole in his armor."
 	gps_name = "Forgotten Signal"
 	rapid_melee = 1
 	melee_queue_distance = 2

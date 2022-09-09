@@ -90,7 +90,7 @@
 	turned_on = !turned_on
 	update_icon()
 
-/obj/structure/liquid_pump/Initialize()
+/obj/structure/liquid_pump/Initialize(mapload)
 	. = ..()
 	create_reagents(max_volume)
 

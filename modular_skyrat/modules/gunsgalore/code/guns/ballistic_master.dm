@@ -25,13 +25,11 @@
 	var/reload_time = 2 SECONDS
 
 
-/obj/item/gun/ballistic/Initialize()
+/obj/item/gun/ballistic/Initialize(mapload)
 	. = ..()
 	if(realistic)
 		base_spread = spread
 
-/obj/item/gun/ballistic/ComponentInitialize()
-	. = ..()
 	if(alt_icons)
 		AddElement(/datum/element/update_icon_updates_onmob)
 

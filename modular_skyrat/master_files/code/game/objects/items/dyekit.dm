@@ -65,7 +65,7 @@
 	human_target.visible_message(span_notice("[user] finishes applying hair dye to [dying_themselves ? "their own" : "[human_target]'s"] hair, changing its color!"), span_notice("[dying_themselves ? "You finish" : "[user] finishes"] applying hair dye to [dying_themselves ? "your own" : "your"] hair, changing its color!"), ignored_mobs = user)
 	if(!dying_themselves)
 		balloon_alert(user, "dyeing complete!")
-	human_target.update_hair(is_creating = TRUE)
+	human_target.update_body_parts()
 
 	uses--
 

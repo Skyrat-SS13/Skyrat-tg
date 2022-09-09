@@ -88,16 +88,13 @@
 
 /obj/item/stack/shibari_rope/Initialize(mapload, new_amount, merge, list/mat_override, mat_amt)
 	. = ..()
+	AddElement(/datum/element/update_icon_updates_onmob)
 	RegisterSignal(src, COMSIG_ITEM_ATTACK, .proc/handle_roping)
 	if(!greyscale_colors)
 		var/new_color = "#"
 		for(var/i in 1 to 3)
 			new_color += num2hex(rand(0, 255), 2)
 		set_greyscale(colors = list(new_color))
-
-/obj/item/stack/shibari_rope/ComponentInitialize()
-	. = ..()
-	AddElement(/datum/element/update_icon_updates_onmob)
 
 /obj/item/stack/shibari_rope/proc/handle_roping(datum/source, mob/living/carbon/attacked, mob/living/user)
 	SIGNAL_HANDLER

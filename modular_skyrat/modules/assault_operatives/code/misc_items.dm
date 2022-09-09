@@ -5,7 +5,7 @@
 	icon_state = "medpen_pouch"
 	slot_flags = ITEM_SLOT_BELT | ITEM_SLOT_POCKETS
 
-/obj/item/storage/bag/medpens/Initialize()
+/obj/item/storage/bag/medpens/Initialize(mapload)
 	. = ..()
 	atom_storage.max_specific_storage = WEIGHT_CLASS_NORMAL
 	atom_storage.max_total_storage = 30

@@ -38,7 +38,7 @@
 	icon_state = "mre_package"
 	illustration = null
 
-/obj/item/storage/box/nri_rations/Initialize()
+/obj/item/storage/box/nri_rations/Initialize(mapload)
 	. = ..()
 	atom_storage.max_slots = 7
 
@@ -47,7 +47,7 @@
 	new /obj/item/food/nri_course/main(src)
 	new /obj/item/food/nri_course/side(src)
 	new /obj/item/storage/box/gum(src)
-	new /obj/item/reagent_containers/food/drinks/waterbottle(src)
+	new /obj/item/reagent_containers/cup/glass/waterbottle(src)
 	new /obj/item/storage/fancy/cigarettes/cigpack_robust(src)
 	new /obj/item/storage/box/matches(src)
 

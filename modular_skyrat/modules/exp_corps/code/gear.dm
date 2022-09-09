@@ -97,7 +97,7 @@
 /obj/item/storage/bag/ammo/marksman
 	name = "marksman's knife pouch"
 
-/obj/item/storage/bag/ammo/marksman/Initialize()
+/obj/item/storage/bag/ammo/marksman/Initialize(mapload)
 	. = ..()
 	create_storage(type = /datum/storage/marksman)
 

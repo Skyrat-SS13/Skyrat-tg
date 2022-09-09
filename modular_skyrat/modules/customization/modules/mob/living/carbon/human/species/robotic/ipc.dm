@@ -87,8 +87,7 @@
 	var/datum/sprite_accessory/ipc_chassis/chassis_of_choice = GLOB.sprite_accessories["ipc_chassis"][chassis["name"]]
 
 	for(var/obj/item/bodypart/iterating_bodypart as anything in target.bodyparts) //Override bodypart data as necessary
-		iterating_bodypart.uses_mutcolor = chassis_of_choice.color_src ? TRUE : FALSE
-		if(iterating_bodypart.uses_mutcolor)
+		if(chassis_of_choice.color_src)
 			iterating_bodypart.should_draw_greyscale = TRUE
 			iterating_bodypart.species_color = target.dna?.features["mcolor"]
 		iterating_bodypart.limb_id = chassis_of_choice.icon_state

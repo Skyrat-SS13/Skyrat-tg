@@ -3,7 +3,7 @@
 	desc = "The circuit board for a Self-Actualization Device by Cinco: A Family Company."
 	id = "self_actualization_device"
 	build_path = /obj/item/circuitboard/machine/self_actualization_device
-	category = list("Medical Machinery")
+	category = list(RND_CATEGORY_MEDICAL_MACHINERY)
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
 /obj/item/circuitboard/machine/self_actualization_device

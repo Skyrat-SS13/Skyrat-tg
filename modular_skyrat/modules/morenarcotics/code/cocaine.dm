@@ -46,7 +46,7 @@
 	if(DT_PROB(2.5, delta_time))
 		var/high_message = pick("You feel jittery.", "You feel like you gotta go fast.", "You feel like you need to step it up.")
 		to_chat(M, span_notice("[high_message]"))
-	SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "zoinked", /datum/mood_event/stimulant_heavy, name)
+	M.add_mood_event("zoinked", /datum/mood_event/stimulant_heavy, name)
 	M.AdjustStun(-15 * REM * delta_time)
 	M.AdjustKnockdown(-15 * REM * delta_time)
 	M.AdjustUnconscious(-15 * REM * delta_time)

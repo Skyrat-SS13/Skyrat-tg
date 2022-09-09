@@ -38,7 +38,7 @@
 	. = ..()
 	host_egg = new /obj/item/borer_egg(get_turf(src))
 	host_egg.host_spawner = src
-	src.forceMove(host_egg)
+	forceMove(host_egg)
 	var/area/src_area = get_area(src)
 	if(src_area)
 		notify_ghosts("A cortical borer egg has been laid in \the [src_area.name].", source = src, action=NOTIFY_ATTACK, flashwindow = FALSE, ignore_key = POLL_IGNORE_DRONE, notify_suiciders = FALSE)
@@ -55,7 +55,7 @@
 /obj/item/borer_egg/attack_ghost(mob/user)
 	if(host_spawner)
 		host_spawner.attack_ghost(user)
-	. = ..()
+	return ..()
 
 /obj/item/borer_egg/attack_self(mob/user, modifiers)
 	to_chat(user, span_notice("You crush [src] within your grasp."))

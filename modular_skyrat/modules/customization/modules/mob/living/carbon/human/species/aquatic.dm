@@ -31,7 +31,7 @@
 	attack_sound = 'sound/weapons/slash.ogg'
 	miss_sound = 'sound/weapons/slashmiss.ogg'
 	payday_modifier = 0.75
-	liked_food = SEAFOOD | MEAT | FRUIT
+	liked_food = SEAFOOD | MEAT | FRUIT | GORE
 	disliked_food = CLOTH | GROSS
 	toxic_food = TOXIC
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
@@ -45,8 +45,7 @@
 		BODY_ZONE_R_LEG = /obj/item/bodypart/r_leg/mutant/akula,
 	)
 
-/datum/species/aquatic/get_random_features()
-	var/list/returned = MANDATORY_FEATURE_LIST
+/datum/species/aquatic/randomize_features(mob/living/carbon/human/human_mob)
 	var/main_color
 	var/second_color
 	var/random = rand(1,5)
@@ -67,10 +66,9 @@
 		if(5)
 			main_color = "#444444"
 			second_color = "#DDDDEE"
-	returned["mcolor"] = main_color
-	returned["mcolor2"] = second_color
-	returned["mcolor3"] = second_color
-	return returned
+	human_mob.dna.features["mcolor"] = main_color
+	human_mob.dna.features["mcolor2"] = second_color
+	human_mob.dna.features["mcolor3"] = second_color
 
 /datum/species/aquatic/get_random_body_markings(list/passed_features)
 	var/name = "Shark"

@@ -21,7 +21,7 @@
 		efficiency += laser_part.rating
 	process_speed = initial(process_speed) - (6 SECONDS * efficiency)
 
-/obj/machinery/xenoarch/Initialize()
+/obj/machinery/xenoarch/Initialize(mapload)
 	. = ..()
 	holding_storage = new /obj/item(src)
 

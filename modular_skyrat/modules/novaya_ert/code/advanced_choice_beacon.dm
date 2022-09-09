@@ -99,8 +99,9 @@
 	w_class = WEIGHT_CLASS_BULKY
 	has_latches = FALSE
 
-/obj/item/storage/toolbox/emergency/turret/nri/ComponentInitialize()
-	AddComponent(/datum/component/two_handed, require_twohands=TRUE)
+/obj/item/storage/toolbox/emergency/turret/nri/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/two_handed, require_twohands = TRUE)
 
 /obj/item/storage/toolbox/emergency/turret/nri/PopulateContents()
 	return null
@@ -111,7 +112,7 @@
 			span_danger("You bash [src] with [I]!"), null, COMBAT_MESSAGE_RANGE)
 		playsound(src, "sound/items/drill_use.ogg", 80, TRUE, -1)
 		var/obj/machinery/porta_turret/syndicate/pod/toolbox/nri/turret = new(get_turf(loc))
-		turret.faction = list(FACTION_STATION, FACTION_ERT)
+		turret.faction = list("neutral", FACTION_ERT)
 		qdel(src)
 
 	..()
@@ -124,11 +125,14 @@
 	lethal_projectile = /obj/projectile/bullet/a762x39
 	max_integrity = 150
 	req_access = list(ACCESS_CENT_GENERAL)
-	faction = list(FACTION_STATION, FACTION_ERT)
-	shot_delay = 0.5
+	faction = list("neutral", FACTION_ERT)
+	shot_delay = 0.25
+
+/obj/machinery/porta_turret/syndicate/pod/toolbox/nri/assess_perp(mob/living/carbon/human/perp)
+	return 0
 
 /mob/living/simple_animal/hostile/viscerator/nri
-	faction = list(FACTION_STATION, FACTION_ERT)
+	faction = list("neutral", FACTION_ERT)
 
 /obj/item/grenade/spawnergrenade/manhacks/nri
 	name = "imperial viscerator delivery grenade"

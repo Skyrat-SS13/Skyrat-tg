@@ -22,7 +22,7 @@
 	// Does it have multiple uses? 1 by default, set to INFINITE (so -1, not any lower) to not have it be consumed.
 	var/uses = 1
 
-/obj/item/trim_token/Initialize()
+/obj/item/trim_token/Initialize(mapload)
 	. = ..()
 	// Making sure we have actual paths to avoid issues
 	if(length(valid_trims_paths))

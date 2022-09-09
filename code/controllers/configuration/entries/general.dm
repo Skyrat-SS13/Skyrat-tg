@@ -632,3 +632,12 @@
 /datum/config_entry/flag/forbid_all_profiling
 
 /datum/config_entry/flag/forbid_admin_profiling
+
+
+/datum/config_entry/flag/morgue_cadaver_disable_nonhumans
+	default = FALSE
+
+/datum/config_entry/number/morgue_cadaver_other_species_probability
+	default = 50
+
+/datum/config_entry/string/morgue_cadaver_override_species

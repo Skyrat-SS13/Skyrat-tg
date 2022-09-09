@@ -18,7 +18,7 @@
 	inhand_icon_state = "tennis_rainbow"
 	actions_types = list(/datum/action/item_action/squeeze)		//Giving the masses easy access to unilimted honks would be annoying
 
-/obj/item/toy/tennis/rainbow/Initialize()
+/obj/item/toy/tennis/rainbow/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/squeak)
 

@@ -186,8 +186,8 @@
 	can_toggle = TRUE
 	toggle_cooldown = 0
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION
-	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH | PEPPERPROOF
-	visor_flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH | PEPPERPROOF
+	flags_cover = HEADCOVERSEYES | PEPPERPROOF
+	visor_flags_cover = HEADCOVERSEYES | PEPPERPROOF
 
 //Need to do some fuckery to make sure the mounted light preserves the current visor instead of throwing a fit sprite-wise
 /obj/item/clothing/head/helmet/sec/attack_self(mob/user)
@@ -202,7 +202,7 @@
 			//End of our only change
 			to_chat(user, span_notice("[up ? alt_toggle_message : toggle_message] \the [src]."))
 
-			user.update_inv_head()
+			user.update_worn_head()
 			if(iscarbon(user))
 				var/mob/living/carbon/C = user
 				C.head_update(src, forced = 1)
@@ -360,7 +360,7 @@
 	else
 		worn_icon_state = "[icon_state]_left"
 
-	usr.update_inv_neck()
+	usr.update_worn_neck()
 
 /*
 * GLOVES
@@ -636,18 +636,18 @@
 */
 
 /obj/item/storage/backpack/security/redsec
-	icon = 'icons/obj/storage.dmi'
+	icon = 'icons/obj/storage/storage.dmi'
 	worn_icon = 'icons/mob/clothing/back.dmi'
 	icon_state = "securitypack"
 	current_skin = "securitypack"	//prevents reskinning
 
 /obj/item/storage/backpack/satchel/sec/redsec
-	icon = 'icons/obj/storage.dmi'
+	icon = 'icons/obj/storage/storage.dmi'
 	worn_icon = 'icons/mob/clothing/back.dmi'
 	icon_state = "satchel-sec"
 
 /obj/item/storage/backpack/duffelbag/sec/redsec
-	icon = 'icons/obj/storage.dmi'
+	icon = 'icons/obj/storage/storage.dmi'
 	worn_icon = 'icons/mob/clothing/back.dmi'
 	icon_state = "duffel-sec"
 	current_skin = "duffel-sec"	//prevents reskinning

@@ -21,7 +21,7 @@
 	build_type = AUTOLATHE
 	build_path = /obj/item/electropack/shockcollar
 	materials = list(/datum/material/iron = 5000, /datum/material/glass =2000)
-	category = list("hacked", "Misc")
+	category = list(RND_CATEGORY_HACKED, RND_CATEGORY_MISC)
 
 /obj/item/electropack/shockcollar/attack_hand(mob/user)
 	if(loc == user && user.get_item_by_slot(ITEM_SLOT_NECK))
@@ -71,7 +71,7 @@
 	else
 		return ..()
 
-/obj/item/electropack/shockcollar/Initialize()
+/obj/item/electropack/shockcollar/Initialize(mapload)
 	if(random)
 		code = rand(1, 100)
 		frequency = rand(MIN_FREE_FREQ, MAX_FREE_FREQ)

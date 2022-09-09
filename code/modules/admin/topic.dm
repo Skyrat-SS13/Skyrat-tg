@@ -92,17 +92,17 @@
 			var/datum/round_event/event = E.runEvent()
 			if(event.cancel_event)
 				return
-			if(event.announceWhen>0)
+			if(event.announce_when>0)
 				event.processing = FALSE
 				var/prompt = tgui_alert(usr, "Would you like to alert the crew?", "Alert", list("Yes", "No", "Cancel"))
 				switch(prompt)
 					if("Yes")
-						event.announceChance = 100
+						event.announce_chance = 100
 					if("Cancel")
 						event.kill()
 						return
 					if("No")
-						event.announceChance = 0
+						event.announce_chance = 0
 				event.processing = TRUE
 			message_admins("[key_name_admin(usr)] has triggered an event. ([E.name])")
 			log_admin("[key_name(usr)] has triggered an event. ([E.name])")
@@ -970,7 +970,7 @@
 			return
 		var/obj/item/new_item = new H.dna.species.species_cookie(H)
 		if(H.put_in_hands(new_item))
-			H.update_inv_hands()
+			H.update_held_items()
 		else
 			qdel(new_item)
 			log_admin("[key_name(H)] has their hands full, so they did not receive their [new_item.name], spawned by [key_name(src.owner)].")
@@ -2017,8 +2017,6 @@
 		if(log_index <= state_to_view.log.len)
 			var/list/log_entry = state_to_view.log[log_index]
 			if(log_entry["chunk"])
-				LAZYINITLIST(editor.tgui_shared_states)
-				editor.tgui_shared_states["viewedChunk"] = json_encode(log_entry["chunk"])
-				editor.tgui_shared_states["modal"] = json_encode("viewChunk")
+				editor.force_view_chunk = log_entry["chunk"]
+				editor.force_modal = "viewChunk"
 		editor.ui_interact(usr)
-		editor.tgui_shared_states = null

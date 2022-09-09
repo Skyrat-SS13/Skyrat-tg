@@ -49,7 +49,7 @@
 	transformed_time = world.time
 	emote("scream")
 
-/mob/living/simple_animal/hostile/true_changeling/Initialize()
+/mob/living/simple_animal/hostile/true_changeling/Initialize(mapload)
 	. = ..()
 	to_chat(src, playstyle_string)
 	turn_to_human = new /datum/action/innate/turn_to_human

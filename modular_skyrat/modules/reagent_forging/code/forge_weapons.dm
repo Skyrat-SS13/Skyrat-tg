@@ -3,7 +3,7 @@
 	lefthand_file = 'modular_skyrat/modules/reagent_forging/icons/mob/forge_weapon_l.dmi'
 	righthand_file = 'modular_skyrat/modules/reagent_forging/icons/mob/forge_weapon_r.dmi'
 
-/obj/item/forging/reagent_weapon/Initialize()
+/obj/item/forging/reagent_weapon/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/reagent_weapon)
 
@@ -115,9 +115,9 @@
 	reach = 2
 	sharpness = SHARP_POINTY
 
-/obj/item/forging/reagent_weapon/spear/ComponentInitialize()
+/obj/item/forging/reagent_weapon/spear/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/two_handed, force_unwielded=10, force_wielded=17) //better than the bone spear
+	AddComponent(/datum/component/two_handed, force_unwielded = 10, force_wielded = 17) //better than the bone spear
 
 /obj/item/forging/reagent_weapon/axe
 	name = "reagent axe"
@@ -156,7 +156,7 @@
 		/obj/structure/reagent_crafting_bench
 	)
 
-/obj/item/forging/reagent_weapon/hammer/Initialize()
+/obj/item/forging/reagent_weapon/hammer/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/kneejerk)
 
@@ -181,7 +181,7 @@
 	max_integrity = 150 //over double that of a wooden one
 	w_class = WEIGHT_CLASS_NORMAL
 
-/obj/item/shield/riot/buckler/reagent_weapon/Initialize()
+/obj/item/shield/riot/buckler/reagent_weapon/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/reagent_weapon)
 
@@ -221,9 +221,9 @@
 	slot_flags = ITEM_SLOT_BACK
 	max_integrity = 300 //tanky
 
-/obj/item/shield/riot/buckler/reagent_weapon/pavise/ComponentInitialize()
+/obj/item/shield/riot/buckler/reagent_weapon/pavise/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/two_handed, require_twohands=TRUE, force_wielded=15)
+	AddComponent(/datum/component/two_handed, require_twohands = TRUE, force_wielded = 15)
 
 /obj/item/pickaxe/reagent_weapon
 	name = "reagent pickaxe"
@@ -293,7 +293,7 @@
 
 #undef INCREASE_BLOCK_CHANGE
 
-/obj/item/forging/reagent_weapon/bokken/Initialize()
+/obj/item/forging/reagent_weapon/bokken/Initialize(mapload)
 	. = ..()
 	RegisterSignal(src, COMSIG_TWOHANDED_WIELD, .proc/on_wield)
 	RegisterSignal(src, COMSIG_TWOHANDED_UNWIELD, .proc/on_unwield)

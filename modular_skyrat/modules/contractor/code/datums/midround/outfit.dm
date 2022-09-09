@@ -9,7 +9,7 @@
 	belt = /obj/item/storage/belt/military
 
 	uniform = /obj/item/clothing/under/syndicate/coldres
-	shoes = /obj/item/clothing/shoes/combat/swat
+	shoes = /obj/item/clothing/shoes/combat
 	gloves = /obj/item/clothing/gloves/combat
 	ears = /obj/item/radio/headset/syndicate/alt
 	l_pocket = /obj/item/modular_computer/tablet/syndicate_contract_uplink/preset/uplink
@@ -18,11 +18,12 @@
 		/obj/item/storage/box/survival/syndie,
 		/obj/item/storage/box/syndicate/contract_kit/midround,
 		/obj/item/knife/combat/survival,
-		/obj/item/pinpointer/crew/contractor
+		/obj/item/pinpointer/crew/contractor,
+		/obj/item/melee/baton/telescopic/contractor_baton,
 	)
 
 	implants = list(
-		/obj/item/implant/uplink/precharged,
+		/obj/item/implant/uplink/precharged/bonus,
 		/obj/item/implant/explosive,
 	)
 

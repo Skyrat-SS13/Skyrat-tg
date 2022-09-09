@@ -342,7 +342,7 @@
 	if(!L.len) //no requirements
 		return TRUE
 
-	if(!istype(I, /obj/item/card/id) && isitem(I))
+	if(!isidcard(I) && isitem(I))
 		I = I.GetID()
 
 	if(!I || !I.access) //not ID or no access

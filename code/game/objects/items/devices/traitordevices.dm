@@ -26,8 +26,8 @@ effective or pretty fucking useless.
 	throw_range = 7
 	flags_1 = CONDUCT_1
 	inhand_icon_state = "electronic"
-	lefthand_file = 'icons/mob/inhands/misc/devices_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/misc/devices_righthand.dmi'
+	lefthand_file = 'icons/mob/inhands/items/devices_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/items/devices_righthand.dmi'
 
 	var/times_used = 0 //Number of times it's been used.
 	var/max_uses = 2
@@ -288,7 +288,7 @@ effective or pretty fucking useless.
 	var/cell_override = /obj/item/stock_parts/cell/bluespace //SKYRAT ADDITION
 
 	//SKYRAT EDIT ADDITION BEGIN
-/obj/item/jammer/ComponentInitialize()
+/obj/item/jammer/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/cell, cell_override, CALLBACK(src, .proc/turn_off))
 

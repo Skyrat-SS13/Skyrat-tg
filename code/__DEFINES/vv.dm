@@ -124,6 +124,8 @@
 
 // /mob/living
 #define VV_HK_GIVE_SPEECH_IMPEDIMENT "impede_speech"
+#define VV_HK_ADD_MOOD "addmood"
+#define VV_HK_REMOVE_MOOD "removemood"
 
 // /mob/living/carbon
 #define VV_HK_MAKE_AI "aiify"
@@ -140,6 +142,7 @@
 #define VV_HK_MOD_QUIRKS "quirkmod"
 #define VV_HK_SET_SPECIES "setspecies"
 #define VV_HK_PURRBATION "purrbation"
+#define VV_HK_SEND_CRYO "send_to_cryo" //SKYRAT EDIT ADDITION - CRYO SEND
 
 // misc
 #define VV_HK_SPACEVINE_PURGE "spacevine_purge"

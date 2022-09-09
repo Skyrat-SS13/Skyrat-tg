@@ -25,7 +25,7 @@
 	w_class = WEIGHT_CLASS_BULKY
 	resistance_flags = FLAMMABLE
 
-/obj/item/storage/belt/bowie_sheath/Initialize()
+/obj/item/storage/belt/bowie_sheath/Initialize(mapload)
 	. = ..()
 	atom_storage.max_slots = 1
 	atom_storage.max_total_storage = WEIGHT_CLASS_BULKY

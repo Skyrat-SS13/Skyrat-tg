@@ -26,7 +26,7 @@
 	desc = "This is the upgraded version of the standard CWM-497 medigun, the battery inside is upgraded to better work with chargers along with having more capacity."
 	cell_type = /obj/item/stock_parts/cell/medigun/upgraded
 
-/obj/item/gun/energy/cell_loaded/medigun/upgraded/Initialize()
+/obj/item/gun/energy/cell_loaded/medigun/upgraded/Initialize(mapload)
 	. = ..()
 	var/mutable_appearance/fastcharge_medigun = mutable_appearance('modular_skyrat/modules/cellguns/icons/obj/guns/mediguns/projectile.dmi', "medigun_fastcharge")
 	add_overlay(fastcharge_medigun)
@@ -40,7 +40,7 @@
 	selfcharge = 1
 	can_charge = FALSE
 
-/obj/item/gun/energy/cell_loaded/medigun/cmo/Initialize()
+/obj/item/gun/energy/cell_loaded/medigun/cmo/Initialize(mapload)
 	. = ..()
 	var/mutable_appearance/cmo_medigun = mutable_appearance('modular_skyrat/modules/cellguns/icons/obj/guns/mediguns/projectile.dmi', "medigun_cmo")
 	add_overlay(cmo_medigun)
@@ -293,7 +293,7 @@
 	from_obj = /obj/item/food/grown/aloe
 	to_obj = /obj/item/weaponcell/medical/utility/salve
 
-/obj/item/device/custom_kit/empty_cell/Initialize()
+/obj/item/device/custom_kit/empty_cell/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/item_scaling, 0.5, 1)
 

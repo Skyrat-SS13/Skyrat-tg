@@ -23,7 +23,7 @@
 /obj/item/kinky_shocker/get_cell()
 	return cell
 
-/obj/item/kinky_shocker/Initialize()
+/obj/item/kinky_shocker/Initialize(mapload)
 	. = ..()
 	update_icon_state()
 	update_icon()
