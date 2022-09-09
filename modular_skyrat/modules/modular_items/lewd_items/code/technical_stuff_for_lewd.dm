@@ -1,5 +1,5 @@
 // Moved from my old interactions file 'cause skyrats already did interactions
-/*
+
 #define REQUIRE_NONE 0
 #define REQUIRE_EXPOSED 1
 #define REQUIRE_UNEXPOSED 2
@@ -797,49 +797,6 @@
 	apply_overlay(PENIS_LAYER)
 	update_mutant_bodyparts()
 
-/*
-// Shoes update extention for supporting correct removing shoe in sleepbag
-/mob/living/carbon/human/update_worn_shoes()
-
-	if(istype(src.wear_suit, /obj/item/clothing/suit/straight_jacket/kinky_sleepbag))
-		remove_overlay(SHOES_LAYER)
-
-		if(dna.species.mutant_bodyparts["taur"])
-			var/datum/sprite_accessory/taur/taur_accessory = GLOB.sprite_accessories["taur"][dna.species.mutant_bodyparts["taur"][MUTANT_INDEX_NAME]]
-			if(taur_accessory.flags_for_organ & SPRITE_ACCESSORY_HIDE_SHOES)
-				return
-
-		if(num_legs<2)
-			return
-
-		if(client && hud_used)
-			var/atom/movable/screen/inventory/inv = hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_FEET) + 1]
-			inv.update_icon()
-
-		if(shoes)
-			shoes.screen_loc = ui_shoes					//move the item to the appropriate screen loc
-			if(client && hud_used && hud_used.hud_shown)
-				if(hud_used.inventory_shown)			//if the inventory is open
-					client.screen += shoes					//add it to client's screen
-			update_observer_view(shoes, 1)
-			var/icon_file = shoes.worn_icon
-			if((shoes.supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION) && (shoes.supports_variations_flags & CLOTHING_DIGITIGRADE_VARIATION))
-				icon_file = shoes.worn_icon_digi || 'modular_skyrat/master_files/icons/mob/clothing/feet_digi.dmi'
-
-			overlays_standing[SHOES_LAYER] = shoes.build_worn_icon(default_layer = SHOES_LAYER, default_icon_file = 'icons/mob/clothing/feet.dmi', override_file = icon_file)
-			var/mutable_appearance/shoes_overlay = overlays_standing[SHOES_LAYER]
-			if(OFFSET_SHOES in dna.species.offset_features)
-				shoes_overlay.pixel_x += dna.species.offset_features[OFFSET_SHOES][1]
-				shoes_overlay.pixel_y += dna.species.offset_features[OFFSET_SHOES][2]
-			overlays_standing[SHOES_LAYER] = shoes_overlay
-
-		// apply_overlay(SHOES_LAYER)
-
-		return
-	else
-		..()
-*/
-
 // Updating vagina hud slot
 /mob/living/carbon/human/update_hud_vagina(obj/item/contained_item)
 	contained_item.screen_loc = ui_vagina
@@ -1234,6 +1191,16 @@ GLOBAL_LIST_INIT(strippable_human_erp_items, create_erp_strippable_list(list(
 	client.mob.hud_used.hidden_inventory_update(client.mob)
 	client.mob.hud_used.persistent_inventory_update(client.mob)
 
+/// If the item this is called in, is in a genital slot of the target
 /obj/item/proc/is_in_genital(mob/living/carbon/human/the_guy)
-	return !!(src == the_guy.penis || src == the_guy.vagina || src == the_guy.anus || src == the_guy.nipples)
-*/
+	return (src == the_guy.penis || src == the_guy.vagina || src == the_guy.anus || src == the_guy.nipples)
+
+/// Used to add a cum decal to the floor while transferring viruses and DNA to it
+/mob/living/proc/add_cum_splatter_floor(turf/the_turf, female = FALSE)
+	if(!the_turf)
+		the_turf = get_turf(src)
+
+	var/selected_type = female ? /obj/effect/decal/cleanable/cum/femcum : /obj/effect/decal/cleanable/cum
+	var/atom/stain = new selected_type(the_turf, get_static_viruses())
+
+	stain.transfer_mob_blood_dna(src) //I'm not adding a new forensics category for cumstains
