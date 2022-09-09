@@ -186,8 +186,8 @@
 	can_toggle = TRUE
 	toggle_cooldown = 0
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION
-	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH | PEPPERPROOF
-	visor_flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH | PEPPERPROOF
+	flags_cover = HEADCOVERSEYES | PEPPERPROOF
+	visor_flags_cover = HEADCOVERSEYES | PEPPERPROOF
 
 //Need to do some fuckery to make sure the mounted light preserves the current visor instead of throwing a fit sprite-wise
 /obj/item/clothing/head/helmet/sec/attack_self(mob/user)

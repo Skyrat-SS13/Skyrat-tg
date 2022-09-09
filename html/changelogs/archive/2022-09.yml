@@ -240,3 +240,159 @@
       an area, making them a more accurate indicator of which area the heretic is
       in.
   - balance: Ghouls now appear dead to health scanners and other detections of life
+2022-09-06:
+  GoldenAlpharex:
+  - qol: There is now a bit more time between events.
+  - bugfix: Blob is now only handled via dynamic, rather than being handled both by
+      dynamic and by the events subsystem.
+  - bugfix: You can no longer use MODsuit modules when your MODsuit isn't fully deployed,
+      unless the modules are intended to be usable when the MODsuit is inactive.
+  - bugfix: Coffee machines are now visible again!
+  Guillaume Prata:
+  - balance: Anyone with wings or a wagging lizard tail will have a small bonus to
+      their tacklling offense/defense.
+  - balance: Moths and lizards that lose their wings/tail will have worse tackling
+      values instead.
+  - balance: Fly people don't take splatting themselves on windows/walls easily and
+      have a higher chance to get a bad result from that.
+  ShizCalev:
+  - bugfix: Admin event spawned blobs will no longer immediately announce when the
+      event is triggered.
+  - bugfix: Admin events which poll candidates from ghosts will no longer announce
+      the event if the event failed to spawn a mob.
+  SkyratBot:
+  - code_imp: Removes a unnecesary function blind_eyes
+  - rscadd: A new kind of anomaly which transforms the area into some other kind of
+      material.
+  - bugfix: Supermatter delaminations can spawn bioscramblers again.
+  - rscadd: You can now send photos or trading cards through the fax machine.
+  - rscadd: You can now hack the wires of a fax machine to have it throw items harder
+      or accept additional flat input items such as material sheets, ID cards, and
+      pizza slices.
+  - qol: Screentips should tell you what using a particular item on a fax machine
+      will do.
+  - bugfix: Fixed runtime when using AmpCheck without connecting the console with
+      a wire.
+  - bugfix: Fixed a few runtimes that could occur when using APC controller consoles.
+  - qol: Sucked soul out of APC controller code and UI.
+  - rscdel: Removed "secret" power monitor console.
+  - qol: techfab tgui now supports old-school bulk sheet ejection
+  - qol: techfab tgui no longer overflows its window if you have six million categories
+  - qol: techfab tgui no longer consumes your screen's free real estate on an unprecedented
+      scale
+  - code_imp: Removes erroneous code from bananium meteor. This should not affect
+      players in any way.
+  - bugfix: An APC and a Television Monitor in MetaStation Engineering Hallway will
+      no longer conflict visually.
+  - bugfix: The shrink ray now spawns with an abductor firing pin instead of a normal
+      one.
+  - balance: Sleeping carp deflects hand spells, CQC reflects hand spells
+  - bugfix: Monkeys can correctly find weapons again
+  - bugfix: fixes infinite locker timer runtiming
+  Stalkeros, Lukaster42:
+  - imageadd: 5.6x40mm finally gets its own sprite.
+  SuperDrish:
+  - rscadd: Oversized can't piggyback ride someone smaller.
+  Vishenka0704:
+  - bugfix: mop can no longer suck liquid further than one tile
+  Vishenka0704 and Ying-The-Pando:
+  - rscadd: Cucumbers and pickles
+  - rscadd: Danish hot dog
+  - balance: add cucumbers in dishes where they need
+  - qol: add to bounty cubes, orders - new vegetables
+  Zonespace27:
+  - bugfix: Bodily fluid now carries DNA of the person who created it
+  ma44:
+  - code_imp: Trader NPCs have been given some needed frontend and backend changes
+  tf-4:
+  - rscdel: Removed deluxe agent IDs.
+  - balance: Regular agent IDs can now hold one addition common-level access and one
+      additional command-level access.
+2022-09-07:
+  Melbert:
+  - qol: Add an examine tip explaining how to fit an explorer gas mask into a box
+  Paxilmaniac:
+  - balance: the default sec helmet (the french riot police looking one that all seccies
+      get in a locker) is no longer hugger proof, use the actual specialized equipment
+      for that
+  SkyratBot:
+  - rscdel: Vampires, Dullahans, and Nightmares can no longer be found in certain
+      magic mirrors.
+  - admin: Added proper logging to antagonist datum removal
+  - bugfix: fixed the cucumber seeds not being in the correct spot in the megaseed
+      list
+  - bugfix: Police hats no longer turn you bald while worn, and no longer act like
+      helmets, since they're caps.
+  - bugfix: scotch and chocolate eggs will no longer appear as errors
+  - rscadd: Tram whiteship now has named airlocks
+  - rscadd: Tram whiteship bridge and crew quarters areas are split, new APCs added
+  - bugfix: no more shuttle engine rotation fuckery on tram whiteship
+  - bugfix: no more firelock fuckery on tram whiteship
+  - code_imp: restrictedinput can now accept negative numbers
+  - bugfix: Xenomorphs can no longer hold any item in the game,
+  - admin: When admins start CTF they can now choose which map is played or choose
+      random as its always been
+  - admin: Admins can no-longer permanently break CTF by unloading the map accidentally
+  - spellcheck: Fixed a typo in the Map Description for CTF Cruiser
+  - bugfix: CTF can now be reloaded after being unloaded
+  Vishenka0704:
+  - bugfix: fix user of xenbio bag on reproductive extract
+  Wallem:
+  - qol: The ORM now has color-coded lights showing which side is the input and output.
+      Blue for input, red for output.
+  tf-4:
+  - bugfix: Operating tables are visible again.
+2022-09-08:
+  Melbert:
+  - bugfix: 'Delta: Engineering, Library Backroom, and Security Hall APCs are wired'
+  - bugfix: 'Delta: Armory camera is no longer on a windoor, and outside armory camera
+      is back'
+  - bugfix: 'Delta: Genetics has a corrected clothes vendor'
+  - qol: 'Delta: Moved the engineering fax machine to a less in-the-way-place (break
+      room)'
+  SkyratBot:
+  - rscadd: hilbert research facility airlocks have names now
+  - rscadd: Kilo whiteship now has bangin donks, bolt button, and its bridge now has
+      atmospherics systems.
+  - bugfix: Kilo whiteship crew quarters air alarm now exists, meaning that vents
+      won't be fucky
+  - bugfix: Kilo whiteship engine APC is rewired
+2022-09-09:
+  Kubisopplay:
+  - balance: Turns borer lethality down a bit
+  Melbert:
+  - rscadd: Revenants have a new spell available. Haunt Object, it allows them to
+      cause nearby loose items to lift off the ground and start attacking people!
+      The objects will return to peace after a few minutes, or if someone dispels
+      them with a null rod or bible.
+  ShizCalev:
+  - bugfix: Fixed a runtime when all alive players are converted to cultists that
+      prevented them from getting their cool halo/eye effects.
+  - bugfix: Fixed a runtime preventing nonhuman cadavers from spawning properly.
+  - config: Cadaver spawners will no longer yell at you when morgue_cadaver_other_species_probability
+      is blank.
+  - config: morgue_cadaver_disable_nonhumans will now properly disable nonhuman races!
+      (It was reversed, woops.)
+  SkyratBot:
+  - bugfix: fixed a bug causing the process of slicing food to erase most of the food's
+      reagents
+  - rscadd: Mimes can now hold a baguette like a sword by right clicking it
+  - balance: Xenomorph abilities require being mobile to use.
+  - balance: Neurotoxin spit can no longer be used if you're muzzled.
+  - bugfix: Hey, we support byond version 514.1587 now. You can upgrade if you'd like.
+      I hope.
+  - qol: techfabs, protolathes, circuit imprinters, and exosuit fabricators now automatically
+      r&d sync
+  - qol: the full window refresh time is now one second instead of five seconds
+  - bugfix: refreshing windows ("please wait...") no longer hang for up to twice as
+      long as they should
+  Vishenka0704:
+  - rscadd: add option to enable/disable ticket ping in server config
+  - bugfix: oppfor and ticket ping now works
+  - admin: add send to cryo function in vv dropdown list
+  - rscadd: Added "ProcCall" & "Tweak Components Rating" modes in buildmode
+  itseasytosee:
+  - spellcheck: Fixed a typo in monkey trip toggling.
+  tf-4:
+  - balance: Revenants' defile ability no longer breaks windows, only damaging it
+      until nearly broken. The damage dealt to windows has also been slightly lowered.

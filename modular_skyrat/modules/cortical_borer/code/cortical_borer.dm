@@ -106,11 +106,10 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 										/datum/reagent/medicine/inacusiate,
 										/datum/reagent/medicine/oculine,
 										/datum/reagent/toxin/mindbreaker,
+										/datum/reagent/medicine/mannitol,
 	)
 	//blacklisted chemicals - separate from chemicals that cannot be synthesized, borers specifically cannot learn these
-	var/list/blacklisted_chemicals = list(/datum/reagent/medicine/mannitol,
-										/datum/reagent/medicine/neurine,
-	)
+	var/list/blacklisted_chemicals = list() //currently may be empty, but leaving the mechanism just in case
 	///how old the borer is, starting from zero. Goes up only when inside a host
 	var/maturity_age = 0
 	///the amount of "evolution" points a borer has for chemicals. Start with one
