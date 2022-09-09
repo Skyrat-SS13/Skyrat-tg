@@ -149,6 +149,10 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	name = "Leather Coat"
 	item_path = /obj/item/clothing/suit/jacket/leather/overcoat
 
+/datum/loadout_item/suit/ethereal_raincoat
+	name = "Ethereal Raincoat"
+	item_path = /obj/item/clothing/suit/hooded/ethereal_raincoat
+
 /*
 *	LETTERMAN
 */
