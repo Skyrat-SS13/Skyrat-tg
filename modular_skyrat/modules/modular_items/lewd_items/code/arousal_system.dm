@@ -463,8 +463,6 @@
 
 						if(!target_human.wear_mask)
 							target_buttons += "mouth"
-							if(target_human.client?.prefs.read_preference(/datum/preference/toggle/erp/cum_face))
-								target_buttons += "face"
 
 						if(target_vagina && target_vagina?.is_exposed())
 							target_buttons += "vagina"
@@ -487,9 +485,6 @@
 							create_cum_decal = TRUE
 							visible_message(span_userlove("[src] shoots their sticky load onto the [target_human]!"), \
 								span_userlove("You shoot string after string of hot cum onto [target_human]!"))
-						else if(climax_into_choice == "face")
-							visible_message(span_userlove("[src] shoots their sticky load onto [target_human]'s face!"), \
-								span_userlove("You shoot string after string of hot cum onto [target_human]'s face!"))
 						else
 							visible_message(span_userlove("[src] hilts [p_their()] cock into [target_human]'s [climax_into_choice], shooting cum into it!"), \
 								span_userlove("You hilt your cock into [target_human]'s [climax_into_choice], shooting cum into it!"))
@@ -553,7 +548,7 @@
 	duration = 50 //Multiplayer better than singleplayer mode.
 	alert_type = null
 
-/datum/status_effect/masturbation_climax/tick() //this one should not leave decals on the floor. Used in case if character cumming on somebody's face or in beaker.
+/datum/status_effect/masturbation_climax/tick() //this one should not leave decals on the floor. Used in case if character cumming in beaker.
 	var/mob/living/carbon/human/affected_mob = owner
 	if(affected_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 		var/temp_arousal = -12
@@ -805,9 +800,6 @@
 		return
 	var/mob/living/carbon/human/human_cumvictim = target
 	if(!human_cumvictim.client)
-		to_chat(user, span_warning("You can't cum onto [target]."))
-		return
-	if(!(human_cumvictim.client.prefs.read_preference(/datum/preference/toggle/erp/cum_face))) // I'm just paranoid about runtime errors
 		to_chat(user, span_warning("You can't cum onto [target]."))
 		return
 	var/mob/living/carbon/human/affected_human = user
