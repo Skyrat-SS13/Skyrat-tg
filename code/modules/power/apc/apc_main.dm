@@ -558,6 +558,8 @@
 			charging = APC_NOT_CHARGING
 			chargecount = 0
 
+		process_arc(excess)// SKYRAT EDIT ADD - APC ARCING
+
 	else // no cell, switch everything off
 
 		charging = APC_NOT_CHARGING
