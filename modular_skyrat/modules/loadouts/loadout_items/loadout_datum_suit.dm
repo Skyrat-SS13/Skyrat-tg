@@ -639,10 +639,6 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	name = "Soviet Coat"
 	item_path = /obj/item/clothing/suit/costume/soviet
 
-/datum/loadout_item/suit/allies
-	name = "Allies Coat"
-	item_path = /obj/item/clothing/suit/costume/allies
-
 /datum/loadout_item/suit/yuri
 	name = "Yuri Coat"
 	item_path = /obj/item/clothing/suit/costume/yuri

@@ -109,9 +109,6 @@
 /obj/item/clothing/suit/jacket/fancy
 	supports_variations_flags = NONE
 
-/obj/item/clothing/suit/costume/allies
-	supports_variations_flags = NONE
-
 /obj/item/clothing/suit/costume/soviet
 	supports_variations_flags = NONE
 
