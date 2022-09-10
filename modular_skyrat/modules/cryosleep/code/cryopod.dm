@@ -157,6 +157,8 @@ GLOBAL_LIST_EMPTY(valid_cryopods)
 	/// if false, plays announcement on cryo
 	var/quiet = FALSE
 
+	/// Has the occupant been tucked in?
+	var/tucked = FALSE
 
 /obj/machinery/cryopod/quiet
 	quiet = TRUE
@@ -364,6 +366,7 @@ GLOBAL_LIST_EMPTY(valid_cryopods)
 	QDEL_NULL(occupant)
 	open_machine()
 	name = initial(name)
+	tucked = FALSE
 
 /obj/machinery/cryopod/MouseDrop_T(mob/living/target, mob/user)
 	if(!istype(target) || !can_interact(user) || !target.Adjacent(user) || !ismob(target) || isanimal(target) || !istype(user.loc, /turf) || target.buckled)
@@ -464,9 +467,13 @@ GLOBAL_LIST_EMPTY(valid_cryopods)
 	if(istype(weapon, /obj/item/bedsheet))
 		if(!occupant || !istype(occupant, /mob/living))
 			return
+		if(tucked)
+			to_chat(user, span_warning("[occupant.name] already looks pretty comfortable!"))
+			return
 		to_chat(user, span_notice("You tuck [occupant.name] into their pod!"))
 		qdel(weapon)
 		user.add_mood_event("tucked", /datum/mood_event/tucked_in, occupant)
+		tucked = TRUE
 
 // Wake-up notifications
 
