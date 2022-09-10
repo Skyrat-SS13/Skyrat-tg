@@ -412,28 +412,135 @@
 	icon_file = 'modular_skyrat/modules/GAGS/icons/jumpsuit_teshari.dmi'
 
 // PANTS / SHORTS
+//Note, these icons are now in master_files per TG's sorting. There's no reason to NOT have these pieces in master files now that they're sorted out.
+//The rest will eventually join them - preferably with a cleaner method too instead of having to have unique configs for every single item's digi state.
+
+/datum/greyscale_config/buttondown_slacks_worn/digi
+	name = "Worn Buttondown with Slacks - Digitigrade"
+	icon_file = SHORTS_PANTS_SHIRTS_DIGIFILE
+
+/datum/greyscale_config/buttondown_shorts_worn/digi
+	name = "Worn Buttondown with Shorts - Digitigrade"
+	icon_file = SHORTS_PANTS_SHIRTS_DIGIFILE
 
 /datum/greyscale_config/slacks_worn/digi
 	name = "Worn Slacks - Digitigrade"
-	icon_file = 'modular_skyrat/modules/GAGS/icons/shorts_pants.dmi'
+	icon_file = SHORTS_PANTS_SHIRTS_DIGIFILE
 
 /datum/greyscale_config/jeans_worn/digi
 	name = "Worn Jeans - Digitigrade"
-	icon_file = 'modular_skyrat/modules/GAGS/icons/shorts_pants.dmi'
+	icon_file = SHORTS_PANTS_SHIRTS_DIGIFILE
 
 /datum/greyscale_config/shorts_worn/digi
 	name = "Worn Shorts - Digitigrade"
-	icon_file = 'modular_skyrat/modules/GAGS/icons/shorts_pants.dmi'
+	icon_file = SHORTS_PANTS_SHIRTS_DIGIFILE
 
 /datum/greyscale_config/jeanshorts_worn/digi
 	name = "Worn Jean Shorts - Digitigrade"
-	icon_file = 'modular_skyrat/modules/GAGS/icons/shorts_pants.dmi'
+	icon_file = SHORTS_PANTS_SHIRTS_DIGIFILE
+
+/datum/greyscale_config/shorts_ripped
+	name = "Ripped Shorts"
+	icon_file = 'modular_skyrat/master_files/icons/obj/clothing/under/shorts_pants_shirts.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/pants_shorts_skirts_dresses/shorts_ripped.json'
+
+/datum/greyscale_config/shorts_ripped/worn //TG will hopefully start having worn as a subtype, it means only needing 1 .json
+	name = "Worn Ripped Shorts"
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/shorts_pants_shirts.dmi'
+
+/datum/greyscale_config/shorts_ripped/worn/digi
+	name = "Worn Ripped Shorts - Digitigrade"
+	icon_file = SHORTS_PANTS_SHIRTS_DIGIFILE
+
+/datum/greyscale_config/jeans_ripped
+	name = "Ripped Jeans"
+	icon_file = 'modular_skyrat/master_files/icons/obj/clothing/under/shorts_pants_shirts.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/pants_shorts_skirts_dresses/jeans_ripped.json'
+
+/datum/greyscale_config/jeans_ripped/worn
+	name = "Worn Ripped Jeans"
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/shorts_pants_shirts.dmi'
+
+/datum/greyscale_config/jeans_ripped/worn/digi
+	name = "Worn Ripped Jeans - Digitigrade"
+	icon_file = SHORTS_PANTS_SHIRTS_DIGIFILE
+
+/datum/greyscale_config/yoga_pants
+	name = "Yoga Pants"
+	icon_file = 'modular_skyrat/master_files/icons/obj/clothing/under/shorts_pants_shirts.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/pants_shorts_skirts_dresses/yoga_pants.json'
+
+/datum/greyscale_config/yoga_pants/worn
+	name = "Worn Yoga Pants"
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/shorts_pants_shirts.dmi'
+
+/datum/greyscale_config/yoga_pants/worn/digi
+	name = "Worn Yoga Pants - Digitigrade"
+	icon_file = SHORTS_PANTS_SHIRTS_DIGIFILE
 
 // DRESSES / SKIRTS
 
 /datum/greyscale_config/plaidskirt_worn/digi
 	name = "Worn Plaid Skirt - Digitigrade"
-	icon_file = 'modular_skyrat/modules/GAGS/icons/dress.dmi'
+	icon_file = SKIRTS_DRESSES_DIGIFILE
+
+/datum/greyscale_config/lone_skirt
+	name = "Skirt"
+	icon_file = 'modular_skyrat/master_files/icons/obj/clothing/under/skirts_dresses.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/pants_shorts_skirts_dresses/lone_skirt.json'
+
+/datum/greyscale_config/lone_skirt/worn
+	name = "Worn Skirt"
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/skirts_dresses.dmi'
+
+/datum/greyscale_config/turtleskirt_knit
+	name = "Cableknit Skirtleneck"
+	icon_file = 'modular_skyrat/master_files/icons/obj/clothing/under/skirts_dresses.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/pants_shorts_skirts_dresses/turtleskirt_knit.json'
+
+/datum/greyscale_config/turtleskirt_knit/worn
+	name = "Worn Cableknit Skirtleneck"
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/skirts_dresses.dmi'
+
+/datum/greyscale_config/jean_skirt
+	name = "Jean Skirt"
+	icon_file = 'modular_skyrat/master_files/icons/obj/clothing/under/skirts_dresses.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/pants_shorts_skirts_dresses/jean_skirt.json'
+
+/datum/greyscale_config/jean_skirt/worn
+	name = "Worn Jean Skirt"
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/skirts_dresses.dmi'
+
+/datum/greyscale_config/jean_skirt/worn/digi
+	name = "Worn Jean Skirt - Digitigrade"
+	icon_file = SKIRTS_DRESSES_DIGIFILE
+
+/datum/greyscale_config/short_dress
+	name = "Short Dress"
+	icon_file = 'modular_skyrat/master_files/icons/obj/clothing/under/skirts_dresses.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/pants_shorts_skirts_dresses/short_dress.json'
+
+/datum/greyscale_config/short_dress/worn
+	name = "Worn Short Dress"
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/skirts_dresses.dmi'
+
+/datum/greyscale_config/strapless_dress
+	name = "Strapless Dress"
+	icon_file = 'modular_skyrat/master_files/icons/obj/clothing/under/skirts_dresses.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/pants_shorts_skirts_dresses/strapless_dress.json'
+
+/datum/greyscale_config/strapless_dress/worn
+	name = "Worn Strapless Dress"
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/skirts_dresses.dmi'
+
+/datum/greyscale_config/pentagram_dress
+	name = "Pentagram Strapped Dress"
+	icon_file = 'modular_skyrat/master_files/icons/obj/clothing/under/skirts_dresses.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/pants_shorts_skirts_dresses/pentagram_dress.json'
+
+/datum/greyscale_config/pentagram_dress/worn
+	name = "Worn Pentagram Strapped Dress"
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/skirts_dresses.dmi'
 
 // COSTUMES
 

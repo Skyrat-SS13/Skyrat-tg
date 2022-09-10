@@ -58,16 +58,6 @@
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 	flags_inv = HIDESHOES
 
-/obj/item/clothing/under/misc/formaldressred
-	name = "formal red dress"
-	desc = "Not too wide flowing, but big enough to make an impression."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "formalred_s"
-	body_parts_covered = CHEST|GROIN|LEGS|ARMS
-	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
-	flags_inv = HIDESHOES
-
 /obj/item/clothing/under/misc/peakyblinder
 	name = "birmingham bling"
 	desc = "A grey suit with a white vest, maybe you run a whiskey plant, maybe you have a frenemy relationship with that guy out of that one film, whatever it is, it's still a nice looking suit."
