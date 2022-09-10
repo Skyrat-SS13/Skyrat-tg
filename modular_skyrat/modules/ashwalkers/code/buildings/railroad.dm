@@ -119,7 +119,14 @@
 		if(GetComponent(/datum/component/simple_farm) || !use_item.use(10))
 			return ..()
 		AddComponent(/datum/component/simple_farm, TRUE, TRUE, list(0, 16))
+		RemoveElement(/datum/element/ridable)
 		return
+
+	if(attacking_item.tool_behaviour == TOOL_SHOVEL)
+		var/datum/component/remove_component = GetComponent(/datum/component/simple_farm)
+		if(remove_component)
+			qdel(remove_component)
+		AddElement(/datum/element/ridable, /datum/component/riding/vehicle/rail_cart)
 	return ..()
 
 /// searches the cardinal directions to add this cart to another cart's trailer
