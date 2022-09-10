@@ -59,7 +59,7 @@ Essentially, power cells that malfunction if not used in an MCR, and should only
 		return
 	return ..()
 
-/obj/item/stock_parts/cell/microfusion/attack_hand(mob/user, list/modifiers)
+/obj/item/stock_parts/cell/microfusion/attack_self(mob/user)
 	if(charge)
 		cell_removal_discharge()
 	return ..()
