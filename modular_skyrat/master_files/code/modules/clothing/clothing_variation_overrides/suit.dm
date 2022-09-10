@@ -112,13 +112,10 @@
 /obj/item/clothing/suit/costume/deckers
 	supports_variations_flags = NONE
 
-/obj/item/clothing/suit/costume/morningstar
+/obj/item/clothing/suit/jacket/oversized
 	supports_variations_flags = NONE
 
 /obj/item/clothing/suit/costume/saints
-	supports_variations_flags = NONE
-
-/obj/item/clothing/suit/costume/phantom
 	supports_variations_flags = NONE
 
 /obj/item/clothing/suit/costume/allies

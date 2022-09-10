@@ -153,6 +153,10 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	name = "Recolorable Sweater Jacket"
 	item_path = /obj/item/clothing/suit/toggle/jacket/sweater
 
+/datum/loadout_item/suit/jacket_oversized
+	name = "Recolorable Oversized Jacket"
+	item_path = /obj/item/clothing/suit/jacket/oversized
+
 /datum/loadout_item/suit/ethereal_raincoat
 	name = "Ethereal Raincoat"
 	item_path = /obj/item/clothing/suit/hooded/ethereal_raincoat
@@ -631,17 +635,9 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	name = "Deckers Coat"
 	item_path = /obj/item/clothing/suit/costume/deckers
 
-/datum/loadout_item/suit/morningstar
-	name = "Morningstar Coat"
-	item_path = /obj/item/clothing/suit/costume/morningstar
-
 /datum/loadout_item/suit/saints
 	name = "Saints Coat"
 	item_path = /obj/item/clothing/suit/costume/saints
-
-/datum/loadout_item/suit/phantom
-	name = "Phantom Coat"
-	item_path = /obj/item/clothing/suit/costume/phantom
 
 /datum/loadout_item/suit/sybil
 	name = "Sybil Coat"
