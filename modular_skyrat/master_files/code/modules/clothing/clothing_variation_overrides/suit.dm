@@ -127,10 +127,7 @@
 /obj/item/clothing/suit/costume/yuri
 	supports_variations_flags = NONE
 
-/obj/item/clothing/suit/costume/sybil_slickers
-	supports_variations_flags = NONE
-
-/obj/item/clothing/suit/costume/basil_boys
+/obj/item/clothing/suit/costume/football_armor
 	supports_variations_flags = NONE
 
 /obj/item/clothing/suit/security
