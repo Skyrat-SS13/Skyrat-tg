@@ -115,7 +115,7 @@
 /obj/item/clothing/suit/jacket/oversized
 	supports_variations_flags = NONE
 
-/obj/item/clothing/suit/costume/saints
+/obj/item/clothing/suit/jacket/fancy
 	supports_variations_flags = NONE
 
 /obj/item/clothing/suit/costume/allies

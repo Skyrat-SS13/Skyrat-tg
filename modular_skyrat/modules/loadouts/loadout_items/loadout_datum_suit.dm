@@ -157,6 +157,10 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	name = "Recolorable Oversized Jacket"
 	item_path = /obj/item/clothing/suit/jacket/oversized
 
+/datum/loadout_item/suit/jacket_fancy
+	name = "Recolorable Fancy Fur Coat"
+	item_path = /obj/item/clothing/suit/jacket/fancy
+
 /datum/loadout_item/suit/ethereal_raincoat
 	name = "Ethereal Raincoat"
 	item_path = /obj/item/clothing/suit/hooded/ethereal_raincoat
@@ -634,10 +638,6 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 /datum/loadout_item/suit/deckers
 	name = "Deckers Coat"
 	item_path = /obj/item/clothing/suit/costume/deckers
-
-/datum/loadout_item/suit/saints
-	name = "Saints Coat"
-	item_path = /obj/item/clothing/suit/costume/saints
 
 /datum/loadout_item/suit/sybil
 	name = "Sybil Coat"
