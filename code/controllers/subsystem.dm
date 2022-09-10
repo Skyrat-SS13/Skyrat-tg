@@ -255,14 +255,18 @@
 /datum/controller/subsystem/proc/OnConfigLoad()
 
 //used to initialize the subsystem AFTER the map has loaded
-/datum/controller/subsystem/Initialize(start_timeofday)
+/datum/controller/subsystem/Initialize()
 	initialized = TRUE
-	SEND_SIGNAL(src, COMSIG_SUBSYSTEM_POST_INITIALIZE, start_timeofday)
-	var/time = (REALTIMEOFDAY - start_timeofday) / 10
-	var/msg = "Initialized [name] subsystem within [time] second[time == 1 ? "" : "s"]!"
-	add_startup_message(msg) //SKYRAT EDIT CHANGE
+	SEND_SIGNAL(src, COMSIG_SUBSYSTEM_POST_INITIALIZE)
+
+	var/time = rustg_time_milliseconds(SS_INIT_TIMER_KEY)
+	var/seconds = round(time / 1000, 0.01)
+
+	var/msg = "Initialized [name] subsystem within [seconds] second[seconds == 1 ? "" : "s"]!"
+	add_startup_message(msg) //SKYRAT EDIT CHANGE - ORIGINAL: to_chat(world, span_boldannounce("[msg]"))
 	log_world(msg)
-	return time
+	SSblackbox.record_feedback("tally", "subsystem_initialize", time, name)
+	return seconds
 
 /datum/controller/subsystem/stat_entry(msg)
 	if(can_fire && !(SS_NO_FIRE & flags) && init_stage <= Master.init_stage_completed)

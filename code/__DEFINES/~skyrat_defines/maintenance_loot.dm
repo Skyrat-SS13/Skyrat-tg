@@ -22,6 +22,3 @@
 #define MAINT_ODD_WEIGHT 1 //1 out of 10,000 would give metastation (180 spawns) a 2 in 111 chance of spawning an oddity per round, similar to xeno egg.
 #define MAINT_HOLIDAY_WEIGHT 3500 // When holiday loot is enabled, it'll give every loot item a 25% chance of being a holiday item.
 #define maint_holiday_weight MAINT_HOLIDAY_WEIGHT
-
-// List of all maintenance loot spawners, for easy finding at roundstart.
-GLOBAL_LIST_EMPTY(maintenance_loot_spawners)
