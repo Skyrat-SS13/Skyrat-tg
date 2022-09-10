@@ -212,6 +212,7 @@ GLOBAL_LIST_EMPTY(valid_cryopods)
 	icon_state = "cryopod-open"
 	set_density(TRUE)
 	name = initial(name)
+	tucked = FALSE
 
 /obj/machinery/cryopod/container_resist_act(mob/living/user)
 	visible_message(span_notice("[occupant] emerges from [src]!"),
@@ -366,7 +367,6 @@ GLOBAL_LIST_EMPTY(valid_cryopods)
 	QDEL_NULL(occupant)
 	open_machine()
 	name = initial(name)
-	tucked = FALSE
 
 /obj/machinery/cryopod/MouseDrop_T(mob/living/target, mob/user)
 	if(!istype(target) || !can_interact(user) || !target.Adjacent(user) || !ismob(target) || isanimal(target) || !istype(user.loc, /turf) || target.buckled)
