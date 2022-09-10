@@ -81,7 +81,7 @@
 	if(stored_products.len)
 		var/pill_amount = 0
 		for(var/thing in loc)
-			if(!istype(thing, /obj/item/reagent_containers/cup/bottle) && !istype(thing, /obj/item/reagent_containers/pill))
+			if(!istype(thing, /obj/item/reagent_containers/cup/bottle) && !istype(thing, /obj/item/reagent_containers/pill) && !istype(thing, /obj/item/reagent_containers/cup/vial/small)) //SKYRAT EDIT
 				continue
 			pill_amount++
 			if(pill_amount >= max_floor_products) //too much so just stop
