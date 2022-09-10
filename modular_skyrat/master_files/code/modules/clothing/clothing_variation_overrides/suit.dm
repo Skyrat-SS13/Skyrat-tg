@@ -94,15 +94,6 @@
  * Clothing that does not have a digitigrade version, and thus will squash legs to fit.
  */
 
-/obj/item/clothing/suit/costume/yakuza
-	supports_variations_flags = NONE
-
-/obj/item/clothing/suit/costume/dutch
-	supports_variations_flags = NONE
-
-/obj/item/clothing/suit/costume/irs
-	supports_variations_flags = NONE
-
 /obj/item/clothing/suit/costume/tmc
 	supports_variations_flags = NONE
 

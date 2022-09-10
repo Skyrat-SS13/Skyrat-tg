@@ -391,10 +391,6 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	name = "Caretaker Jacket"
 	item_path = /obj/item/clothing/suit/victoriantailcoatbutler
 
-/datum/loadout_item/suit/yakuzajacket
-	name = "Asian Jacket"
-	item_path = /obj/item/clothing/suit/costume/yakuza
-
 /datum/loadout_item/suit/jacketbomber_alt
 	name = "Bomber Jacket w/ Zipper"
 	item_path = /obj/item/clothing/suit/toggle/jacket
