@@ -459,6 +459,15 @@ GLOBAL_LIST_EMPTY(valid_cryopods)
 /obj/machinery/cryopod/blob_act()
 	return // Sorta gamey, but we don't really want these to be destroyed.
 
+/obj/machinery/cryopod/attackby(obj/item/weapon, mob/living/carbon/human/user, params)
+	. = ..()
+	if(istype(weapon, /obj/item/bedsheet))
+		if(!occupant || !istype(occupant, /mob/living))
+			return
+		to_chat(user, span_notice("You tuck [occupant.name] into their pod!"))
+		qdel(weapon)
+		user.add_mood_event("tucked", /datum/mood_event/tucked_in, occupant)
+
 // Wake-up notifications
 
 /obj/effect/mob_spawn/ghost_role
