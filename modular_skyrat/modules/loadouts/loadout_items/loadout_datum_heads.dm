@@ -632,8 +632,8 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 	item_path = /obj/item/clothing/head/morningstar
 
 /datum/loadout_item/head/saints
-	name = "Saints Hat"
-	item_path = /obj/item/clothing/head/saints
+	name = "Fancy Hat"
+	item_path = /obj/item/clothing/head/fancy
 
 /datum/loadout_item/head/sybil
 	name = "Sybil Hat"

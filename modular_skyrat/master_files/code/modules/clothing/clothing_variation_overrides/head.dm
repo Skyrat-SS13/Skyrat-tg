@@ -191,7 +191,7 @@
 /obj/item/clothing/head/morningstar
 	supports_variations_flags = NONE
 
-/obj/item/clothing/head/saints
+/obj/item/clothing/head/fancy
 	supports_variations_flags = NONE
 
 /obj/item/clothing/head/allies
