@@ -627,10 +627,6 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	name = "PG Coat"
 	item_path = /obj/item/clothing/suit/costume/pg
 
-/datum/loadout_item/suit/driscoll
-	name = "Driscoll Coat"
-	item_path = /obj/item/clothing/suit/costume/driscoll
-
 /datum/loadout_item/suit/deckers
 	name = "Deckers Coat"
 	item_path = /obj/item/clothing/suit/costume/deckers
