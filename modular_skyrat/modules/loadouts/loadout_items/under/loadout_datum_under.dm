@@ -208,10 +208,6 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	item_path = /obj/item/clothing/under/rank/captain/skyrat/utility
 	restricted_roles = list(JOB_CAPTAIN, JOB_HEAD_OF_PERSONNEL, JOB_BLUESHIELD, JOB_HEAD_OF_SECURITY, JOB_RESEARCH_DIRECTOR, JOB_QUARTERMASTER, JOB_CHIEF_MEDICAL_OFFICER, JOB_CHIEF_ENGINEER)
 
-/datum/loadout_item/under/jumpsuit/polysweater
-	name = "Polychromic Sweater"
-	item_path = /obj/item/clothing/under/misc/polysweater
-
 /*
 *	MISC UNDERSUITS
 */
@@ -491,7 +487,7 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	item_path = /obj/item/clothing/under/costume/villain
 
 /datum/loadout_item/under/miscellaneous/sweater
-	name = "Sweater"
+	name = "Cableknit Sweater" //Different than the Suit item ("Sweater")!!
 	item_path = /obj/item/clothing/under/sweater
 
 /datum/loadout_item/under/miscellaneous/keyhole
