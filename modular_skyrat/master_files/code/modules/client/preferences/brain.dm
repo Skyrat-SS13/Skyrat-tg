@@ -16,7 +16,8 @@
 
 	var/obj/item/organ/internal/brain/new_brain = prefs_get_brain_to_use(value)
 
-	if(!new_brain)
+	var/obj/old_brain = target.getorganslot(ORGAN_SLOT_BRAIN)
+	if(!new_brain || new_brain == old_brain.type)
 		return
 
 	new_brain = new new_brain()

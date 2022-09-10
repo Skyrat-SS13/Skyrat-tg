@@ -36,7 +36,7 @@
 /proc/prefs_get_brain_to_use(value, is_cyborg = FALSE)
 	switch(value)
 		if(ORGAN_PREF_POSI_BRAIN)
-			return is_cyborg ? /obj/item/mmi/posibrain : null
+			return is_cyborg ? /obj/item/mmi/posibrain : /obj/item/organ/internal/brain/ipc_positron
 		if(ORGAN_PREF_MMI_BRAIN)
 			return is_cyborg ? /obj/item/mmi : /obj/item/organ/internal/brain/ipc_positron/mmi
 		if(ORGAN_PREF_CIRCUIT_BRAIN)
@@ -50,7 +50,7 @@
 /// Sets the MMI type for a cyborg, if applicable.
 /mob/living/silicon/robot/proc/update_brain_type()
 	var/obj/item/mmi/new_mmi = prefs_get_brain_to_use(client?.prefs?.read_preference(/datum/preference/choiced/brain_type), TRUE)
-	if(!new_mmi)
+	if(!new_mmi || new_mmi == mmi.type)
 		return
 	new_mmi = new new_mmi()
 
