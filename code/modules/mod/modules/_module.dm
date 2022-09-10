@@ -99,6 +99,14 @@
 	if(((!mod.active || mod.activating) && !allowed_inactive) || !mod.get_charge()) //SKYRAT ADDITION: INACTIVE USE
 		balloon_alert(mod.wearer, "unpowered!")
 		return FALSE
+	// SKYRAT EDIT START - No using modules when not all parts are deployed.
+	if(!allowed_inactive)
+		for(var/obj/item/part as anything in mod.mod_parts)
+			if(part.loc == mod)
+				balloon_alert(mod.wearer, "deploy all parts first!")
+				return FALSE
+	// SKYRAT EDIT END
+
 	if(!allowed_in_phaseout && istype(mod.wearer.loc, /obj/effect/dummy/phased_mob))
 		//specifically a to_chat because the user is phased out.
 		to_chat(mod.wearer, span_warning("You cannot activate this right now."))

@@ -119,14 +119,6 @@
 	item_type = /obj/item/card/id/advanced/chameleon
 	description = "A highly advanced chameleon ID card. Touch this card on another ID card or player to choose which accesses to copy. Has special magnetic properties which force it to the front of wallets."
 
-/datum/opposing_force_equipment/gear/agentcarddeluxe
-	name = "Deluxe Agent Identification Card"
-	item_type = /obj/item/card/id/advanced/chameleon/black
-	description = "Created by Cybersun Industries to be the ultimate for field operations, this upgraded Agent ID \
-	comes with all the fluff of the original, but with an upgraded microchip - allowing for the storage of all \
-	standard Nanotrasen access codes in one conveinent package. Now in glossy olive by default!"
-	admin_note = "Has no limit on how many accesses it can store."
-
 /datum/opposing_force_equipment/gear/chameleonheadsetdeluxe
 	name = "Advanced Chameleon Headset"
 	item_type = /obj/item/radio/headset/chameleon/advanced
