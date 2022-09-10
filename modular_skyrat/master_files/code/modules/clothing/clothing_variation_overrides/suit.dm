@@ -103,9 +103,6 @@
 /obj/item/clothing/suit/costume/irs
 	supports_variations_flags = NONE
 
-/obj/item/clothing/suit/costume/osi
-	supports_variations_flags = NONE
-
 /obj/item/clothing/suit/costume/tmc
 	supports_variations_flags = NONE
 
