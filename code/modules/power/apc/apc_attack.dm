@@ -167,20 +167,6 @@
 		wires.interact(user)
 		return
 
-	// SKYRAT EDIT ADD START - APC ARCING
-	else if(istype(attacking_object, /obj/item/stack/sheet/bronze) && panel_open)
-		if(arc_shielded)
-			balloon_alert(user, "already arc shielded!")
-			return
-		else
-			var/obj/item/stack/sheet/bronze/bronze = attacking_object
-			bronze.use(1)
-			balloon_alert(user, "installed arc shielding")
-			arc_shielded = TRUE
-			playsound(src, 'sound/items/rped.ogg', 20)
-			return
-	// SKYRAT EDIT ADD END - APC ARCING
-
 	return ..()
 
 /obj/machinery/power/apc/attack_hand_secondary(mob/user, list/modifiers)

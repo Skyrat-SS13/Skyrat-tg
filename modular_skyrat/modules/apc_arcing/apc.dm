@@ -2,20 +2,21 @@
 	/// Has the APC been protected against arcing?
 	var/arc_shielded = FALSE
 
-/obj/machinery/power/apc/wrench_act(mob/living/user, obj/item/tool)
+/obj/machinery/power/apc/examine()
 	. = ..()
-	if(panel_open && arc_shielded)
-		balloon_alert(user, "arc shielding removed")
-		arc_shielded = FALSE
-		tool.play_tool_sound(src, 50)
+	. += "It [arc_shielded ? "has" : "does not have"] arc shielding installed."
+	if(panel_open)
+		if(arc_shielded)
+			. += "The arc shielding could be removed with a <b>wrench</b>."
+		else
+			. += "It could be arc shielded with a <b>sheet of bronze</b>."
 
-/**
- * Handles all arcing of the APC
- * Checks whether the excess power in the grid is above any of the thresholds
- * Zaps people if it is
- */
-/obj/machinery/power/apc/proc/process_arc(excess)
-	if(!excess >= APC_ARC_LOWERLIMIT || arc_shielded)
+/obj/machinery/power/apc/process()
+	. = ..()
+	var/excess = surplus()
+	if(!cell || shorted)
+		return
+	if(!(excess >= APC_ARC_LOWERLIMIT) || arc_shielded)
 		return
 	var/shock_chance = 5
 	if(excess >= APC_ARC_UPPERLIMIT)
@@ -32,3 +33,23 @@
 			living_target.electrocute_act(rand(5, 25), "electrical arc")
 			playsound(get_turf(living_target), 'sound/magic/lightningshock.ogg', 75, TRUE)
 			Beam(living_target, icon_state = "lightning[rand(1, 12)]", icon = 'icons/effects/beam.dmi', time = 5)
+
+/obj/machinery/power/apc/attackby(obj/item/attacking_object, mob/living/user, params)
+	. = ..()
+	if(istype(attacking_object, /obj/item/stack/sheet/bronze) && panel_open)
+		if(arc_shielded)
+			balloon_alert(user, "already arc shielded!")
+			return
+		var/obj/item/stack/sheet/bronze/bronze = attacking_object
+		bronze.use(1)
+		balloon_alert(user, "installed arc shielding")
+		arc_shielded = TRUE
+		playsound(src, 'sound/items/rped.ogg', 20)
+		return
+
+/obj/machinery/power/apc/wrench_act(mob/living/user, obj/item/tool)
+	. = ..()
+	if(panel_open && arc_shielded)
+		balloon_alert(user, "arc shielding removed")
+		arc_shielded = FALSE
+		tool.play_tool_sound(src, 50)
