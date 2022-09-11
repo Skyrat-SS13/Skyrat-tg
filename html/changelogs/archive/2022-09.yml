@@ -357,3 +357,68 @@
   - bugfix: Kilo whiteship crew quarters air alarm now exists, meaning that vents
       won't be fucky
   - bugfix: Kilo whiteship engine APC is rewired
+2022-09-09:
+  Kubisopplay:
+  - balance: Turns borer lethality down a bit
+  Melbert:
+  - rscadd: Revenants have a new spell available. Haunt Object, it allows them to
+      cause nearby loose items to lift off the ground and start attacking people!
+      The objects will return to peace after a few minutes, or if someone dispels
+      them with a null rod or bible.
+  ShizCalev:
+  - bugfix: Fixed a runtime when all alive players are converted to cultists that
+      prevented them from getting their cool halo/eye effects.
+  - bugfix: Fixed a runtime preventing nonhuman cadavers from spawning properly.
+  - config: Cadaver spawners will no longer yell at you when morgue_cadaver_other_species_probability
+      is blank.
+  - config: morgue_cadaver_disable_nonhumans will now properly disable nonhuman races!
+      (It was reversed, woops.)
+  SkyratBot:
+  - bugfix: fixed a bug causing the process of slicing food to erase most of the food's
+      reagents
+  - rscadd: Mimes can now hold a baguette like a sword by right clicking it
+  - balance: Xenomorph abilities require being mobile to use.
+  - balance: Neurotoxin spit can no longer be used if you're muzzled.
+  - bugfix: Hey, we support byond version 514.1587 now. You can upgrade if you'd like.
+      I hope.
+  - qol: techfabs, protolathes, circuit imprinters, and exosuit fabricators now automatically
+      r&d sync
+  - qol: the full window refresh time is now one second instead of five seconds
+  - bugfix: refreshing windows ("please wait...") no longer hang for up to twice as
+      long as they should
+  Vishenka0704:
+  - rscadd: add option to enable/disable ticket ping in server config
+  - bugfix: oppfor and ticket ping now works
+  - admin: add send to cryo function in vv dropdown list
+  - rscadd: Added "ProcCall" & "Tweak Components Rating" modes in buildmode
+  itseasytosee:
+  - spellcheck: Fixed a typo in monkey trip toggling.
+  tf-4:
+  - balance: Revenants' defile ability no longer breaks windows, only damaging it
+      until nearly broken. The damage dealt to windows has also been slightly lowered.
+2022-09-10:
+  OrionTheFox:
+  - imageadd: Shorts/Pants/Skirts/Dresses' icons have all been moved into clothing/under/(shorts_pants
+      or skirts_dresses).dmi files in a continued organization effort. Please report
+      any relevant Uniform icon issues to @Orion_The_Fox#1915. (Some were not included
+      and will instead be classified as Costumes, i.e. Victoran Dresses)
+  - imageadd: Ripped Jeans, Ripped Jean Shorts, Yoga Pants, and the Jean Skirt are
+      now greyscale! Customize to your hearts intent! (No hot pink please, it doesnt
+      break the sprites its just kinda gross.)
+  - rscadd: Added a Cableknit alt for the turtleneck-skirt, a flower dress, a strapless
+      dress, pentagon strapped dress, and a standalone Skirt (use the last one with
+      an undershirt for best results) - Thank you Halcyon for the Cableknit and Pentagon
+      sprite!
+  SkyratBot:
+  - bugfix: Water vapour electrolysis and hypernoblium electrolysis now respects heat
+      capacity changes.
+  - bugfix: You can no longer adjust ethereal tunics, causing a missing icon error
+  - bugfix: Mining station's access was reverted, and Curators once again can access
+      it. Supply security officers also once again only have access to it during elevated
+      access.
+  - qol: '''Mining'' access is now named ''Mining Dock'' while ''Mining EVA'' is now
+      named ''Mining Outpost'', to better reflect what they are.'
+  - bugfix: The mining station now requires Mining access for proper access instead
+      of Mining EVA, minus the one airlock leading to Mining EVA
+  YakumoChen:
+  - bugfix: Fixed an error in game preferences for a defunct toggle.

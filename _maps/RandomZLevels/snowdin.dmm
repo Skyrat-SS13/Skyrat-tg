@@ -7529,20 +7529,6 @@
 /obj/effect/mapping_helpers/broken_floor,
 /turf/open/floor/plating,
 /area/awaymission/snowdin/post/mining_dock)
-"xK" = (
-/obj/docking_port/stationary{
-	dir = 4;
-	dwidth = 3;
-	height = 6;
-	id = "snowdin_excavation_top";
-	name = "snowdin excavation top";
-	roundstart_template = /datum/map_template/shuttle/snowdin/excavation;
-	width = 6
-	},
-/turf/open/floor/plating/elevatorshaft{
-	initial_gas_mix = "o2=22;n2=82;TEMP=180"
-	},
-/area/awaymission/snowdin/cave)
 "xL" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/orange/visible{
 	dir = 8
@@ -7570,17 +7556,6 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/awaymission/snowdin/post/mining_dock)
-"xP" = (
-/obj/docking_port/stationary{
-	dir = 4;
-	dwidth = 3;
-	height = 6;
-	id = "snowdin_excavation_down";
-	name = "snowdin excavation down";
-	width = 6
-	},
-/turf/open/floor/plating/elevatorshaft,
 /area/awaymission/snowdin/post/mining_dock)
 "xQ" = (
 /obj/effect/turf_decal/stripes/line{
@@ -8095,6 +8070,20 @@
 	},
 /turf/open/floor/plating/snowed/cavern,
 /area/awaymission/snowdin/post/mining_dock)
+"zK" = (
+/obj/docking_port/stationary{
+	dir = 4;
+	dwidth = 3;
+	height = 6;
+	shuttle_id = "snowdin_excavation_top";
+	name = "snowdin excavation top";
+	roundstart_template = /datum/map_template/shuttle/snowdin/excavation;
+	width = 6
+	},
+/turf/open/floor/plating/elevatorshaft{
+	initial_gas_mix = "o2=22;n2=82;TEMP=180"
+	},
+/area/awaymission/snowdin/cave)
 "zL" = (
 /obj/machinery/door/airlock/public/glass{
 	name = "Garage"
@@ -9177,6 +9166,13 @@
 /obj/item/shard,
 /turf/open/floor/mineral/plastitanium/red,
 /area/awaymission/snowdin/cave)
+"Er" = (
+/obj/machinery/sleeper/self_control{
+	dir = 1
+	},
+/obj/effect/turf_decal/bot_white,
+/turf/open/floor/iron/dark,
+/area/awaymission/snowdin/cave)
 "Eu" = (
 /obj/structure/table/reinforced,
 /obj/item/reagent_containers/cup/glass/bottle/beer{
@@ -9285,22 +9281,8 @@
 /obj/effect/decal/cleanable/blood/old,
 /turf/open/floor/iron/dark,
 /area/awaymission/snowdin/cave)
-"EN" = (
-/obj/machinery/sleeper/syndie{
-	dir = 1
-	},
-/obj/effect/turf_decal/bot_white,
-/turf/open/floor/iron/dark,
-/area/awaymission/snowdin/cave)
 "EO" = (
 /obj/effect/turf_decal/bot_white,
-/turf/open/floor/iron/dark,
-/area/awaymission/snowdin/cave)
-"EP" = (
-/obj/effect/turf_decal/bot_white,
-/obj/machinery/sleeper/syndie{
-	dir = 1
-	},
 /turf/open/floor/iron/dark,
 /area/awaymission/snowdin/cave)
 "EQ" = (
@@ -10736,18 +10718,6 @@
 	},
 /turf/open/floor/iron,
 /area/awaymission/snowdin/post/mining_main)
-"Kn" = (
-/obj/docking_port/stationary{
-	dir = 4;
-	dwidth = 2;
-	height = 5;
-	id = "snowdin_mining_top";
-	name = "snowdin mining top";
-	roundstart_template = /datum/map_template/shuttle/snowdin/mining;
-	width = 5
-	},
-/turf/open/floor/plating/elevatorshaft,
-/area/awaymission/snowdin/post/mining_main)
 "Ko" = (
 /obj/machinery/light/directional/east,
 /obj/effect/turf_decal/stripes/line{
@@ -10790,17 +10760,6 @@
 	dir = 8
 	},
 /turf/open/floor/plating,
-/area/awaymission/snowdin/post/mining_dock)
-"Kt" = (
-/obj/docking_port/stationary{
-	dir = 4;
-	dwidth = 2;
-	height = 5;
-	id = "snowdin_mining_down";
-	name = "snowdin mining bottom";
-	width = 5
-	},
-/turf/open/floor/plating/elevatorshaft,
 /area/awaymission/snowdin/post/mining_dock)
 "Ku" = (
 /obj/machinery/light/directional/east,
@@ -11243,6 +11202,18 @@
 	temperature = 120
 	},
 /area/awaymission/snowdin/cave/cavern)
+"Md" = (
+/obj/docking_port/stationary{
+	dir = 4;
+	dwidth = 2;
+	height = 5;
+	shuttle_id = "snowdin_mining_top";
+	name = "snowdin mining top";
+	roundstart_template = /datum/map_template/shuttle/snowdin/mining;
+	width = 5
+	},
+/turf/open/floor/plating/elevatorshaft,
+/area/awaymission/snowdin/post/mining_main)
 "Mg" = (
 /obj/structure/table,
 /obj/item/clothing/neck/stethoscope,
@@ -11624,6 +11595,13 @@
 /obj/machinery/light/small/directional/north,
 /turf/open/floor/iron/dark,
 /area/awaymission/snowdin/post/research)
+"Ot" = (
+/obj/effect/turf_decal/bot_white,
+/obj/machinery/sleeper/self_control{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/awaymission/snowdin/cave)
 "Ou" = (
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/misc/ice/smooth,
@@ -12412,6 +12390,17 @@
 	},
 /turf/open/misc/asteroid/snow,
 /area/awaymission/snowdin/outside)
+"SB" = (
+/obj/docking_port/stationary{
+	dir = 4;
+	dwidth = 3;
+	height = 6;
+	shuttle_id = "snowdin_excavation_down";
+	name = "snowdin excavation down";
+	width = 6
+	},
+/turf/open/floor/plating/elevatorshaft,
+/area/awaymission/snowdin/post/mining_dock)
 "SC" = (
 /obj/structure/spider/stickyweb,
 /obj/structure/spider/stickyweb,
@@ -12637,6 +12626,17 @@
 	slowdown = 1
 	},
 /area/awaymission/snowdin/outside)
+"TN" = (
+/obj/docking_port/stationary{
+	dir = 4;
+	dwidth = 2;
+	height = 5;
+	shuttle_id = "snowdin_mining_down";
+	name = "snowdin mining bottom";
+	width = 5
+	},
+/turf/open/floor/plating/elevatorshaft,
+/area/awaymission/snowdin/post/mining_dock)
 "TR" = (
 /obj/machinery/power/apc/auto_name/directional/east,
 /obj/effect/decal/cleanable/cobweb/cobweb2,
@@ -27793,7 +27793,7 @@ Go
 Jx
 JQ
 JQ
-Kn
+Md
 JQ
 JQ
 KT
@@ -29741,7 +29741,7 @@ xa
 xl
 xl
 xl
-xK
+zK
 xl
 xl
 an
@@ -35204,7 +35204,7 @@ CH
 Eu
 Ez
 EH
-EN
+Er
 CC
 Ym
 Zy
@@ -35718,7 +35718,7 @@ DR
 DB
 EA
 Xd
-EP
+Ot
 CC
 Ym
 Zy
@@ -61974,7 +61974,7 @@ wE
 JH
 Ys
 Ys
-Kt
+TN
 Ys
 Ys
 KX
@@ -64950,7 +64950,7 @@ xg
 Ys
 Ys
 Ys
-xP
+SB
 Ys
 Ys
 yz
