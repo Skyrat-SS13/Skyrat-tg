@@ -711,12 +711,8 @@
 		AddElement(/datum/element/embed, projectile_payload = shrapnel_type)
 	if(!log_override && firer && original)
 		log_combat(firer, original, "fired at", src, "from [get_area_name(src, TRUE)]")
-<<<<<<< HEAD
-	if(direct_target && (get_dist(direct_target, get_turf(fired_from)) <= 1)) // point blank shots // SKYRAT EDIT - ORIGINAL: if(direct_target && (get_dist(direct_target, get_turf(src)) <= 1))
-=======
 			//note: mecha projectile logging is handled in /obj/item/mecha_parts/mecha_equipment/weapon/action(). try to keep these messages roughly the sameish just for consistency's sake.
-	if(direct_target && (get_dist(direct_target, get_turf(src)) <= 1)) // point blank shots
->>>>>>> d881920e0c4 (Improves mecha / projectile logging (#69805))
+	if(direct_target && (get_dist(direct_target, get_turf(fired_from)) <= 1)) // point blank shots // SKYRAT EDIT - ORIGINAL: if(direct_target && (get_dist(direct_target, get_turf(src)) <= 1))
 		process_hit(get_turf(direct_target), direct_target)
 		if(QDELETED(src))
 			return
