@@ -234,18 +234,22 @@
 
 /obj/machinery/computer/shuttle/pirate
 	name = "pirate shuttle console"
-	shuttleId = "pirateship"
+	shuttleId = "pirate"
 	icon_screen = "syndishuttle"
 	icon_keyboard = "syndie_key"
 	light_color = COLOR_SOFT_RED
+<<<<<<< HEAD
 	possible_destinations = "pirateship_away;pirateship_home;pirateship_custom;whiteship_home" //SKYRAT EDIT CHANGE
+=======
+	possible_destinations = "pirate_away;pirate_home;pirate_custom"
+>>>>>>> 8553e890e50 (Fixes pirate ships being able to fly around (#69808))
 
 /obj/machinery/computer/camera_advanced/shuttle_docker/syndicate/pirate
 	name = "pirate shuttle navigation computer"
 	desc = "Used to designate a precise transit location for the pirate shuttle."
-	shuttleId = "pirateship"
+	shuttleId = "pirate"
 	lock_override = CAMERA_LOCK_STATION
-	shuttlePortId = "pirateship_custom"
+	shuttlePortId = "pirate_custom"
 	x_offset = 9
 	y_offset = 0
 	see_hidden = FALSE
