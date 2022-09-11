@@ -213,7 +213,7 @@
 		var/mob/living/simple_animal/hostile/borg_action_pacifier/BAPer = new (get_turf(src))
 		BAPer.power_storage = power_storage // Gotta keep that boom
 		BAPer.check_smoke() // Telegraph how bigly we explode on death
-		BAPer.balloon_alert_to_viewers("ERROR!")
+		BAPer.say("ERROR!")
 		BAPer.emote("exclaim")
 		qdel(src)
 	else
@@ -290,7 +290,7 @@
 		if(FOLD)
 			balloon_alert(clicker, "folding up...")
 			if(do_after(clicker, 3 SECONDS, src))
-				balloon_alert_to_viewers("resetting...")
+				say("Resetting...")
 				undeploy()
 
 /obj/structure/bed/borg_action_pacifier/proc/check_menu(mob/user)
@@ -307,6 +307,8 @@
 
 	/// The cyborg's current cell
 	var/obj/item/stock_parts/cell/cell = buckled_cyborg.cell
+	if(!cell)
+		return
 
 	switch(enabled_function)
 		if(DRAIN_MODE)
@@ -332,9 +334,6 @@
 			else if(cell.charge > cell.maxcharge)
 				cell.charge = cell.maxcharge
 				stop_mode()
-
-		if(NONE)
-			return
 
 /obj/structure/bed/borg_action_pacifier/proc/drain_cell(obj/item/stock_parts/cell/cell)
 	if(locked)
@@ -438,37 +437,40 @@
 		target.visible_message(span_warning("[target] starts buckling [target.p_them()]self to [src]!"))
 		if(!do_after(target, 1.5 SECONDS, src)) // The added delay is to prevent accidental buckling
 			return
-	..()
+	return ..()
 
 /obj/structure/bed/borg_action_pacifier/unbuckle_mob(mob/living/buckled_mob, force, can_fall)
 	if(!force)
 		return
-	..()
+	return ..()
 
 /obj/structure/bed/borg_action_pacifier/post_buckle_mob(mob/living/target)
-	if(iscarbon(target))
-		var/mob/living/carbon/carbon = target
-		carbon.set_lying_angle(0)
-	if(!iscyborg(target))
+	if(isanimal(target) || isbasicmob(target))
 		target.pixel_y = (target.base_pixel_y + 18)
 		return
-	buckled_cyborg = target
-	set_density(TRUE)
+	if(iscarbon(target))
+		target.pixel_y = (target.base_pixel_y + 18)
+		target.set_lying_angle(0)
+		return
+	else if(iscyborg(target))
+		buckled_cyborg = target
+		set_density(TRUE)
 
-	// Offset managing
-	if(R_TRAIT_TALL in buckled_cyborg.model.model_features)
-		buckled_cyborg.pixel_y = (buckled_cyborg.base_pixel_y + 18)
-	if(R_TRAIT_SMALL in buckled_cyborg.model.model_features)
-		buckled_cyborg.pixel_y = (buckled_cyborg.base_pixel_y + 12)
-	else if(!((R_TRAIT_SMALL || R_TRAIT_TALL) in buckled_cyborg.model.model_features))
-		buckled_cyborg.pixel_y = (buckled_cyborg.base_pixel_y + 16)
+		// Offset managing
+		if(R_TRAIT_TALL in buckled_cyborg.model.model_features)
+			buckled_cyborg.pixel_y = (buckled_cyborg.base_pixel_y + 18)
+		if(R_TRAIT_SMALL in buckled_cyborg.model.model_features)
+			buckled_cyborg.pixel_y = (buckled_cyborg.base_pixel_y + 12)
+		else if(!((R_TRAIT_SMALL || R_TRAIT_TALL) in buckled_cyborg.model.model_features))
+			buckled_cyborg.pixel_y = (buckled_cyborg.base_pixel_y + 16)
 
-	START_PROCESSING(SSobj, src)
+		START_PROCESSING(SSobj, src)
 
 /obj/structure/bed/borg_action_pacifier/post_unbuckle_mob(mob/living/target)
 	if(!iscyborg(target))
 		target.pixel_y = initial(target.pixel_y)
 		return
+
 	unlock() // Just in case
 	buckled_cyborg = null
 	set_density(FALSE)
@@ -553,7 +555,8 @@
 	robust_searching = TRUE
 	loot = list(/obj/effect/decal/cleanable/robot_debris)
 	flip_on_death = TRUE
-	var/power_storage //Hope you remembered to discharge...
+	/// Transferred power storage from previous state, which will decide how big our death explosion will be
+	var/power_storage
 
 /mob/living/simple_animal/hostile/borg_action_pacifier/Initialize(mapload)
 	. = ..()
@@ -588,7 +591,7 @@
 /mob/living/simple_animal/hostile/borg_action_pacifier/user_buckle_mob(mob/living/target, mob/user, check_loc)
 	if(!do_after(target, 1.5 SECONDS, src))
 		return
-	..()
+	return ..()
 
 /mob/living/simple_animal/hostile/borg_action_pacifier/post_buckle_mob(mob/living/target)
 	if(!iscyborg(target))
@@ -610,11 +613,8 @@
 	target.pixel_y = target.base_pixel_y + target.body_position_pixel_y_offset
 
 /mob/living/simple_animal/hostile/borg_action_pacifier/CanAttack(the_target)
-	if(ismob(the_target)) //Can't kick up! :-)
-		var/mob/target = the_target
-		if(target in buckled_mobs)
-			return FALSE
-	return ..()
+	if(target in buckled_mobs) // Can't kick up! :-)
+		return FALSE
 
 /mob/living/simple_animal/hostile/borg_action_pacifier/death(gibbed)
 	if(power_storage && power_storage >= 5000)
@@ -623,15 +623,17 @@
 	return ..()
 
 /mob/living/simple_animal/hostile/borg_action_pacifier/proc/check_smoke()
-	if(power_storage)
-		if(power_storage >= 5000)
+	if(!power_storage)
+		return
+	switch(power_storage)
+		if(-INFINITY to 5000)
+
+		if(5000 to 20000)
 			particles = new /particles/smoke/robot/BAPer/mild()
-		if(power_storage >= 20000)
+		if(20000 to 35000)
 			particles = new /particles/smoke/robot/BAPer/bad()
-		if(power_storage >= 35000)
+		if (35000 to 40000)
 			particles = new /particles/smoke/robot/BAPer/full()
-		else if (power_storage < 5000)
-			return
 
 /mob/living/simple_animal/hostile/borg_action_pacifier/proc/dir_change(datum/source, olddir, newdir)
 	SIGNAL_HANDLER
@@ -660,10 +662,13 @@
 	position = list(4, 8, 0)
 	scale = 0.8
 	icon_state = list("steam_1" = 1, "steam_2" = 1, "steam_3" = 2)
+
 /particles/smoke/robot/BAPer/mild
 	color = "#FFFFFF"
+
 /particles/smoke/robot/BAPer/bad
 	color = "#ababab"
+
 /particles/smoke/robot/BAPer/full
 	color = "#636363"
 
