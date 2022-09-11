@@ -79,7 +79,7 @@
 					border-left: 2px solid green;
 					border-right: 2px solid green;
 					padding: 4px;
-					background-color: black;
+					background-color: rgba(37, 30, 44, 0.9);
 				}
 
 				.progress_bar {
@@ -110,7 +110,7 @@
 					border: 2px solid white;
 					border-radius: 4px;
 					box-shadow: 2px 2px #333, inset 1px 1px #333;
-					background: linear-gradient(to bottom, rgba(68, 68, 204, 0.9), rgba(0, 0, 102, 0.9));
+					background: linear-gradient(to bottom, rgba(69, 64, 80, 0.9), rgba(37, 30, 44, 0.9));
 					opacity: 75%;
 					padding: 1em;
 				}
