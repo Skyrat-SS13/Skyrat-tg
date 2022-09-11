@@ -5,7 +5,7 @@
 
 /datum/buildmode_mode
 	var/key = "oops"
-
+	var/button_icon = 'icons/misc/buildmode.dmi' // SKYRAT ADDITION - remove buildmode duplicate icons, divine tg and skyrat
 	var/datum/buildmode/BM
 
 	// would corner selection work better as a component?
