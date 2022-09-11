@@ -889,6 +889,19 @@
 	},
 /turf/open/floor/iron/white,
 /area/station/science/research)
+"aqZ" = (
+/obj/item/radio/intercom/directional/south,
+/obj/structure/chair/sofa/corp/left{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/station/medical/break_room)
 "ara" = (
 /obj/machinery/atmospherics/components/unary/portables_connector/visible,
 /turf/open/floor/plating,
@@ -3738,14 +3751,6 @@
 /obj/structure/transit_tube/diagonal,
 /turf/open/space,
 /area/space/nearstation)
-"bnr" = (
-/obj/effect/turf_decal/trimline/blue/filled/line,
-/obj/structure/chair/sofa/corp/left{
-	dir = 1
-	},
-/obj/machinery/light_switch/directional/south,
-/turf/open/floor/iron/white,
-/area/station/medical/office)
 "bns" = (
 /obj/machinery/door/airlock/public/glass{
 	name = "Prison Cafeteria"
@@ -7480,19 +7485,6 @@
 /obj/machinery/atmospherics/pipe/smart/simple/cyan/visible,
 /turf/open/floor/iron,
 /area/station/engineering/atmos/pumproom)
-"cMs" = (
-/obj/structure/cable,
-/obj/effect/turf_decal/tile/yellow{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/power/apc/auto_name/directional/north,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/iron,
-/area/station/hallway/primary/starboard)
 "cML" = (
 /obj/structure/cable,
 /turf/closed/wall/r_wall,
@@ -7924,7 +7916,7 @@
 	dir = 8;
 	dwidth = 5;
 	height = 7;
-	id = "supply_home";
+	shuttle_id = "cargo_home";
 	name = "Cargo Bay";
 	width = 12
 	},
@@ -7951,7 +7943,7 @@
 	dir = 8;
 	dwidth = 2;
 	height = 13;
-	id = "ferry_home";
+	shuttle_id = "ferry_home";
 	name = "port bay 2";
 	width = 5
 	},
@@ -8107,7 +8099,7 @@
 	dir = 2;
 	dwidth = 9;
 	height = 25;
-	id = "emergency_home";
+	shuttle_id = "emergency_home";
 	name = "MetaStation emergency evac bay";
 	width = 29
 	},
@@ -8839,7 +8831,7 @@
 	dir = 8;
 	dwidth = 3;
 	height = 15;
-	id = "arrivals_stationary";
+	shuttle_id = "arrival_stationary";
 	name = "arrivals";
 	roundstart_template = /datum/map_template/shuttle/arrival/box;
 	width = 7
@@ -18005,7 +17997,7 @@
 "gFa" = (
 /obj/docking_port/stationary/random{
 	dir = 4;
-	id = "pod_4_lavaland";
+	shuttle_id = "pod_4_lavaland";
 	name = "lavaland"
 	},
 /turf/open/space/basic,
@@ -28415,6 +28407,17 @@
 /obj/effect/mapping_helpers/airlock/access/all/supply/general,
 /turf/open/floor/iron,
 /area/station/cargo/warehouse)
+"kdF" = (
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 10
+	},
+/obj/structure/chair/sofa/corp/left{
+	dir = 1
+	},
+/obj/machinery/airalarm/directional/south,
+/obj/structure/extinguisher_cabinet/directional/west,
+/turf/open/floor/iron/white,
+/area/station/medical/office)
 "kdN" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 4
@@ -28458,7 +28461,7 @@
 /area/station/security/brig)
 "keP" = (
 /obj/docking_port/stationary/random{
-	id = "pod_2_lavaland";
+	shuttle_id = "pod_2_lavaland";
 	name = "lavaland"
 	},
 /turf/open/space,
@@ -30327,18 +30330,6 @@
 /obj/effect/turf_decal/tile/blue/fourcorners,
 /turf/open/floor/iron/white,
 /area/station/medical/surgery/theatre)
-"kOq" = (
-/obj/machinery/airalarm/server{
-	dir = 8;
-	pixel_x = -22
-	},
-/obj/machinery/light/small/directional/west,
-/obj/machinery/camera/directional/west{
-	c_tag = "Telecomms - Server Room - Aft-Port";
-	network = list("ss13","tcomms")
-	},
-/turf/open/floor/iron/dark/telecomms,
-/area/station/tcommsat/server)
 "kOt" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/closed/wall,
@@ -32425,19 +32416,6 @@
 	},
 /turf/open/floor/iron/white,
 /area/station/medical/chemistry)
-"lxC" = (
-/obj/item/radio/intercom/directional/south,
-/obj/structure/chair/sofa/corp/right{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/turf/open/floor/iron/dark,
-/area/station/medical/break_room)
 "lxM" = (
 /obj/machinery/door/airlock/maintenance,
 /obj/structure/cable,
@@ -39579,7 +39557,7 @@
 	dheight = 4;
 	dwidth = 4;
 	height = 9;
-	id = "aux_base_zone";
+	shuttle_id = "aux_base_zone";
 	name = "Aux Base Zone";
 	roundstart_template = /datum/map_template/shuttle/aux_base/default;
 	width = 9
@@ -41785,7 +41763,7 @@
 	dir = 2;
 	dwidth = 11;
 	height = 22;
-	id = "whiteship_home";
+	shuttle_id = "whiteship_home";
 	name = "SS13: Auxiliary Dock, Station-Port";
 	width = 35
 	},
@@ -42367,6 +42345,14 @@
 	},
 /turf/open/floor/iron/white,
 /area/station/command/heads_quarters/cmo)
+"pcP" = (
+/obj/effect/turf_decal/trimline/blue/filled/line,
+/obj/structure/chair/sofa/corp/right{
+	dir = 1
+	},
+/obj/machinery/light_switch/directional/south,
+/turf/open/floor/iron/white,
+/area/station/medical/office)
 "pcS" = (
 /obj/item/stack/ore/silver,
 /obj/item/stack/ore/silver,
@@ -43675,17 +43661,6 @@
 	},
 /turf/open/floor/iron,
 /area/station/security/office)
-"pBN" = (
-/obj/effect/turf_decal/trimline/blue/filled/line{
-	dir = 10
-	},
-/obj/structure/chair/sofa/corp/right{
-	dir = 1
-	},
-/obj/machinery/airalarm/directional/south,
-/obj/structure/extinguisher_cabinet/directional/west,
-/turf/open/floor/iron/white,
-/area/station/medical/office)
 "pCa" = (
 /obj/machinery/atmospherics/pipe/smart/simple/dark/visible,
 /turf/closed/wall/r_wall,
@@ -47123,6 +47098,17 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/hallway/primary/fore)
+"qNc" = (
+/obj/effect/turf_decal/tile/yellow{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/station/hallway/primary/starboard)
 "qNi" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 9
@@ -47341,18 +47327,6 @@
 	},
 /turf/open/floor/iron/white,
 /area/station/medical/abandoned)
-"qQu" = (
-/obj/structure/chair/sofa/corp/left{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/turf/open/floor/iron/dark,
-/area/station/medical/break_room)
 "qQX" = (
 /obj/machinery/door/firedoor,
 /obj/effect/turf_decal/stripes/line{
@@ -50529,6 +50503,18 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/plating,
 /area/station/maintenance/aft/greater)
+"rTG" = (
+/obj/structure/chair/sofa/corp/right{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/station/medical/break_room)
 "rTL" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/public/glass{
@@ -60851,6 +60837,18 @@
 	},
 /turf/open/floor/iron,
 /area/station/hallway/secondary/service)
+"vqy" = (
+/obj/machinery/airalarm/server{
+	dir = 8;
+	pixel_x = -24
+	},
+/obj/machinery/light/small/directional/west,
+/obj/machinery/camera/directional/west{
+	c_tag = "Telecomms - Server Room - Aft-Port";
+	network = list("ss13","tcomms")
+	},
+/turf/open/floor/iron/dark/telecomms,
+/area/station/tcommsat/server)
 "vqN" = (
 /obj/effect/landmark/event_spawn,
 /turf/open/floor/carpet,
@@ -64880,7 +64878,7 @@
 "wOY" = (
 /obj/docking_port/stationary/random{
 	dir = 4;
-	id = "pod_3_lavaland";
+	shuttle_id = "pod_3_lavaland";
 	name = "lavaland"
 	},
 /turf/open/space,
@@ -65665,7 +65663,7 @@
 /area/station/maintenance/department/engine)
 "xcN" = (
 /obj/docking_port/stationary/random{
-	id = "pod_lavaland";
+	shuttle_id = "pod_lavaland";
 	name = "lavaland"
 	},
 /turf/open/space,
@@ -68164,7 +68162,7 @@
 	dir = 8;
 	dwidth = 12;
 	height = 17;
-	id = "syndicate_nw";
+	shuttle_id = "syndicate_nw";
 	name = "northwest of station";
 	width = 23
 	},
@@ -68442,6 +68440,14 @@
 "ycv" = (
 /turf/open/floor/iron/white,
 /area/station/science/xenobiology)
+"ycy" = (
+/obj/effect/turf_decal/tile/yellow{
+	dir = 8
+	},
+/obj/structure/cable,
+/obj/machinery/power/apc/auto_name/directional/south,
+/turf/open/floor/iron,
+/area/station/hallway/primary/starboard)
 "ycz" = (
 /obj/machinery/firealarm/directional/east,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
@@ -90406,7 +90412,7 @@ lOV
 uYp
 jsO
 cpR
-lxC
+aqZ
 uYp
 rYS
 sfA
@@ -90663,7 +90669,7 @@ ihB
 uYp
 oAj
 qOV
-qQu
+rTG
 uYp
 gzJ
 sfA
@@ -90895,7 +90901,7 @@ mWa
 fFi
 iWD
 vDz
-pBN
+kdF
 sSp
 ppG
 ppG
@@ -91152,7 +91158,7 @@ mna
 gVn
 cXz
 dca
-bnr
+pcP
 sSp
 sSp
 sSp
@@ -108084,7 +108090,7 @@ rSb
 sqE
 rKS
 gnS
-rlm
+ycy
 esk
 fmJ
 ycz
@@ -108339,7 +108345,7 @@ rSi
 pCt
 aRS
 sqE
-cMs
+qNc
 gnS
 ucU
 esk
@@ -123004,7 +123010,7 @@ tUA
 tUA
 juf
 uRp
-kOq
+vqy
 ubl
 gfU
 aaa

@@ -123,7 +123,7 @@
 /obj/item/clothing/head/helmet/space/beret
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/head/helmet/police
+/obj/item/clothing/head/warden/police
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/head/helmet/swat
