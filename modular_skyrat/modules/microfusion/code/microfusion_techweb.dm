@@ -69,7 +69,6 @@
 		"bluespace_microfusion_cell",
 		"microfusion_gun_attachment_repeater",
 		"bluespace_microfusion_phase_emitter",
-		"microfusion_cell_attachment_selfcharging",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 10000)
 
