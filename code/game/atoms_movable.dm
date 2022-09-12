@@ -94,11 +94,9 @@
 	/// The degree of pressure protection that mobs in list/contents have from the external environment, between 0 and 1
 	var/contents_pressure_protection = 0
 
-<<<<<<< HEAD
 	/// Whether a user will face atoms on entering them with a mouse. Despite being a mob variable, it is here for performances //SKYRAT EDIT ADDITION
 	var/face_mouse = FALSE //SKYRAT EDIT ADDITION
 
-=======
 /mutable_appearance/emissive_blocker
 
 /mutable_appearance/emissive_blocker/New()
@@ -107,7 +105,6 @@
 	plane = EMISSIVE_PLANE
 	color = EM_BLOCK_COLOR
 	appearance_flags = EMISSIVE_APPEARANCE_FLAGS
->>>>>>> 930c5e635e9 (Moves "catch this var/flag" code from obj/init and datum/new into the types that use it  (#69634))
 
 /atom/movable/Initialize(mapload)
 	. = ..()
