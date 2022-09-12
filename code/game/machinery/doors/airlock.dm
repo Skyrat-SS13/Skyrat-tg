@@ -161,7 +161,6 @@
 	vis_contents += vis_overlay2
 	//SKYRAT EDIT END
 	. = ..()
-<<<<<<< HEAD
 	//SKYRAT EDIT ADDITION BEGIN - Door aesthetic overhaul
 	if(multi_tile)
 		SetBounds()
@@ -170,9 +169,7 @@
 		vis_overlay2.dir = src.dir
 	update_overlays()
 	//SKYRAT EDIT END
-=======
 	init_network_id(NETWORK_DOOR_AIRLOCKS)
->>>>>>> 930c5e635e9 (Moves "catch this var/flag" code from obj/init and datum/new into the types that use it  (#69634))
 	wires = set_wires()
 	if(frequency)
 		set_frequency(frequency)
