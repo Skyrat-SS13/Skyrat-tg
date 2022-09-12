@@ -16,11 +16,15 @@
 /obj/item/storage/box/survival/PopulateContents()
 	if(!isnull(mask_type))
 		new mask_type(src)
-
+	//SKYRAT EDIT ADDITION START - VOX INTERNALS - Honestly I dont know if this has a function any more with wardrobe_removal(), but TG still uses the plasmaman one so better safe than sorry
 	if(!isplasmaman(loc))
-		new internal_type(src)
+		if(isvox(loc))
+			new /obj/item/tank/internals/nitrogen/belt/emergency(src)
+		else
+			new internal_type(src)
 	else
 		new /obj/item/tank/internals/plasmaman/belt(src)
+	//SKYRAT EDIT ADDITION END - VOX INTERNALS
 
 	if(!isnull(medipen_type))
 		new medipen_type(src)
@@ -29,16 +33,23 @@
 		new /obj/item/flashlight/flare(src)
 		new /obj/item/radio/off(src)
 
+	new /obj/item/oxygen_candle(src) //SKYRAT EDIT ADDITION
+
 /obj/item/storage/box/survival/radio/PopulateContents()
 	..() // we want the survival stuff too.
 	new /obj/item/radio/off(src)
 
 /obj/item/storage/box/survival/proc/wardrobe_removal()
-	if(!isplasmaman(loc)) //We need to specially fill the box with plasmaman gear, since it's intended for one
+	if(!isplasmaman(loc) && !isvox(loc)) //We need to specially fill the box with plasmaman gear, since it's intended for one	//SKYRAT EDIT: && !isvox(loc)
 		return
 	var/obj/item/mask = locate(mask_type) in src
 	var/obj/item/internals = locate(internal_type) in src
-	new /obj/item/tank/internals/plasmaman/belt(src)
+	//SKYRAT EDIT ADDITION START - VOX INTERNALS - Vox mimic the above and below behavior, removing the redundant mask/internals; they dont mimic the plasma breathing though
+	if(!isvox(loc))
+		new /obj/item/tank/internals/plasmaman/belt(src)
+	else
+		new /obj/item/tank/internals/nitrogen/belt/emergency(src)
+	//SKYRAT EDIT ADDITION END - VOX INTERNALS
 	qdel(mask) // Get rid of the items that shouldn't be
 	qdel(internals)
 
@@ -181,10 +192,15 @@
 /obj/item/storage/box/hug/black/survival/PopulateContents()
 	new /obj/item/reagent_containers/hypospray/medipen(src)
 
-	if(!isplasmaman(loc))
-		new /obj/item/tank/internals/emergency_oxygen(src)
-	else
+	//SKYRAT EDIT CHANGE BEGIN - CUSTOMIZATION
+	if(isplasmaman(loc))
 		new /obj/item/tank/internals/plasmaman/belt(src)
+	else if(isvox(loc))
+		new /obj/item/tank/internals/nitrogen/belt/emergency(src)
+	else
+		new /obj/item/tank/internals/emergency_oxygen(src)
+	//SKYRAT EDIT END
+	new /obj/item/oxygen_candle(src) //SKYRAT EDIT ADDITION
 
 	if(HAS_TRAIT(SSstation, STATION_TRAIT_PREMIUM_INTERNALS))
 		new /obj/item/flashlight/flare(src)
