@@ -25,10 +25,9 @@
 		shock_chance = 10
 	if(prob(shock_chance))
 		var/list/shock_mobs = list()
-		for(var/creature in view(get_turf(src), 5)) // We only want to shock a single random mob in range, not all.
-			if(isliving(creature))
-				shock_mobs += creature
-		if(shock_mobs.len)
+		for(var/mob/living/creature in viewers(get_turf(src), 5)) // We only want to shock a single random mob in range, not all.
+			shock_mobs += creature
+		if(length(shock_mobs))
 			var/mob/living/living_target = pick(shock_mobs)
 			living_target.electrocute_act(rand(5, 25), "electrical arc")
 			playsound(get_turf(living_target), 'sound/magic/lightningshock.ogg', 75, TRUE)
