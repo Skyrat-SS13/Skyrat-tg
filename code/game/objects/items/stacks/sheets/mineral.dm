@@ -284,12 +284,10 @@ GLOBAL_LIST_INIT(bananium_recipes, list ( \
 
 GLOBAL_LIST_INIT(titanium_recipes, list ( \
 	new/datum/stack_recipe("titanium tile", /obj/item/stack/tile/mineral/titanium, 1, 4, 20), \
-<<<<<<< HEAD
-	new/datum/stack_recipe("shuttle seat", /obj/structure/chair/comfy/shuttle, 2, one_per_turf = TRUE, on_floor = TRUE), \
-	new/datum/stack_recipe("spaceship plating", /obj/item/stack/sheet/spaceship, 1, time = 5), \
-=======
 	new/datum/stack_recipe("shuttle seat", /obj/structure/chair/comfy/shuttle, 2, one_per_turf = TRUE, on_solid_ground = TRUE), \
->>>>>>> 65aa4464a4d (Allows most big object construction on lavaland again (#69781))
+	// SKYRAT EDIT START
+	new/datum/stack_recipe("spaceship plating", /obj/item/stack/sheet/spaceship, 1, time = 5), \
+	// SKYRAT EDIT END
 	))
 //(Comment down here because it breaks the list) - SKYRAT EDIT ADDITION: added "spaceship plating" for crafting spaceship walls
 
