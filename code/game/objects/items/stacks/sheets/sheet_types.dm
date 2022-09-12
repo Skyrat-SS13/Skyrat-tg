@@ -136,7 +136,7 @@ GLOBAL_LIST_INIT(metal_recipes, list ( \
 	new/datum/stack_recipe("pestle", /obj/item/pestle, 1, time = 50), \
 	new/datum/stack_recipe("hygienebot assembly", /obj/item/bot_assembly/hygienebot, 2, time = 5 SECONDS), \
 	new/datum/stack_recipe("shower frame", /obj/structure/showerframe, 2, time= 2 SECONDS), \
-	new/datum/stack_recipe("metal barricade", /obj/structure/deployable_barricade/metal, 2, time = 1 SECONDS, one_per_turf = TRUE, on_floor = TRUE), \
+	new/datum/stack_recipe("metal barricade", /obj/structure/deployable_barricade/metal, 2, time = 1 SECONDS, on_floor = TRUE), \
 	null, \
 	new/datum/stack_recipe("anvil", /obj/structure/reagent_anvil, 10, time = 20, one_per_turf = TRUE, on_floor = TRUE), \
 	new/datum/stack_recipe("forge", /obj/structure/reagent_forge, 10, time = 20, one_per_turf = TRUE, on_floor = TRUE), \
@@ -260,7 +260,7 @@ GLOBAL_LIST_INIT(plasteel_recipes, list ( \
 	new/datum/stack_recipe("AI core", /obj/structure/ai_core, 4, time = 50, one_per_turf = TRUE),
 	new/datum/stack_recipe("bomb assembly", /obj/machinery/syndicatebomb/empty, 10, time = 50),
 	new/datum/stack_recipe("Large Gas Tank", /obj/structure/tank_frame, 4, time=1 SECONDS, one_per_turf=TRUE),
-	new/datum/stack_recipe("plasteel barricade", /obj/structure/deployable_barricade/metal/plasteel, 2, time = 10, one_per_turf = TRUE, on_floor = TRUE),
+	new/datum/stack_recipe("plasteel barricade", /obj/structure/deployable_barricade/metal/plasteel, 2, time = 10, on_floor = TRUE),
 	null,
 	new /datum/stack_recipe_list("airlock assemblies", list( \
 		new/datum/stack_recipe("high security airlock assembly", /obj/structure/door_assembly/door_assembly_highsecurity, 4, time = 50, one_per_turf = 1, on_solid_ground = 1),
@@ -345,7 +345,7 @@ GLOBAL_LIST_INIT(wood_recipes, list ( \
 	new/datum/stack_recipe("bonfire", /obj/structure/bonfire, 10, time = 60, one_per_turf = TRUE, on_solid_ground = TRUE), \
 	new/datum/stack_recipe("easel", /obj/structure/easel, 5, time = 10, one_per_turf = TRUE, on_solid_ground = TRUE), \
 	// SKYRAT ADDITION START
-	new/datum/stack_recipe("Wooden barricade", /obj/structure/deployable_barricade/wooden, 2, time = 1 SECONDS, one_per_turf = TRUE, on_solid_ground = TRUE), \
+	new/datum/stack_recipe("Wooden barricade", /obj/structure/deployable_barricade/wooden, 2, time = 1 SECONDS, on_solid_ground = TRUE), \
 	// SKYRAT ADDITION END
 	null, \
 	new/datum/stack_recipe_list("pews", list(
