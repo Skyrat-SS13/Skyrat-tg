@@ -43,11 +43,11 @@
 
 /obj/item/grenade/xen_crystal
 	name = "xen crystal"
-	desc = "A crystal with anomalous properties. Perhaps its powers could be used to weaken the link between worlds. \
-	<br> <br>\
-	Use on the Nihilanth to reduce the Resonance Cascade's chance of spawning by 15%, down to 0% if used four times."
+	desc = "A crystal with anomalous properties, its powers could be used to weaken the link between worlds. A closer examination might yield some useful information..."
 	icon = 'modular_skyrat/modules/black_mesa/icons/plants.dmi'
 	icon_state = "crystal_grenade"
+	/// It's such a shame that extended descriptions aren't standard for item nor object atoms. Too bad!
+	var/desc_extended = "Use on the Nihilanth to reduce the Resonance Cascade's chance of spawning by 15%, down to 0% if used four times."
 	/// What range do we effect mobs?
 	var/effect_range = 6
 	/// The faction we convert the mobs to
@@ -57,6 +57,10 @@
 		/mob/living/simple_animal/hostile/blackmesa/xen/headcrab_zombie/gordon_freeman,
 		/mob/living/simple_animal/hostile/blackmesa/xen/nihilanth,
 	)
+
+/obj/item/grenade/xen_crystal/examine_more(mob/user)
+	. = ..()
+	. += "<i>[extended_desc]</i>"
 
 /obj/item/grenade/xen_crystal/detonate(mob/living/lanced_by)
 	for(var/mob/living/mob_to_neutralize in view(src, effect_range))
