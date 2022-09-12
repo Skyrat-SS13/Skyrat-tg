@@ -118,11 +118,8 @@
 	var/static/list/non_ruleset_antagonists = list(
 		ROLE_FUGITIVE = /datum/antagonist/fugitive,
 		ROLE_LONE_OPERATIVE = /datum/antagonist/nukeop/lone,
-<<<<<<< HEAD
 		ROLE_DRIFTING_CONTRACTOR = /datum/antagonist/contractor, //SKYRAT EDIT
-=======
 		ROLE_SENTIENCE = /datum/antagonist/sentient_creature,
->>>>>>> ba0366210eb (Sentience preference selection and antag datum (#69569))
 	)
 
 	var/list/antagonists = non_ruleset_antagonists.Copy()
