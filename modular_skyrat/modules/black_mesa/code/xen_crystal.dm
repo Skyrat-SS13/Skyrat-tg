@@ -60,7 +60,7 @@
 
 /obj/item/grenade/xen_crystal/examine_more(mob/user)
 	. = ..()
-	. += "<i>[extended_desc]</i>"
+	. += "<i>[desc_extended]</i>"
 
 /obj/item/grenade/xen_crystal/detonate(mob/living/lanced_by)
 	for(var/mob/living/mob_to_neutralize in view(src, effect_range))
