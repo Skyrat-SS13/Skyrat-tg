@@ -721,10 +721,7 @@
 			smart_animal.sentience_act()
 		dumb_mob.mind.add_antag_datum(/datum/antagonist/sentient_creature)
 		to_chat(user, span_notice("[dumb_mob] accepts [src] and suddenly becomes attentive and aware. It worked!"))
-<<<<<<< HEAD
 		dumb_mob.copy_languages(user, LANGUAGE_MASTER)
-=======
->>>>>>> ba0366210eb (Sentience preference selection and antag datum (#69569))
 		after_success(user, dumb_mob)
 		qdel(src)
 	else
