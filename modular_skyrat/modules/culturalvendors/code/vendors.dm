@@ -13,7 +13,9 @@
 			"name" = "Snacks",
 			"icon" = "cookie",
 			"products" = list(
-				/obj/ = 1,
+				/obj/item/food/vendor_tray_meal/side = 7,
+				/obj/item/food/vendor_tray_meal/side/crackers_and_jam = 7,
+				/obj/item/food/vendor_tray_meal/side/crackers_and_cheese = 7,
 			),
 		),
 
@@ -21,7 +23,9 @@
 			"name" = "Meals",
 			"icon" = "pizza-slice",
 			"products" = list(
-				/obj/ = 1,
+				/obj/item/storage/box/foodpack/nt = 5,
+				/obj/item/storage/box/foodpack/nt/burger = 5,
+				/obj/item/storage/box/foodpack/nt/chickensammy = 5,
 			),
 		),
 	)
@@ -52,7 +56,9 @@
 			"name" = "Snacks",
 			"icon" = "cookie",
 			"products" = list(
-				/obj/ = 1,
+				/obj/item/food/vendor_tray_meal/side/rye = 7,
+				/obj/item/food/vendor_tray_meal/side/breadsticks = 7,
+				/obj/item/food/vendor_tray_meal/side/sunflower_seeds = 7,
 			),
 		),
 
@@ -60,7 +66,9 @@
 			"name" = "Meals",
 			"icon" = "pizza-slice",
 			"products" = list(
-				/obj/ = 1,
+				/obj/item/storage/box/foodpack/panslav = 5,
+				/obj/item/storage/box/foodpack/panslav/potatocakes = 5,
+				/obj/item/storage/box/foodpack/panslav/beetsoup = 5,
 			),
 		),
 	)
@@ -80,7 +88,9 @@
 			"name" = "Snacks",
 			"icon" = "cookie",
 			"products" = list(
-				/obj/ = 1,
+				/obj/item/food/vendor_tray_meal/side/miso = 7,
+				/obj/item/food/vendor_tray_meal/side/rice = 7,
+				/obj/item/food/vendor_tray_meal/side/pickled_vegetables = 7,
 			),
 		),
 
@@ -88,7 +98,9 @@
 			"name" = "Meals",
 			"icon" = "pizza-slice",
 			"products" = list(
-				/obj/ = 1,
+				/obj/item/storage/box/foodpack/yangyu = 5,
+				/obj/item/storage/box/foodpack/yangyu/sushi = 5,
+				/obj/item/storage/box/foodpack/yangyu/beefrice = 5,
 			),
 		),
 	)
@@ -108,7 +120,9 @@
 			"name" = "Snacks",
 			"icon" = "cookie",
 			"products" = list(
-				/obj/ = 1,
+				/obj/item/food/vendor_tray_meal/side/moffin = 7,
+				/obj/item/food/vendor_tray_meal/side/cornbread = 7,
+				/obj/item/food/vendor_tray_meal/side/roasted_seeds = 7,
 			),
 		),
 
@@ -116,7 +130,9 @@
 			"name" = "Meals",
 			"icon" = "pizza-slice",
 			"products" = list(
-				/obj/ = 1,
+				/obj/item/storage/box/foodpack/moth = 5,
+				/obj/item/storage/box/foodpack/moth/bakedrice = 5,
+				/obj/item/storage/box/foodpack/moth/fueljack = 5,
 			),
 		),
 	)
@@ -136,7 +152,9 @@
 			"name" = "Snacks",
 			"icon" = "cookie",
 			"products" = list(
-				/obj/ = 1,
+				/obj/item/food/vendor_tray_meal/side/root_crackers = 7,
+				/obj/item/food/vendor_tray_meal/side/korta_brittle = 7,
+				/obj/item/food/vendor_tray_meal/side/crispy_headcheese = 7,
 			),
 		),
 
@@ -144,13 +162,16 @@
 			"name" = "Meals",
 			"icon" = "pizza-slice",
 			"products" = list(
-				/obj/ = 1,
+				/obj/item/storage/box/foodpack/tiziria = 5,
+				/obj/item/storage/box/foodpack/tiziria/roll = 5,
+				/obj/item/storage/box/foodpack/tiziria/stirfry = 5,
 			),
 		),
 	)
 
 	language_to_speak = /datum/language/draconic
 
+/* Pending part 2 of the cultural stuff
 /obj/machinery/vending/cultural/tizirian/drinks
 	name = "Tizirian Imported Drinks"
 	desc = "A vendor serving a selection of Tizirian name brand drinks and alcohols."
@@ -201,3 +222,4 @@
 			),
 		),
 	)
+*/
