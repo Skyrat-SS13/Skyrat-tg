@@ -49,11 +49,11 @@
 /obj/machinery/vending/cultural/Initialize(mapload)
 	. = ..()
 	var/datum/language_holder/vendor_languages = get_language_holder()
-	vendor_languages.spoken_languages = list(language_to_speak = list(LANGUAGE_ATOM))
+	grant_all_languages()
 	vendor_languages.selected_language = language_to_speak
 
 /obj/machinery/vending/cultural/panslav
-	name = "Продавець надлишкового військового пайка"
+	name = "NRI Surplus Meal Pack Vendor"
 	desc = "Sponsored by the NRI to feed station crews, the screen shows more propaganda than it does food, it'd seem."
 	icon_state = "panslavfood"
 	light_mask = "panslavfood-light-mask"
