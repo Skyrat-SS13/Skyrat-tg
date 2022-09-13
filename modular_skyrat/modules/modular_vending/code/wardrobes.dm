@@ -197,11 +197,6 @@
 		)
 
 /obj/machinery/vending/wardrobe/chef_wardrobe/ghost_cafe
-	name = "ChefDrobe"
-	desc = "This vending machine might not dispense meat, but it certainly dispenses chef related clothing."
-	icon_state = "chefdrobe"
-	product_ads = "Our clothes are guaranteed to protect you from food splatters!"
-	vend_reply = "Thank you for using the ChefDrobe!"
 	products = list(
 		/obj/item/clothing/under/suit/waiter = 2,
 		/obj/item/radio/headset/headset_srv = 0,
