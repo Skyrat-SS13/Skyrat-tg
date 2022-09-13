@@ -1,13 +1,13 @@
 /obj/effect/spawner/random/vending/snackvend
 	loot = list(
-		/obj/machinery/vending/cultural,
-		/obj/machinery/vending/cultural/panslav,
-		/obj/machinery/vending/cultural/yangyu,
-		/obj/machinery/vending/cultural/mothic,
-		/obj/machinery/vending/cultural/tizirian,
+		/obj/machinery/vending/imported,
+		/obj/machinery/vending/imported/panslav,
+		/obj/machinery/vending/imported/yangyu,
+		/obj/machinery/vending/imported/mothic,
+		/obj/machinery/vending/imported/tizirian,
 	)
 
-/obj/machinery/vending/cultural
+/obj/machinery/vending/imported
 	name = "NT Sustenance Supplier"
 	desc = "A vending machine serving up only the finest of human college student food."
 	icon = 'modular_skyrat/modules/culturalvendors/icons/cultural_vendors.dmi'
@@ -46,13 +46,13 @@
 	/// What language should this vendor speak, for flavor reasons
 	var/language_to_speak = /datum/language/common
 
-/obj/machinery/vending/cultural/Initialize(mapload)
+/obj/machinery/vending/imported/Initialize(mapload)
 	. = ..()
 	var/datum/language_holder/vendor_languages = get_language_holder()
 	grant_all_languages()
 	vendor_languages.selected_language = language_to_speak
 
-/obj/machinery/vending/cultural/panslav
+/obj/machinery/vending/imported/panslav
 	name = "NRI Surplus Meal Pack Vendor"
 	desc = "Sponsored by the NRI to feed station crews, the screen shows more propaganda than it does food, it'd seem."
 	icon_state = "panslavfood"
@@ -83,7 +83,7 @@
 
 	language_to_speak = /datum/language/panslavic
 
-/obj/machinery/vending/cultural/yangyu
+/obj/machinery/vending/imported/yangyu
 	name = "質の高い食品ベンダー"
 	desc = "A vendor selling traditionally sol eastern foods of dubious quality, 'don't trust the sushi' is written on the side in marker."
 	icon_state = "yangyufood"
@@ -118,7 +118,7 @@
 
 	language_to_speak = /datum/language/yangyu
 
-/obj/machinery/vending/cultural/mothic
+/obj/machinery/vending/imported/mothic
 	name = "Nomad Fleet Ration Chit Exchange"
 	desc = "One of the nomad fleet's own ration vendors, converted to use credits instead of ration chits as the name would imply."
 	icon_state = "mothfood"
@@ -149,7 +149,7 @@
 
 	language_to_speak = /datum/language/moffic
 
-/obj/machinery/vending/cultural/tizirian
+/obj/machinery/vending/imported/tizirian
 	name = "Tizirian Imported Delicacies"
 	desc = "A vendor serving a fine collection of what is very likely knock-offs of popular Tizirian brands."
 	icon_state = "tiziriafood"
@@ -181,7 +181,7 @@
 	language_to_speak = /datum/language/draconic
 
 /* Pending part 2 of the cultural stuff
-/obj/machinery/vending/cultural/tizirian/drinks
+/obj/machinery/vending/imported/tizirian/drinks
 	name = "Tizirian Imported Drinks"
 	desc = "A vendor serving a selection of Tizirian name brand drinks and alcohols."
 	icon_state = "tiziriadrink"
@@ -197,7 +197,7 @@
 		),
 	)
 
-/obj/machinery/vending/cultural/synthdrinks
+/obj/machinery/vending/imported/synthdrinks
 	name = "Mal F. Unction's Robotic Brews"
 	desc = "A vendor of little known origin selling drinks that anything not made of silicon probably shouldn't consume."
 	icon_state = "robodrink"
@@ -217,7 +217,7 @@
 
 	language_to_speak = /datum/language/machine
 
-/obj/machinery/vending/cultural/mothic/drinks
+/obj/machinery/vending/imported/mothic/drinks
 	name = "Nomad Fleet Beverage Chit Exchange"
 	desc = "Second only to airlocks, the most used machine aboard Nomad Fleet ships, for some reason."
 	icon_state = "mothdrink"

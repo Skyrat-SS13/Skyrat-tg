@@ -352,7 +352,7 @@
 	cap_icon_state = "bottle_cap_tea"
 	flip_chance = 5 //I fucking dare you
 	custom_price = PAYCHECK_LOWER * 1.5
-	fill_icon_State = null
+	fill_icon_state = null
 
 /obj/item/reagent_containers/cup/glass/waterbottle/tea/astra
 	name = "bottle of tea astra"
