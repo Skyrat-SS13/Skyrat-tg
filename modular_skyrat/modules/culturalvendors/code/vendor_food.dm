@@ -3,12 +3,14 @@
 	desc = "The condensation and what you can only hope are the leftovers of food make this a bit hard to reuse."
 	icon = 'modular_skyrat/modules/culturalvendors/icons/cultural_quick_foods.dmi'
 	icon_state = "foodtray_empty"
+	custom_materials = list(/datum/material/plastic=1000)
 
 /obj/item/trash/empty_side_pack
 	name = "empty side wrapper"
 	desc = "Unfortunately, this no longer holds any sides to distract you from the other 'food'."
 	icon = 'modular_skyrat/modules/culturalvendors/icons/cultural_quick_foods.dmi'
 	icon_state = "foodpack_generic_trash"
+	custom_materials = list(/datum/material/plastic=1000)
 
 /obj/item/trash/empty_side_pack/nt
 	icon_state = "foodpack_nt_trash"
@@ -327,3 +329,48 @@
 	trash_type = /obj/item/trash/empty_side_pack/tiziria
 	tastes = list("cheese" = 1, "oil" = 1)
 	foodtypes = MEAT | VEGETABLES | NUTS | GORE | JUNKFOOD
+
+// Moving away from the packaged stuff now
+
+/obj/item/reagent_containers/cup/glass/dry_ramen/prepared
+	name = "cup ramen"
+	desc = "This one even comes with water, amazing!"
+	list_reagents = list(/datum/reagent/consumable/hot_ramen = 15, /datum/reagent/consumable/salt = 3)
+
+/obj/item/reagent_containers/cup/glass/dry_ramen/prepared/hell
+	name = "spicy cup ramen"
+	desc = "This one comes with water, AND a security checkpoint's worth of capsaicin!"
+	list_reagents = list(/datum/reagent/consumable/hell_ramen = 15, /datum/reagent/consumable/salt = 3)
+
+/obj/item/reagent_containers/cup/glass/waterbottle/tea
+	name = "bottle of tea"
+	desc = "A bottle of tea brought to you in a convenient plastic bottle."
+	icon = 'modular_skyrat/modules/culturalvendors/icons/cultural_quick_foods.dmi'
+	icon_state = "teabottle"
+	inhand_icon_state = "bottle"
+	list_reagents = list(/datum/reagent/consumable/tea = 40)
+	cap_icon_state = "bottle_cap_tea"
+	flip_chance = 5 //I fucking dare you
+	custom_price = PAYCHECK_LOWER * 1.5
+	fill_icon_State = null
+
+/obj/item/reagent_containers/cup/glass/waterbottle/tea/astra
+	name = "bottle of tea astra"
+	desc = "A bottle of tea astra, known for the rather unusual tastes the leaf is known to give when brewed."
+	icon_state = "teabottle_astra"
+	list_reagents = list(
+		/datum/reagent/consumable/tea = 25,
+		/datum/reagent/medicine/salglu_solution = 10, // I know this looks strange but this is what tea astra grinds into, tea in the year 25whatever baby
+		/datum/reagent/consumable/nutriment/vitamin = 5,
+	)
+	custom_price = PAYCHECK_LOWER * 3
+
+/obj/item/reagent_containers/cup/glass/waterbottle/tea/nip
+	name = "bottle of catnip tea"
+	desc = "A bottle of catnip tea, required to be at or under a 50% concentration by the SFDA for safety purposes."
+	icon_state = "teabottle_nip"
+	list_reagents = list(
+		/datum/reagent/consumable/catnip_tea = 20,
+		/datum/reagent/consumable/tea = 20, // I can't believe they would cut my catnip tea with regular tea
+	)
+	custom_price = PAYCHECK_LOWER * 4

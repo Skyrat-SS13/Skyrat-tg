@@ -95,19 +95,23 @@
 			"name" = "Snacks",
 			"icon" = "cookie",
 			"products" = list(
-				/obj/item/food/vendor_tray_meal/side/miso = 7,
-				/obj/item/food/vendor_tray_meal/side/rice = 7,
-				/obj/item/food/vendor_tray_meal/side/pickled_vegetables = 7,
+				/obj/item/reagent_containers/cup/glass/dry_ramen/prepared = 6,
+				/obj/item/reagent_containers/cup/glass/dry_ramen/prepared/hell = 6,
+				/obj/item/reagent_containers/cup/glass/waterbottle/tea = 6,
+				/obj/item/reagent_containers/cup/glass/waterbottle/tea/astra = 6,
+				/obj/item/reagent_containers/cup/glass/waterbottle/tea/nip = 6,
 			),
 		),
-
 		list(
 			"name" = "Meals",
 			"icon" = "pizza-slice",
 			"products" = list(
-				/obj/item/storage/box/foodpack/yangyu = 5,
-				/obj/item/storage/box/foodpack/yangyu/sushi = 5,
-				/obj/item/storage/box/foodpack/yangyu/beefrice = 5,
+				/obj/item/storage/box/foodpack/yangyu = 3,
+				/obj/item/storage/box/foodpack/yangyu/sushi = 3,
+				/obj/item/storage/box/foodpack/yangyu/beefrice = 3,
+				/obj/item/food/vendor_tray_meal/side/miso = 6,
+				/obj/item/food/vendor_tray_meal/side/rice = 6,
+				/obj/item/food/vendor_tray_meal/side/pickled_vegetables = 6,
 			),
 		),
 	)
