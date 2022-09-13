@@ -94,21 +94,6 @@
  * Clothing that does not have a digitigrade version, and thus will squash legs to fit.
  */
 
-/obj/item/clothing/suit/costume/yakuza
-	supports_variations_flags = NONE
-
-/obj/item/clothing/suit/costume/dutch
-	supports_variations_flags = NONE
-
-/obj/item/clothing/suit/costume/driscoll
-	supports_variations_flags = NONE
-
-/obj/item/clothing/suit/costume/irs
-	supports_variations_flags = NONE
-
-/obj/item/clothing/suit/costume/osi
-	supports_variations_flags = NONE
-
 /obj/item/clothing/suit/costume/tmc
 	supports_variations_flags = NONE
 
@@ -118,16 +103,10 @@
 /obj/item/clothing/suit/costume/deckers
 	supports_variations_flags = NONE
 
-/obj/item/clothing/suit/costume/morningstar
+/obj/item/clothing/suit/jacket/oversized
 	supports_variations_flags = NONE
 
-/obj/item/clothing/suit/costume/saints
-	supports_variations_flags = NONE
-
-/obj/item/clothing/suit/costume/phantom
-	supports_variations_flags = NONE
-
-/obj/item/clothing/suit/costume/allies
+/obj/item/clothing/suit/jacket/fancy
 	supports_variations_flags = NONE
 
 /obj/item/clothing/suit/costume/soviet
@@ -136,10 +115,7 @@
 /obj/item/clothing/suit/costume/yuri
 	supports_variations_flags = NONE
 
-/obj/item/clothing/suit/costume/sybil_slickers
-	supports_variations_flags = NONE
-
-/obj/item/clothing/suit/costume/basil_boys
+/obj/item/clothing/suit/costume/football_armor
 	supports_variations_flags = NONE
 
 /obj/item/clothing/suit/security
