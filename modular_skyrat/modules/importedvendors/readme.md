@@ -1,10 +1,10 @@
-## Title: CulturalVendors
+## Title: ImportedVendors
 
 MODULE ID: CulturalVendors
 
 ### Description:
 
-Overrides the random snack/drink spawners to be vendors selling food/drinks from a random somewhat species related group
+Adds random, imported food and drink vendors to the pool of snack vendors that can spawn across the maps
 
 ### TG Proc Changes:
 

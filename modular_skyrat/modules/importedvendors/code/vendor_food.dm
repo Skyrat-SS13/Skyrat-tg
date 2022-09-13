@@ -1,14 +1,14 @@
 /obj/item/trash/empty_food_tray
 	name = "empty plastic food tray"
 	desc = "The condensation and what you can only hope are the leftovers of food make this a bit hard to reuse."
-	icon = 'modular_skyrat/modules/culturalvendors/icons/cultural_quick_foods.dmi'
+	icon = 'modular_skyrat/modules/importedvendors/icons/imported_quick_foods.dmi'
 	icon_state = "foodtray_empty"
 	custom_materials = list(/datum/material/plastic=1000)
 
 /obj/item/trash/empty_side_pack
 	name = "empty side wrapper"
 	desc = "Unfortunately, this no longer holds any sides to distract you from the other 'food'."
-	icon = 'modular_skyrat/modules/culturalvendors/icons/cultural_quick_foods.dmi'
+	icon = 'modular_skyrat/modules/importedvendors/icons/imported_quick_foods.dmi'
 	icon_state = "foodpack_generic_trash"
 	custom_materials = list(/datum/material/plastic=1000)
 
@@ -30,7 +30,7 @@
 /obj/item/food/vendor_tray_meal
 	name = "\improper NT-Meal: Steak and Macaroni"
 	desc = "A 'salisbury steak' drowning in something similar to a gravy, with a macaroni and cheese substitute mix sitting right beside it."
-	icon = 'modular_skyrat/modules/culturalvendors/icons/cultural_quick_foods.dmi'
+	icon = 'modular_skyrat/modules/importedvendors/icons/imported_quick_foods.dmi'
 	icon_state = "foodtray_sadsteak"
 	trash_type = /obj/item/trash/empty_food_tray
 	food_reagents = list(/datum/reagent/consumable/nutriment = 5)
@@ -345,7 +345,7 @@
 /obj/item/reagent_containers/cup/glass/waterbottle/tea
 	name = "bottle of tea"
 	desc = "A bottle of tea brought to you in a convenient plastic bottle."
-	icon = 'modular_skyrat/modules/culturalvendors/icons/cultural_quick_foods.dmi'
+	icon = 'modular_skyrat/modules/importedvendors/icons/imported_quick_foods.dmi'
 	icon_state = "teabottle"
 	inhand_icon_state = "bottle"
 	list_reagents = list(/datum/reagent/consumable/tea = 40)
