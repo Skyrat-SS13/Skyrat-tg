@@ -47,7 +47,7 @@
 		// SKYRAT EDIT ADDITION
 		if(human_owner.emissive_eyes)
 			is_emissive = TRUE
-		if(!see_all_dirs)
+		if(!see_all_dirs && CONFIG_GET(flag/native_fov))
 			human_owner.add_fov_trait(type, 0)
 			ADD_TRAIT(human_owner, FOV_IMMUNE, ORGAN_TRAIT)
 		// SKYRAT EDIT END
@@ -111,8 +111,9 @@
 	eye_owner.update_sight()
 	// SKYRAT EDIT ADDITION
 	is_emissive = FALSE
-	eye_owner.remove_fov_trait(type)
-	REMOVE_TRAIT(eye_owner, FOV_IMMUNE, ORGAN_TRAIT)
+	if(HAS_TRAIT_FROM(eye_owner, FOV_IMMUNE, ORGAN_TRAIT))
+		eye_owner.remove_fov_trait(type)
+		REMOVE_TRAIT(eye_owner, FOV_IMMUNE, ORGAN_TRAIT)
 	// SKYRAT EDIT END
 
 #define OFFSET_X 1
