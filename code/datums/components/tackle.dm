@@ -107,7 +107,7 @@
 	RegisterSignal(user, COMSIG_MOVABLE_MOVED, .proc/checkObstacle)
 	playsound(user, 'sound/weapons/thudswoosh.ogg', 40, TRUE, -1)
 
-	var/leap_word = isfelinid(user) ? "pounce" : "leap" //If cat, "pounce" instead of "leap".
+	var/leap_word = isfeline(user) ? "pounce" : "leap" //If cat, "pounce" instead of "leap". // SKYRAT EDIT - FELINE TRAITS. Was: isfelinid(user)
 	if(can_see(user, A, 7))
 		user.visible_message(span_warning("[user] [leap_word]s at [A]!"), span_danger("You [leap_word] at [A]!"))
 	else
@@ -157,7 +157,7 @@
 	var/mob/living/carbon/target = hit
 	var/mob/living/carbon/human/T = target
 	var/mob/living/carbon/human/S = user
-	var/tackle_word = isfelinid(user) ? "pounce" : "tackle" //If cat, "pounce" instead of "tackle".
+	var/tackle_word = isfeline(user) ? "pounce" : "tackle" //If cat, "pounce" instead of "tackle". // SKYRAT EDIT - FELINE TRAITS. Was: isfelinid(user)
 
 	var/roll = rollTackle(target)
 	tackling = FALSE
