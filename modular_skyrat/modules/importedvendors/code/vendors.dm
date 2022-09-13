@@ -99,6 +99,7 @@
 				/obj/item/reagent_containers/cup/glass/dry_ramen/prepared/hell = 6,
 				/obj/item/reagent_containers/cup/glass/waterbottle/tea = 6,
 				/obj/item/reagent_containers/cup/glass/waterbottle/tea/astra = 6,
+				/obj/item/reagent_containers/cup/glass/waterbottle/tea/strawberry = 6,
 				/obj/item/reagent_containers/cup/glass/waterbottle/tea/nip = 6,
 			),
 		),

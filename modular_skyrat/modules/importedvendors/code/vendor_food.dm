@@ -357,7 +357,7 @@
 /obj/item/reagent_containers/cup/glass/waterbottle/tea/astra
 	name = "bottle of tea astra"
 	desc = "A bottle of tea astra, known for the rather unusual tastes the leaf is known to give when brewed."
-	icon_state = "teabottle_astra"
+	icon_state = "teabottle_blue"
 	list_reagents = list(
 		/datum/reagent/consumable/tea = 25,
 		/datum/reagent/medicine/salglu_solution = 10, // I know this looks strange but this is what tea astra grinds into, tea in the year 25whatever baby
@@ -365,12 +365,19 @@
 	)
 	custom_price = PAYCHECK_LOWER * 3
 
+/obj/item/reagent_containers/cup/glass/waterbottle/tea/strawberry
+	name = "bottle of strawberry tea"
+	desc = "A bottle of strawberry flavored tea, rumors that it might make you hear song lyrics are entirely false."
+	icon_state = "teabottle_pink"
+	list_reagents = list(/datum/reagent/consumable/pinktea = 40)
+	custom_price = PAYCHECK_LOWER * 3
+
 /obj/item/reagent_containers/cup/glass/waterbottle/tea/nip
 	name = "bottle of catnip tea"
 	desc = "A bottle of catnip tea, required to be at or under a 50% concentration by the SFDA for safety purposes."
-	icon_state = "teabottle_nip"
+	icon_state = "teabottle_pink"
 	list_reagents = list(
 		/datum/reagent/consumable/catnip_tea = 20,
-		/datum/reagent/consumable/tea = 20, // I can't believe they would cut my catnip tea with regular tea
+		/datum/reagent/consumable/pinkmilk = 20, // I can't believe they would cut my catnip
 	)
 	custom_price = PAYCHECK_LOWER * 4
