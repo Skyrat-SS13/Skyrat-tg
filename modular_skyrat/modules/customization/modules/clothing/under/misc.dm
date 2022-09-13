@@ -27,7 +27,7 @@
 	icon_state = "whitebunnysuit"
 	can_adjust = FALSE
 
-/obj/item/clothing/under/croptop
+/obj/item/clothing/under/croptop //ORION TODO: remove (undershirt of choice + jeanshorts achieves this item much better, and recolorable)
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	name = "crop top"
@@ -99,16 +99,6 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
 	icon_state = "countess_s"
-	body_parts_covered = CHEST|GROIN|LEGS|ARMS
-	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
-	flags_inv = HIDESHOES
-
-/obj/item/clothing/under/misc/formaldressred
-	name = "formal red dress"
-	desc = "Not too wide flowing, but big enough to make an impression."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	icon_state = "formalred_s"
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 	flags_inv = HIDESHOES
@@ -258,7 +248,7 @@
 	body_parts_covered = GROIN
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 
-/obj/item/clothing/under/rank/medical/doctor/white
+/obj/item/clothing/under/rank/medical/doctor/white //ORION TODO: move to skyrat medical file
 	name = "white scrubs"
 	desc = "It's made of a special fiber that provides minor protection against biohazards. This one is in a cream white colour."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
