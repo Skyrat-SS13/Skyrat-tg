@@ -152,7 +152,7 @@
 		return FALSE
 
 	if(evolver.has_evolved_recently)
-		evolver.balloon_alert(evolver, "can evolve in [evolver.evolution_cooldown_time / 1 MINUTES] minutes")
+		evolver.balloon_alert(evolver, "can evolve in 1.5 minutes") //Make that 1.5 variable later, but it keeps fucking up for me :(
 		return FALSE
 
 	var/new_beno = new type_to_evolve_into(evolver.loc)
