@@ -80,6 +80,7 @@
 			/obj/item/food/pancakes = 4,
 			/obj/item/food/eggsausage = 5,
 			/datum/custom_order/icecream = 14,
+			/obj/item/food/danish_hotdog = 3,
 		),
 		VENUE_BAR = list(
 			/datum/reagent/consumable/ethanol/b52 = 6,
@@ -120,6 +121,7 @@
 			/obj/item/food/eggplantparm = 3,
 			/obj/item/food/cornuto = 2,
 			/datum/custom_order/icecream = 10,
+			/obj/item/food/salad/greek_salad = 6,
 		),
 		VENUE_BAR = list(
 			/datum/reagent/consumable/ethanol/fanciulli = 5,
@@ -130,6 +132,7 @@
 			/datum/reagent/consumable/ethanol/wine = 3,
 			/datum/reagent/consumable/ethanol/grappa = 3,
 			/datum/reagent/consumable/ethanol/amaretto = 5,
+			/datum/reagent/consumable/cucumberlemonade = 2,
 		),
 	)
 
@@ -165,6 +168,7 @@
 			/datum/reagent/consumable/ethanol/between_the_sheets = 4,
 			/datum/reagent/consumable/ethanol/beer = 5,
 			/datum/reagent/consumable/ethanol/wine = 5,
+			/datum/reagent/consumable/ethanol/gin_garden = 2,
 		),
 	)
 
