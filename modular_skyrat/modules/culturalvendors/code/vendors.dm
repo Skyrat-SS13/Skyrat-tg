@@ -16,7 +16,6 @@
 	light_mask = "ntfood-light-mask"
 	light_color = LIGHT_COLOR_LIGHT_CYAN
 	product_slogans = "Caution, contents may be selling hot!;Look at these low prices!;Hungry? Me too, wait no you didn't hear that!"
-	vend_reply = "Reminder to dispose of leftovers properly!"
 	product_categories = list(
 		list(
 			"name" = "Snacks",
@@ -50,6 +49,7 @@
 /obj/machinery/vending/cultural/Initialize(mapload)
 	. = ..()
 	var/datum/language_holder/vendor_languages = get_language_holder()
+	vendor_languages.spoken_languages = list(language_to_speak = list(LANGUAGE_ATOM))
 	vendor_languages.selected_language = language_to_speak
 
 /obj/machinery/vending/cultural/panslav
@@ -59,7 +59,6 @@
 	light_mask = "panslavfood-light-mask"
 	light_color = LIGHT_COLOR_ELECTRIC_GREEN
 	product_slogans = "Guaranteed fresh, even from the vacuum of space!;The same meals our loyal soldiers eat!;Ten percent of all proceeds go to funding the NRI!"
-	vend_reply = "Consume with plenty of water!"
 	product_categories = list(
 		list(
 			"name" = "Snacks",
@@ -91,7 +90,6 @@
 	light_mask = "yangyufood-light-mask"
 	light_color = LIGHT_COLOR_FLARE
 	product_slogans = "Fresh farmed space carp from local space!;Imitation lobstrocity sushi choices availible!;Made with traditional recipes and care!"
-	vend_reply = "Thank you for shopping with us, please enjoy!"
 	product_categories = list(
 		list(
 			"name" = "Snacks",
@@ -123,7 +121,6 @@
 	light_mask = "mothfood-light-mask"
 	light_color = LIGHT_COLOR_HALOGEN
 	product_slogans = "Support the fleet, conserve rations today!;Some options in reduced portion and cost!;Do your part to keep the fleet flying!"
-	vend_reply = "Exchange received, enjoy your meal!"
 	product_categories = list(
 		list(
 			"name" = "Snacks",
@@ -155,7 +152,6 @@
 	light_mask = "tiziriafood-light-mask"
 	light_color = LIGHT_COLOR_FIRE
 	product_slogans = "Real imports from the capital itself, we promise!;Rare selections of salt water catch!;Moonfish glaze included with all meat options!"
-	vend_reply = "Thank you for choosing only the finest!"
 	product_categories = list(
 		list(
 			"name" = "Snacks",
