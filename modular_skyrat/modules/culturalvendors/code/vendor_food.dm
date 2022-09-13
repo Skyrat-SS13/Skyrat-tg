@@ -31,13 +31,18 @@
 	icon = 'modular_skyrat/modules/culturalvendors/icons/cultural_quick_foods.dmi'
 	icon_state = "foodtray_sadsteak"
 	trash_type = /obj/item/trash/empty_food_tray
-	food_reagents = list(/datum/reagent/consumable/nutriment = 7)
+	food_reagents = list(/datum/reagent/consumable/nutriment = 5)
 	tastes = list("meat?" = 2, "cheese?" = 2, "laziness" = 1)
 	foodtypes = MEAT | GRAIN | DAIRY | JUNKFOOD
 	food_flags = FOOD_FINGER_FOOD
 	w_class = WEIGHT_CLASS_SMALL
 	///Does this food have the steam effect on it when initialized
 	var/hot_and_steamy = TRUE
+
+/obj/item/food/vendor_tray_meal/Initialize(mapload)
+	. = ..()
+	if(hot_and_steamy)
+		overlays += mutable_appearance('icons/effects/steam.dmi', "steam_triple", ABOVE_OBJ_LAYER)
 
 /obj/item/food/vendor_tray_meal/examine_more(mob/user)
 	. = ..()
@@ -58,6 +63,7 @@
 	name = "\improper NT-Meal: Spicy Chicken Sandwich"
 	desc = "A pretty sad looking chicken sandwich, the 'meat' itself covered in so many manufactured spices that it has become an eerie red color."
 	icon_state = "foodtray_chickiesandwich"
+	food_reagents = list(/datum/reagent/consumable/nutriment = 5, /datum/reagent/consumable/capsaicin = 10)
 	tastes = list("bread" = 2, "chicken?" = 2, "overwhelming spice" = 2, "laziness" = 1)
 	foodtypes = MEAT | GRAIN | DAIRY | JUNKFOOD
 
@@ -170,7 +176,7 @@
 	tastes = list("tough bread" = 2, "peanut butter" = 2)
 	foodtypes = GRAIN | JUNKFOOD
 	hot_and_steamy = FALSE
-	custom_price =
+	custom_price = PAYCHECK_LOWER * 2.5
 
 /obj/item/food/vendor_tray_meal/side/crackers_and_jam
 	name = "\improper NT-Side: Flatbread and Berry Jelly"
@@ -302,7 +308,7 @@
 	name = "\improper Tiziria Imports: Rootbread Crackers and Pate"
 	desc = "A small stack of rootbread crackers, with a small spread of meat pate for each."
 	icon_state = "foodpack_tiziria"
-	trash_type = /obj/item/trash/empty_side_pack/tizira
+	trash_type = /obj/item/trash/empty_side_pack/tiziria
 	tastes = list("tough rootbread" = 2, "pate" = 2)
 	foodtypes = VEGETABLES | NUTS | MEAT | JUNKFOOD
 
@@ -310,7 +316,7 @@
 	name = "\improper Tiziria Imports: Korta Brittle"
 	desc = "A perfectly rectangular portion of unsweetened korta brittle."
 	icon_state = "foodpack_tiziria"
-	trash_type = /obj/item/trash/empty_side_pack/tizira
+	trash_type = /obj/item/trash/empty_side_pack/tiziria
 	tastes = list("peppery heat" = 2)
 	foodtypes = NUTS | JUNKFOOD
 
@@ -318,6 +324,6 @@
 	name = "\improper Tiziria Imports: Crisped Headcheese"
 	desc = "A processed looking block of breaded headcheese."
 	icon_state = "foodpack_tiziria"
-	trash_type = /obj/item/trash/empty_side_pack/tizira
+	trash_type = /obj/item/trash/empty_side_pack/tiziria
 	tastes = list("cheese" = 1, "oil" = 1)
 	foodtypes = MEAT | VEGETABLES | NUTS | GORE | JUNKFOOD

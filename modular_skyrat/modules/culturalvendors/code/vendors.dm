@@ -1,3 +1,12 @@
+/obj/effect/spawner/random/vending/snackvend
+	loot = list(
+		/obj/machinery/vending/cultural,
+		/obj/machinery/vending/cultural/panslav,
+		/obj/machinery/vending/cultural/yangyu,
+		/obj/machinery/vending/cultural/mothic,
+		/obj/machinery/vending/cultural/tizirian,
+	)
+
 /obj/machinery/vending/cultural
 	name = "NT Sustenance Supplier"
 	desc = "A vending machine serving up only the finest of human college student food."

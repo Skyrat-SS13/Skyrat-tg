@@ -4,7 +4,7 @@
 	icon = 'modular_skyrat/modules/culturalvendors/icons/cultural_quick_foods.dmi'
 	icon_state = "foodpack_generic_big"
 	illustration = null
-	custom_price =
+	custom_price = PAYCHECK_LOWER * 5
 	///What the main course of this package is
 	var/main_course
 	///What the side of this package should be
