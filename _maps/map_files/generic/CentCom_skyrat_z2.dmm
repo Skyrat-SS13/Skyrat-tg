@@ -383,13 +383,7 @@
 /turf/open/indestructible/hotelwood,
 /area/centcom/holding/cafe)
 "aib" = (
-/obj/machinery/vending/boozeomat{
-	default_price = 0;
-	extended_inventory = 1;
-	extra_price = 0;
-	fair_market_price = 0;
-	set_obj_flags = "EMAGGED"
-	},
+/obj/machinery/vending/boozeomat,
 /obj/effect/turf_decal/trimline/green/line{
 	dir = 4
 	},
@@ -7382,10 +7376,10 @@
 	dir = 8;
 	dwidth = 1;
 	height = 13;
-	id = "arrivals_shuttle";
 	name = "tram dock";
 	roundstart_template = /datum/map_template/shuttle/arrivals_skyrat;
-	width = 5
+	width = 5;
+	shuttle_id = "arrivals_shuttle"
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -10172,10 +10166,10 @@
 	dir = 2;
 	dwidth = 25;
 	height = 50;
-	id = "emergency_away";
 	json_key = "emergency";
 	name = "CentCom Emergency Shuttle Dock";
-	width = 50
+	width = 50;
+	shuttle_id = "emergency_away"
 	},
 /turf/open/space/basic,
 /area/space)
