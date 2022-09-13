@@ -37,6 +37,9 @@
 	/// indication that the eyes are undergoing some negative effect
 	var/damaged = FALSE
 
+	///Whether the pair of eyes can see in all directions.
+	var/see_all_dirs = FALSE //SKYRAT EDIT - FOV immune eyes
+
 /obj/item/organ/internal/eyes/Insert(mob/living/carbon/eye_owner, special = FALSE, drop_if_replaced = FALSE, initialising)
 	. = ..()
 	if(ishuman(eye_owner))
@@ -44,6 +47,9 @@
 		// SKYRAT EDIT ADDITION
 		if(human_owner.emissive_eyes)
 			is_emissive = TRUE
+		if(!see_all_dirs)
+			human_owner.add_fov_trait(type, 0)
+			ADD_TRAIT(human_owner, FOV_IMMUNE, ORGAN_TRAIT)
 		// SKYRAT EDIT END
 		old_eye_color_left = human_owner.eye_color_left
 		old_eye_color_right = human_owner.eye_color_right
@@ -103,7 +109,11 @@
 	eye_owner.set_blurriness(0)
 	eye_owner.clear_fullscreen("eye_damage", 0)
 	eye_owner.update_sight()
-	is_emissive = FALSE // SKYRAT EDIT ADDITION
+	// SKYRAT EDIT ADDITION
+	is_emissive = FALSE
+	eye_owner.remove_fov_trait(type)
+	REMOVE_TRAIT(eye_owner, FOV_IMMUNE, ORGAN_TRAIT)
+	// SKYRAT EDIT END
 
 #define OFFSET_X 1
 #define OFFSET_Y 2
@@ -536,6 +546,7 @@
 	desc = "These eyes seem to stare back no matter the direction you look at it from."
 	eye_icon_state = "flyeyes"
 	icon_state = "eyeballs-fly"
+	see_all_dirs = TRUE //SKYRAT EDIT - FOV immune eyes
 
 /obj/item/organ/internal/eyes/fly/Insert(mob/living/carbon/eye_owner, special = FALSE, drop_if_replaced = TRUE)
 	. = ..()

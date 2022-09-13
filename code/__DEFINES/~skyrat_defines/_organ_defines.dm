@@ -8,3 +8,6 @@
 #define ORGAN_SLOT_ANUS "anus"
 
 #define ORGAN_SLOT_WINGS "wings"
+
+///Whether the person is FOV immune
+#define FOV_IMMUNE "fov_immune"
