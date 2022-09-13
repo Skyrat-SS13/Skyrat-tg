@@ -68,21 +68,21 @@
 	foodtypes = MEAT | GRAIN | DAIRY | JUNKFOOD
 
 /obj/item/food/vendor_tray_meal/meat_pie
-	name = "\improper Готова страва: Meat Pastry"
+	name = "\improper Main Course: Meat Pastry"
 	desc = "A relatively rectangular pastry stuffed with what you can only hope is a ground meat."
 	icon_state = "foodtray_meatpie"
 	tastes = list("meat?" = 2, "pastry" = 2, "laziness" = 1)
 	foodtypes = MEAT | GRAIN | JUNKFOOD
 
 /obj/item/food/vendor_tray_meal/potato_pancakes
-	name = "\improper Готова страва: Flattened Potato Cakes"
+	name = "\improper Main Course: Flattened Potato Cakes"
 	desc = "A pair of flat potato pancakes, pretty much just shredded potato in a flat, 'pan fried' form in this case."
 	icon_state = "foodtray_potatocake"
 	tastes = list("potato" = 2, "laziness" = 1)
 	foodtypes = BREAKFAST | JUNKFOOD
 
 /obj/item/food/vendor_tray_meal/beet_soup
-	name = "\improper Готова страва: Red Beet Soup"
+	name = "\improper Main Course: Red Beet Soup"
 	desc = "A worryingly desaturated soup supposedly made from red beets, at least its warm."
 	icon_state = "foodtray_redsoup"
 	tastes = list("beets?" = 2, "laziness" = 1)
@@ -202,21 +202,21 @@
 	. = ..()
 
 /obj/item/food/vendor_tray_meal/side/rye
-	name = "\improper Другорядний перекус: Rye Bread Slices"
+	name = "\improper Side Course: Rye Bread Slices"
 	desc = "A small stack of rye bread slices, a great pairing with beet soup if you've got any around."
 	icon_state = "foodpack_panslav"
 	trash_type = /obj/item/trash/empty_side_pack/panslav
 	tastes = list("rye" = 2)
 
 /obj/item/food/vendor_tray_meal/side/breadsticks
-	name = "\improper Другорядний перекус: Breadsticks"
+	name = "\improper Side Course: Breadsticks"
 	desc = "A small assortment of distinctly pan-slavic breadsticks, these seem stale enough to double as a stabbing weapon in an emergency."
 	icon_state = "foodpack_panslav"
 	trash_type = /obj/item/trash/empty_side_pack/panslav
 	tastes = list("hard bread" = 2)
 
 /obj/item/food/vendor_tray_meal/side/sunflower_seeds
-	name = "\improper Другорядний перекус: Sunflower Seeds"
+	name = "\improper Side Course: Sunflower Seeds"
 	desc = "Certainly not a repackaged pack of Semki brand sunflower seeds."
 	icon_state = "foodpack_panslav"
 	trash_type = /obj/item/trash/empty_side_pack/panslav

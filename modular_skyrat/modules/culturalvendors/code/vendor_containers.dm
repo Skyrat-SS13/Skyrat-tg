@@ -35,7 +35,7 @@
 	main_course = /obj/item/food/vendor_tray_meal/chicken_sandwich
 
 /obj/item/storage/box/foodpack/panslav
-	name = "\improper Готова страва - Meat Pastry"
+	name = "\improper Packaged Ready Meal - Meat Pastry"
 	desc = "A relatively bland package made of reflective metal foil, the symbol of the NRI, as well as some instructions in pan-slavic are printed on the top."
 	icon_state = "foodpack_panslav_big"
 	main_course = /obj/item/food/vendor_tray_meal/meat_pie
@@ -43,11 +43,11 @@
 	condiment_pack = /obj/item/reagent_containers/condiment/pack/sugar
 
 /obj/item/storage/box/foodpack/panslav/potatocakes
-	name = "\improper Готова страва - Potato Pancakes"
+	name = "\improper Packaged Ready Meal - Potato Pancakes"
 	main_course = /obj/item/food/vendor_tray_meal/potato_pancakes
 
 /obj/item/storage/box/foodpack/panslav/beetsoup
-	name = "\improper Готова страва - Red Beet Soup"
+	name = "\improper Packaged Ready Meal - Red Beet Soup"
 	main_course = /obj/item/food/vendor_tray_meal/beet_soup
 
 /obj/item/storage/box/foodpack/yangyu
