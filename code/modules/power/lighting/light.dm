@@ -314,7 +314,7 @@
 	//SKYRAT EDIT END
 
 
-
+/*SKYRAT EDIT - MOVED TO modular_skyrat/modules/aesthetics/lights/code/lighting.dm
 // attack with item - insert light (if right type), otherwise try to break the light
 
 /obj/machinery/light/attackby(obj/item/tool, mob/living/user, params)
@@ -324,20 +324,6 @@
 		var/obj/item/lightreplacer/replacer = tool
 		replacer.ReplaceLight(src, user)
 		return
-
-	//SKYRAT EDIT
-	if(istype(tool, /obj/item/multitool))
-		if(constant_flickering)
-			to_chat(user, span_notice("You start repairing the ballast of [src] with [tool]."))
-			if(do_after(user, 2 SECONDS, src))
-				stop_flickering()
-				to_chat(user, span_notice("You repair the ballast of [src]!"))
-			return
-		else
-			to_chat(user, span_warning("[src]'s ballast is already working!"))
-			return
-
-	//SKYRAT EDIT END
 
 	// attempt to insert light
 	if(istype(tool, /obj/item/light))
@@ -385,6 +371,8 @@
 		do_sparks(3, TRUE, src)
 		if (prob(75))
 			electrocute_mob(user, get_area(src), src, (rand(7,10) * 0.1), TRUE)
+
+*/
 
 /obj/machinery/light/deconstruct(disassembled = TRUE)
 	if(flags_1 & NODECONSTRUCT_1)
