@@ -297,15 +297,12 @@
 	page_link = "Guide_to_engineering"
 
 /obj/item/book/manual/wiki/security_space_law
-	//name = "Space Law" //ORIGINAL
-	name = "Corporate Regulations" //SKYRAT EDIT CHANGE
-	//desc = "A set of Nanotrasen guidelines for keeping law and order on their space stations." //ORIGINAL
-	desc = "A set of Nanotrasen regulations for keeping law and order on their space stations." //SKYRAT EDIT CHANGE
+	name = "Corporate Regulations" //SKYRAT EDIT CHANGE - Original: "Space Law"
+	desc = "A set of Nanotrasen regulations for keeping law, order, and procedure followed within their space stations." //SKYRAT EDIT CHANGE - Original: "A set of Nanotrasen guidelines for keeping law and order on their space stations."
 	icon_state = "bookSpaceLaw"
 	starting_author = "Nanotrasen"
-	starting_title = "Space Law"
-	//page_link = "Space_Law" //ORIGINAL
-	page_link = "Corporate_Regulations" //SKYRAT EDIT CHANGE
+	starting_title = "Corporate Regulations" //SKYRAT EDIT CHANGE - Original: "Space Law"
+	page_link = "Corporate_Regulations" //SKYRAT EDIT CHANGE - Original: "Space_Law"
 
 /obj/item/book/manual/wiki/security_space_law/suicide_act(mob/living/user)
 	user.visible_message(span_suicide("[user] pretends to read \the [src] intently... then promptly dies of laughter!"))
