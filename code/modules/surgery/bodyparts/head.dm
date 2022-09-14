@@ -220,6 +220,9 @@
 					facial_overlay.color = facial_hair_color
 					facial_overlay.alpha = hair_alpha
 					. += facial_overlay
+				
+			if(!eyes)
+				. += image('icons/mob/species/human/human_face.dmi', "eyes_missing", -BODY_LAYER, SOUTH)
 
 			//Applies the debrained overlay if there is no brain
 			if(!brain)
@@ -259,8 +262,11 @@
 				eye_right.color = eyes.eye_color_right
 			. += eye_left
 			. += eye_right
+<<<<<<< HEAD
 		else
 			. += image('icons/mob/human_face.dmi', "eyes_missing", -BODY_LAYER, SOUTH)
+=======
+>>>>>>> c4d58d2ff5c (Robot heads no longer have bleeding eyeholes (#69830))
 	else
 		if(!facial_hair_hidden && facial_overlay && (FACEHAIR in species_flags_list))
 			facial_overlay.alpha = hair_alpha
