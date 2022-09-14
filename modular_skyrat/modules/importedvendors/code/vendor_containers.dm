@@ -1,7 +1,7 @@
 /obj/item/storage/box/foodpack
 	name = "wrapped meal container"
 	desc = "A generic brown paper food package, you aren't quite sure where this comes from."
-	icon = 'modular_skyrat/modules/culturalvendors/icons/cultural_quick_foods.dmi'
+	icon = 'modular_skyrat/modules/importedvendors/icons/imported_quick_foods.dmi'
 	icon_state = "foodpack_generic_big"
 	illustration = null
 	custom_price = PAYCHECK_LOWER * 5
@@ -33,22 +33,6 @@
 /obj/item/storage/box/foodpack/nt/chickensammy
 	name = "\improper NT-Combo Meal - Spicy Chicken Sandwich"
 	main_course = /obj/item/food/vendor_tray_meal/chicken_sandwich
-
-/obj/item/storage/box/foodpack/panslav
-	name = "\improper Packaged Ready Meal - Meat Pastry"
-	desc = "A relatively bland package made of reflective metal foil, the symbol of the NRI, as well as some instructions in pan-slavic are printed on the top."
-	icon_state = "foodpack_panslav_big"
-	main_course = /obj/item/food/vendor_tray_meal/meat_pie
-	side_item = /obj/effect/spawner/random/vendor_meal_sides/panslav
-	condiment_pack = /obj/item/reagent_containers/condiment/pack/sugar
-
-/obj/item/storage/box/foodpack/panslav/potatocakes
-	name = "\improper Packaged Ready Meal - Potato Pancakes"
-	main_course = /obj/item/food/vendor_tray_meal/potato_pancakes
-
-/obj/item/storage/box/foodpack/panslav/beetsoup
-	name = "\improper Packaged Ready Meal - Red Beet Soup"
-	main_course = /obj/item/food/vendor_tray_meal/beet_soup
 
 /obj/item/storage/box/foodpack/yangyu
 	name = "\improper 温かい食事 - Homestyle Noodles"
@@ -89,6 +73,7 @@
 	main_course = /obj/item/food/vendor_tray_meal/moonfish_nizaya
 	side_item = /obj/effect/spawner/random/vendor_meal_sides/tiziria
 	condiment_pack = /obj/item/reagent_containers/condiment/pack/bbqsauce
+	custom_price = PAYCHECK_LOWER * 7 //Tizirian imports are a bit more expensive
 
 /obj/item/storage/box/foodpack/tiziria/examine_more(mob/user)
 	. = ..()

@@ -1,7 +1,7 @@
 /obj/effect/spawner/random/vending/snackvend
 	loot = list(
 		/obj/machinery/vending/imported,
-		/obj/machinery/vending/imported/panslav,
+		///obj/machinery/vending/imported/panslav,
 		/obj/machinery/vending/imported/yangyu,
 		/obj/machinery/vending/imported/mothic,
 		/obj/machinery/vending/imported/tizirian,
@@ -21,19 +21,27 @@
 			"name" = "Snacks",
 			"icon" = "cookie",
 			"products" = list(
-				/obj/item/food/vendor_tray_meal/side = 7,
-				/obj/item/food/vendor_tray_meal/side/crackers_and_jam = 7,
-				/obj/item/food/vendor_tray_meal/side/crackers_and_cheese = 7,
+				/obj/item/food/peanuts/random = 6,
+				/obj/item/food/cnds/random = 6,
+				/obj/item/food/pistachios = 6,
+				/obj/item/food/cornchips/random = 6,
+				/obj/item/food/sosjerky = 6,
+				/obj/item/reagent_containers/cup/soda_cans/cola = 6,
+				/obj/item/reagent_containers/cup/soda_cans/lemon_lime = 6,
+				/obj/item/reagent_containers/cup/soda_cans/starkist = 6,
+				/obj/item/reagent_containers/cup/soda_cans/pwr_game = 6,
 			),
 		),
-
 		list(
 			"name" = "Meals",
 			"icon" = "pizza-slice",
 			"products" = list(
-				/obj/item/storage/box/foodpack/nt = 5,
-				/obj/item/storage/box/foodpack/nt/burger = 5,
-				/obj/item/storage/box/foodpack/nt/chickensammy = 5,
+				/obj/item/storage/box/foodpack/nt = 6,
+				/obj/item/storage/box/foodpack/nt/burger = 6,
+				/obj/item/storage/box/foodpack/nt/chickensammy = 6,
+				/obj/item/food/vendor_tray_meal/side = 6,
+				/obj/item/food/vendor_tray_meal/side/crackers_and_jam = 6,
+				/obj/item/food/vendor_tray_meal/side/crackers_and_cheese = 6,
 			),
 		),
 	)
@@ -52,36 +60,10 @@
 	grant_all_languages()
 	vendor_languages.selected_language = language_to_speak
 
+/* Pending me speaking to a russian (terrifying experience)
 /obj/machinery/vending/imported/panslav
-	name = "NRI Surplus Meal Pack Vendor"
-	desc = "Sponsored by the NRI to feed station crews, the screen shows more propaganda than it does food, it'd seem."
-	icon_state = "panslavfood"
-	light_mask = "panslavfood-light-mask"
-	light_color = LIGHT_COLOR_ELECTRIC_GREEN
-	product_slogans = "Guaranteed fresh, even from the vacuum of space!;The same meals our loyal soldiers eat!;Ten percent of all proceeds go to funding the NRI!"
-	product_categories = list(
-		list(
-			"name" = "Snacks",
-			"icon" = "cookie",
-			"products" = list(
-				/obj/item/food/vendor_tray_meal/side/rye = 7,
-				/obj/item/food/vendor_tray_meal/side/breadsticks = 7,
-				/obj/item/food/vendor_tray_meal/side/sunflower_seeds = 7,
-			),
-		),
-
-		list(
-			"name" = "Meals",
-			"icon" = "pizza-slice",
-			"products" = list(
-				/obj/item/storage/box/foodpack/panslav = 5,
-				/obj/item/storage/box/foodpack/panslav/potatocakes = 5,
-				/obj/item/storage/box/foodpack/panslav/beetsoup = 5,
-			),
-		),
-	)
-
 	language_to_speak = /datum/language/panslavic
+*/
 
 /obj/machinery/vending/imported/yangyu
 	name = "質の高い食品ベンダー"
@@ -97,6 +79,9 @@
 			"products" = list(
 				/obj/item/reagent_containers/cup/glass/dry_ramen/prepared = 6,
 				/obj/item/reagent_containers/cup/glass/dry_ramen/prepared/hell = 6,
+				/obj/item/food/vendor_snacks/ricecrackers = 6,
+				/obj/item/food/vendor_snacks/mochi_icecream = 6,
+				/obj/item/food/vendor_snacks/mochi_icecream/matcha = 6,
 				/obj/item/reagent_containers/cup/glass/waterbottle/tea = 6,
 				/obj/item/reagent_containers/cup/glass/waterbottle/tea/astra = 6,
 				/obj/item/reagent_containers/cup/glass/waterbottle/tea/strawberry = 6,
@@ -107,9 +92,9 @@
 			"name" = "Meals",
 			"icon" = "pizza-slice",
 			"products" = list(
-				/obj/item/storage/box/foodpack/yangyu = 3,
-				/obj/item/storage/box/foodpack/yangyu/sushi = 3,
-				/obj/item/storage/box/foodpack/yangyu/beefrice = 3,
+				/obj/item/storage/box/foodpack/yangyu = 6,
+				/obj/item/storage/box/foodpack/yangyu/sushi = 6,
+				/obj/item/storage/box/foodpack/yangyu/beefrice = 6,
 				/obj/item/food/vendor_tray_meal/side/miso = 6,
 				/obj/item/food/vendor_tray_meal/side/rice = 6,
 				/obj/item/food/vendor_tray_meal/side/pickled_vegetables = 6,
@@ -121,7 +106,7 @@
 
 /obj/machinery/vending/imported/mothic
 	name = "Nomad Fleet Ration Chit Exchange"
-	desc = "One of the nomad fleet's own ration vendors, converted to use credits instead of ration chits as the name would imply."
+	desc = "One of the nomad fleet's own ration vendors, don't mind the name engraving, this machine just takes credits."
 	icon_state = "mothfood"
 	light_mask = "mothfood-light-mask"
 	light_color = LIGHT_COLOR_HALOGEN
@@ -131,19 +116,27 @@
 			"name" = "Snacks",
 			"icon" = "cookie",
 			"products" = list(
-				/obj/item/food/vendor_tray_meal/side/moffin = 7,
-				/obj/item/food/vendor_tray_meal/side/cornbread = 7,
-				/obj/item/food/vendor_tray_meal/side/roasted_seeds = 7,
+				/obj/item/food/vendor_snacks/mothmallow = 6,
+				/obj/item/food/vendor_snacks/moth_bagged = 6,
+				/obj/item/food/vendor_snacks/moth_bagged/fueljack = 6,
+				/obj/item/food/vendor_snacks/moth_bagged/cheesecake = 6,
+				/obj/item/food/vendor_snacks/moth_bagged/cheesecake/honey = 6,
+				/obj/item/reagent_containers/cup/soda_cans/skyrat/lemonade = 6,
+				/obj/item/reagent_containers/cup/soda_cans/skyrat/navyrum = 6,
+				/obj/item/reagent_containers/cup/soda_cans/skyrat/sodawater_moth = 6,
+				/obj/item/reagent_containers/cup/soda_cans/skyrat/ginger_beer = 6,
 			),
 		),
-
 		list(
 			"name" = "Meals",
 			"icon" = "pizza-slice",
 			"products" = list(
-				/obj/item/storage/box/foodpack/moth = 5,
-				/obj/item/storage/box/foodpack/moth/bakedrice = 5,
-				/obj/item/storage/box/foodpack/moth/fueljack = 5,
+				/obj/item/storage/box/foodpack/moth = 6,
+				/obj/item/storage/box/foodpack/moth/bakedrice = 6,
+				/obj/item/storage/box/foodpack/moth/fueljack = 6,
+				/obj/item/food/vendor_tray_meal/side/moffin = 6,
+				/obj/item/food/vendor_tray_meal/side/cornbread = 6,
+				/obj/item/food/vendor_tray_meal/side/roasted_seeds = 6,
 			),
 		),
 	)
@@ -162,74 +155,28 @@
 			"name" = "Snacks",
 			"icon" = "cookie",
 			"products" = list(
-				/obj/item/food/vendor_tray_meal/side/root_crackers = 7,
-				/obj/item/food/vendor_tray_meal/side/korta_brittle = 7,
-				/obj/item/food/vendor_tray_meal/side/crispy_headcheese = 7,
+				/obj/item/food/chips/shrimp = 6,
+				/obj/item/food/vendor_snacks/lizard_bagged = 6,
+				/obj/item/food/vendor_snacks/lizard_bagged/moonjerky = 6,
+				/obj/item/food/vendor_snacks/lizard_boxed = 6,
+				/obj/item/food/vendor_snacks/lizard_boxed/sweetroll = 6,
+				/obj/item/reagent_containers/cup/glass/bottle/mushi_kombucha = 6,
+				/obj/item/reagent_containers/cup/glass/waterbottle/tea/mushroom = 6,
+				/obj/item/reagent_containers/cup/soda_cans/skyrat/kortara = 6,
 			),
 		),
-
 		list(
 			"name" = "Meals",
 			"icon" = "pizza-slice",
 			"products" = list(
-				/obj/item/storage/box/foodpack/tiziria = 5,
-				/obj/item/storage/box/foodpack/tiziria/roll = 5,
-				/obj/item/storage/box/foodpack/tiziria/stirfry = 5,
+				/obj/item/storage/box/foodpack/tiziria = 6,
+				/obj/item/storage/box/foodpack/tiziria/roll = 6,
+				/obj/item/storage/box/foodpack/tiziria/stirfry = 6,
+				/obj/item/food/vendor_tray_meal/side/root_crackers = 6,
+				/obj/item/food/vendor_tray_meal/side/korta_brittle = 6,
+				/obj/item/food/vendor_tray_meal/side/crispy_headcheese = 6,
 			),
 		),
 	)
 
 	language_to_speak = /datum/language/draconic
-
-/* Pending part 2 of the cultural stuff
-/obj/machinery/vending/imported/tizirian/drinks
-	name = "Tizirian Imported Drinks"
-	desc = "A vendor serving a selection of Tizirian name brand drinks and alcohols."
-	icon_state = "tiziriadrink"
-	light_mask = "tiziriadrink-light-mask"
-	product_slogans = "Ceremonial grade mushroom tea, hand ground!;Naturally spiced kortara, TFHSA certified!;A taste of a home far away, in convenient can form!"
-	product_categories = list(
-		list(
-			"name" = "Drinks",
-			"icon" = "mug-hot",
-			"products" = list(
-				/obj/ = 1,
-			),
-		),
-	)
-
-/obj/machinery/vending/imported/synthdrinks
-	name = "Mal F. Unction's Robotic Brews"
-	desc = "A vendor of little known origin selling drinks that anything not made of silicon probably shouldn't consume."
-	icon_state = "robodrink"
-	light_mask = "robodrink-light-mask"
-	light_color = LIGHT_COLOR_HALOGEN
-	product_slogans = "Turrets to thirsty, crack a can open!;One-hundred percent pure, caffeinated oil!;Now that's a clean burning energy drink, I tell you h'what!"
-	vend_reply = "Contents are likely flammable, you have been warned!"
-	product_categories = list(
-		list(
-			"name" = "Drinks",
-			"icon" = "mug-hot",
-			"products" = list(
-				/obj/ = 1,
-			),
-		),
-	)
-
-	language_to_speak = /datum/language/machine
-
-/obj/machinery/vending/imported/mothic/drinks
-	name = "Nomad Fleet Beverage Chit Exchange"
-	desc = "Second only to airlocks, the most used machine aboard Nomad Fleet ships, for some reason."
-	icon_state = "mothdrink"
-	light_mask = "mothdrink-light-mask"
-	product_categories = list(
-		list(
-			"name" = "Drinks",
-			"icon" = "mug-hot",
-			"products" = list(
-				/obj/ = 1,
-			),
-		),
-	)
-*/
