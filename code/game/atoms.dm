@@ -689,14 +689,18 @@
 		//SKYRAT EDIT ADDITION END
 
 		var/list/materials_list = list()
-		for(var/datum/material/current_material as anything in custom_materials)
+		for(var/custom_material in custom_materials)
+			var/datum/material/current_material = GET_MATERIAL_REF(custom_material)
 			materials_list += "[current_material.name]"
 		. += "<u>It is made out of [english_list(materials_list)]</u>."
 
+<<<<<<< HEAD
 		// SKYRAT EDIT ADDITION BEGIN - HR sections
 		if(length(custom_materials) > 1)
 			. += EXAMINE_SECTION_BREAK //SKYRAT EDIT ADDITION
 		//SKYRAT EDIT ADDITION END
+=======
+>>>>>>> ac37eeb4216 (Fixes custom material examine runtime (#69873))
 	if(reagents)
 		if(reagents.flags & TRANSPARENT)
 			. += EXAMINE_SECTION_BREAK //SKYRAT EDIT ADDITION - HR sections
