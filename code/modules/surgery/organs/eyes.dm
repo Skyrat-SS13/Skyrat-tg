@@ -37,8 +37,10 @@
 	/// indication that the eyes are undergoing some negative effect
 	var/damaged = FALSE
 
+	// SKYRAT EDIT START - FOV immune eyes
 	///Whether the pair of eyes can see in all directions.
-	var/see_all_dirs = FALSE //SKYRAT EDIT - FOV immune eyes
+	var/see_all_dirs = FALSE
+	// SKYRAT EDIT END
 
 /obj/item/organ/internal/eyes/Insert(mob/living/carbon/eye_owner, special = FALSE, drop_if_replaced = FALSE, initialising)
 	. = ..()
