@@ -52,7 +52,7 @@
 /// Updates the applied FOV value and applies the handler to client if able
 /mob/living/proc/update_fov()
 	var/highest_fov
-	if(CONFIG_GET(flag/native_fov) && !HAS_TRAIT(src, FOV_IMMUNE))
+	if(CONFIG_GET(flag/native_fov) && !HAS_TRAIT(src, FOV_IMMUNE)) //SKYRAT EDIT - FOV immune eyes
 		highest_fov = native_fov
 	for(var/trait_type in fov_traits)
 		var/fov_type = fov_traits[trait_type]
