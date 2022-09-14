@@ -6,11 +6,11 @@
 	illustration = null
 	custom_price = PAYCHECK_LOWER * 5
 	///What the main course of this package is
-	var/main_course
+	var/main_course = /obj/item/trash/empty_food_tray
 	///What the side of this package should be
-	var/side_item
+	var/side_item = /obj/item/food/vendor_snacks
 	///What kind of condiment pack should we give the package
-	var/condiment_pack
+	var/condiment_pack = /obj/item/reagent_containers/condiment/pack/ketchup
 
 /obj/item/storage/box/foodpack/PopulateContents()
 	. = ..()
