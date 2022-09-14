@@ -270,6 +270,6 @@
 /obj/item/reagent_containers/cup/soda_cans/skyrat/kortara
 	name = "kortara"
 	desc = "A can of kortara, alcohol brewed from korta seeds, which gives it a unique peppery spice flavor."
-	icon_state = "navyrum"
+	icon_state = "kortara"
 	list_reagents = list(/datum/reagent/consumable/ethanol/kortara = 30)
 	drink_type = ALCOHOL
