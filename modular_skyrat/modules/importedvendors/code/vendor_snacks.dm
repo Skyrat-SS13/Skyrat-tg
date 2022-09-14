@@ -263,7 +263,7 @@
 /obj/item/reagent_containers/cup/glass/waterbottle/tea/mushroom
 	name = "bottle of mushroom tea"
 	desc = "A bottle of strawberry flavored tea, does not contain any actual strawberries."
-	icon_state = "teabottle_pink"
+	icon_state = "teabottle_grey"
 	list_reagents = list(/datum/reagent/consumable/mushroom_tea = 40)
 	custom_price = PAYCHECK_LOWER * 3
 
