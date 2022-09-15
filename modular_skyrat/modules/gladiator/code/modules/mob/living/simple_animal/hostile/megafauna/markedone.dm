@@ -253,7 +253,7 @@
 			melee_damage_lower = initial(melee_damage_lower)
 		if(FIFTY_PERCENT to SEVENTY_FIVE_PERCENT)
 			if(phase == MARKED_ONE_FIRST_PHASE)
-				phase = MARKED_ONE_SECOND_ PHASE
+				phase = MARKED_ONE_SECOND_PHASE
 				swordslam()
 				playsound(src, 'sound/effects/clockcult_gateway_disrupted.ogg', 200, 1, 2)
 				icon_state = "marked2"
