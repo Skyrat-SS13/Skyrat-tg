@@ -188,18 +188,18 @@
 	message_admins("Unhandled interaction '[params["interaction"]]'. Inform coders.")
 
 /// Checks if the target has ERP toys enabled, and can be logially reached by the user.
-/datum/component/interactable/proc/can_lewd_strip(mob/living/carbon/human/user, mob/living/carbon/human/other_user, slot_index)
-	if(!other_user.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
+/datum/component/interactable/proc/can_lewd_strip(mob/living/carbon/human/source, mob/living/carbon/human/target, slot_index)
+	if(!target.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 		return FALSE
-	if(!(user.loc == other_user.loc || user.Adjacent(other_user)))
+	if(!(source.loc == target.loc || source.Adjacent(target)))
 		return FALSE
-	if(!user.has_arms())
+	if(!source.has_arms())
 		return FALSE
 	if(!slot_index) // This condition is for the UI to decide if the button is shown at all. Slot index should never be null otherwise.
 		return TRUE
-	if(slot_index == ORGAN_SLOT_NIPPLES && !other_user.is_topless())
+	if(slot_index == ORGAN_SLOT_NIPPLES && !target.is_topless())
 		return FALSE
-	return other_user.is_bottomless()
+	return target.is_bottomless()
 
 /// Decides if a player should be able to insert or remove an item from a provided lewd slot_index.
 /datum/component/interactable/proc/is_toy_compatible(obj/item/clothing/sextoy/item, slot_index)
