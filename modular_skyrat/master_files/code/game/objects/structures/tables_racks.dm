@@ -9,7 +9,7 @@
 	/// Is the table able to put patients in stasis?
 	var/stasis_capable = FALSE
 	/// Is the Operating table able to preform numbing?
-	var/numbing_capable = TRUE
+	var/numbing_capable = FALSE
 	/// Is the patient already numbed?
 
 /// Used to numb a patient and apply stasis to them if enabled.
