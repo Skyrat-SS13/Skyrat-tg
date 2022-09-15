@@ -1,8 +1,11 @@
+/// To prevent an issue with stupidly low negative values.
+#define AROUSAL_MINIMUM -30
+#define AROUSAL_MINIMUM_DETECTABLE 10
 #define AROUSAL_LOW 30
 #define AROUSAL_MEDIUM 70
 #define AROUSAL_HIGH 85
 #define AROUSAL_AUTO_CLIMAX_THRESHOLD 90
-#define AROUSAL_PAIN_LIMIT 50
+#define AROUSAL_LIMIT 100
 
 #define TRAIT_MASOCHISM "masochism"
 #define TRAIT_SADISM "sadism"
