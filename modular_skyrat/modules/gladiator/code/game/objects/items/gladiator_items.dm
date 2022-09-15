@@ -63,7 +63,7 @@
 	worn_icon = 'modular_skyrat/modules/gladiator/icons/berserk_suit.dmi'
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT
 	armor = list(MELEE = 45, BULLET = 40, LASER = 30, ENERGY = 30, BOMB = 80, BIO = 100, FIRE = 100, ACID = 100)
-	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
+	resistance_flags = INDESTRUCTIBLE
 	actions_types = list(/datum/action/item_action/berserk_mode)
 
 /obj/item/clothing/head/hooded/berserker/gatsu/Initialize(mapload)
@@ -100,7 +100,7 @@
 		return TRUE
 
 /obj/item/claymore/dragonslayer
-	name = "\proper dragonslayer"
+	name = "\proper Dragonslayer"
 	desc = "A blade that seems too big to be called a sword. Too big, too thick, too heavy, and too rough, it's more like a large hunk of raw iron."
 	icon = 'modular_skyrat/modules/gladiator/icons/dragonslayer.dmi'
 	icon_state = "dragonslayer"
@@ -113,8 +113,7 @@
 	force = 20
 	wound_bonus = 10
 	bare_wound_bonus = 5
-	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
-	armour_penetration = 20
+	resistance_flags = INDESTRUCTIBLE
 	block_chance = 30
 	sharpness = SHARP_EDGED
 	// aughhghghgh this really should be elementized but this works for now
@@ -172,12 +171,12 @@
 	playsound(src, 'sound/weapons/thudswoosh.ogg', 50, TRUE, -1)
 	return SHIELD_BLOCK
 
-/obj/item/claymore/dragonslayer/veryfuckingloud
-	name = "\proper tempered dragonslayer"
+/obj/item/claymore/dragonslayer/very_fucking_loud
+	name = "\proper Tempered Dragonslayer"
 	desc = null
 	hitsound = 'modular_skyrat/modules/gladiator/Clang_cut.ogg'
 
-/obj/item/claymore/dragonslayer/veryfuckingloud/examine()
+/obj/item/claymore/dragonslayer/very_fucking_loud/examine()
 	. = ..()
 	. += span_danger("CLANG")
 
@@ -189,7 +188,7 @@
 
 /obj/structure/closet/crate/necropolis/gladiator/PopulateContents()
 	if(prob(5))
-		new /obj/item/claymore/dragonslayer/veryfuckingloud(src)
+		new /obj/item/claymore/dragonslayer/very_fucking_loud(src)
 	else
 		new /obj/item/claymore/dragonslayer(src)
 	new /obj/item/clothing/suit/hooded/berserker/gatsu(src)
@@ -197,7 +196,7 @@
 
 /obj/structure/closet/crate/necropolis/gladiator/crusher/PopulateContents()
 	if(prob(5))
-		new /obj/item/claymore/dragonslayer/veryfuckingloud(src)
+		new /obj/item/claymore/dragonslayer/very_fucking_loud(src)
 	else
 		new /obj/item/claymore/dragonslayer(src)
 	new /obj/item/clothing/suit/hooded/berserker/gatsu(src)
