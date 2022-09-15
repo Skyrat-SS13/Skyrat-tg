@@ -71,7 +71,7 @@
 				var/create_cum_decal = FALSE
 
 				if(!climax_choice || climax_choice == "On the floor")
-					if(wear_condom())
+					if(can_wear_condom())
 						var/obj/item/clothing/sextoy/condom/condom = get_item_by_slot(LEWD_SLOT_PENIS)
 						if(condom.condom_state == "broken")
 							create_cum_decal = TRUE

@@ -439,16 +439,12 @@
 	else
 		..()
 
-/mob/living/carbon/is_ballgagged()
-	return(istype(src.wear_mask, /obj/item/clothing/mask/ballgag) || istype(src.wear_mask, /obj/item/clothing/head/helmet/space/deprivation_helmet))
-
-/mob/living/carbon/human/wear_condom()
+/mob/living/carbon/human/can_wear_condom()
 	. = ..()
 	if(.)
 		return TRUE
 	if(penis != null && istype(penis, /obj/item/clothing/sextoy/condom))
 		return TRUE
-	return FALSE
 
 // For handling things that don't already have handcuff handlers.
 /mob/living/carbon/human/set_handcuffed(new_value)
