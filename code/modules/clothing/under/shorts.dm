@@ -4,7 +4,7 @@
 	icon_state = "shorts"
 	greyscale_config = /datum/greyscale_config/shorts
 	greyscale_config_worn = /datum/greyscale_config/shorts_worn
-	greyscale_config_worn_digi = /datum/greyscale_config/shorts_worn/digi //SKYRAT EDIT - DigiGreyscale
+	greyscale_config_worn_digi = /datum/greyscale_config/shorts_worn/digi //SKYRAT EDIT ADDITION - DigiGreyscale
 	greyscale_colors = "#575757#3E3E3E#75634F"
 	gender = PLURAL
 	body_parts_covered = GROIN
@@ -22,7 +22,7 @@
 	female_sprite_flags = NO_FEMALE_UNIFORM
 	greyscale_config = /datum/greyscale_config/jeanshorts
 	greyscale_config_worn = /datum/greyscale_config/jeanshorts_worn
-	greyscale_config_worn_digi = /datum/greyscale_config/jeanshorts_worn/digi //SKYRAT EDIT - DigiGreyscale
+	greyscale_config_worn_digi = /datum/greyscale_config/jeanshorts_worn/digi //SKYRAT EDIT ADDITION - DigiGreyscale
 	greyscale_colors = "#787878#723E0E#4D7EAC"
 	flags_1 = IS_PLAYER_COLORABLE_1
 

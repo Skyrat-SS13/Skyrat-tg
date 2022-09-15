@@ -573,7 +573,7 @@
 	dir = 8;
 	dwidth = 1;
 	height = 13;
-	id = "arrivals_stationary";
+	shuttle_id = "arrivals_stationary";
 	name = "arrivals";
 	width = 5
 	},
@@ -1655,7 +1655,7 @@
 /turf/open/floor/iron,
 /area/station/hallway/primary/central)
 "ew" = (
-/obj/machinery/door_timer{
+/obj/machinery/status_display/door_timer{
 	id = "isolation";
 	name = "Solitary Timer";
 	pixel_y = 28
@@ -2508,7 +2508,7 @@
 "gI" = (
 /obj/docking_port/stationary/random{
 	dir = 4;
-	id = "pod_4_lavaland";
+	shuttle_id = "pod_4_lavaland";
 	name = "lavaland"
 	},
 /turf/open/space,
@@ -2789,20 +2789,19 @@
 	dir = 4;
 	dwidth = 1;
 	height = 13;
-	id = "arrivals_stationary";
+	shuttle_id = "arrivals_stationary";
 	name = "arrivals";
 	width = 5
 	},
 /turf/open/floor/plating/airless,
 /area/space)
 "hA" = (
-/obj/structure/grille,
 /obj/structure/window/reinforced/tinted,
 /obj/structure/window/reinforced/tinted{
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/cable,
+/obj/effect/spawner/structure/electrified_grille,
 /turf/open/floor/plating,
 /area/station/security/prison/work)
 "hB" = (
@@ -3995,7 +3994,7 @@
 	dir = 8;
 	dwidth = 1;
 	height = 13;
-	id = "arrivals_stationary";
+	shuttle_id = "arrivals_stationary";
 	name = "arrivals";
 	roundstart_template = null;
 	width = 5
@@ -4316,12 +4315,11 @@
 /turf/open/floor/iron,
 /area/station/hallway/secondary/entry)
 "lx" = (
-/obj/structure/cable,
-/obj/structure/grille,
 /obj/structure/window/reinforced/tinted{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/effect/spawner/structure/electrified_grille,
 /turf/open/floor/plating,
 /area/station/security/prison/work)
 "ly" = (
@@ -4487,7 +4485,7 @@
 	dir = 2;
 	dwidth = 8;
 	height = 11;
-	id = "ferry_home";
+	shuttle_id = "ferry_home";
 	name = "Port Bay 2";
 	width = 20
 	},
@@ -5093,7 +5091,7 @@
 	dir = 2;
 	dwidth = 8;
 	height = 11;
-	id = "ferry_home";
+	shuttle_id = "ferry_home";
 	name = "Port Bay 2";
 	width = 20
 	},
@@ -5819,16 +5817,15 @@
 /turf/open/floor/iron/showroomfloor,
 /area/station/ai_monitored/security/armory)
 "pJ" = (
-/obj/structure/grille,
 /obj/structure/barricade/wooden,
 /obj/machinery/door/airlock/maintenance,
 /obj/effect/mapping_helpers/airlock/abandoned,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/structure/cable,
 /obj/effect/mapping_helpers/airlock/unres{
 	dir = 1
 	},
 /obj/effect/mapping_helpers/airlock/access/all/security/general,
+/obj/effect/spawner/structure/electrified_grille,
 /turf/open/floor/iron/dark,
 /area/station/maintenance/fore)
 "pK" = (
@@ -7157,7 +7154,7 @@
 	dir = 8;
 	dwidth = 8;
 	height = 11;
-	id = "ferry_home";
+	shuttle_id = "ferry_home";
 	name = "Port Bay 2";
 	width = 20
 	},
@@ -10339,8 +10336,6 @@
 /turf/open/floor/iron,
 /area/station/service/salon)
 "BT" = (
-/obj/structure/cable,
-/obj/structure/grille,
 /obj/structure/window/reinforced/tinted{
 	dir = 4
 	},
@@ -10348,6 +10343,7 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/effect/spawner/structure/electrified_grille,
 /turf/open/floor/plating,
 /area/station/security/prison/upper)
 "BU" = (
@@ -10743,7 +10739,7 @@
 "CZ" = (
 /obj/docking_port/stationary/random/icemoon{
 	dir = 8;
-	id = "pod_lavaland";
+	shuttle_id = "pod_lavaland";
 	name = "lavaland"
 	},
 /turf/open/misc/asteroid/snow/icemoon,
@@ -11190,7 +11186,7 @@
 	dir = 8;
 	dwidth = 8;
 	height = 11;
-	id = "ferry_home";
+	shuttle_id = "ferry_home";
 	name = "Port Bay 2";
 	width = 20
 	},
@@ -12080,7 +12076,7 @@
 	dir = 8;
 	dwidth = 8;
 	height = 11;
-	id = "ferry_home";
+	shuttle_id = "ferry_home";
 	name = "Port Bay 2";
 	width = 20
 	},
@@ -12495,10 +12491,6 @@
 "Ij" = (
 /obj/structure/table,
 /obj/machinery/light/small/directional/north,
-/obj/item/toy/plush/borbplushie{
-	name = "Therapeep";
-	pixel_y = 6
-	},
 /turf/open/floor/plating,
 /area/station/security/prison/safe)
 "Ik" = (
@@ -12774,7 +12766,7 @@
 	dir = 2;
 	dwidth = 11;
 	height = 22;
-	id = "whiteship_home";
+	shuttle_id = "whiteship_home";
 	name = "SS13: Auxiliary Dock, Station-Port";
 	width = 35
 	},
@@ -13201,7 +13193,7 @@
 	dir = 2;
 	dwidth = 11;
 	height = 22;
-	id = "whiteship_home";
+	shuttle_id = "whiteship_home";
 	name = "SS13: Auxiliary Dock, Station-Port";
 	width = 35
 	},
@@ -13900,7 +13892,7 @@
 /obj/docking_port/stationary{
 	dwidth = 1;
 	height = 13;
-	id = "arrivals_stationary";
+	shuttle_id = "arrivals_stationary";
 	name = "arrivals";
 	roundstart_template = null;
 	width = 5
@@ -13914,7 +13906,7 @@
 /area/station/hallway/secondary/entry)
 "Mn" = (
 /obj/docking_port/stationary/random{
-	id = "pod_lavaland";
+	shuttle_id = "pod_lavaland";
 	name = "lavaland"
 	},
 /turf/open/space/basic,
@@ -14242,7 +14234,7 @@
 /obj/docking_port/stationary{
 	dwidth = 3;
 	height = 5;
-	id = "commonmining_home";
+	shuttle_id = "commonmining_home";
 	name = "SS13: Common Mining Dock";
 	roundstart_template = /datum/map_template/shuttle/mining_common/meta;
 	width = 7
@@ -15232,7 +15224,7 @@
 	dir = 8;
 	dwidth = 1;
 	height = 13;
-	id = "arrivals_stationary";
+	shuttle_id = "arrivals_stationary";
 	name = "arrivals";
 	width = 5
 	},
@@ -17865,7 +17857,7 @@
 	dir = 8;
 	dwidth = 8;
 	height = 11;
-	id = "ferry_home";
+	shuttle_id = "ferry_home";
 	name = "Port Bay 2";
 	width = 20
 	},
@@ -18305,12 +18297,11 @@
 /turf/open/floor/wood,
 /area/station/security/prison)
 "Ze" = (
-/obj/structure/grille,
 /obj/structure/window/reinforced/tinted,
 /obj/structure/window/reinforced/tinted{
 	dir = 1
 	},
-/obj/structure/cable,
+/obj/effect/spawner/structure/electrified_grille,
 /turf/open/floor/plating,
 /area/station/security/prison)
 "Zf" = (
