@@ -1,5 +1,13 @@
 #define MARKED_ONE_STUN_DURATION 1.5 SECONDS
 #define MARKED_ONE_ANGER_DURATION 10 MINUTES
+#define MARKED_ONE_FIRST_PHASE 1
+#define MARKED_ONE_SECOND_PHASE 2
+#define MARKED_ONE_THIRD_PHASE 3 
+#define MARKED_ONE_FINAL_PHASE 4
+#define ONE_HUNDRED_PERCENT 100
+#define SEVENTY_FIVE_PERCENT 75
+#define FIFTY_PERCENT 50
+#define SHOWDOWN_PERCENT 25
 
 /**
  * A mean-ass single-combat sword-wielding nigh-demigod that is nothing but a walking, talking, breathing Berserk reference. He do kill shit doe!
@@ -29,13 +37,13 @@
 	ranged = 1
 	ranged_cooldown_time = 30
 	minimum_distance = 1
-	health = 3000
-	maxHealth = 3000
+	health = 5000
+	maxHealth = 5000 //double the health of bubblegum, a very intentional shift in total difficulty
 	movement_type = GROUND
 	loot = list(/obj/structure/closet/crate/necropolis/gladiator)
 	crusher_loot = list(/obj/structure/closet/crate/necropolis/gladiator/crusher)
 	/// Boss phase, from 1 to 3
-	var/phase = 1
+	var/phase = MARKED_ONE_FIRST_PHASE
 	/// People we have introduced ourselves to - WEAKREF list
 	var/list/introduced = list()
 	/// Are we doing the spin attack?
@@ -87,7 +95,7 @@
 
 /mob/living/simple_animal/hostile/megafauna/gladiator/examine()
     . = ..()
-    . += "<b><p style='color:red;'>They are currently in Phase [phase]</p></b>"
+    . += span_boldwarning("They are currently in Phase [phase].")
 
 /mob/living/simple_animal/hostile/megafauna/gladiator/adjustHealth(amount, updating_health, forced)
 	get_angry()
@@ -194,37 +202,42 @@
 		// The gladiator hates non-humans, he especially hates ash walkers.
 		if(targetspecies.id == SPECIES_HUMAN)
 			var/static/list/human_messages = list(
-									"Is this all that is left?", \
-									"Show the necropolis it was wrong to choose me.", \
-									"Ironic that I become what I once fought like you.", \
-									"Sometimes, the abyss gazes back.", \
-									"Show me a good time, miner!")
+									"Is this all that is left?",
+									"Show the necropolis it was wrong to choose me.",
+									"Ironic that I become what I once fought like you.",
+									"Sometimes, the abyss gazes back.",
+									"Show me a good time, miner!",
+									"I'll give you the first hit.",
+								)
 			say(message = pick(human_messages))
 			introduced |= WEAKREF(target)
 		else if(targetspecies.id == SPECIES_LIZARD_ASH)
 			var/static/list/ashie_messages = list(
-									"Foolishness, ash walker!",\
-									"I've had enough of you for a lifetime!",\
-									"I don't need a crusher to KICK YOUR ASS!", \
-									"GET OVER HERE!!")
+									"Foolishness, ash walker!",
+									"I've had enough of you for a lifetime!",
+									"I don't need a crusher to KICK YOUR ASS!",
+									"GET OVER HERE!!",
+								)
+
 			say(message = pick(ashie_messages), language = /datum/language/draconic)
 			introduced |= WEAKREF(target)
 			get_angry()
 			GiveTarget(target)
 		else
 			var/static/list/other_humanoid_messages = list(
-									"I will smite you!", \
-									"I will show you true power!", \
-									"Let us see how worthy you are!", \
-									"You will make a fine rug!", \
-									"For the necropolis!")
+									"I will smite you!",
+									"I will show you true power!",
+									"Let us see how worthy you are!",
+									"You will make a fine rug!",
+									"For the necropolis!"
+									)
 			say(message = pick(other_humanoid_messages))
 			introduced |= WEAKREF(target)
 			get_angry()
 			GiveTarget(target)
 	else
-		//im gonna b-b-b-bEEEERK
-		say("It's berkin' time!")
+		//simplemobs beware
+		say("FRESH MEAT!")
 		introduced |= WEAKREF(target)
 
 /mob/living/simple_animal/hostile/megafauna/gladiator/proc/update_phase()
@@ -232,33 +245,34 @@
 	if(src.stat >= DEAD)
 		return
 	switch(healthpercentage)
-		if(75 to 100)
-			phase = 1
+		if(SEVENTY_FIVE_PERCENT to ONE_HUNDRED_PERCENT)
+			phase = MARKED_ONE_FIRST_PHASE
 			rapid_melee = initial(rapid_melee)
 			move_to_delay = initial(move_to_delay)
 			melee_damage_upper = initial(melee_damage_upper)
 			melee_damage_lower = initial(melee_damage_lower)
-		if(50 to 75)
-			if(phase == 1)
-				phase = 2
+		if(FIFTY_PERCENT to SEVENTY_FIVE_PERCENT)
+			if(phase == MARKED_ONE_FIRST_PHASE)
+				phase = MARKED_ONE_SECOND_ PHASE
+				swordslam()
 				playsound(src, 'sound/effects/clockcult_gateway_disrupted.ogg', 200, 1, 2)
 				icon_state = "marked2"
 				rapid_melee = 2
 				move_to_delay = 2
 				melee_damage_upper = 30
 				melee_damage_lower = 30
-		if(25 to 50)
-			if(phase == 2)
-				phase = 3
+		if(SHOWDOWN_PERCENT to FIFTY_PERCENT)
+			if(phase == MARKED_ONE_SECOND_PHASE)
+				phase = MARKED_ONE_THIRD_PHASE
 				swordslam()
 				playsound(src, 'sound/effects/clockcult_gateway_charging.ogg', 200, 1, 2)
 				rapid_melee = 4
 				melee_damage_upper = 25
 				melee_damage_lower = 25
 				move_to_delay = 1.7
-		if(0 to 25)
-			if (phase == 3)
-				phase = 4
+		if(0 to SHOWDOWN_PERCENT)
+			if (phase == MARKED_ONE_THIRD_PHASE)
+				phase = MARKED_ONE_FINAL_PHASE
 				playsound(src, 'sound/effects/clockcult_gateway_active.ogg', 200, 1, 2)
 				icon_state = "marked3"
 				rapid_melee = 1
@@ -290,7 +304,7 @@
 	for(var/turf/targeted as anything in spinningturfs)
 		dir = get_dir(src, targeted)
 		var/obj/effect/temp_visual/small_smoke/halfsecond/smonk = new /obj/effect/temp_visual/small_smoke/halfsecond(targeted)
-		QDEL_IN(smonk, 0.05 SECONDS)
+		QDEL_IN(smonk, 0.5 SECONDS)
 		for(var/mob/living/slapped in targeted)
 			if(!faction_check(faction, slapped.faction) && !(slapped in hit_things))
 				playsound(src, 'sound/weapons/slash.ogg', 75, 0)
@@ -350,54 +364,9 @@
 	boned.throwforce = 35
 	playsound(src, 'sound/weapons/bolathrow.ogg', 60, 0)
 	boned.throw_at(target, 7, 3, thrower = src)
-	QDEL_IN(boned, 3 SECONDS)
+	QDEL_IN(boned, 3 SECONDS)		
 
-/mob/living/simple_animal/hostile/megafauna/gladiator/OpenFire()
-	if(!COOLDOWN_FINISHED(src, ranged_cooldown))
-		return FALSE
-	if(spinning || stunned || charging)
-		return FALSE
-	ranged_cooldown = world.time
-	switch(phase)
-		if(1)
-			if(prob(25) && (get_dist(src, target) <= spinning_range))
-				INVOKE_ASYNC(src, .proc/spinattack)
-				ranged_cooldown += 7 SECONDS
-			else
-				if(prob(66))
-					INVOKE_ASYNC(src, .proc/charge, target, 21)
-					ranged_cooldown += 4 SECONDS
-				else
-					INVOKE_ASYNC(src, .proc/teleport, target)
-					ranged_cooldown += 3.5 SECONDS
-		if(2)
-			if(prob(40) && (get_dist(src, target) <= spinning_range))
-				INVOKE_ASYNC(src, .proc/spinattack)
-				ranged_cooldown += 5.5 SECONDS
-			else
-				if(prob(40))
-					INVOKE_ASYNC(src, .proc/bone_knife_throw, target)
-					ranged_cooldown += 2 SECONDS
-				else
-					INVOKE_ASYNC(src, .proc/teleport, target)
-					ranged_cooldown += 3 SECONDS
-		if(3)
-			if(prob(35))
-				INVOKE_ASYNC(src, .proc/bone_knife_throw, target)
-				ranged_cooldown += 1 SECONDS
-			else
-				INVOKE_ASYNC(src, .proc/teleport, target)
-				ranged_cooldown += 2 SECONDS
-		if(4)
-			if(prob(40))
-				INVOKE_ASYNC(src, .proc/swordslam)
-				ranged_cooldown += 3 SECONDS
-			else
-				INVOKE_ASYNC(src, .proc/charge, target, 21)
-				ranged_cooldown += 2 SECONDS
-				
-
-/proc/ground_pound(atom/source, range, delay, throw_range)
+/mob/living/simple_animal/hostile/megafauna/gladiator/proc/ground_pound(atom/source, range, delay, throw_range)
 	var/turf/orgin = get_turf(source)
 	if(!orgin)
 		return
@@ -422,5 +391,57 @@
 /mob/living/simple_animal/hostile/megafauna/gladiator/proc/swordslam()
 	ground_pound(src, 5, 3, 8)
 
+/mob/living/simple_animal/hostile/megafauna/gladiator/OpenFire()
+	if(!COOLDOWN_FINISHED(src, ranged_cooldown))
+		return FALSE
+	if(spinning || stunned || charging)
+		return FALSE
+	ranged_cooldown = world.time
+	switch(phase)
+		if(MARKED_ONE_FIRST_PHASE)
+			if(prob(25) && (get_dist(src, target) <= spinning_range))
+				INVOKE_ASYNC(src, .proc/spinattack)
+				ranged_cooldown += 7 SECONDS
+			else
+				if(prob(66))
+					INVOKE_ASYNC(src, .proc/charge, target, 21)
+					ranged_cooldown += 4 SECONDS
+				else
+					INVOKE_ASYNC(src, .proc/bone_knife_throw, target)
+					ranged_cooldown += 2.5 SECONDS
+		if(MARKED_ONE_SECOND_PHASE)
+			if(prob(40) && (get_dist(src, target) <= spinning_range))
+				INVOKE_ASYNC(src, .proc/spinattack)
+				ranged_cooldown += 5.5 SECONDS
+			else
+				if(prob(40))
+					INVOKE_ASYNC(src, .proc/bone_knife_throw, target)
+					ranged_cooldown += 2 SECONDS
+				else
+					INVOKE_ASYNC(src, .proc/teleport, target)
+					ranged_cooldown += 3 SECONDS
+		if(MARKED_ONE_THIRD_PHASE)
+			if(prob(35))
+				INVOKE_ASYNC(src, .proc/bone_knife_throw, target)
+				ranged_cooldown += 1 SECONDS
+			else
+				INVOKE_ASYNC(src, .proc/teleport, target)
+				ranged_cooldown += 2 SECONDS
+		if(MARKED_ONE_FINAL_PHASE)
+			if(prob(40))
+				INVOKE_ASYNC(src, .proc/swordslam)
+				ranged_cooldown += 3 SECONDS
+			else
+				INVOKE_ASYNC(src, .proc/charge, target, 21)
+				ranged_cooldown += 2 SECONDS
+
 #undef MARKED_ONE_STUN_DURATION
 #undef MARKED_ONE_ANGER_DURATION
+#undef MARKED_ONE_FIRST_PHASE
+#undef MARKED_ONE_SECOND_PHASE
+#undef MARKED_ONE_THIRD_PHASE
+#undef MARKED_ONE_FINAL_PHASE
+#undef ONE_HUNDRED_PERCENT
+#undef SEVENTY_FIVE_PERCENT
+#undef FIFTY_PERCENT
+#undef SHOWDOWN_PERCENT
