@@ -48,26 +48,29 @@
 		if(exposed_mob.client?.prefs?.read_preference(/datum/preference/numeric/penis_length))
 			var/original_penis_length = exposed_mob.client?.prefs.read_preference(/datum/preference/numeric/penis_length)
 			var/original_penis_girth = exposed_mob.client?.prefs.read_preference(/datum/preference/numeric/penis_girth)
+			var/modified_genitals = FALSE
 			///Run to go through girth first.
 			if(mob_penis?.girth > original_penis_girth)
 				mob_penis.girth -= penis_girth_reduction_step
 				mob_penis.update_sprite_suffix()
-				exposed_mob.update_body()
+				modified_genitals = TRUE
 			if(mob_penis?.girth < original_penis_girth)
 				mob_penis.girth += penis_girth_increase_step
 				mob_penis.update_sprite_suffix()
-				exposed_mob.update_body()
+				modified_genitals = TRUE
 			///No returns in order to continue code.
 			if(mob_penis?.genital_size > original_penis_length)
 				mob_penis.genital_size -= penis_size_reduction_step
 				mob_penis.update_sprite_suffix()
-				exposed_mob.update_body()
+				modified_genitals = TRUE
 				return
 			if(mob_penis?.genital_size < original_penis_length)
 				mob_penis.genital_size += penis_length_increase_step
 				mob_penis.update_sprite_suffix()
-				exposed_mob.update_body()
+				modified_genitals = TRUE
 				return
+			if(modified_genitals)
+				exposed_mob.update_body()
 	if(exposed_mob.getorganslot(ORGAN_SLOT_TESTICLES))
 		var/obj/item/organ/external/genital/testicles/mob_testicles = exposed_mob.getorganslot(ORGAN_SLOT_TESTICLES)
 		if(exposed_mob.client?.prefs?.read_preference(/datum/preference/numeric/balls_size))

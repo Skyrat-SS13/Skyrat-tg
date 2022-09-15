@@ -10,12 +10,74 @@
 /datum/reagent/drug/aphrodisiac/succubus_milk
 	name = "succubus milk"
 	description = "A volatile collodial mixture derived from milk that encourages mammary production via a potent estrogen mix."
-	color = "#E60584" // rgb: 96, 0, 255
+	color = "#E60584"
 	taste_description = "a milky ice cream like flavour" /// Edited so it doesn't trail off and act strangely with other taste descriptions.
 	overdose_threshold = 20
 	metabolization_rate = 0.25
 	life_pref_datum = /datum/preference/toggle/erp/breast_enlargement
 	overdose_pref_datum = /datum/preference/toggle/erp/gender_change
+
+	/// Words for the breasts when huge.
+	var/static/list/words_for_bigger = list(
+		"huge",
+		"massive",
+		"squishy",
+		"gigantic",
+		"rather large",
+		"jiggly",
+		"hefty",
+ 	)
+	/// Synonyms for breasts.
+	var/static/list/boob_text_list = list(
+		"boobs",
+		"tits",
+		"breasts",
+ 	)
+	/// Synonyms for the chest.
+	var/static/list/covered_boobs_list = list(
+		"bust",
+		"chest",
+		"bosom",
+	)
+	/// Synonyms for bigger breasts.
+	var/static/list/bigger_boob_text_list = list(
+		"jigglies",
+		"melons",
+		"jugs",
+		"boobies",
+		"milkers",
+		"boobs",
+		"tits",
+		"breasts",
+	)
+	/// Wording chosen to expand the breasts,shown only to the mob.
+	var/static/list/action_text_list = list(
+		"expand outward to ",
+		"grow out to ",
+		"begin to enlarge, growing to ",
+		"suddenly expand to ",
+		"swell out to ",
+ 	)
+	/// Wording chosen to be seen by other mobs, regardless of whether mob is clothed/unclothed.
+	var/static/list/public_bigger_action_text_list = list(
+		"expand and jiggle outward.",
+		"grow a bit larger, bouncing about.",
+		"seem a bit bigger than they were before.",
+		"bounce and jiggle as they suddenly expand.",
+ 	)
+	/// Wording chosen to be seen by other mobs, while mob is unclothed.
+	var/static/list/public_action_text_list = list(
+		"expand outward.",
+		"seem to grow a bit larger.",
+		"appear a bit bigger than they were before.",
+		"bounce and jiggle as they suddenly expand.",
+	)
+	/// Wording chosen to be seen by other mobs, while mob is clothed.
+	var/static/list/notice_boobs = list(
+		"seems to be a bit tighter.",
+		"appears to be a bit bigger.",
+		"seems to swell outward a bit.",
+ 	)
 
 /datum/reagent/drug/aphrodisiac/succubus_milk/life_effects(mob/living/carbon/human/exposed_mob) //Increases breast size
 	var/obj/item/organ/external/genital/breasts/mob_breasts = exposed_mob.getorganslot(ORGAN_SLOT_BREASTS)
@@ -31,22 +93,6 @@
 		exposed_mob.update_body()
 		enlargement_amount = 0
 
-		/// Words for the breasts when huge.
-		var/static/list/words_for_bigger = list("huge", "massive", "squishy", "gigantic", "rather large", "jiggly", "hefty", )
-		/// Synonyms for breasts.
-		var/static/list/boob_text_list = list("boobs", "tits", "breasts", )
-		/// Synonyms for the chest.
-		var/static/list/covered_boobs_list = list("bust", "chest", "bosom", )
-		/// Synonyms for bigger breasts.
-		var/static/list/bigger_boob_text_list = list("jigglies", "melons", "jugs", "boobies", "milkers", "boobs", "tits", "breasts", )
-		/// Wording chosen to expand the breasts, shown only to the mob.
-		var/static/list/action_text_list = list("expand outward to ", "grow out to ", "begin to enlarge, growing to ", "suddenly expand to ", "swell out to ", )
-		/// Wording chosen to be seen by other mobs, regardless of whether mob is clothed/unclothed.
-		var/static/list/public_bigger_action_text_list = list("expand and jiggle outward.", "grow a bit larger, bouncing about.", "seem a bit bigger than they were before.", "bounce and jiggle as they suddenly expand.", )
-		/// Wording chosen to be seen by other mobs, while mob is unclothed.
-		var/static/list/public_action_text_list = list("expand outward.", "seem to grow a bit larger.", "appear a bit bigger than they were before.", "bounce and jiggle as they suddenly expand.", )
-		/// Wording chosen to be seen by other mobs, while mob is clothed.
-		var/static/list/notice_boobs = list("seems to be a bit tighter.", "appears to be a bit bigger.", "seems to swell outward a bit.", )
 		/// Checks for cup size.
 		var/translation = mob_breasts.breasts_size_to_cup(mob_breasts.genital_size)
 

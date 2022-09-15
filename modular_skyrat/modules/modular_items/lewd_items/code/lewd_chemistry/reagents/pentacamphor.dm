@@ -20,14 +20,14 @@
 		exposed_mob.reagents.remove_reagent(/datum/reagent/drug/aphrodisiac/crocin/hexacrocin, reagent_reduction_amount)
 
 /datum/reagent/drug/aphrodisiac/camphor/pentacamphor/overdose_start(mob/living/carbon/human/exposed_mob)
+	if(HAS_TRAIT(exposed_mob, TRAIT_BIMBO))
+		exposed_mob.cure_trauma_type(/datum/brain_trauma/very_special/bimbo, TRAUMA_RESILIENCE_ABSOLUTE)
+		to_chat(exposed_mob, span_notice("Your mind is free. Your thoughts are pure and innocent once more."))
+		REMOVE_TRAIT(exposed_mob, TRAIT_BIMBO, LEWDCHEM_TRAIT)
+		return
 	if(!HAS_TRAIT(exposed_mob, TRAIT_NEVERBONER))
 		to_chat(exposed_mob, span_notice("You feel like you'll never feel aroused again..."))
 		ADD_TRAIT(exposed_mob, TRAIT_NEVERBONER, LEWDCHEM_TRAIT)
-	if(!HAS_TRAIT(exposed_mob, TRAIT_BIMBO))
-		return
-	exposed_mob.cure_trauma_type(/datum/brain_trauma/very_special/bimbo, TRAUMA_RESILIENCE_ABSOLUTE)
-	to_chat(exposed_mob, span_notice("Your mind is free. Your thoughts are pure and innocent once more."))
-	REMOVE_TRAIT(exposed_mob, TRAIT_BIMBO, LEWDCHEM_TRAIT)
 
 /datum/chemical_reaction/pentacamphor
 	results = list(/datum/reagent/drug/aphrodisiac/camphor/pentacamphor = 1)

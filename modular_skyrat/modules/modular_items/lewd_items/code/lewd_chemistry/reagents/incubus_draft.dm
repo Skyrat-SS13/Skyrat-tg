@@ -16,6 +16,52 @@
 	life_pref_datum = /datum/preference/toggle/erp/penis_enlargement
 	overdose_pref_datum = /datum/preference/toggle/erp/gender_change ///Changed from penis_enlargement in order to have gender swapping as a separate feature within overdose.
 
+	/// Words for the cock when huge.
+	var/static/list/words_for_bigger_cock = list(
+		"huge",
+		"massive",
+		"gigantic",
+		"rather lengthy",
+		"colossal",
+		"hefty",
+ 	)
+	/// Synonyms for cock.
+	var/static/list/cock_text_list = list(
+		"cock",
+		"penis",
+		"dick",
+		"member",
+		"richard",
+		"johnston",
+		"johnson",
+	)
+	/// Synonyms for bigger cock.
+	var/static/list/bigger_cock_text_list = list(
+		"rod",
+		"shaft",
+		"cock",
+		"penis",
+		"dick",
+		"member",
+		"richard",
+		"johnston",
+		"johnson",
+	)
+	/// Wording chosen to extend the cock, shown only to the mob.
+	var/static/list/cock_action_text_list = list("extends to ",
+		"grows out to ",
+		"begins to enlarge, growing to ",
+		"suddenly expands to ",
+		"lengthens out to ",
+	)
+	/// Wording chosen to be seen by other mobs, while mob is unclothed.
+	var/static/list/public_cock_action_text_list = list(
+		"expands by an inch or so.",
+		"appears to grow a bit longer.",
+		"seems a bit bigger than it was before.",
+		"suddenly lengthens about an inch or two.",
+	)
+
 /datum/reagent/drug/aphrodisiac/incubus_draft/life_effects(mob/living/carbon/human/exposed_mob)
 	var/obj/item/organ/external/genital/penis/mob_penis = exposed_mob.getorganslot(ORGAN_SLOT_PENIS)
 	enlargement_amount += enlarger_increase_step
@@ -32,16 +78,6 @@
 		mob_penis.update_sprite_suffix()
 		exposed_mob.update_body()
 		enlargement_amount = 0
-		/// Words for the cock when huge.
-		var/static/list/words_for_bigger_cock = list("huge", "massive", "gigantic", "rather lengthy", "colossal", "hefty", )
-		/// Synonyms for cock.
-		var/static/list/cock_text_list = list("cock", "penis", "dick", "member", "richard", "johnston", "johnson", )
-		/// Synonyms for bigger cock.
-		var/static/list/bigger_cock_text_list = list("rod", "shaft", "cock", "penis", "dick", "member", "richard", "johnston", "johnson", )
-		/// Wording chosen to extend the cock, shown only to the mob.
-		var/static/list/cock_action_text_list = list("extends to ", "grows out to ", "begins to enlarge, growing to ", "suddenly expands to ", "lengthens out to ", )
-		/// Wording chosen to be seen by other mobs, while mob is unclothed.
-		var/static/list/public_cock_action_text_list = list("expands by an inch or so.", "appears to grow a bit longer.", "seems a bit bigger than it was before.", "suddenly lengthens about an inch or two.", )
 
 		if(mob_penis.visibility_preference == GENITAL_ALWAYS_SHOW || exposed_mob.is_bottomless())
 			if(mob_penis?.genital_size >= (penis_max_length - 2))

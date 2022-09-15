@@ -18,7 +18,11 @@
 	var/list/possible_aroused_emotes = list("moan", "blush")
 
 	/// A list of possible to_chat messages the chem is able to trigger
-	var/list/possible_aroused_thoughts = list("You feel frisky.", "You're having trouble suppressing your urges.", "You feel in the mood.")
+	var/list/possible_aroused_thoughts = list(
+		"You feel frisky.",
+		"You're having trouble suppressing your urges.",
+		"You feel in the mood.",
+	)
 
 
 /datum/reagent/drug/aphrodisiac/crocin/life_effects(mob/living/carbon/human/exposed_mob)
@@ -32,11 +36,14 @@
 	exposed_mob.adjustPleasure(pleasure_adjust_amount)
 	exposed_mob.adjustPain(pain_adjust_amount)
 
+	var/modified_genitals = FALSE
 	for(var/obj/item/organ/external/genital/mob_genitals in exposed_mob.external_organs)
 		if(!mob_genitals.aroused == AROUSAL_CANT)
 			mob_genitals.aroused = AROUSAL_FULL
 			mob_genitals.update_sprite_suffix()
-	exposed_mob.update_body()
+			modified_genitals = TRUE
+	if (modified_genitals)
+		exposed_mob.update_body()
 
 /datum/chemical_reaction/crocin
 	results = list(/datum/reagent/drug/aphrodisiac/crocin = 6)
