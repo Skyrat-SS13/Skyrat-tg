@@ -303,7 +303,7 @@
 	smoothing_flags = SMOOTH_BITMASK
 
 /turf/closed/wall/mineral/titanium/survival/pod
-	smoothing_groups = list(SMOOTH_GROUP_CLOSED_TURFS, SMOOTH_GROUP_WALLS, SMOOTH_GROUP_TITANIUM_WALLS, SMOOTH_GROUP_SURVIVAL_TITANIUM_POD)
+	smoothing_groups = list(SMOOTH_GROUP_WALLS, SMOOTH_GROUP_TITANIUM_WALLS, SMOOTH_GROUP_SURVIVAL_TITANIUM_POD, SMOOTH_GROUP_CLOSED_TURFS) // SKYRAT EDIT CHANGE - Sorting them because /tg/ forgot to
 	canSmoothWith = list(SMOOTH_GROUP_SURVIVAL_TITANIUM_POD)
 
 /////////////////////Plastitanium walls/////////////////////
@@ -319,7 +319,7 @@
 	hardness = 25 //upgrade on titanium
 	smoothing_flags = SMOOTH_BITMASK | SMOOTH_DIAGONAL_CORNERS
 	smoothing_groups = list(SMOOTH_GROUP_WALLS, SMOOTH_GROUP_PLASTITANIUM_WALLS, SMOOTH_GROUP_CLOSED_TURFS) // SKYRAT EDIT CHANGE - Sorting them because /tg/ forgot to
-	canSmoothWith = list(SMOOTH_GROUP_SYNDICATE_WALLS, SMOOTH_GROUP_PLASTITANIUM_WALLS, SMOOTH_GROUP_AIRLOCK, SMOOTH_GROUP_SHUTTLE_PARTS)
+	canSmoothWith = list(SMOOTH_GROUP_PLASTITANIUM_WALLS, SMOOTH_GROUP_SYNDICATE_WALLS, SMOOTH_GROUP_AIRLOCK, SMOOTH_GROUP_SHUTTLE_PARTS) // SKYRAT EDIT CHANGE - Sorting them because /tg/ forgot to
 	custom_materials = list(/datum/material/alloy/plastitanium = 4000)
 
 /turf/closed/wall/mineral/plastitanium/rust_heretic_act()
