@@ -111,12 +111,12 @@
 
 	return data
 
-/// Takes the organ slot name, along with a source and a target, along with the item on the target that the source can potentially interact with.
-/// If the source can't interact with said slot, or there is no item in the first place, it'll set the icon to null to indicate that TGUI to put a placeholder sprite.
-/datum/component/interactable/proc/generate_strip_entry(name, mob/living/carbon/human/self, mob/living/carbon/human/user, obj/item/clothing/sextoy/item)
+/// Takes the organ slot name, along with a target and source, along with the item on the target that the source can potentially interact with.
+/// If the source can't interact with said slot, or there is no item in the first place, it'll set the icon to null to indicate that TGUI should put a placeholder sprite.
+/datum/component/interactable/proc/generate_strip_entry(name, mob/living/carbon/human/target, mob/living/carbon/human/source, obj/item/clothing/sextoy/item)
 	return list(
 		"name" = name,
-		"img" = (item && can_lewd_strip(user, self, name))? icon2base64(icon(item.icon, item.icon_state, SOUTH, 1)) : null
+		"img" = (item && can_lewd_strip(source, target, name))? icon2base64(icon(item.icon, item.icon_state, SOUTH, 1)) : null
 		)
 
 /datum/component/interactable/ui_act(action, list/params)

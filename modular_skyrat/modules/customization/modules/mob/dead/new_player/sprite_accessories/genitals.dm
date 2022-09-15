@@ -256,7 +256,7 @@
 	color_src = null
 
 /datum/sprite_accessory/genital/anus/normal
-	icon_state = ORGAN_SLOT_ANUS
+	icon_state = "anus"
 	name = "Anus"
 	color_src = null
 

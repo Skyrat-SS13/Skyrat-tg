@@ -86,9 +86,9 @@
 
 
 /obj/item/organ/external/genital/penis
-	name = ORGAN_SLOT_PENIS
+	name = "penis"
 	desc = "A male reproductive organ."
-	icon_state = ORGAN_SLOT_PENIS
+	icon_state = "penis"
 	icon = 'modular_skyrat/master_files/icons/obj/genitals/penis.dmi'
 	zone = BODY_ZONE_PRECISE_GROIN
 	slot = ORGAN_SLOT_PENIS
@@ -185,9 +185,9 @@
 
 
 /obj/item/organ/external/genital/testicles
-	name = ORGAN_SLOT_TESTICLES
+	name = "testicles"
 	desc = "A male reproductive organ."
-	icon_state = ORGAN_SLOT_TESTICLES
+	icon_state = "testicles"
 	icon = 'modular_skyrat/master_files/icons/obj/genitals/testicles.dmi'
 	mutantpart_key = ORGAN_SLOT_TESTICLES
 	mutantpart_info = list(MUTANT_INDEX_NAME = "Pair", MUTANT_INDEX_COLOR_LIST = list("#FFEEBB"))
@@ -247,9 +247,9 @@
 
 
 /obj/item/organ/external/genital/vagina
-	name = ORGAN_SLOT_VAGINA
+	name = "vagina"
 	icon = 'modular_skyrat/master_files/icons/obj/genitals/vagina.dmi'
-	icon_state = ORGAN_SLOT_VAGINA
+	icon_state = "vagina"
 	mutantpart_key = ORGAN_SLOT_VAGINA
 	mutantpart_info = list(MUTANT_INDEX_NAME = "Human", MUTANT_INDEX_COLOR_LIST = list("#FFEEBB"))
 	zone = BODY_ZONE_PRECISE_GROIN
@@ -289,10 +289,10 @@
 
 
 /obj/item/organ/external/genital/womb
-	name = ORGAN_SLOT_WOMB
+	name = "womb"
 	desc = "A female reproductive organ."
 	icon = 'modular_skyrat/master_files/icons/obj/genitals/vagina.dmi'
-	icon_state = ORGAN_SLOT_WOMB
+	icon_state = "womb"
 	mutantpart_key = ORGAN_SLOT_WOMB
 	mutantpart_info = list(MUTANT_INDEX_NAME = "Normal", MUTANT_INDEX_COLOR_LIST = list("FFEEBB"))
 	zone = BODY_ZONE_PRECISE_GROIN
@@ -307,10 +307,10 @@
 
 
 /obj/item/organ/external/genital/anus
-	name = ORGAN_SLOT_ANUS
+	name = "anus"
 	desc = "What do you want me to tell you?"
 	icon = 'modular_skyrat/master_files/icons/obj/genitals/anus.dmi'
-	icon_state = ORGAN_SLOT_ANUS
+	icon_state = "anus"
 	mutantpart_key = ORGAN_SLOT_ANUS
 	mutantpart_info = list(MUTANT_INDEX_NAME = "Normal", MUTANT_INDEX_COLOR_LIST = list("FEB"))
 	zone = BODY_ZONE_PRECISE_GROIN
@@ -331,9 +331,9 @@
 
 
 /obj/item/organ/external/genital/breasts
-	name = ORGAN_SLOT_BREASTS
+	name = "breasts"
 	desc = "Female milk producing organs."
-	icon_state = ORGAN_SLOT_BREASTS
+	icon_state = "breasts"
 	icon = 'modular_skyrat/master_files/icons/obj/genitals/breasts.dmi'
 	genital_type = "pair"
 	mutantpart_key = ORGAN_SLOT_BREASTS
