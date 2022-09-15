@@ -97,71 +97,16 @@
 	icon = 'modular_skyrat/modules/aesthetics/lights/icons/lighting.dmi'
 
 
-// attack with item - insert light (if right type), otherwise try to break the light
 /obj/machinery/light/attackby(obj/item/tool, mob/living/user, params)
-
-	//Light replacer code
-	if(istype(tool, /obj/item/lightreplacer))
-		var/obj/item/lightreplacer/replacer = tool
-		replacer.ReplaceLight(src, user)
-		return
-
 	if(istype(tool, /obj/item/multitool))
 
 		if(!constant_flickering)
-			to_chat(user, span_warning("[src]'s ballast is already working!"))
+			balloon_alert(user, "ballast is already working!")
 			return
 
-		to_chat(user, span_notice("You start repairing the ballast of [src] with [tool]."))
+		balloon_alert(user, "repairing the ballast...")
 		if(do_after(user, 2 SECONDS, src))
 			stop_flickering()
-			to_chat(user, span_notice("You repair [src]'s ballast."))
-
-		return
-
-	// attempt to insert light
-	if(istype(tool, /obj/item/light))
-		if(status == LIGHT_OK)
-			to_chat(user, span_warning("There is a [fitting] already inserted!"))
+			balloon_alert(user, "ballast repaired!")
 			return
-		add_fingerprint(user)
-		var/obj/item/light/light_object = tool
-		if(!istype(light_object, light_type))
-			to_chat(user, span_warning("This type of light requires a [fitting]!"))
-			return
-		if(!user.temporarilyRemoveItemFromInventory(light_object))
-			return
-
-		add_fingerprint(user)
-		if(status != LIGHT_EMPTY)
-			drop_light_tube(user)
-			to_chat(user, span_notice("You replace [light_object]."))
-		else
-			to_chat(user, span_notice("You insert [light_object]."))
-		status = light_object.status
-		switchcount = light_object.switchcount
-		rigged = light_object.rigged
-		brightness = light_object.brightness
-		on = has_power()
-		update()
-
-		qdel(light_object)
-
-		if(on && rigged)
-			explode()
-		return
-
-	// attempt to stick weapon into light socket
-	if(status != LIGHT_EMPTY)
-		return ..()
-	if(tool.tool_behaviour == TOOL_SCREWDRIVER) //If it's a screwdriver open it.
-		tool.play_tool_sound(src, 75)
-		user.visible_message(span_notice("[user.name] opens [src]'s casing."), \
-			span_notice("You open [src]'s casing."), span_hear("You hear a noise."))
-		deconstruct()
-		return
-	to_chat(user, span_userdanger("You stick \the [tool] into the light socket!"))
-	if(has_power() && (tool.flags_1 & CONDUCT_1))
-		do_sparks(3, TRUE, src)
-		if (prob(75))
-			electrocute_mob(user, get_area(src), src, (rand(7,10) * 0.1), TRUE)
+	. = ..()

@@ -314,9 +314,7 @@
 	//SKYRAT EDIT END
 
 
-/*SKYRAT EDIT - MOVED TO modular_skyrat/modules/aesthetics/lights/code/lighting.dm
 // attack with item - insert light (if right type), otherwise try to break the light
-
 /obj/machinery/light/attackby(obj/item/tool, mob/living/user, params)
 
 	//Light replacer code
@@ -371,8 +369,6 @@
 		do_sparks(3, TRUE, src)
 		if (prob(75))
 			electrocute_mob(user, get_area(src), src, (rand(7,10) * 0.1), TRUE)
-
-*/
 
 /obj/machinery/light/deconstruct(disassembled = TRUE)
 	if(flags_1 & NODECONSTRUCT_1)
