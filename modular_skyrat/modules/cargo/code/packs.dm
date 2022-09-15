@@ -107,6 +107,14 @@
 					/obj/item/weaponcell/medical/toxin)
 	crate_name = "medicell replacement crate"
 
+/datum/supply_pack/medical/afad
+	name = "Automated First Aid Device"
+	desc = "Someone mildly hurt and it's too much of a bother to manually handle their burns or cuts? Look no further than the AFAD, a state-of-the-art pain-relief device!"
+	cost = CARGO_CRATE_VALUE * 20
+	access = ACCESS_MEDICAL
+	contains = list(/obj/item/gun/medbeam/afad)
+	crate_name = "AFAD crate"
+
 /*
 *	SECURITY
 */
@@ -215,6 +223,19 @@
 	contains = list(/obj/item/summon_beacon/gas_miner)
 	cost = CARGO_CRATE_VALUE * 50
 	crate_name = "gas miner delivery beacon crate"
+	crate_type = /obj/structure/closet/crate/secure/engineering
+
+/datum/supply_pack/engineering/improvedrcdbonus
+	name = "Improved RCD Crate"
+	desc = "Contains 3 upgraded RCDs featuring superior material storage. Each comes with complimentary frames and circuitry upgrades to boot!"
+	access = ACCESS_ENGINE_EQUIP
+	cost = CARGO_CRATE_VALUE * 18
+	contains = list(
+		/obj/item/construction/rcd/improved,
+		/obj/item/construction/rcd/improved,
+		/obj/item/construction/rcd/improved,
+	)
+	crate_name = "improved RCD crate"
 	crate_type = /obj/structure/closet/crate/secure/engineering
 
 /*
