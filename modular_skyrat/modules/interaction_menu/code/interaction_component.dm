@@ -111,8 +111,16 @@
 
 	return data
 
-/// Takes the organ slot name, along with a target and source, along with the item on the target that the source can potentially interact with.
-/// If the source can't interact with said slot, or there is no item in the first place, it'll set the icon to null to indicate that TGUI should put a placeholder sprite.
+/**
+ *  Takes the organ slot name, along with a target and source, along with the item on the target that the source can potentially interact with.
+ *  If the source can't interact with said slot, or there is no item in the first place, it'll set the icon to null to indicate that TGUI should put a placeholder sprite.
+ *
+ * Arguments:
+ * * name - The name of slot to check and return inside the list.
+ * * target - The mob that's being interacted with.
+ * * source - The mob that's interacting.
+ * * item - The item that's currently inside said slot. Can be null.
+*/
 /datum/component/interactable/proc/generate_strip_entry(name, mob/living/carbon/human/target, mob/living/carbon/human/source, obj/item/clothing/sextoy/item)
 	return list(
 		"name" = name,
