@@ -113,7 +113,7 @@
 	. = ..()
 	if(!istype(user))
 		return
-	if(is_in_genital(user))
+	if(is_inside_lewd_slot(user))
 		START_PROCESSING(SSobj, src)
 
 /obj/item/clothing/sextoy/eggvib/dropped(mob/user, silent)
@@ -249,7 +249,7 @@
 			to_chat(vibrated, span_purple("You feel pleasant vibrations deep below..."))
 		else if(src == vibrated.nipples)
 			to_chat(vibrated, span_purple("You feel pleasant stimulation in your nipples."))
-	else if(!toy_on && is_in_genital(vibrated))
+	else if(!toy_on && is_inside_lewd_slot(vibrated))
 		to_chat(vibrated, span_purple("The vibrating toy no longer drives you mad."))
 
 	if(!master)

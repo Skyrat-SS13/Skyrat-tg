@@ -140,7 +140,7 @@
 			return
 
 		else if(held == null)
-			if(unheld.name =="strapon" && unheld.item_flags == ABSTRACT | HAND_ITEM)
+			if(istype(unheld, /obj/item/strapon_dildo) && unheld.item_flags == ABSTRACT | HAND_ITEM)
 				if(src == user.belt)
 					qdel(unheld)
 					//CODE FOR PUTTING STRAPON IN HANDS

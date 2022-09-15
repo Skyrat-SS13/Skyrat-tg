@@ -1,7 +1,21 @@
-#define REQUIRE_NONE 0
 #define REQUIRE_EXPOSED 1
 #define REQUIRE_UNEXPOSED 2
 #define REQUIRE_ANY 3
+
+
+/mob/living/carbon/human
+	var/arousal = 0
+	var/pleasure = 0
+	var/pain = 0
+
+	var/pain_limit = 0
+	var/arousal_status = AROUSAL_NONE
+
+	// Add variables for slots to the human class
+	var/obj/item/vagina = null
+	var/obj/item/anus = null
+	var/obj/item/nipples = null
+	var/obj/item/penis = null
 
 /mob/living/carbon/human
 	var/has_penis = FALSE
@@ -9,11 +23,18 @@
 	var/has_breasts = FALSE
 	var/has_anus = FALSE
 
+
+// For tracking arousal and fluid regen.
+/mob/living/carbon/human/Initialize(mapload)
+	. = ..()
+	if(!istype(src, /mob/living/carbon/human/species/monkey))
+		apply_status_effect(/datum/status_effect/aroused)
+		apply_status_effect(/datum/status_effect/body_fluid_regen)
+
 /*
 *	This code needed to determine if the human is naked in that part of body or not
-*	You can you for your own stuff if you want, haha.
+*	You can use this for your own stuff if you want, haha.
 */
-
 
 /// Are we wearing something that covers our chest?
 /mob/living/carbon/human/proc/is_topless()
@@ -406,7 +427,35 @@
 	apply_overlay(PENIS_LAYER)
 	update_mutant_bodyparts()
 
-#undef REQUIRE_NONE
+/*
+*	MISC LOGIC
+*/
+
+/mob/living/carbon/human/resist_restraints()
+	if(gloves?.breakouttime)
+		changeNext_move(CLICK_CD_BREAKOUT)
+		last_special = world.time + CLICK_CD_BREAKOUT
+		cuff_resist(gloves)
+	else
+		..()
+
+/mob/living/carbon/is_ballgagged()
+	return(istype(src.wear_mask, /obj/item/clothing/mask/ballgag) || istype(src.wear_mask, /obj/item/clothing/head/helmet/space/deprivation_helmet))
+
+/mob/living/carbon/human/wear_condom()
+	. = ..()
+	if(.)
+		return TRUE
+	if(penis != null && istype(penis, /obj/item/clothing/sextoy/condom))
+		return TRUE
+	return FALSE
+
+// For handling things that don't already have handcuff handlers.
+/mob/living/carbon/human/set_handcuffed(new_value)
+	if(wear_suit && istype(wear_suit, /obj/item/clothing/suit/straight_jacket/kinky_sleepbag))
+		return FALSE
+	..()
+
 #undef REQUIRE_EXPOSED
 #undef REQUIRE_UNEXPOSED
 #undef REQUIRE_ANY

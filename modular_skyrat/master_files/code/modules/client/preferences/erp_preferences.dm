@@ -56,6 +56,24 @@
 /datum/preference/toggle/erp/sex_toy
 	savefile_key = "sextoy_pref"
 
+/datum/preference/toggle/erp/sex_toy/apply_to_client_updated(client/client, value)
+	. = ..()
+	if(!value)
+		if(ishuman(client.mob))
+			var/mob/living/carbon/human/target = client.mob
+			if(target.vagina != null)
+				target.dropItemToGround(target.vagina, TRUE, target.loc, TRUE, FALSE, TRUE)
+			if(target.anus != null)
+				target.dropItemToGround(target.anus, TRUE, target.loc, TRUE, FALSE, TRUE)
+			if(target.nipples != null)
+				target.dropItemToGround(target.nipples, TRUE, target.loc, TRUE, FALSE, TRUE)
+			if(target.penis != null)
+				target.dropItemToGround(target.penis, TRUE, target.loc, TRUE, FALSE, TRUE)
+
+
+	client.mob.hud_used.hidden_inventory_update(client.mob)
+	client.mob.hud_used.persistent_inventory_update(client.mob)
+
 /datum/preference/toggle/erp/bimbofication
 	savefile_key = "bimbofication_pref"
 
