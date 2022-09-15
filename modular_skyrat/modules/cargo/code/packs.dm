@@ -33,8 +33,8 @@
 	desc = "Contains two of the following: Morphine bottles, syringes, breath masks, and anesthetic tanks. Requires Medical Access to open."
 	access = ACCESS_MEDICAL
 	cost = CARGO_CRATE_VALUE * 4
-	contains = list(/obj/item/reagent_containers/cup/bottle/morphine,
-                    /obj/item/reagent_containers/cup/bottle/morphine,
+	contains = list(/obj/item/reagent_containers/glass/bottle/morphine,
+                    /obj/item/reagent_containers/glass/bottle/morphine,
                     /obj/item/reagent_containers/syringe,
                     /obj/item/reagent_containers/syringe,
                     /obj/item/clothing/mask/breath,
@@ -106,14 +106,6 @@
 					/obj/item/weaponcell/medical/burn,
 					/obj/item/weaponcell/medical/toxin)
 	crate_name = "medicell replacement crate"
-
-/datum/supply_pack/medical/afad
-	name = "Automated First Aid Device"
-	desc = "Someone mildly hurt and it's too much of a bother to manually handle their burns or cuts? Look no further than the AFAD, a state-of-the-art pain-relief device!"
-	cost = CARGO_CRATE_VALUE * 20
-	access = ACCESS_MEDICAL
-	contains = list(/obj/item/gun/medbeam/afad)
-	crate_name = "AFAD crate"
 
 /*
 *	SECURITY
@@ -337,7 +329,7 @@
 					/obj/item/food/enchiladas,
 					/obj/item/food/carneburrito,
 					/obj/item/food/cheesyburrito,
-					/obj/item/reagent_containers/cup/bottle/capsaicin)
+					/obj/item/reagent_containers/glass/bottle/capsaicin)
 	crate_name = "fiesta crate"
 
 /datum/supply_pack/organic/fakemeat
@@ -378,10 +370,10 @@
 	name = "Fine Cuisine Assortment Value Pack"
 	desc = "Chef slop boring? Have high-maintenance crewmembers that with wings? Maybe you just want to revel in the sinful delight that are Cheese Curds? The Finest of our trade union has made the pack for you, containing a mix of fine oils, vinegar, and exceptionally rare ingredients."
 	cost = CARGO_CRATE_VALUE * 5
-	contains = list(/obj/item/reagent_containers/condiment/quality_oil,
-					/obj/item/reagent_containers/condiment/quality_oil,
-					/obj/item/reagent_containers/condiment/vinegar,
-					/obj/item/reagent_containers/condiment/vinegar,
+	contains = list(/obj/item/reagent_containers/food/condiment/quality_oil,
+					/obj/item/reagent_containers/food/condiment/quality_oil,
+					/obj/item/reagent_containers/food/condiment/vinegar,
+					/obj/item/reagent_containers/food/condiment/vinegar,
 					/obj/item/food/canned/tomatoes,
 					/obj/item/food/canned/tomatoes,
 					/obj/item/food/canned/pine_nuts,
@@ -397,16 +389,16 @@
 	name = "Quality Oil Bulk Pack"
 	desc = "Normal cooking oil not cutting it? Chef throw all the quality stuff in the frier because they thought it was funny? Well, We got you covered, Introducing a bulk pack of Ten (10) bottles of our finest oils, blended for the perfect taste in cold recipes, and a resistance for going acrid when cooking."
 	cost = CARGO_CRATE_VALUE * 9
-	contains = list(/obj/item/reagent_containers/condiment/quality_oil,
-					/obj/item/reagent_containers/condiment/quality_oil,
-					/obj/item/reagent_containers/condiment/quality_oil,
-					/obj/item/reagent_containers/condiment/quality_oil,
-					/obj/item/reagent_containers/condiment/quality_oil,
-					/obj/item/reagent_containers/condiment/quality_oil,
-					/obj/item/reagent_containers/condiment/quality_oil,
-					/obj/item/reagent_containers/condiment/quality_oil,
-					/obj/item/reagent_containers/condiment/quality_oil,
-					/obj/item/reagent_containers/condiment/quality_oil)
+	contains = list(/obj/item/reagent_containers/food/condiment/quality_oil,
+					/obj/item/reagent_containers/food/condiment/quality_oil,
+					/obj/item/reagent_containers/food/condiment/quality_oil,
+					/obj/item/reagent_containers/food/condiment/quality_oil,
+					/obj/item/reagent_containers/food/condiment/quality_oil,
+					/obj/item/reagent_containers/food/condiment/quality_oil,
+					/obj/item/reagent_containers/food/condiment/quality_oil,
+					/obj/item/reagent_containers/food/condiment/quality_oil,
+					/obj/item/reagent_containers/food/condiment/quality_oil,
+					/obj/item/reagent_containers/food/condiment/quality_oil)
 	crate_name = "bulk quality oil pack"
 	crate_type = /obj/structure/closet/crate/freezer
 
@@ -414,16 +406,16 @@
 	name = "Vinegar Bulk Pack"
 	desc = "Mothic Cuisine night? The winged fellows in port? Well, We'll have you cooking in no time. Refined from several rich wines and cultivated for just the right bite, This pack Ten (10) Bottles of vinegar for the perfect dressings and sauces."
 	cost = CARGO_CRATE_VALUE * 4
-	contains = list(/obj/item/reagent_containers/condiment/vinegar,
-					/obj/item/reagent_containers/condiment/vinegar,
-					/obj/item/reagent_containers/condiment/vinegar,
-					/obj/item/reagent_containers/condiment/vinegar,
-					/obj/item/reagent_containers/condiment/vinegar,
-					/obj/item/reagent_containers/condiment/vinegar,
-					/obj/item/reagent_containers/condiment/vinegar,
-					/obj/item/reagent_containers/condiment/vinegar,
-					/obj/item/reagent_containers/condiment/vinegar,
-					/obj/item/reagent_containers/condiment/vinegar)
+	contains = list(/obj/item/reagent_containers/food/condiment/vinegar,
+					/obj/item/reagent_containers/food/condiment/vinegar,
+					/obj/item/reagent_containers/food/condiment/vinegar,
+					/obj/item/reagent_containers/food/condiment/vinegar,
+					/obj/item/reagent_containers/food/condiment/vinegar,
+					/obj/item/reagent_containers/food/condiment/vinegar,
+					/obj/item/reagent_containers/food/condiment/vinegar,
+					/obj/item/reagent_containers/food/condiment/vinegar,
+					/obj/item/reagent_containers/food/condiment/vinegar,
+					/obj/item/reagent_containers/food/condiment/vinegar)
 	crate_name = "bulk vinegar pack"
 	crate_type = /obj/structure/closet/crate/freezer
 
@@ -480,7 +472,7 @@
                     /obj/item/stock_parts/cell/high,
 					/obj/item/stack/cable_coil,
 					/obj/item/book/manual/wiki/barman_recipes,
-					/obj/item/reagent_containers/cup/glass/shaker,
+					/obj/item/reagent_containers/food/drinks/shaker,
 					/obj/item/circuitboard/machine/chem_dispenser/drinks/beer,
 					/obj/item/circuitboard/machine/chem_dispenser/drinks,
 					/obj/item/circuitboard/machine/dish_drive)
@@ -525,9 +517,9 @@
 					/obj/item/grenade/chem_grenade/cleaner,
 					/obj/item/grenade/chem_grenade/cleaner,
 					/obj/item/grenade/chem_grenade/cleaner,
-					/obj/item/reagent_containers/cup/bottle/ammonia,
-					/obj/item/reagent_containers/cup/bottle/ammonia,
-					/obj/item/reagent_containers/cup/bottle/ammonia)
+					/obj/item/reagent_containers/glass/bottle/ammonia,
+					/obj/item/reagent_containers/glass/bottle/ammonia,
+					/obj/item/reagent_containers/glass/bottle/ammonia)
 	crate_name = "premium janitorial crate"
 
 /datum/supply_pack/service/lamplight
@@ -634,5 +626,5 @@
 					/obj/item/ammo_box/a762,
 					/obj/item/gun/ballistic/automatic/plastikov,
 					/obj/item/ammo_box/magazine/plastikov9mm,
-					/obj/item/gun/ballistic/automatic/pistol/makarov,
-					/obj/item/ammo_box/magazine/multi_sprite/makarov)
+					/obj/item/gun/ballistic/automatic/pistol,
+					/obj/item/ammo_box/magazine/m9mm)
