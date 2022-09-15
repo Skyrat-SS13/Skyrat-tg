@@ -62,8 +62,6 @@
 	vampire.blood_volume -= 0.125 * delta_time
 	if(vampire.blood_volume <= BLOOD_VOLUME_SURVIVE)
 		to_chat(vampire, span_danger("You ran out of blood!"))
-		var/datum/status_effect/shapechange_mob/changed = locate() in vampire
-		changed?.shape.death() //make sure we're killing the bat if you are out of blood, if you don't it creates weird situations where the bat is alive but the caster is dead.
 		vampire.death() // Owch! Ran out of blood.
 	var/area/A = get_area(vampire)
 	if(istype(A, /area/station/service/chapel) && halloween_version) // If hemophages have bat form, they cannot enter the church
