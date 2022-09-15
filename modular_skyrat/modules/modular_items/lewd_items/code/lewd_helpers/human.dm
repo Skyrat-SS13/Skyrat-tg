@@ -17,7 +17,6 @@
 	var/obj/item/nipples = null
 	var/obj/item/penis = null
 
-/mob/living/carbon/human
 	var/has_penis = FALSE
 	var/has_vagina = FALSE
 	var/has_breasts = FALSE
