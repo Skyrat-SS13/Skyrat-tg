@@ -103,7 +103,7 @@
 	id = "mauna_mug"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = 1000, /datum/material/glass = 100)
-	build_path = /obj/item/reagent_containers/glass/maunamug
+	build_path = /obj/item/reagent_containers/cup/maunamug
 	category = list(RND_CATEGORY_EQUIPMENT)
 
 
@@ -449,7 +449,7 @@
 	id = "adv_watering_can"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = 2500, /datum/material/glass = 200)
-	build_path = /obj/item/reagent_containers/glass/watering_can/advanced
+	build_path = /obj/item/reagent_containers/cup/watering_can/advanced
 	category = list(RND_CATEGORY_INITIAL, RND_CATEGORY_TOOLS, RND_CATEGORY_TOOL_DESIGNS)
 	departmental_flags = DEPARTMENT_BITFLAG_SERVICE
 
@@ -751,4 +751,32 @@
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/uranium = 1000, /datum/material/plastic = 2000)
 	build_path = /obj/item/fishing_rod/tech
+	category = list(RND_CATEGORY_EQUIPMENT)
+
+/////////////////////////////////////////
+/////////Coffeemaker Stuff///////////////
+/////////////////////////////////////////
+
+/datum/design/coffeepot
+	name = "Coffeepot"
+	id = "coffeepot"
+	build_type = PROTOLATHE | AWAY_LATHE
+	materials = list(/datum/material/glass = 500, /datum/material/plastic = 500)
+	build_path = /obj/item/reagent_containers/cup/coffeepot
+	category = list(RND_CATEGORY_EQUIPMENT)
+
+/datum/design/coffeepot_bluespace
+	name = "Bluespace Coffeepot"
+	id = "bluespace_coffeepot"
+	build_type = PROTOLATHE | AWAY_LATHE
+	materials = list(/datum/material/iron = 1000, /datum/material/plastic = 500, /datum/material/bluespace = 500)
+	build_path = /obj/item/reagent_containers/cup/coffeepot/bluespace
+	category = list(RND_CATEGORY_EQUIPMENT)
+
+/datum/design/coffee_cartridge
+	name = "Blank Coffee Cartridge"
+	id = "coffee_cartridge"
+	build_type = PROTOLATHE | AWAY_LATHE
+	materials = list(/datum/material/plastic = 1000)
+	build_path = /obj/item/blank_coffee_cartridge
 	category = list(RND_CATEGORY_EQUIPMENT)

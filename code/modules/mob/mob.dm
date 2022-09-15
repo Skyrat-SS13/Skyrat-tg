@@ -50,6 +50,10 @@
 
 	return ..()
 
+/mob/New()
+	// This needs to happen IMMEDIATELY. I'm sorry :(
+	GenerateTag()
+	return ..()
 
 /**
  * Intialize a mob
@@ -97,6 +101,7 @@
  * This is simply "mob_"+ a global incrementing counter that goes up for every mob
  */
 /mob/GenerateTag()
+	. = ..()
 	tag = "mob_[next_mob_id++]"
 
 /**
@@ -1086,7 +1091,7 @@
 	var/search_pda = 1
 
 	for(var/A in searching)
-		if( search_id && istype(A, /obj/item/card/id) )
+		if( search_id && isidcard(A) )
 			var/obj/item/card/id/ID = A
 			if(ID.registered_name == oldname)
 				ID.registered_name = newname
@@ -1235,6 +1240,7 @@
 	VV_DROPDOWN_OPTION(VV_HK_DIRECT_CONTROL, "Assume Direct Control")
 	VV_DROPDOWN_OPTION(VV_HK_GIVE_DIRECT_CONTROL, "Give Direct Control")
 	VV_DROPDOWN_OPTION(VV_HK_OFFER_GHOSTS, "Offer Control to Ghosts")
+	VV_DROPDOWN_OPTION(VV_HK_SEND_CRYO, "Send to Cryogenic Storage") //SKYRAT EDIT ADDITION - CRYO SEND
 
 /mob/vv_do_topic(list/href_list)
 	. = ..()
@@ -1286,6 +1292,25 @@
 		if(!check_rights(NONE))
 			return
 		offer_control(src)
+	//SKYRAT EDIT ADDITION BEGIN - CRYO SEND
+	if(href_list[VV_HK_SEND_CRYO])
+		if(!check_rights(R_SPAWN))
+			return
+		var/send_notice = tgui_alert(usr, "Add a paper notice about sending [name] into a cryopod?", "Leave a paper?", list("Yes", "No", "Cancel"))
+		if(send_notice != "Yes" && send_notice != "No")
+			return
+
+		//log/message
+		to_chat(usr, "Put [src] in cryopod.")
+		log_admin("[key_name(usr)] has put [key_name(src)] into a cryopod.")
+		var/msg = span_notice("[key_name_admin(usr)] has put [key_name(src)] into a cryopod from [ADMIN_VERBOSEJMP(src)].")
+		message_admins(msg)
+		admin_ticket_log(src, msg)
+		
+		send_notice = send_notice == "Yes"
+		send_to_cryo(send_notice)
+
+	//SKYRAT EDIT ADDITION END
 
 /**
  * extra var handling for the logging var

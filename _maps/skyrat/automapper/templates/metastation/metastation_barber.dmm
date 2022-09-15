@@ -43,7 +43,7 @@
 /turf/open/floor/iron,
 /area/station/hallway/primary/central)
 "de" = (
-/obj/structure/table/reinforced/rglass,
+/obj/structure/table/glass,
 /obj/item/hairbrush,
 /obj/effect/turf_decal/tile/purple{
 	dir = 1
@@ -72,6 +72,18 @@
 	},
 /turf/open/floor/iron,
 /area/station/hallway/primary/central)
+"fe" = (
+/obj/effect/turf_decal/tile/purple{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/purple,
+/obj/machinery/button/curtain{
+	id = "barbershopcurtains";
+	pixel_y = -24;
+	pixel_x = -4
+	},
+/turf/open/floor/iron,
+/area/station/service/barber)
 "gn" = (
 /obj/structure/cable,
 /obj/effect/turf_decal/tile/purple{
@@ -176,15 +188,8 @@
 /obj/machinery/airalarm/directional/west,
 /turf/open/floor/iron,
 /area/station/service/barber)
-"xz" = (
-/obj/structure/curtain/cloth/fancy/mechanical{
-	id = "barbershopcurtains1"
-	},
-/obj/effect/spawner/structure/window/reinforced,
-/turf/open/floor/plating,
-/area/station/service/barber)
 "yU" = (
-/obj/structure/table/reinforced/rglass,
+/obj/structure/table/glass,
 /obj/item/hairbrush,
 /obj/effect/turf_decal/tile/purple{
 	dir = 1
@@ -232,11 +237,6 @@
 	},
 /obj/effect/turf_decal/tile/purple,
 /obj/item/kirbyplants/random,
-/obj/machinery/button/curtain{
-	id = "barbershopcurtains";
-	pixel_x = -25;
-	pixel_y = -24
-	},
 /obj/machinery/light_switch/directional/west,
 /turf/open/floor/iron,
 /area/station/service/barber)
@@ -263,7 +263,7 @@
 /turf/open/floor/iron,
 /area/station/service/barber)
 "CC" = (
-/obj/structure/table/reinforced/rglass,
+/obj/structure/table/glass,
 /obj/effect/turf_decal/tile/purple{
 	dir = 1
 	},
@@ -314,7 +314,7 @@
 /obj/machinery/button/curtain{
 	id = "barbershopcurtains1";
 	pixel_x = -25;
-	pixel_y = 24
+	pixel_y = 6
 	},
 /turf/open/floor/iron,
 /area/station/service/barber)
@@ -357,7 +357,7 @@
 /turf/open/floor/iron,
 /area/station/service/barber)
 "Kg" = (
-/obj/structure/table/reinforced/rglass,
+/obj/structure/table/glass,
 /obj/effect/turf_decal/tile/purple{
 	dir = 1
 	},
@@ -409,6 +409,11 @@
 	},
 /obj/effect/turf_decal/tile/purple,
 /obj/structure/chair/sofa/bench/right,
+/obj/machinery/button/curtain{
+	id = "barbershopcurtains";
+	pixel_y = 24;
+	pixel_x = -4
+	},
 /turf/open/floor/iron,
 /area/station/service/barber)
 "MC" = (
@@ -418,11 +423,6 @@
 	},
 /obj/effect/turf_decal/tile/purple,
 /obj/machinery/vending/barbervend,
-/obj/machinery/button/curtain{
-	id = "barbershopcurtains";
-	pixel_x = -25;
-	pixel_y = 24
-	},
 /turf/open/floor/iron,
 /area/station/service/barber)
 "MG" = (
@@ -492,10 +492,10 @@
 /obj/effect/turf_decal/tile/purple{
 	dir = 1
 	},
-/obj/machinery/door/airlock/public{
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/public/glass{
 	name = "Massage Parlour"
 	},
-/obj/machinery/door/firedoor,
 /turf/open/floor/iron,
 /area/station/service/barber)
 "WI" = (
@@ -520,7 +520,7 @@
 /obj/machinery/light/small/directional/east,
 /obj/machinery/power/apc/auto_name/directional/east,
 /obj/structure/cable,
-/obj/structure/table/reinforced/rglass,
+/obj/structure/table/glass,
 /obj/effect/turf_decal/tile/purple{
 	dir = 1
 	},
@@ -550,7 +550,7 @@ bb
 li
 "}
 (2,1,1) = {"
-xz
+KV
 Fb
 nY
 zo
@@ -626,7 +626,7 @@ Vw
 lT
 Vm
 Yk
-lT
+fe
 jh
 da
 "}

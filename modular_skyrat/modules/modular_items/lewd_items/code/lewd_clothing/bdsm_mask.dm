@@ -4,7 +4,7 @@
 
 /datum/storage/pockets/small/bdsm_mask/New()
 	. = ..()
-	can_hold = typecacheof(/obj/item/reagent_containers/glass/lewd_filter)
+	can_hold = typecacheof(/obj/item/reagent_containers/cup/lewd_filter)
 
 /obj/item/clothing/mask/gas/bdsm_mask
 	name = "latex gasmask"
@@ -145,10 +145,10 @@
 				. = ..()
 
 // Handler for clicking on a slot in a mask by hand with a filter
-/datum/storage/pockets/small/bdsm_mask/attackby(datum/source, obj/item/used_item, mob/user, params)
+/datum/storage/pockets/small/bdsm_mask/on_attackby(datum/source, obj/item/used_item, mob/user, params)
 	. = ..()
 	var/obj/item/clothing/mask/gas/bdsm_mask/worn_mask = user.get_item_by_slot(ITEM_SLOT_MASK)
-	if(istype(used_item, /obj/item/reagent_containers/glass/lewd_filter))
+	if(istype(used_item, /obj/item/reagent_containers/cup/lewd_filter))
 		if(worn_mask) // Null check
 			if(istype(worn_mask, /obj/item/clothing/mask/gas/bdsm_mask)) // Check that the mask is of the correct type
 				if(worn_mask.mask_on == TRUE)
@@ -180,7 +180,7 @@
 			mask.breath_status = TRUE
 			var/mob/living/carbon/affected_mob = usr
 			affected_mob.try_lewd_autoemote("inhale")
-			var/obj/item/reagent_containers/glass/lewd_filter/filter = mask.contents[1]
+			var/obj/item/reagent_containers/cup/lewd_filter/filter = mask.contents[1]
 			filter.reagent_consumption(affected_mob, filter.amount_per_transfer_from_this)
 		return
 	return ..()
@@ -272,7 +272,7 @@
 */
 
 // Here goes code for lewd gasmask filter
-/obj/item/reagent_containers/glass/lewd_filter
+/obj/item/reagent_containers/cup/lewd_filter
 	name = "gasmask filter"
 	desc = "A strange looking air filter. It may not be a good idea to breathe this in..."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
@@ -286,21 +286,21 @@
 	list_reagents = list(/datum/reagent/drug/aphrodisiac/crocin = 50)
 
 // Standard initialize code for filter
-/obj/item/reagent_containers/glass/lewd_filter/Initialize(mapload)
+/obj/item/reagent_containers/cup/lewd_filter/Initialize(mapload)
 	. = ..()
 	update_icon()
 
 // Legacy code from reagent_containers class. Most likely not really needed and can be cleared
-/obj/item/reagent_containers/glass/lewd_filter/get_part_rating()
+/obj/item/reagent_containers/cup/lewd_filter/get_part_rating()
 	return reagents.maximum_volume
 
 // Reagent consumption process handler
-/obj/item/reagent_containers/glass/lewd_filter/proc/reagent_consumption(mob/living/user, amount_per_transfer_from_this)
+/obj/item/reagent_containers/cup/lewd_filter/proc/reagent_consumption(mob/living/user, amount_per_transfer_from_this)
 	SEND_SIGNAL(src, COMSIG_GLASS_DRANK, user, user)
 	addtimer(CALLBACK(reagents, /datum/reagents.proc/trans_to, user, amount_per_transfer_from_this, TRUE, TRUE, FALSE, user, FALSE, INGEST), 5)
 
 // I just wanted to add 2th color variation. Because.
-/obj/item/reagent_containers/glass/lewd_filter/AltClick(mob/user)
+/obj/item/reagent_containers/cup/lewd_filter/AltClick(mob/user)
 	// Catch first AltClick and open reskin menu
 	if(unique_reskin && !current_skin && user.canUseTopic(src, BE_CLOSE, NO_DEXTERITY))
 		reskin_obj(user)
@@ -311,19 +311,19 @@
 		if(iscarbon(user))
 			if(istype(worn_mask, /obj/item/clothing/mask/gas/bdsm_mask))
 				if(worn_mask.mask_on == TRUE)
-					if(istype(src, /obj/item/reagent_containers/glass/lewd_filter))
+					if(istype(src, /obj/item/reagent_containers/cup/lewd_filter))
 						to_chat(user, span_warning("You can't change the flow rate of the valve while the mask is on!"))
 						return
 	. = ..()
 
 // Filter click handling
-/obj/item/reagent_containers/glass/lewd_filter/attack_hand(mob/user)
+/obj/item/reagent_containers/cup/lewd_filter/attack_hand(mob/user)
 	var/obj/item/clothing/mask/gas/bdsm_mask/worn_mask = user.get_item_by_slot(ITEM_SLOT_MASK)
 	if(worn_mask)
 		if(iscarbon(user))
 			if(istype(worn_mask, /obj/item/clothing/mask/gas/bdsm_mask))
 				if(worn_mask.mask_on == TRUE)
-					if(istype(src, /obj/item/reagent_containers/glass/lewd_filter))
+					if(istype(src, /obj/item/reagent_containers/cup/lewd_filter))
 						// Place for text about the impossibility of detaching the filter
 						to_chat(user, span_warning("You can't detach the filter while the mask is locked!"))
 						return
@@ -336,7 +336,7 @@
 	return ..() || ((obj_flags & CAN_BE_HIT) && used_item.attack_atom(src, user))
 
 // Mouse drop handler
-/obj/item/reagent_containers/glass/lewd_filter/MouseDrop(atom/over_object)
+/obj/item/reagent_containers/cup/lewd_filter/MouseDrop(atom/over_object)
 	var/mob/affected_mob = usr
 	var/mob/living/carbon/human/affected_human = usr
 	var/obj/item/clothing/mask/gas/bdsm_mask/worn_mask = affected_human.get_item_by_slot(ITEM_SLOT_MASK)
