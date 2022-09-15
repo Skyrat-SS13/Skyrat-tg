@@ -514,3 +514,68 @@
   - bugfix: chemical presses now only press 10 vials at a time like other output types
   tf-4:
   - rscadd: You can now use a bedsheet on an occupied cryopod to tuck in the occupant.
+2022-09-14:
+  Axietheaxolotl, PositiveEntropy:
+  - imageadd: Resprites all of the captain's clothes!
+  SarmentiCampbell:
+  - bugfix: Chaplains will now receive the correct ancient kit from their armaments
+      beacon
+  ShizCalev:
+  - bugfix: Fixed tackling not working properly if you didn't have a tail.
+  - bugfix: Fixed a runtime when trying to injecting someone in a missing limb.
+  SkyratBot:
+  - rscdel: 'Metastation: removed two excess cameras in Service Hallway and Hydroponics'
+  - qol: Solar Maintenance cameras are now grouped up in one place on the console's
+      list, several other cameras grouped up with their respective department group
+  - qol: tweaks to some cameras' c_tags for easier use (i.e. Tech Storage cameras
+      are now clearly signed as Secure and non-secure)
+  - bugfix: Armory - Exterior camera fixed to actually appear on console lists
+  - bugfix: two AI Minisat Exterior cameras fixed to be on the minisat network to
+      actually appear on console lists
+  - spellcheck: AI Upload cameras edited to not be lowercase (ai_upload -> AI Upload)
+  - bugfix: 'Icebox: Moved a vent hidden under a disposal bin slightly to make it
+      visible'
+  - bugfix: The preferences menu will work and display images again. Sorry :)
+  - bugfix: Mafia Snow map now has glass external airlocks for the two top players,
+      allowing them to see the players directly oppoiste of them
+  - bugfix: 'Metastation: restored security access restrictions to Departures Security
+      Post'
+  - bugfix: Fixed bileworms being unable to act.
+  - bugfix: The holodeck crab can't be butchered for infinite crab meat anymore, so
+      quit your animal abuse
+  - bugfix: Tramstation's AI Upload is now equipped with the proper modules.
+  - bugfix: Fax machines can no longer be shipped out on the cargo shuttle, preventing
+      a whole new realm of CentCom infiltration techniques from being applied.
+  - bugfix: scrubber overflow event is now properly categorized and has a description
+      in the trigger event menu
+  Tastyfish:
+  - bugfix: Various Icebox rooms no longer have non-euclidean portals to space beneath
+      them.
+  Vishenka0704:
+  - rscadd: Added LOOC ban.
+  - bugfix: fix LOOC mute(localy, on round length)
+  - bugfix: fixed send_to_cryo proc checks.
+  - rscadd: Added ways to determine the modularity of an icon in builmode
+  - rscdel: Removed duplicated buildmode icons
+  tf-4:
+  - qol: Felinids, tajarans, and people with feline traits now act more consistently.
+  - rscdel: Removed CQC+
+2022-09-15:
+  OrionTheFox:
+  - rscdel: Removed the Humble Captain's Uniform. It carried us to the light of less-garish
+      captain garb, but sadly will not be joining us in these holy lands. Mourn, for
+      we've lost a real one. Stay Humble.
+  - imageadd: updated the Captain's Kilt, and all Captain Digi Sprites to the new
+      midnight blue palette
+  ShizCalev:
+  - bugfix: Fixed messages sometimes not showing properly when melting shards with
+      a welder.
+  - bugfix: Fixed glass generated from melting shards teleporting to someone when
+      using TK.
+  SkyratBot:
+  - bugfix: Players should now once again get the reason as to why they can not start
+      any specific vote at any given time in the TGUI vote menu.
+  - code_imp: major_dust is now a space_dust subtype, rather than a meteor_wave subtype
+      orphaned in its own file.
+  - rscadd: Shoe stealing is back! *shoesteal, and lie down, to take someone's shoes.
+  - qol: AIs are now loudmode in binary chat
