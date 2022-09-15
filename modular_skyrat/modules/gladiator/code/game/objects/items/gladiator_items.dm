@@ -29,27 +29,35 @@
 
 /obj/item/clothing/neck/warrior_cape
 	name = "\proper cloak of the marked one"
-	desc = "A cloak worn by those that have faced death in the eyes and prevailed. <b><p style='color:red;'>Struggle against the tide, no matter how strong it may be.</p></b>"
+	desc = "A cloak worn by those that have faced death in the eyes and prevailed."
 	icon = 'modular_skyrat/modules/gladiator/icons/berserk_icons.dmi'
 	worn_icon = 'modular_skyrat/modules/gladiator/icons/berserk_suit.dmi'
 	icon_state = "berk_cape"
 	inhand_icon_state = "" //lul
 	uses_advanced_reskins = FALSE
-	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
+	resistance_flags = INDESTRUCTIBLE
+
+/obj/item/clothing/neck/warrior_cape/examine()
+	. = ..()
+	. += span_warning("Struggle against the tide, no matter how strong it may be.")
 
 /obj/item/clothing/suit/hooded/berserker/gatsu
 	name = "\proper berserker armor"
-	desc = "A suit of ancient body armor imbued with potent spiritual magnetism, capable of massively boosting a wearer's close combat skills at the cost of ravaging their mind and overexerting their body. <b><p style='color:red;'>Berserk mode requires the suit's helmet to be equipped, and can only be charged by taking damage.</p></b>"
+	desc = "A suit of ancient body armor imbued with potent spiritual magnetism, capable of massively boosting a wearer's close combat skills at the cost of ravaging their mind and overexerting their body."
 	icon_state = "berk_suit"
 	icon = 'modular_skyrat/modules/gladiator/icons/berserk_icons.dmi'
 	worn_icon = 'modular_skyrat/modules/gladiator/icons/berserk_suit.dmi'
 	hoodtype = /obj/item/clothing/head/hooded/berserker/gatsu
 	armor = list(MELEE = 45, BULLET = 40, LASER = 30, ENERGY = 30, BOMB = 80, BIO = 100, FIRE = 100, ACID = 100)
-	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
+	resistance_flags = INDESTRUCTIBLE
+
+/obj/item/clothing/suit/hooded/berserker/gatsu/examine()
+	. = ..()
+	. += span_warning("Berserk mode requires the suit's helmet to be equipped, and can only be charged by taking damage.")
 
 /obj/item/clothing/head/hooded/berserker/gatsu
 	name = "\proper berserker helmet"
-	desc = "A uniquely styled helmet with ghastly red eyes that seals it's user inside. <b><p style='color:red;'>Gods must be strong, but what of their slayers?</p></b>"
+	desc = "A uniquely styled helmet with ghastly red eyes that seals it's user inside."
 	icon_state = "berk_helm"
 	icon = 'modular_skyrat/modules/gladiator/icons/berserk_icons.dmi'
 	worn_icon = 'modular_skyrat/modules/gladiator/icons/berserk_suit.dmi'
@@ -64,7 +72,7 @@
 
 /obj/item/clothing/head/hooded/berserker/gatsu/examine()
 	. = ..()
-	. += span_notice("Berserk mode is [berserk_charge]% charged.")
+	. += span_warning("Berserk mode is [berserk_charge]% charged.")
 
 /obj/item/clothing/head/hooded/berserker/gatsu/process(delta_time)
 	if(berserk_active)
@@ -93,7 +101,7 @@
 
 /obj/item/claymore/dragonslayer
 	name = "\proper dragonslayer"
-	desc = "A blade that seems too big to be called a sword. Too big, too thick, too heavy, and too rough, it's more like a large hunk of raw iron. <b><p style='color:red;'>Countless slain foes have given it a supernatural tempering against foes in lavaland or massive, unruly enemies. Right click to dodge at the cost of stamina.</p></b>"
+	desc = "A blade that seems too big to be called a sword. Too big, too thick, too heavy, and too rough, it's more like a large hunk of raw iron."
 	icon = 'modular_skyrat/modules/gladiator/icons/dragonslayer.dmi'
 	icon_state = "dragonslayer"
 	inhand_icon_state = "dragonslayer"
@@ -116,6 +124,10 @@
 	var/roll_stamcost = 15
 	/// how far do we roll?
 	var/roll_range = 3
+
+/obj/item/claymore/dragonslayer/examine()
+	. = ..()
+	. += span_warning("Tempered against lavaland foes and bosses through supernatural energies. Right click to dodge at the cost of stamina.")
 
 /obj/item/claymore/dragonslayer/attack(mob/living/target, mob/living/carbon/human/user)
 	var/is_nemesis_faction = FALSE
@@ -162,8 +174,12 @@
 
 /obj/item/claymore/dragonslayer/veryfuckingloud
 	name = "\proper tempered dragonslayer"
-	desc = "<b><p style='color:red;'>CLANG</p></b>"
+	desc = null
 	hitsound = 'modular_skyrat/modules/gladiator/Clang_cut.ogg'
+
+/obj/item/claymore/dragonslayer/veryfuckingloud/examine()
+	. = ..()
+	. += span_danger("CLANG")
 
 /obj/structure/closet/crate/necropolis/gladiator
 	name = "gladiator chest"
