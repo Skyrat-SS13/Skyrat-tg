@@ -197,7 +197,7 @@
 		return FALSE
 	if(!slot_index) // This condition is for the UI to decide if the button is shown at all. Slot index should never be null otherwise.
 		return TRUE
-	if(slot_index == "slot_nipples" && !other_user.is_topless())
+	if(slot_index == ORGAN_SLOT_NIPPLES && !other_user.is_topless())
 		return FALSE
 	return other_user.is_bottomless()
 

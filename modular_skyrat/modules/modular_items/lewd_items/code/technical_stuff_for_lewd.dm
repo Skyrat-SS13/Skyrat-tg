@@ -1,16 +1,3 @@
-// Moved from my old interactions file 'cause skyrats already did interactions
-
-#define REQUIRE_NONE 0
-#define REQUIRE_EXPOSED 1
-#define REQUIRE_UNEXPOSED 2
-#define REQUIRE_ANY 3
-
-/mob/living/carbon/human
-	var/has_penis = FALSE
-	var/has_vagina = FALSE
-	var/has_breasts = FALSE
-	var/has_anus = FALSE
-
 /*
 *	Looping sound for vibrating stuff
 */

@@ -1,3 +1,14 @@
+#define REQUIRE_NONE 0
+#define REQUIRE_EXPOSED 1
+#define REQUIRE_UNEXPOSED 2
+#define REQUIRE_ANY 3
+
+/mob/living/carbon/human
+	var/has_penis = FALSE
+	var/has_vagina = FALSE
+	var/has_breasts = FALSE
+	var/has_anus = FALSE
+
 /*
 *	This code needed to determine if the human is naked in that part of body or not
 *	You can you for your own stuff if you want, haha.
@@ -394,3 +405,8 @@
 
 	apply_overlay(PENIS_LAYER)
 	update_mutant_bodyparts()
+
+#undef REQUIRE_NONE
+#undef REQUIRE_EXPOSED
+#undef REQUIRE_UNEXPOSED
+#undef REQUIRE_ANY
