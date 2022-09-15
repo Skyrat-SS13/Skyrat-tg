@@ -694,13 +694,10 @@
 			materials_list += "[current_material.name]"
 		. += "<u>It is made out of [english_list(materials_list)]</u>."
 
-<<<<<<< HEAD
 		// SKYRAT EDIT ADDITION BEGIN - HR sections
 		if(length(custom_materials) > 1)
 			. += EXAMINE_SECTION_BREAK //SKYRAT EDIT ADDITION
 		//SKYRAT EDIT ADDITION END
-=======
->>>>>>> ac37eeb4216 (Fixes custom material examine runtime (#69873))
 	if(reagents)
 		if(reagents.flags & TRANSPARENT)
 			. += EXAMINE_SECTION_BREAK //SKYRAT EDIT ADDITION - HR sections
