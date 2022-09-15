@@ -174,18 +174,11 @@
 					source.visible_message(span_purple("[source.name] removes [existing_item.name] from [target.name]'s [item_index]."), span_purple("You remove [existing_item.name] from [target.name]'s [item_index]."), span_purple("You hear someone remove something from someone nearby."), vision_distance = 1)
 					target.dropItemToGround(existing_item, force = TRUE) // Force is true, cause nodrop shouldn't affect lewd items.
 					target.vars[item_index] = null
-					target.update_inv_vagina()
-					target.update_inv_penis()
-					target.update_inv_anus()
-					target.update_inv_nipples()
 				else if (new_item)
 					source.visible_message(span_purple("[source.name] [internal ? "inserts" : "attaches"] the [new_item.name] [into_or_onto] [target.name]'s [item_index]."), span_purple("You [insert_or_attach] the [new_item.name] [into_or_onto] [target.name]'s [item_index]."), span_purple("You hear someone [insert_or_attach] something [into_or_onto] someone nearby."), vision_distance = 1)
 					target.vars[item_index] = new_item
 					new_item.forceMove(target)
-					target.update_inv_vagina()
-					target.update_inv_penis()
-					target.update_inv_anus()
-					target.update_inv_nipples()
+					target.update_inv_lewd()
 
 		else
 			source.show_message(span_warning("Failed to adjust [target.name]'s toys!"))

@@ -228,10 +228,7 @@
 
 			// SKYRAT EDIT ADDITION START - ERP Overlays
 			if(I.flags_inv & HIDESEXTOY)
-				update_inv_anus()
-				update_inv_vagina()
-				update_inv_penis()
-				update_inv_nipples()
+				update_inv_lewd()
 			// SKYRAT EDIT ADDITION END
 
 			update_worn_oversuit()
