@@ -135,6 +135,7 @@
 			interact_next = interaction_component.interact_last + INTERACTION_COOLDOWN
 			interaction_component.interact_next = interact_next
 			return TRUE
+
 	if(params["item_slot"])
 		// This code should be easy enough to follow... I hope.
 		var/item_index = params["item_slot"]
@@ -168,6 +169,7 @@
 				target,
 				interaction_key = "interation_[item_index]"
 				) && can_lewd_strip(source, target, item_index))
+
 				if(existing_item)
 					source.visible_message(span_purple("[source.name] removes [existing_item.name] from [target.name]'s [item_index]."), span_purple("You remove [existing_item.name] from [target.name]'s [item_index]."), span_purple("You hear someone remove something from someone nearby."), vision_distance = 1)
 					target.dropItemToGround(existing_item, force = TRUE) // Force is true, cause nodrop shouldn't affect lewd items.
@@ -206,10 +208,11 @@
 		return FALSE
 	return other_user.is_bottomless()
 
-/// Decides if a player should be able to insert or remove an item from a provided lewd slot.
+/// Decides if a player should be able to insert or remove an item from a provided lewd slot_index.
 /datum/component/interactable/proc/is_toy_compatible(obj/item/clothing/sextoy/item, slot_index)
 	if(!item) // Used for UI code, should never be actually null during actual logic code.
 		return TRUE
+
 	switch(slot_index)
 		if(ORGAN_SLOT_VAGINA)
 			return item.lewd_slot_flags & LEWD_SLOT_VAGINA
