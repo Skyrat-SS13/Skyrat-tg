@@ -370,7 +370,7 @@
 /obj/machinery/proc/can_be_occupant(atom/movable/occupant_atom)
 	return occupant_typecache ? is_type_in_typecache(occupant_atom, occupant_typecache) : isliving(occupant_atom)
 
-/obj/machinery/proc/close_machine(atom/movable/target = null)
+/obj/machinery/proc/close_machine(atom/movable/target)
 	state_open = FALSE
 	set_density(TRUE)
 	if(!target)
@@ -928,7 +928,7 @@
 					if(replacer_tool.atom_storage.attempt_remove(secondary_part, src))
 						component_parts += secondary_part
 						secondary_part.forceMove(src)
-				replacer_tool.atom_storage.attempt_insert(replacer_tool, primary_part, user, TRUE)
+				replacer_tool.atom_storage.attempt_insert(primary_part, user, TRUE)
 				component_parts -= primary_part
 				to_chat(user, span_notice("[capitalize(primary_part.name)] replaced with [secondary_part.name]."))
 				shouldplaysound = 1 //Only play the sound when parts are actually replaced!

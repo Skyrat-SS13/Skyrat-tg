@@ -1062,7 +1062,7 @@
 	dir = 8;
 	dwidth = 1;
 	height = 13;
-	id = "arrivals_shuttle";
+	shuttle_id = "arrivals_shuttle";
 	name = "tram dock";
 	roundstart_template = /datum/map_template/shuttle/arrivals_skyrat;
 	width = 5
@@ -4240,8 +4240,11 @@
 	default_price = 0;
 	extended_inventory = 1;
 	extra_price = 0;
-	fair_market_price = 0;
-	set_obj_flags = "EMAGGED"
+	fair_market_price = 0
+	},
+/obj/effect/mapping_helpers/atom_injector/obj_flag{
+	inject_flags = 1;
+	target_type = /obj/machinery/vending/boozeomat
 	},
 /turf/open/indestructible/hotelwood,
 /area/centcom/holding/cafedorms)
@@ -4608,8 +4611,11 @@
 	default_price = 0;
 	extended_inventory = 1;
 	extra_price = 0;
-	fair_market_price = 0;
-	set_obj_flags = "EMAGGED"
+	fair_market_price = 0
+	},
+/obj/effect/mapping_helpers/atom_injector/obj_flag{
+	inject_flags = 1;
+	target_type = /obj/machinery/vending/boozeomat
 	},
 /obj/structure/sign/poster/contraband/space_cola{
 	pixel_y = 32
@@ -10335,7 +10341,7 @@
 	dir = 8;
 	dwidth = 7;
 	height = 21;
-	id = "goldeneye_cruiser_dock";
+	shuttle_id = "goldeneye_cruiser_dock";
 	name = "Goldeneye Satellite Dock";
 	roundstart_template = /datum/map_template/shuttle/goldeneye_cruiser;
 	width = 31
@@ -10710,8 +10716,11 @@
 	default_price = 0;
 	extended_inventory = 1;
 	extra_price = 0;
-	fair_market_price = 0;
-	set_obj_flags = "EMAGGED"
+	fair_market_price = 0
+	},
+/obj/effect/mapping_helpers/atom_injector/obj_flag{
+	inject_flags = 1;
+	target_type = /obj/machinery/vending/boozeomat
 	},
 /turf/open/floor/wood,
 /area/centcom/holding/cafe)
