@@ -530,13 +530,6 @@
 		used_item.play_tool_sound(src, 50)
 		deconstruct(TRUE)
 
-// // Object disassembly handler by wrench
-// /obj/structure/chair/milking_machine/default_unfasten_wrench(mob/user, obj/item/used_item, time = 20)
-// 	. = !(flags_1 & NODECONSTRUCT_1) && used_item.tool_behaviour == TOOL_WRENCH
-// 	if(.)
-// 		used_item.play_tool_sound(src, 50)
-// 		deconstruct(TRUE)
-
 // Machine Workflow Processor
 /obj/structure/chair/milking_machine/process(delta_time)
 
@@ -546,8 +539,6 @@
 		pump_state = pump_state_list[1]
 		update_all_visuals()
 		return
-//	if(current_mode == mode_list[1] && pump_state == pump_state_list[1])
-//		cell.give(charge_rate * delta_time)
 
 	// Check if the machine should work
 	if(!current_mob)
@@ -858,12 +849,6 @@
 // Handler for clicking an empty hand on a machine
 /obj/structure/chair/milking_machine/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
-
-	/* Standard behavior. Uncomment for UI debugging
-	if(!ui)
-		ui = new(user, src, "MilkingMachine", name)
-		ui.open()
-	*/
 
 	//Block the interface if we are in the machine. Use in production
 	if(LAZYLEN(buckled_mobs))
