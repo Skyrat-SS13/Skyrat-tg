@@ -254,8 +254,11 @@
 /// Called after the config has been loaded or reloaded.
 /datum/controller/subsystem/proc/OnConfigLoad()
 
-//used to initialize the subsystem AFTER the map has loaded
+/**
+ * Used to initialize the subsystem. This is expected to be overriden by subtypes.
+ */
 /datum/controller/subsystem/Initialize()
+<<<<<<< HEAD
 	initialized = TRUE
 	SEND_SIGNAL(src, COMSIG_SUBSYSTEM_POST_INITIALIZE)
 
@@ -267,6 +270,9 @@
 	log_world(msg)
 	SSblackbox.record_feedback("tally", "subsystem_initialize", time, name)
 	return seconds
+=======
+	return SS_INIT_NONE
+>>>>>>> 4733643f395 (Clean up subsystem Initialize(), require an explicit result returned, give a formal way to fail (for SSlua) (#69775))
 
 /datum/controller/subsystem/stat_entry(msg)
 	if(can_fire && !(SS_NO_FIRE & flags) && init_stage <= Master.init_stage_completed)

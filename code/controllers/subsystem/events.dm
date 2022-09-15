@@ -14,9 +14,13 @@ SUBSYSTEM_DEF(events)
 	var/list/holidays //List of all holidays occuring today or null if no holidays
 	var/wizardmode = FALSE
 
+<<<<<<< HEAD
 	var/list/previously_run = list() //SKYRAT EDIT ADDITION
 
 /datum/controller/subsystem/events/Initialize(time, zlevel)
+=======
+/datum/controller/subsystem/events/Initialize()
+>>>>>>> 4733643f395 (Clean up subsystem Initialize(), require an explicit result returned, give a formal way to fail (for SSlua) (#69775))
 	for(var/type in typesof(/datum/round_event_control))
 		var/datum/round_event_control/E = new type()
 		if(!E.typepath)
@@ -24,6 +28,7 @@ SUBSYSTEM_DEF(events)
 		control += E //add it to the list of all events (controls)
 	reschedule()
 	getHoliday()
+<<<<<<< HEAD
 	// SKYRAT EDIT ADDITION
 	if(CONFIG_GET(flag/low_chaos_event_system))
 		reschedule_low_chaos()
@@ -31,6 +36,9 @@ SUBSYSTEM_DEF(events)
 	frequency_upper = CONFIG_GET(number/event_frequency_upper)
 	// SKYRAT EDIT END
 	return ..()
+=======
+	return SS_INIT_SUCCESS
+>>>>>>> 4733643f395 (Clean up subsystem Initialize(), require an explicit result returned, give a formal way to fail (for SSlua) (#69775))
 
 
 /datum/controller/subsystem/events/fire(resumed = FALSE)
