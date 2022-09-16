@@ -94,8 +94,12 @@
 	return ..()
 
 /mob/living/simple_animal/hostile/megafauna/gladiator/examine() //is it really any secret what this does
-    . = ..()
-    . += span_boldwarning("They are currently in Phase [phase].")
+	if(stat >= DEAD)
+		. = ..()
+		. += span_boldwarning("Unearthly energies bind the body to it's place of defeat. You cannot move it.")
+	else
+		. = ..()
+		. += span_boldwarning("They are currently in Phase [phase].")
 
 /mob/living/simple_animal/hostile/megafauna/gladiator/adjustHealth(amount, updating_health, forced) //gets him mad at you if you're a species he's not racist towards, only once he takes damage
 	get_angry()
