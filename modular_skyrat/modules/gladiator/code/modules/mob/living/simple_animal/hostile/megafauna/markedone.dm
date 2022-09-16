@@ -379,6 +379,9 @@
 /mob/living/simple_animal/hostile/megafauna/gladiator/proc/swordslam() //this kills the crab
 	wendigo_slam(src, 5, 0.3 SECONDS, 8)
 
+/mob/living/simple_animal/hostile/megafauna/gladiator/proc/stomp()
+	wendigo_slam(src, 3, 0 SECONDS, 4)
+
 /mob/living/simple_animal/hostile/megafauna/gladiator/OpenFire() //used to actually decide what attacks he does. abandon all hope ye who enter here
 	if(!COOLDOWN_FINISHED(src, ranged_cooldown))
 		return FALSE
@@ -389,6 +392,7 @@
 		if(MARKED_ONE_FIRST_PHASE)
 			if(prob(10) && (get_dist(src, target) <= spinning_range))
 				INVOKE_ASYNC(src, .proc/spinattack)
+				INVOKE_ASYNC(src, .proc/stomp)
 				ranged_cooldown += 5.5 SECONDS
 			else
 				if(prob(50))
@@ -402,6 +406,7 @@
 				if(prob(80))
 					if(prob(50) && (get_dist(src, target) <= spinning_range))
 						INVOKE_ASYNC(src, .proc/spinattack)
+						INVOKE_ASYNC(src, .proc/stomp)
 						ranged_cooldown += 5 SECONDS
 					else
 						INVOKE_ASYNC(src, .proc/swordslam)
@@ -418,6 +423,7 @@
 				if(prob(50))
 					if(prob(30) && (get_dist(src, target) <= spinning_range))
 						INVOKE_ASYNC(src, .proc/spinattack)
+						INVOKE_ASYNC(src, .proc/stomp)
 						ranged_cooldown += 4.5 SECONDS
 					else
 						INVOKE_ASYNC(src, .proc/swordslam)
@@ -435,15 +441,18 @@
 					if(prob(25))
 						INVOKE_ASYNC(src, .proc/bone_knife_throw, target)
 						INVOKE_ASYNC(src, .proc/teleport, target)
+						INVOKE_ASYNC(src, .proc/stomp)
 						ranged_cooldown += 2 SECONDS
 					else
 						INVOKE_ASYNC(src, .proc/swordslam)
 						ranged_cooldown += 2 SECONDS
 				else
 					INVOKE_ASYNC(src, .proc/bone_knife_throw, target)
+					INVOKE_ASYNC(src, .proc/stomp)
 					ranged_cooldown += 0.5 SECONDS
 			else
 				INVOKE_ASYNC(src, .proc/teleport, target)
+				INVOKE_ASYNC(src, .proc/stomp)
 				ranged_cooldown += 0.5 SECONDS
 
 #undef MARKED_ONE_STUN_DURATION
