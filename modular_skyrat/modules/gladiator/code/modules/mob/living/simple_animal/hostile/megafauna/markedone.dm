@@ -391,17 +391,17 @@
 /mob/living/simple_animal/hostile/megafauna/gladiator/proc/swordslam()
 	ground_pound(src, 5, 3, 8)
 
-/mob/living/simple_animal/hostile/megafauna/gladiator/OpenFire()
+/mob/living/simple_animal/hostile/megafauna/gladiator/OpenFire() //SHITCODE BELOW - ABANDON ALL HOPE YE WHO ENTER HERE
 	if(!COOLDOWN_FINISHED(src, ranged_cooldown))
 		return FALSE
 	if(spinning || stunned || charging)
 		return FALSE
 	ranged_cooldown = world.time
 	switch(phase)
-		if(MARKED_ONE_FIRST_PHASE)
+		if(MARKED_ONE_FIRST_PHASE) //25% chance to block damage done, basic introductory attacks
 			if(prob(25) && (get_dist(src, target) <= spinning_range))
 				INVOKE_ASYNC(src, .proc/spinattack)
-				ranged_cooldown += 7 SECONDS
+				ranged_cooldown += 5.5 SECONDS
 			else
 				if(prob(66))
 					INVOKE_ASYNC(src, .proc/charge, target, 21)
@@ -409,31 +409,54 @@
 				else
 					INVOKE_ASYNC(src, .proc/bone_knife_throw, target)
 					ranged_cooldown += 2.5 SECONDS
-		if(MARKED_ONE_SECOND_PHASE)
-			if(prob(40) && (get_dist(src, target) <= spinning_range))
-				INVOKE_ASYNC(src, .proc/spinattack)
-				ranged_cooldown += 5.5 SECONDS
-			else
-				if(prob(40))
-					INVOKE_ASYNC(src, .proc/bone_knife_throw, target)
-					ranged_cooldown += 2 SECONDS
+		if(MARKED_ONE_SECOND_PHASE) //transitions via swordslam, now teleports and throws knives at the same time
+			if(prob(75))
+				if(prob(80))
+					if(prob(50)) && (get_dist(src, target) <= spinning_range))
+						INVOKE_ASYNC(src, .proc/spinattack)
+						ranged_cooldown += 5 SECONDS
+					else
+						INVOKE_ASYNC(src, .proc/charge, target, 21)
+						ranged_cooldown += 2 SECONDS
 				else
+					INVOKE_ASYNC(src, .proc/bone_knife_throw, target)
 					INVOKE_ASYNC(src, .proc/teleport, target)
-					ranged_cooldown += 3 SECONDS
-		if(MARKED_ONE_THIRD_PHASE)
-			if(prob(35))
-				INVOKE_ASYNC(src, .proc/bone_knife_throw, target)
-				ranged_cooldown += 1 SECONDS
+					ranged_cooldown += 2 SECONDS
 			else
 				INVOKE_ASYNC(src, .proc/teleport, target)
-				ranged_cooldown += 2 SECONDS
-		if(MARKED_ONE_FINAL_PHASE)
-			if(prob(40))
+				ranged_cooldown += 1 SECONDS
+		if(MARKED_ONE_THIRD_PHASE) //transitions via swordslam, swordslam is now a regular attack
+			if(prob(70))
+				if(prob(50))
+					if(prob(50)) && (get_dist(src, target) <= spinning_range))
+						INVOKE_ASYNC(src, .proc/spinattack)
+						ranged_cooldown += 4.5 SECONDS
+					else
+						INVOKE_ASYNC(src, .proc/charge, target, 21)
+						ranged_cooldown += 2 SECONDS
+				else
+					INVOKE_ASYNC(src, .proc/bone_knife_throw, target)
+					INVOKE_ASYNC(src, .proc/teleport, target)
+					ranged_cooldown += 2 SECONDS
+			else
+				IINVOKE_ASYNC(src, .proc/swordslam)
+				ranged_cooldown += 4 SECONDS
+		if(MARKED_ONE_FINAL_PHASE) //transitions via swordslam, has way lowered cooldowns, no longer spins
+			if(prob(50))
+				if(prob(50))
+					if(prob(25))
+						INVOKE_ASYNC(src, .proc/bone_knife_throw, target)
+						INVOKE_ASYNC(src, .proc/teleport, target)
+						anged_cooldown += 2 SECONDS
+					else
+						INVOKE_ASYNC(src, .proc/charge, target, 21)
+						ranged_cooldown += 1 SECONDS
+				else
+					INVOKE_ASYNC(src, .proc/bone_knife_throw, target)
+					ranged_cooldown += 1 SECONDS
+			else
 				INVOKE_ASYNC(src, .proc/swordslam)
 				ranged_cooldown += 3 SECONDS
-			else
-				INVOKE_ASYNC(src, .proc/charge, target, 21)
-				ranged_cooldown += 2 SECONDS
 
 #undef MARKED_ONE_STUN_DURATION
 #undef MARKED_ONE_ANGER_DURATION
