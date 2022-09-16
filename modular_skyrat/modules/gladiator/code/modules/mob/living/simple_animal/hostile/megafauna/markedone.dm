@@ -371,7 +371,7 @@
 	if(!orgin)
 		return
 	var/list/all_turfs = RANGE_TURFS(range, orgin)
-	for(var/i = 0 to range)
+	for(var/i in 0 to range)
 		playsound(orgin,'sound/effects/bamf.ogg', 600, TRUE, 10)
 		for(var/turf/stomp_turf in all_turfs)
 			if(get_dist(orgin, stomp_turf) > i)
