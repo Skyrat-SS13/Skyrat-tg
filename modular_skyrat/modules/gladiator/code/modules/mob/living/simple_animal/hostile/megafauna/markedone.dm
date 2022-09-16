@@ -412,7 +412,7 @@
 		if(MARKED_ONE_SECOND_PHASE) //transitions via swordslam, now teleports and throws knives at the same time
 			if(prob(75))
 				if(prob(80))
-					if(prob(50)) && (get_dist(src, target) <= spinning_range))
+					if(prob(50) && (get_dist(src, target) <= spinning_range))
 						INVOKE_ASYNC(src, .proc/spinattack)
 						ranged_cooldown += 5 SECONDS
 					else
