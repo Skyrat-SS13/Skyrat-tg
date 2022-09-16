@@ -1,7 +1,6 @@
 /obj/effect/spawner/random/vending/snackvend
 	loot = list(
 		/obj/machinery/vending/imported,
-		///obj/machinery/vending/imported/panslav,
 		/obj/machinery/vending/imported/yangyu,
 		/obj/machinery/vending/imported/mothic,
 		/obj/machinery/vending/imported/tizirian,
@@ -59,11 +58,6 @@
 	var/datum/language_holder/vendor_languages = get_language_holder()
 	grant_all_languages()
 	vendor_languages.selected_language = language_to_speak
-
-/* Pending me speaking to a russian (terrifying experience)
-/obj/machinery/vending/imported/panslav
-	language_to_speak = /datum/language/panslavic
-*/
 
 /obj/machinery/vending/imported/yangyu
 	name = "質の高い食品ベンダー"
