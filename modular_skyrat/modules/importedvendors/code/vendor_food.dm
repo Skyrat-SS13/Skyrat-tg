@@ -84,7 +84,7 @@
 
 /obj/item/food/vendor_tray_meal/beef_rice
 	name = "\improper メインコース: Beef and Fried Rice"
-	desc = "A few slices of seemingly grilled beef, paired with far too much rice for how much meat there is."
+	desc = "A few slices of seemingly grilled beef, paired with a disproportionately large amount of rice."
 	icon_state = "foodtray_beefnrice"
 	tastes = list("cheap beef" = 1, "rice" = 3, "laziness" = 1)
 	foodtypes = GRAIN | MEAT
