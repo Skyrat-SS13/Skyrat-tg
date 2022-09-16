@@ -377,13 +377,13 @@
 			if(get_dist(orgin, stomp_turf) > i)
 				continue
 			new /obj/effect/temp_visual/small_smoke/halfsecond(stomp_turf)
-			for(var/mob/living/getfucked in stomp_turf)
-				if(getfucked == source || getfucked.throwing)
+			for(var/mob/living/get_fucked in stomp_turf)
+				if(get_fucked == source || get_fucked.throwing)
 					continue
-				to_chat(getfucked, span_userdanger("[source]'s ground slam shockwave sends you flying!"))
-				var/turf/thrownat = get_ranged_target_turf_direct(source, getfucked, throw_range, rand(-10, 10))
-				getfucked.throw_at(thrownat, 8, 2, null, TRUE, force = MOVE_FORCE_OVERPOWERING, gentle = TRUE)
-				getfucked.apply_damage(20, BRUTE, wound_bonus=CANT_WOUND)
+				to_chat(get_fucked, span_userdanger("[source]'s ground slam shockwave sends you flying!"))
+				var/turf/thrown_at = get_ranged_target_turf_direct(source, getfucked, throw_range, rand(-10, 10))
+				get_fucked.throw_at(thrown_at, 8, 2, null, TRUE, force = MOVE_FORCE_OVERPOWERING, gentle = TRUE)
+				get_fucked.apply_damage(20, BRUTE, wound_bonus = CANT_WOUND)
 				shake_camera(getfucked, 2, 1)
 			all_turfs -= stomp_turf
 		sleep(delay)
