@@ -65,7 +65,7 @@
 
 /obj/item/food/vendor_snacks/mochi_icecream/matcha
 	name = "mochi icecream balls - matcha"
-	desc = "A six pack of mochi icecream, which is to say matcha icecream surrounded by mochi. Comes with small plastic skewer for consumption."
+	desc = "A six pack of mochi icecream - or, more specifically, matcha icecream surrounded by mochi. Comes with small plastic skewer for consumption."
 	icon_state = "mochiice_green"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 3, /datum/reagent/consumable/ice = 1, /datum/reagent/consumable/tea = 2)
 	tastes = list("rice cake" = 1, "bitter matcha" = 2)
@@ -73,7 +73,7 @@
 
 /obj/item/food/vendor_snacks/mochi_icecream/matcha/examine_more(mob/user)
 	. = ..()
-	. += span_notice("A small label on the container specifies that the icecream is made using only culinary grade matcha grown outside of the sol system.")
+	. += span_notice("A small label on the container specifies that this icecream is made using only culinary grade matcha grown outside of the Sol system.")
 	return .
 
 /obj/item/trash/vendor_trash/mochi_icecream
@@ -106,7 +106,7 @@
 
 /obj/item/reagent_containers/cup/glass/waterbottle/tea/strawberry
 	name = "bottle of strawberry tea"
-	desc = "A bottle of strawberry flavored tea, does not contain any actual strawberries."
+	desc = "A bottle of strawberry flavored tea; does not contain any actual strawberries."
 	icon_state = "teabottle_pink"
 	list_reagents = list(/datum/reagent/consumable/pinktea = 40)
 	custom_price = PAYCHECK_LOWER * 3
@@ -155,7 +155,7 @@
 
 /obj/item/food/vendor_snacks/moth_bagged/fueljack
 	name = "fueljack's snack"
-	desc = "A vacuum sealed bag containing a smaller than usual brick of fueljack's lunch, the small size downgrading it to a fueljack's snack."
+	desc = "A vacuum sealed bag containing a smaller than usual brick of fueljack's lunch, ultimately downgrading it to a fueljack's snack."
 	icon_state = "fueljacksnack"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 3, /datum/reagent/consumable/nutriment/protein = 1)
 	tastes = list("cabbage" = 1, "potato" = 1, "onion" = 1, "chili" = 1, "cheese" = 1)
@@ -217,7 +217,7 @@
 
 /obj/item/food/vendor_snacks/lizard_bagged
 	name = "candied mushroom"
-	desc = "An odd treat of the lizard empire, a mushroom dipped in caramel, made inconvenient by being put into the bag before it hardened."
+	desc = "An odd treat of the lizard empire, a mushroom dipped in caramel; unfortunately, it seems to have been bagged before the caramel fully hardened."
 	icon_state = "candiedshroom"
 	trash_type = /obj/item/trash/vendor_trash/lizard_bagged
 	food_reagents = list(/datum/reagent/consumable/nutriment = 3, /datum/reagent/consumable/caramel = 2)
@@ -230,7 +230,7 @@
 
 /obj/item/food/vendor_snacks/lizard_bagged/moonjerky
 	name = "moonfish jerky"
-	desc = "A fish jerky, made from what you can only hope is moonfish. Also seems to have a hint of barbeque sauce flavor in there."
+	desc = "A fish jerky, made from what you can only hope is moonfish. It also seems to taste subtly of barbecue"
 	icon_state = "moonjerky"
 	food_reagents = list(/datum/reagent/consumable/nutriment/protein = 2, /datum/reagent/consumable/bbqsauce = 2)
 	tastes = list("fish" = 1, "smokey sauce" = 1)
