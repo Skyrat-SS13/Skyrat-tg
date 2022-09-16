@@ -381,10 +381,10 @@
 				if(get_fucked == source || get_fucked.throwing)
 					continue
 				to_chat(get_fucked, span_userdanger("[source]'s ground slam shockwave sends you flying!"))
-				var/turf/thrown_at = get_ranged_target_turf_direct(source, getfucked, throw_range, rand(-10, 10))
+				var/turf/thrown_at = get_ranged_target_turf_direct(source, get_fucked, throw_range, rand(-10, 10))
 				get_fucked.throw_at(thrown_at, 8, 2, null, TRUE, force = MOVE_FORCE_OVERPOWERING, gentle = TRUE)
 				get_fucked.apply_damage(20, BRUTE, wound_bonus = CANT_WOUND)
-				shake_camera(getfucked, 2, 1)
+				shake_camera(get_fucked, 2, 1)
 			all_turfs -= stomp_turf
 		sleep(delay)
 		
