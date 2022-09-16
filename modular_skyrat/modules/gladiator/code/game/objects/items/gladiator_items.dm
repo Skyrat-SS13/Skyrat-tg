@@ -128,6 +128,9 @@
 	. = ..()
 	. += span_warning("Tempered against lavaland foes and bosses through supernatural energies. Right click to dodge at the cost of stamina.")
 
+/obj/item/claymore/dragonslayer/add_blood_DNA(list/blood_dna) //110% stain-proof! or so they tell me
+    return FALSE
+
 /obj/item/claymore/dragonslayer/attack(mob/living/target, mob/living/carbon/human/user)
 	var/is_nemesis_faction = FALSE
 	for(var/found_faction in target.faction)
