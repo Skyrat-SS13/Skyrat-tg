@@ -93,11 +93,11 @@
 		return list()
 	return ..()
 
-/mob/living/simple_animal/hostile/megafauna/gladiator/examine()
+/mob/living/simple_animal/hostile/megafauna/gladiator/examine() //is it really any secret what this does
     . = ..()
     . += span_boldwarning("They are currently in Phase [phase].")
 
-/mob/living/simple_animal/hostile/megafauna/gladiator/adjustHealth(amount, updating_health, forced)
+/mob/living/simple_animal/hostile/megafauna/gladiator/adjustHealth(amount, updating_health, forced) //gets him mad at you if you're a species he's not racist towards, only once he takes damage
 	get_angry()
 	if(spinning)
 		visible_message(span_danger("[src] brushes off all incoming attacks with his spinning blade!"))
@@ -112,7 +112,7 @@
 	if((world.time + adjustment_amount) > next_move)
 		changeNext_move(adjustment_amount)
 
-/mob/living/simple_animal/hostile/megafauna/gladiator/AttackingTarget()
+/mob/living/simple_animal/hostile/megafauna/gladiator/AttackingTarget() //calls bump when charging into a target
 	. = ..()
 	if(spinning || stunned)
 		return
@@ -121,7 +121,7 @@
 	if(. && prob(5 * phase))
 		INVOKE_ASYNC(src, .proc/teleport, target)
 
-/mob/living/simple_animal/hostile/megafauna/gladiator/Move(atom/newloc, dir, step_x, step_y)
+/mob/living/simple_animal/hostile/megafauna/gladiator/Move(atom/newloc, dir, step_x, step_y) //chasms are for sissies
 	if(spinning || stunned)
 		return FALSE
 	if(ischasm(newloc))
@@ -169,7 +169,7 @@
 		if(chargetiles >= chargerange)
 			INVOKE_ASYNC(src, .proc/discharge)
 
-/mob/living/simple_animal/hostile/megafauna/gladiator/Bump(atom/A)
+/mob/living/simple_animal/hostile/megafauna/gladiator/Bump(atom/A) //used for charge-induced ass-tappage
 	. = ..()
 	if(!charging)
 		return
@@ -183,19 +183,19 @@
 		visible_message(span_danger("[src] crashes headfirst into [A]!"))
 		discharge(1.33)
 
-/mob/living/simple_animal/hostile/megafauna/gladiator/proc/get_angry()
+/mob/living/simple_animal/hostile/megafauna/gladiator/proc/get_angry() //GET MAD! I DON'T WANT YOUR DAMN LEMONS WHAT THE HELL AM I SUPPOSED TO DO WITH THESE
 	if(stat >= DEAD)
 		return
 	if(anger_timer_id)
 		deltimer(anger_timer_id)
 	anger_timer_id = addtimer(CALLBACK(src, .proc/get_calm), MARKED_ONE_ANGER_DURATION, TIMER_STOPPABLE)
 
-/mob/living/simple_animal/hostile/megafauna/gladiator/proc/get_calm()
+/mob/living/simple_animal/hostile/megafauna/gladiator/proc/get_calm() //I'M THE MAN THAT'S GONNA BURN YOUR HOUSE DOWN! With the lemons!
 	if(anger_timer_id)
 		deltimer(anger_timer_id)
 	anger_timer_id = null
 
-/mob/living/simple_animal/hostile/megafauna/gladiator/proc/introduction(mob/living/target)
+/mob/living/simple_animal/hostile/megafauna/gladiator/proc/introduction(mob/living/target) //monologue.txt
 	if(ishuman(target))
 		var/mob/living/carbon/human/human_target = target
 		var/datum/species/targetspecies = human_target.dna.species
@@ -240,7 +240,7 @@
 		say("FRESH MEAT!")
 		introduced |= WEAKREF(target)
 
-/mob/living/simple_animal/hostile/megafauna/gladiator/proc/update_phase()
+/mob/living/simple_animal/hostile/megafauna/gladiator/proc/update_phase() //this checks against his current health and updates his phase accordingly
 	var/healthpercentage = 100 * (health/maxHealth)
 	if(src.stat >= DEAD)
 		return
@@ -282,7 +282,7 @@
 	if(charging)
 		move_to_delay = move_to_delay_charge
 
-/mob/living/simple_animal/hostile/megafauna/gladiator/proc/spinattack()
+/mob/living/simple_animal/hostile/megafauna/gladiator/proc/spinattack() //SPEEEEN
 	var/turf/our_turf = get_turf(src)
 	if(!istype(our_turf))
 		return
@@ -321,7 +321,7 @@
 	sleep(3)
 	spinning = FALSE
 
-/mob/living/simple_animal/hostile/megafauna/gladiator/proc/charge(atom/target, range = 1)
+/mob/living/simple_animal/hostile/megafauna/gladiator/proc/charge(atom/target, range = 1) //the marked one's charge has an instant travel time, but takes a moment to power-up, allowing you to get behind cover to stun him
 	face_atom(target)
 	visible_message(span_userdanger("[src] lifts his arm, and prepares to charge!"))
 	animate(src, color = "#ff6666", 3)
@@ -331,7 +331,7 @@
 	charging = TRUE
 	update_phase()
 
-/mob/living/simple_animal/hostile/megafauna/gladiator/proc/discharge(modifier = 1)
+/mob/living/simple_animal/hostile/megafauna/gladiator/proc/discharge(modifier = 1) //discharge is a proc that occurs when the marked one charges into a solid turf on his way to your ass, causing a stun
 	stunned = TRUE
 	charging = FALSE
 	minimum_distance = initial(minimum_distance)
@@ -341,7 +341,7 @@
 	sleep(CEILING(MARKED_ONE_STUN_DURATION * modifier, 1))
 	stunned = FALSE
 
-/mob/living/simple_animal/hostile/megafauna/gladiator/proc/teleport(atom/target)
+/mob/living/simple_animal/hostile/megafauna/gladiator/proc/teleport(atom/target) //teleport is a proc that makes him teleport
 	var/turf/targeted = get_step(target, target.dir)
 	new /obj/effect/temp_visual/small_smoke/halfsecond(get_turf(src))
 	SLEEP_CHECK_DEATH(4, src)
@@ -359,14 +359,14 @@
 			new /obj/effect/temp_visual/small_smoke/halfsecond(targeted)
 			forceMove(targeted)
 
-/mob/living/simple_animal/hostile/megafauna/gladiator/proc/bone_knife_throw(atom/target)
+/mob/living/simple_animal/hostile/megafauna/gladiator/proc/bone_knife_throw(atom/target) //bone_knife_throw is a proc that throws bone knives
 	var/obj/item/knife/combat/bone/boned = new /obj/item/knife/combat/bone(get_turf(src))
 	boned.throwforce = 35
 	playsound(src, 'sound/weapons/bolathrow.ogg', 60, 0)
 	boned.throw_at(target, 7, 3, thrower = src)
 	QDEL_IN(boned, 3 SECONDS)		
 
-/mob/living/simple_animal/hostile/megafauna/gladiator/proc/ground_pound(atom/source, range, delay, throw_range)
+/mob/living/simple_animal/hostile/megafauna/gladiator/proc/ground_pound(atom/source, range, delay, throw_range) //proc that takes numerical input to make a ground pound attack of variable size
 	var/turf/orgin = get_turf(source)
 	if(!orgin)
 		return
@@ -388,10 +388,10 @@
 			all_turfs -= stomp_turf
 		sleep(delay)
 		
-/mob/living/simple_animal/hostile/megafauna/gladiator/proc/swordslam()
+/mob/living/simple_animal/hostile/megafauna/gladiator/proc/swordslam() //this kills the crab
 	ground_pound(src, 5, 3, 8)
 
-/mob/living/simple_animal/hostile/megafauna/gladiator/OpenFire() //SHITCODE BELOW - ABANDON ALL HOPE YE WHO ENTER HERE
+/mob/living/simple_animal/hostile/megafauna/gladiator/OpenFire() //used to actually decide what attacks he does. abandon all hope ye who enter here
 	if(!COOLDOWN_FINISHED(src, ranged_cooldown))
 		return FALSE
 	if(spinning || stunned || charging)
