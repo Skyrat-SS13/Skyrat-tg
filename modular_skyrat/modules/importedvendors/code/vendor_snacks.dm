@@ -230,7 +230,7 @@
 
 /obj/item/food/vendor_snacks/lizard_bagged/moonjerky
 	name = "moonfish jerky"
-	desc = "A fish jerky, made from what you can only hope is moonfish. Also seems to have a hint of barbeque sauce flavor in there."
+	desc = "A fish jerky, made from what you can only hope is moonfish. It also seems to taste subtly of barbecue"
 	icon_state = "moonjerky"
 	food_reagents = list(/datum/reagent/consumable/nutriment/protein = 2, /datum/reagent/consumable/bbqsauce = 2)
 	tastes = list("fish" = 1, "smokey sauce" = 1)
