@@ -571,3 +571,4 @@
 	desc = "The plushie of a celestial in the known universe."
 	icon_state = "plushie_star"
 	gender = FEMALE
+	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/trills.ogg' = 1)

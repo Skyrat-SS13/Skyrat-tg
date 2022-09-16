@@ -120,6 +120,19 @@
 	category_index = CATEGORY_FRUITS_VEGGIES
 	item_instance = /obj/item/food/grown/bell_pepper
 
+/datum/orderable_item/cucumbers
+	name = "Cucumber"
+	category_index = CATEGORY_FRUITS_VEGGIES
+	item_instance = /obj/item/food/grown/cucumber
+	cost_per_order = 10
+
+
+/datum/orderable_item/pickles
+	name = "Jar of pickles"
+	category_index = CATEGORY_FRUITS_VEGGIES
+	item_instance = /obj/item/storage/fancy/pickles_jar
+	cost_per_order = 60
+
 //Milk and Eggs
 
 /datum/orderable_item/milk
@@ -320,3 +333,10 @@
 	category_index = CATEGORY_SAUCES_REAGENTS
 	item_instance = /obj/item/reagent_containers/condiment/peanut_butter
 	cost_per_order = 30
+
+/datum/orderable_item/cherryjelly
+	name = "Cherry Jelly"
+	category_index = CATEGORY_SAUCES_REAGENTS
+	item_instance = /obj/item/reagent_containers/condiment/cherryjelly
+	cost_per_order = 30
+//

@@ -1793,6 +1793,16 @@ SKYRAT EDIT STOP: Ash Rituals */
 				/obj/item/stock_parts/water_recycler = 1)
 	category = CAT_STRUCTURE
 
+/datum/crafting_recipe/coffee_cartridge
+	name = "Bootleg Coffee Cartridge"
+	result = /obj/item/coffee_cartridge/bootleg
+	time = 2 SECONDS
+	reqs = list(
+		/obj/item/blank_coffee_cartridge = 1,
+		/datum/reagent/toxin/coffeepowder = 10,
+	)
+	category = CAT_MISC
+
 /datum/crafting_recipe/toiletbong
 	name = "Toiletbong"
 	category = CAT_STRUCTURE

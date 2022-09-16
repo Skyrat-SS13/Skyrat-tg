@@ -346,7 +346,7 @@
 			else
 				to_chat(user, span_notice("There's already a [magazine_wording] in [src]."))
 		return
-	if (istype(A, /obj/item/ammo_casing) || istype(A, /obj/item/ammo_box))
+	if (isammocasing(A) || istype(A, /obj/item/ammo_box))
 		if (bolt_type == BOLT_TYPE_NO_BOLT || internal_magazine)
 			if (chambered && !chambered.loaded_projectile)
 				chambered.forceMove(drop_location())
@@ -689,8 +689,8 @@ GLOBAL_LIST_INIT(gun_saw_types, typecacheof(list(
 
 /obj/item/suppressor
 	name = "suppressor"
-	desc = "A Scarborough Arms small-arms suppressor for maximum espionage." //SKYRAT EDIT
-	icon = 'icons/obj/guns/ballistic.dmi'
+	desc = "A Scarborough Arms small-arms suppressor for maximum espionage." //SKYRAT EDIT - ORIGINAL: desc = "A syndicate small-arms suppressor for maximum espionage."
+	icon = 'icons/obj/weapons/guns/ballistic.dmi'
 	icon_state = "suppressor"
 	w_class = WEIGHT_CLASS_TINY
 
