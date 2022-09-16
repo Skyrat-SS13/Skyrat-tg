@@ -1,4 +1,5 @@
-#define MAX_BERSERK_CHARGE 100
+#define MAX_BERSERK_CHARGE 200
+#define BERSERK_HALF_CHARGE 100
 #define PROJECTILE_HIT_MULTIPLIER 1.5
 #define DAMAGE_TO_CHARGE_SCALE 1
 #define CHARGE_DRAINED_PER_SECOND 3
@@ -65,13 +66,11 @@
 	armor = list(MELEE = 45, BULLET = 40, LASER = 30, ENERGY = 30, BOMB = 80, BIO = 100, FIRE = 100, ACID = 100)
 	resistance_flags = INDESTRUCTIBLE
 	actions_types = list(/datum/action/item_action/berserk_mode)
+	var/overcharged = FALSE //used to see if the armor's charge exceeds 100%
 
 /obj/item/clothing/head/hooded/berserker/gatsu/Initialize(mapload)
 	. = ..()
 	ADD_TRAIT(src, TRAIT_NODROP, LOCKED_HELMET_TRAIT)
-
-/obj/item/clothing/head/hooded/berserker/gatsu/examine()
-	. += span_warning("Berserk mode is [berserk_charge]% charged.")
 
 /obj/item/clothing/head/hooded/berserker/gatsu/process(delta_time)
 	if(berserk_active)
@@ -79,10 +78,12 @@
 	if(!berserk_charge)
 		if(ishuman(loc))
 			end_berserk(loc)
+			overcharged = FALSE
 
 /obj/item/clothing/head/hooded/berserker/gatsu/dropped(mob/user)
 	. = ..()
 	end_berserk(user)
+	overcharged = FALSE
 
 /obj/item/clothing/head/hooded/berserker/gatsu/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
 	if(berserk_active)
@@ -91,8 +92,11 @@
 	if(attack_type == PROJECTILE_ATTACK)
 		berserk_value *= PROJECTILE_HIT_MULTIPLIER
 	berserk_charge = clamp(round(berserk_charge + berserk_value), 0, MAX_BERSERK_CHARGE)
-	if(berserk_charge >= MAX_BERSERK_CHARGE)
+	if(berserk_charge >= BERSERK_HALF_CHARGE & overcharged = FALSE)
 		balloon_alert(owner, "berserk charged")
+		overcharged = TRUE
+	if(berserk_charge >= MAX_BERSERK_CHARGE)
+		balloon_alert(owner, "berserk overcharged")
 
 /obj/item/clothing/head/hooded/berserker/gatsu/IsReflect()
 	if(berserk_active)
@@ -127,8 +131,12 @@
 	. = ..()
 	. += span_warning("Tempered against lavaland foes and bosses through supernatural energies. Right click to dodge at the cost of stamina.")
 
+/obj/item/claymore/dragonslayer/Initialize(mapload) //spooky
+	. = ..()
+	add_filter("rad_glow", 2, list("type" = "outline", "color" = "red", "size" = 2))
+
 /obj/item/claymore/dragonslayer/add_blood_DNA(list/blood_dna) //110% stain-proof! or so they tell me
-    return FALSE
+	return FALSE
 
 /obj/item/claymore/dragonslayer/attack(mob/living/target, mob/living/carbon/human/user)
 	var/is_nemesis_faction = FALSE
@@ -205,6 +213,7 @@
 	new /obj/item/crusher_trophy/gladiator(src)
 
 #undef MAX_BERSERK_CHARGE
+#undef BERSERK_HALF_CHARGE
 #undef PROJECTILE_HIT_MULTIPLIER
 #undef DAMAGE_TO_CHARGE_SCALE
 #undef CHARGE_DRAINED_PER_SECOND
