@@ -73,7 +73,7 @@
 
 /obj/item/food/vendor_snacks/mochi_icecream/matcha/examine_more(mob/user)
 	. = ..()
-	. += span_notice("A small label on the container specifies that the icecream is made using only culinary grade matcha grown outside of the sol system.")
+	. += span_notice("A small label on the container specifies that this icecream is made using only culinary grade matcha grown outside of the Sol system.")
 	return .
 
 /obj/item/trash/vendor_trash/mochi_icecream
