@@ -188,7 +188,8 @@
 	hitsound = 'modular_skyrat/modules/gladiator/Clang_cut.ogg'
 
 /obj/item/claymore/dragonslayer/very_fucking_loud/examine()
-	. += span_danger("CLANG")
+	. = ..()
+	. += span_userdanger("CLANG")
 
 /obj/structure/closet/crate/necropolis/gladiator
 	name = "gladiator chest"
