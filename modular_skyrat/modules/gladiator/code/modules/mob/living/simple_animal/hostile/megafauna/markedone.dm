@@ -439,7 +439,7 @@
 					INVOKE_ASYNC(src, .proc/teleport, target)
 					ranged_cooldown += 2 SECONDS
 			else
-				IINVOKE_ASYNC(src, .proc/swordslam)
+				INVOKE_ASYNC(src, .proc/swordslam)
 				ranged_cooldown += 4 SECONDS
 		if(MARKED_ONE_FINAL_PHASE) //transitions via swordslam, has way lowered cooldowns, no longer spins
 			if(prob(50))
@@ -447,7 +447,7 @@
 					if(prob(25))
 						INVOKE_ASYNC(src, .proc/bone_knife_throw, target)
 						INVOKE_ASYNC(src, .proc/teleport, target)
-						anged_cooldown += 2 SECONDS
+						ranged_cooldown += 2 SECONDS
 					else
 						INVOKE_ASYNC(src, .proc/charge, target, 21)
 						ranged_cooldown += 1 SECONDS
