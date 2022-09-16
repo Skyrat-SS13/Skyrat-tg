@@ -258,7 +258,7 @@
 		if(FIFTY_PERCENT to SEVENTY_FIVE_PERCENT)
 			if(phase == MARKED_ONE_FIRST_PHASE)
 				phase = MARKED_ONE_SECOND_PHASE
-				swordslam()
+				INVOKE_ASYNC(src, .proc/charge, target, 21)
 				playsound(src, 'sound/effects/clockcult_gateway_disrupted.ogg', 200, 1, 2)
 				icon_state = "marked2"
 				rapid_melee = 2
@@ -268,7 +268,7 @@
 		if(SHOWDOWN_PERCENT to FIFTY_PERCENT)
 			if(phase == MARKED_ONE_SECOND_PHASE)
 				phase = MARKED_ONE_THIRD_PHASE
-				swordslam()
+				INVOKE_ASYNC(src, .proc/charge, target, 21)
 				playsound(src, 'sound/effects/clockcult_gateway_charging.ogg', 200, 1, 2)
 				rapid_melee = 4
 				melee_damage_upper = 25
@@ -277,6 +277,7 @@
 		if(0 to SHOWDOWN_PERCENT)
 			if (phase == MARKED_ONE_THIRD_PHASE)
 				phase = MARKED_ONE_FINAL_PHASE
+				INVOKE_ASYNC(src, .proc/charge, target, 21)
 				playsound(src, 'sound/effects/clockcult_gateway_active.ogg', 200, 1, 2)
 				icon_state = "marked3"
 				rapid_melee = 1
@@ -402,25 +403,25 @@
 		return FALSE
 	ranged_cooldown = world.time
 	switch(phase)
-		if(MARKED_ONE_FIRST_PHASE) //25% chance to block damage done, basic introductory attacks
-			if(prob(25) && (get_dist(src, target) <= spinning_range))
+		if(MARKED_ONE_FIRST_PHASE)
+			if(prob(10) && (get_dist(src, target) <= spinning_range))
 				INVOKE_ASYNC(src, .proc/spinattack)
 				ranged_cooldown += 5.5 SECONDS
 			else
-				if(prob(66))
-					INVOKE_ASYNC(src, .proc/charge, target, 21)
-					ranged_cooldown += 4 SECONDS
+				if(prob(50))
+					INVOKE_ASYNC(src, .proc/swordslam)
+					ranged_cooldown += 3 SECONDS
 				else
 					INVOKE_ASYNC(src, .proc/bone_knife_throw, target)
-					ranged_cooldown += 2.5 SECONDS
-		if(MARKED_ONE_SECOND_PHASE) //transitions via swordslam, now teleports and throws knives at the same time
+					ranged_cooldown += 1 SECONDS
+		if(MARKED_ONE_SECOND_PHASE)
 			if(prob(75))
 				if(prob(80))
 					if(prob(50) && (get_dist(src, target) <= spinning_range))
 						INVOKE_ASYNC(src, .proc/spinattack)
 						ranged_cooldown += 5 SECONDS
 					else
-						INVOKE_ASYNC(src, .proc/charge, target, 21)
+						INVOKE_ASYNC(src, .proc/swordslam)
 						ranged_cooldown += 2 SECONDS
 				else
 					INVOKE_ASYNC(src, .proc/bone_knife_throw, target)
@@ -428,24 +429,24 @@
 					ranged_cooldown += 2 SECONDS
 			else
 				INVOKE_ASYNC(src, .proc/teleport, target)
-				ranged_cooldown += 1 SECONDS
-		if(MARKED_ONE_THIRD_PHASE) //transitions via swordslam, swordslam is now a regular attack
+				ranged_cooldown += 0.5 SECONDS
+		if(MARKED_ONE_THIRD_PHASE)
 			if(prob(70))
 				if(prob(50))
-					if(prob(50) && (get_dist(src, target) <= spinning_range))
+					if(prob(30) && (get_dist(src, target) <= spinning_range))
 						INVOKE_ASYNC(src, .proc/spinattack)
 						ranged_cooldown += 4.5 SECONDS
 					else
-						INVOKE_ASYNC(src, .proc/charge, target, 21)
+						INVOKE_ASYNC(src, .proc/swordslam)
 						ranged_cooldown += 2 SECONDS
 				else
 					INVOKE_ASYNC(src, .proc/bone_knife_throw, target)
 					INVOKE_ASYNC(src, .proc/teleport, target)
 					ranged_cooldown += 2 SECONDS
 			else
-				INVOKE_ASYNC(src, .proc/swordslam)
-				ranged_cooldown += 4 SECONDS
-		if(MARKED_ONE_FINAL_PHASE) //transitions via swordslam, has way lowered cooldowns, no longer spins
+				INVOKE_ASYNC(src, .proc/bone_knife_throw, target)
+				ranged_cooldown += 0.5 SECONDS
+		if(MARKED_ONE_FINAL_PHASE)
 			if(prob(50))
 				if(prob(50))
 					if(prob(25))
@@ -453,14 +454,14 @@
 						INVOKE_ASYNC(src, .proc/teleport, target)
 						ranged_cooldown += 2 SECONDS
 					else
-						INVOKE_ASYNC(src, .proc/charge, target, 21)
-						ranged_cooldown += 1 SECONDS
+						INVOKE_ASYNC(src, .proc/swordslam)
+						ranged_cooldown += 2 SECONDS
 				else
 					INVOKE_ASYNC(src, .proc/bone_knife_throw, target)
-					ranged_cooldown += 1 SECONDS
+					ranged_cooldown += 0.5 SECONDS
 			else
-				INVOKE_ASYNC(src, .proc/swordslam)
-				ranged_cooldown += 3 SECONDS
+				INVOKE_ASYNC(src, .proc/teleport, target)
+				ranged_cooldown += 0.5 SECONDS
 
 #undef MARKED_ONE_STUN_DURATION
 #undef MARKED_ONE_ANGER_DURATION
