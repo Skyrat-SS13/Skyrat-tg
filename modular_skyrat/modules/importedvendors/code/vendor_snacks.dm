@@ -65,7 +65,7 @@
 
 /obj/item/food/vendor_snacks/mochi_icecream/matcha
 	name = "mochi icecream balls - matcha"
-	desc = "A six pack of mochi icecream, which is to say matcha icecream surrounded by mochi. Comes with small plastic skewer for consumption."
+	desc = "A six pack of mochi icecream - or, more specifically, matcha icecream surrounded by mochi. Comes with small plastic skewer for consumption."
 	icon_state = "mochiice_green"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 3, /datum/reagent/consumable/ice = 1, /datum/reagent/consumable/tea = 2)
 	tastes = list("rice cake" = 1, "bitter matcha" = 2)
