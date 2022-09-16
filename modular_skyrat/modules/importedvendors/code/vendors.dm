@@ -100,7 +100,7 @@
 
 /obj/machinery/vending/imported/mothic
 	name = "Nomad Fleet Ration Chit Exchange"
-	desc = "One of the nomad fleet's own ration vendors, don't mind the name engraving, this machine just takes credits."
+	desc = "One of the Nomad Fleet's own ration vendors; in spite of the name engraved into it, it's been fitted to accept credits."
 	icon_state = "mothfood"
 	light_mask = "mothfood-light-mask"
 	light_color = LIGHT_COLOR_HALOGEN
