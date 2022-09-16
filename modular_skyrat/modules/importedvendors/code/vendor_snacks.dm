@@ -155,7 +155,7 @@
 
 /obj/item/food/vendor_snacks/moth_bagged/fueljack
 	name = "fueljack's snack"
-	desc = "A vacuum sealed bag containing a smaller than usual brick of fueljack's lunch, the small size downgrading it to a fueljack's snack."
+	desc = "A vacuum sealed bag containing a smaller than usual brick of fueljack's lunch, ultimately downgrading it to a fueljack's snack."
 	icon_state = "fueljacksnack"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 3, /datum/reagent/consumable/nutriment/protein = 1)
 	tastes = list("cabbage" = 1, "potato" = 1, "onion" = 1, "chili" = 1, "cheese" = 1)
