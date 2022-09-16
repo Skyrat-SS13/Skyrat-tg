@@ -98,7 +98,7 @@
 
 /obj/item/food/vendor_tray_meal/baked_rice
 	name = "\improper Main Course - Type M: Baked Rice and Grilled Cheese"
-	desc = "Some sub-par looking fleet style rice, with a generous hunk of quite literally grilled cheese."
+	desc = "Some sub-par looking fleet style rice, with a very grilled chunk of cheese."
 	icon_state = "foodtray_ricengrilledcheese"
 	tastes = list("rice" = 2, "peppers" = 2, "charred cheese" = 2, "laziness" = 1)
 	foodtypes = GRAIN | DAIRY | VEGETABLES
