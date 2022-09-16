@@ -98,6 +98,11 @@
 
 	language_to_speak = /datum/language/yangyu
 
+/obj/machinery/vending/imported/yangyu/examine_more(mob/user)
+	. = ..()
+	. += span_notice("Someone appears to have written 'Don't trust the sushi' in marker on the side of the vendor.")
+	return .
+
 /obj/machinery/vending/imported/mothic
 	name = "Nomad Fleet Ration Chit Exchange"
 	desc = "One of the Nomad Fleet's own ration vendors; in spite of the name engraved into it, it's been fitted to accept credits."
