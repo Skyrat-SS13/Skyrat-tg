@@ -294,7 +294,8 @@
 	visible_message(span_userdanger("[src] lifts his ancient blade, and prepares to spin!"))
 	spinning = TRUE
 	animate(src, color = "#ff6666", 10)
-	SLEEP_CHECK_DEATH(5, src)
+	
+	_CHECK_DEATH(5, src)
 	var/list/spinningturfs = list()
 	var/current_angle = 360
 	while(current_angle > 0)
@@ -321,9 +322,13 @@
 				hit_things |= slapped
 		if(!spinning)
 			break
-		sleep(0.05 SECONDS)
+		addtimer(CALLBACK(src, .proc/animate_speen), 0.05 SECONDS)
+		
+/mob/living/simple_animal/hostile/megafauna/gladiator/proc/animate_speen
 	animate(src, color = initial(color), 3)
-	sleep(3)
+	addtimer(CALLBACK(src, .proc/stop_speen), 3 SECONDS)
+	
+/mob/living/simple_animal/hostile/megafauna/gladiator/proc/stop_speen
 	spinning = FALSE
 
 /mob/living/simple_animal/hostile/megafauna/gladiator/proc/charge(atom/target, range = 1) //the marked one's charge has an instant travel time, but takes a moment to power-up, allowing you to get behind cover to stun him
@@ -371,30 +376,8 @@
 	boned.throw_at(target, 7, 3, thrower = src)
 	QDEL_IN(boned, 3 SECONDS)		
 
-/mob/living/simple_animal/hostile/megafauna/gladiator/proc/ground_pound(atom/source, range, delay, throw_range) //proc that takes numerical input to make a ground pound attack of variable size
-	var/turf/orgin = get_turf(source)
-	if(!orgin)
-		return
-	var/list/all_turfs = RANGE_TURFS(range, orgin)
-	for(var/i in 0 to range)
-		playsound(orgin,'sound/effects/bamf.ogg', 600, TRUE, 10)
-		for(var/turf/stomp_turf in all_turfs)
-			if(get_dist(orgin, stomp_turf) > i)
-				continue
-			new /obj/effect/temp_visual/small_smoke/halfsecond(stomp_turf)
-			for(var/mob/living/get_fucked in stomp_turf)
-				if(get_fucked == source || get_fucked.throwing)
-					continue
-				to_chat(get_fucked, span_userdanger("[source]'s ground slam shockwave sends you flying!"))
-				var/turf/thrown_at = get_ranged_target_turf_direct(source, get_fucked, throw_range, rand(-10, 10))
-				get_fucked.throw_at(thrown_at, 8, 2, null, TRUE, force = MOVE_FORCE_OVERPOWERING, gentle = TRUE)
-				get_fucked.apply_damage(20, BRUTE, wound_bonus = CANT_WOUND)
-				shake_camera(get_fucked, 2, 1)
-			all_turfs -= stomp_turf
-		sleep(delay)
-		
 /mob/living/simple_animal/hostile/megafauna/gladiator/proc/swordslam() //this kills the crab
-	ground_pound(src, 5, 0.3 SECONDS, 8)
+	wendigo_slam(src, 5, 0.3 SECONDS, 8)
 
 /mob/living/simple_animal/hostile/megafauna/gladiator/OpenFire() //used to actually decide what attacks he does. abandon all hope ye who enter here
 	if(!COOLDOWN_FINISHED(src, ranged_cooldown))
