@@ -217,7 +217,7 @@
 
 /obj/item/food/vendor_snacks/lizard_bagged
 	name = "candied mushroom"
-	desc = "An odd treat of the lizard empire, a mushroom dipped in caramel, made inconvenient by being put into the bag before it hardened."
+	desc = "An odd treat of the lizard empire, a mushroom dipped in caramel; unfortunately, it seems to have been bagged before the caramel fully hardened."
 	icon_state = "candiedshroom"
 	trash_type = /obj/item/trash/vendor_trash/lizard_bagged
 	food_reagents = list(/datum/reagent/consumable/nutriment = 3, /datum/reagent/consumable/caramel = 2)
