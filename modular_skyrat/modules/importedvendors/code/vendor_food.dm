@@ -62,7 +62,7 @@
 
 /obj/item/food/vendor_tray_meal/chicken_sandwich
 	name = "\improper NT-Meal: Spicy Chicken Sandwich"
-	desc = "A pretty sad looking chicken sandwich, the 'meat' itself covered in so many manufactured spices that it has become an eerie red color."
+	desc = "A pretty sad looking chicken sandwich, the 'meat' patty is covered in so many manufactured spices that it has become an eerie red color."
 	icon_state = "foodtray_chickiesandwich"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 5, /datum/reagent/consumable/capsaicin = 10)
 	tastes = list("bread" = 2, "chicken?" = 2, "overwhelming spice" = 2, "laziness" = 1)
