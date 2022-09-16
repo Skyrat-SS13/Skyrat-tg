@@ -389,7 +389,7 @@
 		sleep(delay)
 		
 /mob/living/simple_animal/hostile/megafauna/gladiator/proc/swordslam() //this kills the crab
-	ground_pound(src, 5, 3, 8)
+	ground_pound(src, 5, 0.3 SECONDS, 8)
 
 /mob/living/simple_animal/hostile/megafauna/gladiator/OpenFire() //used to actually decide what attacks he does. abandon all hope ye who enter here
 	if(!COOLDOWN_FINISHED(src, ranged_cooldown))
