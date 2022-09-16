@@ -61,7 +61,7 @@
 
 /obj/machinery/vending/imported/yangyu
 	name = "質の高い食品ベンダー"
-	desc = "A vendor selling traditional Sol eastern foods of dubious quality; 'don't trust the sushi' is written on the side in marker."
+	desc = "A vendor selling traditional Sol eastern foods of dubious quality."
 	icon_state = "yangyufood"
 	light_mask = "yangyufood-light-mask"
 	light_color = LIGHT_COLOR_FLARE
