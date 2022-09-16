@@ -428,7 +428,7 @@
 		if(MARKED_ONE_THIRD_PHASE) //transitions via swordslam, swordslam is now a regular attack
 			if(prob(70))
 				if(prob(50))
-					if(prob(50)) && (get_dist(src, target) <= spinning_range))
+					if(prob(50) && (get_dist(src, target) <= spinning_range))
 						INVOKE_ASYNC(src, .proc/spinattack)
 						ranged_cooldown += 4.5 SECONDS
 					else
