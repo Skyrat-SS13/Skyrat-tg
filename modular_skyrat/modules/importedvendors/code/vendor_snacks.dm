@@ -106,7 +106,7 @@
 
 /obj/item/reagent_containers/cup/glass/waterbottle/tea/strawberry
 	name = "bottle of strawberry tea"
-	desc = "A bottle of strawberry flavored tea, does not contain any actual strawberries."
+	desc = "A bottle of strawberry flavored tea; does not contain any actual strawberries."
 	icon_state = "teabottle_pink"
 	list_reagents = list(/datum/reagent/consumable/pinktea = 40)
 	custom_price = PAYCHECK_LOWER * 3
