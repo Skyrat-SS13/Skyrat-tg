@@ -1,4 +1,4 @@
-//Dopamine. Generates in character after orgasm.
+// Dopamine. Generates in character after orgasm.
 /datum/reagent/drug/aphrodisiac/dopamine
 	name = "dopamine...?"
 	description = "Pure happiness"

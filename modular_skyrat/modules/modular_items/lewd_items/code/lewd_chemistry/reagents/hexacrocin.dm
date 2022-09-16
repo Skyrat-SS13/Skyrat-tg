@@ -1,4 +1,4 @@
-//Hexacrocin. Advanced aphrodisiac that can cause brain traumas.
+// Hexacrocin. Advanced aphrodisiac that can cause brain traumas.
 /datum/reagent/drug/aphrodisiac/crocin/hexacrocin
 	name = "hexacrocin"
 	description = "Chemically condensed form of basic crocin. This aphrodisiac is extremely powerful and addictive for most animals.\

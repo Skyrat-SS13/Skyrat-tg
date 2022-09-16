@@ -1,4 +1,4 @@
-//Crocin. Basic aphrodisiac with no consequences
+// Crocin. Basic aphrodisiac with no consequences
 /datum/reagent/drug/aphrodisiac/crocin
 	name = "crocin"
 	description = "Naturally found in the crocus and gardenia flowers, this drug acts as a natural and safe aphrodisiac."

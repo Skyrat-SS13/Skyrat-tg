@@ -11,7 +11,7 @@
 	name = "succubus milk"
 	description = "A volatile collodial mixture derived from milk that encourages mammary production via a potent estrogen mix."
 	color = "#E60584"
-	taste_description = "a milky ice cream like flavour" /// Edited so it doesn't trail off and act strangely with other taste descriptions.
+	taste_description = "a milky ice cream like flavour" // Edited so it doesn't trail off and act strangely with other taste descriptions.
 	overdose_threshold = 20
 	metabolization_rate = 0.25
 	life_pref_datum = /datum/preference/toggle/erp/breast_enlargement
@@ -82,7 +82,7 @@
 /datum/reagent/drug/aphrodisiac/succubus_milk/life_effects(mob/living/carbon/human/exposed_mob) //Increases breast size
 	var/obj/item/organ/external/genital/breasts/mob_breasts = exposed_mob.getorganslot(ORGAN_SLOT_BREASTS)
 	enlargement_amount += enlarger_increase_step
-	/// Adds a check for breasts in the first place. I HATE ERRORS.
+	// Adds a check for breasts in the first place.
 	if(!mob_breasts)
 		return
 	if(enlargement_amount >= enlargement_threshold)
@@ -93,7 +93,7 @@
 		exposed_mob.update_body()
 		enlargement_amount = 0
 
-		/// Checks for cup size.
+		// Checks for cup size.
 		var/translation = mob_breasts.breasts_size_to_cup(mob_breasts.genital_size)
 
 		if(mob_breasts.visibility_preference == GENITAL_ALWAYS_SHOW || exposed_mob.is_topless())
@@ -137,11 +137,11 @@
 			exposed_mob.adjustOxyLoss(5)
 			exposed_mob.apply_damage(1, BRUTE, exposed_mob.get_bodypart(BODY_ZONE_CHEST))
 
-/datum/reagent/drug/aphrodisiac/succubus_milk/overdose_effects(mob/living/carbon/human/exposed_mob) //Turns you into a female if character is male. Also supposed to add breasts but enlargement_amount'm too dumb to figure out how to make it work
+// Turns you into a female if character is male. Also adds breasts.
+/datum/reagent/drug/aphrodisiac/succubus_milk/overdose_effects(mob/living/carbon/human/exposed_mob)
 	var/obj/item/organ/external/genital/penis/mob_penis = exposed_mob.getorganslot(ORGAN_SLOT_PENIS)
 	var/obj/item/organ/external/genital/testicles/mob_testicles = exposed_mob.getorganslot(ORGAN_SLOT_TESTICLES)
 	if(exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/breast_enlargement))
-		/// Makes above comment actually work.
 		if(!exposed_mob.getorganslot(ORGAN_SLOT_BREASTS))
 			var/obj/item/organ/path = /obj/item/organ/external/genital/breasts
 			exposed_mob.dna.mutant_bodyparts[ORGAN_SLOT_BREASTS][MUTANT_INDEX_NAME] = "Pair"
@@ -161,7 +161,7 @@
 				exposed_mob.visible_message(span_notice("The area around [exposed_mob]'s chest suddenly bounces a bit."))
 				to_chat(exposed_mob, span_purple("Your chest feels warm, tingling with sensitivity as it strains against your clothes."))
 				return
-	///Separates gender change stuff from breast growth.
+	// Separates gender change stuff from breast growth.
 	if(exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/gender_change))
 		if(exposed_mob.gender == MALE)
 			exposed_mob.set_gender(FEMALE)
@@ -170,7 +170,7 @@
 			exposed_mob.update_mutations_overlay()
 		if(!mob_penis)
 			return
-		if(exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/penis_enlargement)) ///To do cock shrinkage, check if prefs allow for this.
+		if(exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/penis_enlargement)) // To do cock shrinkage, check if prefs allow for this.
 			if(mob_penis.genital_size > penis_min_length)
 				mob_penis.genital_size -= penis_size_reduction_step
 				mob_penis.update_sprite_suffix()

@@ -87,15 +87,15 @@
 /datum/reagent/drug/aphrodisiac/incubus_draft/life_effects(mob/living/carbon/human/exposed_mob)
 	var/obj/item/organ/external/genital/penis/mob_penis = exposed_mob.getorganslot(ORGAN_SLOT_PENIS)
 	enlargement_amount += enlarger_increase_step
-	/// Add yet another check because I hate errors!!
+	// Add yet another check because I hate errors!!
 	if(!mob_penis)
 		return
 	if(enlargement_amount >= enlargement_threshold)
 		if(mob_penis?.genital_size >= penis_max_length)
 			return ..()
 		mob_penis.genital_size += penis_length_increase_step
-		///Improvision to girth to not make it random chance.
-		if(mob_penis?.girth < penis_max_girth) ///Because any higher is ridiculous. However, should still allow for regular penis growth.
+		// Improvision to girth to not make it random chance.
+		if(mob_penis?.girth < penis_max_girth) // Because any higher is ridiculous. However, should still allow for regular penis growth.
 			mob_penis.girth = round(mob_penis.girth + (mob_penis.genital_size/mob_penis.girth))
 		mob_penis.update_sprite_suffix()
 		exposed_mob.update_body()
@@ -165,13 +165,13 @@
 			new_penis.update_sprite_suffix()
 			exposed_mob.update_body()
 			to_chat(exposed_mob, span_purple("Your crotch feels warm as something suddenly sprouts between your legs."))
-		///Makes the balls bigger if they're small.
+		// Makes the balls bigger if they're small.
 		var/obj/item/organ/external/genital/testicles/mob_testicles = exposed_mob.getorganslot(ORGAN_SLOT_TESTICLES)
 		if(mob_testicles)
 			if(mob_testicles.genital_size > 2)
 				return
 			mob_testicles.genital_size = 2
-	///Separates gender change stuff from cock growth.
+	// Separates gender change stuff from cock growth.
 	var/obj/item/organ/external/genital/breasts/mob_breasts = exposed_mob.getorganslot(ORGAN_SLOT_BREASTS)
 	if(exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/gender_change))
 		if(exposed_mob.gender == FEMALE)
@@ -181,7 +181,7 @@
 			exposed_mob.update_mutations_overlay()
 		if(!mob_breasts)
 			return
-		if(exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/breast_enlargement)) ///To do breast shrinkage, check if prefs allow for this.
+		if(exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/breast_enlargement)) // To do breast shrinkage, check if prefs allow for this.
 			if(mob_breasts.genital_size > breast_minimum_size)
 				mob_breasts.genital_size -= breast_size_reduction_step
 				mob_breasts.update_sprite_suffix()
