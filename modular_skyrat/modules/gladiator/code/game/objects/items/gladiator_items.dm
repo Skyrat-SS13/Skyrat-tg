@@ -117,6 +117,7 @@
 	wound_bonus = 10
 	bare_wound_bonus = 5
 	resistance_flags = INDESTRUCTIBLE
+	armour_penetration = 50 //this boss is really hard and this sword is really big
 	block_chance = 30
 	sharpness = SHARP_EDGED
 	// aughhghghgh this really should be elementized but this works for now
