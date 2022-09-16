@@ -37,12 +37,12 @@ SUBSYSTEM_DEF(decay)
 	if(CONFIG_GET(flag/ssdecay_disabled))
 		message_admins("SSDecay was disabled in config.")
 		log_world("SSDecay was disabled in config.")
-		return ..()
+		return SS_INIT_NO_NEED
 	// Putting this first so that it just doesn't waste time iterating through everything if it's not going to do anything anyway.
 	if(prob(50))
 		message_admins("SSDecay will not interact with this round.")
 		log_world("SSDecay will not interact with this round.")
-		return ..()
+		return SS_INIT_NO_NEED
 	for(var/turf/iterating_turf in world)
 		if(!is_station_level(iterating_turf.z))
 			continue
@@ -71,7 +71,7 @@ SUBSYSTEM_DEF(decay)
 
 	do_medical()
 
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/decay/proc/do_common()
 	for(var/turf/open/floor/iterating_floor in possible_turfs)

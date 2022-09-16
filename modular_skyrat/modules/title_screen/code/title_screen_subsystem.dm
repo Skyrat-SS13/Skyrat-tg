@@ -63,7 +63,7 @@ SUBSYSTEM_DEF(title)
 			var/icon/title2use = new(fcopy_rsc(file_path))
 			title_screens += title2use
 
-	return ..()
+	return SS_INIT_SUCCESS
 
 /**
  * Make sure reference time is set up. If not, this is now time 0.
@@ -175,9 +175,13 @@ SUBSYSTEM_DEF(title)
 
 /**
  * Adds a startup message to the splashscreen.
+ *
+ * Arguments:
+ * * msg - the message to show users.
+ * * warning - optional: TRUE to indicate this is an error/warning
  */
-/proc/add_startup_message(msg)
-	var/msg_dat = {"<p class="terminal_text">[msg]</p>"}
+/proc/add_startup_message(msg, warning)
+	var/msg_dat = {"<p class="terminal_text">[warning ? "☒ " : ""][msg]</p>"}
 
 	GLOB.startup_messages += msg_dat
 

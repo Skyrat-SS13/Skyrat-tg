@@ -258,21 +258,7 @@
  * Used to initialize the subsystem. This is expected to be overriden by subtypes.
  */
 /datum/controller/subsystem/Initialize()
-<<<<<<< HEAD
-	initialized = TRUE
-	SEND_SIGNAL(src, COMSIG_SUBSYSTEM_POST_INITIALIZE)
-
-	var/time = rustg_time_milliseconds(SS_INIT_TIMER_KEY)
-	var/seconds = round(time / 1000, 0.01)
-
-	var/msg = "Initialized [name] subsystem within [seconds] second[seconds == 1 ? "" : "s"]!"
-	add_startup_message(msg) //SKYRAT EDIT CHANGE - ORIGINAL: to_chat(world, span_boldannounce("[msg]"))
-	log_world(msg)
-	SSblackbox.record_feedback("tally", "subsystem_initialize", time, name)
-	return seconds
-=======
 	return SS_INIT_NONE
->>>>>>> 4733643f395 (Clean up subsystem Initialize(), require an explicit result returned, give a formal way to fail (for SSlua) (#69775))
 
 /datum/controller/subsystem/stat_entry(msg)
 	if(can_fire && !(SS_NO_FIRE & flags) && init_stage <= Master.init_stage_completed)

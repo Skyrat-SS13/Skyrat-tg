@@ -11,16 +11,16 @@ SUBSYSTEM_DEF(autotransfer)
 	var/maxvotes
 	var/curvotes = 0
 
-/datum/controller/subsystem/autotransfer/Initialize(timeofday)
+/datum/controller/subsystem/autotransfer/Initialize()
 	if(!CONFIG_GET(flag/autotransfer)) //Autotransfer voting disabled.
 		can_fire = FALSE
-		return ..()
+		return SS_INIT_NO_NEED
 	var/init_vote = CONFIG_GET(number/vote_autotransfer_initial)
 	starttime = world.realtime // Skyrat edit
 	targettime = starttime + init_vote
 	voteinterval = CONFIG_GET(number/vote_autotransfer_interval)
 	maxvotes = CONFIG_GET(number/vote_autotransfer_maximum)
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/autotransfer/Recover()
 	starttime = SSautotransfer.starttime

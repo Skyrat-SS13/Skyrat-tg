@@ -62,16 +62,12 @@ SUBSYSTEM_DEF(ticker)
 	/// Why an emergency shuttle was called
 	var/emergency_reason
 
-<<<<<<< HEAD
 	var/real_round_start_time = 0 //SKYRAT EDIT ADDITION
 
 	var/discord_alerted = FALSE //SKYRAT EDIT - DISCORD PING SPAM PREVENTION
 
-/datum/controller/subsystem/ticker/Initialize(timeofday)
-	load_mentors() // SKYRAT EDIT ADDITION - MENTORS STOPPED LOADING AUTOMATICALLY DUE TO RECENT TG CHANGES
-=======
 /datum/controller/subsystem/ticker/Initialize()
->>>>>>> 4733643f395 (Clean up subsystem Initialize(), require an explicit result returned, give a formal way to fail (for SSlua) (#69775))
+	load_mentors() // SKYRAT EDIT ADDITION - MENTORS STOPPED LOADING AUTOMATICALLY DUE TO RECENT TG CHANGES
 	var/list/byond_sound_formats = list(
 		"mid" = TRUE,
 		"midi" = TRUE,
