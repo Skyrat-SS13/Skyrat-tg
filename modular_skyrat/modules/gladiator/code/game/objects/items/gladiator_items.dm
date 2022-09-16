@@ -92,7 +92,7 @@
 	if(attack_type == PROJECTILE_ATTACK)
 		berserk_value *= PROJECTILE_HIT_MULTIPLIER
 	berserk_charge = clamp(round(berserk_charge + berserk_value), 0, MAX_BERSERK_CHARGE)
-	if(berserk_charge >= BERSERK_HALF_CHARGE & overcharged = FALSE)
+	if(berserk_charge >= BERSERK_HALF_CHARGE & overcharged == FALSE)
 		balloon_alert(owner, "berserk charged")
 		overcharged = TRUE
 	if(berserk_charge >= MAX_BERSERK_CHARGE)
