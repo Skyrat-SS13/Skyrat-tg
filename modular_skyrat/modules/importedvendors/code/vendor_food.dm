@@ -119,7 +119,7 @@
 
 /obj/item/food/vendor_tray_meal/emperor_roll
 	name = "\improper Tiziria Imports: Emperor Roll"
-	desc = "A pretty sad looking emperor roll, if you can even call it that, it seems caviar wasn't in the budget."
+	desc = "A pretty sad looking emperor roll, if you can even call it that; it seems caviar wasn't in the budget."
 	icon_state = "foodtray_emperorroll"
 	tastes = list("bread" = 2, "cheese?" = 2, "liver?" = 2, "laziness" = 1)
 	foodtypes = VEGETABLES | NUTS | DAIRY | MEAT | GORE
