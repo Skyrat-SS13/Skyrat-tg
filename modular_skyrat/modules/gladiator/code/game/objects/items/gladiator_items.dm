@@ -71,7 +71,6 @@
 	ADD_TRAIT(src, TRAIT_NODROP, LOCKED_HELMET_TRAIT)
 
 /obj/item/clothing/head/hooded/berserker/gatsu/examine()
-	. = ..()
 	. += span_warning("Berserk mode is [berserk_charge]% charged.")
 
 /obj/item/clothing/head/hooded/berserker/gatsu/process(delta_time)
@@ -180,7 +179,6 @@
 	hitsound = 'modular_skyrat/modules/gladiator/Clang_cut.ogg'
 
 /obj/item/claymore/dragonslayer/very_fucking_loud/examine()
-	. = ..()
 	. += span_danger("CLANG")
 
 /obj/structure/closet/crate/necropolis/gladiator
