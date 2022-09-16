@@ -236,7 +236,7 @@
 		number = 0
 	var/returned = GLOB.balls_size_translation["[number]"]
 	if(!returned)
-		returned = "beyond measurement"
+		returned = BREAST_SIZE_BEYOND_MEASUREMENT
 	return returned
 
 /obj/item/organ/external/genital/testicles/proc/balls_description_to_size(cup)
@@ -349,9 +349,9 @@
 	var/size_description
 	var/translation = breasts_size_to_cup(genital_size)
 	switch(translation)
-		if("Flatchested")
+		if(BREAST_SIZE_FLATCHESTED)
 			size_description = " They are small and flat, however."
-		if("beyond measurement")
+		if(BREAST_SIZE_BEYOND_MEASUREMENT)
 			size_description = " Their size is enormous, you estimate they're around [genital_size] inches in diameter."
 		else
 			size_description = " You estimate they are [translation]-cups."
@@ -407,7 +407,7 @@
 		number = 0
 	var/returned = GLOB.breasts_size_translation["[number]"]
 	if(!returned)
-		returned = "beyond measurement"
+		returned = BREAST_SIZE_BEYOND_MEASUREMENT
 	return returned
 
 /obj/item/organ/external/genital/breasts/proc/breasts_cup_to_size(cup)

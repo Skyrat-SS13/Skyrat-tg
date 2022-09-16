@@ -12,4 +12,4 @@
 			breasts_capacity = 2.5
 		if("sextuple")
 			breasts_capacity = 3
-	internal_fluids = new /datum/reagents(size * breasts_capacity * 60)
+	internal_fluids = new /datum/reagents(size * breasts_capacity * 60) // This seems like it could balloon drastically out of proportion with larger breast sizes.

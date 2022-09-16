@@ -98,9 +98,9 @@
 
 		if(mob_breasts.visibility_preference == GENITAL_ALWAYS_SHOW || exposed_mob.is_topless())
 			switch(translation)
-				if("Flatchested")
+				if(BREAST_SIZE_FLATCHESTED)
 					return
-				if("beyond measurement")
+				if(BREAST_SIZE_BEYOND_MEASUREMENT)
 					exposed_mob.visible_message(span_notice("[exposed_mob]'s [pick(words_for_bigger)] [pick(bigger_boob_text_list)] [pick(public_bigger_action_text_list)]"))
 					to_chat(exposed_mob, span_purple("Your [pick(words_for_bigger)] [pick(bigger_boob_text_list)] [pick(action_text_list)]about [mob_breasts.genital_size] inches in diameter."))
 					return
@@ -115,9 +115,9 @@
 						return
 		else
 			switch(translation)
-				if("Flatchested")
+				if(BREAST_SIZE_FLATCHESTED)
 					return
-				if("beyond measurement")
+				if(BREAST_SIZE_BEYOND_MEASUREMENT)
 					exposed_mob.visible_message(span_notice("[exposed_mob]'s [pick(boob_text_list)] [pick(public_bigger_action_text_list)]"))
 					to_chat(exposed_mob, span_purple("Your [pick(words_for_bigger)] [pick(bigger_boob_text_list)] [pick(action_text_list)]about [mob_breasts.genital_size] inches in diameter."))
 					return
@@ -132,11 +132,10 @@
 						return
 
 	if((mob_breasts?.genital_size >= (max_breast_size - 2)) && (exposed_mob.w_uniform || exposed_mob.wear_suit))
-		var/target_bodypart = exposed_mob.get_bodypart(BODY_ZONE_CHEST)
 		if(prob(damage_chance))
 			to_chat(exposed_mob, span_danger("Your breasts begin to strain against your clothes!"))
-			exposed_mob.adjustOxyLoss(5, 0)
-			exposed_mob.apply_damage(1, BRUTE, target_bodypart)
+			exposed_mob.adjustOxyLoss(5)
+			exposed_mob.apply_damage(1, BRUTE, exposed_mob.get_bodypart(BODY_ZONE_CHEST))
 
 /datum/reagent/drug/aphrodisiac/succubus_milk/overdose_effects(mob/living/carbon/human/exposed_mob) //Turns you into a female if character is male. Also supposed to add breasts but enlargement_amount'm too dumb to figure out how to make it work
 	var/obj/item/organ/external/genital/penis/mob_penis = exposed_mob.getorganslot(ORGAN_SLOT_PENIS)
@@ -148,7 +147,7 @@
 			exposed_mob.dna.mutant_bodyparts[ORGAN_SLOT_BREASTS][MUTANT_INDEX_NAME] = "Pair"
 			path = new /obj/item/organ/external/genital/breasts
 			path.build_from_dna(exposed_mob.dna, ORGAN_SLOT_BREASTS)
-			path.Insert(exposed_mob, 0, FALSE)
+			path.Insert(exposed_mob, FALSE, FALSE)
 			var/obj/item/organ/external/genital/new_breasts = exposed_mob.getorganslot(ORGAN_SLOT_BREASTS)
 			new_breasts.genital_size = 2
 			new_breasts.update_sprite_suffix()
