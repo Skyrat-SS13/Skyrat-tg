@@ -183,7 +183,7 @@
 
 /obj/item/food/vendor_tray_meal/side/miso
 	name = "\improper 副菜: Miso Soup"
-	desc = "This is quite literally just a plastic bag full of miso soup, remember to only open it on the side facing up."
+	desc = "This is quite literally just a plastic bag full of miso soup, opening it on any side other than the one indicated may result in spilled soup."
 	icon_state = "foodpack_yangyu"
 	trash_type = /obj/item/trash/empty_side_pack/yangyu
 	tastes = list("miso" = 2)
@@ -199,7 +199,7 @@
 
 /obj/item/food/vendor_tray_meal/side/pickled_vegetables
 	name = "\improper 副菜: Pickled Vegetables"
-	desc = "Contains a small assortment of vegetables picked in a vinegar-like solution."
+	desc = "Contains a small assortment of vegetables pickled in a vinegar-like solution."
 	icon_state = "foodpack_yangyu"
 	trash_type = /obj/item/trash/empty_side_pack/yangyu
 	tastes = list("vinegar" = 4)
