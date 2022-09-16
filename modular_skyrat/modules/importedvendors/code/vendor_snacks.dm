@@ -1,17 +1,5 @@
 // Snacks and drinks for the 'snacks' tab of vendors
 
-//Yangyu Stuff
-
-/obj/item/reagent_containers/cup/glass/dry_ramen/prepared
-	name = "cup ramen"
-	desc = "This one even comes with water, amazing!"
-	list_reagents = list(/datum/reagent/consumable/hot_ramen = 15, /datum/reagent/consumable/salt = 3)
-
-/obj/item/reagent_containers/cup/glass/dry_ramen/prepared/hell
-	name = "spicy cup ramen"
-	desc = "This one comes with water, AND a security checkpoint's worth of capsaicin!"
-	list_reagents = list(/datum/reagent/consumable/hell_ramen = 15, /datum/reagent/consumable/salt = 3)
-
 /obj/item/food/vendor_snacks
 	name = "\improper God's Strongest Snacks"
 	desc = "You best hope you aren't a sinner. (You should never see this item please report it)"
@@ -33,11 +21,25 @@
 	icon_state = "foodpack_generic_empty"
 	custom_materials = list(/datum/material/plastic=1000)
 
+/*
+*	"Yangyu" Snacks
+*/
+
+/obj/item/reagent_containers/cup/glass/dry_ramen/prepared
+	name = "cup ramen"
+	desc = "This one even comes with water, amazing!"
+	list_reagents = list(/datum/reagent/consumable/hot_ramen = 15, /datum/reagent/consumable/salt = 3)
+
+/obj/item/reagent_containers/cup/glass/dry_ramen/prepared/hell
+	name = "spicy cup ramen"
+	desc = "This one comes with water, AND a security checkpoint's worth of capsaicin!"
+	list_reagents = list(/datum/reagent/consumable/hell_ramen = 15, /datum/reagent/consumable/salt = 3)
+
 /obj/item/food/vendor_snacks/ricecrackers
 	name = "rice crackers"
 	desc = "Despite most of the package being clear, you will never truly know what flavor these are until you eat them."
 	icon_state = "ricecracka"
-	trash_type = /obj/item/trash/vendor_trash/ricecracka
+	trash_type = /obj/item/trash/vendor_trash/ricecrackers
 	food_reagents = list(/datum/reagent/consumable/nutriment = 2, /datum/reagent/consumable/rice = 2)
 	tastes = list("incomprehensible flavoring" = 1, "rice cracker" = 2)
 	foodtypes = JUNKFOOD | GRAIN
@@ -46,7 +48,7 @@
 /obj/item/food/vendor_snacks/ricecrackers/MakeLeaveTrash()
 	AddElement(/datum/element/food_trash, trash_type, FOOD_TRASH_POPABLE)
 
-/obj/item/trash/vendor_trash/ricecracka
+/obj/item/trash/vendor_trash/ricecrackers
 	name = "empty rice crackers bag"
 	desc = "You never did find out what flavor that was supposed to be, did you?"
 	icon_state = "ricecracka_trash"
@@ -119,7 +121,9 @@
 	)
 	custom_price = PAYCHECK_LOWER * 4
 
-//Mothic Stuff
+/*
+*	Mothic Snacks
+*/
 
 /obj/item/food/vendor_snacks/mothmallow
 	name = "mothmallow"
@@ -207,7 +211,9 @@
 	list_reagents = list(/datum/reagent/consumable/sol_dry = 30)
 	drink_type = SUGAR
 
-//Lizard Stuff
+/*
+*	Lizard Snacks
+*/
 
 /obj/item/food/vendor_snacks/lizard_bagged
 	name = "candied mushroom"
