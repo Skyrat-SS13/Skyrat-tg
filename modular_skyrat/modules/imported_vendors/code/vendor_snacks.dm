@@ -143,7 +143,7 @@
 	desc = "Finally he is free."
 	icon_state = "mothmallow_trash"
 
-/obj/item/food/vendor_snacks/moth_bagged
+/obj/item/food/vendor_snacks/moth_bag
 	name = "engine fodder"
 	desc = "A vacuum sealed bag containing a small portion of colorful engine fodder."
 	icon_state = "fodder"
@@ -153,7 +153,7 @@
 	foodtypes = GRAIN | NUTS | VEGETABLES | SUGAR
 	custom_price = PAYCHECK_LOWER * 1.2
 
-/obj/item/food/vendor_snacks/moth_bagged/fuel_jack
+/obj/item/food/vendor_snacks/moth_bag/fuel_jack
 	name = "fueljack's snack"
 	desc = "A vacuum sealed bag containing a smaller than usual brick of fueljack's lunch, ultimately downgrading it to a fueljack's snack."
 	icon_state = "fuel_jack_snack"
@@ -162,7 +162,7 @@
 	foodtypes = DAIRY | VEGETABLES
 	custom_price = PAYCHECK_LOWER * 1.2
 
-/obj/item/food/vendor_snacks/moth_bagged/cheesecake
+/obj/item/food/vendor_snacks/moth_bag/cheesecake
 	name = "chocolate cheesecake cube"
 	desc = "A vacuum sealed bag containing a small cube of a mothic style cheesecake, this one is covered in chocolate."
 	icon_state = "choco_cheese_cake"
@@ -171,7 +171,7 @@
 	foodtypes = SUGAR | FRIED | DAIRY | GRAIN
 	custom_price = PAYCHECK_LOWER * 1.4
 
-/obj/item/food/vendor_snacks/moth_bagged/cheesecake/honey
+/obj/item/food/vendor_snacks/moth_bag/cheesecake/honey
 	name = "honey cheesecake cube"
 	desc = "A vacuum sealed bag containing a small cube of a mothic style cheesecake, this one is covered in honey."
 	icon_state = "honey_cheese_cake"
@@ -235,7 +235,7 @@
 *	Lizard Snacks
 */
 
-/obj/item/food/vendor_snacks/lizard_bagged
+/obj/item/food/vendor_snacks/lizard_bag
 	name = "candied mushroom"
 	desc = "An odd treat of the lizard empire, a mushroom dipped in caramel; unfortunately, it seems to have been bagged before the caramel fully hardened."
 	icon_state = "candied_shroom"
@@ -245,10 +245,10 @@
 	foodtypes = SUGAR | VEGETABLES
 	custom_price = PAYCHECK_LOWER * 1.6 //Tizirian imports are a bit more expensive overall
 
-/obj/item/food/vendor_snacks/lizard_bagged/MakeLeaveTrash()
+/obj/item/food/vendor_snacks/lizard_bag/MakeLeaveTrash()
 	AddElement(/datum/element/food_trash, trash_type, FOOD_TRASH_POPABLE)
 
-/obj/item/food/vendor_snacks/lizard_bagged/moon_jerky
+/obj/item/food/vendor_snacks/lizard_bag/moon_jerky
 	name = "moonfish jerky"
 	desc = "A fish jerky, made from what you can only hope is moonfish. It also seems to taste subtly of barbecue"
 	icon_state = "moon_jerky"
@@ -262,7 +262,7 @@
 	desc = "All that money importing tizirian snacks just to end at this?"
 	icon_state = "tiziria_bag_trash"
 
-/obj/item/food/vendor_snacks/lizard_boxed
+/obj/item/food/vendor_snacks/lizard_box
 	name = "tizirian dumplings"
 	desc = "A three pack of tizirian style dumplings, not actually stuffed with anything."
 	icon_state = "dumpling"
@@ -272,7 +272,7 @@
 	foodtypes = VEGETABLES | NUTS
 	custom_price = PAYCHECK_LOWER * 1.8
 
-/obj/item/food/vendor_snacks/lizard_boxed/sweet_roll
+/obj/item/food/vendor_snacks/lizard_box/sweet_roll
 	name = "honey roll"
 	desc = "Definitely don't let the guards find out that someone stole your last one."
 	icon_state = "sweet_roll"
