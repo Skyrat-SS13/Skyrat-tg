@@ -506,4 +506,4 @@
 /datum/loadout_item/pocket_item/marsoc_coin
 	name = "MARSOC Challenge Coin"
 	item_path = /obj/item/coin/donator/marsoc
-	ckeywhitelist = list("Sweetsoulbrother")
+	ckeywhitelist = list("sweetsoulbrother")
