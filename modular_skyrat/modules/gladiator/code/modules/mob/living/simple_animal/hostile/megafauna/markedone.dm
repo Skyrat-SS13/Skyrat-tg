@@ -294,8 +294,7 @@
 	visible_message(span_userdanger("[src] lifts his ancient blade, and prepares to spin!"))
 	spinning = TRUE
 	animate(src, color = "#ff6666", 10)
-	
-	_CHECK_DEATH(5, src)
+	SLEEP_CHECK_DEATH(5, src)
 	var/list/spinningturfs = list()
 	var/current_angle = 360
 	while(current_angle > 0)
