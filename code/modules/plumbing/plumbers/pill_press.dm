@@ -3,7 +3,7 @@
 	name = "chemical press"
 	desc = "A press that makes pills, patches and bottles."
 	icon_state = "pill_press"
-	buffer = 60 //SKYRAT EDIT HYPOVIALS. This is needed so it can completely fill the vials up.
+	buffer = 75 //SKYRAT EDIT HYPOVIALS. This is needed so it can completely fill the vials up. 75 to avoid floating point number issues stemming from Fermichem.
 	active_power_usage = BASE_MACHINE_ACTIVE_CONSUMPTION * 2
 	///maximum size of a pill
 	var/max_pill_volume = 50
