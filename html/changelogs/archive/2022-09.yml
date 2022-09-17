@@ -579,3 +579,96 @@
       orphaned in its own file.
   - rscadd: Shoe stealing is back! *shoesteal, and lie down, to take someone's shoes.
   - qol: AIs are now loudmode in binary chat
+2022-09-16:
+  Paxilmaniac:
+  - balance: The maint loot table has been reverted back to tg standard, (un)fortunately
+      you will now be unable to have a chance of finding uplink items, alien tech,
+      and sometimes even debug tools in maint, truly a devastating loss
+  RandomGamer123, idea by Pickle-Coding:
+  - rscadd: You can now insert a hypernoblium crystal into portable atmospheric devices
+      (ie. canisters, pumps, and scrubbers) to allow you to toggle reactions inside
+      the can on and off, similar to how wrenching and unwrenching it on a connector
+      did previously.
+  - rscadd: The crystal once inserted cannot be removed without deconstructing the
+      canister. However, hypernoblium crystals are now single-use items, and their
+      cost has been halved to account for it.
+  - code_imp: Variable names in canister, pump, and scrubber UI code have been changed
+      to camel case for consistency.
+  - code_imp: The canister UI has been slightly changed in terms of how it displays
+      cell charge.
+  ShizCalev:
+  - admin: Improved some varedit handling for anything w/ the /obj/structure/closet
+      path (closets / lockers / crates)
+  - bugfix: Fixed the Space Carp DNA harvest traitor objective not starting a carp
+      migration when taken
+  - bugfix: Fixed a runtime when removing beakers from a chem grenade with a wrench.
+  - bugfix: Fixed a minor runtime when trying to track a human that's is no longer
+      trackable.
+  - bugfix: Free vending machine purchases are now tracked by SSEconomy
+  - spellcheck: Slightly reworded the examine text on bowls / customizable reagent
+      containers.
+  SkyratBot:
+  - rscadd: The Syndicate is now branching off into cheap tourist merchandise -- collect
+      your limited edition t-shirt today by entering the nearest kidnapping pod!
+  - qol: Add screentips for objects that use rotation (chairs, windows, pipes, etc.)
+  - qol: Add Alt RMB and Ctrl RMB screentips options.  Instead of Alt + Ctrl being
+      one line, they are now split on separate lines.
+  - qol: Windows from outside the station now get the RCD reconstruction benefits,
+      just like walls and floors.
+  - bugfix: Pods should now properly know whether or not to send itself off, and won't
+      break other pods at the same time.
+  - bugfix: Check power mapping debug option now properly supports multilayer wiring.
+  - balance: Sepia and Timefreeze cameras are no longer single use. Refilling them
+      with camera film now restores their ability to rewind/freeze targets (you still
+      only get one picture before you run out of film).
+  - bugfix: The RD suit storage unit has an oxygen tank so that it can be on par with
+      other head of staff suit storages.
+  - bugfix: Engines now calculate their thrust power as they used to, preventing edge
+      cases of inconsistent shuttle call timers.
+  - bugfix: Fixed the Adjust Suit Sensors verb opening a list of all nearby mobs
+  - bugfix: fixed the name of the ammo printed from the lathe
+  - qol: Juice cartons now splash their reagents with right-click.
+  - bugfix: Enabled flag for morgue body containers to allow you to interact with
+      them while standing diagonally with the hatch open.
+  - admin: Stray Meteor trigger now gives the option to throw a random meteor instead
+      of selecting a specific one.
+  - admin: When you add a watchlist expiration date without having previously set
+      one, the logged message should now be more clear as to this.
+  - bugfix: When you are smited into an enbreaded tomb, you can no longer pick up
+      said tomb.
+  Stalkeros:
+  - balance: Nihilanth's resonance cascade chances now can be reduced using Xen crystals,
+      down to zero percent.
+  - admin: Nihilanth's resonance cascade event log now shows its percent chance of
+      spawning.
+  Tramz:
+  - rscadd: Adds a new holochassis for pAI, the chicken.
+2022-09-17:
+  Melbert:
+  - bugfix: Wabbajacking a shapeshifted mob no longer runtimes horribly. When a shapeshifted
+      mob is wabbajacked, they'll now be removed from their shapeshift and stunned.
+  - bugfix: Transforming via a shapeshift should no longer rob you of your hearing
+      / runechat awareness.
+  - bugfix: Shapeshifting plays nicer with holoparasites.
+  - bugfix: Being polymorphed from a xeno to a non-xeno correctly makes you a non-xeno
+  - refactor: Refactored shapeshifting, the shapeshift holder is now a status effect
+      instead of an object.
+  - refactor: Heretic worm form is a shapeshift spell now, this might have some minor
+      behavioral changes but should overall be the same.
+  - refactor: Refactored Wabbajack (+ cursed pool). Overall a bit more clean / consistent
+      behavior.
+  SkyratBot:
+  - bugfix: Reconnects Meta Engineering to Distro.
+  - bugfix: Places a missing wire under Meta's Starboard Aft Solars SMES.
+  - rscadd: 'Icebox: added a camera to southern Cargo Bay'
+  - rscdel: 'Icebox: removed several excess cameras (i.e. Courtroom, Primary Hallway,
+      Prison Garden)'
+  - qol: 'Icebox: grouped up cameras within their respective department (Medbay, RnD,
+      Service)'
+  - qol: 'Icebox: grouped up Solar Maintenance cameras as well as changing them to
+      use North-South-East-West (you are on a planet, use the compass)'
+  - qol: 'Icebox: cleaned up ambiguous camera names for easier listing in camera consoles'
+  - bugfix: 'Icebox: fixed a floating camera in Fore Hallway outside Brig Access'
+  - bugfix: 'Icebox: fixed several cameras lacking their respective network values'
+  - bugfix: 'Icebox: restored a lost Interrogation Room Monitor outside of Interrogation
+      Room'
