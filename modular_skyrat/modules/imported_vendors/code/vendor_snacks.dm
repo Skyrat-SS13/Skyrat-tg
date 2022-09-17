@@ -184,7 +184,7 @@
 	icon_state = "moth_bag_trash"
 
 /obj/item/reagent_containers/cup/soda_cans/skyrat/lemonade
-	name = "\improper Gyárhajó 1023: lemonade"
+	name = "\improper Gyárhajó 1023: Lemonade"
 	desc = "A can of lemonade, for those who are into that kind of thing, or just have no choice."
 	icon_state = "lemonade"
 	list_reagents = list(/datum/reagent/consumable/lemonade = 30)
