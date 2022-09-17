@@ -220,7 +220,7 @@
 	return .
 
 /obj/item/reagent_containers/cup/soda_cans/skyrat/ginger_beer
-	name = "\improper Gyárhajó 1023: ginger beer"
+	name = "\improper Gyárhajó 1023: Ginger Beer"
 	desc = "A can of ginger beer, don't let the beer part mislead you, this is entirely non-alcoholic."
 	icon_state = "gingie_beer"
 	list_reagents = list(/datum/reagent/consumable/sol_dry = 30)
