@@ -15,6 +15,7 @@ SUBSYSTEM_DEF(autotransfer)
 	if(!CONFIG_GET(flag/autotransfer)) //Autotransfer voting disabled.
 		can_fire = FALSE
 		return SS_INIT_NO_NEED
+
 	var/init_vote = CONFIG_GET(number/vote_autotransfer_initial)
 	starttime = world.realtime // Skyrat edit
 	targettime = starttime + init_vote
