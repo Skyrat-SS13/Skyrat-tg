@@ -11,7 +11,7 @@
 		/obj/item/restraints/handcuffs = 8,
 		/obj/item/restraints/handcuffs/cable/zipties = 12,
 		/obj/item/grenade/flashbang = 6,
-		/obj/item/grenade/borg_action_pacifier_grenade = 4,
+		/obj/item/grenade/cyborg_control_bay_undeployed = 4,
 		/obj/item/assembly/flash/handheld = 8,
 		/obj/item/food/donut/plain = 12,
 		/obj/item/storage/box/evidence = 6,
