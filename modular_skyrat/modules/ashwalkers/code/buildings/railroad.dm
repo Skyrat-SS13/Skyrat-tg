@@ -66,6 +66,8 @@
 	icon_state = "railcart"
 	/// The mutable appearance used for the overlay over buckled mobs.
 	var/mutable_appearance/railoverlay
+	/// whether there is sand in the cart
+	var/has_sand = FALSE
 
 /obj/vehicle/ridden/rail_cart/examine(mob/user)
 	. = ..()
@@ -116,17 +118,22 @@
 /obj/vehicle/ridden/rail_cart/attackby(obj/item/attacking_item, mob/user, params)
 	if(istype(attacking_item, /obj/item/stack/ore/glass))
 		var/obj/item/stack/ore/glass/use_item = attacking_item
-		if(GetComponent(/datum/component/simple_farm) || !use_item.use(10))
+		if(has_sand || !use_item.use(10))
 			return ..()
 		AddComponent(/datum/component/simple_farm, TRUE, TRUE, list(0, 16))
+		has_sand = TRUE
 		RemoveElement(/datum/element/ridable)
 		return
 
 	if(attacking_item.tool_behaviour == TOOL_SHOVEL)
 		var/datum/component/remove_component = GetComponent(/datum/component/simple_farm)
-		if(remove_component)
-			qdel(remove_component)
+		if(!remove_component)
+			return ..()
+		qdel(remove_component)
+		has_sand = FALSE
 		AddElement(/datum/element/ridable, /datum/component/riding/vehicle/rail_cart)
+		return
+
 	return ..()
 
 /// searches the cardinal directions to add this cart to another cart's trailer
