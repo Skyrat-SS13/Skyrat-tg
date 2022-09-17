@@ -196,7 +196,7 @@
 	return .
 
 /obj/item/reagent_containers/cup/soda_cans/skyrat/navy_rum
-	name = "\improper Gyárhajó 1506: navy rum"
+	name = "\improper Gyárhajó 1506: Navy Rum"
 	desc = "A can of navy rum brewed up and imported from a detachment of the nomad fleet, or so the can says."
 	icon_state = "navy_rum"
 	list_reagents = list(/datum/reagent/consumable/ethanol/navy_rum = 30)
