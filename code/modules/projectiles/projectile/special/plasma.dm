@@ -1,13 +1,8 @@
 /obj/projectile/plasma
 	name = "plasma blast"
 	icon_state = "plasmacutter"
-<<<<<<< HEAD
-	damage_type = BRUTE
-	damage = 15 //SKYRAT EDIT CHANGE - ORIGINAL: 5
-=======
 	damage_type = BURN
-	damage = 5
->>>>>>> 8f59a6dbac1 (Fix plasma cutter or guns that burn not being able to ignite plasma  (#69584))
+	damage = 15 //SKYRAT EDIT CHANGE - ORIGINAL: 5
 	range = 4
 	dismemberment = 20
 	impact_effect_type = /obj/effect/temp_visual/impact_effect/purple_laser
