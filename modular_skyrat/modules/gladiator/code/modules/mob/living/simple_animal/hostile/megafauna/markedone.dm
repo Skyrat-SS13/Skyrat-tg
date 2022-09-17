@@ -324,11 +324,11 @@
 			break
 		addtimer(CALLBACK(src, .proc/animate_speen), 0.05 SECONDS)
 		
-/mob/living/simple_animal/hostile/megafauna/gladiator/proc/animate_speen
+/mob/living/simple_animal/hostile/megafauna/gladiator/proc/animate_speen()
 	animate(src, color = initial(color), 3)
 	addtimer(CALLBACK(src, .proc/stop_speen), 3 SECONDS)
 	
-/mob/living/simple_animal/hostile/megafauna/gladiator/proc/stop_speen
+/mob/living/simple_animal/hostile/megafauna/gladiator/proc/stop_speen()
 	spinning = FALSE
 
 /mob/living/simple_animal/hostile/megafauna/gladiator/proc/charge(atom/target, range = 1) //the marked one's charge has an instant travel time, but takes a moment to power-up, allowing you to get behind cover to stun him
