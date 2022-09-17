@@ -71,6 +71,10 @@
 /obj/item/clothing/head/hooded/berserker/gatsu/Initialize(mapload)
 	. = ..()
 	ADD_TRAIT(src, TRAIT_NODROP, LOCKED_HELMET_TRAIT)
+	
+/obj/item/clothing/head/hooded/berserker/gatsu/examine()
+	. = ..()
+	. += span_warning("Berserk mode is usable at 100% charge but can gain up to 200% charge for extended duration.")
 
 /obj/item/clothing/head/hooded/berserker/gatsu/process(delta_time)
 	if(berserk_active)
