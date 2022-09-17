@@ -643,3 +643,32 @@
       spawning.
   Tramz:
   - rscadd: Adds a new holochassis for pAI, the chicken.
+2022-09-17:
+  Melbert:
+  - bugfix: Wabbajacking a shapeshifted mob no longer runtimes horribly. When a shapeshifted
+      mob is wabbajacked, they'll now be removed from their shapeshift and stunned.
+  - bugfix: Transforming via a shapeshift should no longer rob you of your hearing
+      / runechat awareness.
+  - bugfix: Shapeshifting plays nicer with holoparasites.
+  - bugfix: Being polymorphed from a xeno to a non-xeno correctly makes you a non-xeno
+  - refactor: Refactored shapeshifting, the shapeshift holder is now a status effect
+      instead of an object.
+  - refactor: Heretic worm form is a shapeshift spell now, this might have some minor
+      behavioral changes but should overall be the same.
+  - refactor: Refactored Wabbajack (+ cursed pool). Overall a bit more clean / consistent
+      behavior.
+  SkyratBot:
+  - bugfix: Reconnects Meta Engineering to Distro.
+  - bugfix: Places a missing wire under Meta's Starboard Aft Solars SMES.
+  - rscadd: 'Icebox: added a camera to southern Cargo Bay'
+  - rscdel: 'Icebox: removed several excess cameras (i.e. Courtroom, Primary Hallway,
+      Prison Garden)'
+  - qol: 'Icebox: grouped up cameras within their respective department (Medbay, RnD,
+      Service)'
+  - qol: 'Icebox: grouped up Solar Maintenance cameras as well as changing them to
+      use North-South-East-West (you are on a planet, use the compass)'
+  - qol: 'Icebox: cleaned up ambiguous camera names for easier listing in camera consoles'
+  - bugfix: 'Icebox: fixed a floating camera in Fore Hallway outside Brig Access'
+  - bugfix: 'Icebox: fixed several cameras lacking their respective network values'
+  - bugfix: 'Icebox: restored a lost Interrogation Room Monitor outside of Interrogation
+      Room'
