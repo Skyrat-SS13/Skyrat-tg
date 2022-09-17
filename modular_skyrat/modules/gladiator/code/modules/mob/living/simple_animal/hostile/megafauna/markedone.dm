@@ -40,6 +40,7 @@
 	health = 5000
 	maxHealth = 5000 //double the health of bubblegum, a very intentional shift in total difficulty
 	movement_type = GROUND
+	mouse_opacity = MOUSE_OPACITY_OPAQUE
 	loot = list(/obj/structure/closet/crate/necropolis/gladiator)
 	crusher_loot = list(/obj/structure/closet/crate/necropolis/gladiator/crusher)
 	/// Boss phase, from 1 to 3
