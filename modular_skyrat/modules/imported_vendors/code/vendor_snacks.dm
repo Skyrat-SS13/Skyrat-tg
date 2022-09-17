@@ -208,7 +208,7 @@
 	return .
 
 /obj/item/reagent_containers/cup/soda_cans/skyrat/soda_water_moth
-	name = "\improper Gyárhajó 1023: soda water"
+	name = "\improper Gyárhajó 1023: Soda Water"
 	desc = "A can of soda water. Why not make a rum and soda? Now that you think of it, maybe not."
 	icon_state = "soda_water"
 	list_reagents = list(/datum/reagent/consumable/sodawater = 30)
