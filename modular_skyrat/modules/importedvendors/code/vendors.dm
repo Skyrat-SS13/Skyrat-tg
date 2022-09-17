@@ -100,7 +100,7 @@
 
 /obj/machinery/vending/imported/yangyu/examine_more(mob/user)
 	. = ..()
-	. += span_notice("Someone appears to have written 'Don't trust the sushi' in marker on the side of the vendor.")
+	. += span_notice("Someone appears to have written <i>\"Don't trust the sushi!\"</i> in marker on the side of the vendor.")
 	return .
 
 /obj/machinery/vending/imported/mothic
