@@ -9,12 +9,12 @@
 /obj/machinery/vending/imported
 	name = "NT Sustenance Supplier"
 	desc = "A vending machine serving up only the finest of human college student food."
-	icon = 'modular_skyrat/modules/importedvendors/icons/imported_vendors.dmi'
-	icon_state = "ntfood"
+	icon = 'modular_skyrat/modules/imported_vendors/icons/imported_vendors.dmi'
+	icon_state = "nt_food"
 	panel_type = "panel15"
-	light_mask = "ntfood-light-mask"
+	light_mask = "nt_food-light-mask"
 	light_color = LIGHT_COLOR_LIGHT_CYAN
-	product_slogans = "Caution, contents may be selling hot!;Look at these low prices!;Hungry? Me too, wait no you didn't hear that!"
+	product_slogans = "Caution, contents may be selling hot!;Look at these low prices!;Hungry? Me too- Wait, no, you didn't hear that!"
 	product_categories = list(
 		list(
 			"name" = "Snacks",
@@ -37,7 +37,7 @@
 			"products" = list(
 				/obj/item/storage/box/foodpack/nt = 6,
 				/obj/item/storage/box/foodpack/nt/burger = 6,
-				/obj/item/storage/box/foodpack/nt/chickensammy = 6,
+				/obj/item/storage/box/foodpack/nt/chicken_sammy = 6,
 				/obj/item/food/vendor_tray_meal/side = 6,
 				/obj/item/food/vendor_tray_meal/side/crackers_and_jam = 6,
 				/obj/item/food/vendor_tray_meal/side/crackers_and_cheese = 6,
@@ -60,10 +60,10 @@
 	vendor_languages.selected_language = language_to_speak
 
 /obj/machinery/vending/imported/yangyu
-	name = "質の高い食品ベンダー"
+	name = "Fūdobendā"
 	desc = "A vendor selling traditional Sol eastern foods of dubious quality."
-	icon_state = "yangyufood"
-	light_mask = "yangyufood-light-mask"
+	icon_state = "yangyu_food"
+	light_mask = "yangyu_food-light-mask"
 	light_color = LIGHT_COLOR_FLARE
 	product_slogans = "Fresh farmed space carp from local space!;Imitation lobstrocity sushi choices availible!;Made with traditional recipes and care!"
 	product_categories = list(
@@ -73,9 +73,9 @@
 			"products" = list(
 				/obj/item/reagent_containers/cup/glass/dry_ramen/prepared = 6,
 				/obj/item/reagent_containers/cup/glass/dry_ramen/prepared/hell = 6,
-				/obj/item/food/vendor_snacks/ricecrackers = 6,
-				/obj/item/food/vendor_snacks/mochi_icecream = 6,
-				/obj/item/food/vendor_snacks/mochi_icecream/matcha = 6,
+				/obj/item/food/vendor_snacks/rice_crackers = 6,
+				/obj/item/food/vendor_snacks/mochi_ice_cream = 6,
+				/obj/item/food/vendor_snacks/mochi_ice_cream/matcha = 6,
 				/obj/item/reagent_containers/cup/glass/waterbottle/tea = 6,
 				/obj/item/reagent_containers/cup/glass/waterbottle/tea/astra = 6,
 				/obj/item/reagent_containers/cup/glass/waterbottle/tea/strawberry = 6,
@@ -88,7 +88,7 @@
 			"products" = list(
 				/obj/item/storage/box/foodpack/yangyu = 6,
 				/obj/item/storage/box/foodpack/yangyu/sushi = 6,
-				/obj/item/storage/box/foodpack/yangyu/beefrice = 6,
+				/obj/item/storage/box/foodpack/yangyu/beef_rice = 6,
 				/obj/item/food/vendor_tray_meal/side/miso = 6,
 				/obj/item/food/vendor_tray_meal/side/rice = 6,
 				/obj/item/food/vendor_tray_meal/side/pickled_vegetables = 6,
@@ -106,8 +106,8 @@
 /obj/machinery/vending/imported/mothic
 	name = "Nomad Fleet Ration Chit Exchange"
 	desc = "One of the Nomad Fleet's own ration vendors; in spite of the name engraved into it, it's been fitted to accept credits."
-	icon_state = "mothfood"
-	light_mask = "mothfood-light-mask"
+	icon_state = "moth_food"
+	light_mask = "moth_food-light-mask"
 	light_color = LIGHT_COLOR_HALOGEN
 	product_slogans = "Support the fleet, conserve rations today!;Some options in reduced portion and cost!;Do your part to keep the fleet flying!"
 	product_categories = list(
@@ -117,12 +117,12 @@
 			"products" = list(
 				/obj/item/food/vendor_snacks/mothmallow = 6,
 				/obj/item/food/vendor_snacks/moth_bagged = 6,
-				/obj/item/food/vendor_snacks/moth_bagged/fueljack = 6,
+				/obj/item/food/vendor_snacks/moth_bagged/fuel_jack = 6,
 				/obj/item/food/vendor_snacks/moth_bagged/cheesecake = 6,
 				/obj/item/food/vendor_snacks/moth_bagged/cheesecake/honey = 6,
 				/obj/item/reagent_containers/cup/soda_cans/skyrat/lemonade = 6,
-				/obj/item/reagent_containers/cup/soda_cans/skyrat/navyrum = 6,
-				/obj/item/reagent_containers/cup/soda_cans/skyrat/sodawater_moth = 6,
+				/obj/item/reagent_containers/cup/soda_cans/skyrat/navy_rum = 6,
+				/obj/item/reagent_containers/cup/soda_cans/skyrat/soda_water_moth = 6,
 				/obj/item/reagent_containers/cup/soda_cans/skyrat/ginger_beer = 6,
 			),
 		),
@@ -131,8 +131,8 @@
 			"icon" = "pizza-slice",
 			"products" = list(
 				/obj/item/storage/box/foodpack/moth = 6,
-				/obj/item/storage/box/foodpack/moth/bakedrice = 6,
-				/obj/item/storage/box/foodpack/moth/fueljack = 6,
+				/obj/item/storage/box/foodpack/moth/baked_rice = 6,
+				/obj/item/storage/box/foodpack/moth/fuel_jack = 6,
 				/obj/item/food/vendor_tray_meal/side/moffin = 6,
 				/obj/item/food/vendor_tray_meal/side/cornbread = 6,
 				/obj/item/food/vendor_tray_meal/side/roasted_seeds = 6,
@@ -145,8 +145,8 @@
 /obj/machinery/vending/imported/tizirian
 	name = "Tizirian Imported Delicacies"
 	desc = "A vendor serving a fine collection of what is very likely knock-offs of popular Tizirian brands."
-	icon_state = "tiziriafood"
-	light_mask = "tiziriafood-light-mask"
+	icon_state = "tiziria_food"
+	light_mask = "tiziria_food-light-mask"
 	light_color = LIGHT_COLOR_FIRE
 	product_slogans = "Real imports from the capital itself, we promise!;Rare selections of salt water catch!;Moonfish glaze included with all meat options!"
 	product_categories = list(
@@ -156,9 +156,9 @@
 			"products" = list(
 				/obj/item/food/chips/shrimp = 6,
 				/obj/item/food/vendor_snacks/lizard_bagged = 6,
-				/obj/item/food/vendor_snacks/lizard_bagged/moonjerky = 6,
+				/obj/item/food/vendor_snacks/lizard_bagged/moon_jerky = 6,
 				/obj/item/food/vendor_snacks/lizard_boxed = 6,
-				/obj/item/food/vendor_snacks/lizard_boxed/sweetroll = 6,
+				/obj/item/food/vendor_snacks/lizard_boxed/sweet_roll = 6,
 				/obj/item/reagent_containers/cup/glass/bottle/mushi_kombucha = 6,
 				/obj/item/reagent_containers/cup/glass/waterbottle/tea/mushroom = 6,
 				/obj/item/reagent_containers/cup/soda_cans/skyrat/kortara = 6,
@@ -170,7 +170,7 @@
 			"products" = list(
 				/obj/item/storage/box/foodpack/tiziria = 6,
 				/obj/item/storage/box/foodpack/tiziria/roll = 6,
-				/obj/item/storage/box/foodpack/tiziria/stirfry = 6,
+				/obj/item/storage/box/foodpack/tiziria/stir_fry = 6,
 				/obj/item/food/vendor_tray_meal/side/root_crackers = 6,
 				/obj/item/food/vendor_tray_meal/side/korta_brittle = 6,
 				/obj/item/food/vendor_tray_meal/side/crispy_headcheese = 6,

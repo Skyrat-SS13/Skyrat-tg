@@ -1,7 +1,7 @@
 /obj/item/storage/box/foodpack
 	name = "wrapped meal container"
 	desc = "A generic brown paper food package, you aren't quite sure where this comes from."
-	icon = 'modular_skyrat/modules/importedvendors/icons/imported_quick_foods.dmi'
+	icon = 'modular_skyrat/modules/imported_vendors/icons/imported_quick_foods.dmi'
 	icon_state = "foodpack_generic_big"
 	illustration = null
 	custom_price = PAYCHECK_LOWER * 5
@@ -30,12 +30,12 @@
 	name = "\improper NT-Combo Meal - Cheeseburger"
 	main_course = /obj/item/food/vendor_tray_meal/burger
 
-/obj/item/storage/box/foodpack/nt/chickensammy
+/obj/item/storage/box/foodpack/nt/chicken_sammy
 	name = "\improper NT-Combo Meal - Spicy Chicken Sandwich"
 	main_course = /obj/item/food/vendor_tray_meal/chicken_sandwich
 
 /obj/item/storage/box/foodpack/yangyu
-	name = "\improper 温かい食事 - Homestyle Noodles"
+	name = "\improper Atatakai shokuji - Homestyle Noodles"
 	desc = "A well decorated red and white plastic package, covered in nearly incomprehensible yangyu text."
 	icon_state = "foodpack_yangyu_big"
 	main_course = /obj/item/food/vendor_tray_meal/ramen
@@ -43,11 +43,11 @@
 	condiment_pack = /obj/item/reagent_containers/condiment/pack/hotsauce
 
 /obj/item/storage/box/foodpack/yangyu/sushi
-	name = "\improper 温かい食事 - Carp Sushi Rolls"
+	name = "\improper Atatakai shokuji - Carp Sushi Rolls"
 	main_course = /obj/item/food/vendor_tray_meal/sushi
 
-/obj/item/storage/box/foodpack/yangyu/beefrice
-	name = "\improper 温かい食事 - Beef and Rice"
+/obj/item/storage/box/foodpack/yangyu/beef_rice
+	name = "\improper Atatakai shokuji - Beef and Rice"
 	main_course = /obj/item/food/vendor_tray_meal/beef_rice
 
 /obj/item/storage/box/foodpack/moth
@@ -58,11 +58,11 @@
 	side_item = /obj/effect/spawner/random/vendor_meal_sides/moth
 	condiment_pack = /obj/item/reagent_containers/condiment/pack/astrotame
 
-/obj/item/storage/box/foodpack/moth/bakedrice
+/obj/item/storage/box/foodpack/moth/baked_rice
 	name = "\improper Ration Type M - Baked Rice and Grilled Cheese"
 	main_course = /obj/item/food/vendor_tray_meal/baked_rice
 
-/obj/item/storage/box/foodpack/moth/fueljack
+/obj/item/storage/box/foodpack/moth/fuel_jack
 	name = "\improper Ration Type M - Fueljack's Feast"
 	main_course = /obj/item/food/vendor_tray_meal/fueljack
 
@@ -84,6 +84,6 @@
 	name = "\improper Tiziria Imports Pack - Emperor Roll"
 	main_course = /obj/item/food/vendor_tray_meal/emperor_roll
 
-/obj/item/storage/box/foodpack/tiziria/stirfry
+/obj/item/storage/box/foodpack/tiziria/stir_fry
 	name = "\improper Tiziria Imports Pack - Mushroom Stirfry"
 	main_course = /obj/item/food/vendor_tray_meal/mushroom_fry

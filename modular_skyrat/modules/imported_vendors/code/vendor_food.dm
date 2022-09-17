@@ -3,16 +3,16 @@
 /obj/item/trash/empty_food_tray
 	name = "empty plastic food tray"
 	desc = "The condensation and what you can only hope are the leftovers of food make this a bit hard to reuse."
-	icon = 'modular_skyrat/modules/importedvendors/icons/imported_quick_foods.dmi'
+	icon = 'modular_skyrat/modules/imported_vendors/icons/imported_quick_foods.dmi'
 	icon_state = "foodtray_empty"
-	custom_materials = list(/datum/material/plastic=1000)
+	custom_materials = list(/datum/material/plastic = 1000)
 
 /obj/item/trash/empty_side_pack
 	name = "empty side wrapper"
 	desc = "Unfortunately, this no longer holds any sides to distract you from the other 'food'."
-	icon = 'modular_skyrat/modules/importedvendors/icons/imported_quick_foods.dmi'
+	icon = 'modular_skyrat/modules/imported_vendors/icons/imported_quick_foods.dmi'
 	icon_state = "foodpack_generic_trash"
-	custom_materials = list(/datum/material/plastic=1000)
+	custom_materials = list(/datum/material/plastic = 1000)
 
 /obj/item/trash/empty_side_pack/nt
 	icon_state = "foodpack_nt_trash"
@@ -29,8 +29,8 @@
 /obj/item/food/vendor_tray_meal
 	name = "\improper NT-Meal: Steak and Macaroni"
 	desc = "A 'salisbury steak' drowning in something similar to a gravy, with a macaroni and cheese substitute mix sitting right beside it."
-	icon = 'modular_skyrat/modules/importedvendors/icons/imported_quick_foods.dmi'
-	icon_state = "foodtray_sadsteak"
+	icon = 'modular_skyrat/modules/imported_vendors/icons/imported_quick_foods.dmi'
+	icon_state = "foodtray_sad_steak"
 	trash_type = /obj/item/trash/empty_food_tray
 	food_reagents = list(/datum/reagent/consumable/nutriment = 8)
 	tastes = list("meat?" = 2, "cheese?" = 2, "laziness" = 1)
@@ -63,71 +63,71 @@
 /obj/item/food/vendor_tray_meal/chicken_sandwich
 	name = "\improper NT-Meal: Spicy Chicken Sandwich"
 	desc = "A pretty sad looking chicken sandwich, the 'meat' patty is covered in so many manufactured spices that it has become an eerie red color."
-	icon_state = "foodtray_chickiesandwich"
+	icon_state = "foodtray_chickie_sandwich"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 5, /datum/reagent/consumable/capsaicin = 10)
 	tastes = list("bread" = 2, "chicken?" = 2, "overwhelming spice" = 2, "laziness" = 1)
 	foodtypes = MEAT | GRAIN | DAIRY
 
 /obj/item/food/vendor_tray_meal/ramen
-	name = "\improper メインコース: Homestyle Noodles"
+	name = "\improper Meinkōsu: Homestyle Noodles"
 	desc = "A brick of the finest factory made ramen, with a small amount of rehydrated vegetables and herbs floating around."
 	icon_state = "foodtray_noodle"
 	tastes = list("cheap noodles" = 2, "laziness" = 1)
 	foodtypes = GRAIN | VEGETABLES
 
 /obj/item/food/vendor_tray_meal/sushi
-	name = "\improper メインコース: Fresh Carp Rolls"
+	name = "\improper Meinkōsu: Fresh Carp Rolls"
 	desc = "A pair of sushi rolls, the appearance of which would suggest that the label is lying to you."
-	icon_state = "foodtray_gasstationsushi"
+	icon_state = "foodtray_gas_station_sushi"
 	tastes = list("imitation space carp" = 2, "stale rice" = 2, "laziness" = 1)
 	foodtypes = GRAIN | SEAFOOD
 
 /obj/item/food/vendor_tray_meal/beef_rice
-	name = "\improper メインコース: Beef and Fried Rice"
+	name = "\improper Meinkōsu: Beef and Fried Rice"
 	desc = "A few slices of seemingly grilled beef, paired with a disproportionately large amount of rice."
-	icon_state = "foodtray_beefnrice"
+	icon_state = "foodtray_beef_n_rice"
 	tastes = list("cheap beef" = 1, "rice" = 3, "laziness" = 1)
 	foodtypes = GRAIN | MEAT
 
 /obj/item/food/vendor_tray_meal/pesto_pizza
 	name = "\improper Main Course - Type M: Pesto Pizza"
 	desc = "A rectangular pizza with a suspiciously bright green pesto in place of the standard tomato sauce."
-	icon_state = "foodtray_pestopizza"
+	icon_state = "foodtray_pesto_pizza"
 	tastes = list("tomato?" = 2, "cheese?" = 2, "herbs" = 1, "laziness" = 1)
 	foodtypes = GRAIN | DAIRY | VEGETABLES
 
 /obj/item/food/vendor_tray_meal/baked_rice
 	name = "\improper Main Course - Type M: Baked Rice and Grilled Cheese"
 	desc = "Some sub-par looking fleet style rice, with a very grilled chunk of cheese."
-	icon_state = "foodtray_ricengrilledcheese"
+	icon_state = "foodtray_rice_n_grilled_cheese"
 	tastes = list("rice" = 2, "peppers" = 2, "charred cheese" = 2, "laziness" = 1)
 	foodtypes = GRAIN | DAIRY | VEGETABLES
 
 /obj/item/food/vendor_tray_meal/fueljack
 	name = "\improper Main Course - Type M: Fueljack's Tray"
 	desc = "A flat chunk of fueljack's lunch, seemingly missing most of the usual variety in ingredients."
-	icon_state = "foodtray_fueljacksmeal"
+	icon_state = "foodtray_fuel_jacks_meal"
 	tastes = list("potato" = 2, "cabbage" = 2, "cheese?" = 2, "laziness" = 1)
 	foodtypes = DAIRY | VEGETABLES
 
 /obj/item/food/vendor_tray_meal/moonfish_nizaya
 	name = "\improper Tiziria Imports: Moonfish and Nizaya"
 	desc = "An almost synthetic looking cut of moonfish, paired with an equal helping of nizaya pasta."
-	icon_state = "foodtray_moonfishnizaya"
+	icon_state = "foodtray_moonfish_nizaya"
 	tastes = list("fish?" = 2, "cheap noodles" = 2, "laziness" = 1)
 	foodtypes = VEGETABLES | NUTS | SEAFOOD
 
 /obj/item/food/vendor_tray_meal/emperor_roll
 	name = "\improper Tiziria Imports: Emperor Roll"
 	desc = "A pretty sad looking emperor roll, if you can even call it that; it seems caviar wasn't in the budget."
-	icon_state = "foodtray_emperorroll"
+	icon_state = "foodtray_emperor_roll"
 	tastes = list("bread" = 2, "cheese?" = 2, "liver?" = 2, "laziness" = 1)
 	foodtypes = VEGETABLES | NUTS | DAIRY | MEAT | GORE
 
 /obj/item/food/vendor_tray_meal/mushroom_fry
 	name = "\improper Tiziria Imports: Mushroom Stirfry"
 	desc = "A mix of what was likely mushrooms too low quality to be used in making actual food, lightly fried and tossed in a plastic container together."
-	icon_state = "foodtray_shroomfry"
+	icon_state = "foodtray_shroom_fry"
 	tastes = list("mushroom" = 4, "becoming rich" = 1, "laziness" = 1)
 	foodtypes = VEGETABLES
 
@@ -182,7 +182,7 @@
 	. = ..()
 
 /obj/item/food/vendor_tray_meal/side/miso
-	name = "\improper 副菜: Miso Soup"
+	name = "\improper Fukusai: Miso Soup"
 	desc = "This is quite literally just a plastic bag full of miso soup, opening it on any side other than the one indicated may result in spilled soup."
 	icon_state = "foodpack_yangyu"
 	trash_type = /obj/item/trash/empty_side_pack/yangyu
@@ -190,7 +190,7 @@
 	foodtypes = VEGETABLES
 
 /obj/item/food/vendor_tray_meal/side/rice
-	name = "\improper 副菜: White Rice"
+	name = "\improper Fukusai: White Rice"
 	desc = "A bag stuffed full of white rice, in case your meal didn't come with enough to sate your needs."
 	icon_state = "foodpack_yangyu"
 	trash_type = /obj/item/trash/empty_side_pack/yangyu
@@ -198,7 +198,7 @@
 	foodtypes = GRAIN
 
 /obj/item/food/vendor_tray_meal/side/pickled_vegetables
-	name = "\improper 副菜: Pickled Vegetables"
+	name = "\improper Fukusai: Pickled Vegetables"
 	desc = "Contains a small assortment of vegetables pickled in a vinegar-like solution."
 	icon_state = "foodpack_yangyu"
 	trash_type = /obj/item/trash/empty_side_pack/yangyu

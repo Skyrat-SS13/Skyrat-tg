@@ -3,7 +3,7 @@
 /obj/item/food/vendor_snacks
 	name = "\improper God's Strongest Snacks"
 	desc = "You best hope you aren't a sinner. (You should never see this item please report it)"
-	icon = 'modular_skyrat/modules/importedvendors/icons/imported_quick_foods.dmi'
+	icon = 'modular_skyrat/modules/imported_vendors/icons/imported_quick_foods.dmi'
 	icon_state = "foodpack_generic"
 	trash_type = /obj/item/trash/vendor_trash
 	bite_consumption = 10
@@ -17,9 +17,9 @@
 /obj/item/trash/vendor_trash
 	name = "\improper God's Weakest Snacks"
 	desc = "The leftovers of what was likely a great snack in a past time."
-	icon = 'modular_skyrat/modules/importedvendors/icons/imported_quick_foods.dmi'
+	icon = 'modular_skyrat/modules/imported_vendors/icons/imported_quick_foods.dmi'
 	icon_state = "foodpack_generic_empty"
-	custom_materials = list(/datum/material/plastic=1000)
+	custom_materials = list(/datum/material/plastic = 1000)
 
 /*
 *	"Yangyu" Snacks
@@ -35,57 +35,57 @@
 	desc = "This one comes with water, AND a security checkpoint's worth of capsaicin!"
 	list_reagents = list(/datum/reagent/consumable/hell_ramen = 15, /datum/reagent/consumable/salt = 3)
 
-/obj/item/food/vendor_snacks/ricecrackers
+/obj/item/food/vendor_snacks/rice_crackers
 	name = "rice crackers"
 	desc = "Despite most of the package being clear, you will never truly know what flavor these are until you eat them."
-	icon_state = "ricecracka"
-	trash_type = /obj/item/trash/vendor_trash/ricecrackers
+	icon_state = "rice_cracka"
+	trash_type = /obj/item/trash/vendor_trash/rice_crackers
 	food_reagents = list(/datum/reagent/consumable/nutriment = 2, /datum/reagent/consumable/rice = 2)
 	tastes = list("incomprehensible flavoring" = 1, "rice cracker" = 2)
 	foodtypes = JUNKFOOD | GRAIN
 	custom_price = PAYCHECK_LOWER * 0.8
 
-/obj/item/food/vendor_snacks/ricecrackers/MakeLeaveTrash()
+/obj/item/food/vendor_snacks/rice_crackers/MakeLeaveTrash()
 	AddElement(/datum/element/food_trash, trash_type, FOOD_TRASH_POPABLE)
 
-/obj/item/trash/vendor_trash/ricecrackers
+/obj/item/trash/vendor_trash/rice_crackers
 	name = "empty rice crackers bag"
 	desc = "You never did find out what flavor that was supposed to be, did you?"
-	icon_state = "ricecracka_trash"
+	icon_state = "rice_cracka_trash"
 
-/obj/item/food/vendor_snacks/mochi_icecream
-	name = "mochi icecream balls - vanilla"
-	desc = "A six pack of mochi icecream, which is to say vanilla icecream surrounded by mochi. Comes with small plastic skewer for consumption."
-	icon_state = "mochiice"
-	trash_type = /obj/item/trash/vendor_trash/mochi_icecream
+/obj/item/food/vendor_snacks/mochi_ice_cream
+	name = "mochi ice cream balls - vanilla"
+	desc = "A six pack of mochi ice cream, which is to say vanilla icecream surrounded by mochi. Comes with small plastic skewer for consumption."
+	icon_state = "mochi_ice"
+	trash_type = /obj/item/trash/vendor_trash/mochi_ice_cream
 	food_reagents = list(/datum/reagent/consumable/nutriment = 3, /datum/reagent/consumable/ice = 3)
 	tastes = list("rice cake" = 2, "vanilla" = 2)
 	foodtypes = JUNKFOOD | DAIRY | GRAIN
 	custom_price = PAYCHECK_LOWER * 1.2
 
-/obj/item/food/vendor_snacks/mochi_icecream/matcha
-	name = "mochi icecream balls - matcha"
-	desc = "A six pack of mochi icecream - or, more specifically, matcha icecream surrounded by mochi. Comes with small plastic skewer for consumption."
-	icon_state = "mochiice_green"
+/obj/item/food/vendor_snacks/mochi_ice_cream/matcha
+	name = "mochi ice cream balls - matcha"
+	desc = "A six pack of mochi ice cream - or, more specifically, matcha icecream surrounded by mochi. Comes with small plastic skewer for consumption."
+	icon_state = "mochi_ice_green"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 3, /datum/reagent/consumable/ice = 1, /datum/reagent/consumable/tea = 2)
 	tastes = list("rice cake" = 1, "bitter matcha" = 2)
 	custom_price = PAYCHECK_LOWER * 1.5
 
-/obj/item/food/vendor_snacks/mochi_icecream/matcha/examine_more(mob/user)
+/obj/item/food/vendor_snacks/mochi_ice_cream/matcha/examine_more(mob/user)
 	. = ..()
 	. += span_notice("A small label on the container specifies that this icecream is made using only culinary grade matcha grown outside of the Sol system.")
 	return .
 
-/obj/item/trash/vendor_trash/mochi_icecream
-	name = "empty mochi icecream tray"
+/obj/item/trash/vendor_trash/mochi_ice_cream
+	name = "empty mochi ice cream tray"
 	desc = "Somehow, that tiny plastic skewer it came with has gone missing."
-	icon_state = "mochiice_trash"
+	icon_state = "mochi_ice_trash"
 
 /obj/item/reagent_containers/cup/glass/waterbottle/tea
 	name = "bottle of tea"
 	desc = "A bottle of tea brought to you in a convenient plastic bottle."
-	icon = 'modular_skyrat/modules/importedvendors/icons/imported_quick_foods.dmi'
-	icon_state = "teabottle"
+	icon = 'modular_skyrat/modules/imported_vendors/icons/imported_quick_foods.dmi'
+	icon_state = "tea_bottle"
 	inhand_icon_state = "bottle"
 	list_reagents = list(/datum/reagent/consumable/tea = 40)
 	cap_icon_state = "bottle_cap_tea"
@@ -96,7 +96,7 @@
 /obj/item/reagent_containers/cup/glass/waterbottle/tea/astra
 	name = "bottle of tea astra"
 	desc = "A bottle of tea astra, known for the rather unusual tastes the leaf is known to give when brewed."
-	icon_state = "teabottle_blue"
+	icon_state = "tea_bottle_blue"
 	list_reagents = list(
 		/datum/reagent/consumable/tea = 25,
 		/datum/reagent/medicine/salglu_solution = 10, // I know this looks strange but this is what tea astra grinds into, tea in the year 25whatever baby
@@ -107,14 +107,14 @@
 /obj/item/reagent_containers/cup/glass/waterbottle/tea/strawberry
 	name = "bottle of strawberry tea"
 	desc = "A bottle of strawberry flavored tea; does not contain any actual strawberries."
-	icon_state = "teabottle_pink"
+	icon_state = "tea_bottle_pink"
 	list_reagents = list(/datum/reagent/consumable/pinktea = 40)
 	custom_price = PAYCHECK_LOWER * 3
 
 /obj/item/reagent_containers/cup/glass/waterbottle/tea/nip
 	name = "bottle of catnip tea"
 	desc = "A bottle of catnip tea, required to be at or under a 50% concentration by the SFDA for safety purposes."
-	icon_state = "teabottle_pink"
+	icon_state = "tea_bottle_pink"
 	list_reagents = list(
 		/datum/reagent/consumable/catnip_tea = 20,
 		/datum/reagent/consumable/pinkmilk = 20, // I can't believe they would cut my catnip
@@ -147,16 +147,16 @@
 	name = "engine fodder"
 	desc = "A vacuum sealed bag containing a small portion of colorful engine fodder."
 	icon_state = "fodder"
-	trash_type = /obj/item/trash/vendor_trash/moth_bagged
+	trash_type = /obj/item/trash/vendor_trash/moth_bag
 	food_reagents = list(/datum/reagent/consumable/sugar = 3, /datum/reagent/consumable/nutriment = 2, /datum/reagent/consumable/salt = 2)
 	tastes = list("seeds" = 1, "nuts" = 1, "chocolate" = 1, "salt" = 1, "popcorn" = 1, "potato" = 1)
 	foodtypes = GRAIN | NUTS | VEGETABLES | SUGAR
 	custom_price = PAYCHECK_LOWER * 1.2
 
-/obj/item/food/vendor_snacks/moth_bagged/fueljack
+/obj/item/food/vendor_snacks/moth_bagged/fuel_jack
 	name = "fueljack's snack"
 	desc = "A vacuum sealed bag containing a smaller than usual brick of fueljack's lunch, ultimately downgrading it to a fueljack's snack."
-	icon_state = "fueljacksnack"
+	icon_state = "fuel_jack_snack"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 3, /datum/reagent/consumable/nutriment/protein = 1)
 	tastes = list("cabbage" = 1, "potato" = 1, "onion" = 1, "chili" = 1, "cheese" = 1)
 	foodtypes = DAIRY | VEGETABLES
@@ -165,7 +165,7 @@
 /obj/item/food/vendor_snacks/moth_bagged/cheesecake
 	name = "chocolate cheesecake cube"
 	desc = "A vacuum sealed bag containing a small cube of a mothic style cheesecake, this one is covered in chocolate."
-	icon_state = "chococheesecake"
+	icon_state = "choco_cheese_cake"
 	food_reagents = list(/datum/reagent/consumable/nutriment/protein = 2, /datum/reagent/consumable/sugar = 4)
 	tastes = list("cheesecake" = 1, "chocolate" = 1)
 	foodtypes = SUGAR | FRIED | DAIRY | GRAIN
@@ -174,11 +174,11 @@
 /obj/item/food/vendor_snacks/moth_bagged/cheesecake/honey
 	name = "honey cheesecake cube"
 	desc = "A vacuum sealed bag containing a small cube of a mothic style cheesecake, this one is covered in honey."
-	icon_state = "honeycheesecake"
+	icon_state = "honey_cheese_cake"
 	tastes = list("cheesecake" = 1, "honey" = 1)
 	foodtypes = SUGAR | FRIED | DAIRY | GRAIN
 
-/obj/item/trash/vendor_trash/moth_bagged
+/obj/item/trash/vendor_trash/moth_bag
 	name = "empty mothic snack bag"
 	desc = "The clear plastic reveals that this no longer holds tasty treats for your winged friends."
 	icon_state = "moth_bag_trash"
@@ -190,24 +190,24 @@
 	list_reagents = list(/datum/reagent/consumable/lemonade = 30)
 	drink_type = FRUIT
 
-/obj/item/reagent_containers/cup/soda_cans/skyrat/navyrum
+/obj/item/reagent_containers/cup/soda_cans/skyrat/navy_rum
 	name = "navy rum"
 	desc = "A can of navy rum brewed up and imported from a detachment of the nomad fleet, or so the can says."
-	icon_state = "navyrum"
+	icon_state = "navy_rum"
 	list_reagents = list(/datum/reagent/consumable/ethanol/navy_rum = 30)
 	drink_type = ALCOHOL
 
-/obj/item/reagent_containers/cup/soda_cans/skyrat/sodawater_moth
+/obj/item/reagent_containers/cup/soda_cans/skyrat/soda_water_moth
 	name = "soda water"
 	desc = "A can of soda water. Why not make a rum and soda? Now that you think of it, maybe not."
-	icon_state = "sodawater"
+	icon_state = "soda_water"
 	list_reagents = list(/datum/reagent/consumable/sodawater = 30)
 	drink_type = SUGAR
 
 /obj/item/reagent_containers/cup/soda_cans/skyrat/ginger_beer
 	name = "ginger beer"
 	desc = "A can of ginger beer, don't let the beer part mislead you, this is entirely non-alcoholic."
-	icon_state = "lemonade"
+	icon_state = "gingie_beer"
 	list_reagents = list(/datum/reagent/consumable/sol_dry = 30)
 	drink_type = SUGAR
 
@@ -218,8 +218,8 @@
 /obj/item/food/vendor_snacks/lizard_bagged
 	name = "candied mushroom"
 	desc = "An odd treat of the lizard empire, a mushroom dipped in caramel; unfortunately, it seems to have been bagged before the caramel fully hardened."
-	icon_state = "candiedshroom"
-	trash_type = /obj/item/trash/vendor_trash/lizard_bagged
+	icon_state = "candied_shroom"
+	trash_type = /obj/item/trash/vendor_trash/lizard_bag
 	food_reagents = list(/datum/reagent/consumable/nutriment = 3, /datum/reagent/consumable/caramel = 2)
 	tastes = list("savouriness" = 1, "sweetness" = 1)
 	foodtypes = SUGAR | VEGETABLES
@@ -228,16 +228,16 @@
 /obj/item/food/vendor_snacks/lizard_bagged/MakeLeaveTrash()
 	AddElement(/datum/element/food_trash, trash_type, FOOD_TRASH_POPABLE)
 
-/obj/item/food/vendor_snacks/lizard_bagged/moonjerky
+/obj/item/food/vendor_snacks/lizard_bagged/moon_jerky
 	name = "moonfish jerky"
 	desc = "A fish jerky, made from what you can only hope is moonfish. It also seems to taste subtly of barbecue"
-	icon_state = "moonjerky"
+	icon_state = "moon_jerky"
 	food_reagents = list(/datum/reagent/consumable/nutriment/protein = 2, /datum/reagent/consumable/bbqsauce = 2)
 	tastes = list("fish" = 1, "smokey sauce" = 1)
 	foodtypes = MEAT
 	custom_price = PAYCHECK_LOWER * 1.8
 
-/obj/item/trash/vendor_trash/lizard_bagged
+/obj/item/trash/vendor_trash/lizard_bag
 	name = "empty tizirian snack bag"
 	desc = "All that money importing tizirian snacks just to end at this?"
 	icon_state = "tiziria_bag_trash"
@@ -246,22 +246,22 @@
 	name = "tizirian dumplings"
 	desc = "A three pack of tizirian style dumplings, not actually stuffed with anything."
 	icon_state = "dumpling"
-	trash_type = /obj/item/trash/vendor_trash/lizard_boxed
+	trash_type = /obj/item/trash/vendor_trash/lizard_box
 	food_reagents = list(/datum/reagent/consumable/nutriment = 3)
 	tastes = list("potato" = 1, "earthy heat" = 1)
 	foodtypes = VEGETABLES | NUTS
 	custom_price = PAYCHECK_LOWER * 1.8
 
-/obj/item/food/vendor_snacks/lizard_boxed/sweetroll
+/obj/item/food/vendor_snacks/lizard_boxed/sweet_roll
 	name = "honey roll"
 	desc = "Definitely don't let the guards find out that someone stole your last one."
-	icon_state = "sweetroll"
+	icon_state = "sweet_roll"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 2, /datum/reagent/consumable/honey = 2)
 	tastes = list("bread" = 1, "honey" = 1, "fruit" = 1)
 	foodtypes = VEGETABLES | NUTS | FRUIT
 	custom_price = PAYCHECK_LOWER * 2
 
-/obj/item/trash/vendor_trash/lizard_boxed
+/obj/item/trash/vendor_trash/lizard_box
 	name = "empty tizirian snack box"
 	desc = "Tiziria, contributing to the space plastic crisis since 2530."
 	icon_state = "tiziria_box_trash"
@@ -269,7 +269,7 @@
 /obj/item/reagent_containers/cup/glass/waterbottle/tea/mushroom
 	name = "bottle of mushroom tea"
 	desc = "A bottle of somewhat bitter mushroom tea, a favorite of the Tizirian empire."
-	icon_state = "teabottle_grey"
+	icon_state = "tea_bottle_grey"
 	list_reagents = list(/datum/reagent/consumable/mushroom_tea = 40)
 	custom_price = PAYCHECK_LOWER * 3
 
