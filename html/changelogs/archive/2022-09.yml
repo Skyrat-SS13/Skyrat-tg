@@ -672,3 +672,60 @@
   - bugfix: 'Icebox: fixed several cameras lacking their respective network values'
   - bugfix: 'Icebox: restored a lost Interrogation Room Monitor outside of Interrogation
       Room'
+2022-09-18:
+  GoldenAlpharex:
+  - bugfix: Molds can no longer spread their foam across the entirety of space, and
+      have a much more manageable radius instead.
+  Paxilmaniac:
+  - balance: Due to lawsuits over the similarities in design between the CMG and C20r,
+      the internal workings and round used in the CMG have been redesigned and re-issued
+      to all stations
+  - bugfix: Duplicate definitions of both .45 rubbers and magazine-less CMGs were
+      dealt with
+  - bugfix: A completely unused c20 subtype, also called the CMG, was gotten rid of
+      due to being completely unused
+  Pizzie11:
+  - rscadd: Added a unique service department version of the Plumbing Constructor,
+      the Service Plumbing Constructor. This can be fabricated in the service protolate.
+  - rscadd: 'New plumbing machines have been added for the Service Plumbing Constructor:
+      Soda Synthesizer, Booze Synthesizer, Mixing Chamber, and Output Tap.'
+  - rscadd: The Chemical Receiver board can now be printed at the service protolathe
+  ShizCalev:
+  - bugfix: Fixed voice of god breaking if someone resisted your command.
+  - admin: Debugging / admin omnitool now stabs eyes when in screwdriver mode.
+  - balance: Things inside disposals pipes are now protected from weather (ashstorms,
+      radstorms, ect.)
+  - admin: Setting machine_stat flags on machinery will now call the set_machine_stat
+      proc so things update properly lol.
+  - bugfix: Fixed a runtime when deconstructing newscaster w/ a wrench.
+  - bugfix: Fixed not being able to scoop up holochassis pAIs.
+  SkyratBot:
+  - bugfix: USB ports for circuits now work again
+  - bugfix: You can now pin medals to buttondown shirts.
+  - code_imp: Fixes gas mixer node concentration logging.
+  - bugfix: Fix plasma cutter or guns that burn not being able to ignite plasma
+  - balance: Change plasma cutters damage type to BURN and this will cause reduced
+      damage to mining mobs
+  - balance: Explodable stuff now detonates when hit by a BURN projectile.
+  - admin: Prisoners returning from the gulag as well as reclaiming their items from
+      the gulag item reclaimer are now both logged.
+  - bugfix: Fixes water vapour not consuming water vapour when freezing turfs.
+  - code_imp: Turfs will not sleep during an ongoing gas reaction, and excited groups
+      won't dismantle if one of their turfs are reacting.
+  - bugfix: CTF Instagib mode can now be toggled without breaking CTF
+  - admin: Admins can now toggle CTF Instagib mode while CTF is not running
+  - bugfix: ghost follow links no longer appear above binary messages using light
+      theme
+  - balance: Radiation range from tritium combustion and proto-nitrate tritium to
+      hydrogen conversion increased by 3 times.
+  - balance: Sets the radiation threshold for all gas reactions that release radiation
+      to 0.3
+  Zergspower:
+  - bugfix: XenoArch bags will now pickup on walk-over once again
+  dopamiin:
+  - bugfix: several foods now taste like what they should
+  itseasytosee:
+  - code_imp: Being able to be flashed from all sides is now based on or not you have
+      a negative flash resistance, rather than randomly applying to specific pairs
+      of eyes.
+  - bugfix: Skeletons can drink milk again, sorry about that.
