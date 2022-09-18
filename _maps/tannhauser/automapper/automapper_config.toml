@@ -1,0 +1,83 @@
+# Automapper configuration
+# [templates.example_template] - example_template should be replaced with the name of your map template.
+# directory - The direct path to our map files.
+# map_files - These are the names of the map files, including the extension, that will be loaded. Supports multiple for randomness.
+# required_map - This is the name of the required map that needs to be loaded in order for this template to load.
+# coordinates - The coordinates of the map template placement. (X, Y, Z). PLEASE NOTE: The Z coordinate is the same as would be shown in SDMM. NOT IN GAME.
+# leave it at 1 if it is not a multi-z map. It is relative to the map file Z, not the one loaded in game.
+# trait_name - The name of the Z level trait that will be used to determine what Z level we use.
+# Traits - Station (for station relatied edits), CentCom (for edits on the CC map), Mining (for edits on Lavaland)
+# More can be found in code\__DEFINES\maps.dm
+
+# CC Shuttle Dock - This is so we can fit the larger Cargo shuttle added by mortisdeum
+[templates.centcom_cargo_dock]
+map_files = ["centcom_cargo_dock.dmm"]
+directory = "_maps/tannhauser/automapper/templates/centcom/"
+required_map = "builtin"
+coordinates = [152, 101, 1]
+trait_name = "CentCom"
+
+# CC Arrivals Dock - This is so we can fit the larger arrivals shuttle added by mortisdeum
+[templates.centcom_arrivals_dock]
+map_files = ["centcom_arrivals_dock.dmm"]
+directory = "_maps/tannhauser/automapper/templates/centcom/"
+required_map = "builtin"
+coordinates = [28, 198, 2]
+trait_name = "CentCom"
+
+# METASTATION MAP TEMPLATES
+# Metastation Arrivals
+[templates.metastaton_arrivals]
+map_files = ["metastation_arrivals.dmm"]
+directory = "_maps/tannhauser/automapper/templates/metastation/"
+required_map = "MetaStation.dmm"
+coordinates = [20, 107, 1]
+trait_name = "Station"
+
+# DELTASTATION MAP EDITS
+# Deltastation Arrivals
+[templates.deltastation_arrivals]
+map_files = ["deltastation_arrivals.dmm"]
+directory = "_maps/tannhauser/automapper/templates/deltastation/"
+required_map = "DeltaStation2.dmm"
+coordinates = [126, 195, 1]
+trait_name = "Station"
+
+
+# ICEBOX MAP EDITS
+# Icebox Arrivals
+[templates.icebox_arrivals]
+map_files = ["icebox_arrivals.dmm"]
+directory = "_maps/tannhauser/automapper/templates/icebox/"
+required_map = "IceBoxStation.dmm"
+coordinates = [10, 116, 3]
+trait_name = "Station"
+
+# KILOSTATION MAP EDITS
+# Kilostation Arrivals
+[templates.kilostation_arrivals]
+map_files = ["kilostation_arrivals.dmm"]
+directory = "_maps/tannhauser/automapper/templates/kilostation/"
+required_map = "KiloStation.dmm"
+coordinates = [151, 80, 1]
+trait_name = "Station"
+
+
+# TRAMSTATION MAP EDITS
+# Tramstation Arrivals
+[templates.tramstation_arrivals]
+map_files = ["tramstation_arrivals.dmm"]
+directory = "_maps/tannhauser/automapper/templates/tramstation/"
+required_map = "tramstation.dmm"
+coordinates = [14, 96, 2]
+trait_name = "Station"
+
+
+# BLUESHIFT MAP EDITS
+# BlueShift Arrivals
+[templates.blueshift_arrivals]
+map_files = ["blueshift_arrivals.dmm"]
+directory = "_maps/tannhauser/automapper/templates/blueshift/"
+required_map = "BlueShift_lower.dmm"
+coordinates = [154, 87, 1]
+trait_name = "Station"

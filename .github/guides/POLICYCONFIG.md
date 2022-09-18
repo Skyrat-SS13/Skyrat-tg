@@ -3,7 +3,7 @@ Welcome to this short guide to the POLICY config mechanism.
 You are probably reading this guide because you have been informed your antagonist or ghost role needs to support policy configuration.
 
 ## Requirements
-It is a requirement of /tg/station development that all ghost roles, antags, minor antags and event mobs of any kind must support the policy system when implemented.
+It is a requirement of Tannhauser Gate development that all ghost roles, antags, minor antags and event mobs of any kind must support the policy system when implemented.
 
 ## What is policy configuration
 Policy configuration is a json file that the administrators of a server can edit, which contains a dictionary of keywords -> string message.

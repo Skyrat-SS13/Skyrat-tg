@@ -21,6 +21,11 @@
 		#include "map_files\VoidRaptor\VoidRaptor.dmm"
 		// SKYRAT EDIT END
 
+		//Tannhauser-Gate Maps
+		#include "map_files\PubbyStation\PubbyStation.dmm"
+		#include "map_files\AlphaStation\alphastation_lower.dmm"
+		#include "map_files\AlphaStation\alphastation_upper.dmm"
+
 		#ifdef CIBUILDING
 			#include "templates.dm"
 		#endif

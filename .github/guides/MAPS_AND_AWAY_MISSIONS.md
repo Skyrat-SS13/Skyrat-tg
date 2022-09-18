@@ -1,6 +1,9 @@
 ## MAPS
 
-/tg/station currently has five station maps in rotation.
+Tannhauser Gate is currently comes equipped with five maps.
+
+* [BoxStation (default)](https://tgstation13.org/wiki/Boxstation)
+* [MetaStation](https://tgstation13.org/wiki/MetaStation)
 * [DeltaStation](https://tgstation13.org/wiki/DeltaStation)
 * [IceBoxStation](https://tgstation13.org/wiki/IceboxStation)
 * [KiloStation](https://tgstation13.org/wiki/KiloStation)
@@ -31,7 +34,7 @@ Both of the above programs have native TGM support, which is mandatory for all m
 
 ## AWAY MISSIONS
 
-/tg/station supports loading away missions however they are disabled by default.
+Tannhauser Gate supports loading away missions however they are disabled by default.
 
 Map files for away missions are located in the `_maps/RandomZLevels` directory. Each away mission includes it's own code definitions located in `/code/modules/awaymissions/mission_code`. These files must be included and compiled with the server beforehand otherwise the server will crash upon trying to load away missions that lack their code.
 

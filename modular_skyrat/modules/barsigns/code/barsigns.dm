@@ -116,9 +116,11 @@
 	icon = "vault13"
 	desc = "Coincidence is intentional."
 
+/*
 /datum/barsign/thehive
 	name = "The Hive"
 	icon = "thehive"
+*/
 
 /datum/barsign/cantina
 	name = "Chalmun's Cantina"
@@ -224,4 +226,3 @@
 	name = "The Hungry Bug"
 	icon = "hungrybug"
 	desc = "Stop by and enjoy some of the Hole's famous gyoza!"
-
