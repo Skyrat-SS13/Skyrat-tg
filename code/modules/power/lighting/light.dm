@@ -314,7 +314,9 @@
 	//SKYRAT EDIT END
 
 
+
 // attack with item - insert light (if right type), otherwise try to break the light
+
 /obj/machinery/light/attackby(obj/item/tool, mob/living/user, params)
 
 	//Light replacer code
