@@ -438,7 +438,7 @@
 	else
 		..()
 
-/mob/living/carbon/human/can_wear_condom()
+/mob/living/carbon/human/is_wearing_condom()
 	. = ..()
 	if(.)
 		return TRUE

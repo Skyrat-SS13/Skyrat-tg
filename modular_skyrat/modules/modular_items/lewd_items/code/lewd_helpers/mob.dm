@@ -20,5 +20,5 @@
 
 
 /// Proc for condoms. Need to prevent cum appearing on the floor.
-/mob/proc/can_wear_condom()
+/mob/proc/is_wearing_condom()
 	return FALSE
