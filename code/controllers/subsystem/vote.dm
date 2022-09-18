@@ -94,7 +94,8 @@ SUBSYSTEM_DEF(vote)
 	to_chat(world, span_infoplain(vote_font("\n[to_display]")))
 
 	// Finally, doing any effects on vote completion
-	current_vote.finalize_vote(final_winner)
+	if (final_winner) // if no one voted final_winner will be null
+		current_vote.finalize_vote(final_winner)
 
 /datum/controller/subsystem/vote/proc/submit_vote(mob/voter, their_vote)
 	if(!current_vote)
@@ -238,6 +239,7 @@ SUBSYSTEM_DEF(vote)
 			"name" = vote_name,
 			"canBeInitiated" = vote.can_be_initiated(forced = is_lower_admin),
 			"config" = vote.is_config_enabled(),
+			"message" = vote.message,
 		)
 
 		if(vote == current_vote)
