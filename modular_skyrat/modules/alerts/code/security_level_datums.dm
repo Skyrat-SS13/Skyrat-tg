@@ -68,5 +68,3 @@
 	elevating_to_configuration_key = /datum/config_entry/string/alert_gamma
 	shuttle_call_time_mod = 0.25
 	sound = 'modular_skyrat/modules/alerts/sound/security_levels/gamma_alert.ogg'
-	looping_sound = 'modular_skyrat/modules/alerts/sound/misc/alarm_delta.ogg'
-	looping_sound_interval = 8 SECONDS
