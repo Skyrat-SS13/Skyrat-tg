@@ -7,6 +7,10 @@
 #define AROUSAL_AUTO_CLIMAX_THRESHOLD 90
 #define AROUSAL_LIMIT 100
 
+#define REQUIRE_GENITAL_EXPOSED 1
+#define REQUIRE_GENITAL_UNEXPOSED 2
+#define REQUIRE_GENITAL_ANY 3
+
 #define TRAIT_MASOCHISM "masochism"
 #define TRAIT_SADISM "sadism"
 #define TRAIT_NEVERBONER "neverboner"
@@ -21,6 +25,8 @@
 #define LEWDCHEM_TRAIT "lewdchem"
 
 #define STRAPON_TRAIT "strapon"
+
+#define CONDOM_BROKEN "broken"
 
 #define BREAST_SIZE_FLATCHESTED "Flatchested"
 #define BREAST_SIZE_A "A"

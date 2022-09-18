@@ -1,8 +1,3 @@
-#define REQUIRE_EXPOSED 1
-#define REQUIRE_UNEXPOSED 2
-#define REQUIRE_ANY 3
-
-
 /mob/living/carbon/human
 	var/arousal = 0
 	var/pleasure = 0
@@ -53,20 +48,20 @@
 /mob/living/carbon/human/proc/is_head_uncovered()
     return (head?.body_parts_covered & HEAD)
 
-/mob/living/carbon/human/proc/has_penis(required_state = REQUIRE_ANY)
+/mob/living/carbon/human/proc/has_penis(required_state = REQUIRE_GENITAL_ANY)
 	if(issilicon(src) && has_penis)
 		return TRUE
 	var/obj/item/organ/external/genital/peepee = getorganslot(ORGAN_SLOT_PENIS)
 	if(peepee)
 		switch(required_state)
-			if(REQUIRE_ANY)
+			if(REQUIRE_GENITAL_ANY)
 				return TRUE
-			if(REQUIRE_EXPOSED)
+			if(REQUIRE_GENITAL_EXPOSED)
 				if(peepee.visibility_preference == GENITAL_ALWAYS_SHOW || is_bottomless())
 					return TRUE
 				else
 					return FALSE
-			if(REQUIRE_UNEXPOSED)
+			if(REQUIRE_GENITAL_UNEXPOSED)
 				if(peepee.visibility_preference != GENITAL_ALWAYS_SHOW && !is_bottomless())
 					return TRUE
 				else
@@ -75,18 +70,18 @@
 				return TRUE
 	return FALSE
 
-/mob/living/carbon/human/proc/has_balls(required_state = REQUIRE_ANY)
+/mob/living/carbon/human/proc/has_balls(required_state = REQUIRE_GENITAL_ANY)
 	var/obj/item/organ/external/genital/peepee = getorganslot(ORGAN_SLOT_TESTICLES)
 	if(peepee)
 		switch(required_state)
-			if(REQUIRE_ANY)
+			if(REQUIRE_GENITAL_ANY)
 				return TRUE
-			if(REQUIRE_EXPOSED)
+			if(REQUIRE_GENITAL_EXPOSED)
 				if(peepee.visibility_preference == GENITAL_ALWAYS_SHOW || is_bottomless())
 					return TRUE
 				else
 					return FALSE
-			if(REQUIRE_UNEXPOSED)
+			if(REQUIRE_GENITAL_UNEXPOSED)
 				if(peepee.visibility_preference != GENITAL_ALWAYS_SHOW && !is_bottomless())
 					return TRUE
 				else
@@ -95,20 +90,20 @@
 				return TRUE
 	return FALSE
 
-/mob/living/carbon/human/proc/has_vagina(required_state = REQUIRE_ANY)
+/mob/living/carbon/human/proc/has_vagina(required_state = REQUIRE_GENITAL_ANY)
 	if(issilicon(src) && has_vagina)
 		return TRUE
 	var/obj/item/organ/external/genital/peepee = getorganslot(ORGAN_SLOT_VAGINA)
 	if(peepee)
 		switch(required_state)
-			if(REQUIRE_ANY)
+			if(REQUIRE_GENITAL_ANY)
 				return TRUE
-			if(REQUIRE_EXPOSED)
+			if(REQUIRE_GENITAL_EXPOSED)
 				if(peepee.visibility_preference == GENITAL_ALWAYS_SHOW || is_bottomless())
 					return TRUE
 				else
 					return FALSE
-			if(REQUIRE_UNEXPOSED)
+			if(REQUIRE_GENITAL_UNEXPOSED)
 				if(peepee.visibility_preference != GENITAL_ALWAYS_SHOW && !is_bottomless())
 					return TRUE
 				else
@@ -117,18 +112,18 @@
 				return TRUE
 	return FALSE
 
-/mob/living/carbon/human/proc/has_breasts(required_state = REQUIRE_ANY)
+/mob/living/carbon/human/proc/has_breasts(required_state = REQUIRE_GENITAL_ANY)
 	var/obj/item/organ/external/genital/peepee = getorganslot(ORGAN_SLOT_BREASTS)
 	if(peepee)
 		switch(required_state)
-			if(REQUIRE_ANY)
+			if(REQUIRE_GENITAL_ANY)
 				return TRUE
-			if(REQUIRE_EXPOSED)
+			if(REQUIRE_GENITAL_EXPOSED)
 				if(peepee.visibility_preference == GENITAL_ALWAYS_SHOW || is_topless())
 					return TRUE
 				else
 					return FALSE
-			if(REQUIRE_UNEXPOSED)
+			if(REQUIRE_GENITAL_UNEXPOSED)
 				if(peepee.visibility_preference != GENITAL_ALWAYS_SHOW && !is_topless())
 					return TRUE
 				else
@@ -137,20 +132,20 @@
 				return TRUE
 	return FALSE
 
-/mob/living/carbon/human/proc/has_anus(required_state = REQUIRE_ANY)
+/mob/living/carbon/human/proc/has_anus(required_state = REQUIRE_GENITAL_ANY)
 	if(issilicon(src))
 		return TRUE
 	var/obj/item/organ/external/genital/peepee = getorganslot(ORGAN_SLOT_ANUS)
 	if(peepee)
 		switch(required_state)
-			if(REQUIRE_ANY)
+			if(REQUIRE_GENITAL_ANY)
 				return TRUE
-			if(REQUIRE_EXPOSED)
+			if(REQUIRE_GENITAL_EXPOSED)
 				if(peepee.visibility_preference == GENITAL_ALWAYS_SHOW || is_bottomless())
 					return TRUE
 				else
 					return FALSE
-			if(REQUIRE_UNEXPOSED)
+			if(REQUIRE_GENITAL_UNEXPOSED)
 				if(peepee.visibility_preference != GENITAL_ALWAYS_SHOW && !is_bottomless())
 					return TRUE
 				else
@@ -158,7 +153,7 @@
 			else
 				return TRUE
 
-/mob/living/carbon/human/proc/has_arms(required_state = REQUIRE_ANY)
+/mob/living/carbon/human/proc/has_arms(required_state = REQUIRE_GENITAL_ANY)
 	var/hand_count = 0
 	var/covered = 0
 	var/is_covered = FALSE
@@ -172,14 +167,14 @@
 	if(covered & HANDS)
 		is_covered = TRUE
 	switch(required_state)
-		if(REQUIRE_ANY)
+		if(REQUIRE_GENITAL_ANY)
 			return hand_count
-		if(REQUIRE_EXPOSED)
+		if(REQUIRE_GENITAL_EXPOSED)
 			if(is_covered)
 				return FALSE
 			else
 				return hand_count
-		if(REQUIRE_UNEXPOSED)
+		if(REQUIRE_GENITAL_UNEXPOSED)
 			if(!is_covered)
 				return FALSE
 			else
@@ -187,7 +182,7 @@
 		else
 			return hand_count
 
-/mob/living/carbon/human/proc/has_feet(required_state = REQUIRE_ANY)
+/mob/living/carbon/human/proc/has_feet(required_state = REQUIRE_GENITAL_ANY)
 	var/feet_count = 0
 	var/covered = 0
 	var/is_covered = FALSE
@@ -200,14 +195,14 @@
 	if(covered)
 		is_covered = TRUE
 	switch(required_state)
-		if(REQUIRE_ANY)
+		if(REQUIRE_GENITAL_ANY)
 			return feet_count
-		if(REQUIRE_EXPOSED)
+		if(REQUIRE_GENITAL_EXPOSED)
 			if(is_covered)
 				return FALSE
 			else
 				return feet_count
-		if(REQUIRE_UNEXPOSED)
+		if(REQUIRE_GENITAL_UNEXPOSED)
 			if(!is_covered)
 				return FALSE
 			else
@@ -216,21 +211,21 @@
 			return feet_count
 
 /mob/living/carbon/human/proc/get_num_feet()
-	return has_feet(REQUIRE_ANY)
+	return has_feet(REQUIRE_GENITAL_ANY)
 
 // Weird procs go here
-/mob/living/carbon/human/proc/has_ears(required_state = REQUIRE_ANY)
+/mob/living/carbon/human/proc/has_ears(required_state = REQUIRE_GENITAL_ANY)
 	var/obj/item/organ/peepee = getorganslot(ORGAN_SLOT_EARS)
 	if(peepee)
 		switch(required_state)
-			if(REQUIRE_ANY)
+			if(REQUIRE_GENITAL_ANY)
 				return TRUE
-			if(REQUIRE_EXPOSED)
+			if(REQUIRE_GENITAL_EXPOSED)
 				if(get_item_by_slot(ITEM_SLOT_EARS))
 					return FALSE
 				else
 					return TRUE
-			if(REQUIRE_UNEXPOSED)
+			if(REQUIRE_GENITAL_UNEXPOSED)
 				if(!get_item_by_slot(ITEM_SLOT_EARS))
 					return FALSE
 				else
@@ -239,18 +234,18 @@
 				return TRUE
 	return FALSE
 
-/mob/living/carbon/human/proc/has_earsockets(required_state = REQUIRE_ANY)
+/mob/living/carbon/human/proc/has_earsockets(required_state = REQUIRE_GENITAL_ANY)
 	var/obj/item/organ/peepee = getorganslot(ORGAN_SLOT_EARS)
 	if(!peepee)
 		switch(required_state)
-			if(REQUIRE_ANY)
+			if(REQUIRE_GENITAL_ANY)
 				return TRUE
-			if(REQUIRE_EXPOSED)
+			if(REQUIRE_GENITAL_EXPOSED)
 				if(get_item_by_slot(ITEM_SLOT_EARS))
 					return FALSE
 				else
 					return TRUE
-			if(REQUIRE_UNEXPOSED)
+			if(REQUIRE_GENITAL_UNEXPOSED)
 				if(!get_item_by_slot(ITEM_SLOT_EARS))
 					return FALSE
 				else
@@ -259,18 +254,18 @@
 				return TRUE
 	return FALSE
 
-/mob/living/carbon/human/proc/has_eyes(required_state = REQUIRE_ANY)
+/mob/living/carbon/human/proc/has_eyes(required_state = REQUIRE_GENITAL_ANY)
 	var/obj/item/organ/peepee = getorganslot(ORGAN_SLOT_EYES)
 	if(peepee)
 		switch(required_state)
-			if(REQUIRE_ANY)
+			if(REQUIRE_GENITAL_ANY)
 				return TRUE
-			if(REQUIRE_EXPOSED)
+			if(REQUIRE_GENITAL_EXPOSED)
 				if(get_item_by_slot(ITEM_SLOT_EYES))
 					return FALSE
 				else
 					return TRUE
-			if(REQUIRE_UNEXPOSED)
+			if(REQUIRE_GENITAL_UNEXPOSED)
 				if(!get_item_by_slot(ITEM_SLOT_EYES))
 					return FALSE
 				else
@@ -279,18 +274,18 @@
 				return TRUE
 	return FALSE
 
-/mob/living/carbon/human/proc/has_eyesockets(required_state = REQUIRE_ANY)
+/mob/living/carbon/human/proc/has_eyesockets(required_state = REQUIRE_GENITAL_ANY)
 	var/obj/item/organ/peepee = getorganslot(ORGAN_SLOT_EYES)
 	if(!peepee)
 		switch(required_state)
-			if(REQUIRE_ANY)
+			if(REQUIRE_GENITAL_ANY)
 				return TRUE
-			if(REQUIRE_EXPOSED)
+			if(REQUIRE_GENITAL_EXPOSED)
 				if(get_item_by_slot(ITEM_SLOT_EYES))
 					return FALSE
 				else
 					return TRUE
-			if(REQUIRE_UNEXPOSED)
+			if(REQUIRE_GENITAL_UNEXPOSED)
 				if(!get_item_by_slot(ITEM_SLOT_EYES))
 					return FALSE
 				else
@@ -443,6 +438,9 @@
 	if(.)
 		return TRUE
 	if(penis != null && istype(penis, /obj/item/clothing/sextoy/condom))
+		var/obj/item/clothing/sextoy/condom/condom
+		if(condom.condom_state == CONDOM_BROKEN)
+			return FALSE
 		return TRUE
 
 // For handling things that don't already have handcuff handlers.
@@ -450,7 +448,3 @@
 	if(wear_suit && istype(wear_suit, /obj/item/clothing/suit/straight_jacket/kinky_sleepbag))
 		return FALSE
 	..()
-
-#undef REQUIRE_EXPOSED
-#undef REQUIRE_UNEXPOSED
-#undef REQUIRE_ANY
