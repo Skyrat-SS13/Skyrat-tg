@@ -9,19 +9,19 @@
 
 #define RADIAL_UI 'modular_skyrat/modules/deployables/icons/deployable_indicator.dmi'
 
-/// The scale modifier for the undeployed bay existing in the game-world
+///	The scale modifier for the undeployed bay existing in the game-world
 #define INWORLD_SCALE 0.75
-/// BS cell capacity, a potato battery would still outplay this
+///	BS cell capacity, a potato battery would still outplay this
 #define MAX_POWER 40000
-/// Amount of power per tick pumped/drained
+///	Amount of power per tick pumped/drained
 #define TRANSFER_INC 1000
-/// How quick does it (un)fold? Warning: this tries to match an animation
+///	How quick does it (un)fold? Warning: this tries to match an animation
 #define SETUP_TIME 2 SECONDS
 ///	Maximum amount of tile by tile the power ventilation vapor can cover
 #define VENT_MAX_RANGE 6
-/// Minimum power storage requiremed in order to explode on destruction
+///	Minimum power storage requiremed in order to explode on destruction
 #define EXPL_MIN_REQ 5000
-/// Explosion capacity will be its power storage divided by this define
+///	Explosion capacity will be its power storage divided by this define
 #define EXPL_CHARGE_MOD 12500
 
 //	Automapper datums
@@ -70,15 +70,15 @@
 	flags_1 = NODECONSTRUCT_1
 
 	bolts = FALSE
-	/// The cyborg currently buckled to the cyborg_control_bay
+	///	The cyborg currently buckled to the cyborg_control_bay
 	var/mob/living/silicon/robot/buckled_cyborg
-	/// If the cyborg_control_bay is deployed or not
+	///	If the cyborg_control_bay is deployed or not
 	var/deployed = TRUE
-	/// Wether or not the machine is locking the cyborg
+	///	Wether or not the machine is locking the cyborg
 	var/locked = FALSE
-	/// To distinguish if the machine is pumping or draining
+	///	To distinguish if the machine is pumping or draining
 	var/enabled_function = NONE
-	/// Amount of power drained from the cyborg, which we are now storing
+	///	Amount of power drained from the cyborg, which we are now storing
 	var/power_storage = 0
 
 /obj/structure/bed/cyborg_control_bay/Initialize(mapload)
@@ -158,7 +158,7 @@
 /* 	If the bay is deployed and has a target, alt+clicking reveals its radial controls.
 	Locking and unlocking functions like the RD's console, but can't keep locked without staying active.
 	Draining and pumping charges and uncharges the target's cell until at capacity.
-	When no target is found alt+clicking begins undeployment of the bay. */
+	When no target is found alt+clicking begins undeployment of the bay.	*/
 /obj/structure/bed/cyborg_control_bay/proc/alt_clicked_radial(mob/living/clicker)
 	var/list/choices = list()
 
@@ -287,7 +287,7 @@
 	if(!buckled_cyborg)
 		return
 
-	/// The cyborg's current cell
+	///	The cyborg's current cell
 	var/obj/item/stock_parts/cell/cell = buckled_cyborg.cell
 	if(!cell)
 		return
@@ -411,7 +411,7 @@
 	return ..()
 
 //	Pixel y offsets to render buckled targets
-/// For Roomba cyborgs
+///	For Roomba cyborgs
 #define SMALL_OFFSET 12
 ///	For default cyborgs
 #define NORMAL_OFFSET 16
@@ -502,7 +502,7 @@
 	return ..()
 
 /obj/structure/bed/cyborg_control_bay/user_unbuckle_mob(mob/living/buckled_mob, mob/user)
-	/// How long it will take for the target to be unbuckled depending on their status
+	///	How long it will take for the target to be unbuckled depending on their status
 	var/unbuckle_timer = 6 SECONDS
 
 	if(buckled_mob != user)
@@ -553,7 +553,7 @@
 	custom_price = PAYCHECK_CREW * 3.3 // Too expensive for round-start, but not crippling to buy later
 	det_time = 3 SECONDS
 	display_timer = FALSE
-	/// Amount of power drained from the cyborg, from when we were still deployed
+	///	Amount of power drained from the cyborg, from when we were still deployed
 	var/power_storage = 0
 
 /obj/item/grenade/cyborg_control_bay_undeployed/Initialize(mapload)
@@ -605,7 +605,7 @@
 
 /*	A player may discharge an undeployed bay safely of its stored charge by alt+clicking it
 	Doing so will make a fake cloud of water vapor of a size relative to the charge it held
-	If the bay was deployed and hit by an EMP, it will force this ventilation effect.*/
+	If the bay was deployed and hit by an EMP, it will force this ventilation effect.	*/
 /obj/item/grenade/cyborg_control_bay_undeployed/proc/check_alt_clicked_grenade(datum/source, mob/living/clicker)
 	SIGNAL_HANDLER
 
@@ -673,7 +673,7 @@
 	robust_searching = TRUE
 	loot = list(/obj/effect/decal/cleanable/robot_debris)
 	flip_on_death = TRUE
-	/// Transferred power storage from previous state, which will decide how big our death explosion will be
+	///	Transferred power storage from previous state, which will decide how big our death explosion will be
 	var/power_storage
 
 /mob/living/simple_animal/hostile/cyborg_control_bay/Initialize(mapload)
