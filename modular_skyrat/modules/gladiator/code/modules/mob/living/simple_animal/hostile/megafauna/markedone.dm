@@ -326,7 +326,7 @@
 		
 /mob/living/simple_animal/hostile/megafauna/gladiator/proc/animate_speen()
 	animate(src, color = initial(color), 3)
-	addtimer(CALLBACK(src, .proc/stop_speen), 3 SECONDS)
+	addtimer(CALLBACK(src, .proc/stop_speen), 0.5 SECONDS)
 	
 /mob/living/simple_animal/hostile/megafauna/gladiator/proc/stop_speen()
 	spinning = FALSE
