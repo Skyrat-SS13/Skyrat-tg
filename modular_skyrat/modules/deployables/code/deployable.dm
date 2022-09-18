@@ -19,13 +19,12 @@
 #define SETUP_TIME 2 SECONDS
 ///	Maximum amount of tile by tile the power ventilation vapor can cover
 #define VENT_MAX_RANGE 6
-
 /// Minimum power storage requiremed in order to explode on destruction
 #define EXPL_MIN_REQ 5000
 /// Explosion capacity will be its power storage divided by this define
 #define EXPL_CHARGE_MOD 12500
 
-// Automapper
+//	Automapper datums
 /datum/area_spawn/cyborg_control_bay
 	target_areas = list(/area/station/security/lockers, /area/station/security/office)
 	desired_atom = /obj/item/grenade/cyborg_control_bay_undeployed
@@ -39,7 +38,7 @@
 	amount_to_spawn = 2
 	mode = AREA_SPAWN_MODE_OPEN
 
-// Research
+//	Research node
 /datum/techweb_node/cyborg_security
 	id = "cyborg_security"
 	display_name = "Silicon Malfunction Solutions"
@@ -60,7 +59,7 @@
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY | DEPARTMENT_BITFLAG_SCIENCE
 	category = list(RND_CATEGORY_EQUIPMENT)
 
-// The item
+//	The control bay in its deployed state
 /obj/structure/bed/cyborg_control_bay
 	name = "cyborg control-bay"
 	desc = "A nimble device with an electric port suited to connect with station-approved cyborgs. Once attached the control-bay supersedes the cyborg's OS hierarchy to allow for maintenance."
@@ -94,17 +93,18 @@
 		unlock()
 		buckled_cyborg = null
 
-/obj/structure/bed/cyborg_control_bay/update_overlays()
-	. = ..()
-	. += emissive_appearance(icon, "[icon_state]-em", alpha = src.alpha)
-
+//	A destruction call to explode if the bay held a decent amount of power
 /obj/structure/bed/cyborg_control_bay/atom_destruction(damage_flag)
 	var/turf/debris = get_turf(src)
-	if(power_storage && power_storage >= EXPL_MIN_REQ)
+	if(power_storage >= EXPL_MIN_REQ)
 		explosion(src, -1, (power_storage / EXPL_CHARGE_MOD), (power_storage / EXPL_CHARGE_MOD), (power_storage / EXPL_CHARGE_MOD), -1)
 
 	new /obj/effect/decal/cleanable/robot_debris(debris)
 	return ..()
+
+/obj/structure/bed/cyborg_control_bay/update_overlays()
+	. = ..()
+	. += emissive_appearance(icon, "[icon_state]-em", alpha = src.alpha)
 
 /obj/structure/bed/cyborg_control_bay/examine(mob/user)
 	. = ..()
@@ -120,6 +120,7 @@
 	if(locked)
 		. += span_warning("Its locking mode indicator is currently lit!")
 
+//	Emagging undeploys and becomes a hostile mob on next deploy
 /obj/structure/bed/cyborg_control_bay/emag_act(mob/clicker)
 	if(obj_flags & EMAGGED)
 		return
@@ -130,40 +131,21 @@
 	do_sparks(2, TRUE, src)
 	obj_flags |= EMAGGED
 
+//	If EMPd, turn off and flag accordingly
+/obj/structure/bed/cyborg_control_bay/emp_act(severity)
+	. = ..()
+	if (. & EMP_PROTECT_SELF)
+		return
+
+	obj_flags |= EMPED
+	undeploy()
+
 /obj/structure/bed/cyborg_control_bay/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change = TRUE)
 	. = ..()
 	if(has_gravity())
 		playsound(src, 'modular_skyrat/master_files/sound/effects/robot_step.ogg', 100, TRUE)
 
-/// Proc that is called once the bay's undeployed version calls detonate()
-/obj/structure/bed/cyborg_control_bay/proc/deploy()
-	if(deployed)
-		return
-	name = "deploying control-bay"
-
-	balloon_alert_to_viewers("unfolding...")
-	playsound(src, 'modular_skyrat/master_files/sound/effects/robot_trap.ogg', 25, TRUE, falloff_exponent = 10)
-	addtimer(CALLBACK(src, .proc/finish_deploy), SETUP_TIME)
-	flick("deploying", src)
-
-/// Proc to finalize deployement, being called after SETUP_TIME's timer and its animation flick()
-/obj/structure/bed/cyborg_control_bay/proc/finish_deploy()
-	name = "cyborg control-bay"
-	icon_state = "up"
-	deployed = TRUE
-
-	if(obj_flags & EMAGGED)
-		var/mob/living/simple_animal/hostile/cyborg_control_bay/cyborg_control_bay = new (get_turf(src))
-		cyborg_control_bay.power_storage = power_storage // Gotta keep that boom
-		cyborg_control_bay.check_smoke() // Telegraph how bigly we explode on death
-		cyborg_control_bay.say("ERROR!")
-		cyborg_control_bay.emote("exclaim")
-		qdel(src)
-	else
-		balloon_alert_to_viewers("deployed")
-		playsound(src, 'sound/machines/ping.ogg', 25, FALSE, falloff_exponent = 10)
-
-/// Radial menu for the deployed model's function controls
+//	Radial menu for the deployed model's function controls
 /obj/structure/bed/cyborg_control_bay/proc/check_alt_clicked_radial(datum/source, mob/living/clicker)
 	SIGNAL_HANDLER
 
@@ -173,6 +155,10 @@
 	INVOKE_ASYNC(src, .proc/alt_clicked_radial, clicker)
 	return COMPONENT_CANCEL_CLICK_ALT
 
+/* 	If the bay is deployed and has a target, alt+clicking reveals its radial controls.
+	Locking and unlocking functions like the RD's console, but can't keep locked without staying active.
+	Draining and pumping charges and uncharges the target's cell until at capacity.
+	When no target is found alt+clicking begins undeployment of the bay. */
 /obj/structure/bed/cyborg_control_bay/proc/alt_clicked_radial(mob/living/clicker)
 	var/list/choices = list()
 
@@ -232,7 +218,71 @@
 
 	return TRUE
 
-/// Functions for the radial choices
+//	Proc that is called once the bay's undeployed version calls detonate()
+/obj/structure/bed/cyborg_control_bay/proc/deploy()
+	if(deployed)
+		return
+	name = "deploying control-bay"
+
+	balloon_alert_to_viewers("unfolding...")
+	playsound(src, 'modular_skyrat/master_files/sound/effects/robot_trap.ogg', 25, TRUE, falloff_exponent = 10)
+	addtimer(CALLBACK(src, .proc/finish_deploy), SETUP_TIME)
+	flick("deploying", src)
+
+//	Proc to finalize deployement, being called after SETUP_TIME's timer and its animation flick()
+//	If emagged it will instead spawn itself as a hostile mob
+/obj/structure/bed/cyborg_control_bay/proc/finish_deploy()
+	name = "cyborg control-bay"
+	icon_state = "up"
+	deployed = TRUE
+
+	if(obj_flags & EMAGGED)
+		var/mob/living/simple_animal/hostile/cyborg_control_bay/cyborg_control_bay = new (get_turf(src))
+		cyborg_control_bay.power_storage = power_storage // Gotta keep that boom
+		cyborg_control_bay.check_smoke() // Telegraph how bigly we explode on death
+		cyborg_control_bay.say("ERROR!")
+		cyborg_control_bay.emote("exclaim")
+		qdel(src)
+	else
+		balloon_alert_to_viewers("deployed")
+		playsound(src, 'sound/machines/ping.ogg', 25, FALSE, falloff_exponent = 10)
+
+//	Proc that is called when the bay begins undeploying due to user controls, emag or EMP
+/obj/structure/bed/cyborg_control_bay/proc/undeploy()
+	if(!deployed)
+		return
+
+	if(locked)
+		unlock()
+
+	if(buckled_cyborg)
+		unbuckle_mob(buckled_cyborg, TRUE)
+
+	addtimer(CALLBACK(src, .proc/finish_undeploy), SETUP_TIME)
+	playsound(src, 'modular_skyrat/master_files/sound/effects/robot_trap.ogg', 25, TRUE, falloff_exponent = 10)
+	flick("undeploying", src)
+
+//	Proc to finalize undeployment, after SETUP_TIME and its animated flick()
+//	If EMPed the bay will force itself to discharge any stored power
+/obj/structure/bed/cyborg_control_bay/proc/finish_undeploy()
+	var/obj/item/grenade/cyborg_control_bay_undeployed/cyborg_control_bay = new (get_turf(src))
+
+	cyborg_control_bay.power_storage = power_storage
+	cyborg_control_bay.balloon_alert_to_viewers("reset")
+
+	if(obj_flags & EMAGGED)
+		cyborg_control_bay.obj_flags |= EMAGGED
+
+	if(obj_flags & EMPED)
+		cyborg_control_bay.obj_flags |= EMPED
+
+		if(cyborg_control_bay.power_storage)
+			cyborg_control_bay.alt_clicked_grenade()
+
+	qdel(src)
+
+//	Functions for the radial choices
+//	This gets called every tick if active
 /obj/structure/bed/cyborg_control_bay/process()
 	if(!buckled_cyborg)
 		return
@@ -248,6 +298,7 @@
 		if(PUMP_MODE)
 			pump_cell(cell)
 
+//	Uncharging target until either its cell is empty or the control bay is at max capacity
 /obj/structure/bed/cyborg_control_bay/proc/drain_cell(obj/item/stock_parts/cell/cell)
 	if(locked)
 		render_lock()
@@ -275,6 +326,7 @@
 	playsound(src, 'modular_skyrat/master_files/sound/effects/robot_drain.ogg', 25, FALSE, falloff_exponent = 10)
 	do_sparks(1, TRUE, buckled_cyborg)
 
+//	Charging target its cell until its at max capacity or the control bay is out of charge
 /obj/structure/bed/cyborg_control_bay/proc/pump_cell(obj/item/stock_parts/cell/cell)
 	if(locked)
 		render_lock()
@@ -307,10 +359,12 @@
 /obj/structure/bed/cyborg_control_bay/proc/pump_mode()
 	enabled_function = PUMP_MODE
 
+//	Called on command when active or automatically if a charging error occurs
 /obj/structure/bed/cyborg_control_bay/proc/stop_mode()
 	playsound(src, 'sound/machines/ping.ogg', 50, FALSE, falloff_exponent = 10)
 	enabled_function = NONE
 
+//	Proc for locking the target, useful for logging
 /obj/structure/bed/cyborg_control_bay/proc/lock(mob/living/clicker)
 	if(clicker)
 		log_combat(clicker, buckled_cyborg, "locked down cyborg")
@@ -321,6 +375,7 @@
 	locked = TRUE
 	render_lock()
 
+//	Unlock logging
 /obj/structure/bed/cyborg_control_bay/proc/unlock(mob/living/clicker)
 	if(clicker)
 		log_combat(clicker, buckled_cyborg, "released cyborg")
@@ -330,8 +385,9 @@
 	buckled_cyborg.regenerate_icons()
 	locked = FALSE
 
+//	Emergency lights which are otherwise shamefully unused
+//	Not all cyborg models have a sprite for this, but render fine
 /obj/structure/bed/cyborg_control_bay/proc/render_lock()
-	// Emergency lights which are otherwise shamefully unused
 	buckled_cyborg.cut_overlay(buckled_cyborg.eye_lights)
 	buckled_cyborg.eye_lights = new()
 	buckled_cyborg.eye_lights.icon_state = "[buckled_cyborg.model.cyborg_base_icon]_e_r"
@@ -339,53 +395,27 @@
 	buckled_cyborg.eye_lights.icon = buckled_cyborg.icon
 	buckled_cyborg.add_overlay(buckled_cyborg.eye_lights)
 
-/obj/structure/bed/cyborg_control_bay/proc/undeploy(mob/living/clicker)
-	if(!deployed)
-		return
-
-	if(locked)
-		unlock()
-
-	if(buckled_cyborg)
-		unbuckle_mob(buckled_cyborg, TRUE)
-
-	addtimer(CALLBACK(src, .proc/finish_undeploy), SETUP_TIME)
-	playsound(src, 'modular_skyrat/master_files/sound/effects/robot_trap.ogg', 25, TRUE, falloff_exponent = 10)
-	flick("undeploying", src)
-
-/obj/structure/bed/cyborg_control_bay/proc/finish_undeploy()
-	var/obj/item/grenade/cyborg_control_bay_undeployed/cyborg_control_bay = new (get_turf(src))
-
-	cyborg_control_bay.power_storage = power_storage
-	cyborg_control_bay.balloon_alert_to_viewers("reset")
-
-	if(obj_flags & EMAGGED)
-		cyborg_control_bay.obj_flags |= EMAGGED
-
-	if(obj_flags & EMPED)
-		cyborg_control_bay.obj_flags |= EMPED
-
-		if(cyborg_control_bay.power_storage)
-			cyborg_control_bay.alt_clicked_grenade()
-
-	qdel(src)
-
-// Buckle overwrites
+//	Buckle overwrites
+//	Cannot buckle if not deployed
 /obj/structure/bed/cyborg_control_bay/buckle_mob(mob/living/target, force, check_loc)
 	if(!deployed)
 		return
 
 	return ..()
 
+//	We are overwriting so regular unbuckling does not work
 /obj/structure/bed/cyborg_control_bay/unbuckle_mob(mob/living/buckled_mob, force, can_fall)
 	if(!force)
 		return
 
 	return ..()
 
-/// Pixel y offsets to render buckled targets
+//	Pixel y offsets to render buckled targets
+/// For Roomba cyborgs
 #define SMALL_OFFSET 12
+///	For default cyborgs
 #define NORMAL_OFFSET 16
+///	For tall cyborgs and most carbons
 #define TALL_OFFSET 18
 
 /obj/structure/bed/cyborg_control_bay/post_buckle_mob(mob/living/target)
@@ -411,20 +441,30 @@
 		else if(!((R_TRAIT_SMALL || R_TRAIT_TALL) in buckled_cyborg.model.model_features))
 			buckled_cyborg.pixel_y = (buckled_cyborg.base_pixel_y + NORMAL_OFFSET)
 
+	//	We found a target we can manipulate, lets begin processing
 		START_PROCESSING(SSobj, src)
 
+//	Handling buckling to the emag mob
 /mob/living/simple_animal/hostile/cyborg_control_bay/post_buckle_mob(mob/living/target)
 	if(!iscyborg(target))
 		target.pixel_y = (target.base_pixel_y + TALL_OFFSET)
 		return
+
 	var/mob/living/silicon/robot/buckled_cyborg = target
 	if(R_TRAIT_TALL in buckled_cyborg.model.model_features)
 		buckled_cyborg.pixel_y = (buckled_cyborg.base_pixel_y + TALL_OFFSET)
+
 	if(R_TRAIT_SMALL in buckled_cyborg.model.model_features)
 		buckled_cyborg.pixel_y = (buckled_cyborg.base_pixel_y + SMALL_OFFSET)
+
 	else if(!((R_TRAIT_SMALL || R_TRAIT_TALL) in buckled_cyborg.model.model_features))
 		buckled_cyborg.pixel_y = (buckled_cyborg.base_pixel_y + NORMAL_OFFSET)
 
+#undef SMALL_OFFSET
+#undef NORMAL_OFFSET
+#undef TALL_OFFSET
+
+//	Called when we lose a target in traditional manner, lets reset
 /obj/structure/bed/cyborg_control_bay/post_unbuckle_mob(mob/living/target)
 	if(!iscyborg(target))
 		target.pixel_y = initial(target.pixel_y)
@@ -439,6 +479,7 @@
 	enabled_function = NONE
 	STOP_PROCESSING(SSobj, src)
 
+//	Regular y offset resetting
 /mob/living/simple_animal/hostile/cyborg_control_bay/post_unbuckle_mob(mob/living/target)
 	if(!iscyborg(target))
 		target.pixel_y = initial(target.pixel_y)
@@ -446,11 +487,7 @@
 
 	target.pixel_y = target.base_pixel_y + target.body_position_pixel_y_offset
 
-#undef SMALL_OFFSET
-#undef NORMAL_OFFSET
-#undef TALL_OFFSET
-
-/// (Un)Buckle flavor texts
+//	(Un)Buckle flavor texts
 /obj/structure/bed/cyborg_control_bay/user_buckle_mob(mob/living/target, mob/user, check_loc)
 	if(!target || !user)
 		return
@@ -500,7 +537,7 @@
 	var/mob/living/target = unbuckle_mob(buckled_mob, TRUE)
 	return target
 
-// The grenade
+//	The control bay in its undeployed state
 /obj/item/grenade/cyborg_control_bay_undeployed
 	name = "deployable control-bay"
 	desc = "A portable device with an electric port suited to connect with station-approved cyborgs."
@@ -544,7 +581,7 @@
 		cyborg_control_bay.obj_flags |= EMAGGED
 
 	cyborg_control_bay.power_storage = power_storage
-	cyborg_control_bay.deployed = FALSE //Unlike roundstarts we have to perform the whole song and dance
+	cyborg_control_bay.deployed = FALSE	//	Unlike roundstarts we have to perform the whole song and dance
 	cyborg_control_bay.icon_state = "down"
 	cyborg_control_bay.deploy()
 	qdel(src)
@@ -566,7 +603,9 @@
 	do_sparks(2, TRUE, src)
 	obj_flags |= EMAGGED
 
-/// Venting the power out of the grenade-form with Alt+Click
+/*	A player may discharge an undeployed bay safely of its stored charge by alt+clicking it
+	Doing so will make a fake cloud of water vapor of a size relative to the charge it held
+	If the bay was deployed and hit by an EMP, it will force this ventilation effect.*/
 /obj/item/grenade/cyborg_control_bay_undeployed/proc/check_alt_clicked_grenade(datum/source, mob/living/clicker)
 	SIGNAL_HANDLER
 
@@ -598,7 +637,7 @@
 	power_storage = 0
 
 
-// Fluff
+//	The emag mob
 /mob/living/simple_animal/hostile/cyborg_control_bay
 	name = "cyborg control-bay"
 	desc = "A nimble device with an electric port suited to connect with station-approved cyborgs. Why is it glowing red...?"
@@ -657,27 +696,31 @@
 	return ..()
 
 /mob/living/simple_animal/hostile/cyborg_control_bay/CanAttack(the_target)
-	if(target in buckled_mobs) // Can't kick up! :-)
+	if(target in buckled_mobs) //	Can't kick up! :-)
 		return FALSE
 
+//	If the mob is holding sufficient charge, explode accordingly
 /mob/living/simple_animal/hostile/cyborg_control_bay/death(gibbed)
-	if(power_storage && power_storage >= 5000)
+	if(power_storage >= EXPL_MIN_REQ)
 		explosion(src, -1, (power_storage / EXPL_CHARGE_MOD), (power_storage / EXPL_CHARGE_MOD), (power_storage / EXPL_CHARGE_MOD), -1)
 
 	QDEL_NULL(particles)
 	return ..()
 
+//	Pretty particle effects that telegraph how much charge it is holding, also gives some sense of which which dir its facing
 /mob/living/simple_animal/hostile/cyborg_control_bay/proc/check_smoke()
 	if(!power_storage)
 		return
+
 	switch(power_storage)
-		if(5000 to 20000)
+		if(EXPL_MIN_REQ to MAX_POWER / 2)
 			particles = new /particles/smoke/robot/cyborg_control_bay/mild()
-		if(20000 to 35000)
+		if(MAX_POWER / 2 to MAX_POWER / 1.25)
 			particles = new /particles/smoke/robot/cyborg_control_bay/bad()
-		if (35000 to 40000)
+		if (MAX_POWER / 1.25 to MAX_POWER)
 			particles = new /particles/smoke/robot/cyborg_control_bay/full()
 
+//	Direction updates for the smoke particle effect, because we have to suffer a little for things to look pretty
 /mob/living/simple_animal/hostile/cyborg_control_bay/proc/dir_change(datum/source, old_dir, new_dir)
 	SIGNAL_HANDLER
 
@@ -702,6 +745,7 @@
 			particles.position = list(-4, 0, 0)
 			particles.drift = generator("vector", list(0, 0.4), list(0.8, -0.2))
 
+//	Smoke coloring
 /particles/smoke/robot/cyborg_control_bay
 	position = list(4, 8, 0)
 	scale = 0.8
@@ -722,6 +766,7 @@
 		playsound(src, 'modular_skyrat/master_files/sound/effects/robot_step.ogg', 100, TRUE)
 	// I know footstep is a mob variable but its so hardcoded and nonmodular...
 
+//	A solution for players to kill the emag mob without an explosion, EMPing will make it discharge like the regular item
 /mob/living/simple_animal/hostile/cyborg_control_bay/emp_act(severity)
 	. = ..()
 	if (. & EMP_PROTECT_SELF)
@@ -733,14 +778,7 @@
 	if(particles)
 		QDEL_NULL(particles)
 
-/obj/structure/bed/cyborg_control_bay/emp_act(severity)
-	. = ..()
-	if (. & EMP_PROTECT_SELF)
-		return
-
-	obj_flags |= EMPED
-	undeploy()
-
+//	The fake water vapor effect stolen from our modular bong.dm file
 /obj/item/grenade/cyborg_control_bay_undeployed/proc/ventilate_effect(turf/open/location, vent_scale)
 	var/list/turfs_affected = list(location)
 	var/list/turfs_to_spread = list(location)
