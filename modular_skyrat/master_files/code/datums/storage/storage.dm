@@ -1,4 +1,4 @@
-// Proc to add holdables list to an existing storage datum
+///	Proc to add holdables list to an existing storage datum
 /datum/storage/proc/add_holdable(list/can_hold_list)
 	if(can_hold_list)
 		var/unique_key = can_hold_list.Join("-")
