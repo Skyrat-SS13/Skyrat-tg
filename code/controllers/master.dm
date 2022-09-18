@@ -344,9 +344,11 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 			chat_warning = TRUE
 
 	var/message = "[message_prefix] [seconds] second[seconds == 1 ? "" : "s"]!"
-	var/chat_message = chat_warning ? span_boldwarning(message) : span_boldannounce(message)
+	// SKYRAT EDIT REMOVAL BEGIN -- chat_message not used anymore due to change below
+	// var/chat_message = chat_warning ? span_boldwarning(message) : span_boldannounce(message)
+	// SKYRAT EDIT REMOVAL END
 
-	to_chat(world, chat_message)
+	add_startup_message(message, chat_warning) //SKYRAT EDIT CHANGE - ORIGINAL: to_chat(world, chat_message)
 	log_world(message)
 
 /datum/controller/master/proc/SetRunLevel(new_runlevel)
