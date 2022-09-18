@@ -1,4 +1,12 @@
-<html>
+#define DEFAULT_TITLE_MAP_LOADTIME 150 SECONDS
+
+#define DEFAULT_TITLE_SCREEN_IMAGE 'modular_skyrat/modules/title_screen/icons/skyrat_title_screen.png'
+#define DEFAULT_TITLE_LOADING_SCREEN 'modular_skyrat/modules/title_screen/icons/loading_screen.gif'
+
+#define TITLE_PROGRESS_CACHE_FILE "data/progress_cache.json"
+
+#define DEFAULT_TITLE_HTML {"
+	<html>
 		<head>
 			<meta http-equiv="X-UA-Compatible" content="IE=edge">
 			<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -37,7 +45,7 @@
 				.container_terminal {
 					position: absolute;
 					width: 100%;
-					height: calc(90% - 7vmin);
+					height: calc(100% - 7vmin);
 					overflow: clip;
 					box-sizing: border-box;
 					padding: 3vmin 2vmin;
@@ -50,9 +58,9 @@
 					display: inline-block;
 					font-weight: lighter;
 					text-decoration: none;
-					width: 90%;
+					width: 100%;
 					text-align: right;
-					color:gray;
+					color:green;
 					text-shadow: 1px 1px black;
 					margin-right: 0%;
 					margin-top: 0px;
@@ -68,41 +76,26 @@
 					left: 2vmin;
 					height: 4vmin;
 					width: calc(100% - 4vmin);
-					border-left: 2px solid rgba(176, 196, 222, 25);
-					border-right: 2px solid rgba(176, 196, 222, 25);
+					border-left: 2px solid green;
+					border-right: 2px solid green;
 					padding: 4px;
-					background-color: black;
+					background-color: rgba(37, 30, 44, 0.9);
 				}
 
 				.progress_bar {
 					width: 0%;
 					height: 100%;
-					background-color: rgb(70, 130, 180);
+					background-color: green;
 				}
 
-				@keyframes looping_sub_pattern {
-					from {
-						background-position: 0px 0px;
-					}
+				@keyframes fade_out {
 					to {
-						background-position: 11.3137px 0px;
+						opacity: 0;
 					}
 				}
 
-				.sub_progress_bar {
-					width: 0%;
-					height: 100%;
-					float: right;
-					background-color: lime;
-					background-image: repeating-linear-gradient(
-						-30deg,
-						rgb(70, 130, 180) ,
-						rgb(176, 196, 222) 7px,
-						black 7px,
-						black 8px
-					);
-					background-attachment: fixed;
-					animation: looping_sub_pattern 1s linear infinite;
+				.fade_out {
+					animation: fade_out 2s both;
 				}
 
 				.container_nav {
@@ -238,3 +231,4 @@
 			</style>
 		</head>
 		<body>
+			"}
