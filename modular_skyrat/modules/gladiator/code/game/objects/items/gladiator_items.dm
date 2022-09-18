@@ -63,7 +63,7 @@
 	icon = 'modular_skyrat/modules/gladiator/icons/berserk_icons.dmi'
 	worn_icon = 'modular_skyrat/modules/gladiator/icons/berserk_suit.dmi'
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT
-	armor = list(MELEE = 45, BULLET = 40, LASER = 30, ENERGY = 30, BOMB = 80, BIO = 100, FIRE = 100, ACID = 100)
+	armor = list(MELEE = 40, BULLET = 40, LASER = 20, ENERGY = 25, BOMB = 70, BIO = 100, FIRE = 100, ACID = 100)
 	resistance_flags = INDESTRUCTIBLE
 	actions_types = list(/datum/action/item_action/berserk_mode)
 	var/overcharged = FALSE //used to see if the armor's charge exceeds 100%
