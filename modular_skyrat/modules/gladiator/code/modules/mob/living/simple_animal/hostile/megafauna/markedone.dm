@@ -322,7 +322,7 @@
 				hit_things |= slapped
 		if(!spinning)
 			break
-		addtimer(CALLBACK(src, .proc/animate_speen), 0.05 SECONDS)
+		addtimer(CALLBACK(src, .proc/animate_speen), 0.5 SECONDS)
 		
 /mob/living/simple_animal/hostile/megafauna/gladiator/proc/animate_speen()
 	animate(src, color = initial(color), 3)
