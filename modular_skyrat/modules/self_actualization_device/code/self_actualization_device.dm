@@ -38,7 +38,7 @@
 	"Thank you for using the Self-Actualization Device, brought to you by Veymed, because you asked for it.", \
 	"The Self-Actualization device is not to be used by the elderly without direct adult supervision. Cinco is not liable for any and all injuries sustained under unsupervised usage of the Self-Actualization Device.", \
 	"Please make sure to clean the Self-Actualization Device every fifteen minutes! The Self-Actualization Device is not to be used un-cleaned.", \
-	"Before using the Self-Actualization Device, remove any and all metal devices, or you might make the term 'ironman' a bit to literal!" , \
+	"Before using the Self-Actualization Device, remove any and all metal devices, or you might make the term 'ironman' a bit too literal!" , \
 	"Have more questions about the Self-Actualization Device? Call your nearest Veymed Representative to requisition more information about the Self-Actualization Device!" \
 	)
 
