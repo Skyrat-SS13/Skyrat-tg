@@ -29,7 +29,7 @@
 		incomingchance.block_chance -= bonus_value
 
 /obj/item/clothing/neck/warrior_cape
-	name = "\proper cloak of the marked one"
+	name = "cloak of the marked one"
 	desc = "A cloak worn by those that have faced death in the eyes and prevailed."
 	icon = 'modular_skyrat/modules/gladiator/icons/berserk_icons.dmi'
 	worn_icon = 'modular_skyrat/modules/gladiator/icons/berserk_suit.dmi'
@@ -43,7 +43,7 @@
 	. += span_warning("Struggle against the tide, no matter how strong it may be.")
 
 /obj/item/clothing/suit/hooded/berserker/gatsu
-	name = "\proper berserker armor"
+	name = "berserker armor"
 	desc = "A suit of ancient body armor imbued with potent spiritual magnetism, capable of massively boosting a wearer's close combat skills at the cost of ravaging their mind and overexerting their body."
 	icon_state = "berk_suit"
 	icon = 'modular_skyrat/modules/gladiator/icons/berserk_icons.dmi'
@@ -57,7 +57,7 @@
 	. += span_warning("Berserk mode requires the suit's helmet to be equipped, and can only be charged by taking damage.")
 
 /obj/item/clothing/head/hooded/berserker/gatsu
-	name = "\proper berserker helmet"
+	name = berserker helmet"
 	desc = "A uniquely styled helmet with ghastly red eyes that seals it's user inside."
 	icon_state = "berk_helm"
 	icon = 'modular_skyrat/modules/gladiator/icons/berserk_icons.dmi'
