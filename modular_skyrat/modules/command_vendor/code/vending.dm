@@ -19,7 +19,6 @@
 		/obj/item/clothing/under/rank/captain = 1,
 		/obj/item/clothing/under/rank/captain/skirt = 1,
 		/obj/item/clothing/under/rank/captain/dress = 1,
-		/obj/item/clothing/under/rank/captain/skyrat/humble = 1,
 		/obj/item/clothing/under/rank/captain/skyrat/kilt = 1,
 		/obj/item/clothing/under/rank/captain/skyrat/imperial = 1,
 		/obj/item/clothing/head/caphat/parade = 1,

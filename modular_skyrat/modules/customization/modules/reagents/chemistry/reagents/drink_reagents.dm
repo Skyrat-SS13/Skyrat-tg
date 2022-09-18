@@ -46,7 +46,7 @@
 
 /datum/reagent/consumable/catnip_tea/on_mob_life(mob/living/carbon/M)
 	M.adjustStaminaLoss(min(50 - M.getStaminaLoss(), 3))
-	if(isfelinid(M) || istajaran(M))
+	if(isfeline(M))
 		if(prob(20))
 			M.emote("nya")
 		if(prob(20))
