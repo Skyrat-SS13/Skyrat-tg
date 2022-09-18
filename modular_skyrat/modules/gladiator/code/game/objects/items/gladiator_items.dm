@@ -49,7 +49,7 @@
 	icon = 'modular_skyrat/modules/gladiator/icons/berserk_icons.dmi'
 	worn_icon = 'modular_skyrat/modules/gladiator/icons/berserk_suit.dmi'
 	hoodtype = /obj/item/clothing/head/hooded/berserker/gatsu
-	armor = list(MELEE = 45, BULLET = 40, LASER = 30, ENERGY = 30, BOMB = 80, BIO = 100, FIRE = 100, ACID = 100)
+	armor = list(MELEE = 40, BULLET = 40, LASER = 20, ENERGY = 25, BOMB = 70, BIO = 100, FIRE = 100, ACID = 100)
 	resistance_flags = INDESTRUCTIBLE
 
 /obj/item/clothing/suit/hooded/berserker/gatsu/examine()
@@ -57,7 +57,7 @@
 	. += span_warning("Berserk mode requires the suit's helmet to be equipped, and can only be charged by taking damage.")
 
 /obj/item/clothing/head/hooded/berserker/gatsu
-	name = berserker helmet"
+	name = "berserker helmet"
 	desc = "A uniquely styled helmet with ghastly red eyes that seals it's user inside."
 	icon_state = "berk_helm"
 	icon = 'modular_skyrat/modules/gladiator/icons/berserk_icons.dmi'
