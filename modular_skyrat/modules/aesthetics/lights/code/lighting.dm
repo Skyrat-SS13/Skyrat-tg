@@ -96,17 +96,14 @@
 /obj/item/light/tube
 	icon = 'modular_skyrat/modules/aesthetics/lights/icons/lighting.dmi'
 
+/obj/machinery/light/multitool_act(mob/living/user, obj/item/multitool)
+	if(!constant_flickering)
+		balloon_alert(user, "ballast is already working!")
+		return TOOL_ACT_TOOLTYPE_SUCCESS
 
-/obj/machinery/light/attackby(obj/item/tool, mob/living/user, params)
-	if(istype(tool, /obj/item/multitool))
-
-		if(!constant_flickering)
-			balloon_alert(user, "ballast is already working!")
-			return
-
-		balloon_alert(user, "repairing the ballast...")
-		if(do_after(user, 2 SECONDS, src))
-			stop_flickering()
-			balloon_alert(user, "ballast repaired!")
-			return
-	. = ..()
+	balloon_alert(user, "repairing the ballast...")
+	if(do_after(user, 2 SECONDS, src))
+		stop_flickering()
+		balloon_alert(user, "ballast repaired!")
+		return TOOL_ACT_TOOLTYPE_SUCCESS
+	return ..()
