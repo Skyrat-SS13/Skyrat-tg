@@ -49,6 +49,7 @@
 	icon = 'modular_skyrat/modules/gladiator/icons/berserk_icons.dmi'
 	worn_icon = 'modular_skyrat/modules/gladiator/icons/berserk_suit.dmi'
 	hoodtype = /obj/item/clothing/head/hooded/berserker/gatsu
+	w_class = WEIGHT_CLASS_BULKY
 	armor = list(MELEE = 40, BULLET = 40, LASER = 20, ENERGY = 25, BOMB = 70, BIO = 100, FIRE = 100, ACID = 100)
 	resistance_flags = INDESTRUCTIBLE
 
