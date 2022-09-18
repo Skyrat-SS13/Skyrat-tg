@@ -1,24 +1,27 @@
 /datum/outfit/centcom/ert/nri
 	name = "Novaya Rossiyskaya Imperiya Soldier"
-	head = /obj/item/clothing/head/helmet/space/hev_suit/nri
+	head = null
 	glasses = /obj/item/clothing/glasses/night
 	ears = /obj/item/radio/headset/headset_cent/alt/with_key
 	mask = /obj/item/clothing/mask/gas/hecu2
 	uniform = /obj/item/clothing/under/costume/nri
-	suit = /obj/item/clothing/suit/space/hev_suit/nri
-	suit_store = /obj/item/gun/ballistic/automatic/akm/nri
+	suit = null
+	suit_store = null
 	gloves = /obj/item/clothing/gloves/combat
 	belt = /obj/item/storage/belt/military/nri/soldier
-	back = /obj/item/storage/backpack/duffelbag/syndie/nri
+	back = /obj/item/mod/control/pre_equipped/frontline/ert
 	backpack_contents = list(/obj/item/storage/box/nri_survival_pack,
 							/obj/item/storage/medkit/emergency,
 							/obj/item/ammo_box/magazine/m9mm_aps,
 							/obj/item/advanced_choice_beacon/nri/heavy,
 							/obj/item/beamout_tool,
-							/obj/item/crucifix)
+							/obj/item/crucifix,
+							/obj/item/reagent_containers/cup/glass/waterbottle/large/cryptobiolin)
 	l_pocket = /obj/item/gun/ballistic/automatic/pistol/ladon/nri
 	r_pocket = /obj/item/ammo_box/magazine/m9mm_aps
-	shoes = /obj/item/clothing/shoes/magboots/advance
+	shoes = /obj/item/clothing/shoes/combat
+
+	l_hand = /obj/item/gun/ballistic/automatic/akm
 
 	id = /obj/item/card/id/advanced/centcom/ert/nri
 	id_trim = /datum/id_trim/nri
@@ -30,7 +33,8 @@
 	glasses = /obj/item/clothing/glasses/hud/security/night
 	mask = /obj/item/clothing/mask/gas/hecu2
 	belt = /obj/item/storage/belt/military/nri/heavy
-	suit_store = /obj/item/gun/ballistic/automatic/pistol/aps
+	suit_store = null
+	back = /obj/item/storage/backpack/duffelbag/syndie/nri
 	backpack_contents = list(/obj/item/storage/box/nri_survival_pack,
 							/obj/item/storage/medkit/emergency,
 							/obj/item/advanced_choice_beacon/nri/heavy,
@@ -38,18 +42,20 @@
 							/obj/item/crucifix)
 	l_pocket = /obj/item/wrench/combat
 
+	l_hand = /obj/item/gun/ballistic/automatic/pistol/aps
+
 	id_trim = /datum/id_trim/nri/heavy
 
 /datum/outfit/centcom/ert/nri/commander
 	name = "Novaya Rossiyskaya Imperiya Platoon Commander"
-	head = /obj/item/clothing/head/helmet/space/hev_suit/nri/captain
+	head = null
 	glasses = /obj/item/clothing/glasses/thermal/eyepatch
 	uniform = /obj/item/clothing/under/costume/nri/captain
 	belt = /obj/item/storage/belt/military/nri/captain/full
-	suit = /obj/item/clothing/suit/space/hev_suit/nri/captain
-	suit_store = /obj/item/gun/ballistic/automatic/akm/nri
+	suit = null
+	suit_store = null
 	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
-	back = /obj/item/storage/backpack/duffelbag/syndie/nri/captain
+	back = /obj/item/mod/control/pre_equipped/frontline/ert
 	backpack_contents = list(/obj/item/storage/box/nri_survival_pack,
 							/obj/item/storage/medkit/regular,
 							/obj/item/megaphone,
@@ -57,20 +63,23 @@
 							/obj/item/clothing/head/beret/sec/nri,
 							/obj/item/ammo_box/magazine/m9mm_aps,
 							/obj/item/beamout_tool,
-							/obj/item/crucifix)
+							/obj/item/crucifix,
+							/obj/item/reagent_containers/cup/glass/waterbottle/large/cryptobiolin)
+
+	l_hand = /obj/item/gun/ballistic/automatic/akm
 
 	id_trim = /datum/id_trim/nri/commander
 
 /datum/outfit/centcom/ert/nri/medic
 	name = "Novaya Rossiyskaya Imperiya Corpsman"
-	head = /obj/item/clothing/head/helmet/space/hev_suit/nri/medic
+	head = null
 	glasses = /obj/item/clothing/glasses/hud/health/night
 	uniform = /obj/item/clothing/under/costume/nri/medic
 	belt = /obj/item/storage/belt/military/nri/medic/full
-	suit = /obj/item/clothing/suit/space/hev_suit/nri/medic
-	suit_store = /obj/item/gun/ballistic/automatic/plastikov/nri
+	suit = null
+	suit_store = null
 	gloves = /obj/item/clothing/gloves/color/latex/nitrile
-	back = /obj/item/storage/backpack/duffelbag/syndie/nri/medic
+	back = /obj/item/mod/control/pre_equipped/frontline/ert
 	backpack_contents = list(/obj/item/storage/box/nri_survival_pack,
 							/obj/item/storage/medkit/tactical,
 							/obj/item/storage/medkit/advanced,
@@ -79,29 +88,33 @@
 							/obj/item/gun/energy/cell_loaded/medigun/cmo,
 							/obj/item/storage/box/medicells,
 							/obj/item/beamout_tool,
-							/obj/item/crucifix)
+							/obj/item/crucifix,
+							/obj/item/reagent_containers/cup/glass/waterbottle/large/cryptobiolin)
 
 	l_hand = /obj/item/shield/riot/pointman/nri
+	r_hand = /obj/item/gun/ballistic/automatic/plastikov/nri
 
 	id_trim = /datum/id_trim/nri/medic
 
 /datum/outfit/centcom/ert/nri/engineer
 	name = "Novaya Rossiyskaya Imperiya Combat Engineer"
-	head = /obj/item/clothing/head/helmet/space/hev_suit/nri/engineer
+	head = null
 	glasses = /obj/item/clothing/glasses/meson/night
 	uniform = /obj/item/clothing/under/costume/nri/engineer
 	belt = /obj/item/storage/belt/military/nri/engineer/full
-	suit = /obj/item/clothing/suit/space/hev_suit/nri/engineer
-	suit_store = /obj/item/gun/ballistic/automatic/plastikov/nri
-	back = /obj/item/storage/backpack/duffelbag/syndie/nri/engineer
+	suit = null
+	suit_store = null
+	back = /obj/item/mod/control/pre_equipped/frontline/ert
 	backpack_contents = list(/obj/item/storage/box/nri_survival_pack,
 							/obj/item/construction/rcd/loaded/upgraded,
 							/obj/item/rcd_ammo/large,
 							/obj/item/advanced_choice_beacon/nri/engineer,
 							/obj/item/beamout_tool,
-							/obj/item/crucifix)
+							/obj/item/crucifix,
+							/obj/item/reagent_containers/cup/glass/waterbottle/large/cryptobiolin)
 
 	l_hand = /obj/item/storage/belt/utility/full/powertools
+	r_hand = /obj/item/gun/ballistic/automatic/plastikov/nri
 
 	id_trim = /datum/id_trim/nri/engineer
 

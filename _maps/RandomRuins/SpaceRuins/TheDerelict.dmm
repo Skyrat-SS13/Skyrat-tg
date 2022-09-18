@@ -431,22 +431,6 @@
 /obj/machinery/light/small/directional/north,
 /turf/open/floor/plating/airless,
 /area/ruin/space/ks13/ai/vault)
-"gx" = (
-/obj/machinery/computer/monitor/secret{
-	dir = 4
-	},
-/obj/structure/cable,
-/obj/machinery/power/apc/unlocked{
-	dir = 8;
-	environ = 0;
-	equipment = 0;
-	lighting = 0;
-	name = "Aft Solar APC";
-	pixel_x = -25;
-	start_charge = 0
-	},
-/turf/open/floor/iron,
-/area/ruin/space/ks13/engineering/sb_bow_solars_control)
 "gy" = (
 /obj/structure/chair{
 	dir = 1
@@ -1257,7 +1241,7 @@
 	dir = 2;
 	dwidth = 11;
 	height = 22;
-	id = "whiteship_z4";
+	shuttle_id = "whiteship_z4";
 	name = "KSS13: Derelict";
 	width = 35
 	},
@@ -3731,15 +3715,6 @@
 /obj/machinery/light/small/directional/west,
 /turf/open/floor/plating/airless,
 /area/ruin/space/ks13/security/sec)
-"Dp" = (
-/obj/machinery/light/small/directional/east,
-/obj/item/circuitboard/machine/smes,
-/obj/structure/table,
-/obj/machinery/light/small/directional/east,
-/obj/effect/spawner/random/maintenance,
-/obj/effect/mapping_helpers/burnt_floor,
-/turf/open/floor/iron/airless,
-/area/ruin/space/ks13/engineering/secure_storage)
 "Dq" = (
 /obj/structure/lattice,
 /obj/structure/door_assembly/door_assembly_public,
@@ -6023,6 +5998,15 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/ruin/space/ks13/security/court)
+"Ps" = (
+/obj/machinery/light/small/directional/east,
+/obj/item/circuitboard/machine/smes,
+/obj/structure/table,
+/obj/machinery/light/small/directional/east,
+/obj/effect/spawner/random/maintenance,
+/obj/effect/mapping_helpers/burnt_floor,
+/turf/open/floor/iron/airless,
+/area/ruin/space/ks13/engineering/secure_storage)
 "Pt" = (
 /obj/structure/cable,
 /obj/effect/mapping_helpers/broken_floor,
@@ -8153,6 +8137,22 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/airless,
 /area/ruin/space/ks13/security/sec)
+"ZQ" = (
+/obj/machinery/computer/monitor{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/machinery/power/apc/unlocked{
+	dir = 8;
+	environ = 0;
+	equipment = 0;
+	lighting = 0;
+	name = "Aft Solar APC";
+	pixel_x = -25;
+	start_charge = 0
+	},
+/turf/open/floor/iron,
+/area/ruin/space/ks13/engineering/sb_bow_solars_control)
 "ZR" = (
 /obj/effect/decal/cleanable/blood/gibs/torso,
 /turf/open/floor/iron/dark,
@@ -13659,7 +13659,7 @@ rk
 rr
 rr
 ab
-Dp
+Ps
 DL
 rr
 rr
@@ -15770,7 +15770,7 @@ pR
 pR
 xS
 VB
-gx
+ZQ
 DU
 yz
 yz
