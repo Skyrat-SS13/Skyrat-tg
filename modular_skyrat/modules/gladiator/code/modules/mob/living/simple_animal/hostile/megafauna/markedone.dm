@@ -380,7 +380,7 @@
 	wendigo_slam(src, 5, 0.3 SECONDS, 8)
 
 /mob/living/simple_animal/hostile/megafauna/gladiator/proc/stomp()
-	wendigo_slam(src, 3, 0 SECONDS, 4)
+	wendigo_slam(src, 2, 0 SECONDS, 3)
 
 /mob/living/simple_animal/hostile/megafauna/gladiator/OpenFire() //used to actually decide what attacks he does. abandon all hope ye who enter here
 	if(!COOLDOWN_FINISHED(src, ranged_cooldown))
