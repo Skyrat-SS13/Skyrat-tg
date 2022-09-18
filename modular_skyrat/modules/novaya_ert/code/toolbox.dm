@@ -23,11 +23,6 @@
 	ammo_type = /obj/item/ammo_box/magazine/akm
 	amount = 7
 
-/obj/item/storage/toolbox/ammo/full/krinkov/xeno
-	name = "ammo box (Krinkov, anti-acid)"
-	desc = "It contains a few magazines."
-	ammo_type = /obj/item/ammo_box/magazine/akm/xeno
-
 /obj/item/storage/toolbox/ammo/full/krinkov/emp
 	name = "ammo box (Krinkov, EMP)"
 	desc = "It contains a few magazines."
@@ -55,6 +50,12 @@
 	amount = 4
 
 /obj/item/storage/toolbox/ammo/full/bison/ert
+	amount = 7
+
+/obj/item/storage/toolbox/ammo/full/l6_saw
+	name = "ammo box (L6 SAW)"
+	desc = "It contains a few magazines."
+	ammo_type = /obj/item/ammo_box/magazine/mm712x82
 	amount = 7
 
 /obj/item/storage/toolbox/ammo/full/makarov

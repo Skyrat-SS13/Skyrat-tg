@@ -1,11 +1,4 @@
-//NEW CARTRIDGES + EXTENDED DESCRIPTIONS FOR THE FUTURE AND CURRENT PRS
-/obj/item/ammo_casing
-	///To be honest, I do believe that this should be an object atom's variable. But oh well.
-	var/extended_desc = null
-
-/obj/item/ammo_casing/examine_more(mob/user)
-	. = ..()
-	. += "<i>[extended_desc]</i>"
+///NEW CARTRIDGES
 
 /obj/item/ammo_casing/realistic
 	icon = 'modular_skyrat/modules/gunsgalore/icons/ammo/ammo.dmi'
@@ -75,7 +68,7 @@
 /obj/item/ammo_casing/realistic/a762x39/ricochet
 	name = "5.6x40mm match bullet casing"
 	desc = "A 5.6x40mm match bullet casing."
-	extended_desc = "MATCH: Ricochets everywhere. Like crazy."
+	special_desc = "MATCH: Ricochets everywhere. Like crazy."
 	projectile_type = /obj/projectile/bullet/a762x39/ricochet
 
 /obj/projectile/bullet/a762x39/ricochet
@@ -94,7 +87,7 @@
 /obj/item/ammo_casing/realistic/a762x39/fire
 	name = "5.6x40mm incendiary bullet casing"
 	desc = "A 5.6x40mm incendiary bullet casing."
-	extended_desc = "TARGETED INCENDIARY: Leaves no trail when shot, sets targets aflame."
+	special_desc = "TARGETED INCENDIARY: Leaves no trail when shot, sets targets aflame."
 	projectile_type = /obj/projectile/bullet/incendiary/a762x39
 
 /obj/projectile/bullet/incendiary/a762x39
@@ -106,31 +99,10 @@
 	fire_stacks = 2
 	leaves_fire_trail = FALSE
 
-/obj/item/ammo_casing/realistic/a762x39/xeno
-	name = "5.6x40mm anti-acid bullet casing"
-	desc = "A 5.6x40mm anti-acid bullet casing. Special chemical treatment and an additional layer of water-absorbent materials dissipates and absorbs water from the target's body, making any acid-blooded target melt from the inside."
-	extended_desc = "ANTI-ACID: Deals additional damage against advanced sentient Xenomorphs."
-	projectile_type = /obj/projectile/bullet/a762x39/hunting/xeno
-
-/obj/projectile/bullet/a762x39/xeno
-	name = "5.6mm anti-acid bullet"
-	damage = 25
-	wound_bonus = 15
-	armour_penetration = 0
-		/// Bonus force dealt against certain mobs
-	var/nemesis_bonus_force = 25
-		/// List of mobs we deal bonus damage to
-	var/list/nemesis_path = list(/mob/living/carbon/alien)
-
-/obj/projectile/bullet/a762x39/xeno/prehit_pierce(mob/living/target, mob/living/carbon/human/user)
-	if(istype(target, nemesis_path))
-		damage += nemesis_bonus_force
-	.=..()
-
 /obj/item/ammo_casing/realistic/a762x39/ap
 	name = "5.6x40mm armor-piercing bullet casing"
 	desc = "A 5.6x40mm armor-piercing bullet casing."
-	extended_desc = "ARMOR PIERCING: Increased armor piercing capabilities. What did you expect?"
+	special_desc = "ARMOR PIERCING: Increased armor piercing capabilities. What did you expect?"
 	projectile_type = /obj/projectile/bullet/a762x39
 
 /obj/projectile/bullet/a762x39/ap
@@ -138,12 +110,11 @@
 	damage = 30
 	wound_bonus = 15
 	armour_penetration = 60
-	wound_falloff_tile = 0
 
 /obj/item/ammo_casing/realistic/a762x39/emp
 	name = "5.6x40mm ion bullet casing"
 	desc = "A 5.6x40mm ion bullet casing."
-	extended_desc = "EMP: Produces an Electro-Magnetic Pulse on impact, damaging electronics severely."
+	special_desc = "EMP: Produces an Electro-Magnetic Pulse on impact, damaging electronics severely."
 	projectile_type = /obj/projectile/bullet/a762x39/emp
 
 /obj/projectile/bullet/a762x39/emp
@@ -151,21 +122,22 @@
 	damage = 25
 	wound_bonus = 15
 	armour_penetration = 15
-	var/emp_radius = 0
+	var/heavy_emp_radius = -1
+	var/light_emp_radius = 0
 
 /obj/projectile/bullet/a762x39/emp/on_hit(atom/target, blocked = FALSE)
 	..()
-	empulse(target, emp_radius, emp_radius)
+	empulse(target, heavy_emp_radius, light_emp_radius)
 	return BULLET_ACT_HIT
 
 /obj/item/ammo_casing/realistic/a762x39/civilian
 	name = "5.6x40mm civilian bullet casing"
 	desc = "A 5.6x40mm civilian-grade surplus bullet casing."
-	extended_desc = "CIVILIAN: Non-military ammunition with a low powder load. Performs worse in every aspect in comparison to its military variant."
+	special_desc = "CIVILIAN: Non-military ammunition with a low powder load. Performs worse in every aspect in comparison to its military variant."
 	projectile_type = /obj/projectile/bullet/a762x39/civilian
 
 /obj/projectile/bullet/a762x39/civilian
-	name = "5.6mm surplus bullet"
+	name = "5.6mm civilian bullet"
 	damage = 30
 	wound_bonus = 15
 	armour_penetration = 10
@@ -174,7 +146,7 @@
 /obj/item/ammo_casing/realistic/a762x39/civilian/rubber
 	name = "5.6x40mm rubber bullet casing"
 	desc = "A 5.6x40mm civilian-grade rubber bullet casing."
-	extended_desc = "RUBBER: Less than lethal ammo. Deals both stamina and brute damage."
+	special_desc = "RUBBER: Less than lethal ammo. Deals both stamina and brute damage."
 	projectile_type = /obj/projectile/bullet/a762x39/rubber
 	harmful = FALSE
 
@@ -195,7 +167,7 @@
 /obj/item/ammo_casing/realistic/a762x39/civilian/hunting
 	name = "5.6x40mm hunting bullet casing"
 	desc = "A 5.6x40mm jacketed soft point bullet casing."
-	extended_desc = "HUNTING: Ammo purpose-built to deal more damage against simplemobs than other Humans."
+	special_desc = "HUNTING: Ammo purpose-built to deal more damage against simplemobs than other humans."
 	projectile_type = /obj/projectile/bullet/a762x39/hunting
 
 /obj/projectile/bullet/a762x39/hunting
@@ -214,17 +186,10 @@
 		damage += nemesis_bonus_force
 	.=..()
 
-/obj/projectile/bullet/a762x39/hunting/xeno
-	name = "5.6mm anti-acid bullet"
-	damage = 25
-	wound_bonus = 15
-	armour_penetration = 10
-	nemesis_path = list(/mob/living/carbon/alien)
-
 /obj/item/ammo_casing/realistic/a762x39/civilian/blank
 	name = "5.6x40mm blank bullet casing"
 	desc = "A 5.6x40mm blank bullet casing."
-	extended_desc = "BLANK: Projectile-less ammunition that is usually employed in training exercises or Live-Action Roleplay. Potentially harmful."
+	special_desc = "BLANK: Projectile-less ammunition that is usually employed in training exercises or Live-Action Roleplay. Potentially harmful."
 	projectile_type = /obj/projectile/bullet/a762x39/blank
 	///"Potentially."
 	harmful = FALSE

@@ -46,12 +46,6 @@
 	icon_state = "akm_fire"
 	ammo_type = /obj/item/ammo_casing/realistic/a762x39/fire
 
-/obj/item/ammo_box/magazine/akm/xeno
-	name = "krinkov magazine (ANTI-ACID)"
-	desc = "a banana-shaped double-stack magazine able to hold 30 rounds of 5.6mm ammo. It's said that in the early days of SolFed's spread, Spanish colony rebels often referred to these as 'Goat Horns'. Contains anti-acid ammunition, highly efficient against Aliens."
-	icon_state = "akm_xeno"
-	ammo_type = /obj/item/ammo_casing/realistic/a762x39/xeno
-
 /obj/item/ammo_box/magazine/akm/ap
 	name = "krinkov magazine (ARMOR PIERCING)"
 	desc = "a banana-shaped double-stack magazine able to hold 30 rounds of 5.6mm ammo. It's said that in the early days of SolFed's spread, Spanish colony rebels often referred to these as 'Goat Horns'. Contains armor-piercing ammunition."
