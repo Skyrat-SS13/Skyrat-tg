@@ -10773,15 +10773,15 @@
 /turf/open/floor/iron/dark,
 /area/station/service/chapel/funeral)
 "dXl" = (
-/obj/effect/spawner/structure/window/reinforced,
-/obj/structure/cable,
 /obj/machinery/door/poddoor/shutters/preopen{
 	dir = 4;
 	id = "PermaLockdown";
 	name = "Lockdown Shutters"
 	},
 /obj/effect/turf_decal/delivery,
-/turf/open/floor/plating,
+/obj/machinery/prisongate,
+/obj/effect/mapping_helpers/airlock/access/all/security/brig,
+/turf/open/floor/iron,
 /area/station/security/prison)
 "dXA" = (
 /obj/structure/closet/crate/trashcart,
@@ -27986,7 +27986,9 @@
 /turf/open/floor/plating,
 /area/station/maintenance/department/engine)
 "jXM" = (
-/obj/structure/closet/secure_closet/brig,
+/obj/structure/closet/secure_closet/brig/genpop{
+	name = "Prisoner Locker"
+	},
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 8
 	},
@@ -34479,7 +34481,9 @@
 /turf/open/floor/plating,
 /area/station/maintenance/starboard/fore)
 "mqQ" = (
-/obj/structure/closet/secure_closet/brig,
+/obj/structure/closet/secure_closet/brig/genpop{
+	name = "Prisoner Locker"
+	},
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 8
 	},
@@ -44986,6 +44990,12 @@
 	},
 /turf/open/floor/iron/white/smooth_large,
 /area/station/medical/office)
+"pYI" = (
+/obj/structure/closet/secure_closet/brig/genpop{
+	name = "Prisoner Locker"
+	},
+/turf/closed/wall,
+/area/station/maintenance/port/fore)
 "pYL" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -50676,6 +50686,13 @@
 /obj/structure/plasticflaps/opaque{
 	name = "Prisoner Transfer"
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/security/execution/transfer)
 "rUL" = (
@@ -56631,7 +56648,9 @@
 /turf/open/floor/iron/dark,
 /area/station/security/execution/education)
 "tVm" = (
-/obj/structure/closet/secure_closet/brig,
+/obj/structure/closet/secure_closet/brig/genpop{
+	name = "Prisoner Locker"
+	},
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 8
 	},
@@ -82898,7 +82917,7 @@ jXu
 jXu
 jXu
 nmg
-jXu
+pYI
 jXu
 jXu
 jXu

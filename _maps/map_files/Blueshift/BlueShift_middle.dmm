@@ -2605,9 +2605,12 @@
 	id_tag = "permainner";
 	name = "Permabrig Transfer"
 	},
-/obj/effect/mapping_helpers/airlock/access/all/security/brig,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
 	cycle_id = "perma-transfer"
+	},
+/obj/machinery/door/poddoor/shutters/window/preopen{
+	id = "prisonlockdown1";
+	name = "Lockdown"
 	},
 /turf/open/floor/iron/dark,
 /area/station/security/prison)
@@ -6926,10 +6929,7 @@
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
 	dir = 4
 	},
-/obj/machinery/door/airlock/security/glass{
-	id_tag = "permainner";
-	name = "Permabrig Transfer"
-	},
+/obj/machinery/prisongate,
 /obj/effect/mapping_helpers/airlock/access/all/security/brig,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
 	cycle_id = "perma-transfer"
@@ -10825,6 +10825,15 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/iron,
 /area/station/hallway/secondary/service)
+"cWw" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/structure/cable,
+/obj/machinery/door/poddoor/shutters/window/preopen{
+	id = "prisonlockdown1";
+	name = "Lockdown"
+	},
+/turf/open/floor/plating,
+/area/station/security/prison)
 "cWy" = (
 /obj/structure/railing{
 	dir = 1
@@ -13548,7 +13557,9 @@
 /turf/open/floor/plating,
 /area/station/maintenance/department/engineering/engine_aft_starboard)
 "dWx" = (
-/obj/structure/closet/secure_closet/brig/genpop,
+/obj/structure/closet/secure_closet/brig/genpop{
+	name = "Prisoner Locker"
+	},
 /obj/effect/turf_decal/bot,
 /obj/structure/window/reinforced{
 	dir = 8
@@ -15225,7 +15236,9 @@
 	},
 /area/station/hallway/primary/port)
 "exP" = (
-/obj/structure/closet/secure_closet/brig/genpop,
+/obj/structure/closet/secure_closet/brig/genpop{
+	name = "Prisoner Locker"
+	},
 /obj/effect/turf_decal/bot,
 /obj/structure/window/reinforced{
 	dir = 8
@@ -42843,7 +42856,9 @@
 /turf/open/floor/carpet,
 /area/station/service/chapel)
 "nKS" = (
-/obj/structure/closet/secure_closet/brig/genpop,
+/obj/structure/closet/secure_closet/brig/genpop{
+	name = "Prisoner Locker"
+	},
 /obj/effect/turf_decal/bot,
 /obj/structure/window/reinforced{
 	dir = 4
@@ -44864,6 +44879,27 @@
 /obj/item/radio/intercom/directional/north,
 /turf/open/floor/wood,
 /area/station/service/chapel/funeral)
+"owx" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/door/airlock/security/glass{
+	id_tag = "permainner";
+	name = "Permabrig Transfer"
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
+	cycle_id = "perma-transfer"
+	},
+/obj/machinery/door/poddoor/shutters/window/preopen{
+	id = "prisonlockdown1";
+	name = "Lockdown"
+	},
+/turf/open/floor/iron/dark,
+/area/station/security/prison)
 "owD" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
@@ -45315,7 +45351,9 @@
 /turf/closed/wall/r_wall,
 /area/station/security/prison/mess)
 "oEb" = (
-/obj/structure/closet/secure_closet/brig/genpop,
+/obj/structure/closet/secure_closet/brig/genpop{
+	name = "Prisoner Locker"
+	},
 /obj/effect/turf_decal/bot,
 /obj/structure/window/reinforced{
 	dir = 4
@@ -46556,7 +46594,9 @@
 /turf/open/floor/wood,
 /area/station/hallway/primary/port)
 "oWA" = (
-/obj/structure/closet/secure_closet/brig/genpop,
+/obj/structure/closet/secure_closet/brig/genpop{
+	name = "Prisoner Locker"
+	},
 /obj/effect/turf_decal/bot,
 /turf/open/floor/iron/dark,
 /area/station/security/prison)
@@ -51781,7 +51821,9 @@
 /turf/open/floor/plating/airless,
 /area/space/nearstation)
 "qHQ" = (
-/obj/structure/closet/secure_closet/brig/genpop,
+/obj/structure/closet/secure_closet/brig/genpop{
+	name = "Prisoner Locker"
+	},
 /obj/structure/window/reinforced,
 /obj/effect/turf_decal/bot,
 /turf/open/floor/iron/dark,
@@ -64393,7 +64435,9 @@
 /turf/open/floor/iron,
 /area/station/security/prison)
 "uZp" = (
-/obj/structure/closet/secure_closet/brig/genpop,
+/obj/structure/closet/secure_closet/brig/genpop{
+	name = "Prisoner Locker"
+	},
 /obj/effect/turf_decal/bot,
 /obj/structure/window/reinforced{
 	dir = 4
@@ -115136,8 +115180,8 @@ iys
 mMw
 tKk
 bBK
-bHu
-mmm
+owx
+cWw
 awX
 jdF
 uvU
