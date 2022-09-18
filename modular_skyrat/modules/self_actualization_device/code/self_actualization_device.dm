@@ -156,14 +156,14 @@
 	var/brute_damage = patient.getBruteLoss()
 	var/burn_damage = patient.getFireLoss()
 
-		patient.client?.prefs?.safe_transfer_prefs_to(patient)
-		patient.dna.update_dna_identity()
-		log_game("[key_name(patient)] used a Self-Actualization Device at [loc_name(src)].")
+	patient.client?.prefs?.safe_transfer_prefs_to(patient)
+	patient.dna.update_dna_identity()
+	log_game("[key_name(patient)] used a Self-Actualization Device at [loc_name(src)].")
 
-		if(patient.dna.real_name != original_name)
-			message_admins("[key_name_admin(patient)] has used the Self-Actualization Device, and changed the name of their character. \
-			Original Name: [original_name], New Name: [patient.dna.real_name]. \
-			This may be a false positive from changing from a humanized monkey into a character, so be careful.")
+	if(patient.dna.real_name != original_name)
+		message_admins("[key_name_admin(patient)] has used the Self-Actualization Device, and changed the name of their character. \
+		Original Name: [original_name], New Name: [patient.dna.real_name]. \
+		This may be a false positive from changing from a humanized monkey into a character, so be careful.")
 
 	// Apply organ damage
 	patient.adjustOrganLoss(ORGAN_SLOT_HEART, heart_damage)
