@@ -66,7 +66,8 @@
 	armor = list(MELEE = 40, BULLET = 40, LASER = 20, ENERGY = 25, BOMB = 70, BIO = 100, FIRE = 100, ACID = 100)
 	resistance_flags = INDESTRUCTIBLE
 	actions_types = list(/datum/action/item_action/berserk_mode)
-	var/overcharged = FALSE //used to see if the armor's charge exceeds 100%
+	var/charged = FALSE //used to see if the armor's charge exceeds 100%
+	var/overcharged = FALSE //used to see if the armor's charge is at 200%
 
 /obj/item/clothing/head/hooded/berserker/gatsu/Initialize(mapload)
 	. = ..()
@@ -82,11 +83,13 @@
 	if(!berserk_charge)
 		if(ishuman(loc))
 			end_berserk(loc)
+			charged = FALSE
 			overcharged = FALSE
 
 /obj/item/clothing/head/hooded/berserker/gatsu/dropped(mob/user)
 	. = ..()
 	end_berserk(user)
+	charged = FALSE
 	overcharged = FALSE
 
 /obj/item/clothing/head/hooded/berserker/gatsu/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
@@ -96,11 +99,12 @@
 	if(attack_type == PROJECTILE_ATTACK)
 		berserk_value *= PROJECTILE_HIT_MULTIPLIER
 	berserk_charge = clamp(round(berserk_charge + berserk_value), 0, MAX_BERSERK_CHARGE)
-	if(berserk_charge >= BERSERK_HALF_CHARGE & overcharged == FALSE)
+	if(berserk_charge >= BERSERK_HALF_CHARGE & charged == FALSE)
 		balloon_alert(owner, "berserk charged")
-		overcharged = TRUE
-	if(berserk_charge >= MAX_BERSERK_CHARGE)
+		charged = TRUE
+	if(berserk_charge >= MAX_BERSERK_CHARGE & overcharged == FALSE)
 		balloon_alert(owner, "berserk overcharged")
+		overcharged = TRUE
 
 /obj/item/clothing/head/hooded/berserker/gatsu/IsReflect()
 	if(berserk_active)
