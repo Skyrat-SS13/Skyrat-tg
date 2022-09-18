@@ -14,12 +14,12 @@
 
 /obj/machinery/self_actualization_device
 	name = "Self-Actualization Device"
-	desc = "With the power of modern neurological scanning and synthflesh cosmetic surgery, the Morningstar corporation \
-	has teamed up with the Cinco Chemical & Toy Division to bring you the Self-Actualization Device! \
+	desc = "With the power of modern neurological scanning and synthflesh cosmetic surgery, the Veymed(ical) Corporation \
+	has teamed up with Nanotrasen Human (And elsewise) resources to bring you the Self-Actualization Device! \
 	Ever revived a patient and had them file a malpractice lawsuit because their head got attached to the wrong body? \
 	Just slap 'em in the SAD and turn it on! Their frown will turn upside down as they're reconstituted as their ideal self \
 	via the magic technology of brain scanning! Within a few short moments, they'll be popped out as their ideal self, \
-	ready to continue on with their day lawsuit-free! WARNING: KEEP AWAY FROM POTENTIAL SOURCES OF ELECTRO-MAGNETIC INTERFERENCE."
+	ready to continue on with their day lawsuit-free!"
 	icon = 'modular_skyrat/modules/self_actualization_device/icons/self_actualization_device.dmi'
 	icon_state = "sad_open"
 	circuit = /obj/item/circuitboard/machine/self_actualization_device
@@ -35,12 +35,11 @@
 	var/next_fact = 10
 	/// A list containing advertisements that the machine says while working.
 	var/static/list/advertisements = list(\
-	"Thank you for using the Self-Actualization Device, brought to you by Cinco: A Family Company!", \
+	"Thank you for using the Self-Actualization Device, brought to you by Veymed, because you asked for it.", \
 	"The Self-Actualization device is not to be used by the elderly without direct adult supervision. Cinco is not liable for any and all injuries sustained under unsupervised usage of the Self-Actualization Device.", \
 	"Please make sure to clean the Self-Actualization Device every fifteen minutes! The Self-Actualization Device is not to be used un-cleaned.", \
-	"Before using the Self-Actualization Device, remove your teeth. You don't want your pearly whites getting in the way of the Self-Actualization Device!" , \
-	"Please make sure to have your pre-Self Actualization Device brain-stimulating full-body gel lube session performed by a licensed lube man.", \
-	"Have more questions about the Self-Actualization Device? Call your Cinco Mancierge to requisition more information about the Self-Actualization Device!" \
+	"Before using the Self-Actualization Device, remove any and all metal devices, or you might make the term 'ironman' a bit to literal!" , \
+	"Have more questions about the Self-Actualization Device? Call your nearest Veymed Representative to requisition more information about the Self-Actualization Device!" \
 	)
 
 /obj/machinery/self_actualization_device/update_appearance(updates)
@@ -157,9 +156,6 @@
 	var/brute_damage = patient.getBruteLoss()
 	var/burn_damage = patient.getFireLoss()
 
-	if(obj_flags & EMAGGED)
-		patient.monkeyize()
-
 	else
 		patient.client?.prefs?.safe_transfer_prefs_to(patient)
 		patient.dna.update_dna_identity()
@@ -226,9 +222,3 @@
 	if(default_deconstruction_crowbar(used_item))
 		return TRUE
 
-/obj/machinery/self_actualization_device/emag_act(mob/living/user)
-	if(obj_flags & EMAGGED)
-		return
-
-	to_chat(user, span_notice("You scramble the brain reading circuits!"))
-	obj_flags |= EMAGGED
