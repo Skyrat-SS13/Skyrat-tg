@@ -296,8 +296,6 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_NOFLASH "noflash"
 /// prevents xeno huggies implanting skeletons
 #define TRAIT_XENO_IMMUNE "xeno_immune"
-/// Makes you flashable from any direction
-#define TRAIT_FLASH_SENSITIVE "flash_sensitive"
 #define TRAIT_NAIVE "naive"
 #define TRAIT_PRIMITIVE "primitive"
 #define TRAIT_GUNFLIP "gunflip"
@@ -676,6 +674,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define QUIRK_TRAIT "quirk_trait"
 /// (B)admins only.
 #define ADMIN_TRAIT "admin"
+/// Any traits given through a smite.
+#define SMITE_TRAIT "smite"
 #define CHANGELING_TRAIT "changeling"
 #define CULT_TRAIT "cult"
 #define LICH_TRAIT "lich"
@@ -919,3 +919,12 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 
 /// Currently fishing
 #define TRAIT_GONE_FISHING "fishing"
+
+/// Makes a species be better/worse at tackling depending on their wing's status
+#define TRAIT_TACKLING_WINGED_ATTACKER "tacking_winged_attacker"
+
+/// Makes a species be frail and more likely to roll bad results if they hit a wall
+#define TRAIT_TACKLING_FRAIL_ATTACKER "tackling_frail_attacker"
+
+/// Makes a species be better/worse at defending against tackling depending on their tail's status
+#define TRAIT_TACKLING_TAILED_DEFENDER "tackling_tailed_defender"
