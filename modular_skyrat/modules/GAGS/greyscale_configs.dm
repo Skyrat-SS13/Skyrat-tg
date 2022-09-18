@@ -304,6 +304,14 @@
 	name = "Sweater (Worn)"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/sweater/sweater_worn.json'
 
+/datum/greyscale_config/sweater/keyhole
+	name = "Keyhole Sweater"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/sweater/keyhole.json'
+
+/datum/greyscale_config/sweater/keyhole/worn
+	name = "Worn Keyhole Sweater"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/sweater/keyhole_worn.json'
+
 // URBAN COAT
 
 /datum/greyscale_config/urban_coat

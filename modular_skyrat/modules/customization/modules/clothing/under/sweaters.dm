@@ -22,7 +22,8 @@
 	name = "keyhole sweater"
 	desc = "What is the point of this, anyway?"
 	icon_state = "keyholesweater"
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/uniform_digi.dmi'
-	can_adjust = FALSE
+	greyscale_config = /datum/greyscale_config/sweater/keyhole
+	greyscale_config_worn = /datum/greyscale_config/sweater/keyhole/worn
+	greyscale_colors = "#920092"
+	can_adjust = TRUE
+	flags_1 = IS_PLAYER_COLORABLE_1
