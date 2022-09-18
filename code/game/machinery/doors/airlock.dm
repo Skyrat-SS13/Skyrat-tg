@@ -149,8 +149,6 @@
 	flags_1 = HTML_USE_INITAL_ICON_1
 	rad_insulation = RAD_MEDIUM_INSULATION
 
-	network_id = NETWORK_DOOR_AIRLOCKS
-
 /obj/machinery/door/airlock/Initialize(mapload)
 	//SKYRAT EDIT ADDITION BEGIN - Door aesthetic overhaul
 	vis_overlay1 = new()
@@ -171,6 +169,7 @@
 		vis_overlay2.dir = src.dir
 	update_overlays()
 	//SKYRAT EDIT END
+	init_network_id(NETWORK_DOOR_AIRLOCKS)
 	wires = set_wires()
 	if(frequency)
 		set_frequency(frequency)
