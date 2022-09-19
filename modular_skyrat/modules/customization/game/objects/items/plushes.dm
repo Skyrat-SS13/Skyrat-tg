@@ -573,7 +573,6 @@
 	gender = FEMALE
 	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/trills.ogg' = 1)
 
-
 // Donation reward for SRQ
 /obj/item/toy/plush/skyrat/plushie_chiara
 	name = "commanding fox plush"
