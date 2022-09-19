@@ -480,6 +480,8 @@
 	ckeywhitelist = list("tetrako")
 	restricted_roles = list(JOB_NT_REP)
 
+//Chunko Fops were donated by SlippyJoe, who requested they are usable by everyone
+
 /datum/loadout_item/toys/CFBonnie
 	name = "Chunko Fop: Blue Bunny Plushie"
 	item_path = /obj/item/toy/plush/skyrat/chunko/bonnie
@@ -504,8 +506,6 @@
 	name = "Comfy Fox Plushie"
 	item_path = /obj/item/toy/plush/skyrat/plushie_dan
 	ckeywhitelist = list("srq", "superlagg")
-
-//Chunko Fops were donated by SlippyJoe, who requested they are usable by everyone
 
 /datum/loadout_item/under/jumpsuit/bubbly_clown
 	name = "Bubbly Clown Dress"
