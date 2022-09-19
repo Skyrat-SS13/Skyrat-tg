@@ -1,8 +1,5 @@
-// Figure this out eventually.
-
-import { BooleanLike } from 'common/react';
 import { useBackend } from '../backend';
-import { Box, Button, LabeledList, NoticeBox, Section, Stack } from '../components';
+import { Box, LabeledList, NoticeBox, Section, Stack } from '../components';
 import { Window } from '../layouts';
 
 type Data = {
@@ -60,9 +57,7 @@ const GuideMap = (props, context) => {
   return (
     <LabeledList>
       {all_puzzles.map((puzzle) => (
-        <Section
-          title={puzzle.puzzname}
-          >
+        <Section title={puzzle.puzzname}>
           <Box color="label" mt="3px" mb="5px">
             {puzzle.desc}
           </Box>

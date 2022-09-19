@@ -1,5 +1,5 @@
 import { useBackend } from '../backend';
-import { Button, LabeledList, ProgressBar, Section, Stack, Knob } from '../components';
+import { Section, Stack, Knob } from '../components';
 import { Window } from '../layouts';
 
 export const DialPuzzle = () => {
@@ -14,14 +14,10 @@ export const DialPuzzle = () => {
 
 export const DialPuzzleContent = (props, context) => {
   const { act, data } = useBackend(context);
-  const {
-    current_phrase,
-    dials,
-  } = data;
+  const { current_phrase, dials } = data;
 
   return (
-    <Section
-      title={current_phrase}>
+    <Section title={current_phrase}>
       <Stack>
         <Stack.Item width="270px">
           <Stack>
