@@ -33,6 +33,8 @@
 				throw_arousalalert("arousal_high", arousal_alert, target_human)
 			if(AROUSAL_AUTO_CLIMAX_THRESHOLD to INFINITY) //to prevent that 101 arousal that can make icon disappear or something.
 				throw_arousalalert("arousal_max", arousal_alert, target_human)
+				if(target_human.arousal > AROUSAL_LIMIT)
+					target_human.arousal = AROUSAL_LIMIT // To prevent massively high values that cause the permahorny(tm) bug.
 
 		if(target_human.arousal > AROUSAL_MINIMUM_DETECTABLE)
 			switch(target_human.pain)
@@ -48,6 +50,8 @@
 					overlay_pain("high", arousal_alert)
 				if(AROUSAL_AUTO_CLIMAX_THRESHOLD to INFINITY)
 					overlay_pain("max", arousal_alert)
+					if(target_human.pain > AROUSAL_LIMIT)
+						target_human.pain = AROUSAL_LIMIT
 
 		if(target_human.arousal > 1)
 			switch(target_human.pleasure)
@@ -61,6 +65,8 @@
 					overlay_pleasure("high", arousal_alert)
 				if(AROUSAL_AUTO_CLIMAX_THRESHOLD to INFINITY)
 					overlay_pleasure("max", arousal_alert)
+					if(target_human.pleasure > AROUSAL_LIMIT)
+						target_human.pleasure = AROUSAL_LIMIT
 		else
 			if(arousal_alert?.pleasure_level in list("small", "medium", "high", "max"))
 				arousal_alert.cut_overlay(arousal_alert.pleasure_overlay)
