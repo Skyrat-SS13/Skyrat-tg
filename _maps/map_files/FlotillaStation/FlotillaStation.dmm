@@ -360,6 +360,7 @@
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 5
 	},
+/obj/machinery/airalarm/directional/north,
 /turf/open/floor/iron/white/smooth_large,
 /area/station/medical/storage)
 "bk" = (
@@ -1179,7 +1180,7 @@
 	dir = 1
 	},
 /obj/machinery/airalarm/directional/west{
-	TLV = list("pressure"=new/datum/tlv(20,50,325,550),"temperature"=new/datum/tlv(270.15,280.15,313.15,340.15),/datum/gas/oxygen=new/datum/tlv(-1,-1,5,10),/datum/gas/nitrogen=new/datum/tlv(20,50,325,550),/datum/gas/carbon_dioxide=new/datum/tlv(-1,-1,5,10),/datum/gas/miasma=new/datum/tlv(-1,-1,15,30),/datum/gas/plasma=new/datum/tlv/dangerous,/datum/gas/nitrous_oxide=new/datum/tlv/dangerous,/datum/gas/bz=new/datum/tlv/dangerous,/datum/gas/hypernoblium=new/datum/tlv(-1,-1,1000,1000),/datum/gas/water_vapor=new/datum/tlv/dangerous,/datum/gas/tritium=new/datum/tlv/dangerous,/datum/gas/nitrium=new/datum/tlv/dangerous,/datum/gas/pluoxium=new/datum/tlv(-1,-1,1000,1000),/datum/gas/freon=new/datum/tlv/dangerous,/datum/gas/hydrogen=new/datum/tlv/dangerous,/datum/gas/healium=new/datum/tlv/dangerous,/datum/gas/proto_nitrate=new/datum/tlv/dangerous,/datum/gas/zauker=new/datum/tlv/dangerous,/datum/gas/helium=new/datum/tlv/dangerous,/datum/gas/antinoblium=new/datum/tlv/dangerous,/datum/gas/halon=new/datum/tlv/dangerous)
+	TLV = list("pressure" = new /datum/tlv(20, 50, 325, 550), "temperature" = new /datum/tlv(270.15, 280.15, 313.15, 340.15), /datum/gas/oxygen = new /datum/tlv(-1, -1, 5, 10), /datum/gas/nitrogen = new /datum/tlv(16, 19, 1000, 1000), /datum/gas/carbon_dioxide = new /datum/tlv(-1, -1, 5, 10), /datum/gas/miasma = new /datum/tlv(-1, -1, 15, 30), /datum/gas/plasma = new /datum/tlv/dangerous, /datum/gas/nitrous_oxide = new /datum/tlv/dangerous, /datum/gas/bz = new /datum/tlv/dangerous, /datum/gas/hypernoblium = new /datum/tlv(-1, -1, 1000, 1000), /datum/gas/water_vapor = new /datum/tlv/dangerous, /datum/gas/tritium = new /datum/tlv/dangerous, /datum/gas/nitrium = new /datum/tlv/dangerous, /datum/gas/pluoxium = new /datum/tlv(-1, -1, 1000, 1000), /datum/gas/freon = new /datum/tlv/dangerous, /datum/gas/hydrogen = new /datum/tlv/dangerous, /datum/gas/healium = new /datum/tlv/dangerous, /datum/gas/proto_nitrate = new /datum/tlv/dangerous, /datum/gas/zauker = new /datum/tlv/dangerous, /datum/gas/helium = new /datum/tlv/dangerous, /datum/gas/antinoblium = new /datum/tlv/dangerous, /datum/gas/halon = new /datum/tlv/dangerous)
 	},
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 1
@@ -1259,6 +1260,7 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/tile/blue/fourcorners,
+/obj/machinery/door/airlock/medical,
 /turf/open/floor/iron/white,
 /area/station/medical/exam_room)
 "ef" = (
@@ -1273,7 +1275,7 @@
 	dir = 10
 	},
 /obj/machinery/airalarm/directional/west{
-	TLV = list("pressure"=new/datum/tlv(20,50,325,550),"temperature"=new/datum/tlv(270.15,280.15,313.15,340.15),/datum/gas/oxygen=new/datum/tlv(-1,-1,5,10),/datum/gas/nitrogen=new/datum/tlv(20,50,325,550),/datum/gas/carbon_dioxide=new/datum/tlv(-1,-1,5,10),/datum/gas/miasma=new/datum/tlv(-1,-1,15,30),/datum/gas/plasma=new/datum/tlv/dangerous,/datum/gas/nitrous_oxide=new/datum/tlv/dangerous,/datum/gas/bz=new/datum/tlv/dangerous,/datum/gas/hypernoblium=new/datum/tlv(-1,-1,1000,1000),/datum/gas/water_vapor=new/datum/tlv/dangerous,/datum/gas/tritium=new/datum/tlv/dangerous,/datum/gas/nitrium=new/datum/tlv/dangerous,/datum/gas/pluoxium=new/datum/tlv(-1,-1,1000,1000),/datum/gas/freon=new/datum/tlv/dangerous,/datum/gas/hydrogen=new/datum/tlv/dangerous,/datum/gas/healium=new/datum/tlv/dangerous,/datum/gas/proto_nitrate=new/datum/tlv/dangerous,/datum/gas/zauker=new/datum/tlv/dangerous,/datum/gas/helium=new/datum/tlv/dangerous,/datum/gas/antinoblium=new/datum/tlv/dangerous,/datum/gas/halon=new/datum/tlv/dangerous)
+	TLV = list("pressure" = new /datum/tlv(20, 50, 325, 550), "temperature" = new /datum/tlv(270.15, 280.15, 313.15, 340.15), /datum/gas/oxygen = new /datum/tlv(-1, -1, 5, 10), /datum/gas/nitrogen = new /datum/tlv(16, 19, 1000, 1000), /datum/gas/carbon_dioxide = new /datum/tlv(-1, -1, 5, 10), /datum/gas/miasma = new /datum/tlv(-1, -1, 15, 30), /datum/gas/plasma = new /datum/tlv/dangerous, /datum/gas/nitrous_oxide = new /datum/tlv/dangerous, /datum/gas/bz = new /datum/tlv/dangerous, /datum/gas/hypernoblium = new /datum/tlv(-1, -1, 1000, 1000), /datum/gas/water_vapor = new /datum/tlv/dangerous, /datum/gas/tritium = new /datum/tlv/dangerous, /datum/gas/nitrium = new /datum/tlv/dangerous, /datum/gas/pluoxium = new /datum/tlv(-1, -1, 1000, 1000), /datum/gas/freon = new /datum/tlv/dangerous, /datum/gas/hydrogen = new /datum/tlv/dangerous, /datum/gas/healium = new /datum/tlv/dangerous, /datum/gas/proto_nitrate = new /datum/tlv/dangerous, /datum/gas/zauker = new /datum/tlv/dangerous, /datum/gas/helium = new /datum/tlv/dangerous, /datum/gas/antinoblium = new /datum/tlv/dangerous, /datum/gas/halon = new /datum/tlv/dangerous)
 	},
 /obj/machinery/power/apc/auto_name/directional/south,
 /obj/structure/cable,
@@ -1518,7 +1520,7 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/airalarm/directional/north{
-	TLV = list("pressure"=new/datum/tlv(20,50,325,550),"temperature"=new/datum/tlv(270.15,280.15,313.15,340.15),/datum/gas/oxygen=new/datum/tlv(-1,-1,5,10),/datum/gas/nitrogen=new/datum/tlv(20,50,325,550),/datum/gas/carbon_dioxide=new/datum/tlv(-1,-1,5,10),/datum/gas/miasma=new/datum/tlv(-1,-1,15,30),/datum/gas/plasma=new/datum/tlv/dangerous,/datum/gas/nitrous_oxide=new/datum/tlv/dangerous,/datum/gas/bz=new/datum/tlv/dangerous,/datum/gas/hypernoblium=new/datum/tlv(-1,-1,1000,1000),/datum/gas/water_vapor=new/datum/tlv/dangerous,/datum/gas/tritium=new/datum/tlv/dangerous,/datum/gas/nitrium=new/datum/tlv/dangerous,/datum/gas/pluoxium=new/datum/tlv(-1,-1,1000,1000),/datum/gas/freon=new/datum/tlv/dangerous,/datum/gas/hydrogen=new/datum/tlv/dangerous,/datum/gas/healium=new/datum/tlv/dangerous,/datum/gas/proto_nitrate=new/datum/tlv/dangerous,/datum/gas/zauker=new/datum/tlv/dangerous,/datum/gas/helium=new/datum/tlv/dangerous,/datum/gas/antinoblium=new/datum/tlv/dangerous,/datum/gas/halon=new/datum/tlv/dangerous)
+	TLV = list("pressure" = new /datum/tlv(20, 50, 325, 550), "temperature" = new /datum/tlv(270.15, 280.15, 313.15, 340.15), /datum/gas/oxygen = new /datum/tlv(-1, -1, 5, 10), /datum/gas/nitrogen = new /datum/tlv(16, 19, 1000, 1000), /datum/gas/carbon_dioxide = new /datum/tlv(-1, -1, 5, 10), /datum/gas/miasma = new /datum/tlv(-1, -1, 15, 30), /datum/gas/plasma = new /datum/tlv/dangerous, /datum/gas/nitrous_oxide = new /datum/tlv/dangerous, /datum/gas/bz = new /datum/tlv/dangerous, /datum/gas/hypernoblium = new /datum/tlv(-1, -1, 1000, 1000), /datum/gas/water_vapor = new /datum/tlv/dangerous, /datum/gas/tritium = new /datum/tlv/dangerous, /datum/gas/nitrium = new /datum/tlv/dangerous, /datum/gas/pluoxium = new /datum/tlv(-1, -1, 1000, 1000), /datum/gas/freon = new /datum/tlv/dangerous, /datum/gas/hydrogen = new /datum/tlv/dangerous, /datum/gas/healium = new /datum/tlv/dangerous, /datum/gas/proto_nitrate = new /datum/tlv/dangerous, /datum/gas/zauker = new /datum/tlv/dangerous, /datum/gas/helium = new /datum/tlv/dangerous, /datum/gas/antinoblium = new /datum/tlv/dangerous, /datum/gas/halon = new /datum/tlv/dangerous)
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -2154,7 +2156,7 @@
 	},
 /obj/machinery/light/directional/south,
 /obj/machinery/airalarm/directional/south{
-	TLV = list("pressure"=new/datum/tlv(20,50,325,550),"temperature"=new/datum/tlv(270.15,280.15,313.15,340.15),/datum/gas/oxygen=new/datum/tlv(-1,-1,5,10),/datum/gas/nitrogen=new/datum/tlv(20,50,325,550),/datum/gas/carbon_dioxide=new/datum/tlv(-1,-1,5,10),/datum/gas/miasma=new/datum/tlv(-1,-1,15,30),/datum/gas/plasma=new/datum/tlv/dangerous,/datum/gas/nitrous_oxide=new/datum/tlv/dangerous,/datum/gas/bz=new/datum/tlv/dangerous,/datum/gas/hypernoblium=new/datum/tlv(-1,-1,1000,1000),/datum/gas/water_vapor=new/datum/tlv/dangerous,/datum/gas/tritium=new/datum/tlv/dangerous,/datum/gas/nitrium=new/datum/tlv/dangerous,/datum/gas/pluoxium=new/datum/tlv(-1,-1,1000,1000),/datum/gas/freon=new/datum/tlv/dangerous,/datum/gas/hydrogen=new/datum/tlv/dangerous,/datum/gas/healium=new/datum/tlv/dangerous,/datum/gas/proto_nitrate=new/datum/tlv/dangerous,/datum/gas/zauker=new/datum/tlv/dangerous,/datum/gas/helium=new/datum/tlv/dangerous,/datum/gas/antinoblium=new/datum/tlv/dangerous,/datum/gas/halon=new/datum/tlv/dangerous)
+	TLV = list("pressure" = new /datum/tlv(20, 50, 325, 550), "temperature" = new /datum/tlv(270.15, 280.15, 313.15, 340.15), /datum/gas/oxygen = new /datum/tlv(-1, -1, 5, 10), /datum/gas/nitrogen = new /datum/tlv(16, 19, 1000, 1000), /datum/gas/carbon_dioxide = new /datum/tlv(-1, -1, 5, 10), /datum/gas/miasma = new /datum/tlv(-1, -1, 15, 30), /datum/gas/plasma = new /datum/tlv/dangerous, /datum/gas/nitrous_oxide = new /datum/tlv/dangerous, /datum/gas/bz = new /datum/tlv/dangerous, /datum/gas/hypernoblium = new /datum/tlv(-1, -1, 1000, 1000), /datum/gas/water_vapor = new /datum/tlv/dangerous, /datum/gas/tritium = new /datum/tlv/dangerous, /datum/gas/nitrium = new /datum/tlv/dangerous, /datum/gas/pluoxium = new /datum/tlv(-1, -1, 1000, 1000), /datum/gas/freon = new /datum/tlv/dangerous, /datum/gas/hydrogen = new /datum/tlv/dangerous, /datum/gas/healium = new /datum/tlv/dangerous, /datum/gas/proto_nitrate = new /datum/tlv/dangerous, /datum/gas/zauker = new /datum/tlv/dangerous, /datum/gas/helium = new /datum/tlv/dangerous, /datum/gas/antinoblium = new /datum/tlv/dangerous, /datum/gas/halon = new /datum/tlv/dangerous)
 	},
 /turf/open/floor/iron/dark{
 	initial_gas_mix = "n2=104;TEMP=293.15"
@@ -2222,13 +2224,6 @@
 	},
 /turf/open/floor/iron/white/smooth_large,
 /area/station/medical/medbay/central)
-"hk" = (
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/effect/spawner/random/structure/crate,
-/turf/open/floor/catwalk_floor/iron_smooth,
-/area/station/maintenance/department/medical)
 "hl" = (
 /obj/structure/cable,
 /turf/open/floor/iron/white/smooth_large,
@@ -3600,7 +3595,9 @@
 /turf/open/floor/iron/freezer,
 /area/station/medical/break_room)
 "lZ" = (
-/obj/machinery/door/poddoor,
+/obj/machinery/door/poddoor{
+	id = "med_turbine_outflow_vent"
+	},
 /turf/open/floor/engine/vacuum,
 /area/station/medical/power_station)
 "ma" = (
@@ -3649,6 +3646,11 @@
 /obj/effect/turf_decal/stripes/box,
 /turf/open/floor/plating,
 /area/station/security/medical)
+"mm" = (
+/obj/structure/lattice,
+/obj/effect/spawner/random/structure/grille,
+/turf/open/space/basic,
+/area/space/nearstation)
 "mo" = (
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 6
@@ -4510,7 +4512,7 @@
 	dir = 4
 	},
 /obj/machinery/airalarm/directional/south{
-	TLV = list("pressure"=new/datum/tlv(20,50,325,550),"temperature"=new/datum/tlv(270.15,280.15,313.15,340.15),/datum/gas/oxygen=new/datum/tlv(-1,-1,5,10),/datum/gas/nitrogen=new/datum/tlv(20,50,325,550),/datum/gas/carbon_dioxide=new/datum/tlv(-1,-1,5,10),/datum/gas/miasma=new/datum/tlv(-1,-1,15,30),/datum/gas/plasma=new/datum/tlv/dangerous,/datum/gas/nitrous_oxide=new/datum/tlv/dangerous,/datum/gas/bz=new/datum/tlv/dangerous,/datum/gas/hypernoblium=new/datum/tlv(-1,-1,1000,1000),/datum/gas/water_vapor=new/datum/tlv/dangerous,/datum/gas/tritium=new/datum/tlv/dangerous,/datum/gas/nitrium=new/datum/tlv/dangerous,/datum/gas/pluoxium=new/datum/tlv(-1,-1,1000,1000),/datum/gas/freon=new/datum/tlv/dangerous,/datum/gas/hydrogen=new/datum/tlv/dangerous,/datum/gas/healium=new/datum/tlv/dangerous,/datum/gas/proto_nitrate=new/datum/tlv/dangerous,/datum/gas/zauker=new/datum/tlv/dangerous,/datum/gas/helium=new/datum/tlv/dangerous,/datum/gas/antinoblium=new/datum/tlv/dangerous,/datum/gas/halon=new/datum/tlv/dangerous)
+	TLV = list("pressure" = new /datum/tlv(20, 50, 325, 550), "temperature" = new /datum/tlv(270.15, 280.15, 313.15, 340.15), /datum/gas/oxygen = new /datum/tlv(-1, -1, 5, 10), /datum/gas/nitrogen = new /datum/tlv(16, 19, 1000, 1000), /datum/gas/carbon_dioxide = new /datum/tlv(-1, -1, 5, 10), /datum/gas/miasma = new /datum/tlv(-1, -1, 15, 30), /datum/gas/plasma = new /datum/tlv/dangerous, /datum/gas/nitrous_oxide = new /datum/tlv/dangerous, /datum/gas/bz = new /datum/tlv/dangerous, /datum/gas/hypernoblium = new /datum/tlv(-1, -1, 1000, 1000), /datum/gas/water_vapor = new /datum/tlv/dangerous, /datum/gas/tritium = new /datum/tlv/dangerous, /datum/gas/nitrium = new /datum/tlv/dangerous, /datum/gas/pluoxium = new /datum/tlv(-1, -1, 1000, 1000), /datum/gas/freon = new /datum/tlv/dangerous, /datum/gas/hydrogen = new /datum/tlv/dangerous, /datum/gas/healium = new /datum/tlv/dangerous, /datum/gas/proto_nitrate = new /datum/tlv/dangerous, /datum/gas/zauker = new /datum/tlv/dangerous, /datum/gas/helium = new /datum/tlv/dangerous, /datum/gas/antinoblium = new /datum/tlv/dangerous, /datum/gas/halon = new /datum/tlv/dangerous)
 	},
 /obj/machinery/power/apc/auto_name/directional/west,
 /obj/structure/cable,
@@ -5328,8 +5330,6 @@
 /obj/effect/turf_decal/stripes/corner,
 /obj/item/radio/intercom/directional/east,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
-/obj/machinery/power/apc/auto_name/directional/north,
-/obj/structure/cable,
 /obj/effect/landmark/start/assistant,
 /obj/effect/turf_decal/delivery,
 /turf/open/floor/iron/dark,
@@ -5976,7 +5976,6 @@
 	},
 /area/station/security/brig)
 "uU" = (
-/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/door/airlock/medical/glass{
@@ -6933,7 +6932,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
 /obj/machinery/airalarm/directional/north{
-	TLV = list("pressure"=new/datum/tlv(20,50,325,550),"temperature"=new/datum/tlv(270.15,280.15,313.15,340.15),/datum/gas/oxygen=new/datum/tlv(-1,-1,5,10),/datum/gas/nitrogen=new/datum/tlv(20,50,325,550),/datum/gas/carbon_dioxide=new/datum/tlv(-1,-1,5,10),/datum/gas/miasma=new/datum/tlv(-1,-1,15,30),/datum/gas/plasma=new/datum/tlv/dangerous,/datum/gas/nitrous_oxide=new/datum/tlv/dangerous,/datum/gas/bz=new/datum/tlv/dangerous,/datum/gas/hypernoblium=new/datum/tlv(-1,-1,1000,1000),/datum/gas/water_vapor=new/datum/tlv/dangerous,/datum/gas/tritium=new/datum/tlv/dangerous,/datum/gas/nitrium=new/datum/tlv/dangerous,/datum/gas/pluoxium=new/datum/tlv(-1,-1,1000,1000),/datum/gas/freon=new/datum/tlv/dangerous,/datum/gas/hydrogen=new/datum/tlv/dangerous,/datum/gas/healium=new/datum/tlv/dangerous,/datum/gas/proto_nitrate=new/datum/tlv/dangerous,/datum/gas/zauker=new/datum/tlv/dangerous,/datum/gas/helium=new/datum/tlv/dangerous,/datum/gas/antinoblium=new/datum/tlv/dangerous,/datum/gas/halon=new/datum/tlv/dangerous)
+	TLV = list("pressure" = new /datum/tlv(20, 50, 325, 550), "temperature" = new /datum/tlv(270.15, 280.15, 313.15, 340.15), /datum/gas/oxygen = new /datum/tlv(-1, -1, 5, 10), /datum/gas/nitrogen = new /datum/tlv(16, 19, 1000, 1000), /datum/gas/carbon_dioxide = new /datum/tlv(-1, -1, 5, 10), /datum/gas/miasma = new /datum/tlv(-1, -1, 15, 30), /datum/gas/plasma = new /datum/tlv/dangerous, /datum/gas/nitrous_oxide = new /datum/tlv/dangerous, /datum/gas/bz = new /datum/tlv/dangerous, /datum/gas/hypernoblium = new /datum/tlv(-1, -1, 1000, 1000), /datum/gas/water_vapor = new /datum/tlv/dangerous, /datum/gas/tritium = new /datum/tlv/dangerous, /datum/gas/nitrium = new /datum/tlv/dangerous, /datum/gas/pluoxium = new /datum/tlv(-1, -1, 1000, 1000), /datum/gas/freon = new /datum/tlv/dangerous, /datum/gas/hydrogen = new /datum/tlv/dangerous, /datum/gas/healium = new /datum/tlv/dangerous, /datum/gas/proto_nitrate = new /datum/tlv/dangerous, /datum/gas/zauker = new /datum/tlv/dangerous, /datum/gas/helium = new /datum/tlv/dangerous, /datum/gas/antinoblium = new /datum/tlv/dangerous, /datum/gas/halon = new /datum/tlv/dangerous)
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -6965,7 +6964,7 @@
 	dir = 1
 	},
 /obj/machinery/airalarm/directional/south{
-	TLV = list("pressure"=new/datum/tlv(20,50,325,550),"temperature"=new/datum/tlv(270.15,280.15,313.15,340.15),/datum/gas/oxygen=new/datum/tlv(-1,-1,5,10),/datum/gas/nitrogen=new/datum/tlv(20,50,325,550),/datum/gas/carbon_dioxide=new/datum/tlv(-1,-1,5,10),/datum/gas/miasma=new/datum/tlv(-1,-1,15,30),/datum/gas/plasma=new/datum/tlv/dangerous,/datum/gas/nitrous_oxide=new/datum/tlv/dangerous,/datum/gas/bz=new/datum/tlv/dangerous,/datum/gas/hypernoblium=new/datum/tlv(-1,-1,1000,1000),/datum/gas/water_vapor=new/datum/tlv/dangerous,/datum/gas/tritium=new/datum/tlv/dangerous,/datum/gas/nitrium=new/datum/tlv/dangerous,/datum/gas/pluoxium=new/datum/tlv(-1,-1,1000,1000),/datum/gas/freon=new/datum/tlv/dangerous,/datum/gas/hydrogen=new/datum/tlv/dangerous,/datum/gas/healium=new/datum/tlv/dangerous,/datum/gas/proto_nitrate=new/datum/tlv/dangerous,/datum/gas/zauker=new/datum/tlv/dangerous,/datum/gas/helium=new/datum/tlv/dangerous,/datum/gas/antinoblium=new/datum/tlv/dangerous,/datum/gas/halon=new/datum/tlv/dangerous)
+	TLV = list("pressure" = new /datum/tlv(20, 50, 325, 550), "temperature" = new /datum/tlv(270.15, 280.15, 313.15, 340.15), /datum/gas/oxygen = new /datum/tlv(-1, -1, 5, 10), /datum/gas/nitrogen = new /datum/tlv(16, 19, 1000, 1000), /datum/gas/carbon_dioxide = new /datum/tlv(-1, -1, 5, 10), /datum/gas/miasma = new /datum/tlv(-1, -1, 15, 30), /datum/gas/plasma = new /datum/tlv/dangerous, /datum/gas/nitrous_oxide = new /datum/tlv/dangerous, /datum/gas/bz = new /datum/tlv/dangerous, /datum/gas/hypernoblium = new /datum/tlv(-1, -1, 1000, 1000), /datum/gas/water_vapor = new /datum/tlv/dangerous, /datum/gas/tritium = new /datum/tlv/dangerous, /datum/gas/nitrium = new /datum/tlv/dangerous, /datum/gas/pluoxium = new /datum/tlv(-1, -1, 1000, 1000), /datum/gas/freon = new /datum/tlv/dangerous, /datum/gas/hydrogen = new /datum/tlv/dangerous, /datum/gas/healium = new /datum/tlv/dangerous, /datum/gas/proto_nitrate = new /datum/tlv/dangerous, /datum/gas/zauker = new /datum/tlv/dangerous, /datum/gas/helium = new /datum/tlv/dangerous, /datum/gas/antinoblium = new /datum/tlv/dangerous, /datum/gas/halon = new /datum/tlv/dangerous)
 	},
 /turf/open/floor/iron/dark{
 	initial_gas_mix = "n2=104;TEMP=293.15"
@@ -7063,6 +7062,7 @@
 /obj/machinery/camera/directional/east{
 	c_tag = "Medbay - Central Aft"
 	},
+/obj/machinery/door/airlock/medical,
 /turf/open/floor/iron/white/smooth_large,
 /area/station/medical/medbay/central)
 "yk" = (
@@ -7691,6 +7691,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
+/obj/machinery/door/airlock/medical,
 /turf/open/floor/iron/white,
 /area/station/medical/exam_room)
 "Aj" = (
@@ -8626,11 +8627,6 @@
 /obj/machinery/door/airlock/security/glass,
 /turf/open/floor/catwalk_floor/iron_dark,
 /area/station/commons/dorms/barracks)
-"DX" = (
-/obj/effect/spawner/random/structure/grille,
-/obj/effect/spawner/random/structure/grille,
-/turf/open/space/basic,
-/area/space/nearstation)
 "DY" = (
 /obj/structure/cable,
 /obj/structure/table/glass,
@@ -8706,6 +8702,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
+/obj/machinery/door/airlock/medical,
 /turf/open/floor/iron/dark,
 /area/station/medical/treatment_center)
 "Er" = (
@@ -8798,7 +8795,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
 /obj/machinery/airalarm/directional/north{
-	TLV = list("pressure"=new/datum/tlv(20,50,325,550),"temperature"=new/datum/tlv(270.15,280.15,313.15,340.15),/datum/gas/oxygen=new/datum/tlv(-1,-1,5,10),/datum/gas/nitrogen=new/datum/tlv(20,50,325,550),/datum/gas/carbon_dioxide=new/datum/tlv(-1,-1,5,10),/datum/gas/miasma=new/datum/tlv(-1,-1,15,30),/datum/gas/plasma=new/datum/tlv/dangerous,/datum/gas/nitrous_oxide=new/datum/tlv/dangerous,/datum/gas/bz=new/datum/tlv/dangerous,/datum/gas/hypernoblium=new/datum/tlv(-1,-1,1000,1000),/datum/gas/water_vapor=new/datum/tlv/dangerous,/datum/gas/tritium=new/datum/tlv/dangerous,/datum/gas/nitrium=new/datum/tlv/dangerous,/datum/gas/pluoxium=new/datum/tlv(-1,-1,1000,1000),/datum/gas/freon=new/datum/tlv/dangerous,/datum/gas/hydrogen=new/datum/tlv/dangerous,/datum/gas/healium=new/datum/tlv/dangerous,/datum/gas/proto_nitrate=new/datum/tlv/dangerous,/datum/gas/zauker=new/datum/tlv/dangerous,/datum/gas/helium=new/datum/tlv/dangerous,/datum/gas/antinoblium=new/datum/tlv/dangerous,/datum/gas/halon=new/datum/tlv/dangerous)
+	TLV = list("pressure" = new /datum/tlv(20, 50, 325, 550), "temperature" = new /datum/tlv(270.15, 280.15, 313.15, 340.15), /datum/gas/oxygen = new /datum/tlv(-1, -1, 5, 10), /datum/gas/nitrogen = new /datum/tlv(16, 19, 1000, 1000), /datum/gas/carbon_dioxide = new /datum/tlv(-1, -1, 5, 10), /datum/gas/miasma = new /datum/tlv(-1, -1, 15, 30), /datum/gas/plasma = new /datum/tlv/dangerous, /datum/gas/nitrous_oxide = new /datum/tlv/dangerous, /datum/gas/bz = new /datum/tlv/dangerous, /datum/gas/hypernoblium = new /datum/tlv(-1, -1, 1000, 1000), /datum/gas/water_vapor = new /datum/tlv/dangerous, /datum/gas/tritium = new /datum/tlv/dangerous, /datum/gas/nitrium = new /datum/tlv/dangerous, /datum/gas/pluoxium = new /datum/tlv(-1, -1, 1000, 1000), /datum/gas/freon = new /datum/tlv/dangerous, /datum/gas/hydrogen = new /datum/tlv/dangerous, /datum/gas/healium = new /datum/tlv/dangerous, /datum/gas/proto_nitrate = new /datum/tlv/dangerous, /datum/gas/zauker = new /datum/tlv/dangerous, /datum/gas/helium = new /datum/tlv/dangerous, /datum/gas/antinoblium = new /datum/tlv/dangerous, /datum/gas/halon = new /datum/tlv/dangerous)
 	},
 /turf/open/floor/iron{
 	initial_gas_mix = "n2=104;TEMP=293.15"
@@ -8899,6 +8896,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/door/airlock/medical,
 /turf/open/floor/iron/dark,
 /area/station/medical/treatment_center)
 "EX" = (
@@ -9009,7 +9007,7 @@
 /area/station/security/lockers)
 "Fr" = (
 /obj/machinery/airalarm/directional/south{
-	TLV = list("pressure"=new/datum/tlv(20,50,325,550),"temperature"=new/datum/tlv(270.15,280.15,313.15,340.15),/datum/gas/oxygen=new/datum/tlv(-1,-1,5,10),/datum/gas/nitrogen=new/datum/tlv(20,50,325,550),/datum/gas/carbon_dioxide=new/datum/tlv(-1,-1,5,10),/datum/gas/miasma=new/datum/tlv(-1,-1,15,30),/datum/gas/plasma=new/datum/tlv/dangerous,/datum/gas/nitrous_oxide=new/datum/tlv/dangerous,/datum/gas/bz=new/datum/tlv/dangerous,/datum/gas/hypernoblium=new/datum/tlv(-1,-1,1000,1000),/datum/gas/water_vapor=new/datum/tlv/dangerous,/datum/gas/tritium=new/datum/tlv/dangerous,/datum/gas/nitrium=new/datum/tlv/dangerous,/datum/gas/pluoxium=new/datum/tlv(-1,-1,1000,1000),/datum/gas/freon=new/datum/tlv/dangerous,/datum/gas/hydrogen=new/datum/tlv/dangerous,/datum/gas/healium=new/datum/tlv/dangerous,/datum/gas/proto_nitrate=new/datum/tlv/dangerous,/datum/gas/zauker=new/datum/tlv/dangerous,/datum/gas/helium=new/datum/tlv/dangerous,/datum/gas/antinoblium=new/datum/tlv/dangerous,/datum/gas/halon=new/datum/tlv/dangerous)
+	TLV = list("pressure" = new /datum/tlv(20, 50, 325, 550), "temperature" = new /datum/tlv(270.15, 280.15, 313.15, 340.15), /datum/gas/oxygen = new /datum/tlv(-1, -1, 5, 10), /datum/gas/nitrogen = new /datum/tlv(16, 19, 1000, 1000), /datum/gas/carbon_dioxide = new /datum/tlv(-1, -1, 5, 10), /datum/gas/miasma = new /datum/tlv(-1, -1, 15, 30), /datum/gas/plasma = new /datum/tlv/dangerous, /datum/gas/nitrous_oxide = new /datum/tlv/dangerous, /datum/gas/bz = new /datum/tlv/dangerous, /datum/gas/hypernoblium = new /datum/tlv(-1, -1, 1000, 1000), /datum/gas/water_vapor = new /datum/tlv/dangerous, /datum/gas/tritium = new /datum/tlv/dangerous, /datum/gas/nitrium = new /datum/tlv/dangerous, /datum/gas/pluoxium = new /datum/tlv(-1, -1, 1000, 1000), /datum/gas/freon = new /datum/tlv/dangerous, /datum/gas/hydrogen = new /datum/tlv/dangerous, /datum/gas/healium = new /datum/tlv/dangerous, /datum/gas/proto_nitrate = new /datum/tlv/dangerous, /datum/gas/zauker = new /datum/tlv/dangerous, /datum/gas/helium = new /datum/tlv/dangerous, /datum/gas/antinoblium = new /datum/tlv/dangerous, /datum/gas/halon = new /datum/tlv/dangerous)
 	},
 /turf/open/floor/iron/dark{
 	initial_gas_mix = "n2=104;TEMP=293.15"
@@ -9104,11 +9102,17 @@
 /area/station/medical/chemistry)
 "FN" = (
 /obj/machinery/airalarm/directional/south{
-	TLV = list("pressure"=new/datum/tlv(20,50,325,550),"temperature"=new/datum/tlv(270.15,280.15,313.15,340.15),/datum/gas/oxygen=new/datum/tlv(-1,-1,5,10),/datum/gas/nitrogen=new/datum/tlv(20,50,325,550),/datum/gas/carbon_dioxide=new/datum/tlv(-1,-1,5,10),/datum/gas/miasma=new/datum/tlv(-1,-1,15,30),/datum/gas/plasma=new/datum/tlv/dangerous,/datum/gas/nitrous_oxide=new/datum/tlv/dangerous,/datum/gas/bz=new/datum/tlv/dangerous,/datum/gas/hypernoblium=new/datum/tlv(-1,-1,1000,1000),/datum/gas/water_vapor=new/datum/tlv/dangerous,/datum/gas/tritium=new/datum/tlv/dangerous,/datum/gas/nitrium=new/datum/tlv/dangerous,/datum/gas/pluoxium=new/datum/tlv(-1,-1,1000,1000),/datum/gas/freon=new/datum/tlv/dangerous,/datum/gas/hydrogen=new/datum/tlv/dangerous,/datum/gas/healium=new/datum/tlv/dangerous,/datum/gas/proto_nitrate=new/datum/tlv/dangerous,/datum/gas/zauker=new/datum/tlv/dangerous,/datum/gas/helium=new/datum/tlv/dangerous,/datum/gas/antinoblium=new/datum/tlv/dangerous,/datum/gas/halon=new/datum/tlv/dangerous)
+	TLV = list("pressure" = new /datum/tlv(20, 50, 325, 550), "temperature" = new /datum/tlv(270.15, 280.15, 313.15, 340.15), /datum/gas/oxygen = new /datum/tlv(-1, -1, 5, 10), /datum/gas/nitrogen = new /datum/tlv(16, 19, 1000, 1000), /datum/gas/carbon_dioxide = new /datum/tlv(-1, -1, 5, 10), /datum/gas/miasma = new /datum/tlv(-1, -1, 15, 30), /datum/gas/plasma = new /datum/tlv/dangerous, /datum/gas/nitrous_oxide = new /datum/tlv/dangerous, /datum/gas/bz = new /datum/tlv/dangerous, /datum/gas/hypernoblium = new /datum/tlv(-1, -1, 1000, 1000), /datum/gas/water_vapor = new /datum/tlv/dangerous, /datum/gas/tritium = new /datum/tlv/dangerous, /datum/gas/nitrium = new /datum/tlv/dangerous, /datum/gas/pluoxium = new /datum/tlv(-1, -1, 1000, 1000), /datum/gas/freon = new /datum/tlv/dangerous, /datum/gas/hydrogen = new /datum/tlv/dangerous, /datum/gas/healium = new /datum/tlv/dangerous, /datum/gas/proto_nitrate = new /datum/tlv/dangerous, /datum/gas/zauker = new /datum/tlv/dangerous, /datum/gas/helium = new /datum/tlv/dangerous, /datum/gas/antinoblium = new /datum/tlv/dangerous, /datum/gas/halon = new /datum/tlv/dangerous)
 	},
 /turf/open/floor/plating{
 	initial_gas_mix = "n2=104;TEMP=293.15"
 	},
+/area/station/security/power_station)
+"FP" = (
+/obj/machinery/door/poddoor{
+	id = "sec_turbine_chamber_vent"
+	},
+/turf/open/floor/engine/vacuum,
 /area/station/security/power_station)
 "FQ" = (
 /obj/structure/table/optable,
@@ -9485,14 +9489,6 @@
 "Hm" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/visible/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/dark/visible,
-/obj/machinery/door_buttons/access_button{
-	dir = 1;
-	idDoor = "Med_Turbine_Interior";
-	idSelf = "turbine_airlock_control";
-	name = "Turbine Access Button";
-	req_access = list("cmo, atmos, engineering");
-	pixel_x = -22
-	},
 /obj/machinery/door/airlock/hatch,
 /obj/effect/mapping_helpers/airlock/access/any/engineering/atmos,
 /turf/open/floor/engine/vacuum,
@@ -9645,6 +9641,9 @@
 /obj/structure/chair/sofa/bench/right,
 /obj/structure/cable,
 /obj/machinery/light/directional/north,
+/obj/machinery/airalarm/directional/north{
+	TLV = list("pressure" = new /datum/tlv(20, 50, 325, 550), "temperature" = new /datum/tlv(270.15, 280.15, 313.15, 340.15), /datum/gas/oxygen = new /datum/tlv(-1, -1, 5, 10), /datum/gas/nitrogen = new /datum/tlv(16, 19, 1000, 1000), /datum/gas/carbon_dioxide = new /datum/tlv(-1, -1, 5, 10), /datum/gas/miasma = new /datum/tlv(-1, -1, 15, 30), /datum/gas/plasma = new /datum/tlv/dangerous, /datum/gas/nitrous_oxide = new /datum/tlv/dangerous, /datum/gas/bz = new /datum/tlv/dangerous, /datum/gas/hypernoblium = new /datum/tlv(-1, -1, 1000, 1000), /datum/gas/water_vapor = new /datum/tlv/dangerous, /datum/gas/tritium = new /datum/tlv/dangerous, /datum/gas/nitrium = new /datum/tlv/dangerous, /datum/gas/pluoxium = new /datum/tlv(-1, -1, 1000, 1000), /datum/gas/freon = new /datum/tlv/dangerous, /datum/gas/hydrogen = new /datum/tlv/dangerous, /datum/gas/healium = new /datum/tlv/dangerous, /datum/gas/proto_nitrate = new /datum/tlv/dangerous, /datum/gas/zauker = new /datum/tlv/dangerous, /datum/gas/helium = new /datum/tlv/dangerous, /datum/gas/antinoblium = new /datum/tlv/dangerous, /datum/gas/halon = new /datum/tlv/dangerous)
+	},
 /turf/open/floor/iron/dark{
 	initial_gas_mix = "n2=104;TEMP=293.15"
 	},
@@ -9663,7 +9662,7 @@
 /obj/structure/closet/secure_closet/warden,
 /obj/item/gun/energy/laser,
 /obj/machinery/airalarm/directional/west{
-	TLV = list("pressure"=new/datum/tlv(20,50,325,550),"temperature"=new/datum/tlv(270.15,280.15,313.15,340.15),/datum/gas/oxygen=new/datum/tlv(-1,-1,5,10),/datum/gas/nitrogen=new/datum/tlv(20,50,325,550),/datum/gas/carbon_dioxide=new/datum/tlv(-1,-1,5,10),/datum/gas/miasma=new/datum/tlv(-1,-1,15,30),/datum/gas/plasma=new/datum/tlv/dangerous,/datum/gas/nitrous_oxide=new/datum/tlv/dangerous,/datum/gas/bz=new/datum/tlv/dangerous,/datum/gas/hypernoblium=new/datum/tlv(-1,-1,1000,1000),/datum/gas/water_vapor=new/datum/tlv/dangerous,/datum/gas/tritium=new/datum/tlv/dangerous,/datum/gas/nitrium=new/datum/tlv/dangerous,/datum/gas/pluoxium=new/datum/tlv(-1,-1,1000,1000),/datum/gas/freon=new/datum/tlv/dangerous,/datum/gas/hydrogen=new/datum/tlv/dangerous,/datum/gas/healium=new/datum/tlv/dangerous,/datum/gas/proto_nitrate=new/datum/tlv/dangerous,/datum/gas/zauker=new/datum/tlv/dangerous,/datum/gas/helium=new/datum/tlv/dangerous,/datum/gas/antinoblium=new/datum/tlv/dangerous,/datum/gas/halon=new/datum/tlv/dangerous)
+	TLV = list("pressure" = new /datum/tlv(20, 50, 325, 550), "temperature" = new /datum/tlv(270.15, 280.15, 313.15, 340.15), /datum/gas/oxygen = new /datum/tlv(-1, -1, 5, 10), /datum/gas/nitrogen = new /datum/tlv(16, 19, 1000, 1000), /datum/gas/carbon_dioxide = new /datum/tlv(-1, -1, 5, 10), /datum/gas/miasma = new /datum/tlv(-1, -1, 15, 30), /datum/gas/plasma = new /datum/tlv/dangerous, /datum/gas/nitrous_oxide = new /datum/tlv/dangerous, /datum/gas/bz = new /datum/tlv/dangerous, /datum/gas/hypernoblium = new /datum/tlv(-1, -1, 1000, 1000), /datum/gas/water_vapor = new /datum/tlv/dangerous, /datum/gas/tritium = new /datum/tlv/dangerous, /datum/gas/nitrium = new /datum/tlv/dangerous, /datum/gas/pluoxium = new /datum/tlv(-1, -1, 1000, 1000), /datum/gas/freon = new /datum/tlv/dangerous, /datum/gas/hydrogen = new /datum/tlv/dangerous, /datum/gas/healium = new /datum/tlv/dangerous, /datum/gas/proto_nitrate = new /datum/tlv/dangerous, /datum/gas/zauker = new /datum/tlv/dangerous, /datum/gas/helium = new /datum/tlv/dangerous, /datum/gas/antinoblium = new /datum/tlv/dangerous, /datum/gas/halon = new /datum/tlv/dangerous)
 	},
 /turf/open/floor/iron/dark{
 	initial_gas_mix = "n2=104;TEMP=293.15"
@@ -9948,6 +9947,17 @@
 	id = "med_turbine_igniter";
 	pixel_x = 24
 	},
+/obj/machinery/button/door/directional/east{
+	pixel_y = -10;
+	name = "Burn Chamber Vent";
+	id = "med_turbine_chamber_vent"
+	},
+/obj/machinery/button/door/directional/east{
+	pixel_y = -10;
+	name = "Turbine Outflow Vent";
+	id = "med_turbine_outflow_vent";
+	pixel_x = 36
+	},
 /turf/open/floor/iron/dark,
 /area/station/medical/power_station)
 "IT" = (
@@ -10039,7 +10049,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/orange/hidden/layer4,
 /obj/structure/cable,
 /obj/machinery/airalarm/directional/west{
-	TLV = list("pressure"=new/datum/tlv(20,50,325,550),"temperature"=new/datum/tlv(270.15,280.15,313.15,340.15),/datum/gas/oxygen=new/datum/tlv(-1,-1,5,10),/datum/gas/nitrogen=new/datum/tlv(20,50,325,550),/datum/gas/carbon_dioxide=new/datum/tlv(-1,-1,5,10),/datum/gas/miasma=new/datum/tlv(-1,-1,15,30),/datum/gas/plasma=new/datum/tlv/dangerous,/datum/gas/nitrous_oxide=new/datum/tlv/dangerous,/datum/gas/bz=new/datum/tlv/dangerous,/datum/gas/hypernoblium=new/datum/tlv(-1,-1,1000,1000),/datum/gas/water_vapor=new/datum/tlv/dangerous,/datum/gas/tritium=new/datum/tlv/dangerous,/datum/gas/nitrium=new/datum/tlv/dangerous,/datum/gas/pluoxium=new/datum/tlv(-1,-1,1000,1000),/datum/gas/freon=new/datum/tlv/dangerous,/datum/gas/hydrogen=new/datum/tlv/dangerous,/datum/gas/healium=new/datum/tlv/dangerous,/datum/gas/proto_nitrate=new/datum/tlv/dangerous,/datum/gas/zauker=new/datum/tlv/dangerous,/datum/gas/helium=new/datum/tlv/dangerous,/datum/gas/antinoblium=new/datum/tlv/dangerous,/datum/gas/halon=new/datum/tlv/dangerous)
+	TLV = list("pressure" = new /datum/tlv(20, 50, 325, 550), "temperature" = new /datum/tlv(270.15, 280.15, 313.15, 340.15), /datum/gas/oxygen = new /datum/tlv(-1, -1, 5, 10), /datum/gas/nitrogen = new /datum/tlv(16, 19, 1000, 1000), /datum/gas/carbon_dioxide = new /datum/tlv(-1, -1, 5, 10), /datum/gas/miasma = new /datum/tlv(-1, -1, 15, 30), /datum/gas/plasma = new /datum/tlv/dangerous, /datum/gas/nitrous_oxide = new /datum/tlv/dangerous, /datum/gas/bz = new /datum/tlv/dangerous, /datum/gas/hypernoblium = new /datum/tlv(-1, -1, 1000, 1000), /datum/gas/water_vapor = new /datum/tlv/dangerous, /datum/gas/tritium = new /datum/tlv/dangerous, /datum/gas/nitrium = new /datum/tlv/dangerous, /datum/gas/pluoxium = new /datum/tlv(-1, -1, 1000, 1000), /datum/gas/freon = new /datum/tlv/dangerous, /datum/gas/hydrogen = new /datum/tlv/dangerous, /datum/gas/healium = new /datum/tlv/dangerous, /datum/gas/proto_nitrate = new /datum/tlv/dangerous, /datum/gas/zauker = new /datum/tlv/dangerous, /datum/gas/helium = new /datum/tlv/dangerous, /datum/gas/antinoblium = new /datum/tlv/dangerous, /datum/gas/halon = new /datum/tlv/dangerous)
 	},
 /turf/open/floor/iron/dark{
 	initial_gas_mix = "n2=104;TEMP=293.15"
@@ -10219,7 +10229,6 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/cable,
 /obj/machinery/navbeacon{
 	codes_txt = "delivery;dir=1";
 	dir = 4;
@@ -10528,6 +10537,11 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/station/security/execution/transfer)
+"KC" = (
+/obj/effect/spawner/random/structure/grille,
+/obj/structure/lattice,
+/turf/open/space/basic,
+/area/space/nearstation)
 "KD" = (
 /obj/structure/sign/departments/medbay/alt,
 /turf/closed/wall,
@@ -11074,6 +11088,10 @@
 	initial_gas_mix = "n2=104;TEMP=293.15"
 	},
 /area/station/command/heads_quarters/hos)
+"Mk" = (
+/obj/machinery/airalarm/directional/north,
+/turf/open/floor/iron/dark,
+/area/station/medical/medbay/central)
 "Mm" = (
 /obj/structure/chair/stool/bar/directional/west,
 /obj/structure/cable,
@@ -11313,7 +11331,7 @@
 	},
 /obj/effect/turf_decal/trimline/red/filled/line,
 /obj/machinery/airalarm/directional/south{
-	TLV = list("pressure"=new/datum/tlv(20,50,325,550),"temperature"=new/datum/tlv(270.15,280.15,313.15,340.15),/datum/gas/oxygen=new/datum/tlv(-1,-1,5,10),/datum/gas/nitrogen=new/datum/tlv(20,50,325,550),/datum/gas/carbon_dioxide=new/datum/tlv(-1,-1,5,10),/datum/gas/miasma=new/datum/tlv(-1,-1,15,30),/datum/gas/plasma=new/datum/tlv/dangerous,/datum/gas/nitrous_oxide=new/datum/tlv/dangerous,/datum/gas/bz=new/datum/tlv/dangerous,/datum/gas/hypernoblium=new/datum/tlv(-1,-1,1000,1000),/datum/gas/water_vapor=new/datum/tlv/dangerous,/datum/gas/tritium=new/datum/tlv/dangerous,/datum/gas/nitrium=new/datum/tlv/dangerous,/datum/gas/pluoxium=new/datum/tlv(-1,-1,1000,1000),/datum/gas/freon=new/datum/tlv/dangerous,/datum/gas/hydrogen=new/datum/tlv/dangerous,/datum/gas/healium=new/datum/tlv/dangerous,/datum/gas/proto_nitrate=new/datum/tlv/dangerous,/datum/gas/zauker=new/datum/tlv/dangerous,/datum/gas/helium=new/datum/tlv/dangerous,/datum/gas/antinoblium=new/datum/tlv/dangerous,/datum/gas/halon=new/datum/tlv/dangerous)
+	TLV = list("pressure" = new /datum/tlv(20, 50, 325, 550), "temperature" = new /datum/tlv(270.15, 280.15, 313.15, 340.15), /datum/gas/oxygen = new /datum/tlv(-1, -1, 5, 10), /datum/gas/nitrogen = new /datum/tlv(16, 19, 1000, 1000), /datum/gas/carbon_dioxide = new /datum/tlv(-1, -1, 5, 10), /datum/gas/miasma = new /datum/tlv(-1, -1, 15, 30), /datum/gas/plasma = new /datum/tlv/dangerous, /datum/gas/nitrous_oxide = new /datum/tlv/dangerous, /datum/gas/bz = new /datum/tlv/dangerous, /datum/gas/hypernoblium = new /datum/tlv(-1, -1, 1000, 1000), /datum/gas/water_vapor = new /datum/tlv/dangerous, /datum/gas/tritium = new /datum/tlv/dangerous, /datum/gas/nitrium = new /datum/tlv/dangerous, /datum/gas/pluoxium = new /datum/tlv(-1, -1, 1000, 1000), /datum/gas/freon = new /datum/tlv/dangerous, /datum/gas/hydrogen = new /datum/tlv/dangerous, /datum/gas/healium = new /datum/tlv/dangerous, /datum/gas/proto_nitrate = new /datum/tlv/dangerous, /datum/gas/zauker = new /datum/tlv/dangerous, /datum/gas/helium = new /datum/tlv/dangerous, /datum/gas/antinoblium = new /datum/tlv/dangerous, /datum/gas/halon = new /datum/tlv/dangerous)
 	},
 /turf/open/floor/iron/dark{
 	initial_gas_mix = "n2=104;TEMP=293.15"
@@ -11415,6 +11433,14 @@
 /obj/structure/sign/warning/vacuum,
 /turf/closed/wall/r_wall,
 /area/station/security/power_station)
+"ND" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment,
+/obj/machinery/airalarm/directional/west,
+/turf/open/floor/iron/white/smooth_large,
+/area/station/medical/medbay/central)
 "NE" = (
 /obj/effect/landmark/event_spawn,
 /turf/open/floor/plating,
@@ -11460,6 +11486,12 @@
 	},
 /turf/open/floor/iron/white/smooth_large,
 /area/station/medical/medbay/central)
+"NH" = (
+/obj/machinery/door/poddoor{
+	id = "med_turbine_chamber_vent"
+	},
+/turf/open/floor/engine/vacuum,
+/area/station/medical/power_station)
 "NJ" = (
 /obj/machinery/light/directional/north,
 /obj/effect/turf_decal/trimline/red/filled/line{
@@ -12651,7 +12683,6 @@
 	},
 /area/station/security/brig)
 "RU" = (
-/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/dark,
@@ -12707,7 +12738,7 @@
 	dir = 1
 	},
 /obj/machinery/airalarm/directional/south{
-	TLV = list("pressure"=new/datum/tlv(20,50,325,550),"temperature"=new/datum/tlv(270.15,280.15,313.15,340.15),/datum/gas/oxygen=new/datum/tlv(-1,-1,5,10),/datum/gas/nitrogen=new/datum/tlv(20,50,325,550),/datum/gas/carbon_dioxide=new/datum/tlv(-1,-1,5,10),/datum/gas/miasma=new/datum/tlv(-1,-1,15,30),/datum/gas/plasma=new/datum/tlv/dangerous,/datum/gas/nitrous_oxide=new/datum/tlv/dangerous,/datum/gas/bz=new/datum/tlv/dangerous,/datum/gas/hypernoblium=new/datum/tlv(-1,-1,1000,1000),/datum/gas/water_vapor=new/datum/tlv/dangerous,/datum/gas/tritium=new/datum/tlv/dangerous,/datum/gas/nitrium=new/datum/tlv/dangerous,/datum/gas/pluoxium=new/datum/tlv(-1,-1,1000,1000),/datum/gas/freon=new/datum/tlv/dangerous,/datum/gas/hydrogen=new/datum/tlv/dangerous,/datum/gas/healium=new/datum/tlv/dangerous,/datum/gas/proto_nitrate=new/datum/tlv/dangerous,/datum/gas/zauker=new/datum/tlv/dangerous,/datum/gas/helium=new/datum/tlv/dangerous,/datum/gas/antinoblium=new/datum/tlv/dangerous,/datum/gas/halon=new/datum/tlv/dangerous)
+	TLV = list("pressure" = new /datum/tlv(20, 50, 325, 550), "temperature" = new /datum/tlv(270.15, 280.15, 313.15, 340.15), /datum/gas/oxygen = new /datum/tlv(-1, -1, 5, 10), /datum/gas/nitrogen = new /datum/tlv(16, 19, 1000, 1000), /datum/gas/carbon_dioxide = new /datum/tlv(-1, -1, 5, 10), /datum/gas/miasma = new /datum/tlv(-1, -1, 15, 30), /datum/gas/plasma = new /datum/tlv/dangerous, /datum/gas/nitrous_oxide = new /datum/tlv/dangerous, /datum/gas/bz = new /datum/tlv/dangerous, /datum/gas/hypernoblium = new /datum/tlv(-1, -1, 1000, 1000), /datum/gas/water_vapor = new /datum/tlv/dangerous, /datum/gas/tritium = new /datum/tlv/dangerous, /datum/gas/nitrium = new /datum/tlv/dangerous, /datum/gas/pluoxium = new /datum/tlv(-1, -1, 1000, 1000), /datum/gas/freon = new /datum/tlv/dangerous, /datum/gas/hydrogen = new /datum/tlv/dangerous, /datum/gas/healium = new /datum/tlv/dangerous, /datum/gas/proto_nitrate = new /datum/tlv/dangerous, /datum/gas/zauker = new /datum/tlv/dangerous, /datum/gas/helium = new /datum/tlv/dangerous, /datum/gas/antinoblium = new /datum/tlv/dangerous, /datum/gas/halon = new /datum/tlv/dangerous)
 	},
 /turf/open/floor/iron/dark{
 	initial_gas_mix = "n2=104;TEMP=293.15"
@@ -12927,7 +12958,7 @@
 	dir = 5
 	},
 /obj/machinery/airalarm/directional/west{
-	TLV = list("pressure"=new/datum/tlv(20,50,325,550),"temperature"=new/datum/tlv(270.15,280.15,313.15,340.15),/datum/gas/oxygen=new/datum/tlv(-1,-1,5,10),/datum/gas/nitrogen=new/datum/tlv(20,50,325,550),/datum/gas/carbon_dioxide=new/datum/tlv(-1,-1,5,10),/datum/gas/miasma=new/datum/tlv(-1,-1,15,30),/datum/gas/plasma=new/datum/tlv/dangerous,/datum/gas/nitrous_oxide=new/datum/tlv/dangerous,/datum/gas/bz=new/datum/tlv/dangerous,/datum/gas/hypernoblium=new/datum/tlv(-1,-1,1000,1000),/datum/gas/water_vapor=new/datum/tlv/dangerous,/datum/gas/tritium=new/datum/tlv/dangerous,/datum/gas/nitrium=new/datum/tlv/dangerous,/datum/gas/pluoxium=new/datum/tlv(-1,-1,1000,1000),/datum/gas/freon=new/datum/tlv/dangerous,/datum/gas/hydrogen=new/datum/tlv/dangerous,/datum/gas/healium=new/datum/tlv/dangerous,/datum/gas/proto_nitrate=new/datum/tlv/dangerous,/datum/gas/zauker=new/datum/tlv/dangerous,/datum/gas/helium=new/datum/tlv/dangerous,/datum/gas/antinoblium=new/datum/tlv/dangerous,/datum/gas/halon=new/datum/tlv/dangerous)
+	TLV = list("pressure" = new /datum/tlv(20, 50, 325, 550), "temperature" = new /datum/tlv(270.15, 280.15, 313.15, 340.15), /datum/gas/oxygen = new /datum/tlv(-1, -1, 5, 10), /datum/gas/nitrogen = new /datum/tlv(16, 19, 1000, 1000), /datum/gas/carbon_dioxide = new /datum/tlv(-1, -1, 5, 10), /datum/gas/miasma = new /datum/tlv(-1, -1, 15, 30), /datum/gas/plasma = new /datum/tlv/dangerous, /datum/gas/nitrous_oxide = new /datum/tlv/dangerous, /datum/gas/bz = new /datum/tlv/dangerous, /datum/gas/hypernoblium = new /datum/tlv(-1, -1, 1000, 1000), /datum/gas/water_vapor = new /datum/tlv/dangerous, /datum/gas/tritium = new /datum/tlv/dangerous, /datum/gas/nitrium = new /datum/tlv/dangerous, /datum/gas/pluoxium = new /datum/tlv(-1, -1, 1000, 1000), /datum/gas/freon = new /datum/tlv/dangerous, /datum/gas/hydrogen = new /datum/tlv/dangerous, /datum/gas/healium = new /datum/tlv/dangerous, /datum/gas/proto_nitrate = new /datum/tlv/dangerous, /datum/gas/zauker = new /datum/tlv/dangerous, /datum/gas/helium = new /datum/tlv/dangerous, /datum/gas/antinoblium = new /datum/tlv/dangerous, /datum/gas/halon = new /datum/tlv/dangerous)
 	},
 /turf/open/floor/plating{
 	initial_gas_mix = "n2=104;TEMP=293.15"
@@ -13105,6 +13136,7 @@
 /obj/effect/turf_decal/trimline/blue/filled/corner{
 	dir = 1
 	},
+/obj/machinery/door/airlock/medical,
 /turf/open/floor/iron/dark,
 /area/station/medical/medbay/central)
 "TI" = (
@@ -13464,6 +13496,11 @@
 /obj/effect/mapping_helpers/airlock/access/all/engineering/external,
 /turf/open/floor/plating,
 /area/station/maintenance/thruster_room)
+"UX" = (
+/obj/structure/disposalpipe/segment,
+/obj/machinery/door/airlock/medical,
+/turf/open/floor/iron/white/smooth_large,
+/area/station/medical/medbay/central)
 "Vc" = (
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 1
@@ -13516,6 +13553,17 @@
 	pixel_x = 24
 	},
 /obj/machinery/light/directional/east,
+/obj/machinery/button/door/directional/east{
+	pixel_y = -10;
+	name = "Burn Chamber Vent";
+	id = "sec_turbine_chamber_vent"
+	},
+/obj/machinery/button/door/directional/east{
+	pixel_y = -10;
+	name = "Turbine Outflow Vent";
+	id = "sec_turbine_outflow_vent";
+	pixel_x = 36
+	},
 /turf/open/floor/plating{
 	initial_gas_mix = "n2=104;TEMP=293.15"
 	},
@@ -13789,8 +13837,9 @@
 /turf/open/floor/iron/dark,
 /area/station/command/heads_quarters/cmo)
 "Wk" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/layer2{
-	dir = 8
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 8;
+	filter_types = list(/datum/gas/carbon_dioxide, /datum/gas/water_vapor)
 	},
 /turf/open/floor/engine/vacuum,
 /area/station/medical/power_station)
@@ -14066,6 +14115,14 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/medical/medbay/central)
+"Xq" = (
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/iron/white/smooth_large,
+/area/station/medical/medbay/central)
 "Xr" = (
 /obj/structure/cable,
 /obj/structure/sink/directional/south,
@@ -14306,6 +14363,16 @@
 	initial_gas_mix = "n2=104;TEMP=293.15"
 	},
 /area/station/security/holding_cell)
+"Yo" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/door/airlock/medical,
+/turf/open/floor/iron/dark,
+/area/station/medical/medbay/central)
 "Yq" = (
 /turf/closed/wall,
 /area/station/security/detectives_office)
@@ -14359,6 +14426,11 @@
 	},
 /turf/open/floor/catwalk_floor/iron_dark,
 /area/station/medical/coldroom)
+"Yz" = (
+/obj/effect/spawner/random/structure/grille,
+/obj/structure/lattice,
+/turf/open/openspace,
+/area/space)
 "YA" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -14376,7 +14448,9 @@
 /turf/open/floor/catwalk_floor/iron,
 /area/station/security/prison)
 "YD" = (
-/obj/machinery/door/poddoor,
+/obj/machinery/door/poddoor{
+	id = "sec_turbine_outflow_vent"
+	},
 /turf/open/floor/engine/vacuum,
 /area/station/security/power_station)
 "YE" = (
@@ -14451,8 +14525,9 @@
 /turf/open/floor/iron/white,
 /area/station/medical/virology)
 "YQ" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/layer2{
-	dir = 8
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 8;
+	filter_types = list(/datum/gas/carbon_dioxide, /datum/gas/water_vapor)
 	},
 /turf/open/floor/engine/vacuum,
 /area/station/security/power_station)
@@ -14664,6 +14739,8 @@
 "ZE" = (
 /obj/effect/landmark/start/paramedic,
 /obj/structure/disposalpipe/segment,
+/obj/machinery/power/apc/auto_name/directional/west,
+/obj/structure/cable,
 /turf/open/floor/iron/white/smooth_large,
 /area/station/medical/medbay/central)
 "ZF" = (
@@ -14762,6 +14839,7 @@
 /obj/machinery/camera/directional/east{
 	c_tag = "Medbay - Treatment"
 	},
+/obj/machinery/airalarm/directional/east,
 /turf/open/floor/iron/dark,
 /area/station/medical/treatment_center)
 "ZQ" = (
@@ -22452,18 +22530,18 @@ qB
 qB
 qB
 qB
-Po
+KC
 Po
 Po
 Po
 Po
 pJ
+KC
 Po
 Po
 Po
 Po
-Po
-Po
+KC
 qB
 qB
 qB
@@ -22980,7 +23058,7 @@ sN
 IB
 IB
 pJ
-Po
+KC
 qB
 qB
 qB
@@ -24008,7 +24086,7 @@ sN
 IB
 IB
 pJ
-Po
+KC
 qB
 qB
 qB
@@ -27336,7 +27414,7 @@ WW
 hG
 WW
 WW
-lZ
+NH
 WW
 qB
 qB
@@ -27830,7 +27908,7 @@ BM
 KM
 ys
 ys
-hk
+ys
 Ql
 MI
 MI
@@ -28852,10 +28930,10 @@ qB
 qB
 qB
 qB
+KC
 Po
 Po
-Po
-Po
+KC
 qB
 qB
 qB
@@ -87987,13 +88065,13 @@ pj
 pj
 pj
 pj
+KC
+KC
 Po
 Po
 Po
-Po
-Po
-Po
-Po
+KC
+KC
 pj
 pj
 pj
@@ -91566,7 +91644,7 @@ vL
 VZ
 mH
 TH
-Bt
+Yo
 FY
 YE
 od
@@ -91577,7 +91655,7 @@ iv
 uW
 eK
 Ou
-Ou
+UX
 HL
 Ou
 Ou
@@ -91822,7 +91900,7 @@ Tc
 av
 vk
 mH
-fp
+Mk
 rv
 tJ
 JL
@@ -93111,7 +93189,7 @@ WV
 hi
 eF
 Ou
-fH
+ND
 ZE
 qX
 Ou
@@ -93628,7 +93706,7 @@ dt
 gN
 Ks
 qw
-ng
+Xq
 uW
 oP
 vW
@@ -94162,7 +94240,7 @@ UA
 eq
 xf
 Mi
-mK
+Yz
 pj
 pj
 pj
@@ -94676,7 +94754,7 @@ Hp
 Hp
 xf
 Mi
-mK
+Yz
 pj
 pj
 pj
@@ -95176,12 +95254,12 @@ pj
 pj
 MQ
 pj
+KC
 Po
-DX
 Po
 Po
-DX
-pJ
+Po
+mm
 pa
 pj
 pj
@@ -111300,7 +111378,7 @@ Is
 LY
 Is
 Is
-YD
+FP
 Is
 pj
 pj
