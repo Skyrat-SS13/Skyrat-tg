@@ -39,7 +39,9 @@
 /turf/open/floor/iron/white,
 /area/station/commons/dorms/barracks)
 "aj" = (
-/obj/machinery/air_sensor/incinerator_tank,
+/obj/machinery/air_sensor/incinerator_tank{
+	name = "med turbine gas sensor"
+	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/visible/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/dark/visible,
 /turf/open/floor/engine/vacuum,
@@ -52,6 +54,7 @@
 /obj/machinery/door/firedoor,
 /obj/structure/fans/tiny/forcefield,
 /obj/effect/mapping_helpers/airlock/access/all/security/general,
+/obj/machinery/door/airlock/security/glass,
 /turf/open/floor/catwalk_floor/iron_dark,
 /area/station/commons/dorms/barracks)
 "am" = (
@@ -251,10 +254,10 @@
 /obj/effect/turf_decal/trimline/red/filled/corner{
 	dir = 4
 	},
-/obj/machinery/power/apc/auto_name/directional/north,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/light_switch/directional/north,
 /turf/open/floor/iron/white,
 /area/station/commons/dorms/barracks)
 "aS" = (
@@ -954,7 +957,6 @@
 /area/station/security/prison/shower)
 "dk" = (
 /obj/structure/ladder,
-/obj/structure/ladder,
 /turf/open/floor/plating,
 /area/station/maintenance/department/medical)
 "dl" = (
@@ -1011,7 +1013,10 @@
 /obj/structure/bed/dogbed/mcgriff{
 	anchored = 1
 	},
-/mob/living/simple_animal/pet/dog/pug/mcgriff,
+/obj/item/toy/plush/skyrat/ian/small{
+	name = "McGriff";
+	desc = "A plushie of an adorable pug! Don't you just want to hug it and squeeze it and call it \"McGriff\"?"
+	},
 /obj/item/key/security,
 /turf/open/floor/iron/dark{
 	initial_gas_mix = "n2=104;TEMP=293.15"
@@ -1380,8 +1385,7 @@
 /area/station/security/medical)
 "eC" = (
 /obj/machinery/computer/atmos_control/nocontrol/incinerator{
-	dir = 4;
-	frequency = 1442
+	dir = 4
 	},
 /turf/open/floor/plating{
 	initial_gas_mix = "n2=104;TEMP=293.15"
@@ -1504,7 +1508,9 @@
 /obj/machinery/door/poddoor{
 	id = "sec_eva"
 	},
-/turf/open/floor/plating/airless,
+/turf/open/floor/plating{
+	initial_gas_mix = "n2=104;TEMP=293.15"
+	},
 /area/station/security/lockers)
 "fa" = (
 /obj/effect/turf_decal/trimline/red/filled/line{
@@ -1658,7 +1664,7 @@
 	space_dir = 1
 	},
 /obj/effect/landmark/navigate_destination/dockescpod1,
-/turf/open/floor/glass/reinforced/airless,
+/turf/open/floor/plating,
 /area/station/maintenance/department/medical)
 "fw" = (
 /obj/effect/turf_decal/trimline/red/filled/corner{
@@ -1876,14 +1882,6 @@
 /turf/open/floor/iron/dark,
 /area/station/command/heads_quarters/cmo)
 "gl" = (
-/obj/machinery/door_buttons/airlock_controller{
-	idExterior = "Sec_Turbine_Exterior";
-	idInterior = "Sec_Turbine_Interior";
-	idSelf = "Sec_turbine_airlock_control";
-	name = "Turbine Access Console";
-	req_access = list("hos, atmos, engineering");
-	pixel_x = -30
-	},
 /obj/structure/cable/multilayer/multiz,
 /turf/open/floor/plating{
 	initial_gas_mix = "n2=104;TEMP=293.15"
@@ -2073,6 +2071,9 @@
 	dir = 4
 	},
 /obj/effect/spawner/random/vending/colavend,
+/obj/machinery/door/firedoor/border_only{
+	dir = 4
+	},
 /turf/open/floor/iron/dark,
 /area/station/medical/medbay/central)
 "gR" = (
@@ -2407,6 +2408,7 @@
 	pixel_y = 7;
 	pixel_x = 5
 	},
+/obj/machinery/light/red/directional/east,
 /turf/open/floor/catwalk_floor,
 /area/station/maintenance/department/medical)
 "hO" = (
@@ -3065,6 +3067,23 @@
 	initial_gas_mix = "n2=104;TEMP=293.15"
 	},
 /area/station/security/power_station)
+"kd" = (
+/obj/structure/bed{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 1
+	},
+/obj/item/bedsheet/black{
+	dir = 4
+	},
+/obj/effect/landmark/start/security_officer,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/iron/white,
+/area/station/commons/dorms/barracks)
 "ke" = (
 /obj/effect/landmark/xeno_spawn,
 /turf/open/floor/catwalk_floor,
@@ -3099,11 +3118,11 @@
 /turf/open/floor/plating,
 /area/station/maintenance/thruster_room)
 "kj" = (
-/obj/machinery/igniter/incinerator_atmos{
-	id = "med_turbine_igniter"
-	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/visible/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/dark/visible,
+/obj/machinery/igniter{
+	id = "med_turbine_igniter"
+	},
 /turf/open/floor/engine/vacuum,
 /area/station/medical/power_station)
 "kk" = (
@@ -3141,15 +3160,6 @@
 	initial_gas_mix = "n2=104;TEMP=293.15"
 	},
 /area/station/security/brig)
-"kq" = (
-/obj/effect/turf_decal/trimline/red/filled/line{
-	dir = 1
-	},
-/obj/structure/sign/poster/official/random/directional/south,
-/turf/open/floor/iron/dark{
-	initial_gas_mix = "n2=104;TEMP=293.15"
-	},
-/area/station/security/office)
 "kr" = (
 /obj/structure/cable,
 /obj/machinery/holopad,
@@ -5029,6 +5039,9 @@
 	pixel_x = 24;
 	id = "secentranceflasher"
 	},
+/obj/machinery/camera/directional/east{
+	c_tag = "Security - Entrance"
+	},
 /turf/open/floor/iron/dark,
 /area/station/security/brig)
 "rT" = (
@@ -5426,6 +5439,9 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/machinery/door/firedoor/border_only{
+	dir = 4
+	},
 /turf/open/floor/iron/dark,
 /area/station/medical/medbay/central)
 "tm" = (
@@ -5463,8 +5479,7 @@
 	},
 /obj/machinery/door/poddoor/shutters/preopen{
 	id = "briglockdown";
-	name = "Warden Desk Shutters";
-	dir = 8
+	name = "Warden Desk Shutters"
 	},
 /turf/open/floor/plating{
 	initial_gas_mix = "n2=104;TEMP=293.15"
@@ -5569,10 +5584,6 @@
 	initial_gas_mix = "n2=104;TEMP=293.15"
 	},
 /area/station/security/office)
-"tL" = (
-/obj/effect/spawner/random/structure/crate,
-/turf/open/floor/catwalk_floor/iron_dark,
-/area/station/medical/coldroom)
 "tN" = (
 /obj/structure/window/reinforced{
 	dir = 8
@@ -5712,20 +5723,9 @@
 /turf/open/floor/iron,
 /area/station/medical/break_room)
 "uh" = (
-/obj/machinery/door/airlock/public/glass/incinerator{
-	name = "Turbine Exterior Airlock";
-	id = "Med_Turbine_Exterior"
-	},
-/obj/effect/mapping_helpers/airlock/locked,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/dark/visible,
-/obj/machinery/door_buttons/access_button{
-	dir = 1;
-	idDoor = "Med_Turbine_Exterior";
-	idSelf = "turbine_airlock_control";
-	name = "Turbine Access Button";
-	req_access = list("cmo, atmos, engineering");
-	pixel_y = 21
-	},
+/obj/machinery/door/airlock/hatch,
+/obj/effect/mapping_helpers/airlock/access/any/engineering/atmos,
 /turf/open/floor/engine,
 /area/station/medical/power_station)
 "ui" = (
@@ -6010,7 +6010,7 @@
 	},
 /area/station/security/office)
 "va" = (
-/obj/effect/spawner/random/structure/closet_maintenance,
+/obj/structure/closet/emcloset,
 /turf/open/floor/catwalk_floor/iron_smooth,
 /area/station/maintenance/department/medical)
 "vb" = (
@@ -6501,14 +6501,6 @@
 /area/station/security/execution/transfer)
 "wM" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/door_buttons/airlock_controller{
-	idExterior = "Med_Turbine_Exterior";
-	idInterior = "Med_Turbine_Interior";
-	idSelf = "med_turbine_airlock_control";
-	name = "Turbine Access Console";
-	req_access = list("cmo, atmos, engineering");
-	pixel_x = -30
-	},
 /turf/open/floor/iron/dark,
 /area/station/medical/power_station)
 "wN" = (
@@ -7208,7 +7200,7 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/stripes/line,
-/turf/open/floor/iron/dark/airless,
+/turf/open/floor/plating,
 /area/station/security/brig)
 "yQ" = (
 /obj/structure/table/reinforced,
@@ -7637,6 +7629,7 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/cable,
 /turf/open/floor/iron/white,
 /area/station/commons/dorms/barracks)
 "zY" = (
@@ -7645,20 +7638,9 @@
 /turf/open/floor/catwalk_floor,
 /area/station/maintenance/department/medical)
 "zZ" = (
-/obj/machinery/door/airlock/public/glass/incinerator{
-	name = "Turbine Exterior Airlock";
-	id = "Sec_Turbine_Exterior"
-	},
-/obj/effect/mapping_helpers/airlock/locked,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/dark/visible,
-/obj/machinery/door_buttons/access_button{
-	dir = 1;
-	idDoor = "Sec_Turbine_Exterior";
-	idSelf = "turbine_airlock_control";
-	name = "Turbine Access Button";
-	req_access = list("hos, atmos, engineering");
-	pixel_y = 21
-	},
+/obj/machinery/door/airlock/hatch,
+/obj/effect/mapping_helpers/airlock/access/any/engineering/atmos,
 /turf/open/floor/plating{
 	initial_gas_mix = "n2=104;TEMP=293.15"
 	},
@@ -7971,8 +7953,6 @@
 /turf/open/floor/catwalk_floor/iron_dark,
 /area/station/maintenance/department/medical)
 "Bk" = (
-/obj/structure/ladder,
-/obj/structure/ladder,
 /obj/structure/ladder,
 /turf/open/floor/plating,
 /area/station/medical/medbay/central)
@@ -8632,7 +8612,6 @@
 /turf/open/floor/plating,
 /area/station/medical/medbay/central)
 "DW" = (
-/obj/machinery/door/airlock/glass_large,
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
@@ -8644,6 +8623,7 @@
 /obj/structure/fans/tiny/forcefield,
 /obj/effect/mapping_helpers/airlock/access/all/security/general,
 /obj/structure/disposalpipe/segment,
+/obj/machinery/door/airlock/security/glass,
 /turf/open/floor/catwalk_floor/iron_dark,
 /area/station/commons/dorms/barracks)
 "DX" = (
@@ -9503,11 +9483,6 @@
 /turf/open/floor/iron/white,
 /area/station/medical/exam_room)
 "Hm" = (
-/obj/machinery/door/airlock/public/glass/incinerator{
-	name = "Turbine Interior Airlock";
-	id = "Med_Turbine_Interior"
-	},
-/obj/effect/mapping_helpers/airlock/locked,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/visible/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/dark/visible,
 /obj/machinery/door_buttons/access_button{
@@ -9518,6 +9493,8 @@
 	req_access = list("cmo, atmos, engineering");
 	pixel_x = -22
 	},
+/obj/machinery/door/airlock/hatch,
+/obj/effect/mapping_helpers/airlock/access/any/engineering/atmos,
 /turf/open/floor/engine/vacuum,
 /area/station/medical/power_station)
 "Ho" = (
@@ -10389,11 +10366,11 @@
 /turf/open/floor/iron/cafeteria,
 /area/station/security/prison)
 "Kf" = (
-/obj/machinery/igniter/incinerator_atmos{
-	id = "Sec_turbine_igniter"
-	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/visible/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/dark/visible,
+/obj/machinery/igniter{
+	id = "Sec_turbine_igniter"
+	},
 /turf/open/floor/engine/vacuum,
 /area/station/security/power_station)
 "Kg" = (
@@ -10674,9 +10651,7 @@
 /turf/open/floor/engine/vacuum,
 /area/station/medical/power_station)
 "La" = (
-/obj/machinery/atmospherics/components/binary/pump/off{
-	dir = 8
-	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/dark/visible,
 /turf/open/floor/engine,
 /area/station/medical/power_station)
 "Lb" = (
@@ -11190,6 +11165,13 @@
 "MD" = (
 /turf/open/floor/iron/dark,
 /area/station/medical/power_station)
+"ME" = (
+/obj/structure/railing{
+	dir = 1
+	},
+/obj/machinery/light/red/directional/south,
+/turf/open/floor/catwalk_floor,
+/area/station/medical/chemistry)
 "MF" = (
 /obj/structure/cable,
 /turf/open/floor/grass,
@@ -11212,21 +11194,10 @@
 /turf/open/floor/catwalk_floor/iron_dark,
 /area/station/medical/coldroom)
 "MJ" = (
-/obj/machinery/door/airlock/public/glass/incinerator{
-	name = "Turbine Interior Airlock";
-	id = "Sec_Turbine_Interior"
-	},
-/obj/effect/mapping_helpers/airlock/locked,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/visible/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/dark/visible,
-/obj/machinery/door_buttons/access_button{
-	dir = 1;
-	idDoor = "Sec_Turbine_Interior";
-	idSelf = "turbine_airlock_control";
-	name = "Turbine Access Button";
-	req_access = list("hos, atmos, engineering");
-	pixel_x = -22
-	},
+/obj/machinery/door/airlock/hatch,
+/obj/effect/mapping_helpers/airlock/access/any/engineering/atmos,
 /turf/open/floor/engine/vacuum,
 /area/station/security/power_station)
 "MK" = (
@@ -11390,7 +11361,7 @@
 /area/station/security/power_station)
 "Ns" = (
 /obj/machinery/air_sensor/incinerator_tank{
-	frequency = 1442
+	name = "sec turbine gas sensor"
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/visible/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/dark/visible,
@@ -11605,6 +11576,7 @@
 /obj/machinery/camera/directional/west{
 	c_tag = "Medbay - Surgical Theatre"
 	},
+/obj/machinery/airalarm/directional/west,
 /turf/open/floor/iron/white,
 /area/station/medical/surgery/theatre)
 "NY" = (
@@ -11643,14 +11615,6 @@
 /obj/structure/closet/emcloset/anchored,
 /turf/open/floor/iron/dark,
 /area/station/security/brig)
-"Od" = (
-/obj/machinery/atmospherics/components/binary/pump/off{
-	dir = 8
-	},
-/turf/open/floor/plating{
-	initial_gas_mix = "n2=104;TEMP=293.15"
-	},
-/area/station/security/power_station)
 "Oi" = (
 /obj/structure/table/reinforced,
 /obj/item/paper_bin{
@@ -11694,7 +11658,7 @@
 	dir = 4
 	},
 /obj/machinery/camera/directional/east{
-	c_tag = "Prison Yard";
+	c_tag = "Security - Prison Yard";
 	network = list("ss13","prison")
 	},
 /turf/open/floor/iron,
@@ -12178,6 +12142,7 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/cable,
 /turf/open/floor/iron/white,
 /area/station/commons/dorms/barracks)
 "Qf" = (
@@ -12377,6 +12342,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/effect/landmark/start/security_officer,
+/obj/structure/cable,
 /turf/open/floor/iron/white,
 /area/station/commons/dorms/barracks)
 "QR" = (
@@ -12510,12 +12476,6 @@
 	initial_gas_mix = "n2=104;TEMP=293.15"
 	},
 /area/station/security/detectives_office)
-"Rm" = (
-/obj/machinery/camera/directional/east{
-	c_tag = "Medbay - Hangar Upper"
-	},
-/turf/open/openspace,
-/area/station/medical/chemistry)
 "Rn" = (
 /obj/structure/cable,
 /obj/effect/turf_decal/trimline/red/filled/line{
@@ -12708,9 +12668,6 @@
 	},
 /area/station/security/power_station)
 "RX" = (
-/obj/effect/turf_decal/vg_decals/atmos/oxygen{
-	pixel_y = 30
-	},
 /turf/open/floor/plating{
 	initial_gas_mix = "n2=104;TEMP=293.15"
 	},
@@ -12828,6 +12785,18 @@
 	},
 /turf/open/floor/catwalk_floor,
 /area/station/medical/medbay/central)
+"Ss" = (
+/obj/structure/closet/secure_closet/personal/wall{
+	pixel_y = 30
+	},
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/landmark/start/security_officer,
+/obj/structure/cable,
+/turf/open/floor/iron/white,
+/area/station/commons/dorms/barracks)
 "St" = (
 /obj/effect/spawner/random/trash/garbage,
 /turf/open/floor/catwalk_floor,
@@ -13276,6 +13245,8 @@
 	dir = 4
 	},
 /obj/effect/landmark/start/security_officer,
+/obj/machinery/power/apc/auto_name/directional/south,
+/obj/structure/cable,
 /turf/open/floor/iron/white,
 /area/station/commons/dorms/barracks)
 "Ul" = (
@@ -27352,7 +27323,7 @@ xF
 qP
 jq
 BV
-tL
+qP
 Ql
 dk
 ys
@@ -89298,7 +89269,7 @@ TD
 TD
 TD
 TD
-PO
+ME
 Bd
 OG
 kC
@@ -90055,7 +90026,7 @@ nk
 TD
 TD
 TD
-Rm
+TD
 TD
 TD
 TD
@@ -111840,7 +111811,7 @@ Nr
 bo
 bf
 Is
-Od
+Xh
 Is
 Wa
 YQ
@@ -114387,7 +114358,7 @@ TJ
 NO
 Rs
 lP
-kq
+OF
 ad
 bH
 Al
@@ -114667,7 +114638,7 @@ pj
 Zd
 bH
 rN
-XV
+Ss
 Rq
 ai
 rF
@@ -114901,7 +114872,7 @@ nL
 Oi
 zU
 EG
-kq
+OF
 ad
 qA
 GK
@@ -115182,7 +115153,7 @@ FA
 bH
 rN
 zX
-fo
+kd
 Uk
 yK
 pj
