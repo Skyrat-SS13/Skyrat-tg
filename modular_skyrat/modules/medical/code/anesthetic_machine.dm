@@ -186,7 +186,7 @@
 	name = "anesthetic stand parts kit"
 	desc = "Contains all of the parts needed to assemble a portable anesthetic stand. Use in hand to construct."
 	w_class = WEIGHT_CLASS_BULKY
-	icon = 'icons/obj/storage.dmi'
+	icon = 'icons/obj/storage/storage.dmi'
 	icon_state = "plasticbox"
 
 /obj/item/anesthetic_machine_kit/attack_self(mob/user)

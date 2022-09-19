@@ -613,7 +613,7 @@ The gun fires fast heavy lasers but takes a long time to fire.
 /obj/item/microfusion_gun_attachment/lance
 	name = "lance induction carriage"
 	desc = "A modification kit that turns the MCR into a designated marksman rifle. Fired beams boast greater firepower and speed however it is very draining on battery as well as generates an extreme amount of heat."
-	icon = 'icons/obj/improvised.dmi'
+	icon = 'icons/obj/weapons/improvised.dmi'
 	icon_state = "kitsuitcase"
 	incompatable_attachments = list(/obj/item/microfusion_gun_attachment/black_camo, /obj/item/microfusion_gun_attachment/nt_camo, /obj/item/microfusion_gun_attachment/honk_camo)
 	slot = GUN_SLOT_BARREL

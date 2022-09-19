@@ -121,7 +121,7 @@
 	if(target == src)
 		to_chat(src, span_warning("You almost bite yourself, but then decide against it."))
 		return
-	if(istype(target, /turf/closed/wall))
+	if(iswallturf(target))
 		if(tearing_wall)
 			return
 		tearing_wall = TRUE
@@ -132,7 +132,7 @@
 		if(istype(target, /turf/closed/wall/r_wall))
 			timetotear = 120
 		if(do_after(src, timetotear, target = thewall))
-			if(istype(thewall, /turf/open))
+			if(isopenturf(thewall))
 				return
 			thewall.dismantle_wall(1)
 			playsound(src, 'sound/effects/meteorimpact.ogg', 100, TRUE)
@@ -147,7 +147,7 @@
 					adjustHealth(-L.maxHealth * 0.25)
 			return
 	. = ..()
-	if(istype(target, /obj/vehicle/sealed/mecha))
+	if(ismecha(target))
 		var/obj/vehicle/sealed/mecha/M = target
 		M.take_damage(50, BRUTE, MELEE, 1)
 
@@ -170,8 +170,7 @@
 	fire_stream()
 
 /mob/living/simple_animal/hostile/space_dragon/death(gibbed)
-	empty_contents()
-	..()
+	. = ..()
 	add_dragon_overlay()
 	UnregisterSignal(small_sprite, COMSIG_ACTION_TRIGGER)
 
@@ -179,10 +178,6 @@
 	. = ..()
 	add_dragon_overlay()
 	RegisterSignal(small_sprite, COMSIG_ACTION_TRIGGER, .proc/add_dragon_overlay)
-
-/mob/living/simple_animal/hostile/space_dragon/wabbajack_act(mob/living/new_mob)
-	empty_contents()
-	. = ..()
 
 /**
  * Allows space dragon to choose its own name.
@@ -281,7 +276,7 @@
 	turfs = line_target(0, range, at)
 	var/delayFire = -1.0
 	for(var/turf/T in turfs)
-		if(istype(T, /turf/closed))
+		if(isclosedturf(T))
 			return
 		for(var/obj/structure/window/W in T.contents)
 			return
@@ -333,18 +328,6 @@
 		A.forceMove(src)
 		return TRUE
 	return FALSE
-
-/**
- * Disperses the contents of the mob on the surrounding tiles.
- *
- * Randomly places the contents of the mob onto surrounding tiles.
- * Has a 10% chance to place on the same tile as the mob.
- */
-/mob/living/simple_animal/hostile/space_dragon/proc/empty_contents()
-	for(var/atom/movable/AM in src)
-		AM.forceMove(loc)
-		if(prob(90))
-			step(AM, pick(GLOB.alldirs))
 
 /**
  * Resets Space Dragon's status after using wing gust.

@@ -6,7 +6,7 @@
 
 /obj/item/ammo_box/a762
 	w_class = WEIGHT_CLASS_SMALL
-	
+
 /obj/item/ammo_box/a357
 	w_class = WEIGHT_CLASS_SMALL
 
@@ -117,15 +117,6 @@
 	desc = "A box filled with microfusion cells."
 
 /obj/item/storage/box/ammo_box/microfusion/bluespace/PopulateContents()
-	new /obj/item/storage/bag/ammo(src)
 	new /obj/item/stock_parts/cell/microfusion/bluespace(src)
 	new /obj/item/stock_parts/cell/microfusion/bluespace(src)
 	new /obj/item/stock_parts/cell/microfusion/bluespace(src)
-
-/obj/item/storage/box/ammo_box/microfusion/bluespace/bagless
-
-/obj/item/storage/box/ammo_box/microfusion/bluespace/bagless/PopulateContents()
-	new /obj/item/stock_parts/cell/microfusion/bluespace(src)
-	new /obj/item/stock_parts/cell/microfusion/bluespace(src)
-	new /obj/item/stock_parts/cell/microfusion/bluespace(src)
-

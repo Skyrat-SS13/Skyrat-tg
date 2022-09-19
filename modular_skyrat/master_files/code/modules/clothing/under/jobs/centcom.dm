@@ -16,7 +16,7 @@
 /*
 *	ARMADYNE
 */
-//Check modular_skyrat\modules\sec_haul\code\peacekeeper\armadyne_clothing.dm for these (TODO: debate moving them all into this one file - uniforms, at least)
+//Check modular_skyrat\modules\sec_haul\code\peacekeeper\armadyne_clothing.dm for these (ORION TODO: debate moving them all into this one file - uniforms, at least)
 //(TODO applies to NT as well)
 
 /*
@@ -38,4 +38,4 @@
 /*
 *	MISC
 */
-//TODO: pizza and other misc ERTs in this file too? see /obj/item/clothing/under/pizza (also repath this)
+//ORION TODO: pizza and other misc ERTs in this file too? see /obj/item/clothing/under/pizza (also repath this)
