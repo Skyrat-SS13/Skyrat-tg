@@ -10,14 +10,6 @@
 	message = null
 	mob_type_blacklist_typecache = list(/mob/living/brain)
 
-/datum/emote/living/subtle/proc/check_invalid(mob/user, input)
-	/* TO DO
-	if(stop_bad_mime.Find(input, 1, 1))
-		to_chat(user, span_danger("Invalid emote."))
-		return TRUE
-	*/
-	return FALSE
-
 /datum/emote/living/subtle/run_emote(mob/user, params, type_override = null)
 	if(!can_run_emote(user))
 		to_chat(user, span_warning("You can't emote at this time."))
@@ -27,15 +19,14 @@
 	if(is_banned_from(user, "emote"))
 		to_chat(user, "You cannot send subtle emotes (banned).")
 		return FALSE
-	else if(user.client && user.client.prefs.muted & MUTE_IC)
+	else if(user.client?.prefs.muted & MUTE_IC)
 		to_chat(user, "You cannot send IC messages (muted).")
 		return FALSE
 	else if(!params)
 		subtle_emote = tgui_input_text(user, "Choose an emote to display.", "Subtle", null, MAX_MESSAGE_LEN, TRUE)
-		if(subtle_emote && !check_invalid(user, subtle_emote))
-			subtle_message = subtle_emote
-		else
+		if(!subtle_emote)
 			return FALSE
+		subtle_message = subtle_emote
 	else
 		subtle_message = params
 		if(type_override)
@@ -73,15 +64,6 @@
 	message = null
 	mob_type_blacklist_typecache = list(/mob/living/brain)
 
-
-/datum/emote/living/subtler/proc/check_invalid(mob/user, input)
-	/* TO DO
-	if(stop_bad_mime.Find(input, 1, 1))
-		to_chat(user, span_danger("Invalid emote."))
-		return TRUE
-	*/
-	return FALSE
-
 /datum/emote/living/subtler/run_emote(mob/user, params, type_override = null)
 	if(!can_run_emote(user))
 		to_chat(user, span_warning("You can't emote at this time."))
@@ -92,29 +74,30 @@
 	if(is_banned_from(user, "emote"))
 		to_chat(user, span_warning("You cannot send subtle emotes (banned)."))
 		return FALSE
-	else if(user.client && user.client.prefs.muted & MUTE_IC)
+	else if(user.client?.prefs.muted & MUTE_IC)
 		to_chat(user, span_warning("You cannot send IC messages (muted)."))
 		return FALSE
 	else if(!subtler_emote)
 		subtler_emote = tgui_input_text(user, "Choose an emote to display.", "Subtler" , null, MAX_MESSAGE_LEN, TRUE)
-		if(subtler_emote && !check_invalid(user, subtler_emote))
-			var/list/in_view = get_hearers_in_view(1, user)
-			in_view -= GLOB.dead_mob_list
-			in_view.Remove(user)
-
-			for(var/mob/mob_in_view as anything in in_view)
-				if(!istype(mob_in_view))
-					in_view.Remove(mob_in_view)
-			var/list/targets = list(SUBTLE_ONE_TILE_TEXT, SUBTLE_SAME_TILE_TEXT) + in_view
-			target = tgui_input_list(user, "Pick a target", "Target Selection", targets)
-			switch(target)
-				if(SUBTLE_ONE_TILE_TEXT)
-					target = SUBTLE_DEFAULT_DISTANCE
-				if(SUBTLE_SAME_TILE_TEXT)
-					target = SUBTLE_SAME_TILE_DISTANCE
-			subtler_message = subtler_emote
-		else
+		if(!subtler_emote)
 			return FALSE
+		var/list/in_view = get_hearers_in_view(1, user)
+		in_view -= GLOB.dead_mob_list
+		in_view.Remove(user)
+
+		for(var/mob/mob_in_view as anything in in_view)
+			if(!istype(mob_in_view))
+				in_view.Remove(mob_in_view)
+		var/list/targets = list(SUBTLE_ONE_TILE_TEXT, SUBTLE_SAME_TILE_TEXT) + in_view
+		target = tgui_input_list(user, "Pick a target", "Target Selection", targets)
+		if(!target)
+			return FALSE
+		switch(target)
+			if(SUBTLE_ONE_TILE_TEXT)
+				target = SUBTLE_DEFAULT_DISTANCE
+			if(SUBTLE_SAME_TILE_TEXT)
+				target = SUBTLE_SAME_TILE_DISTANCE
+		subtler_message = subtler_emote
 	else
 		target = SUBTLE_DEFAULT_DISTANCE
 		subtler_message = subtler_emote
