@@ -278,6 +278,11 @@
 /obj/machinery/light/directional/south,
 /turf/open/floor/iron/dark,
 /area/station/command/heads_quarters/cmo)
+"aU" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/fans/tiny/forcefield,
+/turf/open/floor/iron/white,
+/area/station/medical/pharmacy)
 "aV" = (
 /obj/machinery/door/airlock/research/glass{
 	name = "Pharmacy"
@@ -2210,9 +2215,6 @@
 /turf/open/floor/iron/freezer,
 /area/station/security/prison)
 "hi" = (
-/obj/machinery/door/firedoor/border_only{
-	dir = 8
-	},
 /obj/structure/railing/corner{
 	dir = 1
 	},
@@ -2712,6 +2714,7 @@
 	pixel_x = 4
 	},
 /obj/effect/turf_decal/tile/yellow/half/contrasted,
+/obj/machinery/airalarm/directional/south,
 /turf/open/floor/iron/white,
 /area/station/medical/pharmacy)
 "iS" = (
@@ -4208,7 +4211,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/open/space/basic,
+/turf/open/floor/catwalk_floor/iron_smooth,
 /area/station/maintenance/department/medical)
 "oy" = (
 /obj/structure/lattice/catwalk,
@@ -5446,9 +5449,6 @@
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/machinery/door/firedoor/border_only{
 	dir = 4
 	},
 /turf/open/floor/iron/dark,
@@ -11129,6 +11129,7 @@
 "Mn" = (
 /obj/machinery/light/directional/south,
 /obj/effect/turf_decal/tile/yellow/half/contrasted,
+/obj/structure/fans/tiny/forcefield,
 /turf/open/floor/iron/white,
 /area/station/medical/pharmacy)
 "Mo" = (
@@ -12844,7 +12845,10 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/floor/catwalk_floor,
+/obj/machinery/door/firedoor/border_only{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
 /area/station/medical/medbay/central)
 "Ss" = (
 /obj/structure/closet/secure_closet/personal/wall{
@@ -14184,7 +14188,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/open/space/basic,
+/turf/open/floor/catwalk_floor/iron_smooth,
 /area/station/maintenance/department/medical)
 "XB" = (
 /obj/structure/closet/firecloset/full,
@@ -94004,8 +94008,8 @@ Uy
 gC
 Tj
 uB
-Tj
-Tj
+aU
+aU
 Mn
 du
 yy
