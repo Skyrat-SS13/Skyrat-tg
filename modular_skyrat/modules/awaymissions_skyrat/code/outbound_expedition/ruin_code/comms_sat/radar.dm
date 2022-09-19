@@ -4,6 +4,10 @@
 	icon = 'icons/mob/hivebot.dmi'
 	icon_state = "def_radar"
 
+/obj/machinery/outbound_expedition/comms_dish/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/gps, "Pinging Signal")
+
 /obj/machinery/outbound_expedition/comms_dish/examine(mob/user)
 	. = ..()
 	. += span_notice("It seems there is a <b>disk slot</b> on one side of it at the base.")
