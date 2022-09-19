@@ -495,6 +495,17 @@
 	item_path = /obj/item/toy/plush/skyrat/chunko/inessa
 	donator_only = TRUE
 
+
+/datum/loadout_item/toys/plushie_chiara
+	name = "Chiara Plushie"
+	item_path = /obj/item/toy/plush/skyrat/plushie_chiara
+	ckeywhitelist = list("SRQ","Superlagg")
+
+/datum/loadout_item/toys/plushie_dan
+	name = "Dan Plushie"
+	item_path = /obj/item/toy/plush/skyrat/plushie_dan
+	ckeywhitelist = list("SRQ","Superlagg")
+
 //Chunko Fops were donated by SlippyJoe, who requested they are usable by everyone
 
 /datum/loadout_item/under/jumpsuit/bubbly_clown
