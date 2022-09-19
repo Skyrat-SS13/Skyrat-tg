@@ -37,8 +37,8 @@
 	ranged = 1
 	ranged_cooldown_time = 30
 	minimum_distance = 1
-	health = 5000
-	maxHealth = 5000 //double the health of bubblegum, a very intentional shift in total difficulty
+	health = 4000
+	maxHealth = 4000 //for contrast, bubblegum and the colossus both have 2500 health
 	movement_type = GROUND
 	mouse_opacity = MOUSE_OPACITY_OPAQUE
 	loot = list(/obj/structure/closet/crate/necropolis/gladiator)
