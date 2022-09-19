@@ -14,7 +14,7 @@
 	opacity = TRUE
 	max_integrity = 100
 	smoothing_flags = SMOOTH_BITMASK
-	smoothing_groups = list(SMOOTH_GROUP_CLOSED_TURFS, SMOOTH_GROUP_WALLS)
+	smoothing_groups = list(SMOOTH_GROUP_WALLS, SMOOTH_GROUP_CLOSED_TURFS) // SKYRAT EDIT CHANGE - Sorting them because /tg/ forgot to.
 	canSmoothWith = list(SMOOTH_GROUP_WALLS)
 	can_be_unanchored = FALSE
 	can_atmos_pass = ATMOS_PASS_DENSITY
@@ -315,7 +315,7 @@
 	mineral = /obj/item/stack/sheet/mineral/bamboo
 	walltype = /turf/closed/wall/mineral/bamboo
 	smoothing_flags = SMOOTH_BITMASK
-	smoothing_groups = list(SMOOTH_GROUP_CLOSED_TURFS, SMOOTH_GROUP_WALLS, SMOOTH_GROUP_BAMBOO_WALLS)
+	smoothing_groups = list(SMOOTH_GROUP_BAMBOO_WALLS, SMOOTH_GROUP_WALLS, SMOOTH_GROUP_CLOSED_TURFS) // SKYRAT EDIT CHANGE - Sorting them because /tg/ forgot to
 	canSmoothWith = list(SMOOTH_GROUP_BAMBOO_WALLS)
 
 /obj/structure/falsewall/iron
@@ -376,7 +376,7 @@
 	base_icon_state = "materialwall"
 	walltype = /turf/closed/wall/material
 	smoothing_flags = SMOOTH_BITMASK
-	smoothing_groups = list(SMOOTH_GROUP_CLOSED_TURFS, SMOOTH_GROUP_WALLS, SMOOTH_GROUP_MATERIAL_WALLS)
+	smoothing_groups = list(SMOOTH_GROUP_WALLS, SMOOTH_GROUP_CLOSED_TURFS, SMOOTH_GROUP_MATERIAL_WALLS) // SKYRAT EDIT CHANGE - Sorting them because /tg/ forgot to
 	canSmoothWith = list(SMOOTH_GROUP_MATERIAL_WALLS)
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_COLOR | MATERIAL_AFFECT_STATISTICS
 
