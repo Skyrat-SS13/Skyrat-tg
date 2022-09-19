@@ -503,7 +503,7 @@
 /datum/loadout_item/toys/plushie_dan
 	name = "Comfy Fox Plushie"
 	item_path = /obj/item/toy/plush/skyrat/plushie_dan
-	ckeywhitelist = list("srq","superlagg")
+	ckeywhitelist = list("srq", "superlagg")
 
 //Chunko Fops were donated by SlippyJoe, who requested they are usable by everyone
 
