@@ -5,14 +5,14 @@
  */
 
 /obj/item/gun/ballistic/automatic/cmg
-	name = "\improper NT CMG-1"
-	desc = "A bullpup two-round burst .45 PDW with an eerily familiar design. It has a foldable stock and a dot sight."
+	name = "\improper NT CMG-2 PDW"
+	desc = "A bullpup, two-round burst PDW chambered in 9mm Peacekeeper, developed by Nanotrasen R&D and based on a licensed Scarborough Arms design. It features a folding stock and comes pre-attached with a dot sight."
 	icon_state = "cmg1"
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
 	inhand_icon_state = "c20r"
 	selector_switch_icon = TRUE
 	mag_type = /obj/item/ammo_box/magazine/multi_sprite/cmg
-	fire_delay = 2.5
+	fire_delay = 2 //Slightly buffed firespeed over the last cmg because the bullets are a bit weaker
 	burst_size = 2
 	can_bayonet = TRUE
 	knife_x_offset = 26
@@ -29,26 +29,25 @@
 		overlay_y = 10)
 
 /obj/item/ammo_box/magazine/multi_sprite/cmg
-	name = ".45 PDW magazine"
+	name = "9mm Peacekeeper PDW magazine"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/mags.dmi'
 	icon_state = "g11"
-	ammo_type = /obj/item/ammo_casing/c45/rubber
-	caliber = CALIBER_45
+	ammo_type = /obj/item/ammo_casing/b9mm/rubber
+	caliber = CALIBER_9MMPEACE
 	max_ammo = 24
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC
 	round_type = AMMO_TYPE_RUBBER
 
-/obj/item/ammo_box/magazine/multi_sprite/cmg/inc
-	ammo_type = /obj/item/ammo_casing/c45/inc
-	round_type = AMMO_TYPE_INCENDIARY
-	possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_HOLLOWPOINT, AMMO_TYPE_INCENDIARY, AMMO_TYPE_AP)
+/obj/item/ammo_box/magazine/multi_sprite/cmg/hp
+	ammo_type = /obj/item/ammo_casing/b9mm/hp
+	round_type = AMMO_TYPE_HOLLOWPOINT
 
-/obj/item/ammo_box/magazine/multi_sprite/cmg/ap
-	ammo_type = /obj/item/ammo_casing/c45/ap
-	round_type = AMMO_TYPE_AP
+/obj/item/ammo_box/magazine/multi_sprite/cmg/ihdf
+	ammo_type = /obj/item/ammo_casing/b9mm/ihdf
+	round_type = AMMO_TYPE_IHDF
 
 /obj/item/ammo_box/magazine/multi_sprite/cmg/lethal
-	ammo_type = /obj/item/ammo_casing/c45
+	ammo_type = /obj/item/ammo_casing/b9mm
 	round_type = AMMO_TYPE_LETHAL
 
 /obj/item/storage/box/gunset/cmg
@@ -63,24 +62,3 @@
 	new /obj/item/ammo_box/magazine/multi_sprite/cmg(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/cmg(src)
 	new /obj/item/ammo_box/magazine/multi_sprite/cmg(src)
-
-//.45 Rubber
-
-/obj/item/ammo_casing/c45/rubber
-	name = ".45 rubber bullet casing"
-	desc = "A .45 rubber bullet casing."
-	projectile_type = /obj/projectile/bullet/c45/rubber
-	harmful = FALSE
-
-/obj/projectile/bullet/c45/rubber
-	name = ".45 rubber bullet"
-	damage = 5
-	stamina = 27
-	ricochets_max = 6
-	ricochet_incidence_leeway = 0
-	ricochet_chance = 130
-	ricochet_decay_damage = 0.8
-	wound_bonus = 0
-	shrapnel_type = null
-	sharpness = NONE
-	embedding = null
