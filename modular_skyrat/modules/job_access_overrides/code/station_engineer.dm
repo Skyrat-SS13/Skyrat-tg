@@ -1,0 +1,17 @@
+/datum/id_trim/job/station_engineer
+	minimal_access = list(
+		ACCESS_AUX_BASE,
+		ACCESS_CONSTRUCTION,
+		ACCESS_ENGINEERING,
+		ACCESS_ENGINE_EQUIP,
+		ACCESS_EXTERNAL_AIRLOCKS,
+		ACCESS_MAINT_TUNNELS,
+		ACCESS_MECH_ENGINE,
+		ACCESS_MINERAL_STOREROOM,
+		ACCESS_MINISAT,
+		ACCESS_TCOMMS,
+		ACCESS_TECH_STORAGE,
+		ACCESS_ATMOSPHERICS, // Move atmospherics to standard access.
+		)
+	extra_access = list(
+		)
