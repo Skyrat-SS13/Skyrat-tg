@@ -137,7 +137,7 @@ export const breasts_lactation_toggle: FeatureToggle = {
 
 export const breasts_size: FeatureNumeric = {
   name: 'Breasts Size',
-  component: FeatureNumberInput,
+  component: FeatureTranslatedNumberInput,
 };
 
 export const feature_anus: Feature<string> = {
