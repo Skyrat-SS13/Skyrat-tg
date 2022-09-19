@@ -15,7 +15,7 @@
 	if(has_status_effect(/datum/status_effect/climax_cooldown) || !client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 		return
 
-	if(HAS_TRAIT(src, TRAIT_NEVERBONER) || !has_status_effect(/datum/status_effect/climax_cooldown) || (!has_vagina() && !has_penis()))
+	if(HAS_TRAIT(src, TRAIT_NEVERBONER) || has_status_effect(/datum/status_effect/climax_cooldown) || (!has_vagina() && !has_penis()))
 		visible_message(span_purple("[src] twitches, trying to cum, but with no result."), \
 			span_purple("You can't have an orgasm!"))
 		return TRUE
