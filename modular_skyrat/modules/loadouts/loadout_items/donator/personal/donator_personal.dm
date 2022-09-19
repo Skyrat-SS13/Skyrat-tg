@@ -495,7 +495,6 @@
 	item_path = /obj/item/toy/plush/skyrat/chunko/inessa
 	donator_only = TRUE
 
-
 /datum/loadout_item/toys/plushie_chiara
 	name = "Commanding Fox Plushie"
 	item_path = /obj/item/toy/plush/skyrat/plushie_chiara
