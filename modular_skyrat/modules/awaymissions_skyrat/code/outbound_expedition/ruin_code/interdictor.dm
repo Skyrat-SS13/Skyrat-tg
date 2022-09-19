@@ -11,10 +11,10 @@
 
 /obj/machinery/outbound_expedition/shuttle_interdictor/deconstruct(disassembled)
 	OUTBOUND_CONTROLLER
-	. = ..()
-	SEND_SIGNAL(outbound_controller, COMSIG_AWAY_INTERDICTOR_DECONSTRUCTED)
 	for(var/i in 1 to rand(4, 8))
 		new/obj/effect/spawner/random/stock_parts/t4(get_turf(src))
+	. = ..()
+	SEND_SIGNAL(outbound_controller, COMSIG_AWAY_INTERDICTOR_DECONSTRUCTED)
 
 /obj/machinery/outbound_expedition/shuttle_interdictor/screwdriver_act(mob/living/user, obj/item/tool)
 	return TOOL_ACT_SIGNAL_BLOCKING

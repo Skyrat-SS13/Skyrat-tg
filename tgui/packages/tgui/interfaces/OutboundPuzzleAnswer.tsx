@@ -16,7 +16,7 @@ type Puzzle = {
 export const OutboundPuzzleAnswer = (props, context) => {
   const { data } = useBackend<Data>(context);
   const { proper_name, status = [], all_puzzles = [] } = data;
-  const dynamicHeight = all_puzzles.length * 300 + (proper_name ? 30 : 0);
+  const dynamicHeight = all_puzzles.length * 150 + (proper_name ? 30 : 0);
 
   return (
     <Window width={350} height={dynamicHeight} theme="ntos">

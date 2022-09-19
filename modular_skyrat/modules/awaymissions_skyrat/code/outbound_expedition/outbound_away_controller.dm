@@ -37,13 +37,12 @@
 	var/static/list/area_clear_blacklist = typecacheof(/area/awaymission/outbound_expedition/shuttle)
 	/// Base list of probabilities for events
 	var/list/event_chances = list(
-		/datum/outbound_random_event/harmless = 2,
+		/datum/outbound_random_event/harmless = 1,
 		/datum/outbound_random_event/harmful = 5,
 		/datum/outbound_random_event/ruin = 3,
 	)
 	/// Ordered list of events.
 	var/list/event_order = list(
-		/datum/outbound_random_event/harmless/nothing,
 		"random",
 		"random",
 		"random",
