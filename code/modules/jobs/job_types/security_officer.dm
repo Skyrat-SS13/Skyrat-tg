@@ -204,16 +204,26 @@ GLOBAL_LIST_EMPTY(security_officer_distribution)
 
 	id_trim = /datum/id_trim/job/security_officer
 	uniform = /obj/item/clothing/under/rank/security/officer
+<<<<<<< HEAD
 	suit = /obj/item/clothing/suit/armor/vest/security //SKYRAT EDIT CHANGE
+=======
+	suit = /obj/item/clothing/suit/armor/vest/alt/sec
+>>>>>>> 2fea0a59470 (SECURITY RESPRITE - DARE. (#69948))
 	suit_store = /obj/item/gun/energy/disabler
 	backpack_contents = list(
 		/obj/item/evidencebag = 1,
 		)
 	belt = /obj/item/modular_computer/tablet/pda/security
 	ears = /obj/item/radio/headset/headset_sec/alt
+<<<<<<< HEAD
 	gloves = /obj/item/clothing/gloves/color/black/security //SKYRAT EDIT CHANGE
 	head = /obj/item/clothing/head/security_garrison //SKYRAT EDIT CHANGE
 	shoes = /obj/item/clothing/shoes/jackboots/security //SKYRAT EDIT CHANGE
+=======
+	gloves = /obj/item/clothing/gloves/color/black
+	head = /obj/item/clothing/head/helmet/sec
+	shoes = /obj/item/clothing/shoes/jackboots/sec
+>>>>>>> 2fea0a59470 (SECURITY RESPRITE - DARE. (#69948))
 	l_pocket = /obj/item/restraints/handcuffs
 	r_pocket = /obj/item/assembly/flash/handheld
 

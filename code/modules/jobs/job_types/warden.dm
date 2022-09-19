@@ -57,9 +57,15 @@
 	belt = /obj/item/modular_computer/tablet/pda/warden
 	ears = /obj/item/radio/headset/headset_sec/alt
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
+<<<<<<< HEAD
 	gloves = /obj/item/clothing/gloves/color/black/security //SKYRAT EDIT CHANGE
 	head = /obj/item/clothing/head/warden // SKYRAT EDIT CHANGE - ORIGINAL: head = /obj/item/clothing/head/warden/red
 	shoes = /obj/item/clothing/shoes/jackboots/security //SKYRAT EDIT CHANGE
+=======
+	gloves = /obj/item/clothing/gloves/color/black
+	head = /obj/item/clothing/head/warden/red
+	shoes = /obj/item/clothing/shoes/jackboots/sec
+>>>>>>> 2fea0a59470 (SECURITY RESPRITE - DARE. (#69948))
 	l_pocket = /obj/item/restraints/handcuffs
 	r_pocket = /obj/item/assembly/flash/handheld
 

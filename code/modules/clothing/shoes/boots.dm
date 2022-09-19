@@ -68,6 +68,9 @@
 /obj/item/clothing/shoes/jackboots/fast
 	slowdown = -1
 
+/obj/item/clothing/shoes/jackboots/sec
+	icon_state = "jackboots_sec"
+
 /obj/item/clothing/shoes/winterboots
 	name = "winter boots"
 	desc = "Boots lined with 'synthetic' animal fur."
