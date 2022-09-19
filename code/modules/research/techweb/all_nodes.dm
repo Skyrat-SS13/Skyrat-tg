@@ -229,7 +229,6 @@
 		"petri_dish",
 		"pillbottle",
 		"plumbing_rcd",
-		"plumbing_rcd_service",
 		"plumbing_rcd_sci",
 		"portable_chem_mixer",
 		"retractor",

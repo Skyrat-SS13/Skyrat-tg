@@ -254,6 +254,7 @@
 
 /obj/item/clothing/under/costume/buttondown
 	gender = PLURAL
+	body_parts_covered = GROIN|LEGS
 	female_sprite_flags = NO_FEMALE_UNIFORM
 	custom_price = PAYCHECK_CREW
 	icon = 'icons/obj/clothing/under/shorts_pants_shirts.dmi'

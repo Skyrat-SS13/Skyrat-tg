@@ -20,10 +20,6 @@ export const Canister = (props, context) => {
     defaultReleasePressure,
     minReleasePressure,
     maxReleasePressure,
-    hasHypernobCrystal,
-    reactionSuppressionEnabled,
-    hasCell,
-    cellCharge,
     pressureLimit,
     valveOpen,
     isPrototype,
@@ -34,7 +30,7 @@ export const Canister = (props, context) => {
     restricted,
   } = data;
   return (
-    <Window width={350} height={335}>
+    <Window width={350} height={305}>
       <Window.Content>
         <Flex direction="column" height="100%">
           <Flex.Item mb={1}>
@@ -154,25 +150,11 @@ export const Canister = (props, context) => {
               </LabeledControls>
             </Section>
             <Section>
-              <LabeledList>
-                <LabeledList.Item label="Cell Charge">
-                  {hasCell ? cellCharge + '%' : 'Missing Cell'}
-                </LabeledList.Item>
-                {!!hasHypernobCrystal && (
-                  <LabeledList.Item label="Reaction Suppression">
-                    <Button
-                      icon={
-                        data.reactionSuppressionEnabled ? 'snowflake' : 'times'
-                      }
-                      content={
-                        data.reactionSuppressionEnabled ? 'Enabled' : 'Disabled'
-                      }
-                      selected={data.reactionSuppressionEnabled}
-                      onClick={() => act('reaction_suppression')}
-                    />
-                  </LabeledList.Item>
-                )}
-              </LabeledList>
+              <Box>
+                {data.has_cell
+                  ? 'Cell charge at: ' + data.cell_charge + '%'
+                  : 'Missing Cell'}
+              </Box>
             </Section>
           </Flex.Item>
           <Flex.Item grow={1}>

@@ -139,9 +139,9 @@
 	var/bottom_left_corner
 	///Smoothing variable
 	var/bottom_right_corner
-	///What smoothing groups does this atom belongs to, to match canSmoothWith. If null, nobody can smooth with it. Must be sorted.
+	///What smoothing groups does this atom belongs to, to match canSmoothWith. If null, nobody can smooth with it.
 	var/list/smoothing_groups = null
-	///List of smoothing groups this atom can smooth with. If this is null and atom is smooth, it smooths only with itself. Must be sorted.
+	///List of smoothing groups this atom can smooth with. If this is null and atom is smooth, it smooths only with itself.
 	var/list/canSmoothWith = null
 	///Reference to atom being orbited
 	var/atom/orbit_target
@@ -227,7 +227,6 @@
 /atom/proc/Initialize(mapload, ...)
 	SHOULD_NOT_SLEEP(TRUE)
 	SHOULD_CALL_PARENT(TRUE)
-
 	if(flags_1 & INITIALIZED_1)
 		stack_trace("Warning: [src]([type]) initialized multiple times!")
 	flags_1 |= INITIALIZED_1
@@ -246,20 +245,12 @@
 		update_light()
 
 	if (length(smoothing_groups))
-		#ifdef UNIT_TESTS
-		assert_sorted(smoothing_groups, "[type].smoothing_groups")
-		#endif
-
+		sortTim(smoothing_groups) //In case it's not properly ordered, let's avoid duplicate entries with the same values.
 		SET_BITFLAG_LIST(smoothing_groups)
-
 	if (length(canSmoothWith))
-		#ifdef UNIT_TESTS
-		assert_sorted(canSmoothWith, "[type].canSmoothWith")
-		#endif
-
+		sortTim(canSmoothWith)
 		if(canSmoothWith[length(canSmoothWith)] > MAX_S_TURF) //If the last element is higher than the maximum turf-only value, then it must scan turf contents for smoothing targets.
 			smoothing_flags |= SMOOTH_OBJ
-
 		SET_BITFLAG_LIST(canSmoothWith)
 
 	if(uses_integrity)
@@ -269,7 +260,6 @@
 			armor = getArmor()
 		else if (!istype(armor, /datum/armor))
 			stack_trace("Invalid type [armor.type] found in .armor during /atom Initialize()")
-
 		atom_integrity = max_integrity
 
 	// apply materials properly from the default custom_materials value
@@ -1967,8 +1957,7 @@
 
 	active_hud.screentip_text.maptext_y = 0
 	var/lmb_rmb_line = ""
-	var/ctrl_lmb_ctrl_rmb_line = ""
-	var/alt_lmb_alt_rmb_line = ""
+	var/ctrl_lmb_alt_lmb_line = ""
 	var/shift_lmb_ctrl_shift_lmb_line = ""
 	var/extra_lines = 0
 	var/extra_context = ""
@@ -1995,31 +1984,20 @@
 				else if (rmb_text)
 					lmb_rmb_line = rmb_text
 
-				// Ctrl-LMB, Ctrl-RMB on one line...
+				// Ctrl-LMB, Alt-LMB on one line...
 				if (lmb_rmb_line != "")
 					lmb_rmb_line += "<br>"
 					extra_lines++
 				if (SCREENTIP_CONTEXT_CTRL_LMB in context)
-					ctrl_lmb_ctrl_rmb_line += "[SCREENTIP_CONTEXT_CTRL_LMB]: [context[SCREENTIP_CONTEXT_CTRL_LMB]]"
-				if (SCREENTIP_CONTEXT_CTRL_RMB in context)
-					if (ctrl_lmb_ctrl_rmb_line != "")
-						ctrl_lmb_ctrl_rmb_line += " | "
-					ctrl_lmb_ctrl_rmb_line += "[SCREENTIP_CONTEXT_CTRL_RMB]: [context[SCREENTIP_CONTEXT_CTRL_RMB]]"
-
-				// Alt-LMB, Alt-RMB on one line...
-				if (ctrl_lmb_ctrl_rmb_line != "")
-					ctrl_lmb_ctrl_rmb_line += "<br>"
-					extra_lines++
+					ctrl_lmb_alt_lmb_line += "[SCREENTIP_CONTEXT_CTRL_LMB]: [context[SCREENTIP_CONTEXT_CTRL_LMB]]"
 				if (SCREENTIP_CONTEXT_ALT_LMB in context)
-					alt_lmb_alt_rmb_line += "[SCREENTIP_CONTEXT_ALT_LMB]: [context[SCREENTIP_CONTEXT_ALT_LMB]]"
-				if (SCREENTIP_CONTEXT_ALT_RMB in context)
-					if (alt_lmb_alt_rmb_line != "")
-						alt_lmb_alt_rmb_line += " | "
-					alt_lmb_alt_rmb_line += "[SCREENTIP_CONTEXT_ALT_RMB]: [context[SCREENTIP_CONTEXT_ALT_RMB]]"
+					if (ctrl_lmb_alt_lmb_line != "")
+						ctrl_lmb_alt_lmb_line += " | "
+					ctrl_lmb_alt_lmb_line += "[SCREENTIP_CONTEXT_ALT_LMB]: [context[SCREENTIP_CONTEXT_ALT_LMB]]"
 
 				// Shift-LMB, Ctrl-Shift-LMB on one line...
-				if (alt_lmb_alt_rmb_line != "")
-					alt_lmb_alt_rmb_line += "<br>"
+				if (ctrl_lmb_alt_lmb_line != "")
+					ctrl_lmb_alt_lmb_line += "<br>"
 					extra_lines++
 				if (SCREENTIP_CONTEXT_SHIFT_LMB in context)
 					shift_lmb_ctrl_shift_lmb_line += "[SCREENTIP_CONTEXT_SHIFT_LMB]: [context[SCREENTIP_CONTEXT_SHIFT_LMB]]"
@@ -2032,7 +2010,7 @@
 					extra_lines++
 
 				if(extra_lines)
-					extra_context = "<br><span style='font-size: 7px'>[lmb_rmb_line][ctrl_lmb_ctrl_rmb_line][alt_lmb_alt_rmb_line][shift_lmb_ctrl_shift_lmb_line]</span>"
+					extra_context = "<br><span style='font-size: 7px'>[lmb_rmb_line][ctrl_lmb_alt_lmb_line][shift_lmb_ctrl_shift_lmb_line]</span>"
 					//first extra line pushes atom name line up 10px, subsequent lines push it up 9px, this offsets that and keeps the first line in the same place
 					active_hud.screentip_text.maptext_y = -10 + (extra_lines - 1) * -9
 

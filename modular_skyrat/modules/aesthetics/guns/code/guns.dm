@@ -290,6 +290,13 @@
 	desc = "One of countless obsolete ballistic rifles that still sees use as a cheap deterrent. Uses 10mm ammo and its bulky frame prevents one-hand firing."
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
 
+/obj/item/gun/ballistic/automatic/c20r/unrestricted/cmg1
+	name = "\improper NT CMG-1"
+	desc = "A bullpup three-round burst .460C PDW with an eerily familiar design. It has a foldable stock and a dot sight."
+	icon_state = "cmg1"
+	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
+	company_flag = COMPANY_NANOTRASEN
+
 /obj/item/gun/ballistic/automatic/ar/modular/model75
 	name = "\improper NT ARG-75"
 	desc = "A contemporary rifle manufactured by NT chambered for .244 Acia. It's equipped with a heavy duty integrally suppressed barrel, CQB scope and a topmounted laser sight."

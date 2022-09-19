@@ -1253,20 +1253,16 @@
 	. = ..()
 
 // Used in polymorph code to shapeshift mobs into other creatures
-/**
- * Polymorphs our mob into another mob.
- * If successful, our current mob is qdeleted!
- *
- * what_to_randomize - what are we randomizing the mob into? See the defines for valid options.
- * change_flags - only used for humanoid randomization (currently), what pool of changeflags should we draw from?
- *
- * Returns a mob (what our mob turned into) or null (if we failed).
- */
-/mob/living/proc/wabbajack(what_to_randomize, change_flags = WABBAJACK)
-	if(stat == DEAD || notransform || (GODMODE & status_flags))
-		return
+/mob/living/proc/wabbajack(randomize)
+	// If the mob has a shapeshifted form, we want to pull out the reference of the caster's original body from it.
+	// We then want to restore this original body through the shapeshift holder itself.
+	var/obj/shapeshift_holder/shapeshift = locate() in src
+	if(shapeshift)
+		shapeshift.restore()
+		if(shapeshift.stored != src) // To reduce the risk of an infinite loop.
+			return shapeshift.stored.wabbajack(randomize)
 
-	if(SEND_SIGNAL(src, COMSIG_LIVING_PRE_WABBAJACKED, what_to_randomize) & STOP_WABBAJACK)
+	if(stat == DEAD || notransform || (GODMODE & status_flags))
 		return
 
 	notransform = TRUE
@@ -1295,64 +1291,51 @@
 
 	var/mob/living/new_mob
 
-	var/static/list/possible_results = list(
-		WABBAJACK_MONKEY,
-		WABBAJACK_ROBOT,
-		WABBAJACK_SLIME,
-		WABBAJACK_XENO,
-		WABBAJACK_HUMAN,
-		WABBAJACK_ANIMAL,
-	)
-
-	// If we weren't passed one, pick a default one
-	what_to_randomize ||= pick(possible_results)
-
-	switch(what_to_randomize)
-		if(WABBAJACK_MONKEY)
+	if(!randomize)
+		randomize = pick("monkey","robot","slime","xeno","humanoid","animal")
+	switch(randomize)
+		if("monkey")
 			new_mob = new /mob/living/carbon/human/species/monkey(loc)
 
-		if(WABBAJACK_ROBOT)
-			var/static/list/robot_options = list(
-				/mob/living/silicon/robot = 200,
-				/mob/living/simple_animal/drone/polymorphed = 200,
-				/mob/living/silicon/robot/model/syndicate = 1,
-				/mob/living/silicon/robot/model/syndicate/medical = 1,
-				/mob/living/silicon/robot/model/syndicate/saboteur = 1,
+		if("robot")
+			var/robot = pick(
+				200 ; /mob/living/silicon/robot,
+				/mob/living/silicon/robot/model/syndicate,
+				/mob/living/silicon/robot/model/syndicate/medical,
+				/mob/living/silicon/robot/model/syndicate/saboteur,
+				200 ; /mob/living/simple_animal/drone/polymorphed,
 			)
-
-			var/picked_robot = pick(robot_options)
-			new_mob = new picked_robot(loc)
+			new_mob = new robot(loc)
 			if(issilicon(new_mob))
-				var/mob/living/silicon/robot/created_robot = new_mob
 				new_mob.gender = gender
 				new_mob.invisibility = 0
 				new_mob.job = JOB_CYBORG
-				created_robot.lawupdate = FALSE
-				created_robot.connected_ai = null
-				created_robot.mmi.transfer_identity(src) //Does not transfer key/client.
-				created_robot.clear_inherent_laws(announce = FALSE)
-				created_robot.clear_zeroth_law(announce = FALSE)
+				var/mob/living/silicon/robot/Robot = new_mob
+				Robot.lawupdate = FALSE
+				Robot.connected_ai = null
+				Robot.mmi.transfer_identity(src) //Does not transfer key/client.
+				Robot.clear_inherent_laws(announce = FALSE)
+				Robot.clear_zeroth_law(announce = FALSE)
 
-		if(WABBAJACK_SLIME)
+		if("slime")
 			new_mob = new /mob/living/simple_animal/slime/random(loc)
 
-		if(WABBAJACK_XENO)
-			var/picked_xeno_type
-
+		if("xeno")
+			var/xeno_type
 			if(ckey)
-				picked_xeno_type = pick(
+				xeno_type = pick(
 					/mob/living/carbon/alien/humanoid/hunter,
 					/mob/living/carbon/alien/humanoid/sentinel,
 				)
 			else
-				picked_xeno_type = pick(
+				xeno_type = pick(
 					/mob/living/carbon/alien/humanoid/hunter,
 					/mob/living/simple_animal/hostile/alien/sentinel,
 				)
-			new_mob = new picked_xeno_type(loc)
+			new_mob = new xeno_type(loc)
 
-		if(WABBAJACK_ANIMAL)
-			var/picked_animal = pick(
+		if("animal")
+			var/path = pick(
 				/mob/living/simple_animal/hostile/carp,
 				/mob/living/simple_animal/hostile/bear,
 				/mob/living/simple_animal/hostile/mushroom,
@@ -1388,17 +1371,17 @@
 				/mob/living/simple_animal/pet/dog/breaddog,
 				/mob/living/simple_animal/chick,
 			)
-			new_mob = new picked_animal(loc)
+			new_mob = new path(loc)
 
-		if(WABBAJACK_HUMAN)
-			var/mob/living/carbon/human/new_human = new(loc)
+		if("humanoid")
+			var/mob/living/carbon/human/new_human = new (loc)
 
-			// 50% chance that we'll also randomice race
 			if(prob(50))
 				var/list/chooseable_races = list()
-				for(var/datum/species/species_type as anything in subtypesof(/datum/species))
-					if(initial(species_type.changesource_flags) & change_flags)
-						chooseable_races += species_type
+				for(var/speciestype in subtypesof(/datum/species))
+					var/datum/species/S = speciestype
+					if(initial(S.changesource_flags) & WABBAJACK)
+						chooseable_races += speciestype
 
 				if(length(chooseable_races))
 					new_human.set_species(pick(chooseable_races))
@@ -1409,49 +1392,45 @@
 			new_human.dna.update_dna_identity()
 			new_mob = new_human
 
-		else
-			stack_trace("wabbajack() was called without an invalid randomization choice. ([what_to_randomize])")
-
 	if(!new_mob)
 		return
-
-	to_chat(src, span_hypnophrase(span_big("Your form morphs into that of a [what_to_randomize]!")))
-
-	// And of course, make sure they get policy for being transformed
-	var/poly_msg = get_policy(POLICY_POLYMORPH)
-	if(poly_msg)
-		to_chat(src, poly_msg)
 
 	// Some forms can still wear some items
 	for(var/obj/item/item as anything in item_contents)
 		new_mob.equip_to_appropriate_slot(item)
 
-	// I don't actually know why we do this
+	log_message("became [new_mob.name]([new_mob.type])", LOG_ATTACK, color="orange")
 	new_mob.set_combat_mode(TRUE)
+	wabbajack_act(new_mob)
+	to_chat(new_mob, span_warning("Your form morphs into that of a [randomize]."))
 
-	// on_wabbajack is where we handle setting up the name,
-	// transfering the mind and observerse, and other miscellaneous
-	// actions that should be done before we delete the original mob.
-	on_wabbajacked(new_mob)
+	var/poly_msg = get_policy(POLICY_POLYMORPH)
+	if(poly_msg)
+		to_chat(new_mob, poly_msg)
 
+	transfer_observers_to(new_mob)
+
+	. = new_mob
 	qdel(src)
-	return new_mob
 
 // Called when we are hit by a bolt of polymorph and changed
 // Generally the mob we are currently in is about to be deleted
-/mob/living/proc/on_wabbajacked(mob/living/new_mob)
-	log_message("became [new_mob.name] ([new_mob.type])", LOG_ATTACK, color = "orange")
-	SEND_SIGNAL(src, COMSIG_LIVING_ON_WABBAJACKED, new_mob)
+/mob/living/proc/wabbajack_act(mob/living/new_mob)
+	log_message("was wabbajack polymorphed into: [new_mob.name]([new_mob.type]).", LOG_GAME)
+	SEND_SIGNAL(src, COMSIG_LIVING_WABBAJACKED, new_mob)
 	new_mob.name = real_name
 	new_mob.real_name = real_name
 
-	// Transfer mind to the new mob (also handles actions and observers and stuff)
 	if(mind)
 		mind.transfer_to(new_mob)
-
-	// Well, no mmind, guess we should try to move a key over
-	else if(key)
+	else
 		new_mob.key = key
+
+	for(var/para in hasparasites())
+		var/mob/living/simple_animal/hostile/guardian/G = para
+		G.summoner = new_mob
+		G.Recall()
+		to_chat(G, span_holoparasite("Your summoner has changed form!"))
 
 /mob/living/proc/unfry_mob() //Callback proc to tone down spam from multiple sizzling frying oil dipping.
 	REMOVE_TRAIT(src, TRAIT_OIL_FRIED, "cooking_oil_react")

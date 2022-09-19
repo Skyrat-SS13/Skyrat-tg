@@ -1,7 +1,3 @@
-/mob/dead/new_player
-	/// Title screen is ready to receive signals
-	var/title_screen_is_ready = FALSE
-
 /mob/dead/new_player/Topic(href, href_list[])
 	if(src != usr)
 		return
@@ -113,10 +109,6 @@
 	if(href_list["votepollref"])
 		var/datum/poll_question/poll = locate(href_list["votepollref"]) in GLOB.polls
 		vote_on_poll_handler(poll, href_list)
-		return
-
-	if(href_list["title_is_ready"])
-		title_screen_is_ready = TRUE
 		return
 
 

@@ -9,15 +9,15 @@ export const PortablePump = (props, context) => {
     direction,
     connected,
     holding,
-    targetPressure,
-    defaultPressure,
-    minPressure,
-    maxPressure,
+    target_pressure,
+    default_pressure,
+    min_pressure,
+    max_pressure,
   } = data;
   const pump_or_port = connected ? 'Port' : 'Pump';
   const area_or_tank = holding ? 'Tank' : 'Area';
   return (
-    <Window width={300} height={340}>
+    <Window width={300} height={315}>
       <Window.Content>
         <PortableBasicInfo />
         <Section
@@ -36,11 +36,11 @@ export const PortablePump = (props, context) => {
           <LabeledList>
             <LabeledList.Item label="Output">
               <NumberInput
-                value={targetPressure}
+                value={target_pressure}
                 unit="kPa"
                 width="75px"
-                minValue={minPressure}
-                maxValue={maxPressure}
+                minValue={min_pressure}
+                maxValue={max_pressure}
                 step={10}
                 onChange={(e, value) =>
                   act('pressure', {
@@ -52,7 +52,7 @@ export const PortablePump = (props, context) => {
             <LabeledList.Item label="Presets">
               <Button
                 icon="minus"
-                disabled={targetPressure === minPressure}
+                disabled={target_pressure === min_pressure}
                 onClick={() =>
                   act('pressure', {
                     pressure: 'min',
@@ -61,7 +61,7 @@ export const PortablePump = (props, context) => {
               />
               <Button
                 icon="sync"
-                disabled={targetPressure === defaultPressure}
+                disabled={target_pressure === default_pressure}
                 onClick={() =>
                   act('pressure', {
                     pressure: 'reset',
@@ -70,7 +70,7 @@ export const PortablePump = (props, context) => {
               />
               <Button
                 icon="plus"
-                disabled={targetPressure === maxPressure}
+                disabled={target_pressure === max_pressure}
                 onClick={() =>
                   act('pressure', {
                     pressure: 'max',

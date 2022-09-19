@@ -31,8 +31,6 @@
 	wander = TRUE
 	loot = list(/obj/effect/gibspawner/xeno, /obj/item/stack/sheet/bluespace_crystal/fifty, /obj/item/key/gateway, /obj/item/uber_teleporter)
 	movement_type = FLYING
-	///Resonance cascade's chance of spawning. Can be decreased by using Xen crystals on Nihilanth
-	var/cascade_chance = 60
 
 /obj/item/stack/sheet/bluespace_crystal/fifty
 	amount = 50
@@ -68,12 +66,12 @@
 	. = ..()
 	alert_sound_to_playing('modular_skyrat/modules/black_mesa/sound/mobs/nihilanth/nihilanth_death01.ogg')
 	new /obj/effect/singularity_creation(loc)
-	message_admins("[src] has been defeated, a spacetime cascade might occur in 30 seconds with a [cascade_chance]% chance.")
+	message_admins("[src] has been defeated, a spacetime cascade might occur in 30 seconds.")
 	addtimer(CALLBACK(src, .proc/endgame_shit),  30 SECONDS)
 
 /mob/living/simple_animal/hostile/blackmesa/xen/nihilanth/proc/endgame_shit()
 	to_chat(world, span_danger("You feel as though a powerful force has been defeated..."))
-	if(prob(cascade_chance))
+	if(prob(60))
 		var/datum/round_event_control/resonance_cascade/event_to_start = new()
 		event_to_start.runEvent()
 
@@ -81,13 +79,3 @@
 	. = ..()
 	set_combat_mode(FALSE)
 
-/mob/living/simple_animal/hostile/blackmesa/xen/nihilanth/attackby(obj/item/attacking_item, mob/living/user, params)
-	. = ..()
-	if(istype(attacking_item, /obj/item/grenade/xen_crystal))
-		if(cascade_chance <= 0)
-			balloon_alert(user, "link already weak!")
-			return
-		cascade_chance -= 15
-		balloon_alert(user, "world link weakened")
-		playsound(user, 'modular_skyrat/modules/black_mesa/sound/tc_13_teleport.ogg', 100)
-		qdel(attacking_item)

@@ -108,7 +108,6 @@
 		"bat" = FALSE,
 		"butterfly" = FALSE,
 		"cat" = TRUE,
-		"chicken" = FALSE,
 		"corgi" = FALSE,
 		"crow" = TRUE,
 		"duffel" = TRUE,

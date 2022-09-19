@@ -13,10 +13,11 @@
 /datum/round_event_control/stray_meteor/admin_setup()
 	if(!check_rights(R_FUN))
 		return
-	if(tgui_alert(usr, "Throw a random meteor?", "Plasuable Deniability!", list("Yes", "No")) == "Yes")
-		var/list/meteor_list = list()
-		meteor_list += subtypesof(/obj/effect/meteor)
-		chosen_meteor = tgui_input_list(usr, "Too lazy for buildmode?","Throw meteor", meteor_list)
+
+	var/list/meteor_list = list()
+	meteor_list += subtypesof(/obj/effect/meteor)
+	chosen_meteor = tgui_input_list(usr, "Too lazy for buildmode?","Throw meteor", meteor_list)
+
 
 /datum/round_event/stray_meteor
 	announce_when = 1

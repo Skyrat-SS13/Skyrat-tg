@@ -72,7 +72,7 @@ GLOBAL_LIST_INIT(stone_recipes, list ( \
 	slicing_duration = 1.5 SECONDS  //literal rock
 	explosion_block = 2
 	smoothing_flags = SMOOTH_BITMASK
-	smoothing_groups = list(SMOOTH_GROUP_WALLS, SMOOTH_GROUP_STONE_WALLS, SMOOTH_GROUP_CLOSED_TURFS)
+	smoothing_groups = list(SMOOTH_GROUP_CLOSED_TURFS, SMOOTH_GROUP_WALLS, SMOOTH_GROUP_STONE_WALLS)
 	canSmoothWith = list(SMOOTH_GROUP_STONE_WALLS)
 	custom_materials = list(/datum/material/stone = 4000)
 
@@ -83,7 +83,7 @@ GLOBAL_LIST_INIT(stone_recipes, list ( \
 	icon_state = "wall-0"
 	base_icon_state = "wall"
 	smoothing_flags = SMOOTH_BITMASK
-	smoothing_groups = list(SMOOTH_GROUP_WALLS, SMOOTH_GROUP_STONE_WALLS, SMOOTH_GROUP_CLOSED_TURFS)
+	smoothing_groups = list(SMOOTH_GROUP_CLOSED_TURFS, SMOOTH_GROUP_WALLS, SMOOTH_GROUP_STONE_WALLS)
 	canSmoothWith = list(SMOOTH_GROUP_STONE_WALLS)
 	custom_materials = list(/datum/material/stone = 4000)
 
@@ -96,5 +96,5 @@ GLOBAL_LIST_INIT(stone_recipes, list ( \
 	mineral = /obj/item/stack/sheet/mineral/stone
 	walltype = /turf/closed/wall/mineral/stone
 	smoothing_flags = SMOOTH_BITMASK
-	smoothing_groups = list(SMOOTH_GROUP_WALLS, SMOOTH_GROUP_STONE_WALLS, SMOOTH_GROUP_CLOSED_TURFS)
+	smoothing_groups = list(SMOOTH_GROUP_CLOSED_TURFS, SMOOTH_GROUP_WALLS, SMOOTH_GROUP_STONE_WALLS)
 	canSmoothWith = list(SMOOTH_GROUP_STONE_WALLS)

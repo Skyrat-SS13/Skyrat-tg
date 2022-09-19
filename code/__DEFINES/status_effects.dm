@@ -37,4 +37,5 @@
 
 #define STASIS_CHEMICAL_EFFECT "stasis_chemical"
 
-#define STASIS_SHAPECHANGE_EFFECT "stasis_shapechange"
+#define STASIS_ASCENSION_EFFECT "heretic_ascension"
+
