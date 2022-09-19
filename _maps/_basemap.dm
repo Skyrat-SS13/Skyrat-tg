@@ -19,6 +19,7 @@
 		#include "map_files\Blueshift\BlueShift_middle.dmm"
 		#include "map_files\Blueshift\BlueShift_lower.dmm"
 		#include "map_files\VoidRaptor\VoidRaptor.dmm"
+		#include "map_files\FlotillaStation\FlotillaStation.dmm"
 		// SKYRAT EDIT END
 
 		#ifdef CIBUILDING
