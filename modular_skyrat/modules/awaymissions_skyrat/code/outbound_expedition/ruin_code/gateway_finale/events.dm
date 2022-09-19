@@ -26,7 +26,7 @@
 	var/maximum_spawns = 10
 
 /datum/outbound_gateway_event/portal/on_event()
-	storm = mutable_appearance('icons/obj/tesla_engine/energy_ball.dmi', "energy_ball_fast", FLY_LAYER)
+	storm = mutable_appearance('icons/obj/engine/energy_ball.dmi', "energy_ball_fast", FLY_LAYER)
 	storm.plane = ABOVE_GAME_PLANE
 	storm.color = "#00FF00"
 

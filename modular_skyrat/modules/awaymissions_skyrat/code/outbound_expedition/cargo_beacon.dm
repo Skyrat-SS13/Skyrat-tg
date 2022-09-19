@@ -82,7 +82,7 @@
 			/obj/item/storage/box/ammo_box/shotgun_12g = 2,
 			/obj/item/gun/ballistic/automatic/cmg = 1,
 			/obj/item/ammo_box/magazine/multi_sprite/cmg/lethal = 1,
-			/obj/item/ammo_box/magazine/multi_sprite/cmg/ap = 1,
+			/obj/item/ammo_box/magazine/multi_sprite/cmg/hp = 1,
 			/obj/item/gun/energy/ionrifle = 1,
 			/obj/item/clothing/gloves/tackler = 2,
 		),
