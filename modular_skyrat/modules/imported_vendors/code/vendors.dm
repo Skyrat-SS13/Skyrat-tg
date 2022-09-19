@@ -6,6 +6,14 @@
 		/obj/machinery/vending/imported/tizirian,
 	)
 
+/obj/effect/spawner/random/vending/colavend //These can serve both snacks AND drinks so its kinda both of them?
+	loot = list(
+		/obj/machinery/vending/imported,
+		/obj/machinery/vending/imported/yangyu,
+		/obj/machinery/vending/imported/mothic,
+		/obj/machinery/vending/imported/tizirian,
+	)
+
 /obj/machinery/vending/imported
 	name = "NT Sustenance Supplier"
 	desc = "A vending machine serving up only the finest of human college student food."
