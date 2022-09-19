@@ -499,12 +499,12 @@
 /datum/loadout_item/toys/plushie_chiara
 	name = "Chiara Plushie"
 	item_path = /obj/item/toy/plush/skyrat/plushie_chiara
-	ckeywhitelist = list("SRQ","Superlagg")
+	ckeywhitelist = list("srq","superlagg")
 
 /datum/loadout_item/toys/plushie_dan
 	name = "Dan Plushie"
 	item_path = /obj/item/toy/plush/skyrat/plushie_dan
-	ckeywhitelist = list("SRQ","Superlagg")
+	ckeywhitelist = list("srq","superlagg")
 
 //Chunko Fops were donated by SlippyJoe, who requested they are usable by everyone
 
