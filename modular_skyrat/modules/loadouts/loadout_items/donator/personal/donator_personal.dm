@@ -498,7 +498,7 @@
 /datum/loadout_item/toys/plushie_chiara
 	name = "Commanding Fox Plushie"
 	item_path = /obj/item/toy/plush/skyrat/plushie_chiara
-	ckeywhitelist = list("srq","superlagg")
+	ckeywhitelist = list("srq", "superlagg")
 
 /datum/loadout_item/toys/plushie_dan
 	name = "Comfy Fox Plushie"
