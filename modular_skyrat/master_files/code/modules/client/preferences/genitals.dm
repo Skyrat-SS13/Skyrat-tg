@@ -380,16 +380,10 @@
 	return ((passed_initial_check || allowed) && part_enabled)
 
 /datum/preference/choiced/breasts_size/apply_to_human(mob/living/carbon/human/target, value)
-	target.dna.features["breasts_size"] = value
+	target.dna.features["breasts_size"] = GLOB.breast_size_to_number[value]
 
 /datum/preference/choiced/breasts_size/create_default_value()
-	return 4
-
-/datum/preference/choiced/breasts_size/deserialize(input, datum/preferences/preferences)
-	var/value_to_convert = ..()
-	if(isnum(value_to_convert))
-		return value_to_convert
-	return GLOB.breast_size_to_number[value_to_convert]
+	return BREAST_SIZE_C
 
 // ANUS
 

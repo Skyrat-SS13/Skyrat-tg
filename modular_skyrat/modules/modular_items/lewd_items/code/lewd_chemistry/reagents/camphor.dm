@@ -31,8 +31,8 @@
 
 	if(exposed_mob.getorganslot(ORGAN_SLOT_BREASTS))
 		var/obj/item/organ/external/genital/breasts/mob_breasts = exposed_mob.getorganslot(ORGAN_SLOT_BREASTS)
-		if(exposed_mob.client?.prefs.read_preference(/datum/preference/numeric/breasts_size))
-			var/original_breast_size = exposed_mob.client?.prefs.read_preference(/datum/preference/numeric/breasts_size)
+		var/original_breast_size = GLOB.breast_size_to_number[exposed_mob.client?.prefs.read_preference(/datum/preference/choiced/breasts_size)]
+		if(original_breast_size)
 			if(mob_breasts?.genital_size > original_breast_size)
 				mob_breasts.genital_size -= breast_size_reduction_step
 				mob_breasts.update_sprite_suffix()
