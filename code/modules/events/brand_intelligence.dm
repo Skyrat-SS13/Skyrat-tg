@@ -45,11 +45,7 @@
 		source = chosen_vendor.name
 	else if(originMachine)
 		source = originMachine.name
-<<<<<<< HEAD
-	priority_announce("Rampant brand intelligence has been detected aboard [station_name()]. Please stand by. The origin is believed to be \a [source].", "Machine Learning Alert", ANNOUNCER_BRANDINTELLIGENCE) //SKYRAT EDIT CHANGE
-=======
 	priority_announce("Rampant brand intelligence has been detected aboard [station_name()]. Please inspect any [source] brand vendors for aggressive marketing tactics, and reboot them if necessary.", "Machine Learning Alert")
->>>>>>> e213772e9e1 (Minor adjustments to the brand intelligence event (and also a tiny change to stray meteor admin setup) (#69984))
 
 /datum/round_event/brand_intelligence/start()
 	var/datum/round_event_control/brand_intelligence/brand_event = control
