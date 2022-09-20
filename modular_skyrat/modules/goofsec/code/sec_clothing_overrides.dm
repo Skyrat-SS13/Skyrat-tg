@@ -175,6 +175,12 @@
 /*
 * HEAD
 */
+
+//Overrides the bulletproof helm with the older non red visor version.
+/obj/item/clothing/head/helmet/alt
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+
 //Standard helmet (w/ visor)
 /obj/item/clothing/head/helmet/sec
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
