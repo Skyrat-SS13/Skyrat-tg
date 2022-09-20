@@ -405,14 +405,14 @@
 /obj/item/organ/external/genital/breasts/proc/breasts_size_to_cup(number)
 	if(number < 0)
 		number = 0
-	var/returned = GLOB.breasts_size_translation["[number]"]
+	var/returned = GLOB.breast_size_translation["[number]"]
 	if(!returned)
 		returned = BREAST_SIZE_BEYOND_MEASUREMENT
 	return returned
 
 /obj/item/organ/external/genital/breasts/proc/breasts_cup_to_size(cup)
-	for(var/key in GLOB.breasts_size_translation)
-		if(GLOB.breasts_size_translation[key] == cup)
+	for(var/key in GLOB.breast_size_translation)
+		if(GLOB.breast_size_translation[key] == cup)
 			return text2num(key)
 	return 0
 

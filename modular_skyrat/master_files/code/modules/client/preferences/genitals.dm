@@ -364,25 +364,32 @@
 	var/part_enabled = is_factual_sprite_accessory(relevant_mutant_bodypart, preferences.read_preference(/datum/preference/choiced/genital/breasts))
 	return part_enabled && (passed_initial_check || allowed)
 
-/datum/preference/numeric/breasts_size
+/datum/preference/choiced/breasts_size
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
 	savefile_identifier = PREFERENCE_CHARACTER
 	savefile_key = "breasts_size"
 	relevant_mutant_bodypart = ORGAN_SLOT_BREASTS
-	minimum = 0
-	maximum = 16
 
-/datum/preference/numeric/breasts_size/is_accessible(datum/preferences/preferences)
+/datum/preference/choiced/breasts_size/init_possible_values()
+	return GLOB.preference_breast_sizes
+
+/datum/preference/choiced/breasts_size/is_accessible(datum/preferences/preferences)
 	var/passed_initial_check = ..(preferences)
 	var/allowed = preferences.read_preference(/datum/preference/toggle/allow_mismatched_parts)
 	var/part_enabled = is_factual_sprite_accessory(relevant_mutant_bodypart, preferences.read_preference(/datum/preference/choiced/genital/breasts))
 	return ((passed_initial_check || allowed) && part_enabled)
 
-/datum/preference/numeric/breasts_size/apply_to_human(mob/living/carbon/human/target, value)
+/datum/preference/choiced/breasts_size/apply_to_human(mob/living/carbon/human/target, value)
 	target.dna.features["breasts_size"] = value
 
-/datum/preference/numeric/breasts_size/create_default_value()
+/datum/preference/choiced/breasts_size/create_default_value()
 	return 4
+
+/datum/preference/choiced/breasts_size/deserialize(input, datum/preferences/preferences)
+	var/value_to_convert = ..()
+	if(isnum(value_to_convert))
+		return value_to_convert
+	return GLOB.breast_size_to_number[value_to_convert]
 
 // ANUS
 
