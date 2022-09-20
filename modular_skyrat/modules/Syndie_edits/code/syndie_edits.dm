@@ -78,7 +78,7 @@
 
 /obj/item/clothing/gloves/krav_maga/combatglovesplus/maa
 	name = "master at arms' combat gloves"
-	desc = "A set of combat gloves plus emblazoned with red knuckles, showing dedication to the trade, and to hide any blood knuckles from beating unruly folk."
+	desc = "A set of combat gloves plus emblazoned with red knuckles, showing dedication to the trade, and to hide any bloody knuckles from beating unruly folk."
 	icon_state = "maagloves"
 
 /obj/item/storage/belt/security/webbing/ds
