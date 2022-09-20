@@ -11,10 +11,10 @@
 	description = "A volatile collodial mixture derived from various masculine solutions that encourages a larger gentleman's package via a potent testosterone mix."
 	color = "#888888"
 	taste_description = "chinese dragon powder"
-	overdose_threshold = 20 ///ODing makes you male and shrinks female genitals if gender change prefs are enabled. Otherwise, grows a cock.
+	overdose_threshold = 20 // ODing makes you male and shrinks female genitals if gender change prefs are enabled. Otherwise, grows a cock.
 	metabolization_rate = 0.25
 	life_pref_datum = /datum/preference/toggle/erp/penis_enlargement
-	overdose_pref_datum = /datum/preference/toggle/erp/gender_change ///Changed from penis_enlargement in order to have gender swapping as a separate feature within overdose.
+	overdose_pref_datum = /datum/preference/toggle/erp
 
 	// Not important at all, really, but I don't want folk complaining about a removed feature.
 	var/static/list/species_to_penis = list(
@@ -136,7 +136,7 @@
 
 /datum/reagent/drug/aphrodisiac/incubus_draft/overdose_effects(mob/living/carbon/human/exposed_mob)
 	if(exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/penis_enlargement))
-		if(!exposed_mob.getorganslot(ORGAN_SLOT_PENIS))
+		if(!exposed_mob.getorganslot(ORGAN_SLOT_PENIS) && exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/new_genitalia_growth))
 			var/list/data = species_to_penis[exposed_mob.dna.species.id]
 			if(!data)
 				data = species_to_penis[SPECIES_HUMAN]

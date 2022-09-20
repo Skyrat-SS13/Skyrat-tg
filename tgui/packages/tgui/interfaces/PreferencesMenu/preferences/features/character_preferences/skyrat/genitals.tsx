@@ -169,3 +169,8 @@ export const erp_status_pref_mechanics: FeatureChoiced = {
   name: 'ERP Mechanical Status',
   component: FeatureDropdownInput,
 };
+
+export const new_genitalia_growth_toggle: FeatureToggle = {
+  name: 'New Genitalia Growth',
+  component: CheckboxInput,
+};

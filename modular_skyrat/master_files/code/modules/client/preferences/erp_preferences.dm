@@ -95,6 +95,9 @@
 /datum/preference/toggle/erp/autoemote
 	savefile_key = "autoemote_pref"
 
+/datum/preference/toggle/erp/new_genitalia_growth
+	savefile_key = "new_genitalia_growth_pref"
+
 /datum/preference/choiced/erp_status
 	category = PREFERENCE_CATEGORY_NON_CONTEXTUAL
 	savefile_identifier = PREFERENCE_CHARACTER
