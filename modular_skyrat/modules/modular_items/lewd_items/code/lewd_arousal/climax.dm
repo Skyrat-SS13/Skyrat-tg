@@ -20,17 +20,20 @@
 			span_purple("You can't have an orgasm!"))
 		return TRUE
 
-	// Both is hard to do without flooding chat with up to five messages, so I'm not doing it.
-	var/list/genitals = list()
-	if(has_vagina())
-		genitals.Add(CLIMAX_VAGINA)
-		if(has_penis())
-			genitals.Add(CLIMAX_PENIS)
-			genitals.Add(CLIMAX_BOTH)
-	else if(has_penis())
-		genitals.Add(CLIMAX_PENIS)
+	// Reduce pop-ups and make it slightly more frictionless (lewd).
+	var/climax_choice = has_penis()? CLIMAX_PENIS : CLIMAX_VAGINA
 
-	var/climax_choice = tgui_alert(src, "You are climaxing, choose which genitelia to climax with.", "Genetelia Preference!", genitals)
+	if(manual)
+		var/list/genitals = list()
+		if(has_vagina())
+			genitals.Add(CLIMAX_VAGINA)
+			if(has_penis())
+				genitals.Add(CLIMAX_PENIS)
+				genitals.Add(CLIMAX_BOTH)
+		else if(has_penis())
+			genitals.Add(CLIMAX_PENIS)
+		climax_choice = tgui_alert(src, "You are climaxing, choose which genitelia to climax with.", "Genitelia Preference!", genitals)
+
 	switch(gender)
 		if(MALE)
 			playsound(get_turf(src), pick('modular_skyrat/modules/modular_items/lewd_items/sounds/final_m1.ogg',
@@ -44,7 +47,7 @@
 	var/self_orgasm = FALSE
 	var/self_their = p_their()
 
-	if(climax_choice == ORGAN_SLOT_PENIS || climax_choice == CLIMAX_BOTH)
+	if(climax_choice == CLIMAX_PENIS || climax_choice == CLIMAX_BOTH)
 		var/obj/item/organ/external/genital/penis/penis = getorganslot(ORGAN_SLOT_PENIS)
 		if(!getorganslot(ORGAN_SLOT_TESTICLES)) //If we have no god damn balls, we can't cum anywhere... GET BALLS!
 			visible_message(span_userlove("[src] orgasms, but nothing comes out of [self_their] penis!"), \
@@ -74,11 +77,11 @@
 			if(interactable_inrange_humans.len)
 				buttons += CLIMAX_IN_OR_ON
 
-			climax_choice = tgui_alert(src, "Choose where to shoot your load.", "Load preference!", buttons)
+			var/penis_climax_choice = tgui_alert(src, "Choose where to shoot your load.", "Load preference!", buttons)
 
 			var/create_cum_decal = FALSE
 
-			if(!climax_choice || climax_choice == CLIMAX_ON_FLOOR)
+			if(!penis_climax_choice || penis_climax_choice == CLIMAX_ON_FLOOR)
 				create_cum_decal = TRUE
 				visible_message(span_userlove("[src] shoots [self_their] sticky load onto the floor!"), \
 					span_userlove("You shoot string after string of hot cum, hitting the floor!"))
@@ -128,7 +131,7 @@
 				add_cum_splatter_floor(get_turf(src))
 
 		try_lewd_autoemote("moan")
-		if(climax_choice != CLIMAX_BOTH)
+		if(climax_choice == CLIMAX_PENIS)
 			apply_status_effect(/datum/status_effect/climax)
 			apply_status_effect(/datum/status_effect/climax_cooldown)
 			if(self_orgasm)
