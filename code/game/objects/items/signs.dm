@@ -27,6 +27,15 @@
 		name = "[label] sign"
 		desc = "It reads: [label]"
 
+/obj/item/picket_sign/cyborg/proc/borgsign_retext(mob/user)
+	if(!iscyborg(user))
+		return
+	var/txt = tgui_input_text(user, "What would you like to write on the sign?", "Sign Label", max_length = 30)
+	if(txt && user.canUseTopic(src, BE_CLOSE))
+		label = txt
+		name = "[label] sign"
+		desc = "It reads: [label]"
+
 /obj/item/picket_sign/attackby(obj/item/W, mob/user, params)
 	if(istype(W, /obj/item/pen) || istype(W, /obj/item/toy/crayon))
 		retext(user, W)
@@ -60,10 +69,10 @@
 	name = "Retext Nano Picket Sign"
 
 /datum/action/item_action/nano_picket_sign/Trigger(trigger_flags)
-	if(!istype(target, /obj/item/picket_sign))
+	if(!istype(target, /obj/item/picket_sign/cyborg))
 		return
-	var/obj/item/picket_sign/sign = target
-	sign.retext(owner)
+	var/obj/item/picket_sign/cyborg/sign = target
+	sign.borgsign_retext(owner)
 
 /datum/crafting_recipe/picket_sign
 	name = "Picket Sign"
