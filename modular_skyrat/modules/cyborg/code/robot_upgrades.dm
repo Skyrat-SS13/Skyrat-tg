@@ -253,19 +253,21 @@
 	require_model = FALSE
 /obj/item/borg/upgrade/sign/action(mob/living/silicon/robot/target_robot, user = usr)
 	. = ..()
-	if(.)
+	if(!.)
+		return
+	var/obj/item/picket_sign/cyborg/borgsign = locate() in target_robot.model.modules
+	if(borgsign)
+		to_chat(user, span_warning("This unit is already equipped with an sign module!"))
+		return
 
-		var/obj/item/picket_sign/cyborg/borgsign = locate() in target_robot.model.modules
-		if(borgsign)
-			to_chat(user, span_warning("This unit is already equipped with an sign module!"))
-			return
+	borgsign = new(target_robot.model)
+	target_robot.model.basic_modules += borgsign
+	target_robot.model.add_module(borgsign, FALSE, TRUE)
 
-		borgsign = new(target_robot.model)
-		target_robot.model.basic_modules += borgsign
-		target_robot.model.add_module(borgsign, FALSE, TRUE)
 /obj/item/borg/upgrade/borgsign/deactivate(mob/living/silicon/robot/target_robot, user = usr)
 	. = ..()
-	if (.)
-		var/obj/item/picket_sign/cyborg/borgsign = locate() in target_robot.model
-		if (borgsign)
-			target_robot.model.remove_module(borgsign, TRUE)
+	if (!.)
+		return
+	var/obj/item/picket_sign/cyborg/borgsign = locate() in target_robot.model
+	if (borgsign)
+		target_robot.model.remove_module(borgsign, TRUE)
