@@ -271,3 +271,13 @@
 	var/obj/item/picket_sign/cyborg/borgsign = locate() in target_robot.model
 	if (borgsign)
 		target_robot.model.remove_module(borgsign, TRUE)
+
+//Updated proc for the sign, ignores the writing_utensil check in favor of iscyborg(user) This prevent a pesky chat warning.
+/obj/item/picket_sign/cyborg/proc/borgsign_retext(mob/user)
+	if(!iscyborg(user))
+		return
+	var/txt = tgui_input_text(user, "What would you like to write on the sign?", "Sign Label", max_length = 30)
+	if(txt && user.canUseTopic(src, BE_CLOSE))
+		label = txt
+		name = "[label] sign"
+		desc = "It reads: [label]"
