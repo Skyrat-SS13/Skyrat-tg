@@ -36,7 +36,7 @@
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 	allowed = list(/obj/item/analyzer, /obj/item/stack/medical, /obj/item/dnainjector, /obj/item/reagent_containers/dropper, /obj/item/reagent_containers/syringe, /obj/item/reagent_containers/hypospray, /obj/item/healthanalyzer, /obj/item/flashlight, /obj/item/reagent_containers/cup/bottle, /obj/item/reagent_containers/cup/beaker, /obj/item/reagent_containers/pill, /obj/item/storage/pill_bottle, /obj/item/paper, /obj/item/melee/baton/telescopic, /obj/item/soap, /obj/item/tank/internals/emergency_oxygen, /obj/item/gun, /obj/item/storage/medkit)
 
-/obj/item/clothing/under/rank/security/peacekeeper/security_medic
+/obj/item/clothing/under/rank/security/peacekeeper/security_medic/alternate
 	name = "security medics's uniform"
 	desc = "A lightly armored uniform worn by Nanotrasen's Asset Protection Medical Corps."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/security.dmi'
@@ -44,12 +44,13 @@
 	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/uniform_digi.dmi'
 	icon_state = "security_medic_jumpsuit"
 
-/obj/item/clothing/under/rank/security/peacekeeper/security_medic/alternate
+/obj/item/clothing/under/rank/security/peacekeeper/security_medic
 	name = "security medics's turtleneck"
 	desc = "A comfy turtleneck with a white armband, denoting the wearer as a security medic."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/security.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/security.dmi'
 	icon_state = "security_medic_turtleneck"
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
 
 /obj/item/clothing/under/rank/security/peacekeeper/security_medic/skirt
 	name = "security medics's skirtleneck"
