@@ -244,3 +244,28 @@
 		var/obj/item/inducer/cyborg/inducer = locate() in target_robot.model
 		if (inducer)
 			target_robot.model.remove_module(inducer, TRUE)
+
+// Borg picket sign upgrade
+/obj/item/borg/upgrade/sign
+	name = "Cyborg Multi-purpose advertisement tool upgrade"
+	desc = "A Picket sign upgrade for cyborgs"
+	icon_state = "cyborg_upgrade3"
+	require_model = FALSE
+/obj/item/borg/upgrade/sign/action(mob/living/silicon/robot/target_robot, user = usr)
+	. = ..()
+	if(.)
+
+		var/obj/item/picket_sign/cyborg/borgsign = locate() in target_robot.model.modules
+		if(borgsign)
+			to_chat(user, span_warning("This unit is already equipped with an sign module!"))
+			return
+
+		borgsign = new(target_robot.model)
+		target_robot.model.basic_modules += borgsign
+		target_robot.model.add_module(borgsign, FALSE, TRUE)
+/obj/item/borg/upgrade/borgsign/deactivate(mob/living/silicon/robot/target_robot, user = usr)
+	. = ..()
+	if (.)
+		var/obj/item/picket_sign/cyborg/borgsign = locate() in target_robot.model
+		if (borgsign)
+			target_robot.model.remove_module(borgsign, TRUE)
