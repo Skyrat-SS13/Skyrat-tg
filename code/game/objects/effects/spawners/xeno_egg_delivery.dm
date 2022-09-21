@@ -4,7 +4,7 @@
 	icon_state = "egg_growing"
 	var/announcement_time = 1200
 
-/obj/effect/spawner/borer_egg_delivery/Initialize(mapload) // SkyRat Edit: Swaps Xeno egg for Borer egg
+/obj/effect/spawner/xeno_egg_delivery/Initialize(mapload) // SkyRat Edit: Swaps Xeno egg for Borer egg
 	..()
 	var/turf/T = get_turf(src)
 
