@@ -640,9 +640,6 @@
 "cj" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /turf/open/floor/iron{
 	initial_gas_mix = "n2=104;TEMP=293.15"
 	},
@@ -3759,7 +3756,7 @@
 /area/station/medical/storage)
 "mL" = (
 /obj/structure/disposalpipe/segment{
-	dir = 6
+	dir = 10
 	},
 /turf/open/floor/iron{
 	initial_gas_mix = "n2=104;TEMP=293.15"
@@ -5814,14 +5811,6 @@
 /obj/item/kirbyplants/random,
 /turf/open/floor/carpet,
 /area/station/medical/psychology)
-"ut" = (
-/obj/structure/disposalpipe/segment{
-	dir = 9
-	},
-/turf/open/floor/iron{
-	initial_gas_mix = "n2=104;TEMP=293.15"
-	},
-/area/station/security/brig)
 "uu" = (
 /obj/machinery/airalarm/directional/east,
 /obj/machinery/light/directional/east,
@@ -7364,6 +7353,9 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 1
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/open/floor/iron{
 	initial_gas_mix = "n2=104;TEMP=293.15"
 	},
@@ -7452,15 +7444,6 @@
 /obj/structure/disposalpipe/trunk,
 /turf/open/floor/plating,
 /area/station/commons/dorms/barracks)
-"zn" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/orange/hidden/layer4,
-/obj/structure/cable,
-/obj/structure/disposalpipe/segment,
-/turf/open/floor/iron{
-	initial_gas_mix = "n2=104;TEMP=293.15"
-	},
-/area/station/security/brig)
 "zo" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
@@ -12722,8 +12705,11 @@
 /turf/open/floor/iron,
 /area/station/security/execution/transfer)
 "RI" = (
-/obj/structure/table/reinforced,
 /obj/machinery/light/directional/west,
+/obj/machinery/disposal/bin,
+/obj/structure/disposalpipe/trunk{
+	dir = 4
+	},
 /turf/open/floor/iron{
 	initial_gas_mix = "n2=104;TEMP=293.15"
 	},
@@ -14452,16 +14438,6 @@
 	initial_gas_mix = "n2=104;TEMP=293.15"
 	},
 /area/station/security/power_station)
-"Yc" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
-/obj/machinery/disposal/bin,
-/obj/structure/disposalpipe/trunk,
-/turf/open/floor/iron/dark{
-	initial_gas_mix = "n2=104;TEMP=293.15"
-	},
-/area/station/security/brig)
 "Yd" = (
 /obj/machinery/hydroponics/soil,
 /obj/machinery/status_display/evac/directional/north,
@@ -105346,7 +105322,7 @@ EP
 Zz
 Kx
 qA
-Vf
+GK
 Zd
 yk
 Le
@@ -105603,7 +105579,7 @@ xs
 OW
 hF
 qA
-Vf
+GK
 Zd
 fE
 uj
@@ -105860,7 +105836,7 @@ xs
 Yn
 hF
 qA
-Vf
+GK
 FA
 jd
 jd
@@ -106117,7 +106093,7 @@ uc
 am
 am
 qA
-Vf
+GK
 FA
 hf
 NM
@@ -106631,7 +106607,7 @@ QJ
 hO
 TB
 mr
-qA
+bH
 qA
 qA
 qA
@@ -107145,7 +107121,7 @@ wY
 xc
 RT
 mr
-GK
+Vf
 lT
 KD
 mu
@@ -107402,7 +107378,7 @@ QJ
 hO
 TB
 mr
-GK
+Vf
 WE
 mh
 kM
@@ -107916,7 +107892,7 @@ wY
 Im
 RT
 mr
-GK
+Vf
 WE
 mh
 Zk
@@ -108173,7 +108149,7 @@ QJ
 hO
 TB
 mr
-GK
+Vf
 WE
 mu
 mu
@@ -108428,9 +108404,9 @@ rw
 OL
 OL
 an
-Yc
-zn
-ut
+TB
+mr
+Vf
 WE
 Tm
 Tm
