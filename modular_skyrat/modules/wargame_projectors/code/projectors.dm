@@ -40,11 +40,16 @@
 		"Brown" = COLOR_BROWN,
 		"Ice" = COLOR_BLUE_GRAY,
 	)
+	/// Will hold the choices for radial menu use, populated on init
+	var/list/radial_choices = list()
+	/// A names to path list for the projections filled out by populate_radial_choice_lists() on init
+	var/list/projection_names_to_path = list()
 
 /obj/item/wargame_projector/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/openspace_item_click_handler)
 	set_greyscale(holosign_color)
+	populate_radial_choice_lists()
 
 /obj/item/wargame_projector/handle_openspace_click(turf/target, mob/user, proximity_flag, click_parameters)
 	afterattack(target, user, proximity_flag, click_parameters)
@@ -57,19 +62,18 @@
 	. += span_notice("<b>Alt clicking</b> the projector will let you change the color of the next hologram it makes.")
 	. += span_warning("<b>Control clicking</b> the projector will allow you to clear all active holograms.")
 
+/obj/item/wargame_projector/proc/populate_radial_choice_lists()
+	if(!length(radial_choices) || !length(projection_names_to_path))
+		for(var/obj/structure/wargame_hologram/hologram as anything in holosign_options)
+			projection_names_to_path[initial(hologram.name)] = hologram
+			radial_choices[initial(hologram.name)] = image(icon = initial(hologram.icon), icon_state = initial(hologram.icon_state))
+
 /// Changes the selected hologram to one of the options from the hologram list
 /obj/item/wargame_projector/proc/select_hologram(mob/user)
-	var/list/choices = list()
-	var/list/names_to_path = list()
-	if(!length(choices) || !length(names_to_path))
-		for(var/obj/structure/wargame_hologram/hologram as anything in holosign_options)
-			names_to_path[initial(hologram.name)] = hologram
-			choices[initial(hologram.name)] = image(icon = initial(hologram.icon), icon_state = initial(hologram.icon_state))
-
 	var/picked_choice = show_radial_menu(
 		user,
 		src,
-		choices,
+		radial_choices,
 		require_near = TRUE,
 		tooltips = TRUE,
 		)
@@ -77,7 +81,7 @@
 	if(isnull(picked_choice))
 		return
 
-	holosign_type = names_to_path[picked_choice]
+	holosign_type = projection_names_to_path[picked_choice]
 
 /obj/item/wargame_projector/attack_self(mob/user)
 	select_hologram(user)
