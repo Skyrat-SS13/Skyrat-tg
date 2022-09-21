@@ -61,7 +61,7 @@
 /obj/item/wargame_projector/proc/select_hologram(mob/user)
 	var/list/choices = list()
 	var/list/names_to_path = list()
-	if(!choices.len || !names_to_path.len)
+	if(!choices.length || !names_to_path.length)
 		for(var/obj/structure/wargame_hologram/hologram as anything in holosign_options)
 			names_to_path[initial(hologram.name)] = hologram
 			choices[initial(hologram.name)] = image(icon = initial(hologram.icon), icon_state = initial(hologram.icon_state))
@@ -143,10 +143,8 @@
 	return
 
 /obj/item/wargame_projector/Destroy()
+	QDEL_LAZYLIST(projections)
 	. = ..()
-	if(LAZYLEN(projections))
-		for(var/hologram as anything in projections)
-			qdel(hologram)
 
 /*
 Actual projector types, split between the 'categories' of things they can project
