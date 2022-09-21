@@ -19,11 +19,11 @@
 		/obj/item/lighter,
 		/obj/item/modular_computer/tablet/pda,
 		/obj/item/radio,
+		/obj/item/storage/bag/books,
 		/obj/item/storage/fancy/cigarettes,
 		/obj/item/tank/internals/emergency_oxygen,
 		/obj/item/tank/internals/plasmaman,
 		/obj/item/toy,
-		/obj/item/storage/bag/books,
 	)
 
 /obj/item/clothing/head/hooded/winterhood
@@ -180,6 +180,7 @@
 	icon_state = "hood_security"
 	armor = list(MELEE = 25, BULLET = 15, LASER = 30, ENERGY = 40, BOMB = 25, BIO = 0, FIRE = 0, ACID = 45)
 
+<<<<<<< HEAD
 // Head of Security
 /obj/item/clothing/suit/hooded/wintercoat/security/hos
 	name = "head of security's winter coat"
@@ -193,6 +194,8 @@
 	desc = "A black, armour-padded winter hood with red and gold stripes on the arms, lovingly woven with a Kevlar interleave. Definitely not bulletproof, especially not the part where your face goes." // SKYRAT EDIT - ORIGINAL: desc = "A red, armour-padded winter hood, lovingly woven with a Kevlar interleave. Definitely not bulletproof, especially not the part where your face goes."
 	icon_state = "hood_hos"
 
+=======
+>>>>>>> c7806cad2e1 (Moves the new HoS winter trenchcoat from the wintercoat file into the proper armor file (#70014))
 // Medical Doctor
 /obj/item/clothing/suit/hooded/wintercoat/medical
 	name = "medical winter coat"
@@ -301,8 +304,8 @@
 		/obj/item/reagent_containers/hypospray,
 		/obj/item/reagent_containers/pill,
 		/obj/item/reagent_containers/syringe,
-		/obj/item/storage/pill_bottle,
 		/obj/item/storage/bag/xeno,
+		/obj/item/storage/pill_bottle,
 	)
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 10, BIO = 0, FIRE = 20, ACID = 0)
 	hoodtype = /obj/item/clothing/head/hooded/winterhood/science
@@ -368,8 +371,8 @@
 		/obj/item/construction/rcd,
 		/obj/item/fireaxe/metal_h2_axe,
 		/obj/item/pipe_dispenser,
-		/obj/item/t_scanner,
 		/obj/item/storage/bag/construction,
+		/obj/item/t_scanner,
 	)
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 20, ACID = 0)
 	hoodtype = /obj/item/clothing/head/hooded/winterhood/engineering
@@ -464,9 +467,9 @@
 		/obj/item/mining_scanner,
 		/obj/item/pickaxe,
 		/obj/item/resonator,
+		/obj/item/storage/bag/ore,
 		/obj/item/t_scanner/adv_mining_scanner,
 		/obj/item/tank/internals,
-		/obj/item/storage/bag/ore,
 	)
 	armor = list(MELEE = 10, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 0, ACID = 0)
 	hoodtype = /obj/item/clothing/head/hooded/winterhood/miner
