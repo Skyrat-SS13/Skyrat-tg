@@ -422,11 +422,6 @@
 		)
 	)
 
-/obj/item/clothing/suit/armor/hos/trenchcoat/black
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	icon_state = "hos_black"
-
 //Standard Bulletproof Vest
 /obj/item/clothing/suit/armor/bulletproof
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
