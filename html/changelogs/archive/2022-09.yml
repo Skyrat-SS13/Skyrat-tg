@@ -791,3 +791,33 @@
       (flashbang 500 -> 4000; missiles 500 -> 8000)
   - bugfix: exosuit ammo boxes can be recycled in an autolathe, as they were apparently
       intended to be. Partially depleted ammo boxes will have less material in them.
+2022-09-21:
+  Melbert:
+  - bugfix: Unequipping an internals tank will immediately unregister it as your internals
+      tank, instead of waiting (maximum) 8 seconds to do so
+  NecromancerAnne, quinn:
+  - imageadd: 'Updates the Darkened Blade: New name (Sundered Blade), new description,
+      new sprites.'
+  SkyratBot:
+  - rscadd: Icebox's mining aux base can now teleport to your chosen underground location
+      on the icemoon.
+  - imageadd: The station bounced radio has been resprited
+  - bugfix: The experimentor can no longer create negative temperature.
+  - code_imp: Simplifies experimentor atmos interactions. Shouldn't have an impact
+      in gameplay.
+  - bugfix: glockroaches (and maybe other unreported simplemobs that can shoot) now
+      properly shoot
+  - rscadd: Change infectious zombies to be illiterate
+  - bugfix: Surgically removed a stack of 50 glass sheets from the rocks of Tramstation's
+      lower decks.
+  - bugfix: Items that rotate will no longer spam you with error messages when you
+      hover your mouse over them.
+  TheBoondock, Wallemations:
+  - rscadd: Adds a new pair of goggles to atmospheric, the thermal imaging goggles
+      help highlight the hot/cold and normal temperature for atmos tech to quickly
+      identify the temp without having to use an analyzer. Hotter temperatures will
+      have red colors while colder temperatures will have blue colors
+  - rscadd: Add temperature imaging to the t-ray goggles as well.
+  VexingRaven:
+  - bugfix: Fixed a bug where it was possible to call the shuttle while buying a new
+      one, resulting in a second shuttle that gibs everyone aboard.
