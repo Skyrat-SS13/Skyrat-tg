@@ -8,7 +8,7 @@
 	..()
 	var/turf/T = get_turf(src)
 
-	new /obj/structure/alien/egg(T)
+	new /obj/effect/mob_spawn/ghost_role/borer_egg/host_spawner(T)
 	new /obj/effect/temp_visual/gravpush(T)
 	playsound(T, 'sound/items/party_horn.ogg', 50, TRUE, -1)
 
