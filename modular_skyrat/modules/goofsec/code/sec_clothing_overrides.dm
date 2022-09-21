@@ -207,12 +207,6 @@
 				var/mob/living/carbon/C = user
 				C.head_update(src, forced = 1)
 
-//Bulletproof Helmet
-/obj/item/clothing/head/helmet/alt
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "bulletproof_helmet"
-
 //Beret replacement
 /obj/item/clothing/head/security_garrison
 	name = "security garrison cap"

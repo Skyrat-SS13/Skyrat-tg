@@ -1418,3 +1418,14 @@
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 	body_parts_covered = CHEST|GROIN|ARMS
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+
+// Donation reward for Sweetsoulbrother
+/obj/item/coin/donator/marsoc
+	name = "MARSOC Challenge Coin"
+	desc = "This is a challenge coin given to all MARSOC members upon honorable separation from the Corps. \
+			The coin has the insignia of the Marine Special Operations Command on one side, and the Sol Federation Marine Corps logo on the other. \
+			This one has an engraving on the Marine Corps logo side, etched in a circle around it: \
+			\"To Staff Sargent Henry Rockwell, for his exemplary service to the Special Operations community and his outstanding moral fiber \
+			and shining example to the core values of the Sol Federation Marine Corps.\""
+	icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
+	sideslist = list("MARSOC", "SFMC")
