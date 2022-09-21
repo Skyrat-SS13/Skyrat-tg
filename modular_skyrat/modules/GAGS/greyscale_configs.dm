@@ -682,3 +682,8 @@
 	name = "Colourable ID Card"
 	icon_file = 'modular_skyrat/modules/GAGS/icons/id_card.dmi'
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/items/id_card.json'
+
+/datum/greyscale_config/wargame_hologram_projector
+	name = "Wargame Hologram Projector"
+	icon_file = 'modular_skyrat/modules/wargame_projectors/icons/projectors_and_holograms.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/wargame_holoprojector/projector_screen.json'
