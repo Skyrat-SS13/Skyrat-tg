@@ -206,6 +206,12 @@
 	icon_state = "deer"
 	general_type = "deer"
 
+/datum/sprite_accessory/tails/mammal/wagging/deer_two
+	name = "Deer II"
+	icon_state = "deer_two"
+	general_type = "deer"
+	color_src = USE_ONE_COLOR
+
 /datum/sprite_accessory/tails/mammal/wagging/eevee
 	name = "Eevee"
 	icon_state = "eevee"

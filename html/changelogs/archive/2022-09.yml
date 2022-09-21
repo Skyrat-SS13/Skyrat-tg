@@ -672,3 +672,152 @@
   - bugfix: 'Icebox: fixed several cameras lacking their respective network values'
   - bugfix: 'Icebox: restored a lost Interrogation Room Monitor outside of Interrogation
       Room'
+2022-09-18:
+  GoldenAlpharex:
+  - bugfix: Molds can no longer spread their foam across the entirety of space, and
+      have a much more manageable radius instead.
+  Paxilmaniac:
+  - balance: Due to lawsuits over the similarities in design between the CMG and C20r,
+      the internal workings and round used in the CMG have been redesigned and re-issued
+      to all stations
+  - bugfix: Duplicate definitions of both .45 rubbers and magazine-less CMGs were
+      dealt with
+  - bugfix: A completely unused c20 subtype, also called the CMG, was gotten rid of
+      due to being completely unused
+  Pizzie11:
+  - rscadd: Added a unique service department version of the Plumbing Constructor,
+      the Service Plumbing Constructor. This can be fabricated in the service protolate.
+  - rscadd: 'New plumbing machines have been added for the Service Plumbing Constructor:
+      Soda Synthesizer, Booze Synthesizer, Mixing Chamber, and Output Tap.'
+  - rscadd: The Chemical Receiver board can now be printed at the service protolathe
+  ShizCalev:
+  - bugfix: Fixed voice of god breaking if someone resisted your command.
+  - admin: Debugging / admin omnitool now stabs eyes when in screwdriver mode.
+  - balance: Things inside disposals pipes are now protected from weather (ashstorms,
+      radstorms, ect.)
+  - admin: Setting machine_stat flags on machinery will now call the set_machine_stat
+      proc so things update properly lol.
+  - bugfix: Fixed a runtime when deconstructing newscaster w/ a wrench.
+  - bugfix: Fixed not being able to scoop up holochassis pAIs.
+  SkyratBot:
+  - bugfix: USB ports for circuits now work again
+  - bugfix: You can now pin medals to buttondown shirts.
+  - code_imp: Fixes gas mixer node concentration logging.
+  - bugfix: Fix plasma cutter or guns that burn not being able to ignite plasma
+  - balance: Change plasma cutters damage type to BURN and this will cause reduced
+      damage to mining mobs
+  - balance: Explodable stuff now detonates when hit by a BURN projectile.
+  - admin: Prisoners returning from the gulag as well as reclaiming their items from
+      the gulag item reclaimer are now both logged.
+  - bugfix: Fixes water vapour not consuming water vapour when freezing turfs.
+  - code_imp: Turfs will not sleep during an ongoing gas reaction, and excited groups
+      won't dismantle if one of their turfs are reacting.
+  - bugfix: CTF Instagib mode can now be toggled without breaking CTF
+  - admin: Admins can now toggle CTF Instagib mode while CTF is not running
+  - bugfix: ghost follow links no longer appear above binary messages using light
+      theme
+  - balance: Radiation range from tritium combustion and proto-nitrate tritium to
+      hydrogen conversion increased by 3 times.
+  - balance: Sets the radiation threshold for all gas reactions that release radiation
+      to 0.3
+  Zergspower:
+  - bugfix: XenoArch bags will now pickup on walk-over once again
+  dopamiin:
+  - bugfix: several foods now taste like what they should
+  itseasytosee:
+  - code_imp: Being able to be flashed from all sides is now based on or not you have
+      a negative flash resistance, rather than randomly applying to specific pairs
+      of eyes.
+  - bugfix: Skeletons can drink milk again, sorry about that.
+2022-09-19:
+  Crumpaloo, Nomare, theOOZ:
+  - imageadd: Adds a second deer tail which wags
+  Ebin-Halcyon:
+  - imageadd: Security clothing have been resprited to have a nicer looking and more
+      consistent color palette.
+  - imagedel: Bluesec bulletproof helms have been returned to the stock TG look, rejoice.
+  Paxilmaniac:
+  - balance: MCR cells are now upgrades rather than hotswappable 'laser magazines'
+      that must be empty of charge before insertion into a gun
+  - qol: MCR cells have a function to discharge themselves in case you end up with
+      a charged one needing to be inserted into a gun
+  - balance: MCR scattershot lasers will now do 20 damage divided by the number of
+      lasers, rather than 30 or 45 divided
+  - balance: The MCR laser coloring attachment is no longer attainable through lathes
+  - balance: The MCR cell self charging attachment is only attainable through micron
+      control systems in cargo
+  - balance: Micron control systems is now equivalent in max price to NT armories,
+      and the price of the MCR itself has been lowered to be equivalent to an allstar
+      SC-2 (a little over half the original price)
+  - bugfix: MCR cells will now tell you the correct number of seconds until they malfunction
+  ShizCalev:
+  - bugfix: Fixed medibeams sometimes crossing themselves!
+  SkyratBot:
+  - bugfix: The alt click tab (obj tab?) will no longer cause massive clientside lag
+      (unless you alt click that 2000 obj large tofu pile)
+  - bugfix: The alt click menu is snappier now, try usin it and let me know if anything
+      blows up yeah?
+  - rscadd: medical doctors and CMOs now have surgical tool heirlooms
+  - spellcheck: Updates liver failure examine text to make better use of pronoun helpers.
+  Stalkeros, Lukaster42:
+  - rscadd: 'NRI MODsuit in two variations: one for ERT, other for raiders.'
+  - rscadd: MOD automatic paramedical module.
+  - rscadd: generic non-Ninja-related MOD status readout module.
+  - rscdel: Pirate VOSKHODs; technically, VOSKHODs in their (available) entirety,
+      since ERT now uses MODs.
+  YakumoChen:
+  - rscdel: Ghost Cafe has had its chemistry lab, autolathe, and all radios removed
+      so as to prevent interaction with other sectors, or damage to the ghost cafe
+      (which chemlabs often do)
+  Zergspower:
+  - balance: changes just the outer turrets on Interdyne Ice and Lavabase to target
+      anything not in the Neutral faction (station crew and non-hostile fauna)
+  - bugfix: Couches on both will now face correctly (Couch PR goofed their directions)
+  Zonespace27:
+  - bugfix: Armadyne OS safeguard lawboard now uploads the new safeguard laws
+  tf-4:
+  - bugfix: APCs will now arc again when grid excess exceeds 2.5MW. Use a bronze sheet
+      on an APC with the wires exposed to install shielding!
+2022-09-20:
+  SkyratBot:
+  - bugfix: fixed cyborg energy saw lacking a sprite
+  - bugfix: fixed debug omnitool lacking sprites for surgery tools
+  - bugfix: fixed lacking sprite for taster
+  - bugfix: fixed exosuit ammo boxes not updating their sprite/description properly
+      when emptied
+  - qol: adds an examine tip about folding & recycling on empty exosuit ammo boxes
+  - bugfix: fixed exosuit ammo being almost universal for all guns
+  - bugfix: fixed iron cost for BRM-6 missile ammo and SGL-6 Flashbang launcher ammo
+      (flashbang 500 -> 4000; missiles 500 -> 8000)
+  - bugfix: exosuit ammo boxes can be recycled in an autolathe, as they were apparently
+      intended to be. Partially depleted ammo boxes will have less material in them.
+2022-09-21:
+  Melbert:
+  - bugfix: Unequipping an internals tank will immediately unregister it as your internals
+      tank, instead of waiting (maximum) 8 seconds to do so
+  NecromancerAnne, quinn:
+  - imageadd: 'Updates the Darkened Blade: New name (Sundered Blade), new description,
+      new sprites.'
+  SkyratBot:
+  - rscadd: Icebox's mining aux base can now teleport to your chosen underground location
+      on the icemoon.
+  - imageadd: The station bounced radio has been resprited
+  - bugfix: The experimentor can no longer create negative temperature.
+  - code_imp: Simplifies experimentor atmos interactions. Shouldn't have an impact
+      in gameplay.
+  - bugfix: glockroaches (and maybe other unreported simplemobs that can shoot) now
+      properly shoot
+  - rscadd: Change infectious zombies to be illiterate
+  - bugfix: Surgically removed a stack of 50 glass sheets from the rocks of Tramstation's
+      lower decks.
+  - bugfix: Items that rotate will no longer spam you with error messages when you
+      hover your mouse over them.
+  TheBoondock, Wallemations:
+  - rscadd: Adds a new pair of goggles to atmospheric, the thermal imaging goggles
+      help highlight the hot/cold and normal temperature for atmos tech to quickly
+      identify the temp without having to use an analyzer. Hotter temperatures will
+      have red colors while colder temperatures will have blue colors
+  - rscadd: Add temperature imaging to the t-ray goggles as well.
+  VexingRaven:
+  - bugfix: Fixed a bug where it was possible to call the shuttle while buying a new
+      one, resulting in a second shuttle that gibs everyone aboard.
