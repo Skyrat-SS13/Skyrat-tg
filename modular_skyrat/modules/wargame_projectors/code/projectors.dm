@@ -172,6 +172,9 @@ Actual projector types, split between the 'categories' of things they can projec
 		/obj/structure/wargame_hologram/stationary_structure/platform,
 	)
 
+/obj/item/wargame_projector/ships/red
+	holosign_color = COLOR_RED_LIGHT
+
 /obj/item/wargame_projector/terrain
 	name = "holographic terrain projector"
 	desc = "A handy-dandy holographic projector developed by Nanotrasen Naval Command for playing wargames with, this one creates markers for space 'terrain'."
