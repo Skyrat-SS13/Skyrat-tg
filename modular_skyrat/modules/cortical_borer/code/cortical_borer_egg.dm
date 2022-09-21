@@ -88,3 +88,6 @@
 
 /obj/effect/mob_spawn/ghost_role/borer_egg/opfor
 	prompt_name = "cortical borer (OPFOR spawned)"
+
+/obj/effect/mob_spawn/ghost_role/borer_egg/xenobio
+	prompt_name = "cortical borer (xenobio spawn)"

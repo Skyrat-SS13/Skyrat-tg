@@ -4,11 +4,11 @@
 	icon_state = "egg_growing"
 	var/announcement_time = 1200
 
-/obj/effect/spawner/xeno_egg_delivery/Initialize(mapload) // SkyRat Edit: Swaps Xeno egg for Borer egg
+/obj/effect/spawner/xeno_egg_delivery/Initialize(mapload)
 	..()
 	var/turf/T = get_turf(src)
 
-	new /obj/effect/mob_spawn/ghost_role/borer_egg/host_spawner(T) // SkyRat Edit: Swaps Xeno egg for Borer egg
+	new /obj/effect/mob_spawn/ghost_role/borer_egg/xeno_spawner(T) // SkyRat Edit: Swaps Xeno egg for Borer egg
 	new /obj/effect/temp_visual/gravpush(T)
 	playsound(T, 'sound/items/party_horn.ogg', 50, TRUE, -1)
 
