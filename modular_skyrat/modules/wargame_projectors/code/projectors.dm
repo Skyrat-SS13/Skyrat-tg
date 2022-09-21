@@ -14,6 +14,7 @@
 	throw_range = 7
 	item_flags = NOBLUDGEON
 	greyscale_config = /datum/greyscale_config/wargame_hologram_projector
+	greyscale_colors = COLOR_WHITE
 	/// All of the signs this projector is maintaining
 	var/list/projections
 	/// The maximum number of projections this can support
@@ -43,8 +44,7 @@
 /obj/item/wargame_projector/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/openspace_item_click_handler)
-	greyscale_colors = holosign_color
-	update_appearance()
+	set_greyscale(holosign_color)
 
 /obj/item/wargame_projector/handle_openspace_click(turf/target, mob/user, proximity_flag, click_parameters)
 	afterattack(target, user, proximity_flag, click_parameters)
@@ -88,10 +88,9 @@
 		balloon_alert(user, "no color change")
 		return
 	var/color_to_set_to = color_options[selected_color]
-	greyscale_colors = color_to_set_to
 	holosign_color = color_to_set_to
 	balloon_alert(user, "color changed")
-	update_appearance()
+	set_greyscale(holosign_color)
 
 /obj/item/wargame_projector/CtrlClick(mob/user)
 	if(tgui_alert(usr,"Clear all currently active holograms?", "Hologram Removal", list("Yes", "No")) == "Yes")

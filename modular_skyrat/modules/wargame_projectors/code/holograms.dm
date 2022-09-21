@@ -51,6 +51,7 @@ Projections for 'moving vessels' in order from smallest to largest representatio
 	icon_state = "bigship"
 
 /obj/structure/wargame_hologram/ship_marker/large/alternate
+	name = "alternate large vessel marker"
 	desc = "The NT wargame alternative representation of a larger sized vessel, usually used for special vessels like carriers."
 	icon_state = "bigship_alternate"
 
