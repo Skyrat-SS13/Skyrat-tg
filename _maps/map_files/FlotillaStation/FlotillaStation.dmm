@@ -1006,22 +1006,6 @@
 "du" = (
 /turf/closed/wall,
 /area/station/medical/morgue)
-"dv" = (
-/obj/structure/bed/dogbed/mcgriff{
-	anchored = 1
-	},
-/obj/item/toy/plush/skyrat/ian/small{
-	name = "McGriff";
-	desc = "A plushie of an adorable pug! Don't you just want to hug it and squeeze it and call it \"McGriff\"?"
-	},
-/obj/item/key/security{
-	pixel_y = -3;
-	pixel_x = -2
-	},
-/turf/open/floor/iron/dark{
-	initial_gas_mix = "n2=104;TEMP=293.15"
-	},
-/area/station/security/warden)
 "dw" = (
 /obj/structure/closet/secure_closet/medical1,
 /obj/machinery/light/directional/north,
@@ -1301,15 +1285,19 @@
 /turf/open/floor/iron/white,
 /area/station/security/execution/education)
 "ek" = (
-/obj/item/book/manual/wiki/security_space_law{
-	pixel_x = -3;
-	pixel_y = 5
-	},
-/obj/item/toy/figure/warden{
-	pixel_x = 6;
-	pixel_y = -4
-	},
 /obj/structure/table/reinforced,
+/obj/machinery/recharger{
+	pixel_x = -7;
+	pixel_y = 3
+	},
+/obj/item/paper_bin{
+	pixel_y = 4;
+	pixel_x = 5
+	},
+/obj/item/pen{
+	pixel_y = 4;
+	pixel_x = 5
+	},
 /turf/open/floor/iron/dark{
 	initial_gas_mix = "n2=104;TEMP=293.15"
 	},
@@ -1473,13 +1461,10 @@
 	},
 /area/station/security/prison/workout)
 "eQ" = (
-/obj/machinery/atmospherics/pipe/smart/simple/orange/visible{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/smart/simple/cyan/visible{
-	dir = 5
-	},
 /obj/machinery/light/directional/south,
+/obj/machinery/atmospherics/components/trinary/mixer/airmix/flipped{
+	dir = 8
+	},
 /turf/open/floor/plating{
 	initial_gas_mix = "n2=104;TEMP=293.15"
 	},
@@ -3993,24 +3978,13 @@
 /turf/open/floor/iron,
 /area/station/medical/break_room)
 "nS" = (
-/obj/item/paper_bin{
-	pixel_y = 4;
-	pixel_x = 5
-	},
-/obj/item/pen{
-	pixel_y = 4;
-	pixel_x = 5
-	},
-/obj/machinery/recharger{
-	pixel_x = -7;
-	pixel_y = 3
-	},
 /obj/machinery/computer/security/telescreen{
 	name = "Prisoner Telescreen";
 	network = list("prison");
 	pixel_y = 28
 	},
-/obj/structure/table/reinforced,
+/obj/machinery/computer/prisoner/management,
+/obj/effect/turf_decal/delivery,
 /turf/open/floor/iron/dark{
 	initial_gas_mix = "n2=104;TEMP=293.15"
 	},
@@ -4930,11 +4904,8 @@
 /turf/open/floor/iron,
 /area/space)
 "ry" = (
-/obj/machinery/atmospherics/pipe/smart/simple/orange/visible{
-	dir = 9
-	},
-/obj/machinery/atmospherics/pipe/smart/simple/cyan/visible{
-	dir = 9
+/obj/machinery/atmospherics/pipe/smart/simple/supply/visible{
+	dir = 8
 	},
 /turf/open/floor/plating{
 	initial_gas_mix = "n2=104;TEMP=293.15"
@@ -7404,12 +7375,10 @@
 /turf/open/floor/iron/smooth_large,
 /area/station/medical/chemistry)
 "zk" = (
-/obj/machinery/atmospherics/pipe/smart/simple/orange/visible{
-	dir = 4
-	},
 /obj/machinery/atmospherics/pipe/multiz/cyan/visible{
 	dir = 1
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold/orange/visible,
 /turf/open/floor/plating{
 	initial_gas_mix = "n2=104;TEMP=293.15"
 	},
@@ -9164,6 +9133,14 @@
 	initial_gas_mix = "n2=104;TEMP=293.15"
 	},
 /area/station/security/holding_cell)
+"FI" = (
+/obj/machinery/atmospherics/components/unary/thermomachine/heater/on{
+	name = "Air Mix Controller"
+	},
+/turf/open/floor/plating{
+	initial_gas_mix = "n2=104;TEMP=293.15"
+	},
+/area/station/security/power_station)
 "FJ" = (
 /obj/structure/bed,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
@@ -10670,6 +10647,14 @@
 /obj/machinery/shower/directional/west,
 /turf/open/floor/iron/freezer,
 /area/station/security/prison/shower)
+"KL" = (
+/obj/machinery/atmospherics/components/unary/thermomachine/heater/on{
+	name = "Pure N2 controller"
+	},
+/turf/open/floor/plating{
+	initial_gas_mix = "n2=104;TEMP=293.15"
+	},
+/area/station/security/power_station)
 "KM" = (
 /obj/machinery/door/airlock/grunge,
 /obj/effect/mapping_helpers/airlock/access/all/medical/general,
@@ -10828,8 +10813,12 @@
 /turf/open/floor/iron,
 /area/station/security/prison/workout)
 "Lk" = (
-/obj/machinery/atmospherics/pipe/smart/simple/orange/visible,
-/obj/machinery/atmospherics/pipe/smart/simple/cyan/visible,
+/obj/machinery/atmospherics/pipe/smart/simple/cyan/visible{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/orange/visible{
+	dir = 9
+	},
 /turf/open/floor/plating{
 	initial_gas_mix = "n2=104;TEMP=293.15"
 	},
@@ -11813,7 +11802,7 @@
 /turf/open/floor/iron/white/smooth_large,
 /area/station/medical/medbay/central)
 "Ov" = (
-/obj/machinery/atmospherics/pipe/smart/manifold/orange/visible,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/orange/visible,
 /turf/open/floor/plating{
 	initial_gas_mix = "n2=104;TEMP=293.15"
 	},
@@ -11917,10 +11906,7 @@
 /turf/open/floor/plating,
 /area/station/service/lawoffice)
 "OM" = (
-/obj/machinery/atmospherics/pipe/smart/manifold/orange/visible,
-/obj/machinery/atmospherics/pipe/smart/simple/cyan/visible{
-	dir = 4
-	},
+/obj/machinery/atmospherics/pipe/smart/manifold/supply/visible,
 /turf/open/floor/plating{
 	initial_gas_mix = "n2=104;TEMP=293.15"
 	},
@@ -13346,8 +13332,17 @@
 /turf/open/floor/iron,
 /area/station/security/prison/work)
 "Uf" = (
-/obj/machinery/computer/prisoner/management,
-/obj/effect/turf_decal/delivery,
+/obj/structure/bed/dogbed/mcgriff{
+	anchored = 1
+	},
+/obj/item/toy/plush/skyrat/ian/small{
+	name = "McGriff";
+	desc = "A plushie of an adorable pug! Don't you just want to hug it and squeeze it and call it \"McGriff\"?"
+	},
+/obj/item/toy/figure/warden{
+	pixel_x = 6;
+	pixel_y = -4
+	},
 /turf/open/floor/iron/dark{
 	initial_gas_mix = "n2=104;TEMP=293.15"
 	},
@@ -13423,6 +13418,9 @@
 /area/station/security/detectives_office)
 "Up" = (
 /obj/machinery/atmospherics/pipe/smart/simple/cyan/visible{
+	dir = 6
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/orange/visible{
 	dir = 6
 	},
 /turf/open/floor/plating{
@@ -14392,6 +14390,9 @@
 "XT" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/cyan,
 /obj/effect/turf_decal/vg_decals/atmos/oxygen,
+/obj/machinery/atmospherics/pipe/smart/simple/orange/visible{
+	dir = 4
+	},
 /turf/open/floor/plating{
 	initial_gas_mix = "n2=104;TEMP=293.15"
 	},
@@ -14420,7 +14421,13 @@
 /turf/open/floor/grass,
 /area/station/medical/virology)
 "Ya" = (
-/obj/machinery/atmospherics/components/trinary/mixer/airmix/flipped,
+/obj/machinery/atmospherics/pipe/smart/simple/cyan/visible{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/orange/visible{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/supply/visible,
 /turf/open/floor/plating{
 	initial_gas_mix = "n2=104;TEMP=293.15"
 	},
@@ -126375,7 +126382,7 @@ CW
 CW
 Is
 Is
-fy
+qB
 qB
 qB
 qB
@@ -126632,7 +126639,7 @@ OA
 SV
 Az
 Is
-qB
+Tz
 qB
 qB
 qB
@@ -126888,9 +126895,9 @@ CW
 OA
 lm
 Ov
-Is
-qB
-qB
+KL
+Tz
+fy
 qB
 qB
 qB
@@ -127146,7 +127153,7 @@ RX
 Up
 zk
 Is
-qB
+Tz
 qB
 qB
 qB
@@ -128172,7 +128179,7 @@ oi
 CW
 vo
 Nj
-RX
+FI
 Is
 qB
 qB
@@ -131500,7 +131507,7 @@ sF
 zt
 TN
 rI
-dv
+zt
 AC
 WC
 Zd
