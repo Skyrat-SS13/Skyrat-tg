@@ -16,6 +16,8 @@
 	//find cryopod
 	for(var/obj/machinery/cryopod/cryo in GLOB.valid_cryopods)
 		if(!cryo.occupant && cryo.state_open && !cryo.panel_open) //free, opened, and panel closed?
+			if(buckled)
+				buckled.unbuckle_mob(src, TRUE)
 			cryo.close_machine(src) //put player
 			break
 			
