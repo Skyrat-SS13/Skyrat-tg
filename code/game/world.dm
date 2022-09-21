@@ -132,8 +132,10 @@ GLOBAL_VAR(restart_counter)
 	GLOB.demo_log = "[GLOB.log_directory]/demo.log"
 	GLOB.dynamic_log = "[GLOB.log_directory]/dynamic.log"
 	GLOB.filter_log = "[GLOB.log_directory]/filters.log"
-	GLOB.sql_error_log = "[GLOB.log_directory]/sql.log"
+	GLOB.lua_log = "[GLOB.log_directory]/lua.log"
 	GLOB.query_debug_log = "[GLOB.log_directory]/query_debug.log"
+	GLOB.signals_log = "[GLOB.log_directory]/signals.log"
+	GLOB.sql_error_log = "[GLOB.log_directory]/sql.log"
 	GLOB.tgui_log = "[GLOB.log_directory]/tgui.log"
 	GLOB.world_asset_log = "[GLOB.log_directory]/asset.log"
 	GLOB.world_attack_log = "[GLOB.log_directory]/attack.log"
@@ -159,10 +161,13 @@ GLOBAL_VAR(restart_counter)
 	GLOB.world_uplink_log = "[GLOB.log_directory]/uplink.log"
 	GLOB.world_virus_log = "[GLOB.log_directory]/virus.log"
 
+<<<<<<< HEAD
 	GLOB.character_creation_log = "[GLOB.log_directory]/creator.log" // SKYRAT EDIT ADDITION
 	GLOB.event_vote_log = "[GLOB.log_directory]/event_vote.log" // SKYRAT EDIT ADDITION
 
 	GLOB.lua_log = "[GLOB.log_directory]/lua.log"
+=======
+>>>>>>> feadabf1a4e (Moves signal overrride warnings to it's own log file (#70034))
 
 #ifdef UNIT_TESTS
 	GLOB.test_log = "[GLOB.log_directory]/tests.log"
