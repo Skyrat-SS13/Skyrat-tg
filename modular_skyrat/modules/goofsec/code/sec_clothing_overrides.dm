@@ -394,10 +394,9 @@
 /*
 * SUITS
 */
-//Not technically an override but oh well; it cant be, else everyone can randomly get the uniquely designed vest
-/obj/item/clothing/suit/armor/vest/security
+/obj/item/clothing/suit/armor/vest/alt/sec
 	name = "armored security vest"
-	desc = "An armored vest designed for use in combat, used by security personnel."
+	desc = "A Type-II-AD-P armored vest that provides decent protection against most types of damage."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "vest_white"
@@ -424,6 +423,7 @@
 
 //Standard Bulletproof Vest
 /obj/item/clothing/suit/armor/bulletproof
+	desc = "A Type-III-AD-P heavy bulletproof vest that excels in protecting the wearer against traditional projectile weaponry and explosives to a minor extent."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "vest_bulletproof"
@@ -439,15 +439,14 @@
 
 //Security Wintercoat (and hood)
 /obj/item/clothing/head/hooded/winterhood/security
+	desc = "A blue, armour-padded winter hood. Definitely not bulletproof, especially not the part where your face goes." //God dammit TG stop putting color in the desc of items like this
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "security_wintercoat_hood"
 
-/obj/item/clothing/head/hooded/winterhood/security/hos	//Need to quickly re-define this bc it should still use the winterhood file
-	icon = 'icons/obj/clothing/head/winterhood.dmi'
-	worn_icon = 'icons/mob/clothing/head/winterhood.dmi'
-
 /obj/item/clothing/suit/hooded/wintercoat/security
+	name = "security winter coat" //TG has this as a Jacket now, so unless we update ours, this needs to be re-named as Coat
+	desc = "A blue, armour-padded winter coat. It glitters with a mild ablative coating and a robust air of authority.  The zipper tab is a small <b>\"Armadyne\"</b> logo."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "security_wintercoat"
@@ -508,7 +507,7 @@
 /*
 * FEET
 */
-//What once was a wholely unique item, is now an override! Adds reskins and special footstep noises
+//Adds reskins and special footstep noises
 /obj/item/clothing/shoes/jackboots/sec
 	name = "security jackboots"
 	desc = "Lopland's Peacekeeper-issue Security combat boots for combat scenarios or combat situations. All combat, all the time."
@@ -693,11 +692,14 @@
 */
 
 /obj/item/clothing/head/hooded/winterhood/security/redsec
+	desc = "A red, armour-padded winter hood. Definitely not bulletproof, especially not the part where your face goes."
 	icon = 'icons/obj/clothing/head/winterhood.dmi'
 	worn_icon = 'icons/mob/clothing/head/winterhood.dmi'
 	icon_state = "hood_security"
 
 /obj/item/clothing/suit/hooded/wintercoat/security/redsec
+	name = "security winter jacket"
+	desc = "A red, armour-padded winter coat. It glitters with a mild ablative coating and a robust air of authority.  The zipper tab is a pair of jingly little handcuffs that get annoying after the first ten seconds."
 	icon = 'icons/obj/clothing/suits/wintercoat.dmi'
 	worn_icon = 'icons/mob/clothing/suits/wintercoat.dmi'
 	icon_state = "coatsecurity"
@@ -712,3 +714,4 @@
 	icon_state = "jackboots_sec"
 	icon = 'icons/obj/clothing/shoes.dmi'
 	worn_icon = 'icons/mob/clothing/feet.dmi'
+	current_skin = "jackboots_sec"	//prevents reskinning
