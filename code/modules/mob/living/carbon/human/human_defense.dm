@@ -719,19 +719,8 @@
 		missing -= body_part.body_zone
 		if(body_part.is_pseudopart) //don't show injury text for fake bodyparts; ie chainsaw arms or synthetic armblades
 			continue
-		var/self_aware = FALSE
-		if(HAS_TRAIT(src, TRAIT_SELF_AWARE))
-			self_aware = TRUE
-		var/limb_max_damage = body_part.max_damage
-		var/status = ""
-		var/brutedamage = body_part.brute_dam
-		var/burndamage = body_part.burn_dam
-		if(hallucination)
-			if(prob(30))
-				brutedamage += rand(30,40)
-			if(prob(30))
-				burndamage += rand(30,40)
 
+<<<<<<< HEAD
 		if(HAS_TRAIT(src, TRAIT_SELF_AWARE))
 			status = "[brutedamage] brute damage and [burndamage] burn damage"
 			if(!brutedamage && !burndamage)
@@ -794,6 +783,9 @@
 				combined_msg += "\t <a href='?src=[REF(src)];embedded_object=[REF(I)];embedded_limb=[REF(body_part)]' class='warning'>There is \a [I] stuck to your [body_part.name]!</a>"
 			else
 				combined_msg += "\t <a href='?src=[REF(src)];embedded_object=[REF(I)];embedded_limb=[REF(body_part)]' class='warning'>There is \a [I] embedded in your [body_part.name]!</a>"
+=======
+		body_part.check_for_injuries(src, combined_msg)
+>>>>>>> 6baebf47a12 (Completely refactors hallucinations, and also adds a few  (#69706))
 
 		//SKYRAT EDIT ADDITION BEGIN - MEDICAL
 		if(body_part.current_gauze)
