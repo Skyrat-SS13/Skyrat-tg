@@ -61,7 +61,7 @@
 /obj/item/wargame_projector/proc/select_hologram(mob/user)
 	var/list/choices = list()
 	var/list/names_to_path = list()
-	if(!choices.length || !names_to_path.length)
+	if(!length(choices) || !length(names_to_path))
 		for(var/obj/structure/wargame_hologram/hologram as anything in holosign_options)
 			names_to_path[initial(hologram.name)] = hologram
 			choices[initial(hologram.name)] = image(icon = initial(hologram.icon), icon_state = initial(hologram.icon_state))
