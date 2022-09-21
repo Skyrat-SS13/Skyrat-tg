@@ -14,6 +14,6 @@
 		/obj/item/wargame_projector/ships = 1,
 		/obj/item/wargame_projector/ships/red = 1,
 		/obj/item/wargame_projector/terrain = 1,
-		/obj/item/dice/d20 = 1,
+		/obj/item/storage/dice = 1,
 		)
 	generate_items_inside(items_inside,src)
