@@ -157,12 +157,9 @@
 	icon_state = "beret_badge"
 	greyscale_config = /datum/greyscale_config/beret_badge
 	greyscale_config_worn = /datum/greyscale_config/beret_badge/worn
-<<<<<<< HEAD
-	greyscale_colors = "#3F3C40#FFCE5B"
-	current_skin = "beret_badge"	//SKYRAT EDIT ADDITION - prevents reskinning the hat; a bit hacky to say its already reskinned but its better than a code rewrite
-=======
 	greyscale_colors = "#39393f#FFCE5B"
->>>>>>> 2fea0a59470 (SECURITY RESPRITE - DARE. (#69948))
+	current_skin = "beret_badge"	//SKYRAT EDIT ADDITION - prevents reskinning the hat; a bit hacky to say its already reskinned but its better than a code rewrite
+MOVE THIS
 
 /obj/item/clothing/head/hos/beret/navyhos
 	name = "head of security's formal beret"

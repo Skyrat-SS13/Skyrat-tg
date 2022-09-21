@@ -457,14 +457,6 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "security_wintercoat"
 
-/obj/item/clothing/suit/hooded/wintercoat/security/hos
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	desc = "A black, armour-padded winter coat with blue and gold stripes on the arms, lovingly woven with a Kevlar interleave and reinforced with semi-ablative polymers and a silver azide fill material. The zipper tab looks like a tiny replica of Beepsky."
-	icon_state = "hos_wintercoat"
-	inhand_icon_state = "coathos"
-//Dont actually need to redo the hood for this, its all grey anyways
-
 /obj/item/clothing/suit/armor/hos/hos_formal
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
