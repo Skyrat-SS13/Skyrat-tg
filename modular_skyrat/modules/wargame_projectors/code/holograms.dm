@@ -21,6 +21,10 @@
 		projector = null
 	return ..()
 
+/obj/structure/wargame_hologram/update_overlays()
+	. = ..()
+	. += emissive_appearance(icon, icon_state)
+
 /*
 Projections for 'moving vessels' in order from smallest to largest representation
 */
