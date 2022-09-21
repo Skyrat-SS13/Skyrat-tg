@@ -27,14 +27,6 @@
 		name = "[label] sign"
 		desc = "It reads: [label]"
 
-/obj/item/picket_sign/cyborg/proc/borgsign_retext(mob/user)
-	if(!iscyborg(user))
-		return
-	var/txt = tgui_input_text(user, "What would you like to write on the sign?", "Sign Label", max_length = 30)
-	if(txt && user.canUseTopic(src, BE_CLOSE))
-		label = txt
-		name = "[label] sign"
-		desc = "It reads: [label]"
 
 /obj/item/picket_sign/attackby(obj/item/W, mob/user, params)
 	if(istype(W, /obj/item/pen) || istype(W, /obj/item/toy/crayon))
@@ -68,6 +60,7 @@
 /datum/action/item_action/nano_picket_sign
 	name = "Retext Nano Picket Sign"
 
+//SKYRAT EDIT: Originally if(!istype(target, /obj/item/picket_sign))
 /datum/action/item_action/nano_picket_sign/Trigger(trigger_flags)
 	if(!istype(target, /obj/item/picket_sign/cyborg))
 		return
