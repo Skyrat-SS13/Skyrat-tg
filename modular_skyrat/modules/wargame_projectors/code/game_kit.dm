@@ -9,7 +9,7 @@
 	desc = "Contains everything an aspiring naval officer (or just massive nerd) would need for a proper modern naval wargame."
 	custom_premium_price = PAYCHECK_CREW * 2
 
-/obj/item/storage/secure/briefcase/white/wargame_kit/Populatecontents()
+/obj/item/storage/secure/briefcase/white/wargame_kit/PopulateContents()
 	var/static/items_inside = list(
 		/obj/item/wargame_projector/ships = 1,
 		/obj/item/wargame_projector/terrain = 1,
