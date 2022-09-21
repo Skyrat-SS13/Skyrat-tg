@@ -508,8 +508,8 @@
 /*
 * FEET
 */
-//Not technically an override but oh well; it cant be, security gets their special footstep noise from it
-/obj/item/clothing/shoes/jackboots/security
+//What once was a wholely unique item, is now an override! Adds reskins and special footstep noises
+/obj/item/clothing/shoes/jackboots/sec
 	name = "security jackboots"
 	desc = "Lopland's Peacekeeper-issue Security combat boots for combat scenarios or combat situations. All combat, all the time."
 	icon_state = "security_boots"
@@ -519,7 +519,7 @@
 	clothing_traits = list(TRAIT_SILENT_FOOTSTEPS) // We have other footsteps.
 	uses_advanced_reskins = TRUE
 	unique_reskin = list(
-		"Blue Variant" = list(
+		"Blue-Trimmed Variant" = list(
 			RESKIN_ICON_STATE = "security_boots",
 			RESKIN_WORN_ICON_STATE = "security_boots"
 		),
@@ -533,10 +533,9 @@
 		),
 	)
 
-/obj/item/clothing/shoes/jackboots/security/Initialize(mapload)
+/obj/item/clothing/shoes/jackboots/sec/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/squeak, list('modular_skyrat/master_files/sound/effects/footstep1.ogg'=1,'modular_skyrat/master_files/sound/effects/footstep2.ogg'=1, 'modular_skyrat/master_files/sound/effects/footstep3.ogg'=1), 100)
-
 
 //
 // This code overrides security's jumpskirt preference, as we're not going to be giving them jumpskirts
@@ -704,3 +703,12 @@
 	icon_state = "coatsecurity"
 	hoodtype = /obj/item/clothing/head/hooded/winterhood/security/redsec
 
+/*
+*	FEET
+*/
+/obj/item/clothing/shoes/jackboots/sec/redsec
+	name = "jackboots"
+	desc = "Nanotrasen-issue Security combat boots for combat scenarios or combat situations. All combat, all the time."
+	icon_state = "jackboots_sec"
+	icon = 'icons/obj/clothing/shoes.dmi'
+	worn_icon = 'icons/mob/clothing/feet.dmi'
