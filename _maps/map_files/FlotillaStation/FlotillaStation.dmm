@@ -689,7 +689,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
-/obj/effect/turf_decal/stripes/line,
 /turf/open/floor/iron{
 	initial_gas_mix = "n2=104;TEMP=293.15"
 	},
@@ -764,6 +763,12 @@
 /obj/item/plunger,
 /turf/open/floor/iron/smooth_large,
 /area/station/medical/chemistry)
+"cC" = (
+/obj/machinery/gravity_generator/main,
+/obj/effect/turf_decal/bot_white,
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/turf/open/floor/iron/dark,
+/area/space)
 "cD" = (
 /obj/machinery/door/airlock/security/glass{
 	id_tag = "prisondorm";
@@ -815,6 +820,12 @@
 /obj/structure/closet/l3closet/virology,
 /turf/open/floor/iron,
 /area/station/medical/virology)
+"cQ" = (
+/obj/machinery/power/port_gen/pacman,
+/obj/structure/cable,
+/obj/effect/turf_decal/delivery,
+/turf/open/floor/iron,
+/area/space)
 "cR" = (
 /obj/structure/bed,
 /obj/effect/turf_decal/trimline/red/filled/line{
@@ -901,6 +912,11 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/white/smooth_large,
 /area/station/medical/medbay/central)
+"dg" = (
+/obj/structure/cable,
+/obj/machinery/power/smes/magical,
+/turf/open/floor/iron,
+/area/space)
 "dh" = (
 /obj/structure/cable,
 /obj/machinery/door/airlock/virology/glass{
@@ -947,7 +963,7 @@
 /area/station/security/holding_cell)
 "dm" = (
 /turf/closed/wall/r_wall,
-/area/station/medical/patients_rooms/room_a)
+/area/station/medical/exam_room)
 "dn" = (
 /obj/structure/cable,
 /obj/effect/turf_decal/trimline/red/filled/corner{
@@ -987,6 +1003,10 @@
 /obj/item/toy/plush/skyrat/ian/small{
 	name = "McGriff";
 	desc = "A plushie of an adorable pug! Don't you just want to hug it and squeeze it and call it \"McGriff\"?"
+	},
+/obj/item/key/security{
+	pixel_y = -3;
+	pixel_x = -2
 	},
 /turf/open/floor/iron/dark{
 	initial_gas_mix = "n2=104;TEMP=293.15"
@@ -1147,14 +1167,16 @@
 /obj/effect/turf_decal/trimline/red/filled/corner{
 	dir = 1
 	},
-/obj/machinery/airalarm/directional/west{
-	TLV = list("pressure"=new/datum/tlv(20,50,325,550),"temperature"=new/datum/tlv(270.15,280.15,313.15,340.15),/datum/gas/oxygen=new/datum/tlv(-1,-1,5,10),/datum/gas/nitrogen=new/datum/tlv(16,19,1000,1000),/datum/gas/carbon_dioxide=new/datum/tlv(-1,-1,5,10),/datum/gas/miasma=new/datum/tlv(-1,-1,15,30),/datum/gas/plasma=new/datum/tlv/dangerous,/datum/gas/nitrous_oxide=new/datum/tlv/dangerous,/datum/gas/bz=new/datum/tlv/dangerous,/datum/gas/hypernoblium=new/datum/tlv(-1,-1,1000,1000),/datum/gas/water_vapor=new/datum/tlv/dangerous,/datum/gas/tritium=new/datum/tlv/dangerous,/datum/gas/nitrium=new/datum/tlv/dangerous,/datum/gas/pluoxium=new/datum/tlv(-1,-1,1000,1000),/datum/gas/freon=new/datum/tlv/dangerous,/datum/gas/hydrogen=new/datum/tlv/dangerous,/datum/gas/healium=new/datum/tlv/dangerous,/datum/gas/proto_nitrate=new/datum/tlv/dangerous,/datum/gas/zauker=new/datum/tlv/dangerous,/datum/gas/helium=new/datum/tlv/dangerous,/datum/gas/antinoblium=new/datum/tlv/dangerous,/datum/gas/halon=new/datum/tlv/dangerous)
-	},
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 1
 	},
 /obj/machinery/camera/directional/west{
 	c_tag = "Security - EVA"
+	},
+/obj/machinery/airalarm/Nitrogen_Atmosphere{
+	dir = 8;
+	name = "west";
+	pixel_x = -24
 	},
 /turf/open/floor/iron/dark{
 	initial_gas_mix = "n2=104;TEMP=293.15"
@@ -1242,11 +1264,13 @@
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 10
 	},
-/obj/machinery/airalarm/directional/west{
-	TLV = list("pressure"=new/datum/tlv(20,50,325,550),"temperature"=new/datum/tlv(270.15,280.15,313.15,340.15),/datum/gas/oxygen=new/datum/tlv(-1,-1,5,10),/datum/gas/nitrogen=new/datum/tlv(16,19,1000,1000),/datum/gas/carbon_dioxide=new/datum/tlv(-1,-1,5,10),/datum/gas/miasma=new/datum/tlv(-1,-1,15,30),/datum/gas/plasma=new/datum/tlv/dangerous,/datum/gas/nitrous_oxide=new/datum/tlv/dangerous,/datum/gas/bz=new/datum/tlv/dangerous,/datum/gas/hypernoblium=new/datum/tlv(-1,-1,1000,1000),/datum/gas/water_vapor=new/datum/tlv/dangerous,/datum/gas/tritium=new/datum/tlv/dangerous,/datum/gas/nitrium=new/datum/tlv/dangerous,/datum/gas/pluoxium=new/datum/tlv(-1,-1,1000,1000),/datum/gas/freon=new/datum/tlv/dangerous,/datum/gas/hydrogen=new/datum/tlv/dangerous,/datum/gas/healium=new/datum/tlv/dangerous,/datum/gas/proto_nitrate=new/datum/tlv/dangerous,/datum/gas/zauker=new/datum/tlv/dangerous,/datum/gas/helium=new/datum/tlv/dangerous,/datum/gas/antinoblium=new/datum/tlv/dangerous,/datum/gas/halon=new/datum/tlv/dangerous)
-	},
 /obj/machinery/power/apc/auto_name/directional/south,
 /obj/structure/cable,
+/obj/machinery/airalarm/Nitrogen_Atmosphere{
+	dir = 8;
+	name = "west";
+	pixel_x = -24
+	},
 /turf/open/floor/iron/dark{
 	initial_gas_mix = "n2=104;TEMP=293.15"
 	},
@@ -1286,6 +1310,11 @@
 /obj/machinery/light/directional/east,
 /turf/open/floor/grass,
 /area/station/medical/virology)
+"em" = (
+/obj/effect/turf_decal/bot_white/left,
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/turf/open/floor/iron/dark,
+/area/space)
 "en" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/iron{
@@ -1342,16 +1371,23 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/white/smooth_large,
 /area/station/medical/storage)
+"ey" = (
+/obj/structure/table,
+/obj/item/paper/guides/jobs/engi/gravity_gen,
+/obj/effect/turf_decal/delivery,
+/obj/structure/cable,
+/obj/effect/spawner/random/bureaucracy/pen,
+/turf/open/floor/iron,
+/area/space)
 "eB" = (
-/obj/structure/sink/directional/west,
-/obj/effect/turf_decal/trimline/red/end{
-	dir = 8
-	},
-/obj/effect/landmark/start/security_medic,
+/obj/structure/bed,
+/obj/item/bedsheet,
 /obj/structure/sign/poster/official/cleanliness{
 	pixel_x = 32
 	},
-/turf/open/floor/iron/white,
+/turf/open/floor/iron/dark{
+	initial_gas_mix = "n2=104;TEMP=293.15"
+	},
 /area/station/security/medical)
 "eC" = (
 /obj/machinery/computer/atmos_control/nocontrol/incinerator{
@@ -1370,6 +1406,10 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/iron/white/smooth_large,
 /area/station/medical/medbay/central)
+"eH" = (
+/obj/structure/sign/warning/radiation/rad_area/directional/north,
+/turf/open/space/basic,
+/area/space)
 "eI" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -1488,11 +1528,13 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/airalarm/directional/north{
-	TLV = list("pressure"=new/datum/tlv(20,50,325,550),"temperature"=new/datum/tlv(270.15,280.15,313.15,340.15),/datum/gas/oxygen=new/datum/tlv(-1,-1,5,10),/datum/gas/nitrogen=new/datum/tlv(16,19,1000,1000),/datum/gas/carbon_dioxide=new/datum/tlv(-1,-1,5,10),/datum/gas/miasma=new/datum/tlv(-1,-1,15,30),/datum/gas/plasma=new/datum/tlv/dangerous,/datum/gas/nitrous_oxide=new/datum/tlv/dangerous,/datum/gas/bz=new/datum/tlv/dangerous,/datum/gas/hypernoblium=new/datum/tlv(-1,-1,1000,1000),/datum/gas/water_vapor=new/datum/tlv/dangerous,/datum/gas/tritium=new/datum/tlv/dangerous,/datum/gas/nitrium=new/datum/tlv/dangerous,/datum/gas/pluoxium=new/datum/tlv(-1,-1,1000,1000),/datum/gas/freon=new/datum/tlv/dangerous,/datum/gas/hydrogen=new/datum/tlv/dangerous,/datum/gas/healium=new/datum/tlv/dangerous,/datum/gas/proto_nitrate=new/datum/tlv/dangerous,/datum/gas/zauker=new/datum/tlv/dangerous,/datum/gas/helium=new/datum/tlv/dangerous,/datum/gas/antinoblium=new/datum/tlv/dangerous,/datum/gas/halon=new/datum/tlv/dangerous)
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
+	},
+/obj/machinery/airalarm/Nitrogen_Atmosphere{
+	dir = 1;
+	pixel_y = 24;
+	name = "north"
 	},
 /turf/open/floor/iron{
 	initial_gas_mix = "n2=104;TEMP=293.15"
@@ -1526,6 +1568,7 @@
 /area/station/security/prison/workout)
 "ff" = (
 /obj/machinery/light/directional/south,
+/obj/effect/landmark/start/security_medic,
 /turf/open/floor/plating,
 /area/station/commons/dorms/barracks)
 "fg" = (
@@ -1755,18 +1798,14 @@
 /turf/open/floor/iron/white/smooth_large,
 /area/station/medical/storage)
 "fS" = (
-/obj/effect/turf_decal/vg_decals/atmos/nitrogen{
-	pixel_y = -30
-	},
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
-	dir = 4
-	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/vg_decals/atmos/nitrogen,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/brown/hidden/layer4,
 /turf/open/floor/iron/dark{
 	initial_gas_mix = "n2=104;TEMP=293.15"
 	},
-/area/station/medical/patients_rooms/room_a)
+/area/station/medical/exam_room)
 "fU" = (
 /obj/structure/table/reinforced,
 /obj/machinery/recharger{
@@ -2127,8 +2166,9 @@
 	c_tag = "Security - Armoury Interior"
 	},
 /obj/machinery/light/directional/south,
-/obj/machinery/airalarm/directional/south{
-	TLV = list("pressure"=new/datum/tlv(20,50,325,550),"temperature"=new/datum/tlv(270.15,280.15,313.15,340.15),/datum/gas/oxygen=new/datum/tlv(-1,-1,5,10),/datum/gas/nitrogen=new/datum/tlv(16,19,1000,1000),/datum/gas/carbon_dioxide=new/datum/tlv(-1,-1,5,10),/datum/gas/miasma=new/datum/tlv(-1,-1,15,30),/datum/gas/plasma=new/datum/tlv/dangerous,/datum/gas/nitrous_oxide=new/datum/tlv/dangerous,/datum/gas/bz=new/datum/tlv/dangerous,/datum/gas/hypernoblium=new/datum/tlv(-1,-1,1000,1000),/datum/gas/water_vapor=new/datum/tlv/dangerous,/datum/gas/tritium=new/datum/tlv/dangerous,/datum/gas/nitrium=new/datum/tlv/dangerous,/datum/gas/pluoxium=new/datum/tlv(-1,-1,1000,1000),/datum/gas/freon=new/datum/tlv/dangerous,/datum/gas/hydrogen=new/datum/tlv/dangerous,/datum/gas/healium=new/datum/tlv/dangerous,/datum/gas/proto_nitrate=new/datum/tlv/dangerous,/datum/gas/zauker=new/datum/tlv/dangerous,/datum/gas/helium=new/datum/tlv/dangerous,/datum/gas/antinoblium=new/datum/tlv/dangerous,/datum/gas/halon=new/datum/tlv/dangerous)
+/obj/machinery/airalarm/Nitrogen_Atmosphere{
+	pixel_y = -24;
+	name = "south"
 	},
 /turf/open/floor/iron/dark{
 	initial_gas_mix = "n2=104;TEMP=293.15"
@@ -2380,6 +2420,12 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/station/security/brig)
+"hR" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/space)
 "hS" = (
 /obj/effect/turf_decal/trimline/blue/filled/corner{
 	dir = 1
@@ -2450,12 +2496,15 @@
 /turf/open/floor/iron,
 /area/station/security/prison)
 "ic" = (
-/obj/structure/bed,
-/obj/item/bedsheet,
-/obj/effect/turf_decal/trimline/red/filled/line,
-/obj/machinery/power/apc/auto_name/directional/east,
+/obj/effect/turf_decal/trimline/red/end{
+	dir = 8
+	},
+/obj/structure/sink/directional/west,
 /obj/structure/cable,
-/turf/open/floor/iron/white,
+/obj/machinery/power/apc/auto_name/directional/south,
+/turf/open/floor/iron/dark{
+	initial_gas_mix = "n2=104;TEMP=293.15"
+	},
 /area/station/security/medical)
 "ie" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -2518,7 +2567,7 @@
 	},
 /obj/structure/closet/emcloset/anchored,
 /turf/open/floor/iron/dark,
-/area/station/medical/patients_rooms/room_a)
+/area/station/medical/exam_room)
 "im" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark{
@@ -2653,6 +2702,13 @@
 /obj/structure/cable,
 /turf/open/floor/iron/white,
 /area/station/medical/surgery/theatre)
+"iK" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/space)
 "iL" = (
 /obj/machinery/camera/directional/south{
 	c_tag = "Medbay - Morgue"
@@ -2743,6 +2799,11 @@
 	},
 /turf/open/floor/iron/smooth_large,
 /area/station/medical/chemistry)
+"jc" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/space)
 "jd" = (
 /obj/structure/fans/tiny/forcefield{
 	dir = 4
@@ -2755,17 +2816,11 @@
 	},
 /turf/open/floor/catwalk_floor/iron_dark,
 /area/station/security/brig)
-"jg" = (
-/obj/machinery/door/window/left,
-/obj/effect/turf_decal/vg_decals/atmos/air,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/cable,
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
-/turf/open/floor/iron/white,
-/area/station/security/brig)
+"je" = (
+/obj/effect/turf_decal/bot_white/right,
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/turf/open/floor/iron/dark,
+/area/space)
 "jh" = (
 /obj/machinery/status_display/door_timer{
 	id = "Cell 1";
@@ -2899,14 +2954,6 @@
 	},
 /turf/open/floor/iron,
 /area/station/security/prison)
-"jE" = (
-/obj/structure/fans/tiny/forcefield,
-/obj/effect/turf_decal/stripes/line,
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
-/turf/open/floor/catwalk_floor/iron_dark,
-/area/station/security/brig)
 "jF" = (
 /turf/closed/wall,
 /area/station/security/prison/work)
@@ -3227,12 +3274,11 @@
 /turf/open/floor/plating,
 /area/station/security/prison/workout)
 "kM" = (
-/obj/effect/spawner/structure/window,
-/obj/structure/cable,
-/obj/machinery/door/firedoor,
-/obj/effect/turf_decal/stripes/box,
-/turf/open/floor/plating,
-/area/station/security/brig)
+/obj/structure/table,
+/turf/open/floor/iron/dark{
+	initial_gas_mix = "n2=104;TEMP=293.15"
+	},
+/area/station/security/medical)
 "kO" = (
 /obj/machinery/computer/pandemic,
 /obj/structure/cable,
@@ -3247,6 +3293,14 @@
 /obj/effect/landmark/start/paramedic,
 /turf/open/floor/iron/dark,
 /area/station/medical/paramedic)
+"kR" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 1
+	},
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/space)
 "kS" = (
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 4
@@ -3607,9 +3661,9 @@
 "mh" = (
 /obj/effect/spawner/structure/window,
 /obj/structure/cable,
-/obj/machinery/door/firedoor,
-/obj/effect/turf_decal/stripes/box,
-/turf/open/floor/plating,
+/turf/open/floor/iron/dark{
+	initial_gas_mix = "n2=104;TEMP=293.15"
+	},
 /area/station/security/medical)
 "mm" = (
 /obj/structure/lattice,
@@ -3810,6 +3864,14 @@
 "ne" = (
 /turf/closed/wall,
 /area/station/security/execution/transfer)
+"nf" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron,
+/area/space)
 "ng" = (
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 4
@@ -3882,16 +3944,15 @@
 /area/station/medical/surgery/theatre)
 "nu" = (
 /obj/structure/table,
-/obj/effect/turf_decal/trimline/red/filled/line{
-	dir = 8
-	},
 /obj/item/clothing/gloves/color/latex,
 /obj/item/clothing/mask/surgical,
 /obj/item/reagent_containers/spray/cleaner,
 /obj/item/healthanalyzer{
 	pixel_y = -2
 	},
-/turf/open/floor/iron/white,
+/turf/open/floor/iron/dark{
+	initial_gas_mix = "n2=104;TEMP=293.15"
+	},
 /area/station/security/medical)
 "nv" = (
 /obj/effect/turf_decal/trimline/blue/filled/corner,
@@ -3917,14 +3978,6 @@
 	initial_gas_mix = "n2=104;TEMP=293.15"
 	},
 /area/station/maintenance/department/security/brig)
-"nz" = (
-/obj/effect/turf_decal/trimline/red/filled/line,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/effect/turf_decal/stripes/line,
-/turf/open/floor/iron{
-	initial_gas_mix = "n2=104;TEMP=293.15"
-	},
-/area/station/security/brig)
 "nB" = (
 /obj/structure/disposalpipe/segment{
 	dir = 9
@@ -3956,7 +4009,7 @@
 "nJ" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/brown/hidden/layer4,
 /turf/closed/wall,
-/area/station/medical/patients_rooms/room_a)
+/area/station/medical/exam_room)
 "nL" = (
 /obj/structure/cable,
 /turf/open/floor/iron{
@@ -4068,6 +4121,15 @@
 /obj/effect/turf_decal/trimline/blue/filled/line,
 /turf/open/floor/iron/dark/textured,
 /area/station/medical/treatment_center)
+"og" = (
+/obj/machinery/firealarm/directional/east,
+/obj/structure/chair/office/light,
+/obj/structure/cable,
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
+/turf/open/floor/iron,
+/area/space)
 "oh" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -4088,6 +4150,7 @@
 	dir = 8
 	},
 /obj/effect/turf_decal/box,
+/obj/machinery/portable_atmospherics/canister/oxygen,
 /turf/open/floor/iron{
 	initial_gas_mix = "n2=104;TEMP=293.15"
 	},
@@ -4130,6 +4193,9 @@
 	initial_gas_mix = "n2=104;TEMP=293.15"
 	},
 /area/station/security/office)
+"or" = (
+/turf/open/space,
+/area/space)
 "os" = (
 /turf/open/floor/iron/white,
 /area/station/medical/virology)
@@ -4152,7 +4218,9 @@
 /obj/structure/extinguisher_cabinet/directional/south,
 /obj/vehicle/ridden/secway,
 /obj/effect/turf_decal/bot,
-/turf/open/floor/iron/recharge_floor,
+/turf/open/floor/iron/dark{
+	initial_gas_mix = "n2=104;TEMP=293.15"
+	},
 /area/station/security/lockers)
 "ox" = (
 /obj/structure/stairs/north,
@@ -4392,9 +4460,6 @@
 	initial_gas_mix = "n2=104;TEMP=293.15"
 	},
 /area/station/maintenance/department/security/brig)
-"pA" = (
-/turf/closed/wall,
-/area/station/medical/patients_rooms/room_a)
 "pB" = (
 /obj/structure/cable,
 /obj/machinery/firealarm/directional/west,
@@ -4459,15 +4524,17 @@
 /obj/item/bedsheet/medical{
 	dir = 4
 	},
-/obj/machinery/airalarm/directional/south{
-	TLV = list("pressure"=new/datum/tlv(20,50,325,550),"temperature"=new/datum/tlv(270.15,280.15,313.15,340.15),/datum/gas/oxygen=new/datum/tlv(-1,-1,5,10),/datum/gas/nitrogen=new/datum/tlv(16,19,1000,1000),/datum/gas/carbon_dioxide=new/datum/tlv(-1,-1,5,10),/datum/gas/miasma=new/datum/tlv(-1,-1,15,30),/datum/gas/plasma=new/datum/tlv/dangerous,/datum/gas/nitrous_oxide=new/datum/tlv/dangerous,/datum/gas/bz=new/datum/tlv/dangerous,/datum/gas/hypernoblium=new/datum/tlv(-1,-1,1000,1000),/datum/gas/water_vapor=new/datum/tlv/dangerous,/datum/gas/tritium=new/datum/tlv/dangerous,/datum/gas/nitrium=new/datum/tlv/dangerous,/datum/gas/pluoxium=new/datum/tlv(-1,-1,1000,1000),/datum/gas/freon=new/datum/tlv/dangerous,/datum/gas/hydrogen=new/datum/tlv/dangerous,/datum/gas/healium=new/datum/tlv/dangerous,/datum/gas/proto_nitrate=new/datum/tlv/dangerous,/datum/gas/zauker=new/datum/tlv/dangerous,/datum/gas/helium=new/datum/tlv/dangerous,/datum/gas/antinoblium=new/datum/tlv/dangerous,/datum/gas/halon=new/datum/tlv/dangerous)
-	},
 /obj/machinery/power/apc/auto_name/directional/west,
 /obj/structure/cable,
+/obj/machinery/airalarm/Nitrogen_Atmosphere,
+/obj/machinery/airalarm/Nitrogen_Atmosphere{
+	pixel_y = -24;
+	name = "south"
+	},
 /turf/open/floor/iron/dark{
 	initial_gas_mix = "n2=104;TEMP=293.15"
 	},
-/area/station/medical/patients_rooms/room_a)
+/area/station/medical/exam_room)
 "pR" = (
 /obj/machinery/light/directional/north,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
@@ -4476,6 +4543,16 @@
 	},
 /turf/open/floor/iron,
 /area/station/security/execution/transfer)
+"pS" = (
+/obj/effect/turf_decal/stripes/line,
+/turf/open/floor/iron,
+/area/space)
+"pU" = (
+/obj/machinery/camera/directional/east{
+	c_tag = "Gravity Generator Room"
+	},
+/turf/open/floor/iron/dark,
+/area/space)
 "pV" = (
 /obj/machinery/firealarm/directional/north,
 /obj/structure/sign/poster/official/cleanliness{
@@ -4499,14 +4576,14 @@
 	},
 /area/station/command/heads_quarters/hos)
 "pY" = (
-/obj/effect/turf_decal/trimline/red/filled/line,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 1
 	},
-/obj/structure/cable,
-/obj/effect/landmark/start/security_medic,
 /obj/machinery/light/directional/south,
-/turf/open/floor/iron/white,
+/obj/structure/cable,
+/turf/open/floor/iron/dark{
+	initial_gas_mix = "n2=104;TEMP=293.15"
+	},
 /area/station/security/medical)
 "pZ" = (
 /obj/structure/flora/bush/lavendergrass/style_random,
@@ -4698,13 +4775,16 @@
 	},
 /area/station/service/lawoffice)
 "qL" = (
-/obj/effect/turf_decal/vg_decals/atmos/oxygen{
-	pixel_y = -30
-	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/vg_decals/atmos/oxygen,
 /turf/open/floor/iron/dark,
-/area/station/medical/patients_rooms/room_a)
+/area/station/medical/exam_room)
+"qM" = (
+/obj/effect/turf_decal/bot_white,
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/turf/open/floor/iron/dark,
+/area/space)
 "qN" = (
 /turf/closed/wall/r_wall,
 /area/station/security/prison/shower)
@@ -4883,6 +4963,18 @@
 "rw" = (
 /turf/closed/wall/r_wall,
 /area/station/service/lawoffice)
+"rx" = (
+/obj/machinery/door/airlock/highsecurity{
+	name = "Gravity Generator Room"
+	},
+/obj/effect/turf_decal/delivery,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/cable,
+/obj/effect/mapping_helpers/airlock/access/all/engineering/construction,
+/turf/open/floor/iron,
+/area/space)
 "ry" = (
 /obj/machinery/atmospherics/pipe/smart/simple/orange/visible{
 	dir = 9
@@ -5407,6 +5499,10 @@
 	},
 /turf/open/floor/iron,
 /area/station/security/execution/transfer)
+"tp" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/dark,
+/area/space)
 "tq" = (
 /obj/structure/table/reinforced,
 /obj/structure/window/reinforced,
@@ -5788,6 +5884,14 @@
 /obj/structure/lattice/catwalk,
 /turf/open/space/basic,
 /area/space/nearstation)
+"uE" = (
+/obj/machinery/power/terminal{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/effect/turf_decal/delivery,
+/turf/open/floor/iron,
+/area/space)
 "uH" = (
 /obj/machinery/rnd/production/techfab/department/security,
 /turf/open/floor/iron/dark{
@@ -6674,6 +6778,14 @@
 	initial_gas_mix = "n2=104;TEMP=293.15"
 	},
 /area/station/maintenance/department/security/brig)
+"xn" = (
+/obj/machinery/power/apc/auto_name/directional/north,
+/obj/structure/cable,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/space)
 "xo" = (
 /obj/structure/cable,
 /obj/effect/turf_decal/trimline/red/filled/corner{
@@ -6753,6 +6865,13 @@
 	},
 /turf/open/floor/iron,
 /area/station/security/prison/workout)
+"xz" = (
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 4
+	},
+/obj/effect/landmark/start/lawyer,
+/turf/open/floor/iron/white,
+/area/station/commons/dorms/barracks)
 "xE" = (
 /turf/closed/wall/r_wall,
 /area/station/security/office)
@@ -6886,11 +7005,13 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/orange/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
-/obj/machinery/airalarm/directional/north{
-	TLV = list("pressure"=new/datum/tlv(20,50,325,550),"temperature"=new/datum/tlv(270.15,280.15,313.15,340.15),/datum/gas/oxygen=new/datum/tlv(-1,-1,5,10),/datum/gas/nitrogen=new/datum/tlv(16,19,1000,1000),/datum/gas/carbon_dioxide=new/datum/tlv(-1,-1,5,10),/datum/gas/miasma=new/datum/tlv(-1,-1,15,30),/datum/gas/plasma=new/datum/tlv/dangerous,/datum/gas/nitrous_oxide=new/datum/tlv/dangerous,/datum/gas/bz=new/datum/tlv/dangerous,/datum/gas/hypernoblium=new/datum/tlv(-1,-1,1000,1000),/datum/gas/water_vapor=new/datum/tlv/dangerous,/datum/gas/tritium=new/datum/tlv/dangerous,/datum/gas/nitrium=new/datum/tlv/dangerous,/datum/gas/pluoxium=new/datum/tlv(-1,-1,1000,1000),/datum/gas/freon=new/datum/tlv/dangerous,/datum/gas/hydrogen=new/datum/tlv/dangerous,/datum/gas/healium=new/datum/tlv/dangerous,/datum/gas/proto_nitrate=new/datum/tlv/dangerous,/datum/gas/zauker=new/datum/tlv/dangerous,/datum/gas/helium=new/datum/tlv/dangerous,/datum/gas/antinoblium=new/datum/tlv/dangerous,/datum/gas/halon=new/datum/tlv/dangerous)
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
+	},
+/obj/machinery/airalarm/Nitrogen_Atmosphere{
+	dir = 1;
+	pixel_y = 24;
+	name = "north"
 	},
 /turf/open/floor/iron{
 	initial_gas_mix = "n2=104;TEMP=293.15"
@@ -6918,8 +7039,9 @@
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 1
 	},
-/obj/machinery/airalarm/directional/south{
-	TLV = list("pressure"=new/datum/tlv(20,50,325,550),"temperature"=new/datum/tlv(270.15,280.15,313.15,340.15),/datum/gas/oxygen=new/datum/tlv(-1,-1,5,10),/datum/gas/nitrogen=new/datum/tlv(16,19,1000,1000),/datum/gas/carbon_dioxide=new/datum/tlv(-1,-1,5,10),/datum/gas/miasma=new/datum/tlv(-1,-1,15,30),/datum/gas/plasma=new/datum/tlv/dangerous,/datum/gas/nitrous_oxide=new/datum/tlv/dangerous,/datum/gas/bz=new/datum/tlv/dangerous,/datum/gas/hypernoblium=new/datum/tlv(-1,-1,1000,1000),/datum/gas/water_vapor=new/datum/tlv/dangerous,/datum/gas/tritium=new/datum/tlv/dangerous,/datum/gas/nitrium=new/datum/tlv/dangerous,/datum/gas/pluoxium=new/datum/tlv(-1,-1,1000,1000),/datum/gas/freon=new/datum/tlv/dangerous,/datum/gas/hydrogen=new/datum/tlv/dangerous,/datum/gas/healium=new/datum/tlv/dangerous,/datum/gas/proto_nitrate=new/datum/tlv/dangerous,/datum/gas/zauker=new/datum/tlv/dangerous,/datum/gas/helium=new/datum/tlv/dangerous,/datum/gas/antinoblium=new/datum/tlv/dangerous,/datum/gas/halon=new/datum/tlv/dangerous)
+/obj/machinery/airalarm/Nitrogen_Atmosphere{
+	pixel_y = -24;
+	name = "south"
 	},
 /turf/open/floor/iron/dark{
 	initial_gas_mix = "n2=104;TEMP=293.15"
@@ -6930,6 +7052,16 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/medical/morgue)
+"xZ" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/light_switch/directional/west,
+/obj/structure/cable,
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
+	},
+/turf/open/floor/iron,
+/area/space)
 "ya" = (
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 1
@@ -7965,6 +8097,9 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/medical/medbay/central)
+"Bu" = (
+/turf/closed/wall,
+/area/space)
 "Bv" = (
 /obj/machinery/computer/operating,
 /obj/machinery/light/directional/north,
@@ -8016,6 +8151,10 @@
 /obj/structure/rack,
 /turf/open/floor/catwalk_floor/iron_dark,
 /area/station/medical/coldroom)
+"BJ" = (
+/obj/machinery/light/directional/west,
+/turf/open/floor/iron/dark,
+/area/space)
 "BK" = (
 /obj/effect/turf_decal/siding/white{
 	dir = 8
@@ -8039,6 +8178,13 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/station/medical/paramedic)
+"BN" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron,
+/area/space)
 "BP" = (
 /obj/structure/shuttle/engine/router,
 /obj/structure/shuttle/engine/router,
@@ -8149,6 +8295,11 @@
 	initial_gas_mix = "n2=104;TEMP=293.15"
 	},
 /area/station/ai_monitored/security/armory)
+"Cp" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/space)
 "Cs" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/hidden,
 /turf/open/floor/iron/dark,
@@ -8321,14 +8472,6 @@
 	initial_gas_mix = "n2=104;TEMP=293.15"
 	},
 /area/station/security/lockers)
-"Db" = (
-/obj/effect/turf_decal/trimline/red/filled/line,
-/obj/structure/sign/warning/gas_mask/directional/south,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/turf/open/floor/iron{
-	initial_gas_mix = "n2=104;TEMP=293.15"
-	},
-/area/station/security/brig)
 "Dc" = (
 /obj/structure/disposalpipe/trunk/multiz/down{
 	dir = 8
@@ -8771,8 +8914,10 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/orange/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
-/obj/machinery/airalarm/directional/north{
-	TLV = list("pressure"=new/datum/tlv(20,50,325,550),"temperature"=new/datum/tlv(270.15,280.15,313.15,340.15),/datum/gas/oxygen=new/datum/tlv(-1,-1,5,10),/datum/gas/nitrogen=new/datum/tlv(16,19,1000,1000),/datum/gas/carbon_dioxide=new/datum/tlv(-1,-1,5,10),/datum/gas/miasma=new/datum/tlv(-1,-1,15,30),/datum/gas/plasma=new/datum/tlv/dangerous,/datum/gas/nitrous_oxide=new/datum/tlv/dangerous,/datum/gas/bz=new/datum/tlv/dangerous,/datum/gas/hypernoblium=new/datum/tlv(-1,-1,1000,1000),/datum/gas/water_vapor=new/datum/tlv/dangerous,/datum/gas/tritium=new/datum/tlv/dangerous,/datum/gas/nitrium=new/datum/tlv/dangerous,/datum/gas/pluoxium=new/datum/tlv(-1,-1,1000,1000),/datum/gas/freon=new/datum/tlv/dangerous,/datum/gas/hydrogen=new/datum/tlv/dangerous,/datum/gas/healium=new/datum/tlv/dangerous,/datum/gas/proto_nitrate=new/datum/tlv/dangerous,/datum/gas/zauker=new/datum/tlv/dangerous,/datum/gas/helium=new/datum/tlv/dangerous,/datum/gas/antinoblium=new/datum/tlv/dangerous,/datum/gas/halon=new/datum/tlv/dangerous)
+/obj/machinery/airalarm/Nitrogen_Atmosphere{
+	dir = 1;
+	pixel_y = 24;
+	name = "north"
 	},
 /turf/open/floor/iron{
 	initial_gas_mix = "n2=104;TEMP=293.15"
@@ -8983,8 +9128,9 @@
 	},
 /area/station/security/lockers)
 "Fr" = (
-/obj/machinery/airalarm/directional/south{
-	TLV = list("pressure"=new/datum/tlv(20,50,325,550),"temperature"=new/datum/tlv(270.15,280.15,313.15,340.15),/datum/gas/oxygen=new/datum/tlv(-1,-1,5,10),/datum/gas/nitrogen=new/datum/tlv(16,19,1000,1000),/datum/gas/carbon_dioxide=new/datum/tlv(-1,-1,5,10),/datum/gas/miasma=new/datum/tlv(-1,-1,15,30),/datum/gas/plasma=new/datum/tlv/dangerous,/datum/gas/nitrous_oxide=new/datum/tlv/dangerous,/datum/gas/bz=new/datum/tlv/dangerous,/datum/gas/hypernoblium=new/datum/tlv(-1,-1,1000,1000),/datum/gas/water_vapor=new/datum/tlv/dangerous,/datum/gas/tritium=new/datum/tlv/dangerous,/datum/gas/nitrium=new/datum/tlv/dangerous,/datum/gas/pluoxium=new/datum/tlv(-1,-1,1000,1000),/datum/gas/freon=new/datum/tlv/dangerous,/datum/gas/hydrogen=new/datum/tlv/dangerous,/datum/gas/healium=new/datum/tlv/dangerous,/datum/gas/proto_nitrate=new/datum/tlv/dangerous,/datum/gas/zauker=new/datum/tlv/dangerous,/datum/gas/helium=new/datum/tlv/dangerous,/datum/gas/antinoblium=new/datum/tlv/dangerous,/datum/gas/halon=new/datum/tlv/dangerous)
+/obj/machinery/airalarm/Nitrogen_Atmosphere{
+	pixel_y = -24;
+	name = "south"
 	},
 /turf/open/floor/iron/dark{
 	initial_gas_mix = "n2=104;TEMP=293.15"
@@ -9078,8 +9224,9 @@
 /turf/open/floor/iron/smooth_large,
 /area/station/medical/chemistry)
 "FN" = (
-/obj/machinery/airalarm/directional/south{
-	TLV = list("pressure"=new/datum/tlv(20,50,325,550),"temperature"=new/datum/tlv(270.15,280.15,313.15,340.15),/datum/gas/oxygen=new/datum/tlv(-1,-1,5,10),/datum/gas/nitrogen=new/datum/tlv(16,19,1000,1000),/datum/gas/carbon_dioxide=new/datum/tlv(-1,-1,5,10),/datum/gas/miasma=new/datum/tlv(-1,-1,15,30),/datum/gas/plasma=new/datum/tlv/dangerous,/datum/gas/nitrous_oxide=new/datum/tlv/dangerous,/datum/gas/bz=new/datum/tlv/dangerous,/datum/gas/hypernoblium=new/datum/tlv(-1,-1,1000,1000),/datum/gas/water_vapor=new/datum/tlv/dangerous,/datum/gas/tritium=new/datum/tlv/dangerous,/datum/gas/nitrium=new/datum/tlv/dangerous,/datum/gas/pluoxium=new/datum/tlv(-1,-1,1000,1000),/datum/gas/freon=new/datum/tlv/dangerous,/datum/gas/hydrogen=new/datum/tlv/dangerous,/datum/gas/healium=new/datum/tlv/dangerous,/datum/gas/proto_nitrate=new/datum/tlv/dangerous,/datum/gas/zauker=new/datum/tlv/dangerous,/datum/gas/helium=new/datum/tlv/dangerous,/datum/gas/antinoblium=new/datum/tlv/dangerous,/datum/gas/halon=new/datum/tlv/dangerous)
+/obj/machinery/airalarm/Nitrogen_Atmosphere{
+	pixel_y = -24;
+	name = "south"
 	},
 /turf/open/floor/plating{
 	initial_gas_mix = "n2=104;TEMP=293.15"
@@ -9168,6 +9315,13 @@
 "Ge" = (
 /turf/open/floor/iron,
 /area/station/security/prison/work)
+"Gh" = (
+/obj/machinery/airalarm/directional/south,
+/obj/machinery/holopad,
+/obj/effect/turf_decal/stripes/line,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/space)
 "Gi" = (
 /turf/open/floor/iron/textured_large,
 /area/station/security/execution/education)
@@ -9230,19 +9384,21 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 8
 	},
-/turf/open/floor/iron/white,
+/turf/open/floor/iron/dark{
+	initial_gas_mix = "n2=104;TEMP=293.15"
+	},
 /area/station/security/medical)
 "Gw" = (
-/obj/structure/fans/tiny/forcefield,
-/obj/effect/turf_decal/stripes/line,
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
-/turf/open/floor/catwalk_floor/iron_dark,
-/area/station/security/brig)
+/obj/machinery/door/window/left{
+	name = "Brig Infirmary"
+	},
+/turf/open/floor/iron/dark{
+	initial_gas_mix = "n2=104;TEMP=293.15"
+	},
+/area/station/security/medical)
 "Gy" = (
 /obj/structure/closet/emcloset/anchored,
 /turf/open/floor/catwalk_floor,
@@ -9614,8 +9770,10 @@
 /obj/structure/chair/sofa/bench/right,
 /obj/structure/cable,
 /obj/machinery/light/directional/north,
-/obj/machinery/airalarm/directional/north{
-	TLV = list("pressure"=new/datum/tlv(20,50,325,550),"temperature"=new/datum/tlv(270.15,280.15,313.15,340.15),/datum/gas/oxygen=new/datum/tlv(-1,-1,5,10),/datum/gas/nitrogen=new/datum/tlv(16,19,1000,1000),/datum/gas/carbon_dioxide=new/datum/tlv(-1,-1,5,10),/datum/gas/miasma=new/datum/tlv(-1,-1,15,30),/datum/gas/plasma=new/datum/tlv/dangerous,/datum/gas/nitrous_oxide=new/datum/tlv/dangerous,/datum/gas/bz=new/datum/tlv/dangerous,/datum/gas/hypernoblium=new/datum/tlv(-1,-1,1000,1000),/datum/gas/water_vapor=new/datum/tlv/dangerous,/datum/gas/tritium=new/datum/tlv/dangerous,/datum/gas/nitrium=new/datum/tlv/dangerous,/datum/gas/pluoxium=new/datum/tlv(-1,-1,1000,1000),/datum/gas/freon=new/datum/tlv/dangerous,/datum/gas/hydrogen=new/datum/tlv/dangerous,/datum/gas/healium=new/datum/tlv/dangerous,/datum/gas/proto_nitrate=new/datum/tlv/dangerous,/datum/gas/zauker=new/datum/tlv/dangerous,/datum/gas/helium=new/datum/tlv/dangerous,/datum/gas/antinoblium=new/datum/tlv/dangerous,/datum/gas/halon=new/datum/tlv/dangerous)
+/obj/machinery/airalarm/Nitrogen_Atmosphere{
+	dir = 1;
+	pixel_y = 24;
+	name = "north"
 	},
 /turf/open/floor/iron/dark{
 	initial_gas_mix = "n2=104;TEMP=293.15"
@@ -9634,8 +9792,10 @@
 "HV" = (
 /obj/structure/closet/secure_closet/warden,
 /obj/item/gun/energy/laser,
-/obj/machinery/airalarm/directional/west{
-	TLV = list("pressure"=new/datum/tlv(20,50,325,550),"temperature"=new/datum/tlv(270.15,280.15,313.15,340.15),/datum/gas/oxygen=new/datum/tlv(-1,-1,5,10),/datum/gas/nitrogen=new/datum/tlv(16,19,1000,1000),/datum/gas/carbon_dioxide=new/datum/tlv(-1,-1,5,10),/datum/gas/miasma=new/datum/tlv(-1,-1,15,30),/datum/gas/plasma=new/datum/tlv/dangerous,/datum/gas/nitrous_oxide=new/datum/tlv/dangerous,/datum/gas/bz=new/datum/tlv/dangerous,/datum/gas/hypernoblium=new/datum/tlv(-1,-1,1000,1000),/datum/gas/water_vapor=new/datum/tlv/dangerous,/datum/gas/tritium=new/datum/tlv/dangerous,/datum/gas/nitrium=new/datum/tlv/dangerous,/datum/gas/pluoxium=new/datum/tlv(-1,-1,1000,1000),/datum/gas/freon=new/datum/tlv/dangerous,/datum/gas/hydrogen=new/datum/tlv/dangerous,/datum/gas/healium=new/datum/tlv/dangerous,/datum/gas/proto_nitrate=new/datum/tlv/dangerous,/datum/gas/zauker=new/datum/tlv/dangerous,/datum/gas/helium=new/datum/tlv/dangerous,/datum/gas/antinoblium=new/datum/tlv/dangerous,/datum/gas/halon=new/datum/tlv/dangerous)
+/obj/machinery/airalarm/Nitrogen_Atmosphere{
+	dir = 8;
+	name = "west";
+	pixel_x = -24
 	},
 /turf/open/floor/iron/dark{
 	initial_gas_mix = "n2=104;TEMP=293.15"
@@ -10005,8 +10165,10 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/orange/hidden/layer4,
 /obj/structure/cable,
-/obj/machinery/airalarm/directional/west{
-	TLV = list("pressure"=new/datum/tlv(20,50,325,550),"temperature"=new/datum/tlv(270.15,280.15,313.15,340.15),/datum/gas/oxygen=new/datum/tlv(-1,-1,5,10),/datum/gas/nitrogen=new/datum/tlv(16,19,1000,1000),/datum/gas/carbon_dioxide=new/datum/tlv(-1,-1,5,10),/datum/gas/miasma=new/datum/tlv(-1,-1,15,30),/datum/gas/plasma=new/datum/tlv/dangerous,/datum/gas/nitrous_oxide=new/datum/tlv/dangerous,/datum/gas/bz=new/datum/tlv/dangerous,/datum/gas/hypernoblium=new/datum/tlv(-1,-1,1000,1000),/datum/gas/water_vapor=new/datum/tlv/dangerous,/datum/gas/tritium=new/datum/tlv/dangerous,/datum/gas/nitrium=new/datum/tlv/dangerous,/datum/gas/pluoxium=new/datum/tlv(-1,-1,1000,1000),/datum/gas/freon=new/datum/tlv/dangerous,/datum/gas/hydrogen=new/datum/tlv/dangerous,/datum/gas/healium=new/datum/tlv/dangerous,/datum/gas/proto_nitrate=new/datum/tlv/dangerous,/datum/gas/zauker=new/datum/tlv/dangerous,/datum/gas/helium=new/datum/tlv/dangerous,/datum/gas/antinoblium=new/datum/tlv/dangerous,/datum/gas/halon=new/datum/tlv/dangerous)
+/obj/machinery/airalarm/Nitrogen_Atmosphere{
+	dir = 8;
+	name = "west";
+	pixel_x = -24
 	},
 /turf/open/floor/iron/dark{
 	initial_gas_mix = "n2=104;TEMP=293.15"
@@ -10259,7 +10421,7 @@
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/plating,
-/area/station/medical/patients_rooms/room_a)
+/area/station/medical/exam_room)
 "JT" = (
 /obj/structure/weightmachine/weightlifter,
 /turf/open/floor/iron/dark/side{
@@ -10505,7 +10667,7 @@
 "KD" = (
 /obj/structure/sign/departments/medbay/alt,
 /turf/closed/wall,
-/area/station/security/brig)
+/area/station/security/medical)
 "KF" = (
 /obj/structure/disposalpipe/segment{
 	dir = 6
@@ -10702,9 +10864,6 @@
 /area/station/security/prison/workout)
 "Lk" = (
 /obj/machinery/atmospherics/pipe/smart/simple/orange/visible,
-/obj/machinery/camera/directional/east{
-	c_tag = "Security - Atmospherics"
-	},
 /obj/machinery/atmospherics/pipe/smart/simple/cyan/visible,
 /turf/open/floor/plating{
 	initial_gas_mix = "n2=104;TEMP=293.15"
@@ -11079,6 +11238,12 @@
 /obj/structure/trash_pile,
 /turf/open/floor/plating,
 /area/station/maintenance/department/medical)
+"Mt" = (
+/obj/structure/sign/warning/radiation/rad_area/directional/north,
+/obj/effect/turf_decal/bot_white,
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/turf/open/floor/iron/dark,
+/area/space)
 "Mu" = (
 /obj/structure/cable,
 /obj/structure/disposalpipe/segment,
@@ -11243,6 +11408,12 @@
 /obj/machinery/status_display/ai/directional/east,
 /turf/open/floor/iron/textured,
 /area/station/medical/virology)
+"Nb" = (
+/obj/structure/marker_beacon/teal{
+	pixel_y = 20
+	},
+/turf/open/space/basic,
+/area/space)
 "Nd" = (
 /obj/effect/turf_decal/trimline/red/filled/corner{
 	dir = 1
@@ -11275,8 +11446,9 @@
 	pixel_y = 5
 	},
 /obj/effect/turf_decal/trimline/red/filled/line,
-/obj/machinery/airalarm/directional/south{
-	TLV = list("pressure"=new/datum/tlv(20,50,325,550),"temperature"=new/datum/tlv(270.15,280.15,313.15,340.15),/datum/gas/oxygen=new/datum/tlv(-1,-1,5,10),/datum/gas/nitrogen=new/datum/tlv(16,19,1000,1000),/datum/gas/carbon_dioxide=new/datum/tlv(-1,-1,5,10),/datum/gas/miasma=new/datum/tlv(-1,-1,15,30),/datum/gas/plasma=new/datum/tlv/dangerous,/datum/gas/nitrous_oxide=new/datum/tlv/dangerous,/datum/gas/bz=new/datum/tlv/dangerous,/datum/gas/hypernoblium=new/datum/tlv(-1,-1,1000,1000),/datum/gas/water_vapor=new/datum/tlv/dangerous,/datum/gas/tritium=new/datum/tlv/dangerous,/datum/gas/nitrium=new/datum/tlv/dangerous,/datum/gas/pluoxium=new/datum/tlv(-1,-1,1000,1000),/datum/gas/freon=new/datum/tlv/dangerous,/datum/gas/hydrogen=new/datum/tlv/dangerous,/datum/gas/healium=new/datum/tlv/dangerous,/datum/gas/proto_nitrate=new/datum/tlv/dangerous,/datum/gas/zauker=new/datum/tlv/dangerous,/datum/gas/helium=new/datum/tlv/dangerous,/datum/gas/antinoblium=new/datum/tlv/dangerous,/datum/gas/halon=new/datum/tlv/dangerous)
+/obj/machinery/airalarm/Nitrogen_Atmosphere{
+	pixel_y = -24;
+	name = "south"
 	},
 /turf/open/floor/iron/dark{
 	initial_gas_mix = "n2=104;TEMP=293.15"
@@ -11293,6 +11465,14 @@
 /obj/structure/lattice,
 /turf/open/space/basic,
 /area/space/nearstation)
+"Nj" = (
+/obj/machinery/camera/directional/east{
+	c_tag = "Security - Atmospherics"
+	},
+/turf/open/floor/plating{
+	initial_gas_mix = "n2=104;TEMP=293.15"
+	},
+/area/station/security/power_station)
 "Nk" = (
 /obj/structure/table,
 /obj/item/book/manual/chef_recipes,
@@ -11365,15 +11545,14 @@
 /area/station/ai_monitored/security/armory)
 "NB" = (
 /obj/structure/rack,
-/obj/effect/turf_decal/trimline/red/filled/line{
-	dir = 10
-	},
 /obj/item/storage/medkit/regular,
 /obj/item/reagent_containers/cup/bottle/multiver,
 /obj/item/reagent_containers/cup/bottle/epinephrine,
 /obj/item/reagent_containers/cup/bottle/morphine,
 /obj/item/reagent_containers/syringe,
-/turf/open/floor/iron/white,
+/turf/open/floor/iron/dark{
+	initial_gas_mix = "n2=104;TEMP=293.15"
+	},
 /area/station/security/medical)
 "NC" = (
 /obj/structure/sign/warning/vacuum,
@@ -11522,14 +11701,13 @@
 /area/station/medical/morgue)
 "NT" = (
 /obj/structure/table,
-/obj/effect/turf_decal/trimline/red/filled/line{
-	dir = 8
-	},
 /obj/machinery/computer/med_data/laptop{
 	dir = 4
 	},
 /obj/structure/cable,
-/turf/open/floor/iron/white,
+/turf/open/floor/iron/dark{
+	initial_gas_mix = "n2=104;TEMP=293.15"
+	},
 /area/station/security/medical)
 "NU" = (
 /obj/machinery/atmospherics/components/tank/air,
@@ -11563,19 +11741,6 @@
 	initial_gas_mix = "n2=104;TEMP=293.15"
 	},
 /area/station/security/interrogation)
-"NZ" = (
-/obj/effect/turf_decal/trimline/red/filled/line{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/structure/disposalpipe/segment,
-/obj/structure/sign/poster/official/safety_internals{
-	pixel_x = 32
-	},
-/turf/open/floor/iron{
-	initial_gas_mix = "n2=104;TEMP=293.15"
-	},
-/area/station/security/brig)
 "Ob" = (
 /obj/machinery/seed_extractor,
 /obj/effect/turf_decal/trimline/green/filled/line{
@@ -11685,6 +11850,14 @@
 	initial_gas_mix = "n2=104;TEMP=293.15"
 	},
 /area/station/security/power_station)
+"Ow" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron,
+/area/space)
 "Ox" = (
 /obj/effect/turf_decal/trimline/red/filled/line,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -11881,7 +12054,7 @@
 /turf/open/floor/iron/dark{
 	initial_gas_mix = "n2=104;TEMP=293.15"
 	},
-/area/station/medical/patients_rooms/room_a)
+/area/station/medical/exam_room)
 "Pi" = (
 /obj/structure/table,
 /obj/item/storage/toolbox/mechanical,
@@ -12302,9 +12475,6 @@
 	},
 /area/station/command/heads_quarters/hos)
 "QQ" = (
-/obj/structure/closet/secure_closet/personal/wall{
-	pixel_y = 30
-	},
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 1
 	},
@@ -12312,6 +12482,9 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/effect/landmark/start/security_officer,
 /obj/structure/cable,
+/obj/structure/closet/emcloset/wall{
+	pixel_y = 30
+	},
 /turf/open/floor/iron/white,
 /area/station/commons/dorms/barracks)
 "QR" = (
@@ -12382,6 +12555,14 @@
 /obj/effect/turf_decal/tile/green/half/contrasted,
 /turf/open/floor/iron/white,
 /area/station/medical/virology)
+"Rc" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/stripes/line{
+	dir = 5
+	},
+/obj/machinery/light/directional/east,
+/turf/open/floor/iron,
+/area/space)
 "Rd" = (
 /obj/structure/table,
 /obj/machinery/light/small/directional/east,
@@ -12410,8 +12591,9 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
-/obj/effect/landmark/start/lawyer,
-/turf/open/floor/iron/white,
+/turf/open/floor/iron/dark{
+	initial_gas_mix = "n2=104;TEMP=293.15"
+	},
 /area/station/security/medical)
 "Ri" = (
 /obj/machinery/duct,
@@ -12651,8 +12833,9 @@
 "Sc" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
-/obj/effect/landmark/start/lawyer,
-/turf/open/floor/iron/white,
+/turf/open/floor/iron/dark{
+	initial_gas_mix = "n2=104;TEMP=293.15"
+	},
 /area/station/security/medical)
 "Sd" = (
 /obj/effect/turf_decal/trimline/red/filled/line{
@@ -12675,8 +12858,9 @@
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 1
 	},
-/obj/machinery/airalarm/directional/south{
-	TLV = list("pressure"=new/datum/tlv(20,50,325,550),"temperature"=new/datum/tlv(270.15,280.15,313.15,340.15),/datum/gas/oxygen=new/datum/tlv(-1,-1,5,10),/datum/gas/nitrogen=new/datum/tlv(16,19,1000,1000),/datum/gas/carbon_dioxide=new/datum/tlv(-1,-1,5,10),/datum/gas/miasma=new/datum/tlv(-1,-1,15,30),/datum/gas/plasma=new/datum/tlv/dangerous,/datum/gas/nitrous_oxide=new/datum/tlv/dangerous,/datum/gas/bz=new/datum/tlv/dangerous,/datum/gas/hypernoblium=new/datum/tlv(-1,-1,1000,1000),/datum/gas/water_vapor=new/datum/tlv/dangerous,/datum/gas/tritium=new/datum/tlv/dangerous,/datum/gas/nitrium=new/datum/tlv/dangerous,/datum/gas/pluoxium=new/datum/tlv(-1,-1,1000,1000),/datum/gas/freon=new/datum/tlv/dangerous,/datum/gas/hydrogen=new/datum/tlv/dangerous,/datum/gas/healium=new/datum/tlv/dangerous,/datum/gas/proto_nitrate=new/datum/tlv/dangerous,/datum/gas/zauker=new/datum/tlv/dangerous,/datum/gas/helium=new/datum/tlv/dangerous,/datum/gas/antinoblium=new/datum/tlv/dangerous,/datum/gas/halon=new/datum/tlv/dangerous)
+/obj/machinery/airalarm/Nitrogen_Atmosphere{
+	pixel_y = -24;
+	name = "south"
 	},
 /turf/open/floor/iron/dark{
 	initial_gas_mix = "n2=104;TEMP=293.15"
@@ -12897,9 +13081,6 @@
 /obj/machinery/atmospherics/pipe/smart/simple/orange/visible{
 	dir = 5
 	},
-/obj/machinery/airalarm/directional/west{
-	TLV = list("pressure"=new/datum/tlv(20,50,325,550),"temperature"=new/datum/tlv(270.15,280.15,313.15,340.15),/datum/gas/oxygen=new/datum/tlv(-1,-1,5,10),/datum/gas/nitrogen=new/datum/tlv(16,19,1000,1000),/datum/gas/carbon_dioxide=new/datum/tlv(-1,-1,5,10),/datum/gas/miasma=new/datum/tlv(-1,-1,15,30),/datum/gas/plasma=new/datum/tlv/dangerous,/datum/gas/nitrous_oxide=new/datum/tlv/dangerous,/datum/gas/bz=new/datum/tlv/dangerous,/datum/gas/hypernoblium=new/datum/tlv(-1,-1,1000,1000),/datum/gas/water_vapor=new/datum/tlv/dangerous,/datum/gas/tritium=new/datum/tlv/dangerous,/datum/gas/nitrium=new/datum/tlv/dangerous,/datum/gas/pluoxium=new/datum/tlv(-1,-1,1000,1000),/datum/gas/freon=new/datum/tlv/dangerous,/datum/gas/hydrogen=new/datum/tlv/dangerous,/datum/gas/healium=new/datum/tlv/dangerous,/datum/gas/proto_nitrate=new/datum/tlv/dangerous,/datum/gas/zauker=new/datum/tlv/dangerous,/datum/gas/helium=new/datum/tlv/dangerous,/datum/gas/antinoblium=new/datum/tlv/dangerous,/datum/gas/halon=new/datum/tlv/dangerous)
-	},
 /obj/effect/turf_decal/vg_decals/atmos/nitrogen,
 /turf/open/floor/plating{
 	initial_gas_mix = "n2=104;TEMP=293.15"
@@ -12952,6 +13133,16 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/white,
 /area/station/medical/pharmacy)
+"Tk" = (
+/obj/machinery/door/airlock/command/glass{
+	name = "Gravity Generator Area"
+	},
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/mapping_helpers/airlock/access/all/engineering/construction,
+/turf/open/floor/iron/dark,
+/area/space)
 "Tm" = (
 /turf/open/floor/plating{
 	initial_gas_mix = "n2=104;TEMP=293.15"
@@ -13035,6 +13226,9 @@
 	},
 /turf/open/floor/iron,
 /area/station/security/prison/safe)
+"Tz" = (
+/turf/closed/wall/r_wall,
+/area/space)
 "TA" = (
 /obj/structure/sign/warning/gas_mask,
 /turf/closed/wall,
@@ -13072,7 +13266,7 @@
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
-/area/station/medical/patients_rooms/room_a)
+/area/station/medical/exam_room)
 "TH" = (
 /obj/effect/turf_decal/trimline/blue/filled/corner{
 	dir = 1
@@ -13273,14 +13467,17 @@
 	},
 /area/station/security/lockers)
 "Us" = (
-/obj/machinery/mech_bay_recharge_port{
-	dir = 8
-	},
-/obj/effect/turf_decal/delivery,
+/obj/effect/turf_decal/bot,
+/obj/vehicle/ridden/secway,
 /turf/open/floor/iron/dark{
 	initial_gas_mix = "n2=104;TEMP=293.15"
 	},
 /area/station/security/lockers)
+"Ut" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/dark,
+/area/space)
 "Uu" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -13385,6 +13582,10 @@
 /obj/structure/sign/departments/exam_room/directional/south,
 /turf/open/floor/iron/white/smooth_large,
 /area/station/medical/medbay/central)
+"UL" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/iron/dark,
+/area/space)
 "UM" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/box/lethalshot{
@@ -13608,19 +13809,6 @@
 "VC" = (
 /turf/closed/wall,
 /area/station/security/prison/shower)
-"VD" = (
-/obj/effect/turf_decal/bot,
-/obj/machinery/atmospherics/components/unary/portables_connector/visible{
-	dir = 8
-	},
-/obj/effect/turf_decal/vg_decals/atmos/oxygen{
-	pixel_y = 30
-	},
-/obj/machinery/portable_atmospherics/canister/oxygen,
-/turf/open/floor/iron/dark{
-	initial_gas_mix = "n2=104;TEMP=293.15"
-	},
-/area/station/security/office)
 "VE" = (
 /obj/structure/table/reinforced,
 /turf/open/floor/iron{
@@ -13650,6 +13838,15 @@
 	initial_gas_mix = "n2=104;TEMP=293.15"
 	},
 /area/station/security/brig)
+"VI" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/light/directional/west,
+/turf/open/floor/iron,
+/area/space)
 "VJ" = (
 /obj/machinery/hydroponics/soil,
 /obj/machinery/firealarm/directional/west,
@@ -13960,6 +14157,12 @@
 /obj/effect/mapping_helpers/airlock/access/all/medical/general,
 /turf/open/floor/plating,
 /area/station/medical/break_room)
+"WR" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/space)
 "WS" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/door/firedoor,
@@ -14223,10 +14426,11 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
 /turf/open/floor/iron/dark{
 	initial_gas_mix = "n2=104;TEMP=293.15"
 	},
-/area/station/medical/patients_rooms/room_a)
+/area/station/medical/exam_room)
 "XV" = (
 /obj/structure/closet/secure_closet/personal/wall{
 	pixel_y = 30
@@ -14286,6 +14490,10 @@
 /obj/effect/landmark/blobstart,
 /turf/open/floor/catwalk_floor,
 /area/station/maintenance/thruster_room)
+"Yg" = (
+/obj/machinery/light/directional/east,
+/turf/open/floor/iron/dark,
+/area/space)
 "Yh" = (
 /obj/effect/turf_decal/trimline/blue/filled/corner{
 	dir = 4
@@ -14296,6 +14504,9 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/dark,
 /area/station/medical/medbay/central)
+"Yi" = (
+/turf/open/floor/iron/dark,
+/area/space)
 "Yk" = (
 /obj/structure/table,
 /obj/structure/cable,
@@ -14581,6 +14792,15 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/medical/treatment_center)
+"Zk" = (
+/obj/machinery/portable_atmospherics/canister/oxygen,
+/obj/structure/sign/poster/official/safety_internals{
+	pixel_x = 32
+	},
+/turf/open/floor/iron/dark{
+	initial_gas_mix = "n2=104;TEMP=293.15"
+	},
+/area/station/security/medical)
 "Zm" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible,
 /turf/open/floor/iron/dark,
@@ -90067,8 +90287,8 @@ cg
 cg
 cg
 cg
-pA
-pA
+cg
+cg
 xJ
 Vv
 xp
@@ -90583,7 +90803,7 @@ Lf
 bZ
 XU
 fS
-pA
+cg
 zB
 MC
 Pd
@@ -91097,7 +91317,7 @@ tU
 di
 il
 qL
-pA
+cg
 VO
 CU
 Pd
@@ -91352,9 +91572,9 @@ md
 cg
 nw
 md
-pA
+cg
 TG
-pA
+cg
 FU
 NQ
 Pd
@@ -106680,7 +106900,7 @@ mr
 mL
 Ve
 ok
-NZ
+ok
 ok
 ok
 ok
@@ -106937,7 +107157,7 @@ mr
 GK
 lT
 KD
-am
+mu
 mh
 mh
 mh
@@ -107192,8 +107412,8 @@ hO
 TB
 mr
 GK
-nz
-jE
+WE
+mh
 kM
 NT
 nu
@@ -107451,7 +107671,7 @@ mr
 cj
 cp
 Gw
-jg
+Rg
 Rg
 Sc
 pY
@@ -107706,9 +107926,9 @@ Im
 RT
 mr
 GK
-nz
-jE
-kM
+WE
+mh
+Zk
 Gv
 eB
 ic
@@ -107963,9 +108183,9 @@ hO
 TB
 mr
 GK
-Db
-am
-am
+WE
+mu
+mu
 mu
 mu
 mu
@@ -108542,16 +108762,16 @@ qB
 qB
 qB
 qB
-qB
-qB
-qB
-qB
-qB
-qB
-qB
-qB
-qB
-qB
+Tz
+Tz
+Tz
+Tz
+Tz
+Tz
+Tz
+Tz
+Tz
+eH
 qB
 qB
 qB
@@ -108799,15 +109019,15 @@ qB
 qB
 qB
 qB
-qB
-qB
-qB
-qB
-qB
-qB
-qB
-qB
-qB
+Tz
+Yi
+BJ
+Yi
+hR
+Cp
+VI
+xZ
+rx
 qB
 qB
 qB
@@ -109056,16 +109276,16 @@ qB
 qB
 qB
 qB
-qB
-qB
-qB
-qB
-qB
-qB
-qB
-qB
-qB
-qB
+Tz
+je
+qM
+em
+UL
+Cp
+Ow
+kR
+Tz
+eH
 qB
 qB
 qB
@@ -109313,16 +109533,16 @@ qB
 qB
 qB
 qB
-qB
-qB
-qB
-qB
-qB
-qB
-qB
-qB
-qB
-qB
+Tz
+Mt
+Yi
+cC
+Ut
+Tk
+Ow
+Gh
+Tz
+Tz
 qB
 qB
 qB
@@ -109570,16 +109790,16 @@ qB
 qB
 qB
 qB
-qB
-qB
-qB
-qB
-qB
-qB
-qB
-qB
-qB
-qB
+Tz
+em
+qM
+je
+tp
+Cp
+BN
+jc
+uE
+Tz
 qB
 qB
 qB
@@ -109827,16 +110047,16 @@ qB
 qB
 qB
 qB
-qB
-qB
-qB
-qB
-qB
-qB
-qB
-qB
-qB
-qB
+Tz
+Yi
+Yg
+pU
+WR
+Cp
+nf
+iK
+dg
+Tz
 qB
 qB
 qB
@@ -110034,10 +110254,9 @@ rT
 oi
 CW
 vo
+Nj
+RX
 Is
-Is
-Is
-fy
 qB
 qB
 qB
@@ -110085,15 +110304,16 @@ qB
 qB
 qB
 qB
-qB
-qB
-qB
-qB
-qB
-qB
-qB
-qB
-qB
+Tz
+Tz
+Tz
+Tz
+Tz
+Tz
+xn
+pS
+cQ
+Tz
 qB
 qB
 qB
@@ -110292,7 +110512,9 @@ CI
 Is
 OE
 Is
-Sw
+Is
+Is
+Nb
 qB
 qB
 qB
@@ -110344,13 +110566,11 @@ qB
 qB
 qB
 qB
-qB
-qB
-qB
-qB
-qB
-qB
-qB
+Cp
+Rc
+og
+ey
+Tz
 qB
 qB
 qB
@@ -110601,13 +110821,13 @@ qB
 qB
 qB
 qB
+or
 qB
-qB
-qB
-qB
-qB
-qB
-qB
+Bu
+Bu
+Bu
+Bu
+Bu
 qB
 qB
 qB
@@ -113637,7 +113857,7 @@ vw
 al
 la
 mR
-ai
+xz
 rF
 qB
 mm
@@ -115664,7 +115884,7 @@ WC
 AK
 UF
 xE
-VD
+Qx
 Qx
 Qx
 Qx
