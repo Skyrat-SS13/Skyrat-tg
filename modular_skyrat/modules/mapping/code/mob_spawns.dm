@@ -157,7 +157,7 @@
 	uniform = /obj/item/clothing/under/syndicate/combat
 	id_trim = /datum/id_trim/syndicom/skyrat/assault/masteratarms
 	belt = /obj/item/storage/belt/security/full
-	gloves = /obj/item/clothing/gloves/krav_maga/combatglovesplus/maa
+	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
 	suit = /obj/item/clothing/suit/armor/vest/warden/syndicate
 	head = /obj/item/clothing/head/warden/syndicate
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses/redsec

@@ -28,10 +28,11 @@
 
 /obj/item/clothing/head/warden/syndicate
 	name = "master at arms' police hat"
-	desc = "A fashionable police cap emblazoned with a golden badge, issued to the Master at arms. Protects the head from impacts."
+	desc = "A fashionable police cap emblazoned with a golden badge, issued to the Master at Arms. Protects the head from impacts."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "policehelm_syndie"
+	dog_fashion = null
 
 /obj/item/clothing/head/helmet/swat/ds
 	name = "SWAT helmet"
@@ -78,7 +79,7 @@
 
 /obj/item/clothing/gloves/krav_maga/combatglovesplus/maa
 	name = "master at arms' combat gloves"
-	desc = "A set of combat gloves plus emblazoned with red knuckles, showing dedication to the trade, and to hide any bloody knuckles from beating unruly folk."
+	desc = "A set of combat gloves plus emblazoned with red knuckles, showing dedication to the trade while also hiding any blood left after use."
 	icon_state = "maagloves"
 
 /obj/item/storage/belt/security/webbing/ds
