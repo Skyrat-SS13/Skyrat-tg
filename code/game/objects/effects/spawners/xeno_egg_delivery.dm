@@ -12,8 +12,10 @@
 	new /obj/effect/temp_visual/gravpush(T)
 	playsound(T, 'sound/items/party_horn.ogg', 50, TRUE, -1)
 
-	message_admins("A borer egg has been delivered to [ADMIN_VERBOSEJMP(T)].") // SkyRat Edit: Adjusts verbiage to match egg type
-	log_game("A borer egg has been delivered to [AREACOORD(T)]") // SkyRat Edit: Adjusts verbiage to match egg type
+	// SKYRAT EDIT START - Borer egg xenobio spawn
+	message_admins("A borer egg has been delivered to [ADMIN_VERBOSEJMP(T)].")
+	log_game("A borer egg has been delivered to [AREACOORD(T)]")
+	// SKYRAT EDIT END
 	var/message = "Attention [station_name()], we have entrusted you with a research specimen in [get_area_name(T, TRUE)]. Remember to follow all safety precautions when dealing with the specimen."
 	SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, /proc/_addtimer, CALLBACK(GLOBAL_PROC, /proc/print_command_report, message), announcement_time))
 	return INITIALIZE_HINT_QDEL
