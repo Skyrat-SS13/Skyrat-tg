@@ -183,23 +183,11 @@
 // Head of Security
 /obj/item/clothing/suit/armor/hos/trenchcoat/winter
 	name = "head of security's winter coat"
-<<<<<<< HEAD
-	desc = "A black, armour-padded winter coat with red and gold stripes on the arms, lovingly woven with a Kevlar interleave and reinforced with semi-ablative polymers and a silver azide fill material. The zipper tab looks like a tiny replica of Beepsky." // SKYRAT EDIT - ORIGINAL: desc = "A red, armour-padded winter coat, lovingly woven with a Kevlar interleave and reinforced with semi-ablative polymers and a silver azide fill material. The zipper tab looks like a tiny replica of Beepsky."
-	icon_state = "coathos"
-	inhand_icon_state = "coathos"
-	armor = list(MELEE = 35, BULLET = 25, LASER = 40, ENERGY = 50, BOMB = 35, BIO = 0, FIRE = 0, ACID = 55)
-	hoodtype = /obj/item/clothing/head/hooded/winterhood/security/hos
-
-/obj/item/clothing/head/hooded/winterhood/security/hos
-	desc = "A black, armour-padded winter hood with red and gold stripes on the arms, lovingly woven with a Kevlar interleave. Definitely not bulletproof, especially not the part where your face goes." // SKYRAT EDIT - ORIGINAL: desc = "A red, armour-padded winter hood, lovingly woven with a Kevlar interleave. Definitely not bulletproof, especially not the part where your face goes."
-	icon_state = "hood_hos"
-=======
 	desc = "A trenchcoat enhanced with a special lightweight kevlar, padded with wool on the collar and inside. You feel strangely lonely wearing this coat."
 	icon_state = "coathos"
 	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
 	icon = 'icons/obj/clothing/suits/wintercoat.dmi'
 	worn_icon = 'icons/mob/clothing/suits/wintercoat.dmi'
->>>>>>> 2fea0a59470 (SECURITY RESPRITE - DARE. (#69948))
 
 // Medical Doctor
 /obj/item/clothing/suit/hooded/wintercoat/medical
