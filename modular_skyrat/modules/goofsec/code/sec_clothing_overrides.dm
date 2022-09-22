@@ -39,7 +39,7 @@
 	icon_state = "armband_lopland"
 
 /obj/item/clothing/accessory/armband/deputy/lopland
-	desc = "A Peacekeeper Blue armband, showing the wearer to be certified by Lopland as a top-of-their-class Security Officer."
+	desc = "A Peacekeeper-blue armband, showing the wearer to be certified by Lopland as a top-of-their-class Security Officer."
 
 /*
 * BACKPACKS
