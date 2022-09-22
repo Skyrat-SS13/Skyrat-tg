@@ -61,7 +61,7 @@
 	/// What language should this vendor speak, for flavor reasons
 	var/language_to_speak = /datum/language/common
 
-/obj/machinery/vending/imported/Initialize(mapload)
+/obj/machinery/vending/imported/New()
 	. = ..()
 	var/datum/language_holder/vendor_languages = get_language_holder()
 	grant_all_languages()
