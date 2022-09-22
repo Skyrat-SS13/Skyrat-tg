@@ -19,7 +19,7 @@
 /datum/area_spawn/secmed_locker
 	target_areas = list(/area/station/security/medical, /area/station/security/lockers)
 	desired_atom = /obj/structure/closet/secure_closet/security_medic
-	blacklisted_stations = list("Blueshift", "Void Raptor", "Runtime Station", "MultiZ Debug", "MetaStation")
+	blacklisted_stations = list("MetaStation", "Blueshift", "Void Raptor", "Runtime Station", "MultiZ Debug")
 
 /datum/area_spawn/blueshield_locker
 	target_areas = list(/area/station/command/heads_quarters/captain, /area/station/command/bridge)
@@ -49,7 +49,7 @@
 /datum/area_spawn/lustwish_prison
 	target_areas = list(/area/station/security/prison, /area/station/security/prison/shower)
 	desired_atom = /obj/machinery/vending/dorms
-	blacklisted_stations = list("Blueshift", "Void Raptor", "Runtime Station", "MultiZ Debug", "MetaStation")
+	blacklisted_stations = list("MetaStation", "Blueshift", "Void Raptor", "Runtime Station", "MultiZ Debug")
 	mode = AREA_SPAWN_MODE_HUG_WALL
 
 // Wall mounts. Use sparingly as walls are prime real estate
