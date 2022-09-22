@@ -430,6 +430,10 @@
 	body_parts_covered = CHEST|GROIN|ARMS // Our sprite has groin and arm protections, so we get it too.
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
+//Riot Armor
+/obj/item/clothing/suit/armor/riot
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi' //ORION TODO - actually have a unique icon_state overriding it instead of this cop-out it originally had (The original was actually done wrong anyways)
+
 //Warden's Vest
 /obj/item/clothing/suit/armor/vest/warden
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
@@ -704,6 +708,16 @@
 	worn_icon = 'icons/mob/clothing/suits/wintercoat.dmi'
 	icon_state = "coatsecurity"
 	hoodtype = /obj/item/clothing/head/hooded/winterhood/security/redsec
+
+/*
+*	ARMOR
+*/
+
+/obj/item/clothing/suit/armor/vest/alt/sec/redsec
+	desc = "A Type I armored vest that provides decent protection against most types of damage."
+	icon = 'icons/obj/clothing/suits/armor.dmi'
+	worn_icon = 'icons/mob/clothing/suits/armor.dmi'
+	icon_state = "armor_sec"
 
 /*
 *	FEET
