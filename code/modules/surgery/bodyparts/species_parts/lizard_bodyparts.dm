@@ -27,7 +27,7 @@
 /* SKYRAT EDIT REMOVAL - MOVED TO MODULAR MUTANT_BODYPARTS.DM
 /obj/item/bodypart/l_leg/digitigrade
 	icon_greyscale = 'icons/mob/species/lizard/bodyparts.dmi'
-	limb_id = BODYPART_TYPE_DIGITIGRADE
+	limb_id = BODYPART_ID_DIGITIGRADE
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ORGANIC | BODYTYPE_DIGITIGRADE
 
 /obj/item/bodypart/l_leg/digitigrade/update_limb(dropping_limb = FALSE, is_creating = FALSE)
@@ -46,14 +46,14 @@
 			shoes_compatible = TRUE
 
 		if((uniform_compatible && suit_compatible && shoes_compatible) || (suit_compatible && shoes_compatible && human_owner.wear_suit?.flags_inv & HIDEJUMPSUIT)) //If the uniform is hidden, it doesnt matter if its compatible
-			limb_id = BODYPART_TYPE_DIGITIGRADE
+			limb_id = BODYPART_ID_DIGITIGRADE
 
 		else
 			limb_id = SPECIES_LIZARD
 
 /obj/item/bodypart/r_leg/digitigrade
 	icon_greyscale = 'icons/mob/species/lizard/bodyparts.dmi'
-	limb_id = BODYPART_TYPE_DIGITIGRADE
+	limb_id = BODYPART_ID_DIGITIGRADE
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ORGANIC | BODYTYPE_DIGITIGRADE
 
 /obj/item/bodypart/r_leg/digitigrade/update_limb(dropping_limb = FALSE, is_creating = FALSE)
@@ -72,7 +72,12 @@
 			shoes_compatible = TRUE
 
 		if((uniform_compatible && suit_compatible && shoes_compatible) || (suit_compatible && shoes_compatible && human_owner.wear_suit?.flags_inv & HIDEJUMPSUIT)) //If the uniform is hidden, it doesnt matter if its compatible
+<<<<<<< HEAD
 			limb_id = BODYPART_TYPE_DIGITIGRADE
+=======
+			limb_id = BODYPART_ID_DIGITIGRADE
+
+>>>>>>> ab6dcbf4cab (Virtual Limbsanity (#69841))
 		else
 			limb_id = SPECIES_LIZARD
 */
