@@ -3,13 +3,13 @@
 	weight = 1
 	/// Map templates that can appear
 	var/list/possible_templates = list(
-		/datum/map_template/ruin/outbound_expedition/prison_shuttle = 1,
-		/datum/map_template/ruin/outbound_expedition/survival_bunker = 1,
-		/datum/map_template/ruin/outbound_expedition/clock_cult = 1,
-		/datum/map_template/ruin/outbound_expedition/blood_cult = 1,
-		/datum/map_template/ruin/outbound_expedition/holdout_ai = 1,
-		/datum/map_template/ruin/outbound_expedition/syndicate_frigate = 1,
-		/datum/map_template/ruin/outbound_expedition/old_shipyard = 1,
+		/datum/map_template/ruin/outbound_expedition/prison_shuttle,
+		/datum/map_template/ruin/outbound_expedition/survival_bunker,
+		/datum/map_template/ruin/outbound_expedition/clock_cult,
+		/datum/map_template/ruin/outbound_expedition/blood_cult,
+		/datum/map_template/ruin/outbound_expedition/holdout_ai,
+		/datum/map_template/ruin/outbound_expedition/syndicate_frigate,
+		/datum/map_template/ruin/outbound_expedition/old_shipyard,
 	)
 
 /datum/outbound_random_event/ruin/salvage/on_select()
@@ -18,7 +18,7 @@
 	for(var/obj/effect/landmark/outbound/debris_loc/debris_point in GLOB.landmarks_list)
 		debris_points += debris_point
 	var/obj/effect/landmark/outbound/debris_loc/chosen_point = pick(debris_points)
-	var/datum/map_template/chosen_template = pick_weight(possible_templates)
+	var/datum/map_template/chosen_template = pick_n_take(possible_templates)
 	chosen_template = new chosen_template
 	chosen_template.load(get_turf(chosen_point), centered = TRUE)
 
@@ -37,13 +37,13 @@
 /datum/outbound_random_event/ruin/salvage/interdiction
 	name = "Drifting Interdiction"
 	possible_templates = list(
-		/datum/map_template/ruin/outbound_expedition/prison_shuttle = 1,
-		/datum/map_template/ruin/outbound_expedition/survival_bunker = 1,
-		/datum/map_template/ruin/outbound_expedition/clock_cult = 1,
-		/datum/map_template/ruin/outbound_expedition/blood_cult = 1,
-		/datum/map_template/ruin/outbound_expedition/holdout_ai = 1,
+		/datum/map_template/ruin/outbound_expedition/prison_shuttle,
+		/datum/map_template/ruin/outbound_expedition/survival_bunker,
+		/datum/map_template/ruin/outbound_expedition/clock_cult,
+		/datum/map_template/ruin/outbound_expedition/blood_cult,
+		/datum/map_template/ruin/outbound_expedition/holdout_ai,
 		// Syndicate frigate removed: too dangerous
-		/datum/map_template/ruin/outbound_expedition/old_shipyard = 1,
+		/datum/map_template/ruin/outbound_expedition/old_shipyard,
 	)
 
 /datum/outbound_random_event/ruin/salvage/interdiction/on_select()

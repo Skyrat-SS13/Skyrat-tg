@@ -44,14 +44,12 @@
 /obj/effect/fake_rune/narsie/puzzle/proc/on_entered(datum/source, atom/movable/arrived, atom/old_loc, list/atom/old_locs)
 	SIGNAL_HANDLER
 
-	to_chat(arrived, "You've entered it")
 	if(isliving(arrived))
 		RegisterSignal(arrived, COMSIG_LIVING_BLEED_DECAL, .proc/on_bleed)
 
 /obj/effect/fake_rune/narsie/puzzle/proc/on_exited(datum/source, atom/movable/gone, direction)
 	SIGNAL_HANDLER
 
-	to_chat(gone, "You've left it")
 	if(isliving(gone))
 		UnregisterSignal(gone, COMSIG_LIVING_BLEED_DECAL)
 

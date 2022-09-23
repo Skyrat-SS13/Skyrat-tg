@@ -96,8 +96,7 @@
 	for(var/i in 1 to rand(3, 5))
 		outbound_controller.event_order += "random"
 	outbound_controller.event_order += /datum/outbound_random_event/story/radar
-	outbound_controller.real_jumps_to_dest = outbound_controller.event_order.Find(/datum/outbound_random_event/story/radar)
-	outbound_controller.jumps_to_dest = outbound_controller.real_jumps_to_dest + rand(-1, 2)
+	outbound_controller.jumps_to_dest = outbound_controller.event_order.Find(/datum/outbound_random_event/story/radar)
 
 /// What happens after a jump is made by the ship
 /datum/outbound_puzzle_controller/proc/on_jump()

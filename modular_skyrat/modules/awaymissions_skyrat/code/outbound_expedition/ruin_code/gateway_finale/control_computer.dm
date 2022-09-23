@@ -5,13 +5,15 @@
 	max_integrity = INFINITY
 	/// Ref to the gateway controller
 	var/datum/outbound_gateway_controller/gate_controller
+	/// Has the button been pressed
+	var/pressed = FALSE
 
 /obj/machinery/computer/outbound_gateway/Initialize(mapload, obj/item/circuitboard/C)
 	. = ..()
 	AddComponent(/datum/component/gps, "High Energy Signal")
 
 /obj/machinery/computer/outbound_gateway/Destroy()
-	gate_controller = null
+	QDEL_NULL(gate_controller)
 	return ..()
 
 /obj/machinery/computer/outbound_gateway/screwdriver_act(mob/living/user, obj/item/tool)
@@ -19,7 +21,8 @@
 
 /obj/machinery/computer/outbound_gateway/attack_hand(mob/living/user, list/modifiers)
 	. = ..()
-	confirm_beginning(user)
+	if(!pressed)
+		confirm_beginning(user)
 
 /obj/machinery/computer/outbound_gateway/proc/confirm_beginning(mob/living/user)
 	to_chat(user, span_boldnotice("You start readying yourself to hit the button..."))
@@ -30,6 +33,7 @@
 		return
 	start_the_end()
 	user.visible_message(span_danger("[user] presses the button on [src]!"), span_danger("You press the button on [src]!"))
+	pressed = TRUE
 	say("Gateway initialization started.")
 	sleep(2 SECONDS)
 	say("ETA: 10 minutes.")

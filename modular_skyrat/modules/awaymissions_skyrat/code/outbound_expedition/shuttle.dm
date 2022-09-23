@@ -15,7 +15,7 @@
 	OUTBOUND_CONTROLLER
 	var/list/data = list()
 
-	data["jumpsleft"] = outbound_controller.real_jumps_to_dest == -1 ? "???" : outbound_controller.jumps_to_dest
+	data["jumpsleft"] = outbound_controller.jumps_to_dest == -1 ? "???" : outbound_controller.jumps_to_dest
 	var/list/systems = list()
 	for(var/datum/outbound_ship_system/system as anything in outbound_controller.ship_systems)
 		system = outbound_controller.ship_systems[system]
@@ -165,8 +165,7 @@
 	for(var/i in 1 to rand(5, 7))
 		outbound_controller.event_order += "random"
 	outbound_controller.event_order += /datum/outbound_random_event/story/the_end
-	outbound_controller.real_jumps_to_dest = outbound_controller.event_order.Find(/datum/outbound_random_event/story/the_end)
-	outbound_controller.jumps_to_dest = outbound_controller.real_jumps_to_dest + rand(-4, 6)
+	outbound_controller.jumps_to_dest = outbound_controller.event_order.Find(/datum/outbound_random_event/story/the_end)
 	say("Large energy emission signal located. Coordinates locked.")
 	outbound_controller.give_objective_all(outbound_controller.objectives[/datum/outbound_objective/cryo])
 	outbound_controller.current_event = null

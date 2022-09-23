@@ -1,8 +1,3 @@
-/obj/machinery/porta_turret/syndicate/scrapper_drone
-	name = "rusted turret"
-	desc = "A ballistic machine gun auto-turret, it looks thoroughly delapidated, but still seems to work."
-	faction = list("scrapper")
-
 /obj/effect/mob_spawn/corpse/human/prisoner
 	name = "Prisoner"
 	outfit = /datum/outfit/job/prisoner
@@ -15,7 +10,7 @@
 
 /datum/outfit/clock_cultist/corpse/post_equip(mob/living/carbon/human/equipped, visualsOnly)
 	. = ..()
-	equipped.faction |= "cult"
+	equipped.faction |= "clock"
 
 /obj/effect/mob_spawn/corpse/human/blood_cultist
 	name = "Blood Cultist"
@@ -38,3 +33,6 @@
 		/obj/item/stock_parts/micro_laser/high = 3,
 		/obj/item/stock_parts/matter_bin/adv = 3)
 	generate_items_inside(items_inside, src)
+
+/obj/machinery/suit_storage_unit/standard_unit/with_jetpack
+	storage_type = /obj/item/tank/jetpack/oxygen

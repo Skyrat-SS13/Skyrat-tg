@@ -7,7 +7,7 @@
 	for(var/mob/living/carbon/human/listener as anything in outbound_controller.participating_mobs)
 		to_chat(listener, span_notice("<i>You hear a faint, static crackling noise come from the bridge.</i>"))
 	outbound_controller.give_objective_all(outbound_controller.objectives[/datum/outbound_objective/radio_listen])
-	outbound_controller.real_jumps_to_dest = -1
+	outbound_controller.jumps_to_dest = -1
 
 /datum/outbound_random_event/story/betrayal/on_radio()
 	OUTBOUND_CONTROLLER

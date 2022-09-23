@@ -54,6 +54,7 @@
 /mob/living/simple_animal/hostile/auto_scrapper/ListTargets()
 	. = ..()
 	. += system_to_attack
+	return .
 
 /mob/living/simple_animal/hostile/auto_scrapper/PickTarget(list/targets)
 	if(system_destroyed)
@@ -69,8 +70,7 @@
 				targets -= atom_target
 	if(!length(targets)) // Found nothing, proceed to attack the system regardless of distance
 		return system_to_attack
-	var/chosen_target = pick(targets) //Pick the remaining targets (if any) at random
-	return chosen_target
+	return pick(targets) //Pick the remaining targets (if any) at random
 
 /mob/living/simple_animal/hostile/auto_scrapper/CanAttack(atom/the_target)
 	. = ..()

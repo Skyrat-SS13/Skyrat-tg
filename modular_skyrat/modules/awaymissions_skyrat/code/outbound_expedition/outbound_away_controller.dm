@@ -19,10 +19,8 @@
 	var/list/event_datums = list()
 	/// What event are we currently in? Any event will block the shuttle from moving until it's resolved
 	var/datum/outbound_random_event/current_event
-	/// How many jumps to our destination (not always accurate)
+	/// How many jumps to our destination
 	var/jumps_to_dest = 0
-	/// How many ACTUAL jumps to the destination
-	var/real_jumps_to_dest = 0
 	/// Assoc list of machine-to-datum for ship systems
 	var/list/machine_datums = list()
 	/// Time until the elevator hits the bottom, locking anyone else from entering
@@ -81,8 +79,7 @@
 		objectives[objective_type] = new_objective
 	RegisterSignal(src, COMSIG_AWAY_CRYOPOD_EXITED, .proc/exited_cryopod)
 	RegisterSignal(src, COMSIG_AWAY_CRYOPOD_ENTERED, .proc/entered_cryopod)
-	real_jumps_to_dest = event_order.Find(/datum/outbound_random_event/story/betrayal)
-	jumps_to_dest = real_jumps_to_dest + rand(-3, 5)
+	jumps_to_dest = event_order.Find(/datum/outbound_random_event/story/betrayal)
 
 /datum/away_controller/outbound_expedition/Destroy(force, ...)
 	for(var/datum/system as anything in ship_systems)
@@ -135,7 +132,7 @@
 // Event stuff
 
 /datum/away_controller/outbound_expedition/proc/select_event()
-	if(real_jumps_to_dest == -1)
+	if(jumps_to_dest == -1)
 		event_order += "random"
 
 	if(event_order[1] != "random")
@@ -225,7 +222,7 @@
 // """Moving""" the ship
 
 /datum/away_controller/outbound_expedition/proc/move_shuttle(list/affected_areas = area_clear_whitelist)
-	if(real_jumps_to_dest != -1)
+	if(jumps_to_dest != -1)
 		jumps_to_dest--
 	var/area/important_space_region = GLOB.areas_by_type[/area/space/outbound_space]
 	for(var/affected_area as anything in affected_areas)
@@ -318,6 +315,20 @@
 			return
 	var/meteor = pick_weight(meteortypes)
 	new meteor(pickedstart, pickedgoal)
+
+/datum/away_controller/outbound_expedition/proc/add_mob(mob/living/living_mob)
+	participating_mobs |= living_mob
+	RegisterSignal(living_mob, COMSIG_PARENT_QDELETING, .proc/remove_mob)
+	give_objective(living_mob, outbound_controller.objectives[/datum/outbound_objective/talk_person])
+	if(!HAS_TRAIT(living_mob, TRAIT_DNR))
+		ADD_TRAIT(living_mob, TRAIT_DNR, src) // leaving for now, might remove idk
+
+/datum/away_controller/outbound_expedition/proc/remove_mob(mob/living/living_mob, force)
+	SIGNAL_HANDLER
+
+	participating_mobs -= living_mob
+	if(HAS_TRAIT_FROM(living_mob, TRAIT_DNR, src))
+		REMOVE_TRAIT(living_mob, TRAIT_DNR, src)
 
 #undef STORY_STAGE_PRE_BETRAYAL
 #undef STORY_STAGE_POST_BETRAYAL

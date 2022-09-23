@@ -135,11 +135,7 @@ GLOBAL_LIST_EMPTY(outbound_objective_landmarks)
 	if(!isliving(arrived) || !outbound_controller)
 		return
 
-	var/mob/living/living_mob = arrived
-	outbound_controller.participating_mobs |= arrived
-	outbound_controller.give_objective(living_mob, outbound_controller.objectives[/datum/outbound_objective/talk_person])
-	if(!HAS_TRAIT(living_mob, TRAIT_DNR))
-		ADD_TRAIT(living_mob, TRAIT_DNR, src) // leaving for now, might remove idk
+	outbound_controller.add_mob(arrived)
 
 /obj/effect/landmark/outbound/ship_center
 	name = "Vanguard Corvette Center"
