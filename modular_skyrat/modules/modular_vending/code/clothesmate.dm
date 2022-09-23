@@ -131,7 +131,7 @@
 			"products" = list(
 				/obj/item/clothing/under/costume/deckers/alt = 5,
 
-				/obj/item/clothing/under/costume/bathrobe = 5,
+				/obj/item/clothing/under/costume/skyrat/bathrobe = 5,
 			)
 		)
 	)
