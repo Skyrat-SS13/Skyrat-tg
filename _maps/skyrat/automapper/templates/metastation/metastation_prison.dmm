@@ -153,6 +153,7 @@
 /area/station/security/brig)
 "bF" = (
 /obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/light/small/broken/directional/west,
 /turf/open/floor/plating,
 /area/station/security/prison/safe)
 "bJ" = (
@@ -409,13 +410,11 @@
 /turf/open/floor/plating,
 /area/station/security/execution/transfer)
 "dP" = (
-/obj/machinery/power/apc/auto_name/directional/west{
-	layer = 3
-	},
 /obj/structure/cable,
 /obj/effect/turf_decal/trimline/brown/filled/line{
 	dir = 8
 	},
+/obj/machinery/airalarm/directional/west,
 /turf/open/floor/iron,
 /area/station/security/prison/workout)
 "dS" = (
@@ -481,7 +480,6 @@
 /obj/effect/spawner/random/contraband/narcotics,
 /obj/structure/cable,
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/machinery/light/small/broken/directional/east,
 /turf/open/floor/plating,
 /area/station/security/prison/safe)
 "es" = (
@@ -635,10 +633,12 @@
 /area/station/security/execution)
 "fM" = (
 /obj/structure/chair/stool/directional/north,
-/obj/machinery/flasher/directional/west,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/trimline/brown/filled/line{
 	dir = 8
+	},
+/obj/machinery/flasher/directional/east{
+	layer = 3.1
 	},
 /turf/open/floor/iron,
 /area/station/security/prison/visit)
@@ -650,7 +650,6 @@
 	dir = 8
 	},
 /obj/structure/cable,
-/obj/machinery/light/small/directional/north,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/trimline/brown/filled/line{
 	dir = 5
@@ -1211,6 +1210,7 @@
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 5
 	},
+/obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/security/brig)
 "kO" = (
@@ -1325,10 +1325,10 @@
 /area/station/security/medical)
 "lJ" = (
 /obj/machinery/biogenerator,
-/obj/structure/sign/poster/official/random/directional/west,
 /obj/effect/turf_decal/trimline/dark_green/filled/line{
 	dir = 9
 	},
+/obj/machinery/airalarm/directional/west,
 /turf/open/floor/iron,
 /area/station/security/prison/garden)
 "lM" = (
@@ -1558,8 +1558,8 @@
 "nb" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/newscaster/directional/south,
 /obj/effect/turf_decal/trimline/brown/filled/line,
+/obj/machinery/power/apc/auto_name/directional/south,
 /turf/open/floor/iron,
 /area/station/security/prison)
 "nf" = (
@@ -1709,6 +1709,7 @@
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 4
 	},
+/obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/security/brig)
 "oj" = (
@@ -1732,6 +1733,9 @@
 /obj/structure/chair/stool/directional/north,
 /obj/effect/turf_decal/trimline/brown/filled/line{
 	dir = 4
+	},
+/obj/machinery/flasher/directional/west{
+	layer = 3.1
 	},
 /turf/open/floor/iron,
 /area/station/security/prison/visit)
@@ -1987,14 +1991,25 @@
 /turf/open/floor/iron,
 /area/station/security/prison/workout)
 "pY" = (
+/obj/structure/bed{
+	dir = 1
+	},
+/obj/item/bedsheet/orange{
+	dir = 1
+	},
 /obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/trimline/brown/filled/line{
+	dir = 10
+	},
+/obj/machinery/airalarm/directional/west,
 /turf/open/floor/iron,
-/area/station/security/brig)
+/area/station/security/prison/safe)
 "qb" = (
 /obj/effect/mapping_helpers/burnt_floor,
 /obj/effect/decal/cleanable/cobweb,
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/effect/decal/cleanable/ants,
+/obj/effect/spawner/random/trash/graffiti,
 /turf/open/floor/plating,
 /area/station/security/prison/safe)
 "qe" = (
@@ -2306,6 +2321,7 @@
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 4
 	},
+/obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/security/brig)
 "sD" = (
@@ -2314,6 +2330,7 @@
 /obj/effect/turf_decal/trimline/brown/filled/line{
 	dir = 9
 	},
+/obj/machinery/light/directional/west,
 /turf/open/floor/iron,
 /area/station/security/prison)
 "sE" = (
@@ -2417,10 +2434,10 @@
 "tJ" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/airalarm/directional/west,
 /obj/effect/turf_decal/trimline/brown/filled/line{
 	dir = 8
 	},
+/obj/machinery/newscaster/directional/west,
 /turf/open/floor/iron,
 /area/station/security/prison)
 "tL" = (
@@ -2510,12 +2527,12 @@
 /turf/open/floor/plating,
 /area/station/security/prison/visit)
 "up" = (
-/obj/machinery/airalarm/directional/east,
 /obj/structure/cable,
 /obj/machinery/light/floor,
 /obj/effect/turf_decal/stripes/white/line{
 	dir = 9
 	},
+/obj/machinery/power/apc/auto_name/directional/east,
 /turf/open/floor/iron/dark,
 /area/station/security/prison/workout)
 "uq" = (
@@ -2626,7 +2643,7 @@
 /turf/open/space/basic,
 /area/space/nearstation)
 "vq" = (
-/turf/open/floor/glass,
+/turf/open/floor/glass/reinforced,
 /area/station/security/prison/garden)
 "vs" = (
 /obj/effect/spawner/structure/window/reinforced,
@@ -3036,6 +3053,7 @@
 /obj/effect/turf_decal/trimline/brown/filled/line{
 	dir = 6
 	},
+/obj/machinery/airalarm/directional/east,
 /turf/open/floor/iron,
 /area/station/security/prison)
 "yI" = (
@@ -3159,10 +3177,10 @@
 "zR" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/status_display/ai/directional/west,
 /obj/effect/turf_decal/trimline/brown/filled/line{
 	dir = 8
 	},
+/obj/structure/sign/poster/official/random/directional/west,
 /turf/open/floor/iron,
 /area/station/security/prison)
 "zU" = (
@@ -3245,7 +3263,6 @@
 /turf/open/floor/plating,
 /area/station/security/execution)
 "AF" = (
-/obj/structure/cable,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 4
 	},
@@ -3423,14 +3440,14 @@
 /area/station/security/brig)
 "BI" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/security/glass{
-	name = "Prison Wing"
-	},
 /obj/effect/mapping_helpers/airlock/access/all/security/armory,
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 1
 	},
 /obj/effect/turf_decal/trimline/red/filled/line,
+/obj/machinery/door/airlock/security/glass{
+	name = "Security E.V.A. Storage"
+	},
 /turf/open/floor/iron,
 /area/station/security/brig)
 "BK" = (
@@ -3442,6 +3459,7 @@
 	},
 /obj/structure/cable,
 /obj/effect/decal/cleanable/food/plant_smudge,
+/obj/structure/sign/poster/official/random/directional/west,
 /turf/open/floor/iron,
 /area/station/security/prison/garden)
 "BP" = (
@@ -3664,10 +3682,10 @@
 	dir = 8
 	},
 /obj/structure/cable,
-/obj/machinery/light/small/directional/north,
 /obj/effect/turf_decal/trimline/brown/filled/line{
 	dir = 5
 	},
+/obj/machinery/power/apc/auto_name/directional/north,
 /turf/open/floor/iron,
 /area/station/security/prison/safe)
 "DM" = (
@@ -3748,7 +3766,6 @@
 /turf/open/floor/iron,
 /area/station/security/prison)
 "EF" = (
-/obj/structure/cable,
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 1
 	},
@@ -3835,7 +3852,6 @@
 /area/station/security/prison)
 "Fb" = (
 /obj/structure/chair/stool/directional/south,
-/obj/machinery/firealarm/directional/west,
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 8
 	},
@@ -3926,7 +3942,6 @@
 /obj/machinery/light/directional/east,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/status_display/evac/directional/east,
 /obj/effect/turf_decal/trimline/brown/filled/corner,
 /turf/open/floor/iron,
 /area/station/security/prison)
@@ -3939,14 +3954,13 @@
 /turf/open/floor/plating,
 /area/station/maintenance/disposal)
 "Gi" = (
-/obj/effect/spawner/structure/window/reinforced,
-/obj/structure/cable,
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "PermaLockdown";
-	name = "Lockdown Shutters"
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/effect/turf_decal/trimline/brown/filled/line{
+	dir = 4
 	},
-/obj/effect/turf_decal/delivery,
-/turf/open/space/basic,
+/obj/machinery/status_display/evac/directional/east,
+/turf/open/floor/iron,
 /area/station/security/prison)
 "Gn" = (
 /obj/structure/railing{
@@ -4253,6 +4267,7 @@
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 8
 	},
+/obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/security/brig)
 "IA" = (
@@ -4834,12 +4849,12 @@
 /turf/open/floor/plating,
 /area/station/security/execution)
 "Mo" = (
-/obj/structure/sign/poster/official/random/directional/east,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/light/directional/east,
 /obj/effect/turf_decal/trimline/brown/filled/line{
 	dir = 4
 	},
+/obj/machinery/status_display/ai/directional/east,
 /turf/open/floor/iron,
 /area/station/security/prison)
 "Mr" = (
@@ -4977,8 +4992,11 @@
 /area/station/security/execution/transfer)
 "MU" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/light/directional/south,
 /obj/effect/turf_decal/trimline/brown/filled/line,
+/obj/machinery/camera{
+	c_tag = "Prison - Hallway - Cells";
+	network = list("ss13","prison")
+	},
 /turf/open/floor/iron,
 /area/station/security/prison)
 "Ng" = (
@@ -5113,6 +5131,7 @@
 "NP" = (
 /obj/effect/landmark/blobstart,
 /obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/decal/cleanable/ants,
 /turf/open/floor/plating,
 /area/station/security/prison/safe)
 "NR" = (
@@ -5382,7 +5401,6 @@
 /turf/open/floor/plating,
 /area/station/maintenance/disposal)
 "Qk" = (
-/obj/machinery/airalarm/directional/east,
 /obj/structure/cable,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/trimline/dark_green/filled/line{
@@ -5639,15 +5657,18 @@
 /turf/open/floor/plating,
 /area/station/security/execution)
 "RB" = (
-/obj/effect/spawner/structure/window/reinforced,
-/obj/structure/cable,
-/obj/effect/turf_decal/delivery,
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "PermaLockdown";
-	name = "Lockdown Shutters"
+/obj/structure/bed{
+	dir = 8
 	},
-/turf/open/space/basic,
-/area/station/security/execution/transfer)
+/obj/item/bedsheet/orange{
+	dir = 8
+	},
+/obj/structure/cable,
+/obj/effect/turf_decal/trimline/brown/filled/line{
+	dir = 5
+	},
+/turf/open/floor/iron,
+/area/station/security/prison/safe)
 "RF" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/general/hidden,
 /obj/item/radio/intercom/directional/east,
@@ -5926,7 +5947,7 @@
 /obj/effect/turf_decal/trimline/brown/filled/line{
 	dir = 1
 	},
-/obj/machinery/power/apc/auto_name/directional/north,
+/obj/machinery/newscaster/directional/north,
 /turf/open/floor/iron,
 /area/station/security/prison)
 "TN" = (
@@ -6195,11 +6216,6 @@
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/airalarm/directional/north,
-/obj/machinery/camera{
-	c_tag = "Prison - Hallway - Cells";
-	dir = 9;
-	network = list("ss13","prison")
-	},
 /obj/effect/turf_decal/trimline/brown/filled/line{
 	dir = 1
 	},
@@ -6602,6 +6618,7 @@
 /obj/effect/turf_decal/trimline/brown/filled/line{
 	dir = 6
 	},
+/obj/machinery/light/small/directional/south,
 /turf/open/floor/iron,
 /area/station/security/prison/safe)
 "YW" = (
@@ -6695,7 +6712,7 @@
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/cable,
 /turf/open/floor/plating,
-/area/station/security/prison/workout)
+/area/station/security/prison/rec)
 "Zx" = (
 /obj/effect/turf_decal/stripes/white/line{
 	dir = 6
@@ -7111,7 +7128,7 @@ fN
 AX
 YT
 yM
-DL
+RB
 AX
 YT
 yM
@@ -7154,7 +7171,7 @@ qE
 yM
 yM
 yM
-Ku
+yM
 So
 mP
 So
@@ -7205,7 +7222,7 @@ Nz
 Cy
 xE
 Ux
-Li
+pY
 So
 qC
 fA
@@ -7365,7 +7382,7 @@ yM
 Ku
 TB
 KI
-Gi
+MH
 qE
 qE
 qE
@@ -8214,7 +8231,7 @@ qu
 pk
 yV
 FX
-bx
+Gi
 cV
 bx
 bx
@@ -8469,7 +8486,7 @@ XA
 IM
 Cy
 Cy
-RB
+ff
 Nm
 rh
 Dk
@@ -8520,7 +8537,7 @@ ZD
 UV
 IM
 Cy
-RB
+ff
 ff
 nu
 vQ
@@ -8946,7 +8963,7 @@ Cy
 qE
 Ib
 EF
-pY
+aK
 AF
 FV
 uP
