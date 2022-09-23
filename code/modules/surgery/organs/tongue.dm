@@ -520,14 +520,9 @@
 	if(timeleft(tonal_timerid) > 0)
 		remove_tonal_indicator()
 		deltimer(tonal_timerid)
-<<<<<<< HEAD
-	if(question_found) // Prioritize questions
-		tonal_indicator = mutable_appearance('icons/mob/talk.dmi', "signlang1", TYPING_LAYER)
-=======
 	// Prioritize questions
 	if(question_found)
 		tonal_indicator = mutable_appearance('icons/mob/effects/talk.dmi', "signlang1", TYPING_LAYER)
->>>>>>> 9db3ccd13bc (Fixes the tonal indicator for sign language (#69834))
 		owner.visible_message(span_notice("[owner] lowers [owner.p_their()] eyebrows."))
 	else if(exclamation_found)
 		tonal_indicator = mutable_appearance('icons/mob/talk.dmi', "signlang2", TYPING_LAYER)
