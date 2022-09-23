@@ -9,11 +9,11 @@
 	righthand_file = 'icons/mob/inhands/items/devices_righthand.dmi'
 
 	// It pains me to copy-paste so much, but I can't do it any other way
-	begin_activation_message = "<span class='notice'>You carefully locate the manual activation switch and start the compact AI circuit's boot process.</span>"
-	success_message = "<span class='notice'>The compact AI circuit pings, and its lights start flashing. Success!</span>"
-	fail_message = "<span class='notice'>The compact AI circuit buzzes quietly, and the golden lights fade away. Perhaps you could try again?</span>"
-	new_mob_message = "<span class='notice'>The compact AI circuit chimes quietly.</span>"
-	recharge_message = "<span class='warning'>The compact AI circuit isn't ready to activate again yet! Give it some time to recharge.</span>"
+	begin_activation_message = span_notice("You carefully locate the manual activation switch and start the compact AI circuit's boot process.")
+	success_message = span_notice("The compact AI circuit pings, and its lights start flashing. Success!")
+	fail_message = span_notice("The compact AI circuit buzzes quietly, and the golden lights fade away. Perhaps you could try again?")
+	new_mob_message = spane_notice("The compact AI circuit chimes quietly.")
+	recharge_message = span_warning("The compact AI circuit isn't ready to activate again yet! Give it some time to recharge.")
 
 /obj/item/organ/internal/brain/ipc_positron/circuit
 	name = "compact AI circuit"
@@ -33,14 +33,26 @@
 // CODE THAT ACTUALLY APPLIES THE BRAINS.
 // See modular_skyrat/master_files/code/modules/client/preferences/brain.dm for Synth/IPC application.
 
-/proc/prefs_get_brain_to_use(value, is_cyborg = FALSE)
+/mob/living/proc/prefs_get_brain_to_use(value, is_cyborg = FALSE)
 	switch(value)
 		if(ORGAN_PREF_POSI_BRAIN)
-			return is_cyborg ? /obj/item/mmi/posibrain : /obj/item/organ/internal/brain/ipc_positron
+			switch(is_cyborg)
+				if(TRUE)
+					return /obj/item/mmi/posibrain
+				if(FALSE)
+					return /obj/item/organ/internal/brain/ipc_positron
 		if(ORGAN_PREF_MMI_BRAIN)
-			return is_cyborg ? /obj/item/mmi : /obj/item/organ/internal/brain/ipc_positron/mmi
+			switch(is_cyborg)
+				if(TRUE)
+					return /obj/item/mmi
+				if(FALSE)
+					return /obj/item/organ/internal/brain/ipc_positron/mmi
 		if(ORGAN_PREF_CIRCUIT_BRAIN)
-			return is_cyborg ? /obj/item/mmi/posibrain/circuit : /obj/item/organ/internal/brain/ipc_positron/circuit
+			switch(is_cyborg)
+				if(TRUE)
+					return /obj/item/mmi/posibrain/circuit
+				if(FALSE)
+					return /obj/item/organ/internal/brain/ipc_positron/circuit
 
 /mob/living/silicon/robot/Initialize(mapload)
 	. = ..()
