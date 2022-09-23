@@ -38,8 +38,8 @@
 /datum/armament_entry/cargo_gun/izhevsk/rifle/ak25
 	item_type = /obj/item/gun/ballistic/automatic/ak25
 	lower_cost = CARGO_CRATE_VALUE * 12
-	upper_cost = CARGO_CRATE_VALUE * 15
-	interest_required = PASSED_INTEREST
+	upper_cost = CARGO_CRATE_VALUE * 14
+	interest_required = FAILED_INTEREST
 
 /datum/armament_entry/cargo_gun/izhevsk/rifle/surplus
 	item_type = /obj/item/gun/ballistic/automatic/surplus

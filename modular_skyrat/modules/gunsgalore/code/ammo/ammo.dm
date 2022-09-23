@@ -138,7 +138,7 @@
 
 /obj/projectile/bullet/a762x39/civilian
 	name = "5.6mm civilian bullet"
-	damage = 30
+	damage = 34
 	wound_bonus = 15
 	armour_penetration = 10
 	wound_falloff_tile = 3
@@ -152,9 +152,9 @@
 
 /obj/projectile/bullet/a762x39/rubber
 	name = "5.6mm rubber bullet"
-	damage = 12
+	damage = 15
 	armour_penetration = 10
-	stamina = 30
+	stamina = 45
 	ricochets_max = 6
 	ricochet_incidence_leeway = 0
 	ricochet_chance = 130
@@ -174,12 +174,12 @@
 	name = "5.6mm hunting bullet"
 	damage = 20
 	wound_bonus = 10
-	armour_penetration = 10
+	armour_penetration = 0
 	wound_falloff_tile = 3
 		/// Bonus force dealt against certain mobs
-	var/nemesis_bonus_force = 25
-		/// List of mobs we deal bonus damage to
-	var/list/nemesis_path = list(/mob/living/simple_animal)
+	var/nemesis_bonus_force = 30
+		/// List (not really a list) of mobs we deal bonus damage to
+	var/list/nemesis_path = /mob/living/simple_animal
 
 /obj/projectile/bullet/a762x39/hunting/prehit_pierce(mob/living/target, mob/living/carbon/human/user)
 	if(istype(target, nemesis_path))
