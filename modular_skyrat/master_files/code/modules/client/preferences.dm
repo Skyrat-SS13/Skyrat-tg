@@ -92,6 +92,8 @@
 			var/datum/body_marking/BM = GLOB.body_markings[key]
 			bml[key] = BM.get_default_color(features, pref_species)
 
+/// This helper proc gets the current species language holder and does any post-processing that's required in one easy to track place.
+/// This proc should *always* be edited or used when modifying or getting the default languages of a player controlled, unrestricted species, to prevent any errant conflicts.
 /datum/preferences/proc/get_adjusted_language_holder()
 	var/datum/species/species = read_preference(/datum/preference/choiced/species)
 	species = new species()
