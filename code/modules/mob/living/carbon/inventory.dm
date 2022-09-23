@@ -116,7 +116,7 @@
 			put_in_hands(I)
 			update_held_items()
 		if(ITEM_SLOT_BACKPACK)
-			if(!back || !back.atom_storage?.attempt_insert(back, I, src, override = TRUE))
+			if(!back || !back.atom_storage?.attempt_insert(I, src, override = TRUE))
 				not_handled = TRUE
 		else
 			not_handled = TRUE
@@ -165,6 +165,13 @@
 		legcuffed = null
 		if(!QDELETED(src))
 			update_worn_legcuffs()
+
+	// Not an else-if because we're probably equipped in another slot
+	if(I == internal)
+		internal = null
+		if(!QDELETED(src))
+			update_action_buttons_icon(status_only = TRUE)
+
 	update_equipment_speed_mods()
 
 //handle stuff to update when a mob equips/unequips a mask.

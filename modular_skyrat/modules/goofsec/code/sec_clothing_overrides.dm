@@ -186,8 +186,8 @@
 	can_toggle = TRUE
 	toggle_cooldown = 0
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION
-	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH | PEPPERPROOF
-	visor_flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH | PEPPERPROOF
+	flags_cover = HEADCOVERSEYES | PEPPERPROOF
+	visor_flags_cover = HEADCOVERSEYES | PEPPERPROOF
 
 //Need to do some fuckery to make sure the mounted light preserves the current visor instead of throwing a fit sprite-wise
 /obj/item/clothing/head/helmet/sec/attack_self(mob/user)
@@ -206,12 +206,6 @@
 			if(iscarbon(user))
 				var/mob/living/carbon/C = user
 				C.head_update(src, forced = 1)
-
-//Bulletproof Helmet
-/obj/item/clothing/head/helmet/alt
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "bulletproof_helmet"
 
 //Beret replacement
 /obj/item/clothing/head/security_garrison

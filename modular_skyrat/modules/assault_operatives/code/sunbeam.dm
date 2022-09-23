@@ -151,7 +151,7 @@
 	weight = 0
 
 /datum/round_event/icarus_sunbeam
-	announceWhen = 1 // Instant announcement
+	announce_when = 1 // Instant announcement
 
 /datum/round_event/icarus_sunbeam/announce(fake)
 	priority_announce("/// ICARUS SUNBEAM WEAPONS SYSTEM ACTIVATED, USE EXTREME CAUTION! ///", "GoldenEye Defence Network", ANNOUNCER_KLAXON)
