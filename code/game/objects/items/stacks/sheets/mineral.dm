@@ -350,7 +350,7 @@ GLOBAL_LIST_INIT(snow_recipes, list ( \
 	new/datum/stack_recipe("snowman", /obj/structure/statue/snow/snowman, 5, one_per_turf = TRUE, on_solid_ground = TRUE), \
 	new/datum/stack_recipe("snowball", /obj/item/toy/snowball, 1), \
 	new/datum/stack_recipe("snow tile", /obj/item/stack/tile/mineral/snow, 1, 4, 20), \
-	new/datum/stack_recipe("snow barricade", /obj/structure/deployable_barricade/snow, 2, one_per_turf = 1, on_floor = 1), \
+	new/datum/stack_recipe("snow barricade", /obj/structure/deployable_barricade/snow, 2, one_per_turf = 1, on_solid_ground = 1), \
 ))
 // SKYRAT EDIT ADDITION: Snow Barricade
 

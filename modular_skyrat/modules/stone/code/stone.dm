@@ -20,7 +20,7 @@
 	walltype = /turf/closed/wall/mineral/stone
 
 GLOBAL_LIST_INIT(stone_recipes, list ( \
-	new/datum/stack_recipe("stone brick wall", /turf/closed/wall/mineral/stone, 5, one_per_turf = 1, on_floor = 1, applies_mats = TRUE), \
+	new/datum/stack_recipe("stone brick wall", /turf/closed/wall/mineral/stone, 5, one_per_turf = 1, on_solid_ground = 1, applies_mats = TRUE), \
 	new/datum/stack_recipe("stone brick tile", /obj/item/stack/tile/mineral/stone, 1, 4, 20),
 	))
 
