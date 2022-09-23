@@ -421,6 +421,10 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Maid Costume"
 	item_path = /obj/item/clothing/under/costume/maid
 
+/datum/loadout_item/under/miscellaneous/yukata
+	name = "Recolorable Yukata"
+	item_path = /obj/item/clothing/under/costume/skyrat/yukata
+
 /datum/loadout_item/under/miscellaneous/qipao_black
 	name = "Recolorable Qipao"
 	item_path = /obj/item/clothing/under/costume/skyrat/qipao
@@ -528,14 +532,6 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /datum/loadout_item/under/miscellaneous/gear_harness
 	name = "Gear Harness"
 	item_path = /obj/item/clothing/under/misc/gear_harness
-
-/datum/loadout_item/under/miscellaneous/countess
-	name = "Countess Dress"
-	item_path = /obj/item/clothing/under/misc/countess
-
-/datum/loadout_item/under/miscellaneous/peakyblinder
-	name = "Birmingham Bling"
-	item_path = /obj/item/clothing/under/misc/peakyblinder
 
 /datum/loadout_item/under/miscellaneous/taccas
 	name = "Tacticasual Uniform"
@@ -749,14 +745,6 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /datum/loadout_item/under/formal/fancy_suit
 	name = "Fancy Suit"
 	item_path = /obj/item/clothing/under/suit/fancy
-
-/datum/loadout_item/under/formal/yukata
-	name = "Recolorable Yukata"
-	item_path = /obj/item/clothing/under/costume/skyrat/yukata
-
-/datum/loadout_item/under/formal/trek
-	name = "Trekkie Uniform"
-	item_path = /obj/item/clothing/under/trek
 
 /datum/loadout_item/under/formal/trek_command
 	name = "Trekkie Command Uniform"
