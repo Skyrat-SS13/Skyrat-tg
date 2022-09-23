@@ -39,7 +39,6 @@
 		/obj/item/clothing/head/fedora/beige = 5,
 		/obj/item/clothing/head/fedora/fedblack = 5,
 		/obj/item/clothing/head/fedora/fedbrown = 5,
-		/obj/item/clothing/under/pants/tactical = 5,
 		)
 
 	skyrat_contraband = list(
