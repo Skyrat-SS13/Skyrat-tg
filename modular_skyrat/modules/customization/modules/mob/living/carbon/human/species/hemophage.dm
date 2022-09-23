@@ -84,7 +84,7 @@
 
 /datum/species/hemophage/prepare_human_for_preview(mob/living/carbon/human/human)
 	human.skin_tone = "albino"
-	human.hair_color = "#000000"
-	human.hairstyle = "Long Sideparted"
+	human.hair_color = "#1d1d1d"
+	human.hairstyle = "Pompadour (Big)"
 	human.update_mutant_bodyparts(TRUE)
 	human.update_body(TRUE)
