@@ -16,7 +16,7 @@ SUBSYSTEM_DEF(events)
 
 	var/list/previously_run = list() //SKYRAT EDIT ADDITION
 
-/datum/controller/subsystem/events/Initialize(time, zlevel)
+/datum/controller/subsystem/events/Initialize()
 	for(var/type in typesof(/datum/round_event_control))
 		var/datum/round_event_control/E = new type()
 		if(!E.typepath)
@@ -30,8 +30,7 @@ SUBSYSTEM_DEF(events)
 	frequency_lower = CONFIG_GET(number/event_frequency_lower)
 	frequency_upper = CONFIG_GET(number/event_frequency_upper)
 	// SKYRAT EDIT END
-	return ..()
-
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/events/fire(resumed = FALSE)
 	if(!resumed)
