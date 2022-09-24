@@ -894,6 +894,11 @@
 			if(initial(quirk_type.abstract_parent_type) == type)
 				continue
 
+			// SKYRAT ADDITION START
+			if(initial(quirk_type.erp_quirk) && CONFIG_GET(flag/disable_erp_preferences))
+				continue
+			// SKYRAT ADDITION END
+
 			var/qname = initial(quirk_type.name)
 			options[has_quirk(quirk_type) ? "[qname] (Remove)" : "[qname] (Add)"] = quirk_type
 
@@ -1022,7 +1027,7 @@
 			to_chat(target, span_danger("You accidentally crush [src]!"))
 		else
 			to_chat(src, span_danger("You hurt your [affecting.name] while trying to endure the weight of [target]!"))
-		apply_damage(oversized_piggydam, BRUTE, affecting, wound_bonus=wound_bon) //Try to lift a 2 centner creature. 
+		apply_damage(oversized_piggydam, BRUTE, affecting, wound_bonus=wound_bon) //Try to lift a 2 centner creature.
 		Knockdown(oversized_piggyknock)
 		return
 		//SKYRAT EDIT END

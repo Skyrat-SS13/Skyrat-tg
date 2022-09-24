@@ -385,6 +385,7 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 /datum/loadout_item/head/domina_cap
 	name = "Dominant Cap"
 	item_path = /obj/item/clothing/head/domina_cap
+	erp_item = TRUE
 
 /datum/loadout_item/head/fashionable_cap
 	name = "Fashionable Baseball Cap"
