@@ -77,6 +77,8 @@
 	var/obj/item/seeds/planted_seed
 	///the max amount harvested from the plants
 	var/max_harvest = 3
+	///the amount of harvests from using a regen core
+	var/regen_harvest_num = 4
 	///the cooldown amount between each harvest
 	var/harvest_cooldown = 1 MINUTES
 	//the cooldown between each harvest
@@ -141,7 +143,7 @@
 		return
 
 	//if its sinew, lower the cooldown
-	if(istype(attacking_item, /obj/item/stack/sheet/sinew))
+	else if(istype(attacking_item, /obj/item/stack/sheet/sinew))
 		if(harvest_cooldown <= 30 SECONDS)
 			balloon_alert(user, "the plant already grows fast!")
 			return
@@ -153,7 +155,7 @@
 		return
 
 	//if its goliath hide, increase the amount dropped
-	if(istype(attacking_item, /obj/item/stack/sheet/animalhide/goliath_hide))
+	else if(istype(attacking_item, /obj/item/stack/sheet/animalhide/goliath_hide))
 		if(max_harvest >= 6)
 			balloon_alert(user, "the plant already drops a lot!")
 			return
@@ -165,9 +167,9 @@
 		return
 
 	//if its a regen core, then create four harvests
-	if(istype(attacking_item, /obj/item/organ/internal/regenerative_core))
+	else if(istype(attacking_item, /obj/item/organ/internal/regenerative_core))
 		qdel(attacking_item)
-		for(var/i in 1 to 4)
+		for(var/i in 1 to regen_harvest_num)
 			create_harvest()
 		return
 
