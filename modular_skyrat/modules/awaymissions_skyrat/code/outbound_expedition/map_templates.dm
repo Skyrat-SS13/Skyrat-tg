@@ -3,12 +3,6 @@
 
 // Ruins that can randomly spawn
 
-/datum/map_template/ruin/outbound_expedition/scrapper_zone
-	name = "Scrapping Drone Outpost"
-	suffix = "scrapper_zone.dmm"
-	id = "scrapper_zone"
-	description = "A small, automated outpost drifting through space, ran by some autonomous drones."
-
 /datum/map_template/ruin/outbound_expedition/raider_shuttle
 	name = "Raider Shuttle"
 	suffix = "raidershitbox.dmm"

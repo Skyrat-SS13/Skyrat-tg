@@ -36,3 +36,24 @@
 
 /obj/machinery/suit_storage_unit/standard_unit/with_jetpack
 	storage_type = /obj/item/tank/jetpack/oxygen
+
+/datum/action/outbound_objective
+	name = "Recall Objective"
+	button_icon_state = "round_end"
+
+/datum/action/outbound_objective/Trigger(trigger_flags)
+	. = ..()
+	if(!.)
+		return
+	OUTBOUND_CONTROLLER
+	outbound_controller.tell_objective(owner)
+
+/*
+/datum/action/opfor/IsAvailable()
+	if(!target)
+		return FALSE
+	. = ..()
+	if(!.)
+		return
+	return TRUE
+*/

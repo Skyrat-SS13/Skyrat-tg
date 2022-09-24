@@ -11,6 +11,8 @@
 		/datum/map_template/ruin/outbound_expedition/syndicate_frigate,
 		/datum/map_template/ruin/outbound_expedition/old_shipyard,
 	)
+	/// Map templates that haven't appeared yet
+	var/list/unappeared_templates = list()
 
 /datum/outbound_random_event/ruin/salvage/on_select()
 	OUTBOUND_CONTROLLER
@@ -18,7 +20,9 @@
 	for(var/obj/effect/landmark/outbound/debris_loc/debris_point in GLOB.landmarks_list)
 		debris_points += debris_point
 	var/obj/effect/landmark/outbound/debris_loc/chosen_point = pick(debris_points)
-	var/datum/map_template/chosen_template = pick_n_take(possible_templates)
+	if(!length(unappeared_templates))
+		unappeared_templates = possible_templates.Copy()
+	var/datum/map_template/chosen_template = pick_n_take(unappeared_templates)
 	chosen_template = new chosen_template
 	chosen_template.load(get_turf(chosen_point), centered = TRUE)
 

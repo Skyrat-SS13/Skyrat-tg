@@ -66,13 +66,6 @@
 			"Proceed to destroy the interference. GPS signal locked.",
 			)
 
-		if(/datum/outbound_random_event/harmful/scrappers)
-			title = "sensor readout - URGENT"
-			text_strings = list("Sensors have detected an autonomous structure near your ship.",
-			"The ship has been forcibly slowed down due to a collision course with the structure.",
-			"Prepare for anything.",
-			)
-
 		if(/datum/outbound_random_event/harmful/raiders)
 			title = "sensor readout - URGENT"
 			text_strings = list("Sensors have detected a boarding vessel near your ship.",

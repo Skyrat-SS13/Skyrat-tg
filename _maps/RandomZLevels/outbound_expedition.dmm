@@ -43,6 +43,9 @@
 "cr" = (
 /obj/effect/turf_decal/delivery/white,
 /obj/machinery/door/airlock/external,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 1
+	},
 /turf/open/floor/iron/dark/textured_large,
 /area/awaymission/outbound_expedition/shuttle)
 "cA" = (
@@ -385,8 +388,10 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/awaymission/outbound_expedition/shuttle)
 "nm" = (
-/obj/machinery/outbound_expedition/shuttle_light_controller,
-/turf/open/floor/iron/shuttle/cargo,
+/obj/effect/turf_decal/delivery/white,
+/obj/machinery/door/airlock/external,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper,
+/turf/open/floor/iron/dark/textured_large,
 /area/awaymission/outbound_expedition/shuttle)
 "nH" = (
 /obj/effect/turf_decal/tile/dark_blue/opposingcorners,
@@ -445,6 +450,7 @@
 /obj/effect/turf_decal/bot_white,
 /obj/structure/closet/radiation,
 /obj/machinery/light/cold/no_nightlight/directional/east,
+/obj/item/inducer,
 /turf/open/floor/iron/dark/textured_large,
 /area/awaymission/outbound_expedition/shuttle)
 "qc" = (
@@ -570,6 +576,7 @@
 /obj/effect/turf_decal/delivery/white,
 /obj/machinery/door/airlock/external,
 /obj/structure/fans/tiny,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /turf/open/floor/iron/dark/textured_large,
 /area/awaymission/outbound_expedition/shuttle)
 "tL" = (
@@ -1086,8 +1093,17 @@
 /turf/open/floor/iron/shuttle/cargo,
 /area/awaymission/outbound_expedition/shuttle)
 "HB" = (
-/obj/machinery/space_heater,
 /obj/effect/turf_decal/bot_red,
+/obj/machinery/power/port_gen/pacman/pre_loaded,
+/turf/open/floor/iron/dark/textured_large,
+/area/awaymission/outbound_expedition/shuttle)
+"HI" = (
+/obj/effect/turf_decal/delivery/white,
+/obj/machinery/door/airlock/external,
+/obj/structure/fans/tiny,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 1
+	},
 /turf/open/floor/iron/dark/textured_large,
 /area/awaymission/outbound_expedition/shuttle)
 "HT" = (
@@ -1128,8 +1144,8 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/awaymission/outbound_expedition/shuttle)
 "JX" = (
-/obj/structure/closet/firecloset/full,
 /obj/effect/turf_decal/bot_red,
+/obj/machinery/outbound_expedition/shuttle_light_controller,
 /turf/open/floor/iron/dark/textured_large,
 /area/awaymission/outbound_expedition/shuttle)
 "Kp" = (
@@ -33617,7 +33633,7 @@ CH
 DO
 CH
 CH
-nm
+hd
 Nc
 be
 be
@@ -38243,9 +38259,9 @@ SF
 be
 hc
 lq
-cr
+nm
 gs
-tz
+HI
 Pt
 Rf
 Uc
@@ -38500,9 +38516,9 @@ Hm
 be
 HT
 nN
-cr
+nm
 gs
-tz
+HI
 Pt
 Ry
 Uc

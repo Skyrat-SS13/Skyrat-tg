@@ -104,6 +104,7 @@
 	person_cleared?.hud_used?.away_dialogue.clear_text()
 	var/datum/status_effect/pinpointer = person_cleared.has_status_effect(/datum/status_effect/agent_pinpointer/away_objective)
 	qdel(pinpointer)
+	participating_mobs[person_cleared] = null
 
 /datum/away_controller/outbound_expedition/proc/objective_pinpoint(mob/living/person_to_point, atom/point_to)
 	if(!point_to)
@@ -124,10 +125,15 @@
 		corresponding_landmark.enable()
 	INVOKE_ASYNC(person_chosen.hud_used?.away_dialogue, /atom/movable/screen/screentip/away_dialogue.proc/set_text_slow, chosen_objective.desc)
 	chosen_objective.on_give(person_chosen)
+	participating_mobs[person_chosen] = chosen_objective
 
 /datum/away_controller/outbound_expedition/proc/give_objective_all(datum/outbound_objective/chosen_objective)
 	for(var/mob/living/person as anything in participating_mobs)
 		give_objective(person, chosen_objective)
+
+/datum/away_controller/outbound_expedition/proc/tell_objective(mob/living/target)
+	var/datum/outbound_objective/target_objective = participating_mobs[target]
+	to_chat(target, span_notice(span_bold("You recall that your most recent objective was: [isnull(target_objective) ? "nothing at all." : target_objective.desc]")))
 
 // Event stuff
 
@@ -319,7 +325,9 @@
 /datum/away_controller/outbound_expedition/proc/add_mob(mob/living/living_mob)
 	participating_mobs |= living_mob
 	RegisterSignal(living_mob, COMSIG_PARENT_QDELETING, .proc/remove_mob)
-	give_objective(living_mob, outbound_controller.objectives[/datum/outbound_objective/talk_person])
+	give_objective(living_mob, objectives[/datum/outbound_objective/talk_person])
+	var/datum/action/outbound_objective/remember_obj = new
+	remember_obj.Grant(living_mob)
 	if(!HAS_TRAIT(living_mob, TRAIT_DNR))
 		ADD_TRAIT(living_mob, TRAIT_DNR, src) // leaving for now, might remove idk
 
@@ -327,6 +335,9 @@
 	SIGNAL_HANDLER
 
 	participating_mobs -= living_mob
+	var/datum/action/found_action = locate(/datum/action/outbound_objective) in living_mob.actions
+	if(found_action)
+		found_action.Remove(found_action)
 	if(HAS_TRAIT_FROM(living_mob, TRAIT_DNR, src))
 		REMOVE_TRAIT(living_mob, TRAIT_DNR, src)
 
