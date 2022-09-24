@@ -57,6 +57,7 @@
 	possible_mobs = list(
 		/mob/living/simple_animal/hostile/blackmesa/xen/headcrab_zombie/scientist,
 		/mob/living/simple_animal/hostile/blackmesa/xen/headcrab_zombie/guard,
+		/mob/living/simple_animal/hostile/blackmesa/xen/headcrab_zombie/hecu,
 	)
 
 /obj/effect/random_mob_placer/blackops

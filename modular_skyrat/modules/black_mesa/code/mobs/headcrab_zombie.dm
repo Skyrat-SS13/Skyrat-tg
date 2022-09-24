@@ -46,6 +46,14 @@
 	maxHealth = 140 // Armor!
 	health = 140
 
+/mob/living/simple_animal/hostile/blackmesa/xen/headcrab_zombie/hecu
+	name = "zombified marine"
+	desc = "MY. ASS. IS. DEAD."
+	icon_state = "hecu_zombie"
+	icon_living = "hecu_zombie"
+	maxHealth = 190 // More armor!
+	health = 190
+
 /mob/living/simple_animal/hostile/blackmesa/xen/headcrab_zombie/hev
 	name = "zombified hazardous environment specialist"
 	desc = "User death... surpassed."
