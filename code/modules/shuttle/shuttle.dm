@@ -429,11 +429,20 @@
 	var/can_move_docking_ports = FALSE
 	var/list/hidden_turfs = list()
 
+<<<<<<< HEAD
 	///Can this shuttle be called while it's in transit? (Prevents people recalling it once it's already enroute)
 	var/can_be_called_in_transit = TRUE //SKYRAT EDIT ADDITION
 
 	var/admin_forced = FALSE //SKYRAT EDIT ADDITION
 
+=======
+/**
+ * Actions to be taken after shuttle is loaded but before it has been moved out of transit z-level to its final location
+ *
+ * Arguments:
+ * * replace - TRUE if this shuttle is replacing an existing one. FALSE by default.
+ */
+>>>>>>> 47dbaea18d0 (Fixes Build Your Own Shuttle kit (#70068))
 /obj/docking_port/mobile/register(replace = FALSE)
 	. = ..()
 	if(!shuttle_id)
@@ -455,6 +464,15 @@
 			SSshuttle.assoc_mobile[shuttle_id] = 1
 
 	SSshuttle.mobile_docking_ports += src
+
+/**
+ * Actions to be taken after shuttle is loaded and has been moved to its final location
+ *
+ * Arguments:
+ * * replace - TRUE if this shuttle is replacing an existing one. FALSE by default.
+ */
+/obj/docking_port/mobile/proc/postregister(replace = FALSE)
+	return
 
 /obj/docking_port/mobile/unregister()
 	. = ..()
