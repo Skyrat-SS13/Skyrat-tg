@@ -271,7 +271,7 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 
 /datum/loadout_item/under/miscellaneous/jeanshorts //This doesnt look like a word. Short. Jean-Short. Eugh.
 	name = "Recolorable Jean Shorts"
-	item_path = /obj/item/clothing/under/jeanshorts
+	item_path = /obj/item/clothing/under/shorts/jeanshorts
 
 /datum/loadout_item/under/miscellaneous/pants_blackshorts
 	name = "Recolorable Ripped Jean Shorts"
