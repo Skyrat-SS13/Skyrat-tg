@@ -244,13 +244,8 @@
 
 /mob/living/carbon/update_worn_handcuffs()
 	remove_overlay(HANDCUFF_LAYER)
-<<<<<<< HEAD
 	if(handcuffed && !(handcuffed.item_flags & ABSTRACT)) //SKYRAT EDIT ADDED !(handcuffed.item_flags & ABSTRACT)
-		var/mutable_appearance/handcuff_overlay = mutable_appearance('icons/mob/mob.dmi', "handcuff1", -HANDCUFF_LAYER)
-=======
-	if(handcuffed)
 		var/mutable_appearance/handcuff_overlay = mutable_appearance('icons/mob/simple/mob.dmi', "handcuff1", -HANDCUFF_LAYER)
->>>>>>> be0e6efdf6b ([IDB IGNORE] [MDB IGNORE] Makes the icons/mob folder sane (#69302))
 		if(handcuffed.blocks_emissive)
 			handcuff_overlay.overlays += emissive_blocker(handcuff_overlay.icon, handcuff_overlay.icon_state, alpha = handcuff_overlay.alpha)
 

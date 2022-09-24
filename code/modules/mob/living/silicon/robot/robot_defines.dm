@@ -8,11 +8,7 @@
 /mob/living/silicon/robot
 	name = "Cyborg"
 	real_name = "Cyborg"
-<<<<<<< HEAD
-	icon = 'icons/mob/robots.dmi' //SKYRAT EDIT - Modified in modular_skyrat\modules\altborgs\code\robot_defines.dm (to allow for custom transformation animations)
-=======
-	icon = 'icons/mob/silicon/robots.dmi'
->>>>>>> be0e6efdf6b ([IDB IGNORE] [MDB IGNORE] Makes the icons/mob folder sane (#69302))
+	icon = 'icons/mob/silicon/robots.dmi' //SKYRAT EDIT - Modified in modular_skyrat\modules\altborgs\code\robot_defines.dm (to allow for custom transformation animations)
 	icon_state = "robot"
 	maxHealth = 100
 	health = 100

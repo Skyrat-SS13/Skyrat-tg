@@ -208,17 +208,13 @@
 		var/list/reskin_icons = list()
 		for(var/skin in borg_skins)
 			var/list/details = borg_skins[skin]
-<<<<<<< HEAD
-			reskin_icons[skin] = image(icon = details[SKIN_ICON] || 'icons/mob/robots.dmi', icon_state = details[SKIN_ICON_STATE])
+			reskin_icons[skin] = image(icon = details[SKIN_ICON] || 'icons/mob/silicon/robots.dmi', icon_state = details[SKIN_ICON_STATE])
 			//SKYRAT EDIT ADDITION BEGIN - ALTBORGS
 			if (!isnull(details[SKIN_FEATURES]))
 				if (R_TRAIT_WIDE in details[SKIN_FEATURES])
 					var/image/reskin = reskin_icons[skin]
 					reskin.pixel_x -= 16
 			//SKYRAT EDIT END
-=======
-			reskin_icons[skin] = image(icon = details[SKIN_ICON] || 'icons/mob/silicon/robots.dmi', icon_state = details[SKIN_ICON_STATE])
->>>>>>> be0e6efdf6b ([IDB IGNORE] [MDB IGNORE] Makes the icons/mob folder sane (#69302))
 		var/borg_skin = show_radial_menu(cyborg, cyborg, reskin_icons, custom_check = CALLBACK(src, .proc/check_menu, cyborg, old_model), radius = 38, require_near = TRUE)
 		if(!borg_skin)
 			return FALSE

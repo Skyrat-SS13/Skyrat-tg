@@ -202,20 +202,12 @@
 			GLOB.cyborg_all_models_icon_list[model] = list()
 
 	// Create radial menu for choosing borg model
-<<<<<<< HEAD
 	if(!length(GLOB.cyborg_base_models_icon_list))
 		for(var/option in GLOB.cyborg_model_list)
 			var/obj/item/robot_model/model = GLOB.cyborg_model_list[option]
 			var/model_icon = initial(model.cyborg_base_icon)
 			GLOB.cyborg_base_models_icon_list[option] = image(icon = 'modular_skyrat/master_files/icons/mob/robots.dmi', icon_state = model_icon) // SKYRAT EDIT - CARGO BORGS - ORIGINAL: model_icons[option] = image(icon = 'icons/mob/robots.dmi', icon_state = model_icon)
 	// SKYRAT EDIT END
-=======
-	var/list/model_icons = list()
-	for(var/option in model_list)
-		var/obj/item/robot_model/model = model_list[option]
-		var/model_icon = initial(model.cyborg_base_icon)
-		model_icons[option] = image(icon = 'icons/mob/silicon/robots.dmi', icon_state = model_icon)
->>>>>>> be0e6efdf6b ([IDB IGNORE] [MDB IGNORE] Makes the icons/mob folder sane (#69302))
 
 	var/input_model = show_radial_menu(src, src, GLOB.cyborg_base_models_icon_list, radius = 42)
 	if(!input_model || model.type != /obj/item/robot_model)

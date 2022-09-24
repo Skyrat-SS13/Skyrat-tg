@@ -922,7 +922,7 @@ taur_bodytype: The taur bodytype associated to the item we're trying to wear. Ca
 				add_overlay(missing_eyes)
 			//SKYRAT EDIT ADDITION
 			if (parent_eyes && parent_eyes.is_emissive)
-				var/mutable_appearance/emissive_appearance = emissive_appearance('icons/mob/human_face.dmi', parent_eyes ? parent_eyes.eye_icon_state : "eyes_missing", -BODY_LAYER)
+				var/mutable_appearance/emissive_appearance = emissive_appearance('icons/mob/species/human/human_face.dmi', parent_eyes ? parent_eyes.eye_icon_state : "eyes_missing", -BODY_LAYER)
 				emissive_appearance.appearance_flags &= ~RESET_TRANSFORM
 				if(OFFSET_FACE in dna.species.offset_features)
 					emissive_appearance.pixel_x += dna.species.offset_features[OFFSET_FACE][1]
