@@ -428,6 +428,10 @@
 		)
 	)
 
+
+/obj/item/clothing/suit/armor/hos
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+
 /obj/item/clothing/suit/armor/hos/trenchcoat/black
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
