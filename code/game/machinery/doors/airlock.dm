@@ -477,15 +477,6 @@
 	airlock_state = state
 
 	. = ..()
-<<<<<<< HEAD
-	/* SKYRAT EDIT REMOVAL
-	if(hasPower() && unres_sides)
-		set_light(2, 1)
-	else
-		set_light(0)
-	*/
-=======
->>>>>>> 4de3fc7d210 (Removes light from airlocks with an unrestricted side, makes the overlay glow in the dark (#69758))
 
 /obj/machinery/door/airlock/update_icon_state()
 	. = ..()
