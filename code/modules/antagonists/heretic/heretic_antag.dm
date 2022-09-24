@@ -417,7 +417,7 @@
 /datum/antagonist/heretic/roundend_report()
 	var/list/parts = list()
 
-	var/succeeded = TRUE
+	//var/succeeded = TRUE // SKYRAT EDIT REMOVAL
 
 	parts += printplayer(owner)
 	parts += "<b>Sacrifices Made:</b> [total_sacrifices]"
@@ -425,13 +425,20 @@
 	if(length(objectives))
 		var/count = 1
 		for(var/datum/objective/objective as anything in objectives)
+			// SKYRAT EDIT START - No greentext
+			/*
 			if(objective.check_completion())
 				parts += "<b>Objective #[count]</b>: [objective.explanation_text] [span_greentext("Success!")]"
 			else
 				parts += "<b>Objective #[count]</b>: [objective.explanation_text] [span_redtext("Fail.")]"
 				succeeded = FALSE
+			*/
+			parts += "<b>Objective #[count]</b>: [objective.explanation_text]"
+			// SKYRAT EDIT END - No greentext
 			count++
 
+	// SKYRAT EDIT START - No greentext
+	/*
 	if(ascended)
 		parts += span_greentext(span_big("THE HERETIC ASCENDED!"))
 
@@ -440,6 +447,8 @@
 			parts += span_greentext("The heretic was successful, but did not ascend!")
 		else
 			parts += span_redtext("The heretic has failed.")
+	*/
+	// SKYRAT EDIT END - No greentext
 
 	parts += "<b>Knowledge Researched:</b> "
 

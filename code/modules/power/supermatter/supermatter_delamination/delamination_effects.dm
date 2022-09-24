@@ -10,6 +10,8 @@
 	for (var/mob/living/victim in range(20, sm))
 		if(!is_valid_z_level(get_turf(victim), sm_turf))
 			continue
+		if(victim.z == 0)
+			continue
 		SSradiation.irradiate(victim)
 	return TRUE
 
@@ -19,16 +21,19 @@
 	for(var/mob/living/victim as anything in GLOB.alive_mob_list)
 		if(!istype(victim) || !is_valid_z_level(get_turf(victim), sm_turf))
 			continue
+		if(victim.z == 0)
+			continue
 		if(ishuman(victim))
 			//Hilariously enough, running into a closet should make you get hit the hardest.
 			var/mob/living/carbon/human/human = victim
 			human.hallucination += max(50, min(300, DETONATION_HALLUCINATION * sqrt(1 / (get_dist(victim, sm) + 1)) ) )
 
 	for(var/mob/victim as anything in GLOB.player_list)
-		if(!is_valid_z_level(get_turf(victim), sm_turf))
+		var/turf/victim_turf = get_turf(victim)
+		if(!is_valid_z_level(victim_turf, sm_turf))
 			continue
-		SEND_SOUND(victim, 'sound/magic/charge.ogg')
-		if(!is_valid_z_level(get_turf(victim), sm_turf))
+		victim.playsound_local(victim_turf, 'sound/magic/charge.ogg')
+		if(victim.z == 0) //victim is inside an object, this is to maintain an old bug turned feature with lockers n shit i guess. tg issue #69687
 			to_chat(victim, span_boldannounce("You hold onto \the [victim.loc] as hard as you can, as reality distorts around you. You feel safe."))
 			continue
 		to_chat(victim, span_boldannounce("You feel reality distort for a moment..."))
@@ -40,7 +45,7 @@
 /// Spawns anomalies all over the station. Half instantly, the other half over time.
 /datum/sm_delam/proc/effect_anomaly(obj/machinery/power/supermatter_crystal/sm)
 	var/anomalies = 10
-	var/list/anomaly_types = list(GRAVITATIONAL_ANOMALY = 55, HALLUCINATION_ANOMALY = 45, DELIMBER_ANOMALY = 35, FLUX_ANOMALY = 25, PYRO_ANOMALY = 5, VORTEX_ANOMALY = 1)
+	var/list/anomaly_types = list(GRAVITATIONAL_ANOMALY = 55, HALLUCINATION_ANOMALY = 45, DIMENSIONAL_ANOMALY = 35, BIOSCRAMBLER_ANOMALY = 35, FLUX_ANOMALY = 25, PYRO_ANOMALY = 5, VORTEX_ANOMALY = 1)
 	var/list/anomaly_places = GLOB.generic_event_spawns
 
 	// Spawns this many anomalies instantly. Spawns the rest with callbacks.

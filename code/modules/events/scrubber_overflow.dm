@@ -4,6 +4,8 @@
 	weight = 10
 	max_occurrences = 3
 	min_players = 10
+	category = EVENT_CATEGORY_JANITORIAL
+	description = "The scrubbers release a tide of mostly harmless froth."
 
 /datum/round_event/scrubber_overflow
 	announce_when = 1
@@ -20,37 +22,37 @@
 		/datum/reagent/carbon,
 		/datum/reagent/consumable/flour,
 		/datum/reagent/space_cleaner,
+		/datum/reagent/carpet/royal/blue,
+		/datum/reagent/carpet/orange,
 		/datum/reagent/consumable/nutriment,
 		/datum/reagent/consumable/condensedcapsaicin,
 		/datum/reagent/drug/mushroomhallucinogen,
 		/datum/reagent/lube,
+		/datum/reagent/glitter/blue,
 		/datum/reagent/glitter/pink,
 		/datum/reagent/cryptobiolin,
-		/datum/reagent/toxin/plantbgone,
 		/datum/reagent/blood,
 		/datum/reagent/medicine/c2/multiver,
-		/datum/reagent/drug/space_drugs,
-		/datum/reagent/medicine/morphine,
 		/datum/reagent/water/holywater,
 		/datum/reagent/consumable/ethanol,
 		/datum/reagent/consumable/hot_coco,
-		/datum/reagent/toxin/acid,
-		/datum/reagent/toxin/mindbreaker,
-		/datum/reagent/toxin/rotatium,
+		/datum/reagent/consumable/yoghurt,
+		/datum/reagent/consumable/tinlux,
+		/datum/reagent/hydrogen_peroxide,
 		/datum/reagent/bluespace,
 		/datum/reagent/pax,
 		/datum/reagent/consumable/laughter,
 		/datum/reagent/concentrated_barbers_aid,
 		/datum/reagent/baldium,
 		/datum/reagent/colorful_reagent,
-		/datum/reagent/peaceborg/confuse,
-		/datum/reagent/peaceborg/tire,
 		/datum/reagent/consumable/salt,
 		/datum/reagent/consumable/ethanol/beer,
 		/datum/reagent/hair_dye,
 		/datum/reagent/consumable/sugar,
 		/datum/reagent/glitter/white,
+		/datum/reagent/gravitum,
 		/datum/reagent/growthserum,
+		/datum/reagent/yuck,
 	)
 	//needs to be chemid unit checked at some point
 
@@ -61,7 +63,7 @@
 	end_when = rand(25, 100)
 	for(var/obj/machinery/atmospherics/components/unary/vent_scrubber/temp_vent in GLOB.machines)
 		var/turf/scrubber_turf = get_turf(temp_vent)
-		if(scrubber_turf && is_station_level(scrubber_turf.z) && !temp_vent.welded)
+		if(scrubber_turf && is_station_level(scrubber_turf.z) && !temp_vent.welded && prob(50))
 			scrubbers += temp_vent
 	if(!scrubbers.len)
 		return kill()
@@ -94,6 +96,7 @@
 	min_players = 25
 	max_occurrences = 1
 	earliest_start = 35 MINUTES
+	description = "The scrubbers release a tide of moderately harmless froth."
 
 /datum/round_event/scrubber_overflow/threatening
 	danger_chance = 10
@@ -106,6 +109,7 @@
 	min_players = 35
 	max_occurrences = 1
 	earliest_start = 45 MINUTES
+	description = "The scrubbers release a tide of mildly harmless froth."
 
 /datum/round_event/scrubber_overflow/catastrophic
 	danger_chance = 30
