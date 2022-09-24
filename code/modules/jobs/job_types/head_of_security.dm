@@ -51,22 +51,18 @@
 	id = /obj/item/card/id/advanced/silver
 	id_trim = /datum/id_trim/job/head_of_security
 	uniform = /obj/item/clothing/under/rank/security/head_of_security
-	suit = /obj/item/clothing/suit/armor/hos/trenchcoat/black //SKYRAT EDIT CHANGE
-	//suit_store = /obj/item/gun/energy/e_gun SKYRAT EDIT REMOVAL
+	suit = /obj/item/clothing/suit/armor/hos/trenchcoat
+	//suit_store = /obj/item/gun/energy/e_gun //SKYRAT EDIT REMOVAL
 	backpack_contents = list(
 		/obj/item/evidencebag = 1,
-		/obj/item/storage/box/gunset/glock18_hos = 1, // SKYRAT EDIT ADDITION
+		/obj/item/storage/box/gunset/glock18_hos = 1, //SKYRAT EDIT ADDITION
 		)
 	belt = /obj/item/modular_computer/tablet/pda/heads/hos
 	ears = /obj/item/radio/headset/heads/hos/alt
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
-	gloves = /obj/item/clothing/gloves/color/black/security //SKYRAT EDIT CHANGE
+	gloves = /obj/item/clothing/gloves/color/black/security //SKYRAT EDIT CHANGE - Original: /obj/item/clothing/gloves/color/black
 	head = /obj/item/clothing/head/hos/beret
-<<<<<<< HEAD
-	shoes = /obj/item/clothing/shoes/jackboots/security //SKYRAT EDIT CHANGE
-=======
 	shoes = /obj/item/clothing/shoes/jackboots/sec
->>>>>>> 2fea0a59470 (SECURITY RESPRITE - DARE. (#69948))
 	l_pocket = /obj/item/restraints/handcuffs
 	r_pocket = /obj/item/assembly/flash/handheld
 

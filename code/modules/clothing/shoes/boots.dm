@@ -42,23 +42,6 @@
 	resistance_flags = NONE
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 90, FIRE = 0, ACID = 0)
 	can_be_tied = FALSE
-	// SKYRAT EDIT ADDITION START
-	uses_advanced_reskins = TRUE
-	unique_reskin = list(
-		"Basic Jackboots" = list(
-			RESKIN_ICON = 'icons/obj/clothing/shoes.dmi',
-			RESKIN_ICON_STATE = "jackboots",
-			RESKIN_WORN_ICON = 'icons/mob/clothing/feet.dmi',
-			RESKIN_WORN_ICON_STATE = "jackboots"
-		),
-		"Peacekeeper Jackboots" = list(
-			RESKIN_ICON = 'modular_skyrat/master_files/icons/obj/clothing/shoes.dmi',
-			RESKIN_ICON_STATE = "peacekeeper_boots",
-			RESKIN_WORN_ICON = 'modular_skyrat/master_files/icons/mob/clothing/feet.dmi',
-			RESKIN_WORN_ICON_STATE = "peacekeeper"
-		)
-	)
-	// SKYRAT EDIT ADDITION END
 
 /obj/item/clothing/shoes/jackboots/Initialize(mapload)
 	. = ..()
