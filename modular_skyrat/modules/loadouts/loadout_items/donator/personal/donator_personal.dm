@@ -513,7 +513,7 @@
 	restricted_roles = list(JOB_CLOWN)
 	ckeywhitelist = list("boisterousbeebz", "aether217")
 
-/datum/loadout_item/pocket_item/marsoc_coin
+/datum/loadout_item/pocket_items/marsoc_coin
 	name = "MARSOC Challenge Coin"
 	item_path = /obj/item/coin/donator/marsoc
 	ckeywhitelist = list("sweetsoulbrother")
