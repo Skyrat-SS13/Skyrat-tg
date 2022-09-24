@@ -12,14 +12,14 @@ SUBSYSTEM_DEF(lighting)
 	return ..()
 
 
-/datum/controller/subsystem/lighting/Initialize()
+/datum/controller/subsystem/lighting/Initialize(timeofday)
 	if(!initialized)
 		create_all_lighting_objects()
 		initialized = TRUE
 
 	fire(FALSE, TRUE)
 
-	return SS_INIT_SUCCESS
+	return ..()
 
 /datum/controller/subsystem/lighting/fire(resumed, init_tick_checks)
 	MC_SPLIT_TICK_INIT(3)

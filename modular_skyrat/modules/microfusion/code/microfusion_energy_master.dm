@@ -13,7 +13,6 @@
 	righthand_file = 'modular_skyrat/modules/microfusion/icons/guns_righthand.dmi'
 	has_gun_safety = TRUE
 	can_bayonet = FALSE
-	weapon_weight = WEAPON_HEAVY
 	w_class = WEIGHT_CLASS_BULKY
 	obj_flags = UNIQUE_RENAME
 	ammo_x_offset = 2
@@ -96,7 +95,6 @@
 	else
 		cell = new(src)
 	cell.parent_gun = src
-	cell.chargerate = 300
 	if(!dead_cell)
 		cell.give(cell.maxcharge)
 	if(phase_emitter_type)
@@ -619,12 +617,9 @@
 	reload_time = inserting_cell.reloading_time_tactical
 	if(cell)
 		if(reload_time && !HAS_TRAIT(user, TRAIT_INSTANT_RELOAD)) //This only happens when you're attempting a tactical reload, e.g. there's a mag already inserted.
-			if(inserting_cell.charge)
-				to_chat(user, span_warning("It would be far too dangerous to insert [inserting_cell] into [src] without <b>discharging it first</b>."))
-				return FALSE
 			if(display_message)
 				to_chat(user, span_notice("You start to insert [inserting_cell] into [src]!"))
-			if(!do_after(user, reload_time, src))
+			if(!do_after(user, reload_time, src, IGNORE_USER_LOC_CHANGE))
 				if(display_message)
 					to_chat(user, span_warning("You fail to insert [inserting_cell] into [src]!"))
 				return FALSE
@@ -633,12 +628,9 @@
 		tactical_reload = TRUE
 		eject_cell(user, FALSE, FALSE)
 	else
-		if(inserting_cell.charge)
-			to_chat(user, span_warning("It would be far too dangerous to insert [inserting_cell] into [src] without <b>discharging it first</b>."))
-			return FALSE
 		if(display_message)
 			to_chat(user, span_notice("You start to insert [inserting_cell] into [src]!"))
-		if(!do_after(user, reload_time_slow, src))
+		if(!do_after(user, reload_time_slow, src, IGNORE_USER_LOC_CHANGE))
 			if(display_message)
 				to_chat(user, span_warning("You fail to insert [inserting_cell] into [src]!"))
 			return FALSE
@@ -648,7 +640,6 @@
 		playsound(src, sound_cell_insert, sound_cell_insert_volume, sound_cell_insert_vary)
 	cell = inserting_cell
 	inserting_cell.forceMove(src)
-	inserting_cell.inserted_into_weapon()
 	cell.parent_gun = src
 	if(tactical_reload)
 		user.put_in_hands(old_cell)
@@ -664,7 +655,6 @@
 /obj/item/gun/microfusion/proc/eject_cell(mob/user, display_message = TRUE, put_in_hands = TRUE)
 	var/obj/item/stock_parts/cell/microfusion/old_cell = cell
 	old_cell.forceMove(get_turf(src))
-	old_cell.cell_removal_discharge()
 	if(user)
 		if(put_in_hands)
 			user.put_in_hands(old_cell)

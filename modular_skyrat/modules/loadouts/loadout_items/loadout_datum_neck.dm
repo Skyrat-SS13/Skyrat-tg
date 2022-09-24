@@ -81,10 +81,6 @@ GLOBAL_LIST_INIT(loadout_necks, generate_loadout_items(/datum/loadout_item/neck)
 	name = "Zebra Scarf"
 	item_path = /obj/item/clothing/neck/scarf/zebra
 
-/datum/loadout_item/neck/scarf_infinity
-	name = "Infinity Scarf"
-	item_path = /obj/item/clothing/neck/infinity_scarf
-
 /*
 *	NECKTIES
 */

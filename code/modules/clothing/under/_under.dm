@@ -2,8 +2,6 @@
 	name = "under"
 	icon = 'icons/obj/clothing/under/default.dmi'
 	worn_icon = 'icons/mob/clothing/under/default.dmi'
-	lefthand_file = 'icons/mob/inhands/clothing/suits_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/clothing/suits_righthand.dmi'
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS
 	slot_flags = ITEM_SLOT_ICLOTHING
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 10, FIRE = 0, ACID = 0, WOUND = 5)
@@ -234,52 +232,39 @@
 	set name = "Adjust Suit Sensors"
 	set category = "Object"
 	set src in usr
-	var/mob/user_mob = usr
-	if (isdead(user_mob))
+	var/mob/M = usr
+	if (isdead(M))
 		return
-	if (!can_use(user_mob))
+	if (!can_use(M))
 		return
 	if(has_sensor == LOCKED_SENSORS)
-		to_chat(user_mob, "The controls are locked.")
+		to_chat(usr, "The controls are locked.")
 		return
 	if(has_sensor == BROKEN_SENSORS)
-		to_chat(user_mob, "The sensors have shorted out!")
+		to_chat(usr, "The sensors have shorted out!")
 		return
 	if(has_sensor <= NO_SENSORS)
-		to_chat(user_mob, "This suit does not have any sensors.")
+		to_chat(usr, "This suit does not have any sensors.")
 		return
 
 	var/list/modes = list("Off", "Binary vitals", "Exact vitals", "Tracking beacon")
-	var/switchMode = tgui_input_list(user_mob, "Select a sensor mode", "Suit Sensors", modes, modes[sensor_mode + 1])
+	var/switchMode = tgui_input_list(M, "Select a sensor mode", "Suit Sensors", modes, modes[sensor_mode + 1])
 	if(isnull(switchMode))
 		return
-
-	if (!can_use(user_mob)) //make sure they didn't hold the window open.
-		return
-	if(get_dist(user_mob, src) > 1)
-		to_chat(user_mob, span_warning("You have moved too far away!"))
-		return
-
-	if(has_sensor == LOCKED_SENSORS)
-		to_chat(user_mob, "The controls are locked.")
-		return
-	if(has_sensor == BROKEN_SENSORS)
-		to_chat(user_mob, "The sensors have shorted out!")
-		return
-	if(has_sensor <= NO_SENSORS)
-		to_chat(user_mob, "This suit does not have any sensors.")
+	if(get_dist(usr, src) > 1)
+		to_chat(usr, span_warning("You have moved too far away!"))
 		return
 	sensor_mode = modes.Find(switchMode) - 1
-	if (loc == user_mob)
+	if (loc == usr)
 		switch(sensor_mode)
 			if(SENSOR_OFF)
-				to_chat(user_mob, span_notice("You disable your suit's remote sensing equipment."))
+				to_chat(usr, span_notice("You disable your suit's remote sensing equipment."))
 			if(SENSOR_LIVING)
-				to_chat(user_mob, span_notice("Your suit will now only report whether you are alive or dead."))
+				to_chat(usr, span_notice("Your suit will now only report whether you are alive or dead."))
 			if(SENSOR_VITALS)
-				to_chat(user_mob, span_notice("Your suit will now only report your exact vital lifesigns."))
+				to_chat(usr, span_notice("Your suit will now only report your exact vital lifesigns."))
 			if(SENSOR_COORDS)
-				to_chat(user_mob, span_notice("Your suit will now report your exact vital lifesigns as well as your coordinate position."))
+				to_chat(usr, span_notice("Your suit will now report your exact vital lifesigns as well as your coordinate position."))
 
 	if(ishuman(loc))
 		var/mob/living/carbon/human/H = loc

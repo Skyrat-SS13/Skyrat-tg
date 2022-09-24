@@ -78,7 +78,7 @@ SUBSYSTEM_DEF(jukeboxes)
 		songs |= T
 	for(var/i in CHANNEL_JUKEBOX_START to CHANNEL_JUKEBOX)
 		freejukeboxchannels |= i
-	return SS_INIT_SUCCESS
+	return ..()
 
 /datum/controller/subsystem/jukeboxes/fire()
 	if(!activejukeboxes.len)

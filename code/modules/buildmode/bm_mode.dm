@@ -5,6 +5,7 @@
 
 /datum/buildmode_mode
 	var/key = "oops"
+
 	var/datum/buildmode/BM
 
 	// would corner selection work better as a component?

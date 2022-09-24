@@ -191,7 +191,7 @@
 /obj/item/clothing/head/morningstar
 	supports_variations_flags = NONE
 
-/obj/item/clothing/head/fancy
+/obj/item/clothing/head/saints
 	supports_variations_flags = NONE
 
 /obj/item/clothing/head/allies
@@ -200,7 +200,10 @@
 /obj/item/clothing/head/yuri
 	supports_variations_flags = NONE
 
-/obj/item/clothing/head/football_helmet
+/obj/item/clothing/head/sybil_slickers
+	supports_variations_flags = NONE
+
+/obj/item/clothing/head/basil_boys
 	supports_variations_flags = NONE
 
 /obj/item/clothing/head/helmet/alt

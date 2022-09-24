@@ -43,12 +43,12 @@ SUBSYSTEM_DEF(area_spawn)
 	/// Non-optional area spawns that failed to find an area.
 	var/list/datum/area_spawn/failed_area_spawns = list()
 
-/datum/controller/subsystem/area_spawn/Initialize()
+/datum/controller/subsystem/area_spawn/Initialize(start_timeofday)
 	for(var/iterating_type in subtypesof(/datum/area_spawn))
 		var/datum/area_spawn/iterating_area_spawn = new iterating_type
 		iterating_area_spawn.try_spawn()
 	clear_cache()
-	return SS_INIT_SUCCESS
+	return ..()
 
 /**
  * Clear the cached tiles for optimization or debugging purposes.

@@ -1,4 +1,4 @@
-///Uses Byond's basic obstacle avoidance movement
+///Uses Byond's basic obstacle avoidance mvovement
 /datum/ai_movement/basic_avoidance
 	max_pathing_attempts = 10
 

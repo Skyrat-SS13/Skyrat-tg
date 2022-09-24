@@ -542,64 +542,7 @@
 	name = "Worn Pentagram Strapped Dress"
 	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/skirts_dresses.dmi'
 
-// COSTUMES
-
-/datum/greyscale_config/football_suit_worn/digi
-	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/costume_digi.dmi'
-
-/datum/greyscale_config/qipao
-	name = "Qipao"
-	icon_file = 'modular_skyrat/master_files/icons/obj/clothing/under/costume.dmi'
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/costumes/lunar_japanese.json'
-
-/datum/greyscale_config/qipao/worn
-	name = "Worn Qipao"
-	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/costume.dmi'
-
-/datum/greyscale_config/qipao/worn/digi
-	name = "Worn Qipao - Digitigrade"
-	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/costume_digi.dmi'
-
-/datum/greyscale_config/cheongsam
-	name = "Cheongsam"
-	icon_file = 'modular_skyrat/master_files/icons/obj/clothing/under/costume.dmi'
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/costumes/lunar_japanese.json'
-
-/datum/greyscale_config/cheongsam/worn
-	name = "Worn Cheongsam"
-	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/costume.dmi'
-
-/datum/greyscale_config/cheongsam/worn/digi
-	name = "Worn Cheongsam - Digitigrade"
-	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/costume_digi.dmi'
-
-/datum/greyscale_config/yukata
-	name = "Yukata"
-	icon_file = 'modular_skyrat/master_files/icons/obj/clothing/under/costume.dmi'
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/costumes/lunar_japanese.json'
-
-/datum/greyscale_config/yukata/worn
-	name = "Worn Yukata"
-	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/costume.dmi'
-
-/datum/greyscale_config/yukata/worn/digi
-	name = "Worn Yukata - Digitigrade"
-	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/costume_digi.dmi'
-
-// MISC UNDER
-
-/datum/greyscale_config/bathrobe
-	name = "Bathrobe"
-	icon_file = 'modular_skyrat/master_files/icons/obj/clothing/under/costume.dmi'
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/costumes/misc.json'
-
-/datum/greyscale_config/bathrobe/worn
-	name = "Worn Bathrobe"
-	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/costume.dmi'
-
-/datum/greyscale_config/bathrobe/worn/digi
-	name = "Worn Bathrobe - Digitigrade"
-	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/costume_digi.dmi'
+// KILT
 
 /datum/greyscale_config/kilt
 	name = "Kilt"
@@ -739,8 +682,3 @@
 	name = "Colourable ID Card"
 	icon_file = 'modular_skyrat/modules/GAGS/icons/id_card.dmi'
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/items/id_card.json'
-
-/datum/greyscale_config/wargame_hologram_projector
-	name = "Wargame Hologram Projector"
-	icon_file = 'modular_skyrat/modules/wargame_projectors/icons/projectors_and_holograms.dmi'
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/wargame_holoprojector/projector.json'

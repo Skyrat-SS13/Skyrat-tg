@@ -49,7 +49,7 @@
 	metabolization_rate = 1.75 * REAGENTS_METABOLISM
 
 /datum/reagent/pax/catnip/on_mob_life(mob/living/carbon/M)
-	if(isfeline(M))
+	if(isfelinid(M) || istajaran(M))
 		if(prob(20))
 			M.emote("nya")
 		if(prob(20))

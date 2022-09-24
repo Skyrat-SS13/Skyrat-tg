@@ -5,13 +5,12 @@ SUBSYSTEM_DEF(ticket_ping)
 	runlevels = RUNLEVEL_LOBBY | RUNLEVEL_SETUP | RUNLEVEL_GAME | RUNLEVEL_POSTGAME
 	wait = 3 MINUTES
 
-/datum/controller/subsystem/ticket_ping/Initialize()
+/datum/controller/subsystem/ticket_ping/Initialize(start_timeofday)
+	. = ..()
 	if(CONFIG_GET(number/ticket_ping_frequency) < 1)
 		flags |= SS_NO_FIRE
-		return SS_INIT_NO_NEED
-
-	wait = CONFIG_GET(number/ticket_ping_frequency)
-	return SS_INIT_SUCCESS
+	else
+		wait = CONFIG_GET(number/ticket_ping_frequency)
 
 /datum/controller/subsystem/ticket_ping/fire(resumed)
 	var/valid_ahelps

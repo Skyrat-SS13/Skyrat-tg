@@ -283,8 +283,7 @@ GLOBAL_LIST_EMPTY(gravity_generators)
 
 /obj/machinery/gravity_generator/main/power_change()
 	. = ..()
-	if(SSticker.current_state == GAME_STATE_PLAYING)
-		investigate_log("has [machine_stat & NOPOWER ? "lost" : "regained"] power.", INVESTIGATE_GRAVITY)
+	investigate_log("has [machine_stat & NOPOWER ? "lost" : "regained"] power.", INVESTIGATE_GRAVITY)
 	set_power()
 
 /obj/machinery/gravity_generator/main/get_status()
@@ -301,8 +300,7 @@ GLOBAL_LIST_EMPTY(gravity_generators)
 		new_state = TRUE
 
 	charging_state = new_state ? POWER_UP : POWER_DOWN // Startup sequence animation.
-	if(SSticker.current_state == GAME_STATE_PLAYING)
-		investigate_log("is now [charging_state == POWER_UP ? "charging" : "discharging"].", INVESTIGATE_GRAVITY)
+	investigate_log("is now [charging_state == POWER_UP ? "charging" : "discharging"].", INVESTIGATE_GRAVITY)
 	update_appearance()
 
 /obj/machinery/gravity_generator/main/proc/enable()
@@ -312,9 +310,8 @@ GLOBAL_LIST_EMPTY(gravity_generators)
 
 	soundloop.start()
 	if (!gravity_in_level())
-		if(SSticker.current_state == GAME_STATE_PLAYING)
-			investigate_log("was brought online and is now producing gravity for this level.", INVESTIGATE_GRAVITY)
-			message_admins("The gravity generator was brought online [ADMIN_VERBOSEJMP(src)]")
+		investigate_log("was brought online and is now producing gravity for this level.", INVESTIGATE_GRAVITY)
+		message_admins("The gravity generator was brought online [ADMIN_VERBOSEJMP(src)]")
 		shake_everyone()
 	gravity_field = new(src, 2, TRUE, 6)
 
@@ -328,9 +325,8 @@ GLOBAL_LIST_EMPTY(gravity_generators)
 	soundloop.stop()
 	QDEL_NULL(gravity_field)
 	if (gravity_in_level())
-		if(SSticker.current_state == GAME_STATE_PLAYING)
-			investigate_log("was brought offline and there is now no gravity for this level.", INVESTIGATE_GRAVITY)
-			message_admins("The gravity generator was brought offline with no backup generator. [ADMIN_VERBOSEJMP(src)]")
+		investigate_log("was brought offline and there is now no gravity for this level.", INVESTIGATE_GRAVITY)
+		message_admins("The gravity generator was brought offline with no backup generator. [ADMIN_VERBOSEJMP(src)]")
 		shake_everyone()
 
 	complete_state_update()

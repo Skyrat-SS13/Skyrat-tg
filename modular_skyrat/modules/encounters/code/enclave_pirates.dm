@@ -174,6 +174,24 @@
 		/obj/item/grenade/frag = 1,
 	),src)
 
+/obj/item/clothing/suit/space/hev_suit/nri/pirate
+	cell = /obj/item/stock_parts/cell/super
+	radio_channel = RADIO_CHANNEL_GUILD
+	heal_amount = NRI_HEAL_AMOUNT
+	blood_replenishment = NRI_BLOOD_REPLENISHMENT
+	health_static_cooldown = NRI_COOLDOWN_HEAL
+	rads_static_cooldown = NRI_COOLDOWN_RADS
+	acid_static_cooldown = NRI_COOLDOWN_ACID
+
+/obj/item/clothing/suit/space/hev_suit/nri/captain/pirate
+	cell = /obj/item/stock_parts/cell/super
+	radio_channel = RADIO_CHANNEL_GUILD
+	heal_amount = NRI_HEAL_AMOUNT
+	blood_replenishment = NRI_BLOOD_REPLENISHMENT
+	health_static_cooldown = NRI_COOLDOWN_HEAL
+	rads_static_cooldown = NRI_COOLDOWN_RADS
+	acid_static_cooldown = NRI_COOLDOWN_ACID
+
 /obj/item/paper/fluff/nri_document
 	name = "NRI Mission Specifications"
 	default_raw_text = {"On behalf of Novaya Rossiyskaya Imperiya Defense and Economical Collegias by the order of the Admiral Voronov Platon Aleksandrovich and the Active Privy Councillor Radich Katarina Dinovich:
@@ -187,10 +205,13 @@
 	<br> <span style=\"color:black;font-family:'Segoe Script';\"><p><b>Voronov Platon Aleksandrovich and Radich Katarina Dinovich.</b></p></span>"}
 
 /obj/machinery/suit_storage_unit/nri
-	mod_type = /obj/item/mod/control/pre_equipped/frontline/pirate
+	suit_type = /obj/item/clothing/suit/space/hev_suit/nri/pirate
+	helmet_type = /obj/item/clothing/head/helmet/space/hev_suit/nri
 	storage_type = /obj/item/tank/internals/oxygen/yellow
 
 /obj/machinery/suit_storage_unit/nri/captain
+	suit_type = /obj/item/clothing/suit/space/hev_suit/nri/captain/pirate
+	helmet_type = /obj/item/clothing/head/helmet/space/hev_suit/nri/captain
 
 #undef NRI_COOLDOWN_HEAL
 #undef NRI_COOLDOWN_RADS

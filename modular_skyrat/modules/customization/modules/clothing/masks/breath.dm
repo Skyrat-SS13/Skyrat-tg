@@ -101,7 +101,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/mask.dmi'
 	icon_state = "hecu2"
 
-/obj/item/clothing/mask/gas/hecu2/mob_can_equip(mob/living/M, slot, disable_warning, bypass_equip_delay_self, ignore_equipped)
+/obj/item/clothing/mask/gas/hecu2/mob_can_equip(mob/living/M, mob/living/equipper, slot, disable_warning, bypass_equip_delay_self)
 	if(is_species(M, /datum/species/teshari))
 		to_chat(M, span_warning("[src] is far too big for you!"))
 		return FALSE

@@ -234,25 +234,25 @@
 
 /obj/machinery/computer/shuttle/pirate
 	name = "pirate shuttle console"
-	shuttleId = "pirate"
+	shuttleId = "pirateship"
 	icon_screen = "syndishuttle"
 	icon_keyboard = "syndie_key"
 	light_color = COLOR_SOFT_RED
-	possible_destinations = "pirate_away;pirate_home;pirate_custom"
+	possible_destinations = "pirateship_away;pirateship_home;pirateship_custom;whiteship_home" //SKYRAT EDIT CHANGE
 
 /obj/machinery/computer/camera_advanced/shuttle_docker/syndicate/pirate
 	name = "pirate shuttle navigation computer"
 	desc = "Used to designate a precise transit location for the pirate shuttle."
-	shuttleId = "pirate"
+	shuttleId = "pirateship"
 	lock_override = CAMERA_LOCK_STATION
-	shuttlePortId = "pirate_custom"
+	shuttlePortId = "pirateship_custom"
 	x_offset = 9
 	y_offset = 0
 	see_hidden = FALSE
 
 /obj/docking_port/mobile/pirate
 	name = "pirate shuttle"
-	shuttle_id = "pirate"
+	id = "pirateship"
 	rechargeTime = 3 MINUTES
 
 /obj/machinery/suit_storage_unit/pirate

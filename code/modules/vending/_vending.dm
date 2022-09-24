@@ -140,15 +140,15 @@
 	///World ticks the machine is electified for
 	var/seconds_electrified = MACHINE_NOT_ELECTRIFIED
 	///When this is TRUE, we fire items at customers! We're broken!
-	var/shoot_inventory = FALSE
+	var/shoot_inventory = 0
 	///How likely this is to happen (prob 100) per second
 	var/shoot_inventory_chance = 1
 	//Stop spouting those godawful pitches!
-	var/shut_up = FALSE
+	var/shut_up = 0
 	///can we access the hidden inventory?
-	var/extended_inventory = FALSE
+	var/extended_inventory = 0
 	///Are we checking the users ID
-	var/scan_id = TRUE
+	var/scan_id = 1
 	///Coins that we accept?
 	var/obj/item/coin/coin
 	///Bills we accept?

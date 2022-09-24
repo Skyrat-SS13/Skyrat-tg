@@ -485,7 +485,7 @@
 	glass_desc = "Warm milk and some catnip."
 
 /datum/reagent/consumable/ethanol/frisky_kitty/on_mob_life(mob/living/carbon/M)
-	if(isfeline(M))
+	if(ismammal(M) || isfelinid(M) || istajaran(M))
 		quality = RACE_DRINK
 	else
 		quality = DRINK_GOOD

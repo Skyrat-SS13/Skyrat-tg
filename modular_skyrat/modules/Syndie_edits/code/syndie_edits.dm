@@ -26,14 +26,6 @@
 	. = ..()
 	AddComponent(/datum/component/toggle_icon)
 
-/obj/item/clothing/head/warden/syndicate
-	name = "master at arms' police hat"
-	desc = "A fashionable police cap emblazoned with a golden badge, issued to the Master at Arms. Protects the head from impacts."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "policehelm_syndie"
-	dog_fashion = null
-
 /obj/item/clothing/head/helmet/swat/ds
 	name = "SWAT helmet"
 	desc = "A robust and spaceworthy helmet with a small cross on it along with 'IP' written across the earpad."
@@ -77,11 +69,6 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/hands.dmi'
 	icon_state = "combat"
 
-/obj/item/clothing/gloves/krav_maga/combatglovesplus/maa
-	name = "master at arms' combat gloves"
-	desc = "A set of combat gloves plus emblazoned with red knuckles, showing dedication to the trade while also hiding any blood left after use."
-	icon_state = "maagloves"
-
 /obj/item/storage/belt/security/webbing/ds
 	name = "brig officer webbing"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/belts.dmi'
@@ -94,6 +81,12 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "bulletproof"
+
+/obj/item/clothing/suit/hooded/wintercoat/syndicate/short
+	desc = "A shorter than usual sinister black coat with red accents and a fancy mantle, it feels like it can take a hit. The zipper tab looks like a triple headed snake in the shape of an S, spooky."
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
+	icon_state = "coatsyndie_short"
 
 /obj/item/clothing/under/syndicate/skyrat/overalls
 	name = "utility overalls turtleneck"

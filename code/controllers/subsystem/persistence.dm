@@ -35,7 +35,7 @@ SUBSYSTEM_DEF(persistence)
 	load_custom_outfits()
 
 	load_adventures()
-	return SS_INIT_SUCCESS
+	return ..()
 
 /datum/controller/subsystem/persistence/proc/collect_data()
 	save_wall_engravings()

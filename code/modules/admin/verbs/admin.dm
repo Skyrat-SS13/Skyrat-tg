@@ -208,11 +208,6 @@
 		if(MUTE_DEADCHAT)
 			mute_string = "deadchat and DSAY"
 			feedback_string = "Deadchat"
-		//Skyrat Addition Begin - LOOC muting again.
-		if(MUTE_LOOC)
-			mute_string = "LOOC"
-			feedback_string = "LOOC"
-		//Skyrat Addition End - LOOC muting again.
 		if(MUTE_ALL)
 			mute_string = "everything"
 			feedback_string = "Everything"

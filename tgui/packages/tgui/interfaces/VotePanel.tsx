@@ -13,7 +13,6 @@ type Vote = {
   name: string;
   canBeInitiated: BooleanLike;
   config: VoteConfig;
-  message: string;
 };
 
 type Option = {
@@ -107,7 +106,6 @@ const VoteOptions = (props, context) => {
               )}
               <Button
                 disabled={!option.canBeInitiated}
-                tooltip={option.message}
                 content={option.name}
                 onClick={() =>
                   act('callVote', {

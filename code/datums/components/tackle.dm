@@ -107,7 +107,7 @@
 	RegisterSignal(user, COMSIG_MOVABLE_MOVED, .proc/checkObstacle)
 	playsound(user, 'sound/weapons/thudswoosh.ogg', 40, TRUE, -1)
 
-	var/leap_word = isfeline(user) ? "pounce" : "leap" //If cat, "pounce" instead of "leap". // SKYRAT EDIT - FELINE TRAITS. Was: isfelinid(user)
+	var/leap_word = isfelinid(user) ? "pounce" : "leap" //If cat, "pounce" instead of "leap".
 	if(can_see(user, A, 7))
 		user.visible_message(span_warning("[user] [leap_word]s at [A]!"), span_danger("You [leap_word] at [A]!"))
 	else
@@ -157,7 +157,7 @@
 	var/mob/living/carbon/target = hit
 	var/mob/living/carbon/human/T = target
 	var/mob/living/carbon/human/S = user
-	var/tackle_word = isfeline(user) ? "pounce" : "tackle" //If cat, "pounce" instead of "tackle". // SKYRAT EDIT - FELINE TRAITS. Was: isfelinid(user)
+	var/tackle_word = isfelinid(user) ? "pounce" : "tackle" //If cat, "pounce" instead of "tackle".
 
 	var/roll = rollTackle(target)
 	tackling = FALSE
@@ -291,7 +291,7 @@
 		var/obj/item/organ/external/tail/lizard/el_tail = tackle_target.getorganslot(ORGAN_SLOT_EXTERNAL_TAIL)
 		if(HAS_TRAIT(tackle_target, TRAIT_TACKLING_TAILED_DEFENDER) && !el_tail)
 			defense_mod -= 1
-		if(el_tail && (el_tail.wag_flags & WAG_WAGGING)) // lizard tail wagging is robust and can swat away assailants!
+		if(el_tail.wag_flags & WAG_WAGGING) // lizard tail wagging is robust and can swat away assailants!
 			defense_mod += 1
 
 	// OF-FENSE

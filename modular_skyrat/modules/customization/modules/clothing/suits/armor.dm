@@ -45,10 +45,9 @@
 /obj/item/clothing/suit/armor/vest/warden/syndicate
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
-	name = "master at arms' vest"
+	name = "master at arms's vest"
 	desc = "Stunning. Menacing. Perfect for the man who gets bullied for leaving the brig."
 	icon_state = "warden_syndie"
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
 
 // HEAD OF PERSONNEL
 /obj/item/clothing/suit/toggle/hop_parade

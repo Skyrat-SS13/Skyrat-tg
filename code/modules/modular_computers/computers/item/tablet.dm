@@ -5,9 +5,6 @@
 	icon_state_unpowered = "tablet-red"
 	icon_state_powered = "tablet-red"
 	icon_state_menu = "menu"
-	inhand_icon_state = "electronic"
-	lefthand_file = 'icons/mob/inhands/items/devices_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/items/devices_righthand.dmi'
 	base_icon_state = "tablet"
 	worn_icon_state = "tablet"
 	hardware_flag = PROGRAM_TABLET

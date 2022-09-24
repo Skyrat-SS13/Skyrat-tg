@@ -9,12 +9,7 @@ SUBSYSTEM_DEF(mapping)
 	var/datum/map_config/config
 	var/datum/map_config/next_map_config
 
-	/// Has the map for the next round been voted for already?
 	var/map_voted = FALSE
-	/// Has the map for the next round been deliberately chosen by an admin?
-	var/map_force_chosen = FALSE
-	/// Has the map vote been rocked?
-	var/map_vote_rocked = FALSE
 
 	var/list/map_templates = list()
 
@@ -63,7 +58,7 @@ SUBSYSTEM_DEF(mapping)
 	/// list of traits and their associated z leves
 	var/list/z_trait_levels = list()
 
-/datum/controller/subsystem/mapping/PreInit()
+/datum/controller/subsystem/mapping/New()
 	..()
 #ifdef FORCE_MAP
 	config = load_map_config(FORCE_MAP, FORCE_MAP_DIRECTORY)
@@ -71,9 +66,9 @@ SUBSYSTEM_DEF(mapping)
 	config = load_map_config(error_if_missing = FALSE)
 #endif
 
-/datum/controller/subsystem/mapping/Initialize()
+/datum/controller/subsystem/mapping/Initialize(timeofday)
 	if(initialized)
-		return SS_INIT_SUCCESS
+		return
 	if(config.defaulted)
 		var/old_config = config
 		config = global.config.defaultmap
@@ -118,7 +113,7 @@ SUBSYSTEM_DEF(mapping)
 	generate_z_level_linkages()
 	calculate_default_z_level_gravities()
 
-	return SS_INIT_SUCCESS
+	return ..()
 
 /datum/controller/subsystem/mapping/proc/calculate_default_z_level_gravities()
 	for(var/z_level in 1 to length(z_list))

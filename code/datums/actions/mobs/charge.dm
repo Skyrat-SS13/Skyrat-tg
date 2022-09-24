@@ -147,11 +147,10 @@
 	SIGNAL_HANDLER
 	if(owner == target)
 		return
-	if(destroy_objects)
-		if(isturf(target))
-			SSexplosions.medturf += target
-		if(isobj(target) && target.density)
-			SSexplosions.med_mov_atom += target
+	if(isturf(target))
+		SSexplosions.medturf += target
+	if(isobj(target) && target.density)
+		SSexplosions.med_mov_atom += target
 
 	INVOKE_ASYNC(src, .proc/DestroySurroundings, source)
 	hit_target(source, target, charge_damage)

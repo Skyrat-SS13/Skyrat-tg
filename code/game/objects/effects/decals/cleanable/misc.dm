@@ -62,7 +62,7 @@
 	base_icon_state = "dirt"
 	smoothing_flags = NONE
 	smoothing_groups = list(SMOOTH_GROUP_CLEANABLE_DIRT)
-	canSmoothWith = list(SMOOTH_GROUP_WALLS, SMOOTH_GROUP_CLEANABLE_DIRT)
+	canSmoothWith = list(SMOOTH_GROUP_CLEANABLE_DIRT, SMOOTH_GROUP_WALLS)
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	beauty = -75
 
@@ -323,9 +323,6 @@
 		return ..()
 
 	var/datum/component/caltrop/caltrop_comp = GetComponent(/datum/component/caltrop)
-	if(!caltrop_comp)
-		return ..()
-
 	switch(caltrop_comp.max_damage)
 		if(0 to 1)
 			icon_state = initial(icon_state)

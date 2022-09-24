@@ -26,7 +26,7 @@
 	attack_sound = 'sound/weapons/bladeslice.ogg'
 	attack_vis_effect = ATTACK_EFFECT_CLAW
 	unique_name = TRUE
-	faction = list(FACTION_RAT)
+	faction = list("rat")
 	///Whether or not the regal rat is already opening an airlock
 	var/opening_airlock = FALSE
 	///The spell that the rat uses to generate miasma
@@ -296,7 +296,7 @@
 	pass_flags = PASSTABLE | PASSGRILLE | PASSMOB
 	mob_size = MOB_SIZE_TINY
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
-	faction = list(FACTION_RAT)
+	faction = list("rat")
 
 /mob/living/simple_animal/hostile/rat/Initialize(mapload)
 	. = ..()
@@ -411,9 +411,9 @@
 /datum/reagent/rat_spit/overdose_start(mob/living/M)
 	..()
 	var/mob/living/carbon/victim = M
-	if (istype(victim) && !(FACTION_RAT in victim.faction))
+	if (istype(victim) && !("rat" in victim.faction))
 		to_chat(victim, span_userdanger("With this last sip, you feel your body convulsing horribly from the contents you've ingested. As you contemplate your actions, you sense an awakened kinship with rat-kind and their newly risen leader!"))
-		victim.faction |= FACTION_RAT
+		victim.faction |= "rat"
 		victim.vomit()
 	metabolization_rate = 10 * REAGENTS_METABOLISM
 

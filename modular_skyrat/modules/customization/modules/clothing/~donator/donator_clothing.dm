@@ -131,6 +131,21 @@
 	. = ..()
 	AddElement(/datum/element/polychromic, list("#888888", "#FF3333", "#FFFFFF"))
 
+/obj/item/clothing/under/misc/polysweater
+	name = "polychromic sweater"
+	desc = "Why trade style for comfort? Now you can go commando down south and still be cozy up north, AND do it in whatever color you choose."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
+	icon_state = "poly_turtle"
+	worn_icon_state = "poly_turtle"
+	body_parts_covered = CHEST|GROIN|ARMS //Commando sweater is long but still doesnt have pants
+	can_adjust = FALSE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+
+/obj/item/clothing/under/misc/polysweater/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/polychromic, list("#FFFFFF"))
+
 /obj/item/clothing/under/misc/poly_tanktop
 	name = "polychromic tank top"
 	desc = "For those lazy summer days."
@@ -1418,14 +1433,3 @@
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 	body_parts_covered = CHEST|GROIN|ARMS
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
-
-// Donation reward for Sweetsoulbrother
-/obj/item/coin/donator/marsoc
-	name = "MARSOC Challenge Coin"
-	desc = "This is a challenge coin given to all MARSOC members upon honorable separation from the Corps. \
-			The coin has the insignia of the Marine Special Operations Command on one side, and the Sol Federation Marine Corps logo on the other. \
-			This one has an engraving on the Marine Corps logo side, etched in a circle around it: \
-			\"To Staff Sargent Henry Rockwell, for his exemplary service to the Special Operations community and his outstanding moral fiber \
-			and shining example to the core values of the Sol Federation Marine Corps.\""
-	icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
-	sideslist = list("MARSOC", "SFMC")

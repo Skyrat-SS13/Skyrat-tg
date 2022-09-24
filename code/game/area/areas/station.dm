@@ -1370,7 +1370,7 @@
 
 // Useless room
 /area/station/science/auxlab
-	name = "\improper Auxiliary Lab"
+	name = "\improper Auxillary Lab"
 	icon_state = "aux_lab"
 
 /area/station/science/auxlab/firing_range

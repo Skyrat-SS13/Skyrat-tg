@@ -51,7 +51,7 @@
 	return ..()
 
 /datum/team/pirate
-	name = "\improper Pirate crew"
+	name = "Pirate crew"
 
 /datum/team/pirate/proc/forge_objectives()
 	var/datum/objective/loot/getbooty = new()

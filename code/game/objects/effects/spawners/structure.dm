@@ -10,10 +10,9 @@ again.
 
 /obj/effect/spawner/structure/Initialize(mapload)
 	. = ..()
-
-	for(var/spawn_type in spawn_list)
-		new spawn_type(loc)
-
+	if(spawn_list?.len)
+		for(var/I in spawn_list)
+			new I(get_turf(src))
 	return INITIALIZE_HINT_QDEL
 
 
@@ -29,8 +28,9 @@ again.
 /obj/effect/spawner/structure/window/Initialize(mapload)
 	. = ..()
 
-	var/turf/current_turf = loc
-	current_turf.rcd_memory = RCD_MEMORY_WINDOWGRILLE
+	if (is_station_level(z))
+		var/turf/current_turf = get_turf(src)
+		current_turf.rcd_memory = RCD_MEMORY_WINDOWGRILLE
 
 /obj/effect/spawner/structure/window/hollow
 	name = "hollow window spawner"

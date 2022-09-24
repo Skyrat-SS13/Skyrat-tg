@@ -119,13 +119,11 @@
 	data["connected"] = connected_port ? 1 : 0
 	data["pressure"] = round(air_contents.return_pressure() ? air_contents.return_pressure() : 0)
 
-	data["hasHypernobCrystal"] = !!nob_crystal_inserted
-	data["reactionSuppressionEnabled"] = !!suppress_reactions
-
-	data["filterTypes"] = list()
+	data["id_tag"] = -1 //must be defined in order to reuse code between portable and vent scrubbers
+	data["filter_types"] = list()
 	for(var/path in GLOB.meta_gas_info)
 		var/list/gas = GLOB.meta_gas_info[path]
-		data["filterTypes"] += list(list("gasId" = gas[META_GAS_ID], "gasName" = gas[META_GAS_NAME], "enabled" = (path in scrubbing)))
+		data["filter_types"] += list(list("gas_id" = gas[META_GAS_ID], "gas_name" = gas[META_GAS_NAME], "enabled" = (path in scrubbing)))
 
 	if(holding)
 		data["holding"] = list()
@@ -163,15 +161,6 @@
 				. = TRUE
 		if("toggle_filter")
 			scrubbing ^= gas_id2path(params["val"])
-			. = TRUE
-		if("reaction_suppression")
-			if(!nob_crystal_inserted)
-				message_admins("[ADMIN_LOOKUPFLW(usr)] tried to toggle reaction suppression on a scrubber without a noblium crystal inside, possible href exploit attempt.")
-				return
-			suppress_reactions = !suppress_reactions
-			SSair.start_processing_machine(src)
-			message_admins("[ADMIN_LOOKUPFLW(usr)] turned [suppress_reactions ? "on" : "off"] the [src] reaction suppression.")
-			investigate_log("[key_name(usr)] turned [suppress_reactions ? "on" : "off"] the [src] reaction suppression.")
 			. = TRUE
 	update_appearance()
 

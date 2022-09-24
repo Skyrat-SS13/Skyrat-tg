@@ -55,7 +55,7 @@
 	borers = new_team
 
 /datum/team/cortical_borers
-	name = "\improper Cortical Borers"
+	name = "Cortical Borers"
 
 /datum/team/cortical_borers/roundend_report()
 	var/list/parts = list()

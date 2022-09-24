@@ -1,5 +1,5 @@
 /datum/team/nation
-	name = "\improper Nation"
+	name = "Nation"
 	member_name = "separatist"
 	///a list of ranks that can join this nation.
 	var/list/potential_recruits

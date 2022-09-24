@@ -92,6 +92,15 @@
 	surplus = 17
 	progression_minimum = 30 MINUTES
 
+// Removed from the uplink for the time being.
+/*datum/uplink_item/stealthy_weapons/cqcplus
+	name = "CQC+ Manual"
+	desc = "A manual that teaches a single user tactical Close-Quarters Combat and how to deflect projectiles before self-destructing."
+	item = /obj/item/book/granter/martial/cqc/plus
+	cost = 30
+	surplus = 20
+*/
+
 /datum/uplink_item/stealthy_weapons/telescopicbaton
 	name = "Telescopic Baton"
 	desc = "A telescopic baton, exactly like the ones heads are issued. Good for knocking people down briefly."

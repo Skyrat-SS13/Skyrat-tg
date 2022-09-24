@@ -7,8 +7,7 @@
 		LIPS,
 		HAS_FLESH,
 		HAS_BONE,
-		HAIR,
-		FACEHAIR,
+		HAIR
 	)
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,

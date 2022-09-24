@@ -10,9 +10,14 @@
 *	CAPTAIN
 */
 
+/obj/item/clothing/under/rank/captain/skyrat/humble
+	desc = "It's a blue jumpsuit with some small gold markings denoting the rank of \"Captain\", more humble than it's sister."
+	name = "captain's humble jumpsuit"
+	icon_state = "captainhumble"
+
 /obj/item/clothing/under/rank/captain/skyrat/kilt
+	desc = "Not a skirt, it is, however, armoured and decorated with a tartan sash."
 	name = "captain's kilt"
-	desc = "A midnight blue kilt, padded with nano-kevlar and adorned with gold and a tartan sash."
 	icon_state = "capkilt"
 	inhand_icon_state = "kilt"
 
@@ -35,7 +40,7 @@
 /*
 *	BLUESHIELD
 */
-//Why is this in command.dm? Simple: Centcom.dmi will already be packed with CC/NTNavy/AD/LL/SOL/FTU - all of them more event-based clothes, while this will appear
+//Why is this in command.dm? Simple: Centcomm.dmi will already be packed with CC/NTNavy/AD/LL/SOL/FTU - all of them more event-based clothes, while this will appear
 //on-station often.
 
 /obj/item/clothing/under/rank/blueshield

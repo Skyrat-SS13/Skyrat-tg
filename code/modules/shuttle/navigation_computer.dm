@@ -36,15 +36,17 @@
 
 	set_init_ports()
 
-	if(connect_to_shuttle(mapload, SSshuttle.get_containing_shuttle(src)))
+	if(!mapload)
+		connect_to_shuttle(SSshuttle.get_containing_shuttle(src))
+
 		for(var/obj/docking_port/stationary/port as anything in SSshuttle.stationary_docking_ports)
-			if(port.shuttle_id == shuttleId)
-				add_jumpable_port(port.shuttle_id)
+			if(port.id == shuttleId)
+				add_jumpable_port(port.id)
 
 	for(var/obj/docking_port/stationary/port as anything in SSshuttle.stationary_docking_ports)
 		if(!port)
 			continue
-		if(jump_to_ports[port.shuttle_id])
+		if(jump_to_ports[port.id])
 			z_lock |= port.z
 	whitelist_turfs = typecacheof(whitelist_turfs)
 
@@ -54,7 +56,7 @@
 
 	if(my_port?.get_docked())
 		my_port.delete_after = TRUE
-		my_port.shuttle_id = null
+		my_port.id = null
 		my_port.name = "Old [my_port.name]"
 		my_port = null
 	else
@@ -168,7 +170,7 @@
 	if(my_port?.get_docked())
 		my_port.unregister()
 		my_port.delete_after = TRUE
-		my_port.shuttle_id = null
+		my_port.id = null
 		my_port.name = "Old [my_port.name]"
 		my_port = null
 
@@ -176,7 +178,7 @@
 		my_port = new()
 		my_port.unregister()
 		my_port.name = shuttlePortName
-		my_port.shuttle_id = shuttlePortId
+		my_port.id = shuttlePortId
 		my_port.height = shuttle_port.height
 		my_port.width = shuttle_port.width
 		my_port.dheight = shuttle_port.dheight
@@ -294,15 +296,12 @@
 		current_user.client.images -= remove_images
 		current_user.client.images += add_images
 
-/obj/machinery/computer/camera_advanced/shuttle_docker/connect_to_shuttle(mapload, obj/docking_port/mobile/port, obj/docking_port/stationary/dock)
-	if(!mapload)
-		return FALSE
+/obj/machinery/computer/camera_advanced/shuttle_docker/connect_to_shuttle(obj/docking_port/mobile/port, obj/docking_port/stationary/dock)
 	if(port)
-		shuttleId = port.shuttle_id
-		shuttlePortId = "[port.shuttle_id]_custom"
+		shuttleId = port.id
+		shuttlePortId = "[port.id]_custom"
 	if(dock)
-		add_jumpable_port(dock.shuttle_id)
-	return TRUE
+		add_jumpable_port(dock.id)
 
 /mob/camera/ai_eye/remote/shuttle_docker
 	visible_icon = FALSE
@@ -369,7 +368,7 @@
 		var/obj/docking_port/stationary/S = V
 		if(console.z_lock.len && !(S.z in console.z_lock))
 			continue
-		if(console.jump_to_ports[S.shuttle_id])
+		if(console.jump_to_ports[S.id])
 			L["([L.len])[S.name]"] = S
 
 	for(var/V in SSshuttle.beacon_list)

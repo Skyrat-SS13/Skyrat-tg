@@ -1657,12 +1657,6 @@
 /obj/machinery/light/directional/south,
 /turf/open/misc/asteroid,
 /area/centcom/central_command_areas/evacuation)
-"eL" = (
-/obj/structure/sign/poster/contraband/syndicate_recruitment{
-	pixel_x = 4
-	},
-/turf/closed/wall/mineral/wood,
-/area/centcom/central_command_areas/holding)
 "eM" = (
 /obj/machinery/vending/cola,
 /obj/effect/turf_decal/delivery,
@@ -2735,32 +2729,8 @@
 /obj/effect/turf_decal/siding/wood{
 	dir = 1
 	},
+/obj/machinery/washing_machine,
 /obj/machinery/light/directional/east,
-/obj/structure/rack,
-/obj/item/toy/gun{
-	pixel_y = 2
-	},
-/obj/item/toy/balloon/syndicate{
-	pixel_x = 8;
-	pixel_y = 2
-	},
-/obj/item/toy/balloon/syndicate{
-	pixel_x = 8;
-	pixel_y = 2
-	},
-/obj/item/toy/balloon/syndicate{
-	pixel_x = 8;
-	pixel_y = 2
-	},
-/obj/item/clothing/under/misc/syndicate_souvenir{
-	pixel_y = -5
-	},
-/obj/item/clothing/under/misc/syndicate_souvenir{
-	pixel_y = -5
-	},
-/obj/item/clothing/under/misc/syndicate_souvenir{
-	pixel_y = -5
-	},
 /turf/open/floor/iron/sepia,
 /area/centcom/central_command_areas/holding)
 "hL" = (
@@ -3455,7 +3425,7 @@
 	dir = 8;
 	dwidth = 8;
 	height = 7;
-	shuttle_id = "cargo_away";
+	id = "supply_away";
 	json_key = "cargo";
 	name = "CentCom";
 	width = 20
@@ -5537,7 +5507,7 @@
 	dir = 8;
 	dwidth = 2;
 	height = 13;
-	shuttle_id = "ferry_away";
+	id = "ferry_away";
 	json_key = "ferry";
 	name = "CentCom Ferry Dock";
 	width = 5
@@ -7293,7 +7263,7 @@
 	dir = 4;
 	dwidth = 25;
 	height = 50;
-	shuttle_id = "emergency_away";
+	id = "emergency_away";
 	json_key = "emergency";
 	name = "CentCom Emergency Shuttle Dock";
 	width = 50
@@ -8186,7 +8156,7 @@
 /obj/docking_port/stationary{
 	dwidth = 25;
 	height = 50;
-	shuttle_id = "emergency_syndicate";
+	id = "emergency_syndicate";
 	name = "Syndicate Auxiliary Shuttle Dock";
 	width = 50
 	},
@@ -8978,7 +8948,7 @@
 	dir = 4;
 	dwidth = 12;
 	height = 17;
-	shuttle_id = "syndicate_away";
+	id = "syndicate_away";
 	name = "syndicate recon outpost";
 	roundstart_template = /datum/map_template/shuttle/infiltrator/basic;
 	width = 23
@@ -12477,7 +12447,7 @@
 	dir = 4;
 	dwidth = 2;
 	height = 8;
-	shuttle_id = "backup_away";
+	id = "backup_away";
 	name = "Backup Shuttle Dock";
 	roundstart_template = /datum/map_template/shuttle/emergency/backup;
 	width = 8
@@ -12636,7 +12606,7 @@
 /obj/docking_port/stationary{
 	dwidth = 1;
 	height = 4;
-	shuttle_id = "pod_4_away";
+	id = "pod_4_away";
 	name = "recovery ship";
 	width = 3
 	},
@@ -12646,7 +12616,7 @@
 /obj/docking_port/stationary{
 	dwidth = 1;
 	height = 4;
-	shuttle_id = "pod_3_away";
+	id = "pod_3_away";
 	name = "recovery ship";
 	width = 3
 	},
@@ -12840,7 +12810,7 @@
 	dir = 4;
 	dwidth = 1;
 	height = 4;
-	shuttle_id = "pod_2_away";
+	id = "pod_2_away";
 	name = "recovery ship";
 	width = 3
 	},
@@ -12870,7 +12840,7 @@
 	dir = 4;
 	dwidth = 2;
 	height = 7;
-	shuttle_id = "pod_away";
+	id = "pod_away";
 	name = "recovery ship";
 	width = 5
 	},
@@ -41467,7 +41437,7 @@ fO
 fO
 eZ
 YC
-eL
+fO
 fO
 fO
 fO

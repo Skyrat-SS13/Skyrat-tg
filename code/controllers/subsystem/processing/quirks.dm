@@ -35,9 +35,9 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 		//SKYRAT EDIT ADDITION END
 	)
 
-/datum/controller/subsystem/processing/quirks/Initialize()
+/datum/controller/subsystem/processing/quirks/Initialize(timeofday)
 	get_quirks()
-	return SS_INIT_SUCCESS
+	return ..()
 
 /// Returns the list of possible quirks
 /datum/controller/subsystem/processing/quirks/proc/get_quirks()

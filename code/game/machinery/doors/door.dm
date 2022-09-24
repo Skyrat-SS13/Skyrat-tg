@@ -68,7 +68,6 @@
 		COMSIG_ATOM_MAGICALLY_UNLOCKED = .proc/on_magic_unlock,
 	)
 	AddElement(/datum/element/connect_loc, loc_connections)
-	AddElement(/datum/element/can_barricade)
 
 /obj/machinery/door/examine(mob/user)
 	. = ..()
@@ -88,7 +87,7 @@
 	if(isaicamera(user) || issilicon(user))
 		return .
 
-	if(isnull(held_item) && Adjacent(user))
+	if (isnull(held_item) && Adjacent(user))
 		context[SCREENTIP_CONTEXT_LMB] = "Open"
 		return CONTEXTUAL_SCREENTIP_SET
 
@@ -275,8 +274,6 @@
 		return TRUE
 	else if(I.item_flags & NOBLUDGEON || user.combat_mode)
 		return ..()
-	else if(!user.combat_mode && istype(I, /obj/item/stack/sheet/mineral/wood))
-		return ..() // we need this so our can_barricade element can be called using COMSIG_PARENT_ATTACKBY
 	else if(try_to_activate_door(user))
 		return TRUE
 	return ..()

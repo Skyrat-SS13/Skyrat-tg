@@ -70,7 +70,7 @@
 	if(!timing)
 		return PROCESS_KILL
 
-	if(REALTIMEOFDAY - activation_time >= timer_duration) // SKYRAT EDIT CHANGE: original was world.time
+	if(world.time - activation_time >= timer_duration)
 		timer_end() // open doors, reset timer, clear status screen
 	update_content()
 
@@ -96,7 +96,8 @@
 	if(machine_stat & (NOPOWER|BROKEN))
 		return 0
 
-	activation_time = REALTIMEOFDAY // SKYRAT EDIT CHANGE: original was world.time
+	//activation_time = world.time //ORIGINAL
+	activation_time = world.realtime //SKYRAT EDIT CHANGE
 	timing = TRUE
 	begin_processing()
 
@@ -169,7 +170,7 @@
  * * seconds - return time in seconds it TRUE, else deciseconds.
  */
 /obj/machinery/status_display/door_timer/proc/time_left(seconds = FALSE)
-	. = max(0, timer_duration - (activation_time ? REALTIMEOFDAY - activation_time : 0))  // SKYRAT EDIT CHANGE: original was world.time
+	. = max(0, timer_duration - (activation_time ? world.time - activation_time : 0))
 	if(seconds)
 		. /= 10
 
@@ -261,7 +262,8 @@
 			investigate_log("[key_name(usr)] set cell [id]'s timer to [preset_time/10] seconds", INVESTIGATE_RECORDS)
 			user.log_message("set cell [id]'s timer to [preset_time/10] seconds", LOG_ATTACK)
 			if(timing)
-				activation_time = REALTIMEOFDAY // SKYRAT EDIT CHANGE: original was world.time
+				//activation_time = world.time //ORIGINAL
+				activation_time = world.realtime
 		else
 			. = FALSE
 

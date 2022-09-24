@@ -4,7 +4,7 @@
 	icon_screen = "shuttle"
 	icon_keyboard = "tech_key"
 	light_color = LIGHT_COLOR_CYAN
-	req_access = list()
+	req_access = list( )
 	/// ID of the attached shuttle
 	var/shuttleId
 	/// Possible destinations of the attached shuttle
@@ -22,7 +22,8 @@
 
 /obj/machinery/computer/shuttle/Initialize(mapload)
 	. = ..()
-	connect_to_shuttle(mapload, SSshuttle.get_containing_shuttle(src))
+	if(!mapload)
+		connect_to_shuttle(SSshuttle.get_containing_shuttle(src))
 
 /obj/machinery/computer/shuttle/ui_interact(mob/user, datum/tgui/ui)
 	. = ..()
@@ -64,7 +65,7 @@
 		if(!M.check_dock(S, silent = TRUE))
 			continue
 		var/list/location_data = list(
-			id = S.shuttle_id,
+			id = S.id,
 			name = S.name
 		)
 		data["locations"] += list(location_data)
@@ -145,14 +146,11 @@
 	obj_flags |= EMAGGED
 	to_chat(user, span_notice("You fried the consoles ID checking system."))
 
-/obj/machinery/computer/shuttle/connect_to_shuttle(mapload, obj/docking_port/mobile/port, obj/docking_port/stationary/dock)
-	if(!mapload)
-		return
-	if(!port)
-		return
-	//Remove old custom port id and ";;"
-	var/find_old = findtextEx(possible_destinations, "[shuttleId]_custom")
-	if(find_old)
-		possible_destinations = replacetext(replacetextEx(possible_destinations, "[shuttleId]_custom", ""), ";;", ";")
-	shuttleId = port.shuttle_id
-	possible_destinations += ";[port.shuttle_id]_custom"
+/obj/machinery/computer/shuttle/connect_to_shuttle(obj/docking_port/mobile/port, obj/docking_port/stationary/dock)
+	if(port)
+		//Remove old custom port id and ";;"
+		var/find_old = findtextEx(possible_destinations, "[shuttleId]_custom")
+		if(find_old)
+			possible_destinations = replacetext(replacetextEx(possible_destinations, "[shuttleId]_custom", ""), ";;", ";")
+		shuttleId = port.id
+		possible_destinations += ";[port.id]_custom"

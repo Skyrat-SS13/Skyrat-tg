@@ -8,9 +8,9 @@ SUBSYSTEM_DEF(ban_cache)
 	flags = SS_NO_FIRE
 	var/query_started = FALSE
 
-/datum/controller/subsystem/ban_cache/Initialize()
+/datum/controller/subsystem/ban_cache/Initialize(start_timeofday)
 	generate_queries()
-	return SS_INIT_SUCCESS
+	return ..()
 
 /// Generates ban caches for any logged in clients. This ensures the amount of in-series ban checking we have to do that actually involves sleeps is VERY low
 /datum/controller/subsystem/ban_cache/proc/generate_queries()

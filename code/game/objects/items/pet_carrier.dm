@@ -91,7 +91,8 @@
 	if(target.mob_size > max_occupant_weight)
 		if(ishuman(target))
 			var/mob/living/carbon/human/H = target
-			if(isfeline(H)) // SKYRAT EDIT - FELINE TRAITS. Was: isfelinid(H)
+			//if(isfelinid(H))
+			if(isfelinid(H) || HAS_TRAIT(H, TRAIT_FELINE)) //SKYRAT EDIT - FELINE TRAITS
 				to_chat(user, span_warning("You'd need a lot of catnip and treats, plus maybe a laser pointer, for that to work."))
 			else
 				to_chat(user, span_warning("Humans, generally, do not fit into pet carriers."))

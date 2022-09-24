@@ -19,10 +19,10 @@ SUBSYSTEM_DEF(lobby_eye)
 	var/list/pathway = list()
 
 /datum/controller/subsystem/lobby_eye/Initialize(start_timeofday)
+	. = ..()
 	linked_camera = new()
 	fading_screen = new()
 	fire()
-	return SS_INIT_SUCCESS
 
 //gets everyone on the camera
 /datum/controller/subsystem/lobby_eye/proc/lock_eyes()

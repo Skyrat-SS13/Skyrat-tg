@@ -15,13 +15,9 @@
 	/// Radio connection datum used by signalers.
 	var/datum/radio_frequency/radio_connection
 
-/datum/computer_file/program/signal_commander/on_start(mob/living/user)
-	. = ..()
+/datum/computer_file/program/signal_commander/New()
 	set_frequency(signal_frequency)
-
-/datum/computer_file/program/signal_commander/kill_program(forced)
-	. = ..()
-	SSradio.remove_object(computer, signal_frequency)
+	return ..()
 
 /datum/computer_file/program/signal_commander/ui_data(mob/user)
 	var/list/data = get_header_data()

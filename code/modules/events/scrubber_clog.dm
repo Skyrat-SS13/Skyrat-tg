@@ -1,10 +1,10 @@
 /datum/round_event_control/scrubber_clog
-	name = "Scrubber Clog: Minor"
+	name = "Minor Scrubber Clog"
 	typepath = /datum/round_event/scrubber_clog
 	weight = 25
 	max_occurrences = 3
 	earliest_start = 5 MINUTES
-	category = EVENT_CATEGORY_JANITORIAL
+	category = EVENT_CATEGORY_ENTITIES
 	description = "Harmless mobs climb out of a scrubber."
 
 /datum/round_event/scrubber_clog
@@ -121,7 +121,7 @@
 	priority_announce("Lifesign readings have moved to a new location in the ventilation network. New Location: [prob(50) ? "Unknown.":"[get_area_name(scrubber)]."]", "Lifesign Notification")
 
 /datum/round_event_control/scrubber_clog/major
-	name = "Scrubber Clog: Major"
+	name = "Major Scrubber Clog"
 	typepath = /datum/round_event/scrubber_clog/major
 	weight = 12
 	max_occurrences = 3
@@ -145,7 +145,7 @@
 	priority_announce("Major biological obstruction detected in the ventilation network. Blockage is believed to be in the [get_area_name(scrubber)] area.", "Infestation Alert")
 
 /datum/round_event_control/scrubber_clog/critical
-	name = "Scrubber Clog: Critical"
+	name = "Critical Scrubber Clog"
 	typepath = /datum/round_event/scrubber_clog/critical
 	weight = 8
 	min_players = 15
@@ -172,7 +172,7 @@
 	return pick(mob_list)
 
 /datum/round_event_control/scrubber_clog/strange
-	name = "Scrubber Clog: Strange"
+	name = "Strange Scrubber Clog"
 	typepath = /datum/round_event/scrubber_clog/strange
 	weight = 5
 	max_occurrences = 1
