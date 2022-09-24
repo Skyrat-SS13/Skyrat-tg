@@ -2,7 +2,7 @@
 	name = "combat vest"
 	desc = "Vest designed to take heavy beating and probably keep the user alive in the process."
 	armor = list(MELEE = 40, BULLET = 40, LASER = 40, ENERGY = 40, BOMB = 40, BIO = 0, FIRE = 80, ACID = 100, WOUND = 30)
-	icon_state = "ceramic_vest" ///I am not paid enough (I am not paid at all) to change these.
+	icon_state = "ceramic_vest"
 	icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecucloth.dmi'
 	worn_icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecumob.dmi'
 	worn_icon_digi = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecumob_digi.dmi'

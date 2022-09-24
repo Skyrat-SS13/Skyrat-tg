@@ -112,7 +112,6 @@
 	icon_state = "glock_mesa"
 	w_class = WEIGHT_CLASS_NORMAL
 	mag_type = /obj/item/ammo_box/magazine/multi_sprite/g17
-	can_suppress = FALSE
 	fire_sound = 'modular_skyrat/master_files/sound/weapons/glock17_fire.ogg'
 	rack_sound = 'sound/weapons/gun/pistol/rack.ogg'
 	lock_back_sound = 'sound/weapons/gun/pistol/slide_lock.ogg'

@@ -70,7 +70,7 @@
 	desc = "Magazines taking 9mm ammunition; it fits in the MP5."
 	icon = 'modular_skyrat/modules/gunsgalore/icons/guns/gunsgalore_items.dmi'
 	icon_state = "mp5"
-	ammo_type = /obj/item/ammo_casing/c9mm
-	caliber = CALIBER_9MM
+	ammo_type = /obj/item/ammo_casing/b9mm
+	caliber = CALIBER_9MMPEACE
 	max_ammo = 30
 	multiple_sprites = AMMO_BOX_FULL_EMPTY_BASIC

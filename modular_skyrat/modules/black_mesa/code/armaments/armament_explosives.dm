@@ -7,6 +7,11 @@
 	max_purchase = 8
 	cost = 3
 
+/datum/armament_entry/hecu/explosives/high_explosive
+	item_type = /obj/item/grenade/syndieminibomb/concussion
+	max_purchase = 8
+	cost = 3
+
 /datum/armament_entry/hecu/explosives/flashbang
 	item_type = /obj/item/grenade/flashbang
 	max_purchase = 8
@@ -18,7 +23,7 @@
 	cost = 1
 
 /datum/armament_entry/hecu/explosives/mine
-	item_type = /obj/item/minespawner/explosive
+	item_type = /obj/item/minespawner/explosive/hecu
 	max_purchase = 8
 	cost = 1
 
