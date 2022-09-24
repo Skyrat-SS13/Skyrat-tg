@@ -55,4 +55,4 @@
 /datum/armament_entry/hecu/misc/hudglasses
 	item_type = /obj/item/clothing/glasses/hud/security/sunglasses/peacekeeper/armadyne
 	max_purchase = 6
-	cost = 1
+	cost = 2
