@@ -2,6 +2,8 @@
 	name = "under"
 	icon = 'icons/obj/clothing/under/default.dmi'
 	worn_icon = 'icons/mob/clothing/under/default.dmi'
+	lefthand_file = 'icons/mob/inhands/clothing/suits_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/clothing/suits_righthand.dmi'
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS
 	slot_flags = ITEM_SLOT_ICLOTHING
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 10, FIRE = 0, ACID = 0, WOUND = 5)
@@ -54,7 +56,7 @@
 	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
 		return
 
-	toggle(user)
+	toggle()
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /obj/item/clothing/under/update_clothes_damaged_state(damaged_state = CLOTHING_DAMAGED)
@@ -228,11 +230,11 @@
 	if(attached_accessory)
 		. += "\A [attached_accessory] is attached to it."
 
-/obj/item/clothing/under/verb/toggle(mob/user)
+/obj/item/clothing/under/verb/toggle()
 	set name = "Adjust Suit Sensors"
 	set category = "Object"
 	set src in usr
-	var/mob/user_mob = ismob(user) ? user : usr
+	var/mob/user_mob = usr
 	if (isdead(user_mob))
 		return
 	if (!can_use(user_mob))
