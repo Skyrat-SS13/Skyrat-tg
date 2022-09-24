@@ -12,7 +12,7 @@
 	begin_activation_message = span_notice("You carefully locate the manual activation switch and start the compact AI circuit's boot process.")
 	success_message = span_notice("The compact AI circuit pings, and its lights start flashing. Success!")
 	fail_message = span_notice("The compact AI circuit buzzes quietly, and the golden lights fade away. Perhaps you could try again?")
-	new_mob_message = spane_notice("The compact AI circuit chimes quietly.")
+	new_mob_message = span_notice("The compact AI circuit chimes quietly.")
 	recharge_message = span_warning("The compact AI circuit isn't ready to activate again yet! Give it some time to recharge.")
 
 /obj/item/organ/internal/brain/ipc_positron/circuit
