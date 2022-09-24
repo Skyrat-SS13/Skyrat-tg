@@ -18,14 +18,15 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 
 	/// A list of quirks that can not be used with each other. Format: list(quirk1,quirk2),list(quirk3,quirk4)
 	var/static/list/quirk_blacklist = list(
-		list("Blind","Nearsighted"),
-		list("Jolly","Depression","Apathetic","Hypersensitive"),
-		list("Ageusia","Vegetarian","Deviant Tastes", "Gamer"),
-		list("Ananas Affinity","Ananas Aversion", "Gamer"),
-		list("Alcohol Tolerance","Light Drinker"),
-		list("Clown Enjoyer","Mime Fan"),
+		list("Blind", "Nearsighted"),
+		list("Jolly", "Depression", "Apathetic", "Hypersensitive"),
+		list("Ageusia", "Vegetarian", "Deviant Tastes", "Gamer"),
+		list("Ananas Affinity", "Ananas Aversion", "Gamer"),
+		list("Alcohol Tolerance", "Light Drinker"),
+		list("Clown Enjoyer", "Mime Fan"),
 		list("Bad Touch", "Friendly"),
 		list("Extrovert", "Introvert"),
+<<<<<<< HEAD
 		//SKYRAT EDIT ADDITION BEGIN
 		list("Nerve Stapled", "Pacifist"),
 		list("Nerve Stapled", "Nearsighted"),
@@ -33,6 +34,10 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 		list("Mute", "Social Anxiety"),
 		list("No Guns", "Pacifist")
 		//SKYRAT EDIT ADDITION END
+=======
+		list("Prosthetic Limb", "Quadruple Amputee"),
+		list("Quadruple Amputee", "Paraplegic","Frail"),
+>>>>>>> d5b3bcc2998 (Oops! All prosthetics! Adds -6 quirk with all prosthetic limbs + Icon Tutorial (#69743))
 	)
 
 /datum/controller/subsystem/processing/quirks/Initialize(timeofday)
