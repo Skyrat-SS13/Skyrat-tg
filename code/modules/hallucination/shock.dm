@@ -11,6 +11,7 @@
 	shock_image.override = TRUE
 	electrocution_skeleton_anim = image('icons/mob/human.dmi', target, icon_state = "electrocuted_base", layer=ABOVE_MOB_LAYER)
 	electrocution_skeleton_anim.appearance_flags |= RESET_COLOR|KEEP_APART
+<<<<<<< HEAD
 	to_chat(target, span_userdanger("You feel a powerful shock course through your body!"))
 	if(target.client)
 		target.client.images |= shock_image
@@ -21,6 +22,21 @@
 	target.Stun(4 SECONDS)
 	target.do_jitter_animation(300) // Maximum jitter
 	target.adjust_timed_status_effect(20 SECONDS, /datum/status_effect/jitter)
+=======
+
+	to_chat(hallucinator, span_userdanger("You feel a powerful shock course through your body!"))
+	hallucinator.visible_message(span_warning("[hallucinator] falls to the ground, shaking!"), ignored_mobs = hallucinator)
+	hallucinator.client?.images |= shock_image
+	hallucinator.client?.images |= electrocution_skeleton_anim
+
+	hallucinator.playsound_local(get_turf(src), SFX_SPARKS, 100, TRUE)
+	hallucinator.adjustStaminaLoss(50)
+	hallucinator.Stun(4 SECONDS)
+	hallucinator.do_jitter_animation(300) // Maximum jitter
+	hallucinator.adjust_jitter(20 SECONDS)
+
+	addtimer(CALLBACK(src, .proc/reset_shock_animation), 4 SECONDS)
+>>>>>>> 45516f47414 (Adds macros to help with common `set_`- and `adjust_timed_status_effect` uses (#69951))
 	addtimer(CALLBACK(src, .proc/shock_drop), 2 SECONDS)
 
 /datum/hallucination/shock/proc/reset_shock_animation()

@@ -199,7 +199,7 @@ at the cost of risking a vicious bite.**/
 	visible_message(span_warning("You start feeling nauseous..."))
 	for(var/mob/living/viewing_mob in viewers(7, src))
 		viewing_mob.blur_eyes(10)
-		viewing_mob.adjust_timed_status_effect(10 SECONDS, /datum/status_effect/confusion)
+		viewing_mob.adjust_confusion(10 SECONDS)
 	addtimer(CALLBACK(src, .proc/pants_stagethree), ALTAR_TIME)
 
 /// Continues the creation, making every mob nearby dizzy
@@ -207,8 +207,13 @@ at the cost of risking a vicious bite.**/
 	status = ALTAR_STAGETHREE
 	update_icon()
 	visible_message(span_warning("You start feeling horrible..."))
+<<<<<<< HEAD
 	//for(var/mob/living/viewing_mob in viewers(7, src)) SKYRAT EDIT REMOVAL TEMPORARY
 		//viewing_mob.set_timed_status_effect(20 SECONDS, /datum/status_effect/dizziness, only_if_higher = TRUE) SKYRAT EDIT REMOVAL TEMPORARY
+=======
+	for(var/mob/living/viewing_mob in viewers(7, src))
+		viewing_mob.set_dizzy_if_lower(20 SECONDS)
+>>>>>>> 45516f47414 (Adds macros to help with common `set_`- and `adjust_timed_status_effect` uses (#69951))
 	addtimer(CALLBACK(src, .proc/pants_create), ALTAR_TIME)
 
 /// Finishes the creation, creating the item itself, setting the cooldowns and flashing every mob nearby.

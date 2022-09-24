@@ -318,9 +318,15 @@
 
 	sac_target.flash_act()
 	sac_target.blur_eyes(15)
+<<<<<<< HEAD
 	sac_target.set_timed_status_effect(20 SECONDS, /datum/status_effect/jitter, only_if_higher = TRUE)
 	sac_target.set_timed_status_effect(20 SECONDS, /datum/status_effect/dizziness, only_if_higher = TRUE)
 	sac_target.hallucination += 12
+=======
+	sac_target.set_jitter_if_lower(20 SECONDS)
+	sac_target.set_dizzy_if_lower(20 SECONDS)
+	sac_target.adjust_hallucinations(24 SECONDS)
+>>>>>>> 45516f47414 (Adds macros to help with common `set_`- and `adjust_timed_status_effect` uses (#69951))
 	sac_target.emote("scream")
 
 	to_chat(sac_target, span_reallybig(span_hypnophrase("The grasp of the Mansus reveal themselves to you!")))
@@ -371,7 +377,7 @@
 
 	// Wherever we end up, we sure as hell won't be able to explain
 	sac_target.adjust_timed_status_effect(40 SECONDS, /datum/status_effect/speech/slurring/heretic)
-	sac_target.adjust_timed_status_effect(40 SECONDS, /datum/status_effect/speech/stutter)
+	sac_target.adjust_stutter(40 SECONDS)
 
 	// They're already back on the station for some reason, don't bother teleporting
 	if(is_station_level(sac_target.z))
@@ -438,10 +444,10 @@
 
 	// Oh god where are we?
 	sac_target.flash_act()
-	sac_target.adjust_timed_status_effect(60 SECONDS, /datum/status_effect/confusion)
-	sac_target.set_timed_status_effect(120 SECONDS, /datum/status_effect/jitter, only_if_higher = TRUE)
+	sac_target.adjust_confusion(60 SECONDS)
+	sac_target.set_jitter_if_lower(120 SECONDS)
 	sac_target.blur_eyes(50)
-	sac_target.set_timed_status_effect(1 MINUTES, /datum/status_effect/dizziness, only_if_higher = TRUE)
+	sac_target.set_dizzy_if_lower(1 MINUTES)
 	sac_target.AdjustKnockdown(80)
 	sac_target.adjustStaminaLoss(120)
 
