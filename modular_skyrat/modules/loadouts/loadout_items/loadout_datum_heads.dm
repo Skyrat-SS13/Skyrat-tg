@@ -366,14 +366,6 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 	item_path = /obj/item/clothing/head/maidheadband
 	additional_tooltip_contents = list("Larger headband from the maid rework. Fits around head and ears.")
 
-/datum/loadout_item/head/widehat
-	name = "Wide Black Hat"
-	item_path = /obj/item/clothing/head/costume/widehat
-
-/datum/loadout_item/head/widehat_red
-	name = "Wide Red Hat"
-	item_path = /obj/item/clothing/head/costume/widehat/red
-
 /datum/loadout_item/head/wig
 	name = "Wig"
 	item_path = /obj/item/clothing/head/wig
@@ -632,16 +624,8 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 	item_path = /obj/item/clothing/head/morningstar
 
 /datum/loadout_item/head/saints
-	name = "Saints Hat"
-	item_path = /obj/item/clothing/head/saints
-
-/datum/loadout_item/head/sybil
-	name = "Sybil Hat"
-	item_path = /obj/item/clothing/head/sybil_slickers
-
-/datum/loadout_item/head/basil
-	name = "Basil Hat"
-	item_path = /obj/item/clothing/head/basil_boys
+	name = "Fancy Hat"
+	item_path = /obj/item/clothing/head/fancy
 
 /*
 *	DONATOR

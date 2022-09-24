@@ -20,6 +20,8 @@
 	low_threshold = 45
 	high_threshold = 120
 
+	organ_traits = list(TRAIT_ADVANCEDTOOLUSER, TRAIT_LITERATE, TRAIT_CAN_STRIP)
+
 	var/suicided = FALSE
 	var/mob/living/brain/brainmob = null
 	/// If it's a fake brain with no brainmob assigned. Feedback messages will be faked as if it does have a brainmob. See changelings & dullahans.
@@ -317,11 +319,22 @@
 	else
 		setOrganDamage(BRAIN_DAMAGE_DEATH)
 
+/obj/item/organ/internal/brain/zombie
+	name = "zombie brain"
+	desc = "This glob of green mass can't have much intelligence inside it."
+	icon_state = "brain-x"
+	organ_traits = list(TRAIT_CAN_STRIP, TRAIT_PRIMITIVE)
+
 /obj/item/organ/internal/brain/alien
 	name = "alien brain"
 	desc = "We barely understand the brains of terrestial animals. Who knows what we may find in the brain of such an advanced species?"
 	icon_state = "brain-x"
+	organ_traits = list(TRAIT_CAN_STRIP)
 
+/obj/item/organ/internal/brain/primitive //No like books and stompy metal men
+	name = "Primative Brain"
+	desc = "This juicy piece of meat has a clearly underdeveloped frontal lobe."
+	organ_traits = list(TRAIT_ADVANCEDTOOLUSER, TRAIT_CAN_STRIP, TRAIT_PRIMITIVE) // No literacy
 
 ////////////////////////////////////TRAUMAS////////////////////////////////////////
 

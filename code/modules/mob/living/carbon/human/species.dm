@@ -180,7 +180,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	///Species-only traits. Can be found in [code/__DEFINES/DNA.dm]
 	var/list/species_traits = list()
 	///Generic traits tied to having the species.
-	var/list/inherent_traits = list(TRAIT_ADVANCEDTOOLUSER, TRAIT_CAN_STRIP, TRAIT_LITERATE)
+	var/list/inherent_traits = list()
 	/// List of biotypes the mob belongs to. Used by diseases.
 	var/inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	///List of factions the mob gain upon gaining this species.
@@ -424,7 +424,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 /datum/species/proc/worn_items_fit_body_check(mob/living/carbon/wearer)
 	for(var/obj/item/equipped_item in wearer.get_all_worn_items())
 		var/equipped_item_slot = wearer.get_slot_by_item(equipped_item)
-		if(!can_equip(equipped_item, equipped_item_slot, H = wearer,  bypass_equip_delay_self = TRUE, ignore_equipped = TRUE))
+		if(!equipped_item.mob_can_equip(wearer, equipped_item_slot, bypass_equip_delay_self = TRUE, ignore_equipped = TRUE))
 			wearer.dropItemToGround(equipped_item)
 
 /**
@@ -607,12 +607,6 @@ GLOBAL_LIST_EMPTY(features_by_species)
 			if(!no_eyeslay)
 				for(var/eye_overlay in eye_organ.generate_body_overlay(species_human))
 					standing += eye_overlay
-
-		// blush
-		if (HAS_TRAIT(species_human, TRAIT_BLUSHING)) // Caused by either the *blush emote or the "drunk" mood event
-			var/mutable_appearance/blush_overlay = mutable_appearance('icons/mob/human_face.dmi', "blush", -BODY_ADJ_LAYER) //should appear behind the eyes
-			blush_overlay.color = COLOR_BLUSH_PINK
-			standing += blush_overlay
 
 	// organic body markings
 	if(HAS_MARKINGS in species_traits)

@@ -55,7 +55,7 @@
 	borers = new_team
 
 /datum/team/cortical_borers
-	name = "Cortical Borers"
+	name = "\improper Cortical Borers"
 
 /datum/team/cortical_borers/roundend_report()
 	var/list/parts = list()
@@ -93,10 +93,10 @@
 	dynamic_should_hijack = TRUE
 
 /datum/round_event/ghost_role/cortical_borer
-	announceWhen = 400
+	announce_when = 400
 
 /datum/round_event/ghost_role/cortical_borer/setup()
-	announceWhen = rand(announceWhen, announceWhen + 50)
+	announce_when = rand(announce_when, announce_when + 50)
 
 /datum/round_event/ghost_role/cortical_borer/announce(fake)
 	priority_announce("Unidentified lifesigns detected coming aboard [station_name()]. Secure any exterior access, including ducting and ventilation.", "Lifesign Alert", ANNOUNCER_ALIENS)
