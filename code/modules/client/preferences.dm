@@ -188,6 +188,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		data["preview_options"] = list(PREVIEW_PREF_JOB, PREVIEW_PREF_LOADOUT, PREVIEW_PREF_UNDERWEAR, PREVIEW_PREF_NAKED)
 	else
 		data["preview_options"] = list(PREVIEW_PREF_JOB, PREVIEW_PREF_LOADOUT, PREVIEW_PREF_UNDERWEAR, PREVIEW_PREF_NAKED, PREVIEW_PREF_NAKED_AROUSED)
+	// SKYRAT ADDITION END
 
 	data["character_profiles"] = create_character_profiles()
 
