@@ -8502,6 +8502,10 @@
 	pixel_x = 4;
 	pixel_y = 3
 	},
+/obj/item/reagent_containers/cup/glass/mug/tea{
+	pixel_x = -7;
+	pixel_y = 12
+	},
 /obj/item/weldingtool{
 	pixel_x = 4;
 	pixel_y = 3
@@ -8835,6 +8839,10 @@
 /area/station/cargo/office)
 "cJs" = (
 /obj/machinery/recycler,
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "garbage"
+	},
 /turf/open/floor/iron/smooth_large,
 /area/station/maintenance/disposal)
 "cJv" = (
@@ -11421,15 +11429,10 @@
 /obj/machinery/power/apc/auto_name/directional/south,
 /obj/structure/cable,
 /obj/structure/table,
-/obj/item/storage/medkit/regular{
+/obj/machinery/fax{
+	name = "Cargo Office Fax Machine";
+	fax_name = "Cargo Office";
 	pixel_y = 3
-	},
-/obj/item/multitool{
-	pixel_y = 3
-	},
-/obj/item/pen/red,
-/obj/item/pen/blue{
-	pixel_y = -4
 	},
 /turf/open/floor/iron/smooth,
 /area/station/cargo/office)
@@ -73932,11 +73935,16 @@
 "vhL" = (
 /obj/structure/table,
 /obj/effect/turf_decal/trimline/brown/filled/line,
-/obj/machinery/fax{
-	name = "Cargo Office Fax Machine";
-	fax_name = "Cargo Office";
+/obj/item/storage/medkit/regular{
 	pixel_y = 3
 	},
+/obj/item/multitool{
+	pixel_y = 3
+	},
+/obj/item/pen/blue{
+	pixel_y = -4
+	},
+/obj/item/pen/red,
 /turf/open/floor/iron/smooth_edge{
 	dir = 1
 	},
