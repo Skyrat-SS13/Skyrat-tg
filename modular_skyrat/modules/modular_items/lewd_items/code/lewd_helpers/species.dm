@@ -5,13 +5,13 @@
 #define AROUSED_MAX "max"
 
 /// Sends an icon to the screen that gives an approximate indication of the mob's arousal.
-/datum/species/proc/throw_arousal_alert(level, atom/movable/screen/alert/aroused_x/arousal_alert, mob/living/carbon/human/targeted_human)
-	targeted_human.throw_alert(AROUSED_ALERT, /atom/movable/screen/alert/aroused_x)
+/datum/species/proc/throw_arousal_alert(level, atom/movable/screen/alert/aroused/arousal_alert, mob/living/carbon/human/targeted_human)
+	targeted_human.throw_alert(AROUSED_ALERT, /atom/movable/screen/alert/aroused)
 	arousal_alert?.icon_state = "arousal_[level]"
 	arousal_alert?.update_icon()
 
 /// Sends an icon to the screen that gives an approximate indication of the mob's pain. Looks like spikes/barbed wire.
-/datum/species/proc/overlay_pain(level, atom/movable/screen/alert/aroused_x/arousal_alert)
+/datum/species/proc/overlay_pain(level, atom/movable/screen/alert/aroused/arousal_alert)
 	arousal_alert?.cut_overlay(arousal_alert.pain_overlay)
 	arousal_alert?.pain_level = level
 	arousal_alert?.pain_overlay = arousal_alert.update_pain()
@@ -19,7 +19,7 @@
 	arousal_alert?.update_overlays()
 
 /// Sends an icon to the screen that gives an approximate indication of the mob's pleasure. Looks like a pink-white border on the arousal alert heart.
-/datum/species/proc/overlay_pleasure(level, atom/movable/screen/alert/aroused_x/arousal_alert)
+/datum/species/proc/overlay_pleasure(level, atom/movable/screen/alert/aroused/arousal_alert)
 	arousal_alert?.cut_overlay(arousal_alert.pleasure_overlay)
 	arousal_alert?.pleasure_level = level
 	arousal_alert?.pleasure_overlay = arousal_alert.update_pleasure()
@@ -27,11 +27,11 @@
 	arousal_alert?.update_overlays()
 
 /// Handles throwing the arousal alerts to screen.
-/datum/species/proc/handle_arousal(mob/living/carbon/human/target_human, atom/movable/screen/alert/aroused_x)
+/datum/species/proc/handle_arousal(mob/living/carbon/human/target_human, atom/movable/screen/alert/aroused)
 	if(!target_human.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 		return
 
-	var/atom/movable/screen/alert/aroused_x/arousal_alert = target_human.alerts[AROUSED_ALERT]
+	var/atom/movable/screen/alert/aroused/arousal_alert = target_human.alerts[AROUSED_ALERT]
 
 	if(target_human.arousal <= 0)
 		var/list/levels = list(AROUSED_SMALL, AROUSED_MEDIUM, AROUSED_HIGH, AROUSED_MAX)
@@ -44,7 +44,7 @@
 	var/alert_state
 	switch(target_human.arousal)
 		if(-INFINITY to AROUSAL_MINIMUM_DETECTABLE)
-			target_human.clear_alert(AROUSED_ALERT, /atom/movable/screen/alert/aroused_x)
+			target_human.clear_alert(AROUSED_ALERT, /atom/movable/screen/alert/aroused)
 			if(target_human.arousal < AROUSAL_MINIMUM)
 				target_human.arousal = AROUSAL_MINIMUM // To prevent massively negative values that break the lewd system for some.
 		if(AROUSAL_MINIMUM_DETECTABLE to AROUSAL_LOW)
