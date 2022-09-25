@@ -572,7 +572,7 @@
 		/obj/machinery/vending/access/command = "Command Outfitting Station", //SKYRAT EDIT ADDITION
 		/obj/machinery/vending/barbervend = "Fab-O-Vend", //SKYRAT EDIT ADDITION
 		/obj/machinery/vending/imported = "NT Sustenance Supplier", //SKYRAT EDIT ADDITION
-		/obj/machinery/vending/imported/yangyu = "Fūdobendā", //SKYRAT EDIT ADDITION
+		/obj/machinery/vending/imported/yangyu = "Fudobenda", //SKYRAT EDIT ADDITION
 		/obj/machinery/vending/imported/mothic = "Nomad Fleet Ration Chit Exchange", //SKYRAT EDIT ADDITION
 		/obj/machinery/vending/imported/tizirian = "Tizirian Imported Delicacies",) //SKYRAT EDIT ADDITION
 

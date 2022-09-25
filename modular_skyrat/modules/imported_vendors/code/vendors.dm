@@ -76,7 +76,7 @@
 	machine_name = "NT Sustenance Supplier"
 
 /obj/machinery/vending/imported/yangyu
-	name = "Fūdobendā"
+	name = "Fudobenda"
 	desc = "A vendor selling traditional Sol eastern foods of dubious quality."
 	icon_state = "yangyu_food"
 	light_mask = "yangyu_food-light-mask"
@@ -121,7 +121,7 @@
 	return .
 
 /obj/item/vending_refill/snack/imported/yangyu
-	machine_name = "Fūdobendā"
+	machine_name = "Fudobenda"
 
 /obj/machinery/vending/imported/mothic
 	name = "Nomad Fleet Ration Chit Exchange"

@@ -69,21 +69,21 @@
 	foodtypes = MEAT | GRAIN | DAIRY
 
 /obj/item/food/vendor_tray_meal/ramen
-	name = "\improper Meinkōsu: Homestyle Noodles"
+	name = "\improper Meinkosu: Homestyle Noodles"
 	desc = "A brick of the finest factory made ramen, with a small amount of rehydrated vegetables and herbs floating around."
 	icon_state = "foodtray_noodle"
 	tastes = list("cheap noodles" = 2, "laziness" = 1)
 	foodtypes = GRAIN | VEGETABLES
 
 /obj/item/food/vendor_tray_meal/sushi
-	name = "\improper Meinkōsu: Fresh Carp Rolls"
+	name = "\improper Meinkosu: Fresh Carp Rolls"
 	desc = "A pair of sushi rolls, the appearance of which would suggest that the label is lying to you."
 	icon_state = "foodtray_gas_station_sushi"
 	tastes = list("imitation space carp" = 2, "stale rice" = 2, "laziness" = 1)
 	foodtypes = GRAIN | SEAFOOD
 
 /obj/item/food/vendor_tray_meal/beef_rice
-	name = "\improper Meinkōsu: Beef and Fried Rice"
+	name = "\improper Meinkosu: Beef and Fried Rice"
 	desc = "A few slices of seemingly grilled beef, paired with a disproportionately large amount of rice."
 	icon_state = "foodtray_beef_n_rice"
 	tastes = list("cheap beef" = 1, "rice" = 3, "laziness" = 1)
