@@ -574,10 +574,15 @@
  * Arguments:
  * * destination_port - Stationary docking port to move the shuttle to
  */
-/obj/docking_port/mobile/proc/request(obj/docking_port/stationary/destination_port)
-	if(!check_dock(destination_port) && !forced) // SKYRAT EDIT ADD - forced check
+/obj/docking_port/mobile/proc/request(obj/docking_port/stationary/destination_port, forced = FALSE) // SKYRAT EDIT ADDITION - Forced check
+	if(!check_dock(destination_port) && !forced) // SKYRAT EDIT ADDITION - Forced check
 		testing("check_dock failed on request for [src]")
 		return
+
+	// SKYRAT EDIT START - Forced check
+	if(forced)
+		admin_forced = TRUE
+	// SKYRAT EDIT END
 
 	if(mode == SHUTTLE_IGNITING && destination == destination_port)
 		return
