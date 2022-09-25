@@ -262,11 +262,6 @@
 				eye_right.color = eyes.eye_color_right
 			. += eye_left
 			. += eye_right
-<<<<<<< HEAD
-		else
-			. += image('icons/mob/human_face.dmi', "eyes_missing", -BODY_LAYER, SOUTH)
-=======
->>>>>>> c4d58d2ff5c (Robot heads no longer have bleeding eyeholes (#69830))
 	else
 		if(!facial_hair_hidden && facial_overlay && (FACEHAIR in species_flags_list))
 			facial_overlay.alpha = hair_alpha
