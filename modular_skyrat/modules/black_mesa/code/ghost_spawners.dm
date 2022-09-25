@@ -1,4 +1,4 @@
-/obj/effect/mob_spawn/ghost_role/human/black_mesa
+/obj/effect/mob_spawn/ghost_role/human/black_mesa/
 	name = "Research Facility Science Team"
 	prompt_name = "a research facility scientist"
 	icon = 'icons/obj/machines/sleeper.dmi'
@@ -37,6 +37,10 @@
 	prompt_name = "a research facility guard"
 	outfit = /datum/outfit/security_guard
 	you_are_text = "You are a security guard in a top secret government facility. You blacked out. Now, you have woken up to the horrors that lay within. DO NOT TRY TO EXPLORE THE LEVEL. STAY AROUND YOUR AREA."
+	flavour_text = "You are a security guard in a top secret government facility. You blacked out. Now, you have woken up to the horrors that lay within."
+
+
+
 
 /obj/effect/mob_spawn/ghost_role/human/black_mesa/guard/special(mob/living/carbon/human/spawned_human)
 	. = ..()
