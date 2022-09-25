@@ -23,7 +23,7 @@
 		pain += change_amount
 	else
 		pain -= abs(change_amount)
-	pain = min(max(pain, 0), 100)
+	pain = clamp(pain, 0, AROUSAL_LIMIT)
 
 // Get damage for pain system
 /datum/species/apply_damage(damage, damagetype, def_zone, blocked, mob/living/carbon/human/affected_mob, forced, spread_damage, wound_bonus, bare_wound_bonus, sharpness, attack_direction)

@@ -24,5 +24,5 @@
 	else
 		arousal -= abs(arous)
 
-		arousal = min(max(arousal, 0), 100)
+		arousal = clamp(arousal, 0, AROUSAL_LIMIT)
 

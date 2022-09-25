@@ -7,4 +7,4 @@
 			climax(FALSE)
 	else
 		pleasure -= abs(pleas)
-	pleasure = min(max(pleasure, 0), 100)
+	pleasure = clamp(pleasure, 0, AROUSAL_LIMIT)
