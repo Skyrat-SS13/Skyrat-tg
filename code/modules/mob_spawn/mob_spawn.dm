@@ -202,6 +202,7 @@
 					SSquirks.AssignQuirks(spawned_human, mob_possessor.client)
 				if(loadout_enabled)
 					spawned_human.equip_outfit_and_loadout(outfit, mob_possessor.client.prefs)
+
 	// SKYRAT EDIT END
 	if(mob_possessor)
 		spawned_mob.ckey = mob_possessor.ckey
