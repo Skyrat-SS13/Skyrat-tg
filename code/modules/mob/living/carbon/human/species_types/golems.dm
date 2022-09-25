@@ -1045,7 +1045,7 @@
 	prefix = "Cardboard"
 	special_names = list("Box")
 	info_text = "As a <span class='danger'>Cardboard Golem</span>, you aren't very strong, but you are a bit quicker and can easily create more brethren by using cardboard on yourself."
-	species_traits = list(NOBLOOD,NO_UNDERWEAR,NOEYESPRITES)
+	species_traits = list(NOBLOOD,NO_UNDERWEAR,NOEYESPRITES,NO_TONGUE)
 	inherent_traits = list(
 		TRAIT_ADVANCEDTOOLUSER,
 		TRAIT_CAN_STRIP,
@@ -1272,7 +1272,7 @@
 		playsound(get_turf(owner),'sound/magic/RATTLEMEBONES2.ogg', 100)
 		if(ishuman(owner))
 			var/mob/living/carbon/human/H = owner
-			var/mutable_appearance/badtime = mutable_appearance('icons/mob/human_parts.dmi', "b_golem_eyes", -FIRE_LAYER-0.5)
+			var/mutable_appearance/badtime = mutable_appearance('icons/mob/species/human/bodyparts.dmi', "b_golem_eyes", -FIRE_LAYER-0.5)
 			badtime.appearance_flags = RESET_COLOR
 			H.overlays_standing[FIRE_LAYER+0.5] = badtime
 			H.apply_overlay(FIRE_LAYER+0.5)

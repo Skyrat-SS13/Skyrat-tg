@@ -113,7 +113,7 @@
 	if(!istype(parent) || parent.getorgan(/obj/item/organ/internal/eyes) != src)
 		CRASH("Generating a body overlay for [src] targeting an invalid parent '[parent]'.")
 
-	var/eye_icon = parent.dna?.species.eyes_icon || 'icons/mob/human_face.dmi' // SKYRAT EDIT ADDITION
+	var/eye_icon = parent.dna?.species.eyes_icon || 'icons/mob/species/human/human_face.dmi' // SKYRAT EDIT ADDITION
 
 	var/mutable_appearance/eye_left = mutable_appearance(eye_icon, "[eye_icon_state]_l", -eyes_layer) // SKYRAT EDIT CHANGE - Customization - ORIGINAL: var/mutable_appearance/eye_left = mutable_appearance('icons/mob/human_face.dmi', "[eye_icon_state]_l", -BODY_LAYER)
 	var/mutable_appearance/eye_right = mutable_appearance(eye_icon, "[eye_icon_state]_r", -eyes_layer) // SKYRAT EDIT CHANGE - Customization - ORIGINAL: var/mutable_appearance/eye_right = mutable_appearance('icons/mob/human_face.dmi', "[eye_icon_state]_r", -BODY_LAYER)
@@ -130,7 +130,7 @@
 
 	// Cry emote overlay
 	if (HAS_TRAIT(parent, TRAIT_CRYING)) // Caused by the *cry emote
-		var/mutable_appearance/tears_overlay = mutable_appearance('icons/mob/human_face.dmi', "tears", -BODY_ADJ_LAYER)
+		var/mutable_appearance/tears_overlay = mutable_appearance('icons/mob/species/human/human_face.dmi', "tears", -BODY_ADJ_LAYER)
 		tears_overlay.color = COLOR_DARK_CYAN
 		overlays += tears_overlay
 
@@ -536,19 +536,12 @@
 	desc = "These eyes seem to stare back no matter the direction you look at it from."
 	eye_icon_state = "flyeyes"
 	icon_state = "eyeballs-fly"
-
-/obj/item/organ/internal/eyes/fly/Insert(mob/living/carbon/eye_owner, special = FALSE, drop_if_replaced = TRUE)
-	. = ..()
-	ADD_TRAIT(eye_owner, TRAIT_FLASH_SENSITIVE, ORGAN_TRAIT)
-
-/obj/item/organ/internal/eyes/fly/Remove(mob/living/carbon/eye_owner, special = FALSE)
-	REMOVE_TRAIT(eye_owner, TRAIT_FLASH_SENSITIVE, ORGAN_TRAIT)
-	return ..()
+	flash_protect = FLASH_PROTECTION_HYPER_SENSITIVE
 
 /obj/item/organ/internal/eyes/night_vision/maintenance_adapted
 	name = "adapted eyes"
 	desc = "These red eyes look like two foggy marbles. They give off a particularly worrying glow in the dark."
-	flash_protect = FLASH_PROTECTION_SENSITIVE
+	flash_protect = FLASH_PROTECTION_HYPER_SENSITIVE
 	eye_color_left = "f00"
 	eye_color_right = "f00"
 	icon_state = "adapted_eyes"
@@ -564,8 +557,6 @@
 	adapt_light.on = TRUE
 	adapt_light.forceMove(adapted)
 	adapt_light.update_brightness(adapted)
-	//traits
-	ADD_TRAIT(adapted, TRAIT_FLASH_SENSITIVE, ORGAN_TRAIT)
 	ADD_TRAIT(adapted, TRAIT_UNNATURAL_RED_GLOWY_EYES, ORGAN_TRAIT)
 
 /obj/item/organ/internal/eyes/night_vision/maintenance_adapted/on_life(delta_time, times_fired)
@@ -584,7 +575,5 @@
 	adapt_light.on = FALSE
 	adapt_light.update_brightness(unadapted)
 	adapt_light.forceMove(src)
-	//traits
-	REMOVE_TRAIT(unadapted, TRAIT_FLASH_SENSITIVE, ORGAN_TRAIT)
 	REMOVE_TRAIT(unadapted, TRAIT_UNNATURAL_RED_GLOWY_EYES, ORGAN_TRAIT)
 	return ..()

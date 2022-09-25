@@ -325,16 +325,6 @@
 		replacer.ReplaceLight(src, user)
 		return
 
-	//SKYRAT EDIT ADDITION
-	if(istype(tool, /obj/item/multitool) && constant_flickering)
-		to_chat(user, span_notice("You start repairing the ballast of [src] with [tool]."))
-		if(do_after(user, 2 SECONDS, src))
-			stop_flickering()
-			to_chat(user, span_notice("You repair the ballast of [src]!"))
-		return
-
-	//SKYRAT EDTI END
-
 	// attempt to insert light
 	if(istype(tool, /obj/item/light))
 		if(status == LIGHT_OK)

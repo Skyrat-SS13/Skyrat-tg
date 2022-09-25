@@ -23,9 +23,9 @@ SUBSYSTEM_DEF(automapper)
 	/// Our preloaded map templates
 	var/list/preloaded_map_templates = list()
 
-/datum/controller/subsystem/automapper/Initialize(start_timeofday)
+/datum/controller/subsystem/automapper/Initialize()
 	loaded_config = rustg_read_toml_file(config_file)
-	return ..()
+	return SS_INIT_SUCCESS
 
 /**
  * This will preload our templates into a cache ready to be loaded later.
@@ -125,6 +125,5 @@ SUBSYSTEM_DEF(automapper)
 	for(var/datum/map_template/automap_template/iterating_template as anything in preloaded_map_templates)
 		if(!(iterating_template.required_map in map_names))
 			continue
-		for(var/turf/iterating_turf as anything in iterating_template.get_affected_turfs(iterating_template.load_turf, FALSE))
-			blacklisted_turfs += iterating_turf
+		blacklisted_turfs += iterating_template.get_affected_turfs(iterating_template.load_turf, FALSE)
 	return blacklisted_turfs
