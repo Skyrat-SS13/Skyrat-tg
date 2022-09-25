@@ -2293,7 +2293,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	new_species ||= target.dna.species //If no new species is provided, assume its src.
 	//Note for future: Potentionally add a new C.dna.species() to build a template species for more accurate limb replacement
 
-	if((new_species.digitigrade_customization == DIGITIGRADE_OPTIONAL && target.dna.features["legs"] == "Digitigrade Legs") || new_species.digitigrade_customization == DIGITIGRADE_FORCED)
+	if((new_species.digitigrade_customization == DIGITIGRADE_OPTIONAL && target.dna.features["legs"] == DIGITIGRADE_LEGS) || new_species.digitigrade_customization == DIGITIGRADE_FORCED)
 		var/obj/item/bodypart/r_leg/r_leg = new_species.bodypart_overrides[BODY_ZONE_R_LEG]
 		if(r_leg)
 			new_species.bodypart_overrides[BODY_ZONE_R_LEG] = initial(r_leg.digitigrade_type)
