@@ -86,6 +86,9 @@
 /obj/item/organ/internal/tongue/could_speak_language(language)
 	return is_type_in_typecache(language, languages_possible)
 
+/obj/item/organ/internal/tongue/get_availability(datum/species/owner_species)
+	return !(NO_TONGUE in owner_species.species_traits)
+
 /obj/item/organ/internal/tongue/lizard
 	name = "forked tongue"
 	desc = "A thin and long muscle typically found in reptilian races, apparently moonlights as a nose."
@@ -525,7 +528,7 @@
 		tonal_indicator = mutable_appearance('icons/mob/effects/talk.dmi', "signlang1", TYPING_LAYER)
 		owner.visible_message(span_notice("[owner] lowers [owner.p_their()] eyebrows."))
 	else if(exclamation_found)
-		tonal_indicator = mutable_appearance('icons/mob/talk.dmi', "signlang2", TYPING_LAYER)
+		tonal_indicator = mutable_appearance('icons/mob/effects/talk.dmi', "signlang2", TYPING_LAYER)
 		owner.visible_message(span_notice("[owner] raises [owner.p_their()] eyebrows."))
 	// If either an exclamation or question are found
 	if(!isnull(tonal_indicator) && owner.client?.typing_indicators)

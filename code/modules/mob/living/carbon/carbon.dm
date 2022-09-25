@@ -1408,7 +1408,7 @@
 	var/fire_icon = "generic_burning[suffix]"
 
 	if(!GLOB.fire_appearances[fire_icon])
-		var/mutable_appearance/new_fire_overlay = mutable_appearance('icons/mob/onfire.dmi', fire_icon, -FIRE_LAYER)
+		var/mutable_appearance/new_fire_overlay = mutable_appearance('icons/mob/effects/onfire.dmi', fire_icon, -FIRE_LAYER)
 		new_fire_overlay.appearance_flags = RESET_COLOR
 		GLOB.fire_appearances[fire_icon] = new_fire_overlay
 
