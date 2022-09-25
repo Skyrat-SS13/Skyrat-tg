@@ -1,8 +1,5 @@
 // I guess some people enjoy it.
 
-/mob/living/carbon/human/proc/get_pain()
-	return pain
-
 /mob/living/carbon/human/proc/adjust_pain(change_amount = 0)
 	if(stat >= DEAD)
 		return

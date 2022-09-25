@@ -1,6 +1,3 @@
-/mob/living/carbon/human/proc/get_pleasure()
-	return pleasure
-
 /mob/living/carbon/human/proc/adjustPleasure(pleas = 0)
 	if(stat >= DEAD)
 		return
