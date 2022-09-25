@@ -85,7 +85,7 @@
 		in_view -= GLOB.dead_mob_list
 		in_view.Remove(user)
 
-		for(var/mob/mob_in_view as anything in in_view)
+		for(var/mob/mob_in_view in in_view)
 			if(!istype(mob_in_view))
 				in_view.Remove(mob_in_view)
 		var/list/targets = list(SUBTLE_ONE_TILE_TEXT, SUBTLE_SAME_TILE_TEXT) + in_view
