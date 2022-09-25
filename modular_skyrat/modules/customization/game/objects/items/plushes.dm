@@ -571,3 +571,16 @@
 	desc = "The plushie of a celestial in the known universe."
 	icon_state = "plushie_star"
 	gender = FEMALE
+	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/trills.ogg' = 1)
+
+// Donation reward for SRQ
+/obj/item/toy/plush/skyrat/plushie_chiara
+	name = "commanding fox plush"
+	desc = "A large stuffed fox which radiates confidence and vigor from their emerald eyes."
+	icon_state = "plushie_chiara"
+
+// Donation reward for Superlagg
+/obj/item/toy/plush/skyrat/plushie_dan
+	name = "comfy fox plush"
+	desc = "A stuffed fox with an aura of endearment leaking from their soft exterior."
+	icon_state = "plushie_dan"
