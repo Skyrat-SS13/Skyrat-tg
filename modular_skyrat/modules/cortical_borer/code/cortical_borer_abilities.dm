@@ -409,7 +409,7 @@
 	if (HAS_TRAIT(cortical_owner.human_host, TRAIT_IRRADIATED))
 		render_list += "<span class='alert ml-1'>Subject is irradiated. Supply toxin healing.</span>\n"
 
-	if(cortical_owner.human_host.hallucinating())
+	if(cortical_owner.human_host.has_status_effect(/datum/status_effect/hallucination))
 		render_list += "<span class='info ml-1'>Subject is hallucinating.</span>\n"
 
 	//Eyes and ears

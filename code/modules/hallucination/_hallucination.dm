@@ -89,15 +89,6 @@
 	invisibility = INVISIBILITY_OBSERVER
 	anchored = TRUE
 
-<<<<<<< HEAD
-/obj/effect/hallucination/simple
-	var/image_icon = 'icons/mob/nonhuman-player/alien.dmi'
-	var/image_state = "alienh_pounce"
-	var/px = 0
-	var/py = 0
-	var/col_mod = null
-	var/image/current_image = null
-=======
 	/// A list of mobs which can see us.
 	var/list/mob/who_sees_us
 	/// The created image, what we look like.
@@ -113,7 +104,6 @@
 	/// Optional, the color of the image
 	var/image_color
 	/// The layer of the image
->>>>>>> 6baebf47a12 (Completely refactors hallucinations, and also adds a few  (#69706))
 	var/image_layer = MOB_LAYER
 	/// The plane of the image
 	var/image_plane = GAME_PLANE

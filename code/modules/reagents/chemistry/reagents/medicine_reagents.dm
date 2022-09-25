@@ -384,23 +384,15 @@
 		if(show_message)
 			to_chat(exposed_carbon, span_danger("You feel your injuries fade away to nothing!") )
 
-<<<<<<< HEAD
-/datum/reagent/medicine/mine_salve/on_mob_end_metabolize(mob/living/M)
-	REMOVE_TRAIT(M, TRAIT_NUMBED, src) // SKYRAT EDIT ADD -- ANAESTHETIC FOR SURGERY PAIN
-	M.clear_alert("numbed") // SKYRAT EDIT ADD END
-	if(iscarbon(M))
-		var/mob/living/carbon/N = M
-		N.hal_screwyhud = SCREWYHUD_NONE
-	..()
-=======
 /datum/reagent/medicine/mine_salve/on_mob_metabolize(mob/living/metabolizer)
 	. = ..()
 	metabolizer.apply_status_effect(/datum/status_effect/grouped/screwy_hud/fake_healthy, type)
 
 /datum/reagent/medicine/mine_salve/on_mob_end_metabolize(mob/living/metabolizer)
 	. = ..()
+	REMOVE_TRAIT(metabolizer, TRAIT_NUMBED, src) // SKYRAT EDIT ADD -- ANAESTHETIC FOR SURGERY PAIN
+	metabolizer.clear_alert("numbed") // SKYRAT EDIT ADD END
 	metabolizer.apply_status_effect(/datum/status_effect/grouped/screwy_hud/fake_healthy, type)
->>>>>>> 6baebf47a12 (Completely refactors hallucinations, and also adds a few  (#69706))
 
 /datum/reagent/medicine/omnizine
 	name = "Omnizine"
