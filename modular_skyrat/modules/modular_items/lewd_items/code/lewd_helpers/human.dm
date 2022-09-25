@@ -48,84 +48,87 @@
 /mob/living/carbon/human/proc/is_head_uncovered()
     return (head?.body_parts_covered & HEAD)
 
+/// Returns true if the human has an accessible penis for the parameter. Accepts any of the `REQUIRE_GENITAL_` defines.
 /mob/living/carbon/human/proc/has_penis(required_state = REQUIRE_GENITAL_ANY)
-	if(issilicon(src) && has_penis)
-		return TRUE
 	var/obj/item/organ/external/genital/genital = getorganslot(ORGAN_SLOT_PENIS)
-	if(genital)
-		switch(required_state)
-			if(REQUIRE_GENITAL_ANY)
-				return TRUE
-			if(REQUIRE_GENITAL_EXPOSED)
-				return genital.visibility_preference == GENITAL_ALWAYS_SHOW || is_bottomless()
-			if(REQUIRE_GENITAL_UNEXPOSED)
-				return genital.visibility_preference != GENITAL_ALWAYS_SHOW && !is_bottomless()
-			else
-				return TRUE
-	return FALSE
+	if(!genital)
+		return FALSE
+	switch(required_state)
+		if(REQUIRE_GENITAL_ANY)
+			return TRUE
+		if(REQUIRE_GENITAL_EXPOSED)
+			return genital.visibility_preference == GENITAL_ALWAYS_SHOW || is_bottomless()
+		if(REQUIRE_GENITAL_UNEXPOSED)
+			return genital.visibility_preference != GENITAL_ALWAYS_SHOW && !is_bottomless()
+		else
+			return TRUE
 
+/// Returns true if the human has a accessible balls for the parameter. Accepts any of the `REQUIRE_GENITAL_` defines.
 /mob/living/carbon/human/proc/has_balls(required_state = REQUIRE_GENITAL_ANY)
 	var/obj/item/organ/external/genital/genital = getorganslot(ORGAN_SLOT_TESTICLES)
-	if(genital)
-		switch(required_state)
-			if(REQUIRE_GENITAL_ANY)
-				return TRUE
-			if(REQUIRE_GENITAL_EXPOSED)
-				return genital.visibility_preference == GENITAL_ALWAYS_SHOW || is_bottomless()
-			if(REQUIRE_GENITAL_UNEXPOSED)
-				return genital.visibility_preference != GENITAL_ALWAYS_SHOW && !is_bottomless()
-			else
-				return TRUE
-	return FALSE
+	if(!genital)
+		return FALSE
+	switch(required_state)
+		if(REQUIRE_GENITAL_ANY)
+			return TRUE
+		if(REQUIRE_GENITAL_EXPOSED)
+			return genital.visibility_preference == GENITAL_ALWAYS_SHOW || is_bottomless()
+		if(REQUIRE_GENITAL_UNEXPOSED)
+			return genital.visibility_preference != GENITAL_ALWAYS_SHOW && !is_bottomless()
+		else
+			return TRUE
 
+/// Returns true if the human has an accessible vagina for the parameter. Accepts any of the `REQUIRE_GENITAL_` defines.
 /mob/living/carbon/human/proc/has_vagina(required_state = REQUIRE_GENITAL_ANY)
-	if(issilicon(src) && has_vagina)
-		return TRUE
 	var/obj/item/organ/external/genital/genital = getorganslot(ORGAN_SLOT_VAGINA)
-	if(genital)
-		switch(required_state)
-			if(REQUIRE_GENITAL_ANY)
+	if(!genital)
+		return FALSE
+	switch(required_state)
+		if(REQUIRE_GENITAL_ANY)
+			return TRUE
+		if(REQUIRE_GENITAL_EXPOSED)
+			return genital.visibility_preference == GENITAL_ALWAYS_SHOW || is_bottomless()
+		if(REQUIRE_GENITAL_UNEXPOSED)
+			if(genital.visibility_preference != GENITAL_ALWAYS_SHOW && !is_bottomless())
 				return TRUE
-			if(REQUIRE_GENITAL_EXPOSED)
-				return genital.visibility_preference == GENITAL_ALWAYS_SHOW || is_bottomless()
-			if(REQUIRE_GENITAL_UNEXPOSED)
-				if(genital.visibility_preference != GENITAL_ALWAYS_SHOW && !is_bottomless())
-					return TRUE
-				else
-					return FALSE
 			else
-				return TRUE
-	return FALSE
+				return FALSE
+		else
+			return TRUE
 
+/// Returns true if the human has a accessible breasts for the parameter. Accepts any of the `REQUIRE_GENITAL_` defines.
 /mob/living/carbon/human/proc/has_breasts(required_state = REQUIRE_GENITAL_ANY)
 	var/obj/item/organ/external/genital/genital = getorganslot(ORGAN_SLOT_BREASTS)
-	if(genital)
-		switch(required_state)
-			if(REQUIRE_GENITAL_ANY)
-				return TRUE
-			if(REQUIRE_GENITAL_EXPOSED)
-				return genital.visibility_preference == GENITAL_ALWAYS_SHOW || is_topless()
-			if(REQUIRE_GENITAL_UNEXPOSED)
-				return genital.visibility_preference != GENITAL_ALWAYS_SHOW && !is_topless()
-			else
-				return TRUE
-	return FALSE
+	if(!genital)
+		return FALSE
+	switch(required_state)
+		if(REQUIRE_GENITAL_ANY)
+			return TRUE
+		if(REQUIRE_GENITAL_EXPOSED)
+			return genital.visibility_preference == GENITAL_ALWAYS_SHOW || is_topless()
+		if(REQUIRE_GENITAL_UNEXPOSED)
+			return genital.visibility_preference != GENITAL_ALWAYS_SHOW && !is_topless()
+		else
+			return TRUE
 
+/// Returns true if the human has an accessible anus for the parameter. Accepts any of the `REQUIRE_GENITAL_` defines.
 /mob/living/carbon/human/proc/has_anus(required_state = REQUIRE_GENITAL_ANY)
 	if(issilicon(src))
 		return TRUE
 	var/obj/item/organ/external/genital/genital = getorganslot(ORGAN_SLOT_ANUS)
-	if(genital)
-		switch(required_state)
-			if(REQUIRE_GENITAL_ANY)
-				return TRUE
-			if(REQUIRE_GENITAL_EXPOSED)
-				return genital.visibility_preference == GENITAL_ALWAYS_SHOW || is_bottomless()
-			if(REQUIRE_GENITAL_UNEXPOSED)
-				return genital.visibility_preference != GENITAL_ALWAYS_SHOW && !is_bottomless()
-			else
-				return TRUE
+	if(!genital)
+		return FALSE
+	switch(required_state)
+		if(REQUIRE_GENITAL_ANY)
+			return TRUE
+		if(REQUIRE_GENITAL_EXPOSED)
+			return genital.visibility_preference == GENITAL_ALWAYS_SHOW || is_bottomless()
+		if(REQUIRE_GENITAL_UNEXPOSED)
+			return genital.visibility_preference != GENITAL_ALWAYS_SHOW && !is_bottomless()
+		else
+			return TRUE
 
+/// Returns true if the human has a accessible feet for the parameter, returning the number of feet the human has if they do. Accepts any of the `REQUIRE_GENITAL_` defines.
 /mob/living/carbon/human/proc/has_arms(required_state = REQUIRE_GENITAL_ANY)
 	var/hand_count = 0
 	var/covered = 0
@@ -155,6 +158,7 @@
 		else
 			return hand_count
 
+/// Returns true if the human has a accessible feet for the parameter, returning the number of feet the human has if they do. Accepts any of the `REQUIRE_GENITAL_` defines.
 /mob/living/carbon/human/proc/has_feet(required_state = REQUIRE_GENITAL_ANY)
 	var/feet_count = 0
 	var/covered = 0
@@ -183,82 +187,80 @@
 		else
 			return feet_count
 
+/// Gets the number of feet the human has.
 /mob/living/carbon/human/proc/get_num_feet()
 	return has_feet(REQUIRE_GENITAL_ANY)
 
-// Weird procs go here
+/// Returns true if the human has a accessible ears for the parameter. Accepts any of the `REQUIRE_GENITAL_` defines.
 /mob/living/carbon/human/proc/has_ears(required_state = REQUIRE_GENITAL_ANY)
 	var/obj/item/organ/genital = getorganslot(ORGAN_SLOT_EARS)
-	if(genital)
-		switch(required_state)
-			if(REQUIRE_GENITAL_ANY)
-				return TRUE
-			if(REQUIRE_GENITAL_EXPOSED)
-				return !get_item_by_slot(ITEM_SLOT_EARS)
-			if(REQUIRE_GENITAL_UNEXPOSED)
-				return get_item_by_slot(ITEM_SLOT_EARS)
-			else
-				return TRUE
-	return FALSE
+	if(!genital)
+		return FALSE
+	switch(required_state)
+		if(REQUIRE_GENITAL_ANY)
+			return TRUE
+		if(REQUIRE_GENITAL_EXPOSED)
+			return !get_item_by_slot(ITEM_SLOT_EARS)
+		if(REQUIRE_GENITAL_UNEXPOSED)
+			return get_item_by_slot(ITEM_SLOT_EARS)
+		else
+			return TRUE
 
+/// Returns true if the human has accessible ear sockets for the parameter. Accepts any of the `REQUIRE_GENITAL_` defines.
 /mob/living/carbon/human/proc/has_earsockets(required_state = REQUIRE_GENITAL_ANY)
 	var/obj/item/organ/genital = getorganslot(ORGAN_SLOT_EARS)
 	if(!genital)
-		switch(required_state)
-			if(REQUIRE_GENITAL_ANY)
-				return TRUE
-			if(REQUIRE_GENITAL_EXPOSED)
-				return !get_item_by_slot(ITEM_SLOT_EARS)
-			if(REQUIRE_GENITAL_UNEXPOSED)
-				return get_item_by_slot(ITEM_SLOT_EARS)
-			else
-				return TRUE
-	return FALSE
+		return FALSE
+	switch(required_state)
+		if(REQUIRE_GENITAL_ANY)
+			return TRUE
+		if(REQUIRE_GENITAL_EXPOSED)
+			return !get_item_by_slot(ITEM_SLOT_EARS)
+		if(REQUIRE_GENITAL_UNEXPOSED)
+			return get_item_by_slot(ITEM_SLOT_EARS)
+		else
+			return TRUE
 
+/// Returns true if the human has accessible eyes for the parameter. Accepts any of the `REQUIRE_GENITAL_` defines.
 /mob/living/carbon/human/proc/has_eyes(required_state = REQUIRE_GENITAL_ANY)
 	var/obj/item/organ/genital = getorganslot(ORGAN_SLOT_EYES)
-	if(genital)
-		switch(required_state)
-			if(REQUIRE_GENITAL_ANY)
-				return TRUE
-			if(REQUIRE_GENITAL_EXPOSED)
-				return !get_item_by_slot(ITEM_SLOT_EYES)
-			if(REQUIRE_GENITAL_UNEXPOSED)
-				return get_item_by_slot(ITEM_SLOT_EYES)
-			else
-				return TRUE
-	return FALSE
+	if(!genital)
+		return FALSE
+	switch(required_state)
+		if(REQUIRE_GENITAL_ANY)
+			return TRUE
+		if(REQUIRE_GENITAL_EXPOSED)
+			return !get_item_by_slot(ITEM_SLOT_EYES)
+		if(REQUIRE_GENITAL_UNEXPOSED)
+			return get_item_by_slot(ITEM_SLOT_EYES)
+		else
+			return TRUE
 
+/// Returns true if the human has accessible eye sockets for the parameter. Accepts any of the `REQUIRE_GENITAL_` defines.
 /mob/living/carbon/human/proc/has_eyesockets(required_state = REQUIRE_GENITAL_ANY)
 	var/obj/item/organ/genital = getorganslot(ORGAN_SLOT_EYES)
 	if(!genital)
-		switch(required_state)
-			if(REQUIRE_GENITAL_ANY)
-				return TRUE
-			if(REQUIRE_GENITAL_EXPOSED)
-				return !get_item_by_slot(ITEM_SLOT_EYES)
-			if(REQUIRE_GENITAL_UNEXPOSED)
-				get_item_by_slot(ITEM_SLOT_EYES)
-			else
-				return TRUE
-	return FALSE
+		return FALSE
+	switch(required_state)
+		if(REQUIRE_GENITAL_ANY)
+			return TRUE
+		if(REQUIRE_GENITAL_EXPOSED)
+			return !get_item_by_slot(ITEM_SLOT_EYES)
+		if(REQUIRE_GENITAL_UNEXPOSED)
+			get_item_by_slot(ITEM_SLOT_EYES)
+		else
+			return TRUE
 
 
 /*
 *	This code needed for changing character's gender by chems
 */
 
+/// Sets the gender of the human, respecting prefs unless it's forced. Do not force in non-admin operations.
 /mob/living/carbon/human/proc/set_gender(ngender = NEUTER, silent = FALSE, update_icon = TRUE, forced = FALSE)
-	if(forced || (!ckey || client?.prefs.read_preference(/datum/preference/toggle/erp/gender_change)))
-		gender = ngender
-		return TRUE
-	return FALSE
-
-/mob/living/carbon/human/set_gender(ngender = NEUTER, silent = FALSE, update_icon = TRUE, forced = FALSE)
 	var/bender = !(gender == ngender)
-	. = ..()
-	if(!.)
-		return
+	if(!forced && !client?.prefs?.read_preference(/datum/preference/toggle/erp/gender_change))
+		return FALSE
 	if(dna && bender)
 		if(ngender == MALE || ngender == FEMALE)
 			dna.features["body_model"] = ngender
@@ -267,6 +269,7 @@
 				visible_message(span_boldnotice("[src] suddenly looks more [adj]!"), span_boldwarning("You suddenly feel more [adj]!"))
 		else if(ngender == NEUTER)
 			dna.features["body_model"] = MALE
+		gender = ngender
 	if(update_icon)
 		update_body()
 
@@ -274,7 +277,7 @@
 *	ICON UPDATING EXTENTION
 */
 
-// Updating vagina slot
+/// Updating vagina slot
 /mob/living/carbon/human/proc/update_inv_vagina()
 	// on_mob stuff
 	remove_overlay(VAGINA_LAYER)
@@ -298,7 +301,7 @@
 	apply_overlay(VAGINA_LAYER)
 	update_mutant_bodyparts()
 
-// Updating anus slot
+/// Updating anus slot
 /mob/living/carbon/human/proc/update_inv_anus()
 	// on_mob stuff
 	remove_overlay(ANUS_LAYER)
@@ -322,7 +325,7 @@
 	apply_overlay(ANUS_LAYER)
 	update_mutant_bodyparts()
 
-// Updating nipples slot
+/// Updating nipples slot
 /mob/living/carbon/human/proc/update_inv_nipples()
 	// on_mob stuff
 	remove_overlay(NIPPLES_LAYER)
@@ -346,7 +349,7 @@
 	apply_overlay(NIPPLES_LAYER)
 	update_mutant_bodyparts()
 
-// Updating penis slot
+/// Updating penis slot
 /mob/living/carbon/human/proc/update_inv_penis()
 	// on_mob stuff
 	remove_overlay(PENIS_LAYER)
@@ -381,6 +384,7 @@
 *	MISC LOGIC
 */
 
+// Handles breaking out of gloves that restrain people.
 /mob/living/carbon/human/resist_restraints()
 	if(gloves?.breakouttime)
 		changeNext_move(CLICK_CD_BREAKOUT)
@@ -389,6 +393,7 @@
 	else
 		..()
 
+/// Checks if the human is wearing a condom, and also hasn't broken it.
 /mob/living/carbon/human/proc/is_wearing_condom()
 	if(!penis || !istype(penis, /obj/item/clothing/sextoy/condom))
 		return FALSE
