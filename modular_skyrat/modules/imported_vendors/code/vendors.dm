@@ -53,7 +53,7 @@
 		),
 	)
 
-	refill_canister = /obj/item/vending_refill/snack
+	refill_canister = /obj/item/vending_refill/snack/imported
 	default_price = PAYCHECK_CREW * 0.5
 	extra_price = PAYCHECK_COMMAND
 	payment_department = NO_FREEBIES
@@ -66,6 +66,9 @@
 	var/datum/language_holder/vendor_languages = get_language_holder()
 	grant_all_languages()
 	vendor_languages.selected_language = language_to_speak
+
+/obj/item/vending_refill/snack/imported
+	machine_name = "NT Sustenance Supplier"
 
 /obj/machinery/vending/imported/yangyu
 	name = "Fūdobendā"
@@ -104,12 +107,16 @@
 		),
 	)
 
+	refill_canister = /obj/item/vending_refill/snack/imported/yangyu
 	language_to_speak = /datum/language/yangyu
 
 /obj/machinery/vending/imported/yangyu/examine_more(mob/user)
 	. = ..()
 	. += span_notice("Someone appears to have written <i>\"Don't trust the sushi!\"</i> in marker on the side of the vendor.")
 	return .
+
+/obj/item/vending_refill/snack/imported/yangyu
+	machine_name = "Fūdobendā"
 
 /obj/machinery/vending/imported/mothic
 	name = "Nomad Fleet Ration Chit Exchange"
@@ -148,7 +155,11 @@
 		),
 	)
 
+	refill_canister = /obj/item/vending_refill/snack/imported/mothic
 	language_to_speak = /datum/language/moffic
+
+/obj/item/vending_refill/snack/imported/mothic
+	machine_name = "Nomad Fleet Ration Chit Exchange"
 
 /obj/machinery/vending/imported/tizirian
 	name = "Tizirian Imported Delicacies"
@@ -186,4 +197,8 @@
 		),
 	)
 
+	refill_canister = /obj/item/vending_refill/snack/imported/tizirian
 	language_to_speak = /datum/language/draconic
+
+/obj/item/vending_refill/snack/imported/tizirian
+	machine_name = "Tizirian Imported Delicacies"
