@@ -60,7 +60,7 @@
 /datum/map_template/ruin/outbound_expedition/firestorm //DawsonKeyes
 	name = "S.D.D.G. Firestorm"
 	suffix = "SDDG_firestorm.dmm"
-	id = "SDDG_firestorm.dmm"
+	id = "SDDG_firestorm"
 	description = "A Syndicate missile ship. What's it doing all the way in the middle of space?"
 
 // Scripted/story ruins
