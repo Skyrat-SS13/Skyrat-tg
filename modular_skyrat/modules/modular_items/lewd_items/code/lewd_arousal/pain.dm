@@ -1,5 +1,7 @@
 // I guess some people enjoy it.
 
+/// Adds or removes pain, this should be used instead of the modifying the var, due to quirk logic.
+/// Makes the human scream and shiver when pain hits the soft limit, provided autoemote is enabled.
 /mob/living/carbon/human/proc/adjust_pain(change_amount = 0)
 	if(stat >= DEAD)
 		return
@@ -18,8 +20,7 @@
 			if(change_amount > 0)
 				adjustArousal(change_amount)
 			if(HAS_TRAIT(src, TRAIT_MASOCHISM))
-				var/pleasure_adjustment = change_amount / 2
-				adjustPleasure(pleasure_adjustment)
+				adjustPleasure(change_amount / 2)
 		pain += change_amount
 	else
 		pain -= abs(change_amount)
