@@ -6,7 +6,7 @@
 	icon_state = "tape_blue"
 	desc = "The tape with some signs of date. Probably used by some aspiring wave listener."
 
-	used_capacity = 380
+	used_capacity = 240
 	storedinfo = list(
 		1 = "<span class='game say'><span class='name'>The universal recorder</span> <span class='message'>says, \"<span class='tape_recorder '>Recording started.</span>\"</span></span>",
 		2 = "<span class='game say'><span class='name'>EAS Announcer</span> <span class='message'>blares, \"<span class=' '>The following message is transmitted at the request of local authorities.</span>\"</span></span>",
@@ -40,7 +40,7 @@
 	icon_state = "tape_white"
 	desc = "The tape with some markings of blood. Probably used by some (now deceased) radio enthusiast."
 
-	used_capacity = 380
+	used_capacity = 240
 	storedinfo = list(
 		1 = "<span class='game say'><span class='name'>The universal recorder</span> <span class='message'>says, \"<span class='tape_recorder '>Recording started.</span>\"</span></span>",
 		2 = "<span class='game say'><span class='name'>EAS Announcer</span> <span class='message'>blares, \"<span class=' '>The following message is transmitted at the request of the New Mexico Department of Emergency Services.</span>\"</span></span>",
@@ -74,7 +74,7 @@
 	icon_state = "tape_purple"
 	desc = "The tape with some... weird vines faintly growing through. Probably used by some alien."
 
-	used_capacity = 380
+	used_capacity = 260
 	storedinfo = list(
 		1 = "<span class='game say'><span class='name'>The universal recorder</span> <span class='message'>says, \"<span class='tape_recorder '>Recording started.</span>\"</span></span>",
 		2 = "<span class='game say'><span class='name'>EAS Announcer</span> <span class='message'>blares, \"<span class=' '>The following message is transmitted at the request of the United Stated Department of Defense. This is not a test.</span>\"</span></span>",
@@ -110,7 +110,7 @@
 	icon_state = "tape_purple"
 	desc = "Freshly-recorded tape, it isn't even signed."
 
-	used_capacity = 380
+	used_capacity = 100
 	storedinfo = list(
 		1 = "<span class='game say'><span class='name'>The universal recorder</span> <span class='message'>says, \"<span class='tape_recorder '>Recording started.</span>\"</span></span>",
 		2 = "<span class='game say'><span class='name'>High Command</span> <span class='message'>blares, \"<span class=' '>Come in officer, do you copy? Officer, do you read me?</span>\"</span></span>",
@@ -132,12 +132,12 @@
 	icon_state = "tape_red"
 	desc = "Relatively freshly-recorded taped, signed as \"radio transmission number XX XX.XX.200X\". Date and serial numbers have been scratched beyond recognition. How convenient."
 
-	used_capacity = 380
+	used_capacity = 140
 	storedinfo = list(
 		1 = "<span class='game say'><span class='name'>The universal recorder</span> <span class='message'>says, \"<span class='tape_recorder '>Recording started.</span>\"</span></span>",
 		2 = "<span class='game say'><span class='name'>Echo-5 Bravo</span> <span class='message'>blares, \"<span class=' '>Any station, any station, this is Echo-5 Bravo! Are there any ground assets able to provide support in Sector 8?</span>\"</span></span>",
 		3 = "<span class='game say'><span class='name'>Echo-5 Bravo</span> <span class='message'>states, \"<span class=' '>Any station, any station, this is Echo-5 Bravo! Are there any ground assets able to provide support in Sector 8? Is anyone reading this?</span>\"</span></span>",
-		4 = "<span class='game say'><span class='name'>Echo-5 Yankee</span> <span class='message'>states, \"<span class=' '>This is Echo-5 Bravo! No longer in a position to assist. We are moving to LZ Finch!</span>\"</span></span>",
+		4 = "<span class='game say'><span class='name'>Echo-5 Yankee</span> <span class='message'>states, \"<span class=' '>This is Echo-5 Yankee! No longer in a position to assist. We are moving to LZ Finch!</span>\"</span></span>",
 		5 = "<span class='game say'><span class='name'>Echo-5 Bravo</span> <span class='message'>clarifies, \"<span class=' '>The hell are you saying? We are freaking surrounded over here!</span>\"</span></span>",
 		6 = "<span class='game say'><span class='name'>Echo-5 Yankee</span> <span class='message'>clarifies, \"<span class=' '>Push out the the nearest LZ and await further instructions!</span>\"</span></span>",
 		7 = "<span class='game say'><span class='name'>The universal recorder</span> <span class='message'>says, \"<span class='tape_recorder '>Recording stopped.</span>\"</span></span>",
@@ -156,7 +156,7 @@
 	icon_state = "tape_blue"
 	desc = "Blood-covered tape. That's pretty much it."
 
-	used_capacity = 380
+	used_capacity = 120
 	storedinfo = list(
 		1 = "<span class='game say'><span class='name'>The universal recorder</span> <span class='message'>says, \"<span class='tape_recorder '>Recording started.</span>\"</span></span>",
 		2 = "<span class='game say'><span class='name'>Echo-3 Juliet</span> <span class='message'>blares, \"<span class=' '>Any station, any station, this is Echo-3 Juliet... My team ambushed... I am unjred... I'm losing a lot of blood here. Left leg.</span>\"</span></span>",
