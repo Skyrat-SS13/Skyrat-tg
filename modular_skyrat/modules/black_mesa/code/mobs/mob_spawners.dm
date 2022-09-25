@@ -95,6 +95,7 @@
 	name = "HECU"
 	outfit = /datum/outfit/hecucorpse
 	icon_state = "corpsebartender" /// It 'vaguely' looks like HECU
+	brute_damage = 1000
 
 /datum/outfit/hecucorpse
 	name = "BMRF HECU Corpse"
@@ -112,6 +113,7 @@
 	name = "Science Team"
 	outfit = /datum/outfit/sciteamcorpse
 	icon_state = "corpsescientist"
+	brute_damage = 1000
 
 /datum/outfit/sciteamcorpse
 	name = "BMRF Science Team Corpse"
@@ -125,6 +127,7 @@
 	name = "Security Guard"
 	outfit = /datum/outfit/barneycorpse
 	icon_state = "corpsedoctor" /// It 'vaguely' looks like the guard
+	brute_damage = 1000
 
 /datum/outfit/barneycorpse
 	name = "BMRF Security Guard Corpse"
