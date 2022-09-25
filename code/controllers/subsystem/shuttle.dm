@@ -135,7 +135,7 @@ SUBSYSTEM_DEF(shuttle)
 	/// Did the supermatter start a cascade event?
 	var/supermatter_cascade = FALSE
 
-/datum/controller/subsystem/shuttle/Initialize(timeofday)
+/datum/controller/subsystem/shuttle/Initialize()
 	order_number = rand(1, 9000)
 
 	var/list/pack_processing = subtypesof(/datum/supply_pack)
@@ -170,7 +170,7 @@ SUBSYSTEM_DEF(shuttle)
 		log_mapping("No /obj/docking_port/mobile/emergency/backup placed on the map!")
 	if(!supply)
 		log_mapping("No /obj/docking_port/mobile/supply placed on the map!")
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/shuttle/proc/setup_shuttles(list/stationary)
 	for(var/obj/docking_port/stationary/port as anything in stationary)
@@ -831,6 +831,8 @@ SUBSYSTEM_DEF(shuttle)
 	// plugging the existing shuttles old values in works fine.
 	preview_shuttle.timer = timer
 	preview_shuttle.mode = mode
+
+	preview_shuttle.postregister(replace)
 
 	// TODO indicate to the user that success happened, rather than just
 	// blanking the modification tab

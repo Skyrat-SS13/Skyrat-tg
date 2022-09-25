@@ -434,6 +434,12 @@
 
 	var/admin_forced = FALSE //SKYRAT EDIT ADDITION
 
+/**
+ * Actions to be taken after shuttle is loaded but before it has been moved out of transit z-level to its final location
+ *
+ * Arguments:
+ * * replace - TRUE if this shuttle is replacing an existing one. FALSE by default.
+ */
 /obj/docking_port/mobile/register(replace = FALSE)
 	. = ..()
 	if(!shuttle_id)
@@ -455,6 +461,15 @@
 			SSshuttle.assoc_mobile[shuttle_id] = 1
 
 	SSshuttle.mobile_docking_ports += src
+
+/**
+ * Actions to be taken after shuttle is loaded and has been moved to its final location
+ *
+ * Arguments:
+ * * replace - TRUE if this shuttle is replacing an existing one. FALSE by default.
+ */
+/obj/docking_port/mobile/proc/postregister(replace = FALSE)
+	return
 
 /obj/docking_port/mobile/unregister()
 	. = ..()
