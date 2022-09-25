@@ -14,6 +14,11 @@
 		/obj/machinery/vending/imported/tizirian,
 	)
 
+/datum/supply_pack/vending/imported/fill(obj/structure/closet/crate/target_crate)
+	. = ..()
+	for(var/obj/vendor_refill as anything in typesof(/obj/item/vending_refill/snack/imported))
+		new vendor_refill(target_crate)
+
 /obj/machinery/vending/imported
 	name = "NT Sustenance Supplier"
 	desc = "A vending machine serving up only the finest of human college student food."
