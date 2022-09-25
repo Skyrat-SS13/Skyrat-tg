@@ -43,3 +43,7 @@
 	exposed_mob.adjust_pain(pain_adjust_amount)
 	if(prob(2))
 		exposed_mob.emote(pick("moan", "twitch_s"))
+
+// This chem shouldn't affect user's mood negatively.
+/datum/reagent/drug/aphrodisiac/dopamine/overdose_process(mob/living/carbon/human/exposed_mob)
+	return

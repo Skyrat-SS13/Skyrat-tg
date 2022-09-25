@@ -188,6 +188,11 @@
 				exposed_mob.update_body()
 				return
 
+// Notify the user that they're overdosing. Doesn't affect their mood.
+/datum/reagent/drug/aphrodisiac/incubus_draft/overdose_process(mob/living/carbon/human/exposed_mob)
+	to_chat(exposed_mob, span_userdanger("You feel like you took too much [name]!"))
+	exposed_mob.add_mood_event("[type]_overdose", /datum/mood_event/minor_overdose, name)
+
 /datum/chemical_reaction/incubus_draft
 	results = list(/datum/reagent/drug/aphrodisiac/incubus_draft = 8)
 	required_reagents = list(/datum/reagent/blood = 5, /datum/reagent/medicine/c2/synthflesh = 2, /datum/reagent/carbon = 2, /datum/reagent/drug/aphrodisiac/crocin = 2, /datum/reagent/medicine/salglu_solution = 1)

@@ -81,6 +81,10 @@
 	if(modified_genitals)
 		exposed_mob.update_body()
 
+// Notify the user that they're overdosing. Doesn't affect their mood.
+/datum/reagent/drug/aphrodisiac/camphor/overdose_process(mob/living/carbon/human/exposed_mob)
+	to_chat(exposed_mob, span_userdanger("You feel like you took too much [name]!"))
+	exposed_mob.add_mood_event("[type]_overdose", /datum/mood_event/minor_overdose, name)
 
 /datum/chemical_reaction/camphor
 	results = list(/datum/reagent/drug/aphrodisiac/camphor = 6)

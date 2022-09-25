@@ -184,6 +184,11 @@
 			mob_testicles.genital_size -= 1
 			return
 
+// Notify the user that they're overdosing. Doesn't affect their mood.
+/datum/reagent/drug/aphrodisiac/succubus_milk/overdose_process(mob/living/carbon/human/exposed_mob)
+	to_chat(exposed_mob, span_userdanger("You feel like you took too much [name]!"))
+	exposed_mob.add_mood_event("[type]_overdose", /datum/mood_event/minor_overdose, name)
+
 /datum/chemical_reaction/succubus_milk
 	results = list(/datum/reagent/drug/aphrodisiac/succubus_milk = 8)
 	required_reagents = list(/datum/reagent/medicine/salglu_solution = 1, /datum/reagent/consumable/milk = 1, /datum/reagent/medicine/c2/synthflesh = 2, /datum/reagent/silicon = 3, /datum/reagent/drug/aphrodisiac/crocin = 3)
