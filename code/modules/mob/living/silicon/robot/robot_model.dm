@@ -208,7 +208,7 @@
 		var/list/reskin_icons = list()
 		for(var/skin in borg_skins)
 			var/list/details = borg_skins[skin]
-			reskin_icons[skin] = image(icon = details[SKIN_ICON] || 'icons/mob/robots.dmi', icon_state = details[SKIN_ICON_STATE])
+			reskin_icons[skin] = image(icon = details[SKIN_ICON] || 'icons/mob/silicon/robots.dmi', icon_state = details[SKIN_ICON_STATE])
 			//SKYRAT EDIT ADDITION BEGIN - ALTBORGS
 			if (!isnull(details[SKIN_FEATURES]))
 				if (R_TRAIT_WIDE in details[SKIN_FEATURES])
