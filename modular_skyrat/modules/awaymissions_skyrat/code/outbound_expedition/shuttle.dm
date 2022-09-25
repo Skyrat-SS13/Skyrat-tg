@@ -1,10 +1,5 @@
 #define TIME_PER_MESSAGE 2.5 SECONDS
-/*
-/datum/map_template/shuttle/vanguard_corvette
-	prefix = "_maps/shuttles/skyrat/"
-	suffix = "corvette"
-	port_id = "vanguard"
-	who_can_purchase = null*/
+#define REVIVER_INSERT_POINT 2
 
 /obj/machinery/computer/vanguard_shuttle
 	name = "Vanguard Corvette Controller"
@@ -155,7 +150,11 @@
 		balloon_alert(user, "uploading stopped")
 		return
 	playsound(src, 'sound/machines/ping.ogg', 75)
-	for(var/i in 1 to rand(5, 7))
+	var/randoms_to_make = rand(5, 7)
+	for(var/i in 1 to randoms_to_make - REVIVER_INSERT_POINT)
+		outbound_controller.event_order += "random"
+	outbound_controller.event_order += /datum/outbound_random_event/ruin/guaranteed/reviver
+	for(var/i in 1 to REVIVER_INSERT_POINT)
 		outbound_controller.event_order += "random"
 	outbound_controller.event_order += /datum/outbound_random_event/story/the_end
 	outbound_controller.jumps_to_dest = outbound_controller.event_order.Find(/datum/outbound_random_event/story/the_end)
@@ -164,3 +163,4 @@
 	outbound_controller.current_event = null
 
 #undef TIME_PER_MESSAGE
+#undef REVIVER_INSERT_POINT

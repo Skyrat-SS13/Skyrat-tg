@@ -51,6 +51,18 @@
 	id = "old_shipyard"
 	description = "A shipyard in the depths of space, somehow still around."
 
+/datum/map_template/ruin/outbound_expedition/reviver_facility //DawsonKeyes
+	name = "Reviver Facility"
+	suffix = "solgov_fuckery.dmm"
+	id = "solgov_fuckery"
+	description = "A government facility containing the results of a very fucked up experiment. Might be something worthwhile onboard, though..."
+
+/datum/map_template/ruin/outbound_expedition/firestorm //DawsonKeyes
+	name = "S.D.D.G. Firestorm"
+	suffix = "SDDG_firestorm.dmm"
+	id = "SDDG_firestorm.dmm"
+	description = "A Syndicate missile ship. What's it doing all the way in the middle of space?"
+
 // Scripted/story ruins
 
 /datum/map_template/ruin/outbound_expedition/radar_station

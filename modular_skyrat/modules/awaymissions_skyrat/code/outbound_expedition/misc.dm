@@ -48,12 +48,29 @@
 	OUTBOUND_CONTROLLER
 	outbound_controller.tell_objective(owner)
 
-/*
-/datum/action/opfor/IsAvailable()
-	if(!target)
-		return FALSE
-	. = ..()
-	if(!.)
+/obj/item/reviver
+	name = "strange injector"
+	desc = "It contains a strange fluid, glowing a very light, neon blue. A label on the back reads, \"WARNING: ONLY USE ON DEAD\""
+	icon = 'icons/obj/medical/syringe.dmi'
+	icon_state = "combat_hypo"
+	/// How many uses do we have left
+	var/uses = 1
+
+/obj/item/reviver/attack(mob/living/target_mob, mob/living/user, params)
+	if(!istype(target_mob))
+		return ..()
+	if(!uses)
+		to_chat(user, span_warning("There's no uses left in [src]!"))
 		return
-	return TRUE
-*/
+	to_chat(user, span_notice("You prepare to inject [target_mob]..."))
+	if(!do_after(user, 5 SECONDS, target_mob))
+		return
+	if(target_mob.stat == DEAD)
+		target_mob.revive(TRUE, TRUE) // One use omni-heal if you're dead
+		to_chat(user, span_notice("You inject [target_mob] with [src], causing their limp body to move again!"))
+	else
+		SSradiation.irradiate(target_mob) // If you're not dead you're fucked up instead
+		target_mob.adjustToxLoss(MAX_LIVING_HEALTH * 3)
+		target_mob.Paralyze(15 SECONDS, ignore_canstun = TRUE)
+		to_chat(user, span_warning("You inject [target_mob] with [src], causing them to seize up and collapse!"))
+	uses--

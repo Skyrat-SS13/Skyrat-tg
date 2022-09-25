@@ -154,8 +154,8 @@
 			final_event_prob[event_type] = round(event_chances[event_type] * calculated_difficulty)
 	var/event_type = pick_weight(final_event_prob)
 	var/list/possible_events = event_datums.Copy()
-	for(var/datum/event as anything in possible_events)
-		if(!istype(event, event_type))
+	for(var/datum/outbound_random_event/event as anything in possible_events)
+		if(!istype(event, event_type) || event.weight == 0)
 			possible_events.Remove(event)
 	var/pos_num = event_order.Find("random")
 	if(!is_system_dead("Sensors")) //thrusters shot? You'll only make a jump half the time
@@ -326,8 +326,10 @@
 	participating_mobs |= living_mob
 	RegisterSignal(living_mob, COMSIG_PARENT_QDELETING, .proc/remove_mob)
 	give_objective(living_mob, objectives[/datum/outbound_objective/talk_person])
-	var/datum/action/outbound_objective/remember_obj = new
-	remember_obj.Grant(living_mob)
+	var/datum/action/found_action = locate(/datum/action/outbound_objective) in living_mob.actions
+	if(!found_action)
+		var/datum/action/outbound_objective/remember_obj = new
+		remember_obj.Grant(living_mob)
 	if(!HAS_TRAIT(living_mob, TRAIT_DNR))
 		ADD_TRAIT(living_mob, TRAIT_DNR, src) // leaving for now, might remove idk
 
