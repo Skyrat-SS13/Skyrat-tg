@@ -14,7 +14,7 @@
 	morphing_human.set_species(/datum/species/lizard)
 	var/obj/item/lizard_shoes = morphing_human.get_item_by_slot(ITEM_SLOT_FEET)
 
-	TEST_ASSERT_NOTEQUAL(human_shoes, lizard_shoes, "Lizard still has shoes after changing species.")
+	// TEST_ASSERT_NOTEQUAL(human_shoes, lizard_shoes, "Lizard still has shoes after changing species.") // SKYRAT EDIT REMOVAL - This part of the test is useless as it's behavior that we actually WANT from those shoes, here.
 
 	// Testing whether item-species restrictions properly blocks changing into a blacklisted species.
 	morphing_human.set_species(/datum/species/monkey)
