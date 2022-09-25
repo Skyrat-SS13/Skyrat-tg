@@ -122,7 +122,7 @@
 			else if(poly_size == "big")
 				target.adjustArousal(8)
 				target.adjustPleasure(10)
-				target.adjustPain(2)
+				target.adjust_pain(2)
 				if(prob(60) && (target.stat != DEAD))
 					target.try_lewd_autoemote(pick("twitch_s", "moan", "gasp"))
 			if(side_double)

@@ -73,7 +73,7 @@
 			if(prob(40) && (target.stat != DEAD))
 				target.try_lewd_autoemote(pick("twitch_s", "moan", "blush", "gasp"))
 			target.adjustArousal(2)
-			target.adjustPain(4)
+			target.adjust_pain(4)
 			target.apply_status_effect(/datum/status_effect/spanked)
 			if(HAS_TRAIT(target, TRAIT_MASOCHISM || TRAIT_BIMBO))
 				target.add_mood_event("pervert spanked", /datum/mood_event/perv_spanked)

@@ -3,8 +3,10 @@
 /mob/living/carbon/human/proc/get_pain()
 	return pain
 
-/mob/living/carbon/human/proc/adjustPain(change_amount = 0)
-	if(stat != DEAD && client?.prefs?.read_preference(/datum/preference/toggle/erp))
+/mob/living/carbon/human/proc/adjust_pain(change_amount = 0)
+	if(stat >= DEAD)
+		return
+	if(client?.prefs?.read_preference(/datum/preference/toggle/erp))
 		if(pain > pain_limit || change_amount > pain_limit / 10) // pain system // YOUR SYSTEM IS PAIN, WHY WE'RE GETTING AROUSED BY STEPPING ON ANTS?!
 			if(HAS_TRAIT(src, TRAIT_MASOCHISM))
 				var/arousal_adjustment = change_amount - (pain_limit / 10)
@@ -38,7 +40,7 @@
 	switch(damagetype)
 		if(BRUTE)
 			var/amount = forced ? damage : damage * hit_percent * brutemod * affected_mob.physiology.brute_mod
-			INVOKE_ASYNC(affected_mob, /mob/living/carbon/human/.proc/adjustPain, amount)
+			INVOKE_ASYNC(affected_mob, /mob/living/carbon/human/.proc/adjust_pain, amount)
 		if(BURN)
 			var/amount = forced ? damage : damage * hit_percent * burnmod * affected_mob.physiology.burn_mod
-			INVOKE_ASYNC(affected_mob, /mob/living/carbon/human/.proc/adjustPain, amount)
+			INVOKE_ASYNC(affected_mob, /mob/living/carbon/human/.proc/adjust_pain, amount)

@@ -2,7 +2,9 @@
 	return pleasure
 
 /mob/living/carbon/human/proc/adjustPleasure(pleas = 0)
-	if(stat != DEAD && client?.prefs?.read_preference(/datum/preference/toggle/erp))
+	if(stat >= DEAD)
+		return
+	if(client?.prefs?.read_preference(/datum/preference/toggle/erp))
 		pleasure += pleas
 		if(pleasure >= 100) // lets cum
 			climax(FALSE)

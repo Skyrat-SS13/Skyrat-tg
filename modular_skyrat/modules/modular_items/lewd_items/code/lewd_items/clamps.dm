@@ -75,7 +75,7 @@
 		return
 	target.adjustArousal(1 * delta_time)
 	if(target.pain < 27.5) //To prevent maxing pain by just pair of clamps.
-		target.adjustPain(1 * delta_time)
+		target.adjust_pain(1 * delta_time)
 
 	if(target.arousal < 15)
 		target.adjustArousal(1 * delta_time)

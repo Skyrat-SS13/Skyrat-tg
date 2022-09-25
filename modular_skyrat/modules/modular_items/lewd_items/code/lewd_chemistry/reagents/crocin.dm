@@ -34,7 +34,7 @@
 
 	exposed_mob.adjustArousal(arousal_adjust_amount)
 	exposed_mob.adjustPleasure(pleasure_adjust_amount)
-	exposed_mob.adjustPain(pain_adjust_amount)
+	exposed_mob.adjust_pain(pain_adjust_amount)
 
 	var/modified_genitals = FALSE
 	for(var/obj/item/organ/external/genital/mob_genitals in exposed_mob.external_organs)

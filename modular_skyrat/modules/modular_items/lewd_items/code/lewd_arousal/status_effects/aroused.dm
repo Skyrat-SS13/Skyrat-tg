@@ -36,4 +36,4 @@
 
 	affected_mob.adjustArousal(temp_arousal)
 	affected_mob.adjustPleasure(temp_pleasure)
-	affected_mob.adjustPain(temp_pain)
+	affected_mob.adjust_pain(temp_pain)

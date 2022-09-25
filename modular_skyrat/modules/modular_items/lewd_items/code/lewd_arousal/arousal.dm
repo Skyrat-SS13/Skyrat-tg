@@ -1,7 +1,7 @@
-
-
 /mob/living/carbon/human/proc/adjustArousal(arous = 0)
-	if(stat != DEAD && client?.prefs?.read_preference(/datum/preference/toggle/erp))
+	if(stat >= DEAD)
+		return
+	if(client?.prefs?.read_preference(/datum/preference/toggle/erp))
 		arousal += arous
 
 		var/arousal_flag = AROUSAL_NONE

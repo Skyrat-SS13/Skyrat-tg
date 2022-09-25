@@ -116,4 +116,4 @@
 		target.adjustPleasure(1 * delta_time)
 		if(!(target.pain < 22.5)) //yeah, this will cause pain. No buttplug gib intended, sry
 			return
-		target.adjustPain(target*delta_time)
+		target.adjust_pain(target*delta_time)

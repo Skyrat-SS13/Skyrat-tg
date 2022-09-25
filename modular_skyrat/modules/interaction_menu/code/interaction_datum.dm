@@ -121,10 +121,10 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 	if(lewd)
 		user.adjustPleasure(user_pleasure)
 		user.adjustArousal(user_arousal)
-		user.adjustPain(user_pain)
+		user.adjust_pain(user_pain)
 		target.adjustPleasure(target_pleasure)
 		target.adjustArousal(target_arousal)
-		target.adjustPain(target_pain)
+		target.adjust_pain(target_pain)
 
 /datum/interaction/proc/load_from_json(path)
 	var/fpath = path

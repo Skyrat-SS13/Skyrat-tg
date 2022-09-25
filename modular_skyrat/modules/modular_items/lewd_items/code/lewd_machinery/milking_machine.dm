@@ -612,7 +612,7 @@
 /obj/structure/chair/milking_machine/proc/increase_current_mob_arousal(delta_time)
 	src.current_mob.adjustArousal(src.arousal_amounts[src.current_mode] * delta_time)
 	src.current_mob.adjustPleasure(src.pleasure_amounts[src.current_mode] * delta_time)
-	src.current_mob.adjustPain(src.pain_amounts[src.current_mode] * delta_time)
+	src.current_mob.adjust_pain(src.pain_amounts[src.current_mode] * delta_time)
 
 // Energy consumption processor
 /obj/structure/chair/milking_machine/proc/draw_power_from_cell(delta_time)
