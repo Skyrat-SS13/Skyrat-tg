@@ -36,6 +36,8 @@
 	desc = "Even after death, I still have to wear this horrible tie!"
 	icon_state = "scientist_zombie"
 	icon_living = "scientist_zombie"
+	loot = list(/obj/effect/mob_spawn/corpse/human/scientist_zombie)
+	del_on_death = 1
 
 
 /mob/living/simple_animal/hostile/blackmesa/xen/headcrab_zombie/guard
@@ -45,6 +47,8 @@
 	icon_living = "security_zombie"
 	maxHealth = 140 // Armor!
 	health = 140
+	loot = list(/obj/effect/mob_spawn/corpse/human/guard_zombie)
+	del_on_death = 1
 
 /mob/living/simple_animal/hostile/blackmesa/xen/headcrab_zombie/hecu
 	name = "zombified marine"
@@ -53,6 +57,8 @@
 	icon_living = "hecu_zombie"
 	maxHealth = 190 // More armor!
 	health = 190
+	loot = list(/obj/effect/mob_spawn/corpse/human/hecu_zombie)
+	del_on_death = 1
 
 /mob/living/simple_animal/hostile/blackmesa/xen/headcrab_zombie/hev
 	name = "zombified hazardous environment specialist"

@@ -106,12 +106,12 @@
 	round_type = AMMO_TYPE_RUBBER
 
 /obj/item/gun/ballistic/automatic/pistol/g17/mesa
-	name = "\improper Glock-17"
-	desc = "A weapon from bygone times, and this is the exact 21st century version. In fact, even more reliable. Chambered in 9x19mm Peacekeeper."
+	name = "\improper Glock 20"
+	desc = "A weapon from bygone times, and this is the exact 21st century version. In fact, even more reliable. Chambered in 10mm Auto."
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/glock.dmi'
 	icon_state = "glock_mesa"
 	w_class = WEIGHT_CLASS_NORMAL
-	mag_type = /obj/item/ammo_box/magazine/multi_sprite/g17
+	mag_type = /obj/item/ammo_box/magazine/multi_sprite/ladon // C o m p a t i b i l i t y .
 	fire_sound = 'modular_skyrat/master_files/sound/weapons/glock17_fire.ogg'
 	rack_sound = 'sound/weapons/gun/pistol/rack.ogg'
 	lock_back_sound = 'sound/weapons/gun/pistol/slide_lock.ogg'
