@@ -29,10 +29,7 @@
 	var/matching = light && BR == light.light_range && PO == light.light_power && CO == light.light_color
 	if(!matching)
 		switchcount++
-		if(rigged)
-			if(status == LIGHT_OK && trigger)
-				explode()
-		else if( prob( min(60, (switchcount**2)*0.01) ) )
+		if( prob( min(60, (switchcount**2)*0.01) ) )
 			if(trigger)
 				burn_out()
 		else

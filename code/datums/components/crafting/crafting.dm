@@ -42,6 +42,9 @@
 					CAT_SANDWICH,
 					CAT_SOUP,
 					CAT_SPAGHETTI,
+		// SKYRAT ADDITION BEGIN - Teshari food category
+					CAT_TESHARI,
+		// SKYRAT ADDITION END
 				),
 				CAT_DRINK = CAT_NONE,
 				CAT_CLOTHING = CAT_NONE,

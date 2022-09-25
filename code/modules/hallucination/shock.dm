@@ -26,12 +26,8 @@
 	shock_image.appearance_flags |= KEEP_APART
 	shock_image.color = rgb(0, 0, 0)
 	shock_image.override = TRUE
-<<<<<<< HEAD
-	electrocution_skeleton_anim = image('icons/mob/human.dmi', target, icon_state = "electrocuted_base", layer=ABOVE_MOB_LAYER)
-=======
 
 	electrocution_skeleton_anim = image(electrocution_icon, hallucinator, icon_state = electrocution_icon_state, layer = ABOVE_MOB_LAYER)
->>>>>>> 6baebf47a12 (Completely refactors hallucinations, and also adds a few  (#69706))
 	electrocution_skeleton_anim.appearance_flags |= RESET_COLOR|KEEP_APART
 
 	to_chat(hallucinator, span_userdanger("You feel a powerful shock course through your body!"))
