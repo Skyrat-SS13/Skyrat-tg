@@ -1,3 +1,6 @@
+/obj/item/organ/external/genital/breasts
+	internal_fluid_datum = /datum/reagent/consumable/breast_milk
+
 /obj/item/organ/external/genital/breasts/build_from_dna(datum/dna/DNA, associated_key)
 	. = ..()
 	var/breasts_capacity = 0
@@ -12,4 +15,4 @@
 			breasts_capacity = 2.5
 		if("sextuple")
 			breasts_capacity = 3
-	internal_fluids = new /datum/reagents(size * breasts_capacity * 60) // This seems like it could balloon drastically out of proportion with larger breast sizes.
+	internal_fluid_maximum = size * breasts_capacity * 60 // This seems like it could balloon drastically out of proportion with larger breast sizes.

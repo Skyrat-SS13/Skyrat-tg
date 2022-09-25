@@ -319,17 +319,19 @@
 /mob/living/carbon/human/examine(mob/user)
 	. = ..()
 	var/mob/living/examiner = user
-	if(stat != DEAD && !HAS_TRAIT(src, TRAIT_FAKEDEATH) && src != examiner && HAS_TRAIT(examiner, TRAIT_EMPATH))
-		if(examiner.client?.prefs?.read_preference(/datum/preference/toggle/erp))
-			switch(arousal)
-				if(10 to AROUSAL_LOW)
-					. += span_purple("[p_they()] [p_are()] slightly blushed.") + "\n"
-				if(AROUSAL_LOW to AROUSAL_MEDIUM)
-					. += span_purple("[p_they()] [p_are()] quite aroused and seems to be stirring up lewd thoughts in [p_their()] head.") + "\n"
-				if(AROUSAL_HIGH to AROUSAL_AUTO_CLIMAX_THRESHOLD)
-					. += span_purple("[p_they()] [p_are()] aroused as hell.") + "\n"
-				if(AROUSAL_AUTO_CLIMAX_THRESHOLD to INFINITY)
-					. += span_purple("[p_they()] [p_are()] extremely excited, exhausting from entolerable desire.") + "\n"
-		else if(arousal > 10)
-			. += span_purple("[p_they()] [p_are()] slightly blushed.") + "\n"
+	if(stat >= DEAD || HAS_TRAIT(src, TRAIT_FAKEDEATH) || src == examiner || !HAS_TRAIT(examiner, TRAIT_EMPATH))
+		return
+
+	if(examiner.client?.prefs?.read_preference(/datum/preference/toggle/erp))
+		switch(arousal)
+			if(AROUSAL_MINIMUM_DETECTABLE to AROUSAL_LOW)
+				. += span_purple("[p_they()] [p_are()] slightly blushed.") + "\n"
+			if(AROUSAL_LOW to AROUSAL_MEDIUM)
+				. += span_purple("[p_they()] [p_are()] quite aroused and seems to be stirring up lewd thoughts in [p_their()] head.") + "\n"
+			if(AROUSAL_HIGH to AROUSAL_AUTO_CLIMAX_THRESHOLD)
+				. += span_purple("[p_they()] [p_are()] aroused as hell.") + "\n"
+			if(AROUSAL_AUTO_CLIMAX_THRESHOLD to INFINITY)
+				. += span_purple("[p_they()] [p_are()] extremely excited, exhausting from entolerable desire.") + "\n"
+	else if(arousal > AROUSAL_MINIMUM_DETECTABLE)
+		. += span_purple("[p_they()] [p_are()] slightly blushed.") + "\n"
 

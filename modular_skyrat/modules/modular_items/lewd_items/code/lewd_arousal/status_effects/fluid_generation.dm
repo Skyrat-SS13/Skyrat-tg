@@ -16,21 +16,19 @@
 	var/interval = 5
 	if(balls)
 		if(affected_mob.arousal >= AROUSAL_LOW)
-			var/regen = (affected_mob.arousal / 25) * (balls.internal_fluids.maximum_volume / 235) * interval
-			balls.internal_fluids.add_reagent(/datum/reagent/consumable/cum, regen)
+			var/regen = (affected_mob.arousal / 25) * (balls.internal_fluid_maximum / 235) * interval
+			balls.internal_fluid_count += regen
 
 	if(breasts)
 		if(breasts.lactates == TRUE)
-			var/regen = ((owner.nutrition / (NUTRITION_LEVEL_WELL_FED / 100)) / 100) * (breasts.internal_fluids.maximum_volume / 11000) * interval
-			if(!breasts.internal_fluids.holder_full())
+			var/regen = ((owner.nutrition / (NUTRITION_LEVEL_WELL_FED / 100)) / 100) * (breasts.internal_fluid_maximum / 11000) * interval
+			if(!breasts.internal_fluid_full())
 				owner.adjust_nutrition(-regen / 2)
-				breasts.internal_fluids.add_reagent(/datum/reagent/consumable/breast_milk, regen)
+				breasts.adjust_internal_fluid(regen)
 
 	if(vagina)
 		if(affected_mob.arousal >= AROUSAL_LOW)
-			var/regen = (affected_mob.arousal / 25) * (vagina.internal_fluids.maximum_volume / 250) * interval
-			vagina.internal_fluids.add_reagent(/datum/reagent/consumable/femcum, regen)
-			if(vagina.internal_fluids.holder_full() && regen >= 0.15)
-				regen = regen
+			var/regen = (affected_mob.arousal / 25) * (vagina.internal_fluid_maximum / 250) * interval
+			vagina.adjust_internal_fluid(regen)
 		else
-			vagina.internal_fluids.remove_any(0.05)
+			vagina.adjust_internal_fluid(-0.05)

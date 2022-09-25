@@ -15,7 +15,7 @@
 
 	var/obj/item/organ/external/genital/testicles/balls = affected_mob.getorganslot(ORGAN_SLOT_TESTICLES)
 	if(balls)
-		if(balls.internal_fluids.holder_full())
+		if(balls.internal_fluid_full())
 			temp_arousal += 0.08
 
 	if(HAS_TRAIT(affected_mob, TRAIT_MASOCHISM))

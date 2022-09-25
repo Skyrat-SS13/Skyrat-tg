@@ -591,17 +591,17 @@
 
 	if(istype(current_selected_organ, /obj/item/organ/external/genital/breasts))
 		if(current_selected_organ.reagents.total_volume > 0)
-			current_selected_organ.internal_fluids.trans_to(milk_vessel, milk_retrive_amount[current_mode] * fluid_multiplier * delta_time)
+			current_selected_organ.transfer_internal_fluid(milk_vessel, milk_retrive_amount[current_mode] * fluid_multiplier * delta_time)
 		else
 			return
 	else if (istype(current_selected_organ, /obj/item/organ/external/genital/vagina))
 		if(current_selected_organ.reagents.total_volume > 0)
-			current_selected_organ.internal_fluids.trans_to(girlcum_vessel, girlcum_retrive_amount[current_mode] * fluid_multiplier * delta_time)
+			current_selected_organ.transfer_internal_fluid(girlcum_vessel, girlcum_retrive_amount[current_mode] * fluid_multiplier * delta_time)
 		else
 			return
 	else if (istype(current_selected_organ, /obj/item/organ/external/genital/testicles))
 		if(current_selected_organ.reagents.total_volume > 0)
-			current_selected_organ.internal_fluids.trans_to(semen_vessel, semen_retrive_amount[current_mode] * fluid_multiplier * delta_time)
+			current_selected_organ.transfer_internal_fluid(semen_vessel, semen_retrive_amount[current_mode] * fluid_multiplier * delta_time)
 		else
 			return
 	else
