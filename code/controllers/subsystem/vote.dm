@@ -5,6 +5,7 @@ SUBSYSTEM_DEF(vote)
 	name = "Vote"
 	wait = 1 SECONDS
 	flags = SS_KEEP_TIMING
+	init_order = INIT_ORDER_VOTE
 	runlevels = RUNLEVEL_LOBBY | RUNLEVELS_DEFAULT
 
 	/// A list of all generated action buttons
@@ -18,7 +19,7 @@ SUBSYSTEM_DEF(vote)
 	/// A list of all ckeys currently voting for the current vote.
 	var/list/voting = list()
 
-/datum/controller/subsystem/vote/Initialize(start_timeofday)
+/datum/controller/subsystem/vote/Initialize()
 	for(var/vote_type in subtypesof(/datum/vote))
 		var/datum/vote/vote = new vote_type()
 		if(!vote.is_accessible_vote())
@@ -27,7 +28,7 @@ SUBSYSTEM_DEF(vote)
 
 		possible_votes[vote.name] = vote
 
-	return ..()
+	return SS_INIT_SUCCESS
 
 
 // Called by master_controller
