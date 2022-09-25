@@ -28,11 +28,10 @@
 
 /mob/living/carbon/human/examine(mob/user)
 	. = ..()
-	var/mob/living/affected_mob = user
-	if(stat != DEAD && !HAS_TRAIT(src, TRAIT_FAKEDEATH) && src != affected_mob)
-		if(src != user)
-			if(has_status_effect(/datum/status_effect/spanked) && is_bottomless())
-				. += span_purple("[user.p_their(TRUE)] butt has a red tint to it.") + "\n"
+	if(stat >= DEAD || HAS_TRAIT(src, TRAIT_FAKEDEATH) || src != user || !has_status_effect(/datum/status_effect/spanked) || !is_bottomless())
+		return
+
+	. += span_purple("[user.p_their(TRUE)] butt has a red tint to it.") + "\n"
 
 //Mood boost for masochist
 /datum/mood_event/perv_spanked

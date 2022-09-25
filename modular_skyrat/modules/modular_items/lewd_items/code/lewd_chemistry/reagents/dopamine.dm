@@ -23,7 +23,7 @@
 	if(!(exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/aphro)))
 		return ..()
 	exposed_mob.add_mood_event("[type]_start", /datum/mood_event/orgasm, name)
-	..()
+	return ..()
 
 /datum/reagent/drug/aphrodisiac/dopamine/life_effects(mob/living/carbon/human/exposed_mob)
 	exposed_mob.set_timed_status_effect(drugginess_amount, /datum/status_effect/drugginess)

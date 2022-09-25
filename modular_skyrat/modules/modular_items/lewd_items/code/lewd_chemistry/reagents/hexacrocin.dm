@@ -1,3 +1,5 @@
+#define OD_CHANCE_NO_TRAUMA 95
+
 // Hexacrocin. Advanced aphrodisiac that can cause brain traumas.
 /datum/reagent/drug/aphrodisiac/crocin/hexacrocin
 	name = "hexacrocin"
@@ -36,7 +38,7 @@
 		to_chat(exposed_mob, span_purple("[displayed_extreme_thought]"))
 
 /datum/reagent/drug/aphrodisiac/crocin/hexacrocin/overdose_effects(mob/living/carbon/human/exposed_mob)
-	if(prob(95) || HAS_TRAIT(exposed_mob, TRAIT_BIMBO))
+	if(prob(OD_CHANCE_NO_TRAUMA) || HAS_TRAIT(exposed_mob, TRAIT_BIMBO))
 		return ..()
 
 	to_chat(exposed_mob, span_purple("Your libido is going haywire! It feels like speaking is much harder..."))
@@ -48,3 +50,5 @@
 	required_reagents = list(/datum/reagent/drug/aphrodisiac/crocin = 6, /datum/reagent/phenol = 1)
 	required_temp = 600
 	mix_message = "The mixture rapidly condenses and darkens in color..."
+
+#undef OD_CHANCE_NO_TRAUMA

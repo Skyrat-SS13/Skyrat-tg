@@ -8,15 +8,16 @@
 
 /datum/status_effect/climax/tick()
 	var/mob/living/carbon/human/affected_mob = owner
-	if(affected_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
-		var/temp_arousal = -12
-		var/temp_pleasure = -12
-		var/temp_stamina = 15
+	if(!affected_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
+		return
+	var/temp_arousal = -12
+	var/temp_pleasure = -12
+	var/temp_stamina = 15
 
-		owner.reagents.add_reagent(/datum/reagent/drug/aphrodisiac/dopamine, 0.5)
-		owner.adjustStaminaLoss(temp_stamina)
-		affected_mob.adjustArousal(temp_arousal)
-		affected_mob.adjustPleasure(temp_pleasure)
+	owner.reagents.add_reagent(/datum/reagent/drug/aphrodisiac/dopamine, 0.5)
+	owner.adjustStaminaLoss(temp_stamina)
+	affected_mob.adjustArousal(temp_arousal)
+	affected_mob.adjustPleasure(temp_pleasure)
 
 // Likely ready to be deprecated code that could be removed, due to nymphomaniac not existing anymore.
 /datum/status_effect/masturbation_climax
@@ -27,15 +28,16 @@
 
 /datum/status_effect/masturbation_climax/tick() //this one should not leave decals on the floor. Used in case if character cumming in beaker.
 	var/mob/living/carbon/human/affected_mob = owner
-	if(affected_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
-		var/temp_arousal = -12
-		var/temp_pleasure = -12
-		var/temp_stamina = 8
+	if(!affected_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
+		return
+	var/temp_arousal = -12
+	var/temp_pleasure = -12
+	var/temp_stamina = 8
 
-		owner.reagents.add_reagent(/datum/reagent/drug/aphrodisiac/dopamine, 0.3)
-		owner.adjustStaminaLoss(temp_stamina)
-		affected_mob.adjustArousal(temp_arousal)
-		affected_mob.adjustPleasure(temp_pleasure)
+	owner.reagents.add_reagent(/datum/reagent/drug/aphrodisiac/dopamine, 0.3)
+	owner.adjustStaminaLoss(temp_stamina)
+	affected_mob.adjustArousal(temp_arousal)
+	affected_mob.adjustPleasure(temp_pleasure)
 
 // A second step in preventing chain climax, and also prevents spam.
 /datum/status_effect/climax_cooldown

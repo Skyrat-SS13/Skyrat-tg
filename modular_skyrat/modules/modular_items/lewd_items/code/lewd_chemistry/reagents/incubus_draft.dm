@@ -135,8 +135,8 @@
 	return ..()
 
 /datum/reagent/drug/aphrodisiac/incubus_draft/overdose_effects(mob/living/carbon/human/exposed_mob)
-	if(exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/penis_enlargement))
-		if(!exposed_mob.getorganslot(ORGAN_SLOT_PENIS) && exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/new_genitalia_growth))
+	if(exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/penis_enlargement))
+		if(!exposed_mob.getorganslot(ORGAN_SLOT_PENIS) && exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/new_genitalia_growth))
 			var/list/data = species_to_penis[exposed_mob.dna.species.id]
 			if(!data)
 				data = species_to_penis[SPECIES_HUMAN]
@@ -173,7 +173,7 @@
 			mob_testicles.genital_size = 2
 	// Separates gender change stuff from cock growth.
 	var/obj/item/organ/external/genital/breasts/mob_breasts = exposed_mob.getorganslot(ORGAN_SLOT_BREASTS)
-	if(exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/gender_change))
+	if(exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/gender_change))
 		if(exposed_mob.gender == FEMALE)
 			exposed_mob.set_gender(MALE)
 			exposed_mob.physique = exposed_mob.gender
@@ -181,7 +181,7 @@
 			exposed_mob.update_mutations_overlay()
 		if(!mob_breasts)
 			return
-		if(exposed_mob.client?.prefs.read_preference(/datum/preference/toggle/erp/breast_enlargement)) // To do breast shrinkage, check if prefs allow for this.
+		if(exposed_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/breast_enlargement)) // To do breast shrinkage, check if prefs allow for this.
 			if(mob_breasts.genital_size > breast_minimum_size)
 				mob_breasts.genital_size -= breast_size_reduction_step
 				mob_breasts.update_sprite_suffix()
