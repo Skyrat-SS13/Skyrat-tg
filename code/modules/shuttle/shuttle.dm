@@ -553,12 +553,6 @@
 /obj/docking_port/mobile/proc/transit_failure()
 	message_admins("Shuttle [src] repeatedly failed to create transit zone.")
 
-<<<<<<< HEAD
-/* SKYRAT EDIT REMOVAL - MOVED TO MODULAR
-//call the shuttle to destination S
-/obj/docking_port/mobile/proc/request(obj/docking_port/stationary/S)
-	if(!check_dock(S))
-=======
 /**
  * Calls the shuttle to the destination port, respecting its ignition and call timers
  *
@@ -566,8 +560,7 @@
  * * destination_port - Stationary docking port to move the shuttle to
  */
 /obj/docking_port/mobile/proc/request(obj/docking_port/stationary/destination_port)
-	if(!check_dock(destination_port))
->>>>>>> e50b514a585 (Illiterate human-like mobs can send shuttles to a random destination + refactors snowflake checks on the shuttle consoles (#69836))
+	if(!check_dock(destination_port) && !forced) // SKYRAT EDIT ADD - forced check
 		testing("check_dock failed on request for [src]")
 		return
 
@@ -576,6 +569,10 @@
 
 	switch(mode)
 		if(SHUTTLE_CALL)
+			// SKYRAT EDIT ADD START
+			if(!can_be_called_in_transit)
+				return
+			// SKYRAT EDIT ADD END
 			if(destination_port == destination)
 				if(timeLeft(1) < callTime * engine_coeff)
 					setTimer(callTime * engine_coeff)
@@ -583,6 +580,10 @@
 				destination = destination_port
 				setTimer(callTime * engine_coeff)
 		if(SHUTTLE_RECALL)
+			// SKYRAT EDIT ADD START
+			if(!can_be_called_in_transit)
+				return
+			// SKYRAT EDIT ADD END
 			if(destination_port == destination)
 				setTimer(callTime * engine_coeff - timeLeft(1))
 			else
@@ -592,9 +593,11 @@
 		if(SHUTTLE_IDLE, SHUTTLE_IGNITING)
 			destination = destination_port
 			mode = SHUTTLE_IGNITING
+			// SKYRAT EDIT ADD START
+			bolt_all_doors()
+			play_engine_sound(src, TRUE)
+			// SKYRAT EDIT ADD END
 			setTimer(ignitionTime)
-
-*/ //SKYRAT EDIT END
 
 //recall the shuttle to where it was previously
 /obj/docking_port/mobile/proc/cancel()
