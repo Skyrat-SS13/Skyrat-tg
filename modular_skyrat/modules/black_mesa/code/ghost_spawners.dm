@@ -6,7 +6,9 @@
 	outfit = /datum/outfit/science_team
 	you_are_text = "You are a scientist in a top secret government facility. You blacked out. Now, you have woken up to the horrors that lay within."
 	flavour_text = "You are a scientist in a top secret government facility. You blacked out. Now, you have woken up to the horrors that lay within."
-	restricted_species = list(/datum/species/human)
+	important_text = "Do not try to explore the level unless Vanguard is already present and close to you, and even then, wait at least 20 minutes before leaving your area. \
+					Allowed races are humans and IPCs."
+	restricted_species = list(/datum/species/human, /datum/species/robotic/ipc)
 	random_appearance = FALSE
 
 /obj/effect/mob_spawn/ghost_role/human/black_mesa/special(mob/living/carbon/human/spawned_human)
@@ -36,8 +38,7 @@
 	name = "Research Facility Security Guard"
 	prompt_name = "a research facility guard"
 	outfit = /datum/outfit/security_guard
-	you_are_text = "You are a security guard in a top secret government facility. You blacked out. Now, you have woken up to the horrors that lay within. \
-	DO NOT TRY TO EXPLORE THE LEVEL. STAY AROUND YOUR AREA."
+	you_are_text = "You are a security guard in a top secret government facility. You blacked out. Now, you have woken up to the horrors that lay within."
 	flavour_text = "You are a security guard near the Ground Zero of a top secret government facility. You blacked out. Now, you have woken up to the horrors that lay within."
 
 /obj/effect/mob_spawn/ghost_role/human/black_mesa/guard/special(mob/living/carbon/human/spawned_human)

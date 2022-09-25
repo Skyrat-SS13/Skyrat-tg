@@ -75,7 +75,8 @@
 						/obj/item/ammo_box/advanced/s12gauge/flechette,
 						/obj/item/ammo_box/advanced/s12gauge/beehive,
 						/obj/item/ammo_box/advanced/s12gauge/iceblox,
-						/obj/item/ammo_box/advanced/s12gauge/rip,)
+						/obj/item/ammo_box/advanced/s12gauge/rip,
+						)
 	new /obj/item/ammo_box/advanced/s12gauge/magnum(src)
 	new /obj/item/ammo_box/advanced/s12gauge(src)
 	new funshell(src)

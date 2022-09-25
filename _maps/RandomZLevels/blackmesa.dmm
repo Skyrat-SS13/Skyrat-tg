@@ -2001,8 +2001,9 @@
 /turf/open/floor/iron/textured,
 /area/awaymission/black_mesa/to_cryo_room)
 "azm" = (
-/obj/machinery/door/airlock/maintenance,
-/obj/effect/mapping_helpers/airlock/locked,
+/obj/machinery/door/puzzle/light{
+	puzzle_id = "office_entrance"
+	},
 /turf/open/floor/plating,
 /area/awaymission/black_mesa/employee_dorm_room)
 "azn" = (
@@ -4570,8 +4571,9 @@
 /turf/open/floor/iron/smooth_large,
 /area/awaymission/black_mesa/high_security_hallway)
 "bGe" = (
-/obj/machinery/door/airlock/maintenance,
-/obj/effect/mapping_helpers/airlock/locked,
+/obj/machinery/door/puzzle/keycard/icebox/processing{
+	puzzle_id = "Puzzle1"
+	},
 /turf/open/floor/iron/smooth_large,
 /area/awaymission/black_mesa/dorm_tunnel)
 "bGu" = (
@@ -6133,9 +6135,13 @@
 /obj/effect/spawner/random/bioluminescent_plant,
 /turf/open/misc/xen,
 /area/awaymission/black_mesa/xen/acid_lake_hallway)
+"esP" = (
+/obj/structure/holosign/barrier/wetsign,
+/turf/open/floor/iron/textured,
+/area/awaymission/black_mesa/employee_dorm_room)
 "etg" = (
 /obj/effect/baseturf_helper/black_mesa,
-/turf/closed/wall/r_wall,
+/turf/closed/indestructible/reinforced,
 /area/awaymission/black_mesa/dorm_tunnel)
 "ets" = (
 /obj/structure/inflatable{
@@ -6245,6 +6251,12 @@
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/awaymission/black_mesa/black_ops_hallway_two)
+"eHo" = (
+/obj/item/pressure_plate/hologrid{
+	reward = /obj/item/keycard/icebox/office
+	},
+/turf/open/floor/iron/smooth_large,
+/area/awaymission/black_mesa/dorm_computers)
 "eJe" = (
 /obj/effect/mob_spawn/corpse/human/scientist_zombie,
 /turf/open/water/overlay/hotspring/indestructible,
@@ -6870,6 +6882,9 @@
 /obj/structure/lattice/catwalk,
 /turf/open/floor/plating,
 /area/awaymission/black_mesa/resonant_chamber)
+"fUY" = (
+/turf/open/water/electric,
+/area/awaymission/black_mesa/employee_dorm_room)
 "fXk" = (
 /obj/machinery/light/broken{
 	dir = 4
@@ -6977,6 +6992,9 @@
 "gew" = (
 /turf/closed/wall/r_wall,
 /area/awaymission/black_mesa/hecu_zone_infirmary)
+"geB" = (
+/turf/closed/indestructible/reinforced,
+/area/awaymission/black_mesa/dorm_tunnel)
 "geV" = (
 /obj/structure/rack,
 /obj/item/storage/part_replacer,
@@ -11829,6 +11847,10 @@
 /obj/structure/spacevine/xen/thick,
 /turf/open/misc/xen,
 /area/awaymission/black_mesa/xen/freeman_puzzle)
+"pqv" = (
+/obj/structure/sign/warning/electric_shock/directional/west,
+/turf/open/floor/iron/textured_large,
+/area/awaymission/black_mesa/employee_dorm_room)
 "prp" = (
 /obj/structure/alien/resin/membrane,
 /turf/open/floor/iron/smooth_large,
@@ -14547,6 +14569,12 @@
 /obj/item/crowbar/freeman,
 /turf/open/floor/plating,
 /area/awaymission/black_mesa/resonant_chamber)
+"uyv" = (
+/obj/structure/light_puzzle{
+	puzzle_id = "office_entrance"
+	},
+/turf/closed/wall/r_wall,
+/area/awaymission/black_mesa/tram_tunnel)
 "uzy" = (
 /obj/structure/fluff/bus/passable/seat/driver,
 /turf/open/floor/iron/dark/textured_large{
@@ -15786,6 +15814,11 @@
 /obj/structure/alien/weeds/xen,
 /turf/open/floor/iron/textured_large,
 /area/awaymission/black_mesa/science_labs)
+"wQu" = (
+/obj/effect/mapping_helpers/broken_floor,
+/obj/structure/holobox,
+/turf/open/floor/iron/textured_large,
+/area/awaymission/black_mesa/employee_dorm_room)
 "wRo" = (
 /obj/structure/liquid_pump,
 /turf/open/floor/iron/textured_large,
@@ -39334,7 +39367,7 @@ rVS
 rVS
 oeJ
 aQz
-qVm
+wQu
 vWu
 vWu
 hiT
@@ -40106,9 +40139,9 @@ fKJ
 oTt
 aQz
 bUJ
-raX
-raX
-dUO
+fUY
+fUY
+fUY
 sjb
 qfk
 raX
@@ -40363,9 +40396,9 @@ fKJ
 vZq
 aQz
 yib
-raX
-raX
-dUO
+fUY
+fUY
+fUY
 tcJ
 raX
 raX
@@ -40620,7 +40653,7 @@ fKJ
 oTt
 aQz
 yib
-raX
+fUY
 nrT
 dUO
 tcJ
@@ -40877,8 +40910,8 @@ fKJ
 qGz
 aQz
 yib
-raX
-raX
+fUY
+fUY
 dUO
 khd
 sjb
@@ -40895,7 +40928,7 @@ euc
 aQz
 aQz
 aQz
-aQz
+euc
 aNo
 aNo
 aNo
@@ -41135,24 +41168,24 @@ vZq
 aQz
 fGg
 lrH
-raX
+fUY
 dUO
 dUO
 bKZ
-dUO
-dUO
-dUO
+fUY
+fUY
+fUY
 eZe
 bTZ
-dUO
-dUO
+nrT
+fUY
 dUO
 dUO
 bTZ
-dUO
+pqv
 dUO
 bli
-aQz
+euc
 ars
 ars
 ars
@@ -41392,20 +41425,20 @@ rVS
 aQz
 bli
 raX
+fUY
 raX
 raX
-raX
-raX
-raX
+fUY
+fUY
 nmG
 raX
 nrT
+fUY
 raX
-raX
-raX
-raX
-raX
-raX
+fUY
+fUY
+fUY
+esP
 nrT
 raX
 dUO
@@ -41649,24 +41682,24 @@ pYl
 dUO
 dUO
 raX
-raX
+nrT
 dCz
 raX
 raX
 raX
 raX
 raX
+fUY
+fUY
 raX
-raX
-raX
-raX
-raX
-raX
+fUY
+fUY
+fUY
 raX
 raX
 raX
 dUO
-aQz
+euc
 awL
 awL
 adv
@@ -41909,23 +41942,23 @@ raX
 raX
 dCz
 raX
+fUY
+fUY
 raX
 raX
+fUY
+fUY
+raX
+fUY
+fUY
 raX
 raX
-raX
-raX
-raX
-raX
-raX
-raX
-raX
-raX
-raX
+fUY
+fUY
 dUO
-aQz
+euc
 ars
-ars
+uyv
 ars
 ars
 ars
@@ -42165,20 +42198,20 @@ raX
 raX
 raX
 raX
+fUY
+fUY
+fUY
 raX
 raX
-raX
-raX
-raX
-raX
+fUY
 raX
 raX
 nrT
 raX
-raX
-raX
-raX
-raX
+fUY
+fUY
+fUY
+fUY
 dUO
 aQz
 aNo
@@ -42405,11 +42438,11 @@ arz
 arz
 aNo
 rVS
-qGz
+eHo
 qGz
 qGz
 jsS
-qGz
+rmK
 qGz
 qGz
 qGz
@@ -42422,13 +42455,13 @@ dUO
 dUO
 dUO
 dUO
-dUO
+fUY
 mLQ
 dUO
 dUO
 dUO
-dUO
-dUO
+fUY
+fUY
 dUO
 dUO
 dUO
@@ -42661,10 +42694,10 @@ arz
 arz
 arz
 aNo
-wrl
-wrl
+geB
+geB
 bGe
-wrl
+geB
 etg
 rVS
 rVS

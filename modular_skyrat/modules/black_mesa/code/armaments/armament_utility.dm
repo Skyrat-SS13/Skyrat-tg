@@ -67,4 +67,4 @@
 /datum/armament_entry/hecu/utility/breaching_hammer ///Mesa more like R6S amirite
 	item_type = /obj/item/melee/hammer
 	max_purchase = 1
-	cost = 7
+	cost = 4

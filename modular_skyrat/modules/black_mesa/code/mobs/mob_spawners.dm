@@ -117,11 +117,10 @@
 
 /datum/outfit/sciteamcorpse
 	name = "BMRF Science Team Corpse"
-	uniform = /obj/item/clothing/under/costume/soviet
-	shoes = /obj/item/clothing/shoes/jackboots
-	head = /obj/item/clothing/head/bearpelt
-	gloves = /obj/item/clothing/gloves/color/black
-	mask = /obj/item/clothing/mask/gas
+	uniform = /obj/item/clothing/under/rank/rnd/scientist/skyrat/hlscience
+	suit = /obj/item/clothing/suit/toggle/labcoat
+	shoes = /obj/item/clothing/shoes/laceup
+	gloves = /obj/item/clothing/gloves/color/latex
 
 /obj/effect/mob_spawn/corpse/human/guard_zombie
 	name = "Security Guard"
