@@ -165,6 +165,7 @@
 		var/incorrect_species = tgui_alert(user, "Current species preference incompatible, proceed with random appearance?", "Incompatible Species", list("Yes", "No"))
 		if(incorrect_species != "Yes")
 			return
+
 	// SKYRAT EDIT END
 	if(prompt_ghost)
 		var/ghost_role = tgui_alert(usr, "Become [prompt_name]? (Warning, You can no longer be revived!)",, list("Yes", "No"))
