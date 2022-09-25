@@ -9,7 +9,7 @@
 	if (CONFIG_GET(flag/disable_erp_preferences))
 		return
 
-	if(!client?.prefs?.read_preference(/datum/preference/toggle/erp/autocum) && manual != TRUE)
+	if(!client?.prefs?.read_preference(/datum/preference/toggle/erp/autocum) && !manual)
 		return
 
 	if(has_status_effect(/datum/status_effect/climax_cooldown) || !client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
@@ -21,7 +21,7 @@
 		return TRUE
 
 	// Reduce pop-ups and make it slightly more frictionless (lewd).
-	var/climax_choice = has_penis()? CLIMAX_PENIS : CLIMAX_VAGINA
+	var/climax_choice = has_penis() ? CLIMAX_PENIS : CLIMAX_VAGINA
 
 	if(manual)
 		var/list/genitals = list()
@@ -68,8 +68,6 @@
 			var/list/interactable_inrange_humans = list()
 
 			for(var/mob/living/carbon/human/iterating_human in view(1, src))
-				if(iterating_human == src)
-					continue
 				if(iterating_human.client?.prefs?.read_preference(/datum/preference/toggle/erp)) // No prefbreaking.
 					interactable_inrange_humans[iterating_human.name] = iterating_human
 

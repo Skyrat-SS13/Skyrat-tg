@@ -124,7 +124,7 @@
 /datum/component/interactable/proc/generate_strip_entry(name, mob/living/carbon/human/target, mob/living/carbon/human/source, obj/item/clothing/sextoy/item)
 	return list(
 		"name" = name,
-		"img" = (item && can_lewd_strip(source, target, name))? icon2base64(icon(item.icon, item.icon_state, SOUTH, 1)) : null
+		"img" = (item && can_lewd_strip(source, target, name)) ? icon2base64(icon(item.icon, item.icon_state, SOUTH, 1)) : null
 		)
 
 /datum/component/interactable/ui_act(action, list/params)
@@ -171,12 +171,10 @@
 				source.visible_message(span_purple("[source.name] starts trying to [insert_or_attach] the [new_item.name] [into_or_onto] [target.name]'s [item_index]."), span_purple("You start to [insert_or_attach] the [new_item.name] [into_or_onto] [target.name]'s [item_index]."), span_purple("You hear someone trying to [insert_or_attach] something [into_or_onto] someone nearby."), vision_distance = 1, ignored_mobs = list(target))
 			if (source != target)
 				target.show_message(span_warning("[source.name] is trying to [existing_item ? "remove the [existing_item.name] [internal ? "in" : "on"]" : new_item ? "is trying to [insert_or_attach] the [new_item.name] [into_or_onto]" : span_alert("What the fuck, impossible condition? interaction_component.dm!")] your [item_index]!"))
-			if(do_after(
-				source,
-				5 SECONDS,
-				target,
-				interaction_key = "interation_[item_index]"
-				) && can_lewd_strip(source, target, item_index))
+			if(
+				do_after(source, 5 SECONDS, target, interaction_key = "interation_[item_index]")
+				&& can_lewd_strip(source, target, item_index)
+			)
 
 				if(existing_item)
 					source.visible_message(span_purple("[source.name] removes [existing_item.name] from [target.name]'s [item_index]."), span_purple("You remove [existing_item.name] from [target.name]'s [item_index]."), span_purple("You hear someone remove something from someone nearby."), vision_distance = 1)

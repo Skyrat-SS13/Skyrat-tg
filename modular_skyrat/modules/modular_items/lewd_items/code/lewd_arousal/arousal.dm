@@ -14,12 +14,10 @@
 			arousal_status = arousal_flag
 			if(istype(src, /mob/living/carbon/human))
 				var/mob/living/carbon/human/target = src
-				for(var/i = 1, i <= target.external_organs.len, i++)
-					if(istype(target.external_organs[i], /obj/item/organ/external/genital))
-						var/obj/item/organ/external/genital/target_genital = target.external_organs[i]
-						if(!target_genital.aroused == AROUSAL_CANT)
-							target_genital.aroused = arousal_status
-							target_genital.update_sprite_suffix()
+				for(var/obj/item/organ/external/genital/target_genital in target.external_organs)
+					if(!target_genital.aroused == AROUSAL_CANT)
+						target_genital.aroused = arousal_status
+						target_genital.update_sprite_suffix()
 				target.update_body()
 	else
 		arousal -= abs(arous)
