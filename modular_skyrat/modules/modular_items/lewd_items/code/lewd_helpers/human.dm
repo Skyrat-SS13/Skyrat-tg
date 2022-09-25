@@ -326,7 +326,7 @@
 */
 
 // Updating vagina slot
-/mob/living/carbon/human/update_inv_vagina()
+/mob/living/carbon/human/proc/update_inv_vagina()
 	// on_mob stuff
 	remove_overlay(VAGINA_LAYER)
 
@@ -350,7 +350,7 @@
 	update_mutant_bodyparts()
 
 // Updating anus slot
-/mob/living/carbon/human/update_inv_anus()
+/mob/living/carbon/human/proc/update_inv_anus()
 	// on_mob stuff
 	remove_overlay(ANUS_LAYER)
 
@@ -374,7 +374,7 @@
 	update_mutant_bodyparts()
 
 // Updating nipples slot
-/mob/living/carbon/human/update_inv_nipples()
+/mob/living/carbon/human/proc/update_inv_nipples()
 	// on_mob stuff
 	remove_overlay(NIPPLES_LAYER)
 
@@ -398,7 +398,7 @@
 	update_mutant_bodyparts()
 
 // Updating penis slot
-/mob/living/carbon/human/update_inv_penis()
+/mob/living/carbon/human/proc/update_inv_penis()
 	// on_mob stuff
 	remove_overlay(PENIS_LAYER)
 
@@ -421,6 +421,13 @@
 	apply_overlay(PENIS_LAYER)
 	update_mutant_bodyparts()
 
+/// Helper proc for calling all the lewd slot update_inv_ procs.
+/mob/living/carbon/human/proc/update_inv_lewd()
+	update_inv_vagina()
+	update_inv_anus()
+	update_inv_nipples()
+	update_inv_penis()
+
 /*
 *	MISC LOGIC
 */
@@ -433,15 +440,12 @@
 	else
 		..()
 
-/mob/living/carbon/human/is_wearing_condom()
-	. = ..()
-	if(.)
-		return TRUE
-	if(penis != null && istype(penis, /obj/item/clothing/sextoy/condom))
-		var/obj/item/clothing/sextoy/condom/condom
-		if(condom.condom_state == CONDOM_BROKEN)
-			return FALSE
-		return TRUE
+/mob/living/carbon/human/proc/is_wearing_condom()
+	if(!penis || !istype(penis, /obj/item/clothing/sextoy/condom))
+		return FALSE
+
+	var/obj/item/clothing/sextoy/condom/condom = penis
+	return condom.condom_state == CONDOM_BROKEN
 
 // For handling things that don't already have handcuff handlers.
 /mob/living/carbon/human/set_handcuffed(new_value)
