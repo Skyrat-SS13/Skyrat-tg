@@ -21,7 +21,7 @@
 	internal_fluid_count = clamp(amount, 0, internal_fluid_maximum)
 
 /// Tries to add the specified amount to the target reagent container. Keeps in mind internal_fluid_count.
-/obj/item/organ/external/genital/proc/transfer_internal_fluid(/datum/reagents/reagent_container, attempt_amount)
+/obj/item/organ/external/genital/proc/transfer_internal_fluid(datum/reagents/reagent_container, attempt_amount)
 	if(!internal_fluid_datum || !internal_fluid_count || !internal_fluid_maximum)
 		return
 
