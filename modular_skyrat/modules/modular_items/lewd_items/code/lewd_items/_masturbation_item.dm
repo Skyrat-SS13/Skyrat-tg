@@ -15,12 +15,9 @@
 /// Handles masturbation onto a living mob, or an atom.
 /// Attempts to fill the atom's reagent container, if it has one, and it isn't full.
 /obj/item/hand_item/coom/proc/do_masturbate(obj/target, mob/user, proximity)
-	if (CONFIG_GET(flag/disable_erp_preferences))
+	if (CONFIG_GET(flag/disable_erp_preferences) || !proximity || user.stat >= DEAD)
 		return
-	if(!proximity)
-		return
-	if(user.stat >= DEAD)
-		return
+
 	var/mob/living/carbon/human/affected_human = user
 	var/obj/item/organ/external/genital/testicles/testicles = affected_human.getorganslot(ORGAN_SLOT_TESTICLES)
 	var/obj/item/organ/external/genital/penis/penis = affected_human.getorganslot(ORGAN_SLOT_PENIS)

@@ -53,6 +53,7 @@
 	var/obj/item/organ/external/genital/genital = getorganslot(ORGAN_SLOT_PENIS)
 	if(!genital)
 		return FALSE
+
 	switch(required_state)
 		if(REQUIRE_GENITAL_ANY)
 			return TRUE
@@ -68,6 +69,7 @@
 	var/obj/item/organ/external/genital/genital = getorganslot(ORGAN_SLOT_TESTICLES)
 	if(!genital)
 		return FALSE
+
 	switch(required_state)
 		if(REQUIRE_GENITAL_ANY)
 			return TRUE
@@ -83,16 +85,14 @@
 	var/obj/item/organ/external/genital/genital = getorganslot(ORGAN_SLOT_VAGINA)
 	if(!genital)
 		return FALSE
+
 	switch(required_state)
 		if(REQUIRE_GENITAL_ANY)
 			return TRUE
 		if(REQUIRE_GENITAL_EXPOSED)
 			return genital.visibility_preference == GENITAL_ALWAYS_SHOW || is_bottomless()
 		if(REQUIRE_GENITAL_UNEXPOSED)
-			if(genital.visibility_preference != GENITAL_ALWAYS_SHOW && !is_bottomless())
-				return TRUE
-			else
-				return FALSE
+			return genital.visibility_preference != GENITAL_ALWAYS_SHOW && !is_bottomless()
 		else
 			return TRUE
 
@@ -101,6 +101,7 @@
 	var/obj/item/organ/external/genital/genital = getorganslot(ORGAN_SLOT_BREASTS)
 	if(!genital)
 		return FALSE
+
 	switch(required_state)
 		if(REQUIRE_GENITAL_ANY)
 			return TRUE
@@ -118,6 +119,7 @@
 	var/obj/item/organ/external/genital/genital = getorganslot(ORGAN_SLOT_ANUS)
 	if(!genital)
 		return FALSE
+
 	switch(required_state)
 		if(REQUIRE_GENITAL_ANY)
 			return TRUE
@@ -161,26 +163,22 @@
 /// Returns true if the human has a accessible feet for the parameter, returning the number of feet the human has if they do. Accepts any of the `REQUIRE_GENITAL_` defines.
 /mob/living/carbon/human/proc/has_feet(required_state = REQUIRE_GENITAL_ANY)
 	var/feet_count = 0
-	var/covered = 0
-	var/is_covered = FALSE
+
 	for(var/obj/item/bodypart/l_leg/left_leg in bodyparts)
 		feet_count++
 	for(var/obj/item/bodypart/r_leg/right_leg in bodyparts)
 		feet_count++
-	if(!is_barefoot())
-		covered = TRUE
-	if(covered)
-		is_covered = TRUE
+
 	switch(required_state)
 		if(REQUIRE_GENITAL_ANY)
 			return feet_count
 		if(REQUIRE_GENITAL_EXPOSED)
-			if(is_covered)
+			if(!is_barefoot())
 				return FALSE
 			else
 				return feet_count
 		if(REQUIRE_GENITAL_UNEXPOSED)
-			if(!is_covered)
+			if(is_barefoot())
 				return FALSE
 			else
 				return feet_count
@@ -196,21 +194,7 @@
 	var/obj/item/organ/genital = getorganslot(ORGAN_SLOT_EARS)
 	if(!genital)
 		return FALSE
-	switch(required_state)
-		if(REQUIRE_GENITAL_ANY)
-			return TRUE
-		if(REQUIRE_GENITAL_EXPOSED)
-			return !get_item_by_slot(ITEM_SLOT_EARS)
-		if(REQUIRE_GENITAL_UNEXPOSED)
-			return get_item_by_slot(ITEM_SLOT_EARS)
-		else
-			return TRUE
 
-/// Returns true if the human has accessible ear sockets for the parameter. Accepts any of the `REQUIRE_GENITAL_` defines.
-/mob/living/carbon/human/proc/has_earsockets(required_state = REQUIRE_GENITAL_ANY)
-	var/obj/item/organ/genital = getorganslot(ORGAN_SLOT_EARS)
-	if(!genital)
-		return FALSE
 	switch(required_state)
 		if(REQUIRE_GENITAL_ANY)
 			return TRUE
@@ -226,6 +210,7 @@
 	var/obj/item/organ/genital = getorganslot(ORGAN_SLOT_EYES)
 	if(!genital)
 		return FALSE
+
 	switch(required_state)
 		if(REQUIRE_GENITAL_ANY)
 			return TRUE
@@ -236,21 +221,6 @@
 		else
 			return TRUE
 
-/// Returns true if the human has accessible eye sockets for the parameter. Accepts any of the `REQUIRE_GENITAL_` defines.
-/mob/living/carbon/human/proc/has_eyesockets(required_state = REQUIRE_GENITAL_ANY)
-	var/obj/item/organ/genital = getorganslot(ORGAN_SLOT_EYES)
-	if(!genital)
-		return FALSE
-	switch(required_state)
-		if(REQUIRE_GENITAL_ANY)
-			return TRUE
-		if(REQUIRE_GENITAL_EXPOSED)
-			return !get_item_by_slot(ITEM_SLOT_EYES)
-		if(REQUIRE_GENITAL_UNEXPOSED)
-			get_item_by_slot(ITEM_SLOT_EYES)
-		else
-			return TRUE
-
 
 /*
 *	This code needed for changing character's gender by chems
@@ -258,18 +228,18 @@
 
 /// Sets the gender of the human, respecting prefs unless it's forced. Do not force in non-admin operations.
 /mob/living/carbon/human/proc/set_gender(ngender = NEUTER, silent = FALSE, update_icon = TRUE, forced = FALSE)
-	var/bender = !(gender == ngender)
-	if(!forced && !client?.prefs?.read_preference(/datum/preference/toggle/erp/gender_change))
+	var/bender = gender != ngender
+	if((!client?.prefs?.read_preference(/datum/preference/toggle/erp/gender_change) && !forced) || !dna || !bender)
 		return FALSE
-	if(dna && bender)
-		if(ngender == MALE || ngender == FEMALE)
-			dna.features["body_model"] = ngender
-			if(!silent)
-				var/adj = ngender == MALE ? "masculine" : "feminine"
-				visible_message(span_boldnotice("[src] suddenly looks more [adj]!"), span_boldwarning("You suddenly feel more [adj]!"))
-		else if(ngender == NEUTER)
-			dna.features["body_model"] = MALE
-		gender = ngender
+
+	if(ngender == MALE || ngender == FEMALE)
+		dna.features["body_model"] = ngender
+		if(!silent)
+			var/adj = ngender == MALE ? "masculine" : "feminine"
+			visible_message(span_boldnotice("[src] suddenly looks more [adj]!"), span_boldwarning("You suddenly feel more [adj]!"))
+	else if(ngender == NEUTER)
+		dna.features["body_model"] = MALE
+	gender = ngender
 	if(update_icon)
 		update_body()
 

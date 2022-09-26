@@ -28,7 +28,7 @@
 
 /mob/living/carbon/human/examine(mob/user)
 	. = ..()
-	if(stat >= DEAD || HAS_TRAIT(src, TRAIT_FAKEDEATH) || src != user || !has_status_effect(/datum/status_effect/spanked) || !is_bottomless())
+	if(stat >= DEAD || HAS_TRAIT(src, TRAIT_FAKEDEATH) || src == user || !has_status_effect(/datum/status_effect/spanked) || !is_bottomless())
 		return
 
 	. += span_purple("[user.p_their(TRUE)] butt has a red tint to it.") + "\n"

@@ -112,8 +112,8 @@
 		target.adjust_arousal(0.8 * delta_time)
 		target.adjust_pleasure(0.8 * delta_time)
 	else if(current_size == "big" && target.arousal < 50)
-		target.adjust_arousal(1 * delta_time)
-		target.adjust_pleasure(1 * delta_time)
+		target.adjust_arousal(delta_time)
+		target.adjust_pleasure(delta_time)
 		if(!(target.pain < 22.5)) //yeah, this will cause pain. No buttplug gib intended, sry
 			return
-		target.adjust_pain(target*delta_time)
+		target.adjust_pain(target * delta_time)
