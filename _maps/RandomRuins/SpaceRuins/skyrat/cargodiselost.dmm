@@ -155,6 +155,17 @@
 /obj/effect/spawner/random/trash/soap,
 /turf/open/floor/iron/showroomfloor,
 /area/ruin/space/has_grav/cargodise_freighter/quarters)
+"dB" = (
+/obj/machinery/door/airlock/mining/glass{
+	name = "Cargo Bay"
+	},
+/obj/machinery/door/poddoor{
+	id = "lockdown"
+	},
+/obj/machinery/door/firedoor,
+/obj/structure/cable,
+/turf/open/floor/iron/brown,
+/area/ruin/space/has_grav/cargodise_freighter/cargo)
 "dD" = (
 /obj/machinery/door/airlock/survival_pod/glass,
 /obj/machinery/door/poddoor{
@@ -180,16 +191,6 @@
 /obj/item/kirbyplants/random,
 /turf/open/floor/carpet,
 /area/ruin/space/has_grav/cargodise_freighter/quarters)
-"eh" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
-/obj/machinery/airalarm/all_access{
-	pixel_y = 25;
-	dir = 1
-	},
-/turf/open/floor/iron/dark/green/side{
-	dir = 1
-	},
-/area/ruin/space/has_grav/cargodise_freighter/primaryhall)
 "eJ" = (
 /obj/structure/table,
 /obj/item/storage/backpack/duffelbag/med/surgery,
@@ -624,13 +625,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/cargodise_freighter/primaryhall)
-"ln" = (
-/obj/machinery/door/airlock/hatch{
-	name = "Turret Room"
-	},
-/obj/machinery/door/firedoor,
-/turf/open/floor/engine,
-/area/ruin/space/has_grav/cargodise_freighter/bridge)
 "lp" = (
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
@@ -819,16 +813,10 @@
 /turf/open/floor/grass,
 /area/ruin/space/has_grav/cargodise_freighter/kitchen)
 "pc" = (
-/obj/machinery/door/airlock/mining/glass{
-	name = "Cargo Bay"
-	},
-/obj/machinery/door/poddoor{
-	id = "lockdown"
-	},
-/obj/machinery/door/firedoor,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
 /obj/structure/cable,
-/turf/open/floor/iron/brown,
-/area/ruin/space/has_grav/cargodise_freighter/cargo)
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/cargodise_freighter/utility)
 "pe" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
 /obj/machinery/firealarm/directional/north,
@@ -925,6 +913,14 @@
 "qq" = (
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
+/area/ruin/space/has_grav/cargodise_freighter/quarters)
+"qu" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/machinery/airalarm/all_access{
+	pixel_y = 34;
+	dir = 1
+	},
+/turf/open/floor/wood,
 /area/ruin/space/has_grav/cargodise_freighter/quarters)
 "qw" = (
 /mob/living/simple_animal/hostile/looter,
@@ -1441,6 +1437,10 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/cargodise_freighter/utility)
+"wS" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/cargodise_freighter/utility)
 "wV" = (
 /obj/structure/fans/tiny/forcefield,
 /obj/machinery/door/poddoor{
@@ -1502,8 +1502,8 @@
 	},
 /area/ruin/space/has_grav/cargodise_freighter/primaryhall)
 "ye" = (
-/turf/closed/wall/mineral/titanium/spaceship/nodiagonal,
-/area/ruin/space/has_grav/cargodise_freighter/bridge)
+/turf/closed/wall/mineral/titanium/spaceship,
+/area/ruin/space/has_grav/cargodise_freighter/utility)
 "yl" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
 /turf/open/floor/iron/dark/green/side,
@@ -1838,6 +1838,9 @@
 	},
 /turf/open/floor/carpet/green,
 /area/ruin/space/has_grav/cargodise_freighter/quarters)
+"Dk" = (
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/cargodise_freighter/bridge)
 "Dn" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
 /turf/open/floor/carpet/green,
@@ -1853,6 +1856,16 @@
 	},
 /obj/machinery/firealarm/directional/north,
 /obj/structure/cable,
+/turf/open/floor/iron/dark/green/side{
+	dir = 1
+	},
+/area/ruin/space/has_grav/cargodise_freighter/primaryhall)
+"DM" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/machinery/airalarm/all_access{
+	pixel_y = 25;
+	dir = 1
+	},
 /turf/open/floor/iron/dark/green/side{
 	dir = 1
 	},
@@ -2264,10 +2277,6 @@
 	dir = 8
 	},
 /area/ruin/space/has_grav/cargodise_freighter/primaryhall)
-"KB" = (
-/obj/effect/spawner/structure/window/reinforced,
-/turf/open/floor/plating,
-/area/ruin/space/has_grav/cargodise_freighter/utility)
 "KC" = (
 /obj/structure/fans/tiny/forcefield,
 /obj/machinery/door/poddoor{
@@ -2344,7 +2353,6 @@
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/cargodise_freighter/utility)
 "LC" = (
-/obj/structure/cable,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/cargodise_freighter/utility)
 "LE" = (
@@ -2353,11 +2361,6 @@
 	},
 /turf/open/floor/iron/checker,
 /area/ruin/space/has_grav/cargodise_freighter/kitchen)
-"LK" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
-/obj/structure/cable,
-/turf/open/floor/plating,
-/area/ruin/space/has_grav/cargodise_freighter/utility)
 "LN" = (
 /obj/structure/cable,
 /obj/effect/turf_decal/stripes/white/line,
@@ -2575,8 +2578,9 @@
 	},
 /area/ruin/space/has_grav/cargodise_freighter/cargo)
 "Oj" = (
-/turf/open/floor/engine,
-/area/ruin/space/has_grav/cargodise_freighter/bridge)
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/cargodise_freighter/utility)
 "Om" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
 /obj/structure/cable,
@@ -2670,8 +2674,8 @@
 	},
 /area/ruin/space/has_grav/cargodise_freighter/primaryhall)
 "PK" = (
-/turf/open/floor/plating,
-/area/ruin/space/has_grav/cargodise_freighter/utility)
+/turf/closed/wall/mineral/titanium/spaceship/nodiagonal,
+/area/ruin/space/has_grav/cargodise_freighter/bridge)
 "PL" = (
 /obj/structure/extinguisher_cabinet/directional/south,
 /obj/structure/cable,
@@ -2718,8 +2722,12 @@
 /turf/open/floor/iron/freezer,
 /area/ruin/space/has_grav/cargodise_freighter/kitchen)
 "Qc" = (
-/turf/closed/wall/mineral/titanium/spaceship,
-/area/ruin/space/has_grav/cargodise_freighter/utility)
+/obj/machinery/door/airlock/hatch{
+	name = "Turret Room"
+	},
+/obj/machinery/door/firedoor,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/cargodise_freighter/bridge)
 "Qi" = (
 /obj/structure/toilet{
 	dir = 4
@@ -3243,14 +3251,6 @@
 /obj/machinery/door/firedoor,
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/cargodise_freighter/quarters)
-"WJ" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
-/obj/machinery/airalarm/all_access{
-	pixel_y = 34;
-	dir = 1
-	},
-/turf/open/floor/wood,
-/area/ruin/space/has_grav/cargodise_freighter/quarters)
 "WL" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
 	dir = 1
@@ -3568,13 +3568,13 @@ OP
 OP
 OP
 OP
-Qc
-KB
-Qc
-Qc
-Qc
-KB
-Qc
+ye
+wS
+ye
+ye
+ye
+wS
+ye
 OP
 OP
 OP
@@ -3602,15 +3602,15 @@ FF
 Gf
 FF
 XD
-Qc
-Qc
+ye
+ye
 uv
 BL
 BL
 EB
 La
-Qc
-Qc
+ye
+ye
 FF
 FF
 uc
@@ -3636,16 +3636,16 @@ hP
 Gf
 Gf
 Gf
-Qc
-Qc
+ye
+ye
 Qk
 IV
 ke
-PK
+LC
 jv
 Qk
 Wu
-Qc
+ye
 Gf
 Gf
 uc
@@ -3676,7 +3676,7 @@ oo
 Qk
 IV
 ke
-PK
+LC
 nM
 Qk
 Qk
@@ -3711,7 +3711,7 @@ Qk
 Ld
 IV
 Lz
-PK
+LC
 nM
 Ld
 Qk
@@ -3746,7 +3746,7 @@ ME
 ME
 ME
 xy
-PK
+LC
 ME
 ME
 ME
@@ -3778,17 +3778,17 @@ jO
 Zl
 ME
 lC
-LC
+Oj
 xI
 XP
-LC
+Oj
 tQ
 wj
 GU
 ME
 QY
 BY
-pc
+dB
 jX
 Vb
 nc
@@ -3813,12 +3813,12 @@ jO
 Zl
 ME
 Xd
+Oj
 LC
-PK
 yX
-PK
-PK
-PK
+LC
+LC
+LC
 Mq
 ME
 Yt
@@ -3851,10 +3851,10 @@ FX
 WP
 yX
 yX
-PK
-PK
-PK
-PK
+LC
+LC
+LC
+LC
 ME
 gI
 BY
@@ -3883,7 +3883,7 @@ jO
 hx
 ME
 ZS
-LK
+pc
 Vx
 Rx
 PV
@@ -3926,7 +3926,7 @@ ME
 wR
 ME
 ME
-eh
+DM
 LN
 fO
 Eo
@@ -4540,7 +4540,7 @@ qq
 ja
 ml
 Ra
-WJ
+qu
 VZ
 Ra
 XU
@@ -4782,18 +4782,18 @@ Zy
 OP
 Zy
 Yp
-ye
+PK
 sC
 Ek
-ye
-ye
+PK
+PK
 vm
 sC
 sC
 jM
-ye
-ye
-ye
+PK
+PK
+PK
 AC
 AC
 nl
@@ -4826,7 +4826,7 @@ Er
 XS
 XS
 dk
-ye
+PK
 ug
 qF
 AC
@@ -4862,7 +4862,7 @@ bi
 bi
 Om
 QW
-Oj
+Dk
 AK
 AC
 EO
@@ -4896,7 +4896,7 @@ JM
 XS
 bi
 xb
-ye
+PK
 Fx
 Eg
 AC
@@ -4931,7 +4931,7 @@ YR
 XS
 dO
 dn
-ye
+PK
 pv
 Dt
 AC
@@ -4966,9 +4966,9 @@ Er
 IE
 bi
 se
-ye
-ye
-ye
+PK
+PK
+PK
 AC
 ww
 Vs
@@ -5001,7 +5001,7 @@ XS
 iS
 bi
 Er
-ln
+Qc
 Xp
 Wd
 AC
@@ -5036,7 +5036,7 @@ XS
 Ff
 Er
 NX
-ye
+PK
 mf
 mf
 AC
@@ -5071,7 +5071,7 @@ UM
 GT
 bk
 Yp
-ye
+PK
 lp
 lp
 AC
@@ -5098,13 +5098,13 @@ OP
 OP
 OP
 Yp
-ye
+PK
 lp
 lp
 lp
 lp
 lp
-ye
+PK
 Yp
 YA
 jh
