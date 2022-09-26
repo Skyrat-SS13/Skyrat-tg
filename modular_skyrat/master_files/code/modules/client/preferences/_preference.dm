@@ -136,7 +136,7 @@
  * Returns if feature is visible.
  *
  * Arguments:
- * * The character this is being applied to.
+ * * target - The character this is being applied to.
  * * preferences - The relevant character preferences.
  */
 /datum/preference/choiced/mutant_choice/proc/is_visible(mob/living/carbon/human/target, datum/preferences/preferences)
