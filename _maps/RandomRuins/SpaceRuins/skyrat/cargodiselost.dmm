@@ -104,10 +104,6 @@
 /obj/machinery/shower/directional/south,
 /turf/open/floor/iron/showroomfloor,
 /area/ruin/space/has_grav/cargodise_freighter/quarters)
-"ci" = (
-/obj/effect/spawner/structure/window/reinforced,
-/turf/open/floor/plating,
-/area/ruin/space/has_grav/cargodise_freighter/utility)
 "cG" = (
 /obj/effect/turf_decal/loading_area,
 /turf/open/floor/iron/brown,
@@ -159,13 +155,6 @@
 /obj/effect/spawner/random/trash/soap,
 /turf/open/floor/iron/showroomfloor,
 /area/ruin/space/has_grav/cargodise_freighter/quarters)
-"dA" = (
-/obj/machinery/door/airlock/hatch{
-	name = "Turret Room"
-	},
-/obj/machinery/door/firedoor,
-/turf/open/floor/engine,
-/area/ruin/space/has_grav/cargodise_freighter/bridge)
 "dD" = (
 /obj/machinery/door/airlock/survival_pod/glass,
 /obj/machinery/door/poddoor{
@@ -628,7 +617,7 @@
 "lp" = (
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
-/area/ruin/space/has_grav/cargodise_freighter/bridge)
+/area/ruin/space/has_grav/cargodise_freighter/utility)
 "lv" = (
 /obj/machinery/door/window/brigdoor/right/directional/south,
 /obj/structure/curtain,
@@ -814,7 +803,7 @@
 /area/ruin/space/has_grav/cargodise_freighter/kitchen)
 "pc" = (
 /turf/closed/wall/mineral/titanium/spaceship/nodiagonal,
-/area/ruin/space/has_grav/cargodise_freighter/bridge)
+/area/ruin/space/has_grav/cargodise_freighter/utility)
 "pe" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
 /obj/machinery/firealarm/directional/north,
@@ -895,6 +884,14 @@
 /obj/item/gps/computer/space,
 /turf/open/floor/iron/dark/brown,
 /area/ruin/space/has_grav/cargodise_freighter/mining)
+"ql" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/machinery/airalarm/all_access{
+	pixel_y = 34;
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/cargodise_freighter/quarters)
 "qm" = (
 /obj/effect/turf_decal/bot,
 /obj/structure/closet/crate/solarpanel_small,
@@ -1254,7 +1251,8 @@
 /area/ruin/space/has_grav/cargodise_freighter/primaryhall)
 "uZ" = (
 /obj/machinery/airalarm/all_access{
-	pixel_y = 26
+	pixel_y = 25;
+	dir = 1
 	},
 /turf/open/floor/iron/dark/green/side{
 	dir = 1
@@ -1266,6 +1264,13 @@
 	dir = 1
 	},
 /area/ruin/space/has_grav/cargodise_freighter/primaryhall)
+"vl" = (
+/obj/machinery/door/airlock/hatch{
+	name = "Turret Room"
+	},
+/obj/machinery/door/firedoor,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/cargodise_freighter/bridge)
 "vm" = (
 /obj/machinery/door/airlock/shuttle/glass,
 /obj/machinery/door/firedoor,
@@ -1297,6 +1302,16 @@
 /obj/machinery/suit_storage_unit/pirate,
 /turf/open/floor/iron/dark/green/side{
 	dir = 4
+	},
+/area/ruin/space/has_grav/cargodise_freighter/primaryhall)
+"vz" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/machinery/airalarm/all_access{
+	pixel_y = 25;
+	dir = 1
+	},
+/turf/open/floor/iron/dark/green/side{
+	dir = 1
 	},
 /area/ruin/space/has_grav/cargodise_freighter/primaryhall)
 "vB" = (
@@ -1487,15 +1502,9 @@
 	},
 /area/ruin/space/has_grav/cargodise_freighter/primaryhall)
 "ye" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
-/obj/machinery/airalarm/all_access{
-	pixel_y = 26;
-	dir = 1
-	},
-/turf/open/floor/iron/dark/green/side{
-	dir = 1
-	},
-/area/ruin/space/has_grav/cargodise_freighter/primaryhall)
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/cargodise_freighter/bridge)
 "yl" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
 /turf/open/floor/iron/dark/green/side,
@@ -1577,6 +1586,7 @@
 /area/ruin/space/has_grav/cargodise_freighter/quarters)
 "yX" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/cargodise_freighter/utility)
 "zf" = (
@@ -2054,11 +2064,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
 /turf/open/floor/iron/showroomfloor,
 /area/ruin/space/has_grav/cargodise_freighter/quarters)
-"HH" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
-/obj/structure/cable,
-/turf/open/floor/plating,
-/area/ruin/space/has_grav/cargodise_freighter/utility)
 "HQ" = (
 /turf/closed/wall/mineral/titanium/spaceship/nodiagonal,
 /area/ruin/space/has_grav/cargodise_freighter/primaryhall)
@@ -2398,7 +2403,7 @@
 	dir = 8
 	},
 /obj/machinery/airalarm/all_access{
-	pixel_y = -35
+	pixel_y = -25
 	},
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/cargodise_freighter/utility)
@@ -2414,7 +2419,7 @@
 /area/ruin/space/has_grav/cargodise_freighter/quarters)
 "ME" = (
 /turf/closed/wall/mineral/titanium/spaceship/nodiagonal,
-/area/ruin/space/has_grav/cargodise_freighter/utility)
+/area/ruin/space/has_grav/cargodise_freighter/bridge)
 "MH" = (
 /obj/effect/spawner/random/medical/patient_stretcher,
 /obj/machinery/iv_drip,
@@ -2563,16 +2568,8 @@
 	},
 /area/ruin/space/has_grav/cargodise_freighter/cargo)
 "Oj" = (
-/obj/machinery/door/airlock/mining/glass{
-	name = "Cargo Bay"
-	},
-/obj/machinery/door/poddoor{
-	id = "lockdown"
-	},
-/obj/machinery/door/firedoor,
-/obj/structure/cable,
-/turf/open/floor/iron/brown,
-/area/ruin/space/has_grav/cargodise_freighter/cargo)
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/cargodise_freighter/bridge)
 "Om" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
 /obj/structure/cable,
@@ -2686,14 +2683,6 @@
 	},
 /turf/open/floor/iron/checker,
 /area/ruin/space/has_grav/cargodise_freighter/kitchen)
-"PS" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
-/obj/machinery/airalarm/all_access{
-	pixel_y = 34;
-	dir = 1
-	},
-/turf/open/floor/wood,
-/area/ruin/space/has_grav/cargodise_freighter/quarters)
 "PV" = (
 /obj/structure/closet/crate/secure/engineering,
 /obj/item/storage/toolbox/electrical,
@@ -2722,8 +2711,15 @@
 /turf/open/floor/iron/freezer,
 /area/ruin/space/has_grav/cargodise_freighter/kitchen)
 "Qc" = (
-/turf/closed/wall/mineral/titanium/spaceship,
-/area/ruin/space/has_grav/cargodise_freighter/bridge)
+/obj/structure/marker_beacon/burgundy,
+/obj/structure/lattice/catwalk,
+/turf/template_noop,
+/area/space)
+"Qg" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/cargodise_freighter/utility)
 "Qi" = (
 /obj/structure/toilet{
 	dir = 4
@@ -2860,9 +2856,6 @@
 	dir = 1
 	},
 /area/ruin/space/has_grav/cargodise_freighter/cargo)
-"Sf" = (
-/turf/open/floor/engine,
-/area/ruin/space/has_grav/cargodise_freighter/bridge)
 "Sk" = (
 /mob/living/simple_animal/hostile/looter/crusher,
 /turf/open/floor/iron/brown/side,
@@ -2958,10 +2951,8 @@
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/cargodise_freighter/quarters)
 "Tr" = (
-/obj/structure/marker_beacon/burgundy,
-/obj/structure/lattice/catwalk,
-/turf/template_noop,
-/area/space)
+/turf/closed/wall/mineral/titanium/spaceship,
+/area/ruin/space/has_grav/cargodise_freighter/bridge)
 "Ty" = (
 /obj/machinery/door/airlock/survival_pod/glass,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
@@ -3039,6 +3030,17 @@
 	},
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/cargodise_freighter/quarters)
+"Ue" = (
+/obj/machinery/door/airlock/mining/glass{
+	name = "Cargo Bay"
+	},
+/obj/machinery/door/poddoor{
+	id = "lockdown"
+	},
+/obj/machinery/door/firedoor,
+/obj/structure/cable,
+/turf/open/floor/iron/brown,
+/area/ruin/space/has_grav/cargodise_freighter/cargo)
 "Ug" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/structure/cable,
@@ -3260,7 +3262,6 @@
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/cargodise_freighter/mining)
 "WP" = (
-/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/cargodise_freighter/utility)
@@ -3568,11 +3569,11 @@ OP
 OP
 OP
 Yp
-ci
+lp
 Yp
 Yp
 Yp
-ci
+lp
 Yp
 OP
 OP
@@ -3670,7 +3671,7 @@ Ra
 kB
 re
 ys
-ME
+pc
 oo
 Qk
 IV
@@ -3679,7 +3680,7 @@ PK
 nM
 Qk
 Qk
-ME
+pc
 ZD
 KP
 FO
@@ -3740,16 +3741,16 @@ Ra
 FB
 ll
 Zl
-ME
-ME
-ME
-ME
+pc
+pc
+pc
+pc
 xy
 PK
-ME
-ME
-ME
-ME
+pc
+pc
+pc
+pc
 XU
 Zl
 FO
@@ -3775,7 +3776,7 @@ Ra
 XU
 jO
 Zl
-ME
+pc
 lC
 LC
 xI
@@ -3784,10 +3785,10 @@ LC
 tQ
 wj
 GU
-ME
+pc
 QY
 BY
-Oj
+Ue
 jX
 Vb
 nc
@@ -3810,16 +3811,16 @@ Ra
 mz
 jO
 Zl
-ME
+pc
 Xd
 LC
 PK
-yX
+WP
 PK
 PK
 PK
 Mq
-ME
+pc
 Yt
 BY
 FO
@@ -3845,16 +3846,16 @@ Ra
 df
 jO
 Zl
-ME
+pc
 FX
+Qg
 WP
-yX
-yX
+WP
 PK
 PK
 PK
 PK
-ME
+pc
 gI
 BY
 FO
@@ -3880,16 +3881,16 @@ Ra
 XU
 jO
 hx
-ME
+pc
 ZS
-HH
+yX
 Vx
 Rx
 PV
 Rx
-yX
+WP
 Jd
-ME
+pc
 Zn
 Yg
 FO
@@ -3915,17 +3916,17 @@ Ra
 XU
 jO
 Zl
-ME
-ME
+pc
+pc
 pQ
-ME
-ME
-ME
-ME
+pc
+pc
+pc
+pc
 wR
-ME
-ME
-ye
+pc
+pc
+vz
 LN
 fO
 Eo
@@ -3974,7 +3975,7 @@ Zy
 (14,1,1) = {"
 Zy
 Zy
-Tr
+Qc
 Ra
 Ra
 Ra
@@ -4539,7 +4540,7 @@ qq
 ja
 ml
 Ra
-PS
+ql
 VZ
 Ra
 XU
@@ -4709,7 +4710,7 @@ Zy
 (35,1,1) = {"
 Zy
 Zy
-Tr
+Qc
 hP
 jR
 sa
@@ -4780,19 +4781,19 @@ Zy
 Zy
 OP
 Zy
-Qc
-pc
+Tr
+ME
 sC
 Ek
-pc
-pc
+ME
+ME
 vm
 sC
 sC
 jM
-pc
-pc
-pc
+ME
+ME
+ME
 AC
 AC
 nl
@@ -4808,15 +4809,15 @@ Wq
 gL
 gL
 Zy
-Tr
+Qc
 Zy
 "}
 (38,1,1) = {"
 Zy
 Zy
 Zy
-Qc
-Qc
+Tr
+Tr
 sF
 Er
 js
@@ -4825,7 +4826,7 @@ Er
 XS
 XS
 dk
-pc
+ME
 ug
 qF
 AC
@@ -4851,7 +4852,7 @@ Zy
 Zy
 Zy
 Zy
-Qc
+Tr
 aC
 EH
 bi
@@ -4861,7 +4862,7 @@ bi
 bi
 Om
 QW
-Sf
+Oj
 AK
 AC
 EO
@@ -4886,7 +4887,7 @@ OP
 Zy
 Zy
 Zy
-Qc
+Tr
 tc
 XS
 Oe
@@ -4895,7 +4896,7 @@ JM
 XS
 bi
 xb
-pc
+ME
 Fx
 Eg
 AC
@@ -4921,7 +4922,7 @@ Zy
 Zy
 OP
 Zy
-Qc
+Tr
 tc
 XS
 OX
@@ -4930,7 +4931,7 @@ YR
 XS
 dO
 dn
-pc
+ME
 pv
 Dt
 AC
@@ -4956,7 +4957,7 @@ Zy
 Zy
 Zy
 Zy
-Qc
+Tr
 ur
 XS
 Er
@@ -4965,9 +4966,9 @@ Er
 IE
 bi
 se
-pc
-pc
-pc
+ME
+ME
+ME
 AC
 ww
 Vs
@@ -4991,7 +4992,7 @@ Zy
 Zy
 Zy
 Zy
-Qc
+Tr
 vQ
 XS
 XS
@@ -5000,7 +5001,7 @@ XS
 iS
 bi
 Er
-dA
+vl
 Xp
 Wd
 AC
@@ -5026,7 +5027,7 @@ Zy
 OP
 OP
 Zy
-Qc
+Tr
 vX
 Ff
 XS
@@ -5035,7 +5036,7 @@ XS
 Ff
 Er
 NX
-pc
+ME
 mf
 mf
 AC
@@ -5061,7 +5062,7 @@ Zy
 OP
 OP
 Zy
-Qc
+Tr
 wd
 GT
 PC
@@ -5069,10 +5070,10 @@ GT
 UM
 GT
 bk
-Qc
-pc
-lp
-lp
+Tr
+ME
+ye
+ye
 AC
 zK
 ts
@@ -5096,15 +5097,15 @@ Zy
 OP
 OP
 OP
-Qc
-pc
-lp
-lp
-lp
-lp
-lp
-pc
-Qc
+Tr
+ME
+ye
+ye
+ye
+ye
+ye
+ME
+Tr
 YA
 jh
 jh
