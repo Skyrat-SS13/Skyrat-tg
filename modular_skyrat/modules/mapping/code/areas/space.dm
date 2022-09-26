@@ -286,7 +286,7 @@
 	icon_state = "solarsS"
 	has_gravity = STANDARD_GRAVITY
 
-// Cargodise Lose Freighter
+// Cargodise Lost Freighter
 
 /area/ruin/space/has_grav/cargodise_freighter/primaryhall
 	name = "Freighter Primary Hall"
