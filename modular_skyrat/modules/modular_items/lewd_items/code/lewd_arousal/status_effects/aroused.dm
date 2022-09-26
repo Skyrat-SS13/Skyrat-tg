@@ -17,7 +17,7 @@
 	alert_type = null
 
 /datum/status_effect/aroused/tick()
-	if(owner.stat >= DEAD)
+	if(owner.stat >= DEAD || !owner.client?.prefs?.read_preference(/datum/preference/toggle/erp))
 		return
 
 	var/mob/living/carbon/human/affected_mob = owner
@@ -26,9 +26,8 @@
 	var/temp_pain = BASE_PAIN_AND_PLEASURE_ADJUSTMENT
 
 	var/obj/item/organ/external/genital/testicles/balls = affected_mob.getorganslot(ORGAN_SLOT_TESTICLES)
-	if(balls)
-		if(balls.internal_fluid_full())
-			temp_arousal += BLUEBALL_AROUSAL_MODIFIER
+	if(balls && balls.internal_fluid_full())
+		temp_arousal += BLUEBALL_AROUSAL_MODIFIER
 
 	if(HAS_TRAIT(affected_mob, TRAIT_MASOCHISM))
 		temp_pain -= MASOCHISM_PAIN_OFFSET
