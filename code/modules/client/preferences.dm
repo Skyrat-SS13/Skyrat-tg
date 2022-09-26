@@ -567,28 +567,18 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/character_preview_view)
 /datum/preferences/proc/apply_prefs_to(mob/living/carbon/human/character, icon_updates = TRUE)
 	character.dna.features = MANDATORY_FEATURE_LIST //SKYRAT EDIT CHANGE - We need to instansiate the list with the basic features.
 
-	// SKYRAT EDIT ADDITION START - our change to check is_accessible requires us to switch to character mode.
-	var/old_window = current_window
-	current_window = PREFERENCE_TAB_CHARACTER_PREFERENCES
-	// SKYRAT EDIT ADDITION END
-
 	for (var/datum/preference/preference as anything in get_preferences_in_priority_order())
 		if (preference.savefile_identifier != PREFERENCE_CHARACTER)
 			continue
-	// SKYRAT EDIT
-		if(preference.is_accessible(src)) // Only apply preferences you can actually access.
-			preference.apply_to_human(character, read_preference(preference.type), src)
 
-	for (var/datum/preference_middleware/preference_middleware as anything in middleware)
-		preference_middleware.apply_to_human(character, src)
-	// SKYRAT EDIT END
+		preference.apply_to_human(character, read_preference(preference.type), src)
+
 	character.dna.real_name = character.real_name
 
 	if(icon_updates)
 		character.icon_render_keys = list()
 		character.update_body(is_creating = TRUE)
 
-	current_window = old_window // SKYRAT EDIT ADDITION - our change to check is_accessible requires us to switch to character mode.
 
 /// Returns whether the parent mob should have the random hardcore settings enabled. Assumes it has a mind.
 /datum/preferences/proc/should_be_random_hardcore(datum/job/job, datum/mind/mind)
