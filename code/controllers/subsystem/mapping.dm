@@ -310,11 +310,13 @@ Used by the AI doomsday and the self-destruct nuke.
 		++i
 
 	SSautomapper.preload_templates_from_toml(files) // SKYRAT EDIT ADDITION - We need to load our templates AFTER the Z level exists, otherwise, there is no z level to preload.
+	var/turf_blacklist = SSautomapper.get_turf_blacklists(files) // SKYRAT EDIT ADDITION - We use blacklisted turfs to carve out places for our templates.
 
 	// load the maps
 	for (var/P in parsed_maps)
 		var/datum/parsed_map/pm = P
-		if (!pm.load(1, 1, start_z + parsed_maps[P], no_changeturf = TRUE, blacklisted_turfs = SSautomapper.get_turf_blacklists(files))) // SKYRAT EDIT CHANGE - We use blacklisted turfs to carve out places for our templates.
+		pm.turf_blacklist = turf_blacklist // SKYRAT EDIT ADDITION - apply blacklist
+		if (!pm.load(1, 1, start_z + parsed_maps[P], no_changeturf = TRUE))
 			errorList |= pm.original_path
 	// SKYRAT EDIT ADDITION BEGIN - We need to load our templates from cache after our space has been carved out.
 	if(!LAZYLEN(errorList))

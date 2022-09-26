@@ -154,12 +154,7 @@
 	src.key_len = key_len
 
 /// Load the parsed map into the world. See [/proc/load_map] for arguments.
-<<<<<<< HEAD
-/datum/parsed_map/proc/load(x_offset, y_offset, z_offset, cropMap, no_changeturf, x_lower, x_upper, y_lower, y_upper, placeOnTop, list/blacklisted_turfs) // SKYRAT EDIT CHANGE - Added blacklisted_turfs
-	turf_blacklist = blacklisted_turfs // SKYRAT EDIT ADDITION
-=======
 /datum/parsed_map/proc/load(x_offset, y_offset, z_offset, cropMap, no_changeturf, x_lower, x_upper, y_lower, y_upper, placeOnTop, whitelist = FALSE)
->>>>>>> d34fa4c6428 (Macro optimizes SSmapping saving 50%  (#69632))
 	//How I wish for RAII
 	Master.StartLoadingMap()
 	. = _load_impl(x_offset, y_offset, z_offset, cropMap, no_changeturf, x_lower, x_upper, y_lower, y_upper, placeOnTop)
@@ -276,28 +271,6 @@
 			// since this is the tgm branch any cutoff of x means we just shouldn't iterate this gridset
 			if(!x_step_count || x_starting_skip)
 				continue
-<<<<<<< HEAD
-			if(ycrd <= world.maxy && ycrd >= 1)
-				var/xcrd = gset.xcrd + x_offset - 1
-				for(var/tpos = 1 to length(line) - key_len + 1 step key_len)
-					if((xcrd - x_offset + 1) < x_lower || (xcrd - x_offset + 1) > x_upper) //Same as above.
-						++xcrd
-						continue //X cropping.
-					if(xcrd > world.maxx)
-						if(cropMap)
-							break
-						else
-							world.maxx = xcrd
-							has_expanded_world_maxx = TRUE
-					if(xcrd >= 1)
-						var/model_key = copytext(line, tpos, tpos + key_len)
-						var/no_afterchange = no_changeturf || zexpansion
-						if(!no_afterchange || (model_key != space_key))
-							var/list/cache = modelCache[model_key]
-							if(!cache)
-								CRASH("Undefined model key in DMM: [model_key]")
-							build_coordinate(areaCache, cache, locate(xcrd, ycrd, zcrd), no_afterchange, placeOnTop)
-=======
 			for(var/i in 1 + y_starting_skip to line_count - y_ending_skip)
 				var/line = gset.gridLines[i]
 				if(line == space_key && no_afterchange)
@@ -313,7 +286,6 @@
 					SSatoms.map_loader_stop()
 					CRASH("Undefined model key in DMM: [line]")
 				build_coordinate(cache, locate(true_xcrd, ycrd, zcrd), no_afterchange, placeOnTop)
->>>>>>> d34fa4c6428 (Macro optimizes SSmapping saving 50%  (#69632))
 
 				// only bother with bounds that actually exist
 				if(!first_found)
