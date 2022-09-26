@@ -18,5 +18,5 @@
 					target_genital.update_sprite_suffix()
 			target.update_body()
 
-	arousal = clamp(arousal + arous, 0, AROUSAL_LIMIT)
+	arousal = clamp(arousal + arous, AROUSAL_MINIMUM, AROUSAL_LIMIT)
 

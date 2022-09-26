@@ -1,5 +1,5 @@
 /// To prevent an issue with stupidly low negative values.
-#define AROUSAL_MINIMUM -30
+#define AROUSAL_MINIMUM 0
 #define AROUSAL_MINIMUM_DETECTABLE 10
 #define AROUSAL_LOW 30
 #define AROUSAL_MEDIUM 70

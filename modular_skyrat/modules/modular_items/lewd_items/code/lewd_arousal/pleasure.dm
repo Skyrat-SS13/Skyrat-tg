@@ -5,4 +5,4 @@
 	if(pleasure >= 100) // lets cum
 		climax(manual = FALSE)
 
-	pleasure = clamp(pleasure + pleas, 0, AROUSAL_LIMIT)
+	pleasure = clamp(pleasure + pleas, AROUSAL_MINIMUM, AROUSAL_LIMIT)
