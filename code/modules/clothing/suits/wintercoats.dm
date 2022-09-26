@@ -180,18 +180,6 @@
 	icon_state = "hood_security"
 	armor = list(MELEE = 25, BULLET = 15, LASER = 30, ENERGY = 40, BOMB = 25, BIO = 0, FIRE = 0, ACID = 45)
 
-<<<<<<< HEAD
-// Head of Security
-/obj/item/clothing/suit/armor/hos/trenchcoat/winter
-	name = "head of security's winter coat"
-	desc = "A trenchcoat enhanced with a special lightweight kevlar, padded with wool on the collar and inside. You feel strangely lonely wearing this coat."
-	icon_state = "coathos"
-	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
-	icon = 'icons/obj/clothing/suits/wintercoat.dmi'
-	worn_icon = 'icons/mob/clothing/suits/wintercoat.dmi'
-
-=======
->>>>>>> c7806cad2e1 (Moves the new HoS winter trenchcoat from the wintercoat file into the proper armor file (#70014))
 // Medical Doctor
 /obj/item/clothing/suit/hooded/wintercoat/medical
 	name = "medical winter coat"
