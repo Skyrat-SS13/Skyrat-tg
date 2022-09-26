@@ -1,3 +1,7 @@
+#define AROUSAL_REMOVAL_AMOUNT -12
+#define STAMINA_REMOVAL_AMOUNT_EXTERNAL 15
+#define STAMINA_REMOVAL_AMOUNT_SELF 8
+
 // Lowers arousal and pleasure by a bunch to not chain climax.
 
 /datum/status_effect/climax
@@ -12,14 +16,10 @@
 
 	var/mob/living/carbon/human/affected_mob = owner
 
-	var/temp_arousal = -12
-	var/temp_pleasure = -12
-	var/temp_stamina = 15
-
 	owner.reagents.add_reagent(/datum/reagent/drug/aphrodisiac/dopamine, 0.5)
-	owner.adjustStaminaLoss(temp_stamina)
-	affected_mob.adjust_arousal(temp_arousal)
-	affected_mob.adjust_pleasure(temp_pleasure)
+	owner.adjustStaminaLoss(STAMINA_REMOVAL_AMOUNT_EXTERNAL)
+	affected_mob.adjust_arousal(AROUSAL_REMOVAL_AMOUNT)
+	affected_mob.adjust_pleasure(AROUSAL_REMOVAL_AMOUNT)
 
 // Likely ready to be deprecated code that could be removed, due to nymphomaniac not existing anymore.
 /datum/status_effect/masturbation_climax
@@ -33,14 +33,11 @@
 		return
 
 	var/mob/living/carbon/human/affected_mob = owner
-	var/temp_arousal = -12
-	var/temp_pleasure = -12
-	var/temp_stamina = 8
 
 	owner.reagents.add_reagent(/datum/reagent/drug/aphrodisiac/dopamine, 0.3)
-	owner.adjustStaminaLoss(temp_stamina)
-	affected_mob.adjust_arousal(temp_arousal)
-	affected_mob.adjust_pleasure(temp_pleasure)
+	owner.adjustStaminaLoss(STAMINA_REMOVAL_AMOUNT_SELF)
+	affected_mob.adjust_arousal(AROUSAL_REMOVAL_AMOUNT)
+	affected_mob.adjust_pleasure(AROUSAL_REMOVAL_AMOUNT)
 
 // A second step in preventing chain climax, and also prevents spam.
 /datum/status_effect/climax_cooldown
