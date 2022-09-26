@@ -50,7 +50,7 @@
 
 		affected_mob.Paralyze(30)
 		affected_mob.adjust_pain(10)
-		affected_mob.adjust_timed_status_effect(30 SECONDS, /datum/status_effect/speech/stutter)
+		affected_mob.adjust_stutter(30 SECONDS)
 
 	if(master)
 		if(isassembly(master))

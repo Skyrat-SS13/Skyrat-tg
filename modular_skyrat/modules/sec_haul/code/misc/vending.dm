@@ -68,7 +68,7 @@
 					/obj/item/clothing/under/rank/security/peacekeeper/tactical = 4,
 					/obj/item/clothing/under/rank/security/peacekeeper/sol/cadet = 3,
 					/obj/item/clothing/under/rank/security/peacekeeper/sol = 3,
-					/obj/item/clothing/shoes/jackboots/security = 10,
+					/obj/item/clothing/shoes/jackboots/sec = 10,
 					/obj/item/clothing/head/security_garrison = 10,
 					/obj/item/clothing/head/security_cap = 10,
 					/obj/item/clothing/head/beret/sec/peacekeeper = 5,

@@ -284,4 +284,4 @@
 	target.do_jitter_animation()
 	target.adjustStaminaLoss(3)
 	target.adjust_pain(9)
-	target.adjust_timed_status_effect(30 SECONDS, /datum/status_effect/speech/stutter)
+	target.adjust_stutter(30 SECONDS)

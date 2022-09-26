@@ -107,3 +107,15 @@
 
 /datum/species/mammal/get_species_lore()
 	return list("Make sure you fill out your own custom species lore!")
+
+/datum/species/mammal/prepare_human_for_preview(mob/living/carbon/human/human)
+	var/main_color = "#333333"
+	var/secondary_color = "#b8b8b8"
+	human.dna.features["mcolor"] = main_color
+	human.dna.features["mcolor2"] = secondary_color
+	human.dna.features["mcolor3"] = secondary_color
+	human.dna.species.mutant_bodyparts["ears"] = list(MUTANT_INDEX_NAME = "Husky", MUTANT_INDEX_COLOR_LIST = list(main_color, secondary_color, "#464646"))
+	human.dna.species.mutant_bodyparts["snout"] = list(MUTANT_INDEX_NAME = "Husky", MUTANT_INDEX_COLOR_LIST = list(main_color, secondary_color, secondary_color))
+	human.dna.species.mutant_bodyparts["tail"] = list(MUTANT_INDEX_NAME = "Husky", MUTANT_INDEX_COLOR_LIST = list(main_color, "#4D4D4D", secondary_color))
+	human.update_mutant_bodyparts(TRUE)
+	human.update_body(TRUE)

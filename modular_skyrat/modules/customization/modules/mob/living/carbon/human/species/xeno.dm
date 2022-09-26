@@ -25,7 +25,7 @@
 		"tail" = "Xenomorph Tail",
 		"xenodorsal" = ACC_RANDOM,
 		"xenohead" = ACC_RANDOM,
-		"legs" = "Digitigrade Legs",
+		"legs" = DIGITIGRADE_LEGS,
 		"taur" = "None"
 	)
 	external_organs = list()
