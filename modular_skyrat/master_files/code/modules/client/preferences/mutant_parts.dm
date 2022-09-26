@@ -34,10 +34,12 @@
 	relevant_species_trait = EYECOLOR
 
 /datum/preference/toggle/eye_emissives/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
+	value = value && preferences && is_allowed(preferences)
+
 	var/obj/item/organ/internal/eyes/eyes_organ = target.getorgan(/obj/item/organ/internal/eyes)
-	target.emissive_eyes = TRUE
+	target.emissive_eyes = value
 	if (istype(eyes_organ))
-		eyes_organ.is_emissive = value && preferences && is_allowed(preferences)
+		eyes_organ.is_emissive = value
 
 /datum/preference/toggle/eye_emissives/create_default_value()
 	return FALSE
