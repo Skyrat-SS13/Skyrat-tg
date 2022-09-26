@@ -57,18 +57,6 @@
 
 /datum/addiction/alcohol/withdrawal_stage_2_process(mob/living/carbon/affected_carbon, delta_time)
 	. = ..()
-<<<<<<< HEAD
-	affected_carbon.set_timed_status_effect(20 SECONDS * delta_time, /datum/status_effect/jitter, only_if_higher = TRUE)
-	affected_carbon.set_hallucinations_if_lower(10 SECONDS)
-
-/datum/addiction/alcohol/withdrawal_stage_3_process(mob/living/carbon/affected_carbon, delta_time)
-	. = ..()
-	affected_carbon.set_timed_status_effect(30 SECONDS * delta_time, /datum/status_effect/jitter, only_if_higher = TRUE)
-	affected_carbon.set_hallucinations_if_lower(10 SECONDS)
-	if(DT_PROB(4, delta_time))
-		if(!HAS_TRAIT(affected_carbon, TRAIT_ANTICONVULSANT))
-			affected_carbon.apply_status_effect(/datum/status_effect/seizure)
-=======
 	affected_carbon.set_jitter_if_lower(20 SECONDS * delta_time)
 	affected_carbon.set_hallucinations_if_lower(10 SECONDS)
 
@@ -78,7 +66,6 @@
 	affected_carbon.set_hallucinations_if_lower(10 SECONDS)
 	if(DT_PROB(4, delta_time) && !HAS_TRAIT(affected_carbon, TRAIT_ANTICONVULSANT))
 		affected_carbon.apply_status_effect(/datum/status_effect/seizure)
->>>>>>> 45516f47414 (Adds macros to help with common `set_`- and `adjust_timed_status_effect` uses (#69951))
 
 /datum/addiction/hallucinogens
 	name = "hallucinogen"
