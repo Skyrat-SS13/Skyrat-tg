@@ -254,7 +254,6 @@
 
 /obj/item/clothing/under/costume/buttondown
 	gender = PLURAL
-	body_parts_covered = GROIN|LEGS
 	female_sprite_flags = NO_FEMALE_UNIFORM
 	custom_price = PAYCHECK_CREW
 	icon = 'icons/obj/clothing/under/shorts_pants_shirts.dmi'
@@ -301,6 +300,7 @@
 	can_adjust = FALSE
 	greyscale_config = /datum/greyscale_config/football_suit
 	greyscale_config_worn = /datum/greyscale_config/football_suit_worn
+	greyscale_config_worn_digi = /datum/greyscale_config/football_suit_worn/digi //SKYRAT EDIT ADDITION - DigiGreyscale
 	greyscale_colors = "#D74722"
 	flags_1 = IS_PLAYER_COLORABLE_1
 

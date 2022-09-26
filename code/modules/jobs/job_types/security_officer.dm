@@ -5,8 +5,8 @@
 	auto_deadmin_role_flags = DEADMIN_POSITION_SECURITY
 	department_head = list(JOB_HEAD_OF_SECURITY)
 	faction = FACTION_STATION
-	total_positions = 8 //Handled in /datum/controller/occupations/proc/setup_officer_positions() // SKYRAT EDIT: SET TO 8, WAS 5
-	spawn_positions = 8 //Handled in /datum/controller/occupations/proc/setup_officer_positions() // SKYRAT EDIT: SEE ABOVE
+	total_positions = 8 //Handled in /datum/controller/occupations/proc/setup_officer_positions() //SKYRAT EDIT: SET TO 8, WAS 5
+	spawn_positions = 8 //Handled in /datum/controller/occupations/proc/setup_officer_positions() //SKYRAT EDIT: SEE ABOVE
 	supervisors = "the Head of Security, and the head of your assigned department (if applicable)"
 	selection_color = "#ffeeee"
 	minimal_player_age = 7
@@ -55,15 +55,17 @@ GLOBAL_LIST_EMPTY(security_officer_distribution)
 
 /datum/job/security_officer/after_roundstart_spawn(mob/living/spawning, client/player_client)
 	. = ..()
-	// SKYRAT EDIT
-	//if(ishuman(spawning))
-	//	setup_department(spawning, player_client)
-	// SKYRAT EDIT END
+	//SKYRAT EDIT REMOVAL
+	/*
+	if(ishuman(spawning))
+		setup_department(spawning, player_client)
+	*/
+	//SKYRAT EDIT END
 
 
 /datum/job/security_officer/after_latejoin_spawn(mob/living/spawning)
 	. = ..()
-	//SKYRAT EDIT
+	//SKYRAT EDIT REMOVAL
 	/*
 	if(ishuman(spawning))
 		var/department = setup_department(spawning, spawning.client)
@@ -204,16 +206,16 @@ GLOBAL_LIST_EMPTY(security_officer_distribution)
 
 	id_trim = /datum/id_trim/job/security_officer
 	uniform = /obj/item/clothing/under/rank/security/officer
-	suit = /obj/item/clothing/suit/armor/vest/security //SKYRAT EDIT CHANGE
+	suit = /obj/item/clothing/suit/armor/vest/alt/sec
 	suit_store = /obj/item/gun/energy/disabler
 	backpack_contents = list(
 		/obj/item/evidencebag = 1,
 		)
 	belt = /obj/item/modular_computer/tablet/pda/security
 	ears = /obj/item/radio/headset/headset_sec/alt
-	gloves = /obj/item/clothing/gloves/color/black/security //SKYRAT EDIT CHANGE
-	head = /obj/item/clothing/head/security_garrison //SKYRAT EDIT CHANGE
-	shoes = /obj/item/clothing/shoes/jackboots/security //SKYRAT EDIT CHANGE
+	gloves = /obj/item/clothing/gloves/color/black/security //SKYRAT EDIT CHANGE - Original: /obj/item/clothing/gloves/color/black
+	head = /obj/item/clothing/head/security_garrison //SKYRAT EDIT CHANGE - Original: /obj/item/clothing/head/helmet/sec
+	shoes = /obj/item/clothing/shoes/jackboots/sec
 	l_pocket = /obj/item/restraints/handcuffs
 	r_pocket = /obj/item/assembly/flash/handheld
 

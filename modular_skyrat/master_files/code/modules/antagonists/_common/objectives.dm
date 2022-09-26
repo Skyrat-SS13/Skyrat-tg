@@ -10,8 +10,6 @@
 #define KILL_PROB 50
 /// If a kill objective is rolled, chance that it is to destroy the AI.
 #define DESTROY_AI_PROB(denominator) (100 / denominator)
-/// If the destroy AI objective doesn't roll, chance that we'll get a maroon instead. If this prob fails, they will get a generic assassinate objective instead.
-#define MAROON_PROB 30
 
 /// Generates a complete set of traitor objectives up to the traitor objective limit, including non-generic objectives such as martyr and hijack.
 /datum/antagonist/traitor/saboteur/forge_traitor_objectives()
@@ -40,12 +38,6 @@
 			destroy_objective.owner = owner
 			destroy_objective.find_target()
 			return destroy_objective
-
-		if(prob(MAROON_PROB))
-			var/datum/objective/maroon/maroon_objective = new
-			maroon_objective.owner = owner
-			maroon_objective.find_target()
-			return maroon_objective
 
 		var/datum/objective/assassinate/kill_objective = new
 		kill_objective.owner = owner
@@ -112,4 +104,3 @@
 #undef MARTYR_PROB
 #undef KILL_PROB
 #undef DESTROY_AI_PROB
-#undef MAROON_PROB

@@ -8,7 +8,7 @@
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/head/helmet/rus_helmet/mob_can_equip(mob/living/M, mob/living/equipper, slot, disable_warning, bypass_equip_delay_self)
+/obj/item/clothing/head/helmet/rus_helmet/mob_can_equip(mob/living/M, slot, disable_warning, bypass_equip_delay_self, ignore_equipped)
 	if(is_species(M, /datum/species/teshari))
 		to_chat(M, span_warning("[src] is far too big for you!"))
 		return FALSE
@@ -47,7 +47,7 @@
 		state += "-up"
 	icon_state = state
 
-/obj/item/clothing/head/helmet/nri_heavy/mob_can_equip(mob/living/M, mob/living/equipper, slot, disable_warning, bypass_equip_delay_self)
+/obj/item/clothing/head/helmet/nri_heavy/mob_can_equip(mob/living/M, slot, disable_warning, bypass_equip_delay_self, ignore_equipped)
 	if(is_species(M, /datum/species/teshari))
 		to_chat(M, span_warning("[src] is far too big for you!"))
 		return FALSE
@@ -82,7 +82,7 @@
 	visor_flags = STOPSPRESSUREDAMAGE
 	slowdown = 0
 
-/obj/item/clothing/head/helmet/space/hev_suit/nri/mob_can_equip(mob/living/M, mob/living/equipper, slot, disable_warning, bypass_equip_delay_self)
+/obj/item/clothing/head/helmet/space/hev_suit/nri/mob_can_equip(mob/living/M, slot, disable_warning, bypass_equip_delay_self, ignore_equipped)
 	if(is_species(M, /datum/species/teshari))
 		to_chat(M, span_warning("[src] is far too big for you!"))
 		return FALSE
