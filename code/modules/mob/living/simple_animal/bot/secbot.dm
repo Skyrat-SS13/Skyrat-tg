@@ -309,23 +309,13 @@
 	if(harm)
 		weapon.attack(current_target, src)
 	if(ishuman(current_target))
-<<<<<<< HEAD
-		current_target.set_timed_status_effect(10 SECONDS, /datum/status_effect/speech/stutter)
-		current_target.StaminaKnockdown(60,TRUE) // SKYRAT EDIT CHANGE
+		current_target.set_stutter(10 SECONDS)
+		current_target.Paralyze(60) // SKYRAT EDIT CHANGE - original was current_target.Paralyze(100)
 		var/mob/living/carbon/human/human_target = current_target
 		threat = human_target.assess_threat(judgement_criteria, weaponcheck = CALLBACK(src, .proc/check_for_weapons))
 	else
-		current_target.StaminaKnockdown(60,TRUE) // SKYRAT EDIT CHANGE
-		current_target.set_timed_status_effect(10 SECONDS, /datum/status_effect/speech/stutter)
-=======
+		current_target.Paralyze(60) // SKYRAT EDIT CHANGE - original was current_target.Paralyze(100)
 		current_target.set_stutter(10 SECONDS)
-		current_target.Paralyze(100)
-		var/mob/living/carbon/human/human_target = current_target
-		threat = human_target.assess_threat(judgement_criteria, weaponcheck = CALLBACK(src, .proc/check_for_weapons))
-	else
-		current_target.Paralyze(100)
-		current_target.set_stutter(10 SECONDS)
->>>>>>> 45516f47414 (Adds macros to help with common `set_`- and `adjust_timed_status_effect` uses (#69951))
 		threat = current_target.assess_threat(judgement_criteria, weaponcheck = CALLBACK(src, .proc/check_for_weapons))
 
 	log_combat(src, target, "stunned")

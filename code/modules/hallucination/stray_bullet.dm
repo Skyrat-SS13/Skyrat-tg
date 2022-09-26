@@ -19,8 +19,6 @@
 	H.preparePixelProjectile(target, start)
 	H.fire()
 	qdel(src)
-<<<<<<< HEAD
-=======
 
 /obj/projectile/hallucination/fire()
 	if(hal_fire_sound)
@@ -261,4 +259,3 @@
 
 /obj/projectile/hallucination/death/apply_effect_to_hallucinator(mob/living/afflicted)
 	afflicted.cause_hallucination(/datum/hallucination/death, "fake [name]")
->>>>>>> 45516f47414 (Adds macros to help with common `set_`- and `adjust_timed_status_effect` uses (#69951))
