@@ -72,4 +72,4 @@
 	include_subtypes = FALSE
 
 /datum/export/xen_crystal/sell_object(obj/O, datum/export_report/report, dry_run, apply_elastic = FALSE)
-	. = ..()
+	return ..()
