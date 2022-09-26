@@ -345,7 +345,9 @@ GLOBAL_LIST_INIT(wood_recipes, list ( \
 	new/datum/stack_recipe("bonfire", /obj/structure/bonfire, 10, time = 60, one_per_turf = TRUE, on_solid_ground = TRUE), \
 	new/datum/stack_recipe("easel", /obj/structure/easel, 5, time = 10, one_per_turf = TRUE, on_solid_ground = TRUE), \
 	// SKYRAT ADDITION START
-	new/datum/stack_recipe("Wooden barricade", /obj/structure/deployable_barricade/wooden, 2, time = 1 SECONDS, on_solid_ground = TRUE), \
+	new/datum/stack_recipe("wooden barricade", /obj/structure/deployable_barricade/wooden, 2, time = 1 SECONDS, on_solid_ground = TRUE), \
+	new/datum/stack_recipe("water basin", /obj/structure/reagent_water_basin, 5, time = 2 SECONDS, one_per_turf = TRUE, on_solid_ground = TRUE), \
+	new/datum/stack_recipe("forging work bench", /obj/structure/reagent_crafting_bench, 5, time = 2 SECONDS, one_per_turf = TRUE, on_solid_ground = TRUE), \
 	// SKYRAT ADDITION END
 	null, \
 	new/datum/stack_recipe_list("pews", list(
