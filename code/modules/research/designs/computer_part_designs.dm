@@ -56,34 +56,6 @@
 	category = list(RND_CATEGORY_COMPUTER_PARTS)
 	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE | DEPARTMENT_BITFLAG_ENGINEERING
 
-// Network cards
-/datum/design/netcard/basic
-	name = "Network Card"
-	id = "netcard_basic"
-	build_type = IMPRINTER | AWAY_IMPRINTER
-	materials = list(/datum/material/iron = 250, /datum/material/glass = 100)
-	build_path = /obj/item/computer_hardware/network_card
-	category = list(RND_CATEGORY_COMPUTER_PARTS)
-	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE | DEPARTMENT_BITFLAG_ENGINEERING
-
-/datum/design/netcard/advanced
-	name = "Advanced Network Card"
-	id = "netcard_advanced"
-	build_type = IMPRINTER | AWAY_IMPRINTER
-	materials = list(/datum/material/iron = 500, /datum/material/glass = 200)
-	build_path = /obj/item/computer_hardware/network_card/advanced
-	category = list(RND_CATEGORY_COMPUTER_PARTS)
-	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE | DEPARTMENT_BITFLAG_ENGINEERING
-
-/datum/design/netcard/wired
-	name = "Wired Network Card"
-	id = "netcard_wired"
-	build_type = IMPRINTER | AWAY_IMPRINTER
-	materials = list(/datum/material/iron = 2500, /datum/material/glass = 400)
-	build_path = /obj/item/computer_hardware/network_card/wired
-	category = list(RND_CATEGORY_COMPUTER_PARTS)
-	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE | DEPARTMENT_BITFLAG_ENGINEERING
-
 // Data disks
 /datum/design/portabledrive/basic
 	name = "Data Disk"
@@ -122,6 +94,7 @@
 	category = list(RND_CATEGORY_COMPUTER_PARTS)
 	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE | DEPARTMENT_BITFLAG_ENGINEERING
 
+<<<<<<< HEAD
 // Intellicard slot
 /datum/design/aislot
 	name = "Intellicard Slot"
@@ -152,6 +125,8 @@
 	category = list(RND_CATEGORY_COMPUTER_PARTS)
 	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE | DEPARTMENT_BITFLAG_ENGINEERING
 
+=======
+>>>>>>> 7c990173e0b (Removes network cards and printers from tablets (#70110))
 // Batteries
 /datum/design/battery/controller
 	name = "Power Cell Controller"

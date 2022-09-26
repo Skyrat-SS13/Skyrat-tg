@@ -120,26 +120,6 @@
 	export_types = list(/obj/item/computer_hardware/hard_drive)
 	include_subtypes = TRUE
 
-//Networking Parts
-
-/datum/export/modular_part/networkcard/advanced
-	cost = CARGO_CRATE_VALUE * 0.5
-	unit_name = "advanced network card"
-	export_types = list(/obj/item/computer_hardware/network_card/advanced)
-	include_subtypes = FALSE
-
-/datum/export/modular_part/networkcard/wired
-	cost = CARGO_CRATE_VALUE
-	unit_name = "wired network card"
-	export_types = list(/obj/item/computer_hardware/network_card/wired)
-	include_subtypes = FALSE
-
-/datum/export/modular_part/networkcard/standard
-	cost = CARGO_CRATE_VALUE * 0.25
-	unit_name = "network card"
-	export_types = list(/obj/item/computer_hardware/network_card)
-	include_subtypes = TRUE
-
 //Miscellaneous Parts
 
 /datum/export/modular_part/idcard
@@ -148,6 +128,7 @@
 	export_types = list(/obj/item/computer_hardware/card_slot)
 	include_subtypes = TRUE
 
+<<<<<<< HEAD
 /datum/export/modular_part/intellicard
 	cost = CARGO_CRATE_VALUE * 0.2
 	unit_name = "computer intellicard slot"
@@ -160,6 +141,8 @@
 	export_types = list(/obj/item/computer_hardware/printer/mini)
 	include_subtypes = TRUE
 
+=======
+>>>>>>> 7c990173e0b (Removes network cards and printers from tablets (#70110))
 /datum/export/modular_part/misc
 	cost = CARGO_CRATE_VALUE * 0.1
 	unit_name = "miscellaneous computer part"
