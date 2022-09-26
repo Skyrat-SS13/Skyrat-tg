@@ -541,11 +541,6 @@
 	desc = "An access card designated for \"Tarkon ensign\". No one has to listen to you... But you're the closest there is for command around here."
 	trim = /datum/id_trim/away/tarkon/ensign
 
-//AREAS//
-/area/ruin/space/has_grav/deepstorage/lostcargo
-	name = "Freighter Ship"
-	icon_state = "yellow"
-
 //CRYO CONSOLES
 /obj/machinery/computer/cryopod/interdyne
 	radio = /obj/item/radio/headset/interdyne
