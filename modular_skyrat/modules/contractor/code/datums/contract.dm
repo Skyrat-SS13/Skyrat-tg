@@ -189,7 +189,7 @@
 	target.reagents.add_reagent(/datum/reagent/medicine/omnizine, 20)
 
 	target.flash_act()
-	target.adjust_timed_status_effect(10 SECONDS, /datum/status_effect/confusion)
+	target.adjust_confusion(10 SECONDS)
 	target.blur_eyes(5)
 	to_chat(target, span_warning("You feel strange..."))
 	addtimer(CALLBACK(src, .proc/victim_stage_two, target), 6 SECONDS)
@@ -197,14 +197,14 @@
 /// Continued victim handling
 /datum/syndicate_contract/proc/victim_stage_two(mob/living/target)
 	to_chat(target, span_warning("That pod did something to you..."))
-	target.set_timed_status_effect(70 SECONDS, /datum/status_effect/dizziness)
+	target.set_dizzy(70 SECONDS)
 	addtimer(CALLBACK(src, .proc/victim_stage_three, target), 6 SECONDS)
 
 /// Continued victim handling, flashes them as well
 /datum/syndicate_contract/proc/victim_stage_three(mob/living/target)
 	to_chat(target, span_warning("Your head pounds... It feels like it's going to burst out your skull!"))
 	target.flash_act()
-	target.adjust_timed_status_effect(20 SECONDS, /datum/status_effect/confusion)
+	target.adjust_confusion(20 SECONDS)
 	target.blur_eyes(3)
 	addtimer(CALLBACK(src, .proc/victim_stage_four, target), 3 SECONDS)
 
@@ -221,8 +221,8 @@
 				we thank you for providing them. Your value is expended, and you will be ransomed back to your station. We always get paid, \
 				so it's only a matter of time before we ship you back...\"</i>")))
 	target.blur_eyes(10)
-	target.set_timed_status_effect(30 SECONDS, /datum/status_effect/dizziness, only_if_higher = TRUE)
-	target.adjust_timed_status_effect(20 SECONDS, /datum/status_effect/confusion)
+	target.set_dizzy_if_lower(30 SECONDS)
+	target.adjust_confusion(20 SECONDS)
 
 /// We're returning the victim
 /datum/syndicate_contract/proc/return_victim(mob/living/target)
@@ -262,8 +262,8 @@
 
 		target.flash_act()
 		target.blur_eyes(30)
-		target.set_timed_status_effect(70 SECONDS, /datum/status_effect/dizziness, only_if_higher = TRUE)
-		target.adjust_timed_status_effect(20 SECONDS, /datum/status_effect/confusion)
+		target.set_dizzy_if_lower(70 SECONDS)
+		target.adjust_confusion(20 SECONDS)
 
 		new /obj/effect/pod_landingzone(possible_drop_loc[pod_rand_loc], return_pod)
 	else
