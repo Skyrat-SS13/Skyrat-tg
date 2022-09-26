@@ -98,7 +98,6 @@
 	var/datum/species/species = read_preference(/datum/preference/choiced/species)
 	species = new species()
 	var/datum/language_holder/language_holder = new species.species_language_holder()
-	qdel(species)
 
 	if(all_quirks.Find("Foreigner"))
 		language_holder.remove_language(/datum/language/common)
@@ -111,7 +110,6 @@
 /datum/preferences/proc/try_get_common_language()
 	var/datum/language_holder/language_holder = get_adjusted_language_holder()
 	var/language = language_holder.spoken_languages[1]
-	qdel(language_holder)
 	return language
 
 /datum/preferences/proc/validate_species_parts()
