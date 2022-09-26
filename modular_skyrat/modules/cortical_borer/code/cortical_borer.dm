@@ -48,7 +48,7 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 	. = ..()
 	for(var/datum/borer_focus/body_focus as anything in borer.body_focuses)
 		body_focus.on_add()
-	carbon_target.hal_screwyhud = SCREWYHUD_HEALTHY
+	carbon_target.apply_status_effect(/datum/status_effect/grouped/screwy_hud/fake_healthy, type)
 
 //on removal, force the borer out
 /obj/item/organ/internal/borer_body/Remove(mob/living/carbon/carbon_target, special)
@@ -58,7 +58,7 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 		body_focus.on_remove()
 	if(cb_inside)
 		cb_inside.leave_host()
-	carbon_target.hal_screwyhud = SCREWYHUD_NONE
+	carbon_target.remove_status_effect(/datum/status_effect/grouped/screwy_hud/fake_healthy, type)
 	qdel(src)
 
 /obj/item/reagent_containers/borer
@@ -254,8 +254,7 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 	if(prob(5) && human_host.getToxLoss() <= 80)
 		human_host.adjustToxLoss(5, TRUE, TRUE)
 
-	if(human_host.hal_screwyhud != SCREWYHUD_HEALTHY)
-		human_host.hal_screwyhud = SCREWYHUD_HEALTHY
+	human_host.apply_status_effect(/datum/status_effect/grouped/screwy_hud/fake_healthy, type)
 
 	//cant do anything if the host has sugar
 	if(host_sugar())

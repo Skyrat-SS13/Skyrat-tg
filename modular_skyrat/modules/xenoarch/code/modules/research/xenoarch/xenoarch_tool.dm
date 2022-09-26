@@ -243,7 +243,7 @@
 		for(var/A in tile)
 			if (!is_type_in_typecache(A, atom_storage.can_hold))
 				continue
-			else if(atom_storage.attempt_insert(src, A, user))
+			else if(atom_storage.attempt_insert(A, user))
 				show_message = TRUE
 			else
 				if(!spam_protection)
