@@ -52,3 +52,5 @@
 /datum/mod_theme/administrative
 	modsuit_tail_colors = list("#003377", "#222222", "#22AAFF")
 
+/datum/mod_theme/frontline
+	modsuit_tail_colors = list("#46523B", "#5E6D4F", "#293220")
