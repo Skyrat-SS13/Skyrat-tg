@@ -39,6 +39,7 @@
 	} while(FALSE); \
 	usage = TICK_USAGE;
 
+<<<<<<< HEAD
 #define SET_COST_LINE(...) \
 	do { \
 		var/cost = TICK_USAGE; \
@@ -47,3 +48,6 @@
 		usage = TICK_USAGE; \
 	} while(FALSE)
 
+=======
+#define SET_COST_LINE(...) SET_COST("[__LINE__]")
+>>>>>>> e5a2b0f16e2 (Micros the lighting subsystem (Saves a second of init) (#69838))
