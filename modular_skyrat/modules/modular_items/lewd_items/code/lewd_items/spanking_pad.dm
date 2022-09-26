@@ -72,7 +72,7 @@
 			message = (user == target) ? pick("spanks themselves with [src]", "uses [src] to slap their hips") : pick("slaps [target]'s hips with [src]", "uses [src] to slap [target]'s butt", "spanks [target] with [src], making a loud slapping noise", "slaps [target]'s thighs with [src]")
 			if(prob(40) && (target.stat != DEAD))
 				target.try_lewd_autoemote(pick("twitch_s", "moan", "blush", "gasp"))
-			target.adjustArousal(2)
+			target.adjust_arousal(2)
 			target.adjust_pain(4)
 			target.apply_status_effect(/datum/status_effect/spanked)
 			if(HAS_TRAIT(target, TRAIT_MASOCHISM || TRAIT_BIMBO))

@@ -93,9 +93,9 @@
 	else
 		stress = clamp(stress + 1, 0, 300)
 
-	human_owner.adjustArousal(10)
+	human_owner.adjust_arousal(10)
 	if(human_owner.pleasure < 80)
-		human_owner.adjustPleasure(5)
+		human_owner.adjust_pleasure(5)
 
 	//Anything beyond this obeys a cooldown system because we don't want to spam it
 	if(!COOLDOWN_FINISHED(src, desire_cooldown))
@@ -254,7 +254,7 @@
 /datum/brain_trauma/very_special/sadism/on_life(delta_time, times_fired)
 	var/mob/living/carbon/human/affected_mob = owner
 	if(someone_suffering() && affected_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp))
-		affected_mob.adjustArousal(2)
+		affected_mob.adjust_arousal(2)
 		owner.add_mood_event("sadistic", /datum/mood_event/sadistic)
 	else
 		owner.clear_mood_event("sadistic")

@@ -106,14 +106,14 @@
 		return
 	// I tried using switch here, but it need static value, and u.arousal can't be it. So fuck switches. Reject it, embrace the IFs
 	if(current_size == "small" && target.arousal < 30)
-		target.adjustArousal(0.6 * delta_time)
-		target.adjustPleasure(0.7 * delta_time)
+		target.adjust_arousal(0.6 * delta_time)
+		target.adjust_pleasure(0.7 * delta_time)
 	else if(current_size == "medium" && target.arousal < 40)
-		target.adjustArousal(0.8 * delta_time)
-		target.adjustPleasure(0.8 * delta_time)
+		target.adjust_arousal(0.8 * delta_time)
+		target.adjust_pleasure(0.8 * delta_time)
 	else if(current_size == "big" && target.arousal < 50)
-		target.adjustArousal(1 * delta_time)
-		target.adjustPleasure(1 * delta_time)
+		target.adjust_arousal(1 * delta_time)
+		target.adjust_pleasure(1 * delta_time)
 		if(!(target.pain < 22.5)) //yeah, this will cause pain. No buttplug gib intended, sry
 			return
 		target.adjust_pain(target*delta_time)

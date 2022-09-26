@@ -74,14 +74,14 @@
 		return
 	// I tried using switch here, but it need static value, and u.arousal can't be it. So fuck switches. Reject it, embrace the IFs
 	if(vibration_mode == "low" && vibrated.arousal < 30)
-		vibrated.adjustArousal(0.6 * delta_time)
-		vibrated.adjustPleasure(0.7 * delta_time)
+		vibrated.adjust_arousal(0.6 * delta_time)
+		vibrated.adjust_pleasure(0.7 * delta_time)
 	else if(vibration_mode == "medium" && vibrated.arousal < 60)
-		vibrated.adjustArousal(0.8 * delta_time)
-		vibrated.adjustPleasure(0.8 * delta_time)
+		vibrated.adjust_arousal(0.8 * delta_time)
+		vibrated.adjust_pleasure(0.8 * delta_time)
 	else if(vibration_mode == "hard")
-		vibrated.adjustArousal(1 * delta_time)
-		vibrated.adjustPleasure(1 * delta_time)
+		vibrated.adjust_arousal(1 * delta_time)
+		vibrated.adjust_pleasure(1 * delta_time)
 
 /obj/item/clothing/sextoy/magic_wand/attack(mob/living/carbon/human/target, mob/living/carbon/human/user)
 	. = ..()
@@ -124,8 +124,8 @@
 					to_chat(user, span_danger("Looks like [target]'s groin is covered!"))
 					return
 				message = (user == target) ? pick("massages their pussy with the [src]", "[vibration_mode == "low" ? "gently" : ""][vibration_mode = "hard" ? "roughly" : ""] teases their pussy with [src]") : pick("[vibration_mode == "low" ? "delicately" : ""][vibration_mode = "hard" ? "aggressively" : ""] massages [target]'s pussy with [src]", "uses [src] to [vibration_mode == "low" ? "gently" : ""][vibration_mode = "hard" ? "roughly" : ""] massage [target]'s pussy", "leans the vibrator against [target]'s pussy")
-			target.adjustArousal((vibration_mode == "low" ? 4 : (vibration_mode == "hard" ? 8 : 5)))
-			target.adjustPleasure((vibration_mode == "low" ? 2 : (vibration_mode == "hard" ? 10 : 5)))
+			target.adjust_arousal((vibration_mode == "low" ? 4 : (vibration_mode == "hard" ? 8 : 5)))
+			target.adjust_pleasure((vibration_mode == "low" ? 2 : (vibration_mode == "hard" ? 10 : 5)))
 
 		if(BODY_ZONE_CHEST)
 			var/obj/item/organ/external/genital/breasts = target.getorganslot(ORGAN_SLOT_BREASTS)
@@ -134,8 +134,8 @@
 				return
 			var/breasts_or_nipples = breasts ? ORGAN_SLOT_BREASTS : ORGAN_SLOT_NIPPLES
 			message = (user == target) ? pick("massages their [breasts_or_nipples] with the [src]", "[vibration_mode == "low" ? "gently" : ""][vibration_mode = "hard" ? "roughly" : ""] teases their [breasts ? "tits" : ORGAN_SLOT_NIPPLES] with [src]") : pick("[vibration_mode == "low" ? "delicately" : ""][vibration_mode = "hard" ? "aggressively" : ""] teases [target]'s [breasts_or_nipples] with [src]", "uses [src] to[vibration_mode == "low" ? " slowly" : ""] massage [target]'s [breasts ? "tits" : ORGAN_SLOT_NIPPLES]", "uses [src] to tease [target]'s [breasts ? "boobs" : ORGAN_SLOT_NIPPLES]")
-			target.adjustArousal((vibration_mode == "low" ? 3 : (vibration_mode == "hard" ? 7 : 4)))
-			target.adjustPleasure((vibration_mode == "low" ? 1 : (vibration_mode == "hard" ? 9 : 4)))
+			target.adjust_arousal((vibration_mode == "low" ? 3 : (vibration_mode == "hard" ? 7 : 4)))
+			target.adjust_pleasure((vibration_mode == "low" ? 1 : (vibration_mode == "hard" ? 9 : 4)))
 
 	if(prob(30) && (target.stat != DEAD))
 		target.try_lewd_autoemote(pick("twitch_s", "moan"))

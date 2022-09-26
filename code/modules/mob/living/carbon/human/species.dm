@@ -1382,6 +1382,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 					H.update_damage_overlays()
 			else//no bodypart, we deal damage with a more general method.
 				H.adjustBruteLoss(damage_amount)
+			INVOKE_ASYNC(affected_mob, /mob/living/carbon/human/.proc/adjust_pain, amount) // SKYRAT EDIT ADDITION - ERP Pain
 		if(BURN)
 			H.damageoverlaytemp = 20
 			var/damage_amount = forced ? damage : damage * hit_percent * burnmod * H.physiology.burn_mod
@@ -1390,6 +1391,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 					H.update_damage_overlays()
 			else
 				H.adjustFireLoss(damage_amount)
+			INVOKE_ASYNC(affected_mob, /mob/living/carbon/human/.proc/adjust_pain, amount) // SKYRAT EDIT ADDITION - ERP Pain
 		if(TOX)
 			var/damage_amount = forced ? damage : damage * hit_percent * H.physiology.tox_mod
 			H.adjustToxLoss(damage_amount)

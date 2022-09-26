@@ -127,14 +127,14 @@
 	if(!istype(target))
 		return
 	if(vibration_mode == "low")
-		target.adjustArousal(0.5 * delta_time)
-		target.adjustPleasure(0.5 * delta_time)
+		target.adjust_arousal(0.5 * delta_time)
+		target.adjust_pleasure(0.5 * delta_time)
 	if(vibration_mode == "medium")
-		target.adjustArousal(0.6 * delta_time)
-		target.adjustPleasure(0.6 * delta_time)
+		target.adjust_arousal(0.6 * delta_time)
+		target.adjust_pleasure(0.6 * delta_time)
 	if(vibration_mode == "high")
-		target.adjustArousal(0.7 * delta_time)
-		target.adjustPleasure(0.7 * delta_time)
+		target.adjust_arousal(0.7 * delta_time)
+		target.adjust_pleasure(0.7 * delta_time)
 
 /*
 *	SIGNALLER CONTROLLED EGG

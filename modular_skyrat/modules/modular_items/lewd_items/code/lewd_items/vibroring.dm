@@ -84,7 +84,7 @@
 	var/obj/item/organ/external/genital/testicles/balls = user.getorganslot(ORGAN_SLOT_PENIS)
 	if(!toy_on || !balls)
 		return
-	user.adjustArousal(1 * delta_time)
-	user.adjustPleasure(1 * delta_time)
+	user.adjust_arousal(1 * delta_time)
+	user.adjust_pleasure(1 * delta_time)
 	if(balls.aroused != AROUSAL_CANT)
 		balls.aroused = AROUSAL_FULL //Vibroring keep penis erected.

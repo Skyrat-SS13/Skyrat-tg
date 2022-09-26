@@ -87,11 +87,11 @@
 		src.dropped(hooman)
 		return PROCESS_KILL
 	if(tightness == SHIBARI_TIGHTNESS_LOW && hooman.arousal < 15)
-		hooman.adjustArousal(0.6 * delta_time)
+		hooman.adjust_arousal(0.6 * delta_time)
 	if(tightness == SHIBARI_TIGHTNESS_MED && hooman.arousal < 25)
-		hooman.adjustArousal(0.6 * delta_time)
+		hooman.adjust_arousal(0.6 * delta_time)
 	if(tightness == SHIBARI_TIGHTNESS_HIGH && hooman.arousal < 30)
-		hooman.adjustArousal(0.6 * delta_time)
+		hooman.adjust_arousal(0.6 * delta_time)
 
 //stuff to apply processing on equip and add mood event for perverts
 /obj/item/clothing/under/shibari/equipped(mob/user, slot)
@@ -161,11 +161,11 @@
 		return PROCESS_KILL
 	var/mob/living/carbon/human/hooman = loc
 	if(tightness == SHIBARI_TIGHTNESS_LOW && hooman.pleasure < 20)
-		hooman.adjustPleasure(0.6 * delta_time)
+		hooman.adjust_pleasure(0.6 * delta_time)
 	if(tightness == SHIBARI_TIGHTNESS_MED && hooman.pleasure < 60)
-		hooman.adjustPleasure(0.6 * delta_time)
+		hooman.adjust_pleasure(0.6 * delta_time)
 	if(tightness == SHIBARI_TIGHTNESS_HIGH)
-		hooman.adjustPleasure(0.6 * delta_time)
+		hooman.adjust_pleasure(0.6 * delta_time)
 
 /obj/item/clothing/under/shibari/full
 	name = "shibari fullbody ropes"
@@ -188,11 +188,11 @@
 		return PROCESS_KILL
 	var/mob/living/carbon/human/hooman = loc
 	if(tightness == SHIBARI_TIGHTNESS_LOW && hooman.pleasure< 20)
-		hooman.adjustPleasure(0.6 * delta_time)
+		hooman.adjust_pleasure(0.6 * delta_time)
 	if(tightness == SHIBARI_TIGHTNESS_MED && hooman.pleasure < 60)
-		hooman.adjustPleasure(0.6 * delta_time)
+		hooman.adjust_pleasure(0.6 * delta_time)
 	if(tightness == SHIBARI_TIGHTNESS_HIGH)
-		hooman.adjustPleasure(0.6 * delta_time)
+		hooman.adjust_pleasure(0.6 * delta_time)
 		if(hooman.pain < 40)
 			hooman.adjust_pain(0.6 * delta_time)
 

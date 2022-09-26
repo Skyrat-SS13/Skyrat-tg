@@ -610,8 +610,8 @@
 
 // Handling the process of the impact of the machine on the organs of the mob
 /obj/structure/chair/milking_machine/proc/increase_current_mob_arousal(delta_time)
-	src.current_mob.adjustArousal(src.arousal_amounts[src.current_mode] * delta_time)
-	src.current_mob.adjustPleasure(src.pleasure_amounts[src.current_mode] * delta_time)
+	src.current_mob.adjust_arousal(src.arousal_amounts[src.current_mode] * delta_time)
+	src.current_mob.adjust_pleasure(src.pleasure_amounts[src.current_mode] * delta_time)
 	src.current_mob.adjust_pain(src.pain_amounts[src.current_mode] * delta_time)
 
 // Energy consumption processor

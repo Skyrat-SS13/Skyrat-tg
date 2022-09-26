@@ -32,8 +32,8 @@
 		var/displayed_thought = pick(possible_aroused_thoughts)
 		to_chat(exposed_mob, span_notice("[displayed_thought]"))
 
-	exposed_mob.adjustArousal(arousal_adjust_amount)
-	exposed_mob.adjustPleasure(pleasure_adjust_amount)
+	exposed_mob.adjust_arousal(arousal_adjust_amount)
+	exposed_mob.adjust_pleasure(pleasure_adjust_amount)
 	exposed_mob.adjust_pain(pain_adjust_amount)
 
 	var/modified_genitals = FALSE

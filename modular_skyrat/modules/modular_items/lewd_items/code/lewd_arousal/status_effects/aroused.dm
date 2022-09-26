@@ -26,16 +26,16 @@
 
 	if(affected_mob.pain > affected_mob.pain_limit)
 		temp_arousal -= 0.1
-	if(affected_mob.arousal >= AROUSAL_MEDIUM && affected_mob.stat != DEAD)
+	if(affected_mob.arousal >= AROUSAL_MEDIUM)
 		if(prob(3))
 			affected_mob.try_lewd_autoemote(pick("moan", "blush"))
 		temp_pleasure += 0.1
 		//moan
-	if(affected_mob.pleasure >= AROUSAL_HIGH && affected_mob.stat != DEAD)
+	if(affected_mob.pleasure >= AROUSAL_HIGH)
 		if(prob(3))
 			affected_mob.try_lewd_autoemote(pick("moan", "twitch_s"))
 		//moan x2
 
-	affected_mob.adjustArousal(temp_arousal)
-	affected_mob.adjustPleasure(temp_pleasure)
+	affected_mob.adjust_arousal(temp_arousal)
+	affected_mob.adjust_pleasure(temp_pleasure)
 	affected_mob.adjust_pain(temp_pain)

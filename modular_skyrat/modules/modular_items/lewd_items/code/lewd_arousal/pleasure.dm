@@ -1,10 +1,8 @@
-/mob/living/carbon/human/proc/adjustPleasure(pleas = 0)
-	if(stat >= DEAD)
+/mob/living/carbon/human/proc/adjust_pleasure(pleas = 0)
+	if(stat >= DEAD || client?.prefs?.read_preference(/datum/preference/toggle/erp))
 		return
-	if(client?.prefs?.read_preference(/datum/preference/toggle/erp))
-		pleasure += pleas
-		if(pleasure >= 100) // lets cum
-			climax(FALSE)
-	else
-		pleasure -= abs(pleas)
-	pleasure = clamp(pleasure, 0, AROUSAL_LIMIT)
+
+	if(pleasure >= 100) // lets cum
+		climax(manual = FALSE)
+
+	pleasure = clamp(pleasure + pleas, 0, AROUSAL_LIMIT)
