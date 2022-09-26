@@ -573,6 +573,11 @@ INITIALIZE_IMMEDIATE(/atom/movable/screen/character_preview_view)
 
 		preference.apply_to_human(character, read_preference(preference.type), src)
 
+	// SKYRAT EDIT ADDITION START - middleware apply human prefs
+	for (var/datum/preference_middleware/preference_middleware as anything in middleware)
+		preference_middleware.apply_to_human(character, src)
+	// SKYRAT EDIT ADDITION END
+
 	character.dna.real_name = character.real_name
 
 	if(icon_updates)
