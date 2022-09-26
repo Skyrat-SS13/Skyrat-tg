@@ -21,6 +21,8 @@
 	Or perhaps more exotic customers are in local space...?"
 	important_text = "You are not an antagonist."
 	outfit = /datum/outfit/black_market
+	quirks_enabled = TRUE
+	random_appearance = FALSE
 
 /datum/outfit/black_market
 	name = "Black Market Trader"
