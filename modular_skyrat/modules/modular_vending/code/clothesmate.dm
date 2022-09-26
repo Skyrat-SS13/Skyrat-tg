@@ -47,13 +47,7 @@
 				/obj/item/clothing/under/dress/skirt/polychromic = 5,
 				/obj/item/clothing/under/dress/skirt/polychromic/pleated = 5,
 				/obj/item/clothing/under/suit/fancy = 5,
-				/obj/item/clothing/under/rancher = 5,
-				/obj/item/clothing/under/rancher/pioneer = 5,
-				/obj/item/clothing/under/rancher/worker = 5,
-				/obj/item/clothing/under/rancher/cowboy = 5,
-				/obj/item/clothing/under/rancher/checkered = 5,
 				/obj/item/clothing/under/texas = 5,
-				/obj/item/clothing/under/westender = 5,
 				/obj/item/clothing/under/sweater = 5,
 				/obj/item/clothing/under/keyhole_sweater = 5,
 				/obj/item/clothing/under/tachawaiian = 5,
@@ -137,7 +131,7 @@
 			"products" = list(
 				/obj/item/clothing/under/costume/deckers/alt = 5,
 
-				/obj/item/clothing/under/costume/bathrobe = 5,
+				/obj/item/clothing/under/costume/skyrat/bathrobe = 5,
 			)
 		)
 	)
@@ -148,5 +142,4 @@
 		/obj/item/clothing/suit/brownbattlecoat = 1,
 		/obj/item/clothing/suit/blackfurrich = 1,
 		/obj/item/clothing/suit/frenchtrench = 1,
-		/obj/item/clothing/under/misc/royalkilt = 5,
 	)
