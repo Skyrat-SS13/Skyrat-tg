@@ -104,6 +104,10 @@
 /obj/machinery/shower/directional/south,
 /turf/open/floor/iron/showroomfloor,
 /area/ruin/space/has_grav/cargodise_freighter/quarters)
+"ci" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/cargodise_freighter/utility)
 "cG" = (
 /obj/effect/turf_decal/loading_area,
 /turf/open/floor/iron/brown,
@@ -115,9 +119,6 @@
 	dir = 4
 	},
 /area/ruin/space/has_grav/cargodise_freighter/primaryhall)
-"cO" = (
-/turf/open/floor/engine,
-/area/ruin/space/has_grav/cargodise_freighter/bridge)
 "da" = (
 /obj/structure/window/reinforced/tinted{
 	dir = 4
@@ -158,6 +159,13 @@
 /obj/effect/spawner/random/trash/soap,
 /turf/open/floor/iron/showroomfloor,
 /area/ruin/space/has_grav/cargodise_freighter/quarters)
+"dA" = (
+/obj/machinery/door/airlock/hatch{
+	name = "Turret Room"
+	},
+/obj/machinery/door/firedoor,
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/cargodise_freighter/bridge)
 "dD" = (
 /obj/machinery/door/airlock/survival_pod/glass,
 /obj/machinery/door/poddoor{
@@ -248,11 +256,6 @@
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/cargodise_freighter/primaryhall)
-"fM" = (
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
-/turf/open/floor/plating,
-/area/ruin/space/has_grav/cargodise_freighter/utility)
 "fO" = (
 /obj/machinery/door/poddoor{
 	id = "lockdown"
@@ -811,7 +814,7 @@
 /area/ruin/space/has_grav/cargodise_freighter/kitchen)
 "pc" = (
 /turf/closed/wall/mineral/titanium/spaceship/nodiagonal,
-/area/ruin/space/has_grav/cargodise_freighter/utility)
+/area/ruin/space/has_grav/cargodise_freighter/bridge)
 "pe" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
 /obj/machinery/firealarm/directional/north,
@@ -1484,9 +1487,15 @@
 	},
 /area/ruin/space/has_grav/cargodise_freighter/primaryhall)
 "ye" = (
-/obj/effect/spawner/structure/window/reinforced,
-/turf/open/floor/plating,
-/area/ruin/space/has_grav/cargodise_freighter/utility)
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/machinery/airalarm/all_access{
+	pixel_y = 26;
+	dir = 1
+	},
+/turf/open/floor/iron/dark/green/side{
+	dir = 1
+	},
+/area/ruin/space/has_grav/cargodise_freighter/primaryhall)
 "yl" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
 /turf/open/floor/iron/dark/green/side,
@@ -1568,7 +1577,6 @@
 /area/ruin/space/has_grav/cargodise_freighter/quarters)
 "yX" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
-/obj/structure/cable,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/cargodise_freighter/utility)
 "zf" = (
@@ -2008,7 +2016,6 @@
 "GU" = (
 /obj/machinery/power/smes,
 /obj/structure/cable,
-/obj/structure/cable,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/cargodise_freighter/utility)
 "GW" = (
@@ -2047,6 +2054,11 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
 /turf/open/floor/iron/showroomfloor,
 /area/ruin/space/has_grav/cargodise_freighter/quarters)
+"HH" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/cargodise_freighter/utility)
 "HQ" = (
 /turf/closed/wall/mineral/titanium/spaceship/nodiagonal,
 /area/ruin/space/has_grav/cargodise_freighter/primaryhall)
@@ -2296,13 +2308,6 @@
 	},
 /turf/open/floor/engine,
 /area/ruin/space/has_grav/cargodise_freighter/utility)
-"Le" = (
-/obj/machinery/door/airlock/hatch{
-	name = "Turret Room"
-	},
-/obj/machinery/door/firedoor,
-/turf/open/floor/engine,
-/area/ruin/space/has_grav/cargodise_freighter/utility)
 "Lr" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
 /obj/machinery/light{
@@ -2409,7 +2414,7 @@
 /area/ruin/space/has_grav/cargodise_freighter/quarters)
 "ME" = (
 /turf/closed/wall/mineral/titanium/spaceship/nodiagonal,
-/area/ruin/space/has_grav/cargodise_freighter/bridge)
+/area/ruin/space/has_grav/cargodise_freighter/utility)
 "MH" = (
 /obj/effect/spawner/random/medical/patient_stretcher,
 /obj/machinery/iv_drip,
@@ -2558,8 +2563,16 @@
 	},
 /area/ruin/space/has_grav/cargodise_freighter/cargo)
 "Oj" = (
-/turf/closed/wall/mineral/titanium/spaceship,
-/area/ruin/space/has_grav/cargodise_freighter/utility)
+/obj/machinery/door/airlock/mining/glass{
+	name = "Cargo Bay"
+	},
+/obj/machinery/door/poddoor{
+	id = "lockdown"
+	},
+/obj/machinery/door/firedoor,
+/obj/structure/cable,
+/turf/open/floor/iron/brown,
+/area/ruin/space/has_grav/cargodise_freighter/cargo)
 "Om" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
 /obj/structure/cable,
@@ -2673,6 +2686,14 @@
 	},
 /turf/open/floor/iron/checker,
 /area/ruin/space/has_grav/cargodise_freighter/kitchen)
+"PS" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/machinery/airalarm/all_access{
+	pixel_y = 34;
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/cargodise_freighter/quarters)
 "PV" = (
 /obj/structure/closet/crate/secure/engineering,
 /obj/item/storage/toolbox/electrical,
@@ -2701,13 +2722,8 @@
 /turf/open/floor/iron/freezer,
 /area/ruin/space/has_grav/cargodise_freighter/kitchen)
 "Qc" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
-/obj/machinery/airalarm/all_access{
-	pixel_y = 34;
-	dir = 1
-	},
-/turf/open/floor/wood,
-/area/ruin/space/has_grav/cargodise_freighter/quarters)
+/turf/closed/wall/mineral/titanium/spaceship,
+/area/ruin/space/has_grav/cargodise_freighter/bridge)
 "Qi" = (
 /obj/structure/toilet{
 	dir = 4
@@ -2844,6 +2860,9 @@
 	dir = 1
 	},
 /area/ruin/space/has_grav/cargodise_freighter/cargo)
+"Sf" = (
+/turf/open/floor/engine,
+/area/ruin/space/has_grav/cargodise_freighter/bridge)
 "Sk" = (
 /mob/living/simple_animal/hostile/looter/crusher,
 /turf/open/floor/iron/brown/side,
@@ -2866,16 +2885,6 @@
 /obj/machinery/light,
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/cargodise_freighter/quarters)
-"SM" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
-/obj/machinery/airalarm/all_access{
-	pixel_y = 26;
-	dir = 1
-	},
-/turf/open/floor/iron/dark/green/side{
-	dir = 1
-	},
-/area/ruin/space/has_grav/cargodise_freighter/primaryhall)
 "SQ" = (
 /obj/machinery/door/firedoor/closed,
 /turf/open/floor/iron/dark/green/side{
@@ -2894,7 +2903,7 @@
 	},
 /obj/machinery/door/firedoor,
 /turf/open/floor/engine,
-/area/ruin/space/has_grav/cargodise_freighter/bridge)
+/area/ruin/space/has_grav/cargodise_freighter/utility)
 "SY" = (
 /obj/effect/mob_spawn/ghost_role/human/lostcargo{
 	dir = 1
@@ -3251,6 +3260,7 @@
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/cargodise_freighter/mining)
 "WP" = (
+/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/cargodise_freighter/utility)
@@ -3395,7 +3405,7 @@
 /area/ruin/space/has_grav/cargodise_freighter/primaryhall)
 "Yp" = (
 /turf/closed/wall/mineral/titanium/spaceship,
-/area/ruin/space/has_grav/cargodise_freighter/bridge)
+/area/ruin/space/has_grav/cargodise_freighter/utility)
 "Yt" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
 /mob/living/simple_animal/hostile/looter,
@@ -3557,13 +3567,13 @@ OP
 OP
 OP
 OP
-Oj
-ye
-Oj
-Oj
-Oj
-ye
-Oj
+Yp
+ci
+Yp
+Yp
+Yp
+ci
+Yp
 OP
 OP
 OP
@@ -3591,15 +3601,15 @@ FF
 Gf
 FF
 XD
-Oj
-Oj
+Yp
+Yp
 uv
 BL
 BL
 EB
 La
-Oj
-Oj
+Yp
+Yp
 FF
 FF
 uc
@@ -3625,8 +3635,8 @@ hP
 Gf
 Gf
 Gf
-Oj
-Oj
+Yp
+Yp
 Qk
 IV
 ke
@@ -3634,7 +3644,7 @@ PK
 jv
 Qk
 Wu
-Oj
+Yp
 Gf
 Gf
 uc
@@ -3660,7 +3670,7 @@ Ra
 kB
 re
 ys
-pc
+ME
 oo
 Qk
 IV
@@ -3669,7 +3679,7 @@ PK
 nM
 Qk
 Qk
-pc
+ME
 ZD
 KP
 FO
@@ -3695,7 +3705,7 @@ Ra
 XU
 sY
 Zl
-Le
+SU
 Qk
 Ld
 IV
@@ -3704,7 +3714,7 @@ PK
 nM
 Ld
 Qk
-Le
+SU
 XU
 Zl
 FO
@@ -3730,16 +3740,16 @@ Ra
 FB
 ll
 Zl
-pc
-pc
-pc
-pc
+ME
+ME
+ME
+ME
 xy
 PK
-pc
-pc
-pc
-pc
+ME
+ME
+ME
+ME
 XU
 Zl
 FO
@@ -3765,7 +3775,7 @@ Ra
 XU
 jO
 Zl
-pc
+ME
 lC
 LC
 xI
@@ -3774,10 +3784,10 @@ LC
 tQ
 wj
 GU
-pc
+ME
 QY
 BY
-ns
+Oj
 jX
 Vb
 nc
@@ -3800,16 +3810,16 @@ Ra
 mz
 jO
 Zl
-pc
+ME
 Xd
 LC
 PK
-WP
+yX
 PK
 PK
 PK
 Mq
-pc
+ME
 Yt
 BY
 FO
@@ -3835,16 +3845,16 @@ Ra
 df
 jO
 Zl
-pc
+ME
 FX
-fM
 WP
-WP
+yX
+yX
 PK
 PK
 PK
 PK
-pc
+ME
 gI
 BY
 FO
@@ -3870,16 +3880,16 @@ Ra
 XU
 jO
 hx
-pc
+ME
 ZS
-yX
+HH
 Vx
 Rx
 PV
 Rx
-WP
+yX
 Jd
-pc
+ME
 Zn
 Yg
 FO
@@ -3905,17 +3915,17 @@ Ra
 XU
 jO
 Zl
-pc
-pc
+ME
+ME
 pQ
-pc
-pc
-pc
-pc
+ME
+ME
+ME
+ME
 wR
-pc
-pc
-SM
+ME
+ME
+ye
 LN
 fO
 Eo
@@ -4529,7 +4539,7 @@ qq
 ja
 ml
 Ra
-Qc
+PS
 VZ
 Ra
 XU
@@ -4770,19 +4780,19 @@ Zy
 Zy
 OP
 Zy
-Yp
-ME
+Qc
+pc
 sC
 Ek
-ME
-ME
+pc
+pc
 vm
 sC
 sC
 jM
-ME
-ME
-ME
+pc
+pc
+pc
 AC
 AC
 nl
@@ -4805,8 +4815,8 @@ Zy
 Zy
 Zy
 Zy
-Yp
-Yp
+Qc
+Qc
 sF
 Er
 js
@@ -4815,7 +4825,7 @@ Er
 XS
 XS
 dk
-ME
+pc
 ug
 qF
 AC
@@ -4841,7 +4851,7 @@ Zy
 Zy
 Zy
 Zy
-Yp
+Qc
 aC
 EH
 bi
@@ -4851,7 +4861,7 @@ bi
 bi
 Om
 QW
-cO
+Sf
 AK
 AC
 EO
@@ -4876,7 +4886,7 @@ OP
 Zy
 Zy
 Zy
-Yp
+Qc
 tc
 XS
 Oe
@@ -4885,7 +4895,7 @@ JM
 XS
 bi
 xb
-ME
+pc
 Fx
 Eg
 AC
@@ -4911,7 +4921,7 @@ Zy
 Zy
 OP
 Zy
-Yp
+Qc
 tc
 XS
 OX
@@ -4920,7 +4930,7 @@ YR
 XS
 dO
 dn
-ME
+pc
 pv
 Dt
 AC
@@ -4946,7 +4956,7 @@ Zy
 Zy
 Zy
 Zy
-Yp
+Qc
 ur
 XS
 Er
@@ -4955,9 +4965,9 @@ Er
 IE
 bi
 se
-ME
-ME
-ME
+pc
+pc
+pc
 AC
 ww
 Vs
@@ -4981,7 +4991,7 @@ Zy
 Zy
 Zy
 Zy
-Yp
+Qc
 vQ
 XS
 XS
@@ -4990,7 +5000,7 @@ XS
 iS
 bi
 Er
-SU
+dA
 Xp
 Wd
 AC
@@ -5016,7 +5026,7 @@ Zy
 OP
 OP
 Zy
-Yp
+Qc
 vX
 Ff
 XS
@@ -5025,7 +5035,7 @@ XS
 Ff
 Er
 NX
-ME
+pc
 mf
 mf
 AC
@@ -5051,7 +5061,7 @@ Zy
 OP
 OP
 Zy
-Yp
+Qc
 wd
 GT
 PC
@@ -5059,8 +5069,8 @@ GT
 UM
 GT
 bk
-Yp
-ME
+Qc
+pc
 lp
 lp
 AC
@@ -5086,15 +5096,15 @@ Zy
 OP
 OP
 OP
-Yp
-ME
+Qc
+pc
 lp
 lp
 lp
 lp
 lp
-ME
-Yp
+pc
+Qc
 YA
 jh
 jh
