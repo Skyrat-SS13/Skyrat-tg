@@ -672,3 +672,375 @@
   - bugfix: 'Icebox: fixed several cameras lacking their respective network values'
   - bugfix: 'Icebox: restored a lost Interrogation Room Monitor outside of Interrogation
       Room'
+2022-09-18:
+  GoldenAlpharex:
+  - bugfix: Molds can no longer spread their foam across the entirety of space, and
+      have a much more manageable radius instead.
+  Paxilmaniac:
+  - balance: Due to lawsuits over the similarities in design between the CMG and C20r,
+      the internal workings and round used in the CMG have been redesigned and re-issued
+      to all stations
+  - bugfix: Duplicate definitions of both .45 rubbers and magazine-less CMGs were
+      dealt with
+  - bugfix: A completely unused c20 subtype, also called the CMG, was gotten rid of
+      due to being completely unused
+  Pizzie11:
+  - rscadd: Added a unique service department version of the Plumbing Constructor,
+      the Service Plumbing Constructor. This can be fabricated in the service protolate.
+  - rscadd: 'New plumbing machines have been added for the Service Plumbing Constructor:
+      Soda Synthesizer, Booze Synthesizer, Mixing Chamber, and Output Tap.'
+  - rscadd: The Chemical Receiver board can now be printed at the service protolathe
+  ShizCalev:
+  - bugfix: Fixed voice of god breaking if someone resisted your command.
+  - admin: Debugging / admin omnitool now stabs eyes when in screwdriver mode.
+  - balance: Things inside disposals pipes are now protected from weather (ashstorms,
+      radstorms, ect.)
+  - admin: Setting machine_stat flags on machinery will now call the set_machine_stat
+      proc so things update properly lol.
+  - bugfix: Fixed a runtime when deconstructing newscaster w/ a wrench.
+  - bugfix: Fixed not being able to scoop up holochassis pAIs.
+  SkyratBot:
+  - bugfix: USB ports for circuits now work again
+  - bugfix: You can now pin medals to buttondown shirts.
+  - code_imp: Fixes gas mixer node concentration logging.
+  - bugfix: Fix plasma cutter or guns that burn not being able to ignite plasma
+  - balance: Change plasma cutters damage type to BURN and this will cause reduced
+      damage to mining mobs
+  - balance: Explodable stuff now detonates when hit by a BURN projectile.
+  - admin: Prisoners returning from the gulag as well as reclaiming their items from
+      the gulag item reclaimer are now both logged.
+  - bugfix: Fixes water vapour not consuming water vapour when freezing turfs.
+  - code_imp: Turfs will not sleep during an ongoing gas reaction, and excited groups
+      won't dismantle if one of their turfs are reacting.
+  - bugfix: CTF Instagib mode can now be toggled without breaking CTF
+  - admin: Admins can now toggle CTF Instagib mode while CTF is not running
+  - bugfix: ghost follow links no longer appear above binary messages using light
+      theme
+  - balance: Radiation range from tritium combustion and proto-nitrate tritium to
+      hydrogen conversion increased by 3 times.
+  - balance: Sets the radiation threshold for all gas reactions that release radiation
+      to 0.3
+  Zergspower:
+  - bugfix: XenoArch bags will now pickup on walk-over once again
+  dopamiin:
+  - bugfix: several foods now taste like what they should
+  itseasytosee:
+  - code_imp: Being able to be flashed from all sides is now based on or not you have
+      a negative flash resistance, rather than randomly applying to specific pairs
+      of eyes.
+  - bugfix: Skeletons can drink milk again, sorry about that.
+2022-09-19:
+  Crumpaloo, Nomare, theOOZ:
+  - imageadd: Adds a second deer tail which wags
+  Ebin-Halcyon:
+  - imageadd: Security clothing have been resprited to have a nicer looking and more
+      consistent color palette.
+  - imagedel: Bluesec bulletproof helms have been returned to the stock TG look, rejoice.
+  Paxilmaniac:
+  - balance: MCR cells are now upgrades rather than hotswappable 'laser magazines'
+      that must be empty of charge before insertion into a gun
+  - qol: MCR cells have a function to discharge themselves in case you end up with
+      a charged one needing to be inserted into a gun
+  - balance: MCR scattershot lasers will now do 20 damage divided by the number of
+      lasers, rather than 30 or 45 divided
+  - balance: The MCR laser coloring attachment is no longer attainable through lathes
+  - balance: The MCR cell self charging attachment is only attainable through micron
+      control systems in cargo
+  - balance: Micron control systems is now equivalent in max price to NT armories,
+      and the price of the MCR itself has been lowered to be equivalent to an allstar
+      SC-2 (a little over half the original price)
+  - bugfix: MCR cells will now tell you the correct number of seconds until they malfunction
+  ShizCalev:
+  - bugfix: Fixed medibeams sometimes crossing themselves!
+  SkyratBot:
+  - bugfix: The alt click tab (obj tab?) will no longer cause massive clientside lag
+      (unless you alt click that 2000 obj large tofu pile)
+  - bugfix: The alt click menu is snappier now, try usin it and let me know if anything
+      blows up yeah?
+  - rscadd: medical doctors and CMOs now have surgical tool heirlooms
+  - spellcheck: Updates liver failure examine text to make better use of pronoun helpers.
+  Stalkeros, Lukaster42:
+  - rscadd: 'NRI MODsuit in two variations: one for ERT, other for raiders.'
+  - rscadd: MOD automatic paramedical module.
+  - rscadd: generic non-Ninja-related MOD status readout module.
+  - rscdel: Pirate VOSKHODs; technically, VOSKHODs in their (available) entirety,
+      since ERT now uses MODs.
+  YakumoChen:
+  - rscdel: Ghost Cafe has had its chemistry lab, autolathe, and all radios removed
+      so as to prevent interaction with other sectors, or damage to the ghost cafe
+      (which chemlabs often do)
+  Zergspower:
+  - balance: changes just the outer turrets on Interdyne Ice and Lavabase to target
+      anything not in the Neutral faction (station crew and non-hostile fauna)
+  - bugfix: Couches on both will now face correctly (Couch PR goofed their directions)
+  Zonespace27:
+  - bugfix: Armadyne OS safeguard lawboard now uploads the new safeguard laws
+  tf-4:
+  - bugfix: APCs will now arc again when grid excess exceeds 2.5MW. Use a bronze sheet
+      on an APC with the wires exposed to install shielding!
+2022-09-20:
+  SkyratBot:
+  - bugfix: fixed cyborg energy saw lacking a sprite
+  - bugfix: fixed debug omnitool lacking sprites for surgery tools
+  - bugfix: fixed lacking sprite for taster
+  - bugfix: fixed exosuit ammo boxes not updating their sprite/description properly
+      when emptied
+  - qol: adds an examine tip about folding & recycling on empty exosuit ammo boxes
+  - bugfix: fixed exosuit ammo being almost universal for all guns
+  - bugfix: fixed iron cost for BRM-6 missile ammo and SGL-6 Flashbang launcher ammo
+      (flashbang 500 -> 4000; missiles 500 -> 8000)
+  - bugfix: exosuit ammo boxes can be recycled in an autolathe, as they were apparently
+      intended to be. Partially depleted ammo boxes will have less material in them.
+2022-09-21:
+  Melbert:
+  - bugfix: Unequipping an internals tank will immediately unregister it as your internals
+      tank, instead of waiting (maximum) 8 seconds to do so
+  NecromancerAnne, quinn:
+  - imageadd: 'Updates the Darkened Blade: New name (Sundered Blade), new description,
+      new sprites.'
+  SkyratBot:
+  - rscadd: Icebox's mining aux base can now teleport to your chosen underground location
+      on the icemoon.
+  - imageadd: The station bounced radio has been resprited
+  - bugfix: The experimentor can no longer create negative temperature.
+  - code_imp: Simplifies experimentor atmos interactions. Shouldn't have an impact
+      in gameplay.
+  - bugfix: glockroaches (and maybe other unreported simplemobs that can shoot) now
+      properly shoot
+  - rscadd: Change infectious zombies to be illiterate
+  - bugfix: Surgically removed a stack of 50 glass sheets from the rocks of Tramstation's
+      lower decks.
+  - bugfix: Items that rotate will no longer spam you with error messages when you
+      hover your mouse over them.
+  TheBoondock, Wallemations:
+  - rscadd: Adds a new pair of goggles to atmospheric, the thermal imaging goggles
+      help highlight the hot/cold and normal temperature for atmos tech to quickly
+      identify the temp without having to use an analyzer. Hotter temperatures will
+      have red colors while colder temperatures will have blue colors
+  - rscadd: Add temperature imaging to the t-ray goggles as well.
+  VexingRaven:
+  - bugfix: Fixed a bug where it was possible to call the shuttle while buying a new
+      one, resulting in a second shuttle that gibs everyone aboard.
+2022-09-22:
+  Melbert:
+  - bugfix: Fixes runtimes in damp rag and chem grenade logging
+  Paxilmaniac:
+  - rscadd: The fun vendor now sells a kit for wargaming enthusiasts, now you too
+      can partake in modern naval warfare with our patented new hologram technology!
+  - rscadd: To go with the new wargame holoprojectors, a new holodeck template has
+      been added giving an easy to set up play area, projectors included, functional
+      rules for the game sold separately.
+  SkyratBot:
+  - bugfix: Fixed bypassing gasmask FOV.
+  VexingRaven:
+  - bugfix: The Deltastation kitchen no longer has 2 newscasters.
+  - bugfix: The Deltastation kitchen APC has been moved to the kitchen storage area
+      to the north.
+2022-09-23:
+  ShizCalev:
+  - bugfix: Fixed crowbars hitting ovens during deconstruction.
+  - bugfix: Fixed a bunch of cult abilities not working.
+  SkyratBot:
+  - bugfix: cutting onions actually makes you cry (better put some goggles on!)
+2022-09-24:
+  ShizCalev:
+  - imageadd: Tablets and PDAs now have inhand icons.
+  SkyratBot:
+  - rscadd: Add planks used on doors creates crude barricades.  Can also be used on
+      fulltile windows.  Barricades can now be crowbarred to disassemble them quickly.
+  - soundadd: Add hammering_wood.ogg from soundcloud public domain to barricade and
+      wooden wall construction.
+  - imageadd: Nanotrasen Grilling Jorts have received a cosmetic upgrade
+  - admin: Admins can now View Notes directly from a Ticket Panel.
+2022-09-25:
+  Ebin-Halcyon:
+  - imageadd: Resprited Syndicate clothing, check out your new outfit, master at arms
+  - imagedel: Removed one of the 2 Syndicate wintercoats
+  - bugfix: IPC hands should no longer render under your clothing.
+  LovliestPlant:
+  - rscadd: 'VoidRaptor: Add a cryopod to the permabrig'
+  - bugfix: 'VoidRaptor: Resolve missing conveyor belt in disposals.'
+  Melbert:
+  - bugfix: Moving active internals between valid slots no longer de-activates them
+  MidoriWroth:
+  - rscadd: Adds teshari cultural food!
+  - rscadd: Adds 4 new plants used for the teshari food
+  OrionTheFox:
+  - imageadd: Costume's icons have all been updated and moved into a costume.dmi file
+      in a continued organization effort. Please report any relevant uniform icon
+      issues on the github, and mention OrionTheFox!
+  - imageadd: Bathrobes, Qipaos, Cheongsams, and Yukatas (Previously Kimonos) have
+      all been Greyscaled!
+  - imagedel: Removed all Western, Cowboy, Rancher, or Victorian uniforms - many can
+      be recreated with the Button-Downs, which is greyscaled and ready for you to
+      color to your heart's content!
+  - bugfix: Sorry about the hotdogs. We swear whatever they were doing wasn't intentional.
+  Paxilmaniac:
+  - qol: phases out most of the custom sprited shuttles, seeing as they are currently
+      maintainer hell for anyone who wants to make the slightest change to their shape
+      or layout
+  Pizzie11:
+  - rscadd: Cats will now attack beings that have kinship with rats, this includes
+      rats, royal rats, and anyone who overdosed on rat spit.
+  - bugfix: Important Documents received in the mail are now visible
+  RimiNosha:
+  - bugfix: Fixed previews for Akula, Dwarf, Ghoul, Hemophage, Humanoid, Insect and
+      Mammal races!
+  ShizCalev:
+  - bugfix: Fixed examine messages stating what materials something is made out of
+      not working properly.
+  - bugfix: Blind mobs will no longer be demoralized by posters and graffiti.
+  - bugfix: Illiterate mobs will no longer be demoralized by the words on posters.
+  - bugfix: Mobs will no longer be demoralized by posters & graffiti if it's too dark
+      to see them.
+  SkyratBot:
+  - refactor: Reorganized the icons/mob folder and added a bunch of new subfolders
+      to make finding things easier.
+  - bugfix: owl masks and wizard hats now use their proper inhands!
+  - bugfix: Would you believe me if I told you androids had functioning human stomachs
+      in them for the past 5 years? No? Well anyways its fixed.
+  - admin: When a voice analyzer is attached to a bomb or a chemical grenade, the
+      respective logs to game as well as the message_admins will contain the recorded
+      phrase on that voice analyzer.
+  - bugfix: Voice analyzers should now properly trigger TTVs to blow up.
+  - bugfix: You can construct doors and stuff on ash tiles again. My bad, broke that
+      one a long time back.
+  - balance: Airlocks with an unrestricted side no longer function as a light source.
+      The indicator will now be visible even in the dark.
+  - refactor: Scientists have recently reclassified jean shorts as a subtype of the
+      broader shorts clade, instead of a separate genus.
+  - spellcheck: corrects plural spelling when slicing objects
+  - bugfix: fixed two broken sprites for drinking and shot glasses.
+  - bugfix: You no longer keep items you shouldn't be wearing (collars) when changing
+      into a species that can't wear them anymore.
+  - spellcheck: fixed a typo when screwdriver'ing a window into frame.
+  - rscadd: Being run over by the clown car will flatten you like a pancake. Honk!
+  - soundadd: adds cartoon_splat.ogg
+  - bugfix: Fixed map vote including maps that have already been played twice in the
+      last 3 rounds.
+  - refactor: Teams used by Antagonists have been refactored, please report any bugs
+      you might find.
+  - spellcheck: Team antagonists are now improper.
+  - spellcheck: Bloodbrothers now show their team antagonist name in admin panels.
+  VexingRaven:
+  - bugfix: Mortar and pestle no longer create infinite reagents
+  - spellcheck: Updated the message shown when spawning as a blobbernaut to properly
+      reflect how to chat to the overmind
+  Vishenka0704:
+  - bugfix: fix cryo send admin function, now works on buckled mobs
+  Wallem:
+  - bugfix: Fixes a bug where the tonal indictor for sign language would get stuck
+      on your character for an extended period of time.
+  Zergspower:
+  - bugfix: fixes mapping issues in the Interlink and Ghost Cafe relating to couches
+      (and everyone with the slightest amounts of OCD's sanity)
+  - bugfix: fixes the missing line that plays the .ogg
+  - soundadd: returned blush.ogg to the Skyrat emote folder
+  Zonespace27:
+  - code_imp: Horrorfrom ling no longer uses spawn()
+  distributivgesetz:
+  - bugfix: Fixed security levels not playing their sounds when switching to them.
+  jjpark-kb:
+  - code_imp: ash farming is now a component, refer to as simple farming
+  - bugfix: simple farming is possible on all basalt-- fixing icebox "ashies"
+  - qol: simple farming gives examine text to plantable areas and the plant itself
+  - rscadd: 10 sand in a railcart makes it a plantable area
+  nevimer:
+  - code_imp: Overrides pointing code to add a timer on pointing.
+  "san7890, kugamo@\_ParadiseSS13":
+  - rscadd: Nanotrasen had a loose shipping container hit the hull of Central Command
+      from one "Station P", so they just decided to pour those into the station's
+      autodrobes.
+  theOOZ:
+  - balance: allows most pistol magazines to be stored in boots
+2022-09-26:
+  GoldenAlpharex:
+  - bugfix: Fixed pollution trying to pollute certain turfs that no longer exist,
+      or the turfs of objects they're attached to that no longer exist.
+  Melbert:
+  - rscadd: Added a few new hallucinations. Find them all, but don't lose your head!
+  - refactor: Refactored most existing hallucinations. Let me know if any of them
+      are acting funky.
+  - refactor: RDS quirk is now a brain trauma. The hallucinations brain trauma can
+      now be paused with Mindbreaker, like RDS.
+  - refactor: Refactored hallucination into a status effect. This means cyborgs and
+      simplemobs can (hypothetically) hallucinate now. In most cases they shouldn't
+      though.
+  - refactor: Refactored fake hud into a status effect.
+  - bugfix: Fixes some hallucinations acting improperly. There were multiple cases
+      of hallucinations using incorrect icon states which made them completely un-noticable.
+  - admin: You can now force specific mass hallucinations.
+  - admin: You can now force specific outcomes of some hallucinations, such as delusions,
+      fake alerts, fake sounds, and more. Check the VV dropdown.
+  OrionTheFox:
+  - bugfix: After several failed attempts, Nanotrasen has simply begun outsourcing
+      the printing of their Corporate Regulations (alongside plenty of NDAs of course).
+      Expect the booklets to actually have words from now on!
+  Paxilmaniac:
+  - rscdel: The automapper delta prison has been removed, we will instead just use
+      the default tg prison
+  - rscadd: Four new themed vendors for different cultures and races of the lore,
+      which have a chance of spawning in place of snack vending machines around the
+      station!
+  - bugfix: two little floating decorations on the new cargo shuttles have been moved
+      over slightly so they are actually connected to the ship
+  ShizCalev:
+  - admin: Moved signal overriden stack_trace warnings to it's own log file.
+  - bugfix: Fixed revenant Malfunction ability not affecting firedoors.
+  - spellcheck: Emag charge time will now be presented as (2 minutes and 31.1 seconds)
+      instead of (152.95s)
+  SkyratBot:
+  - rscadd: New achievement -- Preventing a heart attack with exercise now gives you
+      a shiny new achievement badge. Show it to all of your gym buddies, be the coolest
+      guy in the locker room.
+  - imageadd: Cool new achievement badge. Wow!
+  - refactor: Rewrites the heart attack event file to be a bit more flexible. Integrates
+      the heart attack eligibility check to canSpawnEvent to prevent edge cases. Migrates
+      the exercise status effect check to the round_event.
+  - admin: MULTI-HEART ATTACK COMBO functionality added (trigger the heart_attack
+      event and select how many victims you want).
+  - rscadd: Rotten zombie tongue has a new speech modifier that converts spoken language
+      into zombie sentences. If the person speaking is a high-functioning zombie this
+      is bypassed.
+  - balance: Captain Jetpack now fits on MODsuit and EVA suit storage slot.
+  - code_imp: Jetpacks were de-hardcoded and can now support being equipped to other
+      slots.
+  - bugfix: Monkey mind magnification helmets once again poll all ghosts
+  - rscadd: Added a preference for sentience creatures, which means people can toggle
+      eligibility to sentience potions, and boosted lavaland tumors. Cargorilla, Regal
+      Rat and Shuttle Creatures use this preference now.
+  - rscadd: Added several separate notification preferences for creatures
+  - admin: When a player renames (creates) an area from an existing area to a new
+      one, it now logs to game.log (global and individual).
+  - bugfix: Fix zombie claws blocking sign language.
+  - bugfix: Fix slappers and wound grasping blocking sign language.
+  - bugfix: Fix slappers and wound grasping blocking riding on mobs.
+  - admin: Antag panels now properly show team antagonists, instead of showing them
+      as empty.
+  - rscadd: axolotls have taken refuge in the station's moisture traps
+  - imageadd: resprites all current underwear to a much cleaner look
+  - bugfix: SaturnX now properly turns you invisible again.
+  - qol: You can now see through big trees when you stand behind them!
+  - refactor: Adds a seethrough component to make it easier to add big stationairy
+      objects without reducing visibility
+  - bugfix: cyborg eye sockets no longer bleed
+  - rscadd: '-6 Quirk for all prosthetics named "Quadruple Amputee" change: prosthetic
+      arm changed from -4 to -3'
+  - rscadd: 'SVG icon tutorial readme to tgui tgfont folder change: Minor spelling
+      issues in negative quirks tab'
+  - bugfix: Fixed non-printed airlock shells from not triggering the 'Airlock Access
+      Event' circuit component.
+  - rscadd: Rigging light fixtures now works with more reagents than just plasma.
+      Light fixtures will heat the reagents of their inserted lightbulb, up to a maximum
+      of 1000 degrees. Lightbulb tubes now hold 20 reagents to make this more usable.
+  - rscadd: Lightbulbs will now splash their contents on whatever they're shattered
+      by. Their contents are also now visible upon examination.
+  VexingRaven:
+  - bugfix: The illiteracy quirk will no longer break the mining shuttle
+  - refactor: Refactored some checks on the shuttle console to apply to all consoles
+  - bugfix: Build Your Own Shuttle Kit has been fixed and once again docks at the
+      station after being purchased.
+  Zergspower:
+  - qol: let's PAI's wipe themselves
+  linnpap:
+  - rscadd: Added Xerxian language
