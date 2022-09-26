@@ -53,11 +53,19 @@
 		return FALSE
 	. = ..()
 
+/datum/preference/toggle/erp/apply_to_client_updated(client/client, value)
+	. = ..()
+	if(!value && ishuman(client.mob))
+		var/mob/living/carbon/human/target = client.mob
+		target.arousal = 0
+		target.pain = 0
+		target.pleasure = 0
+
 /datum/preference/toggle/erp/sex_toy
 	savefile_key = "sextoy_pref"
 
 /datum/preference/toggle/erp/sex_toy/apply_to_client_updated(client/client, value)
-	. = ..()
+	apply_to_client(client, value)
 	if(!value)
 		if(ishuman(client.mob))
 			var/mob/living/carbon/human/target = client.mob
