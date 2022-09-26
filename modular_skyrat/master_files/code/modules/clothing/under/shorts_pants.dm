@@ -5,6 +5,7 @@
 
 /obj/item/clothing/under/shorts
 	worn_icon_digi = SHORTS_PANTS_SHIRTS_DIGIFILE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION //That's right, TG, I have icons for ALL of these!! Mwahahaha!!!!
 
 /obj/item/clothing/under/pants/skyrat
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/shorts_pants_shirts.dmi'
