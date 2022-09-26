@@ -1,23 +1,79 @@
-//hallucination projectile code in code/modules/projectiles/projectile/special.dm
+/// Shoots a random, fake projectile to the hallucinator
 /datum/hallucination/stray_bullet
+	random_hallucination_weight = 7
 
-/datum/hallucination/stray_bullet/New(mob/living/carbon/C, forced = TRUE)
-	set waitfor = FALSE
-	..()
-	var/list/turf/startlocs = list()
-	for(var/turf/open/T in view(world.view+1,target)-view(world.view,target))
-		startlocs += T
-	if(!startlocs.len)
-		qdel(src)
-		return
-	var/turf/start = pick(startlocs)
-	var/proj_type = pick(subtypesof(/obj/projectile/hallucination))
-	feedback_details += "Type: [proj_type]"
-	var/obj/projectile/hallucination/H = new proj_type(start)
-	target.playsound_local(start, H.hal_fire_sound, 60, 1)
-	H.hal_target = target
-	H.preparePixelProjectile(target, start)
-	H.fire()
+/datum/hallucination/stray_bullet/start()
+	var/list/turf/starting_locations = list()
+	for(var/turf/open/open_out_of_view in view(world.view + 1, hallucinator) - view(world.view, hallucinator))
+		starting_locations += open_out_of_view
+	if(!length(starting_locations))
+		return FALSE
+
+	var/turf/start = pick(starting_locations)
+	var/fake_type = pick(subtypesof(/obj/projectile/hallucination))
+
+	feedback_details += "Type: [fake_type], Source: ([start.x], [start.y], [start.z])"
+
+	var/obj/projectile/hallucination/fake_projectile = new fake_type(start, src)
+
+	fake_projectile.preparePixelProjectile(hallucinator, start)
+	fake_projectile.fire()
+
+	QDEL_IN(src, 10 SECONDS) // Should clean up the projectile if it somehow gets stuck.
+	return TRUE
+
+/// Hallucinated projectiles.
+/obj/projectile/hallucination
+	name = "bullet"
+	icon = null
+	icon_state = null
+	hitsound = ""
+	suppressed = SUPPRESSED_VERY
+	ricochets_max = 0
+	ricochet_chance = 0
+	damage = 0
+	nodamage = TRUE
+	projectile_type = /obj/projectile/hallucination
+	log_override = TRUE
+	/// Our parent hallucination that's created us
+	var/datum/hallucination/parent
+	/// The image that represents our projectile itself
+	var/image/fake_bullet
+
+	var/hal_icon = 'icons/obj/weapons/guns/projectiles.dmi'
+	var/hal_icon_state
+	var/hal_fire_sound
+	var/hal_hitsound
+	var/hal_hitsound_wall
+	var/hal_impact_effect
+	var/hal_impact_effect_wall
+
+	var/hit_duration
+	var/hit_duration_wall
+
+/obj/projectile/hallucination/Initialize(mapload, datum/hallucination/parent)
+	. = ..()
+	if(!parent)
+		stack_trace("[type] was created without a parent hallucination.")
+		return INITIALIZE_HINT_QDEL
+
+	src.parent = parent
+	RegisterSignal(parent, COMSIG_PARENT_QDELETING, .proc/parent_deleting)
+
+
+/obj/projectile/hallucination/Destroy()
+	if(!QDELETED(parent.hallucinator))
+		parent.hallucinator.client?.images -= fake_bullet
+	fake_bullet = null
+
+	UnregisterSignal(parent, COMSIG_PARENT_QDELETING)
+	parent = null
+	return ..()
+
+/// Signal proc for [COMSIG_PARENT_QDELETING], if our associated hallucination deletes, we need to clean up
+/obj/projectile/hallucination/proc/parent_deleting(datum/source)
+	SIGNAL_HANDLER
+
 	qdel(src)
 
 /obj/projectile/hallucination/fire()

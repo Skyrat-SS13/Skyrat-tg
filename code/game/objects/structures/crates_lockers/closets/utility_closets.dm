@@ -26,13 +26,16 @@
 	if (prob(1))
 		return INITIALIZE_HINT_QDEL
 
-/obj/structure/closet/emcloset/PopulateContents() // SKYRAT EDIT OVERRIDE - emergency_spacesuit.dm
+/obj/structure/closet/emcloset/PopulateContents()
 	..()
+
+	new /obj/item/storage/box/emergency_spacesuit(src) // SKYRAT EDIT ADD
 
 	if (prob(40))
 		new /obj/item/storage/toolbox/emergency(src)
 
-	switch (pick_weight(list("small" = 35, "aid" = 30, "tank" = 20, "both" = 10, "nothing" = 4)))
+	//switch (pick_weight(list("small" = 35, "aid" = 30, "tank" = 20, "both" = 10, "nothing" = 4))) // ORIGINAL
+	switch (pick_weight(list("small" = 35, "aid" = 30, "tank" = 20, "both" = 10))) // SKYRAT EDIT CHANGE
 		if ("small")
 			new /obj/item/tank/internals/emergency_oxygen(src)
 			new /obj/item/tank/internals/emergency_oxygen(src)
@@ -52,9 +55,13 @@
 			new /obj/item/tank/internals/emergency_oxygen(src)
 			new /obj/item/clothing/mask/breath(src)
 
+		// SKYRAT EDIT REMOVAL START
+		/*
 		if ("nothing")
 			// doot
 			pass()
+		*/
+		// SKYRAT EDIT REMOVAL END
 
 /*
  * Fire Closet

@@ -87,7 +87,6 @@
 		/obj/item/clothing/suit/costume/nemes = 1,
 		/obj/item/clothing/head/nemes = 1,
 		/obj/item/clothing/head/pharaoh = 1, //dont google camel by camel worst mistake of my life
-		/obj/item/clothing/under/rank/pmarsrobe = 1
 	)
 
 	skyrat_contraband = list(

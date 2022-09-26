@@ -135,7 +135,7 @@ SUBSYSTEM_DEF(shuttle)
 	/// Did the supermatter start a cascade event?
 	var/supermatter_cascade = FALSE
 
-/datum/controller/subsystem/shuttle/Initialize(timeofday)
+/datum/controller/subsystem/shuttle/Initialize()
 	order_number = rand(1, 9000)
 
 	var/list/pack_processing = subtypesof(/datum/supply_pack)
@@ -170,7 +170,7 @@ SUBSYSTEM_DEF(shuttle)
 		log_mapping("No /obj/docking_port/mobile/emergency/backup placed on the map!")
 	if(!supply)
 		log_mapping("No /obj/docking_port/mobile/supply placed on the map!")
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/shuttle/proc/setup_shuttles(list/stationary)
 	for(var/obj/docking_port/stationary/port as anything in stationary)
@@ -518,13 +518,20 @@ SUBSYSTEM_DEF(shuttle)
 			return DOCKING_IMMOBILIZED
 	return DOCKING_SUCCESS //dock successful
 
-
+/**
+ * Moves a shuttle to a new location
+ *
+ * Arguments:
+ * * shuttle_id - The ID of the shuttle (mobile docking port) to move
+ * * dock_id - The ID of the destination (stationary docking port) to move to
+ * * timed - If true, have the shuttle follow normal spool-up, jump, dock process. If false, immediately move to the new location.
+ */
 /datum/controller/subsystem/shuttle/proc/moveShuttle(shuttle_id, dock_id, timed)
 	var/obj/docking_port/mobile/shuttle_port = getShuttle(shuttle_id)
 	var/obj/docking_port/stationary/docking_target = getDock(dock_id)
 
 	if(!shuttle_port)
-		return DOCKING_BLOCKED
+		return DOCKING_NULL_SOURCE
 	if(timed)
 		if(shuttle_port.request(docking_target))
 			return DOCKING_IMMOBILIZED
@@ -824,6 +831,8 @@ SUBSYSTEM_DEF(shuttle)
 	// plugging the existing shuttles old values in works fine.
 	preview_shuttle.timer = timer
 	preview_shuttle.mode = mode
+
+	preview_shuttle.postregister(replace)
 
 	// TODO indicate to the user that success happened, rather than just
 	// blanking the modification tab
