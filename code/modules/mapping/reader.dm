@@ -14,6 +14,9 @@
 	var/key_len = 0
 	var/list/grid_models = list()
 	var/list/gridSets = list()
+	/// List of area types we've loaded AS A PART OF THIS MAP
+	/// We do this to allow non unique areas, so we'll only load one per map
+	var/list/area/loaded_areas = list()
 
 	var/list/modelCache
 
@@ -310,6 +313,11 @@
 	var/list/members = model[1]
 	var/list/members_attributes = model[2]
 
+<<<<<<< HEAD
+=======
+	// We use static lists here because it's cheaper then passing them around
+	var/static/list/default_list = GLOB.map_model_default
+>>>>>>> 7e0a88b672e (Ensures areas are allowed to be non unique (#70118))
 	////////////////
 	//Instanciation
 	////////////////
@@ -322,6 +330,7 @@
 	//first instance the /area and remove it from the members list
 	index = members.len
 	if(members[index] != /area/template_noop)
+<<<<<<< HEAD
 		var/atype = members[index]
 		world.preloader_setup(members_attributes[index], atype)//preloader for assigning  set variables on atom creation
 		var/atom/instance = areaCache[atype]
@@ -332,6 +341,21 @@
 			areaCache[atype] = instance
 		if(crds)
 			instance.contents.Add(crds)
+=======
+		if(members_attributes[index] != default_list)
+			world.preloader_setup(members_attributes[index], members[index])//preloader for assigning  set variables on atom creation
+		instance = loaded_areas[members[index]]
+		if(!instance)
+			var/area_type = members[index]
+			// If this parsed map doesn't have that area already, we check the global cache
+			instance = GLOB.areas_by_type[area_type]
+			// If the global list DOESN'T have this area it's either not a unique area, or it just hasn't been created yet
+			if (!instance)
+				instance = new area_type(null)
+				if(!instance)
+					CRASH("[area_type] failed to be new'd, what'd you do?")
+			loaded_areas[area_type] = instance
+>>>>>>> 7e0a88b672e (Ensures areas are allowed to be non unique (#70118))
 
 		if(GLOB.use_preloader && instance)
 			world.preloader_load(instance)
