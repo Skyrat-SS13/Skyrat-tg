@@ -55,8 +55,8 @@
 
 /datum/preference/toggle/erp/apply_to_client_updated(client/client, value)
 	. = ..()
-	if(!value && ishuman(client.mob))
-		var/mob/living/carbon/human/target = client.mob
+	var/mob/living/carbon/human/target = client?.mob
+	if(!value && istype(target))
 		target.arousal = 0
 		target.pain = 0
 		target.pleasure = 0
