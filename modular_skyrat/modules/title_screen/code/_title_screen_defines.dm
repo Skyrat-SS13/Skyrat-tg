@@ -1,7 +1,7 @@
 #define DEFAULT_TITLE_MAP_LOADTIME 150 SECONDS
 
 #define DEFAULT_TITLE_SCREEN_IMAGE 'modular_skyrat/modules/title_screen/icons/skyrat_title_screen.png'
-#define DEFAULT_TITLE_LOADING_SCREEN 'modular_skyrat/modules/title_screen/icons/loading_screen.gif'
+#define DEFAULT_TITLE_LOADING_SCREEN 'modular_tannhauser/_skyrat_override/modules/title_screen/icons/loading_screen.gif' //#define DEFAULT_TITLE_LOADING_SCREEN 'modular_skyrat/modules/title_screen/icons/loading_screen.gif' //THG Edit
 
 #define TITLE_PROGRESS_CACHE_FILE "data/progress_cache.json"
 
