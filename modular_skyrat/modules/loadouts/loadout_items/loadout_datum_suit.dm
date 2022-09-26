@@ -279,10 +279,6 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	name = "Worn Shirt"
 	item_path = /obj/item/clothing/suit/wornshirt
 
-/datum/loadout_item/suit/tailcoat
-	name = "Tailcoat"
-	item_path = /obj/item/clothing/suit/costume/tailcoat
-
 /datum/loadout_item/suit/duster
 	name = "Colorable Duster"
 	item_path = /obj/item/clothing/suit/duster
@@ -290,14 +286,6 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 /datum/loadout_item/suit/peacoat
 	name = "Colorable Peacoat"
 	item_path = /obj/item/clothing/suit/toggle/peacoat
-
-/datum/loadout_item/suit/dresscoat
-	name = "Black Dresscoat"
-	item_path = /obj/item/clothing/suit/costume/vic_dresscoat
-
-/datum/loadout_item/suit/dresscoat_red
-	name = "Red Dresscoat"
-	item_path = /obj/item/clothing/suit/costume/vic_dresscoat/red
 
 /datum/loadout_item/suit/trackjacket
 	name = "Track Jacket"
