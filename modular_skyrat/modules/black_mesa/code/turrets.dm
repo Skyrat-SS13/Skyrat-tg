@@ -21,38 +21,6 @@
 	lethal_projectile = /obj/projectile/beam/laser/heavylaser
 	lethal_projectile_sound = 'sound/weapons/lasercannonfire.ogg'
 
-/obj/machinery/deployable_turret/hmg/mesa
-	name = "heavy machine gun turret"
-	desc = "A heavy calibre machine gun commonly used by marine forces, famed for it's ability to give people on the recieving end more holes than normal."
-	icon_state = "hmg"
-	max_integrity = 250
-	projectile_type = /obj/projectile/bullet/manned_turret/hmg/mesa
-	anchored = TRUE
-	number_of_shots = 3
-	cooldown_duration = 1 SECONDS
-	rate_of_fire = 2
-	firesound = 'sound/weapons/gun/hmg/hmg.ogg'
-	overheatsound = 'sound/weapons/gun/smg/smgrack.ogg'
-	can_be_undeployed = TRUE
-	spawned_on_undeploy = /obj/item/deployable_turret_folded/mesa
-
-/obj/item/deployable_turret_folded/mesa
-	name = "folded heavy machine gun"
-	desc = "A folded and unloaded heavy machine gun, ready to be deployed and used."
-	icon = 'icons/obj/weapons/turrets.dmi'
-	icon_state = "folded_hmg"
-	max_integrity = 250
-	w_class = WEIGHT_CLASS_BULKY
-	slot_flags = ITEM_SLOT_BACK
-
-/obj/item/deployable_turret_folded/mesa/Initialize(mapload)
-	. = ..()
-	AddComponent(/datum/component/deployable, 5 SECONDS, /obj/machinery/deployable_turret/hmg/mesa, delete_on_use = TRUE)
-
-/obj/projectile/bullet/manned_turret/hmg/mesa
-	icon_state = "redtrac"
-	damage = 35
-
 /obj/item/storage/toolbox/emergency/turret/mesa
 	name = "USMC stationary defense deployment system"
 	desc = "You feel a strange urge to hit this with a wrench."

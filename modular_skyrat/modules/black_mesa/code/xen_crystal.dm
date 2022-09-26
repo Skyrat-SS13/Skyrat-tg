@@ -70,6 +70,3 @@
 	unit_name = "anomalous crystal sample"
 	export_types = list(/obj/item/grenade/xen_crystal)
 	include_subtypes = FALSE
-
-/datum/export/xen_crystal/sell_object(obj/O, datum/export_report/report, dry_run, apply_elastic = FALSE)
-	return ..()

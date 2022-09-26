@@ -4,6 +4,10 @@
 	icon = 'modular_skyrat/modules/aesthetics/landmine/mines.dmi'
 	icon_state = "uglymine"
 
+	mine_type = /obj/effect/mine/explosive
+
+/obj/item/minespawner/explosive/nri
+
 	mine_type = /obj/effect/mine/explosive/nri
 
 /// A nerfed down version of a landmine I really should've done a long time ago but only did it now.
@@ -21,7 +25,3 @@
 	explosion(src, range_devastation, range_heavy, range_light, range_flame, range_flash)
 	if(isliving(victim))
 		victim.Paralyze(stun_time)
-
-/obj/item/minespawner/explosive/hecu
-
-	mine_type = /obj/effect/mine/explosive

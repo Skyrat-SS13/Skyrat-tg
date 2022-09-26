@@ -23,7 +23,7 @@
 	cost = 1
 
 /datum/armament_entry/hecu/explosives/mine
-	item_type = /obj/item/minespawner/explosive/hecu
+	item_type = /obj/item/minespawner/explosive
 	max_purchase = 8
 	cost = 1
 
