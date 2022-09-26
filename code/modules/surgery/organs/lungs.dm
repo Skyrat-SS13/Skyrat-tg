@@ -295,7 +295,7 @@
 
 		var/bz_pp = breath.get_breath_partial_pressure(breath_gases[/datum/gas/bz][MOLES])
 		if(bz_pp > BZ_trip_balls_min)
-			breather.hallucination += 10
+			breather.adjust_hallucinations(20 SECONDS)
 			breather.reagents.add_reagent(/datum/reagent/bz_metabolites,5)
 		if(bz_pp > BZ_brain_damage_min && prob(33))
 			breather.adjustOrganLoss(ORGAN_SLOT_BRAIN, 3, 150)
@@ -540,6 +540,7 @@
 	name = "plasma filter"
 	desc = "A spongy rib-shaped mass for filtering plasma from the air."
 	icon_state = "lungs-plasma"
+	organ_traits = list(TRAIT_NOHUNGER) // A fresh breakfast of plasma is a great start to any morning.
 
 	safe_oxygen_min = 0 //We don't breathe this
 	safe_plasma_min = 4 //We breathe THIS!

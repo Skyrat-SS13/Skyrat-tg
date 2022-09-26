@@ -14285,8 +14285,8 @@
 /area/station/hallway/primary/central/fore)
 "emW" = (
 /obj/machinery/computer/cryopod{
-	dir = 8;
-	pixel_x = 32
+	pixel_x = 32;
+	dir = 8
 	},
 /obj/machinery/light/warm/directional/east,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
@@ -18637,6 +18637,10 @@
 /area/station/medical/medbay/lobby)
 "fGs" = (
 /obj/machinery/recycler,
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "garbage"
+	},
 /turf/open/floor/iron/smooth_large,
 /area/station/maintenance/disposal)
 "fGy" = (
@@ -26925,6 +26929,21 @@
 	},
 /turf/open/floor/wood/large,
 /area/station/command/heads_quarters/cmo)
+"imj" = (
+/obj/machinery/cryopod{
+	dir = 4
+	},
+/obj/machinery/computer/cryopod{
+	dir = 4;
+	pixel_x = -24
+	},
+/obj/effect/turf_decal/delivery/white{
+	color = "#00ff00"
+	},
+/turf/open/floor/iron/dark/smooth_edge{
+	dir = 4
+	},
+/area/station/security/prison)
 "imt" = (
 /obj/effect/spawner/random/structure/girder,
 /turf/open/floor/iron/smooth,
@@ -63142,7 +63161,7 @@
 "suE" = (
 /obj/structure/closet,
 /obj/structure/window/reinforced,
-/obj/item/clothing/under/costume/bathrobe,
+/obj/item/clothing/under/costume/skyrat/bathrobe,
 /obj/machinery/power/apc/auto_name/directional/west,
 /obj/structure/cable,
 /obj/effect/turf_decal/bot,
@@ -80023,7 +80042,7 @@
 /area/station/engineering/atmos/storage)
 "xos" = (
 /obj/structure/closet,
-/obj/item/clothing/under/costume/bathrobe,
+/obj/item/clothing/under/costume/skyrat/bathrobe,
 /obj/effect/turf_decal/bot,
 /turf/open/floor/iron/white/small,
 /area/station/common/pool)
@@ -131489,7 +131508,7 @@ kFZ
 kFZ
 tyY
 kFZ
-kFZ
+imj
 pEu
 pEu
 pEu

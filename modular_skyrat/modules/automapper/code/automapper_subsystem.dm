@@ -23,9 +23,9 @@ SUBSYSTEM_DEF(automapper)
 	/// Our preloaded map templates
 	var/list/preloaded_map_templates = list()
 
-/datum/controller/subsystem/automapper/Initialize(start_timeofday)
+/datum/controller/subsystem/automapper/Initialize()
 	loaded_config = rustg_read_toml_file(config_file)
-	return ..()
+	return SS_INIT_SUCCESS
 
 /**
  * This will preload our templates into a cache ready to be loaded later.
