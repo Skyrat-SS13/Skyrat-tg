@@ -23,19 +23,3 @@
 		adjust_pleasure(change_amount / 2)
 
 	pain = clamp(pain + change_amount, 0, AROUSAL_LIMIT)
-
-// Get damage for pain system
-/datum/species/apply_damage(damage, damagetype, def_zone, blocked, mob/living/carbon/human/affected_mob, forced, spread_damage, wound_bonus, bare_wound_bonus, sharpness, attack_direction)
-	. = ..()
-	if(!. || affected_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
-		return
-
-	var/hit_percent = (100 - (blocked + armor)) / 100
-	hit_percent = (hit_percent * (100 - affected_mob.physiology.damage_resistance)) / 100
-	switch(damagetype)
-		if(BRUTE)
-			var/amount = forced ? damage : damage * hit_percent * brutemod * affected_mob.physiology.brute_mod
-			INVOKE_ASYNC(affected_mob, /mob/living/carbon/human/.proc/adjust_pain, amount)
-		if(BURN)
-			var/amount = forced ? damage : damage * hit_percent * burnmod * affected_mob.physiology.burn_mod
-			INVOKE_ASYNC(affected_mob, /mob/living/carbon/human/.proc/adjust_pain, amount)
