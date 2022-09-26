@@ -98,7 +98,7 @@ GLOBAL_LIST_INIT(loadout_masks, generate_loadout_items(/datum/loadout_item/mask)
 *	MISC
 */
 /datum/loadout_item/mask/surgical //I'm putting this closer to where it used to be because people WILL just assume its gone otherwise
-	name = "Sterile Mask"
+	name = "Recolorable Sterile Mask"
 	item_path = /obj/item/clothing/mask/surgical/greyscale
 
 /datum/loadout_item/mask/fake_mustache
