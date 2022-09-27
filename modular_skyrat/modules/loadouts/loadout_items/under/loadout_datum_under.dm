@@ -455,7 +455,7 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 
 /datum/loadout_item/under/miscellaneous/arthur
 	name = "Cavalry Uniform"
-	item_path = /obj/item/clothing/under/costume/arthur
+	item_path = /obj/item/clothing/under/costume/skyrat/arthur
 
 /datum/loadout_item/under/miscellaneous/tacticool_turtleneck
 	name = "Tacticool Turtleneck"
