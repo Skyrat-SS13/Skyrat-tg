@@ -83,15 +83,9 @@ GLOBAL_LIST_INIT(metal_recipes, list ( \
 	null, \
 	new/datum/stack_recipe("tram wall girders (anchored)", /obj/structure/girder/tram, 2, time = 40, one_per_turf = TRUE, on_floor = FALSE, on_tram = TRUE, trait_booster = TRAIT_QUICK_BUILD, trait_modifier = 0.75), \
 	null, \
-<<<<<<< HEAD
-	new/datum/stack_recipe("computer frame", /obj/structure/frame/computer, 5, time = 25, one_per_turf = TRUE, on_floor = TRUE), \
-	new/datum/stack_recipe("modular console", /obj/machinery/modular_computer/console/buildable/, 10, time = 25, one_per_turf = TRUE, on_floor = TRUE), \
-	new/datum/stack_recipe("machine frame", /obj/structure/frame/machine, 5, time = 25, one_per_turf = TRUE, on_floor = TRUE), \
-=======
 	new/datum/stack_recipe("computer frame", /obj/structure/frame/computer, 5, time = 25, one_per_turf = TRUE, on_solid_ground = TRUE), \
 	new/datum/stack_recipe("modular console", /obj/machinery/modular_computer/console/buildable, 10, time = 25, one_per_turf = TRUE, on_solid_ground = TRUE), \
 	new/datum/stack_recipe("machine frame", /obj/structure/frame/machine, 5, time = 25, one_per_turf = TRUE, on_solid_ground = TRUE), \
->>>>>>> ca229574f68 (Removes AI and Charge parts from tablets, adds support for more later. (#70012))
 	null, \
 	new /datum/stack_recipe_list("airlock assemblies", list( \
 		new /datum/stack_recipe("standard airlock assembly", /obj/structure/door_assembly, 4, time = 50, one_per_turf = 1, on_floor = 1), \
