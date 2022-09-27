@@ -15,6 +15,11 @@
 *	UNSORTED
 */
 
+/obj/item/clothing/under/costume/skyrat/arthur
+	name = "cavalry uniform"
+	desc = "Dedicate yourself to something better. To loyalty, honour, for it only dies when everyone abandons it."
+	icon_state = "arthur_morgan" //for anyone curious, this is an 1890s US Army Cavalry Uniform. No, Arthur doesn't ever wear this, idk why it's named after him
+
 /obj/item/clothing/under/costume/deckers/alt //not even going to bother re-pathing this one because its such a unique case of 'TGs item has something but this alt doesnt'
 	name = "deckers maskless outfit"
 	desc = "A decker jumpsuit with neon blue coloring."

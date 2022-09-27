@@ -453,6 +453,10 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Dutch Suit"
 	item_path = /obj/item/clothing/under/costume/dutch
 
+/datum/loadout_item/under/miscellaneous/arthur
+	name = "Cavalry Uniform"
+	item_path = /obj/item/clothing/under/costume/arthur
+
 /datum/loadout_item/under/miscellaneous/tacticool_turtleneck
 	name = "Tacticool Turtleneck"
 	item_path = /obj/item/clothing/under/syndicate/tacticool //This has been rebalanced in modular_skyrat\master_files\code\modules\clothing\under\syndicate.dm
