@@ -1044,3 +1044,74 @@
   - qol: let's PAI's wipe themselves
   linnpap:
   - rscadd: Added Xerxian language
+2022-09-27:
+  LT3:
+  - bugfix: Tramstation crossing lights will now properly reflect if you're going
+      to get smacked by the tram if you try to cross.
+  MMMiracles:
+  - rscadd: Tramstation's maintenance has been completely overhauled with modular
+      parts for more variety and differing routes between rounds.
+  - qol: Tramstation's maintenance is now more antag-friendly when it comes to dark-dwelling
+      roles and traversing.
+  Melbert:
+  - code_imp: Replaces some uses of adjust_timed_status_effect and set_timed_status_effect
+      to use macros, makes it easier to develop for.
+  OrionTheFox:
+  - bugfix: Shorts now fit digitigrade legs again
+  RatFromTheJungle:
+  - qol: breakfast now ends at 35 minutes, instead of 15, giving the chef more time
+      to get breakfast options out.
+  - code_imp: changed both the in-desc, and in message makers of the SAD, it's looping
+      messages during use, and removed it's mostly broken emag act
+  RimiNosha:
+  - bugfix: Fixed that stupid language reset bug with the SAD and other things that's
+      been around since newprefs.
+  - balance: Races other than human are now given uncommon by default with the Foreigner
+      quirk.
+  ShizCalev:
+  - bugfix: Scrubber events will no longer trigger if there are no valid scrubbers
+      on the station.
+  - bugfix: Fixed not spawning with prosthetic limbs when you have the prosthetic
+      limb quick.
+  SkyratBot:
+  - bugfix: The Chapel bookshelf is now actually inside the chapel
+  - bugfix: The funeral parlor airlock access has been amended back to public access
+  - rscadd: The chefs have come up with a new use for rice and made these delicious
+      vegetarian spring rolls to add to their menu.
+  - bugfix: Ice Box snow storms now cover the surroundings of the homestead.
+  - rscadd: Added new grouping to orbit menu for CentCom agents.
+  - bugfix: gravity distortion effects no longer break over glass tiles
+  - imageadd: 'A complete overhaul of security sprites. See #69948 for more details.'
+  - spellcheck: Replaced all instances of "Jumpsuit" and "Jumpskirt" within sec items
+      to be "uniform" and "skirt" respectively.
+  - bugfix: A duplicate mass driver controller on Kilo has been deleted, you can no
+      longer operate the toxins mass driver from maintenance.
+  - bugfix: Kilo's north escape pod now correctly has its catwalk in the nearstation
+      area.
+  - bugfix: Kilo no longer has a random incinerator area in space.
+  - bugfix: removed a random decal from arrivals on Kilo.
+  - bugfix: APC in RD office is now more visible if you have x-ray vision.
+  - bugfix: You can no longer assume control of Regal Rats during preround.
+  - bugfix: Properly makes Gin garden alcoholic and adds quality tag. Is also now
+      made with lime juice to prevent triggering the lemonade recipe.
+  - bugfix: 'The developers of Space-Coin decided to renege on their exit scheme with
+      a new advertisement: Space-coin is the mobile currency of the future! As such,
+      you can not cash out of their famous space coin market machines until the machine
+      starts moving. They immediately ran away after that though.'
+  - bugfix: removes duplicate paper bin with pen in caps office
+  - bugfix: Removes a duplicated fax machine from the tram cargo lobby which wasn't
+      supposed to be there.
+  - bugfix: The air vent outside RnD on Icebox is no longer hidden by the Experimental
+      Destructive Scanner
+  - refactor: Maploading has been optimized significantly, as has ruin generation
+      and other lavaland stuff. Let me know if anything goes fucky
+  - bugfix: moved an air vent out from underneath a disposals bin in the Meta incinerator
+  - bugfix: replaced a regular intercom with a prisoner intercom in the Icebox prisoner
+      transfer
+  - bugfix: replaced the window spawners in Meta departures (the ones in the middle
+      of the room) with plain windows so you can see the flowers
+  jjpark-kb:
+  - bugfix: re-added the water basin and forging work bench.
+  - qol: Species incompatible check on ghostrole allows you select random appearance,
+      rather than not allowing you to spawn.
+  - bugfix: You can now select your character for black market dealer.
