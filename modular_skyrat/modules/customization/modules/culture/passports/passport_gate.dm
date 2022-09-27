@@ -73,14 +73,6 @@
 		set_scanline("scanning", 10)
 		say("Welcome, [passport.get_data()["name"]], enjoy your shift, and have a nice day.")
 
-/obj/machinery/scanner_gate/alarm_beep()
-	if(next_beep <= world.time)
-		next_beep = world.time + 20
-		playsound(src, 'sound/machines/nuke/confirmbeep.ogg', 100, FALSE) // :troll:
-	var/image/I = image(icon, src, "alarm_light", layer+1)
-	flick_overlay_view(I, src, 20)
-	set_scanline("alarm", 20)
-
 /obj/machinery/scanner_gate/passport_gate/attackby(obj/item/attacking_item, mob/user, params)
 	var/obj/item/card/id/card = attacking_item.GetID()
 	if(card)
