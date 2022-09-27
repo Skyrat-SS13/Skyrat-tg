@@ -68,23 +68,6 @@
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /*
-*	PARAMEDIC
-*/
-
-/obj/item/clothing/under/rank/medical/paramedic/skyrat/dark
-	name = "dark paramedic jumpsuit"
-	desc = "It's covered in reflective strips and made of a special fiber that provides minor protection against biohazards. It has a reflective white cross on the back denoting that the wearer is a trained paramedic."
-	icon_state = "paramedic_dark"
-
-/obj/item/clothing/under/rank/medical/paramedic/skyrat/dark/skirt
-	name = "dark paramedic jumpskirt"
-	icon_state = "paramedic_skirt_dark"
-	body_parts_covered = CHEST|GROIN|ARMS
-	dying_key = DYE_REGISTRY_JUMPSKIRT
-	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
-
-/*
 *	CHIEF MEDICAL OFFICER
 */
 
