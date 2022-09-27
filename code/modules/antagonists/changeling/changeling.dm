@@ -98,6 +98,7 @@
 	/// A list of all memories we've stolen through absorbs.
 	var/list/stolen_memories = list()
 
+<<<<<<< HEAD
 	var/true_form_death //SKYRAT EDIT ADDITION: The time that the horror form died.
 
 	// SKYRAT EDIT START
@@ -123,6 +124,10 @@
 		"Friendly",
 	)
 	// SKYRAT EDIT END
+=======
+	///	Keeps track of the currently selected profile.
+	var/datum/changeling_profile/current_profile
+>>>>>>> 243231eb48a (Properly checks flags with & instead of == (#70130))
 
 /datum/antagonist/changeling/New()
 	. = ..()
@@ -483,12 +488,23 @@
 	new_profile.dna = new_dna
 	new_profile.name = target.real_name
 	new_profile.protected = protect
+<<<<<<< HEAD
+=======
+
+	new_profile.age = target.age
+	new_profile.physique = target.physique
+
+	// Grab the target's quirks.
+	for(var/datum/quirk/target_quirk as anything in target.quirks)
+		LAZYADD(new_profile.quirks, new target_quirk.type)
+>>>>>>> 243231eb48a (Properly checks flags with & instead of == (#70130))
 
 	// Clothes, of course
 	new_profile.underwear = target.underwear
 	new_profile.undershirt = target.undershirt
 	new_profile.socks = target.socks
 
+<<<<<<< HEAD
 	// SKYRAT EDIT START
 	new_profile.underwear_color = target.underwear_color
 	new_profile.undershirt_color = target.undershirt_color
@@ -496,6 +512,9 @@
 	new_profile.eye_color_left = target.eye_color_left
 	new_profile.eye_color_right = target.eye_color_right
 	new_profile.emissive_eyes = target.emissive_eyes
+=======
+	// Hair and facial hair gradients, alongside their colours.
+>>>>>>> 243231eb48a (Properly checks flags with & instead of == (#70130))
 	new_profile.grad_style = LAZYLISTDUPLICATE(target.grad_style)
 	new_profile.grad_color = LAZYLISTDUPLICATE(target.grad_color)
 	new_profile.physique = target.physique
