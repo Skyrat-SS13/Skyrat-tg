@@ -257,7 +257,7 @@
 		return
 	var/obj/item/picket_sign/cyborg/borgsign = locate() in target_robot.model.modules
 	if(borgsign)
-		to_chat(user, span_warning("This unit is already equipped with an sign module!"))
+		target_robot.balloon_alert(user, "already equipped!")
 		return
 
 	borgsign = new(target_robot.model)
