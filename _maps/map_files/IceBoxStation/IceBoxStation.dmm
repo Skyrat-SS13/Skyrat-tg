@@ -7376,13 +7376,6 @@
 /obj/effect/turf_decal/bot,
 /turf/open/floor/iron,
 /area/station/cargo/storage)
-"cin" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
-	dir = 1
-	},
-/obj/effect/turf_decal/stripes/line,
-/turf/open/floor/iron/large,
-/area/station/hallway/primary/starboard)
 "ciG" = (
 /obj/machinery/door/airlock/external{
 	name = "Security Yard";
@@ -39817,6 +39810,12 @@
 /obj/effect/landmark/start/hangover,
 /turf/open/floor/iron,
 /area/station/commons/dorms)
+"mjL" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 1
+	},
+/turf/open/floor/iron/large,
+/area/station/hallway/primary/starboard)
 "mjQ" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 4
@@ -53106,17 +53105,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron,
 /area/station/commons/locker)
-"qpi" = (
-/obj/machinery/flasher/directional/north{
-	id = "transferflash"
-	},
-/obj/structure/chair{
-	dir = 4
-	},
-/obj/machinery/light/small/directional/west,
-/obj/item/radio/intercom/prison/directional/west,
-/turf/open/floor/iron/dark/textured,
-/area/station/security/execution/transfer)
 "qpr" = (
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /obj/effect/turf_decal/trimline/dark_blue/line,
@@ -58522,6 +58510,15 @@
 /obj/structure/table,
 /turf/open/floor/plating,
 /area/station/maintenance/starboard/aft)
+"rZc" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/cable,
+/obj/structure/statue/goliath{
+	dir = 8
+	},
+/turf/open/floor/iron/white,
+/area/mine/living_quarters)
 "rZg" = (
 /obj/structure/chair/office{
 	dir = 8
@@ -70791,15 +70788,6 @@
 /obj/effect/spawner/random/maintenance/four,
 /turf/open/floor/wood,
 /area/station/maintenance/port/aft)
-"vPr" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/cable,
-/obj/structure/statue/goliath{
-	dir = 8
-	},
-/turf/open/floor/iron/white,
-/area/mine/living_quarters)
 "vPt" = (
 /obj/structure/closet/secure_closet/freezer/meat{
 	req_access = "0"
@@ -74190,6 +74178,10 @@
 /obj/structure/closet/secure_closet/freezer/fridge,
 /turf/open/misc/ice/coldroom,
 /area/station/service/kitchen/coldroom)
+"wMR" = (
+/obj/effect/turf_decal/stripes/line,
+/turf/open/floor/iron,
+/area/station/hallway/primary/starboard)
 "wMT" = (
 /obj/structure/sign/poster/random/directional/south,
 /turf/open/floor/iron,
@@ -75499,6 +75491,17 @@
 	},
 /turf/open/floor/iron/dark/textured_edge,
 /area/station/security/prison)
+"xgM" = (
+/obj/machinery/flasher/directional/north{
+	id = "transferflash"
+	},
+/obj/structure/chair{
+	dir = 4
+	},
+/obj/machinery/light/small/directional/west,
+/obj/item/radio/intercom/prison/directional/west,
+/turf/open/floor/iron/dark/textured,
+/area/station/security/execution/transfer)
 "xgO" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/trimline/yellow/corner{
@@ -157435,7 +157438,7 @@ gwJ
 tHQ
 bwT
 veK
-vPr
+rZc
 tFC
 jKA
 jkn
@@ -172263,7 +172266,7 @@ bol
 rkT
 uME
 uME
-qpi
+xgM
 trA
 uME
 xge
@@ -257123,8 +257126,8 @@ bMY
 cxd
 cYE
 avb
-avb
-cin
+mjL
+wMR
 eKl
 pxL
 lso
