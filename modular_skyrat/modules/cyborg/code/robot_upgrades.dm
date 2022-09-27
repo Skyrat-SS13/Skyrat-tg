@@ -273,7 +273,7 @@
 	if (borgsign)
 		target_robot.model.remove_module(borgsign, TRUE)
 
-//Updated proc for the sign, ignores the writing_utensil check in favor of iscyborg(user) This prevent a pesky chat warning.
+///Retext proc for the picket sign that checks for a cyborg user instead of writing_instrument.
 /obj/item/picket_sign/cyborg/proc/borgsign_retext(mob/user)
 	if(!iscyborg(user))
 		return
