@@ -7376,13 +7376,6 @@
 /obj/effect/turf_decal/bot,
 /turf/open/floor/iron,
 /area/station/cargo/storage)
-"cin" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
-	dir = 1
-	},
-/obj/effect/turf_decal/stripes/line,
-/turf/open/floor/iron/large,
-/area/station/hallway/primary/starboard)
 "ciG" = (
 /obj/machinery/door/airlock/external{
 	name = "Security Yard";
@@ -11212,17 +11205,6 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/station/security/lockers)
-"doq" = (
-/obj/machinery/flasher/directional/north{
-	id = "transferflash"
-	},
-/obj/structure/chair{
-	dir = 4
-	},
-/obj/machinery/light/small/directional/west,
-/obj/item/radio/intercom/directional/west,
-/turf/open/floor/iron/dark/textured,
-/area/station/security/execution/transfer)
 "dos" = (
 /obj/machinery/atmospherics/pipe/heat_exchanging/junction{
 	dir = 4
@@ -19727,6 +19709,12 @@
 /obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/iron,
 /area/station/service/janitor)
+"fVV" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 1
+	},
+/turf/open/floor/iron/large,
+/area/station/hallway/primary/starboard)
 "fWa" = (
 /obj/structure/chair/wood{
 	dir = 4
@@ -22429,6 +22417,17 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/security/prison/workout)
+"gNP" = (
+/obj/structure/table,
+/obj/item/clothing/glasses/meson,
+/obj/item/storage/bag/ore,
+/obj/item/pickaxe,
+/obj/item/mining_scanner,
+/obj/item/flashlight,
+/obj/item/clothing/suit/hooded/wintercoat,
+/obj/item/gps/mining,
+/turf/open/floor/iron,
+/area/station/commons/storage/mining)
 "gNT" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -24606,6 +24605,15 @@
 	},
 /turf/open/floor/iron,
 /area/station/hallway/primary/central)
+"hxi" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/cable,
+/obj/structure/statue/goliath{
+	dir = 8
+	},
+/turf/open/floor/iron/white,
+/area/mine/living_quarters)
 "hxs" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -24710,6 +24718,10 @@
 	},
 /turf/open/floor/iron,
 /area/station/cargo/storage)
+"hyZ" = (
+/obj/effect/turf_decal/stripes/line,
+/turf/open/floor/iron,
+/area/station/hallway/primary/starboard)
 "hzd" = (
 /obj/structure/stairs/north,
 /turf/open/floor/iron,
@@ -32319,16 +32331,6 @@
 	},
 /turf/open/floor/iron,
 /area/station/security/prison/mess)
-"jQI" = (
-/obj/structure/table,
-/obj/item/clothing/glasses/meson,
-/obj/item/storage/bag/ore,
-/obj/item/pickaxe,
-/obj/item/mining_scanner,
-/obj/item/flashlight,
-/obj/item/clothing/suit/hooded/wintercoat,
-/turf/open/floor/iron,
-/area/station/commons/storage/mining)
 "jQS" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/white,
@@ -38355,6 +38357,15 @@
 	},
 /turf/open/floor/iron,
 /area/station/hallway/secondary/exit/departure_lounge)
+"lIg" = (
+/mob/living/simple_animal/hostile/retaliate/goat{
+	atmos_requirements = list("min_oxy"=1,"max_oxy"=0,"min_plas"=0,"max_plas"=1,"min_co2"=0,"max_co2"=5,"min_n2"=0,"max_n2"=0);
+	desc = "Not known for their pleasant disposition. This one seems a bit more hardy to the cold.";
+	minbodytemp = 150;
+	name = "Snowy Pete"
+	},
+/turf/open/misc/asteroid/snow/coldroom,
+/area/station/service/kitchen/coldroom)
 "lIk" = (
 /obj/effect/spawner/structure/window,
 /turf/open/floor/plating,
@@ -39614,19 +39625,6 @@
 /obj/effect/turf_decal/tile/neutral/full,
 /turf/open/floor/iron/dark,
 /area/station/medical/morgue)
-"mfg" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/cable,
-/obj/structure/statue{
-	desc = "A lifelike statue of a horrifying monster.";
-	dir = 8;
-	icon = 'icons/mob/lavaland/lavaland_monsters.dmi';
-	icon_state = "goliath";
-	name = "goliath"
-	},
-/turf/open/floor/iron/white,
-/area/mine/living_quarters)
 "mfz" = (
 /obj/machinery/door/airlock{
 	name = "Unit B"
@@ -41351,15 +41349,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/visible,
 /turf/open/floor/iron,
 /area/station/maintenance/disposal/incinerator)
-"mIH" = (
-/mob/living/simple_animal/hostile/retaliate/goat{
-	atmos_requirements = list("min_oxy" = 1, "max_oxy" = 0, "min_plas" = 0, "max_plas" = 1, "min_co2" = 0, "max_co2" = 5, "min_n2" = 0, "max_n2" = 0);
-	desc = "Not known for their pleasant disposition. This one seems a bit more hardy to the cold.";
-	minbodytemp = 150;
-	name = "Snowy Pete"
-	},
-/turf/open/misc/asteroid/snow/coldroom,
-/area/station/service/kitchen/coldroom)
 "mIT" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -44570,17 +44559,6 @@
 /obj/structure/cable,
 /turf/open/floor/plating/snowed/icemoon,
 /area/icemoon/surface/outdoors/nospawn)
-"nFR" = (
-/obj/structure/table,
-/obj/item/clothing/glasses/meson,
-/obj/item/storage/bag/ore,
-/obj/item/pickaxe,
-/obj/item/mining_scanner,
-/obj/item/flashlight,
-/obj/machinery/light/directional/west,
-/obj/item/clothing/suit/hooded/wintercoat,
-/turf/open/floor/iron,
-/area/station/commons/storage/mining)
 "nFU" = (
 /obj/structure/chair/stool/directional/west,
 /obj/item/trash/energybar,
@@ -52956,6 +52934,18 @@
 "qmi" = (
 /turf/open/floor/iron,
 /area/station/cargo/lobby)
+"qmm" = (
+/obj/structure/table,
+/obj/item/clothing/glasses/meson,
+/obj/item/storage/bag/ore,
+/obj/item/pickaxe,
+/obj/item/mining_scanner,
+/obj/item/flashlight,
+/obj/machinery/light/directional/east,
+/obj/item/clothing/suit/hooded/wintercoat,
+/obj/item/gps/mining,
+/turf/open/floor/iron,
+/area/station/commons/storage/mining)
 "qmt" = (
 /turf/closed/wall,
 /area/mine/eva/lower)
@@ -57652,6 +57642,18 @@
 /obj/structure/dresser,
 /turf/open/floor/carpet,
 /area/station/command/heads_quarters/captain)
+"rLh" = (
+/obj/structure/table,
+/obj/item/clothing/glasses/meson,
+/obj/item/storage/bag/ore,
+/obj/item/pickaxe,
+/obj/item/mining_scanner,
+/obj/item/flashlight,
+/obj/machinery/light/directional/west,
+/obj/item/clothing/suit/hooded/wintercoat,
+/obj/item/gps/mining,
+/turf/open/floor/iron,
+/area/station/commons/storage/mining)
 "rLo" = (
 /turf/open/floor/plating,
 /area/station/cargo/miningdock)
@@ -59390,16 +59392,6 @@
 	},
 /turf/open/floor/iron,
 /area/station/service/hydroponics)
-"sng" = (
-/obj/structure/table,
-/obj/item/wrench,
-/obj/effect/turf_decal/tile/neutral/anticorner/contrasted{
-	dir = 8
-	},
-/obj/item/crowbar,
-/obj/item/implant/radio,
-/turf/open/floor/iron/dark,
-/area/station/commons/storage/primary)
 "snj" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable,
@@ -67400,17 +67392,6 @@
 /obj/effect/spawner/structure/window/reinforced/plasma,
 /turf/open/floor/plating,
 /area/station/engineering/supermatter)
-"uLo" = (
-/obj/structure/table,
-/obj/item/clothing/glasses/meson,
-/obj/item/storage/bag/ore,
-/obj/item/pickaxe,
-/obj/item/mining_scanner,
-/obj/item/flashlight,
-/obj/machinery/light/directional/east,
-/obj/item/clothing/suit/hooded/wintercoat,
-/turf/open/floor/iron,
-/area/station/commons/storage/mining)
 "uLp" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/poddoor/preopen{
@@ -71589,6 +71570,17 @@
 "wam" = (
 /turf/open/openspace,
 /area/station/cargo/storage)
+"wat" = (
+/obj/machinery/flasher/directional/north{
+	id = "transferflash"
+	},
+/obj/structure/chair{
+	dir = 4
+	},
+/obj/machinery/light/small/directional/west,
+/obj/item/radio/intercom/prison/directional/west,
+/turf/open/floor/iron/dark/textured,
+/area/station/security/execution/transfer)
 "waE" = (
 /obj/machinery/requests_console/directional/north{
 	department = "Cargo Bay";
@@ -76919,6 +76911,16 @@
 /obj/machinery/door/firedoor,
 /turf/open/floor/carpet/black,
 /area/station/security/prison/safe)
+"xEL" = (
+/obj/structure/table,
+/obj/item/wrench,
+/obj/effect/turf_decal/tile/neutral/anticorner/contrasted{
+	dir = 8
+	},
+/obj/item/crowbar,
+/obj/item/radio,
+/turf/open/floor/iron/dark,
+/area/station/commons/storage/primary)
 "xEP" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -157439,7 +157441,7 @@ gwJ
 tHQ
 bwT
 veK
-mfg
+hxi
 tFC
 jKA
 jkn
@@ -172267,7 +172269,7 @@ bol
 rkT
 uME
 uME
-doq
+wat
 trA
 uME
 xge
@@ -182336,7 +182338,7 @@ dEB
 dMS
 jBB
 mQk
-mIH
+lIg
 wMP
 fwB
 fwB
@@ -228065,7 +228067,7 @@ eUf
 qhO
 lJO
 waZ
-sng
+xEL
 iMT
 nQu
 gOx
@@ -238117,9 +238119,9 @@ qPP
 ghl
 nRu
 clE
-jQI
-nFR
-jQI
+gNP
+rLh
+gNP
 kta
 bln
 pAZ
@@ -239659,9 +239661,9 @@ dEQ
 sGv
 rFf
 clE
-jQI
-uLo
-jQI
+gNP
+qmm
+gNP
 kta
 bln
 pAZ
@@ -257127,8 +257129,8 @@ bMY
 cxd
 cYE
 avb
-avb
-cin
+fVV
+hyZ
 eKl
 pxL
 lso

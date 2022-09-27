@@ -66,7 +66,7 @@ SUBSYSTEM_DEF(ticker)
 
 	var/discord_alerted = FALSE //SKYRAT EDIT - DISCORD PING SPAM PREVENTION
 
-/datum/controller/subsystem/ticker/Initialize(timeofday)
+/datum/controller/subsystem/ticker/Initialize()
 	load_mentors() // SKYRAT EDIT ADDITION - MENTORS STOPPED LOADING AUTOMATICALLY DUE TO RECENT TG CHANGES
 	var/list/byond_sound_formats = list(
 		"mid" = TRUE,
@@ -145,7 +145,7 @@ SUBSYSTEM_DEF(ticker)
 		gametime_offset = rand(0, 23) HOURS
 	else if(CONFIG_GET(flag/shift_time_realtime))
 		gametime_offset = world.timeofday
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/ticker/fire()
 	switch(current_state)
