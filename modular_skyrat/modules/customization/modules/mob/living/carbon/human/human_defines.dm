@@ -17,5 +17,6 @@
 	var/oversized_piggywound_chance = 50
 	/// Base damage for oversized piggyback riding.
 	var/oversized_piggydam = 25
-	/// Knockdown time for oversized piggyback riding in deciseconds. (10 deciseconds = 1 second)
-	var/oversized_piggyknock = 30
+	/// Paralyze time for oversized piggyback riding in deciseconds. (10 deciseconds = 1 second)
+	var/oversized_piggyparalyze = 30
+
