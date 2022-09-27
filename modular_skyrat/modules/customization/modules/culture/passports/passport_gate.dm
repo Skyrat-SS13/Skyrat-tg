@@ -26,6 +26,9 @@
 	icon_state = "scangate_black"
 	circuit = /obj/item/circuitboard/machine/passport_gate
 
+	/// Used by the passport gate for more advanced functions that can be set by the user.
+	var/list/scangate_filter
+
 /obj/machinery/scanner_gate/passport_gate/perform_scan(mob/living/living)
 	if(obj_flags & EMAGGED)
 		playsound(src, 'modular_skyrat/modules/customization/modules/culture/sounds/passportscanbroke.ogg', 75)
@@ -56,13 +59,13 @@
 
 	if(beep)
 		alarm_beep()
-		SEND_SIGNAL(src, COMSIG_SCANGATE_PASS_TRIGGER, M)
+		SEND_SIGNAL(src, COMSIG_SCANGATE_PASS_TRIGGER, living)
 		if(!ignore_signals)
 			color = wires.get_color_of_wire(WIRE_ACCEPT)
 			var/obj/item/assembly/assembly = wires.get_attached(color)
 			assembly?.activate()
 	else
-		SEND_SIGNAL(src, COMSIG_SCANGATE_PASS_NO_TRIGGER, M)
+		SEND_SIGNAL(src, COMSIG_SCANGATE_PASS_NO_TRIGGER, living)
 		if(!ignore_signals)
 			color = wires.get_color_of_wire(WIRE_DENY)
 			var/obj/item/assembly/assembly = wires.get_attached(color)
