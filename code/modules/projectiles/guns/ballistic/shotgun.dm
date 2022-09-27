@@ -133,7 +133,7 @@
 	mag_type = /obj/item/ammo_box/magazine/m12g
 	can_suppress = FALSE
 	burst_size = 1
-	fire_delay = 10
+	fire_delay = 10 //Skyrat edit - Original: 0
 	pin = /obj/item/firing_pin/implant/pindicate
 	fire_sound = 'sound/weapons/gun/shotgun/shot_alt.ogg'
 	fire_select_modes = list(SELECT_SEMI_AUTOMATIC) //SKYRAT EDIT CHANGE
