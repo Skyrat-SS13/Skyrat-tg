@@ -36,7 +36,7 @@
 #define MATTER_POWER_CONVERSION 10 //Crystal converts 1/this value of stored matter into energy.
 
 //These would be what you would get at point blank, decreases with distance
-#define DETONATION_HALLUCINATION 600
+#define DETONATION_HALLUCINATION 20 MINUTES
 
 /// All humans within this range will be irradiated
 #define DETONATION_RADIATION_RANGE 20
@@ -52,6 +52,7 @@
 #define BIOSCRAMBLER_ANOMALY "bioscrambler_anomaly"
 #define HALLUCINATION_ANOMALY "hallucination_anomaly"
 #define VORTEX_ANOMALY "vortex_anomaly"
+#define DIMENSIONAL_ANOMALY "dimensional_anomaly"
 
 #define SUPERMATTER_COUNTDOWN_TIME 30 SECONDS
 

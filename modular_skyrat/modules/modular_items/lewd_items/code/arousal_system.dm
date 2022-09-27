@@ -32,7 +32,7 @@
 	random_icon_states = list("cum_1", "cum_2", "cum_3", "cum_4")
 	beauty = -50
 
-/obj/effect/decal/cleanable/femcum
+/obj/effect/decal/cleanable/cum/femcum
 	name = "female cum"
 	desc = "Uhh... Someone had fun..."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_decals/lewd_decals.dmi'
@@ -89,7 +89,7 @@
 	..()
 
 /datum/reagent/drug/dopamine/on_mob_life(mob/living/carbon/affected_mob, delta_time, times_fired)
-	affected_mob.set_timed_status_effect(2 SECONDS * REM * delta_time, /datum/status_effect/drugginess)
+	affected_mob.set_drugginess(2 SECONDS * REM * delta_time)
 	if(prob(7))
 		affected_mob.try_lewd_autoemote(pick("shaking", "moan"))
 	..()
@@ -463,8 +463,6 @@
 
 						if(!target_human.wear_mask)
 							target_buttons += "mouth"
-							if(target_human.client?.prefs.read_preference(/datum/preference/toggle/erp/cum_face))
-								target_buttons += "face"
 
 						if(target_vagina && target_vagina?.is_exposed())
 							target_buttons += "vagina"
@@ -487,9 +485,6 @@
 							create_cum_decal = TRUE
 							visible_message(span_userlove("[src] shoots their sticky load onto the [target_human]!"), \
 								span_userlove("You shoot string after string of hot cum onto [target_human]!"))
-						else if(climax_into_choice == "face")
-							visible_message(span_userlove("[src] shoots their sticky load onto [target_human]'s face!"), \
-								span_userlove("You shoot string after string of hot cum onto [target_human]'s face!"))
 						else
 							visible_message(span_userlove("[src] hilts [p_their()] cock into [target_human]'s [climax_into_choice], shooting cum into it!"), \
 								span_userlove("You hilt your cock into [target_human]'s [climax_into_choice], shooting cum into it!"))
@@ -499,8 +494,7 @@
 				apply_status_effect(/datum/status_effect/climax)
 				apply_status_effect(/datum/status_effect/climax_cooldown)
 				if(create_cum_decal)
-					var/turf/our_turf = get_turf(src)
-					new /obj/effect/decal/cleanable/cum(our_turf)
+					add_cum_splatter_floor(get_turf(src))
 				return TRUE
 			if(vagina)
 				if(is_bottomless() || vagina.visibility_preference == GENITAL_ALWAYS_SHOW)
@@ -508,7 +502,7 @@
 					apply_status_effect(/datum/status_effect/climax_cooldown)
 					visible_message(span_purple("[src] is cumming!"), span_purple("You are cumming!"))
 					var/turf/our_turf = get_turf(src)
-					new /obj/effect/decal/cleanable/femcum(our_turf)
+					add_cum_splatter_floor(our_turf, female = TRUE)
 				else
 					apply_status_effect(/datum/status_effect/climax)
 					apply_status_effect(/datum/status_effect/climax_cooldown)
@@ -554,7 +548,7 @@
 	duration = 50 //Multiplayer better than singleplayer mode.
 	alert_type = null
 
-/datum/status_effect/masturbation_climax/tick() //this one should not leave decals on the floor. Used in case if character cumming on somebody's face or in beaker.
+/datum/status_effect/masturbation_climax/tick() //this one should not leave decals on the floor. Used in case if character cumming in beaker.
 	var/mob/living/carbon/human/affected_mob = owner
 	if(affected_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy))
 		var/temp_arousal = -12
@@ -808,9 +802,6 @@
 	if(!human_cumvictim.client)
 		to_chat(user, span_warning("You can't cum onto [target]."))
 		return
-	if(!(human_cumvictim.client.prefs.read_preference(/datum/preference/toggle/erp/cum_face))) // I'm just paranoid about runtime errors
-		to_chat(user, span_warning("You can't cum onto [target]."))
-		return
 	var/mob/living/carbon/human/affected_human = user
 	var/obj/item/organ/external/genital/testicles/testicles = affected_human.getorganslot(ORGAN_SLOT_TESTICLES)
 	var/obj/item/organ/external/genital/penis/penis = affected_human.getorganslot(ORGAN_SLOT_PENIS)
@@ -878,10 +869,9 @@
 	else
 		user.visible_message(span_warning("[user] starts masturbating onto [target]!"), span_danger("You start masturbating onto [target]!"))
 		if(do_after(user, 60))
-			var/turf/target_turf = get_turf(target)
 			user.visible_message(span_warning("[user] cums on [target]!"), span_danger("You cum on [target]!"))
 			playsound(target, SFX_DESECRATION, 50, TRUE, ignore_walls = FALSE)
-			new/obj/effect/decal/cleanable/cum(target_turf)
+			affected_human.add_cum_splatter_floor(get_turf(target))
 			if(prob(40))
 				affected_human.try_lewd_autoemote("moan")
 

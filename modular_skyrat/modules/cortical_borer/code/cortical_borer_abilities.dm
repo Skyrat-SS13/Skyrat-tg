@@ -77,9 +77,6 @@
 				return
 			cortical_owner.reagent_holder.reagents.add_reagent(reagent, cortical_owner.injection_rate_current, added_purity = 1)
 			cortical_owner.reagent_holder.reagents.trans_to(cortical_owner.human_host, cortical_owner.injection_rate_current, methods = INGEST)
-			var/obj/item/organ/internal/brain/victim_brain = cortical_owner.human_host.getorganslot(ORGAN_SLOT_BRAIN)
-			if(victim_brain)
-				cortical_owner.human_host.adjustOrganLoss(ORGAN_SLOT_BRAIN, 5)
 			to_chat(cortical_owner.human_host, span_warning("You feel something cool inside of you and a dull ache in your head!"))
 			cortical_owner.chemical_storage -= cortical_owner.injection_rate_current * CHEMICALS_PER_UNIT
 			COOLDOWN_START(cortical_owner, injection_cooldown, (cortical_owner.injection_rate_current / CHEMICAL_SECOND_DIVISOR))
@@ -220,7 +217,7 @@
 	cortical_owner.potential_chemicals -= reagent_choice
 	var/obj/item/organ/internal/brain/victim_brain = cortical_owner.human_host.getorganslot(ORGAN_SLOT_BRAIN)
 	if(victim_brain)
-		cortical_owner.human_host.adjustOrganLoss(ORGAN_SLOT_BRAIN, 10)
+		cortical_owner.human_host.adjustOrganLoss(ORGAN_SLOT_BRAIN, 5)
 	owner.balloon_alert(owner, "[initial(reagent_choice.name)] learned")
 	to_chat(cortical_owner.human_host, span_notice("You get a strange aftertaste of [initial(reagent_choice.taste_description)]!"))
 	StartCooldown()
@@ -251,7 +248,7 @@
 	cortical_owner.chemical_regen++
 	var/obj/item/organ/internal/brain/victim_brain = cortical_owner.human_host.getorganslot(ORGAN_SLOT_BRAIN)
 	if(victim_brain)
-		cortical_owner.human_host.adjustOrganLoss(ORGAN_SLOT_BRAIN, 25)
+		cortical_owner.human_host.adjustOrganLoss(ORGAN_SLOT_BRAIN, 10)
 	cortical_owner.human_host.adjust_blurriness(3) //about 12 seconds' worth
 	to_chat(cortical_owner, span_notice("You have grown!"))
 	to_chat(cortical_owner.human_host, span_warning("You feel a sharp pressure in your head!"))
@@ -293,7 +290,7 @@
 		owner.balloon_alert(owner, "fear incited into host")
 		cortical_owner.human_host.Paralyze(10 SECONDS)
 		cortical_owner.human_host.adjustStaminaLoss(100)
-		cortical_owner.human_host.set_timed_status_effect(15 SECONDS, /datum/status_effect/confusion, only_if_higher = TRUE)
+		cortical_owner.human_host.set_confusion_if_lower(15 SECONDS)
 		to_chat(cortical_owner.human_host, span_warning("Something moves inside of you violently!"))
 		StartCooldown()
 		return
@@ -311,7 +308,7 @@
 		to_chat(singular_fear, span_warning("Something glares menacingly at you!"))
 		singular_fear.Paralyze(7 SECONDS)
 		singular_fear.adjustStaminaLoss(50)
-		singular_fear.set_timed_status_effect(9 SECONDS, /datum/status_effect/confusion, only_if_higher = TRUE)
+		singular_fear.set_confusion_if_lower(9 SECONDS)
 		var/turf/human_turfone = get_turf(singular_fear)
 		var/logging_text = "[key_name(cortical_owner)] feared/paralyzed [key_name(singular_fear)] at [loc_name(human_turfone)]"
 		cortical_owner.log_message(logging_text, LOG_GAME)
@@ -329,7 +326,7 @@
 	owner.balloon_alert(owner, "fear incited into target")
 	choose_fear.Paralyze(7 SECONDS)
 	choose_fear.adjustStaminaLoss(50)
-	choose_fear.set_timed_status_effect(9 SECONDS, /datum/status_effect/confusion, only_if_higher = TRUE)
+	choose_fear.set_confusion_if_lower(9 SECONDS)
 	var/turf/human_turftwo = get_turf(choose_fear)
 	var/logging_text = "[key_name(cortical_owner)] feared/paralyzed [key_name(choose_fear)] at [loc_name(human_turftwo)]"
 	cortical_owner.log_message(logging_text, LOG_GAME)
@@ -412,7 +409,7 @@
 	if (HAS_TRAIT(cortical_owner.human_host, TRAIT_IRRADIATED))
 		render_list += "<span class='alert ml-1'>Subject is irradiated. Supply toxin healing.</span>\n"
 
-	if(cortical_owner.human_host.hallucinating())
+	if(cortical_owner.human_host.has_status_effect(/datum/status_effect/hallucination))
 		render_list += "<span class='info ml-1'>Subject is hallucinating.</span>\n"
 
 	//Eyes and ears

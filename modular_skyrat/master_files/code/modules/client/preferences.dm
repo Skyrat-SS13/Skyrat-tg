@@ -60,7 +60,7 @@
 /datum/preferences/proc/species_updated(species_type)
 	all_quirks = list()
 	// Reset cultural stuff
-	try_get_common_language()
+	languages[try_get_common_language()] = LANGUAGE_SPOKEN
 	save_character()
 
 /datum/preferences/proc/print_bodypart_change_line(key)
@@ -96,41 +96,25 @@
 			var/datum/body_marking/BM = GLOB.body_markings[key]
 			bml[key] = BM.get_default_color(features, pref_species)
 
-/datum/preferences/proc/get_linguistic_points()
-	var/points
-	points = (QUIRK_LINGUIST in all_quirks) ? LINGUISTIC_POINTS_LINGUIST : LINGUISTIC_POINTS_DEFAULT
-	for(var/langpath in languages)
-		points -= languages[langpath]
-	return points
+/// This helper proc gets the current species language holder and does any post-processing that's required in one easy to track place.
+/// This proc should *always* be edited or used when modifying or getting the default languages of a player controlled, unrestricted species, to prevent any errant conflicts.
+/datum/preferences/proc/get_adjusted_language_holder()
+	var/datum/species/species = read_preference(/datum/preference/choiced/species)
+	species = new species()
+	var/datum/language_holder/language_holder = new species.species_language_holder()
 
-/datum/preferences/proc/get_optional_languages()
-	var/list/lang_list = list()
-	var/datum/language_holder/lang_holder = new pref_species.species_language_holder()
-	for(var/lang in lang_holder.spoken_languages)
-		lang_list[lang] = TRUE
-	qdel(lang_holder)
-	return lang_list
+	if(all_quirks.Find("Foreigner"))
+		language_holder.remove_language(/datum/language/common)
+		if(language_holder.spoken_languages.len == 0)
+			language_holder.grant_language(/datum/language/uncommon)
 
-/datum/preferences/proc/get_available_languages()
-	var/list/lang_list = list()
-	for(var/lang_key in get_optional_languages())
-		lang_list[lang_key] = TRUE
-	return lang_list
-
-/datum/preferences/proc/can_buy_language(language_path, level)
-	var/points = get_linguistic_points()
-	if(languages[language_path])
-		points += languages[language_path]
-	if(points < level)
-		return FALSE
-	return TRUE
+	return language_holder
 
 // Whenever we switch a species, we'll try to get common if we can to not confuse anyone
 /datum/preferences/proc/try_get_common_language()
-	var/list/langs = get_available_languages()
-	if(langs[/datum/language/common])
-		languages[/datum/language/common] = LANGUAGE_SPOKEN
-
+	var/datum/language_holder/language_holder = get_adjusted_language_holder()
+	var/language = language_holder.spoken_languages[1]
+	return language
 
 /datum/preferences/proc/validate_species_parts()
 	var/list/target_bodyparts = pref_species.default_mutant_bodyparts.Copy()
