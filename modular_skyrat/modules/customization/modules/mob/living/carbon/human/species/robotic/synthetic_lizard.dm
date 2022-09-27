@@ -14,7 +14,7 @@
 		"ipc_antenna" = ACC_RANDOM,
 		"tail" = ACC_RANDOM,
 		"snout" = ACC_RANDOM,
-		"legs" = "Digitigrade Legs",
+		"legs" = DIGITIGRADE_LEGS,
 		"taur" = "None",
 		"wings" = "None"
 	)
