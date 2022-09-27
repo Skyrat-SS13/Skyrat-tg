@@ -23,7 +23,6 @@
 	var/dev_disk = 1 // 1: Default, 2: Upgraded, 3: Advanced
 <<<<<<< HEAD
 	var/dev_netcard = 0 // 0: None, 1: Basic, 2: Long-Range
-	var/dev_apc_recharger = 0 // 0: None, 1: Standard (LAPTOP ONLY)
 	var/dev_printer = 0 // 0: None, 1: Standard
 =======
 >>>>>>> 7c990173e0b (Removes network cards and printers from tablets (#70110))
@@ -43,7 +42,6 @@
 	dev_disk = 1
 <<<<<<< HEAD
 	dev_netcard = 0
-	dev_apc_recharger = 0
 	dev_printer = 0
 =======
 >>>>>>> 7c990173e0b (Removes network cards and printers from tablets (#70110))
@@ -94,10 +92,6 @@
 				if(fabricate)
 					fabricated_laptop.install_component(new /obj/item/computer_hardware/network_card/advanced)
 				total_price += 299
-		if(dev_apc_recharger)
-			total_price += 399
-			if(fabricate)
-				fabricated_laptop.install_component(new /obj/item/computer_hardware/recharger/apc_recharger)
 		if(dev_printer)
 			total_price += 99
 			if(fabricate)
@@ -192,10 +186,6 @@
 			dev_netcard = text2num(params["netcard"])
 			fabricate_and_recalc_price(FALSE)
 			return TRUE
-		if("hw_tesla")
-			dev_apc_recharger = text2num(params["tesla"])
-			fabricate_and_recalc_price(FALSE)
-			return TRUE
 		if("hw_nanoprint")
 			dev_printer = text2num(params["print"])
 			fabricate_and_recalc_price(FALSE)
@@ -266,7 +256,6 @@
 		data["hw_disk"] = dev_disk
 <<<<<<< HEAD
 		data["hw_netcard"] = dev_netcard
-		data["hw_tesla"] = dev_apc_recharger
 		data["hw_nanoprint"] = dev_printer
 =======
 >>>>>>> 7c990173e0b (Removes network cards and printers from tablets (#70110))

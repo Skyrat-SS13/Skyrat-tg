@@ -17,13 +17,7 @@
 		/obj/item/stock_parts/cell/computer = 8,
 	)
 	premium = list(
-		/obj/item/computer_hardware/ai_slot = 2,
 		/obj/item/computer_hardware/card_slot = 2,
-<<<<<<< HEAD
-		/obj/item/computer_hardware/printer/mini = 2,
-		/obj/item/computer_hardware/recharger/apc_recharger = 2,
-=======
->>>>>>> 7c990173e0b (Removes network cards and printers from tablets (#70110))
 		/obj/item/pai_card = 2,
 	)
 	refill_canister = /obj/item/vending_refill/modularpc

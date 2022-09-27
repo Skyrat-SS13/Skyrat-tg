@@ -315,9 +315,6 @@ GLOBAL_LIST_EMPTY(TabletMessengers) // a list of all active messengers, similar 
 	else if(atom_integrity < max_integrity)
 		. += span_warning("It is damaged.")
 
-<<<<<<< HEAD
-	. += get_modular_computer_parts_examine(user)
-=======
 	var/obj/item/computer_hardware/card_slot/card_slot = all_components[MC_CARD]
 	var/obj/item/computer_hardware/card_slot/card_slot2 = all_components[MC_CARD2]
 	var/multiple_slots = istype(card_slot) && istype(card_slot2)
@@ -344,7 +341,6 @@ GLOBAL_LIST_EMPTY(TabletMessengers) // a list of all active messengers, similar 
 
 	if(Adjacent(user))
 		. += span_notice("Paper level: [stored_paper] / [max_paper].")
->>>>>>> 7c990173e0b (Removes network cards and printers from tablets (#70110))
 
 /obj/item/modular_computer/add_context(atom/source, list/context, obj/item/held_item, mob/user)
 	. = ..()
@@ -403,11 +399,6 @@ GLOBAL_LIST_EMPTY(TabletMessengers) // a list of all active messengers, similar 
 			to_chat(user, span_warning("You press the power button, but the computer fails to boot up, displaying variety of errors before shutting down again."))
 		return FALSE
 
-	// If we have a recharger, enable it automatically. Lets computer without a battery work.
-	var/obj/item/computer_hardware/recharger/recharger = all_components[MC_CHARGE]
-	if(recharger)
-		recharger.enabled = 1
-
 	if(use_power()) // use_power() checks if the PC is powered
 		if(issynth)
 			to_chat(user, span_notice("You send an activation signal to \the [src], turning it on."))
@@ -452,8 +443,7 @@ GLOBAL_LIST_EMPTY(TabletMessengers) // a list of all active messengers, similar 
 		else
 			active_program = null
 
-	for(var/I in idle_threads)
-		var/datum/computer_file/program/P = I
+	for(var/datum/computer_file/program/P as anything in idle_threads)
 		if(P.program_state != PROGRAM_STATE_KILLED)
 			P.process_tick(delta_time)
 			P.ntnet_status = get_ntnet_status()
@@ -466,7 +456,7 @@ GLOBAL_LIST_EMPTY(TabletMessengers) // a list of all active messengers, similar 
 /**
  * Displays notification text alongside a soundbeep when requested to by a program.
  *
- * After checking tha the requesting program is allowed to send an alert, creates
+ * After checking that the requesting program is allowed to send an alert, creates
  * a visible message of the requested text alongside a soundbeep. This proc adds
  * text to indicate that the message is coming from this device and the program
  * on it, so the supplied text should be the exact message and ending punctuation.
@@ -475,15 +465,11 @@ GLOBAL_LIST_EMPTY(TabletMessengers) // a list of all active messengers, similar 
  * The program calling this proc.
  * The message that the program wishes to display.
  */
-
 /obj/item/modular_computer/proc/alert_call(datum/computer_file/program/caller, alerttext, sound = 'sound/machines/twobeep_high.ogg')
 	if(!caller || !caller.alert_able || caller.alert_silenced || !alerttext) //Yeah, we're checking alert_able. No, you don't get to make alerts that the user can't silence.
-		return
+		return FALSE
 	playsound(src, sound, 50, TRUE)
-	visible_message(span_notice("The [src] displays a [caller.filedesc] notification: [alerttext]"))
-	var/mob/living/holder = loc
-	if(istype(holder))
-		to_chat(holder, "[icon2html(src)] [span_notice("The [src] displays a [caller.filedesc] notification: [alerttext]")]")
+	visible_message(span_notice("[icon2html(src)] [span_notice("The [src] displays a [caller.filedesc] notification: [alerttext]")]"))
 
 /obj/item/modular_computer/proc/ring(ringtone) // bring bring
 	if(HAS_TRAIT(SSstation, STATION_TRAIT_PDA_GLITCHED))
@@ -502,7 +488,6 @@ GLOBAL_LIST_EMPTY(TabletMessengers) // a list of all active messengers, similar 
 	data["PC_device_theme"] = device_theme
 
 	var/obj/item/computer_hardware/battery/battery_module = all_components[MC_CELL]
-	var/obj/item/computer_hardware/recharger/recharger = all_components[MC_CHARGE]
 
 	if(battery_module && battery_module.battery)
 		switch(battery_module.battery.percent())
@@ -524,9 +509,6 @@ GLOBAL_LIST_EMPTY(TabletMessengers) // a list of all active messengers, similar 
 		data["PC_batteryicon"] = "batt_5.gif"
 		data["PC_batterypercent"] = "N/C"
 		data["PC_showbatteryicon"] = battery_module ? 1 : 0
-
-	if(recharger && recharger.enabled && recharger.check_functionality() && recharger.use_power(0))
-		data["PC_apclinkicon"] = "charging.gif"
 
 	switch(get_ntnet_status())
 		if(NTNET_NO_SIGNAL)
@@ -644,9 +626,9 @@ GLOBAL_LIST_EMPTY(TabletMessengers) // a list of all active messengers, similar 
 		idle_threads.Remove(P)
 	if(looping_sound)
 		soundloop.stop()
-	if(loud)
+	if(physical && loud)
 		physical.visible_message(span_notice("\The [src] shuts down."))
-	enabled = 0
+	enabled = FALSE
 	update_appearance()
 
 /obj/item/modular_computer/ui_action_click(mob/user, actiontype)
@@ -805,63 +787,6 @@ GLOBAL_LIST_EMPTY(TabletMessengers) // a list of all active messengers, similar 
 	if(!tool.tool_start_check(user, amount=1))
 		return TOOL_ACT_TOOLTYPE_SUCCESS
 
-<<<<<<< HEAD
-	// Scan a photo.
-	if(istype(attacking_item, /obj/item/photo))
-		var/obj/item/computer_hardware/hard_drive/hdd = all_components[MC_HDD]
-		var/obj/item/photo/pic = attacking_item
-		if(hdd)
-			for(var/datum/computer_file/program/messenger/messenger in hdd.stored_files)
-				saved_image = pic.picture
-				messenger.ProcessPhoto()
-		return
-
-	// Insert items into the components
-	for(var/h in all_components)
-		var/obj/item/computer_hardware/H = all_components[h]
-		if(H.try_insert(attacking_item, user))
-			return
-
-	// Insert new hardware
-	if(istype(attacking_item, /obj/item/computer_hardware) && upgradable)
-		if(install_component(attacking_item, user))
-			playsound(src, 'sound/machines/card_slide.ogg', 50)
-			return
-
-	if(attacking_item.tool_behaviour == TOOL_WRENCH)
-		if(length(all_components))
-			balloon_alert(user, "remove the other components!")
-			return
-		attacking_item.play_tool_sound(src, user, 20, volume=20)
-		new /obj/item/stack/sheet/iron( get_turf(src.loc), steel_sheet_cost )
-		user.balloon_alert(user,"disassembled")
-		relay_qdel()
-		qdel(src)
-		return
-
-	if(attacking_item.tool_behaviour == TOOL_WELDER)
-		if(atom_integrity == max_integrity)
-			to_chat(user, span_warning("\The [src] does not require repairs."))
-			return
-
-		if(!attacking_item.tool_start_check(user, amount=1))
-			return
-
-		to_chat(user, span_notice("You begin repairing damage to \the [src]..."))
-		if(attacking_item.use_tool(src, user, 20, volume=50, amount=1))
-			atom_integrity = max_integrity
-			to_chat(user, span_notice("You repair \the [src]."))
-			update_appearance()
-		return
-
-	var/obj/item/computer_hardware/card_slot/card_slot = all_components[MC_CARD]
-	// Check to see if we have an ID inside, and a valid input for money
-	if(card_slot?.GetID() && iscash(attacking_item))
-		var/obj/item/card/id/id = card_slot.GetID()
-		id.attackby(attacking_item, user) // If we do, try and put that attacking object in
-		return
-	..()
-=======
 	to_chat(user, span_notice("You begin repairing damage to \the [src]..."))
 	if(!tool.use_tool(src, user, 20, volume=50, amount=1))
 		return TOOL_ACT_TOOLTYPE_SUCCESS
@@ -870,7 +795,6 @@ GLOBAL_LIST_EMPTY(TabletMessengers) // a list of all active messengers, similar 
 	update_appearance()
 	return TOOL_ACT_TOOLTYPE_SUCCESS
 
->>>>>>> 7c990173e0b (Removes network cards and printers from tablets (#70110))
 
 // Used by processor to relay qdel() to machinery type.
 /obj/item/modular_computer/proc/relay_qdel()

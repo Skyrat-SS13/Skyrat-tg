@@ -13,7 +13,7 @@
 	..()
 	uid = file_uid++
 
-/datum/computer_file/Destroy()
+/datum/computer_file/Destroy(force)
 	if(!holder)
 		return ..()
 
@@ -37,8 +37,6 @@
 		temp.filename = filename
 	temp.filetype = filetype
 	return temp
-<<<<<<< HEAD
-=======
 
 /**
  * Called when examining a modular computer
@@ -65,4 +63,3 @@
  */
 /datum/computer_file/proc/try_eject(mob/living/user, forced = FALSE)
 	return FALSE
->>>>>>> 7c990173e0b (Removes network cards and printers from tablets (#70110))
