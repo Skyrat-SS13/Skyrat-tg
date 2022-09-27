@@ -175,6 +175,12 @@
 /*
 * HEAD
 */
+
+//Overrides the bulletproof helm with the older non red visor version.
+/obj/item/clothing/head/helmet/alt
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+
 //Standard helmet (w/ visor)
 /obj/item/clothing/head/helmet/sec
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
@@ -420,6 +426,9 @@
 			RESKIN_WORN_ICON_STATE = "peacekeeper"
 		)
 	)
+
+/obj/item/clothing/suit/armor/hos
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 //Standard Bulletproof Vest
 /obj/item/clothing/suit/armor/bulletproof
