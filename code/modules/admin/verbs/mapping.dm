@@ -337,7 +337,6 @@ GLOBAL_VAR_INIT(say_disabled, FALSE)
 				randomize_human(D)
 				if(JB.outfit)
 					D.equipOutfit(JB.outfit, TRUE)
-				COMPILE_OVERLAYS(D)
 				var/icon/I = icon(getFlatIcon(D), frame = 1)
 				job_key_to_icon[JB.title] = I
 		qdel(D)
