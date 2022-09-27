@@ -102,7 +102,7 @@
 	custom_materials = list(/datum/material/iron=2000)
 	suppressed = TRUE
 	ammo_type = list(/obj/item/ammo_casing/energy/bolt)
-	recharge_time = 2 SECONDS
+	recharge_time = 4 SECONDS //SKYRAT EDIT - Original: 2 SECONDS
 	holds_charge = TRUE
 	unique_frequency = TRUE
 	can_bayonet = TRUE
