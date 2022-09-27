@@ -182,6 +182,12 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_PUSHIMMUNE "push_immunity"
 #define TRAIT_SHOCKIMMUNE "shock_immunity"
 #define TRAIT_TESLA_SHOCKIMMUNE "tesla_shock_immunity"
+<<<<<<< HEAD
+=======
+#define TRAIT_AIRLOCK_SHOCKIMMUNE "airlock_shock_immunity"
+/// Is this atom being actively shocked? Used to prevent repeated shocks.
+#define TRAIT_BEING_SHOCKED "shocked"
+>>>>>>> cee07f804cc (Airlock open delay audit (#69905))
 #define TRAIT_STABLEHEART "stable_heart"
 /// Prevents you from leaving your corpse
 #define TRAIT_CORPSELOCKED "corpselocked"
