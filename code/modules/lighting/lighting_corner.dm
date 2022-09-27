@@ -7,6 +7,7 @@
 
 	var/x = 0
 	var/y = 0
+	var/z = 0
 
 	var/turf/master_NE
 	var/turf/master_SE
@@ -33,8 +34,14 @@
 	. = ..()
 	save_master(new_turf, turn(diagonal, 180))
 
+<<<<<<< HEAD
 	var/vertical = diagonal & ~(diagonal - 1) // The horizontal directions (4 and 8) are bigger than the vertical ones (1 and 2), so we can reliably say the lsb is the horizontal direction.
 	var/horizontal = diagonal & ~vertical       // Now that we know the horizontal one we can get the vertical one.
+=======
+	src.x = x + 0.5
+	src.y = y + 0.5
+	src.z = z
+>>>>>>> 23bfdec8f43 (Multiz Rework: Human Suffering Edition (Contains PLANE CUBE) (#69115))
 
 	x = new_turf.x + (horizontal == EAST  ? 0.5 : -0.5)
 	y = new_turf.y + (vertical == NORTH ? 0.5 : -0.5)

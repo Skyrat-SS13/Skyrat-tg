@@ -17,6 +17,11 @@ GLOBAL_LIST_EMPTY(lifts)
 	canSmoothWith = list(SMOOTH_GROUP_INDUSTRIAL_LIFT)
 	obj_flags = CAN_BE_HIT | BLOCK_Z_OUT_DOWN
 	appearance_flags = PIXEL_SCALE|KEEP_TOGETHER //no TILE_BOUND since we're potentially multitile
+<<<<<<< HEAD
+=======
+	// If we don't do this, we'll build our overlays early, and fuck up how we're rendered
+	blocks_emissive = NONE
+>>>>>>> 23bfdec8f43 (Multiz Rework: Human Suffering Edition (Contains PLANE CUBE) (#69115))
 
 	///ID used to determine what lift types we can merge with
 	var/lift_id = BASIC_LIFT_ID
