@@ -114,8 +114,8 @@
 		var/list/old_breast_prefs
 		READ_FILE(save["breasts_size"], old_breast_prefs)
 		if(old_breast_prefs) // Can't be too careful
-			old_breast_prefs = min(old_breast_prefs, 10) // You weren't meant to be able to pick sizes over this anyways.
-			write_preference(GLOB.preference_entries[/datum/preference/choiced/breasts_size], GLOB.breast_size_translation["[old_breast_prefs]"])
+			// You weren't meant to be able to pick sizes over this anyways.
+			write_preference(GLOB.preference_entries[/datum/preference/choiced/breasts_size], min(GLOB.breast_size_translation["[old_breast_prefs]"], 10))
 
 /datum/preferences/proc/check_migration()
 	if(!tgui_prefs_migration)
