@@ -2607,7 +2607,10 @@
 /turf/open/floor/iron/white/smooth_edge,
 /area/station/hallway/primary/port)
 "bBH" = (
-/obj/structure/disposalpipe/segment,
+/obj/structure/disposalpipe/sorting/mail{
+	dir = 1;
+	sortType = 5
+	},
 /turf/closed/wall,
 /area/station/maintenance/department/engine/atmos)
 "bCb" = (
@@ -3335,8 +3338,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/effect/mapping_helpers/airlock/locked,
 /obj/machinery/door/airlock/vault{
-	name = "Vault Door";
-	req_access_txt = "53"
+	name = "Vault Door"
 	},
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /obj/structure/cable,
@@ -30491,10 +30493,7 @@
 /turf/open/openspace,
 /area/station/service/theater)
 "sov" = (
-/obj/structure/disposalpipe/sorting/mail{
-	dir = 1;
-	sortType = 5
-	},
+/obj/structure/disposalpipe/segment,
 /turf/open/floor/plating,
 /area/station/maintenance/department/engine/atmos)
 "sox" = (
@@ -34198,7 +34197,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/openspace,
+/turf/closed/wall,
 /area/station/maintenance/department/engine/atmos)
 "uya" = (
 /obj/machinery/vending/cigarette,
@@ -34315,8 +34314,7 @@
 "uBV" = (
 /obj/structure/cable,
 /obj/machinery/door/airlock/vault{
-	name = "Vault Door";
-	req_access_txt = "53"
+	name = "Vault Door"
 	},
 /obj/effect/landmark/navigate_destination,
 /obj/effect/mapping_helpers/airlock/locked,
@@ -73129,8 +73127,8 @@ cXs
 pvM
 ttd
 cyu
-aiC
 uxY
+qhA
 aeM
 fXe
 kgs
@@ -73386,8 +73384,8 @@ ttd
 pvM
 ttd
 cyu
-bKv
-nbx
+wgG
+iEM
 nbx
 wgG
 gJh
