@@ -67,8 +67,10 @@
 	armor = list(MELEE = 40, BULLET = 40, LASER = 20, ENERGY = 25, BOMB = 70, BIO = 100, FIRE = 100, ACID = 100)
 	resistance_flags = INDESTRUCTIBLE
 	actions_types = list(/datum/action/item_action/berserk_mode)
-	var/charged = FALSE //used to see if the armor's charge exceeds 100%
-	var/overcharged = FALSE //used to see if the armor's charge is at 200%
+	///tracks whether or not the armor's charge is equal to or greater than 100% so it does not do the bubble alert twice
+	var/charged = FALSE
+	///ditto, but for the overcharge at 200%
+	var/overcharged = FALSE
 
 /obj/item/clothing/head/hooded/berserker/gatsu/Initialize(mapload)
 	. = ..()
@@ -76,7 +78,7 @@
 	
 /obj/item/clothing/head/hooded/berserker/gatsu/examine()
 	. = ..()
-	. += span_warning("Berserk mode is usable at 100% charge but can gain up to 200% charge for extended duration.")
+	. += span_warning("Berserk mode is usable at 100% charge but can gain up to 200% charge for extended duration.") //woag!!!
 
 /obj/item/clothing/head/hooded/berserker/gatsu/process(delta_time)
 	if(berserk_active)
