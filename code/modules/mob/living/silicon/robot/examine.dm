@@ -3,6 +3,11 @@
 	if(desc)
 		. += "[desc]"
 
+	// SKYRAT EDIT START - Borg models in their examine text
+	var/model_name = model ? "\improper [model.name]" : "\improper Default"
+	. += "\nIt is currently \a \"[model_name]\"-type cyborg.\n"
+	// SKYRAT EDIT END
+
 	var/obj/act_module = get_active_held_item()
 	if(act_module)
 		. += "It is holding [icon2html(act_module, user)] \a [act_module]."
