@@ -47,12 +47,8 @@
 	dmg_overlay_type = SPECIES_MONKEY
 
 /obj/item/bodypart/chest/alien
-<<<<<<< HEAD
-	icon = 'icons/mob/animal_parts.dmi'
-=======
 	icon = 'icons/mob/species/alien/bodyparts.dmi'
 	icon_static = 'icons/mob/species/alien/bodyparts.dmi'
->>>>>>> ab6dcbf4cab (Virtual Limbsanity (#69841))
 	icon_state = "alien_chest"
 	limb_id = BODYPART_ID_ALIEN
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ALIEN | BODYTYPE_ORGANIC
@@ -63,12 +59,8 @@
 	acceptable_bodytype = BODYTYPE_HUMANOID
 
 /obj/item/bodypart/chest/larva
-<<<<<<< HEAD
-	icon = 'icons/mob/animal_parts.dmi'
-=======
 	icon = 'icons/mob/species/alien/bodyparts.dmi'
 	icon_static = 'icons/mob/species/alien/bodyparts.dmi'
->>>>>>> ab6dcbf4cab (Virtual Limbsanity (#69841))
 	icon_state = "larva_chest"
 	limb_id = BODYPART_ID_LARVA
 	is_dimorphic = FALSE
@@ -173,12 +165,8 @@
 	dmg_overlay_type = SPECIES_MONKEY
 
 /obj/item/bodypart/l_arm/alien
-<<<<<<< HEAD
-	icon = 'icons/mob/animal_parts.dmi'
-=======
 	icon = 'icons/mob/species/alien/bodyparts.dmi'
 	icon_static = 'icons/mob/species/alien/bodyparts.dmi'
->>>>>>> ab6dcbf4cab (Virtual Limbsanity (#69841))
 	icon_state = "alien_l_arm"
 	limb_id = BODYPART_ID_ALIEN
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ALIEN | BODYTYPE_ORGANIC
@@ -283,12 +271,8 @@
 	dmg_overlay_type = SPECIES_MONKEY
 
 /obj/item/bodypart/r_arm/alien
-<<<<<<< HEAD
-	icon = 'icons/mob/animal_parts.dmi'
-=======
 	icon = 'icons/mob/species/alien/bodyparts.dmi'
 	icon_static = 'icons/mob/species/alien/bodyparts.dmi'
->>>>>>> ab6dcbf4cab (Virtual Limbsanity (#69841))
 	icon_state = "alien_r_arm"
 	limb_id = BODYPART_ID_ALIEN
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ALIEN | BODYTYPE_ORGANIC
@@ -382,12 +366,8 @@
 	dmg_overlay_type = SPECIES_MONKEY
 
 /obj/item/bodypart/l_leg/alien
-<<<<<<< HEAD
-	icon = 'icons/mob/animal_parts.dmi'
-=======
 	icon = 'icons/mob/species/alien/bodyparts.dmi'
 	icon_static = 'icons/mob/species/alien/bodyparts.dmi'
->>>>>>> ab6dcbf4cab (Virtual Limbsanity (#69841))
 	icon_state = "alien_l_leg"
 	limb_id = BODYPART_ID_ALIEN
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ALIEN | BODYTYPE_ORGANIC
@@ -478,12 +458,8 @@
 		owner.set_usable_legs(owner.usable_legs + 1)
 
 /obj/item/bodypart/r_leg/monkey
-<<<<<<< HEAD
-	icon = 'icons/mob/animal_parts.dmi'
-=======
 	icon = 'icons/mob/species/monkey/bodyparts.dmi'
 	icon_static = 'icons/mob/species/monkey/bodyparts.dmi'
->>>>>>> ab6dcbf4cab (Virtual Limbsanity (#69841))
 	icon_state = "default_monkey_r_leg"
 	limb_id = SPECIES_MONKEY
 	should_draw_greyscale = FALSE
@@ -493,12 +469,8 @@
 	dmg_overlay_type = SPECIES_MONKEY
 
 /obj/item/bodypart/r_leg/alien
-<<<<<<< HEAD
-	icon = 'icons/mob/animal_parts.dmi'
-=======
 	icon = 'icons/mob/species/alien/bodyparts.dmi'
 	icon_static = 'icons/mob/species/alien/bodyparts.dmi'
->>>>>>> ab6dcbf4cab (Virtual Limbsanity (#69841))
 	icon_state = "alien_r_leg"
 	limb_id = BODYPART_ID_ALIEN
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ALIEN | BODYTYPE_ORGANIC

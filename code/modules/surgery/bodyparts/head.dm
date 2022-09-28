@@ -220,19 +220,11 @@
 			//Applies the debrained overlay if there is no brain
 			if(!brain)
 				var/image/debrain_overlay = image(layer = -HAIR_LAYER, dir = SOUTH)
-<<<<<<< HEAD
-				if(animal_origin == ALIEN_BODYPART)
-					debrain_overlay.icon = 'icons/mob/animal_parts.dmi'
-					debrain_overlay.icon_state = "debrained_alien"
-				else if(animal_origin == LARVA_BODYPART)
-					debrain_overlay.icon = 'icons/mob/animal_parts.dmi'
-=======
 				if(bodytype & BODYTYPE_ALIEN)
 					debrain_overlay.icon = 'icons/mob/species/alien/bodyparts.dmi'
 					debrain_overlay.icon_state = "debrained_alien"
 				else if(bodytype & BODYTYPE_LARVA_PLACEHOLDER)
 					debrain_overlay.icon = 'icons/mob/species/alien/bodyparts.dmi'
->>>>>>> ab6dcbf4cab (Virtual Limbsanity (#69841))
 					debrain_overlay.icon_state = "debrained_larva"
 				else if(!(NOBLOOD in species_flags_list))
 					debrain_overlay.icon = 'icons/mob/human_face.dmi'
@@ -328,12 +320,8 @@
 	is_dimorphic = FALSE
 
 /obj/item/bodypart/head/alien
-<<<<<<< HEAD
-	icon = 'icons/mob/animal_parts.dmi'
-=======
 	icon = 'icons/mob/species/alien/bodyparts.dmi'
 	icon_static = 'icons/mob/species/alien/bodyparts.dmi'
->>>>>>> ab6dcbf4cab (Virtual Limbsanity (#69841))
 	icon_state = "alien_head"
 	limb_id = BODYPART_ID_ALIEN
 	is_dimorphic = FALSE
@@ -345,12 +333,8 @@
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ALIEN | BODYTYPE_ORGANIC
 
 /obj/item/bodypart/head/larva
-<<<<<<< HEAD
-	icon = 'icons/mob/animal_parts.dmi'
-=======
 	icon = 'icons/mob/species/alien/bodyparts.dmi'
 	icon_static = 'icons/mob/species/alien/bodyparts.dmi'
->>>>>>> ab6dcbf4cab (Virtual Limbsanity (#69841))
 	icon_state = "larva_head"
 	limb_id = BODYPART_ID_LARVA
 	is_dimorphic = FALSE
