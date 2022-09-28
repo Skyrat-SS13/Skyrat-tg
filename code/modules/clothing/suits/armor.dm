@@ -31,6 +31,9 @@
 	icon_state = "armor"
 	inhand_icon_state = "armor"
 
+/obj/item/clothing/suit/armor/vest/alt/sec
+	icon_state = "armor_sec"
+
 /obj/item/clothing/suit/armor/vest/marine
 	name = "tactical armor vest"
 	desc = "A set of the finest mass produced, stamped plasteel armor plates, containing an environmental protection unit for all-condition door kicking."
@@ -132,6 +135,12 @@
 	flags_inv = 0
 	strip_delay = 80
 
+/obj/item/clothing/suit/armor/hos/trenchcoat/winter
+	name = "head of security's winter trenchcoat"
+	desc = "A trenchcoat enhanced with a special lightweight kevlar, padded with wool on the collar and inside. You feel strangely lonely wearing this coat."
+	icon_state = "hoswinter"
+	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
+
 /obj/item/clothing/suit/armor/hos/hos_formal
 	name = "\improper Head of Security's parade jacket"
 	desc = "For when an armoured vest isn't fashionable enough."
@@ -155,7 +164,7 @@
 	strip_delay = 70
 	resistance_flags = FLAMMABLE
 	dog_fashion = null
-	// SKYRAT EDIT ADDITION START
+	//SKYRAT EDIT ADDITION START
 	uses_advanced_reskins = TRUE
 	unique_reskin = list(
 		"Basic Warden Armor" = list(
@@ -178,7 +187,7 @@
 			RESKIN_SUPPORTS_VARIATIONS_FLAGS = NONE
 		)
 	)
-	/// SKYRAT EDIT ADDITION END
+	//SKYRAT EDIT ADDITION END
 
 /obj/item/clothing/suit/armor/vest/warden/alt
 	name = "warden's armored jacket"
@@ -224,7 +233,6 @@
 /obj/item/clothing/suit/armor/riot
 	name = "riot suit"
 	desc = "A suit of semi-flexible polycarbonate body armor with heavy padding to protect against melee attacks. Helps the wearer resist shoving in close quarters."
-	icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi' //SKYRAT EDIT CHANGE
 	icon_state = "riot"
 	inhand_icon_state = "swat_suit"
 	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
