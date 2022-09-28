@@ -165,7 +165,7 @@
 	if(DT_PROB(2.5, delta_time))
 		to_chat(M, span_notice("[high_message]"))
 
-	M.set_timed_status_effect(20 SECONDS * REM * delta_time, /datum/status_effect/drugginess)
+	M.set_drugginess(20 SECONDS * REM * delta_time)
 	M.adjustToxLoss(0.5 * REM * delta_time, 0) //toxin damage
 	return ..()
 
