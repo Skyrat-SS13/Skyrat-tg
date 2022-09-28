@@ -548,7 +548,6 @@
 /obj/effect/turf_decal/stripes/corner{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden,
 /obj/effect/landmark/start/hangover,
 /turf/open/floor/iron/white/side{
 	dir = 10
@@ -867,10 +866,6 @@
 	},
 /turf/open/floor/iron,
 /area/station/security/warden)
-"aUQ" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden,
-/turf/closed/wall/r_wall,
-/area/station/science/xenobiology)
 "aUV" = (
 /obj/structure/cable,
 /turf/open/floor/circuit/green,
@@ -5910,8 +5905,12 @@
 	id = "xenobio2";
 	name = "Xenobio Pen 2 Blast Door"
 	},
-/obj/machinery/door/window/right/directional/west,
-/obj/machinery/door/window/right/directional/east,
+/obj/machinery/door/window/right/directional/west{
+	req_access = list("xenobiology")
+	},
+/obj/machinery/door/window/right/directional/east{
+	req_access = list("xenobiology")
+	},
 /turf/open/floor/iron,
 /area/station/science/xenobiology)
 "gpd" = (
@@ -8348,8 +8347,12 @@
 	id = "xenobio6";
 	name = "Xenobio Pen 6 Blast Door"
 	},
-/obj/machinery/door/window/right/directional/north,
-/obj/machinery/door/window/right/directional/south,
+/obj/machinery/door/window/right/directional/north{
+	req_access = list("xenobiology")
+	},
+/obj/machinery/door/window/right/directional/south{
+	req_access = list("xenobiology")
+	},
 /turf/open/floor/iron,
 /area/station/science/xenobiology)
 "iNJ" = (
@@ -9881,8 +9884,12 @@
 	id = "xenobio3";
 	name = "Xenobio Pen 3 Blast Door"
 	},
-/obj/machinery/door/window/right/directional/north,
-/obj/machinery/door/window/right/directional/south,
+/obj/machinery/door/window/right/directional/north{
+	req_access = list("xenobiology")
+	},
+/obj/machinery/door/window/right/directional/south{
+	req_access = list("xenobiology")
+	},
 /turf/open/floor/iron,
 /area/station/science/xenobiology)
 "kuh" = (
@@ -10966,7 +10973,6 @@
 /turf/open/floor/iron/dark,
 /area/station/engineering/atmos/hfr_room)
 "lyI" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden,
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
@@ -12271,16 +12277,6 @@
 /obj/structure/cable,
 /turf/open/floor/catwalk_floor/iron,
 /area/station/maintenance/fore)
-"mOQ" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/visible,
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/iron/white/side,
-/area/station/science/xenobiology)
 "mOU" = (
 /turf/open/space/basic,
 /area/space/nearstation)
@@ -12680,7 +12676,6 @@
 	dir = 9
 	},
 /obj/machinery/light/directional/west,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden,
 /turf/open/floor/iron/white,
 /area/station/science/xenobiology)
 "njf" = (
@@ -12789,7 +12784,6 @@
 /turf/closed/wall,
 /area/station/tcommsat/server)
 "nqD" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden,
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
@@ -12824,8 +12818,12 @@
 	id = "xenobio5";
 	name = "Xenobio Pen 5 Blast Door"
 	},
-/obj/machinery/door/window/right/directional/north,
-/obj/machinery/door/window/right/directional/south,
+/obj/machinery/door/window/right/directional/north{
+	req_access = list("xenobiology")
+	},
+/obj/machinery/door/window/right/directional/south{
+	req_access = list("xenobiology")
+	},
 /turf/open/floor/iron,
 /area/station/science/xenobiology)
 "ntb" = (
@@ -13537,8 +13535,12 @@
 	id = "xenobio4";
 	name = "Xenobio Pen 4 Blast Door"
 	},
-/obj/machinery/door/window/right/directional/north,
-/obj/machinery/door/window/right/directional/south,
+/obj/machinery/door/window/right/directional/north{
+	req_access = list("xenobiology")
+	},
+/obj/machinery/door/window/right/directional/south{
+	req_access = list("xenobiology")
+	},
 /turf/open/floor/iron,
 /area/station/science/xenobiology)
 "odV" = (
@@ -15249,7 +15251,6 @@
 /obj/effect/turf_decal/stripes/corner{
 	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden,
 /turf/open/floor/iron/white,
 /area/station/science/xenobiology)
 "pKj" = (
@@ -16468,8 +16469,12 @@
 /obj/effect/turf_decal/bot,
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/general/visible,
-/obj/machinery/door/window/right/directional/south,
-/obj/machinery/door/window/right/directional/north,
+/obj/machinery/door/window/right/directional/south{
+	req_access = list("xenobiology")
+	},
+/obj/machinery/door/window/right/directional/north{
+	req_access = list("xenobiology")
+	},
 /turf/open/floor/engine,
 /area/station/science/xenobiology)
 "qUD" = (
@@ -17545,7 +17550,6 @@
 	pixel_x = -2;
 	pixel_y = 5
 	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden,
 /turf/open/floor/iron,
 /area/station/science/xenobiology)
 "rZQ" = (
@@ -17687,7 +17691,6 @@
 /turf/open/floor/iron/dark,
 /area/station/maintenance/disposal/incinerator)
 "sgW" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden,
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
@@ -22519,8 +22522,12 @@
 	id = "xenobio8";
 	name = "Xenobio Pen 8 Blast Door"
 	},
-/obj/machinery/door/window/right/directional/north,
-/obj/machinery/door/window/right/directional/south,
+/obj/machinery/door/window/right/directional/north{
+	req_access = list("xenobiology")
+	},
+/obj/machinery/door/window/right/directional/south{
+	req_access = list("xenobiology")
+	},
 /turf/open/floor/iron,
 /area/station/science/xenobiology)
 "wQG" = (
@@ -22771,10 +22778,6 @@
 /turf/open/floor/iron,
 /area/station/security/brig)
 "xdC" = (
-/obj/machinery/camera/directional/west{
-	c_tag = "Xenobiology Lab - Central East";
-	network = list("ss13","rd","xeno")
-	},
 /obj/machinery/firealarm/directional/west,
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -22782,6 +22785,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/machinery/camera/directional/north,
 /turf/open/floor/iron/white/side,
 /area/station/science/xenobiology)
 "xdK" = (
@@ -23390,8 +23394,12 @@
 	id = "xenobio7";
 	name = "Xenobio Pen 7 Blast Door"
 	},
-/obj/machinery/door/window/right/directional/west,
-/obj/machinery/door/window/right/directional/east,
+/obj/machinery/door/window/right/directional/west{
+	req_access = list("xenobiology")
+	},
+/obj/machinery/door/window/right/directional/east{
+	req_access = list("xenobiology")
+	},
 /turf/open/floor/iron,
 /area/station/science/xenobiology)
 "xIG" = (
@@ -23646,8 +23654,12 @@
 	id = "xenobio1";
 	name = "Xenobio Pen 1 Blast Door"
 	},
-/obj/machinery/door/window/right/directional/north,
-/obj/machinery/door/window/right/directional/south,
+/obj/machinery/door/window/right/directional/north{
+	req_access = list("xenobiology")
+	},
+/obj/machinery/door/window/right/directional/south{
+	req_access = list("xenobiology")
+	},
 /turf/open/floor/iron,
 /area/station/science/xenobiology)
 "xTB" = (
@@ -67073,7 +67085,7 @@ xBM
 kCV
 uzt
 weL
-aUQ
+weL
 weL
 weL
 weL
@@ -69129,7 +69141,7 @@ uuR
 bRA
 hso
 dFO
-mOQ
+sgW
 xkm
 kEN
 jPY
