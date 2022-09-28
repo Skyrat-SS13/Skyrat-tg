@@ -433,12 +433,12 @@
 
 /datum/greyscale_config/shorts_ripped
 	name = "Ripped Shorts"
-	icon_file = 'modular_skyrat/master_files/icons/obj/clothing/under/shorts_pants_shirts.dmi'
+	icon_file = SHORTS_PANTS_SHIRTS_OBJFILE
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/pants_shorts_skirts_dresses/shorts_ripped.json'
 
 /datum/greyscale_config/shorts_ripped/worn //TG will hopefully start having worn as a subtype, it means only needing 1 .json
 	name = "Worn Ripped Shorts"
-	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/shorts_pants_shirts.dmi'
+	icon_file = SHORTS_PANTS_SHIRTS_MOBFILE
 
 /datum/greyscale_config/shorts_ripped/worn/digi
 	name = "Worn Ripped Shorts - Digitigrade"
@@ -446,12 +446,12 @@
 
 /datum/greyscale_config/jeans_ripped
 	name = "Ripped Jeans"
-	icon_file = 'modular_skyrat/master_files/icons/obj/clothing/under/shorts_pants_shirts.dmi'
+	icon_file = SHORTS_PANTS_SHIRTS_OBJFILE
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/pants_shorts_skirts_dresses/jeans_ripped.json'
 
 /datum/greyscale_config/jeans_ripped/worn
 	name = "Worn Ripped Jeans"
-	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/shorts_pants_shirts.dmi'
+	icon_file = SHORTS_PANTS_SHIRTS_MOBFILE
 
 /datum/greyscale_config/jeans_ripped/worn/digi
 	name = "Worn Ripped Jeans - Digitigrade"
@@ -459,12 +459,12 @@
 
 /datum/greyscale_config/yoga_pants
 	name = "Yoga Pants"
-	icon_file = 'modular_skyrat/master_files/icons/obj/clothing/under/shorts_pants_shirts.dmi'
+	icon_file = SHORTS_PANTS_SHIRTS_OBJFILE
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/pants_shorts_skirts_dresses/yoga_pants.json'
 
 /datum/greyscale_config/yoga_pants/worn
 	name = "Worn Yoga Pants"
-	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/shorts_pants_shirts.dmi'
+	icon_file = SHORTS_PANTS_SHIRTS_MOBFILE
 
 /datum/greyscale_config/yoga_pants/worn/digi
 	name = "Worn Yoga Pants - Digitigrade"
@@ -546,12 +546,12 @@
 
 /datum/greyscale_config/buttondown_vicvest
 	name = "Buttondown with Double-breasted Vest"
-	icon_file = 'modular_skyrat/master_files/icons/obj/clothing/under/shorts_pants_shirts.dmi'
+	icon_file = SHORTS_PANTS_SHIRTS_OBJFILE
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/costumes/misc.json'
 
 /datum/greyscale_config/buttondown_vicvest/worn
 	name = "Worn Buttondown with Double-breasted Vest"
-	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/shorts_pants_shirts.dmi'
+	icon_file = SHORTS_PANTS_SHIRTS_MOBFILE
 
 /datum/greyscale_config/buttondown_vicvest/worn/digi
 	name = "Worn Buttondown with Double-breasted Vest - Digitigrade"
