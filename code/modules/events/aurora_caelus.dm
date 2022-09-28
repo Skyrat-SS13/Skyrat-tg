@@ -37,13 +37,13 @@
 		if(istype(affected_area, /area/station/service/kitchen))
 			for(var/turf/open/kitchen in affected_area)
 				kitchen.set_light(1, 0.75)
-			if(!prob(1) && !SSevents.holidays?[APRIL_FOOLS])
-				continue
+//			if(!prob(1) && !SSevents.holidays?[APRIL_FOOLS]) // SKYRAT EDIT BEGIN - Always in your kitchen
+//				continue
 			var/obj/machinery/oven/roast_ruiner = locate() in affected_area
 			if(roast_ruiner)
 				roast_ruiner.balloon_alert_to_viewers("oh egads!")
 				var/turf/ruined_roast = get_turf(roast_ruiner)
-				ruined_roast.atmos_spawn_air("plasma=100;TEMP=1000")
+				ruined_roast.atmos_spawn_air("hydrogen=100;TEMP=1000") // SKYRAT EDIT END - OG: plasma=100
 				message_admins("Aurora Caelus event caused an oven to ignite at [ADMIN_VERBOSEJMP(ruined_roast)].")
 				log_game("Aurora Caelus event caused an oven to ignite at [loc_name(ruined_roast)].")
 			for(var/mob/living/carbon/human/seymour as anything in GLOB.human_list)
