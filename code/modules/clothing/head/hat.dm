@@ -204,12 +204,7 @@
 	desc = "Perfect for winter in Siberia, da?"
 	icon_state = "ushankadown"
 	inhand_icon_state = "ushankadown"
-<<<<<<< HEAD
 	flags_inv = HIDEEARS //SKYRAT EDIT (Original: HIDEEARS|HIDEHAIR)
-	var/earflaps = TRUE
-=======
-	flags_inv = HIDEEARS|HIDEHAIR
->>>>>>> 83e443fe412 (Adds Nightcaps (2nd try) (#70117))
 	cold_protection = HEAD
 	min_cold_protection_temperature = FIRE_HELM_MIN_TEMP_PROTECT
 	dog_fashion = /datum/dog_fashion/head/ushanka
