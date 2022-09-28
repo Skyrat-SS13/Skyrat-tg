@@ -5,7 +5,7 @@ SUBSYSTEM_DEF(lorecaster)
 	var/list/stories
 
 /datum/controller/subsystem/lorecaster/Initialize()
-	GLOB.news_network.create_feed_channel("Nanotrasen News Network", "NNN", "Get the latest stories from the frontier, here!", locked = TRUE, hardset_channel = 1001)
+	GLOB.news_network.create_feed_channel("Nanotrasen News Network", "NNN", "Get the latest stories from the frontier, here! For the not-quite-latest stories, download the \"News Archive\" app to any NTOS-based device today!", locked = TRUE, hardset_channel = 1001)
 	var/config_delay = CONFIG_GET(number/lorecaster_delay)
 	if(config_delay)
 		wait = config_delay
