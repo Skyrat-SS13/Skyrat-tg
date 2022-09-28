@@ -81,17 +81,18 @@
 		subtler_emote = tgui_input_text(user, "Choose an emote to display.", "Subtler" , null, MAX_MESSAGE_LEN, TRUE)
 		if(!subtler_emote)
 			return FALSE
+
 		var/list/in_view = get_hearers_in_view(1, user)
 		in_view -= GLOB.dead_mob_list
 		in_view.Remove(user)
 
 		for(var/mob/mob_in_view in in_view)
-			if(!istype(mob_in_view))
-				in_view.Remove(mob_in_view)
+			in_view.Remove(mob_in_view)
 		var/list/targets = list(SUBTLE_ONE_TILE_TEXT, SUBTLE_SAME_TILE_TEXT) + in_view
 		target = tgui_input_list(user, "Pick a target", "Target Selection", targets)
 		if(!target)
 			return FALSE
+
 		switch(target)
 			if(SUBTLE_ONE_TILE_TEXT)
 				target = SUBTLE_DEFAULT_DISTANCE
