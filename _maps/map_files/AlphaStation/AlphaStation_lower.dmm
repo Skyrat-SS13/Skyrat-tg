@@ -1746,6 +1746,7 @@
 /turf/open/floor/circuit/telecomms,
 /area/station/science/xenobiology)
 "bRI" = (
+/obj/machinery/light_switch/directional/north,
 /turf/open/floor/iron/brown/side{
 	dir = 9
 	},
@@ -21410,6 +21411,11 @@
 /area/station/science/research)
 "vFt" = (
 /obj/machinery/camera/autoname/directional/east,
+/obj/machinery/button/door/directional/east{
+	id = "qm_warehouse";
+	name = "Warehouse Door Control";
+	req_access = list("cargo")
+	},
 /turf/open/floor/iron/brown/side{
 	dir = 4
 	},
@@ -23166,15 +23172,12 @@
 /turf/open/floor/catwalk_floor/iron,
 /area/station/maintenance/fore)
 "xxl" = (
+/obj/machinery/camera/autoname/directional/west,
 /obj/machinery/button/door/directional/west{
 	id = "qm_warehouse";
 	name = "Warehouse Door Control";
-	req_access_txt = "31"
+	req_access = list("cargo")
 	},
-/obj/machinery/light_switch/directional/west{
-	pixel_y = -8
-	},
-/obj/machinery/camera/autoname/directional/west,
 /turf/open/floor/iron/brown/side{
 	dir = 8
 	},
