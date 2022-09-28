@@ -492,11 +492,14 @@
 /turf/open/floor/iron/white/smooth_large,
 /area/station/hallway/secondary/entry)
 "anZ" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/poddoor/shutters/preopen{
+	dir = 8;
+	id = "roboticsprivacy";
+	name = "Robotics Shutters"
 	},
-/turf/closed/wall,
-/area/station/maintenance/department/engine/atmos)
+/turf/open/floor/iron/dark/purple,
+/area/station/science/robotics/lab)
 "aof" = (
 /obj/machinery/door/poddoor/shutters/preopen{
 	id = "chemistry_shutters";
@@ -822,12 +825,12 @@
 /turf/open/floor/iron/white/smooth_large,
 /area/station/hallway/secondary/entry)
 "axZ" = (
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "rdgene2";
-	name = "Genetics Lab Shutters"
-	},
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/cable,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "roboticsprivacy";
+	name = "Robotics Shutters"
+	},
 /turf/open/floor/iron/dark/purple,
 /area/station/science/robotics/lab)
 "ayg" = (
@@ -2557,6 +2560,7 @@
 	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/station/command/heads_quarters/qm)
 "bAk" = (
@@ -3268,6 +3272,9 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/arrows/white,
+/obj/effect/turf_decal/caution{
+	pixel_y = -12
+	},
 /turf/open/floor/iron/dark/side,
 /area/station/cargo/sorting)
 "bUr" = (
@@ -4133,11 +4140,11 @@
 	},
 /area/station/hallway/primary/central/aft)
 "czc" = (
-/obj/machinery/atmospherics/components/unary/thermomachine/heater/on,
-/turf/open/floor/iron/green/side{
+/obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/area/station/engineering/atmos/upper)
+/turf/closed/wall,
+/area/station/maintenance/department/engine/atmos)
 "czd" = (
 /obj/structure/sign/poster/official/obey,
 /turf/closed/wall,
@@ -9217,11 +9224,10 @@
 /turf/open/floor/carpet,
 /area/station/service/chapel)
 "fFU" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/simple/cyan/visible{
+/obj/machinery/atmospherics/components/unary/thermomachine/heater/on,
+/turf/open/floor/iron/green/side{
 	dir = 4
 	},
-/turf/open/floor/iron,
 /area/station/engineering/atmos/upper)
 "fFW" = (
 /obj/structure/cable,
@@ -9762,13 +9768,11 @@
 	},
 /area/station/hallway/primary/central/aft)
 "fTA" = (
-/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/visible{
-	dir = 8
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/simple/cyan/visible{
+	dir = 4
 	},
-/obj/machinery/meter,
-/turf/open/floor/iron/green/side{
-	dir = 8
-	},
+/turf/open/floor/iron,
 /area/station/engineering/atmos/upper)
 "fTB" = (
 /obj/structure/flora/bush/flowers_pp,
@@ -12033,6 +12037,9 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/arrows/white,
+/obj/effect/turf_decal/caution{
+	pixel_y = -12
+	},
 /turf/open/floor/iron/dark/side,
 /area/station/cargo/sorting)
 "hhU" = (
@@ -14144,12 +14151,12 @@
 /turf/open/floor/iron/white,
 /area/station/command/heads_quarters/rd)
 "iuZ" = (
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "rdgene2";
-	name = "Genetics Lab Shutters"
-	},
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/disposalpipe/segment,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "roboticsprivacy";
+	name = "Robotics Shutters"
+	},
 /turf/open/floor/iron/dark/purple,
 /area/station/science/robotics/lab)
 "ivo" = (
@@ -17376,12 +17383,12 @@
 /obj/machinery/door/firedoor{
 	name = "Emergency Shutter"
 	},
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "roboticsprivacy2";
-	name = "Robotics Shutters"
-	},
 /obj/item/paper_bin,
 /obj/item/pen,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "roboticsprivacy";
+	name = "Robotics Shutters"
+	},
 /turf/open/floor/iron/dark/purple,
 /area/station/science/robotics/lab)
 "kzO" = (
@@ -17467,9 +17474,13 @@
 /turf/open/space/openspace,
 /area/station/solars/port/fore)
 "kBy" = (
-/obj/effect/landmark/start/atmospheric_technician,
-/obj/machinery/atmospherics/pipe/smart/simple/purple/visible,
-/turf/open/floor/iron,
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/visible{
+	dir = 8
+	},
+/obj/machinery/meter,
+/turf/open/floor/iron/green/side{
+	dir = 8
+	},
 /area/station/engineering/atmos/upper)
 "kBB" = (
 /obj/effect/turf_decal/trimline/blue/filled/warning{
@@ -18327,9 +18338,6 @@
 /turf/open/floor/iron,
 /area/station/commons/dorms/barracks)
 "lbI" = (
-/obj/machinery/atmospherics/pipe/multiz/orange/visible{
-	dir = 8
-	},
 /obj/machinery/atmospherics/pipe/multiz/dark/visible{
 	dir = 8
 	},
@@ -18479,9 +18487,8 @@
 /turf/open/floor/iron/dark/airless,
 /area/space/nearstation)
 "lgA" = (
-/obj/machinery/atmospherics/pipe/smart/simple/purple/visible{
-	dir = 6
-	},
+/obj/effect/landmark/start/atmospheric_technician,
+/obj/machinery/atmospherics/pipe/smart/simple/purple/visible,
 /turf/open/floor/iron,
 /area/station/engineering/atmos/upper)
 "lgF" = (
@@ -19415,13 +19422,13 @@
 /turf/open/floor/iron/dark/purple,
 /area/station/command/heads_quarters/rd)
 "lKD" = (
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "roboticsprivacy2";
-	name = "Robotics Shutters"
-	},
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "roboticsprivacy";
+	name = "Robotics Shutters"
+	},
 /turf/open/floor/iron/dark/purple,
 /area/station/science/robotics/lab)
 "lLs" = (
@@ -22023,14 +22030,6 @@
 "noC" = (
 /turf/closed/wall,
 /area/station/service/bar/backroom)
-"noS" = (
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "rdgene2";
-	name = "Genetics Lab Shutters"
-	},
-/obj/effect/spawner/structure/window/reinforced,
-/turf/open/floor/iron/dark/purple,
-/area/station/science/robotics/lab)
 "npd" = (
 /obj/effect/turf_decal/trimline/darkblue/filled/line{
 	dir = 1
@@ -23599,14 +23598,16 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/structure/plasticflaps/opaque,
 /obj/structure/sign/directions/supply{
 	pixel_y = -5
 	},
 /obj/structure/sign/directions/command{
 	pixel_y = 1
 	},
-/turf/open/floor/iron,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/smooth_large,
 /area/station/cargo/sorting)
 "ogv" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
@@ -23648,6 +23649,12 @@
 /obj/effect/turf_decal/tile/dark/diagonal_centre,
 /turf/open/floor/carpet/red,
 /area/station/service/theater)
+"ogN" = (
+/obj/machinery/atmospherics/pipe/smart/simple/purple/visible{
+	dir = 6
+	},
+/turf/open/floor/iron,
+/area/station/engineering/atmos/upper)
 "ohd" = (
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/directional/west,
@@ -26378,11 +26385,13 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/structure/plasticflaps/opaque,
 /obj/structure/sign/directions/security{
 	pixel_y = -5
 	},
-/turf/open/floor/iron,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/smooth_large,
 /area/station/cargo/sorting)
 "pPY" = (
 /obj/effect/spawner/structure/window/reinforced,
@@ -32351,13 +32360,14 @@
 	},
 /area/station/hallway/primary/fore)
 "tuL" = (
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "rdgene2";
-	name = "Genetics Lab Shutters"
-	},
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/disposalpipe/segment{
 	dir = 4
+	},
+/obj/machinery/door/poddoor/shutters/preopen{
+	dir = 8;
+	id = "roboticsprivacy";
+	name = "Robotics Shutters"
 	},
 /turf/open/floor/iron/dark/purple,
 /area/station/science/robotics/lab)
@@ -32980,11 +32990,13 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/structure/plasticflaps/opaque,
 /obj/structure/sign/directions/engineering{
 	pixel_y = -5
 	},
-/turf/open/floor/iron,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/smooth_large,
 /area/station/cargo/sorting)
 "tTg" = (
 /obj/structure/disposalpipe/sorting/mail{
@@ -33486,11 +33498,13 @@
 	dir = 1;
 	name = "Service Deliveries"
 	},
-/obj/structure/plasticflaps/opaque,
 /obj/structure/sign/directions/medical{
 	pixel_y = -5
 	},
-/turf/open/floor/iron,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/smooth_large,
 /area/station/cargo/sorting)
 "uij" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
@@ -33600,6 +33614,9 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/arrows/white,
+/obj/effect/turf_decal/caution{
+	pixel_y = -12
+	},
 /turf/open/floor/iron/dark/side,
 /area/station/cargo/sorting)
 "ujy" = (
@@ -33814,6 +33831,9 @@
 /obj/effect/turf_decal/arrows/white,
 /obj/effect/turf_decal/tile/dark_red/half/contrasted{
 	dir = 1
+	},
+/obj/effect/turf_decal/caution{
+	pixel_y = -12
 	},
 /turf/open/floor/iron/dark/side,
 /area/station/cargo/sorting)
@@ -34146,6 +34166,9 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/arrows/white,
+/obj/effect/turf_decal/caution{
+	pixel_y = -12
+	},
 /turf/open/floor/iron/dark/side,
 /area/station/cargo/sorting)
 "uxX" = (
@@ -35348,11 +35371,13 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/structure/plasticflaps/opaque,
 /obj/structure/sign/directions/science{
 	pixel_y = -5
 	},
-/turf/open/floor/iron,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/smooth_large,
 /area/station/cargo/sorting)
 "vhU" = (
 /obj/effect/turf_decal/tile/purple/half/contrasted{
@@ -38291,11 +38316,11 @@
 /turf/open/floor/iron,
 /area/station/hallway/primary/fore)
 "wTf" = (
+/obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/door/poddoor/shutters/preopen{
-	id = "roboticsprivacy2";
+	id = "roboticsprivacy";
 	name = "Robotics Shutters"
 	},
-/obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/iron/dark/purple,
 /area/station/science/robotics/lab)
 "wTX" = (
@@ -70013,13 +70038,13 @@ inF
 pbK
 inF
 lWC
-fTA
+kBy
 pbK
 pbK
 gDE
 rxu
 pbK
-fTA
+kBy
 pbK
 dqJ
 tdP
@@ -70531,7 +70556,7 @@ sKf
 pYI
 pYI
 nPP
-kBy
+lgA
 pYI
 qGP
 pYI
@@ -71045,7 +71070,7 @@ iDB
 iDB
 iDB
 lad
-lgA
+ogN
 peY
 qGP
 xNV
@@ -71296,7 +71321,7 @@ iVa
 ced
 vZT
 gjZ
-fFU
+fTA
 gjZ
 gjZ
 gjZ
@@ -72580,7 +72605,7 @@ oHQ
 gEL
 ced
 nls
-czc
+fFU
 cZq
 rEd
 rEd
@@ -73086,7 +73111,7 @@ cXs
 pvM
 ttd
 cyu
-anZ
+czc
 qhA
 aeM
 fXe
@@ -79764,7 +79789,7 @@ dfd
 gSW
 msX
 vTr
-noS
+wTf
 rwi
 uXZ
 mSJ
@@ -80021,7 +80046,7 @@ dHG
 obo
 gfI
 nXV
-noS
+wTf
 rwi
 uXZ
 mSJ
@@ -80278,7 +80303,7 @@ dHG
 ncB
 gfI
 usr
-noS
+wTf
 rwi
 uXZ
 pHE
@@ -80792,7 +80817,7 @@ dHG
 gWu
 lYE
 dDQ
-noS
+wTf
 uwW
 tNI
 oEx
@@ -81051,7 +81076,7 @@ dVk
 pua
 xby
 tuL
-noS
+anZ
 xby
 vBt
 vOH
@@ -81309,7 +81334,7 @@ mmZ
 vFk
 ntF
 vPy
-noS
+wTf
 xbP
 uIi
 naj
@@ -82594,7 +82619,7 @@ dLz
 qni
 uvn
 wVZ
-noS
+wTf
 paC
 sum
 nMZ
