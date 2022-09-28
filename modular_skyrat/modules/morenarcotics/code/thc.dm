@@ -56,7 +56,7 @@
 	M.add_mood_event("stoned", /datum/mood_event/stoned, name)
 	M.throw_alert("stoned", /atom/movable/screen/alert/stoned)
 	M.sound_environment_override = SOUND_ENVIRONMENT_DRUGGED
-	M.set_timed_status_effect(5 * REM * delta_time * 2 SECONDS, /datum/status_effect/dizziness, only_if_higher = TRUE)
+	M.set_dizzy_if_lower(5 * REM * delta_time * 2 SECONDS)
 	M.adjust_nutrition(-1 * REM * delta_time) //munchies
 	if(DT_PROB(3.5, delta_time))
 		M.emote(pick("laugh","giggle"))
