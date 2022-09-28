@@ -1031,7 +1031,13 @@ GLOBAL_LIST_EMPTY(features_by_species)
 /datum/species/proc/pre_equip_species_outfit(datum/job/job, mob/living/carbon/human/equipping, visuals_only = FALSE)
 	return
 
-
+/**
+ * Handling special reagent types.
+ *
+ * Return False to run the normal on_mob_life() for that reagent.
+ * Return True to not run the normal metabolism effects.
+ * NOTE: If you return TRUE, that reagent will not be removed liike normal! You must handle it manually.
+ */
 /datum/species/proc/handle_chemicals(datum/reagent/chem, mob/living/carbon/human/H, delta_time, times_fired)
 	if(chem.type == exotic_blood)
 		H.blood_volume = min(H.blood_volume + round(chem.volume, 0.1), BLOOD_VOLUME_MAXIMUM)
@@ -1054,9 +1060,6 @@ GLOBAL_LIST_EMPTY(features_by_species)
 
 	outfit_important_for_life= new()
 	outfit_important_for_life.equip(human_to_equip)
-
-/datum/species/proc/update_health_hud(mob/living/carbon/human/H)
-	return FALSE
 
 /**
  * Species based handling for irradiation
@@ -1335,7 +1338,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 					if(human.stat == CONSCIOUS)
 						human.visible_message(span_danger("[human] is knocked senseless!"), \
 										span_userdanger("You're knocked senseless!"))
-						human.set_timed_status_effect(20 SECONDS, /datum/status_effect/confusion, only_if_higher = TRUE)
+						human.set_confusion_if_lower(20 SECONDS)
 						human.adjust_blurriness(10)
 					if(prob(10))
 						human.gain_trauma(/datum/brain_trauma/mild/concussion)

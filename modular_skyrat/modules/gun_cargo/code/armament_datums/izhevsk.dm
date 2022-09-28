@@ -28,11 +28,18 @@
 /datum/armament_entry/cargo_gun/izhevsk/rifle
 	subcategory = ARMAMENT_SUBCATEGORY_ASSAULTRIFLE
 
-/datum/armament_entry/cargo_gun/izhevsk/rifle/ak25
-	item_type = /obj/item/gun/ballistic/automatic/ak25
+/datum/armament_entry/cargo_gun/izhevsk/rifle/ak_civvie
+	item_type = /obj/item/gun/ballistic/automatic/akm/civvie
 	lower_cost = CARGO_CRATE_VALUE * 12
 	upper_cost = CARGO_CRATE_VALUE * 15
 	interest_required = PASSED_INTEREST
+	magazine = /obj/item/ammo_box/magazine/akm/civvie
+
+/datum/armament_entry/cargo_gun/izhevsk/rifle/ak25
+	item_type = /obj/item/gun/ballistic/automatic/ak25
+	lower_cost = CARGO_CRATE_VALUE * 12
+	upper_cost = CARGO_CRATE_VALUE * 14
+	interest_required = FAILED_INTEREST
 
 /datum/armament_entry/cargo_gun/izhevsk/rifle/surplus
 	item_type = /obj/item/gun/ballistic/automatic/surplus
@@ -45,7 +52,7 @@
 	lower_cost = CARGO_CRATE_VALUE * 5
 	upper_cost = CARGO_CRATE_VALUE * 6
 
-/datum/armament_entry/cargo_gun/izhevsk/rifle/mosin/brandnew
+/datum/armament_entry/cargo_gun/izhevsk/rifle/mosin/brand_new
 	item_type = /obj/item/gun/ballistic/rifle/boltaction/brand_new
 	lower_cost = CARGO_CRATE_VALUE * 12
 	upper_cost = CARGO_CRATE_VALUE * 15
@@ -54,3 +61,9 @@
 	item_type = /obj/item/gun/ballistic/revolver/rifle
 	lower_cost = CARGO_CRATE_VALUE * 3
 	upper_cost = CARGO_CRATE_VALUE * 4
+
+/datum/armament_entry/cargo_gun/izhevsk/shotgun/double_barrel
+	subcategory = ARMAMENT_SUBCATEGORY_SHOTGUN
+	item_type = /obj/item/gun/ballistic/shotgun/doublebarrel
+	lower_cost = CARGO_CRATE_VALUE * 3
+	upper_cost = CARGO_CRATE_VALUE * 6

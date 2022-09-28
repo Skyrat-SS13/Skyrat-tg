@@ -50,9 +50,9 @@
 
 	belt = /obj/item/modular_computer/tablet/pda/security
 	ears = /obj/item/radio/headset/headset_medsec
-	uniform = /obj/item/clothing/under/rank/security/peacekeeper/security_medic/alternate
+	uniform = /obj/item/clothing/under/rank/security/peacekeeper/security_medic
 	gloves = /obj/item/clothing/gloves/color/latex/nitrile
-	shoes = /obj/item/clothing/shoes/jackboots/security
+	shoes = /obj/item/clothing/shoes/jackboots/sec
 	glasses = /obj/item/clothing/glasses/hud/health/sunglasses
 	suit = /obj/item/clothing/suit/armor/vest/peacekeeper/security_medic
 	l_hand = /obj/item/storage/medkit/brute
@@ -112,5 +112,6 @@
 	new /obj/item/storage/belt/medical(src)
 	new /obj/item/storage/belt/security/medic/full(src)
 	new /obj/item/clothing/under/rank/medical/scrubs/skyrat/red/sec(src)
+	new /obj/item/clothing/under/rank/security/peacekeeper/security_medic/alternate(src)
 	new /obj/item/clothing/under/rank/security/peacekeeper/security_medic(src)
 	new /obj/item/clothing/under/rank/security/peacekeeper/security_medic/skirt(src)

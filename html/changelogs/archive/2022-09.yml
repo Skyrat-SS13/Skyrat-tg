@@ -953,3 +953,208 @@
       autodrobes.
   theOOZ:
   - balance: allows most pistol magazines to be stored in boots
+2022-09-26:
+  GoldenAlpharex:
+  - bugfix: Fixed pollution trying to pollute certain turfs that no longer exist,
+      or the turfs of objects they're attached to that no longer exist.
+  Melbert:
+  - rscadd: Added a few new hallucinations. Find them all, but don't lose your head!
+  - refactor: Refactored most existing hallucinations. Let me know if any of them
+      are acting funky.
+  - refactor: RDS quirk is now a brain trauma. The hallucinations brain trauma can
+      now be paused with Mindbreaker, like RDS.
+  - refactor: Refactored hallucination into a status effect. This means cyborgs and
+      simplemobs can (hypothetically) hallucinate now. In most cases they shouldn't
+      though.
+  - refactor: Refactored fake hud into a status effect.
+  - bugfix: Fixes some hallucinations acting improperly. There were multiple cases
+      of hallucinations using incorrect icon states which made them completely un-noticable.
+  - admin: You can now force specific mass hallucinations.
+  - admin: You can now force specific outcomes of some hallucinations, such as delusions,
+      fake alerts, fake sounds, and more. Check the VV dropdown.
+  OrionTheFox:
+  - bugfix: After several failed attempts, Nanotrasen has simply begun outsourcing
+      the printing of their Corporate Regulations (alongside plenty of NDAs of course).
+      Expect the booklets to actually have words from now on!
+  Paxilmaniac:
+  - rscdel: The automapper delta prison has been removed, we will instead just use
+      the default tg prison
+  - rscadd: Four new themed vendors for different cultures and races of the lore,
+      which have a chance of spawning in place of snack vending machines around the
+      station!
+  - bugfix: two little floating decorations on the new cargo shuttles have been moved
+      over slightly so they are actually connected to the ship
+  ShizCalev:
+  - admin: Moved signal overriden stack_trace warnings to it's own log file.
+  - bugfix: Fixed revenant Malfunction ability not affecting firedoors.
+  - spellcheck: Emag charge time will now be presented as (2 minutes and 31.1 seconds)
+      instead of (152.95s)
+  SkyratBot:
+  - rscadd: New achievement -- Preventing a heart attack with exercise now gives you
+      a shiny new achievement badge. Show it to all of your gym buddies, be the coolest
+      guy in the locker room.
+  - imageadd: Cool new achievement badge. Wow!
+  - refactor: Rewrites the heart attack event file to be a bit more flexible. Integrates
+      the heart attack eligibility check to canSpawnEvent to prevent edge cases. Migrates
+      the exercise status effect check to the round_event.
+  - admin: MULTI-HEART ATTACK COMBO functionality added (trigger the heart_attack
+      event and select how many victims you want).
+  - rscadd: Rotten zombie tongue has a new speech modifier that converts spoken language
+      into zombie sentences. If the person speaking is a high-functioning zombie this
+      is bypassed.
+  - balance: Captain Jetpack now fits on MODsuit and EVA suit storage slot.
+  - code_imp: Jetpacks were de-hardcoded and can now support being equipped to other
+      slots.
+  - bugfix: Monkey mind magnification helmets once again poll all ghosts
+  - rscadd: Added a preference for sentience creatures, which means people can toggle
+      eligibility to sentience potions, and boosted lavaland tumors. Cargorilla, Regal
+      Rat and Shuttle Creatures use this preference now.
+  - rscadd: Added several separate notification preferences for creatures
+  - admin: When a player renames (creates) an area from an existing area to a new
+      one, it now logs to game.log (global and individual).
+  - bugfix: Fix zombie claws blocking sign language.
+  - bugfix: Fix slappers and wound grasping blocking sign language.
+  - bugfix: Fix slappers and wound grasping blocking riding on mobs.
+  - admin: Antag panels now properly show team antagonists, instead of showing them
+      as empty.
+  - rscadd: axolotls have taken refuge in the station's moisture traps
+  - imageadd: resprites all current underwear to a much cleaner look
+  - bugfix: SaturnX now properly turns you invisible again.
+  - qol: You can now see through big trees when you stand behind them!
+  - refactor: Adds a seethrough component to make it easier to add big stationairy
+      objects without reducing visibility
+  - bugfix: cyborg eye sockets no longer bleed
+  - rscadd: '-6 Quirk for all prosthetics named "Quadruple Amputee" change: prosthetic
+      arm changed from -4 to -3'
+  - rscadd: 'SVG icon tutorial readme to tgui tgfont folder change: Minor spelling
+      issues in negative quirks tab'
+  - bugfix: Fixed non-printed airlock shells from not triggering the 'Airlock Access
+      Event' circuit component.
+  - rscadd: Rigging light fixtures now works with more reagents than just plasma.
+      Light fixtures will heat the reagents of their inserted lightbulb, up to a maximum
+      of 1000 degrees. Lightbulb tubes now hold 20 reagents to make this more usable.
+  - rscadd: Lightbulbs will now splash their contents on whatever they're shattered
+      by. Their contents are also now visible upon examination.
+  VexingRaven:
+  - bugfix: The illiteracy quirk will no longer break the mining shuttle
+  - refactor: Refactored some checks on the shuttle console to apply to all consoles
+  - bugfix: Build Your Own Shuttle Kit has been fixed and once again docks at the
+      station after being purchased.
+  Zergspower:
+  - qol: let's PAI's wipe themselves
+  linnpap:
+  - rscadd: Added Xerxian language
+2022-09-27:
+  LT3:
+  - bugfix: Tramstation crossing lights will now properly reflect if you're going
+      to get smacked by the tram if you try to cross.
+  MMMiracles:
+  - rscadd: Tramstation's maintenance has been completely overhauled with modular
+      parts for more variety and differing routes between rounds.
+  - qol: Tramstation's maintenance is now more antag-friendly when it comes to dark-dwelling
+      roles and traversing.
+  Melbert:
+  - code_imp: Replaces some uses of adjust_timed_status_effect and set_timed_status_effect
+      to use macros, makes it easier to develop for.
+  OrionTheFox:
+  - bugfix: Shorts now fit digitigrade legs again
+  RatFromTheJungle:
+  - qol: breakfast now ends at 35 minutes, instead of 15, giving the chef more time
+      to get breakfast options out.
+  - code_imp: changed both the in-desc, and in message makers of the SAD, it's looping
+      messages during use, and removed it's mostly broken emag act
+  RimiNosha:
+  - bugfix: Fixed that stupid language reset bug with the SAD and other things that's
+      been around since newprefs.
+  - balance: Races other than human are now given uncommon by default with the Foreigner
+      quirk.
+  ShizCalev:
+  - bugfix: Scrubber events will no longer trigger if there are no valid scrubbers
+      on the station.
+  - bugfix: Fixed not spawning with prosthetic limbs when you have the prosthetic
+      limb quick.
+  SkyratBot:
+  - bugfix: The Chapel bookshelf is now actually inside the chapel
+  - bugfix: The funeral parlor airlock access has been amended back to public access
+  - rscadd: The chefs have come up with a new use for rice and made these delicious
+      vegetarian spring rolls to add to their menu.
+  - bugfix: Ice Box snow storms now cover the surroundings of the homestead.
+  - rscadd: Added new grouping to orbit menu for CentCom agents.
+  - bugfix: gravity distortion effects no longer break over glass tiles
+  - imageadd: 'A complete overhaul of security sprites. See #69948 for more details.'
+  - spellcheck: Replaced all instances of "Jumpsuit" and "Jumpskirt" within sec items
+      to be "uniform" and "skirt" respectively.
+  - bugfix: A duplicate mass driver controller on Kilo has been deleted, you can no
+      longer operate the toxins mass driver from maintenance.
+  - bugfix: Kilo's north escape pod now correctly has its catwalk in the nearstation
+      area.
+  - bugfix: Kilo no longer has a random incinerator area in space.
+  - bugfix: removed a random decal from arrivals on Kilo.
+  - bugfix: APC in RD office is now more visible if you have x-ray vision.
+  - bugfix: You can no longer assume control of Regal Rats during preround.
+  - bugfix: Properly makes Gin garden alcoholic and adds quality tag. Is also now
+      made with lime juice to prevent triggering the lemonade recipe.
+  - bugfix: 'The developers of Space-Coin decided to renege on their exit scheme with
+      a new advertisement: Space-coin is the mobile currency of the future! As such,
+      you can not cash out of their famous space coin market machines until the machine
+      starts moving. They immediately ran away after that though.'
+  - bugfix: removes duplicate paper bin with pen in caps office
+  - bugfix: Removes a duplicated fax machine from the tram cargo lobby which wasn't
+      supposed to be there.
+  - bugfix: The air vent outside RnD on Icebox is no longer hidden by the Experimental
+      Destructive Scanner
+  - refactor: Maploading has been optimized significantly, as has ruin generation
+      and other lavaland stuff. Let me know if anything goes fucky
+  - bugfix: moved an air vent out from underneath a disposals bin in the Meta incinerator
+  - bugfix: replaced a regular intercom with a prisoner intercom in the Icebox prisoner
+      transfer
+  - bugfix: replaced the window spawners in Meta departures (the ones in the middle
+      of the room) with plain windows so you can see the flowers
+  jjpark-kb:
+  - bugfix: re-added the water basin and forging work bench.
+  - qol: Species incompatible check on ghostrole allows you select random appearance,
+      rather than not allowing you to spawn.
+  - bugfix: You can now select your character for black market dealer.
+2022-09-28:
+  Ebin-Halcyon:
+  - imageadd: Paramedic clothing has been refitted for digitigrade legs
+  - bugfix: Security medic's clothing now fit on digitigrade legs.
+  - bugfix: Security medic's mysterious error straight jackets are now actual straight
+      jackets.
+  - bugfix: HoS' trenchcoats are no longer missing textures for digitigrade legged
+      HoSes
+  GoldenAlpharex:
+  - bugfix: The Security Winter Coat now properly displays the Lopland logo, rather
+      than the Armadyne one.
+  - bugfix: Xenomorphs can now only spawn midround from dynamic, and not from random
+      events anymore, to allow finer control over said spawning.
+  Mahalia:
+  - bugfix: Void Raptor - Fixed some Area Issues, Borg GBJ Curtains, Minor Moving
+      of Things, Cargo Shuttle Works Again.
+  Melbert:
+  - spellcheck: Syndicate bomb uplink text is now accurate in that it tells you the
+      minimum timer is 90 seconds and not 60 seconds.
+  - code_imp: Changed some shocked flags into one shocked trait
+  ShizCalev:
+  - bugfix: Fixed a runtime when firing energy guns with infinite power cells.
+  SkyratBot:
+  - bugfix: Adds Missing GPSs to Icebox Public Mining.
+  - bugfix: The radio in icebox tool storage is no longer an implant
+  - balance: AI restorer app now requires RD access to download.
+  - bugfix: Nukie tablets now properly show when a nuke is going off in their examine.
+  - balance: Tablet's charge and AI holder parts have been removed entirely. Tablets
+      now only have a cell, and computers only use their area's APC.
+  - code_imp: Modular computer's power handling, the AI restorer app's functionality,
+      and modular computer's examining has been refactored, please report any bugs
+      you might find.
+  - bugfix: You'll be able to hear weather again. this was broken for a damn year
+      how did none of you report it
+  - bugfix: Fixed the rogue Medbay Maintenance area appearing inside Medbay Storage.
+  VexingRaven:
+  - rscdel: 'Tramstation: A few stray cables leading to the prison showers have been
+      removed'
+  - rscadd: 'Tramstation: The kitchen now starts with an Enzyme Bottle'
+  - bugfix: 'Tramstation: Service staff can now access the Cold Room Maintenance airlocks'
+  - bugfix: 'Tramstation: The Court Room Holding Cell now has proper access restrictions'
+  dawsonkeyes:
+  - rscadd: New Marked One reward alongside an updated moveset
