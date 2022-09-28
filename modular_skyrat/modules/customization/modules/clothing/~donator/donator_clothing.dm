@@ -979,7 +979,7 @@
 
 /obj/item/clothing/glasses/welding/steampunk_goggles/item_action_slot_check(slot, mob/user)
 	. = ..()
-	if(. && slot == ITEM_SLOT_HEAD)
+	if(. && (slot & ITEM_SLOT_HEAD))
 		return FALSE
 
 /obj/item/clothing/glasses/welding/steampunk_goggles/attack_self(mob/user)
