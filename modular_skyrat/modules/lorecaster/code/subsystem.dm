@@ -6,6 +6,9 @@ SUBSYSTEM_DEF(lorecaster)
 
 /datum/controller/subsystem/lorecaster/Initialize()
 	GLOB.news_network.create_feed_channel("Nanotrasen News Network", "NNN", "Get the latest stories from the frontier, here!", locked = TRUE, hardset_channel = 1001)
+	var/config_delay = CONFIG_GET(number/lorecaster_delay)
+	if(config_delay)
+		wait = config_delay
 	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/lorecaster/fire(resumed)
