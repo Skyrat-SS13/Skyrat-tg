@@ -35,5 +35,4 @@
 					gent.aroused = AROUSAL_FULL
 					gent.update_sprite_suffix()
 	mannequin.update_body()
-	COMPILE_OVERLAYS(mannequin)
 	return mannequin.appearance

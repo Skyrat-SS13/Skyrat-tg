@@ -193,7 +193,7 @@
 		heretic_datum.high_value_sacrifices++
 
 	heretic_datum.total_sacrifices++
-	heretic_datum.knowledge_points += 4 //SKYRAT EDIT - ORIGINAL: 2
+	heretic_datum.knowledge_points += 2
 
 	if(!begin_sacrifice(sacrifice))
 		disembowel_target(sacrifice)
