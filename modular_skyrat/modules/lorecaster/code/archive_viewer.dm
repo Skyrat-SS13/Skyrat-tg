@@ -27,8 +27,10 @@
 	return data
 
 /datum/computer_file/program/news_archive/proc/generate_stories()
-	var/list/compiled_stories = list()
+	if(!fexists(ARCHIVE_FILE))
+		return
 
+	var/list/compiled_stories = list()
 	var/list/uncompiled_stories = json_load(ARCHIVE_FILE)
 
 	for(var/story in uncompiled_stories)
@@ -46,3 +48,8 @@
 			uncompiled_stories[story]["day"] = "[time2text(world.timeofday, "DD")]]"
 
 	return compiled_stories
+
+/obj/machinery/modular_computer/console/preset/curator/install_programs()
+	. = ..()
+	var/obj/item/computer_hardware/hard_drive/hard_drive = cpu.all_components[MC_HDD]
+	hard_drive.store_file(new/datum/computer_file/program/news_archive())

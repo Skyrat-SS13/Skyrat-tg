@@ -12,9 +12,13 @@ SUBSYSTEM_DEF(lorecaster)
 	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/lorecaster/fire(resumed)
+	if(!fexists(NEWS_FILE))
+		return
+
 	if(!length(stories)) // Ran out of stories? Run through 'em again
 		stories = json_load(NEWS_FILE)
 		return // But skip the cycle this time
+
 	var/picked_story = pick(stories)
 	var/text = stories[picked_story]["text"]
 	var/title = stories[picked_story]["title"]

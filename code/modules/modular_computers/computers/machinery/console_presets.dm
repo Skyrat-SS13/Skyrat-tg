@@ -115,7 +115,6 @@
 /obj/machinery/modular_computer/console/preset/curator/install_programs()
 	var/obj/item/computer_hardware/hard_drive/hard_drive = cpu.all_components[MC_HDD]
 	hard_drive.store_file(new/datum/computer_file/program/portrait_printer())
-	hard_drive.store_file(new/datum/computer_file/program/news_archive()) // SKYRAT ADDITION - LORECASTERS
 
 // ===== CARGO CHAT CONSOLES =====
 /obj/machinery/modular_computer/console/preset/cargochat
