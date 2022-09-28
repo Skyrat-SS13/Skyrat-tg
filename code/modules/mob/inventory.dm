@@ -485,7 +485,11 @@
 
 			var/obj/item/bodypart/BP = new path ()
 			BP.held_index = i
+<<<<<<< HEAD
 			add_bodypart(BP)
+=======
+			BP.try_attach_limb(src, TRUE)
+>>>>>>> dafbcf29bd3 (Prosthetic surgery now checks if you can attach the bodypart (#70157))
 			hand_bodyparts[i] = BP
 	..() //Don't redraw hands until we have organs for them
 
