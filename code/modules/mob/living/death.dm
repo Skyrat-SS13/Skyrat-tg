@@ -98,13 +98,10 @@
 	med_hud_set_status()
 	stop_pulling()
 
-<<<<<<< HEAD
 	cut_overlay(GLOB.combat_indicator_overlay) //SKYRAT EDIT ADDITION - COMBAT_INDICATOR
 	set_combat_indicator(FALSE) //SKYRAT EDIT ADDITION - COMBAT_INDICATOR
 	set_ssd_indicator(FALSE) //SKYRAT EDIT ADDITION - SSD_INDICATOR
 
-=======
->>>>>>> cf0f039c8e3 (Reverts #68155 (Fix simple mob deaths causing deadchat notifications), Fixes living level mobs being able to die while dead (#70103))
 	SEND_SIGNAL(src, COMSIG_LIVING_DEATH, gibbed)
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_MOB_DEATH, src, gibbed)
 
