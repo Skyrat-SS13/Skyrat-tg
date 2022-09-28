@@ -18,5 +18,5 @@
 	/// Base damage for oversized piggyback riding.
 	var/oversized_piggydam = 25
 	/// Paralyze time for oversized piggyback riding in deciseconds. (10 deciseconds = 1 second)
-	var/oversized_piggyparalyze = 30
+	var/oversized_piggyparalyze = 3 SECONDS
 
