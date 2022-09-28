@@ -195,7 +195,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	var/gib_anim = "gibbed-h"
 
 
-	//Do NOT remove by setting to null. use OR make a RESPECTIVE TRAIT (removing stomach? add the NOSTOMACH trait to your species)
+	//Do NOT remove by setting to null. use OR make an ASSOCIATED TRAIT.
 	//why does it work this way? because traits also disable the downsides of not having an organ, removing organs but not having the trait will make your species die
 
 	///Replaces default brain with a different organ
@@ -417,7 +417,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 /datum/species/proc/worn_items_fit_body_check(mob/living/carbon/wearer)
 	for(var/obj/item/equipped_item in wearer.get_all_worn_items())
 		var/equipped_item_slot = wearer.get_slot_by_item(equipped_item)
-		if(!can_equip(equipped_item, equipped_item_slot, H = wearer,  bypass_equip_delay_self = TRUE, ignore_equipped = TRUE))
+		if(!equipped_item.mob_can_equip(wearer, equipped_item_slot, bypass_equip_delay_self = TRUE, ignore_equipped = TRUE))
 			wearer.dropItemToGround(equipped_item)
 
 /**
@@ -568,7 +568,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	if(noggin && !(HAS_TRAIT(species_human, TRAIT_HUSK)))
 		// lipstick
 		if(species_human.lip_style && (LIPS in species_traits))
-			var/mutable_appearance/lip_overlay = mutable_appearance('icons/mob/human_face.dmi', "lips_[species_human.lip_style]", -BODY_LAYER)
+			var/mutable_appearance/lip_overlay = mutable_appearance('icons/mob/species/human/human_face.dmi', "lips_[species_human.lip_style]", -BODY_LAYER)
 			lip_overlay.color = species_human.lip_color
 			if(OFFSET_FACE in species_human.dna.species.offset_features)
 				lip_overlay.pixel_x += species_human.dna.species.offset_features[OFFSET_FACE][1]
@@ -590,7 +590,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 				add_pixel_y = species_human.dna.species.offset_features[OFFSET_FACE][2]
 
 			if(!eye_organ)
-				no_eyeslay = mutable_appearance('icons/mob/human_face.dmi', "eyes_missing", -BODY_LAYER)
+				no_eyeslay = mutable_appearance('icons/mob/species/human/human_face.dmi', "eyes_missing", -BODY_LAYER)
 				no_eyeslay.pixel_x += add_pixel_x
 				no_eyeslay.pixel_y += add_pixel_y
 				standing += no_eyeslay
@@ -1024,7 +1024,13 @@ GLOBAL_LIST_EMPTY(features_by_species)
 /datum/species/proc/pre_equip_species_outfit(datum/job/job, mob/living/carbon/human/equipping, visuals_only = FALSE)
 	return
 
-
+/**
+ * Handling special reagent types.
+ *
+ * Return False to run the normal on_mob_life() for that reagent.
+ * Return True to not run the normal metabolism effects.
+ * NOTE: If you return TRUE, that reagent will not be removed liike normal! You must handle it manually.
+ */
 /datum/species/proc/handle_chemicals(datum/reagent/chem, mob/living/carbon/human/H, delta_time, times_fired)
 	if(chem.type == exotic_blood)
 		H.blood_volume = min(H.blood_volume + round(chem.volume, 0.1), BLOOD_VOLUME_MAXIMUM)
@@ -1047,9 +1053,6 @@ GLOBAL_LIST_EMPTY(features_by_species)
 
 	outfit_important_for_life= new()
 	outfit_important_for_life.equip(human_to_equip)
-
-/datum/species/proc/update_health_hud(mob/living/carbon/human/H)
-	return FALSE
 
 /**
  * Species based handling for irradiation
@@ -1328,7 +1331,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 					if(human.stat == CONSCIOUS)
 						human.visible_message(span_danger("[human] is knocked senseless!"), \
 										span_userdanger("You're knocked senseless!"))
-						human.set_timed_status_effect(20 SECONDS, /datum/status_effect/confusion, only_if_higher = TRUE)
+						human.set_confusion_if_lower(20 SECONDS)
 						human.adjust_blurriness(10)
 					if(prob(10))
 						human.gain_trauma(/datum/brain_trauma/mild/concussion)
@@ -2286,7 +2289,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	new_species ||= target.dna.species //If no new species is provided, assume its src.
 	//Note for future: Potentionally add a new C.dna.species() to build a template species for more accurate limb replacement
 
-	if((new_species.digitigrade_customization == DIGITIGRADE_OPTIONAL && target.dna.features["legs"] == "Digitigrade Legs") || new_species.digitigrade_customization == DIGITIGRADE_FORCED)
+	if((new_species.digitigrade_customization == DIGITIGRADE_OPTIONAL && target.dna.features["legs"] == DIGITIGRADE_LEGS) || new_species.digitigrade_customization == DIGITIGRADE_FORCED)
 		var/obj/item/bodypart/r_leg/r_leg = new_species.bodypart_overrides[BODY_ZONE_R_LEG]
 		if(r_leg)
 			new_species.bodypart_overrides[BODY_ZONE_R_LEG] = initial(r_leg.digitigrade_type)

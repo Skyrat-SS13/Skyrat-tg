@@ -1,7 +1,7 @@
 /obj/item/bodypart/head
 	name = BODY_ZONE_HEAD
 	desc = "Didn't make sense not to live for fun, your brain gets smart but your head gets dumb."
-	icon = 'icons/mob/human_parts.dmi'
+	icon = 'icons/mob/species/human/bodyparts.dmi'
 	icon_state = "default_human_head"
 	max_damage = 250 //SKYRAT EDIT CHANGE: max_damage = 200
 	body_zone = BODY_ZONE_HEAD
@@ -199,7 +199,7 @@
 
 	// Blush emote overlay
 	if (is_blushing)
-		var/mutable_appearance/blush_overlay = mutable_appearance('icons/mob/human_face.dmi', "blush", -BODY_ADJ_LAYER) // Should appear behind the eyes
+		var/mutable_appearance/blush_overlay = mutable_appearance('icons/mob/species/human/human_face.dmi', "blush", -BODY_ADJ_LAYER) // Should appear behind the eyes
 		blush_overlay.color = COLOR_BLUSH_PINK
 		blush_overlay.pixel_x += face_offset_x
 		blush_overlay.pixel_y += face_offset_y
@@ -216,6 +216,9 @@
 					facial_overlay.color = facial_hair_color
 					facial_overlay.alpha = hair_alpha
 					. += facial_overlay
+				
+			if(!eyes)
+				. += image('icons/mob/species/human/human_face.dmi', "eyes_missing", -BODY_LAYER, SOUTH)
 
 			//Applies the debrained overlay if there is no brain
 			if(!brain)
@@ -227,7 +230,7 @@
 					debrain_overlay.icon = 'icons/mob/species/alien/bodyparts.dmi'
 					debrain_overlay.icon_state = "debrained_larva"
 				else if(!(NOBLOOD in species_flags_list))
-					debrain_overlay.icon = 'icons/mob/human_face.dmi'
+					debrain_overlay.icon = 'icons/mob/species/human/human_face.dmi'
 					debrain_overlay.icon_state = "debrained"
 				. += debrain_overlay
 			else
@@ -241,22 +244,20 @@
 
 		// lipstick
 		if(lip_style)
-			var/image/lips_overlay = image('icons/mob/human_face.dmi', "lips_[lip_style]", -BODY_LAYER, SOUTH)
+			var/image/lips_overlay = image('icons/mob/species/human/human_face.dmi', "lips_[lip_style]", -BODY_LAYER, SOUTH)
 			lips_overlay.color = lip_color
 			. += lips_overlay
 
 		// eyes
 		if(eyes) // This is a bit of copy/paste code from eyes.dm:generate_body_overlay
-			var/image/eye_left = image('icons/mob/human_face.dmi', "[eyes.eye_icon_state]_l", -BODY_LAYER, SOUTH)
-			var/image/eye_right = image('icons/mob/human_face.dmi', "[eyes.eye_icon_state]_r", -BODY_LAYER, SOUTH)
+			var/image/eye_left = image('icons/mob/species/human/human_face.dmi', "[eyes.eye_icon_state]_l", -BODY_LAYER, SOUTH)
+			var/image/eye_right = image('icons/mob/species/human/human_face.dmi', "[eyes.eye_icon_state]_r", -BODY_LAYER, SOUTH)
 			if(eyes.eye_color_left)
 				eye_left.color = eyes.eye_color_left
 			if(eyes.eye_color_right)
 				eye_right.color = eyes.eye_color_right
 			. += eye_left
 			. += eye_right
-		else
-			. += image('icons/mob/human_face.dmi', "eyes_missing", -BODY_LAYER, SOUTH)
 	else
 		if(!facial_hair_hidden && facial_overlay && (FACEHAIR in species_flags_list))
 			facial_overlay.alpha = hair_alpha
@@ -265,7 +266,7 @@
 				. += facial_gradient_overlay
 
 		if(show_debrained)
-			. += mutable_appearance('icons/mob/human_face.dmi', "debrained", HAIR_LAYER)
+			. += mutable_appearance('icons/mob/species/human/human_face.dmi', "debrained", HAIR_LAYER)
 
 		else if(!hair_hidden && hair_overlay && (HAIR in species_flags_list))
 			hair_overlay.alpha = hair_alpha
@@ -311,7 +312,7 @@
 	return "The head of [real_name]"
 
 /obj/item/bodypart/head/monkey
-	icon = 'icons/mob/animal_parts.dmi'
+	icon = 'icons/mob/species/monkey/bodyparts.dmi'
 	icon_state = "default_monkey_head"
 	limb_id = SPECIES_MONKEY
 	bodytype = BODYTYPE_MONKEY | BODYTYPE_ORGANIC
