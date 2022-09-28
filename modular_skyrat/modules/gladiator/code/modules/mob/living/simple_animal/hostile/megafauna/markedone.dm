@@ -2,7 +2,7 @@
 #define MARKED_ONE_ANGER_DURATION 10 MINUTES
 #define MARKED_ONE_FIRST_PHASE 1
 #define MARKED_ONE_SECOND_PHASE 2
-#define MARKED_ONE_THIRD_PHASE 3 
+#define MARKED_ONE_THIRD_PHASE 3
 #define MARKED_ONE_FINAL_PHASE 4
 #define ONE_HUNDRED_PERCENT 100
 #define SEVENTY_FIVE_PERCENT 75
@@ -224,7 +224,7 @@
 									"GET OVER HERE!!",
 								)
 
-			say(message = pick(ashie_messages), language = /datum/language/draconic)
+			say(message = pick(ashie_messages), language = /datum/language/ashtongue)
 			introduced |= WEAKREF(target)
 			get_angry()
 			GiveTarget(target)
@@ -323,11 +323,11 @@
 		if(!spinning)
 			break
 		addtimer(CALLBACK(src, .proc/animate_speen), 0.5 SECONDS)
-		
+
 /mob/living/simple_animal/hostile/megafauna/gladiator/proc/animate_speen()
 	animate(src, color = initial(color), 3)
 	addtimer(CALLBACK(src, .proc/stop_speen), 0.5 SECONDS)
-	
+
 /mob/living/simple_animal/hostile/megafauna/gladiator/proc/stop_speen()
 	spinning = FALSE
 
@@ -374,7 +374,7 @@
 	boned.throwforce = 35
 	playsound(src, 'sound/weapons/bolathrow.ogg', 60, 0)
 	boned.throw_at(target, 7, 3, thrower = src)
-	QDEL_IN(boned, 3 SECONDS)		
+	QDEL_IN(boned, 3 SECONDS)
 
 /mob/living/simple_animal/hostile/megafauna/gladiator/proc/swordslam() //this kills the crab
 	wendigo_slam(src, 5, 1 SECONDS, 8)
