@@ -570,7 +570,11 @@
 		/obj/machinery/vending/custom = "Custom Vendor",
 		/obj/machinery/vending/dorms = "LustWish",	//SKYRAT EDIT CHANGE - ERP UPDATE - ORIGINAL: /obj/machinery/vending/dorms = "KinkVend"
 		/obj/machinery/vending/access/command = "Command Outfitting Station", //SKYRAT EDIT ADDITION
-		/obj/machinery/vending/barbervend = "Fab-O-Vend") //SKYRAT EDIT ADDITION
+		/obj/machinery/vending/barbervend = "Fab-O-Vend", //SKYRAT EDIT ADDITION
+		/obj/machinery/vending/imported = "NT Sustenance Supplier", //SKYRAT EDIT ADDITION
+		/obj/machinery/vending/imported/yangyu = "Fudobenda", //SKYRAT EDIT ADDITION
+		/obj/machinery/vending/imported/mothic = "Nomad Fleet Ration Chit Exchange", //SKYRAT EDIT ADDITION
+		/obj/machinery/vending/imported/tizirian = "Tizirian Imported Delicacies",) //SKYRAT EDIT ADDITION
 
 /obj/item/circuitboard/machine/vendor/screwdriver_act(mob/living/user, obj/item/tool)
 	var/static/list/display_vending_names_paths
