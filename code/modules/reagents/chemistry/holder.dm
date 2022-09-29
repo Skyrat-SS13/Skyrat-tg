@@ -756,7 +756,7 @@
 	//SKYRAT EDIT ADDITION END
 
 	if(owner && reagent)
-		if(!owner.reagent_check(reagent, delta_time, times_fired) != TRUE)
+		if(owner.reagent_check(reagent, delta_time, times_fired))
 			return
 		if(liverless && !reagent.self_consuming) //need to be metabolized
 			return
@@ -873,7 +873,7 @@
 		return FALSE //Yup, no reactions here. No siree.
 
 	if(is_reacting)//Prevent wasteful calculations
-		if(datum_flags != DF_ISPROCESSING)//If we're reacting - but not processing (i.e. we've transfered)
+		if(!(datum_flags & DF_ISPROCESSING))//If we're reacting - but not processing (i.e. we've transfered)
 			START_PROCESSING(SSreagents, src)
 		if(!(has_changed_state()))
 			return FALSE

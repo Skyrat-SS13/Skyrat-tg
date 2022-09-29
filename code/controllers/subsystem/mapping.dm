@@ -63,7 +63,7 @@ SUBSYSTEM_DEF(mapping)
 	/// list of traits and their associated z leves
 	var/list/z_trait_levels = list()
 
-/datum/controller/subsystem/mapping/New()
+/datum/controller/subsystem/mapping/PreInit()
 	..()
 #ifdef FORCE_MAP
 	config = load_map_config(FORCE_MAP, FORCE_MAP_DIRECTORY)
@@ -71,9 +71,9 @@ SUBSYSTEM_DEF(mapping)
 	config = load_map_config(error_if_missing = FALSE)
 #endif
 
-/datum/controller/subsystem/mapping/Initialize(timeofday)
+/datum/controller/subsystem/mapping/Initialize()
 	if(initialized)
-		return
+		return SS_INIT_SUCCESS
 	if(config.defaulted)
 		var/old_config = config
 		config = global.config.defaultmap
@@ -118,7 +118,7 @@ SUBSYSTEM_DEF(mapping)
 	generate_z_level_linkages()
 	calculate_default_z_level_gravities()
 
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/mapping/proc/calculate_default_z_level_gravities()
 	for(var/z_level in 1 to length(z_list))
@@ -166,20 +166,20 @@ SUBSYSTEM_DEF(mapping)
 	// Generate mining ruins
 	var/list/lava_ruins = levels_by_trait(ZTRAIT_LAVA_RUINS)
 	if (lava_ruins.len)
-		seedRuins(lava_ruins, CONFIG_GET(number/lavaland_budget), list(/area/lavaland/surface/outdoors/unexplored), themed_ruins[ZTRAIT_LAVA_RUINS])
+		seedRuins(lava_ruins, CONFIG_GET(number/lavaland_budget), list(/area/lavaland/surface/outdoors/unexplored), themed_ruins[ZTRAIT_LAVA_RUINS], clear_below = TRUE)
 		for (var/lava_z in lava_ruins)
 			spawn_rivers(lava_z)
 
 	var/list/ice_ruins = levels_by_trait(ZTRAIT_ICE_RUINS)
 	if (ice_ruins.len)
 		// needs to be whitelisted for underground too so place_below ruins work
-		seedRuins(ice_ruins, CONFIG_GET(number/icemoon_budget), list(/area/icemoon/surface/outdoors/unexplored, /area/icemoon/underground/unexplored), themed_ruins[ZTRAIT_ICE_RUINS])
+		seedRuins(ice_ruins, CONFIG_GET(number/icemoon_budget), list(/area/icemoon/surface/outdoors/unexplored, /area/icemoon/underground/unexplored), themed_ruins[ZTRAIT_ICE_RUINS], clear_below = TRUE)
 		for (var/ice_z in ice_ruins)
 			spawn_rivers(ice_z, 4, /turf/open/openspace/icemoon, /area/icemoon/surface/outdoors/unexplored/rivers)
 
 	var/list/ice_ruins_underground = levels_by_trait(ZTRAIT_ICE_RUINS_UNDERGROUND)
 	if (ice_ruins_underground.len)
-		seedRuins(ice_ruins_underground, CONFIG_GET(number/icemoon_budget), list(/area/icemoon/underground/unexplored), themed_ruins[ZTRAIT_ICE_RUINS_UNDERGROUND])
+		seedRuins(ice_ruins_underground, CONFIG_GET(number/icemoon_budget), list(/area/icemoon/underground/unexplored), themed_ruins[ZTRAIT_ICE_RUINS_UNDERGROUND], clear_below = TRUE)
 		for (var/ice_z in ice_ruins_underground)
 			spawn_rivers(ice_z, 4, level_trait(ice_z, ZTRAIT_BASETURF), /area/icemoon/underground/unexplored/rivers)
 
@@ -310,11 +310,13 @@ Used by the AI doomsday and the self-destruct nuke.
 		++i
 
 	SSautomapper.preload_templates_from_toml(files) // SKYRAT EDIT ADDITION - We need to load our templates AFTER the Z level exists, otherwise, there is no z level to preload.
+	var/turf_blacklist = SSautomapper.get_turf_blacklists(files) // SKYRAT EDIT ADDITION - We use blacklisted turfs to carve out places for our templates.
 
 	// load the maps
 	for (var/P in parsed_maps)
 		var/datum/parsed_map/pm = P
-		if (!pm.load(1, 1, start_z + parsed_maps[P], no_changeturf = TRUE, blacklisted_turfs = SSautomapper.get_turf_blacklists(files))) // SKYRAT EDIT CHANGE - We use blacklisted turfs to carve out places for our templates.
+		pm.turf_blacklist = turf_blacklist // SKYRAT EDIT ADDITION - apply blacklist
+		if (!pm.load(1, 1, start_z + parsed_maps[P], no_changeturf = TRUE))
 			errorList |= pm.original_path
 	// SKYRAT EDIT ADDITION BEGIN - We need to load our templates from cache after our space has been carved out.
 	if(!LAZYLEN(errorList))
@@ -373,7 +375,13 @@ Used by the AI doomsday and the self-destruct nuke.
 GLOBAL_LIST_EMPTY(the_station_areas)
 
 /datum/controller/subsystem/mapping/proc/generate_station_area_list()
-	var/static/list/station_areas_blacklist = typecacheof(list(/area/space, /area/mine, /area/ruin, /area/centcom/asteroid/nearstation))
+	var/static/list/station_areas_blacklist = typecacheof(list(
+		/area/space,
+		/area/mine,
+		/area/ruin,
+		/area/centcom/asteroid/nearstation,
+		/area/icemoon,
+	))
 	for(var/area/A in world)
 		if (is_type_in_typecache(A, station_areas_blacklist))
 			continue

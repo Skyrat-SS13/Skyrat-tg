@@ -32,17 +32,6 @@
 	desc = "An upgraded RCD featuring superior material storage. Comes with complimentary frames and circuitry upgrades to boot!"
 	cost = PAYCHECK_CREW * 38
 	contains = list(/obj/item/construction/rcd/improved)
-	
-	
-/datum/supply_pack/goody/improvedrcdbonus
-	name = "Improved RCD  Value Pack"
-	desc = "A pack of 3 upgraded RCDs featuring superior material storage. Each comes with complimentary frames and circuitry upgrades to boot!"
-	cost = PAYCHECK_CREW * 100
-	contains = list(
-		/obj/item/construction/rcd/improved,
-		/obj/item/construction/rcd/improved,
-		/obj/item/construction/rcd/improved,
-	)
 
 /*
 *	MISC

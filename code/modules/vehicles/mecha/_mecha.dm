@@ -71,8 +71,6 @@
 	var/allow_diagonal_movement = FALSE
 	///Whether or not the mech destroys walls by running into it.
 	var/bumpsmash = FALSE
-	///What mobs are currently repairing us.
-	var/list/mob/living/repairing_mobs
 
 	///////////ATMOS
 	///Whether we are currrently drawing from the internal tank
@@ -655,7 +653,7 @@
 	for(var/mob/M in speech_bubble_recipients)
 		if(M.client)
 			speech_bubble_recipients.Add(M.client)
-	INVOKE_ASYNC(GLOBAL_PROC, /proc/flick_overlay, image('icons/mob/talk.dmi', src, "machine[say_test(speech_args[SPEECH_MESSAGE])]",MOB_LAYER+1), speech_bubble_recipients, 30)
+	INVOKE_ASYNC(GLOBAL_PROC, /proc/flick_overlay, image('icons/mob/effects/talk.dmi', src, "machine[say_test(speech_args[SPEECH_MESSAGE])]",MOB_LAYER+1), speech_bubble_recipients, 30)
 
 
 /////////////////////////
