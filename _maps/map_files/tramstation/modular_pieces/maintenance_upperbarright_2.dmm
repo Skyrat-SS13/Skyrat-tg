@@ -2,16 +2,18 @@
 "a" = (
 /turf/closed/wall,
 /area/station/maintenance/department/cargo)
+"b" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet,
+/obj/item/melee/baseball_bat,
+/obj/item/toy/beach_ball/baseball,
+/turf/open/floor/plating,
+/area/station/maintenance/department/cargo)
 "c" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 8
 	},
-/turf/open/floor/iron/smooth,
-/area/station/maintenance/department/cargo)
-"d" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/blobstart,
 /turf/open/floor/iron/smooth,
 /area/station/maintenance/department/cargo)
 "e" = (
@@ -53,19 +55,12 @@
 /area/station/maintenance/department/cargo)
 "o" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/table,
-/obj/item/reagent_containers/cup/glass/bottle/beer/almost_empty{
-	pixel_y = 6;
-	pixel_x = -7
-	},
-/obj/item/reagent_containers/cup/glass/bottle/beer/almost_empty{
-	pixel_y = 4
-	},
-/obj/item/reagent_containers/cup/glass/bottle/beer/almost_empty{
-	pixel_y = 11;
-	pixel_x = 8
-	},
-/turf/open/floor/iron/smooth,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/obj/machinery/power/apc/auto_name/directional/west,
+/obj/effect/landmark/event_spawn,
+/turf/open/floor/catwalk_floor,
 /area/station/maintenance/department/cargo)
 "p" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -86,15 +81,6 @@
 /obj/effect/turf_decal/sand,
 /obj/effect/spawner/random/trash/food_packaging,
 /turf/open/floor/iron/smooth,
-/area/station/maintenance/department/cargo)
-"u" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/cable,
-/obj/machinery/power/apc/auto_name/directional/west,
-/obj/effect/landmark/event_spawn,
-/turf/open/floor/catwalk_floor,
 /area/station/maintenance/department/cargo)
 "v" = (
 /obj/effect/spawner/random/trash/cigbutt,
@@ -125,6 +111,22 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/delivery,
 /obj/structure/closet/firecloset,
+/turf/open/floor/iron/smooth,
+/area/station/maintenance/department/cargo)
+"D" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table,
+/obj/item/reagent_containers/cup/glass/bottle/beer/almost_empty{
+	pixel_y = 6;
+	pixel_x = -7
+	},
+/obj/item/reagent_containers/cup/glass/bottle/beer/almost_empty{
+	pixel_y = 4
+	},
+/obj/item/reagent_containers/cup/glass/bottle/beer/almost_empty{
+	pixel_y = 11;
+	pixel_x = 8
+	},
 /turf/open/floor/iron/smooth,
 /area/station/maintenance/department/cargo)
 "E" = (
@@ -192,16 +194,19 @@
 /turf/open/floor/iron/smooth,
 /area/station/maintenance/department/cargo)
 "P" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/closet,
-/obj/item/melee/baseball_bat,
-/obj/item/toy/beach_ball/baseball,
-/turf/open/floor/plating,
+/obj/item/stack/sheet/bone,
+/obj/item/stack/ore/glass,
+/turf/open/misc/asteroid/dug,
 /area/station/maintenance/department/cargo)
 "Q" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/airalarm/directional/east,
 /obj/effect/landmark/xeno_spawn,
+/turf/open/floor/iron/smooth,
+/area/station/maintenance/department/cargo)
+"R" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/blobstart,
 /turf/open/floor/iron/smooth,
 /area/station/maintenance/department/cargo)
 "S" = (
@@ -219,11 +224,6 @@
 /obj/effect/turf_decal/sand/plating,
 /obj/structure/girder,
 /turf/open/floor/plating,
-/area/station/maintenance/department/cargo)
-"X" = (
-/obj/item/stack/sheet/bone,
-/obj/item/stack/ore/glass,
-/turf/open/misc/asteroid/dug,
 /area/station/maintenance/department/cargo)
 "Y" = (
 /obj/effect/decal/cleanable/dirt,
@@ -312,7 +312,7 @@ e
 i
 g
 r
-P
+b
 a
 a
 k
@@ -329,7 +329,7 @@ k
 k
 k
 k
-X
+P
 A
 a
 f
@@ -353,7 +353,7 @@ k
 v
 A
 y
-d
+R
 T
 L
 a
@@ -395,7 +395,7 @@ k
 x
 A
 a
-o
+D
 n
 a
 a
@@ -668,7 +668,7 @@ k
 k
 Y
 p
-u
+o
 E
 E
 k

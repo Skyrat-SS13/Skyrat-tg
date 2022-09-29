@@ -119,6 +119,34 @@
 /datum/armament_entry/cargo_gun/dynamics/ammo/b6mm_rub
 	item_type = /obj/item/ammo_box/advanced/b6mm/rubber
 
+/datum/armament_entry/cargo_gun/dynamics/ammo/b56mm
+	item_type = /obj/item/ammo_box/c56mm
+	description = "A box of 60 civilian-grade cartridges. Manufactured by some backwater imperial ammunition company."
+	lower_cost = CARGO_CRATE_VALUE * 1.25
+	upper_cost = CARGO_CRATE_VALUE * 1.5
+
+/datum/armament_entry/cargo_gun/dynamics/ammo/b56mm_rub
+	item_type = /obj/item/ammo_box/c56mm/rubber
+	description = "A box of 60 civilian-grade less-than-lethal cartridges. \"НРИ - Коллегия Сохранения Мира\" is listed as the manufacturer. \
+	Which, very likely, means that it was made for the police."
+	lower_cost = CARGO_CRATE_VALUE * 1
+	upper_cost = CARGO_CRATE_VALUE * 1.25
+
+/datum/armament_entry/cargo_gun/dynamics/ammo/b56mm_hunt
+	item_type = /obj/item/ammo_box/c56mm/hunting
+	description = "A box of 60 civilian-grade hunting cartridges. Certainly was made by some imperial huntsmen association."
+	lower_cost = CARGO_CRATE_VALUE * 1.25
+	upper_cost = CARGO_CRATE_VALUE * 1.75
+
+/datum/armament_entry/cargo_gun/dynamics/ammo/b56mm_blank
+	item_type = /obj/item/ammo_box/c56mm/blank
+	description = "A box of 60 civilian-grade blank cartridges. Manufactured by some backwater imperial ammunition company."
+	///It's literally nothing. Might as well make it dirt cheap.
+	lower_cost = CARGO_CRATE_VALUE * 0.25
+	upper_cost = CARGO_CRATE_VALUE * 0.75
+	///And increase the amount in stock by 50%, for LARPers and other funny people.
+	stock_mult = 3
+
 /datum/armament_entry/cargo_gun/dynamics/ammo/shotgun
 	item_type = /obj/item/ammo_box/advanced/s12gauge
 	description = "A box of 35 Slugs. Great for accurate shooting."
