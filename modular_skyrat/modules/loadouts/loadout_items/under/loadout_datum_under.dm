@@ -139,14 +139,14 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	item_path = /obj/item/clothing/under/rank/security/detective/kim
 	restricted_roles = list(JOB_DETECTIVE)
 
-/datum/loadout_item/under/jumpsuit/paramed_dark
-	name = "Dark Paramedic Jumpsuit"
-	item_path = /obj/item/clothing/under/rank/medical/paramedic/skyrat/dark
+/datum/loadout_item/under/jumpsuit/paramed_light
+	name = "Light Paramedic Uniform"
+	item_path = /obj/item/clothing/under/rank/medical/paramedic/skyrat/light
 	restricted_roles = list(JOB_PARAMEDIC)
 
-/datum/loadout_item/under/jumpsuit/paramed_dark_skirt
-	name = "Dark Paramedic Jumpskirt"
-	item_path = /obj/item/clothing/under/rank/medical/paramedic/skyrat/dark/skirt
+/datum/loadout_item/under/jumpsuit/paramed_light_skirt
+	name = "Light Paramedic Uniform"
+	item_path = /obj/item/clothing/under/rank/medical/paramedic/skyrat/light/skirt
 	restricted_roles = list(JOB_PARAMEDIC)
 
 /datum/loadout_item/under/jumpsuit/chemist_formal
