@@ -14,16 +14,15 @@
 "c" = (
 /turf/open/floor/iron/smooth,
 /area/station/maintenance/department/science)
+"e" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/turf/open/floor/catwalk_floor,
+/area/station/maintenance/department/science)
 "f" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/closet/emcloset,
 /turf/open/floor/iron/smooth,
-/area/station/maintenance/department/science)
-"g" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/cable,
-/obj/machinery/power/apc/auto_name/directional/south,
-/turf/open/floor/catwalk_floor,
 /area/station/maintenance/department/science)
 "h" = (
 /obj/effect/decal/cleanable/dirt,
@@ -59,10 +58,12 @@
 "o" = (
 /turf/open/misc/asteroid/airless,
 /area/template_noop)
-"q" = (
-/obj/effect/landmark/event_spawn,
-/turf/open/misc/asteroid/airless,
-/area/template_noop)
+"p" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/obj/machinery/power/apc/auto_name/directional/south,
+/turf/open/floor/catwalk_floor,
+/area/station/maintenance/department/science)
 "r" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/door/airlock/maintenance_hatch{
@@ -71,12 +72,6 @@
 /obj/effect/mapping_helpers/airlock/access/all/engineering/maintenance,
 /turf/open/floor/iron/smooth,
 /area/station/maintenance/department/science)
-"u" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/blobstart,
-/turf/open/floor/catwalk_floor,
-/area/station/maintenance/department/medical)
 "v" = (
 /obj/machinery/recharge_station,
 /turf/closed/mineral/random/stationside/asteroid/porus,
@@ -107,6 +102,10 @@
 /turf/open/misc/asteroid/dug{
 	initial_gas_mix = "TEMP=2.7"
 	},
+/area/template_noop)
+"D" = (
+/obj/effect/landmark/event_spawn,
+/turf/open/misc/asteroid/airless,
 /area/template_noop)
 "E" = (
 /obj/effect/decal/cleanable/dirt,
@@ -144,10 +143,11 @@
 /turf/open/misc/asteroid/airless,
 /area/template_noop)
 "T" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/cable,
+/obj/effect/landmark/blobstart,
 /turf/open/floor/catwalk_floor,
-/area/station/maintenance/department/science)
+/area/station/maintenance/department/medical)
 "U" = (
 /turf/closed/wall,
 /area/station/maintenance/department/science)
@@ -676,7 +676,7 @@ o
 o
 o
 o
-q
+D
 C
 O
 o
@@ -684,7 +684,7 @@ w
 w
 Y
 n
-u
+T
 Z
 Z
 Z
@@ -968,7 +968,7 @@ Z
 Z
 Z
 V
-g
+p
 U
 Z
 Z
@@ -996,7 +996,7 @@ Z
 Z
 Z
 l
-T
+e
 Z
 Z
 Z
@@ -1024,7 +1024,7 @@ Z
 Z
 Z
 f
-T
+e
 Z
 Z
 Z
