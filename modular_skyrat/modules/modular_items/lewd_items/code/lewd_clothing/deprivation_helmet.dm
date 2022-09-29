@@ -339,7 +339,7 @@
 // Here goes code that applies stuff on the wearer
 /obj/item/clothing/head/helmet/space/deprivation_helmet/equipped(mob/living/carbon/human/user, slot)
 	. = ..()
-	if(slot != ITEM_SLOT_HEAD)
+	if(!(slot & ITEM_SLOT_HEAD))
 		return
 	//Save current sound states
 	var/mob_client = usr.client
