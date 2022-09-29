@@ -371,15 +371,6 @@
 	new /obj/item/melee/baton/security/loaded(src)
 	update_appearance()
 
-/obj/item/storage/belt/security/webbing
-	name = "security webbing"
-	desc = "Unique and versatile chest rig, can hold security gear."
-	icon_state = "securitywebbing"
-	inhand_icon_state = "securitywebbing"
-	worn_icon_state = "securitywebbing"
-	content_overlays = FALSE
-	custom_premium_price = PAYCHECK_COMMAND * 3
-
 /obj/item/storage/belt/security/webbing/Initialize(mapload)
 	. = ..()
 	atom_storage.max_slots = 6
