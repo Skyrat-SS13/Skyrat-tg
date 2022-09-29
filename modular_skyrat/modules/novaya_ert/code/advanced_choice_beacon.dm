@@ -197,7 +197,8 @@
 /obj/structure/closet/crate/secure/weapon/nri/heavy/defense
 	name = "defensive heavy supplies"
 	loadout_desc = "An assortment of heavy soldier supplies finely tuned for stationary fire suppression and explosive fortifications.\
-	 Features a fifty calibre heavy machinegun with a lot of ammo to spare, as well as a bunch of explosive landmines."
+	 Features a fifty calibre heavy machinegun with a lot of ammo to spare, as well as a bunch of explosive landmines. \
+	 And some bonus frag grenades."
 
 /obj/structure/closet/crate/secure/weapon/nri/heavy/defense/PopulateContents()
 	new /obj/item/mounted_machine_gun_folded(src)
@@ -211,25 +212,25 @@
 	new /obj/item/minespawner/explosive(src)
 	new /obj/item/minespawner/explosive(src)
 	new /obj/item/minespawner/explosive(src)
+	new /obj/item/grenade/frag(src)
+	new /obj/item/grenade/frag(src)
+	new /obj/item/grenade/frag(src)
+	new /obj/item/grenade/frag(src)
 
 //offensive heavy loadout
 /obj/structure/closet/crate/secure/weapon/nri/heavy/offense
 	name = "offensive heavy supplies"
 	loadout_desc = "An assortment of heavy soldier supplies finely tuned for rapid approach and munition support.\
-	 Features FTU's standard pulse MMG with two spare ammo boxes, as well as ammunition for Krinkov and PP-542.\
-		And a bonus frag grenade."
-
+	 Features Scarborough's standard LMG with a spare ammo box, as well as ammunition for Krinkov and PP-542."
 
 /obj/structure/closet/crate/secure/weapon/nri/heavy/offense/PopulateContents()
-	new /obj/item/gun/ballistic/automatic/pitbull/pulse/r40(src)
-	new /obj/item/ammo_box/magazine/pulse/r40(src)
-	new /obj/item/ammo_box/magazine/pulse/r40(src)
-	new /obj/item/ammo_box/magazine/akm(src)
-	new /obj/item/ammo_box/magazine/akm(src)
-	new /obj/item/ammo_box/magazine/akm(src)
-	new /obj/item/ammo_box/magazine/akm(src)
-	new /obj/item/ammo_box/magazine/plastikov9mm(src)
-	new /obj/item/ammo_box/magazine/plastikov9mm(src)
-	new /obj/item/ammo_box/magazine/plastikov9mm(src)
-	new /obj/item/ammo_box/magazine/plastikov9mm(src)
-	new /obj/item/grenade/frag(src)
+	new /obj/item/gun/ballistic/automatic/l6_saw/unrestricted(src)
+	new /obj/item/storage/toolbox/ammo/full/l6_saw(src)
+	new /obj/item/storage/toolbox/ammo/full/krinkov(src)
+	new /obj/item/storage/toolbox/ammo/full/krinkov/emp(src)
+	new /obj/item/storage/toolbox/ammo/full/krinkov/fire(src)
+	new /obj/item/storage/toolbox/ammo/full/krinkov/ricochet(src)
+	new /obj/item/storage/toolbox/ammo/full/krinkov/ap(src)
+	new /obj/item/storage/toolbox/ammo/full/bison/ert(src)
+	new /obj/item/storage/toolbox/ammo/full/bison/ert(src)
+	new /obj/item/storage/toolbox/ammo/full/aps(src)
