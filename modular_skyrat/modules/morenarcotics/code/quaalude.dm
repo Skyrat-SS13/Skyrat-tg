@@ -20,9 +20,9 @@
 	if(M.hud_used!=null)
 		var/atom/movable/plane_master_controller/game_plane_master_controller = M.hud_used.plane_master_controllers[PLANE_MASTERS_GAME]
 		game_plane_master_controller.add_filter("quaalude_wave", 10, wave_filter(300, 300, 3, 0, WAVE_SIDEWAYS))
-	M.set_timed_status_effect(1 MINUTES * REM * delta_time, /datum/status_effect/drugginess)
-	M.adjust_timed_status_effect(1 MINUTES, /datum/status_effect/speech/slurring/drunk)
-	M.set_timed_status_effect(5 * REM * delta_time * 2 SECONDS, /datum/status_effect/dizziness, only_if_higher = TRUE)
+	M.set_drugginess(1 MINUTES * REM * delta_time)
+	M.adjust_slurring(1 MINUTES)
+	M.set_dizzy_if_lower(5 * REM * delta_time * 2 SECONDS)
 	M.adjustStaminaLoss(-5 * REM * delta_time, 0)
 	if(DT_PROB(3.5, delta_time))
 		M.emote(pick("laugh","drool"))

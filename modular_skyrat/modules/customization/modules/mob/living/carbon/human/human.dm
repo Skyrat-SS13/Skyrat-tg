@@ -127,11 +127,11 @@
 			var/mob/living/living_user = usr
 			if(istype(living_user))
 				living_user.add_mood_event("drunk", /datum/mood_event/drunk)
-			set_timed_status_effect(duration SECONDS, /datum/status_effect/speech/slurring/drunk, only_if_higher = TRUE)
+			set_slurring_if_lower(duration SECONDS)
 		if("stuttering")
-			set_timed_status_effect(duration SECONDS, /datum/status_effect/speech/stutter, only_if_higher = TRUE)
+			set_stutter_if_lower(duration SECONDS)
 		if("jittering")
-			set_timed_status_effect(duration SECONDS, /datum/status_effect/jitter, only_if_higher = TRUE)
+			set_dizzy_if_lower(duration SECONDS)
 
 	if(duration)
 		addtimer(CALLBACK(src, .proc/acting_expiry, impairment), duration SECONDS)

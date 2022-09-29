@@ -65,7 +65,7 @@
 
 /obj/item/clothing/suit/toggle/lawyer/black/better/heister/equipped(mob/living/user, slot)
 	. = ..()
-	if(slot != ITEM_SLOT_OCLOTHING)
+	if(!(slot & ITEM_SLOT_OCLOTHING))
 		return
 	RegisterSignal(user, COMSIG_HUMAN_CHECK_SHIELDS, .proc/armor_reaction)
 

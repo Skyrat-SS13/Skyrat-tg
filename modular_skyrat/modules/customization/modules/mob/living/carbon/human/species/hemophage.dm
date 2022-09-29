@@ -81,3 +81,10 @@
     "Historically, Hemophages have caused great societal strife through their very existence. Many have reported dread on having someone reveal they require blood to survive, worse on learning they have been undead, espiecally in 'superstitious' communities. In many places they occupy a sort of second class, unable to live normal lives due to their condition being a sort of skeleton in their closet. Some can actually be found in slaughterhouses or the agricultural industry, gaining easy access to a large supply of animal blood to feed their eternal thirst.",
     "Others find their way into mostly-vampiric communities, turning others into their own kind; though, the virus can only transmit to hosts that are incredibly low on blood, taking advantage of their reduced immune system efficiency and higher rate of blood creation to be able to survive the initial few days within their host.",
     "\"What the fuck does any of this mean?\" - Doctor Micheals, reading their CentCom report about the new 'hires'.")
+
+/datum/species/hemophage/prepare_human_for_preview(mob/living/carbon/human/human)
+	human.skin_tone = "albino"
+	human.hair_color = "#1d1d1d"
+	human.hairstyle = "Pompadour (Big)"
+	human.update_mutant_bodyparts(TRUE)
+	human.update_body(TRUE)

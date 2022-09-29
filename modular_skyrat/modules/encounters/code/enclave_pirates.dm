@@ -15,7 +15,7 @@
 
 	uniform = /obj/item/clothing/under/costume/nri/captain
 	suit = /obj/item/clothing/suit/armor/vest
-	suit_store = /obj/item/gun/ballistic/automatic/plastikov/nri
+	suit_store = /obj/item/gun/ballistic/automatic/plastikov/nri_pirate
 
 	gloves = /obj/item/clothing/gloves/combat
 
@@ -46,7 +46,7 @@
 
 	uniform = /obj/item/clothing/under/costume/nri
 	suit = /obj/item/clothing/suit/armor/vest
-	suit_store = /obj/item/gun/ballistic/automatic/plastikov/nri
+	suit_store = /obj/item/gun/ballistic/automatic/plastikov/nri_pirate
 
 	gloves = /obj/item/clothing/gloves/combat
 

@@ -131,21 +131,6 @@
 	. = ..()
 	AddElement(/datum/element/polychromic, list("#888888", "#FF3333", "#FFFFFF"))
 
-/obj/item/clothing/under/misc/polysweater
-	name = "polychromic sweater"
-	desc = "Why trade style for comfort? Now you can go commando down south and still be cozy up north, AND do it in whatever color you choose."
-	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
-	icon_state = "poly_turtle"
-	worn_icon_state = "poly_turtle"
-	body_parts_covered = CHEST|GROIN|ARMS //Commando sweater is long but still doesnt have pants
-	can_adjust = FALSE
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
-
-/obj/item/clothing/under/misc/polysweater/Initialize(mapload)
-	. = ..()
-	AddElement(/datum/element/polychromic, list("#FFFFFF"))
-
 /obj/item/clothing/under/misc/poly_tanktop
 	name = "polychromic tank top"
 	desc = "For those lazy summer days."
@@ -994,7 +979,7 @@
 
 /obj/item/clothing/glasses/welding/steampunk_goggles/item_action_slot_check(slot, mob/user)
 	. = ..()
-	if(. && slot == ITEM_SLOT_HEAD)
+	if(. && (slot & ITEM_SLOT_HEAD))
 		return FALSE
 
 /obj/item/clothing/glasses/welding/steampunk_goggles/attack_self(mob/user)
