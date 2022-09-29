@@ -32,17 +32,7 @@
 	desc = "An upgraded RCD featuring superior material storage. Comes with complimentary frames and circuitry upgrades to boot!"
 	cost = PAYCHECK_CREW * 38
 	contains = list(/obj/item/construction/rcd/improved)
-	
-	
-/datum/supply_pack/goody/improvedrcdbonus
-	name = "Improved RCD  Value Pack"
-	desc = "A pack of 3 upgraded RCDs featuring superior material storage. Each comes with complimentary frames and circuitry upgrades to boot!"
-	cost = PAYCHECK_CREW * 100
-	contains = list(
-		/obj/item/construction/rcd/improved,
-		/obj/item/construction/rcd/improved,
-		/obj/item/construction/rcd/improved,
-	)
+
 
 /*
 *	MISC
@@ -87,7 +77,7 @@
 /datum/supply_pack/goody/nri_gear
 	name = "NRI Voentorg Gear"
 	desc = "Contains a backpack full of military-grade NRI Defense Collegium standard equipment previously used by the most of their military."
-	cost = PAYCHECK_CREW * 40
+	cost = PAYCHECK_CREW * 30
 	contains = list(/obj/item/storage/backpack/nri/larp)
 	access_view = ACCESS_BRIG
 

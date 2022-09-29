@@ -71,14 +71,15 @@
 *	PARAMEDIC
 */
 
-/obj/item/clothing/under/rank/medical/paramedic/skyrat/dark
-	name = "dark paramedic jumpsuit"
-	desc = "It's covered in reflective strips and made of a special fiber that provides minor protection against biohazards. It has a reflective white cross on the back denoting that the wearer is a trained paramedic."
-	icon_state = "paramedic_dark"
+/obj/item/clothing/under/rank/medical/paramedic/skyrat/light
+	name = "light paramedic uniform"
+	desc = "A brighter variant of the typical Paramedic uniform made with special fibers that provide minor protection against biohazards, this one has the reflective strips removed."
+	icon_state = "paramedic_light"
 
-/obj/item/clothing/under/rank/medical/paramedic/skyrat/dark/skirt
-	name = "dark paramedic jumpskirt"
-	icon_state = "paramedic_skirt_dark"
+/obj/item/clothing/under/rank/medical/paramedic/skyrat/light/skirt
+	name = "light paramedic skirt"
+	desc = "A brighter variant of the typical Paramedic uniform made with special fibers that provide minor protection against biohazards, this one has had it's legs replaced with a skirt."
+	icon_state = "paramedic_light_skirt"
 	body_parts_covered = CHEST|GROIN|ARMS
 	dying_key = DYE_REGISTRY_JUMPSKIRT
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY

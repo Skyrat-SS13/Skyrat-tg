@@ -21,7 +21,7 @@
 /obj/item/clothing/glasses/hypno/equipped(mob/user, slot)//Adding hypnosis on equip
 	. = ..()
 	victim = user
-	if(slot != ITEM_SLOT_EYES)
+	if(!(slot & ITEM_SLOT_EYES))
 		return
 	if(!(iscarbon(victim) && victim.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy)))
 		return
