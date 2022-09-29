@@ -45,7 +45,8 @@
 	max_integrity = 150
 	req_access = list(ACCESS_AWAY_SEC)
 	faction = list(FACTION_HECU)
-	shot_delay = 0.5
+	shot_delay = 0.25
+	ignore_faction = TRUE
 
 
 /obj/machinery/porta_turret/black_mesa/friendly
