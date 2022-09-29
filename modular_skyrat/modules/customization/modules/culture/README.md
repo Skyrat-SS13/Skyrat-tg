@@ -13,11 +13,11 @@ This adds a revamped and complex, while still being easy enough to add on top of
 - N/A
 
 ### Credits:
-- Rimi Nosha (code)
-- Xyel (lore and direction)
+- Rimi Nosha (Code)
+- Xyel (Lore, ideas and direction)
 - Dragonfruits (FTU lore)
 - JungleRat (FTU lore)
 - Zydras (Vulp/Skrell assembly lore, also many ideas)
 - Lukaster42 (Bankrolling sprites, lots of ideas)
-- Stalkeros (The reason this is happening at all, also wrote a lot of the doc and provided tons of feedback)
+- Stalkeros (Brought up doing this in proper, also wrote a good chunk of the doc and provided a bunch of feedback)
 - GoldenAlpharex (Code pointers)

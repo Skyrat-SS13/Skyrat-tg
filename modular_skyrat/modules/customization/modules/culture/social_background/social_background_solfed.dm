@@ -12,6 +12,7 @@
 	most advanced and powerful civilisations in the known galaxy."
 	features = list(/datum/cultural_feature/average)
 	groups = CULTURE_SOL
+	passport = /obj/item/passport/sol
 
 /datum/background_info/social_background/solfed/fleet
 	name = "SolFed Fleet"

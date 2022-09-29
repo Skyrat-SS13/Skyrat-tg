@@ -30,21 +30,21 @@
 		if(istype(cultural_info, /datum/background_info/employment))
 			selected = cultural_info.type == preferences.culture_culture
 			for(var/datum/background_info/culture as anything in subtypesof(cultural_info.type))
-				value = get_ui_data_entry(GLOB.culture_cultures[culture], culture == preferences.culture_culture, TRUE)
+				value = get_ui_data_entry(GLOB.employment[culture], culture == preferences.culture_culture, TRUE)
 				if(value["selected"])
 					selected = CHILD_CULTURE_SELECTED
 				sub_cultures += list(value)
 		else if(istype(cultural_info, /datum/background_info/origin))
 			selected = cultural_info.type == preferences.culture_location
 			for(var/datum/background_info/culture as anything in subtypesof(cultural_info.type))
-				value = get_ui_data_entry(GLOB.culture_locations[culture], culture == preferences.culture_location, check_valid(culture, preferences.culture_culture))
+				value = get_ui_data_entry(GLOB.origins[culture], culture == preferences.culture_location, check_valid(culture, preferences.culture_culture))
 				if(value["selected"])
 					selected = CHILD_CULTURE_SELECTED
 				sub_cultures += list(value)
 		else if(istype(cultural_info, /datum/background_info/social_background))
 			selected = cultural_info.type == preferences.culture_faction
 			for(var/datum/background_info/culture as anything in subtypesof(cultural_info.type))
-				value = get_ui_data_entry(GLOB.culture_factions[culture], culture == preferences.culture_faction, check_valid(culture, preferences.culture_culture) && check_valid(cultural_info, preferences.culture_location))
+				value = get_ui_data_entry(GLOB.social_backgrounds[culture], culture == preferences.culture_faction, check_valid(culture, preferences.culture_culture) && check_valid(cultural_info, preferences.culture_location))
 				if(value["selected"])
 					selected = CHILD_CULTURE_SELECTED
 				sub_cultures += list(value)
@@ -97,14 +97,14 @@
 	var/list/locations = list()
 	var/list/factions = list()
 
-	for(var/datum/background_info/cultural_info as anything in get_immediate_subtypes(/datum/background_info/employment, GLOB.culture_cultures))
-		cultures += list(get_ui_data_entries(GLOB.culture_cultures[cultural_info], TRUE))
+	for(var/datum/background_info/cultural_info as anything in get_immediate_subtypes(/datum/background_info/employment, GLOB.employment))
+		cultures += list(get_ui_data_entries(GLOB.employment[cultural_info], TRUE))
 
-	for(var/datum/background_info/cultural_info as anything in get_immediate_subtypes(/datum/background_info/origin, GLOB.culture_locations))
-		locations += list(get_ui_data_entries(GLOB.culture_locations[cultural_info], check_valid(cultural_info, preferences.culture_culture)))
+	for(var/datum/background_info/cultural_info as anything in get_immediate_subtypes(/datum/background_info/origin, GLOB.origins))
+		locations += list(get_ui_data_entries(GLOB.origins[cultural_info], check_valid(cultural_info, preferences.culture_culture)))
 
-	for(var/datum/background_info/cultural_info as anything in get_immediate_subtypes(/datum/background_info/social_background, GLOB.culture_factions))
-		factions += list(get_ui_data_entries(GLOB.culture_factions[cultural_info], check_valid(cultural_info, preferences.culture_culture) && check_valid(cultural_info, preferences.culture_location)))
+	for(var/datum/background_info/cultural_info as anything in get_immediate_subtypes(/datum/background_info/social_background, GLOB.social_backgrounds))
+		factions += list(get_ui_data_entries(GLOB.social_backgrounds[cultural_info], check_valid(cultural_info, preferences.culture_culture) && check_valid(cultural_info, preferences.culture_location)))
 
 	return list(
 		"cultures" = cultures,
@@ -123,7 +123,7 @@
 	return FALSE
 
 /datum/preference_middleware/cultures/proc/verify_culture(list/params, mob/user)
-	var/datum/background_info/employment/culture = GLOB.culture_cultures[text2path(params["culture"])]
+	var/datum/background_info/employment/culture = GLOB.employment[text2path(params["culture"])]
 
 	// If a preresiquite isn't selected, yeet everything that shouldn't be selected.
 	if(preferences.culture_faction && !culture)
@@ -148,7 +148,7 @@
 	return TRUE
 
 /datum/preference_middleware/cultures/proc/verify_location(list/params, mob/user)
-	var/datum/background_info/origin/location = GLOB.culture_locations[text2path(params["culture"])]
+	var/datum/background_info/origin/location = GLOB.origins[text2path(params["culture"])]
 
 	// If a preresiquite isn't selected, yeet everything that shouldn't be selected.
 	if(!preferences.culture_culture)
@@ -167,7 +167,7 @@
 	return TRUE
 
 /datum/preference_middleware/cultures/proc/verify_faction(list/params, mob/user)
-	var/datum/background_info/social_background/faction = GLOB.culture_factions[text2path(params["culture"])]
+	var/datum/background_info/social_background/faction = GLOB.social_backgrounds[text2path(params["culture"])]
 
 	// If a preresiquite isn't selected, yeet everything that shouldn't be selected.
 	if(!preferences.culture_culture)

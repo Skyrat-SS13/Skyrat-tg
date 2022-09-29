@@ -18,6 +18,10 @@ import './styles/themes/retro.scss';
 import './styles/themes/syndicate.scss';
 import './styles/themes/wizard.scss';
 import './styles/themes/admin.scss';
+// SKYRAT EDIT ADDITION START - Backgrounds
+import './styles/themes/skyrat/passportholo.scss';
+import './styles/themes/skyrat/passportmetal.scss';
+// SKYRAT EDIT END
 
 import { perf } from 'common/perf';
 import { setupHotReloading } from 'tgui-dev-server/link/client.cjs';

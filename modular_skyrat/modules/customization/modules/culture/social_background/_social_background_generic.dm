@@ -5,13 +5,14 @@
 	Unfortunately, your faction is typically left to the waysides by the larger corporations."
 	economic_power = 0.8
 	features = list(/datum/cultural_feature/poor)
+	space_faring = FALSE
 
 /datum/background_info/social_background/generic/none
 	name = "None"
 	description = "You don't belong to any faction. Unfortunately due to this, you are exploited severely."
 	economic_power = 0.7
 
-/datum/background_info/generic/criminal_underworld
+/datum/background_info/social_background/generic/criminal_underworld
 	name = "None"
 	description = "Far, far away from authorities, you were born within one of the lesser charted sectors of space where new colonies flourished with crime. \
 	Whether it was hiding within the slums of a major colony to a life spent on a pirate hideout in space, \

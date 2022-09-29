@@ -1,11 +1,11 @@
 /mob/living/proc/get_passport()
-	if(!length(held_items)) //Early return for mobs without hands.
+	if(!length(held_items)) // Early return for mobs without hands.
 		return
-	//Check hands
+	// Check hands
 	var/obj/item/held_item = get_active_held_item()
-	if(held_item) //Check active hand
+	if(held_item) // Check active hand
 		. = held_item.get_passport()
-	if(!.) //If there is no id, check the other hand
+	if(!.) // If there is no id, check the other hand
 		held_item = get_inactive_held_item()
 		if(held_item)
 			. = held_item.get_passport()
@@ -14,5 +14,5 @@
 	. = ..()
 	if(. && hand_first)
 		return
-	//Check inventory slots
+	// Check inventory slots
 	return (wear_id?.get_passport() || belt?.get_passport())

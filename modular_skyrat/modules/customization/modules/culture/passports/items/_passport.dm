@@ -6,30 +6,38 @@
 /obj/item/proc/get_passport()
 	return
 
+// This type should only ever be given to very poor backgrounds that aren't backed by an empire.
 /obj/item/passport
-	name = "Invalid Passport"
+	name = "passport papers"
 	icon = 'modular_skyrat/master_files/icons/obj/passports.dmi'
-	desc = "An invalid passport. How did you get this?"
+	desc = "A bundle of papers indicating where you originated from, as well as who you are. Made from a non-flammable paper-like material."
 	w_class = WEIGHT_CLASS_SMALL
 	slot_flags = ITEM_SLOT_ID
 
-	var/icon_state_base = "invalid"
-	var/icon_state_ext = "closed"
+	var/icon_state_base = "generic"
+	var/icon_state_ext = PASSPORT_CLOSED
+	var/has_closed_state = FALSE
 	var/has_animation = FALSE
-	var/tgui_style = "retro"
+	var/tgui_style = "paper"
 
-	// User specific stuff
-	var/datum/weakref/user_weakref
+	var/holder_faction
+	var/holder_locale
+	var/holder_age
+	var/holder_name
 
-	var/cached_faction
-	var/cached_locale
 	var/list/cached_data
 	var/imprinted = FALSE
 
 /obj/item/passport/Initialize(mapload)
 	. = ..()
-	icon_state = "[icon_state_base]_[icon_state_ext]"
+	switch(has_closed_state)
+		if(TRUE)
+			icon_state = "[icon_state_base]_[icon_state_ext]"
+		else
+			icon_state = icon_state_base
 
+// This will not exist in the end code. This is to make testing easier.
+// Imprinting will be done by the HoP, and via a traitor item.
 /obj/item/passport/CtrlClick(mob/living/carbon/human/user)
 	. = ..()
 	if (imprinted == FALSE)
@@ -43,16 +51,20 @@
 	return src
 
 /obj/item/passport/proc/imprint_owner(mob/living/carbon/human/user)
-	if(istype(user) && user.client)
-		user_weakref = WEAKREF(user)
-		var/datum/background_info/social_background = GLOB.culture_factions[user.client.prefs.culture_faction]
-		cached_faction = social_background? social_background.name : null
-		var/datum/background_info/locale = GLOB.culture_locations[user.client.prefs.culture_location]
-		cached_locale = locale?.name
-		cached_data = null
-		imprinted = TRUE
+	if(!istype(user) || !user.client?.prefs)
+		return
+
+	holder_faction = user.client?.prefs?.culture_faction
+	holder_locale = user.client?.prefs?.culture_location
+	holder_age = user.age
+	cached_data = null
+	get_data() // This may have a performance hit at round start, but this will ensure things don't get stored inconsistently.
+	imprinted = TRUE
 
 /obj/item/passport/AltClick(mob/user)
+	if(!has_closed_state)
+		return
+
 	switch(icon_state_ext)
 		if(PASSPORT_CLOSED)
 			icon_state_ext = PASSPORT_OPENED
@@ -62,13 +74,13 @@
 			icon_state_ext = PASSPORT_CLOSED
 			if(has_animation)
 				flick(icon(icon, "[icon_state_base]_[PASSPORT_CLOSING]"), src)
+
 	icon_state = "[icon_state_base]_[icon_state_ext]"
 	balloon_alert(user, "[icon_state_ext] [src.name]")
 
 /obj/item/passport/ShiftClick(mob/user)
 	. = ..()
-	if(user_weakref?.resolve())
-		ui_interact(user)
+	ui_interact(user)
 
 /obj/item/passport/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -83,7 +95,7 @@
 	var/list/datacore_entry = GLOB.name_to_datacore_entry[name]
 	if(datacore_entry)
 		var/datum/data/record/general_record = datacore_entry["general"]
-		var/obj/item/photo/photo = general_record.fields["photo_front"]
+		var/obj/item/photo/photo = general_record.get_front_photo()
 		var/icon/headshot_crop = icon(photo.picture.picture_image)
 		headshot_crop.Crop(9, 32, 24, 17)
 		return headshot_crop
@@ -91,16 +103,17 @@
 /obj/item/passport/proc/get_data()
 	RETURN_TYPE(/list)
 	if(!cached_data)
-		var/mob/living/carbon/human/passport_holder = user_weakref.resolve()
+		var/datum/background_info/social_background/social_background = GLOB.social_backgrounds[holder_faction]
+		var/datum/background_info/employment/employment = GLOB.employment[holder_faction]
+		var/datum/background_info/origin/origin = GLOB.origins[holder_faction]
 		cached_data = list(
-			"name" = passport_holder.real_name,
+			"name" = holder_name,
 			"tgui_style" = tgui_style,
-			"headshot_data" = icon2base64(get_headshot_from_datacore(passport_holder.real_name)),
-			"empire" = cached_faction,
-			"locale" = cached_locale,
-			"age" = passport_holder.age,
-			"current_wages" = 500,
-			"space_faring" = TRUE,
+			"headshot_data" = icon2base64(get_headshot_from_datacore(holder_name)),
+			"empire" = social_background.name,
+			"employment" = employment.name,
+			"age" = holder_age,
+			"space_faring" = social_background.space_faring,
 		)
 	return cached_data
 

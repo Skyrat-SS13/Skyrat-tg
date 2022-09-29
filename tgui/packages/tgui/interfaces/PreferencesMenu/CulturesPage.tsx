@@ -1,8 +1,8 @@
-import { Stack, Section, Tooltip, Box, Divider } from '../../components';
+import { Stack, Section, Tooltip, Box, Divider, Button } from '../../components';
 import { useBackend } from '../../backend';
 import { CultureFeature, PreferencesMenuData } from './data';
 
-export const BackgroundEntry = (props) => {
+const BackgroundEntry = (props) => {
   const { background } = props;
   let lang_string: string = '';
   let not_first_iteration: boolean = false;
@@ -74,7 +74,18 @@ export const BackgroundEntry = (props) => {
   );
 };
 
-export const ifExists = (valueToReturn, val, functionToCheckWith) => {
+const HoverInfo = (text) => {
+  return (
+    <Button
+      icon="question-circle"
+      color="transparent"
+      tooltip={text}
+      tooltipPosition="left"
+    />
+  );
+};
+
+const ifExists = (valueToReturn, val, functionToCheckWith) => {
   if (functionToCheckWith(val)) {
     return <Stack.Item>{valueToReturn}</Stack.Item>;
   } else {
@@ -82,7 +93,7 @@ export const ifExists = (valueToReturn, val, functionToCheckWith) => {
   }
 };
 
-export const FeatureEntry = (props: { feature: CultureFeature }) => {
+const FeatureEntry = (props: { feature: CultureFeature }) => {
   const { feature } = props;
 
   return (
@@ -100,14 +111,14 @@ export const FeatureEntry = (props: { feature: CultureFeature }) => {
   );
 };
 
-export const tryAct = (type, valid, data, context) => {
+const tryAct = (type, valid, data, context) => {
   if (valid) {
     const { act } = useBackend<PreferencesMenuData>(context);
     act(type, data);
   }
 };
 
-export const CategoryEntry = (props, context) => {
+const CategoryEntry = (props, context) => {
   const { val, type, parentSelected } = props;
   const { data } = useBackend<PreferencesMenuData>(context);
   return (
@@ -183,7 +194,12 @@ export const CulturesPage = (props, context) => {
   return (
     <Stack>
       <Stack.Item minWidth="33%">
-        <Section title="Cultures">
+        <Section
+          title={
+            (
+              <HoverInfo text="These are typically low-impact, save the special backgrounds." />
+            ) + 'Cultures'
+          }>
           <Stack vertical>
             {data.cultures.map((val) =>
               val.selected ? (

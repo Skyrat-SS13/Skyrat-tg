@@ -3,6 +3,7 @@
 	description = "Your faction was subsidized by SolFed to expand into Sector 13."
 	features = list(/datum/cultural_feature/average)
 	groups = CULTURE_GROUP_HUMAN
+	passport = /obj/item/passport/sol/generic
 
 /datum/background_info/social_background/freetrade
 	name = "Free Trade Union"
@@ -15,8 +16,9 @@
 	economic_power = 1.3
 	features = list(/datum/cultural_feature/good)
 	groups = CULTURE_GROUP_HUMAN
+	passport = /obj/item/passport/ftu
 
-/datum/background_info/social_background/remote
+/datum/background_info/social_background/expeditionary
 	name = "Expeditionary Corps"
 	description = "The Expeditionary Corps is an SolFed agency tasked with exploration of uncharted space and worlds, \
 	mineralogy surveys and xenoarchaeological studies and, more recently, the discovery of new alien life. \
@@ -28,6 +30,7 @@
 	Officer candidates are required to have at least a bachelor's degree in a relevant field (astrogation, engineering, xenoarcheology, etc)."
 	features = list(/datum/cultural_feature/average)
 	groups = CULTURE_GROUP_HUMAN
+	passport = /obj/item/passport/sol/generic
 
 /datum/background_info/social_background/xynergy
 	name = "Xynergy"
@@ -38,6 +41,7 @@
 	economic_power = 1.1
 	features = list(/datum/cultural_feature/average)
 	groups = CULTURE_GROUP_HUMAN
+	passport = /obj/item/passport/sol/generic
 
 /datum/background_info/social_background/armadyne
 	name = "Armadyne"
@@ -49,3 +53,4 @@
 	economic_power = 1.2
 	features = list(/datum/cultural_feature/good)
 	groups = CULTURE_GROUP_HUMAN
+	passport = /obj/item/passport/sol/generic

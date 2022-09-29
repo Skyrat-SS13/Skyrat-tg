@@ -17,19 +17,19 @@
 		if(!initial(culture.name))
 			continue
 		culture = new path()
-		GLOB.culture_cultures[path] = culture
+		GLOB.employment[path] = culture
 	for(var/path in subtypesof(/datum/background_info/origin))
 		var/datum/background_info/culture = path
 		if(!initial(culture.name))
 			continue
 		culture = new path()
-		GLOB.culture_locations[path] = culture
+		GLOB.origins[path] = culture
 	for(var/path in subtypesof(/datum/background_info/social_background))
 		var/datum/background_info/culture = path
 		if(!initial(culture.name))
 			continue
 		culture = new path()
-		GLOB.culture_factions[path] = culture
+		GLOB.social_backgrounds[path] = culture
 	for(var/datum/cultural_feature/cultural_feature as anything in subtypesof(/datum/cultural_feature))
 		cultural_feature = new cultural_feature()
 		GLOB.culture_features += list("[cultural_feature.name]" = list(

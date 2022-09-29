@@ -10,6 +10,7 @@
 	economic_power = 1.2
 	features = list(/datum/cultural_feature/good)
 	groups = CULTURE_NT
+	passport = /obj/item/passport/sol/generic
 
 /datum/background_info/social_background/nanotrasen/asset_retention
 	name = "Nanotrasen Asset Retention"

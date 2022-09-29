@@ -11,11 +11,10 @@
 	name = "Passport Gate"
 	greyscale_colors = CIRCUIT_COLOR_COMMAND
 	build_path = /obj/machinery/scanner_gate/passport_gate
-	// Scanners to scan RFID/whatever, laser to read paper passports, cell for backup power, and glass to protect the laser.
+	// Scanners to scan RFID/whatever, laser to read paper passports, and glass to protect the laser.
 	req_components = list(
 		/obj/item/stock_parts/scanning_module = 2,
 		/obj/item/stock_parts/micro_laser = 1,
-		/obj/item/stock_parts/cell = 1,
 		/obj/item/stack/sheet/glass = 1,
 	)
 
