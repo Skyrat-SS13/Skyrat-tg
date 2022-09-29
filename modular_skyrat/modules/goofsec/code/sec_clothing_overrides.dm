@@ -103,6 +103,10 @@
 			RESKIN_ICON_STATE = "belt_white",
 			RESKIN_WORN_ICON_STATE = "belt_white"
 		),
+		"Slim Variant" = list(
+			RESKIN_ICON_STATE = "belt_slim"
+			RESKIN_WORN_ICON_STATE = "belt_slim"
+		)
 	)
 
 /obj/item/storage/belt/security/webbing
