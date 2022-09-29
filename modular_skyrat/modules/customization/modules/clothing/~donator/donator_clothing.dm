@@ -1225,7 +1225,7 @@
 /obj/item/clothing/suit/jacket/gorlexharness
 	name = "engine technician harness"
 	desc = "A blood-red engineering technician harness. You can't seem to figure out an use to it, but it seems it's magnetized at places."
-	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suit.dmi'
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
 	icon_state = "gorlexharness"
 
