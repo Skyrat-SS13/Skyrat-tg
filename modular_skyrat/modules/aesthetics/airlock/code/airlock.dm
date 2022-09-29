@@ -20,7 +20,7 @@
 	var/obj/effect/overlay/vis_airlock/vis_overlay2
 	doorOpen = 'modular_skyrat/modules/aesthetics/airlock/sound/open.ogg'
 	doorClose = 'modular_skyrat/modules/aesthetics/airlock/sound/close.ogg'
-	doorDeni = 'modular_skyrat/modules/aesthetics/airlock/sound/access_denied.ogg'
+	// doorDeni = 'modular_skyrat/modules/aesthetics/airlock/sound/access_denied.ogg'
 	boltUp = 'modular_skyrat/modules/aesthetics/airlock/sound/bolts_up.ogg'
 	boltDown = 'modular_skyrat/modules/aesthetics/airlock/sound/bolts_down.ogg'
 	//noPower = 'sound/machines/doorclick.ogg'
