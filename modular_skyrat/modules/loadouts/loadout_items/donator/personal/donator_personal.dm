@@ -516,3 +516,8 @@
 	name = "MARSOC Challenge Coin"
 	item_path = /obj/item/coin/donator/marsoc
 	ckeywhitelist = list("sweetsoulbrother")
+
+/datum/loadout_item/under/jumpsuit/tactichill
+	name = "Tactichill Jacket"
+	item_path = /obj/item/clothing/under/tactichill
+	ckeywhitelist = list("kaynite")

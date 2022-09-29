@@ -1423,3 +1423,11 @@
 			and shining example to the core values of the Sol Federation Marine Corps.\""
 	icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
 	sideslist = list("MARSOC", "SFMC")
+
+// Donation reward for Kay-Nite
+/obj/item/clothing/under/tactichill
+	name = "tactichill jacket"
+	desc = "The brighter variant of the tacticool clotheswear, for when you want to look even cooler than usual and still operate at the same time."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
+	icon_state = "tactichill"
