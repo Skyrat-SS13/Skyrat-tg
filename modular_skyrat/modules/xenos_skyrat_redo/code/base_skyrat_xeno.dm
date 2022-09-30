@@ -236,7 +236,7 @@
 	var/fire_icon = "generic_fire[suffix]"
 
 	if(!GLOB.fire_appearances[fire_icon])
-		var/mutable_appearance/xeno_fire_overlay = mutable_appearance('icons/mob/onfire.dmi', fire_icon, -FIRE_LAYER, appearance_flags = RESET_COLOR)
+		var/mutable_appearance/xeno_fire_overlay = mutable_appearance('icons/mob/effects/onfire.dmi', fire_icon, -FIRE_LAYER, appearance_flags = RESET_COLOR)
 		xeno_fire_overlay.pixel_x = on_fire_pixel_x
 		xeno_fire_overlay.pixel_y = on_fire_pixel_y
 		GLOB.fire_appearances[fire_icon] = xeno_fire_overlay
