@@ -95,6 +95,10 @@
 	you_are_text = "You are the manager of a top-of-the-line space hotel!"
 	flavour_text = "You are the manager of a top-of-the-line space hotel! Make sure the guests are looked after, the hotel is advertised, and your employees aren't slacking off!"
 
+/obj/effect/mob_spawn/corpse/human/damaged/ashwalker
+	mob_type = /mob/living/carbon/human/species/lizard/ashwalker;
+	outfit = /datum/outfit/consumed_ashwalker
+
 //OUTFITS//
 /datum/outfit/syndicatespace/syndicrew
 	ears = /obj/item/radio/headset/cybersun
