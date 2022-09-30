@@ -22,12 +22,12 @@
 /obj/item/clothing/shoes/shibari_legs/update_overlays()
 	. = ..()
 	if(glow)
-		. += emissive_appearance(icon, icon_state, alpha = 100)
+		. += emissive_appearance(icon, icon_state, src, alpha = 100)
 
 /obj/item/clothing/shoes/shibari_legs/worn_overlays(mutable_appearance/standing, isinhands, icon_file)
 	. = ..()
 	if(glow)
-		. += emissive_appearance(standing.icon, standing.icon_state, alpha = 100)
+		. += emissive_appearance(standing.icon, standing.icon_state, src, alpha = 100)
 
 
 /obj/item/clothing/shoes/shibari_legs/Destroy()

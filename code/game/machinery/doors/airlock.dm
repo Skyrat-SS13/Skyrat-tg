@@ -152,23 +152,10 @@
 	rad_insulation = RAD_MEDIUM_INSULATION
 
 /obj/machinery/door/airlock/Initialize(mapload)
-	//SKYRAT EDIT ADDITION BEGIN - Door aesthetic overhaul
-	vis_overlay1 = new()
-	vis_overlay1.icon = overlays_file
-	vis_overlay2 = new()
-	vis_overlay2.icon = overlays_file
-	vis_overlay2.layer = layer
-	vis_overlay2.plane = 1
-	vis_contents += vis_overlay1
-	vis_contents += vis_overlay2
-	//SKYRAT EDIT END
 	. = ..()
 	//SKYRAT EDIT ADDITION BEGIN - Door aesthetic overhaul
 	if(multi_tile)
 		SetBounds()
-	if(multi_tile)
-		vis_overlay1.dir = src.dir
-		vis_overlay2.dir = src.dir
 	update_overlays()
 	//SKYRAT EDIT END
 	init_network_id(NETWORK_DOOR_AIRLOCKS)

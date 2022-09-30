@@ -28,9 +28,6 @@
 #define SEETHROUGH_PLANE -3
 #define ABOVE_GAME_PLANE -2
 
-<<<<<<< HEAD
-#define MOUSE_TRANSPARENT_PLANE -1 //SKYRAT EDIT ADDITION - Pollution port
-=======
 #define RENDER_PLANE_GAME_WORLD -1
 
 #define BLACKNESS_PLANE 0 //To keep from conflicts with SEE_BLACKNESS internals
@@ -95,7 +92,6 @@
 #define HIGHEST_EVER_PLANE RENDER_PLANE_MASTER
 /// The range unique planes can be in
 #define PLANE_RANGE (HIGHEST_EVER_PLANE - LOWEST_EVER_PLANE)
->>>>>>> 23bfdec8f43 (Multiz Rework: Human Suffering Edition (Contains PLANE CUBE) (#69115))
 
 // PLANE_SPACE layer(s)
 #define SPACE_LAYER 1.8
@@ -125,7 +121,7 @@
 #define GAS_PUMP_LAYER 2.49
 #define PLUMBING_PIPE_VISIBILE_LAYER 2.495//layer = initial(layer) + ducting_layer / 3333 in atmospherics/handle_layer() to determine order of duct overlap
 #define LOW_OBJ_LAYER 2.5
-///catwalk overlay of /turf/open/floor/catwalk_floor
+///catwalk overlay of /turf/open/floor/plating/catwalk_floor
 #define CATWALK_LAYER 2.51
 #define LOW_SIGIL_LAYER 2.52
 #define SIGIL_LAYER 2.53

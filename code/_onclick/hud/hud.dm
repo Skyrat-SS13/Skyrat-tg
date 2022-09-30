@@ -239,15 +239,11 @@ GLOBAL_LIST_INIT(available_erp_ui_styles, list(
 	alien_queen_finder = null
 	combo_display = null
 
-<<<<<<< HEAD
 	//SKYRAT EDIT START - SKYRAT HUD
 	wanted_lvl = null
 	// SKYRAT EDIT END - SKYRAT HUD
 
-	QDEL_LIST_ASSOC_VAL(plane_masters)
-=======
 	QDEL_LIST_ASSOC_VAL(master_groups)
->>>>>>> 23bfdec8f43 (Multiz Rework: Human Suffering Edition (Contains PLANE CUBE) (#69115))
 	QDEL_LIST_ASSOC_VAL(plane_master_controllers)
 	QDEL_LIST(screenoverlays)
 	mymob = null

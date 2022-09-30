@@ -1245,11 +1245,8 @@
 	VV_DROPDOWN_OPTION(VV_HK_DIRECT_CONTROL, "Assume Direct Control")
 	VV_DROPDOWN_OPTION(VV_HK_GIVE_DIRECT_CONTROL, "Give Direct Control")
 	VV_DROPDOWN_OPTION(VV_HK_OFFER_GHOSTS, "Offer Control to Ghosts")
-<<<<<<< HEAD
-	VV_DROPDOWN_OPTION(VV_HK_SEND_CRYO, "Send to Cryogenic Storage") //SKYRAT EDIT ADDITION - CRYO SEND
-=======
 	VV_DROPDOWN_OPTION(VV_HK_VIEW_PLANES, "View/Edit Planes")
->>>>>>> 23bfdec8f43 (Multiz Rework: Human Suffering Edition (Contains PLANE CUBE) (#69115))
+	VV_DROPDOWN_OPTION(VV_HK_SEND_CRYO, "Send to Cryogenic Storage") //SKYRAT EDIT ADDITION - CRYO SEND
 
 /mob/vv_do_topic(list/href_list)
 	. = ..()
@@ -1301,7 +1298,11 @@
 		if(!check_rights(NONE))
 			return
 		offer_control(src)
-<<<<<<< HEAD
+	if(href_list[VV_HK_VIEW_PLANES])
+		if(!check_rights(R_DEBUG))
+			return
+		usr.client.edit_plane_masters(src)
+
 	//SKYRAT EDIT ADDITION BEGIN - CRYO SEND
 	if(href_list[VV_HK_SEND_CRYO])
 		if(!check_rights(R_SPAWN))
@@ -1316,18 +1317,11 @@
 		var/msg = span_notice("[key_name_admin(usr)] has put [key_name(src)] into a cryopod from [ADMIN_VERBOSEJMP(src)].")
 		message_admins(msg)
 		admin_ticket_log(src, msg)
-		
+
 		send_notice = send_notice == "Yes"
 		send_to_cryo(send_notice)
-
 	//SKYRAT EDIT ADDITION END
 
-=======
-	if(href_list[VV_HK_VIEW_PLANES])
-		if(!check_rights(R_DEBUG))
-			return
-		usr.client.edit_plane_masters(src)
->>>>>>> 23bfdec8f43 (Multiz Rework: Human Suffering Edition (Contains PLANE CUBE) (#69115))
 /**
  * extra var handling for the logging var
  */

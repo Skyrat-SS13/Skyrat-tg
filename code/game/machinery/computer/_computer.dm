@@ -44,12 +44,8 @@
 		return
 
 	. += mutable_appearance(icon, icon_screen)
-<<<<<<< HEAD
-	. += emissive_appearance(icon, icon_screen)
-*/
-=======
 	. += emissive_appearance(icon, icon_screen, src)
->>>>>>> 23bfdec8f43 (Multiz Rework: Human Suffering Edition (Contains PLANE CUBE) (#69115))
+*/
 
 /obj/machinery/computer/power_change()
 	. = ..()

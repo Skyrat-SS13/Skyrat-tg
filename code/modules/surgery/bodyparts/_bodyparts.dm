@@ -859,6 +859,8 @@
 	var/image/limb = image(layer = -BODYPARTS_LAYER, dir = image_dir)
 	var/image/aux
 
+	// SKYRAT EDIT ADDITION START - limbs
+	var/atom/emissive_location = loc || owner || src
 	if(animal_origin)
 		if(IS_ORGANIC_LIMB(src))
 
@@ -876,11 +878,12 @@
 			limb.icon_state = "[animal_origin]_[body_zone]"
 
 		if(blocks_emissive)
-			var/mutable_appearance/limb_em_block = emissive_blocker(limb.icon, limb.icon_state, alpha = limb.alpha)
+			var/mutable_appearance/limb_em_block = emissive_blocker(limb.icon, limb.icon_state, emissive_location, alpha = limb.alpha)
 			limb_em_block.dir = image_dir
 			limb.overlays += limb_em_block
 		. += limb
 		return
+	// SKYRAT EDIT ADDITION END
 
 	//HUSK SHIIIIT
 	if(is_husked)
@@ -995,10 +998,10 @@
 
 			var/mutable_appearance/accessory_overlay
 			var/mutable_appearance/emissive
-			accessory_overlay = mutable_appearance(body_marking.icon, "[body_marking.icon_state]_[render_limb_string][gender_modifier]", -BODYPARTS_LAYER)
+			accessory_overlay = mutable_appearance(body_marking.icon, "[body_marking.icon_state]_[render_limb_string][gender_modifier]", -BODYPARTS_LAYER, emissive_location, plane)
 			accessory_overlay.alpha = markings_alpha
 			if(markings[key][2])
-				emissive = emissive_appearance_copy(accessory_overlay)
+				emissive = emissive_appearance_copy(accessory_overlay, emissive_location)
 			if(override_color)
 				accessory_overlay.color = override_color
 			else
@@ -1020,7 +1023,7 @@
 				accessory_overlay = mutable_appearance(body_marking.icon, "[body_marking.icon_state]_[render_limb_string]", -aux_layer)
 				accessory_overlay.alpha = markings_alpha
 				if (aux_zone_markings[key][2])
-					emissive = emissive_appearance_copy(accessory_overlay)
+					emissive = emissive_appearance_copy(accessory_overlay, emissive_location)
 				if(override_color)
 					accessory_overlay.color = override_color
 				else
