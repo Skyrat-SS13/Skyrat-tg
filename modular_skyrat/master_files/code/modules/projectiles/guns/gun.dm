@@ -211,6 +211,8 @@
 			. += "<br>It has <b>[span_cyan("Interdyne Pharmaceuticals")]</b> stamped onto the barrel."
 		if(COMPANY_ABDUCTOR)
 			. += "<br>It has <b>[span_abductor("✌︎︎♌︎︎♎︎︎◆︎︎♍︎︎⧫︎︎❄︎♏︎♍︎♒︎")]</b> engraved into the photon accelerator."
+		if(COMPANY_MALORIAN)
+			. += "<br>It has <b>[span_grey("Malorian Arms")]</b> etched onto the reciever."
 
 /obj/item/gun/proc/fire_select()
 	var/mob/living/carbon/human/user = usr
