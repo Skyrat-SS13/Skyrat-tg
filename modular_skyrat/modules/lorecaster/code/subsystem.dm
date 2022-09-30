@@ -22,5 +22,6 @@ SUBSYSTEM_DEF(lorecaster)
 	var/picked_story = pick(stories)
 	var/text = stories[picked_story]["text"]
 	var/title = stories[picked_story]["title"]
+	text += "\n\nOriginally published on: [stories[picked_story]["month"]]/[stories[picked_story]["day"]]/[stories[picked_story]["year"]]"
 	GLOB.news_network.submit_article(text || "Someone forgot to fill out the article!", title || "Nanotrasen News Broadcast", "Nanotrasen News Network", null)
 	stories -= picked_story
