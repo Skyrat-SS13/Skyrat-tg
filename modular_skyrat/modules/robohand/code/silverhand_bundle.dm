@@ -30,14 +30,14 @@
 
 //What do you mean glasses don't protect your head? Of course they do. Cyberpunk has flying cars(mostly intentional)!
 /obj/item/clothing/glasses/sunglasses/robohand
-	name = "badass sunglasses"
-	desc = "Strangely ancient technology used to help provide rudimentary eye cover. Enhanced shielding blocks flashes. These are bullet-resistant!"
+	name = "badass shades"
+	desc = "An awesome pair of aviator shades that provide eye cover. Enhanced shielding blocks flashes, and a reinforced frame somehow makes these bullet-resistant!"
 	body_parts_covered = HEAD
 	armor = list(MELEE = 20, BULLET = 60, LASER = 20, ENERGY = 20, BOMB = 20, BIO = 0, FIRE = 0, ACID = 0, WOUND = 100)
 
 //Again, not a bug, it's a feature. ALL PARTS COVERED!!
 /obj/item/clothing/suit/armor/bulletproof/robohand
-	name = "badass bulletproof armor"
+	name = "custom-fit ballistic vest"
 	desc = "One of a kind bulletproof armor custom made to fit one person, Johnny Robohand. It seems that your arms are protected by it as well!"
 	armor = list(MELEE = 15, BULLET = 60, LASER = 10, ENERGY = 10, BOMB = 40, BIO = 0, FIRE = 50, ACID = 50, WOUND = 100) //exact same as the normal bulletproof vest but wound-resistant
 	body_parts_covered = CHEST|GROIN|ARMS
