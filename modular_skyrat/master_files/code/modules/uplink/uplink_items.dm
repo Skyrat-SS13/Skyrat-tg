@@ -5,14 +5,6 @@
 // Place any new uplink items in this file, and explain what they do
 
 // BUNDLES
-
-/datum/uplink_item/bundles_tc/robohand
-	name = "Robohand Bundle"
-	desc = "Authentic replicas of the weaponry and gear worn and used by Johnny Robohand the fateful day he detonated a nuclear device \
-			within Nanotrasen Tower on Earth. A fancy gun and badass shades are all any rockerboy needs."
-	item = /obj/item/storage/backpack/duffelbag/syndie/loadout/robohand
-	cost = 20
-
 /* /datum/uplink_item/bundles_tc/spaceassassin
 	name = "Space Assassin Bundle"
 	desc = "A unique kit commonly used by military infiltrators and the like to get the drop on unsuspecting crew, perfect for the aspiring covert assassin and stealthy manipulator."
@@ -449,6 +441,14 @@
 	item = /obj/item/storage/box/syndie_kit/loadout/lasermanbundle
 	cost = 20
 	progression_minimum = 25 MINUTES
+	
+/datum/uplink_item/bundles_tc/robohand
+	name = "Robohand Bundle"
+	desc = "Authentic replicas of the weaponry and gear worn and used by Johnny Robohand the fateful day he detonated a nuclear device \
+			within Nanotrasen Tower in Sol. An awesome gun and badass shades are all any rockerboy needs."
+	item = /obj/item/storage/backpack/duffelbag/syndie/loadout/robohand
+	cost = 20
+	progression_minimum = 40 MINUTES // +15 for the Malorian 3516
 
 // Surplus crates
 /datum/uplink_item/bundles_tc/surplus_crate
