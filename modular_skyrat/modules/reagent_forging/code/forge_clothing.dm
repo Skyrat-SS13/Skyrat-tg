@@ -9,6 +9,7 @@
 	worn_icon_digi = 'modular_skyrat/modules/reagent_forging/icons/mob/forge_clothing_digi.dmi'
 	resistance_flags = FIRE_PROOF
 	armor = list(MELEE = 40, BULLET = 40, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 0, WOUND = 30)
+	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR | MATERIAL_AFFECT_STATISTICS
 
 /obj/item/clothing/suit/armor/reagent_clothing/Initialize(mapload)
 	. = ..()
@@ -24,6 +25,7 @@
 	worn_icon = 'modular_skyrat/modules/reagent_forging/icons/mob/forge_clothing.dmi'
 	resistance_flags = FIRE_PROOF
 	armor = list(MELEE = 40, BULLET = 40, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 0, WOUND = 30)
+	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR | MATERIAL_AFFECT_STATISTICS
 
 /obj/item/clothing/gloves/reagent_clothing/Initialize(mapload)
 	. = ..()
@@ -39,6 +41,7 @@
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 	resistance_flags = FIRE_PROOF
 	armor = list(MELEE = 40, BULLET = 40, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 0, WOUND = 30)
+	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR | MATERIAL_AFFECT_STATISTICS
 
 /obj/item/clothing/head/helmet/reagent_clothing/Initialize(mapload)
 	. = ..()
@@ -54,6 +57,7 @@
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
 	worn_icon_digi = 'modular_skyrat/modules/reagent_forging/icons/mob/forge_clothing_digi.dmi'
 	armor = list(MELEE = 20, BULLET = 20, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 0, ACID = 0)
+	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR | MATERIAL_AFFECT_STATISTICS
 	resistance_flags = FIRE_PROOF
 	can_be_tied = FALSE
 
@@ -71,6 +75,7 @@
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
 	worn_icon_digi = 'modular_skyrat/modules/reagent_forging/icons/mob/forge_clothing_digi.dmi'
 	armor = list(MELEE = 20, BULLET = 20, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 0, ACID = 0)
+	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR | MATERIAL_AFFECT_STATISTICS
 	resistance_flags = FIRE_PROOF
 	can_be_tied = FALSE
 
@@ -87,6 +92,7 @@
 	worn_icon = 'modular_skyrat/modules/reagent_forging/icons/mob/forge_clothing.dmi'
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 	armor = list(MELEE = 20, BULLET = 20, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 0, ACID = 0)
+	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR | MATERIAL_AFFECT_STATISTICS
 	resistance_flags = FIRE_PROOF
 	can_be_tied = FALSE
 
@@ -101,6 +107,7 @@
 	icon_state = "ringsilver"
 	inhand_icon_state = "sring"
 	worn_icon_state = "sring"
+	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR | MATERIAL_AFFECT_STATISTICS
 
 /obj/item/clothing/gloves/ring/reagent_clothing/Initialize(mapload)
 	. = ..()
@@ -116,6 +123,7 @@
 	body_parts_covered = NECK
 	slot_flags = ITEM_SLOT_NECK
 	w_class = WEIGHT_CLASS_SMALL
+	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR | MATERIAL_AFFECT_STATISTICS
 
 /obj/item/clothing/neck/collar/reagent_clothing/Initialize(mapload)
 	. = ..()
@@ -124,6 +132,7 @@
 /obj/item/restraints/handcuffs/reagent_clothing
 	name = "handcuffs"
 	desc = "A pair of handcuffs that are ready to be imbued."
+	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR | MATERIAL_AFFECT_STATISTICS
 
 /obj/item/restraints/handcuffs/reagent_clothing/Initialize(mapload)
 	. = ..()

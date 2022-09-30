@@ -11,26 +11,30 @@
 	var/goal_item_path
 	///the name of the goal item
 	var/goal_name
-	///the amount of chains within the bench
-	var/current_chain = 0
-	///the amount of chains required
-	var/required_chain = 0
-	///the amount of plates within the bench
-	var/current_plate = 0
-	///the amount of plates required
-	var/required_plate = 0
-	///the amount of coils within the bench
-	var/current_coil = 0
-	///the amount of coils required
-	var/required_coil = 0
-	///the amount of wood within the bench
-	var/current_wood = 0
-	///the amount of wood required
-	var/required_wood = 0
+	///what mats are allowed to be entered into the bench
+	var/static/list/allowed_mats = list(
+		/obj/item/stack/sheet/mineral/wood,
+		/obj/item/forging/complete/plate,
+		/obj/item/forging/complete/chain,
+	)
+	///what mats we currently have entered in the bench
+	var/list/current_mats = list(
+		/obj/item/stack/sheet/mineral/wood = 0,
+		/obj/item/forging/complete/plate = 0,
+		/obj/item/forging/complete/chain = 0,
+	)
+	///what mats we need to current the goal item
+	var/list/required_mats = list(
+		/obj/item/stack/sheet/mineral/wood = 0,
+		/obj/item/forging/complete/plate = 0,
+		/obj/item/forging/complete/chain = 0,
+	)
 	///the amount of hits required to complete the item
 	var/required_hits = 0
 	///the current amount of hits
 	var/current_hits = 0
+	///the last stored material
+	var/matdatum_ref
 	//so we can't just keep being hit without cooldown
 	COOLDOWN_DECLARE(hit_cooldown)
 	///the choices allowed in crafting
@@ -56,25 +60,21 @@
 
 /obj/structure/reagent_crafting_bench/examine(mob/user)
 	. = ..()
-	if(current_chain)
-		. += span_notice("[current_chain] chains stored.")
-	if(current_plate)
-		. += span_notice("[current_plate] plates stored.")
-	if(current_coil)
-		. += span_notice("[current_coil] coils stored.")
-	if(current_wood)
-		. += span_notice("[current_wood] wood stored.<br>")
+	if(current_mats[/obj/item/forging/complete/chain])
+		. += span_notice("[current_mats[/obj/item/forging/complete/chain]] chains stored.")
+	if(current_mats[/obj/item/forging/complete/plate])
+		. += span_notice("[current_mats[/obj/item/forging/complete/plate]] plates stored.")
+	if(current_mats[/obj/item/stack/sheet/mineral/wood])
+		. += span_notice("[current_mats[/obj/item/stack/sheet/mineral/wood]] wood stored.<br>")
 	if(goal_name)
 		. += span_notice("Goal Item: [goal_name]")
 		. += span_notice("When you have the necessary materials, begin hammering!<br>")
-		if(required_chain)
-			. += span_warning("[required_chain] chains required.")
-		if(required_plate)
-			. += span_warning("[required_plate] plates required.")
-		if(required_coil)
-			. += span_warning("[required_coil] coils required.")
-		if(required_wood)
-			. += span_warning("[required_wood] wood required.")
+		if(required_mats[/obj/item/forging/complete/chain])
+			. += span_warning("[required_mats[/obj/item/forging/complete/chain]] chains required.")
+		if(required_mats[/obj/item/forging/complete/plate])
+			. += span_warning("[required_mats[/obj/item/forging/complete/plate]] plates required.")
+		if(required_mats[/obj/item/stack/sheet/mineral/wood])
+			. += span_warning("[required_mats[/obj/item/stack/sheet/mineral/wood]] wood required.")
 	if(length(contents))
 		. += span_notice("<br>Held Item: [contents[1]]")
 
@@ -110,42 +110,42 @@
 	goal_item_path = allowed_choices[target_choice]
 	switch(target_choice)
 		if("Chain Helmet")
-			required_chain = 5
+			required_mats[/obj/item/forging/complete/chain] = 5
 		if("Chain Armor")
-			required_chain = 6
+			required_mats[/obj/item/forging/complete/chain] = 6
 		if("Chain Gloves")
-			required_chain = 4
+			required_mats[/obj/item/forging/complete/chain] = 4
 		if("Chain Boots")
-			required_chain = 4
+			required_mats[/obj/item/forging/complete/chain] = 4
 		if("Plated Boots")
-			required_plate = 4
+			required_mats[/obj/item/forging/complete/plate] = 4
 		if("Horseshoes")
-			required_chain = 4
+			required_mats[/obj/item/forging/complete/chain] = 4
 		if("Ring")
-			required_chain = 2
+			required_mats[/obj/item/forging/complete/chain] = 2
 		if("Collar")
-			required_chain = 3
+			required_mats[/obj/item/forging/complete/chain] = 3
 		if("Handcuffs")
-			required_chain = 10
+			required_mats[/obj/item/forging/complete/chain] = 5
 		if("Borer Cage")
-			required_plate = 6
+			required_mats[/obj/item/forging/complete/plate] = 6
 		if("Pavise Shield")
-			required_plate = 8
+			required_mats[/obj/item/forging/complete/plate] = 8
 		if("Buckler Shield")
-			required_plate = 5
+			required_mats[/obj/item/forging/complete/plate] = 5
 		if("Coil")
-			required_chain = 2
+			required_mats[/obj/item/forging/complete/chain] = 2
 		if("Seed Mesh")
-			required_chain = 4
-			required_plate = 1
+			required_mats[/obj/item/forging/complete/chain] = 4
+			required_mats[/obj/item/forging/complete/plate] = 1
 		if("Primitive Centrifuge")
-			required_plate = 1
+			required_mats[/obj/item/forging/complete/plate] = 1
 		if("Bokken")
-			required_wood = 4
+			required_mats[/obj/item/stack/sheet/mineral/wood] = 4
 		if("Bow")
-			required_wood = 4
+			required_mats[/obj/item/stack/sheet/mineral/wood] = 4
 	if(!required_hits)
-		required_hits = (required_chain * 2) + (required_plate * 2) + (required_coil * 2) + (required_wood * 2)
+		required_hits = (required_mats[/obj/item/forging/complete/chain] * 2) + (required_mats[/obj/item/forging/complete/plate] * 2) + (required_mats[/obj/item/stack/sheet/mineral/wood] * 2)
 	balloon_alert(user, "choice made!")
 	update_appearance()
 
@@ -154,22 +154,18 @@
 	current_hits = 0
 	goal_item_path = null
 	goal_name = null
-	required_chain = 0
-	required_plate = 0
-	required_coil = 0
-	required_wood = 0
+	required_mats[/obj/item/forging/complete/chain] = 0
+	required_mats[/obj/item/forging/complete/plate] = 0
+	required_mats[/obj/item/stack/sheet/mineral/wood] = 0
 
 /obj/structure/reagent_crafting_bench/proc/check_required_materials(mob/living/user)
-	if(current_chain < required_chain)
+	if(current_mats[/obj/item/forging/complete/chain] < required_mats[/obj/item/forging/complete/chain])
 		balloon_alert(user, "not enough materials!")
 		return FALSE
-	if(current_plate < required_plate)
+	if(current_mats[/obj/item/forging/complete/plate] < required_mats[/obj/item/forging/complete/plate])
 		balloon_alert(user, "not enough materials!")
 		return FALSE
-	if(current_coil < required_coil)
-		balloon_alert(user, "not enough materials!")
-		return FALSE
-	if(current_wood < required_wood)
+	if(current_mats[/obj/item/stack/sheet/mineral/wood] < required_mats[/obj/item/stack/sheet/mineral/wood])
 		balloon_alert(user, "not enough materials!")
 		return FALSE
 	return TRUE
@@ -179,27 +175,19 @@
 	update_appearance()
 
 	//the block of code where we add the amounts for each type
-	if(istype(attacking_item, /obj/item/stack/sheet/mineral/wood))
-		var/obj/item/stack/sheet/mineral/wood/attacking_wood = attacking_item
-		if(!attacking_wood.use(1))
-			return
-		current_wood++
-		balloon_alert(user, "wood added!")
-		return
-	if(istype(attacking_item, /obj/item/forging/complete/plate))
-		qdel(attacking_item)
-		current_plate++
-		balloon_alert(user, "plate added!")
-		return
-	if(istype(attacking_item, /obj/item/forging/complete/chain))
-		qdel(attacking_item)
-		current_chain++
-		balloon_alert(user, "chain added!")
-		return
-	if(istype(attacking_item, /obj/item/forging/coil))
-		qdel(attacking_item)
-		current_coil++
-		balloon_alert(user, "coil added!")
+	if(is_type_in_list(attacking_item, allowed_mats))
+		var/store_name = attacking_item.name
+		matdatum_ref = attacking_item.custom_materials
+		if(istype(attacking_item, /obj/item/stack))
+			var/obj/item/stack/attacking_stack = attacking_item
+			current_mats[attacking_stack.type] += attacking_stack.amount
+			if(!attacking_stack.use(attacking_stack.amount)) //I know its weird, but to prevent a runtime, it needs to be in this order
+				current_mats[attacking_stack.type] -= attacking_stack.amount
+				return
+		else
+			current_mats[attacking_item.type]++
+			qdel(attacking_item)
+		balloon_alert(user, "[store_name] added!")
 		return
 
 	//inserting a thing
@@ -218,13 +206,11 @@
 /obj/structure/reagent_crafting_bench/wrench_act(mob/living/user, obj/item/tool)
 	tool.play_tool_sound(src)
 	var/turf/src_turf = get_turf(src)
-	for(var/i in 1 to current_chain)
+	for(var/i in 1 to current_mats[/obj/item/forging/complete/chain])
 		new /obj/item/forging/complete/chain(src_turf)
-	for(var/i in 1 to current_plate)
+	for(var/i in 1 to current_mats[/obj/item/forging/complete/plate])
 		new /obj/item/forging/complete/plate(src_turf)
-	for(var/i in 1 to current_coil)
-		new /obj/item/forging/coil(src_turf)
-	var/spawning_wood = current_wood + 5
+	var/spawning_wood = current_mats[/obj/item/stack/sheet/mineral/wood] + 5
 	for(var/i in 1 to spawning_wood)
 		new /obj/item/stack/sheet/mineral/wood(src_turf)
 	qdel(src)
@@ -238,10 +224,10 @@
 			if(!complete_content?.spawning_item)
 				balloon_alert(user, "no craftable!")
 				return FALSE
-			if(current_wood < 2)
+			if(current_mats[/obj/item/stack/sheet/mineral/wood] < 2)
 				balloon_alert(user, "not enough wood!")
 				return FALSE
-			current_wood -= 2
+			current_mats[/obj/item/stack/sheet/mineral/wood] -= 2
 			var/obj/spawned_obj = new complete_content.spawning_item(src)
 			if(complete_content.custom_materials)
 				spawned_obj.set_custom_materials(complete_content.custom_materials, 1)
@@ -264,14 +250,15 @@
 		return FALSE
 	COOLDOWN_START(src, hit_cooldown, skill_modifier)
 	if(current_hits >= required_hits && !length(contents))
-		new goal_item_path(src)
+		var/obj/spawned_obj = new goal_item_path(src)
+		if(matdatum_ref)
+			spawned_obj.set_custom_materials(matdatum_ref)
 		balloon_alert(user, "item crafted!")
 		update_appearance()
 		user.mind.adjust_experience(/datum/skill/smithing, 30) //creating grants you something
-		current_chain -= required_chain
-		current_plate -= required_plate
-		current_coil -= required_coil
-		current_wood -= required_wood
+		current_mats[/obj/item/forging/complete/chain] -= required_mats[/obj/item/forging/complete/chain]
+		current_mats[/obj/item/forging/complete/plate] -= required_mats[/obj/item/forging/complete/plate]
+		current_mats[/obj/item/stack/sheet/mineral/wood] -= required_mats[/obj/item/stack/sheet/mineral/wood]
 		clear_required()
 		return FALSE
 	current_hits++
