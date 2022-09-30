@@ -6,7 +6,6 @@
 	new /obj/item/ammo_box/magazine/m14mm(src)
 	new /obj/item/ammo_box/magazine/m14mm(src)
 	new /obj/item/ammo_box/magazine/m14mm(src)
-	new /obj/item/ammo_box/magazine/m14mm(src)
 	new /obj/item/storage/belt/military/assault(src)
 	new /obj/item/clothing/under/pants/track/robohand(src)
 	new /obj/item/clothing/gloves/combat(src)
