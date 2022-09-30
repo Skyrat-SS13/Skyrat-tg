@@ -2,7 +2,7 @@
 #define BERSERK_HALF_CHARGE 100
 #define PROJECTILE_HIT_MULTIPLIER 1.5
 #define DAMAGE_TO_CHARGE_SCALE 1
-#define CHARGE_DRAINED_PER_SECOND 3
+#define CHARGE_DRAINED_PER_SECOND 5
 #define BERSERK_MELEE_ARMOR_ADDED 50
 #define BERSERK_ATTACK_SPEED_MODIFIER 0.25
 
@@ -75,7 +75,7 @@
 /obj/item/clothing/head/hooded/berserker/gatsu/Initialize(mapload)
 	. = ..()
 	ADD_TRAIT(src, TRAIT_NODROP, LOCKED_HELMET_TRAIT)
-	
+
 /obj/item/clothing/head/hooded/berserker/gatsu/examine()
 	. = ..()
 	. += span_warning("Berserk mode is usable at 100% charge but can gain up to 200% charge for extended duration.") //woag!!!
@@ -128,11 +128,11 @@
 	wound_bonus = 10
 	bare_wound_bonus = 5
 	resistance_flags = INDESTRUCTIBLE
-	armour_penetration = 50 //this boss is really hard and this sword is really big
-	block_chance = 30
+	armour_penetration = 35 //this boss is really hard and this sword is really big
+	block_chance = 25
 	sharpness = SHARP_EDGED
 	// aughhghghgh this really should be elementized but this works for now
-	var/faction_bonus_force = 100
+	var/faction_bonus_force = 70
 	var/static/list/nemesis_factions = list("mining", "boss")
 	/// how much stamina does it cost to roll
 	var/roll_stamcost = 15
