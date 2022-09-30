@@ -13,7 +13,7 @@
 	new /obj/item/clothing/shoes/combat(src)
 	new /obj/item/clothing/glasses/sunglasses/robohand(src)
 	new /obj/item/clothing/suit/armor/bulletproof/robohand(src)
-	new /obj/item/autosurgeon/bodypart/r_arm_robotic(src)
+	new /obj/item/autosurgeon/bodypart/l_arm_robotic(src)
 	new /obj/item/autosurgeon/syndicate/nodrop(src)
 
 /obj/item/autosurgeon/syndicate/esword_arm
