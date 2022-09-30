@@ -14,7 +14,12 @@
 	for (var/I in 1 to default_map_traits.len)
 		var/list/features = default_map_traits[I]
 		var/datum/space_level/S = new(I, features[DL_NAME], features[DL_TRAITS])
+<<<<<<< HEAD
 		z_list += S
+=======
+		manage_z_level(S)
+	generate_z_level_linkages() // Default Zs don't use add_new_zlevel() so they don't automatically generate z-linkages.
+>>>>>>> 5cd548d579e (Fixes multi-Z ruins (Ice Moon Mining Site) not spawning (#70097))
 
 /datum/controller/subsystem/mapping/proc/add_new_zlevel(name, traits = list(), z_type = /datum/space_level)
 	UNTIL(!adding_new_zlevel)
