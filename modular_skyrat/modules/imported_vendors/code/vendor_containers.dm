@@ -4,7 +4,7 @@
 	icon = 'modular_skyrat/modules/imported_vendors/icons/imported_quick_foods.dmi'
 	icon_state = "foodpack_generic_big"
 	illustration = null
-	custom_price = PAYCHECK_CREW * 2
+	custom_price = PAYCHECK_CREW * 1.8
 	///What the main course of this package is
 	var/main_course = /obj/item/trash/empty_food_tray
 	///What the side of this package should be
@@ -73,7 +73,7 @@
 	main_course = /obj/item/food/vendor_tray_meal/moonfish_nizaya
 	side_item = /obj/effect/spawner/random/vendor_meal_sides/tiziria
 	condiment_pack = /obj/item/reagent_containers/condiment/pack/bbqsauce
-	custom_price = PAYCHECK_CREW * 2.2 //Tizirian imports are a bit more expensive
+	custom_price = PAYCHECK_CREW * 2 //Tizirian imports are a bit more expensive
 
 /obj/item/storage/box/foodpack/tiziria/examine_more(mob/user)
 	. = ..()
