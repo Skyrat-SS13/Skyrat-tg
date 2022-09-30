@@ -27,6 +27,7 @@
 	fire_sound_volume = 100
 	bolt_wording = "fuckin' slide"
 	reload_time = 0 //ROLL THE BONES I'M CHIPPIN' IN
+	company_flag = COMPANY_MALORIAN
 	var/unrestricted = FALSE
 
 /obj/item/gun/ballistic/automatic/pistol/robohand/unrestricted
