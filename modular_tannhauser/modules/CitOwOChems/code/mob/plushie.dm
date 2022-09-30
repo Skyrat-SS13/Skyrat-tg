@@ -39,6 +39,7 @@
 	pressure_resistance = 200
 
 /mob/living/simple_animal/pet/plushie/Initialize()
+	AddElement(/datum/element/pet_bonus, "squeaks!")
 	. = ..()
 //	AddElement(/datum/element/mob_holder, "plushie")
 
