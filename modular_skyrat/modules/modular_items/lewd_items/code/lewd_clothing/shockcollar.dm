@@ -87,7 +87,7 @@
 
 /obj/item/electropack/shockcollar/pacify/equipped(mob/living/carbon/human/user, slot)
 	. = ..()
-	if(slot == ITEM_SLOT_NECK)
+	if(slot & ITEM_SLOT_NECK)
 		ADD_TRAIT(user, TRAIT_PACIFISM, "pacifying-collar")
 
 /obj/item/electropack/shockcollar/pacify/dropped(mob/living/carbon/human/user)

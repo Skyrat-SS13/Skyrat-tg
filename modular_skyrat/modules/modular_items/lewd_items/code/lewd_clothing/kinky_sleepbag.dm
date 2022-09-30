@@ -104,7 +104,7 @@
 
 /obj/item/clothing/suit/straight_jacket/kinky_sleepbag/equipped(mob/user, slot)
 	var/mob/living/carbon/human/affected_human = user
-	if(ishuman(user) && slot == ITEM_SLOT_OCLOTHING)
+	if(ishuman(user) && (slot & ITEM_SLOT_OCLOTHING))
 		ADD_TRAIT(user, TRAIT_FLOORED, CLOTHING_TRAIT)
 
 		affected_human.cut_overlay(affected_human.overlays_standing[SHOES_LAYER])
