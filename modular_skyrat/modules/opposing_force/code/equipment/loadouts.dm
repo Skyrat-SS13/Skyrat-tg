@@ -39,11 +39,11 @@
 	item_type = /obj/item/storage/backpack/duffelbag/syndie/loadout/donkshillkit
 	description = "Love Donk Pockets? Want to shill Donk Co. Toys? This bundle is for you! Contains some DonkSoft guns, a vending machine, restocking units, and a box of Donk Pockets."
 
-/datum/opposing_force_equipment/loadout/robohand // Why? It's fun, I guess
+/datum/opposing_force_equipment/loadout/robohand //PLUG THE CODE I' CHIPPIN' IN
 	name = "Robohand bundle"
 	item_type = /obj/item/storage/backpack/duffelbag/syndie/loadout/robohand
-	description = "Themed after the infamous terrorist(or not), Johnny Robohand. The gun inside requires your arm to be robotic. It comes with a robotic replacement arm. Wake the fuck up, samurai."
-	admin_note = "BIG FUCKING WARNING: This bundle is extremely powerful, containing a 60 damage gun and multiple magazines of ammunition, in addition to various implants. Use with EXTREME discretion."
+	description = "Authentic gear themed after infamous anti-corporate activist and possible terrorist Johnny Robohand. Wake the fuck up, samurai."
+	admin_note = "WARNING: This bundle is powerful, granting the user a wall-piercing variant of the 357 magnum with semi-potent armor to match. Weaker than some of the heavier firearm options, but grant with caution nonetheless."
 
 /datum/opposing_force_equipment/loadout/ocelotfoxtrot
 	name = "Snake Eater bundle"
