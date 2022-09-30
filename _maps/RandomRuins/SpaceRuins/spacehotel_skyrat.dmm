@@ -25,7 +25,7 @@
 "ai" = (
 /obj/machinery/power/tracker,
 /obj/structure/cable,
-/turf/template_noop,
+/turf/open/floor/iron/solarpanel,
 /area/template_noop)
 "aj" = (
 /obj/structure/chair/greyscale{
@@ -58,7 +58,6 @@
 /turf/open/floor/carpet,
 /area/ruin/space/has_grav/hotel)
 "ar" = (
-/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/disposalpipe/segment,
 /obj/machinery/door/airlock/grunge{
@@ -1225,15 +1224,17 @@
 /turf/open/floor/carpet/royalblack,
 /area/ruin/space/has_grav/hotel)
 "hs" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
-	dir = 8
+/obj/structure/disposalpipe/segment{
+	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
 	dir = 4
 	},
-/obj/structure/sink/directional/north,
-/turf/open/floor/carpet/neon/simple/white/nodots,
-/area/ruin/space/has_grav/hotel/guestroom/room_6)
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
+	dir = 8
+	},
+/turf/open/floor/carpet,
+/area/ruin/space/has_grav/hotel)
 "hu" = (
 /obj/machinery/chem_dispenser/drinks/fullupgrade{
 	dir = 4
@@ -2337,7 +2338,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
 	dir = 4
 	},
@@ -2493,6 +2493,9 @@
 /obj/structure/table,
 /obj/item/reagent_containers/spray/cleaner,
 /obj/effect/turf_decal/siding/blue{
+	dir = 1
+	},
+/obj/machinery/light{
 	dir = 1
 	},
 /turf/open/floor/iron/white,
@@ -2742,7 +2745,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
 	dir = 4
 	},
@@ -2836,7 +2838,6 @@
 	dir = 4
 	},
 /obj/item/kirbyplants/random,
-/obj/structure/cable,
 /turf/open/floor/carpet/black,
 /area/ruin/space/has_grav/hotel)
 "pC" = (
@@ -2876,7 +2877,6 @@
 /turf/open/floor/iron/white,
 /area/ruin/space/has_grav/hotel/pool)
 "pR" = (
-/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/disposalpipe/segment{
 	dir = 10
@@ -2918,13 +2918,10 @@
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/hotel/workroom/quarters)
 "qi" = (
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/structure/disposalpipe/segment,
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/siding/blue,
+/obj/machinery/light,
 /turf/open/floor/iron/white,
-/area/ruin/space/has_grav/hotel/workroom)
+/area/ruin/space/has_grav/hotel)
 "qj" = (
 /obj/machinery/disposal/bin,
 /obj/structure/disposalpipe/trunk{
@@ -3200,7 +3197,6 @@
 /obj/structure/disposalpipe/junction/flip{
 	dir = 4
 	},
-/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
 	dir = 8
 	},
@@ -3373,11 +3369,6 @@
 	},
 /turf/open/floor/carpet,
 /area/ruin/space/has_grav/hotel)
-"tK" = (
-/obj/effect/spawner/structure/window/reinforced,
-/obj/structure/bedsheetbin,
-/turf/open/floor/plating,
-/area/ruin/space/has_grav/hotel/dock)
 "tN" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
@@ -3549,7 +3540,6 @@
 /obj/structure/extinguisher_cabinet{
 	pixel_y = -30
 	},
-/obj/structure/cable,
 /turf/open/floor/carpet/black,
 /area/ruin/space/has_grav/hotel)
 "vt" = (
@@ -3613,7 +3603,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
 	dir = 4
 	},
-/obj/structure/cable,
 /turf/open/floor/carpet/black,
 /area/ruin/space/has_grav/hotel)
 "wc" = (
@@ -3967,11 +3956,6 @@
 /area/ruin/space/has_grav/hotel/bar)
 "yE" = (
 /turf/open/floor/glass/reinforced,
-/area/ruin/space/has_grav/hotel)
-"yH" = (
-/obj/machinery/power/apc/auto_name/directional/west,
-/obj/structure/cable,
-/turf/open/floor/carpet/black,
 /area/ruin/space/has_grav/hotel)
 "yL" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible{
@@ -4668,7 +4652,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
 	dir = 8
 	},
-/turf/open/floor/iron/showroomfloor,
+/turf/open/floor/iron/white,
 /area/ruin/space/has_grav/hotel/pool)
 "EP" = (
 /obj/structure/cable,
@@ -5277,6 +5261,7 @@
 "JG" = (
 /obj/structure/table/wood,
 /obj/item/modular_computer/laptop,
+/obj/item/device/traitor_announcer,
 /turf/open/floor/carpet/executive,
 /area/ruin/space/has_grav/hotel/workroom)
 "JJ" = (
@@ -5316,8 +5301,6 @@
 /area/ruin/space/has_grav/hotel)
 "JZ" = (
 /obj/structure/table,
-/obj/structure/cable,
-/obj/machinery/power/apc/auto_name/directional/north,
 /turf/open/floor/iron/white,
 /area/ruin/space/has_grav/hotel/workroom)
 "Kd" = (
@@ -5751,9 +5734,17 @@
 /turf/open/floor/iron/white,
 /area/ruin/space/has_grav/hotel/dock)
 "Ov" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /obj/machinery/light,
-/obj/structure/cable,
-/turf/open/floor/carpet/black,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
+	dir = 8
+	},
+/turf/open/floor/carpet,
 /area/ruin/space/has_grav/hotel)
 "Ow" = (
 /obj/machinery/power/rtg/advanced,
@@ -5911,7 +5902,6 @@
 "Ps" = (
 /obj/structure/table,
 /obj/item/storage/backpack/duffelbag/med/surgery,
-/obj/machinery/light,
 /turf/open/floor/iron/showroomfloor,
 /area/ruin/space/has_grav/hotel)
 "Pw" = (
@@ -6378,7 +6368,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2{
 	dir = 8
 	},
-/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
 	dir = 4
 	},
@@ -8635,7 +8624,7 @@ RY
 yX
 tU
 yE
-nf
+hs
 di
 ck
 JV
@@ -8705,7 +8694,7 @@ zG
 En
 IP
 yE
-nf
+hs
 di
 Es
 RI
@@ -8845,7 +8834,7 @@ nr
 yX
 nf
 yE
-nf
+hs
 di
 Us
 JG
@@ -8915,7 +8904,7 @@ es
 yX
 nf
 yE
-nf
+hs
 di
 rV
 sg
@@ -8985,7 +8974,7 @@ yX
 yX
 nf
 yE
-nf
+hs
 di
 di
 di
@@ -9265,7 +9254,7 @@ Lo
 yX
 nf
 yE
-nf
+hs
 di
 di
 di
@@ -9335,7 +9324,7 @@ av
 av
 iQ
 yE
-Ba
+Ov
 di
 Cs
 lP
@@ -9364,7 +9353,7 @@ ZZ
 jc
 jc
 jc
-yH
+jc
 am
 bE
 jQ
@@ -9407,7 +9396,7 @@ Od
 yE
 pR
 ar
-qi
+ep
 ep
 DV
 do
@@ -9434,7 +9423,7 @@ so
 so
 so
 so
-Ov
+iC
 am
 bE
 jQ
@@ -9906,7 +9895,7 @@ mO
 Ul
 Ps
 qQ
-bP
+qi
 am
 DL
 ey
@@ -10590,7 +10579,7 @@ fb
 Cj
 nc
 fb
-hs
+Vx
 Vx
 cf
 bW
@@ -10964,7 +10953,7 @@ aa
 eG
 Pj
 Pj
-tK
+Pj
 eG
 Pj
 Pj
