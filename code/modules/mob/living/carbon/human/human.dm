@@ -1019,7 +1019,7 @@
 		apply_damage(oversized_piggydam, BRUTE, affecting, wound_bonus=wound_bon)
 		playsound(src, 'sound/effects/splat.ogg', 50, TRUE)
 		src.AddElement(/datum/element/squish, 20 SECONDS) // Totally not stolen from a vending machine code
-		src.Paralyze(oversized_piggyparalyze)
+		src.Knockdown(oversized_piggyknock)
 		target.Knockdown(1) // simply make the oversized one fall
 		if(get_turf(target) != get_turf(src))
 			target.throw_at(get_turf(src), 1, 1, spin=FALSE, quickstart=FALSE)
