@@ -1018,7 +1018,7 @@
 			to_chat(src, span_danger("You hurt your [affecting.name] while trying to endure the weight of [target]!"))
 		apply_damage(oversized_piggydam, BRUTE, affecting, wound_bonus=wound_bon)
 		playsound(src, 'sound/effects/splat.ogg', 50, TRUE)
-		src.AddElement(/datum/element/squish, 20 SECONDS) // Totally not stolen from a vending machine code
+		AddElement(/datum/element/squish, 20 SECONDS) // Totally not stolen from a vending machine code
 		Knockdown(oversized_piggyknock) // Knocking down the unlucky guy
 		target.Knockdown(1) // simply make the oversized one fall
 		if(get_turf(target) != get_turf(src))
