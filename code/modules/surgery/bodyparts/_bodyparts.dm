@@ -795,38 +795,16 @@
 	else
 		species_color = null
 
-<<<<<<< HEAD
-		if(((MUTCOLORS in owner_species.species_traits) || (DYNCOLORS in owner_species.species_traits))) //Ethereal code. Motherfuckers.
-			if(owner_species.fixed_mut_color)
-				species_color = owner_species.fixed_mut_color
-			else
-				species_color = human_owner.dna.features["mcolor"]
-		else
-			species_color = null
-
-		draw_color = mutation_color
-		if(should_draw_greyscale) //Should the limb be colored?
-			draw_color ||= (species_color) || (skin_tone && skintone2hex(skin_tone))
-
-		dmg_overlay_type = owner_species.damage_overlay_type
-
-		// SKYRAT EDIT ADDITION
-		markings = LAZYCOPY(owner_species.body_markings[body_zone])
-		if(aux_zone)
-			aux_zone_markings = LAZYCOPY(owner_species.body_markings[aux_zone])
-		markings_alpha = owner_species.markings_alpha
-		// SKYRAT EDIT END
-
-	else if(animal_origin == MONKEY_BODYPART) //currently monkeys are the only non human mob to have damage overlays.
-		dmg_overlay_type = animal_origin
-
-	if(!IS_ORGANIC_LIMB(src))
-		dmg_overlay_type = "robotic"
-=======
 	draw_color = variable_color
 	if(should_draw_greyscale) //Should the limb be colored?
 		draw_color ||= (species_color) || (skin_tone && skintone2hex(skin_tone))
->>>>>>> ab6dcbf4cab (Virtual Limbsanity (#69841))
+
+	// SKYRAT EDIT ADDITION
+	markings = LAZYCOPY(owner_species.body_markings[body_zone])
+	if(aux_zone)
+		aux_zone_markings = LAZYCOPY(owner_species.body_markings[aux_zone])
+	markings_alpha = owner_species.markings_alpha
+	// SKYRAT EDIT END
 
 	recolor_external_organs()
 	return TRUE
@@ -866,32 +844,6 @@
 	var/image/limb = image(layer = -BODYPARTS_LAYER, dir = image_dir)
 	var/image/aux
 
-<<<<<<< HEAD
-	if(animal_origin)
-		if(IS_ORGANIC_LIMB(src))
-
-			if (animal_origin == MONKEY_BODYPART)
-				limb.icon = 'icons/mob/species/monkey/bodyparts.dmi'
-			else
-				limb.icon = 'icons/mob/species/alien/bodyparts.dmi'
-
-			if(limb_id == "husk")
-				limb.icon_state = "[animal_origin]_husk_[body_zone]"
-			else
-				limb.icon_state = "[animal_origin]_[body_zone]"
-		else
-			limb.icon = 'icons/mob/augmentation/augments.dmi'
-			limb.icon_state = "[animal_origin]_[body_zone]"
-
-		if(blocks_emissive)
-			var/mutable_appearance/limb_em_block = emissive_blocker(limb.icon, limb.icon_state, alpha = limb.alpha)
-			limb_em_block.dir = image_dir
-			limb.overlays += limb_em_block
-		. += limb
-		return
-
-=======
->>>>>>> ab6dcbf4cab (Virtual Limbsanity (#69841))
 	//HUSK SHIIIIT
 	if(is_husked)
 		limb.icon = icon_husk
@@ -916,7 +868,6 @@
 		limb.icon_state = "invisible_[body_zone]"
 		. += limb
 		return .
->>>>>>> ab6dcbf4cab (Virtual Limbsanity (#69841))
 
 	////This is the MEAT of limb icon code
 	limb.icon = icon_greyscale
