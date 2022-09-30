@@ -19,11 +19,10 @@
 	max_occurrences = 4
 	earliest_start = 20 MINUTES
 
-	min_players = 10
-
-/datum/round_event_control/supermatter_surge/canSpawnEvent()
+/datum/round_event_control/supermatter_surge/can_spawn_event(players_amt)
 	if(!GLOB.main_supermatter_engine?.has_been_powered) // We don't want to cause a deadly delam if the engineers haven't started the engine yet.
 		return FALSE
+
 	return ..()
 
 /datum/round_event/supermatter_surge
