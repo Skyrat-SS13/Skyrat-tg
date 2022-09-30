@@ -165,7 +165,7 @@
 		adjustOxyLoss(max(maxHealth * 2 - getToxLoss() - getFireLoss() - getBruteLoss() - getOxyLoss(), 0))
 		death(FALSE)
 		ghostize(FALSE) // Disallows reentering body and disassociates mind
-*/
+
 //SKYRAT EDIT REMOVAL END
 
 //SKYRAT EDIT PAI START - Returns ability to leave your PAI
@@ -186,7 +186,7 @@
 //SKYRAT EDIT PAI END
 
 //SKYRAT EDIT REMOVAL START
-/*
+
 /mob/living/carbon/alien/humanoid/verb/suicide()
 	set hidden = TRUE
 	if(!canSuicide())
