@@ -2052,7 +2052,7 @@
 "ahB" = (
 /obj/machinery/power/tracker,
 /obj/structure/cable,
-/turf/open/floor/iron/solarpanel/airless,
+/turf/open/floor/plating/airless,
 /area/station/solars/starboard/fore)
 "ahC" = (
 /obj/structure/chair/stool,
@@ -4738,7 +4738,6 @@
 /area/station/security/warden)
 "apL" = (
 /obj/machinery/door/firedoor,
-/obj/structure/cable,
 /obj/machinery/mineral/ore_redemption{
 	input_dir = 4;
 	output_dir = 8
@@ -7685,7 +7684,7 @@
 "azJ" = (
 /obj/machinery/power/tracker,
 /obj/structure/cable,
-/turf/open/floor/iron/solarpanel/airless,
+/turf/open/floor/plating/airless,
 /area/station/maintenance/solars/port)
 "azK" = (
 /obj/structure/lattice/catwalk,
@@ -22178,6 +22177,7 @@
 	pixel_x = -24
 	},
 /obj/structure/disposalpipe/segment,
+/obj/structure/cable,
 /turf/open/floor/iron/white,
 /area/station/command/heads_quarters/cmo)
 "bys" = (
@@ -22320,6 +22320,7 @@
 /obj/machinery/atmospherics/pipe/smart/simple/dark/visible{
 	dir = 6
 	},
+/obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/engineering/atmos)
 "byU" = (
@@ -34868,6 +34869,7 @@
 	pixel_y = -8
 	},
 /obj/item/key/collar,
+/obj/effect/decal/cleanable/cum/femcum,
 /turf/open/floor/glass,
 /area/station/maintenance/department/security/brig)
 "cJo" = (
@@ -38904,11 +38906,6 @@
 /obj/effect/turf_decal/trimline/blue/filled/line,
 /turf/open/floor/iron/white,
 /area/station/medical/psychology)
-"gkV" = (
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/simple/purple/visible,
-/turf/open/floor/iron,
-/area/station/engineering/atmos)
 "gkX" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Storage"
@@ -38961,6 +38958,7 @@
 /obj/machinery/atmospherics/pipe/bridge_pipe/dark/visible{
 	dir = 4
 	},
+/obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/engineering/atmos)
 "gmT" = (
@@ -42096,12 +42094,12 @@
 	name = "Incinerator"
 	},
 /obj/effect/landmark/navigate_destination,
-/obj/structure/cable,
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/smart/simple/dark/visible{
 	dir = 4
 	},
 /obj/effect/mapping_helpers/airlock/access/all/engineering/atmos,
+/obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/station/engineering/atmospherics_engine)
 "iRs" = (
@@ -42620,6 +42618,7 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
+/obj/structure/cable,
 /turf/open/floor/iron/white,
 /area/station/command/heads_quarters/cmo)
 "jtc" = (
@@ -43326,6 +43325,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
+/obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/station/commons/fitness/recreation)
 "jUP" = (
@@ -46101,16 +46101,6 @@
 	},
 /turf/open/floor/wood/parquet,
 /area/station/maintenance/department/security/brig)
-"mnV" = (
-/obj/machinery/door/firedoor,
-/obj/machinery/door/poddoor/shutters/radiation/preopen{
-	id = "atmoshfr";
-	name = "Radiation Shutters"
-	},
-/obj/structure/cable,
-/obj/effect/turf_decal/box,
-/turf/open/floor/iron/dark,
-/area/station/engineering/atmos/hfr_room)
 "mor" = (
 /obj/machinery/door/airlock/public/glass{
 	name = "Aerobridge"
@@ -46674,6 +46664,7 @@
 /obj/effect/turf_decal/trimline/yellow/filled/warning{
 	dir = 8
 	},
+/obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/station/engineering/atmospherics_engine)
 "mMc" = (
@@ -46974,6 +46965,16 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden,
 /turf/closed/wall,
 /area/station/medical/treatment_center)
+"mXP" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/door/poddoor/shutters/radiation/preopen{
+	id = "atmoshfr";
+	name = "Radiation Shutters"
+	},
+/obj/effect/turf_decal/box,
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/station/engineering/atmos/hfr_room)
 "mXS" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -47447,6 +47448,7 @@
 /obj/machinery/door/window/brigdoor{
 	dir = 4
 	},
+/obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/security/prison)
 "ntx" = (
@@ -49364,10 +49366,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/science/xenobiology)
-"oNH" = (
-/obj/structure/cable,
-/turf/open/floor/iron,
-/area/station/engineering/atmos)
 "oNZ" = (
 /obj/structure/railing{
 	dir = 8
@@ -52927,13 +52925,6 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
 /turf/open/floor/iron/freezer,
 /area/station/security/prison)
-"rGi" = (
-/obj/structure/cable,
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
-/turf/open/floor/iron,
-/area/station/engineering/atmos)
 "rGm" = (
 /obj/machinery/light_switch{
 	pixel_x = -20;
@@ -55290,6 +55281,7 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
+/obj/structure/cable,
 /turf/open/floor/iron/white,
 /area/station/command/heads_quarters/cmo)
 "tEP" = (
@@ -57140,6 +57132,13 @@
 	},
 /turf/open/floor/iron/white,
 /area/station/medical/cryo)
+"uYU" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/station/engineering/atmos)
 "uZJ" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -58455,6 +58454,7 @@
 "vUx" = (
 /obj/effect/spawner/random/trash/mess,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/station/maintenance/department/crew_quarters/dorms)
 "vVh" = (
@@ -59212,7 +59212,6 @@
 /obj/item/toy/crayon/spraycan,
 /obj/structure/table/wood,
 /obj/machinery/newscaster/directional/north,
-/obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/station/service/library/artgallery)
 "wBQ" = (
@@ -59507,10 +59506,6 @@
 	},
 /turf/open/floor/plating,
 /area/station/maintenance/department/engine)
-"wMa" = (
-/obj/structure/cable,
-/turf/closed/wall/r_wall,
-/area/station/engineering/atmospherics_engine)
 "wMn" = (
 /obj/structure/window/reinforced/spawner/east,
 /obj/structure/disposalpipe/segment,
@@ -103039,8 +103034,8 @@ bMe
 jhq
 cwq
 aRy
-phJ
-phJ
+aRy
+aRy
 cnq
 hFR
 bMf
@@ -103295,9 +103290,9 @@ cnq
 cnq
 aEi
 cnq
-mnV
-lWo
 jHh
+lWo
+mXP
 cnq
 iQR
 bMf
@@ -103552,9 +103547,9 @@ cjw
 ogp
 gip
 xQC
-rGi
 ogp
 ogp
+uYU
 wEq
 pAR
 bMf
@@ -103809,7 +103804,7 @@ bMf
 bMf
 rmW
 vcz
-oNH
+bMf
 bMf
 byS
 tGm
@@ -104066,7 +104061,7 @@ bMf
 bSR
 lXC
 rro
-gkV
+wtw
 wtw
 gmN
 wwN
@@ -104323,7 +104318,7 @@ bMf
 bMf
 oKh
 xfg
-wMa
+xfg
 xfg
 iRf
 xfg
