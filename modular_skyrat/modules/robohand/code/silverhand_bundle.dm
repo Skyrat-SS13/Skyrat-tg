@@ -19,7 +19,7 @@
 /obj/item/autosurgeon/syndicate/esword_arm
 	starting_organ = /obj/item/organ/internal/cyberimp/arm/esword
 
-/obj/item/clothing/under/pants/black/robohand
+/obj/item/clothing/under/pants/track/robohand
 	name = "rockerboy pants"
 	desc = "Extremely comfortable pants custom-made in the memory of Johnny Robohand, padded with kevlar for your enjoyment."
 	armor = list(MELEE = 20, BULLET = 20, LASER = 20, ENERGY = 20, BOMB = 20, BIO = 0, FIRE = 0, ACID = 0, WOUND = 100)
@@ -35,7 +35,7 @@
 	armor = list(MELEE = 20, BULLET = 60, LASER = 20, ENERGY = 20, BOMB = 20, BIO = 0, FIRE = 0, ACID = 0, WOUND = 100)
 
 //Again, not a bug, it's a feature. ALL PARTS COVERED!!
-/obj/item/clothing/suit/armor/bulletproof/robohand
+/obj/item/clothing/suit/armor/bulletproof/old/robohand
 	name = "custom-fit ballistic vest"
 	desc = "One of a kind bulletproof armor custom made to fit one person, Johnny Robohand. It seems that your arms are protected by it as well!"
 	armor = list(MELEE = 15, BULLET = 60, LASER = 10, ENERGY = 10, BOMB = 40, BIO = 0, FIRE = 50, ACID = 50, WOUND = 100) //exact same as the normal bulletproof vest but wound-resistant
