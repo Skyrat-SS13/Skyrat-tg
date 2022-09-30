@@ -26,9 +26,9 @@
 	//noPower = 'sound/machines/doorclick.ogg'
 	var/forcedOpen = 'modular_skyrat/modules/aesthetics/airlock/sound/open_force.ogg' //Come on guys, why aren't all the sound files like this.
 	var/forcedClosed = 'modular_skyrat/modules/aesthetics/airlock/sound/close_force.ogg'
-
 	var/has_environment_lights = TRUE //Does this airlock emit a light?
-	var/light_color_poweron = AIRLOCK_POWERON_LIGHT_COLOR
+	var/external = FALSE
+/*	var/light_color_poweron = AIRLOCK_POWERON_LIGHT_COLOR
 	var/light_color_bolts = AIRLOCK_BOLTS_LIGHT_COLOR
 	var/light_color_access = AIRLOCK_ACCESS_LIGHT_COLOR
 	var/light_color_emergency = AIRLOCK_EMERGENCY_LIGHT_COLOR
@@ -112,48 +112,48 @@
 			lights_overlay = "lights_opening"
 			pre_light_color = light_color_access
 
-	. += get_airlock_overlay(frame_state, icon, em_block = TRUE)
+	. += get_airlock_overlay(frame_state || AIRLOCK_FRAME_CLOSED, icon, src, em_block = TRUE) // So we don't runtime
 	if(airlock_material)
-		. += get_airlock_overlay("[airlock_material]_[frame_state]", overlays_file, em_block = TRUE)
+		. += get_airlock_overlay("[airlock_material]_[frame_state]", overlays_file, src, em_block = TRUE)
 	else
-		. += get_airlock_overlay("fill_[frame_state]", icon, em_block = TRUE)
+		. += get_airlock_overlay("fill_[frame_state]", icon, src, em_block = TRUE)
 
 	if(lights && hasPower())
-		. += get_airlock_overlay("lights_[light_state]", overlays_file, em_block = FALSE)
+		. += get_airlock_overlay("lights_[light_state]", overlays_file, src, em_block = FALSE)
 		pre_light_range = door_light_range
 		pre_light_power = door_light_power
 		if(has_environment_lights)
 			set_light(pre_light_range, pre_light_power, pre_light_color, TRUE)
 			if(multi_tile)
-				filler.set_light(pre_light_range, pre_light_power, pre_light_color)
+				filler?.set_light(pre_light_range, pre_light_power, pre_light_color)
 	else
 		lights_overlay = ""
 
 	update_vis_overlays(lights_overlay)
 
 	if(panel_open)
-		. += get_airlock_overlay("panel_[frame_state][security_level ? "_protected" : null]", overlays_file, em_block = TRUE)
+		. += get_airlock_overlay("panel_[frame_state][security_level ? "_protected" : null]", overlays_file, src, em_block = TRUE)
 	if(frame_state == AIRLOCK_FRAME_CLOSED && welded)
-		. += get_airlock_overlay("welded", overlays_file, em_block = TRUE)
+		. += get_airlock_overlay("welded", overlays_file, src, em_block = TRUE)
 
 	if(airlock_state == AIRLOCK_EMAG)
-		. += get_airlock_overlay("sparks", overlays_file, em_block = FALSE)
+		. += get_airlock_overlay("sparks", overlays_file, src, em_block = FALSE)
 
 	if(hasPower())
 		if(frame_state == AIRLOCK_FRAME_CLOSED)
 			if(atom_integrity < integrity_failure * max_integrity)
-				. += get_airlock_overlay("sparks_broken", overlays_file, em_block = FALSE)
+				. += get_airlock_overlay("sparks_broken", overlays_file, src, em_block = FALSE)
 			else if(atom_integrity < (0.75 * max_integrity))
-				. += get_airlock_overlay("sparks_damaged", overlays_file, em_block = FALSE)
+				. += get_airlock_overlay("sparks_damaged", overlays_file, src, em_block = FALSE)
 		else if(frame_state == AIRLOCK_FRAME_OPEN)
 			if(atom_integrity < (0.75 * max_integrity))
-				. += get_airlock_overlay("sparks_open", overlays_file, em_block = FALSE)
+				. += get_airlock_overlay("sparks_open", overlays_file, src, em_block = FALSE)
 
 	if(note)
-		. += get_airlock_overlay(get_note_state(frame_state), note_overlay_file, em_block = TRUE)
+		. += get_airlock_overlay(get_note_state(frame_state), note_overlay_file, src, em_block = TRUE)
 
 	if(frame_state == AIRLOCK_FRAME_CLOSED && seal)
-		. += get_airlock_overlay("sealed", overlays_file, em_block = TRUE)
+		. += get_airlock_overlay("sealed", overlays_file, src, em_block = TRUE)
 
 	if(hasPower() && unres_sides)
 		for(var/heading in list(NORTH,SOUTH,EAST,WEST))
@@ -184,7 +184,7 @@
 	if(multi_tile)
 		vis_overlay1.dir = src.dir
 		vis_overlay2.dir = src.dir
-
+ */
 //STATION AIRLOCKS
 /obj/machinery/door/airlock
 	icon = 'modular_skyrat/modules/aesthetics/airlock/icons/airlocks/station/public.dmi'

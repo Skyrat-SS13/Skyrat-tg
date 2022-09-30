@@ -1,18 +1,3 @@
-<<<<<<< HEAD
-GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdrop, new)
-
-/atom/movable/openspace_backdrop
-	name = "openspace_backdrop"
-	anchored = TRUE
-
-	icon = 'icons/turf/floors.dmi'
-	icon_state = "grey"
-	plane = OPENSPACE_BACKDROP_PLANE
-	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-	vis_flags = VIS_INHERIT_ID
-
-=======
->>>>>>> 23bfdec8f43 (Multiz Rework: Human Suffering Edition (Contains PLANE CUBE) (#69115))
 /turf/open/openspace
 	name = "open space"
 	desc = "Watch your step!"

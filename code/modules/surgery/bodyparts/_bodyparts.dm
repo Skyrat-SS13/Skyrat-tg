@@ -995,7 +995,7 @@
 
 			var/mutable_appearance/accessory_overlay
 			var/mutable_appearance/emissive
-			accessory_overlay = mutable_appearance(body_marking.icon, "[body_marking.icon_state]_[render_limb_string][gender_modifier]", -BODYPARTS_LAYER)
+			accessory_overlay = mutable_appearance(body_marking.icon, "[body_marking.icon_state]_[render_limb_string][gender_modifier]", -BODYPARTS_LAYER, plane = src.plane)
 			accessory_overlay.alpha = markings_alpha
 			if(markings[key][2])
 				emissive = emissive_appearance_copy(accessory_overlay)

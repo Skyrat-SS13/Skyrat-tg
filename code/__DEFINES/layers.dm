@@ -27,10 +27,6 @@
 ///Slightly above the game plane but does not catch mouse clicks. Useful for certain visuals that should be clicked through, like seethrough trees
 #define SEETHROUGH_PLANE -3
 #define ABOVE_GAME_PLANE -2
-
-<<<<<<< HEAD
-#define MOUSE_TRANSPARENT_PLANE -1 //SKYRAT EDIT ADDITION - Pollution port
-=======
 #define RENDER_PLANE_GAME_WORLD -1
 
 #define BLACKNESS_PLANE 0 //To keep from conflicts with SEE_BLACKNESS internals
@@ -95,7 +91,6 @@
 #define HIGHEST_EVER_PLANE RENDER_PLANE_MASTER
 /// The range unique planes can be in
 #define PLANE_RANGE (HIGHEST_EVER_PLANE - LOWEST_EVER_PLANE)
->>>>>>> 23bfdec8f43 (Multiz Rework: Human Suffering Edition (Contains PLANE CUBE) (#69115))
 
 // PLANE_SPACE layer(s)
 #define SPACE_LAYER 1.8

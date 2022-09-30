@@ -134,8 +134,8 @@
 	var/noPower = 'sound/machines/doorclick.ogg'
 	var/previous_airlock = /obj/structure/door_assembly //what airlock assembly mineral plating was applied to
 	var/airlock_material //material of inner filling; if its an airlock with glass, this should be set to "glass"
-	var/overlays_file = 'icons/obj/doors/airlocks/station/overlays.dmi' //OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
-	var/note_overlay_file = 'icons/obj/doors/airlocks/station/overlays.dmi' //Used for papers and photos pinned to the airlock //OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
+	var/overlays_file = 'icons/obj/doors/airlocks/station/overlays.dmi'
+	var/note_overlay_file = 'icons/obj/doors/airlocks/station/overlays.dmi' //Used for papers and photos pinned to the airlock
 
 	var/cyclelinkeddir = 0
 	var/obj/machinery/door/airlock/cyclelinkedairlock
@@ -152,25 +152,7 @@
 	rad_insulation = RAD_MEDIUM_INSULATION
 
 /obj/machinery/door/airlock/Initialize(mapload)
-	//SKYRAT EDIT ADDITION BEGIN - Door aesthetic overhaul
-	vis_overlay1 = new()
-	vis_overlay1.icon = overlays_file
-	vis_overlay2 = new()
-	vis_overlay2.icon = overlays_file
-	vis_overlay2.layer = layer
-	vis_overlay2.plane = 1
-	vis_contents += vis_overlay1
-	vis_contents += vis_overlay2
-	//SKYRAT EDIT END
 	. = ..()
-	//SKYRAT EDIT ADDITION BEGIN - Door aesthetic overhaul
-	if(multi_tile)
-		SetBounds()
-	if(multi_tile)
-		vis_overlay1.dir = src.dir
-		vis_overlay2.dir = src.dir
-	update_overlays()
-	//SKYRAT EDIT END
 	init_network_id(NETWORK_DOOR_AIRLOCKS)
 	wires = set_wires()
 	if(frequency)
@@ -456,6 +438,8 @@
 /obj/machinery/door/airlock/proc/shock(mob/living/user, prb)
 	if(!istype(user) || !hasPower()) // unpowered, no shock
 		return FALSE
+	if(HAS_TRAIT(user, TRAIT_AIRLOCK_SHOCKIMMUNE)) // Be a bit more clever man come on
+		return FALSE
 	if(!COOLDOWN_FINISHED(src, shockCooldown))
 		return FALSE //Already shocked someone recently?
 	if(!prob(prb))
@@ -464,6 +448,9 @@
 	var/check_range = TRUE
 	if(electrocute_mob(user, get_area(src), src, 1, check_range))
 		COOLDOWN_START(src, shockCooldown, 1 SECONDS)
+		// Provides timed airlock shock immunity, to prevent overly cheesy deathtraps
+		ADD_TRAIT(user, TRAIT_AIRLOCK_SHOCKIMMUNE, REF(src))
+		addtimer(TRAIT_CALLBACK_REMOVE(user, TRAIT_AIRLOCK_SHOCKIMMUNE, REF(src)), 1 SECONDS)
 		return TRUE
 	else
 		return FALSE
@@ -489,7 +476,6 @@
 		if(AIRLOCK_DENY, AIRLOCK_OPENING, AIRLOCK_CLOSING, AIRLOCK_EMAG)
 			icon_state = "nonexistenticonstate" //MADNESS
 
-/* SKYRAT EDIT MOVED TO AIRLOCK.DM IN AESTHETICS MODULE
 /obj/machinery/door/airlock/update_overlays()
 	. = ..()
 
@@ -569,7 +555,6 @@
 					floorlight.pixel_x = -32
 					floorlight.pixel_y = 0
 			. += floorlight
-*/
 
 /obj/machinery/door/airlock/do_animate(animation)
 	switch(animation)
@@ -772,8 +757,7 @@
 			if(!istype(H.head, /obj/item/clothing/head/helmet))
 				H.visible_message(span_danger("[user] headbutts the airlock."), \
 									span_userdanger("You headbutt the airlock!"))
-				//H.Paralyze(100) - SKYRAT EDIT REMOVAL - COMBAT
-				H.StaminaKnockdown(10, TRUE, TRUE)
+				H.Paralyze(100)
 				H.apply_damage(10, BRUTE, BODY_ZONE_HEAD)
 			else
 				visible_message(span_danger("[user] headbutts the airlock. Good thing [user.p_theyre()] wearing a helmet."))
@@ -1159,8 +1143,9 @@
 		use_power(50)
 		playsound(src, doorOpen, 30, TRUE)
 	else
-		//playsound(src, 'sound/machines/airlockforced.ogg', 30, TRUE) - ORIGINAL
+	//	playsound(src, 'sound/machines/airlockforced.ogg', 30, TRUE)
 		playsound(src, forcedOpen, 30, TRUE) //SKYRAT EDIT CHANGE - AESTHETICS
+
 
 	if(autoclose)
 		autoclose_in(normalspeed ? 8 SECONDS : 1.5 SECONDS)
@@ -1191,14 +1176,14 @@
 	update_icon(ALL, AIRLOCK_OPENING, TRUE)
 	sleep(1)
 	set_opacity(0)
-	//SKYRAT EDIT ADDITION BEGIN - LARGE_DOOR
+		//SKYRAT EDIT ADDITION BEGIN - LARGE_DOOR
 	if(multi_tile)
 		filler.set_opacity(FALSE)
 	//SKYRAT EDIT END
 	update_freelook_sight()
 	sleep(4)
 	set_density(FALSE)
-	//SKYRAT EDIT ADDITION BEGIN - LARGE_DOOR
+		//SKYRAT EDIT ADDITION BEGIN - LARGE_DOOR
 	if(multi_tile)
 		filler.set_density(FALSE)
 	//SKYRAT EDIT END
@@ -1236,8 +1221,9 @@
 		playsound(src, doorClose, 30, TRUE)
 
 	else
-		//playsound(src, 'sound/machines/airlockforced.ogg', 30, TRUE) //ORIGINAL
+	//	playsound(src, 'sound/machines/airlockforced.ogg', 30, TRUE)
 		playsound(src, forcedClosed, 30, TRUE) //SKYRAT EDIT ADDITION - AESTHETICS
+
 
 	var/obj/structure/window/killthis = (locate(/obj/structure/window) in get_turf(src))
 	if(killthis)

@@ -430,31 +430,11 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 /atom/movable/screen/map_view/char_preview/Destroy()
 	QDEL_NULL(body)
-<<<<<<< HEAD
-
-	for (var/plane_master in plane_masters)
-		client?.screen -= plane_master
-		qdel(plane_master)
-
-	client?.clear_map(assigned_map)
-
-	client = null
-	plane_masters = null
-=======
 	preferences?.character_preview_view = null
->>>>>>> 23bfdec8f43 (Multiz Rework: Human Suffering Edition (Contains PLANE CUBE) (#69115))
 	preferences = null
 	return ..()
 
 /// Updates the currently displayed body
-<<<<<<< HEAD
-/atom/movable/screen/character_preview_view/proc/update_body()
-	create_body()
-	appearance = preferences.render_new_preview_appearance(body)
-
-
-/atom/movable/screen/character_preview_view/proc/create_body()
-=======
 /atom/movable/screen/map_view/char_preview/proc/update_body()
 	if (isnull(body))
 		create_body()
@@ -463,7 +443,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	appearance = preferences.render_new_preview_appearance(body)
 
 /atom/movable/screen/map_view/char_preview/proc/create_body()
->>>>>>> 23bfdec8f43 (Multiz Rework: Human Suffering Edition (Contains PLANE CUBE) (#69115))
 	QDEL_NULL(body)
 
 	body = new

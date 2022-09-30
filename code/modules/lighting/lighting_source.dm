@@ -136,14 +136,6 @@
 /datum/light_source/proc/vis_update()
 	EFFECT_UPDATE(LIGHTING_VIS_UPDATE)
 
-<<<<<<< HEAD
-// Macro that applies light to a new corner.
-// It is a macro in the interest of speed, yet not having to copy paste it.
-// If you're wondering what's with the backslashes, the backslashes cause BYOND to not automatically end the line.
-// As such this all gets counted as a single line.
-// The braces and semicolons are there to be able to do this on a single line.
-#define LUM_FALLOFF(C, T) (1 - CLAMP01(sqrt((C.x - T.x) ** 2 + (C.y - T.y) ** 2 + LIGHTING_HEIGHT) / max(1, light_range)))
-=======
 // This exists so we can cache the vars used in this macro, and save MASSIVE time :)
 // Most of this is saving off datum var accesses, tho some of it does actually cache computation
 // You will NEED to call this before you call APPLY_CORNER
@@ -169,7 +161,6 @@
 // You may notice we still use squares here even though there are three components
 // Because z diffs are so functionally small, cubes and cube roots are too aggressive
 #define LUM_FALLOFF_MULTIZ(C) (1 - CLAMP01(sqrt((C.x - _turf_x) ** 2 + (C.y - _turf_y) ** 2 + abs(C.z - _turf_z) ** 2 + LIGHTING_HEIGHT) / _range_divisor))
->>>>>>> 23bfdec8f43 (Multiz Rework: Human Suffering Edition (Contains PLANE CUBE) (#69115))
 
 // Macro that applies light to a new corner.
 // It is a macro in the interest of speed, yet not having to copy paste it.
@@ -177,10 +168,6 @@
 // As such this all gets counted as a single line.
 // The braces and semicolons are there to be able to do this on a single line.
 #define APPLY_CORNER(C)                          \
-<<<<<<< HEAD
-	. = LUM_FALLOFF(C, pixel_turf);              \
-	. *= light_power;                            \
-=======
 	if(C.z == _turf_z) {                         \
 		. = LUM_FALLOFF(C);                      \
 	}                                            \
@@ -188,40 +175,27 @@
 		. = LUM_FALLOFF_MULTIZ(C)                \
 	}                                            \
 	. *= _light_power;                           \
->>>>>>> 23bfdec8f43 (Multiz Rework: Human Suffering Edition (Contains PLANE CUBE) (#69115))
 	var/OLD = effect_str[C];                     \
 	                                             \
 	C.update_lumcount                            \
 	(                                            \
-<<<<<<< HEAD
-		(. * lum_r) - (OLD * applied_lum_r),     \
-		(. * lum_g) - (OLD * applied_lum_g),     \
-		(. * lum_b) - (OLD * applied_lum_b)      \
-	);                                           \
-=======
 		(. * _lum_r) - (OLD * _applied_lum_r),   \
 		(. * _lum_g) - (OLD * _applied_lum_g),   \
 		(. * _lum_b) - (OLD * _applied_lum_b)    \
 	);
->>>>>>> 23bfdec8f43 (Multiz Rework: Human Suffering Edition (Contains PLANE CUBE) (#69115))
 
 #define REMOVE_CORNER(C)                         \
 	. = -effect_str[C];                          \
 	C.update_lumcount                            \
 	(                                            \
-<<<<<<< HEAD
-		. * applied_lum_r,                       \
-		. * applied_lum_g,                       \
-		. * applied_lum_b                        \
-=======
 		. * _applied_lum_r,                      \
 		. * _applied_lum_g,                      \
 		. * _applied_lum_b                       \
->>>>>>> 23bfdec8f43 (Multiz Rework: Human Suffering Edition (Contains PLANE CUBE) (#69115))
 	);
 
 /// This is the define used to calculate falloff.
 /datum/light_source/proc/remove_lum()
+	SETUP_CORNERS_REMOVAL_CACHE(src)
 	applied = FALSE
 	for (var/datum/lighting_corner/corner as anything in effect_str)
 		REMOVE_CORNER(corner)
@@ -230,6 +204,7 @@
 	effect_str = null
 
 /datum/light_source/proc/recalc_corner(datum/lighting_corner/corner)
+	SETUP_CORNERS_CACHE(src)
 	LAZYINITLIST(effect_str)
 	if (effect_str[corner]) // Already have one.
 		REMOVE_CORNER(corner)
@@ -239,8 +214,6 @@
 	effect_str[corner] = .
 
 
-<<<<<<< HEAD
-=======
 // Keep in mind. Lighting corners accept the bottom left (northwest) set of cords to them as input
 #define GENERATE_MISSING_CORNERS(gen_for)                                                                 \
 	if (!gen_for.lighting_corner_NE) {                                                                    \
@@ -266,7 +239,6 @@
 	insert_into[draw_from.lighting_corner_SW] = 0;         \
 	insert_into[draw_from.lighting_corner_NW] = 0;
 
->>>>>>> 23bfdec8f43 (Multiz Rework: Human Suffering Edition (Contains PLANE CUBE) (#69115))
 /datum/light_source/proc/update_corners()
 	var/update = FALSE
 	var/atom/source_atom = src.source_atom
@@ -329,23 +301,11 @@
 		return //nothing's changed
 
 	var/list/datum/lighting_corner/corners = list()
-	var/list/turf/turfs = list()
 
 	if (source_turf)
 		var/uses_multiz = !!GET_LOWEST_STACK_OFFSET(source_turf.z)
 		var/oldlum = source_turf.luminosity
 		source_turf.luminosity = CEILING(light_range, 1)
-<<<<<<< HEAD
-		for(var/turf/T in view(CEILING(light_range, 1), source_turf))
-			if(!IS_OPAQUE_TURF(T))
-				if (!T.lighting_corners_initialised)
-					T.generate_missing_corners()
-				corners[T.lighting_corner_NE] = 0
-				corners[T.lighting_corner_SE] = 0
-				corners[T.lighting_corner_SW] = 0
-				corners[T.lighting_corner_NW] = 0
-			turfs += T
-=======
 		if(uses_multiz)
 			for(var/turf/T in view(CEILING(light_range, 1), source_turf))
 				if(IS_OPAQUE_TURF(T))
@@ -381,11 +341,13 @@
 					continue
 				INSERT_CORNERS(corners, T)
 
->>>>>>> 23bfdec8f43 (Multiz Rework: Human Suffering Edition (Contains PLANE CUBE) (#69115))
 		source_turf.luminosity = oldlum
 
-	var/list/datum/lighting_corner/new_corners = (corners - effect_str)
-	LAZYINITLIST(effect_str)
+	SETUP_CORNERS_CACHE(src)
+
+	var/list/datum/lighting_corner/new_corners = (corners - src.effect_str)
+	LAZYINITLIST(src.effect_str)
+	var/list/effect_str = src.effect_str
 	if (needs_update == LIGHTING_VIS_UPDATE)
 		for (var/datum/lighting_corner/corner as anything in new_corners)
 			APPLY_CORNER(corner)
@@ -398,14 +360,15 @@
 			if (. != 0)
 				LAZYADD(corner.affecting, src)
 				effect_str[corner] = .
-
-		for (var/datum/lighting_corner/corner as anything in corners - new_corners) // Existing corners
-			APPLY_CORNER(corner)
-			if (. != 0)
-				effect_str[corner] = .
-			else
-				LAZYREMOVE(corner.affecting, src)
-				effect_str -= corner
+		// New corners are a subset of corners. so if they're both the same length, there are NO old corners!
+		if(length(corners) != length(new_corners))
+			for (var/datum/lighting_corner/corner as anything in corners - new_corners) // Existing corners
+				APPLY_CORNER(corner)
+				if (. != 0)
+					effect_str[corner] = .
+				else
+					LAZYREMOVE(corner.affecting, src)
+					effect_str -= corner
 
 	var/list/datum/lighting_corner/gone_corners = effect_str - corners
 	for (var/datum/lighting_corner/corner as anything in gone_corners)
@@ -417,9 +380,12 @@
 	applied_lum_g = lum_g
 	applied_lum_b = lum_b
 
-	UNSETEMPTY(effect_str)
+	UNSETEMPTY(src.effect_str)
 
 #undef EFFECT_UPDATE
 #undef LUM_FALLOFF
 #undef REMOVE_CORNER
 #undef APPLY_CORNER
+#undef SETUP_CORNERS_REMOVAL_CACHE
+#undef SETUP_CORNERS_CACHE
+#undef GENERATE_MISSING_CORNERS

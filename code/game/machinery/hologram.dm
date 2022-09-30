@@ -90,13 +90,8 @@ Possible to do for anyone motivated enough:
 /obj/machinery/holopad/Initialize(mapload)
 	. = ..()
 	/// We set the plane on mapload such that we can see the holopad render over atmospherics pipe and cabling in a map editor (without initialization), but so it gets that "inset" look in the floor in-game.
-<<<<<<< HEAD
-	plane = FLOOR_PLANE
-	update_overlays()
-=======
 	SET_PLANE_IMPLICIT(src, FLOOR_PLANE)
 	update_appearance()
->>>>>>> 23bfdec8f43 (Multiz Rework: Human Suffering Edition (Contains PLANE CUBE) (#69115))
 
 /obj/machinery/holopad/secure
 	name = "secure holopad"
