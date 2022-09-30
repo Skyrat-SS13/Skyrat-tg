@@ -2,7 +2,7 @@
 #define BERSERK_HALF_CHARGE 100
 #define PROJECTILE_HIT_MULTIPLIER 1.5
 #define DAMAGE_TO_CHARGE_SCALE 1
-#define CHARGE_DRAINED_PER_SECOND 5
+#define CHARGE_DRAINED_PER_SECOND 3
 #define BERSERK_MELEE_ARMOR_ADDED 50
 #define BERSERK_ATTACK_SPEED_MODIFIER 0.25
 
@@ -69,8 +69,6 @@
 	actions_types = list(/datum/action/item_action/berserk_mode)
 	///tracks whether or not the armor's charge is equal to or greater than 100% so it does not do the bubble alert twice
 	var/charged = FALSE
-	///ditto, but for the overcharge at 200%
-	var/overcharged = FALSE
 
 /obj/item/clothing/head/hooded/berserker/gatsu/Initialize(mapload)
 	. = ..()
@@ -87,13 +85,11 @@
 		if(ishuman(loc))
 			end_berserk(loc)
 			charged = FALSE
-			overcharged = FALSE
 
 /obj/item/clothing/head/hooded/berserker/gatsu/dropped(mob/user)
 	. = ..()
 	end_berserk(user)
 	charged = FALSE
-	overcharged = FALSE
 
 /obj/item/clothing/head/hooded/berserker/gatsu/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
 	if(berserk_active)
@@ -105,9 +101,6 @@
 	if(berserk_charge >= BERSERK_HALF_CHARGE & charged == FALSE)
 		balloon_alert(owner, "berserk charged")
 		charged = TRUE
-	if(berserk_charge >= MAX_BERSERK_CHARGE & overcharged == FALSE)
-		balloon_alert(owner, "berserk overcharged")
-		overcharged = TRUE
 
 /obj/item/clothing/head/hooded/berserker/gatsu/IsReflect()
 	if(berserk_active)
@@ -132,7 +125,7 @@
 	block_chance = 25
 	sharpness = SHARP_EDGED
 	// aughhghghgh this really should be elementized but this works for now
-	var/faction_bonus_force = 70
+	var/faction_bonus_force = 100
 	var/static/list/nemesis_factions = list("mining", "boss")
 	/// how much stamina does it cost to roll
 	var/roll_stamcost = 15
