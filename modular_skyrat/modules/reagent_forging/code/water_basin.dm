@@ -69,7 +69,9 @@
 	if(search_incomplete?.times_hit >= search_incomplete.average_hits)
 		to_chat(user, span_notice("You cool down the metal-- it is ready."))
 		user.mind.adjust_experience(/datum/skill/smithing, 10) //using the water basin on a ready item gives decent experience.
-		new search_incomplete.spawn_item(get_turf(src))
+		var/obj/spawned_obj = new search_incomplete.spawn_item(get_turf(src))
+		if(search_incomplete.custom_materials)
+			spawned_obj.set_custom_materials(search_incomplete.custom_materials, 1) //lets set its material
 		qdel(search_incomplete)
 		tool.icon_state = "tong_empty"
 	return FALSE

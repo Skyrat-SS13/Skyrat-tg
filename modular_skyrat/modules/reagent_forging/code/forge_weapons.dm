@@ -2,6 +2,7 @@
 	icon = 'modular_skyrat/modules/reagent_forging/icons/obj/forge_items.dmi'
 	lefthand_file = 'modular_skyrat/modules/reagent_forging/icons/mob/forge_weapon_l.dmi'
 	righthand_file = 'modular_skyrat/modules/reagent_forging/icons/mob/forge_weapon_r.dmi'
+	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR | MATERIAL_AFFECT_STATISTICS
 
 /obj/item/forging/reagent_weapon/Initialize(mapload)
 	. = ..()
@@ -27,7 +28,7 @@
 	return ..()
 
 /obj/item/forging/reagent_weapon/sword
-	name = "reagent sword"
+	name = "sword"
 	desc = "A sword that can be imbued with a reagent. Useful for blocking."
 	force = 15
 	armour_penetration = 10
@@ -45,7 +46,7 @@
 	max_integrity = 150
 
 /obj/item/forging/reagent_weapon/katana
-	name = "reagent katana"
+	name = "katana"
 	desc = "A katana that can be imbued with a reagent. It's very sharp, but not quite million-times-folded sharp."
 	force = 15
 	armour_penetration = 25 //Slices through armour like butter, but can't quite bisect a knight like the real thing.
@@ -61,7 +62,7 @@
 	sharpness = SHARP_EDGED
 
 /obj/item/forging/reagent_weapon/dagger
-	name = "reagent dagger"
+	name = "dagger"
 	desc = "A dagger that can be imbued with a reagent. It can attack very fast!"
 	force = 8
 	icon_state = "dagger"
@@ -80,7 +81,7 @@
 	user.changeNext_move(CLICK_CD_RANGE)
 
 /obj/item/forging/reagent_weapon/staff //doesn't do damage. Useful for healing reagents.
-	name = "reagent staff"
+	name = "staff"
 	desc = "A staff that can be imbued with a reagent. It has a very soft swing."
 	force = 0
 	icon_state = "staff"
@@ -97,7 +98,7 @@
 	user.changeNext_move(CLICK_CD_RANGE)
 
 /obj/item/forging/reagent_weapon/spear
-	name = "reagent spear"
+	name = "spear"
 	desc = "A spear that can be imbued with a reagent. It can be dual-wielded to increase its damage!"
 	force = 10
 	armour_penetration = 10
@@ -120,7 +121,7 @@
 	AddComponent(/datum/component/two_handed, force_unwielded = 10, force_wielded = 17) //better than the bone spear
 
 /obj/item/forging/reagent_weapon/axe
-	name = "reagent axe"
+	name = "axe"
 	desc = "An axe that can be imbued with a reagent. Looks balanced for throwing."
 	force = 15
 	armour_penetration = 10
@@ -137,7 +138,7 @@
 	sharpness = SHARP_EDGED
 
 /obj/item/forging/reagent_weapon/hammer
-	name = "reagent hammer"
+	name = "hammer"
 	desc = "A hammer that can be imbued with a reagent. It packs a real wallop."
 	force = 19 //strong but boring.
 	armour_penetration = 10
@@ -167,7 +168,7 @@
 	user.changeNext_move(CLICK_CD_RAPID)
 
 /obj/item/shield/riot/buckler/reagent_weapon //Same as a buckler, but metal.
-	name = "reagent plated buckler shield"
+	name = "plated buckler shield"
 	desc = "A small, round shield best used in tandem with a melee weapon in close-quarters combat; can be imbued with a reagent."
 	icon = 'modular_skyrat/modules/reagent_forging/icons/obj/forge_items.dmi'
 	icon_state = "buckler"
@@ -180,6 +181,7 @@
 	transparent = FALSE
 	max_integrity = 150 //over double that of a wooden one
 	w_class = WEIGHT_CLASS_NORMAL
+	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_AFFECT_STATISTICS
 
 /obj/item/shield/riot/buckler/reagent_weapon/Initialize(mapload)
 	. = ..()
@@ -211,7 +213,7 @@
 	return ..()
 
 /obj/item/shield/riot/buckler/reagent_weapon/pavise //similar to the adamantine shield. Huge, slow, lets you soak damage and packs a wallop.
-	name = "reagent plated pavise shield"
+	name = "plated pavise shield"
 	desc = "An oblong shield used by ancient crossbowman as cover while reloading; can be imbued with a reagent."
 	icon_state = "pavise"
 	inhand_icon_state = "pavise"
@@ -226,14 +228,14 @@
 	AddComponent(/datum/component/two_handed, require_twohands = TRUE, force_wielded = 15)
 
 /obj/item/pickaxe/reagent_weapon
-	name = "reagent pickaxe"
+	name = "pickaxe"
 
 /obj/item/pickaxe/reagent_weapon/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/reagent_weapon)
 
 /obj/item/shovel/reagent_weapon
-	name = "reagent shovel"
+	name = "shovel"
 
 /obj/item/shovel/reagent_weapon/Initialize(mapload)
 	. = ..()
@@ -263,7 +265,7 @@
 #define INCREASE_BLOCK_CHANGE 2
 
 /obj/item/forging/reagent_weapon/bokken
-	name = "reagent bokken"
+	name = "bokken"
 	desc = "A bokken that can be imbued with a reagent. It can be dual-wielded to increase block chance!"
 	force = 15
 	icon_state = "bokken"

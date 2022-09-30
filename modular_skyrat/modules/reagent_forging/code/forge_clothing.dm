@@ -96,7 +96,7 @@
 	AddComponent(/datum/component/reagent_clothing, ITEM_SLOT_FEET)
 
 /obj/item/clothing/gloves/ring/reagent_clothing
-	name = "reagent ring"
+	name = "ring"
 	desc = "A tiny ring, sized to wrap around a finger. It is possible to imbue this ring."
 	icon_state = "ringsilver"
 	inhand_icon_state = "sring"
@@ -106,26 +106,23 @@
 	. = ..()
 	AddComponent(/datum/component/reagent_clothing, ITEM_SLOT_GLOVES)
 
-/obj/item/clothing/neck/kink_collar/reagent_clothing
-	name = "reagent pet collar"
-	desc = "A pet collar that is ready to be imbued."
+/obj/item/clothing/neck/collar/reagent_clothing
+	name = "collar"
+	desc = "A collar that is ready to be imbued."
+	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_neck.dmi'
+	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_neck.dmi'
+	icon_state = "collar_cyan"
+	inhand_icon_state = "collar_cyan"
+	body_parts_covered = NECK
+	slot_flags = ITEM_SLOT_NECK
+	w_class = WEIGHT_CLASS_SMALL
 
-/obj/item/clothing/neck/kink_collar/reagent_clothing/Initialize(mapload)
+/obj/item/clothing/neck/collar/reagent_clothing/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/reagent_clothing, ITEM_SLOT_NECK)
 
-/obj/item/clothing/neck/kink_collar/reagent_clothing/attack_self(mob/user)
-	tagname = sanitize_name(stripped_input(user, "Would you like to change the name on the tag?", "Name your new pet", "Spot", MAX_NAME_LEN))
-	name = initial(name)
-	for(var/datum/reagent/clothing_reagent in reagents.reagent_list)
-		if(clothing_reagent.volume < 200)
-			reagents.remove_all_type(clothing_reagent.type)
-			continue
-		name = "[clothing_reagent.name] [name]"
-	name = "[name] [tagname]"
-
 /obj/item/restraints/handcuffs/reagent_clothing
-	name = "reagent handcuffs"
+	name = "handcuffs"
 	desc = "A pair of handcuffs that are ready to be imbued."
 
 /obj/item/restraints/handcuffs/reagent_clothing/Initialize(mapload)

@@ -42,7 +42,7 @@
 		"Plated Boots" = /obj/item/clothing/shoes/plated_boots,
 		"Horseshoes" = /obj/item/clothing/shoes/horseshoe,
 		"Ring" = /obj/item/clothing/gloves/ring/reagent_clothing,
-		"Collar" = /obj/item/clothing/neck/kink_collar/reagent_clothing,
+		"Collar" = /obj/item/clothing/neck/collar/reagent_clothing,
 		"Handcuffs" = /obj/item/restraints/handcuffs/reagent_clothing,
 		"Borer Cage" = /obj/item/cortical_cage,
 		"Pavise Shield" = /obj/item/shield/riot/buckler/reagent_weapon/pavise,
@@ -242,9 +242,10 @@
 				balloon_alert(user, "not enough wood!")
 				return FALSE
 			current_wood -= 2
-			var/spawning_item = complete_content.spawning_item
+			var/obj/spawned_obj = new complete_content.spawning_item(src)
+			if(complete_content.custom_materials)
+				spawned_obj.set_custom_materials(complete_content.custom_materials, 1)
 			qdel(complete_content)
-			new spawning_item(src)
 			user.mind.adjust_experience(/datum/skill/smithing, 30) //creating grants you something
 			balloon_alert(user, "item crafted!")
 			update_appearance()
