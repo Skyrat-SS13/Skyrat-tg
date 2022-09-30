@@ -26,15 +26,20 @@
 	applying_container = new /obj/item/reagent_containers(src)
 	RegisterSignal(parent_clothing, COMSIG_ITEM_EQUIPPED, .proc/set_wearer)
 	RegisterSignal(parent_clothing, COMSIG_ITEM_PRE_UNEQUIP, .proc/remove_wearer)
+	RegisterSignal(parent_clothing, COMSIG_PARENT_EXAMINE, .proc/on_examine)
 	START_PROCESSING(SSdcs, src)
 
 /datum/component/reagent_clothing/Destroy(force, silent)
-	UnregisterSignal(parent_clothing, list(COMSIG_ITEM_EQUIPPED, COMSIG_ITEM_PRE_UNEQUIP))
+	UnregisterSignal(parent_clothing, list(COMSIG_ITEM_EQUIPPED, COMSIG_ITEM_PRE_UNEQUIP, COMSIG_PARENT_EXAMINE))
 	parent_clothing = null
 	cloth_wearer = null
 	QDEL_NULL(applying_container)
 	STOP_PROCESSING(SSdcs, src)
 	return ..()
+
+/datum/component/reagent_clothing/proc/on_examine(datum/source, mob/user, list/examine_list)
+	SIGNAL_HANDLER
+	examine_list += span_notice("[parent_clothing] is able to be inbued with a chemical at a reagent forge!")
 
 /datum/component/reagent_clothing/proc/set_wearer()
 	SIGNAL_HANDLER
@@ -55,6 +60,10 @@
 		return
 	COOLDOWN_START(src, imbue_cooldown, 3 SECONDS)
 	for(var/create_reagent in imbued_reagent)
+		var/datum/reagent/locate_reagent = cloth_wearer.reagents.has_reagent(create_reagent)
+		if(locate_reagent)
+			if(locate_reagent.volume >= (locate_reagent.overdose_threshold * 0.5))
+				continue
 		applying_container.reagents.add_reagent(create_reagent, 0.5)
 		applying_container.reagents.trans_to(target = cloth_wearer, amount = 0.5, methods = INJECT)
 
@@ -72,11 +81,16 @@
 	parent_weapon = parent
 	parent_weapon.create_reagents(MAX_IMBUE_STORAGE, INJECTABLE | REFILLABLE)
 	RegisterSignal(parent_weapon, COMSIG_ITEM_ATTACK, .proc/inject_attacked)
+	RegisterSignal(parent_weapon, COMSIG_PARENT_EXAMINE, .proc/on_examine)
 
 /datum/component/reagent_weapon/Destroy(force, silent)
-	UnregisterSignal(parent_weapon, COMSIG_ITEM_ATTACK)
+	UnregisterSignal(parent_weapon, COMSIG_ITEM_ATTACK, COMSIG_PARENT_EXAMINE)
 	parent_weapon = null
 	return ..()
+
+/datum/component/reagent_weapon/proc/on_examine(datum/source, mob/user, list/examine_list)
+	SIGNAL_HANDLER
+	examine_list += span_notice("[parent_weapon] is able to be inbued with a chemical at a reagent forge!")
 
 /datum/component/reagent_weapon/proc/inject_attacked(datum/source, mob/living/target, mob/living/user, params)
 	SIGNAL_HANDLER

@@ -1,7 +1,7 @@
 //armor
 /obj/item/clothing/suit/armor/reagent_clothing
-	name = "chain armor"
-	desc = "A piece of armor made out of chains, ready to be imbued with a chemical."
+	name = "reagent chain armor"
+	desc = "A piece of armor made out of chains."
 	icon = 'modular_skyrat/modules/reagent_forging/icons/obj/forge_clothing.dmi'
 	icon_state = "chain_armor"
 	worn_icon = 'modular_skyrat/modules/reagent_forging/icons/mob/forge_clothing.dmi'
@@ -18,8 +18,8 @@
 
 //gloves
 /obj/item/clothing/gloves/reagent_clothing
-	name = "chain gloves"
-	desc = "A set of gloves made out of chains, ready to be imbued with a chemical."
+	name = "reagent chain gloves"
+	desc = "A set of gloves made out of chains."
 	icon = 'modular_skyrat/modules/reagent_forging/icons/obj/forge_clothing.dmi'
 	icon_state = "chain_glove"
 	worn_icon = 'modular_skyrat/modules/reagent_forging/icons/mob/forge_clothing.dmi'
@@ -33,8 +33,8 @@
 	AddComponent(/datum/component/reagent_clothing, ITEM_SLOT_GLOVES)
 
 /obj/item/clothing/head/helmet/reagent_clothing
-	name = "chain helmet"
-	desc = "A helmet made out of chains, ready to be imbued with a chemical."
+	name = "reagent chain helmet"
+	desc = "A helmet made out of chains."
 	icon = 'modular_skyrat/modules/reagent_forging/icons/obj/forge_clothing.dmi'
 	icon_state = "chain_helmet"
 	worn_icon = 'modular_skyrat/modules/reagent_forging/icons/mob/forge_clothing.dmi'
@@ -49,8 +49,8 @@
 	AddComponent(/datum/component/reagent_clothing, ITEM_SLOT_HEAD)
 
 /obj/item/clothing/shoes/chain_boots
-	name = "chain boots"
-	desc = "A pair of boots made out of chains, ready to be imbued with a chemical."
+	name = "reagent chain boots"
+	desc = "A pair of boots made out of chains."
 	icon = 'modular_skyrat/modules/reagent_forging/icons/obj/forge_clothing.dmi'
 	icon_state = "chain_boot"
 	worn_icon = 'modular_skyrat/modules/reagent_forging/icons/mob/forge_clothing.dmi'
@@ -67,8 +67,8 @@
 	AddComponent(/datum/component/reagent_clothing, ITEM_SLOT_FEET)
 
 /obj/item/clothing/shoes/plated_boots
-	name = "plated boots"
-	desc = "A pair of boots made out of plates, ready to be imbued with a chemical."
+	name = "reagent plated boots"
+	desc = "A pair of boots made out of plates."
 	icon = 'modular_skyrat/modules/reagent_forging/icons/obj/forge_clothing.dmi'
 	icon_state = "plate_boot"
 	worn_icon = 'modular_skyrat/modules/reagent_forging/icons/mob/forge_clothing.dmi'
@@ -85,8 +85,8 @@
 	AddComponent(/datum/component/reagent_clothing, ITEM_SLOT_FEET)
 
 /obj/item/clothing/shoes/horseshoe
-	name = "horseshoe"
-	desc = "A pair of horseshoes made out of chains, ready to be imbued with a chemical."
+	name = "reagent horseshoe"
+	desc = "A pair of horseshoes made out of chains."
 	icon = 'modular_skyrat/modules/reagent_forging/icons/obj/forge_clothing.dmi'
 	icon_state = "horseshoe"
 	worn_icon = 'modular_skyrat/modules/reagent_forging/icons/mob/forge_clothing.dmi'
@@ -102,8 +102,8 @@
 	AddComponent(/datum/component/reagent_clothing, ITEM_SLOT_FEET)
 
 /obj/item/clothing/gloves/ring/reagent_clothing
-	name = "ring"
-	desc = "A tiny ring, sized to wrap around a finger. It is possible to imbue this ring."
+	name = "reagent ring"
+	desc = "A tiny ring, sized to wrap around a finger."
 	icon_state = "ringsilver"
 	inhand_icon_state = "sring"
 	worn_icon_state = "sring"
@@ -114,8 +114,8 @@
 	AddComponent(/datum/component/reagent_clothing, ITEM_SLOT_GLOVES)
 
 /obj/item/clothing/neck/collar/reagent_clothing
-	name = "collar"
-	desc = "A collar that is ready to be imbued."
+	name = "reagent collar"
+	desc = "A collar that is ready to be worn for certain individuals."
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_neck.dmi'
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_neck.dmi'
 	icon_state = "collar_cyan"
@@ -130,8 +130,8 @@
 	AddComponent(/datum/component/reagent_clothing, ITEM_SLOT_NECK)
 
 /obj/item/restraints/handcuffs/reagent_clothing
-	name = "handcuffs"
-	desc = "A pair of handcuffs that are ready to be imbued."
+	name = "reagent handcuffs"
+	desc = "A pair of handcuffs that are ready to keep someone captive."
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR | MATERIAL_AFFECT_STATISTICS
 
 /obj/item/restraints/handcuffs/reagent_clothing/Initialize(mapload)
