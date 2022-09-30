@@ -16,6 +16,9 @@
 	new /obj/item/autosurgeon/bodypart/r_arm_robotic(src)
 	new /obj/item/autosurgeon/syndicate/nodrop(src)
 
+/obj/item/autosurgeon/syndicate/esword_arm
+	starting_organ = /obj/item/organ/internal/cyberimp/arm/esword
+
 /obj/item/clothing/under/pants/black/robohand
 	name = "rockerboy pants"
 	desc = "Extremely comfortable pants custom-made in the memory of Johnny Robohand, padded with kevlar for your enjoyment."
