@@ -27,7 +27,7 @@
 		PLATE_RESOURCE = 0,
 		CHAIN_RESOURCE = 0,
 	)
-	///what mats we need to current the goal item
+	///what mats we need to complete the current goal item
 	var/list/required_mats = list(
 		WOOD_RESOURCE = 0,
 		PLATE_RESOURCE = 0,
