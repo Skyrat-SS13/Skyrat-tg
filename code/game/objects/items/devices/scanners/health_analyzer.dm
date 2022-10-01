@@ -459,7 +459,11 @@
 /obj/item/healthanalyzer/AltClick(mob/user)
 	..()
 
+<<<<<<< HEAD
 	if(!user.canUseTopic(src, BE_CLOSE) || !user.can_read(src)) //SKYRAT EDIT: Blind People Can Analyze Again
+=======
+	if(!user.canUseTopic(src, be_close = TRUE) || !user.can_read(src) || user.is_blind())
+>>>>>>> 91f02f2a6b9 (canUseTopic now uses TRUE/FALSE instead of defines that just say TRUE (#69790))
 		return
 
 	mode = !mode
