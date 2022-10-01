@@ -413,10 +413,6 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Tactical Hawaiian Outfit - Green"
 	item_path = /obj/item/clothing/under/tachawaiian/green
 
-/datum/loadout_item/under/miscellaneous/greyshirt
-	name = "Grey Shirt"
-	item_path = /obj/item/clothing/under/misc/greyshirt
-
 /datum/loadout_item/under/miscellaneous/maidcostume
 	name = "Maid Costume"
 	item_path = /obj/item/clothing/under/costume/maid
