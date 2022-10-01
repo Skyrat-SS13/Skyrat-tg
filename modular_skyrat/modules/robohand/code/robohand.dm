@@ -111,9 +111,11 @@
 	name = "14mm bullet casing"
 	desc = "A 14mm bullet casing. Badass."
 	caliber = CALIBRE_14MM
-	projectile_type = /obj/projectile/bullet/a357/c14mm
+	projectile_type = /obj/projectile/bullet/c14mm
 
-/obj/projectile/bullet/a357/c14mm //now a 357 subtype :^)
+/obj/projectile/bullet/c14mm //vanilla .357 but pierces everything except mobs. groovy
 	name = "14mm bullet"
-	pierces = 1 //no embedding/wounding/dismembering buffs, same damage, but still pierces your poor poor cover
-	projectile_piercing = PASSCLOSEDTURF|PASSGRILLE|PASSGLASS
+	damage = 60
+	wound_bonus = -30
+	pierces = 1
+	projectile_piercing = ~(PASSMOB)
