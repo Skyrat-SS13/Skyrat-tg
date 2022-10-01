@@ -26,7 +26,7 @@
 	armor = list(MELEE = 45, BULLET = 40, LASER = 40, ENERGY = 50, BOMB = 25, BIO = 0, FIRE = 50, ACID = 50, WOUND = 10) //makes it in line with the rest of the armor
 
 /obj/item/storage/box/syndie_kit/gunman_outfit/PopulateContents() // 45, 40 armor on general without a helmet.
-	new /obj/item/clothing/under/pants/black/robohand(src)
+	new /obj/item/clothing/under/pants/track/robohand(src)
 	new /obj/item/clothing/glasses/sunglasses/robohand(src)
 	new /obj/item/clothing/suit/armor/vest/leather/gunman(src)
 	new /obj/item/clothing/shoes/combat(src)
