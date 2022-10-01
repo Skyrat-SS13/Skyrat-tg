@@ -49,7 +49,7 @@
 
 	..()
 
-///This proc is called every life cycel on the attached human
+///This proc is called every life cycle on the attached human
 /datum/nifsoft/proc/life(mob/living/carbon/human/attached_human)
 	return TRUE
 
@@ -101,6 +101,8 @@
 /obj/item/disk/nifsoft_uploader
 	name = "Generic NIFSoft datadisk"
 	desc = "A datadisk that can be used to upload a loaded NIFSoft to the user's NIF"
+	icon = 'modular_skyrat/modules/modular_implants/icons/obj/disks.dmi'
+	icon_state = "base_disk"
 	///What NIFSoft is currently loaded in?
 	var/datum/nifsoft/loaded_nifsoft = /datum/nifsoft
 	///Is the datadisk reusable?
@@ -113,6 +115,10 @@
 
 	var/obj/item/organ/internal/cyberimp/brain/nif/installed_nif = target.installed_nif
 	new loaded_nifsoft(installed_nif)
+
+	if(!reusable)
+		to_chat(target, span_notice("Test message"))
+		qdel(src)
 
 /obj/item/disk/nifsoft_uploader/attack_self(mob/user, modifiers)
 	. = ..()

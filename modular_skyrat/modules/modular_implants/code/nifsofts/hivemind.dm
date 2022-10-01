@@ -215,8 +215,9 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 	desc = "A holographic gesture controller, hooked to hand and finger signals of the user's own choice. This is paired with the Hivemind program itself, used as a means of filtering out unwanted thoughts from being added to the network, ensuring that only intentional thoughts of communication can go through."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "gangtool-purple"
-	lefthand_file = 'icons/mob/inhands/misc/devices_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/misc/devices_righthand.dmi'
+	lefthand_file = 'icons/mob/inhands/items/devices_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/items/devices_righthand.dmi'
+	inhand_icon_state = "electronic"
 	///What Hivemind are messages being sent to?
 	var/datum/component/mind_linker/nif/connected_network
 	//Who owns the controller?

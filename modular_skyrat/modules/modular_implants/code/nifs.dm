@@ -102,8 +102,9 @@
 	insertee.installed_nif = src
 	START_PROCESSING(SSobj, src)
 
-/obj/item/organ/internal/cyberimp/brain/nif/Remove(mob/living/carbon/organ_owner)
+/obj/item/organ/internal/cyberimp/brain/nif/Remove(mob/living/carbon/organ_owner, special=FALSE)
 	. = ..()
+
 	STOP_PROCESSING(SSobj, src)
 
 /obj/item/organ/internal/cyberimp/brain/nif/process(delta_time)
@@ -246,6 +247,9 @@
 		durability = max_durability
 
 	return TRUE
+
+/obj/item/organ/internal/cyberimp/brain/nif/attack_self(mob/user, modifiers)
+	return
 
 // Action used to pull up the NIF menu
 /datum/action/item_action/nif
