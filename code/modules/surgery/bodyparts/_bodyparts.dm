@@ -945,6 +945,7 @@
 
 	// SKYRAT EDIT ADDITION BEGIN - MARKINGS CODE
 	var/override_color
+	var/emissive_location = loc || owner || src
 	// First, check to see if this bodypart is husked. If so, we don't want to apply our sparkledog colors to the limb.
 	if(is_husked)
 		override_color = "#888888"
