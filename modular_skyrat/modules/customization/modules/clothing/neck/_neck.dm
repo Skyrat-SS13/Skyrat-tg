@@ -20,7 +20,7 @@
 
 /obj/item/clothing/neck/mantle/qm
 	name = "\proper the quartermaster's mantle"
-	desc = "A snug and comfortable looking shoulder covering garment, it has an air of rebellion and independance. Or annoyance and delusions, your call."
+	desc = "A snug and comfortable looking shoulder covering garment, it has an air of rebellion and independence. Or annoyance and delusions, your call."
 	icon_state = "qmmantle"
 
 /obj/item/clothing/neck/mantle/hopmantle
