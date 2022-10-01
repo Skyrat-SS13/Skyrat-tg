@@ -249,7 +249,7 @@
 	return TRUE
 
 /obj/item/organ/internal/cyberimp/brain/nif/attack_self(mob/user, modifiers)
-	return
+	return FALSE
 
 // Action used to pull up the NIF menu
 /datum/action/item_action/nif
