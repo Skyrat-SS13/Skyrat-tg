@@ -56,15 +56,6 @@
 	cost_change_lower = -4250
 	cost_change_upper = 8500
 
-/datum/gun_company/oldarms
-	name = "Armadyne Oldarms"
-	can_roundstart_pick = FALSE
-	company_flag = COMPANY_OLDARMS
-	cost_change_lower = -2500
-	cost_change_upper = 13000
-	cost = 10000
-	magazine_cost_mult = 2.5
-
 /datum/gun_company/izhevsk
 	name = "Izhevsk Coalition"
 	company_flag = COMPANY_IZHEVSK
