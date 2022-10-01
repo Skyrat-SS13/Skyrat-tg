@@ -295,7 +295,7 @@
 	if(length(tool.contents) > 0)
 		user.balloon_alert("tongs are full already!")
 		return
-	if(!material_type)
+	if(!material_type && !custom_materials)
 		user.balloon_alert("unusable material!")
 		return
 	forceMove(tool)

@@ -611,7 +611,10 @@
 			return FALSE
 		//set the material of the incomplete
 		var/list/material_list = list()
-		material_list[GET_MATERIAL_REF(search_stack.material_type)] = MINERAL_MATERIAL_AMOUNT
+		if(search_stack.material_type)
+			material_list[GET_MATERIAL_REF(search_stack.material_type)] = MINERAL_MATERIAL_AMOUNT
+		else
+			material_list = search_stack.custom_materials
 		if(!search_stack.use(1))
 			fail_message(user, "You cannot use [search_stack]!")
 			forge_item.in_use = FALSE
