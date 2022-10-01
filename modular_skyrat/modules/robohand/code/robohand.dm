@@ -115,7 +115,7 @@
 
 /obj/projectile/bullet/c14mm //vanilla .357 but pierces everything except mobs. groovy
 	name = "14mm bullet"
-	damage = 60
+	damage = 50
 	wound_bonus = -30
 	pierces = 1
 	projectile_piercing = ~(PASSMOB)
