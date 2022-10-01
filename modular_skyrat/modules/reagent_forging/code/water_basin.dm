@@ -63,7 +63,7 @@
 		return FALSE
 	playsound(src, 'modular_skyrat/modules/reagent_forging/sound/hot_hiss.ogg', 50, TRUE)
 	if(search_incomplete?.times_hit < search_incomplete.average_hits)
-		to_chat(user, span_warning("You cool down [search_incomplete]-- it wasn't ready yet."))
+		to_chat(user, span_warning("You cool down [search_incomplete], but it wasn't ready yet."))
 		COOLDOWN_RESET(search_incomplete, heating_remainder)
 		return FALSE
 	if(search_incomplete?.times_hit >= search_incomplete.average_hits)
