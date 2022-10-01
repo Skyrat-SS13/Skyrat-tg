@@ -119,3 +119,4 @@
 	wound_bonus = -30
 	pierces = 1
 	projectile_piercing = ~(PASSMOB)
+	range = 20 //this thing penetrates all walls, and thus without the range being neutered it will destroy 3 windows and kill someone in dorms if you miss
