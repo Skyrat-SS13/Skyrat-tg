@@ -24,7 +24,7 @@
 	special_desc = "A unique cyberlink allows these pants to somehow protect most of your body, and a specialized weave makes them resistant to wounding attacks."
 	special_desc_requirement = EXAMINE_CHECK_SYNDICATE
 	special_desc_affiliation = "memories of Johnny Robohand"
-	armor = list(MELEE = 20, BULLET = 20, LASER = 20, ENERGY = 20, BOMB = 20, BIO = 0, FIRE = 0, ACID = 0, WOUND = 100)
+	armor = list(MELEE = 20, BULLET = 20, LASER = 20, ENERGY = 20, BOMB = 20, BIO = 0, FIRE = 0, ACID = 0, WOUND = 5)
 
 /obj/item/autosurgeon/syndicate/nodrop
 	starting_organ = /obj/item/organ/internal/cyberimp/brain/anti_drop
@@ -37,14 +37,13 @@
 	special_desc_requirement = EXAMINE_CHECK_SYNDICATE
 	special_desc_affiliation = "memories of Johnny Robohand"
 	body_parts_covered = HEAD
-	armor = list(MELEE = 20, BULLET = 60, LASER = 20, ENERGY = 20, BOMB = 20, BIO = 0, FIRE = 0, ACID = 0, WOUND = 100)
+	armor = list(MELEE = 10, BULLET = 30, LASER = 10, ENERGY = 10, BOMB = 10, BIO = 0, FIRE = 0, ACID = 0, WOUND = 5)
 
 //Again, not a bug, it's a feature. ALL PARTS COVERED!!
 /obj/item/clothing/suit/armor/bulletproof/old/robohand
 	name = "custom-fit ballistic vest"
 	desc = "One of a kind bulletproof armor custom made to fit one person, Johnny Robohand. It seems that your arms are protected by it as well!"
-	special_desc = "A damn badass piece of equipment that also allows the wearer to resist wounds from gunfire, melee assault, and more."
+	special_desc = "A damn badass vest that protects your arms and lower torso. Otherwise the exact same as a normal ballistic vest."
 	special_desc_requirement = EXAMINE_CHECK_SYNDICATE
 	special_desc_affiliation = "memories of Johnny Robohand"
-	armor = list(MELEE = 15, BULLET = 60, LASER = 10, ENERGY = 10, BOMB = 40, BIO = 0, FIRE = 50, ACID = 50, WOUND = 100) //exact same as the normal bulletproof vest but wound-resistant
 	body_parts_covered = CHEST|GROIN|ARMS
