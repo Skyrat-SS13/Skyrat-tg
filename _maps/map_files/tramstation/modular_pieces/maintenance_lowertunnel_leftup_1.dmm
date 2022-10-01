@@ -54,11 +54,14 @@
 "ee" = (
 /turf/open/floor/catwalk_floor,
 /area/station/maintenance/port/central)
-"eI" = (
-/turf/open/floor/catwalk_floor,
-/area/station/maintenance/department/crew_quarters/dorms)
 "gc" = (
 /turf/closed/wall,
+/area/station/maintenance/port/central)
+"gt" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/rack,
+/obj/effect/spawner/random/maintenance/two,
+/turf/open/floor/iron/smooth,
 /area/station/maintenance/port/central)
 "gD" = (
 /obj/effect/decal/cleanable/dirt,
@@ -73,8 +76,8 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/disposalpipe/segment{
-	dir = 5
+/obj/structure/disposalpipe/junction/flip{
+	dir = 4
 	},
 /turf/open/floor/catwalk_floor,
 /area/station/maintenance/port/central)
@@ -118,20 +121,11 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
+/obj/structure/disposalpipe/segment,
 /turf/open/floor/catwalk_floor,
 /area/station/maintenance/department/crew_quarters/dorms)
-"pU" = (
-/obj/effect/turf_decal/sand,
-/obj/effect/landmark/event_spawn,
-/turf/open/floor/iron/smooth,
-/area/station/maintenance/port/central)
-"qQ" = (
-/obj/structure/disposalpipe/segment,
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/structure/cable,
-/turf/open/floor/catwalk_floor,
+"qW" = (
+/turf/template_noop,
 /area/station/maintenance/department/crew_quarters/dorms)
 "rE" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -159,16 +153,6 @@
 /obj/effect/spawner/random/maintenance/four,
 /turf/open/floor/iron/smooth,
 /area/station/maintenance/department/crew_quarters/dorms)
-"uV" = (
-/obj/structure/disposalpipe/segment{
-	dir = 10
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/structure/cable,
-/turf/open/floor/catwalk_floor,
-/area/station/maintenance/department/crew_quarters/dorms)
 "vP" = (
 /obj/machinery/duct,
 /obj/machinery/door/airlock/maintenance_hatch{
@@ -195,9 +179,7 @@
 /turf/open/floor/catwalk_floor,
 /area/station/maintenance/port/central)
 "yC" = (
-/obj/structure/disposalpipe/segment{
-	dir = 5
-	},
+/obj/structure/disposalpipe/segment,
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -222,12 +204,6 @@
 	},
 /turf/open/floor/catwalk_floor,
 /area/station/maintenance/port/central)
-"zP" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/girder,
-/obj/structure/grille,
-/turf/open/floor/iron/smooth,
-/area/station/maintenance/port/central)
 "Cu" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/xeno_spawn,
@@ -238,10 +214,10 @@
 /turf/template_noop,
 /area/template_noop)
 "Dt" = (
-/obj/effect/decal/cleanable/dirt,
 /obj/structure/disposalpipe/segment{
-	dir = 5
+	dir = 10
 	},
+/obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
@@ -254,8 +230,23 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/catwalk_floor,
 /area/station/maintenance/port/central)
+"Fq" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet,
+/obj/effect/spawner/random/engineering/tool,
+/obj/effect/spawner/random/engineering/flashlight,
+/obj/effect/spawner/random/engineering/material_cheap,
+/turf/open/floor/iron/smooth,
+/area/station/maintenance/port/central)
 "HD" = (
-/turf/template_noop,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/cable,
+/obj/structure/disposalpipe/segment{
+	dir = 5
+	},
+/turf/open/floor/catwalk_floor,
 /area/station/maintenance/department/crew_quarters/dorms)
 "IB" = (
 /obj/machinery/door/airlock/external{
@@ -290,12 +281,16 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
 /turf/open/floor/iron/smooth,
 /area/station/maintenance/port/central)
-"LG" = (
+"Kd" = (
+/obj/structure/disposalpipe/segment{
+	dir = 5
+	},
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/rack,
-/obj/effect/spawner/random/maintenance/two,
-/turf/open/floor/iron/smooth,
-/area/station/maintenance/port/central)
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/cable,
+/turf/open/floor/catwalk_floor,
+/area/station/maintenance/department/crew_quarters/dorms)
 "LQ" = (
 /obj/effect/turf_decal/sand,
 /obj/structure/closet/emcloset,
@@ -304,9 +299,9 @@
 "LZ" = (
 /turf/closed/mineral/random/stationside/asteroid/porus,
 /area/template_noop)
-"Mp" = (
+"Mg" = (
 /obj/effect/turf_decal/sand,
-/obj/effect/landmark/blobstart,
+/obj/effect/landmark/event_spawn,
 /turf/open/floor/iron/smooth,
 /area/station/maintenance/port/central)
 "MK" = (
@@ -391,6 +386,14 @@
 /obj/effect/spawner/random/trash/food_packaging,
 /turf/open/floor/catwalk_floor,
 /area/station/maintenance/port/central)
+"SE" = (
+/turf/open/floor/catwalk_floor,
+/area/station/maintenance/department/crew_quarters/dorms)
+"SH" = (
+/obj/effect/turf_decal/sand,
+/obj/effect/landmark/blobstart,
+/turf/open/floor/iron/smooth,
+/area/station/maintenance/port/central)
 "TI" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -420,16 +423,14 @@
 	},
 /turf/open/floor/catwalk_floor,
 /area/station/maintenance/port/central)
-"Vy" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/closet,
-/obj/effect/spawner/random/engineering/tool,
-/obj/effect/spawner/random/engineering/flashlight,
-/obj/effect/spawner/random/engineering/material_cheap,
-/turf/open/floor/iron/smooth,
-/area/station/maintenance/port/central)
 "Vz" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/grille,
+/turf/open/floor/iron/smooth,
+/area/station/maintenance/port/central)
+"XC" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/girder,
 /obj/structure/grille,
 /turf/open/floor/iron/smooth,
 /area/station/maintenance/port/central)
@@ -495,15 +496,15 @@ Dh
 Dh
 nd
 jz
-qQ
-qQ
-qQ
-qQ
-qQ
-qQ
-qQ
-qQ
 yC
+yC
+yC
+yC
+yC
+yC
+yC
+yC
+Kd
 Ox
 Ox
 uJ
@@ -541,15 +542,15 @@ nd
 nd
 nd
 nd
-uV
 Dt
 oN
 HD
-HD
-HD
-HD
-HD
-HD
+qW
+qW
+qW
+qW
+qW
+qW
 Dh
 Dh
 Dh
@@ -581,7 +582,7 @@ Dh
 Dh
 Dh
 Dh
-eI
+SE
 Dh
 Dh
 Dh
@@ -947,7 +948,7 @@ Dh
 Dh
 Dh
 Dh
-zP
+XC
 xZ
 Dh
 Dh
@@ -1175,7 +1176,7 @@ Dh
 Dh
 Dh
 Dh
-LG
+gt
 xZ
 Dh
 Dh
@@ -1213,7 +1214,7 @@ Dh
 Dh
 Dh
 Dh
-Vy
+Fq
 xZ
 Dh
 Dh
@@ -1897,9 +1898,9 @@ hb
 cj
 Ym
 IB
-pU
+Mg
 bk
-Mp
+SH
 cj
 Ym
 IB

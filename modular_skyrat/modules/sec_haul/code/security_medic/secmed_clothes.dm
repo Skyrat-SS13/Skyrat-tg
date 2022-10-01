@@ -56,6 +56,8 @@
 	name = "security medic skirtleneck"
 	desc = "A comfy turtleneck with a white armband and brown skirt, denoting the wearer as a security medic."
 	icon_state = "security_medic_turtleneck_skirt"
+	body_parts_covered = CHEST|GROIN|ARMS
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/head/beret/sec/peacekeeper/security_medic
