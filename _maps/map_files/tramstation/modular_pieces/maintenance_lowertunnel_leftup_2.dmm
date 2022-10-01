@@ -98,6 +98,16 @@
 /obj/effect/turf_decal/sand/plating,
 /turf/open/floor/plating,
 /area/station/maintenance/port/central)
+"gB" = (
+/obj/structure/disposalpipe/segment{
+	dir = 5
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/cable,
+/turf/open/floor/catwalk_floor,
+/area/station/maintenance/department/crew_quarters/dorms)
 "hf" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/smooth,
@@ -114,6 +124,11 @@
 "iA" = (
 /turf/open/misc/asteroid,
 /area/template_noop)
+"iP" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/ore_box,
+/turf/open/floor/iron/smooth,
+/area/station/maintenance/port/central)
 "iW" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -123,18 +138,15 @@
 /obj/effect/spawner/random/trash/food_packaging,
 /turf/open/floor/catwalk_floor,
 /area/station/maintenance/port/central)
+"jr" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/spawner/random/structure/steam_vent,
+/turf/open/floor/iron/smooth,
+/area/station/maintenance/port/central)
 "jS" = (
 /obj/item/stack/ore/glass,
 /turf/open/misc/asteroid,
 /area/template_noop)
-"kg" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/rack,
-/obj/effect/spawner/random/engineering/material_cheap,
-/obj/effect/spawner/random/engineering/material_cheap,
-/obj/effect/spawner/random/engineering/flashlight,
-/turf/open/floor/iron/smooth,
-/area/station/maintenance/port/central)
 "km" = (
 /turf/closed/wall,
 /area/station/maintenance/department/crew_quarters/dorms)
@@ -170,14 +182,6 @@
 /obj/structure/cable,
 /turf/open/floor/catwalk_floor,
 /area/station/maintenance/port/central)
-"oy" = (
-/obj/structure/disposalpipe/segment,
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/structure/cable,
-/turf/open/floor/catwalk_floor,
-/area/station/maintenance/department/crew_quarters/dorms)
 "oJ" = (
 /obj/effect/spawner/structure/window,
 /turf/open/floor/plating,
@@ -190,7 +194,9 @@
 "qI" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/ore_box,
-/turf/open/floor/iron/smooth,
+/obj/structure/cable,
+/obj/machinery/power/apc/auto_name/directional/south,
+/turf/open/floor/catwalk_floor,
 /area/station/maintenance/port/central)
 "qL" = (
 /obj/effect/decal/cleanable/dirt,
@@ -229,13 +235,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/catwalk_floor,
 /area/station/maintenance/port/central)
-"sW" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/ore_box,
-/obj/structure/cable,
-/obj/machinery/power/apc/auto_name/directional/south,
-/turf/open/floor/catwalk_floor,
-/area/station/maintenance/port/central)
 "tb" = (
 /obj/machinery/duct,
 /obj/machinery/door/airlock/maintenance_hatch{
@@ -270,6 +269,11 @@
 "tN" = (
 /turf/open/misc/asteroid/airless,
 /area/template_noop)
+"ua" = (
+/obj/effect/turf_decal/sand/plating,
+/obj/effect/landmark/blobstart,
+/turf/open/floor/plating,
+/area/station/maintenance/port/central)
 "ub" = (
 /obj/machinery/duct,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -285,7 +289,14 @@
 /turf/closed/wall/rust,
 /area/station/maintenance/port/central)
 "vs" = (
-/turf/template_noop,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/cable,
+/obj/structure/disposalpipe/segment{
+	dir = 5
+	},
+/turf/open/floor/catwalk_floor,
 /area/station/maintenance/department/crew_quarters/dorms)
 "vt" = (
 /obj/effect/decal/cleanable/dirt,
@@ -294,11 +305,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/effect/spawner/random/trash/garbage,
 /turf/open/floor/catwalk_floor,
-/area/station/maintenance/port/central)
-"xi" = (
-/obj/effect/turf_decal/sand/plating,
-/obj/effect/landmark/blobstart,
-/turf/open/floor/plating,
 /area/station/maintenance/port/central)
 "zA" = (
 /obj/effect/decal/cleanable/dirt,
@@ -310,6 +316,8 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
+/obj/item/pickaxe/mini,
+/obj/structure/disposalpipe/segment,
 /turf/open/floor/catwalk_floor,
 /area/station/maintenance/department/crew_quarters/dorms)
 "zM" = (
@@ -353,24 +361,14 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/station/maintenance/port/central)
-"EZ" = (
-/obj/structure/disposalpipe/segment{
-	dir = 10
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/structure/cable,
-/turf/open/floor/catwalk_floor,
-/area/station/maintenance/department/crew_quarters/dorms)
 "Gg" = (
 /obj/machinery/duct,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/disposalpipe/segment{
-	dir = 5
+/obj/structure/disposalpipe/junction/flip{
+	dir = 4
 	},
 /turf/open/floor/catwalk_floor,
 /area/station/maintenance/port/central)
@@ -383,14 +381,20 @@
 /turf/open/floor/iron/smooth,
 /area/station/maintenance/port/central)
 "Hm" = (
-/obj/structure/disposalpipe/segment{
-	dir = 5
-	},
+/obj/structure/disposalpipe/segment,
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
 /turf/open/floor/catwalk_floor,
+/area/station/maintenance/department/crew_quarters/dorms)
+"Is" = (
+/obj/effect/turf_decal/sand/plating,
+/obj/effect/landmark/event_spawn,
+/turf/open/floor/plating,
+/area/station/maintenance/port/central)
+"IT" = (
+/turf/template_noop,
 /area/station/maintenance/department/crew_quarters/dorms)
 "JC" = (
 /obj/effect/decal/cleanable/dirt,
@@ -440,11 +444,6 @@
 /obj/modular_map_connector,
 /turf/open/floor/iron/smooth,
 /area/station/maintenance/port/central)
-"MK" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/random/structure/steam_vent,
-/turf/open/floor/iron/smooth,
-/area/station/maintenance/port/central)
 "OP" = (
 /turf/open/floor/catwalk_floor,
 /area/station/maintenance/port/central)
@@ -474,6 +473,14 @@
 /obj/item/stack/ore/glass,
 /turf/open/misc/asteroid/airless,
 /area/template_noop)
+"Qy" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/rack,
+/obj/effect/spawner/random/engineering/material_cheap,
+/obj/effect/spawner/random/engineering/material_cheap,
+/obj/effect/spawner/random/engineering/flashlight,
+/turf/open/floor/iron/smooth,
+/area/station/maintenance/port/central)
 "Sz" = (
 /turf/template_noop,
 /area/template_noop)
@@ -493,6 +500,9 @@
 /obj/effect/spawner/random/maintenance/four,
 /turf/open/floor/iron/smooth,
 /area/station/maintenance/port/central)
+"WJ" = (
+/turf/open/floor/catwalk_floor,
+/area/station/maintenance/department/crew_quarters/dorms)
 "WY" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -503,23 +513,14 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/station/maintenance/port/central)
-"Xi" = (
-/obj/effect/turf_decal/sand/plating,
-/obj/effect/landmark/event_spawn,
-/turf/open/floor/plating,
-/area/station/maintenance/port/central)
-"Yz" = (
-/turf/open/floor/catwalk_floor,
-/area/station/maintenance/department/crew_quarters/dorms)
 "YK" = (
-/obj/effect/decal/cleanable/dirt,
 /obj/structure/disposalpipe/segment{
-	dir = 5
+	dir = 10
 	},
+/obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
-/obj/item/pickaxe/mini,
 /turf/open/floor/catwalk_floor,
 /area/station/maintenance/department/crew_quarters/dorms)
 "YT" = (
@@ -581,15 +582,15 @@ Sz
 Sz
 km
 ra
-oy
-oy
-oy
-oy
-oy
-oy
-oy
-oy
 Hm
+Hm
+Hm
+Hm
+Hm
+Hm
+Hm
+Hm
+gB
 hf
 hf
 oJ
@@ -627,15 +628,15 @@ km
 km
 km
 km
-EZ
 YK
 zI
 vs
-vs
-vs
-vs
-vs
-vs
+IT
+IT
+IT
+IT
+IT
+IT
 Sz
 Sz
 Sz
@@ -667,7 +668,7 @@ Sz
 Sz
 Sz
 Sz
-Yz
+WJ
 Sz
 Sz
 Sz
@@ -995,7 +996,7 @@ Sz
 Sz
 Sz
 Sz
-MK
+jr
 fT
 Sz
 Sz
@@ -1033,7 +1034,7 @@ Sz
 Sz
 Sz
 Sz
-qI
+iP
 fT
 Sz
 Sz
@@ -1261,7 +1262,7 @@ Sz
 Sz
 Sz
 Sz
-qI
+iP
 WY
 Sz
 Sz
@@ -1299,7 +1300,7 @@ Sz
 Sz
 Sz
 Sz
-kg
+Qy
 WY
 Sz
 Sz
@@ -1983,9 +1984,9 @@ tN
 Bk
 Cz
 aO
-xi
+ua
 nN
-Xi
+Is
 Bk
 Cz
 aO
@@ -2061,7 +2062,7 @@ tN
 zM
 qL
 nN
-sW
+qI
 zM
 iA
 iA
