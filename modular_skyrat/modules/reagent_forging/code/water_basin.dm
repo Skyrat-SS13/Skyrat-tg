@@ -63,11 +63,11 @@
 		return FALSE
 	playsound(src, 'modular_skyrat/modules/reagent_forging/sound/hot_hiss.ogg', 50, TRUE)
 	if(search_incomplete?.times_hit < search_incomplete.average_hits)
-		to_chat(user, span_warning("You cool down [search_incomplete]-- it wasn't ready yet."))
+		to_chat(user, span_warning("You cool down [search_incomplete], but it wasn't ready yet."))
 		COOLDOWN_RESET(search_incomplete, heating_remainder)
 		return FALSE
 	if(search_incomplete?.times_hit >= search_incomplete.average_hits)
-		to_chat(user, span_notice("You cool down [search_incomplete]-- it is ready."))
+		to_chat(user, span_notice("You cool down [search_incomplete] and it's ready."))
 		user.mind.adjust_experience(/datum/skill/smithing, 10) //using the water basin on a ready item gives decent experience.
 		var/obj/spawned_obj = new search_incomplete.spawn_item(get_turf(src))
 		if(search_incomplete.custom_materials)
