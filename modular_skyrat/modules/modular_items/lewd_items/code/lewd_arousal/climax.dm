@@ -67,9 +67,9 @@
 		else
 			var/list/interactable_inrange_humans = list()
 
-			for(var/mob/living/carbon/human/iterating_human in view(1, src))
-				if(iterating_human.client?.prefs?.read_preference(/datum/preference/toggle/erp)) // No prefbreaking.
-					interactable_inrange_humans[iterating_human.name] = iterating_human
+			// Unfortunately prefs can't be checked here, because byond/tgstation moment.
+			for(var/mob/living/carbon/human/iterating_human in (view(1, src) - src))
+				interactable_inrange_humans[iterating_human.name] = iterating_human
 
 			var/list/buttons = list(CLIMAX_ON_FLOOR)
 			if(interactable_inrange_humans.len)
@@ -103,7 +103,7 @@
 					if(target_human.has_anus(REQUIRE_GENITAL_EXPOSED))
 						target_buttons += "asshole"
 					if(target_human.has_penis(REQUIRE_GENITAL_EXPOSED))
-						var/obj/item/organ/external/genital/penis/other_penis = target_human.getorganslot()
+						var/obj/item/organ/external/genital/penis/other_penis = target_human.getorganslot(ORGAN_SLOT_PENIS)
 						if(other_penis.sheath != "None")
 							target_buttons += "sheath"
 					target_buttons += "On [target_human_them]"
