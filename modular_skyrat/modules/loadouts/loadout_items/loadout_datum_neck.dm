@@ -194,6 +194,11 @@ GLOBAL_LIST_INIT(loadout_necks, generate_loadout_items(/datum/loadout_item/neck)
 	name = "Mantle"
 	item_path = /obj/item/clothing/neck/mantle
 
+/datum/loadout_item/neck/mantle_qm
+	name = "Quartermaster's Mantle"
+	item_path = /obj/item/clothing/neck/mantle/qm
+	restricted_roles = list(JOB_QUARTERMASTER)
+
 /datum/loadout_item/neck/mantle_hop
 	name = "Head of Personnel's Mantle"
 	item_path = /obj/item/clothing/neck/mantle/hopmantle

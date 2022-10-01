@@ -18,6 +18,11 @@
 	icon = 'modular_skyrat/master_files/icons/mob/clothing/neck.dmi'
 	icon_state = "regal-mantle"
 
+/obj/item/clothing/neck/mantle/qm
+	name = "\proper the quartermaster's mantle"
+	desc = "A snug and comfortable looking shoulder covering garment, it has an air of rebellion and independance. Or annoyance and delusions, your call."
+	icon_state = "qmmantle"
+
 /obj/item/clothing/neck/mantle/hopmantle
 	name = "\proper the head of personnel's mantle"
 	desc = "A decorative draping of blue and red over your shoulders, signifying your stamping prowess."
@@ -41,7 +46,7 @@
 
 /obj/item/clothing/neck/mantle/cemantle
 	name = "\proper the chief engineer's mantle"
-	desc = "A matte grey shoulder covering. Do not wear around active machinery."
+	desc = "A bright white and yellow striped mantle. Do not wear around active machinery."
 	icon = 'modular_skyrat/master_files/icons/mob/clothing/neck.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/neck.dmi'
 	icon_state = "cemantle"
