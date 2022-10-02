@@ -68,7 +68,7 @@
 		"security" = list( // some good stuff with a bunch of junk
 			/obj/item/gun/energy/disabler = 1,
 			/obj/item/restraints/handcuffs = 2,
-			/obj/item/clothing/suit/armor/vest/security = 2,
+			/obj/item/clothing/suit/armor/vest/alt/sec = 2,
 			/obj/item/storage/backpack/security = 3,
 			/obj/item/grenade/flashbang = 2,
 			/obj/item/clothing/under/rank/security/officer = 3,

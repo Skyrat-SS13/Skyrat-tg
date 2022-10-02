@@ -76,7 +76,7 @@ GLOBAL_LIST_EMPTY(outbound_ship_systems)
 /obj/machinery/outbound_expedition/shuttle_sensor_system
 	name = "electronic intelligence blister"
 	desc = "A weathered radar system that's used to detect far-off energy sources."
-	icon = 'icons/mob/hivebot.dmi'
+	icon = 'icons/mob/simple/hivebot.dmi'
 	icon_state = "def_radar"
 
 /obj/machinery/outbound_expedition/shuttle_sensor_system/Initialize(mapload)

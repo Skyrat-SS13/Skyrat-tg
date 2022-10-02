@@ -1,7 +1,7 @@
 /obj/machinery/outbound_expedition/comms_dish
 	name = "radar dish"
 	desc = "That's a radar dish, alright."
-	icon = 'icons/mob/hivebot.dmi'
+	icon = 'icons/mob/simple/hivebot.dmi'
 	icon_state = "def_radar"
 
 /obj/machinery/outbound_expedition/comms_dish/Initialize(mapload)
