@@ -612,44 +612,55 @@
 * CHEMICAL REACTIONS
 */
 
+/datum/chemical_reaction
+	/// Will this reaction be disabled by the ERP config being turned off?
+	var/erp_reaction = FALSE
+
 /datum/chemical_reaction/crocin
 	results = list(/datum/reagent/drug/aphrodisiac/crocin = 6)
 	required_reagents = list(/datum/reagent/carbon = 2, /datum/reagent/hydrogen = 2, /datum/reagent/oxygen = 2, /datum/reagent/water = 1)
 	required_temp = 400
 	mix_message = "The mixture boils off a pink vapor..."
+	erp_reaction = TRUE
 
 /datum/chemical_reaction/hexacrocin
 	results = list(/datum/reagent/drug/aphrodisiac/crocin/hexacrocin = 1)
 	required_reagents = list(/datum/reagent/drug/aphrodisiac/crocin = 6, /datum/reagent/phenol = 1)
 	required_temp = 600
 	mix_message = "The mixture rapidly condenses and darkens in color..."
+	erp_reaction = TRUE
 
 /datum/chemical_reaction/camphor
 	results = list(/datum/reagent/drug/aphrodisiac/camphor = 6)
 	required_reagents = list(/datum/reagent/carbon = 2, /datum/reagent/hydrogen = 2, /datum/reagent/oxygen = 2, /datum/reagent/sulfur = 1)
 	required_temp = 400
 	mix_message = "The mixture boils off a yellow, smelly vapor..."
+	erp_reaction = TRUE
 
 /datum/chemical_reaction/pentacamphor
 	results = list(/datum/reagent/drug/aphrodisiac/camphor/pentacamphor = 1)
 	required_reagents = list(/datum/reagent/drug/aphrodisiac/camphor = 5, /datum/reagent/acetone = 1)
 	required_temp = 500
 	mix_message = "The mixture thickens and heats up slighty..."
+	erp_reaction = TRUE
 
 /datum/chemical_reaction/cum
 	results = list(/datum/reagent/consumable/cum = 5)
 	required_reagents = list(/datum/reagent/blood = 2, /datum/reagent/consumable/milk = 2, /datum/reagent/consumable/salt = 1)
 	mix_message = "The mixture turns into a gooey, musky white liquid..."
+	erp_reaction = TRUE
 
 /datum/chemical_reaction/breast_enlarger
 	results = list(/datum/reagent/drug/aphrodisiac/breast_enlarger = 8)
 	required_reagents = list(/datum/reagent/medicine/salglu_solution = 1, /datum/reagent/consumable/milk = 1, /datum/reagent/medicine/c2/synthflesh = 2, /datum/reagent/silicon = 3, /datum/reagent/drug/aphrodisiac/crocin = 3)
 	mix_message = "the reaction gives off a mist of milk."
+	erp_reaction = TRUE
 
 /datum/chemical_reaction/penis_enlarger
 	results = list(/datum/reagent/drug/aphrodisiac/penis_enlarger = 8)
 	required_reagents = list(/datum/reagent/blood = 5, /datum/reagent/medicine/c2/synthflesh = 2, /datum/reagent/carbon = 2, /datum/reagent/drug/aphrodisiac/crocin = 2, /datum/reagent/medicine/salglu_solution = 1)
 	mix_message = "the reaction gives off a mist of milk."
+	erp_reaction = TRUE
 
 /*
 * PREMADE CONTAINERS
