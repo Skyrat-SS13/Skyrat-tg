@@ -30,9 +30,9 @@
 
 /obj/machinery/scanner_gate/passport_gate/perform_scan(mob/living/living)
 	if(obj_flags & EMAGGED)
-		playsound(src, 'modular_skyrat/modules/customization/modules/culture/sounds/passportscanbroke.ogg', 75)
+		playsound(src, 'modular_skyrat/modules/culture/sounds/passportscanbroke.ogg', 75)
 	else
-		playsound(src, 'modular_skyrat/modules/customization/modules/culture/sounds/passportscan.ogg', 75)
+		playsound(src, 'modular_skyrat/modules/culture/sounds/passportscan.ogg', 75)
 	var/obj/item/passport/passport = living.get_passport()
 
 	if(scangate_mode == SCANGATE_PASSPORT)

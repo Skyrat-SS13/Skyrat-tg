@@ -53,9 +53,9 @@
 	/// A photo of the character, visible on close examine
 	var/headshot = ""
 
-	var/datum/background_info/employment/culture_culture
-	var/datum/background_info/social_background/culture_faction
-	var/datum/background_info/origin/culture_location
+	var/datum/background_info/employment/employment
+	var/datum/background_info/social_background/social_background
+	var/datum/background_info/origin/origin
 
 /datum/preferences/proc/species_updated(species_type)
 	all_quirks = list()

@@ -12,8 +12,8 @@
 /// Tries to give a passport to a living mob. If the user hasn't selected an origin, they'll spawn with the default passport.
 /proc/give_passport(mob/living/spawned_mob, client/player_client)
 	var/obj/item/passport/passport = /obj/item/passport
-	if(player_client.prefs.culture_faction)
-		var/datum/background_info/social_background/faction = GLOB.social_backgrounds[player_client.prefs.culture_faction]
+	if(player_client.prefs.social_background)
+		var/datum/background_info/social_background/faction = GLOB.social_backgrounds[player_client.prefs.social_background]
 		passport = faction.passport
 
 	passport = new passport()

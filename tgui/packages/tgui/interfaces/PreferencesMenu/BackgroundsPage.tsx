@@ -189,7 +189,7 @@ const CategoryEntry = (props, context) => {
   );
 };
 
-export const CulturesPage = (props, context) => {
+export const BackgroundsPage = (props, context) => {
   const { data } = useBackend<PreferencesMenuData>(context);
   return (
     <Stack>

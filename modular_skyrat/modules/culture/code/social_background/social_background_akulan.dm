@@ -1,10 +1,11 @@
-/datum/background_info/employment/akulan
+/datum/background_info/social_background/akulan
 	name = "Kingdom of Agurkrral"
 	description = "Backgrounds specific to the Akulan race and their vassals."
 	features = list(/datum/cultural_feature/good)
 	groups = CULTURE_AKULAN
+	passport = /obj/item/passport/akulan
 
-/datum/background_info/employment/akulan/akulan_core
+/datum/background_info/social_background/akulan/akulan_core
 	name = "Ousted Coreworld Akulan Aristocrat"
 	description = "You were raised as a traditional Akulan aristocrat on their homeworld of Azulea or one of their many coreworlds in the Kingdom of Agurkrral. \
 	You are simultaneously pampered and also rigidly disciplined with a military-styled education that would be comparable to aristocrats born in the ancient human Kingdom of Prussia. \
@@ -16,7 +17,7 @@
 	Note: You most likely prefer to be called an Azulean, not the foreign name of \"Akulan\" given to you."
 	economic_power = 1.3
 
-/datum/background_info/employment/akulan/akulan_rim
+/datum/background_info/social_background/akulan/akulan_rim
 	name = "Ousted Rimworld Akulan Aristocrat"
 	description = "You were raised as a non-traditional Akulan aristocrat on the rimworlds of the Kingdom of Agurkrral. \
 	Unlike the coreworld aristocrats, power struggles are common, and education comes in the form of experience, not books or philosophy. \

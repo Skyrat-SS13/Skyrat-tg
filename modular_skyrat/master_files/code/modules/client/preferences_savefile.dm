@@ -80,9 +80,9 @@
 
 	READ_FILE(save["headshot"], headshot)
 
-	READ_FILE(save["culture_culture"], culture_culture)
-	READ_FILE(save["culture_location"], culture_location)
-	READ_FILE(save["culture_faction"], culture_faction)
+	READ_FILE(save["employment"], employment)
+	READ_FILE(save["origin"], origin)
+	READ_FILE(save["social_background"], social_background)
 
 	if(needs_update >= 0)
 		update_character_skyrat(needs_update, save) // needs_update == savefile_version if we need an update (positive integer)
@@ -143,9 +143,9 @@
 	WRITE_FILE(save["languages"] , languages)
 	WRITE_FILE(save["headshot"], headshot)
 
-	WRITE_FILE(save["culture_culture"], culture_culture)
-	WRITE_FILE(save["culture_location"], culture_location)
-	WRITE_FILE(save["culture_faction"], culture_faction)
+	WRITE_FILE(save["employment"], employment)
+	WRITE_FILE(save["origin"], origin)
+	WRITE_FILE(save["social_background"], social_background)
 
 	WRITE_FILE(save["modular_version"] , MODULAR_SAVEFILE_VERSION_MAX)
 

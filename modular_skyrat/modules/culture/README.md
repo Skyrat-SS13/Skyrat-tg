@@ -1,12 +1,12 @@
-## Title: Customization
+## Title: Backgrounds
 
-MODULE ID: CUSTOMIZATION.CULTURES
+MODULE ID: BACKGROUNDS
 
 ### Description:
 
-This is a *huge* submodule that relies heavily on customization code, so it only makes sense it's in here.
+This adds a revamped and relatively complex, while still being easy enough to add on top of and use, background system.
 
-This adds a revamped and complex, while still being easy enough to add on top of and use, background system.
+Oh, and this time its *actually* lore friendly.
 
 ### Included files that are not contained in this module:
 

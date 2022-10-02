@@ -14,13 +14,3 @@
 	You live a tribal life, scavenging and hunting across the land to ensure the survival of your tribe."
 	groups = CULTURE_LAVALAND
 
-/datum/background_info/employment/lavaland_exile
-	name = "Lavaland Exile"
-	description = "You once were of the Necroplis, though you've wandered astray of it's teachings, and have returned to technology and empires, \
-	whether forced to, or by choice. Regardless, your ex-tribe severely disapproves of your treachery, and you'd be wise to keep away from them, \
-	lest you be re-enlightened of the error of your new ways."
-	required_lang = /datum/language/draconic
-	economic_power = 0.7
-	features = list(/datum/cultural_feature/poor)
-	groups = CULTURE_GROUP_SPACE_FARING
-

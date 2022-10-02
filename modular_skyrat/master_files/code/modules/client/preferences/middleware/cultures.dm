@@ -28,23 +28,23 @@
 	if(valid)
 		var/value
 		if(istype(cultural_info, /datum/background_info/employment))
-			selected = cultural_info.type == preferences.culture_culture
+			selected = cultural_info.type == preferences.employment
 			for(var/datum/background_info/culture as anything in subtypesof(cultural_info.type))
-				value = get_ui_data_entry(GLOB.employment[culture], culture == preferences.culture_culture, TRUE)
+				value = get_ui_data_entry(GLOB.employment[culture], culture == preferences.employment, TRUE)
 				if(value["selected"])
 					selected = CHILD_CULTURE_SELECTED
 				sub_cultures += list(value)
 		else if(istype(cultural_info, /datum/background_info/origin))
-			selected = cultural_info.type == preferences.culture_location
+			selected = cultural_info.type == preferences.origin
 			for(var/datum/background_info/culture as anything in subtypesof(cultural_info.type))
-				value = get_ui_data_entry(GLOB.origins[culture], culture == preferences.culture_location, check_valid(culture, preferences.culture_culture))
+				value = get_ui_data_entry(GLOB.origins[culture], culture == preferences.origin, check_valid(culture, preferences.employment))
 				if(value["selected"])
 					selected = CHILD_CULTURE_SELECTED
 				sub_cultures += list(value)
 		else if(istype(cultural_info, /datum/background_info/social_background))
-			selected = cultural_info.type == preferences.culture_faction
+			selected = cultural_info.type == preferences.social_background
 			for(var/datum/background_info/culture as anything in subtypesof(cultural_info.type))
-				value = get_ui_data_entry(GLOB.social_backgrounds[culture], culture == preferences.culture_faction, check_valid(culture, preferences.culture_culture) && check_valid(cultural_info, preferences.culture_location))
+				value = get_ui_data_entry(GLOB.social_backgrounds[culture], culture == preferences.social_background, check_valid(culture, preferences.employment) && check_valid(cultural_info, preferences.origin))
 				if(value["selected"])
 					selected = CHILD_CULTURE_SELECTED
 				sub_cultures += list(value)
@@ -101,10 +101,10 @@
 		cultures += list(get_ui_data_entries(GLOB.employment[cultural_info], TRUE))
 
 	for(var/datum/background_info/cultural_info as anything in get_immediate_subtypes(/datum/background_info/origin, GLOB.origins))
-		locations += list(get_ui_data_entries(GLOB.origins[cultural_info], check_valid(cultural_info, preferences.culture_culture)))
+		locations += list(get_ui_data_entries(GLOB.origins[cultural_info], check_valid(cultural_info, preferences.employment)))
 
 	for(var/datum/background_info/cultural_info as anything in get_immediate_subtypes(/datum/background_info/social_background, GLOB.social_backgrounds))
-		factions += list(get_ui_data_entries(GLOB.social_backgrounds[cultural_info], check_valid(cultural_info, preferences.culture_culture) && check_valid(cultural_info, preferences.culture_location)))
+		factions += list(get_ui_data_entries(GLOB.social_backgrounds[cultural_info], check_valid(cultural_info, preferences.employment) && check_valid(cultural_info, preferences.origin)))
 
 	return list(
 		"cultures" = cultures,
@@ -126,65 +126,65 @@
 	var/datum/background_info/employment/culture = GLOB.employment[text2path(params["culture"])]
 
 	// If a preresiquite isn't selected, yeet everything that shouldn't be selected.
-	if(preferences.culture_faction && !culture)
-		preferences.culture_faction = null
+	if(preferences.social_background && !culture)
+		preferences.social_background = null
 		return TRUE
-	if(preferences.culture_location && !(culture || preferences.culture_faction))
-		preferences.culture_faction = null
-		preferences.culture_location = null
+	if(preferences.origin && !(culture || preferences.social_background))
+		preferences.social_background = null
+		preferences.origin = null
 		return TRUE
 
 	if(culture)
-		if(!check_valid(culture, preferences.culture_location))
-			preferences.culture_location = null
-			preferences.culture_faction = null
-		if(!check_valid(culture, preferences.culture_faction))
-			preferences.culture_faction = null
-		preferences.culture_culture = culture.type
+		if(!check_valid(culture, preferences.origin))
+			preferences.origin = null
+			preferences.social_background = null
+		if(!check_valid(culture, preferences.social_background))
+			preferences.social_background = null
+		preferences.employment = culture.type
 		return TRUE
 
 	// It isn't valid, let's not let the game try to use whatever was sent.
-	preferences.culture_culture = null
+	preferences.employment = null
 	return TRUE
 
 /datum/preference_middleware/cultures/proc/verify_location(list/params, mob/user)
 	var/datum/background_info/origin/location = GLOB.origins[text2path(params["culture"])]
 
 	// If a preresiquite isn't selected, yeet everything that shouldn't be selected.
-	if(!preferences.culture_culture)
-		preferences.culture_faction = null
-		preferences.culture_location = null
+	if(!preferences.employment)
+		preferences.social_background = null
+		preferences.origin = null
 		return TRUE
 
 	if(location)
-		if(!check_valid(location, preferences.culture_faction))
-			preferences.culture_faction = null
-		preferences.culture_location = location.type
+		if(!check_valid(location, preferences.social_background))
+			preferences.social_background = null
+		preferences.origin = location.type
 		return TRUE
 
 	// It isn't valid, let's not let the game try to use whatever was sent.
-	preferences.culture_location = null
+	preferences.origin = null
 	return TRUE
 
 /datum/preference_middleware/cultures/proc/verify_faction(list/params, mob/user)
 	var/datum/background_info/social_background/faction = GLOB.social_backgrounds[text2path(params["culture"])]
 
 	// If a preresiquite isn't selected, yeet everything that shouldn't be selected.
-	if(!preferences.culture_culture)
-		preferences.culture_faction = null
-		preferences.culture_location = null
+	if(!preferences.employment)
+		preferences.social_background = null
+		preferences.origin = null
 		return TRUE
-	if(!preferences.culture_location)
-		preferences.culture_location = null
+	if(!preferences.origin)
+		preferences.origin = null
 		return TRUE
 
 	// Nothing to validate.
 	if(faction)
-		preferences.culture_faction = faction.type
+		preferences.social_background = faction.type
 		return TRUE
 
 	// It isn't valid, let's not let the game try to use whatever was sent.
-	preferences.culture_faction = null
+	preferences.social_background = null
 	return TRUE
 
 #undef CHILD_CULTURE_SELECTED

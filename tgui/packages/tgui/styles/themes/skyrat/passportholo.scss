@@ -1,0 +1,48 @@
+/**
+ * Copyright (c) 2020 Aleksej Komarov
+ * SPDX-License-Identifier: MIT
+ */
+
+@use 'sass:color';
+@use 'sass:meta';
+
+$background: #57a1bd;
+$primary: #80e4f0;
+
+@use '../../colors.scss' with (
+   $primary: $primary,
+   $fg-map-keys: (),
+   $bg-map-keys: (),
+ );
+@use '../../base.scss' with (
+   $color-bg: color.scale($primary, $lightness: -40%),
+   $color-bg-grad-spread: 6%,
+ );
+
+.theme-passportholo {
+  // Components
+  @include meta.load-css(
+    '../../components/Button.scss',
+    $with: (
+      'color-default': color.scale($primary, $lightness: -30%),
+      'color-transparent-text': color.scale($primary, $lightness: 30%)
+    )
+  );
+  @include meta.load-css(
+    '../../components/ProgressBar.scss',
+    $with: ('color-default-fill': $primary, 'background-color': $background)
+  );
+  @include meta.load-css('../../components/Section.scss');
+
+  // Layouts
+  @include meta.load-css('../../layouts/Layout.scss');
+  @include meta.load-css('../../layouts/Window.scss');
+  @include meta.load-css(
+    '../../layouts/TitleBar.scss',
+    $with: ('background-color': color.scale($primary, $lightness: -25%))
+  );
+
+  .Layout__content {
+    background-image: none;
+  }
+}

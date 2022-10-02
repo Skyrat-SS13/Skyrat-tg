@@ -9,7 +9,7 @@
 // This type should only ever be given to very poor backgrounds that aren't backed by an empire.
 /obj/item/passport
 	name = "passport papers"
-	icon = 'modular_skyrat/master_files/icons/obj/passports.dmi'
+	icon = 'modular_skyrat/modules/culture/icons/passports.dmi'
 	desc = "A bundle of papers indicating where you originated from, as well as who you are. Made from a non-flammable paper-like material."
 	w_class = WEIGHT_CLASS_SMALL
 	slot_flags = ITEM_SLOT_ID
@@ -21,9 +21,10 @@
 	var/tgui_style = "paper"
 
 	var/holder_faction
-	var/holder_locale
+	var/holder_employment
 	var/holder_age
 	var/holder_name
+	var/holder_space_faring
 
 	var/list/cached_data
 	var/imprinted = FALSE
@@ -54,8 +55,8 @@
 	if(!istype(user) || !user.client?.prefs)
 		return
 
-	holder_faction = user.client?.prefs?.culture_faction
-	holder_locale = user.client?.prefs?.culture_location
+	holder_faction = user.client?.prefs?.social_background
+	holder_employment = user.client?.prefs?.employment
 	holder_age = user.age
 	cached_data = null
 	get_data() // This may have a performance hit at round start, but this will ensure things don't get stored inconsistently.
@@ -80,6 +81,9 @@
 
 /obj/item/passport/ShiftClick(mob/user)
 	. = ..()
+	if(icon_state_ext == PASSPORT_CLOSED)
+		return
+
 	ui_interact(user)
 
 /obj/item/passport/ui_interact(mob/user, datum/tgui/ui)
@@ -103,9 +107,8 @@
 /obj/item/passport/proc/get_data()
 	RETURN_TYPE(/list)
 	if(!cached_data)
+		var/datum/background_info/employment/employment = GLOB.employment[holder_employment]
 		var/datum/background_info/social_background/social_background = GLOB.social_backgrounds[holder_faction]
-		var/datum/background_info/employment/employment = GLOB.employment[holder_faction]
-		var/datum/background_info/origin/origin = GLOB.origins[holder_faction]
 		cached_data = list(
 			"name" = holder_name,
 			"tgui_style" = tgui_style,
@@ -113,7 +116,6 @@
 			"empire" = social_background.name,
 			"employment" = employment.name,
 			"age" = holder_age,
-			"space_faring" = social_background.space_faring,
 		)
 	return cached_data
 

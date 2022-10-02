@@ -10,7 +10,7 @@ import { MainPage } from './MainPage';
 import { SpeciesPage } from './SpeciesPage';
 import { QuirksPage } from './QuirksPage';
 // SKYRAT EDIT
-import { CulturesPage } from './CulturesPage';
+import { BackgroundsPage } from './BackgroundsPage';
 import { LanguagesPage } from './LanguagesMenu';
 import { LimbsPage } from './LimbsPage';
 // SKYRAT EDIT END
@@ -77,7 +77,7 @@ export const CharacterPreferenceWindow = (props, context) => {
       pageContents = <LimbsPage />;
       break;
     case Page.Cultures:
-      pageContents = <CulturesPage />;
+      pageContents = <BackgroundsPage />;
       break;
     case Page.Languages:
       pageContents = <LanguagesPage />;

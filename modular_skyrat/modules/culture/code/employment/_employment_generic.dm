@@ -6,11 +6,13 @@
 /datum/background_info/employment/generic/generic
 	name = "Other Culture"
 	description = "You are from one of the many small, relatively unknown cultures scattered across the galaxy."
+	economic_power = 0.9
 
 /datum/background_info/employment/generic/vatgrown
 	name = "Vat Grown"
 	description = "You were not born like most of the people, instead grown and raised in laboratory conditions, either as clone, gene-adapt or some experiment. \
-	Your outlook diverges from baseline humanity accordingly."
+	Your outlook diverges from your baseline race accordingly."
+	economic_power = 0.9
 
 /datum/background_info/employment/generic/spacer_core
 	name = "Spacer, Core Systems"
@@ -20,7 +22,8 @@
 	Spacers near the core worlds of an item are typically accustomed to life in the fast lane, constantly moving between \
 	places, meeting a myriad of people and experiencing many of the cultures in your empire. \
 	As such, Spacers of the core systems tend to be busy, sociable and mobile, rarely satisfied with settled life. \
-	They almost universally know how to live and work in the void and take to such jobs more readily than their planet-bound counterparts."
+	They almost universally know how to live and work in the void and take to such jobs more readily than their planet-bound counterparts. \
+	Somehow you've ended up in this hellhole. Maybe the pay was too good to ignore? Or maybe you have family that moved here."
 
 /datum/background_info/employment/generic/spacer_frontier
 	name = "Spacer, Frontier"
