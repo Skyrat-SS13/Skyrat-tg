@@ -7,8 +7,8 @@
 
 /datum/round_event/fleshmind
 	fakeable = TRUE
-	announceWhen = 200
-	endWhen = 201
+	announce_when = 200
+	end_when = 201
 
 /datum/round_event/fleshmind/announce(fake)
 	priority_announce("Confirmed outbreak of level $£%!£ biohazard aboard [station_name()]. All personnel must contain the outbreak.", "Biohazard Alert", ANNOUNCER_AIMALF)

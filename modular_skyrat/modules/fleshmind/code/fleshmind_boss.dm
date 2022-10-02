@@ -107,7 +107,6 @@
 		'modular_skyrat/modules/fleshmind/sound/tyrant/footstep_5.ogg',
 		'modular_skyrat/modules/fleshmind/sound/tyrant/footstep_6.ogg',
 	)
-	var/death_sound = 'modular_skyrat/modules/fleshmind/sound/tyrant/tyrant_death.ogg'
 	/// We also have a small laser to fire at people ;)
 	var/laser_cooldown_time_upper = 4 SECONDS
 	var/laser_cooldown_time_lower = 2 SECONDS
@@ -123,6 +122,7 @@
 		'modular_skyrat/modules/fleshmind/sound/tyrant/laser_5.ogg',
 		'modular_skyrat/modules/fleshmind/sound/tyrant/laser_6.ogg',
 	)
+	death_sound = 'modular_skyrat/modules/fleshmind/sound/tyrant/tyrant_death.ogg'
 
 /mob/living/simple_animal/hostile/fleshmind/tyrant/Life(delta_time, times_fired)
 	. = ..()
@@ -141,10 +141,6 @@
 
 /mob/living/simple_animal/hostile/fleshmind/tyrant/Destroy()
 	QDEL_NULL(particles)
-	return ..()
-
-/mob/living/simple_animal/hostile/fleshmind/tyrant/death(gibbed)
-	playsound(src, death_sound, 100)
 	return ..()
 
 /mob/living/simple_animal/hostile/fleshmind/tyrant/updatehealth()

@@ -327,7 +327,7 @@
 
 	if(end_game)
 		for(var/i in 1 to SUNBEAM_OVERLAYS)
-			var/mutable_appearance/beam_overlay = mutable_appearance('icons/obj/guns/projectiles_tracer.dmi', "tracer_beam")
+			var/mutable_appearance/beam_overlay = mutable_appearance('icons/obj/weapons/guns/projectiles_tracer.dmi', "tracer_beam")
 			beam_overlay.pixel_y = 32 * i
 			. += beam_overlay
 

@@ -262,15 +262,15 @@
 	switch(level)
 		if(CONTROLLER_LEVEL_3)
 			if(!tyrant_spawned)
-				minor_announce("This is [controller_firstname], wirenet efficency has reached a point of singularity, initiating Protocol 34-C.", controller_fullname, sound = 'sound/ai/default/aimalf.ogg')
+				minor_announce("This is [controller_firstname], wirenet efficency has reached a point of singularity, initiating Protocol 34-C.", controller_fullname, sound_override = 'sound/ai/default/aimalf.ogg')
 				spawn_tyrant_on_a_core()
 				tyrant_spawned = TRUE
 			else
-				minor_announce("This is [controller_firstname], processor core efficiency has increased. Good work.", controller_fullname, sound = 'sound/ai/default/aimalf.ogg')
+				minor_announce("This is [controller_firstname], processor core efficiency has increased. Good work.", controller_fullname, sound_override = 'sound/ai/default/aimalf.ogg')
 		if(CONTROLLER_LEVEL_4)
-			minor_announce("This is [controller_firstname], processor core efficiency has increased. Good work.", controller_fullname, sound = 'sound/ai/default/aimalf.ogg')
+			minor_announce("This is [controller_firstname], processor core efficiency has increased. Good work.", controller_fullname, sound_override = 'sound/ai/default/aimalf.ogg')
 		if(CONTROLLER_LEVEL_5)
-			minor_announce("This is [controller_firstname], kernel integrity is reaching the optimal conversion level, it is time, little ones.", controller_fullname, sound = 'sound/ai/default/aimalf.ogg')
+			minor_announce("This is [controller_firstname], kernel integrity is reaching the optimal conversion level, it is time, little ones.", controller_fullname, sound_override = 'sound/ai/default/aimalf.ogg')
 		if(CONTROLLER_LEVEL_MAX)
 			if(!end_game)
 				priority_announce("This is [controller_firstname], kernel efficency has reached maximum potential. Beginning shuttle override process, stand-by.", "CRITICAL MASS REACHED", ANNOUNCER_KLAXON)
@@ -283,7 +283,7 @@
 	level--
 	notify_ghosts("Corruption AI [controller_fullname] has leveled down to level [level]!")
 	if(level > 0)
-		minor_announce("KERNEL INTEGRITY FALTERING. DO BETTER!", controller_fullname, sound = 'sound/ai/default/aimalf.ogg')
+		minor_announce("KERNEL INTEGRITY FALTERING. DO BETTER!", controller_fullname, sound_override = 'sound/ai/default/aimalf.ogg')
 	else
 		priority_announce("[controller_fullname] has been neutralised.", "Corrupt AI Kernel OFFLINE")
 		message_admins("Corruption AI [controller_fullname] has been destroyed.")

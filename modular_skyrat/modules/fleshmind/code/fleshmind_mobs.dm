@@ -408,7 +408,7 @@
 /datum/action/innate/floater_explode
 	name = "explode"
 	desc = "Detonate our internals."
-	icon_icon = 'icons/obj/grenade.dmi'
+	icon_icon = 'icons/obj/weapons/grenade.dmi'
 	button_icon_state = "frag"
 	check_flags = AB_CHECK_CONSCIOUS
 
