@@ -75,6 +75,7 @@
 
 	GLOB.emote_list = init_emote_list()
 
+	make_background_references() // SKYRAT EDIT ADDITION - Backgrounds
 	make_skyrat_datum_references() //SKYRAT EDIT ADDITION - CUSTOMIZATION
 	init_crafting_recipes(GLOB.crafting_recipes)
 
