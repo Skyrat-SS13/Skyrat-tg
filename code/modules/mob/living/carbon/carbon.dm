@@ -981,11 +981,7 @@
 				hand_bodyparts += bodypart_instance
 
 
-<<<<<<< HEAD
-///Proc to hook behavior on bodypart additions.
-=======
 ///Proc to hook behavior on bodypart additions. Do not directly call. You're looking for [/obj/item/bodypart/proc/try_attach_limb()].
->>>>>>> dafbcf29bd3 (Prosthetic surgery now checks if you can attach the bodypart (#70157))
 /mob/living/carbon/proc/add_bodypart(obj/item/bodypart/new_bodypart)
 	bodyparts += new_bodypart
 	new_bodypart.set_owner(src)

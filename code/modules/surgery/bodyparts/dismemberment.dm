@@ -325,14 +325,9 @@
 	if(!.) //If it failed to replace, re-attach their old limb as if nothing happened.
 		old_limb.try_attach_limb(limb_owner, TRUE)
 
-<<<<<<< HEAD
-/obj/item/bodypart/proc/attach_limb(mob/living/carbon/new_limb_owner, special)
-	if(SEND_SIGNAL(new_limb_owner, COMSIG_CARBON_ATTACH_LIMB, src, special) & COMPONENT_NO_ATTACH)
-=======
 ///Checks if you can attach a limb, returns TRUE if you can.
 /obj/item/bodypart/proc/can_attach_limb(mob/living/carbon/new_limb_owner, special)
 	if(SEND_SIGNAL(new_limb_owner, COMSIG_ATTEMPT_CARBON_ATTACH_LIMB, src, special) & COMPONENT_NO_ATTACH)
->>>>>>> dafbcf29bd3 (Prosthetic surgery now checks if you can attach the bodypart (#70157))
 		return FALSE
 
 	var/obj/item/bodypart/chest/mob_chest = new_limb_owner.get_bodypart(BODY_ZONE_CHEST)
