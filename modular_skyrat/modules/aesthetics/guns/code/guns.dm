@@ -533,3 +533,5 @@
 	name = ".454 Trucidator handcannon magazine"
 	desc = "An absurdly THICK magazine possibly meant for a heavy hitting pistol, if you can call it that."
 
+/obj/item/ammo_box/a762
+	name = "stripper clip (.244 Acia)"

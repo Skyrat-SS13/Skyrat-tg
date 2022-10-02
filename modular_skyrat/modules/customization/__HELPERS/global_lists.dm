@@ -95,14 +95,67 @@
 /proc/make_augment_references()
 	// Here we build the global loadout lists
 	for(var/path in subtypesof(/datum/augment_item))
-		var/datum/augment_item/culture = path
-		if(initial(culture.path))
-			culture = new path()
-			GLOB.augment_items[culture.path] = culture
+		var/datum/augment_item/L = path
+		if(initial(L.path))
+			L = new path()
+			GLOB.augment_items[L.path] = L
 
-			if(!GLOB.augment_slot_to_items[culture.slot])
-				GLOB.augment_slot_to_items[culture.slot] = list()
-				if(!GLOB.augment_categories_to_slots[culture.category])
-					GLOB.augment_categories_to_slots[culture.category] = list()
-				GLOB.augment_categories_to_slots[culture.category] += culture.slot
-			GLOB.augment_slot_to_items[culture.slot] += culture.path
+			if(!GLOB.augment_slot_to_items[L.slot])
+				GLOB.augment_slot_to_items[L.slot] = list()
+				if(!GLOB.augment_categories_to_slots[L.category])
+					GLOB.augment_categories_to_slots[L.category] = list()
+				GLOB.augment_categories_to_slots[L.category] += L.slot
+			GLOB.augment_slot_to_items[L.slot] += L.path
+
+/// If the "Remove ERP Interaction" config is disabled, remove ERP things from various lists
+/proc/remove_erp_things()
+	if(!CONFIG_GET(flag/disable_erp_preferences))
+		return
+	// Chemical reactions aren't handled here because they're loaded in the reagents SS
+	// See Initialize() on SSReagents
+
+	// Loadouts
+	for(var/loadout_path in GLOB.all_loadout_datums)
+		var/datum/loadout_item/loadout_datum = GLOB.all_loadout_datums[loadout_path]
+		if(!loadout_datum.erp_item)
+			continue
+		GLOB.all_loadout_datums -= loadout_path
+		// Ensure this FULLY works later
+
+	// Underwear
+	for(var/sprite_name in GLOB.underwear_list)
+		var/datum/sprite_accessory/sprite_datum = GLOB.underwear_list[sprite_name]
+		if(!sprite_datum?.erp_accessory)
+			continue
+		GLOB.underwear_list -= sprite_name
+
+	for(var/sprite_name in GLOB.underwear_f)
+		var/datum/sprite_accessory/sprite_datum = GLOB.underwear_f[sprite_name]
+		if(!sprite_datum?.erp_accessory)
+			continue
+		GLOB.underwear_f -= sprite_name
+
+	for(var/sprite_name in GLOB.underwear_m)
+		var/datum/sprite_accessory/sprite_datum = GLOB.underwear_m[sprite_name]
+		if(!sprite_datum?.erp_accessory)
+			continue
+		GLOB.underwear_m -= sprite_name
+
+	// Undershirts
+	for(var/sprite_name in GLOB.undershirt_list)
+		var/datum/sprite_accessory/sprite_datum = GLOB.undershirt_list[sprite_name]
+		if(!sprite_datum?.erp_accessory)
+			continue
+		GLOB.undershirt_list -= sprite_name
+
+	for(var/sprite_name in GLOB.undershirt_f)
+		var/datum/sprite_accessory/sprite_datum = GLOB.undershirt_f[sprite_name]
+		if(!sprite_datum?.erp_accessory)
+			continue
+		GLOB.undershirt_f -= sprite_name
+
+	for(var/sprite_name in GLOB.undershirt_m)
+		var/datum/sprite_accessory/sprite_datum = GLOB.undershirt_m[sprite_name]
+		if(!sprite_datum?.erp_accessory)
+			continue
+		GLOB.undershirt_m -= sprite_name

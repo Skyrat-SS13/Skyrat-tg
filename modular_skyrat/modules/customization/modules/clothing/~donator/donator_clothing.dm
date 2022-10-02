@@ -71,13 +71,6 @@
 	. = ..()
 	AddElement(/datum/element/polychromic, poly_colors)
 
-/obj/item/clothing/under/dress/skirt/polychromic/pleated
-	name = "polychromic pleated skirt"
-	desc = "A magnificent pleated skirt complements the woolen polychromatic sweater."
-	icon_state = "polypleat"
-	body_parts_covered = CHEST|GROIN|ARMS
-	poly_colors = list("#88CCFF", "#888888", "#FF3333")
-
 /obj/item/clothing/under/misc/poly_shirt
 	name = "polychromic button-up shirt"
 	desc = "A fancy button-up shirt made with polychromic threads."
@@ -152,30 +145,6 @@
 	icon_state = "polyfemtankpantsu"
 	poly_colors = list("#888888", "#FF3333", "#FFFFFF")
 
-/obj/item/clothing/under/shorts/polychromic
-	name = "polychromic athletic shorts"
-	desc = "95% Polychrome, 5% Spandex!"
-	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
-	icon_state = "polyshortpants"
-	supports_variations_flags = NONE
-	greyscale_config = null //Temporary measures while Polychrom is gutted.
-	greyscale_config_worn = null
-	greyscale_config_worn_digi = null
-	var/list/poly_colors = list("#FFFFFF", "#FF8888", "#FFFFFF")
-
-/obj/item/clothing/under/shorts/polychromic/Initialize(mapload)
-	. = ..()
-	AddElement(/datum/element/polychromic, poly_colors)
-
-/obj/item/clothing/under/shorts/polychromic/pantsu
-	name = "polychromic panties"
-	desc = "Topless striped panties. Now with 120% more polychrome!"
-	icon_state = "polypantsu"
-	body_parts_covered = GROIN
-	supports_variations_flags = NONE
-	poly_colors = list("#FFFFFF", "#88CCFF", "#FFFFFF")
-
 /**************CKEY EXCLUSIVES*************/
 
 // Donation reward for Grunnyyy
@@ -228,7 +197,7 @@
 		selects["Save"] = "Save"
 		selects["Delete"] = "Delete"
 		var/selection = input(user, "", "Color Menu", currentcolor) as null|anything in selects
-		if(QDELETED(src) || !user.canUseTopic(src, BE_CLOSE))
+		if(QDELETED(src) || !user.canUseTopic(src, be_close = TRUE))
 			return
 		switch(selection)
 			if("Save")
@@ -245,7 +214,7 @@
 				currentcolor = colors[selection]
 	else if(istype(action, /datum/action/item_action/dtcleargrid))
 		var/yesnomaybe = tgui_alert("Are you sure you wanna clear the canvas?", "", list("Yes", "No", "Maybe"))
-		if(QDELETED(src) || !user.canUseTopic(src, BE_CLOSE))
+		if(QDELETED(src) || !user.canUseTopic(src, be_close = TRUE))
 			return
 		switch(yesnomaybe)
 			if("Yes")
@@ -979,7 +948,7 @@
 
 /obj/item/clothing/glasses/welding/steampunk_goggles/item_action_slot_check(slot, mob/user)
 	. = ..()
-	if(. && slot == ITEM_SLOT_HEAD)
+	if(. && (slot & ITEM_SLOT_HEAD))
 		return FALSE
 
 /obj/item/clothing/glasses/welding/steampunk_goggles/attack_self(mob/user)

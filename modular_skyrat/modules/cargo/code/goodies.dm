@@ -33,17 +33,6 @@
 	cost = PAYCHECK_CREW * 38
 	contains = list(/obj/item/construction/rcd/improved)
 
-
-/datum/supply_pack/goody/improvedrcdbonus
-	name = "Improved RCD  Value Pack"
-	desc = "A pack of 3 upgraded RCDs featuring superior material storage. Each comes with complimentary frames and circuitry upgrades to boot!"
-	cost = PAYCHECK_CREW * 100
-	contains = list(
-		/obj/item/construction/rcd/improved,
-		/obj/item/construction/rcd/improved,
-		/obj/item/construction/rcd/improved,
-	)
-
 /*
 *	MISC
 */
@@ -73,12 +62,6 @@
 	cost = PAYCHECK_COMMAND * 2 //Less nourishing than the mothic one but you get cigarettes and wo'oh.
 	contains = list(/obj/item/storage/box/nri_rations)
 
-/datum/supply_pack/goody/passport
-	name = "Generic Replacement Passport"
-	desc = "Keep your identity always legitimate, with a single replacement passport."
-	cost = PAYCHECK_CREW * 2
-	contains = list(/obj/item/passport/sol/generic)
-
 /*
 *	WEAPONS / AMMO
 */
@@ -89,13 +72,6 @@
 	cost = PAYCHECK_CREW * 3
 	contains = list(/obj/item/gun_maintenance_supplies,
 					/obj/item/gun_maintenance_supplies)
-
-/datum/supply_pack/goody/nri_gear
-	name = "NRI Voentorg Gear"
-	desc = "Contains a backpack full of military-grade NRI Defense Collegium standard equipment previously used by the most of their military."
-	cost = PAYCHECK_CREW * 40
-	contains = list(/obj/item/storage/backpack/nri/larp)
-	access_view = ACCESS_BRIG
 
 /*
 *	CARPET PACKS
