@@ -9,7 +9,7 @@
 	activation_cost = 10
 	active_mode = TRUE
 	active_cost = 5
-	///What user is being modified?
+	///The NIF version of the Shapeshifter Ability
 	var/datum/action/innate/alter_form/nif/shapeshifter
 
 /datum/nifsoft/shapeshifter/New()

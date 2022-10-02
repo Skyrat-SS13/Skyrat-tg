@@ -108,6 +108,12 @@
 	///Is the datadisk reusable?
 	var/reusable = TRUE
 
+/obj/item/disk/nifsoft_uploader/Initialize()
+	. = ..()
+
+	if(name == "Generic NIFSoft datadisk")
+		name = "[initial(loaded_nifsoft.name)] datadisk"
+
 /// Attempts to install the NIFSoft on the disk to the target
 /obj/item/disk/nifsoft_uploader/proc/attempt_software_install(mob/living/carbon/human/target)
 	if(!ishuman(target) || !target.installed_nif)
