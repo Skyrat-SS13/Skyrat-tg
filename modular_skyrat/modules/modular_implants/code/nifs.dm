@@ -325,8 +325,12 @@
 	var/obj/item/organ/internal/cyberimp/brain/nif/target_nif = target
 
 	if(target_nif.calibrating)
-		to_chat(owner, span_warning("The NIF is still calibrating, please wait!"))
-		return
+		target_nif.send_message("The NIF is still calibrating, please wait!", TRUE)
+		return FALSE
+
+	if(target_nif.durability < 1)
+		target_nif.send_message("Durability low!", TRUE)
+		return FALSE
 
 	if(!.)
 		return
