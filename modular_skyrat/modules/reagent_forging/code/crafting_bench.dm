@@ -184,9 +184,9 @@
 		material_datum_ref = attacking_item.custom_materials
 		if(istype(attacking_item, /obj/item/stack))
 			var/obj/item/stack/attacking_stack = attacking_item
-			current_mats[attacking_stack.type] += attacking_stack.amount
-			if(!attacking_stack.use(attacking_stack.amount)) //I know its weird, but to prevent a runtime, it needs to be in this order
-				current_mats[attacking_stack.type] -= attacking_stack.amount
+			current_mats[attacking_stack.type]++
+			if(!attacking_stack.use(1)) //I know its weird, but to prevent a runtime, it needs to be in this order
+				current_mats[attacking_stack.type]--
 				return
 		else
 			current_mats[attacking_item.type]++
