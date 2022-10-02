@@ -61,7 +61,7 @@
 	food_reagents = list(/datum/reagent/consumable/nutriment = 3, /datum/reagent/consumable/ice = 3)
 	tastes = list("rice cake" = 2, "vanilla" = 2)
 	foodtypes = JUNKFOOD | DAIRY | GRAIN
-	custom_price = PAYCHECK_LOWER * 1.2
+	custom_price = PAYCHECK_LOWER
 
 /obj/item/food/vendor_snacks/mochi_ice_cream/matcha
 	name = "mochi ice cream balls - matcha"
@@ -69,7 +69,7 @@
 	icon_state = "mochi_ice_green"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 3, /datum/reagent/consumable/ice = 1, /datum/reagent/consumable/tea = 2)
 	tastes = list("rice cake" = 1, "bitter matcha" = 2)
-	custom_price = PAYCHECK_LOWER * 1.5
+	custom_price = PAYCHECK_LOWER * 1.2
 
 /obj/item/food/vendor_snacks/mochi_ice_cream/matcha/examine_more(mob/user)
 	. = ..()
@@ -90,7 +90,7 @@
 	list_reagents = list(/datum/reagent/consumable/tea = 40)
 	cap_icon_state = "bottle_cap_tea"
 	flip_chance = 5 //I fucking dare you
-	custom_price = PAYCHECK_LOWER * 1.5
+	custom_price = PAYCHECK_LOWER * 1.2
 	fill_icon_state = null
 
 /obj/item/reagent_containers/cup/glass/waterbottle/tea/astra
@@ -102,14 +102,14 @@
 		/datum/reagent/medicine/salglu_solution = 10, // I know this looks strange but this is what tea astra grinds into, tea in the year 25whatever baby
 		/datum/reagent/consumable/nutriment/vitamin = 5,
 	)
-	custom_price = PAYCHECK_LOWER * 3
+	custom_price = PAYCHECK_LOWER * 2
 
 /obj/item/reagent_containers/cup/glass/waterbottle/tea/strawberry
 	name = "bottle of strawberry tea"
 	desc = "A bottle of strawberry flavored tea; does not contain any actual strawberries."
 	icon_state = "tea_bottle_pink"
 	list_reagents = list(/datum/reagent/consumable/pinktea = 40)
-	custom_price = PAYCHECK_LOWER * 3
+	custom_price = PAYCHECK_LOWER * 2
 
 /obj/item/reagent_containers/cup/glass/waterbottle/tea/nip
 	name = "bottle of catnip tea"
@@ -119,7 +119,7 @@
 		/datum/reagent/consumable/catnip_tea = 20,
 		/datum/reagent/consumable/pinkmilk = 20, // I can't believe they would cut my catnip
 	)
-	custom_price = PAYCHECK_LOWER * 4
+	custom_price = PAYCHECK_LOWER * 2.5
 
 /*
 *	Mothic Snacks
@@ -243,7 +243,7 @@
 	food_reagents = list(/datum/reagent/consumable/nutriment = 3, /datum/reagent/consumable/caramel = 2)
 	tastes = list("savouriness" = 1, "sweetness" = 1)
 	foodtypes = SUGAR | VEGETABLES
-	custom_price = PAYCHECK_LOWER * 1.6 //Tizirian imports are a bit more expensive overall
+	custom_price = PAYCHECK_LOWER * 1.4 //Tizirian imports are a bit more expensive overall
 
 /obj/item/food/vendor_snacks/lizard_bag/MakeLeaveTrash()
 	AddElement(/datum/element/food_trash, trash_type, FOOD_TRASH_POPABLE)
@@ -255,7 +255,7 @@
 	food_reagents = list(/datum/reagent/consumable/nutriment/protein = 2, /datum/reagent/consumable/bbqsauce = 2)
 	tastes = list("fish" = 1, "smokey sauce" = 1)
 	foodtypes = MEAT
-	custom_price = PAYCHECK_LOWER * 1.8
+	custom_price = PAYCHECK_LOWER * 1.6
 
 /obj/item/trash/vendor_trash/lizard_bag
 	name = "empty tizirian snack bag"
@@ -270,7 +270,7 @@
 	food_reagents = list(/datum/reagent/consumable/nutriment = 3)
 	tastes = list("potato" = 1, "earthy heat" = 1)
 	foodtypes = VEGETABLES | NUTS
-	custom_price = PAYCHECK_LOWER * 1.8
+	custom_price = PAYCHECK_LOWER * 1.6
 
 /obj/item/food/vendor_snacks/lizard_box/sweet_roll
 	name = "honey roll"
@@ -279,7 +279,7 @@
 	food_reagents = list(/datum/reagent/consumable/nutriment = 2, /datum/reagent/consumable/honey = 2)
 	tastes = list("bread" = 1, "honey" = 1, "fruit" = 1)
 	foodtypes = VEGETABLES | NUTS | FRUIT
-	custom_price = PAYCHECK_LOWER * 2
+	custom_price = PAYCHECK_LOWER *1.8
 
 /obj/item/trash/vendor_trash/lizard_box
 	name = "empty tizirian snack box"
@@ -291,7 +291,7 @@
 	desc = "A bottle of somewhat bitter mushroom tea, a favorite of the Tizirian empire."
 	icon_state = "tea_bottle_grey"
 	list_reagents = list(/datum/reagent/consumable/mushroom_tea = 40)
-	custom_price = PAYCHECK_LOWER * 3
+	custom_price = PAYCHECK_LOWER * 2
 
 /obj/item/reagent_containers/cup/soda_cans/skyrat/kortara
 	name = "kortara"
