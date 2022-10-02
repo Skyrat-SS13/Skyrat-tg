@@ -13,6 +13,8 @@
 	target.dna.mutant_bodyparts[relevant_mutant_bodypart]["name"] = value
 
 /datum/preference/choiced/genital/is_accessible(datum/preferences/preferences)
+	if(CONFIG_GET(flag/disable_erp_preferences))
+		return FALSE
 	var/passed_initial_check = ..(preferences)
 	var/allowed = preferences.read_preference(/datum/preference/toggle/allow_mismatched_parts)
 	var/erp_allowed = preferences.read_preference(/datum/preference/toggle/master_erp_preferences)
@@ -178,6 +180,8 @@
 	target.dna.features["penis_taur"] = value
 
 /datum/preference/toggle/penis_taur_mode/is_accessible(datum/preferences/preferences)
+	if(CONFIG_GET(flag/disable_erp_preferences))
+		return FALSE
 	var/passed_initial_check = ..(preferences)
 	var/allowed = preferences.read_preference(/datum/preference/toggle/allow_mismatched_parts)
 	var/part_enabled = is_factual_sprite_accessory(relevant_mutant_bodypart, preferences.read_preference(/datum/preference/choiced/genital/penis))

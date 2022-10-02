@@ -174,6 +174,10 @@
 *	MASOCHISM
 */
 
+/datum/quirk
+	/// Is this a quirk disabled by disabling the ERP config?
+	var/erp_quirk = FALSE
+
 /datum/quirk/masochism
 	name = "Masochism"
 	desc = "Pain brings you indescribable pleasure."
@@ -183,6 +187,7 @@
 	lose_text = span_notice("Ouch! Pain is... Painful again! Ou-ou-ouch!")
 	medical_record_text = "Subject has masochism."
 	icon = "heart-broken"
+	erp_quirk = TRUE
 
 /datum/quirk/masochism/post_add()
 	. = ..()
@@ -230,6 +235,7 @@
 	lose_text = span_notice("Others' pain doesn't satisfy you anymore.")
 	medical_record_text = "Subject has sadism."
 	icon = "hammer"
+	erp_quirk = TRUE
 
 /datum/quirk/sadism/post_add()
 	. = ..()
@@ -279,6 +285,7 @@
 	gain_text = span_danger("You really want to be restrained for some reason.")
 	lose_text = span_notice("Being restrained doesn't arouse you anymore.")
 	icon = "link"
+	erp_quirk = TRUE
 
 /datum/quirk/ropebunny/post_add()
 	. = ..()
@@ -299,6 +306,7 @@
 	gain_text = span_danger("Suddenly you understand rope weaving much better than before.")
 	lose_text = span_notice("Rope knots looks complicated again.")
 	icon = "chain-broken"
+	erp_quirk = TRUE
 
 /datum/quirk/rigger/post_add()
 	. = ..()
