@@ -114,9 +114,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	if(loaded_preferences_successfully)
 		if(load_character())
 			// SKYRAT EDIT START - Sanitizing languages
-			for(var/datum/language/lang_path as anything in languages)
-				if(initial(lang_path.secret))
-					languages.Remove(lang_path)
+			sanitize_languages()
 			// SKYRAT EDIT END
 			return // SKYRAT EDIT - Don't remove this. Just don't. Nothing is worth forced random characters.
 	//we couldn't load character data so just randomize the character appearance + name
@@ -167,7 +165,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		tainted_character_profiles = FALSE
 
 	//SKYRAT EDIT BEGIN
-	data["preview_options"] = list(PREVIEW_PREF_JOB, PREVIEW_PREF_LOADOUT, PREVIEW_PREF_UNDERWEAR, PREVIEW_PREF_NAKED, PREVIEW_PREF_NAKED_AROUSED)
 	data["preview_selection"] = preview_pref
 
 	data["quirks_balance"] = GetQuirkBalance()
@@ -185,6 +182,13 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 /datum/preferences/ui_static_data(mob/user)
 	var/list/data = list()
+
+	// SKYRAT EDIT ADDITION START
+	if(CONFIG_GET(flag/disable_erp_preferences))
+		data["preview_options"] = list(PREVIEW_PREF_JOB, PREVIEW_PREF_LOADOUT, PREVIEW_PREF_UNDERWEAR, PREVIEW_PREF_NAKED)
+	else
+		data["preview_options"] = list(PREVIEW_PREF_JOB, PREVIEW_PREF_LOADOUT, PREVIEW_PREF_UNDERWEAR, PREVIEW_PREF_NAKED, PREVIEW_PREF_NAKED_AROUSED)
+	// SKYRAT EDIT ADDITION END
 
 	data["character_profiles"] = create_character_profiles()
 
@@ -231,6 +235,11 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				tainted_character_profiles = TRUE
 				randomise_appearance_prefs()
 				save_character()
+
+			// SKYRAT EDIT START - Sanitizing languages
+			if(sanitize_languages())
+				save_character()
+			// SKYRAT EDIT END
 
 			for (var/datum/preference_middleware/preference_middleware as anything in middleware)
 				preference_middleware.on_new_character(usr)

@@ -193,7 +193,7 @@ GLOBAL_LIST_EMPTY_TYPED(interaction_instances, /datum/interaction)
 	WRITE_FILE(file, json_encode(json))
 	return TRUE
 
-/mob/living/carbon/human/ComponentInitialize()
+/mob/living/carbon/human/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/interactable)
 

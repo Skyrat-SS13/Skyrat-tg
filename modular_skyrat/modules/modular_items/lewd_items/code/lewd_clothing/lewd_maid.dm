@@ -32,7 +32,7 @@
 	/// List of all apron designs, used in selecting one in the radial menu
 	var/static/list/apron_designs
 
-/obj/item/clothing/under/costume/lewdmaid/Initialize()
+/obj/item/clothing/under/costume/lewdmaid/Initialize(mapload)
 	. = ..()
 	var/obj/item/clothing/accessory/lewdapron/apron_accessory = new(src)
 	attach_accessory(apron_accessory)
@@ -45,11 +45,6 @@
 		"pink" = image (icon = src.icon, icon_state = "lewdapron_pink"),
 		"teal" = image(icon = src.icon, icon_state = "lewdapron_teal"),
 		"yellow" = image (icon = src.icon, icon_state = "lewdapron_yellow"))
-
-//to update model lol
-/obj/item/clothing/accessory/lewdapron/ComponentInitialize()
-	. = ..()
-	AddElement(/datum/element/update_icon_updates_onmob)
 
 //to change model
 /obj/item/clothing/accessory/lewdapron/AltClick(mob/user)
@@ -73,7 +68,8 @@
 		return FALSE
 	return TRUE
 
-/obj/item/clothing/accessory/lewdapron/Initialize()
+/obj/item/clothing/accessory/lewdapron/Initialize(mapload)
+	AddElement(/datum/element/update_icon_updates_onmob)
 	if(!length(apron_designs))
 		populate_apron_designs()
 	update_icon_state()
@@ -94,7 +90,7 @@
 	if(!ishuman(loc))
 		return TRUE
 	var/mob/living/carbon/human/wearer = loc
-	wearer.update_inv_w_uniform()
-	wearer.update_inv_wear_suit()
+	wearer.update_worn_undersuit()
+	wearer.update_worn_oversuit()
 	wearer.fan_hud_set_fandom()
 	return TRUE

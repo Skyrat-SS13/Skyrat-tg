@@ -24,7 +24,7 @@
 	/// Our original description to hold. We'll revert to this when switching between the ore vein being depleted and not.
 	var/base_desc = ""
 
-/obj/structure/ore_vein/Initialize()
+/obj/structure/ore_vein/Initialize(mapload)
 	. = ..()
 	base_desc = desc
 	if(random_sprite == TRUE)

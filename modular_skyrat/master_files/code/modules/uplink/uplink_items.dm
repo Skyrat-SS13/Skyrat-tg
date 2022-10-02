@@ -92,15 +92,6 @@
 	surplus = 17
 	progression_minimum = 30 MINUTES
 
-// Removed from the uplink for the time being.
-/*datum/uplink_item/stealthy_weapons/cqcplus
-	name = "CQC+ Manual"
-	desc = "A manual that teaches a single user tactical Close-Quarters Combat and how to deflect projectiles before self-destructing."
-	item = /obj/item/book/granter/martial/cqc/plus
-	cost = 30
-	surplus = 20
-*/
-
 /datum/uplink_item/stealthy_weapons/telescopicbaton
 	name = "Telescopic Baton"
 	desc = "A telescopic baton, exactly like the ones heads are issued. Good for knocking people down briefly."
@@ -116,15 +107,6 @@
 	desc = "A balaclava that muffles your voice, masking your identity. Also provides flash immunity!"
 	item = /obj/item/clothing/mask/infiltrator
 	cost = 2
-
-/datum/uplink_item/stealthy_tools/deluxe_agent_card
-	name = "Deluxe Agent Identification Card"
-	desc = "Created by Cybersun Industries to be the ultimate for field operations, this upgraded Agent ID \
-	comes with all the fluff of the original, but with an upgraded microchip - allowing for the storage of all \
-	standard Nanotrasen access codes in one conveinent package. Now in glossy olive by default!"
-	item = /obj/item/card/id/advanced/chameleon/black
-	cost = 5 // Since this gives the possibility for All Access, this is a BIGBOY tool. Compared to oldbases' skeleton key, though, you still have to steal it somehow.
-	progression_minimum = 20 MINUTES
 
 /datum/uplink_item/stealthy_tools/advanced_cham_headset
 	name = "Advanced Chameleon Headset" // Consider this a standin for the oldbase headset upgrader.
@@ -459,3 +441,40 @@
 	item = /obj/item/storage/box/syndie_kit/loadout/lasermanbundle
 	cost = 20
 	progression_minimum = 25 MINUTES
+
+// Surplus crates
+/datum/uplink_item/bundles_tc/surplus_crate
+	name = "Surplus Crate"
+	desc = "A dusty crate from the back of the Syndicate warehouse. Rumored to contain a valuable assortment of items, \
+			but you never know. Contents are sorted to always be worth 50 TC."
+	item = /obj/effect/gibspawner/generic
+	cost = 20
+	/// The contents of the surplus crate will be equal to this var in TC
+	var/telecrystal_count = 50
+
+/datum/uplink_item/bundles_tc/surplus_crate/spawn_item(spawn_path, mob/user, datum/uplink_handler/uplink_handler, atom/movable/source)
+	telecrystal_count = initial(telecrystal_count)
+	var/list/uplink_items = list()
+	var/obj/structure/closet/crate/holder_crate = new(get_turf(user))
+	for(var/datum/uplink_item/item_path as anything in SStraitor.uplink_items_by_type)
+		var/datum/uplink_item/item = SStraitor.uplink_items_by_type[item_path]
+		if(item.purchasable_from & UPLINK_TRAITORS)
+			uplink_items += item
+
+	while(telecrystal_count)
+		var/datum/uplink_item/uplink_item = pick(uplink_items)
+		if(!uplink_item.surplus || prob(100 - uplink_item.surplus))
+			continue
+		if(telecrystal_count < uplink_item.cost)
+			continue
+		if(!uplink_item.item)
+			continue
+		telecrystal_count -= uplink_item.cost
+		new uplink_item.item(holder_crate)
+
+/datum/uplink_item/bundles_tc/surplus_crate/super
+	name = "Super Surplus Crate"
+	desc = "A dusty SUPER-SIZED crate from the back of the Syndicate warehouse. Rumored to contain a valuable assortment of items, \
+			but you never know. Contents are sorted to always be worth 125 TC."
+	telecrystal_count = 125
+	cost = 40

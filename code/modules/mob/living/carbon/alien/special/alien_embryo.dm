@@ -2,7 +2,7 @@
 // It functions almost identically (see code/datums/diseases/alien_embryo.dm)
 /obj/item/organ/internal/body_egg/alien_embryo
 	name = "alien embryo"
-	icon = 'icons/mob/alien.dmi'
+	icon = 'icons/mob/nonhuman-player/alien.dmi'
 	icon_state = "larva0_dead"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 5, /datum/reagent/toxin/acid = 10)
 	///What stage of growth the embryo is at. Developed embryos give the host symptoms suggesting that an embryo is inside them.
@@ -69,7 +69,7 @@
 /obj/item/organ/internal/body_egg/alien_embryo/egg_process()
 	if(stage == 6 && prob(50))
 		for(var/datum/surgery/S in owner.surgeries)
-			if(S.location == BODY_ZONE_CHEST && istype(S.get_surgery_step(), /datum/surgery_step/manipulate_organs))
+			if(S.location == BODY_ZONE_CHEST && istype(S.get_surgery_step(), /datum/surgery_step/manipulate_organs/internal))
 				AttemptGrow(0)
 				return
 		AttemptGrow()
@@ -94,7 +94,7 @@
 
 	var/mob/dead/observer/ghost = pick(candidates)
 
-	var/mutable_appearance/overlay = mutable_appearance('icons/mob/alien.dmi', "burst_lie")
+	var/mutable_appearance/overlay = mutable_appearance('icons/mob/nonhuman-player/alien.dmi', "burst_lie")
 	owner.add_overlay(overlay)
 
 	var/atom/xeno_loc = get_turf(owner)
@@ -121,16 +121,8 @@
 	new_xeno.visible_message("<span class='danger'>[new_xeno] bursts out of [owner] in a shower of gore!</span>", "<span class='userdanger'>You exit [owner], your previous host.</span>", "<span class='hear'>You hear organic matter ripping and tearing!</span>")
 	//owner.gib(TRUE) - ORIGINAL
 	//SKYRAT EDIT CHANGE - ALIEN QOL
-	if(owner.getBruteLoss() >= 150)
-		for(var/obj/item/bodypart/BP in owner.bodyparts) //We want to check if there is a chest to dismember.
-			if(BP.name == "chest")
-				BP.dismember()
-				break
-	else
-		var/obj/item/bodypart/affecting = owner.get_bodypart("chest")
-		if(affecting)
-			affecting.receive_damage(40)
-		owner.spawn_gibs()
+	owner.apply_damage(150, BRUTE, BODY_ZONE_CHEST, wound_bonus = 30, sharpness = SHARP_POINTY) //You aren't getting gibbed but you aren't going to be having fun
+	owner.spawn_gibs()
 	//SKYRAT EDIT END
 	owner.cut_overlay(overlay)
 	qdel(src)
@@ -142,7 +134,7 @@ Des: Adds the infection image to all aliens for this embryo
 ----------------------------------------*/
 /obj/item/organ/internal/body_egg/alien_embryo/AddInfectionImages()
 	for(var/mob/living/carbon/alien/alien in GLOB.player_list)
-		var/I = image('icons/mob/alien.dmi', loc = owner, icon_state = "infected[stage]")
+		var/I = image('icons/mob/nonhuman-player/alien.dmi', loc = owner, icon_state = "infected[stage]")
 		alien.client?.images += I
 
 /*----------------------------------------

@@ -22,8 +22,6 @@
 		turn_on(FALSE)
 	update_brightness()
 
-/obj/item/flashlight/ComponentInitialize()
-	. = ..()
 	if(uses_battery)
 		AddComponent(/datum/component/cell, cell_override, CALLBACK(src, .proc/turn_off))
 

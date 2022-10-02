@@ -153,7 +153,7 @@
 	icon = 'icons/obj/hydroponics/equipment.dmi'
 	icon_state = "hydrotray3"
 
-/obj/machinery/hydroponics/constructable/ComponentInitialize()
+/obj/machinery/hydroponics/constructable/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/simple_rotation)
 	AddComponent(/datum/component/plumbing/hydroponics)
@@ -697,7 +697,6 @@
 /obj/machinery/hydroponics/proc/hardmutate()
 	mutate(4, 10, 2, 4, 50, 4, 10, 0, 4)
 
-
 /obj/machinery/hydroponics/proc/mutatespecie() // Mutagent produced a new plant!
 	if(!myseed || plant_status == HYDROTRAY_PLANT_DEAD || !LAZYLEN(myseed.mutatelist))
 		return
@@ -713,6 +712,23 @@
 	set_weedlevel(0, update_icon = FALSE)
 
 	var/message = span_warning("[oldPlantName] suddenly mutates into [myseed.plantname]!")
+	addtimer(CALLBACK(src, .proc/after_mutation, message), 0.5 SECONDS)
+
+/obj/machinery/hydroponics/proc/polymorph() // Polymorph a plant into another plant
+	if(!myseed || plant_status == HYDROTRAY_PLANT_DEAD)
+		return
+
+	var/oldPlantName = myseed.plantname
+	var/polymorph_seed = pick(subtypesof(/obj/item/seeds))
+	set_seed(new polymorph_seed(src))
+
+	hardmutate()
+	age = 0
+	set_plant_health(myseed.endurance, update_icon = FALSE)
+	lastcycle = world.time
+	set_weedlevel(0, update_icon = FALSE)
+
+	var/message = span_warning("[oldPlantName] suddenly polymorphs into [myseed.plantname]!")
 	addtimer(CALLBACK(src, .proc/after_mutation, message), 0.5 SECONDS)
 
 /obj/machinery/hydroponics/proc/mutateweed() // If the weeds gets the mutagent instead. Mind you, this pretty much destroys the old plant
@@ -783,7 +799,7 @@
 /obj/machinery/hydroponics/proc/mutatepest(mob/user)
 	if(pestlevel > 5)
 		message_admins("[ADMIN_LOOKUPFLW(user)] last altered a hydro tray's contents which spawned spiderlings.")
-		user.log_message("last altered a hydro tray, which spiderlings spawned from.")
+		user.log_message("last altered a hydro tray, which spiderlings spawned from.", LOG_GAME)
 		visible_message(span_warning("The pests seem to behave oddly..."))
 		spawn_atom_to_turf(/obj/structure/spider/spiderling/hunter, src, 3, FALSE)
 	else if(myseed)
@@ -796,7 +812,7 @@
 
 /obj/machinery/hydroponics/attackby(obj/item/O, mob/user, params)
 	//Called when mob user "attacks" it with object O
-	if(IS_EDIBLE(O) || istype(O, /obj/item/reagent_containers))  // Syringe stuff (and other reagent containers now too)
+	if(IS_EDIBLE(O) || is_reagent_container(O))  // Syringe stuff (and other reagent containers now too)
 		var/obj/item/reagent_containers/reagent_source = O
 
 		if(!reagent_source.reagents.total_volume)
@@ -945,7 +961,7 @@
 	else if(istype(O, /obj/item/storage/bag/plants))
 		attack_hand(user)
 		for(var/obj/item/food/grown/G in locate(user.x,user.y,user.z))
-			O.atom_storage?.attempt_insert(O, G, user, TRUE)
+			O.atom_storage?.attempt_insert(G, user, TRUE)
 		return
 
 	else if(istype(O, /obj/item/shovel/spade))

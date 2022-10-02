@@ -16,7 +16,7 @@
 	flags_ricochet = RICOCHET_HARD
 
 	smoothing_flags = SMOOTH_BITMASK
-	smoothing_groups = list(SMOOTH_GROUP_CLOSED_TURFS, SMOOTH_GROUP_WALLS)
+	smoothing_groups = list(SMOOTH_GROUP_WALLS, SMOOTH_GROUP_CLOSED_TURFS) // SKYRAT EDIT CHANGE - Sorting them because /tg/ forgot to
 	canSmoothWith = list(SMOOTH_GROUP_WALLS)
 
 	rcd_memory = RCD_MEMORY_WALL
@@ -43,7 +43,7 @@
 		var/mutable_appearance/underlay_appearance = mutable_appearance(layer = TURF_LAYER, plane = FLOOR_PLANE)
 		if(fixed_underlay["space"])
 			underlay_appearance.icon = 'icons/turf/space.dmi'
-			underlay_appearance.icon_state = SPACE_ICON_STATE
+			underlay_appearance.icon_state = SPACE_ICON_STATE(x, y, z)
 			underlay_appearance.plane = PLANE_SPACE
 		else
 			underlay_appearance.icon = fixed_underlay["icon"]
@@ -233,7 +233,7 @@
 			F.attach(src, user)
 		return TRUE
 	//Poster stuff
-	else if(istype(W, /obj/item/poster))
+	else if(istype(W, /obj/item/poster) && Adjacent(user)) //no tk memes.
 		place_poster(W,user)
 		return TRUE
 

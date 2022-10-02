@@ -11,7 +11,7 @@
 	/// Custom materials that the original table used, if any
 	var/list/table_materials = list()
 
-/obj/structure/flippedtable/Initialize()
+/obj/structure/flippedtable/Initialize(mapload)
 	. = ..()
 
 	var/static/list/loc_connections = list(

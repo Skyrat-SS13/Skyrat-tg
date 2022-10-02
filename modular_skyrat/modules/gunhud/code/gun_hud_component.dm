@@ -190,14 +190,14 @@
 		hud.maptext = span_maptext("<div align='center' valign='middle' style='position:relative'><font color='[COLOR_VIBRANT_LIME]'>[battery_percent]%</font><br><font color='[COLOR_CYAN]'>[shot_cost_percent]%</font></div>")
 
 
-/obj/item/gun/ballistic/ComponentInitialize()
+/obj/item/gun/ballistic/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/ammo_hud)
 
-/obj/item/gun/energy/ComponentInitialize()
+/obj/item/gun/energy/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/ammo_hud)
 
-/obj/item/weldingtool/ComponentInitialize()
+/obj/item/weldingtool/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/ammo_hud)

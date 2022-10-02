@@ -19,14 +19,15 @@
 	max_occurrences = 4
 	earliest_start = 20 MINUTES
 
-/datum/round_event_control/supermatter_surge/canSpawnEvent()
+/datum/round_event_control/supermatter_surge/can_spawn_event(players_amt)
 	if(!GLOB.main_supermatter_engine?.has_been_powered) // We don't want to cause a deadly delam if the engineers haven't started the engine yet.
 		return FALSE
+
 	return ..()
 
 /datum/round_event/supermatter_surge
-	announceWhen = 1
-	endWhen = SUPERMATTER_SURGE_TIME_LOWER
+	announce_when = 1
+	end_when = SUPERMATTER_SURGE_TIME_LOWER
 	/// How powerful is the supermatter surge going to be? Set in setup.
 	var/surge_power = SUPERMATTER_SURGE_BULLET_ENERGY_FACTOR_LOWER
 	var/starting_surge_power = 0
@@ -34,7 +35,7 @@
 /datum/round_event/supermatter_surge/setup()
 	surge_power = rand(SUPERMATTER_SURGE_BULLET_ENERGY_FACTOR_LOWER, SUPERMATTER_SURGE_BULLET_ENERGY_FACTOR_UPPER)
 	starting_surge_power = GLOB.main_supermatter_engine?.bullet_energy
-	endWhen = rand(SUPERMATTER_SURGE_TIME_LOWER, SUPERMATTER_SURGE_TIME_UPPER)
+	end_when = rand(SUPERMATTER_SURGE_TIME_LOWER, SUPERMATTER_SURGE_TIME_UPPER)
 
 /datum/round_event/supermatter_surge/announce()
 	if(surge_power > SUPERMATTER_SURGE_ANNOUNCE_THRESHOLD || prob(round(surge_power)))

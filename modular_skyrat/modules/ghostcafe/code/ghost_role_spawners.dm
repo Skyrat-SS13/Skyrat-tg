@@ -5,7 +5,7 @@
 	flavour_text = "You are a robot. This probably shouldn't be happening."
 	mob_type = /mob/living/silicon/robot
 
-/obj/effect/mob_spawn/ghost_role/robot/Initialize()
+/obj/effect/mob_spawn/ghost_role/robot/Initialize(mapload)
 	. = ..()
 
 /obj/effect/mob_spawn/ghost_role/robot/equip(mob/living/silicon/robot/R)
@@ -77,7 +77,7 @@
 	id = /obj/item/card/id/advanced/ghost_cafe
 
 /datum/action/toggle_dead_chat_mob
-	icon_icon = 'icons/mob/mob.dmi'
+	icon_icon = 'icons/mob/simple/mob.dmi'
 	button_icon_state = "ghost"
 	name = "Toggle deadchat"
 	desc = "Turn off or on your ability to hear ghosts."

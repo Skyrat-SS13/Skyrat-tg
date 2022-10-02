@@ -303,6 +303,11 @@ or shoot a gun to move around via Newton's 3rd Law of Motion."
 	var/mob/living/carbon/offerer
 	var/obj/item/receiving
 
+/atom/movable/screen/alert/give/Destroy()
+	offerer = null
+	receiving = null
+	return ..()
+
 /**
  * Handles assigning most of the variables for the alert that pops up when an item is offered
  *
@@ -374,8 +379,8 @@ or shoot a gun to move around via Newton's 3rd Law of Motion."
 	to_chat(rube, span_userdanger("[all_caps_for_emphasis]"))
 	playsound(offerer, 'sound/weapons/thudswoosh.ogg', 100, TRUE, 1)
 	rube.Knockdown(1 SECONDS)
-	SEND_SIGNAL(offerer, COMSIG_ADD_MOOD_EVENT, "high_five", /datum/mood_event/down_low)
-	SEND_SIGNAL(rube, COMSIG_ADD_MOOD_EVENT, "high_five", /datum/mood_event/too_slow)
+	offerer.add_mood_event("high_five", /datum/mood_event/down_low)
+	rube.add_mood_event("high_five", /datum/mood_event/too_slow)
 	qdel(src)
 
 /// If someone examine_more's the offerer while they're trying to pull a too-slow, it'll tip them off to the offerer's trickster ways

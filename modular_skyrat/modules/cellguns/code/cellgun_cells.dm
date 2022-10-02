@@ -28,7 +28,7 @@
 	else
 		return FALSE
 
-/obj/item/weaponcell/Initialize()
+/obj/item/weaponcell/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/item_scaling, 0.5, 1)
 	refresh_shot_name()

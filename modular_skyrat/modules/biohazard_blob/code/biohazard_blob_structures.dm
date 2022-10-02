@@ -71,7 +71,7 @@
 /obj/structure/biohazard_blob/structure/core/radioactive
 	blob_type = BIO_BLOB_TYPE_RADIOACTIVE
 
-/obj/structure/biohazard_blob/structure/core/Initialize()
+/obj/structure/biohazard_blob/structure/core/Initialize(mapload)
 	if(!blob_type)
 		blob_type = pick(ALL_BIO_BLOB_TYPES)
 	. = ..()
@@ -257,7 +257,7 @@
 	var/list/registered_turfs = list()
 	max_integrity = 100
 
-/obj/structure/biohazard_blob/structure/bulb/Initialize()
+/obj/structure/biohazard_blob/structure/bulb/Initialize(mapload)
 	. = ..()
 	make_full()
 	for(var/t in get_adjacent_open_turfs(src))
@@ -282,6 +282,8 @@
 	set_light(2,1,LIGHT_COLOR_LAVA)
 	density = TRUE
 	update_overlays()
+
+#define MAX_MOLD_FOAM_RANGE 7
 
 /obj/structure/biohazard_blob/structure/bulb/proc/discharge()
 	if(!is_full)
@@ -314,7 +316,7 @@
 			R.my_atom = src
 			R.add_reagent(/datum/reagent/toxin, 30)
 			var/datum/effect_system/fluid_spread/foam/foam = new
-			foam.set_up(200, location = T, carry = R)
+			foam.set_up(MAX_MOLD_FOAM_RANGE, location = T, carry = R)
 			foam.start()
 		if(BIO_BLOB_TYPE_RADIOACTIVE)
 			radiation_pulse(src, 1500, 15, FALSE, TRUE)
@@ -324,7 +326,7 @@
 			R.my_atom = src
 			R.add_reagent(/datum/reagent/toxin/mutagen, 50)
 			var/datum/effect_system/fluid_spread/foam/foam = new
-			foam.set_up(200, location = T, carry = R)
+			foam.set_up(MAX_MOLD_FOAM_RANGE, location = T, carry = R)
 			foam.start()
 	is_full = FALSE
 	name = "empty bulb"
@@ -334,6 +336,8 @@
 	update_overlays()
 	density = FALSE
 	addtimer(CALLBACK(src, .proc/make_full), 1 MINUTES, TIMER_UNIQUE|TIMER_NO_HASH_WAIT)
+
+#undef MAX_MOLD_FOAM_RANGE
 
 /obj/structure/biohazard_blob/structure/bulb/attack_generic(mob/user, damage_amount, damage_type, damage_flag, sound_effect, armor_penetration)
 	if(MOLD_FACTION in user.faction)
@@ -408,7 +412,7 @@
 		our_controller.other_structures -= src
 	return ..()
 
-/obj/structure/biohazard_blob/structure/conditioner/Initialize()
+/obj/structure/biohazard_blob/structure/conditioner/Initialize(mapload)
 	. = ..()
 	switch(blob_type)
 		if(BIO_BLOB_TYPE_FUNGUS)
@@ -452,7 +456,7 @@
 		our_controller.other_structures -= src
 	return ..()
 
-/obj/structure/biohazard_blob/structure/spawner/Initialize()
+/obj/structure/biohazard_blob/structure/spawner/Initialize(mapload)
 	. = ..()
 	switch(blob_type)
 		if(BIO_BLOB_TYPE_FUNGUS)

@@ -8,7 +8,7 @@
 	resistance_flags = FLAMMABLE
 	custom_price = PAYCHECK_CREW * 4
 
-/obj/item/storage/bag/ammo/Initialize()
+/obj/item/storage/bag/ammo/Initialize(mapload)
 	. = ..()
 	atom_storage.max_specific_storage = WEIGHT_CLASS_NORMAL
 	atom_storage.max_total_storage = 30
@@ -26,7 +26,7 @@
 	resistance_flags = FLAMMABLE
 	custom_price = PAYCHECK_CREW * 4
 
-/obj/item/storage/bag/material/Initialize()
+/obj/item/storage/bag/material/Initialize(mapload)
 	. = ..()
 	atom_storage.max_specific_storage = WEIGHT_CLASS_NORMAL
 	atom_storage.max_total_storage = INFINITY

@@ -16,18 +16,18 @@
 	icon_state = "knight_winged"
 	worn_icon_state = "knight_winged"
 
-/obj/item/clothing/suit/armor/riot/chaplain/teutonic
+/obj/item/clothing/suit/chaplainsuit/armor/teutonic
 	desc = "Help, Defend, Heal!"
 	icon_state = "knight_teutonic"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	worn_icon_state = "knight_teutonic"
 
-/obj/item/clothing/suit/armor/riot/chaplain/teutonic/alt
+/obj/item/clothing/suit/chaplainsuit/armor/teutonic/alt
 	icon_state = "knight_teutonic_alt"
 	worn_icon_state = "knight_teutonic_alt"
 
-/obj/item/clothing/suit/armor/riot/chaplain/hospitaller
+/obj/item/clothing/suit/chaplainsuit/armor/hospitaller
 	icon_state = "knight_hospitaller"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
@@ -38,23 +38,25 @@
 
 /obj/item/storage/box/holy/teutonic/PopulateContents()
 	pick(new /obj/item/clothing/head/helmet/chaplain/bland/horned(src), new /obj/item/clothing/head/helmet/chaplain/bland/winged(src))
-	pick(new /obj/item/clothing/suit/armor/riot/chaplain/teutonic(src), new /obj/item/clothing/suit/armor/riot/chaplain/teutonic/alt(src))
+	pick(new /obj/item/clothing/suit/chaplainsuit/armor/teutonic(src), new /obj/item/clothing/suit/chaplainsuit/armor/teutonic/alt(src))
 
 /obj/item/storage/box/holy/hospitaller
 	name = "hospitaller kit"
 
 /obj/item/storage/box/holy/hospitaller/PopulateContents()
 	new /obj/item/clothing/head/helmet/chaplain/bland(src)
-	new /obj/item/clothing/suit/armor/riot/chaplain/hospitaller(src)
+	new /obj/item/clothing/suit/chaplainsuit/armor/hospitaller(src)
 
 /obj/item/clothing/suit/hooded/cultlain_robe
 	name = "ancient robes"
 	desc = "A ragged, dusty set of robes."
+	icon = 'icons/obj/clothing/suits/armor.dmi'
+	worn_icon = 'icons/mob/clothing/suits/armor.dmi'
 	icon_state = "cultrobes"
 	inhand_icon_state = "cultrobes"
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS
 	armor = list(MELEE = 50, BULLET = 10, LASER = 10, ENERGY = 10, BOMB = 0, BIO = 0, FIRE = 80, ACID = 80, WOUND = 20) // Chaplain Riot armor
-	allowed = list(/obj/item/storage/book/bible, /obj/item/nullrod, /obj/item/reagent_containers/food/drinks/bottle/holywater, /obj/item/storage/fancy/candle_box, /obj/item/candle, /obj/item/tank/internals/emergency_oxygen, /obj/item/tank/internals/plasmaman)
+	allowed = list(/obj/item/storage/book/bible, /obj/item/nullrod, /obj/item/reagent_containers/cup/glass/bottle/holywater, /obj/item/storage/fancy/candle_box, /obj/item/candle, /obj/item/tank/internals/emergency_oxygen, /obj/item/tank/internals/plasmaman)
 	hoodtype = /obj/item/clothing/head/hooded/cultlain_hood
 
 /obj/item/clothing/head/hooded/cultlain_hood
@@ -140,7 +142,7 @@
 	var/praying = FALSE
 	var/deity_name = "Coderbus" // This is the default, hopefully won't actually appear if the religion subsystem is running properly
 
-/obj/item/nullrod/rosary/Initialize()
+/obj/item/nullrod/rosary/Initialize(mapload)
 	.=..()
 	if(GLOB.deity)
 		deity_name = GLOB.deity

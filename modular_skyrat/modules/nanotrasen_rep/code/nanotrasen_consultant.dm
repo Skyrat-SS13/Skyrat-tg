@@ -34,7 +34,7 @@
 	mail_goodies = list(
 		/obj/item/clothing/mask/cigarette/cigar/havana = 20,
 		/obj/item/storage/fancy/cigarettes/cigars/havana = 15,
-		/obj/item/reagent_containers/food/drinks/bottle/champagne = 10
+		/obj/item/reagent_containers/cup/glass/bottle/champagne = 10
 	)
 
 	veteran_only = TRUE
@@ -84,7 +84,7 @@
 	icon_state = "cent_headset_alt"
 	inhand_icon_state = "cent_headset_alt"
 
-/obj/item/radio/headset/heads/nanotrasen_consultant/alt/ComponentInitialize()
+/obj/item/radio/headset/heads/nanotrasen_consultant/alt/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/wearertargeting/earprotection, list(ITEM_SLOT_EARS))
 

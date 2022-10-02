@@ -1007,7 +1007,8 @@ GLOBAL_LIST_EMPTY(friendly_animal_types)
 		return J
 	return 0
 
-//For creating consistent icons for human looking simple animals
+/// # If you already have a human and need to get its flat icon, call `get_flat_existing_human_icon()` instead.
+/// For creating consistent icons for human looking simple animals.
 /proc/get_flat_human_icon(icon_id, datum/job/job, datum/preferences/prefs, dummy_key, showDirs = GLOB.cardinals, outfit_override = null)
 	var/static/list/humanoid_icon_cache = list()
 	if(icon_id && humanoid_icon_cache[icon_id])
@@ -1023,7 +1024,6 @@ GLOBAL_LIST_EMPTY(friendly_animal_types)
 		body.equip_outfit_and_loadout(outfit, prefs, TRUE) //SKYRAT EDIT CHANGE
 
 	var/icon/out_icon = icon('icons/effects/effects.dmi', "nothing")
-	COMPILE_OVERLAYS(body)
 	for(var/D in showDirs)
 		var/icon/partial = getFlatIcon(body, defdir=D)
 		out_icon.Insert(partial,dir=D)
@@ -1037,7 +1037,8 @@ GLOBAL_LIST_EMPTY(friendly_animal_types)
  * A simpler version of get_flat_human_icon() that uses an existing human as a base to create the icon.
  * Does not feature caching yet, since I could not think of a good way to cache them without having a possibility
  * of using the cached version when we don't want to, so only use this proc if you just need this flat icon
- * generated once.
+ * generated once and handle the caching yourself if you need to access that icon multiple times, or
+ * refactor this proc to feature caching of icons.
  *
  * Arguments:
  * * existing_human - The human we want to get a flat icon out of.
@@ -1052,7 +1053,6 @@ GLOBAL_LIST_EMPTY(friendly_animal_types)
 	var/initial_human_dir = existing_human.dir
 	existing_human.dir = SOUTH
 	var/icon/out_icon = icon('icons/effects/effects.dmi', "nothing")
-	COMPILE_OVERLAYS(existing_human)
 	for(var/direction in directions_to_output)
 		var/icon/partial = getFlatIcon(existing_human, defdir = direction)
 		out_icon.Insert(partial, dir = direction)

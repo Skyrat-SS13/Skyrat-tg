@@ -22,7 +22,7 @@
 	/// If we're off the station's Z-level
 	var/far_from_home = FALSE
 
-/obj/item/kheiral_cuffs/Initialize()
+/obj/item/kheiral_cuffs/Initialize(mapload)
 	. = ..()
 	update_icon(UPDATE_OVERLAYS)
 	RegisterSignal(src, COMSIG_MOVABLE_Z_CHANGED, .proc/check_z)
@@ -35,11 +35,11 @@
 		. += span_notice("The cuff's GPS signal is on.")
 
 /obj/item/kheiral_cuffs/item_action_slot_check(slot)
-	return slot == ITEM_SLOT_GLOVES
+	return (slot & ITEM_SLOT_GLOVES)
 
 /obj/item/kheiral_cuffs/equipped(mob/user, slot, initial)
 	. = ..()
-	if(slot != ITEM_SLOT_GLOVES)
+	if(!(slot & ITEM_SLOT_GLOVES))
 		return
 	on_wrist = TRUE
 	playsound(loc, 'sound/weapons/handcuffs.ogg', 30, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)

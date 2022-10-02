@@ -162,7 +162,7 @@
 	for(var/iterator in 1 to goodie_count)
 		var/target_good = pick_weight(goodies)
 		var/atom/movable/target_atom = new target_good(src)
-		body.log_message("[key_name(body)] received [target_atom.name] in the mail ([target_good])", LOG_GAME)
+		body.log_message("received [target_atom.name] in the mail ([target_good])", LOG_GAME)
 
 	return TRUE
 
@@ -270,7 +270,7 @@
 	worn_icon_state = "mailbag"
 	resistance_flags = FLAMMABLE
 
-/obj/item/storage/bag/mail/Initialize()
+/obj/item/storage/bag/mail/Initialize(mapload)
 	. = ..()
 	atom_storage.max_specific_storage = WEIGHT_CLASS_NORMAL
 	atom_storage.max_total_storage = 42
@@ -285,6 +285,7 @@
 /obj/item/paper/fluff/junkmail_redpill
 	name = "smudged paper"
 	icon_state = "scrap"
+	show_written_words = FALSE
 	var/nuclear_option_odds = 0.1
 
 /obj/item/paper/fluff/junkmail_redpill/Initialize(mapload)
@@ -304,6 +305,7 @@
 /obj/item/paper/fluff/junkmail_generic
 	name = "important document"
 	icon_state = "paper_words"
+	show_written_words = FALSE
 
 /obj/item/paper/fluff/junkmail_generic/Initialize(mapload)
 	default_raw_text = pick(GLOB.junkmail_messages)

@@ -145,7 +145,7 @@
 	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/slime_squish.ogg' = 1)
 	young = TRUE //No.
 //Storage component for Sharknet Plushie//
-/obj/item/toy/plush/sharknet/Initialize()
+/obj/item/toy/plush/sharknet/Initialize(mapload)
 	. = ..()
 
 	create_storage(max_slots = 2, max_specific_storage = WEIGHT_CLASS_SMALL, canhold = list(/obj/item/toy/plush/skyrat/pintaplush))
@@ -440,7 +440,7 @@
 	///the starting mixture for the liquid
 	var/list/starting_mixture = list(/datum/reagent/consumable/pwr_game = 10)
 
-/obj/effect/abstract/liquid_turf/pwr_gamr/Initialize()
+/obj/effect/abstract/liquid_turf/pwr_gamr/Initialize(mapload)
 	. = ..()
 	reagent_list = starting_mixture
 	total_reagents = 0
@@ -462,7 +462,9 @@
 /obj/item/toy/plush/skyrat/rubi/attack_self(mob/user)
 	. = ..()
 	user.changeNext_move(CLICK_CD_MELEE) // To avoid spam, in some cases (sadly not all of them)
-	SEND_SIGNAL(user, COMSIG_ADD_MOOD_EVENT, "hug", /datum/mood_event/warmhug/rubi, src)
+	var/mob/living/living_user = user
+	if(istype(living_user))
+		living_user.add_mood_event("hug", /datum/mood_event/warmhug/rubi, src)
 	user.visible_message(span_notice("[user] hugs \the [src]."), span_notice("You hug \the [src]."))
 
 /datum/mood_event/warmhug/rubi
@@ -569,3 +571,16 @@
 	desc = "The plushie of a celestial in the known universe."
 	icon_state = "plushie_star"
 	gender = FEMALE
+	squeak_override = list('modular_skyrat/modules/emotes/sound/voice/trills.ogg' = 1)
+
+// Donation reward for SRQ
+/obj/item/toy/plush/skyrat/plushie_chiara
+	name = "commanding fox plush"
+	desc = "A large stuffed fox which radiates confidence and vigor from their emerald eyes."
+	icon_state = "plushie_chiara"
+
+// Donation reward for Superlagg
+/obj/item/toy/plush/skyrat/plushie_dan
+	name = "comfy fox plush"
+	desc = "A stuffed fox with an aura of endearment leaking from their soft exterior."
+	icon_state = "plushie_dan"

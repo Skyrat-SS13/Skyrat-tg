@@ -26,13 +26,6 @@
 		"pink" = image (icon = src.icon, icon_state = "kinkphones_pink_on"),
 		"teal" = image(icon = src.icon, icon_state = "kinkphones_teal_on"))
 
-//to prevent hearing and e.t.c
-/obj/item/clothing/ears/kinky_headphones/ComponentInitialize()
-	. = ..()
-	AddElement(/datum/element/earhealing)
-	AddComponent(/datum/component/wearertargeting/earprotection, list(ITEM_SLOT_EARS))
-	AddElement(/datum/element/update_icon_updates_onmob)
-
 //to change model
 /obj/item/clothing/ears/kinky_headphones/AltClick(mob/user)
 	if(color_changed)
@@ -58,7 +51,7 @@
 //we equipping it so we deaf now
 /obj/item/clothing/ears/kinky_headphones/equipped(mob/living/carbon/human/user, slot)
 	. = ..()
-	if(!(istype(user) && slot == ITEM_SLOT_EARS))
+	if(!(istype(user) && (slot & ITEM_SLOT_EARS)))
 		return
 	to_chat(user, span_purple("[!kinky_headphones_on ? "You can barely hear anything! Your other senses have become more apparent..." : "Strange but relaxing music fills your mind. You feel so... Calm."]"))
 	ADD_TRAIT(user, TRAIT_DEAF, CLOTHING_TRAIT)
@@ -74,8 +67,11 @@
 
 //to make it change model on click
 
-/obj/item/clothing/ears/kinky_headphones/Initialize()
+/obj/item/clothing/ears/kinky_headphones/Initialize(mapload)
 	. = ..()
+	AddElement(/datum/element/update_icon_updates_onmob)
+	AddElement(/datum/element/earhealing)
+	AddComponent(/datum/component/wearertargeting/earprotection, list(ITEM_SLOT_EARS))
 	update_icon_state()
 	update_icon()
 	if(!length(kinkphones_designs))

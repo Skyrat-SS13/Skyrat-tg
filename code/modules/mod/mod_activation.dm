@@ -105,6 +105,11 @@
 		if(!wearer.equip_to_slot_if_possible(overslot, overslot.slot_flags, qdel_on_fail = FALSE, disable_warning = TRUE))
 			wearer.dropItemToGround(overslot, force = TRUE, silent = TRUE)
 		overslotting_parts[part] = null
+	// SKYRAT EDIT START - Avoiding exploits with the modules staying active when any of the parts are retracted.
+	for(var/obj/item/mod/module/module as anything in modules)
+		if(module.active)
+			module.on_deactivation(display_message = !!user)
+	// SKYRAT EDIT END
 	if(!user)
 		return
 	wearer.visible_message(span_notice("[wearer]'s [part.name] retract[part.p_s()] back into [src] with a mechanical hiss."),
@@ -205,20 +210,20 @@
 		part.alternate_worn_layer = mod_parts[part]
 	if(part == boots)
 		boots.icon_state = "[skin]-boots[seal ? "-sealed" : ""]"
-		wearer.update_inv_shoes()
+		wearer.update_worn_shoes()
 	if(part == gauntlets)
 		gauntlets.icon_state = "[skin]-gauntlets[seal ? "-sealed" : ""]"
-		wearer.update_inv_gloves()
+		wearer.update_worn_gloves()
 	if(part == chestplate)
 		chestplate.icon_state = "[skin]-chestplate[seal ? "-sealed" : ""]"
-		wearer.update_inv_wear_suit()
-		wearer.update_inv_w_uniform()
+		wearer.update_worn_oversuit()
+		wearer.update_worn_undersuit()
 	if(part == helmet)
 		helmet.icon_state = "[skin]-helmet[seal ? "-sealed" : ""]"
-		wearer.update_inv_head()
-		wearer.update_inv_wear_mask()
-		wearer.update_inv_glasses()
-		wearer.update_hair()
+		wearer.update_worn_head()
+		wearer.update_worn_mask()
+		wearer.update_worn_glasses()
+		wearer.update_body_parts()
 
 /// Finishes the suit's activation, starts processing
 /obj/item/mod/control/proc/finish_activation(on)

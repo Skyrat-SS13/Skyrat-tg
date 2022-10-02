@@ -23,7 +23,7 @@
 	icon_state = "cowboy_poncho"
 	heat_protection = CHEST
 
-/obj/item/clothing/neck/cowboylea/ComponentInitialize()
+/obj/item/clothing/neck/cowboylea/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/toggle_clothes, "cowboy_poncho_t")
 
@@ -38,6 +38,6 @@
 	flags_1 = IS_PLAYER_COLORABLE_1
 	heat_protection = CHEST
 
-/obj/item/clothing/neck/ranger_poncho/ComponentInitialize()
+/obj/item/clothing/neck/ranger_poncho/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/toggle_clothes, "ranger_poncho_t")

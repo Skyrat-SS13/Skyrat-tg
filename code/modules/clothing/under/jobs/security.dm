@@ -18,7 +18,7 @@
 	random_sensor = FALSE
 
 /obj/item/clothing/under/rank/security/officer
-	name = "security jumpsuit"
+	name = "security uniform"
 	desc = "A tactical security jumpsuit for officers complete with Nanotrasen belt buckle."
 	icon_state = "rsecurity"
 	inhand_icon_state = "r_suit"
@@ -30,8 +30,8 @@
 	inhand_icon_state = "gy_suit"
 
 /obj/item/clothing/under/rank/security/officer/skirt
-	name = "security jumpskirt"
-	desc = "A \"tactical\" security jumpsuit with the legs replaced by a skirt."
+	name = "security skirt"
+	desc = "A \"tactical\" security uniform with the legs replaced by a skirt."
 	icon_state = "secskirt"
 	inhand_icon_state = "r_suit"
 	body_parts_covered = CHEST|GROIN|ARMS
@@ -134,7 +134,7 @@
  * Head of Security
  */
 /obj/item/clothing/under/rank/security/head_of_security
-	name = "head of security's jumpsuit"
+	name = "head of security's uniform"
 	desc = "A security jumpsuit decorated for those few with the dedication to achieve the position of Head of Security."
 	icon_state = "rhos"
 	inhand_icon_state = "r_suit"
@@ -142,7 +142,7 @@
 	strip_delay = 60
 
 /obj/item/clothing/under/rank/security/head_of_security/skirt
-	name = "head of security's jumpskirt"
+	name = "head of security's skirt"
 	desc = "A security jumpskirt decorated for those few with the dedication to achieve the position of Head of Security."
 	icon_state = "rhos_skirt"
 	inhand_icon_state = "r_suit"
@@ -218,7 +218,7 @@
 	greyscale_config_inhand_left = /datum/greyscale_config/jumpsuit_prison_inhand_left
 	greyscale_config_inhand_right = /datum/greyscale_config/jumpsuit_prison_inhand_right
 	greyscale_config_worn = /datum/greyscale_config/jumpsuit_prison_worn
-	greyscale_config_worn_digi = /datum/greyscale_config/jumpsuit_prison_worn/digi // SKYRAT EDIT ADD
+	greyscale_config_worn_digi = /datum/greyscale_config/jumpsuit_prison_worn/digi //SKYRAT EDIT ADDITION - DigiGreyscale
 	has_sensor = LOCKED_SENSORS
 	sensor_mode = SENSOR_COORDS
 	random_sensor = FALSE
@@ -232,7 +232,7 @@
 	greyscale_config_inhand_left = /datum/greyscale_config/jumpsuit_prison_inhand_left
 	greyscale_config_inhand_right = /datum/greyscale_config/jumpsuit_prison_inhand_right
 	greyscale_config_worn = /datum/greyscale_config/jumpsuit_prison_worn
-	greyscale_config_worn_digi = null // SKYRAT EDIT ADD
+	greyscale_config_worn_digi = null //SKYRAT EDIT ADDITION - DigiGreyscale
 	body_parts_covered = CHEST|GROIN|ARMS
 	dying_key = DYE_REGISTRY_JUMPSKIRT
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY

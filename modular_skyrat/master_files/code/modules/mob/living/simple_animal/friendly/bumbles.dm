@@ -31,7 +31,7 @@
 	speak_chance = 1
 	unique_name = TRUE
 
-/mob/living/simple_animal/pet/bumbles/Initialize()
+/mob/living/simple_animal/pet/bumbles/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/simple_flying)
 	add_verb(src, /mob/living/proc/toggle_resting)

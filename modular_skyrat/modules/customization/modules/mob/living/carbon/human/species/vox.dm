@@ -2,7 +2,7 @@
 	// Bird-like humanoids
 	name = "Vox"
 	id = SPECIES_VOX
-	eyes_icon = 'modular_skyrat/master_files/icons/mob/species/vox_eyes.dmi'
+	eyes_icon = 'modular_skyrat/modules/organs/icons/vox_eyes.dmi'
 	say_mod = "skrees"
 	can_augment = FALSE
 	species_traits = list(
@@ -27,7 +27,7 @@
 	mutant_bodyparts = list()
 	default_mutant_bodyparts = list(
 		"tail" = "Vox Tail",
-		"legs" = "Digitigrade Legs",
+		"legs" = DIGITIGRADE_LEGS,
 		"snout" = "Vox Snout",
 		"spines" = ACC_RANDOM
 	)
@@ -40,7 +40,6 @@
 	outfit_important_for_life = /datum/outfit/vox
 	species_language_holder = /datum/language_holder/vox
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
-	learnable_languages = list(/datum/language/common, /datum/language/vox, /datum/language/schechi)
 	// Vox are cold resistant, but also heat sensitive
 	bodytemp_heat_damage_limit = (BODYTEMP_HEAT_DAMAGE_LIMIT - 15) // being cold resistant, should make you heat sensitive actual effect ingame isn't much
 	bodytemp_cold_damage_limit = (BODYTEMP_COLD_DAMAGE_LIMIT - 30)
@@ -83,12 +82,10 @@
 
 	return randname
 
-/datum/species/vox/get_random_features()
-	var/list/returned = MANDATORY_FEATURE_LIST
-	returned["mcolor"] = pick("#77DD88", "#77DDAA", "#77CCDD", "#77DDCC")
-	returned["mcolor2"] = pick("#EEDD88", "#EECC88")
-	returned["mcolor3"] = pick("#222222", "#44EEFF", "#44FFBB", "#8844FF", "#332233")
-	return returned
+/datum/species/vox/randomize_features(mob/living/carbon/human/human_mob)
+	human_mob.dna.features["mcolor"] = pick("#77DD88", "#77DDAA", "#77CCDD", "#77DDCC")
+	human_mob.dna.features["mcolor2"] = pick("#EEDD88", "#EECC88")
+	human_mob.dna.features["mcolor3"] = pick("#222222", "#44EEFF", "#44FFBB", "#8844FF", "#332233")
 
 /datum/species/vox/get_random_body_markings(list/passed_features)
 	var/name = pick(list("Vox", "Vox Hive", "Vox Nightling", "Vox Heart", "Vox Tiger"))

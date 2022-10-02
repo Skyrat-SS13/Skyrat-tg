@@ -45,7 +45,7 @@
 				if(damagetype & SHAME)
 					adjustStaminaLoss(200)
 					set_suicide(FALSE)
-					SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "shameful_suicide", /datum/mood_event/shameful_suicide)
+					add_mood_event("shameful_suicide", /datum/mood_event/shameful_suicide)
 					return
 
 				if(damagetype & MANUAL_SUICIDE_NONLETHAL) //Make sure to call the necessary procs if it does kill later
@@ -167,7 +167,10 @@
 		adjustOxyLoss(max(maxHealth * 2 - getToxLoss() - getFireLoss() - getBruteLoss() - getOxyLoss(), 0))
 		death(FALSE)
 		ghostize(FALSE) // Disallows reentering body and disassociates mind
+*/
+//SKYRAT EDIT REMOVAL END
 
+//SKYRAT EDIT PAI START - Returns ability to leave your PAI
 /mob/living/silicon/pai/verb/suicide()
 	set hidden = TRUE
 	var/confirm = tgui_alert(usr,"Are you sure you want to commit suicide?", "Confirm Suicide", list("Yes", "No"))
@@ -182,7 +185,10 @@
 		ghostize(FALSE) // Disallows reentering body and disassociates mind
 	else
 		to_chat(src, "Aborting suicide attempt.")
+//SKYRAT EDIT PAI END
 
+//SKYRAT EDIT REMOVAL START
+/*
 /mob/living/carbon/alien/humanoid/verb/suicide()
 	set hidden = TRUE
 	if(!canSuicide())

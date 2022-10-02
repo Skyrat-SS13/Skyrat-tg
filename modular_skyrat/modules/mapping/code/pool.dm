@@ -22,29 +22,29 @@
 	layer = BELOW_MOB_LAYER
 	vis_flags = NONE
 
-/turf/open/water/overlay/Initialize()
+/turf/open/water/overlay/Initialize(mapload)
 	.  = ..()
 	var/obj/effect/overlay/water/water_overlay = new()
 	var/obj/effect/overlay/water/top/water_top_overlay = new()
 	vis_contents += water_overlay
 	vis_contents += water_top_overlay
 
-/turf/open/water/overlay/Entered(atom/movable/AM)
+/turf/open/water/overlay/Entered(atom/movable/arrived)
 	..()
-	wash_atom(AM)
+	wash_atom(arrived)
 	wash_atom(loc)
 
-/turf/open/water/overlay/proc/wash_atom(atom/A)
-	A.wash(CLEAN_RAD) // Clean radiation non-instantly
-	A.wash(CLEAN_WASH)
+/turf/open/water/overlay/proc/wash_atom(atom/nasty)
+	nasty.wash(CLEAN_RAD) // Clean radiation non-instantly
+	nasty.wash(CLEAN_WASH)
 
-/turf/open/water/overlay/hotspring/Entered(atom/movable/AM)
+/turf/open/water/overlay/hotspring/Entered(atom/movable/arrived)
 	..()
-	SEND_SIGNAL(AM, COMSIG_ADD_MOOD_EVENT, "hotspring", /datum/mood_event/hotspring)
-	hotspring_mood(AM)
+	if(istype(arrived, /mob/living))
+		hotspring_mood(arrived)
 
-/turf/open/water/overlay/hotspring/proc/hotspring_mood(atom/A)
-	SEND_SIGNAL(A, COMSIG_ADD_MOOD_EVENT, "hotspring", /datum/mood_event/hotspring)
+/turf/open/water/overlay/hotspring/proc/hotspring_mood(mob/living/swimmer)
+	swimmer.add_mood_event("hotspring", /datum/mood_event/hotspring)
 
 /datum/mood_event/hotspring
 	description = span_nicegreen("I recently had a paddle in some nice warm water! It was so refreshing!\n")

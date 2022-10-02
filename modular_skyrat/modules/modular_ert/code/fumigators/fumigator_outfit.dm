@@ -17,7 +17,7 @@
 		/obj/item/storage/box/survival,\
 		/obj/item/hatchet,\
 		/obj/item/toy/plush/goatplushie,\
-		/obj/item/reagent_containers/glass/bottle/killer/weedkiller,\
+		/obj/item/reagent_containers/cup/bottle/killer/weedkiller,\
 		/obj/item/grenade/chem_grenade/antiweed,\
 		)
 
@@ -36,6 +36,6 @@
 		/obj/item/storage/box/survival,\
 		/obj/item/melee/tomahawk,\
 		/obj/item/toy/plush/goatplushie,\
-		/obj/item/reagent_containers/glass/bottle/killer/weedkiller,\
+		/obj/item/reagent_containers/cup/bottle/killer/weedkiller,\
 		/obj/item/grenade/chem_grenade/antiweed,\
 		)

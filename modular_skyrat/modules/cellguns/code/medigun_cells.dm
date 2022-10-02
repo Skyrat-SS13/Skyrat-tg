@@ -549,7 +549,7 @@
 	buildstacktype = FALSE //It would not be good if people could use this to farm materials.
 	var/deploytime = 20 SECONDS //How long the roller beds lasts for without someone buckled to it.
 
-/obj/structure/bed/roller/medigun/Initialize()
+/obj/structure/bed/roller/medigun/Initialize(mapload)
 	. = ..()
 	addtimer(CALLBACK(src, .proc/check_bed), deploytime)
 

@@ -4,7 +4,7 @@
 	build_type = PROTOLATHE | AWAY_LATHE
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 	construction_time = 10 SECONDS //dunno if this is for mechfabs or what but I'll keep this anyway
-	category = list("Weapons")
+	category = list(RND_CATEGORY_WEAPONS)
 
 // EMITTERS
 /datum/design/microfusion/enhanced_phase_emitter
@@ -32,7 +32,7 @@
 /datum/design/microfusion/cell
 	name = "Microfusion Cell"
 	desc = "A microfusion cell."
-	category = list("Ammo")
+	category = list(RND_CATEGORY_AMMO)
 
 /datum/design/microfusion/cell/basic
 	name = "Basic Microfusion Cell"
@@ -41,7 +41,7 @@
 	build_type = PROTOLATHE | AWAY_LATHE | AUTOLATHE
 	materials = list(/datum/material/iron = 1000, /datum/material/glass = 200)
 	build_path = /obj/item/stock_parts/cell/microfusion
-	category = list("Ammo", "Security", "initial")
+	category = list(RND_CATEGORY_AMMO, RND_CATEGORY_SECURITY, "initial")
 
 /datum/design/microfusion/cell/enhanced
 	name = "Enhanced Microfusion Cell"
@@ -65,12 +65,6 @@
 	build_path = /obj/item/stock_parts/cell/microfusion/bluespace
 
 // CELL UPGRADES
-/datum/design/microfusion/cell_attachment_rechargeable
-	name = "Rechargeable Microfusion Cell Attachment"
-	desc = "An attachment for microfusion cells that allows conversion of KJ to MF in standard chargers."
-	id = "microfusion_cell_attachment_rechargeable"
-	materials = list(/datum/material/iron = 1000, /datum/material/glass = 1000, /datum/material/gold = 1000)
-	build_path = /obj/item/microfusion_cell_attachment/rechargeable
 
 /datum/design/microfusion/cell_attachment_stabiliser
 	name = "Stabilising Microfusion Cell Attachment"
@@ -92,20 +86,6 @@
 	id = "microfusion_cell_attachment_selfcharging"
 	materials = list(/datum/material/iron = 1000, /datum/material/glass = 1000, /datum/material/diamond = 500, /datum/material/uranium = 5000, /datum/material/titanium = 5000, /datum/material/bluespace = 2500) // Makes it almost in-line with Advanced Egun pricing
 	build_path = /obj/item/microfusion_cell_attachment/selfcharging
-
-/datum/design/microfusion/cell_attachment_tactical
-	name = "Tac-Reload Handle Microfusion Cell Attachment"
-	desc = "An aftermarket modification that makes the process of tactical reloading a MF cell far easier."
-	id = "microfusion_cell_attachment_tactical"
-	materials = list(/datum/material/iron = 1000, /datum/material/glass = 1000, /datum/material/plasma = 1000, /datum/material/silver = 1000)
-	build_path = /obj/item/microfusion_cell_attachment/tactical
-
-/datum/design/microfusion/cell_attachment_reloader
-	name = "Reloading Handle Microfusion Cell Attachment"
-	desc = "An aftermarket modification that makes the process of loading a MF cell far easier."
-	id = "microfusion_cell_attachment_reloader"
-	materials = list(/datum/material/iron = 1000, /datum/material/glass = 1000, /datum/material/plasma = 1000, /datum/material/silver = 1000)
-	build_path = /obj/item/microfusion_cell_attachment/reloader
 
 // RAIL MODS
 /datum/design/microfusion/gun_attachment_scope

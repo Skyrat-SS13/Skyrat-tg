@@ -1,4 +1,4 @@
-/obj/item/storage/backpack/snail/Initialize()
+/obj/item/storage/backpack/snail/Initialize(mapload)
 	. = ..()
 	atom_storage.max_specific_storage = 30
 

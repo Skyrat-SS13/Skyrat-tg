@@ -50,9 +50,9 @@
 				icon_state = initial(icon_state)
 				to_chat(user, "You pull the balaclava up to cover your whole head.")
 				open = 0
-		user.update_hair(0)
+		user.update_body_parts()
 		user.update_inv_ears(0)
-		user.update_inv_wear_mask() //Updates mob icons
+		user.update_worn_mask() //Updates mob icons
 
 /obj/item/clothing/mask/balaclavaadjust/attack_self(mob/user)
 	adjust_mask(user)
@@ -101,7 +101,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/mask.dmi'
 	icon_state = "hecu2"
 
-/obj/item/clothing/mask/gas/hecu2/mob_can_equip(mob/living/M, mob/living/equipper, slot, disable_warning, bypass_equip_delay_self)
+/obj/item/clothing/mask/gas/hecu2/mob_can_equip(mob/living/M, slot, disable_warning, bypass_equip_delay_self, ignore_equipped)
 	if(is_species(M, /datum/species/teshari))
 		to_chat(M, span_warning("[src] is far too big for you!"))
 		return FALSE
@@ -154,3 +154,36 @@
 	resistance_flags = FLAMMABLE
 	species_exception = list(/datum/species/golem/bananium)
 
+/obj/item/clothing/mask/gas/respirator
+	name = "half mask respirator"
+	desc = "A half mask respirator that's really just a standard gas mask with the glass taken off."
+	icon = 'modular_skyrat/modules/GAGS/icons/masks.dmi'
+	worn_icon = 'modular_skyrat/modules/GAGS/icons/masks.dmi'
+	icon_state = "respirator"
+	inhand_icon_state = "sechailer"
+	w_class = WEIGHT_CLASS_SMALL
+	has_fov = FALSE
+	clothing_flags = BLOCK_GAS_SMOKE_EFFECT | MASKINTERNALS
+	flags_inv = HIDEFACIALHAIR|HIDESNOUT
+	flags_cover = MASKCOVERSMOUTH
+	flags_1 = IS_PLAYER_COLORABLE_1
+	greyscale_colors = "#2E3333"
+	greyscale_config = /datum/greyscale_config/respirator
+	greyscale_config_worn = /datum/greyscale_config/respirator/worn
+	//NIGHTMARE NIGHTMARE NIGHTMARE
+	greyscale_config_worn_digi = /datum/greyscale_config/respirator/worn/snouted
+	greyscale_config_worn_better_vox = /datum/greyscale_config/respirator/worn/better_vox
+	greyscale_config_worn_vox = /datum/greyscale_config/respirator/worn/vox
+	greyscale_config_worn_teshari = /datum/greyscale_config/respirator/worn/teshari
+
+/obj/item/clothing/mask/surgical/greyscale
+	icon = 'modular_skyrat/modules/GAGS/icons/masks.dmi'
+	worn_icon = 'modular_skyrat/modules/GAGS/icons/masks.dmi'
+	flags_1 = IS_PLAYER_COLORABLE_1
+	greyscale_colors = "#AAE4DB"
+	greyscale_config = /datum/greyscale_config/sterile_mask
+	greyscale_config_worn = /datum/greyscale_config/sterile_mask/worn
+	greyscale_config_worn_digi = /datum/greyscale_config/sterile_mask/worn/snouted
+	greyscale_config_worn_better_vox = /datum/greyscale_config/sterile_mask/worn/better_vox
+	greyscale_config_worn_vox = /datum/greyscale_config/sterile_mask/worn/vox
+	greyscale_config_worn_teshari = /datum/greyscale_config/sterile_mask/worn/teshari

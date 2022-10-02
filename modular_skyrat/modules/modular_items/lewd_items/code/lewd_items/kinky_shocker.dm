@@ -23,7 +23,7 @@
 /obj/item/kinky_shocker/get_cell()
 	return cell
 
-/obj/item/kinky_shocker/Initialize()
+/obj/item/kinky_shocker/Initialize(mapload)
 	. = ..()
 	update_icon_state()
 	update_icon()
@@ -284,4 +284,4 @@
 	target.do_jitter_animation()
 	target.adjustStaminaLoss(3)
 	target.adjustPain(9)
-	target.adjust_timed_status_effect(30 SECONDS, /datum/status_effect/speech/stutter)
+	target.adjust_stutter(30 SECONDS)

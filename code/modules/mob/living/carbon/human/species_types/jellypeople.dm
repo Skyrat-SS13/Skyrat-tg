@@ -6,15 +6,11 @@
 	say_mod = "chirps"
 	species_traits = list(MUTCOLORS,EYECOLOR,NOBLOOD)
 	inherent_traits = list(
-		TRAIT_ADVANCEDTOOLUSER,
-		TRAIT_CAN_STRIP,
-		TRAIT_LITERATE,
 		TRAIT_TOXINLOVER,
 	)
 	mutantlungs = /obj/item/organ/internal/lungs/slime
 	meat = /obj/item/food/meat/slab/human/mutant/slime
 	exotic_blood = /datum/reagent/toxin/slimejelly
-	damage_overlay_type = ""
 	var/datum/action/innate/regenerate_limbs/regenerate_limbs
 	var/datum/action/innate/alter_form/alter_form //SKYRAT EDIT ADDITION - CUSTOMIZATION
 	liked_food = MEAT | BUGS
@@ -562,7 +558,7 @@
 /datum/action/innate/integrate_extract/Activate()
 	var/mob/living/carbon/human/H = owner
 	var/datum/species/jelly/luminescent/species = target
-	if(!is_species(H, /datum/species/jelly/luminescent) || !species)
+	if(!isluminescent(H) || !species)
 		return
 	CHECK_DNA_AND_SPECIES(H)
 
@@ -623,7 +619,7 @@
 /datum/action/innate/use_extract/Activate()
 	var/mob/living/carbon/human/H = owner
 	var/datum/species/jelly/luminescent/species = H.dna.species
-	if(!is_species(H, /datum/species/jelly/luminescent) || !species)
+	if(!isluminescent(H) || !species)
 		return
 	CHECK_DNA_AND_SPECIES(H)
 

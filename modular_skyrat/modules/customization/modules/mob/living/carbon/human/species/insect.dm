@@ -34,7 +34,7 @@
 	attack_effect = ATTACK_EFFECT_CLAW
 	attack_sound = 'sound/weapons/slash.ogg'
 	miss_sound = 'sound/weapons/slashmiss.ogg'
-	liked_food = GROSS | RAW | TOXIC
+	liked_food = GROSS | RAW | TOXIC | GORE
 	disliked_food = CLOTH | GRAIN | FRIED
 	toxic_food = DAIRY
 	payday_modifier = 0.75
@@ -54,3 +54,12 @@
 
 /datum/species/insect/get_species_lore()
 	return list(placeholder_lore)
+
+/datum/species/insect/prepare_human_for_preview(mob/living/carbon/human/human)
+	var/main_color = "#644b07"
+	var/secondary_color = "#9b9b9b"
+	human.dna.features["mcolor"] = main_color
+	human.dna.features["mcolor2"] = secondary_color
+	human.dna.features["mcolor3"] = secondary_color
+	human.update_mutant_bodyparts(TRUE)
+	human.update_body(TRUE)

@@ -70,16 +70,13 @@
 	///the path of the item that will be spawned upon completion
 	var/spawn_item
 
-/obj/item/forging/incomplete/attackby(obj/item/I, mob/living/user, params)
+/obj/item/forging/incomplete/tong_act(mob/living/user, obj/item/tool)
 	. = ..()
-	if(istype(I, /obj/item/forging/tongs))
-		var/obj/search_obj = locate(/obj) in I.contents
-		if(search_obj)
-			to_chat(user, span_warning("The tongs are already holding something, make room."))
-			return
-		forceMove(I)
-		I.icon_state = "tong_full"
+	if(length(tool.contents) > 0)
+		user.balloon_alert("tongs are full already!")
 		return
+	forceMove(tool)
+	tool.icon_state = "tong_full"
 
 /obj/item/forging/incomplete/chain
 	name = "incomplete chain"
@@ -288,3 +285,11 @@
 		qdel(src)
 		return
 	return ..()
+
+/obj/item/stack/rods/tong_act(mob/living/user, obj/item/tool)
+	. = ..()
+	if(length(tool.contents) > 0)
+		user.balloon_alert("tongs are full already!")
+		return
+	forceMove(tool)
+	tool.icon_state = "tong_full"

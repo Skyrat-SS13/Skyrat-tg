@@ -52,7 +52,7 @@
 	//we are using if statements so that it slowly becomes more and more to the person
 	human_owner.manual_emote(pick(lust_emotes))
 	if(stress >= 60)
-		human_owner.set_timed_status_effect(40 SECONDS, /datum/status_effect/jitter, only_if_higher = TRUE)
+		human_owner.set_jitter_if_lower(40 SECONDS)
 		lust_message = "You feel a static sensation all across your skin..."
 	if(stress >= 120)
 		human_owner.blur_eyes(10)
@@ -151,7 +151,7 @@
 	speech_args[SPEECH_MESSAGE] = message
 
 /datum/brain_trauma/very_special/bimbo/on_gain()
-	SEND_SIGNAL(owner, COMSIG_ADD_MOOD_EVENT, "bimbo", /datum/mood_event/bimbo)
+	owner.add_mood_event("bimbo", /datum/mood_event/bimbo)
 	if(!HAS_TRAIT_FROM(owner, TRAIT_BIMBO, LEWDCHEM_TRAIT))
 		ADD_TRAIT(owner, TRAIT_BIMBO, LEWDCHEM_TRAIT)
 	RegisterSignal(owner, COMSIG_MOB_SAY, .proc/handle_speech)
@@ -159,7 +159,7 @@
 		ADD_TRAIT(owner, TRAIT_MASOCHISM, APHRO_TRAIT)
 
 /datum/brain_trauma/very_special/bimbo/on_lose()
-	SEND_SIGNAL(owner, COMSIG_CLEAR_MOOD_EVENT, "bimbo", /datum/mood_event/bimbo)
+	owner.clear_mood_event("bimbo")
 	if(HAS_TRAIT_FROM(owner, TRAIT_BIMBO, LEWDCHEM_TRAIT))
 		REMOVE_TRAIT(owner, TRAIT_BIMBO, LEWDCHEM_TRAIT)
 	UnregisterSignal(owner, COMSIG_MOB_SAY)
@@ -174,6 +174,10 @@
 *	MASOCHISM
 */
 
+/datum/quirk
+	/// Is this a quirk disabled by disabling the ERP config?
+	var/erp_quirk = FALSE
+
 /datum/quirk/masochism
 	name = "Masochism"
 	desc = "Pain brings you indescribable pleasure."
@@ -183,6 +187,7 @@
 	lose_text = span_notice("Ouch! Pain is... Painful again! Ou-ou-ouch!")
 	medical_record_text = "Subject has masochism."
 	icon = "heart-broken"
+	erp_quirk = TRUE
 
 /datum/quirk/masochism/post_add()
 	. = ..()
@@ -230,6 +235,7 @@
 	lose_text = span_notice("Others' pain doesn't satisfy you anymore.")
 	medical_record_text = "Subject has sadism."
 	icon = "hammer"
+	erp_quirk = TRUE
 
 /datum/quirk/sadism/post_add()
 	. = ..()
@@ -255,9 +261,9 @@
 	var/mob/living/carbon/human/affected_mob = owner
 	if(someone_suffering() && affected_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp))
 		affected_mob.adjustArousal(2)
-		SEND_SIGNAL(owner, COMSIG_ADD_MOOD_EVENT, "sadistic", /datum/mood_event/sadistic)
+		owner.add_mood_event("sadistic", /datum/mood_event/sadistic)
 	else
-		SEND_SIGNAL(owner, COMSIG_CLEAR_MOOD_EVENT, "sadistic", /datum/mood_event/sadistic)
+		owner.clear_mood_event("sadistic")
 
 /datum/brain_trauma/very_special/sadism/proc/someone_suffering()
 	if(HAS_TRAIT(owner, TRAIT_BLIND))
@@ -279,6 +285,7 @@
 	gain_text = span_danger("You really want to be restrained for some reason.")
 	lose_text = span_notice("Being restrained doesn't arouse you anymore.")
 	icon = "link"
+	erp_quirk = TRUE
 
 /datum/quirk/ropebunny/post_add()
 	. = ..()
@@ -299,6 +306,7 @@
 	gain_text = span_danger("Suddenly you understand rope weaving much better than before.")
 	lose_text = span_notice("Rope knots looks complicated again.")
 	icon = "chain-broken"
+	erp_quirk = TRUE
 
 /datum/quirk/rigger/post_add()
 	. = ..()

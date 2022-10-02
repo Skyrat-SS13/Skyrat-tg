@@ -128,7 +128,7 @@
 	flags_1 = IS_PLAYER_COLORABLE_1
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/suit/toggle/jacket/cardigan/ComponentInitialize()
+/obj/item/clothing/suit/toggle/jacket/cardigan/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/toggle_clothes, "cardigan_t")
 

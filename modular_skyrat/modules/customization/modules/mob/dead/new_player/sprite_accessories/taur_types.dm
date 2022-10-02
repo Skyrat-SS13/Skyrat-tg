@@ -32,6 +32,7 @@
 	layers = ALL_EXTERNAL_OVERLAYS
 	external_bodytypes = BODYTYPE_TAUR
 	color_source = ORGAN_COLOR_OVERRIDE
+	use_mob_sprite_as_obj_sprite = TRUE
 
 	feature_key = "taur"
 	preference = "feature_taur"

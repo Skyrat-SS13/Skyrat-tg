@@ -19,7 +19,7 @@
 	/// The master AI , assigned when placed down with the ability.
 	var/mob/living/silicon/ai/masterAI
 
-/obj/machinery/transformer_rp/Initialize()
+/obj/machinery/transformer_rp/Initialize(mapload)
 	// On us
 	. = ..()
 	new /obj/machinery/conveyor/auto(loc, WEST)

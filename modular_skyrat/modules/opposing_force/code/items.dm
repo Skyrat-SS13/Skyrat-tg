@@ -9,7 +9,7 @@
 	var/datum/component/uplink/hidden_uplink = GetComponent(/datum/component/uplink)
 	hidden_uplink.name = "old radio"
 
-/obj/item/reagent_containers/glass/rag/large
+/obj/item/reagent_containers/cup/rag/large
     volume = 30
     amount_per_transfer_from_this = 30
     desc = "A damp rag made from a highly absorbant materials. Can hold up to 30u liquids. You can also clean up messes I guess."
@@ -65,7 +65,7 @@
 
 /obj/item/clothing/suit/toggle/lawyer/black/better/heister/equipped(mob/living/user, slot)
 	. = ..()
-	if(slot != ITEM_SLOT_OCLOTHING)
+	if(!(slot & ITEM_SLOT_OCLOTHING))
 		return
 	RegisterSignal(user, COMSIG_HUMAN_CHECK_SHIELDS, .proc/armor_reaction)
 

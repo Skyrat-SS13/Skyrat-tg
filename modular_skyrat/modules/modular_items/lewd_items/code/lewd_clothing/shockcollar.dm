@@ -21,7 +21,7 @@
 	build_type = AUTOLATHE
 	build_path = /obj/item/electropack/shockcollar
 	materials = list(/datum/material/iron = 5000, /datum/material/glass =2000)
-	category = list("hacked", "Misc")
+	category = list(RND_CATEGORY_HACKED, RND_CATEGORY_MISC)
 
 /obj/item/electropack/shockcollar/attack_hand(mob/user)
 	if(loc == user && user.get_item_by_slot(ITEM_SLOT_NECK))
@@ -50,7 +50,7 @@
 
 		affected_mob.Paralyze(30)
 		affected_mob.adjustPain(10)
-		affected_mob.adjust_timed_status_effect(30 SECONDS, /datum/status_effect/speech/stutter)
+		affected_mob.adjust_stutter(30 SECONDS)
 
 	if(master)
 		if(isassembly(master))
@@ -71,7 +71,7 @@
 	else
 		return ..()
 
-/obj/item/electropack/shockcollar/Initialize()
+/obj/item/electropack/shockcollar/Initialize(mapload)
 	if(random)
 		code = rand(1, 100)
 		frequency = rand(MIN_FREE_FREQ, MAX_FREE_FREQ)
@@ -87,7 +87,7 @@
 
 /obj/item/electropack/shockcollar/pacify/equipped(mob/living/carbon/human/user, slot)
 	. = ..()
-	if(slot == ITEM_SLOT_NECK)
+	if(slot & ITEM_SLOT_NECK)
 		ADD_TRAIT(user, TRAIT_PACIFISM, "pacifying-collar")
 
 /obj/item/electropack/shockcollar/pacify/dropped(mob/living/carbon/human/user)

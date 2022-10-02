@@ -1,4 +1,4 @@
-/obj/item/clothing/suit/armor/vest/hecu
+/obj/item/clothing/suit/armor/vest/hecu //This shouldn't be a Vest subtype considering it covers the legs (sprite-wise) :/
 	name = "plate carrier system"
 	desc = "A modular armor vest with inserted plates and armor elements that provide decent protection against most types of damage. Despite its modularity, however, you can't remove any of its pieces."
 	icon_state = "combat_vest"
@@ -8,6 +8,7 @@
 	worn_icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecumob.dmi'
 	worn_icon_digi = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecumob_digi.dmi'
 	uses_advanced_reskins = TRUE
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
 	unique_reskin = list(
 		"Basic" = list(
 			RESKIN_ICON_STATE = "combat_vest",

@@ -206,7 +206,7 @@
 /datum/antagonist/rev/head/proc/make_assistant_icon(hairstyle)
 	var/mob/living/carbon/human/dummy/consistent/assistant = new
 	assistant.hairstyle = hairstyle
-	assistant.update_hair(is_creating = TRUE)
+	assistant.update_body_parts()
 
 	var/icon/assistant_icon = render_preview_outfit(/datum/outfit/job/assistant/consistent, assistant)
 	assistant_icon.ChangeOpacity(0.5)
@@ -330,7 +330,7 @@
 		to_chat(C, "Your eyes have been implanted with a cybernetic security HUD which will help you keep track of who is mindshield-implanted, and therefore unable to be recruited.")
 
 /datum/team/revolution
-	name = "Revolution"
+	name = "\improper Revolution"
 	var/max_headrevs = 3
 	var/list/ex_headrevs = list() // Dynamic removes revs on loss, used to keep a list for the roundend report.
 	var/list/ex_revs = list()
@@ -457,7 +457,8 @@
 		to_chat(headrev_mind.current, span_hear("You hear something crackle in your ears for a moment before a voice speaks. \
 			\"Please stand by for a message from your benefactor. Message as follows, provocateur. \
 			<b>You have been chosen out of your fellow provocateurs to rename the station. Choose wisely.</b> Message ends.\""))
-	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_REVOLUTION_TAX_REMOVAL)
+
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_REVOLUTION_VICTORY)
 
 	for (var/mob/living/player as anything in GLOB.player_list)
 		var/datum/mind/player_mind = player.mind
@@ -614,13 +615,12 @@
 	parts += "<b>[antag_listing_name()]</b><br>"
 	parts += "<table cellspacing=5>"
 
-	var/list/heads = get_team_antags(/datum/antagonist/rev/head,TRUE)
+	var/list/heads = get_team_antags(/datum/antagonist/rev/head, FALSE)
 
 	for(var/datum/antagonist/A in heads | get_team_antags())
 		parts += A.antag_listing_entry()
 
 	parts += "</table>"
-	parts += antag_listing_footer()
 	common_part = parts.Join()
 
 	var/heads_report = "<b>Heads of Staff</b><br>"

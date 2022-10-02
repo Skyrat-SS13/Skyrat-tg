@@ -14,6 +14,7 @@
 		TRAIT_CAN_STRIP,
 		TRAIT_CAN_USE_FLIGHT_POTION,
 		TRAIT_LITERATE,
+		TRAIT_WATER_BREATHING,
 	)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	mutant_bodyparts = list()
@@ -41,8 +42,7 @@
 		BODY_ZONE_R_LEG = /obj/item/bodypart/r_leg/mutant/akula,
 	)
 
-/datum/species/akula/get_random_features()
-	var/list/returned = MANDATORY_FEATURE_LIST
+/datum/species/akula/randomize_features(mob/living/carbon/human/human_mob)
 	var/main_color
 	var/second_color
 	var/random = rand(1,5)
@@ -63,10 +63,9 @@
 		if(5)
 			main_color = "#444444"
 			second_color = "#DDDDEE"
-	returned["mcolor"] = main_color
-	returned["mcolor2"] = second_color
-	returned["mcolor3"] = second_color
-	return returned
+	human_mob.dna.features["mcolor"] = main_color
+	human_mob.dna.features["mcolor2"] = second_color
+	human_mob.dna.features["mcolor3"] = second_color
 
 /datum/species/akula/get_random_body_markings(list/passed_features)
 	var/name = "Shark"
@@ -81,3 +80,15 @@
 
 /datum/species/akula/get_species_lore()
 	return list(placeholder_lore)
+
+/datum/species/akula/prepare_human_for_preview(mob/living/carbon/human/human)
+	var/main_color = "#394b66"
+	var/secondary_color = "#818b9b"
+	human.dna.features["mcolor"] = main_color
+	human.dna.features["mcolor2"] = secondary_color
+	human.dna.features["mcolor3"] = secondary_color
+	human.dna.species.mutant_bodyparts["tail"] = list(MUTANT_INDEX_NAME = "Shark", MUTANT_INDEX_COLOR_LIST = list(main_color, secondary_color, secondary_color))
+	human.dna.species.mutant_bodyparts["snout"] = list(MUTANT_INDEX_NAME = "hShark", MUTANT_INDEX_COLOR_LIST = list(main_color, secondary_color, secondary_color))
+	human.dna.species.mutant_bodyparts["ears"] = list(MUTANT_INDEX_NAME = "Sergal", MUTANT_INDEX_COLOR_LIST = list(main_color, secondary_color, secondary_color))
+	human.update_mutant_bodyparts(TRUE)
+	human.update_body(TRUE)

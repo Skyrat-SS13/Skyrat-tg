@@ -99,23 +99,4 @@
 				lighting_build_overlay()
 			else
 				lighting_clear_overlay()
-	//Inherit overlay of new area
-	if(old_area.lighting_effect)
-		cut_overlay(old_area.lighting_effect)
-	if(new_area.lighting_effect)
-		add_overlay(new_area.lighting_effect)
 
-/turf/proc/generate_missing_corners()
-	if (!lighting_corner_NE)
-		lighting_corner_NE = new/datum/lighting_corner(src, NORTH|EAST)
-
-	if (!lighting_corner_SE)
-		lighting_corner_SE = new/datum/lighting_corner(src, SOUTH|EAST)
-
-	if (!lighting_corner_SW)
-		lighting_corner_SW = new/datum/lighting_corner(src, SOUTH|WEST)
-
-	if (!lighting_corner_NW)
-		lighting_corner_NW = new/datum/lighting_corner(src, NORTH|WEST)
-
-	lighting_corners_initialised = TRUE

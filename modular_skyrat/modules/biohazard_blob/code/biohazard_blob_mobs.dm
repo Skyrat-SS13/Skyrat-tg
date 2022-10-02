@@ -40,7 +40,7 @@
 	maxbodytemp = INFINITY
 	gender = MALE
 
-/mob/living/simple_animal/hostile/biohazard_blob/oil_shambler/Initialize()
+/mob/living/simple_animal/hostile/biohazard_blob/oil_shambler/Initialize(mapload)
 	. = ..()
 	update_overlays()
 
@@ -157,7 +157,7 @@
 	minbodytemp = 0
 	maxbodytemp = INFINITY
 
-/mob/living/simple_animal/hostile/biohazard_blob/centaur/Initialize()
+/mob/living/simple_animal/hostile/biohazard_blob/centaur/Initialize(mapload)
 	. = ..()
 	update_overlays()
 

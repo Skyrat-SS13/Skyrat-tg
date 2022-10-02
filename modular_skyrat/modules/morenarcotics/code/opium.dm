@@ -110,26 +110,26 @@
 	var/high_message = pick("You feel euphoric.", "You feel on top of the world.")
 	if(DT_PROB(2.5, delta_time))
 		to_chat(M, span_notice("[high_message]"))
-	SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "smacked out", /datum/mood_event/narcotic_heavy, name)
+	M.add_mood_event("smacked out", /datum/mood_event/narcotic_heavy, name)
 	M.adjustBruteLoss(-0.1 * REM * delta_time, 0) //can be used as a (shitty) painkiller
 	M.adjustFireLoss(-0.1 * REM * delta_time, 0)
-	M.hal_screwyhud = SCREWYHUD_HEALTHY
 	M.overlay_fullscreen("heroin_euphoria", /atom/movable/screen/fullscreen/color_vision/heroin_color)
-	..()
+	return ..()
 
 /datum/reagent/drug/opium/overdose_process(mob/living/M, delta_time, times_fired)
 	M.adjustOrganLoss(ORGAN_SLOT_BRAIN, 0.5 * REM * delta_time)
 	M.adjustToxLoss(1 * REM * delta_time, 0)
 	M.adjust_drowsyness(0.5 * REM * normalise_creation_purity() * delta_time)
-	..()
-	. = TRUE
+	return TRUE
 
-/datum/reagent/drug/opium/on_mob_end_metabolize(mob/living/M)
-	if(iscarbon(M))
-		var/mob/living/carbon/N = M
-		N.hal_screwyhud = SCREWYHUD_NONE
-		N.clear_fullscreen("heroin_euphoria")
-	..()
+/datum/reagent/drug/opium/on_mob_metabolize(mob/living/metabolizer)
+	. = ..()
+	metabolizer.apply_status_effect(/datum/status_effect/grouped/screwy_hud/fake_healthy, type)
+
+/datum/reagent/drug/opium/on_mob_end_metabolize(mob/living/metabolizer)
+	. = ..()
+	metabolizer.remove_status_effect(/datum/status_effect/grouped/screwy_hud/fake_healthy, type)
+	metabolizer.clear_fullscreen("heroin_euphoria")
 
 /datum/reagent/drug/opium/heroin
 	name = "heroin"
@@ -164,9 +164,10 @@
 	var/high_message = pick("You feel like tar.", "The blood in your veins feel like syrup.")
 	if(DT_PROB(2.5, delta_time))
 		to_chat(M, span_notice("[high_message]"))
-	M.set_timed_status_effect(20 SECONDS * REM * delta_time, /datum/status_effect/drugginess)
+
+	M.set_drugginess(20 SECONDS * REM * delta_time)
 	M.adjustToxLoss(0.5 * REM * delta_time, 0) //toxin damage
-	..()
+	return ..()
 
 /datum/reagent/drug/opium/blacktar/liquid //prevents self-duplication by going one step down when mixed
 	name = "liquid black tar heroin"

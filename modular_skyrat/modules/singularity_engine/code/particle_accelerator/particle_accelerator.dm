@@ -50,7 +50,7 @@
 		master = null
 	return ..()
 
-/obj/structure/particle_accelerator/ComponentInitialize()
+/obj/structure/particle_accelerator/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/simple_rotation)
 

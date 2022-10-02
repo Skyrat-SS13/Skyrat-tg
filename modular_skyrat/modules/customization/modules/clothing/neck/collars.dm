@@ -26,7 +26,7 @@
 	/// What treat item spawns inside the collar?
 	var/treat_path = /obj/item/food/cookie
 
-/obj/item/clothing/neck/human_petcollar/Initialize()
+/obj/item/clothing/neck/human_petcollar/Initialize(mapload)
 	. = ..()
 	create_storage(type = /datum/storage/pockets/small/collar)
 	if(treat_path)
@@ -63,7 +63,7 @@
 	/// Is the collar currently locked?
 	var/locked = FALSE
 
-/obj/item/clothing/neck/human_petcollar/locked/Initialize()
+/obj/item/clothing/neck/human_petcollar/locked/Initialize(mapload)
 	. = ..()
 
 	create_storage(type = /datum/storage/pockets/small/collar/locked)

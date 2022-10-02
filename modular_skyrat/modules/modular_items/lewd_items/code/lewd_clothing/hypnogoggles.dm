@@ -21,7 +21,7 @@
 /obj/item/clothing/glasses/hypno/equipped(mob/user, slot)//Adding hypnosis on equip
 	. = ..()
 	victim = user
-	if(slot != ITEM_SLOT_EYES)
+	if(!(slot & ITEM_SLOT_EYES))
 		return
 	if(!(iscarbon(victim) && victim.client?.prefs?.read_preference(/datum/preference/toggle/erp/sex_toy)))
 		return
@@ -56,11 +56,6 @@
 		"pink" = image (icon = src.icon, icon_state = "hypnogoggles_pink"),
 		"teal" = image(icon = src.icon, icon_state = "hypnogoggles_teal"))
 
-//to update model lol
-/obj/item/clothing/glasses/hypno/ComponentInitialize()
-	. = ..()
-	AddElement(/datum/element/update_icon_updates_onmob)
-
 //to change model
 /obj/item/clothing/glasses/hypno/AltClick(mob/user)
 	if(color_changed)
@@ -83,8 +78,9 @@
 		return FALSE
 	return TRUE
 
-/obj/item/clothing/glasses/hypno/Initialize()
+/obj/item/clothing/glasses/hypno/Initialize(mapload)
 	. = ..()
+	AddElement(/datum/element/update_icon_updates_onmob)
 	update_icon_state()
 	update_icon()
 	if(!length(hypnogoggles_designs))

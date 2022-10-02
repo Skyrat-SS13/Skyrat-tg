@@ -75,7 +75,7 @@ GLOBAL_LIST_EMPTY(cargo_marks)
 	build_type = PROTOLATHE | AWAY_LATHE
 	build_path = /obj/item/cargo_teleporter
 	materials = list(/datum/material/iron = 500, /datum/material/plastic = 500, /datum/material/uranium = 500)
-	category = list("Equipment")
+	category = list(RND_CATEGORY_EQUIPMENT)
 	departmental_flags = DEPARTMENT_BITFLAG_CARGO
 
 /datum/techweb_node/cargo_teleporter

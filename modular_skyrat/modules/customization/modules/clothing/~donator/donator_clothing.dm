@@ -67,16 +67,9 @@
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 	var/list/poly_colors = list("#FFFFFF", "#FF8888", "#888888")
 
-/obj/item/clothing/under/dress/skirt/polychromic/ComponentInitialize()
+/obj/item/clothing/under/dress/skirt/polychromic/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/polychromic, poly_colors)
-
-/obj/item/clothing/under/dress/skirt/polychromic/pleated
-	name = "polychromic pleated skirt"
-	desc = "A magnificent pleated skirt complements the woolen polychromatic sweater."
-	icon_state = "polypleat"
-	body_parts_covered = CHEST|GROIN|ARMS
-	poly_colors = list("#88CCFF", "#888888", "#FF3333")
 
 /obj/item/clothing/under/misc/poly_shirt
 	name = "polychromic button-up shirt"
@@ -86,7 +79,7 @@
 	icon_state = "polysuit"
 	supports_variations_flags = NONE
 
-/obj/item/clothing/under/misc/poly_shirt/ComponentInitialize()
+/obj/item/clothing/under/misc/poly_shirt/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/polychromic, list("#FFFFFF", "#333333", "#333333"))
 
@@ -100,7 +93,7 @@
 	body_parts_covered = CHEST|GROIN|ARMS
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/under/misc/polyshorts/ComponentInitialize()
+/obj/item/clothing/under/misc/polyshorts/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/polychromic, list("#333333", "#888888", "#888888"))
 
@@ -113,7 +106,7 @@
 	can_adjust = FALSE
 	supports_variations_flags = NONE
 
-/obj/item/clothing/under/misc/polyjumpsuit/ComponentInitialize()
+/obj/item/clothing/under/misc/polyjumpsuit/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/polychromic, list("#FFFFFF", "#888888", "#333333"))
 
@@ -127,24 +120,9 @@
 	can_adjust = FALSE
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/under/misc/poly_bottomless/ComponentInitialize()
+/obj/item/clothing/under/misc/poly_bottomless/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/polychromic, list("#888888", "#FF3333", "#FFFFFF"))
-
-/obj/item/clothing/under/misc/polysweater
-	name = "polychromic sweater"
-	desc = "Why trade style for comfort? Now you can go commando down south and still be cozy up north, AND do it in whatever color you choose."
-	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
-	icon_state = "poly_turtle"
-	worn_icon_state = "poly_turtle"
-	body_parts_covered = CHEST|GROIN|ARMS //Commando sweater is long but still doesnt have pants
-	can_adjust = FALSE
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
-
-/obj/item/clothing/under/misc/polysweater/ComponentInitialize()
-	. = ..()
-	AddElement(/datum/element/polychromic, list("#FFFFFF"))
 
 /obj/item/clothing/under/misc/poly_tanktop
 	name = "polychromic tank top"
@@ -157,7 +135,7 @@
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 	var/list/poly_colors = list("#888888", "#FFFFFF", "#88CCFF")
 
-/obj/item/clothing/under/misc/poly_tanktop/ComponentInitialize()
+/obj/item/clothing/under/misc/poly_tanktop/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/polychromic, poly_colors)
 
@@ -166,30 +144,6 @@
 	desc = "Great for showing off your chest in style. Not recommended for males."
 	icon_state = "polyfemtankpantsu"
 	poly_colors = list("#888888", "#FF3333", "#FFFFFF")
-
-/obj/item/clothing/under/shorts/polychromic
-	name = "polychromic athletic shorts"
-	desc = "95% Polychrome, 5% Spandex!"
-	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
-	icon_state = "polyshortpants"
-	supports_variations_flags = NONE
-	greyscale_config = null //Temporary measures while Polychrom is gutted.
-	greyscale_config_worn = null
-	greyscale_config_worn_digi = null
-	var/list/poly_colors = list("#FFFFFF", "#FF8888", "#FFFFFF")
-
-/obj/item/clothing/under/shorts/polychromic/ComponentInitialize()
-	. = ..()
-	AddElement(/datum/element/polychromic, poly_colors)
-
-/obj/item/clothing/under/shorts/polychromic/pantsu
-	name = "polychromic panties"
-	desc = "Topless striped panties. Now with 120% more polychrome!"
-	icon_state = "polypantsu"
-	body_parts_covered = GROIN
-	supports_variations_flags = NONE
-	poly_colors = list("#FFFFFF", "#88CCFF", "#FFFFFF")
 
 /**************CKEY EXCLUSIVES*************/
 
@@ -221,8 +175,8 @@
 	desc = "A portable tablet that allows you to draw. Legends say these can earn the owner a fortune in some sectors of space."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
 	icon_state = "drawingtablet"
-	lefthand_file = 'icons/mob/inhands/misc/devices_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/misc/devices_righthand.dmi'
+	lefthand_file = 'icons/mob/inhands/items/devices_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/items/devices_righthand.dmi'
 	inhand_icon_state = "electronic"
 	item_flags = NOBLUDGEON
 	w_class = WEIGHT_CLASS_TINY
@@ -600,7 +554,7 @@
 	/// What treat item spawns inside the collar?
 	var/treat_path = /obj/item/food/cookie
 
-/obj/item/clothing/neck/inferno_collar/Initialize()
+/obj/item/clothing/neck/inferno_collar/Initialize(mapload)
 	. = ..()
 	create_storage(type = /datum/storage/pockets/small/collar)
 	if(treat_path)
@@ -640,7 +594,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/custom_w.dmi'
 	icon_state = "darksheath"
 
-/obj/item/storage/belt/sabre/darksabre/Initialize()
+/obj/item/storage/belt/sabre/darksabre/Initialize(mapload)
 	. = ..()
 	atom_storage.set_holdable(list(
 		/obj/item/toy/darksabre
@@ -674,7 +628,7 @@
 	actions_types = list(/datum/action/item_action/hheart)
 	supports_variations_flags = NONE
 
-/obj/item/clothing/mask/hheart/Initialize()
+/obj/item/clothing/mask/hheart/Initialize(mapload)
 	. = ..()
 	update_icon()
 
@@ -700,7 +654,7 @@
 			index = c_color_index + 1
 		c_color_index = index
 		update_icon()
-		ooser.update_inv_wear_mask()
+		ooser.update_worn_mask()
 		ooser.update_action_buttons_icon()
 		to_chat(ooser, span_notice("You toggle the [src] to [possible_colors[c_color_index]]."))
 
@@ -983,7 +937,7 @@
 	/// The sound played when toggling the shutters.
 	var/shutters_sound = 'sound/effects/clock_tick.ogg'
 
-/obj/item/clothing/glasses/welding/steampunk_goggles/Initialize()
+/obj/item/clothing/glasses/welding/steampunk_goggles/Initialize(mapload)
 	. = ..()
 	visor_toggling()
 
@@ -994,7 +948,7 @@
 
 /obj/item/clothing/glasses/welding/steampunk_goggles/item_action_slot_check(slot, mob/user)
 	. = ..()
-	if(. && slot == ITEM_SLOT_HEAD)
+	if(. && (slot & ITEM_SLOT_HEAD))
 		return FALSE
 
 /obj/item/clothing/glasses/welding/steampunk_goggles/attack_self(mob/user)
@@ -1421,3 +1375,26 @@
 /obj/item/clothing/accessory/hypno_watch/examine()
 	. = ..()
 	. += span_boldwarning("Who knows what it could be used for?")
+
+// Donation reward for BoisterousBeebz
+
+/obj/item/clothing/under/bubbly_clown/skirt
+	name = "bubbly clown dress"
+	desc = "A bright and cheerful clown dress, honk!"
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
+	icon_state = "bubbly_clown_dress"
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
+	body_parts_covered = CHEST|GROIN|ARMS
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+
+// Donation reward for Sweetsoulbrother
+/obj/item/coin/donator/marsoc
+	name = "MARSOC Challenge Coin"
+	desc = "This is a challenge coin given to all MARSOC members upon honorable separation from the Corps. \
+			The coin has the insignia of the Marine Special Operations Command on one side, and the Sol Federation Marine Corps logo on the other. \
+			This one has an engraving on the Marine Corps logo side, etched in a circle around it: \
+			\"To Staff Sargent Henry Rockwell, for his exemplary service to the Special Operations community and his outstanding moral fiber \
+			and shining example to the core values of the Sol Federation Marine Corps.\""
+	icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
+	sideslist = list("MARSOC", "SFMC")

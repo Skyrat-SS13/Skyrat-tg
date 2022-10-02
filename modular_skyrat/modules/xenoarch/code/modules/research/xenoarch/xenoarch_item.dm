@@ -5,7 +5,7 @@
 	///Used to spawn the same relic
 	var/magnified_number
 
-/obj/item/xenoarch/useless_relic/Initialize()
+/obj/item/xenoarch/useless_relic/Initialize(mapload)
 	. = ..()
 	magnified_number = rand(1,8)
 	icon_state = "useless[magnified_number]"
@@ -141,7 +141,7 @@
 	desc = "An animal that is long past its prime. It is possible to recover it. Can be swabbed to recover its original animal's remnant DNA."
 	icon_state = "recover_animal"
 
-/obj/item/xenoarch/broken_item/animal/Initialize()
+/obj/item/xenoarch/broken_item/animal/Initialize(mapload)
 	. = ..()
 	var/pick_celltype = pick(CELL_LINE_TABLE_BEAR,
 							CELL_LINE_TABLE_BLOBBERNAUT,

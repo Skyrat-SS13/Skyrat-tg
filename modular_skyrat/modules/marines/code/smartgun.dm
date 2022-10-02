@@ -35,7 +35,7 @@
 	/// Factions that the gun cannot shoot under any circumstances
 	var/list/iff_factions = list("ert")
 
-/obj/item/gun/ballistic/automatic/smart_machine_gun/ComponentInitialize()
+/obj/item/gun/ballistic/automatic/smart_machine_gun/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/update_icon_updates_onmob)
 

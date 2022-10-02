@@ -6,7 +6,6 @@
 	icon_state = "mutant_head"
 	is_dimorphic = FALSE
 	limb_id = SPECIES_MUTANT
-	uses_mutcolor = TRUE
 	species_color = "#ffffff"
 
 /obj/item/bodypart/chest/mutant_zombie

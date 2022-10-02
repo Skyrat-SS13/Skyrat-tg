@@ -2,7 +2,7 @@
 /obj/singularity
 	name = "gravitational singularity"
 	desc = "A gravitational singularity."
-	icon = 'modular_skyrat/modules/aesthetics/singularity/singularity_s1.dmi' //SKYRAT EDIT CHANGE
+	icon = 'modular_skyrat/modules/aesthetics/singularity/singularity_s1.dmi' //SKYRAT EDIT CHANGE - ORIGINAL: icon = 'icons/obj/engine/singularity.dmi'
 	icon_state = "singularity_s1"
 	anchored = TRUE
 	density = TRUE
@@ -191,7 +191,7 @@
 	switch(temp_allowed_size)
 		if(STAGE_ONE)
 			current_size = STAGE_ONE
-			icon = 'modular_skyrat/modules/aesthetics/singularity/singularity_s1.dmi' //SKYRAT EDIT CHANGE
+			icon = 'modular_skyrat/modules/aesthetics/singularity/singularity_s1.dmi' //SKYRAT EDIT CHANGE - ORIGINAL: icon = 'icons/obj/engine/singularity.dmi'
 			icon_state = "singularity_s1"
 			pixel_x = 0
 			pixel_y = 0
@@ -418,7 +418,7 @@
 		var/mob/living/carbon/human/stunned_human = stunned_mob
 		if(istype(stunned_human.glasses, /obj/item/clothing/glasses/meson))
 			var/obj/item/clothing/glasses/meson/check_meson = stunned_human.glasses
-			if(check_meson.vision_flags == SEE_TURFS)
+			if(check_meson.vision_flags & SEE_TURFS)
 				to_chat(stunned_human, span_notice("You look directly into the [name], good thing you had your protective eyewear on!"))
 				continue
 

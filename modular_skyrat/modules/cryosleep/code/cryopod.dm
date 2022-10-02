@@ -11,6 +11,9 @@ GLOBAL_LIST_EMPTY(cryopod_computers)
 
 GLOBAL_LIST_EMPTY(ghost_records)
 
+/// A list of all cryopods that aren't quiet, to be used by the "Send to Cryogenic Storage" VV action.
+GLOBAL_LIST_EMPTY(valid_cryopods)
+
 //Main cryopod console.
 
 /obj/machinery/computer/cryopod
@@ -154,12 +157,16 @@ GLOBAL_LIST_EMPTY(ghost_records)
 	/// if false, plays announcement on cryo
 	var/quiet = FALSE
 
+	/// Has the occupant been tucked in?
+	var/tucked = FALSE
 
 /obj/machinery/cryopod/quiet
 	quiet = TRUE
 
 /obj/machinery/cryopod/Initialize(mapload)
 	..()
+	if(!quiet)
+		GLOB.valid_cryopods += src
 	return INITIALIZE_HINT_LATELOAD //Gotta populate the cryopod computer GLOB first
 
 /obj/machinery/cryopod/LateInitialize()
@@ -168,6 +175,7 @@ GLOBAL_LIST_EMPTY(ghost_records)
 
 // This is not a good situation
 /obj/machinery/cryopod/Destroy()
+	GLOB.valid_cryopods -= src
 	control_computer_weakref = null
 	return ..()
 
@@ -204,6 +212,7 @@ GLOBAL_LIST_EMPTY(ghost_records)
 	icon_state = "cryopod-open"
 	set_density(TRUE)
 	name = initial(name)
+	tucked = FALSE
 
 /obj/machinery/cryopod/container_resist_act(mob/living/user)
 	visible_message(span_notice("[occupant] emerges from [src]!"),
@@ -388,8 +397,8 @@ GLOBAL_LIST_EMPTY(ghost_records)
 		if (target.getorgan(/obj/item/organ/internal/brain) ) //Target the Brain
 			if(!target.mind || target.ssd_indicator ) // Is the character empty / AI Controlled
 				if(target.lastclienttime + ssd_time >= world.time)
-					to_chat(user, span_notice("You can't put [target] into [src] for another [ssd_time - round(((world.time - target.lastclienttime) / (1 MINUTES)), 1)] minutes."))
-					log_admin("[key_name(user)] has attempted to put [key_name(target)] into a stasis pod, but they were only disconnected for [round(((world.time - target.lastclienttime) / (1 MINUTES)), 1)] minutes..")
+					to_chat(user, span_notice("You can't put [target] into [src] for another [round(((ssd_time - (world.time - target.lastclienttime)) / (1 MINUTES)), 1)] minutes."))
+					log_admin("[key_name(user)] has attempted to put [key_name(target)] into a stasis pod, but they were only disconnected for [round(((world.time - target.lastclienttime) / (1 MINUTES)), 1)] minutes.")
 					message_admins("[key_name(user)] has attempted to put [key_name(target)] into a stasis pod. [ADMIN_JMP(src)]")
 					return
 				else if(tgui_alert(user, "Would you like to place [target] into [src]?", "Place into Cryopod?", list("Yes", "No")) == "Yes")
@@ -452,6 +461,19 @@ GLOBAL_LIST_EMPTY(ghost_records)
 // Attacks/effects.
 /obj/machinery/cryopod/blob_act()
 	return // Sorta gamey, but we don't really want these to be destroyed.
+
+/obj/machinery/cryopod/attackby(obj/item/weapon, mob/living/carbon/human/user, params)
+	. = ..()
+	if(istype(weapon, /obj/item/bedsheet))
+		if(!occupant || !istype(occupant, /mob/living))
+			return
+		if(tucked)
+			to_chat(user, span_warning("[occupant.name] already looks pretty comfortable!"))
+			return
+		to_chat(user, span_notice("You tuck [occupant.name] into their pod!"))
+		qdel(weapon)
+		user.add_mood_event("tucked", /datum/mood_event/tucked_in, occupant)
+		tucked = TRUE
 
 // Wake-up notifications
 

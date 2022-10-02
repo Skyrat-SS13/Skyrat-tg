@@ -425,21 +425,26 @@
 	if(liquid_state >= LIQUID_STATE_ANKLES && T.has_gravity(T))
 		playsound(T, 'modular_skyrat/modules/liquids/sound/effects/splash.ogg', 50, 0)
 		if(iscarbon(M))
-			var/mob/living/carbon/C = M
-			if(C.wear_mask && C.wear_mask.flags_cover & MASKCOVERSMOUTH)
-				to_chat(C, span_userdanger("You fall in the water!"))
+			var/mob/living/carbon/falling_carbon = M
+
+			// No point in giving reagents to the deceased. It can cause some runtimes.
+			if(falling_carbon.stat >= DEAD)
+				return
+
+			if(falling_carbon.wear_mask && falling_carbon.wear_mask.flags_cover & MASKCOVERSMOUTH)
+				to_chat(falling_carbon, span_userdanger("You fall in the water!"))
 			else
 				var/datum/reagents/tempr = take_reagents_flat(CHOKE_REAGENTS_INGEST_ON_FALL_AMOUNT)
-				tempr.trans_to(C, tempr.total_volume, methods = INGEST)
+				tempr.trans_to(falling_carbon, tempr.total_volume, methods = INGEST)
 				qdel(tempr)
-				C.adjustOxyLoss(5)
+				falling_carbon.adjustOxyLoss(5)
 				//C.emote("cough")
-				INVOKE_ASYNC(C, /mob.proc/emote, "cough")
-				to_chat(C, span_userdanger("You fall in and swallow some water!"))
+				INVOKE_ASYNC(falling_carbon, /mob.proc/emote, "cough")
+				to_chat(falling_carbon, span_userdanger("You fall in and swallow some water!"))
 		else
 			to_chat(M, span_userdanger("You fall in the water!"))
 
-/obj/effect/abstract/liquid_turf/Initialize()
+/obj/effect/abstract/liquid_turf/Initialize(mapload)
 	. = ..()
 	if(!SSliquids)
 		CRASH("Liquid Turf created with the liquids sybsystem not yet initialized!")
@@ -596,7 +601,7 @@
 /obj/effect/abstract/liquid_turf/immutable/ocean/warm
 	starting_temp = T20C+20
 
-/obj/effect/abstract/liquid_turf/immutable/Initialize()
+/obj/effect/abstract/liquid_turf/immutable/Initialize(mapload)
 	. = ..()
 	reagent_list = starting_mixture.Copy()
 	total_reagents = 0

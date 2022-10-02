@@ -2,7 +2,7 @@
 	icon = 'modular_skyrat/modules/liquids/icons/obj/flora/ocean_flora.dmi'
 	var/random_variants = 0
 
-/obj/structure/flora/ocean/Initialize()
+/obj/structure/flora/ocean/Initialize(mapload)
 	. = ..()
 	if(random_variants)
 		icon_state = "[icon_state][rand(1,random_variants)]"
@@ -50,7 +50,7 @@
 	var/random_variants = 3
 	var/welds_remaining = 0
 
-/obj/structure/flora/scrap/Initialize()
+/obj/structure/flora/scrap/Initialize(mapload)
 	. = ..()
 	welds_remaining = rand(SCRAP_WELD_LOW, SCRAP_WELD_HIGH)
 	if(random_variants)

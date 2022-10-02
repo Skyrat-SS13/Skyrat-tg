@@ -75,7 +75,7 @@
 /datum/sprite_accessory/tails/monkey/default
 	name = "Monkey"
 	icon_state = "monkey"
-	icon = 'icons/mob/mutant_bodyparts.dmi'
+	icon = 'icons/mob/species/mutant_bodyparts.dmi'
 	recommended_species = list(SPECIES_HUMAN, SPECIES_SYNTHHUMAN, SPECIES_FELINE, SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_MONKEY, SPECIES_GHOUL)
 	color_src = FALSE
 	organ_type = /obj/item/organ/external/tail/monkey
@@ -167,6 +167,10 @@
 	name = "Bee"
 	icon_state = "bee"
 
+/datum/sprite_accessory/tails/mammal/wagging/queenbee
+	name = "Queen Bee"
+	icon_state = "queenbee"
+
 /datum/sprite_accessory/tails/mammal/wagging/tajaran/cat_big
 	name = "Cat (Big)"
 	icon_state = "catbig"
@@ -198,6 +202,12 @@
 	name = "Deer"
 	icon_state = "deer"
 	general_type = "deer"
+
+/datum/sprite_accessory/tails/mammal/wagging/deer_two
+	name = "Deer II"
+	icon_state = "deer_two"
+	general_type = "deer"
+	color_src = USE_ONE_COLOR
 
 /datum/sprite_accessory/tails/mammal/wagging/eevee
 	name = "Eevee"
@@ -255,6 +265,10 @@
 	name = "Insect"
 	icon_state = "insect"
 
+/datum/sprite_accessory/tails/mammal/wagging/queeninsect
+	name = "Queen Insect"
+	icon_state = "queeninsect"
+
 /datum/sprite_accessory/tails/mammal/wagging/kangaroo
 	name = "Kangaroo"
 	icon_state = "kangaroo"
@@ -300,6 +314,10 @@
 /datum/sprite_accessory/tails/mammal/wagging/murid
 	name = "Murid"
 	icon_state = "murid"
+
+/datum/sprite_accessory/tails/mammal/wagging/murid_two
+	name = "Murid II"
+	icon_state = "murid_two"
 
 /datum/sprite_accessory/tails/mammal/wagging/orca
 	name = "Orca"

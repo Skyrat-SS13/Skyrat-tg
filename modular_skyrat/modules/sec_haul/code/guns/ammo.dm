@@ -122,7 +122,7 @@
 	build_type = PROTOLATHE
 	materials = list(/datum/material/silver = 10000, /datum/material/gold = 10000, /datum/material/glass = 10000)
 	build_path = /obj/item/ammo_box/advanced/smartgun
-	category = list("Ammo")
+	category = list(RND_CATEGORY_AMMO)
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 
 /obj/item/ammo_box/advanced/smartgun
@@ -146,7 +146,7 @@
 	var/base_name = ""
 	var/list/possible_types = list(AMMO_TYPE_LETHAL, AMMO_TYPE_HOLLOWPOINT, AMMO_TYPE_RUBBER, AMMO_TYPE_IHDF)
 
-/obj/item/ammo_box/magazine/multi_sprite/Initialize()
+/obj/item/ammo_box/magazine/multi_sprite/Initialize(mapload)
 	. = ..()
 	base_name = name
 	name = "[base_name] [round_type]"

@@ -5,7 +5,7 @@
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = 3000, /datum/material/plasma = 2000, /datum/material/diamond = 1000)
 	build_path = /obj/item/bodybag/stasis
-	category = list("Medical Designs")
+	category = list(RND_CATEGORY_MEDICAL_DESIGNS)
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL | DEPARTMENT_BITFLAG_SCIENCE
 
 /datum/design/board/stasissleeper
@@ -13,5 +13,5 @@
 	desc = "The circuit board for a Stasis Unit"
 	id = "stasissleeper"
 	build_path = /obj/item/circuitboard/machine/stasissleeper
-	category = list("Machine Designs")
+	category = list(RND_CATEGORY_MEDICAL_DESIGNS)
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL

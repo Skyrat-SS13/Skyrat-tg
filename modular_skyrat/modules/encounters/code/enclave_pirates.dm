@@ -1,6 +1,6 @@
-#define NRI_COOLDOWN_HEAL 15 SECONDS
-#define NRI_COOLDOWN_RADS 30 SECONDS
-#define NRI_COOLDOWN_ACID 30 SECONDS
+#define NRI_COOLDOWN_HEAL 30 SECONDS
+#define NRI_COOLDOWN_RADS 45 SECONDS
+#define NRI_COOLDOWN_ACID 45 SECONDS
 
 #define NRI_HEAL_AMOUNT 5
 #define NRI_BLOOD_REPLENISHMENT 10
@@ -11,11 +11,11 @@
 	head = /obj/item/clothing/head/beret/sec/nri
 	glasses = /obj/item/clothing/glasses/sunglasses
 	ears = /obj/item/radio/headset/guild/command
-	mask = /obj/item/clothing/mask/gas/hecu2
+	mask = null
 
 	uniform = /obj/item/clothing/under/costume/nri/captain
-	suit = /obj/item/clothing/suit/space/hev_suit/nri/captain/pirate
-	suit_store = /obj/item/gun/ballistic/automatic/plastikov/nri
+	suit = /obj/item/clothing/suit/armor/vest
+	suit_store = /obj/item/gun/ballistic/automatic/plastikov/nri_pirate
 
 	gloves = /obj/item/clothing/gloves/combat
 
@@ -23,7 +23,7 @@
 
 	belt = /obj/item/storage/belt/military/nri/captain/pirate_officer
 	back = /obj/item/storage/backpack/duffelbag/syndie/nri/captain
-	backpack_contents = list(/obj/item/storage/box/nri_survival_pack = 1, /obj/item/ammo_box/magazine/automag = 3, /obj/item/clothing/head/helmet/space/hev_suit/nri/captain = 1, /obj/item/gun/ballistic/automatic/pistol/automag = 1, /obj/item/crucifix = 1, /obj/item/device/traitor_announcer = 1)
+	backpack_contents = list(/obj/item/storage/box/nri_survival_pack = 1, /obj/item/ammo_box/magazine/automag = 3, /obj/item/gun/ballistic/automatic/pistol/automag = 1, /obj/item/crucifix = 1, /obj/item/device/traitor_announcer = 1, /obj/item/clothing/mask/gas/hecu2 = 1, /obj/item/modular_computer/tablet/pda/security = 1)
 	l_pocket = /obj/item/paper/fluff/nri_document
 	r_pocket = /obj/item/storage/bag/ammo
 
@@ -39,14 +39,14 @@
 /datum/outfit/pirate/enclave_trooper
 	name = "Imperial Enclave Trooper"
 
-	head = /obj/item/clothing/head/helmet/rus_helmet
+	head = null
 	glasses = /obj/item/clothing/glasses/sunglasses
 	ears = /obj/item/radio/headset/guild
-	mask = /obj/item/clothing/mask/gas/hecu2
+	mask = null
 
 	uniform = /obj/item/clothing/under/costume/nri
-	suit = /obj/item/clothing/suit/armor/vest/russian
-	suit_store = /obj/item/gun/ballistic/automatic/plastikov/nri
+	suit = /obj/item/clothing/suit/armor/vest
+	suit_store = /obj/item/gun/ballistic/automatic/plastikov/nri_pirate
 
 	gloves = /obj/item/clothing/gloves/combat
 
@@ -54,7 +54,7 @@
 
 	belt = /obj/item/storage/belt/military/nri/pirate
 	back = /obj/item/storage/backpack/duffelbag/syndie/nri
-	backpack_contents = list(/obj/item/storage/box/nri_survival_pack = 1, /obj/item/crucifix = 1, /obj/item/ammo_box/magazine/m9mm_aps = 3)
+	backpack_contents = list(/obj/item/storage/box/nri_survival_pack = 1, /obj/item/crucifix = 1, /obj/item/ammo_box/magazine/m9mm_aps = 3, /obj/item/clothing/mask/gas/hecu2 = 1, /obj/item/modular_computer/tablet/pda/security = 1)
 	l_pocket = /obj/item/gun/ballistic/automatic/pistol/ladon/nri
 	r_pocket = /obj/item/storage/bag/ammo
 
@@ -81,11 +81,12 @@
 	rank = "NRI Marine"
 	you_are_text = "You are a Novaya Rossiyskaya Imperiya task force."
 	flavour_text = "The station has refused to pay the fine for breaking Imperial regulations, you are here to recover the debt. Do so by demanding the funds. Force approach is usually recommended, but isn't the only method."
-	important_text = "Allowed races are humans, felinids, Akulas, IPCs. Follow your field officer's orders."
+	important_text = "Allowed races are humans, Akulas, IPCs. Follow your field officer's orders."
 	spawner_job_path = /datum/job/space_pirate
 	restricted_species = list(/datum/species/human, /datum/species/akula, /datum/species/robotic/ipc)
 	spawn_oldpod = FALSE
 	random_appearance = FALSE
+	show_flavor = TRUE
 
 /obj/effect/mob_spawn/ghost_role/human/pirate/enclave/special(mob/living/carbon/human/spawned_human)
 	. = ..()
@@ -98,15 +99,15 @@
 
 
 /obj/effect/mob_spawn/ghost_role/human/pirate/enclave/generate_pirate_name(spawn_gender)
-	var/first_name = pick(GLOB.commando_names)
-	return "[rank] [first_name]"
+	var/last_name = pick(GLOB.last_names)
+	return "[rank] [last_name]"
 
 /obj/effect/mob_spawn/ghost_role/human/pirate/enclave/captain
 	name = "NRI Officer sleeper"
 	mob_name = "Novaya Rossiyskaya Imperiya raiding party's field officer"
 	outfit = /datum/outfit/pirate/enclave_officer
 	rank = "Field Officer"
-	important_text = "Allowed races are humans, felinids, Akulas, IPCs. There is an important document in your pocket I'd advise you to read - do NOT dispose of it by throwing it into space, burning it, or otherwise destroying it or making it unreadable afterwards. I'd also advise putting it in your locker or keeping it by yourself, but if you do have better ideas do whatever."
+	important_text = "Allowed races are humans, Akulas, IPCs. There is an important document in your pocket I'd advise you to read - do NOT dispose of it by throwing it into space, burning it, or otherwise destroying it or making it unreadable afterwards. I'd also advise putting it in your locker or keeping it by yourself, but if you do have better ideas do whatever."
 
 /obj/effect/mob_spawn/ghost_role/human/pirate/enclave/captain/special(mob/living/carbon/human/spawned_human)
 	. = ..()
@@ -125,7 +126,7 @@
 
 /obj/item/gun/ballistic/automatic/pistol/automag
 	name = "\improper Automag"
-	desc = "A .44 AMP handgun with a seek metallic finish."
+	desc = "A .44 AMP handgun with a sleek metallic finish."
 	icon_state = "automag"
 	icon = 'modular_skyrat/modules/sec_haul/icons/guns/automag.dmi'
 	w_class = WEIGHT_CLASS_NORMAL
@@ -173,24 +174,6 @@
 		/obj/item/grenade/frag = 1,
 	),src)
 
-/obj/item/clothing/suit/space/hev_suit/nri/pirate
-	cell = /obj/item/stock_parts/cell/super
-	radio_channel = RADIO_CHANNEL_GUILD
-	heal_amount = NRI_HEAL_AMOUNT
-	blood_replenishment = NRI_BLOOD_REPLENISHMENT
-	health_static_cooldown = NRI_COOLDOWN_HEAL
-	rads_static_cooldown = NRI_COOLDOWN_RADS
-	acid_static_cooldown = NRI_COOLDOWN_ACID
-
-/obj/item/clothing/suit/space/hev_suit/nri/captain/pirate
-	cell = /obj/item/stock_parts/cell/super
-	radio_channel = RADIO_CHANNEL_GUILD
-	heal_amount = NRI_HEAL_AMOUNT
-	blood_replenishment = NRI_BLOOD_REPLENISHMENT
-	health_static_cooldown = NRI_COOLDOWN_HEAL
-	rads_static_cooldown = NRI_COOLDOWN_RADS
-	acid_static_cooldown = NRI_COOLDOWN_ACID
-
 /obj/item/paper/fluff/nri_document
 	name = "NRI Mission Specifications"
 	default_raw_text = {"On behalf of Novaya Rossiyskaya Imperiya Defense and Economical Collegias by the order of the Admiral Voronov Platon Aleksandrovich and the Active Privy Councillor Radich Katarina Dinovich:
@@ -202,6 +185,12 @@
 	<br>
 	<br> Signed by We,
 	<br> <span style=\"color:black;font-family:'Segoe Script';\"><p><b>Voronov Platon Aleksandrovich and Radich Katarina Dinovich.</b></p></span>"}
+
+/obj/machinery/suit_storage_unit/nri
+	mod_type = /obj/item/mod/control/pre_equipped/frontline/pirate
+	storage_type = /obj/item/tank/internals/oxygen/yellow
+
+/obj/machinery/suit_storage_unit/nri/captain
 
 #undef NRI_COOLDOWN_HEAL
 #undef NRI_COOLDOWN_RADS

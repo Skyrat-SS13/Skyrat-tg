@@ -12,7 +12,7 @@
 	worn_icon_state = "mailbelt"
 	equip_sound = 'sound/items/equip/toolbelt_equip.ogg'
 
-/obj/item/storage/belt/mailbelt/Initialize()
+/obj/item/storage/belt/mailbelt/Initialize(mapload)
 	. = ..()
 	atom_storage.max_slots = 14
 	atom_storage.numerical_stacking = TRUE

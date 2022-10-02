@@ -36,6 +36,10 @@
 /// Kudzu spread multiplier is a reciporal function of production speed, such that the better the production speed, ie. the lower the speed value is, the faster it spreads
 #define SPREAD_MULTIPLIER_MAX 50
 
+/// Kudzu's maximum possible maximum mutation severity (assuming ideal potency), used to balance mutation appearance chance
+#define IDEAL_MAX_SEVERITY 20
+
+
 /datum/round_event_control/spacevine
 	name = "Space Vines"
 	typepath = /datum/round_event/spacevine
@@ -735,10 +739,6 @@
 		return
 	for(var/datum/spacevine_mutation/mutation in mutations)
 		mutation.on_cross(src, moving_atom)
-	// Venus Human Traps will heal for 5 percent of their max health
-	if(istype(moving_atom, /mob/living/simple_animal/hostile/venus_human_trap))
-		var/mob/living/simple_animal/hostile/venus_human_trap/healing_trap = moving_atom
-		healing_trap.adjustHealth(-(healing_trap.maxHealth * 0.05))
 
 // ATTACK HAND IGNORING PARENT RETURN VALUE
 /obj/structure/spacevine/attack_hand(mob/user, list/modifiers)
@@ -767,7 +767,7 @@
 	/// The actual cap to how quickly it spreads.
 	var/spread_cap = 30
 	/// A referenced list to all of the current mutations the vine has!
-	var/list/vine_mutations_list
+	var/list/static/vine_mutations_list
 	/// How likely it is to mutate!
 	var/mutativeness = 1
 
@@ -779,8 +779,9 @@
 	if (event)
 		event.announce_to_ghosts(spawned_vine)
 	START_PROCESSING(SSobj, src)
-	vine_mutations_list = list()
-	init_subtypes(/datum/spacevine_mutation/, vine_mutations_list)
+	if(!vine_mutations_list)
+		vine_mutations_list = list()
+		init_subtypes(/datum/spacevine_mutation/, vine_mutations_list)
 	if(potency != null)
 		mutativeness = potency / 10
 	if(production != null && production <= 10) // Prevents runtime in case production is set to 11.
@@ -986,3 +987,4 @@
 #undef SEVERITY_AVERAGE
 #undef SEVERITY_ABOVE_AVERAGE
 #undef SEVERITY_MAJOR
+#undef IDEAL_MAX_SEVERITY

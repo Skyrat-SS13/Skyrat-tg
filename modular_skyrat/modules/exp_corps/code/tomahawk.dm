@@ -19,6 +19,6 @@
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	sharpness = SHARP_EDGED
 
-/obj/item/melee/tomahawk/Initialize()
+/obj/item/melee/tomahawk/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/butchering, 70, 100)

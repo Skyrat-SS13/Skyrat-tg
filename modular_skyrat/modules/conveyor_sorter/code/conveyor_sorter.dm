@@ -131,7 +131,7 @@
 	build_type = PROTOLATHE | AWAY_LATHE
 	build_path = /obj/item/conveyor_sorter
 	materials = list(/datum/material/iron = 500, /datum/material/plastic = 500)
-	category = list("Equipment")
+	category = list(RND_CATEGORY_EQUIPMENT)
 	departmental_flags = DEPARTMENT_BITFLAG_CARGO
 
 /datum/techweb_node/conveyor_sorter

@@ -1,7 +1,7 @@
 /obj/item/storage/toolbox
 	name = "toolbox"
 	desc = "Danger. Very robust."
-	icon = 'icons/obj/storage.dmi'
+	icon = 'icons/obj/storage/storage.dmi'
 	icon_state = "toolbox_default"
 	inhand_icon_state = "toolbox_default"
 	lefthand_file = 'icons/mob/inhands/equipment/toolbox_lefthand.dmi'
@@ -38,7 +38,7 @@
 	if(has_latches)
 		. += latches
 
-/obj/item/storage/toolbox/Initialize()
+/obj/item/storage/toolbox/Initialize(mapload)
 	. = ..()
 	atom_storage.max_specific_storage = WEIGHT_CLASS_NORMAL
 
@@ -67,7 +67,6 @@
 
 /obj/item/storage/toolbox/emergency/old
 	name = "rusty red toolbox"
-	icon = 'icons/obj/storage.dmi'
 	icon_state = "toolbox_red_old"
 	has_latches = FALSE
 	material_flags = NONE
@@ -90,7 +89,6 @@
 
 /obj/item/storage/toolbox/mechanical/old
 	name = "rusty blue toolbox"
-	icon = 'icons/obj/storage.dmi'
 	icon_state = "toolbox_blue_old"
 	has_latches = FALSE
 	has_soul = TRUE
@@ -101,7 +99,7 @@
 	force = 5
 	w_class = WEIGHT_CLASS_NORMAL
 
-/obj/item/storage/toolbox/mechanical/old/heirloom/Initialize()
+/obj/item/storage/toolbox/mechanical/old/heirloom/Initialize(mapload)
 	. = ..()
 	atom_storage.max_specific_storage = WEIGHT_CLASS_SMALL
 
@@ -170,7 +168,7 @@
 	special_desc_requirement = EXAMINE_CHECK_SYNDICATE // Skyrat edit
 	special_desc = "A toolbox manufactured by the Syndicate containing extra tactical tools. Made of more robust materials than the average toolbox." // Skyrat edit
 
-/obj/item/storage/toolbox/syndicate/Initialize()
+/obj/item/storage/toolbox/syndicate/Initialize(mapload)
 	. = ..()
 	atom_storage.silent = TRUE
 
@@ -207,7 +205,7 @@
 	w_class = WEIGHT_CLASS_GIGANTIC //Holds more than a regular toolbox!
 	material_flags = NONE
 
-/obj/item/storage/toolbox/artistic/Initialize()
+/obj/item/storage/toolbox/artistic/Initialize(mapload)
 	. = ..()
 	atom_storage.max_total_storage = 20
 	atom_storage.max_slots = 10
@@ -226,7 +224,6 @@
 
 /obj/item/storage/toolbox/ammo
 	name = "ammo box"
-	icon = 'icons/obj/storage.dmi'
 	desc = "It contains a few clips."
 	icon_state = "ammobox"
 	inhand_icon_state = "ammobox"
@@ -247,7 +244,6 @@
 
 /obj/item/storage/toolbox/maint_kit
 	name = "gun maintenance kit"
-	icon = 'icons/obj/storage.dmi'
 	desc = "It contains some gun maintenance supplies"
 	icon_state = "maint_kit"
 	inhand_icon_state = "ammobox"
@@ -262,7 +258,6 @@
 
 /obj/item/storage/toolbox/infiltrator
 	name = "insidious case"
-	icon = 'icons/obj/storage.dmi'
 	desc = "Bearing the emblem of the Syndicate, this case contains a full infiltrator stealth suit, and has enough room to fit weaponry if necessary."
 	icon_state = "infiltrator_case"
 	inhand_icon_state = "infiltrator_case"
@@ -273,7 +268,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	has_latches = FALSE
 
-/obj/item/storage/toolbox/infiltrator/Initialize()
+/obj/item/storage/toolbox/infiltrator/Initialize(mapload)
 	. = ..()
 	atom_storage.max_slots = 10
 	atom_storage.max_specific_storage = WEIGHT_CLASS_NORMAL
@@ -340,6 +335,3 @@
 /obj/item/storage/toolbox/haunted
 	name = "old toolbox"
 	custom_materials = list(/datum/material/hauntium = 500)
-
-
-

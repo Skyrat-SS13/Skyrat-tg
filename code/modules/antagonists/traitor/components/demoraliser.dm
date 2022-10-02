@@ -44,18 +44,23 @@
 	// If you're not conscious you're too busy or dead to look at propaganda
 	if (viewer.stat != CONSCIOUS)
 		return
+	if(viewer.is_blind())
+		return
 	if (!should_demoralise(viewer))
 		return
+	if(!viewer.can_read(host, moods.reading_requirements, TRUE)) //if it's a text based demoralization datum, make sure the mob has the capability to read. if it's only an image, make sure it's just bright enough for them to see it.
+		return
+
 
 	if (is_special_character(viewer))
 		to_chat(viewer, span_notice("[moods.antag_notification]"))
-		SEND_SIGNAL(viewer, COMSIG_ADD_MOOD_EVENT, moods.mood_category, moods.antag_mood)
+		viewer.add_mood_event(moods.mood_category, moods.antag_mood)
 	else if (viewer.mind.assigned_role.departments_bitflags & (DEPARTMENT_BITFLAG_SECURITY|DEPARTMENT_BITFLAG_COMMAND))
 		to_chat(viewer, span_notice("[moods.authority_notification]"))
-		SEND_SIGNAL(viewer, COMSIG_ADD_MOOD_EVENT, moods.mood_category, moods.authority_mood)
+		viewer.add_mood_event(moods.mood_category, moods.authority_mood)
 	else
 		to_chat(viewer, span_notice("[moods.crew_notification]"))
-		SEND_SIGNAL(viewer, COMSIG_ADD_MOOD_EVENT, moods.mood_category, moods.crew_mood)
+		viewer.add_mood_event(moods.mood_category, moods.crew_mood)
 
 	SEND_SIGNAL(host, COMSIG_DEMORALISING_EVENT, viewer.mind)
 
@@ -66,11 +71,10 @@
  * * viewer - Whoever just saw the parent.
  */
 /datum/proximity_monitor/advanced/demoraliser/proc/should_demoralise(mob/living/viewer)
-	var/datum/component/mood/mood = viewer.GetComponent(/datum/component/mood)
-	if (!mood)
+	if (!viewer.mob_mood)
 		return FALSE
 
-	return !mood.has_mood_of_category(moods.mood_category)
+	return !viewer.mob_mood.has_mood_of_category(moods.mood_category)
 
 /// Mood application categories for this objective
 /// Used to reduce duplicate code for applying moods to players based on their state
@@ -87,6 +91,8 @@
 	var/datum/mood_event/crew_mood
 	/// Text to display to a head of staff upon receiving this mood
 	var/authority_notification
+	/// For literacy checks
+	var/reading_requirements = READING_CHECK_LIGHT
 	/// Mood datum to apply to a head of staff or security
 	var/datum/mood_event/authority_mood
 
@@ -98,6 +104,7 @@
 	crew_mood = /datum/mood_event/traitor_poster_crew
 	authority_notification = "Hey! Who put up that poster?"
 	authority_mood = /datum/mood_event/traitor_poster_auth
+	reading_requirements = (READING_CHECK_LITERACY | READING_CHECK_LIGHT)
 
 /datum/mood_event/traitor_poster_antag
 	description = "I am doing the right thing."
