@@ -5,10 +5,10 @@
 	icon_state = "sleeper_s"
 	outfit = /datum/outfit/science_team
 	you_are_text = "You are a scientist in a top secret government facility. You blacked out. Now, you have woken up to the horrors that lay within."
-	flavour_text = "You are a scientist in a top secret government facility. You blacked out. Now, you have woken up to the horrors that lay within."
+	flavour_text = "You are a scientist near the Ground Zero of a top secret government facility. You blacked out. Now, you have woken up to the horrors that lay within."
 	important_text = "Do not try to explore the level unless Vanguard is already present and close to you, and even then, wait at least 20 minutes before leaving your area. \
-					Allowed races are humans and IPCs."
-	restricted_species = list(/datum/species/human, /datum/species/robotic/ipc)
+					Allowed races are humans."
+	restricted_species = list(/datum/species/human)
 	random_appearance = FALSE
 
 /obj/effect/mob_spawn/ghost_role/human/black_mesa/special(mob/living/carbon/human/spawned_human)
@@ -21,7 +21,9 @@
 	suit = /obj/item/clothing/suit/toggle/labcoat
 	shoes = /obj/item/clothing/shoes/laceup
 	back = /obj/item/storage/backpack
-	backpack_contents = list(/obj/item/radio, /obj/item/reagent_containers/cup/beaker)
+	backpack_contents = list(/obj/item/radio,
+							/obj/item/reagent_containers/cup/beaker,
+	)
 	id = /obj/item/card/id
 	id_trim = /datum/id_trim/science_team
 
@@ -57,7 +59,8 @@
 	backpack_contents = list(/obj/item/radio,
 							/obj/item/gun/ballistic/automatic/pistol/g17/mesa,
 							/obj/item/ammo_box/magazine/multi_sprite/ladon,
-							/obj/item/ammo_box/magazine/multi_sprite/ladon,)
+							/obj/item/ammo_box/magazine/multi_sprite/ladon,
+	)
 	id = /obj/item/card/id
 	id_trim = /datum/id_trim/security_guard
 
@@ -79,8 +82,8 @@
 	You haven't heard much from the north-west post, except for the sounds of gunshots, and their radios went silent. \
 	On top of that, your escape helicopter was shot down mid-flight, and another one won't arrive so soon; \
 	with your machinegunner being shot down with a precise headshot by something, or SOMEONE. You are likely on your own, at least for now."
-	important_text = "Do not try to explore the level unless Vanguard is dead or cooperative. Stay around your area. Allowed races are humans and IPCs."
-	restricted_species = list(/datum/species/human, /datum/species/robotic/ipc)
+	important_text = "Do not try to explore the level unless Vanguard is dead or cooperative. Stay around your area. Allowed races are humans."
+	restricted_species = list(/datum/species/human)
 
 /obj/effect/mob_spawn/ghost_role/human/black_mesa/hecu/special(mob/living/carbon/human/spawned_human)
 	. = ..()
@@ -146,9 +149,9 @@
 	r_pocket = /obj/item/flashlight/flare
 	back = /obj/item/storage/backpack/ert/odst/hecu
 	backpack_contents = list(
-		/obj/item/storage/box/survival/radio,
-		/obj/item/storage/medkit/emergency,
-		/obj/item/armament_points_card/hecu,
+							/obj/item/storage/box/survival/radio,
+							/obj/item/storage/medkit/emergency,
+							/obj/item/armament_points_card/hecu,
 	)
 	id = /obj/item/card/id
 	id_trim = /datum/id_trim/hecu
@@ -174,8 +177,8 @@
 	On top of that, your escape helicopter was shot down mid-flight, and another one won't arrive so soon; \
 	with your machinegunner being shot down with a precise headshot by something, or SOMEONE. You are likely on your own, at least for now."
 	important_text = "Keep and sustain marines' morale and discipline. Delegate responsibilities at the best of your abilities. \
-	Do not try to explore the level unless Vanguard is dead or cooperative. Stay around your area. Allowed races are humans and IPCs."
-	restricted_species = list(/datum/species/human, /datum/species/robotic/ipc)
+	Do not try to explore the level unless Vanguard is dead or cooperative. Stay around your area. Allowed races are humans."
+	restricted_species = list(/datum/species/human)
 
 /obj/effect/mob_spawn/ghost_role/human/black_mesa/hecu/leader/special(mob/living/carbon/human/spawned_human)
 	. = ..()
@@ -196,11 +199,11 @@
 	r_pocket = /obj/item/binoculars
 	back = /obj/item/storage/backpack/ert/odst/hecu
 	backpack_contents = list(
-		/obj/item/storage/box/survival/radio,
-		/obj/item/storage/medkit/emergency,
-		/obj/item/armament_points_card/hecu,
-		/obj/item/book/granter/martial/cqc,
-		/obj/item/grenade/smokebomb,
+							/obj/item/storage/box/survival/radio,
+							/obj/item/storage/medkit/emergency,
+							/obj/item/armament_points_card/hecu,
+							/obj/item/book/granter/martial/cqc,
+							/obj/item/grenade/smokebomb,
 	)
 	id = /obj/item/card/id
 	id_trim = /datum/id_trim/hecu_leader
