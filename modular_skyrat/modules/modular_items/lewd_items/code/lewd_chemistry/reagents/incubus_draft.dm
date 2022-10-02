@@ -197,3 +197,4 @@
 	results = list(/datum/reagent/drug/aphrodisiac/incubus_draft = 8)
 	required_reagents = list(/datum/reagent/blood = 5, /datum/reagent/medicine/c2/synthflesh = 2, /datum/reagent/carbon = 2, /datum/reagent/drug/aphrodisiac/crocin = 2, /datum/reagent/medicine/salglu_solution = 1)
 	mix_message = "the reaction gives off a mist of milk."
+	erp_reaction = TRUE

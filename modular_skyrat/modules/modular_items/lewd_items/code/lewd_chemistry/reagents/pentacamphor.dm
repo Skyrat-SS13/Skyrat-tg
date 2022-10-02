@@ -34,3 +34,4 @@
 	required_reagents = list(/datum/reagent/drug/aphrodisiac/camphor = 5, /datum/reagent/acetone = 1)
 	required_temp = 500
 	mix_message = "The mixture thickens and heats up slighty..."
+	erp_reaction = TRUE

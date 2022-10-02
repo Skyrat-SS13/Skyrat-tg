@@ -50,5 +50,6 @@
 	required_reagents = list(/datum/reagent/drug/aphrodisiac/crocin = 6, /datum/reagent/phenol = 1)
 	required_temp = 600
 	mix_message = "The mixture rapidly condenses and darkens in color..."
+	erp_reaction = TRUE
 
 #undef OD_CHANCE_NO_TRAUMA

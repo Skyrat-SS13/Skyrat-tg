@@ -91,3 +91,4 @@
 	required_reagents = list(/datum/reagent/carbon = 2, /datum/reagent/hydrogen = 2, /datum/reagent/oxygen = 2, /datum/reagent/sulfur = 1)
 	required_temp = 400
 	mix_message = "The mixture boils off a yellow, smelly vapor..."
+	erp_reaction = TRUE
