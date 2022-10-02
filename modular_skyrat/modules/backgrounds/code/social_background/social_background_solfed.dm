@@ -10,7 +10,7 @@
 	territories habitats, and celestial bodies. However, it is large, cumbersome, divided and slow to respond to issues due to \
 	its massive bureaucracy and the distance between worlds. Through its member states, the SolFed governs as one of the \
 	most advanced and powerful civilisations in the known galaxy."
-	features = list(/datum/cultural_feature/average)
+	features = list(/datum/background_feature/average)
 	groups = CULTURE_SOL
 	passport = /obj/item/passport/sol
 

@@ -9,7 +9,7 @@
 	some people might still be suffering from the outcomes of that. Solar co-workers might not be too friendly towards you."
 	passport = /obj/item/passport/nri
 	economic_power = 0.8
-	features = list(/datum/cultural_feature/average)
+	features = list(/datum/background_feature/average)
 	groups = CULTURE_NRI
 
 /datum/background_info/social_background/nri/first_class
@@ -23,7 +23,7 @@
 	<br><br>\
 	People of such class are usually snobic and/or highly professional, with a high value for their country, -at the very least for show, \
 	so as to keep their high class-, or, if the status was earned for their own gain, for themselves."
-	features = list(/datum/cultural_feature/good)
+	features = list(/datum/background_feature/good)
 	economic_power = 1.1
 
 /datum/background_info/social_background/nri/second_class
@@ -46,5 +46,5 @@
 	This level of citizenships is also commonly given to non-human, -Teshari, -Akulan or -synthetic citizens. Certain felinids are also seen as the common owners of such citizenship.\
 	<br><br>\
 	With your life not being as good as you'd expect, and with a very thin chance of acquiring better living conditions, you're not on best terms with the government that forced you in this conditions, and even though you still value what's important about it, certainly it wouldn't be the place you'd want to fight and die for."
-	features = list(/datum/cultural_feature/poor)
+	features = list(/datum/background_feature/poor)
 	economic_power = 0.7

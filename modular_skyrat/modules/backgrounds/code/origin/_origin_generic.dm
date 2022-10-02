@@ -4,7 +4,7 @@
 	their positronic processor deleted itself rather than face up to the task. \
 	You are from nowhere in particular - a backwater world, or somewhere off the starmaps."
 	economic_power = 0.8
-	features = list(/datum/cultural_feature/poor)
+	features = list(/datum/background_feature/poor)
 
 /datum/background_info/origin/generic/stateless
 	name = "Stateless"

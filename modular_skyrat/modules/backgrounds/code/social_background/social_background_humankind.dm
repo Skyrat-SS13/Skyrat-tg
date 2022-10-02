@@ -1,7 +1,7 @@
 /datum/background_info/social_background/humankind
 	name = "SolFed-Subsidized Faction"
 	description = "Your faction was subsidized by SolFed to expand into Sector 13."
-	features = list(/datum/cultural_feature/average)
+	features = list(/datum/background_feature/average)
 	groups = CULTURE_GROUP_HUMAN
 	passport = /obj/item/passport/sol/generic
 
@@ -14,7 +14,7 @@
 	Gateway installations and planets. Somewhat unscrupulous, FTU stations and merchants are known for \
 	selling a great many restricted items and supplying all manner of goods indiscriminately."
 	economic_power = 1.3
-	features = list(/datum/cultural_feature/good)
+	features = list(/datum/background_feature/good)
 	groups = CULTURE_GROUP_HUMAN
 	passport = /obj/item/passport/ftu
 
@@ -28,7 +28,7 @@
 	While not military, it was modelled in a naval style, with employees having ranks and uniforms. \
 	Any SolFed citizen of age (18 and older) with no outstanding SolFed-wide warrants can sign up for a 2-year contract. \
 	Officer candidates are required to have at least a bachelor's degree in a relevant field (astrogation, engineering, xenoarcheology, etc)."
-	features = list(/datum/cultural_feature/average)
+	features = list(/datum/background_feature/average)
 	groups = CULTURE_GROUP_HUMAN
 	passport = /obj/item/passport/sol/generic
 
@@ -39,7 +39,7 @@
 	fisher of space faring animals such as space carp and pike. They recently gained media presence by discovering and \
 	training the giant armoured serpentids."
 	economic_power = 1.1
-	features = list(/datum/cultural_feature/average)
+	features = list(/datum/background_feature/average)
 	groups = CULTURE_GROUP_HUMAN
 	passport = /obj/item/passport/sol/generic
 
@@ -51,6 +51,6 @@
 	exploit Unathi equipment and assets for their own gains. In spite of this, Armadyne maintains a reputation for the quality and \
 	reliability of its equipment as well as its general affordability."
 	economic_power = 1.2
-	features = list(/datum/cultural_feature/good)
+	features = list(/datum/background_feature/good)
 	groups = CULTURE_GROUP_HUMAN
 	passport = /obj/item/passport/sol/generic

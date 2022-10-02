@@ -4,7 +4,7 @@
 	Numerous, too numerous to list, these factions represent a variety of interests, purposes, intents and goals. \
 	Unfortunately, your faction is typically left to the waysides by the larger corporations."
 	economic_power = 0.8
-	features = list(/datum/cultural_feature/poor)
+	features = list(/datum/background_feature/poor)
 	space_faring = FALSE
 
 /datum/background_info/social_background/generic/none

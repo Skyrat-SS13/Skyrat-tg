@@ -18,10 +18,10 @@
 			continue
 		culture = new path()
 		GLOB.social_backgrounds[path] = culture
-	for(var/datum/cultural_feature/cultural_feature as anything in subtypesof(/datum/cultural_feature))
-		cultural_feature = new cultural_feature()
-		GLOB.culture_features += list("[cultural_feature.name]" = list(
-			"name" = cultural_feature.name,
-			"description" = cultural_feature.description,
-			"icon" = sanitize_css_class_name(cultural_feature.name),
+	for(var/datum/background_feature/background_feature as anything in subtypesof(/datum/background_feature))
+		background_feature = new background_feature()
+		GLOB.culture_features += list("[background_feature.name]" = list(
+			"name" = background_feature.name,
+			"description" = background_feature.description,
+			"icon" = sanitize_css_class_name(background_feature.name),
 		))

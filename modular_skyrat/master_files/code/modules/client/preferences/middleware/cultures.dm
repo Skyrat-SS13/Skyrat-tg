@@ -6,9 +6,9 @@
 	cross_round_cachable = TRUE
 
 /datum/asset/spritesheet/cultures/create_spritesheets()
-	for(var/datum/cultural_feature/cultural_feature as anything in subtypesof(/datum/cultural_feature))
-		var/icon/language_icon = icon(initial(cultural_feature.icon_path), icon_state = initial(cultural_feature.icon_state))
-		Insert(sanitize_css_class_name(initial(cultural_feature.name)), language_icon)
+	for(var/datum/background_feature/background_feature as anything in subtypesof(/datum/background_feature))
+		var/icon/language_icon = icon(initial(background_feature.icon_path), icon_state = initial(background_feature.icon_state))
+		Insert(sanitize_css_class_name(initial(background_feature.name)), language_icon)
 
 /datum/preference_middleware/cultures
 	action_delegations = list(
@@ -64,7 +64,7 @@
 		language = GLOB.language_datum_instances[language]
 		additional_langs += list(initial(language.name))
 	var/list/feature_names = list()
-	for(var/datum/cultural_feature/feature as anything in cultural_info.features)
+	for(var/datum/background_feature/feature as anything in cultural_info.features)
 		feature_names += list(initial(feature.name))
 	var/list/data = list(
 		"name" = cultural_info.name,

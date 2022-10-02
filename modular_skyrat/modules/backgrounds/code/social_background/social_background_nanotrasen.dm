@@ -8,7 +8,7 @@
 	Nanotrasen is characterized by its aggression and questionable ethics, which, combined with the high emphasis they put on new, untested and dangerous \
 	technology, means their installations are often considered unsafe and hazardous."
 	economic_power = 1.2
-	features = list(/datum/cultural_feature/good)
+	features = list(/datum/background_feature/good)
 	groups = CULTURE_NT
 	passport = /obj/item/passport/sol/generic
 

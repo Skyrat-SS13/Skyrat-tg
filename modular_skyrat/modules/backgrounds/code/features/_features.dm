@@ -1,5 +1,5 @@
 /// Cosmetic for now, but will be used in future PRs to influence factions and events.
-/datum/cultural_feature
+/datum/background_feature
 	var/name
 	/// A short-ish and to the point description of the feature.
 	var/description

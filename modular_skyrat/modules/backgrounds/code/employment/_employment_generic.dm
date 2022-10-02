@@ -2,7 +2,7 @@
 	name = "Station Squatter"
 	description = "You are not a Nanotrasen employee. You pretend to work here after tricking the Head of Personnel to give you an ID, \
 	so you can stay and eat their food rent-free."
-	features = list(/datum/cultural_feature/poor)
+	features = list(/datum/background_feature/poor)
 	economic_power = 0
 	on_manifest = FALSE
 	fake_name = "Nanotrasen Intern"
@@ -11,7 +11,7 @@
 	name = "Lopland Contractor"
 	description = "Even though you work at a security firm, you are still given clearance to work on other types of work at Nanotrasen. \
 	How weird. It must be a tax thing."
-	features = list(/datum/cultural_feature/average)
+	features = list(/datum/background_feature/average)
 	groups = CULTURE_GROUP_SPACE_FARING
 
 /datum/background_info/employment/veymed
@@ -20,7 +20,7 @@
 	Founded by the Vulpkan-Skrell'aan Assembly, it is exclusively staffed with Vulpkanin and Skrell. Despite being a newborn corporation within the sector, \
 	Vey-Med still pays you well for work alongside Nanotrasen. Despite a few unfounded rumors of corporate espionage from either company, \
 	you're still given clearance to work in all the various departments of Nanotrasen, for some reason."
-	features = list(/datum/cultural_feature/good)
+	features = list(/datum/background_feature/good)
 	groups = CULTURE_SKRELL_VULP
 
 /datum/background_info/employment/unathi
@@ -28,5 +28,5 @@
 	description = "You are a documented worker from Unathi. Due to your exceptional strength, endurance, or talent along with willingness to work for less, \
 	you have been brought from Moghes to work in the Sol Federation for Nanotrasen. You may not be culturally compatible with your co-workers. \
 	No, Crew Resources doesn't care."
-	features = list(/datum/cultural_feature/poor)
+	features = list(/datum/background_feature/poor)
 	groups = CULTURE_MOGHES

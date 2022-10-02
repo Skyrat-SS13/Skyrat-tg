@@ -2,7 +2,7 @@
 	name = "Humankind Space"
 	description = "Typically governed by SolFed or the NRI, humankind space is primarily populated by humans and synths with a wide variety of planets. \
 	Of course, there are many stations and ships that exist in this area, and you'd be hard pressed to find a planet without at least a handful of various ships and stations in orbit."
-	features = list(/datum/cultural_feature/average)
+	features = list(/datum/background_feature/average)
 	groups = CULTURE_GROUP_HUMAN
 
 /datum/background_info/origin/human/solfed
@@ -31,4 +31,4 @@
 	and while the government is trying their best to prevent that, not everyone can be helped - \
 	some people might still be suffering from the outcomes of that. Sol co-workers might not be too friendly towards you."
 	economic_power = 0.8
-	features = list(/datum/cultural_feature/poor)
+	features = list(/datum/background_feature/poor)
