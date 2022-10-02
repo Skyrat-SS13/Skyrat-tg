@@ -644,7 +644,7 @@
 /datum/action/cooldown/hiborg_slash
 	name = "Slash (AOE)"
 	desc = "Whip everyone in a range."
-	icon_icon = 'icons/obj/grenade.dmi'
+	icon_icon = 'icons/obj/weapons/grenade.dmi'
 	button_icon_state = "slimebang_active"
 	cooldown_time = 20 SECONDS
 
