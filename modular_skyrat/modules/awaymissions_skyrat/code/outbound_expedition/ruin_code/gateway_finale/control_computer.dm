@@ -36,12 +36,12 @@
 	pressed = TRUE
 	say("Gateway initialization started.")
 	sleep(2 SECONDS)
-	say("ETA: 10 minutes.")
+	say("ETA: 5 minutes.")
 	sleep(2 SECONDS)
 	say("SIGNAL BROADCASTING...")
 
 /obj/machinery/computer/outbound_gateway/proc/start_the_end()
-	addtimer(CALLBACK(src, .proc/open_gateway), 10 MINUTES)
+	addtimer(CALLBACK(src, .proc/open_gateway), 5 MINUTES)
 	gate_controller = new
 	var/area/loaded_area = GLOB.areas_by_type[/area/awaymission/outbound_expedition/ruin/gateway_ruin]
 	for(var/obj/effect/landmark/outbound/gateway_space_edge/space_edge in loaded_area.contents)

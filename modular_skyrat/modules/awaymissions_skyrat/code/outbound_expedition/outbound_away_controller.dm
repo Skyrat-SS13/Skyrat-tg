@@ -55,7 +55,6 @@
 		/obj/effect/landmark/outbound/ruin_shuttle_interdictor,
 		/obj/effect/landmark/outbound/raider_spawn,
 		/obj/effect/landmark/objective_update,
-		/obj/effect/landmark/outbound/scrapper_evac_point,
 	)
 
 /datum/away_controller/outbound_expedition/New()
@@ -63,7 +62,7 @@
 	for(var/ship_sys in subtypesof(/datum/outbound_ship_system))
 		var/datum/outbound_ship_system/new_system = new ship_sys
 		ship_systems[new_system.name] = new_system
-	for(var/type in subtypesof(/datum/outbound_random_event) - list(/datum/outbound_random_event/harmful, /datum/outbound_random_event/harmless, /datum/outbound_random_event/ruin, /datum/outbound_random_event/story)) // all subtypes except the parents
+	for(var/type in subtypesof(/datum/outbound_random_event) - list(/datum/outbound_random_event/harmful, /datum/outbound_random_event/harmless, /datum/outbound_random_event/ruin, /datum/outbound_random_event/story) - typesof(/datum/outbound_random_event/ruin/guaranteed)) // all subtypes except the parents and the one that shouldn't appear
 		var/datum/new_type = new type
 		event_datums += new_type
 	puzzle_controller = new /datum/outbound_puzzle_controller
@@ -280,6 +279,7 @@
 		human_content.overlay_fullscreen("cryopod", /atom/movable/screen/fullscreen/impaired, 2)
 		addtimer(CALLBACK(human_content, /mob.proc/playsound_local, get_turf(human_content), 'sound/runtime/hyperspace/hyperspace_progress.ogg', 100), 7.8 SECONDS)
 
+	INVOKE_ASYNC(src, /datum/away_controller/outbound_expedition.proc/move_shuttle)
 	move_shuttle()
 	puzzle_controller.on_jump()
 	addtimer(CALLBACK(src, .proc/post_move_act, select_event()), 13 SECONDS)

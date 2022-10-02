@@ -5,4 +5,4 @@
 	var/ss_delay = 5 MINUTES
 
 /datum/away_controller/proc/fire()
-	SHOULD_CALL_PARENT(FALSE)
+	return

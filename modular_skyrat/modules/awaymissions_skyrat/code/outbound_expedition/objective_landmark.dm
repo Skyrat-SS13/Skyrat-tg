@@ -146,9 +146,6 @@ GLOBAL_LIST_EMPTY(outbound_objective_landmarks)
 /obj/effect/landmark/outbound/debris_loc
 	name = "Debris Location"
 
-/obj/effect/landmark/outbound/scrapper_evac_point
-	name = "Scrapper Evacuation Point"
-
 /obj/effect/landmark/outbound/raider_spawn
 	name = "Raider Spawn Point"
 

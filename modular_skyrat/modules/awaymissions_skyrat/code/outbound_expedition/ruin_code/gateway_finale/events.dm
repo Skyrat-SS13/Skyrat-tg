@@ -21,9 +21,9 @@
 		/mob/living/simple_animal/hostile/blackmesa/xen/vortigaunt/slave = 1,
 	)
 	/// Lower bound for possible amount of enemies
-	var/minimum_spawns = 8
+	var/minimum_spawns = 5
 	/// Upper bound for possible amount of enemies
-	var/maximum_spawns = 10
+	var/maximum_spawns = 8
 
 /datum/outbound_gateway_event/portal/on_event()
 	storm = mutable_appearance('icons/obj/engine/energy_ball.dmi', "energy_ball_fast", FLY_LAYER)
@@ -71,8 +71,8 @@
 		/mob/living/simple_animal/hostile/syndicate/mecha_pilot = 1,
 		/mob/living/simple_animal/hostile/syndicate/space = 3,
 	)
-	minimum_spawns = 5
-	maximum_spawns = 10
+	minimum_spawns = 3
+	maximum_spawns = 8
 
 /datum/outbound_gateway_event/portal/xenomorph
 	name = "Portal Storm - Xenomorphs"
@@ -96,5 +96,5 @@
 		/mob/living/simple_animal/hostile/syndicate/space/stormtrooper = 4,
 		/mob/living/simple_animal/hostile/syndicate/melee/sword/space/stormtrooper = 2,
 	)
-	minimum_spawns = 8
+	minimum_spawns = 8 // this isn't meant to be fair
 	maximum_spawns = 12

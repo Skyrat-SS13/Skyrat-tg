@@ -587,7 +587,7 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 
 	message_admins("Admin [key_name_admin(usr)] has loaded [away_name] away mission.")
 	log_admin("Admin [key_name(usr)] has loaded [away_name] away mission.")
-	SEND_SIGNAL(SSaway_missions, COMSIG_AWAY_MISSION_LOADED, away_name) //SKYRAT ADDITION
+	SEND_SIGNAL(SSaway_missions, COMSIG_AWAY_MISSION_LOADED, away_name) //SKYRAT ADDITION: SSaway_mission
 	if(!away_level)
 		message_admins("Loading [away_name] failed!")
 		return

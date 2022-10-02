@@ -101,4 +101,12 @@
 
 /area/awaymission/outbound_expedition/ruin/gateway_ruin
 	name = "Ruined Gateway"
+	icon_state = "awaycontent14"
+
+/area/awaymission/outbound_expedition/ruin/sg_reviver
+	name = "Ruined SolGov Facility"
 	icon_state = "awaycontent15"
+
+/area/awaymission/outbound_expedition/ruin/synd_firestorm
+	name = "S.D.D.G. Firestorm"
+	icon_state = "awaycontent16"
