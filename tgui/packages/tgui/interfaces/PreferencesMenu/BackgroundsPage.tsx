@@ -1,4 +1,4 @@
-import { Stack, Section, Tooltip, Box, Divider, Button } from '../../components';
+import { Stack, Tooltip, Box, Divider, Button } from '../../components';
 import { useBackend } from '../../backend';
 import { CultureFeature, PreferencesMenuData } from './data';
 
@@ -74,14 +74,16 @@ const BackgroundEntry = (props) => {
   );
 };
 
-const HoverInfo = (text) => {
+const HoverInfo = (props) => {
   return (
-    <Button
-      icon="question-circle"
-      color="transparent"
-      tooltip={text}
-      tooltipPosition="left"
-    />
+    <span style={{ 'float': 'right' }}>
+      <Button
+        icon="question-circle"
+        color="transparent"
+        tooltip={props.text}
+        tooltipPosition="left"
+      />
+    </span>
   );
 };
 
@@ -146,7 +148,7 @@ const CategoryEntry = (props, context) => {
             tryAct(
               type,
               val.valid && !(val.selected === 1),
-              { 'culture': val.path },
+              { 'background': val.path },
               context
             )
           }>
@@ -189,72 +191,91 @@ const CategoryEntry = (props, context) => {
   );
 };
 
+const TooltipSection = (props) => {
+  return (
+    <div class="Section">
+      <div class="Section__title">
+        <span class="Section__titleText">{props.title}</span>
+        <HoverInfo text={props.hoverText} />
+      </div>
+      <div class="Section__rest">
+        <div class="Section__content">{props.children}</div>
+      </div>
+    </div>
+  );
+};
+
 export const BackgroundsPage = (props, context) => {
   const { data } = useBackend<PreferencesMenuData>(context);
   return (
     <Stack>
       <Stack.Item minWidth="33%">
-        <Section
-          title={
-            (
-              <HoverInfo text="These are typically low-impact, save the special backgrounds." />
-            ) + 'Cultures'
-          }>
+        <TooltipSection
+          title="Origins"
+          hoverText="These are typically low-impact, save the special backgrounds.">
           <Stack vertical>
-            {data.cultures.map((val) =>
+            {data.origins.map((val) =>
               val.selected ? (
                 <CategoryEntry
                   key={val.name}
                   val={val}
-                  type="select_culture"
+                  type="select_origin"
                   parentSelected
                 />
               ) : (
-                <CategoryEntry key={val.name} val={val} type="select_culture" />
+                <CategoryEntry key={val.name} val={val} type="select_origin" />
               )
             )}
           </Stack>
-        </Section>
+        </TooltipSection>
       </Stack.Item>
       <Stack.Item minWidth="33%">
-        <Section title="Locations">
+        <TooltipSection
+          title="Social Backgrounds"
+          hoverText="Thses are typically low impact.">
           <Stack vertical>
-            {data.locations.map((val) =>
+            {data.social_backgrounds.map((val) =>
               val.selected ? (
                 <CategoryEntry
                   key={val.name}
                   val={val}
-                  type="select_location"
+                  type="select_social_background"
                   parentSelected
                 />
               ) : (
                 <CategoryEntry
                   key={val.name}
                   val={val}
-                  type="select_location"
+                  type="select_social_background"
                 />
               )
             )}
           </Stack>
-        </Section>
+        </TooltipSection>
       </Stack.Item>
       <Stack.Item minWidth="33%">
-        <Section title="Factions">
+        <TooltipSection
+          title="Employments"
+          hoverText="These are typically high-impact. Choose with caution.">
           <Stack vertical>
-            {data.factions.map((val) =>
+            {data.employments.map((val) =>
               val.selected ? (
                 <CategoryEntry
                   key={val.name}
                   val={val}
-                  type="select_faction"
+                  type="select_employment"
                   parentSelected
                 />
               ) : (
-                <CategoryEntry key={val.name} val={val} type="select_faction" />
+                <CategoryEntry
+                  key={val.name}
+                  val={val}
+                  type="select_employment"
+                />
               )
             )}
           </Stack>
-        </Section>
+        </TooltipSection>
       </Stack.Item>
     </Stack>
   );

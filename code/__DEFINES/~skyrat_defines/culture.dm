@@ -6,10 +6,10 @@
 #define LANGUAGE_UNDERSTOOD	1
 #define LANGUAGE_SPOKEN	2
 
-GLOBAL_LIST_EMPTY(employment)
+GLOBAL_LIST_EMPTY(employments)
 GLOBAL_LIST_EMPTY(social_backgrounds)
 GLOBAL_LIST_EMPTY(origins)
-GLOBAL_LIST_EMPTY(culture_features)
+GLOBAL_LIST_EMPTY(background_features)
 
 // Bitflags for groups of culture entries that should not be allowed to mix.
 // All cultures that have large amounts of synths allow synth backgrounds too.

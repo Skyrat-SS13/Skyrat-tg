@@ -1,7 +1,7 @@
 /obj/item/card/id/credit_card
 	name = "unassigned credit card"
 	desc = "Provides access to the assigned credit account."
-	icon = 'modular_skyrat/modules/culture/icons/credit_cards.dmi'
+	icon = 'modular_skyrat/modules/backgrounds/icons/credit_cards.dmi'
 	icon_state = "credit_card_generic"
 	registered_age = null
 

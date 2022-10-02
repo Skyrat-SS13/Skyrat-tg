@@ -222,9 +222,9 @@ export type PreferencesMenuData = {
   quirks_balance: number;
   positive_quirk_count: number;
   species_restricted_jobs?: string[];
-  cultures: Culture[];
-  locations: CultureLocation[];
-  factions: Culture[];
+  origins: Background[];
+  social_backgrounds: SocialBackground[];
+  employments: Background[];
   features: Record<string, CultureFeature>;
   // SKYRAT EDIT END
   keybindings: Record<string, string[]>;
@@ -258,7 +258,7 @@ export type ServerData = {
 };
 
 // SKYRAT EDIT ADDITION START
-export type Culture = {
+export type Background = {
   name: string;
   description: string;
   economic_power: string;
@@ -269,15 +269,15 @@ export type Culture = {
   valid: number;
   selected: number;
   path: string;
-  sub_cultures: Culture[];
+  sub_cultures: Background[];
   sub_culture_amount: number;
 };
 
-export type CultureLocation = Culture & {
+export type SocialBackground = Background & {
   ruler: string;
   distance: string;
   capital: string;
-  sub_cultures: CultureLocation[];
+  sub_cultures: SocialBackground[];
 };
 
 export type CultureFeature = {

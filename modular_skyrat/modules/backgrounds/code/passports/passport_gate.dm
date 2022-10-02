@@ -27,18 +27,25 @@
 
 	/// Used by the passport gate for more advanced functions that can be set by the user.
 	var/list/scangate_filter
+	/// Radio for the machine to speak into if sec alerts are enabled.
+	var/obj/item/radio/radio = /obj/item/radio/headset/headset_sec
+
+/obj/machinery/scanner_gate/passport_gate/Initialize(mapload)
+	. = ..()
+	radio = new radio()
 
 /obj/machinery/scanner_gate/passport_gate/perform_scan(mob/living/living)
 	if(obj_flags & EMAGGED)
-		playsound(src, 'modular_skyrat/modules/culture/sounds/passportscanbroke.ogg', 75)
-	else
-		playsound(src, 'modular_skyrat/modules/culture/sounds/passportscan.ogg', 75)
+		playsound(src, 'modular_skyrat/modules/backgrounds/sounds/passportscanbroke.ogg', 75)
+		return
+
+	playsound(src, 'modular_skyrat/modules/backgrounds/sounds/passportscan.ogg', 75)
 	var/obj/item/passport/passport = living.get_passport()
 
-	if(scangate_mode == SCANGATE_PASSPORT)
-		alarm_beep()
-
 	if(!passport)
+		if(scangate_mode == SCANGATE_PASSPORT)
+			radio.talk_into(src, "[living] has tripped the passport gate at [get_area(src)] for having no passport!!", RADIO_CHANNEL_SECURITY)
+			alarm_beep()
 		return
 
 	var/beep = FALSE
@@ -86,8 +93,12 @@
 			to_chat(user, span_warning("You try to lock [src] with [attacking_item], but nothing happens."))
 	return ..()
 
-/obj/machinery/scanner_gate/emag_act(mob/user)
+/obj/machinery/scanner_gate/passport_gate/emag_act(mob/user)
 	req_one_access = list()
+	return ..()
+
+/obj/machinery/scanner_gate/passport_gate/Destroy()
+	qdel(radio)
 	return ..()
 
 #undef SCANGATE_NONE
