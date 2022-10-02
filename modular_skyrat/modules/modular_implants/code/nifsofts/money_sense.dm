@@ -34,8 +34,8 @@
 		for(var/x in ex.total_amount)
 			price += ex.total_value[x]
 		if(price)
-			export_text = "Scanned [scanned_item], value: <b>[price]."
+			export_text = span_noticealien("This item has an export value of: <b>[price].")
 		else
-			export_text = "Scanned [scanned_item], no export value."
+			export_text = span_warning("This item has no export value.")
 
 		. += export_text
