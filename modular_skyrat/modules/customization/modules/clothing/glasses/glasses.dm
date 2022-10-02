@@ -10,7 +10,7 @@
 	. = ..()
 	if(.)
 		return
-	if(!user.canUseTopic(src, be_close = TRUE, no_dexterity = TRUE, FALSE, !iscyborg(user)))
+	if(!user.canUseTopic(src, be_close = TRUE, no_dexterity = TRUE, floor_okay = !iscyborg(user)))
 		return
 	else
 		switcheye()
