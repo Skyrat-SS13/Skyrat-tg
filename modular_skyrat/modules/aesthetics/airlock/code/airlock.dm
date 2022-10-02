@@ -114,8 +114,7 @@
 	else
 		lights_overlay = ""
 
-	var/mutable_appearance/lights_appearance = image(overlays_file, lights_overlay)
-	SET_PLANE_EXPLICIT(lights_appearance, ABOVE_LIGHTING_PLANE, src)
+	var/mutable_appearance/lights_appearance = mutable_appearance(overlays_file, lights_overlay, FLOAT_LAYER, src, ABOVE_LIGHTING_PLANE)
 	if(multi_tile)
 		lights_appearance.dir = dir
 	. += lights_appearance
@@ -148,8 +147,7 @@
 		for(var/heading in list(NORTH,SOUTH,EAST,WEST))
 			if(!(unres_sides & heading))
 				continue
-			var/image/floorlight = image(icon='icons/obj/doors/airlocks/station/overlays.dmi', icon_state="unres_[heading]")
-			SET_PLANE_EXPLICIT(floorlight, ABOVE_LIGHTING_PLANE, src)
+			var/mutable_appearance/floorlight = mutable_appearance('icons/obj/doors/airlocks/station/overlays.dmi', "unres_[heading]", FLOAT_LAYER, src, ABOVE_LIGHTING_PLANE)
 			switch (heading)
 				if (NORTH)
 					floorlight.pixel_x = 0
