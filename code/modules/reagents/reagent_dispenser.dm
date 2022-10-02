@@ -151,18 +151,13 @@
 		reagents.add_reagent(reagent_id, tank_volume)
 	. = ..()
 
-<<<<<<< HEAD
-/obj/structure/reagent_dispensers/proc/boom(damage_type = BRUTE, guaranteed_violent = FALSE) //SKYRAT EDIT CHANGE
-	visible_message(span_danger("\The [src] ruptures!"))
-	chem_splash(loc, null, 5, list(reagents))
-=======
 /**
  * boom: Detonate a reagent dispenser.
  *
  * This is most dangerous for fuel tanks, which will explosion().
  * Other dispensers will scatter their contents within range.
  */
-/obj/structure/reagent_dispensers/proc/boom()
+/obj/structure/reagent_dispensers/proc/boom(damage_type = BRUTE, guaranteed_violent = FALSE) //SKYRAT EDIT CHANGE
 	var/datum/reagent/fuel/volatiles = reagents.has_reagent(/datum/reagent/fuel)
 	var/fuel_amt = 0
 	if(istype(volatiles) && volatiles.volume >= 25)
@@ -193,7 +188,6 @@
 				explosion(src, heavy_impact_range = 1, light_impact_range = 4, flame_range = 6)
 			if(1500 to INFINITY)
 				explosion(src, devastation_range = 1, heavy_impact_range = 2, light_impact_range = 6, flame_range = 8)
->>>>>>> 94cbfb30c3e (Various assembly fixes. (#69772))
 	qdel(src)
 
 /obj/structure/reagent_dispensers/deconstruct(disassembled = TRUE)
@@ -258,8 +252,6 @@
 	if(SSevents.holidays?[APRIL_FOOLS])
 		icon_state = "fuel_fools"
 
-<<<<<<< HEAD
-
 /obj/structure/reagent_dispensers/fueltank/boom(damage_type = BRUTE, guaranteed_violent = FALSE) //SKYRAT EDIT CHANGE
 	if(damage_type == BURN || guaranteed_violent)
 		explosion(src, heavy_impact_range = 1, light_impact_range = 5, flame_range = 5)
@@ -268,47 +260,6 @@
 		. = ..()
 	//SKYRAT EDIT END
 
-/obj/structure/reagent_dispensers/fueltank/Destroy()
-	QDEL_NULL(rig)
-	return ..()
-
-/obj/structure/reagent_dispensers/fueltank/Exited(atom/movable/gone, direction)
-	. = ..()
-	if(gone == rig)
-		rig = null
-
-/obj/structure/reagent_dispensers/fueltank/examine(mob/user)
-	. = ..()
-	if(get_dist(user, src) <= 2)
-		if(rig)
-			. += span_warning("There is some kind of device <b>rigged</b> to the tank!")
-		else
-			. += span_notice("It looks like you could <b>rig</b> a device to the tank.")
-
-/obj/structure/reagent_dispensers/fueltank/attack_hand(mob/user, list/modifiers)
-	. = ..()
-	if(.)
-		return
-	if(!rig)
-		return
-	user.balloon_alert_to_viewers("detaching rig...")
-	if(!do_after(user, 2 SECONDS, target = src))
-		return
-	user.balloon_alert_to_viewers("detached rig")
-	user.log_message("detached [rig] from [src].", LOG_GAME)
-	if(!user.put_in_hands(rig))
-		rig.forceMove(get_turf(user))
-	rig = null
-	last_rigger = null
-	cut_overlays(assembliesoverlay)
-	UnregisterSignal(src, COMSIG_IGNITER_ACTIVATE)
-
-/obj/structure/reagent_dispensers/fueltank/proc/rig_boom()
-	log_bomber(last_rigger, "rigged fuel tank exploded", src)
-	boom()
-
-=======
->>>>>>> 94cbfb30c3e (Various assembly fixes. (#69772))
 /obj/structure/reagent_dispensers/fueltank/blob_act(obj/structure/blob/B)
 	boom(guaranteed_violent = TRUE) //SKYRAT EDIT CHANGE
 
@@ -358,7 +309,6 @@
 	icon_state = "fuel_high"
 	tank_volume = 5000
 
-<<<<<<< HEAD
 /obj/structure/reagent_dispensers/fueltank/large/boom(damage_type = BRUTE, guaranteed_violent = FALSE) //SKYRAT EDIT CHANGE
 	if(damage_type == BURN || guaranteed_violent)
 		explosion(src, devastation_range = 1, heavy_impact_range = 2, light_impact_range = 7, flame_range = 12)
@@ -367,8 +317,6 @@
 		. = ..()
 	//SKYRAT EDIT END
 
-=======
->>>>>>> 94cbfb30c3e (Various assembly fixes. (#69772))
 /// Wall mounted dispeners, like pepper spray or virus food. Not a normal tank, and shouldn't be able to be turned into a plumbed stationary one.
 /obj/structure/reagent_dispensers/wall
 	anchored = TRUE
