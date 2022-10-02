@@ -1,5 +1,3 @@
-GLOBAL_LIST_EMPTY(hell) //eorg banned players go here
-
 /mob/living/Login()
 	. = ..()
 	if(ckey)
