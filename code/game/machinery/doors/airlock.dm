@@ -371,16 +371,17 @@
 		seal = null
 		update_appearance()
 
-/obj/machinery/door/airlock/bumpopen(mob/living/user) //Airlocks now zap you when you 'bump' them open when they're electrified. --NeoFite
-	if(!issilicon(usr))
-		if(isElectrified() && shock(user, 100))
-			return
-		else if(user.hallucinating() && iscarbon(user) && prob(1) && !operating)
-			var/mob/living/carbon/C = user
-			if(!C.wearing_shock_proof_gloves())
-				new /datum/hallucination/shock(C)
-				return
-	..()
+/obj/machinery/door/airlock/bumpopen(mob/living/user)
+	if(issilicon(user) || !iscarbon(user))
+		return ..()
+
+	if(isElectrified() && shock(user, 100))
+		return
+
+	if(SEND_SIGNAL(user, COMSIG_CARBON_BUMPED_AIRLOCK_OPEN, src) & STOP_BUMP)
+		return
+
+	return ..()
 
 /obj/machinery/door/airlock/proc/isElectrified()
 	return (secondsElectrified != MACHINE_NOT_ELECTRIFIED)
@@ -453,6 +454,8 @@
 /obj/machinery/door/airlock/proc/shock(mob/living/user, prb)
 	if(!istype(user) || !hasPower()) // unpowered, no shock
 		return FALSE
+	if(HAS_TRAIT(user, TRAIT_AIRLOCK_SHOCKIMMUNE)) // Be a bit more clever man come on
+		return FALSE
 	if(!COOLDOWN_FINISHED(src, shockCooldown))
 		return FALSE //Already shocked someone recently?
 	if(!prob(prb))
@@ -461,6 +464,9 @@
 	var/check_range = TRUE
 	if(electrocute_mob(user, get_area(src), src, 1, check_range))
 		COOLDOWN_START(src, shockCooldown, 1 SECONDS)
+		// Provides timed airlock shock immunity, to prevent overly cheesy deathtraps
+		ADD_TRAIT(user, TRAIT_AIRLOCK_SHOCKIMMUNE, REF(src))
+		addtimer(TRAIT_CALLBACK_REMOVE(user, TRAIT_AIRLOCK_SHOCKIMMUNE, REF(src)), 1 SECONDS)
 		return TRUE
 	else
 		return FALSE
@@ -477,12 +483,6 @@
 	airlock_state = state
 
 	. = ..()
-	/* SKYRAT EDIT REMOVAL
-	if(hasPower() && unres_sides)
-		set_light(2, 1)
-	else
-		set_light(0)
-	*/
 
 /obj/machinery/door/airlock/update_icon_state()
 	. = ..()
@@ -553,22 +553,25 @@
 		. += get_airlock_overlay("sealed", overlays_file, em_block = TRUE)
 
 	if(hasPower() && unres_sides)
-		if(unres_sides & NORTH)
-			var/image/I = image(icon='icons/obj/doors/airlocks/station/overlays.dmi', icon_state="unres_n")
-			I.pixel_y = 32
-			. += I
-		if(unres_sides & SOUTH)
-			var/image/I = image(icon='icons/obj/doors/airlocks/station/overlays.dmi', icon_state="unres_s")
-			I.pixel_y = -32
-			. += I
-		if(unres_sides & EAST)
-			var/image/I = image(icon='icons/obj/doors/airlocks/station/overlays.dmi', icon_state="unres_e")
-			I.pixel_x = 32
-			. += I
-		if(unres_sides & WEST)
-			var/image/I = image(icon='icons/obj/doors/airlocks/station/overlays.dmi', icon_state="unres_w")
-			I.pixel_x = -32
-			. += I
+		for(var/heading in list(NORTH,SOUTH,EAST,WEST))
+			if(!(unres_sides & heading))
+				continue
+			var/image/floorlight = image(icon='icons/obj/doors/airlocks/station/overlays.dmi', icon_state="unres_[heading]")
+			floorlight.plane = ABOVE_LIGHTING_PLANE
+			switch (heading)
+				if (NORTH)
+					floorlight.pixel_x = 0
+					floorlight.pixel_y = 32
+				if (SOUTH)
+					floorlight.pixel_x = 0
+					floorlight.pixel_y = -32
+				if (EAST)
+					floorlight.pixel_x = 32
+					floorlight.pixel_y = 0
+				if (WEST)
+					floorlight.pixel_x = -32
+					floorlight.pixel_y = 0
+			. += floorlight
 */
 
 /obj/machinery/door/airlock/do_animate(animation)

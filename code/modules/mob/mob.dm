@@ -407,7 +407,7 @@
 /mob/proc/equip_to_slot_if_possible(obj/item/W, slot, qdel_on_fail = FALSE, disable_warning = FALSE, redraw_mob = TRUE, bypass_equip_delay_self = FALSE, initial = FALSE)
 	if(!istype(W) || QDELETED(W)) //This qdeleted is to prevent stupid behavior with things that qdel during init, like say stacks
 		return FALSE
-	if(!W.mob_can_equip(src, null, slot, disable_warning, bypass_equip_delay_self))
+	if(!W.mob_can_equip(src, slot, disable_warning, bypass_equip_delay_self))
 		if(qdel_on_fail)
 			qdel(W)
 		else if(!disable_warning)
@@ -994,7 +994,16 @@
 		return FALSE
 	return ISINRANGE(their_turf.x, our_turf.x - interaction_range, our_turf.x + interaction_range) && ISINRANGE(their_turf.y, our_turf.y - interaction_range, our_turf.y + interaction_range)
 
-///Can the mob use Topic to interact with machines
+/**
+ * Whether the mob can use Topic to interact with machines
+ *
+ * Args:
+ * be_close - Whether you need to be next to/on top of M
+ * no_dexterity - Whether you need to be an ADVANCEDTOOLUSER
+ * no_tk - If be_close is TRUE, this will block Telekinesis from bypassing the requirement
+ * need_hands - Whether you need hands to use this
+ * floor_okay - Whether mobility flags should be checked for MOBILITY_UI to use.
+ */
 /mob/proc/canUseTopic(atom/movable/M, be_close=FALSE, no_dexterity=FALSE, no_tk=FALSE, need_hands = FALSE, floor_okay=FALSE)
 	return
 
@@ -1210,14 +1219,17 @@
 	var/turf/mob_location = get_turf(src)
 	return mob_location.get_lumcount() > light_amount
 
+
 /// Can this mob read
-/mob/proc/can_read(obj/O, check_for_light = TRUE)
-	if(!is_literate())
-		to_chat(src, span_warning("You try to read [O], but can't comprehend any of it."))
+/mob/proc/can_read(atom/viewed_atom, reading_check_flags = (READING_CHECK_LITERACY|READING_CHECK_LIGHT), silent = FALSE)
+	if((reading_check_flags & READING_CHECK_LITERACY) && !is_literate())
+		if(!silent)
+			to_chat(src, span_warning("You try to read [viewed_atom], but can't comprehend any of it."))
 		return FALSE
 
-	if(check_for_light && !has_light_nearby() && !has_nightvision())
-		to_chat(src, span_warning("It's too dark in here to read!"))
+	if((reading_check_flags & READING_CHECK_LIGHT) && !has_light_nearby() && !has_nightvision())
+		if(!silent)
+			to_chat(src, span_warning("It's too dark in here to read!"))
 		return FALSE
 
 	return TRUE

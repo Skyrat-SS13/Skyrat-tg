@@ -709,7 +709,7 @@ GLOBAL_DATUM_INIT(welding_sparks, /mutable_appearance, mutable_appearance('icons
 	if(!initial)
 		if(equip_sound && (slot_flags & slot))
 			playsound(src, equip_sound, EQUIP_SOUND_VOLUME, TRUE, ignore_walls = FALSE)
-		else if(slot == ITEM_SLOT_HANDS)
+		else if(slot & ITEM_SLOT_HANDS)
 			playsound(src, pickup_sound, PICKUP_SOUND_VOLUME, ignore_walls = FALSE)
 	user.update_equipment_speed_mods()
 
@@ -727,7 +727,7 @@ GLOBAL_DATUM_INIT(welding_sparks, /mutable_appearance, mutable_appearance('icons
 
 /// Sometimes we only want to grant the item's action if it's equipped in a specific slot.
 /obj/item/proc/item_action_slot_check(slot, mob/user)
-	if(slot == ITEM_SLOT_BACKPACK || slot == ITEM_SLOT_LEGCUFFED) //these aren't true slots, so avoid granting actions there
+	if(slot & (ITEM_SLOT_BACKPACK|ITEM_SLOT_LEGCUFFED)) //these aren't true slots, so avoid granting actions there
 		return FALSE
 	return TRUE
 
@@ -738,14 +738,13 @@ GLOBAL_DATUM_INIT(welding_sparks, /mutable_appearance, mutable_appearance('icons
  * Arguments:
  * * disable_warning to TRUE if you wish it to not give you text outputs.
  * * slot is the slot we are trying to equip to
- * * equipper is the mob trying to equip the item
  * * bypass_equip_delay_self for whether we want to bypass the equip delay
  */
-/obj/item/proc/mob_can_equip(mob/living/M, mob/living/equipper, slot, disable_warning = FALSE, bypass_equip_delay_self = FALSE)
+/obj/item/proc/mob_can_equip(mob/living/M, slot, disable_warning = FALSE, bypass_equip_delay_self = FALSE, ignore_equipped = FALSE)
 	if(!M)
 		return FALSE
 
-	return M.can_equip(src, slot, disable_warning, bypass_equip_delay_self)
+	return M.can_equip(src, slot, disable_warning, bypass_equip_delay_self, ignore_equipped)
 
 /obj/item/verb/verb_pickup()
 	set src in oview(1)
@@ -803,7 +802,7 @@ GLOBAL_DATUM_INIT(welding_sparks, /mutable_appearance, mutable_appearance('icons
 		itempush = 0 //too light to push anything
 	if(isliving(hit_atom)) //Living mobs handle hit sounds differently.
 		var/volume = get_volume_by_throwforce_and_or_w_class()
-		if (throwforce > 0)
+		if (throwforce > 0 || HAS_TRAIT(src, TRAIT_CUSTOM_TAP_SOUND))
 			if (mob_throw_hit_sound)
 				playsound(hit_atom, mob_throw_hit_sound, volume, TRUE, -1)
 			else if(hitsound)

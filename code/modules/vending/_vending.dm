@@ -140,15 +140,15 @@
 	///World ticks the machine is electified for
 	var/seconds_electrified = MACHINE_NOT_ELECTRIFIED
 	///When this is TRUE, we fire items at customers! We're broken!
-	var/shoot_inventory = 0
+	var/shoot_inventory = FALSE
 	///How likely this is to happen (prob 100) per second
 	var/shoot_inventory_chance = 1
 	//Stop spouting those godawful pitches!
-	var/shut_up = 0
+	var/shut_up = FALSE
 	///can we access the hidden inventory?
-	var/extended_inventory = 0
+	var/extended_inventory = FALSE
 	///Are we checking the users ID
-	var/scan_id = 1
+	var/scan_id = TRUE
 	///Coins that we accept?
 	var/obj/item/coin/coin
 	///Bills we accept?
@@ -1439,7 +1439,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 		to_chat(user, span_warning("You must be holding the price tagger to continue!"))
 		return
 	var/chosen_price = tgui_input_number(user, "Set price", "Price", price)
-	if(!chosen_price || QDELETED(user) || QDELETED(src) || !user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK) || loc != user)
+	if(!chosen_price || QDELETED(user) || QDELETED(src) || !user.canUseTopic(src, be_close = TRUE, no_dexterity = FALSE, no_tk = TRUE) || loc != user)
 		return
 	price = chosen_price
 	to_chat(user, span_notice(" The [src] will now give things a [price] cr tag."))
