@@ -141,6 +141,7 @@
 #define INIT_ORDER_SECURITY_LEVEL 79 // We need to load before events so that it has a security level to choose from.
 #define INIT_ORDER_DISCORD 78
 #define INIT_ORDER_ACHIEVEMENTS 77
+#define INIT_ORDER_AWAY_MISSION 75 //SKYRAT ADDITION - Needs to be above mapping
 #define INIT_ORDER_STATION 74 //This is high priority because it manipulates a lot of the subsystems that will initialize after it.
 #define INIT_ORDER_QUIRKS 73
 #define INIT_ORDER_REAGENTS 72 //HAS to be before mapping and assets - both create objects, which creates reagents, which relies on lists made in this subsystem
@@ -151,7 +152,7 @@
 #define INIT_ORDER_AI_CONTROLLERS 55 //So the controller can get the ref
 #define INIT_ORDER_TICKER 55
 #define INIT_ORDER_TCG 55
-#define INIT_ORDER_AWAY_MISSION 51 //SKYRAT ADDITION - Needs to be above mapping
+//#define INIT_ORDER_AWAY_MISSION 51 //SKYRAT ADDITION - Needs to be above mapping
 #define INIT_ORDER_AUTOMAPPER 51 // SKYRAT EDIT ADDITION - We need to load just before mapping.
 #define INIT_ORDER_MAPPING 50
 #define INIT_ORDER_EARLY_ASSETS 48
