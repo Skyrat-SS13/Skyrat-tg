@@ -89,7 +89,7 @@
 	..()
 
 /datum/reagent/drug/dopamine/on_mob_life(mob/living/carbon/affected_mob, delta_time, times_fired)
-	affected_mob.set_timed_status_effect(2 SECONDS * REM * delta_time, /datum/status_effect/drugginess)
+	affected_mob.set_drugginess(2 SECONDS * REM * delta_time)
 	if(prob(7))
 		affected_mob.try_lewd_autoemote(pick("shaking", "moan"))
 	..()
