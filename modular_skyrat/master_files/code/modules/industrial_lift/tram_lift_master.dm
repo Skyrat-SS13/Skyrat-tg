@@ -13,5 +13,5 @@ Also because of tram code, lower horizontal_speed is actually faster, which... y
  */
 /datum/lift_master/tram
 	collision_lethality = 4
-	base_horizontal_speed = 0.8
-	horizontal_speed = 0.8
+	base_horizontal_speed = 0.6
+	horizontal_speed = 0.6
