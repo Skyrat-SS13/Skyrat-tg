@@ -14,7 +14,11 @@
 
 /datum/background_info/origin/taj_empire
 	name = "Taj Empire"
-	description = "Placeholder."
+	description = "The truly biggest player of the galactic plane, \
+	the Tajaran Empire is a massively spread-out empire that was born millenia before humanity even began visiting its moon. \
+	It spans over an extent of space so utterly massive that even Tajaran Emperors do not know all that they rule over. \
+	You are or were one of its members and as such experienced the grandiosity of its empire: alien life different to yours is no stranger to you. \
+	Why you find yourself out of its borders, is only a reason you know."
 	economic_power = 0.9
 	features = list(/datum/background_feature/average)
 
