@@ -97,13 +97,13 @@
 	var/list/social_backgrounds = list()
 	var/list/employments = list()
 
-	for(var/datum/background_info/background_info as anything in get_immediate_subtypes(/datum/background_info/employment, GLOB.employments))
+	for(var/datum/background_info/background_info as anything in get_immediate_subtypes(/datum/background_info/origin, GLOB.origins))
 		origins += list(get_ui_data_entries(GLOB.origins[background_info], TRUE))
 
-	for(var/datum/background_info/background_info as anything in get_immediate_subtypes(/datum/background_info/origin, GLOB.origins))
+	for(var/datum/background_info/background_info as anything in get_immediate_subtypes(/datum/background_info/social_background, GLOB.social_backgrounds))
 		social_backgrounds += list(get_ui_data_entries(GLOB.social_backgrounds[background_info], check_valid(background_info, preferences.origin)))
 
-	for(var/datum/background_info/background_info as anything in get_immediate_subtypes(/datum/background_info/social_background, GLOB.social_backgrounds))
+	for(var/datum/background_info/background_info as anything in get_immediate_subtypes(/datum/background_info/employment, GLOB.employments))
 		employments += list(get_ui_data_entries(GLOB.employments[background_info], check_valid(background_info, preferences.origin) && check_valid(background_info, preferences.social_background)))
 
 	return list(
