@@ -17,6 +17,12 @@
 	var/list/user_access_list = list()
 	///Is the NIF properly calibrated yet? This is set at true for testing purposes
 	var/is_calibrated = TRUE
+	///Is the NIF currently being calibrated?
+	var/calibrating = FALSE
+	///How long does each step in the calibration process take in total?
+	var/calibration_time = 3 MINUTES
+	///How far through the calibration process is the NIF? Do not touch this outside of preform_calibration(), if you can at all help it.
+	var/calibration_duration
 
 	//Power Variables
 	///What is the maximum power level of the NIF?
@@ -75,6 +81,14 @@
 	///This shows up in the NIF settings screen as a way to ICly display lore.
 	var/manufacturer_notes = "There is no data currently avalible for this product"
 
+	//Appearance Variables
+	///This is the sound that plays when doing most things!
+	var/good_sound ='modular_skyrat/modules/modular_implants/sounds/default_good.ogg'
+	///This is the sound that plays if there is an issue going on.
+	var/bad_sound = 'modular_skyrat/modules/modular_implants/sounds/default_bad.ogg'
+	///This is the sound that you would hear if you enable if you activate or enable something.
+	var/click_sound = 'modular_skyrat/modules/modular_implants/sounds/default_click.ogg'
+
 /obj/item/organ/internal/cyberimp/brain/nif/Initialize(mapload)
 	. = ..()
 
@@ -94,7 +108,6 @@
 
 		return FALSE
 
-
 	linked_mob = insertee
 	stored_ckey = linked_mob.ckey
 
@@ -102,7 +115,11 @@
 	insertee.installed_nif = src
 	START_PROCESSING(SSobj, src)
 
-/obj/item/organ/internal/cyberimp/brain/nif/Remove(mob/living/carbon/organ_owner, special=FALSE)
+	if(!is_calibrated)
+		send_message("Calibration Process Starting!")
+		calibrating = TRUE
+
+/obj/item/organ/internal/cyberimp/brain/nif/Remove(mob/living/carbon/organ_owner, special = FALSE)
 	. = ..()
 
 	STOP_PROCESSING(SSobj, src)
@@ -112,6 +129,9 @@
 
 	if(!linked_mob || broken)
 		return FALSE
+
+	if(calibrating)
+		preform_calibration()
 
 	if(IS_IN_STASIS(linked_mob))
 		return
@@ -210,6 +230,36 @@
 		return FALSE
 
 	return TRUE
+///Preforms calibration, this is run the first time a NIF is installed in someone.
+/obj/item/organ/internal/cyberimp/brain/nif/proc/preform_calibration()
+	if(linked_mob.stat == DEAD)
+		return FALSE
+
+	if(!calibration_duration)
+		calibration_duration = world.time + calibration_time
+
+	var/percentage_done = (world.time - (calibration_duration - (calibration_time))) / calibration_time
+	switch(percentage_done)
+		if(0 to 0.1)
+			linked_mob.set_blindness(5)
+
+		if(0.2 to 0.9)
+			var/random_ailment = rand(1,75)
+			switch(random_ailment)
+				if(1)
+					to_chat(linked_mob, span_warning("You feel sick to your stomach"))
+					linked_mob.adjust_disgust(25)
+				if(2)
+					to_chat(linked_mob, span_warning("You feel a wave of fatigue roll over you"))
+					linked_mob.adjustStaminaLoss(50)
+
+
+		if(1 to INFINITY)
+			send_message("Installation Proccess Complete!")
+
+			calibrating = FALSE
+			is_calibrated = TRUE
+
 ///This is run whenever a nifsoft is installed
 /obj/item/organ/internal/cyberimp/brain/nif/proc/install_nifsoft(datum/nifsoft/loaded_nifsoft)
 	if(broken) //NIFSofts can't be installed to a broken NIF
@@ -248,9 +298,17 @@
 
 	return TRUE
 
+/obj/item/organ/internal/cyberimp/brain/nif/proc/send_message(message_to_send, alert=FALSE)
+	if(alert)
+		to_chat(linked_mob, span_warning("NIF Alert: [message_to_send]"))
+		linked_mob.playsound_local(linked_mob, bad_sound, 60, FALSE)
+		return
+
+	to_chat(linked_mob, span_cyan("NIF Message: [message_to_send]"))
+	linked_mob.playsound_local(linked_mob, good_sound, 60, FALSE)
+
 /obj/item/organ/internal/cyberimp/brain/nif/attack_self(mob/user, modifiers)
 	return FALSE
-
 // Action used to pull up the NIF menu
 /datum/action/item_action/nif
 	button_icon = 'modular_skyrat/master_files/icons/mob/actions/action_backgrounds.dmi'
@@ -264,11 +322,16 @@
 
 /datum/action/item_action/nif/open_menu/Trigger(trigger_flags)
 	. = ..()
+	var/obj/item/organ/internal/cyberimp/brain/nif/target_nif = target
+
+	if(target_nif.calibrating)
+		to_chat(owner, span_warning("The NIF is still calibrating, please wait!"))
+		return
+
 	if(!.)
 		return
 
-	var/datum/action/item_action/nif/bridge = target
-	bridge.ui_interact(usr)
+	target_nif.ui_interact(usr)
 
 /mob/living/carbon/human
 	///What text is shown upon examining a human with a NIF?
@@ -352,5 +415,11 @@
 		qdel(src)
 
 //NIF autosurgeon. This is just here so that I can debug faster.
-/obj/item/autosurgeon/organ/nif
+/obj/item/autosurgeon/organ/nif/debug
 	starting_organ = /obj/item/organ/internal/cyberimp/brain/nif
+
+/obj/item/organ/internal/cyberimp/brain/nif/cali_test
+	is_calibrated = FALSE
+
+/obj/item/autosurgeon/organ/nif
+	starting_organ = /obj/item/organ/internal/cyberimp/brain/nif/cali_test

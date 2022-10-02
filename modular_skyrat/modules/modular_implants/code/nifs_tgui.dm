@@ -13,6 +13,7 @@
 
 /obj/item/organ/internal/cyberimp/brain/nif/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
+
 	if(!ui)
 		ui = new(user, src, "NifPanel", name)
 		ui.open()
