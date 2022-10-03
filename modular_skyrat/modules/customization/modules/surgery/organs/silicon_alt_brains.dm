@@ -1,6 +1,6 @@
 /obj/item/mmi/posibrain/circuit
 	name = "compact AI circuit"
-	desc = "A compact circuit, perfectly dimensioned to fit in the same slot as a cyborgs positronic brain."
+	desc = "A compact circuit, perfectly dimensioned to fit in the same slot as a cyborg's positronic brain."
 	icon = 'modular_skyrat/master_files/icons/obj/alt_silicon_brains.dmi'
 	icon_state = "circuit"
 	base_icon_state = "circuit"
@@ -36,23 +36,13 @@
 /mob/living/proc/prefs_get_brain_to_use(value, is_cyborg = FALSE)
 	switch(value)
 		if(ORGAN_PREF_POSI_BRAIN)
-			switch(is_cyborg)
-				if(TRUE)
-					return /obj/item/mmi/posibrain
-				if(FALSE)
-					return /obj/item/organ/internal/brain/ipc_positron
+			return is_cyborg ? /obj/item/mmi/posibrain : /obj/item/organ/internal/brain/ipc_positron
+
 		if(ORGAN_PREF_MMI_BRAIN)
-			switch(is_cyborg)
-				if(TRUE)
-					return /obj/item/mmi
-				if(FALSE)
-					return /obj/item/organ/internal/brain/ipc_positron/mmi
+			return is_cyborg ? /obj/item/mmi : /obj/item/organ/internal/brain/ipc_positron/mmi
+
 		if(ORGAN_PREF_CIRCUIT_BRAIN)
-			switch(is_cyborg)
-				if(TRUE)
-					return /obj/item/mmi/posibrain/circuit
-				if(FALSE)
-					return /obj/item/organ/internal/brain/ipc_positron/circuit
+			return is_cyborg ? /obj/item/mmi/posibrain/circuit : /obj/item/organ/internal/brain/ipc_positron/circuit
 
 /mob/living/silicon/robot/Initialize(mapload)
 	. = ..()
@@ -64,6 +54,7 @@
 	var/obj/item/mmi/new_mmi = prefs_get_brain_to_use(client?.prefs?.read_preference(/datum/preference/choiced/brain_type), TRUE)
 	if(!new_mmi || new_mmi == mmi.type)
 		return
+
 	new_mmi = new new_mmi()
 
 	// Probably shitcode, but silicon code is spaghetti as fuck.
