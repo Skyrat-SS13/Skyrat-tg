@@ -1,4 +1,4 @@
-#define CHILD_CULTURE_SELECTED 2
+#define CHILD_BACKGROUND_SELECTED 2
 
 /datum/asset/spritesheet/backgrounds
 	name = "backgrounds"
@@ -32,21 +32,21 @@
 			for(var/datum/background_info/culture as anything in subtypesof(background_info.type))
 				value = get_ui_data_entry(GLOB.employments[culture], culture == preferences.employment, TRUE)
 				if(value["selected"])
-					selected = CHILD_CULTURE_SELECTED
+					selected = CHILD_BACKGROUND_SELECTED
 				sub_backgrounds += list(value)
 		else if(istype(background_info, /datum/background_info/origin))
 			selected = background_info.type == preferences.origin
 			for(var/datum/background_info/culture as anything in subtypesof(background_info.type))
 				value = get_ui_data_entry(GLOB.origins[culture], culture == preferences.origin, check_valid(culture, preferences.employment))
 				if(value["selected"])
-					selected = CHILD_CULTURE_SELECTED
+					selected = CHILD_BACKGROUND_SELECTED
 				sub_backgrounds += list(value)
 		else if(istype(background_info, /datum/background_info/social_background))
 			selected = background_info.type == preferences.social_background
 			for(var/datum/background_info/culture as anything in subtypesof(background_info.type))
 				value = get_ui_data_entry(GLOB.social_backgrounds[culture], culture == preferences.social_background, check_valid(culture, preferences.employment) && check_valid(background_info, preferences.origin))
 				if(value["selected"])
-					selected = CHILD_CULTURE_SELECTED
+					selected = CHILD_BACKGROUND_SELECTED
 				sub_backgrounds += list(value)
 
 	var/list/data = get_ui_data_entry(background_info, selected, valid)
@@ -122,69 +122,34 @@
 		return TRUE
 	return FALSE
 
-/datum/preference_middleware/backgrounds/proc/verify_origin(list/params, mob/user)
-	var/datum/background_info/employment/culture = GLOB.employments[text2path(params["background"])]
-
-	// If a preresiquite isn't selected, yeet everything that shouldn't be selected.
-	if(preferences.social_background && !culture)
-		preferences.social_background = null
-		return TRUE
-	if(preferences.origin && !(culture || preferences.social_background))
-		preferences.social_background = null
-		preferences.origin = null
-		return TRUE
-
-	if(culture)
-		if(!check_valid(culture, preferences.origin))
-			preferences.origin = null
-			preferences.social_background = null
-		if(!check_valid(culture, preferences.social_background))
-			preferences.social_background = null
-		preferences.employment = culture.type
-		return TRUE
+/datum/preference_middleware/backgrounds/proc/verify_employment(list/params, mob/user)
+	var/datum/background_info/employment/employment = GLOB.origin[text2path(params["background"])]
 
 	// It isn't valid, let's not let the game try to use whatever was sent.
-	preferences.employment = null
+	if(!check_valid(employment, preferences.origin) || !check_valid(employment, preferences.social_background))
+		return TRUE
+
+	preferences.origin = employment.type
 	return TRUE
 
 /datum/preference_middleware/backgrounds/proc/verify_social_background(list/params, mob/user)
-	var/datum/background_info/origin/location = GLOB.origins[text2path(params["background"])]
-
-	// If a preresiquite isn't selected, yeet everything that shouldn't be selected.
-	if(!preferences.employment)
-		preferences.social_background = null
-		preferences.origin = null
-		return TRUE
-
-	if(location)
-		if(!check_valid(location, preferences.social_background))
-			preferences.social_background = null
-		preferences.origin = location.type
-		return TRUE
+	var/datum/background_info/social_background/social_background = GLOB.origins[text2path(params["background"])]
 
 	// It isn't valid, let's not let the game try to use whatever was sent.
-	preferences.origin = null
+	if(!check_valid(social_background, preferences.social_background))
+		return TRUE
+
+	preferences.social_background = social_background.type
 	return TRUE
 
-/datum/preference_middleware/backgrounds/proc/verify_employment(list/params, mob/user)
-	var/datum/background_info/social_background/faction = GLOB.social_backgrounds[text2path(params["background"])]
-
-	// If a preresiquite isn't selected, yeet everything that shouldn't be selected.
-	if(!preferences.employment)
-		preferences.social_background = null
-		preferences.origin = null
-		return TRUE
-	if(!preferences.origin)
-		preferences.origin = null
-		return TRUE
-
-	// Nothing to validate.
-	if(faction)
-		preferences.social_background = faction.type
-		return TRUE
+/datum/preference_middleware/backgrounds/proc/verify_origin(list/params, mob/user)
+	var/datum/background_info/origin/origin = GLOB.employments[text2path(params["background"])]
 
 	// It isn't valid, let's not let the game try to use whatever was sent.
-	preferences.social_background = null
+	if(!origin)
+		return TRUE
+
+	preferences.origin = origin.type
 	return TRUE
 
-#undef CHILD_CULTURE_SELECTED
+#undef CHILD_BACKGROUND_SELECTED
