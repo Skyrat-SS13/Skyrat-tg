@@ -27,22 +27,22 @@
 	var/list/sub_backgrounds = list()
 	if(valid)
 		var/value
-		if(istype(background_info, /datum/background_info/employment))
-			selected = background_info.type == preferences.employment
+		if(istype(background_info, /datum/background_info/origin))
+			selected = background_info.type == preferences.origin
 			for(var/datum/background_info/culture as anything in subtypesof(background_info.type))
 				value = get_ui_data_entry(GLOB.origins[culture], culture == preferences.origin, TRUE)
 				if(value["selected"])
 					selected = CHILD_BACKGROUND_SELECTED
 				sub_backgrounds += list(value)
-		else if(istype(background_info, /datum/background_info/origin))
-			selected = background_info.type == preferences.origin
+		else if(istype(background_info, /datum/background_info/social_background))
+			selected = background_info.type == preferences.social_background
 			for(var/datum/background_info/culture as anything in subtypesof(background_info.type))
 				value = get_ui_data_entry(GLOB.social_backgrounds[culture], culture == preferences.social_background, check_valid(culture, preferences.origin))
 				if(value["selected"])
 					selected = CHILD_BACKGROUND_SELECTED
 				sub_backgrounds += list(value)
-		else if(istype(background_info, /datum/background_info/social_background))
-			selected = background_info.type == preferences.social_background
+		else if(istype(background_info, /datum/background_info/employment))
+			selected = background_info.type == preferences.employment
 			for(var/datum/background_info/culture as anything in subtypesof(background_info.type))
 				value = get_ui_data_entry(GLOB.employments[culture], culture == preferences.employment, check_valid(culture, preferences.origin) && check_valid(background_info, preferences.social_background))
 				if(value["selected"])
