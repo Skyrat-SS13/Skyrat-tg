@@ -51,14 +51,6 @@
 	tgui_id = "OutboundPuzzleAnswer"
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 	max_integrity = INFINITY
-	/// Cached list containing the imporant data
-	var/list/payload = list()
-
-/obj/machinery/computer/puzzle_answers/attack_hand(mob/living/user, list/modifiers)
-	to_chat(user, span_notice("You begin peering over the [src]..."))
-	if(!do_after(user, 1 SECONDS, src)) //revert to 10 later
-		return
-	return ..()
 
 /obj/machinery/computer/puzzle_answers/ui_interact(mob/user, datum/tgui/ui)
 	. = ..()
@@ -67,16 +59,16 @@
 		ui = new(user, src, tgui_id, name)
 		ui.open()
 
-/obj/machinery/computer/puzzle_answers/ui_data(mob/user)
+/obj/machinery/computer/puzzle_answers/ui_static_data(mob/user)
 	OUTBOUND_CONTROLLER
 	var/list/data = list()
-	if(!length(payload))
-		for(var/puzzle_name in outbound_controller.puzzle_controller.puzzles)
-			var/datum/outbound_teamwork_puzzle/puzzle = outbound_controller.puzzle_controller.puzzles[puzzle_name]
-			payload.Add(list(list(
-				"puzzname" = puzzle_name,
-				"desc" = puzzle.desc,
-			)))
+	var/list/payload = list()
+	for(var/puzzle_name in outbound_controller.puzzle_controller.puzzles)
+		var/datum/outbound_teamwork_puzzle/puzzle = outbound_controller.puzzle_controller.puzzles[puzzle_name]
+		payload.Add(list(list(
+			"puzzname" = puzzle_name,
+			"desc" = puzzle.desc,
+		)))
 	data["all_puzzles"] = payload
 	return data
 
