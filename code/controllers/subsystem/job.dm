@@ -934,7 +934,10 @@ SUBSYSTEM_DEF(job)
 		JobDebug("[debug_prefix] Error: [get_job_unavailable_error_message(JOB_UNAVAILABLE_BACKGROUND_MISSING)], Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")
 		return JOB_UNAVAILABLE_BACKGROUND_MISSING
 
-	if(!player.client.prefs.origin.is_job_valid(possible_job) || !player.client.prefs.social_background.is_job_valid(possible_job) || !player.client.prefs.employment.is_job_valid(possible_job))
+	var/datum/background_info/origin = GLOB.origins[player.client.prefs.origin]
+	var/datum/background_info/social_background = GLOB.social_backgrounds[player.client.prefs.social_background]
+	var/datum/background_info/employment = GLOB.employments[player.client.prefs.employment]
+	if(!origin.is_job_valid(possible_job) || !social_background.is_job_valid(possible_job) || !employment.is_job_valid(possible_job))
 		JobDebug("[debug_prefix] Error: [get_job_unavailable_error_message(JOB_UNAVAILABLE_BACKGROUND_INVALID)], Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")
 		return JOB_UNAVAILABLE_BACKGROUND_INVALID
 	// SKYRAT EDIT END
