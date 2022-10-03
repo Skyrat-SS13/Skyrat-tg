@@ -6737,6 +6737,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
 /obj/effect/turf_decal/trimline/blue/filled/warning,
+/obj/structure/disposalpipe/segment,
 /turf/open/floor/iron/white/smooth_edge{
 	dir = 1
 	},
@@ -13405,6 +13406,7 @@
 /obj/effect/mapping_helpers/airlock/access/all/medical/psychology,
 /obj/machinery/door/firedoor,
 /obj/structure/cable,
+/obj/structure/disposalpipe/segment,
 /turf/open/floor/iron/dark/blue,
 /area/station/medical/psychology)
 "hQM" = (
@@ -18092,12 +18094,14 @@
 /turf/open/floor/iron,
 /area/station/security/courtroom)
 "kJx" = (
-/obj/effect/turf_decal/trimline/blue/filled/line{
+/obj/effect/turf_decal/trimline/yellow/filled/line{
 	dir = 1
 	},
-/obj/structure/sign/warning/cold_temp/directional/north,
+/obj/structure/disposalpipe/junction{
+	dir = 4
+	},
 /turf/open/floor/iron/white/smooth_edge,
-/area/station/hallway/primary/central/aft)
+/area/station/hallway/primary/starboard)
 "kJJ" = (
 /obj/machinery/atmospherics/components/binary/pump/on{
 	dir = 8;
@@ -25330,6 +25334,13 @@
 	},
 /turf/open/floor/iron/white/smooth_large,
 /area/station/hallway/primary/central/aft)
+"oRw" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/cable,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/iron/white/smooth_large,
+/area/station/hallway/primary/starboard)
 "oSq" = (
 /obj/item/flashlight/lantern{
 	pixel_y = 7
@@ -30997,6 +31008,13 @@
 	},
 /turf/open/floor/iron/white,
 /area/station/medical/pharmacy)
+"smR" = (
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 1
+	},
+/obj/structure/sign/warning/cold_temp/directional/north,
+/turf/open/floor/iron/white/smooth_edge,
+/area/station/hallway/primary/central/aft)
 "smU" = (
 /obj/structure/sign/directions/medical{
 	pixel_y = -2
@@ -80166,8 +80184,8 @@ lad
 xAA
 oOw
 duM
-abP
-dKu
+kJx
+oRw
 dXz
 hQx
 tIv
@@ -85343,7 +85361,7 @@ tOg
 apE
 trO
 trO
-kJx
+smR
 hMS
 nlO
 lpk
