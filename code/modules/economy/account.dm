@@ -134,9 +134,15 @@
 		return
 	var/money_to_transfer = round(account_job.paycheck * payday_modifier * amount_of_paychecks)
 	if(amount_of_paychecks == 1)
-		money_to_transfer = clamp(money_to_transfer, 0, PAYCHECK_CREW) //We want to limit single, passive paychecks to regular crew income.
+		// SKYRAT EDIT START - Backgrounds
+		// Fun fact, heads are paid as much as regular crew during paychecks in tgcode, so I'm following it here.
+
+		// The multipliers are outside of the clamp to allow for backgrounds to actually have an impact.
+		money_to_transfer = clamp(money_to_transfer, 0, PAYCHECK_CREW) * BASE_PAYCHECK_MULTIPLIER * background_multiplier //We want to limit single, passive paychecks to regular crew income.
+		// SKYRAT EDIT END
 	if(free)
-		adjust_money(money_to_transfer)
+		//adjust_money(money_to_transfer) // ORIGINAL
+		adjust_money(money_to_transfer * BASE_PAYCHECK_MULTIPLIER * background_multiplier) // SKYRAT EDIT - Backgrounds
 		SSblackbox.record_feedback("amount", "free_income", money_to_transfer)
 		SSeconomy.station_target += money_to_transfer
 		log_econ("[money_to_transfer] credits were given to [src.account_holder]'s account from income.")
@@ -144,7 +150,8 @@
 	else
 		var/datum/bank_account/department_account = SSeconomy.get_dep_account(account_job.paycheck_department)
 		if(department_account)
-			if(!transfer_money(department_account, money_to_transfer))
+			//if(!transfer_money(department_account, money_to_transfer)) // ORIGINAL
+			if(!transfer_money(department_account, money_to_transfer * BASE_PAYCHECK_MULTIPLIER * background_multiplier)) // SKYRAT EDIT - Backgrounds
 				bank_card_talk("ERROR: Payday aborted, departmental funds insufficient.")
 				return FALSE
 			else
@@ -157,7 +164,7 @@
  * This sends a local chat message to the owner of a bank account, on all ID cards registered to the bank_account.
  * If not held, sends out a message to all nearby players.
  * Arguments:
- * * message - text that will be sent to listeners after the id card icon 
+ * * message - text that will be sent to listeners after the id card icon
  * * force - if TRUE ignore checks on client and client prefernces.
  */
 /datum/bank_account/proc/bank_card_talk(message, force)

@@ -193,6 +193,14 @@
 
 /mob/living/carbon/human/on_job_equipping(datum/job/equipping, datum/preferences/used_pref) //SKYRAT EDIT CHANGE
 	var/datum/bank_account/bank_account = new(real_name, equipping, dna.species.payday_modifier)
+	// SKYRAT EDIT ADDITION START - Backgrounds
+	if(client?.prefs)
+		var/datum/preferences/prefs = client.prefs
+		var/datum/background_info/origin = GLOB.origins[prefs.origin]
+		var/datum/background_info/social_background = GLOB.social_backgrounds[prefs.social_background]
+		var/datum/background_info/employment = GLOB.employments[prefs.employment]
+		bank_account.background_multiplier = (origin.economic_power + social_background.economic_power + employment.economic_power) / 3
+	// SKYRAT EDIT ADDITION END
 	bank_account.payday(STARTING_PAYCHECKS, TRUE)
 	account_id = bank_account.account_id
 	bank_account.replaceable = FALSE
