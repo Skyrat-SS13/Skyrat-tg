@@ -73,11 +73,11 @@ export const CharacterPreferenceWindow = (props, context) => {
       pageContents = <JobsPage />;
       break;
     // SKYRAT EDIT
-    case Page.Limbs:
-      pageContents = <LimbsPage />;
-      break;
     case Page.Backgrounds:
       pageContents = <BackgroundsPage />;
+      break;
+    case Page.Limbs:
+      pageContents = <LimbsPage />;
       break;
     case Page.Languages:
       pageContents = <LanguagesPage />;
