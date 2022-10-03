@@ -20,7 +20,7 @@ enum Page {
   Jobs,
   // SKYRAT EDIT
   Limbs,
-  Cultures,
+  Backgrounds,
   Languages,
   // SKYRAT EDIT END
   Species,
@@ -76,7 +76,7 @@ export const CharacterPreferenceWindow = (props, context) => {
     case Page.Limbs:
       pageContents = <LimbsPage />;
       break;
-    case Page.Cultures:
+    case Page.Backgrounds:
       pageContents = <BackgroundsPage />;
       break;
     case Page.Languages:
@@ -156,9 +156,9 @@ export const CharacterPreferenceWindow = (props, context) => {
               <Stack.Item grow>
                 <PageButton
                   currentPage={currentPage}
-                  page={Page.Cultures}
+                  page={Page.Backgrounds}
                   setPage={setCurrentPage}>
-                  Cultures
+                  Background
                 </PageButton>
               </Stack.Item>
 

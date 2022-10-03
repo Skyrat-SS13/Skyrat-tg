@@ -19,7 +19,7 @@ const BackgroundEntry = (props) => {
     <Stack
       vertical
       className={
-        background.selected ? '' : 'PreferencesMenu__Cultures__contents'
+        background.selected ? '' : 'PreferencesMenu__Backgrounds__contents'
       }>
       <Stack.Item>{background.description.replace(/< ?br ?\/?>/gi)}</Stack.Item>
       <Stack.Item>
@@ -108,7 +108,7 @@ const FeatureEntry = (props: { feature: CultureFeature }) => {
           <Box>{feature.description}</Box>
         </Box>
       }>
-      <Box class={feature.css_class + ' cultures32x32 ' + feature.icon} />
+      <Box class={feature.css_class + ' backgrounds32x32 ' + feature.icon} />
     </Tooltip>
   );
 };
@@ -129,19 +129,19 @@ const CategoryEntry = (props, context) => {
       class={
         val.selected
           ? val.selected === 2
-            ? 'PreferencesMenu__Cultures__entry PreferencesMenu__Cultures__selected PreferencesMenu__Cultures__selectedChild'
-            : 'PreferencesMenu__Cultures__entry PreferencesMenu__Cultures__selected'
-          : 'PreferencesMenu__Cultures__entry'
+            ? 'PreferencesMenu__Backgrounds__entry PreferencesMenu__Backgrounds__selected PreferencesMenu__Backgrounds__selectedChild'
+            : 'PreferencesMenu__Backgrounds__entry PreferencesMenu__Backgrounds__selected'
+          : 'PreferencesMenu__Backgrounds__entry'
       }>
       <div
         class={
-          'Section ' + val.valid ? '' : 'PreferencesMenu__Cultures__invalid'
+          'Section ' + val.valid ? '' : 'PreferencesMenu__Backgrounds__invalid'
         }>
         <div
           class="Section__title"
           className={
             val.valid && !(val.selected === 1)
-              ? 'PreferencesMenu__Cultures__pointer'
+              ? 'PreferencesMenu__Backgrounds__pointer'
               : ''
           }
           onClick={() =>
@@ -158,7 +158,7 @@ const CategoryEntry = (props, context) => {
             {val.name}
           </span>
           {val.sub_culture_amount > 0 ? (
-            <span className="PreferencesMenu__Cultures__subAmount">
+            <span className="PreferencesMenu__Backgrounds__subAmount">
               {'+' + val.sub_culture_amount}
             </span>
           ) : (
@@ -177,7 +177,7 @@ const CategoryEntry = (props, context) => {
             </Stack>
             {parentSelected ? (
               <Stack vertical>
-                {val.sub_cultures.map((val2) => (
+                {val.sub_backgrounds.map((val2) => (
                   <CategoryEntry key={val2.name} val={val2} type={type} />
                 ))}
               </Stack>
