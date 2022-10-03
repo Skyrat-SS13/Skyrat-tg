@@ -888,6 +888,11 @@
 			if(initial(quirk_type.abstract_parent_type) == type)
 				continue
 
+			// SKYRAT EDIT ADDITION START
+			if(initial(quirk_type.erp_quirk) && CONFIG_GET(flag/disable_erp_preferences))
+				continue
+			// SKYRAT EDIT ADDITION END
+
 			var/qname = initial(quirk_type.name)
 			options[has_quirk(quirk_type) ? "[qname] (Remove)" : "[qname] (Add)"] = quirk_type
 
