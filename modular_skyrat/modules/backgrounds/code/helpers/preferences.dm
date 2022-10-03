@@ -5,6 +5,10 @@
 	for(var/datum/preference_middleware/backgrounds/middleware in middleware) // Cursed as fuck, but I don't care.
 		background_middleware = middleware
 
+	if(!background_middleware)
+		message_admins("\[SANITIZE_BACKGROUNDS] OH NO, I CAN'T FIND THE BACKGROUNDS MIDDLEWARE!! ALERT CODERS!")
+		return
+
 	// I'm not remaking code I already made.
 	if(!background_middleware.verify_origin(list("background" = "[origin]")))
 		origin = null
