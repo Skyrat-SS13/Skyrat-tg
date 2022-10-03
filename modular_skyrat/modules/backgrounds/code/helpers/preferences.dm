@@ -6,7 +6,7 @@
 		background_middleware = middleware
 
 	if(!background_middleware)
-		message_admins("\[SANITIZE_BACKGROUNDS] OH NO, I CAN'T FIND THE BACKGROUNDS MIDDLEWARE!! ALERT CODERS!")
+		message_admins("\[PREFS_SANITIZE_BACKGROUNDS] OH NO, I CAN'T FIND THE BACKGROUNDS MIDDLEWARE!! ALERT CODERS!")
 		return
 
 	// I'm not remaking code I already made.
