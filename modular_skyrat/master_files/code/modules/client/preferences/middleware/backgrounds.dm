@@ -30,21 +30,21 @@
 		if(istype(background_info, /datum/background_info/employment))
 			selected = background_info.type == preferences.employment
 			for(var/datum/background_info/culture as anything in subtypesof(background_info.type))
-				value = get_ui_data_entry(GLOB.employments[culture], culture == preferences.employment, TRUE)
+				value = get_ui_data_entry(GLOB.origins[culture], culture == preferences.origin, TRUE)
 				if(value["selected"])
 					selected = CHILD_BACKGROUND_SELECTED
 				sub_backgrounds += list(value)
 		else if(istype(background_info, /datum/background_info/origin))
 			selected = background_info.type == preferences.origin
 			for(var/datum/background_info/culture as anything in subtypesof(background_info.type))
-				value = get_ui_data_entry(GLOB.origins[culture], culture == preferences.origin, check_valid(culture, preferences.employment))
+				value = get_ui_data_entry(GLOB.social_backgrounds[culture], culture == preferences.social_background, check_valid(culture, preferences.origin))
 				if(value["selected"])
 					selected = CHILD_BACKGROUND_SELECTED
 				sub_backgrounds += list(value)
 		else if(istype(background_info, /datum/background_info/social_background))
 			selected = background_info.type == preferences.social_background
 			for(var/datum/background_info/culture as anything in subtypesof(background_info.type))
-				value = get_ui_data_entry(GLOB.social_backgrounds[culture], culture == preferences.social_background, check_valid(culture, preferences.employment) && check_valid(background_info, preferences.origin))
+				value = get_ui_data_entry(GLOB.employments[culture], culture == preferences.employment, check_valid(culture, preferences.origin) && check_valid(background_info, preferences.social_background))
 				if(value["selected"])
 					selected = CHILD_BACKGROUND_SELECTED
 				sub_backgrounds += list(value)
@@ -130,16 +130,20 @@
 		return TRUE
 
 	preferences.origin = origin.type
+	// I give up on doing advanced code for this. Too much effort for too little gain.
+	preferences.social_background = null
+	preferences.employment = null
 	return TRUE
 
 /datum/preference_middleware/backgrounds/proc/verify_social_background(list/params, mob/user)
 	var/datum/background_info/social_background/social_background = GLOB.social_backgrounds[text2path(params["background"])]
 
 	// It isn't valid, let's not let the game try to use whatever was sent.
-	if(!check_valid(social_background, preferences.social_background))
+	if(!check_valid(social_background, preferences.origin))
 		return TRUE
 
 	preferences.social_background = social_background.type
+	preferences.employment = null
 	return TRUE
 
 /datum/preference_middleware/backgrounds/proc/verify_employment(list/params, mob/user)
