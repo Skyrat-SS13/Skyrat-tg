@@ -43,6 +43,13 @@
 "abr" = (
 /turf/closed/wall/r_wall,
 /area/station/ai_monitored/turret_protected/ai)
+"abE" = (
+/obj/machinery/door/airlock/medical,
+/obj/effect/mapping_helpers/airlock/access/all/medical/general{
+	name = "Cold Med Storage"
+	},
+/turf/open/floor/iron,
+/area/station/medical/medbay)
 "abR" = (
 /obj/machinery/door/airlock/hatch{
 	name = "Airtight Hatch"
@@ -60,18 +67,6 @@
 "aco" = (
 /turf/open/floor/iron,
 /area/station/maintenance/fore)
-"acZ" = (
-/obj/item/stack/package_wrap,
-/obj/item/stack/package_wrap,
-/obj/item/hand_labeler,
-/obj/structure/table/glass,
-/obj/effect/turf_decal/tile/green/half/contrasted{
-	dir = 4
-	},
-/turf/open/floor/iron/white/side{
-	dir = 8
-	},
-/area/station/service/hydroponics)
 "adl" = (
 /obj/structure/extinguisher_cabinet/directional/south,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -2367,6 +2362,10 @@
 	},
 /turf/open/floor/iron/cafeteria,
 /area/station/service/kitchen)
+"cwM" = (
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/station/medical/office)
 "cwO" = (
 /obj/structure/table,
 /obj/item/storage/box/beakers,
@@ -4532,25 +4531,12 @@
 "ewa" = (
 /obj/structure/rack,
 /obj/item/wrench,
-/obj/item/reagent_containers/spray/plantbgone{
-	pixel_x = 7;
-	pixel_y = 2
-	},
-/obj/item/reagent_containers/spray/plantbgone{
-	pixel_x = 4;
-	pixel_y = 6
-	},
-/obj/item/reagent_containers/spray/plantbgone{
-	pixel_x = 2;
-	pixel_y = 3
-	},
-/obj/item/grenade/chem_grenade/antiweed{
-	pixel_x = -5;
-	pixel_y = 3
-	},
 /obj/effect/turf_decal/tile/green{
 	dir = 4
 	},
+/obj/item/stack/sheet/iron/five,
+/obj/item/stack/sheet/glass,
+/obj/item/stack/sheet/glass,
 /turf/open/floor/iron/white/side{
 	dir = 10
 	},
@@ -5044,11 +5030,12 @@
 /turf/open/floor/plating,
 /area/station/maintenance/department/medical/central)
 "eSJ" = (
-/obj/effect/turf_decal/tile/green/half/contrasted{
+/obj/effect/turf_decal/tile/green/opposingcorners{
 	dir = 1
 	},
-/obj/structure/disposalpipe/segment,
-/turf/open/floor/iron/white/side,
+/obj/machinery/hydroponics/constructable,
+/obj/machinery/light/directional/north,
+/turf/open/floor/iron,
 /area/station/service/hydroponics)
 "eTr" = (
 /obj/structure/table/reinforced,
@@ -5228,17 +5215,17 @@
 /turf/open/floor/iron/cafeteria,
 /area/station/service/kitchen)
 "fdi" = (
-/obj/machinery/requests_console/directional/south{
-	department = "Hydroponics";
-	departmentType = 2;
-	name = "Hydroponics Requests Console"
-	},
-/obj/structure/table,
-/obj/machinery/reagentgrinder,
-/obj/effect/turf_decal/tile/green/half/contrasted{
+/obj/effect/turf_decal/tile/green/opposingcorners{
 	dir = 1
 	},
-/turf/open/floor/iron/white/side,
+/obj/structure/disposalpipe/trunk{
+	dir = 1
+	},
+/obj/machinery/disposal/bin{
+	desc = "A pneumatic waste disposal unit. This one leads into space!";
+	name = "deathsposal unit"
+	},
+/turf/open/floor/iron,
 /area/station/service/hydroponics)
 "fep" = (
 /obj/structure/kitchenspike,
@@ -5434,12 +5421,17 @@
 /obj/effect/turf_decal/tile/green/opposingcorners{
 	dir = 1
 	},
-/obj/structure/disposalpipe/trunk{
-	dir = 1
+/obj/structure/disposalpipe/segment{
+	dir = 4
 	},
-/obj/machinery/disposal/bin{
-	desc = "A pneumatic waste disposal unit. This one leads into space!";
-	name = "deathsposal unit"
+/obj/structure/table/glass,
+/obj/item/reagent_containers/spray/plantbgone{
+	pixel_x = 4;
+	pixel_y = 6
+	},
+/obj/item/reagent_containers/spray/plantbgone{
+	pixel_x = 7;
+	pixel_y = 2
 	},
 /turf/open/floor/iron,
 /area/station/service/hydroponics)
@@ -5485,7 +5477,7 @@
 /area/station/cargo/warehouse)
 "fqi" = (
 /obj/structure/disposalpipe/segment,
-/turf/closed/wall/r_wall,
+/turf/closed/wall,
 /area/station/service/hydroponics)
 "fqp" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -6395,14 +6387,15 @@
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/turret_protected/aisat_interior)
 "gvE" = (
-/obj/machinery/chem_master/condimaster{
-	desc = "Used to separate out liquids - useful for purifying botanical extracts. Also dispenses condiments.";
-	name = "SapMaster XP"
-	},
 /obj/effect/turf_decal/tile/green/half/contrasted{
-	dir = 1
+	dir = 4
 	},
-/turf/open/floor/iron/white/side,
+/obj/structure/chair/office/light{
+	dir = 8
+	},
+/turf/open/floor/iron/white/side{
+	dir = 8
+	},
 /area/station/service/hydroponics)
 "gvF" = (
 /obj/machinery/atmospherics/pipe/smart/manifold/purple/visible{
@@ -7440,8 +7433,13 @@
 /turf/open/floor/grass,
 /area/station/service/hydroponics/garden)
 "hwW" = (
-/turf/open/floor/iron/kitchen_coldroom/freezerfloor,
-/area/station/medical/medbay)
+/obj/machinery/requests_console/directional/south{
+	department = "Hydroponics";
+	departmentType = 2;
+	name = "Hydroponics Requests Console"
+	},
+/turf/open/space/basic,
+/area/space/nearstation)
 "hyy" = (
 /obj/structure/fluff/metalpole,
 /obj/structure/fluff/metalpole{
@@ -8370,12 +8368,19 @@
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/turret_protected/aisat_interior)
 "iml" = (
-/obj/machinery/door/airlock/medical,
-/obj/effect/mapping_helpers/airlock/access/all/medical/general{
-	name = "Cold Med Storage"
+/obj/machinery/chem_master/condimaster{
+	desc = "Used to separate out liquids - useful for purifying botanical extracts. Also dispenses condiments.";
+	name = "SapMaster XP"
 	},
-/turf/open/floor/iron,
-/area/station/medical/medbay)
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/window/reinforced,
+/obj/effect/turf_decal/tile/green/half/contrasted{
+	dir = 1
+	},
+/turf/open/floor/iron/white/side,
+/area/station/service/hydroponics)
 "imL" = (
 /obj/effect/turf_decal/trimline/yellow/warning{
 	dir = 4
@@ -9682,10 +9687,6 @@
 /area/station/maintenance/port/central)
 "jCf" = (
 /obj/effect/turf_decal/tile/blue,
-/obj/item/stack/package_wrap,
-/obj/item/stack/package_wrap,
-/obj/item/hand_labeler,
-/obj/structure/table/glass,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
@@ -9695,6 +9696,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/machinery/hydroponics/constructable,
 /turf/open/floor/iron/white/side{
 	dir = 8
 	},
@@ -13657,11 +13659,11 @@
 /turf/open/space,
 /area/space/nearstation)
 "ntT" = (
-/obj/machinery/hydroponics/constructable,
-/obj/effect/turf_decal/tile/green/half/contrasted{
+/obj/effect/turf_decal/tile/green/opposingcorners{
 	dir = 1
 	},
-/turf/open/floor/iron/white/side,
+/obj/structure/chair/office/light,
+/turf/open/floor/iron,
 /area/station/service/hydroponics)
 "nuD" = (
 /obj/effect/turf_decal/trimline/blue/filled/line{
@@ -13993,12 +13995,16 @@
 /turf/open/floor/engine,
 /area/station/science/xenobiology)
 "nLR" = (
-/obj/effect/turf_decal/trimline/blue/filled/line{
-	dir = 4
+/obj/item/stack/package_wrap,
+/obj/item/stack/package_wrap,
+/obj/item/hand_labeler,
+/obj/structure/table/glass,
+/obj/structure/window/reinforced,
+/obj/effect/turf_decal/tile/green/half/contrasted{
+	dir = 1
 	},
-/obj/effect/landmark/start/hangover,
-/turf/open/floor/iron,
-/area/station/medical/medbay)
+/turf/open/floor/iron/white/side,
+/area/station/service/hydroponics)
 "nLX" = (
 /obj/machinery/door/poddoor{
 	id = "Secure Storage";
@@ -15259,14 +15265,10 @@
 /turf/open/floor/iron,
 /area/station/cargo/warehouse)
 "oSW" = (
-/obj/item/book/manual/hydroponics_pod_people,
-/obj/item/paper/guides/jobs/hydroponics,
-/obj/item/clothing/accessory/armband/hydro,
-/obj/item/toy/figure/botanist,
-/obj/structure/table/glass,
 /obj/effect/turf_decal/tile/green/half/contrasted{
 	dir = 4
 	},
+/obj/machinery/hydroponics/constructable,
 /turf/open/floor/iron/white/side{
 	dir = 8
 	},
@@ -16593,9 +16595,17 @@
 /turf/open/floor/iron/white/textured_large,
 /area/station/science/cytology)
 "qdV" = (
-/obj/structure/cable,
-/turf/open/floor/iron,
-/area/station/medical/office)
+/obj/item/book/manual/hydroponics_pod_people,
+/obj/item/paper/guides/jobs/hydroponics,
+/obj/item/clothing/accessory/armband/hydro,
+/obj/item/toy/figure/botanist,
+/obj/structure/table/glass,
+/obj/structure/window/reinforced,
+/obj/effect/turf_decal/tile/green/half/contrasted{
+	dir = 1
+	},
+/turf/open/floor/iron/white/side,
+/area/station/service/hydroponics)
 "qeo" = (
 /obj/machinery/atmospherics/pipe/smart/simple/orange/visible/layer4{
 	dir = 6
@@ -17646,6 +17656,21 @@
 	},
 /turf/open/floor/iron,
 /area/station/engineering/break_room)
+"qYU" = (
+/obj/effect/turf_decal/tile/blue,
+/obj/item/stack/package_wrap,
+/obj/item/stack/package_wrap,
+/obj/item/hand_labeler,
+/obj/structure/table/glass,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/window/reinforced,
+/obj/effect/turf_decal/tile/green/half/contrasted{
+	dir = 1
+	},
+/turf/open/floor/iron/white/side,
+/area/station/service/hydroponics)
 "qZL" = (
 /obj/machinery/suit_storage_unit/standard_unit,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
@@ -18635,6 +18660,17 @@
 /obj/effect/landmark/start/hangover,
 /turf/open/floor/carpet/donk,
 /area/station/commons/storage/art)
+"rXT" = (
+/obj/structure/table,
+/obj/machinery/reagentgrinder,
+/obj/effect/turf_decal/tile/green/half/contrasted{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/green/half/contrasted{
+	dir = 1
+	},
+/turf/open/floor/iron/white/side,
+/area/station/service/hydroponics)
 "rYh" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
@@ -20260,12 +20296,20 @@
 /turf/open/floor/engine,
 /area/station/engineering/supermatter)
 "txg" = (
-/obj/machinery/hydroponics/constructable,
 /obj/effect/turf_decal/tile/green/opposingcorners{
 	dir = 1
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
+	},
+/obj/structure/table/glass,
+/obj/item/grenade/chem_grenade/antiweed{
+	pixel_x = -5;
+	pixel_y = 3
+	},
+/obj/item/reagent_containers/spray/plantbgone{
+	pixel_x = 2;
+	pixel_y = 3
 	},
 /turf/open/floor/iron,
 /area/station/service/hydroponics)
@@ -21371,6 +21415,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/item/clothing/accessory/lewdapron,
 /turf/open/floor/iron/cafeteria,
 /area/station/service/kitchen)
 "usV" = (
@@ -21970,8 +22015,8 @@
 /turf/open/floor/plating,
 /area/station/maintenance/aft/lesser)
 "uTR" = (
-/turf/closed/wall/r_wall,
-/area/station/service/hydroponics)
+/turf/open/floor/iron/kitchen_coldroom/freezerfloor,
+/area/station/medical/medbay)
 "uUt" = (
 /obj/structure/table,
 /obj/item/stack/sheet/iron/fifty,
@@ -22147,7 +22192,8 @@
 /obj/effect/turf_decal/tile/green/half/contrasted{
 	dir = 4
 	},
-/obj/structure/table/glass,
+/obj/machinery/hydroponics/constructable,
+/obj/machinery/light/directional/north,
 /turf/open/floor/iron/white/side{
 	dir = 8
 	},
@@ -22842,7 +22888,7 @@
 /area/station/maintenance/disposal)
 "vHY" = (
 /obj/structure/sign/poster/contraband/kudzu,
-/turf/closed/wall/r_wall,
+/turf/closed/wall,
 /area/station/service/hydroponics)
 "vIK" = (
 /turf/open/floor/iron/dark,
@@ -23290,6 +23336,13 @@
 /obj/item/radio/intercom/directional/east,
 /turf/open/floor/iron,
 /area/station/science/xenobiology)
+"whk" = (
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 4
+	},
+/obj/effect/landmark/start/hangover,
+/turf/open/floor/iron,
+/area/station/medical/medbay)
 "whY" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/decal/cleanable/oil/slippery,
@@ -64303,11 +64356,11 @@ qhH
 rib
 oaA
 vcv
-acZ
+oSW
 oSW
 jCf
 iZd
-iZd
+gvE
 ewa
 uvo
 rnY
@@ -64565,7 +64618,7 @@ gTU
 lTD
 hHn
 cPV
-eSJ
+cPV
 dxm
 nLI
 cou
@@ -64822,8 +64875,8 @@ sZZ
 itS
 txg
 qkY
-gvE
-uvo
+qkY
+iml
 vAw
 bro
 veQ
@@ -65079,8 +65132,8 @@ qkY
 oOg
 sEi
 mVE
-ntT
-uvo
+qkY
+nLR
 vAw
 bro
 xbn
@@ -65334,10 +65387,10 @@ lUQ
 sZZ
 sZZ
 itS
-txg
+foh
 qkY
 ntT
-uvo
+qdV
 pgr
 rJJ
 dQN
@@ -65593,8 +65646,8 @@ qkY
 oOg
 juK
 qkY
-ntT
-iYQ
+qkY
+qYU
 hyE
 hyE
 hyE
@@ -65844,14 +65897,14 @@ xtD
 xtD
 xtD
 nQd
-ahW
+eSJ
 ahW
 ahW
 sGM
 kNM
-foh
+cPV
 fdi
-iYQ
+rXT
 hyE
 kPh
 qED
@@ -66106,9 +66159,9 @@ iib
 nbR
 jky
 rzT
-uTR
-uTR
-uTR
+iYQ
+iYQ
+iYQ
 hyE
 pcp
 jfM
@@ -66364,7 +66417,7 @@ fku
 ykh
 lna
 vHY
-mOU
+hwW
 mOU
 hyE
 jLt
@@ -66620,7 +66673,7 @@ iIY
 iIY
 gnv
 cwO
-uTR
+iYQ
 mOU
 mOU
 mrk
@@ -66877,7 +66930,7 @@ kgn
 iIY
 gnv
 ycu
-uTR
+iYQ
 dGv
 qgJ
 pQN
@@ -67134,7 +67187,7 @@ mUs
 sLw
 gnv
 ycu
-uTR
+iYQ
 mOU
 mOU
 rno
@@ -67391,7 +67444,7 @@ gnv
 gnv
 gnv
 pjo
-uTR
+iYQ
 mOU
 mOU
 qPQ
@@ -67905,7 +67958,7 @@ iYQ
 iYQ
 iYQ
 iYQ
-uTR
+iYQ
 mOU
 rQy
 mOU
@@ -68946,7 +68999,7 @@ wFR
 mOU
 kri
 owG
-hwW
+uTR
 aUD
 dAt
 rkI
@@ -69203,7 +69256,7 @@ wtX
 mOU
 kri
 xEn
-hwW
+uTR
 dUz
 dAt
 lBS
@@ -69460,7 +69513,7 @@ wtX
 mOU
 dUz
 dUz
-iml
+abE
 dUz
 dAt
 mtc
@@ -69974,7 +70027,7 @@ weL
 weL
 dUz
 tUg
-nLR
+whk
 uMx
 pwM
 rHD
@@ -71003,7 +71056,7 @@ weL
 hTQ
 bxJ
 tbn
-qdV
+cwM
 mGv
 vio
 gLG
