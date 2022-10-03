@@ -13,3 +13,9 @@
 	var/list/features = list()
 	/// Groups the culture belongs to.
 	var/groups = CULTURE_ALL
+
+/datum/background_info/proc/is_job_valid(datum/job/job)
+	return TRUE
+
+/datum/background_info/proc/is_ghost_role_valid(obj/effect/mob_spawn/ghost_role/human/ghost_role)
+	return TRUE

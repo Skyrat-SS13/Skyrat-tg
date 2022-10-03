@@ -184,8 +184,10 @@
 			return "[jobtitle] requires you to have flavour text for your character."
 		//SKYRAT EDIT END
 		// SKYRAT EDIT ADDITION START - Backgrounds
-		if(JOB_UNAVAILABLE_BACKGROUND)
+		if(JOB_UNAVAILABLE_BACKGROUND_MISSING)
 			return "You need to select your background choices before joining as [jobtitle]."
+		if(JOB_UNAVAILABLE_BACKGROUND_INVALID)
+			return "Your chosen background forbids you from playing as [jobtitle]."
 		// SKYRAT EDIT END
 		if(JOB_UNAVAILABLE_ANTAG_INCOMPAT)
 			return "[jobtitle] is not compatible with some antagonist role assigned to you."
