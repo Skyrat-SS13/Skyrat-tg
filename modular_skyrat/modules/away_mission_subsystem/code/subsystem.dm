@@ -28,9 +28,11 @@ SUBSYSTEM_DEF(away_missions)
 /datum/controller/subsystem/away_missions/proc/controller_setup(datum/source, mapname)
 	SIGNAL_HANDLER
 	var/regex/sanitizing_regex = regex(@"([^A-Za-z])")
-	var/regex/clean_up_regex = regex(@"(\..*)")
+	var/regex/clean_up_regex = regex(@"[^/]*\/")
+	var/regex/clean_up_regex2 = regex(@"(\..*)")
 	var/chosen_path = replacetext(mapname, sanitizing_regex, "_")
 	chosen_path = replacetext(chosen_path, clean_up_regex, "")
+	chosen_path = replacetext(chosen_path, clean_up_regex2, "")
 	chosen_path = text2path("/datum/away_controller/[lowertext(replacetext(chosen_path, clean_up_regex, ""))]") //this donut work with "outbound_expedition.dmm custom"
 	if(!ispath(chosen_path)) //check if this passes or fails on improper paths
 		return
