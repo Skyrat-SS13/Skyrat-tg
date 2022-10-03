@@ -931,8 +931,8 @@ SUBSYSTEM_DEF(job)
 
 	// SKYRAT EDIT ADDITION BEGIN - Backgrounds
 	if(!player.client.prefs.origin || !player.client.prefs.social_background || !player.client.prefs.employment)
-		JobDebug("[debug_prefix] Error: [get_job_unavailable_error_message(JOB_UNAVAILABLE_FLAVOUR)], Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")
-		return JOB_UNAVAILABLE_FLAVOUR
+		JobDebug("[debug_prefix] Error: [get_job_unavailable_error_message(JOB_UNAVAILABLE_BACKGROUND)], Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")
+		return JOB_UNAVAILABLE_BACKGROUND
 	// SKYRAT EDIT END
 
 	// Run this check after is_banned_from since it can query the DB which may sleep.
