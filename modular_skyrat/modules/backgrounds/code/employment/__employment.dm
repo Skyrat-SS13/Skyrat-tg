@@ -15,7 +15,7 @@
 	if(istype(ghost_role, /obj/effect/mob_spawn/ghost_role/human/ash_walker) && !(groups & CULTURE_LAVALAND))
 		return FALSE
 	// If you do have a lavaland employment, but try to do something else, get yeeted.
-	if((groups & CULTURE_LAVALAND) && !istype(ghost_role, obj/effect/mob_spawn/ghost_role/human/ash_walker))
+	if((groups & CULTURE_LAVALAND) && !istype(ghost_role, /obj/effect/mob_spawn/ghost_role/human/ash_walker))
 		return FALSE
 
 	return ..()
