@@ -429,6 +429,8 @@
 /area/station/ai_monitored/turret_protected/ai)
 "auY" = (
 /obj/machinery/airalarm/directional/west,
+/obj/structure/table/reinforced,
+/obj/item/stack/cable_coil,
 /turf/open/floor/iron/dark,
 /area/station/maintenance/solars/starboard/aft)
 "avd" = (
@@ -877,7 +879,7 @@
 /area/station/cargo/miningoffice)
 "aUD" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
-/turf/open/floor/iron,
+/turf/closed/wall,
 /area/station/medical/medbay)
 "aUG" = (
 /obj/effect/turf_decal/stripes/line{
@@ -1452,6 +1454,8 @@
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 1
 	},
+/obj/machinery/power/apc/auto_name/directional/north,
+/obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/medical/office)
 "bxL" = (
@@ -2775,14 +2779,14 @@
 /obj/structure/table/reinforced,
 /obj/item/paper_bin,
 /obj/item/pen,
-/obj/machinery/door/window/left/directional/west{
+/obj/machinery/door/firedoor/border_only{
+	dir = 8
+	},
+/obj/machinery/door/window/right/directional/west{
 	dir = 4;
 	name = "Hydroponics Desk";
 	req_access = list("hydroponics");
 	req_access_txt = "35"
-	},
-/obj/machinery/door/firedoor/border_only{
-	dir = 8
 	},
 /turf/open/floor/iron,
 /area/station/service/hydroponics)
@@ -3596,10 +3600,6 @@
 	},
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
-/obj/machinery/disposal/bin,
-/obj/structure/disposalpipe/trunk{
-	dir = 4
-	},
 /turf/open/floor/iron/dark,
 /area/station/medical/morgue)
 "dBt" = (
@@ -4786,6 +4786,10 @@
 /turf/open/floor/carpet/red,
 /area/station/service/theater)
 "eFN" = (
+/obj/machinery/disposal/bin,
+/obj/structure/disposalpipe/trunk{
+	dir = 4
+	},
 /turf/open/floor/iron/dark,
 /area/station/medical/morgue)
 "eGu" = (
@@ -7436,26 +7440,7 @@
 /turf/open/floor/grass,
 /area/station/service/hydroponics/garden)
 "hwW" = (
-/obj/structure/table/reinforced,
-/obj/item/disk/design_disk/limbs/felinid{
-	pixel_y = 3
-	},
-/obj/item/disk/design_disk/limbs/lizard{
-	pixel_x = 5;
-	pixel_y = 4
-	},
-/obj/item/disk/design_disk/limbs/plasmaman{
-	pixel_x = -5;
-	pixel_y = 6
-	},
-/obj/item/disk/design_disk/limbs{
-	pixel_x = -2;
-	pixel_y = -1
-	},
-/obj/effect/turf_decal/trimline/blue/filled/line{
-	dir = 1
-	},
-/turf/open/floor/iron,
+/turf/open/floor/iron/kitchen_coldroom/freezerfloor,
 /area/station/medical/medbay)
 "hyy" = (
 /obj/structure/fluff/metalpole,
@@ -8385,9 +8370,9 @@
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/turret_protected/aisat_interior)
 "iml" = (
-/obj/effect/landmark/start/hangover,
-/obj/effect/turf_decal/trimline/blue/filled/line{
-	dir = 1
+/obj/machinery/door/airlock/medical,
+/obj/effect/mapping_helpers/airlock/access/all/medical/general{
+	name = "Cold Med Storage"
 	},
 /turf/open/floor/iron,
 /area/station/medical/medbay)
@@ -8834,6 +8819,8 @@
 /area/station/tcommsat/computer)
 "iIu" = (
 /obj/machinery/airalarm/directional/east,
+/obj/structure/table/reinforced,
+/obj/item/stack/cable_coil,
 /turf/open/floor/iron/dark,
 /area/station/maintenance/solars/port/aft)
 "iID" = (
@@ -10257,6 +10244,7 @@
 /obj/item/crowbar,
 /obj/item/watertank,
 /obj/machinery/airalarm/directional/north,
+/obj/machinery/light/directional/north,
 /turf/open/floor/iron,
 /area/station/service/hydroponics)
 "kgs" = (
@@ -10354,6 +10342,14 @@
 /obj/item/radio/intercom/directional/east,
 /obj/effect/turf_decal/tile/green/anticorner/contrasted{
 	dir = 4
+	},
+/obj/machinery/door_buttons/access_button{
+	idDoor = "virology_airlock_interior";
+	idSelf = "virology_airlock_control";
+	name = "Virology Access Button";
+	pixel_x = 24;
+	pixel_y = -11;
+	req_access = list("virology")
 	},
 /obj/machinery/door_buttons/access_button{
 	idDoor = "virology_airlock_interior";
@@ -11258,9 +11254,11 @@
 /turf/open/floor/iron,
 /area/station/cargo/warehouse)
 "kZq" = (
-/obj/structure/window/reinforced,
-/obj/structure/flora/bush/style_random,
-/turf/open/floor/grass,
+/obj/machinery/seed_extractor,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/turf/open/floor/iron,
 /area/station/service/hydroponics/garden)
 "lag" = (
 /obj/effect/decal/cleanable/oil/slippery,
@@ -12127,14 +12125,14 @@
 	pixel_y = 2
 	},
 /obj/item/folder/yellow,
-/obj/machinery/door/window/right/directional/west{
+/obj/machinery/door/firedoor/border_only{
+	dir = 8
+	},
+/obj/machinery/door/window/left/directional/west{
 	dir = 4;
 	name = "Hydroponics Desk";
 	req_access = list("hydroponics");
 	req_access_txt = "35"
-	},
-/obj/machinery/door/firedoor/border_only{
-	dir = 8
 	},
 /turf/open/floor/iron,
 /area/station/service/hydroponics)
@@ -12467,6 +12465,15 @@
 	},
 /obj/effect/turf_decal/tile/purple/half/contrasted{
 	dir = 1
+	},
+/obj/machinery/door_buttons/access_button{
+	dir = 1;
+	idDoor = "virology_airlock_exterior";
+	idSelf = "virology_airlock_control";
+	name = "Virology Access Button";
+	pixel_x = 24;
+	pixel_y = 23;
+	req_access = list("virology")
 	},
 /turf/open/floor/iron,
 /area/station/maintenance/aft)
@@ -13986,12 +13993,12 @@
 /turf/open/floor/engine,
 /area/station/science/xenobiology)
 "nLR" = (
-/obj/effect/turf_decal/tile/neutral/fourcorners,
-/obj/structure/disposalpipe/junction/flip{
-	dir = 1
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 4
 	},
-/turf/open/floor/iron/dark,
-/area/station/medical/morgue)
+/obj/effect/landmark/start/hangover,
+/turf/open/floor/iron,
+/area/station/medical/medbay)
 "nLX" = (
 /obj/machinery/door/poddoor{
 	id = "Secure Storage";
@@ -14816,8 +14823,8 @@
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 1
 	},
-/obj/machinery/skill_station,
-/turf/open/floor/iron,
+/obj/structure/closet/crate/freezer/blood,
+/turf/open/floor/iron/kitchen_coldroom/freezerfloor,
 /area/station/medical/medbay)
 "owH" = (
 /obj/effect/turf_decal/stripes/line{
@@ -16586,9 +16593,9 @@
 /turf/open/floor/iron/white/textured_large,
 /area/station/science/cytology)
 "qdV" = (
-/obj/machinery/seed_extractor,
+/obj/structure/cable,
 /turf/open/floor/iron,
-/area/station/service/hydroponics)
+/area/station/medical/office)
 "qeo" = (
 /obj/machinery/atmospherics/pipe/smart/simple/orange/visible/layer4{
 	dir = 6
@@ -17639,11 +17646,6 @@
 	},
 /turf/open/floor/iron,
 /area/station/engineering/break_room)
-"qYU" = (
-/obj/machinery/biogenerator,
-/obj/machinery/light/directional/north,
-/turf/open/floor/iron,
-/area/station/service/hydroponics)
 "qZL" = (
 /obj/machinery/suit_storage_unit/standard_unit,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
@@ -18260,6 +18262,15 @@
 	},
 /obj/effect/turf_decal/tile/green/half/contrasted,
 /obj/structure/cable,
+/obj/machinery/door_buttons/access_button{
+	dir = 1;
+	idDoor = "virology_airlock_exterior";
+	idSelf = "virology_airlock_control";
+	name = "Virology Access Button";
+	pixel_x = 24;
+	pixel_y = -23;
+	req_access = list("virology")
+	},
 /turf/open/floor/iron/white,
 /area/station/medical/virology)
 "rEg" = (
@@ -18624,12 +18635,6 @@
 /obj/effect/landmark/start/hangover,
 /turf/open/floor/carpet/donk,
 /area/station/commons/storage/art)
-"rXT" = (
-/obj/effect/turf_decal/trimline/blue/filled/line{
-	dir = 8
-	},
-/turf/open/floor/iron,
-/area/station/medical/medbay)
 "rYh" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
@@ -18873,10 +18878,13 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/effect/mapping_helpers/airlock/access/all/medical/virology,
-/obj/machinery/door/airlock/virology{
-	id_tag = "Viro"
-	},
 /obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/virology{
+	autoclose = 0;
+	frequency = 1449;
+	id_tag = "virology_airlock_interior";
+	name = "Virology Interior Airlock"
+	},
 /turf/open/floor/iron/white,
 /area/station/medical/virology)
 "sje" = (
@@ -19747,17 +19755,12 @@
 /obj/effect/mapping_helpers/airlock/locked,
 /obj/structure/cable,
 /obj/effect/mapping_helpers/airlock/access/all/medical/virology,
-/obj/machinery/door/airlock/virology{
-	id_tag = "Viro"
-	},
 /obj/machinery/door/firedoor,
-/obj/machinery/door_buttons/access_button{
-	dir = 1;
-	idDoor = "virology_airlock_exterior";
-	idSelf = "virology_airlock_control";
-	name = "Virology Access Button";
-	pixel_x = 24;
-	req_access = list("virology")
+/obj/machinery/door/airlock/virology{
+	autoclose = 0;
+	frequency = 1449;
+	id_tag = "virology_airlock_exterior";
+	name = "Virology Exterior Airlock"
 	},
 /turf/open/floor/iron/white,
 /area/station/maintenance/aft)
@@ -19850,6 +19853,7 @@
 	name = "medi-dook plushie"
 	},
 /obj/structure/table/reinforced,
+/obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/medical/office)
 "tcv" = (
@@ -20007,7 +20011,7 @@
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 8
 	},
-/turf/open/floor/iron,
+/turf/open/floor/iron/kitchen_coldroom/freezerfloor,
 /area/station/medical/medbay)
 "tjl" = (
 /obj/structure/closet/secure_closet/miner,
@@ -20717,7 +20721,8 @@
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 9
 	},
-/turf/open/floor/iron,
+/obj/machinery/limbgrower,
+/turf/open/floor/iron/kitchen_coldroom/freezerfloor,
 /area/station/medical/medbay)
 "tRO" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
@@ -20775,9 +20780,24 @@
 /turf/open/floor/iron,
 /area/station/medical/office)
 "tUg" = (
-/obj/machinery/limbgrower,
+/obj/structure/table/reinforced,
+/obj/item/disk/design_disk/limbs/felinid{
+	pixel_y = 3
+	},
+/obj/item/disk/design_disk/limbs/lizard{
+	pixel_x = 5;
+	pixel_y = 4
+	},
+/obj/item/disk/design_disk/limbs/plasmaman{
+	pixel_x = -5;
+	pixel_y = 6
+	},
+/obj/item/disk/design_disk/limbs{
+	pixel_x = -2;
+	pixel_y = -1
+	},
 /obj/effect/turf_decal/trimline/blue/filled/line{
-	dir = 5
+	dir = 1
 	},
 /turf/open/floor/iron,
 /area/station/medical/medbay)
@@ -22059,9 +22079,11 @@
 /turf/open/floor/iron/dark,
 /area/station/maintenance/thruster_room/port)
 "uZP" = (
-/obj/structure/window/reinforced,
-/obj/structure/flora/bush/stalky/style_random,
-/turf/open/floor/grass,
+/obj/machinery/biogenerator,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/turf/open/floor/iron,
 /area/station/service/hydroponics/garden)
 "uZW" = (
 /obj/structure/cable,
@@ -22538,8 +22560,8 @@
 /turf/open/floor/iron/kitchen_coldroom/freezerfloor,
 /area/station/service/kitchen/coldroom)
 "vtf" = (
-/obj/structure/disposalpipe/segment{
-	dir = 6
+/obj/structure/disposalpipe/junction{
+	dir = 4
 	},
 /turf/open/floor/iron/dark,
 /area/station/medical/morgue)
@@ -24796,11 +24818,11 @@
 /turf/open/floor/iron/dark/brown,
 /area/station/cargo/miningoffice)
 "xEn" = (
-/obj/machinery/light/directional/north,
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 1
 	},
-/turf/open/floor/iron,
+/obj/structure/closet/crate/freezer/surplus_limbs,
+/turf/open/floor/iron/kitchen_coldroom/freezerfloor,
 /area/station/medical/medbay)
 "xFi" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -24879,6 +24901,7 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 1
 	},
+/obj/structure/chair/stool/directional/west,
 /turf/open/floor/iron/dark,
 /area/station/maintenance/solars/port/aft)
 "xJb" = (
@@ -66336,7 +66359,7 @@ rzO
 iGV
 ttu
 kZq
-qdV
+iIY
 fku
 ykh
 lna
@@ -66593,7 +66616,7 @@ xdK
 hvL
 kpF
 uZP
-qYU
+iIY
 iIY
 gnv
 cwO
@@ -68667,7 +68690,7 @@ mOU
 kri
 tRN
 tiY
-rXT
+dUz
 kvY
 iiC
 dUz
@@ -68923,7 +68946,7 @@ wFR
 mOU
 kri
 owG
-bJW
+hwW
 aUD
 dAt
 rkI
@@ -69178,10 +69201,10 @@ wiA
 amd
 wtX
 mOU
-dUz
+kri
 xEn
-bJW
-bJW
+hwW
+dUz
 dAt
 lBS
 xjI
@@ -69435,10 +69458,10 @@ hui
 qMA
 wtX
 mOU
-kri
+dUz
+dUz
 iml
-bJW
-bJW
+dUz
 dAt
 mtc
 dUz
@@ -69693,7 +69716,7 @@ weL
 weL
 mOU
 kri
-hwW
+bJW
 bJW
 waw
 dAt
@@ -69951,7 +69974,7 @@ weL
 weL
 dUz
 tUg
-uMx
+nLR
 uMx
 pwM
 rHD
@@ -70473,7 +70496,7 @@ hTQ
 hzr
 wHm
 vtf
-nLR
+bsR
 bsR
 ncJ
 hXH
@@ -70980,7 +71003,7 @@ weL
 hTQ
 bxJ
 tbn
-epE
+qdV
 mGv
 vio
 gLG
