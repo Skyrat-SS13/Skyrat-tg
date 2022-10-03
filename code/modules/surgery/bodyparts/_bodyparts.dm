@@ -945,7 +945,7 @@
 
 	// SKYRAT EDIT ADDITION BEGIN - MARKINGS CODE
 	var/override_color
-	var/emissive_location = loc || owner || src
+	var/atom/offset_spokesman = owner || src
 	// First, check to see if this bodypart is husked. If so, we don't want to apply our sparkledog colors to the limb.
 	if(is_husked)
 		override_color = "#888888"
@@ -965,10 +965,10 @@
 
 			var/mutable_appearance/accessory_overlay
 			var/mutable_appearance/emissive
-			accessory_overlay = mutable_appearance(body_marking.icon, "[body_marking.icon_state]_[render_limb_string][gender_modifier]", -BODYPARTS_LAYER, emissive_location, plane)
+			accessory_overlay = mutable_appearance(body_marking.icon, "[body_marking.icon_state]_[render_limb_string][gender_modifier]", -BODYPARTS_LAYER)
 			accessory_overlay.alpha = markings_alpha
 			if(markings[key][2])
-				emissive = emissive_appearance_copy(accessory_overlay, emissive_location)
+				emissive = emissive_appearance_copy(accessory_overlay, offset_spokesman)
 			if(override_color)
 				accessory_overlay.color = override_color
 			else
@@ -987,10 +987,10 @@
 
 				var/mutable_appearance/emissive
 				var/mutable_appearance/accessory_overlay
-				accessory_overlay = mutable_appearance(body_marking.icon, "[body_marking.icon_state]_[render_limb_string]", -aux_layer)
+				accessory_overlay = mutable_appearance(body_marking.icon, "[body_marking.icon_state]_[render_limb_string]", -aux_layer, offset_spokesman, offset_spokesman.plane)
 				accessory_overlay.alpha = markings_alpha
 				if (aux_zone_markings[key][2])
-					emissive = emissive_appearance_copy(accessory_overlay, emissive_location)
+					emissive = emissive_appearance_copy(accessory_overlay, offset_spokesman)
 				if(override_color)
 					accessory_overlay.color = override_color
 				else
