@@ -43,13 +43,6 @@
 "abr" = (
 /turf/closed/wall/r_wall,
 /area/station/ai_monitored/turret_protected/ai)
-"abE" = (
-/obj/machinery/door/airlock/medical,
-/obj/effect/mapping_helpers/airlock/access/all/medical/general{
-	name = "Cold Med Storage"
-	},
-/turf/open/floor/iron,
-/area/station/medical/medbay)
 "abR" = (
 /obj/machinery/door/airlock/hatch{
 	name = "Airtight Hatch"
@@ -985,6 +978,10 @@
 /obj/machinery/door/firedoor,
 /turf/open/floor/plating,
 /area/station/engineering/atmos/project)
+"aWS" = (
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/station/medical/office)
 "aXA" = (
 /obj/structure/bed,
 /obj/item/bedsheet/orange,
@@ -2362,10 +2359,6 @@
 	},
 /turf/open/floor/iron/cafeteria,
 /area/station/service/kitchen)
-"cwM" = (
-/obj/structure/cable,
-/turf/open/floor/iron,
-/area/station/medical/office)
 "cwO" = (
 /obj/structure/table,
 /obj/item/storage/box/beakers,
@@ -19971,6 +19964,13 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/catwalk_floor/iron,
 /area/station/maintenance/aft)
+"tfs" = (
+/obj/machinery/door/airlock/medical,
+/obj/effect/mapping_helpers/airlock/access/all/medical/general{
+	name = "Cold Med Storage"
+	},
+/turf/open/floor/iron,
+/area/station/medical/medbay)
 "tfy" = (
 /obj/machinery/atmospherics/pipe/smart/simple/dark/visible{
 	dir = 4
@@ -23211,6 +23211,13 @@
 /obj/structure/lattice/catwalk,
 /turf/open/space,
 /area/space/nearstation)
+"wdd" = (
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 4
+	},
+/obj/effect/landmark/start/hangover,
+/turf/open/floor/iron,
+/area/station/medical/medbay)
 "wdu" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -23336,13 +23343,6 @@
 /obj/item/radio/intercom/directional/east,
 /turf/open/floor/iron,
 /area/station/science/xenobiology)
-"whk" = (
-/obj/effect/turf_decal/trimline/blue/filled/line{
-	dir = 4
-	},
-/obj/effect/landmark/start/hangover,
-/turf/open/floor/iron,
-/area/station/medical/medbay)
 "whY" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /obj/effect/decal/cleanable/oil/slippery,
@@ -69513,7 +69513,7 @@ wtX
 mOU
 dUz
 dUz
-abE
+tfs
 dUz
 dAt
 mtc
@@ -70027,7 +70027,7 @@ weL
 weL
 dUz
 tUg
-whk
+wdd
 uMx
 pwM
 rHD
@@ -71056,7 +71056,7 @@ weL
 hTQ
 bxJ
 tbn
-cwM
+aWS
 mGv
 vio
 gLG
