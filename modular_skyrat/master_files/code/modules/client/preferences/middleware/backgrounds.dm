@@ -123,7 +123,7 @@
 	return FALSE
 
 /datum/preference_middleware/backgrounds/proc/verify_origin(list/params, mob/user)
-	var/datum/background_info/origin/origin = GLOB.employments[text2path(params["background"])]
+	var/datum/background_info/origin/origin = GLOB.origins[text2path(params["background"])]
 
 	// It isn't valid, let's not let the game try to use whatever was sent.
 	if(!origin)
@@ -133,7 +133,7 @@
 	return TRUE
 
 /datum/preference_middleware/backgrounds/proc/verify_social_background(list/params, mob/user)
-	var/datum/background_info/social_background/social_background = GLOB.origins[text2path(params["background"])]
+	var/datum/background_info/social_background/social_background = GLOB.social_backgrounds[text2path(params["background"])]
 
 	// It isn't valid, let's not let the game try to use whatever was sent.
 	if(!check_valid(social_background, preferences.social_background))
@@ -143,7 +143,7 @@
 	return TRUE
 
 /datum/preference_middleware/backgrounds/proc/verify_employment(list/params, mob/user)
-	var/datum/background_info/employment/employment = GLOB.origins[text2path(params["background"])]
+	var/datum/background_info/employment/employment = GLOB.employments[text2path(params["background"])]
 
 	// It isn't valid, let's not let the game try to use whatever was sent.
 	if(!check_valid(employment, preferences.origin) || !check_valid(employment, preferences.social_background))
