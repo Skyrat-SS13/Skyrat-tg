@@ -116,6 +116,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			// SKYRAT EDIT START - Sanitizing languages
 			sanitize_languages()
 			// SKYRAT EDIT END
+			sanitize_backgrounds() // SKYRAT EDIT - Backgrounds
 			return // SKYRAT EDIT - Don't remove this. Just don't. Nothing is worth forced random characters.
 	//we couldn't load character data so just randomize the character appearance + name
 	randomise_appearance_prefs() //let's create a random character then - rather than a fat, bald and naked man.
