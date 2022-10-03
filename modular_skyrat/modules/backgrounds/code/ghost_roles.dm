@@ -16,7 +16,9 @@
 	if(!user?.client?.prefs)
 		return FALSE
 
-	var/datum/preferences/preferences = user.client.prefs
-	if(!preferences.origin.is_ghost_role_valid(src) || !preferences.social_background.is_ghost_role_valid(src) || !preferences.employment.is_ghost_role_valid(src))
+	var/datum/background_info/origin = GLOB.origins[user.client.prefs.origin]
+	var/datum/background_info/social_background = GLOB.social_backgrounds[user.client.prefs.social_background]
+	var/datum/background_info/employment = GLOB.employments[user.client.prefs.employment]
+	if(!origin.is_ghost_role_valid(src) || !social_background.is_ghost_role_valid(src) || !employment.is_ghost_role_valid(src))
 		user.show_message(span_warning("Your background doesn't allow for this ghost role!"))
 		return FALSE
