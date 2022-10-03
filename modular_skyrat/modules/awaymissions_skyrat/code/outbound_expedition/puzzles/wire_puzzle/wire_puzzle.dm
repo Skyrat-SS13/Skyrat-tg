@@ -8,19 +8,14 @@ There is a wireset
 This wireset has a random amount of colored wires
 the conditionals are created around this wireset
 there should not be two different wiresets
-
-latenight schizo: wires will need to be regenned each time the event occurs
-conditionals are static, wires are not
-
 */
-// HAHAHAH GUESS WHAT FUCKO YOU LEFT THIS BROKEN
-// MULTIWIRE DOESN'T FUCKING WORK
 
 /datum/outbound_teamwork_puzzle/wires
 	name = "Wires"
 	tgui_name = "WirePuzzle"
 	terminal_name = "wire panel"
 	terminal_desc = "A maintenence panel with a latch, some wires are behind it."
+	fail_system = "Power"
 	/// list of initialized wire datums
 	var/list/wires = list()
 	/// assoc list of colors - to - wires
@@ -82,9 +77,10 @@ conditionals are static, wires are not
 		SEND_SIGNAL(outbound_controller.puzzle_controller, COMSIG_AWAY_PUZZLE_COMPLETED, src)
 
 /datum/outbound_teamwork_puzzle/wires/proc/wrong_wire()
-	//explosion(terminal, 1, 2, 4, 0, 0)
-	terminal.balloon_alert_to_viewers("wire failed")
-	return
+	OUTBOUND_CONTROLLER
+	terminal.balloon_alert_to_viewers("wrong wire cut!")
+	var/datum/outbound_ship_system/selected_sys = outbound_controller.ship_systems[fail_system]
+	selected_sys.adjust_health(-fail_damage)
 
 /datum/outbound_teamwork_puzzle/wires/ui_data(mob/user)
 	var/list/data = list()

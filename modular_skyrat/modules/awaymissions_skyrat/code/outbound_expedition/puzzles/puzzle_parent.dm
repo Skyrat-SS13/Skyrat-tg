@@ -13,6 +13,8 @@
 	var/desc = ""
 	/// If it's enabled or not
 	var/enabled = FALSE
+	/// What system is damaged by this failing
+	var/fail_system = ""
 
 /datum/outbound_teamwork_puzzle/Destroy(force, ...)
 	if(terminal)

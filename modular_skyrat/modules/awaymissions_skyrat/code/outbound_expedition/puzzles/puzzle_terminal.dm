@@ -39,7 +39,7 @@
 	if(!istype(outbound_controller.current_event, /datum/outbound_random_event/harmful/part_malf))
 		to_chat(user, span_warning("You don't feel the need to open this yet."))
 		return
-	. = ..()
+	return ..()
 
 /obj/effect/landmark/puzzle_terminal_spawn //Placed on the shuttle, once the controller inits it replaces these
 	name = "terminalspawn"

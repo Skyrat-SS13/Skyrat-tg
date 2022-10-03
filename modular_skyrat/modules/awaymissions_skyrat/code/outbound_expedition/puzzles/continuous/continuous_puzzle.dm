@@ -6,10 +6,8 @@
 
 /datum/outbound_teamwork_puzzle/continuous
 	name = "Generic Continuous"
-	/// What system is damaged by this failing
-	var/fail_system = "" //maybe refactor this to do it some other way
 	/// How much damage dealt to the system by failing
-	var/fail_damage = 0 //ditto
+	var/fail_damage = 0
 
 /datum/outbound_teamwork_puzzle/continuous/proc/puzzle_process()
 	return
