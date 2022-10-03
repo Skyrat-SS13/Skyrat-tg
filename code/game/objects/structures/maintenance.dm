@@ -93,7 +93,7 @@ at the cost of risking a vicious bite.**/
 	if(iscyborg(user) || isalien(user) || !CanReachInside(user))
 		return ..()
 	add_fingerprint(user)
-	if(istype(I, /obj/item/reagent_containers))
+	if(is_reagent_container(I))
 		if(istype(I, /obj/item/food/monkeycube))
 			var/obj/item/food/monkeycube/cube = I
 			cube.Expand()
@@ -151,7 +151,7 @@ at the cost of risking a vicious bite.**/
 	switch(altar_result)
 		if("Change Color")
 			var/chosen_color = input(user, "", "Choose Color", pants_color) as color|null
-			if(!isnull(chosen_color) && user.canUseTopic(src, BE_CLOSE))
+			if(!isnull(chosen_color) && user.canUseTopic(src, be_close = TRUE))
 				pants_color = chosen_color
 		if("Create Artefact")
 			if(!COOLDOWN_FINISHED(src, use_cooldown) || status != ALTAR_INACTIVE)
@@ -199,7 +199,7 @@ at the cost of risking a vicious bite.**/
 	visible_message(span_warning("You start feeling nauseous..."))
 	for(var/mob/living/viewing_mob in viewers(7, src))
 		viewing_mob.blur_eyes(10)
-		viewing_mob.adjust_timed_status_effect(10 SECONDS, /datum/status_effect/confusion)
+		viewing_mob.adjust_confusion(10 SECONDS)
 	addtimer(CALLBACK(src, .proc/pants_stagethree), ALTAR_TIME)
 
 /// Continues the creation, making every mob nearby dizzy
@@ -207,8 +207,8 @@ at the cost of risking a vicious bite.**/
 	status = ALTAR_STAGETHREE
 	update_icon()
 	visible_message(span_warning("You start feeling horrible..."))
-	//for(var/mob/living/viewing_mob in viewers(7, src)) SKYRAT EDIT REMOVAL TEMPORARY
-		//viewing_mob.set_timed_status_effect(20 SECONDS, /datum/status_effect/dizziness, only_if_higher = TRUE) SKYRAT EDIT REMOVAL TEMPORARY
+	// for(var/mob/living/viewing_mob in viewers(7, src)) // SKYRAT EDIT REMOVAL TEMPORARY
+		// viewing_mob.set_dizzy_if_lower(20 SECONDS) // SKYRAT EDIT REMOVAL TEMPORARY
 	addtimer(CALLBACK(src, .proc/pants_create), ALTAR_TIME)
 
 /// Finishes the creation, creating the item itself, setting the cooldowns and flashing every mob nearby.

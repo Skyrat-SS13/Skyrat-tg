@@ -81,6 +81,10 @@ GLOBAL_LIST_INIT(loadout_necks, generate_loadout_items(/datum/loadout_item/neck)
 	name = "Zebra Scarf"
 	item_path = /obj/item/clothing/neck/scarf/zebra
 
+/datum/loadout_item/neck/scarf_infinity
+	name = "Infinity Scarf"
+	item_path = /obj/item/clothing/neck/infinity_scarf
+
 /*
 *	NECKTIES
 */
@@ -149,6 +153,7 @@ GLOBAL_LIST_INIT(loadout_necks, generate_loadout_items(/datum/loadout_item/neck)
 /datum/loadout_item/neck/kinkycollar
 	name = "Kinky Collar"
 	item_path = /obj/item/clothing/neck/kink_collar
+	erp_item = TRUE
 
 /*
 *	PONCHOS
@@ -189,6 +194,11 @@ GLOBAL_LIST_INIT(loadout_necks, generate_loadout_items(/datum/loadout_item/neck)
 /datum/loadout_item/neck/mantle
 	name = "Mantle"
 	item_path = /obj/item/clothing/neck/mantle
+
+/datum/loadout_item/neck/mantle_qm
+	name = "Quartermaster's Mantle"
+	item_path = /obj/item/clothing/neck/mantle/qm
+	restricted_roles = list(JOB_QUARTERMASTER)
 
 /datum/loadout_item/neck/mantle_hop
 	name = "Head of Personnel's Mantle"

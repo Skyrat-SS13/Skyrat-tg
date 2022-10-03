@@ -42,6 +42,9 @@
 					CAT_SANDWICH,
 					CAT_SOUP,
 					CAT_SPAGHETTI,
+		// SKYRAT ADDITION BEGIN - Teshari food category
+					CAT_TESHARI,
+		// SKYRAT ADDITION END
 				),
 				CAT_DRINK = CAT_NONE,
 				CAT_CLOTHING = CAT_NONE,
@@ -332,7 +335,7 @@
 			. += RG
 			Deletion -= RG
 			continue
-		else if(istype(part, /obj/item/stack))
+		else if(isstack(part))
 			var/obj/item/stack/ST = locate(part) in Deletion
 			if(ST.amount > partlist[part])
 				ST.amount = partlist[part]
@@ -350,7 +353,7 @@
 		Deletion.Cut(Deletion.len)
 		// Snowflake handling of reagent containers and storage atoms.
 		// If we consumed them in our crafting, we should dump their contents out before qdeling them.
-		if(istype(DL, /obj/item/reagent_containers))
+		if(is_reagent_container(DL))
 			var/obj/item/reagent_containers/container = DL
 			container.reagents.expose(container.loc, TOUCH)
 		else if(istype(DL, /obj/item/storage))

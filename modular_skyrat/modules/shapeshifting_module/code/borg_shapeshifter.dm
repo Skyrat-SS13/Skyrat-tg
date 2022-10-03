@@ -5,8 +5,8 @@
 	flags_1 = CONDUCT_1
 	item_flags = NOBLUDGEON
 	inhand_icon_state = "electronic"
-	lefthand_file = 'icons/mob/inhands/misc/devices_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/misc/devices_righthand.dmi'
+	lefthand_file = 'icons/mob/inhands/items/devices_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/items/devices_righthand.dmi'
 	w_class = WEIGHT_CLASS_SMALL
 	var/saved_icon
 	var/saved_bubble_icon
@@ -86,17 +86,17 @@
 			to_chat(user, span_notice("\the [src] is recharging."))
 			return
 		var/static/list/model_icons = sort_list(list(
-			"Standard" = image(icon = 'icons/mob/robots.dmi', icon_state = "robot"),
-			"Medical" = image(icon = 'icons/mob/robots.dmi', icon_state = "medical"),
+			"Standard" = image(icon = 'icons/mob/silicon/robots.dmi', icon_state = "robot"),
+			"Medical" = image(icon = 'icons/mob/silicon/robots.dmi', icon_state = "medical"),
 			"Cargo" = image(icon = CYBORG_ICON_CARGO, icon_state = "cargoborg"),
-			"Engineer" = image(icon = 'icons/mob/robots.dmi', icon_state = "engineer"),
-			"Security" = image(icon = 'icons/mob/robots.dmi', icon_state = "sec"),
-			"Service" = image(icon = 'icons/mob/robots.dmi', icon_state = "service_f"),
-			"Janitor" = image(icon = 'icons/mob/robots.dmi', icon_state = "janitor"),
-			"Miner" = image(icon = 'icons/mob/robots.dmi', icon_state = "miner"),
-			"Peacekeeper" = image(icon = 'icons/mob/robots.dmi', icon_state = "peace"),
-			"Clown" = image(icon = 'icons/mob/robots.dmi', icon_state = "clown"),
-			"Syndicate" = image(icon = 'icons/mob/robots.dmi', icon_state = "synd_sec"),
+			"Engineer" = image(icon = 'icons/mob/silicon/robots.dmi', icon_state = "engineer"),
+			"Security" = image(icon = 'icons/mob/silicon/robots.dmi', icon_state = "sec"),
+			"Service" = image(icon = 'icons/mob/silicon/robots.dmi', icon_state = "service_f"),
+			"Janitor" = image(icon = 'icons/mob/silicon/robots.dmi', icon_state = "janitor"),
+			"Miner" = image(icon = 'icons/mob/silicon/robots.dmi', icon_state = "miner"),
+			"Peacekeeper" = image(icon = 'icons/mob/silicon/robots.dmi', icon_state = "peace"),
+			"Clown" = image(icon = 'icons/mob/silicon/robots.dmi', icon_state = "clown"),
+			"Syndicate" = image(icon = 'icons/mob/silicon/robots.dmi', icon_state = "synd_sec"),
 			"Spider Clan" = image(icon = CYBORG_ICON_NINJA, icon_state = "ninja_engi")
 		))
 		var/model_selection = show_radial_menu(user, user, model_icons, custom_check = CALLBACK(src, .proc/check_menu, user), radius = 42, require_near = TRUE)
@@ -170,7 +170,7 @@
 	var/list/reskin_icons = list()
 	for(var/skin in disguise_model.borg_skins)
 		var/list/details = disguise_model.borg_skins[skin]
-		var/image/reskin = image(icon = details[SKIN_ICON] || 'icons/mob/robots.dmi', icon_state = details[SKIN_ICON_STATE])
+		var/image/reskin = image(icon = details[SKIN_ICON] || 'icons/mob/silicon/robots.dmi', icon_state = details[SKIN_ICON_STATE])
 		if (!isnull(details[SKIN_FEATURES]))
 			if (R_TRAIT_WIDE in details[SKIN_FEATURES])
 				reskin.pixel_x -= 16

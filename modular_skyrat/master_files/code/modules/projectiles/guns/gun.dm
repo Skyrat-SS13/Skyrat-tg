@@ -59,7 +59,7 @@
 
 	var/can_bayonet = FALSE // if a bayonet can be added or removed if it already has one.
 	var/bayonet_state = "bayonet"
-	var/bayonet_icon = 'icons/obj/guns/bayonets.dmi'
+	var/bayonet_icon = 'icons/obj/weapons/guns/bayonets.dmi'
 	var/obj/item/knife/bayonet
 	var/knife_x_offset = 0
 	var/knife_y_offset = 0
@@ -582,7 +582,7 @@
 	. = ..()
 	if(.)
 		return
-	if(!user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
+	if(!user.canUseTopic(src, be_close = TRUE, no_dexterity = FALSE, no_tk = TRUE))
 		return
 	if(bayonet && can_bayonet) //if it has a bayonet, and the bayonet can be removed
 		return remove_bayonet(user, tool)
@@ -608,7 +608,7 @@
 	if(!pin.can_remove)
 		balloon_alert(user, "pin can't be removed!")
 		return
-	if(!user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
+	if(!user.canUseTopic(src, be_close = TRUE, no_dexterity = FALSE, no_tk = TRUE))
 		return
 	if(pin && user.is_holding(src))
 		user.visible_message(span_warning("[user] attempts to remove [pin] from [src] with [tool]."),
@@ -625,7 +625,7 @@
 	. = ..()
 	if(.)
 		return
-	if(!user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
+	if(!user.canUseTopic(src, be_close = TRUE, no_dexterity = FALSE, no_tk = TRUE))
 		return
 	if(!pin.can_remove)
 		balloon_alert(user, "pin can't be removed!")

@@ -12,7 +12,6 @@
 	tracer_type = /obj/effect/projectile/tracer/stun
 	muzzle_type = /obj/effect/projectile/muzzle/stun
 	impact_type = /obj/effect/projectile/impact/stun
-	var/confused_amount = 5 //SKYRAT EDIT ADDITION
 
 /obj/projectile/energy/electrode/on_hit(atom/target, blocked = FALSE)
 	. = ..()
@@ -20,7 +19,7 @@
 		do_sparks(1, TRUE, src)
 	else if(iscarbon(target))
 		var/mob/living/carbon/C = target
-		C.adjust_timed_status_effect(15 SECONDS, /datum/status_effect/confusion) //SKYRAT EDIT ADDITION
+		C.adjust_confusion_up_to(15 SECONDS, 30 SECONDS) // SKYRAT EDIT ADDITION - Electrode jitteriness
 		C.add_mood_event("tased", /datum/mood_event/tased)
 		SEND_SIGNAL(C, COMSIG_LIVING_MINOR_SHOCK)
 		if(C.dna && C.dna.check_mutation(/datum/mutation/human/hulk))

@@ -17,6 +17,8 @@ GLOBAL_LIST_EMPTY(lifts)
 	canSmoothWith = list(SMOOTH_GROUP_INDUSTRIAL_LIFT)
 	obj_flags = CAN_BE_HIT | BLOCK_Z_OUT_DOWN
 	appearance_flags = PIXEL_SCALE|KEEP_TOGETHER //no TILE_BOUND since we're potentially multitile
+	// If we don't do this, we'll build our overlays early, and fuck up how we're rendered
+	blocks_emissive = NONE
 
 	///ID used to determine what lift types we can merge with
 	var/lift_id = BASIC_LIFT_ID
@@ -246,6 +248,8 @@ GLOBAL_LIST_EMPTY(lifts)
 
 	forceMove(locate(min_x, min_y, z))//move to the lower left corner
 	set_movement_registrations(locs - old_loc)
+	blocks_emissive = EMISSIVE_BLOCK_GENERIC
+	update_appearance()
 	return TRUE
 
 ///returns an unordered list of all lift platforms adjacent to us. used so our lift_master_datum can control all connected platforms.
@@ -335,7 +339,7 @@ GLOBAL_LIST_EMPTY(lifts)
 			///handles any special interactions objects could have with the lift/tram, handled on the item itself
 			SEND_SIGNAL(dest_turf, COMSIG_TURF_INDUSTRIAL_LIFT_ENTER, things_to_move)
 
-			if(istype(dest_turf, /turf/closed/wall))
+			if(iswallturf(dest_turf))
 				var/turf/closed/wall/collided_wall = dest_turf
 				do_sparks(2, FALSE, collided_wall)
 				collided_wall.dismantle_wall(devastated = TRUE)

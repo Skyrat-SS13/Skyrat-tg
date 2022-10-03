@@ -87,7 +87,7 @@
 //blueshield armor
 /obj/item/clothing/suit/armor/vest/blueshield
 	name = "blueshield's jacket"
-	desc = "An expensive kevlar-lined jacket with a golden badge on the chest and \"NT\" emblazoned on the back. It weighs surprisingly little, despite how heavy it looks. There's a tight-fitting vest tucked in underneath."
+	desc = "An expensive kevlar-lined jacket with a golden badge on the chest and \"NT\" emblazoned on the back. It weighs surprisingly little, despite how heavy it looks."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	//alternate_worn_icon_digi = 'modular_skyrat/icons/mob/suit_digi.dmi'
@@ -95,9 +95,13 @@
 	body_parts_covered = CHEST|ARMS
 	armor = list("melee" = 35, "bullet" = 25, "laser" = 25,"energy" = 25, "bomb" = 30, "bio" = 0, "fire" = 75, "acid" = 75)
 
+/obj/item/clothing/suit/armor/vest/blueshield/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/toggle_icon)
+
 /obj/item/clothing/suit/armor/vest/blueshieldarmor
 	name = "blueshield's armor"
-	desc = "A tight-fitting kevlar-lined vest with a golden badge on the chest and \"NT\" emblazoned on the back. It weighs surprisingly little, despite how heavy it looks."
+	desc = "A tight-fitting kevlar-lined vest with a blue badge on the chest of it."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "blueshieldarmor"
@@ -110,7 +114,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "coatblueshield"
 	inhand_icon_state = "coatblueshield"
-	desc = "A comfy kevlar-lined coat with \"NT\" emblazoned on the back."
+	desc = "A comfy kevlar-lined coat with blue highlights, for the blueshield."
 	hoodtype = /obj/item/clothing/head/hooded/winterhood/blueshield
 	allowed = list(/obj/item/melee/baton/security/loaded)
 	armor = list("melee" = 35, "bullet" = 25, "laser" = 25,"energy" = 25, "bomb" = 30, "bio" = 0, "fire" = 75, "acid" = 75)

@@ -207,7 +207,7 @@
 	glass_desc = "This looks very aesthetically pleasing."
 
 /datum/reagent/consumable/ethanol/hotlime_miami/on_mob_life(mob/living/carbon/M, delta_time, times_fired)
-	M.set_timed_status_effect(1.5 MINUTES * REM * delta_time, /datum/status_effect/drugginess)
+	M.set_drugginess(1.5 MINUTES * REM * delta_time)
 	M.adjustStaminaLoss(-2)
 	return ..()
 
@@ -485,7 +485,7 @@
 	glass_desc = "Warm milk and some catnip."
 
 /datum/reagent/consumable/ethanol/frisky_kitty/on_mob_life(mob/living/carbon/M)
-	if(ismammal(M) || isfelinid(M) || istajaran(M))
+	if(isfeline(M))
 		quality = RACE_DRINK
 	else
 		quality = DRINK_GOOD

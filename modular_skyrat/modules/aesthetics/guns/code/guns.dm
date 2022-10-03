@@ -112,7 +112,7 @@
 	worn_icon = null
 
 /obj/item/gun/energy/laser/thermal
-	icon = 'icons/obj/guns/energy.dmi'
+	icon = 'icons/obj/weapons/guns/energy.dmi'
 	lefthand_file = 'icons/mob/inhands/weapons/guns_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/guns_righthand.dmi'
 
@@ -289,13 +289,6 @@
 	name = "\improper Type-69 surplus rifle"
 	desc = "One of countless obsolete ballistic rifles that still sees use as a cheap deterrent. Uses 10mm ammo and its bulky frame prevents one-hand firing."
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
-
-/obj/item/gun/ballistic/automatic/c20r/unrestricted/cmg1
-	name = "\improper NT CMG-1"
-	desc = "A bullpup three-round burst .460C PDW with an eerily familiar design. It has a foldable stock and a dot sight."
-	icon_state = "cmg1"
-	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
-	company_flag = COMPANY_NANOTRASEN
 
 /obj/item/gun/ballistic/automatic/ar/modular/model75
 	name = "\improper NT ARG-75"
@@ -540,3 +533,5 @@
 	name = ".454 Trucidator handcannon magazine"
 	desc = "An absurdly THICK magazine possibly meant for a heavy hitting pistol, if you can call it that."
 
+/obj/item/ammo_box/a762
+	name = "stripper clip (.244 Acia)"

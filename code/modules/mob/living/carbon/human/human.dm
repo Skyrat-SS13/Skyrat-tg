@@ -144,9 +144,9 @@
 				return
 			var/obj/item/photo/photo_from_record = null
 			if(href_list["photo_front"])
-				photo_from_record = general_record.fields["photo_front"] // SKYRAT EDIT CHANGE
+				photo_from_record = general_record.get_front_photo() // SKYRAT EDIT - Examine Records - ORIGINAL: photo_from_record = target_record.get_front_photo()
 			else if(href_list["photo_side"])
-				photo_from_record = general_record.fields["photo_side"] // SKYRAT EDIT CHANGE
+				photo_from_record = general_record.get_side_photo() // SKYRAT EDIT - Examine Records - ORIGINAL: photo_from_record = target_record.get_side_photo()
 			if(photo_from_record)
 				photo_from_record.show(human_user)
 			return
@@ -436,7 +436,7 @@
 	else if(HAS_TRAIT(src, TRAIT_PIERCEIMMUNE))
 		. = FALSE
 	if(user && !target_zone)
-		target_zone = user.zone_selected
+		target_zone = get_bodypart(check_zone(user.zone_selected)) //try to find a bodypart. if there isn't one, target_zone will be null, and check_zone in the next line will default to the chest.
 	var/obj/item/bodypart/the_part = isbodypart(target_zone) ? target_zone : get_bodypart(check_zone(target_zone)) //keep these synced
 	// Loop through the clothing covering this bodypart and see if there's any thiccmaterials
 	if(!(injection_flags & INJECT_CHECK_PENETRATE_THICK))
@@ -449,7 +449,7 @@
 	. = ..()
 	if(!. && (injection_flags & INJECT_TRY_SHOW_ERROR_MESSAGE) && user)
 		if(!target_zone)
-			target_zone = user.zone_selected
+			target_zone = get_bodypart(check_zone(user.zone_selected))
 		var/obj/item/bodypart/the_part = isbodypart(target_zone) ? target_zone : get_bodypart(check_zone(target_zone)) //keep these synced
 		to_chat(user, span_alert("There is no exposed flesh or thin material on [p_their()] [the_part.name]."))
 
@@ -771,52 +771,46 @@
 /mob/living/carbon/human/update_health_hud()
 	if(!client || !hud_used)
 		return
-	if(dna.species.update_health_hud())
+
+	// Updates the health bar, also sends signal
+	. = ..()
+
+	// Updates the health doll
+	if(!hud_used.healthdoll)
 		return
-	else
-		if(hud_used.healths)
-			if(..()) //not dead
-				switch(hal_screwyhud)
-					if(SCREWYHUD_CRIT)
-						hud_used.healths.icon_state = "health6"
-					if(SCREWYHUD_DEAD)
-						hud_used.healths.icon_state = "health7"
-					if(SCREWYHUD_HEALTHY)
-						hud_used.healths.icon_state = "health0"
-		if(hud_used.healthdoll)
-			hud_used.healthdoll.cut_overlays()
-			if(stat != DEAD)
-				hud_used.healthdoll.icon_state = "healthdoll_OVERLAY"
-				for(var/obj/item/bodypart/body_part as anything in bodyparts)
-					var/icon_num = 0
-					//Hallucinations
-					if(body_part.type in hal_screwydoll)
-						icon_num = hal_screwydoll[body_part.type]
-						hud_used.healthdoll.add_overlay(mutable_appearance('icons/hud/screen_gen.dmi', "[body_part.body_zone][icon_num]"))
-						continue
-					//Not hallucinating
-					var/damage = body_part.burn_dam + body_part.brute_dam
-					var/comparison = (body_part.max_damage/5)
-					if(damage)
-						icon_num = 1
-					if(damage > (comparison))
-						icon_num = 2
-					if(damage > (comparison*2))
-						icon_num = 3
-					if(damage > (comparison*3))
-						icon_num = 4
-					if(damage > (comparison*4))
-						icon_num = 5
-					if(hal_screwyhud == SCREWYHUD_HEALTHY)
-						icon_num = 0
-					if(icon_num)
-						hud_used.healthdoll.add_overlay(mutable_appearance('icons/hud/screen_gen.dmi', "[body_part.body_zone][icon_num]"))
-				for(var/t in get_missing_limbs()) //Missing limbs
-					hud_used.healthdoll.add_overlay(mutable_appearance('icons/hud/screen_gen.dmi', "[t]6"))
-				for(var/t in get_disabled_limbs()) //Disabled limbs
-					hud_used.healthdoll.add_overlay(mutable_appearance('icons/hud/screen_gen.dmi', "[t]7"))
-			else
-				hud_used.healthdoll.icon_state = "healthdoll_DEAD"
+
+	hud_used.healthdoll.cut_overlays()
+	if(stat == DEAD)
+		hud_used.healthdoll.icon_state = "healthdoll_DEAD"
+		return
+
+	hud_used.healthdoll.icon_state = "healthdoll_OVERLAY"
+	for(var/obj/item/bodypart/body_part as anything in bodyparts)
+		var/icon_num = 0
+
+		if(SEND_SIGNAL(body_part, COMSIG_BODYPART_UPDATING_HEALTH_HUD, src) & COMPONENT_OVERRIDE_BODYPART_HEALTH_HUD)
+			continue
+
+		var/damage = body_part.burn_dam + body_part.brute_dam
+		var/comparison = (body_part.max_damage/5)
+		if(damage)
+			icon_num = 1
+		if(damage > (comparison))
+			icon_num = 2
+		if(damage > (comparison*2))
+			icon_num = 3
+		if(damage > (comparison*3))
+			icon_num = 4
+		if(damage > (comparison*4))
+			icon_num = 5
+		if(has_status_effect(/datum/status_effect/grouped/screwy_hud/fake_healthy))
+			icon_num = 0
+		if(icon_num)
+			hud_used.healthdoll.add_overlay(mutable_appearance('icons/hud/screen_gen.dmi', "[body_part.body_zone][icon_num]"))
+	for(var/t in get_missing_limbs()) //Missing limbs
+		hud_used.healthdoll.add_overlay(mutable_appearance('icons/hud/screen_gen.dmi', "[t]6"))
+	for(var/t in get_disabled_limbs()) //Disabled limbs
+		hud_used.healthdoll.add_overlay(mutable_appearance('icons/hud/screen_gen.dmi', "[t]7"))
 
 /mob/living/carbon/human/fully_heal(admin_revive = FALSE)
 	dna?.species.spec_fully_heal(src)
@@ -893,6 +887,11 @@
 
 			if(initial(quirk_type.abstract_parent_type) == type)
 				continue
+
+			// SKYRAT EDIT ADDITION START
+			if(initial(quirk_type.erp_quirk) && CONFIG_GET(flag/disable_erp_preferences))
+				continue
+			// SKYRAT EDIT ADDITION END
 
 			var/qname = initial(quirk_type.name)
 			options[has_quirk(quirk_type) ? "[qname] (Remove)" : "[qname] (Add)"] = quirk_type
@@ -1008,6 +1007,29 @@
 	if(target.incapacitated(IGNORE_GRAB) || incapacitated(IGNORE_GRAB))
 		target.visible_message(span_warning("[target] can't hang onto [src]!"))
 		return
+	//SKYRAT EDIT START
+	if(HAS_TRAIT(target, TRAIT_OVERSIZED) && !HAS_TRAIT(src, TRAIT_OVERSIZED))
+		target.visible_message(span_warning("[target] is too heavy for [src] to carry!"))
+		var/dam_zone = pick(BODY_ZONE_CHEST, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
+		var/obj/item/bodypart/affecting = get_bodypart(ran_zone(dam_zone))
+		var/wound_bon = 0
+		if(!affecting) //If one leg is missing, then it might break. Snap their spine instead
+			affecting = get_bodypart(BODY_ZONE_CHEST)
+		if(prob(oversized_piggywound_chance	))
+			wound_bon = 100
+			to_chat(src, span_danger("You are crushed under the weight of [target]!"))
+			to_chat(target, span_danger("You accidentally crush [src]!"))
+		else
+			to_chat(src, span_danger("You hurt your [affecting.name] while trying to endure the weight of [target]!"))
+		apply_damage(oversized_piggydam, BRUTE, affecting, wound_bonus=wound_bon)
+		playsound(src, 'sound/effects/splat.ogg', 50, TRUE)
+		AddElement(/datum/element/squish, 20 SECONDS) // Totally not stolen from a vending machine code
+		Knockdown(oversized_piggyknock) // Knocking down the unlucky guy
+		target.Knockdown(1) // simply make the oversized one fall
+		if(get_turf(target) != get_turf(src))
+			target.throw_at(get_turf(src), 1, 1, spin=FALSE, quickstart=FALSE)
+		return
+		//SKYRAT EDIT END
 
 	return buckle_mob(target, TRUE, TRUE, RIDER_NEEDS_ARMS)
 

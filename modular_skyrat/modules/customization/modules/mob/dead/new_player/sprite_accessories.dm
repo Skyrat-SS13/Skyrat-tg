@@ -56,6 +56,8 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	var/genetic = FALSE
 	var/uses_emissives = FALSE
 	var/color_layer_names
+	/// If this sprite accessory will be inaccessable if ERP config is disabled
+	var/erp_accessory = FALSE
 
 /datum/sprite_accessory/New()
 	if(!default_color)
@@ -333,6 +335,7 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	name = "Socks - Latex"
 	icon_state = "socks_latex"
 	use_static = TRUE
+	erp_accessory = TRUE
 
 /datum/sprite_accessory/underwear
 	icon = 'modular_skyrat/master_files/icons/mob/clothing/underwear.dmi'
@@ -465,16 +468,19 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	name = "Chastity Belt"
 	icon_state = "chastbelt"
 	use_static = TRUE
+	erp_accessory = TRUE
 
 /datum/sprite_accessory/underwear/chastcage
 	name = "Chastity Cage"
 	icon_state = "chastcage"
 	use_static = null
+	erp_accessory = TRUE
 
 /datum/sprite_accessory/underwear/latex
 	name = "Panties - Latex"
 	icon_state = "panties_latex"
 	use_static = TRUE
+	erp_accessory = TRUE
 
 /datum/sprite_accessory/underwear/lizared
 	name = "LIZARED Underwear"
@@ -633,6 +639,7 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	icon_state = "bra_latex"
 	gender = FEMALE
 	use_static = TRUE
+	erp_accessory = TRUE
 
 /datum/sprite_accessory/undershirt/striped_bra
 	name = "Bra - Striped"
@@ -702,30 +709,35 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	icon_state = "chastbra"
 	gender = FEMALE
 	use_static = TRUE
+	erp_accessory = TRUE
 
 /datum/sprite_accessory/undershirt/pasties
 	name = "Pasties"
 	icon_state = "pasties"
 	gender = FEMALE
 	use_static = null
+	erp_accessory = TRUE
 
 /datum/sprite_accessory/undershirt/pasties_alt
 	name = "Pasties - Alt"
 	icon_state = "pasties_alt"
 	gender = FEMALE
 	use_static = null
+	erp_accessory = TRUE
 
 /datum/sprite_accessory/undershirt/shibari
 	name = "Shibari"
 	icon_state = "shibari"
 	gender = FEMALE
 	use_static = null
+	erp_accessory = TRUE
 
 /datum/sprite_accessory/undershirt/shibari_sleeves
 	name = "Shibari Sleeves"
 	icon_state = "shibari_sleeves"
 	gender = FEMALE
 	use_static = null
+	erp_accessory = TRUE
 
 /datum/sprite_accessory/undershirt/bulletclub //4 life
 	name = "Shirt - Black Skull"
@@ -777,3 +789,7 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 /datum/sprite_accessory/undershirt/leotard/turtleneck
 	name = "Shirt - Turtleneck Leotard"
 	icon_state = "leotard_turtleneck"
+
+/datum/sprite_accessory/undershirt/leotard/turtleneck/sleeveless
+	name = "Shirt - Turtleneck Leotard Sleeveless"
+	icon_state = "leotard_turtleneck_sleeveless"

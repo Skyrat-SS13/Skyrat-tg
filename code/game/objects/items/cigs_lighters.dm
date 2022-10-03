@@ -933,7 +933,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	worn_icon_state = "vape_worn"
 	greyscale_config = /datum/greyscale_config/vape
 	greyscale_config_worn = /datum/greyscale_config/vape/worn
-	greyscale_config_worn_digi = /datum/greyscale_config/vape/worn/digi
+	greyscale_config_worn_digi = /datum/greyscale_config/vape/worn/digi //SKYRAT EDIT ADDITION - DigiGreyscale (Digi? On a vape? What? How did we do this)
 	greyscale_colors = "#2e2e2e"
 	inhand_icon_state = null
 	w_class = WEIGHT_CLASS_TINY
@@ -1020,7 +1020,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 /obj/item/clothing/mask/vape/equipped(mob/user, slot)
 	. = ..()
-	if(slot != ITEM_SLOT_MASK)
+	if(!(slot & ITEM_SLOT_MASK))
 		return
 
 	if(screw)

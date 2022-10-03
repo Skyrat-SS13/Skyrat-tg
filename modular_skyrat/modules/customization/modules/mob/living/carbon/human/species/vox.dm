@@ -2,7 +2,7 @@
 	// Bird-like humanoids
 	name = "Vox"
 	id = SPECIES_VOX
-	eyes_icon = 'modular_skyrat/master_files/icons/mob/species/vox_eyes.dmi'
+	eyes_icon = 'modular_skyrat/modules/organs/icons/vox_eyes.dmi'
 	say_mod = "skrees"
 	can_augment = FALSE
 	species_traits = list(
@@ -27,7 +27,7 @@
 	mutant_bodyparts = list()
 	default_mutant_bodyparts = list(
 		"tail" = "Vox Tail",
-		"legs" = "Digitigrade Legs",
+		"legs" = DIGITIGRADE_LEGS,
 		"snout" = "Vox Snout",
 		"spines" = ACC_RANDOM
 	)

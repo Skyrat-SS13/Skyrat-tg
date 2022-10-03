@@ -71,13 +71,6 @@
 	. = ..()
 	AddElement(/datum/element/polychromic, poly_colors)
 
-/obj/item/clothing/under/dress/skirt/polychromic/pleated
-	name = "polychromic pleated skirt"
-	desc = "A magnificent pleated skirt complements the woolen polychromatic sweater."
-	icon_state = "polypleat"
-	body_parts_covered = CHEST|GROIN|ARMS
-	poly_colors = list("#88CCFF", "#888888", "#FF3333")
-
 /obj/item/clothing/under/misc/poly_shirt
 	name = "polychromic button-up shirt"
 	desc = "A fancy button-up shirt made with polychromic threads."
@@ -131,21 +124,6 @@
 	. = ..()
 	AddElement(/datum/element/polychromic, list("#888888", "#FF3333", "#FFFFFF"))
 
-/obj/item/clothing/under/misc/polysweater
-	name = "polychromic sweater"
-	desc = "Why trade style for comfort? Now you can go commando down south and still be cozy up north, AND do it in whatever color you choose."
-	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
-	icon_state = "poly_turtle"
-	worn_icon_state = "poly_turtle"
-	body_parts_covered = CHEST|GROIN|ARMS //Commando sweater is long but still doesnt have pants
-	can_adjust = FALSE
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
-
-/obj/item/clothing/under/misc/polysweater/Initialize(mapload)
-	. = ..()
-	AddElement(/datum/element/polychromic, list("#FFFFFF"))
-
 /obj/item/clothing/under/misc/poly_tanktop
 	name = "polychromic tank top"
 	desc = "For those lazy summer days."
@@ -166,30 +144,6 @@
 	desc = "Great for showing off your chest in style. Not recommended for males."
 	icon_state = "polyfemtankpantsu"
 	poly_colors = list("#888888", "#FF3333", "#FFFFFF")
-
-/obj/item/clothing/under/shorts/polychromic
-	name = "polychromic athletic shorts"
-	desc = "95% Polychrome, 5% Spandex!"
-	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
-	icon_state = "polyshortpants"
-	supports_variations_flags = NONE
-	greyscale_config = null //Temporary measures while Polychrom is gutted.
-	greyscale_config_worn = null
-	greyscale_config_worn_digi = null
-	var/list/poly_colors = list("#FFFFFF", "#FF8888", "#FFFFFF")
-
-/obj/item/clothing/under/shorts/polychromic/Initialize(mapload)
-	. = ..()
-	AddElement(/datum/element/polychromic, poly_colors)
-
-/obj/item/clothing/under/shorts/polychromic/pantsu
-	name = "polychromic panties"
-	desc = "Topless striped panties. Now with 120% more polychrome!"
-	icon_state = "polypantsu"
-	body_parts_covered = GROIN
-	supports_variations_flags = NONE
-	poly_colors = list("#FFFFFF", "#88CCFF", "#FFFFFF")
 
 /**************CKEY EXCLUSIVES*************/
 
@@ -221,8 +175,8 @@
 	desc = "A portable tablet that allows you to draw. Legends say these can earn the owner a fortune in some sectors of space."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
 	icon_state = "drawingtablet"
-	lefthand_file = 'icons/mob/inhands/misc/devices_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/misc/devices_righthand.dmi'
+	lefthand_file = 'icons/mob/inhands/items/devices_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/items/devices_righthand.dmi'
 	inhand_icon_state = "electronic"
 	item_flags = NOBLUDGEON
 	w_class = WEIGHT_CLASS_TINY
@@ -243,7 +197,7 @@
 		selects["Save"] = "Save"
 		selects["Delete"] = "Delete"
 		var/selection = input(user, "", "Color Menu", currentcolor) as null|anything in selects
-		if(QDELETED(src) || !user.canUseTopic(src, BE_CLOSE))
+		if(QDELETED(src) || !user.canUseTopic(src, be_close = TRUE))
 			return
 		switch(selection)
 			if("Save")
@@ -260,7 +214,7 @@
 				currentcolor = colors[selection]
 	else if(istype(action, /datum/action/item_action/dtcleargrid))
 		var/yesnomaybe = tgui_alert("Are you sure you wanna clear the canvas?", "", list("Yes", "No", "Maybe"))
-		if(QDELETED(src) || !user.canUseTopic(src, BE_CLOSE))
+		if(QDELETED(src) || !user.canUseTopic(src, be_close = TRUE))
 			return
 		switch(yesnomaybe)
 			if("Yes")
@@ -994,7 +948,7 @@
 
 /obj/item/clothing/glasses/welding/steampunk_goggles/item_action_slot_check(slot, mob/user)
 	. = ..()
-	if(. && slot == ITEM_SLOT_HEAD)
+	if(. && (slot & ITEM_SLOT_HEAD))
 		return FALSE
 
 /obj/item/clothing/glasses/welding/steampunk_goggles/attack_self(mob/user)
@@ -1281,7 +1235,7 @@
 /obj/item/clothing/suit/toggle/labcoat/tenrai/worn_overlays(mutable_appearance/standing, isinhands, icon_file)
 	. = ..()
 	if(!isinhands)
-		. += emissive_appearance(icon_file, "[icon_state]-emissive", alpha = src.alpha)
+		. += emissive_appearance(icon_file, "[icon_state]-emissive", src, alpha = src.alpha)
 
 //Donation reward for RealWinterFrost
 /obj/item/clothing/neck/cloak/fluffycloak
@@ -1294,7 +1248,7 @@
 /obj/item/clothing/neck/cloak/fluffycloak/worn_overlays(mutable_appearance/standing, isinhands, icon_file)
 	. = ..()
 	if(!isinhands)
-		. += emissive_appearance(icon_file, "[icon_state]-emissive", alpha = src.alpha)
+		. += emissive_appearance(icon_file, "[icon_state]-emissive", src, alpha = src.alpha)
 
 
 /obj/item/clothing/mask/gas/larpswat
@@ -1421,3 +1375,26 @@
 /obj/item/clothing/accessory/hypno_watch/examine()
 	. = ..()
 	. += span_boldwarning("Who knows what it could be used for?")
+
+// Donation reward for BoisterousBeebz
+
+/obj/item/clothing/under/bubbly_clown/skirt
+	name = "bubbly clown dress"
+	desc = "A bright and cheerful clown dress, honk!"
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
+	icon_state = "bubbly_clown_dress"
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
+	body_parts_covered = CHEST|GROIN|ARMS
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+
+// Donation reward for Sweetsoulbrother
+/obj/item/coin/donator/marsoc
+	name = "MARSOC Challenge Coin"
+	desc = "This is a challenge coin given to all MARSOC members upon honorable separation from the Corps. \
+			The coin has the insignia of the Marine Special Operations Command on one side, and the Sol Federation Marine Corps logo on the other. \
+			This one has an engraving on the Marine Corps logo side, etched in a circle around it: \
+			\"To Staff Sargent Henry Rockwell, for his exemplary service to the Special Operations community and his outstanding moral fiber \
+			and shining example to the core values of the Sol Federation Marine Corps.\""
+	icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
+	sideslist = list("MARSOC", "SFMC")

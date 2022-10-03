@@ -71,7 +71,7 @@
 		else
 			clear_mood_event("suffocation")
 	else
-		if(istype(loc, /obj/))
+		if(isobj(loc))
 			var/obj/location_as_object = loc
 			location_as_object.handle_internal_lifeform(src,0)
 
@@ -101,7 +101,7 @@
 		losebreath--
 		if(prob(10))
 			emote("gasp")
-		if(istype(loc, /obj/))
+		if(isobj(loc))
 			var/obj/loc_as_obj = loc
 			loc_as_obj.handle_internal_lifeform(src,0)
 	else
@@ -150,7 +150,7 @@
 
 				breath = loc.remove_air(breath_moles)
 		else //Breathe from loc as obj again
-			if(istype(loc, /obj/))
+			if(isobj(loc))
 				var/obj/loc_as_obj = loc
 				loc_as_obj.handle_internal_lifeform(src,0)
 
@@ -275,9 +275,9 @@
 	if(breath_gases[/datum/gas/bz])
 		var/bz_partialpressure = (breath_gases[/datum/gas/bz][MOLES]/breath.total_moles())*breath_pressure
 		if(bz_partialpressure > 1)
-			hallucination += 10
+			adjust_hallucinations(20 SECONDS)
 		else if(bz_partialpressure > 0.01)
-			hallucination += 5
+			adjust_hallucinations(10 SECONDS)
 
 	//NITRIUM
 	if(breath_gases[/datum/gas/nitrium])
@@ -448,9 +448,6 @@
 
 	if(silent)
 		silent = max(silent - (0.5 * delta_time), 0)
-
-	if(hallucination)
-		handle_hallucinations(delta_time, times_fired)
 
 /// Base carbon environment handler, adds natural stabilization
 /mob/living/carbon/handle_environment(datum/gas_mixture/environment, delta_time, times_fired)

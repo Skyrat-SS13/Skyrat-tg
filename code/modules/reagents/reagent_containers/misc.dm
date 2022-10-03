@@ -120,7 +120,7 @@
 	name = "damp rag"
 	desc = "For cleaning up messes, you suppose."
 	w_class = WEIGHT_CLASS_TINY
-	icon = 'icons/obj/toy.dmi'
+	icon = 'icons/obj/toys/toy.dmi'
 	icon_state = "rag"
 	item_flags = NOBLUDGEON
 	reagent_flags = OPENCONTAINER
@@ -143,7 +143,7 @@
 		return
 	if(iscarbon(A) && reagents?.total_volume)
 		var/mob/living/carbon/C = A
-		var/reagentlist = pretty_string_from_reagent_list(reagents)
+		var/reagentlist = pretty_string_from_reagent_list(reagents.reagent_list)
 		var/log_object = "containing [reagentlist]"
 		if(user.combat_mode && !C.is_mouth_covered())
 			reagents.trans_to(C, reagents.total_volume, transfered_by = user, methods = INGEST)
