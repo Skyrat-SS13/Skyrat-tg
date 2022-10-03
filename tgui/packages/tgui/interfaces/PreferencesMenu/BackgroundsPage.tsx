@@ -157,9 +157,9 @@ const CategoryEntry = (props, context) => {
             style={val.valid ? '' : 'color: grey'}>
             {val.name}
           </span>
-          {val.sub_culture_amount > 0 ? (
+          {val.sub_background_amount > 0 ? (
             <span className="PreferencesMenu__Backgrounds__subAmount">
-              {'+' + val.sub_culture_amount}
+              {'+' + val.sub_background_amount}
             </span>
           ) : (
             ''

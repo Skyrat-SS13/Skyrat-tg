@@ -153,7 +153,7 @@
 	if(!check_valid(employment, preferences.origin) || !check_valid(employment, preferences.social_background))
 		return TRUE
 
-	preferences.origin = employment.type
+	preferences.employment = employment.type
 	return TRUE
 
 #undef CHILD_BACKGROUND_SELECTED
