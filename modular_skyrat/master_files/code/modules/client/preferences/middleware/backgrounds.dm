@@ -123,7 +123,7 @@
 	return FALSE
 
 /datum/preference_middleware/backgrounds/proc/verify_employment(list/params, mob/user)
-	var/datum/background_info/employment/employment = GLOB.origin[text2path(params["background"])]
+	var/datum/background_info/employment/employment = GLOB.origins[text2path(params["background"])]
 
 	// It isn't valid, let's not let the game try to use whatever was sent.
 	if(!check_valid(employment, preferences.origin) || !check_valid(employment, preferences.social_background))
