@@ -189,7 +189,8 @@
 			update_suit_storage()
 
 		else
-			to_chat(src, span_danger("You are trying to equip this item to an unsupported inventory slot. Report this to a coder!"))
+			//to_chat(src, span_danger("You are trying to equip this item to an unsupported inventory slot. Report this to a coder!")) // ORIGINAL
+			not_handled = TRUE // SKYRAT EDIT EDIT START - Modular slots (Fuck you error message)
 
 	//Item is handled and in slot, valid to call callback, for this proc should always be true
 	if(!not_handled)
@@ -299,6 +300,8 @@
 		s_store = null
 		if(!QDELETED(src))
 			update_suit_storage()
+
+	modular_doUnEquip(I)// SKYRAT EDIT ADDITION - Modular slots
 
 	update_equipment_speed_mods()
 

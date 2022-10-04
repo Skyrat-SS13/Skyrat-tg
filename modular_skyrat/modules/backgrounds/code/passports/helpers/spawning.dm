@@ -18,7 +18,7 @@
 
 	passport = new passport()
 	passport.imprint_owner(spawned_mob)
-	if(!spawned_mob.equip_to_slot_if_possible(passport, ITEM_SLOT_BACKPACK, disable_warning = TRUE, bypass_equip_delay_self = TRUE, initial = TRUE) && !spawned_mob.dropItemToGround(passport, force = TRUE, silent = TRUE))
+	if(!spawned_mob.equip_to_slot_if_possible(passport, ITEM_SLOT_PASSPORT, disable_warning = TRUE, bypass_equip_delay_self = TRUE, initial = TRUE) && !spawned_mob.dropItemToGround(passport, force = TRUE, silent = TRUE))
 		log_world("ERROR: Unable to drop item [passport] from [spawned_mob]!")
 		message_admins("ERROR: Unable to drop item [passport] from [spawned_mob]!")
 		qdel(passport)

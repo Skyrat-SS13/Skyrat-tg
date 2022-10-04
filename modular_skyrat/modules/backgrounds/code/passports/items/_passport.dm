@@ -3,16 +3,13 @@
 #define PASSPORT_CLOSING "closing"
 #define PASSPORT_OPENING "opening"
 
-/obj/item/proc/get_passport()
-	return
-
 // This type should only ever be given to very poor backgrounds that aren't backed by an empire.
 /obj/item/passport
 	name = "passport papers"
 	icon = 'modular_skyrat/modules/backgrounds/icons/passports.dmi'
 	desc = "A bundle of papers indicating where you originated from, as well as who you are. Made from a non-flammable paper-like material."
 	w_class = WEIGHT_CLASS_SMALL
-	slot_flags = ITEM_SLOT_ID
+	slot_flags = ITEM_SLOT_PASSPORT
 
 	var/icon_state_base = "generic"
 	var/icon_state_ext = PASSPORT_CLOSED

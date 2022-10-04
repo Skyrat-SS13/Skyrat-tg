@@ -116,7 +116,7 @@
 /datum/preference_middleware/backgrounds/proc/check_valid(datum/background_info/background_info, datum/background_info/loaded_cultural_info)
 	if(!background_info || !loaded_cultural_info)
 		return FALSE
-	if(initial(background_info.groups) == CULTURE_ALL || initial(loaded_cultural_info.groups) == CULTURE_ALL)
+	if(initial(background_info.groups) == BACKGROUNDS_ALL || initial(loaded_cultural_info.groups) == BACKGROUNDS_ALL)
 		return TRUE
 	if(initial(background_info.groups) & initial(loaded_cultural_info.groups))
 		return TRUE

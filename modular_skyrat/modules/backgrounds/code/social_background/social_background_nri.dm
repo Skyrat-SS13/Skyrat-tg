@@ -10,7 +10,7 @@
 	passport = /obj/item/passport/nri
 	economic_power = 0.8
 	features = list(/datum/background_feature/average)
-	groups = CULTURE_NRI
+	groups = BACKGROUNDS_NRI
 
 /datum/background_info/social_background/nri/first_class
 	name = "NRI, First-Class Citizen"

@@ -2,7 +2,7 @@
 	name = "Kingdom of Agurkrral"
 	description = "Backgrounds specific to the Akulan race and their vassals."
 	features = list(/datum/background_feature/good)
-	groups = CULTURE_AKULAN
+	groups = BACKGROUNDS_AKULAN
 	passport = /obj/item/passport/akulan
 
 /datum/background_info/social_background/akulan/akulan_core

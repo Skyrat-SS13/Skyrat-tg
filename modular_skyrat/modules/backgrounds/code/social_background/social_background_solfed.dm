@@ -11,7 +11,7 @@
 	its massive bureaucracy and the distance between worlds. Through its member states, the SolFed governs as one of the \
 	most advanced and powerful civilisations in the known galaxy."
 	features = list(/datum/background_feature/average)
-	groups = CULTURE_SOL
+	groups = BACKGROUNDS_SOLFED
 	passport = /obj/item/passport/sol
 
 /datum/background_info/social_background/solfed/fleet

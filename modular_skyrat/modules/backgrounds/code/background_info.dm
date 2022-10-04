@@ -12,7 +12,7 @@
 	/// The gameplay features of this background.
 	var/list/features = list()
 	/// Groups the culture belongs to.
-	var/groups = CULTURE_ALL
+	var/groups = BACKGROUNDS_ALL
 
 /datum/background_info/proc/is_job_valid(datum/job/job)
 	return TRUE

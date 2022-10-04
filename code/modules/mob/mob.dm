@@ -452,7 +452,9 @@
 	var/slot_priority = W.slot_equipment_priority
 
 	if(!slot_priority)
+		// SKYRAT EDIT - Backgrounds - Passport slot
 		slot_priority = list( \
+			ITEM_SLOT_PASSPORT, \
 			ITEM_SLOT_BACK, ITEM_SLOT_ID,\
 			ITEM_SLOT_ICLOTHING, ITEM_SLOT_OCLOTHING,\
 			ITEM_SLOT_MASK, ITEM_SLOT_HEAD, ITEM_SLOT_NECK,\

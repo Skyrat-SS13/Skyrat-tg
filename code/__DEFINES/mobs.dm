@@ -647,6 +647,7 @@
 #define VAGINA_LAYER 28
 #define PENIS_LAYER 27
 #define NIPPLES_LAYER 26
+#define PASSPORT_LAYER 26
 #define BANDAGE_LAYER 25
 //SKYRAT EDIT ADDITION END
 /// ID card layer (might be deprecated)

@@ -21,7 +21,7 @@
 	Vey-Med still pays you well for work alongside Nanotrasen. Despite a few unfounded rumors of corporate espionage from either company, \
 	you're still given clearance to work in all the various departments of Nanotrasen, for some reason."
 	features = list(/datum/background_feature/good)
-	groups = CULTURE_SKRELL_VULP
+	groups = BACKGROUNDS_SKRELL_VULPAKIN
 
 /datum/background_info/employment/unathi
 	name = "Unathi Migrant Worker"
@@ -29,4 +29,4 @@
 	you have been brought from Moghes to work in the Sol Federation for Nanotrasen. You may not be culturally compatible with your co-workers. \
 	No, Crew Resources doesn't care."
 	features = list(/datum/background_feature/poor)
-	groups = CULTURE_MOGHES
+	groups = BACKGROUNDS_MOHGES

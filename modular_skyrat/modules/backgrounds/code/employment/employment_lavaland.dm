@@ -3,7 +3,7 @@
 	description = "Placeholder."
 	economic_power = 0
 	features = list(/datum/background_feature/lavaland)
-	groups = CULTURE_LAVALAND
+	groups = BACKGROUNDS_LAVALAND
 
 /datum/background_info/employment/lavaland/is_job_valid(datum/job/job)
 	return FALSE

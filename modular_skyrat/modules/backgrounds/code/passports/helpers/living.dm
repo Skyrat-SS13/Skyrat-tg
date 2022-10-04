@@ -15,4 +15,4 @@
 	if(. && hand_first)
 		return
 	// Check inventory slots
-	return (wear_id?.get_passport() || belt?.get_passport())
+	return (passport?.get_passport() || belt?.get_passport())

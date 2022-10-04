@@ -987,6 +987,18 @@ GLOBAL_LIST_EMPTY(features_by_species)
 				return TRUE
 			return FALSE
 
+	// SKYRAT EDIT ADDITION START - Modular slots
+	switch(modular_can_equip(H, I, disable_warning, bypass_equip_delay_self))
+		if(CAN_EQUIP_PASS)
+			// Do nothing.
+		if(CAN_EQUIP_TRUE)
+			return TRUE
+		if(CAN_EQUIP_FALSE)
+			return FALSE
+		else
+			CRASH("YOU RETURNED THE WRONG THING, CODER!! IF YOU ARE SEEING THIS, USE THE DEFINES!!")
+	// SKYRAT EDIT END
+
 	return FALSE //Unsupported slot
 
 /datum/species/proc/equip_delay_self_check(obj/item/I, mob/living/carbon/human/H, bypass_equip_delay_self)

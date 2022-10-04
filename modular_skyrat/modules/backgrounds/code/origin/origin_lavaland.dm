@@ -6,7 +6,7 @@
 	required_lang = /datum/language/ashtongue
 	economic_power = 0
 	features = list(/datum/background_feature/lavaland)
-	groups = CULTURE_LAVALAND
+	groups = BACKGROUNDS_LAVALAND
 
 /datum/background_info/origin/lavaland/native
 	name = "Lavaland Native"
