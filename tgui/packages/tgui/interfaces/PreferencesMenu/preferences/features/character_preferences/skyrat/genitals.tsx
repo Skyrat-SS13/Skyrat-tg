@@ -106,38 +106,38 @@ export const feature_womb: Feature<string> = {
 };
 
 export const feature_breasts: Feature<string> = {
-  name: 'Breasts Choice',
+  name: 'Breast Choice',
   component: FeatureDropdownInput,
 };
 
 export const breasts_skin_tone: FeatureToggle = {
-  name: 'Breasts uses Skin Tone',
+  name: 'Breasts use Skin Tone',
   component: CheckboxInput,
 };
 
 export const breasts_skin_color: FeatureToggle = {
-  name: 'Breasts uses Skin Color',
+  name: 'Breasts use Skin Color',
   component: CheckboxInput,
 };
 
 export const breasts_color: Feature<string[]> = {
-  name: 'Breasts Color',
+  name: 'Breast Color',
   component: FeatureTriColorInput,
 };
 
 export const breasts_emissive: Feature<boolean[]> = {
-  name: 'Breasts Emissives',
+  name: 'Breast Emissives',
   component: FeatureTriBoolInput,
 };
 
 export const breasts_lactation_toggle: FeatureToggle = {
-  name: 'Breasts Lactation',
+  name: 'Breast Lactation',
   component: CheckboxInput,
 };
 
-export const breasts_size: FeatureNumeric = {
-  name: 'Breasts Size',
-  component: FeatureNumberInput,
+export const breasts_size: Feature<string> = {
+  name: 'Breast Size',
+  component: FeatureDropdownInput,
 };
 
 export const feature_anus: Feature<string> = {
