@@ -13,6 +13,14 @@
 	pass_flags = PASSTABLE | PASSGRILLE | PASSMOB
 	mob_size = MOB_SIZE_TINY
 	mob_biotypes = MOB_ORGANIC
+	can_be_held = TRUE
+	held_state = "plushie_fox"
+	response_help_continuous = "pets"
+	response_help_simple = "pet"
+	response_disarm_continuous = "bops"
+	response_disarm_simple = "bop"
+	response_harm_continuous = "rips"
+	response_harm_simple = "rip"
 	verb_say = "squeaks"
 	verb_ask = "squeaks inquisitively"
 	verb_exclaim = "squeaks intensely"
@@ -31,6 +39,7 @@
 	pressure_resistance = 200
 
 /mob/living/simple_animal/pet/plushie/Initialize()
+	AddElement(/datum/element/pet_bonus, "squeaks!")
 	. = ..()
 //	AddElement(/datum/element/mob_holder, "plushie")
 
@@ -56,6 +65,7 @@
 		new_plushie.icon_living = src.icon_state
 		new_plushie.icon_dead = src.icon_state
 		new_plushie.icon_state = src.icon_state
+		new_plushie.held_state = src.inhand_icon_state
 		new_plushie.name = src.name
 
 		//make the mob sentient

@@ -530,13 +530,6 @@
 		used_item.play_tool_sound(src, 50)
 		deconstruct(TRUE)
 
-// // Object disassembly handler by wrench
-// /obj/structure/chair/milking_machine/default_unfasten_wrench(mob/user, obj/item/used_item, time = 20)
-// 	. = !(flags_1 & NODECONSTRUCT_1) && used_item.tool_behaviour == TOOL_WRENCH
-// 	if(.)
-// 		used_item.play_tool_sound(src, 50)
-// 		deconstruct(TRUE)
-
 // Machine Workflow Processor
 /obj/structure/chair/milking_machine/process(delta_time)
 
@@ -546,8 +539,6 @@
 		pump_state = pump_state_list[1]
 		update_all_visuals()
 		return
-//	if(current_mode == mode_list[1] && pump_state == pump_state_list[1])
-//		cell.give(charge_rate * delta_time)
 
 	// Check if the machine should work
 	if(!current_mob)
@@ -600,17 +591,17 @@
 
 	if(istype(current_selected_organ, /obj/item/organ/external/genital/breasts))
 		if(current_selected_organ.reagents.total_volume > 0)
-			current_selected_organ.internal_fluids.trans_to(milk_vessel, milk_retrive_amount[current_mode] * fluid_multiplier * delta_time)
+			current_selected_organ.transfer_internal_fluid(milk_vessel, milk_retrive_amount[current_mode] * fluid_multiplier * delta_time)
 		else
 			return
 	else if (istype(current_selected_organ, /obj/item/organ/external/genital/vagina))
 		if(current_selected_organ.reagents.total_volume > 0)
-			current_selected_organ.internal_fluids.trans_to(girlcum_vessel, girlcum_retrive_amount[current_mode] * fluid_multiplier * delta_time)
+			current_selected_organ.transfer_internal_fluid(girlcum_vessel, girlcum_retrive_amount[current_mode] * fluid_multiplier * delta_time)
 		else
 			return
 	else if (istype(current_selected_organ, /obj/item/organ/external/genital/testicles))
 		if(current_selected_organ.reagents.total_volume > 0)
-			current_selected_organ.internal_fluids.trans_to(semen_vessel, semen_retrive_amount[current_mode] * fluid_multiplier * delta_time)
+			current_selected_organ.transfer_internal_fluid(semen_vessel, semen_retrive_amount[current_mode] * fluid_multiplier * delta_time)
 		else
 			return
 	else
@@ -619,9 +610,9 @@
 
 // Handling the process of the impact of the machine on the organs of the mob
 /obj/structure/chair/milking_machine/proc/increase_current_mob_arousal(delta_time)
-	src.current_mob.adjustArousal(src.arousal_amounts[src.current_mode] * delta_time)
-	src.current_mob.adjustPleasure(src.pleasure_amounts[src.current_mode] * delta_time)
-	src.current_mob.adjustPain(src.pain_amounts[src.current_mode] * delta_time)
+	current_mob.adjust_arousal(arousal_amounts[current_mode] * delta_time)
+	current_mob.adjust_pleasure(pleasure_amounts[current_mode] * delta_time)
+	current_mob.adjust_pain(pain_amounts[current_mode] * delta_time)
 
 // Energy consumption processor
 /obj/structure/chair/milking_machine/proc/draw_power_from_cell(delta_time)
@@ -765,7 +756,7 @@
 					organ_overlay.icon_state = organ_overlay_new_icon_state
 
 		if(istype(current_selected_organ, /obj/item/organ/external/genital/testicles))
-			current_selected_organ_type = "penis"
+			current_selected_organ_type = ORGAN_SLOT_PENIS
 			current_selected_organ_size = current_selected_organ.genital_size
 			if(current_mode == mode_list[1])
 				pump_state = pump_state_list[1]
@@ -779,7 +770,7 @@
 					organ_overlay.icon_state = organ_overlay_new_icon_state
 
 		if(istype(current_selected_organ, /obj/item/organ/external/genital/vagina))
-			current_selected_organ_type = "vagina"
+			current_selected_organ_type = ORGAN_SLOT_VAGINA
 			current_selected_organ_size = current_selected_organ.genital_size
 			if(current_mode == mode_list[1])
 				pump_state = pump_state_list[1]
@@ -858,12 +849,6 @@
 // Handler for clicking an empty hand on a machine
 /obj/structure/chair/milking_machine/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
-
-	/* Standard behavior. Uncomment for UI debugging
-	if(!ui)
-		ui = new(user, src, "MilkingMachine", name)
-		ui.open()
-	*/
 
 	/*
 

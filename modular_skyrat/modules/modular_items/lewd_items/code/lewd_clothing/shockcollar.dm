@@ -49,8 +49,8 @@
 		created_sparks.start()
 
 		affected_mob.Paralyze(30)
-		affected_mob.adjustPain(10)
-		affected_mob.adjust_timed_status_effect(30 SECONDS, /datum/status_effect/speech/stutter)
+		affected_mob.adjust_pain(10)
+		affected_mob.adjust_stutter(30 SECONDS)
 
 	if(master)
 		if(isassembly(master))
@@ -87,7 +87,7 @@
 
 /obj/item/electropack/shockcollar/pacify/equipped(mob/living/carbon/human/user, slot)
 	. = ..()
-	if(slot == ITEM_SLOT_NECK)
+	if(slot & ITEM_SLOT_NECK)
 		ADD_TRAIT(user, TRAIT_PACIFISM, "pacifying-collar")
 
 /obj/item/electropack/shockcollar/pacify/dropped(mob/living/carbon/human/user)
