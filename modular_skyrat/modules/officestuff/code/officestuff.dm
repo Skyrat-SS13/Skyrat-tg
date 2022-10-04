@@ -3,6 +3,26 @@
 	icon = 'modular_skyrat/modules/officestuff/icons/cowboyobh.dmi'
 	icon_state = "grandfather_clock"
 	desc = "Tick, tick, tick, tick. It stands tall and daunting, loudly and ominously ticking, yet the hands are stuck close to midnight, the closer you get, the louder a faint whisper becomes a scream, a plea, something, but whatever it is, it says 'I am the Master, and you will obey me.'"
+	var/datum/looping_sound/masterclock/soundloop
+
+// stolen from the wall clock
+/obj/structure/awaymissions/wildwest/masterclock/examine(mob/user)
+	. = ..()
+	. += span_info("The current CST (local) time is: [station_time_timestamp()].")
+	. += span_info("The current TCT (galactic) time is: [time2text(world.realtime, "hh:mm:ss")].")
+
+/datum/looping_sound/masterclock
+	mid_sounds = list('modular_skyrat/modules/officestuff/sound/clock_ticking.ogg' = 1)
+	mid_length = 12 SECONDS
+	volume = 10
+
+/obj/structure/awaymissions/wildwest/masterclock/Initialize(mapload)
+	. = ..()
+	soundloop = new(src, TRUE)
+
+/obj/structure/awaymissions/wildwest/masterclock/Destroy()
+	QDEL_NULL(soundloop)
+	. = ..()
 
 /obj/structure/sign/painting/meat
 	name = "Figure With Meat"
