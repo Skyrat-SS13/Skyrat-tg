@@ -78,6 +78,28 @@
 	///list containing cooking radial buttons, for when anything of /obj/item/food is used on the forge
 	var/static/list/radial_options = list("oven" = radial_oven, "microwave" = radial_microwave)
 
+    ///Blacklist that contains reagents that weapons and armor are unable to be imbued with.
+	var/list/disallowed_reagents = list(
+		/datum/reagent/inverse/,
+		/datum/reagent/consumable/entpoly,
+		/datum/reagent/pax,
+		/datum/reagent/consumable/liquidelectricity/enriched,
+		/datum/reagent/toxin/heparin,
+		/datum/reagent/drug/aphrodisiac,
+		/datum/reagent/toxin/mindbreaker,
+		/datum/reagent/drug/mushroomhallucinogen,
+		/datum/reagent/teslium,
+		/datum/reagent/toxin/cyanide,
+		/datum/reagent/eigenstate,
+		/datum/reagent/drug/bath_salts,
+		/datum/reagent/drug/methamphetamine,
+		/datum/reagent/blood,
+		/datum/reagent/drug/pcp/,
+		/datum/reagent/consumable/cum,
+		/datum/reagent/consumable/femcum,
+		/datum/reagent/consumable/breast_milk,
+	)
+
 /obj/structure/reagent_forge/examine(mob/user)
 	. = ..()
 	. += span_warning("<br>Perhaps using your hand on [src] when skilled will do something...<br>")
@@ -357,6 +379,10 @@
 			if(weapon_reagent.volume < MIN_IMBUE_REQUIRED)
 				attacking_weapon.reagents.remove_all_type(weapon_reagent.type)
 				continue
+			if(is_type_in_list(weapon_reagent, disallowed_reagents))
+				fail_message(user, "The enchanted flames of the forge rebuke your attempt to work the liquid into [attacking_weapon]...")
+				attacking_weapon.reagents.remove_all_type(weapon_reagent.type)
+				continue
 			weapon_component.imbued_reagent += weapon_reagent.type
 			attacking_weapon.name = "[weapon_reagent.name] [attacking_weapon.name]"
 		if(attacking_weapon.name == initial(attacking_weapon.name))
@@ -390,6 +416,10 @@
 			return
 		for(var/datum/reagent/clothing_reagent in attacking_clothing.reagents.reagent_list)
 			if(clothing_reagent.volume < MIN_IMBUE_REQUIRED)
+				attacking_clothing.reagents.remove_all_type(clothing_reagent.type)
+				continue
+			if(is_type_in_list(clothing_reagent, disallowed_reagents))
+				fail_message(user, "The enchanted flames of the forge rebuke your attempt to work the liquid into [attacking_clothing]...")
 				attacking_clothing.reagents.remove_all_type(clothing_reagent.type)
 				continue
 			clothing_component.imbued_reagent += clothing_reagent.type
