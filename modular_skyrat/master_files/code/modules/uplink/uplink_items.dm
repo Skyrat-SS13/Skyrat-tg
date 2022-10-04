@@ -3,6 +3,7 @@
 */
 
 // Place any new uplink items in this file, and explain what they do
+// If you're adding nukeop-available items to the uplink, be sure to add `purchasable_from = ~(UPLINK_NUKE_OPS | UPLINK_CLOWN_OPS)`, otherwise they'll appear in nukeop/clownop uplinks!
 
 // DANGEROUS
 /datum/uplink_item/dangerous/aps_traitor
