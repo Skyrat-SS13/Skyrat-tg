@@ -97,8 +97,8 @@
 					/obj/item/reagent_containers/pill/camphor = 10,
 					/obj/item/reagent_containers/cup/bottle/crocin = 6,
 					/obj/item/reagent_containers/cup/bottle/camphor = 3,
-					/obj/item/reagent_containers/cup/bottle/breast_enlarger = 6, //Those are legal 'cause you can just turn off prefs in round in "CLOWN SMOKE MACHINE+PENIS ENLARGEMENT CHEMICAL CASE". Yes, i have special code-phrase for this. I've seen some shit.
-					/obj/item/reagent_containers/cup/bottle/penis_enlarger = 6,
+					/obj/item/reagent_containers/cup/bottle/succubus_milk = 6, //Those are legal 'cause you can just turn off prefs in round in "CLOWN SMOKE MACHINE+PENIS ENLARGEMENT CHEMICAL CASE". Yes, i have special code-phrase for this. I've seen some shit.
+					/obj/item/reagent_containers/cup/bottle/incubus_draft = 6,
 
 					//special
 					/obj/item/clothing/glasses/nice_goggles = 1, //easter egg, don't touch plz)
