@@ -14,6 +14,7 @@
 /proc/process_eorg_bans()
 	for(var/mob/iterating_player in GLOB.mob_list)
 		if(iterating_player.ckey && is_banned_from(iterating_player.ckey, BAN_EORG))
+			new /obj/effect/particle_effect/sparks/quantum (get_turf(iterating_player))
 			iterating_player.visible_message(span_notice("[iterating_player] is teleported back home, hopefully to an everloving family!"), span_userdanger("As you are end of round banned, you will now be deleted."))
 			qdel(iterating_player)
 
