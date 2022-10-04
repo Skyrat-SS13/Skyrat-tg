@@ -85,7 +85,6 @@
 		/datum/reagent/pax,
 		/datum/reagent/consumable/liquidelectricity/enriched,
 		/datum/reagent/toxin/heparin,
-		/datum/reagent/drug/aphrodisiac,
 		/datum/reagent/teslium,
 		/datum/reagent/toxin/cyanide,
 		/datum/reagent/eigenstate,
