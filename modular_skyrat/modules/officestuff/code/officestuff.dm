@@ -22,7 +22,7 @@
 
 /obj/structure/awaymissions/wildwest/masterclock/Destroy()
 	QDEL_NULL(soundloop)
-	. = ..()
+	return ..()
 
 /obj/structure/sign/painting/meat
 	name = "Figure With Meat"
