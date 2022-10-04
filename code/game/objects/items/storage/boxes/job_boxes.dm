@@ -88,6 +88,16 @@
 	new /obj/item/screwdriver/red(src)
 	new /obj/item/weldingtool/mini(src)
 
+/obj/item/storage/box/survival/centcom
+	name = "emergency response survival box"
+	desc = "A box with the bare essentials of ensuring the survival of your team. This one is labelled to contain a double tank."
+	illustration = "extendedtank"
+	internal_type = /obj/item/tank/internals/emergency_oxygen/double
+
+/obj/item/storage/box/survival/centcom/PopulateContents()
+	. = ..()
+	new /obj/item/crowbar(src)
+
 // Security survival box
 /obj/item/storage/box/survival/security
 	mask_type = /obj/item/clothing/mask/gas/sechailer
@@ -165,8 +175,8 @@
 /obj/item/storage/box/clown/suicide_act(mob/user)
 	user.visible_message(span_suicide("[user] opens [src] and gets consumed by [p_them()]! It looks like [user.p_theyre()] trying to commit suicide!"))
 	playsound(user, 'sound/misc/scary_horn.ogg', 70, vary = TRUE)
+	forceMove(user.drop_location())
 	var/obj/item/clothing/head/mob_holder/consumed = new(src, user)
-	user.forceMove(consumed)
 	consumed.desc = "It's [user.real_name]! It looks like [user.p_they()] committed suicide!"
 	return OXYLOSS
 
