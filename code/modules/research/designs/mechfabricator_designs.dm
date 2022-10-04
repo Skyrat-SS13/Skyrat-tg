@@ -1213,14 +1213,10 @@
 	build_path = /obj/item/borg/upgrade/pinpointer
 	materials = list(/datum/material/iron = 1000, /datum/material/glass = 500)
 	construction_time = 120
-<<<<<<< HEAD
-	category = list(RND_CATEGORY_CYBORG_UPGRADE_MODULES)
-*/ //SKYRAT REMOVAL END
-=======
 	category = list(
 		RND_CATEGORY_MECHFAB_CYBORG_MODULES + RND_SUBCATEGORY_MECHFAB_CYBORG_MODULES_MEDICAL
 	)
->>>>>>> 14c96d05b82 (TGUI for Techfabs II: The Great Recategorizing (AND ICONS) (AND MECHFABS) (AND AUTOLATHES) (#69990))
+*/ //SKYRAT REMOVAL END
 
 /datum/design/borg_upgrade_broomer
 	name = "Experimental Push Broom"

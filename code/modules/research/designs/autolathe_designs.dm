@@ -712,13 +712,6 @@
 /datum/design/bowl
 	name = "Bowl"
 	id = "bowl"
-<<<<<<< HEAD
-	build_type = AUTOLATHE | PROTOLATHE // SKYRAT EDIT - Original line: build_type = AUTOLATHE
-	materials = list(/datum/material/glass = 500)
-	build_path = /obj/item/reagent_containers/cup/bowl
-	category = list(RND_CATEGORY_INITIAL, RND_CATEGORY_TOOL_DESIGNS, RND_CATEGORY_DINNERWARE) // SKYRAT EDIT - Original line: 	category = list("initial","Dinnerware")
-	departmental_flags = DEPARTMENT_BITFLAG_SERVICE //SKYRAT EDIT: added to service techfab
-=======
 	build_type = AUTOLATHE | PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/glass = 500)
 	category = list(RND_CATEGORY_INITIAL, RND_CATEGORY_EQUIPMENT)
@@ -727,19 +720,10 @@
 		RND_CATEGORY_EQUIPMENT + RND_SUBCATEGORY_EQUIPMENT_KITCHEN
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_SERVICE
->>>>>>> 14c96d05b82 (TGUI for Techfabs II: The Great Recategorizing (AND ICONS) (AND MECHFABS) (AND AUTOLATHES) (#69990))
 
 /datum/design/drinking_glass
 	name = "Drinking Glass"
 	id = "drinking_glass"
-<<<<<<< HEAD
-	//build_type = AUTOLATHE	SKYRAT EDIT: Original Line
-	build_type = AUTOLATHE | PROTOLATHE	// SKRAT EDIT
-	materials = list(/datum/material/glass = 500)
-	build_path = /obj/item/reagent_containers/cup/glass/drinkingglass
-	category = list(RND_CATEGORY_INITIAL, RND_CATEGORY_TOOL_DESIGNS, RND_CATEGORY_DINNERWARE) // SKYRAT EDIT
-	departmental_flags = DEPARTMENT_BITFLAG_SERVICE //SKYRAT EDIT: added to service techfab
-=======
 	build_type = AUTOLATHE | PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/glass = 500)
 	category = list(RND_CATEGORY_INITIAL, RND_CATEGORY_EQUIPMENT)
@@ -748,18 +732,10 @@
 		RND_CATEGORY_EQUIPMENT + RND_SUBCATEGORY_EQUIPMENT_KITCHEN
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_SERVICE
->>>>>>> 14c96d05b82 (TGUI for Techfabs II: The Great Recategorizing (AND ICONS) (AND MECHFABS) (AND AUTOLATHES) (#69990))
 
 /datum/design/shot_glass
 	name = "Shot Glass"
 	id = "shot_glass"
-<<<<<<< HEAD
-	build_type = AUTOLATHE | PROTOLATHE // SKYRAT EDIT - Original line: build_type = AUTOLATHE
-	materials = list(/datum/material/glass = 100)
-	build_path = /obj/item/reagent_containers/cup/glass/drinkingglass/shotglass
-	category = list(RND_CATEGORY_INITIAL, RND_CATEGORY_TOOL_DESIGNS, RND_CATEGORY_DINNERWARE) // SKYRAT EDIT - Original line: 	category = list("initial","Dinnerware")
-	departmental_flags = DEPARTMENT_BITFLAG_SERVICE //SKYRAT EDIT: added to service techfab
-=======
 	build_type = AUTOLATHE | PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/glass = 100)
 	category = list(RND_CATEGORY_INITIAL, RND_CATEGORY_EQUIPMENT)
@@ -768,24 +744,18 @@
 		RND_CATEGORY_EQUIPMENT + RND_SUBCATEGORY_EQUIPMENT_KITCHEN
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_SERVICE
->>>>>>> 14c96d05b82 (TGUI for Techfabs II: The Great Recategorizing (AND ICONS) (AND MECHFABS) (AND AUTOLATHES) (#69990))
 
 /datum/design/shaker
 	name = "Shaker"
 	id = "shaker"
 	build_type = AUTOLATHE | PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = 1500)
-<<<<<<< HEAD
-	build_path = /obj/item/reagent_containers/cup/glass/shaker
-	category = list(RND_CATEGORY_INITIAL, RND_CATEGORY_DINNERWARE)
-=======
 	category = list(RND_CATEGORY_INITIAL, RND_CATEGORY_EQUIPMENT)
 	build_path = /obj/item/reagent_containers/cup/glass/shaker
 	category = list(
 		RND_CATEGORY_EQUIPMENT + RND_SUBCATEGORY_EQUIPMENT_KITCHEN
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_SERVICE
->>>>>>> 14c96d05b82 (TGUI for Techfabs II: The Great Recategorizing (AND ICONS) (AND MECHFABS) (AND AUTOLATHES) (#69990))
 
 /datum/design/cultivator
 	name = "Cultivator"
@@ -983,13 +953,10 @@
 	id = "beaker"
 	build_type = AUTOLATHE | PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/glass = 500)
-<<<<<<< HEAD
-=======
 	category = list(
 		RND_CATEGORY_INITIAL,
 		RND_CATEGORY_EQUIPMENT + RND_SUBCATEGORY_EQUIPMENT_CHEMISTRY
 	)
->>>>>>> 14c96d05b82 (TGUI for Techfabs II: The Great Recategorizing (AND ICONS) (AND MECHFABS) (AND AUTOLATHES) (#69990))
 	build_path = /obj/item/reagent_containers/cup/beaker
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL | DEPARTMENT_BITFLAG_SERVICE | DEPARTMENT_BITFLAG_SCIENCE
 
@@ -998,13 +965,10 @@
 	id = "large_beaker"
 	build_type = AUTOLATHE | PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/glass = 2500)
-<<<<<<< HEAD
-=======
 	category = list(
 		RND_CATEGORY_INITIAL,
 		RND_CATEGORY_EQUIPMENT + RND_SUBCATEGORY_EQUIPMENT_CHEMISTRY
 	)
->>>>>>> 14c96d05b82 (TGUI for Techfabs II: The Great Recategorizing (AND ICONS) (AND MECHFABS) (AND AUTOLATHES) (#69990))
 	build_path = /obj/item/reagent_containers/cup/beaker/large
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL | DEPARTMENT_BITFLAG_SERVICE | DEPARTMENT_BITFLAG_SCIENCE
 

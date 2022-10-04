@@ -19,14 +19,10 @@
 	id = "bluespacebeaker"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/glass = 5000, /datum/material/plastic = 3000, /datum/material/diamond = 1000, /datum/material/bluespace = 1000)
-<<<<<<< HEAD
-=======
 	category = list(
 		RND_CATEGORY_EQUIPMENT + RND_SUBCATEGORY_EQUIPMENT_CHEMISTRY
 	)
->>>>>>> 14c96d05b82 (TGUI for Techfabs II: The Great Recategorizing (AND ICONS) (AND MECHFABS) (AND AUTOLATHES) (#69990))
 	build_path = /obj/item/reagent_containers/cup/beaker/bluespace
-	category = list(RND_CATEGORY_MEDICAL_DESIGNS)
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL | DEPARTMENT_BITFLAG_SCIENCE
 
 /datum/design/noreactbeaker
@@ -35,49 +31,33 @@
 	id = "splitbeaker"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = 3000)
-<<<<<<< HEAD
-	build_path = /obj/item/reagent_containers/cup/beaker/noreact
-	category = list(RND_CATEGORY_MEDICAL_DESIGNS)
-	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
-=======
 	category = list(
 		RND_CATEGORY_EQUIPMENT + RND_SUBCATEGORY_EQUIPMENT_CHEMISTRY
 	)
 	build_path = /obj/item/reagent_containers/cup/beaker/noreact
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL | DEPARTMENT_BITFLAG_SCIENCE
->>>>>>> 14c96d05b82 (TGUI for Techfabs II: The Great Recategorizing (AND ICONS) (AND MECHFABS) (AND AUTOLATHES) (#69990))
 
 /datum/design/xlarge_beaker
 	name = "X-large Beaker"
 	id = "xlarge_beaker"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/glass = 2500, /datum/material/plastic = 3000)
-<<<<<<< HEAD
-	build_path = /obj/item/reagent_containers/cup/beaker/plastic
-	category = list(RND_CATEGORY_MEDICAL_DESIGNS)
-=======
 	category = list(
 		RND_CATEGORY_EQUIPMENT + RND_SUBCATEGORY_EQUIPMENT_CHEMISTRY
 	)
 	build_path = /obj/item/reagent_containers/cup/beaker/plastic
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL | DEPARTMENT_BITFLAG_SCIENCE
->>>>>>> 14c96d05b82 (TGUI for Techfabs II: The Great Recategorizing (AND ICONS) (AND MECHFABS) (AND AUTOLATHES) (#69990))
 
 /datum/design/meta_beaker
 	name = "Metamaterial Beaker"
 	id = "meta_beaker"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/glass = 2500, /datum/material/plastic = 3000, /datum/material/gold = 1000, /datum/material/titanium = 1000)
-<<<<<<< HEAD
-	build_path = /obj/item/reagent_containers/cup/beaker/meta
-	category = list(RND_CATEGORY_MEDICAL_DESIGNS)
-=======
 	category = list(
 		RND_CATEGORY_EQUIPMENT + RND_SUBCATEGORY_EQUIPMENT_CHEMISTRY
 	)
 	build_path = /obj/item/reagent_containers/cup/beaker/meta
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL | DEPARTMENT_BITFLAG_SCIENCE
->>>>>>> 14c96d05b82 (TGUI for Techfabs II: The Great Recategorizing (AND ICONS) (AND MECHFABS) (AND AUTOLATHES) (#69990))
 
 /datum/design/ph_meter
 	name = "Chemical Analyzer"

@@ -121,17 +121,11 @@
 	id = "mauna_mug"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = 1000, /datum/material/glass = 100)
-<<<<<<< HEAD
-	build_path = /obj/item/reagent_containers/cup/maunamug
-	category = list(RND_CATEGORY_EQUIPMENT)
-
-=======
 	category = list(
 		RND_CATEGORY_EQUIPMENT + RND_SUBCATEGORY_EQUIPMENT_SCIENCE
 	)
 	build_path = /obj/item/reagent_containers/cup/maunamug
 	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
->>>>>>> 14c96d05b82 (TGUI for Techfabs II: The Great Recategorizing (AND ICONS) (AND MECHFABS) (AND AUTOLATHES) (#69990))
 
 /datum/design/rolling_table
 	name = "Rolly poly"
@@ -553,14 +547,10 @@
 	id = "adv_watering_can"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = 2500, /datum/material/glass = 200)
-<<<<<<< HEAD
-=======
 	category = list(
 		RND_CATEGORY_TOOLS + RND_SUBCATEGORY_TOOLS_BOTANY_ADVANCED
 	)
->>>>>>> 14c96d05b82 (TGUI for Techfabs II: The Great Recategorizing (AND ICONS) (AND MECHFABS) (AND AUTOLATHES) (#69990))
 	build_path = /obj/item/reagent_containers/cup/watering_can/advanced
-	category = list(RND_CATEGORY_INITIAL, RND_CATEGORY_TOOLS, RND_CATEGORY_TOOL_DESIGNS)
 	departmental_flags = DEPARTMENT_BITFLAG_SERVICE
 
 /////////////////////////////////////////

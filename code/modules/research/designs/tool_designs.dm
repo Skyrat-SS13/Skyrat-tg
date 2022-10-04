@@ -36,16 +36,11 @@
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = 1000, /datum/material/glass = 500, /datum/material/plasma = 1500, /datum/material/uranium = 200)
 	build_path = /obj/item/weldingtool/experimental
-<<<<<<< HEAD
-	category = list(RND_CATEGORY_TOOL_DESIGNS)
-	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE | DEPARTMENT_BITFLAG_ENGINEERING
-*/
-=======
 	category = list(
 		RND_CATEGORY_TOOLS + RND_SUBCATEGORY_TOOLS_ENGINEERING_ADVANCED
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_ENGINEERING
->>>>>>> 14c96d05b82 (TGUI for Techfabs II: The Great Recategorizing (AND ICONS) (AND MECHFABS) (AND AUTOLATHES) (#69990))
+*/
 
 /datum/design/rangedanalyzer
 	name = "Experimental Long-range Gas Analyzer"
@@ -82,7 +77,6 @@
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_ENGINEERING
 
-<<<<<<< HEAD
 //SKYRAT EDIT ADDITION//
 /datum/design/engi_plumbing
 	name = "Engineering Plumbing Constructor"
@@ -91,10 +85,12 @@
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = 60000, /datum/material/glass = 5000)  // Costs the same as an RCD.
 	build_path = /obj/item/construction/plumbing/engineering
-	category = list("Tool Designs")
+	category = list(
+		RND_CATEGORY_TOOLS + RND_SUBCATEGORY_TOOLS_ENGINEERING_ADVANCED
+	)
 	departmental_flags =  DEPARTMENT_BITFLAG_ENGINEERING
 //SKYRAT EDIT END//
-=======
+
 /datum/design/rcd_ammo
 	name = "RCD Matter Cartridge"
 	id = "rcd_ammo"
@@ -105,7 +101,6 @@
 		RND_CATEGORY_TOOLS + RND_SUBCATEGORY_TOOLS_ENGINEERING_ADVANCED
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_ENGINEERING
->>>>>>> 14c96d05b82 (TGUI for Techfabs II: The Great Recategorizing (AND ICONS) (AND MECHFABS) (AND AUTOLATHES) (#69990))
 
 /datum/design/rcd_upgrade/frames
 	name = "RCD frames designs upgrade"
