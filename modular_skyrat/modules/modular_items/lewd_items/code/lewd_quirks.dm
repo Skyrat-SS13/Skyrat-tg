@@ -93,9 +93,9 @@
 	else
 		stress = clamp(stress + 1, 0, 300)
 
-	human_owner.adjustArousal(10)
+	human_owner.adjust_arousal(10)
 	if(human_owner.pleasure < 80)
-		human_owner.adjustPleasure(5)
+		human_owner.adjust_pleasure(5)
 
 	//Anything beyond this obeys a cooldown system because we don't want to spam it
 	if(!COOLDOWN_FINISHED(src, desire_cooldown))
@@ -260,7 +260,7 @@
 /datum/brain_trauma/very_special/sadism/on_life(delta_time, times_fired)
 	var/mob/living/carbon/human/affected_mob = owner
 	if(someone_suffering() && affected_mob.client?.prefs?.read_preference(/datum/preference/toggle/erp))
-		affected_mob.adjustArousal(2)
+		affected_mob.adjust_arousal(2)
 		owner.add_mood_event("sadistic", /datum/mood_event/sadistic)
 	else
 		owner.clear_mood_event("sadistic")
@@ -327,19 +327,22 @@
 /mob/living/carbon/human/examine(mob/user)
 	. = ..()
 	var/mob/living/examiner = user
-	if(stat != DEAD && !HAS_TRAIT(src, TRAIT_FAKEDEATH) && src != examiner)
-		if(src != user)
-			if(HAS_TRAIT(examiner, TRAIT_EMPATH))
-				switch(arousal)
-					if(11 to 21)
-						. += span_purple("[p_they()] [p_are()] excited.") + "\n"
-					if(21.01 to 41)
-						. += span_purple("[p_they()] [p_are()] slightly blushed.") + "\n"
-					if(41.01 to 51)
-						. += span_purple("[p_they()] [p_are()] quite aroused and seems to be stirring up lewd thoughts in [p_their()] head.") + "\n"
-					if(51.01 to 61)
-						. += span_purple("[p_they()] [p_are()] very aroused and [p_their()] movements are seducing.") + "\n"
-					if(61.01 to 91)
-						. += span_purple("[p_they()] [p_are()] aroused as hell.") + "\n"
-					if(91.01 to INFINITY)
-						. += span_purple("[p_they()] [p_are()] extremely excited, exhausting from entolerable desire.") + "\n"
+	if(stat >= DEAD || HAS_TRAIT(src, TRAIT_FAKEDEATH) || src == examiner || !HAS_TRAIT(examiner, TRAIT_EMPATH))
+		return
+
+	if(examiner.client?.prefs?.read_preference(/datum/preference/toggle/erp))
+		var/arousal_message
+		switch(arousal)
+			if(AROUSAL_MINIMUM_DETECTABLE to AROUSAL_LOW)
+				arousal_message = span_purple("[p_they()] [p_are()] slightly blushed.") + "\n"
+			if(AROUSAL_LOW to AROUSAL_MEDIUM)
+				arousal_message = span_purple("[p_they()] [p_are()] quite aroused and seems to be stirring up lewd thoughts in [p_their()] head.") + "\n"
+			if(AROUSAL_HIGH to AROUSAL_AUTO_CLIMAX_THRESHOLD)
+				arousal_message = span_purple("[p_they()] [p_are()] aroused as hell.") + "\n"
+			if(AROUSAL_AUTO_CLIMAX_THRESHOLD to INFINITY)
+				arousal_message = span_purple("[p_they()] [p_are()] extremely excited, exhausting from entolerable desire.") + "\n"
+		if(arousal_message)
+			. += arousal_message
+	else if(arousal > AROUSAL_MINIMUM_DETECTABLE)
+		. += span_purple("[p_they()] [p_are()] slightly blushed.") + "\n"
+
