@@ -29,7 +29,7 @@
 
 /obj/item/clothing/head/helmet/monkey_sentience/equipped(mob/user, slot)
 	. = ..()
-	if(slot != ITEM_SLOT_HEAD)
+	if(!(slot & ITEM_SLOT_HEAD))
 		return
 	if(istype(user, /mob/living/carbon/human/dummy)) // Prevents ghosts from being polled when the helmet is put on a dummy.
 		return

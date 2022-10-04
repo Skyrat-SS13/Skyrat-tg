@@ -136,8 +136,6 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	var/punchstunthreshold = 10 //yes it should be to the attacked race but it's not useful that way even if it's logical
 	///Base electrocution coefficient.  Basically a multiplier for damage from electrocutions.
 	var/siemens_coeff = 1
-	///What kind of damage overlays (if any) appear on our species when wounded? If this is "", does not add an overlay.
-	var/damage_overlay_type = SPECIES_HUMAN
 	///To use MUTCOLOR with a fixed color that's independent of the mcolor feature in DNA.
 	var/fixed_mut_color = ""
 	///Special mutation that can be found in the genepool exclusively in this species. Dont leave empty or changing species will be a headache
@@ -171,11 +169,6 @@ GLOBAL_LIST_EMPTY(features_by_species)
 
 	/// The icon_state of the fire overlay added when sufficently ablaze and standing. see onfire.dmi
 	var/fire_overlay = "human"
-
-	///the species that body parts are surgically compatible with (found in _DEFINES/mobs.dm)
-	///current acceptable bitfields are HUMAN_BODY, ALIEN_BODY, LARVA_BODY, MONKEY_BODY, or NONE
-	var/allowed_animal_origin = HUMAN_BODY
-
 
 	///Species-only traits. Can be found in [code/__DEFINES/DNA.dm]
 	var/list/species_traits = list()
@@ -746,7 +739,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 				accessory_overlay.icon_state = "m_[bodypart]_[accessory.icon_state]_[layertext]"
 
 			if(accessory.em_block)
-				accessory_overlay.overlays += emissive_blocker(accessory_overlay.icon, accessory_overlay.icon_state, accessory_overlay.alpha)
+				accessory_overlay.overlays += emissive_blocker(accessory_overlay.icon, accessory_overlay.icon_state, source, accessory_overlay.alpha)
 
 			if(accessory.center)
 				accessory_overlay = center_image(accessory_overlay, accessory.dimension_x, accessory.dimension_y)
@@ -858,9 +851,9 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	if(!(I.slot_flags & slot))
 		var/excused = FALSE
 		// Anything that's small or smaller can fit into a pocket by default
-		if((slot == ITEM_SLOT_RPOCKET || slot == ITEM_SLOT_LPOCKET) && I.w_class <= WEIGHT_CLASS_SMALL)
+		if((slot & (ITEM_SLOT_RPOCKET|ITEM_SLOT_LPOCKET)) && I.w_class <= WEIGHT_CLASS_SMALL)
 			excused = TRUE
-		else if(slot == ITEM_SLOT_SUITSTORE || slot == ITEM_SLOT_BACKPACK || slot == ITEM_SLOT_HANDS)
+		else if(slot & (ITEM_SLOT_SUITSTORE|ITEM_SLOT_BACKPACK|ITEM_SLOT_HANDS))
 			excused = TRUE
 		if(!excused)
 			return FALSE
@@ -993,30 +986,6 @@ GLOBAL_LIST_EMPTY(features_by_species)
 			if(H.back && H.back.atom_storage?.can_insert(I, H, messages = TRUE))
 				return TRUE
 			return FALSE
-
-		//SKYRAT EDIT ADDITION BEGIN - ERP_SLOT_SYSTEM
-		if(ITEM_SLOT_VAGINA)
-			if(H.is_bottomless())
-				if(H.getorganslot(ORGAN_SLOT_VAGINA))
-					return equip_delay_self_check(I, H, bypass_equip_delay_self)
-				return FALSE
-			return FALSE
-		if(ITEM_SLOT_ANUS)
-			if(H.is_bottomless())
-				if(H.getorganslot(ORGAN_SLOT_ANUS))
-					return equip_delay_self_check(I, H, bypass_equip_delay_self)
-			return FALSE
-		if(ITEM_SLOT_NIPPLES)
-			if(H.is_topless())
-				return equip_delay_self_check(I, H, bypass_equip_delay_self)
-			return FALSE
-		if(ITEM_SLOT_PENIS)
-			if(H.is_bottomless())
-				if(H.getorganslot(ORGAN_SLOT_PENIS))
-					return equip_delay_self_check(I, H, bypass_equip_delay_self)
-				return FALSE
-			return FALSE
-		//SKYRAT EDIT ADDITION END
 
 	return FALSE //Unsupported slot
 
@@ -1338,7 +1307,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 					if(human.stat == CONSCIOUS)
 						human.visible_message(span_danger("[human] is knocked senseless!"), \
 										span_userdanger("You're knocked senseless!"))
-						human.set_timed_status_effect(20 SECONDS, /datum/status_effect/confusion, only_if_higher = TRUE)
+						human.set_confusion_if_lower(20 SECONDS)
 						human.adjust_blurriness(10)
 					if(prob(10))
 						human.gain_trauma(/datum/brain_trauma/mild/concussion)
@@ -1409,6 +1378,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 					H.update_damage_overlays()
 			else//no bodypart, we deal damage with a more general method.
 				H.adjustBruteLoss(damage_amount)
+			INVOKE_ASYNC(H, /mob/living/carbon/human/.proc/adjust_pain, damage_amount) // SKYRAT EDIT ADDITION - ERP Pain
 		if(BURN)
 			H.damageoverlaytemp = 20
 			var/damage_amount = forced ? damage : damage * hit_percent * burnmod * H.physiology.burn_mod
@@ -1417,6 +1387,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 					H.update_damage_overlays()
 			else
 				H.adjustFireLoss(damage_amount)
+			INVOKE_ASYNC(H, /mob/living/carbon/human/.proc/adjust_pain, damage_amount) // SKYRAT EDIT ADDITION - ERP Pain
 		if(TOX)
 			var/damage_amount = forced ? damage : damage * hit_percent * H.physiology.tox_mod
 			H.adjustToxLoss(damage_amount)

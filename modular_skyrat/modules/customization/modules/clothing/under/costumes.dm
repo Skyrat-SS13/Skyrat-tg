@@ -11,5 +11,6 @@
 
 /obj/item/clothing/under/costume/cybersleek/long
 	name = "long modern coat"
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 	icon_state = "cyberpunksleek_long"
 //End Cyberpunk PI port
