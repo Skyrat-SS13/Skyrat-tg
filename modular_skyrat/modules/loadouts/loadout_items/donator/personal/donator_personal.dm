@@ -363,9 +363,9 @@
 	item_path = /obj/item/card/fuzzy_license
 	ckeywhitelist = list("fuzlet")
 
-/datum/loadout_item/suit/gorlexharness
+/datum/loadout_item/suit/gorlex_harness
 	name = "Engine Technician Harness"
-	item_path = /obj/item/clothing/suit/jacket/gorlexharness
+	item_path = /obj/item/clothing/suit/jacket/gorlex_harness
 	ckeywhitelist = list("1ceres")
 
 /datum/loadout_item/pocket_items/korpstech_poster
