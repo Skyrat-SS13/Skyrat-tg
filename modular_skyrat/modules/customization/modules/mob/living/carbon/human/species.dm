@@ -136,7 +136,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 									matrixed_acce = center_image(matrixed_acce, x_shift, bodypart_accessory.dimension_y)
 								accessories += matrixed_acce
 								if (mutant_bodyparts[key][MUTANT_INDEX_EMISSIVE_LIST] && mutant_bodyparts[key][MUTANT_INDEX_EMISSIVE_LIST][num])
-									var/mutable_appearance/emissive_overlay = emissive_appearance_copy(matrixed_acce)
+									var/mutable_appearance/emissive_overlay = emissive_appearance_copy(matrixed_acce, owner)
 									//if (bodypart_accessory.center)
 									//	emissive_overlay = center_image(emissive_overlay, x_shift, bodypart_accessory.dimension_y)
 									accessories += emissive_overlay
@@ -164,7 +164,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 			else
 				standing += accessory_overlay
 				if (mutant_bodyparts[key][MUTANT_INDEX_EMISSIVE_LIST] && mutant_bodyparts[key][MUTANT_INDEX_EMISSIVE_LIST][1])
-					var/mutable_appearance/emissive_overlay = emissive_appearance_copy(accessory_overlay)
+					var/mutable_appearance/emissive_overlay = emissive_appearance_copy(accessory_overlay, owner)
 					//if (bodypart_accessory.center)
 					//	emissive_overlay = center_image(emissive_overlay, x_shift, bodypart_accessory.dimension_y)
 					standing += emissive_overlay
@@ -337,7 +337,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	if(HD && !(HAS_TRAIT(species_human, TRAIT_HUSK)))
 		// lipstick
 		if(species_human.lip_style && (LIPS in species_traits))
-			var/mutable_appearance/lip_overlay = mutable_appearance('icons/mob/human_face.dmi', "lips_[species_human.lip_style]", -BODY_LAYER)
+			var/mutable_appearance/lip_overlay = mutable_appearance('icons/mob/species/human/human_face.dmi', "lips_[species_human.lip_style]", -BODY_LAYER)
 			lip_overlay.color = species_human.lip_color
 			if(OFFSET_FACE in species_human.dna.species.offset_features)
 				lip_overlay.pixel_x += species_human.dna.species.offset_features[OFFSET_FACE][1]
@@ -360,7 +360,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 				add_pixel_y = species_human.dna.species.offset_features[OFFSET_FACE][2]
 
 			if(!eye_organ)
-				no_eyeslay = mutable_appearance('icons/mob/human_face.dmi', "eyes_missing", -BODY_LAYER)
+				no_eyeslay = mutable_appearance('icons/mob/species/human/human_face.dmi', "eyes_missing", -BODY_LAYER)
 				no_eyeslay.pixel_x += add_pixel_x
 				no_eyeslay.pixel_y += add_pixel_y
 				standing += no_eyeslay
@@ -371,14 +371,14 @@ GLOBAL_LIST_EMPTY(customizable_races)
 				for(var/eye_overlay in eye_organ.generate_body_overlay(species_human))
 					standing += eye_overlay
 					if(eye_organ.is_emissive)
-						var/mutable_appearance/eye_emissive = emissive_appearance_copy(eye_overlay)
+						var/mutable_appearance/eye_emissive = emissive_appearance_copy(eye_overlay, species_human)
 						eye_emissive.pixel_x += species_human.dna.species.offset_features[OFFSET_FACE][1]
 						eye_emissive.pixel_y += species_human.dna.species.offset_features[OFFSET_FACE][2]
 						standing += eye_emissive
 
 		// blush
 		if (HAS_TRAIT(species_human, TRAIT_BLUSHING)) // Caused by either the *blush emote or the "drunk" mood event
-			var/mutable_appearance/blush_overlay = mutable_appearance('icons/mob/human_face.dmi', "blush", -BODY_ADJ_LAYER) //should appear behind the eyes
+			var/mutable_appearance/blush_overlay = mutable_appearance('icons/mob/species/human/human_face.dmi', "blush", -BODY_ADJ_LAYER) //should appear behind the eyes
 			blush_overlay.color = COLOR_BLUSH_PINK
 			standing += blush_overlay
 

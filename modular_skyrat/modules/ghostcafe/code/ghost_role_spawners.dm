@@ -77,7 +77,7 @@
 	id = /obj/item/card/id/advanced/ghost_cafe
 
 /datum/action/toggle_dead_chat_mob
-	icon_icon = 'icons/mob/mob.dmi'
+	icon_icon = 'icons/mob/simple/mob.dmi'
 	button_icon_state = "ghost"
 	name = "Toggle deadchat"
 	desc = "Turn off or on your ability to hear ghosts."

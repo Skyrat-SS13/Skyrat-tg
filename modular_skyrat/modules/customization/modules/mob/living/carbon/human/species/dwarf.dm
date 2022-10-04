@@ -30,3 +30,9 @@
 
 /datum/species/dwarf/get_species_lore()
 	return list(placeholder_lore)
+
+/datum/species/dwarf/prepare_human_for_preview(mob/living/carbon/human/human)
+	human.facial_hairstyle = "Beard (Dwarf)"
+	human.facial_hair_color = "#a55310"
+	human.update_mutant_bodyparts(TRUE)
+	human.update_body(TRUE)

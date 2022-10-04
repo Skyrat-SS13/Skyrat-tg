@@ -4,7 +4,7 @@
 		if(opened && has_opened_overlay)
 			var/mutable_appearance/door_overlay = mutable_appearance(icon, "[icon_door || icon_state]_open", alpha = src.alpha)	//This was the only change, adding icon_door; TG wouldnt want it.
 			. += door_overlay
-			door_overlay.overlays += emissive_blocker(door_overlay.icon, door_overlay.icon_state, alpha = door_overlay.alpha) // If we don't do this the door doesn't block emissives and it looks weird.
+			door_overlay.overlays += emissive_blocker(door_overlay.icon, door_overlay.icon_state, src, alpha = door_overlay.alpha) // If we don't do this the door doesn't block emissives and it looks weird.
 		else if(has_closed_overlay)
 			. += "[icon_door || icon_state]_door"
 //TG won't ever really need this because their lockers with non-matching fronts dont have non-matching backs; so I simply re-define the proc for our shuttleclosets
