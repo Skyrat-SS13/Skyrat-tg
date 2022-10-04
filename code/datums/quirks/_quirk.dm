@@ -19,15 +19,11 @@
 	var/abstract_parent_type = /datum/quirk
 	/// The icon to show in the preferences menu.
 	/// This references a tgui icon, so it can be FontAwesome or a tgfont (with a tg- prefix).
-<<<<<<< HEAD
 	var/icon = "bug" //SKYRAT EDIT CHANGE
-=======
-	var/icon
 	/// A list of items people can receive from mail who have this quirk enabled
 	/// The base weight for the each quirk's mail goodies list to be selected is 5
 	/// then the item selected is determined by pick(selected_quirk.mail_goodies)
 	var/mail_goodies = list()
->>>>>>> 29227aab520 (Mail Quirk Goodies DLC - Package Bonanza (#70091))
 
 /datum/quirk/Destroy()
 	if(quirk_holder)
