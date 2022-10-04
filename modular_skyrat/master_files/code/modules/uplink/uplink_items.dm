@@ -442,14 +442,6 @@
 	cost = 20
 	progression_minimum = 25 MINUTES
 	
-/datum/uplink_item/bundles_tc/robohand
-	name = "Robohand Bundle"
-	desc = "Authentic replicas of the weaponry and gear worn and used by Johnny Robohand the fateful day he detonated a nuclear device \
-			within Nanotrasen Tower in Sol. An awesome gun and badass shades are all any rockerboy needs."
-	item = /obj/item/storage/backpack/duffelbag/syndie/loadout/robohand
-	cost = 20
-	progression_minimum = 40 MINUTES // +15 for the Malorian 3516
-
 // Surplus crates
 /datum/uplink_item/bundles_tc/surplus_crate
 	name = "Surplus Crate"
