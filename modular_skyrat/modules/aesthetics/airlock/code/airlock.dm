@@ -16,11 +16,8 @@
 #define AIRLOCK_EMAG	6
 
 /obj/machinery/door/airlock
-	var/obj/effect/overlay/vis_airlock/vis_overlay1
-	var/obj/effect/overlay/vis_airlock/vis_overlay2
 	doorOpen = 'modular_skyrat/modules/aesthetics/airlock/sound/open.ogg'
 	doorClose = 'modular_skyrat/modules/aesthetics/airlock/sound/close.ogg'
-	doorDeni = 'modular_skyrat/modules/aesthetics/airlock/sound/access_denied.ogg'
 	boltUp = 'modular_skyrat/modules/aesthetics/airlock/sound/bolts_up.ogg'
 	boltDown = 'modular_skyrat/modules/aesthetics/airlock/sound/bolts_down.ogg'
 	//noPower = 'sound/machines/doorclick.ogg'
@@ -43,18 +40,6 @@
 
 /obj/machinery/door/airlock/shuttle
 	external = TRUE
-
-/obj/effect/overlay/vis_airlock
-	layer = 0
-	plane = 200
-	vis_flags = VIS_INHERIT_ID
-
-/obj/machinery/door/airlock/Destroy()
-	. = ..()
-	vis_contents -= vis_overlay1
-	vis_contents -= vis_overlay2
-	QDEL_NULL(vis_overlay1)
-	QDEL_NULL(vis_overlay2)
 
 /obj/machinery/door/airlock/power_change()
 	..()
@@ -112,14 +97,14 @@
 			lights_overlay = "lights_opening"
 			pre_light_color = light_color_access
 
-	. += get_airlock_overlay(frame_state, icon, em_block = TRUE)
+	. += get_airlock_overlay(frame_state, icon, src, em_block = TRUE)
 	if(airlock_material)
-		. += get_airlock_overlay("[airlock_material]_[frame_state]", overlays_file, em_block = TRUE)
+		. += get_airlock_overlay("[airlock_material]_[frame_state]", overlays_file, src, em_block = TRUE)
 	else
-		. += get_airlock_overlay("fill_[frame_state]", icon, em_block = TRUE)
+		. += get_airlock_overlay("fill_[frame_state]", icon, src, em_block = TRUE)
 
 	if(lights && hasPower())
-		. += get_airlock_overlay("lights_[light_state]", overlays_file, em_block = FALSE)
+		. += get_airlock_overlay("lights_[light_state]", overlays_file, src, em_block = FALSE)
 		pre_light_range = door_light_range
 		pre_light_power = door_light_power
 		if(has_environment_lights)
@@ -129,58 +114,54 @@
 	else
 		lights_overlay = ""
 
-	update_vis_overlays(lights_overlay)
+	var/mutable_appearance/lights_appearance = mutable_appearance(overlays_file, lights_overlay, FLOAT_LAYER, src, ABOVE_LIGHTING_PLANE)
+	if(multi_tile)
+		lights_appearance.dir = dir
+	. += lights_appearance
 
 	if(panel_open)
-		. += get_airlock_overlay("panel_[frame_state][security_level ? "_protected" : null]", overlays_file, em_block = TRUE)
+		. += get_airlock_overlay("panel_[frame_state][security_level ? "_protected" : null]", overlays_file, src, em_block = TRUE)
 	if(frame_state == AIRLOCK_FRAME_CLOSED && welded)
-		. += get_airlock_overlay("welded", overlays_file, em_block = TRUE)
+		. += get_airlock_overlay("welded", overlays_file, src, em_block = TRUE)
 
 	if(airlock_state == AIRLOCK_EMAG)
-		. += get_airlock_overlay("sparks", overlays_file, em_block = FALSE)
+		. += get_airlock_overlay("sparks", overlays_file, src, em_block = FALSE)
 
 	if(hasPower())
 		if(frame_state == AIRLOCK_FRAME_CLOSED)
 			if(atom_integrity < integrity_failure * max_integrity)
-				. += get_airlock_overlay("sparks_broken", overlays_file, em_block = FALSE)
+				. += get_airlock_overlay("sparks_broken", overlays_file, src, em_block = FALSE)
 			else if(atom_integrity < (0.75 * max_integrity))
-				. += get_airlock_overlay("sparks_damaged", overlays_file, em_block = FALSE)
+				. += get_airlock_overlay("sparks_damaged", overlays_file, src, em_block = FALSE)
 		else if(frame_state == AIRLOCK_FRAME_OPEN)
 			if(atom_integrity < (0.75 * max_integrity))
-				. += get_airlock_overlay("sparks_open", overlays_file, em_block = FALSE)
+				. += get_airlock_overlay("sparks_open", overlays_file, src, em_block = FALSE)
 
 	if(note)
-		. += get_airlock_overlay(get_note_state(frame_state), note_overlay_file, em_block = TRUE)
+		. += get_airlock_overlay(get_note_state(frame_state), note_overlay_file, src, em_block = TRUE)
 
 	if(frame_state == AIRLOCK_FRAME_CLOSED && seal)
-		. += get_airlock_overlay("sealed", overlays_file, em_block = TRUE)
+		. += get_airlock_overlay("sealed", overlays_file, src, em_block = TRUE)
 
 	if(hasPower() && unres_sides)
-		if(unres_sides & NORTH)
-			var/image/I = image(icon='icons/obj/doors/airlocks/station/overlays.dmi', icon_state="unres_n")
-			I.pixel_y = 32
-			. += I
-		if(unres_sides & SOUTH)
-			var/image/I = image(icon='icons/obj/doors/airlocks/station/overlays.dmi', icon_state="unres_s")
-			I.pixel_y = -32
-			. += I
-		if(unres_sides & EAST)
-			var/image/I = image(icon='icons/obj/doors/airlocks/station/overlays.dmi', icon_state="unres_e")
-			I.pixel_x = 32
-			. += I
-		if(unres_sides & WEST)
-			var/image/I = image(icon='icons/obj/doors/airlocks/station/overlays.dmi', icon_state="unres_w")
-			I.pixel_x = -32
-			. += I
-
-/obj/machinery/door/airlock/proc/update_vis_overlays(overlay_state)
-	if(QDELETED(src))
-		return
-	vis_overlay1.icon_state = overlay_state
-	vis_overlay2.icon_state = overlay_state
-	if(multi_tile)
-		vis_overlay1.dir = src.dir
-		vis_overlay2.dir = src.dir
+		for(var/heading in list(NORTH,SOUTH,EAST,WEST))
+			if(!(unres_sides & heading))
+				continue
+			var/mutable_appearance/floorlight = mutable_appearance('icons/obj/doors/airlocks/station/overlays.dmi', "unres_[heading]", FLOAT_LAYER, src, ABOVE_LIGHTING_PLANE)
+			switch (heading)
+				if (NORTH)
+					floorlight.pixel_x = 0
+					floorlight.pixel_y = 32
+				if (SOUTH)
+					floorlight.pixel_x = 0
+					floorlight.pixel_y = -32
+				if (EAST)
+					floorlight.pixel_x = 32
+					floorlight.pixel_y = 0
+				if (WEST)
+					floorlight.pixel_x = -32
+					floorlight.pixel_y = 0
+			. += floorlight
 
 //STATION AIRLOCKS
 /obj/machinery/door/airlock

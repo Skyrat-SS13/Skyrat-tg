@@ -210,10 +210,6 @@
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 	gets_cropped_on_taurs = FALSE
 
-
-/obj/item/clothing/under/costume/draculass
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
-
 /obj/item/clothing/under/rank/prisoner/skirt
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 	gets_cropped_on_taurs = FALSE
@@ -257,12 +253,3 @@
 
 /obj/item/clothing/under/changeling
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
-
-/**
- * NONE(Squash)
- * Clothing that does not have a digitigrade version, and thus will squash legs to fit.
- */
-/obj/item/clothing/under/costume/swagoutfit
-	supports_variations_flags = NONE
-
-
