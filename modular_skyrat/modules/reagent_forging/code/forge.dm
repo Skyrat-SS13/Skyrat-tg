@@ -94,7 +94,7 @@
 		/datum/reagent/drug/bath_salts,
 		/datum/reagent/drug/methamphetamine,
 		/datum/reagent/blood,
-		/datum/reagent/drug/pcp/,
+		/datum/reagent/drug/pcp,
 		/datum/reagent/consumable/cum,
 		/datum/reagent/consumable/femcum,
 		/datum/reagent/consumable/breast_milk,
