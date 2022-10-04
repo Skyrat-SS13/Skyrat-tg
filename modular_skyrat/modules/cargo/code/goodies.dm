@@ -33,7 +33,6 @@
 	cost = PAYCHECK_CREW * 38
 	contains = list(/obj/item/construction/rcd/improved)
 
-
 /*
 *	MISC
 */
@@ -73,13 +72,6 @@
 	cost = PAYCHECK_CREW * 3
 	contains = list(/obj/item/gun_maintenance_supplies,
 					/obj/item/gun_maintenance_supplies)
-
-/datum/supply_pack/goody/nri_gear
-	name = "NRI Voentorg Gear"
-	desc = "Contains a backpack full of military-grade NRI Defense Collegium standard equipment previously used by the most of their military."
-	cost = PAYCHECK_CREW * 30
-	contains = list(/obj/item/storage/backpack/nri/larp)
-	access_view = ACCESS_BRIG
 
 /*
 *	CARPET PACKS

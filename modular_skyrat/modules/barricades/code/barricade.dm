@@ -269,7 +269,7 @@
 /obj/structure/deployable_barricade/guardrail/update_icon()
 	. = ..()
 	if(dir == NORTH)
-		pixel_y = 12
+		pixel_y = 11
 
 /*----------------------*/
 // WOOD

@@ -49,7 +49,7 @@
 		created_sparks.start()
 
 		affected_mob.Paralyze(30)
-		affected_mob.adjustPain(10)
+		affected_mob.adjust_pain(10)
 		affected_mob.adjust_stutter(30 SECONDS)
 
 	if(master)

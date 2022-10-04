@@ -29,3 +29,4 @@ A modular folder for various single-item additions that don't deserve their own 
 Ranged66 - Material pouch ported
 KathrinBailey - Pretty much a whole bunch of clothes.
 mel-byond - Ported Baystation12 Aviators
+RimiNosha - Fixing up code no one else would touch.

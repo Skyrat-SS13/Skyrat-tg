@@ -83,6 +83,7 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 		lgroup.remove_from_group(src)
 	//SKYRAT EDIT END
 	var/old_rcd_memory = rcd_memory
+	var/old_always_lit = always_lit
 
 	var/old_bp = blueprint_data
 	blueprint_data = null
@@ -130,9 +131,12 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 	dynamic_lumcount = old_dynamic_lumcount
 
 	if(W.always_lit)
-		W.add_overlay(GLOB.fullbright_overlay)
-	else
-		W.cut_overlay(GLOB.fullbright_overlay)
+		// We are guarenteed to have these overlays because of how generation works
+		var/mutable_appearance/overlay = GLOB.fullbright_overlays[GET_TURF_PLANE_OFFSET(src) + 1]
+		W.add_overlay(overlay)
+	else if (old_always_lit)
+		var/mutable_appearance/overlay = GLOB.fullbright_overlays[GET_TURF_PLANE_OFFSET(src) + 1]
+		W.cut_overlay(overlay)
 
 	if(SSlighting.initialized)
 		W.lighting_object = old_lighting_object
@@ -169,6 +173,12 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 				else
 					qdel(old_liquids, TRUE)
 	//SKYRAT EDIT END
+
+	// We will only run this logic if the tile is not on the prime z layer, since we use area overlays to cover that
+	if(SSmapping.z_level_to_plane_offset[z])
+		var/area/thisarea = get_area(W)
+		if(thisarea.lighting_effects)
+			W.add_overlay(thisarea.lighting_effects[SSmapping.z_level_to_plane_offset[z]])
 
 	QUEUE_SMOOTH_NEIGHBORS(src)
 	QUEUE_SMOOTH(src)

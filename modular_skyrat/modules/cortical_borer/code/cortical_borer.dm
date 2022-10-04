@@ -346,14 +346,14 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 	human_host = null
 
 //borers shouldnt be able to whisper...
-/mob/living/simple_animal/cortical_borer/whisper(message, bubble_type, list/spans, sanitize, datum/language/language, ignore_spam, forced, filterproof)
+/mob/living/simple_animal/cortical_borer/whisper(message, bubble_type, list/spans = list(), sanitize = TRUE, datum/language/language, ignore_spam = FALSE, forced, filterproof)
 	to_chat(src, span_warning("You are not able to whisper!"))
 	return FALSE
 
 //previously had borers unable to emote... but that means less RP, and we want that
 
 //borers should not be talking without a host at least
-/mob/living/simple_animal/cortical_borer/say(message, bubble_type, list/spans, sanitize, datum/language/language, ignore_spam, forced)
+/mob/living/simple_animal/cortical_borer/say(message, bubble_type, list/spans = list(), sanitize = TRUE, datum/language/language = null, ignore_spam = FALSE, forced = null, filterproof = null, message_range = 7, datum/saymode/saymode = null)
 	if(!inside_human())
 		to_chat(src, span_warning("You are not able to speak without a host!"))
 		return
