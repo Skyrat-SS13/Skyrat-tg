@@ -1222,7 +1222,7 @@
 			name = "license to [choice]"
 
 // Donation reward for 1ceres
-/obj/item/clothing/suit/jacket/gorlexharness
+/obj/item/clothing/suit/jacket/gorlex_harness
 	name = "engine technician harness"
 	desc = "A blood-red engineering technician harness. You can't seem to figure out a use to it, but it seems to seal magnetically in some places."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
