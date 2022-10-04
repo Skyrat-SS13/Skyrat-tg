@@ -35,9 +35,9 @@
 		affected_carbon.emote(pick("laugh", "drool"))
 
 	if(DT_PROB(1, delta_time) && !HAS_TRAIT(affected_carbon, TRAIT_FLOORED))
-			affected_carbon.visible_message(span_danger("[affected_carbon]'s legs become too weak to carry their own weight!"))
-			affected_carbon.Knockdown(90, TRUE)
-			affected_carbon.drop_all_held_items()
+		affected_carbon.visible_message(span_danger("[affected_carbon]'s legs become too weak to carry their own weight!"))
+		affected_carbon.Knockdown(90, TRUE)
+		affected_carbon.drop_all_held_items()
 
 	return ..()
 
