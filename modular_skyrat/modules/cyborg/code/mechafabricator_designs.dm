@@ -58,9 +58,5 @@
 	construction_time = 60
 	build_type = MECHFAB
 	build_path = /obj/item/borg/upgrade/sign
-	materials = list(
-		/datum/material/iron=2000,
-		/datum/material/glass=1000,
-
-	)
+	materials = list(/datum/material/iron=2000, /datum/material/glass=1000,)
 	category = list(RND_CATEGORY_CYBORG_UPGRADE_MODULES)

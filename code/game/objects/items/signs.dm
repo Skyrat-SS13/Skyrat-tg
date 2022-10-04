@@ -22,11 +22,13 @@
 	if(!user.can_write(writing_instrument))
 		return
 	var/txt = tgui_input_text(user, "What would you like to write on the sign?", "Sign Label", max_length = 30)
+	if(txt == label)
+		user.balloon_alert(user, "The sign already says that!")
+		return
 	if(txt && user.canUseTopic(src, BE_CLOSE))
 		label = txt
 		name = "[label] sign"
 		desc = "It reads: [label]"
-
 
 /obj/item/picket_sign/attackby(obj/item/W, mob/user, params)
 	if(istype(W, /obj/item/pen) || istype(W, /obj/item/toy/crayon))

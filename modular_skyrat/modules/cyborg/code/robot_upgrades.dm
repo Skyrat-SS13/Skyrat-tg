@@ -245,7 +245,6 @@
 		if (inducer)
 			target_robot.model.remove_module(inducer, TRUE)
 
-// Borg picket sign upgrade
 /obj/item/borg/upgrade/sign
 	name = "Cyborg sign waving upgrade"
 	desc = "A sign unit for cyborgs, allowing them to easily advertise products through an intuitive, wave-able sign."
