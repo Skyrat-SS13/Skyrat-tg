@@ -11,6 +11,9 @@
 	if(!iscorticalborer(owner))
 		to_chat(owner, span_warning("You must be a cortical borer to use this action!"))
 		return FALSE
+	if(owner.stat == DEAD)
+		return FALSE
+
 	return . == FALSE ? FALSE : TRUE //. can be null, true, or false. There's a difference between null and false here
 
 //inject chemicals into your host
@@ -70,6 +73,9 @@
 				. = TRUE
 		if("inject")
 			if(!iscorticalborer(usr) || !COOLDOWN_FINISHED(cortical_owner, injection_cooldown))
+				return
+			if(cortical_owner.host_sugar())
+				owner.balloon_alert(owner, "cannot function with sugar in host")
 				return
 			var/reagent_name = params["reagent"]
 			var/reagent = GLOB.name2reagent[reagent_name]
