@@ -74,6 +74,9 @@
 		if("inject")
 			if(!iscorticalborer(usr) || !COOLDOWN_FINISHED(cortical_owner, injection_cooldown))
 				return
+			if(cortical_owner.host_sugar())
+				owner.balloon_alert(owner, "cannot function with sugar in host")
+				return
 			var/reagent_name = params["reagent"]
 			var/reagent = GLOB.name2reagent[reagent_name]
 			if(!(reagent in cortical_owner.known_chemicals))
