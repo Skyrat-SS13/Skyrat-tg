@@ -477,6 +477,6 @@ SUBSYSTEM_DEF(persistence)
 		sign.update_count(rounds_since_engine_exploded)
 
 /datum/controller/subsystem/persistence/proc/save_delamination_counter()
-	rustg_file_write("[rounds_since_engine_exploded + 1]", DELAMINATION_COUNT_FILEPATH)
+	// rustg_file_write("[rounds_since_engine_exploded + 1]", DELAMINATION_COUNT_FILEPATH)
 
 #undef DELAMINATION_COUNT_FILEPATH

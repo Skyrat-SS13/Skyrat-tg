@@ -38,9 +38,6 @@
 #define RUST_G (__rust_g || __detect_rust_g())
 #endif
 
-/// Gets the version of rust_g
-/proc/rustg_get_version() return call(RUST_G, "get_version")()
-
 
 /**
  * Sets up the Aho-Corasick automaton with its default options.
@@ -136,7 +133,7 @@
 #define rustg_json_is_valid(text) (call(RUST_G, "json_is_valid")(text) == "true")
 
 #define rustg_log_write(fname, text, format) call(RUST_G, "log_write")(fname, text, format)
-/proc/rustg_log_close_all() return call(RUST_G, "log_close_all")()
+/proc/rustg_log_close_all() return // call(RUST_G, "log_close_all")()
 
 #define rustg_noise_get_at_coordinates(seed, x, y) call(RUST_G, "noise_get_at_coordinates")(seed, x, y)
 

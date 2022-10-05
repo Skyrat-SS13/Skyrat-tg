@@ -29,6 +29,8 @@ INITIALIZE_IMMEDIATE(/obj/modular_map_root)
 	if(!key)
 		return
 
+	return
+
 	var/config = rustg_read_toml_file(config_file)
 
 	var/mapfile = config["directory"] + pick(config["rooms"][key]["modules"])

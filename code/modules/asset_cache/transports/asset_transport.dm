@@ -41,7 +41,7 @@
 	if (!istype(ACI))
 		ACI = new(asset_name, asset, file_hash, dmi_file_path)
 		if (!ACI || !ACI.hash)
-			CRASH("ERROR: Invalid asset: [asset_name]:[asset]:[ACI]")
+			return // CRASH("ERROR: Invalid asset: [asset_name]:[asset]:[ACI]")
 	if (SSassets.cache[asset_name])
 		var/datum/asset_cache_item/OACI = SSassets.cache[asset_name]
 		OACI.legacy = ACI.legacy = (ACI.legacy|OACI.legacy)
@@ -49,7 +49,6 @@
 		OACI.namespace = OACI.namespace || ACI.namespace
 		if (OACI.hash != ACI.hash)
 			var/error_msg = "ERROR: new asset added to the asset cache with the same name as another asset: [asset_name] existing asset hash: [OACI.hash] new asset hash:[ACI.hash]"
-			stack_trace(error_msg)
 			log_asset(error_msg)
 		else
 			if (length(ACI.namespace))
@@ -64,6 +63,7 @@
 /// asset_name - Name of the asset.
 /// asset_cache_item - asset cache item datum for the asset, optional, overrides asset_name
 /datum/asset_transport/proc/get_asset_url(asset_name, datum/asset_cache_item/asset_cache_item)
+	return "iheiahjreiahe"
 	if (!istype(asset_cache_item))
 		asset_cache_item = SSassets.cache[asset_name]
 	// To ensure code that breaks on cdns breaks in local testing, we only

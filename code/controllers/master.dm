@@ -294,12 +294,12 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 		return
 
 	current_initializing_subsystem = subsystem
-	rustg_time_reset(SS_INIT_TIMER_KEY)
+	// rustg_time_reset(SS_INIT_TIMER_KEY)
 
 	var/result = subsystem.Initialize()
 
 	// Capture end time
-	var/time = rustg_time_milliseconds(SS_INIT_TIMER_KEY)
+	var/time = 0 // rustg_time_milliseconds(SS_INIT_TIMER_KEY)
 	var/seconds = round(time / 1000, 0.01)
 
 	// Always update the blackbox tally regardless.

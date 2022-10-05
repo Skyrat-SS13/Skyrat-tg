@@ -24,7 +24,7 @@ SUBSYSTEM_DEF(automapper)
 	var/list/preloaded_map_templates = list()
 
 /datum/controller/subsystem/automapper/Initialize()
-	loaded_config = rustg_read_toml_file(config_file)
+	loaded_config = list("templates" = list())
 	return SS_INIT_SUCCESS
 
 /**

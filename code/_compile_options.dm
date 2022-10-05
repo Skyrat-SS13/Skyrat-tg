@@ -85,11 +85,6 @@
 //Update this whenever you need to take advantage of more recent byond features
 #define MIN_COMPILER_VERSION 514
 #define MIN_COMPILER_BUILD 1557 //SKYRAT EDIT CHANGE - Compiler failure due to insufficent memory when running previous builds.
-#if (DM_VERSION < MIN_COMPILER_VERSION || DM_BUILD < MIN_COMPILER_BUILD) && !defined(SPACEMAN_DMM)
-//Don't forget to update this part
-#error Your version of BYOND is too out-of-date to compile this project. Go to https://secure.byond.com/download and update.
-#error You need version 514.1556 or higher
-#endif
 
 #if (DM_VERSION == 514 && DM_BUILD > 1575 && DM_BUILD <= 1577)
 #error Your version of BYOND currently has a crashing issue that will prevent you from running Dream Daemon test servers.
@@ -126,9 +121,3 @@
 // A reasonable number of maximum overlays an object needs
 // If you think you need more, rethink it
 #define MAX_ATOM_OVERLAYS 100
-
-#if !defined(CBT) && !defined(SPACEMAN_DMM)
-#warn Building with Dream Maker is no longer supported and will result in errors.
-#warn In order to build, run BUILD.bat in the root directory.
-#warn Consider switching to VSCode editor instead, where you can press Ctrl+Shift+B to build.
-#endif

@@ -7,7 +7,7 @@
 		enable_debugger()
 
 /datum/debugger/proc/enable_debugger()
-	var/dll = world.GetConfig("env", "AUXTOOLS_DEBUG_DLL")
-	if (dll)
-		call(dll, "auxtools_init")()
-		enable_debugging()
+	// var/dll = world.GetConfig("env", "AUXTOOLS_DEBUG_DLL")
+	// if (dll)
+	// 	call(dll, "auxtools_init")()
+	// 	enable_debugging()

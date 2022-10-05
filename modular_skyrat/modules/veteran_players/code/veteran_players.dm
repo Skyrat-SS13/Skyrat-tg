@@ -15,7 +15,7 @@ GLOBAL_LIST(veteran_players)
 	var/veteran_list = ""
 	for(var/veteran in GLOB.veteran_players)
 		veteran_list += veteran + "\n"
-	rustg_file_write(veteran_list, VETERANPLAYERS)
+	// rustg_file_write(veteran_list, VETERANPLAYERS)
 
 /proc/is_veteran_player(client/user)
 	if(isnull(user))

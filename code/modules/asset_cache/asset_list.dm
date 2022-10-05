@@ -231,6 +231,7 @@ GLOBAL_LIST_EMPTY(asset_datums)
 		.["[name]_[size_id].png"] = SSassets.transport.get_asset_url("[name]_[size_id].png")
 
 /datum/asset/spritesheet/proc/ensure_stripped(sizes_to_strip = sizes)
+	return
 	for(var/size_id in sizes_to_strip)
 		var/size = sizes[size_id]
 		if (size[SPRSZ_STRIPPED])
@@ -257,13 +258,13 @@ GLOBAL_LIST_EMPTY(asset_datums)
 		var/sprite = sprites[sprite_id]
 		var/size_id = sprite[SPR_SIZE]
 		var/idx = sprite[SPR_IDX]
-		var/size = sizes[size_id]
+		// var/size = sizes[size_id]
 
-		var/icon/tiny = size[SPRSZ_ICON]
-		var/icon/big = size[SPRSZ_STRIPPED]
-		var/per_line = big.Width() / tiny.Width()
-		var/x = (idx % per_line) * tiny.Width()
-		var/y = round(idx / per_line) * tiny.Height()
+		// var/icon/tiny = size[SPRSZ_ICON]
+		// var/icon/big = size[SPRSZ_STRIPPED]
+		var/per_line = 20
+		var/x = (idx % per_line) * 10
+		var/y = round(idx / per_line) * 10
 
 		out += ".[name][size_id].[sprite_id]{background-position:-[x]px -[y]px;}"
 
@@ -281,7 +282,7 @@ GLOBAL_LIST_EMPTY(asset_datums)
 		LAZYADD(cached_spritesheets_needed, asset_id)
 
 	var/replaced_css_filename = "data/spritesheets/spritesheet_[name].css"
-	rustg_file_write(replaced_css, replaced_css_filename)
+	// rustg_file_write(replaced_css, replaced_css_filename)
 	SSassets.transport.register_asset("spritesheet_[name].css", replaced_css_filename)
 
 	fdel(replaced_css_filename)
@@ -307,10 +308,10 @@ GLOBAL_LIST_EMPTY(asset_datums)
 		fcopy(SSassets.cache["[name]_[size_id].png"].resource, "[ASSET_CROSS_ROUND_CACHE_DIRECTORY]/spritesheet.[name]_[size_id].png")
 
 	generating_cache = TRUE
-	var/mock_css = generate_css()
+	// var/mock_css = generate_css()
 	generating_cache = FALSE
 
-	rustg_file_write(mock_css, "[ASSET_CROSS_ROUND_CACHE_DIRECTORY]/spritesheet.[name].css")
+	// rustg_file_write(mock_css, "[ASSET_CROSS_ROUND_CACHE_DIRECTORY]/spritesheet.[name].css")
 
 /datum/asset/spritesheet/proc/get_cached_url_mappings()
 	var/list/mappings = list()

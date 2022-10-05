@@ -40,7 +40,7 @@
 		else
 			hash = md5asfile(file) //icons sent to the rsc md5 incorrectly when theyre given incorrect data
 	if (!hash)
-		CRASH("invalid asset sent to asset cache")
+		return
 	src.name = name
 	var/extstart = findlasttext(name, ".")
 	if (extstart)

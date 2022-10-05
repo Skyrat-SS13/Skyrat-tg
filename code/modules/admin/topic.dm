@@ -1458,7 +1458,7 @@
 
 		// Make the request
 		var/datum/http_request/request = new()
-		request.prepare(RUSTG_HTTP_METHOD_GET, "[CONFIG_GET(string/centcom_ban_db)]/[ckey]", "", "")
+		// request.prepare(RUSTG_HTTP_METHOD_GET, "[CONFIG_GET(string/centcom_ban_db)]/[ckey]", "", "")
 		request.begin_async()
 		UNTIL(request.is_complete() || !usr)
 		if (!usr)

@@ -123,7 +123,7 @@ GLOBAL_PROTECT(mentor_href_token)
 		// We're doing this check to not add admins to the file, as explained above.
 		if(existing_mentors[mentor] == TRUE)
 			mentor_list += mentor + "\n"
-	rustg_file_write(mentor_list, SKYRAT_MENTOR_CONFIG_FILE)
+	// rustg_file_write(mentor_list, SKYRAT_MENTOR_CONFIG_FILE)
 
 
 // new client var: mentor_datum. Acts the same way holder does towards admin: it holds the mentor datum. if set, the guy's a mentor.
