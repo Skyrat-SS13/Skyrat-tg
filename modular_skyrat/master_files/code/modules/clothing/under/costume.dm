@@ -27,10 +27,10 @@
 	greyscale_colors = "#8b2c2c#222227#222227#fbc056"
 	flags_1 = IS_PLAYER_COLORABLE_1
 
-/obj/item/clothing/under/costume/skyrat/arthur
+/obj/item/clothing/under/costume/skyrat/cavalry
 	name = "cavalry uniform"
 	desc = "Dedicate yourself to something better. To loyalty, honour, for it only dies when everyone abandons it."
-	icon_state = "arthur_morgan" //for anyone curious, this is an 1890s US Army Cavalry Uniform. No, Arthur doesn't ever wear this, idk why it's named after him
+	icon_state = "cavalry" //specifically an 1890s US Army Cavalry Uniform
 
 /obj/item/clothing/under/costume/deckers/alt //not even going to bother re-pathing this one because its such a unique case of 'TGs item has something but this alt doesnt'
 	name = "deckers maskless outfit"
