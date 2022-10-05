@@ -27,7 +27,7 @@
 	build_type = AUTOLATHE
 	materials = list(/datum/material/iron = 4000)
 	build_path = /obj/item/ammo_box/a357/peacemaker
-	category = list(RND_CATEGORY_HACKED, RND_CATEGORY_SECURITY)
+	category = list(RND_CATEGORY_HACKED, RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_RANGED)
 
 /obj/item/ammo_box/a357/peacemaker
 	name = "speed loader (.357 Peacemaker)"
