@@ -68,7 +68,7 @@ Sort of like photoshop. The loop will continue forever unless an accident happen
 	if(our_supermatter.internal_energy > POWER_PENALTY_THRESHOLD) // Tesla delamination
 		return TESLA_DELAMINATION
 	else
-		return null // idk its faster?
+		return
 
 /obj/machinery/power/supermatter_crystal/Initialize(mapload) // call parent then add the effect.
 	. = ..()
@@ -80,3 +80,14 @@ Sort of like photoshop. The loop will continue forever unless an accident happen
 
 
 
+#undef COMSIG_SM_PROCESS_ATMOS
+#undef CASCADE_DELAMINATION
+#undef SINGULARITY_DELAMINATION
+#undef TESLA_DELAMINATION
+
+#undef SUPERMATTER_COLOUR
+#undef SUPERMATTER_RED
+#undef SUPERMATTER_CASCADE_COLOUR
+#undef SUPERMATTER_TESLA_COLOUR
+#undef SUPERMATTER_SINGULARITY_RAYS_COLOUR
+#undef SUPERMATTER_SINGULARITY_LIGHT_COLOUR
