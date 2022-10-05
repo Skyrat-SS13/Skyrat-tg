@@ -296,7 +296,7 @@
 		user.balloon_alert("tongs are full already!")
 		return
 	if(!material_type && !custom_materials)
-		user.balloon_alert("unusable material!")
+		user.balloon_alert(user, "unusable material!")
 		return
 	forceMove(tool)
 	tool.icon_state = "tong_full"
