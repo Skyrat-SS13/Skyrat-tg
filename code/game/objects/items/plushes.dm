@@ -35,6 +35,12 @@
 	var/normal_desc
 	//--end of love :'(--
 
+/*
+** If you add a new plushie please add it to the lists at both:
+** /obj/effect/spawner/random/entertainment/plushie
+** /obj/effect/spawner/random/entertainment/plushie_delux
+*/
+
 /obj/item/toy/plush/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/squeak, squeak_override)
@@ -713,4 +719,16 @@
 	squeak_override = list(
 		'sound/weapons/egloves.ogg' = 2,
 		'sound/weapons/cablecuff.ogg' = 1,
+	)
+
+/obj/item/toy/plush/greek_cucumber
+	name = "cucumber greek"
+	desc = "A plushie depicting a large cucumber with eyes, it seems that according to the manufacturer of the toy, the human race will look like in the future."
+	icon_state = "cucumber"
+	inhand_icon_state = "cucumber"
+	attack_verb_continuous = list("squishуы", "creakes", "crunches")
+	attack_verb_simple = list("squish", "creak", "crunch")
+	squeak_override = list(
+		'sound/effects/slosh.ogg' = 1,
+		'sound/effects/splat.ogg' = 2
 	)

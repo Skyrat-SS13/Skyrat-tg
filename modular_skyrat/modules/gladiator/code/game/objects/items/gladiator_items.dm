@@ -1,10 +1,19 @@
+#define MAX_BERSERK_CHARGE 200
+#define BERSERK_HALF_CHARGE 100
+#define PROJECTILE_HIT_MULTIPLIER 1.5
+#define DAMAGE_TO_CHARGE_SCALE 1
+#define CHARGE_DRAINED_PER_SECOND 3
+#define BERSERK_MELEE_ARMOR_ADDED 50
+#define BERSERK_ATTACK_SPEED_MODIFIER 0.25
+
 /obj/item/crusher_trophy/gladiator
 	name = "ashen bones"
 	desc = "A set of soot-coated ribs from a worthy warrior. Suitable as a trophy for a kinetic crusher."
 	icon_state = "demon_claws"
+	color = "#808080"
 	gender = PLURAL
 	denied_type = /obj/item/crusher_trophy/gladiator
-	bonus_value = 10
+	bonus_value = 15
 
 /obj/item/crusher_trophy/gladiator/effect_desc()
 	return "the crusher to have a <b>[bonus_value]%</b> chance to block incoming attacks."
@@ -19,24 +28,101 @@
 	if(.)
 		incomingchance.block_chance -= bonus_value
 
-/obj/item/claymore/agateram //it just works
-	name = "ancient blade agateram"
-	desc = "A millenia-old blade made from a material that you can't even begin to fathom. It flows with the power of the Marked One who once held it." //That thing was too big to be called a sword. Too big, too thick, too heavy, and too rough, it was more like a large hunk of iron.
-	icon = 'modular_skyrat/master_files/icons/obj/agateram.dmi'
-	icon_state = "demonsword"
-	inhand_icon_state = "demonsword"
-	lefthand_file = 'modular_skyrat/master_files/icons/mob/agateraminhandsleft.dmi'
-	righthand_file = 'modular_skyrat/master_files/icons/mob/agateraminhandsright.dmi'
+/obj/item/clothing/neck/warrior_cape
+	name = "cloak of the marked one"
+	desc = "A cloak worn by those that have faced death in the eyes and prevailed."
+	icon = 'modular_skyrat/modules/gladiator/icons/berserk_icons.dmi'
+	worn_icon = 'modular_skyrat/modules/gladiator/icons/berserk_suit.dmi'
+	icon_state = "berk_cape"
+	inhand_icon_state = "" //lul
+	uses_advanced_reskins = FALSE
+	resistance_flags = INDESTRUCTIBLE
+
+/obj/item/clothing/neck/warrior_cape/examine()
+	. = ..()
+	. += span_warning("Struggle against the tide, no matter how strong it may be.")
+
+/obj/item/clothing/suit/hooded/berserker/gatsu
+	name = "berserker armor"
+	desc = "A suit of ancient body armor imbued with potent spiritual magnetism, capable of massively boosting a wearer's close combat skills at the cost of ravaging their mind and overexerting their body."
+	icon_state = "berk_suit"
+	icon = 'modular_skyrat/modules/gladiator/icons/berserk_icons.dmi'
+	worn_icon = 'modular_skyrat/modules/gladiator/icons/berserk_suit.dmi'
+	hoodtype = /obj/item/clothing/head/hooded/berserker/gatsu
+	w_class = WEIGHT_CLASS_BULKY
+	armor = list(MELEE = 40, BULLET = 40, LASER = 20, ENERGY = 25, BOMB = 70, BIO = 100, FIRE = 100, ACID = 100)
+	resistance_flags = INDESTRUCTIBLE
+
+/obj/item/clothing/suit/hooded/berserker/gatsu/examine()
+	. = ..()
+	. += span_warning("Berserk mode requires the suit's helmet to be equipped, and can only be charged by taking damage.")
+
+/obj/item/clothing/head/hooded/berserker/gatsu
+	name = "berserker helmet"
+	desc = "A uniquely styled helmet with ghastly red eyes that seals it's user inside."
+	icon_state = "berk_helm"
+	icon = 'modular_skyrat/modules/gladiator/icons/berserk_icons.dmi'
+	worn_icon = 'modular_skyrat/modules/gladiator/icons/berserk_suit.dmi'
+	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT
+	armor = list(MELEE = 40, BULLET = 40, LASER = 20, ENERGY = 25, BOMB = 70, BIO = 100, FIRE = 100, ACID = 100)
+	resistance_flags = INDESTRUCTIBLE
+	actions_types = list(/datum/action/item_action/berserk_mode)
+	///tracks whether or not the armor's charge is equal to or greater than 100% so it does not do the bubble alert twice
+	var/charged = FALSE
+
+/obj/item/clothing/head/hooded/berserker/gatsu/Initialize(mapload)
+	. = ..()
+	ADD_TRAIT(src, TRAIT_NODROP, LOCKED_HELMET_TRAIT)
+
+/obj/item/clothing/head/hooded/berserker/gatsu/examine()
+	. = ..()
+	. += span_warning("Berserk mode is usable at 100% charge but can gain up to 200% charge for extended duration.") //woag!!!
+
+/obj/item/clothing/head/hooded/berserker/gatsu/process(delta_time)
+	if(berserk_active)
+		berserk_charge = clamp(berserk_charge - CHARGE_DRAINED_PER_SECOND * delta_time, 0, MAX_BERSERK_CHARGE)
+	if(!berserk_charge)
+		if(ishuman(loc))
+			end_berserk(loc)
+			charged = FALSE
+
+/obj/item/clothing/head/hooded/berserker/gatsu/dropped(mob/user)
+	. = ..()
+	end_berserk(user)
+	charged = FALSE
+
+/obj/item/clothing/head/hooded/berserker/gatsu/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
+	if(berserk_active)
+		return
+	var/berserk_value = damage * DAMAGE_TO_CHARGE_SCALE
+	if(attack_type == PROJECTILE_ATTACK)
+		berserk_value *= PROJECTILE_HIT_MULTIPLIER
+	berserk_charge = clamp(round(berserk_charge + berserk_value), 0, MAX_BERSERK_CHARGE)
+	if(berserk_charge >= BERSERK_HALF_CHARGE & charged == FALSE)
+		balloon_alert(owner, "berserk charged")
+		charged = TRUE
+
+/obj/item/clothing/head/hooded/berserker/gatsu/IsReflect()
+	if(berserk_active)
+		return TRUE
+
+/obj/item/claymore/dragonslayer
+	name = "\proper Dragonslayer"
+	desc = "A blade that seems too big to be called a sword. Too big, too thick, too heavy, and too rough, it's more like a large hunk of raw iron."
+	icon = 'modular_skyrat/modules/gladiator/icons/dragonslayer.dmi'
+	icon_state = "dragonslayer"
+	inhand_icon_state = "dragonslayer"
+	lefthand_file = 'modular_skyrat/modules/gladiator/icons/dragonslayer_inhand_R.dmi'
+	righthand_file = 'modular_skyrat/modules/gladiator/icons/dragonslayer_inhand_L.dmi' //confusing, right? hahahaha im not fixing those fucken dmis
 	hitsound = 'modular_skyrat/master_files/sound/weapons/bloodyslice.ogg'
 	w_class = WEIGHT_CLASS_HUGE
 	slot_flags = null
 	force = 20
-	// This is a fuck off huge weapon that literally can only be held or dragged around, this is fine imho
 	wound_bonus = 10
 	bare_wound_bonus = 5
 	resistance_flags = INDESTRUCTIBLE
-	armour_penetration = 20
-	block_chance = 30
+	armour_penetration = 35 //this boss is really hard and this sword is really big
+	block_chance = 25
 	sharpness = SHARP_EDGED
 	// aughhghghgh this really should be elementized but this works for now
 	var/faction_bonus_force = 100
@@ -46,7 +132,14 @@
 	/// how far do we roll?
 	var/roll_range = 3
 
-/obj/item/claymore/agateram/attack(mob/living/target, mob/living/carbon/human/user)
+/obj/item/claymore/dragonslayer/examine()
+	. = ..()
+	. += span_warning("Tempered against lavaland foes and bosses through supernatural energies. Right click to dodge at the cost of stamina.")
+
+/obj/item/claymore/dragonslayer/add_blood_DNA(list/blood_dna) //110% stain-proof! or so they tell me
+	return FALSE
+
+/obj/item/claymore/dragonslayer/attack(mob/living/target, mob/living/carbon/human/user)
 	var/is_nemesis_faction = FALSE
 	for(var/found_faction in target.faction)
 		if(found_faction in nemesis_factions)
@@ -57,7 +150,7 @@
 	if(is_nemesis_faction)
 		force -= faction_bonus_force
 
-/obj/item/claymore/agateram/afterattack_secondary(atom/target, mob/living/user, params) // dark souls
+/obj/item/claymore/dragonslayer/afterattack_secondary(atom/target, mob/living/user, params) // dark souls
 	if(user.IsImmobilized()) // no free dodgerolls
 		return
 	var/turf/where_to = get_turf(target)
@@ -89,6 +182,15 @@
 	playsound(src, 'sound/weapons/thudswoosh.ogg', 50, TRUE, -1)
 	return SHIELD_BLOCK
 
+/obj/item/claymore/dragonslayer/very_fucking_loud
+	name = "\proper Tempered Dragonslayer"
+	desc = null
+	hitsound = 'modular_skyrat/modules/gladiator/Clang_cut.ogg'
+
+/obj/item/claymore/dragonslayer/very_fucking_loud/examine()
+	. = ..()
+	. += span_userdanger("CLANG")
+
 /obj/structure/closet/crate/necropolis/gladiator
 	name = "gladiator chest"
 
@@ -96,8 +198,26 @@
 	name = "dreadful gladiator chest"
 
 /obj/structure/closet/crate/necropolis/gladiator/PopulateContents()
-	new /obj/item/claymore/agateram(src)
+	if(prob(5))
+		new /obj/item/claymore/dragonslayer/very_fucking_loud(src)
+	else
+		new /obj/item/claymore/dragonslayer(src)
+	new /obj/item/clothing/suit/hooded/berserker/gatsu(src)
+	new /obj/item/clothing/neck/warrior_cape(src)
 
 /obj/structure/closet/crate/necropolis/gladiator/crusher/PopulateContents()
-	new /obj/item/claymore/agateram(src)
+	if(prob(5))
+		new /obj/item/claymore/dragonslayer/very_fucking_loud(src)
+	else
+		new /obj/item/claymore/dragonslayer(src)
+	new /obj/item/clothing/suit/hooded/berserker/gatsu(src)
+	new /obj/item/clothing/neck/warrior_cape(src)
 	new /obj/item/crusher_trophy/gladiator(src)
+
+#undef MAX_BERSERK_CHARGE
+#undef BERSERK_HALF_CHARGE
+#undef PROJECTILE_HIT_MULTIPLIER
+#undef DAMAGE_TO_CHARGE_SCALE
+#undef CHARGE_DRAINED_PER_SECOND
+#undef BERSERK_MELEE_ARMOR_ADDED
+#undef BERSERK_ATTACK_SPEED_MODIFIER

@@ -48,7 +48,7 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 	. = ..()
 	for(var/datum/borer_focus/body_focus as anything in borer.body_focuses)
 		body_focus.on_add()
-	carbon_target.hal_screwyhud = SCREWYHUD_HEALTHY
+	carbon_target.apply_status_effect(/datum/status_effect/grouped/screwy_hud/fake_healthy, type)
 
 //on removal, force the borer out
 /obj/item/organ/internal/borer_body/Remove(mob/living/carbon/carbon_target, special)
@@ -58,7 +58,7 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 		body_focus.on_remove()
 	if(cb_inside)
 		cb_inside.leave_host()
-	carbon_target.hal_screwyhud = SCREWYHUD_NONE
+	carbon_target.remove_status_effect(/datum/status_effect/grouped/screwy_hud/fake_healthy, type)
 	qdel(src)
 
 /obj/item/reagent_containers/borer
@@ -106,11 +106,10 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 										/datum/reagent/medicine/inacusiate,
 										/datum/reagent/medicine/oculine,
 										/datum/reagent/toxin/mindbreaker,
+										/datum/reagent/medicine/mannitol,
 	)
 	//blacklisted chemicals - separate from chemicals that cannot be synthesized, borers specifically cannot learn these
-	var/list/blacklisted_chemicals = list(/datum/reagent/medicine/mannitol,
-										/datum/reagent/medicine/neurine,
-	)
+	var/list/blacklisted_chemicals = list() //currently may be empty, but leaving the mechanism just in case
 	///how old the borer is, starting from zero. Goes up only when inside a host
 	var/maturity_age = 0
 	///the amount of "evolution" points a borer has for chemicals. Start with one
@@ -255,8 +254,7 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 	if(prob(5) && human_host.getToxLoss() <= 80)
 		human_host.adjustToxLoss(5, TRUE, TRUE)
 
-	if(human_host.hal_screwyhud != SCREWYHUD_HEALTHY)
-		human_host.hal_screwyhud = SCREWYHUD_HEALTHY
+	human_host.apply_status_effect(/datum/status_effect/grouped/screwy_hud/fake_healthy, type)
 
 	//cant do anything if the host has sugar
 	if(host_sugar())
@@ -348,14 +346,14 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 	human_host = null
 
 //borers shouldnt be able to whisper...
-/mob/living/simple_animal/cortical_borer/whisper(message, bubble_type, list/spans, sanitize, datum/language/language, ignore_spam, forced, filterproof)
+/mob/living/simple_animal/cortical_borer/whisper(message, bubble_type, list/spans = list(), sanitize = TRUE, datum/language/language, ignore_spam = FALSE, forced, filterproof)
 	to_chat(src, span_warning("You are not able to whisper!"))
 	return FALSE
 
 //previously had borers unable to emote... but that means less RP, and we want that
 
 //borers should not be talking without a host at least
-/mob/living/simple_animal/cortical_borer/say(message, bubble_type, list/spans, sanitize, datum/language/language, ignore_spam, forced)
+/mob/living/simple_animal/cortical_borer/say(message, bubble_type, list/spans = list(), sanitize = TRUE, datum/language/language = null, ignore_spam = FALSE, forced = null, filterproof = null, message_range = 7, datum/saymode/saymode = null)
 	if(!inside_human())
 		to_chat(src, span_warning("You are not able to speak without a host!"))
 		return

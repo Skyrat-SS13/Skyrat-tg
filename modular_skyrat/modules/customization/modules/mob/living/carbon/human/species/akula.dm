@@ -14,6 +14,7 @@
 		TRAIT_CAN_STRIP,
 		TRAIT_CAN_USE_FLIGHT_POTION,
 		TRAIT_LITERATE,
+		TRAIT_WATER_BREATHING,
 	)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	mutant_bodyparts = list()
@@ -79,3 +80,15 @@
 
 /datum/species/akula/get_species_lore()
 	return list(placeholder_lore)
+
+/datum/species/akula/prepare_human_for_preview(mob/living/carbon/human/human)
+	var/main_color = "#394b66"
+	var/secondary_color = "#818b9b"
+	human.dna.features["mcolor"] = main_color
+	human.dna.features["mcolor2"] = secondary_color
+	human.dna.features["mcolor3"] = secondary_color
+	human.dna.species.mutant_bodyparts["tail"] = list(MUTANT_INDEX_NAME = "Shark", MUTANT_INDEX_COLOR_LIST = list(main_color, secondary_color, secondary_color))
+	human.dna.species.mutant_bodyparts["snout"] = list(MUTANT_INDEX_NAME = "hShark", MUTANT_INDEX_COLOR_LIST = list(main_color, secondary_color, secondary_color))
+	human.dna.species.mutant_bodyparts["ears"] = list(MUTANT_INDEX_NAME = "Sergal", MUTANT_INDEX_COLOR_LIST = list(main_color, secondary_color, secondary_color))
+	human.update_mutant_bodyparts(TRUE)
+	human.update_body(TRUE)

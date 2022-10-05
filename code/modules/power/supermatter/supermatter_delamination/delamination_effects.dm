@@ -7,7 +7,7 @@
 /// Just the mobs apparently.
 /datum/sm_delam/proc/effect_irradiate(obj/machinery/power/supermatter_crystal/sm)
 	var/turf/sm_turf = get_turf(sm)
-	for (var/mob/living/victim in range(20, sm))
+	for (var/mob/living/victim in range(DETONATION_RADIATION_RANGE, sm))
 		if(!is_valid_z_level(get_turf(victim), sm_turf))
 			continue
 		if(victim.z == 0)
@@ -23,10 +23,10 @@
 			continue
 		if(victim.z == 0)
 			continue
-		if(ishuman(victim))
-			//Hilariously enough, running into a closet should make you get hit the hardest.
-			var/mob/living/carbon/human/human = victim
-			human.hallucination += max(50, min(300, DETONATION_HALLUCINATION * sqrt(1 / (get_dist(victim, sm) + 1)) ) )
+
+		//Hilariously enough, running into a closet should make you get hit the hardest.
+		var/hallucination_amount = max(100 SECONDS, min(600 SECONDS, DETONATION_HALLUCINATION * sqrt(1 / (get_dist(victim, src) + 1))))
+		victim.adjust_hallucinations(hallucination_amount)
 
 	for(var/mob/victim as anything in GLOB.player_list)
 		var/turf/victim_turf = get_turf(victim)
@@ -45,7 +45,7 @@
 /// Spawns anomalies all over the station. Half instantly, the other half over time.
 /datum/sm_delam/proc/effect_anomaly(obj/machinery/power/supermatter_crystal/sm)
 	var/anomalies = 10
-	var/list/anomaly_types = list(GRAVITATIONAL_ANOMALY = 55, HALLUCINATION_ANOMALY = 45, DELIMBER_ANOMALY = 35, FLUX_ANOMALY = 25, PYRO_ANOMALY = 5, VORTEX_ANOMALY = 1)
+	var/list/anomaly_types = list(GRAVITATIONAL_ANOMALY = 55, HALLUCINATION_ANOMALY = 45, DIMENSIONAL_ANOMALY = 35, BIOSCRAMBLER_ANOMALY = 35, FLUX_ANOMALY = 25, PYRO_ANOMALY = 5, VORTEX_ANOMALY = 1)
 	var/list/anomaly_places = GLOB.generic_event_spawns
 
 	// Spawns this many anomalies instantly. Spawns the rest with callbacks.
@@ -70,7 +70,7 @@
 /// Explodes
 /datum/sm_delam/proc/effect_explosion(obj/machinery/power/supermatter_crystal/sm)
 	var/explosion_power = sm.explosion_power
-	var/power_scaling = sm.gasmix_power_ratio
+	var/power_scaling = sm.gas_heat_power_generation
 	var/turf/sm_turf = get_turf(sm)
 	//Dear mappers, balance the sm max explosion radius to 17.5, 37, 39, 41
 	explosion(origin = sm_turf,
