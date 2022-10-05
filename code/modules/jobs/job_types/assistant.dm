@@ -41,8 +41,12 @@ Assistant
 	name = JOB_ASSISTANT
 	jobtype = /datum/job/assistant
 	id_trim = /datum/id_trim/job/assistant
+<<<<<<< HEAD
 	uniform = /obj/item/clothing/under/color/random
 
+=======
+	belt = /obj/item/modular_computer/tablet/pda/assistant
+>>>>>>> db905aff480 (Assistant PDAs start with the bounty board app preinstalled (#70291))
 
 /datum/outfit/job/assistant/pre_equip(mob/living/carbon/human/target)
 	..()
