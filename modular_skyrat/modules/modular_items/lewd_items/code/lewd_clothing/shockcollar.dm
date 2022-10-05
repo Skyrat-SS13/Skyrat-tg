@@ -21,7 +21,7 @@
 	build_type = AUTOLATHE
 	build_path = /obj/item/electropack/shockcollar
 	materials = list(/datum/material/iron = 5000, /datum/material/glass =2000)
-	category = list(RND_CATEGORY_HACKED, RND_CATEGORY_MISC)
+	category = list(RND_CATEGORY_HACKED, RND_CATEGORY_EQUIPMENT + RND_SUBCATEGORY_EQUIPMENT_MISC)
 
 /obj/item/electropack/shockcollar/attack_hand(mob/user)
 	if(loc == user && user.get_item_by_slot(ITEM_SLOT_NECK))
