@@ -27340,6 +27340,16 @@
 	dir = 8
 	},
 /area/station/hallway/primary/central/aft)
+"ijx" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/purple/visible,
+/obj/effect/turf_decal/trimline/yellow/filled/warning{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/blue/filled/warning{
+	dir = 1
+	},
+/turf/open/floor/iron/smooth_edge,
+/area/station/engineering/atmos)
 "ijy" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/white/smooth_large,
@@ -43345,6 +43355,16 @@
 	dir = 1
 	},
 /area/station/hallway/secondary/construction)
+"mBF" = (
+/obj/machinery/atmospherics/pipe/smart/simple/orange/visible{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/yellow/filled/warning,
+/obj/effect/turf_decal/trimline/blue/filled/warning,
+/turf/open/floor/iron/smooth_edge{
+	dir = 1
+	},
+/area/station/engineering/atmos)
 "mBJ" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -61308,6 +61328,11 @@
 /obj/effect/turf_decal/bot,
 /turf/open/floor/iron/smooth_large,
 /area/station/command/heads_quarters/qm)
+"rEk" = (
+/obj/effect/turf_decal/box,
+/obj/machinery/atmospherics/components/unary/thermomachine/heater/on,
+/turf/open/floor/iron/dark/smooth_large,
+/area/station/engineering/atmos)
 "rEu" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -74327,7 +74352,10 @@
 /turf/open/floor/iron/large,
 /area/station/commons/fitness/recreation/entertainment)
 "vjZ" = (
-/obj/machinery/atmospherics/components/trinary/mixer/airmix/inverse,
+/obj/machinery/atmospherics/components/trinary/mixer/airmix/inverse{
+	node2_concentration = 0.21;
+	node1_concentration = 0.79
+	},
 /turf/open/floor/iron/smooth_large,
 /area/station/engineering/atmos)
 "vkx" = (
@@ -111768,9 +111796,9 @@ hqu
 ixv
 fIQ
 cMm
-vrU
-pJO
-uYv
+mBF
+rEk
+ijx
 fTR
 kiN
 ohI
@@ -112025,9 +112053,9 @@ hqu
 ixv
 fIQ
 mhQ
-nEW
-dYh
-nUN
+vrU
+pJO
+uYv
 lxU
 pJO
 pJO
