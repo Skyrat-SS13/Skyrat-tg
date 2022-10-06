@@ -14,7 +14,7 @@
 	. = ..()
 	if(!ishuman(user))
 		return
-	if(slot == ITEM_SLOT_NECK)
+	if(slot & ITEM_SLOT_NECK)
 		user.grant_language(/datum/language/ashtongue/, TRUE, TRUE, LANGUAGE_TRANSLATOR)
 		to_chat(user, span_boldnotice("Slipping the necklace on, you feel the insidious creep of the Necropolis enter your bones, and your very shadow. You find yourself with an unnatural knowledge of Ashtongue; but the amulet's eye stares at you."))
 
