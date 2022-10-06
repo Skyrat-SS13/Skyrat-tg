@@ -18,3 +18,12 @@
 
 /// Population requirement for bomb objectives (ninja c4, locate weakpoint, etc.) objectives to appear
 #define BOMB_POP_REQUIREMENT 80
+
+// Borer evolution defines
+// The three primary paths that eventually diverge
+#define BORER_EVOLUTION_SYMBIOTE "Symbiote Genome"
+#define BORER_EVOLUTION_HIVELORD "Hivelord Genome"
+#define BORER_EVOLUTION_DIVEWORM "Diveworm Genome"
+// Just general upgrades that don't take you in a specific direction
+#define BORER_EVOLUTION_GENERAL "General"
+#define BORER_EVOLUTION_START "Start"

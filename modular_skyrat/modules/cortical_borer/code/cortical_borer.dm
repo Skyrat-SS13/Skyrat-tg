@@ -125,6 +125,7 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 	///the list of actions that the borer has
 	var/list/known_abilities = list(/datum/action/cooldown/borer/toggle_hiding,
 									/datum/action/cooldown/borer/choosing_host,
+									/datum/action/cooldown/borer/evolution_tree,
 									/datum/action/cooldown/borer/inject_chemical,
 									/datum/action/cooldown/borer/upgrade_chemical,
 									/datum/action/cooldown/borer/learn_focus,
@@ -137,7 +138,6 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 	///the list of actions that the borer could learn
 	var/possible_abilities = list(/datum/action/cooldown/borer/produce_offspring,
 								/datum/action/cooldown/borer/learn_bloodchemical,
-								/datum/action/cooldown/borer/revive_host,
 								/datum/action/cooldown/borer/willing_host,
 	)
 	///the host
@@ -183,6 +183,10 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 	var/injection_rate_current = 5
 	/// Cooldown between injecting chemicals
 	COOLDOWN_DECLARE(injection_cooldown)
+	/// Evolutions we've already learned
+	var/list/past_evolutions = list()
+	/// If the borer has evolved with a genome that locks out others of the same & higher tier
+	var/genome_locked = FALSE
 
 /mob/living/simple_animal/cortical_borer/Initialize(mapload)
 	. = ..()
@@ -205,6 +209,7 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 			mind.add_antag_datum(/datum/antagonist/cortical_borer)
 	for(var/focus_path in subtypesof(/datum/borer_focus))
 		possible_focuses += new focus_path
+	do_evolution(/datum/borer_evolution/base)
 
 /mob/living/simple_animal/cortical_borer/Destroy()
 	human_host = null

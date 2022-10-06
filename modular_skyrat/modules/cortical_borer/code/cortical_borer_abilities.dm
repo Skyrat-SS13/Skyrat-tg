@@ -4,7 +4,7 @@
 // Parent of all borer actions
 /datum/action/cooldown/borer
 	icon_icon = 'modular_skyrat/modules/cortical_borer/icons/actions.dmi'
-	cooldown_time = 1 SECONDS
+	cooldown_time = 0
 
 /datum/action/cooldown/borer/Trigger(trigger_flags, atom/target)
 	. = ..()
@@ -38,7 +38,7 @@
 		ui.open()
 
 /datum/action/cooldown/borer/inject_chemical/ui_data(mob/user)
-	var/data = list()
+	var/list/data = list()
 	var/mob/living/simple_animal/cortical_borer/cortical_owner = owner
 	data["amount"] = cortical_owner.injection_rate_current
 	data["energy"] = cortical_owner.chemical_storage / CHEMICALS_PER_UNIT
@@ -96,6 +96,88 @@
 	if(!borer.human_host)
 		return UI_CLOSE
 	return ..()
+
+/datum/action/cooldown/borer/evolution_tree
+	name = "Open Evolution Tree"
+	button_icon_state = "getfocus"
+
+/datum/action/cooldown/borer/evolution_tree/Trigger(trigger_flags)
+	. = ..()
+	if(!.)
+		return FALSE
+	ui_interact(owner)
+
+/datum/action/cooldown/borer/evolution_tree/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "BorerEvolution", name)
+		ui.open()
+
+/datum/action/cooldown/borer/evolution_tree/ui_data(mob/user)
+	var/list/data = list()
+
+	var/static/list/path_to_color = list(
+		BORER_EVOLUTION_DIVEWORM = "red",
+		BORER_EVOLUTION_HIVELORD = "purple",
+		BORER_EVOLUTION_SYMBIOTE = "green",
+		BORER_EVOLUTION_GENERAL = "label",
+	)
+
+	var/mob/living/simple_animal/cortical_borer/cortical_owner = owner
+
+	data["evolution_points"] = cortical_owner.stat_evolution
+
+	for(var/datum/borer_evolution/evolution as anything in cortical_owner.get_possible_evolutions())
+		var/list/evo_data = list()
+		evo_data["path"] = evolution
+		evo_data["name"] = initial(evolution.name)
+		evo_data["desc"] = initial(evolution.desc)
+		evo_data["gainFlavor"] = initial(evolution.gain_text)
+		evo_data["cost"] = initial(evolution.evo_cost)
+		evo_data["disabled"] = ((initial(evolution.evo_cost) > cortical_owner.stat_evolution) || (initial(evolution.mutually_exclusive) && cortical_owner.genome_locked))
+		evo_data["evoPath"] = initial(evolution.evo_type)
+		evo_data["color"] = path_to_color[initial(evolution.evo_type)] || "grey"
+
+		data["learnableEvolution"] += list(evo_data)
+
+	for(var/path in cortical_owner.past_evolutions)
+		var/list/evo_data = list()
+		var/datum/borer_evolution/found_evolution = cortical_owner.past_evolutions[path]
+		evo_data["name"] = found_evolution.name
+		evo_data["desc"] = found_evolution.desc
+		evo_data["gainFlavor"] = found_evolution.gain_text
+		evo_data["cost"] = found_evolution.evo_cost
+		evo_data["evoPath"] = found_evolution.evo_type
+		evo_data["color"] = path_to_color[found_evolution.evo_type] || "grey"
+
+		data["learnedEvolution"] += list(evo_data)
+	return data
+
+/datum/action/cooldown/borer/evolution_tree/ui_act(action, params)
+	. = ..()
+	if(.)
+		return
+	var/mob/living/simple_animal/cortical_borer/cortical_owner = owner
+	switch(action)
+		if("evolve")
+			var/datum/borer_evolution/to_evolve_path = text2path(params["path"])
+			if(!ispath(to_evolve_path))
+				CRASH("Cortical borer attempted to evolve with a non-evolution path! (Got: [to_evolve_path])")
+
+			if(initial(to_evolve_path.evo_cost) > cortical_owner.stat_evolution)
+				return
+			if(initial(evolution.mutually_exclusive) && cortical_owner.genome_locked)
+				return
+			if(!cortical_owner.do_evolution(to_evolve_path))
+				return
+
+			log_borer_evolution("[key_name(owner)] gained knowledge: [initial(to_evolve_path.name)]")
+			cortical_owner.stat_evolution -= initial(to_evolve_path.evo_cost)
+			return TRUE
+
+/datum/action/cooldown/borer/evolution_tree/ui_state(mob/user)
+	return GLOB.always_state
+
 
 /datum/action/cooldown/borer/learn_focus
 	name = "Learn Focus"
@@ -900,21 +982,12 @@
 	var/list/abil_list = list("Produce Offspring", "Learn Chemical from Blood", "Revive Host", "Willing Host", "Upgrade Injection")
 	for(var/ability in abil_list)
 		switch(ability)
-			if("Produce Offspring")
-				if(locate(/datum/action/cooldown/borer/produce_offspring) in cortical_owner.known_abilities)
-					abil_list.Remove("Produce Offspring")
 			if("Learn Chemical from Blood")
 				if(locate(/datum/action/cooldown/borer/learn_bloodchemical) in cortical_owner.known_abilities)
 					abil_list.Remove("Learn Chemical from Blood")
-			if("Revive Host")
-				if(locate(/datum/action/cooldown/borer/revive_host) in cortical_owner.known_abilities)
-					abil_list.Remove("Revive Host")
 			if("Willing Host")
 				if(locate(/datum/action/cooldown/borer/willing_host) in cortical_owner.known_abilities)
 					abil_list.Remove("Willing Host")
-			if("Upgrade Injection")
-				if(length(cortical_owner.injection_rates_unlocked) >= length(cortical_owner.injection_rates))
-					abil_list.Remove("Upgrade Injection")
 	if(!length(abil_list))
 		owner.balloon_alert(owner, "all abilites learned")
 		cortical_owner.stat_evolution += 2
@@ -926,31 +999,16 @@
 		return
 	owner.balloon_alert(owner, "ability learned")
 	switch(ability_choice)
-		if("Produce Offspring")
-			var/datum/action/attack_action = new /datum/action/cooldown/borer/produce_offspring()
-			attack_action.Grant(cortical_owner)
-			cortical_owner.known_abilities += /datum/action/cooldown/borer/produce_offspring
-			return
 		if("Learn Chemical from Blood")
 			var/datum/action/attack_action = new /datum/action/cooldown/borer/learn_bloodchemical()
 			attack_action.Grant(cortical_owner)
 			cortical_owner.known_abilities += /datum/action/cooldown/borer/learn_bloodchemical
-			return
-		if("Revive Host")
-			var/datum/action/attack_action = new /datum/action/cooldown/borer/revive_host()
-			attack_action.Grant(cortical_owner)
-			cortical_owner.known_abilities += /datum/action/cooldown/borer/revive_host
 			return
 		if("Willing Host")
 			var/datum/action/attack_action = new /datum/action/cooldown/borer/willing_host()
 			attack_action.Grant(cortical_owner)
 			cortical_owner.known_abilities += /datum/action/cooldown/borer/willing_host
 			return
-		if("Upgrade Injection")
-			if(length(cortical_owner.injection_rates_unlocked) >= length(cortical_owner.injection_rates)) // Extra insurance
-				owner.balloon_alert(owner, "injection already maximized")
-				return
-			cortical_owner.injection_rates_unlocked += cortical_owner.injection_rates[length(cortical_owner.injection_rates_unlocked) + 1]
 	StartCooldown()
 
 //to ask if a host is willing
