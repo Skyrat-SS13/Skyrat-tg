@@ -15423,11 +15423,6 @@
 	},
 /turf/open/floor/engine,
 /area/station/maintenance/disposal/incinerator)
-"fzm" = (
-/obj/structure/table/wood,
-/obj/machinery/light/dim/directional/east,
-/turf/open/floor/wood,
-/area/station/service/bar/backroom)
 "fzo" = (
 /obj/effect/landmark/start/hangover,
 /turf/open/floor/engine{
@@ -27497,6 +27492,11 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/hallway/secondary/command)
+"jTR" = (
+/obj/structure/table/wood,
+/obj/machinery/light/dim/directional/east,
+/turf/open/floor/wood,
+/area/station/service/bar/backroom)
 "jUh" = (
 /obj/machinery/door/airlock/atmos{
 	name = "Atmospherics"
@@ -33617,17 +33617,6 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/ai_monitored/command/storage/eva)
-"mas" = (
-/obj/structure/industrial_lift/tram{
-	icon_state = "plating"
-	},
-/obj/structure/tramwall/titanium,
-/obj/structure/shuttle/engine/propulsion/in_wall/tram{
-	dir = 4;
-	pixel_x = 32
-	},
-/turf/open/openspace,
-/area/station/hallway/primary/tram/center)
 "may" = (
 /turf/open/floor/plating,
 /area/station/hallway/secondary/exit/departure_lounge)
@@ -38451,6 +38440,16 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/engine,
 /area/station/engineering/supermatter/room)
+"nKq" = (
+/obj/structure/industrial_lift/tram{
+	icon_state = "plating"
+	},
+/obj/structure/tramwall/titanium,
+/obj/machinery/power/shuttle_engine/propulsion/tram{
+	dir = 4
+	},
+/turf/open/openspace,
+/area/station/hallway/primary/tram/center)
 "nKu" = (
 /obj/machinery/telecomms/server/presets/common,
 /turf/open/floor/iron/dark/telecomms,
@@ -41652,17 +41651,6 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/commons/storage/tools)
-"oVt" = (
-/obj/structure/industrial_lift/tram{
-	icon_state = "plating"
-	},
-/obj/structure/tramwall/titanium,
-/obj/structure/shuttle/engine/propulsion/in_wall/tram{
-	dir = 8;
-	pixel_x = -32
-	},
-/turf/open/openspace,
-/area/station/hallway/primary/tram/center)
 "oVy" = (
 /obj/effect/turf_decal/trimline/neutral/filled/corner{
 	dir = 8
@@ -42861,6 +42849,19 @@
 /obj/structure/lattice,
 /turf/open/space/basic,
 /area/space/nearstation)
+"pry" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/trimline/yellow/warning{
+	dir = 8
+	},
+/obj/machinery/power/shuttle_engine/propulsion{
+	desc = "A standard reliable bluespace engine used by many forms of shuttles. This one has the bluespace core removed.";
+	name = "inactive propulsion engine"
+	},
+/obj/effect/decal/cleanable/oil,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/iron,
+/area/station/maintenance/port/central)
 "prG" = (
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 1
@@ -46621,6 +46622,16 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/science/robotics/lab)
+"qFc" = (
+/obj/structure/industrial_lift/tram{
+	icon_state = "plating"
+	},
+/obj/structure/tramwall/titanium,
+/obj/machinery/power/shuttle_engine/propulsion/tram{
+	dir = 8
+	},
+/turf/open/openspace,
+/area/station/hallway/primary/tram/center)
 "qFi" = (
 /obj/effect/turf_decal/trimline/purple/filled/line{
 	dir = 4
@@ -63680,19 +63691,6 @@
 	},
 /turf/open/floor/iron,
 /area/station/security/checkpoint/engineering)
-"wII" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/turf_decal/trimline/yellow/warning{
-	dir = 8
-	},
-/obj/structure/shuttle/engine/propulsion{
-	desc = "A standard reliable bluespace engine used by many forms of shuttles. This one has the bluespace core removed.";
-	name = "inactive propulsion engine"
-	},
-/obj/effect/decal/cleanable/oil,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/turf/open/floor/iron,
-/area/station/maintenance/port/central)
 "wIP" = (
 /obj/structure/lattice/catwalk,
 /turf/open/space/openspace,
@@ -89290,7 +89288,7 @@ orQ
 orQ
 orQ
 iDs
-wII
+pry
 oOF
 pZW
 dqE
@@ -100847,7 +100845,7 @@ rbs
 dfP
 cWZ
 ocn
-fzm
+jTR
 ecJ
 cWZ
 pjC
@@ -164339,11 +164337,11 @@ izU
 jpv
 aEM
 lPP
-oVt
+qFc
 xXi
 rgS
 spf
-oVt
+qFc
 gCX
 eOi
 agt
@@ -166909,11 +166907,11 @@ izU
 vtp
 dUC
 swU
-mas
+nKq
 xXi
 iYk
 spf
-mas
+nKq
 tqy
 ebF
 vsR
