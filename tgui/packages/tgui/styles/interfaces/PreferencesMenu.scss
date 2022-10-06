@@ -265,15 +265,29 @@ $department_map: (
       display: none;
     }
     &__selected {
-      background-color: #41791c;
-      border-color: #41791c;
+      background-color: rgba(65, 121, 28, 0.33);
+      border-color: rgba(65, 121, 28, 0.33);
       border-radius: 3px;
-      border-style: solid;
+      border-style: transparent;
       border-width: 6px 6px 0px 6px;
     }
+    &__selected &__entry {
+      background-color: rgba(94, 94, 94, 0.33);
+      border-color: rgba(94, 94, 94, 0.33);
+      border-radius: 3px;
+      border-style: transparent;
+      border-width: 6px 6px 0px 6px;
+    }
+    &__entry .Section__title {
+      border-bottom: 0.1666666667em solid rgba(170, 170, 170, 0.36); // Do not ask how this works.
+    }
+    &__entry &__selected {
+      background-color: rgba(65, 121, 28, 0.33);
+      border-color: rgba(65, 121, 28, 0.33);
+    }
     &__selectedChild {
-      background-color: colors.$label;
-      border-color: colors.$label;
+      background-color: rgba(126, 144, 167, 0.33);
+      border-color: rgba(126, 144, 167, 0.33);
     }
     &__pointer {
       cursor: pointer;

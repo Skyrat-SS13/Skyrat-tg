@@ -6,8 +6,8 @@
 @use 'sass:color';
 @use 'sass:meta';
 
-$background: #4a5255;
-$primary: #8d9fa1;
+$background: #778084;
+$primary: #99a2a6;
 
 @use '../../colors.scss' with (
    $primary: $primary,
@@ -16,7 +16,7 @@ $primary: #8d9fa1;
  );
 @use '../../base.scss' with (
    $color-bg: color.scale($primary, $lightness: -40%),
-   $color-bg-grad-spread: 6%,
+   $color-bg-grad-spread: 12%,
  );
 
 .theme-passportmetal {

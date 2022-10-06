@@ -18,10 +18,11 @@ const BackgroundEntry = (props) => {
   return (
     <Stack
       vertical
-      className={
+      class={
         background.selected ? '' : 'PreferencesMenu__Backgrounds__contents'
       }>
       <Stack.Item>{background.description.replace(/< ?br ?\/?>/gi)}</Stack.Item>
+      <br />
       <Stack.Item>
         <b>Economic Power:</b> {background.economic_power}
       </Stack.Item>
@@ -138,11 +139,10 @@ const CategoryEntry = (props, context) => {
           'Section ' + val.valid ? '' : 'PreferencesMenu__Backgrounds__invalid'
         }>
         <div
-          class="Section__title"
-          className={
+          class={
             val.valid && !(val.selected === 1)
-              ? 'PreferencesMenu__Backgrounds__pointer'
-              : ''
+              ? 'Section__title PreferencesMenu__Backgrounds__pointer'
+              : 'Section__title'
           }
           onClick={() =>
             tryAct(
@@ -158,7 +158,7 @@ const CategoryEntry = (props, context) => {
             {val.name}
           </span>
           {val.sub_background_amount > 0 ? (
-            <span className="PreferencesMenu__Backgrounds__subAmount">
+            <span class="PreferencesMenu__Backgrounds__subAmount">
               {'+' + val.sub_background_amount}
             </span>
           ) : (
@@ -167,7 +167,7 @@ const CategoryEntry = (props, context) => {
         </div>
         <div class="Section__rest">
           <div class="Section__content">
-            <BackgroundEntry background={val} />
+            {val.selected === 1 ? <BackgroundEntry background={val} /> : ''}
             <Stack fill>
               {val.features.map((val2) => (
                 <Stack.Item key={val2}>
@@ -232,7 +232,7 @@ export const BackgroundsPage = (props, context) => {
       <Stack.Item minWidth="33%">
         <TooltipSection
           title="Social Backgrounds"
-          hoverText="Thses are typically low impact.">
+          hoverText="These are typically low impact.">
           <Stack vertical>
             {data.social_backgrounds.map((val) =>
               val.selected ? (

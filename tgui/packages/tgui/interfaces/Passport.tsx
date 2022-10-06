@@ -44,7 +44,10 @@ export const Passport = (props, context) => {
             src={'data:image/png;base64,' + data.headshot_data}
             height={128}
             width={128}
-            style={{ '-ms-interpolation-mode': 'nearest-neighbor' }}
+            style={{
+              '-ms-interpolation-mode': 'nearest-neighbor',
+              'background-color': 'black',
+            }}
           />
         </p>
         <Table>
