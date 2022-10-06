@@ -3,7 +3,7 @@
 	description = "Typically governed by SolFed or the NRI, humankind space is primarily populated by humans and synths with a wide variety of planets. \
 	Of course, there are many stations and ships that exist in this area, and you'd be hard pressed to find a planet without at least a handful of various ships and stations in orbit."
 	features = list(/datum/background_feature/average)
-	groups = CULTURE_GROUP_HUMAN
+	groups = BACKGROUNDS_GROUP_HUMAN
 
 /datum/background_info/origin/human/solfed
 	name = "Sol Federation"

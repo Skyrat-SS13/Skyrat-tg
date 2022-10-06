@@ -22,9 +22,9 @@
 	icon_state = "coin_tails"
 	icon_path = 'icons/obj/economy.dmi'
 
-/datum/background_feature/undocumented
-	name = "Undocumented"
-	description = "You start with little money, but your paychecks are decent. Unfortunately, the HoP has to sneak your money in."
+/datum/background_feature/paid_by_hand
+	name = "Paid by Hand"
+	description = "Unfortunately, the HoP has to bring your money in due to your circumstances."
 	icon_state = "coin_salad"
 	icon_path = 'icons/obj/economy.dmi'
 

@@ -2,7 +2,7 @@
 	name = "SolFed-Subsidized Faction"
 	description = "Your faction was subsidized by SolFed to expand into Sector 13."
 	features = list(/datum/background_feature/average)
-	groups = CULTURE_GROUP_HUMAN
+	groups = BACKGROUNDS_GROUP_HUMAN
 	passport = /obj/item/passport/sol/generic
 
 /datum/background_info/social_background/freetrade
@@ -15,7 +15,7 @@
 	selling a great many restricted items and supplying all manner of goods indiscriminately."
 	economic_power = 1.3
 	features = list(/datum/background_feature/good)
-	groups = CULTURE_GROUP_HUMAN
+	groups = BACKGROUNDS_GROUP_HUMAN
 	passport = /obj/item/passport/ftu
 
 /datum/background_info/social_background/expeditionary
@@ -29,7 +29,7 @@
 	Any SolFed citizen of age (18 and older) with no outstanding SolFed-wide warrants can sign up for a 2-year contract. \
 	Officer candidates are required to have at least a bachelor's degree in a relevant field (astrogation, engineering, xenoarcheology, etc)."
 	features = list(/datum/background_feature/average)
-	groups = CULTURE_GROUP_HUMAN
+	groups = BACKGROUNDS_GROUP_HUMAN
 	passport = /obj/item/passport/sol/generic
 
 /datum/background_info/social_background/xynergy
@@ -40,7 +40,7 @@
 	training the giant armoured serpentids."
 	economic_power = 1.1
 	features = list(/datum/background_feature/average)
-	groups = CULTURE_GROUP_HUMAN
+	groups = BACKGROUNDS_GROUP_HUMAN
 	passport = /obj/item/passport/sol/generic
 
 /datum/background_info/social_background/armadyne
@@ -52,5 +52,5 @@
 	reliability of its equipment as well as its general affordability."
 	economic_power = 1.2
 	features = list(/datum/background_feature/good)
-	groups = CULTURE_GROUP_HUMAN
+	groups = BACKGROUNDS_GROUP_HUMAN
 	passport = /obj/item/passport/sol/generic

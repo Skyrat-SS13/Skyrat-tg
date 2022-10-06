@@ -2,17 +2,20 @@
 	name = "Station Squatter"
 	description = "You are not a Nanotrasen employee. You pretend to work here after tricking the Head of Personnel to give you an ID, \
 	so you can stay and eat their food rent-free."
-	features = list(/datum/background_feature/poor)
+	features = list(
+		/datum/background_feature/penniless,
+		/datum/background_feature/off_manifest,
+		)
 	economic_power = 0
-	on_manifest = FALSE
 	fake_name = "Nanotrasen Intern"
+	veteran = TRUE
 
 /datum/background_info/employment/lopland
 	name = "Lopland Contractor"
 	description = "Even though you work at a security firm, you are still given clearance to work on other types of work at Nanotrasen. \
 	How weird. It must be a tax thing."
 	features = list(/datum/background_feature/average)
-	groups = CULTURE_GROUP_SPACE_FARING
+	groups = BACKGROUNDS_GROUP_FARING
 
 /datum/background_info/employment/veymed
 	name = "Vey-Med Contractor"
