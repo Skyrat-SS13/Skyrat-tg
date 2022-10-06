@@ -1,4 +1,8 @@
-//CONTROL COMPUTER
+/**
+ * The control computer
+ *
+ * Responsible for cannon firing protocols.
+ */
 
 /obj/machinery/computer/bsa_control
 	name = "bluespace artillery control"
@@ -6,33 +10,16 @@
 	circuit = /obj/item/circuitboard/computer/bsa_control
 	icon = 'modular_skyrat/modules/fixing_missing_icons/particle_accelerator.dmi'
 	icon_state = "control_boxp"
-	var/obj/machinery/bsa_powercore/core //The moveable power core link
-	var/obj/machinery/bsa/full/cannon
+	/// A weakref to our cannon
+	var/datum/weakref/connected_cannon
+	/// The current notice
 	var/notice
+	/// Our target... WHY NOT WEEKREFF
 	var/target
 	var/area_aim = FALSE //should also show areas for targeting
 
 	connectable = FALSE //connecting_computer change: since icon_state is not a typical console, it cannot be connectable.
 
-/obj/machinery/computer/bsa_control/multitool_act(mob/living/user, obj/item/I)
-	if(!multitool_check_buffer(user, I))
-		return
-	var/obj/item/multitool/M = I
-	if(M.buffer)
-		if(istype(M.buffer, /obj/machinery/bsa_powercore))
-			if(!cannon)
-				to_chat(user, span_warning("There is no cannon linked to this control unit!"))
-				return FALSE
-			if(core)
-				to_chat(user, span_warning("There is already a core linked to this control unit!"))
-				return FALSE
-			core = M.buffer
-			core.control_unit = src
-			M.buffer = null
-			to_chat(user, span_notice("You link [src] with [core]."))
-	else
-		to_chat(user, span_warning("[I]'s data buffer is empty!"))
-	return TRUE
 
 /obj/machinery/computer/bsa_control/ui_state(mob/user)
 	return GLOB.physical_state
@@ -41,15 +28,20 @@
 	. = ..()
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "BluespaceArtillery", name)
+		ui = new(user, src, "BluespaceArtillerySkyrat", name)
 		ui.open()
 
 /obj/machinery/computer/bsa_control/ui_data()
 	var/list/data = list()
-	data["ready"] = cannon ? cannon.ready : FALSE
+	var/obj/machinery/bsa/full/cannon = connected_cannon?.resolve()
 	data["connected"] = cannon
 	data["notice"] = notice
 	data["unlocked"] = GLOB.bsa_unlock
+	data["powernet_power"] = cannon?.get_available_powercap()
+	data["status"] = cannon?.system_state
+	data["capacitor_charge"] = cannon?.capacitor_power
+	data["target_capacitor_charge"] = cannon?.target_power
+	data["max_capacitor_charge"] = cannon?.max_charge
 	if(target)
 		data["target"] = get_target_name()
 	return data
@@ -61,7 +53,7 @@
 
 	switch(action)
 		if("build")
-			cannon = deploy()
+			deploy()
 			. = TRUE
 		if("fire")
 			fire(usr)
@@ -69,15 +61,33 @@
 		if("recalibrate")
 			calibrate(usr)
 			. = TRUE
+		if("charge")
+			charge()
+		if("capacitor_target_change")
+			change_capacitor_target(params["capacitor_target"])
 	update_appearance()
+
+/obj/machinery/computer/bsa_control/proc/change_capacitor_target(new_target)
+	var/obj/machinery/bsa/full/cannon = connected_cannon?.resolve()
+	if(!cannon)
+		return
+	cannon.target_power = new_target
+
+/obj/machinery/computer/bsa_control/proc/charge()
+	var/obj/machinery/bsa/full/cannon = connected_cannon?.resolve()
+	if(!cannon)
+		return
+	if(cannon.system_state != BSA_SYSTEM_READY)
+		return
+	cannon.system_state = BSA_SYSTEM_CHARGE_CAPACITORS
 
 /obj/machinery/computer/bsa_control/proc/calibrate(mob/user)
 	if(!GLOB.bsa_unlock)
 		return
 	var/list/gps_locators = list()
-	for(var/datum/component/gps/G in GLOB.GPS_list) //nulls on the list somehow
-		if(G.tracking)
-			gps_locators[G.gpstag] = G
+	for(var/datum/component/gps/iterating_gps in GLOB.GPS_list) //nulls on the list somehow
+		if(iterating_gps.tracking)
+			gps_locators[iterating_gps.gpstag] = iterating_gps
 
 	var/list/options = gps_locators
 	if(area_aim)
@@ -93,19 +103,20 @@
 	if(istype(target, /area))
 		return get_area_name(target, TRUE)
 	else if(istype(target, /datum/component/gps))
-		var/datum/component/gps/G = target
-		return G.gpstag
+		var/datum/component/gps/gps = target
+		return gps.gpstag
 
 /obj/machinery/computer/bsa_control/proc/get_impact_turf()
 	if(istype(target, /area))
 		return pick(get_area_turfs(target))
 	else if(istype(target, /datum/component/gps))
-		var/datum/component/gps/G = target
-		return get_turf(G.parent)
+		var/datum/component/gps/gps = target
+		return get_turf(gps.parent)
 
 /obj/machinery/computer/bsa_control/proc/fire(mob/user)
-	if(!core)
-		notice = "Core not detected!"
+	var/obj/machinery/bsa/full/cannon = connected_cannon?.resolve()
+	if(!cannon)
+		notice = "System error"
 		return
 	if((cannon.machine_stat & BROKEN))
 		notice = "Cannon integrity failure!"
@@ -115,11 +126,17 @@
 		return
 	notice = cannon.pre_fire(user, get_impact_turf())
 
+/**
+ * Deploy
+ *
+ * Deploys the cannon and deletes the old parts.
+ */
 /obj/machinery/computer/bsa_control/proc/deploy(force=FALSE)
 	var/obj/machinery/bsa/full/prebuilt = locate() in range(7) //In case of adminspawn
 	if(prebuilt)
-		prebuilt.control_unit = src
-		return prebuilt
+		prebuilt.control_computer = src
+		connected_cannon = WEAKREF(prebuilt)
+		return
 
 	var/obj/machinery/bsa/middle/centerpiece = locate() in range(7)
 	if(!centerpiece)
@@ -129,19 +146,16 @@
 	if(notice)
 		return null
 	//Totally nanite construction system not an immersion breaking spawning
-	var/datum/effect_system/fluid_spread/smoke/s = new
-	s.set_up(4, location = get_turf(centerpiece))
-	s.start()
-	var/obj/machinery/bsa/full/cannon = new(get_turf(centerpiece),centerpiece.get_cannon_direction())
-	cannon.control_unit = src
-	qdel(centerpiece.front)
-	qdel(centerpiece.back)
+	var/datum/effect_system/fluid_spread/smoke/smoke = new
+	smoke.set_up(4, location = get_turf(centerpiece))
+	smoke.start()
+	var/obj/machinery/bsa/full/cannon = new(get_turf(centerpiece), centerpiece.get_cannon_direction())
+	cannon.control_computer = src
+	if(centerpiece.front_piece)
+		qdel(centerpiece.front_piece.resolve())
+	if(centerpiece.back_piece)
+		qdel(centerpiece.back_piece.resolve())
 	qdel(centerpiece)
-	return cannon
+	connected_cannon = WEAKREF(cannon)
 
-/obj/machinery/computer/bsa_control/Destroy()
-	if(cannon)
-		cannon.control_unit = null
-		cannon = null
-	core = null
-	. = ..()
+

@@ -737,7 +737,6 @@
 	contains = list(/obj/item/circuitboard/machine/bsa/front,
 					/obj/item/circuitboard/machine/bsa/middle,
 					/obj/item/circuitboard/machine/bsa/back,
-					/obj/item/circuitboard/machine/bsa/powercore, //SKYRAT EDIT ADDITION
 					/obj/item/circuitboard/computer/bsa_control
 					)
 	crate_name= "bluespace artillery parts crate"
