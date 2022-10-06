@@ -449,7 +449,7 @@
 	item = /obj/item/storage/box/syndie_kit/loadout/lasermanbundle
 	cost = 20
 	progression_minimum = 25 MINUTES
-
+	
 // Surplus crates
 /datum/uplink_item/bundles_tc/surplus_crate
 	name = "Surplus Crate"

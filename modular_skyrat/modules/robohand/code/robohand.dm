@@ -9,6 +9,9 @@
 	name = "Malorian Arms 3516"
 	desc = "The Malorian Arms 3516 is a 14mm heavy pistol, sporting a titanium frame and unique wooden grip. A custom Dyna-porting and \
 	direct integral cyber-interlink means only someone with a cyberarm and smartgun link can take full advantage of the pistol's features."
+	special_desc = "Anyone wielding one of these is bound for a glorious early death. The letter 'V' is stamped on the bottom of the grip."
+	special_desc_requirement = EXAMINE_CHECK_SYNDICATE
+	special_desc_affiliation = "memories of Johnny Robohand"
 	icon = 'modular_skyrat/modules/robohand/icons/3516.dmi'
 	icon_state = "3516"
 	w_class = WEIGHT_CLASS_NORMAL
@@ -23,7 +26,8 @@
 	rack_sound = 'modular_skyrat/modules/robohand/sound/slide.ogg'
 	fire_sound_volume = 100
 	bolt_wording = "fuckin' slide"
-	reload_time = 0 //FAST AS FUCK BOIS!
+	reload_time = 0 //ROLL THE BONES I'M CHIPPIN' IN
+	company_flag = COMPANY_MALORIAN
 	var/unrestricted = FALSE
 
 /obj/item/gun/ballistic/automatic/pistol/robohand/unrestricted
@@ -86,7 +90,7 @@
 	if(display_message)
 		to_chat(user, span_notice("You pull the [magazine_wording] out of \the [src]."))
 	update_appearance()
-	animate(src, transform = turn(matrix(), 120), time = 2, loop = 1) //Le johnny robohand again
+	animate(src, transform = turn(matrix(), 120), time = 2, loop = 1) //flippin'
 	animate(transform = turn(matrix(), 240), time = 2)
 	animate(transform = null, time = 2)
 
@@ -94,6 +98,7 @@
 
 /obj/item/ammo_box/magazine/m14mm
 	name = "pistol magazine (14mm)"
+	desc = "A ten-round magazine holding proprietary 14mm rounds, capable of piercing cover and enemy combatants."
 	icon = 'modular_skyrat/modules/robohand/icons/3516_mag.dmi'
 	icon_state = "14mm"
 	base_icon_state = "14mm"
@@ -108,10 +113,10 @@
 	caliber = CALIBRE_14MM
 	projectile_type = /obj/projectile/bullet/c14mm
 
-/obj/projectile/bullet/c14mm
+/obj/projectile/bullet/c14mm //vanilla .357 but pierces everything except mobs. groovy
 	name = "14mm bullet"
-	damage = 60
-	embedding = list(embed_chance = 90, fall_chance = 3, jostle_chance = 4, ignore_throwspeed_threshold = TRUE, pain_stam_pct = 0.4, pain_mult = 5, jostle_pain_mult = 9, rip_time = 10)
-	dismemberment = 50
+	damage = 50
+	wound_bonus = -30
 	pierces = 1
-	projectile_piercing = PASSCLOSEDTURF|PASSGRILLE|PASSGLASS
+	projectile_piercing = ~(PASSMOB)
+	range = 20 //this thing penetrates all walls, and thus without the range being neutered it will destroy 3 windows and kill someone in dorms if you miss
