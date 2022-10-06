@@ -60,10 +60,6 @@
 		return
 	COOLDOWN_START(src, imbue_cooldown, 3 SECONDS)
 	for(var/create_reagent in imbued_reagent)
-		var/datum/reagent/locate_reagent = cloth_wearer.reagents.has_reagent(create_reagent)
-		if(locate_reagent)
-			if(locate_reagent.volume >= (locate_reagent.overdose_threshold * 0.5))
-				continue
 		applying_container.reagents.add_reagent(create_reagent, 0.5)
 		applying_container.reagents.trans_to(target = cloth_wearer, amount = 0.5, methods = INJECT)
 
