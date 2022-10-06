@@ -31,6 +31,9 @@
 		if(!client)
 			to_chat(usr, span_warning("No client found!"))
 			return
+		if(!ishuman(src))
+			to_chat(usr, span_warning("Mob is not human!"))
+			return
 		var/notice = tgui_alert(usr, "Are you sure you want to load the clients current prefs onto their mob?", "Load Preferences", list("Yes", "No"))
 		if(notice != "Yes")
 			return
