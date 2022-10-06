@@ -22,14 +22,14 @@
 	icon_state = "coin_tails"
 	icon_path = 'icons/obj/economy.dmi'
 
-/datum/background_feature/paid_by_hand
-	name = "Paid by Hand"
-	description = "Unfortunately, the HoP has to bring your money in due to your circumstances."
-	icon_state = "coin_salad"
-	icon_path = 'icons/obj/economy.dmi'
-
 /datum/background_feature/lavaland
 	name = "Lavaland \"Native\""
 	description = "You do not need money, and you instead have the blessing of the necropolis."
 	icon_state = "talisman"
 	icon_path = 'icons/obj/lavaland/artefacts.dmi'
+
+/datum/background_feature/paid_by_hand
+	name = "Paid by Hand"
+	description = "Unfortunately, the HoP has to bring your money in due to your circumstances."
+	icon_state = "coin_salad"
+	icon_path = 'icons/obj/economy.dmi'
