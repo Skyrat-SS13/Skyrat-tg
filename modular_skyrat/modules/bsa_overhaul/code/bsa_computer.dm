@@ -38,6 +38,7 @@
 	data["notice"] = notice
 	data["unlocked"] = GLOB.bsa_unlock
 	data["powernet_power"] = cannon?.get_available_powercap()
+	data["power_suck_cap"] = cannon?.power_suck_cap
 	data["status"] = cannon?.system_state
 	data["capacitor_charge"] = cannon?.capacitor_power
 	data["target_capacitor_charge"] = cannon?.target_power
@@ -77,7 +78,7 @@
 	var/obj/machinery/bsa/full/cannon = connected_cannon?.resolve()
 	if(!cannon)
 		return
-	if(cannon.system_state != BSA_SYSTEM_READY)
+	if(cannon.system_state != BSA_SYSTEM_READY && cannon.system_state != BSA_SYSTEM_LOW_POWER)
 		return
 	cannon.system_state = BSA_SYSTEM_CHARGE_CAPACITORS
 

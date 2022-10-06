@@ -219,8 +219,14 @@
 	if(!our_area) //wtf
 		return
 	var/obj/machinery/power/apc/our_apc = our_area.apc
+	if(!our_apc)
+		return
 	var/obj/machinery/power/terminal/our_terminal = our_apc.terminal
+	if(!our_terminal)
+		return
 	var/datum/powernet/our_powernet = our_terminal.powernet
+	if(!our_powernet)
+		return
 
 	var/charge_to_pull = power_suck_cap
 
@@ -243,10 +249,16 @@
 	if(!our_area) //wtf
 		return
 	var/obj/machinery/power/apc/our_apc = our_area.apc
+	if(!our_apc)
+		return
 	var/obj/machinery/power/terminal/our_terminal = our_apc.terminal
+	if(!our_terminal)
+		return
 	var/datum/powernet/our_powernet = our_terminal.powernet
+	if(!our_powernet)
+		return
 
-	return power_suck_cap > our_powernet.avail ? power_suck_cap : our_powernet.avail
+	return our_powernet.avail
 
 /obj/machinery/bsa/full/process()
 	if(system_state == BSA_SYSTEM_CHARGE_CAPACITORS)
