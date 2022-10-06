@@ -48,6 +48,7 @@
 		BODY_ZONE_L_LEG = /obj/item/bodypart/l_leg/mutant/insect,
 		BODY_ZONE_R_LEG = /obj/item/bodypart/r_leg/mutant/insect,
 	)
+	eyes_icon = 'modular_skyrat/modules/organs/icons/insect_eyes.dmi'
 
 /datum/species/insect/get_species_description()
 	return placeholder_description

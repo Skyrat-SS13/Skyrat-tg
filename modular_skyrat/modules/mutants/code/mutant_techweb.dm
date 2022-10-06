@@ -40,5 +40,5 @@
 	desc = "The MRNA Recombinator is one of Nanotrasens most advanced technologies and allows the exact recombination of virus RNA."
 	id = "rna_recombinator"
 	build_path = /obj/item/circuitboard/machine/rna_recombinator
-	category = list(RND_CATEGORY_RESEARCH_MACHINERY)
+	category = list(RND_CATEGORY_MACHINE + RND_SUBCATEGORY_MACHINE_RESEARCH)
 	departmental_flags = DEPARTMENT_BITFLAG_ENGINEERING | DEPARTMENT_BITFLAG_SCIENCE | DEPARTMENT_BITFLAG_MEDICAL
