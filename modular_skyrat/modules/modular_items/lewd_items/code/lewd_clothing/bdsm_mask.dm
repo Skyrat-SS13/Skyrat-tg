@@ -302,7 +302,7 @@
 // I just wanted to add 2th color variation. Because.
 /obj/item/reagent_containers/cup/lewd_filter/AltClick(mob/user)
 	// Catch first AltClick and open reskin menu
-	if(unique_reskin && !current_skin && user.canUseTopic(src, BE_CLOSE, NO_DEXTERITY))
+	if(unique_reskin && !current_skin && user.canUseTopic(src, be_close = TRUE, no_dexterity = TRUE))
 		reskin_obj(user)
 		return
 	// After reskin all clicks go normal, but we can't change the flow rate if mask on and equipped

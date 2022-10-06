@@ -200,7 +200,7 @@
 					// Attach the part!
 					var/obj/item/bodypart/newBP = H.newBodyPart(target_zone, FALSE)
 					H.visible_message("The meat sprouts digits and becomes [H]'s new [newBP.name]!", span_notice("The meat sprouts digits and becomes your new [newBP.name]!"))
-					newBP.attach_limb(H)
+					newBP.try_attach_limb(H)
 					qdel(I)
 					playsound(get_turf(H), 'sound/effects/meatslap.ogg', 50, 1)
 

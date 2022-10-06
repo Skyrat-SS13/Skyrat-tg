@@ -38,7 +38,7 @@
 
 	user.visible_message(span_notice("[H] presses a button on [src], and you hear a short mechanical noise."), span_notice("You feel a sharp sting as [src] plunges into your body."))
 
-	if(!storedbodypart.attach_limb(H))
+	if(!storedbodypart.try_attach_limb(H))
 		to_chat(H, span_warning("The [src] fails to attach [storedbodypart]!"))
 		return
 

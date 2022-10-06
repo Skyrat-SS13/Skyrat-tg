@@ -29,6 +29,16 @@ GLOBAL_LIST_INIT(skyrat_plasteel_recipes, list ( \
 	. = ..()
 	. += GLOB.skyrat_plasteel_recipes
 
+// Rods
+
+GLOBAL_LIST_INIT(skyrat_rod_recipes, list ( \
+	new/datum/stack_recipe("guard rail", /obj/structure/deployable_barricade/guardrail, 2, time = 1 SECONDS, on_solid_ground = TRUE),
+))
+
+/obj/item/stack/rods/get_main_recipes()
+	. = ..()
+	. += GLOB.skyrat_rod_recipes
+
 // Wood
 
 GLOBAL_LIST_INIT(skyrat_wood_recipes, list ( \
