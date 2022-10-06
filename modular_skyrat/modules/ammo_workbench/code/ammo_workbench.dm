@@ -335,7 +335,7 @@
 	desc = "A machine, somewhat akin to a lathe, made specifically for manufacturing ammunition. It has a slot for magazines."
 	id = "ammo_workbench"
 	build_path = /obj/item/circuitboard/machine/ammo_workbench
-	category = list(RND_CATEGORY_WEAPONS_MACHINERY)
+	category = list(RND_CATEGORY_MACHINE + RND_SUBCATEGORY_MACHINE_FAB)
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 
 
