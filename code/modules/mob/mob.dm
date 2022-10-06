@@ -93,7 +93,7 @@
 	initialize_actionspeed()
 	update_movespeed(TRUE)
 	become_hearing_sensitive()
-	log_mob_tag("\[[tag]\] CREATED: [key_name(src)]")
+	log_mob_tag("CREATED: [key_name(src)] \[[type]\]")
 
 /**
  * Generate the tag for this mob
@@ -485,6 +485,7 @@
  * reset_perspective(thing) set the eye to the thing (if it's equal to current default reset to mob perspective)
  */
 /mob/proc/reset_perspective(atom/new_eye)
+	SHOULD_CALL_PARENT(TRUE)
 	if(!client)
 		return
 
@@ -493,29 +494,29 @@
 			//Set the new eye unless it's us
 			if(new_eye != src)
 				client.perspective = EYE_PERSPECTIVE
-				client.eye = new_eye
+				client.set_eye(new_eye)
 			else
-				client.eye = client.mob
+				client.set_eye(client.mob)
 				client.perspective = MOB_PERSPECTIVE
 
 		else if(isturf(new_eye))
 			//Set to the turf unless it's our current turf
 			if(new_eye != loc)
 				client.perspective = EYE_PERSPECTIVE
-				client.eye = new_eye
+				client.set_eye(new_eye)
 			else
-				client.eye = client.mob
+				client.set_eye(client.mob)
 				client.perspective = MOB_PERSPECTIVE
 		else
 			return TRUE //no setting eye to stupid things like areas or whatever
 	else
 		//Reset to common defaults: mob if on turf, otherwise current loc
 		if(isturf(loc))
-			client.eye = client.mob
+			client.set_eye(client.mob)
 			client.perspective = MOB_PERSPECTIVE
 		else
 			client.perspective = EYE_PERSPECTIVE
-			client.eye = loc
+			client.set_eye(loc)
 	/// Signal sent after the eye has been successfully updated, with the client existing.
 	SEND_SIGNAL(src, COMSIG_MOB_RESET_PERSPECTIVE)
 	return TRUE
@@ -1085,7 +1086,7 @@
 				if(obj.target && obj.target.current && obj.target.current.real_name == name)
 					obj.update_explanation_text()
 
-	log_mob_tag("\[[tag]\] RENAMED: [key_name(src)]")
+	log_mob_tag("RENAMED: [key_name(src)]")
 
 	return TRUE
 
@@ -1133,15 +1134,16 @@
 
 ///Update the lighting plane and sight of this mob (sends COMSIG_MOB_UPDATE_SIGHT)
 /mob/proc/update_sight()
+	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_MOB_UPDATE_SIGHT)
 	sync_lighting_plane_alpha()
 
 ///Set the lighting plane hud alpha to the mobs lighting_alpha var
 /mob/proc/sync_lighting_plane_alpha()
-	if(hud_used)
-		var/atom/movable/screen/plane_master/lighting/L = hud_used.plane_masters["[LIGHTING_PLANE]"]
-		if (L)
-			L.alpha = lighting_alpha
+	if(!hud_used)
+		return
+	for(var/atom/movable/screen/plane_master/rendering_plate/lighting/light_plane in hud_used.get_true_plane_masters(RENDER_PLANE_LIGHTING))
+		light_plane.set_alpha(lighting_alpha)
 
 ///Update the mouse pointer of the attached client in this mob
 /mob/proc/update_mouse_pointer()
@@ -1252,6 +1254,7 @@
 	VV_DROPDOWN_OPTION(VV_HK_DIRECT_CONTROL, "Assume Direct Control")
 	VV_DROPDOWN_OPTION(VV_HK_GIVE_DIRECT_CONTROL, "Give Direct Control")
 	VV_DROPDOWN_OPTION(VV_HK_OFFER_GHOSTS, "Offer Control to Ghosts")
+	VV_DROPDOWN_OPTION(VV_HK_VIEW_PLANES, "View/Edit Planes")
 	VV_DROPDOWN_OPTION(VV_HK_SEND_CRYO, "Send to Cryogenic Storage") //SKYRAT EDIT ADDITION - CRYO SEND
 
 /mob/vv_do_topic(list/href_list)
@@ -1304,6 +1307,11 @@
 		if(!check_rights(NONE))
 			return
 		offer_control(src)
+	if(href_list[VV_HK_VIEW_PLANES])
+		if(!check_rights(R_DEBUG))
+			return
+		usr.client.edit_plane_masters(src)
+
 	//SKYRAT EDIT ADDITION BEGIN - CRYO SEND
 	if(href_list[VV_HK_SEND_CRYO])
 		if(!check_rights(R_SPAWN))
@@ -1318,10 +1326,9 @@
 		var/msg = span_notice("[key_name_admin(usr)] has put [key_name(src)] into a cryopod from [ADMIN_VERBOSEJMP(src)].")
 		message_admins(msg)
 		admin_ticket_log(src, msg)
-		
+
 		send_notice = send_notice == "Yes"
 		send_to_cryo(send_notice)
-
 	//SKYRAT EDIT ADDITION END
 
 /**

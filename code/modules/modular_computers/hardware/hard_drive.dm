@@ -185,6 +185,7 @@
 	. = ..()
 
 	store_file(new /datum/computer_file/program/messenger)
+	store_file(new /datum/computer_file/program/nt_pay)
 	store_file(new /datum/computer_file/program/notepad)
 	store_file(new /datum/computer_file/program/crew_manifest) // SKYRAT EDIT ADD
 
