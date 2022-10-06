@@ -26,6 +26,10 @@
 	economic_power = 0.6
 	features = list(/datum/background_feature/poor)
 
+/datum/background_info/employment/nanotrasen/intern/New()
+	. = ..()
+	allowed_roles = get_non_command_jobs()
+
 /datum/background_info/employment/nanotrasen/immigrant
 	name = "Immigrant Nanotrasen Employee"
 	description = "While you could technically be called an expat, you are not from the right country. You also get paid somewhat less than your counterparts. Ouch."

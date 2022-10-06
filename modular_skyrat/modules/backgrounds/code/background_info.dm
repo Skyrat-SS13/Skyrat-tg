@@ -16,7 +16,7 @@
 	/// If the background should be veteran only or not.
 	var/veteran = FALSE
 	/// The roles allowed to be played as by this background. Uses job datums and ghost_role spawners. If null, it doesn't impose restrictions.
-	var/allowed_roles
+	var/list/allowed_roles
 
 /datum/background_info/proc/is_job_valid(datum/job/job)
 	if(!allowed_roles)
@@ -35,3 +35,12 @@
 		return TRUE
 
 	return FALSE
+
+/datum/background_info/proc/get_non_command_jobs()
+	RETURN_TYPE(/list)
+	var/list/roles = subtypesof(/datum/job)
+	for(var/datum/job/job in allowed_roles)
+		// This should be a reliable way to check if a job is command.
+		if(job.paycheck >= PAYCHECK_COMMAND)
+			roles -= job
+	return roles

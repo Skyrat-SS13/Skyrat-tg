@@ -10,6 +10,10 @@
 	fake_name = "Nanotrasen Intern"
 	veteran = TRUE
 
+/datum/background_info/employment/squatter/New()
+	. = ..()
+	allowed_roles = get_non_command_jobs()
+
 /datum/background_info/employment/lopland
 	name = "Lopland Contractor"
 	description = "Even though you work at a security firm, you are still given clearance to work on other types of work at Nanotrasen. \
