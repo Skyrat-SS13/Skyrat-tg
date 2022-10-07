@@ -12,6 +12,11 @@
 		/datum/background_feature/off_manifest,
 		)
 	fake_name = "Nanotrasen Intern"
+	false_if_in_roles = FALSE
+
+/datum/background_info/employment/undocumented_nanotrasen/New()
+	. = ..()
+	roles = get_non_command_jobs()
 
 // Nanotrasen cares not for your origin, unless you're in a special job:tm:
 /datum/background_info/employment/nanotrasen
@@ -25,6 +30,7 @@
 	description = "We pay in experience."
 	economic_power = 0.6
 	features = list(/datum/background_feature/poor)
+	false_if_in_roles = FALSE
 
 /datum/background_info/employment/nanotrasen/intern/New()
 	. = ..()

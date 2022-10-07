@@ -9,6 +9,7 @@
 	economic_power = 0
 	fake_name = "Nanotrasen Intern"
 	veteran = TRUE
+	false_if_in_roles = FALSE
 
 /datum/background_info/employment/squatter/New()
 	. = ..()
