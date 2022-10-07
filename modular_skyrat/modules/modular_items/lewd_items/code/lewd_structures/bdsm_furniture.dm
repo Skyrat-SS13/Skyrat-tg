@@ -1,4 +1,3 @@
-/*
 /obj/structure/bed/bdsm_bed
 	name = "bdsm bed"
 	desc = "A latex bed with D-rings on the sides. Looks comfortable."
@@ -288,4 +287,3 @@
 		return
 	else
 		return ..()
-*/
