@@ -106,7 +106,7 @@ GLOBAL_VAR_INIT(hhMysteryRoomNumber, rand(1, 999999))
 	//SKYRAT EDIT ADDITION - GHOST HOTEL UPDATE
 	var/chosen_room = "Nothing"
 	if(istype(src, /obj/item/hilbertshotel/ghostdojo)) //to don't add another one var
-		chosen_room = tgui_input_list(user, "Choose desired room:","Time to choose", hotel_maps)
+		chosen_room = tgui_input_list(user, "Choose desired room:", "Time to choose", hotel_maps)
 	//SKYRAT EDIT END
 	if(!storageTurf) //Blame subsystems for not allowing this to be in Initialize
 		if(!GLOB.hhStorageTurf)
