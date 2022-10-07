@@ -26,6 +26,7 @@
 /datum/quirk/item_quirk/brainproblems
 	name = "Brain Degeneration"
 	desc = "You have a lethal condition in your brain that is slowly destroying it. Better bring some mannitol!"
+	medical_record_text = "Patient has a lethal condition in their brain that is slowly causing brain death."
 
 // Override of Brain Tumor quirk for robotic/synthetic species with posibrains.
 // Does not appear in TGUI or the character preferences window.
