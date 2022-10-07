@@ -1541,6 +1541,7 @@
 			return
 		if(popup_input == "Forge/Reset")
 			if(!forged)
+				/*
 				var/input_name = tgui_input_text(user, "What name would you like to put on this card? Leave blank to randomise.", "Agent card name", registered_name ? registered_name : (ishuman(user) ? user.real_name : user.name), MAX_NAME_LEN)
 				input_name = sanitize_name(input_name, allow_numbers = TRUE)
 				if(!input_name)
@@ -1553,6 +1554,7 @@
 						input_name = "[pick(GLOB.first_names)] [pick(GLOB.last_names)]"
 
 				registered_name = input_name
+				*/ // SKYRAT EDIT REMOVAL - Backgrounds - No names.
 
 				var/change_trim = tgui_alert(user, "Adjust the appearance of your card's trim?", "Modify Trim", list("Yes", "No"))
 				if(change_trim == "Yes")
@@ -1579,11 +1581,13 @@
 				if(target_occupation)
 					assignment = target_occupation
 
+				/*
 				var/new_age = tgui_input_number(user, "Choose the ID's age", "Agent card age", AGE_MIN, AGE_MAX, AGE_MIN)
 				if(QDELETED(user) || QDELETED(src) || !user.canUseTopic(user, be_close = TRUE, no_dexterity = TRUE, no_tk = TRUE))
 					return
 				if(new_age)
 					registered_age = new_age
+				*/ // SKYRAT EDIT REMOVAL - Backgrounds - No ages.
 
 				if(tgui_alert(user, "Activate wallet ID spoofing, allowing this card to force itself to occupy the visible ID slot in wallets?", "Wallet ID Spoofing", list("Yes", "No")) == "Yes")
 					ADD_TRAIT(src, TRAIT_MAGNETIC_ID_CARD, CHAMELEON_ITEM_TRAIT)

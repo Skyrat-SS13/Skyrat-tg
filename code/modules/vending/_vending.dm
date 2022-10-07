@@ -1047,9 +1047,11 @@ GLOBAL_LIST_EMPTY(vending_products)
 		return
 	if(onstation)
 		var/obj/item/card/id/C
+		var/obj/item/passport/passport // SKYRAT EDIT ADDITION - Backgrounds
 		if(isliving(usr))
 			var/mob/living/L = usr
 			C = L.get_idcard(TRUE)
+			passport = L.get_passport()
 		if(!C)
 			say("No card found.")
 			flick(icon_deny,src)
@@ -1065,7 +1067,8 @@ GLOBAL_LIST_EMPTY(vending_products)
 			flick(icon_deny, src)
 			vend_ready = TRUE
 			return
-		else if(age_restrictions && R.age_restricted && (!C.registered_age || C.registered_age < AGE_MINOR))
+		//else if(age_restrictions && R.age_restricted && (!C.registered_age || C.registered_age < AGE_MINOR)) // ORIGINAL
+		else if(age_restrictions && R.age_restricted && (!passport.age || passport.age < AGE_MINOR)) // SKYRAT EDIT - Backgrounds
 			say("You are not of legal age to purchase [R.name].")
 			if(!(usr in GLOB.narcd_underages))
 				Radio.set_frequency(FREQ_SECURITY)

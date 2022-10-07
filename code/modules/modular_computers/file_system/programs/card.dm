@@ -170,6 +170,7 @@
 			return TRUE
 		// Change ID card assigned name.
 		if("PRG_edit")
+			/*
 			if(!computer || !authenticated_card || !target_id_card)
 				return TRUE
 
@@ -201,9 +202,11 @@
 			// Card wasn't assigned before and now it is, so update the icon accordingly.
 			if(!old_name)
 				target_id_card.update_icon()
+			*/ // SKYRAT EDIT REMOVAL - Backgrounds - No names.
 			return TRUE
 		// Change age
 		if("PRG_age")
+			/*
 			if(!computer || !authenticated_card || !target_id_card)
 				return TRUE
 
@@ -214,6 +217,7 @@
 
 			target_id_card.registered_age = new_age
 			playsound(computer, SFX_TERMINAL_TYPE, 50, FALSE)
+			*/ // SKYRAT EDIT REMOVAL - Backgrounds - No ages.
 			return TRUE
 		// Change assignment
 		if("PRG_assign")
