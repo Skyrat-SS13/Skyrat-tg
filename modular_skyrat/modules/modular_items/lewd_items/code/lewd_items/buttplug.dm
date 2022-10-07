@@ -1,4 +1,3 @@
-/*
 /obj/item/clothing/sextoy/buttplug
 	name = "buttplug"
 	desc = "I'm meant to put that WHERE?!"
@@ -8,7 +7,7 @@
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
 	lefthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_left.dmi'
 	righthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_right.dmi'
-	slot_flags = ITEM_SLOT_ANUS|ITEM_SLOT_VAGINA
+	lewd_slot_flags = LEWD_SLOT_ANUS | LEWD_SLOT_VAGINA
 	/// Current color of the toy, can be changed, affects sprite
 	var/current_color = "pink"
 	/// Current size of the toy, can be changed, affects sprite and arousal
@@ -107,15 +106,14 @@
 		return
 	// I tried using switch here, but it need static value, and u.arousal can't be it. So fuck switches. Reject it, embrace the IFs
 	if(current_size == "small" && target.arousal < 30)
-		target.adjustArousal(0.6 * delta_time)
-		target.adjustPleasure(0.7 * delta_time)
+		target.adjust_arousal(0.6 * delta_time)
+		target.adjust_pleasure(0.7 * delta_time)
 	else if(current_size == "medium" && target.arousal < 40)
-		target.adjustArousal(0.8 * delta_time)
-		target.adjustPleasure(0.8 * delta_time)
+		target.adjust_arousal(0.8 * delta_time)
+		target.adjust_pleasure(0.8 * delta_time)
 	else if(current_size == "big" && target.arousal < 50)
-		target.adjustArousal(1 * delta_time)
-		target.adjustPleasure(1 * delta_time)
+		target.adjust_arousal(delta_time)
+		target.adjust_pleasure(delta_time)
 		if(!(target.pain < 22.5)) //yeah, this will cause pain. No buttplug gib intended, sry
 			return
-		target.adjustPain(target*delta_time)
-*/
+		target.adjust_pain(target * delta_time)
