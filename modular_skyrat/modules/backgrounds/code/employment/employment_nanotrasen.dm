@@ -28,7 +28,7 @@
 
 /datum/background_info/employment/nanotrasen/intern/New()
 	. = ..()
-	allowed_roles = get_non_command_jobs()
+	roles = get_non_command_jobs()
 
 /datum/background_info/employment/nanotrasen/immigrant
 	name = "Immigrant Nanotrasen Employee"

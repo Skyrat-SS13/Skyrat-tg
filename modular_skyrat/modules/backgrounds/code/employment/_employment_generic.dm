@@ -12,7 +12,7 @@
 
 /datum/background_info/employment/squatter/New()
 	. = ..()
-	allowed_roles = get_non_command_jobs()
+	roles = get_non_command_jobs()
 
 /datum/background_info/employment/lopland
 	name = "Lopland Contractor"
