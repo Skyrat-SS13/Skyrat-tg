@@ -16,25 +16,28 @@
 	/// If the background should be veteran only or not.
 	var/veteran = FALSE
 	/// The roles allowed to be played as by this background. Uses job datums and ghost_role spawners. If null, it doesn't impose restrictions.
-	var/list/allowed_roles
+	/// Behaviour is inverted if `invert_roles` is `TRUE`.
+	var/list/roles
+	/// Decides the role filtering of `roles`.
+	var/false_if_in_roles = FALSE
 
 /datum/background_info/proc/is_job_valid(datum/job/job)
-	if(!allowed_roles)
+	if(!roles)
 		return TRUE
 
-	if(job.type in allowed_roles)
-		return TRUE
+	if(job.type in roles)
+		return !false_if_in_roles
 
-	return FALSE
+	return false_if_in_roles
 
 /datum/background_info/proc/is_ghost_role_valid(obj/effect/mob_spawn/ghost_role/human/ghost_role)
-	if(!allowed_roles)
+	if(!roles)
 		return TRUE
 
-	if(ghost_role.type in allowed_roles)
-		return TRUE
+	if(ghost_role.type in roles)
+		return !false_if_in_roles
 
-	return FALSE
+	return false_if_in_roles
 
 /datum/background_info/proc/get_non_command_jobs()
 	RETURN_TYPE(/list)
