@@ -42,7 +42,6 @@
 	if(hud_used)
 		hud_used.show_hud(hud_used.hud_version)
 		hud_used.update_ui_style(ui_style2icon(client.prefs?.read_preference(/datum/preference/choiced/ui_style)))
-		//hud_used.update_erp_ui_style(erp_ui_style2icon(client.prefs?.read_preference(/datum/preference/choiced/ui_style))) //SKYRAT EDIT - ADDITION - ERP ICONS FIX
 
 	next_move = 1
 
@@ -109,7 +108,7 @@
 		auto_deadmin_on_login()
 
 	log_message("Client [key_name(src)] has taken ownership of mob [src]([src.type])", LOG_OWNERSHIP)
-	log_mob_tag("\[[tag]\] NEW OWNER: [key_name(src)]")
+	log_mob_tag("NEW OWNER: [key_name(src)]")
 	SEND_SIGNAL(src, COMSIG_MOB_CLIENT_LOGIN, client)
 	client.init_verbs()
 
