@@ -37,7 +37,7 @@
 		var/notice = tgui_alert(usr, "Are you sure you want to load the clients current prefs onto their mob?", "Load Preferences", list("Yes", "No"))
 		if(notice != "Yes")
 			return
-		client.prefs.apply_prefs_to(src)
+		client?.prefs.apply_prefs_to(src)
 		var/msg = span_notice("[key_name_admin(usr)] has loaded [key_name(src)]'s preferences onto their current mob [ADMIN_VERBOSEJMP(src)].")
 		message_admins(msg)
 		admin_ticket_log(src, msg)
