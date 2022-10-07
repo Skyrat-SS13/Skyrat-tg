@@ -19,6 +19,10 @@
 	RegisterSignal(parent, COMSIG_SM_PROCESS_ATMOS, .proc/update_effects) // When we are added, we listen for this signal and send the proc.
 	our_supermatter = parent // typecast our parent
 
+/datum/component/supermatter_glow/UnregisterFromParent()
+	UnregisterSignal(parent, COMSIG_SM_PROCESS_ATMOS)
+	our_supermatter = null // no hard del 4 u
+
 /// This proc builds a list of effects to apply to the supermatter based on it's contexts.
 /datum/component/supermatter_glow/proc/update_effects()
 	SIGNAL_HANDLER
@@ -77,8 +81,6 @@ Sort of like photoshop. The loop will continue forever unless an accident happen
 /obj/machinery/power/supermatter_crystal/process_atmos() // overridden here to call parent then send the signal
 	. = ..()
 	SEND_SIGNAL(src, COMSIG_SM_PROCESS_ATMOS) // Call the update.
-
-
 
 #undef COMSIG_SM_PROCESS_ATMOS
 #undef CASCADE_DELAMINATION
