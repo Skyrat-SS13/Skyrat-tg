@@ -1,4 +1,4 @@
-// Modular solution for alternative tipping visuals, for silicon/cyborgs.
+// Allows silicons/cyborgs to have unique icons when tipped over
 // Originally added by Skyrat-tg PR #10894
 /datum/component/tippable/set_tipped_status(mob/living/tipped_mob, new_status = FALSE)
 	// Defer to TG code if the mob isn't a silicon.
