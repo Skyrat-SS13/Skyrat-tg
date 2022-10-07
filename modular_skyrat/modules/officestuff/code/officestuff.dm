@@ -10,7 +10,14 @@
 	. = ..()
 	. += span_info("The current CST (local) time is: [station_time_timestamp()].")
 	. += span_info("The current TCT (galactic) time is: [time2text(world.realtime, "hh:mm:ss")].")
+	if(soundloop)
+		. += span_notice("The hands of the clock are freely ticking away. They could be <b>screwed</b> down.")
+	else
+		. += span_notice("The hands of the clock have been <b>screwed</b> tight.")
 
+
+// . += span_notice("The <b>screws</b> on the clock hands are loose, freely ticking away.")
+// door_status" = density ? "closed" : "open",
 /datum/looping_sound/grandfatherclock
 	mid_sounds = list('modular_skyrat/modules/officestuff/sound/clock_ticking.ogg' = 1)
 	mid_length = 12 SECONDS
@@ -24,6 +31,21 @@
 	QDEL_NULL(soundloop)
 	return ..()
 
+/obj/structure/grandfatherclock/screwdriver_act(mob/living/user, obj/item/tool)
+	if(!soundloop)
+		balloon_alert(user, "unscrewing the hands...")
+		if(do_after(user, 2 SECONDS, src))
+			soundloop = new(src, TRUE)
+			balloon_alert(user, "hands unscrewed!")
+			return TOOL_ACT_TOOLTYPE_SUCCESS
+		return ..()
+
+	balloon_alert(user, "screwing the hands...")
+	if(do_after(user, 2 SECONDS, src))
+		QDEL_NULL(soundloop)
+		balloon_alert(user, "hands screwed tight!")
+		return TOOL_ACT_TOOLTYPE_SUCCESS
+	return ..()
 /obj/structure/sign/painting/meat
 	name = "Figure With Meat"
 	desc = "A painting of a distorted figure, sitting between a cow cut in half."
