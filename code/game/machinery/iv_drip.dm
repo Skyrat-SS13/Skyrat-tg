@@ -123,7 +123,7 @@
 
 /obj/machinery/iv_drip/MouseDrop(mob/living/target)
 	. = ..()
-	if(!ishuman(usr) && !iscyborg(usr) || !usr.canUseTopic(src, BE_CLOSE) || !isliving(target))
+	if(!ishuman(usr) || !usr.canUseTopic(src, be_close = TRUE) || !isliving(target))
 		return
 
 	if(attached)
@@ -214,10 +214,8 @@
 	. = ..()
 	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
 		return
-	/*
 	if(!ishuman(user))
 		return
-	*/
 	if(attached)
 		visible_message(span_notice("[attached] is detached from [src]."))
 		detach_iv()
