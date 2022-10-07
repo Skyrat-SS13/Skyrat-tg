@@ -1,4 +1,4 @@
-/turf/closed/indestructible/steel
+/turf/closed/indestructible/iron
 	icon = 'modular_skyrat/modules/aesthetics/walls/icons/wall.dmi'
 	icon_state = "wall-0"
 	base_icon_state = "wall"
