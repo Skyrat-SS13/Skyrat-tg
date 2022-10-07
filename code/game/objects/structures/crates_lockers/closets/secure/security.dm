@@ -82,8 +82,13 @@
 	..()
 	new /obj/item/radio/headset/headset_sec(src)
 	new /obj/item/clothing/suit/armor/vest/warden(src)
+<<<<<<< HEAD
 	//new /obj/item/clothing/head/warden(src) SKYRAT EDIT REMOVAL
 	//new /obj/item/clothing/head/warden/drill(src) SKYRAT EDIT REMOVAL
+=======
+	new /obj/item/clothing/head/hats/warden(src)
+	new /obj/item/clothing/head/hats/warden/drill(src)
+>>>>>>> c7dde066687 ([MDB Ignore]Hats DMI split (#70060))
 	new /obj/item/clothing/head/beret/sec/navywarden(src)
 	//new /obj/item/clothing/suit/armor/vest/warden/alt(src) //SKYRAT EDIT REMOVAL
 	new /obj/item/clothing/under/rank/security/warden/formal(src)
@@ -306,7 +311,7 @@
 		new /obj/item/paper/fluff/jobs/security/court_judgement (src)
 	new /obj/item/pen (src)
 	new /obj/item/clothing/suit/costume/judgerobe (src)
-	new /obj/item/clothing/head/powdered_wig (src)
+	new /obj/item/clothing/head/costume/powdered_wig (src)
 	new /obj/item/storage/briefcase(src)
 
 /obj/structure/closet/secure_closet/contraband/armory
