@@ -36,7 +36,7 @@
 	gain_text = "<span class='danger'>You feel glitchy.</span>"
 	lose_text = "<span class='notice'>You no longer feel glitchy.</span>"
 	medical_record_text = "Patient has a cascading anomaly in their brain that is slowly causing brain death."
-	icon = "none"
+	icon = "bp_synth_brain"
 	mail_goodies = list(/obj/item/storage/pill_bottle/liquid_solder/braintumor)
 	hidden_quirk = TRUE
 
@@ -70,7 +70,7 @@
 	name = "Hydraulic Leak"
 	desc = "Your body's hydraulic fluids are leaking through their seals."
 	medical_record_text = "Patient requires regular treatment for hydraulic fluid loss."
-	icon = "none"
+	icon = "bd_synth_tint"
 	hidden_quirk = TRUE
 
 // If blooddeficiency is added to a synth, this detours to the blooddeficiency/synth quirk.
