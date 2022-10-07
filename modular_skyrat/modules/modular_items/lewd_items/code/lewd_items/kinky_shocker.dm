@@ -284,6 +284,6 @@
 		target.try_lewd_autoemote(pick("twitch", "twitch_s", "shiver", "scream"))
 	target.do_jitter_animation()
 	target.adjustStaminaLoss(3)
-	target.adjustPain(9)
+	target.adjust_pain(9)
 	target.adjust_stutter(30 SECONDS)
 */

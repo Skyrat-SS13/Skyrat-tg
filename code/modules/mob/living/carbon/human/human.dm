@@ -838,7 +838,7 @@
 			visible_message(span_warning("[src] dry heaves!"), \
 							span_userdanger("You try to throw up, but there's nothing in your stomach!"))
 		if(stun)
-			Paralyze(200)
+			Stun(20 SECONDS)
 		return 1
 	..()
 
@@ -887,6 +887,11 @@
 
 			if(initial(quirk_type.abstract_parent_type) == type)
 				continue
+
+			// SKYRAT EDIT ADDITION START
+			if(initial(quirk_type.erp_quirk) && CONFIG_GET(flag/disable_erp_preferences))
+				continue
+			// SKYRAT EDIT ADDITION END
 
 			var/qname = initial(quirk_type.name)
 			options[has_quirk(quirk_type) ? "[qname] (Remove)" : "[qname] (Add)"] = quirk_type

@@ -73,8 +73,8 @@
 			if(!(prob(40) && (target.stat != DEAD)))
 				return
 			target.try_lewd_autoemote(pick("twitch_s", "moan", "blush"))
-			target.adjustArousal(6)
-			target.adjustPleasure(9)
+			target.adjust_arousal(6)
+			target.adjust_pleasure(9)
 			user.visible_message(span_purple("[user] [message]!"))
 			playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/bang1.ogg',
 								'modular_skyrat/modules/modular_items/lewd_items/sounds/bang2.ogg',

@@ -49,7 +49,6 @@
 	armor = list(MELEE = 10, BULLET = 5, LASER = 5, ENERGY = 10, BOMB = 10, BIO = 0, FIRE = 50, ACID = 50)
 	sensor_mode = SENSOR_COORDS
 	random_sensor = FALSE
-	can_adjust = FALSE
 
 /obj/item/clothing/under/rank/blueshield/skirt
 	name = "blueshield's suitskirt"

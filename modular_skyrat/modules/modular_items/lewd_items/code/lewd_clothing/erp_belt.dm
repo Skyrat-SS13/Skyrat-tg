@@ -83,8 +83,8 @@
 						//chems
 						/obj/item/reagent_containers/pill/crocin,
 						/obj/item/reagent_containers/pill/camphor,
-						/obj/item/reagent_containers/cup/bottle/breast_enlarger,
-						/obj/item/reagent_containers/cup/bottle/penis_enlarger,
+						/obj/item/reagent_containers/cup/bottle/succubus_milk,
+						/obj/item/reagent_containers/cup/bottle/incubus_draft,
 						/obj/item/reagent_containers/pill/hexacrocin,
 						/obj/item/reagent_containers/pill/pentacamphor,
 						/obj/item/reagent_containers/cup/bottle/hexacrocin,
