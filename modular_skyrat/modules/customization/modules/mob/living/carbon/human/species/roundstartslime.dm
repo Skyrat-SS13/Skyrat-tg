@@ -259,15 +259,14 @@
  * It lets you pick between a few options for DNA specifics
  */
 /datum/action/innate/alter_form/proc/alter_dna(mob/living/carbon/human/alterer)
+	var/list/key_list = list("Body Size", "Genitals", "Mutant Parts")
+	if(CONFIG_GET(flag/disable_erp_preferences))
+		key_list.Remove("Genitals")
 	var/dna_alteration = tgui_input_list(
 		alterer,
 		"Select what part of your DNA you'd like to alter",
 		"DNA Alteration",
-		list(
-			"Body Size",
-			//"Genitals",
-			"Mutant Parts",
-			),
+		key_list,
 	)
 	if(!dna_alteration)
 		return
@@ -286,10 +285,8 @@
 			new_body_size = new_body_size * 0.01
 			alterer.dna.features["body_size"] = new_body_size
 			alterer.dna.update_body_size()
-/*
 		if("Genitals")
 			alter_genitals(alterer)
-*/
 		if("Mutant Parts")
 			alter_parts(alterer)
 
