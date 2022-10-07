@@ -379,7 +379,7 @@
 				attacking_weapon.reagents.remove_all_type(weapon_reagent.type)
 				continue
 			if(is_type_in_typecache(weapon_reagent, disallowed_reagents))
-				fail_message(user, "The enchanted flames of the forge rebuke your attempt to work the liquid into [attacking_weapon]...")
+				fail_message(user, "The enchanted flames of the forge rebuke your attempt to work [weapon_reagent.name] into [attacking_weapon]...")
 				attacking_weapon.reagents.remove_all_type(weapon_reagent.type)
 				continue
 			weapon_component.imbued_reagent += weapon_reagent.type
@@ -418,7 +418,7 @@
 				attacking_clothing.reagents.remove_all_type(clothing_reagent.type)
 				continue
 			if(is_type_in_typecache(clothing_reagent, disallowed_reagents))
-				fail_message(user, "The enchanted flames of the forge rebuke your attempt to work the liquid into [attacking_clothing]...")
+				fail_message(user, "The enchanted flames of the forge rebuke your attempt to work [clothing_reagent.name] into [attacking_clothing]...")
 				attacking_clothing.reagents.remove_all_type(clothing_reagent.type)
 				continue
 			clothing_component.imbued_reagent += clothing_reagent.type
