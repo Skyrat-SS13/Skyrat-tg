@@ -327,6 +327,8 @@
 			if (item.restricted_roles && length(item.restricted_roles) && !(job.title in item.restricted_roles))
 				continue
 			item.post_equip_item(humanc.client?.prefs, humanc)
+
+		humanc.give_passport() // SKYRAT EDIT ADDITION - Backgrounds - Kept the skyrat edit part for easier finding.
 	//SKYRAT EDIT END
 
 /mob/dead/new_player/proc/AddEmploymentContract(mob/living/carbon/human/employee)

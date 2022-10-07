@@ -436,6 +436,9 @@ SUBSYSTEM_DEF(ticker)
 				if (item.restricted_roles && length(item.restricted_roles) && !(player_assigned_role.title in item.restricted_roles))
 					continue
 				item.post_equip_item(new_player_mob.client?.prefs, new_player_living)
+
+			var/mob/living/carbon/human/human = new_player_living
+			human.give_passport() // SKYRAT EDIT ADDITION - Backgrounds - Kept the skyrat edit part for easier finding.
 		//SKYRAT EDIT END
 		CHECK_TICK
 

@@ -22,7 +22,7 @@
 	if(!allowed_roles)
 		return TRUE
 
-	if(job in allowed_roles)
+	if(job.type in allowed_roles)
 		return TRUE
 
 	return FALSE
@@ -31,7 +31,7 @@
 	if(!allowed_roles)
 		return TRUE
 
-	if(ghost_role in allowed_roles)
+	if(ghost_role.type in allowed_roles)
 		return TRUE
 
 	return FALSE
@@ -39,7 +39,7 @@
 /datum/background_info/proc/get_non_command_jobs()
 	RETURN_TYPE(/list)
 	var/list/roles = subtypesof(/datum/job)
-	for(var/datum/job/job in allowed_roles)
+	for(var/datum/job/job in roles)
 		// This should be a reliable way to check if a job is command.
 		if(job.paycheck >= PAYCHECK_COMMAND)
 			roles -= job
