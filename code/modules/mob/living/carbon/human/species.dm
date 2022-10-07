@@ -739,7 +739,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 				accessory_overlay.icon_state = "m_[bodypart]_[accessory.icon_state]_[layertext]"
 
 			if(accessory.em_block)
-				accessory_overlay.overlays += emissive_blocker(accessory_overlay.icon, accessory_overlay.icon_state, accessory_overlay.alpha)
+				accessory_overlay.overlays += emissive_blocker(accessory_overlay.icon, accessory_overlay.icon_state, source, accessory_overlay.alpha)
 
 			if(accessory.center)
 				accessory_overlay = center_image(accessory_overlay, accessory.dimension_x, accessory.dimension_y)
@@ -986,31 +986,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 			if(H.back && H.back.atom_storage?.can_insert(I, H, messages = TRUE))
 				return TRUE
 			return FALSE
-/*
-		//SKYRAT EDIT ADDITION BEGIN - ERP_SLOT_SYSTEM
-		if(ITEM_SLOT_VAGINA)
-			if(H.is_bottomless())
-				if(H.getorganslot(ORGAN_SLOT_VAGINA))
-					return equip_delay_self_check(I, H, bypass_equip_delay_self)
-				return FALSE
-			return FALSE
-		if(ITEM_SLOT_ANUS)
-			if(H.is_bottomless())
-				if(H.getorganslot(ORGAN_SLOT_ANUS))
-					return equip_delay_self_check(I, H, bypass_equip_delay_self)
-			return FALSE
-		if(ITEM_SLOT_NIPPLES)
-			if(H.is_topless())
-				return equip_delay_self_check(I, H, bypass_equip_delay_self)
-			return FALSE
-		if(ITEM_SLOT_PENIS)
-			if(H.is_bottomless())
-				if(H.getorganslot(ORGAN_SLOT_PENIS))
-					return equip_delay_self_check(I, H, bypass_equip_delay_self)
-				return FALSE
-			return FALSE
-		//SKYRAT EDIT ADDITION END
-*/
+
 	return FALSE //Unsupported slot
 
 /datum/species/proc/equip_delay_self_check(obj/item/I, mob/living/carbon/human/H, bypass_equip_delay_self)
@@ -1402,6 +1378,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 					H.update_damage_overlays()
 			else//no bodypart, we deal damage with a more general method.
 				H.adjustBruteLoss(damage_amount)
+			INVOKE_ASYNC(H, /mob/living/carbon/human/.proc/adjust_pain, damage_amount) // SKYRAT EDIT ADDITION - ERP Pain
 		if(BURN)
 			H.damageoverlaytemp = 20
 			var/damage_amount = forced ? damage : damage * hit_percent * burnmod * H.physiology.burn_mod
@@ -1410,6 +1387,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 					H.update_damage_overlays()
 			else
 				H.adjustFireLoss(damage_amount)
+			INVOKE_ASYNC(H, /mob/living/carbon/human/.proc/adjust_pain, damage_amount) // SKYRAT EDIT ADDITION - ERP Pain
 		if(TOX)
 			var/damage_amount = forced ? damage : damage * hit_percent * H.physiology.tox_mod
 			H.adjustToxLoss(damage_amount)
