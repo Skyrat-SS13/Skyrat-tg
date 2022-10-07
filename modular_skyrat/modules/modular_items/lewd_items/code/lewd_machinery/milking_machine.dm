@@ -1,4 +1,3 @@
-/*
 /obj/structure/chair/milking_machine
 	name = "milking machine"
 	desc = "A stationary device for milking... things."
@@ -1043,4 +1042,3 @@
 			qdel(src)
 			to_chat(user, span_notice("You assemble the milking machine."))
 			return
-*/
