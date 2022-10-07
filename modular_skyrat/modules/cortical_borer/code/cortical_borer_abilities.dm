@@ -793,8 +793,8 @@
 		return
 	cortical_owner.chemical_storage -= 150
 	var/turf/borer_turf = get_turf(cortical_owner)
-	var/obj/item/bodypart/chest/LC = cortical_owner.get_bodypart(BODY_ZONE_CHEST)
-	if((!LC || IS_ORGANIC_LIMB(LC)) && !cortical_owner.getorgan(/obj/item/organ/internal/empowered_borer_egg))
+	var/obj/item/bodypart/chest/chest = cortical_owner.get_bodypart(BODY_ZONE_CHEST)
+	if((!chest || IS_ORGANIC_LIMB(chest)) && !cortical_owner.getorgan(/obj/item/organ/internal/empowered_borer_egg))
 		var/obj/item/organ/internal/empowered_borer_egg/spawned_egg = new(cortical_owner)
 		spawned_egg.generation = (cortical_owner.generation + 1)
 	cortical_owner.children_produced++
