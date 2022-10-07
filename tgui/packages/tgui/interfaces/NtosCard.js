@@ -1,5 +1,5 @@
 import { useBackend, useSharedState } from '../backend';
-import { Box, Button, Dropdown, Input, NoticeBox, NumberInput, Section, Stack, Tabs } from '../components';
+import { Box, Button, Dropdown, Input, NoticeBox, Section, Stack, Tabs } from '../components';
 import { NtosWindow } from '../layouts';
 import { AccessList } from './common/AccessList';
 
@@ -192,7 +192,7 @@ const IDCardTarget = (props, context) => {
       />
       {!!(has_id && authenticatedUser) && (
         <>
-          <Stack mt={1}>
+          {/* <Stack mt={1}>
             <Stack.Item align="center">Details:</Stack.Item>
             <Stack.Item grow={1} mr={1} ml={1}>
               <Input
@@ -217,8 +217,8 @@ const IDCardTarget = (props, context) => {
                   });
                 }}
               />
-            </Stack.Item>
-          </Stack>
+              </Stack.Item>
+          </Stack> // SKYRAT EDIT REMOVAL - Backgrounds */}
           <Stack>
             <Stack.Item align="center">Assignment:</Stack.Item>
             <Stack.Item grow={1} ml={1}>

@@ -58,6 +58,7 @@
 	cached_data = null
 	get_data() // This may have a performance hit at round start, but this will ensure things don't get stored inconsistently.
 	imprinted = TRUE
+	update_label()
 
 /obj/item/passport/AltClick(mob/user)
 	if(!has_closed_state)
@@ -90,6 +91,9 @@
 		ui.open()
 
 /obj/item/passport/ui_data(mob/user)
+	if(has_closed_state && icon_state_ext == PASSPORT_CLOSED)
+		return
+
 	return get_data()
 
 /obj/item/passport/proc/get_headshot_from_datacore(name)
@@ -115,6 +119,9 @@
 			"age" = holder_age,
 		)
 	return cached_data
+
+/obj/item/passport/proc/update_label()
+	name = holder_name ? "[holder_name]'s [initial(name)]" : initial(name)
 
 #undef PASSPORT_CLOSED
 #undef PASSPORT_OPENED

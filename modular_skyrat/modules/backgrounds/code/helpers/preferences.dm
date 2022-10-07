@@ -2,8 +2,8 @@
 /// Returns TRUE on any changes made.
 /datum/preferences/proc/sanitize_backgrounds()
 	var/datum/preference_middleware/backgrounds/background_middleware
-	for(var/datum/preference_middleware/backgrounds/middleware in middleware) // Cursed as fuck, but I don't care.
-		background_middleware = middleware
+	for(var/datum/preference_middleware/backgrounds/potential_middleware in middleware) // Cursed as fuck, but I don't care.
+		background_middleware = potential_middleware
 
 	if(!background_middleware)
 		message_admins("\[PREFS_SANITIZE_BACKGROUNDS] OH NO, I CAN'T FIND THE BACKGROUNDS MIDDLEWARE FOR \ref[parent]!! ALERT CODERS!")

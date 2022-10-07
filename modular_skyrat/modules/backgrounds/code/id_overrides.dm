@@ -1,10 +1,18 @@
 // Is this all it takes for easy forgery without agent cards? Nice.
-// Two non-modular edits to examine and examine_more.
 
-// For name and age removals, /datum/computer_file/program/card_mod/ui_act and /obj/item/card/id/advanced/chameleon/attack_self were modified.
+// For name and age removals, /datum/computer_file/program/card_mod/ui_act, /obj/item/card/id/advanced/chameleon/attack_self and tgui\packages\tgui\interfaces\NtosCard.js were modified.
 
 #define OPTION_YES "Yes"
 #define OPTION_NO "No"
+
+/obj/item/card/id
+	desc = "A card used to determine access across the station."
+
+/obj/item/card/id/advanced
+	desc = "A card used to determine access across the station. Has an integrated digital display and advanced microchips."
+
+/datum/design/id
+	desc = "A card used to determine access across the station. Has an integrated digital display and advanced microchips."
 
 /obj/item/card/id/update_label()
 	name = "[assignment] access card"
@@ -27,14 +35,14 @@
 	registered_account.bank_cards -= src
 	clear_account()
 
-/obj/item/card/id/examine(mob/user)
+/obj/item/card/id/examine_more(mob/user)
 	. = ..()
 
 	if(!user.can_read(src))
 		return
 
 	if(registered_account)
-		. += "To clear the account on this card, you can Ctrl-Shift-Click on the card to clear the attached account."
+		. += span_info("To clear the attached account from this card, you can Ctrl-Shift-Click on the card.")
 
 #undef OPTION_YES
 #undef OPTION_NO

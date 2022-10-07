@@ -124,6 +124,10 @@
 	if(ears && !(obscured & ITEM_SLOT_EARS) && !(ears.item_flags & EXAMINE_SKIP))
 		. += "[t_He] [t_has] [ears.get_examine_string(user)] on [t_his] ears."
 
+	// SKYRAT EDIT ADDITION - Backgrounds
+	if(passport && !(passport.item_flags & EXAMINE_SKIP))
+		. += "[t_He] [t_is] wearing [passport.get_examine_string(user)]."
+
 	//ID
 	if(wear_id && !(wear_id.item_flags & EXAMINE_SKIP))
 		. += "[t_He] [t_is] wearing [wear_id.get_examine_string(user)]."

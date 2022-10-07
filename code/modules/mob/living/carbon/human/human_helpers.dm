@@ -59,6 +59,8 @@
 //gets name from ID or PDA itself, ID inside PDA doesn't matter
 //Useful when player is being seen by other mobs
 /mob/living/carbon/human/proc/get_id_name(if_no_id = "Unknown")
+	var/obj/item/passport/worn_passport = passport // SKYRAT EDIT ADDITION - Backgrounds
+	/* // ORIGINAL
 	var/obj/item/storage/wallet/wallet = wear_id
 	var/obj/item/modular_computer/tablet/pda/pda = wear_id
 	var/obj/item/card/id/id = wear_id
@@ -70,6 +72,9 @@
 		var/obj/item/computer_hardware/card_slot/card_slot = pda.all_components[MC_CARD]
 		if(card_slot?.stored_card)
 			. = card_slot.stored_card.registered_name
+	*/
+	if(istype(worn_passport)) // SKYRAT EDIT - Backgrounds
+		. = worn_passport.holder_name
 	if(!.)
 		. = if_no_id //to prevent null-names making the mob unclickable
 	return
