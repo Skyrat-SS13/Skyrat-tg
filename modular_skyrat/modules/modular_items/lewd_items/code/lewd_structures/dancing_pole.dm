@@ -1,4 +1,3 @@
-/*
 //skyrat-tg got the BEST dancing pole in whole SS13. Be jealous of us!
 
 /obj/structure/pole
@@ -181,4 +180,3 @@
 		return
 	else
 		return ..()
-*/
