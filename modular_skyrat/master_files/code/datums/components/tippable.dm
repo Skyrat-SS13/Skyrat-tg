@@ -2,7 +2,7 @@
 // Originally added by Skyrat-tg PR #10894
 /datum/component/tippable/set_tipped_status(mob/living/tipped_mob, new_status = FALSE)
 	// Defer to TG code if the mob isn't a silicon.
-	if (!(istype(tipped_mob, /mob/living/silicon/robot))
+	if (!istype(tipped_mob, /mob/living/silicon/robot))
 		return ..()
 	is_tipped = new_status
 	var/mob/living/silicon/robot/robot = tipped_mob
@@ -19,4 +19,4 @@
 			robot.icon_state = "[robot.model.cyborg_base_icon]"
 			robot.regenerate_icons() // Return eye-lights
 			return
-		robot.transform = turn(robot_mob.transform, -180)
+		robot.transform = turn(robot.transform, -180)
