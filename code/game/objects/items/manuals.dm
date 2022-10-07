@@ -239,7 +239,6 @@
 /obj/item/book/manual/wiki
 	var/page_link = ""
 	window_size = "970x710"
-	var/skyrat_wiki = FALSE //SKYRAT EDIT ADDITION - will point someone to skyrat wiki instead of TG one if enabled
 
 /obj/item/book/manual/wiki/attack_self()
 	if(!book_data.content)
@@ -247,14 +246,7 @@
 	return ..()
 
 /obj/item/book/manual/wiki/proc/initialize_wikibook()
-	//var/wikiurl = CONFIG_GET(string/wikiurl) //ORIGINAL
-	//SKYRAT EDIT CHANGE BEGIN
-	var/wikiurl
-	if(skyrat_wiki)
-		wikiurl = CONFIG_GET(string/wikiurlskyrat)
-	else
-		wikiurl = CONFIG_GET(string/wikiurl)
-	//SKYRAT EDIT CHANGE END
+	var/wikiurl = CONFIG_GET(string/wikiurl)
 	if(wikiurl)
 		var/wikiinfo = {"
 
@@ -305,16 +297,12 @@
 	page_link = "Guide_to_engineering"
 
 /obj/item/book/manual/wiki/security_space_law
-	//name = "Space Law" //ORIGINAL
-	name = "Corporate Regulations" //SKYRAT EDIT CHANGE
-	//desc = "A set of Nanotrasen guidelines for keeping law and order on their space stations." //ORIGINAL
-	desc = "A set of Nanotrasen regulations for keeping law and order on their space stations." //SKYRAT EDIT CHANGE
+	name = "Corporate Regulations" //SKYRAT EDIT CHANGE - Original: "Space Law"
+	desc = "A set of Nanotrasen regulations for keeping law, order, and procedure followed within their space stations." //SKYRAT EDIT CHANGE - Original: "A set of Nanotrasen guidelines for keeping law and order on their space stations."
 	icon_state = "bookSpaceLaw"
 	starting_author = "Nanotrasen"
-	starting_title = "Space Law"
-	//page_link = "Space_Law" //ORIGINAL
-	page_link = "Corporate_Regulations" //SKYRAT EDIT CHANGE
-	skyrat_wiki = TRUE
+	starting_title = "Corporate Regulations" //SKYRAT EDIT CHANGE - Original: "Space Law"
+	page_link = "Corporate_Regulations" //SKYRAT EDIT CHANGE - Original: "Space_Law"
 
 /obj/item/book/manual/wiki/security_space_law/suicide_act(mob/living/user)
 	user.visible_message(span_suicide("[user] pretends to read \the [src] intently... then promptly dies of laughter!"))

@@ -11,7 +11,6 @@
 	mutantlungs = /obj/item/organ/internal/lungs/slime
 	meat = /obj/item/food/meat/slab/human/mutant/slime
 	exotic_blood = /datum/reagent/toxin/slimejelly
-	damage_overlay_type = ""
 	var/datum/action/innate/regenerate_limbs/regenerate_limbs
 	var/datum/action/innate/alter_form/alter_form //SKYRAT EDIT ADDITION - CUSTOMIZATION
 	liked_food = MEAT | BUGS
