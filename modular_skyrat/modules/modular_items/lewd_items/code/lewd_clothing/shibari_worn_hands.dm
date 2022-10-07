@@ -1,4 +1,3 @@
-/*
 /obj/item/clothing/gloves/shibari_hands
 	name = "shibari arms bondage"
 	desc = "Bondage ropes that cover arms."
@@ -58,5 +57,3 @@
 	if(HAS_TRAIT(hooman, TRAIT_ROPEBUNNY))
 		hooman.remove_status_effect(/datum/status_effect/ropebunny)
 	return ..()
-
-*/
