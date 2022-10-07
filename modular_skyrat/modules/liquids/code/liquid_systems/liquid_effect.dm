@@ -16,7 +16,7 @@
 	smoothing_groups = list(SMOOTH_GROUP_WATER)
 	canSmoothWith = list(SMOOTH_GROUP_WALLS, SMOOTH_GROUP_WINDOW_FULLTILE, SMOOTH_GROUP_WATER)
 
-	mouse_opacity = FALSE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	var/height = 1
 	var/only_big_diffs = 1
 	var/turf/my_turf
@@ -193,6 +193,33 @@
 	if(harderforce)
 		. = ..()
 
+/**
+ * Add over and underlays for different liquid states.
+ *
+ * Arguments:
+ * * state - the stage number.
+ * * has_top - if this stage has a top.
+ */
+/obj/effect/abstract/liquid_turf/proc/add_state_layer(state, has_top)
+	add_overlay(mutable_appearance(
+		'modular_skyrat/modules/liquids/icons/obj/effects/liquid_overlays.dmi',
+		"stage[state]_bottom",
+		offset_spokesman = src,
+		plane = GAME_PLANE,
+		layer = ABOVE_MOB_LAYER,
+	))
+
+	if(!has_top)
+		return
+
+	add_overlay(mutable_appearance(
+		'modular_skyrat/modules/liquids/icons/obj/effects/liquid_overlays.dmi',
+		"stage[state]_top",
+		offset_spokesman = src,
+		plane = GAME_PLANE,
+		layer = GATEWAY_UNDERLAY_LAYER
+	))
+
 /obj/effect/abstract/liquid_turf/proc/set_new_liquid_state(new_state)
 	liquid_state = new_state
 	if(no_effects)
@@ -200,37 +227,13 @@
 	cut_overlays()
 	switch(liquid_state)
 		if(LIQUID_STATE_ANKLES)
-			var/mutable_appearance/overlay = mutable_appearance('modular_skyrat/modules/liquids/icons/obj/effects/liquid_overlays.dmi', "stage1_bottom")
-			var/mutable_appearance/underlay = mutable_appearance('modular_skyrat/modules/liquids/icons/obj/effects/liquid_overlays.dmi', "stage1_top")
-			overlay.plane = GAME_PLANE
-			overlay.layer = ABOVE_MOB_LAYER
-			underlay.plane = GAME_PLANE
-			underlay.layer = GATEWAY_UNDERLAY_LAYER
-			add_overlay(overlay)
-			add_overlay(underlay)
+			add_state_layer(1, has_top = TRUE)
 		if(LIQUID_STATE_WAIST)
-			var/mutable_appearance/overlay = mutable_appearance('modular_skyrat/modules/liquids/icons/obj/effects/liquid_overlays.dmi', "stage2_bottom")
-			var/mutable_appearance/underlay = mutable_appearance('modular_skyrat/modules/liquids/icons/obj/effects/liquid_overlays.dmi', "stage2_top")
-			overlay.plane = GAME_PLANE
-			overlay.layer = ABOVE_MOB_LAYER
-			underlay.plane = GAME_PLANE
-			underlay.layer = GATEWAY_UNDERLAY_LAYER
-			add_overlay(overlay)
-			add_overlay(underlay)
+			add_state_layer(2, has_top = TRUE)
 		if(LIQUID_STATE_SHOULDERS)
-			var/mutable_appearance/overlay = mutable_appearance('modular_skyrat/modules/liquids/icons/obj/effects/liquid_overlays.dmi', "stage3_bottom")
-			var/mutable_appearance/underlay = mutable_appearance('modular_skyrat/modules/liquids/icons/obj/effects/liquid_overlays.dmi', "stage3_top")
-			overlay.plane = GAME_PLANE
-			overlay.layer = ABOVE_MOB_LAYER
-			underlay.plane = GAME_PLANE
-			underlay.layer = GATEWAY_UNDERLAY_LAYER
-			add_overlay(overlay)
-			add_overlay(underlay)
+			add_state_layer(3, has_top = TRUE)
 		if(LIQUID_STATE_FULLTILE)
-			var/mutable_appearance/overlay = mutable_appearance('modular_skyrat/modules/liquids/icons/obj/effects/liquid_overlays.dmi', "stage4_bottom")
-			overlay.plane = GAME_PLANE
-			overlay.layer = ABOVE_MOB_LAYER
-			add_overlay(overlay)
+			add_state_layer(4, has_top = FALSE)
 
 /obj/effect/abstract/liquid_turf/proc/update_liquid_vis()
 	if(no_effects)
@@ -425,17 +428,22 @@
 	if(liquid_state >= LIQUID_STATE_ANKLES && T.has_gravity(T))
 		playsound(T, 'modular_skyrat/modules/liquids/sound/effects/splash.ogg', 50, 0)
 		if(iscarbon(M))
-			var/mob/living/carbon/C = M
-			if(C.wear_mask && C.wear_mask.flags_cover & MASKCOVERSMOUTH)
-				to_chat(C, span_userdanger("You fall in the water!"))
+			var/mob/living/carbon/falling_carbon = M
+
+			// No point in giving reagents to the deceased. It can cause some runtimes.
+			if(falling_carbon.stat >= DEAD)
+				return
+
+			if(falling_carbon.wear_mask && falling_carbon.wear_mask.flags_cover & MASKCOVERSMOUTH)
+				to_chat(falling_carbon, span_userdanger("You fall in the water!"))
 			else
 				var/datum/reagents/tempr = take_reagents_flat(CHOKE_REAGENTS_INGEST_ON_FALL_AMOUNT)
-				tempr.trans_to(C, tempr.total_volume, methods = INGEST)
+				tempr.trans_to(falling_carbon, tempr.total_volume, methods = INGEST)
 				qdel(tempr)
-				C.adjustOxyLoss(5)
+				falling_carbon.adjustOxyLoss(5)
 				//C.emote("cough")
-				INVOKE_ASYNC(C, /mob.proc/emote, "cough")
-				to_chat(C, span_userdanger("You fall in and swallow some water!"))
+				INVOKE_ASYNC(falling_carbon, /mob.proc/emote, "cough")
+				to_chat(falling_carbon, span_userdanger("You fall in and swallow some water!"))
 		else
 			to_chat(M, span_userdanger("You fall in the water!"))
 

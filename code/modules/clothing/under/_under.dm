@@ -2,6 +2,8 @@
 	name = "under"
 	icon = 'icons/obj/clothing/under/default.dmi'
 	worn_icon = 'icons/mob/clothing/under/default.dmi'
+	lefthand_file = 'icons/mob/inhands/clothing/suits_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/clothing/suits_righthand.dmi'
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS
 	slot_flags = ITEM_SLOT_ICLOTHING
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 10, FIRE = 0, ACID = 0, WOUND = 5)
@@ -54,7 +56,7 @@
 	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
 		return
 
-	toggle(user)
+	toggle()
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /obj/item/clothing/under/update_clothes_damaged_state(damaged_state = CLOTHING_DAMAGED)
@@ -104,7 +106,7 @@
 		H.update_worn_undersuit()
 	*/ // SKYRAT EDIT END
 
-	if(attached_accessory && slot != ITEM_SLOT_HANDS && ishuman(user))
+	if(attached_accessory && !(slot & ITEM_SLOT_HANDS) && ishuman(user))
 		var/mob/living/carbon/human/H = user
 		attached_accessory.on_uniform_equip(src, user)
 		H.fan_hud_set_fandom()
@@ -113,7 +115,7 @@
 
 /obj/item/clothing/under/equipped(mob/living/user, slot)
 	..()
-	if(slot == ITEM_SLOT_ICLOTHING && freshly_laundered)
+	if((slot & ITEM_SLOT_ICLOTHING) && freshly_laundered)
 		freshly_laundered = FALSE
 		user.add_mood_event("fresh_laundry", /datum/mood_event/fresh_laundry)
 
@@ -228,11 +230,11 @@
 	if(attached_accessory)
 		. += "\A [attached_accessory] is attached to it."
 
-/obj/item/clothing/under/verb/toggle(mob/user)
+/obj/item/clothing/under/verb/toggle()
 	set name = "Adjust Suit Sensors"
 	set category = "Object"
 	set src in usr
-	var/mob/user_mob = ismob(user) ? user : usr
+	var/mob/user_mob = usr
 	if (isdead(user_mob))
 		return
 	if (!can_use(user_mob))
@@ -289,7 +291,7 @@
 	if(.)
 		return
 
-	if(!user.canUseTopic(src, BE_CLOSE, NO_DEXTERITY, FALSE, !iscyborg(user)))
+	if(!user.canUseTopic(src, be_close = TRUE, no_dexterity = TRUE, no_tk = FALSE, need_hands = !iscyborg(user)))
 		return
 	if(attached_accessory)
 		remove_accessory(user)
@@ -322,7 +324,7 @@
 		return
 	adjusted = !adjusted
 	if(adjusted)
-		if(female_sprite_flags != FEMALE_UNIFORM_TOP_ONLY)
+		if(!(female_sprite_flags & FEMALE_UNIFORM_TOP_ONLY))
 			female_sprite_flags = NO_FEMALE_UNIFORM
 		if(!alt_covers_chest) // for the special snowflake suits that expose the chest when adjusted (and also the arms, realistically)
 			body_parts_covered &= ~CHEST

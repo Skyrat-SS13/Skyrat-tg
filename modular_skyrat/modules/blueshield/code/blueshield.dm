@@ -76,9 +76,6 @@
 	name = "CMG-1 gunset"
 	w_class = WEIGHT_CLASS_NORMAL
 
-/obj/item/gun/ballistic/automatic/cmg/nomag
-	spawnwithmagazine = FALSE
-
 /obj/item/storage/box/gunset/blueshield/PopulateContents()
 	. = ..()
 	new /obj/item/gun/ballistic/automatic/cmg/nomag(src)

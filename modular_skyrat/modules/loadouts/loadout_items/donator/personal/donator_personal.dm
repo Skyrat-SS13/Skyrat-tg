@@ -363,11 +363,10 @@
 	item_path = /obj/item/card/fuzzy_license
 	ckeywhitelist = list("fuzlet")
 
-/datum/loadout_item/pocket_items/korpstech_scanner
-	name = "Korpstech Genetics Scanner"
-	item_path = /obj/item/sequence_scanner/korpstech
+/datum/loadout_item/suit/gorlex_harness
+	name = "Engine Technician Harness"
+	item_path = /obj/item/clothing/suit/jacket/gorlex_harness
 	ckeywhitelist = list("1ceres")
-	restricted_roles = list(JOB_GENETICIST, JOB_RESEARCH_DIRECTOR)
 
 /datum/loadout_item/pocket_items/korpstech_poster
 	name = "Korpstech Poster"
@@ -480,6 +479,8 @@
 	ckeywhitelist = list("tetrako")
 	restricted_roles = list(JOB_NT_REP)
 
+//Chunko Fops were donated by SlippyJoe, who requested they are usable by everyone
+
 /datum/loadout_item/toys/CFBonnie
 	name = "Chunko Fop: Blue Bunny Plushie"
 	item_path = /obj/item/toy/plush/skyrat/chunko/bonnie
@@ -495,10 +496,28 @@
 	item_path = /obj/item/toy/plush/skyrat/chunko/inessa
 	donator_only = TRUE
 
-//Chunko Fops were donated by SlippyJoe, who requested they are usable by everyone
+/datum/loadout_item/toys/plushie_chiara
+	name = "Commanding Fox Plushie"
+	item_path = /obj/item/toy/plush/skyrat/plushie_chiara
+	ckeywhitelist = list("srq", "superlagg")
+
+/datum/loadout_item/toys/plushie_dan
+	name = "Comfy Fox Plushie"
+	item_path = /obj/item/toy/plush/skyrat/plushie_dan
+	ckeywhitelist = list("srq", "superlagg")
 
 /datum/loadout_item/under/jumpsuit/bubbly_clown
 	name = "Bubbly Clown Dress"
 	item_path = /obj/item/clothing/under/bubbly_clown/skirt
 	restricted_roles = list(JOB_CLOWN)
 	ckeywhitelist = list("boisterousbeebz", "aether217")
+
+/datum/loadout_item/pocket_items/marsoc_coin
+	name = "MARSOC Challenge Coin"
+	item_path = /obj/item/coin/donator/marsoc
+	ckeywhitelist = list("sweetsoulbrother")
+
+/datum/loadout_item/under/jumpsuit/tactichill
+	name = "Tactichill Jacket"
+	item_path = /obj/item/clothing/under/tactichill
+	ckeywhitelist = list("kaynite")

@@ -10,7 +10,7 @@
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
 	lefthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_left.dmi'
 	righthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_right.dmi'
-	slot_flags = ITEM_SLOT_PENIS | ITEM_SLOT_VAGINA | ITEM_SLOT_NIPPLES | ITEM_SLOT_ANUS
+	lewd_slot_flags = LEWD_SLOT_PENIS | LEWD_SLOT_VAGINA | LEWD_SLOT_NIPPLES | LEWD_SLOT_ANUS
 	clothing_flags = INEDIBLE_CLOTHING
 	/// Is the toy currently on
 	var/toy_on = FALSE
@@ -113,7 +113,7 @@
 	. = ..()
 	if(!istype(user))
 		return
-	if(is_in_genital(user))
+	if(is_inside_lewd_slot(user))
 		START_PROCESSING(SSobj, src)
 
 /obj/item/clothing/sextoy/eggvib/dropped(mob/user, silent)
@@ -127,14 +127,14 @@
 	if(!istype(target))
 		return
 	if(vibration_mode == "low")
-		target.adjustArousal(0.5 * delta_time)
-		target.adjustPleasure(0.5 * delta_time)
+		target.adjust_arousal(0.5 * delta_time)
+		target.adjust_pleasure(0.5 * delta_time)
 	if(vibration_mode == "medium")
-		target.adjustArousal(0.6 * delta_time)
-		target.adjustPleasure(0.6 * delta_time)
+		target.adjust_arousal(0.6 * delta_time)
+		target.adjust_pleasure(0.6 * delta_time)
 	if(vibration_mode == "high")
-		target.adjustArousal(0.7 * delta_time)
-		target.adjustPleasure(0.7 * delta_time)
+		target.adjust_arousal(0.7 * delta_time)
+		target.adjust_pleasure(0.7 * delta_time)
 
 /*
 *	SIGNALLER CONTROLLED EGG
@@ -249,7 +249,7 @@
 			to_chat(vibrated, span_purple("You feel pleasant vibrations deep below..."))
 		else if(src == vibrated.nipples)
 			to_chat(vibrated, span_purple("You feel pleasant stimulation in your nipples."))
-	else if(!toy_on && is_in_genital(vibrated))
+	else if(!toy_on && is_inside_lewd_slot(vibrated))
 		to_chat(vibrated, span_purple("The vibrating toy no longer drives you mad."))
 
 	if(!master)
