@@ -214,8 +214,10 @@
 	. = ..()
 	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
 		return
+/*
 	if(!ishuman(user))
 		return
+*/
 	if(attached)
 		visible_message(span_notice("[attached] is detached from [src]."))
 		detach_iv()
