@@ -11,10 +11,13 @@ GLOBAL_VAR_INIT(successful_blood_chem, 0)
 GLOBAL_LIST_EMPTY(cortical_borers)
 
 //we need a way of buffing leg speed
-/datum/movespeed_modifier/borer_speed
+/datum/movespeed_modifier/focus_speed
 	multiplicative_slowdown = -0.4
 
-/datum/actionspeed_modifier/borer_speed
+/datum/movespeed_modifier/borer_speed
+	multiplicative_slowdown = -0.5
+
+/datum/actionspeed_modifier/focus_speed
 	multiplicative_slowdown = -0.3
 	id = ACTIONSPEED_ID_BORER
 
@@ -122,6 +125,16 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 	var/chemical_storage = 50
 	///how fast chemicals are gained. Goes up only when inside a host
 	var/chemical_regen = 1
+	/// How much health you gain per level
+	var/health_per_level = 2.5
+	/// How much health regen you gain per level
+	var/health_regen_per_level = 0.02
+	/// How much more chemical storage you gain per level
+	var/chem_storage_per_level = 20
+	/// Chemical regen you gain per level
+	var/chem_regen_per_level = 1
+	/// How many times you've levelled up over all
+	var/level = 0
 	///the list of actions that the borer has
 	var/list/known_abilities = list(/datum/action/cooldown/borer/toggle_hiding,
 									/datum/action/cooldown/borer/choosing_host,
@@ -130,15 +143,9 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 									/datum/action/cooldown/borer/upgrade_chemical,
 									/datum/action/cooldown/borer/learn_focus,
 									/datum/action/cooldown/borer/upgrade_stat,
-									/datum/action/cooldown/borer/learn_ability,
 									/datum/action/cooldown/borer/force_speak,
 									/datum/action/cooldown/borer/fear_human,
 									/datum/action/cooldown/borer/check_blood,
-	)
-	///the list of actions that the borer could learn
-	var/possible_abilities = list(/datum/action/cooldown/borer/produce_offspring,
-								/datum/action/cooldown/borer/learn_bloodchemical,
-								/datum/action/cooldown/borer/willing_host,
 	)
 	///the host
 	var/mob/living/carbon/human/human_host
@@ -185,8 +192,12 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 	COOLDOWN_DECLARE(injection_cooldown)
 	/// Evolutions we've already learned
 	var/list/past_evolutions = list()
+	/// Bitflag of upgrades and effects the borer has
+	var/upgrade_flags = 0
 	/// If the borer has evolved with a genome that locks out others of the same & higher tier
 	var/genome_locked = FALSE
+	/// Multiplier for a borer's negative effects to their host
+	var/host_harm_multiplier = 1
 
 /mob/living/simple_animal/cortical_borer/Initialize(mapload)
 	. = ..()
@@ -256,8 +267,8 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 		return
 
 	//there needs to be a negative to having a borer
-	if(prob(5) && human_host.getToxLoss() <= 80)
-		human_host.adjustToxLoss(5, TRUE, TRUE)
+	if(prob(5 * host_harm_multiplier * ((upgrade_flags & BORER_STEALTH_MODE) ? 0.1 : 1)) && human_host.getToxLoss() <= (80 * host_harm_multiplier))
+		human_host.adjustToxLoss(5 * host_harm_multiplier, TRUE, TRUE)
 
 	human_host.apply_status_effect(/datum/status_effect/grouped/screwy_hud/fake_healthy, type)
 
@@ -271,43 +282,21 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 
 	//this is regenerating chemical_storage
 	if(chemical_storage < max_chemical_storage)
-		chemical_storage = min(chemical_storage + chemical_regen, max_chemical_storage)
-		if(chemical_storage > max_chemical_storage)
-			chemical_storage = max_chemical_storage
+		if(!(upgrade_flags & BORER_STEALTH_MODE))
+			chemical_storage = min(chemical_storage + chemical_regen, max_chemical_storage)
+			if(chemical_storage > max_chemical_storage)
+				chemical_storage = max_chemical_storage
 
 	//this is regenerating health
 	if(health < maxHealth)
-		health = min(health * health_regen, maxHealth)
-		if(health > maxHealth)
-			health = maxHealth
+		if(!(upgrade_flags & BORER_STEALTH_MODE))
+			health = min(health * health_regen, maxHealth)
+			if(health > maxHealth)
+				health = maxHealth
 
 	//this is so they can evolve
 	if(timed_maturity < world.time)
-		timed_maturity = world.time + 1 SECONDS
-		maturity_age++
-
-		//20:40, 15:30, 10:20, 5:10
-		var/maturity_threshold = 20
-		if(GLOB.successful_egg_number >= GLOB.objective_egg_borer_number)
-			maturity_threshold -= 2
-		if(length(GLOB.willing_hosts) >= GLOB.objective_willing_hosts)
-			maturity_threshold -= 10
-		if(GLOB.successful_blood_chem >= GLOB.objective_blood_borer)
-			maturity_threshold -= 3
-
-		if(maturity_age == maturity_threshold)
-			if(chemical_evolution < limited_borer) //you can only have a default of 10 at a time
-				chemical_evolution++
-				to_chat(src, span_notice("You gain a chemical evolution point. Spend it to learn a new chemical!"))
-			else
-				to_chat(src, span_warning("You were unable to gain a chemical evolution point due to having the max!"))
-		if(maturity_age >= (maturity_threshold * 2))
-			if(stat_evolution < limited_borer)
-				stat_evolution++
-				to_chat(src, span_notice("You gain a stat evolution point. Spend it to become stronger!"))
-			else
-				to_chat(src, span_warning("You were unable to gain a stat evolution point due to having the max!"))
-			maturity_age = 0
+		mature()
 
 //if it doesnt have a ckey, let ghosts have it
 /mob/living/simple_animal/cortical_borer/attack_ghost(mob/dead/observer/user)
@@ -335,6 +324,8 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 
 //check if the host has sugar
 /mob/living/simple_animal/cortical_borer/proc/host_sugar()
+	if(upgrade_flags & BORER_SUGAR_IMMUNE)
+		return FALSE
 	if(human_host?.reagents?.has_reagent(/datum/reagent/consumable/sugar))
 		return TRUE
 	return FALSE
@@ -392,3 +383,56 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 /mob/living/simple_animal/cortical_borer/start_pulling(atom/movable/AM, state, force, supress_message)
 	to_chat(src, span_warning("You cannot pull things!"))
 	return
+
+/// Called on Life() for the borer to age a bit
+/mob/living/simple_animal/cortical_borer/proc/mature()
+	. = TRUE
+	if(upgrade_flags & BORER_STEALTH_MODE)
+		return FALSE
+	timed_maturity = world.time + 1 SECONDS
+	maturity_age++
+
+	//20:40, 15:30, 10:20, 5:10
+	var/maturity_threshold = 20
+	if(GLOB.successful_egg_number >= GLOB.objective_egg_borer_number)
+		maturity_threshold -= 2
+	if(length(GLOB.willing_hosts) >= GLOB.objective_willing_hosts)
+		maturity_threshold -= 10
+	if(GLOB.successful_blood_chem >= GLOB.objective_blood_borer)
+		maturity_threshold -= 3
+
+	if(maturity_age == maturity_threshold)
+		if(chemical_evolution < limited_borer) //you can only have a default of 10 at a time
+			chemical_evolution++
+			to_chat(src, span_notice("You gain a chemical evolution point. Spend it to learn a new chemical!"))
+		else
+			to_chat(src, span_warning("You were unable to gain a chemical evolution point due to having the max!"))
+	if(maturity_age >= (maturity_threshold * 2))
+		if(stat_evolution < limited_borer)
+			stat_evolution++
+			to_chat(src, span_notice("You gain a stat evolution point. Spend it to become stronger!"))
+		else
+			to_chat(src, span_warning("You were unable to gain a stat evolution point due to having the max!"))
+		maturity_age = 0
+
+/// Use to recalculate a borer's health and chemical stats when something retroactively affects them
+/mob/living/simple_animal/cortical_borer/proc/recalculate_stats()
+	var/old_health = health
+	maxHealth = initial(maxHealth) * (level + 1) * health_per_level
+	health_regen = initial(health_regen) * (level + 1) * health_regen_per_level
+	max_chemical_storage = initial(max_chemical_storage) * (level + 1) * chem_storage_per_level
+	chemical_regen = initial(chemical_regen) * (level + 1) * chem_regen_per_level
+	health = clamp(old_health, 0, maxHealth)
+
+// Only able to spawn from an egg burst from a corpse, starts off stronger
+/mob/living/simple_animal/cortical_borer/empowered
+	maxHealth = 150
+	health = 150
+	health_per_level = 15
+	health_regen_per_level = 0.04
+	stat_evolution = 8
+	chemical_evolution = 8
+	max_chemical_storage = 250
+	chemical_storage = 250
+	chem_regen_per_level = 1.5
+	chem_storage_per_level = 25

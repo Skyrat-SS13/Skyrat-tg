@@ -16,6 +16,7 @@ type Evolution = {
   disabled: boolean;
   evoPath: string;
   color: string;
+  tier: number;
 };
 
 type EvolutionInfo = {
@@ -29,7 +30,7 @@ type Info = {
 
 export const BorerEvolution = (props, context) => {
   return (
-    <Window width={675} height={600} theme="wizard">
+    <Window width={675} height={600} theme="wizard" title="Evolution Tree">
       <Window.Content>
         <Stack vertical fill>
           <Stack.Item grow>
@@ -55,7 +56,9 @@ const PastEvolutions = (props, context) => {
                 <Button
                   width="100%"
                   color={learned.color}
-                  content={`${learned.evoPath} - ${learned.name}`}
+                  content={`${learned.evoPath} - ${
+                    learned.tier !== -1 ? `T${learned.tier} -` : ``
+                  } ${learned.name}`}
                   tooltip={learned.desc}
                 />
               </Stack.Item>
@@ -81,6 +84,8 @@ const EvolutionList = (props, context) => {
                 color={toLearn.color}
                 disabled={toLearn.disabled}
                 content={`${toLearn.evoPath} - ${
+                  toLearn.tier !== -1 ? `T${toLearn.tier} -` : ``
+                } ${
                   toLearn.cost > 0
                     ? `${toLearn.name}: ${toLearn.cost}
                   point${toLearn.cost !== 1 ? 's' : ''}`

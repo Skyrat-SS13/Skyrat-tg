@@ -13,6 +13,8 @@
 	var/mutually_exclusive = FALSE
 	/// What evolutions this one unlocks
 	var/list/unlocked_evolutions = list()
+	/// What numerical tier is this? (Doesn't affect anything mechanically)
+	var/tier = 0
 
 /// What happens when a borer gets this evolution
 /datum/borer_evolution/proc/on_evolve(mob/living/simple_animal/cortical_borer/cortical_owner)
@@ -28,9 +30,16 @@
 	gain_text = "The worms, which we came to call \"Cortical Borers\", are fascinating creatures."
 	evo_cost = 0
 	evo_type = BORER_EVOLUTION_START
+	tier = 0
 	unlocked_evolutions = list(
 		/datum/borer_evolution/upgrade_injection,
-		/datum/borer_evolution/symbiote/revive_host,
-		/datum/borer_evolution/hivelord,
-		/datum/borer_evolution/diveworm,
+		/datum/borer_evolution/symbiote/willing_host,
+		/datum/borer_evolution/hivelord/produce_offspring,
+		/datum/borer_evolution/diveworm/health_per_level,
 	)
+
+
+// Current path goes as follows:
+// Hivelord: Produce Offspring | Learn Blood Chemical | Stealth Mode
+// Symbiote: Willing Host | Expanded Chemical List | Revive Host
+// Diveworm: Expanded Chemical List | Egg Cluster
