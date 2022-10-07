@@ -10,11 +10,38 @@
 "ad" = (
 /turf/open/space,
 /area/space)
+"ae" = (
+/obj/structure/table/abductor,
+/obj/item/toy/plush/abductor{
+	pixel_x = -7;
+	pixel_y = 14
+	},
+/obj/item/toy/plush/abductor/agent{
+	pixel_x = 9;
+	pixel_y = 2
+	},
+/turf/open/floor/plating/abductor,
+/area/centcom/abductor_ship)
 "af" = (
 /obj/effect/turf_decal/stripes/corner,
 /obj/structure/railing/corner,
 /turf/open/floor/plating/icemoon,
 /area/centcom/syndicate_mothership/control)
+"ah" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	dir = 1
+	},
+/obj/machinery/computer/monitor{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/machinery/status_display/evac/directional/south,
+/turf/open/floor/iron,
+/area/centcom/central_command_areas/admin/storage)
 "ai" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/general/hidden,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/orange/hidden/layer5,
@@ -152,21 +179,6 @@
 	},
 /turf/open/floor/iron,
 /area/centcom/syndicate_mothership/control)
-"aD" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/components/unary/vent_pump/on{
-	dir = 1
-	},
-/obj/machinery/computer/monitor{
-	dir = 1
-	},
-/obj/structure/cable,
-/obj/machinery/status_display/evac/directional/south,
-/turf/open/floor/iron,
-/area/centcom/central_command_areas/admin/storage)
 "aE" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -1657,6 +1669,12 @@
 /obj/machinery/light/directional/south,
 /turf/open/misc/asteroid,
 /area/centcom/central_command_areas/evacuation)
+"eL" = (
+/obj/structure/sign/poster/contraband/syndicate_recruitment{
+	pixel_x = 4
+	},
+/turf/closed/wall/mineral/wood,
+/area/centcom/central_command_areas/holding)
 "eM" = (
 /obj/machinery/vending/cola,
 /obj/effect/turf_decal/delivery,
@@ -2013,16 +2031,6 @@
 /obj/structure/chair/stool/directional/south,
 /turf/open/floor/wood/parquet,
 /area/centcom/central_command_areas/holding)
-"fL" = (
-/obj/docking_port/stationary{
-	dwidth = 1;
-	height = 4;
-	shuttle_id = "pod_4_away";
-	name = "recovery ship";
-	width = 3
-	},
-/turf/open/space,
-/area/space)
 "fM" = (
 /turf/closed/indestructible/fakedoor{
 	name = "Guest House Back Entrance"
@@ -3097,6 +3105,20 @@
 /obj/structure/sign/nanotrasen,
 /turf/closed/indestructible/riveted,
 /area/centcom/central_command_areas/prison)
+"iI" = (
+/obj/docking_port/stationary{
+	area_type = /area/centcom/syndicate_mothership;
+	dheight = 1;
+	dir = 4;
+	dwidth = 12;
+	height = 17;
+	name = "syndicate recon outpost";
+	roundstart_template = /datum/map_template/shuttle/infiltrator/basic;
+	shuttle_id = "syndicate_away";
+	width = 23
+	},
+/turf/open/misc/asteroid/snow/airless,
+/area/centcom/syndicate_mothership)
 "iJ" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 9
@@ -3454,17 +3476,6 @@
 /obj/machinery/light/directional/east,
 /turf/open/floor/iron,
 /area/centcom/central_command_areas/prison)
-"jC" = (
-/obj/docking_port/stationary{
-	dir = 4;
-	dwidth = 1;
-	height = 4;
-	shuttle_id = "pod_2_away";
-	name = "recovery ship";
-	width = 3
-	},
-/turf/open/space,
-/area/space)
 "jD" = (
 /obj/effect/turf_decal/loading_area{
 	dir = 8
@@ -3614,16 +3625,6 @@
 /obj/machinery/vending/cigarette/syndicate,
 /turf/open/floor/catwalk_floor/titanium,
 /area/centcom/syndicate_mothership/control)
-"jZ" = (
-/obj/docking_port/stationary{
-	dwidth = 25;
-	height = 50;
-	shuttle_id = "emergency_syndicate";
-	name = "Syndicate Auxiliary Shuttle Dock";
-	width = 50
-	},
-/turf/open/misc/asteroid/snow/airless,
-/area/centcom/syndicate_mothership)
 "ka" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
@@ -3848,6 +3849,18 @@
 	},
 /turf/open/floor/iron/grimy,
 /area/centcom/central_command_areas/courtroom)
+"kJ" = (
+/obj/docking_port/stationary{
+	dir = 4;
+	dwidth = 2;
+	height = 8;
+	name = "Backup Shuttle Dock";
+	roundstart_template = /datum/map_template/shuttle/emergency/backup;
+	shuttle_id = "backup_away";
+	width = 8
+	},
+/turf/open/space/basic,
+/area/space)
 "kK" = (
 /turf/closed/indestructible/abductor{
 	icon_state = "alien16"
@@ -4798,6 +4811,24 @@
 /obj/structure/flora/rock/pile/style_random,
 /turf/open/misc/asteroid/snow/icemoon,
 /area/centcom/syndicate_mothership/control)
+"nv" = (
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 1
+	},
+/obj/structure/table/glass/plasmaglass,
+/obj/structure/reagent_dispensers/wall/virusfood/directional/north,
+/obj/item/clothing/gloves/color/latex,
+/obj/item/healthanalyzer{
+	pixel_y = 3
+	},
+/obj/item/plant_analyzer,
+/obj/item/clothing/glasses/science,
+/obj/item/reagent_containers/spray/chemsprayer/bioterror{
+	pixel_x = -6;
+	pixel_y = 10
+	},
+/turf/open/floor/mineral/plastitanium/red,
+/area/centcom/syndicate_mothership/expansion_bioterrorism)
 "nw" = (
 /turf/open/floor/catwalk_floor/iron_smooth,
 /area/centcom/syndicate_mothership/control)
@@ -4834,18 +4865,6 @@
 /obj/machinery/atmospherics/pipe/smart/simple/general/visible,
 /turf/closed/indestructible/opsglass,
 /area/centcom/syndicate_mothership/expansion_bombthreat)
-"nF" = (
-/obj/structure/table/abductor,
-/obj/item/toy/plush/abductor{
-	pixel_y = 14;
-	pixel_x = -7
-	},
-/obj/item/toy/plush/abductor/agent{
-	pixel_y = 2;
-	pixel_x = 9
-	},
-/turf/open/floor/plating/abductor,
-/area/centcom/abductor_ship)
 "nG" = (
 /obj/machinery/computer/security/mining{
 	dir = 1
@@ -4859,6 +4878,12 @@
 "nH" = (
 /turf/closed/indestructible/syndicate,
 /area/centcom/syndicate_mothership/expansion_chemicalwarfare)
+"nI" = (
+/obj/machinery/power/shuttle_engine/propulsion/right{
+	dir = 1
+	},
+/turf/open/floor/plating/airless,
+/area/centcom/central_command_areas/evacuation/ship)
 "nJ" = (
 /obj/machinery/firealarm/directional/south,
 /obj/effect/turf_decal/tile/brown,
@@ -4898,6 +4923,18 @@
 /obj/structure/chair/office,
 /turf/open/floor/iron/grimy,
 /area/centcom/central_command_areas/control)
+"nO" = (
+/obj/docking_port/stationary{
+	dir = 8;
+	dwidth = 2;
+	height = 13;
+	json_key = "ferry";
+	name = "CentCom Ferry Dock";
+	shuttle_id = "ferry_away";
+	width = 5
+	},
+/turf/open/space,
+/area/space)
 "nP" = (
 /obj/structure/sink/kitchen/directional/west,
 /obj/item/reagent_containers/cup/bucket,
@@ -5306,6 +5343,16 @@
 /obj/effect/turf_decal/delivery,
 /turf/open/floor/iron,
 /area/centcom/central_command_areas/control)
+"oR" = (
+/obj/docking_port/stationary{
+	dwidth = 1;
+	height = 4;
+	name = "recovery ship";
+	shuttle_id = "pod_3_away";
+	width = 3
+	},
+/turf/open/space,
+/area/space)
 "oS" = (
 /obj/effect/turf_decal/siding/wideplating{
 	dir = 1
@@ -6338,6 +6385,12 @@
 /obj/effect/mapping_helpers/airlock/access/all/admin/general,
 /turf/open/floor/iron,
 /area/centcom/central_command_areas/ferry)
+"sf" = (
+/obj/machinery/airalarm/directional/east,
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/machinery/vending/wardrobe/cent_wardrobe,
+/turf/open/floor/iron/dark,
+/area/centcom/central_command_areas/admin)
 "sh" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/machinery/atmospherics/pipe/smart/manifold/purple/visible{
@@ -6494,17 +6547,6 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,
 /area/centcom/tdome/observation)
-"sI" = (
-/obj/docking_port/stationary{
-	dir = 4;
-	dwidth = 2;
-	height = 7;
-	shuttle_id = "pod_away";
-	name = "recovery ship";
-	width = 5
-	},
-/turf/open/space,
-/area/space)
 "sJ" = (
 /obj/machinery/vending/coffee,
 /obj/machinery/newscaster/directional/south,
@@ -6983,18 +7025,6 @@
 	},
 /turf/open/floor/iron/grimy,
 /area/centcom/central_command_areas/admin)
-"ui" = (
-/obj/docking_port/stationary{
-	dir = 4;
-	dwidth = 25;
-	height = 50;
-	shuttle_id = "emergency_away";
-	json_key = "emergency";
-	name = "CentCom Emergency Shuttle Dock";
-	width = 50
-	},
-/turf/open/space,
-/area/space)
 "uj" = (
 /obj/structure/flora/bush/lavendergrass/style_random,
 /obj/structure/flora/bush/sparsegrass/style_random,
@@ -7353,12 +7383,6 @@
 	},
 /turf/open/floor/carpet/black,
 /area/centcom/central_command_areas/holding)
-"vs" = (
-/obj/machinery/power/shuttle_engine/propulsion/left{
-	dir = 1
-	},
-/turf/open/floor/plating/airless,
-/area/centcom/central_command_areas/evacuation/ship)
 "vt" = (
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /obj/machinery/status_display/evac/directional/north,
@@ -7661,11 +7685,17 @@
 /turf/open/floor/wood/large,
 /area/centcom/central_command_areas/holding)
 "wl" = (
-/obj/machinery/power/shuttle_engine/propulsion/right{
-	dir = 1
+/obj/docking_port/stationary{
+	dir = 8;
+	dwidth = 8;
+	height = 7;
+	json_key = "cargo";
+	name = "CentCom";
+	shuttle_id = "cargo_away";
+	width = 20
 	},
-/turf/open/floor/plating/airless,
-/area/centcom/central_command_areas/evacuation/ship)
+/turf/open/space,
+/area/space)
 "wo" = (
 /obj/machinery/atmospherics/components/unary/thermomachine/freezer{
 	dir = 4
@@ -8556,10 +8586,6 @@
 	},
 /turf/open/floor/iron,
 /area/centcom/central_command_areas/control)
-"yW" = (
-/obj/machinery/power/shuttle_engine/propulsion,
-/turf/open/space,
-/area/centcom/wizard_station)
 "yY" = (
 /obj/structure/chair,
 /obj/effect/landmark/thunderdome/observe,
@@ -8742,16 +8768,14 @@
 /area/centcom/tdome/observation)
 "zy" = (
 /obj/docking_port/stationary{
-	dir = 4;
-	dwidth = 2;
-	height = 8;
-	shuttle_id = "backup_away";
-	name = "Backup Shuttle Dock";
-	roundstart_template = /datum/map_template/shuttle/emergency/backup;
-	width = 8
+	dwidth = 25;
+	height = 50;
+	name = "Syndicate Auxiliary Shuttle Dock";
+	shuttle_id = "emergency_syndicate";
+	width = 50
 	},
-/turf/open/space/basic,
-/area/space)
+/turf/open/misc/asteroid/snow/airless,
+/area/centcom/syndicate_mothership)
 "zz" = (
 /obj/structure/table/reinforced,
 /obj/item/restraints/handcuffs/cable/zipties,
@@ -9719,13 +9743,6 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,
 /area/centcom/tdome/observation)
-"BY" = (
-/obj/structure/destructible/cult/item_dispenser/archives/library,
-/obj/item/book/codex_gigas,
-/obj/machinery/airalarm/directional/east,
-/obj/effect/turf_decal/tile/neutral/fourcorners,
-/turf/open/floor/iron/dark,
-/area/centcom/central_command_areas/admin)
 "Ca" = (
 /obj/item/kirbyplants{
 	icon_state = "plant-22"
@@ -9932,6 +9949,12 @@
 	},
 /turf/open/floor/mineral/plastitanium,
 /area/centcom/syndicate_mothership/expansion_chemicalwarfare)
+"CC" = (
+/obj/machinery/power/shuttle_engine/propulsion/left{
+	dir = 1
+	},
+/turf/open/floor/plating/airless,
+/area/centcom/central_command_areas/evacuation/ship)
 "CD" = (
 /obj/item/kirbyplants{
 	icon_state = "plant-21"
@@ -9952,18 +9975,6 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,
 /area/centcom/central_command_areas/evacuation)
-"CF" = (
-/obj/docking_port/stationary{
-	dir = 8;
-	dwidth = 2;
-	height = 13;
-	shuttle_id = "ferry_away";
-	json_key = "ferry";
-	name = "CentCom Ferry Dock";
-	width = 5
-	},
-/turf/open/space,
-/area/space)
 "CG" = (
 /obj/effect/turf_decal/siding/wideplating/dark{
 	dir = 8
@@ -10530,12 +10541,6 @@
 	},
 /turf/open/floor/iron/white,
 /area/centcom/wizard_station)
-"Eq" = (
-/obj/machinery/power/shuttle_engine/propulsion{
-	dir = 1
-	},
-/turf/open/floor/plating/airless,
-/area/centcom/central_command_areas/evacuation/ship)
 "Er" = (
 /obj/structure/lattice/catwalk,
 /obj/effect/turf_decal/stripes/line,
@@ -10696,16 +10701,6 @@
 /obj/item/food/grown/tomato,
 /turf/open/floor/plastic,
 /area/centcom/syndicate_mothership/expansion_fridgerummage)
-"EM" = (
-/obj/docking_port/stationary{
-	dwidth = 1;
-	height = 4;
-	shuttle_id = "pod_3_away";
-	name = "recovery ship";
-	width = 3
-	},
-/turf/open/space,
-/area/space)
 "EN" = (
 /turf/open/floor/mineral/titanium/tiled/yellow,
 /area/centcom/syndicate_mothership/expansion_chemicalwarfare)
@@ -11110,17 +11105,6 @@
 /obj/structure/flora/grass/both/style_random,
 /turf/open/misc/asteroid/snow/airless,
 /area/centcom/syndicate_mothership)
-"FS" = (
-/obj/machinery/power/shuttle_engine/heater{
-	resistance_flags = 3
-	},
-/obj/structure/window/reinforced{
-	color = "#008000";
-	dir = 1;
-	resistance_flags = 3
-	},
-/turf/open/lava/airless,
-/area/centcom/wizard_station)
 "FT" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/general/hidden,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/orange/hidden/layer5,
@@ -11484,24 +11468,6 @@
 	},
 /turf/open/floor/iron/dark/textured_large,
 /area/centcom/syndicate_mothership/control)
-"GV" = (
-/obj/effect/turf_decal/siding/thinplating_new/dark{
-	dir = 1
-	},
-/obj/structure/table/glass/plasmaglass,
-/obj/structure/reagent_dispensers/wall/virusfood/directional/north,
-/obj/item/clothing/gloves/color/latex,
-/obj/item/healthanalyzer{
-	pixel_y = 3
-	},
-/obj/item/plant_analyzer,
-/obj/item/clothing/glasses/science,
-/obj/item/reagent_containers/spray/chemsprayer/bioterror{
-	pixel_y = 10;
-	pixel_x = -6
-	},
-/turf/open/floor/mineral/plastitanium/red,
-/area/centcom/syndicate_mothership/expansion_bioterrorism)
 "GW" = (
 /obj/effect/turf_decal/tile/bar,
 /obj/effect/turf_decal/tile/bar{
@@ -12228,6 +12194,12 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/orange/hidden/layer5,
 /turf/open/floor/iron,
 /area/centcom/syndicate_mothership/control)
+"Jo" = (
+/obj/machinery/power/shuttle_engine/propulsion{
+	dir = 1
+	},
+/turf/open/floor/plating/airless,
+/area/centcom/central_command_areas/evacuation/ship)
 "Jp" = (
 /obj/machinery/vending/cigarette/syndicate,
 /turf/open/floor/mineral/titanium,
@@ -12477,63 +12449,6 @@
 "Ki" = (
 /turf/open/lava/plasma/ice_moon,
 /area/centcom/syndicate_mothership/control)
-"Kj" = (
-/obj/structure/table/glass/plasmaglass,
-/obj/item/pen{
-	pixel_x = 9;
-	pixel_y = 18
-	},
-/obj/structure/sign/poster/contraband/syndiemoth{
-	pixel_x = -32
-	},
-/obj/item/storage/box/beakers{
-	pixel_x = -4;
-	pixel_y = 17
-	},
-/obj/item/storage/box/syringes{
-	pixel_y = 17;
-	pixel_x = 4
-	},
-/obj/item/assembly/igniter{
-	pixel_x = 7;
-	pixel_y = 6
-	},
-/obj/item/assembly/igniter{
-	pixel_x = 7;
-	pixel_y = 1
-	},
-/obj/item/assembly/igniter{
-	pixel_x = 7;
-	pixel_y = -3
-	},
-/obj/item/assembly/timer{
-	pixel_x = -6;
-	pixel_y = 3
-	},
-/obj/item/assembly/timer{
-	pixel_x = -6;
-	pixel_y = -1
-	},
-/obj/item/assembly/timer{
-	pixel_x = -6;
-	pixel_y = -5
-	},
-/turf/open/floor/mineral/titanium/tiled/yellow,
-/area/centcom/syndicate_mothership/expansion_chemicalwarfare)
-"Kk" = (
-/obj/docking_port/stationary{
-	area_type = /area/centcom/syndicate_mothership;
-	dheight = 1;
-	dir = 4;
-	dwidth = 12;
-	height = 17;
-	shuttle_id = "syndicate_away";
-	name = "syndicate recon outpost";
-	roundstart_template = /datum/map_template/shuttle/infiltrator/basic;
-	width = 23
-	},
-/turf/open/misc/asteroid/snow/airless,
-/area/centcom/syndicate_mothership)
 "Kl" = (
 /obj/machinery/camera/autoname/directional/south{
 	network = list("nukie")
@@ -12950,6 +12865,25 @@
 /obj/structure/speaking_tile,
 /turf/closed/mineral/ash_rock,
 /area/awaymission/errorroom)
+"LY" = (
+/obj/docking_port/stationary{
+	dir = 4;
+	dwidth = 25;
+	height = 50;
+	json_key = "emergency";
+	name = "CentCom Emergency Shuttle Dock";
+	shuttle_id = "emergency_away";
+	width = 50
+	},
+/turf/open/space,
+/area/space)
+"LZ" = (
+/obj/structure/window/reinforced,
+/obj/machinery/power/shuttle_engine/heater{
+	dir = 1
+	},
+/turf/open/floor/plating/airless,
+/area/centcom/central_command_areas/evacuation/ship)
 "Mb" = (
 /obj/structure/table/reinforced,
 /obj/effect/turf_decal/siding/red/corner{
@@ -13381,6 +13315,17 @@
 	heat_capacity = 1e+006
 	},
 /area/centcom/tdome/observation)
+"Nm" = (
+/obj/machinery/power/shuttle_engine/heater{
+	resistance_flags = 3
+	},
+/obj/structure/window/reinforced{
+	color = "#008000";
+	dir = 1;
+	resistance_flags = 3
+	},
+/turf/open/lava/airless,
+/area/centcom/wizard_station)
 "Nn" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/lockbox/loyalty,
@@ -14615,6 +14560,10 @@
 /obj/item/clothing/under/costume/roman,
 /turf/open/floor/wood/parquet,
 /area/centcom/central_command_areas/holding)
+"QG" = (
+/obj/machinery/power/shuttle_engine/propulsion,
+/turf/open/space,
+/area/centcom/wizard_station)
 "QH" = (
 /obj/item/toy/figure/syndie,
 /turf/open/misc/asteroid/snow/icemoon,
@@ -14752,6 +14701,17 @@
 	},
 /turf/open/floor/iron,
 /area/centcom/central_command_areas/admin/storage)
+"QZ" = (
+/obj/docking_port/stationary{
+	dir = 4;
+	dwidth = 1;
+	height = 4;
+	name = "recovery ship";
+	shuttle_id = "pod_2_away";
+	width = 3
+	},
+/turf/open/space,
+/area/space)
 "Ra" = (
 /obj/machinery/door/airlock/centcom{
 	name = "CentCom Security"
@@ -15189,13 +15149,6 @@
 "Si" = (
 /turf/open/floor/iron,
 /area/centcom/central_command_areas/supplypod/loading/two)
-"Sj" = (
-/obj/structure/window/reinforced,
-/obj/machinery/power/shuttle_engine/heater{
-	dir = 1
-	},
-/turf/open/floor/plating/airless,
-/area/centcom/central_command_areas/evacuation/ship)
 "Sk" = (
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /obj/structure/table/reinforced,
@@ -15714,12 +15667,6 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,
 /area/centcom/tdome/observation)
-"TC" = (
-/obj/structure/sign/poster/contraband/syndicate_recruitment{
-	pixel_x = 4
-	},
-/turf/closed/wall/mineral/wood,
-/area/centcom/central_command_areas/holding)
 "TE" = (
 /obj/structure/chair/comfy/brown{
 	color = "#596479";
@@ -15813,6 +15760,49 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,
 /area/centcom/central_command_areas/supply)
+"TP" = (
+/obj/structure/table/glass/plasmaglass,
+/obj/item/pen{
+	pixel_x = 9;
+	pixel_y = 18
+	},
+/obj/structure/sign/poster/contraband/syndiemoth{
+	pixel_x = -32
+	},
+/obj/item/storage/box/beakers{
+	pixel_x = -4;
+	pixel_y = 17
+	},
+/obj/item/storage/box/syringes{
+	pixel_x = 4;
+	pixel_y = 17
+	},
+/obj/item/assembly/igniter{
+	pixel_x = 7;
+	pixel_y = 6
+	},
+/obj/item/assembly/igniter{
+	pixel_x = 7;
+	pixel_y = 1
+	},
+/obj/item/assembly/igniter{
+	pixel_x = 7;
+	pixel_y = -3
+	},
+/obj/item/assembly/timer{
+	pixel_x = -6;
+	pixel_y = 3
+	},
+/obj/item/assembly/timer{
+	pixel_x = -6;
+	pixel_y = -1
+	},
+/obj/item/assembly/timer{
+	pixel_x = -6;
+	pixel_y = -5
+	},
+/turf/open/floor/mineral/titanium/tiled/yellow,
+/area/centcom/syndicate_mothership/expansion_chemicalwarfare)
 "TQ" = (
 /obj/structure/bed{
 	dir = 4
@@ -16189,6 +16179,16 @@
 	},
 /turf/open/floor/iron,
 /area/centcom/central_command_areas/supplypod)
+"UN" = (
+/obj/docking_port/stationary{
+	dwidth = 1;
+	height = 4;
+	name = "recovery ship";
+	shuttle_id = "pod_4_away";
+	width = 3
+	},
+/turf/open/space,
+/area/space)
 "UO" = (
 /obj/machinery/door/airlock/centcom{
 	name = "CentCom Security"
@@ -17062,6 +17062,17 @@
 /obj/machinery/light/small/directional/north,
 /turf/open/misc/asteroid/snow/icemoon,
 /area/centcom/syndicate_mothership/control)
+"Xa" = (
+/obj/docking_port/stationary{
+	dir = 4;
+	dwidth = 2;
+	height = 7;
+	name = "recovery ship";
+	shuttle_id = "pod_away";
+	width = 5
+	},
+/turf/open/space,
+/area/space)
 "Xb" = (
 /obj/machinery/computer/security{
 	dir = 8
@@ -18023,18 +18034,6 @@
 /obj/structure/closet/crate/cardboard,
 /turf/open/floor/plating,
 /area/centcom/syndicate_mothership/control)
-"ZK" = (
-/obj/docking_port/stationary{
-	dir = 8;
-	dwidth = 8;
-	height = 7;
-	shuttle_id = "cargo_away";
-	json_key = "cargo";
-	name = "CentCom";
-	width = 20
-	},
-/turf/open/space,
-/area/space)
 "ZM" = (
 /obj/effect/turf_decal/tile/neutral,
 /turf/open/floor/iron,
@@ -19578,7 +19577,7 @@ qJ
 li
 lE
 li
-nF
+ae
 nd
 aa
 aa
@@ -19605,7 +19604,7 @@ Av
 li
 lE
 li
-nF
+ae
 nd
 aa
 aa
@@ -19635,7 +19634,7 @@ rg
 li
 lE
 li
-nF
+ae
 nd
 aa
 aa
@@ -19662,7 +19661,7 @@ Bl
 li
 lE
 li
-nF
+ae
 nd
 aa
 LV
@@ -23185,7 +23184,7 @@ Ue
 rp
 Zq
 Gx
-Kj
+TP
 zX
 nH
 kb
@@ -23706,7 +23705,7 @@ nw
 nw
 nw
 CN
-GV
+nv
 Gj
 Gu
 rG
@@ -25302,8 +25301,8 @@ EW
 qZ
 qZ
 Gr
-FS
-yW
+Nm
+QG
 lI
 lI
 aa
@@ -25559,8 +25558,8 @@ EX
 qZ
 qZ
 Gr
-FS
-yW
+Nm
+QG
 lI
 lI
 aa
@@ -25816,8 +25815,8 @@ EW
 qZ
 qZ
 Gr
-FS
-yW
+Nm
+QG
 lI
 lI
 aa
@@ -34994,7 +34993,7 @@ Ff
 Ff
 Ff
 Ff
-jZ
+zy
 Zb
 ll
 ll
@@ -39120,7 +39119,7 @@ Ff
 Ff
 Ff
 Ff
-Kk
+iI
 Ff
 Ff
 Ff
@@ -41457,7 +41456,7 @@ fO
 fO
 eZ
 YC
-TC
+eL
 fO
 fO
 fO
@@ -43038,8 +43037,8 @@ aa
 aa
 aa
 aa
-wl
-Sj
+nI
+LZ
 KQ
 KQ
 KH
@@ -43295,8 +43294,8 @@ aa
 aa
 aa
 aa
-Eq
-Sj
+Jo
+LZ
 KR
 KQ
 KQ
@@ -43552,8 +43551,8 @@ aa
 aa
 aa
 aa
-vs
-Sj
+CC
+LZ
 KS
 KH
 KO
@@ -44323,7 +44322,7 @@ aa
 aa
 aa
 aa
-fL
+UN
 KO
 KV
 KV
@@ -45351,7 +45350,7 @@ aa
 aa
 aa
 aa
-EM
+oR
 KO
 KV
 KV
@@ -46122,8 +46121,8 @@ aa
 aa
 aa
 aa
-wl
-Sj
+nI
+LZ
 KS
 KH
 KO
@@ -46379,19 +46378,19 @@ aa
 aa
 aa
 aa
-Eq
-Sj
+Jo
+LZ
 KZ
 KQ
 KQ
 KH
 aa
 aa
-jC
+QZ
 aa
 aa
 aa
-sI
+Xa
 aa
 aa
 aa
@@ -46636,8 +46635,8 @@ aa
 aa
 aa
 aa
-vs
-Sj
+CC
+LZ
 KQ
 KQ
 KH
@@ -52491,7 +52490,7 @@ ZN
 oe
 aa
 aa
-CF
+nO
 aa
 aa
 aa
@@ -57091,7 +57090,7 @@ aa
 aa
 aa
 aa
-ZK
+wl
 aa
 aa
 aa
@@ -57626,7 +57625,7 @@ Mo
 Sx
 Gs
 Ow
-aD
+ah
 YU
 uZ
 oe
@@ -57878,7 +57877,7 @@ On
 Ui
 Cs
 tD
-BY
+sf
 ZF
 YU
 xy
@@ -67437,7 +67436,7 @@ aa
 aa
 aa
 aa
-zy
+kJ
 aa
 aa
 aa
@@ -70992,7 +70991,7 @@ aa
 aa
 aa
 aa
-ui
+LY
 aa
 aa
 aa
