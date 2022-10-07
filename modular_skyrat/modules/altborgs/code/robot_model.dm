@@ -210,7 +210,7 @@
 		// PLEASE ASSUME THE POSITION
 		"Protectron" = list(SKIN_ICON = CYBORG_ICON_MED, SKIN_ICON_STATE = "protectron_medical"),
 		"Miss M" = list(SKIN_ICON = CYBORG_ICON_MED, SKIN_ICON_STATE = "missm_med"),
-		"Arachne" = list(SKIN_ICON_STATE = "arachne_med", SKIN_ICON = CYBORG_ICON_MED),
+		"Arachne" = list(SKIN_ICON = CYBORG_ICON_MED, SKIN_ICON_STATE = "arachne_med"),
 		"Insekt" = list(SKIN_ICON = CYBORG_ICON_MED, SKIN_ICON_STATE = "insekt-Med"),
 		"Mech" = list(SKIN_ICON = CYBORG_ICON_MED, SKIN_ICON_STATE = "gibbs"),
 		"Hound" = list(SKIN_ICON = CYBORG_ICON_MED_WIDE, SKIN_ICON_STATE = "medihound", SKIN_FEATURES = list(R_TRAIT_UNIQUEWRECK, R_TRAIT_WIDE)),
