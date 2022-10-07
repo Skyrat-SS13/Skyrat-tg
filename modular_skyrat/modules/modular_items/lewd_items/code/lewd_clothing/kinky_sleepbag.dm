@@ -1,4 +1,3 @@
-/*
 /obj/item/clothing/suit/straight_jacket/kinky_sleepbag
 	name = "latex sleeping bag"
 	desc = "A tight sleeping bag made of a shiny material. It would be dangerous to put it on yourself."
@@ -199,4 +198,3 @@
 	. = ..()
 	owner.update_held_items()
 	stripper.update_held_items()
-*/
