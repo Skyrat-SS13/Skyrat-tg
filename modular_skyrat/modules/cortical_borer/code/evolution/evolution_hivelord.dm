@@ -58,8 +58,14 @@
 	name = "Produce Offspring II"
 	desc = "Allows you to produce eggs outside a host, in exchange for health and chemicals."
 	gain_text = "One of the worms seems to have taken an... Alpha position in the hive, producing more eggs than the others. Most worryingly, eggs have shown up without them having a host, but I haven't *seen* them lay any..."
+	evo_cost = 3
 	tier = 5
-	unlocked_evolutions = list(/datum/borer_evolution/sugar_immunity)
+	unlocked_evolutions = list(
+		/datum/borer_evolution/sugar_immunity,
+		/datum/borer_evolution/synthetic_borer,
+		/datum/borer_evolution/synthetic_chems_positive,
+		/datum/borer_evolution/synthetic_chems_negative,
+	)
 
 /datum/borer_evolution/hivelord/produce_offspring_alone/on_evolve(mob/living/simple_animal/cortical_borer/cortical_owner)
 	. = ..()

@@ -4,7 +4,7 @@
 	/// Description of the evolution
 	var/desc = ""
 	/// Cost to get the evolution
-	var/evo_cost = 2
+	var/evo_cost = 2 // T5 cost 3 points instead of 2
 	/// Text to show the borer when they evolve
 	var/gain_text = ""
 	/// What evolution genome this is
@@ -37,9 +37,3 @@
 		/datum/borer_evolution/hivelord/produce_offspring,
 		/datum/borer_evolution/diveworm/health_per_level,
 	)
-
-
-// Current path goes as follows:
-// Hivelord: Produce Offspring | Learn Blood Chemical | Stealth Mode
-// Symbiote: Willing Host | Expanded Chemical List | Revive Host
-// Diveworm: Expanded Chemical List | Egg Cluster

@@ -96,8 +96,13 @@
 	name = "Revive Host"
 	desc = "Revive your host and heal what ails them."
 	gain_text = "As I was in the lab, the most curious occurance so far happened. A Cortical Borer went into one of the cadaver's heads, and moments later they were standing again."
+	evo_cost = 3
 	tier = 5
-	unlocked_evolutions = list(/datum/borer_evolution/sugar_immunity)
+	unlocked_evolutions = list(
+		/datum/borer_evolution/sugar_immunity,
+		/datum/borer_evolution/synthetic_borer,
+		/datum/borer_evolution/synthetic_chems_positive,
+	)
 
 /datum/borer_evolution/symbiote/revive_host/on_evolve(mob/living/simple_animal/cortical_borer/cortical_owner)
 	. = ..()

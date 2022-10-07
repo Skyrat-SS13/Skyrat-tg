@@ -94,8 +94,13 @@
 	name = "Empowered Offspring"
 	desc = "Lay an egg in a deceased host, and after a delay an empowered borer will burst out."
 	gain_text = "Most eggs would be regurgitated through the throat from their hosts... but one did not. They exploded out the chest like a horror movie. What a worrying discovery."
+	evo_cost = 3
 	tier = 5
-	unlocked_evolutions = list(/datum/borer_evolution/sugar_immunity)
+	unlocked_evolutions = list(
+		/datum/borer_evolution/sugar_immunity,
+		/datum/borer_evolution/synthetic_borer,
+		/datum/borer_evolution/synthetic_chems_negative,
+	)
 
 /datum/borer_evolution/diveworm/empowered_offspring/on_evolve(mob/living/simple_animal/cortical_borer/cortical_owner)
 	. = ..()
