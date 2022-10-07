@@ -1,4 +1,3 @@
-/*
 /obj/structure/chair/shibari_stand
 	name = "shibari stand"
 	desc = "A stand for buckling people with ropes."
@@ -251,4 +250,3 @@
 	menu.ui_interact(usr)
 	to_chat(user, span_notice("You switch the frame's plastic fittings color."))
 	return TRUE
-*/
