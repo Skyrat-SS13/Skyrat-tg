@@ -101,13 +101,13 @@
 /obj/machinery/microwave/update_overlays()
 	// When this is the nth ingredient, whats its pixel_x?
 	var/static/list/ingredient_shifts = list(
-		0,
-		3,
 		-3,
-		4,
-		-4,
-		2,
-		-2,
+		0,
+		-6,
+		1,
+		-7,
+		-1,
+		-5,
 	)
 
 	. = ..()
