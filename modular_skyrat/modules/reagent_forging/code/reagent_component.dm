@@ -30,7 +30,6 @@
 	START_PROCESSING(SSdcs, src)
 
 /datum/component/reagent_clothing/Destroy(force, silent)
-	UnregisterSignal(parent_clothing, list(COMSIG_ITEM_EQUIPPED, COMSIG_ITEM_PRE_UNEQUIP, COMSIG_PARENT_EXAMINE))
 	parent_clothing = null
 	cloth_wearer = null
 	QDEL_NULL(applying_container)
@@ -80,7 +79,6 @@
 	RegisterSignal(parent_weapon, COMSIG_PARENT_EXAMINE, .proc/on_examine)
 
 /datum/component/reagent_weapon/Destroy(force, silent)
-	UnregisterSignal(parent_weapon, COMSIG_ITEM_ATTACK, COMSIG_PARENT_EXAMINE)
 	parent_weapon = null
 	return ..()
 
