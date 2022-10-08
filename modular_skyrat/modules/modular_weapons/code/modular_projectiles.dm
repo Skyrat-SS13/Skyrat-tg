@@ -224,7 +224,7 @@
 /obj/item/ammo_casing/c34
 	name = ".34 bullet casing"
 	desc = "A .34 bullet casing."
-	caliber = "c32acp"
+	caliber = "c34acp"
 	projectile_type = /obj/projectile/bullet/c34
 
 /obj/projectile/bullet/c34

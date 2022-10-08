@@ -71,13 +71,6 @@
 	. = ..()
 	AddElement(/datum/element/polychromic, poly_colors)
 
-/obj/item/clothing/under/dress/skirt/polychromic/pleated
-	name = "polychromic pleated skirt"
-	desc = "A magnificent pleated skirt complements the woolen polychromatic sweater."
-	icon_state = "polypleat"
-	body_parts_covered = CHEST|GROIN|ARMS
-	poly_colors = list("#88CCFF", "#888888", "#FF3333")
-
 /obj/item/clothing/under/misc/poly_shirt
 	name = "polychromic button-up shirt"
 	desc = "A fancy button-up shirt made with polychromic threads."
@@ -152,30 +145,6 @@
 	icon_state = "polyfemtankpantsu"
 	poly_colors = list("#888888", "#FF3333", "#FFFFFF")
 
-/obj/item/clothing/under/shorts/polychromic
-	name = "polychromic athletic shorts"
-	desc = "95% Polychrome, 5% Spandex!"
-	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
-	icon_state = "polyshortpants"
-	supports_variations_flags = NONE
-	greyscale_config = null //Temporary measures while Polychrom is gutted.
-	greyscale_config_worn = null
-	greyscale_config_worn_digi = null
-	var/list/poly_colors = list("#FFFFFF", "#FF8888", "#FFFFFF")
-
-/obj/item/clothing/under/shorts/polychromic/Initialize(mapload)
-	. = ..()
-	AddElement(/datum/element/polychromic, poly_colors)
-
-/obj/item/clothing/under/shorts/polychromic/pantsu
-	name = "polychromic panties"
-	desc = "Topless striped panties. Now with 120% more polychrome!"
-	icon_state = "polypantsu"
-	body_parts_covered = GROIN
-	supports_variations_flags = NONE
-	poly_colors = list("#FFFFFF", "#88CCFF", "#FFFFFF")
-
 /**************CKEY EXCLUSIVES*************/
 
 // Donation reward for Grunnyyy
@@ -228,7 +197,7 @@
 		selects["Save"] = "Save"
 		selects["Delete"] = "Delete"
 		var/selection = input(user, "", "Color Menu", currentcolor) as null|anything in selects
-		if(QDELETED(src) || !user.canUseTopic(src, BE_CLOSE))
+		if(QDELETED(src) || !user.canUseTopic(src, be_close = TRUE))
 			return
 		switch(selection)
 			if("Save")
@@ -245,7 +214,7 @@
 				currentcolor = colors[selection]
 	else if(istype(action, /datum/action/item_action/dtcleargrid))
 		var/yesnomaybe = tgui_alert("Are you sure you wanna clear the canvas?", "", list("Yes", "No", "Maybe"))
-		if(QDELETED(src) || !user.canUseTopic(src, BE_CLOSE))
+		if(QDELETED(src) || !user.canUseTopic(src, be_close = TRUE))
 			return
 		switch(yesnomaybe)
 			if("Yes")
@@ -370,9 +339,10 @@
 /obj/item/clothing/mask/gas/nightlight
 	name = "FAR-14C IRU"
 	desc = "A close-fitting respirator designed by Forestiian Armories, commonly used by Military and Civilian Personnel alike. It reeks of Militarism."
-	actions_types = list(/datum/action/item_action/adjust)
-	icon_state = "sechailer"
-	inhand_icon_state = "sechailer"
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/masks.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/mask.dmi'
+	icon_state = "far14c"
+	inhand_icon_state = "far14c"
 	clothing_flags = BLOCK_GAS_SMOKE_EFFECT | MASKINTERNALS //same flags as actual sec hailer gas mask
 	flags_inv = HIDEFACIALHAIR | HIDEFACE | HIDESNOUT
 	flags_cover = NONE
@@ -380,9 +350,6 @@
 	visor_flags_inv = HIDEFACIALHAIR | HIDEFACE | HIDESNOUT
 	w_class = WEIGHT_CLASS_SMALL
 	tint = 0
-
-/obj/item/clothing/mask/gas/nightlight/ui_action_click(mob/user, action)
-	adjustmask(user)
 
 // Donation reward for TheOOZ
 /obj/item/clothing/mask/animal/kindle
@@ -1224,16 +1191,12 @@
 			name = "license to [choice]"
 
 // Donation reward for 1ceres
-/obj/item/sequence_scanner/korpstech
-	name = "Korpstech genetics scanner"
-	desc = "A hand-held sequence scanner for analyzing someone's gene sequence on the fly. This one is bright pink and has some kind of Helix shape on its back."
-	icon_state = "korpsgenetic"
-	inhand_icon_state = "korpsgenetic"
-	worn_icon_state = "korpsgenetic"
-	icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
-	lefthand_file = 'modular_skyrat/master_files/icons/donator/mob/inhands/donator_left.dmi'
-	righthand_file = 'modular_skyrat/master_files/icons/donator/mob/inhands/donator_right.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/custom_w.dmi'
+/obj/item/clothing/suit/jacket/gorlex_harness
+	name = "engine technician harness"
+	desc = "A blood-red engineering technician harness. You can't seem to figure out a use to it, but it seems to seal magnetically in some places."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
+	icon_state = "gorlexharness"
 
 // Donation reward for 1ceres
 /obj/item/poster/korpstech
@@ -1266,7 +1229,7 @@
 /obj/item/clothing/suit/toggle/labcoat/tenrai/worn_overlays(mutable_appearance/standing, isinhands, icon_file)
 	. = ..()
 	if(!isinhands)
-		. += emissive_appearance(icon_file, "[icon_state]-emissive", alpha = src.alpha)
+		. += emissive_appearance(icon_file, "[icon_state]-emissive", src, alpha = src.alpha)
 
 //Donation reward for RealWinterFrost
 /obj/item/clothing/neck/cloak/fluffycloak
@@ -1279,7 +1242,7 @@
 /obj/item/clothing/neck/cloak/fluffycloak/worn_overlays(mutable_appearance/standing, isinhands, icon_file)
 	. = ..()
 	if(!isinhands)
-		. += emissive_appearance(icon_file, "[icon_state]-emissive", alpha = src.alpha)
+		. += emissive_appearance(icon_file, "[icon_state]-emissive", src, alpha = src.alpha)
 
 
 /obj/item/clothing/mask/gas/larpswat
@@ -1429,3 +1392,11 @@
 			and shining example to the core values of the Sol Federation Marine Corps.\""
 	icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
 	sideslist = list("MARSOC", "SFMC")
+
+// Donation reward for Kay-Nite
+/obj/item/clothing/under/tactichill
+	name = "tactichill jacket"
+	desc = "The brighter variant of the tacticool clotheswear, for when you want to look even cooler than usual and still operate at the same time."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
+	icon_state = "tactichill"

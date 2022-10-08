@@ -6,6 +6,7 @@
 	anchored = TRUE
 	density = FALSE
 	max_integrity = 1
+	obj_flags = UNIQUE_RENAME
 	/// What object created this projection? Can be null as a projector isn't required for this to exist
 	var/obj/item/wargame_projector/projector
 
@@ -23,7 +24,7 @@
 
 /obj/structure/wargame_hologram/update_overlays()
 	. = ..()
-	. += emissive_appearance(icon, icon_state)
+	. += emissive_appearance(icon, icon_state, src)
 
 /*
 Projections for 'moving vessels' in order from smallest to largest representation

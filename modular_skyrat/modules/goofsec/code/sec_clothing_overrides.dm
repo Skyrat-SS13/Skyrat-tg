@@ -103,6 +103,10 @@
 			RESKIN_ICON_STATE = "belt_white",
 			RESKIN_WORN_ICON_STATE = "belt_white"
 		),
+		"Slim Variant" = list(
+			RESKIN_ICON_STATE = "belt_slim",
+			RESKIN_WORN_ICON_STATE = "belt_slim"
+		),
 	)
 
 /obj/item/storage/belt/security/webbing
@@ -628,21 +632,21 @@
 */
 
 /obj/item/storage/backpack/security/redsec
-	icon = 'icons/obj/storage/storage.dmi'
-	worn_icon = 'icons/mob/clothing/back.dmi'
-	icon_state = "securitypack"
-	current_skin = "securitypack"	//prevents reskinning
+	icon = 'icons/obj/storage/backpack.dmi'
+	worn_icon = 'icons/mob/clothing/back/backpack.dmi'
+	icon_state = "backpack-security"
+	current_skin = "backpack-security" //prevents reskinning
 
 /obj/item/storage/backpack/satchel/sec/redsec
-	icon = 'icons/obj/storage/storage.dmi'
-	worn_icon = 'icons/mob/clothing/back.dmi'
-	icon_state = "satchel-sec"
+	icon = 'icons/obj/storage/backpack.dmi'
+	worn_icon = 'icons/mob/clothing/back/backpack.dmi'
+	icon_state = "satchel-security"
 
 /obj/item/storage/backpack/duffelbag/sec/redsec
-	icon = 'icons/obj/storage/storage.dmi'
-	worn_icon = 'icons/mob/clothing/back.dmi'
-	icon_state = "duffel-sec"
-	current_skin = "duffel-sec"	//prevents reskinning
+	icon = 'icons/obj/storage/backpack.dmi'
+	worn_icon = 'icons/mob/clothing/back/backpack.dmi'
+	icon_state = "duffel-security"
+	current_skin = "duffel-security" //prevents reskinning
 
 /*
 *	BELT
