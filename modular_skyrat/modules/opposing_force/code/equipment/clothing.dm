@@ -76,7 +76,7 @@
 				or murder with a frying pan."
 
 /datum/opposing_force_equipment/clothing/nrivest
-	item_type = /obj/item/clothing/suit/armor/vest/russian
+	item_type = /obj/item/clothing/suit/armor/vest/russian/nri
 
 /datum/opposing_force_equipment/clothing/redut
 	item_type = /obj/item/clothing/suit/armor/heavy/nri/old

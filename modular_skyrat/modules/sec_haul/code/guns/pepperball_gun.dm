@@ -64,7 +64,7 @@
 	build_type = AUTOLATHE | PROTOLATHE
 	materials = list(/datum/material/iron = 5000)
 	build_path = /obj/item/ammo_box/advanced/pepperballs
-	category = list(RND_CATEGORY_INITIAL, RND_CATEGORY_SECURITY, RND_CATEGORY_AMMO)
+	category = list(RND_CATEGORY_INITIAL, RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO)
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 
 /obj/item/ammo_box/advanced/pepperballs

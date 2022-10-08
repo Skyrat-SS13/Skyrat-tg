@@ -22,7 +22,7 @@
 /// Someone, for the love of god, profile this.  Is there a reason to cache mutable_appearance
 /// if so, why are we JUST doing the airlocks when we can put this in mutable_appearance.dm for
 /// everything
-/proc/get_airlock_overlay(icon_state, icon_file, em_block)
+/proc/get_airlock_overlay(icon_state, icon_file, atom/offset_spokesman, em_block)
 	var/static/list/airlock_overlays = list()
 
 	var/base_icon_key = "[icon_state][REF(icon_file)]"
@@ -31,10 +31,12 @@
 	if(isnull(em_block))
 		return
 
-	var/em_block_key = "[base_icon_key][em_block]"
+	var/turf/our_turf = get_turf(offset_spokesman)
+
+	var/em_block_key = "[base_icon_key][em_block][GET_TURF_PLANE_OFFSET(our_turf)]"
 	var/mutable_appearance/em_blocker = airlock_overlays[em_block_key]
 	if(!em_blocker)
-		em_blocker = airlock_overlays[em_block_key] = mutable_appearance(icon_file, icon_state, plane = EMISSIVE_PLANE, appearance_flags = EMISSIVE_APPEARANCE_FLAGS)
+		em_blocker = airlock_overlays[em_block_key] = mutable_appearance(icon_file, icon_state, offset_spokesman = offset_spokesman, plane = EMISSIVE_PLANE, appearance_flags = EMISSIVE_APPEARANCE_FLAGS)
 		em_blocker.color = em_block ? GLOB.em_block_color : GLOB.emissive_color
 
 	return list(., em_blocker)
@@ -150,23 +152,10 @@
 	rad_insulation = RAD_MEDIUM_INSULATION
 
 /obj/machinery/door/airlock/Initialize(mapload)
-	//SKYRAT EDIT ADDITION BEGIN - Door aesthetic overhaul
-	vis_overlay1 = new()
-	vis_overlay1.icon = overlays_file
-	vis_overlay2 = new()
-	vis_overlay2.icon = overlays_file
-	vis_overlay2.layer = layer
-	vis_overlay2.plane = 1
-	vis_contents += vis_overlay1
-	vis_contents += vis_overlay2
-	//SKYRAT EDIT END
 	. = ..()
 	//SKYRAT EDIT ADDITION BEGIN - Door aesthetic overhaul
 	if(multi_tile)
 		SetBounds()
-	if(multi_tile)
-		vis_overlay1.dir = src.dir
-		vis_overlay2.dir = src.dir
 	update_overlays()
 	//SKYRAT EDIT END
 	init_network_id(NETWORK_DOOR_AIRLOCKS)
@@ -454,6 +443,8 @@
 /obj/machinery/door/airlock/proc/shock(mob/living/user, prb)
 	if(!istype(user) || !hasPower()) // unpowered, no shock
 		return FALSE
+	if(HAS_TRAIT(user, TRAIT_AIRLOCK_SHOCKIMMUNE)) // Be a bit more clever man come on
+		return FALSE
 	if(!COOLDOWN_FINISHED(src, shockCooldown))
 		return FALSE //Already shocked someone recently?
 	if(!prob(prb))
@@ -462,6 +453,9 @@
 	var/check_range = TRUE
 	if(electrocute_mob(user, get_area(src), src, 1, check_range))
 		COOLDOWN_START(src, shockCooldown, 1 SECONDS)
+		// Provides timed airlock shock immunity, to prevent overly cheesy deathtraps
+		ADD_TRAIT(user, TRAIT_AIRLOCK_SHOCKIMMUNE, REF(src))
+		addtimer(TRAIT_CALLBACK_REMOVE(user, TRAIT_AIRLOCK_SHOCKIMMUNE, REF(src)), 1 SECONDS)
 		return TRUE
 	else
 		return FALSE
@@ -514,45 +508,44 @@
 			frame_state = AIRLOCK_FRAME_OPENING
 			light_state = AIRLOCK_LIGHT_OPENING
 
-	. += get_airlock_overlay(frame_state, icon, em_block = TRUE)
+	. += get_airlock_overlay(frame_state, icon, src, em_block = TRUE)
 	if(airlock_material)
-		. += get_airlock_overlay("[airlock_material]_[frame_state]", overlays_file, em_block = TRUE)
+		. += get_airlock_overlay("[airlock_material]_[frame_state]", overlays_file, src, em_block = TRUE)
 	else
-		. += get_airlock_overlay("fill_[frame_state]", icon, em_block = TRUE)
+		. += get_airlock_overlay("fill_[frame_state]", icon, src, em_block = TRUE)
 
 	if(lights && hasPower())
-		. += get_airlock_overlay("lights_[light_state]", overlays_file, em_block = FALSE)
+		. += get_airlock_overlay("lights_[light_state]", overlays_file, src, em_block = FALSE)
 
 	if(panel_open)
-		. += get_airlock_overlay("panel_[frame_state][security_level ? "_protected" : null]", overlays_file, em_block = TRUE)
+		. += get_airlock_overlay("panel_[frame_state][security_level ? "_protected" : null]", overlays_file, src, em_block = TRUE)
 	if(frame_state == AIRLOCK_FRAME_CLOSED && welded)
-		. += get_airlock_overlay("welded", overlays_file, em_block = TRUE)
+		. += get_airlock_overlay("welded", overlays_file, src, em_block = TRUE)
 
 	if(airlock_state == AIRLOCK_EMAG)
-		. += get_airlock_overlay("sparks", overlays_file, em_block = FALSE)
+		. += get_airlock_overlay("sparks", overlays_file, src, em_block = FALSE)
 
 	if(hasPower())
 		if(frame_state == AIRLOCK_FRAME_CLOSED)
 			if(atom_integrity < integrity_failure * max_integrity)
-				. += get_airlock_overlay("sparks_broken", overlays_file, em_block = FALSE)
+				. += get_airlock_overlay("sparks_broken", overlays_file, src, em_block = FALSE)
 			else if(atom_integrity < (0.75 * max_integrity))
-				. += get_airlock_overlay("sparks_damaged", overlays_file, em_block = FALSE)
+				. += get_airlock_overlay("sparks_damaged", overlays_file, src, em_block = FALSE)
 		else if(frame_state == AIRLOCK_FRAME_OPEN)
 			if(atom_integrity < (0.75 * max_integrity))
-				. += get_airlock_overlay("sparks_open", overlays_file, em_block = FALSE)
+				. += get_airlock_overlay("sparks_open", overlays_file, src, em_block = FALSE)
 
 	if(note)
-		. += get_airlock_overlay(get_note_state(frame_state), note_overlay_file, em_block = TRUE)
+		. += get_airlock_overlay(get_note_state(frame_state), note_overlay_file, src, em_block = TRUE)
 
 	if(frame_state == AIRLOCK_FRAME_CLOSED && seal)
-		. += get_airlock_overlay("sealed", overlays_file, em_block = TRUE)
+		. += get_airlock_overlay("sealed", overlays_file, src, em_block = TRUE)
 
 	if(hasPower() && unres_sides)
 		for(var/heading in list(NORTH,SOUTH,EAST,WEST))
 			if(!(unres_sides & heading))
 				continue
-			var/image/floorlight = image(icon='icons/obj/doors/airlocks/station/overlays.dmi', icon_state="unres_[heading]")
-			floorlight.plane = ABOVE_LIGHTING_PLANE
+			var/mutable_appearance/floorlight = mutable_appearance('icons/obj/doors/airlocks/station/overlays.dmi', "unres_[heading]", FLOAT_LAYER, src, ABOVE_LIGHTING_PLANE)
 			switch (heading)
 				if (NORTH)
 					floorlight.pixel_x = 0

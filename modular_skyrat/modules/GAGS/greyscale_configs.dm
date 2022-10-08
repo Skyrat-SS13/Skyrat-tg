@@ -108,6 +108,58 @@
 	name = "Worn Vape - Digitigrade"
 	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/mask.dmi'
 
+// RESPIRATOR
+/datum/greyscale_config/respirator
+	name = "Colourable Respirator"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/masks.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/respirator/respirator.json'
+
+/datum/greyscale_config/respirator/worn
+	name = "Colourable Respirator (Worn)"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/respirator/respirator_worn.json'
+
+/datum/greyscale_config/respirator/worn/snouted
+	name = "Colourable Respirator (Worn) (Snouted)"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/masks_snout.dmi'
+
+/datum/greyscale_config/respirator/worn/better_vox
+	name = "Colourable Respirator (Worn) (Vox Primalis)"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/masks_vox_better.dmi'
+
+/datum/greyscale_config/respirator/worn/vox
+	name = "Colourable Respirator (Worn) (Vox)"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/masks_vox.dmi'
+
+/datum/greyscale_config/respirator/worn/teshari
+	name = "Colourable Respirator (Worn) (Teshari)"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/masks_teshari.dmi'
+
+// STERILE
+/datum/greyscale_config/sterile_mask
+	name = "Colourable Sterile Mask"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/masks.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/sterile_mask/sterile.json'
+
+/datum/greyscale_config/sterile_mask/worn
+	name = "Colourable Sterile Mask (Worn)"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/sterile_mask/sterile_worn.json'
+
+/datum/greyscale_config/sterile_mask/worn/snouted
+	name = "Colourable Sterile Mask (Worn) (Snouted)"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/masks_snout.dmi'
+
+/datum/greyscale_config/sterile_mask/worn/better_vox
+	name = "Colourable Sterile Mask (Worn) (Vox Primalis)"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/masks_vox_better.dmi'
+
+/datum/greyscale_config/sterile_mask/worn/vox
+	name = "Colourable Sterile Mask (Worn) (Vox)"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/masks_vox.dmi'
+
+/datum/greyscale_config/sterile_mask/worn/teshari
+	name = "Colourable Sterile Mask (Worn) (Teshari)"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/masks_teshari.dmi'
+
 /*
 *	NECK
 */

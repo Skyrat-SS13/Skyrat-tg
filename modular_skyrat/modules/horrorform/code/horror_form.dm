@@ -58,7 +58,7 @@
 		changeling_name = "Mr. "
 	else
 		changeling_name = "Mx. "
-	changeling_name += pick(GLOB.possible_abductor_names) //Abductor suffixes are the same ones as changelings
+	changeling_name += pick(GLOB.greek_letters) //Abductor suffixes are the same ones as changelings
 
 	new_mob.real_name = changeling_name
 	new_mob.name = new_mob.real_name
