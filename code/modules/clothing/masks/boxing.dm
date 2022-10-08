@@ -11,6 +11,7 @@
 /obj/item/clothing/mask/balaclava/attack_self(mob/user)
 	adjustmask(user)
 
+<<<<<<< HEAD
 /obj/item/clothing/mask/infiltrator
 	name = "infiltrator balaclava"
 	desc = "It makes you feel safe in your anonymity, but for a stealth outfit you sure do look obvious that you're up to no good. It seems to have a built in heads-up display."
@@ -43,6 +44,8 @@
 	voice_unknown = FALSE
 	return ..()
 
+=======
+>>>>>>> a97c68a6df5 (Infiltrator Suit Rework: MODsuit edition (#70303))
 /obj/item/clothing/mask/luchador
 	name = "Luchador Mask"
 	desc = "Worn by robust fighters, flying high to defeat their foes!"

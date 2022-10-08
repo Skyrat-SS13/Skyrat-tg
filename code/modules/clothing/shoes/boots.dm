@@ -15,6 +15,7 @@
 
 	create_storage(type = /datum/storage/pockets/shoes)
 
+<<<<<<< HEAD
 /obj/item/clothing/shoes/combat/sneakboots
 	name = "sneakboots"
 	desc = "These boots have special noise cancelling soles. Perfect for stealth, if it wasn't for the color scheme."
@@ -24,6 +25,8 @@
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	clothing_traits = list(TRAIT_SILENT_FOOTSTEPS)
 
+=======
+>>>>>>> a97c68a6df5 (Infiltrator Suit Rework: MODsuit edition (#70303))
 /obj/item/clothing/shoes/combat/swat //overpowered boots for death squads
 	name = "\improper SWAT boots"
 	desc = "High speed, no drag combat boots."

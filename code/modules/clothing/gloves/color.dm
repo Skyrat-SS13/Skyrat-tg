@@ -255,6 +255,7 @@
 	inhand_icon_state = "nitrilegloves"
 	clothing_traits = list(TRAIT_QUICKER_CARRY, TRAIT_FASTMED)
 
+<<<<<<< HEAD
 /obj/item/clothing/gloves/color/infiltrator
 	name = "infiltrator gloves"
 	desc = "Specialized tactical gloves for carrying people around. Has tactical rubber grips for tactical ease of kidnapping. Tactically."
@@ -265,6 +266,8 @@
 	clothing_traits = list(TRAIT_QUICKER_CARRY)
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 
+=======
+>>>>>>> a97c68a6df5 (Infiltrator Suit Rework: MODsuit edition (#70303))
 /obj/item/clothing/gloves/color/latex/engineering
 	name = "tinker's gloves"
 	desc = "Overdesigned engineering gloves that have automated construction subrutines dialed in, allowing for faster construction while worn."

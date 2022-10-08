@@ -350,6 +350,7 @@
 	min_cold_protection_temperature = SPACE_HELM_MIN_TEMP_PROTECT
 	armor = list(MELEE = 25, BULLET = 20, LASER = 20, ENERGY = 30, BOMB = 20, BIO = 50, FIRE = -10, ACID = 50, WOUND = 5)
 
+<<<<<<< HEAD
 /obj/item/clothing/head/helmet/infiltrator
 	name = "infiltrator helmet"
 	desc = "The galaxy isn't big enough for the two of us."
@@ -362,6 +363,8 @@
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH | PEPPERPROOF
 	strip_delay = 80
 
+=======
+>>>>>>> a97c68a6df5 (Infiltrator Suit Rework: MODsuit edition (#70303))
 /obj/item/clothing/head/helmet/elder_atmosian
 	name = "\improper Elder Atmosian Helmet"
 	desc = "A superb helmet made with the toughest and rarest materials available to man."
