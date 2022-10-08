@@ -57,6 +57,7 @@
 	possible_mobs = list(
 		/mob/living/simple_animal/hostile/blackmesa/xen/headcrab_zombie/scientist,
 		/mob/living/simple_animal/hostile/blackmesa/xen/headcrab_zombie/guard,
+		/mob/living/simple_animal/hostile/blackmesa/xen/headcrab_zombie/hecu,
 	)
 
 /obj/effect/random_mob_placer/blackops
@@ -89,3 +90,49 @@
 /obj/effect/random_mob_placer/vortigaunt
 	icon_state = "spawn_vortigaunt"
 	possible_mobs = list(/mob/living/simple_animal/hostile/blackmesa/xen/vortigaunt)
+
+/obj/effect/mob_spawn/corpse/human/hecu_zombie
+	name = "HECU"
+	outfit = /datum/outfit/hecucorpse
+	icon_state = "corpsebartender" /// It 'vaguely' looks like HECU
+	brute_damage = 1000
+
+/datum/outfit/hecucorpse
+	name = "BMRF HECU Corpse"
+	uniform = /obj/item/clothing/under/rank/security/officer/hecu
+	head = /obj/item/clothing/head/helmet
+	suit = /obj/item/clothing/suit/armor/vest
+	mask = /obj/item/clothing/mask/gas/hecu2
+	gloves = /obj/item/clothing/gloves/combat
+	belt = /obj/item/storage/belt/military/assault/hecu
+	shoes = /obj/item/clothing/shoes/combat
+	l_pocket = /obj/item/storage/belt/bowie_sheath
+	r_pocket = /obj/item/flashlight/flare
+
+/obj/effect/mob_spawn/corpse/human/scientist_zombie
+	name = "Science Team"
+	outfit = /datum/outfit/sciteamcorpse
+	icon_state = "corpsescientist"
+	brute_damage = 1000
+
+/datum/outfit/sciteamcorpse
+	name = "BMRF Science Team Corpse"
+	uniform = /obj/item/clothing/under/rank/rnd/scientist/skyrat/hlscience
+	suit = /obj/item/clothing/suit/toggle/labcoat
+	shoes = /obj/item/clothing/shoes/laceup
+	gloves = /obj/item/clothing/gloves/color/latex
+
+/obj/effect/mob_spawn/corpse/human/guard_zombie
+	name = "Security Guard"
+	outfit = /datum/outfit/barneycorpse
+	icon_state = "corpsedoctor" /// It 'vaguely' looks like the guard
+	brute_damage = 1000
+
+/datum/outfit/barneycorpse
+	name = "BMRF Security Guard Corpse"
+	uniform = /obj/item/clothing/under/rank/security/officer/blueshirt
+	head = /obj/item/clothing/head/helmet/blueshirt
+	suit = /obj/item/clothing/suit/armor/vest/blueshirt
+	shoes = /obj/item/clothing/shoes/jackboots
+	gloves = /obj/item/clothing/gloves/color/black
+	belt = /obj/item/storage/belt/security
