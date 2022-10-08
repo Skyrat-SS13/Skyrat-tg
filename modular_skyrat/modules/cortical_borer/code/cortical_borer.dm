@@ -284,15 +284,11 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 	if(chemical_storage < max_chemical_storage)
 		if(!(upgrade_flags & BORER_STEALTH_MODE))
 			chemical_storage = min(chemical_storage + chemical_regen, max_chemical_storage)
-			if(chemical_storage > max_chemical_storage)
-				chemical_storage = max_chemical_storage
 
 	//this is regenerating health
 	if(health < maxHealth)
 		if(!(upgrade_flags & BORER_STEALTH_MODE))
 			health = min(health * health_regen, maxHealth)
-			if(health > maxHealth)
-				health = maxHealth
 
 	//this is so they can evolve
 	if(timed_maturity < world.time)
