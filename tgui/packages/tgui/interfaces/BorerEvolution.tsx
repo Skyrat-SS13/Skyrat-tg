@@ -17,6 +17,7 @@ type Evolution = {
   evoPath: string;
   color: string;
   tier: number;
+  exclusive: boolean;
 };
 
 type EvolutionInfo = {
@@ -91,7 +92,12 @@ const EvolutionList = (props, context) => {
                   point${toLearn.cost !== 1 ? 's' : ''}`
                     : toLearn.name
                 }`}
-                tooltip={toLearn.desc}
+                tooltip={
+                  toLearn.exclusive
+                    ? toLearn.desc +
+                    `By taking this, you cannot take other T3+ gneomes.`
+                    : toLearn.desc
+                }
                 onClick={() => act('evolve', { path: toLearn.path })}
               />
               {!!toLearn.gainFlavor && (

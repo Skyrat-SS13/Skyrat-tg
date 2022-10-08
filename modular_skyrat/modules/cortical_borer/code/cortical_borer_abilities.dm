@@ -154,6 +154,7 @@
 		evo_data["evoPath"] = initial(evolution.evo_type)
 		evo_data["color"] = path_to_color[initial(evolution.evo_type)] || "grey"
 		evo_data["tier"] = initial(evolution.tier)
+		evo_data["exclusive"] = initial(evolution.mutually_exclusive)
 
 		data["learnableEvolution"] += list(evo_data)
 
