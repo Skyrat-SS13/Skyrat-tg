@@ -101,6 +101,7 @@
 /obj/machinery/microwave/update_overlays()
 	// When this is the nth ingredient, whats its pixel_x?
 	var/static/list/ingredient_shifts = list(
+		// SKYRAT EDIT CHANGE START - All values offset by -3 from original
 		-3,
 		0,
 		-6,
@@ -108,6 +109,7 @@
 		-7,
 		-1,
 		-5,
+		// SKYRAT EDIT CHANGE END
 	)
 
 	. = ..()
