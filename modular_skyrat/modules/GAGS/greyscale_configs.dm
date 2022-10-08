@@ -599,7 +599,7 @@
 /datum/greyscale_config/buttondown_vicvest
 	name = "Buttondown with Double-breasted Vest"
 	icon_file = 'modular_skyrat/master_files/icons/obj/clothing/under/shorts_pants_shirts.dmi'
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/costumes/misc.json'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/costumes/buttondown_vicvest.json'
 
 /datum/greyscale_config/buttondown_vicvest/worn
 	name = "Worn Buttondown with Double-breasted Vest"
