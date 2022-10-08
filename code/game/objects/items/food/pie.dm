@@ -1,6 +1,11 @@
 /obj/item/food/pie
 	icon = 'icons/obj/food/piecake.dmi'
 
+<<<<<<< HEAD
+=======
+	inhand_icon_state = "pie"
+
+>>>>>>> 70481102988 (Inhands var hardsetting (#70364))
 	bite_consumption = 3
 	w_class = WEIGHT_CLASS_NORMAL
 	max_volume = 80
