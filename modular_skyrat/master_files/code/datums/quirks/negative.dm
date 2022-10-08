@@ -43,13 +43,13 @@
 // If brainproblems is added to a synth, this detours to the brainproblems/synth quirk.
 // TODO: Add more brain-specific detours when PR #16105 is merged
 /datum/quirk/item_quirk/brainproblems/add_to_holder(mob/living/new_holder, quirk_transfer)
-	if(!(is_species(new_holder, /datum/species/robotic) && (src.type == /datum/quirk/item_quirk/brainproblems)))
+	if(!(isrobotic(new_holder) && (src.type == /datum/quirk/item_quirk/brainproblems)))
 		// Defer to TG brainproblems if the character isn't robotic.
 		return ..()
-	qdel(src)
 	// TODO: Check brain type and detour to appropriate brainproblems quirk
-	var/datum/quirk/item_quirk/brainproblems/synth/_bp_synth = new
-	return _bp_synth.add_to_holder(new_holder, quirk_transfer)
+	var/datum/quirk/item_quirk/brainproblems/synth/bp_synth = new
+	qdel(src)
+	return bp_synth.add_to_holder(new_holder, quirk_transfer)
 
 // Synthetics get liquid_solder with Brain Tumor instead of mannitol.
 /datum/quirk/item_quirk/brainproblems/synth/add_unique()
@@ -75,21 +75,21 @@
 
 // If blooddeficiency is added to a synth, this detours to the blooddeficiency/synth quirk.
 /datum/quirk/blooddeficiency/add_to_holder(mob/living/new_holder, quirk_transfer)
-	if(!(is_species(new_holder, /datum/species/robotic) && (src.type == /datum/quirk/blooddeficiency)))
+	if(!(isrobotic(new_holder) && (src.type == /datum/quirk/blooddeficiency)))
 		// Defer to TG blooddeficiency if the character isn't robotic.
 		return ..()
+	var/datum/quirk/blooddeficiency/synth/bd_synth = new
 	qdel(src)
-	var/datum/quirk/blooddeficiency/synth/_bd_synth = new
-	return _bd_synth.add_to_holder(new_holder, quirk_transfer)
+	return bd_synth.add_to_holder(new_holder, quirk_transfer)
 
 // Synthetics lose more fluids than organics. Rebalances the quirk for synths!
 /datum/quirk/blooddeficiency/synth/process(delta_time)
 	if(quirk_holder.stat == DEAD)
 		return
-	var/mob/living/carbon/carbon_quirk_holder = quirk_holder
+	var/mob/living/carbon/carbon_target = quirk_holder
 	// Can't lose blood if your species doesn't have any.
-	if(NOBLOOD in carbon_quirk_holder.dna.species.species_traits)
+	if(NOBLOOD in carbon_target.dna.species.species_traits)
 		return
 	// Survivable without treatment, but causes lots of fainting.
-	if (carbon_quirk_holder.blood_volume > BLOOD_VOLUME_BAD)
-		carbon_quirk_holder.blood_volume -= 0.275 * delta_time
+	if (carbon_target.blood_volume > BLOOD_VOLUME_BAD)
+		carbon_target.blood_volume -= 0.275 * delta_time
