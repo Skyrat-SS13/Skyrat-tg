@@ -1,10 +1,6 @@
 /obj/item/delivery
-<<<<<<< HEAD
-	icon = 'icons/obj/storage/storage.dmi' //ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
-=======
-	icon = 'icons/obj/storage/storage.dmi'
+	icon = 'icons/obj/storage/storage.dmi'//ICON OVERRIDEN IN SKYRAT AESTHETICS - SEE MODULE
 	inhand_icon_state = "deliverypackage"
->>>>>>> 70481102988 (Inhands var hardsetting (#70364))
 	var/giftwrapped = 0
 	var/sort_tag = 0
 	var/obj/item/paper/note
