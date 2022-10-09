@@ -31,6 +31,9 @@
 	else
 		species_visible = TRUE
 
+	if(obscure_examine)
+		return list("<span class='warning'>You're struggling to make out any details...")
+
 	if(!species_visible)
 		species_name_string = "!"
 	else if (dna.features["custom_species"])
