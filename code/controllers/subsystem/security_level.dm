@@ -56,6 +56,11 @@ SUBSYSTEM_DEF(security_level)
 		SSshuttle.emergency.modTimer(old_shuttle_call_time_mod)
 		SSshuttle.emergency.modTimer(selected_level.shuttle_call_time_mod)
 
+	if(current_security_level.name == "orange")
+		enable_engineering_access()
+	else
+		revoke_engineering_access()
+
 	SEND_SIGNAL(src, COMSIG_SECURITY_LEVEL_CHANGED, selected_level.number_level)
 	SSnightshift.check_nightshift()
 	SSblackbox.record_feedback("tally", "security_level_changes", 1, selected_level.name)

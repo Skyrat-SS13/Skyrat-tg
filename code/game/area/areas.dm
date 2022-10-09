@@ -102,6 +102,8 @@
 	var/network_root_id = null
 	/// Area network id when you want to find all devices hooked up to this area
 	var/network_area_id = null
+	/// SKYRAT EDIT: Is this place eligible for engineer override?
+	var/engineering_override_eligible = FALSE
 
 	///Used to decide what kind of reverb the area makes sound have
 	var/sound_environment = SOUND_ENVIRONMENT_NONE
@@ -170,6 +172,9 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 
 	if(area_flags & AREA_USES_STARLIGHT)
 		static_lighting = CONFIG_GET(flag/starlight)
+
+	if(area_flags & ENGINEERING_OVERRIDE_ELIGIBLE)
+		engineering_override_eligible = 1
 
 	if(requires_power)
 		luminosity = 0

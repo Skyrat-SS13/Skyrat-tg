@@ -4,7 +4,8 @@
 #define AIRLOCK_POWERON_LIGHT_COLOR "#3aa7c2"
 #define AIRLOCK_BOLTS_LIGHT_COLOR "#c23b23"
 #define AIRLOCK_ACCESS_LIGHT_COLOR "#57e69c"
-#define AIRLOCK_EMERGENCY_LIGHT_COLOR "#d1d11d"
+#define AIRLOCK_EMERGENCY_LIGHT_COLOR "#57e69c"
+#define AIRLOCK_ENGINEERING_LIGHT_COLOR "#ff9bd7"
 #define AIRLOCK_DENY_LIGHT_COLOR "#c23b23"
 //SKYRAT ADDITION END
 
@@ -32,6 +33,7 @@
 	var/light_color_bolts = AIRLOCK_BOLTS_LIGHT_COLOR
 	var/light_color_access = AIRLOCK_ACCESS_LIGHT_COLOR
 	var/light_color_emergency = AIRLOCK_EMERGENCY_LIGHT_COLOR
+	var/light_color_engineering = AIRLOCK_ENGINEERING_LIGHT_COLOR
 	var/light_color_deny = AIRLOCK_DENY_LIGHT_COLOR
 	var/door_light_range = AIRLOCK_LIGHT_RANGE
 	var/door_light_power = AIRLOCK_LIGHT_POWER
@@ -80,6 +82,10 @@
 				light_state = AIRLOCK_LIGHT_EMERGENCY
 				lights_overlay = "lights_emergency"
 				pre_light_color = light_color_emergency
+			else if(engineering_override)
+				light_state = AIRLOCK_LIGHT_ENGINEERING
+				lights_overlay = "lights_engineering"
+				pre_light_color = light_color_engineering
 			else
 				lights_overlay = "lights_poweron"
 				pre_light_color = light_color_poweron
@@ -103,6 +109,9 @@
 			else if(emergency)
 				lights_overlay = "lights_emergency_open"
 				pre_light_color = light_color_emergency
+			else if(engineering_override)
+				lights_overlay = "lights_engineering_open"
+				pre_light_color = light_color_engineering
 			else
 				lights_overlay = "lights_poweron_open"
 				pre_light_color = light_color_poweron

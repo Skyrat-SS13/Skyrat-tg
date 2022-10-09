@@ -30,6 +30,7 @@
 	var/welded = FALSE
 	var/heat_proof = FALSE // For rglass-windowed airlocks and firedoors
 	var/emergency = FALSE // Emergency access override
+	var/engineering_override = FALSE // SKYRAT EDIT - Can engineers get in on orange alert.
 	var/sub_door = FALSE // true if it's meant to go under another door.
 	var/closingLayer = CLOSED_DOOR_LAYER
 	var/autoclose = FALSE //does it automatically close after some time
@@ -236,7 +237,29 @@
 		return TRUE
 	if(unrestricted_side(M))
 		return TRUE
+	if(engineering_override)
+		var/mob/living/carbon/human/user = M
+		var/obj/item/card/id/card = user.get_idcard(TRUE)
+		if(istype(user))
+			if(ACCESS_ENGINEERING in card.access)
+				return TRUE
 	return ..()
+
+/proc/enable_engineering_access()
+	for(var/area/station/Area in world)
+		if(Area.engineering_override_eligible)
+			for(var/obj/machinery/door/airlock/Airlock in Area)
+				Airlock.engineering_override = TRUE
+				Airlock.normalspeed = FALSE
+				Airlock.update_icon(ALL, 0)
+
+/proc/revoke_engineering_access()
+	for(var/area/station/Area in world)
+		if(Area.engineering_override_eligible)
+			for(var/obj/machinery/door/airlock/Airlock in Area)
+				Airlock.engineering_override = FALSE
+				Airlock.normalspeed = TRUE
+				Airlock.update_icon(ALL, 0)
 
 /obj/machinery/door/proc/unrestricted_side(mob/opener) //Allows for specific side of airlocks to be unrestrected (IE, can exit maint freely, but need access to enter)
 	return get_dir(src, opener) & unres_sides

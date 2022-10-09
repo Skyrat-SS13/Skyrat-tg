@@ -357,21 +357,25 @@
 /area/station/command/bridge
 	name = "\improper Bridge"
 	icon_state = "bridge"
+	area_flags = ENGINEERING_OVERRIDE_ELIGIBLE
 
 /area/station/command/meeting_room
 	name = "\improper Heads of Staff Meeting Room"
 	icon_state = "meeting"
 	sound_environment = SOUND_AREA_MEDIUM_SOFTFLOOR
+	area_flags = ENGINEERING_OVERRIDE_ELIGIBLE
 
 /area/station/command/meeting_room/council
 	name = "\improper Council Chamber"
 	icon_state = "meeting"
 	sound_environment = SOUND_AREA_MEDIUM_SOFTFLOOR
+	area_flags = ENGINEERING_OVERRIDE_ELIGIBLE
 
 /area/station/command/corporate_showroom
 	name = "\improper Corporate Showroom"
 	icon_state = "showroom"
 	sound_environment = SOUND_AREA_MEDIUM_SOFTFLOOR
+	area_flags = ENGINEERING_OVERRIDE_ELIGIBLE
 
 /area/station/command/heads_quarters
 	icon_state = "heads_quarters"
@@ -416,11 +420,13 @@
 	name = "\improper Teleporter Room"
 	icon_state = "teleporter"
 	ambience_index = AMBIENCE_ENGI
+	area_flags = ENGINEERING_OVERRIDE_ELIGIBLE
 
 /area/station/command/gateway
 	name = "\improper Gateway"
 	icon_state = "gateway"
 	ambience_index = AMBIENCE_ENGI
+	area_flags = ENGINEERING_OVERRIDE_ELIGIBLE
 
 //Commons
 
@@ -548,6 +554,7 @@
 
 /area/station/service
 	airlock_wires = /datum/wires/airlock/service
+	area_flags = ENGINEERING_OVERRIDE_ELIGIBLE
 
 /area/station/service/cafeteria
 	name = "\improper Cafeteria"
@@ -944,6 +951,7 @@
 	sound_environment = SOUND_AREA_STANDARD_STATION
 	min_ambience_cooldown = 90 SECONDS
 	max_ambience_cooldown = 180 SECONDS
+	area_flags = ENGINEERING_OVERRIDE_ELIGIBLE
 
 /area/station/medical/abandoned
 	name = "\improper Abandoned Medbay"
@@ -1236,6 +1244,7 @@
 	icon_state = "quart"
 	airlock_wires = /datum/wires/airlock/service
 	sound_environment = SOUND_AREA_STANDARD_STATION
+	area_flags = ENGINEERING_OVERRIDE_ELIGIBLE
 
 /area/station/cargo/sorting
 	name = "\improper Delivery Office"
@@ -1290,6 +1299,7 @@
 	icon_state = "science"
 	airlock_wires = /datum/wires/airlock/science
 	sound_environment = SOUND_AREA_STANDARD_STATION
+	area_flags = ENGINEERING_OVERRIDE_ELIGIBLE
 
 /area/station/science/lobby
 	name = "\improper Science Lobby"
