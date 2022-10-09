@@ -163,15 +163,9 @@
 	if(isinhands)
 		return
 
-<<<<<<< HEAD
-	. += mutable_appearance(visor_sprite_path, "weldhelmet")	//Changed first variable from 'icons/mob/clothing/head.dmi'
-	if(!up)
-		. += mutable_appearance(visor_sprite_path, "weldvisor")	//Changed first variable from 'icons/mob/clothing/head.dmi'
-=======
 	. += mutable_appearance('icons/mob/clothing/head/utility.dmi', "weldhelmet")
 	if(!up)
 		. += mutable_appearance('icons/mob/clothing/head/utility.dmi', "weldvisor")
->>>>>>> c7dde066687 ([MDB Ignore]Hats DMI split (#70060))
 
 /obj/item/clothing/head/utility/hardhat/weldhat/update_overlays()
 	. = ..()

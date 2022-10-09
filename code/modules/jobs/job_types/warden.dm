@@ -57,13 +57,8 @@
 	belt = /obj/item/modular_computer/tablet/pda/warden
 	ears = /obj/item/radio/headset/headset_sec/alt
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
-<<<<<<< HEAD
 	gloves = /obj/item/clothing/gloves/color/black/security //SKYRAT EDIT CHANGE - Original: /obj/item/clothing/gloves/color/black
 	head = /obj/item/clothing/head/warden //SKYRAT EDIT CHANGE - Original: /obj/item/clothing/head/warden/red
-=======
-	gloves = /obj/item/clothing/gloves/color/black
-	head = /obj/item/clothing/head/hats/warden/red
->>>>>>> c7dde066687 ([MDB Ignore]Hats DMI split (#70060))
 	shoes = /obj/item/clothing/shoes/jackboots/sec
 	l_pocket = /obj/item/restraints/handcuffs
 	r_pocket = /obj/item/assembly/flash/handheld

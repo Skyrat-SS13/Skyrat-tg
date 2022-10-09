@@ -23,8 +23,7 @@
 	var/throwforce_on = 15
 	var/damtype_on = BURN
 
-<<<<<<< HEAD
-/obj/item/clothing/head/hardhat/cakehat/process()
+/obj/item/clothing/head/utility/hardhat/cakehat/process()
 	var/turf/location = loc
 	if(ishuman(location))
 		var/mob/living/carbon/human/wearer = location
@@ -67,14 +66,12 @@
 	light_range = 3 //ditto
 	heat = 0
 
-<<<<<<< HEAD
-/obj/item/clothing/head/hardhat/cakehat/energycake/turn_on(mob/living/user)
-	playsound(user, 'sound/weapons/saberon.ogg', 5, TRUE)
+/obj/item/clothing/head/utility/hardhat/cakehat/energycake/turn_on(mob/living/user)
+	playsound(src, 'sound/weapons/saberon.ogg', 5, TRUE)
 	to_chat(user, span_warning("You turn on \the [src]."))
 	return ..()
 
-<<<<<<< HEAD
-/obj/item/clothing/head/hardhat/cakehat/energycake/turn_off(mob/living/user)
-	playsound(user, 'sound/weapons/saberoff.ogg', 5, TRUE)
+/obj/item/clothing/head/utility/hardhat/cakehat/energycake/turn_off(mob/living/user)
+	playsound(src, 'sound/weapons/saberoff.ogg', 5, TRUE)
 	to_chat(user, span_warning("You turn off \the [src]."))
 	return ..()

@@ -55,13 +55,8 @@
 	dog_fashion = /datum/dog_fashion/head/captain
 
 //Captain: This is no longer space-worthy
-<<<<<<< HEAD
-/obj/item/clothing/head/caphat/parade
-	name = "captain's formal cap"
-=======
 /obj/item/clothing/head/hats/caphat/parade
 	name = "captain's parade cap"
->>>>>>> c7dde066687 ([MDB Ignore]Hats DMI split (#70060))
 	desc = "Worn only by Captains with an abundance of class."
 	icon_state = "capcap"
 	dog_fashion = null
@@ -147,11 +142,7 @@
 	icon_state = "hoscap"
 	strip_delay = 80
 
-<<<<<<< HEAD
-/obj/item/clothing/head/hos/syndicate
-=======
 /obj/item/clothing/head/hats/hos/syndicate
->>>>>>> c7dde066687 ([MDB Ignore]Hats DMI split (#70060))
 	name = "syndicate cap"
 	desc = "A black cap fit for a high ranking syndicate officer."
 

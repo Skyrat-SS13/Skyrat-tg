@@ -420,13 +420,8 @@
 	reqs = list(/obj/item/extinguisher = 1,
 				/obj/item/bodypart/r_arm/robot = 1,
 				/obj/item/assembly/prox_sensor = 1,
-<<<<<<< HEAD
-				/obj/item/clothing/head/hardhat/red = 1)
-	time = 40
-=======
 				/obj/item/clothing/head/utility/hardhat/red = 1)
 	time = 4 SECONDS
->>>>>>> c7dde066687 ([MDB Ignore]Hats DMI split (#70060))
 	category = CAT_ROBOT
 
 /datum/crafting_recipe/vibebot
@@ -638,37 +633,22 @@
 
 /datum/crafting_recipe/lizardhat
 	name = "Lizard Cloche Hat"
-<<<<<<< HEAD
-	result = /obj/item/clothing/head/lizard
-	time = 10
-=======
 	result = /obj/item/clothing/head/costume/lizard
 	time = 1 SECONDS
->>>>>>> c7dde066687 ([MDB Ignore]Hats DMI split (#70060))
 	reqs = list(/obj/item/organ/external/tail/lizard = 1)
 	category = CAT_CLOTHING
 
 /datum/crafting_recipe/lizardhat_alternate
 	name = "Lizard Cloche Hat"
-<<<<<<< HEAD
-	result = /obj/item/clothing/head/lizard
-	time = 10
-=======
 	result = /obj/item/clothing/head/costume/lizard
 	time = 1 SECONDS
->>>>>>> c7dde066687 ([MDB Ignore]Hats DMI split (#70060))
 	reqs = list(/obj/item/stack/sheet/animalhide/lizard = 1)
 	category = CAT_CLOTHING
 
 /datum/crafting_recipe/kittyears
 	name = "Kitty Ears"
-<<<<<<< HEAD
-	result = /obj/item/clothing/head/kitty/genuine
-	time = 10
-=======
 	result = /obj/item/clothing/head/costume/kitty/genuine
 	time = 1 SECONDS
->>>>>>> c7dde066687 ([MDB Ignore]Hats DMI split (#70060))
 	reqs = list(/obj/item/organ/external/tail/cat = 1,
 				/obj/item/organ/internal/ears/cat = 1)
 	category = CAT_CLOTHING
@@ -1132,13 +1112,8 @@ SKYRAT EDIT STOP: Ash Rituals */
 
 /datum/crafting_recipe/flower_garland
 	name = "Flower Garland"
-<<<<<<< HEAD
-	result = /obj/item/clothing/head/garland
-	time = 10
-=======
 	result = /obj/item/clothing/head/costume/garland
 	time = 1 SECONDS
->>>>>>> c7dde066687 ([MDB Ignore]Hats DMI split (#70060))
 	reqs = list(/obj/item/food/grown/poppy = 4,
 				/obj/item/food/grown/harebell = 4,
 				/obj/item/food/grown/rose = 4)
