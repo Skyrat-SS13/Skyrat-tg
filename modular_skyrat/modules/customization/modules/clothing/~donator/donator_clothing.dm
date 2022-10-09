@@ -339,9 +339,10 @@
 /obj/item/clothing/mask/gas/nightlight
 	name = "FAR-14C IRU"
 	desc = "A close-fitting respirator designed by Forestiian Armories, commonly used by Military and Civilian Personnel alike. It reeks of Militarism."
-	actions_types = list(/datum/action/item_action/adjust)
-	icon_state = "sechailer"
-	inhand_icon_state = "sechailer"
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/masks.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/mask.dmi'
+	icon_state = "far14c"
+	inhand_icon_state = "far14c"
 	clothing_flags = BLOCK_GAS_SMOKE_EFFECT | MASKINTERNALS //same flags as actual sec hailer gas mask
 	flags_inv = HIDEFACIALHAIR | HIDEFACE | HIDESNOUT
 	flags_cover = NONE
@@ -349,9 +350,6 @@
 	visor_flags_inv = HIDEFACIALHAIR | HIDEFACE | HIDESNOUT
 	w_class = WEIGHT_CLASS_SMALL
 	tint = 0
-
-/obj/item/clothing/mask/gas/nightlight/ui_action_click(mob/user, action)
-	adjustmask(user)
 
 // Donation reward for TheOOZ
 /obj/item/clothing/mask/animal/kindle
@@ -1193,16 +1191,12 @@
 			name = "license to [choice]"
 
 // Donation reward for 1ceres
-/obj/item/sequence_scanner/korpstech
-	name = "Korpstech genetics scanner"
-	desc = "A hand-held sequence scanner for analyzing someone's gene sequence on the fly. This one is bright pink and has some kind of Helix shape on its back."
-	icon_state = "korpsgenetic"
-	inhand_icon_state = "korpsgenetic"
-	worn_icon_state = "korpsgenetic"
-	icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
-	lefthand_file = 'modular_skyrat/master_files/icons/donator/mob/inhands/donator_left.dmi'
-	righthand_file = 'modular_skyrat/master_files/icons/donator/mob/inhands/donator_right.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/custom_w.dmi'
+/obj/item/clothing/suit/jacket/gorlex_harness
+	name = "engine technician harness"
+	desc = "A blood-red engineering technician harness. You can't seem to figure out a use to it, but it seems to seal magnetically in some places."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
+	icon_state = "gorlexharness"
 
 // Donation reward for 1ceres
 /obj/item/poster/korpstech
@@ -1398,3 +1392,11 @@
 			and shining example to the core values of the Sol Federation Marine Corps.\""
 	icon = 'modular_skyrat/master_files/icons/donator/obj/custom.dmi'
 	sideslist = list("MARSOC", "SFMC")
+
+// Donation reward for Kay-Nite
+/obj/item/clothing/under/tactichill
+	name = "tactichill jacket"
+	desc = "The brighter variant of the tacticool clotheswear, for when you want to look even cooler than usual and still operate at the same time."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
+	icon_state = "tactichill"
