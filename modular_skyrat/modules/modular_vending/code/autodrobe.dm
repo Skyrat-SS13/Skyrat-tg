@@ -2,8 +2,10 @@
 	skyrat_products = list(
 		/obj/item/clothing/under/costume/skyrat/yukata = 5,
 		/obj/item/clothing/under/costume/skyrat/kamishimo = 5,
+		/obj/item/clothing/under/costume/skyrat/cavalry = 5,
 		/obj/item/clothing/head/costume/kabuto = 5,
 		/obj/item/clothing/suit/costume/samurai = 5,
+		/obj/item/clothing/under/costume/skyrat/vicvest = 5,
 		/obj/item/clothing/under/doug_dimmadome = 5,
 		/obj/item/clothing/glasses/biker = 5, //remind me to give these an up state later
 		/obj/item/clothing/head/cowboyhat/blackwide = 5,
@@ -21,7 +23,7 @@
 		/obj/item/clothing/under/suit/skyrat/helltaker = 5,
 		/obj/item/clothing/under/suit/skyrat/helltaker/skirt = 5,
 		/obj/item/clothing/suit/toggle/lawyer/white = 5,
-		/obj/item/clothing/head/jester/alt = 1,
+		/obj/item/clothing/head/costume/jester/alt = 1,
 		/obj/item/clothing/under/rank/civilian/clown/jester/alt = 1,
 		/obj/item/clothing/head/christmas = 5,
 		/obj/item/clothing/head/christmas/green =  5,
