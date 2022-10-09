@@ -16,10 +16,10 @@
 		social_background = null
 		employment = null
 		return TRUE
-	if(background_middleware.verify_social_background(list("background" = "[social_background]")))
+	else if(!background_middleware.verify_social_background(list("background" = "[social_background]")))
 		social_background = null
 		employment = null
 		return TRUE
-	if(background_middleware.verify_employment(list("background" = "[employment]")))
+	else if(!background_middleware.verify_employment(list("background" = "[employment]")))
 		employment = null
 		return TRUE

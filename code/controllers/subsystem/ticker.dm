@@ -439,6 +439,9 @@ SUBSYSTEM_DEF(ticker)
 
 			var/mob/living/carbon/human/human = new_player_living
 			human.give_passport() // SKYRAT EDIT ADDITION - Backgrounds - Kept the skyrat edit part for easier finding.
+			human.origin = new_player_mob.client.prefs.origin
+			human.social_background = new_player_mob.client.prefs.social_background
+			human.employment = new_player_mob.client.prefs.employment
 		//SKYRAT EDIT END
 		CHECK_TICK
 

@@ -329,6 +329,9 @@
 			item.post_equip_item(humanc.client?.prefs, humanc)
 
 		humanc.give_passport() // SKYRAT EDIT ADDITION - Backgrounds - Kept the skyrat edit part for easier finding.
+		humanc.origin = humanc.client.prefs.origin
+		humanc.social_background = humanc.client.prefs.social_background
+		humanc.employment = humanc.client.prefs.employment
 	//SKYRAT EDIT END
 
 /mob/dead/new_player/proc/AddEmploymentContract(mob/living/carbon/human/employee)

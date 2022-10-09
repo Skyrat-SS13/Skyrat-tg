@@ -127,7 +127,7 @@
 
 	// It isn't valid, let's not let the game try to use whatever was sent.
 	if(!origin)
-		return TRUE
+		return FALSE
 
 	preferences.origin = origin.type
 	// I give up on doing advanced code for this. Too much effort for too little gain.
@@ -140,7 +140,7 @@
 
 	// It isn't valid, let's not let the game try to use whatever was sent.
 	if(!check_valid(social_background, preferences.origin))
-		return TRUE
+		return FALSE
 
 	preferences.social_background = social_background.type
 	preferences.employment = null
@@ -151,7 +151,7 @@
 
 	// It isn't valid, let's not let the game try to use whatever was sent.
 	if(!check_valid(employment, preferences.origin) || !check_valid(employment, preferences.social_background))
-		return TRUE
+		return FALSE
 
 	preferences.employment = employment.type
 	return TRUE

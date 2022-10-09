@@ -5,6 +5,9 @@
 	. = ..()
 	var/mob/living/carbon/human/human = spawned_mob
 	human.give_passport(mob_possessor.client)
+	human.origin = mob_possessor.client.prefs.origin
+	human.social_background = mob_possessor.client.prefs.social_background
+	human.employment = mob_possessor.client.prefs.employment
 
 /// Tries to give a passport to a human mob. If the user hasn't selected an origin, they'll spawn with the default passport.
 /mob/living/carbon/human/proc/give_passport(client/player_client)

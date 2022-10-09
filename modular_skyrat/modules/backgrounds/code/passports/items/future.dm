@@ -1,5 +1,5 @@
 /obj/item/passport/sol
-	name = "SolFed passport"
+	passport_name = "SolFed passport"
 	desc = "A SolFed passport, high-tech and super handy. Advanced holographic emitters prevent any flickering and make its hologram incredibly dense, letting anyone to hold it steadily."
 	icon_state_base = "sol"
 	tgui_style = "passportholo"
@@ -8,5 +8,5 @@
 
 // For Donut Steels
 /obj/item/passport/sol/generic
-	name = "high-tech passport"
+	passport_name = "high-tech passport"
 	desc = "A nondescript passport, high-tech and super handy. Advanced holographic emitters prevent any flickering and make its hologram incredibly dense, letting anyone to hold it steadily."

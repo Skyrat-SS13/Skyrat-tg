@@ -9,7 +9,14 @@
 GLOBAL_LIST_EMPTY(employments)
 GLOBAL_LIST_EMPTY(social_backgrounds)
 GLOBAL_LIST_EMPTY(origins)
+GLOBAL_LIST_EMPTY(employment_name_to_instance)
+GLOBAL_LIST_EMPTY(social_background_name_to_instance)
+GLOBAL_LIST_EMPTY(origin_name_to_instance)
+GLOBAL_LIST_EMPTY(employment_names)
+GLOBAL_LIST_EMPTY(social_background_names)
+GLOBAL_LIST_EMPTY(origin_names)
 GLOBAL_LIST_EMPTY(background_features)
+GLOBAL_LIST_EMPTY(valid_passport_disguises)
 
 // Bitflags for groups of culture entries that should not be allowed to mix.
 // All cultures that have large amounts of synths allow synth backgrounds too.
