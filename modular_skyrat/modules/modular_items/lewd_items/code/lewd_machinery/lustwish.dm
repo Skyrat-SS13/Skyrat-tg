@@ -50,7 +50,7 @@
 					/obj/item/clothing/mask/gas/bdsm_mask = 5,
 					/obj/item/reagent_containers/cup/lewd_filter = 5,
 					/obj/item/clothing/glasses/hypno = 4,
-					/obj/item/clothing/head/kitty = 4,
+					/obj/item/clothing/head/costume/kitty = 4,
 					/obj/item/clothing/head/rabbitears = 4,
 
 
