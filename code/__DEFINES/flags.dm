@@ -128,7 +128,7 @@ GLOBAL_LIST_INIT(bitflags, list(1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 204
 #define PERSISTENT_ENGRAVINGS (1<<15)
 /// Mobs that die in this area don't produce a dead chat message
 #define NO_DEATH_MESSAGE (1<<16)
-/// Can the area be accessed by engineering in an Orange Alert area
+/// SKYRAT ADDITION - Can the area be accessed by engineering in an Orange Alert area
 #define ENGINEERING_OVERRIDE_ELIGIBLE (1<<17)
 
 /*

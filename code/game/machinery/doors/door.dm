@@ -30,7 +30,7 @@
 	var/welded = FALSE
 	var/heat_proof = FALSE // For rglass-windowed airlocks and firedoors
 	var/emergency = FALSE // Emergency access override
-	var/engineering_override = FALSE // SKYRAT EDIT - Can engineers get in on orange alert.
+	var/engineering_override = FALSE // SKYRAT ADDITION - Can engineers get in on orange alert.
 	var/sub_door = FALSE // true if it's meant to go under another door.
 	var/closingLayer = CLOSED_DOOR_LAYER
 	var/autoclose = FALSE //does it automatically close after some time
@@ -237,14 +237,16 @@
 		return TRUE
 	if(unrestricted_side(M))
 		return TRUE
-	if(engineering_override)
+	if(engineering_override) // SKYRAT ADDITION - Check for engineering access while in override
 		var/mob/living/carbon/human/user = M
 		var/obj/item/card/id/card = user.get_idcard(TRUE)
 		if(istype(user))
 			if(ACCESS_ENGINEERING in card.access)
 				return TRUE
 	return ..()
-
+/**SKYRAT ADDITION
+ * Procs to enable and revoke engineering door access during Orange Alert
+ */
 /proc/enable_engineering_access()
 	for(var/area/station/Area in world)
 		if(Area.engineering_override_eligible)

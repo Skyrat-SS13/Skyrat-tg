@@ -125,7 +125,7 @@
 				if(A.hasPower())
 					A.unbolt()
 			A.update_appearance()
-		if(WIRE_IDSCAN) // Pulse to disable emergency access/engineering override and flash the red lights.
+		if(WIRE_IDSCAN) // SKYRAT EDIT - Pulse to disable emergency access/engineering override and flash the red lights.
 			if(A.hasPower() && A.density)
 				A.do_animate("deny")
 				if(A.emergency)

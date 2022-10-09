@@ -33,7 +33,7 @@
 	var/light_color_bolts = AIRLOCK_BOLTS_LIGHT_COLOR
 	var/light_color_access = AIRLOCK_ACCESS_LIGHT_COLOR
 	var/light_color_emergency = AIRLOCK_EMERGENCY_LIGHT_COLOR
-	var/light_color_engineering = AIRLOCK_ENGINEERING_LIGHT_COLOR
+	var/light_color_engineering = AIRLOCK_ENGINEERING_LIGHT_COLOR // SKYRAT ADDITION
 	var/light_color_deny = AIRLOCK_DENY_LIGHT_COLOR
 	var/door_light_range = AIRLOCK_LIGHT_RANGE
 	var/door_light_power = AIRLOCK_LIGHT_POWER
