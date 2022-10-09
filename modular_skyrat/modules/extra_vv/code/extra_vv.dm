@@ -21,6 +21,7 @@
 /mob/proc/vv_send_cryo()
 	if(!check_rights(R_SPAWN))
 		return
+
 	var/send_notice = tgui_alert(usr, "Add a paper notice about sending [name] into a cryopod?", "Leave a paper?", list("Yes", "No", "Cancel"))
 	if(send_notice != "Yes" && send_notice != "No")
 		return
