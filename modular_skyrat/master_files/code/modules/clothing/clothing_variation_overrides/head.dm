@@ -48,7 +48,7 @@
 /obj/item/clothing/head/hopcap
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/head/hardhat
+/obj/item/clothing/head/utility/hardhat
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/head/beanie
@@ -75,7 +75,7 @@
 /obj/item/clothing/head/rice_hat
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/head/ushanka
+/obj/item/clothing/head/costume/ushanka
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/head/collectable
