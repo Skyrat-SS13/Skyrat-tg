@@ -102,20 +102,6 @@
 		balloon_alert(user, "modified")
 		update_appearance()
 		return FALSE
-<<<<<<< HEAD
-	else if(W.get_sharpness())
-		if(!contents.len)
-			if(inhand_icon_state == "paperbag_None")
-				user.show_message(span_notice("You cut eyeholes into [src]."), MSG_VISUAL)
-				new /obj/item/clothing/head/costume/papersack(user.loc)
-				qdel(src)
-				return FALSE
-			else if(inhand_icon_state == "paperbag_SmileyFace")
-				user.show_message(span_notice("You cut eyeholes into [src] and modify the design."), MSG_VISUAL)
-				new /obj/item/clothing/head/costume/papersack/smiley(user.loc)
-				qdel(src)
-				return FALSE
-=======
 	if(attacking_item.get_sharpness() && !contents.len)
 		if(design_choice == "None")
 			user.show_message(span_notice("You cut eyeholes into [src]."), MSG_VISUAL)
@@ -127,7 +113,6 @@
 			new /obj/item/clothing/head/costume/papersack/smiley(drop_location())
 			qdel(src)
 			return FALSE
->>>>>>> ad87985ff28 (Fixes papersack (#70341))
 	return ..()
 
 /**
