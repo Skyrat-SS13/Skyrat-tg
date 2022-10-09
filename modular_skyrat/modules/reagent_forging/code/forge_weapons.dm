@@ -3,6 +3,7 @@
 	lefthand_file = 'modular_skyrat/modules/reagent_forging/icons/mob/forge_weapon_l.dmi'
 	righthand_file = 'modular_skyrat/modules/reagent_forging/icons/mob/forge_weapon_r.dmi'
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR
+	obj_flags = TRAIT_ANVIL_REPAIR
 
 /obj/item/forging/reagent_weapon/Initialize(mapload)
 	. = ..()
@@ -11,21 +12,6 @@
 /obj/item/forging/reagent_weapon/examine(mob/user)
 	. = ..()
 	. += span_notice("Using a hammer on [src] will repair its damage!")
-
-/obj/item/forging/reagent_weapon/attackby(obj/item/attacking_item, mob/user, params)
-	if(atom_integrity >= max_integrity)
-		return ..()
-	if(istype(attacking_item, /obj/item/forging/hammer))
-		var/obj/item/forging/hammer/attacking_hammer = attacking_item
-		var/skill_modifier = user.mind.get_skill_modifier(/datum/skill/smithing, SKILL_SPEED_MODIFIER) * attacking_hammer.toolspeed
-		while(atom_integrity < max_integrity)
-			if(!do_after(user, skill_modifier, src))
-				return
-			var/fixing_amount = min(max_integrity - atom_integrity, 5)
-			atom_integrity += fixing_amount
-			user.mind.adjust_experience(/datum/skill/smithing, 5) //useful heating means you get some experience
-		return
-	return ..()
 
 /obj/item/forging/reagent_weapon/sword
 	name = "reagent sword"
@@ -161,11 +147,19 @@
 	. = ..()
 	AddElement(/datum/element/kneejerk)
 
-/obj/item/forging/reagent_weapon/hammer/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
-	. = ..()
-	if(!is_type_in_list(target, fast_attacks))
+/obj/item/forging/reagent_weapon/hammer/attack(mob/living/target_mob, mob/living/user, params)
+	force = 19
+	return ..()
+
+/obj/item/forging/reagent_weapon/hammer/attack_atom(atom/attacked_atom, mob/living/user, params)
+	if(is_type_in_list(attacked_atom, fast_attacks))
+		force = 0
+		..()
+		user.changeNext_move(CLICK_CD_RAPID)
 		return
-	user.changeNext_move(CLICK_CD_RAPID)
+	else
+		force = 19
+		return ..()
 
 /obj/item/shield/riot/buckler/reagent_weapon //Same as a buckler, but metal.
 	name = "reagent plated buckler shield"
@@ -182,6 +176,7 @@
 	max_integrity = 150 //over double that of a wooden one
 	w_class = WEIGHT_CLASS_NORMAL
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_AFFECT_STATISTICS
+	obj_flags = TRAIT_ANVIL_REPAIR
 
 /obj/item/shield/riot/buckler/reagent_weapon/Initialize(mapload)
 	. = ..()

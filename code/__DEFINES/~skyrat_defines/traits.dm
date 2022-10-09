@@ -60,3 +60,6 @@
 #define TRAIT_XENO_ABILITY_GIVEN "xeno_ability_given"
 /// Determines if something can receive healing from a xeno
 #define TRAIT_XENO_HEAL_AURA "trait_xeno_heal_aura"
+
+/// Whether something is repairable by the anvil
+#define TRAIT_ANVIL_REPAIR (1<<11)

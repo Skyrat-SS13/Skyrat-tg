@@ -88,10 +88,14 @@
 
 /datum/component/reagent_weapon/proc/inject_attacked(datum/source, mob/living/target, mob/living/user, params)
 	SIGNAL_HANDLER
+	//don't have the weapon or any imbued reagents? don't try
 	if(!parent_weapon || !length(imbued_reagent))
 		return
+	//lets inject that target
 	var/mob/living_target = target
 	for(var/create_reagent in imbued_reagent)
 		living_target.reagents.add_reagent(create_reagent, 1)
+	//now lets take damage corresponding to the amount of chems we have imbued (hit either 100 times or 50 times before it breaks)
+	parent_weapon.take_damage(length(imbued_reagent) * 2)
 
 #undef MAX_IMBUE_STORAGE
