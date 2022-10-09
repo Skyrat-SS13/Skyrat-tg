@@ -325,7 +325,7 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 
 /datum/loadout_item/head/ushanka
 	name = "Ushanka"
-	item_path = /obj/item/clothing/head/ushanka
+	item_path = /obj/item/clothing/head/costume/ushanka
 
 
 /datum/loadout_item/head/wrussian
@@ -497,7 +497,7 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 
 /datum/loadout_item/head/ushanka/sec
 	name = "Security Ushanka"
-	item_path = /obj/item/clothing/head/ushanka/sec/blue
+	item_path = /obj/item/clothing/head/costume/ushanka/sec/blue
 	restricted_roles = list(JOB_WARDEN,JOB_DETECTIVE,JOB_SECURITY_MEDIC,JOB_SECURITY_OFFICER,JOB_HEAD_OF_SECURITY,JOB_CORRECTIONS_OFFICER)
 
 /datum/loadout_item/head/blasthelmet
