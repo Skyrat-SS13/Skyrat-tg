@@ -1080,7 +1080,7 @@
 	icon_state = "CCofficer"
 
 // Donation reward for Cherno_00
-/obj/item/clothing/head/ushanka/frosty
+/obj/item/clothing/head/costume/ushanka/frosty
 	name = "blue ushanka"
 	desc = "A dark blue ushanka with a hand-stitched snowflake on the front. Cool to the touch."
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/hats.dmi'
