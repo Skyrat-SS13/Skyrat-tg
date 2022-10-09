@@ -75,10 +75,8 @@
 	greyscale_config_inhand_left = /datum/greyscale_config/sneakers_orange_inhand_left
 	greyscale_config_inhand_right = /datum/greyscale_config/sneakers_orange_inhand_right
 	flags_1 = NONE
-<<<<<<< HEAD
-	greyscale_config_worn_digi = /datum/greyscale_config/sneakers_orange_worn/digi //SKYRAT EDIT ADDITION - DigiGreyscale
-=======
 	var/obj/item/restraints/handcuffs/attached_cuffs
+	greyscale_config_worn_digi = /datum/greyscale_config/sneakers_orange_worn/digi //SKYRAT EDIT ADDITION - DigiGreyscale
 
 /obj/item/clothing/shoes/sneakers/orange/Initialize(mapload)
 	. = ..()
@@ -115,7 +113,6 @@
 		icon_state = initial(icon_state)
 		inhand_icon_state = initial(inhand_icon_state)
 	update_greyscale()
->>>>>>> 1a32f60cf4e ([ready] adds unit test for missing inhand icons. fixes a bunch of missing inhand icons (#70037))
 
 /obj/item/clothing/shoes/sneakers/orange/attack_self(mob/user)
 	if(attached_cuffs)

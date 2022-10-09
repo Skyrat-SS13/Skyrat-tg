@@ -60,12 +60,7 @@
 	name = "mining plasma envirosuit"
 	desc = "An air-tight khaki suit designed for operations on lavaland by plasmamen."
 	icon_state = "explorer_envirosuit"
-<<<<<<< HEAD
-	inhand_icon_state = "explorer_envirosuit"
-	armor = list(MELEE = 10, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 100, FIRE = 95, ACID = 95)//SKYRAT EDIT
-=======
 	inhand_icon_state = null
->>>>>>> 1a32f60cf4e ([ready] adds unit test for missing inhand icons. fixes a bunch of missing inhand icons (#70037))
 
 /obj/item/clothing/under/plasmaman/chef
 	name = "chef's plasma envirosuit"

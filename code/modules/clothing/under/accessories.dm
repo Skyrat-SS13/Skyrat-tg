@@ -112,8 +112,6 @@
 	minimize_when_attached = TRUE
 	attachment_slot = null
 
-<<<<<<< HEAD
-=======
 /obj/item/clothing/accessory/maidcorset
 	name = "maid corset"
 	desc = "The final touch that holds it all together."
@@ -124,7 +122,6 @@
 	minimize_when_attached = FALSE
 	attachment_slot = null
 
->>>>>>> 1a32f60cf4e ([ready] adds unit test for missing inhand icons. fixes a bunch of missing inhand icons (#70037))
 /obj/item/clothing/accessory/maidapron
 	name = "maid apron"
 	desc = "The best part of a maid costume."

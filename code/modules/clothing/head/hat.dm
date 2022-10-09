@@ -203,13 +203,8 @@
 	name = "ushanka"
 	desc = "Perfect for winter in Siberia, da?"
 	icon_state = "ushankadown"
-<<<<<<< HEAD
-	inhand_icon_state = "ushankadown"
-	flags_inv = HIDEEARS //SKYRAT EDIT (Original: HIDEEARS|HIDEHAIR)
-=======
 	inhand_icon_state = null
-	flags_inv = HIDEEARS|HIDEHAIR
->>>>>>> 1a32f60cf4e ([ready] adds unit test for missing inhand icons. fixes a bunch of missing inhand icons (#70037))
+	flags_inv = HIDEEARS //SKYRAT EDIT (Original: HIDEEARS|HIDEHAIR)
 	cold_protection = HEAD
 	min_cold_protection_temperature = FIRE_HELM_MIN_TEMP_PROTECT
 	dog_fashion = /datum/dog_fashion/head/ushanka

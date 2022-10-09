@@ -58,12 +58,8 @@
 	name = "justice suit"
 	desc = "this pretty much looks ridiculous" //Needs no fixing
 	icon_state = "justice"
-<<<<<<< HEAD
-	inhand_icon_state = "justice"
-=======
 	inhand_icon_state = null
 	body_parts_covered = CHEST|GROIN|ARMS|LEGS
->>>>>>> 1a32f60cf4e ([ready] adds unit test for missing inhand icons. fixes a bunch of missing inhand icons (#70037))
 	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
 	armor = list(MELEE = 35, BULLET = 30, LASER = 30, ENERGY = 40, BOMB = 25, BIO = 0, FIRE = 50, ACID = 50)
 
