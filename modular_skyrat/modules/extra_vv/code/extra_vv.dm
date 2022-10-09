@@ -9,6 +9,7 @@
 /mob/vv_do_topic(list/href_list)
 	. = ..()
 	if(href_list[VV_HK_SEND_CRYO])
+		vv_send_cryo()
 
 
 	if(href_list[VV_HK_LOAD_PREFS])
