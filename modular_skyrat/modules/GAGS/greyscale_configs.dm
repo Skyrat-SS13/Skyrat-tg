@@ -425,11 +425,11 @@
 
 /datum/greyscale_config/jumpsuit_worn/digi
 	name = "Worn Jumpsuit - Digitigrade"
-	icon_file = 'modular_skyrat/modules/GAGS/icons/jumpsuit_digi.dmi'
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/color_digi.dmi'
 
 /datum/greyscale_config/jumpsuit_prison_worn/digi
 	name = "Worn Prison Jumpsuit - Digitigrade"
-	icon_file = 'modular_skyrat/modules/GAGS/icons/jumpsuit_digi.dmi'
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/color_digi.dmi'
 
 /datum/greyscale_config/jumpsuit_worn/vox
 	name = "Worn Jumpsuit - Vox"
