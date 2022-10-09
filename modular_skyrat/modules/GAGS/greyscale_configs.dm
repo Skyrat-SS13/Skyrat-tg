@@ -467,14 +467,6 @@
 //Note, these icons are now in master_files per TG's sorting. There's no reason to NOT have these pieces in master files now that they're sorted out.
 //The rest will eventually join them - preferably with a cleaner method too instead of having to have unique configs for every single item's digi state.
 
-/datum/greyscale_config/buttondown_slacks_worn/digi
-	name = "Worn Buttondown with Slacks - Digitigrade"
-	icon_file = SHORTS_PANTS_SHIRTS_DIGIFILE
-
-/datum/greyscale_config/buttondown_shorts_worn/digi
-	name = "Worn Buttondown with Shorts - Digitigrade"
-	icon_file = SHORTS_PANTS_SHIRTS_DIGIFILE
-
 /datum/greyscale_config/slacks_worn/digi
 	name = "Worn Slacks - Digitigrade"
 	icon_file = SHORTS_PANTS_SHIRTS_DIGIFILE
@@ -595,6 +587,27 @@
 	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/skirts_dresses.dmi'
 
 // COSTUMES
+
+/datum/greyscale_config/buttondown_slacks_worn/digi
+	name = "Worn Buttondown with Slacks - Digitigrade"
+	icon_file = SHORTS_PANTS_SHIRTS_DIGIFILE
+
+/datum/greyscale_config/buttondown_shorts_worn/digi
+	name = "Worn Buttondown with Shorts - Digitigrade"
+	icon_file = SHORTS_PANTS_SHIRTS_DIGIFILE
+
+/datum/greyscale_config/buttondown_vicvest
+	name = "Buttondown with Double-breasted Vest"
+	icon_file = 'modular_skyrat/master_files/icons/obj/clothing/under/shorts_pants_shirts.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/costumes/buttondown_vicvest.json'
+
+/datum/greyscale_config/buttondown_vicvest/worn
+	name = "Worn Buttondown with Double-breasted Vest"
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/shorts_pants_shirts.dmi'
+
+/datum/greyscale_config/buttondown_vicvest/worn/digi
+	name = "Worn Buttondown with Double-breasted Vest - Digitigrade"
+	icon_file = SHORTS_PANTS_SHIRTS_DIGIFILE
 
 /datum/greyscale_config/football_suit_worn/digi
 	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/costume_digi.dmi'
