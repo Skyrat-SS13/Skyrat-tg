@@ -149,6 +149,8 @@
  * Here we make the reagent forge reagent imbuing
  */
 /obj/structure/reagent_forge/proc/create_reagent_forge()
+	if(reagent_forging) //We really only need to do it once!
+		return
 	reagent_forging = TRUE
 	balloon_alert_to_viewers("gurgles!")
 	color = "#ff5151"
@@ -608,6 +610,8 @@
 		fail_message(user, "The temperature is not hot enough to start heating the metal.")
 		forge_item.in_use = FALSE
 		return FALSE
+
+	//we are going to see if we have an incomplete item to forge
 	var/obj/item/forging/incomplete/search_incomplete = locate(/obj/item/forging/incomplete) in forge_item.contents
 	if(search_incomplete)
 		if(!COOLDOWN_FINISHED(search_incomplete, heating_remainder))
@@ -625,31 +629,41 @@
 		user.mind.adjust_experience(/datum/skill/smithing, 5) //heating up stuff gives just a little experience
 		to_chat(user, span_notice("You successfully heat up [search_incomplete]."))
 		return FALSE
-	var/obj/item/stack/rods/search_rods = locate(/obj/item/stack/rods) in forge_item.contents
-	if(search_rods)
+
+	//we are going to see if we have a stack item
+	var/obj/item/stack/search_stack = locate(/obj/item/stack) in forge_item.contents
+	if(search_stack)
 		var/user_choice = tgui_input_list(user, "What would you like to work on?", "Forge Selection", choice_list)
 		if(!user_choice)
 			fail_message(user, "You decide against continuing to forge.")
 			forge_item.in_use = FALSE
 			return FALSE
-		if(!search_rods.use(1))
-			fail_message(user, "You cannot use [search_rods]!")
+		//set the material of the incomplete
+		var/list/material_list = list()
+		if(search_stack.material_type)
+			material_list[GET_MATERIAL_REF(search_stack.material_type)] = MINERAL_MATERIAL_AMOUNT
+		else
+			material_list = search_stack.custom_materials
+		if(!search_stack.use(1))
+			fail_message(user, "You cannot use [search_stack]!")
 			forge_item.in_use = FALSE
 			return FALSE
-		to_chat(user, span_warning("You start to heat up [search_rods]..."))
+		to_chat(user, span_warning("You start to heat up [search_stack]..."))
 		if(!do_after(user, skill_modifier * forge_item.toolspeed, target = src))
-			fail_message(user, "You fail heating up [search_rods].")
+			fail_message(user, "You fail heating up [search_stack].")
 			forge_item.in_use = FALSE
 			return FALSE
 		var/spawn_item = choice_list[user_choice]
 		var/obj/item/forging/incomplete/incomplete_item = new spawn_item(get_turf(src))
+		if(material_list)
+			incomplete_item.set_custom_materials(material_list)
 		COOLDOWN_START(incomplete_item, heating_remainder, 1 MINUTES)
 		in_use = FALSE
 		forge_item.in_use = FALSE
 		user.mind.adjust_experience(/datum/skill/smithing, 10) //creating an item gives you some experience, not a lot
-		to_chat(user, span_notice("You successfully heat up [search_rods], ready to forge a [user_choice]."))
-		search_rods = locate(/obj/item/stack/rods) in forge_item.contents
-		if(!search_rods)
+		to_chat(user, span_notice("You successfully heat up [search_stack], ready to forge a [user_choice]."))
+		search_stack = locate(/obj/item/stack) in forge_item.contents
+		if(!search_stack)
 			forge_item.icon_state = "tong_empty"
 		return FALSE
 	in_use = FALSE
