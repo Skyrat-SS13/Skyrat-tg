@@ -113,13 +113,8 @@
 /obj/machinery/light/update_icon_state()
 	switch(status) // set icon_states
 		if(LIGHT_OK)
-<<<<<<< HEAD
 			//var/area/local_area = get_area(src) SKYRAT EDIT REMOVAL
 			if(low_power_mode || major_emergency) // SKYRAT EDIT CHANGE
-=======
-			var/area/local_area =get_room_area(src)
-			if(low_power_mode || major_emergency || (local_area?.fire))
->>>>>>> 3388d5bae0e (Cameras and lights now take power from adjacent walls if placed in external areas without power (#69975))
 				icon_state = "[base_state]_emergency"
 			else
 				icon_state = "[base_state]"
