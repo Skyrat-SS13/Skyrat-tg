@@ -139,14 +139,14 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	item_path = /obj/item/clothing/under/rank/security/detective/kim
 	restricted_roles = list(JOB_DETECTIVE)
 
-/datum/loadout_item/under/jumpsuit/paramed_dark
-	name = "Dark Paramedic Jumpsuit"
-	item_path = /obj/item/clothing/under/rank/medical/paramedic/skyrat/dark
+/datum/loadout_item/under/jumpsuit/paramed_light
+	name = "Light Paramedic Uniform"
+	item_path = /obj/item/clothing/under/rank/medical/paramedic/skyrat/light
 	restricted_roles = list(JOB_PARAMEDIC)
 
-/datum/loadout_item/under/jumpsuit/paramed_dark_skirt
-	name = "Dark Paramedic Jumpskirt"
-	item_path = /obj/item/clothing/under/rank/medical/paramedic/skyrat/dark/skirt
+/datum/loadout_item/under/jumpsuit/paramed_light_skirt
+	name = "Light Paramedic Uniform"
+	item_path = /obj/item/clothing/under/rank/medical/paramedic/skyrat/light/skirt
 	restricted_roles = list(JOB_PARAMEDIC)
 
 /datum/loadout_item/under/jumpsuit/chemist_formal
@@ -238,6 +238,10 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /datum/loadout_item/under/miscellaneous/buttondown_shorts
 	name = "Recolorable Buttondown Shirt with Shorts"
 	item_path = /obj/item/clothing/under/costume/buttondown/shorts
+
+/datum/loadout_item/under/miscellaneous/vicvest
+	name = "Recolorable Buttondown Shirt with Double-Breasted Vest"
+	item_path = /obj/item/clothing/under/costume/skyrat/vicvest
 
 /datum/loadout_item/under/miscellaneous/slacks
 	name = "Recolorable Slacks"
@@ -413,10 +417,6 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Tactical Hawaiian Outfit - Green"
 	item_path = /obj/item/clothing/under/tachawaiian/green
 
-/datum/loadout_item/under/miscellaneous/greyshirt
-	name = "Grey Shirt"
-	item_path = /obj/item/clothing/under/misc/greyshirt
-
 /datum/loadout_item/under/miscellaneous/maidcostume
 	name = "Maid Costume"
 	item_path = /obj/item/clothing/under/costume/maid
@@ -452,6 +452,10 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /datum/loadout_item/under/miscellaneous/dutch
 	name = "Dutch Suit"
 	item_path = /obj/item/clothing/under/costume/dutch
+
+/datum/loadout_item/under/miscellaneous/cavalry
+	name = "Cavalry Uniform"
+	item_path = /obj/item/clothing/under/costume/skyrat/cavalry
 
 /datum/loadout_item/under/miscellaneous/tacticool_turtleneck
 	name = "Tacticool Turtleneck"

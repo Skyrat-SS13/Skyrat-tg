@@ -231,7 +231,7 @@ effective or pretty fucking useless.
 	return
 
 /obj/item/shadowcloak/item_action_slot_check(slot, mob/user)
-	if(slot == ITEM_SLOT_BELT)
+	if(slot & ITEM_SLOT_BELT)
 		return 1
 
 /obj/item/shadowcloak/proc/Activate(mob/living/carbon/human/user)
@@ -284,52 +284,22 @@ effective or pretty fucking useless.
 	special_desc_jobs = list("Station Engineer", "Chief Engineer", "Cyborg", "AI") //SKYRAT CHANGE //As telecommunications equipment, Engineering would be knowledgeable.
 	special_desc = "This is a black market radio jammer. Used to disrupt nearby radio communication."
 	var/active = FALSE
-	var/range = 20 //SKYRAT EDIT CHANGE - ORIGINAL:12
-	var/cell_override = /obj/item/stock_parts/cell/bluespace //SKYRAT ADDITION
-
-	//SKYRAT EDIT ADDITION BEGIN
-/obj/item/jammer/Initialize(mapload)
-	. = ..()
-	AddComponent(/datum/component/cell, cell_override, CALLBACK(src, .proc/turn_off))
-
-/obj/item/jammer/proc/turn_on()
-	active = TRUE
-	GLOB.active_jammers |= src
-	START_PROCESSING(SSobj, src)
-
-/obj/item/jammer/proc/turn_off()
-	active = FALSE
-	GLOB.active_jammers -= src
-	STOP_PROCESSING(SSobj, src)
-
-/obj/item/jammer/process(delta_time)
-	if(!active)
-		STOP_PROCESSING(SSobj, src)
-		return
-	if(!(item_use_power(power_use_amount) & COMPONENT_POWER_SUCCESS))
-		turn_off()
-		return
-
-/obj/item/jammer/examine(mob/user)
-	. = ..()
-	. += "[src] is currently [active ? "on" : "off"]."
-	//SKYRAT EDIT END
+	var/range = 12
 
 /obj/item/jammer/attack_self(mob/user)
-	//SKYRAT EDIT ADDITON
-	if(!active && !(item_use_power(power_use_amount, user, TRUE) & COMPONENT_POWER_SUCCESS))
-		return
-	//SKYRAT EDIT END
-	//to_chat(user,"<span class='notice'>You [active ? "deactivate" : "activate"] [src].</span>") SKYRAT EDIT REMOVAL
+	to_chat(user,span_notice("You [active ? "deactivate" : "activate"] [src]."))
 	active = !active
 	if(active)
-		turn_on() //SKYRAT EDIT CHANGE
+		GLOB.active_jammers |= src
 
 	else
-		turn_off() //SKYRAT EDIT CHANGE
+		GLOB.active_jammers -= src
 
-	to_chat(user,"<span class='notice'>You [active ? "activate" : "deactivate"] [src].</span>") //SKYRAT EDIT MOVE
 	update_appearance()
+
+/obj/item/jammer/Destroy()
+	GLOB.active_jammers -= src
+	return ..()
 
 /obj/item/storage/toolbox/emergency/turret
 	desc = "You feel a strange urge to hit this with a wrench."

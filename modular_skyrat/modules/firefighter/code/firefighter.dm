@@ -34,7 +34,7 @@
 	build_path = /obj/item/mecha_parts/mecha_equipment/ripleyupgradef
 	materials = list(/datum/material/iron=15000,/datum/material/plasma=10000,/datum/material/silver=10000,/datum/material/gold=5000)
 	construction_time = 150
-	category = list(RND_CATEGORY_EXOSUIT_EQUIPMENT)
+	category = list(RND_CATEGORY_MECHFAB_RIPLEY + RND_SUBCATEGORY_MECHFAB_SUPPORTED_EQUIPMENT)
 
 /obj/item/mecha_parts/mecha_equipment/ripleyupgradef
 	name = "Ripley MK-Firefighter conversion kit"

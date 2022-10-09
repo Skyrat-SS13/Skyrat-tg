@@ -122,6 +122,7 @@
 	access_lists["[ACCESS_QM]"] = list(
 		/obj/item/clothing/head/beret/cargo/qm = 1,
 		/obj/item/clothing/head/beret/cargo/qm/alt = 1,
+		/obj/item/clothing/neck/mantle/qm = 1,
 		/obj/item/clothing/under/rank/cargo/qm = 1,
 		/obj/item/clothing/under/rank/cargo/qm/skirt = 1,
 		/obj/item/clothing/under/rank/cargo/qm/skyrat/gorka = 1,

@@ -11,7 +11,7 @@
 	var/saved_icon
 	var/saved_bubble_icon
 	var/saved_icon_override
-	var/saved_model_name
+	var/saved_name
 	var/saved_model_features
 	var/saved_special_light_key
 	var/saved_hat_offset
@@ -178,7 +178,7 @@
 	var/borg_skin = show_radial_menu(cyborg, cyborg, reskin_icons, custom_check = CALLBACK(src, .proc/check_menu, cyborg), radius = 38, require_near = TRUE)
 	if(!borg_skin)
 		return FALSE
-	disguise_model_name = borg_skin
+	disguise_model_name = disguise_model.name
 	var/list/details = disguise_model.borg_skins[borg_skin]
 	disguise = details[SKIN_ICON_STATE]
 	disguise_icon_override = details[SKIN_ICON]
@@ -199,7 +199,7 @@
 	saved_icon = user.model.cyborg_base_icon
 	saved_bubble_icon = user.bubble_icon
 	saved_icon_override = user.model.cyborg_icon_override
-	saved_model_name = user.model.name
+	saved_name = user.model.name
 	saved_model_features = user.model.model_features
 	saved_special_light_key = user.model.special_light_key
 	saved_hat_offset = user.model.hat_offset
@@ -227,7 +227,7 @@
 		UnregisterSignal(listeningTo, signalCache)
 		listeningTo = null
 	do_sparks(5, FALSE, user)
-	user.model.name = saved_model_name
+	user.model.name = saved_name
 	user.model.cyborg_base_icon = saved_icon
 	user.model.cyborg_icon_override = saved_icon_override
 	user.icon = saved_icon_override

@@ -15,11 +15,29 @@
 *	UNSORTED
 */
 
+//This item's icons are in shorts_pants_shirts.dmis! Why? Because TG has obj/item/clothing/under/costume/buttondown's icons in there and this reuses some of those.
+//Ifever TG decides to either move the buttondown to its own type or move the icons to costume.dmi, we'll follow their example.
+/obj/item/clothing/under/costume/skyrat/vicvest //there's no way I'm typing out a path called double_breasted 10 times over, too complex and everyone will be scared of it
+	name = "buttondown shirt with double-breasted vest"
+	desc = "A fancy buttondown shirt with slacks and a vest worn overtop, with a second row of buttons. Truly an outdated fashion statement."
+	icon_state = "buttondown_vicvest"
+	greyscale_config = /datum/greyscale_config/buttondown_vicvest
+	greyscale_config_worn = /datum/greyscale_config/buttondown_vicvest/worn
+	greyscale_config_worn_digi = /datum/greyscale_config/buttondown_vicvest/worn/digi
+	greyscale_colors = "#8b2c2c#222227#222227#fbc056"
+	flags_1 = IS_PLAYER_COLORABLE_1
+
+/obj/item/clothing/under/costume/skyrat/cavalry
+	name = "cavalry uniform"
+	desc = "Dedicate yourself to something better. To loyalty, honour, for it only dies when everyone abandons it."
+	icon_state = "cavalry" //specifically an 1890s US Army Cavalry Uniform
+
 /obj/item/clothing/under/costume/deckers/alt //not even going to bother re-pathing this one because its such a unique case of 'TGs item has something but this alt doesnt'
 	name = "deckers maskless outfit"
 	desc = "A decker jumpsuit with neon blue coloring."
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/costume.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/costume.dmi'
+	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/under/costume_digi.dmi'
 	icon_state = "decking_jumpsuit"
 	can_adjust = FALSE
 

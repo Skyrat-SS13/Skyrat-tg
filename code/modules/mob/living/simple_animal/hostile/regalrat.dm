@@ -75,6 +75,9 @@
 /mob/living/simple_animal/hostile/regalrat/proc/get_clicked_player(mob/user)
 	if(key || stat)
 		return
+	if(!SSticker.HasRoundStarted())
+		to_chat(user, span_warning("You cannot assume control of this until after the round has started!"))
+		return
 	var/rat_ask = tgui_alert(usr, "Become the Royal Rat?", "Are you sure?", list("Yes", "No"))
 	if(rat_ask != "Yes" || QDELETED(src))
 		return
@@ -138,6 +141,7 @@
 		if (do_mob(src, target, 2 SECONDS, interaction_key = REGALRAT_INTERACTION))
 			target.reagents.add_reagent(/datum/reagent/rat_spit,rand(1,3),no_react = TRUE)
 			to_chat(src, span_notice("You finish licking [target]."))
+			return
 	else
 		SEND_SIGNAL(target, COMSIG_RAT_INTERACT, src)
 
