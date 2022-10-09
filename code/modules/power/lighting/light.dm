@@ -131,16 +131,11 @@
 	if(!on || status != LIGHT_OK)
 		return
 
-<<<<<<< HEAD
 	/* SKYRAT EDIT START - ORIGINAL:
 	var/area/local_area = get_area(src)
 	if(emergency_mode || (local_area?.fire))
 	*/
 	if(low_power_mode || major_emergency) // SKYRAT EDIT END
-=======
-	var/area/local_area = get_room_area(src)
-	if(low_power_mode || major_emergency || (local_area?.fire))
->>>>>>> 3388d5bae0e (Cameras and lights now take power from adjacent walls if placed in external areas without power (#69975))
 		. += mutable_appearance(overlay_icon, "[base_state]_emergency")
 		return
 	if(nightshift_enabled)
@@ -439,26 +434,17 @@
 // returns if the light has power /but/ is manually turned off
 // if a light is turned off, it won't activate emergency power
 /obj/machinery/light/proc/turned_off()
-<<<<<<< HEAD
-	var/area/local_area = get_area(src)
-	return !local_area.lightswitch && local_area.power_light || flickering || constant_flickering //SKYRAT EDIT CHANGE
-=======
 	var/area/local_area = get_room_area(src)
-	return !local_area.lightswitch && local_area.power_light || flickering
->>>>>>> 3388d5bae0e (Cameras and lights now take power from adjacent walls if placed in external areas without power (#69975))
+	return !local_area.lightswitch && local_area.power_light || flickering || constant_flickering //SKYRAT EDIT CHANGE
 
 // returns whether this light has power
 // true if area has power and lightswitch is on
 /obj/machinery/light/proc/has_power()
-<<<<<<< HEAD
-	var/area/local_area = get_area(src)
+	var/area/local_area =get_room_area(src)
 	//SKYRAT EDIT ADDITION BEGIN
 	if(isnull(local_area))
 		return FALSE
 	//SKYRAT EDIT END
-=======
-	var/area/local_area =get_room_area(src)
->>>>>>> 3388d5bae0e (Cameras and lights now take power from adjacent walls if placed in external areas without power (#69975))
 	return local_area.lightswitch && local_area.power_light
 
 // returns whether this light has emergency power
