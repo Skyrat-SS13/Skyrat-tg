@@ -26,15 +26,19 @@
 	applying_container = new /obj/item/reagent_containers(src)
 	RegisterSignal(parent_clothing, COMSIG_ITEM_EQUIPPED, .proc/set_wearer)
 	RegisterSignal(parent_clothing, COMSIG_ITEM_PRE_UNEQUIP, .proc/remove_wearer)
+	RegisterSignal(parent_clothing, COMSIG_PARENT_EXAMINE, .proc/on_examine)
 	START_PROCESSING(SSdcs, src)
 
 /datum/component/reagent_clothing/Destroy(force, silent)
-	UnregisterSignal(parent_clothing, list(COMSIG_ITEM_EQUIPPED, COMSIG_ITEM_PRE_UNEQUIP))
 	parent_clothing = null
 	cloth_wearer = null
 	QDEL_NULL(applying_container)
 	STOP_PROCESSING(SSdcs, src)
 	return ..()
+
+/datum/component/reagent_clothing/proc/on_examine(datum/source, mob/user, list/examine_list)
+	SIGNAL_HANDLER
+	examine_list += span_notice("[parent_clothing] is able to be inbued with a chemical at a reagent forge!")
 
 /datum/component/reagent_clothing/proc/set_wearer()
 	SIGNAL_HANDLER
@@ -72,11 +76,15 @@
 	parent_weapon = parent
 	parent_weapon.create_reagents(MAX_IMBUE_STORAGE, INJECTABLE | REFILLABLE)
 	RegisterSignal(parent_weapon, COMSIG_ITEM_ATTACK, .proc/inject_attacked)
+	RegisterSignal(parent_weapon, COMSIG_PARENT_EXAMINE, .proc/on_examine)
 
 /datum/component/reagent_weapon/Destroy(force, silent)
-	UnregisterSignal(parent_weapon, COMSIG_ITEM_ATTACK)
 	parent_weapon = null
 	return ..()
+
+/datum/component/reagent_weapon/proc/on_examine(datum/source, mob/user, list/examine_list)
+	SIGNAL_HANDLER
+	examine_list += span_notice("[parent_weapon] is able to be imbued with a chemical at a reagent forge!")
 
 /datum/component/reagent_weapon/proc/inject_attacked(datum/source, mob/living/target, mob/living/user, params)
 	SIGNAL_HANDLER

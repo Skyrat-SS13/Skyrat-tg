@@ -363,11 +363,10 @@
 	item_path = /obj/item/card/fuzzy_license
 	ckeywhitelist = list("fuzlet")
 
-/datum/loadout_item/pocket_items/korpstech_scanner
-	name = "Korpstech Genetics Scanner"
-	item_path = /obj/item/sequence_scanner/korpstech
+/datum/loadout_item/suit/gorlex_harness
+	name = "Engine Technician Harness"
+	item_path = /obj/item/clothing/suit/jacket/gorlex_harness
 	ckeywhitelist = list("1ceres")
-	restricted_roles = list(JOB_GENETICIST, JOB_RESEARCH_DIRECTOR)
 
 /datum/loadout_item/pocket_items/korpstech_poster
 	name = "Korpstech Poster"
@@ -517,3 +516,8 @@
 	name = "MARSOC Challenge Coin"
 	item_path = /obj/item/coin/donator/marsoc
 	ckeywhitelist = list("sweetsoulbrother")
+
+/datum/loadout_item/under/jumpsuit/tactichill
+	name = "Tactichill Jacket"
+	item_path = /obj/item/clothing/under/tactichill
+	ckeywhitelist = list("kaynite")
