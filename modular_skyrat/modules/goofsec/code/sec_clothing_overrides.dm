@@ -292,8 +292,8 @@
 
 //Need to quickly redefine this so the icon doesnt break
 /obj/item/clothing/head/hos/syndicate
-	icon = 'icons/obj/clothing/hats.dmi'
-	worn_icon = 'icons/mob/clothing/head.dmi'
+	icon = 'icons/obj/clothing/head/hats.dmi'
+	worn_icon = 'icons/mob/clothing/head/hats.dmi'
 	icon_state = "hoscap"
 	current_skin = "hoscap" //Prevents reskinning
 
@@ -665,8 +665,8 @@
 */
 
 /obj/item/clothing/head/helmet/sec/redsec
-	icon = 'icons/obj/clothing/hats.dmi'
-	worn_icon = 'icons/mob/clothing/head.dmi'
+	icon = 'icons/obj/clothing/head/hats.dmi'
+	worn_icon = 'icons/mob/clothing/head/hats.dmi'
 	icon_state = "helmet"
 	actions_types = null
 	can_toggle = FALSE

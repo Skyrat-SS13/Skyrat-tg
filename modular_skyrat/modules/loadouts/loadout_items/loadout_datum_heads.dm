@@ -255,26 +255,6 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 *	HALLOWEEN
 */
 
-/datum/loadout_item/head/bear_pelt
-	name = "Bear Pelt"
-	item_path = /obj/item/clothing/head/bearpelt
-
-/datum/loadout_item/head/plague_doctor
-	name = "Plague Doctor Cap"
-	item_path = /obj/item/clothing/head/plaguedoctorhat
-
-/datum/loadout_item/head/snowman
-	name = "Snowman Head"
-	item_path = /obj/item/clothing/head/snowman
-
-/datum/loadout_item/head/chicken
-	name = "Chicken Suit Head"
-	item_path = /obj/item/clothing/head/chicken
-
-/datum/loadout_item/head/cardborg
-	name = "Cardborg Helmet"
-	item_path = /obj/item/clothing/head/cardborg
-
 /datum/loadout_item/head/xenos
 	name = "Xenos Helmet"
 	item_path = /obj/item/clothing/head/xenos
@@ -293,7 +273,7 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 
 /datum/loadout_item/head/griffin
 	name = "Griffon Head"
-	item_path = /obj/item/clothing/head/griffin
+	item_path = /obj/item/clothing/head/costume/griffin
 
 /datum/loadout_item/head/wizard
 	name = "Wizard Hat"
