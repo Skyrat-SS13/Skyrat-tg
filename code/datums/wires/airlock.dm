@@ -125,11 +125,14 @@
 				if(A.hasPower())
 					A.unbolt()
 			A.update_appearance()
-		if(WIRE_IDSCAN) // Pulse to disable emergency access and flash the red lights.
+		if(WIRE_IDSCAN) // Pulse to disable emergency access/engineering override and flash the red lights.
 			if(A.hasPower() && A.density)
 				A.do_animate("deny")
 				if(A.emergency)
 					A.emergency = FALSE
+					A.update_appearance()
+				if(A.engineering_override)
+					A.engineering_override = FALSE
 					A.update_appearance()
 		if(WIRE_AI) // Pulse to disable WIRE_AI control for 10 ticks (follows same rules as cutting).
 			if(A.aiControlDisabled == AI_WIRE_NORMAL)

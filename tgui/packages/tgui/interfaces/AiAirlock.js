@@ -120,6 +120,17 @@ export const AiAirlock = (props, context) => {
                 />
               }
             />
+            <LabeledList.Item
+              label="Engineering Override"
+              buttons={
+                <Button
+                  icon={data.engineering_override ? 'power-off' : 'times'}
+                  content={data.engineering_override ? 'Enabled' : 'Disabled'}
+                  selected={data.engineering_override}
+                  onClick={() => act('engineering-toggle')}
+                />
+              }
+            />
             <LabeledList.Divider />
             <LabeledList.Item
               label="Door Bolts"
