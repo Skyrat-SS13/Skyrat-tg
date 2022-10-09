@@ -17,11 +17,6 @@
 	max_purchase = 8
 	cost = 1
 
-/datum/armament_entry/hecu/misc/pizza
-	item_type = /obj/item/food/pizza/margherita
-	max_purchase = 3
-	cost = 1
-
 /datum/armament_entry/hecu/misc/mre
 	item_type = /obj/item/storage/box/hecu_rations
 	max_purchase = 6
@@ -39,10 +34,25 @@
 
 /datum/armament_entry/hecu/misc/dosh
 	item_type = /obj/item/stack/spacecash/c1000
-	max_purchase = 8
+	max_purchase = 16
 	cost = 1
 
 /datum/armament_entry/hecu/misc/whiskey
 	item_type = /obj/item/reagent_containers/cup/glass/bottle/whiskey
 	max_purchase = 2
 	cost = 1
+
+/datum/armament_entry/hecu/misc/balaclava
+	item_type = /obj/item/clothing/mask/balaclavaadjust
+	max_purchase = 6
+	cost = 1
+
+/datum/armament_entry/hecu/misc/uniform
+	item_type = /obj/item/clothing/under/rank/security/officer/hecu
+	max_purchase = 6
+	cost = 1
+
+/datum/armament_entry/hecu/misc/hudglasses
+	item_type = /obj/item/clothing/glasses/hud/security/sunglasses/peacekeeper/armadyne
+	max_purchase = 6
+	cost = 2

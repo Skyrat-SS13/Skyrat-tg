@@ -35,7 +35,7 @@
 					if((head.worn_icon_state || head.icon_state) in tesh_icon_states)
 						desired_icon = TESHARI_HEAD_ICON
 
-		overlays_standing[HEAD_LAYER] = head.build_worn_icon(default_layer = HEAD_LAYER, default_icon_file = 'icons/mob/clothing/head.dmi', override_file = desired_icon, mutant_styles = used_style)
+		overlays_standing[HEAD_LAYER] = head.build_worn_icon(default_layer = HEAD_LAYER, default_icon_file = 'icons/mob/clothing/head/hats.dmi', override_file = desired_icon, mutant_styles = used_style)
 		update_hud_head(head)
 
 	apply_overlay(HEAD_LAYER)
