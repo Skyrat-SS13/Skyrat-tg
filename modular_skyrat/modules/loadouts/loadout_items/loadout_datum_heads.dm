@@ -114,7 +114,7 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 
 /datum/loadout_item/head/delinquent_cap
 	name = "Delinquent Cap"
-	item_path = /obj/item/clothing/head/delinquent
+	item_path = /obj/item/clothing/head/costume/delinquent
 
 /datum/loadout_item/head/flatcap
 	name = "Flat Cap"
@@ -150,23 +150,23 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 
 /datum/loadout_item/head/dark_blue_hardhat
 	name = "Dark Blue Hardhat"
-	item_path = /obj/item/clothing/head/hardhat/dblue
+	item_path = /obj/item/clothing/head/utility/hardhat/dblue
 
 /datum/loadout_item/head/orange_hardhat
 	name = "Orange Hardhat"
-	item_path = /obj/item/clothing/head/hardhat/orange
+	item_path = /obj/item/clothing/head/utility/hardhat/orange
 
 /datum/loadout_item/head/red_hardhat
 	name = "Red Hardhat"
-	item_path = /obj/item/clothing/head/hardhat/red
+	item_path = /obj/item/clothing/head/utility/hardhat/red
 
 /datum/loadout_item/head/white_hardhat
 	name = "White Hardhat"
-	item_path = /obj/item/clothing/head/hardhat/white
+	item_path = /obj/item/clothing/head/utility/hardhat/white
 
 /datum/loadout_item/head/yellow_hardhat
 	name = "Yellow Hardhat"
-	item_path = /obj/item/clothing/head/hardhat
+	item_path = /obj/item/clothing/head/utility/hardhat
 
 /*
 *	MISC
@@ -178,7 +178,7 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 
 /datum/loadout_item/head/kitty_ears
 	name = "Kitty Ears"
-	item_path = /obj/item/clothing/head/kitty
+	item_path = /obj/item/clothing/head/costume/kitty
 
 /datum/loadout_item/head/rabbit_ears
 	name = "Rabbit Ears"
@@ -194,7 +194,7 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 
 /datum/loadout_item/head/bowler_hat
 	name = "Bowler Hat"
-	item_path = /obj/item/clothing/head/bowler
+	item_path = /obj/item/clothing/head/hats/bowler
 
 /datum/loadout_item/head/bearpelt
 	name = "Brown Bear Pelt"
@@ -255,26 +255,6 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 *	HALLOWEEN
 */
 
-/datum/loadout_item/head/bear_pelt
-	name = "Bear Pelt"
-	item_path = /obj/item/clothing/head/bearpelt
-
-/datum/loadout_item/head/plague_doctor
-	name = "Plague Doctor Cap"
-	item_path = /obj/item/clothing/head/plaguedoctorhat
-
-/datum/loadout_item/head/snowman
-	name = "Snowman Head"
-	item_path = /obj/item/clothing/head/snowman
-
-/datum/loadout_item/head/chicken
-	name = "Chicken Suit Head"
-	item_path = /obj/item/clothing/head/chicken
-
-/datum/loadout_item/head/cardborg
-	name = "Cardborg Helmet"
-	item_path = /obj/item/clothing/head/cardborg
-
 /datum/loadout_item/head/xenos
 	name = "Xenos Helmet"
 	item_path = /obj/item/clothing/head/xenos
@@ -293,7 +273,7 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 
 /datum/loadout_item/head/griffin
 	name = "Griffon Head"
-	item_path = /obj/item/clothing/head/griffin
+	item_path = /obj/item/clothing/head/costume/griffin
 
 /datum/loadout_item/head/wizard
 	name = "Wizard Hat"
@@ -325,7 +305,7 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 
 /datum/loadout_item/head/ushanka
 	name = "Ushanka"
-	item_path = /obj/item/clothing/head/ushanka
+	item_path = /obj/item/clothing/head/costume/ushanka
 
 
 /datum/loadout_item/head/wrussian
@@ -363,7 +343,7 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 
 /datum/loadout_item/head/maidhead2
 	name = "Frilly Maid Headband"
-	item_path = /obj/item/clothing/head/maidheadband
+	item_path = /obj/item/clothing/head/costume/maidheadband
 	additional_tooltip_contents = list("Larger headband from the maid rework. Fits around head and ears.")
 
 /datum/loadout_item/head/wig
@@ -497,7 +477,7 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 
 /datum/loadout_item/head/ushanka/sec
 	name = "Security Ushanka"
-	item_path = /obj/item/clothing/head/ushanka/sec/blue
+	item_path = /obj/item/clothing/head/costume/ushanka/sec/blue
 	restricted_roles = list(JOB_WARDEN,JOB_DETECTIVE,JOB_SECURITY_MEDIC,JOB_SECURITY_OFFICER,JOB_HEAD_OF_SECURITY,JOB_CORRECTIONS_OFFICER)
 
 /datum/loadout_item/head/blasthelmet
