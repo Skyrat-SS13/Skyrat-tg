@@ -517,3 +517,8 @@
 	name = "MARSOC Challenge Coin"
 	item_path = /obj/item/coin/donator/marsoc
 	ckeywhitelist = list("sweetsoulbrother")
+
+/datum/loadout_item/toys/plushie_jeanne
+	name = "Masked Roboticist Plushie"
+	item_path = /obj/item/toy/plush/skyrat/plushie_jeanne
+	ckeywhitelist = list("klb100")

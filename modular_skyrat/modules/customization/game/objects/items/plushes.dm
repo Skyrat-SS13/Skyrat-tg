@@ -584,3 +584,11 @@
 	name = "comfy fox plush"
 	desc = "A stuffed fox with an aura of endearment leaking from their soft exterior."
 	icon_state = "plushie_dan"
+
+//Donation reward for KLB100
+/obj/item/toy/plush/skyrat/plushie_jeanne
+	name = "masked roboticist plushie"
+	desc = "A familiar snow white Vulpkanin plushie. This one appears to be wearing a mask obscuring their face."
+	icon_state = "plushie_jeanne"
+	attack_verb_continuous = list("cuddles", "squishes", "blushes")
+	attack_verb_simple = list("cuddle", "squish", "blush")
