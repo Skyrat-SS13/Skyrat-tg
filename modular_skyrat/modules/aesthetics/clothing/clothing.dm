@@ -87,3 +87,16 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/feet.dmi'
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/shoes.dmi'
 	icon_state = "workbootsold"
+
+
+// UNDERSUITS
+
+/obj/item/clothing/under/rank/rnd/research_director/turtleneck/skirt
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/rnd.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/rnd.dmi'
+
+
+/obj/item/clothing/under/rank/rnd/research_director/turtleneck
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/rnd.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/rnd.dmi'
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
