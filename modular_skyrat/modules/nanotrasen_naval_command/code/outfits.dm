@@ -23,7 +23,7 @@
 
 	id_trim = /datum/id_trim/centcom/naval
 
-	head = /obj/item/clothing/head/caphat/naval/beret
+	head = /obj/item/clothing/head/hats/caphat/naval/beret
 
 	uniform = /obj/item/clothing/under/rank/centcom/skyrat/naval
 
@@ -102,7 +102,7 @@
 
 	id_trim = /datum/id_trim/centcom/naval/rear_admiral
 
-	head = /obj/item/clothing/head/caphat/naval
+	head = /obj/item/clothing/head/hats/caphat/naval
 
 	uniform = /obj/item/clothing/under/rank/centcom/skyrat/naval/admiral
 
@@ -115,7 +115,7 @@
 
 	id_trim = /datum/id_trim/centcom/naval/admiral
 
-	head = /obj/item/clothing/head/caphat/naval
+	head = /obj/item/clothing/head/hats/caphat/naval
 
 	neck = /obj/item/clothing/neck/cloak/admiral
 
@@ -130,7 +130,7 @@
 
 	id_trim = /datum/id_trim/centcom/naval/fleet_admiral
 
-	head = /obj/item/clothing/head/caphat/naval/fleet_admiral
+	head = /obj/item/clothing/head/hats/caphat/naval/fleet_admiral
 
 	neck = /obj/item/clothing/neck/cloak/fleet_admiral
 

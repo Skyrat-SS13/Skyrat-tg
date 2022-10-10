@@ -12,16 +12,16 @@
 /obj/machinery/vending/access/command/build_access_list(list/access_lists)
 	access_lists["[ACCESS_CAPTAIN]"] = list(
 		// CAPTAIN
-		/obj/item/clothing/head/caphat = 1,
-		/obj/item/clothing/head/caphat/beret = 1,
-		/obj/item/clothing/head/caphat/beret/alt = 1,
-		/obj/item/clothing/head/imperial/cap = 1,
+		/obj/item/clothing/head/hats/caphat = 1,
+		/obj/item/clothing/head/hats/caphat/beret = 1,
+		/obj/item/clothing/head/hats/caphat/beret/alt = 1,
+		/obj/item/clothing/head/hats/imperial/cap = 1,
 		/obj/item/clothing/under/rank/captain = 1,
 		/obj/item/clothing/under/rank/captain/skirt = 1,
 		/obj/item/clothing/under/rank/captain/dress = 1,
 		/obj/item/clothing/under/rank/captain/skyrat/kilt = 1,
 		/obj/item/clothing/under/rank/captain/skyrat/imperial = 1,
-		/obj/item/clothing/head/caphat/parade = 1,
+		/obj/item/clothing/head/hats/caphat/parade = 1,
 		/obj/item/clothing/under/rank/captain/parade = 1,
 		/obj/item/clothing/suit/armor/vest/capcarapace/captains_formal = 1,
 		/obj/item/clothing/suit/armor/vest/capcarapace/jacket = 1,

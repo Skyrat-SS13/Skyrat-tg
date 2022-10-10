@@ -39,7 +39,7 @@
 /obj/item/clothing/head/beret/blueshield
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/head/caphat
+/obj/item/clothing/head/hats/caphat
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/head/crown/fancy
@@ -87,7 +87,7 @@
 /obj/item/clothing/head/that
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/head/rabbitears
+/obj/item/clothing/head/costume/rabbitears
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/head/mailman
