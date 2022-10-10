@@ -5,7 +5,9 @@
 	icon_state = "sleeper_s"
 	outfit = /datum/outfit/science_team
 	you_are_text = "You are a scientist in a top secret government facility. You blacked out. Now, you have woken up to the horrors that lay within."
-	flavour_text = "You are a scientist in a top secret government facility. You blacked out. Now, you have woken up to the horrors that lay within."
+	flavour_text = "You are a scientist near the Ground Zero of a top secret government facility. You blacked out. Now, you have woken up to the horrors that lay within."
+	important_text = "Do not try to explore the level unless Vanguard is already present and close to you, and even then, wait at least 20 minutes before leaving your area. \
+					Allowed races are humans."
 	restricted_species = list(/datum/species/human)
 	random_appearance = FALSE
 
@@ -19,7 +21,9 @@
 	suit = /obj/item/clothing/suit/toggle/labcoat
 	shoes = /obj/item/clothing/shoes/laceup
 	back = /obj/item/storage/backpack
-	backpack_contents = list(/obj/item/radio, /obj/item/reagent_containers/cup/beaker)
+	backpack_contents = list(/obj/item/radio,
+							/obj/item/reagent_containers/cup/beaker,
+	)
 	id = /obj/item/card/id
 	id_trim = /datum/id_trim/science_team
 
@@ -36,25 +40,27 @@
 	name = "Research Facility Security Guard"
 	prompt_name = "a research facility guard"
 	outfit = /datum/outfit/security_guard
-	you_are_text = "You are a security guard in a top secret government facility. You blacked out. Now, you have woken up to the horrors that lay within. DO NOT TRY TO EXPLORE THE LEVEL. STAY AROUND YOUR AREA."
+	you_are_text = "You are a security guard in a top secret government facility. You blacked out. Now, you have woken up to the horrors that lay within."
+	flavour_text = "You are a security guard near the Ground Zero of a top secret government facility. You blacked out. Now, you have woken up to the horrors that lay within."
 
 /obj/effect/mob_spawn/ghost_role/human/black_mesa/guard/special(mob/living/carbon/human/spawned_human)
 	. = ..()
 	spawned_human.grant_language(/datum/language/uncommon, TRUE, TRUE, LANGUAGE_MIND)
 
-/obj/item/clothing/under/rank/security/officer/blueshirt/blackmesa
-	armor = list(MELEE = 10, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 10, FIRE = 30, ACID = 30, WOUND = 10)
-	strip_delay = 50
-
 /datum/outfit/security_guard
 	name = "Security Guard"
-	uniform = /obj/item/clothing/under/rank/security/officer/blueshirt/blackmesa
+	uniform = /obj/item/clothing/under/rank/security/officer/blueshirt
 	head = /obj/item/clothing/head/helmet/blueshirt
 	gloves = /obj/item/clothing/gloves/color/black
 	suit = /obj/item/clothing/suit/armor/vest/blueshirt
 	shoes = /obj/item/clothing/shoes/jackboots
+	belt = /obj/item/storage/belt/security/full
 	back = /obj/item/storage/backpack
-	backpack_contents = list(/obj/item/radio, /obj/item/gun/ballistic/automatic/pistol/g17/mesa, /obj/item/ammo_box/magazine/multi_sprite/g17)
+	backpack_contents = list(/obj/item/radio,
+							/obj/item/gun/ballistic/automatic/pistol/g17/mesa,
+							/obj/item/ammo_box/magazine/multi_sprite/ladon,
+							/obj/item/ammo_box/magazine/multi_sprite/ladon,
+	)
 	id = /obj/item/card/id
 	id_trim = /datum/id_trim/security_guard
 
@@ -72,9 +78,12 @@
 	prompt_name = "a tactical squad member"
 	outfit = /datum/outfit/hecu
 	you_are_text = "You are an elite tactical squad deployed into the research facility to contain the infestation."
-	flavour_text = "You and four other marines have been selected for a guard duty near one of the Black Mesa's entrances. You haven't heard much from the north-west post, except for the sounds of gunshots, and their radios went silent. On top of that, your escape helicopter was shot down mid-flight, and another one won't arrive so soon; with your machinegunner being shot down with a precise headshot by something, or SOMEONE. You are likely on your own, at least for now."
-	important_text = "Do not try to explore the level unless Vanguard is dead or cooperative. Stay around your area. Allowed races are humans and IPCs."
-	restricted_species = list(/datum/species/human, /datum/species/robotic/ipc)
+	flavour_text = "You and four other marines have been selected for a guard duty near one of the Black Mesa's entrances. \
+	You haven't heard much from the north-west post, except for the sounds of gunshots, and their radios went silent. \
+	On top of that, your escape helicopter was shot down mid-flight, and another one won't arrive so soon; \
+	with your machinegunner being shot down with a precise headshot by something, or SOMEONE. You are likely on your own, at least for now."
+	important_text = "Do not try to explore the level unless Vanguard is dead or cooperative. Stay around your area. Allowed races are humans."
+	restricted_species = list(/datum/species/human)
 
 /obj/effect/mob_spawn/ghost_role/human/black_mesa/hecu/special(mob/living/carbon/human/spawned_human)
 	. = ..()
@@ -136,15 +145,13 @@
 	belt = /obj/item/storage/belt/military/assault/hecu
 	ears = /obj/item/radio/headset/headset_faction
 	shoes = /obj/item/clothing/shoes/combat
-	l_pocket = /obj/item/reagent_containers/cup/glass/flask
+	l_pocket = /obj/item/storage/belt/bowie_sheath
 	r_pocket = /obj/item/flashlight/flare
 	back = /obj/item/storage/backpack/ert/odst/hecu
 	backpack_contents = list(
-		/obj/item/storage/box/survival/radio,
-		/obj/item/storage/medkit/emergency,
-		/obj/item/storage/box/hecu_rations,
-		/obj/item/knife/combat,
-		/obj/item/armament_points_card/hecu
+							/obj/item/storage/box/survival/radio,
+							/obj/item/storage/medkit/emergency,
+							/obj/item/armament_points_card/hecu,
 	)
 	id = /obj/item/card/id
 	id_trim = /datum/id_trim/hecu
@@ -164,9 +171,14 @@
 	prompt_name = "a tactical squad's leader"
 	outfit = /datum/outfit/hecu/leader
 	you_are_text = "You are an elite tactical squad's leader deployed into the research facility to contain the infestation."
-	flavour_text = "You and four other marines have been selected for a guard duty near one of the Black Mesa's entrances. Due to the lack of any real briefing, and your briefing officer's death during the landing, you have no clue as to what your objective is, so you and your group have set up a camp here. You haven't heard much from the north-west post, except for the sounds of gunshots, and their radios went silent. On top of that, your escape helicopter was shot down mid-flight, and another one won't arrive so soon; with your machinegunner being shot down with a precise headshot by something, or SOMEONE. You are likely on your own, at least for now."
-	important_text = "Keep and sustain marines' morale and discipline. Delegate responsibilities at the best of your abilities. Do not try to explore the level unless Vanguard is dead or cooperative. Stay around your area. Allowed races are humans and IPCs."
-	restricted_species = list(/datum/species/human, /datum/species/robotic/ipc)
+	flavour_text = "You and four other marines have been selected for a guard duty near one of the Black Mesa's entrances. \
+	Due to the lack of any real briefing, and your briefing officer's death during the landing, you have no clue as to what your objective is, \
+	so you and your group have set up a camp here. You haven't heard much from the north-west post, except for the sounds of gunshots, and their radios went silent. \
+	On top of that, your escape helicopter was shot down mid-flight, and another one won't arrive so soon; \
+	with your machinegunner being shot down with a precise headshot by something, or SOMEONE. You are likely on your own, at least for now."
+	important_text = "Keep and sustain marines' morale and discipline. Delegate responsibilities at the best of your abilities. \
+	Do not try to explore the level unless Vanguard is dead or cooperative. Stay around your area. Allowed races are humans."
+	restricted_species = list(/datum/species/human)
 
 /obj/effect/mob_spawn/ghost_role/human/black_mesa/hecu/leader/special(mob/living/carbon/human/spawned_human)
 	. = ..()
@@ -183,16 +195,15 @@
 	belt = /obj/item/storage/belt/military/assault/hecu
 	ears = /obj/item/radio/headset/headset_faction/bowman/captain
 	shoes = /obj/item/clothing/shoes/combat
-	l_pocket = /obj/item/grenade/smokebomb
+	l_pocket = /obj/item/storage/belt/bowie_sheath
 	r_pocket = /obj/item/binoculars
 	back = /obj/item/storage/backpack/ert/odst/hecu
 	backpack_contents = list(
-		/obj/item/storage/box/survival/radio,
-		/obj/item/storage/medkit/emergency,
-		/obj/item/storage/box/hecu_rations,
-		/obj/item/knife/combat,
-		/obj/item/armament_points_card/hecu,
-		/obj/item/book/granter/martial/cqc
+							/obj/item/storage/box/survival/radio,
+							/obj/item/storage/medkit/emergency,
+							/obj/item/armament_points_card/hecu,
+							/obj/item/book/granter/martial/cqc,
+							/obj/item/grenade/smokebomb,
 	)
 	id = /obj/item/card/id
 	id_trim = /datum/id_trim/hecu_leader

@@ -32,7 +32,7 @@
 /datum/design/microfusion/cell
 	name = "Microfusion Cell"
 	desc = "A microfusion cell."
-	category = list(RND_CATEGORY_AMMO)
+	category = list(RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO)
 
 /datum/design/microfusion/cell/basic
 	name = "Basic Microfusion Cell"
@@ -41,7 +41,7 @@
 	build_type = PROTOLATHE | AWAY_LATHE | AUTOLATHE
 	materials = list(/datum/material/iron = 1000, /datum/material/glass = 200)
 	build_path = /obj/item/stock_parts/cell/microfusion
-	category = list(RND_CATEGORY_AMMO, RND_CATEGORY_SECURITY, "initial")
+	category = list(RND_CATEGORY_INITIAL, RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO)
 
 /datum/design/microfusion/cell/enhanced
 	name = "Enhanced Microfusion Cell"
