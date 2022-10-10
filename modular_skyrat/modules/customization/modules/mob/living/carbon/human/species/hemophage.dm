@@ -174,12 +174,15 @@
 				return
 
 			var/drained_blood = min(victim.blood_volume, HEMOPHAGE_DRAIN_AMOUNT, blood_volume_difference)
+
 			victim.show_message(span_danger("[hemophage] drains some of your blood!"))
 			to_chat(hemophage, span_notice("You drink some blood from [victim]![is_target_human_with_client ? " That tasted particularly good!" : ""]"))
-			log_combat(hemophage, victim, "drained [drained_blood]u of blood from")
 			playsound(hemophage, 'sound/items/drink.ogg', 30, TRUE, -2)
+
 			victim.blood_volume = clamp(victim.blood_volume - drained_blood, 0, BLOOD_VOLUME_MAXIMUM)
 			hemophage.blood_volume = clamp(hemophage.blood_volume + drained_blood, 0, BLOOD_VOLUME_MAXIMUM)
+
+			log_combat(hemophage, victim, "drained [drained_blood]u of blood from", addition = " (NEW BLOOD VOLUME: [victim.blood_volume] cL)")
 
 			if(is_target_human_with_client)
 				hemophage.apply_status_effect(/datum/status_effect/quality_blood_satiety)
