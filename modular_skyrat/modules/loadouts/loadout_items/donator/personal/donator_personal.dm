@@ -267,7 +267,7 @@
 
 /datum/loadout_item/under/jumpsuit/mechanic
 	name = "Mechanic's Overalls"
-	item_path = /obj/item/clothing/under/misc/mechanic
+	item_path = /obj/item/clothing/under/misc/skyrat/mechanic
 	ckeywhitelist = list("cypressb")
 
 /datum/loadout_item/under/jumpsuit/mikubikini

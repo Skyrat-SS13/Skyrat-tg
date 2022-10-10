@@ -40,6 +40,11 @@
 	icon_state = "tac_s"
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
 
+/obj/item/clothing/under/misc/skyrat/mechanic
+	name = "mechanic's overalls"
+	desc = "An old-fashioned pair of brown overalls, along with assorted pockets and belt-loops."
+	icon_state = "mechanic"
+
 /obj/item/clothing/under/misc/skyrat/utility
 	name = "general utility uniform"
 	desc = "A utility uniform worn by civilian-ranked crew."

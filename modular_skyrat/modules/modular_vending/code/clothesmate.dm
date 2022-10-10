@@ -36,7 +36,7 @@
 				/obj/item/clothing/under/pants/skyrat/jeans_ripped = 5,
 				/obj/item/clothing/under/shorts/skyrat/shorts_ripped = 5,
 				/obj/item/clothing/under/pants/skyrat/yoga = 5,
-				/obj/item/clothing/under/misc/mechanic = 5,
+				/obj/item/clothing/under/misc/skyrat/mechanic = 5,
 				/obj/item/clothing/under/misc/bluetracksuit = 5,
 				/obj/item/clothing/under/misc/poly_shirt = 5,
 				/obj/item/clothing/under/misc/colourable_kilt = 5,
