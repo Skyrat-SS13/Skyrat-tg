@@ -236,7 +236,7 @@
 	icon_state = "policetrafficcap"
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/head/costume/colourable_flatcap
+/obj/item/clothing/head/colourable_flatcap
 	name = "colourable flat cap"
 	desc = "You in the computers son? You work the computers?"
 	icon_state = "flatcap"

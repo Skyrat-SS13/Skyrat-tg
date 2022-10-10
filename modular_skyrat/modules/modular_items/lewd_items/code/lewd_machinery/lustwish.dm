@@ -51,7 +51,7 @@
 					/obj/item/reagent_containers/cup/lewd_filter = 5,
 					/obj/item/clothing/glasses/hypno = 4,
 					/obj/item/clothing/head/costume/kitty = 4,
-					/obj/item/clothing/head/rabbitears = 4,
+					/obj/item/clothing/head/costume/rabbitears = 4,
 
 
 					//neck
