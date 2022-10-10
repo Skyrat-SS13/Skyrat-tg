@@ -20,8 +20,9 @@ GLOBAL_LIST_EMPTY(ash_rituals)
 	if(!current_ritual)
 		. += span_notice("<br>There is no selected ritual at this moment-- use the central rune to select a ritual.")
 		return
-	. += span_notice("<br>The current ritual is: [current_ritual.name]<br>")
-	. += span_warning("The required components are as follows:")
+	. += span_notice("<br>The current ritual is: [current_ritual.name]")
+	. += span_notice(current_ritual.desc)
+	. += span_warning("<br>The required components are as follows:")
 	for(var/the_components in current_ritual.required_components)
 		var/atom/component_name = current_ritual.required_components[the_components]
 		. += span_warning("[the_components] component is [initial(component_name.name)]")

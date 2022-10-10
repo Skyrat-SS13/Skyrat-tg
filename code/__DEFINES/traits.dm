@@ -431,6 +431,9 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 /// Item still allows you to examine items while blind and actively held.
 #define TRAIT_BLIND_TOOL "blind_tool"
 
+/// The person with this trait always appears as 'unknown'.
+#define TRAIT_UNKNOWN "unknown"
+
 // METABOLISMS
 // Various jobs on the station have historically had better reactions
 // to various drinks and foodstuffs. Security liking donuts is a classic
@@ -844,6 +847,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define ITEM_SCALING_TRAIT "item_scaling"
 /// Trait given by Objects that provide blindsight
 #define ITEM_BLIND_TRAIT "blind_item_trait"
+/// Trait given by hallucinations
+#define HALLUCINATION_TRAIT "hallucination_trait"
 
 /**
 * Trait granted by [/mob/living/carbon/Initialize] and

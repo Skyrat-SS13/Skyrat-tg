@@ -35,7 +35,7 @@
 	name = "chief medical officer's labcoat"
 	desc = "Bluer than the standard model."
 	icon_state = "labcoat_cmo"
-	inhand_icon_state = "labcoat_cmo"
+	inhand_icon_state = null
 
 /obj/item/clothing/suit/toggle/labcoat/cmo/Initialize(mapload)
 	. = ..()
@@ -49,7 +49,7 @@
 	name = "paramedic's jacket"
 	desc = "A dark blue jacket for paramedics with reflective stripes."
 	icon_state = "labcoat_paramedic"
-	inhand_icon_state = "labcoat_paramedic"
+	inhand_icon_state = null
 
 //START SKYRAT EDIT - ADDITION
 /obj/item/clothing/suit/toggle/labcoat/paramedic/Initialize()
@@ -63,7 +63,7 @@
 	name = "\proper The Mad's labcoat"
 	desc = "It makes you look capable of konking someone on the noggin and shooting them into space."
 	icon_state = "labgreen"
-	inhand_icon_state = "labgreen"
+	inhand_icon_state = null
 
 /obj/item/clothing/suit/toggle/labcoat/genetics
 	name = "geneticist labcoat"

@@ -37,7 +37,7 @@
 			cut_overlays()
 
 			if(hat)  // Don't forget your hat
-				var/mutable_appearance/head_overlay = hat.build_worn_icon(default_layer = 20, default_icon_file = 'icons/mob/clothing/head.dmi')
+				var/mutable_appearance/head_overlay = hat.build_worn_icon(default_layer = 20)
 				head_overlay.pixel_y += (hat_offset - 14)
 				add_overlay(head_overlay)
 

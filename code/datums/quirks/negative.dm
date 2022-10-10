@@ -257,9 +257,9 @@
 		/obj/item/clothing/glasses/blindfold,
 		/obj/item/bedsheet/random,
 		/obj/item/clothing/under/misc/pj/red,
-		/obj/item/clothing/head/nightcap/red,
+		/obj/item/clothing/head/costume/nightcap/red,
 		/obj/item/clothing/under/misc/pj/blue,
-		/obj/item/clothing/head/nightcap/blue,
+		/obj/item/clothing/head/costume/nightcap/blue,
 	)
 
 /datum/quirk/hypersensitive
@@ -396,7 +396,7 @@
 	lose_text = null
 	medical_record_text = "Patient has an untreatable impairment in motor function in the lower extremities."
 	hardcore_value = 15
-	mail_goodies = list(/obj/item/wheelchair/gold)
+	mail_goodies = list(/obj/vehicle/ridden/wheelchair/motorized) //yes a fullsized unfolded motorized wheelchair does fit
 
 /datum/quirk/paraplegic/add_unique()
 	if(quirk_holder.buckled) // Handle late joins being buckled to arrival shuttle chairs.
@@ -960,7 +960,7 @@
 	if(istype(possible_saint_nick.back, /obj/item/storage/backpack/santabag))
 		return TRUE
 
-	if(istype(possible_saint_nick.head, /obj/item/clothing/head/santa))
+	if(istype(possible_saint_nick.head, /obj/item/clothing/head/costume/santa))
 		return TRUE
 
 	if(istype(possible_saint_nick.wear_suit, /obj/item/clothing/suit/space/santa))
