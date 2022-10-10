@@ -89,7 +89,9 @@
 	icon_state = "workbootsold"
 
 
-// UNDERSUITS
+/* 
+UNDERSUITS
+*/
 
 /obj/item/clothing/under/rank/rnd/research_director/turtleneck/skirt
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/rnd.dmi'
