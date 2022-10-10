@@ -5,9 +5,9 @@
 			"icon" = "hat-cowboy",
 			"products" = list(
 				/obj/item/clothing/head/colourable_flatcap= 5,
-				/obj/item/clothing/head/cowboyhat/sheriff = 5,
-				/obj/item/clothing/head/cowboyhat/sheriff/alt = 5,
-				/obj/item/clothing/head/cowboyhat/deputy = 5,
+				/obj/item/clothing/head/costume/cowboyhat/sheriff = 5,
+				/obj/item/clothing/head/costume/cowboyhat/sheriff/alt = 5,
+				/obj/item/clothing/head/costume/cowboyhat/deputy = 5,
 				/obj/item/clothing/head/fedora/beige = 5,
 				/obj/item/clothing/head/fedora/white = 5,
 				/obj/item/clothing/head/fedora/fedblack = 5,
