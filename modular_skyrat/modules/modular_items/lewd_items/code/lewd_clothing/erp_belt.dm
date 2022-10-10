@@ -43,7 +43,7 @@
 						/obj/item/clothing/mask/ballgag,
 						/obj/item/clothing/mask/ballgag/choking,
 						/obj/item/clothing/head/domina_cap,
-						/obj/item/clothing/head/maid,
+						/obj/item/clothing/head/costume/maid,
 						/obj/item/clothing/glasses/blindfold/kinky,
 						/obj/item/clothing/ears/kinky_headphones,
 						/obj/item/clothing/suit/straight_jacket/latex_straight_jacket,

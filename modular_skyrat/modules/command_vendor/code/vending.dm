@@ -12,16 +12,16 @@
 /obj/machinery/vending/access/command/build_access_list(list/access_lists)
 	access_lists["[ACCESS_CAPTAIN]"] = list(
 		// CAPTAIN
-		/obj/item/clothing/head/caphat = 1,
+		/obj/item/clothing/head/hats/caphat = 1,
 		/obj/item/clothing/head/caphat/beret = 1,
 		/obj/item/clothing/head/caphat/beret/alt = 1,
-		/obj/item/clothing/head/imperial/cap = 1,
+		/obj/item/clothing/head/hats/imperial/cap = 1,
 		/obj/item/clothing/under/rank/captain = 1,
 		/obj/item/clothing/under/rank/captain/skirt = 1,
 		/obj/item/clothing/under/rank/captain/dress = 1,
 		/obj/item/clothing/under/rank/captain/skyrat/kilt = 1,
 		/obj/item/clothing/under/rank/captain/skyrat/imperial = 1,
-		/obj/item/clothing/head/caphat/parade = 1,
+		/obj/item/clothing/head/hats/caphat/parade = 1,
 		/obj/item/clothing/under/rank/captain/parade = 1,
 		/obj/item/clothing/suit/armor/vest/capcarapace/captains_formal = 1,
 		/obj/item/clothing/suit/armor/vest/capcarapace/jacket = 1,
@@ -48,10 +48,10 @@
 		/obj/item/clothing/shoes/laceup = 1
 		)
 	access_lists["[ACCESS_HOP]"] = list( // Best head btw
-		/obj/item/clothing/head/hopcap = 1,
+		/obj/item/clothing/head/hats/hopcap = 1,
 		/obj/item/clothing/head/hopcap/beret = 1,
 		/obj/item/clothing/head/hopcap/beret/alt = 1,
-		/obj/item/clothing/head/imperial/hop = 1,
+		/obj/item/clothing/head/hats/imperial/hop = 1,
 		/obj/item/clothing/under/rank/civilian/head_of_personnel = 1,
 		/obj/item/clothing/under/rank/civilian/head_of_personnel/skirt = 1,
 		/obj/item/clothing/under/rank/civilian/head_of_personnel/skyrat/turtleneck = 1,
@@ -69,7 +69,7 @@
 	access_lists["[ACCESS_CMO]"] = list(
 		/obj/item/clothing/head/beret/medical/cmo = 1,
 		/obj/item/clothing/head/beret/medical/cmo/alt = 1,
-		/obj/item/clothing/head/imperial/cmo = 1,
+		/obj/item/clothing/head/hats/imperial/cmo = 1,
 		/obj/item/clothing/under/rank/medical/chief_medical_officer = 1,
 		/obj/item/clothing/under/rank/medical/chief_medical_officer/skirt = 1,
 		/obj/item/clothing/under/rank/medical/chief_medical_officer/turtleneck = 1,
@@ -96,7 +96,7 @@
 	access_lists["[ACCESS_CE]"] = list(
 		/obj/item/clothing/head/beret/engi/ce = 1,
 		/obj/item/clothing/head/beret/engi/ce/alt = 1,
-		/obj/item/clothing/head/imperial/ce = 1,
+		/obj/item/clothing/head/hats/imperial/ce = 1,
 		/obj/item/clothing/under/rank/engineering/chief_engineer = 1,
 		/obj/item/clothing/under/rank/engineering/chief_engineer/skirt = 1,
 		/obj/item/clothing/under/rank/engineering/chief_engineer/skyrat/imperial = 1,
@@ -106,8 +106,8 @@
 	access_lists["[ACCESS_HOS]"] = list(
 		/obj/item/clothing/head/hos = 1,
 		/obj/item/clothing/head/hos/beret/navyhos = 1,
-		/obj/item/clothing/head/hos/peacekeeper/sol = 1,
-		/obj/item/clothing/head/imperial/hos = 1,
+		/obj/item/clothing/head/hats/hos/peacekeeper/sol = 1,
+		/obj/item/clothing/head/hats/imperial/hos = 1,
 		/obj/item/clothing/under/rank/security/head_of_security/peacekeeper = 1,
 		/obj/item/clothing/under/rank/security/head_of_security/peacekeeper/sol = 1,
 		/obj/item/clothing/under/rank/security/head_of_security/alt = 1,
@@ -142,16 +142,16 @@
 		/obj/item/clothing/head/beret/centcom_formal/nt_consultant = 1,
 		/obj/item/clothing/under/rank/nanotrasen_consultant = 1,
 		/obj/item/clothing/under/rank/nanotrasen_consultant/skirt = 1,
-		/obj/item/clothing/head/centhat = 1,
+		/obj/item/clothing/head/hats/centhat = 1,
 		/obj/item/clothing/suit/armor/centcom_formal/nt_consultant = 1
 		)
 
 	access_lists["[ACCESS_COMMAND]"] = list(
-		/obj/item/clothing/head/imperial = 5,
-		/obj/item/clothing/head/imperial/grey = 5,
-		/obj/item/clothing/head/imperial/white = 2,
-		/obj/item/clothing/head/imperial/red = 5,
-		/obj/item/clothing/head/imperial/helmet = 5,
+		/obj/item/clothing/head/hats/imperial = 5,
+		/obj/item/clothing/head/hats/imperial/grey = 5,
+		/obj/item/clothing/head/hats/imperial/white = 2,
+		/obj/item/clothing/head/hats/imperial/red = 5,
+		/obj/item/clothing/head/hats/imperial/helmet = 5,
 		/obj/item/clothing/under/rank/captain/skyrat/imperial/generic = 5,
 		/obj/item/clothing/under/rank/captain/skyrat/imperial/generic/grey = 5,
 		/obj/item/clothing/under/rank/captain/skyrat/imperial/generic/pants = 5,
