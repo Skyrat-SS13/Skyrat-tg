@@ -204,6 +204,8 @@
 	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "beaker"
 	inhand_icon_state = "beaker"
+	lefthand_file = 'icons/mob/inhands/items_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/items_righthand.dmi'
 	worn_icon_state = "beaker"
 	custom_materials = list(/datum/material/glass=500)
 	volume = 60 //SKYRAT EDIT: Addition
@@ -308,6 +310,7 @@
 	name = "bucket"
 	desc = "It's a bucket. You can squeeze a mop's contents into it by using right-click." //SKYRAT EDIT CHANGE
 	icon = 'icons/obj/janitor.dmi'
+	worn_icon = 'icons/mob/clothing/head/utility.dmi'
 	icon_state = "bucket"
 	inhand_icon_state = "bucket"
 	lefthand_file = 'icons/mob/inhands/equipment/custodial_lefthand.dmi'
