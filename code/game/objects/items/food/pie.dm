@@ -1,6 +1,7 @@
 /obj/item/food/pie
 	icon = 'icons/obj/food/piecake.dmi'
 
+	inhand_icon_state = "pie"
 
 	bite_consumption = 3
 	w_class = WEIGHT_CLASS_NORMAL
@@ -53,8 +54,7 @@
 	if(isliving(hit_atom))
 		var/mob/living/living_target_getting_hit = hit_atom
 		if(stunning)
-			//living_target_getting_hit.Paralyze(2 SECONDS) //splat! //ORIGINAL
-			living_target_getting_hit.StaminaKnockdown(1 SECONDS, TRUE) //SKYRAT EDIT CHANGE - COMBAT
+			living_target_getting_hit.Paralyze(2 SECONDS) //splat!
 		if(iscarbon(living_target_getting_hit))
 			is_creamable = !!(living_target_getting_hit.get_bodypart(BODY_ZONE_HEAD))
 		if(is_creamable)

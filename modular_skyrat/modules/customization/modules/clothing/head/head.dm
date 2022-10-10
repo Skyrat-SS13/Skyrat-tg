@@ -122,7 +122,7 @@
 	armor = list(MELEE = 35, BULLET = 30, LASER = 30, ENERGY = 40, BOMB = 25, BIO = 0, FIRE = 20, ACID = 50, WOUND = 4)
 
 
-/obj/item/clothing/head/ushanka/sec
+/obj/item/clothing/head/costume/ushanka/sec
 	name = "security ushanka"
 	desc = "There's more to life than money, with this red ushanka, you can prove it for $19.99."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
@@ -134,7 +134,7 @@
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
 
-/obj/item/clothing/head/ushanka/sec/blue
+/obj/item/clothing/head/costume/ushanka/sec/blue
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	desc = "There's more to life than money, with this blue ushanka, you can prove it for $19.99."

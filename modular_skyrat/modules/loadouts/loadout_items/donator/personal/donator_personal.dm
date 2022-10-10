@@ -320,7 +320,7 @@
 
 /datum/loadout_item/head/frostyushanka
 	name = "Blue Ushanka"
-	item_path = /obj/item/clothing/head/ushanka/frosty
+	item_path = /obj/item/clothing/head/costume/ushanka/frosty
 	ckeywhitelist = list("cherno00")
 
 /datum/loadout_item/neck/silvercross
