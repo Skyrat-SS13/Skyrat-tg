@@ -73,7 +73,7 @@
 					/obj/item/clothing/under/stripper_outfit = 5,
 					/obj/item/clothing/under/costume/bunnylewd = 5,
 					/obj/item/clothing/under/costume/bunnylewd/white = 5,
-					/obj/item/clothing/under/misc/gear_harness = 4,
+					/obj/item/clothing/under/misc/skyrat/gear_harness = 4,
 
 					//hands
 					/obj/item/clothing/gloves/ball_mittens = 8,

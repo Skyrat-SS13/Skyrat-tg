@@ -527,11 +527,11 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 
 /datum/loadout_item/under/miscellaneous/gear_harness
 	name = "Gear Harness"
-	item_path = /obj/item/clothing/under/misc/gear_harness
+	item_path = /obj/item/clothing/under/misc/skyrat/gear_harness
 
 /datum/loadout_item/under/miscellaneous/taccas
 	name = "Tacticasual Uniform"
-	item_path = /obj/item/clothing/under/misc/taccas
+	item_path = /obj/item/clothing/under/misc/skyrat/taccas
 
 /datum/loadout_item/under/miscellaneous/cargo_casual
 	name = "Cargo Tech Casualwear"
@@ -565,11 +565,11 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 
 /datum/loadout_item/under/miscellaneous/eve
 	name = "Collection of Leaves"
-	item_path = /obj/item/clothing/under/misc/gear_harness/eve
+	item_path = /obj/item/clothing/under/misc/skyrat/gear_harness/eve
 
 /datum/loadout_item/under/miscellaneous/adam
 	name = "Leaf"
-	item_path = /obj/item/clothing/under/misc/gear_harness/adam
+	item_path = /obj/item/clothing/under/misc/skyrat/gear_harness/adam
 
 /datum/loadout_item/under/miscellaneous/ethereal_tunic
 	name = "Ethereal Tunic"
