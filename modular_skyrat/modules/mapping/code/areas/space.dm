@@ -23,6 +23,9 @@
 /area/ruin/space/has_grav/powered/skyrat/blackmarket
 	name = "Shady Market"
 
+/area/ruin/space/has_grav/powered/skyrat/scrapheap
+	name = "Scrap Heap"
+
 ///Interdyne, Forward Operating Base
 /area/ruin/space/has_grav/skyrat/interdynefob
 	name = "DS-2" //If DS-1 is so great...
