@@ -91,11 +91,6 @@
 	item_path = /obj/item/clothing/under/rax_turtleneck_gray
 	ckeywhitelist = list("raxraus")
 
-/datum/loadout_item/glasses/zentaiglasses
-	name = "Demonic Sunglasses"
-	item_path = /obj/item/clothing/glasses/zentai
-	ckeywhitelist = list("candlejax")
-
 /datum/loadout_item/head/goldengoggles
 	name = "Steampunk Goggles"
 	item_path = /obj/item/clothing/glasses/welding/steampunk_goggles
