@@ -2,7 +2,7 @@
 	name = "latex maid costume"
 	desc = "A maid costume made of a thick latex."
 	icon_state = "lewdmaid"
-	inhand_icon_state = "lewdmaid"
+	inhand_icon_state = null
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_uniform.dmi'
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_uniform/lewd_uniform.dmi'
 	worn_icon_digi = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_uniform/lewd_uniform.dmi'
@@ -18,7 +18,7 @@
 	name = "shiny maid apron"
 	desc = "The best part of a maid costume. Now with different colors!"
 	icon_state = "lewdapron"
-	inhand_icon_state = "lewdapron_red"
+	inhand_icon_state = null
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_items/lewd_items.dmi'
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
 	lefthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_left.dmi'
