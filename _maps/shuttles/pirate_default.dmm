@@ -332,10 +332,6 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/shuttle/pirate)
-"aH" = (
-/obj/structure/shuttle/engine/propulsion/left,
-/turf/open/floor/plating/airless,
-/area/shuttle/pirate)
 "aI" = (
 /obj/machinery/light/small/directional/west,
 /obj/structure/sign/warning/vacuum/external/directional/west,
@@ -352,10 +348,6 @@
 	},
 /obj/effect/mapping_helpers/airlock/cutaiwire,
 /turf/open/floor/plating,
-/area/shuttle/pirate)
-"aK" = (
-/obj/structure/shuttle/engine/propulsion,
-/turf/open/floor/plating/airless,
 /area/shuttle/pirate)
 "aL" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
@@ -742,33 +734,6 @@
 /obj/effect/mapping_helpers/airlock/cutaiwire,
 /turf/open/floor/plating,
 /area/shuttle/pirate)
-"ce" = (
-/obj/machinery/door/airlock/external/glass/ruin{
-	id_tag = "piratestarboardexternal"
-	},
-/obj/effect/mapping_helpers/airlock/locked,
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 1
-	},
-/obj/docking_port/mobile/pirate{
-	dwidth = 11;
-	height = 16;
-	launch_status = 0;
-	movement_force = list("KNOCKDOWN" = 0, "THROW" = 0);
-	name = "Pirate Ship";
-	port_direction = 2;
-	width = 17
-	},
-/obj/docking_port/stationary{
-	dwidth = 11;
-	height = 16;
-	shuttle_id = "pirate_home";
-	name = "Deep Space";
-	width = 17
-	},
-/obj/effect/mapping_helpers/airlock/cutaiwire,
-/turf/open/floor/plating,
-/area/shuttle/pirate)
 "df" = (
 /obj/machinery/porta_turret/syndicate/energy{
 	dir = 4;
@@ -814,18 +779,6 @@
 	},
 /turf/open/floor/pod/light,
 /area/shuttle/pirate)
-"ep" = (
-/obj/structure/window/reinforced{
-	dir = 1;
-	pixel_y = 1
-	},
-/obj/structure/shuttle/engine/heater,
-/turf/open/floor/plating/airless,
-/area/shuttle/pirate)
-"er" = (
-/obj/structure/shuttle/engine/propulsion/right,
-/turf/open/floor/plating/airless,
-/area/shuttle/pirate)
 "et" = (
 /obj/structure/grille,
 /turf/open/floor/plating/airless,
@@ -850,6 +803,13 @@
 /obj/item/wrench,
 /turf/open/floor/plating/airless,
 /area/shuttle/pirate)
+"ey" = (
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "piratebridge"
+	},
+/obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
+/turf/open/floor/plating,
+/area/shuttle/pirate)
 "ez" = (
 /obj/structure/window/reinforced,
 /obj/structure/frame/machine,
@@ -873,6 +833,10 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron,
+/area/shuttle/pirate)
+"fF" = (
+/obj/machinery/power/shuttle_engine/propulsion,
+/turf/open/floor/plating/airless,
 /area/shuttle/pirate)
 "fW" = (
 /turf/closed/wall/mineral/plastitanium,
@@ -921,6 +885,28 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
+/area/shuttle/pirate)
+"qD" = (
+/obj/machinery/power/shuttle_engine/propulsion/left,
+/turf/open/floor/plating/airless,
+/area/shuttle/pirate)
+"sP" = (
+/obj/machinery/light/small/directional/east,
+/obj/machinery/computer/monitor{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/airalarm/all_access{
+	pixel_y = -24
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
 /area/shuttle/pirate)
 "vB" = (
 /obj/effect/turf_decal/stripes/line{
@@ -1051,6 +1037,10 @@
 	},
 /turf/open/floor/iron,
 /area/shuttle/pirate)
+"OU" = (
+/obj/machinery/power/shuttle_engine/propulsion/right,
+/turf/open/floor/plating/airless,
+/area/shuttle/pirate)
 "RY" = (
 /obj/effect/mob_spawn/ghost_role/human/pirate/captain{
 	dir = 4
@@ -1065,23 +1055,32 @@
 	},
 /turf/open/floor/wood,
 /area/shuttle/pirate)
-"TB" = (
-/obj/machinery/light/small/directional/east,
-/obj/machinery/computer/monitor{
-	dir = 8
+"TU" = (
+/obj/machinery/door/airlock/external/glass/ruin{
+	id_tag = "piratestarboardexternal"
 	},
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/airalarm/all_access{
-	pixel_y = -24
-	},
-/obj/effect/turf_decal/tile/red{
+/obj/effect/mapping_helpers/airlock/locked,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 1
 	},
-/obj/effect/turf_decal/tile/red,
-/obj/effect/turf_decal/tile/red{
-	dir = 8
+/obj/docking_port/mobile/pirate{
+	dwidth = 11;
+	height = 16;
+	launch_status = 0;
+	movement_force = list("KNOCKDOWN" = 0, "THROW" = 0);
+	name = "Pirate Ship";
+	port_direction = 2;
+	width = 17
 	},
-/turf/open/floor/iron/dark,
+/obj/docking_port/stationary{
+	dwidth = 11;
+	height = 16;
+	shuttle_id = "pirate_home";
+	name = "Deep Space";
+	width = 17
+	},
+/obj/effect/mapping_helpers/airlock/cutaiwire,
+/turf/open/floor/plating,
 /area/shuttle/pirate)
 "Ur" = (
 /obj/structure/closet/secure_closet/personal,
@@ -1092,12 +1091,13 @@
 	},
 /turf/open/floor/iron,
 /area/shuttle/pirate)
-"XS" = (
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "piratebridge"
+"Vm" = (
+/obj/structure/window/reinforced{
+	dir = 1;
+	pixel_y = 1
 	},
-/obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
-/turf/open/floor/plating,
+/obj/machinery/power/shuttle_engine/heater,
+/turf/open/floor/plating/airless,
 /area/shuttle/pirate)
 
 (1,1,1) = {"
@@ -1150,8 +1150,8 @@ ar
 aj
 RY
 aM
-ep
-aH
+Vm
+qD
 af
 "}
 (4,1,1) = {"
@@ -1161,15 +1161,15 @@ af
 af
 af
 af
-XS
+ey
 ay
 Oe
 OL
 zw
 dy
 br
-ep
-er
+Vm
+OU
 af
 "}
 (5,1,1) = {"
@@ -1194,8 +1194,8 @@ aR
 af
 af
 af
-XS
-XS
+ey
+ey
 aj
 aj
 aj
@@ -1211,8 +1211,8 @@ aJ
 (7,1,1) = {"
 af
 af
-XS
-XS
+ey
+ey
 aC
 aW
 aj
@@ -1229,7 +1229,7 @@ aj
 (8,1,1) = {"
 af
 af
-XS
+ey
 ab
 ae
 bf
@@ -1241,13 +1241,13 @@ aU
 be
 aD
 aG
-ep
-aH
+Vm
+qD
 "}
 (9,1,1) = {"
 af
 af
-XS
+ey
 ac
 ag
 am
@@ -1259,13 +1259,13 @@ mU
 aL
 bP
 bX
-ep
-aK
+Vm
+fF
 "}
 (10,1,1) = {"
 af
 af
-XS
+ey
 ad
 ah
 an
@@ -1277,16 +1277,16 @@ aj
 bO
 bQ
 bk
-ep
-er
+Vm
+OU
 "}
 (11,1,1) = {"
 af
 af
-XS
-XS
+ey
+ey
 al
-TB
+sP
 aj
 ek
 bA
@@ -1302,8 +1302,8 @@ aj
 af
 af
 af
-XS
-XS
+ey
+ey
 aj
 aj
 aj
@@ -1314,7 +1314,7 @@ ED
 aS
 bZ
 bo
-ce
+TU
 "}
 (13,1,1) = {"
 af
@@ -1341,15 +1341,15 @@ af
 af
 af
 af
-XS
+ey
 eE
 bC
 bJ
 bM
 dU
 aV
-ep
-aH
+Vm
+qD
 af
 "}
 (15,1,1) = {"
@@ -1366,8 +1366,8 @@ wf
 aj
 OD
 aV
-ep
-er
+Vm
+OU
 af
 "}
 (16,1,1) = {"

@@ -23,7 +23,7 @@
 		/obj/item/clothing/under/suit/skyrat/helltaker = 5,
 		/obj/item/clothing/under/suit/skyrat/helltaker/skirt = 5,
 		/obj/item/clothing/suit/toggle/lawyer/white = 5,
-		/obj/item/clothing/head/jester/alt = 1,
+		/obj/item/clothing/head/costume/jester/alt = 1,
 		/obj/item/clothing/under/rank/civilian/clown/jester/alt = 1,
 		/obj/item/clothing/head/christmas = 5,
 		/obj/item/clothing/head/christmas/green =  5,

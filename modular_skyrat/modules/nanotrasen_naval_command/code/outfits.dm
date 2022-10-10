@@ -36,7 +36,7 @@
 
 	id_trim = /datum/id_trim/centcom/naval/lieutenant
 
-	head = /obj/item/clothing/head/centcom_cap
+	head = /obj/item/clothing/head/hats/centcom_cap
 
 	suit = /obj/item/clothing/suit/armor/vest/capcarapace/naval
 
@@ -51,7 +51,7 @@
 
 	id_trim = /datum/id_trim/centcom/naval/ltcr
 
-	head = /obj/item/clothing/head/centcom_cap
+	head = /obj/item/clothing/head/hats/centcom_cap
 
 	neck = /obj/item/clothing/neck/pauldron
 
@@ -68,7 +68,7 @@
 
 	id_trim = /datum/id_trim/centcom/naval/commander
 
-	head = /obj/item/clothing/head/centcom_cap
+	head = /obj/item/clothing/head/hats/centcom_cap
 
 	neck = /obj/item/clothing/neck/pauldron/commander
 
@@ -85,7 +85,7 @@
 
 	id_trim = /datum/id_trim/centcom/naval/captain
 
-	head = /obj/item/clothing/head/centcom_cap
+	head = /obj/item/clothing/head/hats/centcom_cap
 
 	neck = /obj/item/clothing/neck/pauldron/captain
 
