@@ -123,7 +123,7 @@
 	item_path = /obj/item/clothing/under/plasmaman/candlejax
 	ckeywhitelist = list("candlejax")
 
-datum/loadout_item/suit/cjax
+/datum/loadout_item/suit/cjax
 	name = "XuraCorp Labcoat"
 	item_path = /obj/item/clothing/suit/toggle/labcoat/rd/jax
 	ckeywhitelist = list("candlejax")
