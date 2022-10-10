@@ -24,25 +24,27 @@
 	process_flags = REAGENT_SYNTHETIC
 
 /datum/reagent/medicine/system_cleaner/on_mob_life(mob/living/carbon/affected_mob, delta_time, times_fired)
-	affected_mob.adjustToxLoss(-2 * REM, 0)
+	affected_mob.adjustToxLoss(-2 * REM * delta_time, 0)
 	. = 1
+	var/remove_amount = 1 * REM * delta_time;
 	for(var/thing in affected_mob.reagents.reagent_list)
 		var/datum/reagent/reagent = thing
 		if(reagent != src)
-			affected_mob.reagents.remove_reagent(reagent.type, 1 * REM * delta_time)
+			affected_mob.reagents.remove_reagent(reagent.type, remove_amount)
 	..()
 
 /datum/reagent/medicine/liquid_solder
 	name = "Liquid Solder"
 	description = "Repairs brain damage in synthetics."
+	reagent_state = LIQUID
 	color = "#727272"
 	taste_description = "metal"
 	process_flags = REAGENT_SYNTHETIC
 
-/datum/reagent/medicine/liquid_solder/on_mob_life(mob/living/carbon/C)
-	C.adjustOrganLoss(ORGAN_SLOT_BRAIN, -3*REM)
+/datum/reagent/medicine/liquid_solder/on_mob_life(mob/living/carbon/affected_mob, delta_time)
+	affected_mob.adjustOrganLoss(ORGAN_SLOT_BRAIN, -3 * REM * delta_time)
 	if(prob(10))
-		C.cure_trauma_type(resilience = TRAUMA_RESILIENCE_BASIC)
+		affected_mob.cure_trauma_type(resilience = TRAUMA_RESILIENCE_BASIC)
 	..()
 
 /datum/reagent/medicine/nanite_slurry
@@ -60,8 +62,9 @@
 	var/temperature_change = 50
 
 
-/datum/reagent/medicine/nanite_slurry/on_mob_life(mob/living/carbon/affected_mob)
-	affected_mob.heal_bodypart_damage(healing * REM, healing * REM, required_status = BODYTYPE_ROBOTIC)
+/datum/reagent/medicine/nanite_slurry/on_mob_life(mob/living/carbon/affected_mob, delta_time)
+	var/heal_amount = healing * REM * delta_time
+	affected_mob.heal_bodypart_damage(heal_amount, heal_amount, required_status = BODYTYPE_ROBOTIC)
 	..()
 
 /datum/reagent/medicine/nanite_slurry/overdose_process(mob/living/carbon/affected_mob, delta_time, times_fired)
