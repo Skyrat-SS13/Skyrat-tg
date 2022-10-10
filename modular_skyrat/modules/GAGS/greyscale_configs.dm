@@ -663,6 +663,14 @@
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/kilt/kilt_worn.json'
 
 /*
+TREK
+*/
+
+/datum/greyscale_config/trek/worn/digi
+	name = "Worn Trek Uniform - Digitigrade"
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/trek_digi.dmi'
+
+/*
 *	SHOES
 */
 
