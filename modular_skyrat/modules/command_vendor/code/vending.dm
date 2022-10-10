@@ -48,7 +48,7 @@
 		/obj/item/clothing/shoes/laceup = 1
 		)
 	access_lists["[ACCESS_HOP]"] = list( // Best head btw
-		/obj/item/clothing/head/hopcap = 1,
+		/obj/item/clothing/head/hats/hopcap = 1,
 		/obj/item/clothing/head/hopcap/beret = 1,
 		/obj/item/clothing/head/hopcap/beret/alt = 1,
 		/obj/item/clothing/head/hats/imperial/hop = 1,
@@ -142,7 +142,7 @@
 		/obj/item/clothing/head/beret/centcom_formal/nt_consultant = 1,
 		/obj/item/clothing/under/rank/nanotrasen_consultant = 1,
 		/obj/item/clothing/under/rank/nanotrasen_consultant/skirt = 1,
-		/obj/item/clothing/head/centhat = 1,
+		/obj/item/clothing/head/hats/centhat = 1,
 		/obj/item/clothing/suit/armor/centcom_formal/nt_consultant = 1
 		)
 

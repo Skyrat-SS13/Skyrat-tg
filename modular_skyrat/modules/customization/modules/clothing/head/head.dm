@@ -228,7 +228,7 @@
 	icon_state = "policechiefcap"
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/head/sec/peacekeeper/sol/traffic
+/obj/item/clothing/head/hats/sec/peacekeeper/sol/traffic
 	name = "sol traffic cop cap"
 	desc = "You think that's Shitcurrity? That's just Civil Shitsputes, I'll show you REAL Shitcurrity."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
