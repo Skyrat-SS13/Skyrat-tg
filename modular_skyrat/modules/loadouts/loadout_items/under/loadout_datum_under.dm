@@ -176,7 +176,7 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 
 /datum/loadout_item/under/jumpsuit/utility
 	name = "Utility Uniform"
-	item_path = /obj/item/clothing/under/utility
+	item_path = /obj/item/clothing/under/misc/skyrat/utility
 
 /datum/loadout_item/under/jumpsuit/utility_eng
 	name = "Engineering Utility Uniform"

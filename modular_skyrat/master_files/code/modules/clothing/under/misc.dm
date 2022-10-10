@@ -39,3 +39,14 @@
 	desc = "A white wifebeater on top of some cargo pants. For when you need to carry various beers."
 	icon_state = "tac_s"
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
+
+/obj/item/clothing/under/misc/skyrat/utility
+	name = "general utility uniform"
+	desc = "A utility uniform worn by civilian-ranked crew."
+	icon_state = "util_gen"
+	body_parts_covered = CHEST|ARMS|GROIN|LEGS
+	can_adjust = FALSE
+
+/obj/item/clothing/under/misc/skyrat/utility/syndicate
+	armor = list(MELEE = 10, BULLET = 0, LASER = 0,ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 40) //Same stats as the tactical turtleneck.
+	has_sensor = NO_SENSORS
