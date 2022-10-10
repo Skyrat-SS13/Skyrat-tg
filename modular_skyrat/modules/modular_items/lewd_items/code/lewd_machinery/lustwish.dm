@@ -44,7 +44,7 @@
 					/obj/item/clothing/mask/muzzle/ring = 4,
 					/obj/item/clothing/head/domina_cap = 5,
 					/obj/item/clothing/head/helmet/space/deprivation_helmet = 5,
-					/obj/item/clothing/head/maid = 5,
+					/obj/item/clothing/head/costume/maid = 5,
 					/obj/item/clothing/glasses/blindfold/kinky = 5,
 					/obj/item/clothing/ears/kinky_headphones = 5,
 					/obj/item/clothing/mask/gas/bdsm_mask = 5,
