@@ -1,7 +1,7 @@
 /obj/item/clothing/suit/straight_jacket/latex_straight_jacket
 	name = "latex straight jacket"
 	desc = "A toy that is unable to actually restrain anyone. Still fun to wear!"
-	inhand_icon_state = "latex_straight_jacket"
+	inhand_icon_state = "straight_jacket"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_suits.dmi'
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_suit/lewd_suits.dmi'
 	worn_icon_digi = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_suit/lewd_suits-digi.dmi'
@@ -32,7 +32,7 @@
 	name = "latex straight jacket"
 	desc = "A suit that completely restrains the wearer - in quite an arousing way."
 	icon_state = "latex_straight_jacket"
-	inhand_icon_state = "latex_straight_jacket"
+	inhand_icon_state = "straight_jacket"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_suits.dmi'
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_suit/lewd_suits.dmi'
 	worn_icon_digi = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_suit/lewd_suits-digi.dmi'

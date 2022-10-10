@@ -1,7 +1,7 @@
 /obj/item/clothing/suit/straight_jacket/shackles
 	name = "shackles"
 	desc = "Fancy shackles with a fake lock."
-	inhand_icon_state = "shackles"
+	inhand_icon_state = null
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_suits.dmi'
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_suit/lewd_suits.dmi'
 	worn_icon_digi = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_suit/lewd_suits-digi.dmi'
@@ -101,7 +101,6 @@
 	name = "reinforced shackles"
 	desc = "Fancy shackles, but with a suspiciously sturdy lock..."
 	icon_state = "shackles"
-	inhand_icon_state = "shackles"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_suits.dmi'
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_suit/lewd_suits.dmi'
 	worn_icon_digi = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_suit/lewd_suits-digi.dmi'
