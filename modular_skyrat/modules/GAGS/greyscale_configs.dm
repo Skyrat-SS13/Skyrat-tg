@@ -347,14 +347,16 @@
 
 // SWEATERS
 
-/datum/greyscale_config/sweater
-	name = "Sweater"
+/datum/greyscale_config/cableknit_sweater
+	name = "Cableknit Sweater"
 	icon_file = 'modular_skyrat/modules/GAGS/icons/sweaters.dmi'
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/sweater/sweater.json'
 
-/datum/greyscale_config/sweater/worn
-	name = "Sweater (Worn)"
+/datum/greyscale_config/cableknit_sweater/worn
+	name = "Cableknit Sweater (Worn)"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/sweater/sweater_worn.json'
+
+//Keyhole uses the same configs!
 
 // URBAN COAT
 
