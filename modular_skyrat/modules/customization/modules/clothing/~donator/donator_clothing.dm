@@ -327,7 +327,7 @@
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/masks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/mask.dmi'
 	icon_state = "cute_mask"
-	inhand_icon_state = "clown_hat"
+	inhand_icon_state = null
 	dye_color = "clown"
 	supports_variations_flags = NONE
 	clothing_flags = MASKINTERNALS
