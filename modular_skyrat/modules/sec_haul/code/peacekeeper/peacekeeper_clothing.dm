@@ -272,7 +272,7 @@
 		))
 
 //BOOTS
-/obj/item/clothing/shoes/combat/peacekeeper
+/obj/item/clothing/shoes/jackboots/peacekeeper
 	name = "peacekeeper boots"
 	desc = "High speed, low drag combat boots."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/shoes.dmi'
@@ -280,16 +280,6 @@
 	icon_state = "peacekeeper_boots"
 	inhand_icon_state = "jackboots"
 	worn_icon_state = "peacekeeper"
-	armor = null
-	strip_delay = 30
-	equip_delay_other = 50
-	resistance_flags = NONE
-	can_be_tied = FALSE
-
-/obj/item/clothing/shoes/combat/peacekeeper/Initialize(mapload)
-	. = ..()
-
-	create_storage(type = /datum/storage/pockets/shoes)
 
 /obj/item/clothing/suit/armor/riot/peacekeeper
 	name = "peacekeeper riotsuit"
