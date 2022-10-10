@@ -47,7 +47,7 @@
 				/obj/item/clothing/under/suit/fancy = 5,
 				/obj/item/clothing/under/texas = 5,
 				/obj/item/clothing/under/sweater = 5,
-				/obj/item/clothing/under/keyhole_sweater = 5,
+				/obj/item/clothing/under/sweater/keyhole = 5,
 				/obj/item/clothing/under/tachawaiian = 5,
 				/obj/item/clothing/under/tachawaiian/purple = 5,
 				/obj/item/clothing/under/tachawaiian/green = 5,
