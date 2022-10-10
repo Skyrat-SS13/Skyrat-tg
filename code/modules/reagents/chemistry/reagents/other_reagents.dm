@@ -1,5 +1,5 @@
 /datum/reagent/blood
-	data = list("viruses"=null,"blood_DNA"=null,"blood_type"=null,"resistances"=null,"trace_chem"=null,"mind"=null,"ckey"=null,"gender"=null,"real_name"=null,"cloneable"=null,"factions"=null,"quirks"=null)
+	data = list("viruses"=null,"blood_DNA"=null,"blood_type"=null,"resistances"=null,"trace_chem"=null,"mind"=null,"ckey"=null,"gender"=null,"real_name"=null,"cloneable"=null,"factions"=null,"quirks"=null, "monkey_origins" = FALSE) // SKYRAT EDIT - Rebalancing blood for Hemophages - ORIGINAL: data = list("viruses"=null,"blood_DNA"=null,"blood_type"=null,"resistances"=null,"trace_chem"=null,"mind"=null,"ckey"=null,"gender"=null,"real_name"=null,"cloneable"=null,"factions"=null,"quirks"=null)
 	name = "Blood"
 	color = "#C80000" // rgb: 200, 0, 0
 	metabolization_rate = 12.5 * REAGENTS_METABOLISM //fast rate so it disappears fast.
@@ -38,7 +38,16 @@
 			if(!data || !(data["blood_type"] in get_safe_blood(exposed_carbon.dna.blood_type)))
 				exposed_carbon.reagents.add_reagent(/datum/reagent/toxin, reac_volume * 0.5)
 			else
+				/* SKYRAT EDIT - Rebalancing blood for Hemophages - ORIGINAL:
 				exposed_carbon.blood_volume = min(exposed_carbon.blood_volume + round(reac_volume, 0.1), BLOOD_VOLUME_MAXIMUM)
+				*/ // ORIGINAL END - SKYRAT EDIT:
+				var/max_blood_volume = data["monkey_origins"] ? BLOOD_VOLUME_NORMAL : BLOOD_VOLUME_MAXIMUM
+
+				exposed_carbon.blood_volume = min(exposed_carbon.blood_volume + round(reac_volume, 0.1), max_blood_volume)
+
+			exposed_carbon.reagents.remove_reagent(/datum/reagent/blood, reac_volume) // Because we don't want blood to just lie around in the patient's blood, makes no sense.
+				// SKYRAT EDIT END
+
 
 
 /datum/reagent/blood/on_new(list/data)
