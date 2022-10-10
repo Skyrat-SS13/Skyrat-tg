@@ -182,7 +182,7 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 
 /datum/loadout_item/head/rabbit_ears
 	name = "Rabbit Ears"
-	item_path = /obj/item/clothing/head/rabbitears
+	item_path = /obj/item/clothing/head/costume/rabbitears
 
 /datum/loadout_item/head/bandana
 	name = "Bandana"
