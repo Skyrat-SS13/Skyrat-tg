@@ -89,8 +89,8 @@
 	icon_state = "workbootsold"
 
 
-/* 
-UNDERSUITS
+/*
+*	UNDERSUITS
 */
 
 /obj/item/clothing/under/rank/rnd/research_director/turtleneck
