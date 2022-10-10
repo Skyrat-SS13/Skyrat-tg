@@ -690,30 +690,6 @@ GLOBAL_LIST_INIT(english_to_zombie, list())
 	owner.cut_overlay(tonal_indicator)
 	tonal_indicator = null
 
-<<<<<<< HEAD
-//SKYRAT MODULAR EDIT BEGIN
-/obj/item/organ/internal/tongue/dog
-	name = "long tongue"
-	desc = "A long and wet tongue. It seems to jump when it's called good, oddly enough."
-	say_mod = "woofs"
-	icon_state = "tonguenormal"
-	modifies_speech = TRUE
-
-/obj/item/organ/internal/tongue/dog/Insert(mob/living/carbon/signer)
-	. = ..()
-	signer.verb_ask = "arfs"
-	signer.verb_exclaim = "wans"
-	signer.verb_whisper = "whimpers"
-	signer.verb_yell = "barks"
-
-/obj/item/organ/internal/tongue/dog/Remove(mob/living/carbon/speaker, special = 0)
-	..()
-	speaker.verb_ask = initial(verb_ask)
-	speaker.verb_exclaim = initial(verb_exclaim)
-	speaker.verb_whisper = initial(verb_whisper)
-	speaker.verb_sing = initial(verb_sing)
-	speaker.verb_yell = initial(verb_yell)
-=======
 #undef SIGN_OKAY
 #undef SIGN_ONE_HAND
 #undef SIGN_HANDS_FULL
@@ -721,4 +697,3 @@ GLOBAL_LIST_INIT(english_to_zombie, list())
 #undef SIGN_ARMS_DISABLED
 #undef SIGN_TRAIT_BLOCKED
 #undef SIGN_CUFFED
->>>>>>> ced20c8e639 (Converts `silent` to status effect + small cleanup of `can_speak` / `can_speak_basic` / `IsVocal`, and sign language (#69963))

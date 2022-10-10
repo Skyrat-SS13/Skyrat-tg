@@ -271,11 +271,9 @@
 			to_chat(user, span_warning("You cannot use your hands to [key] right now!"))
 			return FALSE
 
-<<<<<<< HEAD
-	if(isliving(user))
-		var/mob/living/sender = user
-		if(HAS_TRAIT(sender, TRAIT_EMOTEMUTE))
-			return FALSE
+	if(HAS_TRAIT(user, TRAIT_EMOTEMUTE))
+		return FALSE
+
 	//SKYRAT EDIT BEGIN
 	if(allowed_species)
 		var/check = FALSE
@@ -287,12 +285,8 @@
 				check = TRUE
 		return check
 	//SKYRAT EDIT END
-=======
-	if(HAS_TRAIT(user, TRAIT_EMOTEMUTE))
-		return FALSE
 
 	return TRUE
->>>>>>> ced20c8e639 (Converts `silent` to status effect + small cleanup of `can_speak` / `can_speak_basic` / `IsVocal`, and sign language (#69963))
 
 /**
  * Check to see if the user should play a sound when performing the emote.
