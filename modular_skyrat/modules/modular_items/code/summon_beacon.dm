@@ -3,7 +3,7 @@
 	desc = "Summons a thing. Probably shouldn't use this one, though."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "gangtool-blue"
-	inhand_icon_state = "radio"
+	inhand_icon_state = null
 	w_class = WEIGHT_CLASS_SMALL
 
 	/// How many uses the beacon has left
