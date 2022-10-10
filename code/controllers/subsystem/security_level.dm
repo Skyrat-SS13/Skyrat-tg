@@ -55,13 +55,13 @@ SUBSYSTEM_DEF(security_level)
 		old_shuttle_call_time_mod = 1 / old_shuttle_call_time_mod
 		SSshuttle.emergency.modTimer(old_shuttle_call_time_mod)
 		SSshuttle.emergency.modTimer(selected_level.shuttle_call_time_mod)
-/**
- * SKYRAT ADDITION - In the event of an orange alert, change the airlock permissions
- */
+
+//SKYRAT EDIT ADDITION START- In the event of an orange alert, change the airlock permissions
 	if(current_security_level.name == "orange")
 		enable_engineering_access()
 	else
 		revoke_engineering_access()
+//SKYRAT EDIT ADDITION END
 
 	SEND_SIGNAL(src, COMSIG_SECURITY_LEVEL_CHANGED, selected_level.number_level)
 	SSnightshift.check_nightshift()

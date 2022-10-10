@@ -102,7 +102,7 @@
 	var/network_root_id = null
 	/// Area network id when you want to find all devices hooked up to this area
 	var/network_area_id = null
-	/// SKYRAT ADDITION - Is this place eligible for engineer override?
+	/// SKYRAT EDIT ADDITION - Is this place eligible for engineer override?
 	var/engineering_override_eligible = FALSE
 
 	///Used to decide what kind of reverb the area makes sound have
