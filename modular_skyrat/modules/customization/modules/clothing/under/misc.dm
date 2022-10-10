@@ -1,28 +1,13 @@
-/obj/item/clothing/under/misc/stripper
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	name = "pink stripper outfit"
-	icon_state = "stripper_p"
-	body_parts_covered = CHEST|GROIN
-	can_adjust = FALSE
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
-
-/obj/item/clothing/under/misc/stripper/green
-	name = "green stripper outfit"
-	icon_state = "stripper_g"
-
-/obj/item/clothing/under/misc/stripper/mankini
-	name = "pink mankini"
-	icon_state = "mankini"
-
-/obj/item/clothing/under/misc/stripper/bunnysuit
+/obj/item/clothing/under/misc/bunnysuit
 	name = "bunny suit"
 	desc = "Makes the wearer more attractive, even men."
 	icon_state = "bunnysuit"
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+	body_parts_covered = CHEST|GROIN
 	can_adjust = TRUE
 	alt_covers_chest = FALSE
 
-/obj/item/clothing/under/misc/stripper/bunnysuit/white
+/obj/item/clothing/under/misc/bunnysuit/white
 	name = "white bunny suit"
 	icon_state = "whitebunnysuit"
 	can_adjust = FALSE

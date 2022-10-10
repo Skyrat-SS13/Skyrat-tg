@@ -71,10 +71,9 @@
 					/obj/item/clothing/under/costume/lewdmaid = 5,
 					/obj/item/clothing/suit/straight_jacket/shackles = 4,
 					/obj/item/clothing/under/stripper_outfit = 5,
-					/obj/item/clothing/under/misc/stripper/bunnysuit = 5,
-					/obj/item/clothing/under/misc/stripper/bunnysuit/white = 5,
+					/obj/item/clothing/under/misc/bunnysuit = 5,
+					/obj/item/clothing/under/misc/bunnysuit/white = 5,
 					/obj/item/clothing/under/misc/gear_harness = 4,
-					/obj/item/clothing/under/dress/corset = 4,
 
 					//hands
 					/obj/item/clothing/gloves/ball_mittens = 8,
