@@ -6,7 +6,7 @@
 	name = "vibrating egg"
 	desc = "A simple, vibrating sex toy."
 	icon_state = "eggvib"
-	inhand_icon_state = "eggvib"
+	inhand_icon_state = "eggvib_teal"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
 	lefthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_left.dmi'
 	righthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_right.dmi'
@@ -144,7 +144,7 @@
 	name = "signal vibrating egg"
 	desc = "A vibrating sex toy with remote control capability. Use a signaller to turn it on."
 	icon_state = "signalvib"
-	inhand_icon_state = "signalvib"
+	inhand_icon_state = "signalvib_teal"
 	modes = list("low" = "medium", "medium" = "high", "high" = "low")
 	vibration_mode = "low"
 	/// If TRUE, the code and frequency will be random on initialize()
