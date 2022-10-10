@@ -58,7 +58,7 @@
 
 #define AIRLOCK_LIGHT_BOLTS "bolts"
 #define AIRLOCK_LIGHT_EMERGENCY "emergency"
-#define AIRLOCK_LIGHT_ENGINEERING "engineering"
+#define AIRLOCK_LIGHT_ENGINEERING "engineering" //SKYRAT EDIT ADDITION
 #define AIRLOCK_LIGHT_DENIED "denied"
 #define AIRLOCK_LIGHT_CLOSING "closing"
 #define AIRLOCK_LIGHT_OPENING "opening"
@@ -293,6 +293,7 @@
 			emergency = !emergency
 			update_appearance()
 
+		//SKYRAT EDIT ADDITION START
 		if("engineering")
 			if(command_value == "on" && engineering_override)
 				return
@@ -301,6 +302,7 @@
 				return
 			engineering_override = !engineering_override
 			update_appearance()
+		//SKYRAT EDIT ADDITION END
 
 /obj/machinery/door/airlock/lock()
 	bolt()
@@ -1535,7 +1537,7 @@
 	data["shock_timeleft"] = secondsElectrified
 	data["id_scanner"] = !aiDisabledIdScanner
 	data["emergency"] = emergency // access
-	data["engineering"] = engineering_override // SKYRAT EDIT
+	data["engineering"] = engineering_override // SKYRAT EDIT ADDITION
 	data["locked"] = locked // bolted
 	data["lights"] = lights // bolt lights
 	data["safe"] = safe // safeties
@@ -1595,7 +1597,7 @@
 		if("emergency-toggle")
 			toggle_emergency(usr)
 			. = TRUE
-		if("engineering-toggle")
+		if("engineering-toggle") //SKYRAT EDIT ADDITION
 			toggle_engineering(usr)
 			. = TRUE
 		if("bolt-toggle")
@@ -1664,11 +1666,13 @@
 	emergency = !emergency
 	update_appearance()
 
+//SKYRAT EDIT ADDITION START
 /obj/machinery/door/airlock/proc/toggle_engineering(mob/user)
 	if(!user_allowed(user))
 		return
 	engineering_override = !engineering_override
 	update_appearance()
+//SKYRAT EDIT ADDITION END
 
 /obj/machinery/door/airlock/proc/user_toggle_open(mob/user)
 	if(!user_allowed(user))

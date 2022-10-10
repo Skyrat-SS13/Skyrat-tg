@@ -244,9 +244,8 @@
 			if(ACCESS_ENGINEERING in card.access)
 				return TRUE
 	return ..()
-/**SKYRAT ADDITION
- * Procs to enable and revoke engineering door access during Orange Alert
- */
+
+//SKYRAT EDIT ADDITION START - Proc to enable/disable engineering override access on airlocks
 /proc/enable_engineering_access()
 	for(var/area/station/Area in world)
 		if(Area.engineering_override_eligible)
@@ -262,6 +261,7 @@
 				Airlock.engineering_override = FALSE
 				Airlock.normalspeed = TRUE
 				Airlock.update_icon(ALL, 0)
+//SKYRAT EDIT ADDITION END
 
 /obj/machinery/door/proc/unrestricted_side(mob/opener) //Allows for specific side of airlocks to be unrestrected (IE, can exit maint freely, but need access to enter)
 	return get_dir(src, opener) & unres_sides

@@ -173,7 +173,7 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 	if(area_flags & AREA_USES_STARLIGHT)
 		static_lighting = CONFIG_GET(flag/starlight)
 
-	if(area_flags & ENGINEERING_OVERRIDE_ELIGIBLE)
+	if(area_flags & ENGINEERING_OVERRIDE_ELIGIBLE) //SKYRAT EDIT ADDITION
 		engineering_override_eligible = 1
 
 	if(requires_power)
