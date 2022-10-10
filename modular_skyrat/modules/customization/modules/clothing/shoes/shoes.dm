@@ -79,7 +79,6 @@
 	strip_delay = 30
 	equip_delay_other = 50
 	resistance_flags = NONE
-	can_be_tied = TRUE //SKYRAT EDIT
 
 /obj/item/clothing/shoes/jungleboots/Initialize(mapload)
 	. = ..()
@@ -145,3 +144,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/shoes.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/feet.dmi'
 	icon_state = "pink_clown_shoes"
+
+//Modular overide to give jackboots laces 
+/obj/item/clothing/shoes/jackboots
+    can_be_tied = TRUE

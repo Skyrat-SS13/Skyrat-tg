@@ -795,33 +795,6 @@
 	inhand_icon_state = "emissionsuit"
 
 // Donation reward for CandleJax
-/obj/item/clothing/glasses/zentai
-	var/list/spans = list()
-	actions_types = list(/datum/action/item_action/demonic_whisper)
-
-/obj/item/clothing/glasses/zentai
-	name = "demonic sunglasses"
-	desc = "A devilishly fashionable set of shades. An eerie red glint is present."
-	spans = list("velvet")
-	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/glasses.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/eyes.dmi'
-	icon_state = "zentai"
-	inhand_icon_state = "zentai"
-	tint = 0
-	glass_colour_type = /datum/client_colour/glass_colour/red
-
-/datum/action/item_action/demonic_whisper
-	name = "Demonic Whisper"
-
-/obj/item/clothing/glasses/zentai/ui_action_click(mob/living/user, action)
-	if(!isliving(user) || !can_use(user))
-		return
-	var/message = input(user, "Speak with a demonic whisper", "Whisper")
-	if(QDELETED(src) || QDELETED(user) || !message || !user.can_speak())
-		return
-	user.whisper(message, spans = spans)
-
-// Donation reward for CandleJax
 /obj/item/clothing/head/bio_hood/jax
 	name = "xuracorp biohazard hood"
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/hats.dmi'
@@ -837,6 +810,16 @@
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
 	icon_state = "plasmaman_jax"
 	inhand_icon_state = "plasmaman_jax"
+
+/obj/item/clothing/suit/toggle/labcoat/rd/jax
+	name = "xuracorp enameled labcoat"
+	desc = "A XuraCorp designed labcoat for Research Directors. Small triangular indents suggest a protective interior."
+	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
+	icon_state = "labcoat_xc"
+	body_parts_covered = CHEST|ARMS|LEGS
+	armor = list(MELEE = 5, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 80, FIRE = 80, ACID = 70)
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 // Donation reward for Raxraus
 /obj/item/clothing/under/rax_turtleneck
