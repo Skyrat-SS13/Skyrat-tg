@@ -303,7 +303,7 @@
 
 /obj/tong_act(mob/living/user, obj/item/tool)
 	. = ..()
-	if(length(tool.contents) > 0)
+	if(length(tool.contents))
 		user.balloon_alert(user, "tongs are full already!")
 		return FALSE
 	if(skyrat_obj_flags & TRAIT_ANVIL_REPAIR)
