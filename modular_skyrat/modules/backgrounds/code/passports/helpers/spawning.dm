@@ -9,7 +9,7 @@
 	human.social_background = mob_possessor.client.prefs.social_background
 	human.employment = mob_possessor.client.prefs.employment
 
-/// Tries to give a passport to a human mob. If the user hasn't selected an origin, they'll spawn with the default passport.
+/// Tries to give a passport to a human mob. If the user hasn't selected a social backgound, they'll spawn with the default passport.
 /mob/living/carbon/human/proc/give_passport(client/player_client)
 	if(!player_client && !client)
 		return
@@ -26,4 +26,4 @@
 	if(!equip_to_slot_if_possible(passport, ITEM_SLOT_PASSPORT, disable_warning = TRUE, bypass_equip_delay_self = TRUE, initial = TRUE) && !dropItemToGround(passport, force = TRUE, silent = TRUE))
 		log_world("ERROR: Unable to drop item [passport] from [src] (\ref[src])!")
 		message_admins("ERROR: Unable to drop item [passport] from [src] (\ref[src])!")
-		qdel(passport)
+		// Not qdeleting cause admins might want to debug this.
