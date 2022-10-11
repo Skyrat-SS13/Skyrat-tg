@@ -205,6 +205,7 @@
 	hard_drive.store_file(new /datum/computer_file/program/passport_mod)
 
 /obj/machinery/modular_computer/console/preset/id/Initialize(mapload)
+	. = ..()
 	if(!cpu)
 		return
 
