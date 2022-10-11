@@ -3,6 +3,7 @@
 	name = "ball mittens"
 	desc = "A nice, comfortable pair of inflatable ball gloves."
 	icon_state = "ballmittens"
+	inhand_icon_state = null
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_gloves.dmi'
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_gloves.dmi'
 	breakouttime = 1 SECONDS
@@ -23,6 +24,7 @@
 	name = "reinforced ball mittens"
 	desc = "Do not put these on, it's REALLY hard to take them off! But they look so comfortable..."
 	icon_state = "ballmittens"
+	inhand_icon_state = null
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_gloves.dmi'
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_gloves.dmi'
 	clothing_flags = DANGEROUS_OBJECT
