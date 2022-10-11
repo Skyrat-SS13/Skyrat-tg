@@ -145,6 +145,9 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	name = "Leather Jacket"
 	item_path = /obj/item/clothing/suit/jacket/leather
 
+/datum/loadout_item/suit/leather_jacket/biker
+	name = "Biker Jacket"
+	item_path = /obj/item/clothing/suit/jacket/leather/biker
 
 /datum/loadout_item/suit/jacket_sweater
 	name = "Recolorable Sweater Jacket"
@@ -567,6 +570,10 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	name = "Peacekeeper Officer Coat"
 	item_path = /obj/item/clothing/suit/british_officer
 	restricted_roles = list(JOB_HEAD_OF_SECURITY, JOB_WARDEN, JOB_DETECTIVE)
+
+/datum/loadout_item/suit/offdep_jacket
+	name = "Off-Department Jacket"
+	item_path = /obj/item/clothing/suit/toggle/jacket/assistant
 
 /datum/loadout_item/suit/engi_jacket
 	name = "Engineering Jacket"

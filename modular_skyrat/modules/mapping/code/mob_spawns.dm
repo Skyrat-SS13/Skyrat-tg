@@ -415,7 +415,7 @@
 
 /datum/outfit/tarkon/ensign //jack of all trades, master of none, spent all his credits, every last one
 	name = "Port Tarkon Ensigns Outfit"
-	uniform = /obj/item/clothing/under/utility
+	uniform = /obj/item/clothing/under/misc/skyrat/utility
 	ears = /obj/item/radio/headset/tarkon/ensign
 	id = /obj/item/card/id/away/tarkon/ensign
 	neck = /obj/item/clothing/neck/security_cape/armplate

@@ -704,6 +704,12 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	gender = FEMALE
 	use_static = null
 
+/datum/sprite_accessory/undershirt/corset
+	name = "Corset"
+	icon_state = "corset"
+	gender = FEMALE
+	use_static = TRUE
+
 /datum/sprite_accessory/undershirt/chastbra
 	name = "Chastity Bra"
 	icon_state = "chastbra"

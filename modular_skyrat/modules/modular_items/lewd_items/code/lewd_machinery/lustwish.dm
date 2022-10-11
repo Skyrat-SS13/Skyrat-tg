@@ -44,14 +44,14 @@
 					/obj/item/clothing/mask/muzzle/ring = 4,
 					/obj/item/clothing/head/domina_cap = 5,
 					/obj/item/clothing/head/helmet/space/deprivation_helmet = 5,
-					/obj/item/clothing/head/maid = 5,
+					/obj/item/clothing/head/costume/maid = 5,
 					/obj/item/clothing/glasses/blindfold/kinky = 5,
 					/obj/item/clothing/ears/kinky_headphones = 5,
 					/obj/item/clothing/mask/gas/bdsm_mask = 5,
 					/obj/item/reagent_containers/cup/lewd_filter = 5,
 					/obj/item/clothing/glasses/hypno = 4,
 					/obj/item/clothing/head/costume/kitty = 4,
-					/obj/item/clothing/head/rabbitears = 4,
+					/obj/item/clothing/head/costume/rabbitears = 4,
 
 
 					//neck
@@ -71,10 +71,9 @@
 					/obj/item/clothing/under/costume/lewdmaid = 5,
 					/obj/item/clothing/suit/straight_jacket/shackles = 4,
 					/obj/item/clothing/under/stripper_outfit = 5,
-					/obj/item/clothing/under/misc/stripper/bunnysuit = 5,
-					/obj/item/clothing/under/misc/stripper/bunnysuit/white = 5,
-					/obj/item/clothing/under/misc/gear_harness = 4,
-					/obj/item/clothing/under/dress/corset = 4,
+					/obj/item/clothing/under/costume/bunnylewd = 5,
+					/obj/item/clothing/under/costume/bunnylewd/white = 5,
+					/obj/item/clothing/under/misc/skyrat/gear_harness = 4,
 
 					//hands
 					/obj/item/clothing/gloves/ball_mittens = 8,
