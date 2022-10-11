@@ -579,37 +579,37 @@
 	var/obj/item/forging/forge_item = tool
 	if(in_use) //no spamming the billows
 		to_chat(user, span_warning("You cannot do multiple things at the same time!"))
-		return FALSE
+		return TOOL_ACT_TOOLTYPE_SUCCESS
 	in_use = TRUE
 	if(!forge_fuel_strong && !forge_fuel_weak) //if there isnt any fuel, no billow use
 		fail_message(user, "You cannot use [forge_item] without some sort of fuel in [src]!")
-		return FALSE
+		return TOOL_ACT_TOOLTYPE_SUCCESS
 	if(forge_temperature >= MAX_FORGE_TEMP) //we don't want the "temp" to overflow or something somehow
 		fail_message(user, "You can't heat [src] to be any hotter!")
-		return FALSE
+		return TOOL_ACT_TOOLTYPE_SUCCESS
 	to_chat(user, span_warning("You start to pump [forge_item] into [src]..."))
 	while(forge_temperature < 91)
 		if(!do_after(user, skill_modifier * forge_item.toolspeed, target = src))
 			fail_message(user, "You fail billowing [src].")
-			return FALSE
+			return TOOL_ACT_TOOLTYPE_SUCCESS
 		forge_temperature += 10
 		user.mind.adjust_experience(/datum/skill/smithing, 5) //useful heating means you get some experience
 	in_use = FALSE
 	to_chat(user, span_notice("You successfully increase the temperature inside [src]."))
-	return FALSE
+	return TOOL_ACT_TOOLTYPE_SUCCESS
 
 /obj/structure/reagent_forge/tong_act(mob/living/user, obj/item/tool)
 	var/skill_modifier = user.mind.get_skill_modifier(/datum/skill/smithing, SKILL_SPEED_MODIFIER)
 	var/obj/item/forging/forge_item = tool
 	if(in_use || forge_item.in_use) //only insert one at a time
 		to_chat(user, span_warning("You cannot do multiple things at the same time!"))
-		return FALSE
+		return TOOL_ACT_TOOLTYPE_SUCCESS
 	in_use = TRUE
 	forge_item.in_use = TRUE
 	if(forge_temperature < MIN_FORGE_TEMP)
 		fail_message(user, "The temperature is not hot enough to start heating the metal.")
 		forge_item.in_use = FALSE
-		return FALSE
+		return TOOL_ACT_TOOLTYPE_SUCCESS
 
 	//we are going to see if we have an incomplete item to forge
 	var/obj/item/forging/incomplete/search_incomplete = locate(/obj/item/forging/incomplete) in forge_item.contents
@@ -617,18 +617,18 @@
 		if(!COOLDOWN_FINISHED(search_incomplete, heating_remainder))
 			fail_message(user, "[search_incomplete] is still hot, try to keep hammering!")
 			forge_item.in_use = FALSE
-			return FALSE
+			return TOOL_ACT_TOOLTYPE_SUCCESS
 		to_chat(user, span_warning("You start to heat up [search_incomplete]..."))
 		if(!do_after(user, skill_modifier * forge_item.toolspeed, target = src))
 			fail_message(user, "You fail heating up [search_incomplete].")
 			forge_item.in_use = FALSE
-			return FALSE
+			return TOOL_ACT_TOOLTYPE_SUCCESS
 		COOLDOWN_START(search_incomplete, heating_remainder, 1 MINUTES)
 		in_use = FALSE
 		forge_item.in_use = FALSE
 		user.mind.adjust_experience(/datum/skill/smithing, 5) //heating up stuff gives just a little experience
 		to_chat(user, span_notice("You successfully heat up [search_incomplete]."))
-		return FALSE
+		return TOOL_ACT_TOOLTYPE_SUCCESS
 
 	//we are going to see if we have a stack item
 	var/obj/item/stack/search_stack = locate(/obj/item/stack) in forge_item.contents
@@ -637,7 +637,7 @@
 		if(!user_choice)
 			fail_message(user, "You decide against continuing to forge.")
 			forge_item.in_use = FALSE
-			return FALSE
+			return TOOL_ACT_TOOLTYPE_SUCCESS
 		//set the material of the incomplete
 		var/list/material_list = list()
 		if(search_stack.material_type)
@@ -647,12 +647,12 @@
 		if(!search_stack.use(1))
 			fail_message(user, "You cannot use [search_stack]!")
 			forge_item.in_use = FALSE
-			return FALSE
+			return TOOL_ACT_TOOLTYPE_SUCCESS
 		to_chat(user, span_warning("You start to heat up [search_stack]..."))
 		if(!do_after(user, skill_modifier * forge_item.toolspeed, target = src))
 			fail_message(user, "You fail heating up [search_stack].")
 			forge_item.in_use = FALSE
-			return FALSE
+			return TOOL_ACT_TOOLTYPE_SUCCESS
 		var/spawn_item = choice_list[user_choice]
 		var/obj/item/forging/incomplete/incomplete_item = new spawn_item(get_turf(src))
 		if(material_list)
@@ -665,10 +665,10 @@
 		search_stack = locate(/obj/item/stack) in forge_item.contents
 		if(!search_stack)
 			forge_item.icon_state = "tong_empty"
-		return FALSE
+		return TOOL_ACT_TOOLTYPE_SUCCESS
 	in_use = FALSE
 	forge_item.in_use = FALSE
-	return FALSE
+	return TOOL_ACT_TOOLTYPE_SUCCESS
 
 /obj/structure/reagent_forge/blowrod_act(mob/living/user, obj/item/tool)
 	var/obj/item/glassblowing/blowing_rod/blowing_item = tool
@@ -676,28 +676,28 @@
 	var/glassblowing_amount = DEFAULT_HEATED / user.mind.get_skill_modifier(/datum/skill/production, SKILL_SPEED_MODIFIER)
 	if(in_use) //only insert one at a time
 		to_chat(user, span_warning("You cannot do multiple things at the same time!"))
-		return FALSE
+		return TOOL_ACT_TOOLTYPE_SUCCESS
 	in_use = TRUE
 	if(forge_temperature < MIN_FORGE_TEMP)
 		fail_message(user, "The temperature is not hot enough to start heating [blowing_item].")
-		return FALSE
+		return TOOL_ACT_TOOLTYPE_SUCCESS
 	var/obj/item/glassblowing/molten_glass/find_glass = locate() in blowing_item.contents
 	if(!find_glass)
 		fail_message(user, "[blowing_item] does not have any glass to heat up.")
-		return FALSE
+		return TOOL_ACT_TOOLTYPE_SUCCESS
 	if(!COOLDOWN_FINISHED(find_glass, remaining_heat))
 		fail_message(user, "[find_glass] is still has remaining heat.")
-		return FALSE
+		return TOOL_ACT_TOOLTYPE_SUCCESS
 	to_chat(user, span_notice("You begin heating up [blowing_item]."))
 	if(!do_after(user, glassblowing_speed, target = src))
 		fail_message(user, "[blowing_item] is interrupted in its heating process.")
-		return FALSE
+		return TOOL_ACT_TOOLTYPE_SUCCESS
 	COOLDOWN_START(find_glass, remaining_heat, glassblowing_amount)
 	to_chat(user, span_notice("You finish heating up [blowing_item]."))
 	user.mind.adjust_experience(/datum/skill/smithing, 10) //creating an item gives you some experience, not a lot
 	user.mind.adjust_experience(/datum/skill/production, 5)
 	in_use = FALSE
-	return FALSE
+	return TOOL_ACT_TOOLTYPE_SUCCESS
 
 /obj/structure/reagent_forge/wrench_act(mob/living/user, obj/item/tool)
 	tool.play_tool_sound(src)

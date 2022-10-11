@@ -227,10 +227,10 @@
 			var/obj/item/forging/complete/complete_content = contents[1]
 			if(!complete_content?.spawning_item)
 				balloon_alert(user, "no craftable!")
-				return FALSE
+				return TOOL_ACT_TOOLTYPE_SUCCESS
 			if(current_mats[WOOD_RESOURCE] < 2)
 				balloon_alert(user, "not enough wood!")
-				return FALSE
+				return TOOL_ACT_TOOLTYPE_SUCCESS
 			current_mats[WOOD_RESOURCE] -= 2
 			var/obj/spawned_obj = new complete_content.spawning_item(src)
 			if(complete_content.custom_materials)
@@ -239,19 +239,19 @@
 			user.mind.adjust_experience(/datum/skill/smithing, 30) //creating grants you something
 			balloon_alert(user, "item crafted!")
 			update_appearance()
-			return FALSE
+			return TOOL_ACT_TOOLTYPE_SUCCESS
 	if(!goal_item_path)
 		balloon_alert(user, "no choice made!")
-		return FALSE
+		return TOOL_ACT_TOOLTYPE_SUCCESS
 	if(!check_required_materials(user))
-		return FALSE
+		return TOOL_ACT_TOOLTYPE_SUCCESS
 	var/skill_modifier = user.mind.get_skill_modifier(/datum/skill/smithing, SKILL_SPEED_MODIFIER) * 1 SECONDS
 	if(!COOLDOWN_FINISHED(src, hit_cooldown))
 		current_hits -= 3
 		balloon_alert(user, "bad hit!")
 		if(current_hits <= -required_hits)
 			clear_required()
-		return FALSE
+		return TOOL_ACT_TOOLTYPE_SUCCESS
 	COOLDOWN_START(src, hit_cooldown, skill_modifier)
 	if(current_hits >= required_hits && !length(contents))
 		var/obj/spawned_obj = new goal_item_path(src)
@@ -264,11 +264,11 @@
 		current_mats[PLATE_RESOURCE] -= required_mats[PLATE_RESOURCE]
 		current_mats[WOOD_RESOURCE] -= required_mats[WOOD_RESOURCE]
 		clear_required()
-		return FALSE
+		return TOOL_ACT_TOOLTYPE_SUCCESS
 	current_hits++
 	balloon_alert(user, "good hit!")
 	user.mind.adjust_experience(/datum/skill/smithing, 2) //useful hammering means you get some experience
-	return FALSE
+	return TOOL_ACT_TOOLTYPE_SUCCESS
 
 #undef WOOD_RESOURCE
 #undef PLATE_RESOURCE

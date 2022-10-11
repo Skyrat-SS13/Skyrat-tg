@@ -64,12 +64,12 @@
 /obj/structure/reagent_water_basin/tong_act(mob/living/user, obj/item/tool)
 	var/obj/item/forging/incomplete/search_incomplete = locate(/obj/item/forging/incomplete) in tool.contents
 	if(!search_incomplete)
-		return FALSE
+		return TOOL_ACT_TOOLTYPE_SUCCESS
 	playsound(src, 'modular_skyrat/modules/reagent_forging/sound/hot_hiss.ogg', 50, TRUE)
 	if(search_incomplete?.times_hit < search_incomplete.average_hits)
 		to_chat(user, span_warning("You cool down [search_incomplete], but it wasn't ready yet."))
 		COOLDOWN_RESET(search_incomplete, heating_remainder)
-		return FALSE
+		return TOOL_ACT_TOOLTYPE_SUCCESS
 	if(search_incomplete?.times_hit >= search_incomplete.average_hits)
 		to_chat(user, span_notice("You cool down [search_incomplete] and it's ready."))
 		user.mind.adjust_experience(/datum/skill/smithing, 10) //using the water basin on a ready item gives decent experience.
@@ -78,7 +78,7 @@
 			spawned_obj.set_custom_materials(search_incomplete.custom_materials, 1) //lets set its material
 		qdel(search_incomplete)
 		tool.icon_state = "tong_empty"
-	return FALSE
+	return TOOL_ACT_TOOLTYPE_SUCCESS
 
 /// Fishing source for fishing out of basins that have been upgraded, contains saltwater fish (lizard fish fall under this too!)
 /datum/fish_source/water_basin

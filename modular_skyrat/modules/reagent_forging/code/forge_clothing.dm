@@ -8,7 +8,7 @@
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
 	worn_icon_digi = 'modular_skyrat/modules/reagent_forging/icons/mob/forge_clothing_digi.dmi'
 	resistance_flags = FIRE_PROOF
-	obj_flags = TRAIT_ANVIL_REPAIR
+	skyrat_obj_flags = TRAIT_ANVIL_REPAIR
 	armor = list(MELEE = 40, BULLET = 40, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 0, WOUND = 30)
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR
 
@@ -25,7 +25,7 @@
 	icon_state = "chain_glove"
 	worn_icon = 'modular_skyrat/modules/reagent_forging/icons/mob/forge_clothing.dmi'
 	resistance_flags = FIRE_PROOF
-	obj_flags = TRAIT_ANVIL_REPAIR
+	skyrat_obj_flags = TRAIT_ANVIL_REPAIR
 	armor = list(MELEE = 40, BULLET = 40, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 0, WOUND = 30)
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR
 
@@ -42,7 +42,7 @@
 	worn_icon = 'modular_skyrat/modules/reagent_forging/icons/mob/forge_clothing.dmi'
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 	resistance_flags = FIRE_PROOF
-	obj_flags = TRAIT_ANVIL_REPAIR
+	skyrat_obj_flags = TRAIT_ANVIL_REPAIR
 	armor = list(MELEE = 40, BULLET = 40, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 0, WOUND = 30)
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR
 
@@ -62,7 +62,7 @@
 	armor = list(MELEE = 20, BULLET = 20, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 0, ACID = 0)
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR
 	resistance_flags = FIRE_PROOF
-	obj_flags = TRAIT_ANVIL_REPAIR
+	skyrat_obj_flags = TRAIT_ANVIL_REPAIR
 	can_be_tied = FALSE
 
 /obj/item/clothing/shoes/chain_boots/Initialize(mapload)
@@ -81,7 +81,7 @@
 	armor = list(MELEE = 20, BULLET = 20, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 0, ACID = 0)
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR
 	resistance_flags = FIRE_PROOF
-	obj_flags = TRAIT_ANVIL_REPAIR
+	skyrat_obj_flags = TRAIT_ANVIL_REPAIR
 	can_be_tied = FALSE
 
 /obj/item/clothing/shoes/plated_boots/Initialize(mapload)
@@ -99,7 +99,7 @@
 	armor = list(MELEE = 20, BULLET = 20, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 0, ACID = 0)
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR
 	resistance_flags = FIRE_PROOF
-	obj_flags = TRAIT_ANVIL_REPAIR
+	skyrat_obj_flags = TRAIT_ANVIL_REPAIR
 	can_be_tied = FALSE
 
 /obj/item/clothing/shoes/horseshoe/Initialize(mapload)
@@ -114,7 +114,7 @@
 	inhand_icon_state = "sring"
 	worn_icon_state = "sring"
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR
-	obj_flags = TRAIT_ANVIL_REPAIR
+	skyrat_obj_flags = TRAIT_ANVIL_REPAIR
 
 /obj/item/clothing/gloves/ring/reagent_clothing/Initialize(mapload)
 	. = ..()
@@ -131,7 +131,7 @@
 	slot_flags = ITEM_SLOT_NECK
 	w_class = WEIGHT_CLASS_SMALL
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR
-	obj_flags = TRAIT_ANVIL_REPAIR
+	skyrat_obj_flags = TRAIT_ANVIL_REPAIR
 
 /obj/item/clothing/neck/collar/reagent_clothing/Initialize(mapload)
 	. = ..()
@@ -141,7 +141,7 @@
 	name = "reagent handcuffs"
 	desc = "A pair of handcuffs that are ready to keep someone captive."
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR
-	obj_flags = TRAIT_ANVIL_REPAIR
+	skyrat_obj_flags = TRAIT_ANVIL_REPAIR
 
 /obj/item/restraints/handcuffs/reagent_clothing/Initialize(mapload)
 	. = ..()

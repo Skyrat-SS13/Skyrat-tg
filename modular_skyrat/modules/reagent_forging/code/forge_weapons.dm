@@ -3,7 +3,7 @@
 	lefthand_file = 'modular_skyrat/modules/reagent_forging/icons/mob/forge_weapon_l.dmi'
 	righthand_file = 'modular_skyrat/modules/reagent_forging/icons/mob/forge_weapon_r.dmi'
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR
-	obj_flags = TRAIT_ANVIL_REPAIR
+	skyrat_obj_flags = TRAIT_ANVIL_REPAIR
 
 /obj/item/forging/reagent_weapon/Initialize(mapload)
 	. = ..()
@@ -147,19 +147,11 @@
 	. = ..()
 	AddElement(/datum/element/kneejerk)
 
-/obj/item/forging/reagent_weapon/hammer/attack(mob/living/target_mob, mob/living/user, params)
-	force = 19
-	return ..()
-
 /obj/item/forging/reagent_weapon/hammer/attack_atom(atom/attacked_atom, mob/living/user, params)
-	if(is_type_in_list(attacked_atom, fast_attacks))
-		force = 0
-		..()
-		user.changeNext_move(CLICK_CD_RAPID)
+	. = ..()
+	if(!is_type_in_list(attacked_atom, fast_attacks))
 		return
-	else
-		force = 19
-		return ..()
+	user.changeNext_move(CLICK_CD_RAPID)
 
 /obj/item/shield/riot/buckler/reagent_weapon //Same as a buckler, but metal.
 	name = "reagent plated buckler shield"
@@ -176,7 +168,7 @@
 	max_integrity = 150 //over double that of a wooden one
 	w_class = WEIGHT_CLASS_NORMAL
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_AFFECT_STATISTICS
-	obj_flags = TRAIT_ANVIL_REPAIR
+	skyrat_obj_flags = TRAIT_ANVIL_REPAIR
 
 /obj/item/shield/riot/buckler/reagent_weapon/Initialize(mapload)
 	. = ..()

@@ -34,61 +34,61 @@
 	var/obj/item/forging/forge_item = tool
 	var/obj/obj_anvil_search = locate() in contents
 	if(forge_item.in_use)
-		to_chat(user, span_warning("You cannot do multiple things at the same time!"))
-		return FALSE
+		balloon_alert(user, "anvil in use already!")
+		return TOOL_ACT_TOOLTYPE_SUCCESS
 	var/obj/obj_tong_search = locate() in forge_item.contents
 	if(obj_anvil_search && !obj_tong_search)
 		obj_anvil_search.forceMove(forge_item)
 		update_appearance()
 		forge_item.icon_state = "tong_full"
-		return FALSE
+		return TOOL_ACT_TOOLTYPE_SUCCESS
 	if(!obj_anvil_search && obj_tong_search)
 		obj_tong_search.forceMove(src)
 		update_appearance()
 		forge_item.icon_state = "tong_empty"
-		return FALSE
+		return TOOL_ACT_TOOLTYPE_SUCCESS
 
 /obj/structure/reagent_anvil/hammer_act(mob/living/user, obj/item/tool)
 	//regardless, we will make a sound
 	playsound(src, 'modular_skyrat/modules/reagent_forging/sound/forge.ogg', 50, TRUE, ignore_walls = FALSE)
 	//do we have an incomplete item to hammer out? if so, here is our block of code
-	var/obj/item/forging/incomplete/search_incomplete_src = locate() in contents
-	if(search_incomplete_src)
-		if(COOLDOWN_FINISHED(search_incomplete_src, heating_remainder))
-			to_chat(user, span_warning("You mess up, the metal was too cool!"))
-			search_incomplete_src.times_hit -= 3
-			return FALSE
-		if(COOLDOWN_FINISHED(search_incomplete_src, striking_cooldown))
-			var/skill_modifier = user.mind.get_skill_modifier(/datum/skill/smithing, SKILL_SPEED_MODIFIER) * search_incomplete_src.average_wait
-			COOLDOWN_START(search_incomplete_src, striking_cooldown, skill_modifier)
-			search_incomplete_src.times_hit++
+	var/obj/item/forging/incomplete/locate_incomplete = locate() in contents
+	if(locate_incomplete)
+		if(COOLDOWN_FINISHED(locate_incomplete, heating_remainder))
+			balloon_alert(user, "metal cooled down, reheat it!")
+			locate_incomplete.times_hit -= 3
+			return TOOL_ACT_TOOLTYPE_SUCCESS
+		if(COOLDOWN_FINISHED(locate_incomplete, striking_cooldown))
+			var/skill_modifier = user.mind.get_skill_modifier(/datum/skill/smithing, SKILL_SPEED_MODIFIER) * locate_incomplete.average_wait
+			COOLDOWN_START(locate_incomplete, striking_cooldown, skill_modifier)
+			locate_incomplete.times_hit++
 			balloon_alert(user, "good hit!")
 			user.mind.adjust_experience(/datum/skill/smithing, 1) //A good hit gives minimal experience
-			if(search_incomplete_src?.times_hit >= search_incomplete_src.average_hits)
-				to_chat(user, span_notice("[search_incomplete_src] is sounding ready."))
-			return FALSE
-		search_incomplete_src.times_hit -= 3
+			if(locate_incomplete.times_hit >= locate_incomplete.average_hits)
+				user.balloon_alert(user, "[locate_incomplete] sounds ready!")
+			return TOOL_ACT_TOOLTYPE_SUCCESS
+		locate_incomplete.times_hit -= 3
 		balloon_alert(user, "bad hit!")
-		if(search_incomplete_src?.times_hit <= -(search_incomplete_src.average_hits))
-			to_chat(user, span_warning("The hits were too inconsistent-- [search_incomplete_src] breaks!"))
-			qdel(search_incomplete_src)
+		if(locate_incomplete.times_hit <= -locate_incomplete.average_hits)
+			balloon_alert(user, "[locate_incomplete] breaks from the bad hits!")
+			qdel(locate_incomplete)
 			update_appearance()
-		return FALSE
+		return TOOL_ACT_TOOLTYPE_SUCCESS
 
-	var/obj/obj_anvil_search = locate() in contents
+	var/obj/locate_obj = locate() in contents
 	//okay, so we didn't find an incomplete item to hammer, do we have a hammerable item?
-	if(obj_anvil_search && (obj_anvil_search.obj_flags & TRAIT_ANVIL_REPAIR))
-		if(obj_anvil_search.get_integrity() >= obj_anvil_search.max_integrity)
+	if(locate_obj && (locate_obj.skyrat_obj_flags & TRAIT_ANVIL_REPAIR))
+		if(locate_obj.get_integrity() >= locate_obj.max_integrity)
 			balloon_alert(user, "full integrity already!")
-			return FALSE
-		while(obj_anvil_search.get_integrity() < obj_anvil_search.max_integrity)
+			return TOOL_ACT_TOOLTYPE_SUCCESS
+		while(locate_obj.get_integrity() < locate_obj.max_integrity)
 			if(!do_after(user, 1 SECONDS, src))
 				balloon_alert(user, "stopped repairing!")
-				return FALSE
-			obj_anvil_search.repair_damage(obj_anvil_search.get_integrity() + 10)
+				return TOOL_ACT_TOOLTYPE_SUCCESS
+			locate_obj.repair_damage(locate_obj.get_integrity() + 10)
 			user.mind.adjust_experience(/datum/skill/smithing, 5) //repairing does give some experience
 			playsound(src, 'modular_skyrat/modules/reagent_forging/sound/forge.ogg', 50, TRUE, ignore_walls = FALSE)
-	return FALSE
+	return TOOL_ACT_TOOLTYPE_SUCCESS
 
 /obj/structure/reagent_anvil/hammer_act_secondary(mob/living/user, obj/item/tool)
 	hammer_act(user, tool)
