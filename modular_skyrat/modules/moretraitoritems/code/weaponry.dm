@@ -2,7 +2,6 @@
 	name = "odd bowler"
 	desc = "A deep black bowler. Inside the hat, there is a sleek red S, with a smaller X insignia embroidered within. On closer inspection, the brim feels oddly weighted..."
 	icon_state = "bowler"
-	inhand_icon_state = "bowler"
 	force = 10
 	throwforce = 45
 	throw_speed = 5

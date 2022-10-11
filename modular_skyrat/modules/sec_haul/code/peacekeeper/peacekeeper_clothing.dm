@@ -82,7 +82,6 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/security.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/security.dmi'
 	icon_state = "peacekeeper_warden"
-	inhand_icon_state = "peacekeeper_warden"
 
 /obj/item/clothing/under/rank/security/warden
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/security.dmi'
@@ -94,7 +93,6 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/security.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/security.dmi'
 	icon_state = "peacekeeper_hos"
-	inhand_icon_state = "peacekeeper_hos"
 
 //PEACEKEEPER ARMOR
 /obj/item/clothing/suit/armor/vest/peacekeeper

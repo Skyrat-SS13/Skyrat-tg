@@ -41,7 +41,6 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "hev"
-	inhand_icon_state = "sec_helm"
 	armor = list(MELEE = 20, BULLET = 20, LASER = 20, ENERGY = 20, BOMB = 30, BIO = 40, FIRE = 40, ACID = 40, WOUND = 10)
 	obj_flags = NO_MAT_REDEMPTION
 	resistance_flags = LAVA_PROOF|FIRE_PROOF|UNACIDABLE|ACID_PROOF|INDESTRUCTIBLE|FREEZE_PROOF
@@ -759,7 +758,6 @@
 	worn_icon = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecumob.dmi'
 	worn_icon_digi = 'modular_skyrat/modules/awaymissions_skyrat/icons/hecumob_muzzled.dmi'
 	icon_state = "hecu_helm"
-	inhand_icon_state = "sec_helm"
 	armor = list(MELEE = 30, BULLET = 30, LASER = 30, ENERGY = 30, BOMB = 30, BIO = 20, FIRE = 20, ACID = 20, WOUND = 10)
 	flags_inv = HIDEHAIR
 	obj_flags = NO_MAT_REDEMPTION
