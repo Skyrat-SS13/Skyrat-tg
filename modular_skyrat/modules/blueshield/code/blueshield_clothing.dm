@@ -113,7 +113,6 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "coatblueshield"
-	inhand_icon_state = "coatblueshield"
 	desc = "A comfy kevlar-lined coat with blue highlights, for the blueshield."
 	hoodtype = /obj/item/clothing/head/hooded/winterhood/blueshield
 	allowed = list(/obj/item/melee/baton/security/loaded)

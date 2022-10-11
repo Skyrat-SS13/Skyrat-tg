@@ -142,7 +142,6 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "coatpeacekeeper"
-	inhand_icon_state = "coatpeacekeeper"
 	desc = "A greyish-blue, armour-padded winter coat. It glitters with a mild ablative coating and a robust air of authority.  The zipper tab is a pair of jingly little handcuffs that get annoying after the first ten seconds."
 	hoodtype = /obj/item/clothing/head/hooded/winterhood/security/peacekeeper
 
