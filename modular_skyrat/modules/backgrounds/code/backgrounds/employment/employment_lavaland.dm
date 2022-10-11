@@ -6,6 +6,7 @@
 	groups = BACKGROUNDS_LAVALAND
 	false_if_in_roles = FALSE
 	roles = list(/obj/effect/mob_spawn/ghost_role/human/ash_walker)
+	hidden_from_characters = TRUE
 
 /datum/background_info/employment/lavaland/hunter
 	name = "Ashwalker Hunter"

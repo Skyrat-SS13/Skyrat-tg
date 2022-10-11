@@ -5,6 +5,9 @@
 #define OPTION_AUTO "Automatic"
 #define OPTION_CUSTOM "Custom"
 
+#define OPTION_SHIFT_START_PHOTO "Use Shift-Start Photo"
+#define OPTION_NEW_PHOTO "Generate a New One"
+
 /obj/item/passport/chameleon
 	special_desc_factions = FACTION_SYNDICATE
 	special_desc = "This is a chameleon passport, able to change its details and look to your current identity. How convienient."
@@ -61,7 +64,7 @@
 		if(OPTION_AUTO)
 			var/mob/living/carbon/human/human = user
 			if(!istype(human))
-				user.show_message(span_warningplain("You do not have a form that the scanner can recognise and autofill for!"))
+				user.show_message(span_warning("You do not have a form that the scanner can recognise and autofill for!"))
 				return
 
 			new_name = human.real_name
@@ -73,47 +76,52 @@
 			// It may be messy, but it's the fastest way of doing this that I could think of off the top of my head.
 			new_name = tgui_input_text(user, "Input the name to use:", "Name Input", "Unknown", MAX_NAME_LEN)
 			if(!new_name || length(new_name) < 1)
-				user.show_message(span_warningplain("You must input a valid name!"))
+				user.show_message(span_warning("You must input a valid name!"))
 				return
 
 			new_age = tgui_input_number(user, "Input the age to use:", "Age Input", AGE_MINOR, AGE_MAX, AGE_MIN)
 			if(!new_age)
-				user.show_message(span_warningplain("You must input a valid age!"))
+				user.show_message(span_warning("You must input a valid age!"))
 				return
 
 			new_faction = tgui_input_list(user, "Input the social background to use:", "Social Background Input", GLOB.social_background_names)
 			if(!new_faction)
-				user.show_message(span_warningplain("You must input a valid social background!"))
+				user.show_message(span_warning("You must input a valid social background!"))
 				return
 			var/datum/background_info/social_background/social_background = GLOB.social_background_name_to_instance[new_faction]
 			if(!social_background)
-				user.show_message(span_warningplain("You must input a valid social background!"))
+				user.show_message(span_warning("You must input a valid social background!"))
 				return
 			new_faction = social_background.type
 
 			new_employment = tgui_input_list(user, "Input the employment to use:", "Employment Input", GLOB.employment_names)
 			if(!new_employment)
-				user.show_message(span_warningplain("You must input a valid employment!"))
+				user.show_message(span_warning("You must input a valid employment!"))
 				return
 			var/datum/background_info/employment/employment = GLOB.employment_name_to_instance[new_employment]
 			if(!employment)
-				user.show_message(span_warningplain("You must input a valid employment!"))
+				user.show_message(span_warning("You must input a valid employment!"))
 				return
 			new_employment = employment.type
 
 		else
 			return
 
-	holder_name = new_name
-	holder_faction = new_faction
-	holder_employment = new_employment
-	holder_age = new_age
-	cached_data = null
-	var/icon/headshot = get_flat_existing_human_icon(user, list(SOUTH))
-	headshot.Crop(9, 32, 24, 17)
-	get_data(headshot)
-	imprinted = TRUE
-	update_label()
+	switch(tgui_alert(user, "Use your shift-start photo, or generate a new one from your current appearance?", "Set Photo", list(OPTION_SHIFT_START_PHOTO, OPTION_NEW_PHOTO)))
+		if(OPTION_SHIFT_START_PHOTO)
+			if(!ishuman(user))
+				user.show_message(span_warning("You do not have a form that the scanner can recognise and autofill for!"))
+				return
+			imprint_owner(new_name, new_age, new_faction, new_employment)
+		if(OPTION_NEW_PHOTO)
+			// I went out of my way to support you simplemobs.
+			if(!ishuman(user))
+				imprint_owner(new_name, new_age, new_faction, new_employment, icon(user.icon, user.icon_state, SOUTH, 0, FALSE))
+				return
+
+			var/icon/headshot_crop = get_flat_existing_human_icon(user, list(SOUTH))
+			headshot_crop.Crop(HEADSHOT_CROP_DIMENSIONS)
+			imprint_owner(new_name, new_age, new_faction, new_employment, headshot_crop)
 
 #undef OPTION_READ
 #undef OPTION_CHAMELEON
@@ -121,3 +129,6 @@
 
 #undef OPTION_AUTO
 #undef OPTION_CUSTOM
+
+#undef OPTION_SHIFT_START_PHOTO
+#undef OPTION_NEW_PHOTO

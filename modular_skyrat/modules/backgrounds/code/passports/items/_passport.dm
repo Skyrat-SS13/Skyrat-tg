@@ -18,10 +18,10 @@
 	var/has_animation = FALSE
 	var/tgui_style = "paper"
 
+	var/holder_name
+	var/holder_age
 	var/holder_faction
 	var/holder_employment
-	var/holder_age
-	var/holder_name
 
 	var/list/cached_data
 	var/imprinted = FALSE
@@ -35,31 +35,16 @@
 		else
 			icon_state = "[icon_state_base]_opened"
 
-// This will not exist in the end code. This is to make testing easier.
-// Imprinting will be done by the HoP, and via a traitor item.
-/obj/item/passport/CtrlClick(mob/living/carbon/human/user)
-	. = ..()
-	if (imprinted == FALSE)
-		balloon_alert(user, "imprinting...")
-		imprint_owner(user)
-		return
-	balloon_alert(user, "already imprinted!")
-	return
-
 /obj/item/passport/get_passport()
 	return src
 
-/obj/item/passport/proc/imprint_owner(mob/living/carbon/human/user)
-	if(!istype(user) || !user.client?.prefs)
-		return
-
-	holder_name = user.real_name
-	holder_faction = user.client?.prefs?.social_background
-	holder_employment = user.client?.prefs?.employment
-	holder_age = user.age
+/obj/item/passport/proc/imprint_owner(name, age, datum/background_info/social_background/faction, datum/background_info/employment/employment, headshot_override = null)
+	holder_name = name
+	holder_age = age
+	holder_faction = faction
+	holder_employment = employment
 	cached_data = null
-	get_data() // This may have a performance hit at round start, but this will ensure things don't get stored inconsistently.
-	imprinted = TRUE
+	get_data(headshot_override)
 	update_label()
 
 /obj/item/passport/AltClick(mob/user)
@@ -108,24 +93,41 @@
 		headshot_crop.Crop(9, 32, 24, 17)
 		return headshot_crop
 
-/obj/item/passport/proc/get_data(icon/headshot_override)
+/obj/item/passport/proc/get_data(headshot_override, is_base64 = FALSE, reset_data = FALSE)
 	RETURN_TYPE(/list)
-	if(!cached_data)
-		var/datum/background_info/employment/employment = GLOB.employments[holder_employment]
-		var/datum/background_info/social_background/social_background = GLOB.social_backgrounds[holder_faction]
+	if(!cached_data || reset_data)
+		var/datum/background_info/employment/employment = holder_employment
+		var/datum/background_info/social_background/social_background = holder_faction
 		cached_data = list(
 			"name" = holder_name,
 			"tgui_style" = tgui_style,
-			"headshot_data" = icon2base64(headshot_override ? headshot_override : get_headshot_from_datacore(holder_name)),
-			"empire" = social_background.name,
-			"employment" = employment.name,
+			"headshot_data" = is_base64 ? headshot_override : icon2base64(headshot_override ? headshot_override : get_headshot_from_datacore(holder_name)),
+			"empire" = initial(social_background.name),
+			"employment" = initial(employment.name),
 			"age" = holder_age,
 		)
 	return cached_data
 
+/// This proc should be called any time the passport's `holder_` vars have been changed. Use `get_data` with `reset_data = TRUE` instead if you're replacing the image.
+/obj/item/passport/proc/update_data()
+	// Gotta squeeze out that performance!
+	var/headshot = cached_data["headshot_data"]
+	cached_data = null
+	get_data(headshot, TRUE)
+	update_label()
+
 /obj/item/passport/proc/update_label()
 	var/custom_name = passport_name
 	name = holder_name ? "[holder_name]'s [custom_name]" : custom_name
+
+/obj/item/passport/proc/wipe()
+	// Oh boy
+	holder_name = null
+	holder_age = null
+	holder_faction = null
+	holder_employment = null
+	cached_data = null
+	update_label()
 
 #undef PASSPORT_CLOSED
 #undef PASSPORT_OPENED

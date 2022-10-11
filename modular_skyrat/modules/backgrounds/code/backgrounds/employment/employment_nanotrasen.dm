@@ -13,6 +13,7 @@
 		)
 	fake_name = "Nanotrasen Intern"
 	false_if_in_roles = FALSE
+	hidden_from_characters = TRUE
 
 /datum/background_info/employment/undocumented_nanotrasen/New()
 	. = ..()

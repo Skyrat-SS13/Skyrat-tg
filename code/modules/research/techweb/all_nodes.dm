@@ -1189,6 +1189,7 @@
 		"portadrive_super",
 		"ssd_micro",
 		"ssd_small",
+		"passport_slot", // SKYRAT EDIT ADDITION - Backgrounds - Doing it on initialize doesn't work...
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1000)  //they are really shitty
 

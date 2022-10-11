@@ -20,6 +20,8 @@
 	var/list/roles
 	/// Decides the role filtering of `roles`.
 	var/false_if_in_roles = FALSE
+	/// Should this be hidden from the passport editor, and other "IC" interactions.
+	var/hidden_from_characters = FALSE
 
 /datum/background_info/proc/is_job_valid(datum/job/job)
 	if(!roles)

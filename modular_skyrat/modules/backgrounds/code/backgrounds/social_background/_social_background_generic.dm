@@ -6,8 +6,3 @@
 	economic_power = 0.8
 	features = list(/datum/background_feature/poor)
 	space_faring = FALSE
-
-/datum/background_info/social_background/generic/none
-	name = "None"
-	description = "You don't belong to any faction. Unfortunately due to this, you are exploited severely."
-	economic_power = 0.7
