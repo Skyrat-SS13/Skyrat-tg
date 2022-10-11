@@ -11,7 +11,9 @@
 	icon = 'icons/obj/stairs.dmi'
 	icon_state = "stairs"
 	anchored = TRUE
-	resistance_flags = INDESTRUCTIBLE // Skrat Edit : Prevents blobbos from cheesing and destroying irreplacable stairs.
+//SKYRAT EDIT START
+	resistance_flags = INDESTRUCTIBLE // Skrat Edit : Makes OBJ stairs indestructible to primarily prevent blob cheese.
+//SKYRAT EDIT END
 
 	var/force_open_above = FALSE // replaces the turf above this stair obj with /turf/open/openspace
 	var/terminator_mode = STAIR_TERMINATOR_AUTOMATIC
