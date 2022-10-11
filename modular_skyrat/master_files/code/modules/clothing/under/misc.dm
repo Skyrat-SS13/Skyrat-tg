@@ -48,7 +48,7 @@
 /obj/item/clothing/under/misc/skyrat/utility
 	name = "general utility uniform"
 	desc = "A utility uniform worn by civilian-ranked crew."
-	icon_state = "util_gen"
+	icon_state = "utility"
 	body_parts_covered = CHEST|ARMS|GROIN|LEGS
 	can_adjust = FALSE
 
