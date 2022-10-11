@@ -99,13 +99,6 @@
 	progression_minimum = 10 MINUTES
 	illegal_tech = FALSE
 
-// STEALTHY TOOOLS
-/datum/uplink_item/stealthy_tools/infiltratormask
-	name = "Voice-Muffling Balaclava"
-	desc = "A balaclava that muffles your voice, masking your identity. Also provides flash immunity!"
-	item = /obj/item/clothing/mask/infiltrator
-	cost = 2
-
 /datum/uplink_item/stealthy_tools/advanced_cham_headset
 	name = "Advanced Chameleon Headset" // Consider this a standin for the oldbase headset upgrader.
 	desc = "A premium model Chameleon Headset. All the features you love of the original, but now with flashbang \

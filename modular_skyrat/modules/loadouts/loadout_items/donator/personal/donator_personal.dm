@@ -91,11 +91,6 @@
 	item_path = /obj/item/clothing/under/rax_turtleneck_gray
 	ckeywhitelist = list("raxraus")
 
-/datum/loadout_item/glasses/zentaiglasses
-	name = "Demonic Sunglasses"
-	item_path = /obj/item/clothing/glasses/zentai
-	ckeywhitelist = list("candlejax")
-
 /datum/loadout_item/head/goldengoggles
 	name = "Steampunk Goggles"
 	item_path = /obj/item/clothing/glasses/welding/steampunk_goggles
@@ -121,6 +116,11 @@
 /datum/loadout_item/under/jumpsuit/emissionsuit
 	name = "Emission's Suit"
 	item_path = /obj/item/clothing/under/plasmaman/candlejax
+	ckeywhitelist = list("candlejax")
+
+/datum/loadout_item/suit/cjax
+	name = "XuraCorp Labcoat"
+	item_path = /obj/item/clothing/suit/toggle/labcoat/rd/jax
 	ckeywhitelist = list("candlejax")
 
 /datum/loadout_item/suit/jacket/cherno
@@ -320,7 +320,7 @@
 
 /datum/loadout_item/head/frostyushanka
 	name = "Blue Ushanka"
-	item_path = /obj/item/clothing/head/ushanka/frosty
+	item_path = /obj/item/clothing/head/costume/ushanka/frosty
 	ckeywhitelist = list("cherno00")
 
 /datum/loadout_item/neck/silvercross

@@ -9,7 +9,7 @@
 /obj/item/clothing/head/helmet/gladiator
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/head/chefhat
+/obj/item/clothing/head/utility/chefhat
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/head/hos/beret
@@ -39,16 +39,16 @@
 /obj/item/clothing/head/beret/blueshield
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/head/caphat
+/obj/item/clothing/head/hats/caphat
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/head/crown/fancy
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/head/hopcap
+/obj/item/clothing/head/hats/hopcap
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/head/hardhat
+/obj/item/clothing/head/utility/hardhat
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/head/beanie
@@ -75,7 +75,7 @@
 /obj/item/clothing/head/rice_hat
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/head/ushanka
+/obj/item/clothing/head/costume/ushanka
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/head/collectable
@@ -84,16 +84,16 @@
 /obj/item/clothing/head/fedora
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/head/that
+/obj/item/clothing/head/hats/tophat
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/head/rabbitears
+/obj/item/clothing/head/costume/rabbitears
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/head/mailman
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
-/obj/item/clothing/head/centhat
+/obj/item/clothing/head/hats/centhat
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 
 /obj/item/clothing/head/nursehat

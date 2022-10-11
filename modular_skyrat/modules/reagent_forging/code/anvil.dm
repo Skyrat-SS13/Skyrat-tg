@@ -64,12 +64,12 @@
 		balloon_alert(user, "good hit!")
 		user.mind.adjust_experience(/datum/skill/smithing, 1) //A good hit gives minimal experience
 		if(search_incomplete_src?.times_hit >= search_incomplete_src.average_hits)
-			to_chat(user, span_notice("The metal is sounding ready."))
+			to_chat(user, span_notice("[search_incomplete_src] is sounding ready."))
 		return FALSE
 	search_incomplete_src.times_hit -= 3
 	balloon_alert(user, "bad hit!")
 	if(search_incomplete_src?.times_hit <= -(search_incomplete_src.average_hits))
-		to_chat(user, span_warning("The hits were too inconsistent-- the metal breaks!"))
+		to_chat(user, span_warning("The hits were too inconsistent-- [search_incomplete_src] breaks!"))
 		qdel(search_incomplete_src)
 		update_appearance()
 	return FALSE

@@ -18,11 +18,11 @@
 		/obj/item/clothing/under/rank/engineering/engineer/skyrat/hazard_chem = 3,
 		/obj/item/clothing/under/misc/overalls = 3,
 		/obj/item/clothing/suit/toggle/jacket/engi = 3,
-		/obj/item/clothing/head/hardhat/orange = 2,
-		/obj/item/clothing/head/hardhat/weldhat/orange = 2,
-		/obj/item/clothing/head/hardhat/dblue = 2,
-		/obj/item/clothing/head/hardhat/weldhat/dblue = 2,
-		/obj/item/clothing/head/hardhat/red = 2
+		/obj/item/clothing/head/utility/hardhat/orange = 2,
+		/obj/item/clothing/head/utility/hardhat/weldhat/orange = 2,
+		/obj/item/clothing/head/utility/hardhat/dblue = 2,
+		/obj/item/clothing/head/utility/hardhat/weldhat/dblue = 2,
+		/obj/item/clothing/head/utility/hardhat/red = 2
 	)
 
 /obj/machinery/vending/wardrobe/atmos_wardrobe
@@ -85,8 +85,8 @@
 /obj/machinery/vending/wardrobe/chap_wardrobe
 	skyrat_products = list(
 		/obj/item/clothing/suit/costume/nemes = 1,
-		/obj/item/clothing/head/nemes = 1,
-		/obj/item/clothing/head/pharaoh = 1, //dont google camel by camel worst mistake of my life
+		/obj/item/clothing/head/costume/nemes = 1,
+		/obj/item/clothing/head/costume/pharaoh = 1, //dont google camel by camel worst mistake of my life
 	)
 
 	skyrat_contraband = list(
@@ -174,7 +174,7 @@
 
 /obj/machinery/vending/wardrobe/bar_wardrobe/ghost_cafe
 	products = list(
-		/obj/item/clothing/head/that = 2,
+		/obj/item/clothing/head/hats/tophat = 2,
 		/obj/item/radio/headset/headset_srv = 0,
 		/obj/item/clothing/under/suit/sl = 2,
 		/obj/item/clothing/under/rank/civilian/bartender = 2,
@@ -207,7 +207,7 @@
 		/obj/item/clothing/suit/toggle/chef = 1,
 		/obj/item/clothing/under/rank/civilian/chef = 1,
 		/obj/item/clothing/under/rank/civilian/chef/skirt = 2,
-		/obj/item/clothing/head/chefhat = 1,
+		/obj/item/clothing/head/utility/chefhat = 1,
 		/obj/item/clothing/under/rank/civilian/cookjorts = 2,
 		/obj/item/clothing/shoes/cookflops = 2,
 		/obj/item/reagent_containers/cup/rag = 1,
@@ -234,9 +234,9 @@
 		/obj/item/clothing/under/rank/engineering/engineer/skyrat/hazard_chem = 3,
 		/obj/item/clothing/under/misc/overalls = 3,
 		/obj/item/clothing/suit/toggle/jacket/engi = 3,
-		/obj/item/clothing/head/hardhat/orange = 2,
-		/obj/item/clothing/head/hardhat/weldhat/orange = 2,
-		/obj/item/clothing/head/hardhat/dblue = 2,
-		/obj/item/clothing/head/hardhat/weldhat/dblue = 2,
-		/obj/item/clothing/head/hardhat/red = 2
+		/obj/item/clothing/head/utility/hardhat/orange = 2,
+		/obj/item/clothing/head/utility/hardhat/weldhat/orange = 2,
+		/obj/item/clothing/head/utility/hardhat/dblue = 2,
+		/obj/item/clothing/head/utility/hardhat/weldhat/dblue = 2,
+		/obj/item/clothing/head/utility/hardhat/red = 2
 	)
