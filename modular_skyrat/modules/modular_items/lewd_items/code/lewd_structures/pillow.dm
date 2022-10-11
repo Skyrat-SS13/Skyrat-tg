@@ -11,7 +11,7 @@
 	lefthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_left.dmi'
 	righthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_right.dmi'
 	icon_state = "pillow"
-	inhand_icon_state = "pillow"
+	inhand_icon_state = "pillow_pink"
 	var/datum/effect_system/feathers/pillow_feathers
 	var/current_color = "pink"
 	var/current_form = "round"
