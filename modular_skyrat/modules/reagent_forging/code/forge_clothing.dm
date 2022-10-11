@@ -105,8 +105,8 @@
 	name = "reagent ring"
 	desc = "A tiny ring, sized to wrap around a finger."
 	icon_state = "ringsilver"
-	inhand_icon_state = "sring"
 	worn_icon_state = "sring"
+	inhand_icon_state = null
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR
 
 /obj/item/clothing/gloves/ring/reagent_clothing/Initialize(mapload)

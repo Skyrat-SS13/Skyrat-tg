@@ -75,7 +75,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/shoes.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/feet.dmi'
 	icon_state = "exp_corps"
-	inhand_icon_state = "exp_corps"
+	inhand_icon_state = null
 	armor = list(MELEE = 40, BULLET = 40, LASER = 40, ENERGY = 40, BOMB = 40, BIO = 0, FIRE = 80, ACID = 100, WOUND = 30)
 
 /obj/item/clothing/gloves/color/black/expeditionary_corps

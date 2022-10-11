@@ -5,7 +5,6 @@
 	desc = "A tiny gold ring, sized to wrap around a finger."
 	gender = NEUTER
 	w_class = WEIGHT_CLASS_TINY
-	icon = 'modular_skyrat/master_files/icons/obj/ring.dmi'
 	icon_state = "ringgold"
 	inhand_icon_state = null
 	worn_icon_state = "gring"
