@@ -14,7 +14,7 @@
 	/// Looping sound called on process
 	var/datum/looping_sound/vibrator/medium/soundloop
 	w_class = WEIGHT_CLASS_TINY
-	slot_flags = ITEM_SLOT_PENIS
+	lewd_slot_flags = LEWD_SLOT_PENIS
 	clothing_flags = INEDIBLE_CLOTHING
 
 /obj/item/clothing/sextoy/vibroring/attack_self(mob/user)
@@ -84,7 +84,7 @@
 	var/obj/item/organ/external/genital/testicles/balls = user.getorganslot(ORGAN_SLOT_PENIS)
 	if(!toy_on || !balls)
 		return
-	user.adjustArousal(1 * delta_time)
-	user.adjustPleasure(1 * delta_time)
+	user.adjust_arousal(1 * delta_time)
+	user.adjust_pleasure(1 * delta_time)
 	if(balls.aroused != AROUSAL_CANT)
 		balls.aroused = AROUSAL_FULL //Vibroring keep penis erected.

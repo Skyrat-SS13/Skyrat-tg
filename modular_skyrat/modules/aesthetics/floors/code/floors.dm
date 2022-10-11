@@ -56,6 +56,7 @@
 		/obj/item/stack/tile/iron/sepia,
 	)
 
+//ORION TODO - REMOVE ALL THESE COLOR VARIANTS (None of them even match decals at this point) (This can wait until mappers have cut some of them out of maps)
 // iron + Red
 /turf/open/floor/iron/red
 	icon_state = "redfull"
@@ -167,6 +168,7 @@
 /turf/open/floor/iron/dark/brown/corner
 	icon_state = "darkbrowncorners"
 	base_icon_state = "darkbrowncorners"
+//END ORION TODO
 
 /turf/open/indestructible/cobble
 	name = "cobblestone path"
