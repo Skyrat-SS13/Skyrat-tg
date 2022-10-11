@@ -6,7 +6,7 @@
 	icon = 'icons/obj/device.dmi'
 	icon_state = "inspector"
 	worn_icon_state = "salestagger"
-	inhand_icon_state = "gangtool-white"
+	inhand_icon_state = "electronic"
 	///How many uses does it have? -1 for infinite
 	var/uses = 1
 
