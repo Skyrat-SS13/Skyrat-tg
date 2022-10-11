@@ -3397,10 +3397,6 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo/commissary)
-"mg" = (
-/obj/structure/grille,
-/turf/template_noop,
-/area/template_noop)
 "mh" = (
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/armory)
@@ -3505,6 +3501,11 @@
 	dir = 4
 	},
 /area/ruin/space/has_grav/skyrat/interdynefob/service/diner)
+"mC" = (
+/obj/structure/lattice,
+/obj/structure/lattice/catwalk,
+/turf/template_noop,
+/area/template_noop)
 "mD" = (
 /obj/machinery/door/airlock/command{
 	name = "E.V.A.";
@@ -10481,15 +10482,14 @@
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo/hangar)
 "KG" = (
-/obj/machinery/door/airlock/security/old{
-	name = "Security Checkpoint";
-	req_access = list("syndicate_leader")
-	},
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
 	dir = 4
+	},
+/obj/machinery/door/airlock/public/glass{
+	name = "Cryopods"
 	},
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/halls)
@@ -14961,16 +14961,16 @@ mc
 mc
 mc
 Vt
-TK
-TK
-TK
-TK
-TK
-TK
-TK
-TK
-TK
-TK
+Ze
+Ze
+Ze
+Vt
+Vt
+Ze
+Ze
+Ze
+Vt
+Ze
 Ze
 mc
 KM
@@ -14982,10 +14982,10 @@ Vt
 Ze
 Ze
 Ze
-mc
-mg
-mc
-mc
+Vt
+Ze
+Ze
+Vt
 "}
 (2,1,1) = {"
 mc
@@ -15049,7 +15049,7 @@ mc
 mc
 mc
 mc
-mc
+Vt
 mc
 mc
 mc
@@ -15061,14 +15061,14 @@ mc
 mc
 mc
 mc
+Vt
 mc
 mc
 mc
 mc
 mc
-mg
 mc
-mc
+Vt
 "}
 (3,1,1) = {"
 mc
@@ -15132,7 +15132,7 @@ mc
 mc
 mc
 mc
-mc
+Vt
 mc
 mc
 mc
@@ -15144,12 +15144,12 @@ mc
 mc
 mc
 mc
-mc
-mc
-mc
 Vt
 mc
-Vt
+mc
+mc
+mc
+mc
 mc
 Ze
 "}
@@ -15215,7 +15215,7 @@ Tz
 Tz
 Tz
 Jf
-LN
+vQ
 DC
 Tz
 Tz
@@ -15227,7 +15227,7 @@ Tz
 Tz
 Tz
 Jf
-LN
+vQ
 DC
 Tz
 Tz
@@ -15316,7 +15316,7 @@ LN
 LN
 LN
 LN
-mc
+Vt
 Ze
 "}
 (6,1,1) = {"
@@ -15381,25 +15381,25 @@ Tz
 Tz
 Tz
 Jf
+vQ
+DC
+Tz
+Tz
+Tz
+Jf
+mC
+DC
+Tz
+Tz
+Tz
+Jf
 LN
 DC
 Tz
 Tz
 Tz
 Jf
-Vt
-DC
-Tz
-Tz
-Tz
-Jf
-LN
-DC
-Tz
-Tz
-Tz
-Jf
-Vt
+mc
 Ze
 "}
 (7,1,1) = {"
@@ -15469,16 +15469,16 @@ mc
 mc
 mc
 mc
-Ze
-mc
-mc
-mc
 mc
 Vt
+mc
+mc
+mc
+mc
 mc
 LN
 mc
-Vt
+mc
 mc
 mc
 mc
@@ -15552,12 +15552,12 @@ mc
 mc
 mc
 mc
-Ze
+mc
 Vt
-Ze
-Ze
-Ze
-Vt
+mc
+mc
+mc
+mc
 KQ
 LN
 KQ
@@ -15636,7 +15636,7 @@ nX
 mc
 mc
 mc
-mc
+Vt
 mc
 mc
 mc
@@ -15719,7 +15719,7 @@ nX
 mc
 mc
 mc
-mc
+Vt
 mc
 mc
 mc
