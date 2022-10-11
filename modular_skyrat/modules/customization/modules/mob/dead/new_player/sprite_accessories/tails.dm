@@ -1,3 +1,15 @@
+#define TAIL_TYPE_BETTER_VOX "better_vox"
+#define TAIL_TYPE_FELINE "feline"
+#define TAIL_TYPE_LIZARD "lizard"
+#define TAIL_TYPE_VULPINE "vulpine"
+#define TAIL_TYPE_MARINE "marine"
+#define TAIL_TYPE_AVIAN "avian"
+#define TAIL_TYPE_STRAIGHTTAIL "straighttail"
+#define TAIL_TYPE_SHEPHERDLIKE "shepherdlike"
+#define TAIL_TYPE_AXOLOTL "axolotl"
+#define TAIL_TYPE_TESHARI "teshari"
+#define TAIL_TYPE_STANDARD "standard"
+
 /datum/sprite_accessory/tails
 	key = "tail"
 	generic = "Tail"
@@ -9,7 +21,7 @@
 	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
 	genetic = TRUE
 	/// A generalisation of the tail-type, e.g. lizard or feline, for MODsuit or other sprites
-	var/general_type
+	var/general_type = TAIL_TYPE_STANDARD
 	/// Can we use this tail for the fluffy tail turf emote?
 	var/fluffy = FALSE
 
@@ -63,23 +75,6 @@
 			return finished_list
 	return null
 
-/datum/sprite_accessory/tails/lizard
-	recommended_species = list(SPECIES_LIZARD, SPECIES_LIZARD_ASH, SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_UNATHI, SPECIES_LIZARD_SILVER)
-	organ_type = /obj/item/organ/external/tail/lizard
-	general_type = SPECIES_LIZARD
-
-/datum/sprite_accessory/tails/human
-	recommended_species = list(SPECIES_HUMAN, SPECIES_SYNTHHUMAN, SPECIES_FELINE, SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_GHOUL)
-	organ_type = /obj/item/organ/external/tail/cat
-
-/datum/sprite_accessory/tails/monkey/default
-	name = "Monkey"
-	icon_state = "monkey"
-	icon = 'icons/mob/species/mutant_bodyparts.dmi'
-	recommended_species = list(SPECIES_HUMAN, SPECIES_SYNTHHUMAN, SPECIES_FELINE, SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_MONKEY, SPECIES_GHOUL)
-	color_src = FALSE
-	organ_type = /obj/item/organ/external/tail/monkey
-
 /datum/sprite_accessory/tails/is_hidden(mob/living/carbon/human/wearer, obj/item/bodypart/HD)
 	if(wearer.try_hide_mutant_parts)
 		return TRUE
@@ -103,9 +98,27 @@
 	color_src = null
 	factual = FALSE
 
+/datum/sprite_accessory/tails/human
+	recommended_species = list(SPECIES_HUMAN, SPECIES_SYNTHHUMAN, SPECIES_FELINE, SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_GHOUL)
+	organ_type = /obj/item/organ/external/tail/cat
+	general_type = TAIL_TYPE_FELINE
+
+/datum/sprite_accessory/tails/lizard
+	recommended_species = list(SPECIES_LIZARD, SPECIES_LIZARD_ASH, SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_UNATHI, SPECIES_LIZARD_SILVER)
+	organ_type = /obj/item/organ/external/tail/lizard
+	general_type = TAIL_TYPE_LIZARD
+
+/datum/sprite_accessory/tails/monkey/default
+	name = "Monkey"
+	icon_state = "monkey"
+	icon = 'icons/mob/species/mutant_bodyparts.dmi'
+	recommended_species = list(SPECIES_HUMAN, SPECIES_SYNTHHUMAN, SPECIES_FELINE, SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_MONKEY, SPECIES_GHOUL)
+	color_src = FALSE
+	organ_type = /obj/item/organ/external/tail/monkey
+
 /datum/sprite_accessory/tails/mammal
 	icon_state = "none"
-	recommended_species = list(SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL,SPECIES_HUMAN, SPECIES_SYNTHHUMAN, SPECIES_HUMANOID, SPECIES_GHOUL)
+	recommended_species = list(SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_HUMAN, SPECIES_SYNTHHUMAN, SPECIES_HUMANOID, SPECIES_GHOUL)
 	organ_type = /obj/item/organ/external/tail/fluffy/no_wag
 	color_src = USE_MATRIXED_COLORS
 
@@ -115,19 +128,19 @@
 
 /datum/sprite_accessory/tails/mammal/wagging/akula
 	recommended_species = list(SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_HUMAN, SPECIES_SYNTHHUMAN, SPECIES_AKULA, SPECIES_AQUATIC, SPECIES_HUMANOID, SPECIES_GHOUL)
-	general_type = "marine"
+	general_type = TAIL_TYPE_MARINE
 
 /datum/sprite_accessory/tails/mammal/wagging/tajaran
 	recommended_species = list(SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_HUMAN, SPECIES_SYNTHHUMAN, SPECIES_TAJARAN, SPECIES_HUMANOID, SPECIES_GHOUL)
-	general_type = "feline"
+	general_type = TAIL_TYPE_FELINE
 
 /datum/sprite_accessory/tails/mammal/teshari
 	recommended_species = list(SPECIES_TESHARI)
-	general_type = "teshari"
+	general_type = TAIL_TYPE_TESHARI
 
 /datum/sprite_accessory/tails/mammal/wagging/vulpkanin
 	recommended_species = list(SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_HUMAN, SPECIES_SYNTHHUMAN, SPECIES_VULP, SPECIES_HUMANOID, SPECIES_GHOUL)
-	general_type = "vulpine"
+	general_type = TAIL_TYPE_VULPINE
 
 /datum/sprite_accessory/tails/mammal/wagging/big
 	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/tails_big.dmi'
@@ -137,7 +150,7 @@
 /datum/sprite_accessory/tails/mammal/wagging/avian
 	name = "Avian"
 	icon_state = "avian1"
-	general_type = "avian"
+	general_type = TAIL_TYPE_AVIAN
 
 /datum/sprite_accessory/tails/mammal/wagging/avian/alt
 	name = "Avian (Alt)"
@@ -146,18 +159,18 @@
 /datum/sprite_accessory/tails/mammal/wagging/axolotl
 	name = "Axolotl"
 	icon_state = "axolotl"
-	general_type = "axolotl"
+	general_type = TAIL_TYPE_AXOLOTL
 
 /datum/sprite_accessory/tails/mammal/wagging/bat_long
 	name = "Bat (Long)"
 	icon_state = "batl"
-	general_type = "feline"
+	general_type = TAIL_TYPE_FELINE
 	fluffy = TRUE
 
 /datum/sprite_accessory/tails/mammal/wagging/bat_short
 	name = "Bat (Short)"
 	icon_state = "bats"
-	general_type = "feline"
+	general_type = TAIL_TYPE_FELINE
 
 /datum/sprite_accessory/tails/mammal/wagging/cable
 	name = "Cable"
@@ -175,7 +188,6 @@
 	name = "Cat (Big)"
 	icon_state = "catbig"
 	color_src = USE_ONE_COLOR
-	general_type = "feline"
 
 /datum/sprite_accessory/tails/mammal/wagging/cat_double
 	name = "Cat (Double)"
@@ -188,7 +200,7 @@
 /datum/sprite_accessory/tails/mammal/wagging/corvid
 	name = "Corvid"
 	icon_state = "crow"
-	general_type = "avian"
+	general_type = TAIL_TYPE_AVIAN
 
 /datum/sprite_accessory/tails/mammal/wagging/cow
 	name = "Cow"
@@ -212,23 +224,22 @@
 /datum/sprite_accessory/tails/mammal/wagging/eevee
 	name = "Eevee"
 	icon_state = "eevee"
-	general_type = "vulpine"
+	general_type = TAIL_TYPE_VULPINE
 
 /datum/sprite_accessory/tails/mammal/wagging/fennec
 	name = "Fennec"
 	icon_state = "fennec"
-	general_type = "vulpine"
+	general_type = TAIL_TYPE_VULPINE
 	fluffy = TRUE
 
 /datum/sprite_accessory/tails/mammal/wagging/fish
 	name = "Fish"
 	icon_state = "fish"
-	general_type = "marine"
+	general_type = TAIL_TYPE_MARINE
 
 /datum/sprite_accessory/tails/mammal/wagging/vulpkanin/fox
 	name = "Fox"
 	icon_state = "fox"
-	general_type = "vulpine"
 	fluffy = TRUE
 
 /datum/sprite_accessory/tails/mammal/wagging/vulpkanin/fox/alt_1
@@ -242,12 +253,12 @@
 /datum/sprite_accessory/tails/mammal/wagging/guilmon
 	name = "Guilmon"
 	icon_state = "guilmon"
-	general_type = SPECIES_LIZARD
+	general_type = TAIL_TYPE_LIZARD
 
 /datum/sprite_accessory/tails/mammal/wagging/hawk
 	name = "Hawk"
 	icon_state = "hawk"
-	general_type = "avian"
+	general_type = TAIL_TYPE_AVIAN
 
 /datum/sprite_accessory/tails/mammal/wagging/horse
 	name = "Horse"
@@ -258,7 +269,7 @@
 /datum/sprite_accessory/tails/mammal/wagging/husky
 	name = "Husky"
 	icon_state = "husky"
-	general_type = "shepherdlike"
+	general_type = TAIL_TYPE_SHEPHERDLIKE
 	fluffy = TRUE
 
 /datum/sprite_accessory/tails/mammal/wagging/insect
@@ -272,7 +283,7 @@
 /datum/sprite_accessory/tails/mammal/wagging/kangaroo
 	name = "Kangaroo"
 	icon_state = "kangaroo"
-	general_type = "straighttail"
+	general_type = TAIL_TYPE_STRAIGHTTAIL
 
 /*
 *	KITSUNE
@@ -281,7 +292,7 @@
 /datum/sprite_accessory/tails/mammal/wagging/kitsune
 	name = "Kitsune"
 	icon_state = "kitsune"
-	general_type = "vulpine" // Vulpine until I can be bothered to make kitsune modsuit tailsprite!
+	general_type = TAIL_TYPE_VULPINE // Vulpine until I can be bothered to make kitsune modsuit tailsprite!
 	fluffy = TRUE
 
 /datum/sprite_accessory/tails/mammal/wagging/lunasune
@@ -308,7 +319,7 @@
 /datum/sprite_accessory/tails/mammal/wagging/leopard
 	name = "Leopard"
 	icon_state = "leopard"
-	general_type = "feline"
+	general_type = TAIL_TYPE_FELINE
 	fluffy = TRUE
 
 /datum/sprite_accessory/tails/mammal/wagging/murid
@@ -322,12 +333,12 @@
 /datum/sprite_accessory/tails/mammal/wagging/orca
 	name = "Orca"
 	icon_state = "orca"
-	general_type = "marine"
+	general_type = TAIL_TYPE_MARINE
 
 /datum/sprite_accessory/tails/mammal/wagging/otie
 	name = "Otusian"
 	icon_state = "otie"
-	general_type = "straighttail"
+	general_type = TAIL_TYPE_STRAIGHTTAIL
 
 /datum/sprite_accessory/tails/mammal/wagging/plug
 	name = "Plug"
@@ -362,13 +373,13 @@
 /datum/sprite_accessory/tails/mammal/wagging/sergal
 	name = "Sergal"
 	icon_state = "sergal"
-	general_type = "shepherdlike"
+	general_type = TAIL_TYPE_SHEPHERDLIKE
 	fluffy = TRUE
 
 /datum/sprite_accessory/tails/mammal/servelyn
 	name = "Servelyn"
 	icon_state = "tiger2"
-	general_type = "feline"
+	general_type = TAIL_TYPE_FELINE
 
 /datum/sprite_accessory/tails/mammal/wagging/big/shade
 	name = "Shade"
@@ -386,22 +397,20 @@
 /datum/sprite_accessory/tails/mammal/wagging/akula/shark
 	name = "Shark"
 	icon_state = "shark"
-	general_type = "marine"
 
 /datum/sprite_accessory/tails/mammal/wagging/akula/shark_no_fin
 	name = "Shark (No Fin)"
 	icon_state = "sharknofin"
-	general_type = "marine"
 
 /datum/sprite_accessory/tails/mammal/wagging/shepherd
 	name = "Shepherd"
 	icon_state = "shepherd"
-	general_type = "shepherdlike"
+	general_type = TAIL_TYPE_SHEPHERDLIKE
 
 /datum/sprite_accessory/tails/mammal/wagging/skunk
 	name = "Skunk"
 	icon_state = "skunk"
-	general_type = "vulpine"
+	general_type = TAIL_TYPE_VULPINE
 	fluffy = TRUE
 
 /datum/sprite_accessory/tails/mammal/wagging/snake
@@ -435,7 +444,7 @@
 /datum/sprite_accessory/tails/mammal/wagging/straight
 	name = "Straight Tail"
 	icon_state = "straighttail"
-	general_type = "straighttail"
+	general_type = TAIL_TYPE_STRAIGHTTAIL
 
 /datum/sprite_accessory/tails/mammal/wagging/spade
 	name = "Succubus Spade Tail"
@@ -472,15 +481,27 @@
 /datum/sprite_accessory/tails/mammal/wagging/tiger
 	name = "Tiger"
 	icon_state = "tiger"
-	general_type = "feline"
+	general_type = TAIL_TYPE_FELINE
 
 /datum/sprite_accessory/tails/mammal/wagging/wolf
 	name = "Wolf"
 	icon_state = "wolf"
 	color_src = USE_ONE_COLOR
-	general_type = "shepherdlike"
+	general_type = TAIL_TYPE_SHEPHERDLIKE
 	fluffy = TRUE
 
 /datum/sprite_accessory/tails/mammal/wagging/zorgoia
 	name = "Zorgoia tail"
 	icon_state = "zorgoia"
+
+#undef TAIL_TYPE_BETTER_VOX
+#undef TAIL_TYPE_FELINE
+#undef TAIL_TYPE_LIZARD
+#undef TAIL_TYPE_VULPINE
+#undef TAIL_TYPE_MARINE
+#undef TAIL_TYPE_AVIAN
+#undef TAIL_TYPE_STRAIGHTTAIL
+#undef TAIL_TYPE_SHEPHERDLIKE
+#undef TAIL_TYPE_AXOLOTL
+#undef TAIL_TYPE_TESHARI
+#undef TAIL_TYPE_STANDARD
