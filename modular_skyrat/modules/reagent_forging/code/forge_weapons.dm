@@ -143,7 +143,7 @@
 	force = 19 //strong but boring.
 	armour_penetration = 10
 	icon_state = "crush_hammer"
-	inhand_icon_state = "hammer"
+	inhand_icon_state = "crush_hammer"
 	throwforce = 10
 	slot_flags = ITEM_SLOT_BACK
 	w_class = WEIGHT_CLASS_BULKY
