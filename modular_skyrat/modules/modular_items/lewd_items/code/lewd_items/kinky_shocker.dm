@@ -2,7 +2,7 @@
 	name = "kinky shocker"
 	desc = "A small toy that can weakly shock someone."
 	icon_state = "shocker"
-	inhand_icon_state = "shocker_pink"
+	inhand_icon_state = "shocker_off"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
 	lefthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_left.dmi'
 	righthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_right.dmi'
