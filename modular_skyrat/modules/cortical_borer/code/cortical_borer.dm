@@ -414,11 +414,11 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 /// Use to recalculate a borer's health and chemical stats when something retroactively affects them
 /mob/living/simple_animal/cortical_borer/proc/recalculate_stats()
 	var/old_health = health
-	maxHealth = initial(maxHealth) * (level + 1) * health_per_level
-	health_regen = initial(health_regen) * (level + 1) * health_regen_per_level
-	max_chemical_storage = initial(max_chemical_storage) * (level + 1) * chem_storage_per_level
-	chemical_regen = initial(chemical_regen) * (level + 1) * chem_regen_per_level
-	health = clamp(old_health, 0, maxHealth)
+	maxHealth = initial(maxHealth) + (level * health_per_level)
+	health_regen = initial(health_regen) + (level * health_regen_per_level)
+	max_chemical_storage = initial(max_chemical_storage) + (level * chem_storage_per_level)
+	chemical_regen = initial(chemical_regen) + (level * chem_regen_per_level)
+	health = clamp(old_health, 1, maxHealth)
 
 // Only able to spawn from an egg burst from a corpse, starts off stronger
 /mob/living/simple_animal/cortical_borer/empowered
