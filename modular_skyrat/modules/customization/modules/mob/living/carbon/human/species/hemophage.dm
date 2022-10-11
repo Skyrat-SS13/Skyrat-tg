@@ -77,10 +77,10 @@
 
 /datum/species/hemophage/get_species_lore()
 	return list("Though known by many other names, 'Hemophages' are those that have found themselves the host of a bloodthirsty infection. Initially entering their hosts through the bloodstream, or activating after a period of dormancy in infants, this infection initially travels to the chest first. Afterwards, it infects several cells, making countless alterations to their genetic sequence, until it starts rapidly expanding and taking over every nearby organ, notably the heart, lungs, and stomach, forming a massive tumor vaguely reminiscent of an overgrown, coal-black heart, that hijacks them for its own benefit, and in exchange, allows the host to 'sense' the quality, and amount of blood currently occupying their body.",
-    "While this kills the host initially, the tumor will jumpstart the body and begin functioning as a surrogate to keep their host going. This does confer certain advantages to the host, in the interest of keeping them alive; working anaerobically, requiring no food to function, and extending their lifespan dramatically. However, this comes at a cost, as the tumor changes their host into an obligate hemophage; only the enzymes, and iron in blood being able to fuel them. If they are to run out of blood, the tumor will begin consuming its own host.",
-    "Historically, Hemophages have caused great societal strife through their very existence. Many have reported dread on having someone reveal they require blood to survive, worse on learning they have been undead, espiecally in 'superstitious' communities. In many places they occupy a sort of second class, unable to live normal lives due to their condition being a sort of skeleton in their closet. Some can actually be found in slaughterhouses or the agricultural industry, gaining easy access to a large supply of animal blood to feed their eternal thirst.",
-    "Others find their way into mostly-vampiric communities, turning others into their own kind; though, the virus can only transmit to hosts that are incredibly low on blood, taking advantage of their reduced immune system efficiency and higher rate of blood creation to be able to survive the initial few days within their host.",
-    "\"What the fuck does any of this mean?\" - Doctor Micheals, reading their CentCom report about the new 'hires'.")
+	"While this kills the host initially, the tumor will jumpstart the body and begin functioning as a surrogate to keep their host going. This does confer certain advantages to the host, in the interest of keeping them alive; working anaerobically, requiring no food to function, and extending their lifespan dramatically. However, this comes at a cost, as the tumor changes their host into an obligate hemophage; only the enzymes, and iron in blood being able to fuel them. If they are to run out of blood, the tumor will begin consuming its own host.",
+	"Historically, Hemophages have caused great societal strife through their very existence. Many have reported dread on having someone reveal they require blood to survive, worse on learning they have been undead, espiecally in 'superstitious' communities. In many places they occupy a sort of second class, unable to live normal lives due to their condition being a sort of skeleton in their closet. Some can actually be found in slaughterhouses or the agricultural industry, gaining easy access to a large supply of animal blood to feed their eternal thirst.",
+	"Others find their way into mostly-vampiric communities, turning others into their own kind; though, the virus can only transmit to hosts that are incredibly low on blood, taking advantage of their reduced immune system efficiency and higher rate of blood creation to be able to survive the initial few days within their host.",
+	"\"What the fuck does any of this mean?\" - Doctor Micheals, reading their CentCom report about the new 'hires'.")
 
 /datum/species/hemophage/prepare_human_for_preview(mob/living/carbon/human/human)
 	human.skin_tone = "albino"
@@ -88,3 +88,76 @@
 	human.hairstyle = "Pompadour (Big)"
 	human.update_mutant_bodyparts(TRUE)
 	human.update_body(TRUE)
+
+
+/datum/species/hemophage/create_pref_unique_perks()
+	var/list/to_add = list()
+
+	to_add += list(
+		list(
+			SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,
+			SPECIES_PERK_ICON = "bed",
+			SPECIES_PERK_NAME = "Locker Brooding",
+			SPECIES_PERK_DESC = "Hemophages can delay their Thirst and mend their injuries by \
+	   							resting in a sturdy rectangular-shaped object. So THAT'S why they do that!",
+		),
+		list(
+			SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,
+			SPECIES_PERK_ICON = "skull",
+			SPECIES_PERK_NAME = "Viral Symbiosis",
+			SPECIES_PERK_DESC = "Hemophages, due to their condition, cannot get infected by \
+								other viruses and don't actually require an external source of oxygen \
+								to stay alive.",
+		),
+		list(
+			SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,
+			SPECIES_PERK_ICON = "recycle",
+			SPECIES_PERK_NAME = "Bat Form",
+			SPECIES_PERK_DESC = "During Halloween, Hemophages can become bats. Bats are very weak, but \
+								are great for escaping bad situations. They can also travel through \
+								vents, giving Hemophages a lot of access. Just remember that access \
+								doesn't equal permission, and people may be unhappy with you showing \
+								up uninvited!",
+		),
+		list(
+			SPECIES_PERK_TYPE = SPECIES_NEGATIVE_PERK,
+			SPECIES_PERK_ICON = "tint",
+			SPECIES_PERK_NAME = "The Thirst",
+			SPECIES_PERK_DESC = "In place of eating, Hemophages suffer from the Thirst, caused by their tumor. \
+								Thirst of what? Blood! Their tongue allows them to grab people and drink \
+								their blood, and they will suffer severe consequences if they run out. As a note, \
+								it doesn't matter whose blood you drink, it will all be converted into your blood \
+								type when consumed.",
+		),
+		list(
+			SPECIES_PERK_TYPE = SPECIES_NEGATIVE_PERK,
+			SPECIES_PERK_ICON = "cross",
+			SPECIES_PERK_NAME = "Against God and Nature",
+			SPECIES_PERK_DESC = "During Halloween, almost all higher powers are disgusted by the existence of \
+								Hemophages, and entering the chapel is essentially suicide. Do not do it!",
+		),
+	)
+
+	return to_add
+
+
+/datum/species/hemophage/create_pref_blood_perks()
+	var/list/to_add = list()
+
+	to_add += list(list(
+		SPECIES_PERK_TYPE = SPECIES_NEUTRAL_PERK,
+		SPECIES_PERK_ICON = "tint",
+		SPECIES_PERK_NAME = "Universal Blood",
+		SPECIES_PERK_DESC = "[plural_form] have blood that appears to be an amalgamation of all other \
+							blood types, made possible thanks to some special antigens produced by \
+							their tumor, making them able to receive blood of any other type, so \
+							long as it is still human-like blood.",
+		),
+	)
+
+	return to_add
+
+
+// We don't need to mention that they're undead, as the perks that come from it are otherwise already explicited, and they might no longer be actually undead from a gameplay perspective, eventually.
+/datum/species/hemophage/create_pref_biotypes_perks()
+	return
