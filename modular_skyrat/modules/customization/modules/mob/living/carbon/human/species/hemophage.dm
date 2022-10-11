@@ -121,74 +121,82 @@
 
 /datum/action/item_action/organ_action/hemophage/Trigger(trigger_flags)
 	. = ..()
-	if(iscarbon(owner))
-		var/mob/living/carbon/hemophage = owner
-		var/obj/item/organ/internal/tongue/hemophage/tongue = target
+	if(!iscarbon(owner))
+		return
 
-		if(!COOLDOWN_FINISHED(tongue, drain_cooldown))
-			to_chat(hemophage, span_warning("You just drained blood, wait a few seconds!"))
+	var/mob/living/carbon/hemophage = owner
+	var/obj/item/organ/internal/tongue/hemophage/tongue = target
+
+	if(!COOLDOWN_FINISHED(tongue, drain_cooldown))
+		hemophage.balloon_alert(hemophage, "just drained blood, wait a few seconds!")
+		return
+
+	if(!hemophage.pulling || !iscarbon(hemophage.pulling))
+		return
+
+	var/mob/living/carbon/victim = hemophage.pulling
+	if(hemophage.blood_volume >= BLOOD_VOLUME_MAXIMUM)
+		hemophage.balloon_alert(hemophage, "already full!")
+		return
+
+	if(victim.stat == DEAD)
+		hemophage.balloon_alert(hemophage, "needs a living victim!")
+		return
+
+	if(!victim.blood_volume || (victim.dna && ((NOBLOOD in victim.dna.species.species_traits) || victim.dna.species.exotic_blood)))
+		hemophage.balloon_alert(hemophage, "[victim] doesn't have blood!")
+		return
+
+
+	var/blood_volume_difference = BLOOD_VOLUME_MAXIMUM - hemophage.blood_volume //How much capacity we have left to absorb blood
+	// We start by checking that the victim is a human and they have a client, so we can give them the
+	// beneficial status effect for drinking higher-quality blood.
+	var/is_target_human_with_client = istype(victim, /mob/living/carbon/human) && victim.client
+
+	if(ismonkey(victim))
+		if(hemophage.blood_volume >= BLOOD_VOLUME_NORMAL)
+			hemophage.balloon_alert(hemophage, "their inferior blood cannot sate you any further!")
 			return
 
-		if(hemophage.pulling && iscarbon(hemophage.pulling))
-			var/mob/living/carbon/victim = hemophage.pulling
-			if(hemophage.blood_volume >= BLOOD_VOLUME_MAXIMUM)
-				to_chat(hemophage, span_warning("You're already full!"))
-				return
+		is_target_human_with_client = FALSE // Sorry, not going to get the status effect from monkeys, even if they have a client in them.
 
-			if(victim.stat == DEAD)
-				to_chat(hemophage, span_warning("You need a living victim!"))
-				return
-
-			if(!victim.blood_volume || (victim.dna && ((NOBLOOD in victim.dna.species.species_traits) || victim.dna.species.exotic_blood)))
-				to_chat(hemophage, span_warning("[victim] doesn't have blood!"))
-				return
+		blood_volume_difference = BLOOD_VOLUME_NORMAL - hemophage.blood_volume
 
 
-			var/blood_volume_difference = BLOOD_VOLUME_MAXIMUM - hemophage.blood_volume //How much capacity we have left to absorb blood
-			// We start by checking that the victim is a human and they have a client, so we can give them the
-			// beneficial status effect for drinking higher-quality blood.
-			var/is_target_human_with_client = istype(victim, /mob/living/carbon/human) && victim.client
+	COOLDOWN_START(tongue, drain_cooldown, 3 SECONDS)
+	if(victim.can_block_magic(MAGIC_RESISTANCE_HOLY, charge_cost = 0))
+		victim.show_message(span_warning("[hemophage] tries to bite you, but stops before touching you!"))
+		to_chat(hemophage, span_warning("[victim] is blessed! You stop just in time to avoid catching fire."))
+		return
 
-			if(ismonkey(victim))
-				if(hemophage.blood_volume >= BLOOD_VOLUME_NORMAL)
-					to_chat(hemophage, span_warning("Their inferior blood cannot sate you any further!"))
-					return
+	if(victim.has_reagent(/datum/reagent/consumable/garlic))
+		victim.show_message(span_warning("[hemophage] tries to bite you, but recoils in disgust!"))
+		to_chat(hemophage, span_warning("[victim] reeks of garlic! You can't bring yourself to drain such tainted blood."))
+		return
 
-				is_target_human_with_client = FALSE // Sorry, not going to get the status effect from monkeys, even if they have a client in them.
+	if(!do_after(hemophage, 3 SECONDS, target = victim))
+		hemophage.balloon_alert(hemophage, "stopped feeding")
+		return
 
-				blood_volume_difference = BLOOD_VOLUME_NORMAL - hemophage.blood_volume
+	var/drained_blood = min(victim.blood_volume, HEMOPHAGE_DRAIN_AMOUNT, blood_volume_difference)
 
+	victim.blood_volume = clamp(victim.blood_volume - drained_blood, 0, BLOOD_VOLUME_MAXIMUM)
+	hemophage.blood_volume = clamp(hemophage.blood_volume + drained_blood, 0, BLOOD_VOLUME_MAXIMUM)
 
-			COOLDOWN_START(tongue, drain_cooldown, 3 SECONDS)
-			if(victim.can_block_magic(MAGIC_RESISTANCE_HOLY, charge_cost = 0))
-				victim.show_message(span_warning("[hemophage] tries to bite you, but stops before touching you!"))
-				to_chat(hemophage, span_warning("[victim] is blessed! You stop just in time to avoid catching fire."))
-				return
+	log_combat(hemophage, victim, "drained [drained_blood]u of blood from", addition = " (NEW BLOOD VOLUME: [victim.blood_volume] cL)")
+	victim.show_message(span_danger("[hemophage] drains some of your blood!"))
+	to_chat(hemophage, span_notice("You drink some blood from [victim]![is_target_human_with_client ? " That tasted particularly good!" : ""]"))
 
-			if(victim.has_reagent(/datum/reagent/consumable/garlic))
-				victim.show_message(span_warning("[hemophage] tries to bite you, but recoils in disgust!"))
-				to_chat(hemophage, span_warning("[victim] reeks of garlic! you can't bring yourself to drain such tainted blood."))
-				return
+	playsound(hemophage, 'sound/items/drink.ogg', 30, TRUE, -2)
 
-			if(!do_after(hemophage, 3 SECONDS, target = victim))
-				return
+	if(victim.blood_volume <= BLOOD_VOLUME_OKAY)
+		to_chat(hemophage, span_warning("That definitely left them looking pale..."))
 
-			var/drained_blood = min(victim.blood_volume, HEMOPHAGE_DRAIN_AMOUNT, blood_volume_difference)
+	if(is_target_human_with_client)
+		hemophage.apply_status_effect(/datum/status_effect/blood_thirst_satiated)
 
-			victim.show_message(span_danger("[hemophage] drains some of your blood!"))
-			to_chat(hemophage, span_notice("You drink some blood from [victim]![is_target_human_with_client ? " That tasted particularly good!" : ""]"))
-			playsound(hemophage, 'sound/items/drink.ogg', 30, TRUE, -2)
-
-			victim.blood_volume = clamp(victim.blood_volume - drained_blood, 0, BLOOD_VOLUME_MAXIMUM)
-			hemophage.blood_volume = clamp(hemophage.blood_volume + drained_blood, 0, BLOOD_VOLUME_MAXIMUM)
-
-			log_combat(hemophage, victim, "drained [drained_blood]u of blood from", addition = " (NEW BLOOD VOLUME: [victim.blood_volume] cL)")
-
-			if(is_target_human_with_client)
-				hemophage.apply_status_effect(/datum/status_effect/quality_blood_satiety)
-
-			if(!victim.blood_volume)
-				to_chat(hemophage, span_notice("You finish off [victim]'s blood supply."))
+	if(!victim.blood_volume || victim.blood_volume < BLOOD_VOLUME_SURVIVE)
+		to_chat(hemophage, span_warning("You finish off [victim]'s blood supply."))
 
 
 #undef HEMOPHAGE_DRAIN_AMOUNT
@@ -208,16 +216,16 @@
 		. += "Current blood level: [blood_volume]/[BLOOD_VOLUME_MAXIMUM]."
 
 
-/datum/status_effect/quality_blood_satiety
-	id = "quality_blood_satiety"
+/datum/status_effect/blood_thirst_satiated
+	id = "blood_thirst_satiated"
 	duration = 20 MINUTES
 	status_type = STATUS_EFFECT_REFRESH
-	alert_type = /atom/movable/screen/alert/status_effect/quality_blood_satiety
+	alert_type = /atom/movable/screen/alert/status_effect/blood_thirst_satiated
 	/// What will the bloodloss_speed_multiplier of the Hemophage be changed by upon receiving this status effect?
 	var/bloodloss_speed_multiplier = 0.5
 
 
-/datum/status_effect/quality_blood_satiety/on_apply()
+/datum/status_effect/blood_thirst_satiated/on_apply()
 	// This status effect should not exist on its own, or on a non-human.
 	if(!owner || !ishuman(owner))
 		return FALSE
@@ -234,7 +242,7 @@
 	return TRUE
 
 
-/datum/status_effect/quality_blood_satiety/on_remove()
+/datum/status_effect/blood_thirst_satiated/on_remove()
 	// This status effect should not exist on its own, or on a non-human.
 	if(!owner || !ishuman(owner))
 		return
@@ -249,7 +257,7 @@
 	owner_species.bloodloss_speed_multiplier /= bloodloss_speed_multiplier
 
 
-/atom/movable/screen/alert/status_effect/quality_blood_satiety
-	name = "Quality Blood Satiety"
-	desc = "There's something about feeding off of other sentient beings that just can't quite be replicated artificially... It's somehow making it last a lot longer inside of your body than normal, most likely from satieting your tumor more than usual."
+/atom/movable/screen/alert/status_effect/blood_thirst_satiated
+	name = "Thirst Satiated"
+	desc = "Substitutes and taste-thin imitations keep your pale body standing, but nothing abates eternal thirst and slakes the infection quite like the real thing: Hot blood from a real sentient being."
 	icon_state = "highbloodpressure"
