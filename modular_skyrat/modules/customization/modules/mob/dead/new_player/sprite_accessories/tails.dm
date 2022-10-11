@@ -32,8 +32,9 @@
 			var/obj/item/mod/control/modsuit_control = wearer.back
 			var/datum/mod_theme/mod_theme = modsuit_control.theme
 			if(mod_theme.modsuit_tail_colors)
+				color_src = USE_ONE_COLOR
 				return "[general_type]_modsuit"
-
+	color_src = initial(color_src)
 	return icon_state
 
 /datum/sprite_accessory/tails/get_special_render_key(mob/living/carbon/human/owner)
