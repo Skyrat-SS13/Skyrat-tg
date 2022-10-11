@@ -107,13 +107,9 @@
 
 /obj/structure/closet/secure_closet/security/PopulateContents()
 	..()
-<<<<<<< HEAD
-	new /obj/item/clothing/suit/armor/vest/alt/sec(src) //SKYRAT EDIT CHANGE - Original: /obj/item/clothing/suit/armor/vest(src) (UPDATE THIS WHENEVER TG FINALLY DOES)
-	new /obj/item/clothing/head/security_cap(src) //SKYRAT EDIT ADDITION
-=======
-	new /obj/item/clothing/suit/armor/vest(src)
+//	new /obj/item/clothing/suit/armor/vest(src) //SKYRAT EDIT REMOVAL
 	new /obj/item/clothing/suit/armor/vest/alt/sec(src)
->>>>>>> d1582bf1b41 (Sec Resprite Fixes (#70030))
+	new /obj/item/clothing/head/security_cap(src) //SKYRAT EDIT ADDITION
 	new /obj/item/clothing/head/helmet/sec(src)
 	new /obj/item/radio/headset/headset_sec(src)
 	new /obj/item/radio/headset/headset_sec/alt(src)
