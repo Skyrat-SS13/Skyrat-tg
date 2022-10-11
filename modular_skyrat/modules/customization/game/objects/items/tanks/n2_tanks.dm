@@ -22,6 +22,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/species/vox/belt.dmi'
 	lefthand_file = 'modular_skyrat/master_files/icons/mob/inhands/equipment/tanks_lefthand.dmi'
 	righthand_file = 'modular_skyrat/master_files/icons/mob/inhands/equipment/tanks_righthand.dmi'
+	inhand_icon_state = "nitrogen"
 	slot_flags = ITEM_SLOT_BELT
 	force = 5
 	volume = 24
