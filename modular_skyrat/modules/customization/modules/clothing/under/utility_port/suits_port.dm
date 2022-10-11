@@ -53,6 +53,11 @@
 	desc = "A comfortable jacket in supply brown."
 	icon_state = "supply_dep_jacket"
 
+/obj/item/clothing/suit/toggle/jacket/assistant
+	name = "non-departmental jacket"
+	desc = "A comfortable jacket in a neutral black"
+	icon_state = "off_dep_jacket"
+
 /obj/item/clothing/suit/gorka	//THIS WILL BE MOVED IN THE NEXT PR ADDING PROPER GORKAS (not cargo related so not in this PR), BUT FOR NOW ITS HERE FOR THE SUBTYPE'S FILE LINKS
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
