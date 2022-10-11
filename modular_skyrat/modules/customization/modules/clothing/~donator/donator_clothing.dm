@@ -154,7 +154,7 @@
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/suit.dmi'
 	icon_state = "darkcoat"
-	inhand_icon_state = "darkcoat"
+	inhand_icon_state = "greatcoat"
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 
 // Donation reward for Grunnyyy
@@ -342,7 +342,6 @@
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/masks.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/mask.dmi'
 	icon_state = "far14c"
-	inhand_icon_state = "far14c"
 	clothing_flags = BLOCK_GAS_SMOKE_EFFECT | MASKINTERNALS //same flags as actual sec hailer gas mask
 	flags_inv = HIDEFACIALHAIR | HIDEFACE | HIDESNOUT
 	flags_cover = NONE
@@ -358,7 +357,7 @@
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/masks.dmi'
 	icon_state = "kindle"
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/mask.dmi'
-	inhand_icon_state = "kindle"
+	inhand_icon_state = "gasmask_captain"
 	animal_type = "wolf"
 	animal_sounds = list("Awoo!", "Woof.", "Arf!")
 	animal_sounds_alt_probability = 15
@@ -433,7 +432,6 @@
 	name = "hypnobot hexnut"
 	desc = "A silver bolt component that once belonged to a very peculiar IPC. It's large enough to be worn as a ring on nearly any finger, and is said to amplify the voice of one's mind to another's in the softness of a Whisper..."
 	icon_state = "ringsilver"
-	inhand_icon_state = "sring"
 	worn_icon_state = "sring"
 	spans = list("hexnut")
 
@@ -455,7 +453,7 @@
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
 	icon_state = "avipilotup"
-	inhand_icon_state = "ushankadown"
+	inhand_icon_state = "rus_ushanka"
 	flags_inv = HIDEEARS|HIDEHAIR
 	cold_protection = HEAD
 	min_cold_protection_temperature = FIRE_HELM_MIN_TEMP_PROTECT //about as warm as an ushanka
@@ -468,11 +466,9 @@
 		return
 	if(goggles)
 		icon_state = "avipilotup"
-		inhand_icon_state = "avipilotup"
 		to_chat(user, span_notice("You put all your effort into pulling the goggles up."))
 	else
 		icon_state = "avipilotdown"
-		inhand_icon_state = "avipilotdown"
 		to_chat(user, span_notice("You focus all your willpower to put the goggles down on your eyes."))
 	goggles = !goggles
 	if(user)
@@ -693,7 +689,7 @@
 	icon_state = "lannese"
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
 	supports_variations_flags = NONE
-	inhand_icon_state = "lannese"
+	inhand_icon_state = "firefighter"
 	can_adjust = TRUE
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 	body_parts_covered = CHEST|GROIN|LEGS|FEET
@@ -783,7 +779,6 @@
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
 	icon_state = "emissionhelm"
-	inhand_icon_state = "emissionhelm"
 
 // Donation reward for CandleJax
 /obj/item/clothing/under/plasmaman/candlejax
@@ -792,7 +787,6 @@
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
 	icon_state = "emissionsuit"
-	inhand_icon_state = "emissionsuit"
 
 // Donation reward for CandleJax
 /obj/item/clothing/head/bio_hood/jax
@@ -800,7 +794,6 @@
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
 	icon_state = "bio_hood_jax"
-	inhand_icon_state = "bio_hood_jax"
 	desc = "A hood composed of proprietary material from a NanoTrasen Affiliate."
 
 /obj/item/clothing/under/plasmaman/jax2
@@ -809,7 +802,6 @@
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
 	icon_state = "plasmaman_jax"
-	inhand_icon_state = "plasmaman_jax"
 
 /obj/item/clothing/suit/toggle/labcoat/rd/jax
 	name = "xuracorp enameled labcoat"
@@ -839,7 +831,6 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/feet.dmi'
 	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/feet_digi.dmi'
 	icon_state = "armadyne_boots"
-	inhand_icon_state = "jackboots"
 	worn_icon_state = "armadyne_boots"
 
 // Donation reward for Raxraus
