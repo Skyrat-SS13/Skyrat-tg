@@ -130,7 +130,7 @@
 	desc = "A black and white striped jumpsuit, like something out of a movie."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/costume.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/costume.dmi'
-	worn_icon_digi =  = 'modular_skyrat/master_files/icons/mob/clothing/under/costume_digi.dmi'
+	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/under/costume_digi.dmi'
 	icon_state = "prisonerclassic"
 	greyscale_colors = null
 	greyscale_config = null
