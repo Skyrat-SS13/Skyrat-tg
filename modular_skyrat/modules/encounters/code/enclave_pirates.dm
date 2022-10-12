@@ -14,8 +14,6 @@
 	mask = null
 
 	uniform = /obj/item/clothing/under/costume/nri/captain
-	suit = /obj/item/clothing/suit/armor/vest
-	suit_store = /obj/item/gun/ballistic/automatic/plastikov/nri_pirate
 
 	gloves = /obj/item/clothing/gloves/combat
 
@@ -23,7 +21,7 @@
 
 	belt = /obj/item/storage/belt/military/nri/captain/pirate_officer
 	back = /obj/item/storage/backpack/duffelbag/syndie/nri/captain
-	backpack_contents = list(/obj/item/storage/box/nri_survival_pack = 1, /obj/item/ammo_box/magazine/automag = 3, /obj/item/gun/ballistic/automatic/pistol/automag = 1, /obj/item/crucifix = 1, /obj/item/device/traitor_announcer = 1, /obj/item/clothing/mask/gas/hecu2 = 1, /obj/item/modular_computer/tablet/pda/security = 1)
+	backpack_contents = list(/obj/item/storage/box/nri_survival_pack = 1, /obj/item/ammo_box/magazine/m9mm_aps = 3, /obj/item/gun/ballistic/automatic/pistol/ladon/nri = 1, /obj/item/crucifix = 1, /obj/item/device/traitor_announcer = 1, /obj/item/clothing/mask/gas/hecu2 = 1, /obj/item/modular_computer/tablet/pda/security = 1)
 	l_pocket = /obj/item/paper/fluff/nri_document
 	r_pocket = /obj/item/storage/bag/ammo
 
@@ -45,8 +43,6 @@
 	mask = null
 
 	uniform = /obj/item/clothing/under/costume/nri
-	suit = /obj/item/clothing/suit/armor/vest
-	suit_store = /obj/item/gun/ballistic/automatic/plastikov/nri_pirate
 
 	gloves = /obj/item/clothing/gloves/combat
 
@@ -54,8 +50,8 @@
 
 	belt = /obj/item/storage/belt/military/nri/pirate
 	back = /obj/item/storage/backpack/duffelbag/syndie/nri
-	backpack_contents = list(/obj/item/storage/box/nri_survival_pack = 1, /obj/item/crucifix = 1, /obj/item/ammo_box/magazine/m9mm_aps = 3, /obj/item/clothing/mask/gas/hecu2 = 1, /obj/item/modular_computer/tablet/pda/security = 1)
-	l_pocket = /obj/item/gun/ballistic/automatic/pistol/ladon/nri
+	backpack_contents = list(/obj/item/storage/box/nri_survival_pack = 1, /obj/item/crucifix = 1, /obj/item/ammo_box/magazine/m9mm = 3, /obj/item/clothing/mask/gas/hecu2 = 1, /obj/item/modular_computer/tablet/pda/security = 1)
+	l_pocket = /obj/item/gun/ballistic/automatic/pistol
 	r_pocket = /obj/item/storage/bag/ammo
 
 	id = /obj/item/card/id/advanced
@@ -81,7 +77,7 @@
 	rank = "NRI Marine"
 	you_are_text = "You are a Novaya Rossiyskaya Imperiya task force."
 	flavour_text = "The station has refused to pay the fine for breaking Imperial regulations, you are here to recover the debt. Do so by demanding the funds. Force approach is usually recommended, but isn't the only method."
-	important_text = "Allowed races are humans, Akulas, IPCs. Follow your field officer's orders."
+	important_text = "Allowed races are humans, Akulas, IPCs. Follow your field officer's orders. Important mention - while you are listed as the pirates gamewise, you really aren't lore-and-everything-else-wise. Roleplay accordingly."
 	spawner_job_path = /datum/job/space_pirate
 	restricted_species = list(/datum/species/human, /datum/species/akula, /datum/species/robotic/ipc)
 	spawn_oldpod = FALSE
@@ -107,7 +103,7 @@
 	mob_name = "Novaya Rossiyskaya Imperiya raiding party's field officer"
 	outfit = /datum/outfit/pirate/enclave_officer
 	rank = "Field Officer"
-	important_text = "Allowed races are humans, Akulas, IPCs. There is an important document in your pocket I'd advise you to read - do NOT dispose of it by throwing it into space, burning it, or otherwise destroying it or making it unreadable afterwards. I'd also advise putting it in your locker or keeping it by yourself, but if you do have better ideas do whatever."
+	important_text = "Allowed races are humans, Akulas, IPCs. Important mention - while you are listed as the pirates gamewise, you really aren't lore-and-everything-else-wise. Roleplay accordingly. There is an important document in your pocket I'd advise you to read and keep safe."
 
 /obj/effect/mob_spawn/ghost_role/human/pirate/enclave/captain/special(mob/living/carbon/human/spawned_human)
 	. = ..()
@@ -160,7 +156,6 @@
 
 /obj/item/storage/belt/military/nri/captain/pirate_officer/PopulateContents()
 	generate_items_inside(list(
-		/obj/item/ammo_box/magazine/plastikov9mm = 4,
 		/obj/item/knife/combat = 1,
 		/obj/item/grenade/smokebomb = 1,
 		/obj/item/grenade/frag = 1,
@@ -168,7 +163,6 @@
 
 /obj/item/storage/belt/military/nri/pirate/PopulateContents()
 	generate_items_inside(list(
-		/obj/item/ammo_box/magazine/plastikov9mm = 4,
 		/obj/item/knife/combat = 1,
 		/obj/item/grenade/smokebomb = 1,
 		/obj/item/grenade/frag = 1,
