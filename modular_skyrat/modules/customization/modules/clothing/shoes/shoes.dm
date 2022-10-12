@@ -74,8 +74,6 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/feet.dmi'
 	icon_state = "jungle"
 	inhand_icon_state = "jackboots"
-	lefthand_file = 'icons/mob/inhands/equipment/security_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/equipment/security_righthand.dmi'
 	strip_delay = 30
 	equip_delay_other = 50
 	resistance_flags = NONE
@@ -145,6 +143,6 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/feet.dmi'
 	icon_state = "pink_clown_shoes"
 
-//Modular overide to give jackboots laces 
+//Modular overide to give jackboots laces
 /obj/item/clothing/shoes/jackboots
     can_be_tied = TRUE
