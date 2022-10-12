@@ -5,7 +5,7 @@
 	name = "deprivation helmet"
 	desc = "Сompletely cuts off the wearer from the outside world."
 	icon_state = "dephelmet"
-	inhand_icon_state = "dephelmet"
+	inhand_icon_state = "dephelmet_pinkn"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_hats.dmi'
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_hats.dmi'
 	worn_icon_muzzled = 'modular_skyrat/master_files/icons/mob/clothing/head_muzzled.dmi'

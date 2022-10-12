@@ -3,7 +3,6 @@
 	desc = "An experimental welding tool capable of welding functionality through the use of electricity. The flame seems almost cold."
 	icon = 'modular_skyrat/modules/aesthetics/tools/tools.dmi'
 	icon_state = "elwelder"
-	inhand_icon_state = "elwelder"
 	light_power = 1
 	light_color = LIGHT_COLOR_HALOGEN
 	tool_behaviour = NONE
