@@ -56,31 +56,6 @@
 		val2remove = round(cleaner.mind.get_skill_modifier(/datum/skill/cleaning, SKILL_SPEED_MODIFIER), 0.1)
 	reagents.remove_any(val2remove) //reaction() doesn't use up the reagents
 
-<<<<<<< HEAD
-/obj/item/mop/afterattack(atom/A, mob/user, proximity)
-	. = ..()
-	//SKYRAT EDIT ADDITION
-	if(.)
-		return
-	//SKYRAT EDIT END
-	if(!proximity)
-		return
-
-	if(reagents.total_volume < 0.1)
-		to_chat(user, span_warning("Your mop is dry!"))
-		return
-
-	var/turf/T = get_turf(A)
-
-	if(istype(A, /obj/item/reagent_containers/cup/bucket) || istype(A, /obj/structure/janitorialcart))
-		return
-
-	if(T)
-		var/should_clean = reagents.has_chemical_flag(REAGENT_CLEANS, 1)
-		start_cleaning(src, T, user, clean_target = should_clean)
-
-=======
->>>>>>> 41ca4962db3 (Moves cleaning to an atom proc to afterattack signal (#70239))
 /obj/item/mop/cyborg/Initialize(mapload)
 	. = ..()
 	ADD_TRAIT(src, TRAIT_NODROP, CYBORG_ITEM_TRAIT)
