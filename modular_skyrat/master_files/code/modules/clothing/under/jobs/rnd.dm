@@ -54,7 +54,6 @@
 	name = "research director's jumpsuit"
 	desc = "A shiny nano-weave uniform for those holding the title of \"Research Director\". Its fabric provides minor protection from biological contaminants."
 	icon_state = "director_jumpsuit"
-	inhand_icon_state = "purple_suit"
 	can_adjust = TRUE
 	alt_covers_chest = TRUE
 
@@ -70,7 +69,6 @@
 	desc = "An off-white naval suit over black pants, with a rank badge denoting the Officer of the Internal Science Division. It's a peaceful life."
 	name = "research director's naval jumpsuit"
 	icon_state = "imprd"
-	inhand_icon_state = "w_suit"
 
 /*
 *	OVERRIDES

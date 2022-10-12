@@ -6,7 +6,7 @@
 	name = "vibrator"
 	desc = "Woah. What an... Interesting item. I wonder what this red button does..."
 	icon_state = "vibrator"
-	inhand_icon_state = "vibrator"
+	inhand_icon_state = "vibrator_pink"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
 	lefthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_left.dmi'
 	righthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_right.dmi'

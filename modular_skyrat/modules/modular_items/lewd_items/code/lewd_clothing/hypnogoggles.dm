@@ -2,7 +2,7 @@
 	name = "hypnotic goggles"
 	desc = "Woaa-a-ah... This is lewd."
 	icon_state = "hypnogoggles"
-	inhand_icon_state = "hypnogoggles"
+	inhand_icon_state = "hypnogoggles_pink"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_eyes.dmi'
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_eyes.dmi'
 	lefthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_left.dmi'

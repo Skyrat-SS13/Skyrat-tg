@@ -93,4 +93,3 @@
 	desc = "A teal, sterile naval suit with a rank badge denoting the Officer of the Medical Corps. Doesn't protect against blaster fire."
 	name = "chief medical officer's naval jumpsuit"
 	icon_state = "impcmo"
-	inhand_icon_state = "b_suit"

@@ -5,6 +5,7 @@
 	lefthand_file = 'modular_skyrat/modules/mapping/icons/mob/inhands/weapons/swords_lefthand.dmi'
 	righthand_file = 'modular_skyrat/modules/mapping/icons/mob/inhands/weapons/swords_righthand.dmi'
 	icon_state = "luna"
+	inhand_icon_state = "luna"
 
 /datum/mod_theme/prototype/hauler
 	name = "Prototype: Hauler"
