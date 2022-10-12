@@ -71,10 +71,14 @@
 /// A trait source when adding traits through unit tests
 #define TRAIT_SOURCE_UNIT_TESTS "unit_tests"
 
+<<<<<<< HEAD
 // SKYRAT EDIT START
 #include "~skyrat/opposing_force.dm"
 #include "~skyrat/automapper.dm"
 //SKYRAT EDIT END
+=======
+#include "ablative_hud.dm"
+>>>>>>> eced3408b25 (Fixes permanent sechud from ablative trenchcoat hood (#70441))
 #include "achievements.dm"
 #include "anchored_mobs.dm"
 #include "anonymous_themes.dm"
