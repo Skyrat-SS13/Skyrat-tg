@@ -73,6 +73,11 @@
 				if(missing_right && ("[righthand_file]" in possible_icon_states[""]))
 					right_fallback = TRUE
 
+		// SKYRAT EDIT ADDITION - Centralising icon files goes against modularisation protocol.
+		if(icon_exists(lefthand_file, held_icon_state) && icon_exists(righthand_file, held_icon_state))
+			continue
+		// SKYRAT EDIT END
+
 		if(missing_right && missing_left)
 			if(!match_message && right_fallback && left_fallback)
 				fallback_log_message += "\n\t[item_path] has invalid value, using fallback icon.\n\tinhand_icon_state = \"[held_icon_state]\""

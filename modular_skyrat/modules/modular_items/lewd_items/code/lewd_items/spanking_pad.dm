@@ -2,7 +2,7 @@
 	name = "spanking pad"
 	desc = "A leather pad with a handle."
 	icon_state = "spankpad"
-	inhand_icon_state = "spankpad"
+	inhand_icon_state = "spankpad_pink"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
 	lefthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_left.dmi'
 	righthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_right.dmi'
