@@ -11,14 +11,26 @@ PROCESSING_SUBSYSTEM_DEF(reagents)
 	var/previous_world_time = 0
 
 /datum/controller/subsystem/processing/reagents/Initialize()
-	. = ..()
 	//So our first step isn't insane
 	previous_world_time = world.time
 	///Blacklists these reagents from being added to the master list. the exact type only. Children are not blacklisted.
 	GLOB.fake_reagent_blacklist = list(/datum/reagent/medicine/c2, /datum/reagent/medicine, /datum/reagent/reaction_agent)
 	//Build GLOB lists - see holder.dm
 	build_chemical_reactions_lists()
-	return
+
+	// SKYRAT EDIT ADDITION START
+	if(CONFIG_GET(flag/disable_erp_preferences))
+		for(var/reaction_path in GLOB.chemical_reactions_list)
+			var/datum/chemical_reaction/reaction_datum = GLOB.chemical_reactions_list[reaction_path]
+			if(!reaction_datum.erp_reaction)
+				continue
+			GLOB.chemical_reactions_list -= reaction_path
+			for(var/reaction in reaction_datum.required_reagents)
+				var/list/reaction_list = GLOB.chemical_reactions_list_reactant_index[reaction]
+				if(reaction_list)
+					reaction_list -= reaction_datum
+	// SKYRAT EDIT ADDITION END
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/processing/reagents/fire(resumed = FALSE)
 	if (!resumed)

@@ -99,22 +99,12 @@
 /obj/effect/turf_decal/bot,
 /obj/item/weldingtool/largetank,
 /obj/item/wrench,
-/obj/item/clothing/head/welding,
+/obj/item/clothing/head/utility/welding,
 /obj/structure/rack,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/listeningstation)
 "ct" = (
 /obj/machinery/atmospherics/pipe/smart/simple/supply/visible/layer4,
-/turf/open/floor/plating,
-/area/ruin/space/has_grav/listeningstation)
-"cO" = (
-/obj/structure/table,
-/obj/item/paper_bin,
-/obj/item/pen/edagger,
-/obj/item/reagent_containers/cup/glass/waterbottle{
-	pixel_x = 10;
-	pixel_y = 16
-	},
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/listeningstation)
 "cU" = (
@@ -143,16 +133,6 @@
 /obj/machinery/light/small/directional/north,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/listeningstation)
-"dm" = (
-/obj/effect/turf_decal/tile/red/opposingcorners,
-/obj/item/radio/intercom/directional/east{
-	freerange = 1
-	},
-/obj/machinery/computer/camera_advanced{
-	dir = 8
-	},
-/turf/open/floor/iron/dark,
-/area/ruin/space/has_grav/listeningstation)
 "dv" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 1
@@ -180,6 +160,18 @@
 "eR" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/listeningstation)
+"eW" = (
+/obj/structure/table,
+/obj/item/reagent_containers/cup/glass/bottle/beer/almost_empty{
+	name = "Use To Avert Loneliness";
+	desc = "It's been used...";
+	pixel_x = 8
+	},
+/obj/item/reagent_containers/spray/cleaner{
+	pixel_x = -6
+	},
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/listeningstation)
 "fG" = (
@@ -249,6 +241,16 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/listeningstation)
+"lk" = (
+/obj/effect/turf_decal/tile/red/opposingcorners,
+/obj/item/radio/intercom/directional/east{
+	freerange = 1
+	},
+/obj/machinery/computer/camera_advanced{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/listeningstation)
 "lu" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/toy/balloon/syndicate,
@@ -285,18 +287,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
 /turf/open/floor/iron/dark,
-/area/ruin/space/has_grav/listeningstation)
-"ov" = (
-/obj/structure/table,
-/obj/item/reagent_containers/cup/glass/bottle/beer/almost_empty{
-	name = "Use To Avert Loneliness";
-	desc = "It's been used...";
-	pixel_x = 8
-	},
-/obj/item/reagent_containers/spray/cleaner{
-	pixel_x = -6
-	},
-/turf/open/floor/plating,
 /area/ruin/space/has_grav/listeningstation)
 "oW" = (
 /obj/machinery/telecomms/relay/preset/ruskie{
@@ -588,7 +578,7 @@
 "Dp" = (
 /obj/structure/table,
 /obj/item/flashlight/lantern/syndicate{
-	light_on = 1
+	on = 1
 	},
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/listeningstation)
@@ -705,7 +695,7 @@
 	dir = 8;
 	dwidth = 4;
 	height = 5;
-	id = "caravansyndicate1_listeningpost";
+	shuttle_id = "caravansyndicate1_listeningpost";
 	name = "Syndicate Listening Post";
 	width = 9
 	},
@@ -932,6 +922,16 @@
 	},
 /turf/template_noop,
 /area/ruin/unpowered/no_grav)
+"VH" = (
+/obj/structure/table,
+/obj/item/paper_bin,
+/obj/item/pen/edagger,
+/obj/item/reagent_containers/cup/glass/waterbottle{
+	pixel_x = 10;
+	pixel_y = 16
+	},
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/listeningstation)
 "VK" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/closet/crate/freezer,
@@ -1366,7 +1366,7 @@ JB
 JB
 JB
 JB
-ov
+eW
 eR
 eR
 cj
@@ -1437,14 +1437,14 @@ vI
 JB
 xp
 SK
-dm
+lk
 tm
 TK
 rG
 Zj
 wm
 Sz
-cO
+VH
 FV
 DC
 CU

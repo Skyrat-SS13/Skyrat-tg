@@ -1,6 +1,6 @@
 /obj/docking_port/mobile/arrivals_skyrat
 	name = "NTV Relay"
-	id = "arrivals_shuttle"
+	shuttle_id = "arrivals_shuttle"
 	dwidth = 1
 	width = 5
 	height = 13
@@ -26,30 +26,6 @@
 	light_color = COLOR_ORANGE_BROWN
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF
 	connectable = FALSE //connecting_computer change: since icon_state is not a typical console, it cannot be connectable.
-
-/obj/machinery/computer/shuttle/arrivals/attack_hand(mob/user, list/modifiers)
-	if(HAS_TRAIT(user, TRAIT_ILLITERATE))
-		to_chat(user, span_warning("You start mashing buttons at random!"))
-		if(do_after(user, 10 SECONDS, target = src))
-			var/obj/docking_port/mobile/shuttle = SSshuttle.getShuttle(shuttleId)
-			if(shuttle.mode == SHUTTLE_RECHARGING)
-				to_chat(usr, span_warning("Shuttle engines are not ready for use."))
-				return
-			if(shuttle.mode != SHUTTLE_IDLE)
-				to_chat(usr, span_warning("Shuttle already in transit."))
-				return
-			var/destination = shuttle.getDockedId() == "arrivals_shuttle" ? "arrivals_stationary" : "arrivals_shuttle"
-			switch(SSshuttle.moveShuttle(shuttleId, destination, 1))
-				if(0)
-					say("Shuttle departing. Please stand away from the doors.")
-					log_shuttle("[key_name(usr)] has sent shuttle \"[shuttle]\" towards \"[destination]\", using [src].")
-					return TRUE
-				if(1)
-					to_chat(usr, span_warning("Invalid shuttle requested."))
-				else
-					to_chat(usr, span_warning("Unable to comply."))
-		return
-	return ..()
 
 /obj/machinery/computer/shuttle/arrivals/recall
 	name = "arrivals shuttle recall terminal"

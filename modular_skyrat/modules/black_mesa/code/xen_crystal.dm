@@ -64,3 +64,9 @@
 		mob_to_neutralize.visible_message(span_green("[mob_to_neutralize] is overcome by a wave of peace and tranquility!"))
 		new /obj/effect/particle_effect/sparks/quantum(get_turf(mob_to_neutralize))
 	qdel(src)
+
+/datum/export/xen_crystal
+	cost = CARGO_CRATE_VALUE * 6 //1200
+	unit_name = "anomalous crystal sample"
+	export_types = list(/obj/item/grenade/xen_crystal)
+	include_subtypes = FALSE

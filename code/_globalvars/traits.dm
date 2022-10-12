@@ -179,7 +179,7 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 		"TRAIT_OVERSIZED" = TRAIT_OVERSIZED, //SKYRAT EDIT ADDITION - Leaving this here so that it hopefully doesn't cause conflicts again in the future(?)
 		"TRAIT_CANNOT_BE_UNBUCKLED" = TRAIT_CANNOT_BE_UNBUCKLED,
 		"TRAIT_GAMER" = TRAIT_GAMER,
-		"TRAIT_ALERT_GHOSTS_ON_DEATH" = TRAIT_ALERT_GHOSTS_ON_DEATH,
+		"TRAIT_UNKNOWN" = TRAIT_UNKNOWN,
 	),
 	/obj/item/bodypart = list(
 		"TRAIT_PARALYSIS" = TRAIT_PARALYSIS,

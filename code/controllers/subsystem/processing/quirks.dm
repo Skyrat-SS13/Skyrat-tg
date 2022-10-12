@@ -18,14 +18,16 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 
 	/// A list of quirks that can not be used with each other. Format: list(quirk1,quirk2),list(quirk3,quirk4)
 	var/static/list/quirk_blacklist = list(
-		list("Blind","Nearsighted"),
-		list("Jolly","Depression","Apathetic","Hypersensitive"),
-		list("Ageusia","Vegetarian","Deviant Tastes", "Gamer"),
-		list("Ananas Affinity","Ananas Aversion", "Gamer"),
-		list("Alcohol Tolerance","Light Drinker"),
-		list("Clown Enjoyer","Mime Fan"),
+		list("Blind", "Nearsighted"),
+		list("Jolly", "Depression", "Apathetic", "Hypersensitive"),
+		list("Ageusia", "Vegetarian", "Deviant Tastes", "Gamer"),
+		list("Ananas Affinity", "Ananas Aversion", "Gamer"),
+		list("Alcohol Tolerance", "Light Drinker"),
+		list("Clown Enjoyer", "Mime Fan"),
 		list("Bad Touch", "Friendly"),
 		list("Extrovert", "Introvert"),
+		list("Prosthetic Limb", "Quadruple Amputee"),
+		list("Quadruple Amputee", "Paraplegic","Frail"),
 		//SKYRAT EDIT ADDITION BEGIN
 		list("Nerve Stapled", "Pacifist"),
 		list("Nerve Stapled", "Nearsighted"),
@@ -35,9 +37,9 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 		//SKYRAT EDIT ADDITION END
 	)
 
-/datum/controller/subsystem/processing/quirks/Initialize(timeofday)
+/datum/controller/subsystem/processing/quirks/Initialize()
 	get_quirks()
-	return ..()
+	return SS_INIT_SUCCESS
 
 /// Returns the list of possible quirks
 /datum/controller/subsystem/processing/quirks/proc/get_quirks()
@@ -56,6 +58,14 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 
 		if(initial(quirk_type.abstract_parent_type) == type)
 			continue
+
+		// SKYRAT EDIT ADDITION START
+		if(initial(quirk_type.erp_quirk) && CONFIG_GET(flag/disable_erp_preferences))
+			continue
+		// Hidden quirks aren't visible to TGUI or the player
+		if (initial(quirk_type.hidden_quirk))
+			continue
+		// SKYRAT EDIT ADDITION END
 
 		quirks[initial(quirk_type.name)] = quirk_type
 		quirk_points[initial(quirk_type.name)] = initial(quirk_type.value)

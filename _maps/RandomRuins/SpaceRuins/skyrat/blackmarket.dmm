@@ -17,9 +17,7 @@
 /obj/effect/turf_decal/tile/yellow{
 	dir = 4
 	},
-/obj/machinery/light{
-	dir = 1
-	},
+/obj/machinery/light/directional/north,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
 "cH" = (
@@ -90,9 +88,7 @@
 	dir = 4
 	},
 /obj/item/storage/toolbox/mechanical,
-/obj/machinery/light{
-	dir = 4
-	},
+/obj/machinery/light/directional/east,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
@@ -114,6 +110,9 @@
 	dir = 10
 	},
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
+"hO" = (
+/turf/closed/wall/mineral/iron,
+/area/ruin/space/has_grav/powered/skyrat/blackmarket)
 "io" = (
 /obj/structure/sink/directional/east,
 /obj/structure/mirror{
@@ -121,6 +120,10 @@
 	},
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron/showroomfloor,
+/area/ruin/space/has_grav/powered/skyrat/blackmarket)
+"iG" = (
+/obj/structure/table,
+/turf/open/floor/plating,
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
 "iY" = (
 /obj/machinery/power/apc/auto_name/directional/north,
@@ -140,6 +143,23 @@
 	},
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
+"kT" = (
+/obj/effect/turf_decal/siding/thinplating/dark{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/brown,
+/obj/effect/turf_decal/tile/brown{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/brown{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/yellow{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/powered/skyrat/blackmarket)
 "lp" = (
 /turf/template_noop,
 /area/template_noop)
@@ -151,12 +171,13 @@
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
 "me" = (
 /obj/structure/cable,
-/obj/machinery/light{
-	dir = 1
-	},
+/obj/machinery/light/directional/north,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
+"mQ" = (
+/turf/open/misc/asteroid/airless,
+/area/template_noop)
 "mX" = (
 /obj/machinery/door/airlock{
 	name = "Bathroom"
@@ -197,6 +218,7 @@
 	},
 /obj/item/stack/sheet/iron/fifty,
 /obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/spawner/random/entertainment/plushie_delux,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
 "oo" = (
@@ -207,6 +229,12 @@
 	},
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
 "oV" = (
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/powered/skyrat/blackmarket)
+"qc" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/turf_decal/sand,
+/obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
 "qe" = (
@@ -220,6 +248,10 @@
 	dir = 4
 	},
 /turf/open/floor/iron,
+/area/ruin/space/has_grav/powered/skyrat/blackmarket)
+"qj" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
 "qA" = (
 /obj/effect/turf_decal/tile/brown{
@@ -268,9 +300,7 @@
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
 "sB" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
-/obj/machinery/light{
-	dir = 8
-	},
+/obj/machinery/light/directional/west,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron/dark/side{
 	dir = 8
@@ -290,18 +320,18 @@
 /obj/item/food/meat/slab/monkey,
 /obj/item/food/meat/slab/monkey,
 /obj/item/reagent_containers/condiment/rice{
-	list_reagents = list(/datum/reagent/consumable/rice = 150);
+	list_reagents = list(/datum/reagent/consumable/rice=150);
 	name = "Basmati Rice Sack (4KG)";
 	volume = 150
 	},
 /obj/item/reagent_containers/condiment/milk,
 /obj/item/reagent_containers/condiment/enzyme{
-	list_reagents = list(/datum/reagent/consumable/enzyme = 500);
+	list_reagents = list(/datum/reagent/consumable/enzyme=500);
 	name = "universe-sized universal enyzyme";
 	volume = 500
 	},
 /obj/item/reagent_containers/condiment/flour{
-	list_reagents = list(/datum/reagent/consumable/flour = 600);
+	list_reagents = list(/datum/reagent/consumable/flour=600);
 	name = "Premium All-Purpose Flour (16KG)";
 	volume = 600
 	},
@@ -339,7 +369,7 @@
 /obj/docking_port/stationary{
 	dwidth = 5;
 	height = 7;
-	id = "blackmarket_chevvy_home";
+	shuttle_id = "blackmarket_chevvy_home";
 	name = "Market";
 	roundstart_template = /datum/map_template/shuttle/ruin/blackmarket_chevvy;
 	width = 11
@@ -358,25 +388,29 @@
 /obj/item/storage/backpack/duffelbag/syndie,
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
+"uG" = (
+/obj/structure/falsewall,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/powered/skyrat/blackmarket)
 "vg" = (
 /obj/structure/tank_dispenser/oxygen,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
 "vj" = (
-/obj/effect/turf_decal/siding/thinplating/dark{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/brown,
-/obj/effect/turf_decal/tile/brown{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/brown{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/yellow{
-	dir = 8
-	},
-/turf/open/floor/iron,
+/obj/effect/turf_decal/sand,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/powered/skyrat/blackmarket)
+"vy" = (
+/obj/effect/spawner/random/entertainment/drugs,
+/obj/effect/spawner/random/entertainment/drugs,
+/obj/effect/spawner/random/contraband/narcotics,
+/obj/item/reagent_containers/cocainebrick,
+/obj/item/reagent_containers/cocainebrick,
+/obj/item/reagent_containers/hashbrick,
+/obj/item/reagent_containers/hashbrick,
+/obj/effect/turf_decal/sand,
+/obj/structure/closet/crate,
+/turf/open/floor/plating,
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
 "vU" = (
 /obj/machinery/door/airlock/mining{
@@ -389,9 +423,7 @@
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
 "wq" = (
 /obj/machinery/shower/directional/west,
-/obj/machinery/light{
-	dir = 1
-	},
+/obj/machinery/light/directional/north,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron/showroomfloor,
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
@@ -454,6 +486,12 @@
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
+"Bf" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/table,
+/obj/item/reagent_containers/heroin,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/powered/skyrat/blackmarket)
 "Bm" = (
 /obj/structure/rack,
 /obj/effect/turf_decal/tile/brown,
@@ -465,10 +503,17 @@
 	},
 /obj/item/poster/random_contraband,
 /obj/item/poster/random_contraband,
+/obj/effect/spawner/random/exotic/tool,
+/obj/effect/spawner/random/engineering/material_cheap,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
 "Bp" = (
 /obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/powered/skyrat/blackmarket)
+"BG" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/space_heater/improvised_chem_heater,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
 "Ca" = (
@@ -518,6 +563,16 @@
 /obj/item/market_uplink,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
+"FG" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/table,
+/obj/effect/spawner/random/entertainment/drugs,
+/obj/effect/spawner/random/entertainment/drugs,
+/obj/effect/spawner/random/entertainment/drugs,
+/obj/effect/spawner/random/entertainment/drugs,
+/obj/effect/spawner/random/entertainment/drugs,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/powered/skyrat/blackmarket)
 "Hq" = (
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron,
@@ -535,7 +590,6 @@
 	},
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
 "KV" = (
-/obj/structure/rack,
 /obj/effect/turf_decal/tile/brown,
 /obj/effect/turf_decal/tile/brown{
 	dir = 4
@@ -543,9 +597,7 @@
 /obj/effect/turf_decal/tile/yellow{
 	dir = 4
 	},
-/obj/item/stack/sheet/glass/fifty,
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/item/holosign_creator/atmos,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
 "LL" = (
@@ -572,6 +624,9 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt/dust,
+/obj/structure/rack,
+/obj/item/holosign_creator/atmos,
+/obj/item/stack/sheet/glass/fifty,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
 "Mc" = (
@@ -597,15 +652,13 @@
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
 "NB" = (
 /obj/structure/table,
-/obj/machinery/light,
+/obj/machinery/light/directional/south,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
 "NH" = (
 /obj/machinery/suit_storage_unit/pirate,
-/obj/machinery/light{
-	dir = 8
-	},
+/obj/machinery/light/directional/west,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
 "NZ" = (
@@ -708,12 +761,14 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
 	dir = 8
 	},
-/obj/machinery/light,
+/obj/machinery/light/directional/south,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
 "SI" = (
-/turf/open/floor/iron/dark,
+/obj/structure/table,
+/obj/item/reagent_containers/heroinbrick,
+/turf/open/floor/plating,
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
 "SQ" = (
 /obj/machinery/door/airlock/external,
@@ -746,6 +801,11 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/iron,
+/area/ruin/space/has_grav/powered/skyrat/blackmarket)
+"Vl" = (
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/machinery/light/small/broken,
+/turf/open/floor/plating,
 /area/ruin/space/has_grav/powered/skyrat/blackmarket)
 "VP" = (
 /obj/machinery/door/airlock/external,
@@ -828,18 +888,22 @@ lp
 lp
 lp
 lp
+lp
+lp
 YG
 YG
 YG
+lp
+lp
+lp
+lp
+lp
+lp
+lp
 YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
-YG
+lp
+lp
+lp
 lp
 lp
 "}
@@ -847,43 +911,123 @@ lp
 lp
 lp
 lp
+lp
+lp
 YG
 YG
 YG
 YG
 YG
+lp
+lp
+lp
+lp
 YG
 YG
 YG
 YG
-YG
-YG
-YG
-YG
-YG
+lp
+lp
+lp
 lp
 "}
 (3,1,1) = {"
 lp
 lp
+lp
+lp
+lp
 YG
 YG
-Zh
-Zh
-Zh
-Zh
-Zh
-Zh
-Zh
-Zh
-Zh
-Zh
-Zh
-Zh
+YG
+YG
+YG
+YG
+mQ
+mQ
+YG
+YG
+YG
+YG
+YG
+YG
+YG
+YG
+lp
+"}
+(4,1,1) = {"
+lp
+lp
+lp
+lp
+YG
+YG
+YG
+YG
+YG
+YG
+YG
+YG
+YG
+YG
+YG
+YG
+YG
+YG
+YG
+YG
 YG
 YG
 "}
-(4,1,1) = {"
+(5,1,1) = {"
+lp
+lp
+lp
+YG
+YG
+YG
+YG
+YG
+YG
+YG
+YG
+YG
+YG
+YG
+YG
+YG
+YG
+YG
+YG
+YG
+lp
+lp
+"}
+(6,1,1) = {"
+lp
+lp
+YG
+YG
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+Zh
+YG
+YG
+YG
+lp
+lp
+lp
+"}
+(7,1,1) = {"
 lp
 YG
 YG
@@ -902,8 +1046,12 @@ ub
 Zh
 YG
 YG
+mQ
+lp
+lp
+lp
 "}
-(5,1,1) = {"
+(8,1,1) = {"
 lp
 YG
 YG
@@ -921,9 +1069,13 @@ Ph
 Rv
 Zh
 YG
+YG
+mQ
+lp
+lp
 lp
 "}
-(6,1,1) = {"
+(9,1,1) = {"
 lp
 YG
 YG
@@ -942,8 +1094,12 @@ Zh
 Zh
 YG
 YG
+YG
+lp
+lp
+lp
 "}
-(7,1,1) = {"
+(10,1,1) = {"
 lp
 YG
 YG
@@ -962,8 +1118,12 @@ vg
 Zh
 YG
 YG
+YG
+YG
+lp
+lp
 "}
-(8,1,1) = {"
+(11,1,1) = {"
 lp
 YG
 YG
@@ -977,13 +1137,17 @@ Zh
 Zh
 Zh
 Zh
-SI
+qj
 Mc
 Zh
 YG
 YG
+YG
+YG
+YG
+lp
 "}
-(9,1,1) = {"
+(12,1,1) = {"
 lp
 YG
 YG
@@ -998,12 +1162,16 @@ nE
 Pd
 PG
 LL
-vj
+kT
 Zh
 YG
+YG
+YG
+mQ
+lp
 lp
 "}
-(10,1,1) = {"
+(13,1,1) = {"
 lp
 YG
 YG
@@ -1022,8 +1190,12 @@ gf
 Zh
 YG
 YG
+mQ
+mQ
+lp
+lp
 "}
-(11,1,1) = {"
+(14,1,1) = {"
 lp
 YG
 YG
@@ -1042,8 +1214,12 @@ LZ
 Zh
 YG
 YG
+YG
+mQ
+lp
+lp
 "}
-(12,1,1) = {"
+(15,1,1) = {"
 lp
 lp
 YG
@@ -1062,10 +1238,14 @@ AG
 Zh
 YG
 YG
+YG
+YG
+lp
+lp
 "}
-(13,1,1) = {"
+(16,1,1) = {"
 lp
-lp
+mQ
 YG
 Zh
 Zh
@@ -1077,13 +1257,17 @@ vU
 Zh
 Zh
 Zh
-Zh
+uG
 Zh
 Zh
 YG
 YG
+YG
+YG
+lp
+lp
 "}
-(14,1,1) = {"
+(17,1,1) = {"
 lp
 Zh
 Zh
@@ -1096,14 +1280,18 @@ mb
 De
 Fq
 Zh
+SI
+Hq
+qc
+Zh
 YG
 YG
 YG
 YG
-YG
-YG
+lp
+lp
 "}
-(15,1,1) = {"
+(18,1,1) = {"
 tP
 zb
 fi
@@ -1116,14 +1304,18 @@ de
 De
 tI
 Zh
+Bf
+fi
+fi
+hO
 YG
 YG
 YG
 YG
 YG
-YG
+lp
 "}
-(16,1,1) = {"
+(19,1,1) = {"
 lp
 Zh
 Zh
@@ -1136,14 +1328,18 @@ tV
 De
 NB
 Zh
+BG
+fi
+Vl
+hO
 YG
 YG
 YG
 YG
 YG
-YG
+lp
 "}
-(17,1,1) = {"
+(20,1,1) = {"
 lp
 lp
 YG
@@ -1156,14 +1352,18 @@ De
 MN
 dm
 Zh
+iG
+fi
+vj
+hO
 YG
 YG
 YG
 YG
 YG
-lp
+YG
 "}
-(18,1,1) = {"
+(21,1,1) = {"
 lp
 YG
 YG
@@ -1176,14 +1376,18 @@ Ut
 AD
 YQ
 Zh
+FG
+vj
+vy
+hO
 YG
 YG
 YG
 YG
-lp
+YG
 lp
 "}
-(19,1,1) = {"
+(22,1,1) = {"
 lp
 YG
 YG
@@ -1196,6 +1400,10 @@ Zh
 Zh
 Zh
 Zh
+Zh
+Zh
+hO
+hO
 YG
 YG
 YG
@@ -1203,7 +1411,7 @@ lp
 lp
 lp
 "}
-(20,1,1) = {"
+(23,1,1) = {"
 lp
 lp
 YG
@@ -1219,11 +1427,15 @@ YG
 YG
 YG
 YG
+YG
+YG
+YG
+lp
 lp
 lp
 lp
 "}
-(21,1,1) = {"
+(24,1,1) = {"
 lp
 lp
 lp
@@ -1237,6 +1449,10 @@ YG
 YG
 YG
 YG
+mQ
+lp
+lp
+lp
 lp
 lp
 lp

@@ -204,6 +204,8 @@
 	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "beaker"
 	inhand_icon_state = "beaker"
+	lefthand_file = 'icons/mob/inhands/items_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/items_righthand.dmi'
 	worn_icon_state = "beaker"
 	custom_materials = list(/datum/material/glass=500)
 	volume = 60 //SKYRAT EDIT: Addition
@@ -308,6 +310,7 @@
 	name = "bucket"
 	desc = "It's a bucket. You can squeeze a mop's contents into it by using right-click." //SKYRAT EDIT CHANGE
 	icon = 'icons/obj/janitor.dmi'
+	worn_icon = 'icons/mob/clothing/head/utility.dmi'
 	icon_state = "bucket"
 	inhand_icon_state = "bucket"
 	lefthand_file = 'icons/mob/inhands/equipment/custodial_lefthand.dmi'
@@ -373,7 +376,7 @@
 
 /obj/item/reagent_containers/cup/bucket/equipped(mob/user, slot)
 	. = ..()
-	if (slot == ITEM_SLOT_HEAD)
+	if (slot & ITEM_SLOT_HEAD)
 		if(reagents.total_volume)
 			to_chat(user, span_userdanger("[src]'s contents spill all over you!"))
 			reagents.expose(user, TOUCH)
@@ -446,7 +449,8 @@
 							else
 								grinded.on_grind()
 								reagents.add_reagent_list(grinded.grind_results)
-								grinded.reagents.trans_to(src, grinded.reagents.total_volume, transfered_by = user)
+								if(grinded.reagents) //If grinded item has reagents within, transfer them to the mortar
+									grinded.reagents.trans_to(src, grinded.reagents.total_volume, transfered_by = user)
 								to_chat(user, span_notice("You try to juice [grinded] but there is no liquids in it. Instead you get nice powder."))
 								QDEL_NULL(grinded)
 								return
@@ -454,7 +458,8 @@
 							if(grinded.grind_results)
 								grinded.on_grind()
 								reagents.add_reagent_list(grinded.grind_results)
-								grinded.reagents.trans_to(src, grinded.reagents.total_volume, transfered_by = user)
+								if(grinded.reagents) //If grinded item has reagents within, transfer them to the mortar
+									grinded.reagents.trans_to(src, grinded.reagents.total_volume, transfered_by = user)
 								to_chat(user, span_notice("You break [grinded] into powder."))
 								QDEL_NULL(grinded)
 								return

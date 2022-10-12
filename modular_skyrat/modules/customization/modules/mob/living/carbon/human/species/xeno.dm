@@ -25,7 +25,7 @@
 		"tail" = "Xenomorph Tail",
 		"xenodorsal" = ACC_RANDOM,
 		"xenohead" = ACC_RANDOM,
-		"legs" = "Digitigrade Legs",
+		"legs" = DIGITIGRADE_LEGS,
 		"taur" = "None"
 	)
 	external_organs = list()
@@ -36,7 +36,6 @@
 	liked_food = MEAT
 	payday_modifier = 0.75
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
-	damage_overlay_type = SPECIES_XENO
 	bodypart_overrides = list(
 		BODY_ZONE_HEAD = /obj/item/bodypart/head/mutant/xenohybrid,
 		BODY_ZONE_CHEST = /obj/item/bodypart/chest/mutant/xenohybrid,

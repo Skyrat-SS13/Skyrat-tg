@@ -42,7 +42,7 @@
 	company_flag = COMPANY_NANOTRASEN
 
 /obj/item/gun/ballistic/shotgun/doublebarrel
-	company_flag = COMPANY_NANOTRASEN
+	company_flag = COMPANY_IZHEVSK
 
 /obj/item/gun/ballistic/shotgun/automatic/dual_tube
 	company_flag = COMPANY_NANOTRASEN
@@ -88,7 +88,7 @@
 
 /obj/item/gun/energy/laser/instakill
 	company_flag = null
-	
+
 /obj/item/gun/energy/laser/chameleon
 	company_flag = null
 
