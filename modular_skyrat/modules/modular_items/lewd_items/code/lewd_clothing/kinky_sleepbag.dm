@@ -9,7 +9,6 @@
 	worn_icon_taur_hoof = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_suit/sleepbag_special.dmi'
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION|STYLE_TAUR_ALL
 	icon_state = "sleepbag"
-	inhand_icon_state = "sleepbag"
 	w_class = WEIGHT_CLASS_SMALL
 	var/bag_state = "deflated"
 	var/bag_fold = TRUE

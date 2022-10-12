@@ -82,7 +82,6 @@
 	name = "\proper the nanotrasen consultant's bowman headset"
 	desc = "An official Central Command headset. Protects ears from flashbangs."
 	icon_state = "cent_headset_alt"
-	inhand_icon_state = "cent_headset_alt"
 
 /obj/item/radio/headset/heads/nanotrasen_consultant/alt/Initialize(mapload)
 	. = ..()

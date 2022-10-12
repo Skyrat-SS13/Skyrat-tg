@@ -26,11 +26,9 @@
 
 /obj/item/clothing/suit/armor/riot/knight/larp/blue
 	icon_state = "knight_blue"
-	inhand_icon_state = "knight_blue"
 
 /obj/item/clothing/suit/armor/riot/knight/larp/red
 	icon_state = "knight_red"
-	inhand_icon_state = "knight_red"
 
 /obj/item/clothing/suit/armor/vest/cuirass/larp
 	armor = list(MELEE = 30, BULLET = 30, LASER = 5, ENERGY = 5, BOMB = 5, BIO = 0, FIRE = 60, ACID = 60)
