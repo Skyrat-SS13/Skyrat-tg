@@ -37,7 +37,6 @@
 	name = "chemical hazard jumpsuit"
 	desc = "A high visibility jumpsuit with additional protection from gas and chemical hazards, at the cost of less fire-proofing."
 	icon_state = "hazard_green"
-	inhand_icon_state = "suit-green"
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 10, FIRE = 20, ACID = 60)
 	resistance_flags = ACID_PROOF
 	alt_covers_chest = TRUE
@@ -46,7 +45,6 @@
 	name = "chemical hazard EMT jumpsuit"
 	desc = "An EMT jumpsuit used for first responders in situations involving gas and/or chemical hazards. The label reads, \"Not designed for prolonged exposure\"."
 	icon_state = "hazard_white"
-	inhand_icon_state = "suit-white"
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 10, FIRE = 10, ACID = 50) // Worse stats than the proper chem-hazard uniform
 
 /*
@@ -57,4 +55,3 @@
 	desc = "A gray naval suit with a lead-lined vest and a rank badge denoting the Officer of the Internal Engineering Division. Doesn't come with a death machine building guide."
 	name = "chief engineer's naval jumpsuit"
 	icon_state = "impce"
-	inhand_icon_state = "gy_suit"

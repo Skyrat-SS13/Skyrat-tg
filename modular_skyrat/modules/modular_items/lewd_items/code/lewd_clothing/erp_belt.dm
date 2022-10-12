@@ -64,7 +64,7 @@
 						/obj/item/clothing/under/costume/lewdmaid,
 						/obj/item/clothing/suit/straight_jacket/shackles,
 						/obj/item/clothing/under/stripper_outfit,
-						/obj/item/clothing/under/misc/gear_harness,
+						/obj/item/clothing/under/misc/skyrat/gear_harness,
 
 						//hands
 						/obj/item/clothing/gloves/ball_mittens,

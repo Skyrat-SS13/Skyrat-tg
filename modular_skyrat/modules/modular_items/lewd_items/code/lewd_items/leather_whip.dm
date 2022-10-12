@@ -5,12 +5,10 @@
 	desc = "A tool used for domination. Hurts in a way you like it."
 	icon_state = "leather"
 	worn_icon_state = "leather"
-	inhand_icon_state = "leather"
+	inhand_icon_state = null
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_masks.dmi'
 	worn_icon_muzzled = 'modular_skyrat/master_files/icons/mob/clothing/mask_muzzled.dmi'
-	lefthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_left.dmi'
-	righthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_right.dmi'
 	w_class = WEIGHT_CLASS_NORMAL
 	hitsound = 'sound/weapons/whip.ogg'
 	clothing_flags = INEDIBLE_CLOTHING

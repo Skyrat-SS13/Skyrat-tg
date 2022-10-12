@@ -20,7 +20,7 @@
 	icon_state = "russian_green_armor"
 	armor = list(MELEE = 30, BULLET = 40, LASER = 20, ENERGY = 30, BOMB = 35, BIO = 0, FIRE = 50, ACID = 50, WOUND = 15)
 	supports_variations_flags = CLOTHING_NO_VARIATION
-	inhand_icon_state = "rus_armor"
+	inhand_icon_state = "armor"
 	uses_advanced_reskins = TRUE
 	unique_reskin = list(
 		"Basic" = list(
