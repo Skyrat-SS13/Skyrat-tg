@@ -1,3 +1,6 @@
+/// Maximum an Hemophage will drain, they will drain less if they hit their cap.
+#define HEMOPHAGE_DRAIN_AMOUNT 50
+
 /datum/species/hemophage
 	name = "Hemophage"
 	id = SPECIES_HEMOPHAGE
@@ -74,8 +77,7 @@
 		hemophage.death() // Owch! Ran out of blood.
 
 	if(halloween_version)// If hemophages have bat form, they cannot enter the church
-		var/area/current_area = get_area(hemophage)
-		if(istype(current_area, /area/station/service/chapel))
+		if(istype(get_area(hemophage), /area/station/service/chapel))
 			to_chat(hemophage, span_warning("You don't belong here!"))
 			hemophage.adjustFireLoss(10 * delta_time)
 			hemophage.adjust_fire_stacks(3 * delta_time)
@@ -115,9 +117,6 @@
 	name = "Drain Victim"
 	desc = "Leech blood from any carbon victim you are passively grabbing."
 
-/// Maximum an Hemophage will drain, they will drain less if they hit their cap.
-#define HEMOPHAGE_DRAIN_AMOUNT 50
-
 
 /datum/action/item_action/organ_action/hemophage/Trigger(trigger_flags)
 	. = ..()
@@ -131,7 +130,8 @@
 		hemophage.balloon_alert(hemophage, "just drained blood, wait a few seconds!")
 		return
 
-	if(!hemophage.pulling || !iscarbon(hemophage.pulling))
+	if(!hemophage.pulling || !iscarbon(hemophage.pulling) || isalien(hemophage.pulling))
+		hemophage.balloon_alert(hemophage, "not pulling any valid target!")
 		return
 
 	var/mob/living/carbon/victim = hemophage.pulling
@@ -199,9 +199,6 @@
 		to_chat(hemophage, span_warning("You finish off [victim]'s blood supply."))
 
 
-#undef HEMOPHAGE_DRAIN_AMOUNT
-
-
 /obj/item/organ/internal/heart/hemophage
 	name = "pulsating tumor"
 	desc = "Just looking at how it pulsates at the beat of the heart it's wrapped around sends shivers down your spine... <i>The fact it's what keeps them alive makes it all the more terrifying.</i>"
@@ -213,7 +210,9 @@
 	. = ..()
 	var/obj/item/organ/internal/heart/hemophage/tumor_heart = getorgan(/obj/item/organ/internal/heart/hemophage)
 	if(tumor_heart)
-		. += "Current blood level: [blood_volume]/[BLOOD_VOLUME_MAXIMUM]."
+		. += "Current blood level: [blood_volume]/[BLOOD_VOLUME_MAXIMUM]"
+
+	return .
 
 
 /datum/status_effect/blood_thirst_satiated
@@ -262,3 +261,6 @@
 	desc = "Substitutes and taste-thin imitations keep your pale body standing, but nothing abates eternal thirst and slakes the infection quite like the real thing: Hot blood from a real sentient being."
 	icon = 'icons/effects/bleed.dmi'
 	icon_state = "bleed10"
+
+
+#undef HEMOPHAGE_DRAIN_AMOUNT

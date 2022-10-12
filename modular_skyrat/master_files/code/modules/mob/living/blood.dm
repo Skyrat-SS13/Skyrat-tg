@@ -12,4 +12,4 @@
 /datum/reagent/blood/on_merge(list/mix_data)
 	. = ..()
 	if(data && mix_data)
-		data[MONKEY_ORIGINS] = data[MONKEY_ORIGINS] | mix_data[MONKEY_ORIGINS]
+		data[MONKEY_ORIGINS] = data[MONKEY_ORIGINS] || mix_data[MONKEY_ORIGINS]
