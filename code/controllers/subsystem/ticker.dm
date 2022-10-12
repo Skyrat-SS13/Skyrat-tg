@@ -271,11 +271,15 @@ SUBSYSTEM_DEF(ticker)
 		cb.InvokeAsync()
 	LAZYCLEARLIST(round_start_events)
 
+<<<<<<< HEAD
 	SEND_SIGNAL(src, COMSIG_TICKER_ROUND_STARTING)
 	real_round_start_time = world.timeofday //SKYRAT EDIT ADDITION
+=======
+	round_start_time = world.time //otherwise round_start_time would be 0 for the signals
+	SEND_SIGNAL(src, COMSIG_TICKER_ROUND_STARTING, world.time)
+>>>>>>> 1ac2779ef89 (Bileworm Health Patch: Evolutionary Leap, Vileworms, Proximity Spawning Rules, Better Loot (#70321))
 
 	log_world("Game start took [(world.timeofday - init_start)/10]s")
-	round_start_time = world.time
 	INVOKE_ASYNC(SSdbcore, /datum/controller/subsystem/dbcore/proc/SetRoundStart)
 
 	to_chat(world, span_notice("<B>Welcome to [station_name()], enjoy your stay!</B>"))
