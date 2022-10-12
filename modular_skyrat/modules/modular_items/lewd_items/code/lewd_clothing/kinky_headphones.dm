@@ -2,7 +2,7 @@
 	name = "kinky headphones"
 	desc = "Protect your ears from loud noises. It has a switch on the right hand side."
 	icon_state = "kinkphones"
-	inhand_icon_state = "kinkphones"
+	inhand_icon_state = "kinkphones_pink_off"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_ears.dmi'
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_ears.dmi'
 	strip_delay = 15
