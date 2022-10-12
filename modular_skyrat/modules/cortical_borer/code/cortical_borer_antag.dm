@@ -3,24 +3,22 @@
 /proc/printborer(datum/mind/borer)
 	var/list/text = list()
 	var/mob/living/simple_animal/cortical_borer/player_borer = borer.current
-	text = span_bold(borer.name)
 	if(!player_borer)
-		text += span_redtext(" had their body destroyed.")
+		text += span_redtext("[span_bold(borer.name)] had their body destroyed.")
 		return text
-	text = span_bold("[player_borer.name]")
 	if(borer.current.stat != DEAD)
-		text += span_greentext(" survived")
+		text += "[span_bold(player_borer.name)] [span_greentext("survived")]"
 	else
-		text += span_redtext(" died")
-	text += span_bold(" The borer produced [player_borer.children_produced] borers.")
+		text += "[span_bold(player_borer.name)] [span_redtext("died")]"
+	text += span_bold("[span_bold(player_borer.name)] produced [player_borer.children_produced] borers.")
 	var/list/string_of_genomes = list()
 
 	for(var/evo_index in player_borer.past_evolutions)
 		var/datum/borer_evolution/evolution = player_borer.past_evolutions[evo_index]
 		string_of_genomes += evolution.name
 
-	text += english_list(string_of_genomes)
-	return text
+	text += "[span_bold(player_borer.name)] had the following evolutions: [english_list(string_of_genomes)]"
+	return text.Join("<br>")
 
 /proc/printborerlist(list/players,fleecheck)
 	var/list/parts = list()
