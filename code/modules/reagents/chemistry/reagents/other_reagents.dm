@@ -45,10 +45,7 @@
 				var/max_blood_volume = data["monkey_origins"] ? max(exposed_carbon.blood_volume, BLOOD_VOLUME_NORMAL) : BLOOD_VOLUME_MAXIMUM
 
 				exposed_carbon.blood_volume = min(exposed_carbon.blood_volume + round(reac_volume, 0.1), max_blood_volume)
-
-			exposed_carbon.reagents.remove_reagent(/datum/reagent/blood, reac_volume) // Because we don't want blood to just lie around in the patient's blood, makes no sense.
 				// SKYRAT EDIT END
-
 
 			exposed_carbon.reagents.remove_reagent(type, reac_volume) // Because we don't want blood to just lie around in the patient's blood, makes no sense.
 
