@@ -76,6 +76,7 @@
 			airlock.normalspeed = FALSE
 			airlock.update_icon(ALL, 0)
 	message_admins("Engineering override has been turned ON for station airlocks.")
+	minor_announce("Engineering staff will have expanded access to areas of the station during the emergency.", "Engineering Emergency")
 
 // Disable the airlock overrides, called by the change of the alert level
 /proc/revoke_engineering_access()
