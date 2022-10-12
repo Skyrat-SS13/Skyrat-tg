@@ -1,4 +1,4 @@
-https://github.com/Skyrat-SS13/Skyrat-tg/pull/<!--PR Number-->
+https://github.com/Skyrat-SS13/Skyrat-tg/pull/16787
 
 ## Title:
 Engineering override for airlocks on orange alert
