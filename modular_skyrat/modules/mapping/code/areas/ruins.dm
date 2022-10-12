@@ -19,6 +19,10 @@
 	name = "Jungle Biodome"
 	icon_state = "dk_yellow"
 
+/area/ruin/powered/lostclinic
+	name = "Lost Clinic"
+	icon_state = "dk_yellow"
+
 //NOT FOR ROCKPLANET RUINS, LOOK IN THE FOLDER JUST ABOVE THIS
 /area/rockplanet
 	icon_state = "mining"

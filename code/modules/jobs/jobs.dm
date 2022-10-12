@@ -23,6 +23,7 @@ GLOBAL_LIST_INIT(exp_specialmap, list(
 		ROLE_MAINTENANCE_DRONE,
 		ROLE_VENUSHUMANTRAP,
 		ROLE_GHOST_ROLE,
+		ROLE_LOST_VETERINARIAN, //Skyrat Edit - Adds new Ruin job
 		), // Ghost roles
 	EXP_TYPE_GHOST = list() // dead people, observers
 ))
