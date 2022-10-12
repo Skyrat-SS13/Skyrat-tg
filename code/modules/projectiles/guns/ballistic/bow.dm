@@ -68,7 +68,7 @@
 	name = "arrow"
 	desc = "Stabby Stabman!"
 	icon_state = "arrow"
-	inhand_icon_state = null
+	inhand_icon_state = null // SKYRAT EDIT - Fixing CI for inhands.
 	flags_1 = NONE
 	throwforce = 1
 	projectile_type = /obj/projectile/bullet/reusable/arrow
