@@ -67,8 +67,8 @@
 /obj/machinery/vending/wardrobe/hydro_wardrobe
 	skyrat_contraband = list(
 		/obj/item/clothing/under/suit/skyrat/scarface = 2,
-		/obj/item/clothing/under/misc/gear_harness/adam = 2,
-		/obj/item/clothing/under/misc/gear_harness/eve = 2,
+		/obj/item/clothing/under/misc/skyrat/gear_harness/adam = 2,
+		/obj/item/clothing/under/misc/skyrat/gear_harness/eve = 2,
 	)
 
 /obj/machinery/vending/wardrobe/bar_wardrobe
@@ -174,7 +174,7 @@
 
 /obj/machinery/vending/wardrobe/bar_wardrobe/ghost_cafe
 	products = list(
-		/obj/item/clothing/head/that = 2,
+		/obj/item/clothing/head/hats/tophat = 2,
 		/obj/item/radio/headset/headset_srv = 0,
 		/obj/item/clothing/under/suit/sl = 2,
 		/obj/item/clothing/under/rank/civilian/bartender = 2,
@@ -207,7 +207,7 @@
 		/obj/item/clothing/suit/toggle/chef = 1,
 		/obj/item/clothing/under/rank/civilian/chef = 1,
 		/obj/item/clothing/under/rank/civilian/chef/skirt = 2,
-		/obj/item/clothing/head/chefhat = 1,
+		/obj/item/clothing/head/utility/chefhat = 1,
 		/obj/item/clothing/under/rank/civilian/cookjorts = 2,
 		/obj/item/clothing/shoes/cookflops = 2,
 		/obj/item/reagent_containers/cup/rag = 1,

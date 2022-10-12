@@ -15,8 +15,8 @@
 	cost = 8
 
 /datum/armament_entry/assault_operatives/utility/armor/infiltrator
-	name = "Infiltrator Bundle"
-	item_type = /obj/item/storage/toolbox/infiltrator
+	name = "Infiltrator MODsuit"
+	item_type = /obj/item/mod/control/pre_equipped/infiltrator
 	cost = 4
 
 /datum/armament_entry/assault_operatives/utility/gun_maint
