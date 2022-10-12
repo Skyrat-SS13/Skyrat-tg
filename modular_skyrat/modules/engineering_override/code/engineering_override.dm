@@ -107,7 +107,7 @@
 		if("engineering-toggle")
 			toggle_engineering(usr)
 			. = TRUE
-			return
+			return .
 
 // Pulse to disable emergency access/engineering override and flash the red lights.
 /datum/wires/airlock/on_pulse(wire)
