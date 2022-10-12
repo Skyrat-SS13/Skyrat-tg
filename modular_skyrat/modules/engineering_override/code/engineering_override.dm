@@ -1,6 +1,6 @@
 /**
  * This module sets airlocks in certain areas to be able to have an Engineer Override on orange alert.
- * Crew with ID cars with the engineering flag will be able to access these areas during those times.
+ * Crew with ID cards with the engineering flag will be able to access these areas during those times.
  */
 
 // Is this area eligible for engineer override?
