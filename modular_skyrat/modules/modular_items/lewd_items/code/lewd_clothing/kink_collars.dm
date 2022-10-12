@@ -32,7 +32,6 @@
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_neck.dmi'
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_neck.dmi'
 	icon_state = "collar_cyan"
-	inhand_icon_state = "collar_cyan"
 	body_parts_covered = NECK
 	slot_flags = ITEM_SLOT_NECK
 	w_class = WEIGHT_CLASS_SMALL
@@ -90,7 +89,6 @@
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_neck.dmi'
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_neck.dmi'
 	icon_state = "lock_collar_cyan"
-	inhand_icon_state = "lock_collar_cyan"
 	treat_path = /obj/item/key/kink_collar
 	/// If the collar is currently locked
 	var/locked = FALSE
@@ -289,7 +287,7 @@
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_neck.dmi'
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_neck.dmi'
 	icon_state = "mindcollar"
-	inhand_icon_state = "mindcollar"
+	inhand_icon_state = null
 	/// Reference to the mind control remote
 	var/obj/item/mind_controller/remote = null
 	var/emoting = "Shivers."

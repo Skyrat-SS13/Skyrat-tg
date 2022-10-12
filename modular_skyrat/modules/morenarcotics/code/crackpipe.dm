@@ -4,7 +4,6 @@
 	icon = 'modular_skyrat/modules/morenarcotics/icons/crack.dmi'
 	worn_icon = 'modular_skyrat/modules/morenarcotics/icons/mask.dmi'
 	icon_state = "glass_pipeoff" //it seems like theres some unused crack pipe sprite in masks.dmi, sweet!
-	inhand_icon_state = "glass_pipeoff"
 	icon_on = "glass_pipeon"
 	icon_off = "glass_pipeoff"
 	chem_volume = 20

@@ -16,7 +16,6 @@
 	name = "faction bowman headset"
 	desc = "Headset used by the faction. Protects ears from flashbangs."
 	icon_state = "com_headset_alt"
-	inhand_icon_state = "com_headset_alt"
 
 /obj/item/radio/headset/headset_faction/bowman/Initialize(mapload)
 	. = ..()

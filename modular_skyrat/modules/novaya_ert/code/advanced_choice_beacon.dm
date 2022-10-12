@@ -3,7 +3,7 @@
 	desc = "A beacon that will send whatever your heart desires, providing Nanotrasen approves it."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "gangtool-red"
-	inhand_icon_state = "radio"
+	inhand_icon_state = null
 
 	var/list/possible_choices = list()
 
