@@ -19,6 +19,8 @@
 	engineering_override_eligible = TRUE
 /area/station/hallway/secondary/service
 	engineering_override_eligible = TRUE
+/area/station/maintenance
+	engineering_override_eligible = TRUE
 /area/station/medical
 	engineering_override_eligible = TRUE
 /area/station/service
