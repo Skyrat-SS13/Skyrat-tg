@@ -19,7 +19,6 @@
 	name = "Bright Cosmos cigar"
 	desc = "A fancy cigar created using holodeck technology. They look like they have a \"Bright Cosmos\" branding on their wrap."
 	icon_state = "cigar2off"
-	inhand_icon_state = "cigar2off"
 	icon_on = "cigar2on"
 	icon_off = "cigar2off"
 

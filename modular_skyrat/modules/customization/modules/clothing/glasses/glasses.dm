@@ -96,7 +96,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/eyes.dmi'
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/glasses.dmi'
 	icon_state = "glasses_alt"
-	inhand_icon_state = "glasses_rimless"
+	inhand_icon_state = "glasses"
 	vision_correction = TRUE
 
 /obj/item/clothing/glasses/kim
@@ -105,7 +105,7 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/eyes.dmi'
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/glasses.dmi'
 	icon_state = "binoclard_lenses"
-	inhand_icon_state = "glasses_rimless"
+	inhand_icon_state = "glasses"
 	vision_correction = TRUE
 
 /obj/item/clothing/glasses/trickblindfold/hamburg

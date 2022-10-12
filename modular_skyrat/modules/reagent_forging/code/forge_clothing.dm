@@ -105,8 +105,8 @@
 	name = "reagent ring"
 	desc = "A tiny ring, sized to wrap around a finger."
 	icon_state = "ringsilver"
-	inhand_icon_state = "sring"
 	worn_icon_state = "sring"
+	inhand_icon_state = null
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR
 
 /obj/item/clothing/gloves/ring/reagent_clothing/Initialize(mapload)
@@ -119,7 +119,7 @@
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_neck.dmi'
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_neck.dmi'
 	icon_state = "collar_cyan"
-	inhand_icon_state = "collar_cyan"
+	inhand_icon_state = null
 	body_parts_covered = NECK
 	slot_flags = ITEM_SLOT_NECK
 	w_class = WEIGHT_CLASS_SMALL
