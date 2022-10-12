@@ -38,4 +38,3 @@
 	desc = "A tar black naval suit and a rank badge denoting the Officer of The Internal Security Division. Be careful your underlings don't bump their head on a door."
 	name = "head of security's naval jumpsuit"
 	icon_state = "imphos"
-	inhand_icon_state = "bl_suit"
