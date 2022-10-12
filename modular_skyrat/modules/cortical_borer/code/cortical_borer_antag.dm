@@ -1,16 +1,25 @@
-/proc/printborer(datum/mind/ply)
-	var/text = list()
-	var/mob/living/simple_animal/cortical_borer/player_borer = ply.current
-	text = span_bold(ply.name)
-	if(player_borer)
-		text = span_bold("[player_borer.name]")
-		if(ply.current.stat != DEAD)
-			text += span_greentext(" survived")
-		else
-			text += span_redtext(" died")
-		text += span_bold(" The borer produced [player_borer.children_produced] borers.")
+#define POP_PER_BORER 30
+
+/proc/printborer(datum/mind/borer)
+	var/list/text = list()
+	var/mob/living/simple_animal/cortical_borer/player_borer = borer.current
+	text = span_bold(borer.name)
+	if(!player_borer)
+		text += span_redtext(" had their body destroyed.")
+		return text
+	text = span_bold("[player_borer.name]")
+	if(borer.current.stat != DEAD)
+		text += span_greentext(" survived")
 	else
-		text += span_redtext(" had their body destroy.")
+		text += span_redtext(" died")
+	text += span_bold(" The borer produced [player_borer.children_produced] borers.")
+	var/list/string_of_genomes = list()
+
+	for(var/evo_index in player_borer.past_evolutions)
+		var/datum/borer_evolution/evolution = player_borer.past_evolutions[evo_index]
+		string_of_genomes += evolution.name
+
+	text += english_list(string_of_genomes)
 	return text
 
 /proc/printborerlist(list/players,fleecheck)
@@ -20,7 +29,7 @@
 	for(var/datum/mind/M in players)
 		parts += "<li>[printborer(M)]</li>"
 	parts += "</ul>"
-	return parts.Join()
+	return parts.Join("<br>")
 
 /datum/antagonist/cortical_borer
 	name = "Cortical Borer"
@@ -30,6 +39,7 @@
 	antagpanel_category = "Cortical Borers"
 	prevent_roundtype_conversion = FALSE
 	show_to_ghosts = TRUE
+	/// The team of borers
 	var/datum/team/cortical_borers/borers
 
 /datum/antagonist/cortical_borer/get_preview_icon()
@@ -40,12 +50,12 @@
 
 /datum/antagonist/cortical_borer/create_team(datum/team/cortical_borers/new_team)
 	if(!new_team)
-		for(var/datum/antagonist/cortical_borer/P in GLOB.antagonists)
-			if(!P.owner)
-				stack_trace("Antagonist datum without owner in GLOB.antagonists: [P]")
+		for(var/datum/antagonist/cortical_borer/borer in GLOB.antagonists)
+			if(!borer.owner)
+				stack_trace("Antagonist datum without owner in GLOB.antagonists: [borer]")
 				continue
-			if(P.borers)
-				borers = P.borers
+			if(borer.borers)
+				borers = borer.borers
 				return
 		if(!new_team)
 			borers = new /datum/team/cortical_borers
@@ -112,15 +122,15 @@
 				continue // No parent vent
 			// Stops Cortical Borers getting stuck in small networks.
 			// See: Security, Virology
-			if(temp_vent_parent.other_atmos_machines.len > 20)
+			if(length(temp_vent_parent.other_atmos_machines) > 20)
 				vents += temp_vent
-	if(!vents.len)
+	if(!length(vents))
 		return MAP_ERROR
 	var/list/mob/dead/observer/candidates = poll_ghost_candidates("Do you want to spawn as a cortical borer?", ROLE_PAI, FALSE, 10 SECONDS, POLL_IGNORE_CORTICAL_BORER)
-	if(!candidates.len)
+	if(!length(candidates))
 		return NOT_ENOUGH_PLAYERS
-	var/living_number = max(GLOB.player_list.len / 30, 1)
-	var/choosing_number = min(candidates.len, living_number)
+	var/living_number = max(length(GLOB.player_list) / POP_PER_BORER, 1)
+	var/choosing_number = min(length(candidates), living_number)
 	for(var/repeating_code in 1 to choosing_number)
 		var/mob/dead/observer/new_borer = pick(candidates)
 		candidates -= new_borer
@@ -176,3 +186,5 @@
 	message_admins("[ADMIN_LOOKUPFLW(new_borer)] has been made into a borer by the midround ruleset.")
 	log_game("DYNAMIC: [key_name(new_borer)] was spawned as a borer by the midround ruleset.")
 	return new_borer
+
+#undef POP_PER_BORER
