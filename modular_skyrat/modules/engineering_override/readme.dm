@@ -12,6 +12,7 @@ Adds functionality to the airlocks so that when the alert level is set to orange
 
 ### Defines:
 AIRLOCK_LIGHT_ENGINEERING in \Skyrat-tg\modular_skyrat\modules\aesthetics\airlock\code\airlock.dm
+AIRLOCK_ENGINEERING_LIGHT_COLOR in \Skyrat-tg\modular_skyrat\modules\aesthetics\airlock\code\airlock.dm
 
 ### Credits:
 LT3
