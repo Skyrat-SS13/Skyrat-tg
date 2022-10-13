@@ -97,8 +97,20 @@
 		if(PIRATES_IMPERIAL_ENCLAVE)
 			ship_name = pick(strings(PIRATE_NAMES_FILE, "imperial_names"))
 			ship_template = /datum/map_template/shuttle/pirate/imperial_enclave
+			///Station name one is the most important one and is pretty much the main station's argument against getting fined, thus it better be mostly always right.
+			var/station_chance = pick(new_station_name(),
+									station_name(),)
+			var/le_violation_au_regulation = pick("lack of coolness",
+												"toilet clog",
+												"sussy behavior",
+												"broken TV")
+			var/fake_accusations = pick("a lot of coolness",
+										"good piping",
+										"abundance of crewmates",
+										"fixed TV")
+			var/warcrime = pick(le_violation_au_regulation, fake_accusations)
 			threat.title = "NRI Audit"
-			threat.content = "Greetings, this is the [ship_name]. Due to recent Imperial regulatory violations, your station has been fined [payoff] credits. Failure to comply might result in lethal debt recovery. Novaya Rossiyskaya Imperiya Enforcer out."
+			threat.content = "Greetings [station_chance], this is the [ship_name]. Due to recent Imperial regulatory violations, such as [warcrime] your station has been fined [payoff] credits. Failure to comply might result in lethal debt recovery. Novaya Rossiyskaya Imperiya Enforcer out."
 			threat.possible_answers = list("Submit to audit and pay the fine.", "Imperial regulations? What a load of bollocks.")
 		//SKYRAT EDIT ADDITION END
 	threat.answer_callback = CALLBACK(GLOBAL_PROC, .proc/pirates_answered, threat, payoff, ship_name, initial_send_time, response_max_time, ship_template)
