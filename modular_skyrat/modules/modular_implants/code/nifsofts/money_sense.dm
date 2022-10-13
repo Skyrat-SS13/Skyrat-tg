@@ -24,22 +24,21 @@
 	. = ..()
 
 	var/mob/living/carbon/looking_mob = user
-	if(!looking_mob)
-		return FALSE
 
-	if(looking_mob.money_sense)
-		var/export_text
-		var/scanned_item = src
+	if(looking_mob) //This nesting isn't ideal, but early returning may cause issues.
+		if(looking_mob.money_sense)
+			var/export_text
+			var/scanned_item = src
 
-		//This is the code from the cargo scanner, but without the ability to scan and get tips from items.
-		var/datum/export_report/ex = export_item_and_contents(scanned_item, dry_run=TRUE)
-		var/price = 0
+			//This is the code from the cargo scanner, but without the ability to scan and get tips from items.
+			var/datum/export_report/ex = export_item_and_contents(scanned_item, dry_run=TRUE)
+			var/price = 0
 
-		for(var/x in ex.total_amount)
-			price += ex.total_value[x]
-		if(price)
-			export_text = span_noticealien("This item has an export value of: <b>[price].")
-		else
-			export_text = span_warning("This item has no export value.")
+			for(var/x in ex.total_amount)
+				price += ex.total_value[x]
+			if(price)
+				export_text = span_noticealien("This item has an export value of: <b>[price].")
+			else
+				export_text = span_warning("This item has no export value.")
 
-		. += export_text
+			. += export_text
