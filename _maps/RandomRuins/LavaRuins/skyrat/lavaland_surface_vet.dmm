@@ -54,14 +54,16 @@
 /turf/open/floor/iron,
 /area/ruin/powered/lostclinic)
 "cG" = (
-/obj/structure/chair/comfy/black{
-	dir = 4
+/obj/effect/turf_decal/siding/purple{
+	dir = 6
 	},
-/obj/effect/turf_decal/siding/wood,
-/obj/machinery/button/curtain{
-	pixel_y = -21
+/obj/effect/turf_decal/tile/purple/anticorner,
+/obj/effect/mob_spawn/ghost_role/human/lost_veterinarian{
+	dir = 8
 	},
-/turf/open/floor/wood/large,
+/turf/open/floor/iron/dark/textured_corner{
+	dir = 1
+	},
 /area/ruin/powered/lostclinic)
 "cI" = (
 /obj/effect/turf_decal/siding/thinplating/light{
@@ -102,16 +104,28 @@
 /turf/open/floor/iron/dark,
 /area/ruin/powered/lostclinic)
 "eu" = (
-/obj/item/clothing/under/rank/medical/scrubs/skyrat/red,
-/obj/item/clothing/under/rank/medical/scrubs/skyrat/white,
-/obj/item/clothing/under/rank/medical/scrubs/purple,
-/obj/item/clothing/under/rank/medical/scrubs/green,
-/obj/item/clothing/under/rank/medical/scrubs/blue,
-/obj/structure/closet/wardrobe/white/medical,
-/obj/effect/turf_decal/siding/white{
-	dir = 1
+/obj/structure/table,
+/obj/item/reagent_containers/spray/cleaner{
+	pixel_x = 10
 	},
-/turf/open/floor/iron/white/smooth_half,
+/obj/item/aquarium_kit,
+/obj/item/aquarium_kit,
+/obj/item/storage/fish_case/random,
+/obj/item/storage/fish_case/random,
+/obj/item/storage/fish_case/random,
+/obj/item/storage/fish_case/random,
+/obj/item/storage/fish_case/random,
+/obj/item/storage/fish_case/random,
+/obj/item/storage/fish_case/random,
+/obj/item/storage/fish_case/random,
+/obj/item/fish_feed,
+/obj/item/fish_feed,
+/obj/item/fish_feed,
+/obj/item/fish_feed,
+/obj/item/storage/box/aquarium_props,
+/obj/item/storage/box/aquarium_props,
+/obj/machinery/light/directional/east,
+/turf/open/floor/iron,
 /area/ruin/powered/lostclinic)
 "ev" = (
 /obj/effect/turf_decal/siding/thinplating/light,
@@ -174,13 +188,11 @@
 /turf/open/floor/wood/large,
 /area/ruin/powered/lostclinic)
 "gZ" = (
-/obj/machinery/light/directional/east,
-/obj/effect/turf_decal/siding/thinplating/light{
-	dir = 4
+/obj/effect/spawner/structure/window/reinforced,
+/obj/structure/curtain/bounty{
+	id_tag = vetbreakroom
 	},
-/turf/open/floor/iron/dark/side{
-	dir = 8
-	},
+/turf/open/floor/plating,
 /area/ruin/powered/lostclinic)
 "ha" = (
 /obj/structure/chair/sofa/bench/right{
@@ -300,15 +312,11 @@
 /turf/open/floor/iron/dark/smooth_edge,
 /area/ruin/powered/lostclinic)
 "ls" = (
-/obj/structure/table,
-/obj/item/clothing/mask/breath/medical,
-/obj/item/clothing/mask/breath/medical,
-/obj/item/clothing/mask/breath/medical,
-/obj/item/clothing/mask/breath/medical,
-/obj/effect/turf_decal/siding/thinplating{
-	dir = 6
+/obj/machinery/atmospherics/components/tank/air{
+	dir = 8
 	},
-/turf/open/floor/iron,
+/obj/machinery/light/small/directional/east,
+/turf/open/floor/plating,
 /area/ruin/powered/lostclinic)
 "lx" = (
 /obj/structure/chair/greyscale{
@@ -378,15 +386,23 @@
 	},
 /area/ruin/powered/lostclinic)
 "mY" = (
-/obj/effect/mob_spawn/corpse/human/doctor,
-/turf/open/misc/grass,
-/area/lavaland/surface/outdoors)
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/effect/turf_decal/siding/thinplating/light/end{
+	dir = 1
+	},
+/obj/machinery/door/airlock/medical,
+/turf/open/floor/iron,
+/area/ruin/powered/lostclinic)
 "nb" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/effect/turf_decal/siding/dark{
 	dir = 1
 	},
 /obj/effect/turf_decal/tile/blue/half,
+/obj/machinery/button/curtain{
+	pixel_y = 29;
+	id = vetblindsfront
+	},
 /turf/open/floor/iron/dark/smooth_edge,
 /area/ruin/powered/lostclinic)
 "nD" = (
@@ -441,13 +457,12 @@
 	},
 /area/ruin/powered/lostclinic)
 "pq" = (
-/obj/structure/tank_holder/anesthetic,
-/obj/effect/turf_decal/siding/thinplating/light{
-	dir = 6
-	},
-/turf/open/floor/iron/dark/corner{
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/effect/turf_decal/siding/thinplating/end{
 	dir = 1
 	},
+/obj/machinery/door/airlock/medical,
+/turf/open/floor/iron,
 /area/ruin/powered/lostclinic)
 "pB" = (
 /obj/effect/turf_decal/siding/purple{
@@ -461,13 +476,20 @@
 	},
 /area/ruin/powered/lostclinic)
 "qa" = (
-/obj/machinery/light/directional/west,
-/obj/structure/closet/secure_closet/personal,
-/obj/effect/turf_decal/siding/thinplating{
-	dir = 8
+/obj/structure/table/reinforced,
+/obj/item/folder/white,
+/obj/item/flashlight/pen/paramedic,
+/obj/item/stack/medical/suture,
+/obj/effect/turf_decal/siding/dark_green{
+	dir = 4
 	},
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/iron,
+/obj/effect/turf_decal/tile/dark_green/half{
+	dir = 4
+	},
+/obj/machinery/light/directional/east,
+/turf/open/floor/iron/dark/smooth_edge{
+	dir = 4
+	},
 /area/ruin/powered/lostclinic)
 "qE" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
@@ -515,14 +537,27 @@
 /turf/open/floor/iron/dark/textured_corner,
 /area/ruin/powered/lostclinic)
 "se" = (
-/obj/machinery/door/airlock/medical/glass,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/turf/open/floor/iron,
+/obj/machinery/defibrillator_mount/loaded{
+	pixel_x = 28
+	},
+/obj/effect/turf_decal/siding/white{
+	dir = 4
+	},
+/obj/effect/mob_spawn/ghost_role/human/lost_veterinarian{
+	dir = 8
+	},
+/obj/machinery/light/directional/east,
+/turf/open/floor/iron/white/smooth_half{
+	dir = 1
+	},
 /area/ruin/powered/lostclinic)
 "sn" = (
-/obj/machinery/door/airlock/medical/glass,
-/obj/structure/fans/tiny/invisible,
-/turf/open/floor/plating,
+/obj/machinery/light/directional/west,
+/obj/effect/turf_decal/siding/thinplating{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron,
 /area/ruin/powered/lostclinic)
 "sC" = (
 /obj/effect/turf_decal/siding/thinplating/light{
@@ -536,11 +571,19 @@
 	},
 /area/ruin/powered/lostclinic)
 "sM" = (
-/obj/machinery/door/airlock/medical/glass,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/effect/turf_decal/siding/thinplating/end{
-	dir = 1
+/obj/effect/turf_decal/siding/thinplating{
+	dir = 4
 	},
+/obj/machinery/light/directional/east,
+/obj/structure/closet/wardrobe/white/medical,
+/obj/item/clothing/under/rank/medical/scrubs/skyrat/white,
+/obj/item/clothing/under/rank/medical/scrubs/skyrat/white,
+/obj/item/clothing/under/rank/medical/scrubs/skyrat/red,
+/obj/item/clothing/under/rank/medical/scrubs/skyrat/red,
+/obj/item/clothing/under/rank/medical/scrubs/purple,
+/obj/item/clothing/under/rank/medical/scrubs/purple,
+/obj/item/clothing/under/rank/medical/scrubs/blue,
+/obj/item/clothing/under/rank/medical/scrubs/blue,
 /turf/open/floor/iron,
 /area/ruin/powered/lostclinic)
 "tw" = (
@@ -604,6 +647,16 @@
 /area/ruin/powered/lostclinic)
 "vb" = (
 /obj/structure/table/reinforced,
+/obj/item/paper_bin,
+/obj/item/pen/fourcolor,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 1
+	},
+/obj/item/clothing/gloves/color/latex/nitrile,
+/turf/open/floor/iron/dark/smooth_edge,
+/area/ruin/powered/lostclinic)
+"vc" = (
+/obj/structure/table/reinforced,
 /obj/item/folder/white,
 /obj/item/flashlight/pen/paramedic,
 /obj/item/stack/medical/suture,
@@ -613,18 +666,10 @@
 /obj/effect/turf_decal/tile/purple/half{
 	dir = 4
 	},
+/obj/machinery/light/directional/east,
 /turf/open/floor/iron/dark/smooth_edge{
 	dir = 4
 	},
-/area/ruin/powered/lostclinic)
-"vc" = (
-/obj/structure/table/reinforced,
-/obj/item/paper_bin,
-/obj/item/pen/fourcolor,
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
-	dir = 1
-	},
-/turf/open/floor/iron/dark/smooth_edge,
 /area/ruin/powered/lostclinic)
 "vI" = (
 /turf/open/floor/iron/stairs,
@@ -634,7 +679,9 @@
 /area/lavaland/surface/outdoors)
 "wb" = (
 /obj/effect/spawner/structure/window/reinforced,
-/obj/structure/curtain/bounty,
+/obj/structure/curtain/bounty{
+	id_tag = vetblindsfront
+	},
 /turf/open/floor/plating,
 /area/ruin/powered/lostclinic)
 "wc" = (
@@ -821,10 +868,11 @@
 /turf/open/floor/iron,
 /area/ruin/powered/lostclinic)
 "Cs" = (
+/obj/effect/turf_decal/siding/thinplating/light{
+	dir = 6
+	},
 /obj/machinery/airalarm/directional/south,
-/obj/effect/turf_decal/siding/thinplating/light,
-/obj/effect/decal/cleanable/dirt/dust,
-/turf/open/floor/iron/dark/side{
+/turf/open/floor/iron/dark/corner{
 	dir = 1
 	},
 /area/ruin/powered/lostclinic)
@@ -854,9 +902,6 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/tile/blue/half,
-/obj/machinery/button/curtain{
-	pixel_y = 29
-	},
 /turf/open/floor/iron/dark/smooth_edge,
 /area/ruin/powered/lostclinic)
 "Dv" = (
@@ -866,11 +911,9 @@
 /turf/open/floor/wood/large,
 /area/ruin/powered/lostclinic)
 "Dx" = (
-/obj/structure/closet/secure_closet/medical3,
-/obj/effect/turf_decal/siding/thinplating{
-	dir = 4
-	},
-/turf/open/floor/iron,
+/obj/structure/fans/tiny/invisible,
+/obj/machinery/door/airlock/medical,
+/turf/open/floor/plating,
 /area/ruin/powered/lostclinic)
 "DA" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -883,10 +926,8 @@
 	},
 /area/ruin/powered/lostclinic)
 "DE" = (
-/obj/structure/closet/secure_closet/medical3,
-/obj/effect/turf_decal/siding/thinplating{
-	dir = 9
-	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/door/airlock/medical,
 /turf/open/floor/iron,
 /area/ruin/powered/lostclinic)
 "DF" = (
@@ -961,16 +1002,22 @@
 	},
 /area/ruin/powered/lostclinic)
 "FE" = (
-/obj/machinery/door/airlock/medical/glass,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/effect/turf_decal/siding/thinplating/light/end{
-	dir = 1
+/obj/structure/chair/comfy/black{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/wood,
+/obj/machinery/button/curtain{
+	pixel_y = -21;
+	id = vetbreakroom
+	},
+/turf/open/floor/wood/large,
+/area/ruin/powered/lostclinic)
+"Gh" = (
+/obj/effect/turf_decal/siding/thinplating{
+	dir = 9
 	},
 /turf/open/floor/iron,
 /area/ruin/powered/lostclinic)
-"Gh" = (
-/turf/open/misc/dirt/dark,
-/area/lavaland/surface/outdoors)
 "Gr" = (
 /obj/structure/urinal/directional/east,
 /obj/effect/turf_decal/siding/thinplating/light{
@@ -1050,41 +1097,14 @@
 	},
 /area/ruin/powered/lostclinic)
 "IF" = (
-/obj/machinery/defibrillator_mount/loaded{
-	pixel_x = 28
-	},
-/obj/effect/mob_spawn/ghost_role/human/clinicdoctor{
-	dir = 8
-	},
-/obj/effect/turf_decal/siding/white{
+/obj/machinery/light/directional/east,
+/obj/effect/turf_decal/siding/thinplating/light{
 	dir = 4
 	},
-/turf/open/floor/iron/white/smooth_half{
-	dir = 1
+/obj/structure/tank_holder/anesthetic,
+/turf/open/floor/iron/dark/side{
+	dir = 8
 	},
-/area/ruin/powered/lostclinic)
-"Jd" = (
-/obj/structure/table,
-/obj/item/reagent_containers/spray/cleaner{
-	pixel_x = 10
-	},
-/obj/item/aquarium_kit,
-/obj/item/aquarium_kit,
-/obj/item/storage/fish_case/random,
-/obj/item/storage/fish_case/random,
-/obj/item/storage/fish_case/random,
-/obj/item/storage/fish_case/random,
-/obj/item/storage/fish_case/random,
-/obj/item/storage/fish_case/random,
-/obj/item/storage/fish_case/random,
-/obj/item/storage/fish_case/random,
-/obj/item/fish_feed,
-/obj/item/fish_feed,
-/obj/item/fish_feed,
-/obj/item/fish_feed,
-/obj/item/storage/box/aquarium_props,
-/obj/item/storage/box/aquarium_props,
-/turf/open/floor/iron,
 /area/ruin/powered/lostclinic)
 "JP" = (
 /obj/structure/flora/bush/sparsegrass,
@@ -1159,20 +1179,9 @@
 /turf/open/floor/iron/dark/side,
 /area/ruin/powered/lostclinic)
 "Os" = (
-/obj/structure/table/reinforced,
-/obj/item/folder/white,
-/obj/item/flashlight/pen/paramedic,
-/obj/item/stack/medical/suture,
-/obj/effect/turf_decal/siding/dark_green{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/dark_green/half{
-	dir = 4
-	},
-/turf/open/floor/iron/dark/smooth_edge{
-	dir = 4
-	},
-/area/ruin/powered/lostclinic)
+/obj/effect/mob_spawn/corpse/human/doctor,
+/turf/open/misc/dirt,
+/area/lavaland/surface/outdoors)
 "Ph" = (
 /obj/machinery/light/directional/west,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
@@ -1405,22 +1414,28 @@
 /turf/open/floor/iron/dark/corner,
 /area/ruin/powered/lostclinic)
 "XV" = (
-/obj/effect/mob_spawn/ghost_role/human/clinicdoctor{
-	dir = 8
-	},
-/obj/effect/turf_decal/siding/purple{
+/obj/effect/turf_decal/siding/dark_green{
 	dir = 6
 	},
-/obj/effect/turf_decal/tile/purple/anticorner,
+/obj/effect/turf_decal/tile/dark_green/anticorner,
+/obj/effect/mob_spawn/ghost_role/human/lost_veterinarian{
+	dir = 8
+	},
 /turf/open/floor/iron/dark/textured_corner{
 	dir = 1
 	},
 /area/ruin/powered/lostclinic)
 "XY" = (
-/obj/machinery/atmospherics/components/tank/air{
-	dir = 8
+/obj/structure/table,
+/obj/item/clothing/mask/breath/medical,
+/obj/item/clothing/mask/breath/medical,
+/obj/item/clothing/mask/breath/medical,
+/obj/item/clothing/mask/breath/medical,
+/obj/effect/turf_decal/siding/thinplating{
+	dir = 6
 	},
-/turf/open/floor/plating,
+/obj/item/clothing/gloves/color/latex/nitrile,
+/turf/open/floor/iron,
 /area/ruin/powered/lostclinic)
 "Yf" = (
 /obj/effect/turf_decal/siding/dark{
@@ -1434,14 +1449,9 @@
 	},
 /area/ruin/powered/lostclinic)
 "YU" = (
-/obj/effect/mob_spawn/ghost_role/human/clinicdoctor{
-	dir = 8
-	},
-/obj/effect/turf_decal/siding/dark_green{
-	dir = 6
-	},
-/obj/effect/turf_decal/tile/dark_green/anticorner,
-/turf/open/floor/iron/dark/textured_corner{
+/obj/effect/turf_decal/siding/thinplating/light,
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/iron/dark/side{
 	dir = 1
 	},
 /area/ruin/powered/lostclinic)
@@ -1497,23 +1507,23 @@ JR
 JR
 JR
 JR
-JR
-JR
-Bd
-JR
-JR
-Bd
-Bd
-JR
-JR
-Bd
+vZ
+vZ
 JR
 JR
 JR
+vZ
 JR
 JR
+vZ
+vZ
+vZ
+vZ
+vZ
+vZ
+vZ
 JR
-Bd
+JR
 JR
 JR
 JR
@@ -1524,56 +1534,29 @@ JR
 JR
 JR
 JR
-Bd
-Bd
-Bd
-Bd
-Bd
-Bd
-Bd
-Bd
-Bd
-Bd
-Bd
-Bd
-Bd
-Bd
-Bd
-Bd
-Bd
-Bd
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+JR
+JR
+JR
 JR
 JR
 "}
 (3,1,1) = {"
-JR
-Bd
-Bd
-Bd
-Bd
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-Bd
-Bd
-Bd
-Bd
-JR
-"}
-(4,1,1) = {"
-Bd
+vZ
 ew
 ew
 ew
@@ -1592,15 +1575,15 @@ zd
 zd
 zd
 tP
-wb
-Bd
-Bd
-Bd
-Bd
+ew
+JR
+JR
+JR
+JR
 JR
 "}
-(5,1,1) = {"
-Bd
+(4,1,1) = {"
+JR
 fE
 ZJ
 zr
@@ -1620,15 +1603,15 @@ en
 Lx
 RQ
 wb
-Bd
-Bd
-Bd
-Bd
+JR
+vZ
+JR
+JR
 JR
 "}
-(6,1,1) = {"
-Bd
-wb
+(5,1,1) = {"
+JR
+gZ
 xd
 Km
 HN
@@ -1641,26 +1624,26 @@ ew
 ew
 ew
 ew
-Dh
+nb
 uv
 TP
 TP
 Rk
 wb
 Bd
-Bd
-Bd
-Bd
+vZ
+JR
+JR
 JR
 "}
-(7,1,1) = {"
-Bd
-wb
+(6,1,1) = {"
+JR
+gZ
 kD
 nE
 TY
 AA
-nb
+Dh
 DA
 ew
 ik
@@ -1676,22 +1659,22 @@ MO
 ew
 Mm
 Bd
-Bd
-Bd
-Bd
+vZ
+JR
+JR
 "}
-(8,1,1) = {"
-Bd
-wb
+(7,1,1) = {"
+JR
+gZ
 Dv
 fc
-cG
+FE
 ew
 yp
 DA
 aQ
 kl
-vc
+vb
 Ug
 kF
 zj
@@ -1705,10 +1688,10 @@ vI
 jQ
 jQ
 jQ
-Gh
+JR
 "}
-(9,1,1) = {"
-Bd
+(8,1,1) = {"
+vZ
 ew
 SJ
 tH
@@ -1718,9 +1701,9 @@ am
 yc
 ew
 iH
-vb
+vc
 lx
-XV
+cG
 ew
 XS
 hc
@@ -1732,10 +1715,10 @@ vI
 jQ
 jQ
 jQ
-Gh
+JR
 "}
-(10,1,1) = {"
-Bd
+(9,1,1) = {"
+JR
 ew
 ew
 ew
@@ -1758,10 +1741,10 @@ ew
 Mm
 Bd
 Bd
-Bd
-Bd
+vZ
+vZ
 "}
-(11,1,1) = {"
+(10,1,1) = {"
 JR
 ew
 US
@@ -1781,17 +1764,17 @@ Zz
 uf
 ha
 ev
-ew
-Bd
-Bd
-Bd
-Bd
+wb
+vZ
+vZ
+vZ
+vZ
 JR
 "}
-(12,1,1) = {"
+(11,1,1) = {"
 JR
 ew
-eu
+Hj
 Em
 hH
 ew
@@ -1799,7 +1782,7 @@ yp
 DA
 HU
 km
-vc
+vb
 Ug
 Kl
 lI
@@ -1809,26 +1792,26 @@ uf
 dn
 ev
 wb
-Bd
-Bd
-mY
-Bd
+vZ
+JR
+Os
+vZ
 JR
 "}
-(13,1,1) = {"
+(12,1,1) = {"
 JR
 ew
 Hj
 ei
 Ua
 DF
-nb
+Dh
 DA
 ew
 Iv
-Os
+qa
 Fi
-YU
+XV
 ew
 yG
 GM
@@ -1836,13 +1819,13 @@ uf
 Ob
 ev
 wb
-Bd
-Bd
-Bd
-Bd
+JR
+JR
+vZ
+JR
 JR
 "}
-(14,1,1) = {"
+(13,1,1) = {"
 JR
 ew
 zV
@@ -1863,24 +1846,24 @@ tw
 sb
 ev
 wb
-Bd
-Bd
-Bd
+JR
+JR
+JR
 JR
 JR
 "}
-(15,1,1) = {"
+(14,1,1) = {"
 JR
 ew
 rU
-IF
+se
 yF
 ew
 EE
 DA
 ew
-DE
-qa
+Gh
+sn
 aj
 or
 ew
@@ -1888,15 +1871,15 @@ ZK
 ga
 Sh
 nK
-Cs
-ew
-Bd
-Bd
+YU
+wb
 JR
-Bd
+JR
+JR
+JR
 JR
 "}
-(16,1,1) = {"
+(15,1,1) = {"
 JR
 ew
 ew
@@ -1905,7 +1888,7 @@ ew
 ew
 kE
 DA
-sM
+pq
 bR
 ri
 cU
@@ -1913,17 +1896,17 @@ Ej
 ew
 Ud
 Ku
-gZ
+IF
 Ku
-pq
+Cs
 ew
-Bd
-Bd
+JR
+JR
 JR
 JR
 JR
 "}
-(17,1,1) = {"
+(16,1,1) = {"
 JR
 ew
 Tk
@@ -1934,9 +1917,9 @@ am
 DA
 ew
 TN
-Dx
+sM
 iM
-ls
+XY
 ew
 as
 ew
@@ -1944,20 +1927,20 @@ ew
 ew
 ew
 ew
-Bd
-Bd
+JR
+JR
 JR
 JR
 JR
 "}
-(18,1,1) = {"
+(17,1,1) = {"
 JR
 ew
 yz
 qE
 Lk
-se
-nb
+DE
+Dh
 Wq
 ew
 ew
@@ -1967,10 +1950,37 @@ ew
 ew
 Xn
 ew
-Bd
-Bd
-Bd
-Bd
+JR
+JR
+JR
+JR
+JR
+JR
+JR
+JR
+JR
+"}
+(18,1,1) = {"
+JR
+ew
+Xp
+cU
+nD
+ew
+yp
+DA
+mY
+rK
+Ph
+cI
+ir
+ew
+RM
+ew
+JR
+JR
+JR
+JR
 JR
 JR
 JR
@@ -1980,35 +1990,8 @@ JR
 (19,1,1) = {"
 JR
 ew
-Xp
-cU
-nD
-ew
-yp
-DA
-FE
-rK
-Ph
-cI
-ir
-ew
-RM
-ew
-Bd
-Bd
-Bd
-JR
-JR
-Bd
-JR
-JR
-JR
-"}
-(20,1,1) = {"
-JR
-ew
 XC
-Jd
+eu
 lK
 ew
 xI
@@ -2019,36 +2002,9 @@ EO
 Gr
 lC
 ew
-XY
+ls
 ew
-Bd
-Bd
 JR
-Bd
-Bd
-JR
-JR
-JR
-JR
-"}
-(21,1,1) = {"
-JR
-ew
-ew
-ew
-ew
-ew
-sn
-sn
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-ew
-Bd
 JR
 JR
 JR
@@ -2058,23 +2014,23 @@ JR
 JR
 JR
 "}
-(22,1,1) = {"
+(20,1,1) = {"
 JR
-Bd
-Bd
-Bd
-Bd
-Bd
-vZ
-vZ
-Bd
-Bd
-Bd
-Bd
-Bd
-Bd
-Bd
-JR
+ew
+ew
+ew
+ew
+ew
+Dx
+Dx
+ew
+ew
+ew
+ew
+ew
+ew
+ew
+ew
 JR
 JR
 JR
@@ -2085,76 +2041,22 @@ JR
 JR
 JR
 "}
-(23,1,1) = {"
+(21,1,1) = {"
 JR
 JR
-Bd
-Bd
-Bd
+JR
 JR
 vZ
 vZ
-Bd
+vZ
+vZ
+vZ
+vZ
 JR
-Bd
-Bd
-Bd
-Bd
-Bd
-JR
-JR
-JR
-JR
-JR
-JR
-JR
-JR
-JR
-JR
-"}
-(24,1,1) = {"
-JR
-JR
-JR
-JR
-JR
-JR
-JR
-JR
-JR
-JR
-JR
-JR
-JR
-JR
-JR
-JR
-JR
-JR
-JR
-JR
-JR
-JR
-JR
-JR
-JR
-"}
-(25,1,1) = {"
-JR
-JR
-JR
-JR
-JR
-JR
-JR
-JR
-JR
-JR
-JR
-JR
-JR
-JR
-JR
+vZ
+vZ
+vZ
+vZ
 JR
 JR
 JR

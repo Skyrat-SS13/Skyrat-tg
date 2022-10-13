@@ -22,8 +22,7 @@
 	you_are_text = "You're a doctor waking up in a land unfamiliar to you, searing heat surrounds your former veternarian clinic."
 	flavour_text = "Unfortunately you have no idea how you got here, if your customers are still alive or even what year it is."
 	important_text = "This is a make your own journey ghost-role, it is allowed to go to the station. You aren't mean to attack anyone directly, you're just a vet after all."
-	outfit = /datum/outfit/job/Lavaland_Vet
-	loadout_enabled = TRUE
+	outfit = /datum/outfit/Lavaland_Vet
 	quirks_enabled = TRUE
 	random_appearance = FALSE
 	spawner_job_path = /datum/job/lost_veterinarian
@@ -92,17 +91,11 @@
 	uniform = /obj/item/clothing/under/syndicate/skyrat/tactical
 	suit = /obj/item/clothing/suit/hooded/wintercoat/syndicate
 
-/datum/outfit/job/Lavaland_Vet
-	name = "Lost Clinic Doctor"
-
-	id_trim = /datum/id_trim/job/medical_doctor
+/datum/outfit/Lavaland_Vet
+	name = "Lost Veterinarian"
+	neck = /obj/item/clothing/neck/stethoscope
 	uniform = /obj/item/clothing/under/rank/medical/doctor/skyrat/utility
 	shoes = /obj/item/clothing/shoes/sneakers/white
-
-	backpack = /obj/item/storage/backpack/medic
-	satchel = /obj/item/storage/backpack/satchel/med
-	duffelbag = /obj/item/storage/backpack/duffelbag/med
-
 	box = /obj/item/storage/box/survival/medical
 	skillchips = list(/obj/item/skillchip/entrails_reader)
 
