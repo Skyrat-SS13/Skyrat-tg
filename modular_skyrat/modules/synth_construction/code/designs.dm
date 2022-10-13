@@ -27,7 +27,7 @@
 	build_type = MECHFAB
 	research_icon = BODYPART_ICON_IPC
 	research_icon_state = "synth_chest"
-	build_path = /mob/living/carbon/human/species/ipc/nugget
+	build_path = /mob/living/carbon/human/species/ipc/chassis
 	materials = list(/datum/material/iron = 5000, /datum/material/titanium = 10000, /datum/material/gold = 5000, /datum/material/glass = 1000)
 	construction_time = 500
 	category = list(RND_CATEGORY_MECHFAB_SYNTH_PARTS + RND_SUBCATEGORY_MECHFAB_SYNTH_PARTS_IPC)
@@ -39,7 +39,7 @@
 	build_type = MECHFAB
 	research_icon = BODYPART_ICON_HUMAN
 	research_icon_state = "human_chest_m"
-	build_path = /mob/living/carbon/human/species/synthetic_human/nugget
+	build_path = /mob/living/carbon/human/species/synthetic_human/chassis
 	materials = list(/datum/material/iron = 7000, /datum/material/titanium = 10000, /datum/material/plasma = 5000, /datum/material/gold = 5000, /datum/material/glass = 1000)
 	construction_time = 600
 	category = list(RND_CATEGORY_MECHFAB_SYNTH_PARTS + RND_SUBCATEGORY_MECHFAB_SYNTH_PARTS_HUMANOID)
@@ -51,7 +51,7 @@
 	build_type = MECHFAB
 	research_icon = BODYPART_ICON_SYNTHLIZARD
 	research_icon_state = "synthliz_chest_m"
-	build_path = /mob/living/carbon/human/species/synthliz/nugget
+	build_path = /mob/living/carbon/human/species/synthliz/chassis
 	materials = list(/datum/material/iron = 7000, /datum/material/titanium = 10000, /datum/material/plasma = 5000, /datum/material/gold = 5000, /datum/material/glass = 1000)
 	construction_time = 600
 	category = list(RND_CATEGORY_MECHFAB_SYNTH_PARTS + RND_SUBCATEGORY_MECHFAB_SYNTH_PARTS_LIZARD)
@@ -63,7 +63,7 @@
 	build_type = MECHFAB
 	research_icon = BODYPART_ICON_SYNTHMAMMAL
 	research_icon_state = "synthmammal_chest_m"
-	build_path = /mob/living/carbon/human/species/synthetic_mammal/nugget
+	build_path = /mob/living/carbon/human/species/synthetic_mammal/chassis
 	materials = list(/datum/material/iron = 7000, /datum/material/titanium = 10000, /datum/material/plasma = 5000, /datum/material/gold = 5000, /datum/material/glass = 1000)
 	construction_time = 600
 	category = list(RND_CATEGORY_MECHFAB_SYNTH_PARTS + RND_SUBCATEGORY_MECHFAB_SYNTH_PARTS_MAMMAL)

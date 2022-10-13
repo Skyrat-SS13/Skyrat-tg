@@ -38,7 +38,8 @@
 
 /datum/species/robotic/ipc/spec_death(gibbed, mob/living/carbon/human/transformer)
 	. = ..()
-	saved_screen = transformer.dna.mutant_bodyparts["ipc_screen"][MUTANT_INDEX_NAME]
+	var/list/screen = transformer.dna.mutant_bodyparts["ipc_screen"]
+	saved_screen = screen ? screen[MUTANT_INDEX_NAME] : initial(saved_screen)
 	switch_to_screen(transformer, "BSOD")
 	addtimer(CALLBACK(src, .proc/switch_to_screen, transformer, "Blank"), 5 SECONDS)
 

@@ -156,11 +156,11 @@
 	status = ORGAN_ROBOTIC
 	icon = 'modular_skyrat/master_files/icons/obj/surgery.dmi'
 	icon_state = "liver-c"
-	filterToxins = FALSE //We dont filter them, we're immune ot them
+	filterToxins = FALSE // We dont filter them, we're immune to them
 
 /obj/item/organ/internal/cyberimp/arm/power_cord
 	name = "power cord implant"
-	desc = "An internal power cord hooked up to a battery. Useful if you run on volts."
+	desc = "An internal power cord. Useful if you run on electricity."
 	contents = newlist(/obj/item/apc_powercord)
 	zone = "l_arm"
 
