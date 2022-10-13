@@ -501,7 +501,7 @@ Totally not property of a hostile corporation.
 NANOTRASEN CAMO ATTACHMENT
 
 Allows for an official blue camo to be applied to the gun.
-Hail NanoTrasen.
+Hail Nanotrasen.
 */
 /obj/item/microfusion_gun_attachment/nt_camo
 	name = "\improper Nanotrasen brand microfusion frame"

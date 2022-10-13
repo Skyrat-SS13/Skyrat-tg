@@ -1,4 +1,4 @@
-/obj/item/clothing/head/caphat/pilot
+/obj/item/clothing/head/hats/caphat/pilot
 	name = "pilot's hat"
 	desc = "It's good being the king's navigator."
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
