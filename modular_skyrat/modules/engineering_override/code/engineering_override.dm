@@ -53,7 +53,7 @@
 	var/engineering_override = FALSE
 
 // Check for the three states of open access. Emergency, Unrestricted, and Engineering Override
-/obj/machinery/door/allowed(mob/user)
+/obj/machinery/door/allowed(mob/Mob)
 	if(emergency)
 		return TRUE
 	if(unrestricted_side(Mob))
