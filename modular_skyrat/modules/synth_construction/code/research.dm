@@ -1,5 +1,5 @@
-/datum/experiment/scanning/points/sapient_machine_intelligence
-	name = "Sapient Machine Intelligence"
+/datum/experiment/scanning/points/robotics_turing_tests
+	name = "Robotics Turing Tests"
 	description = "Our sapient machines request for research towards their reproduction."
 	required_points = 10
 	required_atoms = list(
@@ -34,4 +34,4 @@
 	prereq_ids = list("ai_basic", "adv_robotics", "mmi", "cyborg")
 	design_ids = list("ipc_chassis", "synthliz_chassis", "synth_chassis", "synthmammal_chassis", "ipc_heart", "ipc_lungs", "ipc_tongue", "ipc_stomach", "ipc_liver", "ipc_eyes", "ipc_ears")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 8000)
-	discount_experiments = list(/datum/experiment/scanning/points/sapient_machine_intelligence = 4500)
+	discount_experiments = list(/datum/experiment/scanning/points/robotics_turing_tests = 4500)
