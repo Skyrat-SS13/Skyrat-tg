@@ -1,4 +1,4 @@
-#define SYNTH_ANTENNA "synth_antenna"
-#define SYNTH_SCREEN "synth_screen"
-#define SYNTH_CHASSIS "synth_chassis"
-#define SYNTH_HEAD "synth_head"
+#define MUTANT_SYNTH_ANTENNA "MUTANT_SYNTH_ANTENNA"
+#define MUTANT_SYNTH_SCREEN "MUTANT_SYNTH_SCREEN"
+#define MUTANT_SYNTH_CHASSIS "MUTANT_SYNTH_CHASSIS"
+#define MUTANT_SYNTH_HEAD "MUTANT_SYNTH_HEAD"

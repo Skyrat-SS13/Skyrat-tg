@@ -12,9 +12,9 @@ GLOBAL_LIST_INIT(bodyparts_to_convert, list("body_markings", \
 "moth_markings", \
 "fluff", \
 "head_acc", \
-SYNTH_SCREEN, \
-SYNTH_ANTENNA, \
-SYNTH_CHASSIS, \
+MUTANT_SYNTH_SCREEN, \
+MUTANT_SYNTH_ANTENNA, \
+MUTANT_SYNTH_CHASSIS, \
 "neck_acc", \
 "skrell_hair", \
 "taur", \

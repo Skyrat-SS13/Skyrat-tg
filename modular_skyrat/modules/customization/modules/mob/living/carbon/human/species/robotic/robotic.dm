@@ -1,6 +1,6 @@
 /datum/species/robotic
 	name = "Synthetic Humanoid"
-	id = SPECIES_SYNTHHUMAN
+	id = SPECIES_SYNTH
 	say_mod = "beeps"
 	inherent_biotypes = MOB_ROBOTIC|MOB_HUMANOID
 	inherent_traits = list(
@@ -26,10 +26,10 @@
 		"wings" = "None",
 		"taur" = "None",
 		"horns" = "None",
-		SYNTH_ANTENNA = ACC_RANDOM,
-		SYNTH_SCREEN = "None",
-		SYNTH_CHASSIS = "None",
-		SYNTH_HEAD = "None",
+		MUTANT_SYNTH_ANTENNA = ACC_RANDOM,
+		MUTANT_SYNTH_SCREEN = "None",
+		MUTANT_SYNTH_CHASSIS = "None",
+		MUTANT_SYNTH_HEAD = "None",
 	)
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	reagent_flags = PROCESS_SYNTHETIC
@@ -69,11 +69,11 @@
 			to_chat(H, span_warning("Alert: Critical damage taken! Cooling systems failing!"))
 			do_sparks(3, TRUE, H)
 
-/datum/species/robotic/spec_revival(mob/living/carbon/human/H)
+/datum/species/robotic/spec_revival(mob/living/carbon/human/transformer)
 	switch_to_screen(transformer, "Console")
 	addtimer(CALLBACK(src, .proc/switch_to_screen, transformer, saved_screen), 5 SECONDS)
-	playsound(H.loc, 'sound/machines/chime.ogg', 50, TRUE)
-	H.visible_message(span_notice("[H]'s [screen ? "monitor lights up" : "eyes flicker to life"]!"), span_notice("All systems nominal. You're back online!"))
+	playsound(transformer.loc, 'sound/machines/chime.ogg', 50, TRUE)
+	transformer.visible_message(span_notice("[transformer]'s [screen ? "monitor lights up" : "eyes flicker to life"]!"), span_notice("All systems nominal. You're back online!"))
 
 /datum/species/robotic/spec_death(gibbed, mob/living/carbon/human/transformer)
 	. = ..()
@@ -88,17 +88,17 @@
 		appendix.Remove(transformer)
 		qdel(appendix)
 
-	if(!screen && tranformer.dna.mutant_bodyparts[SYNTH_SCREEN][MUTANT_INDEX_NAME] != "None")
+	if(!screen && transformer.dna.mutant_bodyparts[MUTANT_SYNTH_SCREEN][MUTANT_INDEX_NAME] != "None")
 		screen = new
 		screen.Grant(transformer)
 
-	var/chassis = transformer.dna.mutant_bodyparts[SYNTH_CHASSIS]
-	var/head = transformer.dna.mutant_bodyparts[SYNTH_HEAD]
+	var/chassis = transformer.dna.mutant_bodyparts[MUTANT_SYNTH_CHASSIS]
+	var/head = transformer.dna.mutant_bodyparts[MUTANT_SYNTH_HEAD]
 	if(!chassis && !head)
 		return
 
-	var/datum/sprite_accessory/ipc_chassis/chassis_of_choice = GLOB.sprite_accessories[SYNTH_CHASSIS][chassis["name"]]
-	var/datum/sprite_accessory/ipc_head/head_of_choice = GLOB.sprite_accessories[SYNTH_HEAD][head["name"]]
+	var/datum/sprite_accessory/ipc_chassis/chassis_of_choice = GLOB.sprite_accessories[MUTANT_SYNTH_CHASSIS][chassis["name"]]
+	var/datum/sprite_accessory/ipc_head/head_of_choice = GLOB.sprite_accessories[MUTANT_SYNTH_HEAD][head["name"]]
 	if(chassis_of_choice || head_of_choice)
 		examine_limb_id = chassis_of_choice?.icon_state ? chassis_of_choice.icon_state : head_of_choice.icon_state
 		// We want to ensure that the IPC gets their chassis and their head correctly.
@@ -127,7 +127,7 @@
  * * screen_name - The name of the screen to switch the ipc_screen mutant bodypart to.
  */
 /datum/species/robotic/proc/switch_to_screen(mob/living/carbon/human/tranformer, screen_name)
-	tranformer.dna.mutant_bodyparts[SYNTH_SCREEN][MUTANT_INDEX_NAME] = screen_name
+	tranformer.dna.mutant_bodyparts[MUTANT_SYNTH_SCREEN][MUTANT_INDEX_NAME] = screen_name
 	tranformer.update_body()
 
 /datum/species/robotic/random_name(gender, unique, lastname)
@@ -140,10 +140,10 @@
 
 /datum/species/robotic/replace_body(mob/living/carbon/target, datum/species/new_species)
 	..()
-	var/chassis = target.dna.mutant_bodyparts[SYNTH_CHASSIS]
+	var/chassis = target.dna.mutant_bodyparts[MUTANT_SYNTH_CHASSIS]
 	if(!chassis)
 		return
-	var/datum/sprite_accessory/ipc_chassis/chassis_of_choice = GLOB.sprite_accessories[SYNTH_CHASSIS][chassis["name"]]
+	var/datum/sprite_accessory/ipc_chassis/chassis_of_choice = GLOB.sprite_accessories[MUTANT_SYNTH_CHASSIS][chassis["name"]]
 
 	for(var/obj/item/bodypart/iterating_bodypart as anything in target.bodyparts) //Override bodypart data as necessary
 		if(chassis_of_choice.color_src)
