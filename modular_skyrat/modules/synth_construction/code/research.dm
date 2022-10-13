@@ -15,6 +15,9 @@
 		/mob/living/simple_animal/bot/secbot/beepsky = 1,
 		/mob/living/simple_animal/bot/vibebot = 1,
 	)
+	required_atom_to_name = list(
+		/mob/living/carbon/human = "Any synthetic humanoid"
+	)
 
 // Filters the human mob in the scan to be just robotic.
 /datum/experiment/scanning/points/sapient_machine_intelligence/final_contributing_index_checks(atom/target, typepath)

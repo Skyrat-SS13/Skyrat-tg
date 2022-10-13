@@ -17,7 +17,15 @@
 		var/atom/req_atom = a_type
 		if (!point_val_cache["[required_atoms[a_type]]"])
 			point_val_cache["[required_atoms[a_type]]"] = list()
-		point_val_cache["[required_atoms[a_type]]"] += initial(req_atom.name)
+		//point_val_cache["[required_atoms[a_type]]"] += initial(req_atom.name) // ORIGINAL
+		// SKYRAT EDIT START - Custom research scan names
+		var/req_atom_name
+		if(req_atom in required_atom_to_name)
+			req_atom_name = required_atom_to_name[req_atom]
+		else
+			req_atom_name = initial(req_atom.name)
+		point_val_cache["[required_atoms[a_type]]"] += req_atom_name
+		// SKYRAT EDIT END
 
 	for (var/point_amt in point_val_cache)
 		var/list/types = point_val_cache[point_amt]

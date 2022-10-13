@@ -66,7 +66,15 @@
  */
 /datum/experiment/scanning/proc/serialize_progress_stage(atom/target, list/seen_instances)
 	var/scanned_total = traits & EXPERIMENT_TRAIT_DESTRUCTIVE ? scanned[target] : seen_instances.len
-	return EXPERIMENT_PROG_INT("Scan samples of \a [initial(target.name)]", scanned_total, required_atoms[target])
+	//return EXPERIMENT_PROG_INT("Scan samples of \a [initial(target.name)]", scanned_total, required_atoms[target]) // ORIGINAL
+	// SKYRAT EDIT START - Custom research scan names
+	var/req_atom_name
+	if(target in required_atom_to_name)
+		req_atom_name = required_atom_to_name[target]
+	else
+		req_atom_name = initial(target.name)
+	return EXPERIMENT_PROG_INT("Scan samples of \a [req_atom_name]", scanned_total, required_atoms[target])
+	// SKYRAT EDIT END
 
 /**
  * Attempts to scan an atom towards the experiment's goal
