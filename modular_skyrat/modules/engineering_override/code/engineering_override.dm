@@ -59,7 +59,7 @@
 	if(unrestricted_side(Mob))
 		return TRUE
 	if(engineering_override)
-		var/mob/living/carbon/human/opening_human = user
+		var/mob/living/carbon/human/user = Mob
 		var/obj/item/card/id/card = user.get_idcard(TRUE)
 		if(istype(user))
 			if(ACCESS_ENGINEERING in card.access)
