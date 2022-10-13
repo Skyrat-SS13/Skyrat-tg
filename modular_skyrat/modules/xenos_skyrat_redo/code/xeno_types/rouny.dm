@@ -11,8 +11,8 @@
 	icon_state = "alienrunner"
 	/// Holds the evade ability to be granted to the runner later
 	var/datum/action/cooldown/alien/skyrat/evade/evade_ability
-	melee_damage_lower = 20
-	melee_damage_upper = 25
+	melee_damage_lower = 15
+	melee_damage_upper = 20
 	next_evolution = /mob/living/carbon/alien/humanoid/skyrat/ravager
 	on_fire_pixel_y = 0
 
@@ -55,6 +55,9 @@
 	addtimer(CALLBACK(src, .proc/evasion_deactivate), evasion_duration)
 	evade_active = TRUE
 	RegisterSignal(owner, COMSIG_PROJECTILE_ON_HIT, .proc/on_projectile_hit)
+	REMOVE_TRAIT(owner, TRAIT_VENTCRAWLER_ALWAYS, INNATE_TRAIT)
+	addtimer(CALLBACK(src, .proc/give_back_ventcrawl), (evasion_duration * 5)) //They cannot ventcrawl until 5x the duration has passed (50 seconds)
+	to_chat(owner, span_warning("We will be unable to crawl through vents for the next [(evasion_duration*5)/10] seconds."))
 	return TRUE
 
 /// Handles deactivation of the xeno evasion ability, mainly unregistering the signal and giving a balloon alert
@@ -62,6 +65,10 @@
 	evade_active = FALSE
 	owner.balloon_alert(owner, "evasion ended")
 	UnregisterSignal(owner, COMSIG_PROJECTILE_ON_HIT)
+
+/datum/action/cooldown/alien/skyrat/evade/proc/give_back_ventcrawl()
+	ADD_TRAIT(owner, TRAIT_VENTCRAWLER_ALWAYS, INNATE_TRAIT)
+	to_chat(owner, span_notice("We are rested enough to crawl through vents again."))
 
 /// Handles if either BULLET_ACT_HIT or BULLET_ACT_FORCE_PIERCE happens to something using the xeno evade ability
 /datum/action/cooldown/alien/skyrat/evade/proc/on_projectile_hit()
