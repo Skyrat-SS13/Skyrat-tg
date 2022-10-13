@@ -107,9 +107,6 @@
 #define ROLE_BATTLECRUISER_CREW "Battlecruiser Crew"
 #define ROLE_BATTLECRUISER_CAPTAIN "Battlecruiser Captain"
 #define ROLE_VENUSHUMANTRAP "Venus Human Trap"
-// SKYRAT EDIT START
-#define ROLE_LOST_VETERINARIAN "Lost Veterinarian"
-// SKYRAT EDIT END
 
 /// This defines the antagonists you can operate with in the settings.
 /// Keys are the antagonist, values are the number of days since the player's

@@ -21,3 +21,5 @@
 #define RADIO_TOKEN_TARKON ":k"
 
 #define FREQ_TARKON 1243
+
+#define ROLE_LOST_VETERINARIAN "Lost Veterinarian"
