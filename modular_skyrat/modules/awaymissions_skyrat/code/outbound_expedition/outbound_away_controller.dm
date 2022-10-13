@@ -157,7 +157,7 @@
 		if(!istype(event, event_type) || event.weight == 0)
 			possible_events.Remove(event)
 	var/pos_num = event_order.Find("random")
-	if(!is_system_dead("Sensors")) //thrusters shot? You'll only make a jump half the time
+	if(!is_system_dead("Thrusters")) //thrusters shot? You'll only make a jump half the time
 		event_order.Cut(pos_num, pos_num + 1)
 	else if(prob(50))
 		event_order.Cut(pos_num, pos_num + 1)
