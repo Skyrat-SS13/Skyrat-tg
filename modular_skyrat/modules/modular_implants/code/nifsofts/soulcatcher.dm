@@ -42,6 +42,7 @@ GLOBAL_LIST_EMPTY(open_soulcatchers)
 
 	. = ..()
 
+///Adds a soul to the soulcatcher.
 /datum/nifsoft/soulcatcher/proc/add_soul(soul_to_add, warning = FALSE)
 	var/mob/sourcemob = soul_to_add
 
@@ -71,6 +72,7 @@ GLOBAL_LIST_EMPTY(open_soulcatchers)
 
 	return TRUE
 
+///Removes a soul from the soulcatcher
 /datum/nifsoft/soulcatcher/proc/remove_soul(soul_to_remove)
 	var/mob/living/brain/soulcatcher/removed_soul = soul_to_remove
 	if(!(removed_soul in hosted_souls))
@@ -84,6 +86,7 @@ GLOBAL_LIST_EMPTY(open_soulcatchers)
 	removed_soul.active_soulcatcher = FALSE
 	qdel(removed_soul)
 
+///Sends a message to everyone connected to the soulcatcher
 /datum/nifsoft/soulcatcher/proc/send_message(message, emote = FALSE)
 
 	if(!message)
@@ -97,10 +100,25 @@ GLOBAL_LIST_EMPTY(open_soulcatchers)
 
 	to_chat(linked_mob, span_cyan(message))
 
+///Makes the soulcatcher visible to ghosts
+/datum/nifsoft/soulcatcher/proc/toggle_visibility
+	if(src in GLOB.open_soulcatchers)
+		GLOB.open_soulcatchers -= src
+
+		to_chat(linked_mob, span_cyan("Ghosts can no longer join your soulcatcher"))
+		return TRUE
+
+	GLOB.open_soulcatchers += src
+
+	to_chat(linked_mob, span_cyan("Ghosts can now join your soulcatcher"))
+	return TRUE
+
+
 /mob/living
 	///What soulcatcher, if any, does the user belong to or own?
 	var/datum/nifsoft/soulcatcher/active_soulcatcher = FALSE
 
+///The mob that a ghost becomes when it joins a soulcatcher
 /mob/living/brain/soulcatcher
 	name = "Lost Soul"
 	desc = "a soul that is hosted inside of a soulcatcher"
@@ -121,6 +139,7 @@ GLOBAL_LIST_EMPTY(open_soulcatchers)
 	///Who owns the soulcatcher?
 	var/mob/living/carbon/human/soulcatcher_owner
 
+///Sends a message to the soulcatcher nifsoft
 /mob/proc/send_soulcatcher_message(emote = FALSE)
 	var/mob/living/user = src
 
@@ -147,7 +166,7 @@ GLOBAL_LIST_EMPTY(open_soulcatchers)
 		to_chat(src, span_warning("You did not enter an [message_type]!"))
 		return FALSE
 
-	var/completed_message = "<b>Soulcatcher</b> [user.name][!emote ? ":" : ""] [message]"
+	var/completed_message = "<b>Soulcatcher</b> [user.name][!emote ? ":" : ""] [message]" /// Get the fancy little icon that virgo has!
 	user.active_soulcatcher.send_message(completed_message, emote)
 
 ///Sends a say though to a Soulcatcher for a human
@@ -188,6 +207,7 @@ GLOBAL_LIST_EMPTY(open_soulcatchers)
 	remove_verb(src, /mob/living/carbon/human/verb/nif_me)
 	remove_verb(src, /mob/living/carbon/human/verb/nif_say)
 
+///Allows a ghost to enter a visible soulcatcher.
 /mob/dead/observer/verb/enter_soulcatcher()
 	set name = "Enter Soulcatcher"
 	set desc = "Enter a soulcatcher"
