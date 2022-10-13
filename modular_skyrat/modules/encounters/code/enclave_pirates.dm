@@ -122,6 +122,22 @@
 	suffix = "enclave"
 	name = "pirate ship (NRI Enforcer-Class Starship)"
 
+/area/shuttle/pirate/nri
+	name = "NRI Starship"
+
+/obj/item/gps/computer/space/nri
+	gpstag = "NRI Ship"
+	desc = "Helping lost spacemen find their way through the planets since 2016. Its tracking system controls are busted; there is seemingly no way to turn it off nor use it."
+
+/obj/item/gps/computer/space/nri/wrench_act(mob/living/user, obj/item/I)
+	return
+
+/obj/item/gps/computer/space/nri/attack_hand(mob/user, list/modifiers)
+	return
+
+/obj/item/gps/computer/space/nri/AltClick(mob/user, list/modifiers)
+	return
+
 /obj/item/gun/ballistic/automatic/pistol/automag
 	name = "\improper Automag"
 	desc = "A .44 AMP handgun with a sleek metallic finish."
