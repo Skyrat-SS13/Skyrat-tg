@@ -19,6 +19,7 @@
 
 /obj/effect/mob_spawn/ghost_role/human/lost_veterinarian
 	name = "Lost Veterinarian"
+	prompt_name = " a lost veterinarian"
 	you_are_text = "You're a doctor waking up in a land unfamiliar to you, searing heat surrounds your former veternarian clinic."
 	flavour_text = "Unfortunately you have no idea how you got here, if your customers are still alive, or even what year it is."
 	outfit = /datum/outfit/lavaland_vet
@@ -95,6 +96,10 @@
 	neck = /obj/item/clothing/neck/stethoscope
 	uniform = /obj/item/clothing/under/rank/medical/doctor/skyrat/utility
 	shoes = /obj/item/clothing/shoes/sneakers/white
+	back = /obj/item/storage/backpack
+	backpack_contents = list(/obj/item/storage/box/survival/medical,
+							/obj/item/reagent_containers/cup/beaker,
+	)
 	box = /obj/item/storage/box/survival/medical
 	skillchips = list(/obj/item/skillchip/entrails_reader)
 
