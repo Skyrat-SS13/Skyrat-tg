@@ -51,7 +51,9 @@
  * * screen_name - The name of the screen to switch the ipc_screen mutant bodypart to.
  */
 /datum/species/robotic/ipc/proc/switch_to_screen(mob/living/carbon/human/tranformer, screen_name)
-	tranformer.dna.mutant_bodyparts["ipc_screen"][MUTANT_INDEX_NAME] = screen_name
+	var/list/screen = tranformer.dna.mutant_bodyparts["ipc_screen"]
+	if(screen)
+		screen[MUTANT_INDEX_NAME] = screen_name
 	tranformer.update_body()
 
 /datum/species/robotic/ipc/on_species_gain(mob/living/carbon/human/transformer)
@@ -109,8 +111,14 @@
 
 /datum/action/innate/monitor_change/Activate()
 	var/mob/living/carbon/human/H = owner
+	var/list/screen = H.dna.mutant_bodyparts["ipc_screen"]
+
+	if(!screen)
+		H.show_message(span_warning("Cannot find a valid screen to change!"))
+		return
+
 	var/new_ipc_screen = input(usr, "Choose your character's screen:", "Monitor Display") as null|anything in GLOB.sprite_accessories["ipc_screen"]
 	if(!new_ipc_screen)
 		return
-	H.dna.species.mutant_bodyparts["ipc_screen"][MUTANT_INDEX_NAME] = new_ipc_screen
+	screen[MUTANT_INDEX_NAME] = new_ipc_screen
 	H.update_body()
