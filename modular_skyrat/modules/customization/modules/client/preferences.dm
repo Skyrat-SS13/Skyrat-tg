@@ -24,9 +24,9 @@
 			quirks_edited = TRUE
 			continue
 
-		var/datum/quirk/quirk = new lang_path()
+		quirk = new quirk()
 		// Explanation for this is above.
 		if(!(quirk.type in subtypesof(/datum/quirk)) || quirk.hidden_quirk)
-			all_quirks.Remove(lang_path)
+			all_quirks.Remove(quirk)
 			quirks_edited = TRUE
 	return quirks_edited
