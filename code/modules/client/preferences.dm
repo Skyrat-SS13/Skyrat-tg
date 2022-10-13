@@ -115,6 +115,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		if(load_character())
 			// SKYRAT EDIT START - Sanitizing languages
 			sanitize_languages()
+			sanitize_quirks()
 			// SKYRAT EDIT END
 			return // SKYRAT EDIT - Don't remove this. Just don't. Nothing is worth forced random characters.
 	//we couldn't load character data so just randomize the character appearance + name
