@@ -31,11 +31,11 @@
 			var/scanned_item = src
 
 			//This is the code from the cargo scanner, but without the ability to scan and get tips from items.
-			var/datum/export_report/ex = export_item_and_contents(scanned_item, dry_run=TRUE)
+			var/datum/export_report/export = export_item_and_contents(scanned_item, dry_run=TRUE)
 			var/price = 0
 
-			for(var/x in ex.total_amount)
-				price += ex.total_value[x]
+			for(var/x in export.total_amount)
+				price += export.total_value[x]
 			if(price)
 				export_text = span_noticealien("This item has an export value of: <b>[price].")
 			else
