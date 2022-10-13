@@ -32,6 +32,7 @@
 "ao" = (
 /obj/structure/chair/comfy/shuttle,
 /obj/effect/decal/cleanable/blood/splatter,
+/obj/machinery/light/directional/north,
 /turf/open/floor/plating,
 /area/shuttle/syndicate/slaver)
 "ar" = (
@@ -135,6 +136,7 @@
 "cb" = (
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
+/obj/machinery/firealarm/directional/west,
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
 "co" = (
@@ -213,8 +215,6 @@
 "dE" = (
 /obj/structure/table,
 /obj/machinery/coffeemaker,
-/obj/item/coffee_cartridge,
-/obj/item/coffee_cartridge,
 /obj/item/coffee_cartridge,
 /obj/item/coffee_cartridge,
 /turf/open/floor/iron,
@@ -393,6 +393,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer4,
+/obj/machinery/firealarm/directional/south,
 /turf/open/floor/carpet/green,
 /area/shuttle/syndicate/slaver)
 "ha" = (
@@ -440,6 +441,7 @@
 /area/shuttle/syndicate/slaver)
 "hK" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
+/obj/machinery/light/directional/north,
 /turf/open/floor/pod/light,
 /area/shuttle/syndicate/slaver)
 "hL" = (
@@ -513,6 +515,9 @@
 /obj/structure/cable,
 /obj/structure/table/reinforced,
 /obj/item/storage/box/stockparts/deluxe,
+/obj/machinery/base_alarm{
+	pixel_x = 32
+	},
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
 "iZ" = (
@@ -589,6 +594,7 @@
 /area/shuttle/syndicate/slaver)
 "jW" = (
 /obj/effect/turf_decal/caution/stand_clear,
+/obj/machinery/firealarm/directional/east,
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
 "kk" = (
@@ -668,7 +674,6 @@
 	pixel_x = 5;
 	pixel_y = 5
 	},
-/obj/structure/sign/departments/holy/directional/west,
 /turf/open/floor/carpet,
 /area/shuttle/syndicate/slaver)
 "kU" = (
@@ -681,6 +686,7 @@
 	pixel_x = 3;
 	pixel_y = 4
 	},
+/obj/machinery/firealarm/directional/south,
 /turf/open/floor/iron/dark/yellow/side,
 /area/shuttle/syndicate/slaver)
 "kV" = (
@@ -868,11 +874,11 @@
 	},
 /obj/item/storage/barricade,
 /obj/item/storage/barricade,
-/obj/item/minespawner/explosive,
-/obj/item/minespawner/explosive,
 /obj/structure/closet/secure_closet/wall{
 	pixel_x = -32
 	},
+/obj/item/minespawner/explosive/nri,
+/obj/item/minespawner/explosive/nri,
 /turf/open/floor/pod,
 /area/shuttle/syndicate/slaver)
 "oe" = (
@@ -927,10 +933,11 @@
 /area/shuttle/syndicate/slaver)
 "oO" = (
 /obj/structure/table/glass,
-/obj/item/healthanalyzer,
 /obj/effect/turf_decal/bot_white{
 	color = "#00A2FF"
 	},
+/obj/item/defibrillator/loaded,
+/obj/item/healthanalyzer,
 /turf/open/floor/iron/white/smooth_large,
 /area/shuttle/syndicate/slaver)
 "oQ" = (
@@ -1028,7 +1035,7 @@
 /obj/machinery/light/directional/east,
 /obj/machinery/airalarm/directional/north{
 	aidisabled = 1;
-	req_access = list(150)
+	req_access = list("syndicate")
 	},
 /turf/open/floor/plating,
 /area/shuttle/syndicate/slaver)
@@ -1045,6 +1052,9 @@
 	},
 /obj/effect/turf_decal/stripes/white/line{
 	dir = 6
+	},
+/obj/machinery/base_alarm{
+	pixel_y = -32
 	},
 /turf/open/floor/iron/white,
 /area/shuttle/syndicate/slaver)
@@ -1107,12 +1117,7 @@
 /obj/item/storage/toolbox/ammo/full/bison{
 	pixel_y = 5
 	},
-/obj/item/storage/toolbox/ammo/full/bison{
-	pixel_y = 5
-	},
-/obj/item/storage/toolbox/ammo/full/aps{
-	pixel_y = -2
-	},
+/obj/item/storage/toolbox/ammo/full/bison,
 /turf/open/floor/iron/dark/yellow/side{
 	dir = 1
 	},
@@ -1142,9 +1147,7 @@
 /turf/open/floor/pod/dark,
 /area/shuttle/syndicate/slaver)
 "rR" = (
-/obj/machinery/base_alarm{
-	pixel_y = 32
-	},
+/obj/machinery/firealarm/directional/north,
 /turf/open/floor/pod,
 /area/shuttle/syndicate/slaver)
 "rS" = (
@@ -1375,7 +1378,7 @@
 "vx" = (
 /obj/structure/lattice,
 /turf/template_noop,
-/area/template_noop)
+/area/shuttle/syndicate/slaver)
 "vy" = (
 /obj/structure/extinguisher_cabinet/directional/north,
 /turf/open/floor/iron/dark,
@@ -1444,6 +1447,14 @@
 	},
 /obj/structure/table/reinforced,
 /turf/open/floor/pod,
+/area/shuttle/syndicate/slaver)
+"wS" = (
+/obj/effect/turf_decal/trimline/red/warning{
+	color = "#763c3a";
+	dir = 8
+	},
+/obj/machinery/firealarm/directional/north,
+/turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
 "wV" = (
 /obj/effect/turf_decal/trimline/yellow/warning{
@@ -1551,6 +1562,7 @@
 /obj/item/stack/sheet/mineral/uranium{
 	amount = 50
 	},
+/obj/machinery/firealarm/directional/west,
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
 "yH" = (
@@ -1789,6 +1801,9 @@
 	dir = 6
 	},
 /obj/machinery/light/directional/south,
+/obj/machinery/base_alarm{
+	pixel_y = -32
+	},
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
 "BI" = (
@@ -1840,7 +1855,8 @@
 "CH" = (
 /obj/structure/closet/secure_closet/brig{
 	id = "nri_cell_1";
-	name = "Cell 1 Locker"
+	name = "Cell 1 Locker";
+	req_one_access = list("syndicate")
 	},
 /turf/open/floor/iron/dark/red/side{
 	dir = 4
@@ -1849,14 +1865,14 @@
 "CN" = (
 /obj/structure/rack/gunrack,
 /obj/effect/turf_decal/delivery,
-/obj/item/ammo_box/advanced/s12gauge/buckshot/marine{
-	pixel_x = -4
-	},
 /obj/item/ammo_box/advanced/s12gauge{
 	pixel_x = 2
 	},
 /obj/item/ammo_box/advanced/s12gauge/flechette{
 	pixel_x = 6
+	},
+/obj/item/ammo_box/advanced/s12gauge/buckshot{
+	pixel_x = -4
 	},
 /obj/item/gun/ballistic/shotgun/m23,
 /turf/open/floor/iron/dark/yellow/side{
@@ -2092,8 +2108,6 @@
 /area/shuttle/syndicate/slaver)
 "Gp" = (
 /obj/structure/table/glass,
-/obj/item/mod/module/visor/medhud,
-/obj/item/mod/module/quick_carry/advanced,
 /obj/item/storage/medkit/expeditionary{
 	pixel_y = 2
 	},
@@ -2110,6 +2124,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
+/obj/machinery/firealarm/directional/west,
 /turf/open/floor/carpet/green,
 /area/shuttle/syndicate/slaver)
 "GJ" = (
@@ -2179,6 +2194,12 @@
 	dir = 9
 	},
 /turf/open/floor/carpet/green,
+/area/shuttle/syndicate/slaver)
+"Id" = (
+/obj/machinery/base_alarm{
+	pixel_y = -32
+	},
+/turf/open/floor/iron/white/smooth_large,
 /area/shuttle/syndicate/slaver)
 "Il" = (
 /obj/structure/sign/warning/vacuum/directional/south,
@@ -2412,12 +2433,14 @@
 	dir = 1
 	},
 /obj/structure/table,
+/obj/machinery/firealarm/directional/east,
 /turf/open/floor/iron,
 /area/shuttle/syndicate/slaver)
 "Lv" = (
 /obj/structure/closet/secure_closet/brig{
 	id = "nri_cell_2";
-	name = "Cell 2 Locker"
+	name = "Cell 2 Locker";
+	req_one_access = list("syndicate")
 	},
 /turf/open/floor/iron/dark/red/side{
 	dir = 4
@@ -2483,6 +2506,9 @@
 /turf/open/floor/pod/light,
 /area/shuttle/syndicate/slaver)
 "MO" = (
+/obj/machinery/base_alarm{
+	pixel_x = 32
+	},
 /turf/open/floor/iron/dark/yellow/side{
 	dir = 4
 	},
@@ -2502,6 +2528,10 @@
 	dir = 6
 	},
 /turf/open/floor/iron/dark,
+/area/shuttle/syndicate/slaver)
+"NW" = (
+/obj/machinery/firealarm/directional/north,
+/turf/open/floor/pod/dark,
 /area/shuttle/syndicate/slaver)
 "Oa" = (
 /obj/structure/chair/sofa/right{
@@ -2681,6 +2711,7 @@
 /obj/structure/table/reinforced,
 /obj/item/paper_bin/construction,
 /obj/item/pen,
+/obj/machinery/firealarm/directional/east,
 /turf/open/floor/iron/dark,
 /area/shuttle/syndicate/slaver)
 "QG" = (
@@ -2733,11 +2764,11 @@
 /obj/machinery/light/directional/west,
 /obj/item/storage/barricade,
 /obj/item/storage/barricade,
-/obj/item/minespawner/explosive,
-/obj/item/minespawner/explosive,
 /obj/structure/closet/secure_closet/wall{
 	pixel_x = -32
 	},
+/obj/item/minespawner/explosive/nri,
+/obj/item/minespawner/explosive/nri,
 /turf/open/floor/pod,
 /area/shuttle/syndicate/slaver)
 "Rv" = (
@@ -2914,14 +2945,15 @@
 /obj/machinery/door/window/survival_pod{
 	desc = "Kinda sleek. Doesn't offer much privacy.";
 	dir = 8;
-	name = "Prison Cell Door"
+	name = "Prison Cell Door";
+	req_access = list("syndicate")
 	},
 /obj/machinery/door/window/survival_pod{
 	desc = "Kinda sleek. Doesn't offer much privacy.";
 	dir = 4;
-	name = "Prison Cell Door"
+	name = "Prison Cell Door";
+	req_access = list("syndicate")
 	},
-/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
 /turf/open/floor/pod/dark,
 /area/shuttle/syndicate/slaver)
 "UD" = (
@@ -3067,6 +3099,12 @@
 /obj/item/modular_computer/laptop/preset/civilian,
 /obj/machinery/light/directional/west,
 /turf/open/floor/iron/dark,
+/area/shuttle/syndicate/slaver)
+"WT" = (
+/obj/machinery/base_alarm{
+	pixel_y = -32
+	},
+/turf/open/floor/carpet/green,
 /area/shuttle/syndicate/slaver)
 "Xb" = (
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
@@ -3439,7 +3477,7 @@ wd
 "}
 (7,1,1) = {"
 wd
-Jk
+wS
 Jk
 Df
 im
@@ -3493,7 +3531,7 @@ Ux
 Gh
 Gh
 wd
-ws
+rR
 bQ
 ws
 aE
@@ -3723,7 +3761,7 @@ wd
 AB
 WF
 wd
-TP
+NW
 YF
 TP
 Gg
@@ -3836,7 +3874,7 @@ zR
 GL
 GL
 GL
-GL
+Id
 wd
 YH
 Ul
@@ -3999,7 +4037,7 @@ QE
 Mr
 oK
 wd
-rR
+ws
 KC
 ws
 wd
@@ -4072,7 +4110,7 @@ Xp
 Xt
 Xp
 Xp
-Xp
+WT
 wd
 YH
 rS
