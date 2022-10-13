@@ -56,8 +56,8 @@
 	evade_active = TRUE
 	RegisterSignal(owner, COMSIG_PROJECTILE_ON_HIT, .proc/on_projectile_hit)
 	REMOVE_TRAIT(owner, TRAIT_VENTCRAWLER_ALWAYS, INNATE_TRAIT)
-	addtimer(CALLBACK(src, .proc/give_back_ventcrawl), (evasion_duration * 5)) //They cannot ventcrawl until 5x the duration has passed (50 seconds)
-	to_chat(owner, span_warning("We will be unable to crawl through vents for the next [(evasion_duration*5)/10] seconds."))
+	addtimer(CALLBACK(src, .proc/give_back_ventcrawl), (cooldown_time * 0.8)) //They cannot ventcrawl until 80% of the cooldown has passed (48 seconds)
+	to_chat(owner, span_warning("We will be unable to crawl through vents for the next [(cooldown_time * 0.8) / 10] seconds."))
 	return TRUE
 
 /// Handles deactivation of the xeno evasion ability, mainly unregistering the signal and giving a balloon alert

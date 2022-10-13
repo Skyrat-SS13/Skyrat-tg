@@ -85,8 +85,8 @@
 	agility_target.remove_movespeed_modifier(/datum/movespeed_modifier/warrior_agility)
 	agility_target.unable_to_use_abilities = FALSE
 
-	agility_target.melee_damage_lower = 30
-	agility_target.melee_damage_upper = 35
+	agility_target.melee_damage_lower = initial(agility_target.melee_damage_lower)
+	agility_target.melee_damage_upper = initial(agility_target.melee_damage_upper)
 
 /datum/movespeed_modifier/warrior_agility
 	multiplicative_slowdown = -2
