@@ -75,6 +75,7 @@
 #include "~skyrat/opposing_force.dm"
 #include "~skyrat/automapper.dm"
 //SKYRAT EDIT END
+#include "ablative_hud.dm"
 #include "achievements.dm"
 #include "anchored_mobs.dm"
 #include "anonymous_themes.dm"

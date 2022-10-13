@@ -538,13 +538,14 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	for (var/datum/preference/preference as anything in get_preferences_in_priority_order())
 		if (preference.savefile_identifier != PREFERENCE_CHARACTER)
 			continue
-	// SKYRAT EDIT
-		if(preference.is_accessible(src)) // Only apply preferences you can actually access.
-			preference.apply_to_human(character, read_preference(preference.type), src)
 
+		preference.apply_to_human(character, read_preference(preference.type), src)
+
+	// SKYRAT EDIT ADDITION START - middleware apply human prefs
 	for (var/datum/preference_middleware/preference_middleware as anything in middleware)
 		preference_middleware.apply_to_human(character, src)
-	// SKYRAT EDIT END
+	// SKYRAT EDIT ADDITION END
+
 	character.dna.real_name = character.real_name
 
 	if(icon_updates)
