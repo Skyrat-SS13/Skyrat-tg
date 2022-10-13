@@ -88,6 +88,7 @@
 			airlock.normalspeed = TRUE
 			airlock.update_icon(ALL, 0)
 	message_admins("Engineering override has been turned OFF for station airlocks.")
+	minor_announce("Engineering staff expanded access has been revoked, standard access is now in place.", "Engineering Emergency")
 
 // Someone or the AI or silicons tries to change the access on the airlock
 /obj/machinery/door/airlock/proc/toggle_engineering(mob/user)
