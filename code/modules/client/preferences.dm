@@ -113,7 +113,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/loaded_preferences_successfully = load_preferences()
 	if(loaded_preferences_successfully)
 		if(load_character())
-			// SKYRAT EDIT START - Sanitizing languages
+			// SKYRAT EDIT START - Sanitizing preferences
 			sanitize_languages()
 			sanitize_quirks()
 			// SKYRAT EDIT END
