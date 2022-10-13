@@ -89,6 +89,8 @@
 	contains = list(/obj/item/vending_refill/cart)
 	crate_name = "\improper PTech supply crate"
 
+// SKYRAT EDIT REMOVAL BEGIN - SEC_HAUL
+/*
 /datum/supply_pack/vending/sectech
 	name = "SecTech Supply Crate"
 	desc = "Officer Paul bought all the donuts? Then refill the security \
@@ -98,6 +100,8 @@
 	contains = list(/obj/item/vending_refill/security)
 	crate_name = "\improper SecTech supply crate"
 	crate_type = /obj/structure/closet/crate/secure/gear
+*/
+// SKYRAT EDIT REMOVAL END
 
 /datum/supply_pack/vending/snack
 	name = "Snack Supply Crate"
@@ -206,6 +210,8 @@
 				)
 	crate_name = "science department wardrobe supply crate"
 
+// SKYRAT EDIT REMOVAL BEGIN - SEC_HAUL
+/*
 /datum/supply_pack/vending/wardrobes/security
 	name = "Security Wardrobe Supply Crate"
 	desc = "This crate contains refills for the SecDrobe, \
@@ -216,3 +222,5 @@
 					/obj/item/vending_refill/wardrobe/law_wardrobe,
 				)
 	crate_name = "security department supply crate"
+*/
+// SKYRAT EDIT REMOVAL END
