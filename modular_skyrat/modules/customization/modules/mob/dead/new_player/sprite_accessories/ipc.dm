@@ -5,7 +5,7 @@
 /datum/sprite_accessory/screen
 	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/ipc_screens.dmi'
 	color_src = null
-	key = "ipc_screen"
+	key = SYNTH_SCREEN
 	generic = "Screen"
 	relevent_layers = list(BODY_ADJ_LAYER)
 
@@ -142,7 +142,7 @@
 	color_src = USE_ONE_COLOR
 	default_color = DEFAULT_SECONDARY
 	recommended_species = list(SPECIES_IPC)
-	key = "ipc_antenna"
+	key = SYNTH_ANTENNA
 	generic = "Antenna"
 	relevent_layers = list(BODY_ADJ_LAYER)
 	genetic = FALSE
@@ -183,7 +183,7 @@
 	icon_state = "ipc"
 	color_src = null
 	factual = FALSE
-	key = "ipc_chassis"
+	key = SYNTH_CHASSIS
 	generic = "Chassis Type"
 
 /datum/sprite_accessory/ipc_chassis/none
@@ -191,7 +191,7 @@
 	icon_state = "none"
 
 /datum/sprite_accessory/ipc_chassis/mcgreyscale
-	name = "Morpheus Cyberkinetics(Greyscale)"
+	name = "Morpheus Cyberkinetics (Greyscale)"
 	icon_state = "mcgipc"
 	color_src = 1 //Here it's used to tell apart greyscalling
 
@@ -241,7 +241,7 @@
 	icon_state = "ipc"
 	color_src = null
 	factual = FALSE
-	key = "ipc_head"
+	key = SYNTH_HEAD
 	generic = "Head Type"
 
 /datum/sprite_accessory/ipc_head/none
