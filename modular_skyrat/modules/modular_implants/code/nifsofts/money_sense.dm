@@ -20,10 +20,14 @@
 	///Is the mob able to see the monetary value of items by examining them?
 	var/money_sense = FALSE
 
-/obj/item/examine(mob/living/carbon/user)
+/obj/item/examine(mob/user)
 	. = ..()
 
-	if(user.money_sense)
+	var/mob/living/carbon/looking_mob = user
+	if(!looking_mob)
+		return FALSE
+
+	if(looking_mob.money_sense)
 		var/export_text
 		var/scanned_item = src
 

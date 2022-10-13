@@ -2,6 +2,8 @@
 /datum/nifsoft
 	///What is the name of the program?
 	var/name = "Generic NIFsoft"
+	///What is the name of the program when looking at the program from inside of a NIF? This is mostly here for soulcatcher, for now.
+	var/program_name
 	///A description of what the program does. This is used when looking at programs in the NIF, along with installing them from the store.
 	var/program_desc = "This program does stuff!"
 	///How much does the program cost to buy?
@@ -30,11 +32,16 @@
 	///What NIF models can this software be installed on?
 	var/static/list/compatible_nifs = list(/obj/item/organ/internal/cyberimp/brain/nif)
 
+	///The options that the NIFSoft has. Right now there is only support for Boolean options.
+	var/list/nifsoft_options = list()
+
 /datum/nifsoft/New(obj/item/organ/internal/cyberimp/brain/nif/recepient_nif)
 	. = ..()
 
 	if(!recepient_nif.install_nifsoft(src))
 		qdel(src)
+
+	program_name = name
 
 /datum/nifsoft/Destroy()
 	if(active)

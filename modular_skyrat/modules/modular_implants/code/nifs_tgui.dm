@@ -41,7 +41,7 @@
 			continue
 
 		var/list/nifsoft_data = list(
-			"name" = nifsoft.name,
+			"name" = nifsoft.program_name,
 			"desc" = nifsoft.program_desc,
 			"active" = nifsoft.active,
 			"active_mode" = nifsoft.active_mode,
