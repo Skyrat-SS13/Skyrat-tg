@@ -21,18 +21,18 @@
 
 /obj/item/stack/tile/iron/pool/cobble
 	name = "cobblestone pool floor tile"
-	singular_name = "cobblestone side floor tile"
+	singular_name = "cobblestone side pool floor tile"
 	turf_type = /turf/open/floor/iron/pool/cobble
 
 /obj/item/stack/tile/iron/pool/cobble/side
-	name = "cobblestone pool floor tile"
-	singular_name = "pool floor tile"
+	name = "cobblestone side pool floor tile"
+	singular_name = "cobblestone side pool floor tile"
 	turf_type = /turf/open/floor/iron/pool/cobble/side
 	tile_rotate_dirs = list(SOUTH, NORTH, EAST, WEST)
 
 /obj/item/stack/tile/iron/pool/cobble/corner
 	name = "cobblestone corner pool floor tile"
-	singular_name = "cobblestone corner floor tile"
+	singular_name = "cobblestone corner pool floor tile"
 	turf_type = /turf/open/floor/iron/pool/cobble/corner
 	merge_type = /obj/item/stack/tile/iron/pool/cobble/corner
 	tile_rotate_dirs = list(SOUTH, NORTH, EAST, WEST)
