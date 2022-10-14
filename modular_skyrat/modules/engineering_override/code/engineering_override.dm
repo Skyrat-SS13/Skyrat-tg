@@ -1,10 +1,8 @@
-/**
- * This module sets airlocks in certain areas to be able to have an Engineer Override on orange alert.
- * Crew with ID cards with the engineering flag will be able to access these areas during those times.
- */
+// This module sets airlocks in certain areas to be able to have an Engineer Override on orange alert.
+// Crew with ID cards with the engineering flag will be able to access these areas during those times.
 
-// Is this area eligible for engineer override?
 /area
+	/// Is this area eligible for engineer override?
 	var/engineering_override_eligible = FALSE
 
 /**
@@ -48,16 +46,18 @@
 /area/station/science
 	engineering_override_eligible = TRUE
 
-// Var to determine if engineers get in on orange alert
 /obj/machinery/door
+	/// Determines if engineers get access to this door on orange alert
 	var/engineering_override = FALSE
 
-// Check for the three states of open access. Emergency, Unrestricted, and Engineering Override
+/// Check for the three states of open access. Emergency, Unrestricted, and Engineering Override
 /obj/machinery/door/allowed(mob/Mob)
 	if(emergency)
 		return TRUE
+
 	if(unrestricted_side(Mob))
 		return TRUE
+
 	if(engineering_override)
 		var/mob/living/carbon/human/user = Mob
 		var/obj/item/card/id/card = user.get_idcard(TRUE)
@@ -66,15 +66,17 @@
 				return TRUE
 	return ..()
 
-// Activate the airlock overrides, called by the change of alert level
+/// Activate the airlock overrides, called by the change of alert level
 /proc/enable_engineering_access()
 	for(var/area/station_area in get_areas(/area/station))
 		if(!station_area.engineering_override_eligible)
 			continue
+
 		for(var/obj/machinery/door/airlock/airlock in station_area)
 			airlock.engineering_override = TRUE
 			airlock.normalspeed = FALSE
 			airlock.update_icon(ALL, 0)
+
 	message_admins("Engineering override has been turned ON for station airlocks.")
 	minor_announce("Engineering staff will have expanded access to areas of the station during the emergency.", "Engineering Emergency")
 
@@ -83,6 +85,7 @@
 	for(var/area/station_area in get_areas(/area/station))
 		if(!station_area.engineering_override_eligible)
 			continue
+
 		for(var/obj/machinery/door/airlock/airlock in station_area)
 			airlock.engineering_override = FALSE
 			airlock.normalspeed = TRUE
@@ -100,10 +103,11 @@
 /obj/machinery/door/airlock/ui_act(action, params)
 	. = ..()
 	if(.)
-		return
+		return TRUE
 
 	if(!user_allowed(usr))
 		return
+
 	switch(action)
 		if("engineering-toggle")
 			toggle_engineering(usr)
