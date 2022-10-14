@@ -47,7 +47,7 @@ GLOBAL_LIST_EMPTY(open_soulcatchers)
 	. = ..()
 
 /datum/nifsoft/soulcatcher/activate()
-	var/choice = tgui_input_list(linked_mob, "Chose your option", "Soulcatcher config menu", list("Remove a soul", "Change room name", "Change room apperance"))
+	var/choice = tgui_input_list(linked_mob, "Chose your option", "Soulcatcher config menu", list("Remove a soul", "Change room name", "Change room apperance", "Toggle room visibility"))
 	if(!choice)
 		return
 
@@ -60,6 +60,9 @@ GLOBAL_LIST_EMPTY(open_soulcatchers)
 
 		if("Change room apperance")
 			change_room_desc()
+
+		if("Toggle room visibility")
+			toggle_visibility()
 
 ///Adds a soul to the soulcatcher.
 /datum/nifsoft/soulcatcher/proc/add_soul(soul_to_add, warning = FALSE, forced = FALSE)
