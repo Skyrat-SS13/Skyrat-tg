@@ -106,6 +106,7 @@
 
 	if(!user_allowed(usr))
 		return
+
 	switch(action)
 		if("engineering-toggle")
 			toggle_engineering(usr)
