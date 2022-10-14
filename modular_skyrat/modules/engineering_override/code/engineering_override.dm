@@ -46,8 +46,8 @@
 /area/station/science
 	engineering_override_eligible = TRUE
 
-// Var to determine if engineers get in on orange alert
 /obj/machinery/door
+	/// Determines if engineers get access to this door on orange alert
 	var/engineering_override = FALSE
 
 // Check for the three states of open access. Emergency, Unrestricted, and Engineering Override
