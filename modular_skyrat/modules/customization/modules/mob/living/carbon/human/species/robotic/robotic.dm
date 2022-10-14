@@ -104,11 +104,11 @@
 		// We want to ensure that the IPC gets their chassis and their head correctly.
 		for(var/obj/item/bodypart/limb as anything in transformer.bodyparts)
 			if(chassis && limb.body_part == CHEST)
-				limb.limb_id = chassis_of_choice.icon_state != "none" ? chassis_of_choice.icon_state : "ipc"
+				limb.change_appearance(chassis_of_choice.icon, chassis_of_choice.icon_state, chassis_of_choice.color_src)
 				continue
 
 			if(head && limb.body_part == HEAD)
-				limb.limb_id = head_of_choice.icon_state != "none" ? head_of_choice.icon_state : "ipc"
+				limb.change_appearance(head_of_choice.icon, head_of_choice.icon_state, head_of_choice.color_src)
 
 		if(chassis_of_choice.color_src)
 			species_traits += MUTCOLORS

@@ -179,21 +179,39 @@
 
 //Chasises - snowflake phantom accessory for choosing chassises
 /datum/sprite_accessory/ipc_chassis
-	icon = 'modular_skyrat/modules/bodyparts/icons/ipc_parts.dmi'
+	icon = BODYPART_ICON_IPC
 	icon_state = "ipc"
 	color_src = null
 	factual = FALSE
 	key = MUTANT_SYNTH_CHASSIS
 	generic = "Chassis Type"
 
-/datum/sprite_accessory/ipc_chassis/none
-	name = "None"
-	icon_state = "none"
+/datum/sprite_accessory/ipc_chassis/default
+	name = "Default"
+	icon_state = "ipc"
+
+/datum/sprite_accessory/ipc_chassis/human
+	name = "Human"
+	icon = BODYPART_ICON_HUMAN
+	icon_state = "human"
+	color_src = MUTCOLORS
+
+/datum/sprite_accessory/ipc_chassis/mammal
+	name = "Mammal"
+	icon = BODYPART_ICON_SYNTHMAMMAL
+	icon_state = "synthmammal"
+	color_src = MUTCOLORS
+
+/datum/sprite_accessory/ipc_chassis/lizard
+	name = "Lizard"
+	icon = BODYPART_ICON_SYNTHLIZARD
+	icon_state = "synthliz"
+	color_src = MUTCOLORS
 
 /datum/sprite_accessory/ipc_chassis/mcgreyscale
 	name = "Morpheus Cyberkinetics (Greyscale)"
 	icon_state = "mcgipc"
-	color_src = 1 //Here it's used to tell apart greyscalling
+	color_src = MUTCOLORS //Here it's used to tell apart greyscalling
 
 /datum/sprite_accessory/ipc_chassis/bishopcyberkinetics
 	name = "Bishop Cyberkinetics"
@@ -249,7 +267,7 @@
 	icon_state = "none"
 
 /datum/sprite_accessory/ipc_head/mcgreyscale
-	name = "Morpheus Cyberkinetics(Greyscale)"
+	name = "Morpheus Cyberkinetics (Greyscale)"
 	icon_state = "mcgipc"
 	color_src = 1 //Here it's used to tell apart greyscalling
 
