@@ -563,4 +563,4 @@
 	glass_icon_state = "shakiri_rogers"
 	glass_name = "glass of shakiri rogers"
 	glass_desc = "A take on the classic Roy Rogers, with shakiri instead of grenadine. Sweet and refreshing."
-	taste_description = "fruity, carbonated soda"
+	taste_description = "fruity, carbonated soda with a slight kick"
