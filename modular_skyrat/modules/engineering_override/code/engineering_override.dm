@@ -66,7 +66,7 @@
 				return TRUE
 	return ..()
 
-// Activate the airlock overrides, called by the change of alert level
+/// Activate the airlock overrides, called by the change of alert level
 /proc/enable_engineering_access()
 	for(var/area/station_area in get_areas(/area/station))
 		if(!station_area.engineering_override_eligible)
