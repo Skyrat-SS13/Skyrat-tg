@@ -83,6 +83,7 @@
 	for(var/area/station_area in get_areas(/area/station))
 		if(!station_area.engineering_override_eligible)
 			continue
+
 		for(var/obj/machinery/door/airlock/airlock in station_area)
 			airlock.engineering_override = FALSE
 			airlock.normalspeed = TRUE
