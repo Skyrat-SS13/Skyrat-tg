@@ -71,10 +71,12 @@
 	for(var/area/station_area in get_areas(/area/station))
 		if(!station_area.engineering_override_eligible)
 			continue
+
 		for(var/obj/machinery/door/airlock/airlock in station_area)
 			airlock.engineering_override = TRUE
 			airlock.normalspeed = FALSE
 			airlock.update_icon(ALL, 0)
+
 	message_admins("Engineering override has been turned ON for station airlocks.")
 	minor_announce("Engineering staff will have expanded access to areas of the station during the emergency.", "Engineering Emergency")
 
