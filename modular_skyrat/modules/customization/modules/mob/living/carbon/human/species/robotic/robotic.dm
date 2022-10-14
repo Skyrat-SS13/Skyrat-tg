@@ -21,11 +21,7 @@
 	mutant_bodyparts = list()
 	default_mutant_bodyparts = list(
 		"tail" = "None",
-		"snout" = "None",
 		"ears" = "None",
-		"wings" = "None",
-		"taur" = "None",
-		"horns" = "None",
 		MUTANT_SYNTH_ANTENNA = ACC_RANDOM,
 		MUTANT_SYNTH_SCREEN = "None",
 		MUTANT_SYNTH_CHASSIS = "None",
@@ -41,7 +37,7 @@
 	payday_modifier = 0.75 // Matches the rest of the pay penalties the non-human crew have
 	species_language_holder = /datum/language_holder/machine
 	mutant_organs = list(/obj/item/organ/internal/cyberimp/arm/power_cord)
-	mutantbrain = /obj/item/organ/internal/brain/ipc_positron
+	mutantbrain = /obj/item/organ/internal/brain/synth
 	mutantstomach = /obj/item/organ/internal/stomach/synth
 	mutantears = /obj/item/organ/internal/ears/synth
 	mutanttongue = /obj/item/organ/internal/tongue/synth
@@ -88,7 +84,9 @@
 		appendix.Remove(transformer)
 		qdel(appendix)
 
-	if(!screen && transformer.dna.mutant_bodyparts[MUTANT_SYNTH_SCREEN][MUTANT_INDEX_NAME] != "None")
+	var/screen_mutant_bodypart = transformer.dna.mutant_bodyparts[MUTANT_SYNTH_SCREEN]
+
+	if(!screen && screen_mutant_bodypart && screen_mutant_bodypart[MUTANT_INDEX_NAME] != "None")
 		screen = new
 		screen.Grant(transformer)
 
@@ -99,20 +97,25 @@
 
 	var/datum/sprite_accessory/synth_chassis/chassis_of_choice = GLOB.sprite_accessories[MUTANT_SYNTH_CHASSIS][chassis["name"]]
 	var/datum/sprite_accessory/synth_head/head_of_choice = GLOB.sprite_accessories[MUTANT_SYNTH_HEAD][head["name"]]
-	if(chassis_of_choice || head_of_choice)
-		examine_limb_id = chassis_of_choice?.icon_state ? chassis_of_choice.icon_state : head_of_choice.icon_state
-		// We want to ensure that the IPC gets their chassis and their head correctly.
-		for(var/obj/item/bodypart/limb as anything in transformer.bodyparts)
-			if(chassis && limb.body_part == CHEST)
-				limb.change_appearance(chassis_of_choice.icon, chassis_of_choice.icon_state, chassis_of_choice.color_src)
-				continue
+	if(!chassis_of_choice && !head_of_choice)
+		return
 
-			if(head && limb.body_part == HEAD)
-				limb.change_appearance(head_of_choice.icon, head_of_choice.icon_state, head_of_choice.color_src)
+	examine_limb_id = chassis_of_choice?.icon_state ? chassis_of_choice.icon_state : head_of_choice.icon_state
 
-		if(chassis_of_choice.color_src)
-			species_traits += MUTCOLORS
-		transformer.update_body()
+	if(chassis_of_choice.color_src)
+		species_traits += MUTCOLORS
+
+	// We want to ensure that the IPC gets their chassis and their head correctly.
+	for(var/obj/item/bodypart/limb as anything in transformer.bodyparts)
+		if(limb.limb_id != SPECIES_SYNTH && limb.base_limb_id != SPECIES_SYNTH) // No messing with limbs that aren't actually synthetic.
+			continue
+
+		if(limb.body_part == HEAD)
+			limb.change_appearance(head_of_choice.icon, head_of_choice.icon_state, head_of_choice.color_src, head_of_choice.dimorphic)
+			limb.icon = head_of_choice.icon
+		else
+			limb.change_appearance(chassis_of_choice.icon, chassis_of_choice.icon_state, chassis_of_choice.color_src, limb.body_part == CHEST && chassis_of_choice.dimorphic)
+			limb.icon = chassis_of_choice.icon
 
 /datum/species/robotic/on_species_loss(mob/living/carbon/human/C)
 	. = ..()

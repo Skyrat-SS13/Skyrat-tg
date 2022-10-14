@@ -1,36 +1,34 @@
 // Synth bois!
-/obj/item/bodypart/head/robot/mutant
+/obj/item/bodypart/head/robot/synth
 	icon_greyscale = BODYPART_ICON_IPC
 	limb_id = SPECIES_SYNTH
-	is_dimorphic = TRUE
 	should_draw_greyscale = TRUE
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ROBOTIC
 	brute_reduction = 0
 	burn_reduction = 0
 
-/obj/item/bodypart/chest/robot/mutant
+/obj/item/bodypart/chest/robot/synth
 	icon_greyscale = BODYPART_ICON_IPC
 	should_draw_greyscale = TRUE
 	limb_id = SPECIES_SYNTH
-	is_dimorphic = TRUE
 	brute_reduction = 0
 	burn_reduction = 0
 
-/obj/item/bodypart/l_arm/robot/mutant
-	icon_greyscale = BODYPART_ICON_IPC
-	limb_id = SPECIES_SYNTH
-	should_draw_greyscale = TRUE
-	brute_reduction = 0
-	burn_reduction = 0
-
-/obj/item/bodypart/r_arm/robot/mutant
+/obj/item/bodypart/l_arm/robot/synth
 	icon_greyscale = BODYPART_ICON_IPC
 	limb_id = SPECIES_SYNTH
 	should_draw_greyscale = TRUE
 	brute_reduction = 0
 	burn_reduction = 0
 
-/obj/item/bodypart/l_leg/robot/mutant
+/obj/item/bodypart/r_arm/robot/synth
+	icon_greyscale = BODYPART_ICON_IPC
+	limb_id = SPECIES_SYNTH
+	should_draw_greyscale = TRUE
+	brute_reduction = 0
+	burn_reduction = 0
+
+/obj/item/bodypart/l_leg/robot/synth
 	icon_greyscale = BODYPART_ICON_IPC
 	limb_id = SPECIES_SYNTH
 	should_draw_greyscale = TRUE
@@ -38,7 +36,7 @@
 	brute_reduction = 0
 	burn_reduction = 0
 
-/obj/item/bodypart/r_leg/robot/mutant
+/obj/item/bodypart/r_leg/robot/synth
 	icon_greyscale = BODYPART_ICON_IPC
 	should_draw_greyscale = TRUE
 	limb_id = SPECIES_SYNTH
@@ -61,7 +59,7 @@
 	. = ..()
 	check_mutant_compatability()
 
-/obj/item/bodypart/r_leg/robot/digitigrade
+/obj/item/bodypart/r_leg/synth/digitigrade
 	icon = BODYPART_ICON_SYNTHMAMMAL
 	icon_static = BODYPART_ICON_SYNTHMAMMAL
 	icon_greyscale = BODYPART_ICON_SYNTHMAMMAL

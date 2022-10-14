@@ -379,94 +379,86 @@
 
 /// IPC Screens
 
-/datum/preference/toggle/mutant_toggle/ipc_screen
-	savefile_key = "ipc_screen_toggle"
-	relevant_mutant_bodypart = MUTANT_SYNTH_SCREEN
-
 /datum/preference/choiced/mutant_choice/ipc_screen
 	savefile_key = "feature_ipc_screen"
 	relevant_mutant_bodypart = MUTANT_SYNTH_SCREEN
-	type_to_check = /datum/preference/toggle/mutant_toggle/ipc_screen
 	default_accessory_type = /datum/sprite_accessory/screen/none
+
+/datum/preference/choiced/mutant_choice/ipc_screen/is_part_enabled(datum/preferences/preferences)
+	return TRUE
 
 /datum/preference/tri_color/ipc_screen
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
 	savefile_identifier = PREFERENCE_CHARACTER
 	savefile_key = "ipc_screen_color"
 	relevant_mutant_bodypart = MUTANT_SYNTH_SCREEN
-	type_to_check = /datum/preference/toggle/mutant_toggle/ipc_screen
+	check_mode = TRICOLOR_NO_CHECK
 
 /datum/preference/tri_bool/ipc_screen
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
 	savefile_identifier = PREFERENCE_CHARACTER
 	savefile_key = "ipc_screen_emissive"
 	relevant_mutant_bodypart = MUTANT_SYNTH_SCREEN
-	type_to_check = /datum/preference/toggle/mutant_toggle/ipc_screen
+	check_mode = TRICOLOR_NO_CHECK
 
 /// IPC Antennas
-
-/datum/preference/toggle/mutant_toggle/synth_antenna
-	savefile_key = "ipc_antenna_toggle"
-	relevant_mutant_bodypart = MUTANT_SYNTH_ANTENNA
 
 /datum/preference/choiced/mutant_choice/synth_antenna
 	savefile_key = "feature_ipc_antenna"
 	relevant_mutant_bodypart = MUTANT_SYNTH_ANTENNA
-	type_to_check = /datum/preference/toggle/mutant_toggle/synth_antenna
 	default_accessory_type = /datum/sprite_accessory/antenna/none
+
+/datum/preference/choiced/mutant_choice/synth_antenna/is_part_enabled(datum/preferences/preferences)
+	return TRUE
 
 /datum/preference/tri_color/synth_antenna
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
 	savefile_identifier = PREFERENCE_CHARACTER
 	savefile_key = "ipc_antenna_color"
 	relevant_mutant_bodypart = MUTANT_SYNTH_ANTENNA
-	type_to_check = /datum/preference/toggle/mutant_toggle/synth_antenna
+	check_mode = TRICOLOR_NO_CHECK
 
 /datum/preference/tri_bool/synth_antenna
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
 	savefile_identifier = PREFERENCE_CHARACTER
 	savefile_key = "ipc_antenna_emissive"
 	relevant_mutant_bodypart = MUTANT_SYNTH_ANTENNA
-	type_to_check = /datum/preference/toggle/mutant_toggle/synth_antenna
+	check_mode = TRICOLOR_NO_CHECK
 
 /// IPC Chassis
-
-/datum/preference/toggle/mutant_toggle/synth_chassis
-	savefile_key = "ipc_chassis_toggle"
-	relevant_mutant_bodypart = MUTANT_SYNTH_CHASSIS
 
 /datum/preference/choiced/mutant_choice/synth_chassis
 	savefile_key = "feature_ipc_chassis"
 	relevant_mutant_bodypart = MUTANT_SYNTH_CHASSIS
-	type_to_check = /datum/preference/toggle/mutant_toggle/synth_chassis
 	default_accessory_type = /datum/sprite_accessory/synth_chassis/default
+
+/datum/preference/choiced/mutant_choice/synth_chassis/is_part_enabled(datum/preferences/preferences)
+	return TRUE
 
 /datum/preference/tri_color/synth_chassis
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
 	savefile_identifier = PREFERENCE_CHARACTER
 	savefile_key = "ipc_chassis_color"
 	relevant_mutant_bodypart = MUTANT_SYNTH_CHASSIS
-	type_to_check = /datum/preference/toggle/mutant_toggle/synth_chassis
+	check_mode = TRICOLOR_NO_CHECK
 
 
 /// IPC Head
 
-/datum/preference/toggle/mutant_toggle/synth_head
-	savefile_key = "ipc_head_toggle"
-	relevant_mutant_bodypart = MUTANT_SYNTH_HEAD
-
 /datum/preference/choiced/mutant_choice/synth_head
 	savefile_key = "feature_ipc_head"
 	relevant_mutant_bodypart = MUTANT_SYNTH_HEAD
-	type_to_check = /datum/preference/toggle/mutant_toggle/synth_head
-	default_accessory_type = /datum/sprite_accessory/synth_head/human
+	default_accessory_type = /datum/sprite_accessory/synth_head/default
+
+/datum/preference/choiced/mutant_choice/synth_head/is_part_enabled(datum/preferences/preferences)
+	return TRUE
 
 /datum/preference/tri_color/synth_head
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
 	savefile_identifier = PREFERENCE_CHARACTER
 	savefile_key = "ipc_head_color"
 	relevant_mutant_bodypart = MUTANT_SYNTH_HEAD
-	type_to_check = /datum/preference/toggle/mutant_toggle/synth_head
+	check_mode = TRICOLOR_NO_CHECK
 
 
 /// Skrell Hair
