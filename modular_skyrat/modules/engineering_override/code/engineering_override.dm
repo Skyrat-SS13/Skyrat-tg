@@ -50,7 +50,7 @@
 	/// Determines if engineers get access to this door on orange alert
 	var/engineering_override = FALSE
 
-// Check for the three states of open access. Emergency, Unrestricted, and Engineering Override
+/// Check for the three states of open access. Emergency, Unrestricted, and Engineering Override
 /obj/machinery/door/allowed(mob/Mob)
 	if(emergency)
 		return TRUE
