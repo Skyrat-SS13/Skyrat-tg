@@ -405,48 +405,48 @@
 
 /// IPC Antennas
 
-/datum/preference/toggle/mutant_toggle/ipc_antenna
+/datum/preference/toggle/mutant_toggle/synth_antenna
 	savefile_key = "ipc_antenna_toggle"
 	relevant_mutant_bodypart = MUTANT_SYNTH_ANTENNA
 
-/datum/preference/choiced/mutant_choice/ipc_antenna
+/datum/preference/choiced/mutant_choice/synth_antenna
 	savefile_key = "feature_ipc_antenna"
 	relevant_mutant_bodypart = MUTANT_SYNTH_ANTENNA
-	type_to_check = /datum/preference/toggle/mutant_toggle/ipc_antenna
+	type_to_check = /datum/preference/toggle/mutant_toggle/synth_antenna
 	default_accessory_type = /datum/sprite_accessory/antenna/none
 
-/datum/preference/tri_color/ipc_antenna
+/datum/preference/tri_color/synth_antenna
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
 	savefile_identifier = PREFERENCE_CHARACTER
 	savefile_key = "ipc_antenna_color"
 	relevant_mutant_bodypart = MUTANT_SYNTH_ANTENNA
-	type_to_check = /datum/preference/toggle/mutant_toggle/ipc_antenna
+	type_to_check = /datum/preference/toggle/mutant_toggle/synth_antenna
 
-/datum/preference/tri_bool/ipc_antenna
+/datum/preference/tri_bool/synth_antenna
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
 	savefile_identifier = PREFERENCE_CHARACTER
 	savefile_key = "ipc_antenna_emissive"
 	relevant_mutant_bodypart = MUTANT_SYNTH_ANTENNA
-	type_to_check = /datum/preference/toggle/mutant_toggle/ipc_antenna
+	type_to_check = /datum/preference/toggle/mutant_toggle/synth_antenna
 
 /// IPC Chassis
 
-/datum/preference/toggle/mutant_toggle/ipc_chassis
+/datum/preference/toggle/mutant_toggle/synth_chassis
 	savefile_key = "ipc_chassis_toggle"
 	relevant_mutant_bodypart = MUTANT_SYNTH_CHASSIS
 
-/datum/preference/choiced/mutant_choice/ipc_chassis
+/datum/preference/choiced/mutant_choice/synth_chassis
 	savefile_key = "feature_ipc_chassis"
 	relevant_mutant_bodypart = MUTANT_SYNTH_CHASSIS
-	type_to_check = /datum/preference/toggle/mutant_toggle/ipc_chassis
-	default_accessory_type = /datum/sprite_accessory/ipc_chassis/none
+	type_to_check = /datum/preference/toggle/mutant_toggle/synth_chassis
+	default_accessory_type = /datum/sprite_accessory/synth_chassis/none
 
-/datum/preference/tri_color/ipc_chassis
+/datum/preference/tri_color/synth_chassis
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
 	savefile_identifier = PREFERENCE_CHARACTER
 	savefile_key = "ipc_chassis_color"
 	relevant_mutant_bodypart = MUTANT_SYNTH_CHASSIS
-	type_to_check = /datum/preference/toggle/mutant_toggle/ipc_chassis
+	type_to_check = /datum/preference/toggle/mutant_toggle/synth_chassis
 
 
 /// IPC Head

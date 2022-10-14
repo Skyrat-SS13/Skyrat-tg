@@ -141,7 +141,7 @@
 	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/ipc_antennas.dmi'
 	color_src = USE_ONE_COLOR
 	default_color = DEFAULT_SECONDARY
-	recommended_species = list(SPECIES_IPC)
+	recommended_species = list(SPECIES_SYNTH)
 	key = MUTANT_SYNTH_ANTENNA
 	generic = "Antenna"
 	relevent_layers = list(BODY_ADJ_LAYER)
@@ -179,7 +179,7 @@
 
 //Chasises - snowflake phantom accessory for choosing chassises
 /datum/sprite_accessory/ipc_chassis
-	icon = null
+	icon = 'modular_skyrat/modules/bodyparts/icons/ipc_parts.dmi'
 	icon_state = "ipc"
 	color_src = null
 	factual = FALSE

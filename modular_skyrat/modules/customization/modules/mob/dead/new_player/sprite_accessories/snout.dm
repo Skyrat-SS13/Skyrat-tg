@@ -4,7 +4,7 @@
 	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/lizard_snouts.dmi'
 	flags_for_organ = SPRITE_ACCESSORY_USE_MUZZLED_SPRITE
 	organ_type = /obj/item/organ/external/snout
-	recommended_species = list(SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_LIZARD, SPECIES_UNATHI, SPECIES_LIZARD_ASH, SPECIES_LIZARD_SILVER)
+	recommended_species = list(SPECIES_MAMMAL, SPECIES_LIZARD, SPECIES_UNATHI, SPECIES_LIZARD_ASH, SPECIES_LIZARD_SILVER)
 	relevent_layers = list(BODY_ADJ_LAYER, BODY_FRONT_LAYER)
 	genetic = TRUE
 
@@ -40,16 +40,16 @@
 /datum/sprite_accessory/snouts/mammal
 	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/snouts.dmi'
 	color_src = USE_MATRIXED_COLORS
-	recommended_species = list(SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_HUMANOID)
+	recommended_species = list(SPECIES_MAMMAL, SPECIES_HUMANOID)
 
 /datum/sprite_accessory/snouts/mammal/vulpkanin
-	recommended_species = list(SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_VULP, SPECIES_HUMANOID)
+	recommended_species = list(SPECIES_MAMMAL, SPECIES_VULP, SPECIES_HUMANOID)
 
 /datum/sprite_accessory/snouts/mammal/tajaran
-	recommended_species = list(SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_TAJARAN, SPECIES_HUMANOID)
+	recommended_species = list(SPECIES_MAMMAL, SPECIES_TAJARAN, SPECIES_HUMANOID)
 
 /datum/sprite_accessory/snouts/mammal/akula
-	recommended_species = list(SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_AKULA, SPECIES_AQUATIC, SPECIES_HUMANOID)
+	recommended_species = list(SPECIES_MAMMAL, SPECIES_AKULA, SPECIES_AQUATIC, SPECIES_HUMANOID)
 
 /datum/sprite_accessory/snouts/mammal/bird
 	name = "Beak"

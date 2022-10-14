@@ -1,4 +1,4 @@
-// Synth bois!
+/*// Synth bois!
 /obj/item/bodypart/head/robot/mutant/human
 	icon_greyscale = BODYPART_ICON_HUMAN
 	limb_id = SPECIES_HUMAN
@@ -22,3 +22,4 @@
 /obj/item/bodypart/r_leg/robot/mutant/human
 	icon_greyscale = BODYPART_ICON_HUMAN
 	limb_id = SPECIES_HUMAN
+*/

@@ -1,7 +1,7 @@
 // Synth bois!
 /obj/item/bodypart/head/robot/mutant
-	icon_greyscale = BODYPART_ICON_SYNTHMAMMAL
-	limb_id = SPECIES_SYNTHMAMMAL
+	icon_greyscale = BODYPART_ICON_IPC
+	limb_id = SPECIES_SYNTH
 	is_dimorphic = TRUE
 	should_draw_greyscale = TRUE
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ROBOTIC
@@ -9,51 +9,51 @@
 	burn_reduction = 0
 
 /obj/item/bodypart/chest/robot/mutant
-	icon_greyscale = BODYPART_ICON_SYNTHMAMMAL
+	icon_greyscale = BODYPART_ICON_IPC
 	should_draw_greyscale = TRUE
-	limb_id = SPECIES_SYNTHMAMMAL
+	limb_id = SPECIES_SYNTH
 	is_dimorphic = TRUE
 	brute_reduction = 0
 	burn_reduction = 0
 
 /obj/item/bodypart/l_arm/robot/mutant
-	icon_greyscale = BODYPART_ICON_SYNTHMAMMAL
-	limb_id = SPECIES_SYNTHMAMMAL
+	icon_greyscale = BODYPART_ICON_IPC
+	limb_id = SPECIES_SYNTH
 	should_draw_greyscale = TRUE
 	brute_reduction = 0
 	burn_reduction = 0
 
 /obj/item/bodypart/r_arm/robot/mutant
-	icon_greyscale = BODYPART_ICON_SYNTHMAMMAL
-	limb_id = SPECIES_SYNTHMAMMAL
+	icon_greyscale = BODYPART_ICON_IPC
+	limb_id = SPECIES_SYNTH
 	should_draw_greyscale = TRUE
 	brute_reduction = 0
 	burn_reduction = 0
 
 /obj/item/bodypart/l_leg/robot/mutant
-	icon_greyscale = BODYPART_ICON_SYNTHMAMMAL
-	limb_id = SPECIES_SYNTHMAMMAL
+	icon_greyscale = BODYPART_ICON_IPC
+	limb_id = SPECIES_SYNTH
 	should_draw_greyscale = TRUE
 	digitigrade_type = /obj/item/bodypart/l_leg/robot/digitigrade
 	brute_reduction = 0
 	burn_reduction = 0
 
 /obj/item/bodypart/r_leg/robot/mutant
-	icon_greyscale = BODYPART_ICON_SYNTHMAMMAL
+	icon_greyscale = BODYPART_ICON_IPC
 	should_draw_greyscale = TRUE
-	limb_id = SPECIES_SYNTHMAMMAL
+	limb_id = SPECIES_SYNTH
 	digitigrade_type = /obj/item/bodypart/r_leg/robot/digitigrade
 	brute_reduction = 0
 	burn_reduction = 0
 
 /obj/item/bodypart/l_leg/robot/digitigrade
-	icon = BODYPART_ICON_SYNTHMAMMAL
-	icon_static = BODYPART_ICON_SYNTHMAMMAL
-	icon_greyscale = BODYPART_ICON_SYNTHMAMMAL
+	icon = BODYPART_ICON_IPC
+	icon_static = BODYPART_ICON_IPC
+	icon_greyscale = BODYPART_ICON_IPC
 	should_draw_greyscale = TRUE
 	limb_id = "digitigrade"
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ROBOTIC | BODYTYPE_DIGITIGRADE
-	base_limb_id = SPECIES_SYNTHMAMMAL
+	base_limb_id = SPECIES_SYNTH
 	brute_reduction = 0
 	burn_reduction = 0
 
@@ -68,7 +68,7 @@
 	should_draw_greyscale = TRUE
 	limb_id = "digitigrade"
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ROBOTIC | BODYTYPE_DIGITIGRADE
-	base_limb_id = SPECIES_SYNTHMAMMAL
+	base_limb_id = SPECIES_SYNTH
 	brute_reduction = 0
 	burn_reduction = 0
 

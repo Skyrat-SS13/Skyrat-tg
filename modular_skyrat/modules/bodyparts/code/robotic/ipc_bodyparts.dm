@@ -1,4 +1,4 @@
-// IPC bois!
+/*// IPC bois!
 /obj/item/bodypart/head/robot/mutant/ipc
 	icon_greyscale = BODYPART_ICON_IPC
 	is_dimorphic = FALSE
@@ -24,3 +24,4 @@
 /obj/item/bodypart/r_leg/robot/mutant/ipc
 	icon_greyscale = BODYPART_ICON_IPC
 	limb_id = SPECIES_IPC
+*/

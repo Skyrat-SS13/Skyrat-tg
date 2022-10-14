@@ -1,4 +1,4 @@
-// Synth bois!
+/*// Synth bois!
 /obj/item/bodypart/head/robot/mutant/lizard
 	icon_greyscale = BODYPART_ICON_SYNTHLIZARD
 	limb_id = SPECIES_SYNTHLIZ
@@ -36,3 +36,4 @@
 	icon_greyscale = BODYPART_ICON_SYNTHLIZARD
 	icon_static = BODYPART_ICON_SYNTHLIZARD
 	base_limb_id = SPECIES_SYNTHLIZ
+*/
