@@ -3375,9 +3375,15 @@
 "doE" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/door/puzzle/keycard/yellow_required{
-	name = "Blue Airlock"
-	},
+/obj/machinery/door/airlock/survival_pod,
+/obj/effect/mapping_helpers/airlock/access/any/command/captain,
+/obj/effect/mapping_helpers/airlock/access/any/command/hop,
+/obj/effect/mapping_helpers/airlock/access/any/cent_com/rep_door,
+/obj/effect/mapping_helpers/airlock/access/any/engineering/ce,
+/obj/effect/mapping_helpers/airlock/access/any/medical/cmo,
+/obj/effect/mapping_helpers/airlock/access/any/science/rd,
+/obj/effect/mapping_helpers/airlock/access/any/security/hos,
+/obj/effect/mapping_helpers/airlock/access/any/supply/qm,
 /turf/open/floor/plating,
 /area/station/maintenance/night_club)
 "doJ" = (
@@ -4492,8 +4498,7 @@
 	},
 /obj/effect/mapping_helpers/airlock/locked,
 /obj/machinery/door/airlock/highsecurity{
-	name = "MiniSat Chamber";
-	req_access_txt = null
+	name = "MiniSat Chamber"
 	},
 /obj/machinery/door/poddoor/shutters/preopen{
 	id = "aicoredoor";
@@ -6377,10 +6382,16 @@
 "gjh" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/door/puzzle/keycard/yellow_required{
-	name = "Blue Airlock"
-	},
 /obj/structure/cable,
+/obj/machinery/door/airlock/survival_pod,
+/obj/effect/mapping_helpers/airlock/access/any/command/captain,
+/obj/effect/mapping_helpers/airlock/access/any/command/hop,
+/obj/effect/mapping_helpers/airlock/access/any/cent_com/rep_door,
+/obj/effect/mapping_helpers/airlock/access/any/engineering/ce,
+/obj/effect/mapping_helpers/airlock/access/any/medical/cmo,
+/obj/effect/mapping_helpers/airlock/access/any/science/rd,
+/obj/effect/mapping_helpers/airlock/access/any/security/hos,
+/obj/effect/mapping_helpers/airlock/access/any/supply/qm,
 /turf/open/floor/plating,
 /area/station/maintenance/department/electrical)
 "gjr" = (
@@ -9453,6 +9464,12 @@
 /obj/structure/pipe_cleaner/white{
 	icon_state = "0-8"
 	},
+/obj/machinery/atmospherics/components/unary/outlet_injector/on/layer2{
+	dir = 1
+	},
+/obj/machinery/atmospherics/components/unary/outlet_injector/on/layer4{
+	dir = 1
+	},
 /turf/open/floor/plating,
 /area/station/maintenance/thruster_room/starboard)
 "jdX" = (
@@ -9937,6 +9954,8 @@
 /area/station/cargo/warehouse)
 "jCy" = (
 /obj/structure/particle_accelerator/end_cap,
+/obj/machinery/atmospherics/pipe/smart/simple/pink/visible/layer2,
+/obj/machinery/atmospherics/pipe/smart/simple/orange/visible/layer4,
 /turf/open/floor/plating,
 /area/station/maintenance/thruster_room/port)
 "jEw" = (
@@ -10141,6 +10160,12 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/pipe_cleaner/white{
 	icon_state = "0-4"
+	},
+/obj/machinery/atmospherics/components/unary/outlet_injector/on/layer2{
+	dir = 1
+	},
+/obj/machinery/atmospherics/components/unary/outlet_injector/on/layer4{
+	dir = 1
 	},
 /turf/open/floor/plating,
 /area/station/maintenance/thruster_room/starboard)
@@ -15051,6 +15076,12 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/components/unary/outlet_injector/on/layer2{
+	dir = 1
+	},
+/obj/machinery/atmospherics/components/unary/outlet_injector/on/layer4{
+	dir = 1
+	},
 /turf/open/floor/plating,
 /area/station/maintenance/thruster_room/port)
 "orU" = (
@@ -15943,6 +15974,8 @@
 /area/station/security/prison/visit)
 "phk" = (
 /obj/structure/particle_accelerator/end_cap,
+/obj/machinery/atmospherics/pipe/smart/simple/orange/visible/layer4,
+/obj/machinery/atmospherics/pipe/smart/simple/pink/visible/layer2,
 /turf/open/floor/plating,
 /area/station/maintenance/thruster_room/starboard)
 "pho" = (
@@ -16430,13 +16463,6 @@
 "pFe" = (
 /turf/closed/wall/r_wall,
 /area/station/engineering/supermatter)
-"pFZ" = (
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/effect/landmark/start/hangover,
-/turf/open/floor/iron/white,
-/area/station/medical/virology)
 "pGA" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -18775,6 +18801,13 @@
 	},
 /turf/open/floor/iron,
 /area/station/security/prison)
+"rKg" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/landmark/start/hangover,
+/turf/open/floor/iron/white,
+/area/station/medical/virology)
 "rKw" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -19034,6 +19067,12 @@
 /obj/structure/particle_accelerator/fuel_chamber,
 /obj/structure/pipe_cleaner/white{
 	icon_state = "0-8"
+	},
+/obj/machinery/atmospherics/components/unary/outlet_injector/on/layer2{
+	dir = 1
+	},
+/obj/machinery/atmospherics/components/unary/outlet_injector/on/layer4{
+	dir = 1
 	},
 /turf/open/floor/plating,
 /area/station/maintenance/thruster_room/port)
@@ -24550,8 +24589,7 @@
 	name = "Emergency Shutter"
 	},
 /obj/machinery/door/airlock/maintenance_hatch{
-	name = "MiniSat Antechamber";
-	req_access_txt = "16"
+	name = "MiniSat Antechamber"
 	},
 /obj/structure/cable,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
@@ -66723,7 +66761,7 @@ pcp
 jfM
 hyE
 jMx
-pFZ
+rKg
 rDU
 sYn
 mkv
