@@ -97,8 +97,8 @@
 	if(!chassis && !head)
 		return
 
-	var/datum/sprite_accessory/ipc_chassis/chassis_of_choice = GLOB.sprite_accessories[MUTANT_SYNTH_CHASSIS][chassis["name"]]
-	var/datum/sprite_accessory/ipc_head/head_of_choice = GLOB.sprite_accessories[MUTANT_SYNTH_HEAD][head["name"]]
+	var/datum/sprite_accessory/synth_chassis/chassis_of_choice = GLOB.sprite_accessories[MUTANT_SYNTH_CHASSIS][chassis["name"]]
+	var/datum/sprite_accessory/synth_head/head_of_choice = GLOB.sprite_accessories[MUTANT_SYNTH_HEAD][head["name"]]
 	if(chassis_of_choice || head_of_choice)
 		examine_limb_id = chassis_of_choice?.icon_state ? chassis_of_choice.icon_state : head_of_choice.icon_state
 		// We want to ensure that the IPC gets their chassis and their head correctly.
@@ -143,7 +143,7 @@
 	var/chassis = target.dna.mutant_bodyparts[MUTANT_SYNTH_CHASSIS]
 	if(!chassis)
 		return
-	var/datum/sprite_accessory/ipc_chassis/chassis_of_choice = GLOB.sprite_accessories[MUTANT_SYNTH_CHASSIS][chassis["name"]]
+	var/datum/sprite_accessory/synth_chassis/chassis_of_choice = GLOB.sprite_accessories[MUTANT_SYNTH_CHASSIS][chassis["name"]]
 
 	for(var/obj/item/bodypart/iterating_bodypart as anything in target.bodyparts) //Override bodypart data as necessary
 		if(chassis_of_choice.color_src)

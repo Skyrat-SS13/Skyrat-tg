@@ -178,7 +178,7 @@
 	icon_state = "crowned"
 
 //Chasises - snowflake phantom accessory for choosing chassises
-/datum/sprite_accessory/ipc_chassis
+/datum/sprite_accessory/synth_chassis
 	icon = BODYPART_ICON_IPC
 	icon_state = "ipc"
 	color_src = null
@@ -186,127 +186,141 @@
 	key = MUTANT_SYNTH_CHASSIS
 	generic = "Chassis Type"
 
-/datum/sprite_accessory/ipc_chassis/default
+/datum/sprite_accessory/synth_chassis/default
 	name = "Default"
 	icon_state = "ipc"
 
-/datum/sprite_accessory/ipc_chassis/human
+/datum/sprite_accessory/synth_chassis/human
 	name = "Human"
 	icon = BODYPART_ICON_HUMAN
 	icon_state = "human"
 	color_src = MUTCOLORS
 
-/datum/sprite_accessory/ipc_chassis/mammal
+/datum/sprite_accessory/synth_chassis/mammal
 	name = "Mammal"
 	icon = BODYPART_ICON_SYNTHMAMMAL
 	icon_state = "synthmammal"
 	color_src = MUTCOLORS
 
-/datum/sprite_accessory/ipc_chassis/lizard
+/datum/sprite_accessory/synth_chassis/lizard
 	name = "Lizard"
 	icon = BODYPART_ICON_SYNTHLIZARD
 	icon_state = "synthliz"
 	color_src = MUTCOLORS
 
-/datum/sprite_accessory/ipc_chassis/mcgreyscale
+/datum/sprite_accessory/synth_chassis/mcgreyscale
 	name = "Morpheus Cyberkinetics (Greyscale)"
 	icon_state = "mcgipc"
 	color_src = MUTCOLORS //Here it's used to tell apart greyscalling
 
-/datum/sprite_accessory/ipc_chassis/bishopcyberkinetics
+/datum/sprite_accessory/synth_chassis/bishopcyberkinetics
 	name = "Bishop Cyberkinetics"
 	icon_state = "bshipc"
 
-/datum/sprite_accessory/ipc_chassis/bishopcyberkinetics2
+/datum/sprite_accessory/synth_chassis/bishopcyberkinetics2
 	name = "Bishop Cyberkinetics 2.0"
 	icon_state = "bs2ipc"
 
-/datum/sprite_accessory/ipc_chassis/hephaestussindustries
+/datum/sprite_accessory/synth_chassis/hephaestussindustries
 	name = "Hephaestus Industries"
 	icon_state = "hsiipc"
 
-/datum/sprite_accessory/ipc_chassis/hephaestussindustries2
+/datum/sprite_accessory/synth_chassis/hephaestussindustries2
 	name = "Hephaestus Industries 2.0"
 	icon_state = "hi2ipc"
 
-/datum/sprite_accessory/ipc_chassis/shellguardmunitions
+/datum/sprite_accessory/synth_chassis/shellguardmunitions
 	name = "Shellguard Munitions Standard Series"
 	icon_state = "sgmipc"
 
-/datum/sprite_accessory/ipc_chassis/wardtakahashimanufacturing
+/datum/sprite_accessory/synth_chassis/wardtakahashimanufacturing
 	name = "Ward-Takahashi Manufacturing"
 	icon_state = "wtmipc"
 
-/datum/sprite_accessory/ipc_chassis/xionmanufacturinggroup
+/datum/sprite_accessory/synth_chassis/xionmanufacturinggroup
 	name = "Xion Manufacturing Group"
 	icon_state = "xmgipc"
 
-/datum/sprite_accessory/ipc_chassis/xionmanufacturinggroup2
+/datum/sprite_accessory/synth_chassis/xionmanufacturinggroup2
 	name = "Xion Manufacturing Group 2.0"
 	icon_state = "xm2ipc"
 
-/datum/sprite_accessory/ipc_chassis/zenghupharmaceuticals
+/datum/sprite_accessory/synth_chassis/zenghupharmaceuticals
 	name = "Zeng-Hu Pharmaceuticals"
 	icon_state = "zhpipc"
 
-/datum/sprite_accessory/ipc_chassis/e3n
+/datum/sprite_accessory/synth_chassis/e3n
 	name = "E3N AI"
 	icon_state = "e3n"
 
 //Heads - snowflake phantom accessory for choosing IPC heads (hell yeah!)
-/datum/sprite_accessory/ipc_head
-	icon = null
+/datum/sprite_accessory/synth_head
+	icon = BODYPART_ICON_IPC
 	icon_state = "ipc"
 	color_src = null
 	factual = FALSE
 	key = MUTANT_SYNTH_HEAD
 	generic = "Head Type"
 
-/datum/sprite_accessory/ipc_head/none
-	name = "None"
-	icon_state = "none"
+/datum/sprite_accessory/synth_head/human
+	name = "Human"
+	icon = BODYPART_ICON_HUMAN
+	icon_state = "human"
+	color_src = MUTCOLORS
 
-/datum/sprite_accessory/ipc_head/mcgreyscale
+/datum/sprite_accessory/synth_head/mammal
+	name = "Mammal"
+	icon = BODYPART_ICON_SYNTHMAMMAL
+	icon_state = "synthmammal"
+	color_src = MUTCOLORS
+
+/datum/sprite_accessory/synth_head/lizard
+	name = "Lizard"
+	icon = BODYPART_ICON_SYNTHLIZARD
+	icon_state = "synthliz"
+	color_src = MUTCOLORS
+
+/datum/sprite_accessory/synth_head/mcgreyscale
 	name = "Morpheus Cyberkinetics (Greyscale)"
 	icon_state = "mcgipc"
-	color_src = 1 //Here it's used to tell apart greyscalling
+	color_src = MUTCOLORS //Here it's used to tell apart greyscalling
 
-/datum/sprite_accessory/ipc_head/bishopcyberkinetics
+/datum/sprite_accessory/synth_head/bishopcyberkinetics
 	name = "Bishop Cyberkinetics"
 	icon_state = "bshipc"
 
-/datum/sprite_accessory/ipc_head/bishopcyberkinetics2
+/datum/sprite_accessory/synth_head/bishopcyberkinetics2
 	name = "Bishop Cyberkinetics 2.0"
 	icon_state = "bs2ipc"
 
-/datum/sprite_accessory/ipc_head/hephaestussindustries
+/datum/sprite_accessory/synth_head/hephaestussindustries
 	name = "Hephaestus Industries"
 	icon_state = "hsiipc"
 
-/datum/sprite_accessory/ipc_head/hephaestussindustries2
+/datum/sprite_accessory/synth_head/hephaestussindustries2
 	name = "Hephaestus Industries 2.0"
 	icon_state = "hi2ipc"
 
-/datum/sprite_accessory/ipc_head/shellguardmunitions
+/datum/sprite_accessory/synth_head/shellguardmunitions
 	name = "Shellguard Munitions Standard Series"
 	icon_state = "sgmipc"
 
-/datum/sprite_accessory/ipc_head/wardtakahashimanufacturing
+/datum/sprite_accessory/synth_head/wardtakahashimanufacturing
 	name = "Ward-Takahashi Manufacturing"
 	icon_state = "wtmipc"
 
-/datum/sprite_accessory/ipc_head/xionmanufacturinggroup
+/datum/sprite_accessory/synth_head/xionmanufacturinggroup
 	name = "Xion Manufacturing Group"
 	icon_state = "xmgipc"
 
-/datum/sprite_accessory/ipc_head/xionmanufacturinggroup2
+/datum/sprite_accessory/synth_head/xionmanufacturinggroup2
 	name = "Xion Manufacturing Group 2.0"
 	icon_state = "xm2ipc"
 
-/datum/sprite_accessory/ipc_head/zenghupharmaceuticals
+/datum/sprite_accessory/synth_head/zenghupharmaceuticals
 	name = "Zeng-Hu Pharmaceuticals"
 	icon_state = "zhpipc"
 
-/datum/sprite_accessory/ipc_head/e3n
+/datum/sprite_accessory/synth_head/e3n
 	name = "E3N AI"
 	icon_state = "e3n"

@@ -439,7 +439,7 @@
 	savefile_key = "feature_ipc_chassis"
 	relevant_mutant_bodypart = MUTANT_SYNTH_CHASSIS
 	type_to_check = /datum/preference/toggle/mutant_toggle/synth_chassis
-	default_accessory_type = /datum/sprite_accessory/synth_chassis/none
+	default_accessory_type = /datum/sprite_accessory/synth_chassis/default
 
 /datum/preference/tri_color/synth_chassis
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
@@ -451,22 +451,22 @@
 
 /// IPC Head
 
-/datum/preference/toggle/mutant_toggle/ipc_head
+/datum/preference/toggle/mutant_toggle/synth_head
 	savefile_key = "ipc_head_toggle"
 	relevant_mutant_bodypart = MUTANT_SYNTH_HEAD
 
-/datum/preference/choiced/mutant_choice/ipc_head
+/datum/preference/choiced/mutant_choice/synth_head
 	savefile_key = "feature_ipc_head"
 	relevant_mutant_bodypart = MUTANT_SYNTH_HEAD
-	type_to_check = /datum/preference/toggle/mutant_toggle/ipc_head
-	default_accessory_type = /datum/sprite_accessory/ipc_head/none
+	type_to_check = /datum/preference/toggle/mutant_toggle/synth_head
+	default_accessory_type = /datum/sprite_accessory/synth_head/human
 
-/datum/preference/tri_color/ipc_head
+/datum/preference/tri_color/synth_head
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
 	savefile_identifier = PREFERENCE_CHARACTER
 	savefile_key = "ipc_head_color"
 	relevant_mutant_bodypart = MUTANT_SYNTH_HEAD
-	type_to_check = /datum/preference/toggle/mutant_toggle/ipc_head
+	type_to_check = /datum/preference/toggle/mutant_toggle/synth_head
 
 
 /// Skrell Hair
