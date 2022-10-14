@@ -15,7 +15,10 @@
 /obj/structure/chair/office{
 	dir = 4
 	},
-/turf/open/floor/iron/dark/red,
+/obj/effect/turf_decal/trimline/dark_red/filled/line{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "be" = (
 /obj/effect/turf_decal/bot,
@@ -26,7 +29,8 @@
 /obj/item/wrench/advanced,
 /obj/item/wirecutters/advanced,
 /obj/item/weldingtool/advanced,
-/turf/open/floor/iron/dark/brown,
+/obj/effect/turf_decal/tile/brown/full,
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "bk" = (
 /obj/structure/chair{
@@ -48,21 +52,42 @@
 	id = "pirateforthangar";
 	pixel_y = 26
 	},
-/turf/open/floor/iron/dark/red/side{
+/obj/effect/turf_decal/trimline/dark_red/filled/line{
 	dir = 1
 	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/powered)
+"bR" = (
+/obj/effect/turf_decal/trimline/dark_red/filled/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/dark_red/filled/corner{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/powered)
+"cn" = (
+/obj/effect/turf_decal/trimline/dark_red/filled/line,
+/obj/effect/turf_decal/trimline/dark_red/filled/corner{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "cx" = (
 /obj/machinery/computer,
-/turf/open/floor/iron/dark/red,
+/obj/effect/turf_decal/tile/dark_red/fourcorners,
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "cy" = (
 /obj/machinery/vending/wallmed/directional/north,
+/obj/effect/turf_decal/trimline/dark_red/filled/end{
+	dir = 8
+	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
-"cA" = (
-/mob/living/simple_animal/hostile/pirate/melee,
-/turf/open/floor/iron/dark/blue,
+"cR" = (
+/obj/effect/turf_decal/trimline/dark_blue/filled/line,
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "di" = (
 /mob/living/simple_animal/hostile/skeleton,
@@ -85,7 +110,8 @@
 /obj/item/reagent_containers/cocainebrick,
 /obj/item/reagent_containers/cocainebrick,
 /obj/item/reagent_containers/cocainebrick,
-/turf/open/floor/iron/dark/brown,
+/obj/effect/turf_decal/tile/brown/full,
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "dO" = (
 /obj/machinery/door/airlock/maintenance_hatch,
@@ -94,16 +120,14 @@
 "dP" = (
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
-"em" = (
-/obj/machinery/computer{
-	dir = 1
-	},
-/turf/open/floor/iron/dark/red,
-/area/ruin/space/has_grav/powered)
-"ey" = (
-/turf/open/floor/iron/dark/red/corner{
+"eV" = (
+/obj/effect/turf_decal/trimline/brown/filled/line{
 	dir = 4
 	},
+/obj/effect/turf_decal/trimline/brown/filled/line{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "eY" = (
 /turf/open/floor/plating,
@@ -112,7 +136,8 @@
 /obj/structure/chair{
 	dir = 8
 	},
-/turf/open/floor/iron/dark/yellow,
+/obj/effect/turf_decal/tile/dark_red/fourcorners,
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "ff" = (
 /obj/machinery/vending/boozeomat/all_access,
@@ -127,6 +152,16 @@
 /obj/machinery/door/airlock/highsecurity{
 	name = "Loot Storage";
 	req_access_txt = "19;23"
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/powered)
+"fK" = (
+/obj/effect/turf_decal/trimline/brown/filled/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/brown/filled/corner,
+/obj/effect/turf_decal/trimline/brown/filled/corner{
+	dir = 4
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
@@ -149,7 +184,8 @@
 /obj/item/reagent_containers/pill/iron{
 	pixel_x = 8
 	},
-/turf/open/floor/iron/dark/brown,
+/obj/effect/turf_decal/tile/brown/full,
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "ga" = (
 /mob/living/simple_animal/hostile/pirate/melee,
@@ -162,12 +198,19 @@
 	},
 /obj/item/laser_pointer,
 /obj/item/lazarus_injector,
-/turf/open/floor/iron/dark/brown,
+/obj/effect/turf_decal/tile/brown/full,
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
-"gg" = (
-/turf/open/floor/iron/dark/red/side{
-	dir = 10
+"gl" = (
+/mob/living/simple_animal/hostile/syndicate/ranged{
+	desc = "Yarr-harr fiddley dee.";
+	faction = list("pirate");
+	name = "Pirate Operative"
 	},
+/obj/effect/turf_decal/trimline/dark_red/filled/corner{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "gy" = (
 /obj/structure/table,
@@ -184,18 +227,29 @@
 /obj/item/modular_computer/tablet/pda/cargo,
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/powered)
+"hd" = (
+/obj/effect/turf_decal/trimline/dark_red/filled/corner{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/dark_red/filled/corner{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/powered)
 "hl" = (
 /obj/effect/turf_decal/bot,
 /obj/structure/closet/crate/secure{
 	req_access = list("armory")
 	},
 /obj/item/pizzabox/infinite,
-/turf/open/floor/iron/dark/brown,
+/obj/effect/turf_decal/tile/brown/full,
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "hw" = (
 /obj/structure/table/reinforced/plasmarglass,
 /obj/item/megaphone/command,
-/turf/open/floor/iron/dark/red,
+/obj/effect/turf_decal/tile/dark_red/fourcorners,
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "hC" = (
 /obj/structure/trash_pile,
@@ -206,25 +260,25 @@
 /obj/item/bedsheet/syndie,
 /turf/open/floor/carpet/royalblack,
 /area/ruin/space/has_grav/powered)
+"hN" = (
+/obj/effect/turf_decal/trimline/dark_red/filled/line{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/powered)
 "ih" = (
 /turf/closed/indestructible/syndicate,
-/area/ruin/space/has_grav/powered)
-"iI" = (
-/mob/living/simple_animal/hostile/syndicate/melee{
-	desc = "Yo-ho-ho he took a bite'a gum-gum.";
-	faction = list("pirate");
-	name = "Pirate Operative"
-	},
-/turf/open/floor/iron/dark/yellow,
 /area/ruin/space/has_grav/powered)
 "jc" = (
 /obj/structure/table/reinforced/plasmarglass,
 /obj/item/phone,
-/turf/open/floor/iron/dark/red,
+/obj/effect/turf_decal/tile/dark_red/fourcorners,
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "jj" = (
 /obj/structure/rack/gunrack,
 /obj/item/spear/bonespear,
+/obj/effect/turf_decal/tile/dark_blue/fourcorners,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "jK" = (
@@ -266,12 +320,8 @@
 /obj/machinery/computer{
 	dir = 4
 	},
+/obj/effect/turf_decal/tile/dark_red/fourcorners,
 /turf/open/floor/iron/dark,
-/area/ruin/space/has_grav/powered)
-"lf" = (
-/obj/structure/table,
-/obj/item/storage/toolbox/electrical,
-/turf/open/floor/iron/dark/red,
 /area/ruin/space/has_grav/powered)
 "ln" = (
 /obj/machinery/vending/toyliberationstation,
@@ -289,19 +339,44 @@
 	},
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/powered)
-"mD" = (
-/mob/living/simple_animal/hostile/syndicate/ranged{
-	desc = "Yarr-harr fiddley dee.";
-	faction = list("pirate");
-	name = "Pirate Operative"
+"mg" = (
+/obj/effect/turf_decal/trimline/dark_red/filled/line,
+/obj/effect/turf_decal/trimline/dark_red/filled/corner{
+	dir = 1
 	},
-/turf/open/floor/iron/dark/yellow,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/powered)
+"mx" = (
+/mob/living/simple_animal/hostile/pirate/melee,
+/obj/effect/turf_decal/trimline/dark_blue/filled/line{
+	dir = 10
+	},
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "mV" = (
 /obj/machinery/door/airlock/multi_tile/metal{
 	dir = 8
 	},
-/turf/open/floor/iron/dark/red/side,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/powered)
+"na" = (
+/mob/living/simple_animal/hostile/syndicate/melee{
+	desc = "Yo-ho-ho he took a bite'a gum-gum.";
+	faction = list("pirate");
+	name = "Pirate Operative"
+	},
+/obj/effect/turf_decal/trimline/dark_red/filled/line,
+/obj/effect/turf_decal/trimline/dark_red/filled/corner{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/powered)
+"nf" = (
+/obj/effect/turf_decal/trimline/dark_red/filled/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/dark_red/filled/line,
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "nw" = (
 /obj/effect/turf_decal/bot,
@@ -315,7 +390,8 @@
 /obj/item/stack/sheet/animalhide/goliath_hide/polar_bear_hide{
 	amount = 15
 	},
-/turf/open/floor/iron/dark/brown,
+/obj/effect/turf_decal/tile/brown/full,
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "nJ" = (
 /obj/structure/closet/crate/secure{
@@ -324,28 +400,33 @@
 /obj/item/storage/backpack/holding/satchel,
 /turf/open/floor/engine,
 /area/ruin/space/has_grav/powered)
-"oa" = (
-/mob/living/simple_animal/hostile/pirate/melee,
-/turf/open/floor/iron/dark/red,
-/area/ruin/space/has_grav/powered)
 "ok" = (
 /obj/structure/chair/office{
 	dir = 8
 	},
-/turf/open/floor/iron/dark/red,
-/area/ruin/space/has_grav/powered)
-"oq" = (
-/turf/open/floor/iron/dark/red/side{
-	dir = 9
+/obj/effect/turf_decal/trimline/dark_red/filled/line{
+	dir = 8
 	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/powered)
+"op" = (
+/obj/structure/chair/office{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/dark_red/filled/line{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "ou" = (
 /obj/structure/table/reinforced/rglass,
 /obj/item/soap/syndie,
-/turf/open/floor/iron/dark/red,
+/obj/effect/turf_decal/tile/dark_red/fourcorners,
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "ox" = (
 /obj/structure/tank_holder/extinguisher,
+/obj/effect/turf_decal/tile/dark_red/fourcorners,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "oR" = (
@@ -354,9 +435,22 @@
 "oZ" = (
 /turf/open/floor/engine,
 /area/ruin/space)
-"pt" = (
-/mob/living/simple_animal/hostile/pirate/ranged,
-/turf/open/floor/iron/dark/red,
+"pu" = (
+/mob/living/simple_animal/hostile/syndicate/ranged{
+	desc = "Yarr-harr fiddley dee.";
+	faction = list("pirate");
+	name = "Pirate Operative"
+	},
+/obj/effect/turf_decal/trimline/dark_red/filled/corner{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/dark_red/filled/corner{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/dark_red/filled/corner{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "pA" = (
 /obj/machinery/computer/arcade/orion_trail{
@@ -369,24 +463,28 @@
 	name = "Armory";
 	req_access_txt = "19;23"
 	},
-/turf/open/floor/iron/dark/blue,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/powered)
+"pS" = (
+/mob/living/simple_animal/hostile/pirate/melee,
+/obj/effect/turf_decal/trimline/dark_red/filled/line{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "pV" = (
 /obj/machinery/computer{
 	dir = 1
 	},
+/obj/effect/turf_decal/tile/dark_red/fourcorners,
 /turf/open/floor/iron/dark,
-/area/ruin/space/has_grav/powered)
-"pX" = (
-/turf/open/floor/iron/dark/red/side{
-	dir = 1
-	},
 /area/ruin/space/has_grav/powered)
 "qq" = (
 /obj/structure/rack/shelf,
 /obj/effect/spawner/random/exotic/syndie,
 /obj/effect/spawner/random/exotic/syndie,
 /obj/effect/spawner/random/exotic/syndie,
+/obj/effect/turf_decal/tile/dark_blue/fourcorners,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "qy" = (
@@ -407,7 +505,8 @@
 /obj/structure/table/reinforced/plasmarglass,
 /obj/item/paper_bin,
 /obj/item/pen,
-/turf/open/floor/iron/dark/red,
+/obj/effect/turf_decal/tile/dark_red/fourcorners,
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "ru" = (
 /obj/structure/closet/secure_closet/freezer/fridge{
@@ -417,17 +516,16 @@
 /obj/item/reagent_containers/condiment/quality_oil,
 /turf/open/floor/iron/kitchen,
 /area/ruin/space/has_grav/powered)
-"rD" = (
-/obj/structure/chair/office,
-/turf/open/floor/iron/dark/red,
+"rA" = (
+/obj/effect/turf_decal/trimline/dark_red/filled/corner,
+/obj/effect/turf_decal/trimline/dark_red/filled/line{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "rQ" = (
 /obj/machinery/vending/cigarette/syndicate,
 /turf/open/floor/wood,
-/area/ruin/space/has_grav/powered)
-"rS" = (
-/mob/living/simple_animal/hostile/pirate/melee,
-/turf/open/floor/iron/dark/red/side,
 /area/ruin/space/has_grav/powered)
 "sz" = (
 /obj/structure/closet/crate/secure/gear{
@@ -435,15 +533,13 @@
 	},
 /obj/item/shield/riot/tele,
 /obj/item/switchblade,
+/obj/effect/turf_decal/tile/dark_blue/fourcorners,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "sA" = (
 /obj/structure/table/wood/poker,
 /obj/item/reagent_containers/cocaine,
 /turf/open/floor/carpet,
-/area/ruin/space/has_grav/powered)
-"sF" = (
-/turf/open/floor/iron/dark/red/side,
 /area/ruin/space/has_grav/powered)
 "sS" = (
 /obj/structure/table/wood,
@@ -452,7 +548,14 @@
 /area/ruin/space/has_grav/powered)
 "sU" = (
 /obj/structure/table/reinforced/plasmarglass,
-/turf/open/floor/iron/dark/red,
+/obj/effect/turf_decal/tile/dark_red/fourcorners,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/powered)
+"sV" = (
+/obj/effect/turf_decal/trimline/dark_blue/filled/line{
+	dir = 5
+	},
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "tm" = (
 /obj/structure/chair/office{
@@ -495,32 +598,34 @@
 /obj/item/shield/riot{
 	pixel_x = -8
 	},
+/obj/effect/turf_decal/tile/dark_blue/fourcorners,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "tZ" = (
 /obj/structure/table/reinforced/rglass,
-/turf/open/floor/iron/dark/red,
+/obj/effect/turf_decal/tile/dark_red/fourcorners,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/powered)
+"uc" = (
+/obj/effect/turf_decal/trimline/dark_red/filled/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/dark_red/filled/line{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "us" = (
 /turf/open/floor/iron/kitchen,
 /area/ruin/space/has_grav/powered)
-"uW" = (
-/obj/item/kirbyplants/random,
-/turf/open/floor/iron/dark/red/side{
-	dir = 8
+"vE" = (
+/obj/effect/turf_decal/trimline/brown/filled/line{
+	dir = 10
 	},
-/area/ruin/space/has_grav/powered)
-"vb" = (
-/obj/structure/tank_holder/extinguisher,
-/turf/open/floor/iron/dark/red,
-/area/ruin/space/has_grav/powered)
-"vk" = (
-/mob/living/simple_animal/hostile/syndicate/melee{
-	desc = "Yo-ho-ho he took a bite'a gum-gum.";
-	faction = list("pirate");
-	name = "Pirate Operative"
+/obj/effect/turf_decal/trimline/brown/filled/corner{
+	dir = 4
 	},
-/turf/open/floor/iron/dark/red,
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "vF" = (
 /obj/effect/turf_decal/bot,
@@ -532,7 +637,14 @@
 /obj/item/reagent_containers/hashbrick,
 /obj/item/reagent_containers/hashbrick,
 /obj/item/reagent_containers/hashbrick,
-/turf/open/floor/iron/dark/brown,
+/obj/effect/turf_decal/tile/brown/full,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/powered)
+"vR" = (
+/obj/effect/turf_decal/trimline/dark_blue/filled/line{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "vU" = (
 /mob/living/simple_animal/hostile/mining_drone{
@@ -543,13 +655,14 @@
 	id = "piratefortloot";
 	pixel_y = -26
 	},
-/turf/open/floor/iron/dark/brown,
+/obj/effect/turf_decal/tile/brown/full,
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "vW" = (
 /obj/machinery/door/airlock/maintenance_hatch{
 	req_access = list("maint_tunnels")
 	},
-/turf/open/floor/iron/dark/red/side,
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "vX" = (
 /turf/closed/mineral/random/asteroid,
@@ -563,6 +676,19 @@
 /obj/effect/spawner/random/engineering/material_rare,
 /turf/open/floor/engine,
 /area/ruin/space/has_grav/powered)
+"we" = (
+/obj/effect/turf_decal/trimline/brown/filled/end{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/powered)
+"wr" = (
+/mob/living/simple_animal/hostile/pirate/ranged,
+/obj/effect/turf_decal/trimline/dark_red/filled/line{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/powered)
 "wv" = (
 /mob/living/simple_animal/crab,
 /turf/open/floor/engine,
@@ -572,6 +698,12 @@
 /obj/item/raw_anomaly_core/random,
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/powered)
+"wL" = (
+/obj/effect/turf_decal/trimline/dark_red/filled/end{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/powered)
 "wR" = (
 /obj/structure/bed,
 /obj/item/bedsheet/random,
@@ -579,27 +711,48 @@
 /area/ruin/space/has_grav/powered)
 "wT" = (
 /obj/machinery/computer/security,
+/obj/effect/turf_decal/tile/dark_red/fourcorners,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "xb" = (
 /obj/structure/chair{
 	dir = 4
 	},
-/turf/open/floor/iron/dark/yellow,
+/obj/effect/turf_decal/tile/dark_red/fourcorners,
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
-"xt" = (
-/turf/open/floor/iron/dark/yellow,
+"xg" = (
+/obj/effect/turf_decal/trimline/brown/filled/line{
+	dir = 5
+	},
+/obj/effect/turf_decal/trimline/brown/filled/corner{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "xw" = (
 /obj/item/kirbyplants/random,
-/turf/open/floor/iron/dark/red/side{
+/obj/effect/turf_decal/trimline/dark_red/filled/line{
+	dir = 10
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/powered)
+"xD" = (
+/mob/living/simple_animal/hostile/syndicate/melee{
+	desc = "Yo-ho-ho he took a bite'a gum-gum.";
+	faction = list("pirate");
+	name = "Pirate Operative"
+	},
+/obj/effect/turf_decal/trimline/dark_red/filled/line{
 	dir = 4
 	},
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "xL" = (
 /obj/structure/table,
 /obj/item/reagent_containers/cocaine,
-/turf/open/floor/iron/dark/red,
+/obj/effect/turf_decal/tile/dark_red/fourcorners,
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "xM" = (
 /mob/living/simple_animal/hostile/pirate/melee,
@@ -611,6 +764,18 @@
 /area/ruin/space/has_grav/powered)
 "xX" = (
 /obj/structure/fireaxecabinet/directional/north,
+/obj/effect/turf_decal/trimline/dark_red/filled/corner{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/dark_red/filled/line{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/powered)
+"yl" = (
+/obj/effect/turf_decal/trimline/dark_blue/filled/line{
+	dir = 9
+	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "yo" = (
@@ -631,9 +796,12 @@
 /obj/item/reagent_containers/honeycomb,
 /turf/open/floor/iron/kitchen,
 /area/ruin/space/has_grav/powered)
-"yH" = (
+"yE" = (
 /mob/living/simple_animal/hostile/pirate/melee,
-/turf/open/floor/iron/dark/yellow,
+/obj/effect/turf_decal/trimline/dark_red/filled/corner{
+	dir = 8
+	},
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "yP" = (
 /obj/effect/turf_decal/bot,
@@ -646,23 +814,26 @@
 /obj/item/stack/sheet/plastic/five,
 /obj/item/stack/spacecash/c1000,
 /obj/item/stack/spacecash/c1000,
-/turf/open/floor/iron/dark/brown,
+/obj/effect/turf_decal/tile/brown/full,
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "yU" = (
 /obj/structure/table/reinforced/plasmarglass,
 /obj/item/pen,
-/turf/open/floor/iron/dark/red,
+/obj/effect/turf_decal/tile/dark_red/fourcorners,
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "zk" = (
 /obj/structure/table,
 /obj/item/storage/belt,
-/turf/open/floor/iron/dark/red,
+/obj/effect/turf_decal/tile/dark_red/fourcorners,
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
-"zy" = (
-/mob/living/simple_animal/hostile/pirate/melee,
-/turf/open/floor/iron/dark/red/side{
-	dir = 8
+"zx" = (
+/obj/effect/turf_decal/trimline/dark_red/filled/line{
+	dir = 6
 	},
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "zQ" = (
 /obj/structure/chair{
@@ -677,12 +848,14 @@
 	maxHealth = 50;
 	name = "Jack"
 	},
-/turf/open/floor/iron/dark/red,
+/obj/effect/turf_decal/trimline/dark_red/filled/line,
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "An" = (
 /obj/structure/closet/crate,
 /obj/effect/spawner/random/exotic/antag_gear_weak,
-/turf/open/floor/iron/dark/red,
+/obj/effect/turf_decal/tile/dark_red/fourcorners,
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "Ao" = (
 /obj/structure/table/wood/poker,
@@ -693,16 +866,26 @@
 /area/ruin/space/has_grav/powered)
 "AA" = (
 /mob/living/simple_animal/hostile/pirate/ranged,
+/obj/effect/turf_decal/trimline/dark_red/filled/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/dark_red/filled/line{
+	dir = 8
+	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "AS" = (
 /obj/machinery/porta_turret{
 	faction = list("pirate")
 	},
-/turf/open/floor/iron/dark/yellow,
+/obj/effect/turf_decal/tile/dark_red/fourcorners,
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
-"AW" = (
-/turf/open/floor/iron/dark/brown,
+"BS" = (
+/obj/effect/turf_decal/trimline/dark_red/filled/line{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "BV" = (
 /mob/living/simple_animal/hostile/syndicate/ranged{
@@ -710,10 +893,19 @@
 	faction = list("pirate");
 	name = "Pirate Operative"
 	},
+/obj/effect/turf_decal/trimline/dark_red/filled/corner{
+	dir = 1
+	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "Cq" = (
 /obj/machinery/door/airlock/hatch,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/powered)
+"CM" = (
+/obj/effect/turf_decal/trimline/dark_red/filled/corner{
+	dir = 4
+	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "CN" = (
@@ -721,14 +913,33 @@
 /obj/item/toy/cards/deck,
 /turf/open/floor/carpet,
 /area/ruin/space/has_grav/powered)
+"CV" = (
+/obj/item/kirbyplants/random,
+/obj/effect/turf_decal/tile/dark_red/fourcorners,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/powered)
+"Dy" = (
+/obj/effect/turf_decal/trimline/dark_red/filled/end{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/powered)
+"DF" = (
+/obj/effect/turf_decal/trimline/dark_red/filled/line{
+	dir = 10
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/powered)
 "DY" = (
 /obj/structure/chair/office,
+/obj/effect/turf_decal/trimline/dark_red/filled/line,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "Ef" = (
 /obj/structure/table,
 /obj/item/papercutter,
-/turf/open/floor/iron/dark/red,
+/obj/effect/turf_decal/tile/dark_red/fourcorners,
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "Ej" = (
 /obj/structure/table/wood/poker,
@@ -741,11 +952,30 @@
 	},
 /obj/effect/spawner/random/contraband/armory,
 /obj/effect/spawner/random/exotic/antag_gear,
+/obj/effect/turf_decal/tile/dark_blue/fourcorners,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/powered)
+"Et" = (
+/obj/effect/turf_decal/trimline/brown/filled/line,
+/obj/effect/turf_decal/trimline/brown/filled/corner{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/brown/filled/corner{
+	dir = 1
+	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "EA" = (
 /obj/structure/table,
 /obj/item/storage/medkit/emergency,
+/obj/effect/turf_decal/tile/dark_red/fourcorners,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/powered)
+"EC" = (
+/mob/living/simple_animal/hostile/pirate/melee,
+/obj/effect/turf_decal/trimline/dark_red/filled/line{
+	dir = 1
+	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "EH" = (
@@ -756,6 +986,9 @@
 /obj/structure/chair/office{
 	dir = 1
 	},
+/obj/effect/turf_decal/trimline/dark_red/filled/line{
+	dir = 9
+	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "ET" = (
@@ -764,16 +997,11 @@
 /area/ruin/space/has_grav/powered)
 "Fb" = (
 /obj/structure/filingcabinet/chestdrawer,
-/turf/open/floor/iron/dark/red,
+/obj/effect/turf_decal/tile/dark_red/fourcorners,
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "Fd" = (
 /turf/open/floor/engine,
-/area/ruin/space/has_grav/powered)
-"Fg" = (
-/mob/living/simple_animal/hostile/pirate/ranged,
-/turf/open/floor/iron/dark/red/side{
-	dir = 8
-	},
 /area/ruin/space/has_grav/powered)
 "Fj" = (
 /obj/structure/chair{
@@ -781,14 +1009,15 @@
 	},
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/powered)
+"FP" = (
+/obj/effect/turf_decal/trimline/dark_red/filled/line{
+	dir = 5
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/powered)
 "FW" = (
 /obj/machinery/griddle,
 /turf/open/floor/iron/kitchen,
-/area/ruin/space/has_grav/powered)
-"FX" = (
-/turf/open/floor/iron/dark/red/side{
-	dir = 8
-	},
 /area/ruin/space/has_grav/powered)
 "Gc" = (
 /mob/living/simple_animal/hostile/pirate/ranged,
@@ -801,10 +1030,18 @@
 	},
 /obj/item/retractor/alien,
 /obj/item/scalpel/alien,
-/turf/open/floor/iron/dark/brown,
+/obj/effect/turf_decal/tile/brown/full,
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
-"Hh" = (
-/turf/open/floor/iron/dark/red,
+"Gm" = (
+/obj/effect/turf_decal/trimline/dark_red/filled/line{
+	dir = 9
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/powered)
+"Hd" = (
+/obj/effect/turf_decal/trimline/dark_red/filled/corner,
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "Hi" = (
 /obj/structure/chair/office{
@@ -829,6 +1066,12 @@
 /obj/structure/table/wood,
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/powered)
+"Jd" = (
+/obj/effect/turf_decal/trimline/dark_blue/filled/line{
+	dir = 6
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/powered)
 "Js" = (
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/powered)
@@ -836,26 +1079,36 @@
 /obj/structure/closet/crate,
 /obj/effect/spawner/random/exotic/languagebook,
 /obj/effect/spawner/random/exotic/languagebook,
-/turf/open/floor/iron/dark/red,
+/obj/effect/turf_decal/tile/dark_red/fourcorners,
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
-"Jx" = (
-/obj/item/kirbyplants/random,
-/turf/open/floor/iron/dark/red/side{
-	dir = 5
-	},
-/area/ruin/space/has_grav/powered)
-"JH" = (
-/turf/open/floor/iron/dark/red/side{
+"Jz" = (
+/obj/effect/turf_decal/trimline/dark_red/filled/end{
 	dir = 4
 	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/powered)
+"JO" = (
+/obj/effect/turf_decal/trimline/dark_red/filled/line,
+/obj/effect/turf_decal/trimline/dark_red/filled/line{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "Kb" = (
 /obj/item/lead_pipe,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/powered)
+"Kj" = (
+/obj/effect/turf_decal/trimline/dark_red/filled/line{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/powered)
 "Kk" = (
 /obj/machinery/suit_storage_unit/pirate,
-/turf/open/floor/iron/dark/brown,
+/obj/effect/turf_decal/tile/brown/full,
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "Kt" = (
 /obj/machinery/porta_turret/syndicate/energy{
@@ -867,13 +1120,22 @@
 /mob/living/simple_animal/hostile/pirate/melee,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
+"LI" = (
+/obj/effect/turf_decal/trimline/dark_red/filled/corner,
+/obj/effect/turf_decal/trimline/dark_red/filled/corner{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/powered)
 "LM" = (
 /obj/structure/table/wood,
 /obj/item/phone,
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/powered)
-"LW" = (
-/turf/open/floor/iron/dark/blue,
+"Ma" = (
+/mob/living/simple_animal/hostile/pirate/melee,
+/obj/effect/turf_decal/trimline/dark_red/filled/line,
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "Mc" = (
 /obj/item/kirbyplants/random,
@@ -882,7 +1144,8 @@
 "MB" = (
 /obj/effect/turf_decal/bot,
 /obj/structure/closet/crate/radiation,
-/turf/open/floor/iron/dark/brown,
+/obj/effect/turf_decal/tile/brown/full,
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "MX" = (
 /obj/machinery/computer/slot_machine,
@@ -892,7 +1155,15 @@
 /obj/structure/table,
 /obj/item/paper_bin,
 /obj/item/pen/fountain,
-/turf/open/floor/iron/dark/red,
+/obj/effect/turf_decal/tile/dark_red/fourcorners,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/powered)
+"Nn" = (
+/obj/effect/turf_decal/trimline/brown/filled/line,
+/obj/effect/turf_decal/trimline/brown/filled/line{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "Nz" = (
 /mob/living/simple_animal/hostile/syndicate/melee{
@@ -900,19 +1171,27 @@
 	faction = list("pirate");
 	name = "Pirate Operative"
 	},
+/obj/effect/turf_decal/trimline/brown/filled/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/brown/filled/line{
+	dir = 8
+	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "NJ" = (
 /obj/effect/turf_decal/bot,
 /obj/structure/closet/crate/large,
 /obj/item/pickaxe/diamond,
-/turf/open/floor/iron/dark/brown,
+/obj/effect/turf_decal/tile/brown/full,
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "NM" = (
 /obj/machinery/porta_turret/syndicate/energy{
 	dir = 6;
 	faction = list("pirate")
 	},
+/obj/effect/turf_decal/tile/dark_blue/fourcorners,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "Oa" = (
@@ -922,16 +1201,18 @@
 "Ok" = (
 /obj/structure/table/reinforced/plasmarglass,
 /obj/machinery/cell_charger_multi,
-/turf/open/floor/iron/dark/red,
+/obj/effect/turf_decal/tile/dark_red/fourcorners,
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "Ph" = (
 /obj/structure/marker_beacon/burgundy,
 /turf/open/floor/engine,
 /area/ruin/space)
-"Qa" = (
-/turf/open/floor/iron/dark/red/side{
-	dir = 6
+"Qc" = (
+/obj/effect/turf_decal/trimline/dark_red/filled/corner{
+	dir = 1
 	},
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "Qr" = (
 /obj/effect/turf_decal/bot,
@@ -941,11 +1222,13 @@
 /obj/item/raw_anomaly_core/random,
 /obj/item/raw_anomaly_core/random,
 /obj/item/raw_anomaly_core/random,
-/turf/open/floor/iron/dark/brown,
+/obj/effect/turf_decal/tile/brown/full,
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "Qw" = (
 /obj/structure/table,
 /obj/item/storage/toolbox/electrical,
+/obj/effect/turf_decal/tile/dark_red/fourcorners,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "Qy" = (
@@ -1004,7 +1287,8 @@
 /obj/item/reagent_containers/pill/stimulant{
 	pixel_y = -8
 	},
-/turf/open/floor/iron/dark/brown,
+/obj/effect/turf_decal/tile/brown/full,
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "TD" = (
 /obj/machinery/autolathe/hacked,
@@ -1023,7 +1307,8 @@
 /area/ruin/space/has_grav/powered)
 "TY" = (
 /obj/machinery/sleeper/syndie,
-/turf/open/floor/iron/dark/red,
+/obj/effect/turf_decal/tile/dark_red/fourcorners,
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "Ug" = (
 /turf/template_noop,
@@ -1034,14 +1319,25 @@
 	},
 /turf/open/floor/carpet,
 /area/ruin/space/has_grav/powered)
-"UC" = (
-/obj/machinery/door/airlock/hatch,
-/turf/open/floor/iron/dark/red,
+"Ut" = (
+/obj/item/kirbyplants/random,
+/obj/effect/turf_decal/trimline/dark_red/filled/line{
+	dir = 6
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/powered)
+"Uu" = (
+/obj/effect/turf_decal/trimline/dark_red/filled/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/dark_red/filled/corner,
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "UG" = (
 /obj/structure/table/reinforced/rglass,
 /obj/effect/spawner/random/engineering/toolbox,
-/turf/open/floor/iron/dark/red,
+/obj/effect/turf_decal/tile/dark_red/fourcorners,
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "UH" = (
 /obj/machinery/door/poddoor/shutters{
@@ -1074,12 +1370,20 @@
 /obj/item/stack/sheet/mineral/plasma/thirty,
 /obj/item/stack/spacecash/c1000,
 /obj/item/stack/spacecash/c1000,
-/turf/open/floor/iron/dark/brown,
+/obj/effect/turf_decal/tile/brown/full,
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "VI" = (
 /mob/living/simple_animal/hostile/pirate/melee/space,
 /turf/open/misc/asteroid/lowpressure,
 /area/ruin/space)
+"VL" = (
+/mob/living/simple_animal/hostile/pirate/melee,
+/obj/effect/turf_decal/trimline/dark_red/filled/corner{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/powered)
 "VZ" = (
 /mob/living/simple_animal/hostile/abductor,
 /turf/open/floor/engine,
@@ -1087,27 +1391,32 @@
 "Wd" = (
 /obj/structure/table,
 /obj/item/storage/toolbox/syndicate,
-/turf/open/floor/iron/dark/red,
+/obj/effect/turf_decal/tile/dark_red/fourcorners,
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "WA" = (
 /obj/structure/table,
-/turf/open/floor/iron/dark/red,
+/obj/effect/turf_decal/tile/dark_red/fourcorners,
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "WI" = (
 /obj/structure/rack/gunrack,
 /obj/item/gun/energy/laser,
+/obj/effect/turf_decal/tile/dark_blue/fourcorners,
 /turf/open/floor/iron/dark,
-/area/ruin/space/has_grav/powered)
-"WJ" = (
-/turf/open/floor/iron/dark/red/corner,
 /area/ruin/space/has_grav/powered)
 "WT" = (
 /obj/machinery/smartfridge/food,
 /turf/open/floor/iron/kitchen,
 /area/ruin/space/has_grav/powered)
+"Xe" = (
+/obj/effect/turf_decal/trimline/dark_red/filled/line,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/powered)
 "XT" = (
 /obj/structure/rack,
 /obj/effect/spawner/random/exotic/antag_gear_weak,
+/obj/effect/turf_decal/tile/dark_blue/fourcorners,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "Yn" = (
@@ -1118,28 +1427,35 @@
 "Yt" = (
 /obj/structure/table,
 /obj/item/storage/medkit/advanced,
-/turf/open/floor/iron/dark/red,
+/obj/effect/turf_decal/tile/dark_red/fourcorners,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/powered)
+"Yy" = (
+/obj/effect/turf_decal/trimline/brown/filled/end{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "YJ" = (
 /obj/machinery/door/airlock/glass,
-/turf/open/floor/iron/dark/red,
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "YM" = (
 /turf/closed/wall/r_wall/syndicate,
 /area/ruin/space/has_grav/powered)
-"Za" = (
-/obj/item/kirbyplants/random,
-/turf/open/floor/iron/dark/red,
-/area/ruin/space/has_grav/powered)
 "Ze" = (
 /obj/machinery/computer/crew,
+/obj/effect/turf_decal/tile/dark_red/fourcorners,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
-"Zg" = (
-/obj/structure/tank_holder/extinguisher,
-/turf/open/floor/iron/dark/red/side{
-	dir = 5
+"Zj" = (
+/obj/effect/turf_decal/trimline/dark_red/filled/line{
+	dir = 4
 	},
+/obj/effect/turf_decal/trimline/dark_red/filled/corner{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered)
 "Zs" = (
 /obj/machinery/door/airlock/glass,
@@ -1150,17 +1466,6 @@
 /obj/item/paper_bin,
 /obj/item/pen/fountain/captain,
 /turf/open/floor/wood,
-/area/ruin/space/has_grav/powered)
-"ZC" = (
-/obj/structure/chair/office{
-	dir = 1
-	},
-/turf/open/floor/iron/dark/red,
-/area/ruin/space/has_grav/powered)
-"ZK" = (
-/turf/open/floor/iron/dark/red/side{
-	dir = 5
-	},
 /area/ruin/space/has_grav/powered)
 
 (1,1,1) = {"
@@ -1380,25 +1685,25 @@ vX
 kb
 kb
 ih
-oq
-FX
-FX
-FX
-FX
-FX
-FX
-FX
-Fg
-FX
-FX
-FX
-FX
-FX
-FX
-FX
-FX
-FX
-uW
+Gm
+hN
+hN
+hN
+hN
+hN
+hN
+hN
+wr
+hN
+hN
+hN
+hN
+hN
+hN
+hN
+hN
+hN
+xw
 ih
 YM
 Kt
@@ -1440,7 +1745,7 @@ dP
 dP
 dP
 dP
-dP
+Xe
 Ss
 eY
 Ss
@@ -1464,25 +1769,25 @@ UM
 oZ
 Ph
 km
-pX
+BS
 dP
-WJ
-JH
-JH
-JH
-JH
-JH
-JH
-JH
-JH
-JH
-dP
-JH
-JH
-JH
-JH
-JH
-xw
+Hd
+Kj
+Kj
+Kj
+Kj
+Kj
+Kj
+Kj
+Kj
+Kj
+Kj
+Kj
+Kj
+Kj
+Kj
+Kj
+Ut
 ih
 YM
 Kt
@@ -1506,9 +1811,9 @@ UM
 UM
 UM
 km
-pX
+BS
 LG
-sF
+Xe
 oR
 oR
 oR
@@ -1548,9 +1853,9 @@ oZ
 oZ
 oZ
 km
-pX
+BS
 dP
-sF
+Xe
 oR
 Kk
 Kk
@@ -1559,8 +1864,8 @@ nw
 Qr
 MB
 oR
-vb
-Hh
+ox
+wL
 oR
 RQ
 Iy
@@ -1590,19 +1895,19 @@ UM
 UM
 UM
 km
-pX
+BS
 dP
-sF
+Xe
 UH
-AW
-dP
-dP
-dP
-dP
+we
+fK
+eV
+eV
+vE
 vU
 oR
-Za
-Hh
+CV
+Jz
 YJ
 Js
 Fj
@@ -1632,15 +1937,15 @@ UM
 oZ
 Ph
 km
-pX
+BS
 dP
-sF
+Xe
 oR
 ge
-dP
+Nn
 NJ
 vF
-dP
+Nn
 Gf
 oR
 oR
@@ -1674,15 +1979,15 @@ kb
 kb
 kb
 ih
-pX
+BS
 dP
-sF
+Xe
 oR
 hl
-dP
-dP
+xg
+eV
 Nz
-dP
+Et
 fN
 oR
 WT
@@ -1694,16 +1999,16 @@ Js
 Js
 Js
 YJ
-oq
-FX
-FX
-FX
-FX
-FX
-zy
-FX
-FX
-gg
+Gm
+hN
+hN
+hN
+hN
+hN
+pS
+hN
+hN
+DF
 ih
 vX
 vX
@@ -1716,15 +2021,15 @@ vX
 vX
 vX
 ih
-ZK
-JH
-Qa
+FP
+Kj
+zx
 oR
 Vx
 yP
 dI
 be
-AW
+Yy
 Tm
 oR
 xV
@@ -1736,16 +2041,16 @@ jK
 ga
 Js
 oR
-pX
-WJ
-JH
-JH
-JH
-JH
-JH
-JH
-ey
-sF
+FP
+LI
+Kj
+Kj
+Kj
+Kj
+Kj
+Kj
+CM
+Xe
 ih
 vX
 Ug
@@ -1778,16 +2083,16 @@ Ao
 Um
 Js
 oR
-Zg
-Qa
+ox
+Jz
 oR
 oR
 oR
 oR
 oR
 oR
-pX
-sF
+BS
+Xe
 ih
 vX
 Ug
@@ -1804,12 +2109,12 @@ ET
 Zz
 wG
 oR
-lf
+Qw
 zk
 MY
 Fb
-Hh
-vb
+wL
+ox
 oR
 EH
 us
@@ -1824,12 +2129,12 @@ oR
 dO
 oR
 NM
-LW
-cA
+yl
+mx
 El
 oR
-pX
-sF
+BS
+Xe
 ih
 vX
 vX
@@ -1847,11 +2152,11 @@ Fj
 LM
 oR
 xL
-dP
-dP
-dP
-dP
-Hh
+Gm
+hN
+hN
+hd
+DF
 oR
 ru
 us
@@ -1866,12 +2171,12 @@ TD
 eY
 oR
 XT
-LW
-LW
+vR
+cR
 sz
 oR
-pX
-sF
+BS
+Xe
 ih
 vX
 vX
@@ -1888,7 +2193,7 @@ UL
 Js
 Js
 oR
-Hh
+Gm
 BV
 dP
 dP
@@ -1908,12 +2213,12 @@ RG
 eY
 oR
 WI
-LW
-LW
+vR
+cR
 qq
 oR
-pX
-rS
+BS
+Ma
 ih
 vX
 vX
@@ -1930,12 +2235,12 @@ Re
 tm
 Js
 Vm
-Hh
+FP
+CM
 dP
-Hh
-Hh
+dP
 LG
-Hh
+Xe
 oR
 FW
 us
@@ -1950,12 +2255,12 @@ lV
 eY
 oR
 jj
-LW
-LW
+sV
+Jd
 tD
 oR
-pX
-sF
+BS
+Xe
 ih
 vX
 vX
@@ -1973,11 +2278,11 @@ ap
 ap
 oR
 TY
+BS
 dP
-Hh
-Hh
 dP
-Hh
+dP
+Xe
 oR
 yo
 us
@@ -1996,8 +2301,8 @@ pF
 pF
 oR
 oR
-pX
-sF
+FP
+zx
 ih
 vX
 vX
@@ -2015,11 +2320,11 @@ ih
 oR
 oR
 TY
-dP
+Uu
 aD
 aD
-dP
-Hh
+CM
+Xe
 oR
 oR
 oR
@@ -2034,11 +2339,11 @@ cy
 EA
 Qw
 ko
-dP
-dP
+Gm
+DF
 pV
 oR
-pX
+dP
 mV
 ih
 vX
@@ -2056,32 +2361,32 @@ vX
 vX
 YM
 cx
-ZC
-dP
+EP
+mg
 hw
 yU
-dP
-Hh
+BS
+Xe
 oR
-vb
-Hh
-Hh
-pt
-Hh
-Hh
-Hh
-Hh
+ox
+Gm
+hN
+wr
+hN
+hN
+hN
+DF
 oR
 xX
-xt
+rA
 AA
-Hh
-dP
-iI
+uc
+Zj
+na
 pV
 oR
-pX
-sF
+Gm
+DF
 ih
 vX
 vX
@@ -2098,32 +2403,32 @@ ih
 ih
 oR
 cx
-LG
-dP
+EC
+Xe
 rq
 sU
-EP
-Hh
+op
+Xe
 Cq
+Gm
+Qc
 dP
 dP
 dP
 dP
 dP
-dP
-dP
-dP
+Xe
 Cq
-dP
-dP
+FP
+cn
 xb
 tZ
 xb
-dP
-dP
+bR
+DF
 oR
-pX
-sF
+BS
+Xe
 ih
 vX
 vX
@@ -2139,33 +2444,33 @@ oR
 oR
 oR
 oR
-Hh
-dP
-rD
+Gm
+Qc
+DY
 Ok
 jc
-dP
-Hh
+Uu
+zx
 oR
-Hh
-Hh
-Hh
-Hh
-Hh
-vk
-Hh
-Hh
+FP
+Kj
+Kj
+Kj
+Kj
+xD
+Kj
+zx
 oR
 Ze
-Hh
+JO
 UG
 AS
 tZ
-Hh
-dP
+BS
+Xe
 oR
-pX
-sF
+BS
+Xe
 ih
 vX
 vX
@@ -2181,12 +2486,12 @@ nJ
 Ht
 tC
 oR
-Hh
+BS
 dP
-oa
-Hh
+yE
+hN
 ok
-dP
+mg
 An
 oR
 oR
@@ -2199,15 +2504,15 @@ Zs
 oR
 oR
 wT
-dP
+JO
 fa
 ou
 fa
-dP
-dP
+BS
+Xe
 oR
-pX
-sF
+BS
+Xe
 ih
 vX
 vX
@@ -2223,12 +2528,12 @@ Fd
 wv
 Fd
 TO
-Hh
+BS
 dP
-Hh
-Hh
-Hh
 dP
+dP
+dP
+Xe
 Jw
 oR
 MX
@@ -2240,16 +2545,16 @@ Js
 Js
 pA
 oR
-dP
-mD
-dP
-Hh
-dP
-yH
-dP
-UC
-pX
-sF
+Dy
+pu
+hN
+hN
+hN
+VL
+Xe
+Cq
+FP
+cn
 ih
 vX
 Ug
@@ -2265,13 +2570,13 @@ Fd
 Fd
 Fd
 TO
-Hh
+BS
 dP
-Hh
-Hh
-Hh
 dP
-em
+dP
+dP
+Xe
+pV
 oR
 MX
 Js
@@ -2283,15 +2588,15 @@ Js
 Js
 oR
 ox
-dP
-dP
-dP
-dP
-dP
-dP
+FP
+Kj
+LI
+Kj
+Kj
+zx
 oR
-Jx
-Qa
+CV
+Jz
 ih
 vX
 vX
@@ -2307,13 +2612,13 @@ bF
 vY
 kh
 oR
-Hh
-BV
+FP
+gl
 dP
 dP
 dP
 DY
-em
+pV
 oR
 Js
 Gc
@@ -2327,7 +2632,7 @@ oR
 oR
 tA
 oR
-dP
+nf
 oR
 tA
 oR
@@ -2350,11 +2655,11 @@ oR
 oR
 oR
 cx
-dP
-dP
-dP
-dP
-dP
+FP
+Kj
+Kj
+Kj
+zx
 MY
 oR
 Js
@@ -2369,7 +2674,7 @@ oR
 Fd
 Fd
 oR
-dP
+nf
 oR
 Fd
 Fd
@@ -2411,7 +2716,7 @@ oR
 dF
 Fd
 oR
-dP
+Jz
 oR
 Fd
 VZ

@@ -98,9 +98,9 @@ SUBSYSTEM_DEF(gun_companies)
 
 	var/list/products = subtypesof(/datum/armament_entry/cargo_gun)
 	// Setting cost and stock of armament entries
-	for(var/armament_category as anything in GLOB.armament_entries)
-		for(var/subcategory as anything in GLOB.armament_entries[armament_category][CATEGORY_ENTRY])
-			for(var/datum/armament_entry/armament_entry as anything in GLOB.armament_entries[armament_category][CATEGORY_ENTRY][subcategory])
+	for(var/armament_category as anything in SSarmaments.entries)
+		for(var/subcategory as anything in SSarmaments.entries[armament_category][CATEGORY_ENTRY])
+			for(var/datum/armament_entry/armament_entry as anything in SSarmaments.entries[armament_category][CATEGORY_ENTRY][subcategory])
 				if(products && !(armament_entry.type in products))
 					continue
 
