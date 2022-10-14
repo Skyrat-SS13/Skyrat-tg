@@ -619,3 +619,118 @@
       that also work with digi legs.
   - bugfix: Polychromaticfacility - re-added the missing 3rd items that disappeared
       at some point and swapped the Sec statue for a science one.
+2022-10-13:
+  GoldenAlpharex:
+  - bugfix: Blood no longer trail in anyone's bloodstream as a reagent after being
+      inserted in their body.
+  Melbert:
+  - bugfix: Fixes "absorb another changeling" objective
+  - qol: Completing "The Living Heart" ritual with a replacement heart will restart
+      a heart if it's not beating.
+  Paxilmaniac:
+  - imageadd: New sprites for stone floors!
+  RimiNosha:
+  - bugfix: Fixed targeted subtler not listing any valid targets.
+  ShizCalev:
+  - server: Added clarified downstream modularity support for the inhands unit test.
+  - bugfix: Wall mounted & portable flashers now actually flash again!
+  - admin: Flashers can now have their range and cooldown durations vareditted with
+      flash_range and flash_cooldown_duration respectively.
+  - qol: You can now change the color of toy energy swords with a screwdriver!
+  - bugfix: Fixed a runtime when clicking an away mission gateway without the partner
+      gateway being active.
+  - bugfix: Fixed a runtime preventing clientless mobs from mining minerals.
+  SkyratBot:
+  - bugfix: the cargo department is once again coloured in the crew manifest
+  - bugfix: Bodyparts (e.g. severed heads) stored in organ fridges now freeze the
+      organs stored inside them, if any are present.
+  - code_imp: Add chat notification for shoes & glove protection when mousetrap triggered
+  - qol: firelocks are now welded with RMB instead of LMB
+  - bugfix: Fixed AI Toggle Camera Lights not working properly
+  - bugfix: Ablative trenchcoat no longer gives a permanent sechud if toggled while
+      you already had a helmet on.
+  - balance: The Curator and Crystal PDA is now upgraded to have long-distance NTnet
+      connections, they are able to use their apps in space.
+  - bugfix: fixed the medical.dmi having 2 dupe frames for the medical jumpsuit mob
+      sprite.
+  - rscadd: After 30 minutes, Bileworms evolve into Vileworms, a more dangerous variant.
+  - balance: Bileworms are easier
+  - balance: Bileworms drop gold
+  - bugfix: fixes bileworms spawning too close to other mobs, causing very, VERY tough
+      fights
+  - bugfix: Fixed mail being able to change the stations nuke code when it had already
+      been generated.
+  - balance: You can put regal pipeguns into the suit storage of high-vis vests and
+      wet floor signs.
+  - bugfix: TGchat now supports hyperlinking... links... with curly braces.
+  - bugfix: Fixed showcase microwaves lacking sprites
+  - bugfix: Ethereals can now actually read the balloon alerts they get whenever they
+      try and recharge/discharge an APC.
+  - admin: Whenever a player uses a vial of blood/vial of tickles to bring forth a
+      Slaughter Demon or a Laughter Demon (respectively), it will now log to their
+      individual player log, as well as the global game.log.
+  Tastyfish:
+  - bugfix: Hands are no longer sometimes visible when the player is otherwise invisible
+      from FOV.
+  Zonespace27:
+  - spellcheck: Modularization readme now specifies .MD files, not .DM
+2022-10-14:
+  GoldenAlpharex:
+  - bugfix: The Hemophage entry in the species selection menu has seen its perk display
+      updated, to properly reflect the pros and the cons of being an Hemophage.
+  - qol: Changing your PDA ringtone now has your current ringtone in your input box,
+      like the previous PDAs used to.
+  - bugfix: Fixed the incoming Messenger messages not being properly HTML decoded
+      in the Message History, making it display weird stuff instead of apostrophes.
+  - bugfix: Fixed the formatting of the Messenger's Message History tab.
+  - qol: The prompt to send a PDA message now shows you the person you're trying to
+      send a PDA message to.
+  Melbert:
+  - balance: Holy melons are now more melon like - they are now fruits (instead of
+      no food type), normal weight class, and can be juiced into holy water
+  - balance: Ninja and Traitors can no longer hack consoles located in maintenance
+      for their objectives. (Basically, it abides by the same rules that Space Dragons
+      have on where they can put their portal.)
+  - bugfix: Secure Data consoles abide by the same hacking rules as comms consoles
+      - getting de-powered mid-hack will stop hack progress.
+  Paxilmaniac:
+  - imageadd: custom material walls (glass walls, pizza, meat, etc) will now use a
+      lightened version of skyrat's wall sprites, rather than tg wall sprites
+  SkyratBot:
+  - bugfix: Changing z-level while jaunting will no longer reveal you.
+  - bugfix: If a shuttle lands on you while jaunting you will die rather than be stuck
+      in a weird purgatory state.
+  - bugfix: Mirror Walk will not appear tinted as if it can be cast when it can't,
+      and vice versa.
+  - qol: Blood Crawl and Shadow Walk will now display whether you can use them or
+      not in the same manner as Mirror Walk.
+  - refactor: Jaunt code which adds and removes temporary traits or effects should
+      hopefully be easier to work with in the future.
+  - bugfix: Circuitboards that require a minimum level of manipulators tiers no longer
+      display just "manipulator" when examining machine frames that contain them
+  - bugfix: Marked a few more admin only chem dispenser boards to display their proper
+      manipulator requirements
+  - rscadd: Added a new bounty to deliver a refined dimensional anomaly core.
+  - spellcheck: Fixed some typos and awkward grammar in bounty descriptions.
+  - bugfix: Cyborgs can now no longer untip vending machines that they are not directly
+      next to.
+  - bugfix: Those with the technoshy/technovert trait are now able to untip vending
+      machines.
+  - bugfix: If you exit out of the TGUI options menu when hitting the "Make AI" link
+      there, it will actually assume that you wanted to cancel out of the proc entirely,
+      rather than proceed without your knowledge.
+  - bugfix: Engineers now recieve welding helmets instead of errors when they order
+      an engineering supply pack.
+  - bugfix: Welding helmet inhand sprites now properly update when you flip the visor.
+  - bugfix: "T\xF6chta\xFCse berries are now juiceable. You no longer get T\xF6chta\xFC\
+      se juice via grinding them."
+  - bugfix: Anchoring an object while pulling it will now make you stop pulling said
+      anchored object.
+  - qol: cargo crate descriptions now better describe what you'll be getting from
+      them
+  Tastyfish:
+  - bugfix: Vox N2 tanks are no longer cloaked.
+  Wallem:
+  - qol: The Biogen will show how full the container inside it is
+  Zonespace27:
+  - bugfix: Borers should no longer be able to reach exponential health
