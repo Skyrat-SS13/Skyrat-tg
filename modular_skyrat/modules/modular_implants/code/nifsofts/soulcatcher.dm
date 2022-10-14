@@ -18,10 +18,15 @@ GLOBAL_LIST_EMPTY(open_soulcatchers)
 	///This is the warning message that it sends to the soul when they join the soulcatcher.
 	var/warning_message = "Don't be a dick and share information about things going on in the round. I'll know." //Placeholder - Policy team or whoever, write something scary to discourage bad actors please.
 
+	//Lists for verbs
+	///These are the verbs given to and taken from a human after (un)installing the soulcatcher
+	var/human_verbs = list(/mob/living/carbon/human/verb/nif_say, /mob/living/carbon/human/verb/nif_me, /mob/living/carbon/human/verb/nif_room_me)
+	///Thse are the verbs given to and taken from a soul after leaving or joining a soulcatcher
+	var/soul_verbs = list(/mob/living/brain/soulcatcher/verb/nif_say, /mob/living/brain/soulcatcher/verb/nif_me, /mob/living/brain/soulcatcher/verb/leave_soulcatcher)
+
 /datum/nifsoft/soulcatcher/New()
 	. = ..()
-	linked_mob.verbs += /mob/living/carbon/human/verb/nif_say
-	linked_mob.verbs += /mob/living/carbon/human/verb/nif_me
+	add_verb(linked_mob, human_verbs)
 
 	linked_mob.active_soulcatcher = src
 	name = "[linked_mob.name]'s Soulcatcher"
@@ -29,8 +34,7 @@ GLOBAL_LIST_EMPTY(open_soulcatchers)
 	GLOB.open_soulcatchers += src //This is only this way for testing, this will most likely be disabled by default.
 
 /datum/nifsoft/soulcatcher/Destroy()
-	linked_mob.verbs -= /mob/living/carbon/human/verb/nif_say
-	linked_mob.verbs -= /mob/living/carbon/human/verb/nif_me
+	remove_verb(linked_mob, human_verbs)
 
 	linked_mob.active_soulcatcher = FALSE
 
@@ -42,8 +46,23 @@ GLOBAL_LIST_EMPTY(open_soulcatchers)
 
 	. = ..()
 
+/datum/nifsoft/soulcatcher/activate()
+	var/choice = tgui_input_list(linked_mob, "Chose your option", "Soulcatcher config menu", list("Remove a soul", "Change room name", "Change room apperance"))
+	if(!choice)
+		return
+
+	switch(choice)
+		if("Remove a soul")
+			user_remove_soul()
+
+		if("Change room name")
+			change_room_name()
+
+		if("Change room apperance")
+			change_room_desc()
+
 ///Adds a soul to the soulcatcher.
-/datum/nifsoft/soulcatcher/proc/add_soul(soul_to_add, warning = FALSE)
+/datum/nifsoft/soulcatcher/proc/add_soul(soul_to_add, warning = FALSE, forced = FALSE)
 	var/mob/sourcemob = soul_to_add
 
 	if(!sourcemob || !sourcemob.key)
@@ -64,13 +83,29 @@ GLOBAL_LIST_EMPTY(open_soulcatchers)
 
 	hosted_souls += soul
 
-	soul.verbs += /mob/living/brain/soulcatcher/verb/nif_say
-	soul.verbs += /mob/living/brain/soulcatcher/verb/nif_me
+	add_verb(soul, soul_verbs)
+
+	if(forced)
+		remove_verb(soul, /mob/living/brain/soulcatcher/verb/leave_soulcatcher)
 
 	if(warning)
-		to_chat(src, span_warning("[warning_message]"))
+		to_chat(src, span_notice("[warning_message]"))
+
+	if(room_description)
+		to_chat(soul, span_notice(room_description))
 
 	return TRUE
+
+///This sends a emote as the room
+/datum/nifsoft/soulcatcher/proc/room_emote()
+	var/emote = sanitize(tgui_input_text(linked_mob, "Type in a emote for your room to display", "Soulcatcher"))
+
+	if(!emote)
+		to_chat(linked_mob, span_warning("You did not enter an emote!"))
+		return FALSE
+
+	var/completed_emote = "<b>{Soulcatcher}</b> [emote]" /// Get the fancy little icon that virgo has!
+	send_message(completed_emote, TRUE)
 
 ///Removes a soul from the soulcatcher
 /datum/nifsoft/soulcatcher/proc/remove_soul(soul_to_remove)
@@ -80,8 +115,7 @@ GLOBAL_LIST_EMPTY(open_soulcatchers)
 
 	hosted_souls -= removed_soul
 
-	removed_soul.verbs -= /mob/living/brain/soulcatcher/verb/nif_say
-	removed_soul.verbs -= /mob/living/brain/soulcatcher/verb/nif_me
+	remove_verb(removed_soul, soul_verbs)
 
 	removed_soul.active_soulcatcher = FALSE
 	qdel(removed_soul)
@@ -101,7 +135,7 @@ GLOBAL_LIST_EMPTY(open_soulcatchers)
 	to_chat(linked_mob, span_cyan(message))
 
 ///Makes the soulcatcher visible to ghosts
-/datum/nifsoft/soulcatcher/proc/toggle_visibility
+/datum/nifsoft/soulcatcher/proc/toggle_visibility()
 	if(src in GLOB.open_soulcatchers)
 		GLOB.open_soulcatchers -= src
 
@@ -113,6 +147,43 @@ GLOBAL_LIST_EMPTY(open_soulcatchers)
 	to_chat(linked_mob, span_cyan("Ghosts can now join your soulcatcher"))
 	return TRUE
 
+/datum/nifsoft/soulcatcher/proc/user_remove_soul()
+	var/mob/living/brain/soulcatcher/soul_to_remove = tgui_input_list(linked_mob, "Chose a user to remove from the soulcatcher", "Remove Soul", hosted_souls)
+
+	if(!soul_to_remove)
+		return FALSE
+
+	remove_soul(soul_to_remove)
+
+/datum/nifsoft/soulcatcher/proc/change_room_name()
+	var/new_room_name = sanitize(tgui_input_text(linked_mob, "Chose a new room name! (This is what ghosts will see when looking at the avalible soulcatchers. please be respectful)", "Soulcatcher"))
+
+	if(!new_room_name)
+		to_chat(linked_mob, span_warning("You did not enter a name"))
+
+	name = new_room_name
+
+/datum/nifsoft/soulcatcher/proc/change_room_desc()
+	var/new_room_desc = sanitize(tgui_input_text(linked_mob, "Type in what you would like your room to look like", "Soulcatcher"))
+
+	if(!new_room_desc)
+		to_chat(linked_mob, span_warning("You did not enter new flavor text for your room"))
+
+	room_description = new_room_desc
+
+	if(tgui_alert(linked_mob, "Do you wish to resend the room's apperance to all souls inside of the Soulcatcher?", "Soulcatcher", list("Yes", "No")) != "Yes")
+		return TRUE
+
+	var/room_change_message = "The room around you changes and becomes...... \n[room_description]"
+	to_chat(linked_mob, span_notice(room_change_message))
+
+	for(var/mob/living/brain/soulcatcher/soul as anything in hosted_souls)
+		if(!soul.soulcatcher_seeing)
+			continue
+
+		to_chat(soul, span_notice(room_change_message))
+
+	return TRUE
 
 /mob/living
 	///What soulcatcher, if any, does the user belong to or own?
@@ -143,7 +214,7 @@ GLOBAL_LIST_EMPTY(open_soulcatchers)
 /mob/proc/send_soulcatcher_message(emote = FALSE)
 	var/mob/living/user = src
 
-	var/message_type = "[emote ? "emote" : "communicate"]"
+	var/message_type = "[emote ? "emote" : "message"]"
 	if(!user)
 		return FALSE
 
@@ -156,17 +227,17 @@ GLOBAL_LIST_EMPTY(open_soulcatchers)
 	if(istype(src, /mob/living/brain/soulcatcher))
 		var/mob/living/brain/soulcatcher/soul = src
 
-		if((!emote && !soul.soulcatcher_speaking) || (emote && soul.soulcatcher_emoting))
+		if((!emote && !soul.soulcatcher_speaking) || (emote && !soul.soulcatcher_emoting))
 			to_chat(src, span_warning("Your host has disabled your ability to [message_type]"))
 			return FALSE
 
-	var/message = sanitize(tgui_input_text(src, "Type in an [message_type]", "Soulcatcher"))
+	var/message = sanitize(tgui_input_text(src, "Type in a [message_type]", "Soulcatcher"))
 
 	if(!message)
-		to_chat(src, span_warning("You did not enter an [message_type]!"))
+		to_chat(src, span_warning("You did not enter a [message_type]!"))
 		return FALSE
 
-	var/completed_message = "<b>Soulcatcher</b> [user.name][!emote ? ":" : ""] [message]" /// Get the fancy little icon that virgo has!
+	var/completed_message = "<b>{Soulcatcher}</b> [user.name][!emote ? ":" : ""] [message]" /// Get the fancy little icon that virgo has!
 	user.active_soulcatcher.send_message(completed_message, emote)
 
 ///Sends a say though to a Soulcatcher for a human
@@ -175,7 +246,7 @@ GLOBAL_LIST_EMPTY(open_soulcatchers)
 	set desc = "Speak to the residents of your soulcatcher"
 	set category = "NIF"
 
-	src.send_soulcatcher_message()
+	send_soulcatcher_message()
 
 ///Sends a me though to a Soulcatcher for a human
 /mob/living/carbon/human/verb/nif_me()
@@ -183,7 +254,18 @@ GLOBAL_LIST_EMPTY(open_soulcatchers)
 	set desc = "Emote to the residents of your soulcatcher"
 	set category = "NIF"
 
-	src.send_soulcatcher_message(TRUE)
+	send_soulcatcher_message(TRUE)
+
+/mob/living/carbon/human/verb/nif_room_me()
+	set name = "NIF Room Me"
+	set desc = "Emote to the residents of your soulcatcher as the room"
+	set category = "NIF"
+
+	if(!src?.active_soulcatcher)
+		return FALSE
+
+	active_soulcatcher.room_emote()
+
 
 ///Sends a say though to a Soulcatcher for a soul.
 /mob/living/brain/soulcatcher/verb/nif_say()
@@ -191,7 +273,20 @@ GLOBAL_LIST_EMPTY(open_soulcatchers)
 	set desc = "Speak through your soulcatcher"
 	set category = "NIF"
 
-	src.send_soulcatcher_message()
+	send_soulcatcher_message()
+
+/mob/living/brain/soulcatcher/verb/leave_soulcatcher()
+	set name = "Leave soulcatcher"
+	set desc = "Leave your current soulcatcher"
+	set category = "NIF"
+
+	if(!active_soulcatcher)
+		return FALSE
+
+	if(tgui_alert(src, "Do you wish to leave the soulcatcher?", "leave soulcatcher", list("Yes", "No")) != "Yes")
+		return FALSE
+
+	active_soulcatcher.remove_soul(src)
 
 ///Sends a emote though to a Soulcatcher for a soul.
 /mob/living/brain/soulcatcher/verb/nif_me()
@@ -199,13 +294,15 @@ GLOBAL_LIST_EMPTY(open_soulcatchers)
 	set desc = "Emote through your soulcatcher"
 	set category = "NIF"
 
-	src.send_soulcatcher_message(TRUE)
+	send_soulcatcher_message(TRUE)
 
 
 /mob/living/carbon/human/Initialize(mapload)
 	. = ..()
-	remove_verb(src, /mob/living/carbon/human/verb/nif_me)
-	remove_verb(src, /mob/living/carbon/human/verb/nif_say)
+
+	var/datum/nifsoft/soulcatcher/dummy_soulcatcher = /datum/nifsoft/soulcatcher
+
+	remove_verb(src, initial(dummy_soulcatcher.human_verbs))
 
 ///Allows a ghost to enter a visible soulcatcher.
 /mob/dead/observer/verb/enter_soulcatcher()
@@ -235,5 +332,5 @@ GLOBAL_LIST_EMPTY(open_soulcatchers)
 			to_chat(src, span_warning("[soulcatcher_owner] denied you access to their soulcatcher"))
 			return FALSE
 
-	if(!chosen_soulcatcher.add_soul(src), TRUE)
+	if(!chosen_soulcatcher.add_soul(src, TRUE))
 		return FALSE
