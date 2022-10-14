@@ -102,7 +102,7 @@
 /obj/machinery/door/airlock/ui_act(action, params)
 	. = ..()
 	if(.)
-		return
+		return TRUE
 
 	if(!user_allowed(usr))
 		return
