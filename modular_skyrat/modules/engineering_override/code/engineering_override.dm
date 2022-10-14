@@ -56,8 +56,10 @@
 /obj/machinery/door/allowed(mob/Mob)
 	if(emergency)
 		return TRUE
+
 	if(unrestricted_side(Mob))
 		return TRUE
+
 	if(engineering_override)
 		var/mob/living/carbon/human/user = Mob
 		var/obj/item/card/id/card = user.get_idcard(TRUE)
