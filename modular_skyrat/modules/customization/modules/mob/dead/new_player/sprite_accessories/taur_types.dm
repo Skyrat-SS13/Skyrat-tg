@@ -126,7 +126,6 @@
 /datum/sprite_accessory/taur/drake/old
 	name = "Drake (Old)"
 	icon_state = "drake_old"
-	color_src = USE_MATRIXED_COLORS
 
 /datum/sprite_accessory/taur/drider
 	name = "Drider"
