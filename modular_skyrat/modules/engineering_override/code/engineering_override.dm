@@ -96,6 +96,7 @@
 /obj/machinery/door/airlock/proc/toggle_engineering(mob/user)
 	if(!user_allowed(user))
 		return
+
 	engineering_override = !engineering_override
 	update_appearance()
 
