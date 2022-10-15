@@ -4,7 +4,6 @@
 /datum/nifsoft/virtual_machine
 	name = "Virtual Machine"
 	program_desc = "Provides a virtual machine of a tablet with limited functionality"
-	cost = 250
 	active_mode = TRUE
 	activation_cost = 10
 	active_cost = 7.5

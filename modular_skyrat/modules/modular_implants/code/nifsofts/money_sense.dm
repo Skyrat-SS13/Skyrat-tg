@@ -6,6 +6,7 @@
 	program_desc = "Connects the user's brain to a database containing the current monetary values for most items, allowing them to determine their value in realtime"
 	active_mode = TRUE
 	active_cost = 2.5
+	mutually_exclusive_programs = list(/datum/nifsoft/shapeshifter) //Here for testing
 
 /datum/nifsoft/money_sense/activate()
 	. = ..()

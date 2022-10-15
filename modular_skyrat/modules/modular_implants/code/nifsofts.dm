@@ -6,12 +6,15 @@
 	var/program_name
 	///A description of what the program does. This is used when looking at programs in the NIF, along with installing them from the store.
 	var/program_desc = "This program does stuff!"
-	///How much does the program cost to buy?
-	var/cost = 100
 	//What NIF does this program belong to?
 	var/datum/weakref/parent_nif
 	///Who is the NIF currently linked to?
 	var/mob/living/carbon/human/linked_mob
+
+	///Can the program be installed with other instances of itself?
+	var/single_install = TRUE
+	///Is the program mutually exclusive with another program?
+	var/list/mutually_exclusive_programs = list()
 
 	///Does the program have an active mode?
 	var/active_mode = FALSE
@@ -125,10 +128,12 @@
 		return FALSE
 
 	var/obj/item/organ/internal/cyberimp/brain/nif/installed_nif = target.installed_nif
-	new loaded_nifsoft(installed_nif)
+	var/datum/nifsoft/installed_nifsoft = new loaded_nifsoft(installed_nif)
+
+	if(!installed_nifsoft.parent_nif)
+		return FALSE
 
 	if(!reusable)
-		to_chat(target, span_notice("Test message"))
 		qdel(src)
 
 /obj/item/disk/nifsoft_uploader/attack_self(mob/user, modifiers)
