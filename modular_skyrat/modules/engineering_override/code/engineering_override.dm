@@ -92,7 +92,7 @@
 			airlock.update_icon(ALL, 0)
 	message_admins("Engineering override has been turned OFF for station airlocks.")
 
-// Someone or the AI or silicons tries to change the access on the airlock
+/// Someone or the AI or silicons tries to change the access on the airlock
 /obj/machinery/door/airlock/proc/toggle_engineering(mob/user)
 	if(!user_allowed(user))
 		return
