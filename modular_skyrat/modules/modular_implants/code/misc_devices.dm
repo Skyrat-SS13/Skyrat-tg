@@ -53,7 +53,7 @@
 	desc = "A small device that lets the user remove NIFSofts from a NIF user"
 	id = "nifsoft_remover"
 	build_type = PROTOLATHE | AWAY_LATHE
-	build_path = /datum/design/nifsoft_remover
+	build_path = /obj/item/nifsoft_remover
 	materials = list(/datum/material/iron = 200, /datum/material/silver = 500, /datum/material/uranium = 500)
 	category = list(RND_CATEGORY_EQUIPMENT)
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
