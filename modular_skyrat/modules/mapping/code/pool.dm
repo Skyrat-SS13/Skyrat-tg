@@ -11,16 +11,15 @@
 	name = "water"
 	icon = 'modular_skyrat/modules/mapping/icons/unique/pool.dmi'
 	icon_state = "bottom"
-	density = 0
-	mouse_opacity = 0
-	layer = ABOVE_MOB_LAYER
+	density = FALSE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	anchored = TRUE
-	vis_flags = NONE
+	layer = ABOVE_MOB_LAYER
+	vis_flags = VIS_INHERIT_PLANE
 
 /obj/effect/overlay/water/top
 	icon_state = "top"
 	layer = BELOW_MOB_LAYER
-	vis_flags = NONE
 
 /turf/open/water/overlay/Initialize(mapload)
 	.  = ..()

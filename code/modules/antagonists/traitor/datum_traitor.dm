@@ -272,11 +272,16 @@
 	if(objectives.len) //If the traitor had no objectives, don't need to process this.
 		var/count = 1
 		for(var/datum/objective/objective in objectives)
+			// SKYRAT EDIT START - No greentext
+			/*
 			if(objective.check_completion())
 				objectives_text += "<br><B>Objective #[count]</B>: [objective.explanation_text] [span_greentext("Success!")]"
 			else
 				objectives_text += "<br><B>Objective #[count]</B>: [objective.explanation_text] [span_redtext("Fail.")]"
 				traitor_won = FALSE
+			*/
+			objectives_text += "<br><B>Objective #[count]</B>: [objective.explanation_text]"
+			// SKYRAT EDIT END - No greentext
 			count++
 
 	result += "<br>[owner.name] <B>[traitor_flavor["roundend_report"]]</B>"
@@ -297,6 +302,8 @@
 				completed_objectives_text += "<br><B>[objective.name]</B> - ([objective.telecrystal_reward] TC, [DISPLAY_PROGRESSION(objective.progression_reward)] Reputation)"
 		result += completed_objectives_text
 
+	// SKYRAT EDIT REMOVAL
+	/*
 	var/special_role_text = lowertext(name)
 
 	if(traitor_won)
@@ -304,6 +311,7 @@
 	else
 		result += span_redtext("The [special_role_text] has failed!")
 		SEND_SOUND(owner.current, 'sound/ambience/ambifailure.ogg')
+	*/
 
 	return result.Join("<br>")
 
@@ -328,7 +336,12 @@
 
 /datum/outfit/traitor/post_equip(mob/living/carbon/human/H, visualsOnly)
 	var/obj/item/melee/energy/sword/sword = locate() in H.held_items
-	sword.icon_state = "e_sword_on_red"
-	sword.worn_icon_state = "e_sword_on_red"
+	if(sword.flags_1 & INITIALIZED_1)
+		sword.attack_self()
+	else //Atoms aren't initialized during the screenshots unit test, so we can't call attack_self for it as the sword doesn't have the transforming weapon component to handle the icon changes. The below part is ONLY for the antag screenshots unit test.
+		sword.icon_state = "e_sword_on_red"
+		sword.inhand_icon_state = "e_sword_on_red"
+		sword.worn_icon_state = "e_sword_on_red"
 
-	H.update_held_items()
+		H.update_held_items()
+

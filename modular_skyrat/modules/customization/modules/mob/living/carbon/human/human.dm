@@ -1,3 +1,6 @@
+/mob/living/carbon/human
+	var/static/list/possible_genitals = list(ORGAN_SLOT_PENIS, ORGAN_SLOT_TESTICLES, ORGAN_SLOT_VAGINA, ORGAN_SLOT_BREASTS, ORGAN_SLOT_ANUS)
+
 /mob/living/carbon/human/Topic(href, href_list)
 	. = ..()
 
@@ -5,7 +8,7 @@
 		switch(href_list["lookup_info"])
 			if("genitals")
 				var/list/line = list()
-				for(var/genital in list("penis", "testicles", "vagina", "breasts", "anus"))
+				for(var/genital in possible_genitals)
 					if(!dna.species.mutant_bodyparts[genital])
 						continue
 					var/datum/sprite_accessory/genital/G = GLOB.sprite_accessories[genital][dna.species.mutant_bodyparts[genital][MUTANT_INDEX_NAME]]
@@ -127,11 +130,11 @@
 			var/mob/living/living_user = usr
 			if(istype(living_user))
 				living_user.add_mood_event("drunk", /datum/mood_event/drunk)
-			set_timed_status_effect(duration SECONDS, /datum/status_effect/speech/slurring/drunk, only_if_higher = TRUE)
+			set_slurring_if_lower(duration SECONDS)
 		if("stuttering")
-			set_timed_status_effect(duration SECONDS, /datum/status_effect/speech/stutter, only_if_higher = TRUE)
+			set_stutter_if_lower(duration SECONDS)
 		if("jittering")
-			set_timed_status_effect(duration SECONDS, /datum/status_effect/jitter, only_if_higher = TRUE)
+			set_dizzy_if_lower(duration SECONDS)
 
 	if(duration)
 		addtimer(CALLBACK(src, .proc/acting_expiry, impairment), duration SECONDS)

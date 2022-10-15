@@ -5,12 +5,10 @@
 	desc = "A tool used for domination. Hurts in a way you like it."
 	icon_state = "leather"
 	worn_icon_state = "leather"
-	inhand_icon_state = "leather"
+	inhand_icon_state = null
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_masks.dmi'
 	worn_icon_muzzled = 'modular_skyrat/master_files/icons/mob/clothing/mask_muzzled.dmi'
-	lefthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_left.dmi'
-	righthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_right.dmi'
 	w_class = WEIGHT_CLASS_NORMAL
 	hitsound = 'sound/weapons/whip.ogg'
 	clothing_flags = INEDIBLE_CLOTHING
@@ -176,7 +174,7 @@
 					if(prob(10))
 						target.apply_status_effect(/datum/status_effect/subspace)
 				target.Paralyze(1)//don't touch it. It's domination tool, it should have ability to put someone on kneels. I already inserted check for PREF YOU CAN'T ABUSE THIS ITEM
-				target.adjustPain(5)
+				target.adjust_pain(5)
 				playsound(loc, 'sound/weapons/whip.ogg', 100)
 			else
 				message = (user == target) ? pick("knocks [target.p_them()]self down with [src]", "gently uses [src] to knock [target.p_them()]self on the ground") : pick("drops [target] to the ground with [src]", "uses [src] to put [target] on [target.p_their()] knees")
@@ -186,7 +184,7 @@
 					if(prob(10))
 						target.apply_status_effect(/datum/status_effect/subspace)
 				target.Paralyze(1)
-				target.adjustPain(3)
+				target.adjust_pain(3)
 				playsound(loc, 'sound/weapons/whip.ogg', 60)
 
 		if(BODY_ZONE_R_LEG)
@@ -202,7 +200,7 @@
 					if(prob(10))
 						target.apply_status_effect(/datum/status_effect/subspace)
 				target.Paralyze(1)//don't touch it. It's domination tool, it should have ability to put someone on kneels. I already inserted check for PREF YOU CAN'T ABUSE THIS ITEM
-				target.adjustPain(5)
+				target.adjust_pain(5)
 				playsound(loc, 'sound/weapons/whip.ogg', 100)
 			else
 				message = (user == target) ? pick("Knocks [target.p_them()]self down with [src]", "gently uses [src] to knock [target.p_them()]self on the ground") : pick("drops [target] to the ground with [src]", "uses [src] to put [target] on [target.p_their()] knees")
@@ -212,7 +210,7 @@
 					if(prob(10))
 						target.apply_status_effect(/datum/status_effect/subspace)
 				target.Paralyze(1)
-				target.adjustPain(3)
+				target.adjust_pain(3)
 				playsound(loc, 'sound/weapons/whip.ogg', 60)
 
 		if(BODY_ZONE_HEAD)
@@ -220,8 +218,8 @@
 			message = (user == target) ? pick("wraps [src] around [target.p_their()] neck, choking [target.p_them()]self", "chokes [target.p_them()]self with [src]") : pick("chokes [target] with [src]", "twines [src] around [target]'s neck!")
 			if(prob(70) && (target.stat != DEAD))
 				target.try_lewd_autoemote(pick("gasp", "choke", "moan"))
-			target.adjustArousal(3)
-			target.adjustPain(5)
+			target.adjust_arousal(3)
+			target.adjust_pain(5)
 			playsound(loc, 'modular_skyrat/modules/modular_items/lewd_items/sounds/latex.ogg', 80)
 
 		if(BODY_ZONE_PRECISE_GROIN)
@@ -236,8 +234,8 @@
 						target.try_lewd_autoemote(pick("moan", "twitch"))
 					if(prob(10))
 						target.apply_status_effect(/datum/status_effect/subspace)
-				target.adjustArousal(5)
-				target.adjustPain(5)
+				target.adjust_arousal(5)
+				target.adjust_pain(5)
 				target.apply_status_effect(/datum/status_effect/spanked)
 				if(HAS_TRAIT(target, TRAIT_MASOCHISM || TRAIT_BIMBO))
 					target.add_mood_event("pervert spanked", /datum/mood_event/perv_spanked)
@@ -250,8 +248,8 @@
 						target.try_lewd_autoemote(pick("moan", "twitch", "twitch_s", "scream"))
 					if(prob(10))
 						target.apply_status_effect(/datum/status_effect/subspace)
-				target.adjustArousal(3)
-				target.adjustPain(8)
+				target.adjust_arousal(3)
+				target.adjust_pain(8)
 				target.apply_status_effect(/datum/status_effect/spanked)
 				if(HAS_TRAIT(target, TRAIT_MASOCHISM || TRAIT_BIMBO))
 					target.add_mood_event("pervert spanked", /datum/mood_event/perv_spanked)
@@ -265,7 +263,7 @@
 					if(prob(10))
 						target.apply_status_effect(/datum/status_effect/subspace)
 					target.do_jitter_animation()
-				target.adjustPain(7)
+				target.adjust_pain(7)
 				playsound(loc, 'sound/weapons/whip.ogg', 100)
 
 			else
@@ -276,8 +274,8 @@
 					if(prob(10))
 						target.apply_status_effect(/datum/status_effect/subspace)
 					target.do_jitter_animation()
-				target.adjustPain(4)
-				target.adjustArousal(5)
+				target.adjust_pain(4)
+				target.adjust_arousal(5)
 				playsound(loc, 'sound/weapons/whip.ogg', 60)
 	if(!targetedsomewhere)
 		return

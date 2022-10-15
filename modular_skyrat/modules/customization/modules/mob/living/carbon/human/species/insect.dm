@@ -48,9 +48,19 @@
 		BODY_ZONE_L_LEG = /obj/item/bodypart/l_leg/mutant/insect,
 		BODY_ZONE_R_LEG = /obj/item/bodypart/r_leg/mutant/insect,
 	)
+	eyes_icon = 'modular_skyrat/modules/organs/icons/insect_eyes.dmi'
 
 /datum/species/insect/get_species_description()
 	return placeholder_description
 
 /datum/species/insect/get_species_lore()
 	return list(placeholder_lore)
+
+/datum/species/insect/prepare_human_for_preview(mob/living/carbon/human/human)
+	var/main_color = "#644b07"
+	var/secondary_color = "#9b9b9b"
+	human.dna.features["mcolor"] = main_color
+	human.dna.features["mcolor2"] = secondary_color
+	human.dna.features["mcolor3"] = secondary_color
+	human.update_mutant_bodyparts(TRUE)
+	human.update_body(TRUE)

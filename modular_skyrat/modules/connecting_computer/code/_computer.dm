@@ -56,7 +56,7 @@
 	if(machine_stat & BROKEN)
 		overlay_state = "[icon_state]_broken"
 	. += mutable_appearance(icon, overlay_state)
-	. += emissive_appearance(icon, overlay_state)
+	. += emissive_appearance(icon, overlay_state, src)
 
 /obj/machinery/computer/deconstruct(disassembled = TRUE, mob/user)
 	on_deconstruction()

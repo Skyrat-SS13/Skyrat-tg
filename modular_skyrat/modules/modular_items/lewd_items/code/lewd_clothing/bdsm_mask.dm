@@ -12,10 +12,7 @@
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_masks.dmi'
 	worn_icon_muzzled = 'modular_skyrat/master_files/icons/mob/clothing/mask_muzzled.dmi'
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_masks.dmi'
-	lefthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_left.dmi'
-	righthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_right.dmi'
 	icon_state = "mask"
-	inhand_icon_state = "mask"
 	slot_flags = ITEM_SLOT_MASK
 	var/mask_on = FALSE
 	var/current_mask_color = "pink"
@@ -302,7 +299,7 @@
 // I just wanted to add 2th color variation. Because.
 /obj/item/reagent_containers/cup/lewd_filter/AltClick(mob/user)
 	// Catch first AltClick and open reskin menu
-	if(unique_reskin && !current_skin && user.canUseTopic(src, BE_CLOSE, NO_DEXTERITY))
+	if(unique_reskin && !current_skin && user.canUseTopic(src, be_close = TRUE, no_dexterity = TRUE))
 		reskin_obj(user)
 		return
 	// After reskin all clicks go normal, but we can't change the flow rate if mask on and equipped

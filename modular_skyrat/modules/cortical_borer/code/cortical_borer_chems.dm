@@ -13,7 +13,7 @@
 	M.AdjustParalyzed(-40 * REM * delta_time)
 	M.AdjustImmobilized(-40 * REM * delta_time)
 	M.adjustStaminaLoss(-2 * REM * delta_time, 0)
-	M.set_timed_status_effect(5 SECONDS, /datum/status_effect/jitter, only_if_higher = TRUE)
+	M.set_jitter_if_lower(5 SECONDS)
 	if(DT_PROB(2.5, delta_time))
 		M.emote(pick("twitch", "shiver"))
 	..()

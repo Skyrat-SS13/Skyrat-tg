@@ -5,6 +5,7 @@
 	lefthand_file = 'modular_skyrat/modules/tribal_extended/icons/bows_lefthand.dmi'
 	righthand_file = 'modular_skyrat/modules/tribal_extended/icons/bows_righthand.dmi'
 	worn_icon = 'modular_skyrat/modules/tribal_extended/icons/back.dmi'
+	inhand_icon_state = "bow"
 	icon_state = "bow"
 	worn_icon_state = "bow"
 	w_class = WEIGHT_CLASS_BULKY

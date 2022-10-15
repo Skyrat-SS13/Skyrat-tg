@@ -503,7 +503,7 @@
 			SEND_SOUND(staff, sound('sound/effects/adminhelp.ogg'))
 		window_flash(staff, ignorepref = TRUE)
 
-	addtimer(CALLBACK(src, .proc/add_to_ping_ss), 3 MINUTES)
+	addtimer(CALLBACK(src, .proc/add_to_ping_ss), 2 MINUTES) // this is not responsible for the notification itself, but only for adding the ticket to the list of those to notify.
 	status = OPFOR_STATUS_AWAITING_APPROVAL
 	can_edit = FALSE
 	add_log(user.ckey, "Submitted to the OPFOR subsystem")
@@ -882,7 +882,7 @@
 	return report.Join("\n")
 
 /datum/opposing_force/proc/add_to_ping_ss()
-	if(status != OPFOR_STATUS_APPROVED)
+	if(status == OPFOR_STATUS_APPROVED)
 		return
 	ticket_ping = TRUE
 

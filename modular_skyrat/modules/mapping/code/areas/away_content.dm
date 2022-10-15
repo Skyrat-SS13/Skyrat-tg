@@ -162,61 +162,65 @@
 	name = "Black Mesa HECU Territory External Hall"
 	icon_state = "awaycontent10"
 
+/area/awaymission/black_mesa/hecu_zone_infirmary
+	name = "Black Mesa HECU Territory Infirmary"
+	icon_state = "awaycontent11"
+
 /area/awaymission/black_mesa/hecu_zone_bathroom
 	name = "Black Mesa HECU Territory Bathroom"
-	icon_state = "awaycontent11"
+	icon_state = "awaycontent12"
 
 /area/awaymission/black_mesa/hecu_zone_test_chambers
 	name = "Black Mesa HECU Territory Testing Chambers"
-	icon_state = "awaycontent12"
+	icon_state = "awaycontent13"
 
 /area/awaymission/black_mesa/hecu_zone_tunnel
 	name = "Black Mesa HECU Territory Tunnel"
-	icon_state = "awaycontent13"
+	icon_state = "awaycontent14"
 
 /area/awaymission/black_mesa/hecu_zone_atrium
 	name = "Black Mesa HECU Territory Atrium"
-	icon_state = "awaycontent14"
+	icon_state = "awaycontent15"
 
 /area/awaymission/black_mesa/hecu_zone_camp
 	name = "Black Mesa HECU Camp"
-	icon_state = "awaycontent15"
+	icon_state = "awaycontent16"
 
 /area/awaymission/black_mesa/hecu_zone_towards_facility
 	name = "Black Mesa HECU North Zone"
-	icon_state = "awaycontent16"
+	icon_state = "awaycontent17"
 
 /area/awaymission/black_mesa/deep_sci_chem
 	name = "Black Mesa Deep Science Chemistry"
-	icon_state = "awaycontent17"
+	icon_state = "awaycontent18"
 
 /area/awaymission/black_mesa/high_security_sec_point
 	name = "Black Mesa High-Security Checkpoint"
-	icon_state = "awaycontent18"
+	icon_state = "awaycontent19"
 
 /area/awaymission/black_mesa/high_security_servers
 	name = "Black Mesa High-Security Server Room"
-	icon_state = "awaycontent19"
+	icon_state = "awaycontent20"
 
 /area/awaymission/black_mesa/hecu_zone_external_sec
 	name = "Black Mesa HECU Territory Hall Checkpoint"
-	icon_state = "awaycontent20"
+	icon_state = "awaycontent21"
 
 /area/awaymission/black_mesa/hecu_zone_external_cavein
 	name = "Black Mesa HECU Territory Cave-in"
-	icon_state = "awaycontent21"
+	icon_state = "awaycontent22"
 
 /area/awaymission/black_mesa/black_ops_entrance
 	name = "Black Mesa Spec-OP Entrance"
-	icon_state = "awaycontent22"
+	icon_state = "awaycontent23"
 
 /area/awaymission/black_mesa/black_ops_bus
 	name = "Black Mesa Spec-OP Bus Stop"
-	icon_state = "awaycontent23"
+	icon_state = "awaycontent24"
 
 /area/awaymission/black_mesa/black_ops_eng_storage
 	name = "Black Mesa Spec-OP Engineering Storage"
-	icon_state = "awaycontent24"
+	icon_state = "awaycontent25"
 
 /area/awaymission/black_mesa/black_ops_downstairs_atrium
 	name = "Black Mesa Spec-OP Underground Atrium"
@@ -228,35 +232,35 @@
 
 /area/awaymission/black_mesa/black_ops_button
 	name = "Black Mesa Spec-OP Button Room"
-	icon_state = "awaycontent28"
+	icon_state = "awaycontent29"
 
 /area/awaymission/black_mesa/black_ops_server
 	name = "Black Mesa Spec-OP Server Room"
-	icon_state = "awaycontent29"
+	icon_state = "awaycontent1"
 
 /area/awaymission/black_mesa/black_ops_turret_blockade
 	name = "Black Mesa Spec-OP Turret Hallway"
-	icon_state = "awaycontent1"
+	icon_state = "awaycontent2"
 
 /area/awaymission/black_mesa/black_ops_science_room
 	name = "Black Mesa Spec-OP Science Room"
-	icon_state = "awaycontent2"
+	icon_state = "awaycontent3"
 
 /area/awaymission/black_mesa/black_ops_armory
 	name = "Black Mesa Spec-OP Armory"
-	icon_state = "awaycontent3"
+	icon_state = "awaycontent4"
 
 /area/awaymission/black_mesa/black_ops_hallway_two
 	name = "Black Mesa Spec-OP Back Hallway"
-	icon_state = "awaycontent4"
+	icon_state = "awaycontent5"
 
 /area/awaymission/black_mesa/lambda_hallway
 	name = "Black Mesa Lambda Hallway"
-	icon_state = "awaycontent5"
+	icon_state = "awaycontent6"
 
 /area/awaymission/black_mesa/lambda_teleporter
 	name = "Black Mesa Lambda Teleporter"
-	icon_state = "awaycontent6"
+	icon_state = "awaycontent7"
 
 /area/awaymission/black_mesa/outside
 	name = "Black Mesa Outside"

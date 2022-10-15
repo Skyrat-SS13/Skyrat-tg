@@ -63,7 +63,7 @@ SUBSYSTEM_DEF(title)
 			var/icon/title2use = new(fcopy_rsc(file_path))
 			title_screens += title2use
 
-	return ..()
+	return SS_INIT_SUCCESS
 
 /**
  * Make sure reference time is set up. If not, this is now time 0.
@@ -167,14 +167,21 @@ SUBSYSTEM_DEF(title)
  * * user - The user being updated
  * * name - the real name of the current slot.
  */
-/datum/controller/subsystem/title/proc/update_character_name(mob/user, name)
+/datum/controller/subsystem/title/proc/update_character_name(mob/dead/new_player/user, name)
+	if(!(istype(user) && user.title_screen_is_ready))
+		return
+
 	user.client << output(name, "title_browser:update_current_character")
 
 /**
  * Adds a startup message to the splashscreen.
+ *
+ * Arguments:
+ * * msg - the message to show users.
+ * * warning - optional: TRUE to indicate this is an error/warning
  */
-/proc/add_startup_message(msg)
-	var/msg_dat = {"<p class="terminal_text">[msg]</p>"}
+/proc/add_startup_message(msg, warning)
+	var/msg_dat = {"<p class="terminal_text">[warning ? "☒ " : ""][msg]</p>"}
 
 	GLOB.startup_messages += msg_dat
 
@@ -193,7 +200,8 @@ SUBSYSTEM_DEF(title)
 	SStitle.startup_message_timings[msg] = new_timing
 
 	for(var/mob/dead/new_player/new_player in GLOB.new_player_list)
-		#ifndef LOWMEMORYMODE // Prevents the pre-load screen from running but ensures that the bare minimum of errors happen, doesn't happen on live
+		if(!new_player.title_screen_is_ready)
+			continue
+
 		new_player.client << output(msg_dat, "title_browser:append_terminal_text")
 		new_player.client << output(list2params(list(new_timing, SStitle.average_completion_time)), "title_browser:update_loading_progress")
-		#endif

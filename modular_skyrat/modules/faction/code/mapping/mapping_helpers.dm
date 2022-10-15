@@ -27,12 +27,12 @@
 
 /obj/docking_port/mobile/tradership
 	name = "trade shuttle"
-	id = "tradership"
+	shuttle_id = "tradership"
 	rechargeTime = 2 MINUTES
 
 /obj/docking_port/stationary/picked/tradership
 	name = "Deep Space"
-	id = "tradership_away"
+	shuttle_id = "tradership_away"
 	dheight = 0
 	dir = 2
 	dwidth = 11

@@ -79,7 +79,7 @@
 ///Is this food item spawned from a silver slime? Prevent it from exporting for profit from cargo and make it taste disgusting
 #define FOOD_SILVER_SPAWNED (1<<2)
 
-#define STOP_SERVING_BREAKFAST (15 MINUTES)
+#define STOP_SERVING_BREAKFAST (35 MINUTES) // SKYRAT EDIT - ORIGINAL: 15 MINUTES
 
 
 #define FOOD_MEAT_NORMAL 5

@@ -25,6 +25,8 @@
 	var/turf/my_turf = get_turf(parent)
 	if(!my_turf || world.time >= expiry_time)
 		qdel(src)
+		return
+
 	my_turf.pollute_turf(pollutant_type, pollutant_amount * delta_time)
 
 /datum/component/temporary_pollution_emission/proc/wash_off()

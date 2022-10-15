@@ -3,7 +3,7 @@
 	desc = "Summons a thing. Probably shouldn't use this one, though."
 	icon = 'icons/obj/device.dmi'
 	icon_state = "gangtool-blue"
-	inhand_icon_state = "radio"
+	inhand_icon_state = null
 	w_class = WEIGHT_CLASS_SMALL
 
 	/// How many uses the beacon has left
@@ -42,7 +42,7 @@
 	show_options(user)
 
 /obj/item/summon_beacon/proc/can_use_beacon(mob/living/user)
-	if(user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
+	if(user.canUseTopic(src, be_close = TRUE, no_dexterity = FALSE, no_tk = TRUE))
 		return TRUE
 	else
 		playsound(src, 'sound/machines/buzz-sigh.ogg', 40, TRUE)
