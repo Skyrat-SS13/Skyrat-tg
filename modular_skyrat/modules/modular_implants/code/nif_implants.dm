@@ -22,4 +22,5 @@
 	nif_persistence = FALSE
 
 /obj/item/autosurgeon/organ/nif/disposable //Disposable, as in the fact that this only lasts for one shift
+	name = "NIF Model-ERP Autosurgeon"
 	starting_organ = /obj/item/organ/internal/cyberimp/brain/nif/roleplay_model/cheap

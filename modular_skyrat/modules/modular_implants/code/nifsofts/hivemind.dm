@@ -2,6 +2,7 @@
 GLOBAL_LIST_EMPTY(hivemind_users)
 
 /obj/item/disk/nifsoft_uploader/hivemind
+	name = "Hivemind"
 	loaded_nifsoft = /datum/nifsoft/hivemind
 
 /datum/nifsoft/hivemind

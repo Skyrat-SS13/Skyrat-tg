@@ -1,6 +1,6 @@
 /obj/item/disk/nifsoft_uploader/summoner
+	name = "Grimoire Caeruleam"
 	loaded_nifsoft = /datum/nifsoft/summoner
-
 
 /datum/nifsoft/summoner
 	name = "Grimoire Caeruleam"

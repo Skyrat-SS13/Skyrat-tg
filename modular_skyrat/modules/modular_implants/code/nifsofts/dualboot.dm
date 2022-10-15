@@ -1,4 +1,5 @@
 /obj/item/disk/nifsoft_uploader/virtual_machine
+	name = "Virtual Machine"
 	loaded_nifsoft = /datum/nifsoft/virtual_machine
 
 /datum/nifsoft/virtual_machine

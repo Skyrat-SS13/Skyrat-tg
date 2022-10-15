@@ -4,6 +4,8 @@
 	icon = 'modular_skyrat/modules/modular_implants/icons/obj/machines/vendors.dmi'
 	icon_state = "proj"
 	density = FALSE
+	default_price = 250
+	extra_price = 500
 
 	products = list(
 		/obj/item/disk/nifsoft_uploader/virtual_machine = 10,
@@ -15,3 +17,4 @@
 	premium = list(
 		/obj/item/autosurgeon/organ/nif/disposable = 5,
 	)
+
