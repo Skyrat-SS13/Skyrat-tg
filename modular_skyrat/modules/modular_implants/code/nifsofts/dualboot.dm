@@ -69,7 +69,6 @@
 	. = ..()
 	install_component(new /obj/item/computer_hardware/battery(src, /obj/item/stock_parts/cell/computer/micro))
 	install_component(new /obj/item/computer_hardware/hard_drive/small/emulated)
-	install_component(new /obj/item/computer_hardware/network_card)
 
 /obj/item/computer_hardware/hard_drive/small/emulated
 	max_capacity = 32

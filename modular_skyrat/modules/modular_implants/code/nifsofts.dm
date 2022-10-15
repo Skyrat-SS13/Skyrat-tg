@@ -33,9 +33,6 @@
 	///What NIF models can this software be installed on?
 	var/static/list/compatible_nifs = list(/obj/item/organ/internal/cyberimp/brain/nif)
 
-	///The options that the NIFSoft has. Right now there is only support for Boolean options.
-	var/list/nifsoft_options = list()
-
 /datum/nifsoft/New(obj/item/organ/internal/cyberimp/brain/nif/recepient_nif)
 	. = ..()
 

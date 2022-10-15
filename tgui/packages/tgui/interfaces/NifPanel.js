@@ -63,7 +63,6 @@ export const NifPanel = (props, context) => {
                       </BlockQuote>
                       <box>
                         <br />
-                        <Button icon="cogs" content="Configure" color="blue" fluid tooltip="Configure the options on the current NIFSoft" />
                         <Button.Confirm icon="trash" content="Uninstall" color="red" fluid tooltip="Uninstall the selected NIFSoft" confirmContent="Are you sure?" confirmIcon="question"
                         onClick={() => act('uninstall_nifsoft', { nifsoft_to_remove : nifsoft.reference })} />
                       </box>
