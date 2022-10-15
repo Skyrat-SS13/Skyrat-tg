@@ -15,7 +15,7 @@
 	var/stored_ckey
 
 	//Calibration variables
-	///Is the NIF properly calibrated yet? This is set at true for testing purposes
+	///Is the NIF properly calibrated yet?
 	var/is_calibrated = FALSE
 	///Is the NIF currently being calibrated?
 	var/calibrating = FALSE
@@ -124,6 +124,8 @@
 /obj/item/organ/internal/cyberimp/brain/nif/Remove(mob/living/carbon/organ_owner, special = FALSE)
 	. = ..()
 
+	var/turf/owner_turf = get_turf(organ_owner)
+	organ_owner.log_message("[src] was removed from [organ_owner]]",LOG_GAME)
 	STOP_PROCESSING(SSobj, src)
 
 /obj/item/organ/internal/cyberimp/brain/nif/process(delta_time)
@@ -371,11 +373,11 @@
 			return nifsoft
 
 //NIF autosurgeon. This is just here so that I can debug faster.
-/obj/item/autosurgeon/organ/nif/debug
+/obj/item/autosurgeon/organ/nif
 	starting_organ = /obj/item/organ/internal/cyberimp/brain/nif
 
 /obj/item/organ/internal/cyberimp/brain/nif/cali_test
-	is_calibrated = FALSE
+	is_calibrated = TRUE
 
-/obj/item/autosurgeon/organ/nif
+/obj/item/autosurgeon/organ/nif/debug
 	starting_organ = /obj/item/organ/internal/cyberimp/brain/nif/cali_test

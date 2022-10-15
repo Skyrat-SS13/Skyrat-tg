@@ -30,7 +30,7 @@
 		return FALSE
 
 	to_chat(user, span_notice("You successfully remove the [nifsoft_to_remove.name]"))
-	log_message("[user] removed [nifsoft_to_remove.name] from [target_mob]",LOG_GAME)
+	user.log_message("[user] removed [nifsoft_to_remove.name] from [target_mob]",LOG_GAME)
 
 	if(create_disk)
 		var/obj/item/disk/nifsoft_uploader/new_disk = new /obj/item/disk/nifsoft_uploader
@@ -43,7 +43,7 @@
 
 /obj/item/nifsoft_remover/syndie
 	name = "Syndicate NIFSoft Remover"
-	desc = "A syndicate version of the standard NIFSoft remover"
+	desc = "A modified version of a NIFSoft remover that allows the user to remove a NIFSoft and have a blank copy of the removed NIFSoft saved to a disk"
 	icon_state =  "nifsoft_remover_syndie"
 
 	create_disk = TRUE
@@ -57,6 +57,12 @@
 	materials = list(/datum/material/iron = 200, /datum/material/silver = 500, /datum/material/uranium = 500)
 	category = list(RND_CATEGORY_EQUIPMENT)
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
+
+/datum/uplink_item/device_tools/nifsoft_remover
+	name = "Syndicate NIFSoft Remover"
+	desc = "A modified version of a NIFSoft remover that allows the user to remove a NIFSoft and have a blank copy of the removed NIFSoft saved to a disk"
+	item = /obj/item/nifsoft_remover/syndie
+	cost = 3
 
 ///NIF Repair Kit.
 /obj/item/nif_repair_kit

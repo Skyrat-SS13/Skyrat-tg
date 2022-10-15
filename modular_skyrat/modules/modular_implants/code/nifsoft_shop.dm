@@ -5,7 +5,7 @@
 	icon_state = "proj"
 	density = FALSE
 	default_price = 250
-	extra_price = 500
+	extra_price = 750
 
 	products = list(
 		/obj/item/disk/nifsoft_uploader/virtual_machine = 10,
