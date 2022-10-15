@@ -2,7 +2,7 @@
 	name = "kinky blindfold"
 	desc = "Covers the eyes, preventing sight. But it looks so nice..."
 	icon_state = "kblindfold"
-	inhand_icon_state = "kblindfold"
+	inhand_icon_state = "kblindfold_pink"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_eyes.dmi'
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_eyes.dmi'
 	lefthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_left.dmi'

@@ -27,6 +27,7 @@
 		"ears" = ACC_RANDOM,
 		"legs" = "Normal Legs"
 	)
+	digitigrade_customization = DIGITIGRADE_NEVER
 	disliked_food = GROSS | GRAIN | GORE
 	liked_food = MEAT
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT

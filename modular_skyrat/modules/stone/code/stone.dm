@@ -41,7 +41,6 @@ GLOBAL_LIST_INIT(stone_recipes, list ( \
 	desc = "Chunks of high-quality stone. This could be cut into bricks to form a really good building material."
 	icon = 'modular_skyrat/modules/stone/icons/ore.dmi'
 	icon_state = "stone_ore"
-	inhand_icon_state = "Iron ore"
 	singular_name = "unrefined stone chunk"
 	points = 1
 	mats_per_unit = list(/datum/material/stone=MINERAL_MATERIAL_AMOUNT)
