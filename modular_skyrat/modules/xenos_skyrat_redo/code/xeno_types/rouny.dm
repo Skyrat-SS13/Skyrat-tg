@@ -1,5 +1,6 @@
 /// SKYRAT MODULE SKYRAT_XENO_REDO
 
+#define EVASION_VENTCRAWL_INABILTY_CD_PERCENTAGE 0.8
 #define RUNNER_BLUR_EFFECT "runner_evasion"
 
 /mob/living/carbon/alien/humanoid/skyrat/runner
@@ -56,8 +57,8 @@
 	evade_active = TRUE
 	RegisterSignal(owner, COMSIG_PROJECTILE_ON_HIT, .proc/on_projectile_hit)
 	REMOVE_TRAIT(owner, TRAIT_VENTCRAWLER_ALWAYS, INNATE_TRAIT)
-	addtimer(CALLBACK(src, .proc/give_back_ventcrawl), (cooldown_time * 0.8)) //They cannot ventcrawl until 80% of the cooldown has passed (48 seconds)
-	to_chat(owner, span_warning("We will be unable to crawl through vents for the next [(cooldown_time * 0.8) / 10] seconds."))
+	addtimer(CALLBACK(src, .proc/give_back_ventcrawl), (cooldown_time * EVASION_VENTCRAWL_INABILTY_CD_PERCENTAGE)) //They cannot ventcrawl until the defined percent of the cooldown has passed
+	to_chat(owner, span_warning("We will be unable to crawl through vents for the next [(cooldown_time * EVASION_VENTCRAWL_INABILTY_CD_PERCENTAGE) / 10] seconds."))
 	return TRUE
 
 /// Handles deactivation of the xeno evasion ability, mainly unregistering the signal and giving a balloon alert
@@ -88,4 +89,5 @@
 			return evade_result
 	. = ..()
 
+#undef EVASION_VENTCRAWL_INABILTY_CD_PERCENTAGE
 #undef RUNNER_BLUR_EFFECT
