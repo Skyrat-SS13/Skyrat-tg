@@ -92,6 +92,9 @@
 	durability = max_durability
 	loaded_nifsofts = preinstalled_nifsofts
 
+	for(var/datum/nifsoft/preinstalled_nifsoft as anything in preinstalled_nifsofts)
+		install_nifsoft(preinstalled_nifsoft)
+
 	power_level = max_power
 
 /obj/item/organ/internal/cyberimp/brain/nif/Insert(mob/living/carbon/human/insertee)
