@@ -50,9 +50,6 @@
 	///When is blood draining disabled?
 	var/minimum_blood_level = BLOOD_VOLUME_SAFE
 
-	///Is power being drawn through the user's power supply?
-	var/electric_drain = FALSE
-
 	//Durability and persistence variables
 	///What is the maximum durability of the NIF?
 	var/max_durability = 100
@@ -318,7 +315,7 @@
 
 /datum/action/item_action/nif/open_menu
 	name = "Open NIF Menu"
-	button_icon_state = "weapon" // This is a placeholder
+	button_icon_state = "user" // This is a placeholder
 
 /datum/action/item_action/nif/open_menu/Trigger(trigger_flags)
 	. = ..()

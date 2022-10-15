@@ -67,6 +67,7 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 	button_icon = 'modular_skyrat/master_files/icons/mob/actions/action_backgrounds.dmi'
 	background_icon_state = "android"
 	icon_icon = 'modular_skyrat/master_files/icons/mob/actions/actions_nif.dmi'
+	button_icon_state = "phone"
 
 /datum/action/innate/hivemind_config/Activate()
 	. = ..()

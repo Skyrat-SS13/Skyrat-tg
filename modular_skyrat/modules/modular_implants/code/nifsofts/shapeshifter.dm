@@ -29,6 +29,10 @@
 /datum/action/innate/alter_form/nif
 	name = "Shapeshift"
 	slime_restricted =  FALSE
+	button_icon = 'modular_skyrat/master_files/icons/mob/actions/action_backgrounds.dmi'
+	background_icon_state = "android"
+	icon_icon = 'modular_skyrat/master_files/icons/mob/actions/actions_nif.dmi'
+	button_icon_state = "slime"
 
 /datum/action/innate/alter_form/nif/change_form(mob/living/carbon/human/alterer)
 	var/selected_alteration = show_radial_menu(

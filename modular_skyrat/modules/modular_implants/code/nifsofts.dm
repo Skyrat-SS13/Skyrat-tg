@@ -2,7 +2,7 @@
 /datum/nifsoft
 	///What is the name of the program?
 	var/name = "Generic NIFsoft"
-	///What is the name of the program when looking at the program from inside of a NIF? This is mostly here for soulcatcher, for now.
+	///What is the name of the program when looking at the program from inside of a NIF? This is good if you want to mask a NIFSoft's name.
 	var/program_name
 	///A description of what the program does. This is used when looking at programs in the NIF, along with installing them from the store.
 	var/program_desc = "This program does stuff!"
@@ -21,8 +21,6 @@
 	var/active_cost = 0
 	///What is the power cost to activate the program?
 	var/activation_cost = 0
-	///Does the NIFSoft persist inbetween rounds?
-	var/persistence = FALSE
 	///Does the NIFSoft have cooldowns
 	var/cooldown = FALSE
 	///Is the NIFSoft on cooldown?
