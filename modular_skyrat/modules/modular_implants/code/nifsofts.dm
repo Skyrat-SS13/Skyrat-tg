@@ -114,7 +114,7 @@
 	///What NIFSoft is currently loaded in?
 	var/datum/nifsoft/loaded_nifsoft = /datum/nifsoft
 	///Is the datadisk reusable?
-	var/reusable = TRUE
+	var/reusable = FALSE
 
 /obj/item/disk/nifsoft_uploader/Initialize()
 	. = ..()
