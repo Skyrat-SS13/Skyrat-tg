@@ -13,6 +13,7 @@
 	/// The action that opens up the virtual machine
 	var/datum/action/item_action/nif/virtual_machine/vm_action
 	/// The person that is using the device
+	compatible_nifs = list(/obj/item/organ/internal/cyberimp/brain/nif/standard)
 
 /datum/nifsoft/virtual_machine/New()
 	. = ..()

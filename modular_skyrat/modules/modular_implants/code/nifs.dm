@@ -13,10 +13,10 @@
 	var/mob/living/carbon/human/linked_mob = null
 	///What CKEY does the original user have? Used to prevent theft
 	var/stored_ckey
-	///What access does the user have? This is used for role restricted NIFSofts.
-	var/list/user_access_list = list()
+
+	//Calibration variables
 	///Is the NIF properly calibrated yet? This is set at true for testing purposes
-	var/is_calibrated = TRUE
+	var/is_calibrated = FALSE
 	///Is the NIF currently being calibrated?
 	var/calibrating = FALSE
 	///How long does each step in the calibration process take in total?
@@ -32,6 +32,7 @@
 	///How much power is the NIF currently using? Negative usage will result in power being gained.
 	var/power_usage = 0
 
+	//Nutrition variables
 	///Is power being drawn from nutrition?
 	var/nutrition_drain = FALSE
 	///How fast is nutrition drained from the host?
@@ -41,6 +42,7 @@
 	///What is the minimum nutrition someone has to be at for the NIF to convert power?
 	var/minimum_nutrition = 25
 
+	//Blood variables
 	///Is power being drawn through blood
 	var/blood_drain = FALSE
 	///The rate of blood to energy
@@ -56,7 +58,7 @@
 	///What level of durability is the NIF at?
 	var/durability = 100
 	///How much durability is subtracted per shift?
-	var/shift_durability_loss = 20
+	var/shift_durability_loss = 10
 	//How much durability is lost per death if any?
 	var/death_durability_loss = 10
 	///Does the NIF stay between rounds? By default, they do.
@@ -372,13 +374,13 @@
 /obj/item/nif_repair_kit
 	name = "NIF repair kit"
 	desc = "Repairs NIFs" //Placeholder
-	icon = 'icons/obj/storage/storage.dmi'
-	icon_state = "plasticbox"
+	icon = 'modular_skyrat/modules/modular_implants/icons/obj/devices.dmi'
+	icon_state = "repair_paste"
 	w_class = WEIGHT_CLASS_SMALL
 	///How much does this repair each time it is used?
 	var/repair_amount = 20
 	///How many times can this be used?
-	var/uses = 5
+	var/uses = 3
 
 /obj/item/nif_repair_kit/attack(mob/living/carbon/human/mob_to_repair, mob/living/user)
 	. = ..()

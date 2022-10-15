@@ -7,6 +7,7 @@
 	active_mode = TRUE
 	active_cost = 2.5
 	mutually_exclusive_programs = list(/datum/nifsoft/shapeshifter) //Here for testing
+	compatible_nifs = list(/obj/item/organ/internal/cyberimp/brain/nif/standard)
 
 /datum/nifsoft/money_sense/activate()
 	. = ..()

@@ -4,10 +4,11 @@
 /datum/nifsoft/shapeshifter
 	name = "Shapeshifter"
 	program_desc = "Allows the user to change the apperance of their body at will"
-
 	activation_cost = 10
 	active_mode = TRUE
 	active_cost = 5
+	compatible_nifs = list(/obj/item/organ/internal/cyberimp/brain/nif/standard)
+
 	///The NIF version of the Shapeshifter Ability
 	var/datum/action/innate/alter_form/nif/shapeshifter
 

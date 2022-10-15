@@ -31,7 +31,7 @@
 	///How long is the cooldown for?
 	var/cooldown_duration = 5 SECONDS
 	///What NIF models can this software be installed on?
-	var/static/list/compatible_nifs = list(/obj/item/organ/internal/cyberimp/brain/nif)
+	var/list/compatible_nifs = list(/obj/item/organ/internal/cyberimp/brain/nif)
 
 /datum/nifsoft/New(obj/item/organ/internal/cyberimp/brain/nif/recepient_nif)
 	. = ..()
