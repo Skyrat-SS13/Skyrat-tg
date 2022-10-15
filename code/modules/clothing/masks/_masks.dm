@@ -1,8 +1,6 @@
 /obj/item/clothing/mask
 	name = "mask"
 	icon = 'icons/obj/clothing/masks.dmi'
-	lefthand_file = 'icons/mob/inhands/clothing/masks_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/clothing/masks_righthand.dmi'
 	body_parts_covered = HEAD
 	slot_flags = ITEM_SLOT_MASK
 	strip_delay = 40
@@ -21,7 +19,7 @@
 
 /obj/item/clothing/mask/equipped(mob/M, slot)
 	. = ..()
-	if ((slot & ITEM_SLOT_MASK) && modifies_speech)
+	if (slot == ITEM_SLOT_MASK && modifies_speech)
 		RegisterSignal(M, COMSIG_MOB_SAY, .proc/handle_speech)
 	else
 		UnregisterSignal(M, COMSIG_MOB_SAY)

@@ -131,7 +131,7 @@
 	remove_attached_item()
 	attached_item = target
 	attached_item.forceMove(src)
-	attached_item.vis_flags |= VIS_INHERIT_ID | VIS_INHERIT_PLANE
+	attached_item.vis_flags |= VIS_INHERIT_ID
 	vis_contents += attached_item
 	RegisterSignal(attached_item, COMSIG_PARENT_QDELETING, .proc/on_attached_delete)
 	handle_density()
@@ -145,7 +145,6 @@
 	SIGNAL_HANDLER
 	UnregisterSignal(attached_item, COMSIG_PARENT_QDELETING)
 	vis_contents -= attached_item
-	attached_item &= ~(VIS_INHERIT_ID | VIS_INHERIT_PLANE)
 	attached_item = null
 	handle_density()
 
@@ -176,7 +175,7 @@
 
 /obj/structure/training_machine/AltClick(mob/user)
 	. = ..()
-	if(!user.canUseTopic(src, be_close = TRUE, no_dexterity = TRUE, no_tk = TRUE, floor_okay = TRUE))
+	if(!user.canUseTopic(src, BE_CLOSE, NO_DEXTERITY, NO_TK, FLOOR_OKAY))
 		return
 	if(has_buckled_mobs())
 		user_unbuckle_mob(buckled_mobs[1], user)

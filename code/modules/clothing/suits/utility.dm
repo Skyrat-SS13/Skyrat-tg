@@ -42,7 +42,7 @@
 /obj/item/clothing/suit/utility/fire/worn_overlays(mutable_appearance/standing, isinhands, icon_file)
 	. = ..()
 	if(!isinhands)
-		. += emissive_appearance(icon_file, "[icon_state]-emissive", src, alpha = src.alpha)
+		. += emissive_appearance(icon_file, "[icon_state]-emissive", alpha = src.alpha)
 
 /obj/item/clothing/suit/utility/fire/firefighter
 	icon_state = "firesuit"
@@ -59,13 +59,13 @@
 	name = "firesuit"
 	desc = "An expensive firesuit that protects against even the most deadly of station fires. Designed to protect even if the wearer is set aflame."
 	icon_state = "atmos_firesuit"
-	inhand_icon_state = null
+	inhand_icon_state = "firesuit_atmos"
 	max_heat_protection_temperature = FIRE_IMMUNITY_MAX_TEMP_PROTECT
 
 /*
  * Bomb protection
  */
-/obj/item/clothing/head/utility/bomb_hood
+/obj/item/clothing/head/bomb_hood
 	name = "bomb hood"
 	desc = "Use in case of bomb."
 	icon_state = "bombsuit"
@@ -82,11 +82,12 @@
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH | PEPPERPROOF
 	resistance_flags = NONE
 
+
 /obj/item/clothing/suit/utility/bomb_suit
 	name = "bomb suit"
 	desc = "A suit designed for safety when handling explosives."
 	icon_state = "bombsuit"
-	inhand_icon_state = null
+	inhand_icon_state = "bombsuit"
 	w_class = WEIGHT_CLASS_BULKY
 	clothing_flags = THICKMATERIAL
 	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
@@ -101,28 +102,30 @@
 	equip_delay_other = 70
 	resistance_flags = NONE
 
-/obj/item/clothing/head/utility/bomb_hood/security
+
+/obj/item/clothing/head/bomb_hood/security
 	icon_state = "bombsuit_sec"
-	inhand_icon_state = null
+	inhand_icon_state = "bombsuit_sec"
 
 /obj/item/clothing/suit/utility/bomb_suit/security
 	icon_state = "bombsuit_sec"
-	inhand_icon_state = null
+	inhand_icon_state = "bombsuit_sec"
 	allowed = list(/obj/item/gun/energy, /obj/item/melee/baton, /obj/item/restraints/handcuffs)
 
-/obj/item/clothing/head/utility/bomb_hood/white
+
+/obj/item/clothing/head/bomb_hood/white
 	icon_state = "bombsuit_white"
-	inhand_icon_state = null
+	inhand_icon_state = "bombsuit_white"
 
 /obj/item/clothing/suit/utility/bomb_suit/white
 	icon_state = "bombsuit_white"
-	inhand_icon_state = null
+	inhand_icon_state = "bombsuit_white"
 
 /*
 * Radiation protection
 */
 
-/obj/item/clothing/head/utility/radiation
+/obj/item/clothing/head/radiation
 	name = "radiation hood"
 	icon_state = "rad"
 	desc = "A hood with radiation protective properties. The label reads, 'Made with lead. Please do not consume insulation.'"
@@ -134,7 +137,7 @@
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH | PEPPERPROOF
 	resistance_flags = NONE
 
-/obj/item/clothing/head/utility/radiation/Initialize(mapload)
+/obj/item/clothing/head/radiation/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/radiation_protected_clothing)
 
@@ -165,4 +168,4 @@
 /obj/item/clothing/suit/utility/radiation/worn_overlays(mutable_appearance/standing, isinhands, icon_file)
 	. = ..()
 	if(!isinhands)
-		. += emissive_appearance(icon_file, "[icon_state]-emissive", src, alpha = src.alpha)
+		. += emissive_appearance(icon_file, "[icon_state]-emissive", alpha = src.alpha)

@@ -4,8 +4,6 @@
 	weight = 10
 	max_occurrences = 3
 	min_players = 10
-	category = EVENT_CATEGORY_JANITORIAL
-	description = "The scrubbers release a tide of mostly harmless froth."
 
 /datum/round_event/scrubber_overflow
 	announce_when = 1
@@ -68,23 +66,6 @@
 	if(!scrubbers.len)
 		return kill()
 
-/datum/round_event_control/scrubber_overflow/can_spawn_event(players_amt)
-	. = ..()
-	if(!.)
-		return
-	for(var/obj/machinery/atmospherics/components/unary/vent_scrubber/temp_vent in GLOB.machines)
-		var/turf/scrubber_turf = get_turf(temp_vent)
-		if(!scrubber_turf)
-			continue
-		if(!is_station_level(scrubber_turf.z))
-			continue
-		if(temp_vent.welded)
-			continue
-		return TRUE //there's at least one. we'll let the codergods handle the rest with prob() i guess.
-	return FALSE
-
-
-
 /datum/round_event/scrubber_overflow/start()
 	for(var/obj/machinery/atmospherics/components/unary/vent in scrubbers)
 		if(!vent.loc)
@@ -113,7 +94,6 @@
 	min_players = 25
 	max_occurrences = 1
 	earliest_start = 35 MINUTES
-	description = "The scrubbers release a tide of moderately harmless froth."
 
 /datum/round_event/scrubber_overflow/threatening
 	danger_chance = 10
@@ -126,7 +106,6 @@
 	min_players = 35
 	max_occurrences = 1
 	earliest_start = 45 MINUTES
-	description = "The scrubbers release a tide of mildly harmless froth."
 
 /datum/round_event/scrubber_overflow/catastrophic
 	danger_chance = 30

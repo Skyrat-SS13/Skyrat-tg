@@ -5,13 +5,12 @@ SUBSYSTEM_DEF(machines)
 	wait = 2 SECONDS
 	var/list/processing = list()
 	var/list/currentrun = list()
-	///List of all powernets on the server.
-	var/list/datum/powernet/powernets = list()
+	var/list/powernets = list()
 
 /datum/controller/subsystem/machines/Initialize()
 	makepowernets()
 	fire()
-	return SS_INIT_SUCCESS
+	return ..()
 
 /datum/controller/subsystem/machines/proc/makepowernets()
 	for(var/datum/powernet/power_network as anything in powernets)

@@ -249,7 +249,7 @@
 	current.remove_status_effect(/datum/status_effect/cult_master)
 
 /datum/team/cult
-	name = "\improper Cult"
+	name = "Cult"
 
 	///The blood mark target
 	var/atom/blood_target
@@ -284,9 +284,7 @@
 				++cultplayers
 			else
 				++alive
-
-	ASSERT(cultplayers) //we shouldn't be here.
-	var/ratio = alive ? cultplayers/alive : 1
+	var/ratio = cultplayers/alive
 	if(ratio > CULT_RISEN && !cult_risen)
 		for(var/datum/mind/mind as anything in members)
 			if(mind.current)
@@ -480,23 +478,21 @@
 	return FALSE
 
 /// Returns whether the given mob is convertable to the blood cult
-/proc/is_convertable_to_cult(mob/living/target, datum/team/cult/specific_cult)
-	if(!istype(target))
+/proc/is_convertable_to_cult(mob/living/M, datum/team/cult/specific_cult)
+	if(!istype(M))
 		return FALSE
-	if(target.mind)
-		if(ishuman(target) && (target.mind.holy_role))
+	if(M.mind)
+		if(ishuman(M) && (M.mind.holy_role))
 			return FALSE
-		if(specific_cult?.is_sacrifice_target(target.mind))
+		if(specific_cult?.is_sacrifice_target(M.mind))
 			return FALSE
-		if(target.mind.enslaved_to && !IS_CULTIST(target.mind.enslaved_to))
+		if(M.mind.enslaved_to && !IS_CULTIST(M.mind.enslaved_to))
 			return FALSE
-		if(target.mind.unconvertable)
-			return FALSE
-		if(target.mind.has_antag_datum(/datum/antagonist/heretic))
+		if(M.mind.unconvertable)
 			return FALSE
 	else
 		return FALSE
-	if(HAS_TRAIT(target, TRAIT_MINDSHIELD) || issilicon(target) || isbot(target) || isdrone(target) || !target.client)
+	if(HAS_TRAIT(M, TRAIT_MINDSHIELD) || issilicon(M) || isbot(M) || isdrone(M) || !M.client)
 		return FALSE //can't convert machines, shielded, or braindead
 	return TRUE
 

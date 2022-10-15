@@ -79,7 +79,7 @@
 		return FALSE
 	if(isliving(owner))
 		var/mob/living/living = owner
-		if(!living.can_speak())
+		if(!living.can_speak_vocal())
 			return FALSE
 	if(check_flags & AB_CHECK_CONSCIOUS)
 		if(owner.stat)
@@ -100,14 +100,15 @@
 	owner.say(".x[command]")
 
 /obj/item/organ/internal/vocal_cords/colossus/can_speak_with()
-	if(!owner)
-		return FALSE
-
 	if(world.time < next_command)
 		to_chat(owner, span_notice("You must wait [DisplayTimeText(next_command - world.time)] before Speaking again."))
 		return FALSE
-
-	return owner.can_speak()
+	if(!owner)
+		return FALSE
+	if(!owner.can_speak_vocal())
+		to_chat(owner, span_warning("You are unable to speak!"))
+		return FALSE
+	return TRUE
 
 /obj/item/organ/internal/vocal_cords/colossus/handle_speech(message)
 	playsound(get_turf(owner), 'sound/magic/clockwork/invoke_general.ogg', 300, TRUE, 5)

@@ -2,7 +2,7 @@
 /mob/living/simple_animal/bot/floorbot
 	name = "\improper Floorbot"
 	desc = "A little floor repairing robot, he looks so excited!"
-	icon = 'icons/mob/silicon/aibots.dmi'
+	icon = 'icons/mob/aibots.dmi'
 	icon_state = "floorbot0"
 	density = FALSE
 	health = 25
@@ -23,6 +23,7 @@
 	var/obj/item/stack/tile/tilestack
 	var/fixfloors = TRUE
 	var/autotile = FALSE
+	var/max_targets = 50
 	var/turf/target
 	var/toolbox = /obj/item/storage/toolbox/mechanical
 	var/toolbox_color = ""
@@ -72,6 +73,7 @@
 /mob/living/simple_animal/bot/floorbot/bot_reset()
 	..()
 	target = null
+	ignore_list = list()
 	toggle_magnet(FALSE)
 
 /mob/living/simple_animal/bot/floorbot/attackby(obj/item/W , mob/user, params)

@@ -11,7 +11,6 @@
 	name = "tank"
 	icon = 'icons/obj/atmospherics/tank.dmi'
 	icon_state = "generic"
-	inhand_icon_state = "generic_tank"
 	lefthand_file = 'icons/mob/inhands/equipment/tanks_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/tanks_righthand.dmi'
 	flags_1 = CONDUCT_1

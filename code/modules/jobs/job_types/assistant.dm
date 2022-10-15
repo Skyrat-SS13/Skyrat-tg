@@ -41,8 +41,8 @@ Assistant
 	name = JOB_ASSISTANT
 	jobtype = /datum/job/assistant
 	id_trim = /datum/id_trim/job/assistant
-	belt = /obj/item/modular_computer/tablet/pda/assistant
-	uniform = /obj/item/clothing/under/color/random // SKYRAT EDIT ADD
+	uniform = /obj/item/clothing/under/color/random
+
 
 /datum/outfit/job/assistant/pre_equip(mob/living/carbon/human/target)
 	..()

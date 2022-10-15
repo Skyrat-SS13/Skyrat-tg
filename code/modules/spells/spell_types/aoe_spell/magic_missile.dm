@@ -44,5 +44,4 @@
 	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC
 
 	max_targets = 6
-	shuffle_targets_list = TRUE
 	projectile_type = /obj/projectile/magic/aoe/magic_missile/lesser

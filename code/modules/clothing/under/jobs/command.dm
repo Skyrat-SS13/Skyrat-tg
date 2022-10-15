@@ -40,5 +40,5 @@
 	name = "captain's formal uniform"
 	desc = "A captain's luxury-wear, for special occasions."
 	icon_state = "captain_parade"
-	inhand_icon_state = null
+	inhand_icon_state = "by_suit"
 	can_adjust = FALSE

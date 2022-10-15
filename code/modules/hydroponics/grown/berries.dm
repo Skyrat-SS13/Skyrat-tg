@@ -176,7 +176,7 @@
 	icon_grow = "toechtauese-grow"
 	icon_dead = "toechtauese-dead"
 	genes = list(/datum/plant_gene/trait/repeated_harvest)
-	reagents_add = list(/datum/reagent/toxin/itching_powder = 0.04, /datum/reagent/consumable/nutriment = 0.1)
+	reagents_add = list(/datum/reagent/consumable/toechtauese_juice = 0.1, /datum/reagent/toxin/itching_powder = 0.04)
 
 /obj/item/food/grown/toechtauese
 	seed = /obj/item/seeds/toechtauese
@@ -184,6 +184,7 @@
 	desc = "A branch with töchtaüse berries on it. They're a favourite on the Mothic Fleet, but not in this form."
 	icon_state = "toechtauese_branch"
 	foodtypes = FRUIT
-	juice_results = list(/datum/reagent/consumable/toechtauese_juice = 0)
+	grind_results = list(/datum/reagent/consumable/toechtauese_juice = 0, /datum/reagent/toxin/itching_powder = 0)
+	juice_results = list(/datum/reagent/consumable/toechtauese_juice = 0, /datum/reagent/toxin/itching_powder = 0)
 	tastes = list("fiery itchy pain" = 1)
 	distill_reagent = /datum/reagent/toxin/itching_powder

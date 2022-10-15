@@ -283,8 +283,6 @@
 	density = TRUE
 	update_overlays()
 
-#define MAX_MOLD_FOAM_RANGE 7
-
 /obj/structure/biohazard_blob/structure/bulb/proc/discharge()
 	if(!is_full)
 		return
@@ -316,7 +314,7 @@
 			R.my_atom = src
 			R.add_reagent(/datum/reagent/toxin, 30)
 			var/datum/effect_system/fluid_spread/foam/foam = new
-			foam.set_up(MAX_MOLD_FOAM_RANGE, location = T, carry = R)
+			foam.set_up(200, location = T, carry = R)
 			foam.start()
 		if(BIO_BLOB_TYPE_RADIOACTIVE)
 			radiation_pulse(src, 1500, 15, FALSE, TRUE)
@@ -326,7 +324,7 @@
 			R.my_atom = src
 			R.add_reagent(/datum/reagent/toxin/mutagen, 50)
 			var/datum/effect_system/fluid_spread/foam/foam = new
-			foam.set_up(MAX_MOLD_FOAM_RANGE, location = T, carry = R)
+			foam.set_up(200, location = T, carry = R)
 			foam.start()
 	is_full = FALSE
 	name = "empty bulb"
@@ -336,8 +334,6 @@
 	update_overlays()
 	density = FALSE
 	addtimer(CALLBACK(src, .proc/make_full), 1 MINUTES, TIMER_UNIQUE|TIMER_NO_HASH_WAIT)
-
-#undef MAX_MOLD_FOAM_RANGE
 
 /obj/structure/biohazard_blob/structure/bulb/attack_generic(mob/user, damage_amount, damage_type, damage_flag, sound_effect, armor_penetration)
 	if(MOLD_FACTION in user.faction)

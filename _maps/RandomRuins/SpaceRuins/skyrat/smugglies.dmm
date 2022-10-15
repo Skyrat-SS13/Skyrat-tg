@@ -4,7 +4,6 @@
 /area/template_noop)
 "c" = (
 /obj/machinery/door/airlock/medical,
-/obj/effect/mapping_helpers/airlock/access/all,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/skyrat/smugglies)
 "d" = (
@@ -45,28 +44,20 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/skyrat/smugglies)
 "t" = (
-/obj/machinery/light/directional/east,
+/obj/machinery/light{
+	dir = 4
+	},
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/skyrat/smugglies)
 "u" = (
-/obj/machinery/door/airlock/mining{
-	name = "Backroom"
-	},
-/obj/effect/turf_decal/siding/thinplating/dark/corner{
-	dir = 1
-	},
-/obj/effect/mapping_helpers/airlock/access/all,
+/obj/structure/table,
+/obj/item/seeds/cocoapod,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/skyrat/smugglies)
 "v" = (
 /obj/effect/turf_decal/siding/thinplating/dark,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/skyrat/smugglies)
-"w" = (
-/obj/structure/lattice/catwalk,
-/obj/structure/marker_beacon/burgundy,
-/turf/template_noop,
-/area/template_noop)
 "y" = (
 /obj/structure/table,
 /obj/effect/spawner/random/entertainment/money,
@@ -81,9 +72,10 @@
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered/skyrat/smugglies)
 "B" = (
-/obj/machinery/door/airlock/external,
-/obj/effect/mapping_helpers/airlock/access/all,
-/turf/open/floor/plating,
+/obj/structure/closet/secure_closet/hydroponics{
+	req_access = null
+	},
+/turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/skyrat/smugglies)
 "C" = (
 /obj/effect/turf_decal/stripes/asteroid/corner{
@@ -99,14 +91,18 @@
 /turf/open/misc/asteroid/airless,
 /area/ruin/unpowered/no_grav)
 "H" = (
-/obj/machinery/light/directional/north,
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/open/floor/iron/grimy,
 /area/ruin/space/has_grav/powered/skyrat/smugglies)
 "I" = (
-/obj/structure/closet/secure_closet/hydroponics{
-	req_access = null
+/obj/machinery/door/airlock/mining{
+	name = "Backroom"
 	},
-/obj/item/gun/energy/floragun,
+/obj/effect/turf_decal/siding/thinplating/dark/corner{
+	dir = 1
+	},
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/skyrat/smugglies)
 "K" = (
@@ -126,7 +122,9 @@
 /turf/closed/wall/mineral/iron,
 /area/ruin/space/has_grav/powered/skyrat/smugglies)
 "Q" = (
-/obj/machinery/light/directional/north,
+/obj/machinery/light{
+	dir = 1
+	},
 /obj/structure/table,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/skyrat/smugglies)
@@ -152,10 +150,8 @@
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/skyrat/smugglies)
 "W" = (
-/obj/structure/table,
-/obj/item/seeds/cocoapod,
-/obj/item/circuitboard/machine/spaceship_navigation_beacon,
-/turf/open/floor/iron,
+/obj/machinery/door/airlock/external,
+/turf/open/floor/plating,
 /area/ruin/space/has_grav/powered/skyrat/smugglies)
 "Y" = (
 /obj/machinery/computer/crew/syndie{
@@ -174,15 +170,15 @@
 a
 a
 a
-a
+z
+z
 z
 z
 a
-a
-a
 z
-a
-a
+z
+z
+z
 a
 a
 a
@@ -194,13 +190,13 @@ z
 z
 z
 z
-a
-a
 z
 z
 z
-a
-a
+z
+z
+z
+z
 a
 a
 "}
@@ -208,55 +204,21 @@ a
 a
 a
 z
+O
+O
+O
+O
+O
+O
+O
+O
+O
 z
 z
-z
-z
-a
-z
-z
-z
-z
-a
-a
 a
 "}
 (4,1,1) = {"
 a
-z
-z
-z
-z
-z
-z
-z
-z
-z
-z
-z
-z
-a
-a
-"}
-(5,1,1) = {"
-a
-z
-z
-O
-O
-O
-O
-O
-O
-O
-O
-O
-z
-z
-w
-"}
-(6,1,1) = {"
-z
 z
 z
 O
@@ -272,8 +234,8 @@ O
 O
 h
 "}
-(7,1,1) = {"
-z
+(5,1,1) = {"
+a
 z
 z
 O
@@ -284,12 +246,12 @@ O
 H
 m
 o
-B
+W
 K
-B
+W
 k
 "}
-(8,1,1) = {"
+(6,1,1) = {"
 z
 z
 z
@@ -297,7 +259,7 @@ O
 y
 Z
 U
-u
+I
 o
 o
 o
@@ -306,7 +268,7 @@ O
 O
 C
 "}
-(9,1,1) = {"
+(7,1,1) = {"
 z
 z
 z
@@ -321,16 +283,16 @@ O
 O
 z
 z
-w
+F
 "}
-(10,1,1) = {"
+(8,1,1) = {"
 z
 z
 z
 O
-I
+B
 o
-W
+u
 d
 o
 S
@@ -338,9 +300,9 @@ e
 O
 z
 z
-F
+z
 "}
-(11,1,1) = {"
+(9,1,1) = {"
 z
 z
 z
@@ -357,7 +319,7 @@ z
 z
 z
 "}
-(12,1,1) = {"
+(10,1,1) = {"
 z
 z
 z
@@ -374,41 +336,41 @@ z
 z
 z
 "}
+(11,1,1) = {"
+z
+z
+z
+O
+O
+O
+O
+O
+O
+O
+O
+O
+z
+z
+a
+"}
+(12,1,1) = {"
+a
+z
+z
+z
+z
+z
+z
+z
+z
+z
+z
+z
+z
+a
+a
+"}
 (13,1,1) = {"
-z
-z
-z
-O
-O
-O
-O
-O
-O
-O
-O
-O
-z
-z
-a
-"}
-(14,1,1) = {"
-a
-z
-z
-z
-z
-z
-z
-z
-z
-z
-z
-z
-z
-a
-a
-"}
-(15,1,1) = {"
 a
 a
 z
@@ -420,23 +382,6 @@ z
 z
 z
 z
-a
-a
-a
-a
-"}
-(16,1,1) = {"
-a
-a
-a
-z
-z
-z
-z
-z
-z
-z
-a
 a
 a
 a

@@ -140,15 +140,15 @@
 	///World ticks the machine is electified for
 	var/seconds_electrified = MACHINE_NOT_ELECTRIFIED
 	///When this is TRUE, we fire items at customers! We're broken!
-	var/shoot_inventory = FALSE
+	var/shoot_inventory = 0
 	///How likely this is to happen (prob 100) per second
 	var/shoot_inventory_chance = 1
 	//Stop spouting those godawful pitches!
-	var/shut_up = FALSE
+	var/shut_up = 0
 	///can we access the hidden inventory?
-	var/extended_inventory = FALSE
+	var/extended_inventory = 0
 	///Are we checking the users ID
-	var/scan_id = TRUE
+	var/scan_id = 1
 	///Coins that we accept?
 	var/obj/item/coin/coin
 	///Bills we accept?
@@ -285,7 +285,7 @@
 	if(panel_open)
 		. += panel_type
 	if(light_mask && !(machine_stat & BROKEN) && powered())
-		. += emissive_appearance(icon, light_mask, src)
+		. += emissive_appearance(icon, light_mask)
 
 /obj/machinery/vending/atom_break(damage_flag)
 	. = ..()
@@ -652,7 +652,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 	visible_message(span_danger("[src] tips over!"))
 	tilted = TRUE
 	layer = ABOVE_MOB_LAYER
-	SET_PLANE_IMPLICIT(src, GAME_PLANE_UPPER)
+	plane = GAME_PLANE_UPPER
 
 	var/crit_case
 	if(crit)
@@ -767,7 +767,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 
 	tilted = FALSE
 	layer = initial(layer)
-	SET_PLANE_IMPLICIT(src, initial(plane))
+	plane = initial(plane)
 
 	var/matrix/M = matrix()
 	M.Turn(0)
@@ -854,12 +854,12 @@ GLOBAL_LIST_EMPTY(vending_products)
 	obj_flags |= EMAGGED
 	to_chat(user, span_notice("You short out the product lock on [src]."))
 
-/obj/machinery/vending/interact(mob/user)
+/obj/machinery/vending/_try_interact(mob/user)
 	if(seconds_electrified && !(machine_stat & NOPOWER))
 		if(shock(user, 100))
 			return
 
-	if(tilted && !user.buckled && !isAdminGhostAI(user))
+	if(tilted && !user.buckled && !isAI(user))
 		to_chat(user, span_notice("You begin righting [src]."))
 		if(do_after(user, 50, target=src))
 			untilt(user)
@@ -1081,7 +1081,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 			price_to_use = R.custom_premium_price ? R.custom_premium_price : extra_price
 		if(LAZYLEN(R.returned_products))
 			price_to_use = 0 //returned items are free
-		if(price_to_use && !account.adjust_money(-price_to_use, "Vending: [R.name]"))
+		if(price_to_use && !account.adjust_money(-price_to_use))
 			say("You do not possess the funds to purchase [R.name].")
 			flick(icon_deny,src)
 			vend_ready = TRUE
@@ -1393,8 +1393,8 @@ GLOBAL_LIST_EMPTY(vending_products)
 			balloon_alert(user, "insufficient funds")
 			return TRUE
 		/// Make the transaction
-		payee.adjust_money(-dispensed_item.custom_price, , "Vending: [dispensed_item]")
-		linked_account.adjust_money(dispensed_item.custom_price, "Vending: [dispensed_item] Bought")
+		payee.adjust_money(-dispensed_item.custom_price)
+		linked_account.adjust_money(dispensed_item.custom_price)
 		linked_account.bank_card_talk("[payee.account_holder] made a [dispensed_item.custom_price] \
 		cr purchase at your custom vendor.")
 		/// Log the transaction
@@ -1439,7 +1439,7 @@ GLOBAL_LIST_EMPTY(vending_products)
 		to_chat(user, span_warning("You must be holding the price tagger to continue!"))
 		return
 	var/chosen_price = tgui_input_number(user, "Set price", "Price", price)
-	if(!chosen_price || QDELETED(user) || QDELETED(src) || !user.canUseTopic(src, be_close = TRUE, no_dexterity = FALSE, no_tk = TRUE) || loc != user)
+	if(!chosen_price || QDELETED(user) || QDELETED(src) || !user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK) || loc != user)
 		return
 	price = chosen_price
 	to_chat(user, span_notice(" The [src] will now give things a [price] cr tag."))

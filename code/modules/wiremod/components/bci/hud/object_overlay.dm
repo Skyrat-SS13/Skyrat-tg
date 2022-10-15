@@ -100,7 +100,7 @@
 		QDEL_NULL(overlay)
 
 	var/image/cool_overlay = image(icon = 'icons/hud/screen_bci.dmi', loc = target_atom, icon_state = options_map[object_overlay_options.value], layer = RIPPLE_LAYER)
-	SET_PLANE_EXPLICIT(cool_overlay, ABOVE_LIGHTING_PLANE, target_atom)
+	cool_overlay.plane = ABOVE_LIGHTING_PLANE
 
 	if(image_pixel_x.value != null)
 		cool_overlay.pixel_x = image_pixel_x.value

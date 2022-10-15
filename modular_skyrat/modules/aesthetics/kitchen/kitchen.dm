@@ -1,3 +1,6 @@
+/obj/machinery/microwave
+	icon = 'modular_skyrat/modules/aesthetics/kitchen/kitchen.dmi'
+
 /obj/structure/kitchenspike_frame
 	icon = 'modular_skyrat/modules/aesthetics/kitchen/kitchen.dmi'
 
@@ -18,10 +21,3 @@
 
 /obj/machinery/gibber
 	icon = 'modular_skyrat/modules/aesthetics/kitchen/kitchen.dmi'
-
-//Different icon file, but it will still go in the kitchen folder!!!
-/obj/machinery/microwave
-	icon = 'modular_skyrat/modules/aesthetics/kitchen/microwave.dmi'
-
-/obj/structure/showcase/machinery/microwave
-	icon = 'modular_skyrat/modules/aesthetics/kitchen/microwave.dmi'

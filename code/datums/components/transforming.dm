@@ -140,8 +140,7 @@
  * user - the mob transforming the item
  */
 /datum/component/transforming/proc/default_transform_message(obj/item/source, mob/user)
-	if(user)
-		source.balloon_alert(user, "[active ? "enabled" : "disabled"] [source]")
+	source.balloon_alert(user, "[active ? "enabled" : "disabled"] [source]")
 	playsound(user ? user : source.loc, 'sound/weapons/batonextend.ogg', 50, TRUE)
 
 /*
@@ -181,10 +180,6 @@
 	source.hitsound = hitsound_on
 	source.w_class = w_class_on
 	source.icon_state = "[source.icon_state]_on"
-	source.inhand_icon_state = "[source.inhand_icon_state]_on"
-	if(ismob(source.loc))
-		var/mob/loc_mob = source.loc
-		loc_mob.update_held_items()
 
 /*
  * Set our transformed item into its inactive state.
@@ -210,10 +205,6 @@
 	source.hitsound = initial(source.hitsound)
 	source.w_class = initial(source.w_class)
 	source.icon_state = initial(source.icon_state)
-	source.inhand_icon_state = initial(source.inhand_icon_state)
-	if(ismob(source.loc))
-		var/mob/loc_mob = source.loc
-		loc_mob.update_held_items()
 
 /*
  * If [clumsy_check] is set to TRUE, attempt to cause a side effect for clumsy people activating this item.

@@ -21,7 +21,10 @@ GLOBAL_PROTECT(href_token)
 
 	var/spamcooldown = 0
 
-	///Randomly generated signature used for security records authorization name.
+	var/admincaster_screen = 0 //TODO: remove all these 5 variables, they are completly unacceptable
+	var/datum/feed_message/admincaster_feed_message = new /datum/feed_message
+	var/datum/wanted_message/admincaster_wanted_message = new /datum/wanted_message
+	var/datum/feed_channel/admincaster_feed_channel = new /datum/feed_channel
 	var/admin_signature
 
 	var/href_token
@@ -33,7 +36,6 @@ GLOBAL_PROTECT(href_token)
 
 	var/datum/filter_editor/filteriffic
 	var/datum/colorblind_tester/color_test = new
-	var/datum/plane_master_debug/plane_debug
 
 	/// Whether or not the user tried to connect, but was blocked by 2FA
 	var/blocked_by_2fa = FALSE
@@ -74,7 +76,6 @@ GLOBAL_PROTECT(href_token)
 		activate()
 	else
 		deactivate()
-	plane_debug = new(src)
 
 /datum/admins/Destroy()
 	if(IsAdminAdvancedProcCall())
@@ -93,7 +94,6 @@ GLOBAL_PROTECT(href_token)
 	GLOB.deadmins -= target
 	GLOB.admin_datums[target] = src
 	deadmined = FALSE
-	QDEL_NULL(plane_debug)
 	if (GLOB.directory[target])
 		associate(GLOB.directory[target]) //find the client for a ckey if they are connected and associate them with us
 

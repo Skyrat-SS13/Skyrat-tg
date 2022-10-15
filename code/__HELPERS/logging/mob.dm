@@ -1,10 +1,5 @@
-/**
- * Logs a mesage to the mob_tags log, including the mobs tag
- * Arguments:
- * * text - text to log.
- */
-/mob/proc/log_mob_tag(text)
-	WRITE_LOG(GLOB.world_mob_tag_log, "TAG: \[[tag]\] [text]")
+/proc/log_mob_tag(text)
+	WRITE_LOG(GLOB.world_mob_tag_log, "TAG: [text]")
 
 /proc/log_silicon(text)
 	if (CONFIG_GET(flag/log_silicon))

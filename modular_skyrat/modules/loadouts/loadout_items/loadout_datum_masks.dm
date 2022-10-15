@@ -76,15 +76,15 @@ GLOBAL_LIST_INIT(loadout_masks, generate_loadout_items(/datum/loadout_item/mask)
 	name = "Glass Gas Mask"
 	item_path = /obj/item/clothing/mask/gas/glass
 
-/datum/loadout_item/mask/respirator
-	name = "Half Mask Respirator"
-	item_path = /obj/item/clothing/mask/gas/respirator
-
 /*
 *	JOB-LOCKED
 */
 
-// Ain't a damn thing
+/datum/loadout_item/mask/surgical
+	name = "Sterile Mask"
+	item_path = /obj/item/clothing/mask/surgical
+	restricted_roles = list(JOB_CHIEF_MEDICAL_OFFICER, JOB_MEDICAL_DOCTOR, JOB_VIROLOGIST, JOB_CHEMIST, JOB_GENETICIST, JOB_PARAMEDIC, JOB_PSYCHOLOGIST, JOB_SECURITY_MEDIC, JOB_ORDERLY)
+
 
 /*
 *	FAMILIES
@@ -97,9 +97,6 @@ GLOBAL_LIST_INIT(loadout_masks, generate_loadout_items(/datum/loadout_item/mask)
 /*
 *	MISC
 */
-/datum/loadout_item/mask/surgical
-	name = "Recolorable Sterile Mask"
-	item_path = /obj/item/clothing/mask/surgical/greyscale
 
 /datum/loadout_item/mask/fake_mustache
 	name = "Fake Moustache"

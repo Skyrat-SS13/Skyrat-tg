@@ -27,7 +27,6 @@
 	force_no_gravity = TRUE
 
 /turf/open/space/basic/New() //Do not convert to Initialize
-	SHOULD_CALL_PARENT(FALSE)
 	//This is used to optimize the map loader
 	return
 
@@ -59,29 +58,23 @@
 		stack_trace("Warning: [src]([type]) initialized multiple times!")
 	flags_1 |= INITIALIZED_1
 
-
-	// We make the assumption that the space plane will never be blacklisted, as an optimization
-	if(SSmapping.max_plane_offset)
-		plane = PLANE_SPACE - (PLANE_RANGE * SSmapping.z_level_to_plane_offset[z])
-
 	var/area/our_area = loc
-	if(!our_area.area_has_base_lighting && always_lit) //Only provide your own lighting if the area doesn't for you
+	if(our_area.area_has_base_lighting && always_lit) //Only provide your own lighting if the area doesn't for you
 		// Intentionally not add_overlay for performance reasons.
 		// add_overlay does a bunch of generic stuff, like creating a new list for overlays,
 		// queueing compile, cloning appearance, etc etc etc that is not necessary here.
-		overlays += GLOB.fullbright_overlays[GET_TURF_PLANE_OFFSET(src) + 1]
+		overlays += GLOB.fullbright_overlay
 
 	if (!mapload)
 		if(requires_activation)
 			SSair.add_to_active(src, TRUE)
 
-		if(SSmapping.max_plane_offset)
-			var/turf/T = SSmapping.get_turf_above(src)
-			if(T)
-				T.multiz_turf_new(src, DOWN)
-			T = SSmapping.get_turf_below(src)
-			if(T)
-				T.multiz_turf_new(src, UP)
+		var/turf/T = SSmapping.get_turf_above(src)
+		if(T)
+			T.multiz_turf_new(src, DOWN)
+		T = SSmapping.get_turf_below(src)
+		if(T)
+			T.multiz_turf_new(src, UP)
 
 	return INITIALIZE_HINT_NORMAL
 
@@ -191,7 +184,7 @@
 /turf/open/space/get_smooth_underlay_icon(mutable_appearance/underlay_appearance, turf/asking_turf, adjacency_dir)
 	underlay_appearance.icon = 'icons/turf/space.dmi'
 	underlay_appearance.icon_state = SPACE_ICON_STATE(x, y, z)
-	SET_PLANE(underlay_appearance, PLANE_SPACE, src)
+	underlay_appearance.plane = PLANE_SPACE
 	return TRUE
 
 
@@ -231,16 +224,16 @@
 /turf/open/space/openspace
 	icon = 'icons/turf/floors.dmi'
 	icon_state = "invisible"
-	plane = FLOOR_PLANE
 
 /turf/open/space/openspace/Initialize(mapload) // handle plane and layer here so that they don't cover other obs/turfs in Dream Maker
 	. = ..()
+	overlays += GLOB.openspace_backdrop_one_for_all //Special grey square for projecting backdrop darkness filter on it.
 	icon_state = "invisible"
 	return INITIALIZE_HINT_LATELOAD
 
 /turf/open/space/openspace/LateInitialize()
 	. = ..()
-	AddElement(/datum/element/turf_z_transparency)
+	AddElement(/datum/element/turf_z_transparency, is_openspace = TRUE)
 
 /turf/open/space/openspace/zAirIn()
 	return TRUE
@@ -261,8 +254,8 @@
 		return TRUE
 	return FALSE
 
-/turf/open/space/openspace/zPassOut(atom/movable/A, direction, turf/destination, allow_anchored_movement)
-	if(A.anchored && !allow_anchored_movement)
+/turf/open/space/openspace/zPassOut(atom/movable/A, direction, turf/destination)
+	if(A.anchored)
 		return FALSE
 	if(direction == DOWN)
 		for(var/obj/contained_object in contents)

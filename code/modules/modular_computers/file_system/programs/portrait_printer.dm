@@ -67,10 +67,17 @@
 	matching_paintings = SSpersistent_paintings.painting_ui_data(filter = search_mode, search_text = search_string)
 
 /datum/computer_file/program/portrait_printer/proc/print_painting(selected_painting)
-	if(computer.stored_paper < CANVAS_PAPER_COST)
+	//printer check!
+	var/obj/item/computer_hardware/printer/printer
+	if(computer)
+		printer = computer.all_components[MC_PRINT]
+	if(!printer)
+		to_chat(usr, span_notice("Hardware error: A printer is required to print a canvas."))
+		return
+	if(printer.stored_paper < CANVAS_PAPER_COST)
 		to_chat(usr, span_notice("Printing error: Your printer needs at least [CANVAS_PAPER_COST] paper to print a canvas."))
 		return
-	computer.stored_paper -= CANVAS_PAPER_COST
+	printer.stored_paper -= CANVAS_PAPER_COST
 
 	//canvas printing!
 	var/datum/painting/chosen_portrait = locate(selected_painting) in SSpersistent_paintings.paintings

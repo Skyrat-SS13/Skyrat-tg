@@ -17,7 +17,7 @@
 			continue  // please don't do this
 		var/obj/docking_port/stationary/S = port
 		if (canDock(S) == SHUTTLE_CAN_DOCK)
-			options[S.name || S.shuttle_id] = S
+			options[S.name || S.id] = S
 	//SKYRAT EDIT ADDITION START
 	options += "-----INCOMPATABLE DOCKS:" //I WILL CRASH THIS SHIP WITH NO SURVIVORS!
 	for(var/port in SSshuttle.stationary_docking_ports)
@@ -25,7 +25,7 @@
 			continue  // please don't do this
 		var/obj/docking_port/stationary/S = port
 		if(!(canDock(S) == SHUTTLE_CAN_DOCK))
-			options[S.name || S.shuttle_id] = S
+			options[S.name || S.id] = S
 	//SKYRAT EDIT END
 
 	options += "--------"
@@ -33,7 +33,7 @@
 	options += "Delete Shuttle"
 	options += "Into The Sunset (delete & greentext 'escape')"
 
-	var/selection = tgui_input_list(user, "Select where to fly [name || shuttle_id]:", "Fly Shuttle", options)
+	var/selection = tgui_input_list(user, "Select where to fly [name || id]:", "Fly Shuttle", options)
 	if(isnull(selection))
 		return
 
@@ -44,19 +44,19 @@
 			setTimer(ignitionTime)
 
 		if("Delete Shuttle")
-			if(tgui_alert(user, "Really delete [name || shuttle_id]?", "Delete Shuttle", list("Cancel", "Really!")) != "Really!")
+			if(tgui_alert(user, "Really delete [name || id]?", "Delete Shuttle", list("Cancel", "Really!")) != "Really!")
 				return
 			jumpToNullSpace()
 
 		if("Into The Sunset (delete & greentext 'escape')")
-			if(tgui_alert(user, "Really delete [name || shuttle_id] and greentext escape objectives?", "Delete Shuttle", list("Cancel", "Really!")) != "Really!")
+			if(tgui_alert(user, "Really delete [name || id] and greentext escape objectives?", "Delete Shuttle", list("Cancel", "Really!")) != "Really!")
 				return
 			intoTheSunset()
 
 		else
 			if(options[selection])
 				request(options[selection], TRUE) //SKYRAT EDIT CHANGE
-				message_admins("[user.ckey] has admin FORCED [name || shuttle_id] to dock at [options[selection]], this is ignoring all safety measures.") //SKYRAT EDIT ADDITION
+				message_admins("[user.ckey] has admin FORCED [name || id] to dock at [options[selection]], this is ignoring all safety measures.") //SKYRAT EDIT ADDITION
 
 /obj/docking_port/mobile/emergency/admin_fly_shuttle(mob/user)
 	return  // use the existing verbs for this
@@ -75,7 +75,7 @@
 			continue  // please don't do this
 		var/obj/docking_port/stationary/S = port
 		if (canDock(S) == SHUTTLE_CAN_DOCK)
-			options[S.name || S.shuttle_id] = S
+			options[S.name || S.id] = S
 
 	var/selection = tgui_input_list(user, "New arrivals destination", "Fly Shuttle", options)
 	if(isnull(selection))

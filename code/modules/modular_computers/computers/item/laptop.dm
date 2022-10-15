@@ -87,7 +87,7 @@
 		return
 	if(!isturf(loc) && !ismob(loc)) // No opening it in backpack.
 		return
-	if(!user.canUseTopic(src, be_close = TRUE))
+	if(!user.canUseTopic(src, BE_CLOSE))
 		return
 
 	toggle_open(user)

@@ -2,7 +2,7 @@
 	name = "taster"
 	desc = "Tastes things, so you don't have to!"
 	icon = 'icons/obj/medical/organs/organs.dmi'
-	icon_state = "tongue"
+	icon_state = "tonguenormal"
 
 	w_class = WEIGHT_CLASS_TINY
 

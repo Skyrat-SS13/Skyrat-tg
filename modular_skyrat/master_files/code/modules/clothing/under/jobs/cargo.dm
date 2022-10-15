@@ -109,3 +109,4 @@
 	name = "quartermaster's casualwear"
 	desc = "A brown jacket with matching trousers for the relaxed Quartermaster."
 	icon_state = "qmc"
+	inhand_icon_state = "lb_suit"

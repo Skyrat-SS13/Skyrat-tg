@@ -10,16 +10,23 @@
 *	CAPTAIN
 */
 
+/obj/item/clothing/under/rank/captain/skyrat/humble
+	desc = "It's a blue jumpsuit with some small gold markings denoting the rank of \"Captain\", more humble than it's sister."
+	name = "captain's humble jumpsuit"
+	icon_state = "captainhumble"
+
 /obj/item/clothing/under/rank/captain/skyrat/kilt
+	desc = "Not a skirt, it is, however, armoured and decorated with a tartan sash."
 	name = "captain's kilt"
-	desc = "A midnight blue kilt, padded with nano-kevlar and adorned with gold and a tartan sash."
 	icon_state = "capkilt"
+	inhand_icon_state = "kilt"
 
 /obj/item/clothing/under/rank/captain/skyrat/imperial
 	name = "captain's naval jumpsuit"
 	desc = "A white naval suit adorned with golden epaulets and a rank badge denoting a Captain. There are two ways to destroy a person, kill him, or ruin his reputation."
 	//Rank pins of the Grand Admiral, not a Captain.
 	icon_state = "impcap"
+	inhand_icon_state = "w_suit"
 	can_adjust = FALSE
 
 //Donor item for Gandalf - all donors have access
@@ -27,12 +34,13 @@
 	name = "captain's black suit"
 	desc = "A very sleek, albeit outdated, naval captain's uniform for those who think they're commanding a battleship."
 	icon_state = "captainblacksuit"
+	inhand_icon_state = "w_suit"
 	can_adjust = FALSE
 
 /*
 *	BLUESHIELD
 */
-//Why is this in command.dm? Simple: Centcom.dmi will already be packed with CC/NTNavy/AD/LL/SOL/FTU - all of them more event-based clothes, while this will appear
+//Why is this in command.dm? Simple: Centcomm.dmi will already be packed with CC/NTNavy/AD/LL/SOL/FTU - all of them more event-based clothes, while this will appear
 //on-station often.
 
 /obj/item/clothing/under/rank/blueshield
@@ -46,6 +54,7 @@
 	armor = list(MELEE = 10, BULLET = 5, LASER = 5, ENERGY = 10, BOMB = 10, BIO = 0, FIRE = 50, ACID = 50)
 	sensor_mode = SENSOR_COORDS
 	random_sensor = FALSE
+	can_adjust = FALSE
 
 /obj/item/clothing/under/rank/blueshield/skirt
 	name = "blueshield's suitskirt"
@@ -82,6 +91,7 @@
 	desc = "It's a green jumpsuit with some gold markings denoting the rank of \"Nanotrasen Consultant\"."
 	name = "nanotrasen consultant's jumpsuit"
 	icon_state = "nt_consultant"
+	inhand_icon_state = "dg_suit"
 	sensor_mode = SENSOR_COORDS
 	random_sensor = FALSE
 
@@ -102,6 +112,7 @@
 	name = "command utility uniform"
 	desc = "A utility uniform worn by Station Command."
 	icon_state = "util_com"
+	inhand_icon_state = "b_suit"
 	can_adjust = FALSE
 
 /obj/item/clothing/under/rank/captain/skyrat/utility/syndicate
@@ -111,6 +122,7 @@
 /obj/item/clothing/under/rank/captain/skyrat/imperial/generic
 	desc = "A grey naval suit with a rank badge denoting an Officer. Doesn't protect against blaster fire."
 	name = "grey officer's naval jumpsuit"
+	inhand_icon_state = "g_suit"
 	icon_state = "impcom"
 
 /obj/item/clothing/under/rank/captain/skyrat/imperial/generic/pants
@@ -126,6 +138,7 @@
 /obj/item/clothing/under/rank/captain/skyrat/imperial/generic/red
 	desc = "A red naval suit with a rank badge denoting an Officer. Doesn't protect against blaster fire."
 	name = "red officer's naval jumpsuit"
+	inhand_icon_state = "r_suit"
 	icon_state = "impcom_red"
 
 /*

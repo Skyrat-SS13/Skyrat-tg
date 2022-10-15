@@ -4,37 +4,11 @@
 	desc = "A generic brand of lipstick."
 	icon =  'modular_skyrat/modules/salon/icons/items.dmi' //SKYRAT EDIT CHANGE - ORIGINAL: icon = 'icons/obj/weapons/items_and_weapons.dmi'
 	icon_state = "lipstick"
-	inhand_icon_state = "lipstick"
 	w_class = WEIGHT_CLASS_TINY
 	var/colour = "red"
 	var/open = FALSE
 	/// A trait that's applied while someone has this lipstick applied, and is removed when the lipstick is removed
 	var/lipstick_trait
-
-/obj/item/lipstick/Initialize(mapload)
-	. = ..()
-	AddElement(/datum/element/update_icon_updates_onmob)
-	update_appearance(UPDATE_ICON)
-
-/obj/item/lipstick/vv_edit_var(vname, vval)
-	. = ..()
-	if(vname == NAMEOF(src, open))
-		update_appearance(UPDATE_ICON)
-
-/obj/item/lipstick/update_icon_state()
-	icon_state = "lipstick[open ? "_uncap" : null]"
-	inhand_icon_state = "lipstick[open ? "open" : null]"
-	return ..()
-
-
-/obj/item/lipstick/update_overlays()
-	. = ..()
-	if(!open)
-		return
-	var/mutable_appearance/colored_overlay = mutable_appearance(icon, "lipstick_uncap_color")
-	colored_overlay.color = colour
-	. += colored_overlay
-
 
 /obj/item/lipstick/purple
 	name = "purple lipstick"
@@ -65,9 +39,16 @@
 	name = "[colour] lipstick"
 
 /obj/item/lipstick/attack_self(mob/user)
-	to_chat(user, span_notice("You twist [src] [open ? "closed" : "open"]."))
+	cut_overlays()
+	to_chat(user, span_notice("You twist \the [src] [open ? "closed" : "open"]."))
 	open = !open
-	update_appearance(UPDATE_ICON)
+	if(open)
+		var/mutable_appearance/colored_overlay = mutable_appearance(icon, "lipstick_uncap_color")
+		colored_overlay.color = colour
+		icon_state = "lipstick_uncap"
+		add_overlay(colored_overlay)
+	else
+		icon_state = "lipstick"
 
 /obj/item/lipstick/attack(mob/M, mob/user)
 	if(!open || !ismob(M))
@@ -125,7 +106,6 @@
 	desc = "The latest and greatest power razor born from the science of shaving."
 	icon = 'icons/obj/weapons/items_and_weapons.dmi'
 	icon_state = "razor"
-	inhand_icon_state = "razor"
 	flags_1 = CONDUCT_1
 	w_class = WEIGHT_CLASS_TINY
 
@@ -158,7 +138,7 @@
 					if (H == user)
 						to_chat(user, span_warning("You need a mirror to properly style your own facial hair!"))
 						return
-					if(!user.canUseTopic(src, be_close = TRUE, no_dexterity = FALSE, no_tk = TRUE))
+					if(!user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
 						return
 					var/new_style = tgui_input_list(user, "Select a facial hairstyle", "Grooming", GLOB.facial_hairstyles_list)
 					if(isnull(new_style))
@@ -206,7 +186,7 @@
 				if (H == user)
 					to_chat(user, span_warning("You need a mirror to properly style your own hair!"))
 					return
-				if(!user.canUseTopic(src, be_close = TRUE, no_dexterity = FALSE, no_tk = TRUE))
+				if(!user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
 					return
 				var/new_style = tgui_input_list(user, "Select a hairstyle", "Grooming", GLOB.hairstyles_list)
 				if(isnull(new_style))

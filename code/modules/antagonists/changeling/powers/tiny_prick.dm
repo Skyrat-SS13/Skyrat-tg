@@ -194,7 +194,7 @@
 
 /datum/action/changeling/sting/mute/sting_action(mob/user, mob/living/carbon/target)
 	log_combat(user, target, "stung", "mute sting")
-	target.adjust_silence(1 MINUTES)
+	target.silent += 30
 	return TRUE
 
 /datum/action/changeling/sting/blind
@@ -223,13 +223,12 @@
 
 /datum/action/changeling/sting/lsd/sting_action(mob/user, mob/living/carbon/target)
 	log_combat(user, target, "stung", "LSD sting")
-	addtimer(CALLBACK(src, .proc/hallucination_time, target), rand(30 SECONDS, 60 SECONDS))
+	addtimer(CALLBACK(src, .proc/hallucination_time, target), rand(300,600))
 	return TRUE
 
 /datum/action/changeling/sting/lsd/proc/hallucination_time(mob/living/carbon/target)
-	if(QDELETED(src) || QDELETED(target))
-		return
-	target.adjust_hallucinations(180 SECONDS)
+	if(target)
+		target.hallucination = max(90, target.hallucination)
 
 /datum/action/changeling/sting/cryo
 	name = "Cryogenic Sting"

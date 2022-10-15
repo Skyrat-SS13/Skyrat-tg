@@ -61,8 +61,7 @@
 			var/datum/round_event_control/event = locate(event_to_run_type) in SSevents.control
 			if(!event)
 				return
-			if(event.admin_setup(usr) == ADMIN_CANCEL_EVENT)
-				return
+			event.admin_setup(usr)
 			var/always_announce_chance = 100
 			var/no_announce_chance = 0
 			event.runEvent(announce_chance_override = announce_event ? always_announce_chance : no_announce_chance, admin_forced = TRUE)

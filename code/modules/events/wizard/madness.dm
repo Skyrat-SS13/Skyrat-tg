@@ -7,7 +7,7 @@
 
 	var/forced_secret
 
-/datum/round_event_control/wizard/madness/admin_setup(mob/admin)
+/datum/round_event_control/wizard/madness/admin_setup()
 	if(!check_rights(R_FUN))
 		return
 

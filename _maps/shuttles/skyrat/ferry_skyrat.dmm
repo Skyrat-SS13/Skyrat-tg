@@ -581,7 +581,7 @@
 	dir = 8;
 	dwidth = 8;
 	height = 11;
-	shuttle_id = "ferry";
+	id = "ferry";
 	name = "ferry shuttle";
 	port_direction = 4;
 	width = 20
@@ -701,7 +701,9 @@
 	},
 /area/shuttle/transport)
 "XP" = (
-/obj/machinery/light/small/red/directional/north,
+/obj/machinery/light/small/red{
+	dir = 1
+	},
 /turf/closed/wall/mineral/titanium/shuttle_wall/window/ferry{
 	dir = 8;
 	icon_state = "18,5"

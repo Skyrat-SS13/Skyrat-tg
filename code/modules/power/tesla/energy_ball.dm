@@ -252,7 +252,8 @@
 
 	//Darkness fucks oview up hard. I've tried dview() but it doesn't seem to work
 	//I hate existance
-	for(var/atom/A as anything in typecache_filter_list(oview(zap_range+2, source), things_to_shock))
+	for(var/a in typecache_filter_list(oview(zap_range+2, source), things_to_shock))
+		var/atom/A = a
 		if(!(zap_flags & ZAP_ALLOW_DUPLICATES) && LAZYACCESS(shocked_targets, A))
 			continue
 		// NOTE: these type checks are safe because CURRENTLY the range family of procs returns turfs in least to greatest distance order
@@ -262,7 +263,7 @@
 
 		else if(istype(A, /obj/vehicle/ridden/bicycle))//God's not on our side cause he hates idiots.
 			var/obj/vehicle/ridden/bicycle/B = A
-			if(!HAS_TRAIT(B, TRAIT_BEING_SHOCKED) && B.can_buckle)//Gee goof thanks for the boolean
+			if(!(B.obj_flags & BEING_SHOCKED) && B.can_buckle)//Gee goof thanks for the boolean
 				//we use both of these to save on istype and typecasting overhead later on
 				//while still allowing common code to run before hand
 				closest_type = BIKE
@@ -272,9 +273,10 @@
 			continue //no need checking these other things
 
 		else if(istype(A, /obj/machinery/power/energy_accumulator/tesla_coil))
-			if(!HAS_TRAIT(A, TRAIT_BEING_SHOCKED))
+			var/obj/machinery/power/energy_accumulator/tesla_coil/C = A
+			if(!(C.obj_flags & BEING_SHOCKED))
 				closest_type = COIL
-				closest_atom = A
+				closest_atom = C
 
 		else if(closest_type >= ROD)
 			continue
@@ -288,7 +290,7 @@
 
 		else if(istype(A,/obj/vehicle/ridden))
 			var/obj/vehicle/ridden/R = A
-			if(R.can_buckle && !HAS_TRAIT(R, TRAIT_BEING_SHOCKED))
+			if(R.can_buckle && !(R.obj_flags & BEING_SHOCKED))
 				closest_type = RIDE
 				closest_atom = A
 
@@ -297,7 +299,7 @@
 
 		else if(isliving(A))
 			var/mob/living/L = A
-			if(L.stat != DEAD && !HAS_TRAIT(L, TRAIT_TESLA_SHOCKIMMUNE) && !HAS_TRAIT(L, TRAIT_BEING_SHOCKED))
+			if(L.stat != DEAD && !(HAS_TRAIT(L, TRAIT_TESLA_SHOCKIMMUNE)) && !(L.flags_1 & SHOCKED_1))
 				closest_type = LIVING
 				closest_atom = A
 
@@ -305,7 +307,8 @@
 			continue
 
 		else if(ismachinery(A))
-			if(!HAS_TRAIT(A, TRAIT_BEING_SHOCKED))
+			var/obj/machinery/M = A
+			if(!(M.obj_flags & BEING_SHOCKED))
 				closest_type = MACHINERY
 				closest_atom = A
 
@@ -313,7 +316,8 @@
 			continue
 
 		else if(istype(A, /obj/structure/blob))
-			if(!HAS_TRAIT(A, TRAIT_BEING_SHOCKED))
+			var/obj/structure/blob/B = A
+			if(!(B.obj_flags & BEING_SHOCKED))
 				closest_type = BLOB
 				closest_atom = A
 
@@ -321,7 +325,8 @@
 			continue
 
 		else if(isstructure(A))
-			if(!HAS_TRAIT(A, TRAIT_BEING_SHOCKED))
+			var/obj/structure/S = A
+			if(!(S.obj_flags & BEING_SHOCKED))
 				closest_type = STRUCTURE
 				closest_atom = A
 
@@ -340,8 +345,8 @@
 
 	if(closest_type == LIVING)
 		var/mob/living/closest_mob = closest_atom
-		ADD_TRAIT(closest_mob, TRAIT_BEING_SHOCKED, WAS_SHOCKED)
-		addtimer(TRAIT_CALLBACK_REMOVE(closest_mob, TRAIT_BEING_SHOCKED, WAS_SHOCKED), 1 SECONDS)
+		closest_mob.set_shocked()
+		addtimer(CALLBACK(closest_mob, /mob/living/proc/reset_shocked), 10)
 		var/shock_damage = (zap_flags & ZAP_MOB_DAMAGE) ? (min(round(power/600), 90) + rand(-5, 5)) : 0
 		closest_mob.electrocute_act(shock_damage, source, 1, SHOCK_TESLA | ((zap_flags & ZAP_MOB_STUN) ? NONE : SHOCK_NOSTUN))
 		if(issilicon(closest_mob))
@@ -355,7 +360,6 @@
 
 	else
 		power = closest_atom.zap_act(power, zap_flags)
-
 	if(prob(20))//I know I know
 		var/list/shocked_copy = shocked_targets.Copy()
 		tesla_zap(closest_atom, next_range, power * 0.5, zap_flags, shocked_copy)//Normally I'd copy here so grounding rods work properly, but it fucks with movement

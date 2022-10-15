@@ -6,6 +6,7 @@ import { NtosWindow } from '../layouts';
 type Data = {
   current_user: string;
   card_owner: string;
+  has_printer: BooleanLike;
   paperamt: number;
   barcode_split: number;
   has_id_slot: BooleanLike;
@@ -25,7 +26,8 @@ export const NtosShipping = () => {
 /** Returns information about the current user, available paper, etc */
 const ShippingHub = (props, context) => {
   const { act, data } = useBackend<Data>(context);
-  const { current_user, card_owner, paperamt, barcode_split } = data;
+  const { current_user, card_owner, has_printer, paperamt, barcode_split } =
+    data;
 
   return (
     <Section
@@ -44,7 +46,9 @@ const ShippingHub = (props, context) => {
         <LabeledList.Item label="Inserted Card">
           {card_owner || 'N/A'}
         </LabeledList.Item>
-        <LabeledList.Item label="Available Paper">{paperamt}</LabeledList.Item>
+        <LabeledList.Item label="Available Paper">
+          {has_printer ? paperamt : 'N/A'}
+        </LabeledList.Item>
         <LabeledList.Item label="Profit on Sale">
           {barcode_split}%
         </LabeledList.Item>
@@ -56,7 +60,7 @@ const ShippingHub = (props, context) => {
 /** Returns shipping options */
 const ShippingOptions = (props, context) => {
   const { act, data } = useBackend<Data>(context);
-  const { has_id_slot, current_user } = data;
+  const { has_id_slot, has_printer, current_user } = data;
 
   return (
     <Section title="Shipping Options">
@@ -75,7 +79,7 @@ const ShippingOptions = (props, context) => {
           icon="print"
           tooltip="Print a barcode to use on a wrapped package."
           tooltipPosition="right"
-          disabled={!current_user}
+          disabled={!has_printer || !current_user}
           onClick={() => act('print')}
           content="Print Barcode"
         />

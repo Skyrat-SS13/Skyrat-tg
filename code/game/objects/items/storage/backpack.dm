@@ -12,8 +12,6 @@
 /obj/item/storage/backpack
 	name = "backpack"
 	desc = "You wear this on your back and put items into it."
-	icon = 'icons/obj/storage/backpack.dmi'
-	worn_icon = 'icons/mob/clothing/back/backpack.dmi'
 	icon_state = "backpack"
 	inhand_icon_state = "backpack"
 	lefthand_file = 'icons/mob/inhands/equipment/backpack_lefthand.dmi'
@@ -26,7 +24,6 @@
 /obj/item/storage/backpack/Initialize(mapload)
 	. = ..()
 	create_storage(max_slots = 21, max_total_storage = 21)
-	AddElement(/datum/element/attack_equip)
 
 /*
  * Backpack Types
@@ -39,9 +36,8 @@
 /obj/item/bag_of_holding_inert
 	name = "inert bag of holding"
 	desc = "What is currently a just an unwieldly block of metal with a slot ready to accept a bluespace anomaly core."
-	icon = 'icons/obj/storage/backpack.dmi'
-	worn_icon = 'icons/mob/clothing/back/backpack.dmi'
-	icon_state = "bag_of_holding-inert"
+	icon = 'icons/obj/storage/storage.dmi'
+	icon_state = "brokenpack"
 	inhand_icon_state = "brokenpack"
 	lefthand_file = 'icons/mob/inhands/equipment/backpack_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/backpack_righthand.dmi'
@@ -52,7 +48,7 @@
 /obj/item/storage/backpack/holding
 	name = "bag of holding"
 	desc = "A backpack that opens into a localized pocket of bluespace."
-	icon_state = "bag_of_holding"
+	icon_state = "holdingpack"
 	inhand_icon_state = "holdingpack"
 	resistance_flags = FIRE_PROOF
 	item_flags = NO_MAT_REDEMPTION
@@ -107,80 +103,80 @@
 /obj/item/storage/backpack/cultpack
 	name = "trophy rack"
 	desc = "It's useful for both carrying extra gear and proudly declaring your insanity."
-	icon_state = "backpack-cult"
+	icon_state = "cultpack"
 	inhand_icon_state = "backpack"
 
 /obj/item/storage/backpack/clown
 	name = "Giggles von Honkerton"
 	desc = "It's a backpack made by Honk! Co."
-	icon_state = "backpack-clown"
+	icon_state = "clownpack"
 	inhand_icon_state = "clownpack"
 
 /obj/item/storage/backpack/explorer
 	name = "explorer bag"
 	desc = "A robust backpack for stashing your loot."
-	icon_state = "backpack-explorer"
+	icon_state = "explorerpack"
 	inhand_icon_state = "explorerpack"
 
 /obj/item/storage/backpack/mime
 	name = "Parcel Parceaux"
 	desc = "A silent backpack made for those silent workers. Silence Co."
-	icon_state = "backpack-mime"
+	icon_state = "mimepack"
 	inhand_icon_state = "mimepack"
 
 /obj/item/storage/backpack/medic
 	name = "medical backpack"
 	desc = "It's a backpack especially designed for use in a sterile environment."
-	icon_state = "backpack-medical"
+	icon_state = "medicalpack"
 	inhand_icon_state = "medicalpack"
 
 /obj/item/storage/backpack/security
 	name = "security backpack"
 	desc = "It's a very robust backpack."
-	icon_state = "backpack-security"
+	icon_state = "securitypack"
 	inhand_icon_state = "securitypack"
 
 /obj/item/storage/backpack/captain
 	name = "captain's backpack"
 	desc = "It's a special backpack made exclusively for Nanotrasen officers."
-	icon_state = "backpack-captain"
+	icon_state = "captainpack"
 	inhand_icon_state = "captainpack"
 
 /obj/item/storage/backpack/industrial
 	name = "industrial backpack"
 	desc = "It's a tough backpack for the daily grind of station life."
-	icon_state = "backpack-engineering"
+	icon_state = "engiepack"
 	inhand_icon_state = "engiepack"
 	resistance_flags = FIRE_PROOF
 
 /obj/item/storage/backpack/botany
 	name = "botany backpack"
 	desc = "It's a backpack made of all-natural fibers."
-	icon_state = "backpack-hydroponics"
+	icon_state = "botpack"
 	inhand_icon_state = "botpack"
 
 /obj/item/storage/backpack/chemistry
 	name = "chemistry backpack"
 	desc = "A backpack specially designed to repel stains and hazardous liquids."
-	icon_state = "backpack-chemistry"
+	icon_state = "chempack"
 	inhand_icon_state = "chempack"
 
 /obj/item/storage/backpack/genetics
 	name = "genetics backpack"
 	desc = "A bag designed to be super tough, just in case someone hulks out on you."
-	icon_state = "backpack-genetics"
+	icon_state = "genepack"
 	inhand_icon_state = "genepack"
 
 /obj/item/storage/backpack/science
 	name = "science backpack"
 	desc = "A specially designed backpack. It's fire resistant and smells vaguely of plasma."
-	icon_state = "backpack-science"
+	icon_state = "scipack"
 	inhand_icon_state = "scipack"
 
 /obj/item/storage/backpack/virology
 	name = "virology backpack"
 	desc = "A backpack made of hypo-allergenic fibers. It's designed to help prevent the spread of disease. Smells like monkey."
-	icon_state = "backpack-virology"
+	icon_state = "viropack"
 	inhand_icon_state = "viropack"
 
 /obj/item/storage/backpack/ert
@@ -218,7 +214,6 @@
 /obj/item/storage/backpack/saddlepack
 	name = "saddlepack"
 	desc = "A backpack designed to be saddled on a mount or carried on your back, and switch between the two on the fly. It's quite spacious, at the cost of making you feel like a literal pack mule."
-	icon = 'icons/obj/storage/ethereal.dmi'
 	worn_icon = 'icons/mob/clothing/back/ethereal.dmi'
 	icon_state = "saddlepack"
 
@@ -239,7 +234,7 @@
 /obj/item/storage/backpack/satchel/leather
 	name = "leather satchel"
 	desc = "It's a very fancy satchel made with fine leather."
-	icon_state = "satchel-leather"
+	icon_state = "satchel"
 	inhand_icon_state = "satchel"
 
 /obj/item/storage/backpack/satchel/leather/withwallet/PopulateContents()
@@ -251,50 +246,50 @@
 /obj/item/storage/backpack/satchel/eng
 	name = "industrial satchel"
 	desc = "A tough satchel with extra pockets."
-	icon_state = "satchel-engineering"
+	icon_state = "satchel-eng"
 	inhand_icon_state = "satchel-eng"
 	resistance_flags = FIRE_PROOF
 
 /obj/item/storage/backpack/satchel/med
 	name = "medical satchel"
 	desc = "A sterile satchel used in medical departments."
-	icon_state = "satchel-medical"
+	icon_state = "satchel-med"
 	inhand_icon_state = "satchel-med"
 
 /obj/item/storage/backpack/satchel/vir
 	name = "virologist satchel"
 	desc = "A sterile satchel with virologist colours."
-	icon_state = "satchel-virology"
+	icon_state = "satchel-vir"
 	inhand_icon_state = "satchel-vir"
 
 /obj/item/storage/backpack/satchel/chem
 	name = "chemist satchel"
 	desc = "A sterile satchel with chemist colours."
-	icon_state = "satchel-chemistry"
+	icon_state = "satchel-chem"
 	inhand_icon_state = "satchel-chem"
 
 /obj/item/storage/backpack/satchel/gen
 	name = "geneticist satchel"
 	desc = "A sterile satchel with geneticist colours."
-	icon_state = "satchel-genetics"
+	icon_state = "satchel-gen"
 	inhand_icon_state = "satchel-gen"
 
 /obj/item/storage/backpack/satchel/science
 	name = "scientist satchel"
 	desc = "Useful for holding research materials."
-	icon_state = "satchel-science"
+	icon_state = "satchel-sci"
 	inhand_icon_state = "satchel-sci"
 
 /obj/item/storage/backpack/satchel/hyd
 	name = "botanist satchel"
 	desc = "A satchel made of all natural fibers."
-	icon_state = "satchel-hydroponics"
+	icon_state = "satchel-hyd"
 	inhand_icon_state = "satchel-hyd"
 
 /obj/item/storage/backpack/satchel/sec
 	name = "security satchel"
 	desc = "A robust satchel for security related needs."
-	icon_state = "satchel-security"
+	icon_state = "satchel-sec"
 	inhand_icon_state = "satchel-sec"
 
 /obj/item/storage/backpack/satchel/explorer
@@ -306,7 +301,7 @@
 /obj/item/storage/backpack/satchel/cap
 	name = "captain's satchel"
 	desc = "An exclusive satchel for Nanotrasen officers."
-	icon_state = "satchel-captain"
+	icon_state = "satchel-cap"
 	inhand_icon_state = "satchel-cap"
 
 /obj/item/storage/backpack/satchel/flat
@@ -409,7 +404,7 @@
 /obj/item/storage/backpack/duffelbag/med
 	name = "medical duffel bag"
 	desc = "A large duffel bag for holding extra medical supplies."
-	icon_state = "duffel-medical"
+	icon_state = "duffel-med"
 	inhand_icon_state = "duffel-med"
 
 /obj/item/storage/backpack/duffelbag/med/surgery
@@ -443,7 +438,7 @@
 /obj/item/storage/backpack/duffelbag/science
 	name = "scientist's duffel bag"
 	desc = "A large duffel bag for holding extra scientific components."
-	icon_state = "duffel-science"
+	icon_state = "duffel-sci"
 	inhand_icon_state = "duffel-sci"
 
 /obj/item/storage/backpack/duffelbag/virology
@@ -471,7 +466,7 @@
 /obj/item/storage/backpack/duffelbag/sec
 	name = "security duffel bag"
 	desc = "A large duffel bag for holding extra security supplies and ammunition."
-	icon_state = "duffel-security"
+	icon_state = "duffel-sec"
 	inhand_icon_state = "duffel-sec"
 
 /obj/item/storage/backpack/duffelbag/sec/surgery
@@ -494,7 +489,7 @@
 /obj/item/storage/backpack/duffelbag/engineering
 	name = "industrial duffel bag"
 	desc = "A large duffel bag for holding extra tools and supplies."
-	icon_state = "duffel-engineering"
+	icon_state = "duffel-eng"
 	inhand_icon_state = "duffel-eng"
 	resistance_flags = FIRE_PROOF
 
@@ -710,7 +705,7 @@
 	name = "wings"
 	desc = "Granted to the henchmen who deserve it. This probably doesn't include you."
 	icon_state = "henchmen"
-	inhand_icon_state = null
+	inhand_icon_state = "henchmen"
 
 /obj/item/storage/backpack/duffelbag/cops
 	name = "police bag"

@@ -197,7 +197,7 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/shuttle/syndicate/cruiser/brig)
 "dz" = (
-/obj/machinery/power/shuttle_engine/heater,
+/obj/structure/shuttle/engine/heater,
 /turf/open/floor/plating/airless,
 /area/shuttle/syndicate/cruiser/engineering)
 "dF" = (
@@ -354,7 +354,7 @@
 "ge" = (
 /obj/structure/table,
 /obj/structure/reagent_dispensers/servingdish,
-/obj/item/clothing/head/utility/chefhat,
+/obj/item/clothing/head/chefhat,
 /turf/open/floor/iron/dark/textured_large,
 /area/shuttle/syndicate/cruiser/brig)
 "gp" = (
@@ -451,7 +451,7 @@
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate/cruiser/hallway)
 "hy" = (
-/obj/machinery/power/shuttle_engine/heater,
+/obj/structure/shuttle/engine/heater,
 /obj/machinery/atmospherics/components/unary/passive_vent/layer2{
 	dir = 1
 	},
@@ -606,6 +606,14 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate/cruiser/airlock)
+"lt" = (
+/obj/structure/shuttle/engine/large,
+/obj/structure/shuttle/engine/propulsion/in_wall{
+	pixel_y = -32
+	},
+/obj/effect/turf_decal/stripes/line,
+/turf/open/floor/plating/airless,
+/area/shuttle/syndicate/cruiser/airlock)
 "lx" = (
 /obj/effect/turf_decal/siding/thinplating_new/dark/end,
 /obj/machinery/light/no_nightlight/directional/south,
@@ -718,6 +726,13 @@
 /obj/structure/cable,
 /turf/open/floor/iron/dark/textured_large,
 /area/shuttle/syndicate/cruiser/brig)
+"oa" = (
+/obj/structure/shuttle/engine/propulsion/in_wall{
+	dir = 8;
+	pixel_x = -32
+	},
+/turf/closed/wall/r_wall/syndicate/nodiagonal,
+/area/shuttle/syndicate/cruiser/brig)
 "oc" = (
 /obj/effect/turf_decal/bot_white,
 /obj/structure/chair/comfy/shuttle/tactical{
@@ -762,7 +777,7 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/shuttle/syndicate/cruiser/engineering)
 "oH" = (
-/obj/machinery/power/shuttle_engine/large,
+/obj/structure/shuttle/engine/large,
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/plating/airless,
 /area/shuttle/syndicate/cruiser/hallway)
@@ -832,7 +847,7 @@
 /turf/open/floor/plating/airless,
 /area/shuttle/syndicate/cruiser/engineering)
 "pX" = (
-/obj/machinery/power/shuttle_engine/heater,
+/obj/structure/shuttle/engine/heater,
 /turf/open/floor/plating/airless,
 /area/shuttle/syndicate/cruiser/hallway)
 "ql" = (
@@ -984,7 +999,10 @@
 /turf/open/floor/mineral/plastitanium,
 /area/shuttle/syndicate/cruiser/hallway)
 "uV" = (
-/obj/machinery/power/shuttle_engine/propulsion,
+/obj/structure/shuttle/engine/propulsion,
+/obj/structure/shuttle/engine/propulsion/in_wall{
+	pixel_y = -32
+	},
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/plating/airless,
 /area/shuttle/syndicate/cruiser/hallway)
@@ -1006,8 +1024,8 @@
 	dwidth = 7;
 	height = 21;
 	hidden = 1;
-	shuttle_id = "goldeneye_cruiser";
-	movement_force = list("KNOCKDOWN"=0,"THROW"=0);
+	id = "goldeneye_cruiser";
+	movement_force = list("KNOCKDOWN" = 0, "THROW" = 0);
 	name = "goldeneye cruiser";
 	port_direction = 4;
 	width = 31
@@ -1084,6 +1102,7 @@
 /turf/closed/wall/r_wall/syndicate/nodiagonal,
 /area/shuttle/syndicate/cruiser/eva)
 "xL" = (
+/obj/structure/table,
 /obj/structure/table,
 /obj/item/paper_bin,
 /obj/item/pen,
@@ -1255,6 +1274,13 @@
 /obj/effect/turf_decal/bot_white,
 /turf/open/floor/iron/dark/textured_large,
 /area/shuttle/syndicate/cruiser/eva)
+"Cx" = (
+/obj/structure/shuttle/engine/propulsion/in_wall{
+	dir = 8;
+	pixel_x = -32
+	},
+/turf/closed/wall/r_wall/syndicate/nodiagonal,
+/area/shuttle/syndicate/cruiser/engineering)
 "CH" = (
 /obj/structure/holohoop,
 /turf/open/floor/iron/dark/textured_large,
@@ -1274,6 +1300,13 @@
 	},
 /turf/open/floor/iron/freezer,
 /area/shuttle/syndicate/cruiser/medical)
+"CS" = (
+/obj/structure/shuttle/engine/propulsion/in_wall{
+	pixel_y = -32
+	},
+/obj/effect/turf_decal/stripes/line,
+/turf/open/floor/plating/airless,
+/area/shuttle/syndicate/cruiser/engineering)
 "CT" = (
 /obj/effect/turf_decal/siding/thinplating_new/dark{
 	dir = 1
@@ -1296,6 +1329,16 @@
 "Dq" = (
 /turf/closed/wall/r_wall/syndicate/nodiagonal,
 /area/shuttle/syndicate/cruiser/armory)
+"Dy" = (
+/obj/structure/shuttle/engine/large,
+/obj/structure/shuttle/engine/propulsion/in_wall{
+	pixel_y = -32
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
+	},
+/turf/open/floor/plating/airless,
+/area/shuttle/syndicate/cruiser/engineering)
 "DB" = (
 /obj/machinery/power/port_gen/pacman{
 	anchored = 1
@@ -1424,6 +1467,13 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/smooth,
 /area/shuttle/syndicate/cruiser/brig)
+"FI" = (
+/obj/structure/shuttle/engine/propulsion/in_wall{
+	dir = 4;
+	pixel_x = 32
+	},
+/turf/closed/wall/r_wall/syndicate/nodiagonal,
+/area/shuttle/syndicate/cruiser/airlock)
 "FJ" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/turf_decal/stripes/line{
@@ -1499,7 +1549,7 @@
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate/cruiser/hallway)
 "GN" = (
-/obj/machinery/power/shuttle_engine/heater{
+/obj/structure/shuttle/engine/heater{
 	dir = 4
 	},
 /turf/open/floor/plating/airless,
@@ -1754,7 +1804,7 @@
 /turf/closed/wall/r_wall/syndicate,
 /area/shuttle/syndicate/cruiser/brig)
 "Lr" = (
-/obj/machinery/power/shuttle_engine/heater{
+/obj/structure/shuttle/engine/heater{
 	dir = 8
 	},
 /turf/open/floor/plating/airless,
@@ -1901,7 +1951,7 @@
 /turf/open/floor/plating/airless,
 /area/shuttle/syndicate/cruiser/engineering)
 "Or" = (
-/obj/machinery/power/shuttle_engine/large,
+/obj/structure/shuttle/engine/large,
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/plating/airless,
 /area/shuttle/syndicate/cruiser/airlock)
@@ -2090,6 +2140,13 @@
 /obj/effect/turf_decal/bot_white,
 /turf/open/floor/iron/dark/textured_large,
 /area/shuttle/syndicate/cruiser/hallway)
+"SZ" = (
+/obj/structure/shuttle/engine/propulsion/in_wall{
+	dir = 4;
+	pixel_x = 32
+	},
+/turf/closed/wall/r_wall/syndicate/nodiagonal,
+/area/shuttle/syndicate/cruiser/eva)
 "Tq" = (
 /obj/effect/turf_decal/bot_white,
 /obj/structure/cable,
@@ -2118,6 +2175,15 @@
 	},
 /turf/open/floor/iron/dark/textured_large,
 /area/shuttle/syndicate/cruiser/eva)
+"TF" = (
+/obj/structure/shuttle/engine/propulsion/in_wall{
+	pixel_y = -32
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
+/turf/open/floor/plating/airless,
+/area/shuttle/syndicate/cruiser/airlock)
 "TJ" = (
 /obj/structure/rack/gunrack,
 /obj/item/gun/energy/ionrifle,
@@ -2125,7 +2191,7 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/shuttle/syndicate/cruiser/armory)
 "TL" = (
-/obj/machinery/power/shuttle_engine/heater,
+/obj/structure/shuttle/engine/heater,
 /turf/open/floor/plating/airless,
 /area/shuttle/syndicate/cruiser/airlock)
 "TW" = (
@@ -2187,7 +2253,7 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/shuttle/syndicate/cruiser/hallway)
 "UL" = (
-/obj/machinery/power/shuttle_engine/propulsion,
+/obj/structure/shuttle/engine/propulsion,
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/plating/airless,
 /area/shuttle/syndicate/cruiser/engineering)
@@ -2305,14 +2371,14 @@
 /turf/open/floor/iron/smooth,
 /area/shuttle/syndicate/cruiser/brig)
 "WF" = (
-/obj/machinery/power/shuttle_engine/large,
+/obj/structure/shuttle/engine/large,
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
 	},
 /turf/open/floor/plating/airless,
 /area/shuttle/syndicate/cruiser/engineering)
 "Xm" = (
-/obj/machinery/power/shuttle_engine/propulsion,
+/obj/structure/shuttle/engine/propulsion,
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/plating/airless,
 /area/shuttle/syndicate/cruiser/airlock)
@@ -2557,8 +2623,8 @@ Zy
 Zy
 Zy
 Zy
-Zy
-Zy
+Cx
+Cx
 Zy
 ru
 Fv
@@ -2614,8 +2680,8 @@ qU
 ss
 Vm
 Vm
-Vm
-Vm
+oa
+oa
 Vm
 Zy
 Zy
@@ -2626,7 +2692,7 @@ Zy
 Zy
 Zy
 pE
-WF
+Dy
 Fv
 "}
 (4,1,1) = {"
@@ -2659,7 +2725,7 @@ an
 iY
 Zy
 Oy
-Om
+CS
 Fv
 "}
 (5,1,1) = {"
@@ -3121,7 +3187,7 @@ sU
 Gd
 gv
 Hm
-Or
+lt
 Fv
 "}
 (19,1,1) = {"
@@ -3142,8 +3208,8 @@ Dq
 xq
 xq
 xq
-xq
-xq
+SZ
+SZ
 xq
 gv
 gv
@@ -3154,7 +3220,7 @@ gv
 gv
 gv
 xO
-AQ
+TF
 Fv
 "}
 (20,1,1) = {"
@@ -3217,8 +3283,8 @@ gv
 vo
 gv
 gv
-gv
-gv
+FI
+FI
 gv
 Vb
 Fv

@@ -12,26 +12,26 @@ SUBSYSTEM_DEF(lighting)
 	return ..()
 
 
-/datum/controller/subsystem/lighting/Initialize()
+/datum/controller/subsystem/lighting/Initialize(timeofday)
 	if(!initialized)
 		create_all_lighting_objects()
 		initialized = TRUE
 
 	fire(FALSE, TRUE)
 
-	return SS_INIT_SUCCESS
+	return ..()
 
 /datum/controller/subsystem/lighting/fire(resumed, init_tick_checks)
 	MC_SPLIT_TICK_INIT(3)
 	if(!init_tick_checks)
 		MC_SPLIT_TICK
-
 	var/list/queue = sources_queue
 	var/i = 0
 	for (i in 1 to length(queue))
 		var/datum/light_source/L = queue[i]
 
 		L.update_corners()
+
 		L.needs_update = LIGHTING_NO_UPDATE
 
 		if(init_tick_checks)

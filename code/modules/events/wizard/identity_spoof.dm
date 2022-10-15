@@ -5,14 +5,12 @@
 	max_occurrences = 1
 	description = "Makes everyone dressed up like a wizard."
 
-/datum/round_event_control/wizard/identity_spoof/can_spawn_event(players_amt)
+/datum/round_event_control/wizard/identity_spoof/canSpawnEvent(players_amt)
 	. = ..()
-	if(!.)
-		return .
-
+	if(.)
+		return FALSE
 	if(GLOB.current_anonymous_theme) //already anonymous, ABORT ABORT
 		return FALSE
-	return TRUE
 
 /datum/round_event/wizard/identity_spoof/start()
 	if(GLOB.current_anonymous_theme)

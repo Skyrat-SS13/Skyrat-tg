@@ -93,7 +93,7 @@
 	download_completion = FALSE
 	ui_header = "downloader_finished.gif"
 
-/datum/computer_file/program/ntnetdownload/process_tick(delta_time)
+/datum/computer_file/program/ntnetdownload/process_tick()
 	if(!downloaded_file)
 		return
 	if(download_completion >= downloaded_file.size)

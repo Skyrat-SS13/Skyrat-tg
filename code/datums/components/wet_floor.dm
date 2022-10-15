@@ -71,7 +71,7 @@
 	if(highest_strength != TURF_WET_LUBE)
 		return
 
-	slipped.set_confusion_if_lower(8 SECONDS)
+	slipped.set_timed_status_effect(8 SECONDS, /datum/status_effect/confusion, only_if_higher = TRUE)
 
 /datum/component/wet_floor/proc/update_flags()
 	var/intensity

@@ -182,7 +182,7 @@
 
 /obj/machinery/icecream_vat/AltClick(mob/living/user)
 	. = ..()
-	if(!can_interact(user) || !user.canUseTopic(src, be_close = TRUE, no_dexterity = FALSE, no_tk = TRUE))
+	if(!can_interact(user) || !user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
 		return
 	replace_beaker(user)
 

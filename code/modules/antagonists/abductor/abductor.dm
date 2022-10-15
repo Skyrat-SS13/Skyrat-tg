@@ -1,4 +1,5 @@
 #define ABDUCTOR_MAX_TEAMS 4
+GLOBAL_LIST_INIT(possible_abductor_names, list("Alpha","Beta","Gamma","Delta","Epsilon","Zeta","Eta","Theta","Iota","Kappa","Lambda","Mu","Nu","Xi","Omicron","Pi","Rho","Sigma","Tau","Upsilon","Phi","Chi","Psi","Omega"))
 
 /datum/antagonist/abductor
 	name = "\improper Abductor"
@@ -147,17 +148,24 @@
 			H.equipOutfit(/datum/outfit/abductor/scientist)
 
 /datum/team/abductor_team
-	member_name = "\improper Abductor"
+	member_name = "abductor"
 	var/team_number
-	var/static/team_count = 1
-	///List of all brainwashed victims' minds
 	var/list/datum/mind/abductees = list()
+	var/static/team_count = 1
 
 /datum/team/abductor_team/New()
 	..()
 	team_number = team_count++
-	name = "Mothership [pick(GLOB.greek_letters)]" //TODO Ensure unique and actual alieny names
-	add_objective(new /datum/objective/experiment)
+	name = "Mothership [pick(GLOB.possible_abductor_names)]" //TODO Ensure unique and actual alieny names
+	add_objective(new/datum/objective/experiment)
+
+/datum/team/abductor_team/is_solo()
+	return FALSE
+
+/datum/team/abductor_team/proc/add_objective(datum/objective/O)
+	O.team = src
+	O.update_explanation_text()
+	objectives += O
 
 /datum/team/abductor_team/roundend_report()
 	var/list/result = list()

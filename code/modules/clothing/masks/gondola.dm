@@ -2,7 +2,7 @@
 	name = "gondola mask"
 	desc = "Genuine gondola fur."
 	icon_state = "gondola"
-	inhand_icon_state = null
+	inhand_icon_state = "gondola"
 	flags_inv = HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT
 	w_class = WEIGHT_CLASS_SMALL
 	modifies_speech = TRUE

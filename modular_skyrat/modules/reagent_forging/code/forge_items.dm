@@ -69,8 +69,6 @@
 	var/average_wait = 1 SECONDS
 	///the path of the item that will be spawned upon completion
 	var/spawn_item
-	//because who doesn't want to have a plasma sword?
-	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR
 
 /obj/item/forging/incomplete/tong_act(mob/living/user, obj/item/tool)
 	. = ..()
@@ -164,8 +162,6 @@
 /obj/item/forging/complete
 	///the path of the item that will be created
 	var/spawning_item
-	//because who doesn't want to have a plasma sword?
-	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR
 
 /obj/item/forging/complete/examine(mob/user)
 	. = ..()
@@ -290,13 +286,10 @@
 		return
 	return ..()
 
-/obj/item/stack/tong_act(mob/living/user, obj/item/tool)
+/obj/item/stack/rods/tong_act(mob/living/user, obj/item/tool)
 	. = ..()
 	if(length(tool.contents) > 0)
-		user.balloon_alert(user, "tongs are full already!")
-		return
-	if(!material_type && !custom_materials)
-		user.balloon_alert(user, "unusable material!")
+		user.balloon_alert("tongs are full already!")
 		return
 	forceMove(tool)
 	tool.icon_state = "tong_full"

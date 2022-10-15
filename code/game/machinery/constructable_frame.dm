@@ -52,13 +52,8 @@
 		nice_list += list("[req_components[component]] [req_component_names[component]]\s")
 	. += span_info("It requires [english_list(nice_list, "no more components")].")
 
-/**
- * Collates the displayed names of the machine's components
- *
- * Arguments:
- * * specific_parts - If true, the component should not use base name, but a specific tier
- */
-/obj/structure/frame/machine/proc/update_namelist(specific_parts)
+
+/obj/structure/frame/machine/proc/update_namelist()
 	if(!req_components)
 		return
 
@@ -77,10 +72,8 @@
 
 		if(ispath(component_path, /obj/item/stock_parts))
 			var/obj/item/stock_parts/stock_part = component_path
-			if(!specific_parts && initial(stock_part.base_name))
+			if(initial(stock_part.base_name))
 				req_component_names[component_path] = initial(stock_part.base_name)
-			else
-				req_component_names[component_path] = initial(stock_part.name)
 
 /obj/structure/frame/machine/proc/get_req_components_amt()
 	var/amt = 0
@@ -140,23 +133,23 @@
 				return
 
 			if(istype(P, /obj/item/circuitboard/machine))
-				var/obj/item/circuitboard/machine/board = P
-				if(!board.build_path)
+				var/obj/item/circuitboard/machine/B = P
+				if(!B.build_path)
 					to_chat(user, span_warning("This circuitboard seems to be broken."))
 					return
-				if(!anchored && board.needs_anchored)
+				if(!anchored && B.needs_anchored)
 					to_chat(user, span_warning("The frame needs to be secured first!"))
 					return
-				if(!user.transferItemToLoc(board, src))
+				if(!user.transferItemToLoc(B, src))
 					return
 				playsound(src.loc, 'sound/items/deconstruct.ogg', 50, TRUE)
 				to_chat(user, span_notice("You add the circuit board to the frame."))
-				circuit = board
+				circuit = B
 				icon_state = "box_2"
 				state = 3
 				components = list()
-				req_components = board.req_components.Copy()
-				update_namelist(board.specific_parts)
+				req_components = B.req_components.Copy()
+				update_namelist()
 				return
 
 			else if(istype(P, /obj/item/circuitboard))

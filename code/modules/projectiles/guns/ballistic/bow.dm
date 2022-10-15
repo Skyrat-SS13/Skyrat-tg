@@ -68,7 +68,6 @@
 	name = "arrow"
 	desc = "Stabby Stabman!"
 	icon_state = "arrow"
-	inhand_icon_state = null // SKYRAT EDIT - Fixing CI for inhands.
 	flags_1 = NONE
 	throwforce = 1
 	projectile_type = /obj/projectile/bullet/reusable/arrow
@@ -98,7 +97,7 @@
 	name = "quiver"
 	desc = "Holds arrows for your bow. Good, because while pocketing arrows is possible, it surely can't be pleasant."
 	icon_state = "quiver"
-	inhand_icon_state = null
+	inhand_icon_state = "quiver"
 	worn_icon_state = "harpoon_quiver"
 	var/arrow_path = /obj/item/ammo_casing/caseless/arrow
 

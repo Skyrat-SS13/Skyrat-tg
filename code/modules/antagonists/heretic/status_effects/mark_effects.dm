@@ -127,7 +127,11 @@
 
 /datum/status_effect/eldritch/void/on_effect()
 	owner.apply_status_effect(/datum/status_effect/void_chill/major)
-	owner.adjust_silence(10 SECONDS)
+
+	if(iscarbon(owner))
+		var/mob/living/carbon/carbon_owner = owner
+		carbon_owner.silent += 5
+
 	return ..()
 
 // MARK OF BLADES

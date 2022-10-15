@@ -23,7 +23,6 @@
 	lefthand_file = 'modular_skyrat/master_files/icons/mob/inhands/equipment/tanks_lefthand.dmi'
 	righthand_file = 'modular_skyrat/master_files/icons/mob/inhands/equipment/tanks_righthand.dmi'
 	icon_state = "nitrogen_extended"
-	inhand_icon_state = "nitrogen"
 	slot_flags = ITEM_SLOT_BELT
 	force = 5
 	volume = 24

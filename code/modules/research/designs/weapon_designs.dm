@@ -5,9 +5,7 @@
 /datum/design/c38/sec
 	id = "sec_38"
 	build_type = PROTOLATHE | AWAY_LATHE
-	category = list(
-		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO
-	)
+	category = list(RND_CATEGORY_AMMO)
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 	autolathe_exportable = FALSE //Redundant, there's already an autolathe version.
 
@@ -18,9 +16,7 @@
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = 20000, /datum/material/silver = 5000, /datum/material/gold = 1000)
 	build_path = /obj/item/ammo_box/c38/trac
-	category = list(
-		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO
-	)
+	category = list(RND_CATEGORY_AMMO)
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 
 /datum/design/c38_hotshot
@@ -30,9 +26,7 @@
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = 20000, /datum/material/plasma = 5000)
 	build_path = /obj/item/ammo_box/c38/hotshot
-	category = list(
-		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO
-	)
+	category = list(RND_CATEGORY_AMMO)
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 
 /datum/design/c38_iceblox
@@ -42,9 +36,7 @@
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = 20000, /datum/material/plasma = 5000)
 	build_path = /obj/item/ammo_box/c38/iceblox
-	category = list(
-		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO
-	)
+	category = list(RND_CATEGORY_AMMO)
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 
 /datum/design/c38_rubber
@@ -54,44 +46,34 @@
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = 20000)
 	build_path = /obj/item/ammo_box/c38/match/bouncy
-	category = list(
-		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO
-	)
+	category = list(RND_CATEGORY_AMMO)
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 
 /datum/design/rubbershot/sec
 	id = "sec_rshot"
 	build_type = PROTOLATHE | AWAY_LATHE
-	category = list(
-		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO
-	)
+	category = list(RND_CATEGORY_AMMO)
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 	autolathe_exportable = FALSE //Redundant
 
 /datum/design/beanbag_slug/sec
 	id = "sec_beanbag_slug"
 	build_type = PROTOLATHE | AWAY_LATHE
-	category = list(
-		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO
-	)
+	category = list(RND_CATEGORY_AMMO)
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 	autolathe_exportable = FALSE
 
 /datum/design/shotgun_dart/sec
 	id = "sec_dart"
 	build_type = PROTOLATHE | AWAY_LATHE
-	category = list(
-		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO
-	)
+	category = list(RND_CATEGORY_AMMO)
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 	autolathe_exportable = FALSE
 
 /datum/design/incendiary_slug/sec
 	id = "sec_Islug"
 	build_type = PROTOLATHE | AWAY_LATHE
-	category = list(
-		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO
-	)
+	category = list(RND_CATEGORY_AMMO)
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 	autolathe_exportable = FALSE
 
@@ -102,9 +84,7 @@
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = 500, /datum/material/glass = 300)
 	build_path = /obj/item/firing_pin/test_range
-	category = list(
-		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_FIRING_PINS
-	)
+	category = list(RND_CATEGORY_FIRING_PINS)
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 
 /datum/design/pin_mindshield
@@ -114,9 +94,7 @@
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/silver = 600, /datum/material/diamond = 600, /datum/material/uranium = 200)
 	build_path = /obj/item/firing_pin/implant/mindshield
-	category = list(
-		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_FIRING_PINS
-	)
+	category = list(RND_CATEGORY_FIRING_PINS)
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 
 /datum/design/pin_explorer
@@ -126,9 +104,7 @@
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/silver = 1000, /datum/material/gold = 1000, /datum/material/iron = 500)
 	build_path = /obj/item/firing_pin/explorer
-	category = list(
-		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_FIRING_PINS
-	)
+	category = list(RND_CATEGORY_FIRING_PINS)
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 
 /datum/design/stunrevolver
@@ -138,9 +114,7 @@
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = 10000, /datum/material/glass = 10000, /datum/material/silver = 10000)
 	build_path = /obj/item/weaponcrafting/gunkit/tesla
-	category = list(
-		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_KITS
-	)
+	category = list(RND_CATEGORY_WEAPONS)
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 	autolathe_exportable = FALSE
 
@@ -151,9 +125,7 @@
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = 10000, /datum/material/glass = 2000, /datum/material/uranium = 3000, /datum/material/titanium = 1000)
 	build_path = /obj/item/weaponcrafting/gunkit/nuclear
-	category = list(
-		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_KITS
-	)
+	category = list(RND_CATEGORY_WEAPONS)
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 	autolathe_exportable = FALSE
 
@@ -164,9 +136,7 @@
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = 4000, /datum/material/glass = 4000, /datum/material/silver = 300, /datum/material/titanium = 200)
 	build_path = /obj/item/shield/riot/tele
-	category = list(
-		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_MELEE
-	)
+	category = list(RND_CATEGORY_WEAPONS)
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 	autolathe_exportable = FALSE
 
@@ -177,9 +147,7 @@
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = 10000, /datum/material/glass = 5000, /datum/material/diamond = 5000, /datum/material/uranium = 8000, /datum/material/silver = 4500, /datum/material/gold = 5000)
 	build_path = /obj/item/weaponcrafting/gunkit/beam_rifle
-	category = list(
-		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_KITS
-	)
+	category = list(RND_CATEGORY_WEAPONS)
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 	autolathe_exportable = FALSE
 
@@ -190,9 +158,7 @@
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/gold = 5000, /datum/material/uranium = 10000)
 	build_path = /obj/item/weaponcrafting/gunkit/decloner
-	category = list(
-		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_KITS
-	)
+	category = list(RND_CATEGORY_WEAPONS)
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 	autolathe_exportable = FALSE
 
@@ -203,9 +169,7 @@
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = 5000, /datum/material/glass = 1000)
 	build_path = /obj/item/gun/syringe/rapidsyringe
-	category = list(
-		RND_CATEGORY_EQUIPMENT + RND_SUBCATEGORY_EQUIPMENT_CHEMISTRY
-	)
+	category = list(RND_CATEGORY_WEAPONS)
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL //uwu
 
 /datum/design/temp_gun
@@ -215,9 +179,7 @@
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = 5000, /datum/material/glass = 500, /datum/material/silver = 3000)
 	build_path = /obj/item/weaponcrafting/gunkit/temperature
-	category = list(
-		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_KITS
-	)
+	category = list(RND_CATEGORY_WEAPONS)
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 	autolathe_exportable = FALSE
 
@@ -228,58 +190,48 @@
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = 2000, /datum/material/glass = 500, /datum/material/uranium = 2000)
 	build_path = /obj/item/gun/energy/floragun
-	category = list(
-		RND_CATEGORY_TOOLS + RND_SUBCATEGORY_TOOLS_BOTANY_ADVANCED
-	)
+	category = list(RND_CATEGORY_WEAPONS)
 	departmental_flags = DEPARTMENT_BITFLAG_SERVICE
 
 /datum/design/large_grenade
-	name = "Large Grenade Casing"
+	name = "Large Grenade"
 	desc = "A grenade that affects a larger area and use larger containers."
 	id = "large_grenade"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = 3000)
 	build_path = /obj/item/grenade/chem_grenade/large
-	category = list(
-		RND_CATEGORY_EQUIPMENT + RND_SUBCATEGORY_EQUIPMENT_CHEMISTRY
-	)
-	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
+	category = list(RND_CATEGORY_WEAPONS)
+	departmental_flags = DEPARTMENT_BITFLAG_SECURITY | DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/pyro_grenade
-	name = "Pyro Grenade Casing"
+	name = "Pyro Grenade"
 	desc = "An advanced grenade that is able to self ignite its mixture."
 	id = "pyro_grenade"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = 2000, /datum/material/plasma = 500)
 	build_path = /obj/item/grenade/chem_grenade/pyro
-	category = list(
-		RND_CATEGORY_EQUIPMENT + RND_SUBCATEGORY_EQUIPMENT_CHEMISTRY
-	)
-	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
+	category = list(RND_CATEGORY_WEAPONS)
+	departmental_flags = DEPARTMENT_BITFLAG_SECURITY | DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/cryo_grenade
-	name = "Cryo Grenade Casing"
+	name = "Cryo Grenade"
 	desc = "An advanced grenade that rapidly cools its contents upon detonation."
 	id = "cryo_grenade"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = 2000, /datum/material/silver = 500)
 	build_path = /obj/item/grenade/chem_grenade/cryo
-	category = list(
-		RND_CATEGORY_EQUIPMENT + RND_SUBCATEGORY_EQUIPMENT_CHEMISTRY
-	)
-	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
+	category = list(RND_CATEGORY_WEAPONS)
+	departmental_flags = DEPARTMENT_BITFLAG_SECURITY | DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/adv_grenade
-	name = "Advanced Release Grenade Casing"
+	name = "Advanced Release Grenade"
 	desc = "An advanced grenade that can be detonated several times, best used with a repeating igniter."
 	id = "adv_grenade"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = 3000, /datum/material/glass = 500)
 	build_path = /obj/item/grenade/chem_grenade/adv_release
-	category = list(
-		RND_CATEGORY_EQUIPMENT + RND_SUBCATEGORY_EQUIPMENT_CHEMISTRY
-	)
-	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
+	category = list(RND_CATEGORY_WEAPONS)
+	departmental_flags = DEPARTMENT_BITFLAG_SECURITY | DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/xray
 	name = "X-ray Laser Gun Part Kit"
@@ -288,22 +240,18 @@
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/gold = 5000, /datum/material/uranium = 4000, /datum/material/iron = 5000, /datum/material/titanium = 2000, /datum/material/bluespace = 2000)
 	build_path = /obj/item/weaponcrafting/gunkit/xray
-	category = list(
-		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_KITS
-	)
+	category = list(RND_CATEGORY_WEAPONS)
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 	autolathe_exportable = FALSE
 
 /datum/design/ioncarbine
 	name = "Ion Carbine Part Kit"
-	desc = "How to Dismantle a Cyborg: The Gun."
+	desc = "How to dismantle a cyborg : The gun."
 	id = "ioncarbine"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/silver = 6000, /datum/material/iron = 8000, /datum/material/uranium = 2000)
 	build_path = /obj/item/weaponcrafting/gunkit/ion
-	category = list(
-		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_KITS
-	)
+	category = list(RND_CATEGORY_WEAPONS)
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 	autolathe_exportable = FALSE
 
@@ -314,9 +262,7 @@
 	build_type = PROTOLATHE
 	materials = list(/datum/material/silver = 2000, /datum/material/iron = 5000, /datum/material/diamond = 2000, /datum/material/bluespace = 3000)
 	build_path = /obj/item/gun/energy/wormhole_projector
-	category = list(
-		RND_CATEGORY_EQUIPMENT + RND_SUBCATEGORY_EQUIPMENT_SCIENCE
-	)
+	category = list(RND_CATEGORY_WEAPONS)
 	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
 
 /datum/design/stunshell
@@ -326,9 +272,7 @@
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = 200)
 	build_path = /obj/item/ammo_casing/shotgun/stunslug
-	category = list(
-		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO
-	)
+	category = list(RND_CATEGORY_AMMO)
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 
 /datum/design/techshell
@@ -338,10 +282,8 @@
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = 1000, /datum/material/glass = 200)
 	build_path = /obj/item/ammo_casing/shotgun/techshell
-	category = list(
-		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO
-	)
-	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
+	category = list(RND_CATEGORY_AMMO)
+	departmental_flags = DEPARTMENT_BITFLAG_SECURITY | DEPARTMENT_BITFLAG_SCIENCE
 
 /datum/design/suppressor
 	name = "Suppressor"
@@ -350,9 +292,7 @@
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = 2000, /datum/material/silver = 500)
 	build_path = /obj/item/suppressor
-	category = list(
-		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_PARTS
-	)
+	category = list(RND_CATEGORY_WEAPONS)
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 
 /datum/design/gravitygun
@@ -362,21 +302,17 @@
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/silver = 8000, /datum/material/uranium = 8000, /datum/material/glass = 12000, /datum/material/iron = 12000, /datum/material/diamond = 3000, /datum/material/bluespace = 3000)
 	build_path = /obj/item/gun/energy/gravity_gun
-	category = list(
-		RND_CATEGORY_EQUIPMENT + RND_SUBCATEGORY_EQUIPMENT_SCIENCE
-	)
+	category = list(RND_CATEGORY_WEAPONS)
 	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
 
 /datum/design/largecrossbow
 	name = "Energy Crossbow Part Kit"
-	desc = "A kit to reverse-engineer a proto-kinetic accelerator into an energy crossbow, favored by syndicate infiltration teams and carp hunters."
+	desc = "A kit to reverse-engineer a proto-kinetic acceleratr into an energy crossbow, favored by syndicate infiltration teams and carp hunters."
 	id = "largecrossbow"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = 5000, /datum/material/glass = 1500, /datum/material/uranium = 1500, /datum/material/silver = 1500)
 	build_path = /obj/item/weaponcrafting/gunkit/ebow
-	category = list(
-		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_RANGED
-	)
+	category = list(RND_CATEGORY_WEAPONS)
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY
 	autolathe_exportable = FALSE
 
@@ -396,7 +332,5 @@
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = 10000, /datum/material/glass = 4000, /datum/material/silver = 10000, /datum/material/gold = 2000)
 	build_path = /obj/item/melee/baton/security/boomerang
-	category = list(
-		RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_RANGED
-	)
+	category = list(RND_CATEGORY_WEAPONS)
 	departmental_flags = DEPARTMENT_BITFLAG_SECURITY

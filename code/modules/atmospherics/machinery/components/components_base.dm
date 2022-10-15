@@ -60,7 +60,7 @@
 	underlays.Cut()
 
 	color = null
-	SET_PLANE_IMPLICIT(src, showpipe ? GAME_PLANE : FLOOR_PLANE)
+	plane = showpipe ? GAME_PLANE : FLOOR_PLANE
 
 	if(!showpipe)
 		return ..()

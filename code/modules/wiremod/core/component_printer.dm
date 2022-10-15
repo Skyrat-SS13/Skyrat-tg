@@ -128,10 +128,8 @@
 
 /obj/machinery/component_printer/ui_static_data(mob/user)
 	var/list/data = list()
-	var/list/designs = list()
 
-	var/datum/asset/spritesheet/research_designs/spritesheet = get_asset_datum(/datum/asset/spritesheet/research_designs)
-	var/size32x32 = "[spritesheet.name]32x32"
+	var/list/designs = list()
 
 	// for (var/datum/design/component/component_design_type as anything in subtypesof(/datum/design/component))
 	for (var/researched_design_id in techweb.researched_designs)
@@ -139,16 +137,11 @@
 		if (!(design.build_type & COMPONENT_PRINTER))
 			continue
 
-		var/icon_size = spritesheet.icon_size_id(design.id)
-
 		designs[researched_design_id] = list(
 			"name" = design.name,
-			"desc" = design.desc,
-			"cost" = get_material_cost_data(design.materials),
-			"id" = researched_design_id,
+			"description" = design.desc,
+			"materials" = get_material_cost_data(design.materials),
 			"categories" = design.category,
-			"icon" = "[icon_size == size32x32 ? "" : "[icon_size] "][design.id]",
-			"constructionTime" = -1
 		)
 
 	data["designs"] = designs
@@ -235,8 +228,7 @@
 
 /obj/machinery/debug_component_printer/ui_assets(mob/user)
 	return list(
-		get_asset_datum(/datum/asset/spritesheet/sheetmaterials),
-		get_asset_datum(/datum/asset/spritesheet/research_designs)
+		get_asset_datum(/datum/asset/spritesheet/sheetmaterials)
 	)
 
 /obj/machinery/debug_component_printer/ui_act(action, list/params)
@@ -304,8 +296,7 @@
 
 /obj/machinery/module_duplicator/ui_assets(mob/user)
 	return list(
-		get_asset_datum(/datum/asset/spritesheet/sheetmaterials),
-		get_asset_datum(/datum/asset/spritesheet/research_designs)
+		get_asset_datum(/datum/asset/spritesheet/sheetmaterials)
 	)
 
 /obj/machinery/module_duplicator/ui_act(action, list/params)
@@ -420,8 +411,6 @@
 	balloon_alert(user, "module has been saved.")
 	playsound(src, 'sound/machines/ping.ogg', 50)
 
-	update_static_data_for_all_viewers()
-
 /obj/machinery/module_duplicator/ui_data(mob/user)
 	var/list/data = list()
 	data["materials"] = materials.mat_container.ui_data()
@@ -433,15 +422,12 @@
 	var/list/designs = list()
 
 	var/index = 1
-
 	for (var/list/design as anything in scanned_designs)
 		designs["[index]"] = list(
 			"name" = design["name"],
-			"desc" = design["desc"],
-			"cost" = get_material_cost_data(design["materials"]),
-			"id" = "[index]",
-			"icon" = "integrated_circuit",
-			"categories" = list("/Saved Circuits"),
+			"description" = design["desc"],
+			"materials" = get_material_cost_data(design["materials"]),
+			"categories" = list("Circuitry"),
 		)
 		index++
 

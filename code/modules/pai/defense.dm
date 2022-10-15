@@ -14,13 +14,13 @@
 	//Ask and you shall receive
 	switch(rand(1, 3))
 		if(1)
-			adjust_stutter(1 MINUTES / severity)
+			adjust_timed_status_effect(1 MINUTES / severity, /datum/status_effect/speech/stutter)
 			to_chat(src, span_danger("Warning: Feedback loop detected in speech module."))
 		if(2)
-			adjust_slurring(INFINITY)
+			adjust_timed_status_effect(INFINITY, /datum/status_effect/speech/slurring/drunk)
 			to_chat(src, span_danger("Warning: Audio synthesizer CPU stuck."))
 		if(3)
-			set_derpspeech(INFINITY)
+			adjust_timed_status_effect(INFINITY, /datum/status_effect/speech/stutter/derpspeech)
 			to_chat(src, span_danger("Warning: Vocabulary databank corrupted."))
 	if(prob(40))
 		mind.language_holder.selected_language = get_random_spoken_language()
@@ -49,7 +49,7 @@
 		take_holo_damage(2)
 		return
 	visible_message(span_notice("Responding to its master's touch, [src] disengages its holochassis emitter, rapidly losing coherence."))
-	if(!do_after(user, 1 SECONDS, src))
+	if(!do_after(user, 1 SECONDS, TRUE, src))
 		return
 	fold_in()
 	if(user.put_in_hands(card))

@@ -35,7 +35,7 @@
 	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/genitals/penis_onmob.dmi'
 	organ_type = /obj/item/organ/external/genital/penis
 	associated_organ_slot = ORGAN_SLOT_PENIS
-	key = ORGAN_SLOT_PENIS
+	key = "penis"
 	color_src = USE_MATRIXED_COLORS
 	always_color_customizable = TRUE
 	center = TRUE
@@ -117,7 +117,7 @@
 	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/genitals/testicles_onmob.dmi'
 	organ_type = /obj/item/organ/external/genital/testicles
 	associated_organ_slot = ORGAN_SLOT_TESTICLES
-	key = ORGAN_SLOT_TESTICLES
+	key = "testicles"
 	always_color_customizable = TRUE
 	special_icon_case = TRUE
 	special_x_dimension = TRUE
@@ -168,7 +168,7 @@
 	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/genitals/vagina_onmob.dmi'
 	organ_type = /obj/item/organ/external/genital/vagina
 	associated_organ_slot = ORGAN_SLOT_VAGINA
-	key = ORGAN_SLOT_VAGINA
+	key = "vagina"
 	always_color_customizable = TRUE
 	default_color = "#FFCCCC"
 	relevent_layers = list(BODY_FRONT_LAYER)
@@ -224,7 +224,7 @@
 /datum/sprite_accessory/genital/womb
 	organ_type = /obj/item/organ/external/genital/womb
 	associated_organ_slot = ORGAN_SLOT_WOMB
-	key = ORGAN_SLOT_WOMB
+	key = "womb"
 	genetic = TRUE
 
 /datum/sprite_accessory/genital/womb/none
@@ -241,7 +241,7 @@
 /datum/sprite_accessory/genital/anus
 	organ_type = /obj/item/organ/external/genital/anus
 	associated_organ_slot = ORGAN_SLOT_ANUS
-	key = ORGAN_SLOT_ANUS
+	key = "anus"
 	genetic = TRUE
 
 /datum/sprite_accessory/genital/anus/is_hidden(mob/living/carbon/human/owner, obj/item/bodypart/bodypart)
@@ -264,7 +264,7 @@
 	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/genitals/breasts_onmob.dmi'
 	organ_type = /obj/item/organ/external/genital/breasts
 	associated_organ_slot = ORGAN_SLOT_BREASTS
-	key = ORGAN_SLOT_BREASTS
+	key = "breasts"
 	always_color_customizable = TRUE
 	default_color = DEFAULT_SKIN_OR_PRIMARY
 	relevent_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER)

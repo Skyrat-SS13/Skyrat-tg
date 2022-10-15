@@ -53,9 +53,11 @@
 	},
 /obj/machinery/power/apc/auto_name/directional/south,
 /obj/machinery/portable_atmospherics/canister/air,
-/obj/structure/cable,
 /turf/open/floor/plating,
 /area/shuttle/abandoned/engine)
+"ei" = (
+/turf/closed/wall/mineral/titanium,
+/area/shuttle/abandoned/crew)
 "eD" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/components/binary/valve,
@@ -141,7 +143,6 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/greenglow,
-/obj/machinery/light/small/red/directional/west,
 /turf/open/floor/plating,
 /area/shuttle/abandoned/bar)
 "id" = (
@@ -190,7 +191,6 @@
 /obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
 	cycle_id = "exterior_whiteship"
 	},
-/obj/effect/mapping_helpers/airlock/locked,
 /turf/open/floor/mineral/plastitanium,
 /area/shuttle/abandoned/bar)
 "iI" = (
@@ -205,7 +205,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
-/obj/machinery/power/shuttle_engine/propulsion/left{
+/obj/structure/shuttle/engine/propulsion/left{
 	dir = 8
 	},
 /turf/open/floor/plating,
@@ -248,7 +248,7 @@
 	dir = 2;
 	dwidth = 7;
 	height = 17;
-	shuttle_id = "whiteship";
+	id = "whiteship";
 	launch_status = 0;
 	movement_force = list("KNOCKDOWN"=0,"THROW"=0);
 	name = "Mining Shuttle";
@@ -296,13 +296,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
-/obj/machinery/button/door/directional/east{
-	id = "ntms_exterior";
-	name = "NTMS-037 Mining Airlock Bolt Control";
-	normaldoorcontrol = 1;
-	req_access = list("syndicate_leader");
-	specialfunctions = 4
-	},
+/obj/machinery/light/small/red/directional/east,
 /turf/open/floor/plating,
 /area/shuttle/abandoned/bar)
 "mu" = (
@@ -310,10 +304,6 @@
 /obj/effect/decal/cleanable/vomit/old,
 /obj/machinery/light/small/broken/directional/west,
 /obj/structure/cable,
-/obj/machinery/airalarm/all_access{
-	dir = 8;
-	pixel_x = -24
-	},
 /turf/open/floor/pod/light,
 /area/shuttle/abandoned/crew)
 "mH" = (
@@ -332,7 +322,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
-/obj/machinery/power/shuttle_engine/propulsion{
+/obj/structure/shuttle/engine/propulsion{
 	dir = 8
 	},
 /turf/open/floor/plating,
@@ -360,7 +350,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
-/obj/machinery/power/shuttle_engine/propulsion/right{
+/obj/structure/shuttle/engine/propulsion/right{
 	dir = 8
 	},
 /turf/open/floor/plating,
@@ -395,7 +385,6 @@
 	pixel_x = 4;
 	pixel_y = 4
 	},
-/obj/machinery/atmospherics/components/unary/vent_pump/on,
 /turf/open/floor/pod/light,
 /area/shuttle/abandoned/bridge)
 "qL" = (
@@ -421,7 +410,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
-/obj/machinery/power/shuttle_engine/propulsion/right{
+/obj/structure/shuttle/engine/propulsion/right{
 	dir = 8
 	},
 /turf/open/floor/plating,
@@ -570,9 +559,6 @@
 	icon_state = "medium"
 	},
 /obj/item/stack/cable_coil/cut,
-/obj/machinery/airalarm/all_access{
-	pixel_y = -24
-	},
 /turf/open/floor/pod/light,
 /area/shuttle/abandoned/bridge)
 "zu" = (
@@ -836,7 +822,6 @@
 /obj/effect/spawner/random/maintenance/three,
 /obj/item/wirebrush,
 /obj/item/stack/sheet/mineral/plasma/five,
-/obj/item/stack/sheet/mineral/plasma/five,
 /turf/open/floor/plating,
 /area/shuttle/abandoned/engine)
 "LK" = (
@@ -872,7 +857,7 @@
 /turf/open/floor/mineral/titanium/tiled/yellow,
 /area/shuttle/abandoned/engine)
 "MI" = (
-/obj/machinery/power/shuttle_engine/heater{
+/obj/structure/shuttle/engine/heater{
 	dir = 8
 	},
 /obj/structure/window/reinforced{
@@ -911,11 +896,10 @@
 /obj/item/plate/small{
 	pixel_x = -5
 	},
-/obj/item/storage/box/donkpockets,
 /turf/open/floor/bamboo,
 /area/shuttle/abandoned/bar)
 "OZ" = (
-/obj/machinery/power/shuttle_engine/heater{
+/obj/structure/shuttle/engine/heater{
 	dir = 8
 	},
 /obj/structure/window/reinforced{
@@ -943,7 +927,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
-/obj/machinery/power/shuttle_engine/propulsion/left{
+/obj/structure/shuttle/engine/propulsion/left{
 	dir = 8
 	},
 /turf/open/floor/plating,
@@ -1458,7 +1442,7 @@ uA
 FW
 FW
 FW
-gk
+id
 hN
 mt
 gk
@@ -1473,7 +1457,7 @@ Gu
 Gu
 Gu
 Gu
-Xk
+ei
 ik
 gk
 Xk

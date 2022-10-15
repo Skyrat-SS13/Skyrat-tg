@@ -1,8 +1,6 @@
 /datum/ash_ritual
 	/// the name of the ritual
 	var/name = "Summon Coders"
-	/// the description of the ritual
-	var/desc
 
 	/// the components necessary for a successful ritual
 	var/list/required_components = list()

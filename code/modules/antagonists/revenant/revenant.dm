@@ -3,10 +3,13 @@
 //Can hear deadchat, but are NOT normal ghosts and do NOT have x-ray vision
 //Admin-spawn or random event
 
+#define INVISIBILITY_REVENANT 50
+#define REVENANT_NAME_FILE "revenant_names.json"
+
 /mob/living/simple_animal/revenant
 	name = "revenant"
 	desc = "A malevolent spirit."
-	icon = 'icons/mob/simple/mob.dmi'
+	icon = 'icons/mob/mob.dmi'
 	icon_state = "revenant_idle"
 	var/icon_idle = "revenant_idle"
 	var/icon_reveal = "revenant_revealed"
@@ -20,7 +23,7 @@
 	maxHealth = INFINITY
 	plane = GHOST_PLANE
 	healable = FALSE
-	sight = SEE_SELF | SEE_BLACKNESS
+	sight = SEE_SELF
 	throwforce = 0
 
 	see_in_dark = NIGHTVISION_FOV_RANGE
@@ -71,6 +74,7 @@
 	AddElement(/datum/element/simple_flying)
 	ADD_TRAIT(src, TRAIT_SPACEWALK, INNATE_TRAIT)
 	ADD_TRAIT(src, TRAIT_SIXTHSENSE, INNATE_TRAIT)
+	ADD_TRAIT(src, TRAIT_ALERT_GHOSTS_ON_DEATH, INNATE_TRAIT)
 
 	// Starting spells
 	var/datum/action/cooldown/spell/night_vision/revenant/vision = new(src)
@@ -92,13 +96,10 @@
 	var/datum/action/cooldown/spell/aoe/revenant/malfunction/shuttle_go_emag = new(src)
 	shuttle_go_emag.Grant(src)
 
-	var/datum/action/cooldown/spell/aoe/revenant/haunt_object/toolbox_go_bonk = new(src)
-	toolbox_go_bonk.Grant(src)
-
 	RegisterSignal(src, COMSIG_LIVING_BANED, .proc/on_baned)
 	random_revenant_name()
 
-/mob/living/simple_animal/revenant/canUseTopic(atom/movable/M, be_close=FALSE, no_dexterity=FALSE, no_tk=FALSE, need_hands = FALSE, floor_okay=FALSE)
+/mob/living/simple_animal/revenant/canUseTopic(atom/movable/M, be_close=FALSE, no_dexterity=FALSE, no_tk=FALSE, no_hands = FALSE, floor_okay=FALSE)
 	return FALSE
 
 /mob/living/simple_animal/revenant/proc/random_revenant_name()
@@ -172,7 +173,7 @@
 /mob/living/simple_animal/revenant/med_hud_set_status()
 	return //we use no hud
 
-/mob/living/simple_animal/revenant/say(message, bubble_type, list/spans = list(), sanitize = TRUE, datum/language/language = null, ignore_spam = FALSE, forced = null, filterproof = null, message_range = 7, datum/saymode/saymode = null)
+/mob/living/simple_animal/revenant/say(message, bubble_type, list/spans = list(), sanitize = TRUE, datum/language/language = null, ignore_spam = FALSE, forced = null, filterproof = null)
 	if(!message)
 		return
 	if(sanitize)

@@ -17,7 +17,7 @@
 		"frills" = ACC_RANDOM,
 		"horns" = ACC_RANDOM,
 		"body_markings" = ACC_RANDOM,
-		"legs" = DIGITIGRADE_LEGS,
+		"legs" = "Digitigrade Legs",
 		"taur" = "None",
 		"wings" = "None",
 	)

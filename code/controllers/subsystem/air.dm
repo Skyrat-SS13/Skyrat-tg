@@ -87,7 +87,7 @@ SUBSYSTEM_DEF(air)
 	return ..()
 
 
-/datum/controller/subsystem/air/Initialize()
+/datum/controller/subsystem/air/Initialize(timeofday)
 	map_loading = FALSE
 	gas_reactions = init_gas_reactions()
 	hotspot_reactions = init_hotspot_reactions()
@@ -98,7 +98,7 @@ SUBSYSTEM_DEF(air)
 	setup_turf_visuals()
 	process_adjacent_rebuild()
 	atmos_handbooks_init()
-	return SS_INIT_SUCCESS
+	return ..()
 
 
 /datum/controller/subsystem/air/fire(resumed = FALSE)
@@ -389,9 +389,8 @@ SUBSYSTEM_DEF(air)
 		EG.dismantle_cooldown++
 		if(EG.breakdown_cooldown >= EXCITED_GROUP_BREAKDOWN_CYCLES)
 			EG.self_breakdown(poke_turfs = TRUE)
-		else if(EG.dismantle_cooldown >= EXCITED_GROUP_DISMANTLE_CYCLES && !(EG.turf_reactions & (REACTING | STOP_REACTIONS)))
+		else if(EG.dismantle_cooldown >= EXCITED_GROUP_DISMANTLE_CYCLES)
 			EG.dismantle()
-		EG.turf_reactions = NONE
 		if (MC_TICK_CHECK)
 			return
 
@@ -544,7 +543,7 @@ SUBSYSTEM_DEF(air)
 		// This way we can make setting up adjacent turfs O(n) rather then O(n^2)
 		T.Initalize_Atmos(time)
 		if(CHECK_TICK)
-			time--
+			time++
 
 	if(active_turfs.len)
 		var/starting_ats = active_turfs.len
@@ -627,16 +626,12 @@ GLOBAL_LIST_EMPTY(colored_turfs)
 GLOBAL_LIST_EMPTY(colored_images)
 /datum/controller/subsystem/air/proc/setup_turf_visuals()
 	for(var/sharp_color in GLOB.contrast_colors)
-		var/list/add_to = list()
-		GLOB.colored_turfs += list(add_to)
-		for(var/offset in 0 to SSmapping.max_plane_offset)
-			var/obj/effect/overlay/atmos_excited/suger_high = new()
-			SET_PLANE_W_SCALAR(suger_high, HIGH_GAME_PLANE, offset)
-			add_to += suger_high
-			var/image/shiny = new('icons/effects/effects.dmi', suger_high, "atmos_top")
-			SET_PLANE_W_SCALAR(shiny, HIGH_GAME_PLANE, offset)
-			shiny.color = sharp_color
-			GLOB.colored_images += shiny
+		var/obj/effect/overlay/atmos_excited/suger_high = new()
+		GLOB.colored_turfs += suger_high
+		var/image/shiny = new('icons/effects/effects.dmi', suger_high, "atmos_top")
+		shiny.plane = ATMOS_GROUP_PLANE
+		shiny.color = sharp_color
+		GLOB.colored_images += shiny
 
 /datum/controller/subsystem/air/proc/setup_template_machinery(list/atmos_machines)
 	var/obj/machinery/atmospherics/AM
@@ -675,17 +670,16 @@ GLOBAL_LIST_EMPTY(colored_images)
 		atmos_gen[initial(atmostype.id)] = new atmostype
 
 /// Takes a gas string, returns the matching mutable gas_mixture
-/datum/controller/subsystem/air/proc/parse_gas_string(gas_string, gastype = /datum/gas_mixture)
-	var/datum/gas_mixture/cached = strings_to_mix["[gas_string]-[gastype]"]
-
+/datum/controller/subsystem/air/proc/parse_gas_string(gas_string)
+	var/datum/gas_mixture/cached = strings_to_mix[gas_string]
 	if(cached)
 		if(istype(cached, /datum/gas_mixture/immutable))
 			return cached
 		return cached.copy()
 
-	var/datum/gas_mixture/canonical_mix = new gastype()
+	var/datum/gas_mixture/canonical_mix = new()
 	// We set here so any future key changes don't fuck us
-	strings_to_mix["[gas_string]-[gastype]"] = canonical_mix
+	strings_to_mix[gas_string] = canonical_mix
 	gas_string = preprocess_gas_string(gas_string)
 
 	var/list/gases = canonical_mix.gases
@@ -792,7 +786,8 @@ GLOBAL_LIST_EMPTY(colored_images)
 	#else
 	data["display_max"] = FALSE
 	#endif
-	data["showing_user"] = user.hud_used.atmos_debug_overlays
+	var/atom/movable/screen/plane_master/plane = user.hud_used.plane_masters["[ATMOS_GROUP_PLANE]"]
+	data["showing_user"] = (plane.alpha == 255)
 	return data
 
 /datum/controller/subsystem/air/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
@@ -830,10 +825,13 @@ GLOBAL_LIST_EMPTY(colored_images)
 					group.hide_turfs()
 			return TRUE
 		if("toggle_user_display")
-			var/mob/user = ui.user
-			user.hud_used.atmos_debug_overlays = !user.hud_used.atmos_debug_overlays
-			if(user.hud_used.atmos_debug_overlays)
-				user.client.images += GLOB.colored_images
+			var/atom/movable/screen/plane_master/plane = ui.user.hud_used.plane_masters["[ATMOS_GROUP_PLANE]"]
+			if(!plane.alpha)
+				if(ui.user.client)
+					ui.user.client.images += GLOB.colored_images
+				plane.alpha = 255
 			else
-				user.client.images -= GLOB.colored_images
+				if(ui.user.client)
+					ui.user.client.images -= GLOB.colored_images
+				plane.alpha = 0
 			return TRUE

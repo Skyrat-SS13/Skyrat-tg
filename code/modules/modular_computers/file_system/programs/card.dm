@@ -80,9 +80,11 @@
 
 	var/obj/item/computer_hardware/card_slot/card_slot
 	var/obj/item/computer_hardware/card_slot/card_slot2
+	var/obj/item/computer_hardware/printer/printer
 	if(computer)
 		card_slot = computer.all_components[MC_CARD]
 		card_slot2 = computer.all_components[MC_CARD2]
+		printer = computer.all_components[MC_PRINT]
 		if(!card_slot || !card_slot2)
 			return
 
@@ -107,7 +109,7 @@
 			return TRUE
 		// Print a report.
 		if("PRG_print")
-			if(!computer)
+			if(!computer || !printer)
 				return TRUE
 			if(!authenticated_card)
 				return TRUE
@@ -124,7 +126,7 @@
 				if(A in known_access_rights)
 					contents += "  [SSid_access.get_access_desc(A)]"
 
-			if(!computer.print_text(contents, "access report - [target_id_card.registered_name ? target_id_card.registered_name : "Unregistered"]"))
+			if(!printer.print_text(contents,"access report - [target_id_card.registered_name ? target_id_card.registered_name : "Unregistered"]"))
 				to_chat(usr, span_notice("Hardware error: Printer was unable to print the file. It may be out of paper."))
 				return TRUE
 			else
@@ -306,14 +308,18 @@
 
 	var/obj/item/computer_hardware/card_slot/card_slot
 	var/obj/item/computer_hardware/card_slot/card_slot2
+	var/obj/item/computer_hardware/printer/printer
 
 	if(computer)
 		card_slot = computer.all_components[MC_CARD]
 		card_slot2 = computer.all_components[MC_CARD2]
+		printer = computer.all_components[MC_PRINT]
 		data["have_auth_card"] = !!(card_slot)
 		data["have_id_slot"] = !!(card_slot2)
+		data["have_printer"] = !!(printer)
 	else
 		data["have_id_slot"] = FALSE
+		data["have_printer"] = FALSE
 
 	if(!card_slot2)
 		return data //We're just gonna error out on the js side at this point anyway

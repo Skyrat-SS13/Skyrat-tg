@@ -15,7 +15,6 @@
 	inhand_icon_state = "y_suit"
 	greyscale_config = /datum/greyscale_config/trek
 	greyscale_config_worn = /datum/greyscale_config/trek/worn
-	greyscale_config_worn_digi = /datum/greyscale_config/trek/worn/digi //SKYRAT EDIT ADDITION - DigiGreyscale
 	greyscale_colors = "#fab342"
 
 /obj/item/clothing/under/trek/engsec
@@ -25,7 +24,6 @@
 	inhand_icon_state = "r_suit"
 	greyscale_config = /datum/greyscale_config/trek
 	greyscale_config_worn = /datum/greyscale_config/trek/worn
-	greyscale_config_worn_digi = /datum/greyscale_config/trek/worn/digi //SKYRAT EDIT ADDITION - DigiGreyscale
 	greyscale_colors = "#B72B2F"
 
 /obj/item/clothing/under/trek/medsci
@@ -35,7 +33,6 @@
 	inhand_icon_state = "b_suit"
 	greyscale_config = /datum/greyscale_config/trek
 	greyscale_config_worn = /datum/greyscale_config/trek/worn
-	greyscale_config_worn_digi = /datum/greyscale_config/trek/worn/digi //SKYRAT EDIT ADDITION - DigiGreyscale
 	greyscale_colors = "#5FA4CC"
 
 /*

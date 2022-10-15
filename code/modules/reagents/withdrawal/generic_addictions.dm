@@ -53,19 +53,20 @@
 
 /datum/addiction/alcohol/withdrawal_stage_1_process(mob/living/carbon/affected_carbon, delta_time)
 	. = ..()
-	affected_carbon.set_jitter_if_lower(10 SECONDS * delta_time)
+	affected_carbon.set_timed_status_effect(10 SECONDS * delta_time, /datum/status_effect/jitter, only_if_higher = TRUE)
 
 /datum/addiction/alcohol/withdrawal_stage_2_process(mob/living/carbon/affected_carbon, delta_time)
 	. = ..()
-	affected_carbon.set_jitter_if_lower(20 SECONDS * delta_time)
-	affected_carbon.set_hallucinations_if_lower(10 SECONDS)
+	affected_carbon.set_timed_status_effect(20 SECONDS * delta_time, /datum/status_effect/jitter, only_if_higher = TRUE)
+	affected_carbon.hallucination = max(5 SECONDS, affected_carbon.hallucination)
 
 /datum/addiction/alcohol/withdrawal_stage_3_process(mob/living/carbon/affected_carbon, delta_time)
 	. = ..()
-	affected_carbon.set_jitter_if_lower(30 SECONDS * delta_time)
-	affected_carbon.set_hallucinations_if_lower(10 SECONDS)
-	if(DT_PROB(4, delta_time) && !HAS_TRAIT(affected_carbon, TRAIT_ANTICONVULSANT))
-		affected_carbon.apply_status_effect(/datum/status_effect/seizure)
+	affected_carbon.set_timed_status_effect(30 SECONDS * delta_time, /datum/status_effect/jitter, only_if_higher = TRUE)
+	affected_carbon.hallucination = max(5 SECONDS, affected_carbon.hallucination)
+	if(DT_PROB(4, delta_time))
+		if(!HAS_TRAIT(affected_carbon, TRAIT_ANTICONVULSANT))
+			affected_carbon.apply_status_effect(/datum/status_effect/seizure)
 
 /datum/addiction/hallucinogens
 	name = "hallucinogen"
@@ -95,7 +96,7 @@
 
 /datum/addiction/maintenance_drugs/withdrawal_enters_stage_1(mob/living/carbon/affected_carbon)
 	. = ..()
-	affected_carbon.apply_status_effect(/datum/status_effect/grouped/screwy_hud/fake_healthy, type)
+	affected_carbon.hal_screwyhud = SCREWYHUD_HEALTHY
 
 /datum/addiction/maintenance_drugs/withdrawal_stage_1_process(mob/living/carbon/affected_carbon, delta_time)
 	. = ..()
@@ -135,14 +136,14 @@
 	var/lums = T.get_lumcount()
 	if(lums > 0.5)
 		affected_human.add_mood_event("too_bright", /datum/mood_event/bright_light)
-		affected_human.adjust_dizzy_up_to(6 SECONDS, 80 SECONDS)
-		affected_human.adjust_confusion_up_to(0.5 SECONDS * delta_time, 20 SECONDS)
+		affected_human.adjust_timed_status_effect(6 SECONDS, /datum/status_effect/dizziness, max_duration = 80 SECONDS)
+		affected_human.adjust_timed_status_effect(0.5 SECONDS * delta_time, /datum/status_effect/confusion, max_duration = 20 SECONDS)
 	else
 		affected_carbon.clear_mood_event("too_bright")
 
 /datum/addiction/maintenance_drugs/end_withdrawal(mob/living/carbon/affected_carbon)
 	. = ..()
-	affected_carbon.remove_status_effect(/datum/status_effect/grouped/screwy_hud/fake_healthy, type)
+	affected_carbon.hal_screwyhud = SCREWYHUD_NONE
 	if(!ishuman(affected_carbon))
 		return
 	var/mob/living/carbon/human/affected_human = affected_carbon
@@ -157,24 +158,15 @@
 /datum/addiction/medicine
 	name = "medicine"
 	withdrawal_stage_messages = list("", "", "")
-	/// Weakref to the "fake alert" hallucination we're giving to the addicted
-	var/datum/weakref/fake_alert_ref
-	/// Weakref to the "health doll screwup" hallucination we're giving to the addicted
-	var/datum/weakref/health_doll_ref
+	var/datum/hallucination/fake_alert/hallucination
+	var/datum/hallucination/fake_health_doll/hallucination2
 
 /datum/addiction/medicine/withdrawal_enters_stage_1(mob/living/carbon/affected_carbon)
 	. = ..()
 	if(!ishuman(affected_carbon))
 		return
-	var/datum/hallucination/health_doll = affected_carbon.cause_hallucination( \
-		/datum/hallucination/fake_health_doll, \
-		"medicine addiction", \
-		severity = 1, \
-		duration = 120 MINUTES, \
-	)
-	if(!health_doll)
-		return
-	health_doll_ref = WEAKREF(health_doll)
+	var/mob/living/carbon/human/human_mob = affected_carbon
+	hallucination2 = new(human_mob, TRUE, severity = 1, duration = 120 MINUTES)
 
 /datum/addiction/medicine/withdrawal_stage_1_process(mob/living/carbon/affected_carbon, delta_time)
 	. = ..()
@@ -184,64 +176,41 @@
 /datum/addiction/medicine/withdrawal_enters_stage_2(mob/living/carbon/affected_carbon)
 	. = ..()
 	var/list/possibilities = list()
-
 	if(!HAS_TRAIT(affected_carbon, TRAIT_RESISTHEAT))
-		possibilities += /datum/hallucination/fake_alert/hot
+		possibilities += ALERT_TEMPERATURE_HOT
 	if(!HAS_TRAIT(affected_carbon, TRAIT_RESISTCOLD))
-		possibilities += /datum/hallucination/fake_alert/cold
-
+		possibilities += ALERT_TEMPERATURE_COLD
 	var/obj/item/organ/internal/lungs/lungs = affected_carbon.getorganslot(ORGAN_SLOT_LUNGS)
 	if(lungs)
 		if(lungs.safe_oxygen_min)
-			possibilities += /datum/hallucination/fake_alert/need_oxygen
+			possibilities += ALERT_NOT_ENOUGH_OXYGEN
 		if(lungs.safe_oxygen_max)
-			possibilities += /datum/hallucination/fake_alert/bad_oxygen
-
-	if(!length(possibilities))
-		return
-
-	var/datum/hallucination/fake_alert = affected_carbon.cause_hallucination( \
-		pick(possibilities), \
-		"medicine addiction", \
-		duration = 120 MINUTES, \
-	)
-	if(!fake_alert)
-		return
-	fake_alert_ref = WEAKREF(fake_alert)
+			possibilities += ALERT_TOO_MUCH_OXYGEN
+	var/type = pick(possibilities)
+	hallucination = new(affected_carbon, TRUE, type, 120 MINUTES)//last for a while basically
 
 /datum/addiction/medicine/withdrawal_stage_2_process(mob/living/carbon/affected_carbon, delta_time)
 	. = ..()
-	var/datum/hallucination/fake_health_doll/hallucination = health_doll_ref?.resolve()
-	if(QDELETED(hallucination))
-		health_doll_ref = null
-		return
-
 	if(DT_PROB(10, delta_time))
-		hallucination.add_fake_limb(severity = 1)
+		hallucination2.add_fake_limb(severity = 1)
 		return
-
 	if(DT_PROB(5, delta_time))
-		hallucination.increment_fake_damage()
-		return
+		hallucination2.increment_fake_damage()
 
 /datum/addiction/medicine/withdrawal_enters_stage_3(mob/living/carbon/affected_carbon)
 	. = ..()
-	affected_carbon.apply_status_effect(/datum/status_effect/grouped/screwy_hud/fake_crit, type)
+	affected_carbon.hal_screwyhud = SCREWYHUD_CRIT
 
 /datum/addiction/medicine/withdrawal_stage_3_process(mob/living/carbon/affected_carbon, delta_time)
 	. = ..()
-	var/datum/hallucination/fake_health_doll/hallucination = health_doll_ref?.resolve()
-	if(!QDELETED(hallucination) && DT_PROB(5, delta_time))
-		hallucination.increment_fake_damage()
+	if(DT_PROB(5, delta_time))
+		hallucination2.increment_fake_damage()
 		return
-
 	if(DT_PROB(15, delta_time))
 		affected_carbon.emote("cough")
 		return
-
 	if(DT_PROB(65, delta_time))
 		return
-
 	if(affected_carbon.stat >= SOFT_CRIT)
 		return
 
@@ -249,18 +218,16 @@
 	if(organ.low_threshold)
 		to_chat(affected_carbon, organ.low_threshold_passed)
 		return
-
 	else if (organ.high_threshold_passed)
 		to_chat(affected_carbon, organ.high_threshold_passed)
 		return
-
 	to_chat(affected_carbon, span_warning("You feel a dull pain in your [organ.name]."))
 
 /datum/addiction/medicine/end_withdrawal(mob/living/carbon/affected_carbon)
 	. = ..()
-	affected_carbon.remove_status_effect(/datum/status_effect/grouped/screwy_hud/fake_crit, type)
-	QDEL_NULL(fake_alert_ref)
-	QDEL_NULL(health_doll_ref)
+	affected_carbon.hal_screwyhud = SCREWYHUD_NONE
+	hallucination.cleanup()
+	QDEL_NULL(hallucination2)
 
 /* SKYRAT CHANGE, MOVED TO MODULAR.
 ///Nicotine
@@ -274,17 +241,17 @@
 
 /datum/addiction/nicotine/withdrawal_enters_stage_1(mob/living/carbon/affected_carbon, delta_time)
 	. = ..()
-	affected_carbon.set_jitter_if_lower(10 SECONDS * delta_time)
+	affected_carbon.set_timed_status_effect(10 SECONDS * delta_time, /datum/status_effect/jitter, only_if_higher = TRUE)
 
 /datum/addiction/nicotine/withdrawal_stage_2_process(mob/living/carbon/affected_carbon, delta_time)
 	. = ..()
-	affected_carbon.set_jitter_if_lower(20 SECONDS * delta_time)
+	affected_carbon.set_timed_status_effect(20 SECONDS * delta_time, /datum/status_effect/jitter, only_if_higher = TRUE)
 	if(DT_PROB(10, delta_time))
 		affected_carbon.emote("cough")
 
 /datum/addiction/nicotine/withdrawal_stage_3_process(mob/living/carbon/affected_carbon, delta_time)
 	. = ..()
-	affected_carbon.set_jitter_if_lower(30 SECONDS * delta_time)
+	affected_carbon.set_timed_status_effect(30 SECONDS * delta_time, /datum/status_effect/jitter, only_if_higher = TRUE)
 	if(DT_PROB(15, delta_time))
 		affected_carbon.emote("cough")
 */

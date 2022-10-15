@@ -66,7 +66,7 @@
 	name = "bluespace polycrystal"
 	icon = 'icons/obj/telescience.dmi'
 	icon_state = "polycrystal"
-	inhand_icon_state = null
+	inhand_icon_state = "sheet-polycrystal"
 	singular_name = "bluespace polycrystal"
 	desc = "A stable polycrystal, made of fused-together bluespace crystals. You could probably break one off."
 	mats_per_unit = list(/datum/material/bluespace=MINERAL_MATERIAL_AMOUNT)

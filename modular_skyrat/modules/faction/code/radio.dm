@@ -1,9 +1,7 @@
 /obj/item/encryptionkey/headset_faction
 	name = "faction radio encryption key"
-	icon_state = "cypherkey_cargo"
+	icon_state = "cargo_cypherkey"
 	channels = list(RADIO_CHANNEL_FACTION = 1)
-	greyscale_config = /datum/greyscale_config/encryptionkey_cargo
-	greyscale_colors = "#49241a#dca01b"
 	independent = TRUE
 
 /obj/item/radio/headset/headset_faction
@@ -16,6 +14,7 @@
 	name = "faction bowman headset"
 	desc = "Headset used by the faction. Protects ears from flashbangs."
 	icon_state = "com_headset_alt"
+	inhand_icon_state = "com_headset_alt"
 
 /obj/item/radio/headset/headset_faction/bowman/Initialize(mapload)
 	. = ..()

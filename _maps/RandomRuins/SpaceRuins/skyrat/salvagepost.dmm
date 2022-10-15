@@ -39,7 +39,9 @@
 /turf/template_noop,
 /area/template_noop)
 "cq" = (
-/obj/machinery/light/small/directional/east,
+/obj/machinery/light/small{
+	dir = 4
+	},
 /obj/effect/decal/cleanable/dirt/dust,
 /turf/open/floor/plastic,
 /area/ruin/powered)
@@ -66,8 +68,9 @@
 /area/template_noop)
 "ef" = (
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/machinery/light/directional/north{
-	active_power_usage = 10
+/obj/machinery/light{
+	active_power_usage = 10;
+	dir = 1
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/powered)
@@ -318,7 +321,7 @@
 /turf/closed/wall/material,
 /area/ruin/unpowered/no_grav)
 "pb" = (
-/obj/machinery/power/shuttle_engine/propulsion{
+/obj/structure/shuttle/engine/propulsion{
 	dir = 4
 	},
 /turf/template_noop,
@@ -365,7 +368,7 @@
 	},
 /area/template_noop)
 "qj" = (
-/obj/machinery/power/shuttle_engine/propulsion{
+/obj/structure/shuttle/engine/propulsion{
 	dir = 4
 	},
 /obj/structure/lattice/catwalk{
@@ -384,7 +387,7 @@
 /turf/template_noop,
 /area/template_noop)
 "rP" = (
-/obj/machinery/power/shuttle_engine/large{
+/obj/structure/shuttle/engine/large{
 	dir = 4
 	},
 /turf/closed/wall/mineral/titanium/spaceship/nodiagonal{
@@ -499,7 +502,7 @@
 /turf/open/floor/engine/airless,
 /area/ruin/unpowered/no_grav)
 "yA" = (
-/obj/machinery/power/shuttle_engine/heater{
+/obj/structure/shuttle/engine/heater{
 	dir = 4
 	},
 /turf/closed/wall/mineral/titanium/spaceship/nodiagonal{
@@ -756,7 +759,7 @@
 	pixel_x = -2;
 	pixel_y = 13
 	},
-/obj/machinery/light/directional/south{
+/obj/machinery/light{
 	active_power_usage = 10
 	},
 /obj/effect/decal/cleanable/dirt/dust,
@@ -944,7 +947,7 @@
 /area/template_noop)
 "QU" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/orange/visible/layer1,
-/obj/machinery/power/shuttle_engine/propulsion,
+/obj/structure/shuttle/engine/router,
 /turf/closed/wall/mineral/titanium/spaceship/nodiagonal{
 	color = "#b49973"
 	},

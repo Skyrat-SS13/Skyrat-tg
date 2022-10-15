@@ -63,12 +63,10 @@
 	diag_hud_set_health()
 	add_sensors()
 	ADD_TRAIT(src, TRAIT_ADVANCEDTOOLUSER, ROUNDSTART_TRAIT)
-	ADD_TRAIT(src, TRAIT_LITERATE, ROUNDSTART_TRAIT)
-	ADD_TRAIT(src, TRAIT_NOFIRE_SPREAD, ROUNDSTART_TRAIT)
-
-	ADD_TRAIT(src, TRAIT_ASHSTORM_IMMUNE, ROUNDSTART_TRAIT)
-	ADD_TRAIT(src, TRAIT_MADNESS_IMMUNE, ROUNDSTART_TRAIT)
 	ADD_TRAIT(src, TRAIT_MARTIAL_ARTS_IMMUNE, ROUNDSTART_TRAIT)
+	ADD_TRAIT(src, TRAIT_NOFIRE_SPREAD, ROUNDSTART_TRAIT)
+	ADD_TRAIT(src, TRAIT_ASHSTORM_IMMUNE, ROUNDSTART_TRAIT)
+	ADD_TRAIT(src, TRAIT_LITERATE, ROUNDSTART_TRAIT)
 
 /mob/living/silicon/Destroy()
 	QDEL_NULL(radio)
@@ -83,7 +81,7 @@
 	if(!modularInterface)
 		modularInterface = new /obj/item/modular_computer/tablet/integrated(src)
 	modularInterface.layer = ABOVE_HUD_PLANE
-	SET_PLANE_EXPLICIT(modularInterface, ABOVE_HUD_PLANE, src)
+	modularInterface.plane = ABOVE_HUD_PLANE
 	modularInterface.saved_identification = real_name || name
 	if(iscyborg(src))
 		modularInterface.saved_job = "Cyborg"
@@ -449,7 +447,7 @@
 	if(!modularInterface)
 		stack_trace("Silicon [src] ( [type] ) was somehow missing their integrated tablet. Please make a bug report.")
 		create_modularInterface()
-	var/mob/living/silicon/robot/robo = modularInterface.silicon_owner
+	var/mob/living/silicon/robot/robo = modularInterface.borgo
 	if(istype(robo))
 		modularInterface.borglog += "[station_time_timestamp()] - [string]"
 	var/datum/computer_file/program/robotact/program = modularInterface.get_robotact()

@@ -205,16 +205,6 @@
 		/obj/item/mod/module/flamethrower,
 	)
 
-/obj/item/mod/control/pre_equipped/infiltrator
-	theme = /datum/mod_theme/infiltrator
-	applied_cell = /obj/item/stock_parts/cell/super
-	initial_modules = list(
-		/obj/item/mod/module/emp_shield,
-		/obj/item/mod/module/magnetic_harness,
-		/obj/item/mod/module/quick_carry,
-		/obj/item/mod/module/visor/diaghud,
-	)
-
 /obj/item/mod/control/pre_equipped/enchanted
 	theme = /datum/mod_theme/enchanted
 	applied_core = /obj/item/mod/core/infinite

@@ -35,10 +35,30 @@
 /turf/open/floor/plating,
 /area/shuttle/caravan/syndicate3)
 "dZ" = (
-/obj/machinery/power/shuttle_engine/propulsion/burst{
+/obj/structure/shuttle/engine/propulsion/burst{
 	dir = 8
 	},
 /turf/open/floor/plating/airless,
+/area/shuttle/caravan/syndicate3)
+"gl" = (
+/obj/machinery/door/airlock/hatch{
+	id_tag = "caravansyndicate3_bolt_port";
+	name = "External Airlock";
+	normalspeed = 0
+	},
+/obj/docking_port/mobile{
+	dir = 2;
+	dwidth = 6;
+	height = 7;
+	id = "caravansyndicate3";
+	name = "Syndicate Drop Ship";
+	port_direction = 8;
+	preferred_direction = 4;
+	width = 15
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper,
+/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
+/turf/open/floor/plating,
 /area/shuttle/caravan/syndicate3)
 "ha" = (
 /obj/effect/turf_decal/stripes/line{
@@ -64,26 +84,6 @@
 /obj/structure/cable,
 /turf/open/floor/pod/dark,
 /area/shuttle/caravan/syndicate3)
-"jT" = (
-/obj/machinery/door/airlock/hatch{
-	id_tag = "caravansyndicate3_bolt_port";
-	name = "External Airlock";
-	normalspeed = 0
-	},
-/obj/docking_port/mobile{
-	dir = 2;
-	dwidth = 6;
-	height = 7;
-	shuttle_id = "caravansyndicate3";
-	name = "Syndicate Drop Ship";
-	port_direction = 8;
-	preferred_direction = 4;
-	width = 15
-	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper,
-/obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
-/turf/open/floor/plating,
-/area/shuttle/caravan/syndicate3)
 "ka" = (
 /obj/structure/chair/comfy/shuttle{
 	dir = 1
@@ -98,7 +98,7 @@
 /turf/open/floor/iron/dark,
 /area/shuttle/caravan/syndicate3)
 "mJ" = (
-/obj/machinery/power/shuttle_engine/propulsion/burst/left{
+/obj/structure/shuttle/engine/propulsion/burst/left{
 	dir = 8
 	},
 /turf/open/floor/plating/airless,
@@ -155,6 +155,14 @@
 	},
 /turf/open/floor/iron/dark,
 /area/shuttle/caravan/syndicate3)
+"rU" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/plasma/plastitanium,
+/obj/machinery/door/poddoor{
+	id = "caravansyndicate3_bridge"
+	},
+/turf/open/floor/plating,
+/area/shuttle/caravan/syndicate3)
 "rV" = (
 /obj/structure/chair/comfy/shuttle{
 	dir = 1
@@ -204,13 +212,13 @@
 /turf/open/floor/iron/dark,
 /area/shuttle/caravan/syndicate3)
 "vQ" = (
-/obj/machinery/power/shuttle_engine/propulsion/burst/right{
+/obj/structure/shuttle/engine/propulsion/burst/right{
 	dir = 8
 	},
 /turf/open/floor/plating/airless,
 /area/shuttle/caravan/syndicate3)
 "wH" = (
-/obj/machinery/power/shuttle_engine/heater{
+/obj/structure/shuttle/engine/heater{
 	dir = 8
 	},
 /obj/structure/window/reinforced{
@@ -254,13 +262,6 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /obj/effect/mapping_helpers/airlock/access/all/syndicate/general,
 /turf/open/floor/iron/dark,
-/area/shuttle/caravan/syndicate3)
-"Dc" = (
-/obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
-/obj/machinery/door/poddoor{
-	id = "caravansyndicate3_bridge"
-	},
-/turf/open/floor/plating,
 /area/shuttle/caravan/syndicate3)
 "Dt" = (
 /obj/effect/turf_decal/stripes/line{
@@ -619,7 +620,7 @@ Tn
 PL
 "}
 (9,1,1) = {"
-jT
+gl
 xC
 al
 Vr
@@ -655,29 +656,29 @@ Sl
 Tn
 "}
 (13,1,1) = {"
-Dc
+rU
 ns
 Ij
 HM
 Wr
 Ia
-Dc
+rU
 "}
 (14,1,1) = {"
-Dc
-Dc
+rU
+rU
 sb
 rz
 ZK
-Dc
-Dc
+rU
+rU
 "}
 (15,1,1) = {"
 Jv
-Dc
-Dc
-Dc
-Dc
-Dc
+rU
+rU
+rU
+rU
+rU
 Jv
 "}

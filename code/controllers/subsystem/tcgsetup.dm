@@ -22,7 +22,7 @@ SUBSYSTEM_DEF(trading_card_game)
 //Let's load the cards before the map fires, so we can load cards on the map safely
 /datum/controller/subsystem/trading_card_game/Initialize()
 	reloadAllCardFiles()
-	return SS_INIT_SUCCESS
+	return ..()
 
 ///Loads all the card files
 /datum/controller/subsystem/trading_card_game/proc/loadAllCardFiles()

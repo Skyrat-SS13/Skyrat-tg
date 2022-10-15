@@ -3,7 +3,8 @@
 /turf/template_noop,
 /area/template_noop)
 "ab" = (
-/obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
+/obj/structure/grille,
+/obj/structure/window/reinforced/plasma/plastitanium,
 /obj/machinery/door/poddoor/preopen{
 	id = "escape_cockpit_windows";
 	name = "Cockpit Blast Door"
@@ -279,7 +280,7 @@
 /obj/item/tank/internals/oxygen/red,
 /obj/item/clothing/suit/utility/fire/firefighter,
 /obj/item/clothing/mask/gas,
-/obj/item/clothing/head/utility/hardhat/red,
+/obj/item/clothing/head/hardhat/red,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/extinguisher,
 /turf/open/floor/iron/dark,
@@ -1403,23 +1404,23 @@
 	pixel_x = -3;
 	pixel_y = -3
 	},
-/obj/item/clothing/head/utility/hardhat/orange{
+/obj/item/clothing/head/hardhat/orange{
 	name = "protective hat";
 	pixel_y = 9
 	},
-/obj/item/clothing/head/utility/hardhat/orange{
+/obj/item/clothing/head/hardhat/orange{
 	name = "protective hat";
 	pixel_y = 9
 	},
-/obj/item/clothing/head/utility/hardhat/orange{
+/obj/item/clothing/head/hardhat/orange{
 	name = "protective hat";
 	pixel_y = 9
 	},
-/obj/item/clothing/head/utility/hardhat/orange{
+/obj/item/clothing/head/hardhat/orange{
 	name = "protective hat";
 	pixel_y = 9
 	},
-/obj/item/clothing/head/utility/hardhat/orange{
+/obj/item/clothing/head/hardhat/orange{
 	name = "protective hat";
 	pixel_y = 9
 	},
@@ -1474,7 +1475,7 @@
 /obj/item/tank/internals/oxygen/red,
 /obj/item/clothing/suit/utility/fire/firefighter,
 /obj/item/clothing/mask/gas,
-/obj/item/clothing/head/utility/hardhat/red,
+/obj/item/clothing/head/hardhat/red,
 /turf/open/floor/iron/dark,
 /area/shuttle/escape)
 "da" = (
@@ -1783,7 +1784,7 @@
 "dy" = (
 /obj/effect/turf_decal/bot_white,
 /obj/structure/rack,
-/obj/item/clothing/head/utility/welding{
+/obj/item/clothing/head/welding{
 	pixel_x = -3;
 	pixel_y = 5
 	},
@@ -2033,7 +2034,7 @@
 /turf/closed/wall/mineral/plastitanium,
 /area/shuttle/escape)
 "ek" = (
-/obj/machinery/power/shuttle_engine/heater,
+/obj/structure/shuttle/engine/heater,
 /obj/structure/window/reinforced{
 	dir = 1
 	},
@@ -2043,11 +2044,11 @@
 /turf/open/floor/plating/airless,
 /area/shuttle/escape)
 "em" = (
-/obj/machinery/power/shuttle_engine/propulsion,
+/obj/structure/shuttle/engine/propulsion,
 /turf/open/floor/plating/airless,
 /area/shuttle/escape)
 "en" = (
-/obj/machinery/power/shuttle_engine/large,
+/obj/structure/shuttle/engine/large,
 /turf/open/floor/plating/airless,
 /area/shuttle/escape)
 "eo" = (
@@ -2075,6 +2076,7 @@
 	lethal = 1;
 	pixel_x = 5;
 	pixel_y = 32;
+	req_access = null;
 	req_access = list("command")
 	},
 /turf/open/floor/iron/dark,

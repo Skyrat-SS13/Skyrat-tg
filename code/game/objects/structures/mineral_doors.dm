@@ -76,11 +76,13 @@
 	if(isSwitchingStates || !anchored)
 		return
 	if(isliving(user))
-		var/mob/living/matters = user
-		if(matters.client)
-			if(iscarbon(matters))
-				var/mob/living/carbon/carbon_user = matters
-				if(!carbon_user.handcuffed)
+		var/mob/living/M = user
+		if(world.time - M.last_bumped <= 60)
+			return //NOTE do we really need that?
+		if(M.client)
+			if(iscarbon(M))
+				var/mob/living/carbon/C = M
+				if(!C.handcuffed)
 					SwitchState()
 			else
 				SwitchState()

@@ -296,9 +296,12 @@ GLOBAL_LIST_INIT(dye_registry, list(
 	..()
 	held_mob.machine_wash(washer)
 
-/obj/item/clothing/shoes/sneakers/orange/machine_wash(obj/machinery/washing_machine/washer)
-	attached_cuffs?.forceMove(loc)
-	return ..()
+/obj/item/clothing/shoes/sneakers/machine_wash(obj/machinery/washing_machine/washer)
+	if(chained)
+		chained = FALSE
+		slowdown = SHOES_SLOWDOWN
+		new /obj/item/restraints/handcuffs(loc)
+	..()
 
 /obj/machinery/washing_machine/relaymove(mob/living/user, direction)
 	container_resist_act(user)

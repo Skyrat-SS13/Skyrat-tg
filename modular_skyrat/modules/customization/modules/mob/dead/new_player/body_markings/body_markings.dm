@@ -73,15 +73,6 @@
 	default_color = "#CCCCCC"
 	affected_bodyparts = HEAD
 
-/datum/body_marking/other/brows
-	name = "Brows"
-	icon_state = "brows"
-	affected_bodyparts = HEAD
-
-/datum/body_marking/other/eyeliner
-	name = "Eyeliner"
-	icon_state = "eyeliner"
-	affected_bodyparts = HEAD
 
 /datum/body_marking/other/weight
 	name = "Body Weight"

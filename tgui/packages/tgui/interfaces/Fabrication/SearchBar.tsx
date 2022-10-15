@@ -1,4 +1,3 @@
-import { Component } from 'inferno';
 import { Stack, Input, Icon } from '../../components';
 
 /**
@@ -21,34 +20,25 @@ export type SearchBarProps = {
   onSearchTextChanged: (newSearchText: string) => void;
 };
 
-export class SearchBar extends Component<SearchBarProps> {
-  timeout?: NodeJS.Timeout;
+/**
+ * A simple, stylized search bar.
+ */
+export const SearchBar = (props: SearchBarProps, context) => {
+  const { searchText, onSearchTextChanged, hint } = props;
 
-  onInput(value: string) {
-    if (this.timeout) {
-      clearTimeout(this.timeout);
-    }
-
-    this.timeout = setTimeout(() => this.props.onSearchTextChanged(value), 200);
-  }
-
-  render() {
-    const { searchText, hint } = this.props;
-
-    return (
-      <Stack align="baseline">
-        <Stack.Item>
-          <Icon name="search" />
-        </Stack.Item>
-        <Stack.Item grow>
-          <Input
-            fluid
-            placeholder={hint ? hint : 'Search for...'}
-            onInput={(_e: unknown, v: string) => this.onInput(v)}
-            value={searchText}
-          />
-        </Stack.Item>
-      </Stack>
-    );
-  }
-}
+  return (
+    <Stack align="baseline">
+      <Stack.Item>
+        <Icon name="search" />
+      </Stack.Item>
+      <Stack.Item grow>
+        <Input
+          fluid
+          placeholder={hint ? hint : 'Search for...'}
+          onInput={(_e: unknown, v: string) => onSearchTextChanged(v)}
+          value={searchText}
+        />
+      </Stack.Item>
+    </Stack>
+  );
+};

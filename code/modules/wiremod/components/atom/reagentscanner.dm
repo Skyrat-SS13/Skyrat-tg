@@ -20,14 +20,10 @@
 /obj/item/circuit_component/reagentscanner/get_ui_notices()
 	. = ..()
 	. += create_ui_notice("Maximum Range: [max_range] tiles", "orange", "info")
-	. += create_table_notices(list(
-		"reagent",
-		"volume",
-		))
 
 /obj/item/circuit_component/reagentscanner/populate_ports()
 	input_port = add_input_port("Entity", PORT_TYPE_ATOM)
-	result = add_output_port("Reagents", PORT_TYPE_TABLE)
+	result = add_output_port("Reagents", PORT_TYPE_ASSOC_LIST(PORT_TYPE_STRING, PORT_TYPE_NUMBER))
 
 /obj/item/circuit_component/reagentscanner/input_received(datum/port/input/port)
 	var/atom/entity = input_port.value
@@ -35,10 +31,7 @@
 	if(!istype(entity) || !IN_GIVEN_RANGE(location, entity, max_range))
 		result.set_output(null)
 		return
-	var/list/new_table = list()
+	var/list/output_list = list()
 	for(var/datum/reagent/reagent as anything in entity.reagents?.reagent_list)
-		var/list/entry = list()
-		entry["reagent"] = reagent.name
-		entry["volume"] = reagent.volume
-		new_table += list(entry)
-	result.set_output(new_table)
+		output_list[reagent.name] += reagent.volume
+	result.set_output(output_list)

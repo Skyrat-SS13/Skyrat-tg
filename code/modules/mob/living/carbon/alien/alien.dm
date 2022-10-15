@@ -1,10 +1,10 @@
 /mob/living/carbon/alien
 	name = "alien"
-	icon = 'icons/mob/nonhuman-player/alien.dmi'
+	icon = 'icons/mob/alien.dmi'
 	gender = FEMALE //All xenos are girls!!
 	dna = null
 	faction = list(ROLE_ALIEN)
-	sight = SEE_MOBS | SEE_BLACKNESS
+	sight = SEE_MOBS
 	see_in_dark = 4
 	verb_say = "hisses"
 	initial_language_holder = /datum/language_holder/alien
@@ -93,7 +93,7 @@ Des: Gives the client of the alien an image on each infected mob.
 			if(HAS_TRAIT(L, TRAIT_XENO_HOST))
 				var/obj/item/organ/internal/body_egg/alien_embryo/A = L.getorgan(/obj/item/organ/internal/body_egg/alien_embryo)
 				if(A)
-					var/I = image('icons/mob/nonhuman-player/alien.dmi', loc = L, icon_state = "infected[A.stage]")
+					var/I = image('icons/mob/alien.dmi', loc = L, icon_state = "infected[A.stage]")
 					client.images += I
 	return
 

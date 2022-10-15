@@ -11,7 +11,8 @@ GLOBAL_LIST_EMPTY(goldeneye_pinpointers)
 
 SUBSYSTEM_DEF(goldeneye)
 	name = "GoldenEye"
-	flags = SS_NO_FIRE | SS_NO_INIT
+	init_order = INIT_ORDER_DEFAULT
+	flags = SS_NO_FIRE
 	/// A tracked list of all our keys.
 	var/list/goldeneye_keys = list()
 	/// A list of minds that have been extracted and thus cannot be extracted again.

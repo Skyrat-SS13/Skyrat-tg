@@ -148,7 +148,6 @@
 
 /datum/action/item_action/organ_action/cursed_heart
 	name = "Pump your blood"
-	check_flags = NONE
 
 //You are now brea- pumping blood manually
 /datum/action/item_action/organ_action/cursed_heart/Trigger(trigger_flags)
@@ -217,7 +216,7 @@
 	if(. & EMP_PROTECT_SELF)
 		return
 	if(!COOLDOWN_FINISHED(src, severe_cooldown)) //So we cant just spam emp to kill people.
-		owner.set_dizzy_if_lower(20 SECONDS)
+		owner.set_timed_status_effect(20 SECONDS, /datum/status_effect/dizziness, only_if_higher = TRUE)
 		owner.losebreath += 10
 		COOLDOWN_START(src, severe_cooldown, 20 SECONDS)
 	if(prob(emp_vulnerability/severity)) //Chance of permanent effects

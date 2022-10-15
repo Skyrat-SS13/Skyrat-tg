@@ -98,8 +98,12 @@
 	if(.)
 		return
 
-	usr.played_game()
+	var/obj/item/computer_hardware/printer/printer
+	if(computer)
+		printer = computer.all_components[MC_PRINT]
 
+	usr.played_game()
+	
 	var/gamerSkillLevel = 0
 	var/gamerSkill = 0
 	if(usr?.mind)
@@ -149,7 +153,10 @@
 			enemy_check()
 			return TRUE
 		if("Dispense_Tickets")
-			if(computer.stored_paper <= 0)
+			if(!printer)
+				to_chat(usr, span_notice("Hardware error: A printer is required to redeem tickets."))
+				return
+			if(printer.stored_paper <= 0)
 				to_chat(usr, span_notice("Hardware error: Printer is out of paper."))
 				return
 			else
@@ -158,7 +165,7 @@
 					new /obj/item/stack/arcadeticket((get_turf(computer)), 1)
 					to_chat(usr, span_notice("[computer] dispenses a ticket!"))
 					ticket_count -= 1
-					computer.stored_paper -= 1
+					printer.stored_paper -= 1
 				else
 					to_chat(usr, span_notice("You don't have any stored tickets!"))
 				return TRUE

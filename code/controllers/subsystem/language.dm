@@ -3,7 +3,7 @@ SUBSYSTEM_DEF(language)
 	init_order = INIT_ORDER_LANGUAGE
 	flags = SS_NO_FIRE
 
-/datum/controller/subsystem/language/Initialize()
+/datum/controller/subsystem/language/Initialize(timeofday)
 	// SKYRAT EDIT START
 	if(!GLOB.all_languages.len)
 		for(var/L in subtypesof(/datum/language))
@@ -17,4 +17,4 @@ SUBSYSTEM_DEF(language)
 
 			GLOB.language_datum_instances[language] = instance
 	// SKYRAT EDIT END
-	return SS_INIT_SUCCESS
+	return ..()

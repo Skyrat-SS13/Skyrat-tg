@@ -1,3 +1,15 @@
+GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdrop, new)
+
+/atom/movable/openspace_backdrop
+	name = "openspace_backdrop"
+	anchored = TRUE
+
+	icon = 'icons/turf/floors.dmi'
+	icon_state = "grey"
+	plane = OPENSPACE_BACKDROP_PLANE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	vis_flags = VIS_INHERIT_ID
+
 /turf/open/openspace
 	name = "open space"
 	desc = "Watch your step!"
@@ -18,6 +30,7 @@
 
 /turf/open/openspace/Initialize(mapload) // handle plane and layer here so that they don't cover other obs/turfs in Dream Maker
 	. = ..()
+	overlays += GLOB.openspace_backdrop_one_for_all //Special grey square for projecting backdrop darkness filter on it.
 	RegisterSignal(src, COMSIG_ATOM_INITIALIZED_ON, .proc/on_atom_created)
 	var/area/our_area = loc
 	if(istype(our_area, /area/space))
@@ -26,7 +39,7 @@
 
 /turf/open/openspace/LateInitialize()
 	. = ..()
-	AddElement(/datum/element/turf_z_transparency)
+	AddElement(/datum/element/turf_z_transparency, is_openspace = TRUE)
 
 /turf/open/openspace/ChangeTurf(path, list/new_baseturfs, flags)
 	UnregisterSignal(src, COMSIG_ATOM_INITIALIZED_ON)
@@ -88,8 +101,8 @@
 		return TRUE
 	return FALSE
 
-/turf/open/openspace/zPassOut(atom/movable/A, direction, turf/destination, allow_anchored_movement)
-	if(A.anchored && !allow_anchored_movement)
+/turf/open/openspace/zPassOut(atom/movable/A, direction, turf/destination)
+	if(A.anchored)
 		return FALSE
 	if(direction == DOWN)
 		for(var/obj/contained_object in contents)

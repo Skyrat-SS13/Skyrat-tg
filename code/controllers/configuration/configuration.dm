@@ -89,10 +89,7 @@
 	LoadPolicy()
 	LoadChatFilter()
 
-	// SKYRAT EDIT ADDITION START
-	populate_interaction_instances()
-	remove_erp_things()
-	// SKYRAT EDIT ADDITION END
+	populate_interaction_instances() //SKYRAT EDIT ADDITION
 
 	loaded = TRUE
 

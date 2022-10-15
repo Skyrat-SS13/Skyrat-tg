@@ -3,7 +3,6 @@
 	name = "pickaxe"
 	icon = 'icons/obj/mining.dmi'
 	icon_state = "pickaxe"
-	inhand_icon_state = "pickaxe"
 	flags_1 = CONDUCT_1
 	slot_flags = ITEM_SLOT_BELT | ITEM_SLOT_BACK
 	force = 15
@@ -38,6 +37,7 @@
 	name = "compact pickaxe"
 	desc = "A smaller, compact version of the standard pickaxe."
 	icon_state = "minipick"
+	inhand_icon_state = "pickaxe"
 	worn_icon_state = "pickaxe"
 	force = 10
 	throwforce = 7
@@ -48,7 +48,6 @@
 /obj/item/pickaxe/silver
 	name = "silver-plated pickaxe"
 	icon_state = "spickaxe"
-	inhand_icon_state = "spickaxe"
 	toolspeed = 0.5 //mines faster than a normal pickaxe, bought from mining vendor
 	desc = "A silver-plated pickaxe that mines slightly faster than standard-issue."
 	force = 17
@@ -56,7 +55,6 @@
 /obj/item/pickaxe/diamond
 	name = "diamond-tipped pickaxe"
 	icon_state = "dpickaxe"
-	inhand_icon_state = "dpickaxe"
 	toolspeed = 0.3
 	desc = "A pickaxe with a diamond pick head. Extremely robust at cracking rock walls and digging up dirt."
 	force = 19
@@ -64,7 +62,6 @@
 /obj/item/pickaxe/drill
 	name = "mining drill"
 	icon_state = "handdrill"
-	inhand_icon_state = "handdrill"
 	slot_flags = ITEM_SLOT_BELT
 	toolspeed = 0.6 //available from roundstart, faster than a pickaxe.
 	usesound = 'sound/weapons/drill.ogg'
@@ -83,20 +80,17 @@
 /obj/item/pickaxe/drill/diamonddrill
 	name = "diamond-tipped mining drill"
 	icon_state = "diamonddrill"
-	inhand_icon_state = "diamonddrill"
 	toolspeed = 0.2
 	desc = "Yours is the drill that will pierce the heavens!"
 
 /obj/item/pickaxe/drill/cyborg/diamond //This is the BORG version!
 	name = "diamond-tipped cyborg mining drill" //To inherit the NODROP_1 flag, and easier to change borg specific drill mechanics.
 	icon_state = "diamonddrill"
-	inhand_icon_state = "diamonddrill"
 	toolspeed = 0.2
 
 /obj/item/pickaxe/drill/jackhammer
 	name = "sonic jackhammer"
 	icon_state = "jackhammer"
-	inhand_icon_state = "jackhammer"
 	toolspeed = 0.1 //the epitome of powertools. extremely fast mining
 	usesound = 'sound/weapons/sonic_jackhammer.ogg'
 	hitsound = 'sound/weapons/sonic_jackhammer.ogg'
@@ -106,7 +100,6 @@
 	name = "improvised pickaxe"
 	desc = "A pickaxe made with a knife and crowbar taped together, how does it not break?"
 	icon_state = "ipickaxe"
-	inhand_icon_state = "ipickaxe"
 	worn_icon_state = "pickaxe"
 	force = 10
 	throwforce = 7
@@ -120,7 +113,6 @@
 	desc = "A large tool for digging and moving dirt."
 	icon = 'icons/obj/mining.dmi'
 	icon_state = "shovel"
-	inhand_icon_state = "shovel"
 	lefthand_file = 'icons/mob/inhands/equipment/mining_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/mining_righthand.dmi'
 	flags_1 = CONDUCT_1
@@ -155,7 +147,6 @@
 	name = "spade"
 	desc = "A small tool for digging and moving dirt."
 	icon_state = "spade"
-	inhand_icon_state = "spade"
 	lefthand_file = 'icons/mob/inhands/equipment/hydroponics_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/hydroponics_righthand.dmi'
 	force = 5
@@ -182,7 +173,6 @@
 	desc = "The multi-purpose tool you always needed."
 	icon = 'icons/obj/mining.dmi'
 	icon_state = "trench_tool"
-	inhand_icon_state = "trench_tool"
 	lefthand_file = 'icons/mob/inhands/equipment/mining_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/mining_righthand.dmi'
 	flags_1 = CONDUCT_1
@@ -196,24 +186,10 @@
 	attack_verb_simple = list("bash", "bludgeon", "thrash", "whack")
 	wound_bonus = 10
 
-/obj/item/trench_tool/Initialize(mapload)
-	. = ..()
-	AddElement(/datum/element/update_icon_updates_onmob)
-
 /obj/item/trench_tool/examine(mob/user)
 	. = ..()
 	. += span_notice("Use in hand to switch configuration.")
 	. += span_notice("It functions as a [tool_behaviour] tool.")
-
-/obj/item/trench_tool/update_icon_state()
-	. = ..()
-	switch(tool_behaviour)
-		if(TOOL_WRENCH)
-			icon_state = inhand_icon_state = initial(icon_state)
-		if(TOOL_SHOVEL)
-			icon_state = inhand_icon_state = "[initial(icon_state)]_shovel"
-		if(TOOL_MINING)
-			icon_state = inhand_icon_state = "[initial(icon_state)]_pick"
 
 /obj/item/trench_tool/attack_self(mob/user, modifiers)
 	. = ..()
@@ -229,6 +205,7 @@
 		return
 	switch(tool_result)
 		if("Wrench")
+			icon_state = "trench_tool"
 			tool_behaviour = TOOL_WRENCH
 			sharpness = NONE
 			toolspeed = 0.75
@@ -237,6 +214,7 @@
 			attack_verb_continuous = list("bashes", "bludgeons", "thrashes", "whacks")
 			attack_verb_simple = list("bash", "bludgeon", "thrash", "whack")
 		if("Shovel")
+			icon_state = "trench_tool_shovel"
 			tool_behaviour = TOOL_SHOVEL
 			sharpness = SHARP_EDGED
 			toolspeed = 0.25
@@ -245,6 +223,7 @@
 			attack_verb_continuous = list("slashes", "impales", "stabs", "slices")
 			attack_verb_simple = list("slash", "impale", "stab", "slice")
 		if("Pick")
+			icon_state = "trench_tool_pick"
 			tool_behaviour = TOOL_MINING
 			sharpness = SHARP_POINTY
 			toolspeed = 0.5
@@ -253,7 +232,7 @@
 			attack_verb_continuous = list("hits", "pierces", "slices", "attacks")
 			attack_verb_simple = list("hit", "pierce", "slice", "attack")
 	playsound(src, 'sound/items/ratchet.ogg', 50, vary = TRUE)
-	update_appearance(UPDATE_ICON)
+	user.update_held_items()
 
 /obj/item/trench_tool/proc/check_menu(mob/user)
 	if(!istype(user))

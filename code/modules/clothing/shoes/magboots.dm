@@ -2,7 +2,6 @@
 	desc = "Magnetic boots, often used during extravehicular activity to ensure the user remains safely attached to the vehicle."
 	name = "magboots"
 	icon_state = "magboots0"
-	inhand_icon_state = "magboots"
 	var/magboot_state = "magboots"
 	var/magpulse = FALSE
 	var/slowdown_active = 2
@@ -14,7 +13,7 @@
 
 /obj/item/clothing/shoes/magboots/equipped(mob/user, slot)
 	. = ..()
-	if(slot & ITEM_SLOT_FEET)
+	if(slot == ITEM_SLOT_FEET)
 		update_gravity_trait(user)
 	else
 		REMOVE_TRAIT(user, TRAIT_NEGATES_GRAVITY, type)

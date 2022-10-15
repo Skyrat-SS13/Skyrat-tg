@@ -148,7 +148,9 @@
 	return html
 
 /obj/item/camera_bug/proc/get_seens()
-	return current?.can_see()
+	if(current?.can_use())
+		var/list/seen = current.can_see()
+		return seen
 
 /obj/item/camera_bug/proc/camera_report()
 	// this should only be called if current exists

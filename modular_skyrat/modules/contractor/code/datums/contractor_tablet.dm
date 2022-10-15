@@ -208,7 +208,6 @@
 	else
 		data["logged_in"] = FALSE
 
-	if(screen_to_be)
-		program_icon_state = screen_to_be
+	program_icon_state = screen_to_be
 	update_computer_icon()
 	return data

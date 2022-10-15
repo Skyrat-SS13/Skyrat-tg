@@ -38,7 +38,7 @@
 	if(!inputvalue)
 		return
 
-	if(user.canUseTopic(src, be_close = TRUE))
+	if(user.canUseTopic(src, BE_CLOSE))
 		name = "folder[(inputvalue ? " - '[inputvalue]'" : null)]"
 
 /obj/item/folder/proc/remove_item(obj/item/Item, mob/user)

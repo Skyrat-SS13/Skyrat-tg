@@ -1123,7 +1123,7 @@
 	dir = 8;
 	dwidth = 3;
 	height = 15;
-	shuttle_id = "arrival_stationary";
+	id = "arrivals_stationary";
 	name = "arrivals";
 	roundstart_template = /datum/map_template/shuttle/arrival/box;
 	width = 7
@@ -1247,7 +1247,7 @@
 	dir = 8;
 	dwidth = 2;
 	height = 13;
-	shuttle_id = "ferry_home";
+	id = "ferry_home";
 	name = "port bay 2";
 	width = 5
 	},
@@ -1278,7 +1278,7 @@
 	dir = 4;
 	dwidth = 4;
 	height = 7;
-	shuttle_id = "cargo_home";
+	id = "supply_home";
 	name = "Cargo Bay";
 	width = 12
 	},
@@ -1428,7 +1428,7 @@
 	dir = 2;
 	dwidth = 11;
 	height = 15;
-	shuttle_id = "whiteship_home";
+	id = "whiteship_home";
 	name = "SS13: Auxiliary Dock, Station-Port";
 	width = 28
 	},
@@ -1485,7 +1485,7 @@
 	dir = 2;
 	dwidth = 9;
 	height = 25;
-	shuttle_id = "emergency_home";
+	id = "emergency_home";
 	name = "Runtimestation emergency evac bay";
 	width = 29
 	},
@@ -1678,9 +1678,27 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/hallway/secondary/exit/departure_lounge)
-"fW" = (
+"fU" = (
+/obj/machinery/airalarm/unlocked{
+	dir = 1;
+	pixel_y = 23
+	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
 	dir = 6
+	},
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/station/hallway/secondary/exit/departure_lounge)
+"fV" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/station/hallway/secondary/exit/departure_lounge)
+"fW" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 9
 	},
 /obj/structure/cable,
 /turf/open/floor/iron,
@@ -1844,6 +1862,14 @@
 /obj/machinery/keycard_auth/directional/north,
 /turf/open/floor/iron,
 /area/station/hallway/secondary/exit/departure_lounge)
+"gA" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 4
+	},
+/obj/machinery/light/directional/north,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/station/hallway/secondary/exit/departure_lounge)
 "gB" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
 	dir = 4
@@ -1881,6 +1907,14 @@
 /obj/machinery/light/directional/west,
 /turf/open/floor/iron,
 /area/station/construction)
+"gH" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
+	dir = 4
+	},
+/obj/machinery/camera/directional/north,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/station/hallway/secondary/exit/departure_lounge)
 "gI" = (
 /obj/machinery/light/directional/north,
 /obj/machinery/camera/directional/north,
@@ -1968,12 +2002,6 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/engineering/main)
-"lH" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden{
-	dir = 6
-	},
-/turf/open/floor/iron,
-/area/station/hallway/secondary/exit/departure_lounge)
 "lX" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
 	dir = 1
@@ -2019,10 +2047,6 @@
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/iron,
 /area/station/medical/chemistry)
-"pv" = (
-/obj/machinery/light/directional/north,
-/turf/open/floor/iron,
-/area/station/hallway/secondary/exit/departure_lounge)
 "pA" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
 /turf/closed/wall/r_wall,
@@ -2074,7 +2098,7 @@
 /area/station/construction)
 "tG" = (
 /obj/docking_port/stationary/random{
-	shuttle_id = "pod_lavaland";
+	id = "pod_lavaland";
 	name = "lavaland"
 	},
 /turf/open/space/basic,
@@ -2318,10 +2342,6 @@
 /obj/machinery/rnd/production/techfab/department,
 /turf/open/floor/iron,
 /area/station/science)
-"Ih" = (
-/obj/machinery/camera/directional/north,
-/turf/open/floor/iron,
-/area/station/hallway/secondary/exit/departure_lounge)
 "Ir" = (
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
@@ -2471,13 +2491,6 @@
 	},
 /turf/open/floor/iron/white/corner,
 /area/station/medical/medbay)
-"Sp" = (
-/obj/machinery/airalarm/unlocked{
-	dir = 1;
-	pixel_y = 23
-	},
-/turf/open/floor/iron,
-/area/station/hallway/secondary/exit/departure_lounge)
 "Td" = (
 /obj/machinery/light/directional/east,
 /obj/effect/turf_decal/stripes/line{
@@ -7095,10 +7108,10 @@ cS
 cS
 cS
 cS
-Tt
-Rb
-aa
-aa
+fI
+ga
+ga
+ga
 aa
 aa
 aa
@@ -7187,10 +7200,10 @@ dl
 dp
 dE
 cS
-Tt
-bL
-aa
-aa
+fO
+fO
+fO
+gf
 aa
 aa
 aa
@@ -7279,10 +7292,10 @@ dC
 dC
 eW
 vv
-Tt
-bL
-aa
-aa
+fO
+fO
+fO
+fb
 aa
 aa
 aa
@@ -7371,10 +7384,10 @@ dJ
 dJ
 dJ
 cS
-Tt
-bL
-aa
-aa
+fO
+fO
+fO
+gf
 aa
 aa
 aa
@@ -7463,11 +7476,11 @@ dJ
 dJ
 ny
 cS
-fI
-ga
-ga
-ga
-ga
+fP
+fO
+fO
+fb
+aa
 aa
 aa
 aa
@@ -7555,11 +7568,11 @@ dJ
 dJ
 dO
 cS
-fO
-fO
+gz
 fO
 fO
 gf
+aa
 aa
 aa
 aa
@@ -7647,11 +7660,11 @@ dJ
 dJ
 jU
 cS
+fQ
 fO
 fO
-fO
-fO
-fb
+ga
+aa
 aa
 aa
 aa
@@ -7739,11 +7752,11 @@ dJ
 dJ
 ea
 cS
+fS
 fO
 fO
-fO
-fO
-gf
+gk
+aa
 aa
 aa
 aa
@@ -7831,11 +7844,11 @@ dJ
 dJ
 sH
 cS
-fP
+fU
+gb
 fO
-fO
-fO
-fb
+ga
+aa
 aa
 aa
 aa
@@ -7923,11 +7936,11 @@ dJ
 dJ
 dQ
 cS
-gz
-fO
+gA
 fO
 fO
 gf
+aa
 aa
 aa
 aa
@@ -8015,11 +8028,11 @@ dJ
 dJ
 dN
 cS
-fQ
+gH
 fO
 fO
-fO
-ga
+fb
+fp
 aa
 aa
 aa
@@ -8107,11 +8120,11 @@ dJ
 dJ
 dJ
 cS
-fS
-lH
-gb
+fV
 fO
-gk
+fO
+gf
+aa
 aa
 aa
 aa
@@ -8200,10 +8213,10 @@ eH
 fH
 fR
 fW
-lH
 fO
 fO
-ga
+fb
+aa
 aa
 aa
 aa
@@ -8291,11 +8304,11 @@ dl
 dx
 dE
 cS
-pv
 fO
 fO
 fO
 gf
+aa
 aa
 aa
 aa
@@ -8383,12 +8396,12 @@ cS
 cS
 cS
 cS
-Ih
-fO
-fO
-fO
-fb
-fp
+ga
+ga
+ga
+ga
+aa
+aa
 aa
 aa
 aa
@@ -8475,11 +8488,11 @@ eu
 eu
 eu
 et
-Sp
-fO
-fO
-fO
-gf
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -8567,11 +8580,11 @@ fo
 eu
 eu
 et
-fO
-fO
-fO
-fO
-fb
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -8659,11 +8672,11 @@ fm
 fm
 ev
 et
-fO
-fO
-fO
-fO
-gf
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa
@@ -8751,11 +8764,11 @@ fh
 fh
 fh
 et
-ga
-ga
-ga
-ga
-ga
+aa
+aa
+aa
+aa
+aa
 aa
 aa
 aa

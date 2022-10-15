@@ -1,6 +1,5 @@
 /obj/item/picket_sign
 	icon_state = "picket"
-	inhand_icon_state = "picket"
 	name = "blank picket sign"
 	desc = "It's blank."
 	force = 5
@@ -23,7 +22,7 @@
 	if(!user.can_write(writing_instrument))
 		return
 	var/txt = tgui_input_text(user, "What would you like to write on the sign?", "Sign Label", max_length = 30)
-	if(txt && user.canUseTopic(src, be_close = TRUE))
+	if(txt && user.canUseTopic(src, BE_CLOSE))
 		label = txt
 		name = "[label] sign"
 		desc = "It reads: [label]"

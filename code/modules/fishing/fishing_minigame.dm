@@ -4,6 +4,8 @@
 #define BITING_PHASE 2
 // UI minigame phase
 #define MINIGAME_PHASE 3
+// Shortest time the minigame can be won
+#define MINIMUM_MINIGAME_DURATION 140
 
 /datum/fishing_challenge
 	/// When the ui minigame phase started
@@ -113,6 +115,13 @@
 		if(phase == MINIGAME_PHASE)
 			used_rod.consume_bait()
 	if(win)
+		// validate timings to have at least basic abuse prevention, though it's kinda impossible task here
+		// 140 from minimum completion bar fill time
+		var/minimum_time = start_time + MINIMUM_MINIGAME_DURATION
+		if(world.time < minimum_time)
+			win = FALSE
+			stack_trace("Fishing minimum time check failed")
+	if(win)
 		if(reward_path != FISHING_DUD)
 			playsound(lure, 'sound/effects/bigsplash.ogg', 100)
 	else
@@ -203,3 +212,4 @@
 #undef WAIT_PHASE
 #undef BITING_PHASE
 #undef MINIGAME_PHASE
+#undef MINIMUM_MINIGAME_DURATION

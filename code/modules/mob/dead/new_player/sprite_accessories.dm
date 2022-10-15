@@ -88,7 +88,7 @@
 // Hair Definitions //
 //////////////////////
 /datum/sprite_accessory/hair
-	icon = 'icons/mob/species/human/human_face.dmi'   // default icon for all hairs
+	icon = 'icons/mob/human_face.dmi'   // default icon for all hairs
 
 	// please make sure they're sorted alphabetically and, where needed, categorized
 	// try to capitalize the names please~
@@ -812,7 +812,7 @@
 */
 
 /datum/sprite_accessory/gradient
-	icon = 'icons/mob/species/hair_gradients.dmi'
+	icon = 'icons/mob/hair_gradients.dmi'
 	///whether this gradient applies to hair and/or beards. Some gradients do not work well on beards.
 	var/gradient_category = GRADIENT_APPLIES_TO_HAIR|GRADIENT_APPLIES_TO_FACIAL_HAIR
 
@@ -903,7 +903,7 @@
 /////////////////////////////
 
 /datum/sprite_accessory/facial_hair
-	icon = 'icons/mob/species/human/human_face.dmi'
+	icon = 'icons/mob/human_face.dmi'
 	gender = MALE // barf (unless you're a dorf, dorfs dig chix w/ beards :P)
 	em_block = TRUE
 
@@ -1079,32 +1079,32 @@
 	gender = NEUTER
 
 /datum/sprite_accessory/underwear/male_briefs
-	name = "Briefs"
+	name = "Men's Briefs"
 	icon_state = "male_briefs"
 	gender = MALE
 
 /datum/sprite_accessory/underwear/male_boxers
-	name = "Boxers"
+	name = "Men's Boxer"
 	icon_state = "male_boxers"
 	gender = MALE
 
 /datum/sprite_accessory/underwear/male_stripe
-	name = "Striped Boxers"
+	name = "Men's Striped Boxer"
 	icon_state = "male_stripe"
 	gender = MALE
 
 /datum/sprite_accessory/underwear/male_midway
-	name = "Midway Boxers"
+	name = "Men's Midway Boxer"
 	icon_state = "male_midway"
 	gender = MALE
 
 /datum/sprite_accessory/underwear/male_longjohns
-	name = "Long Johns"
+	name = "Men's Long Johns"
 	icon_state = "male_longjohns"
 	gender = MALE
 
 /datum/sprite_accessory/underwear/male_kinky
-	name = "Jockstrap"
+	name = "Men's Kinky"
 	icon_state = "male_kinky"
 	gender = MALE
 
@@ -1114,25 +1114,25 @@
 	gender = MALE
 
 /datum/sprite_accessory/underwear/male_hearts
-	name = "Hearts Boxers"
+	name = "Men's Hearts Boxer"
 	icon_state = "male_hearts"
 	gender = MALE
 	use_static = TRUE
 
 /datum/sprite_accessory/underwear/male_commie
-	name = "Commie Boxers"
+	name = "Men's Striped Commie Boxer"
 	icon_state = "male_commie"
 	gender = MALE
 	use_static = TRUE
 
 /datum/sprite_accessory/underwear/male_usastripe
-	name = "Freedom Boxers"
+	name = "Men's Striped Freedom Boxer"
 	icon_state = "male_assblastusa"
 	gender = MALE
 	use_static = TRUE
 
 /datum/sprite_accessory/underwear/male_uk
-	name = "UK Boxers"
+	name = "Men's Striped UK Boxer"
 	icon_state = "male_uk"
 	gender = MALE
 	use_static = TRUE
@@ -1140,32 +1140,32 @@
 
 //FEMALE UNDERWEAR
 /datum/sprite_accessory/underwear/female_bikini
-	name = "Bikini"
+	name = "Ladies' Bikini"
 	icon_state = "female_bikini"
 	gender = FEMALE
 
 /datum/sprite_accessory/underwear/female_lace
-	name = "Lace Bikini"
+	name = "Ladies' Lace"
 	icon_state = "female_lace"
 	gender = FEMALE
 
 /datum/sprite_accessory/underwear/female_bralette
-	name = "Bralette w/ Boyshorts"
+	name = "Ladies' Bralette"
 	icon_state = "female_bralette"
 	gender = FEMALE
 
 /datum/sprite_accessory/underwear/female_sport
-	name = "Sports Bra w/ Boyshorts"
+	name = "Ladies' Sport"
 	icon_state = "female_sport"
 	gender = FEMALE
 
 /datum/sprite_accessory/underwear/female_thong
-	name = "Thong"
+	name = "Ladies' Thong"
 	icon_state = "female_thong"
 	gender = FEMALE
 
 /datum/sprite_accessory/underwear/female_strapless
-	name = "Strapless Bikini"
+	name = "Ladies' Strapless"
 	icon_state = "female_strapless"
 	gender = FEMALE
 
@@ -1175,67 +1175,67 @@
 	gender = FEMALE
 
 /datum/sprite_accessory/underwear/swimsuit_onepiece
-	name = "One-Piece Swimsuit"
+	name = "Ladies' One Piece Swimsuit"
 	icon_state = "swim_onepiece"
 	gender = FEMALE
 
 /datum/sprite_accessory/underwear/swimsuit_strapless_onepiece
-	name = "Strapless One-Piece Swimsuit"
+	name = "Ladies' Strapless One Piece Swimsuit"
 	icon_state = "swim_strapless_onepiece"
 	gender = FEMALE
 
 /datum/sprite_accessory/underwear/swimsuit_twopiece
-	name = "Two-Piece Swimsuit"
+	name = "Ladies' Two Piece Swimsuit"
 	icon_state = "swim_twopiece"
 	gender = FEMALE
 
 /datum/sprite_accessory/underwear/swimsuit_strapless_twopiece
-	name = "Strapless Two-Piece Swimsuit"
+	name = "Ladies' Strapless Two Piece Swimsuit"
 	icon_state = "swim_strapless_twopiece"
 	gender = FEMALE
 
 /datum/sprite_accessory/underwear/swimsuit_stripe
-	name = "Strapless Striped Swimsuit"
+	name = "Ladies' Stripe Swimsuit"
 	icon_state = "swim_stripe"
 	gender = FEMALE
 
 /datum/sprite_accessory/underwear/swimsuit_halter
-	name = "Halter Swimsuit"
+	name = "Ladies' Halter Swimsuit"
 	icon_state = "swim_halter"
 	gender = FEMALE
 
 /datum/sprite_accessory/underwear/female_white_neko
-	name = "Neko Bikini (White)"
+	name = "Ladies' White Neko"
 	icon_state = "female_neko_white"
 	gender = FEMALE
 	use_static = TRUE
 
 /datum/sprite_accessory/underwear/female_black_neko
-	name = "Neko Bikini (Black)"
+	name = "Ladies' Black Neko"
 	icon_state = "female_neko_black"
 	gender = FEMALE
 	use_static = TRUE
 
 /datum/sprite_accessory/underwear/female_commie
-	name = "Commie Bikini"
+	name = "Ladies' Commie"
 	icon_state = "female_commie"
 	gender = FEMALE
 	use_static = TRUE
 
 /datum/sprite_accessory/underwear/female_usastripe
-	name = "Freedom Bikini"
+	name = "Ladies' Freedom"
 	icon_state = "female_assblastusa"
 	gender = FEMALE
 	use_static = TRUE
 
 /datum/sprite_accessory/underwear/female_uk
-	name = "UK Bikini"
+	name = "Ladies' UK"
 	icon_state = "female_uk"
 	gender = FEMALE
 	use_static = TRUE
 
 /datum/sprite_accessory/underwear/female_kinky
-	name = "Lingerie"
+	name = "Ladies' Kinky"
 	icon_state = "female_kinky"
 	gender = FEMALE
 	use_static = TRUE
@@ -1571,10 +1571,6 @@
 	name = "Knee-high (Thin)"
 	icon_state = "thin_knee"
 
-/datum/sprite_accessory/socks/trans_knee
-	name = "Knee-high (Trans)"
-	icon_state = "trans_knee"
-
 /datum/sprite_accessory/socks/uk_knee
 	name = "Knee-High (UK)"
 	icon_state = "uk_knee"
@@ -1667,10 +1663,6 @@
 	name = "Thigh-high (Thin)"
 	icon_state = "thin_thigh"
 
-/datum/sprite_accessory/socks/trans_thigh
-	name = "Thigh-high (Trans)"
-	icon_state = "trans_thigh"
-
 /datum/sprite_accessory/socks/uk_thigh
 	name = "Thigh-high (UK)"
 	icon_state = "uk_thigh"
@@ -1688,7 +1680,7 @@
 /////////////////////////////
 
 /datum/sprite_accessory/body_markings
-	icon = 'icons/mob/species/mutant_bodyparts.dmi'
+	icon = 'icons/mob/mutant_bodyparts.dmi'
 
 /datum/sprite_accessory/body_markings/none
 	name = "None"
@@ -1710,7 +1702,7 @@
 	gender_specific = 1
 
 /datum/sprite_accessory/tails
-	icon = 'icons/mob/species/mutant_bodyparts.dmi'
+	icon = 'icons/mob/mutant_bodyparts.dmi'
 	em_block = TRUE
 
 /datum/sprite_accessory/tails/lizard/smooth
@@ -1740,7 +1732,7 @@
 	color_src = FALSE
 
 /datum/sprite_accessory/pod_hair
-	icon = 'icons/mob/species/podperson_hair.dmi'
+	icon = 'icons/mob/podperson_hair.dmi'
 	em_block = TRUE
 
 /datum/sprite_accessory/pod_hair/ivy
@@ -1784,7 +1776,7 @@
 	icon_state = "hibiscus"
 
 /datum/sprite_accessory/snouts
-	icon = 'icons/mob/species/mutant_bodyparts.dmi'
+	icon = 'icons/mob/mutant_bodyparts.dmi'
 	em_block = TRUE
 
 /datum/sprite_accessory/snouts/sharp
@@ -1804,7 +1796,7 @@
 	icon_state = "roundlight"
 
 /datum/sprite_accessory/horns
-	icon = 'icons/mob/species/mutant_bodyparts.dmi'
+	icon = 'icons/mob/mutant_bodyparts.dmi'
 	em_block = TRUE
 
 /datum/sprite_accessory/horns/none
@@ -1844,7 +1836,7 @@
 	icon_state = "lbroken"
 
 /datum/sprite_accessory/ears
-	icon = 'icons/mob/species/mutant_bodyparts.dmi'
+	icon = 'icons/mob/mutant_bodyparts.dmi'
 	em_block = TRUE
 
 /datum/sprite_accessory/ears/none
@@ -1987,7 +1979,7 @@
 	dimension_y = 32
 
 /datum/sprite_accessory/frills
-	icon = 'icons/mob/species/mutant_bodyparts.dmi'
+	icon = 'icons/mob/mutant_bodyparts.dmi'
 
 /datum/sprite_accessory/frills/none
 	name = "None"
@@ -2006,11 +1998,11 @@
 	icon_state = "aqua"
 
 /datum/sprite_accessory/spines
-	icon = 'icons/mob/species/mutant_bodyparts.dmi'
+	icon = 'icons/mob/mutant_bodyparts.dmi'
 	em_block = TRUE
 
 /datum/sprite_accessory/spines_animated
-	icon = 'icons/mob/species/mutant_bodyparts.dmi'
+	icon = 'icons/mob/mutant_bodyparts.dmi'
 	em_block = TRUE
 
 /datum/sprite_accessory/spines/none
@@ -2069,10 +2061,10 @@
 	name = "Normal Legs"
 
 /datum/sprite_accessory/legs/digitigrade_lizard
-	name = DIGITIGRADE_LEGS
+	name = "Digitigrade Legs"
 
 /datum/sprite_accessory/caps
-	icon = 'icons/mob/species/mutant_bodyparts.dmi'
+	icon = 'icons/mob/mutant_bodyparts.dmi'
 	color_src = HAIR
 	em_block = TRUE
 
@@ -2088,7 +2080,7 @@
 
 
 /datum/sprite_accessory/moth_wings
-	icon = 'icons/mob/species/moth/moth_wings.dmi'
+	icon = 'icons/mob/moth_wings.dmi'
 	color_src = null
 	em_block = TRUE
 
@@ -2184,13 +2176,9 @@
 /datum/sprite_accessory/moth_wings/plasmafire
 	name = "Plasmafire"
 	icon_state = "plasmafire"
-	
-/datum/sprite_accessory/moth_wings/moffra
-	name = "Moffra"
-	icon_state = "moffra"
 
 /datum/sprite_accessory/moth_antennae //Finally splitting the sprite
-	icon = 'icons/mob/species/moth/moth_antennae.dmi'
+	icon = 'icons/mob/moth_antennae.dmi'
 	color_src = null
 
 /datum/sprite_accessory/moth_antennae/plain
@@ -2271,13 +2259,9 @@
 /datum/sprite_accessory/moth_antennae/plasmafire
 	name = "Plasmafire"
 	icon_state = "plasmafire"
-	
-/datum/sprite_accessory/moth_antennae/moffra
-	name = "Moffra"
-	icon_state = "moffra"
 
 /datum/sprite_accessory/moth_markings // the markings that moths can have. finally something other than the boring tan
-	icon = 'icons/mob/species/moth/moth_markings.dmi'
+	icon = 'icons/mob/moth_markings.dmi'
 	color_src = null
 
 /datum/sprite_accessory/moth_markings/none

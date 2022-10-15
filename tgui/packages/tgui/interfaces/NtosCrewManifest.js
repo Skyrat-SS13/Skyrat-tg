@@ -11,7 +11,7 @@ import { NtosWindow } from '../layouts';
 //  - Original: entry.rank
 export const NtosCrewManifest = (props, context) => {
   const { act, data } = useBackend(context);
-  const { manifest = {} } = data;
+  const { have_printer, manifest = {} } = data;
   return (
     <NtosWindow width={500} height={480}>
       <NtosWindow.Content scrollable>
@@ -21,6 +21,7 @@ export const NtosCrewManifest = (props, context) => {
             <Button
               icon="print"
               content="Print"
+              disabled={!have_printer}
               onClick={() => act('PRG_print')}
             />
           }>

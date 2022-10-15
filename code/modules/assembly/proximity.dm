@@ -37,35 +37,12 @@
 	update_appearance()
 	return TRUE
 
-/obj/item/assembly/prox_sensor/dropped()
-	. = ..()
-	// Pick the first valid object in this list:
-	// Wiring datum's owner
-	// assembly holder's attached object
-	// assembly holder itself
-	// us
-	proximity_monitor.set_host(connected?.holder || holder?.master || holder || src, src)
-
-/obj/item/assembly/prox_sensor/on_attach()
-	. = ..()
-	// Pick the first valid object in this list:
-	// Wiring datum's owner
-	// assembly holder's attached object
-	// assembly holder itself
-	// us
-	proximity_monitor.set_host(connected?.holder || holder?.master || holder || src, src)
-
 /obj/item/assembly/prox_sensor/on_detach()
 	. = ..()
 	if(!.)
 		return
 	else
-		// Pick the first valid object in this list:
-		// Wiring datum's owner
-		// assembly holder's attached object
-		// assembly holder itself
-		// us
-		proximity_monitor.set_host(connected?.holder || holder?.master || holder || src, src)
+		proximity_monitor.set_host(src, src)
 
 /obj/item/assembly/prox_sensor/toggle_secure()
 	secured = !secured

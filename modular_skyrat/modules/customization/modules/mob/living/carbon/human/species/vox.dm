@@ -27,7 +27,7 @@
 	mutant_bodyparts = list()
 	default_mutant_bodyparts = list(
 		"tail" = "Vox Tail",
-		"legs" = DIGITIGRADE_LEGS,
+		"legs" = "Digitigrade Legs",
 		"snout" = "Vox Snout",
 		"spines" = ACC_RANDOM
 	)

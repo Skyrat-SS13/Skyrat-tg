@@ -7,7 +7,7 @@
 // Stationary docking ports for the Starfury's strike shuttles.
 /obj/docking_port/stationary/starfury_corvette
 	name = "SBC Starfury Corvette Bay"
-	shuttle_id = "SBC_corvette_bay"
+	id = "SBC_corvette_bay"
 	roundstart_template = /datum/map_template/shuttle/starfury/corvette
 	hidden = TRUE
 	width = 14
@@ -17,7 +17,7 @@
 
 /obj/docking_port/stationary/starfury_fighter
 	name = "SBC Starfury Fighter Bay"
-	shuttle_id = "SBC_fighter_bay"
+	id = "SBC_fighter_bay"
 	hidden = TRUE
 	width = 5
 	height = 7
@@ -26,23 +26,23 @@
 
 /obj/docking_port/stationary/starfury_fighter/fighter_one
 	name = "SBC Starfury Port Fighter Bay"
-	shuttle_id = "SBC_fighter1_bay"
+	id = "SBC_fighter1_bay"
 	roundstart_template = /datum/map_template/shuttle/starfury/fighter_one
 
 /obj/docking_port/stationary/starfury_fighter/fighter_two
 	name = "SBC Starfury Center Fighter Bay"
-	shuttle_id = "SBC_fighter2_bay"
+	id = "SBC_fighter2_bay"
 	roundstart_template = /datum/map_template/shuttle/starfury/fighter_two
 
 /obj/docking_port/stationary/starfury_fighter/fighter_three
 	name = "SBC Starfury Starboard Fighter Bay"
-	shuttle_id = "SBC_fighter3_bay"
+	id = "SBC_fighter3_bay"
 	roundstart_template = /datum/map_template/shuttle/starfury/fighter_three
 
 // Mobile docking ports for the Starfury's strike shuttles.
 /obj/docking_port/mobile/syndicate_fighter
 	name = "syndicate fighter"
-	shuttle_id = "syndicate_fighter"
+	id = "syndicate_fighter"
 	movement_force = list("KNOCKDOWN" = 0, "THROW" = 0)
 	hidden = TRUE
 	dir = NORTH
@@ -53,19 +53,19 @@
 
 /obj/docking_port/mobile/syndicate_fighter/fighter_one
 	name = "syndicate fighter one"
-	shuttle_id = "SBC_fighter1"
+	id = "SBC_fighter1"
 
 /obj/docking_port/mobile/syndicate_fighter/fighter_two
 	name = "syndicate fighter two"
-	shuttle_id = "SBC_fighter2"
+	id = "SBC_fighter2"
 
 /obj/docking_port/mobile/syndicate_fighter/fighter_three
 	name = "syndicate fighter three"
-	shuttle_id = "SBC_fighter3"
+	id = "SBC_fighter3"
 
 /obj/docking_port/mobile/syndicate_corvette
 	name = "syndicate corvette"
-	shuttle_id = "SBC_corvette"
+	id = "SBC_corvette"
 	movement_force = list("KNOCKDOWN" = 0, "THROW" = 0)
 	hidden = TRUE
 	dir = NORTH
@@ -161,7 +161,7 @@
 	if(!team)
 		team = new()
 		var/obj/machinery/nuclearbomb/selfdestruct/nuke = locate() in GLOB.nuke_list
-		if(nuke.r_code == NUKE_CODE_UNSET)
+		if(nuke.r_code == "ADMIN")
 			nuke.r_code = random_nukecode()
 		team.nuke = nuke
 		team.update_objectives()
@@ -172,7 +172,6 @@
 			if(candidates.len > 0)
 				var/mob/our_candidate = candidates[1]
 				spawner.create(our_candidate)
-				spawner.antag_team.players_spawned += (our_candidate.ckey)
 				candidates.Splice(1, 2)
 				notify_ghosts(
 					"The battlecruiser has an object of interest: [our_candidate]!",

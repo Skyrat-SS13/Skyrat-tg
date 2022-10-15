@@ -4,8 +4,6 @@
 	icon = 'icons/obj/device.dmi'
 	icon_state = "gangtool-blue"
 	inhand_icon_state = "radio"
-	lefthand_file = 'icons/mob/inhands/items/devices_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/items/devices_righthand.dmi'
 	var/uses = 1
 
 /obj/item/choice_beacon/attack_self(mob/user)
@@ -16,7 +14,7 @@
 	return list()
 
 /obj/item/choice_beacon/proc/canUseBeacon(mob/living/user)
-	if(user.canUseTopic(src, be_close = TRUE, no_dexterity = FALSE, no_tk = TRUE))
+	if(user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
 		return TRUE
 	else
 		playsound(src, 'sound/machines/buzz-sigh.ogg', 40, TRUE)
@@ -31,7 +29,7 @@
 		return
 	if(isnull(display_names[choice]))
 		return
-	if(!M.canUseTopic(src, be_close = TRUE, no_dexterity = FALSE, no_tk = TRUE))
+	if(!M.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
 		return
 
 	spawn_option(display_names[choice],M)
