@@ -22,6 +22,7 @@
 
 	var/path = "data/player_saves/[ckey[1]]/[ckey]/nif.sav"
 	var/savefile/save = new /savefile(path)
+	var/obj/item/organ/internal/cyberimp/brain/nif/saved_nif
 
 	if(installed_nif.durability == 0)
 		installed_nif = FALSE
