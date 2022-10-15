@@ -80,7 +80,7 @@
 	message_admins("Engineering override has been turned ON for station airlocks.")
 	minor_announce("Engineering staff will have expanded access to areas of the station during the emergency.", "Engineering Emergency")
 
-// Disable the airlock overrides, called by the change of the alert level
+/// Disable the airlock overrides, called by the change of the alert level
 /proc/revoke_engineering_access()
 	for(var/area/station_area in get_areas(/area/station))
 		if(!station_area.engineering_override_eligible)
