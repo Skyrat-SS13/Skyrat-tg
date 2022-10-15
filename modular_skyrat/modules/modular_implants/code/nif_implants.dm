@@ -16,7 +16,7 @@
 	shift_durability_loss = 5
 
 
-/obj/item/organ/internal/cyberimp/brain/nif/roleplay_model
+/obj/item/organ/internal/cyberimp/brain/nif/roleplay_model/cheap
 	name = "NIF Model-ERP"
 	desc = "a reduced price NIF at a extremely reduced price! wow!"
 	nif_persistence = FALSE
