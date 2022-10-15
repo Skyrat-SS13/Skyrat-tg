@@ -23,15 +23,23 @@
 	var/path = "data/player_saves/[ckey[1]]/[ckey]/nif.sav"
 	var/savefile/save = new /savefile(path)
 
-	var/saved_nif
+	if(installed_nif.durability == 0)
+		installed_nif = FALSE
 
 	if(!installed_nif || (installed_nif && !installed_nif.nif_persistence))
 		if(READ_FILE(save["nif_path"], saved_nif) != FALSE) // If you have a NIF on file but leave the round without one installed, you only take a durability loss instead of losing the implant.
 			var/stored_nif_durability = save["nif_durability"]
+
+			if(stored_nif_durability == 0) //There is one round to repair the NIF after it breaks, otherwise it will be lost.
+				WRITE_FILE(save["nif_path"], FALSE)
+				WRITE_FILE(save["nif_examine_text"], FALSE)
+				return
+
 			stored_nif_durability -= LOSS_WITH_NIF_UNINSTALLED
 
 			if(stored_nif_durability <= 0)
 				stored_nif_durability = 0
+
 
 			WRITE_FILE(save["nif_durability"], stored_nif_durability)
 			return
