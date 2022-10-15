@@ -365,34 +365,6 @@
 		if(nifsoft.type == nifsoft_to_find)
 			return nifsoft
 
-///NIFSoft Remover. This is mostly here so that security and antags have a way to remove NIFSofts from someome
-/obj/item/nifsoft_remover
-	name = "NIFSoft Remover"
-	desc = "Removes a NIFSoft from someone." //Placeholder Description and name
-
-/obj/item/nifsoft_remover/attack(mob/living/carbon/human/target_mob, mob/living/user)
-	. = ..()
-	var/obj/item/organ/internal/cyberimp/brain/nif/target_nif = target_mob.installed_nif
-
-	if(!target_nif || !length(target_nif.loaded_nifsofts))
-		to_chat(user, span_warning("[user] does not posses a NIF with any installed NIFSofts"))
-		return
-
-	var/list/installed_nifsofts = target_nif.loaded_nifsofts
-	var/datum/nifsoft/nifsoft_to_remove = tgui_input_list(user, "Chose a NIFSoft to remove", "[src]", installed_nifsofts)
-
-	if(!nifsoft_to_remove)
-		return FALSE
-
-	user.visible_message(span_warning("[user] starts to use the [src] on [target_mob]"), span_notice("You start to use the [src] on [target_mob]"))
-	if(!do_after(user, 5 SECONDS, target_mob))
-		return FALSE
-
-	if(!target_nif.remove_nifsoft(nifsoft_to_remove))
-		return FALSE
-
-	to_chat(user, span_notice("You successfully remove the NIFSoft"))
-
 ///NIF Repair Kit.
 /obj/item/nif_repair_kit
 	name = "NIF repair kit"
