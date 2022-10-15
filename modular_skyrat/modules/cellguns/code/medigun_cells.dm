@@ -566,7 +566,7 @@
 
 /obj/structure/bed/roller/medigun/MouseDrop(over_object, src_location, over_location)
 	if(over_object == usr && Adjacent(usr))
-		if(!ishuman(usr) || !usr.canUseTopic(src, BE_CLOSE))
+		if(!ishuman(usr) || !usr.canUseTopic(src, be_close = TRUE))
 			return FALSE
 
 		if(has_buckled_mobs())

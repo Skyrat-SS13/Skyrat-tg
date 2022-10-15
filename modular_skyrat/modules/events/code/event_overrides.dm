@@ -107,3 +107,12 @@
  */
 /datum/round_event_control/space_dragon
 	max_occurrences = 0
+
+/**
+ * Xenomorphs
+ *
+ * Removed:
+ * Xenomorphs should be controlled through dynamic spawns
+ */
+/datum/round_event_control/alien_infestation
+	max_occurrences = 0

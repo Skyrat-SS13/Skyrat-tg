@@ -83,3 +83,11 @@ export const erp_sexuality_pref: FeatureChoiced = {
     'Determines what sexual content you see, limited use. None will show all content.',
   component: FeatureDropdownInput,
 };
+
+export const new_genitalia_growth_pref: FeatureToggle = {
+  name: 'ERP New Genitalia Growth',
+  category: 'ERP',
+  description:
+    'If checked, allows drugs to grow new genitalia on your character.',
+  component: CheckboxInput,
+};

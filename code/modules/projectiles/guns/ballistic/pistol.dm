@@ -93,7 +93,7 @@
 	mag_type = /obj/item/ammo_box/magazine/m9mm_aps
 	can_suppress = TRUE
 	burst_size = 3
-	fire_delay = 1
+	fire_delay = 3 //SKYRAT EDIT - Original: 1
 	spread = 10
 	//actions_types = list(/datum/action/item_action/toggle_firemode) SKYRAT EDIT REMOVAL
 	suppressor_x_offset = 6

@@ -164,6 +164,11 @@
 /obj/item/gun/energy/e_gun/nuclear/rainbow/emag_act(mob/user, obj/item/card/emag/E)
 	return FALSE
 
+// We don't customize CTF
+/obj/item/gun/energy/laser/instakill/ctf
+	lefthand_file = 'icons/mob/inhands/weapons/guns_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/weapons/guns_righthand.dmi'
+
 //BEAM SOUNDS
 /obj/item/ammo_casing/energy
 	fire_sound = 'modular_skyrat/modules/aesthetics/guns/sound/laser.ogg'
@@ -289,13 +294,6 @@
 	name = "\improper Type-69 surplus rifle"
 	desc = "One of countless obsolete ballistic rifles that still sees use as a cheap deterrent. Uses 10mm ammo and its bulky frame prevents one-hand firing."
 	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
-
-/obj/item/gun/ballistic/automatic/c20r/unrestricted/cmg1
-	name = "\improper NT CMG-1"
-	desc = "A bullpup three-round burst .460C PDW with an eerily familiar design. It has a foldable stock and a dot sight."
-	icon_state = "cmg1"
-	icon = 'modular_skyrat/modules/aesthetics/guns/icons/guns.dmi'
-	company_flag = COMPANY_NANOTRASEN
 
 /obj/item/gun/ballistic/automatic/ar/modular/model75
 	name = "\improper NT ARG-75"
@@ -540,3 +538,5 @@
 	name = ".454 Trucidator handcannon magazine"
 	desc = "An absurdly THICK magazine possibly meant for a heavy hitting pistol, if you can call it that."
 
+/obj/item/ammo_box/a762
+	name = "stripper clip (.244 Acia)"

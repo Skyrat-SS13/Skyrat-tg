@@ -3,6 +3,7 @@
 	name = "mop"
 	icon = 'icons/obj/janitor.dmi'
 	icon_state = "mop"
+	inhand_icon_state = "mop"
 	lefthand_file = 'icons/mob/inhands/equipment/custodial_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/custodial_righthand.dmi'
 	force = 8
@@ -22,7 +23,7 @@
 
 /obj/item/mop/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/cleaner, mopspeed, on_cleaned_callback=CALLBACK(src, .proc/apply_reagents))
+	AddComponent(/datum/component/cleaner, mopspeed, pre_clean_callback=CALLBACK(src, .proc/should_clean), on_cleaned_callback=CALLBACK(src, .proc/apply_reagents))
 	create_reagents(max_reagent_volume)
 	GLOB.janitor_devices += src
 	AddElement(/datum/element/liquids_interaction, on_interaction_callback = /obj/item/mop/.proc/attack_on_liquids_turf) //SKYRAT EDIT ADDITION - Liquids
@@ -30,6 +31,15 @@
 /obj/item/mop/Destroy(force)
 	GLOB.janitor_devices -= src
 	return ..()
+
+///Checks whether or not we should clean.
+/obj/item/mop/proc/should_clean(datum/cleaning_source, atom/atom_to_clean, mob/living/cleaner)
+	if(istype(atom_to_clean, /obj/item/reagent_containers/cup/bucket) || istype(atom_to_clean, /obj/structure/janitorialcart))
+		return DO_NOT_CLEAN
+	if(reagents.total_volume < 0.1)
+		to_chat(cleaner, span_warning("Your mop is dry!"))
+		return DO_NOT_CLEAN
+	return reagents.has_chemical_flag(REAGENT_CLEANS, 1)
 
 /**
  * Applies reagents to the cleaned floor and removes them from the mop.
@@ -43,30 +53,8 @@
 	reagents.expose(cleaned_turf, TOUCH, 10) //Needed for proper floor wetting.
 	var/val2remove = 1
 	if(cleaner?.mind)
-		val2remove = round(cleaner.mind.get_skill_modifier(/datum/skill/cleaning, SKILL_SPEED_MODIFIER),0.1)
+		val2remove = round(cleaner.mind.get_skill_modifier(/datum/skill/cleaning, SKILL_SPEED_MODIFIER), 0.1)
 	reagents.remove_any(val2remove) //reaction() doesn't use up the reagents
-
-/obj/item/mop/afterattack(atom/A, mob/user, proximity)
-	. = ..()
-	//SKYRAT EDIT ADDITION
-	if(.)
-		return
-	//SKYRAT EDIT END
-	if(!proximity)
-		return
-
-	if(reagents.total_volume < 0.1)
-		to_chat(user, span_warning("Your mop is dry!"))
-		return
-
-	var/turf/T = get_turf(A)
-
-	if(istype(A, /obj/item/reagent_containers/cup/bucket) || istype(A, /obj/structure/janitorialcart))
-		return
-
-	if(T)
-		var/should_clean = reagents.has_chemical_flag(REAGENT_CLEANS, 1)
-		start_cleaning(src, T, user, clean_target = should_clean)
 
 /obj/item/mop/cyborg/Initialize(mapload)
 	. = ..()
@@ -77,7 +65,6 @@
 	name = "advanced mop"
 	max_reagent_volume = 100 // SKYRAT EDIT - ORIGINAL: 10
 	icon_state = "advmop"
-	inhand_icon_state = "mop"
 	lefthand_file = 'icons/mob/inhands/equipment/custodial_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/custodial_righthand.dmi'
 	force = 12

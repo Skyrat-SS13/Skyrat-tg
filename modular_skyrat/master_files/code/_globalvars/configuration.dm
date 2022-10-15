@@ -45,3 +45,6 @@ GLOBAL_VAR_INIT(looc_allowed, TRUE)
 	default = 15 MINUTES
 
 /datum/config_entry/flag/admin_event_uses_chaos
+
+/// Ticket ping frequency. Set 0 for disable that subsystem. 3000 - 5 minutes, 600 - 1 minute.
+/datum/config_entry/number/ticket_ping_frequency

@@ -1,5 +1,7 @@
 /datum/map_template/automap_template
 	name = "Automap Template"
+	should_place_on_top = FALSE
+
 	/// Our load turf
 	var/turf/load_turf
 	/// The map for which we load on

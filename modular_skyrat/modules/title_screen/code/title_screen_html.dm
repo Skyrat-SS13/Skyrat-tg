@@ -71,7 +71,7 @@ GLOBAL_LIST_EMPTY(startup_messages)
 				}
 
 				// Recalculate gap as a % within a % since they're nested.
-				const progress_sub_current_position = (progress_current_position - progress_sub_start) / progress_current_position * 100;
+				var progress_sub_current_position = (progress_current_position - progress_sub_start) / progress_current_position * 100;
 
 				progress_bar.style.width = "" + progress_current_position + "%";
 				sub_progress_bar.style.width = "" + progress_sub_current_position + "%";
@@ -164,7 +164,16 @@ GLOBAL_LIST_EMPTY(startup_messages)
 			function update_loading_progress() {}
 		</script>
 		"}
+
+	// Tell the server this page loaded.
+	dat += {"
+		<script>
+			var ready_request = new XMLHttpRequest();
+			ready_request.open("GET", "?src=\ref[src];title_is_ready=1", true);
+			ready_request.send();
+		</script>
+	"}
+
 	dat += "</body></html>"
 
 	return dat
-

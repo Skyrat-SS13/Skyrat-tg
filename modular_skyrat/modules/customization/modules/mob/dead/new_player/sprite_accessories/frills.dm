@@ -45,3 +45,13 @@
 	icon_state = "cobraears"
 	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/frills.dmi'
 	color_src = USE_MATRIXED_COLORS
+
+/datum/sprite_accessory/frills/neckfrills
+	name = "Neck Frills"
+	icon_state = "neck"
+	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/frills.dmi'
+
+/datum/sprite_accessory/frills/neckfrillsfuller
+	name = "Neck Frills (Fuller)"
+	icon_state = "neckfull"
+	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/frills.dmi'
