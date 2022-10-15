@@ -23,6 +23,8 @@
 	var/calibration_time = 3 MINUTES
 	///How far through the calibration process is the NIF? Do not touch this outside of preform_calibration(), if you can at all help it.
 	var/calibration_duration
+	///Determines the likelyhood of a side effect occuring each process cycle: 1 / side_effect_risk
+	var/side_effect_risk = 50
 
 	//Power Variables
 	///What is the maximum power level of the NIF?
@@ -248,7 +250,7 @@
 			linked_mob.set_blindness(5)
 
 		if(0.2 to 0.9)
-			var/random_ailment = rand(1,75)
+			var/random_ailment = rand(1, side_affect_risk)
 			switch(random_ailment)
 				if(1)
 					to_chat(linked_mob, span_warning("You feel sick to your stomach"))
