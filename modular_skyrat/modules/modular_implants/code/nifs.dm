@@ -370,37 +370,6 @@
 		if(nifsoft.type == nifsoft_to_find)
 			return nifsoft
 
-///NIF Repair Kit.
-/obj/item/nif_repair_kit
-	name = "NIF repair kit"
-	desc = "Repairs NIFs" //Placeholder
-	icon = 'modular_skyrat/modules/modular_implants/icons/obj/devices.dmi'
-	icon_state = "repair_paste"
-	w_class = WEIGHT_CLASS_SMALL
-	///How much does this repair each time it is used?
-	var/repair_amount = 20
-	///How many times can this be used?
-	var/uses = 3
-
-/obj/item/nif_repair_kit/attack(mob/living/carbon/human/mob_to_repair, mob/living/user)
-	. = ..()
-	if(!mob_to_repair.installed_nif)
-		to_chat(user, span_warning("[mob_to_repair] lacks a NIF"))
-
-	if(!do_after(user, 5 SECONDS, mob_to_repair))
-		return FALSE
-
-	if(!mob_to_repair.installed_nif.repair_nif(repair_amount))
-		to_chat(user, span_warning("The NIF you are trying to repair is already at max durbility"))
-		return FALSE
-
-	to_chat(user, span_notice("You successfully repair [mob_to_repair]'s NIF"))
-	to_chat(mob_to_repair, span_notice("[user] successfully repairs your NIF"))
-
-	--uses
-	if(!uses)
-		qdel(src)
-
 //NIF autosurgeon. This is just here so that I can debug faster.
 /obj/item/autosurgeon/organ/nif/debug
 	starting_organ = /obj/item/organ/internal/cyberimp/brain/nif

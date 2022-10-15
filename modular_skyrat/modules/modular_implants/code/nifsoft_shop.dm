@@ -11,3 +11,7 @@
 		/obj/item/disk/nifsoft_uploader/summoner = 10,
 		/obj/item/disk/nifsoft_uploader/hivemind = 10,
 		)
+
+	premium = list(
+		/obj/item/autosurgeon/organ/nif/disposable = 5,
+	)

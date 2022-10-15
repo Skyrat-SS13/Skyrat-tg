@@ -20,3 +20,6 @@
 	name = "NIF Model-ERP"
 	desc = "a reduced price NIF at a extremely reduced price! wow!"
 	nif_persistence = FALSE
+
+/obj/item/autosurgeon/organ/nif/disposable //Disposable, as in the fact that this only lasts for one shift
+	starting_organ = /obj/item/organ/internal/cyberimp/brain/nif/roleplay_model/cheap
