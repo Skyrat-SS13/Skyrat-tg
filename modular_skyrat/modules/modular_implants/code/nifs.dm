@@ -294,7 +294,7 @@
 	loaded_nifsoft.parent_nif = src
 	loaded_nifsoft.linked_mob = linked_mob
 
-	send_message("[loaded_nifsoft.name] has been added", TRUE)
+	send_message("[loaded_nifsoft.name] has been added")
 	return TRUE
 
 /obj/item/organ/internal/cyberimp/brain/nif/proc/remove_nifsoft(datum/nifsoft/removed_nifsoft, silent = FALSE)
@@ -302,7 +302,7 @@
 		return FALSE
 
 	if(!silent)
-		to_chat(linked_mob, span_notice("[removed_nifsoft.name] has been removed."))
+		send_message("[removed_nifsoft.name] has been removed", TRUE)
 
 	qdel(removed_nifsoft)
 	return TRUE
@@ -326,11 +326,11 @@
 		nif_icon = tag
 
 	if(alert)
-		to_chat(linked_mob, span_warning("[nif_icon] NIF Alert: [message_to_send]"))
+		to_chat(linked_mob, span_warning("[nif_icon] <b>NIF Alert</b>: [message_to_send]"))
 		linked_mob.playsound_local(linked_mob, bad_sound, 60, FALSE)
 		return
 
-	to_chat(linked_mob, span_cyan("[nif_icon] NIF Message: [message_to_send]"))
+	to_chat(linked_mob, span_cyan("[nif_icon] <b>NIF Message</b>: [message_to_send]"))
 	linked_mob.playsound_local(linked_mob, good_sound, 60, FALSE)
 
 
@@ -501,10 +501,10 @@
 
 //NIF autosurgeon. This is just here so that I can debug faster.
 /obj/item/autosurgeon/organ/nif
-	starting_organ = /obj/item/organ/internal/cyberimp/brain/nif
+	starting_organ = /obj/item/organ/internal/cyberimp/brain/nif/standard
 
-/obj/item/organ/internal/cyberimp/brain/nif/cali_test
+/obj/item/organ/internal/cyberimp/brain/nif/debug
 	is_calibrated = TRUE
 
 /obj/item/autosurgeon/organ/nif/debug
-	starting_organ = /obj/item/organ/internal/cyberimp/brain/nif/cali_test
+	starting_organ = /obj/item/organ/internal/cyberimp/brain/nif/debug

@@ -36,6 +36,8 @@
 /datum/nifsoft/New(obj/item/organ/internal/cyberimp/brain/nif/recepient_nif)
 	. = ..()
 
+	compatible_nifs += /obj/item/organ/internal/cyberimp/brain/nif/debug
+
 	if(!recepient_nif.install_nifsoft(src))
 		qdel(src)
 

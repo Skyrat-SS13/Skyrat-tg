@@ -240,7 +240,14 @@ GLOBAL_LIST_EMPTY(hivemind_users)
 		to_chat(user, span_warning("The link seems to have been severed."))
 		return
 
-	var/formatted_message = "<i><font color=[connected_network.chat_color]>\[[network_owner.real_name]'s [connected_network.network_name]\] <b>[kebyoard_owner]:</b> [message]</font></i>"
+	var/datum/asset/spritesheet/sheet = get_asset_datum(/datum/asset/spritesheet/chat)
+	var/tag = sheet.icon_tag("nif-phone")
+	var/hivemind_icon = ""
+
+	if(tag)
+		hivemind_icon = tag
+
+	var/formatted_message = "<i><font color=[connected_network.chat_color]>\ [hivemind_icon][network_owner.real_name]'s [connected_network.network_name]\] <b>[kebyoard_owner]:</b> [message]</font></i>"
 	log_directed_talk(user, network_owner, message, LOG_SAY, "mind link ([connected_network.network_name])")
 
 	var/list/all_who_can_hear = assoc_to_keys(connected_network.linked_mobs) +	network_owner
