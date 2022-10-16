@@ -193,6 +193,30 @@ h1.alert, h2.alert		{color: #000000;}
     text-shadow: 0 0 4px #c51e1e;
   }
 }
+
+.brass {
+	color: #BE8700;
+}
+
+.big_brass {
+	color: #BE8700;
+	font-size: 3;
+	font-weight: bold;
+	font-style: italic;
+}
+
+.nzcrentr {
+	color: #DAAA18;
+	font-weight: bold;
+	font-style: italic;
+}
+
+.nezbere {
+	color: #42474D;
+	font-weight: bold;
+	font-style: italic;
+}
+
 // SKYRAT ADDITION END
 
 .phobia			{color: #dd0000;	font-weight: bold;	animation: phobia 750ms infinite;}

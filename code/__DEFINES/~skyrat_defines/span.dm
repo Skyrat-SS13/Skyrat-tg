@@ -18,3 +18,7 @@
 #define span_orange(str) ("<span class='orange'>" + str + "</span>")
 #define span_yellow(str) ("<span class='yellow'>" + str + "</span>")
 #define span_gangradio(str) ("<span class='gangradio'>" + str + "</span>")
+#define span_brass(str) ("<span class='brass'>" + str + "</span>")
+#define span_bigbrass(str) ("<span class='big_brass'>" + str + "</span>")
+#define span_nzcrentr(str) ("<span class='nzcrentr'>" + str + "</span>")
+#define span_nezbere(str) ("<span class='nezbere'>" + str + "</span>")

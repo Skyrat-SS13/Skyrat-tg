@@ -42,6 +42,7 @@
 		/datum/language/yangyu, // SKYRAT EDIT - customization - extra languages
 		/datum/language/schechi, // SKYRAT EDIT - customization - extra languages
 		/datum/language/ashtongue, // SKYRAT EDIT - customization - extra languages
+		/datum/language/ratvar, // SKYRAT EDIT - Clock cult things
 	))
 
 /obj/item/organ/internal/tongue/Initialize(mapload)
