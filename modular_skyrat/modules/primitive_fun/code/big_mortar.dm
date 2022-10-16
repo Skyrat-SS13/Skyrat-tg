@@ -38,7 +38,6 @@
 		return
 	for(var/obj/target_item in contents)
 		target_item.forceMove(get_turf(src))
-		LAZYREMOVE(contents, target_item)
 
 /obj/structure/large_mortar/attack_hand_secondary(mob/user, list/modifiers)
 	. = ..()
@@ -92,7 +91,6 @@
 		return
 	if(attacking_item.juice_results || attacking_item.grind_results)
 		attacking_item.forceMove(src)
-		LAZYADD(contents, attacking_item)
 		return
 	balloon_alert(user, "can't grind this")
 	return ..()
