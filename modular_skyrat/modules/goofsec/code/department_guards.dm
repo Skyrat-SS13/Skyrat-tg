@@ -34,6 +34,18 @@
 	desc = "Short-sleeves and cargo shorts, in an authoritative charcoal color. Only for the FTU's finest strong-hands."
 	icon_state = "customs_uniform"
 	worn_icon_state = "customs_uniform"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/cargo.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/cargo.dmi'
+	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/under/cargo_digi.dmi'
+
+/obj/item/clothing/under/rank/security/officer/blueshirt/skyrat/bouncer //TG's doesn't have the same armor (and has bad sprites!)
+	name = "bouncer uniform"
+	desc = "Short-sleeves and jeans, for that aura of cool that makes the drunk people listen."
+	icon_state = "bouncer"
+	worn_icon_state = "bouncer"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/civilian.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/civilian.dmi'
+	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/under/civilian_digi.dmi'
 
 /*
 	SUITS
@@ -178,7 +190,7 @@
 	belt = /obj/item/modular_computer/tablet/pda/science
 	ears = /obj/item/radio/headset/headset_sci
 	uniform = /obj/item/clothing/under/rank/security/officer/blueshirt/skyrat
-	shoes = /obj/item/clothing/shoes/sneakers/black
+	shoes = /obj/item/clothing/shoes/jackboots
 	head =  /obj/item/clothing/head/helmet/blueshirt/skyrat
 	suit = /obj/item/clothing/suit/armor/vest/blueshirt/skyrat
 
@@ -440,7 +452,7 @@
 
 	belt = /obj/item/modular_computer/tablet/pda/bar
 	ears = /obj/item/radio/headset/headset_srv
-	uniform = /obj/item/clothing/under/misc/bouncer
+	uniform = /obj/item/clothing/under/rank/security/officer/blueshirt/skyrat/bouncer
 	shoes = /obj/item/clothing/shoes/sneakers/black
 	head =  /obj/item/clothing/head/helmet/blueshirt/skyrat/guard
 	suit = /obj/item/clothing/suit/armor/vest/blueshirt/skyrat/guard
