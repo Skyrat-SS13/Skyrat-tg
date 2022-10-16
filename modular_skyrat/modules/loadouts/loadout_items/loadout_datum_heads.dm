@@ -186,7 +186,7 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 
 /datum/loadout_item/head/bandana
 	name = "Bandana"
-	item_path = /obj/item/clothing/head/bandana
+	item_path = /obj/item/clothing/head/costume/pirate/bandana
 
 /datum/loadout_item/head/top_hat
 	name = "Top Hat"
