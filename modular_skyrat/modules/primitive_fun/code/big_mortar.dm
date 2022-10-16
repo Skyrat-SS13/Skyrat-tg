@@ -4,6 +4,7 @@
 	density = TRUE
 	anchored = TRUE
 	max_integrity = 100
+	pass_flags = PASSTABLE
 	custom_materials = list(/datum/material/wood = MINERAL_MATERIAL_AMOUNT * 5)
 	/// All of the items stored within this structure
 	var/list/contained_items
@@ -20,14 +21,23 @@
 	. += span_notice("It can be unsecured from the ground with <b>Right Click</b>")
 	. += span_notice("You can empty all of the items out of it with <b>Alt Click</b>")
 
+/obj/structure/large_mortar/Destroy()
+	drop_everything_contained()
+	return ..()
+
 /obj/structure/large_mortar/AltClick(mob/user)
 	if(!LAZYLEN(contained_items))
 		balloon_alert(user, "nothing inside")
 		return
+	drop_everything_contained()
+	balloon_alert(user, "removed all items")
+
+/obj/structure/large_mortar/proc/drop_everything_contained()
+	if(!LAZYLEN(contained_items))
+		return
 	for(var/obj/target_item in contained_items)
 		target_item.forceMove(drop_location())
 		LAZYREMOVE(contained_items, target_item)
-	balloon_alert(user, "removed all items")
 
 /obj/structure/large_mortar/attack_hand_secondary(mob/user, list/modifiers)
 	. = ..()
@@ -35,7 +45,7 @@
 		return
 	if(!can_interact(user) || !user.canUseTopic(src, be_close = TRUE))
 		return
-	set_anchored(!anchored)\
+	set_anchored(!anchored)
 	balloon_alert_to_viewers("unsecured")
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
