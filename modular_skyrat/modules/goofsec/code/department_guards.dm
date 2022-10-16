@@ -73,10 +73,10 @@
 	icon_state = "engineering_coat"
 	worn_icon_state = "engineering_coat"
 
-/obj/item/clothing/suit/armor/vest/blueshirt/skyrat/customs_agent
+/obj/item/clothing/suit/armor/vest/blueshirt/skyrat/customs_agent //NOT USED, NEEDS UPDATING. CURRENTLY CUSTOMS JUST USES THE NORMAL ARMOR VEST.
 	name = "armored customs agent coat"
 	desc = "An armored coat, to keep you safe from unruly customers."
-	icon_state = "customs_coat" //ORION TODO: get a better sprite this is ass
+	icon_state = "customs_coat"
 	worn_icon_state = "customs_coat"
 
 /*
@@ -391,7 +391,8 @@
 	shoes = /obj/item/clothing/shoes/sneakers/black
 	uniform = /obj/item/clothing/under/rank/security/officer/blueshirt/skyrat/customs_agent
 	head =  /obj/item/clothing/head/helmet/blueshirt/skyrat/guard
-	suit = /obj/item/clothing/suit/armor/vest/blueshirt/skyrat/customs_agent
+	suit = /obj/item/clothing/suit/armor/vest
+	glasses = /obj/item/clothing/glasses/hud/gun_permit
 
 	backpack = /obj/item/storage/backpack
 	satchel = /obj/item/storage/backpack/satchel
