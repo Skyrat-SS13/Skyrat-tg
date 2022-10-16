@@ -1,5 +1,5 @@
 #define LARGE_MORTAR_STAMINA_MINIMUM 50 //What is the amount of stam damage that we prevent mortar use at
-#define LARGE_MORTAR_STAMINA_USE 60 //How much stam damage is given to people when the mortar is used
+#define LARGE_MORTAR_STAMINA_USE 70 //How much stam damage is given to people when the mortar is used
 
 /obj/structure/large_mortar
 	name = "large mortar"
@@ -12,7 +12,7 @@
 	pass_flags = PASSTABLE
 	custom_materials = list(/datum/material/wood = MINERAL_MATERIAL_AMOUNT * 10)
 	/// The maximum number of items this structure can store
-	var/maximum_contained_items = 5
+	var/maximum_contained_items = 10
 
 /obj/structure/large_mortar/Initialize(mapload)
 	. = ..()
