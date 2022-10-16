@@ -276,22 +276,23 @@
 		return FALSE
 
 	if(!is_type_in_list(src, loaded_nifsoft.compatible_nifs))
+		send_message("[loaded_nifsoft.name] is incompatible with your NIF!", TRUE)
 		return FALSE
 
 	for(var/datum/nifsoft/current_nifsoft as anything in loaded_nifsofts)
 		if(loaded_nifsoft.single_install && loaded_nifsoft.type == current_nifsoft.type)
-			to_chat(linked_mob, span_warning("Multiple of [loaded_nifsoft.name] cannot be installed"))
+			send_message("Multiple of [loaded_nifsoft.name] cannot be installed", TRUE)
 			return FALSE
 
 		if(current_nifsoft.type in loaded_nifsoft.mutually_exclusive_programs)
-			to_chat(linked_mob, span_warning("[current_nifsoft.name] is preventing [loaded_nifsoft.name] from being installed"))
+			send_message("[current_nifsoft.name] is preventing [loaded_nifsoft.name] from being installed", TRUE)
 			return FALSE
 
 	loaded_nifsofts += loaded_nifsoft
 	loaded_nifsoft.parent_nif = src
 	loaded_nifsoft.linked_mob = linked_mob
 
-	to_chat(linked_mob, span_notice("[loaded_nifsoft.name] has been added"))
+	send_message("[loaded_nifsoft.name] has been added", TRUE)
 	return TRUE
 
 /obj/item/organ/internal/cyberimp/brain/nif/proc/remove_nifsoft(datum/nifsoft/removed_nifsoft, silent = FALSE)

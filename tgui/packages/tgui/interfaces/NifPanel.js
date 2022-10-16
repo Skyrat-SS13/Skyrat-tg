@@ -123,7 +123,7 @@ const NifProductNotes = (props, context) => {
 
 const NifStats = (props, context) => {
   const { act, data } = useBackend(context);
-  const { max_power, power_level, durability, power_usage, nutrition_drain, blood_drain } = data;
+  const { max_power, power_level, durability, power_usage, nutrition_drain, blood_drain, max_durability } = data;
 
   return (
     <Box>
@@ -132,13 +132,13 @@ const NifStats = (props, context) => {
           <ProgressBar
             value={durability}
             minValue={0}
-            maxValue={100}
+            maxValue={max_durability}
             ranges={{
-              'good': [66, 100],
-              'average': [33, 66],
-              'bad': [0, 33],
+              'good': [(max_durability * 0.66), (max_durability)],
+              'average': [(max_durability * 0.33), (max_durability * 0.66)],
+              'bad': [0, (max_durability * 0.33)],
             }}
-            alertAfter={25}
+            alertAfter={(max_durability * 0.25)}
           />
         </LabeledList.Item>
         <LabeledList.Item label="NIF Power">
