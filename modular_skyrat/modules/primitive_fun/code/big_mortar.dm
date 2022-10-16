@@ -20,7 +20,7 @@
 /obj/structure/large_mortar/examine(mob/user)
 	. = ..()
 	. += span_notice("It currently contains <b>[LAZYLEN(contained_items)]/[maximum_contained_items] items.")
-	. += span_notice("It can be unsecured from the ground with <b>Right Click</b>")
+	. += span_notice("It can be (un)secured with <b>Right Click</b>")
 	. += span_notice("You can empty all of the items out of it with <b>Alt Click</b>")
 
 /obj/structure/large_mortar/Destroy()
