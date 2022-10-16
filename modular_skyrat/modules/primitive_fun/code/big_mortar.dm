@@ -90,11 +90,11 @@
 	if(LAZYLEN(contents) >= maximum_contained_items)
 		balloon_alert(user, "already full")
 		return
-	if(!attacking_item.juice_results || !attacking_item.grind_results)
-		balloon_alert(user, "can't grind this")
+	if(attacking_item.juice_results || attacking_item.grind_results)
+		attacking_item.forceMove(src)
+		LAZYADD(contents, attacking_item)
 		return
-	attacking_item.forceMove(src)
-	LAZYADD(contents, attacking_item)
+	balloon_alert(user, "can't grind this")
 	return ..()
 
 ///Juices the passed target item, and transfers any contained chems to the mortar as well
