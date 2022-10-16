@@ -8393,8 +8393,7 @@
 	dir = 1;
 	icon_state = "rightsecure";
 	name = "Head of Personnel's Desk";
-	req_access = list("hop");
-	req_access_txt = "57"
+	req_access = list("hop")
 	},
 /obj/machinery/door/firedoor{
 	name = "Emergency Shutter"
@@ -9062,7 +9061,8 @@
 "ful" = (
 /obj/structure/table/wood,
 /obj/machinery/button/ticket_machine{
-	pixel_x = 32
+	pixel_x = 32;
+	req_access = list("hop")
 	},
 /obj/item/paper_bin/carbon{
 	pixel_x = -2;
@@ -9080,14 +9080,14 @@
 	id = "hop";
 	name = "Privacy Shutters Control";
 	pixel_x = -6;
-	req_access_txt = "57"
+	req_access = list("hop")
 	},
 /obj/machinery/button/door/directional/south{
 	id = "hopqueue";
 	name = "Queue Shutters Control";
 	pixel_x = -6;
 	pixel_y = -34;
-	req_access_txt = "57"
+	req_access = list("hop")
 	},
 /turf/open/floor/wood,
 /area/station/command/heads_quarters/hop)
@@ -12360,13 +12360,6 @@
 	},
 /turf/open/floor/iron/dark/purple,
 /area/station/science/research)
-"hgc" = (
-/obj/structure/table/wood,
-/obj/structure/window/reinforced/spawner/east,
-/obj/structure/window/reinforced/spawner/north,
-/obj/item/storage/toolbox/emergency/turret/mesa,
-/turf/open/floor/iron/dark,
-/area/station/security/office)
 "hgp" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 8
@@ -40243,6 +40236,13 @@
 	},
 /turf/open/floor/carpet/purple,
 /area/station/command/heads_quarters/hos)
+"xsx" = (
+/obj/structure/table/wood,
+/obj/structure/window/reinforced/spawner/east,
+/obj/structure/window/reinforced/spawner/north,
+/obj/item/storage/toolbox/emergency/turret/mesa,
+/turf/open/floor/iron/dark,
+/area/station/security/office)
 "xsy" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/hidden/layer4,
@@ -66517,7 +66517,7 @@ gll
 gll
 qBF
 oKo
-hgc
+xsx
 bxj
 reu
 kts
