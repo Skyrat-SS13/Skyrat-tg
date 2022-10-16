@@ -3,9 +3,13 @@ import { BooleanLike, classes } from 'common/react';
 import { ComponentType, createComponentVNode, InfernoNode } from 'inferno';
 import { VNodeFlags } from 'inferno-vnode-flags';
 import { sendAct, useBackend, useLocalState } from '../../../../backend';
+<<<<<<< HEAD
 // SKYRAT EDIT
 import { Box, Button, Dropdown, NumberInput, Stack, TextArea, Input } from '../../../../components';
 // SKYRAT EDIT END
+=======
+import { Box, Button, Dropdown, Input, NumberInput, Stack } from '../../../../components';
+>>>>>>> e613c875b7c (PDA Ringtone Preference (#70485))
 import { createSetPreference, PreferencesMenuData } from '../../data';
 import { ServerPreferencesFetcher } from '../../ServerPreferencesFetcher';
 
@@ -347,6 +351,7 @@ export const FeatureValueInput = (
   );
 };
 
+<<<<<<< HEAD
 // SKYRAT FEATURES DOWN HERE
 
 export const FeatureTextInput = (props: FeatureValueProps<string>) => {
@@ -360,14 +365,32 @@ export const FeatureTextInput = (props: FeatureValueProps<string>) => {
 };
 
 export const FeatureShortTextInput = (props: FeatureValueProps<string>) => {
+=======
+export type FeatureShortTextData = {
+  maximum_length: number;
+};
+
+export const FeatureShortTextInput = (
+  props: FeatureValueProps<string, string, FeatureShortTextData>
+) => {
+  if (!props.serverData) {
+    return <Box>Loading...</Box>;
+  }
+
+>>>>>>> e613c875b7c (PDA Ringtone Preference (#70485))
   return (
     <Input
       width="100%"
       value={props.value}
+<<<<<<< HEAD
+=======
+      maxLength={props.serverData.maximum_length}
+>>>>>>> e613c875b7c (PDA Ringtone Preference (#70485))
       onChange={(_, value) => props.handleSetValue(value)}
     />
   );
 };
+<<<<<<< HEAD
 
 export const FeatureTriColorInput = (props: FeatureValueProps<string[]>) => {
   const buttonFromValue = (index) => {
@@ -437,3 +460,5 @@ export const FeatureTriBoolInput = (props: FeatureValueProps<boolean[]>) => {
     </Stack>
   );
 };
+=======
+>>>>>>> e613c875b7c (PDA Ringtone Preference (#70485))
