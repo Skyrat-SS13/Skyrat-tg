@@ -24,6 +24,8 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 	desc = "An updated, modular intercom that fits over the head. Takes encryption keys."
 	icon_state = "headset"
 	inhand_icon_state = "headset"
+	lefthand_file = 'icons/mob/inhands/items_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/items_righthand.dmi'
 	worn_icon_state = "headset"
 	custom_materials = list(/datum/material/iron=75)
 	subspace_transmission = TRUE
@@ -120,7 +122,6 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 	name = "syndicate headset"
 	desc = "A syndicate headset that can be used to hear all radio frequencies. Protects ears from flashbangs."
 	icon_state = "syndie_headset"
-	inhand_icon_state = "syndie_headset"
 
 /obj/item/radio/headset/syndicate/alt/Initialize(mapload)
 	. = ..()
@@ -143,7 +144,6 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 	name = "security bowman headset"
 	desc = "This is used by your elite security force. Protects ears from flashbangs."
 	icon_state = "sec_headset_alt"
-	inhand_icon_state = "sec_headset_alt"
 
 /obj/item/radio/headset/headset_sec/alt/Initialize(mapload)
 	. = ..()
@@ -210,7 +210,6 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 	name = "\proper the captain's bowman headset"
 	desc = "The headset of the boss. Protects ears from flashbangs."
 	icon_state = "com_headset_alt"
-	inhand_icon_state = "com_headset_alt"
 
 /obj/item/radio/headset/heads/captain/alt/Initialize(mapload)
 	. = ..()
@@ -232,7 +231,6 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 	name = "\proper the head of security's bowman headset"
 	desc = "The headset of the man in charge of keeping order and protecting the station. Protects ears from flashbangs."
 	icon_state = "com_headset_alt"
-	inhand_icon_state = "com_headset_alt"
 
 /obj/item/radio/headset/heads/hos/alt/Initialize(mapload)
 	. = ..()
@@ -298,7 +296,6 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 	name = "\improper CentCom bowman headset"
 	desc = "A headset especially for emergency response personnel. Protects ears from flashbangs."
 	icon_state = "cent_headset_alt"
-	inhand_icon_state = "cent_headset_alt"
 	keyslot = null
 
 /obj/item/radio/headset/headset_cent/alt/Initialize(mapload)
