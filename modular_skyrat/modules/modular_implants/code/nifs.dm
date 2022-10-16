@@ -71,6 +71,8 @@
 	var/broken = FALSE
 	///Does the NIF have theft protection? This should only be disabled if admins need to fix something.
 	var/theft_protection = TRUE
+	///Is the NIF able to take damage?
+	var/durability_loss_vulnerable = TRUE
 
 	//Software Variables
 	///How many programs can the NIF store at once?
@@ -321,8 +323,41 @@
 	to_chat(linked_mob, span_cyan("NIF Message: [message_to_send]"))
 	linked_mob.playsound_local(linked_mob, good_sound, 60, FALSE)
 
+
+///Fixes the NIF if it is broken. This doesn't not repair durability
+/obj/item/organ/internal/cyberimp/brain/nif/proc/fix_nif()
+	if(!broken)
+		return FALSE
+
+	broken = FALSE
+	send_message("Your NIF is now in working condition!")
+
+///Re-enables the durability_loss_vulnerable variable
+/obj/item/organ/internal/cyberimp/brain/nif/proc/make_vulnerable()
+	durability_loss_vulnerable = TRUE
+
 /obj/item/organ/internal/cyberimp/brain/nif/attack_self(mob/user, modifiers)
 	return FALSE
+
+/obj/item/organ/internal/cyberimp/brain/nif/emp_act(severity)
+	. = ..()
+
+	if(!durability_loss_vulnerable)
+		return FALSE
+
+	broken = TRUE
+	durability_loss_vulnerable = FALSE
+
+	addtimer(CALLBACK(src, .proc/fix_nif), 30 SECONDS)
+	addtimer(CALLBACK(src, .proc/make_vulnerable), 60 SECONDS)
+
+	switch(severity)
+		if(1)
+			durability -= death_durability_loss
+		if(2)
+			durability -= (death_durability_loss / 2)
+
+	send_message("EMP TEXT", TRUE)
 
 ///A surgery that repairs the patient's NIF
 /datum/surgery/repair_nif
@@ -407,6 +442,10 @@
 		target_nif.send_message("Durability low!", TRUE)
 		return FALSE
 
+	if(target_nif.broken)
+		target_nif.send_message("The NIF is unable to be used at this time!", TRUE)
+		return FALSE
+
 	if(!.)
 		return
 
@@ -423,6 +462,17 @@
 
 	if(nif_examine_text)
 		. += nif_examine_text
+
+/mob/living/carbon/human/death(gibbed)
+	. = ..()
+
+	if(!installed_nif)
+		return
+
+	installed_nif.durability -= installed_nif.death_durability_loss
+	installed_nif.durability_loss_vulnerable = FALSE
+
+	addtimer(CALLBACK(installed_nif, /obj/item/organ/internal/cyberimp/brain/nif.proc/make_vulnerable), 20 MINUTES) //Players should have a decent grace period on this.
 
 ///Looks through the human's NIFSoft to find a nifsoft.
 /mob/living/carbon/human/proc/find_nifsoft(nifsoft_to_find)

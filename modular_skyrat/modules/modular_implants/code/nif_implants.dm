@@ -13,6 +13,7 @@
 	max_nifsofts = 3
 	calibration_time = 1 MINUTES
 	max_durability = 50
+	death_durability_loss = 10
 	shift_durability_loss = 5
 
 
