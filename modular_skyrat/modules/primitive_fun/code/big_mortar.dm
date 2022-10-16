@@ -86,14 +86,15 @@
 					else
 						juice_target_item(target_item, user)
 		return
+	if(!attacking_item.juice_results || !attacking_item.grind_results)
+		balloon_alert(user, "can't grind this")
+		return ..()
 	if(LAZYLEN(contents) >= maximum_contained_items)
 		balloon_alert(user, "already full")
 		return
-	if(attacking_item.juice_results || attacking_item.grind_results)
-		attacking_item.forceMove(src)
-		return
-	balloon_alert(user, "can't grind this")
-	return ..()
+	attacking_item.forceMove(src)
+	return
+
 
 ///Juices the passed target item, and transfers any contained chems to the mortar as well
 /obj/structure/large_mortar/proc/juice_target_item(obj/item/to_be_juiced, mob/living/carbon/human/user)
