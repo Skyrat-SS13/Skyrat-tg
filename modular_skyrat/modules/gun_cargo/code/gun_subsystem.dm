@@ -27,7 +27,7 @@ SUBSYSTEM_DEF(gun_companies)
 	/// Picked a free company yet?
 	var/handout_picked = FALSE
 
-/datum/controller/subsystem/gun_companies/Initialize(start_timeofday)
+/datum/controller/subsystem/gun_companies/Initialize()
 	// Adds the company refs to the unchanging companies list and the changing unpurchased_companies list
 	for(var/datum/gun_company/company as anything in subtypesof(/datum/gun_company))
 		var/datum/gun_company/new_company = new company
@@ -44,7 +44,7 @@ SUBSYSTEM_DEF(gun_companies)
 	for(var/i in 1 to MAX_HANDOUT_CHOICES)
 		chosen_handouts += pick_n_take(potential_handouts)
 	fire() //Gotta get the prices randomized to start
-	return ..()
+	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/gun_companies/Destroy()
 	for(var/company in companies)
@@ -98,9 +98,9 @@ SUBSYSTEM_DEF(gun_companies)
 
 	var/list/products = subtypesof(/datum/armament_entry/cargo_gun)
 	// Setting cost and stock of armament entries
-	for(var/armament_category as anything in GLOB.armament_entries)
-		for(var/subcategory as anything in GLOB.armament_entries[armament_category][CATEGORY_ENTRY])
-			for(var/datum/armament_entry/armament_entry as anything in GLOB.armament_entries[armament_category][CATEGORY_ENTRY][subcategory])
+	for(var/armament_category as anything in SSarmaments.entries)
+		for(var/subcategory as anything in SSarmaments.entries[armament_category][CATEGORY_ENTRY])
+			for(var/datum/armament_entry/armament_entry as anything in SSarmaments.entries[armament_category][CATEGORY_ENTRY][subcategory])
 				if(products && !(armament_entry.type in products))
 					continue
 

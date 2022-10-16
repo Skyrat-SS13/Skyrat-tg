@@ -176,6 +176,7 @@ GLOBAL_LIST_INIT(loadout_shoes, generate_loadout_items(/datum/loadout_item/shoes
 /datum/loadout_item/shoes/dominaheels
 	name = "Dominant Heels"
 	item_path = /obj/item/clothing/shoes/latex_heels/domina_heels
+	erp_item = TRUE
 
 /datum/loadout_item/shoes/griffin
 	name = "Griffon Boots"

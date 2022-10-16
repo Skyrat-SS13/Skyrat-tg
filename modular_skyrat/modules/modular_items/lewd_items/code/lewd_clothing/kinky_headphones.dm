@@ -2,7 +2,7 @@
 	name = "kinky headphones"
 	desc = "Protect your ears from loud noises. It has a switch on the right hand side."
 	icon_state = "kinkphones"
-	inhand_icon_state = "kinkphones"
+	inhand_icon_state = "kinkphones_pink_off"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_ears.dmi'
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_ears.dmi'
 	strip_delay = 15
@@ -51,7 +51,7 @@
 //we equipping it so we deaf now
 /obj/item/clothing/ears/kinky_headphones/equipped(mob/living/carbon/human/user, slot)
 	. = ..()
-	if(!(istype(user) && slot == ITEM_SLOT_EARS))
+	if(!(istype(user) && (slot & ITEM_SLOT_EARS)))
 		return
 	to_chat(user, span_purple("[!kinky_headphones_on ? "You can barely hear anything! Your other senses have become more apparent..." : "Strange but relaxing music fills your mind. You feel so... Calm."]"))
 	ADD_TRAIT(user, TRAIT_DEAF, CLOTHING_TRAIT)

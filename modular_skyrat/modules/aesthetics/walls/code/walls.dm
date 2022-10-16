@@ -24,3 +24,13 @@
 	. = ..()
 	var/mutable_appearance/rust = mutable_appearance(icon, "rust")
 	add_overlay(rust)
+
+/obj/structure/falsewall/material
+	icon = 'modular_skyrat/modules/aesthetics/walls/icons/material_wall.dmi'
+	icon_state = "wall-0"
+	base_icon_state = "wall"
+
+/turf/closed/wall/material
+	icon = 'modular_skyrat/modules/aesthetics/walls/icons/material_wall.dmi'
+	icon_state = "wall-0"
+	base_icon_state = "wall"

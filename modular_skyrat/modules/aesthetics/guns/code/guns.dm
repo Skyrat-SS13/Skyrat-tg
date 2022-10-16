@@ -164,6 +164,11 @@
 /obj/item/gun/energy/e_gun/nuclear/rainbow/emag_act(mob/user, obj/item/card/emag/E)
 	return FALSE
 
+// We don't customize CTF
+/obj/item/gun/energy/laser/instakill/ctf
+	lefthand_file = 'icons/mob/inhands/weapons/guns_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/weapons/guns_righthand.dmi'
+
 //BEAM SOUNDS
 /obj/item/ammo_casing/energy
 	fire_sound = 'modular_skyrat/modules/aesthetics/guns/sound/laser.ogg'
@@ -533,3 +538,5 @@
 	name = ".454 Trucidator handcannon magazine"
 	desc = "An absurdly THICK magazine possibly meant for a heavy hitting pistol, if you can call it that."
 
+/obj/item/ammo_box/a762
+	name = "stripper clip (.244 Acia)"

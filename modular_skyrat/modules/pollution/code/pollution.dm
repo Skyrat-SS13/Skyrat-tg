@@ -7,8 +7,8 @@
 	var/total_amount = 0
 	/// Height of the pollution, used to create a sandpiling effect
 	var/height = 0
-	/// The overlay we are managing
-	var/mutable_appearance/managed_overlay
+	/// The vis content we are managing
+	var/obj/effect/abstract/pollution/managed_overlay
 
 /datum/pollution/New(turf/open/passed_turf)
 	. = ..()
@@ -119,8 +119,9 @@
 /datum/pollution/Destroy()
 	if(managed_overlay)
 		if(my_turf)
-			my_turf.underlays -= managed_overlay
-		qdel(managed_overlay)
+			my_turf.vis_contents -= managed_overlay
+		if(LAZYLEN(managed_overlay.vis_locs) == 0)
+			qdel(managed_overlay)
 		managed_overlay = null
 	REMOVE_POLLUTION_CURRENTRUN(src)
 	SET_UNACTIVE_POLLUTION(src)
@@ -163,7 +164,7 @@
 		total_share_pollutants[type] /= sharing_turfs.len
 	total_share_amount /= sharing_turfs.len
 	var/new_heights = calculate_height(total_share_amount)
-	var/mutable_appearance/new_overlay = get_overlay(total_share_pollutants, total_share_amount)
+	var/obj/effect/abstract/pollution/new_overlay = get_overlay(total_share_pollutants, total_share_amount)
 	for(var/turf/open/open_turf as anything in sharing_turfs)
 		if(istype(open_turf, /turf/open/space)) // Space should be voiding pollution, basically.
 			continue
@@ -171,11 +172,11 @@
 		assert_pollution(open_turf)
 		var/datum/pollution/cached_pollution = open_turf.pollution
 		if(cached_pollution.managed_overlay)
-			cached_pollution.my_turf.underlays -= cached_pollution.managed_overlay
+			cached_pollution.my_turf.vis_contents -= cached_pollution.managed_overlay
 
 		cached_pollution.managed_overlay = new_overlay
 		if(new_overlay)
-			cached_pollution.my_turf.underlays += new_overlay
+			cached_pollution.my_turf.vis_contents += new_overlay
 
 		cached_pollution.pollutants = total_share_pollutants.Copy()
 		cached_pollution.total_amount = total_share_amount
@@ -199,10 +200,12 @@
 
 /datum/pollution/proc/handle_overlay()
 	if(managed_overlay)
-		my_turf.underlays -= managed_overlay
+		my_turf.vis_contents -= managed_overlay
+		if(LAZYLEN(managed_overlay.vis_locs) == 0)
+			qdel(managed_overlay)
 	managed_overlay = get_overlay(pollutants, total_amount)
 	if(managed_overlay)
-		my_turf.underlays += managed_overlay
+		my_turf.vis_contents += managed_overlay
 
 ///Probably the most costly thing happening here
 /datum/pollution/proc/get_overlay(list/pollutant_list, total_amount)
@@ -229,9 +232,7 @@
 	if(!total_thickness || total_thickness < POLLUTANT_APPEARANCE_THICKNESS_THRESHOLD)
 		return
 
-	var/mutable_appearance/overlay = mutable_appearance('icons/effects/96x96.dmi', "smoke", FLY_LAYER, MOUSE_TRANSPARENT_PLANE, appearance_flags = KEEP_APART|RESET_TRANSFORM|RESET_COLOR)
-	overlay.pixel_x = -32
-	overlay.pixel_y = -32
+	var/obj/effect/abstract/pollution/overlay = new()
 	overlay.alpha = FLOOR(pollutant.alpha * total_thickness * THICKNESS_ALPHA_COEFFICIENT, 1)
 	overlay.color = pollutant.color
 	return overlay

@@ -54,7 +54,7 @@
 
 /datum/borer_focus/arms/on_add(mob/living/carbon/human/host, mob/living/simple_animal/cortical_borer/borer)
 	to_chat(host, span_notice("Your arms start to feel funny..."))
-	borer.human_host.add_actionspeed_modifier(/datum/actionspeed_modifier/borer_speed)
+	borer.human_host.add_actionspeed_modifier(/datum/actionspeed_modifier/focus_speed)
 	return ..()
 
 /datum/borer_focus/arms/on_remove(mob/living/carbon/human/host, mob/living/simple_animal/cortical_borer/borer)
@@ -68,10 +68,10 @@
 
 /datum/borer_focus/legs/on_add(mob/living/carbon/human/host, mob/living/simple_animal/cortical_borer/borer)
 	to_chat(host, span_notice("You feel faster..."))
-	host.add_movespeed_modifier(/datum/movespeed_modifier/borer_speed)
+	host.add_movespeed_modifier(/datum/movespeed_modifier/focus_speed)
 	return ..()
 
 /datum/borer_focus/legs/on_remove(mob/living/carbon/human/host, mob/living/simple_animal/cortical_borer/borer)
 	to_chat(host, span_notice("You feel slower..."))
-	host.remove_movespeed_modifier(/datum/movespeed_modifier/borer_speed)
+	host.remove_movespeed_modifier(/datum/movespeed_modifier/focus_speed)
 	return ..()
