@@ -38,6 +38,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 		owner.remove_overlay(BODY_ADJ_LAYER)
 		owner.remove_overlay(BODY_FRONT_LAYER)
 		owner.remove_overlay(BODY_FRONT_UNDER_CLOTHES)
+		owner.remove_overlay(ABOVE_BODY_FRONT_HEAD_LAYER)
 		return
 
 	var/list/bodyparts_to_add = list()
@@ -67,6 +68,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	owner.remove_overlay(BODY_ADJ_LAYER)
 	owner.remove_overlay(BODY_FRONT_LAYER)
 	owner.remove_overlay(BODY_FRONT_UNDER_CLOTHES)
+	owner.remove_overlay(ABOVE_BODY_FRONT_HEAD_LAYER)
 
 	var/g = (owner.physique == FEMALE) ? "f" : "m"
 	for(var/bodypart in bodyparts_to_add)
@@ -253,6 +255,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	owner.apply_overlay(BODY_ADJ_LAYER)
 	owner.apply_overlay(BODY_FRONT_LAYER)
 	owner.apply_overlay(BODY_FRONT_UNDER_CLOTHES)
+	owner.apply_overlay(ABOVE_BODY_FRONT_HEAD_LAYER)
 
 /datum/species
 	///What accessories can a species have aswell as their default accessory of such type e.g. "frills" = "Aquatic". Default accessory colors is dictated by the accessory properties and mutcolors of the specie

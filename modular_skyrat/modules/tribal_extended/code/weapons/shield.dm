@@ -7,6 +7,7 @@
 	righthand_file = 'modular_skyrat/modules/tribal_extended/icons/shields_righthand.dmi'
 	worn_icon = 'modular_skyrat/modules/tribal_extended/icons/back.dmi'
 	worn_icon_state = "goliath_shield"
+	inhand_icon_state = "goliath_shield"
 	transparent = FALSE
 	max_integrity = 200
 	w_class = WEIGHT_CLASS_BULKY

@@ -55,6 +55,8 @@
 		return FALSE
 
 /mob/living/simple_animal/parrot/poly/proc/command_perch(mob/living/carbon/human/human_target)
+	if (!buckled)
+		buckled_to_human = FALSE
 	if(human_target.buckled_mobs?.len >= human_target.max_buckled_mobs)
 		return
 	if(buckled_to_human)
@@ -67,6 +69,8 @@
 	perch_on_human(human_target)
 
 /mob/living/simple_animal/parrot/poly/proc/command_hop_off(mob/living/carbon/human/human_target)
+	if (!buckled)
+		buckled_to_human = FALSE
 	if(!buckled_to_human || !buckled)
 		emote("me", EMOTE_VISIBLE, "gives [human_target] a confused look, squawking softly.")
 		return

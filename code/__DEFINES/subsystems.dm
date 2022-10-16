@@ -163,6 +163,7 @@
 #define INIT_ORDER_RESTAURANT 34
 #define INIT_ORDER_POLLUTION 32 //SKYRAT EDIT ADDITION - //Needs to be above atoms
 #define INIT_ORDER_ATOMS 30
+#define INIT_ORDER_ARMAMENTS 27 // SKYRAT EDIT ADDITION - Needs to be between atoms and default so it runs before gun companies
 #define INIT_ORDER_LANGUAGE 25
 #define INIT_ORDER_MACHINES 20
 #define INIT_ORDER_SKILLS 15
