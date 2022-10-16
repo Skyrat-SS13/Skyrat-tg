@@ -26,16 +26,16 @@
 	/// Is the light turned on or off currently
 	var/on = FALSE
 
-<<<<<<< HEAD
-/* SKYRAT EDIT REMOVAL - MOVED TO MODUALR FLASHLIGHT.DM
-=======
->>>>>>> 823ba2a8f06 (Add hotkeys, screentips, and sounds for flashlights (#70383))
+// SKYRAT EDIT REMOVAL START - MOVED TO MODUALR FLASHLIGHT.DM
+/*
 /obj/item/flashlight/Initialize(mapload)
 	. = ..()
 	if(icon_state == "[initial(icon_state)]-on")
 		on = TRUE
 	update_brightness()
 	register_context()
+*/
+// SKYRAT EDIT REMOVAL END
 
 /obj/item/flashlight/add_context(atom/source, list/context, obj/item/held_item, mob/living/user)
 	// single use lights can be toggled on once
@@ -49,6 +49,8 @@
 
 	return NONE
 
+// SKYRAT EDIT REMOVAL START - MOVED TO MODUALR FLASHLIGHT.DM
+/*
 /obj/item/flashlight/proc/update_brightness(mob/user)
 	if(on)
 		icon_state = "[initial(icon_state)]-on"
@@ -63,18 +65,16 @@
 	playsound(user, on ? sound_on : sound_off, 40, TRUE)
 	update_brightness(user)
 	update_action_buttons()
-<<<<<<< HEAD
 	return 1
-*/
-=======
 
 /obj/item/flashlight/attack_self(mob/user)
 	toggle_light(user)
+*/
+// SKYRAT EDIT REMOVAL END
 
 /obj/item/flashlight/attack_hand_secondary(mob/user, list/modifiers)
 	attack_self(user)
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
->>>>>>> 823ba2a8f06 (Add hotkeys, screentips, and sounds for flashlights (#70383))
 
 /obj/item/flashlight/suicide_act(mob/living/carbon/human/user)
 	if (user.is_blind())
