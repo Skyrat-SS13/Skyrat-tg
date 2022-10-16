@@ -174,7 +174,7 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 
 /datum/loadout_item/head/mail_cap
 	name = "Mail Cap"
-	item_path = /obj/item/clothing/head/mailman
+	item_path = /obj/item/clothing/head/costume/mailman
 
 /datum/loadout_item/head/kitty_ears
 	name = "Kitty Ears"
@@ -257,7 +257,7 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 
 /datum/loadout_item/head/xenos
 	name = "Xenos Helmet"
-	item_path = /obj/item/clothing/head/xenos
+	item_path = /obj/item/clothing/head/costume/xenos
 
 /datum/loadout_item/head/wedding_veil
 	name = "Wedding Veil"
@@ -293,7 +293,7 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 
 /datum/loadout_item/head/pirate
 	name = "Pirate hat"
-	item_path = /obj/item/clothing/head/pirate
+	item_path = /obj/item/clothing/head/costume/pirate
 
 /datum/loadout_item/head/flowerpin
 	name = "Flower Pin"
@@ -301,7 +301,7 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 
 /datum/loadout_item/head/rice_hat
 	name = "Rice Hat"
-	item_path = /obj/item/clothing/head/rice_hat
+	item_path = /obj/item/clothing/head/costume/rice_hat
 
 /datum/loadout_item/head/ushanka
 	name = "Ushanka"
@@ -590,23 +590,23 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 
 /datum/loadout_item/head/tmc
 	name = "TMC Hat"
-	item_path = /obj/item/clothing/head/tmc
+	item_path = /obj/item/clothing/head/costume/tmc
 
 /datum/loadout_item/head/pg
 	name = "PG Hat"
-	item_path = /obj/item/clothing/head/pg
+	item_path = /obj/item/clothing/head/costume/pg
 
 /datum/loadout_item/head/deckers
 	name = "Deckers Hat"
-	item_path = /obj/item/clothing/head/deckers
+	item_path = /obj/item/clothing/head/costume/deckers
 
 /datum/loadout_item/head/morningstar
 	name = "Morningstar Hat"
-	item_path = /obj/item/clothing/head/morningstar
+	item_path = /obj/item/clothing/head//costume/morningstar
 
 /datum/loadout_item/head/saints
 	name = "Fancy Hat"
-	item_path = /obj/item/clothing/head/fancy
+	item_path = /obj/item/clothing/head/costume/fancy
 
 /*
 *	DONATOR
