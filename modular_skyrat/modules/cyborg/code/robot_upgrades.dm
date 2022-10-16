@@ -277,7 +277,7 @@
 	if(!iscyborg(user))
 		return
 	var/txt = tgui_input_text(user, "What would you like to write on the sign?", "Sign Label", max_length = 30)
-	if(txt && user.canUseTopic(src, BE_CLOSE))
+	if(txt && user.canUseTopic(src, be_close=TRUE))
 		label = txt
 		name = "[label] sign"
 		desc = "It reads: [label]"

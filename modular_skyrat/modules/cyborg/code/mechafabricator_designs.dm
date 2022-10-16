@@ -59,4 +59,4 @@
 	build_type = MECHFAB
 	build_path = /obj/item/borg/upgrade/sign
 	materials = list(/datum/material/iron=4000, /datum/material/glass=2000,)
-	category = list(RND_CATEGORY_CYBORG_UPGRADE_MODULES)
+	category = list(RND_CATEGORY_MECHFAB_CYBORG_MODULES + RND_SUBCATEGORY_MECHFAB_CYBORG_MODULES_ALL)
