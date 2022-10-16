@@ -91,6 +91,8 @@
 	var/bad_sound = 'modular_skyrat/modules/modular_implants/sounds/default_bad.ogg'
 	///This is the sound that you would hear if you enable if you activate or enable something.
 	var/click_sound = 'modular_skyrat/modules/modular_implants/sounds/default_click.ogg'
+	///What icon does the NIF display in chat when sending out alerts? Icon states are stored in 'modular_skyrat/modules/modular_implants/icons/chat.dmi'
+	var/chat_icon = "standard"
 
 /obj/item/organ/internal/cyberimp/brain/nif/Initialize(mapload)
 	. = ..()
@@ -316,12 +318,19 @@
 	return TRUE
 
 /obj/item/organ/internal/cyberimp/brain/nif/proc/send_message(message_to_send, alert=FALSE)
+	var/datum/asset/spritesheet/sheet = get_asset_datum(/datum/asset/spritesheet/chat)
+	var/tag = sheet.icon_tag("nif-[chat_icon]")
+	var/nif_icon = ""
+
+	if(tag)
+		nif_icon = tag
+
 	if(alert)
-		to_chat(linked_mob, span_warning("NIF Alert: [message_to_send]"))
+		to_chat(linked_mob, span_warning("[nif_icon] NIF Alert: [message_to_send]"))
 		linked_mob.playsound_local(linked_mob, bad_sound, 60, FALSE)
 		return
 
-	to_chat(linked_mob, span_cyan("NIF Message: [message_to_send]"))
+	to_chat(linked_mob, span_cyan("[nif_icon] NIF Message: [message_to_send]"))
 	linked_mob.playsound_local(linked_mob, good_sound, 60, FALSE)
 
 
@@ -484,6 +493,11 @@
 	for(var/datum/nifsoft/nifsoft as anything in nifsoft_list)
 		if(nifsoft.type == nifsoft_to_find)
 			return nifsoft
+
+/datum/asset/spritesheet/chat/create_spritesheets()
+	. = ..()
+
+	InsertAll("nif", 'modular_skyrat/modules/modular_implants/icons/chat.dmi')
 
 //NIF autosurgeon. This is just here so that I can debug faster.
 /obj/item/autosurgeon/organ/nif
