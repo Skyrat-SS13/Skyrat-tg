@@ -32,11 +32,12 @@
 	drop_everything_contained()
 	balloon_alert(user, "removed all items")
 
+/// Drops all contents at the mortar
 /obj/structure/large_mortar/proc/drop_everything_contained()
 	if(!LAZYLEN(contents))
 		return
 	for(var/obj/target_item in contents)
-		target_item.forceMove(drop_location())
+		target_item.forceMove(get_turf(src))
 		LAZYREMOVE(contents, target_item)
 
 /obj/structure/large_mortar/attack_hand_secondary(mob/user, list/modifiers)
@@ -96,6 +97,7 @@
 	LAZYADD(contents, attacking_item)
 	return ..()
 
+///Juices the passed target item, and transfers any contained chems to the mortar as well
 /obj/structure/large_mortar/proc/juice_target_item(obj/item/to_be_juiced, mob/living/carbon/human/user)
 	to_be_juiced.on_juice()
 	reagents.add_reagent_list(to_be_juiced.juice_results)
@@ -104,6 +106,7 @@
 	to_chat(user, span_notice("You juice [to_be_juiced] into a fine liquid."))
 	QDEL_NULL(to_be_juiced)
 
+///Grinds the passed target item, and transfers any contained chems to the mortar as well
 /obj/structure/large_mortar/proc/grind_target_item(obj/item/to_be_ground, mob/living/carbon/human/user)
 	to_be_ground.on_grind()
 	reagents.add_reagent_list(to_be_ground.grind_results)
