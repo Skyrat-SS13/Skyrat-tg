@@ -5,7 +5,7 @@
 	suit = /obj/item/clothing/suit/clockwork/cloak
 	shoes = /obj/item/clothing/shoes/clockwork
 	gloves = /obj/item/clothing/gloves/clockwork
-	back = /obj/item/storage/backpack/satchel/flat/empty
+	back = /obj/item/storage/backpack/satchel
 	backpack_contents = list(
 		/obj/item/storage/box/survival = 1,
 		/obj/item/stack/sheet/bronze = 10,
