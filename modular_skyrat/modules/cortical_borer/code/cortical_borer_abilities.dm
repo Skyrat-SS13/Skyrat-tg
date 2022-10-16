@@ -14,6 +14,17 @@
 	/// How many stat evo points are needed to use this ability
 	var/stat_evo_points = 0
 
+/datum/action/cooldown/borer/New(Target, original)
+	. = ..()
+	var/compiled_string = ""
+	if(chemical_cost)
+		compiled_string += "([chemical_cost] chemicals [chemical_cost == 1 ? "" : "s"])"
+	if(chemical_evo_points)
+		compiled_string += " ([chemical_evo_points] chemical point[chemical_evo_points == 1 ? "" : "s"])"
+	if(stat_evo_points)
+		compiled_string += " ([stat_evo_points] stat point[stat_evo_points == 1 ? "" : "s"])"
+	name = "[initial(name)][compiled_string]"
+
 /datum/action/cooldown/borer/Trigger(trigger_flags, atom/target)
 	. = ..()
 	if(!iscorticalborer(owner))
@@ -257,10 +268,6 @@
 	button_icon_state = "bloodchem"
 	chemical_evo_points = 5
 
-/datum/action/cooldown/borer/learn_bloodchemical/New(Target, original)
-	name = "[initial(name)] ([chemical_evo_points] chemical point[chemical_evo_points == 1 ? "" : "s"])"
-	return ..()
-
 /datum/action/cooldown/borer/learn_bloodchemical/Trigger(trigger_flags)
 	. = ..()
 	if(!.)
@@ -443,6 +450,10 @@
 	cortical_owner.human_host.adjustStaminaLoss(100)
 	cortical_owner.human_host.set_confusion_if_lower(15 SECONDS)
 	to_chat(cortical_owner.human_host, span_warning("Something moves inside of you violently!"))
+	var/turf/human_turf = get_turf(singular_fear)
+	var/logging_text = "[key_name(cortical_owner)] feared/paralyzed [key_name(singular_fear)] (internal) at [loc_name(human_turf)]"
+	cortical_owner.log_message(logging_text, LOG_GAME)
+	singular_fear.log_message(logging_text, LOG_GAME)
 
 //to check the health of the human
 /datum/action/cooldown/borer/check_blood
@@ -616,10 +627,6 @@
 	button_icon_state = "reproduce"
 	chemical_cost = 100
 
-/datum/action/cooldown/borer/produce_offspring/New(Target, original)
-	name = "[initial(name)] ([chemical_cost] chemicals [chemical_cost == 1 ? "" : "s"])"
-	return ..()
-
 /datum/action/cooldown/borer/produce_offspring/Trigger(trigger_flags)
 	. = ..()
 	if(!.)
@@ -684,10 +691,6 @@
 	button_icon_state = "revive"
 	chemical_cost = 200
 
-/datum/action/cooldown/borer/revive_host/New(Target, original)
-	name = "[initial(name)] ([chemical_cost] chemicals [chemical_cost == 1 ? "" : "s"])"
-	return ..()
-
 /datum/action/cooldown/borer/revive_host/Trigger(trigger_flags)
 	. = ..()
 	if(!.)
@@ -728,10 +731,6 @@
 	button_icon_state = "willing"
 	chemical_cost = 150
 
-/datum/action/cooldown/borer/willing_host/New(Target, original)
-	name = "[initial(name)] ([chemical_cost] chemicals [chemical_cost == 1 ? "" : "s"])"
-	return ..()
-
 /datum/action/cooldown/borer/willing_host/Trigger(trigger_flags)
 	. = ..()
 	if(!.)
@@ -765,10 +764,6 @@
 	button_icon_state = "willing"
 	chemical_cost = 100
 
-/datum/action/cooldown/borer/stealth_mode/New(Target, original)
-	name = "[initial(name)] ([chemical_cost] chemicals [chemical_cost == 1 ? "" : "s"])"
-	return ..()
-
 /datum/action/cooldown/borer/stealth_mode/Trigger(trigger_flags)
 	. = ..()
 	if(!.)
@@ -792,10 +787,6 @@
 	cooldown_time = 1 MINUTES
 	button_icon_state = "reproduce"
 	chemical_cost = 150
-
-/datum/action/cooldown/borer/empowered_offspring/New(Target, original)
-	name = "[initial(name)] ([chemical_cost] chemicals [chemical_cost == 1 ? "" : "s"])"
-	return ..()
 
 /datum/action/cooldown/borer/empowered_offspring/Trigger(trigger_flags)
 	. = ..()
