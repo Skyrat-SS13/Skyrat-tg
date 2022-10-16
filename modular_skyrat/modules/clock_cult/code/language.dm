@@ -6,18 +6,12 @@
 // Thought this language code was cool as fuck, so I'm going with it
 // For any other language nerds: https://pastebin.com/ngFMZHNV
 
-/datum/language
-	/// What icon does this language use? Only used for skyrat overrides
-	var/bubble_icon = 'icons/mob/effects/talk.dmi'
-
 /datum/language/ratvar
 	name = "Ratvarian"
 	desc = "A timeless language full of power and incomprehensible to the unenlightened."
 	key = "r"
 	default_priority = 10
 	spans = list(SPAN_ROBOT)
-	bubble_icon = 'modular_skyrat/modules/clock_cult/icons/speech.dmi'
-	icon_state = "ratvar"
 
 /datum/language/ratvar/scramble(input)
 	return text2ratvar(input)

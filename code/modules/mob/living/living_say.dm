@@ -380,10 +380,7 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 		if(M.client && (!M.client.prefs.read_preference(/datum/preference/toggle/enable_runechat) || (SSlag_switch.measures[DISABLE_RUNECHAT] && !HAS_TRAIT(src, TRAIT_BYPASS_MEASURES))))
 			speech_bubble_recipients.Add(M.client)
 
-	// SKYRAT ADDITION START
-	var/datum/language/said_language = GLOB.language_datum_instances[message_language]
-	var/image/say_popup = image(said_language.bubble_icon, src, "[bubble_type][say_test(message)]", FLY_LAYER)
-	// SKYRAT ADDITION END
+	var/image/say_popup = image('icons/mob/effects/talk.dmi', src, "[bubble_type][say_test(message)]", FLY_LAYER)
 	SET_PLANE_EXPLICIT(say_popup, ABOVE_GAME_PLANE, src)
 	say_popup.appearance_flags = APPEARANCE_UI_IGNORE_ALPHA
 	INVOKE_ASYNC(GLOBAL_PROC, /proc/flick_overlay, say_popup, speech_bubble_recipients, 3 SECONDS)
