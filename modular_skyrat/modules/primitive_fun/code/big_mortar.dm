@@ -50,7 +50,6 @@
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /obj/structure/large_mortar/attackby(obj/item/attacking_item, mob/living/carbon/human/user)
-	..()
 	if(istype(attacking_item, /obj/item/pestle))
 		if(!anchored)
 			balloon_alert(user, "secure to ground first")
@@ -95,6 +94,7 @@
 		return
 	attacking_item.forceMove(src)
 	LAZYADD(contents, attacking_item)
+	return ..()
 
 /obj/structure/large_mortar/proc/juice_target_item(obj/item/to_be_juiced, mob/living/carbon/human/user)
 	to_be_juiced.on_juice()
