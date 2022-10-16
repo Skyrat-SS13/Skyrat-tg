@@ -801,7 +801,9 @@ GLOBAL_LIST_EMPTY(features_by_species)
 			return "FRONT"
 		//SKYRAT EDIT ADDITION BEGIN
 		if(BODY_FRONT_UNDER_CLOTHES)
-			return "FRONT"
+			return "FRONT_UNDER"
+		if(ABOVE_BODY_FRONT_HEAD_LAYER)
+			return "FRONT_OVER"
 		//SKYRAT EDIT ADDITION END
 
 ///Proc that will randomise the underwear (i.e. top, pants and socks) of a species' associated mob
