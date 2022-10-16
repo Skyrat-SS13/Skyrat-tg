@@ -190,7 +190,9 @@
 			return "FRONT"
 		//SKYRAT EDIT ADDITION BEGIN
 		if(BODY_FRONT_UNDER_CLOTHES)
-			return "FRONT"
+			return "FRONT_UNDER"
+		if(ABOVE_BODY_FRONT_HEAD_LAYER)
+			return "FRONT_OVER"
 		//SKYRAT EDIT ADDITION END
 
 ///Converts a bitflag to the right layer. I'd love to make this a static index list, but byond made an attempt on my life when i did
