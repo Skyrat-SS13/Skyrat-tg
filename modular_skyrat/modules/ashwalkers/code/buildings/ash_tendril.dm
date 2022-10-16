@@ -59,6 +59,7 @@
 		meat_counter++
 	return ..()
 
+//this is the skyrat override
 /obj/structure/lavaland/ash_walker/consume()
 	for(var/mob/living/viewable_living in view(src, 1)) //Only for corpse right next to/on same tile
 		if(!viewable_living.stat)
@@ -93,6 +94,10 @@
 			else
 				living_observers.add_mood_event("oogabooga", /datum/mood_event/sacrifice_bad)
 
+/**
+ * Proc that will spawn the egg that will revive the ashwalker
+ * This is also the Skyrat replacement for /proc/remake_walker
+ */
 /obj/structure/lavaland/ash_walker/proc/revive_ashwalker(mob/living/carbon/human/revived_ashwalker)
 	//spawn the egg we will move the body into
 	var/obj/structure/reviving_ashwalker_egg/spawned_egg = new(get_step(loc, pick(GLOB.alldirs)))
@@ -112,6 +117,9 @@
 	. = ..()
 	addtimer(CALLBACK(src, .proc/do_revive), 30 SECONDS)
 
+/**
+ * Proc that will fully revive the living content inside and then destroy itself
+ */
 /obj/structure/reviving_ashwalker_egg/proc/do_revive()
 	//try to find the living thing inside
 	var/mob/living/locate_living = locate() in contents
