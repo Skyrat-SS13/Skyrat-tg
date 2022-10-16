@@ -71,6 +71,8 @@
 	desc = "Your body's hydraulic fluids are leaking through their seals."
 	medical_record_text = "Patient requires regular treatment for hydraulic fluid loss."
 	icon = "bd_synth_tint"
+	mail_goodies = list(/obj/item/reagent_containers/blood/oil)
+	// min_blood = BLOOD_VOLUME_BAD - 25; // TODO: Uncomment after TG PR #70563
 	hidden_quirk = TRUE
 
 // If blooddeficiency is added to a synth, this detours to the blooddeficiency/synth quirk.
@@ -81,15 +83,3 @@
 	var/datum/quirk/blooddeficiency/synth/bd_synth = new
 	qdel(src)
 	return bd_synth.add_to_holder(new_holder, quirk_transfer)
-
-// Synthetics lose more fluids than organics. Rebalances the quirk for synths!
-/datum/quirk/blooddeficiency/synth/process(delta_time)
-	if(quirk_holder.stat == DEAD)
-		return
-	var/mob/living/carbon/carbon_target = quirk_holder
-	// Can't lose blood if your species doesn't have any.
-	if(NOBLOOD in carbon_target.dna.species.species_traits)
-		return
-	// Survivable without treatment, but causes lots of fainting.
-	if (carbon_target.blood_volume > BLOOD_VOLUME_BAD)
-		carbon_target.blood_volume -= 0.275 * delta_time
