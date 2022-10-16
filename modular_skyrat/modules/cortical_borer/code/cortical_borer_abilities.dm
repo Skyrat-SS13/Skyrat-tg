@@ -450,10 +450,10 @@
 	cortical_owner.human_host.adjustStaminaLoss(100)
 	cortical_owner.human_host.set_confusion_if_lower(15 SECONDS)
 	to_chat(cortical_owner.human_host, span_warning("Something moves inside of you violently!"))
-	var/turf/human_turf = get_turf(singular_fear)
-	var/logging_text = "[key_name(cortical_owner)] feared/paralyzed [key_name(singular_fear)] (internal) at [loc_name(human_turf)]"
+	var/turf/human_turf = get_turf(cortical_owner.human_host)
+	var/logging_text = "[key_name(cortical_owner)] feared/paralyzed [key_name(cortical_owner.human_host)] (internal) at [loc_name(human_turf)]"
 	cortical_owner.log_message(logging_text, LOG_GAME)
-	singular_fear.log_message(logging_text, LOG_GAME)
+	cortical_owner.human_host.log_message(logging_text, LOG_GAME)
 
 //to check the health of the human
 /datum/action/cooldown/borer/check_blood
@@ -532,29 +532,7 @@
 
 	//if the list of possible hosts is one, just go straight in, no choosing
 	if(length(usable_hosts) == 1)
-		var/mob/living/carbon/human/singular_host = pick(usable_hosts)
-		if(singular_host.has_borer())
-			owner.balloon_alert(owner, "target already occupied")
-			return
-		if(!do_after(cortical_owner, ((cortical_owner.upgrade_flags & BORER_FAST_BORING) && (cortical_owner.upgrade_flags & BORER_HIDING) ? 3 SECONDS : 6 SECONDS), target = singular_host))
-			owner.balloon_alert(owner, "you and target must be still")
-			return
-		if(get_dist(singular_host, cortical_owner) > 1)
-			owner.balloon_alert(owner, "target too far away")
-			return
-		cortical_owner.human_host = singular_host
-		cortical_owner.forceMove(cortical_owner.human_host)
-		if(!(cortical_owner.upgrade_flags & BORER_STEALTH_MODE))
-			to_chat(cortical_owner.human_host, span_notice("A chilling sensation goes down your spine..."))
-		cortical_owner.copy_languages(cortical_owner.human_host)
-		var/obj/item/organ/internal/borer_body/borer_organ = new(cortical_owner.human_host)
-		borer_organ.borer = owner
-		borer_organ.Insert(cortical_owner.human_host)
-		var/turf/human_turftwo = get_turf(cortical_owner.human_host)
-		var/logging_text = "[key_name(cortical_owner)] went into [key_name(cortical_owner.human_host)] at [loc_name(human_turftwo)]"
-		cortical_owner.log_message(logging_text, LOG_GAME)
-		cortical_owner.human_host.log_message(logging_text, LOG_GAME)
-		StartCooldown()
+		enter_host(usable_hosts[1])
 		return
 
 	//if the list of possible host is more than one, allow choosing a host
@@ -562,28 +540,31 @@
 	if(!choose_host)
 		owner.balloon_alert(owner, "no target selected")
 		return
-	var/mob/living/carbon/human/choosen_human = choose_host
-	if(choosen_human.has_borer())
+	enter_host(choose_host)
+
+/datum/action/cooldown/borer/choosing_host/proc/enter_host(mob/living/carbon/human/singular_host)
+	var/mob/living/simple_animal/cortical_borer/cortical_owner = owner
+	if(singular_host.has_borer())
 		owner.balloon_alert(owner, "target already occupied")
 		return
-	if(!do_after(cortical_owner, ((cortical_owner.upgrade_flags & BORER_FAST_BORING) && (cortical_owner.upgrade_flags & BORER_HIDING) ? 3 SECONDS : 6 SECONDS), target = choose_host))
+	if(!do_after(cortical_owner, ((cortical_owner.upgrade_flags & BORER_FAST_BORING) && (cortical_owner.upgrade_flags & BORER_HIDING) ? 3 SECONDS : 6 SECONDS), target = singular_host))
 		owner.balloon_alert(owner, "you and target must be still")
 		return
-	if(get_dist(choose_host, cortical_owner) > 1)
+	if(get_dist(singular_host, cortical_owner) > 1)
 		owner.balloon_alert(owner, "target too far away")
 		return
-	cortical_owner.human_host = choose_host
+	cortical_owner.human_host = singular_host
 	cortical_owner.forceMove(cortical_owner.human_host)
-	to_chat(cortical_owner.human_host, span_notice("A chilling sensation goes down your spine..."))
+	if(!(cortical_owner.upgrade_flags & BORER_STEALTH_MODE))
+		to_chat(cortical_owner.human_host, span_notice("A chilling sensation goes down your spine..."))
 	cortical_owner.copy_languages(cortical_owner.human_host)
 	var/obj/item/organ/internal/borer_body/borer_organ = new(cortical_owner.human_host)
 	borer_organ.borer = owner
 	borer_organ.Insert(cortical_owner.human_host)
-	var/turf/human_turfthree = get_turf(cortical_owner.human_host)
-	var/logging_text = "[key_name(cortical_owner)] went into [key_name(cortical_owner.human_host)] at [loc_name(human_turfthree)]"
+	var/turf/human_turftwo = get_turf(cortical_owner.human_host)
+	var/logging_text = "[key_name(cortical_owner)] went into [key_name(cortical_owner.human_host)] at [loc_name(human_turftwo)]"
 	cortical_owner.log_message(logging_text, LOG_GAME)
 	cortical_owner.human_host.log_message(logging_text, LOG_GAME)
-	owner.balloon_alert(owner, "entered host")
 	StartCooldown()
 
 //you can force your host to speak... dont abuse this
