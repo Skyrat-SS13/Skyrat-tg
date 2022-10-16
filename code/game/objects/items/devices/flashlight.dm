@@ -26,7 +26,7 @@
 	/// Is the light turned on or off currently
 	var/on = FALSE
 
-// SKYRAT EDIT REMOVAL START - MOVED TO MODUALR FLASHLIGHT.DM
+// SKYRAT EDIT REMOVAL BEGIN - MOVED TO MODUALR FLASHLIGHT.DM
 /*
 /obj/item/flashlight/Initialize(mapload)
 	. = ..()
@@ -49,7 +49,7 @@
 
 	return NONE
 
-// SKYRAT EDIT REMOVAL START - MOVED TO MODUALR FLASHLIGHT.DM
+// SKYRAT EDIT REMOVAL BEGIN - MOVED TO MODUALR FLASHLIGHT.DM
 /*
 /obj/item/flashlight/proc/update_brightness(mob/user)
 	if(on)
