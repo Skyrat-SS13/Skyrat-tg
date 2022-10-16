@@ -19,6 +19,12 @@
 /area/station/command/bridge
 	engineering_override_eligible = TRUE
 
+/area/station/engineering/atmos
+	engineering_override_eligible = TRUE
+
+/area/station/engineering/atmospherics_engine
+	engineering_override_eligible = TRUE
+
 /area/station/command/teleporter
 	engineering_override_eligible = TRUE
 
