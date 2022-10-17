@@ -347,14 +347,16 @@
 
 // SWEATERS
 
-/datum/greyscale_config/sweater
-	name = "Sweater"
+/datum/greyscale_config/cableknit_sweater
+	name = "Cableknit Sweater"
 	icon_file = 'modular_skyrat/modules/GAGS/icons/sweaters.dmi'
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/sweater/sweater.json'
 
-/datum/greyscale_config/sweater/worn
-	name = "Sweater (Worn)"
+/datum/greyscale_config/cableknit_sweater/worn
+	name = "Cableknit Sweater (Worn)"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/sweater/sweater_worn.json'
+
+//Keyhole uses the same configs!
 
 // URBAN COAT
 
@@ -425,11 +427,11 @@
 
 /datum/greyscale_config/jumpsuit_worn/digi
 	name = "Worn Jumpsuit - Digitigrade"
-	icon_file = 'modular_skyrat/modules/GAGS/icons/jumpsuit_digi.dmi'
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/color_digi.dmi'
 
 /datum/greyscale_config/jumpsuit_prison_worn/digi
 	name = "Worn Prison Jumpsuit - Digitigrade"
-	icon_file = 'modular_skyrat/modules/GAGS/icons/jumpsuit_digi.dmi'
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/color_digi.dmi'
 
 /datum/greyscale_config/jumpsuit_worn/vox
 	name = "Worn Jumpsuit - Vox"
@@ -674,6 +676,14 @@
 /datum/greyscale_config/kilt/worn
 	name = "Kilt (Worn)"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/kilt/kilt_worn.json'
+
+/*
+TREK
+*/
+
+/datum/greyscale_config/trek/worn/digi
+	name = "Worn Trek Uniform - Digitigrade"
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/trek_digi.dmi'
 
 /*
 *	SHOES

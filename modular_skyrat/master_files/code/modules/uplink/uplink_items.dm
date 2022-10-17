@@ -89,6 +89,7 @@
 	surplus = 17
 	progression_minimum = 30 MINUTES
 	purchasable_from = ~(UPLINK_NUKE_OPS | UPLINK_CLOWN_OPS)
+	cant_discount = TRUE
 
 /datum/uplink_item/stealthy_weapons/telescopicbaton
 	name = "Telescopic Baton"
@@ -98,13 +99,6 @@
 	surplus = 0
 	progression_minimum = 10 MINUTES
 	illegal_tech = FALSE
-
-// STEALTHY TOOOLS
-/datum/uplink_item/stealthy_tools/infiltratormask
-	name = "Voice-Muffling Balaclava"
-	desc = "A balaclava that muffles your voice, masking your identity. Also provides flash immunity!"
-	item = /obj/item/clothing/mask/infiltrator
-	cost = 2
 
 /datum/uplink_item/stealthy_tools/advanced_cham_headset
 	name = "Advanced Chameleon Headset" // Consider this a standin for the oldbase headset upgrader.

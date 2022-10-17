@@ -4,7 +4,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/glasses.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/eyes.dmi'
 	icon_state = "hudpatch"
-	inhand_icon_state = "eyepatch"
+	inhand_icon_state = "sunhudmed"
 	uses_advanced_reskins = TRUE
 	can_switch_eye = TRUE	//See modular_skyrat\modules\customization\modules\clothing\glasses\glasses.dm
 
