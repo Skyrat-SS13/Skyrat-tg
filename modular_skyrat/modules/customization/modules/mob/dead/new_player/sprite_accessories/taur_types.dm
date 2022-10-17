@@ -130,7 +130,6 @@
 /datum/sprite_accessory/taur/drider
 	name = "Drider"
 	icon_state = "drider"
-	color_src = USE_ONE_COLOR
 
 /datum/sprite_accessory/taur/eevee
 	name = "Eevee"

@@ -5,6 +5,7 @@
 	category = PREFERENCE_CATEGORY_NON_CONTEXTUAL
 	savefile_identifier = PREFERENCE_CHARACTER
 	savefile_key = "headshot"
+	maximum_value_length = MAX_MESSAGE_LEN
 	/// Assoc list of ckeys and their link, used to cut down on chat spam
 	var/list/stored_link = list()
 	var/static/link_regex = regex("^https://i.gyazo.com|https://media.discordapp.net|https://cdn.discordapp.com|https://media.discordapp.net$") // Do not touch the damn duplicates.
