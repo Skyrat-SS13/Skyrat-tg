@@ -109,9 +109,9 @@
 												"Novaya Rossiyskaya Imperiya Civilian Port" = 5,))
 			///"right" = Right for the raiders to use as an argument; usually pretty difficult to avoid.
 			var/right_pick = pick("High probability of NRI-affiliated civilian casualties aboard the facility",
-									"Highly increased funding by the SolFed authorities",
+									"Highly increased funding by the SolFed authorities; neglected NRI-backed subsidiaries' contracts",
 									"Unethical hiring practices and unfair payment allocation for the NRI citizens",
-									"Recently discovered BSA-[number] installation in close proximity to the neutral space aboard nearby Nanotrasen facility.")
+									"Recently discovered BSA-[number] installation in close proximity to the neutral space aboard this or nearby Nanotrasen facility.")
 			///"wrong" = Loosely based accusations that can be easily disproven if people think.
 			var/wrong_pick = pick("Inadequate support of the local producer",
 									"Unregulated production of Gauss weaponry aboard this installation",
@@ -120,7 +120,7 @@
 									ANY POSSIBLE INDENTURE HAS BEEN CLEARED. WE APOLOGIZE FOR THE INCONVENIENCE.")
 			var/final_result = pick(right_pick, wrong_pick)
 			threat.title = "NRI Audit"
-			threat.content = "Greetings [station_designation], this is the [ship_name]. Due to recent Imperial regulatory violations, such as [final_result] and many other smaller issues, your station has been fined [payoff] credits. Due to an inadequate imperial police presence in your sector, failure to comply might instead result in a military patrol dispatch. Novaya Rossiyskaya Imperiya collegial secretary out."
+			threat.content = "Greetings [station_designation], this is the [ship_name]. Due to recent Imperial regulatory violations, such as [final_result] and many other smaller issues, your station has been fined [payoff] credits. Inadequate imperial police activity is currently present in your sector, thus the failure to comply might instead result in a military patrol dispatch. Novaya Rossiyskaya Imperiya collegial secretary out."
 			threat.possible_answers = list("Submit to audit and pay the fine.", "Override the response system for an immediate military dispatch.")
 		//SKYRAT EDIT ADDITION END
 	threat.answer_callback = CALLBACK(GLOBAL_PROC, .proc/pirates_answered, threat, payoff, ship_name, initial_send_time, response_max_time, ship_template)

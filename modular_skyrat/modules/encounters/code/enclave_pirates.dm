@@ -1,10 +1,3 @@
-#define NRI_COOLDOWN_HEAL 30 SECONDS
-#define NRI_COOLDOWN_RADS 45 SECONDS
-#define NRI_COOLDOWN_ACID 45 SECONDS
-
-#define NRI_HEAL_AMOUNT 5
-#define NRI_BLOOD_REPLENISHMENT 10
-
 /datum/outfit/pirate/enclave_officer
 	name = "Imperial Enclave Officer"
 
@@ -181,7 +174,7 @@
 	name = "NRI Mission Specifications"
 	default_raw_text = {"On behalf of Novaya Rossiyskaya Imperiya Defense and Economical Collegias by the order of the Admiral Voronov Platon Aleksandrovich and the Active Privy Councillor Radich Katarina Dinovich:
 	<br> By the Supreme command, a special meeting of representatives from the Imperial Academy of Finances and the Collegias of Foreign and Internal Affairs, Economy, Defense was convened under the chairmanship of Adjutant General Tarkhanov to consider the issue of the incongruity with the Imperial regulations by the Nanotrasen Research Station.
-	<br> This meeting, having familiarized itself with all the other possible actions and solutions, came to the conviction that the indenture of fines has casus belli to perform a strategic secret operation.
+	<br> This meeting, having familiarized itself with all the other possible actions and solutions, came to the conviction that the indenture of fines has casus belli to perform a diplomatic personal meeting.
 	<br> The Imperial Regulation has to be enforced in order to minimise any potential threat for the whole Empire, not excluding allied kingdoms, organisations and other partners, and to strengthen our positions in the ongoing Border War.
 	<br>
 	<br> About such a Supreme Will, reported in the recall of the Councillor of the Defense Collegium, No. 217648, We announce to the military department for immediate actions in appropriate cases.
@@ -189,15 +182,17 @@
 	<br> Signed by We,
 	<br> <span style=\"color:black;font-family:'Segoe Script';\"><p><b>Voronov Platon Aleksandrovich and Radich Katarina Dinovich.</b></p></span>"}
 
+/obj/item/paper/fluff/nri_police
+	name = "hastily printed note"
+	default_raw_text = {"Hey, officer, we couldn't arrange getting you a proper military fregate, -you know, those goddamn bureaucrats with their permission requests and paperwork-, so the police corvette will have to suffice.
+	<br> It was not designed for any kind of long-term deployments and anything more aggressive than shooting up a bunch of punks, so expect frequent power outages and a significant lack of equipment.
+	<br> We have done some quick modifications to make it more suitable for military use, and smuggled you some defensive and military-grade medical equipment to balance it out. And some SMGs that were so convenient to \"go out of service and get scrapped". It should do the job for now.
+	<br> As for the broken Krinkov, there is nothing we can do for now. Will have to use the policemen's, not like you're here to fight the solarians anyways.
+	<br> And, please, for the love of God and the Eternal Empress - do not make this mission into a shootout. We can't afford any more casualties in this sector, especially with the most of our military being on the frontline.
+	<br>
+	<br> Don't screw this up,
+	<br> <span style=\"color:black;font-family:'Segoe Script';\"><p><b>Defense Collegia Shipmaster, Akulan Contractor, Shinrun Kantes.</b></p></span>"}
+
 /obj/machinery/suit_storage_unit/nri
 	mod_type = /obj/item/mod/control/pre_equipped/frontline/pirate
 	storage_type = /obj/item/tank/internals/oxygen/yellow
-
-/obj/machinery/suit_storage_unit/nri/captain
-
-#undef NRI_COOLDOWN_HEAL
-#undef NRI_COOLDOWN_RADS
-#undef NRI_COOLDOWN_ACID
-
-#undef NRI_HEAL_AMOUNT
-#undef NRI_BLOOD_REPLENISHMENT
