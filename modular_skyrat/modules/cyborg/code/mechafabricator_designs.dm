@@ -55,7 +55,7 @@
 /datum/design/sign_upgrade
 	name = "Cyborg Upgrade (Nano-Metallic Picket Sign)"
 	id = "sign_module"
-	construction_time = 60
+	construction_time = 6 SECONDS
 	build_type = MECHFAB
 	build_path = /obj/item/borg/upgrade/sign
 	materials = list(/datum/material/iron=4000, /datum/material/glass=2000,)
