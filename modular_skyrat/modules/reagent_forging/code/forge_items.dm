@@ -306,6 +306,6 @@
 	if(length(tool.contents))
 		user.balloon_alert(user, "tongs are full already!")
 		return FALSE
-	if(skyrat_obj_flags & TRAIT_ANVIL_REPAIR)
+	if(skyrat_obj_flags & ANVIL_REPAIR)
 		forceMove(tool)
 		tool.icon_state = "tong_full"

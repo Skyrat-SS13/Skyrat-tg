@@ -22,8 +22,10 @@
 /datum/component/reagent_clothing/Initialize(set_slot = null)
 	if(!istype(parent, /obj/item))
 		return COMPONENT_INCOMPATIBLE //they need to be clothing, I already said this
+
 	if(set_slot)
 		checking_slot = set_slot
+
 	parent_clothing = parent
 	parent_clothing.create_reagents(MAX_IMBUE_STORAGE, INJECTABLE | REFILLABLE)
 	applying_container = new /obj/item/reagent_containers(src)
@@ -45,6 +47,7 @@
 
 /datum/component/reagent_clothing/proc/set_wearer()
 	SIGNAL_HANDLER
+
 	if(!ishuman(parent_clothing.loc))
 		return
 	cloth_wearer = parent_clothing.loc
@@ -56,11 +59,15 @@
 /datum/component/reagent_clothing/process(delta_time)
 	if(!parent_clothing || !cloth_wearer || !length(imbued_reagent))
 		return
+
 	if(parent_clothing != cloth_wearer.get_item_by_slot(checking_slot))
 		return
+
 	if(!COOLDOWN_FINISHED(src, imbue_cooldown))
 		return
+
 	COOLDOWN_START(src, imbue_cooldown, 3 SECONDS)
+
 	for(var/create_reagent in imbued_reagent)
 		applying_container.reagents.add_reagent(create_reagent, REAGENT_CLOTHING_INJECT_AMOUNT)
 		applying_container.reagents.trans_to(target = cloth_wearer, amount = REAGENT_CLOTHING_INJECT_AMOUNT, methods = INJECT)

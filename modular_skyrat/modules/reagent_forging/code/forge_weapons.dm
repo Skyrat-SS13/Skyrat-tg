@@ -3,7 +3,7 @@
 	lefthand_file = 'modular_skyrat/modules/reagent_forging/icons/mob/forge_weapon_l.dmi'
 	righthand_file = 'modular_skyrat/modules/reagent_forging/icons/mob/forge_weapon_r.dmi'
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR
-	skyrat_obj_flags = TRAIT_ANVIL_REPAIR
+	skyrat_obj_flags = ANVIL_REPAIR
 
 /obj/item/forging/reagent_weapon/Initialize(mapload)
 	. = ..()
@@ -168,7 +168,7 @@
 	max_integrity = 150 //over double that of a wooden one
 	w_class = WEIGHT_CLASS_NORMAL
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_AFFECT_STATISTICS
-	skyrat_obj_flags = TRAIT_ANVIL_REPAIR
+	skyrat_obj_flags = ANVIL_REPAIR
 
 /obj/item/shield/riot/buckler/reagent_weapon/Initialize(mapload)
 	. = ..()
