@@ -97,54 +97,6 @@
 	. = ..()
 	AddElement(/datum/element/polychromic, list("#333333", "#888888", "#888888"))
 
-/obj/item/clothing/under/misc/polyjumpsuit
-	name = "polychromic tri-tone jumpsuit"
-	desc = "A fancy jumpsuit made with polychromic threads."
-	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
-	icon_state = "polyjump"
-	can_adjust = FALSE
-	supports_variations_flags = NONE
-
-/obj/item/clothing/under/misc/polyjumpsuit/Initialize(mapload)
-	. = ..()
-	AddElement(/datum/element/polychromic, list("#FFFFFF", "#888888", "#333333"))
-
-/obj/item/clothing/under/misc/poly_bottomless
-	name = "polychromic bottomless shirt"
-	desc = "Great for showing off your underwear in dubious style."
-	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
-	icon_state = "polybottomless"
-	body_parts_covered = CHEST|ARMS	//Because there's no bottom included
-	can_adjust = FALSE
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
-
-/obj/item/clothing/under/misc/poly_bottomless/Initialize(mapload)
-	. = ..()
-	AddElement(/datum/element/polychromic, list("#888888", "#FF3333", "#FFFFFF"))
-
-/obj/item/clothing/under/misc/poly_tanktop
-	name = "polychromic tank top"
-	desc = "For those lazy summer days."
-	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
-	icon_state = "polyshimatank"
-	body_parts_covered = CHEST|GROIN
-	can_adjust = FALSE
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
-	var/list/poly_colors = list("#888888", "#FFFFFF", "#88CCFF")
-
-/obj/item/clothing/under/misc/poly_tanktop/Initialize(mapload)
-	. = ..()
-	AddElement(/datum/element/polychromic, poly_colors)
-
-/obj/item/clothing/under/misc/poly_tanktop/female
-	name = "polychromic feminine tank top"
-	desc = "Great for showing off your chest in style. Not recommended for males."
-	icon_state = "polyfemtankpantsu"
-	poly_colors = list("#888888", "#FF3333", "#FFFFFF")
-
 /**************CKEY EXCLUSIVES*************/
 
 // Donation reward for Grunnyyy
