@@ -132,6 +132,8 @@
 	if(islist(crop_area) && crop_area.len == 4)
 		icon_to_process.Crop(crop_area[1], crop_area[2], crop_area[3], crop_area[4])
 		icon_to_process.Scale(32, 32)
+	else if(crop_area)
+		stack_trace("Invalid crop paramater! The provided crop area list is not four entries long, or is not a list!")
 
 	var/color = sanitize_hexcolor(greyscale_color)
 	if(color && sprite_accessory.color_src)
