@@ -111,7 +111,7 @@
 			var/right_pick = pick("High probability of NRI-affiliated civilian casualties aboard the facility",
 									"Highly increased funding by the SolFed authorities; neglected NRI-backed subsidiaries' contracts",
 									"Unethical hiring practices and unfair payment allocation for the NRI citizens",
-									"Recently discovered BSA-[number] installation in close proximity to the neutral space aboard this or nearby Nanotrasen facility.")
+									"Recently discovered BSA-[number] installation in close proximity to the neutral space aboard this or nearby affiliated facility.")
 			///"wrong" = Loosely based accusations that can be easily disproven if people think.
 			var/wrong_pick = pick("Inadequate support of the local producer",
 									"Unregulated production of Gauss weaponry aboard this installation",
