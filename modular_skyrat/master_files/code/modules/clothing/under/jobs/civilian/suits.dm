@@ -29,6 +29,7 @@
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 	gets_cropped_on_taurs = FALSE
+	body_parts_covered = CHEST|GROIN|LEGS
 	greyscale_config = /datum/greyscale_config/recolorable_suitskirt
 	greyscale_config_worn = /datum/greyscale_config/recolorable_suitskirt/worn
 	greyscale_config_worn_digi = /datum/greyscale_config/recolorable_suitskirt/worn/digi
