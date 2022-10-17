@@ -90,9 +90,15 @@ SUBSYSTEM_DEF(title)
 
 	// Load map progress cache info
 	progress_json = json_decode(file2text(json_file))
+
+	// Different format. Purge everything.
+	if(progress_json["_version"] != TITLE_PROGRESS_CACHE_VERSION)
+		progress_json.Cut()
+		return
+
+	// If there's no info about the current map, use the defaults.
 	var/list/map_info = progress_json[SSmapping.config.map_name]
 	if(!islist(map_info))
-		// If there's none, use the defaults.
 		return
 
 	// Get expected total time and subpart time
@@ -102,6 +108,8 @@ SUBSYSTEM_DEF(title)
 /datum/controller/subsystem/title/proc/save_progress_json()
 	var/json_file = file(TITLE_PROGRESS_CACHE_FILE)
 	var/list/map_info = list()
+
+	progress_json["_version"] = TITLE_PROGRESS_CACHE_VERSION
 
 	if(progress_json[SSmapping.config.map_name])
 		// Save total time and updated message timings. Latest time is worth 1/4 the "average"
@@ -181,15 +189,21 @@ SUBSYSTEM_DEF(title)
  * * warning - optional: TRUE to indicate this is an error/warning
  */
 /proc/add_startup_message(msg, warning)
-	var/msg_dat = {"<p class="terminal_text">[warning ? "☒ " : ""][msg]</p>"}
+	// Remove the # second(s) / #s part of the message.
+	var/static/regex/msg_key_regex = new(@"[0-9.]+( second)?s?!", "ig")
 
-	GLOB.startup_messages += msg_dat
+	// HTML displayed to user
+	var/msg_html = {"<p class="terminal_text">[warning ? "☒ " : ""][msg]</p>"}
+	// Key used to cache the timing info
+	var/msg_key = msg_key_regex.Replace(msg, "#")
+
+	GLOB.startup_messages += msg_html
 
 	// If we ran before SStitle initialized, set the ref time now.
 	SStitle.check_progress_reference_time()
 
 	// Add or update message history info.
-	var/old_timing = SStitle.startup_message_timings[msg]
+	var/old_timing = SStitle.startup_message_timings[msg_key]
 	var/new_timing
 	if(!old_timing)
 		// new message
@@ -197,11 +211,11 @@ SUBSYSTEM_DEF(title)
 	else
 		// old message. Latest time is worth 1/4 the "average"
 		new_timing = 0.75 * old_timing + 0.25 * (world.timeofday - SStitle.progress_reference_time)
-	SStitle.startup_message_timings[msg] = new_timing
+	SStitle.startup_message_timings[msg_key] = new_timing
 
 	for(var/mob/dead/new_player/new_player in GLOB.new_player_list)
 		if(!new_player.title_screen_is_ready)
 			continue
 
-		new_player.client << output(msg_dat, "title_browser:append_terminal_text")
+		new_player.client << output(msg_html, "title_browser:append_terminal_text")
 		new_player.client << output(list2params(list(new_timing, SStitle.average_completion_time)), "title_browser:update_loading_progress")
