@@ -58,19 +58,6 @@
 	greyscale_config_worn = /datum/greyscale_config/cloak/shroud/worn
 
 //UNIFORMS
-/obj/item/clothing/under/dress/skirt/polychromic
-	name = "polychromic skirt"
-	desc = "A fancy skirt made with polychromic threads."
-	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
-	icon_state = "polyskirt"
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
-	var/list/poly_colors = list("#FFFFFF", "#FF8888", "#888888")
-
-/obj/item/clothing/under/dress/skirt/polychromic/Initialize(mapload)
-	. = ..()
-	AddElement(/datum/element/polychromic, poly_colors)
-
 /obj/item/clothing/under/misc/polyshorts
 	name = "polychromic shorts"
 	desc = "For ease of movement and style."

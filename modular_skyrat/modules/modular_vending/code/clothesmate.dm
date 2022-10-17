@@ -41,7 +41,6 @@
 				/obj/item/clothing/under/suit/skyrat/recolorable = 5,
 				/obj/item/clothing/under/suit/skyrat/recolorable/skirt = 5,
 				/obj/item/clothing/under/pants/skyrat/kilt = 5,
-				/obj/item/clothing/under/dress/skirt/polychromic = 5,
 				/obj/item/clothing/under/suit/fancy = 5,
 				/obj/item/clothing/under/texas = 5,
 				/obj/item/clothing/under/sweater = 5,
