@@ -44,12 +44,19 @@
 /obj/item/clothing/under/costume/skyrat/bathrobe
 	name = "bathrobe"
 	desc = "A warm fluffy bathrobe, perfect for relaxing after finally getting clean."
-	icon_state = "bathrobe"
+	icon = 'modular_skyrat/modules/GAGS/icons/suit/suit.dmi'
+	worn_icon = 'modular_skyrat/modules/GAGS/icons/suit/suit.dmi'
+	worn_icon_teshari = 'modular_skyrat/modules/GAGS/icons/suit/suit_teshari.dmi'
+	icon_state = "robes"
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+	greyscale_colors = "#ffffff"
+	greyscale_config = /datum/greyscale_config/bathrobes
+	greyscale_config_worn = /datum/greyscale_config/bathrobes/worn
+	greyscale_config_worn_teshari = /datum/greyscale_config/bathrobes/worn/teshari
+	greyscale_config_worn_better_vox = /datum/greyscale_config/bathrobes/worn/newvox
+	greyscale_config_worn_vox = /datum/greyscale_config/bathrobes/worn/vox
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 	greyscale_colors = "#434d7a" //THATS RIGHT, FUCK YOU! THE BATHROBE CAN BE RECOLORED!
-	greyscale_config = /datum/greyscale_config/bathrobe
-	greyscale_config_worn = /datum/greyscale_config/bathrobe/worn
-	greyscale_config_worn_digi = /datum/greyscale_config/bathrobe/worn/digi
 	flags_1 = IS_PLAYER_COLORABLE_1
 
 /*
