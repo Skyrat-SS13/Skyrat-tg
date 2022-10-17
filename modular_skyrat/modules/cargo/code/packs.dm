@@ -660,4 +660,4 @@
 	cost = CARGO_CRATE_VALUE * 5
 	access_view = ACCESS_CARGO
 	contains = list(/obj/item/disk/nifsoft_uploader/money_sense)
-	crate_name = "cargo MODsuit crate"
+	crate_name = "Money sense NIFSoft crate"

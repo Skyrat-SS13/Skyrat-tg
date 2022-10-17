@@ -104,6 +104,24 @@
 
 	return TRUE
 
+///Restores the name of the NIFSoft to default.
+/datum/nifsoft/proc/restore_name()
+	program_name = initial(name)
+
+///How does the NIFSoft react if the user is EMP'ed?
+/datum/nifsoft/proc/on_emp(emp_severity)
+	if(active)
+		activate()
+
+	var/list/random_characters = list("#","!","%","^","*","$","@","^","A","b","c","D","F","W","H","Y","z","U","O","o")
+	var/scrambled_name = "!"
+
+	for(var/i = 1, i < length(program_name), i++)
+		scrambled_name += pick(random_characters)
+
+	program_name = scrambled_name
+	addtimer(CALLBACK(src, .proc/restore_name), 60 SECONDS)
+
 /// A disk that can upload NIFSofts to a recpient with a NIFSoft installed.
 /obj/item/disk/nifsoft_uploader
 	name = "Generic NIFSoft datadisk"
@@ -120,6 +138,15 @@
 
 	if(name == "Generic NIFSoft datadisk")
 		name = "[initial(loaded_nifsoft.name)] datadisk"
+
+/obj/item/disk/nifsoft_uploader/examine(mob/user)
+	. = ..()
+
+	var/nifsoft_desc = initial(loaded_nifsoft.program_desc)
+
+	if(nifsoft_desc)
+		. += span_cyan("Program description: [nifsoft_desc]")
+
 
 /// Attempts to install the NIFSoft on the disk to the target
 /obj/item/disk/nifsoft_uploader/proc/attempt_software_install(mob/living/carbon/human/target)

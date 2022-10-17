@@ -359,7 +359,7 @@
 	durability_loss_vulnerable = FALSE
 
 	addtimer(CALLBACK(src, .proc/fix_nif), 30 SECONDS)
-	addtimer(CALLBACK(src, .proc/make_vulnerable), 60 SECONDS)
+	addtimer(CALLBACK(src, .proc/make_vulnerable), 3 MINUTES)
 
 	switch(severity)
 		if(1)
@@ -367,7 +367,10 @@
 		if(2)
 			durability -= (death_durability_loss / 2)
 
-	send_message("EMP TEXT", TRUE)
+	for(var/datum/nifsoft/installed_nifsoft as anything in loaded_nifsofts)
+		installed_nifsoft.on_emp(severity)
+
+	send_message("<b>ELECTROMAGNETIC INTERFERENCE DETECTED</b>", TRUE)
 
 ///A surgery that repairs the patient's NIF
 /datum/surgery/repair_nif
