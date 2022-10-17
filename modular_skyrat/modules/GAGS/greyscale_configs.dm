@@ -625,19 +625,6 @@
 	name = "Worn Buttondown with Shorts - Digitigrade"
 	icon_file = SHORTS_PANTS_SHIRTS_DIGIFILE
 
-/datum/greyscale_config/buttondown_vicvest
-	name = "Buttondown with Double-breasted Vest"
-	icon_file = 'modular_skyrat/master_files/icons/obj/clothing/under/shorts_pants_shirts.dmi'
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/costumes/buttondown_vicvest.json'
-
-/datum/greyscale_config/buttondown_vicvest/worn
-	name = "Worn Buttondown with Double-breasted Vest"
-	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/shorts_pants_shirts.dmi'
-
-/datum/greyscale_config/buttondown_vicvest/worn/digi
-	name = "Worn Buttondown with Double-breasted Vest - Digitigrade"
-	icon_file = SHORTS_PANTS_SHIRTS_DIGIFILE
-
 /datum/greyscale_config/football_suit_worn/digi
 	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/costume_digi.dmi'
 
@@ -703,6 +690,19 @@
 /datum/greyscale_config/kilt/worn
 	name = "Kilt (Worn)"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/kilt/kilt_worn.json'
+
+/datum/greyscale_config/buttondown_vicvest
+	name = "Buttondown with Double-breasted Vest"
+	icon_file = 'modular_skyrat/master_files/icons/obj/clothing/under/shorts_pants_shirts.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/costumes/buttondown_vicvest.json'
+
+/datum/greyscale_config/buttondown_vicvest/worn
+	name = "Worn Buttondown with Double-breasted Vest"
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/shorts_pants_shirts.dmi'
+
+/datum/greyscale_config/buttondown_vicvest/worn/digi
+	name = "Worn Buttondown with Double-breasted Vest - Digitigrade"
+	icon_file = SHORTS_PANTS_SHIRTS_DIGIFILE
 
 /*
 TREK
