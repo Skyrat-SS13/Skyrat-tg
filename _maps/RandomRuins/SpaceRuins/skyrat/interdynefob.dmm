@@ -804,11 +804,6 @@
 /obj/item/storage/belt/security/webbing/ds,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/security)
-"dl" = (
-/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
-/obj/machinery/suit_storage_unit/mining,
-/turf/open/floor/iron/textured_large,
-/area/ruin/space/has_grav/skyrat/interdynefob/research)
 "dn" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
@@ -850,6 +845,7 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/maintenance/southeast)
 "dt" = (
 /obj/machinery/light/directional/west,
+/obj/effect/decal/cleanable/cobweb,
 /turf/open/floor/iron/dark/smooth_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/security)
 "du" = (
@@ -2271,6 +2267,7 @@
 "iA" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/trash_pile,
+/obj/effect/decal/cleanable/cobweb,
 /turf/open/floor/catwalk_floor/iron_dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/maintenance/southwest)
 "iC" = (
@@ -4484,6 +4481,12 @@
 	dir = 4
 	},
 /area/ruin/space/has_grav/skyrat/interdynefob/medbay)
+"qD" = (
+/obj/structure/closet/emcloset,
+/turf/open/floor/iron/dark/smooth_edge{
+	dir = 4
+	},
+/area/ruin/space/has_grav/skyrat/interdynefob/halls)
 "qE" = (
 /obj/machinery/smartfridge/food,
 /turf/closed/wall/r_wall/syndicate/nodiagonal,
@@ -5285,7 +5288,6 @@
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/skyrat/interdynefob/service/library)
 "tG" = (
-/obj/effect/decal/cleanable/cobweb,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
 	dir = 6
 	},
@@ -5549,10 +5551,6 @@
 	dir = 10
 	},
 /area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
-"uF" = (
-/obj/machinery/suit_storage_unit/mining,
-/turf/closed/wall/r_wall/syndicate/nodiagonal,
-/area/ruin/space/has_grav/skyrat/interdynefob/research)
 "uI" = (
 /obj/structure/reagent_dispensers/watertank/high,
 /obj/item/reagent_containers/cup/bucket,
@@ -8567,6 +8565,7 @@
 "Fh" = (
 /obj/structure/closet/crate,
 /obj/effect/spawner/random/maintenance,
+/obj/effect/decal/cleanable/cobweb,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/skyrat/interdynefob/maintenance/southwest)
 "Fi" = (
@@ -8741,11 +8740,6 @@
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo/hangar)
-"FP" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/suit_storage_unit/mining,
-/turf/open/floor/iron,
-/area/ruin/space/has_grav/skyrat/interdynefob/maintenance/southeast)
 "FR" = (
 /obj/machinery/door/airlock/grunge{
 	id_tag = "TESArena";
@@ -9234,6 +9228,13 @@
 	},
 /turf/open/floor/iron/white,
 /area/ruin/space/has_grav/skyrat/interdynefob/medbay/chem)
+"HZ" = (
+/obj/machinery/door/airlock/security/old{
+	glass = 1;
+	name = "Cryo"
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
 "Ia" = (
 /obj/structure/window/reinforced/survival_pod,
 /obj/machinery/power/shuttle_engine/heater{
@@ -9601,6 +9602,7 @@
 	default_raw_text = "Hey there Deep Space 2 crew, sorry about your stolen book, hope this horn helps! HONK! -Love Donk Co.";
 	name = "A Note from Donk co."
 	},
+/obj/item/circuitboard/machine/spaceship_navigation_beacon,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge/vault)
 "Jj" = (
@@ -10732,11 +10734,6 @@
 /obj/effect/mapping_helpers/airlock/cutaiwire,
 /turf/open/floor/iron/white,
 /area/ruin/space/has_grav/skyrat/interdynefob/medbay)
-"Nl" = (
-/obj/machinery/light/directional/west,
-/obj/structure/closet/emcloset,
-/turf/open/floor/iron/dark,
-/area/ruin/space/has_grav/skyrat/interdynefob/halls)
 "Nm" = (
 /obj/structure/table/wood,
 /obj/structure/sign/poster/contraband/energy_swords{
@@ -12870,7 +12867,6 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
 /obj/effect/mapping_helpers/airlock/cutaiwire,
-/obj/machinery/suit_storage_unit/mining,
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/research)
 "VI" = (
@@ -15440,7 +15436,7 @@ Ul
 Xn
 Ek
 IT
-VU
+HZ
 vw
 UR
 Zy
@@ -15948,7 +15944,7 @@ xL
 xL
 Hy
 vo
-Nl
+ZJ
 fU
 qw
 tY
@@ -16022,7 +16018,7 @@ Xw
 Cn
 oC
 FH
-uw
+qD
 qw
 mn
 QE
@@ -17227,7 +17223,7 @@ gh
 mI
 Pz
 Nw
-dl
+Nw
 VF
 Yy
 Yy
@@ -17299,8 +17295,8 @@ bJ
 ol
 qj
 qj
-uF
-uF
+qj
+qj
 qj
 wH
 Pv
@@ -17371,7 +17367,7 @@ tP
 jO
 Qq
 oC
-FP
+wX
 wX
 av
 qj
