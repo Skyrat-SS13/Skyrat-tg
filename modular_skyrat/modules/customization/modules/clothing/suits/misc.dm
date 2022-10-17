@@ -344,5 +344,5 @@
 	greyscale_config_worn = /datum/greyscale_config/apron/worn
 	greyscale_config_worn_teshari = /datum/greyscale_config/apron/worn/teshari
 	greyscale_config_worn_better_vox = /datum/greyscale_config/apron/worn/newvox
-	greyscale_config_worn_vox = /datum/greyscale_config/apron/worn/vox
+	greyscale_config_worn_vox = /datum/greyscale_config/apron/worn/oldvox
 	flags_1 = IS_PLAYER_COLORABLE_1

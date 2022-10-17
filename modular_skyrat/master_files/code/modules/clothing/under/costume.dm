@@ -50,11 +50,11 @@
 	icon_state = "robes"
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 	greyscale_colors = "#ffffff"
-	greyscale_config = /datum/greyscale_config/bathrobes
-	greyscale_config_worn = /datum/greyscale_config/bathrobes/worn
-	greyscale_config_worn_teshari = /datum/greyscale_config/bathrobes/worn/teshari
-	greyscale_config_worn_better_vox = /datum/greyscale_config/bathrobes/worn/newvox
-	greyscale_config_worn_vox = /datum/greyscale_config/bathrobes/worn/vox
+	greyscale_config = /datum/greyscale_config/bathrobe
+	greyscale_config_worn = /datum/greyscale_config/bathrobe/worn
+	greyscale_config_worn_teshari = /datum/greyscale_config/bathrobe/worn/teshari
+	greyscale_config_worn_better_vox = /datum/greyscale_config/bathrobe/worn/newvox
+	greyscale_config_worn_vox = /datum/greyscale_config/bathrobe/worn/oldvox
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 	greyscale_colors = "#434d7a" //THATS RIGHT, FUCK YOU! THE BATHROBE CAN BE RECOLORED!
 	flags_1 = IS_PLAYER_COLORABLE_1

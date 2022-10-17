@@ -155,11 +155,11 @@
 	worn_icon_teshari = 'modular_skyrat/modules/GAGS/icons/shoes/shoes_teshari.dmi'
 	icon_state = "laceups"
 	greyscale_colors = "#383631"
-	greyscale_config = /datum/greyscale_config/laceups
-	greyscale_config_worn = /datum/greyscale_config/laceups/worn
-	greyscale_config_worn_teshari = /datum/greyscale_config/laceups/worn/teshari
-	greyscale_config_worn_better_vox = /datum/greyscale_config/laceups/worn/newvox
-	greyscale_config_worn_vox = /datum/greyscale_config/laceups/worn/vox
+	greyscale_config = /datum/greyscale_config/laceup
+	greyscale_config_worn = /datum/greyscale_config/laceup/worn
+	greyscale_config_worn_teshari = /datum/greyscale_config/laceup/worn/teshari
+	greyscale_config_worn_better_vox = /datum/greyscale_config/laceup/worn/newvox
+	greyscale_config_worn_vox = /datum/greyscale_config/laceup/worn/oldvox
 	flags_1 = IS_PLAYER_COLORABLE_1
 
 /obj/item/clothing/shoes/colorable_sandals
@@ -174,7 +174,7 @@
 	greyscale_config_worn = /datum/greyscale_config/sandals/worn
 	greyscale_config_worn_teshari = /datum/greyscale_config/sandals/worn/teshari
 	greyscale_config_worn_better_vox = /datum/greyscale_config/sandals/worn/newvox
-	greyscale_config_worn_vox = /datum/greyscale_config/sandals/worn/vox
+	greyscale_config_worn_vox = /datum/greyscale_config/sandals/worn/oldvox
 	flags_1 = IS_PLAYER_COLORABLE_1
 
 /obj/item/clothing/shoes/jackboots/recolorable
@@ -187,5 +187,5 @@
 	greyscale_config_worn = /datum/greyscale_config/boots/worn
 	greyscale_config_worn_teshari = /datum/greyscale_config/boots/worn/teshari
 	greyscale_config_worn_better_vox = /datum/greyscale_config/boots/worn/newvox
-	greyscale_config_worn_vox = /datum/greyscale_config/boots/worn/vox
+	greyscale_config_worn_vox = /datum/greyscale_config/boots/worn/oldvox
 	flags_1 = IS_PLAYER_COLORABLE_1

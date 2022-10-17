@@ -396,4 +396,4 @@
 	greyscale_config_worn = /datum/greyscale_config/standalone_hood/worn
 	greyscale_config_worn_teshari = /datum/greyscale_config/standalone_hood/worn/teshari
 	greyscale_config_worn_better_vox = /datum/greyscale_config/standalone_hood/worn/newvox
-	greyscale_config_worn_vox = /datum/greyscale_config/standalone_hood/worn/vox
+	greyscale_config_worn_vox = /datum/greyscale_config/standalone_hood/worn/oldvox

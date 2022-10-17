@@ -93,7 +93,7 @@
 
 /datum/greyscale_config/standalone_hood
 	name = "Hood"
-	icon_file = 'modular_skyrat/modules/GAGS/icons/neck/neck.dmi'
+	icon_file = 'modular_skyrat/modules/GAGS/icons/head/head.dmi'
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/head/hood/hood.json'
 
 /datum/greyscale_config/standalone_hood/worn
@@ -101,13 +101,13 @@
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/head/hood/hood_worn.json'
 
 /datum/greyscale_config/standalone_hood/worn/teshari
-	icon_file = 'modular_skyrat/modules/GAGS/icons/neck/neck_teshari.dmi'
+	icon_file = 'modular_skyrat/modules/GAGS/icons/head/head_teshari.dmi'
 
 /datum/greyscale_config/standalone_hood/worn/newvox
-	icon_file = 'modular_skyrat/modules/GAGS/icons/neck/neck_newvox.dmi'
+	icon_file = 'modular_skyrat/modules/GAGS/icons/head/head_newvox.dmi'
 
 /datum/greyscale_config/standalone_hood/worn/oldvox
-	icon_file = 'modular_skyrat/modules/GAGS/icons/neck/neck_oldvox.dmi'
+	icon_file = 'modular_skyrat/modules/GAGS/icons/head/head_oldvox.dmi'
 
 /*
 *	MASKS
@@ -367,13 +367,13 @@
 	name = "Worn Bathrobe"
 	icon_file = 'modular_skyrat/modules/GAGS/json_configs/suits/bathrobe/bathrobe_worn.json'
 
-/datum/greyscale_config/bathrobe/teshari
+/datum/greyscale_config/bathrobe/worn/teshari
 	icon_file = 'modular_skyrat/modules/GAGS/icons/suit/suit_teshari.dmi'
 
-/datum/greyscale_config/bathrobe/newvox
+/datum/greyscale_config/bathrobe/worn/newvox
 	icon_file = 'modular_skyrat/modules/GAGS/icons/suit/suit_newvox.dmi'
 
-/datum/greyscale_config/bathrobe/oldvox
+/datum/greyscale_config/bathrobe/worn/oldvox
 	icon_file = 'modular_skyrat/modules/GAGS/icons/suit/suit_oldvox.dmi'
 
 // FANCY SUITS
