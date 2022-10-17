@@ -15,7 +15,7 @@
 	alert_able = TRUE
 
 	/// The current ringtone (displayed in the chat when a message is received).
-	var/ringtone = "beep"
+	var/ringtone = MESSENGER_RINGTONE_DEFAULT
 	/// Whether or not the ringtone is currently on.
 	var/ringer_status = TRUE
 	/// Whether or not we're sending and receiving messages.
@@ -114,7 +114,7 @@
 
 	switch(action)
 		if("PDA_ringSet")
-			var/new_ringtone = tgui_input_text(usr, "Enter a new ringtone", "Ringtone", ringtone, 20)
+			var/new_ringtone = tgui_input_text(usr, "Enter a new ringtone", "Ringtone", ringtone, MESSENGER_RINGTONE_MAX_LENGTH)
 			var/mob/living/usr_mob = usr
 			if(!new_ringtone || !in_range(computer, usr_mob) || computer.loc != usr_mob)
 				return
@@ -333,9 +333,13 @@
 
 	// Show it to ghosts
 	var/ghost_message = span_name("[message_data["name"]] </span><span class='game say'>[rigged ? "Rigged" : ""] PDA Message</span> --> [span_name("[signal.format_target()]")]: <span class='message'>[signal.format_message()]")
-	for(var/mob/M in GLOB.player_list)
-		if(isobserver(M) && (M.client?.prefs.chat_toggles & CHAT_GHOSTPDA))
-			to_chat(M, "[FOLLOW_LINK(M, user)] [ghost_message]")
+	for(var/mob/player_mob in GLOB.player_list)
+		if(player_mob.client && !player_mob.client?.prefs)
+			stack_trace("[player_mob] ([player_mob.ckey]) had null prefs, which shouldn't be possible!")
+			continue
+
+		if(isobserver(player_mob) && (player_mob.client?.prefs.chat_toggles & CHAT_GHOSTPDA))
+			to_chat(player_mob, "[FOLLOW_LINK(player_mob, user)] [ghost_message]")
 
 	// Log in the talk log
 	user.log_talk(message, LOG_PDA, tag="[rigged ? "Rigged" : ""] PDA: [message_data["name"]] to [signal.format_target()]")
