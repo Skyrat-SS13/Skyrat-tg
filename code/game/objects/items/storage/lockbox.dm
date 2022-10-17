@@ -223,11 +223,15 @@
 /obj/item/storage/lockbox/order/Initialize(mapload, datum/bank_account/_buyer_account)
 	. = ..()
 	buyer_account = _buyer_account
+<<<<<<< HEAD
 	//SKYRAT EDIT START
 	if(istype(buyer_account, /datum/bank_account/department))
 		department_purchase = TRUE
 		department_account = buyer_account
 	//SKYRAT EDIT END
+=======
+	ADD_TRAIT(src, TRAIT_NO_MISSING_ITEM_ERROR, TRAIT_GENERIC)
+>>>>>>> e16bdc0b52f (Goodie lockbox contents can no longer go missing (#70572))
 
 /obj/item/storage/lockbox/order/attackby(obj/item/W, mob/user, params)
 	if(!isidcard(W))
