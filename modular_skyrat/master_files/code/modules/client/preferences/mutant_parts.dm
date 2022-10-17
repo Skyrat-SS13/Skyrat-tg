@@ -429,36 +429,69 @@
 
 /datum/preference/choiced/mutant_choice/synth_chassis
 	savefile_key = "feature_ipc_chassis"
+	main_feature_name = "Chassis Appearance"
+	category = PREFERENCE_CATEGORY_FEATURES
 	relevant_mutant_bodypart = MUTANT_SYNTH_CHASSIS
 	default_accessory_type = /datum/sprite_accessory/synth_chassis/default
+	should_generate_icons = TRUE
+	generate_icons = TRUE
+	crop_area = list(8, 8, 24, 24) // We want just the body.
+	greyscale_color = DEFAULT_SYNTH_PART_COLOR
+
+/datum/preference/choiced/mutant_choice/synth_chassis/generate_icon_state(datum/sprite_accessory/sprite_accessory, original_icon_state)
+	// If this isn't the right type, we have much bigger problems.
+	var/datum/sprite_accessory/synth_chassis/chassis = sprite_accessory
+	return "[original_icon_state]_chest[chassis.dimorphic ? "_m" : ""]"
 
 /datum/preference/choiced/mutant_choice/synth_chassis/is_part_enabled(datum/preferences/preferences)
 	return TRUE
 
-/datum/preference/tri_color/synth_chassis
-	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
+/datum/preference/choiced/mutant_choice/synth_chassis/compile_constant_data()
+	var/list/data = ..()
+
+	data[SUPPLEMENTAL_FEATURE_KEY] = "ipc_chassis_color"
+
+	return data
+
+/datum/preference/color/synth_chassis
+	category = PREFERENCE_CATEGORY_SUPPLEMENTAL_FEATURES
 	savefile_identifier = PREFERENCE_CHARACTER
 	savefile_key = "ipc_chassis_color"
 	relevant_mutant_bodypart = MUTANT_SYNTH_CHASSIS
-	check_mode = TRICOLOR_NO_CHECK
-
 
 /// IPC Head
 
 /datum/preference/choiced/mutant_choice/synth_head
 	savefile_key = "feature_ipc_head"
+	main_feature_name = "Head Appearance"
+	category = PREFERENCE_CATEGORY_FEATURES
 	relevant_mutant_bodypart = MUTANT_SYNTH_HEAD
 	default_accessory_type = /datum/sprite_accessory/synth_head/default
+	should_generate_icons = TRUE
+	generate_icons = TRUE
+	crop_area = list(11, 22, 21, 32) // We want just the head.
+	greyscale_color = DEFAULT_SYNTH_PART_COLOR
+
+/datum/preference/choiced/mutant_choice/synth_head/generate_icon_state(datum/sprite_accessory/sprite_accessory, original_icon_state)
+	// If this isn't the right type, we have much bigger problems.
+	var/datum/sprite_accessory/synth_head/head = sprite_accessory
+	return "[original_icon_state]_head[head.dimorphic ? "_m" : ""]"
 
 /datum/preference/choiced/mutant_choice/synth_head/is_part_enabled(datum/preferences/preferences)
 	return TRUE
 
-/datum/preference/tri_color/synth_head
-	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
+/datum/preference/choiced/mutant_choice/synth_head/compile_constant_data()
+	var/list/data = ..()
+
+	data[SUPPLEMENTAL_FEATURE_KEY] = "ipc_head_color"
+
+	return data
+
+/datum/preference/color/synth_head
+	category = PREFERENCE_CATEGORY_SUPPLEMENTAL_FEATURES
 	savefile_identifier = PREFERENCE_CHARACTER
 	savefile_key = "ipc_head_color"
 	relevant_mutant_bodypart = MUTANT_SYNTH_HEAD
-	check_mode = TRICOLOR_NO_CHECK
 
 
 /// Skrell Hair

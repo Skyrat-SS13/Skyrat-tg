@@ -549,11 +549,11 @@ export const feature_ipc_chassis: Feature<string> = {
   component: FeatureDropdownInput,
 };
 
-export const ipc_chassis_color: Feature<string[]> = {
+export const ipc_chassis_color: Feature<string> = {
   name: 'IPC Chassis Colors',
   description:
     "Allows customization of an IPC's chassis! Only works for IPCs, for chassis that support greyscale coloring.",
-  component: FeatureTriColorInput,
+  component: FeatureColorInput,
 };
 
 export const ipc_head_toggle: FeatureToggle = {
@@ -568,11 +568,11 @@ export const feature_ipc_head: Feature<string> = {
   component: FeatureDropdownInput,
 };
 
-export const ipc_head_color: Feature<string[]> = {
+export const ipc_head_color: Feature<string> = {
   name: 'IPC Head Colors',
   description:
     "Allows customization of an IPC's head! Only works for IPCs, for heads that support greyscale coloring.",
-  component: FeatureTriColorInput,
+  component: FeatureColorInput,
 };
 
 export const neck_acc_toggle: FeatureToggle = {

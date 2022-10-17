@@ -108,6 +108,12 @@
 	var/datum/sprite_accessory/default_accessory_type
 	/// Path to the corresponding /datum/preference/toggle to check if part is enabled.
 	var/datum/preference/toggle/type_to_check
+	/// Generates icons from the provided mutant bodypart for use in the selection box.
+	var/generate_icons = FALSE
+	/// A list of the four co-ordinates to crop to. Useful for icons whos main contents are smaller than 32x32. Please keep it square.
+	var/list/crop_area
+	/// A color to apply to the icon. Intended for greyscale icons.
+	var/greyscale_color
 
 /datum/preference/choiced/mutant_choice/is_accessible(datum/preferences/preferences)
 	var/passed_initial_check = ..(preferences)
@@ -115,8 +121,35 @@
 	var/part_enabled = is_part_enabled(preferences)
 	return (passed_initial_check || overriding) && part_enabled
 
+/// Allows for dynamic assigning of icon states.
+/datum/preference/choiced/mutant_choice/proc/generate_icon_state(datum/sprite_accessory/sprite_accessory, original_icon_state)
+	return original_icon_state
+
+/// Generates and allows for post-processing on icons, such as greyscaling and cropping. This is cached.
+/datum/preference/choiced/mutant_choice/proc/generate_icon(datum/sprite_accessory/sprite_accessory)
+	var/icon/icon_to_process = icon(sprite_accessory.icon, generate_icon_state(sprite_accessory, sprite_accessory.icon_state), SOUTH)
+
+	if(islist(crop_area) && crop_area.len == 4)
+		icon_to_process.Crop(crop_area[1], crop_area[2], crop_area[3], crop_area[4])
+		icon_to_process.Scale(32, 32)
+
+	var/color = sanitize_hexcolor(greyscale_color)
+	if(color && sprite_accessory.color_src)
+		// This isn't perfect, but I don't want to add the significant overhead to make it be.
+		icon_to_process.ColorTone(color)
+
+	return icon_to_process
+
 /datum/preference/choiced/mutant_choice/init_possible_values()
-	return assoc_to_keys(GLOB.sprite_accessories[relevant_mutant_bodypart])
+	if(!initial(generate_icons))
+		return assoc_to_keys(GLOB.sprite_accessories[relevant_mutant_bodypart])
+
+	var/list/list_of_accessories = list()
+	for(var/sprite_accessory_name as anything in GLOB.sprite_accessories[relevant_mutant_bodypart])
+		var/datum/sprite_accessory/sprite_accessory = GLOB.sprite_accessories[relevant_mutant_bodypart][sprite_accessory_name]
+		list_of_accessories += list("[sprite_accessory.name]" = generate_icon(sprite_accessory))
+
+	return list_of_accessories
 
 /datum/preference/choiced/mutant_choice/create_default_value()
 	return initial(default_accessory_type?.name) || "None"
