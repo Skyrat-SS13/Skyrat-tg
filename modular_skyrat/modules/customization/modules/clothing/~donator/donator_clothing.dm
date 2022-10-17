@@ -71,18 +71,6 @@
 	. = ..()
 	AddElement(/datum/element/polychromic, poly_colors)
 
-/obj/item/clothing/under/misc/poly_shirt
-	name = "polychromic button-up shirt"
-	desc = "A fancy button-up shirt made with polychromic threads."
-	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
-	icon_state = "polysuit"
-	supports_variations_flags = NONE
-
-/obj/item/clothing/under/misc/poly_shirt/Initialize(mapload)
-	. = ..()
-	AddElement(/datum/element/polychromic, list("#FFFFFF", "#333333", "#333333"))
-
 /obj/item/clothing/under/misc/polyshorts
 	name = "polychromic shorts"
 	desc = "For ease of movement and style."

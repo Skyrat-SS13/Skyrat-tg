@@ -75,6 +75,17 @@
 *	Here's hoping TG gives these their own typepath, but for now this is gonna be under/pants/skyrat. No, it's not all pants, but it's better than a whole new type
 */
 
+/obj/item/clothing/under/pants/skyrat/kilt
+	name = "recolorable kilt"
+	desc = "A kilt and buttondown, adorned with a tartan sash. It is NOT a skirt."
+	icon_state = "kilt"
+	greyscale_config = /datum/greyscale_config/kilt
+	greyscale_config_worn = /datum/greyscale_config/kilt/worn
+	greyscale_colors = "#FFFFFF#365736#d9e6e5"
+	flags_1 = IS_PLAYER_COLORABLE_1
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+
 /obj/item/clothing/under/pants/skyrat/vicvest //there's no way I'm typing out a path called double_breasted 10 times over, too complex and everyone will be scared of it
 	name = "buttondown shirt with double-breasted vest"
 	desc = "A fancy buttondown shirt with slacks and a vest worn overtop, with a second row of buttons. Truly an outdated fashion statement."
