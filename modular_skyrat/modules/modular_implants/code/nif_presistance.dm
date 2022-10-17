@@ -24,6 +24,9 @@
 	var/savefile/save = new /savefile(path)
 	var/obj/item/organ/internal/cyberimp/brain/nif/saved_nif
 
+	if(HAS_TRAIT(src, GHOSTROLE_TRAIT)) //Nothing is lost from playing a ghost role
+		return FALSE
+
 	if(installed_nif)
 		if(installed_nif.durability == 0)
 			installed_nif = FALSE
@@ -67,6 +70,9 @@
 
 	var/path = "data/player_saves/[ckey[1]]/[ckey]/nif.sav"
 	var/savefile/save = new /savefile(path)
+
+	if(HAS_TRAIT(src, GHOSTROLE_TRAIT))
+		return FALSE
 
 	var/nif_path
 	READ_FILE(save["nif_path"], nif_path)
