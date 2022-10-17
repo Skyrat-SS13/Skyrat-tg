@@ -57,21 +57,6 @@
 	greyscale_config = /datum/greyscale_config/cloak/shroud
 	greyscale_config_worn = /datum/greyscale_config/cloak/shroud/worn
 
-//UNIFORMS
-/obj/item/clothing/under/misc/polyshorts
-	name = "polychromic shorts"
-	desc = "For ease of movement and style."
-	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/uniform.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/uniform.dmi'
-	icon_state = "polyshorts"
-	can_adjust = FALSE
-	body_parts_covered = CHEST|GROIN|ARMS
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
-
-/obj/item/clothing/under/misc/polyshorts/Initialize(mapload)
-	. = ..()
-	AddElement(/datum/element/polychromic, list("#333333", "#888888", "#888888"))
-
 /**************CKEY EXCLUSIVES*************/
 
 // Donation reward for Grunnyyy
