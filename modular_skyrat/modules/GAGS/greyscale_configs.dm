@@ -212,6 +212,26 @@
 	name = "Shroud Worn"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/cloak/shroud_worn.json'
 
+// Mantle
+
+/datum/greyscale_config/mantle
+	name = "Mantle"
+	icon_file = 'modular_skyrat\modules\GAGS\icons\neck\neck.dmi'
+	json_config = 'modular_skyrat\modules\GAGS\json_configs\neck\mantle\mantle.json'
+
+/datum/greyscale_config/mantle/worn
+	name = "Mantle (Worn)"
+	json_config = 'modular_skyrat\modules\GAGS\json_configs\neck\mantle\mantle_worn.json'
+
+/datum/greyscale_config/mantle/worn/teshari
+	icon_file = 'modular_skyrat\modules\GAGS\icons\neck\neck_teshari.dmi'
+
+/datum/greyscale_config/mantle/worn/newvox
+	icon_file = 'modular_skyrat\modules\GAGS\icons\neck\neck_newvox.dmi'
+
+/datum/greyscale_config/mantle/worn/oldvox
+	icon_file = 'modular_skyrat\modules\GAGS\icons\neck\neck_oldvox.dmi'
+
 // COLLARS
 
 /datum/greyscale_config/collar
@@ -295,6 +315,26 @@
 /*
 *	SUITS
 */
+
+// Apron
+
+/datum/greyscale_config/apron
+	name = "Apron"
+	icon_file = 'modular_skyrat\modules\GAGS\icons\suit\suit.dmi'
+	json_config = 'modular_skyrat\modules\GAGS\json_configs\suits\apron\apron.json'
+
+/datum/greyscale_config/apron/worn
+	name = "Apron (Worn)"
+	json_config = 'modular_skyrat\modules\GAGS\json_configs\suits\apron\apron_worn.json'
+
+/datum/greyscale_config/apron/worn/teshari
+	icon_file = 'modular_skyrat\modules\GAGS\icons\suit\suit_teshari.dmi'
+
+/datum/greyscale_config/apron/worn/newvox
+	icon_file = 'modular_skyrat\modules\GAGS\icons\suit\suit_newvox.dmi'
+
+/datum/greyscale_config/apron/worn/oldvox
+	icon_file = 'modular_skyrat\modules\GAGS\icons\suit\suit_oldvox.dmi'
 
 // FANCY SUITS
 /datum/greyscale_config/fancy_suit
