@@ -363,6 +363,7 @@
 	cortical_owner.health_regen += cortical_owner.health_regen_per_level
 	cortical_owner.max_chemical_storage += cortical_owner.chem_storage_per_level
 	cortical_owner.chemical_regen += cortical_owner.chem_regen_per_level
+	cortical_owner.level += 1
 	var/obj/item/organ/internal/brain/victim_brain = cortical_owner.human_host.getorganslot(ORGAN_SLOT_BRAIN)
 	if(victim_brain)
 		cortical_owner.human_host.adjustOrganLoss(ORGAN_SLOT_BRAIN, 10 * cortical_owner.host_harm_multiplier)
