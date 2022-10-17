@@ -81,6 +81,7 @@
 	icon_state = "kilt"
 	greyscale_config = /datum/greyscale_config/kilt
 	greyscale_config_worn = /datum/greyscale_config/kilt/worn
+	greyscale_config_worn_digi = /datum/greyscale_config/kilt/worn/digi
 	greyscale_colors = "#FFFFFF#365736#d9e6e5"
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS
 	flags_1 = IS_PLAYER_COLORABLE_1

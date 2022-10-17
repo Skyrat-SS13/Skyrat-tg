@@ -19,7 +19,7 @@
 	greyscale_config = /datum/greyscale_config/recolorable_suit
 	greyscale_config_worn = /datum/greyscale_config/recolorable_suit/worn
 	greyscale_config_worn_digi = /datum/greyscale_config/recolorable_suit/worn/digi
-	greyscale_colors = "#b1a391#ffffff#6e2727#cfdfe2"
+	greyscale_colors = "#a99780#ffffff#6e2727#ffc500"
 	flags_1 = IS_PLAYER_COLORABLE_1
 
 /obj/item/clothing/under/suit/skyrat/recolorable/skirt
