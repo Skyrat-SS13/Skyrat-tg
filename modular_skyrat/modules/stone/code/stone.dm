@@ -18,6 +18,7 @@
 //	cost = 500
 	source = null
 	walltype = /turf/closed/wall/mineral/stone
+	stairs_type = /obj/structure/stairs/stone
 
 GLOBAL_LIST_INIT(stone_recipes, list ( \
 	new/datum/stack_recipe("stone brick wall", /turf/closed/wall/mineral/stone, 5, one_per_turf = 1, on_solid_ground = 1, applies_mats = TRUE), \
