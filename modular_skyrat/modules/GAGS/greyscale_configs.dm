@@ -306,6 +306,33 @@
 	name = "Fancy Suit Worn"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/fancy_suits/fancy_suit_worn.json'
 
+/datum/greyscale_config/recolorable_suit
+	name = "Recolorable Formal Suit"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/suits.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/fancy_suits/recolorable_suit.json'
+
+/datum/greyscale_config/recolorable_suit/worn
+	name = "Recolorable Formal Suit Worn"
+	icon = 'modular_skyrat/master_files/icons/mob/clothing/under/suits.dmi'
+
+/datum/greyscale_config/recolorable_suit/worn/digi
+	name = "Recolorable Formal Suit Worn - Digitigrade"
+	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/under/suits_digi.dmi'
+
+
+/datum/greyscale_config/recolorable_suitskirt
+	name = "Recolorable Formal Suitskirt"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/suits.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/fancy_suits/recolorable_suit.json'
+
+/datum/greyscale_config/recolorable_suitskirt/worn
+	name = "Recolorable Formal Suitskirt Worn"
+	icon = 'modular_skyrat/master_files/icons/mob/clothing/under/suits.dmi'
+
+/datum/greyscale_config/recolorable_suitskirt/worn/digi
+	name = "Recolorable Formal Suitskirt Worn - Digitigrade"
+	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/under/suits_digi.dmi'
+
 // HOODIES
 /datum/greyscale_config/hoodie
 	name = "Hoodie"

@@ -750,6 +750,14 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Fancy Suit"
 	item_path = /obj/item/clothing/under/suit/fancy
 
+/datum/loadout_item/under/formal/recolorable_suit
+	name = "Recolorable Formal Suit"
+	item_path = /obj/item/clothing/under/suit/skyrat/recolorable
+
+/datum/loadout_item/under/formal/recolorable_suitskirt
+	name = "Recolorable Formal Suitskirt"
+	item_path = /obj/item/clothing/under/suit/skyrat/recolorable/skirt
+
 /datum/loadout_item/under/formal/trek_command
 	name = "Trekkie Command Uniform"
 	item_path = /obj/item/clothing/under/trek/command
