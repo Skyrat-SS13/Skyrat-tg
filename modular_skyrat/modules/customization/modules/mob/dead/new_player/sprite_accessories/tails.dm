@@ -33,8 +33,10 @@
 			var/datum/mod_theme/mod_theme = modsuit_control.theme
 			if(mod_theme.modsuit_tail_colors)
 				color_src = USE_ONE_COLOR
+				dimension_x = 32
 				return "[general_type]_modsuit"
 	color_src = initial(color_src)
+	dimension_x = initial(dimension_x)
 	return icon_state
 
 /datum/sprite_accessory/tails/get_special_render_key(mob/living/carbon/human/owner)
