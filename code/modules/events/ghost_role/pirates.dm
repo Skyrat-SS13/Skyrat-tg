@@ -105,7 +105,7 @@
 												"Interdyne Pharmaceuticals Chemical Factory" = 5,
 												"Free Teshari League Engineering Station" = 5,
 												"Agurkrral Military Base" = 5,
-												"Sol Federation Interceptor" = 5,
+												"Sol Federation Embassy" = 5,
 												"Novaya Rossiyskaya Imperiya Civilian Port" = 5,))
 			///"right" = Right for the raiders to use as an argument; usually pretty difficult to avoid.
 			var/right_pick = pick("High probability of NRI-affiliated civilian casualties aboard the facility",
