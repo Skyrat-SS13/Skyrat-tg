@@ -249,7 +249,8 @@
 	name = "Cyborg sign waving upgrade"
 	desc = "A sign unit for cyborgs, allowing them to easily advertise products through an intuitive, wave-able sign."
 	icon_state = "cyborg_upgrade3"
-	require_model = FALSE
+	require_model = TRUE
+	model_type = /obj/item/robot_model/service
 
 /obj/item/borg/upgrade/sign/action(mob/living/silicon/robot/target_robot, user = usr)
 	. = ..()
