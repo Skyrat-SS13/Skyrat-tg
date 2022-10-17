@@ -50,10 +50,6 @@ GLOBAL_LIST_EMPTY(default_lighting_underlays_by_z)
 	return ..()
 
 /datum/lighting_object/proc/update()
-<<<<<<< HEAD
-
-=======
->>>>>>> 2c544a1959f (Fixes compile error in lighting code when testing mode is enabled (#70550))
 	// To the future coder who sees this and thinks
 	// "Why didn't he just use a loop?"
 	// Well my man, it's because the loop performed like shit.
