@@ -75,6 +75,7 @@
 	balloon_alert_to_viewers(anchored ? "secured" : "unsecured")
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
+///Takes the given obj (processed thing) and gets its results from the recipe list, spawning the results and deleting the original obj
 /obj/item/cutting_board/proc/process_food(datum/food_processor_process/recipe, obj/processed_thing)
 	if(!recipe.output || !loc || QDELETED(src))
 		return
