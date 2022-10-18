@@ -36,7 +36,7 @@
 	exposed_mob.add_mood_event("[type]_overdose", /datum/mood_event/overgasm, name)
 
 /datum/reagent/drug/aphrodisiac/dopamine/overdose_effects(mob/living/carbon/human/exposed_mob)
-	if(!(exposed_mob.hallucination < volume && prob(20)))
+	if(!(exposed_mob.get_timed_status_effect_duration(/datum/status_effect/hallucination) / (2 SECONDS) < volume && prob(20)))
 		return ..()
 	exposed_mob.adjust_arousal(arousal_adjust_amount)
 	exposed_mob.adjust_pleasure(pleasure_adjust_amount)

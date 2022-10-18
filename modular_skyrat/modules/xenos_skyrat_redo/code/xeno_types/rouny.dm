@@ -1,5 +1,6 @@
 /// SKYRAT MODULE SKYRAT_XENO_REDO
 
+#define EVASION_VENTCRAWL_INABILTY_CD_PERCENTAGE 0.8
 #define RUNNER_BLUR_EFFECT "runner_evasion"
 
 /mob/living/carbon/alien/humanoid/skyrat/runner
@@ -11,8 +12,8 @@
 	icon_state = "alienrunner"
 	/// Holds the evade ability to be granted to the runner later
 	var/datum/action/cooldown/alien/skyrat/evade/evade_ability
-	melee_damage_lower = 20
-	melee_damage_upper = 25
+	melee_damage_lower = 15
+	melee_damage_upper = 20
 	next_evolution = /mob/living/carbon/alien/humanoid/skyrat/ravager
 	on_fire_pixel_y = 0
 
@@ -51,10 +52,13 @@
 
 	owner.balloon_alert(owner, "evasive movements began")
 	playsound(owner, 'modular_skyrat/modules/xenos_skyrat_redo/sound/alien_hiss.ogg', 100, TRUE, 8, 0.9)
-	to_chat(owner, span_danger("We take evasive action, making us impossible to hit with projectiles for the next [evasion_duration/10] seconds."))
+	to_chat(owner, span_danger("We take evasive action, making us impossible to hit with projectiles for the next [evasion_duration / 10] seconds."))
 	addtimer(CALLBACK(src, .proc/evasion_deactivate), evasion_duration)
 	evade_active = TRUE
 	RegisterSignal(owner, COMSIG_PROJECTILE_ON_HIT, .proc/on_projectile_hit)
+	REMOVE_TRAIT(owner, TRAIT_VENTCRAWLER_ALWAYS, INNATE_TRAIT)
+	addtimer(CALLBACK(src, .proc/give_back_ventcrawl), (cooldown_time * EVASION_VENTCRAWL_INABILTY_CD_PERCENTAGE)) //They cannot ventcrawl until the defined percent of the cooldown has passed
+	to_chat(owner, span_warning("We will be unable to crawl through vents for the next [(cooldown_time * EVASION_VENTCRAWL_INABILTY_CD_PERCENTAGE) / 10] seconds."))
 	return TRUE
 
 /// Handles deactivation of the xeno evasion ability, mainly unregistering the signal and giving a balloon alert
@@ -62,6 +66,10 @@
 	evade_active = FALSE
 	owner.balloon_alert(owner, "evasion ended")
 	UnregisterSignal(owner, COMSIG_PROJECTILE_ON_HIT)
+
+/datum/action/cooldown/alien/skyrat/evade/proc/give_back_ventcrawl()
+	ADD_TRAIT(owner, TRAIT_VENTCRAWLER_ALWAYS, INNATE_TRAIT)
+	to_chat(owner, span_notice("We are rested enough to crawl through vents again."))
 
 /// Handles if either BULLET_ACT_HIT or BULLET_ACT_FORCE_PIERCE happens to something using the xeno evade ability
 /datum/action/cooldown/alien/skyrat/evade/proc/on_projectile_hit()
@@ -81,4 +89,5 @@
 			return evade_result
 	. = ..()
 
+#undef EVASION_VENTCRAWL_INABILTY_CD_PERCENTAGE
 #undef RUNNER_BLUR_EFFECT

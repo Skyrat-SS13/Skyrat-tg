@@ -26,7 +26,7 @@
 	desc = "Spits neurotoxin at someone, exhausting them."
 	icon_icon = 'modular_skyrat/modules/xenos_skyrat_redo/icons/xeno_actions.dmi'
 	button_icon_state = "neurospit_0"
-	plasma_cost = 25
+	plasma_cost = 40
 	/// A singular projectile? Use this one and leave acid_casing null
 	var/acid_projectile = /obj/projectile/neurotoxin/skyrat
 	/// You want it to be more like a shotgun style attack? Use this one and make acid_projectile null
@@ -107,7 +107,7 @@
 /obj/projectile/neurotoxin/skyrat
 	name = "neurotoxin spit"
 	icon_state = "neurotoxin"
-	damage = 40
+	damage = 30
 	paralyze = 0
 	damage_type = STAMINA
 	nodamage = FALSE
@@ -129,7 +129,7 @@
 /obj/projectile/neurotoxin/skyrat/acid
 	name = "acid spit"
 	icon_state = "toxin"
-	damage = 25
+	damage = 20
 	paralyze = 0
 	damage_type = BURN
 
