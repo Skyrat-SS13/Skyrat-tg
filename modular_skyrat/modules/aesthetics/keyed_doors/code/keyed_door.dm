@@ -15,7 +15,7 @@
 	throw_speed = 1
 	throw_range = 7
 	resistance_flags = INDESTRUCTIBLE | FIRE_PROOF | ACID_PROOF | LAVA_PROOF
-	var/keycard_id  = null
+	var/keycard_id = null
 
 /*
 //The doors and Keys need to match when being built, demo variants are found below along with the requirements for use
@@ -30,6 +30,7 @@
 	icon_state = "closed"
 	explosion_block = 3
 	heat_proof = TRUE
+	density = TRUE
 	max_integrity = 600
 	armor = list(MELEE = 100, BULLET = 100, LASER = 100, ENERGY = 100, BOMB = 100, BIO = 100, FIRE = 100, ACID = 100)
 	resistance_flags = FIRE_PROOF | ACID_PROOF | LAVA_PROOF
@@ -64,6 +65,9 @@
 	open()
 	return TRUE
 
+/obj/machinery/door/update_icon_state()
+	icon_state = "[base_icon_state][density]"
+	return ..()
 /obj/machinery/door/keyed/keycard
 	desc = "This door only opens when a keycard is swiped. It looks virtually indestructible."
 
