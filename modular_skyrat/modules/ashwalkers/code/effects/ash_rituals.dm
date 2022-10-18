@@ -117,7 +117,7 @@
 
 	var/turf/spawn_turf = locate(rand(1,255), rand(1,255), success_rune.z)
 
-	while(!istype(spawn_turf, /turf/open/misc/asteroid/basalt))
+	while(!istype(spawn_turf, /turf/open/misc/asteroid))
 		spawn_turf = locate(rand(1,255), rand(1,255), success_rune.z)
 
 	new /obj/effect/particle_effect/sparks(spawn_turf)
@@ -270,6 +270,9 @@
 	if(!find_banished)
 		return
 
+	if(!find_banished.mind.has_antag_datum(/datum/antagonist/ashwalker)) //must be an ashwalker
+		return
+
 	var/list/asked_voters = list()
 
 	for(var/mob/living/carbon/human/poll_human in range(2, src_turf))
@@ -283,13 +286,13 @@
 
 	var/list/yes_voters = poll_candidates("Do you wish to banish [find_banished]?", poll_time = 10 SECONDS, group = asked_voters)
 
-	if(LAZYLEN(yes_voters) < LAZYLEN(asked_voters))
+	if(length(yes_voters) < length(asked_voters))
 		find_banished.balloon_alert_to_viewers("banishment failed!")
 		return
 
 	var/turf/teleport_turf = locate(rand(1,255), rand(1,255), success_rune.z)
 
-	while(!istype(teleport_turf, /turf/open/misc/asteroid/basalt))
+	while(!istype(teleport_turf, /turf/open/misc/asteroid))
 		teleport_turf = locate(rand(1,255), rand(1,255), success_rune.z)
 
 	new /obj/effect/particle_effect/sparks(teleport_turf)
