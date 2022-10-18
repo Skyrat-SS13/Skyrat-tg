@@ -365,7 +365,7 @@
 
 /datum/greyscale_config/bathrobe/worn
 	name = "Worn Bathrobe"
-	icon_file = 'modular_skyrat/modules/GAGS/json_configs/suits/bathrobe/bathrobe_worn.json'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/suits/bathrobe/bathrobe_worn.json'
 
 /datum/greyscale_config/bathrobe/worn/teshari
 	icon_file = 'modular_skyrat/modules/GAGS/icons/suit/suit_teshari.dmi'
