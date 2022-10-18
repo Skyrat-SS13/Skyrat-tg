@@ -91,6 +91,8 @@
 	update_appearance()
 
 /obj/item/cutting_board/attackby(obj/item/attacking_item, mob/living/user, params)
+	if(user.combat_mode)
+		return ..()
 	if(attacking_item.tool_behaviour == TOOL_KNIFE)
 		if(!length(contents))
 			balloon_alert(user, "nothing to process")
@@ -108,14 +110,16 @@
 		return
 
 	var/datum/food_processor_process/gotten_recipe = GET_RECIPE(attacking_item)
-	if(!gotten_recipe)
-		balloon_alert(user, "can't process [attacking_item]")
+	if(gotten_recipe)
+		if(length(contents))
+			balloon_alert(user, "board is full")
+			return
+		attacking_item.forceMove(src)
+		balloon_alert(user, "placed [attacking_item] on board")
+		update_appearance()
 		return
-	if(length(contents))
-		balloon_alert(user, "board is full")
-		return
-	attacking_item.forceMove(src)
-	balloon_alert(user, "placed [attacking_item] on board")
-	update_appearance()
+	if(IS_EDIBLE(attacking_item)) //We may have failed but the user wants some feedback on why they can't put x food item on the board
+		balloon_alert(user, "[attacking_item] can't be processed")
+	return ..()
 
 #undef GET_RECIPE
