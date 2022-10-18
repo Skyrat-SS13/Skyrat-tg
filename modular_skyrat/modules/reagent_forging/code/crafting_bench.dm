@@ -88,7 +88,6 @@
 	if(!length(contents))
 		return
 	var/image/overlayed_item = image(icon = contents[1].icon, icon_state = contents[1].icon_state)
-	overlayed_item.transform = matrix(1.5, 0, 0, 0, 0.8, 0)
 	add_overlay(overlayed_item)
 
 //when picking a design or clearing a design

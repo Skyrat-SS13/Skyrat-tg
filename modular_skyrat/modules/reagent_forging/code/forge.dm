@@ -50,8 +50,6 @@
 	COOLDOWN_DECLARE(forging_cooldown)
 	///the variable that stops spamming
 	var/in_use = FALSE
-	///if it isn't on the station zlevel, it is primitive (different icon)
-	var/primitive = FALSE
 	///the forge level, which will upgrade the forge (goliath/sinew/core upgrades)
 	var/forge_level = FORGE_LEVEL_ZERO
 	var/static/list/choice_list = list(
@@ -118,18 +116,24 @@
 		. += span_notice("[src] has [current_core]/[MAX_UPGRADE_REGEN] regenerative cores.")
 	. += span_notice("<br>[src] is currently [forge_temperature] degrees hot, going towards [target_temperature] degrees.<br>")
 	if(reagent_forging)
-		. += span_warning("[src] has a red tinge, it is ready to imbue chemicals into reagent objects.")
+		. += span_warning("[src] has a fine gold trim, it is ready to imbue chemicals into reagent objects.")
 
 /obj/structure/reagent_forge/Initialize(mapload)
 	. = ..()
 	START_PROCESSING(SSobj, src)
-	if(is_mining_level(z))
-		primitive = TRUE
-		icon_state = "primitive_forge_empty"
 
 /obj/structure/reagent_forge/Destroy()
 	STOP_PROCESSING(SSobj, src)
+	QDEL_NULL(particles)
 	. = ..()
+
+/obj/structure/reagent_forge/update_appearance(updates)
+	. = ..()
+	cut_overlays()
+	if(!reagent_forging)
+		return
+	var/image/gold_overlay = image(icon = icon, icon_state = "forge_masterwork_trim")
+	add_overlay(gold_overlay)
 
 /**
  * Here we check both strong (coal) and weak (wood) fuel
@@ -152,8 +156,6 @@
 	if(reagent_forging) //We really only need to do it once!
 		return
 	reagent_forging = TRUE
-	balloon_alert_to_viewers("gurgles!")
-	color = "#ff5151"
 	name = "reagent forge"
 	desc = "[initial(desc)]<br>It has the ability to imbue forged metals with chemicals!"
 
@@ -172,16 +174,17 @@
 		if(sinew_lower_chance && prob(sinew_lower_chance))//chance to not lower the temp, up to 100 from 10 sinew
 			return
 		forge_temperature -= 5
+		if(particles)
+			QDEL_NULL(particles)
 		return
 	else if(forge_temperature < target_temperature && (forge_fuel_weak || forge_fuel_strong)) //below temp with fuel needs to rise
 		forge_temperature += 5
-
-	if(forge_temperature > 0)
-		icon_state = "[primitive ? "primitive_" : ""]forge_full"
+		icon_state = "forge_full"
 		set_light(3, 1, LIGHT_COLOR_FIRE)
-	else if(forge_temperature <= 0)
-		icon_state = "[primitive ? "primitive_" : ""]forge_empty"
-		set_light(0)
+		if(particles)
+			return
+		particles = new /particles/smoke
+		particles.position = list(6, 4, 0)
 
 /**
  * Here we fix any weird in_use bugs
