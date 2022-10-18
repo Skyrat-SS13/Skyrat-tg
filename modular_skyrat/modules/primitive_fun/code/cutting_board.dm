@@ -35,7 +35,7 @@
 	cut_overlays()
 	if(!length(contents))
 		return
-	var/image/overlayed_item = image(icon = contents[1].icon, icon_state = contents[1].icon_state)
+	var/image/overlayed_item = image(icon = contents[1].icon, icon_state = contents[1].icon_state, pixel_y = 2)
 	add_overlay(overlayed_item)
 
 /obj/item/cutting_board/examine(mob/user)
@@ -77,7 +77,7 @@
 	var/food_multiplier = recipe.food_multiplier
 	for(var/i in 1 to food_multiplier)
 		var/obj/new_food_item = new recipe.output(drop_location())
-		if(!processed_thing.reagents)
+		if(!processed_thing.reagents) //backup in case we really fuck up
 			continue
 		processed_thing.reagents.copy_to(new_food_item, processed_thing.reagents.total_volume, multiplier = 1 / food_multiplier)
 	qdel(processed_thing)
@@ -97,7 +97,7 @@
 		if(!do_after(user, 3 SECONDS, target = src))
 			balloon_alert_to_viewers("stopped cutting")
 			return
-		process_food(item_process_recipe, attacking_item)
+		process_food(item_process_recipe, contents[1])
 		return
 
 	var/datum/food_processor_process/gotten_recipe = GET_RECIPE(attacking_item)
