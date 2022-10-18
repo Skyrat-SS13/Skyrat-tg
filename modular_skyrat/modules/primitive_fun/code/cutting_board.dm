@@ -42,6 +42,8 @@
 /obj/item/cutting_board/examine(mob/user)
 	. = ..()
 	. += span_notice("You can process food similar to a food processor by putting food on this and using a <b>knife</b> on it.")
+	. += span_notice("It can be (un)secured with <b>Right Click</b>")
+	. += span_notice("You can make it drop its item with <b>Alt Click</b>")
 	if(length(contents))
 		. += span_notice("It has a [contents[1]] sitting on it.")
 
@@ -79,6 +81,8 @@
 	var/food_multiplier = recipe.food_multiplier
 	for(var/i in 1 to food_multiplier)
 		var/obj/new_food_item = new recipe.output(drop_location())
+		new_food_item.pixel_x = rand(-6, 6)
+		new_food_item.pixel_y = rand(-6, 6)
 		if(!processed_thing.reagents) //backup in case we really fuck up
 			continue
 		processed_thing.reagents.copy_to(new_food_item, processed_thing.reagents.total_volume, multiplier = 1 / food_multiplier)
