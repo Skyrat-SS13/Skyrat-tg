@@ -76,9 +76,12 @@
 		return
 	var/food_multiplier = recipe.food_multiplier
 	for(var/i in 1 to food_multiplier)
-		var/atom/processed_food = new recipe.output(drop_location())
-		processed_thing.reagents.copy_to(processed_food, processed_thing.reagents.total_volume, multiplier = 1 / food_multiplier)
+		var/obj/new_food_item = new recipe.output(drop_location())
+		if(!processed_thing.reagents)
+			continue
+		processed_thing.reagents.copy_to(new_food_item, processed_thing.reagents.total_volume, multiplier = 1 / food_multiplier)
 	qdel(processed_thing)
+	update_appearance()
 
 /obj/item/cutting_board/attackby(obj/item/attacking_item, mob/living/user, params)
 	if(attacking_item.tool_behaviour == TOOL_KNIFE)
