@@ -47,11 +47,8 @@
 	greyscale_colors = "#3d3d3d" //Having all the configs for a single color feels wrong. This is wrong.
 	flags_1 = IS_PLAYER_COLORABLE_1
 
-/obj/item/clothing/under/pants/chaps //ORION TODO: rework into both an under-item AND an attachment.
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
+/obj/item/clothing/under/pants/skyrat/chaps //ORION TODO - attachment AND uniform item (is it even possible?); GREYSCALE
 	name = "black chaps"
-	body_parts_covered = LEGS
 	desc = "Yeehaw"
 	icon_state = "chaps"
 
