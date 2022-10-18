@@ -1,5 +1,5 @@
 //Space Hotel Keycards and Room Doors
-/obj/item/keycard/hotel/hotelkey1
+/obj/item/key_card/hotelkey1
 	name = "Space Hotel Keycard"
 	desc = "A keycard with an engraving on it. The engraving reads: \"Guest Room 1\"."
 	color = "#FFFF00"
@@ -12,7 +12,7 @@
 	key_id  = "guest_room_1"
 	autoclose = 1
 
-/obj/item/keycard/hotel/hotelkey2
+/obj/item/key_card/hotelkey2
 	name = "Space Hotel Keycard"
 	desc = "A keycard with an engraving on it. The engraving reads: \"Guest Room 2\"."
 	color = "#ff0066"
@@ -25,7 +25,7 @@
 	key_id = "guest_room_2"
 	autoclose = 1
 
-/obj/item/keycard/hotel/hotelkey3
+/obj/item/key_card/hotelkey3
 	name = "Space Hotel Keycard"
 	desc = "A keycard with an engraving on it. The engraving reads: \"Guest Room 3\"."
 	color = "#00FF99"
@@ -38,7 +38,7 @@
 	key_id = "guest_room_3"
 	autoclose = 1
 
-/obj/item/keycard/hotel/hotelkey4
+/obj/item/key_card/hotelkey4
 	name = "Space Hotel Keycard"
 	desc = "A keycard with an engraving on it. The engraving reads: \"Guest Room 4\"."
 	color = "#FF6600"
@@ -51,7 +51,7 @@
 	key_id = "guest_room_4"
 	autoclose = 1
 
-/obj/item/keycard/hotel/hotelkey5
+/obj/item/key_card/hotelkey5
 	name = "Space Hotel Keycard"
 	desc = "A keycard with an engraving on it. The engraving reads: \"Guest Room 5\"."
 	color = "#33CC33"
@@ -64,7 +64,7 @@
 	key_id = "guest_room_5"
 	autoclose = 1
 
-/obj/item/keycard/hotel/hotelkey6
+/obj/item/key_card/hotelkey6
 	name = "Space Hotel Keycard"
 	desc = "A keycard with an engraving on it. The engraving reads: \"Guest Room 6\"."
 	color = "#1EBBFE"
@@ -77,7 +77,7 @@
 	key_id = "guest_room_6"
 	autoclose = 1
 
-/obj/item/keycard/hotel/hotelkey7
+/obj/item/key_card/hotelkey7
 	name = "Space Hotel Keycard"
 	desc = "A keycard with an engraving on it. The engraving reads: \"Guest Room 7\"."
 	color = "#CC00CC"

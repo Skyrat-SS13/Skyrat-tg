@@ -4,8 +4,8 @@
 //Keycard that controls the door itself, without it - the door will not open
 */
 
-/obj/item/keycard/hotel
-	name = "security keycard"
+/obj/item/key_card
+	name = "door keycard"
 	desc = "This feels like it belongs to a door."
 	icon = 'icons/obj/puzzle_small.dmi'
 	icon_state = "keycard"
@@ -15,7 +15,6 @@
 	throw_speed = 1
 	throw_range = 7
 	resistance_flags = INDESTRUCTIBLE | FIRE_PROOF | ACID_PROOF | LAVA_PROOF
-
 	var/keycard_id  = null
 
 /*
@@ -36,9 +35,7 @@
 	resistance_flags = FIRE_PROOF | ACID_PROOF | LAVA_PROOF
 	move_resist = MOVE_FORCE_OVERPOWERING
 	damage_deflection = 70
-
 	var/keycard_id = null
-
 	var/open_message = "The door beeps, and slides opens."
 
 //Standard Expressions to make keyed doors basically un-cheeseable
@@ -72,9 +69,9 @@
 
 /obj/machinery/door/keyed/keycard/attackby(obj/item/attacking_item, mob/user, params)
 	. = ..()
-	if(!istype(attacking_item, /obj/item/keycard/hotel))
+	if(!istype(attacking_item, /obj/item/key_card))
 		return
-	var/obj/item/keycard/hotel/key = attacking_item
+	var/obj/item/key_card/key = attacking_item
 	if(!try_keycard_open(key.keycard_id))
 		to_chat(user, span_notice("[src] buzzes. You require the correct key."))
 
