@@ -17,17 +17,22 @@
 	. = ..()
 	if(processor_inputs)
 		return
+
 	processor_inputs = list()
 	for(var/datum/food_processor_process/recipe as anything in subtypesof(/datum/food_processor_process)) //this is how tg food processors do it just in case this is digusting
 		if(!initial(recipe.input))
 			continue
+
 		recipe = new recipe
 		var/list/typecache = list()
 		var/list/bad_types
+
 		for(var/bad_type in recipe.blacklist)
 			LAZYADD(bad_types, typesof(bad_type))
+
 		for(var/input_type in typesof(recipe.input) - bad_types)
 			typecache[input_type] = recipe
+
 		for(var/machine_type in typesof(recipe.required_machine))
 			LAZYADD(processor_inputs[machine_type], typecache)
 
@@ -55,6 +60,7 @@
 	if(!length(contents))
 		balloon_alert(user, "nothing on board")
 		return
+
 	drop_everything_contained()
 	balloon_alert(user, "cleared board")
 
@@ -62,6 +68,7 @@
 /obj/item/cutting_board/proc/drop_everything_contained()
 	if(!length(contents))
 		return
+
 	for(var/obj/target_item as anything in contents)
 		target_item.forceMove(get_turf(src))
 
@@ -69,8 +76,10 @@
 	. = ..()
 	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
 		return
+
 	if(!can_interact(user) || !user.canUseTopic(src, be_close = TRUE))
 		return
+
 	set_anchored(!anchored)
 	balloon_alert_to_viewers(anchored ? "secured" : "unsecured")
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
@@ -79,33 +88,41 @@
 /obj/item/cutting_board/proc/process_food(datum/food_processor_process/recipe, obj/processed_thing)
 	if(!recipe.output || !loc || QDELETED(src))
 		return
+
 	var/food_multiplier = recipe.food_multiplier
 	for(var/i in 1 to food_multiplier)
 		var/obj/new_food_item = new recipe.output(drop_location())
 		new_food_item.pixel_x = rand(-6, 6)
 		new_food_item.pixel_y = rand(-6, 6)
+
 		if(!processed_thing.reagents) //backup in case we really fuck up
 			continue
+
 		processed_thing.reagents.copy_to(new_food_item, processed_thing.reagents.total_volume, multiplier = 1 / food_multiplier)
+
 	qdel(processed_thing)
 	update_appearance()
 
 /obj/item/cutting_board/attackby(obj/item/attacking_item, mob/living/user, params)
 	if(user.combat_mode)
 		return ..()
+
 	if(attacking_item.tool_behaviour == TOOL_KNIFE)
 		if(!length(contents))
 			balloon_alert(user, "nothing to process")
 			return
+
 		var/datum/food_processor_process/item_process_recipe = GET_RECIPE(contents[1])
 		if(!item_process_recipe)
 			log_admin("DEBUG: [src] (cutting board item) just tried to process [contents[1]] but wasn't able to get a recipe somehow, this should not be able to happen.")
 			return
+
 		playsound(src, 'sound/effects/butcher.ogg', 50, TRUE)
 		balloon_alert_to_viewers("cutting...")
 		if(!do_after(user, 3 SECONDS, target = src))
 			balloon_alert_to_viewers("stopped cutting")
 			return
+
 		process_food(item_process_recipe, contents[1])
 		return
 
@@ -114,10 +131,12 @@
 		if(length(contents))
 			balloon_alert(user, "board is full")
 			return
+
 		attacking_item.forceMove(src)
 		balloon_alert(user, "placed [attacking_item] on board")
 		update_appearance()
 		return
+
 	if(IS_EDIBLE(attacking_item)) //We may have failed but the user wants some feedback on why they can't put x food item on the board
 		balloon_alert(user, "[attacking_item] can't be processed")
 	return ..()
