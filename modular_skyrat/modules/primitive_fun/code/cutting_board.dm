@@ -45,7 +45,7 @@
 	. += span_notice("It can be (un)secured with <b>Right Click</b>")
 	. += span_notice("You can make it drop its item with <b>Alt Click</b>")
 	if(length(contents))
-		. += span_notice("It has a [contents[1]] sitting on it.")
+		. += span_notice("It has [contents[1]] sitting on it.")
 
 /obj/item/cutting_board/Destroy()
 	drop_everything_contained()
