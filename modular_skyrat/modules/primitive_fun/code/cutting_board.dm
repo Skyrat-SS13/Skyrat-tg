@@ -9,6 +9,7 @@
 	throwforce = 7 //Imagine someone just throws the entire fucking cutting board at you
 	w_class = WEIGHT_CLASS_NORMAL
 	pass_flags = PASSTABLE
+	layer = BELOW_OBJ_LAYER //So newly spawned food appears on top of the board rather than under it
 	///List containg list of possible inputs and resulting recipe items, taken from processor.dm and processor_recipes.dm
 	var/static/list/processor_inputs
 
@@ -55,6 +56,7 @@
 	drop_everything_contained()
 	balloon_alert(user, "cleared board")
 
+///Drops all contents at the turf of the item
 /obj/item/cutting_board/proc/drop_everything_contained()
 	if(!length(contents))
 		return
