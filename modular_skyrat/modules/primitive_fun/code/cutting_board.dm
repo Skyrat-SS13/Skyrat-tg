@@ -3,6 +3,8 @@
 /obj/item/cutting_board
 	name = "cutting board"
 	desc = "Processing food before electricity was cool, because you can just do your regular cutting on the table next to this right?"
+	icon = 'modular_skyrat/modules/primitive_fun/icons/cooking_structures.dmi'
+	icon_state = "cutting_board"
 	force = 5
 	throwforce = 7 //Imagine someone just throws the entire fucking cutting board at you
 	w_class = WEIGHT_CLASS_NORMAL
@@ -105,3 +107,5 @@
 	attacking_item.forceMove(src)
 	balloon_alert(user, "placed [attacking_item] on board")
 	update_appearance()
+
+#undef GET_RECIPE
