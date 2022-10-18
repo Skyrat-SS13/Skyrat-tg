@@ -121,6 +121,7 @@
 /obj/structure/reagent_forge/Initialize(mapload)
 	. = ..()
 	START_PROCESSING(SSobj, src)
+	update_appearance()
 
 /obj/structure/reagent_forge/Destroy()
 	STOP_PROCESSING(SSobj, src)
