@@ -31,8 +31,6 @@
 		if(installed_nif.durability == 0)
 			installed_nif = FALSE
 
-		installed_nif.durability -= installed_nif.shift_durability_loss
-
 	if(!installed_nif || (installed_nif && !installed_nif.nif_persistence))
 		if(READ_FILE(save["nif_path"], saved_nif) != FALSE) // If you have a NIF on file but leave the round without one installed, you only take a durability loss instead of losing the implant.
 			var/stored_nif_durability = save["nif_durability"]

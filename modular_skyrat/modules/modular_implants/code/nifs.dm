@@ -59,8 +59,6 @@
 	var/max_durability = 100
 	///What level of durability is the NIF at?
 	var/durability = 100
-	///How much durability is subtracted per shift?
-	var/shift_durability_loss = 10
 	//How much durability is lost per death if any?
 	var/death_durability_loss = 10
 	///Does the NIF stay between rounds? By default, they do.
