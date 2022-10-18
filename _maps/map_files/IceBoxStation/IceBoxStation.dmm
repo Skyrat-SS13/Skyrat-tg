@@ -3585,6 +3585,11 @@
 /obj/machinery/firealarm/directional/east,
 /turf/open/floor/iron/dark/textured,
 /area/station/security/office)
+"bfK" = (
+/obj/structure/table/wood,
+/obj/item/radio/intercom/command,
+/turf/open/floor/carpet,
+/area/station/command/meeting_room)
 "bfL" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
@@ -28570,11 +28575,6 @@
 /obj/item/flashlight/lantern,
 /turf/open/floor/iron/dark,
 /area/station/service/chapel)
-"iLu" = (
-/obj/item/radio/intercom/directional/west,
-/obj/machinery/suit_storage_unit/captain,
-/turf/open/floor/wood,
-/area/station/command/heads_quarters/captain)
 "iLv" = (
 /obj/item/book/manual/wiki/tcomms{
 	pixel_x = 10;
@@ -34268,6 +34268,18 @@
 /obj/effect/turf_decal/tile/purple/half,
 /turf/open/floor/iron/half,
 /area/station/hallway/primary/starboard)
+"kwM" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/general/visible,
+/obj/machinery/camera{
+	c_tag = "Xenobiology Pens Hall - Fore";
+	dir = 9;
+	network = list("ss13","rd","xeno")
+	},
+/turf/open/floor/iron/white,
+/area/station/science/xenobiology)
 "kwU" = (
 /obj/machinery/computer/secure_data,
 /obj/structure/cable,
@@ -39015,15 +39027,6 @@
 /obj/item/reagent_containers/spray/cleaner,
 /turf/open/floor/iron/white,
 /area/station/medical/break_room)
-"lVZ" = (
-/obj/structure/table/wood,
-/obj/item/radio/intercom{
-	dir = 8;
-	freerange = 1;
-	name = "Station Intercom (Command)"
-	},
-/turf/open/floor/carpet,
-/area/station/command/meeting_room)
 "lWb" = (
 /turf/open/floor/iron,
 /area/station/security/prison/visit)
@@ -71397,6 +71400,11 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/iron/white,
 /area/station/science/xenobiology)
+"wad" = (
+/obj/machinery/suit_storage_unit/captain,
+/obj/item/radio/intercom/directional/west,
+/turf/open/floor/wood,
+/area/station/command/heads_quarters/captain)
 "wal" = (
 /obj/structure/sign/warning,
 /turf/closed/wall,
@@ -74799,18 +74807,6 @@
 /obj/structure/extinguisher_cabinet/directional/east,
 /turf/open/floor/iron/white,
 /area/station/medical/chemistry)
-"wZv" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/general/visible,
-/obj/machinery/camera{
-	c_tag = "Xenobiology Pens Hall - Fore";
-	dir = 9;
-	network = list("ss13","rd","xeno")
-	},
-/turf/open/floor/iron/white,
-/area/station/science/xenobiology)
 "wZC" = (
 /obj/machinery/chem_heater/withbuffer,
 /obj/effect/turf_decal/tile/yellow{
@@ -187884,7 +187880,7 @@ cZT
 cZT
 pXj
 qLY
-wZv
+kwM
 axD
 qLY
 hez
@@ -236170,7 +236166,7 @@ uLp
 dxK
 qiu
 hue
-lVZ
+bfK
 eYT
 vdi
 oMP
@@ -240286,7 +240282,7 @@ hpR
 pIk
 gYz
 mZe
-iLu
+wad
 lpM
 lpM
 lpM
