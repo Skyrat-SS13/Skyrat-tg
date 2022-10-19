@@ -201,6 +201,11 @@
 	color_src = MUTCOLORS
 	dimorphic = TRUE
 
+/datum/sprite_accessory/synth_chassis/android
+	name = "Android Chassis"
+	icon = 'icons/mob/augmentation/augments.dmi'
+	icon_state = "robotic"
+
 /datum/sprite_accessory/synth_chassis/mammal
 	name = "Mammal Chassis"
 	icon = BODYPART_ICON_SYNTHMAMMAL
@@ -282,6 +287,11 @@
 	icon_state = "human"
 	color_src = MUTCOLORS
 	dimorphic = TRUE
+
+/datum/sprite_accessory/synth_head/android
+	name = "Android Head"
+	icon = 'icons/mob/augmentation/augments.dmi'
+	icon_state = "robotic"
 
 /datum/sprite_accessory/synth_head/mammal
 	name = "Mammal Head"
