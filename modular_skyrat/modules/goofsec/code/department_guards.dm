@@ -118,6 +118,7 @@
 	supervisors = SUPERVISOR_CMO
 	selection_color = "#ffeeee"
 	exp_granted_type = EXP_TYPE_CREW
+	config_tag = "ORDERLY"
 
 	outfit = /datum/outfit/job/orderly
 	plasmaman_outfit = /datum/outfit/plasmaman/medical
@@ -187,6 +188,7 @@
 	supervisors = SUPERVISOR_RD
 	selection_color = "#ffeeee"
 	exp_granted_type = EXP_TYPE_CREW
+	config_tag = "SCIENCE_GUARD"
 
 	outfit = /datum/outfit/job/science_guard
 	plasmaman_outfit = /datum/outfit/plasmaman/science
@@ -256,6 +258,7 @@
 	supervisors = SUPERVISOR_HOP
 	selection_color = "#ffeeee"
 	exp_granted_type = EXP_TYPE_CREW
+	config_tag = "BOUNCER"
 
 	outfit = /datum/outfit/job/bouncer
 	plasmaman_outfit = /datum/outfit/plasmaman/party_bouncer
@@ -329,6 +332,7 @@
 	supervisors = SUPERVISOR_QM
 	selection_color = "#ffeeee"
 	exp_granted_type = EXP_TYPE_CREW
+	config_tag = "CUSTOMS_AGENT"
 
 	outfit = /datum/outfit/job/customs_agent
 	plasmaman_outfit = /datum/outfit/plasmaman/cargo
@@ -396,6 +400,7 @@
 	supervisors = SUPERVISOR_CE
 	selection_color = "#ffeeee"
 	exp_granted_type = EXP_TYPE_CREW
+	config_tag = "ENGINEERING_GUARD"
 
 	outfit = /datum/outfit/job/engineering_guard
 	plasmaman_outfit = /datum/outfit/plasmaman/engineering
