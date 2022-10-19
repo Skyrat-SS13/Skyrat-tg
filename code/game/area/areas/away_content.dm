@@ -11,11 +11,7 @@ Unused icons for new areas are "awaycontent1" ~ "awaycontent30"
 	has_gravity = STANDARD_GRAVITY
 	ambience_index = AMBIENCE_AWAY
 	sound_environment = SOUND_ENVIRONMENT_ROOM
-<<<<<<< HEAD
-	area_flags = NOTELEPORT|UNIQUE_AREA|NO_ALERTS //SKYRAT EDIT CHANGE
-=======
-	area_flags = UNIQUE_AREA
->>>>>>> 364cd382851 ([MDB IGNORE] Makes only station areas, station areas. (#70182))
+	area_flags = NOTELEPORT|UNIQUE_AREA //SKYRAT EDIT CHANGE
 
 /area/awaymission/beach
 	name = "Beach"
