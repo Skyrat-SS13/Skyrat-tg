@@ -379,11 +379,6 @@
 	cost = CARGO_CRATE_VALUE * 7
 	contains = list(/obj/item/storage/belt/holster/thermal = 2)
 	crate_name = "thermal pistol crate"
-<<<<<<< HEAD
-*/
-// SKYRAT EDIT REMOVAL END
-=======
-	
 /datum/supply_pack/security/armory/wt550
 	name = "Recalled Weapon Pack"
 	desc = "Contains a set of old Nanotrasen brand autorifles recalled due to choking hazard."
@@ -405,5 +400,5 @@
 		/obj/item/ammo_box/magazine/wt550m9 = 4,
 	)
 	crate_name = "Ammo box"
-
->>>>>>> e2b8d9e2e1c (Adds back purchasing the Autorifle and ammo through emagging the cargo supply console (#70518))
+*/
+// SKYRAT EDIT REMOVAL END
