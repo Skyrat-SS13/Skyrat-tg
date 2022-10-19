@@ -115,10 +115,7 @@
 		stoplag() // sleep a byond tick
 		GLOB.stickbanadminexemptiontimerid = addtimer(CALLBACK(GLOBAL_PROC, /proc/restore_stickybans), 5 SECONDS, TIMER_STOPPABLE|TIMER_UNIQUE|TIMER_OVERRIDE)
 		return
-<<<<<<< HEAD
-=======
 
->>>>>>> 2878345ebb3 (Swaps sleep() to use SECONDS define, changes some sleep(1) to sleep(1 TICKS) (#70452))
 	var/list/ban = ..() //default pager ban stuff
 
 	if (ban)

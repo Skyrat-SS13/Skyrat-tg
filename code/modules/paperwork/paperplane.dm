@@ -62,13 +62,8 @@
 	user.visible_message(span_suicide("[user] jams [src] in [user.p_their()] nose. It looks like [user.p_theyre()] trying to commit suicide!"))
 	user.adjust_blurriness(6)
 	if(eyes)
-<<<<<<< HEAD
 		eyes.applyOrganDamage(rand(impact_eye_damage_lower, impact_eye_damage_higher)) // SKYRAT EDIT START - Better paper planes
-	sleep(10)
-=======
-		eyes.applyOrganDamage(rand(6,8))
 	sleep(1 SECONDS)
->>>>>>> 2878345ebb3 (Swaps sleep() to use SECONDS define, changes some sleep(1) to sleep(1 TICKS) (#70452))
 	return (BRUTELOSS)
 
 /obj/item/paperplane/update_overlays()
