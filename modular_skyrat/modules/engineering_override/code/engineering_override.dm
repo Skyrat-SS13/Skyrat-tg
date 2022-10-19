@@ -5,11 +5,10 @@
 	/// Is this area eligible for engineer override?
 	var/engineering_override_eligible = FALSE
 
-/**
- * Set the areas that will receive expanded access for the engineers on an orange alert
- * Maintenance, bridge, departmental lobbies and inner rooms. No access to security.
- * Sensitive areas like the vault, command quarters, heads' offices, etc. are not applicable.
- */
+// Set the areas that will receive expanded access for the engineers on an orange alert
+// Maintenance, bridge, departmental lobbies and inner rooms. No access to security.
+// Sensitive areas like the vault, command quarters, heads' offices, etc. are not applicable.
+ 
 /area/station/ai_monitored/command/storage/eva
 	engineering_override_eligible = TRUE
 
