@@ -28,7 +28,7 @@
 				/obj/item/clothing/under/costume/skyrat/vicvest = 5,
 				/obj/item/clothing/under/costume/skyrat/kamishimo = 5,
 				/obj/item/clothing/under/costume/skyrat/yukata = 5,
-				/obj/item/clothing/under/costume/skyrat/kimono_fancy = 5,
+				/obj/item/clothing/under/costume/kimono_fancy = 5,
 			),
 		),
 		list(
