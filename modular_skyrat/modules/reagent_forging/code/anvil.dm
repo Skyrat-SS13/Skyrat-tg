@@ -6,14 +6,9 @@
 
 	anchored = TRUE
 	density = TRUE
-	///if on the mining zlevel, it is primitive and has a different icon
-	var/primitive = FALSE
 
 /obj/structure/reagent_anvil/Initialize(mapload)
 	. = ..()
-	if(is_mining_level(z))
-		primitive = TRUE
-		icon_state = "primitive_anvil_empty"
 
 /obj/structure/reagent_anvil/update_appearance()
 	. = ..()
@@ -22,7 +17,7 @@
 		return
 
 	var/image/overlayed_item = image(icon = contents[1].icon, icon_state = contents[1].icon_state)
-	overlayed_item.transform = matrix(1.5, 0, 0, 0, 0.8, 0)
+	overlayed_item.transform = matrix(, 0, 0, 0, 0.8, 0)
 	add_overlay(overlayed_item)
 
 /obj/structure/reagent_anvil/wrench_act(mob/living/user, obj/item/tool)
