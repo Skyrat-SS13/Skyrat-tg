@@ -120,7 +120,6 @@
 	if(current_version < 3)
 		var/old_species
 		READ_FILE(save["species"], old_species)
-		world.log << "[old_species]"
 		if(istext(old_species) && old_species in list("synthhuman", "synthliz", "synthmammal", "ipc"))
 
 			var/list/new_color
