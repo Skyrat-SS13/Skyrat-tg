@@ -124,21 +124,21 @@
 		if(initial(limb.limb_id) != SPECIES_SYNTH && initial(limb.base_limb_id) != SPECIES_SYNTH) // No messing with limbs that aren't actually synthetic.
 			continue
 
-		world.log << "[chassis_of_choice.icon] # [chassis_of_choice.icon_state]"
-
-		if(limb.body_part == HEAD)
+		if(limb.body_zone == BODY_ZONE_HEAD)
 			if(head_of_choice.color_src && head[MUTANT_INDEX_COLOR_LIST] && length(head[MUTANT_INDEX_COLOR_LIST]))
 				limb.variable_color = head[MUTANT_INDEX_COLOR_LIST][1]
 			limb.change_appearance(head_of_choice.icon, head_of_choice.icon_state, !!head_of_choice.color_src, head_of_choice.dimorphic)
-		else
-			if(chassis_of_choice.color_src && chassis[MUTANT_INDEX_COLOR_LIST] && length(chassis[MUTANT_INDEX_COLOR_LIST]))
-				limb.variable_color = chassis[MUTANT_INDEX_COLOR_LIST][1]
-			limb.change_appearance(chassis_of_choice.icon, chassis_of_choice.icon_state, !!chassis_of_choice.color_src, limb.body_part == CHEST && chassis_of_choice.dimorphic)
+			continue
 
-/datum/species/synthetic/on_species_loss(mob/living/carbon/human/C)
+		if(chassis_of_choice.color_src && chassis[MUTANT_INDEX_COLOR_LIST] && length(chassis[MUTANT_INDEX_COLOR_LIST]))
+			limb.variable_color = chassis[MUTANT_INDEX_COLOR_LIST][1]
+		limb.change_appearance(chassis_of_choice.icon, chassis_of_choice.icon_state, !!chassis_of_choice.color_src, limb.body_part == CHEST && chassis_of_choice.dimorphic)
+		limb.name = "\improper[chassis_of_choice.name] [parse_zone(limb.body_zone)]"
+
+/datum/species/synthetic/on_species_loss(mob/living/carbon/human/human)
 	. = ..()
 	if(screen)
-		screen.Remove(C)
+		screen.Remove(human)
 
 /**
  * Simple proc to switch the screen of a monitor-enabled synth, while updating their appearance.
@@ -149,7 +149,8 @@
  */
 /datum/species/synthetic/proc/switch_to_screen(mob/living/carbon/human/tranformer, screen_name)
 	tranformer.dna.mutant_bodyparts[MUTANT_SYNTH_SCREEN][MUTANT_INDEX_NAME] = screen_name
-	tranformer.update_body()
+	if(screen)
+		tranformer.update_body()
 
 /datum/species/synthetic/random_name(gender, unique, lastname)
 	var/randname = pick(GLOB.posibrain_names)
@@ -158,18 +159,3 @@
 
 /datum/species/synthetic/get_types_to_preload()
 	return ..() - typesof(/obj/item/organ/internal/cyberimp/arm/power_cord) // Don't cache things that lead to hard deletions.
-
-/datum/species/synthetic/replace_body(mob/living/carbon/target, datum/species/new_species)
-	..()
-	var/chassis = target.dna.mutant_bodyparts[MUTANT_SYNTH_CHASSIS]
-	if(!chassis)
-		return
-	var/datum/sprite_accessory/synth_chassis/chassis_of_choice = GLOB.sprite_accessories[MUTANT_SYNTH_CHASSIS][chassis["name"]]
-
-	for(var/obj/item/bodypart/iterating_bodypart as anything in target.bodyparts) //Override bodypart data as necessary
-		if(chassis_of_choice.color_src)
-			iterating_bodypart.should_draw_greyscale = TRUE
-			iterating_bodypart.species_color = target.dna?.features["mcolor"]
-		iterating_bodypart.limb_id = chassis_of_choice.icon_state
-		iterating_bodypart.name = "\improper[chassis_of_choice.name] [parse_zone(iterating_bodypart.body_zone)]"
-		iterating_bodypart.update_limb()
