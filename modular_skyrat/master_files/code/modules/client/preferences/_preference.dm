@@ -125,7 +125,7 @@
 	var/generate_icons = FALSE
 	/// A list of the four co-ordinates to crop to. Useful for icons whos main contents are smaller than 32x32. Please keep it square.
 	var/list/crop_area
-	/// A color to apply to the icon. Intended for greyscale icons.
+	/// A color to apply to the icon if it's greyscale.
 	var/greyscale_color
 
 /datum/preference/choiced/mutant_choice/is_accessible(datum/preferences/preferences)

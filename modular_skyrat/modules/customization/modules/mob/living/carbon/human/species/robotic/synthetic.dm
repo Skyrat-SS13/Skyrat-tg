@@ -114,7 +114,7 @@
 	if(!chassis_of_choice && !head_of_choice)
 		return
 
-	examine_limb_id = chassis_of_choice?.icon_state ? chassis_of_choice.icon_state : head_of_choice.icon_state
+	examine_limb_id = chassis_of_choice.icon_state
 
 	if(chassis_of_choice.color_src || head_of_choice.color_src)
 		species_traits += MUTCOLORS
