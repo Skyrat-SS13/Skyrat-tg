@@ -45,9 +45,7 @@
 	burn_reduction = 0
 
 /obj/item/bodypart/l_leg/robot/digitigrade
-	icon = BODYPART_ICON_IPC
-	icon_static = BODYPART_ICON_IPC
-	icon_greyscale = BODYPART_ICON_IPC
+	icon_greyscale = BODYPART_ICON_SYNTHLIZARD
 	should_draw_greyscale = TRUE
 	limb_id = "digitigrade"
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ROBOTIC | BODYTYPE_DIGITIGRADE
@@ -59,10 +57,8 @@
 	. = ..()
 	check_mutant_compatability()
 
-/obj/item/bodypart/r_leg/synth/digitigrade
-	icon = BODYPART_ICON_SYNTHMAMMAL
-	icon_static = BODYPART_ICON_SYNTHMAMMAL
-	icon_greyscale = BODYPART_ICON_SYNTHMAMMAL
+/obj/item/bodypart/r_leg/robot/digitigrade
+	icon_greyscale = BODYPART_ICON_SYNTHLIZARD
 	should_draw_greyscale = TRUE
 	limb_id = "digitigrade"
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ROBOTIC | BODYTYPE_DIGITIGRADE

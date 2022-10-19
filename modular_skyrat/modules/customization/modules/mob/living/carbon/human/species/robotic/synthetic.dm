@@ -19,15 +19,19 @@
 		TRAIT_LITERATE,
 	)
 	species_traits = list(
+		ROBOTIC_DNA_ORGANS,
 		EYECOLOR,
 		HAIR,
 		FACEHAIR,
 		LIPS,
+		ROBOTIC_LIMBS,
+		NOTRANSSTING,
 	)
 	mutant_bodyparts = list()
 	default_mutant_bodyparts = list(
 		"tail" = "None",
 		"ears" = "None",
+		"legs" = "Normal Legs",
 		MUTANT_SYNTH_ANTENNA = "None",
 		MUTANT_SYNTH_SCREEN = "None",
 		MUTANT_SYNTH_CHASSIS = "None",
@@ -61,6 +65,7 @@
 		BODY_ZONE_L_LEG = /obj/item/bodypart/l_leg/robot/synth,
 		BODY_ZONE_R_LEG = /obj/item/bodypart/r_leg/robot/synth,
 	)
+	digitigrade_customization = DIGITIGRADE_OPTIONAL
 	var/datum/action/innate/monitor_change/screen
 	var/saved_screen = "Blank"
 
@@ -93,12 +98,14 @@
 
 	var/screen_mutant_bodypart = transformer.dna.mutant_bodyparts[MUTANT_SYNTH_SCREEN]
 
-	if(!screen && screen_mutant_bodypart && screen_mutant_bodypart[MUTANT_INDEX_NAME] != "None")
+	if(!screen && screen_mutant_bodypart && screen_mutant_bodypart[MUTANT_INDEX_NAME] && screen_mutant_bodypart[MUTANT_INDEX_NAME] != "None")
 		screen = new
 		screen.Grant(transformer)
 
-	var/list/chassis = transformer.dna.mutant_bodyparts[MUTANT_SYNTH_CHASSIS]
-	var/list/head = transformer.dna.mutant_bodyparts[MUTANT_SYNTH_HEAD]
+/datum/species/synthetic/replace_body(mob/living/carbon/target, datum/species/new_species)
+	. = ..()
+	var/list/chassis = target.dna.mutant_bodyparts[MUTANT_SYNTH_CHASSIS]
+	var/list/head = target.dna.mutant_bodyparts[MUTANT_SYNTH_HEAD]
 	if(!chassis && !head)
 		return
 
@@ -113,20 +120,20 @@
 		species_traits += MUTCOLORS
 
 	// We want to ensure that the IPC gets their chassis and their head correctly.
-	for(var/obj/item/bodypart/limb as anything in transformer.bodyparts)
+	for(var/obj/item/bodypart/limb as anything in target.bodyparts)
 		if(initial(limb.limb_id) != SPECIES_SYNTH && initial(limb.base_limb_id) != SPECIES_SYNTH) // No messing with limbs that aren't actually synthetic.
 			continue
 
+		world.log << "[chassis_of_choice.icon] # [chassis_of_choice.icon_state]"
+
 		if(limb.body_part == HEAD)
-			limb.limb_id = "[initial(limb.limb_id)]_[head_of_choice.name]"
 			if(head_of_choice.color_src && head[MUTANT_INDEX_COLOR_LIST] && length(head[MUTANT_INDEX_COLOR_LIST]))
 				limb.variable_color = head[MUTANT_INDEX_COLOR_LIST][1]
-			limb.change_appearance(head_of_choice.icon, head_of_choice.icon_state, head_of_choice.color_src, head_of_choice.dimorphic)
+			limb.change_appearance(head_of_choice.icon, head_of_choice.icon_state, !!head_of_choice.color_src, head_of_choice.dimorphic)
 		else
-			limb.limb_id = "[initial(limb.limb_id)]_[chassis_of_choice.name]"
 			if(chassis_of_choice.color_src && chassis[MUTANT_INDEX_COLOR_LIST] && length(chassis[MUTANT_INDEX_COLOR_LIST]))
 				limb.variable_color = chassis[MUTANT_INDEX_COLOR_LIST][1]
-			limb.change_appearance(chassis_of_choice.icon, chassis_of_choice.icon_state, chassis_of_choice.color_src, limb.body_part == CHEST && chassis_of_choice.dimorphic)
+			limb.change_appearance(chassis_of_choice.icon, chassis_of_choice.icon_state, !!chassis_of_choice.color_src, limb.body_part == CHEST && chassis_of_choice.dimorphic)
 
 /datum/species/synthetic/on_species_loss(mob/living/carbon/human/C)
 	. = ..()

@@ -26,17 +26,11 @@
 				tgui.holder = src
 				tgui.ui_interact(usr) //datum has a tgui component, here we open the window
 
-// /mob/living/carbon/human/species/synthliz
-// 	race = /datum/species/synthetic/synthliz
-
 /mob/living/carbon/human/species/vox
 	race = /datum/species/vox
 
 /mob/living/carbon/human/species/vox_primalis
 	race = /datum/species/vox_primalis
-
-// /mob/living/carbon/human/species/ipc
-// 	race = /datum/species/synthetic/ipc
 
 /mob/living/carbon/human/species/synth
 	race = /datum/species/synthetic

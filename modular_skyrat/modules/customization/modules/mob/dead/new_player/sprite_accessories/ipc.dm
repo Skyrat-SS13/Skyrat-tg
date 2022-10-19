@@ -181,6 +181,8 @@
 /datum/sprite_accessory/synth_chassis
 	/// Boolean for if the body is actually dimorphic.
 	var/dimorphic = FALSE
+	/// If true, allows for digitigrade to be used.
+	var/is_digi_compatible = FALSE
 	icon = BODYPART_ICON_IPC
 	icon_state = "ipc"
 	color_src = null
@@ -205,6 +207,7 @@
 	icon_state = "synthmammal"
 	color_src = MUTCOLORS
 	dimorphic = TRUE
+	is_digi_compatible = TRUE
 
 /datum/sprite_accessory/synth_chassis/lizard
 	name = "Lizard Chassis"
@@ -212,6 +215,7 @@
 	icon_state = "synthliz"
 	color_src = MUTCOLORS
 	dimorphic = TRUE
+	is_digi_compatible = TRUE
 
 /datum/sprite_accessory/synth_chassis/mcgreyscale
 	name = "Morpheus Cyberkinetics (Greyscale)"
