@@ -9,8 +9,6 @@
 	var/datum/action/small_sprite/skyrat_xeno/small_sprite
 	/// Holds the ability for quick resting without using the ic panel, and without editing xeno huds
 	var/datum/action/cooldown/alien/skyrat/sleepytime/rest_button
-	/// Holds the ability for allowing a xeno to devolve back into a larve if they so choose
-	var/datum/action/cooldown/alien/skyrat/devolve/devolve_ability
 	mob_size = MOB_SIZE_LARGE
 	layer = LARGE_MOB_LAYER //above most mobs, but below speechbubbles
 	plane = GAME_PLANE_UPPER_FOV_HIDDEN
@@ -43,9 +41,6 @@
 	rest_button = new /datum/action/cooldown/alien/skyrat/sleepytime()
 	rest_button.Grant(src)
 
-	devolve_ability = new /datum/action/cooldown/alien/skyrat/devolve()
-	devolve_ability.Grant(src)
-
 	if(next_evolution)
 		evolve_ability = new /datum/action/cooldown/alien/skyrat/generic_evolve()
 		evolve_ability.Grant(src)
@@ -58,7 +53,6 @@
 /mob/living/carbon/alien/humanoid/skyrat/Destroy()
 	QDEL_NULL(small_sprite)
 	QDEL_NULL(rest_button)
-	QDEL_NULL(devolve_ability)
 	if(evolve_ability)
 		QDEL_NULL(evolve_ability)
 	return ..()
@@ -157,22 +151,6 @@
 
 	var/new_beno = new type_to_evolve_into(evolver.loc)
 	evolver.alien_evolve(new_beno)
-	return TRUE
-
-/datum/action/cooldown/alien/skyrat/devolve
-	name = "Devolve"
-	desc = "We can gather our energy and shed our current form, reverting back to a simple larva from which we can evolve down a different path."
-	button_icon_state = "larba"
-
-/datum/action/cooldown/alien/skyrat/devolve/Activate()
-	var/mob/living/carbon/alien/devolve_target = owner
-	if(!isalien(devolve_target))
-		to_chat(devolve_target, span_bolddanger("Wait a minute... You're not an alien, why would you even think of that?! How did you even get to this point???"))
-		return FALSE
-	if(tgui_alert(devolve_target, "Do you REALLY want to devolve?", "Message", list("Yes", "No")) != "Yes")
-		return FALSE
-	var/new_larva = new /mob/living/carbon/alien/larva(devolve_target.loc)
-	devolve_target.alien_evolve(new_larva)
 	return TRUE
 
 /datum/movespeed_modifier/alien_quick
