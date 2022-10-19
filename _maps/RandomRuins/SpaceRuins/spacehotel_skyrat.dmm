@@ -276,6 +276,32 @@
 /obj/item/reagent_containers/cup/glass/mug/nanotrasen,
 /turf/open/floor/wood/large,
 /area/ruin/space/has_grav/hotel/guestroom/room_4)
+"bB" = (
+/obj/structure/window/reinforced{
+	dir = 1;
+	layer = 2.9
+	},
+/obj/structure/table/glass,
+/obj/effect/turf_decal/siding/dark{
+	dir = 1
+	},
+/obj/item/key_card/hotel_room/four{
+	pixel_y = 4;
+	pixel_x = -9
+	},
+/obj/item/key_card/hotel_room/five{
+	pixel_y = 4
+	},
+/obj/item/key_card/hotel_room/six{
+	pixel_y = 4;
+	pixel_x = 8
+	},
+/obj/item/key_card/hotel_room/seven{
+	pixel_x = 1;
+	pixel_y = -2
+	},
+/turf/open/floor/carpet/black,
+/area/ruin/space/has_grav/hotel)
 "bE" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
@@ -1015,6 +1041,17 @@
 /obj/effect/turf_decal/siding/dark{
 	dir = 1
 	},
+/obj/item/key_card/hotel_room/one{
+	pixel_y = 4;
+	pixel_x = -9
+	},
+/obj/item/key_card/hotel_room/two{
+	pixel_y = 4
+	},
+/obj/item/key_card/hotel_room/three{
+	pixel_y = 4;
+	pixel_x = 8
+	},
 /turf/open/floor/carpet/black,
 /area/ruin/space/has_grav/hotel)
 "gi" = (
@@ -1349,6 +1386,13 @@
 	pixel_y = -7;
 	pixel_x = 10
 	},
+/obj/machinery/button/door{
+	id = "HotelRoom5";
+	name = "Guest Door Lock";
+	normaldoorcontrol = 1;
+	pixel_y = -30;
+	specialfunctions = 4
+	},
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/hotel/guestroom/room_5)
 "hw" = (
@@ -1503,6 +1547,13 @@
 /obj/item/reagent_containers/cup/glass/mug/nanotrasen{
 	pixel_y = 10;
 	pixel_x = 6
+	},
+/obj/machinery/button/door{
+	id = "HotelRoom3";
+	name = "Guest Door Lock";
+	normaldoorcontrol = 1;
+	pixel_y = -30;
+	specialfunctions = 4
 	},
 /turf/open/floor/carpet/neon/simple/teal/nodots,
 /area/ruin/space/has_grav/hotel/guestroom/room_3)
@@ -2101,7 +2152,9 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/disposalpipe/segment,
-/obj/machinery/door/puzzle/keycard/hotelkey2,
+/obj/machinery/door/airlock/keyed/hotel_room/two{
+	id_tag = "HotelRoom2"
+	},
 /turf/open/floor/carpet,
 /area/ruin/space/has_grav/hotel/guestroom/room_2)
 "kM" = (
@@ -2310,7 +2363,9 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/disposalpipe/segment,
-/obj/machinery/door/puzzle/keycard/hotelkey6,
+/obj/machinery/door/airlock/keyed/hotel_room/six{
+	id_tag = "HotelRoom6"
+	},
 /turf/open/floor/carpet,
 /area/ruin/space/has_grav/hotel/guestroom/room_6)
 "lG" = (
@@ -2459,6 +2514,13 @@
 "ms" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 4
+	},
+/obj/machinery/button/door{
+	id = "HotelRoom1";
+	name = "Guest Door Lock";
+	normaldoorcontrol = 1;
+	pixel_y = 31;
+	specialfunctions = 4
 	},
 /turf/open/floor/carpet/neon/simple/black/nodots,
 /area/ruin/space/has_grav/hotel/guestroom/room_1)
@@ -4395,7 +4457,9 @@
 	dir = 4
 	},
 /obj/structure/disposalpipe/segment,
-/obj/machinery/door/puzzle/keycard/hotelkey7,
+/obj/machinery/door/airlock/keyed/hotel_room/seven{
+	id_tag = "HotelRoom7"
+	},
 /turf/open/floor/carpet,
 /area/ruin/space/has_grav/hotel/guestroom)
 "Ao" = (
@@ -4405,6 +4469,7 @@
 	pixel_x = 1;
 	pixel_y = 5
 	},
+/obj/item/key_card/hotel_room/master,
 /turf/open/floor/carpet/executive,
 /area/ruin/space/has_grav/hotel/workroom)
 "Au" = (
@@ -4719,6 +4784,13 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
 	dir = 4
 	},
+/obj/machinery/button/door{
+	id = "HotelRoom7";
+	name = "Guest Door Lock";
+	normaldoorcontrol = 1;
+	pixel_y = -30;
+	specialfunctions = 4
+	},
 /turf/open/floor/carpet/neon/simple/white/nodots,
 /area/ruin/space/has_grav/hotel/guestroom)
 "CC" = (
@@ -4769,7 +4841,9 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
 /obj/structure/disposalpipe/segment,
-/obj/machinery/door/puzzle/keycard/hotelkey1,
+/obj/machinery/door/airlock/keyed/hotel_room/one{
+	id_tag = "HotelRoom1"
+	},
 /turf/open/floor/carpet,
 /area/ruin/space/has_grav/hotel/guestroom/room_1)
 "Dg" = (
@@ -5286,6 +5360,13 @@
 /obj/item/device/traitor_announcer,
 /obj/item/crowbar,
 /obj/item/radio/headset/headset_faction/bowman,
+/obj/item/key_card/hotel_room/one,
+/obj/item/key_card/hotel_room/two,
+/obj/item/key_card/hotel_room/three,
+/obj/item/key_card/hotel_room/four,
+/obj/item/key_card/hotel_room/five,
+/obj/item/key_card/hotel_room/six,
+/obj/item/key_card/hotel_room/seven,
 /turf/open/floor/carpet/executive,
 /area/ruin/space/has_grav/hotel/workroom)
 "GL" = (
@@ -5523,6 +5604,13 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/table/wood,
 /obj/machinery/coffeemaker,
+/obj/machinery/button/door{
+	id = "HotelRoom2";
+	name = "Guest Door Lock";
+	normaldoorcontrol = 1;
+	pixel_y = -30;
+	specialfunctions = 4
+	},
 /turf/open/floor/carpet/neon/simple/pink/nodots,
 /area/ruin/space/has_grav/hotel/guestroom/room_2)
 "In" = (
@@ -5934,7 +6022,9 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/disposalpipe/segment,
-/obj/machinery/door/puzzle/keycard/hotelkey3,
+/obj/machinery/door/airlock/keyed/hotel_room/three{
+	id_tag = "HotelRoom3"
+	},
 /turf/open/floor/carpet,
 /area/ruin/space/has_grav/hotel/guestroom/room_3)
 "Lz" = (
@@ -6122,6 +6212,13 @@
 /obj/item/coffee_cartridge/fancy{
 	pixel_y = -7;
 	pixel_x = 10
+	},
+/obj/machinery/button/door{
+	id = "HotelRoom6";
+	name = "Guest Door Lock";
+	normaldoorcontrol = 1;
+	pixel_y = -30;
+	specialfunctions = 4
 	},
 /turf/open/floor/carpet/royalblack,
 /area/ruin/space/has_grav/hotel/guestroom/room_6)
@@ -6548,6 +6645,19 @@
 	},
 /turf/open/floor/iron/white,
 /area/ruin/space/has_grav/hotel/dock)
+"Qr" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/obj/machinery/button/door{
+	id = "HotelRoom4";
+	name = "Guest Door Lock";
+	normaldoorcontrol = 1;
+	pixel_y = -30;
+	specialfunctions = 4
+	},
+/turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/hotel/guestroom/room_4)
 "Qv" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4{
 	dir = 6
@@ -7615,7 +7725,9 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/disposalpipe/segment,
-/obj/machinery/door/puzzle/keycard/hotelkey5,
+/obj/machinery/door/airlock/keyed/hotel_room/five{
+	id_tag = "HotelRoom5"
+	},
 /turf/open/floor/carpet,
 /area/ruin/space/has_grav/hotel/guestroom/room_5)
 "YP" = (
@@ -7678,7 +7790,9 @@
 	},
 /obj/structure/cable,
 /obj/structure/disposalpipe/segment,
-/obj/machinery/door/puzzle/keycard/hotelkey4,
+/obj/machinery/door/airlock/keyed/hotel_room/four{
+	id_tag = "HotelRoom4"
+	},
 /turf/open/floor/carpet,
 /area/ruin/space/has_grav/hotel/guestroom/room_4)
 "Zz" = (
@@ -9339,7 +9453,7 @@ sX
 TW
 TW
 TW
-TW
+Qr
 av
 nf
 yE
@@ -10624,7 +10738,7 @@ am
 hL
 so
 so
-ge
+bB
 Pw
 jc
 jc
