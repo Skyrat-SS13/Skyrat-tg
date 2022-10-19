@@ -57,15 +57,15 @@
 	var/engineering_override = FALSE
 
 /// Check for the three states of open access. Emergency, Unrestricted, and Engineering Override
-/obj/machinery/door/allowed(mob/Mob)
+/obj/machinery/door/allowed(mob/interacting_human)
 	if(emergency)
 		return TRUE
 
-	if(unrestricted_side(Mob))
+	if(unrestricted_side(interacting_human))
 		return TRUE
 
 	if(engineering_override)
-		var/mob/living/carbon/human/user = Mob
+		var/mob/living/carbon/human/user = interacting_human
 		var/obj/item/card/id/card = user.get_idcard(TRUE)
 		if(istype(user))
 			if(ACCESS_ENGINEERING in card.access)
