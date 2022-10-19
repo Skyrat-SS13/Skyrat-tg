@@ -7,6 +7,21 @@
 *	TGstation, Rohesie - Offered help in making this perform better by using vis contents instead of overlays. Thanks!
 */
 
+/obj/effect/overlay/water
+	name = "water"
+	icon = 'modular_skyrat/modules/mapping/icons/unique/pool.dmi'
+	icon_state = "bottom"
+	density = FALSE
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	anchored = TRUE
+	layer = ABOVE_MOB_LAYER
+	plane = GAME_PLANE_UPPER
+
+/obj/effect/overlay/water/top
+	icon_state = "top"
+	layer = BELOW_MOB_LAYER
+	plane = GAME_PLANE
+
 /**
  * Planetside water, indestructible.
  *
@@ -21,11 +36,16 @@
 	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
 	planetary_atmos = FALSE
 
-/turf/open/water/overlay/update_overlays()
+/turf/open/water/overlay/Initialize(mapload)
 	. = ..()
 
-	. += mutable_appearance(icon, "bottom", ABOVE_MOB_LAYER, src, GAME_PLANE_UPPER)
-	. += mutable_appearance(icon, "top", GATEWAY_UNDERLAY_LAYER, src, GAME_PLANE)
+	var/obj/effect/overlay/water/bottom = new()
+	SET_PLANE(bottom, PLANE_TO_TRUE(bottom.plane), src)
+	vis_contents += bottom
+
+	var/obj/effect/overlay/water/top/top = new()
+	SET_PLANE(top, PLANE_TO_TRUE(top.plane), src)
+	vis_contents += top
 
 /turf/open/water/overlay/Entered(atom/movable/arrived)
 	..()
