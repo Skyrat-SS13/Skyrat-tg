@@ -205,7 +205,7 @@
 		'modular_skyrat/modules/liquids/icons/obj/effects/liquid_overlays.dmi',
 		"stage[state]_bottom",
 		offset_spokesman = src,
-		plane = GAME_PLANE,
+		plane = GAME_PLANE_UPPER,
 		layer = ABOVE_MOB_LAYER,
 	))
 
