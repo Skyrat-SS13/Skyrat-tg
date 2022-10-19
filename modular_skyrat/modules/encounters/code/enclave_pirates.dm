@@ -15,7 +15,7 @@
 
 	belt = /obj/item/storage/belt/military/nri/captain/pirate_officer
 	back = /obj/item/storage/backpack/satchel/leather
-	backpack_contents = list(/obj/item/storage/box/nri_survival_pack = 1, /obj/item/ammo_box/magazine/m9mm_aps = 3, /obj/item/gun/ballistic/automatic/pistol/ladon/nri = 1, /obj/item/crucifix = 1, /obj/item/device/traitor_announcer = 1, /obj/item/clothing/mask/gas/hecu2 = 1, /obj/item/modular_computer/tablet/pda/security = 1)
+	backpack_contents = list(/obj/item/storage/box/nri_survival_pack = 1, /obj/item/ammo_box/magazine/m9mm_aps = 3, /obj/item/gun/ballistic/automatic/pistol/ladon/nri = 1, /obj/item/crucifix = 1, /obj/item/clothing/mask/gas/hecu2 = 1, /obj/item/modular_computer/tablet/pda/security = 1)
 	l_pocket = /obj/item/paper/fluff/nri_document
 	r_pocket = /obj/item/storage/bag/ammo
 
