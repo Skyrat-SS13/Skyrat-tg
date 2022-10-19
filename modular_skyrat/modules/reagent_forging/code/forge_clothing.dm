@@ -1,4 +1,4 @@
-//armor
+// Vests
 /obj/item/clothing/suit/armor/forging_plate_armor
 	name = "reagent plate vest"
 	desc = "An armor vest made of hammered, interlocking plates."
@@ -19,7 +19,7 @@
 	AddComponent(/datum/component/armor_plate, 4)
 	AddComponent(/datum/component/reagent_clothing, ITEM_SLOT_OCLOTHING)
 
-//gloves
+// Gloves
 /obj/item/clothing/gloves/forging_plate_gloves
 	name = "reagent plate gloves"
 	desc = "A set of leather gloves with protective armor plates connected to the wrists."
@@ -39,6 +39,7 @@
 	AddComponent(/datum/component/armor_plate, 4)
 	AddComponent(/datum/component/reagent_clothing, ITEM_SLOT_GLOVES)
 
+// Helmets
 /obj/item/clothing/head/helmet/forging_plate_helmet
 	name = "reagent plate helmet"
 	desc = "A helmet out of hammered plates with a leather neck guard and chin strap."
@@ -60,6 +61,7 @@
 	AddComponent(/datum/component/armor_plate, 4)
 	AddComponent(/datum/component/reagent_clothing, ITEM_SLOT_HEAD)
 
+// Boots
 /obj/item/clothing/shoes/forging_plate_boots
 	name = "reagent plate boots"
 	desc = "A pair of leather boots with protective armor plates over the shins and toes."
@@ -100,6 +102,7 @@
 	AddComponent(/datum/component/armor_plate, 2)
 	AddComponent(/datum/component/reagent_clothing, ITEM_SLOT_FEET)
 
+// Misc
 /obj/item/clothing/gloves/ring/reagent_clothing
 	name = "reagent ring"
 	desc = "A tiny ring, sized to wrap around a finger."
