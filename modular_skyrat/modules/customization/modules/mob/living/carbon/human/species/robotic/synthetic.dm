@@ -1,4 +1,4 @@
-/datum/species/robotic
+/datum/species/synthetic
 	name = "Synthetic Humanoid"
 	id = SPECIES_SYNTH
 	say_mod = "beeps"
@@ -18,15 +18,21 @@
 		TRAIT_OXYIMMUNE,
 		TRAIT_LITERATE,
 	)
+	species_traits = list(
+		EYECOLOR,
+		HAIR,
+		FACEHAIR,
+		LIPS,
+	)
 	mutant_bodyparts = list()
 	default_mutant_bodyparts = list(
-		"hair" = "Bald",
 		"tail" = "None",
 		"ears" = "None",
-		MUTANT_SYNTH_ANTENNA = ACC_RANDOM,
+		MUTANT_SYNTH_ANTENNA = "None",
 		MUTANT_SYNTH_SCREEN = "None",
 		MUTANT_SYNTH_CHASSIS = "None",
 		MUTANT_SYNTH_HEAD = "None",
+		MUTANT_SYNTH_HAIR = "None",
 	)
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	reagent_flags = PROCESS_SYNTHETIC
@@ -58,7 +64,7 @@
 	var/datum/action/innate/monitor_change/screen
 	var/saved_screen = "Blank"
 
-/datum/species/robotic/spec_life(mob/living/carbon/human/H)
+/datum/species/synthetic/spec_life(mob/living/carbon/human/H)
 	if(H.stat == SOFT_CRIT || H.stat == HARD_CRIT)
 		H.adjustFireLoss(1) //Still deal some damage in case a cold environment would be preventing us from the sweet release to robot heaven
 		H.adjust_bodytemperature(13) //We're overheating!!
@@ -66,19 +72,19 @@
 			to_chat(H, span_warning("Alert: Critical damage taken! Cooling systems failing!"))
 			do_sparks(3, TRUE, H)
 
-/datum/species/robotic/spec_revival(mob/living/carbon/human/transformer)
+/datum/species/synthetic/spec_revival(mob/living/carbon/human/transformer)
 	switch_to_screen(transformer, "Console")
 	addtimer(CALLBACK(src, .proc/switch_to_screen, transformer, saved_screen), 5 SECONDS)
 	playsound(transformer.loc, 'sound/machines/chime.ogg', 50, TRUE)
 	transformer.visible_message(span_notice("[transformer]'s [screen ? "monitor lights up" : "eyes flicker to life"]!"), span_notice("All systems nominal. You're back online!"))
 
-/datum/species/robotic/spec_death(gibbed, mob/living/carbon/human/transformer)
+/datum/species/synthetic/spec_death(gibbed, mob/living/carbon/human/transformer)
 	. = ..()
 	saved_screen = screen
 	switch_to_screen(transformer, "BSOD")
 	addtimer(CALLBACK(src, .proc/switch_to_screen, transformer, "Blank"), 5 SECONDS)
 
-/datum/species/robotic/on_species_gain(mob/living/carbon/human/transformer)
+/datum/species/synthetic/on_species_gain(mob/living/carbon/human/transformer)
 	. = ..()
 	var/obj/item/organ/internal/appendix/appendix = transformer.getorganslot(ORGAN_SLOT_APPENDIX)
 	if(appendix)
@@ -122,7 +128,7 @@
 				limb.variable_color = chassis[MUTANT_INDEX_COLOR_LIST][1]
 			limb.change_appearance(chassis_of_choice.icon, chassis_of_choice.icon_state, chassis_of_choice.color_src, limb.body_part == CHEST && chassis_of_choice.dimorphic)
 
-/datum/species/robotic/on_species_loss(mob/living/carbon/human/C)
+/datum/species/synthetic/on_species_loss(mob/living/carbon/human/C)
 	. = ..()
 	if(screen)
 		screen.Remove(C)
@@ -134,19 +140,19 @@
  * * transformer - The human that will be affected by the screen change (read: IPC).
  * * screen_name - The name of the screen to switch the ipc_screen mutant bodypart to.
  */
-/datum/species/robotic/proc/switch_to_screen(mob/living/carbon/human/tranformer, screen_name)
+/datum/species/synthetic/proc/switch_to_screen(mob/living/carbon/human/tranformer, screen_name)
 	tranformer.dna.mutant_bodyparts[MUTANT_SYNTH_SCREEN][MUTANT_INDEX_NAME] = screen_name
 	tranformer.update_body()
 
-/datum/species/robotic/random_name(gender, unique, lastname)
+/datum/species/synthetic/random_name(gender, unique, lastname)
 	var/randname = pick(GLOB.posibrain_names)
 	randname = "[randname]-[rand(100, 999)]"
 	return randname
 
-/datum/species/robotic/get_types_to_preload()
+/datum/species/synthetic/get_types_to_preload()
 	return ..() - typesof(/obj/item/organ/internal/cyberimp/arm/power_cord) // Don't cache things that lead to hard deletions.
 
-/datum/species/robotic/replace_body(mob/living/carbon/target, datum/species/new_species)
+/datum/species/synthetic/replace_body(mob/living/carbon/target, datum/species/new_species)
 	..()
 	var/chassis = target.dna.mutant_bodyparts[MUTANT_SYNTH_CHASSIS]
 	if(!chassis)
@@ -160,44 +166,3 @@
 		iterating_bodypart.limb_id = chassis_of_choice.icon_state
 		iterating_bodypart.name = "\improper[chassis_of_choice.name] [parse_zone(iterating_bodypart.body_zone)]"
 		iterating_bodypart.update_limb()
-
-// Not sure about this one.
-/*
-/datum/species/robotic/randomize_features(mob/living/carbon/human/human_mob)
-	var/main_color
-	var/second_color
-	var/third_color
-	var/random = rand(1,7)
-	switch(random)
-		if(1)
-			main_color = "#FFFFFF"
-			second_color = "#333333"
-			third_color = "#333333"
-		if(2)
-			main_color = "#FFFFDD"
-			second_color = "#DD6611"
-			third_color = "#AA5522"
-		if(3)
-			main_color = "#DD6611"
-			second_color = "#FFFFFF"
-			third_color = "#DD6611"
-		if(4)
-			main_color = "#CCCCCC"
-			second_color = "#FFFFFF"
-			third_color = "#FFFFFF"
-		if(5)
-			main_color = "#AA5522"
-			second_color = "#CC8833"
-			third_color = "#FFFFFF"
-		if(6)
-			main_color = "#FFFFDD"
-			second_color = "#FFEECC"
-			third_color = "#FFDDBB"
-		if(7) //Oh no you've rolled the sparkle dog
-			main_color = "#[random_color()]"
-			second_color = "#[random_color()]"
-			third_color = "#[random_color()]"
-	human_mob.dna.features["mcolor"] = main_color
-	human_mob.dna.features["mcolor2"] = second_color
-	human_mob.dna.features["mcolor3"] = third_color
-*/

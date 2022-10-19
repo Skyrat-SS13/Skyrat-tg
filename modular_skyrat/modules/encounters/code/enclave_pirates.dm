@@ -83,7 +83,7 @@
 	flavour_text = "The station has refused to pay the fine for breaking Imperial regulations, you are here to recover the debt. Do so by demanding the funds. Force approach is usually recommended, but isn't the only method."
 	important_text = "Allowed races are humans, Akulas, Synthetics. Follow your field officer's orders."
 	spawner_job_path = /datum/job/space_pirate
-	restricted_species = list(/datum/species/human, /datum/species/akula, /datum/species/robotic)
+	restricted_species = list(/datum/species/human, /datum/species/akula, /datum/species/synthetic)
 	spawn_oldpod = FALSE
 	random_appearance = FALSE
 	show_flavor = TRUE

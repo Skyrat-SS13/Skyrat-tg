@@ -1,5 +1,5 @@
 //Robots
-#define issynthetic(A) (is_species(A,/datum/species/robotic))
+#define issynthetic(A) (is_species(A,/datum/species/synthetic))
 //Actual Species
 #define isvox(A) (is_species(A,/datum/species/vox))
 #define isvoxprimalis(A) (is_species(A,/datum/species/vox_primalis))

@@ -76,6 +76,19 @@
 		target.dna.mutant_bodyparts[relevant_mutant_bodypart] = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_COLOR_LIST = list("#FFFFFF", "#FFFFFF", "#FFFFFF"), MUTANT_INDEX_EMISSIVE_LIST = list(FALSE, FALSE, FALSE))
 	target.dna.mutant_bodyparts[relevant_mutant_bodypart][MUTANT_INDEX_EMISSIVE_LIST] = list(sanitize_integer(value[1]), sanitize_integer(value[2]), sanitize_integer(value[3]))
 
+/datum/preference/color/mutant
+	abstract_type = /datum/preference/color/mutant
+
+/datum/preference/color/mutant/apply_to_human(mob/living/carbon/human/target, value)
+	if (type == abstract_type)
+		return ..()
+
+	if(!target.dna.mutant_bodyparts[relevant_mutant_bodypart])
+		target.dna.mutant_bodyparts[relevant_mutant_bodypart] = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_COLOR_LIST = list("#FFFFFF", "#FFFFFF", "#FFFFFF"), MUTANT_INDEX_EMISSIVE_LIST = list(FALSE, FALSE, FALSE))
+
+	var/color_value = sanitize_hexcolor(value)
+	target.dna.mutant_bodyparts[relevant_mutant_bodypart][MUTANT_INDEX_COLOR_LIST] = list(color_value, color_value, color_value)
+
 /**
  * Base class for character feature togglers
  */
@@ -127,7 +140,10 @@
 
 /// Generates and allows for post-processing on icons, such as greyscaling and cropping. This is cached.
 /datum/preference/choiced/mutant_choice/proc/generate_icon(datum/sprite_accessory/sprite_accessory)
-	var/icon/icon_to_process = icon(sprite_accessory.icon, generate_icon_state(sprite_accessory, sprite_accessory.icon_state), SOUTH)
+	if(!sprite_accessory.icon_state)
+		return icon('icons/mob/landmarks.dmi', "x")
+
+	var/icon/icon_to_process = icon(sprite_accessory.icon, generate_icon_state(sprite_accessory, sprite_accessory.icon_state), SOUTH, 1)
 
 	if(islist(crop_area) && crop_area.len == 4)
 		icon_to_process.Crop(crop_area[1], crop_area[2], crop_area[3], crop_area[4])

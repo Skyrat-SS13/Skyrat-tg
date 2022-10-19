@@ -7,11 +7,11 @@
 	color_src = null
 	key = MUTANT_SYNTH_SCREEN
 	generic = "Screen"
-	relevent_layers = list(BODY_ADJ_LAYER)
+	relevent_layers = list(BODY_FRONT_UNDER_CLOTHES)
 
 /datum/sprite_accessory/screen/none
 	name = "None"
-	icon_state = "none"
+	icon_state = null
 
 /datum/sprite_accessory/screen/blank
 	name = "Blank"
@@ -58,7 +58,7 @@
 	icon_state = "heart"
 
 /datum/sprite_accessory/screen/monoeye
-	name = "Mono eye"
+	name = "Mono Eye"
 	icon_state = "monoeye"
 
 /datum/sprite_accessory/screen/breakout
@@ -109,15 +109,15 @@
 	color_src = 0
 
 /datum/sprite_accessory/screen/sinewave
-	name = "Sine wave"
+	name = "Sine Wave"
 	icon_state = "sinewave"
 
 /datum/sprite_accessory/screen/squarewave
-	name = "Square wave"
-	icon_state = "squarwave"
+	name = "Square Wave"
+	icon_state = "squarewave"
 
 /datum/sprite_accessory/screen/ecgwave
-	name = "ECG wave"
+	name = "ECG Wave"
 	icon_state = "ecgwave"
 
 /datum/sprite_accessory/screen/eyes
@@ -125,7 +125,7 @@
 	icon_state = "eyes"
 
 /datum/sprite_accessory/screen/textdrop
-	name = "Text drop"
+	name = "Text Drop"
 	icon_state = "textdrop"
 
 /datum/sprite_accessory/screen/stars

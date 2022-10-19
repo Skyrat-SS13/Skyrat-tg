@@ -381,25 +381,49 @@
 
 /datum/preference/choiced/mutant_choice/ipc_screen
 	savefile_key = "feature_ipc_screen"
+	main_feature_name = "IPC Screen"
+	category = PREFERENCE_CATEGORY_FEATURES
 	relevant_mutant_bodypart = MUTANT_SYNTH_SCREEN
 	default_accessory_type = /datum/sprite_accessory/screen/none
+	should_generate_icons = TRUE
+	generate_icons = TRUE
+	crop_area = list(11, 22, 21, 32) // We want just the head.
+	greyscale_color = DEFAULT_SYNTH_SCREEN_COLOR
 
 /datum/preference/choiced/mutant_choice/ipc_screen/is_part_enabled(datum/preferences/preferences)
 	return TRUE
 
-/datum/preference/tri_color/ipc_screen
-	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
+/datum/preference/choiced/mutant_choice/ipc_screen/generate_icon_state(datum/sprite_accessory/sprite_accessory, original_icon_state)
+	return "m_ipc_screen_[original_icon_state]_FRONT"
+
+/datum/preference/choiced/mutant_choice/ipc_screen/compile_constant_data()
+	var/list/data = ..()
+
+	data[SUPPLEMENTAL_FEATURE_KEY] = "ipc_screen_color"
+
+	return data
+
+/datum/preference/color/mutant/ipc_screen_color
+	category = PREFERENCE_CATEGORY_SUPPLEMENTAL_FEATURES
 	savefile_identifier = PREFERENCE_CHARACTER
 	savefile_key = "ipc_screen_color"
 	relevant_mutant_bodypart = MUTANT_SYNTH_SCREEN
-	check_mode = TRICOLOR_NO_CHECK
 
-/datum/preference/tri_bool/ipc_screen
+/datum/preference/toggle/ipc_screen_emissive
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
 	savefile_identifier = PREFERENCE_CHARACTER
 	savefile_key = "ipc_screen_emissive"
 	relevant_mutant_bodypart = MUTANT_SYNTH_SCREEN
-	check_mode = TRICOLOR_NO_CHECK
+
+/datum/preference/toggle/ipc_screen_emissive/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
+	if (type == abstract_type)
+		return ..()
+
+	if(!target.dna.mutant_bodyparts[relevant_mutant_bodypart])
+		target.dna.mutant_bodyparts[relevant_mutant_bodypart] = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_COLOR_LIST = list("#FFFFFF", "#FFFFFF", "#FFFFFF"), MUTANT_INDEX_EMISSIVE_LIST = list(FALSE, FALSE, FALSE))
+
+	if(value)
+		target.dna.mutant_bodyparts[relevant_mutant_bodypart][MUTANT_INDEX_EMISSIVE_LIST] = list(TRUE, TRUE, TRUE)
 
 /// IPC Antennas
 
@@ -411,19 +435,27 @@
 /datum/preference/choiced/mutant_choice/synth_antenna/is_part_enabled(datum/preferences/preferences)
 	return TRUE
 
-/datum/preference/tri_color/synth_antenna
+/datum/preference/color/mutant/synth_antenna
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
 	savefile_identifier = PREFERENCE_CHARACTER
 	savefile_key = "ipc_antenna_color"
 	relevant_mutant_bodypart = MUTANT_SYNTH_ANTENNA
-	check_mode = TRICOLOR_NO_CHECK
 
-/datum/preference/tri_bool/synth_antenna
+/datum/preference/toggle/synth_antenna_emissive
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
 	savefile_identifier = PREFERENCE_CHARACTER
 	savefile_key = "ipc_antenna_emissive"
 	relevant_mutant_bodypart = MUTANT_SYNTH_ANTENNA
-	check_mode = TRICOLOR_NO_CHECK
+
+/datum/preference/toggle/synth_antenna_emissive/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
+	if (type == abstract_type)
+		return ..()
+
+	if(!target.dna.mutant_bodyparts[relevant_mutant_bodypart])
+		target.dna.mutant_bodyparts[relevant_mutant_bodypart] = list(MUTANT_INDEX_NAME = "None", MUTANT_INDEX_COLOR_LIST = list("#FFFFFF", "#FFFFFF", "#FFFFFF"), MUTANT_INDEX_EMISSIVE_LIST = list(FALSE, FALSE, FALSE))
+
+	if(value)
+		target.dna.mutant_bodyparts[relevant_mutant_bodypart][MUTANT_INDEX_EMISSIVE_LIST] = list(TRUE, TRUE, TRUE)
 
 /// IPC Chassis
 
@@ -453,7 +485,7 @@
 
 	return data
 
-/datum/preference/color/synth_chassis
+/datum/preference/color/mutant/synth_chassis
 	category = PREFERENCE_CATEGORY_SUPPLEMENTAL_FEATURES
 	savefile_identifier = PREFERENCE_CHARACTER
 	savefile_key = "ipc_chassis_color"
@@ -487,12 +519,61 @@
 
 	return data
 
-/datum/preference/color/synth_head
+/datum/preference/color/mutant/synth_head
 	category = PREFERENCE_CATEGORY_SUPPLEMENTAL_FEATURES
 	savefile_identifier = PREFERENCE_CHARACTER
 	savefile_key = "ipc_head_color"
 	relevant_mutant_bodypart = MUTANT_SYNTH_HEAD
 
+// Synth Hair Opacity
+
+/datum/preference/toggle/mutant_toggle/synth_hair_opacity
+	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
+	savefile_identifier = PREFERENCE_CHARACTER
+	savefile_key = "feature_synth_hair_opacity_toggle"
+	relevant_mutant_bodypart = MUTANT_SYNTH_HAIR
+
+/datum/preference/numeric/synth_hair_opacity
+	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
+	savefile_identifier = PREFERENCE_CHARACTER
+	savefile_key = "feature_synth_hair_opacity"
+	relevant_mutant_bodypart = MUTANT_SYNTH_HAIR
+	maximum = 255
+	minimum = 40 // Any lower, and hair's borderline invisible on lighter colours.
+
+/datum/preference/numeric/synth_hair_opacity/create_default_value()
+	return 255
+
+/datum/preference/numeric/synth_hair_opacity/is_accessible(datum/preferences/preferences)
+	var/passed_initial_check = ..(preferences)
+	var/allowed = preferences.read_preference(/datum/preference/toggle/allow_mismatched_parts) && preferences.read_preference(/datum/preference/toggle/mutant_toggle/synth_hair_opacity)
+	return passed_initial_check || allowed
+
+/**
+ * Actually applied. Slimmed down version of the logic in is_available() that actually works when spawning or drawing the character.
+ *
+ * Returns if feature is visible.
+ *
+ * Arguments:
+ * * target - The character this is being applied to.
+ * * preferences - The relevant character preferences.
+ */
+/datum/preference/numeric/synth_hair_opacity/proc/is_visible(mob/living/carbon/human/target, datum/preferences/preferences)
+	var/species_type = preferences.read_preference(/datum/preference/choiced/species)
+	var/datum/species/species = new species_type
+
+	var/species_available = (savefile_key in species.get_features())
+
+	var/overriding = preferences.read_preference(/datum/preference/toggle/allow_mismatched_parts)
+	var/part_enabled = preferences.read_preference(/datum/preference/toggle/mutant_toggle/synth_hair_opacity)
+	return (species_available || overriding) && part_enabled
+
+/datum/preference/numeric/synth_hair_opacity/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
+	if(!preferences || !is_visible(target, preferences))
+		return FALSE
+
+	target.hair_alpha = value
+	return TRUE
 
 /// Skrell Hair
 

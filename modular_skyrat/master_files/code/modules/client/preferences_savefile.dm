@@ -3,7 +3,7 @@
  * You can't really use the non-modular version, least you eventually want asinine merge
  * conflicts and/or potentially disastrous issues to arise, so here's your own.
  */
-#define MODULAR_SAVEFILE_VERSION_MAX 2
+#define MODULAR_SAVEFILE_VERSION_MAX 3
 
 #define MODULAR_SAVEFILE_UP_TO_DATE -1
 
@@ -116,6 +116,42 @@
 		if(old_breast_prefs) // Can't be too careful
 			// You weren't meant to be able to pick sizes over this anyways.
 			write_preference(GLOB.preference_entries[/datum/preference/choiced/breasts_size], min(GLOB.breast_size_translation["[old_breast_prefs]"], 10))
+
+	if(current_version < 3)
+		var/old_species
+		READ_FILE(save["species"], old_species)
+		world.log << "[old_species]"
+		if(istext(old_species) && old_species in list("synthhuman", "synthliz", "synthmammal", "ipc"))
+
+			var/list/new_color
+
+			if(old_species == "synthhuman")
+				write_preference(GLOB.preference_entries[/datum/preference/choiced/mutant_choice/synth_chassis], "Human Chassis")
+				write_preference(GLOB.preference_entries[/datum/preference/choiced/mutant_choice/synth_head], "Human Head")
+				// Get human skintone instead of mutant color
+				READ_FILE(save["skin_tone"], new_color)
+				new_color = skintone2hex(new_color)
+			else if(old_species == "synthliz")
+				write_preference(GLOB.preference_entries[/datum/preference/choiced/mutant_choice/synth_chassis], "Lizard Chassis")
+				write_preference(GLOB.preference_entries[/datum/preference/choiced/mutant_choice/synth_head], "Lizard Head")
+			if(old_species == "synthmammal")
+				write_preference(GLOB.preference_entries[/datum/preference/choiced/mutant_choice/synth_chassis], "Mammal Chassis")
+				write_preference(GLOB.preference_entries[/datum/preference/choiced/mutant_choice/synth_head], "Mammal Head")
+
+			write_preference(GLOB.preference_entries[/datum/preference/choiced/species], "synth")
+
+			// If human code hasn't kicked in, grab mutant colour.
+			if(!new_color)
+				READ_FILE(save["mutant_colors_color"], new_color)
+				if(islist(new_color) && new_color.len > 0)
+					new_color = sanitize_hexcolor(new_color[1])
+				else
+					new_color = null // Just let validation pick it's own value.
+
+			if(new_color)
+				write_preference(GLOB.preference_entries[/datum/preference/color/mutant/synth_chassis], new_color)
+				write_preference(GLOB.preference_entries[/datum/preference/color/mutant/synth_head], new_color)
+
 
 /datum/preferences/proc/check_migration()
 	if(!tgui_prefs_migration)

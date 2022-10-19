@@ -192,7 +192,7 @@
 					if(SCANGATE_VULPKANIN)
 						scan_species = /datum/species/vulpkanin
 					if(SCANGATE_SYNTH)
-						scan_species = /datum/species/robotic
+						scan_species = /datum/species/synthetic
 					if(SCANGATE_TESHARI)
 						scan_species = /datum/species/teshari
 					if(SCANGATE_HEMOPHAGE)
