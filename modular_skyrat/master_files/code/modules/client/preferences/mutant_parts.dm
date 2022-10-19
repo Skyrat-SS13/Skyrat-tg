@@ -532,6 +532,7 @@
 	savefile_identifier = PREFERENCE_CHARACTER
 	savefile_key = "feature_synth_hair_opacity_toggle"
 	relevant_mutant_bodypart = MUTANT_SYNTH_HAIR
+	default_value = FALSE
 
 /datum/preference/numeric/synth_hair_opacity
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
