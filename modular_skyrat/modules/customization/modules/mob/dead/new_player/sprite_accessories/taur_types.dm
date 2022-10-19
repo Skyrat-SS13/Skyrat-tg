@@ -5,7 +5,7 @@
 	color_src = USE_MATRIXED_COLORS
 	dimension_x = 64
 	center = TRUE
-	relevent_layers = list(BODY_ADJ_LAYER, BODY_FRONT_UNDER_CLOTHES)
+	relevent_layers = list(BODY_FRONT_LAYER, BODY_ADJ_LAYER, BODY_FRONT_UNDER_CLOTHES, ABOVE_BODY_FRONT_HEAD_LAYER)
 	genetic = TRUE
 	organ_type = /obj/item/organ/external/taur_body
 	flags_for_organ = SPRITE_ACCESSORY_HIDE_SHOES
@@ -118,38 +118,24 @@
 	icon_state = "deer"
 	taur_mode = STYLE_TAUR_HOOF
 	alt_taur_mode = STYLE_TAUR_PAW
-	color_src = USE_ONE_COLOR
-	extra = TRUE
-	extra_color_src = MUTCOLORS2
 
 /datum/sprite_accessory/taur/drake
 	name = "Drake"
 	icon_state = "drake"
 	taur_mode = STYLE_TAUR_PAW
-	color_src = USE_ONE_COLOR
-	extra = TRUE
-	extra_color_src = MUTCOLORS2
 
 /datum/sprite_accessory/taur/drake/old
 	name = "Drake (Old)"
 	icon_state = "drake_old"
-	color_src = USE_MATRIXED_COLORS
-	extra = FALSE
 
 /datum/sprite_accessory/taur/drider
 	name = "Drider"
 	icon_state = "drider"
-	color_src = USE_ONE_COLOR
-	extra = TRUE
-	extra_color_src = MUTCOLORS2
 
 /datum/sprite_accessory/taur/eevee
 	name = "Eevee"
 	icon_state = "eevee"
 	taur_mode = STYLE_TAUR_PAW
-	color_src = USE_ONE_COLOR
-	extra = TRUE
-	extra_color_src = MUTCOLORS2
 
 /datum/sprite_accessory/taur/horse
 	name = "Horse"
@@ -171,7 +157,6 @@
 	name = "Scolipede"
 	icon_state = "pede"
 	taur_mode = STYLE_TAUR_PAW
-	color_src = USE_ONE_COLOR
 	extra = TRUE
 	extra2 = TRUE
 	extra_color_src = MUTCOLORS2
@@ -187,14 +172,8 @@
 	name = "Canine"
 	icon_state = "canine"
 	taur_mode = STYLE_TAUR_PAW
-	color_src = USE_ONE_COLOR
-	extra = TRUE
-	extra_color_src = MUTCOLORS2
 
 /datum/sprite_accessory/taur/feline
 	name = "Feline"
 	icon_state = "feline"
 	taur_mode = STYLE_TAUR_PAW
-	color_src = USE_ONE_COLOR
-	extra = TRUE
-	extra_color_src = MUTCOLORS2

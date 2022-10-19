@@ -104,5 +104,5 @@
 
 /datum/borer_evolution/diveworm/empowered_offspring/on_evolve(mob/living/simple_animal/cortical_borer/cortical_owner)
 	. = ..()
-	var/datum/action/cooldown/borer/learn_bloodchemical/attack_action = new()
+	var/datum/action/cooldown/borer/empowered_offspring/attack_action = new()
 	attack_action.Grant(cortical_owner)

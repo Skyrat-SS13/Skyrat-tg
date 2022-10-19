@@ -779,3 +779,176 @@
   - bugfix: You can no longer pierce the veil between the living and the dead with
       the power of circuitry.
   - imageadd: New inhand sprites for the sabre sheath
+2022-10-17:
+  A.C.M.O.:
+  - bugfix: Fixed a bug where knockdowns caused Poly's voice commands to stop working.
+  - bugfix: Fixed bug in Hydraulic Leak quirk which caused it to be lethal.
+  Ebin-Halcyon:
+  - imageadd: The RD's labcoat and turtleneck have been resprited
+  GoldenAlpharex:
+  - bugfix: The Medical Kiosk no longer bends the laws of physics and now properly
+      appears underneath mobs that would somehow end up atop of it, rather than above
+      them.
+  - balance: Hemophages now receive a status effect that reduces their blood drain
+      by half for twenty minutes when drinking blood from another player-controlled
+      non-monkey humanoid character.
+  - balance: Hemophages now have a maximum blood volume of 1000, rather than 2000.
+  - balance: Drinking blood from monkeys, or otherwise inserting monkey blood in your
+      body, will no longer allow you to go past the normal maximum blood volume of
+      560 cL, much like all of the other blood-increasing reagents.
+  - bugfix: ''
+  - code_imp: Made some general improvements to the Hemophage code, bringing it closer
+      to the standards.
+  - qol: Added a preference for PDA ringtones, to save a custom ringtone that will
+      then be applied automatically to your character when spawned in the game. Gone
+      are the days of having to do it manually at the start of every round!
+  Melbert:
+  - bugfix: Fixed a plant backfire runtime when throwing plants
+  Paxilmaniac:
+  - bugfix: The path on the left side of the ash walker's ritual room on icebox now
+      actually lines up with the door
+  - imagedel: Removed a few entirely unused sprites from the modular suits icon file
+  QuacksQ:
+  - bugfix: Fixed various issues on NSS Voidraptor.
+  SkyratBot:
+  - bugfix: Choosing admin setup options on certain events will no longer retain the
+      chosen options for future events.
+  - bugfix: Sold bounty cubes now display properly in the NT pay app history.
+  - qol: Add RMB hotkey to toggle lighting for flashlights.  Add contextual screentips
+      for flashlights.
+  - soundadd: Reuse existing sounds for flares to use `sound/items/match_strike.ogg`
+      and glowsticks to use `sound/effects/wounds/crack2.ogg`
+  - bugfix: Custom vendors now explode on deconstruct as opposed to delete, causing
+      no practical changes to gameplay but admins will notice slightly fewer ahelps
+      if they ever have to get rid of one.
+  - rscadd: The orbit UI now brings up tooltips to show health, job, and full name
+      information.
+  - rscadd: The orbit UI now puts disguised names in quotes. "John Doe". Hover to
+      get real name.
+  - rscadd: Orbit UI now gives tooltips on SM crystal, nuke disk, and nuclear devices.
+  - rscadd: You can now search by job in the orbit UI.
+  - bugfix: Orbit UI buttons (should) no longer clip on extra long names.
+  - bugfix: blob zombies created by the Distributed Neurons reagent and cyto no longer
+      die instantly due to not having an associated factory
+  - balance: Clever monkeys now use items the same way Humans do, meaning they can
+      now use Defibrilators, water tanks, crates, and many other things, but no longer
+      does monkey actions like instant hardstun on disarm and smashing your paw into
+      machines.
+  Wallem:
+  - rscadd: A new scam artist has gotten your home address.
+  YakumoChen:
+  - bugfix: Maid outfits come with the correct accessory again, and the maid apron
+      instead is vended from the autolathe.
+  softcerv:
+  - balance: The Oppressive Force Relocation medicell  can no longer teleport mobs
+      that are buckled.
+  - bugfix: The Oppressive Force Relocation medicell is no longer able to instantly
+      teleport.
+  theOOZ:
+  - bugfix: EMP grenades now have an actual icon when activated.
+  - bugfix: Fixes coloring issues with taur bodyparts
+  - bugfix: Fixes layering issues with back-view taur bodyparts
+2022-10-18:
+  Dalmationer and Profakos:
+  - imageadd: added icons for motorized wheelchairs (regular and fast)
+  - bugfix: Wheelchairs can be upgraded more than once
+  GoldenAlpharex:
+  - bugfix: Oversized characters will no longer start being spammed with feeling "terribly
+      bloated" because they're getting closer to their normal amount of blood within
+      a round.
+  - bugfix: The prompt to commend someone else for their good behavior will now properly
+      be given out randomly, allowing those that late-join to give them out as well.
+  Imaginos:
+  - imageadd: Updates the station-bounced radio sprite
+  Melbert:
+  - bugfix: Fixed some things having inaccurate screentips while holding nothing (Elevators,
+      heaters, bodybags / roller beds)
+  - bugfix: Fixes runtime preventing revolution auto shuttle call
+  Paxilmaniac:
+  - rscadd: A large version of the mortar that can hold five items at once, but it
+      must be secured (preferably on a table) before you can use it!
+  - rscadd: Stone can now be used to build stone stairs!
+  - balance: Xenos have lost the ability to devolve back into a larva
+  - balance: Runner damage has been lowered to 15-20 (From 20-25)
+  - balance: Runners cannot vent crawl for 48 seconds (80% of the ability cooldown
+      timer) starting from when they activate the evade ability, to prevent cheese
+  - balance: Sentinel spit now uses more plasma per spit (40 from 25) and does a bit
+      less damage (30 stamina from 40, or 20 burn from 25)
+  - balance: Warriors in agility mode will do 15-20 damage, which will return to normal
+      when they stop using agility
+  SkyratBot:
+  - imageadd: New and improved sprites for stone floors!
+  - rscadd: Stairs can now be built out of iron, wood, or really any rigid material
+      (stuff you can make carving blocks out of)
+  - rscadd: Two new types of stairs, wood and stone (wood is buildable in round) for
+      any mappers in the chat
+  - bugfix: checking a pocket protector's insertable items list no longer lists the
+      names of ALL possible objects.
+  - bugfix: normal/cosmetology pocket protectors now work again.
+  - bugfix: fugitive hunters get team hud
+  - bugfix: Goodie lockbox contents can no longer go missing
+  - qol: Reorganized the items in the Booze-o-Mat and implemented product categories
+  - bugfix: Fixed being able to weld multiple disposal machines to the same pipe
+  - admin: Cross-server messages are now filtered against the server's word filter.
+      If it's hard filtered, the message will not send. If it's soft-filtered, it
+      will send slower to allow an admin more time to cancel it.
+  - bugfix: Fixes godfather using godmother sprites and vice versa.
+  - bugfix: Deltastation's EVA now contains a real toolbelt, that can only hold tools.
+  - bugfix: The Ashwalker Nest now contains a real toolbelt, that can only hold tools.
+  - spellcheck: The base type of /belt is now more obviously NOT a toolbelt.
+  VexingRaven:
+  - qol: Many gun-related chat messages are now balloon alerts instead
+  - spellcheck: The bow no longer says you loaded it with bullets
+  Vishenka0704:
+  - bugfix: restores withdrawal log in NT Pay
+  Zonespace27:
+  - refactor: Refactored borer ability back-end
+  - bugfix: Diveworm T5 evolution now gives the correct ability
+  - bugfix: Borer empowered offspring no longer overrides produce offspring
+  larentoun:
+  - rscadd: Config-dependant disable mismatched parts for global disabling
+  - rscadd: Toggle for genitals (if ERP is enabled) in CharPrefs
+  - config: Default config addition for disabling mismatched parts (the config is
+      disabled by default, no changes required)
+2022-10-19:
+  Melbert:
+  - bugfix: Viper spider venom actually causes hallucinations
+  - qol: Tramstation kitchen dumbwaiter now uses an elevator control panel
+  Paxilmaniac:
+  - imageadd: New icons for glassblowing cups, bowls, globes, and plates!
+  - imageadd: New icons for ceramic plates, cups, and bowls!
+  - imageadd: The icon for custom material floor tiles has been lightened up to give
+      things like glass and paper floors the look they were always meant to have
+  PositiveEntropy, Fikou:
+  - rscadd: 'Adds a new HUD: The Trasen-Knox HUD! With a theming based on classic
+      1970s CRT screen computers!'
+  - code_imp: Added behavior for unique icons for active hands.
+  - code_imp: Added behavior that makes it so when you equip an item, the icon behind
+      it defaults to the blank template type.
+  RatFromTheJungle:
+  - bugfix: bardrobes, oncemore, actually sell their moneybags
+  ShizCalev:
+  - bugfix: Fixed a possible scenario which could result in ghosts not sending a chat
+      message properly when pointing during high time dilation.
+  - bugfix: Fixed a minor runtime keeping player controlled secbots from switching
+      to arrest mode automatically after stunning someone. This also fixed the stun
+      action being combat logged for an incorrect mob.
+  SkyratBot:
+  - bugfix: Fixed modular computers not being able to be deconstructed/repaired
+  - spellcheck: Igniting an oil patch will display in first person for the user.
+  - bugfix: Fixed a bug causing Blood Deficiency to remove more blood than intended.
+  - spellcheck: Sleeper protocol grammar is better now. Wahoo!
+  - bugfix: Deconstructing a railing will now give the proper amount of iron rods.
+  - bugfix: Plastic explosives can no longer be planted on observer players when made
+      visible.
+  - rscadd: Adds the command intercom -- Coming to a conference room near you!
+  - imageadd: Adds a sprite for the command intercom.
+  - bugfix: Freerange intercoms can no longer access the Syndicate frequency.
+  - bugfix: Russian revolvers can now be suicided with.
+  - bugfix: Russian revolvers won't get monkeys pissed at you for pointing it at them,
+      even if you can't fire it.
+  - spellcheck: Statue descriptions now have full stops and capital letters.
+  - qol: Examining a mech under construction returns the instructions for the next
+      step.
+  Triiodine:
+  - imageadd: resprites datadisks to be more floppy disk-y.
