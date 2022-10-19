@@ -433,6 +433,10 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 	name = "Recolorable Cheongsam"
 	item_path = /obj/item/clothing/under/costume/skyrat/cheongsam
 
+/datum/loadout_item/under/formal/kimono_fancy
+	name = "Fancy Kimono"
+	item_path =  /obj/item/clothing/under/costume/kimono_fancy
+
 /datum/loadout_item/under/miscellaneous/chaps
 	name = "Black Chaps"
 	item_path = /obj/item/clothing/under/pants/chaps

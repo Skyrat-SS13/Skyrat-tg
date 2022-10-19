@@ -3,6 +3,7 @@
 		/obj/item/clothing/under/costume/skyrat/yukata = 5,
 		/obj/item/clothing/under/costume/skyrat/kamishimo = 5,
 		/obj/item/clothing/under/costume/skyrat/cavalry = 5,
+		/obj/item/clothing/under/costume/kimono_fancy = 5,
 		/obj/item/clothing/head/costume/kabuto = 5,
 		/obj/item/clothing/suit/costume/samurai = 5,
 		/obj/item/clothing/under/costume/skyrat/vicvest = 5,
