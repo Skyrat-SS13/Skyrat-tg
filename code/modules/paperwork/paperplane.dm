@@ -63,7 +63,7 @@
 	user.adjust_blurriness(6)
 	if(eyes)
 		eyes.applyOrganDamage(rand(impact_eye_damage_lower, impact_eye_damage_higher)) // SKYRAT EDIT START - Better paper planes
-	sleep(10)
+	sleep(1 SECONDS)
 	return (BRUTELOSS)
 
 /obj/item/paperplane/update_overlays()
