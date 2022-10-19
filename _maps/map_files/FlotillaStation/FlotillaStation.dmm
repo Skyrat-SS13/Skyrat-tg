@@ -1141,8 +1141,10 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/tile/blue/fourcorners,
-/obj/machinery/door/airlock/medical,
 /obj/effect/mapping_helpers/airlock/access/all/medical/general,
+/obj/machinery/door/airlock/medical{
+	name = "Exam Room"
+	},
 /turf/open/floor/iron/white,
 /area/station/medical/exam_room)
 "aeh" = (
@@ -4425,9 +4427,6 @@
 /turf/open/floor/plating,
 /area/station/engineering/lobby)
 "aps" = (
-/obj/machinery/door/airlock/medical{
-	name = "Primary Surgical Theatre"
-	},
 /obj/effect/turf_decal/tile/blue/fourcorners,
 /obj/machinery/door/firedoor,
 /obj/effect/turf_decal/stripes/line{
@@ -4437,6 +4436,9 @@
 	dir = 4
 	},
 /obj/effect/mapping_helpers/airlock/access/all/medical/general,
+/obj/machinery/door/airlock/medical{
+	name = "Exam Room"
+	},
 /turf/open/floor/iron/white,
 /area/station/medical/exam_room)
 "apt" = (
@@ -6382,6 +6384,7 @@
 	dir = 1
 	},
 /obj/structure/table,
+/obj/item/storage/box/mothic_goods,
 /turf/open/floor/iron,
 /area/station/engineering/break_room)
 "avB" = (
@@ -7695,8 +7698,10 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
-/obj/machinery/door/airlock/medical,
 /obj/effect/mapping_helpers/airlock/access/all/medical/general,
+/obj/machinery/door/airlock/medical{
+	name = "Exam Room"
+	},
 /turf/open/floor/iron/white,
 /area/station/medical/exam_room)
 "aAj" = (
@@ -8732,7 +8737,9 @@
 /turf/open/floor/plating,
 /area/station/medical/storage)
 "aDV" = (
-/obj/machinery/door/airlock/grunge,
+/obj/machinery/door/airlock/grunge{
+	name = "Hangar Catwalk"
+	},
 /obj/effect/mapping_helpers/airlock/access/all/medical/general,
 /obj/machinery/door/firedoor,
 /turf/open/floor/plating,
@@ -8828,7 +8835,7 @@
 /area/station/security/power_station)
 "aEk" = (
 /obj/machinery/door/airlock/maintenance,
-/obj/effect/mapping_helpers/airlock/access/all/medical/general,
+/obj/effect/mapping_helpers/airlock/access/all/engineering/maintenance,
 /turf/open/floor/iron/dark,
 /area/station/medical/treatment_center)
 "aEl" = (
@@ -9307,7 +9314,9 @@
 /area/station/medical/virology)
 "aFX" = (
 /obj/machinery/duct,
-/obj/machinery/door/airlock/multi_tile/glass,
+/obj/machinery/door/airlock/multi_tile/glass{
+	name = "Crew Quarters"
+	},
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -12335,7 +12344,6 @@
 /area/station/security/prison/work)
 "aQn" = (
 /obj/structure/table/glass,
-/obj/structure/window/reinforced,
 /obj/effect/turf_decal/trimline/blue/filled/line,
 /obj/item/wrench/medical,
 /turf/open/floor/iron/dark,
@@ -13283,7 +13291,9 @@
 /turf/open/floor/engine/air,
 /area/station/engineering/storage/tech)
 "aTG" = (
-/obj/machinery/door/airlock/medical/glass,
+/obj/machinery/door/airlock/medical/glass{
+	name = "Nitrogen Room"
+	},
 /obj/effect/mapping_helpers/airlock/access/all/medical/general,
 /obj/machinery/door/firedoor,
 /obj/effect/turf_decal/stripes/line{
@@ -15178,6 +15188,14 @@
 /obj/machinery/power/apc/auto_name/directional/west,
 /turf/open/floor/iron,
 /area/station/security/prison/safe)
+"biK" = (
+/obj/modular_map_root{
+	key = "shooting_range";
+	config_file = "strings/modular_maps/FlotillaStation.toml";
+	dir = 4
+	},
+/turf/open/floor/plating/nitrogen,
+/area/station/security/brig)
 "bjr" = (
 /obj/structure/showcase/cyborg/old{
 	pixel_y = 20
@@ -16532,6 +16550,10 @@
 /obj/structure/cable/layer3,
 /turf/open/floor/iron/dark,
 /area/space)
+"ebQ" = (
+/obj/effect/landmark/start/corrections_officer,
+/turf/open/floor/iron,
+/area/station/security/execution/transfer)
 "ecy" = (
 /obj/structure/shuttle/engine/heater{
 	dir = 8
@@ -16942,6 +16964,10 @@
 	},
 /turf/open/floor/iron/dark/nitrogen,
 /area/station/security/detectives_office)
+"eYJ" = (
+/obj/effect/landmark/start/security_officer,
+/turf/open/floor/iron,
+/area/station/security/execution/transfer)
 "eYR" = (
 /obj/machinery/door/airlock{
 	name = "Law Office"
@@ -20306,6 +20332,7 @@
 /area/station/security/brig)
 "muq" = (
 /obj/machinery/airalarm/directional/west,
+/obj/effect/landmark/start/corrections_officer,
 /turf/open/floor/iron,
 /area/station/security/execution/transfer)
 "muU" = (
@@ -20538,6 +20565,12 @@
 	pixel_y = 1
 	},
 /turf/open/floor/plating/airless,
+/area/space)
+"mRX" = (
+/obj/machinery/light/directional/east,
+/turf/open/floor/iron/smooth_edge{
+	dir = 8
+	},
 /area/space)
 "mSO" = (
 /obj/structure/table,
@@ -21342,6 +21375,10 @@
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /turf/open/floor/catwalk_floor/iron_smooth,
 /area/space)
+"paa" = (
+/obj/effect/landmark/start/security_officer,
+/turf/open/floor/iron,
+/area/station/security/processing)
 "pcd" = (
 /turf/open/floor/iron/smooth_half{
 	dir = 1
@@ -23590,6 +23627,12 @@
 /obj/effect/landmark/start/security_officer,
 /turf/open/floor/iron/white,
 /area/station/commons/dorms/barracks)
+"uUM" = (
+/obj/machinery/light/directional/west,
+/turf/open/floor/iron/smooth_edge{
+	dir = 4
+	},
+/area/space)
 "uXj" = (
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 8
@@ -24601,6 +24644,7 @@
 /area/space)
 "xuz" = (
 /obj/machinery/airalarm/directional/north,
+/obj/effect/landmark/start/security_officer,
 /turf/open/floor/iron,
 /area/station/security/processing)
 "xva" = (
@@ -56125,7 +56169,7 @@ rRg
 rRg
 rRg
 rRg
-rRg
+uUM
 rRg
 rRg
 rRg
@@ -56136,7 +56180,7 @@ rRg
 kHE
 rRg
 rRg
-rRg
+uUM
 rRg
 rRg
 rRg
@@ -58695,7 +58739,7 @@ yfQ
 yfQ
 yfQ
 yfQ
-yfQ
+mRX
 yfQ
 yfQ
 cVY
@@ -58706,7 +58750,7 @@ xVC
 yfQ
 yfQ
 yfQ
-yfQ
+mRX
 xVC
 yfQ
 yfQ
@@ -58951,8 +58995,8 @@ fII
 fII
 fII
 fII
-fII
-fII
+riV
+riV
 fII
 riV
 riV
@@ -72853,7 +72897,7 @@ xuz
 aBZ
 aBZ
 aBZ
-aBZ
+paa
 jHl
 ane
 siq
@@ -73625,7 +73669,7 @@ gsi
 gsi
 bGc
 awL
-awL
+ebQ
 aHk
 ane
 gfJ
@@ -73882,7 +73926,7 @@ amx
 amx
 puG
 awL
-awL
+ebQ
 lEH
 ane
 kth
@@ -74139,7 +74183,7 @@ muq
 aZq
 sAz
 awL
-awL
+ebQ
 aHk
 amx
 cbE
@@ -74396,7 +74440,7 @@ ago
 sAz
 sAz
 awL
-awL
+eYJ
 aHk
 amx
 xQu
@@ -74652,7 +74696,7 @@ awL
 awL
 hYA
 gQP
-awL
+eYJ
 tfX
 amx
 amx
@@ -140193,7 +140237,7 @@ lvh
 lvh
 lvh
 lvh
-lvh
+biK
 lvh
 amu
 hhL
