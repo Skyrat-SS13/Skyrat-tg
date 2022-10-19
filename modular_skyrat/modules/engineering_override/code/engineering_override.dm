@@ -94,7 +94,7 @@
 		for(var/obj/machinery/door/airlock/airlock in station_area)
 			airlock.engineering_override = FALSE
 			airlock.normalspeed = TRUE
-			airlock.update_icon(ALL, 0)
+			airlock.update_appearance()
 	message_admins("Engineering override has been turned OFF for station airlocks.")
 
 /// Someone or the AI or silicons tries to change the access on the airlock
