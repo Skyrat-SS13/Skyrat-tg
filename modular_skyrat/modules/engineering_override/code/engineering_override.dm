@@ -5,11 +5,10 @@
 	/// Is this area eligible for engineer override?
 	var/engineering_override_eligible = FALSE
 
-/**
- * Set the areas that will receive expanded access for the engineers on an orange alert
- * Maintenance, bridge, departmental lobbies and inner rooms. No access to security.
- * Sensitive areas like the vault, command quarters, heads' offices, etc. are not applicable.
- */
+// Set the areas that will receive expanded access for the engineers on an orange alert
+// Maintenance, bridge, departmental lobbies and inner rooms. No access to security.
+// Sensitive areas like the vault, command quarters, heads' offices, etc. are not applicable.
+ 
 /area/station/ai_monitored/command/storage/eva
 	engineering_override_eligible = TRUE
 
@@ -70,6 +69,7 @@
 		if(istype(user))
 			if(ACCESS_ENGINEERING in card.access)
 				return TRUE
+
 	return ..()
 
 /// Activate the airlock overrides, called by the change of alert level
@@ -81,7 +81,7 @@
 		for(var/obj/machinery/door/airlock/airlock in station_area)
 			airlock.engineering_override = TRUE
 			airlock.normalspeed = FALSE
-			airlock.update_icon(ALL, 0)
+			airlock.update_appearance()
 
 	message_admins("Engineering override has been turned ON for station airlocks.")
 	minor_announce("Engineering staff will have expanded access to areas of the station during the emergency.", "Engineering Emergency")
@@ -95,8 +95,10 @@
 		for(var/obj/machinery/door/airlock/airlock in station_area)
 			airlock.engineering_override = FALSE
 			airlock.normalspeed = TRUE
-			airlock.update_icon(ALL, 0)
+			airlock.update_appearance()
+
 	message_admins("Engineering override has been turned OFF for station airlocks.")
+
 
 /// Someone or the AI or silicons tries to change the access on the airlock
 /obj/machinery/door/airlock/proc/toggle_engineering(mob/user)
