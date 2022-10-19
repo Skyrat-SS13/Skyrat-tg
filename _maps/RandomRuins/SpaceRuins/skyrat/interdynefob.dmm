@@ -3198,6 +3198,16 @@
 /obj/item/clothing/glasses/sunglasses,
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/skyrat/interdynefob/security/lawyer)
+"mo" = (
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2{
+	dir = 4
+	},
+/obj/machinery/light/directional/north,
+/turf/open/floor/iron/textured_large,
+/area/ruin/space/has_grav/skyrat/interdynefob/service/dorms/fitness)
 "mp" = (
 /obj/structure/chair/office,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
@@ -3444,12 +3454,12 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo/hangar)
 "nl" = (
-/obj/machinery/chem_dispenser/mutagen,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
 /obj/effect/turf_decal/tile/dark_green/half{
 	dir = 8
 	},
 /obj/machinery/light/directional/west,
+/obj/machinery/chem_dispenser/mutagensaltpeter,
 /turf/open/floor/iron/dark/textured_half{
 	dir = 1
 	},
@@ -4797,6 +4807,7 @@
 	dir = 1
 	},
 /obj/structure/flora/bush/jungle/a/style_3,
+/obj/machinery/light/directional/south,
 /turf/open/floor/grass,
 /area/ruin/space/has_grav/skyrat/interdynefob/service/dorms/fitness)
 "rR" = (
@@ -5926,6 +5937,7 @@
 /obj/structure/flora/bush/flowers_br{
 	pixel_y = -2
 	},
+/obj/machinery/light/directional/south,
 /turf/open/floor/grass,
 /area/ruin/space/has_grav/skyrat/interdynefob/service/dorms/fitness)
 "vM" = (
@@ -7154,6 +7166,11 @@
 /obj/effect/mapping_helpers/airlock/cutaiwire,
 /turf/closed/wall/r_wall/syndicate/nodiagonal,
 /area/ruin/space/has_grav/skyrat/interdynefob/halls)
+"Al" = (
+/obj/effect/turf_decal/siding/wood,
+/obj/machinery/light/directional/north,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/skyrat/interdynefob/service/dorms/fitness)
 "Am" = (
 /obj/machinery/door/morgue,
 /turf/open/floor/iron/dark/textured_large,
@@ -8127,7 +8144,7 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/service/library)
 "Ds" = (
 /obj/structure/closet/secure_closet/freezer/meat{
-	req_access = list(150)
+	req_access = null
 	},
 /obj/machinery/light/directional/east,
 /turf/open/floor/iron/kitchen_coldroom/freezerfloor,
@@ -9268,7 +9285,7 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/security/prison)
 "Ie" = (
 /obj/structure/closet/secure_closet/freezer/kitchen{
-	req_access = list(150)
+	req_access = null
 	},
 /obj/item/reagent_containers/condiment/milk,
 /obj/item/reagent_containers/condiment/soymilk,
@@ -9963,6 +9980,8 @@
 /obj/item/encryptionkey/headset_syndicate/interdyne,
 /obj/item/encryptionkey/headset_syndicate/interdyne,
 /obj/item/encryptionkey/headset_syndicate/interdyne,
+/obj/item/ammo_box/magazine/m12g/empty,
+/obj/item/ammo_box/magazine/m12g/empty,
 /turf/open/floor/iron/dark/smooth_large,
 /area/ruin/space/has_grav/skyrat/interdynefob/bridge/admiral)
 "Kz" = (
@@ -10178,7 +10197,7 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/cargo/hangar)
 "Ln" = (
 /obj/structure/closet/secure_closet/freezer/meat{
-	req_access = list(150)
+	req_access = null
 	},
 /turf/open/floor/iron/kitchen_coldroom/freezerfloor,
 /area/ruin/space/has_grav/skyrat/interdynefob/service/diner)
@@ -10910,7 +10929,7 @@
 /area/ruin/space/has_grav/skyrat/interdynefob/maintenance/southwest)
 "NX" = (
 /obj/structure/closet/secure_closet/freezer/kitchen{
-	req_access = list(150)
+	req_access = nulls
 	},
 /obj/item/reagent_containers/condiment/milk,
 /obj/item/reagent_containers/condiment/soymilk,
@@ -17109,7 +17128,7 @@ OU
 fO
 pB
 CO
-rj
+Al
 aR
 Uq
 EG
@@ -17474,7 +17493,7 @@ sN
 Pr
 MZ
 CO
-rj
+Al
 aR
 Uq
 JM
@@ -17623,7 +17642,7 @@ yJ
 yJ
 yJ
 yJ
-JM
+mo
 va
 cO
 ps
