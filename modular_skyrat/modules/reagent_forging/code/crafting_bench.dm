@@ -43,11 +43,10 @@
 	COOLDOWN_DECLARE(hit_cooldown)
 	///the choices allowed in crafting
 	var/static/list/allowed_choices = list(
-		"Chain Helmet" = /obj/item/clothing/head/helmet/reagent_clothing,
-		"Chain Armor" = /obj/item/clothing/suit/armor/reagent_clothing,
-		"Chain Gloves" = /obj/item/clothing/gloves/reagent_clothing,
-		"Chain Boots" = /obj/item/clothing/shoes/chain_boots,
-		"Plated Boots" = /obj/item/clothing/shoes/plated_boots,
+		"Plate Helmet" = /obj/item/clothing/head/helmet/forging_plate_helmet,
+		"Plate Armor" = /obj/item/clothing/suit/armor/forging_plate_armor,
+		"Plate Gloves" = /obj/item/clothing/gloves/forging_plate_gloves,
+		"Plate Boots" = /obj/item/clothing/shoes/forging_plate_boots,
 		"Horseshoes" = /obj/item/clothing/shoes/horseshoe,
 		"Ring" = /obj/item/clothing/gloves/ring/reagent_clothing,
 		"Collar" = /obj/item/clothing/neck/collar/reagent_clothing,
@@ -127,15 +126,13 @@
 	goal_item_path = allowed_choices[target_choice]
 
 	switch(target_choice)
-		if("Chain Helmet")
-			required_mats[CHAIN_RESOURCE] = 5
-		if("Chain Armor")
-			required_mats[CHAIN_RESOURCE] = 6
-		if("Chain Gloves")
-			required_mats[CHAIN_RESOURCE] = 4
-		if("Chain Boots")
-			required_mats[CHAIN_RESOURCE] = 4
-		if("Plated Boots")
+		if("Plate Helmet")
+			required_mats[PLATE_RESOURCE] = 4
+		if("Plate Armor")
+			required_mats[PLATE_RESOURCE] = 6
+		if("Plate Gloves")
+			required_mats[PLATE_RESOURCE] = 2
+		if("Plate Boots")
 			required_mats[PLATE_RESOURCE] = 4
 		if("Horseshoes")
 			required_mats[CHAIN_RESOURCE] = 4
