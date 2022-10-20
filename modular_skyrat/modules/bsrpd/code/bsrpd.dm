@@ -12,18 +12,18 @@
 	inhand_icon_state = "bsrpd"
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF
 	custom_materials = null
-	var/maxium_capacity = BSRPD_CAPACITY_MAX
+	var/current_capacity = BSRPD_CAPACITY_MAX
 	var/ranged_use_cost = BSRPD_CAPACITY_USE
 	var/in_use = FALSE
 
 /obj/item/pipe_dispenser/bluespace/attackby(obj/item/item, mob/user, param)
 	if(istype(item, /obj/item/stack/sheet/bluespace_crystal))
-		if(BSRPD_CAPACITY_NEW > (BSRPD_CAPACITY_MAX - maxium_capacity) || ranged_use_cost == 0)
+		if(BSRPD_CAPACITY_NEW > (BSRPD_CAPACITY_MAX - current_capacity) || ranged_use_cost == 0)
 			to_chat(user, span_warning("You cannot recharge [src] anymore!"))
 			return
 		item.use(1)
 		to_chat(user, span_notice("You recharge the bluespace capacitor inside of [src]"))
-		maxium_capacity += BSRPD_CAPACITY_NEW
+		current_capacity += BSRPD_CAPACITY_NEW
 		return
 	if(istype(item, /obj/item/assembly/signaler/anomaly/bluespace))
 		if(ranged_use_cost)
@@ -38,7 +38,7 @@
 /obj/item/pipe_dispenser/bluespace/examine(mob/user)
 	. = ..()
 	if(user.Adjacent(src))
-		. += "Currently has [ranged_use_cost == 0 ? "infinite" : maxium_capacity / ranged_use_cost] charges remaining."
+		. += "Currently has [ranged_use_cost == 0 ? "infinite" : current_capacity / ranged_use_cost] charges remaining."
 		if(ranged_use_cost != 0)
 			. += "The Bluespace Anomaly Core slot is empty."
 	else
@@ -47,7 +47,7 @@
 /obj/item/pipe_dispenser/bluespace/afterattack(atom/target, mob/user, prox)
 	if(prox) // If we are in proximity to the target, don't use charge and don't call this shitcode.
 		return ..()
-	if(maxium_capacity < (ranged_use_cost * (in_use + 1)))
+	if(current_capacity < ranged_use_cost)
 		to_chat(user, span_warning("The [src] lacks the charge to do that."))
 		return FALSE
 	if(!in_use)
@@ -55,7 +55,7 @@
 		in_use = TRUE // So people can't just spam click and get more uses
 		addtimer(VARSET_CALLBACK(src, in_use, FALSE),  1 SECONDS, TIMER_UNIQUE)
 		if(pre_attack(target, user))
-			maxium_capacity -= ranged_use_cost
+			current_capacity -= ranged_use_cost
 			return TRUE
 
 	return FALSE
