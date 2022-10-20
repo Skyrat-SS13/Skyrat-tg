@@ -221,20 +221,20 @@
 
 
 /obj/item/key_card/hotel_room/four
-	color = "#E55C01"
+	color = "#2CAF2C"
 	room_number = 4
 
 /obj/machinery/door/airlock/keyed/hotel_room/four
-	greyscale_accent_color = "#E55C01"
+	greyscale_accent_color = "#2CAF2C"
 	room_number = 4
 
 
 /obj/item/key_card/hotel_room/five
-	color = "#2CAF2C"
+	color = "#E55C01"
 	room_number = 5
 
 /obj/machinery/door/airlock/keyed/hotel_room/five
-	greyscale_accent_color = "#2CAF2C"
+	greyscale_accent_color = "#E55C01"
 	room_number = 5
 
 
