@@ -794,7 +794,7 @@
 	icon = 'modular_skyrat/master_files/icons/donator/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/donator/mob/clothing/head.dmi'
 	icon_state = "bio_hood_jax"
-	desc = "A hood composed of proprietary material from a NanoTrasen Affiliate."
+	desc = "A hood composed of proprietary material from a Nanotrasen Affiliate."
 
 /obj/item/clothing/under/plasmaman/jax2
 	name = "xuracorp hazard underfitting"

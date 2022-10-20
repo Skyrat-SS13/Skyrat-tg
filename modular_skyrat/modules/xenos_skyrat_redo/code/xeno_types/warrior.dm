@@ -43,7 +43,7 @@
 
 /datum/action/cooldown/alien/skyrat/warrior_agility
 	name = "Agility Mode"
-	desc = "Drop onto all fours, increasing your speed at the cost of being unable to use most abilities."
+	desc = "Drop onto all fours, increasing your speed at the cost of damage and being unable to use most abilities."
 	button_icon_state = "the_speed_is_alot"
 	cooldown_time = 1 SECONDS
 	can_be_used_always = TRUE
@@ -71,6 +71,9 @@
 	agility_target.add_movespeed_modifier(/datum/movespeed_modifier/warrior_agility)
 	agility_target.unable_to_use_abilities = TRUE
 
+	agility_target.melee_damage_lower = 15
+	agility_target.melee_damage_upper = 20
+
 /// Handles the visual indicators and code side of deactivating the agility ability
 /datum/action/cooldown/alien/skyrat/warrior_agility/proc/end_agility()
 	var/mob/living/carbon/alien/humanoid/skyrat/agility_target = owner
@@ -81,6 +84,9 @@
 	being_agile = FALSE
 	agility_target.remove_movespeed_modifier(/datum/movespeed_modifier/warrior_agility)
 	agility_target.unable_to_use_abilities = FALSE
+
+	agility_target.melee_damage_lower = initial(agility_target.melee_damage_lower)
+	agility_target.melee_damage_upper = initial(agility_target.melee_damage_upper)
 
 /datum/movespeed_modifier/warrior_agility
 	multiplicative_slowdown = -2

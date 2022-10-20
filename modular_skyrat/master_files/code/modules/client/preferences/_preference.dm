@@ -1,16 +1,3 @@
-/// A preference for text and text input.
-/datum/preference/text
-	abstract_type = /datum/preference/text
-
-/datum/preference/text/deserialize(input, datum/preferences/preferences)
-	return STRIP_HTML_SIMPLE(input, MAX_FLAVOR_LEN)
-
-/datum/preference/text/create_default_value()
-	return ""
-
-/datum/preference/text/is_valid(value)
-	return istext(value)
-
 /datum/preference/tri_color
 	abstract_type = /datum/preference/tri_color
 	var/type_to_check = /datum/preference/toggle/allow_mismatched_parts

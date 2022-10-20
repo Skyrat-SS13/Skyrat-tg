@@ -1,11 +1,12 @@
-## Title: POSITRONIC ALERT CONSOLE
+## Title: PRIMITIVE FUN
 
 MODULE ID: PRIM_FUN
 
 ### Description:
 
-Adds glassblowing and ceramics!
-Both can be sold to cargo for some cash
+Adds a variety of primitive style things:
+Glassblowing and ceramics
+A big, stationary version of the mortar and pestle
 
 ### TG Proc/File Changes:
 
@@ -25,4 +26,5 @@ Both can be sold to cargo for some cash
 
 ### Credits:
 
-Jake Park
+Jake Park - Glassblowing and ceramics
+Paxilmaniac - Big mortar

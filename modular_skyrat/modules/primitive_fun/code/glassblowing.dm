@@ -7,6 +7,8 @@
 	name = "glass globe"
 	desc = "A glass bowl that is capable of carrying things."
 	icon_state = "glass_globe"
+	material_flags = MATERIAL_COLOR
+	custom_materials = list(/datum/material/glass = 1000)
 
 /datum/export/glassblowing
 	cost = CARGO_CRATE_VALUE * 5
@@ -30,19 +32,24 @@
 	desc = "A glass bowl that is capable of carrying things."
 	icon = 'modular_skyrat/modules/primitive_fun/icons/prim_fun.dmi'
 	icon_state = "glass_bowl"
+	material_flags = MATERIAL_COLOR
+	custom_materials = list(/datum/material/glass = 1000)
 
 /obj/item/reagent_containers/cup/beaker/large/blowing_glass
 	name = "glass cup"
 	desc = "A glass cup that is capable of carrying liquids."
 	icon = 'modular_skyrat/modules/primitive_fun/icons/prim_fun.dmi'
 	icon_state = "glass_cup"
-	custom_materials = null
+	material_flags = MATERIAL_COLOR
+	custom_materials = list(/datum/material/glass = 1000)
 
 /obj/item/plate/blowing_glass
 	name = "glass plate"
 	desc = "A glass plate that is capable of carrying things."
 	icon = 'modular_skyrat/modules/primitive_fun/icons/prim_fun.dmi'
 	icon_state = "glass_plate"
+	material_flags = MATERIAL_COLOR
+	custom_materials = list(/datum/material/glass = 1000)
 
 /obj/item/glassblowing/molten_glass
 	name = "molten glass"
