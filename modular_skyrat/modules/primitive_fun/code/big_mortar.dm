@@ -89,7 +89,7 @@
 					else
 						juice_target_item(target_item, user)
 		return
-	if(!attacking_item.juice_results || !attacking_item.grind_results)
+	if(!attacking_item.juice_results && !attacking_item.grind_results)
 		balloon_alert(user, "can't grind this")
 		return ..()
 	if(length(contents) >= maximum_contained_items)
