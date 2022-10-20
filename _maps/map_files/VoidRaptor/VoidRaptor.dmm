@@ -5966,6 +5966,15 @@
 	dir = 8
 	},
 /area/station/medical/virology)
+"bQD" = (
+/obj/machinery/suit_storage_unit/standard_unit,
+/obj/effect/turf_decal/bot,
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/structure/sign/warning/vacuum/external/directional/north,
+/turf/open/floor/iron/dark/smooth_large,
+/area/station/hallway/secondary/exit/departure_lounge)
 "bQR" = (
 /obj/effect/turf_decal/trimline/green/filled/line{
 	dir = 4
@@ -22465,7 +22474,6 @@
 	space_dir = 1
 	},
 /obj/effect/mapping_helpers/airlock/access/all/command/eva,
-/obj/effect/mapping_helpers/airlock/access/all/engineering/external,
 /turf/open/floor/catwalk_floor,
 /area/station/hallway/secondary/exit/departure_lounge)
 "gFW" = (
@@ -37228,15 +37236,6 @@
 /obj/effect/turf_decal/bot,
 /turf/open/floor/circuit/green/telecomms/mainframe,
 /area/station/tcommsat/server)
-"kQU" = (
-/obj/machinery/door/airlock/external{
-	name = "Mining Dock Airlock"
-	},
-/obj/effect/mapping_helpers/airlock/access/all/supply/mining,
-/obj/structure/cable,
-/obj/effect/mapping_helpers/airlock/cyclelink_helper,
-/turf/open/floor/catwalk_floor,
-/area/station/cargo/miningoffice)
 "kQW" = (
 /obj/machinery/portable_atmospherics/canister/nitrous_oxide,
 /obj/effect/turf_decal/delivery,
@@ -41680,11 +41679,11 @@
 /area/space/nearstation)
 "lYY" = (
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
-/obj/effect/mapping_helpers/airlock/access/any/engineering/external,
 /obj/machinery/door/airlock/external/glass{
 	name = "External Access";
 	space_dir = 1
 	},
+/obj/effect/mapping_helpers/airlock/access/all/command/eva,
 /turf/open/floor/catwalk_floor,
 /area/station/hallway/secondary/exit/departure_lounge)
 "lZd" = (
@@ -61598,8 +61597,8 @@
 /turf/open/floor/engine,
 /area/station/science/xenobiology)
 "rCC" = (
-/obj/structure/closet/emcloset,
 /obj/effect/turf_decal/delivery,
+/obj/structure/closet/emcloset,
 /turf/open/floor/iron/smooth_large,
 /area/station/cargo/miningoffice)
 "rCD" = (
@@ -68515,14 +68514,14 @@
 /turf/open/floor/iron/smooth_large,
 /area/station/cargo/storage)
 "twH" = (
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 4
-	},
 /obj/machinery/door/airlock/external{
 	name = "Mining Dock Airlock"
 	},
 /obj/effect/mapping_helpers/airlock/access/all/supply/mining,
 /obj/structure/cable,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
+	cycle_id = "mining_dock"
+	},
 /turf/open/floor/catwalk_floor,
 /area/station/cargo/miningoffice)
 "twM" = (
@@ -127383,7 +127382,7 @@ otd
 agH
 fFP
 agH
-tzI
+bQD
 aYz
 tzI
 skC
@@ -129986,7 +129985,7 @@ ttw
 ttw
 ttw
 dCF
-kQU
+twH
 iFi
 pEr
 dqN
