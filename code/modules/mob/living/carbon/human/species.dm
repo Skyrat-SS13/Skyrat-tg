@@ -2279,7 +2279,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 			var/list/chassis_accessory = GLOB.sprite_accessories[MUTANT_SYNTH_CHASSIS]
 			var/datum/sprite_accessory/synth_chassis/body_choice
 			if(chassis_accessory)
-				body_choice == chassis_accessory[chassis[MUTANT_INDEX_NAME]]
+				body_choice = chassis_accessory[chassis[MUTANT_INDEX_NAME]]
 			if(body_choice && !body_choice.is_digi_compatible)
 				ignore_digi = TRUE
 	// SKYRAT EDIT END
