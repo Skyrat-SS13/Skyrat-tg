@@ -36,7 +36,7 @@
 /datum/round_event/supermatter_surge/setup()
 	our_main_engine = GLOB.main_supermatter_engine
 	surge_power = rand(SUPERMATTER_SURGE_BULLET_ENERGY_FACTOR_LOWER, SUPERMATTER_SURGE_BULLET_ENERGY_FACTOR_UPPER)
-	starting_surge_power = our_main_engine
+	starting_surge_power = our_main_engine.bullet_energy
 	end_when = rand(SUPERMATTER_SURGE_TIME_LOWER, SUPERMATTER_SURGE_TIME_UPPER)
 
 /datum/round_event/supermatter_surge/announce()
@@ -59,7 +59,7 @@
 
 /datum/round_event/supermatter_surge/end()
 	our_main_engine?.bullet_energy = starting_surge_power
-	priority_announce("The supermatter surge has dissipate d.", "Anomaly Cleared")
+	priority_announce("The supermatter surge has dissipated.", "Anomaly Cleared")
 	our_main_engine = null
 
 #undef SUPERMATTER_SURGE_BULLET_ENERGY_FACTOR_UPPER
