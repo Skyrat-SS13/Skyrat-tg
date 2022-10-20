@@ -111,7 +111,7 @@
 		poor_target.take_bodypart_damage(40 * levels, wound_bonus = 5 * levels)
 		poor_target.take_bodypart_damage(40 * levels, wound_bonus = 5 * levels)
 	poor_target.AddElement(/datum/element/squish, 30 SECONDS)
-	visible_message(
+	poor_target.visible_message(
 		span_danger("[src] falls on [poor_target], crushing them!"), \
 		span_userdanger("You are crushed by [src]!")
 	)
