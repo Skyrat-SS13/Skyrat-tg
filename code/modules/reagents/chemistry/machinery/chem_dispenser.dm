@@ -655,7 +655,6 @@
 		/datum/reagent/consumable/ethanol/navy_rum,
 		/datum/reagent/consumable/ethanol/rum,
 		/datum/reagent/consumable/ethanol/sake,
-		/datum/reagent/consumable/ethanol/applejack, // SKYRAT EDIT
 		/datum/reagent/consumable/ethanol/synthanol, // SKYRAT EDIT
 		/datum/reagent/consumable/ethanol/tequila,
 		/datum/reagent/consumable/ethanol/triple_sec,
