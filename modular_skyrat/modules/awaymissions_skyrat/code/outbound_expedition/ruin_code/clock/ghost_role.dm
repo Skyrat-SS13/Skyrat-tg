@@ -43,5 +43,5 @@
 	l_hand = null
 	r_hand = null
 	suit = /obj/item/clothing/suit/costume/bronze
-	head = /obj/item/clothing/head/bronze
+	head = /obj/item/clothing/head/costume/bronze
 	gloves = null

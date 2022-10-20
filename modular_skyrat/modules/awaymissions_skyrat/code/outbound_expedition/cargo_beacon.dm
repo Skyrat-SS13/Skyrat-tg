@@ -59,11 +59,11 @@
 			/obj/item/grenade/c4/x4 = 2,
 			/obj/item/card/id/advanced/chameleon = 1,
 			/obj/item/jammer = 1,
-			/obj/item/storage/toolbox/infiltrator = 1,
 			/obj/item/clothing/head/helmet/swat = 3,
 			/obj/item/storage/fancy/cigarettes/cigpack_syndicate = 3,
 			/obj/item/storage/box/syndie_kit/chameleon/broken = 2, //quality not guaranteed
 			/obj/item/mod/control/pre_equipped/traitor = 1,
+			/obj/item/mod/control/pre_equipped/infiltrator = 1
 		),
 		"security" = list( // some good stuff with a bunch of junk
 			/obj/item/gun/energy/disabler = 1,

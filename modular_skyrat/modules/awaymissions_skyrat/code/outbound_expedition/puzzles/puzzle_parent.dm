@@ -15,6 +15,8 @@
 	var/enabled = FALSE
 	/// What system is damaged by this failing
 	var/fail_system = ""
+	/// How much damage dealt to the system by failing
+	var/fail_damage = 0
 
 /datum/outbound_teamwork_puzzle/Destroy(force, ...)
 	if(terminal)
