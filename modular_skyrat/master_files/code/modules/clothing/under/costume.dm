@@ -100,11 +100,11 @@
 	icon_state = "kamishimo"
 
 /obj/item/clothing/under/costume/skyrat/kimono_fancy
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/costume.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/costume.dmi'
 	name = "fancy kimono"
 	desc = "A traditional ancient Earth Japanese Kimono. Longer and fancier than a yukata."
 	icon_state = "fancy_kimono"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/costume.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/costume.dmi'
 	body_parts_covered = CHEST|GROIN|ARMS
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 
