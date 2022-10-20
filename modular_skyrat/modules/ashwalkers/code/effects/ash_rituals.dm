@@ -117,8 +117,10 @@
 
 	var/turf/spawn_turf = locate(rand(1,255), rand(1,255), success_rune.z)
 
-	while(!istype(spawn_turf, /turf/open/misc/asteroid))
+	var/anti_endless = 0
+	while(!istype(spawn_turf, /turf/open/misc/asteroid) && anti_endless < 100)
 		spawn_turf = locate(rand(1,255), rand(1,255), success_rune.z)
+		anti_endless++
 
 	new /obj/effect/particle_effect/sparks(spawn_turf)
 	sleep(3 SECONDS)
@@ -292,8 +294,10 @@
 
 	var/turf/teleport_turf = locate(rand(1,255), rand(1,255), success_rune.z)
 
-	while(!istype(teleport_turf, /turf/open/misc/asteroid))
+	var/anti_endless = 0
+	while(!istype(teleport_turf, /turf/open/misc/asteroid) && anti_endless < 100)
 		teleport_turf = locate(rand(1,255), rand(1,255), success_rune.z)
+		anti_endless++
 
 	new /obj/effect/particle_effect/sparks(teleport_turf)
 	find_banished.forceMove(teleport_turf)
