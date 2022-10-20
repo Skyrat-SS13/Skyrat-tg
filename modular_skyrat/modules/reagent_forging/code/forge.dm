@@ -2,17 +2,20 @@
 
 #define DEFAULT_HEATED 25 SECONDS
 
+#define FORGE_DEFAULT_TEMPERATURE_CHANGE 5
 #define MAX_FORGE_TEMP 100
-#define MIN_FORGE_TEMP 51 //the minimum temp to actually use it
+#define MIN_FORGE_TEMP 50
 
-#define FORGE_LEVEL_ZERO 0
-#define FORGE_LEVEL_ONE 1
-#define FORGE_LEVEL_TWO 2
-#define FORGE_LEVEL_THREE 3
+#define FORGE_LEVEL_YOU_PLAY_LIKE_A_NOOB 0
+#define FORGE_LEVEL_NOVICE 1
+#define FORGE_LEVEL_APPRENTICE 2
+#define FORGE_LEVEL_JOURNEYMAN 3
+#define FORGE_LEVEL_EXPERT 4
+#define FORGE_LEVEL_MASTER 5
+#define FORGE_LEVEL_LEGENDARY 6
 
-#define MAX_UPGRADE_SINEW 10
-#define MAX_UPGRADE_GOLIATH 3
-#define MAX_UPGRADE_REGEN 6
+#define MAX_TEMPERATURE_LOSS_DECREASE 5
+#define MAX_ORE_TO_SHEET_AMOUNT 3
 
 #define MIN_IMBUE_REQUIRED 100
 
@@ -31,33 +34,33 @@
 	anchored = TRUE
 	density = TRUE
 
-	///the temperature of the forge
-	//temperature reached by wood is not enough, requires billows. As long as fuel is in, temperature can be raised.
+	/// What the current internal temperature of the forge is
 	var/forge_temperature = 0
-	//what temperature the forge is trying to reach
+	/// What temperature the forge is moving towards
 	var/target_temperature = 0
-	///the chance that the forges temperature will not lower; max of 100 sinew_lower_chance.
-	//normal forges are 0; to increase value, use watcher sinew to increase by 10, to a max of 100.
-	var/sinew_lower_chance = 0
-	///how many sinews have been used
-	var/current_sinew = 0
-	///the number of extra sheets an ore will produce, up to 3
-	var/goliath_ore_improvement = 0
-	///the fuel amount (in seconds) that the forge has (wood)
+	/// What the minimum target temperature is, used for upgrades
+	var/minimum_target_temperature = 0
+	/// What is the current reduction for temperature decrease
+	var/temperature_loss_reduction = 0
+	/// How many sheet of ore the forge will spawn when you smelt ores in it
+	var/ore_to_sheet_amount = 1
+	/// How many seconds of weak fuel (wood) does the forge have left
 	var/forge_fuel_weak = 0
-	///the fuel amount (in seconds) that the forge has (stronger than wood)
+	/// How many seconds of strong fuel (coal) does the forge have left
 	var/forge_fuel_strong = 0
-	///whether the forge is capable of allowing reagent forging of the forged item.
-	//normal forges are false; to turn into true, use 6 (active) legion cores.
+	/// If the forge is capable of reagent forging or not
 	var/reagent_forging = FALSE
-	///counting how many cores used to turn forge into a reagent forging forge.
-	var/current_core = 0
-	//cooldown between each process for the forge
+	/// Cooldown time for processing on the forge
 	COOLDOWN_DECLARE(forging_cooldown)
-	///the variable that stops spamming
+	/// Is the forge in use or not? If true, prevents most interactions with the forge
 	var/in_use = FALSE
-	///the forge level, which will upgrade the forge (goliath/sinew/core upgrades)
-	var/forge_level = FORGE_LEVEL_ZERO
+	/// The current 'level' of the forge, how upgraded is it from zero to three
+	var/forge_level = FORGE_LEVEL_YOU_PLAY_LIKE_A_NOOB
+	///What smoke particles should be coming out of the forge
+	var/smoke_state = SMOKE_STATE_NONE
+	///Tracks any oven tray placed inside of the forge
+	var/obj/item/plate/oven_tray/used_tray
+	/// The list of possible things to make with materials used on the forge
 	var/static/list/choice_list = list(
 		"Chain" = /obj/item/forging/incomplete/chain,
 		"Plate" = /obj/item/forging/incomplete/plate,
@@ -74,13 +77,7 @@
 		"Rail Nail" = /obj/item/forging/incomplete/rail_nail,
 		"Rail Cart" = /obj/item/forging/incomplete/rail_cart,
 	)
-
-	///Tracks any oven tray placed inside of the forge
-	var/obj/item/plate/oven_tray/used_tray
-	///What smoke particles should be coming out of the forge
-	var/smoke_state = SMOKE_STATE_NONE
-
-    ///Blacklist that contains reagents that weapons and armor are unable to be imbued with.
+    /// Blacklist that contains reagents that weapons and armor are unable to be imbued with.
 	var/static/list/disallowed_reagents = typecacheof(list(
 		/datum/reagent/inverse/,
 		/datum/reagent/consumable/entpoly,
@@ -109,26 +106,25 @@
 	else
 		. += span_notice("You can place an <b>oven tray</b> in this to <b>bake</b> any items on it.")
 
-	if(!forge_level == FORGE_LEVEL_THREE)
-		. += span_notice("<br>Perhaps using your hand on [src] when skilled will do something...<br>")
+	if(forge_level < FORGE_LEVEL_LEGENDARY)
+		. += span_notice("Using an <b>empty hand</b> on [src] will upgrade it, if your forging skill level is above the current upgrade's level.")
 
-	switch(forge_level)
-		if(FORGE_LEVEL_ZERO)
-			. += span_notice("[src] has not yet been touched by a smithy.<br>")
+	if(ore_to_sheet_amount)
+		. += span_notice("When smelting ores, [ore_to_sheet_amount] sheets will be created.")
 
-		if(FORGE_LEVEL_ONE)
-			. += span_notice("[src] has been touched by an apprentice smithy.<br>")
-
-		if(FORGE_LEVEL_TWO)
-			. += span_notice("[src] has been touched by an expert smithy.<br>")
-
-		if(FORGE_LEVEL_THREE)
-			. += span_boldwarning("[src] has been touched by a master smithy; It is fully upgraded!<br>")
-
-	if(forge_level < FORGE_LEVEL_THREE)
-		. += span_notice("[src] has [goliath_ore_improvement]/[MAX_UPGRADE_GOLIATH] goliath hides.")
-		. += span_notice("[src] has [current_sinew]/[MAX_UPGRADE_SINEW] watcher sinews.")
-		. += span_notice("[src] has [current_core]/[MAX_UPGRADE_REGEN] regenerative cores.")
+	switch(temperature_loss_reduction)
+		if(0)
+			. += span_notice("[src] will lose heat at a normal rate.")
+		if(1)
+			. += span_notice("[src] will lose heat slightly slower than usual.")
+		if(2)
+			. += span_notice("[src] will lose heat a bit slower than usual.")
+		if(3)
+			. += span_notice("[src] will lose heat much slower than usual.")
+		if(4)
+			. += span_notice("[src] will lose heat signficantly slower than usual.")
+		if(5)
+			. += span_notice("[src] will lose heat at a practically negligible rate.")
 
 	. += span_notice("<br>[src] is currently [forge_temperature] degrees hot, going towards [target_temperature] degrees.<br>")
 
@@ -143,15 +139,18 @@
 /obj/structure/reagent_forge/Destroy()
 	STOP_PROCESSING(SSobj, src)
 	QDEL_NULL(particles)
+	remove_tray_from_forge(FALSE)
 	. = ..()
 
 /obj/structure/reagent_forge/update_appearance(updates)
 	. = ..()
 	cut_overlays()
+
 	if(reagent_forging)
 		var/image/gold_overlay = image(icon = icon, icon_state = "forge_masterwork_trim")
 		add_overlay(gold_overlay)
 	if(used_tray)
+
 		var/image/tray_overlay = image(icon = icon, icon_state = "forge_tray_[check_fuel(TRUE) ? "active" : "inactive"]")
 		add_overlay(tray_overlay)
 
@@ -160,6 +159,7 @@
 	if(forge_fuel_strong) //use strong fuel first
 		if(just_checking)
 			return TRUE
+
 		forge_fuel_strong -= 5 SECONDS
 		target_temperature = 100
 		return TRUE
@@ -167,13 +167,15 @@
 	if(forge_fuel_weak) //then weak fuel second
 		if(just_checking)
 			return TRUE
+
 		forge_fuel_weak -= 5 SECONDS
 		target_temperature = 50
 		return TRUE
 
 	if(just_checking)
 		return FALSE
-	target_temperature = 0 //if no fuel, slowly go back down to zero
+
+	target_temperature = minimum_target_temperature //if no fuel, slowly go back down to minimum target temperature
 	return FALSE
 
 /**
@@ -183,7 +185,6 @@
 	if(reagent_forging) //We really only need to do it once!
 		return
 	reagent_forging = TRUE
-	name = "reagent forge"
 	update_appearance()
 
 /**
@@ -195,18 +196,17 @@
 
 ///Adjust the temperature to head towards the target temperature, changing icon and creating light if the temperature is rising
 /obj/structure/reagent_forge/proc/check_temp()
-	if(forge_temperature > target_temperature) //above temp needs to lower slowly
-		if(sinew_lower_chance && prob(sinew_lower_chance))//chance to not lower the temp, up to 100 from 10 sinew
-			return
-
-		forge_temperature -= 5
+	if(forge_temperature > target_temperature) //Being above the target temperature will cause the forge to cool down
+		forge_temperature -= (FORGE_DEFAULT_TEMPERATURE_CHANGE - temperature_loss_reduction)
 		icon_state = "forge_inactive"
+		set_light(0, 0) //If we aren't heating up and thus not on fire, turn the fire light off
 		return
 
-	else if(forge_temperature < target_temperature && (forge_fuel_weak || forge_fuel_strong)) //below temp with fuel needs to rise
-		forge_temperature += 5
+	else if(forge_temperature < target_temperature && (forge_fuel_weak || forge_fuel_strong)) //Being below the target temp, and having fuel, will cause the temp to rise
+		forge_temperature += FORGE_DEFAULT_TEMPERATURE_CHANGE
 		icon_state = "forge_active"
 		set_light(3, 1, LIGHT_COLOR_FIRE)
+		return
 
 ///If the forge is in use, checks if there are any mobs actually in use range. If not sets the forge to not be in use.
 /obj/structure/reagent_forge/proc/check_in_use()
@@ -235,12 +235,16 @@
 		if(forge_fuel_weak || forge_fuel_strong)
 			set_smoke_state(SMOKE_STATE_NOT_COOKING)
 		return
+
+	if(forge_temperature < MIN_FORGE_TEMP) //If we are below minimum forge temp, don't continue on to cooking
+		return
+
 	var/worst_cooked_food_state = 0
 	for(var/obj/item/baked_item in used_tray.contents)
 
 		var/signal_result = SEND_SIGNAL(baked_item, COMSIG_ITEM_BAKED, src, delta_time)
 
-		if(signal_result & COMPONENT_HANDLED_BAKING) //This means something responded to us baking!
+		if(signal_result & COMPONENT_HANDLED_BAKING)
 			if(signal_result & COMPONENT_BAKING_GOOD_RESULT && worst_cooked_food_state < SMOKE_STATE_GOOD)
 				worst_cooked_food_state = SMOKE_STATE_GOOD
 			else if(signal_result & COMPONENT_BAKING_BAD_RESULT && worst_cooked_food_state < SMOKE_STATE_NEUTRAL)
@@ -248,7 +252,7 @@
 			continue
 
 		worst_cooked_food_state = SMOKE_STATE_BAD
-		baked_item.fire_act(1000) //Hot hot hot!
+		baked_item.fire_act(1000)
 
 		if(DT_PROB(10, delta_time))
 			visible_message(span_danger("You smell a burnt smell coming from [src]!"))
@@ -257,21 +261,26 @@
 /obj/structure/reagent_forge/proc/set_smoke_state(new_state)
 	if(new_state == smoke_state)
 		return
+
 	smoke_state = new_state
 
 	QDEL_NULL(particles)
 	if(!check_fuel(TRUE)) //If there is no fuel then we don't get smoke particles
 		return
+
 	switch(smoke_state)
 		if(SMOKE_STATE_BAD)
 			particles = new /particles/smoke()
 			particles.position = list(6, 4, 0)
+
 		if(SMOKE_STATE_NEUTRAL)
 			particles = new /particles/smoke/steam()
 			particles.position = list(6, 4, 0)
+
 		if(SMOKE_STATE_GOOD)
 			particles = new /particles/smoke/steam/mild()
 			particles.position = list(6, 4, 0)
+
 		if(SMOKE_STATE_NOT_COOKING)
 			particles = new /particles/smoke/mild()
 			particles.position = list(6, 4, 0)
@@ -285,45 +294,68 @@
 	var/user_smithing_skill = user.mind.get_skill_level(/datum/skill/smithing)
 	var/previous_level = forge_level
 
-	if(user_smithing_skill <= SKILL_LEVEL_NOVICE)
-		to_chat(user, span_notice("[src] requires you to be more experienced!"))
-		return
-
-	if(user_smithing_skill >= SKILL_LEVEL_APPRENTICE)
-		goliath_ore_improvement = MAX_UPGRADE_GOLIATH
-		forge_level = FORGE_LEVEL_ONE
-
-	if(user_smithing_skill >= SKILL_LEVEL_EXPERT)
-		sinew_lower_chance = MAX_UPGRADE_SINEW * 10 //100, just written funny!
-		current_sinew = MAX_UPGRADE_SINEW
-		forge_level = FORGE_LEVEL_TWO
-
-	if(user_smithing_skill >= SKILL_LEVEL_MASTER)
-		current_core = MAX_UPGRADE_REGEN
-		forge_level = FORGE_LEVEL_THREE
-		create_reagent_forge()
-
 	if(forge_level == previous_level)
 		to_chat(user, span_notice("[src] was already upgraded by your level of expertise!"))
 		return
 
-	to_chat(user, span_notice("As you work with [src], you note the purity caused by heating metal with nothing but exposed flame. Examine to view what has improved!"))
-	playsound(src, 'sound/magic/demon_consume.ogg', 50, TRUE)
+	switch(user_smithing_skill)
+		if(SKILL_LEVEL_NONE)
+			to_chat(user, span_notice("You'll need some forging skills to really understand how to upgrade [src]."))
+			return
 
+		if(SKILL_LEVEL_NOVICE)
+			to_chat(user, span_notice("With some experience, you've come to realize there are some easily fixable spots with poor insulation..."))
+			temperature_loss_reduction = 1
+			forge_level = FORGE_LEVEL_NOVICE
+
+		if(SKILL_LEVEL_APPRENTICE)
+			to_chat(user, span_notice("With some small tweaks to [src]], you could likely smelt significantly more pure materials with it..."))
+			ore_to_sheet_amount = 2
+			temperature_loss_reduction = 2
+			forge_level = FORGE_LEVEL_APPRENTICE
+
+		if(SKILL_LEVEL_JOURNEYMAN)
+			to_chat(user, span_notice("Some careful placement and stoking of the flame will allow you to keep at least the embers burning..."))
+			minimum_target_temperature = 25 //Will allow quicker reheating from having no fuel
+			forge_level = FORGE_LEVEL_JOURNEYMAN
+
+		if(SKILL_LEVEL_EXPERT)
+			to_chat(user, span_notice("With just the right heat treating technique, metal could be made to accept reagents..."))
+			create_reagent_forge()
+			temperature_loss_reduction = 3
+			forge_level = FORGE_LEVEL_EXPERT
+
+		if(SKILL_LEVEL_MASTER)
+			to_chat(user, span_notice("Just the right tweaks to [src] should let the purity, and thus usable amount, of any material smelted be just that little bit higher..."))
+			ore_to_sheet_amount = MAX_ORE_TO_SHEET_AMOUNT
+			temperature_loss_reduction = 4
+			forge_level = FORGE_LEVEL_MASTER
+
+		if(SKILL_LEVEL_LEGENDARY)
+			to_chat(user, span_notice("The perfect forge for a perfect metalsmith, with your knowledge it should bleed heat so slowly, that not even you will live to see [src] cool."))
+			temperature_loss_reduction = MAX_TEMPERATURE_LOSS_DECREASE
+			forge_level = FORGE_LEVEL_LEGENDARY
+
+	playsound(src, 'sound/weapons/parry.ogg', 50, TRUE)
+
+/// Take the given tray and place it inside the forge, updating everything relevant to that
 /obj/structure/reagent_forge/proc/add_tray_to_forge(obj/item/plate/oven_tray/tray)
 	if(used_tray) //This shouldn't be able to happen but just to be safe
 		balloon_alert_to_viewers("already has tray")
 		return
+
 	tray.forceMove(src)
 	balloon_alert_to_viewers("put [tray] in [src]")
 	used_tray = tray
 	update_appearance()
 
+/// Take the used_tray and spit it out, updating everything relevant to that
 /obj/structure/reagent_forge/proc/remove_tray_from_forge(by_hand = TRUE)
 	if(!used_tray)
 		if(by_hand)
 			balloon_alert_to_viewers("no tray")
 		return
+
 	if(by_hand)
 		balloon_alert_to_viewers("removed [used_tray]")
 	used_tray.forceMove(get_turf(src))
@@ -336,10 +368,11 @@
 
 	var/skill_modifier = user.mind.get_skill_modifier(/datum/skill/smithing, SKILL_SPEED_MODIFIER)
 
-	if(istype(attacking_item, /obj/item/stack/sheet/mineral/wood)) //used for weak fuel
+	if(istype(attacking_item, /obj/item/stack/sheet/mineral/wood)) //Wood is a weak fuel, and will only get the forge up to 50 temperature
 		if(in_use) //only insert one at a time
 			to_chat(user, span_warning("You cannot do multiple things at the same time!"))
 			return
+
 		in_use = TRUE
 
 		if(forge_fuel_weak >= 5 MINUTES) //cannot insert too much
@@ -395,92 +428,6 @@
 		in_use = FALSE
 		to_chat(user, span_notice("You successfully fuel [src]."))
 		user.mind.adjust_experience(/datum/skill/smithing, 15) //useful fueling means you get some experience
-		return
-
-	if(istype(attacking_item, /obj/item/stack/sheet/sinew))
-		if(in_use) //only insert one at a time
-			to_chat(user, span_warning("You cannot do multiple things at the same time!"))
-			return
-		in_use = TRUE
-
-		if(sinew_lower_chance >= (MAX_UPGRADE_SINEW * 10)) //max is 100
-			fail_message(user, "You cannot insert any more of [attacking_item]!")
-			return
-
-		to_chat(user, span_warning("You start lining [src] with [attacking_item]..."))
-
-		if(!do_after(user, skill_modifier * 3 SECONDS, target = src))
-			fail_message(user, "You fail lining [src] with [attacking_item].")
-			return
-
-		var/obj/item/stack/sheet/stack_sheet = attacking_item
-		if(!stack_sheet.use(1)) //need to be able to use the item, so no glue
-			fail_message(user, "You fail lining [src] with [attacking_item].")
-			return
-
-		playsound(src, 'sound/magic/demon_consume.ogg', 50, TRUE)
-		sinew_lower_chance += 10
-		current_sinew++
-		in_use = FALSE
-		to_chat(user, span_notice("You successfully line [src] with [attacking_item]."))
-		return
-
-	if(istype(attacking_item, /obj/item/organ/internal/regenerative_core))
-		if(in_use) //only insert one at a time
-			to_chat(user, span_warning("You cannot do multiple things at the same time!"))
-			return
-		in_use = TRUE
-
-		if(reagent_forging) //if its already able to reagent forge, why continue wasting?
-			fail_message(user, "[src] is already upgraded.")
-			return
-
-		var/obj/item/organ/internal/regenerative_core/used_core = attacking_item
-		if(used_core.inert) //no inert cores allowed
-			fail_message(user, "You cannot use an inert [used_core].")
-			return
-
-		to_chat(user, span_warning("You start to sacrifice [used_core] to [src]..."))
-
-		if(!do_after(user, skill_modifier * 3 SECONDS, target = src))
-			fail_message(user, "You fail sacrificing [used_core] to [src].")
-			return
-
-		to_chat(user, span_notice("You successfully sacrifice [used_core] to [src]."))
-		playsound(src, 'sound/magic/demon_consume.ogg', 50, TRUE)
-		qdel(attacking_item)
-		current_core++
-		in_use = FALSE
-
-		if(current_core >= MAX_UPGRADE_REGEN) //use six regenerative cores to get reagent forging capabilities on the forge
-			create_reagent_forge()
-		return
-
-	if(istype(attacking_item, /obj/item/stack/sheet/animalhide/goliath_hide))
-		var/obj/item/stack/sheet/animalhide/goliath_hide/goliath_hide = attacking_item
-
-		if(in_use) //only insert one at a time
-			to_chat(user, span_warning("You cannot do multiple things at the same time!"))
-			return
-		in_use = TRUE
-
-		if(goliath_ore_improvement >= MAX_UPGRADE_GOLIATH)
-			fail_message(user, "You have applied the max amount of [goliath_hide]!")
-			return
-
-		to_chat(user, span_warning("You start to improve [src] with [goliath_hide]..."))
-
-		if(!do_after(user, skill_modifier * 6 SECONDS, target = src))
-			fail_message(user, "You fail improving [src].")
-			return
-
-		if(!goliath_hide.use(1)) //need to be able to use the item, so no glue
-			fail_message(user, "You cannot use [goliath_hide]!")
-			return
-
-		goliath_ore_improvement++
-		in_use = FALSE
-		to_chat(user, span_notice("You successfully upgrade [src] with [goliath_hide]."))
 		return
 
 	if(istype(attacking_item, /obj/item/stack/ore))
@@ -694,10 +641,9 @@
 
 	var/src_turf = get_turf(src)
 	var/spawning_item = ore_item.refined_type
-	var/spawning_amount = max(1, round((1 + goliath_ore_improvement) * ore_item.amount * (is_species(user, /datum/species/lizard/ashwalker) ? 1 : 0.5)))
-	var/experience_amount = spawning_amount * ore_item.mine_experience
+	var/experience_amount = ore_item.mine_experience
 
-	for(var/spawn_ore in 1 to spawning_amount)
+	for(var/spawn_ore in 1 to ore_to_sheet_amount)
 		new spawning_item(src_turf)
 
 	in_use = FALSE
@@ -868,10 +814,7 @@
 	return TRUE
 
 /obj/structure/reagent_forge/ready
-	current_core = MAX_UPGRADE_REGEN
-	reagent_forging = TRUE
-	sinew_lower_chance = 100
-	forge_temperature = 1000
+	forge_level = FORGE_LEVEL_LEGENDARY
 
 /particles/smoke/mild
 	spawning = 1
@@ -882,16 +825,25 @@
 
 #undef DEFAULT_HEATED
 
+#undef FORGE_DEFAULT_TEMPERATURE_CHANGE
 #undef MAX_FORGE_TEMP
 #undef MIN_FORGE_TEMP
 
-#undef FORGE_LEVEL_ZERO
-#undef FORGE_LEVEL_ONE
-#undef FORGE_LEVEL_TWO
-#undef FORGE_LEVEL_THREE
+#undef FORGE_LEVEL_YOU_PLAY_LIKE_A_NOOB
+#undef FORGE_LEVEL_NOVICE
+#undef FORGE_LEVEL_APPRENTICE
+#undef FORGE_LEVEL_JOURNEYMAN
+#undef FORGE_LEVEL_EXPERT
+#undef FORGE_LEVEL_MASTER
+#undef FORGE_LEVEL_LEGENDARY
 
-#undef MAX_UPGRADE_SINEW
-#undef MAX_UPGRADE_GOLIATH
-#undef MAX_UPGRADE_REGEN
+#undef MAX_TEMPERATURE_LOSS_DECREASE
+#undef MAX_ORE_TO_SHEET_AMOUNT
 
 #undef MIN_IMBUE_REQUIRED
+
+#undef SMOKE_STATE_NONE
+#undef SMOKE_STATE_GOOD
+#undef SMOKE_STATE_NEUTRAL
+#undef SMOKE_STATE_BAD
+#undef SMOKE_STATE_NOT_COOKING
