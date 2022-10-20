@@ -137,6 +137,7 @@
 				write_preference(GLOB.preference_entries[/datum/preference/choiced/mutant_choice/synth_chassis], "Mammal Chassis")
 				write_preference(GLOB.preference_entries[/datum/preference/choiced/mutant_choice/synth_head], "Mammal Head")
 
+			write_preference(GLOB.preference_entries[/datum/preference/choiced/mutant_choice/ipc_screen], "None")
 			write_preference(GLOB.preference_entries[/datum/preference/choiced/species], "synth")
 
 			// If human code hasn't kicked in, grab mutant colour.
