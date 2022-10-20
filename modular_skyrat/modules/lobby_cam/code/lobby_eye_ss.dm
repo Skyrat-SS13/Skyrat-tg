@@ -92,7 +92,7 @@ SUBSYSTEM_DEF(lobby_eye)
 	//fade in
 	for(var/fade_in = 1, fade_in < 11, fade_in++)
 		fading_screen.icon_state = "[fade_in]"
-		sleep(1)
+		sleep(0.1 SECONDS)
 	fading_screen.icon_state = "11"
 
 	//move
@@ -103,7 +103,7 @@ SUBSYSTEM_DEF(lobby_eye)
 	//fade out
 	for(var/fade_out = 11, fade_out > 1, fade_out--)
 		fading_screen.icon_state = "[fade_out]"
-		sleep(1)
+		sleep(0.1 SECONDS)
 	fading_screen.icon_state = "1"
 
 	fire()
