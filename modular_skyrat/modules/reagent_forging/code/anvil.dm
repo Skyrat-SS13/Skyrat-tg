@@ -101,3 +101,22 @@
 
 /obj/structure/reagent_anvil/hammer_act_secondary(mob/living/user, obj/item/tool)
 	hammer_act(user, tool)
+
+/obj/structure/reagent_anvil/onZImpact(turf/impacted_turf, levels, message = TRUE)
+	var/mob/living/poor_target = locate(/mob/living) in impacted_turf
+	if(!poor_target)
+		return ..()
+	poor_target.apply_damage(60 * levels, forced=TRUE)
+	if(istype(poor_target, /mob/living/carbon)) //If this mob is a carbon, break a few of their limbs
+		poor_target.take_bodypart_damage(40 * levels, wound_bonus = 5 * levels)
+		poor_target.take_bodypart_damage(40 * levels, wound_bonus = 5 * levels)
+	poor_target.AddElement(/datum/element/squish, 30 SECONDS)
+	visible_message(
+		span_danger("[src] falls on [poor_target], crushing them!"), \
+		span_userdanger("You are crushed by [src]!")
+	)
+	poor_target.Paralyze(5 SECONDS)
+	poor_target.emote("scream")
+	playsound(poor_target, 'sound/magic/clockwork/fellowship_armory.ogg', 50, TRUE)
+	add_memory_in_range(poor_target, 7, MEMORY_VENDING_CRUSHED, list(DETAIL_PROTAGONIST = poor_target, DETAIL_WHAT_BY = src), story_value = STORY_VALUE_AMAZING, memory_flags = MEMORY_CHECK_BLINDNESS, protagonist_memory_flags = MEMORY_SKIP_UNCONSCIOUS)
+	return TRUE
