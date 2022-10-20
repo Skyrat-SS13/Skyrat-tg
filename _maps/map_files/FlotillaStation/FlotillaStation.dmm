@@ -1188,6 +1188,7 @@
 	pixel_y = 4;
 	pixel_x = 5
 	},
+/obj/machinery/light/directional/east,
 /turf/open/floor/iron/dark/nitrogen,
 /area/station/security/warden)
 "ael" = (
@@ -10588,7 +10589,7 @@
 /obj/machinery/button/flasher{
 	id = "secentranceflasher";
 	name = "Brig Entrance Flasher";
-	pixel_y = -3;
+	pixel_y = -4;
 	req_access = list("security");
 	pixel_x = -6
 	},
@@ -10597,10 +10598,27 @@
 	id = "sec_eva";
 	name = "Bay Doors";
 	req_access = list("armory");
-	pixel_x = 6;
-	pixel_y = 6
+	pixel_x = -6;
+	pixel_y = 7
 	},
-/obj/item/key/security,
+/obj/machinery/button/door{
+	desc = "A door remote control switch for the exterior brig doors.";
+	id = "outerbrig";
+	name = "Brig Exterior Door Control";
+	normaldoorcontrol = 1;
+	pixel_x = 6;
+	req_access = list("security");
+	pixel_y = -4
+	},
+/obj/machinery/button/door{
+	desc = "A door remote control switch for the interior brig doors.";
+	id = "innerbrig";
+	name = "Brig Interior Door Control";
+	normaldoorcontrol = 1;
+	pixel_x = 6;
+	pixel_y = 7;
+	req_access = list("security")
+	},
 /turf/open/floor/iron/dark/nitrogen,
 /area/station/security/warden)
 "aKw" = (
@@ -124746,7 +124764,7 @@ aqB
 aqB
 aqB
 aqB
-oNt
+aqB
 aqB
 aqB
 aqB
@@ -125003,7 +125021,7 @@ aqB
 aqB
 aqB
 aqB
-oNt
+aqB
 aqB
 aqB
 aqB
@@ -125260,7 +125278,7 @@ aqB
 aqB
 aqB
 aqB
-oNt
+aqB
 aqB
 aqB
 aqB
@@ -125517,7 +125535,7 @@ aqB
 aqB
 aqB
 aqB
-oNt
+aqB
 aqB
 aqB
 aqB
@@ -125774,7 +125792,7 @@ aqB
 aqB
 aqB
 aqB
-oNt
+aqB
 aqB
 aqB
 aqB
@@ -126031,7 +126049,7 @@ aqB
 aqB
 aqB
 aqB
-oNt
+aqB
 aqB
 aqB
 aqB
@@ -126288,7 +126306,7 @@ aqB
 aqB
 aqB
 aqB
-oNt
+aqB
 aqB
 aqB
 aqB
@@ -126545,7 +126563,7 @@ aqB
 aqB
 aqB
 aqB
-oNt
+aqB
 aqB
 aqB
 aqB
@@ -126802,7 +126820,7 @@ aqB
 aqB
 aqB
 aqB
-oNt
+aqB
 aqB
 aqB
 aqB
@@ -127059,7 +127077,7 @@ aqB
 aqB
 aqB
 aqB
-oNt
+aqB
 aqB
 aqB
 aqB
@@ -127316,7 +127334,7 @@ aqB
 aqB
 aqB
 aqB
-oNt
+aqB
 aqB
 aqB
 aqB
@@ -127573,7 +127591,7 @@ aqB
 aqB
 aqB
 aqB
-oNt
+aqB
 aqB
 aqB
 aqB
@@ -127830,7 +127848,7 @@ aqB
 aqB
 aqB
 aqB
-oNt
+aqB
 aqB
 aqB
 aqB
@@ -128087,7 +128105,7 @@ aqB
 aqB
 aqB
 aqB
-oNt
+aqB
 aqB
 aqB
 aqB
@@ -128344,7 +128362,7 @@ aqB
 aqB
 aqB
 aqB
-oNt
+aqB
 aqB
 aqB
 aqB
@@ -128601,7 +128619,7 @@ aqB
 aqB
 aqB
 aqB
-oNt
+aqB
 aqB
 aqB
 aqB
@@ -128858,7 +128876,7 @@ aqB
 aqB
 aqB
 aqB
-oNt
+aqB
 aqB
 aqB
 aqB
