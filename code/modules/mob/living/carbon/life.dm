@@ -370,7 +370,11 @@
 		if(reagents.has_reagent(/datum/reagent/toxin/formaldehyde, 1) || reagents.has_reagent(/datum/reagent/cryostylane)) // No organ decay if the body contains formaldehyde.
 			return
 		for(var/obj/item/organ/internal/organ as anything in internal_organs)
-			organ.on_death(delta_time, times_fired) //Needed so organs decay while inside the body.
+			// On-death is where organ decay is handled
+			organ.on_death(delta_time, times_fired)
+			// We need to re-check the stat every organ, as one of our others may have revived us
+			if(stat != DEAD)
+				break
 		return
 
 	// NOTE: internal_organs_slot is sorted by GLOB.organ_process_order on insertion
@@ -445,9 +449,6 @@
 		blur_eyes(1 * delta_time)
 		if(DT_PROB(2.5, delta_time))
 			AdjustSleeping(10 SECONDS)
-
-	if(silent)
-		silent = max(silent - (0.5 * delta_time), 0)
 
 /// Base carbon environment handler, adds natural stabilization
 /mob/living/carbon/handle_environment(datum/gas_mixture/environment, delta_time, times_fired)

@@ -9,6 +9,7 @@
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
 	can_adjust = TRUE
 	flags_1 = IS_PLAYER_COLORABLE_1
+	gets_cropped_on_taurs = FALSE
 
 /obj/item/clothing/under/sweater/black
 	name = "black cableknit sweater"

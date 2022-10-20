@@ -14,12 +14,3 @@
 	desc = "An ancient-Japan armored helmet - or a replica of one, at least."
 	icon_state = "kabuto"
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
-
-//Misc
-/obj/item/clothing/under/misc/mechanic
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/uniforms.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/uniform.dmi'
-	name = "mechanic's overalls"
-	desc = "An old-fashioned pair of brown overalls, along with assorted pockets and belt-loops."
-	icon_state = "mechanic"
-
