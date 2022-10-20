@@ -665,6 +665,8 @@
 		/datum/reagent/consumable/ethanol/wine,
 	)
 	upgrade_reagents = null
+	upgrade_reagents2 = null //SKYRAT EDIT
+	upgrade_reagents3 = null //SKYRAT EDIT
 	emagged_reagents = list(
 		/datum/reagent/consumable/ethanol,
 		/datum/reagent/iron,
