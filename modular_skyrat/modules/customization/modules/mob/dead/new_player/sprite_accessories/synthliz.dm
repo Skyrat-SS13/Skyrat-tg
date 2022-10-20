@@ -103,7 +103,7 @@
 	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/synthliz_antennas.dmi'
 	color_src = USE_ONE_COLOR
 	name = "Synthetic Lizard - Antennae"
-	icon_state = "MUTANT_SYNTH_ANTENNAe"
+	icon_state = "synth_antennae"
 	default_color = null
 
 /datum/sprite_accessory/antenna/synthliz/synthliz_curled

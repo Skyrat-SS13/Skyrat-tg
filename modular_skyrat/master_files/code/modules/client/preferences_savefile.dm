@@ -137,7 +137,9 @@
 				write_preference(GLOB.preference_entries[/datum/preference/choiced/mutant_choice/synth_chassis], "Mammal Chassis")
 				write_preference(GLOB.preference_entries[/datum/preference/choiced/mutant_choice/synth_head], "Mammal Head")
 
+			// Sorry, but honestly, you folk might like to browse the IPC screens now they've got previews.
 			write_preference(GLOB.preference_entries[/datum/preference/choiced/mutant_choice/ipc_screen], "None")
+			// Unfortunately, you will get a human last name applied due to load behaviours. Nothing I can do about it.
 			write_preference(GLOB.preference_entries[/datum/preference/choiced/species], "synth")
 
 			// If human code hasn't kicked in, grab mutant colour.
@@ -145,13 +147,11 @@
 				READ_FILE(save["mutant_colors_color"], new_color)
 				if(islist(new_color) && new_color.len > 0)
 					new_color = sanitize_hexcolor(new_color[1])
-				else
-					new_color = null // Just let validation pick it's own value.
+				// Just let validation pick it's own value.
 
 			if(new_color)
 				write_preference(GLOB.preference_entries[/datum/preference/color/mutant/synth_chassis], new_color)
 				write_preference(GLOB.preference_entries[/datum/preference/color/mutant/synth_head], new_color)
-
 
 /datum/preferences/proc/check_migration()
 	if(!tgui_prefs_migration)

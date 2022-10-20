@@ -4,5 +4,5 @@
 #define MUTANT_SYNTH_HEAD "synth_head"
 #define MUTANT_SYNTH_HAIR "synth_hair"
 
-#define DEFAULT_SYNTH_PART_COLOR "#dfb5b5"
+#define DEFAULT_SYNTH_PART_COLOR "#746c6a"
 #define DEFAULT_SYNTH_SCREEN_COLOR "#b99b3a"
