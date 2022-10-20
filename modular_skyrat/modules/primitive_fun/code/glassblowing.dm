@@ -181,7 +181,7 @@
 			return
 		in_use = TRUE
 		if(!find_glass.chosen_item)
-			var/choice = tgui_input_list(user, "What would you like to make?", "Choice Selection", list("Plate", "Bowl", "Globe", "Cup", "Lens"))
+			var/choice = tgui_input_list(user, "What would you like to make?", "Choice Selection", list("Plate", "Bowl", "Globe", "Cup", "Lens", "Bottle"))
 			if(!choice)
 				in_use = FALSE
 				return
@@ -201,6 +201,9 @@
 				if("Lens")
 					find_glass.chosen_item = /obj/item/glassblowing/glass_lens
 					find_glass.required_actions = list(0,0,3,3,3) //paddling, shearing, jacking
+				if("Bottle")
+					find_glass.chosen_item = /obj/item/reagent_containers/cup/glass/bottle/small
+					find_glass.required_actions = list(3,2,3,0,0) //blowing, spinning, paddling
 			in_use = FALSE
 			return
 		else
