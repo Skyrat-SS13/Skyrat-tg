@@ -24,9 +24,11 @@
 		return
 
 /obj/item/forging/hammer
-	name = "forging hammer"
-	desc = "A hammer specifically crafted for use in forging. Used to slowly shape metal; careful, you could break something with it!"
+	name = "forging mallet"
+	desc = "A mallet specifically crafted for use in forging. Used to slowly shape metal; careful, you could break something with it!"
 	icon_state = "hammer"
+	inhand_icon_state = "hammer"
+	worn_icon_state = "hammer_back"
 	tool_behaviour = TOOL_HAMMER
 	///the list of things that, if attacked, will set the attack speed to rapid
 	var/static/list/fast_attacks = list(
