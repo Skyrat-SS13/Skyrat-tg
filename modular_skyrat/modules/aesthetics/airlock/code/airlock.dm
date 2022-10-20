@@ -29,6 +29,8 @@
 	var/fill_state_suffix = null
 	/// For the airlocks that use greyscale lights, set this to the color you want your lights to be.
 	var/greyscale_lights_color = null
+	/// For the airlocks that use a greyscale accent door color, set this color to the accent color you want it to be.
+	var/greyscale_accent_color = null
 
 	var/has_environment_lights = TRUE //Does this airlock emit a light?
 	var/light_color_poweron = AIRLOCK_POWERON_LIGHT_COLOR
@@ -132,6 +134,9 @@
 		lights_appearance.dir = dir
 
 	. += lights_appearance
+
+	if(greyscale_accent_color)
+		. += get_airlock_overlay("[frame_state]_accent", overlays_file, src, em_block = TRUE, state_color = greyscale_accent_color)
 
 	if(panel_open)
 		. += get_airlock_overlay("panel_[frame_state][security_level ? "_protected" : null]", overlays_file, src, em_block = TRUE)

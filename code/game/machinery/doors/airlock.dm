@@ -22,12 +22,21 @@
 /// Someone, for the love of god, profile this.  Is there a reason to cache mutable_appearance
 /// if so, why are we JUST doing the airlocks when we can put this in mutable_appearance.dm for
 /// everything
-/proc/get_airlock_overlay(icon_state, icon_file, atom/offset_spokesman, em_block)
+/proc/get_airlock_overlay(icon_state, icon_file, atom/offset_spokesman, em_block, state_color = null) // SKYRAT EDIT - Airlock accent greyscale color support - Added `state_color = null`
 	var/static/list/airlock_overlays = list()
 
-	var/base_icon_key = "[icon_state][REF(icon_file)]"
+	var/base_icon_key = "[icon_state][REF(icon_file)][state_color]" // SKYRAT EDIT - Airlock accent greyscale color support - ORIGINAL: var/base_icon_key = "[icon_state][REF(icon_file)]"
 	if(!(. = airlock_overlays[base_icon_key]))
+		/* SKYRAT EDIT - Airlock accent greyscale color support - ORIGINAL:
 		. = airlock_overlays[base_icon_key] = mutable_appearance(icon_file, icon_state)
+		*/ // SKYRAT EDIT START
+		var/mutable_appearance/airlock_overlay = mutable_appearance(icon_file, icon_state)
+		if(state_color)
+			airlock_overlay.color = state_color
+
+		. = airlock_overlays[base_icon_key] = airlock_overlay
+		// SKYRAT EDIT END
+
 	if(isnull(em_block))
 		return
 
