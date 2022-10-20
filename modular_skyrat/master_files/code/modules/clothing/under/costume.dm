@@ -99,7 +99,7 @@
 	desc = "A traditional ancient Earth Japanese Kamishimo."
 	icon_state = "kamishimo"
 
-/obj/item/clothing/under/costume/kimono_fancy
+/obj/item/clothing/under/costume/skyrat/kimono_fancy
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/costume.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/costume.dmi'
 	name = "fancy kimono"
