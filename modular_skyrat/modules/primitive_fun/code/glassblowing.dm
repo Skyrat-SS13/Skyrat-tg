@@ -203,7 +203,7 @@
 					find_glass.required_actions = list(0,0,3,3,3) //paddling, shearing, jacking
 				if("Bottle")
 					find_glass.chosen_item = /obj/item/reagent_containers/cup/glass/bottle/small
-					find_glass.required_actions = list(3,2,3,0,0)
+					find_glass.required_actions = list(3,2,3,0,0) //blowing, spinning, paddling
 			in_use = FALSE
 			return
 		else
