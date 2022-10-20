@@ -111,6 +111,7 @@
 /datum/sprite_accessory/taur/cow/spotted
 	name = "Cow (Spotted)"
 	icon_state = "cow_spotted"
+	color_src = USE_MATRIXED_COLORS
 
 /datum/sprite_accessory/taur/deer
 	name = "Deer"
@@ -156,7 +157,6 @@
 	name = "Scolipede"
 	icon_state = "pede"
 	taur_mode = STYLE_TAUR_PAW
-	color_src = USE_ONE_COLOR
 	extra = TRUE
 	extra2 = TRUE
 	extra_color_src = MUTCOLORS2

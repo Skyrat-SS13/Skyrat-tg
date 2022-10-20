@@ -7,17 +7,15 @@
 	inhand_icon_state = "sheet-metal"
 	mats_per_unit = list(/datum/material/stone=MINERAL_MATERIAL_AMOUNT)
 	throwforce = 10
-//	flags_1 = null
 	resistance_flags = FIRE_PROOF
 	merge_type = /obj/item/stack/sheet/mineral/stone
 	grind_results = null
 	point_value = 0
-//	tableVariant = /obj/structure/table/stone
 	material_type = /datum/material/stone
 	matter_amount = 0
-//	cost = 500
 	source = null
 	walltype = /turf/closed/wall/mineral/stone
+	stairs_type = /obj/structure/stairs/stone
 
 GLOBAL_LIST_INIT(stone_recipes, list ( \
 	new/datum/stack_recipe("stone brick wall", /turf/closed/wall/mineral/stone, 5, one_per_turf = 1, on_solid_ground = 1, applies_mats = TRUE), \
