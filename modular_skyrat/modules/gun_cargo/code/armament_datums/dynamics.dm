@@ -65,18 +65,6 @@
 /datum/armament_entry/cargo_gun/dynamics/ammo/c46mm_rub
 	item_type = /obj/item/ammo_box/c46x30mm/rubber
 
-/datum/armament_entry/cargo_gun/dynamics/ammo/c32
-	item_type = /obj/item/ammo_box/c32
-
-/datum/armament_entry/cargo_gun/dynamics/ammo/c32_ap
-	item_type = /obj/item/ammo_box/c32/ap
-
-/datum/armament_entry/cargo_gun/dynamics/ammo/c32_in
-	item_type = /obj/item/ammo_box/c32/fire
-
-/datum/armament_entry/cargo_gun/dynamics/ammo/c32_rub
-	item_type = /obj/item/ammo_box/c32/rubber
-
 /datum/armament_entry/cargo_gun/dynamics/ammo/c38
 	item_type = /obj/item/ammo_box/c38
 	lower_cost = CARGO_CRATE_VALUE * 0.5
