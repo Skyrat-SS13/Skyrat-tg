@@ -1,6 +1,6 @@
 /obj/structure/reagent_anvil
 	name = "smithing anvil"
-	desc = "An object with the intent to hammer metal against. One of the most important parts for forging an item."
+	desc = "Essentially a big block of metal that you can hammer other metals on top of, crucial for anyone working metal by hand."
 	icon = 'modular_skyrat/modules/reagent_forging/icons/obj/forge_structures.dmi'
 	icon_state = "anvil_empty"
 
