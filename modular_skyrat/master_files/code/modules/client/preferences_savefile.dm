@@ -113,7 +113,7 @@
 	if(current_version < 2)
 		var/list/old_breast_prefs
 		READ_FILE(save["breasts_size"], old_breast_prefs)
-		if(old_breast_prefs) // Can't be too careful
+		if(isnum(old_breast_prefs)) // Can't be too careful
 			// You weren't meant to be able to pick sizes over this anyways.
 			write_preference(GLOB.preference_entries[/datum/preference/choiced/breasts_size], GLOB.breast_size_translation["[min(old_breast_prefs, 10)]"])
 
