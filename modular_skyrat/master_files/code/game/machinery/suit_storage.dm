@@ -6,3 +6,4 @@
 	suit_type = /obj/item/clothing/suit/space/syndicate
 	mask_type = /obj/item/clothing/mask/gas/syndicate
 	storage_type = /obj/item/tank/jetpack/oxygen/harness
+	mod_type = null
