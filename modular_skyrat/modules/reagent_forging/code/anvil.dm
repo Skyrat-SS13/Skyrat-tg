@@ -1,5 +1,5 @@
 /obj/structure/reagent_anvil
-	name = "anvil"
+	name = "smithing anvil"
 	desc = "An object with the intent to hammer metal against. One of the most important parts for forging an item."
 	icon = 'modular_skyrat/modules/reagent_forging/icons/obj/forge_structures.dmi'
 	icon_state = "anvil_empty"
