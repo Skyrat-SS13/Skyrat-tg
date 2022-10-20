@@ -105,12 +105,12 @@
 	. = ..()
 
 	if(used_tray)
-		. += span_notice("It has [used_tray], which can be removed with an <b>empty hand</b>.")
+		. += span_notice("It has [used_tray] in it, which can be removed with an <b>empty hand</b>.")
 	else
 		. += span_notice("You can place an <b>oven tray</b> in this to <b>bake</b> any items on it.")
 
 	if(!forge_level == FORGE_LEVEL_THREE)
-		. += span_warning("<br>Perhaps using your hand on [src] when skilled will do something...<br>")
+		. += span_notice("<br>Perhaps using your hand on [src] when skilled will do something...<br>")
 
 	switch(forge_level)
 		if(FORGE_LEVEL_ZERO)
