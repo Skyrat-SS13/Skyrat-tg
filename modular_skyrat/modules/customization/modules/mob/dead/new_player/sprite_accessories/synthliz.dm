@@ -99,7 +99,6 @@
 
 //Synth Antennae
 /datum/sprite_accessory/antenna/synthliz
-	recommended_species = list()
 	icon = 'modular_skyrat/master_files/icons/mob/sprite_accessory/synthliz_antennas.dmi'
 	color_src = USE_ONE_COLOR
 	name = "Synthetic Lizard - Antennae"
