@@ -63,6 +63,13 @@
 	return TRUE
 
 
+/obj/machinery/door/airlock/keyed/allowed(mob/accessor)
+	if(issilicon(accessor)) // No, cyborgs, pAIs or AIs can't open these doors, sorry.
+		return FALSE
+
+	return ..()
+
+
 // Standard Expressions to make keyed airlocks basically un-cheeseable
 
 /obj/machinery/door/airlock/keyed/emp_act(severity)
