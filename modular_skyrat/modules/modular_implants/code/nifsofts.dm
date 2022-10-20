@@ -136,8 +136,7 @@
 /obj/item/disk/nifsoft_uploader/Initialize()
 	. = ..()
 
-	if(name == "Generic NIFSoft datadisk")
-		name = "[initial(loaded_nifsoft.name)] datadisk"
+	name = "[initial(loaded_nifsoft.name)] datadisk"
 
 /obj/item/disk/nifsoft_uploader/examine(mob/user)
 	. = ..()
