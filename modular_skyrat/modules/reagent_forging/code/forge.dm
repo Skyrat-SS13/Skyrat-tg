@@ -16,11 +16,17 @@
 
 #define MIN_IMBUE_REQUIRED 100
 
+#define SMOKE_STATE_NONE 0
+#define SMOKE_STATE_GOOD 1
+#define SMOKE_STATE_NEUTRAL 2
+#define SMOKE_STATE_BAD 3
+#define SMOKE_STATE_NOT_COOKING 4
+
 /obj/structure/reagent_forge
 	name = "forge"
 	desc = "A structure built out of bricks, with the intended purpose of heating up metal."
 	icon = 'modular_skyrat/modules/reagent_forging/icons/obj/forge_structures.dmi'
-	icon_state = "forge_empty"
+	icon_state = "forge_inactive"
 
 	anchored = TRUE
 	density = TRUE
@@ -68,13 +74,11 @@
 		"Rail Nail" = /obj/item/forging/incomplete/rail_nail,
 		"Rail Cart" = /obj/item/forging/incomplete/rail_cart,
 	)
-	///radial button for acting as an oven on a food object
-	var/static/radial_oven = image(icon = 'modular_skyrat/modules/reagent_forging/icons/hud/forge_radials.dmi', icon_state = "oven")
-	///radial button for acting as a microwave on a food object
-	var/static/radial_microwave = image(icon = 'modular_skyrat/modules/reagent_forging/icons/hud/forge_radials.dmi', icon_state = "microwave")
 
-	///list containing cooking radial buttons, for when anything of /obj/item/food is used on the forge
-	var/static/list/radial_options = list("oven" = radial_oven, "microwave" = radial_microwave)
+	///Tracks any oven tray placed inside of the forge
+	var/obj/item/plate/oven_tray/used_tray
+	///What smoke particles should be coming out of the forge
+	var/smoke_state = SMOKE_STATE_NONE
 
     ///Blacklist that contains reagents that weapons and armor are unable to be imbued with.
 	var/static/list/disallowed_reagents = typecacheof(list(
@@ -99,8 +103,14 @@
 
 /obj/structure/reagent_forge/examine(mob/user)
 	. = ..()
-	. += span_warning("<br>Perhaps using your hand on [src] when skilled will do something...<br>")
-	. += span_notice("You could probably use [src] to <b>bake</b> or <b>cook</b> food...<br>")
+
+	if(used_tray)
+		. += span_notice("It has [used_tray], which can be removed with an <b>empty hand</b>.")
+	else
+		. += span_notice("You can place an <b>oven tray</b> in this to <b>bake</b> any items on it.")
+
+	if(!forge_level == FORGE_LEVEL_THREE)
+		. += span_warning("<br>Perhaps using your hand on [src] when skilled will do something...<br>")
 
 	switch(forge_level)
 		if(FORGE_LEVEL_ZERO)
@@ -138,26 +148,33 @@
 /obj/structure/reagent_forge/update_appearance(updates)
 	. = ..()
 	cut_overlays()
-	if(!reagent_forging)
-		return
-	var/image/gold_overlay = image(icon = icon, icon_state = "forge_masterwork_trim")
-	add_overlay(gold_overlay)
+	if(reagent_forging)
+		var/image/gold_overlay = image(icon = icon, icon_state = "forge_masterwork_trim")
+		add_overlay(gold_overlay)
+	if(used_tray)
+		var/image/tray_overlay = image(icon = icon, icon_state = "forge_tray_[check_fuel(TRUE) ? "active" : "inactive"]")
+		add_overlay(tray_overlay)
 
-/**
- * Here we check both strong (coal) and weak (wood) fuel
- */
-/obj/structure/reagent_forge/proc/check_fuel()
+/// Checks if the forge has fuel, if so what type. If it has either type of fuel, returns TRUE, otherwise returns FALSE. just_checking will check if there is fuel without taking actions
+/obj/structure/reagent_forge/proc/check_fuel(just_checking = FALSE)
 	if(forge_fuel_strong) //use strong fuel first
+		if(just_checking)
+			return TRUE
 		forge_fuel_strong -= 5 SECONDS
 		target_temperature = 100
-		return
+		return TRUE
 
 	if(forge_fuel_weak) //then weak fuel second
+		if(just_checking)
+			return TRUE
 		forge_fuel_weak -= 5 SECONDS
 		target_temperature = 50
-		return
+		return TRUE
 
+	if(just_checking)
+		return FALSE
 	target_temperature = 0 //if no fuel, slowly go back down to zero
+	return FALSE
 
 /**
  * Here we make the reagent forge reagent imbuing
@@ -167,7 +184,7 @@
 		return
 	reagent_forging = TRUE
 	name = "reagent forge"
-	desc = "[initial(desc)]<br>It has the ability to imbue forged metals with chemicals!"
+	update_appearance()
 
 /**
  * Here we give a fail message as well as set the in_use to false
@@ -176,31 +193,22 @@
 	to_chat(fail_user, span_warning(message))
 	in_use = FALSE
 
-/**
- * Here we adjust our temp to the target temperature
- */
+///Adjust the temperature to head towards the target temperature, changing icon and creating light if the temperature is rising
 /obj/structure/reagent_forge/proc/check_temp()
 	if(forge_temperature > target_temperature) //above temp needs to lower slowly
 		if(sinew_lower_chance && prob(sinew_lower_chance))//chance to not lower the temp, up to 100 from 10 sinew
 			return
 
 		forge_temperature -= 5
-		if(particles)
-			QDEL_NULL(particles)
+		icon_state = "forge_inactive"
 		return
 
 	else if(forge_temperature < target_temperature && (forge_fuel_weak || forge_fuel_strong)) //below temp with fuel needs to rise
 		forge_temperature += 5
-		icon_state = "forge_full"
+		icon_state = "forge_active"
 		set_light(3, 1, LIGHT_COLOR_FIRE)
-		if(particles)
-			return
-		particles = new /particles/smoke
-		particles.position = list(6, 4, 0)
 
-/**
- * Here we fix any weird in_use bugs
- */
+///If the forge is in use, checks if there are any mobs actually in use range. If not sets the forge to not be in use.
 /obj/structure/reagent_forge/proc/check_in_use()
 	if(!in_use)
 		return
@@ -209,14 +217,12 @@
 		if(!living_mob)
 			in_use = FALSE
 
-/**
- * Here we spawn coal depending on a chance of using wood
- */
+///Spawns a piece of coal at the forge and renames it to charcoal
 /obj/structure/reagent_forge/proc/spawn_coal()
 	var/obj/item/stack/sheet/mineral/coal/spawn_coal = new(get_turf(src))
 	spawn_coal.name = "charcoal"
 
-/obj/structure/reagent_forge/process()
+/obj/structure/reagent_forge/process(delta_time)
 	if(!COOLDOWN_FINISHED(src, forging_cooldown)) //every 5 seconds to not be too intensive, also balanced around 5 seconds
 		return
 
@@ -225,8 +231,57 @@
 	check_temp()
 	check_in_use() //plenty of weird bugs, this should hopefully fix the in_use bugs
 
+	if(!used_tray)
+		if(forge_fuel_weak || forge_fuel_strong)
+			set_smoke_state(SMOKE_STATE_NOT_COOKING)
+		return
+	var/worst_cooked_food_state = 0
+	for(var/obj/item/baked_item in used_tray.contents)
+
+		var/signal_result = SEND_SIGNAL(baked_item, COMSIG_ITEM_BAKED, src, delta_time)
+
+		if(signal_result & COMPONENT_HANDLED_BAKING) //This means something responded to us baking!
+			if(signal_result & COMPONENT_BAKING_GOOD_RESULT && worst_cooked_food_state < SMOKE_STATE_GOOD)
+				worst_cooked_food_state = SMOKE_STATE_GOOD
+			else if(signal_result & COMPONENT_BAKING_BAD_RESULT && worst_cooked_food_state < SMOKE_STATE_NEUTRAL)
+				worst_cooked_food_state = SMOKE_STATE_NEUTRAL
+			continue
+
+		worst_cooked_food_state = SMOKE_STATE_BAD
+		baked_item.fire_act(1000) //Hot hot hot!
+
+		if(DT_PROB(10, delta_time))
+			visible_message(span_danger("You smell a burnt smell coming from [src]!"))
+	set_smoke_state(worst_cooked_food_state)
+
+/obj/structure/reagent_forge/proc/set_smoke_state(new_state)
+	if(new_state == smoke_state)
+		return
+	smoke_state = new_state
+
+	QDEL_NULL(particles)
+	if(!check_fuel(TRUE)) //If there is no fuel then we don't get smoke particles
+		return
+	switch(smoke_state)
+		if(SMOKE_STATE_BAD)
+			particles = new /particles/smoke()
+			particles.position = list(6, 4, 0)
+		if(SMOKE_STATE_NEUTRAL)
+			particles = new /particles/smoke/steam()
+			particles.position = list(6, 4, 0)
+		if(SMOKE_STATE_GOOD)
+			particles = new /particles/smoke/steam/mild()
+			particles.position = list(6, 4, 0)
+		if(SMOKE_STATE_NOT_COOKING)
+			particles = new /particles/smoke/mild()
+			particles.position = list(6, 4, 0)
+
 /obj/structure/reagent_forge/attack_hand(mob/living/user, list/modifiers)
 	. = ..()
+	if(used_tray)
+		remove_tray_from_forge()
+		return
+
 	var/user_smithing_skill = user.mind.get_skill_level(/datum/skill/smithing)
 	var/previous_level = forge_level
 
@@ -255,7 +310,30 @@
 	to_chat(user, span_notice("As you work with [src], you note the purity caused by heating metal with nothing but exposed flame. Examine to view what has improved!"))
 	playsound(src, 'sound/magic/demon_consume.ogg', 50, TRUE)
 
+/obj/structure/reagent_forge/proc/add_tray_to_forge(obj/item/plate/oven_tray/tray)
+	if(used_tray) //This shouldn't be able to happen but just to be safe
+		balloon_alert_to_viewers("already has tray")
+		return
+	tray.forceMove(src)
+	balloon_alert_to_viewers("put [tray] in [src]")
+	used_tray = tray
+	update_appearance()
+
+/obj/structure/reagent_forge/proc/remove_tray_from_forge(by_hand = TRUE)
+	if(!used_tray)
+		if(by_hand)
+			balloon_alert_to_viewers("no tray")
+		return
+	if(by_hand)
+		balloon_alert_to_viewers("removed [used_tray]")
+	used_tray.forceMove(get_turf(src))
+	used_tray = null
+
 /obj/structure/reagent_forge/attackby(obj/item/attacking_item, mob/living/user, params)
+	if(!used_tray && istype(attacking_item, /obj/item/plate/oven_tray))
+		add_tray_to_forge(attacking_item)
+		return
+
 	var/skill_modifier = user.mind.get_skill_modifier(/datum/skill/smithing, SKILL_SPEED_MODIFIER)
 
 	if(istype(attacking_item, /obj/item/stack/sheet/mineral/wood)) //used for weak fuel
@@ -590,46 +668,6 @@
 		COOLDOWN_START(spawned_glass, remaining_heat, glassblowing_amount)
 		return TRUE
 
-	if(istype(attacking_item, /obj/item/food))
-		var/obj/item/food/thing_to_cook = attacking_item
-
-		if(in_use)
-			to_chat(user, span_warning("You cannot do multiple things at the same time!"))
-			return FALSE
-
-		in_use = TRUE
-
-		if(forge_temperature < MIN_FORGE_TEMP)
-			fail_message(user, "The [src] is not hot enough to start cooking [thing_to_cook]!")
-			return FALSE
-
-		var/user_input = show_radial_menu(user, src, radial_options)
-		var/obj/item_to_spawn
-
-		if(!user_input)
-			fail_message(user, "No choice made")
-			return FALSE
-
-		in_use = TRUE
-		balloon_alert_to_viewers("cooking...")
-
-		if(!do_after(user, 10 SECONDS, target = src))
-			fail_message(user, "You stop trying to cook [thing_to_cook]!")
-			in_use = FALSE
-			return FALSE
-
-		switch(user_input)
-			if("oven")
-				var/datum/component/bakeable/item_bakeable_component = thing_to_cook.GetComponent(/datum/component/bakeable)
-				item_to_spawn = item_bakeable_component.bake_result ? item_bakeable_component.bake_result : /obj/item/food/badrecipe
-			if("microwave")
-				item_to_spawn = thing_to_cook.microwaved_type ? thing_to_cook.microwaved_type : /obj/item/food/badrecipe
-
-		qdel(thing_to_cook)
-		new item_to_spawn(get_turf(src))
-		in_use = FALSE
-		return TRUE
-
 	return ..()
 
 /obj/structure/reagent_forge/proc/smelt_ore(obj/item/stack/ore/ore_item, mob/living/user)
@@ -834,6 +872,11 @@
 	reagent_forging = TRUE
 	sinew_lower_chance = 100
 	forge_temperature = 1000
+
+/particles/smoke/mild
+	spawning = 1
+	velocity = list(0, 0.3, 0)
+	friction = 0.25
 
 #undef DEFAULT_TIMED
 
