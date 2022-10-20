@@ -2272,13 +2272,16 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	//Note for future: Potentionally add a new C.dna.species() to build a template species for more accurate limb replacement
 
 	// SKYRAT EDIT ADDITION START - Synth digitigrade sanitization
-	// You can jack into this var with other checks, if you want.
-	var/ignore_digi = FALSE
+	var/ignore_digi = FALSE // You can jack into this var with other checks, if you want.
 	if(issynthetic(target))
 		var/list/chassis = target.dna.mutant_bodyparts[MUTANT_SYNTH_CHASSIS]
-		var/datum/sprite_accessory/synth_chassis/body_choice = GLOB.sprite_accessories[MUTANT_SYNTH_CHASSIS][chassis[MUTANT_INDEX_NAME]]
-		if(!body_choice.is_digi_compatible)
-			ignore_digi = TRUE
+		if(chassis)
+			var/list/chassis_accessory = GLOB.sprite_accessories[MUTANT_SYNTH_CHASSIS]
+			var/datum/sprite_accessory/synth_chassis/body_choice
+			if(chassis_accessory)
+				body_choice == chassis_accessory[chassis[MUTANT_INDEX_NAME]]
+			if(body_choice && !body_choice.is_digi_compatible)
+				ignore_digi = TRUE
 	// SKYRAT EDIT END
 
 	//if((new_species.digitigrade_customization == DIGITIGRADE_OPTIONAL && target.dna.features["legs"] == DIGITIGRADE_LEGS) || new_species.digitigrade_customization == DIGITIGRADE_FORCED) // ORIGINAL
