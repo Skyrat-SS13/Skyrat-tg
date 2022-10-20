@@ -5,4 +5,4 @@
 	build_path = /obj/item/borg/upgrade/borg_shapeshifter
 	materials = list(/datum/material/silver = 10000, /datum/material/plasma = 10000, /datum/material/diamond = 5000,)
 	construction_time = 120
-	category = list(RND_CATEGORY_CYBORG_UPGRADE_MODULES)
+	category = list(RND_CATEGORY_MECHFAB_CYBORG_MODULES + RND_SUBCATEGORY_MECHFAB_CYBORG_MODULES_ALL)

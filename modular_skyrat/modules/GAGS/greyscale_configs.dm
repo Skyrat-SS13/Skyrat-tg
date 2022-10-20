@@ -347,14 +347,16 @@
 
 // SWEATERS
 
-/datum/greyscale_config/sweater
-	name = "Sweater"
+/datum/greyscale_config/cableknit_sweater
+	name = "Cableknit Sweater"
 	icon_file = 'modular_skyrat/modules/GAGS/icons/sweaters.dmi'
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/sweater/sweater.json'
 
-/datum/greyscale_config/sweater/worn
-	name = "Sweater (Worn)"
+/datum/greyscale_config/cableknit_sweater/worn
+	name = "Cableknit Sweater (Worn)"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/sweater/sweater_worn.json'
+
+//Keyhole uses the same configs!
 
 // URBAN COAT
 
@@ -425,11 +427,11 @@
 
 /datum/greyscale_config/jumpsuit_worn/digi
 	name = "Worn Jumpsuit - Digitigrade"
-	icon_file = 'modular_skyrat/modules/GAGS/icons/jumpsuit_digi.dmi'
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/color_digi.dmi'
 
 /datum/greyscale_config/jumpsuit_prison_worn/digi
 	name = "Worn Prison Jumpsuit - Digitigrade"
-	icon_file = 'modular_skyrat/modules/GAGS/icons/jumpsuit_digi.dmi'
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/color_digi.dmi'
 
 /datum/greyscale_config/jumpsuit_worn/vox
 	name = "Worn Jumpsuit - Vox"
@@ -466,14 +468,6 @@
 // PANTS / SHORTS
 //Note, these icons are now in master_files per TG's sorting. There's no reason to NOT have these pieces in master files now that they're sorted out.
 //The rest will eventually join them - preferably with a cleaner method too instead of having to have unique configs for every single item's digi state.
-
-/datum/greyscale_config/buttondown_slacks_worn/digi
-	name = "Worn Buttondown with Slacks - Digitigrade"
-	icon_file = SHORTS_PANTS_SHIRTS_DIGIFILE
-
-/datum/greyscale_config/buttondown_shorts_worn/digi
-	name = "Worn Buttondown with Shorts - Digitigrade"
-	icon_file = SHORTS_PANTS_SHIRTS_DIGIFILE
 
 /datum/greyscale_config/slacks_worn/digi
 	name = "Worn Slacks - Digitigrade"
@@ -596,6 +590,27 @@
 
 // COSTUMES
 
+/datum/greyscale_config/buttondown_slacks_worn/digi
+	name = "Worn Buttondown with Slacks - Digitigrade"
+	icon_file = SHORTS_PANTS_SHIRTS_DIGIFILE
+
+/datum/greyscale_config/buttondown_shorts_worn/digi
+	name = "Worn Buttondown with Shorts - Digitigrade"
+	icon_file = SHORTS_PANTS_SHIRTS_DIGIFILE
+
+/datum/greyscale_config/buttondown_vicvest
+	name = "Buttondown with Double-breasted Vest"
+	icon_file = 'modular_skyrat/master_files/icons/obj/clothing/under/shorts_pants_shirts.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/costumes/buttondown_vicvest.json'
+
+/datum/greyscale_config/buttondown_vicvest/worn
+	name = "Worn Buttondown with Double-breasted Vest"
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/shorts_pants_shirts.dmi'
+
+/datum/greyscale_config/buttondown_vicvest/worn/digi
+	name = "Worn Buttondown with Double-breasted Vest - Digitigrade"
+	icon_file = SHORTS_PANTS_SHIRTS_DIGIFILE
+
 /datum/greyscale_config/football_suit_worn/digi
 	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/costume_digi.dmi'
 
@@ -661,6 +676,14 @@
 /datum/greyscale_config/kilt/worn
 	name = "Kilt (Worn)"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/kilt/kilt_worn.json'
+
+/*
+TREK
+*/
+
+/datum/greyscale_config/trek/worn/digi
+	name = "Worn Trek Uniform - Digitigrade"
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/trek_digi.dmi'
 
 /*
 *	SHOES

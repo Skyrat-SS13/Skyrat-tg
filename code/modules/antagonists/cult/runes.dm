@@ -139,18 +139,17 @@ structure_check() searches for nearby cultist structures required for the invoca
 	if(user)
 		invokers += user
 	if(req_cultists > 1 || istype(src, /obj/effect/rune/convert))
-		var/list/things_in_range = range(1, src)
-		for(var/mob/living/L in things_in_range)
-			if(IS_CULTIST(L))
-				if(L == user)
-					continue
-				if(ishuman(L))
-					var/mob/living/carbon/human/H = L
-					if((HAS_TRAIT(H, TRAIT_MUTE)) || H.silent)
-						continue
-				if(L.stat)
-					continue
-				invokers += L
+		for(var/mob/living/cultist in range(1, src))
+			if(!IS_CULTIST(cultist))
+				continue
+			if(cultist == user)
+				continue
+			if(!cultist.can_speak(allow_mimes = TRUE))
+				continue
+			if(cultist.stat != CONSCIOUS)
+				continue
+			invokers += cultist
+
 	return invokers
 
 /obj/effect/rune/proc/invoke(list/invokers)
@@ -171,7 +170,7 @@ structure_check() searches for nearby cultist structures required for the invoca
 /obj/effect/rune/proc/do_invoke_glow()
 	set waitfor = FALSE
 	animate(src, transform = matrix()*2, alpha = 0, time = 5, flags = ANIMATION_END_NOW) //fade out
-	sleep(5)
+	sleep(0.5 SECONDS)
 	animate(src, transform = matrix(), alpha = 255, time = 0, flags = ANIMATION_END_NOW)
 
 /obj/effect/rune/proc/fail_invoke()
@@ -772,17 +771,17 @@ structure_check() searches for nearby cultist structures required for the invoca
 				continue
 			to_chat(target, span_cultlarge("Your blood boils in your veins!"))
 	animate(src, color = "#FCB56D", time = 4)
-	sleep(4)
+	sleep(0.4 SECONDS)
 	if(QDELETED(src))
 		return
 	do_area_burn(T, 0.5)
 	animate(src, color = "#FFDF80", time = 5)
-	sleep(5)
+	sleep(0.5 SECONDS)
 	if(QDELETED(src))
 		return
 	do_area_burn(T, 1)
 	animate(src, color = "#FFFDF4", time = 6)
-	sleep(6)
+	sleep(0.6 SECONDS)
 	if(QDELETED(src))
 		return
 	do_area_burn(T, 1.5)
@@ -860,9 +859,8 @@ structure_check() searches for nearby cultist structures required for the invoca
 		new_human.alpha = 150 //Makes them translucent
 		new_human.equipOutfit(/datum/outfit/ghost_cultist) //give them armor
 		new_human.apply_status_effect(/datum/status_effect/cultghost) //ghosts can't summon more ghosts
-		new_human.see_invisible = SEE_INVISIBLE_OBSERVER
+		new_human.set_invis_see(SEE_INVISIBLE_OBSERVER)
 		ADD_TRAIT(new_human, TRAIT_NOBREATH, INNATE_TRAIT)
-
 		ghosts++
 		playsound(src, 'sound/magic/exit_blood.ogg', 50, TRUE)
 		visible_message(span_warning("A cloud of red mist forms above [src], and from within steps... a [new_human.gender == FEMALE ? "wo":""]man."))
@@ -876,7 +874,7 @@ structure_check() searches for nearby cultist structures required for the invoca
 			if(user.stat != CONSCIOUS || HAS_TRAIT(new_human, TRAIT_CRITICAL_CONDITION))
 				break
 			user.apply_damage(0.1, BRUTE)
-			sleep(1)
+			sleep(0.1 SECONDS)
 
 		qdel(N)
 		ghosts--
@@ -911,7 +909,7 @@ structure_check() searches for nearby cultist structures required for the invoca
 			if(affecting.health <= 10)
 				to_chat(G, span_cultitalic("Your body can no longer sustain the connection!"))
 				break
-			sleep(5)
+			sleep(0.5 SECONDS)
 		CM.Remove(G)
 		GM.Remove(G)
 		affecting.remove_atom_colour(ADMIN_COLOUR_PRIORITY, RUNE_COLOR_DARKRED)
@@ -1059,14 +1057,14 @@ structure_check() searches for nearby cultist structures required for the invoca
 		for(var/image/I in images)
 			I.override = FALSE
 			animate(I, alpha = 0, time = 25, flags = ANIMATION_PARALLEL)
-		sleep(35)
+		sleep(3.5 SECONDS)
 		for(var/image/I in images)
 			animate(I, alpha = 255, time = 25, flags = ANIMATION_PARALLEL)
-		sleep(25)
+		sleep(2.5 SECONDS)
 		for(var/image/I in images)
 			if(I.icon_state != "bloodsparkles")
 				I.override = TRUE
-		sleep(190)
+		sleep(19 SECONDS)
 
 
 

@@ -3,7 +3,6 @@
 	desc = "An experimental welding tool capable of welding functionality through the use of electricity. The flame seems almost cold."
 	icon = 'modular_skyrat/modules/aesthetics/tools/tools.dmi'
 	icon_state = "elwelder"
-	inhand_icon_state = "elwelder"
 	light_power = 1
 	light_color = LIGHT_COLOR_HALOGEN
 	tool_behaviour = NONE
@@ -94,5 +93,5 @@
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(/datum/material/iron = 1000, /datum/material/glass = 500, /datum/material/plasma = 1500, /datum/material/uranium = 200)
 	build_path = /obj/item/weldingtool/electric
-	category = list(RND_CATEGORY_TOOL_DESIGNS)
+	category = list(RND_CATEGORY_TOOLS + RND_SUBCATEGORY_TOOLS_ENGINEERING_ADVANCED)
 	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE | DEPARTMENT_BITFLAG_ENGINEERING

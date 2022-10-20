@@ -197,7 +197,7 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/shuttle/syndicate/cruiser/brig)
 "dz" = (
-/obj/structure/shuttle/engine/heater,
+/obj/machinery/power/shuttle_engine/heater,
 /turf/open/floor/plating/airless,
 /area/shuttle/syndicate/cruiser/engineering)
 "dF" = (
@@ -354,7 +354,7 @@
 "ge" = (
 /obj/structure/table,
 /obj/structure/reagent_dispensers/servingdish,
-/obj/item/clothing/head/chefhat,
+/obj/item/clothing/head/utility/chefhat,
 /turf/open/floor/iron/dark/textured_large,
 /area/shuttle/syndicate/cruiser/brig)
 "gp" = (
@@ -451,7 +451,7 @@
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate/cruiser/hallway)
 "hy" = (
-/obj/structure/shuttle/engine/heater,
+/obj/machinery/power/shuttle_engine/heater,
 /obj/machinery/atmospherics/components/unary/passive_vent/layer2{
 	dir = 1
 	},
@@ -606,14 +606,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate/cruiser/airlock)
-"lt" = (
-/obj/structure/shuttle/engine/large,
-/obj/structure/shuttle/engine/propulsion/in_wall{
-	pixel_y = -32
-	},
-/obj/effect/turf_decal/stripes/line,
-/turf/open/floor/plating/airless,
-/area/shuttle/syndicate/cruiser/airlock)
 "lx" = (
 /obj/effect/turf_decal/siding/thinplating_new/dark/end,
 /obj/machinery/light/no_nightlight/directional/south,
@@ -726,13 +718,6 @@
 /obj/structure/cable,
 /turf/open/floor/iron/dark/textured_large,
 /area/shuttle/syndicate/cruiser/brig)
-"oa" = (
-/obj/structure/shuttle/engine/propulsion/in_wall{
-	dir = 8;
-	pixel_x = -32
-	},
-/turf/closed/wall/r_wall/syndicate/nodiagonal,
-/area/shuttle/syndicate/cruiser/brig)
 "oc" = (
 /obj/effect/turf_decal/bot_white,
 /obj/structure/chair/comfy/shuttle/tactical{
@@ -777,7 +762,7 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/shuttle/syndicate/cruiser/engineering)
 "oH" = (
-/obj/structure/shuttle/engine/large,
+/obj/machinery/power/shuttle_engine/large,
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/plating/airless,
 /area/shuttle/syndicate/cruiser/hallway)
@@ -847,7 +832,7 @@
 /turf/open/floor/plating/airless,
 /area/shuttle/syndicate/cruiser/engineering)
 "pX" = (
-/obj/structure/shuttle/engine/heater,
+/obj/machinery/power/shuttle_engine/heater,
 /turf/open/floor/plating/airless,
 /area/shuttle/syndicate/cruiser/hallway)
 "ql" = (
@@ -999,10 +984,7 @@
 /turf/open/floor/mineral/plastitanium,
 /area/shuttle/syndicate/cruiser/hallway)
 "uV" = (
-/obj/structure/shuttle/engine/propulsion,
-/obj/structure/shuttle/engine/propulsion/in_wall{
-	pixel_y = -32
-	},
+/obj/machinery/power/shuttle_engine/propulsion,
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/plating/airless,
 /area/shuttle/syndicate/cruiser/hallway)
@@ -1025,7 +1007,7 @@
 	height = 21;
 	hidden = 1;
 	shuttle_id = "goldeneye_cruiser";
-	movement_force = list("KNOCKDOWN" = 0, "THROW" = 0);
+	movement_force = list("KNOCKDOWN"=0,"THROW"=0);
 	name = "goldeneye cruiser";
 	port_direction = 4;
 	width = 31
@@ -1273,13 +1255,6 @@
 /obj/effect/turf_decal/bot_white,
 /turf/open/floor/iron/dark/textured_large,
 /area/shuttle/syndicate/cruiser/eva)
-"Cx" = (
-/obj/structure/shuttle/engine/propulsion/in_wall{
-	dir = 8;
-	pixel_x = -32
-	},
-/turf/closed/wall/r_wall/syndicate/nodiagonal,
-/area/shuttle/syndicate/cruiser/engineering)
 "CH" = (
 /obj/structure/holohoop,
 /turf/open/floor/iron/dark/textured_large,
@@ -1299,13 +1274,6 @@
 	},
 /turf/open/floor/iron/freezer,
 /area/shuttle/syndicate/cruiser/medical)
-"CS" = (
-/obj/structure/shuttle/engine/propulsion/in_wall{
-	pixel_y = -32
-	},
-/obj/effect/turf_decal/stripes/line,
-/turf/open/floor/plating/airless,
-/area/shuttle/syndicate/cruiser/engineering)
 "CT" = (
 /obj/effect/turf_decal/siding/thinplating_new/dark{
 	dir = 1
@@ -1328,16 +1296,6 @@
 "Dq" = (
 /turf/closed/wall/r_wall/syndicate/nodiagonal,
 /area/shuttle/syndicate/cruiser/armory)
-"Dy" = (
-/obj/structure/shuttle/engine/large,
-/obj/structure/shuttle/engine/propulsion/in_wall{
-	pixel_y = -32
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 10
-	},
-/turf/open/floor/plating/airless,
-/area/shuttle/syndicate/cruiser/engineering)
 "DB" = (
 /obj/machinery/power/port_gen/pacman{
 	anchored = 1
@@ -1466,13 +1424,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/smooth,
 /area/shuttle/syndicate/cruiser/brig)
-"FI" = (
-/obj/structure/shuttle/engine/propulsion/in_wall{
-	dir = 4;
-	pixel_x = 32
-	},
-/turf/closed/wall/r_wall/syndicate/nodiagonal,
-/area/shuttle/syndicate/cruiser/airlock)
 "FJ" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/turf_decal/stripes/line{
@@ -1548,7 +1499,7 @@
 /turf/open/floor/mineral/plastitanium/red,
 /area/shuttle/syndicate/cruiser/hallway)
 "GN" = (
-/obj/structure/shuttle/engine/heater{
+/obj/machinery/power/shuttle_engine/heater{
 	dir = 4
 	},
 /turf/open/floor/plating/airless,
@@ -1803,7 +1754,7 @@
 /turf/closed/wall/r_wall/syndicate,
 /area/shuttle/syndicate/cruiser/brig)
 "Lr" = (
-/obj/structure/shuttle/engine/heater{
+/obj/machinery/power/shuttle_engine/heater{
 	dir = 8
 	},
 /turf/open/floor/plating/airless,
@@ -1950,7 +1901,7 @@
 /turf/open/floor/plating/airless,
 /area/shuttle/syndicate/cruiser/engineering)
 "Or" = (
-/obj/structure/shuttle/engine/large,
+/obj/machinery/power/shuttle_engine/large,
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/plating/airless,
 /area/shuttle/syndicate/cruiser/airlock)
@@ -2139,13 +2090,6 @@
 /obj/effect/turf_decal/bot_white,
 /turf/open/floor/iron/dark/textured_large,
 /area/shuttle/syndicate/cruiser/hallway)
-"SZ" = (
-/obj/structure/shuttle/engine/propulsion/in_wall{
-	dir = 4;
-	pixel_x = 32
-	},
-/turf/closed/wall/r_wall/syndicate/nodiagonal,
-/area/shuttle/syndicate/cruiser/eva)
 "Tq" = (
 /obj/effect/turf_decal/bot_white,
 /obj/structure/cable,
@@ -2174,15 +2118,6 @@
 	},
 /turf/open/floor/iron/dark/textured_large,
 /area/shuttle/syndicate/cruiser/eva)
-"TF" = (
-/obj/structure/shuttle/engine/propulsion/in_wall{
-	pixel_y = -32
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 6
-	},
-/turf/open/floor/plating/airless,
-/area/shuttle/syndicate/cruiser/airlock)
 "TJ" = (
 /obj/structure/rack/gunrack,
 /obj/item/gun/energy/ionrifle,
@@ -2190,7 +2125,7 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/shuttle/syndicate/cruiser/armory)
 "TL" = (
-/obj/structure/shuttle/engine/heater,
+/obj/machinery/power/shuttle_engine/heater,
 /turf/open/floor/plating/airless,
 /area/shuttle/syndicate/cruiser/airlock)
 "TW" = (
@@ -2252,7 +2187,7 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/shuttle/syndicate/cruiser/hallway)
 "UL" = (
-/obj/structure/shuttle/engine/propulsion,
+/obj/machinery/power/shuttle_engine/propulsion,
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/plating/airless,
 /area/shuttle/syndicate/cruiser/engineering)
@@ -2370,14 +2305,14 @@
 /turf/open/floor/iron/smooth,
 /area/shuttle/syndicate/cruiser/brig)
 "WF" = (
-/obj/structure/shuttle/engine/large,
+/obj/machinery/power/shuttle_engine/large,
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
 	},
 /turf/open/floor/plating/airless,
 /area/shuttle/syndicate/cruiser/engineering)
 "Xm" = (
-/obj/structure/shuttle/engine/propulsion,
+/obj/machinery/power/shuttle_engine/propulsion,
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/plating/airless,
 /area/shuttle/syndicate/cruiser/airlock)
@@ -2622,8 +2557,8 @@ Zy
 Zy
 Zy
 Zy
-Cx
-Cx
+Zy
+Zy
 Zy
 ru
 Fv
@@ -2679,8 +2614,8 @@ qU
 ss
 Vm
 Vm
-oa
-oa
+Vm
+Vm
 Vm
 Zy
 Zy
@@ -2691,7 +2626,7 @@ Zy
 Zy
 Zy
 pE
-Dy
+WF
 Fv
 "}
 (4,1,1) = {"
@@ -2724,7 +2659,7 @@ an
 iY
 Zy
 Oy
-CS
+Om
 Fv
 "}
 (5,1,1) = {"
@@ -3186,7 +3121,7 @@ sU
 Gd
 gv
 Hm
-lt
+Or
 Fv
 "}
 (19,1,1) = {"
@@ -3207,8 +3142,8 @@ Dq
 xq
 xq
 xq
-SZ
-SZ
+xq
+xq
 xq
 gv
 gv
@@ -3219,7 +3154,7 @@ gv
 gv
 gv
 xO
-TF
+AQ
 Fv
 "}
 (20,1,1) = {"
@@ -3282,8 +3217,8 @@ gv
 vo
 gv
 gv
-FI
-FI
+gv
+gv
 gv
 Vb
 Fv

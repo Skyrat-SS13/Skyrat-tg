@@ -3283,21 +3283,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron,
 /area/station/service/janitor)
-"aVH" = (
-/obj/structure/bed{
-	dir = 4
-	},
-/obj/item/bedsheet/captain{
-	dir = 4
-	},
-/obj/effect/landmark/start/captain,
-/obj/item/radio/intercom/directional/west{
-	freerange = 1;
-	name = "Captain's Intercom"
-	},
-/obj/structure/sign/poster/contraband/random/directional/north,
-/turf/open/floor/carpet/royalblue,
-/area/station/command/heads_quarters/captain/private)
 "aVI" = (
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/directional/south,
@@ -7902,25 +7887,6 @@
 "csa" = (
 /turf/open/floor/plating,
 /area/station/maintenance/port/greater)
-"csj" = (
-/obj/structure/table,
-/obj/effect/turf_decal/tile/blue{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/blue{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/item/radio/intercom{
-	dir = 8;
-	freerange = 1;
-	name = "Station Intercom (Command)";
-	pixel_x = 1
-	},
-/turf/open/floor/iron/dark,
-/area/station/command/bridge)
 "csk" = (
 /obj/effect/decal/cleanable/blood/old,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -10403,8 +10369,8 @@
 	dir = 4;
 	dwidth = 4;
 	height = 7;
-	shuttle_id = "cargo_home";
 	name = "Cargo Bay";
+	shuttle_id = "cargo_home";
 	width = 12
 	},
 /turf/open/space/basic,
@@ -12425,8 +12391,8 @@
 	pixel_y = 5
 	},
 /obj/item/storage/belt/utility,
-/obj/item/clothing/head/welding,
-/obj/item/clothing/head/welding,
+/obj/item/clothing/head/utility/welding,
+/obj/item/clothing/head/utility/welding,
 /obj/effect/turf_decal/stripes/corner{
 	dir = 8
 	},
@@ -13251,6 +13217,20 @@
 /obj/effect/mapping_helpers/airlock/access/any/science/maintenance,
 /turf/open/floor/iron/dark,
 /area/station/maintenance/starboard)
+"dWq" = (
+/obj/structure/table,
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/item/radio/intercom,
+/turf/open/floor/iron/dark,
+/area/station/command/bridge)
 "dWG" = (
 /turf/closed/wall/r_wall,
 /area/station/security/prison/safe)
@@ -14419,7 +14399,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
-/obj/item/clothing/head/welding{
+/obj/item/clothing/head/utility/welding{
 	pixel_y = 4
 	},
 /obj/machinery/camera/directional/north{
@@ -18009,8 +17989,8 @@
 	dir = 4;
 	dwidth = 11;
 	height = 18;
-	shuttle_id = "emergency_home";
 	name = "KiloStation emergency evac bay";
+	shuttle_id = "emergency_home";
 	width = 30
 	},
 /turf/open/space/basic,
@@ -20442,9 +20422,9 @@
 	dir = 8;
 	dwidth = 4;
 	height = 9;
-	shuttle_id = "aux_base_zone";
 	name = "Aux Base Zone";
 	roundstart_template = /datum/map_template/shuttle/aux_base/default;
+	shuttle_id = "aux_base_zone";
 	width = 9
 	},
 /turf/open/floor/plating,
@@ -20570,7 +20550,7 @@
 	},
 /obj/structure/rack,
 /obj/item/clothing/under/costume/lobster,
-/obj/item/clothing/head/lobsterhat,
+/obj/item/clothing/head/costume/lobsterhat,
 /obj/effect/turf_decal/bot,
 /obj/effect/turf_decal/siding/wood/corner{
 	dir = 1
@@ -20754,11 +20734,6 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/hallway/primary/aft)
-"fWZ" = (
-/obj/machinery/light/small/directional/south,
-/obj/effect/turf_decal/sand/plating,
-/turf/open/floor/plating/airless,
-/area/station/maintenance/starboard/fore)
 "fXm" = (
 /obj/structure/table,
 /obj/effect/turf_decal/tile/neutral{
@@ -25654,7 +25629,7 @@
 	},
 /obj/item/storage/belt/utility,
 /obj/item/weldingtool/largetank,
-/obj/item/clothing/head/welding,
+/obj/item/clothing/head/utility/welding,
 /obj/machinery/firealarm/directional/east,
 /obj/effect/turf_decal/stripes/corner{
 	dir = 4
@@ -27297,8 +27272,8 @@
 	dir = 8;
 	dwidth = 2;
 	height = 11;
-	shuttle_id = "ferry_home";
 	name = "port bay 2";
+	shuttle_id = "ferry_home";
 	width = 5
 	},
 /turf/open/space/basic,
@@ -28344,8 +28319,8 @@
 /area/station/service/hydroponics/garden)
 "iak" = (
 /obj/docking_port/stationary/random{
-	shuttle_id = "pod_3_lavaland";
-	name = "lavaland"
+	name = "lavaland";
+	shuttle_id = "pod_3_lavaland"
 	},
 /turf/open/space,
 /area/space/nearstation)
@@ -28528,15 +28503,15 @@
 /obj/item/clothing/suit/hazardvest,
 /obj/item/clothing/suit/hazardvest,
 /obj/item/clothing/suit/hazardvest,
-/obj/item/clothing/head/hardhat/orange{
+/obj/item/clothing/head/utility/hardhat/orange{
 	name = "protective hat";
 	pixel_y = 6
 	},
-/obj/item/clothing/head/hardhat/orange{
+/obj/item/clothing/head/utility/hardhat/orange{
 	name = "protective hat";
 	pixel_y = 6
 	},
-/obj/item/clothing/head/hardhat/orange{
+/obj/item/clothing/head/utility/hardhat/orange{
 	name = "protective hat";
 	pixel_y = 6
 	},
@@ -29859,12 +29834,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/dark,
 /area/station/commons/toilet/restrooms)
-"ius" = (
-/obj/structure/disposalpipe/segment,
-/obj/effect/turf_decal/sand/plating,
-/obj/structure/cable,
-/turf/open/floor/plating/airless,
-/area/station/maintenance/starboard/fore)
 "iuC" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/door/poddoor/shutters/preopen{
@@ -30326,11 +30295,11 @@
 /obj/structure/table,
 /obj/item/stack/sheet/iron/fifty,
 /obj/item/stack/sheet/iron/fifty,
-/obj/item/clothing/head/welding{
+/obj/item/clothing/head/utility/welding{
 	pixel_x = 4;
 	pixel_y = 4
 	},
-/obj/item/clothing/head/welding,
+/obj/item/clothing/head/utility/welding,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
@@ -32266,6 +32235,11 @@
 /obj/effect/turf_decal/bot,
 /turf/open/floor/iron,
 /area/station/cargo/storage)
+"jaU" = (
+/obj/machinery/light/small/directional/south,
+/obj/effect/turf_decal/sand/plating,
+/turf/open/floor/plating/airless,
+/area/space/nearstation)
 "jaW" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/cable,
@@ -32722,7 +32696,7 @@
 /area/station/service/chapel/funeral)
 "jhc" = (
 /obj/structure/table/bronze,
-/obj/item/clothing/head/bronze{
+/obj/item/clothing/head/costume/bronze{
 	pixel_x = 5;
 	pixel_y = 4
 	},
@@ -33278,7 +33252,7 @@
 /obj/effect/turf_decal/bot,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/rack,
-/obj/item/clothing/head/chefhat{
+/obj/item/clothing/head/utility/chefhat{
 	pixel_x = -4;
 	pixel_y = 4
 	},
@@ -41229,8 +41203,8 @@
 "lHD" = (
 /obj/docking_port/stationary/random{
 	dir = 8;
-	shuttle_id = "pod_2_lavaland";
-	name = "lavaland"
+	name = "lavaland";
+	shuttle_id = "pod_2_lavaland"
 	},
 /turf/open/space,
 /area/space/nearstation)
@@ -41643,9 +41617,9 @@
 	dir = 4;
 	dwidth = 3;
 	height = 14;
-	shuttle_id = "arrival_stationary";
 	name = "kilo arrivals";
 	roundstart_template = /datum/map_template/shuttle/arrival/kilo;
+	shuttle_id = "arrival_stationary";
 	width = 7
 	},
 /turf/open/floor/plating/airless,
@@ -42140,10 +42114,10 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
-/obj/machinery/fax{
-	fax_name = "Chief Medical Officer's Office";
-	name = "Chief Medical Officer's Fax Machine"
+/obj/item/storage/medkit/regular{
+	pixel_x = 2
 	},
+/obj/item/healthanalyzer,
 /turf/open/floor/iron/dark,
 /area/station/command/heads_quarters/cmo)
 "lWw" = (
@@ -43070,7 +43044,7 @@
 /obj/structure/table/wood,
 /obj/machinery/light/small/directional/north,
 /obj/item/clothing/suit/toggle/suspenders,
-/obj/item/clothing/head/papersack/smiley,
+/obj/item/clothing/head/costume/papersack/smiley,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/dark,
 /area/station/maintenance/port/fore)
@@ -44479,7 +44453,7 @@
 /obj/item/stack/sheet/iron/fifty,
 /obj/item/stack/sheet/glass/fifty,
 /obj/item/storage/belt/utility,
-/obj/item/clothing/head/welding,
+/obj/item/clothing/head/utility/welding,
 /obj/item/clothing/glasses/welding,
 /obj/structure/noticeboard/directional/north,
 /turf/open/floor/iron/dark,
@@ -44748,20 +44722,6 @@
 	},
 /turf/open/floor/iron/showroomfloor,
 /area/station/medical/medbay/central)
-"mKv" = (
-/obj/effect/turf_decal/tile/blue{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/blue{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/item/radio/intercom/directional/north,
-/obj/structure/chair/comfy,
-/turf/open/floor/iron,
-/area/station/security/courtroom)
 "mKw" = (
 /obj/structure/cable,
 /obj/effect/turf_decal/siding/wood{
@@ -46547,7 +46507,7 @@
 	},
 /obj/item/storage/briefcase,
 /obj/item/clothing/neck/tie/red,
-/obj/item/clothing/head/bowler{
+/obj/item/clothing/head/hats/bowler{
 	pixel_y = 8
 	},
 /obj/item/cane,
@@ -51552,8 +51512,8 @@
 	dir = 8;
 	dwidth = 12;
 	height = 17;
-	shuttle_id = "syndicate_nw";
 	name = "northwest of station";
+	shuttle_id = "syndicate_nw";
 	width = 23
 	},
 /turf/open/space/basic,
@@ -51745,7 +51705,7 @@
 	pixel_x = -2;
 	pixel_y = 6
 	},
-/obj/item/clothing/head/welding{
+/obj/item/clothing/head/utility/welding{
 	pixel_y = 5
 	},
 /obj/item/crowbar/red,
@@ -61927,7 +61887,7 @@
 	},
 /obj/structure/table,
 /obj/item/storage/toolbox/mechanical,
-/obj/item/clothing/head/welding,
+/obj/item/clothing/head/utility/welding,
 /obj/machinery/light/directional/north,
 /turf/open/floor/iron/showroomfloor,
 /area/station/medical/chemistry)
@@ -66401,6 +66361,22 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/station/cargo/warehouse)
+"sTB" = (
+/obj/effect/turf_decal/bot,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/structure/window/reinforced,
+/obj/machinery/monkey_recycler,
+/obj/item/radio/intercom/directional/north,
+/obj/structure/sign/xenobio_guide/directional/north{
+	pixel_x = 32
+	},
+/turf/open/floor/iron/dark,
+/area/station/science/xenobiology)
 "sTO" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/stripes/corner{
@@ -67221,6 +67197,12 @@
 /obj/structure/sign/warning/secure_area,
 /turf/closed/wall/r_wall/rust,
 /area/station/engineering/supermatter/room)
+"tfi" = (
+/obj/structure/disposalpipe/segment,
+/obj/effect/turf_decal/sand/plating,
+/obj/structure/cable,
+/turf/open/floor/plating/airless,
+/area/space/nearstation)
 "tfs" = (
 /obj/effect/turf_decal/stripes/corner{
 	dir = 8
@@ -67416,8 +67398,8 @@
 	dir = 2;
 	dwidth = 11;
 	height = 22;
-	shuttle_id = "whiteship_home";
 	name = "SS13: Auxiliary Dock, Station-Fore";
+	shuttle_id = "whiteship_home";
 	width = 35
 	},
 /turf/open/space/basic,
@@ -72591,7 +72573,7 @@
 "uHc" = (
 /obj/effect/decal/remains/human,
 /obj/effect/decal/cleanable/blood/old,
-/obj/item/clothing/head/that{
+/obj/item/clothing/head/hats/tophat{
 	pixel_x = 1;
 	pixel_y = 6
 	},
@@ -75110,8 +75092,8 @@
 "vsx" = (
 /obj/docking_port/stationary/random{
 	dir = 2;
-	shuttle_id = "pod_lavaland";
-	name = "lavaland"
+	name = "lavaland";
+	shuttle_id = "pod_lavaland"
 	},
 /turf/open/space,
 /area/space/nearstation)
@@ -76554,7 +76536,7 @@
 /turf/open/floor/engine/vacuum,
 /area/station/maintenance/disposal/incinerator)
 "vKp" = (
-/obj/item/clothing/head/cardborg,
+/obj/item/clothing/head/costume/cardborg,
 /obj/item/clothing/suit/costume/cardborg,
 /obj/structure/closet/cardboard/metal,
 /obj/machinery/airalarm/directional/east,
@@ -77966,7 +77948,7 @@
 /obj/machinery/light/small/directional/north,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/clothing/neck/tie/red,
-/obj/item/clothing/head/bowler{
+/obj/item/clothing/head/hats/bowler{
 	pixel_x = -6;
 	pixel_y = 6
 	},
@@ -78960,19 +78942,6 @@
 /obj/effect/turf_decal/siding/purple,
 /turf/open/floor/iron/showroomfloor,
 /area/station/science/lab)
-"wqR" = (
-/obj/effect/turf_decal/bot,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/structure/window/reinforced,
-/obj/machinery/monkey_recycler,
-/obj/item/radio/intercom/directional/north,
-/turf/open/floor/iron/dark,
-/area/station/science/xenobiology)
 "wqZ" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -79243,6 +79212,18 @@
 	luminosity = 2
 	},
 /area/station/engineering/storage/tech)
+"wvt" = (
+/obj/structure/bed{
+	dir = 4
+	},
+/obj/item/bedsheet/captain{
+	dir = 4
+	},
+/obj/effect/landmark/start/captain,
+/obj/structure/sign/poster/contraband/random/directional/north,
+/obj/item/radio/intercom/directional/west,
+/turf/open/floor/carpet/royalblue,
+/area/station/command/heads_quarters/captain/private)
 "wwf" = (
 /obj/machinery/disposal/bin,
 /obj/structure/disposalpipe/trunk,
@@ -79361,8 +79342,8 @@
 "wxy" = (
 /obj/docking_port/stationary/random{
 	dir = 4;
-	shuttle_id = "pod_4_lavaland";
-	name = "lavaland"
+	name = "lavaland";
+	shuttle_id = "pod_4_lavaland"
 	},
 /obj/structure/lattice,
 /turf/open/space,
@@ -80464,7 +80445,7 @@
 	},
 /obj/item/poster/random_official,
 /obj/effect/turf_decal/stripes/corner,
-/obj/item/clothing/head/festive{
+/obj/item/clothing/head/costume/festive{
 	pixel_x = -4;
 	pixel_y = 6
 	},
@@ -80930,15 +80911,15 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
-/obj/item/storage/medkit/regular{
-	pixel_x = 2
-	},
-/obj/item/healthanalyzer,
 /obj/machinery/requests_console/directional/north{
 	announcementConsole = 1;
 	department = "Chief Medical Officer's Desk";
 	departmentType = 5;
 	name = "Chief Medical Officer's Requests Console"
+	},
+/obj/machinery/fax{
+	fax_name = "Chief Medical Officer's Office";
+	name = "Chief Medical Officer's Fax Machine"
 	},
 /turf/open/floor/iron/dark,
 /area/station/command/heads_quarters/cmo)
@@ -81188,6 +81169,20 @@
 /obj/structure/sign/warning/radiation,
 /turf/closed/wall,
 /area/station/maintenance/disposal/incinerator)
+"wWX" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/structure/chair/comfy,
+/obj/item/radio/intercom/command/directional/north,
+/turf/open/floor/iron,
+/area/station/security/courtroom)
 "wXa" = (
 /turf/open/floor/iron/dark,
 /area/station/service/chapel)
@@ -84336,7 +84331,7 @@
 /obj/item/stack/sheet/iron/fifty,
 /obj/item/stack/sheet/glass/fifty,
 /obj/item/storage/belt/utility,
-/obj/item/clothing/head/welding,
+/obj/item/clothing/head/utility/welding,
 /obj/item/clothing/glasses/welding,
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/airalarm/directional/west,
@@ -113118,7 +113113,7 @@ fWB
 rNX
 eJc
 sVh
-mKv
+wWX
 trj
 vCa
 wNo
@@ -115432,7 +115427,7 @@ xwk
 kNS
 pGe
 sCK
-csj
+dWq
 dZM
 qQQ
 jXk
@@ -118516,7 +118511,7 @@ fHw
 pdq
 xyp
 tXg
-aVH
+wvt
 joL
 wFl
 tGS
@@ -120779,7 +120774,7 @@ aaa
 aaa
 aaa
 aeU
-fWZ
+jaU
 fvU
 oqa
 fvU
@@ -121036,7 +121031,7 @@ aaa
 aaa
 aca
 aji
-ius
+tfi
 udA
 xUP
 lRZ
@@ -123871,7 +123866,7 @@ dmA
 hvl
 mOt
 wpw
-wqR
+sTB
 puJ
 iKn
 ndz

@@ -2,6 +2,7 @@
 	name = "wig"
 	desc = "A bunch of hair without a head attached."
 	icon = 'icons/mob/species/human/human_face.dmi'   // default icon for all hairs
+	worn_icon = 'icons/mob/clothing/head/costume.dmi'
 	icon_state = "hair_vlong"
 	inhand_icon_state = "pwig"
 	worn_icon_state = "wig"
@@ -44,7 +45,7 @@
 	. += hair_overlay
 
 	// So that the wig actually blocks emissives.
-	hair_overlay.overlays += emissive_blocker(hair_overlay.icon, hair_overlay.icon_state, alpha = hair_overlay.alpha)
+	hair_overlay.overlays += emissive_blocker(hair_overlay.icon, hair_overlay.icon_state, src, alpha = hair_overlay.alpha)
 
 /obj/item/clothing/head/wig/attack_self(mob/user)
 	var/new_style = tgui_input_list(user, "Select a hairstyle", "Wig Styling", GLOB.hairstyles_list - "Bald")

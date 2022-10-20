@@ -21,6 +21,12 @@
 		/datum/job_department/service,
 		)
 
+	mail_goodies = list(
+		/obj/item/book/random = 44,
+		/obj/item/book/manual/random = 5,
+		/obj/item/book/granter/action/spell/blind/wgw = 1,
+	)
+
 	family_heirlooms = list(/obj/item/pen/fountain, /obj/item/storage/dice)
 
 	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS | JOB_CAN_BE_INTERN
@@ -48,10 +54,12 @@
 
 	accessory = /obj/item/clothing/accessory/pocketprotector/full
 
-/datum/outfit/job/curator/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
+/datum/outfit/job/curator/post_equip(mob/living/carbon/human/translator, visualsOnly = FALSE)
 	..()
 
 	if(visualsOnly)
 		return
 
-	H.grant_all_languages(TRUE, TRUE, TRUE, LANGUAGE_CURATOR)
+	translator.grant_all_languages(source=LANGUAGE_CURATOR)
+	translator.remove_blocked_language(GLOB.all_languages, source=LANGUAGE_ALL)
+	ADD_TRAIT(translator, TRAIT_TOWER_OF_BABEL, JOB_TRAIT)

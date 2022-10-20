@@ -140,7 +140,7 @@
 			return
 
 		else if(held == null)
-			if(unheld.name =="strapon" && unheld.item_flags == ABSTRACT | HAND_ITEM)
+			if(istype(unheld, /obj/item/strapon_dildo) && unheld.item_flags == ABSTRACT | HAND_ITEM)
 				if(src == user.belt)
 					qdel(unheld)
 					//CODE FOR PUTTING STRAPON IN HANDS
@@ -201,8 +201,8 @@
 				if(vagina)
 					if(hit_mob.is_bottomless() || vagina.visibility_preference == GENITAL_ALWAYS_SHOW)
 						message = pick("delicately rubs [hit_mob]'s vagina with [src]", "uses [src] to fuck [hit_mob]'s vagina", "jams [hit_mob]'s pussy with [src]", "teases [hit_mob]'s pussy with [src]")
-						hit_mob.adjustArousal(6)
-						hit_mob.adjustPleasure(8)
+						hit_mob.adjust_arousal(6)
+						hit_mob.adjust_pleasure(8)
 						if(prob(40))
 							hit_mob.try_lewd_autoemote(pick("twitch_s", "moan"))
 						user.visible_message(span_purple("[user] [message]!"))
@@ -222,8 +222,8 @@
 			if(BODY_ZONE_HEAD, BODY_ZONE_PRECISE_MOUTH, BODY_ZONE_PRECISE_EYES) //Mouth only. Sorry, perverts. No eye/ear penetration for you today.
 				if(!hit_mob.is_mouth_covered())
 					message = pick("fucks [hit_mob]'s mouth with [src]", "chokes [hit_mob] by inserting [src] into [hit_mob.p_their()] throat", "forces [hit_mob] to suck [src]", "inserts [src] into [hit_mob]'s throat")
-					hit_mob.adjustArousal(4)
-					hit_mob.adjustPleasure(1)
+					hit_mob.adjust_arousal(4)
+					hit_mob.adjust_pleasure(1)
 					hit_mob.adjustOxyLoss(1.5)
 					if(prob(70))
 						hit_mob.try_lewd_autoemote(pick("gasp", "moan"))
@@ -242,8 +242,8 @@
 			else
 				if(hit_mob.is_bottomless())
 					message = pick("fucks [hit_mob]'s ass with [src]", "uses [src] to fuck [hit_mob]'s anus", "jams [hit_mob]'s ass with [src]", "roughly fucks [hit_mob]'s ass with [src], causing their eyes to roll back")
-					hit_mob.adjustArousal(5)
-					hit_mob.adjustPleasure(5)
+					hit_mob.adjust_arousal(5)
+					hit_mob.adjust_pleasure(5)
 					if(prob(60))
 						hit_mob.try_lewd_autoemote(pick("twitch_s", "moan", "shiver"))
 					user.visible_message(span_purple("[user] [message]!"))

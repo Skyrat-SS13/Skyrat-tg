@@ -38,6 +38,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 		owner.remove_overlay(BODY_ADJ_LAYER)
 		owner.remove_overlay(BODY_FRONT_LAYER)
 		owner.remove_overlay(BODY_FRONT_UNDER_CLOTHES)
+		owner.remove_overlay(ABOVE_BODY_FRONT_HEAD_LAYER)
 		return
 
 	var/list/bodyparts_to_add = list()
@@ -67,6 +68,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	owner.remove_overlay(BODY_ADJ_LAYER)
 	owner.remove_overlay(BODY_FRONT_LAYER)
 	owner.remove_overlay(BODY_FRONT_UNDER_CLOTHES)
+	owner.remove_overlay(ABOVE_BODY_FRONT_HEAD_LAYER)
 
 	var/g = (owner.physique == FEMALE) ? "f" : "m"
 	for(var/bodypart in bodyparts_to_add)
@@ -136,7 +138,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 									matrixed_acce = center_image(matrixed_acce, x_shift, bodypart_accessory.dimension_y)
 								accessories += matrixed_acce
 								if (mutant_bodyparts[key][MUTANT_INDEX_EMISSIVE_LIST] && mutant_bodyparts[key][MUTANT_INDEX_EMISSIVE_LIST][num])
-									var/mutable_appearance/emissive_overlay = emissive_appearance_copy(matrixed_acce)
+									var/mutable_appearance/emissive_overlay = emissive_appearance_copy(matrixed_acce, owner)
 									//if (bodypart_accessory.center)
 									//	emissive_overlay = center_image(emissive_overlay, x_shift, bodypart_accessory.dimension_y)
 									accessories += emissive_overlay
@@ -164,7 +166,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 			else
 				standing += accessory_overlay
 				if (mutant_bodyparts[key][MUTANT_INDEX_EMISSIVE_LIST] && mutant_bodyparts[key][MUTANT_INDEX_EMISSIVE_LIST][1])
-					var/mutable_appearance/emissive_overlay = emissive_appearance_copy(accessory_overlay)
+					var/mutable_appearance/emissive_overlay = emissive_appearance_copy(accessory_overlay, owner)
 					//if (bodypart_accessory.center)
 					//	emissive_overlay = center_image(emissive_overlay, x_shift, bodypart_accessory.dimension_y)
 					standing += emissive_overlay
@@ -253,21 +255,18 @@ GLOBAL_LIST_EMPTY(customizable_races)
 	owner.apply_overlay(BODY_ADJ_LAYER)
 	owner.apply_overlay(BODY_FRONT_LAYER)
 	owner.apply_overlay(BODY_FRONT_UNDER_CLOTHES)
+	owner.apply_overlay(ABOVE_BODY_FRONT_HEAD_LAYER)
 
 /datum/species
 	///What accessories can a species have aswell as their default accessory of such type e.g. "frills" = "Aquatic". Default accessory colors is dictated by the accessory properties and mutcolors of the specie
 	var/list/default_mutant_bodyparts = list()
-	/// List of all the languages our species can learn NO MATTER their background
+	var/list/genitals_list = list(ORGAN_SLOT_VAGINA, ORGAN_SLOT_WOMB, ORGAN_SLOT_TESTICLES, ORGAN_SLOT_BREASTS, ORGAN_SLOT_ANUS, ORGAN_SLOT_PENIS)
 
 /datum/species/New()
 	. = ..()
 	if(can_have_genitals)
-		default_mutant_bodyparts["vagina"] = "None"
-		default_mutant_bodyparts["womb"] = "None"
-		default_mutant_bodyparts["testicles"] = "None"
-		default_mutant_bodyparts["breasts"] = "None"
-		default_mutant_bodyparts["anus"] = "None"
-		default_mutant_bodyparts["penis"] = "None"
+		for(var/genital in genitals_list)
+			default_mutant_bodyparts[genital] = "None"
 
 /datum/species/dullahan
 	mutant_bodyparts = list()
@@ -308,6 +307,9 @@ GLOBAL_LIST_EMPTY(customizable_races)
 /datum/species/proc/get_random_mutant_bodyparts(list/features) //Needs features to base the colour off of
 	var/list/mutantpart_list = list()
 	var/list/bodyparts_to_add = default_mutant_bodyparts.Copy()
+	if(CONFIG_GET(flag/disable_erp_preferences))
+		for(var/genital in genitals_list)
+			bodyparts_to_add.Remove(genital)
 	for(var/key in bodyparts_to_add)
 		var/datum/sprite_accessory/SP
 		if(bodyparts_to_add[key] == ACC_RANDOM)
@@ -371,7 +373,7 @@ GLOBAL_LIST_EMPTY(customizable_races)
 				for(var/eye_overlay in eye_organ.generate_body_overlay(species_human))
 					standing += eye_overlay
 					if(eye_organ.is_emissive)
-						var/mutable_appearance/eye_emissive = emissive_appearance_copy(eye_overlay)
+						var/mutable_appearance/eye_emissive = emissive_appearance_copy(eye_overlay, species_human)
 						eye_emissive.pixel_x += species_human.dna.species.offset_features[OFFSET_FACE][1]
 						eye_emissive.pixel_y += species_human.dna.species.offset_features[OFFSET_FACE][2]
 						standing += eye_emissive

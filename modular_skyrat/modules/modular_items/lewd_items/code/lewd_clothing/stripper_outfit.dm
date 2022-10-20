@@ -10,7 +10,7 @@
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION|STYLE_TAUR_ALL
 	can_adjust = FALSE
 	icon_state = "stripper_cyan"
-	inhand_icon_state = "stripper_cyan"
+	inhand_icon_state = "b_suit"
 	unique_reskin = list("Cyan" = "stripper_cyan",
 						"Yellow" = "stripper_yellow",
 						"Green" = "stripper_green",

@@ -4,6 +4,7 @@
 #define DEFAULT_TITLE_LOADING_SCREEN 'modular_skyrat/modules/title_screen/icons/loading_screen.gif'
 
 #define TITLE_PROGRESS_CACHE_FILE "data/progress_cache.json"
+#define TITLE_PROGRESS_CACHE_VERSION "2"
 
 #define DEFAULT_TITLE_HTML {"
 	<html>

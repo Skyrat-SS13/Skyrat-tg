@@ -2,6 +2,8 @@
 	icon = 'modular_skyrat/modules/reagent_forging/icons/obj/forge_items.dmi'
 	lefthand_file = 'modular_skyrat/modules/reagent_forging/icons/mob/forge_weapon_l.dmi'
 	righthand_file = 'modular_skyrat/modules/reagent_forging/icons/mob/forge_weapon_r.dmi'
+	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR
+	skyrat_obj_flags = ANVIL_REPAIR
 
 /obj/item/forging/reagent_weapon/Initialize(mapload)
 	. = ..()
@@ -11,24 +13,9 @@
 	. = ..()
 	. += span_notice("Using a hammer on [src] will repair its damage!")
 
-/obj/item/forging/reagent_weapon/attackby(obj/item/attacking_item, mob/user, params)
-	if(atom_integrity >= max_integrity)
-		return ..()
-	if(istype(attacking_item, /obj/item/forging/hammer))
-		var/obj/item/forging/hammer/attacking_hammer = attacking_item
-		var/skill_modifier = user.mind.get_skill_modifier(/datum/skill/smithing, SKILL_SPEED_MODIFIER) * attacking_hammer.toolspeed
-		while(atom_integrity < max_integrity)
-			if(!do_after(user, skill_modifier, src))
-				return
-			var/fixing_amount = min(max_integrity - atom_integrity, 5)
-			atom_integrity += fixing_amount
-			user.mind.adjust_experience(/datum/skill/smithing, 5) //useful heating means you get some experience
-		return
-	return ..()
-
 /obj/item/forging/reagent_weapon/sword
 	name = "reagent sword"
-	desc = "A sword that can be imbued with a reagent. Useful for blocking."
+	desc = "A sword that is capable of cutting things."
 	force = 15
 	armour_penetration = 10
 	icon_state = "sword"
@@ -46,7 +33,7 @@
 
 /obj/item/forging/reagent_weapon/katana
 	name = "reagent katana"
-	desc = "A katana that can be imbued with a reagent. It's very sharp, but not quite million-times-folded sharp."
+	desc = "A katana that is very sharp, but not quite million-times-folded sharp."
 	force = 15
 	armour_penetration = 25 //Slices through armour like butter, but can't quite bisect a knight like the real thing.
 	icon_state = "katana"
@@ -62,7 +49,7 @@
 
 /obj/item/forging/reagent_weapon/dagger
 	name = "reagent dagger"
-	desc = "A dagger that can be imbued with a reagent. It can attack very fast!"
+	desc = "A dagger that can attack very fast!"
 	force = 8
 	icon_state = "dagger"
 	inhand_icon_state = "dagger"
@@ -81,7 +68,7 @@
 
 /obj/item/forging/reagent_weapon/staff //doesn't do damage. Useful for healing reagents.
 	name = "reagent staff"
-	desc = "A staff that can be imbued with a reagent. It has a very soft swing."
+	desc = "A staff that has a very soft swing."
 	force = 0
 	icon_state = "staff"
 	inhand_icon_state = "staff"
@@ -98,7 +85,7 @@
 
 /obj/item/forging/reagent_weapon/spear
 	name = "reagent spear"
-	desc = "A spear that can be imbued with a reagent. It can be dual-wielded to increase its damage!"
+	desc = "A spear that can be dual-wielded to increase its damage!"
 	force = 10
 	armour_penetration = 10
 	icon_state = "spear"
@@ -121,7 +108,7 @@
 
 /obj/item/forging/reagent_weapon/axe
 	name = "reagent axe"
-	desc = "An axe that can be imbued with a reagent. Looks balanced for throwing."
+	desc = "An axe that looks balanced for throwing."
 	force = 15
 	armour_penetration = 10
 	icon_state = "axe"
@@ -138,7 +125,7 @@
 
 /obj/item/forging/reagent_weapon/hammer
 	name = "reagent hammer"
-	desc = "A hammer that can be imbued with a reagent. It packs a real wallop."
+	desc = "A hammer that packs a real wallop."
 	force = 19 //strong but boring.
 	armour_penetration = 10
 	icon_state = "crush_hammer"
@@ -160,15 +147,15 @@
 	. = ..()
 	AddElement(/datum/element/kneejerk)
 
-/obj/item/forging/reagent_weapon/hammer/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
+/obj/item/forging/reagent_weapon/hammer/attack_atom(atom/attacked_atom, mob/living/user, params)
 	. = ..()
-	if(!is_type_in_list(target, fast_attacks))
+	if(!is_type_in_list(attacked_atom, fast_attacks))
 		return
 	user.changeNext_move(CLICK_CD_RAPID)
 
 /obj/item/shield/riot/buckler/reagent_weapon //Same as a buckler, but metal.
 	name = "reagent plated buckler shield"
-	desc = "A small, round shield best used in tandem with a melee weapon in close-quarters combat; can be imbued with a reagent."
+	desc = "A small, round shield best used in tandem with a melee weapon in close-quarters combat."
 	icon = 'modular_skyrat/modules/reagent_forging/icons/obj/forge_items.dmi'
 	icon_state = "buckler"
 	inhand_icon_state = "buckler"
@@ -180,6 +167,8 @@
 	transparent = FALSE
 	max_integrity = 150 //over double that of a wooden one
 	w_class = WEIGHT_CLASS_NORMAL
+	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_AFFECT_STATISTICS
+	skyrat_obj_flags = ANVIL_REPAIR
 
 /obj/item/shield/riot/buckler/reagent_weapon/Initialize(mapload)
 	. = ..()
@@ -212,7 +201,7 @@
 
 /obj/item/shield/riot/buckler/reagent_weapon/pavise //similar to the adamantine shield. Huge, slow, lets you soak damage and packs a wallop.
 	name = "reagent plated pavise shield"
-	desc = "An oblong shield used by ancient crossbowman as cover while reloading; can be imbued with a reagent."
+	desc = "An oblong shield used by ancient crossbowman as cover while reloading."
 	icon_state = "pavise"
 	inhand_icon_state = "pavise"
 	block_chance = 75
@@ -264,7 +253,7 @@
 
 /obj/item/forging/reagent_weapon/bokken
 	name = "reagent bokken"
-	desc = "A bokken that can be imbued with a reagent. It can be dual-wielded to increase block chance!"
+	desc = "A bokken that is capable of blocking. It can be dual-wielded to increase block chance!"
 	force = 15
 	icon_state = "bokken"
 	inhand_icon_state = "bokken"

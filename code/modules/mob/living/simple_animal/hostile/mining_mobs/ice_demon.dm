@@ -34,7 +34,7 @@
 	pull_force = MOVE_FORCE_VERY_STRONG
 	del_on_death = TRUE
 	loot = list()
-	crusher_loot = list(/obj/item/crusher_trophy/demon_core = 1) /// SKYRAT EDIT CHANGE - ORIGINAL : crusher_loot = /obj/item/crusher_trophy/watcher_wing/ice_wing
+	crusher_loot = /obj/item/crusher_trophy/demon_core /// SKYRAT EDIT CHANGE - ORIGINAL : crusher_loot = /obj/item/crusher_trophy/watcher_wing/ice_wing
 	death_message = "fades as the energies that tied it to this world dissipate."
 	death_sound = 'sound/magic/demon_dies.ogg'
 	stat_attack = HARD_CRIT
