@@ -187,9 +187,13 @@
 		to_chat(src, "Aborting suicide attempt.")
 //SKYRAT EDIT PAI END
 
+<<<<<<< HEAD
 //SKYRAT EDIT REMOVAL START
 /*
 /mob/living/carbon/alien/humanoid/verb/suicide()
+=======
+/mob/living/carbon/alien/adult/verb/suicide()
+>>>>>>> 6d12dc69ef9 (Refactor `/mob/living/carbon/alien/humanoid` to be `/mob/living/carbon/alien/adult` (#70481))
 	set hidden = TRUE
 	if(!canSuicide())
 		return
