@@ -20,10 +20,10 @@
 	default = "The station's destruction has been averted. There is still however an immediate serious threat to the station. Security may use all weapons available, random searches are allowed and advised. Non-security personnel are required to obey all relevant instructions from security staff and submit to requested searches."
 
 /datum/config_entry/string/alert_orange_upto
-	config_entry_value = "A major engineering emergency has developed. Non-engineering personnel are required to obey relevant instructions from engineering staff and are recommended to evacuate affected areas."
+	config_entry_value = "A major engineering emergency has developed. Non-engineering personnel are required to obey relevant instructions from engineering staff and are recommended to evacuate affected areas. Engineering staff will have expanded access into station areas."
 
 /datum/config_entry/string/alert_orange_downto
-	config_entry_value = "A major engineering emergency has developed. Non-engineering personnel are required to obey relevant instructions from engineering staff and are recommended to evacuate affected areas."
+	config_entry_value = "A major engineering emergency has developed. Non-engineering personnel are required to obey relevant instructions from engineering staff and are recommended to evacuate affected areas. Expanded access for engineering staff is revoked."
 
 /datum/config_entry/string/alert_violet_upto
 	config_entry_value = "A major medical emergency has developed. Non-medical personnel are required to obey all relevant instructions from medical staff. All crew are advised to wear internals and minimize unecessary contact."
