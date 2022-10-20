@@ -58,9 +58,10 @@ SUBSYSTEM_DEF(security_level)
 
 	//SKYRAT EDIT ADDITION START- In the event of an orange alert, change the airlock permissions
 	if (istype(current_security_level, /datum/security_level/orange))
-		enable_engineering_access()
+		message_admins("Engineering override has been turned ON for station airlocks.")
+		minor_announce("Engineering staff will have expanded access to areas of the station during the emergency.", "Engineering Emergency")
 	else
-		revoke_engineering_access()
+		message_admins("Engineering override has been turned OFF for station airlocks.")
 	//SKYRAT EDIT ADDITION END
 
 	SEND_SIGNAL(src, COMSIG_SECURITY_LEVEL_CHANGED, selected_level.number_level)

@@ -8,7 +8,7 @@
 // Set the areas that will receive expanded access for the engineers on an orange alert
 // Maintenance, bridge, departmental lobbies and inner rooms. No access to security.
 // Sensitive areas like the vault, command quarters, heads' offices, etc. are not applicable.
- 
+
 /area/station/ai_monitored/command/storage/eva
 	engineering_override_eligible = TRUE
 
@@ -51,77 +51,42 @@
 /area/station/science
 	engineering_override_eligible = TRUE
 
-/obj/machinery/door
+/obj/machinery/door/airlock
 	/// Determines if engineers get access to this door on orange alert
 	var/engineering_override = FALSE
 
 /// Check for the three states of open access. Emergency, Unrestricted, and Engineering Override
-/obj/machinery/door/allowed(mob/interacting_human)
+/obj/machinery/door/airlock/allowed(mob/user)
 	if(emergency)
 		return TRUE
 
-	if(unrestricted_side(interacting_human))
+	if(unrestricted_side(user))
 		return TRUE
 
 	if(engineering_override)
-		var/mob/living/carbon/human/user = interacting_human
-		var/obj/item/card/id/card = user.get_idcard(TRUE)
+		var/mob/living/carbon/human/interacting_human = user
+		var/obj/item/card/id/card = interacting_human.get_idcard(TRUE)
 		if(istype(user))
 			if(ACCESS_ENGINEERING in card.access)
 				return TRUE
 
 	return ..()
 
-/// Activate the airlock overrides, called by the change of alert level
-/proc/enable_engineering_access()
-	for(var/area/station_area in get_areas(/area/station))
-		if(!station_area.engineering_override_eligible)
-			continue
-
-		for(var/obj/machinery/door/airlock/airlock in station_area)
-			airlock.engineering_override = TRUE
-			airlock.normalspeed = FALSE
-			airlock.update_appearance()
-
-	message_admins("Engineering override has been turned ON for station airlocks.")
-	minor_announce("Engineering staff will have expanded access to areas of the station during the emergency.", "Engineering Emergency")
-
-/// Disable the airlock overrides, called by the change of the alert level
-/proc/revoke_engineering_access()
-	for(var/area/station_area in get_areas(/area/station))
-		if(!station_area.engineering_override_eligible)
-			continue
-
-		for(var/obj/machinery/door/airlock/airlock in station_area)
-			airlock.engineering_override = FALSE
-			airlock.normalspeed = TRUE
-			airlock.update_appearance()
-
-	message_admins("Engineering override has been turned OFF for station airlocks.")
-
-
-/// Someone or the AI or silicons tries to change the access on the airlock
-/obj/machinery/door/airlock/proc/toggle_engineering(mob/user)
-	if(!user_allowed(user))
+// When the signal is received of a changed security level, check if it's orange.
+/obj/machinery/door/airlock/check_security_level(datum/source, new_level)
+	..()
+	var/area/source_area = get_area(src)
+	if(!source_area.engineering_override_eligible)
 		return
-
-	engineering_override = !engineering_override
+	if(new_level == SEC_LEVEL_ORANGE)
+		engineering_override = TRUE
+		normalspeed = FALSE
+		update_appearance()
+		return
+	engineering_override = FALSE
+	normalspeed = TRUE
 	update_appearance()
-
-// If you try to change it from the UI, verify like anything else
-/obj/machinery/door/airlock/ui_act(action, params)
-	. = ..()
-	if(.)
-		return TRUE
-
-	if(!user_allowed(usr))
-		return
-
-	switch(action)
-		if("engineering-toggle")
-			toggle_engineering(usr)
-			. = TRUE
-	return .
+	return
 
 // Pulse to disable emergency access/engineering override and flash the red lights.
 /datum/wires/airlock/on_pulse(wire)
