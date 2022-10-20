@@ -101,4 +101,3 @@
 
 /obj/structure/reagent_anvil/hammer_act_secondary(mob/living/user, obj/item/tool)
 	hammer_act(user, tool)
-//hello??
