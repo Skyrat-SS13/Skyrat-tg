@@ -180,14 +180,14 @@
 /datum/action/innate/turn_to_human/Trigger(trigger_flags)
 	var/mob/living/simple_animal/hostile/true_changeling/horrorform = owner
 	if(!horrorform.stored_changeling)
-		to_chat(horrorform, span_warning("We do not have a form other than this!"))
+		horrorform.balloon_alert(horrorform, "our only form!")
 		return FALSE
 	if(horrorform.stored_changeling.stat == DEAD)
-		to_chat(horrorform, span_warning("Our human form is dead!"))
+		horrorform.balloon_alert(horrorform, "body is dead!")
 		return FALSE
 	if(world.time - horrorform.transformed_time < TRUE_CHANGELING_REFORM_THRESHOLD)
 		var/timeleft = (horrorform.transformed_time + TRUE_CHANGELING_REFORM_THRESHOLD) - world.time
-		to_chat(horrorform, span_warning("We are still unable to change back at will! We need to wait [round(timeleft/600)+1] minutes."))
+		horrorform.balloon_alert(horrorform, "wait [round(timeleft/600)+1] minutes!")
 		return FALSE
 	horrorform.visible_message(span_warning("[horrorform] suddenly crunches and twists into a smaller form!"), \
 						span_danger("We return to our lesser form."))
@@ -208,7 +208,7 @@
 /datum/action/innate/devour/Trigger(trigger_flags)
 	var/mob/living/simple_animal/hostile/true_changeling/horrorform = owner
 	if(horrorform.devouring)
-		to_chat(horrorform, span_warning("We are already feasting on a human!"))
+		horrorform.balloon_alert(horrorform, "already eating!")
 		return FALSE
 	var/list/potential_targets = list()
 	for(var/mob/living/carbon/human/victim in range(1, usr))
@@ -216,7 +216,7 @@
 			continue
 		potential_targets.Add(victim)
 	if(!length(potential_targets))
-		to_chat(horrorform, span_warning("There are no humans nearby!"))
+		horrorform.balloon_alert(horrorform, "no carbons!")
 		return FALSE
 	var/mob/living/carbon/human/lunch
 	if(length(potential_targets) == 1)
