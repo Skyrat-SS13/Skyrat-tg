@@ -3,7 +3,7 @@
 	loaded_nifsoft = /datum/nifsoft/shapeshifter
 
 /datum/nifsoft/shapeshifter
-	name = "Shapeshifter"
+	name = "Polymorph"
 	program_desc = "Allows the user to change the apperance of their body at will"
 	activation_cost = 10
 	active_mode = TRUE
