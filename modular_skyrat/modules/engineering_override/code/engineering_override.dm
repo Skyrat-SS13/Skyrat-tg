@@ -55,6 +55,13 @@
 	/// Determines if engineers get access to this door on orange alert
 	var/engineering_override = FALSE
 
+/// Announce the new expanded access when engineer override is enabled.
+/datum/controller/subsystem/security_level/announce_security_level(datum/security_level/selected_level)
+	..()
+	if(selected_level.number_level == SEC_LEVEL_ORANGE)
+		minor_announce("Engineering staff will have expanded access to areas of the station during the emergency.", "Engineering Emergency")
+		return
+
 /// Check for the three states of open access. Emergency, Unrestricted, and Engineering Override
 /obj/machinery/door/airlock/allowed(mob/user)
 	if(emergency)
@@ -66,6 +73,8 @@
 	if(engineering_override)
 		var/mob/living/carbon/human/interacting_human = user
 		var/obj/item/card/id/card = interacting_human.get_idcard(TRUE)
+		if(!card)
+			return FALSE
 		if(istype(user))
 			if(ACCESS_ENGINEERING in card.access)
 				return TRUE
