@@ -50,12 +50,13 @@
 /obj/structure/reagent_crafting_bench/examine(mob/user)
 	. = ..()
 
-	if(contents[1] && istype(contents[1], /obj/item/forging/complete))
-		var/obj/item/forging/complete/contained_forge_item = contents[1]
+	if(length(contents))
+		if(istype(contents[1], /obj/item/forging/complete))
+			var/obj/item/forging/complete/contained_forge_item = contents[1]
 
-		. += span_notice("<b>[contained_forge_item]</b> sits on [src], ready to be completed.")
-		. += span_notice("With <b>[WEAPON_COMPLETION_WOOD_AMOUNT]</b> sheets of <b>wood</b> and some <b>hammering</b>, it could be completed.")
-		return // We don't want to show any selected recipes if there's weapon head on the bench
+			. += span_notice("<b>[contained_forge_item]</b> sits on [src], ready to be completed.")
+			. += span_notice("With <b>[WEAPON_COMPLETION_WOOD_AMOUNT]</b> sheets of <b>wood</b> and some <b>hammering</b>, it could be completed.")
+			return // We don't want to show any selected recipes if there's weapon head on the bench
 
 	if(!selected_recipe)
 		return
@@ -110,7 +111,7 @@
 		tooltips = TRUE,
 		)
 
-	if(!chosen_recipe)
+	if(isnull(chosen_recipe))
 		balloon_alert(user, "no recipe choice")
 		return
 
