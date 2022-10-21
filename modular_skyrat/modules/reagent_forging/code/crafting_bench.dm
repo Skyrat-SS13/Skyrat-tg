@@ -53,7 +53,7 @@
 	if(contents[1] && istype(contents[1], /obj/item/forging/complete))
 		var/obj/item/forging/complete/contained_forge_item = contents[1]
 
-		. += span_notice("<b>[contained_forge_item]</b> sits on [src], ready to be made into a <b>[contained_forge_item.spawning_item.name]</b>.")
+		. += span_notice("<b>[contained_forge_item]</b> sits on [src], ready to be completed.")
 		. += span_notice("With <b>[WEAPON_COMPLETION_WOOD_AMOUNT]</b> sheets of <b>wood</b> and some <b>hammering</b>, it could be completed.")
 		return // We don't want to show any selected recipes if there's weapon head on the bench
 
