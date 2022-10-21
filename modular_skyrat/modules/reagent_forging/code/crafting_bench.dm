@@ -128,7 +128,8 @@
 		balloon_alert(user, "no recipe choice")
 		return
 
-	selected_recipe = new recipe_names_to_path[chosen_recipe]()
+	selected_recipe = recipe_names_to_path[chosen_recipe]
+	selected_recipe = new
 
 	balloon_alert(user, "recipe chosen")
 	update_appearance()
