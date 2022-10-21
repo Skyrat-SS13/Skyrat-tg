@@ -520,7 +520,7 @@
 	name = "Shakiri"
 	description = "A sweet, fragrant red drink made from fermented kiri fruits. It seems to gently sparkle when exposed to light."
 	boozepwr = 45
-	color = "##cf3c3c"
+	color = "#cf3c3c"
 	quality = DRINK_GOOD
 	taste_description = "delicious liquified jelly"
 	glass_icon = 'modular_skyrat/master_files/icons/obj/drinks.dmi'
