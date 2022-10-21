@@ -10,10 +10,14 @@
 <!-- Please add a short description of why you think these changes would benefit the game and the roleplay atmosphere of the server. If you can't justify it in words, it might not be worth adding. -->
 
 ## Proof of Testing
+
 <!-- Include any screenshots/videos/debugging steps of the code functioning successfully -->
+
 <details>
 <summary>Screenshots/Videos</summary>
+  
 <!-- Add the proof of testing here, between the </summary> and </details> code blocks -->
+  
 </details>
 
 ## Changelog
