@@ -58,7 +58,7 @@
 		human_owner.blur_eyes(10)
 		lust_message = "You vision begins to blur, the heat beginning to rise..."
 	if(stress >= 180)
-		owner.hallucination += 30
+		owner.adjust_hallucinations(60 SECONDS)
 		lust_message = "You begin to fantasize of what you could do to someone..."
 	if(stress >= 240)
 		human_owner.adjustStaminaLoss(30)

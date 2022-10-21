@@ -8,10 +8,13 @@
 				/obj/item/clothing/head/costume/cowboyhat/sheriff = 5,
 				/obj/item/clothing/head/costume/cowboyhat/sheriff/alt = 5,
 				/obj/item/clothing/head/costume/cowboyhat/deputy = 5,
+				/obj/item/clothing/head/costume/cowboyhat/blackwide = 5,
+				/obj/item/clothing/head/costume/cowboyhat/wide = 5,
 				/obj/item/clothing/head/fedora/beige = 5,
 				/obj/item/clothing/head/fedora/white = 5,
 				/obj/item/clothing/head/fedora/fedblack = 5,
 				/obj/item/clothing/head/fedora/fedbrown = 5,
+				/obj/item/clothing/head/standalone_hood = 5,
 			),
 		),
 
@@ -19,10 +22,12 @@
 			"name" = "Accessories",
 			"icon" = "glasses",
 			"products" = list(
+				/obj/item/clothing/neck/ranger_poncho = 5,
 				/obj/item/clothing/neck/cloak/colourable = 5,
 				/obj/item/clothing/neck/cloak/colourable/veil = 5,
 				/obj/item/clothing/neck/cloak/colourable/shroud = 5,
 				/obj/item/clothing/neck/cloak/colourable/boat = 5,
+				/obj/item/clothing/neck/mantle/recolorable = 5,
 				/obj/item/clothing/glasses/betterunshit = 5,
 				/obj/item/clothing/glasses/thin = 5,
 				/obj/item/clothing/glasses/hud/ar/projector = 5,
@@ -108,6 +113,7 @@
 				/obj/item/clothing/suit/hawaiian_green = 5,
 				/obj/item/clothing/suit/modernwintercoatthing = 5,
 				/obj/item/clothing/suit/hooded/wintercoat/colourable = 5,
+				/obj/item/clothing/suit/apron/chef/colorable_apron = 5,
 			),
 		),
 
@@ -115,10 +121,13 @@
 			"name" = "Shoes",
 			"icon" = "socks",
 			"products" = list(
+				/obj/item/clothing/shoes/colorable_laceups = 5,
+				/obj/item/clothing/shoes/colorable_sandals = 5,
 				/obj/item/clothing/shoes/sports = 5,
 				/obj/item/clothing/shoes/wraps/colourable = 5,
 				/obj/item/clothing/shoes/jungleboots = 5,
 				/obj/item/clothing/shoes/jackboots/knee = 5,
+				/obj/item/clothing/shoes/jackboots/recolorable = 5,
 			),
 		),
 
@@ -128,8 +137,9 @@
 			"icon" = "star",
 			"products" = list(
 				/obj/item/clothing/under/costume/deckers/alt = 5,
-
 				/obj/item/clothing/under/costume/skyrat/bathrobe = 5,
+				/obj/item/clothing/mask/gas/respirator = 5,
+				/obj/item/clothing/mask/surgical/greyscale = 5,
 			)
 		)
 	)

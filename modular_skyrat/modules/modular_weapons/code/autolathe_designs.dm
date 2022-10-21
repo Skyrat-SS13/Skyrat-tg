@@ -2,24 +2,6 @@
 *	AMMO
 */
 
-// .32 - 15 damage pistol round.
-
-/datum/design/c32
-	name = ".32 Bullet"
-	id = "c32"
-	build_type = AUTOLATHE
-	materials = list(/datum/material/iron = 1000)
-	build_path = /obj/item/ammo_casing/c32
-	category = list(RND_CATEGORY_HACKED, RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO)
-
-/datum/design/c32/rubber
-	name = ".32 Rubber Bullet"
-	id = "c32/rubber"
-	build_type = AUTOLATHE
-	materials = list(/datum/material/iron = 1000)
-	build_path = /obj/item/ammo_casing/c32/rubber
-	category = list(RND_CATEGORY_INITIAL, RND_CATEGORY_WEAPONS + RND_SUBCATEGORY_WEAPONS_AMMO)
-
 /datum/design/a762
 	name = "7.62 Bullet"
 	id = "a762"
