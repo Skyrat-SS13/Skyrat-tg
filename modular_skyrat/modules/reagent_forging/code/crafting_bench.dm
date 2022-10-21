@@ -38,14 +38,23 @@
 	)
 	/// Radial options for recipes in the allowed_choices list, populated by populate_radial_choice_list
 	var/list/radial_choice_list = list()
+	/// An associative list of names --> recipe path that the radial recipe picker will choose from later
+	var/list/recipe_names_to_path = list()
+
+/obj/structure/reagent_crafting_bench/Initialize(mapload)
+	. = ..()
+	populate_radial_choice_list()
 
 /obj/structure/reagent_crafting_bench/proc/populate_radial_choice_list()
-	if(!length(allowed_choices) || length(radial_choice_list))
+	if(!length(allowed_choices))
 		return
 
-	for(var/datum/crafting_bench_recipe/recipe as anything in allowed_choices)
-		var/obj/resulting_item = recipe.resulting_item
-		radial_choice_list[recipe.recipe_name] = image(icon = initial(resulting_item.icon), icon_state = initial(resulting_item.icon_state))
+	for(var/recipe as anything in allowed_choices)
+		var/datum/crafting_bench_recipe/recipe_to_take_from = new recipe()
+		var/obj/recipe_resulting_item = recipe_to_take_from.resulting_item
+		radial_choice_list[recipe_to_take_from.recipe_name] = image(icon = initial(recipe_resulting_item.icon), icon_state = initial(recipe_resulting_item.icon_state))
+		recipe_names_to_path[recipe_to_take_from.recipe_name] = recipe
+		QDEL_NULL(recipe_to_take_from)
 
 /obj/structure/reagent_crafting_bench/examine(mob/user)
 	. = ..()
@@ -107,6 +116,7 @@
 		user,
 		src,
 		radial_choice_list,
+		radius = 38,
 		require_near = TRUE,
 		tooltips = TRUE,
 		)
@@ -115,7 +125,7 @@
 		balloon_alert(user, "no recipe choice")
 		return
 
-	selected_recipe = new chosen_recipe()
+	selected_recipe = new recipe_names_to_path[chosen_recipe]()
 
 	balloon_alert(user, "recipe chosen")
 	update_appearance()
