@@ -253,3 +253,14 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+
+/obj/item/clothing/suit/varsity
+	name = "varsity jacket"
+	desc = "A simple varsity jacket with no obvious sources."
+	icon_state = "varsity_jacket"
+	greyscale_config = /datum/greyscale_config/varsity
+	greyscale_config_worn = /datum/greyscale_config/varsity/worn
+	greyscale_colors = "#553022#a67a5b#2d2d33"
+	body_parts_covered = CHEST|GROIN|ARMS
+	flags_1 = IS_PLAYER_COLORABLE_1
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
