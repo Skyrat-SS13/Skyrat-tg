@@ -295,12 +295,12 @@
 	visible_message(span_userdanger("[src] lifts his ancient blade, and prepares to spin!"))
 	spinning = TRUE
 	animate(src, color = "#ff6666", 10)
-	SLEEP_CHECK_DEATH(5)
+	SLEEP_CHECK_DEATH(5, src)
 	var/list/spinningturfs = list()
 	var/current_angle = 360
 	while(current_angle > 0)
 		var/turf/target_turf = get_turf_in_angle(current_angle, our_turf, spinning_range)
- 		if(!istype(target_turf))
+		if(!istype(target_turf))
 			continue
 		// Yes, there may be repeats with previous turfs! Yes, this is intentional!
 		spinningturfs += get_line(our_turf, target_turf)
