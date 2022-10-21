@@ -2772,6 +2772,9 @@
 /area/station/engineering/atmos)
 "aka" = (
 /obj/effect/spawner/structure/window/reinforced/plasma,
+/obj/machinery/door/poddoor/shutters/radiation/preopen{
+	id = "med_turbine"
+	},
 /turf/open/floor/engine/vacuum,
 /area/station/medical/power_station)
 "akb" = (
@@ -3375,6 +3378,9 @@
 "amb" = (
 /obj/effect/spawner/structure/window/reinforced/plasma,
 /obj/effect/spawner/structure/window/reinforced/plasma,
+/obj/machinery/door/poddoor/shutters/radiation/preopen{
+	id = "med_turbine"
+	},
 /turf/open/floor/engine/vacuum,
 /area/station/medical/power_station)
 "amc" = (
@@ -6702,6 +6708,10 @@
 /area/station/security/execution/transfer)
 "awM" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/button/door/directional/west{
+	id = "med_turbine";
+	name = "Turbine Shutters"
+	},
 /turf/open/floor/iron/dark,
 /area/station/medical/power_station)
 "awP" = (
@@ -9864,6 +9874,9 @@
 /area/station/engineering/atmos)
 "aIn" = (
 /obj/effect/spawner/structure/window/reinforced/plasma,
+/obj/machinery/door/poddoor/shutters/radiation/preopen{
+	id = "sec_turbine"
+	},
 /turf/open/floor/engine/vacuum,
 /area/station/security/power_station)
 "aIo" = (
@@ -20630,8 +20643,11 @@
 /turf/open/floor/iron/dark/nitrogen,
 /area/station/security/detectives_office)
 "mOJ" = (
-/obj/structure/sign/warning/fire/directional/south,
 /obj/structure/cable/multilayer/multiz,
+/obj/machinery/button/door/directional/south{
+	id = "sec_turbine";
+	name = "Turbine Shutters"
+	},
 /turf/open/floor/plating/nitrogen,
 /area/station/security/power_station)
 "mPk" = (
@@ -20857,6 +20873,12 @@
 /obj/structure/lattice/catwalk,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/space,
+/area/space)
+"nzS" = (
+/obj/machinery/door/poddoor/shutters/radiation/preopen{
+	id = "med_turbine"
+	},
+/turf/open/space/basic,
 /area/space)
 "nAE" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
@@ -40039,7 +40061,7 @@ aqB
 aqB
 aqB
 aqB
-aqB
+nzS
 aqB
 aqB
 aqB
