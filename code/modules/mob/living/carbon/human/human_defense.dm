@@ -266,13 +266,9 @@
 				apply_damage(damage, BRUTE, affecting, run_armor_check(affecting, MELEE))
 		return TRUE
 
-<<<<<<< HEAD
 //SKYRAT EDIT REMOVAL BEGIN - SKYRAT_XENO_REDO - Moved to: modular_skyrat\modules\xenos_skyrat_redo\code\human_defense.dm
 /*
-/mob/living/carbon/human/attack_alien(mob/living/carbon/alien/humanoid/user, list/modifiers)
-=======
 /mob/living/carbon/human/attack_alien(mob/living/carbon/alien/adult/user, list/modifiers)
->>>>>>> 6d12dc69ef9 (Refactor `/mob/living/carbon/alien/humanoid` to be `/mob/living/carbon/alien/adult` (#70481))
 	if(check_shields(user, 0, "the [user.name]"))
 		visible_message(span_danger("[user] attempts to touch [src]!"), \
 						span_danger("[user] attempts to touch you!"), span_hear("You hear a swoosh!"), null, user)
