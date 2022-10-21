@@ -310,7 +310,7 @@
 	for(var/turf/targeted as anything in spinningturfs)
 		dir = get_dir(src, targeted)
 		var/obj/effect/temp_visual/small_smoke/smonk = new /obj/effect/temp_visual/small_smoke(targeted)
-		QDEL_IN(smonk, 1.25)
+		QDEL_IN(smonk, 0.5 SECONDS)
 		for(var/mob/living/slapped in targeted)
 			if(!faction_check(faction, slapped.faction) && !(slapped in hit_things))
 				playsound(src, 'sound/weapons/slash.ogg', 75, 0)
@@ -372,7 +372,7 @@
 	boned.throw_at(target, 7, 3, thrower = src)
 	QDEL_IN(boned, 3 SECONDS)
 
-/mob/living/simple_animal/hostile/megafauna/gladiator/proc/ctrl_c_ctrl_v(range, delay, throw_range) //copied and pasted wendigo slam attack, used for more slowly radiating AOE slams 
+/mob/living/simple_animal/hostile/megafauna/gladiator/proc/ground_pound(range, delay, throw_range) //copied and pasted wendigo slam attack, used for more slowly radiating AOE slams 
 	var/turf/origin = get_turf(src)
 	if(!origin)
 		return
@@ -394,11 +394,11 @@
 			all_turfs -= stomp_turf
 		sleep(delay)
 
-/mob/living/simple_animal/hostile/megafauna/gladiator/proc/swordslam() //this kills the crab
-	ctrl_c_ctrl_v(src, 5, 1 SECONDS, 8)
+/mob/living/simple_animal/hostile/megafauna/gladiator/proc/swordslam() //large radius but slow-to-move radiating ground slam
+	ground_pound(5, 1 SECONDS, 8)
 
-/mob/living/simple_animal/hostile/megafauna/gladiator/proc/stomp()
-	ctrl_c_ctrl_v(src, 2, 0.5 SECONDS, 3)
+/mob/living/simple_animal/hostile/megafauna/gladiator/proc/stomp() //short range slam with faster shockwave travel
+	ground_pound(2, 0.5 SECONDS, 3)
 
 /mob/living/simple_animal/hostile/megafauna/gladiator/OpenFire() //used to actually decide what attacks he does. abandon all hope ye who enter here
 	if(!COOLDOWN_FINISHED(src, ranged_cooldown))
