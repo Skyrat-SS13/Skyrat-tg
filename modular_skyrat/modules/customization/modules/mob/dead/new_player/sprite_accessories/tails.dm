@@ -35,6 +35,7 @@
 				color_src = USE_ONE_COLOR
 				dimension_x = 32
 				return "[general_type]_modsuit"
+
 	color_src = initial(color_src)
 	dimension_x = initial(dimension_x)
 	return icon_state
@@ -136,6 +137,7 @@
 /datum/sprite_accessory/tails/mammal/wagging/tajaran
 	recommended_species = list(SPECIES_SYNTHMAMMAL, SPECIES_MAMMAL, SPECIES_HUMAN, SPECIES_SYNTHHUMAN, SPECIES_TAJARAN, SPECIES_HUMANOID, SPECIES_GHOUL)
 	general_type = TAIL_TYPE_FELINE
+	color_src = USE_ONE_COLOR
 
 /datum/sprite_accessory/tails/mammal/teshari
 	recommended_species = list(SPECIES_TESHARI)
@@ -190,7 +192,6 @@
 /datum/sprite_accessory/tails/mammal/wagging/tajaran/cat_big
 	name = "Cat (Big)"
 	icon_state = "catbig"
-	color_src = USE_ONE_COLOR
 
 /datum/sprite_accessory/tails/mammal/wagging/cat_double
 	name = "Cat (Double)"
