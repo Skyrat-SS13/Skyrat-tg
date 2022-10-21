@@ -244,7 +244,7 @@
 	var/dismembered = FALSE
 	for(var/obj/item/bodypart/guts in lunch.bodyparts)
 		if(prob(40) && !dismembered)
-			if(guts.name == "chest" || guts.name == "head")
+			if(guts.body_part == CHEST || guts.body_part == HEAD)
 				continue
 			guts.dismember()
 			dismembered = TRUE
