@@ -73,10 +73,9 @@
 	if(engineering_override)
 		var/mob/living/carbon/human/interacting_human = user
 		var/obj/item/card/id/card = interacting_human.get_idcard(TRUE)
-		if(!card)
+		if(!istype(user))
 			return FALSE
-		if(istype(user))
-			if(ACCESS_ENGINEERING in card.access)
+		if(ACCESS_ENGINEERING in card?.access)
 				return TRUE
 
 	return ..()
