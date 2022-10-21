@@ -149,6 +149,10 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	name = "Biker Jacket"
 	item_path = /obj/item/clothing/suit/jacket/leather/biker
 
+/datum/loadout_item/suit/leather_jacket/hooded
+	name = "Leather Jacket with a hoodie"
+	item_path = /obj/item/clothing/suit/hooded/leather
+
 /datum/loadout_item/suit/jacket_sweater
 	name = "Recolorable Sweater Jacket"
 	item_path = /obj/item/clothing/suit/toggle/jacket/sweater
