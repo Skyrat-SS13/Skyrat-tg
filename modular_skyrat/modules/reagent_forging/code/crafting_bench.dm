@@ -49,6 +49,9 @@
 	if(!length(allowed_choices))
 		return
 
+	if(length(radial_choice_list) && length(recipe_names_to_path)) // We already have both of these and don't need it, if this is called after these are generated for some reason
+		return
+
 	for(var/recipe as anything in allowed_choices)
 		var/datum/crafting_bench_recipe/recipe_to_take_from = new recipe()
 		var/obj/recipe_resulting_item = recipe_to_take_from.resulting_item
