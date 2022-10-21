@@ -330,3 +330,19 @@
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "bltrenchcoat"
 	body_parts_covered = CHEST|ARMS
+
+/obj/item/clothing/suit/apron/chef/colorable_apron
+	name = "apron"
+	desc = "A basic apron."
+	icon = 'modular_skyrat/modules/GAGS/icons/suit/suit.dmi'
+	worn_icon = 'modular_skyrat/modules/GAGS/icons/suit/suit.dmi'
+	worn_icon_teshari = 'modular_skyrat/modules/GAGS/icons/suit/suit_teshari.dmi'
+	icon_state = "apron"
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+	greyscale_colors = "#ffffff"
+	greyscale_config = /datum/greyscale_config/apron
+	greyscale_config_worn = /datum/greyscale_config/apron/worn
+	greyscale_config_worn_teshari = /datum/greyscale_config/apron/worn/teshari
+	greyscale_config_worn_better_vox = /datum/greyscale_config/apron/worn/newvox
+	greyscale_config_worn_vox = /datum/greyscale_config/apron/worn/oldvox
+	flags_1 = IS_PLAYER_COLORABLE_1
