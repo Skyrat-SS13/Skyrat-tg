@@ -24,6 +24,7 @@
 	. = ..()
 	. += span_notice("You can place <b>hot metal objects</b> on this using some <b>tongs</b>.")
 	. += span_notice("It can be (un)secured with <b>Right Click</b>")
+
 	if(length(contents))
 		. += span_notice("It has [contents[1]] sitting on it.")
 
@@ -31,17 +32,21 @@
 	. = ..()
 	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
 		return
+
 	if(!can_interact(user) || !user.canUseTopic(src, be_close = TRUE))
 		return
+
 	set_anchored(!anchored)
 	balloon_alert_to_viewers(anchored ? "secured" : "unsecured")
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /obj/structure/reagent_anvil/wrench_act(mob/living/user, obj/item/tool)
 	balloon_alert_to_viewers("deconstructing...")
+
 	if(!do_after(user, 2 SECONDS, src))
 		balloon_alert_to_viewers("stopped deconstructing")
 		return TRUE
+
 	tool.play_tool_sound(src)
 	deconstruct(TRUE)
 	return TRUE
@@ -130,13 +135,16 @@
 	var/mob/living/poor_target = locate(/mob/living) in impacted_turf
 	if(!poor_target)
 		return ..()
-	poor_target.apply_damage(60 * levels, forced=TRUE)
+
+	poor_target.apply_damage(60 * levels, forced = TRUE)
+
 	if(istype(poor_target, /mob/living/carbon)) //If this mob is a carbon, break a few of their limbs
 		poor_target.take_bodypart_damage(40 * levels, wound_bonus = 5 * levels)
 		poor_target.take_bodypart_damage(40 * levels, wound_bonus = 5 * levels)
+
 	poor_target.AddElement(/datum/element/squish, 30 SECONDS)
 	poor_target.visible_message(
-		span_bolddanger("[src] falls on [poor_target], crushing them!"), \
+		span_bolddanger("[src] falls on [poor_target], crushing them!"),
 		span_userdanger("You are crushed by [src]!")
 	)
 	poor_target.Paralyze(5 SECONDS)
