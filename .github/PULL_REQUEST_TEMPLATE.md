@@ -13,6 +13,7 @@
 <!-- Include any screenshots/videos/debugging steps of the code functioning successfully -->
 <details>
 <summary>Screenshots or videos here</summary>
+<!-- Add the proof of testing here, between the </summary> and </details> code blocks -->
 </details>
 
 ## Changelog
