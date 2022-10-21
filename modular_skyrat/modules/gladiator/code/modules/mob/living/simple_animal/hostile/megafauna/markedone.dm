@@ -288,48 +288,44 @@
 	if(charging)
 		move_to_delay = move_to_delay_charge
 
-/mob/living/simple_animal/hostile/megafauna/gladiator/proc/spinattack() //SPEEEEN
-	var/turf/our_turf = get_turf(src)
-	if(!istype(our_turf))
-		return
-	visible_message(span_userdanger("[src] lifts his ancient blade, and prepares to spin!"))
-	spinning = TRUE
-	animate(src, color = "#ff6666", 10)
-	SLEEP_CHECK_DEATH(5, src)
-	var/list/spinningturfs = list()
-	var/current_angle = 360
-	while(current_angle > 0)
-		var/turf/target_turf = get_turf_in_angle(current_angle, our_turf, spinning_range)
-		if(!istype(target_turf))
-			continue
-		// Yes, there may be repeats with previous turfs! Yes, this is intentional!
-		spinningturfs += get_line(our_turf, target_turf)
-		current_angle -= 30
-	var/list/hit_things = list()
-	spinning = TRUE
-	for(var/turf/targeted as anything in spinningturfs)
-		dir = get_dir(src, targeted)
-		var/obj/effect/temp_visual/small_smoke/halfsecond/smonk = new /obj/effect/temp_visual/small_smoke/halfsecond(targeted)
-		QDEL_IN(smonk, 0.5 SECONDS)
-		for(var/mob/living/slapped in targeted)
-			if(!faction_check(faction, slapped.faction) && !(slapped in hit_things))
-				playsound(src, 'sound/weapons/slash.ogg', 75, 0)
-				if(slapped.apply_damage(40, BRUTE, BODY_ZONE_CHEST, slapped.run_armor_check(BODY_ZONE_CHEST), wound_bonus = CANT_WOUND))
-					visible_message(span_danger("[src] slashes through [slapped] with his spinning blade!"))
-				else
-					visible_message(span_danger("[src]'s spinning blade is stopped by [slapped]!"))
-					spinning = FALSE
-				hit_things |= slapped
-		if(!spinning)
-			break
-		addtimer(CALLBACK(src, .proc/animate_speen), 0.5 SECONDS)
-
-/mob/living/simple_animal/hostile/megafauna/gladiator/proc/animate_speen()
-	animate(src, color = initial(color), 3)
-	addtimer(CALLBACK(src, .proc/stop_speen), 0.5 SECONDS)
-
-/mob/living/simple_animal/hostile/megafauna/gladiator/proc/stop_speen()
-	spinning = FALSE
+/mob/living/simple_animal/hostile/megafauna/gladiator/proc/spinattack() //vinesauce joel
+ 	var/turf/our_turf = get_turf(src)
+ 	if(!istype(our_turf))
+ 		return
+ 	visible_message(span_userdanger("[src] lifts his ancient blade, and prepares to spin!"))
+ 	spinning = TRUE
+ 	animate(src, color = "#ff6666", 10)
+ 	SLEEP_CHECK_DEATH(5)
+ 	var/list/spinningturfs = list()
+ 	var/current_angle = 360
+ 	while(current_angle > 0)
+ 		var/turf/target_turf = get_turf_in_angle(current_angle, our_turf, spinning_range)
+ 		if(!istype(target_turf))
+ 			continue
+ 		// Yes, there may be repeats with previous turfs! Yes, this is intentional!
+ 		spinningturfs += get_line(our_turf, target_turf)
+ 		current_angle -= 30
+ 	var/list/hit_things = list()
+ 	spinning = TRUE
+ 	for(var/turf/targeted as anything in spinningturfs)
+ 		dir = get_dir(src, targeted)
+ 		var/obj/effect/temp_visual/small_smoke/smonk = new /obj/effect/temp_visual/small_smoke(targeted)
+ 		QDEL_IN(smonk, 1.25)
+ 		for(var/mob/living/slapped in targeted)
+ 			if(!faction_check(faction, slapped.faction) && !(slapped in hit_things))
+ 				playsound(src, 'sound/weapons/slash.ogg', 75, 0)
+ 				if(slapped.apply_damage(40, BRUTE, BODY_ZONE_CHEST, slapped.run_armor_check(BODY_ZONE_CHEST), wound_bonus = CANT_WOUND))
+ 					visible_message(span_danger("[src] slashes through [slapped] with his spinning blade!"))
+ 				else
+ 					visible_message(span_danger("[src]'s spinning blade is stopped by [slapped]!"))
+ 					spinning = FALSE
+ 				hit_things |= slapped
+ 		if(!spinning)
+ 			break
+ 		sleep(0.75)
+ 	animate(src, color = initial(color), 3)
+ 	sleep(3)
+ 	spinning = FALSE
 
 /mob/living/simple_animal/hostile/megafauna/gladiator/proc/charge(atom/target, range = 1) //the marked one's charge has an instant travel time, but takes a moment to power-up, allowing you to get behind cover to stun him
 	face_atom(target)
@@ -376,11 +372,33 @@
 	boned.throw_at(target, 7, 3, thrower = src)
 	QDEL_IN(boned, 3 SECONDS)
 
+/mob/living/simple_animal/hostile/megafauna/gladiator/proc/ctrl_c_ctrl_v(range, delay, throw_range) //copied and pasted wendigo slam attack, used for more slowly radiating AOE slams 
+	var/turf/origin = get_turf(src)
+	if(!origin)
+		return
+	var/list/all_turfs = RANGE_TURFS(range, origin)
+	for(var/sound_range = 0 to range)
+		playsound(origin,'sound/effects/bamf.ogg', 600, TRUE, 10)
+		for(var/turf/stomp_turf in all_turfs)
+			if(get_dist(origin, stomp_turf) > sound_range)
+				continue
+			new /obj/effect/temp_visual/small_smoke/halfsecond(stomp_turf)
+			for(var/mob/living/target in stomp_turf)
+				if(target == src || target.throwing)
+					continue
+				to_chat(target, span_userdanger("[src]'s ground slam shockwave sends you flying!"))
+				var/turf/thrownat = get_ranged_target_turf_direct(src, target, throw_range, rand(-10, 10))
+				target.throw_at(thrownat, 8, 2, null, TRUE, force = MOVE_FORCE_OVERPOWERING, gentle = TRUE)
+				target.apply_damage(20, BRUTE, wound_bonus=CANT_WOUND)
+				shake_camera(target, 2, 1)
+			all_turfs -= stomp_turf
+		sleep(delay)
+
 /mob/living/simple_animal/hostile/megafauna/gladiator/proc/swordslam() //this kills the crab
-	wendigo_slam(src, 5, 1 SECONDS, 8)
+	ctrl_c_ctrl_v(src, 5, 1 SECONDS, 8)
 
 /mob/living/simple_animal/hostile/megafauna/gladiator/proc/stomp()
-	wendigo_slam(src, 2, 0.5 SECONDS, 3)
+	ctrl_c_ctrl_v(src, 2, 0.5 SECONDS, 3)
 
 /mob/living/simple_animal/hostile/megafauna/gladiator/OpenFire() //used to actually decide what attacks he does. abandon all hope ye who enter here
 	if(!COOLDOWN_FINISHED(src, ranged_cooldown))
