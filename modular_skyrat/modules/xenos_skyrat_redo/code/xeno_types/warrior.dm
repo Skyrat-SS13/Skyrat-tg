@@ -1,6 +1,6 @@
 /// SKYRAT MODULE SKYRAT_XENO_REDO
 
-/mob/living/carbon/alien/humanoid/skyrat/warrior
+/mob/living/carbon/alien/adult/skyrat/warrior
 	name = "alien warrior"
 	desc = "If there are aliens to call walking tanks, this would be one of them, with both the heavy armor and strong arms to back that claim up."
 	caste = "warrior"
@@ -16,7 +16,7 @@
 	/// Holds the agility ability that will be given to the warrior later
 	var/datum/action/cooldown/alien/skyrat/warrior_agility/agility
 
-/mob/living/carbon/alien/humanoid/skyrat/warrior/Initialize(mapload)
+/mob/living/carbon/alien/adult/skyrat/warrior/Initialize(mapload)
 	. = ..()
 	tail_sweep = new /datum/action/cooldown/spell/aoe/repulse/xeno/skyrat_tailsweep()
 	tail_sweep.Grant(src)
@@ -31,13 +31,13 @@
 
 	add_movespeed_modifier(/datum/movespeed_modifier/alien_big)
 
-/mob/living/carbon/alien/humanoid/skyrat/warrior/Destroy()
+/mob/living/carbon/alien/adult/skyrat/warrior/Destroy()
 	QDEL_NULL(charge)
 	QDEL_NULL(tail_sweep)
 	QDEL_NULL(agility)
 	return ..()
 
-/mob/living/carbon/alien/humanoid/skyrat/warrior/create_internal_organs()
+/mob/living/carbon/alien/adult/skyrat/warrior/create_internal_organs()
 	internal_organs += new /obj/item/organ/internal/alien/plasmavessel
 	..()
 
@@ -61,7 +61,7 @@
 
 /// Handles the visual indication and code activation of the warrior agility ability (say that five times fast)
 /datum/action/cooldown/alien/skyrat/warrior_agility/proc/begin_agility()
-	var/mob/living/carbon/alien/humanoid/skyrat/agility_target = owner
+	var/mob/living/carbon/alien/adult/skyrat/agility_target = owner
 	agility_target.balloon_alert(agility_target, "agility active")
 	to_chat(agility_target, span_danger("We drop onto all fours, allowing us to move at much greater speed at expense of being able to use most abilities."))
 	playsound(agility_target, 'modular_skyrat/modules/xenos_skyrat_redo/sound/alien_hiss.ogg', 100, TRUE, 8, 0.9)
@@ -76,7 +76,7 @@
 
 /// Handles the visual indicators and code side of deactivating the agility ability
 /datum/action/cooldown/alien/skyrat/warrior_agility/proc/end_agility()
-	var/mob/living/carbon/alien/humanoid/skyrat/agility_target = owner
+	var/mob/living/carbon/alien/adult/skyrat/agility_target = owner
 	agility_target.balloon_alert(agility_target, "agility ended")
 	playsound(agility_target, 'modular_skyrat/modules/xenos_skyrat_redo/sound/alien_roar2.ogg', 100, TRUE, 8, 0.9) //Warrior runs up on all fours, stands upright, screams at you
 	agility_target.icon_state = "alien[agility_target.caste]"
