@@ -246,6 +246,19 @@
 /obj/effect/turf_decal/siding/red/end
 	icon_state = "siding_end"
 
+// Skyrat Edit: Start - Adds red variant that doesnt break 'bluesec' but allows mappers to use red elsewhere
+
+/obj/effect/turf_decal/siding/red/real_red
+	color = "#DE3A3A"
+
+/obj/effect/turf_decal/siding/red/real_red/corner
+	icon_state = "siding_corner"
+
+/obj/effect/turf_decal/siding/red/real_red/end
+	icon_state = "siding_end"
+
+// Skyrat Edit: End
+
 /obj/effect/turf_decal/siding/dark_red
 	color = "#B11111"
 

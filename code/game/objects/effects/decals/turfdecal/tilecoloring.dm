@@ -1258,11 +1258,10 @@
 /obj/effect/turf_decal/trimline/dark/filled/shrink_ccw
 	icon_state = "trimline_shrink_ccw"
 
-// Skyrat Edit Start
-/*
-// To make upstream mapping easier we overwrote the color for Red to be not red but blue for our weird bluesec
-// This re-adds a red coloring to be used by mappers in other areas.
-*/
+// Skyrat Edit: Start
+
+/// To make upstream mapping easier we overwrote the color for Red to be not red but blue for our weird bluesec
+/// This re-adds a red coloring to be used by mappers in other areas.
 
 /// Real Red Tiles
 
@@ -1361,3 +1360,5 @@
 
 /obj/effect/turf_decal/trimline/red/real_red/filled/shrink_ccw
 	icon_state = "trimline_shrink_ccw"
+
+// Skyrat Edit: End
