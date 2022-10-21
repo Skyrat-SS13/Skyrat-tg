@@ -1,6 +1,6 @@
 /// SKYRAT MODULE SKYRAT_XENO_REDO
 
-/mob/living/carbon/alien/humanoid/skyrat/defender
+/mob/living/carbon/alien/adult/skyrat/defender
 	name = "alien defender"
 	desc = "A heavy looking alien with a wrecking ball-like tail that'd probably hurt to get hit by."
 	caste = "defender"
@@ -13,9 +13,9 @@
 	var/datum/action/cooldown/mob_cooldown/charge/basic_charge/defender/charge
 	/// Holds the wrecking ball tail sweep that the defender will be granted
 	var/datum/action/cooldown/spell/aoe/repulse/xeno/skyrat_tailsweep/tail_sweep
-	next_evolution = /mob/living/carbon/alien/humanoid/skyrat/warrior
+	next_evolution = /mob/living/carbon/alien/adult/skyrat/warrior
 
-/mob/living/carbon/alien/humanoid/skyrat/defender/Initialize(mapload)
+/mob/living/carbon/alien/adult/skyrat/defender/Initialize(mapload)
 	. = ..()
 	tail_sweep = new /datum/action/cooldown/spell/aoe/repulse/xeno/skyrat_tailsweep()
 	tail_sweep.Grant(src)
@@ -27,12 +27,12 @@
 
 	add_movespeed_modifier(/datum/movespeed_modifier/alien_heavy)
 
-/mob/living/carbon/alien/humanoid/skyrat/defender/Destroy()
+/mob/living/carbon/alien/adult/skyrat/defender/Destroy()
 	QDEL_NULL(charge)
 	QDEL_NULL(tail_sweep)
 	return ..()
 
-/mob/living/carbon/alien/humanoid/skyrat/defender/create_internal_organs()
+/mob/living/carbon/alien/adult/skyrat/defender/create_internal_organs()
 	internal_organs += new /obj/item/organ/internal/alien/plasmavessel/small
 	..()
 
@@ -67,7 +67,7 @@
 	if(!isalien(owner))
 		return FALSE
 
-	var/mob/living/carbon/alien/humanoid/skyrat/owner_alien = owner
+	var/mob/living/carbon/alien/adult/skyrat/owner_alien = owner
 
 	if(owner_alien.unable_to_use_abilities)
 		return FALSE
