@@ -199,6 +199,23 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 	/// Multiplier for a borer's negative effects to their host
 	var/host_harm_multiplier = 1
 
+/mob/living/simple_animal/cortical_borer/firstgen
+	maxHealth = 125
+	health = 125
+
+/// When the borers are successful, lets make generations weaker to curb snowballing.
+/mob/living/simple_animal/cortical_borer/proc/generation_loss()
+	if(istype(src, /mob/living/simple_animal/cortical_borer/empowered))
+		return
+	maxHealth = maxHealth / generation
+	health = health / generation
+	health_per_level = health_per_level / generation
+	health_regen_per_level = health_regen_per_level / generation
+	stat_evolution = stat_evolution / generation
+	max_chemical_storage = max_chemical_storage / generation
+	chemical_storage = chemical_storage / generation
+
+
 /mob/living/simple_animal/cortical_borer/Initialize(mapload)
 	. = ..()
 	ADD_TRAIT(src, TRAIT_VENTCRAWLER_ALWAYS, INNATE_TRAIT) //they need to be able to move around
@@ -221,6 +238,7 @@ GLOBAL_LIST_EMPTY(cortical_borers)
 	for(var/focus_path in subtypesof(/datum/borer_focus))
 		possible_focuses += new focus_path
 	do_evolution(/datum/borer_evolution/base)
+	generation_loss()
 
 /mob/living/simple_animal/cortical_borer/Destroy()
 	human_host = null

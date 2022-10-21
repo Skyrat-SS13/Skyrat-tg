@@ -147,14 +147,14 @@
 	antag_flag = ROLE_BORER
 	enemy_roles = list(
 		JOB_CAPTAIN,
-		JOB_DETECTIVE,
-		JOB_HEAD_OF_SECURITY,
-		JOB_SECURITY_OFFICER,
+		JOB_CHEMIST,
+		JOB_CHIEF_MEDICAL_OFFICER,
+		JOB_MEDICAL_DOCTOR,
 	)
 	required_enemies = list(2,2,1,1,1,1,1,0,0,0)
 	required_candidates = 1
 	weight = 3
-	cost = 15
+	cost = 12
 	minimum_players = 20
 	repeatable = TRUE
 	/// List of on-station vents
@@ -178,7 +178,7 @@
 
 /datum/dynamic_ruleset/midround/from_ghosts/cortical_borer/generate_ruleset_body(mob/applicant)
 	var/obj/vent = pick_n_take(vents)
-	var/mob/living/simple_animal/cortical_borer/new_borer = new(vent.loc)
+	var/mob/living/simple_animal/cortical_borer/firstgen/new_borer = new(vent.loc)
 	new_borer.key = applicant.key
 	new_borer.move_into_vent(vent)
 	message_admins("[ADMIN_LOOKUPFLW(new_borer)] has been made into a borer by the midround ruleset.")
