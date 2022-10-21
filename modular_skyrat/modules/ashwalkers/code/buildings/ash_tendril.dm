@@ -45,6 +45,7 @@
 	for(var/mob/living/carbon/human/count_human in range(2, src))
 		if(!istype(count_human.dna.species, /datum/species/lizard/ashwalker))
 			continue
+
 		allow_transform++
 
 	if(allow_transform < REQUIRED_OBSERVERS)
@@ -70,7 +71,7 @@
 		human_user.update_body()
 		human_user.mind.add_antag_datum(/datum/antagonist/ashwalker)
 
-		if(SSmapping.level_trait(human_user.z, ZTRAIT_ICE_RUINS_UNDERGROUND) || SSmapping.level_trait(human_user.z, ZTRAIT_ICE_RUINS_UNDERGROUND))
+		if(SSmapping.level_trait(human_user.z, ZTRAIT_ICE_RUINS) || SSmapping.level_trait(human_user.z, ZTRAIT_ICE_RUINS_UNDERGROUND))
 			ADD_TRAIT(human_user, TRAIT_NOBREATH, ROUNDSTART_TRAIT)
 			ADD_TRAIT(human_user, TRAIT_RESISTCOLD, ROUNDSTART_TRAIT)
 
@@ -109,8 +110,8 @@
 		var/mob/living/delivery_mob = get_mob_by_key(delivery_key) //mob of said key
 
 		//there is a 40% chance that the Lava Lizard unlocks their respawn with each sacrifice
-		if(delivery_mob && (delivery_mob.mind?.has_antag_datum(/datum/antagonist/ashwalker)) && (delivery_key in ashies.players_spawned) && (prob(40)))
-			to_chat(delivery_mob, span_warning("<b>The Necropolis is pleased with your sacrifice. You feel confident your existence after death is secure.</b>"))
+		if(delivery_mob && (delivery_mob.mind?.has_antag_datum(/datum/antagonist/ashwalker)) && (delivery_key in ashies.players_spawned) && prob(40))
+			to_chat(delivery_mob, span_boldwarning("The Necropolis is pleased with your sacrifice. You feel confident your existence after death is secure."))
 			ashies.players_spawned -= delivery_key
 
 		viewable_living.gib()
