@@ -67,13 +67,12 @@
 /obj/machinery/vending/wardrobe/hydro_wardrobe
 	skyrat_contraband = list(
 		/obj/item/clothing/under/suit/skyrat/scarface = 2,
-		/obj/item/clothing/under/misc/gear_harness/adam = 2,
-		/obj/item/clothing/under/misc/gear_harness/eve = 2,
+		/obj/item/clothing/under/misc/skyrat/gear_harness/adam = 2,
+		/obj/item/clothing/under/misc/skyrat/gear_harness/eve = 2,
 	)
 
 /obj/machinery/vending/wardrobe/bar_wardrobe
 	skyrat_products = list(
-		/obj/item/storage/bag/money = 2,
 		/obj/item/storage/fancy/candle_box/vanilla = 1,
 		/obj/item/storage/fancy/candle_box/pear = 1,
 		/obj/item/storage/fancy/candle_box/amber = 1,

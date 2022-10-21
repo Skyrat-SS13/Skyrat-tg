@@ -357,7 +357,10 @@ GLOBAL_LIST_EMPTY(valid_cryopods)
 		if(control_computer)
 			if(istype(item_content, /obj/item/modular_computer))
 				var/obj/item/modular_computer/computer = item_content
-				computer.invisible = TRUE
+				var/obj/item/computer_hardware/hard_drive/hdd = computer.all_components[MC_HDD]
+				if(hdd)
+					for(var/datum/computer_file/program/messenger/message_app in hdd.stored_files)
+						message_app.invisible = TRUE
 			item_content.dropped(mob_occupant)
 			mob_occupant.transferItemToLoc(item_content, control_computer, force = TRUE, silent = TRUE)
 			control_computer.frozen_item += item_content

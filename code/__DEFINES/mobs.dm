@@ -13,7 +13,7 @@
 //Blood levels
 #define BLOOD_VOLUME_MAX_LETHAL 2150
 #define BLOOD_VOLUME_EXCESS 2100
-#define BLOOD_VOLUME_MAXIMUM 2000
+#define BLOOD_VOLUME_MAXIMUM 1000 // SKYRAT EDIT - Blood volume balancing (mainly for Hemophages as nobody else really goes much above regular blood volume) - ORIGINAL VALUE: 2000
 #define BLOOD_VOLUME_SLIME_SPLIT 1120
 #define BLOOD_VOLUME_NORMAL 560
 #define BLOOD_VOLUME_SAFE 475
@@ -374,14 +374,6 @@
 #define INCORPOREAL_MOVE_SHADOW 2 /// leaves a trail of shadows
 #define INCORPOREAL_MOVE_JAUNT 3 /// is blocked by holy water/salt
 
-//Secbot and ED209 judgement criteria bitflag values
-#define JUDGE_EMAGGED (1<<0)
-#define JUDGE_IDCHECK (1<<1)
-#define JUDGE_WEAPONCHECK (1<<2)
-#define JUDGE_RECORDCHECK (1<<3)
-//ED209's ignore monkeys
-#define JUDGE_IGNOREMONKEYS (1<<4)
-
 #define SHADOW_SPECIES_LIGHT_THRESHOLD 0.2
 
 #define COOLDOWN_UPDATE_SET_MELEE "set_melee"
@@ -613,13 +605,6 @@
 #define GRADIENT_APPLIES_TO_HAIR (1<<0)
 #define GRADIENT_APPLIES_TO_FACIAL_HAIR (1<<1)
 
-/// Sign Language defines
-#define SIGN_ONE_HAND 0
-#define SIGN_HANDS_FULL 1
-#define SIGN_ARMLESS 2
-#define SIGN_TRAIT_BLOCKED 3
-#define SIGN_CUFFED 4
-
 // Mob Overlays Indexes
 /// Total number of layers for mob overlays
 #define TOTAL_LAYERS 39 //KEEP THIS UP-TO-DATE OR SHIT WILL BREAK ;_;
@@ -739,4 +724,3 @@
 /// Checking flags for [/mob/proc/can_read()]
 #define READING_CHECK_LITERACY (1<<0)
 #define READING_CHECK_LIGHT (1<<1)
-

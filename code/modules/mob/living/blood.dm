@@ -32,6 +32,10 @@
 		adjust_nutrition(-nutrition_ratio * HUNGER_FACTOR * delta_time)
 		blood_volume = min(blood_volume + (BLOOD_REGEN_FACTOR * nutrition_ratio * delta_time), blood_volume_normal) //SKYRAT EDIT CHANGE
 
+	// SKYRAT EDIT ADDITION START - Oversized quirk
+	var/blood_volume_max = max(BLOOD_VOLUME_MAXIMUM, blood_volume_normal + 1)
+	// SKYRAT EDIT END
+
 	//Effects of bloodloss
 	var/word = pick("dizzy","woozy","faint")
 	switch(blood_volume)
@@ -39,15 +43,15 @@
 			if(DT_PROB(7.5, delta_time))
 				to_chat(src, span_userdanger("Blood starts to tear your skin apart. You're going to burst!"))
 				inflate_gib()
-		if(BLOOD_VOLUME_MAXIMUM to BLOOD_VOLUME_EXCESS)
+		if(blood_volume_max to BLOOD_VOLUME_EXCESS) // SKYRAT EDIT - Oversized quirk - ORIGINAL: if(BLOOD_VOLUME_MAXIMUM to BLOOD_VOLUME_EXCESS)
 			if(DT_PROB(5, delta_time))
 				to_chat(src, span_warning("You feel terribly bloated."))
 		if(BLOOD_VOLUME_OKAY to BLOOD_VOLUME_SAFE)
 			if(DT_PROB(2.5, delta_time))
 				to_chat(src, span_warning("You feel [word]."))
-			adjustOxyLoss(round(0.005 * (blood_volume_normal - blood_volume) * delta_time, 1)) //SKYRAT EDIT CHANGE
+			adjustOxyLoss(round(0.005 * (blood_volume_normal - blood_volume) * delta_time, 1)) //SKYRAT EDIT CHANGE - Oversized quirk
 		if(BLOOD_VOLUME_BAD to BLOOD_VOLUME_OKAY)
-			adjustOxyLoss(round(0.01 * (blood_volume_normal - blood_volume) * delta_time, 1)) //SKYRAT EDIT CHANGE
+			adjustOxyLoss(round(0.01 * (blood_volume_normal - blood_volume) * delta_time, 1)) //SKYRAT EDIT CHANGE - Oversized quirk
 			if(DT_PROB(2.5, delta_time))
 				blur_eyes(6)
 				to_chat(src, span_warning("You feel very [word]."))

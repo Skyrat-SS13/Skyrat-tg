@@ -266,7 +266,7 @@
 	return !user.contains(src)
 
 /obj/item/gun/proc/shoot_with_empty_chamber(mob/living/user as mob|obj)
-	balloon_alert(user, "*click*")
+	balloon_alert_to_viewers(user, "*click*")
 	playsound(src, dry_fire_sound, 30, TRUE)
 
 /obj/item/gun/proc/fire_sounds()
@@ -643,7 +643,7 @@
 
 /obj/item/gun/proc/remove_bayonet(mob/living/user, obj/item/tool_item)
 	tool_item?.play_tool_sound(src)
-	to_chat(user, span_notice("You unfix [bayonet] from [src]."))
+	balloon_alert(user, "[bayonet] removed")
 	bayonet.forceMove(drop_location())
 
 	if(Adjacent(user) && !issilicon(user))
