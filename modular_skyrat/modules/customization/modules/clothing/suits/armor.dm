@@ -71,9 +71,9 @@
 	hoodtype = /obj/item/clothing/head/hooded/winterhood/hopformal
 
 /obj/item/clothing/head/hooded/winterhood/hopformal
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "winterhood_hopformal"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/head/winterhood.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head/winterhood.dmi'
+	icon_state = "hood_hop_formal"
 
 // CAPTAIN
 /obj/item/clothing/suit/armor/vest/capcarapace/jacket

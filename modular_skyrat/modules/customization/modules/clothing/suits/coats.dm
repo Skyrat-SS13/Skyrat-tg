@@ -11,10 +11,10 @@
 	hoodtype = /obj/item/clothing/head/hooded/winterhood/aformal
 
 /obj/item/clothing/head/hooded/winterhood/aformal
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/head/winterhood.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head/winterhood.dmi'
 	desc = "A black winter coat hood."
-	icon_state = "winterhood_aformal"
+	icon_state = "hood_winter_formal"
 
 /obj/item/clothing/suit/hooded/wintercoat/ratvar
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
@@ -26,9 +26,9 @@
 	hoodtype = /obj/item/clothing/head/hooded/winterhood/ratvar
 
 /obj/item/clothing/head/hooded/winterhood/ratvar
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "winterhood_ratvar"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/head/winterhood.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head/winterhood.dmi'
+	icon_state = "hood_ratvar"
 	desc = "A brass-plated winter hood that glows softly, hinting at its divinity."
 	light_range = 3
 	light_power = 1
@@ -45,10 +45,10 @@
 	hoodtype = /obj/item/clothing/head/hooded/winterhood/narsie
 
 /obj/item/clothing/head/hooded/winterhood/narsie
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/head/winterhood.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head/winterhood.dmi'
 	desc = "A black winter hood full of whispering secrets that only She shall ever know."
-	icon_state = "winterhood_narsie"
+	icon_state = "hood_narsie"
 
 /obj/item/clothing/suit/hooded/wintercoat/ratvar/fake
 	name = "brass winter coat"
@@ -177,8 +177,8 @@
 	hoodtype = /obj/item/clothing/head/hooded/winterhood/christmas
 
 /obj/item/clothing/head/hooded/winterhood/christmas
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/head/winterhood.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head/winterhood.dmi'
 	icon_state = "christmashoodr"
 
 /obj/item/clothing/suit/hooded/wintercoat/christmas/green

@@ -145,9 +145,9 @@
 	hoodtype = /obj/item/clothing/head/hooded/winterhood/security/peacekeeper
 
 /obj/item/clothing/head/hooded/winterhood/security/peacekeeper
-	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
-	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
-	icon_state = "winterhood_peacekeeper"
+	icon = 'modular_skyrat/master_files/icons/obj/clothing/head/winterhood.dmi'
+	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head/winterhood.dmi'
+	icon_state = "hood_peacekeeper"
 	desc = "A greyish-blue, armour-padded winter hood. Definitely not bulletproof, especially not the part where your face goes."
 
 /obj/item/clothing/suit/armor/vest/peacekeeper/spacecoat
