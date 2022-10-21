@@ -243,11 +243,12 @@
 	lunch.spawn_gibs()
 	var/dismembered = FALSE
 	for(var/obj/item/bodypart/guts in lunch.bodyparts)
-		if(prob(40) && !dismembered)
-			if(guts.body_part == CHEST || guts.body_part == HEAD)
-				continue
-			guts.dismember()
-			dismembered = TRUE
+		if(prob(60) || dismembered)
+			continue
+		if(guts.body_part == CHEST || guts.body_part == HEAD)
+			continue
+		guts.dismember()
+		dismembered = TRUE
 	playsound(lunch, 'sound/effects/splat.ogg', 50, 1)
 	playsound(lunch, 'modular_skyrat/modules/horrorform/sound/tear.ogg', 50, 1)
 	lunch.emote("scream")
