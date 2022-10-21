@@ -219,6 +219,7 @@
 	for(var/obj/item/xenoarch/strange_rock/found_rock in range(2, get_turf(success_rune)))
 		if(prob(30))
 			continue
+
 		found_rock.dug_depth = found_rock.item_depth
 		found_rock.try_uncover()
 
@@ -242,20 +243,24 @@
 		return
 
 	var/total_damage = human_victim.getBruteLoss() + human_victim.getFireLoss()
-
 	var/divide_damage = 0
 	var/list/valid_humans = list()
+
 	for(var/mob/living/carbon/human/human_share in range(2, get_turf(success_rune)))
 		if(human_share == human_victim)
 			continue
+
 		if(human_share.stat == DEAD)
 			continue
+
 		valid_humans += human_share
 		divide_damage++
 
 	var/singular_damage = total_damage / divide_damage
+
 	for(var/mob/living/carbon/human/human_target in valid_humans)
 		human_target.adjustBruteLoss(singular_damage)
+
 	human_victim.heal_overall_damage(human_victim.getBruteLoss(), human_victim.getFireLoss())
 
 /datum/ash_ritual/banish_kin
