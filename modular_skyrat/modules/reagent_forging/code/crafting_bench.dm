@@ -259,9 +259,7 @@
 		message_admins("[src] just tried to complete a forge weapon without there being a weapon head inside it to complete!")
 		return
 
-	if(length(things_to_use))
-		for(var/thing as anything in things_to_use)
-	else
+	if(!length(things_to_use))
 		message_admins("[src] just tried to craft something from requirements, but was not given a list of requirements!")
 
 	if(completing_a_weapon)
