@@ -8,7 +8,7 @@
 	icon_on = "khion"
 	icon_off = "khioff"
 	type_butt = /obj/item/cigbutt
-	list_reagents = list(/datum/reagent/drug/nicotine = 10, /datum/reagent/toxin/mindbreaker = 5, /datum/reagent/serotrotium = 5, /datum/reagent/impedrezene = 5,  /datum/reagent/drug/space_drugs = 5)
+	list_reagents = list(/datum/reagent/drug/nicotine = 10, /datum/reagent/toxin/mindbreaker = 5)
 
 /obj/item/cigbutt/khi
 	icon = 'modular_skyrat/master_files/icons/obj/cigarettes_khi.dmi'
