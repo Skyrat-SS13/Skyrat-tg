@@ -223,32 +223,24 @@
 	var/list/requirement_items = list()
 
 	for(var/obj/item/potential_requirement in get_environment())
-		message_admins("potential ingredient: [potential_requirement]")
 		surrounding_items += potential_requirement
 
 	for(var/obj/item/requirement_path as anything in required_items)
-		message_admins("checking for: [requirement_path]")
 		var/required_amount = required_items[requirement_path]
 
 		for(var/obj/item/nearby_item as anything in surrounding_items)
-			message_admins("potentially: [nearby_item]")
 			if(!istype(nearby_item, requirement_path))
-				message_admins("it was not: [nearby_item]")
 				continue
 
-			message_admins("it was: [nearby_item]")
 			if(isstack(nearby_item)) // If the item is a stack, check if that stack has enough material in it to fill out the amount
 				var/obj/item/stack/nearby_stack = nearby_item
 				required_amount -= nearby_stack.amount
-				message_admins("it was: [nearby_stack], stack amount is [nearby_stack.amount], required amount is now [required_amount]")
 			else // Otherwise, we still exist and should subtract one from the required number of items
 				required_amount -= 1
-				message_admins("it was: [nearby_item], required amount is now [required_amount]")
 
 			requirement_items += nearby_item
 
 		if(required_amount > 0)
-			message_admins("required amount was not zero or less: [required_amount]")
 			return FALSE
 
 	if(return_ingredients_list)
@@ -269,9 +261,8 @@
 
 	if(length(things_to_use))
 		for(var/thing as anything in things_to_use)
-			message_admins("things_to_use has [thing] in it")
 	else
-		message_admins("things_to_use is empty!!")
+		message_admins("[src] just tried to craft something from requirements, but was not given a list of requirements!")
 
 	if(completing_a_weapon)
 		recipe_to_follow = new /datum/crafting_bench_recipe/weapon_completion_recipe
@@ -323,7 +314,6 @@
 				continue
 
 			requirement_stack.use(recipe_to_follow.recipe_requirements[stack_type])
-			message_admins("[requirement_stack] should have had [recipe_to_follow.recipe_requirements[stack_type]] taken from it")
 
 		else if(istype(requirement_item, /obj/item/forging/complete))
 			if(!requirement_item.custom_materials || !recipe_to_follow.transfers_materials)
