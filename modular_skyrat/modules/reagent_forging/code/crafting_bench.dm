@@ -66,16 +66,16 @@
 		if(istype(contents[1], /obj/item/forging/complete))
 			var/obj/item/forging/complete/contained_forge_item = contents[1]
 
-			. += span_notice("<b>[contained_forge_item]</b> sits on [src], ready to be completed.")
-			. += span_notice("With <b>[WEAPON_COMPLETION_WOOD_AMOUNT]</b> sheets of <b>wood</b> and some <b>hammering</b>, it could be completed.")
+			. += span_notice("[src] has a [initial(contained_forge_item.name)] sitting on it, awaiting completion. <br>")
+			. += span_notice("With <b>[WEAPON_COMPLETION_WOOD_AMOUNT]</b> sheets of <b>wood</b> nearby, and some <b>hammering</b>, it could be completed into a [initial(contained_forge_item.spawn_item.name)].")
 			return // We don't want to show any selected recipes if there's weapon head on the bench
 
 	if(!selected_recipe)
 		return
 
 	var/obj/resulting_item = selected_recipe.resulting_item
-	. += span_notice("Selected recipe's resulting item is: <b>[resulting_item.name]</b>")
-	. += span_notice("Gather the required materials, listed below, <b>near the bench</b>, then start <b>hammering</b> to complete it!")
+	. += span_notice("Selected recipe's resulting item is: <b>[initial(resulting_item.name)]</b> <br>")
+	. += span_notice("Gather the required materials, listed below, <b>near the bench</b>, then start <b>hammering</b> to complete it! <br>")
 
 	if(!length(selected_recipe.recipe_requirements))
 		. += span_boldwarning("Somehow, this recipe has no requirements, report this as this shouldn't happen.")
@@ -83,10 +83,10 @@
 
 	for(var/obj/requirement_item as anything in selected_recipe.recipe_requirements)
 		if(!selected_recipe.recipe_requirements[requirement_item])
-			. += span_boldwarning("[requirement_item.name] does not have an amount required set, this should not happen, report it.")
+			. += span_boldwarning("[requirement_item] does not have an amount required set, this should not happen, report it.")
 			continue
 
-		. += span_notice("<b>[selected_recipe.recipe_requirements[requirement_item]]</b> [requirement_item.name]")
+		. += span_notice("<b>[selected_recipe.recipe_requirements[requirement_item]]</b> - [initial(requirement_item.name)]")
 
 /obj/structure/reagent_crafting_bench/update_appearance(updates)
 	. = ..()
@@ -119,17 +119,9 @@
 
 	if(isnull(chosen_recipe))
 		balloon_alert(user, "no recipe choice")
-		message_admins("recipe chosen was null!!!!!!!")
 		return
 
-	message_admins("chose recipe: [chosen_recipe]")
-
 	var/datum/crafting_bench_recipe/recipe_to_use = recipe_names_to_path[chosen_recipe]
-
-	message_admins("recipe_to_use = [recipe_to_use]")
-
-	message_admins("selected_recipe = new [recipe_to_use]")
-
 	selected_recipe = new recipe_to_use
 
 	balloon_alert(user, "recipe chosen")
