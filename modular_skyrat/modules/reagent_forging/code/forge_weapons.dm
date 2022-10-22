@@ -2,7 +2,9 @@
 	icon = 'modular_skyrat/modules/reagent_forging/icons/obj/forge_items.dmi'
 	lefthand_file = 'modular_skyrat/modules/reagent_forging/icons/mob/forge_weapon_l.dmi'
 	righthand_file = 'modular_skyrat/modules/reagent_forging/icons/mob/forge_weapon_r.dmi'
+	worn_icon = 'modular_skyrat/modules/reagent_forging/icons/mob/forge_weapon_worn.dmi'
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR
+	skyrat_obj_flags = ANVIL_REPAIR
 
 /obj/item/forging/reagent_weapon/Initialize(mapload)
 	. = ..()
@@ -12,28 +14,15 @@
 	. = ..()
 	. += span_notice("Using a hammer on [src] will repair its damage!")
 
-/obj/item/forging/reagent_weapon/attackby(obj/item/attacking_item, mob/user, params)
-	if(atom_integrity >= max_integrity)
-		return ..()
-	if(istype(attacking_item, /obj/item/forging/hammer))
-		var/obj/item/forging/hammer/attacking_hammer = attacking_item
-		var/skill_modifier = user.mind.get_skill_modifier(/datum/skill/smithing, SKILL_SPEED_MODIFIER) * attacking_hammer.toolspeed
-		while(atom_integrity < max_integrity)
-			if(!do_after(user, skill_modifier, src))
-				return
-			var/fixing_amount = min(max_integrity - atom_integrity, 5)
-			atom_integrity += fixing_amount
-			user.mind.adjust_experience(/datum/skill/smithing, 5) //useful heating means you get some experience
-		return
-	return ..()
-
 /obj/item/forging/reagent_weapon/sword
 	name = "reagent sword"
-	desc = "A sword that is capable of cutting things."
+	desc = "A sharp, one-handed sword most adept at blocking opposing melee strikes."
 	force = 15
 	armour_penetration = 10
 	icon_state = "sword"
 	inhand_icon_state = "sword"
+	worn_icon_state = "sword_back"
+	belt_icon_state = "sword_belt"
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	throwforce = 10
 	block_chance = 25 //either we make it melee block only or we don't give it too much. It's bulkly so the buckler is superior
@@ -47,11 +36,13 @@
 
 /obj/item/forging/reagent_weapon/katana
 	name = "reagent katana"
-	desc = "A katana that is very sharp, but not quite million-times-folded sharp."
+	desc = "A katana sharp enough to penetrate body armor, but not quite million-times-folded sharp."
 	force = 15
 	armour_penetration = 25 //Slices through armour like butter, but can't quite bisect a knight like the real thing.
 	icon_state = "katana"
 	inhand_icon_state = "katana"
+	worn_icon_state = "katana_back"
+	belt_icon_state = "katana_belt"
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	throwforce = 10
 	slot_flags = ITEM_SLOT_BELT | ITEM_SLOT_BACK
@@ -63,10 +54,12 @@
 
 /obj/item/forging/reagent_weapon/dagger
 	name = "reagent dagger"
-	desc = "A dagger that can attack very fast!"
+	desc = "A lightweight dagger with an extremely quick swing!"
 	force = 8
 	icon_state = "dagger"
 	inhand_icon_state = "dagger"
+	worn_icon_state = "dagger_back"
+	belt_icon_state = "dagger_belt"
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	throwforce = 10
 	slot_flags = ITEM_SLOT_BELT | ITEM_SLOT_BACK
@@ -82,10 +75,11 @@
 
 /obj/item/forging/reagent_weapon/staff //doesn't do damage. Useful for healing reagents.
 	name = "reagent staff"
-	desc = "A staff that has a very soft swing."
+	desc = "A staff most notably capable of being imbued with reagents, especially useful alongside its otherwise harmless nature."
 	force = 0
 	icon_state = "staff"
 	inhand_icon_state = "staff"
+	worn_icon_state = "staff_back"
 	throwforce = 0
 	slot_flags = ITEM_SLOT_BACK
 	w_class = WEIGHT_CLASS_NORMAL
@@ -99,11 +93,12 @@
 
 /obj/item/forging/reagent_weapon/spear
 	name = "reagent spear"
-	desc = "A spear that can be dual-wielded to increase its damage!"
+	desc = "A long spear that can be wielded in two hands to boost damage at the cost of single-handed versatility."
 	force = 10
 	armour_penetration = 10
 	icon_state = "spear"
 	inhand_icon_state = "spear"
+	worn_icon_state = "spear_back"
 	throwforce = 15 //not a javelin, throwing specialty is for the axe.
 	slot_flags = ITEM_SLOT_BACK
 	w_class = WEIGHT_CLASS_BULKY
@@ -122,11 +117,12 @@
 
 /obj/item/forging/reagent_weapon/axe
 	name = "reagent axe"
-	desc = "An axe that looks balanced for throwing."
+	desc = "An axe especially balanced for throwing and embedding into fleshy targets. Nonetheless useful as a traditional melee tool."
 	force = 15
 	armour_penetration = 10
 	icon_state = "axe"
 	inhand_icon_state = "axe"
+	worn_icon_state = "axe_back"
 	throwforce = 22 //ouch
 	throw_speed = 4
 	embedding = list("impact_pain_mult" = 2, "remove_pain_mult" = 4, "jostle_chance" = 2.5)
@@ -139,11 +135,12 @@
 
 /obj/item/forging/reagent_weapon/hammer
 	name = "reagent hammer"
-	desc = "A hammer that packs a real wallop."
+	desc = "A heavy, weighted hammer that packs an incredible punch but can prove to be unwieldy. Useful for forging!"
 	force = 19 //strong but boring.
 	armour_penetration = 10
 	icon_state = "crush_hammer"
 	inhand_icon_state = "crush_hammer"
+	worn_icon_state = "hammer_back"
 	throwforce = 10
 	slot_flags = ITEM_SLOT_BACK
 	w_class = WEIGHT_CLASS_BULKY
@@ -161,9 +158,9 @@
 	. = ..()
 	AddElement(/datum/element/kneejerk)
 
-/obj/item/forging/reagent_weapon/hammer/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
+/obj/item/forging/reagent_weapon/hammer/attack_atom(atom/attacked_atom, mob/living/user, params)
 	. = ..()
-	if(!is_type_in_list(target, fast_attacks))
+	if(!is_type_in_list(attacked_atom, fast_attacks))
 		return
 	user.changeNext_move(CLICK_CD_RAPID)
 
@@ -173,6 +170,7 @@
 	icon = 'modular_skyrat/modules/reagent_forging/icons/obj/forge_items.dmi'
 	icon_state = "buckler"
 	inhand_icon_state = "buckler"
+	worn_icon_state = "buckler_back"
 	lefthand_file = 'modular_skyrat/modules/reagent_forging/icons/mob/forge_weapon_l.dmi'
 	righthand_file = 'modular_skyrat/modules/reagent_forging/icons/mob/forge_weapon_r.dmi'
 	custom_materials = list(/datum/material/iron=1000)
@@ -182,6 +180,7 @@
 	max_integrity = 150 //over double that of a wooden one
 	w_class = WEIGHT_CLASS_NORMAL
 	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_AFFECT_STATISTICS
+	skyrat_obj_flags = ANVIL_REPAIR
 
 /obj/item/shield/riot/buckler/reagent_weapon/Initialize(mapload)
 	. = ..()
@@ -214,9 +213,10 @@
 
 /obj/item/shield/riot/buckler/reagent_weapon/pavise //similar to the adamantine shield. Huge, slow, lets you soak damage and packs a wallop.
 	name = "reagent plated pavise shield"
-	desc = "An oblong shield used by ancient crossbowman as cover while reloading."
+	desc = "An oblong shield used by ancient crossbowmen as cover while reloading. Probably just as useful with an actual gun."
 	icon_state = "pavise"
 	inhand_icon_state = "pavise"
+	worn_icon_state = "pavise_back"
 	block_chance = 75
 	item_flags = SLOWS_WHILE_IN_HAND
 	w_class = WEIGHT_CLASS_HUGE
@@ -266,10 +266,11 @@
 
 /obj/item/forging/reagent_weapon/bokken
 	name = "reagent bokken"
-	desc = "A bokken that is capable of blocking. It can be dual-wielded to increase block chance!"
+	desc = "A bokken that is capable of blocking attacks when wielding in two hands, possibly including bullets should the user be brave enough."
 	force = 15
 	icon_state = "bokken"
 	inhand_icon_state = "bokken"
+	worn_icon_state = "bokken_back"
 	throwforce = 10
 	block_chance = 20
 	slot_flags = ITEM_SLOT_BACK
