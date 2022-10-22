@@ -109,6 +109,7 @@
 	new /obj/item/storage/backpack/chameleon(src)
 	new /obj/item/storage/belt/chameleon(src)
 	new /obj/item/card/id/advanced/chameleon(src)
+	new /obj/item/hhmirror/syndie(src)
 
 /obj/item/card/id/advanced/ghost_cafe
 	name = "\improper Cafe ID"
