@@ -536,3 +536,8 @@
 	name = "Handsome Chef Plushie"
 	item_path = /obj/item/toy/plush/skyrat/plushie_azyre
 	ckeywhitelist = list("dalaoazure")
+
+/datum/loadout_item/pocket_items/khicigs
+	name = "Kitsuhana Singularity Cigarettes"
+	item_path = /obj/item/storage/fancy/cigarettes/khi
+	ckeywhitelist = list("ultimarifox")
