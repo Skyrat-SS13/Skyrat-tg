@@ -66,9 +66,9 @@
 		if(istype(contents[1], /obj/item/forging/complete))
 			var/obj/item/forging/complete/contained_forge_item = contents[1]
 
-			. += span_notice("[src] has a [initial(contained_forge_item.name)] sitting on it, awaiting completion. <br>")
+			. += span_notice("[src] has a <b>[initial(contained_forge_item.name)]</b> sitting on it, awaiting completion. <br>")
 			var/obj/item/completion_item = contained_forge_item.spawning_item
-			. += span_notice("With <b>[WEAPON_COMPLETION_WOOD_AMOUNT]</b> sheets of <b>wood</b> nearby, and some <b>hammering</b>, it could be completed into a [initial(completion_item.name)].")
+			. += span_notice("With <b>[WEAPON_COMPLETION_WOOD_AMOUNT]</b> sheets of <b>wood</b> nearby, and some <b>hammering</b>, it could be completed into a <b>[initial(completion_item.name)]</b>.")
 			return // We don't want to show any selected recipes if there's weapon head on the bench
 
 	if(!selected_recipe)
