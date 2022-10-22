@@ -592,3 +592,9 @@
 	icon_state = "plushie_jeanne"
 	attack_verb_continuous = list("cuddles", "squishes", "blushes")
 	attack_verb_simple = list("cuddle", "squish", "blush")
+
+//Donation reward for Dalao Azure
+/obj/item/toy/plush/skyrat/plushie_azyre
+	name = "handsome chef plushie"
+	desc = "A need to cook only rivaled by a hunger for fox tail."
+	icon_state = "plushie_azyre"

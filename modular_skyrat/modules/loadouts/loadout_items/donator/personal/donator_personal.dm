@@ -521,7 +521,18 @@
 	name = "Masked Roboticist Plushie"
 	item_path = /obj/item/toy/plush/skyrat/plushie_jeanne
 	ckeywhitelist = list("klb100")
+
 /datum/loadout_item/under/jumpsuit/tactichill
 	name = "Tactichill Jacket"
 	item_path = /obj/item/clothing/under/tactichill
 	ckeywhitelist = list("kaynite")
+
+/datum/loadout_item/suit/techpriest
+	name = "Techpriest Robes"
+	item_path = /obj/item/clothing/suit/hooded/techpriest
+	ckeywhitelist = list("imthinkingarbys")
+
+/datum/loadout_item/toys/plushie_azyre
+	name = "Handsome Chef Plushie"
+	item_path = /obj/item/toy/plush/skyrat/plushie_azyre
+	ckeywhitelist = list("dalaoazure")
