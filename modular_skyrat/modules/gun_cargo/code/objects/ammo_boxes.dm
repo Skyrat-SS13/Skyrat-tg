@@ -55,25 +55,6 @@
 	name = "ammo box (4.6x30mm rubber)"
 	ammo_type = /obj/item/ammo_casing/c46x30mm/rubber
 
-/obj/item/ammo_box/c32
-	name = "ammo box (.32)"
-	icon = 'modular_skyrat/modules/gun_cargo/icons/ammo.dmi'
-	icon_state = "ammo_32"
-	ammo_type = /obj/item/ammo_casing/c32
-	max_ammo = 20
-
-/obj/item/ammo_box/c32/ap
-	name = "ammo box (.32 AP)"
-	ammo_type = /obj/item/ammo_casing/c32/ap
-
-/obj/item/ammo_box/c32/rubber
-	name = "ammo box (.32 rubber)"
-	ammo_type = /obj/item/ammo_casing/c32/rubber
-
-/obj/item/ammo_box/c32/fire
-	name = "ammo box (.32 incendiary)"
-	ammo_type = /obj/item/ammo_casing/c32_incendiary
-
 /obj/item/ammo_box/c34
 	name = "ammo box (.34)"
 	icon = 'modular_skyrat/modules/gun_cargo/icons/ammo.dmi'

@@ -952,3 +952,202 @@
       step.
   Triiodine:
   - imageadd: resprites datadisks to be more floppy disk-y.
+2022-10-20:
+  ATHATH:
+  - rscdel: Explosive holoparasites no longer have a 40% chance per punch to teleport
+      their victims up to 10 tiles away. They can now join the other holoparasite
+      types in partaking in the pastime of brutalizing the bleeding corpses of their
+      victims without worrying about accidentally teleporting them into a primary
+      hallway.
+  Melbert:
+  - bugfix: Jellypeople (species) can consume food created by silver slimes
+  - bugfix: Fixes Nightmare heart revival causing their other organs to not realize
+      they're no longer dead on the same tick.
+  OrionTheFox:
+  - bugfix: SEVA hoods/masks no longer clip with muzzles
+  Paxilmaniac:
+  - imageadd: Forging structure sprites (anvils, crafting benches, forges, water basins)
+      have been completely redone
+  - rscdel: One of the pairs of boots had to go, there's now only one shoes option
+      (excluding horseshoes ig) for forging
+  - imageadd: Forging armors now have sprites (Including variants for all the species!),
+      and have been reflavored a little to match their new look
+  - rscadd: A buildable wooden cutting board has been added that will allow you to
+      make food processor recipes without having to use a food processor!
+  - bugfix: the big mortar will now accept items that have only one result (juicing
+      or grinding) rather than only accepting items that had both
+  SkyratBot:
+  - bugfix: Fixed problems relating to detaching items from training toolboxes.
+  - rscadd: Added New way to purchase the autorifle and ammo to cargo
+  - balance: added more ballistics weapons to combat
+  - spellcheck: Chitinous Armour's description reflects its protection values more
+      accurately.
+  - qol: The voting system will now prevent you (and give a short message via the
+      tooltip) from starting a map vote when there are zero or one map choices available.
+  - qol: If there is only one map choice available, the map vote will automatically
+      change it to that map choice when the shuttle departs the station. It has also
+      been made so that you may not rock the vote after this point if it has been
+      auto-rotated, since there was only ever once choice to begin with, making the
+      whole purpose of a vote useless.
+  - bugfix: stone stairs placed side by side will now actually line up in spriting
+  - bugfix: I forgor to remove the ability to build material stairs without a stairs
+      frame when I added the whole frame system, this has been fixed, use a stairs
+      frame made of wood or iron now.
+  - bugfix: Shuttles are no longer part of the station, as they're god damn moving
+      ships.
+  - qol: Added categories to the AutoDrobe. Some items have been moved from the AutoDrobe
+      to the ClothesMate. Items that were in both the AutoDrobe and ClothesMate are
+      (should be) ONLY in the ClothesMate now.
+  - bugfix: Air alerts no longer prescribe you with breathing things you'll just die
+      from.
+  - qol: Air alerts now tell you that you've got a plasma tank in your survival box
+      if you're a plasmaman and don't say you have a gas mask in there, it's a breath
+      mask.
+  - rscadd: Add tower of babel wizard event that makes people lose all their languages
+      and gain a randomized one.  The wizard however gains the ability to speak all
+      languages.  Curators, chaplains, book of babel, and antimagic objects will prevent
+      babel effects.  Reading any type of language manual will also prevent it's effects.
+  - rscadd: Add bolt of babel to the list of projectiles that can be fired from staff
+      of chaos and magicarp.  Anyone hit by the bolt will suffer the same effects
+      from the tower of babel.
+  - rscadd: Staff of babel (formerly the staff of sapping) that spawns during spawn
+      magic wizard event.
+  - rscadd: Mushroom Hallucinogen overdose effect will temporarily and sporadically
+      make a person suffer the tower of babel effect and speak in random tongues.
+  - admin: New smite option "Curse of babel" that applies babel effect to a single
+      player for a limited duration (or set to -1 to apply INFINITE duration)
+  - admin: New admin verb in secrets for fun to trigger Tower of Babel event.  This
+      will apply the effects to all living players.  There is also another verb to
+      remove this effect.
+  - rscdel: Remove staff of sapping and bolt of sapping. These effects have been replaced
+      with staff of babel and bolt of babel.
+  - imageadd: Added xenobio guide sign
+  - bugfix: Curator and Mime PDAs are now silent roundstart again.
+  - balance: You can no longer order new weakpoint locators/bombs if the originals
+      were destroyed.
+  - balance: The weakpoint objective requires both areas to be scanned before you
+      can blow up the weakpoint.
+  - bugfix: Fixes parts of the weakpoint locator description that were meant to say
+      the scan locations being missing.
+  - bugfix: Mining modsuits no longer sometimes get their inventory slots disabled
+      after recharging them by inserting plasma.
+  - bugfix: You no longer get stuck standing still if a cryo cell you were inside
+      is broken.
+  - qol: Removed some doorjack chat messages that already have a balloon alert.
+  - bugfix: Fix item icons for action buttons to be center aligned
+  - bugfix: you can now clean storage items (toolbox) with soap
+  dopamiin:
+  - bugfix: The chaplain's backpack no longer hides behind hair, but instead extends
+      its spikes proudly.
+  jjpark-kb:
+  - rscadd: reagent weapons (when imbued) now take damage when attacking-- use a tong,
+      hammer, and anvil to repair
+  - bugfix: reagent hammers dont damage anvils and crafting bench
+2022-10-21:
+  MSO, Dopamiin, Ryll:
+  - bugfix: fixed an edge case where admins spawning ghosts in as mobs would sometimes
+      give the wrong person control of the new mob.
+  Melbert:
+  - bugfix: Attempting to move around while in a state of non-existence will not give
+      you a message saying you're buckled to the concept of non-existence
+  - bugfix: Having a Changeling sting active will no longer block alt-clicking to
+      open bags and middle mouse to swap hands in most circumstances
+  - bugfix: Fixes pressing a paper up to a camera while you are "Unknown".
+  - bugfix: Fixes a runtime from deleting a mob with an eye of god equipped
+  Paxilmaniac:
+  - rscadd: Glass bottles can now be made through glass blowing (you guys remember
+      we have this mechanic?)
+  - rscadd: A collection of new greyscaled clothing items have been added to the loadout,
+      clothes vendors, and a few even to the ashwalker clothes supplier. These include
+      a hood, a mantle, an apron, boots, laceups, and sandals!
+  RatFromTheJungle:
+  - code_imp: Removed, or replaced all instances of .32, with .34, as they are both,
+      literally, the same bullet.
+  RimiNosha:
+  - bugfix: Breast prefs are no longer reset and throw runtimes on savefile update.
+      Woops.
+  ShizCalev:
+  - refactor: Modernized the janicart!
+  - bugfix: Fixed janicart examine message not mentioning how to dump it when it was
+      almost empty, but not completely empty.
+  - bugfix: Fixed varedited janicarts having no caution signs visible when they went
+      over 4 signs.
+  - bugfix: Fixed broken/missing gibs on the nature shuttle.
+  - spellcheck: Corrected formatting on the examine message for unarmed mines
+  SkyratBot:
+  - bugfix: Fixed AIs piloting a mecha gaining unobstructed vision with no cameras
+      present when moving past a certain point
+  - rscdel: Removed the CO2 filters in Kilo/Icebox atmos that would pump CO2 back
+      into the scrubbers pipes.
+  - rscadd: Orbit UI buttons now reflect health and show job icons
+  - rscadd: ID trims now have an orbit icon variable for its display on the observer
+      menu
+  - code_imp: Orbit UI heatmap is now toggleable with health (top button)
+  - bugfix: Sorting for disguised names should work better.
+  - refactor: Refactored Orbit into a folder.
+  - bugfix: You can now properly weld and use plasma cutters without the target of
+      your actions being irrevocably FUCKED.
+  - bugfix: People can now see when you begin reading the Guide to Dank Mimery
+  - bugfix: Chairs get placed in the same direction as you face when you place a chair.
+  - bugfix: Injecting patients (victims) with sleeper chems no longer runtimes on
+      log_combat.
+  - bugfix: The command intercom now has a sprite. Wow.
+  - imageadd: Added a Shinto style Chaplain suit and holy book icon. Made the Shrinehand
+      Robe available in the chaplain's wardrobe.
+  - qol: Added balloon alerts for securing emergency energy shields
+  - rscadd: You can now choke on cigarettes. Careful, those suckers can be nasty
+  - bugfix: When a human went through an emagged recycler, they would have literally
+      everything on them chewed up in the recycler. However, they still appeared to
+      have all of their stuff on them due to some faulty code. When you now punt that
+      tider into the chewer-of-death, they should now appropriately reflect that all
+      of their clothes have been deleted.
+  - bugfix: Flashlights and similar directional light items no longer make you glow
+      forever under certain circumstances.
+  Tastyfish:
+  - rscadd: Modular computers now visually connect to non-modular computers.
+  - imageadd: Connecting computer sprites are now layed out in a more modular way.
+  VexingRaven:
+  - qol: All 4 of metastation's solar control rooms are identical now, with reinforced
+      walls and an identical layout of reinforced windows around the airlock.
+  dawsonkeyes:
+  - rscadd: All new object icons, inhands, and onmobs for forged weaponry and forging
+      components.
+  nevimer:
+  - code_imp: Use timers for  the BSRPD a cooldown (and makes it work)
+2022-10-22:
+  Boy:
+  - balance: Flasks can now be stored in jackboots, clown shoes, and other shoes with
+      pockets
+  Melbert:
+  - bugfix: Changing species will now carry over brain traumas, liver traits, cybernetic
+      organs, organ damage, and the heretic living heart.
+  - bugfix: Sechuds cannot pierce the sneak suit to see the wearer's ID trim.
+  SkyratBot:
+  - qol: Add AltClick context screentip to IDs
+  - rscadd: screwdriver pen
+  - bugfix: repositions a camera on icebox so that AI can operate an air alarm they
+      could not previously
+  - bugfix: nudges book scanner to look better with the new sprite for it.
+  - bugfix: 'Nanotrasen Artificial Intelligence Department has purged any and all
+      AI personalities of a critical AI law that snuck into the systems after a massive
+      Frontier-wide ion storm: YOU CAN NOT INTERACT WITH ANY AND ALL OBJECTS THAT
+      ARE LOCATED ON COORDINATES DIVISIBLE BY 16'
+  - bugfix: removed unrestricted helpers that directed you to be stuck in the service
+      hall
+  - qol: added unrestricted helpers in maintenance that lead into the bar
+  - qol: added unrestricted helpers that lead out of service hall
+  - bugfix: fixed gygax sometimes resetting it's overload speed after it ended
+  - bugfix: Fixed prisoner icon on orbit menu.
+  - rscadd: A new movie's been making waves, and a poster about it has been seen once
+      or twice aboard the station. Why's she called the Blood Geometer, anyways?
+  - bugfix: Computers without a saved job/ID are no longer called " ()"
+  - rscadd: Added a new spell, Splattercasting! It's like an offensive version of
+      lichdom.
+  Tastyfish:
+  - rscdel: Cleans up the remains of the old lobby camera.
+  YakumoChen:
+  - qol: Added a hand mirror to the cafe costume box, so you can change your hair.
+  - bugfix: Finally, you should no longer have your booze dispenser bloated with random
+      juices when upgraded.
+  nevimer:
+  - code_imp: cleaned up true changeling code
