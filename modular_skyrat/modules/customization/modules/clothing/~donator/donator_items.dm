@@ -15,6 +15,7 @@
 	icon_state = "khibutt"
 
 /obj/item/storage/fancy/cigarettes/khi
+	name = "\improper Kitsuhana Singularity packet"
 	icon = 'modular_skyrat/master_files/icons/obj/cigarettes_khi.dmi'
 	icon_state = "khi_cig_packet"
 	base_icon_state = "khi_cig_packet"
