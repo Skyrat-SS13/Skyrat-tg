@@ -625,6 +625,7 @@ SUBSYSTEM_DEF(job)
 #define SPAWN_POSITIONS "Spawn Positions"
 #define PLAYTIME_REQUIREMENTS "Playtime Requirements"
 #define REQUIRED_ACCOUNT_AGE "Required Account Age"
+#define REQUIRED_CHARACTER_AGE "Required Character Age" //SKYRAT ADDITION
 
 /// Called in jobs subsystem initialize if LOAD_JOBS_FROM_TXT config flag is set: reads jobconfig.toml (or if in legacy mode, jobs.txt) to set all of the datum's values to what the server operator wants.
 /datum/controller/subsystem/job/proc/load_jobs_from_config()
@@ -645,6 +646,7 @@ SUBSYSTEM_DEF(job)
 			var/starting_positions = job_config[job_key][SPAWN_POSITIONS]
 			var/playtime_requirements = job_config[job_key][PLAYTIME_REQUIREMENTS]
 			var/required_account_age = job_config[job_key][REQUIRED_ACCOUNT_AGE]
+			var/required_character_age = job_config[job_key][REQUIRED_CHARACTER_AGE] //SKYRAT ADDITION
 
 			if(default_positions)
 				occupation.total_positions = default_positions
@@ -654,6 +656,10 @@ SUBSYSTEM_DEF(job)
 				occupation.exp_requirements = playtime_requirements
 			if(required_account_age)
 				occupation.minimal_player_age = required_account_age
+			//SKYRAT ADDITION START
+			if(required_character_age)
+				occupation.minimal_character_age = required_character_age
+			//SKYRAT ADDITION END
 
 		return
 
@@ -701,6 +707,7 @@ SUBSYSTEM_DEF(job)
 				"# [REQUIRED_ACCOUNT_AGE]" = occupation.minimal_player_age,
 				"# [TOTAL_POSITIONS]" = default_positions,
 				"# [SPAWN_POSITIONS]" = starting_positions,
+				"# [REQUIRED_CHARACTER_AGE]" = occupation.minimal_character_age, //SKYRAT ADDITION
 			)
 
 		if(!export_toml(user, file_data))
@@ -719,6 +726,7 @@ SUBSYSTEM_DEF(job)
 					"# [SPAWN_POSITIONS]" = -1,
 					"# [PLAYTIME_REQUIREMENTS]" = occupation.exp_requirements,
 					"# [REQUIRED_ACCOUNT_AGE]" = occupation.minimal_player_age,
+					"# [REQUIRED_CHARACTER_AGE]" = occupation.minimal_character_age, //SKYRAT ADDITION
 				)
 				continue
 			// Generate new config from codebase defaults.
@@ -727,6 +735,7 @@ SUBSYSTEM_DEF(job)
 				"# [SPAWN_POSITIONS]" = occupation.spawn_positions,
 				"# [PLAYTIME_REQUIREMENTS]" = occupation.exp_requirements,
 				"# [REQUIRED_ACCOUNT_AGE]" = occupation.minimal_player_age,
+				"# [REQUIRED_CHARACTER_AGE]" = occupation.minimal_character_age, //SKYRAT ADDITION
 			)
 		if(!export_toml(user, file_data))
 			return FALSE
@@ -750,6 +759,7 @@ SUBSYSTEM_DEF(job)
 		var/starting_positions = job_config[job_key][SPAWN_POSITIONS]
 		var/playtime_requirements = job_config[job_key][PLAYTIME_REQUIREMENTS]
 		var/required_account_age = job_config[job_key][REQUIRED_ACCOUNT_AGE]
+		var/required_character_age = job_config[job_key][REQUIRED_CHARACTER_AGE] //SKYRAT ADDITION
 
 		// When we regenerate, we want to make sure commented stuff stays commented, but we also want to migrate information that remains uncommented. So, let's make sure we keep that pattern.
 		if(job_config["[job_key]"]) // Let's see if any data for this job exists.
@@ -791,6 +801,16 @@ SUBSYSTEM_DEF(job)
 				file_data["[job_key]"] += list(
 					"# [REQUIRED_ACCOUNT_AGE]" = occupation.minimal_player_age,
 				)
+			//SKYRAT ADDITION START
+			if(required_character_age) // Same pattern as above.
+				file_data["[job_key]"] += list(
+					REQUIRED_CHARACTER_AGE = required_character_age,
+				)
+			else
+				file_data["[job_key]"] += list(
+					"# [REQUIRED_CHARACTER_AGE]" = occupation.minimal_character_age,
+				)
+			//SKYRAT ADDITION END
 			continue
 		else
 			to_chat(user, span_notice("New job [job_name] (using key [job_key]) detected! Adding to jobconfig.toml using default codebase values..."))
@@ -800,6 +820,7 @@ SUBSYSTEM_DEF(job)
 				"# [SPAWN_POSITIONS]" = occupation.spawn_positions,
 				"# [PLAYTIME_REQUIREMENTS]" = occupation.exp_requirements,
 				"# [REQUIRED_ACCOUNT_AGE]" = occupation.minimal_player_age,
+				"# [REQUIRED_CHARACTER_AGE]" = occupation.minimal_character_age, //SKYRAT ADDITION
 			)
 
 	if(!export_toml(user, file_data))
@@ -818,6 +839,7 @@ SUBSYSTEM_DEF(job)
 #undef SPAWN_POSITIONS
 #undef PLAYTIME_REQUIREMENTS
 #undef REQUIRED_ACCOUNT_AGE
+#undef REQUIRED_CHARACTER_AGE //SKYRAT ADDITION
 
 /datum/controller/subsystem/job/proc/HandleFeedbackGathering()
 	for(var/datum/job/job as anything in joinable_occupations)
