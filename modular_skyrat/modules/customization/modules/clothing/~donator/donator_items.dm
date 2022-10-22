@@ -7,7 +7,7 @@
 	icon_state = "khioff"
 	icon_on = "khion"
 	icon_off = "khioff"
-	type_butt = /obj/item/cigbutt
+	type_butt = /obj/item/cigbutt/khi
 	list_reagents = list(/datum/reagent/drug/nicotine = 10, /datum/reagent/toxin/mindbreaker = 5)
 
 /obj/item/cigbutt/khi
