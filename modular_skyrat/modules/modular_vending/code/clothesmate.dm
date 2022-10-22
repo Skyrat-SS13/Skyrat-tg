@@ -86,6 +86,7 @@
 				/obj/item/clothing/under/dress/skyrat/flower = 5,
 				/obj/item/clothing/under/dress/skyrat/strapless = 5,
 				/obj/item/clothing/under/dress/skyrat/pentagram = 5,
+				/obj/item/clothing/suit/varsity = 5,
 				/obj/item/clothing/suit/toggle/jacket = 5,
 				/obj/item/clothing/suit/toggle/jacket/flannel = 5,
 				/obj/item/clothing/suit/toggle/jacket/flannel/red = 5,

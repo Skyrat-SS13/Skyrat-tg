@@ -503,6 +503,15 @@
 	name = "Peacoat (Worn)"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/peacoat/peacoat_worn.json'
 
+/datum/greyscale_config/varsity
+	name = "Varsity Jacket"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/suit/suit.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/suits/varsity/varsity.json'
+
+/datum/greyscale_config/varsity/worn
+	name = "Varsity Jacket (Worn)"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/suits/varsity/varsity_worn.json'
+
 // JUMPSUITS
 
 /datum/greyscale_config/jumpsuit_worn/digi
