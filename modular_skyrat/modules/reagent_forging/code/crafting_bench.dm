@@ -124,7 +124,13 @@
 
 	message_admins("chose recipe: [chosen_recipe]")
 
-	selected_recipe = new(recipe_names_to_path[chosen_recipe])
+	var/datum/crafting_bench_recipe/recipe_to_use = recipe_names_to_path[chosen_recipe]
+
+	message_admins("recipe_to_use = [recipe_to_use]")
+
+	message_admins("selected_recipe = new [recipe_to_use]")
+
+	selected_recipe = new recipe_to_use
 
 	balloon_alert(user, "recipe chosen")
 	update_appearance()
