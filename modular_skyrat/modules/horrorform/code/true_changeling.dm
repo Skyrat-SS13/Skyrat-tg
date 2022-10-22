@@ -243,9 +243,9 @@
 	lunch.spawn_gibs()
 	var/dismembered = FALSE
 	for(var/obj/item/bodypart/guts in lunch.bodyparts)
-		if(prob(60) || dismembered)
-			continue
-		if(guts.body_part == CHEST || guts.body_part == HEAD)
+		if(dismembered)
+			break
+		if(prob(60) || guts.body_part == CHEST || guts.body_part == HEAD)
 			continue
 		guts.dismember()
 		dismembered = TRUE
