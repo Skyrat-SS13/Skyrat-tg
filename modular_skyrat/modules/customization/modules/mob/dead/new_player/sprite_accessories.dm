@@ -332,7 +332,7 @@ GLOBAL_LIST_EMPTY(cached_mutant_icon_files)
 	use_static = null
 
 /datum/sprite_accessory/socks/leggings/stirrups/gym
-	name = "Leggings - Stirrups black w/ stripe"
+	name = "Leggings - Stirrups black with stripe"
 	icon_state = "leggings-stir-black"
 	use_static = TRUE
 
