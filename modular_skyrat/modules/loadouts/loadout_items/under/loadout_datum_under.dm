@@ -241,7 +241,7 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 
 /datum/loadout_item/under/miscellaneous/vicvest
 	name = "Recolorable Buttondown Shirt with Double-Breasted Vest"
-	item_path = /obj/item/clothing/under/costume/skyrat/vicvest
+	item_path = /obj/item/clothing/under/pants/skyrat/vicvest
 
 /datum/loadout_item/under/miscellaneous/slacks
 	name = "Recolorable Slacks"
@@ -302,6 +302,10 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /datum/loadout_item/under/miscellaneous/purple_short
 	name = "Purple Shorts"
 	item_path = /obj/item/clothing/under/shorts/purple
+
+/datum/loadout_item/under/miscellaneous/recolorable_kilt
+	name = "Recolorable Kilt"
+	item_path = /obj/item/clothing/under/pants/skyrat/kilt
 
 //TODO: split loadout's miscellaneous to have "Pants/Shorts" and "Dresses/Skirts" as options too. Misc is stupid.
 
@@ -435,7 +439,7 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 
 /datum/loadout_item/under/miscellaneous/chaps
 	name = "Black Chaps"
-	item_path = /obj/item/clothing/under/pants/chaps
+	item_path = /obj/item/clothing/under/pants/skyrat/chaps
 
 /datum/loadout_item/under/miscellaneous/tracky
 	name = "Blue Tracksuit"
@@ -753,6 +757,14 @@ GLOBAL_LIST_INIT(loadout_miscunders, generate_loadout_items(/datum/loadout_item/
 /datum/loadout_item/under/formal/fancy_suit
 	name = "Fancy Suit"
 	item_path = /obj/item/clothing/under/suit/fancy
+
+/datum/loadout_item/under/formal/recolorable_suit
+	name = "Recolorable Formal Suit"
+	item_path = /obj/item/clothing/under/suit/skyrat/recolorable
+
+/datum/loadout_item/under/formal/recolorable_suitskirt
+	name = "Recolorable Formal Suitskirt"
+	item_path = /obj/item/clothing/under/suit/skyrat/recolorable/skirt
 
 /datum/loadout_item/under/formal/trek_command
 	name = "Trekkie Command Uniform"
