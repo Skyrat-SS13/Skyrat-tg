@@ -203,10 +203,9 @@
 	COOLDOWN_START(src, hit_cooldown, skill_modifier)
 
 	if(current_hits_to_completion >= selected_recipe.required_good_hits && !length(contents))
-		var/list/things_to_use = can_we_craft_this(selected_recipe.recipe_requirements)
+		var/list/things_to_use = can_we_craft_this(selected_recipe.recipe_requirements, TRUE)
 
 		create_thing_from_requirements(things_to_use, selected_recipe, user, selected_recipe.relevant_skill, selected_recipe.relevant_skill_reward)
-		clear_recipe()
 		return TOOL_ACT_TOOLTYPE_SUCCESS
 
 	current_hits_to_completion++
@@ -268,6 +267,14 @@
 		message_admins("[src] just tried to complete a forge weapon without there being a weapon head inside it to complete!")
 		return
 
+	if(length(things_to_use))
+		for(var/thing as anything in things_to_use)
+			message_admins("things_to_use has [thing] in it")
+	else
+		message_admins("things_to_use is empty!!")
+
+	if(completing_a_weapon)
+		recipe_to_follow = new /datum/crafting_bench_recipe/weapon_completion_recipe
 	var/list/materials_to_transfer = use_or_delete_recipe_requirements(things_to_use, recipe_to_follow)
 
 	var/obj/newly_created_thing
@@ -292,20 +299,31 @@
 
 	user.mind.adjust_experience(skill_to_grant, skill_amount)
 
+	clear_recipe()
+	update_appearance()
+
 /// Takes the given list, things_to_use, compares it to recipe_to_follow's requirements, then either uses items from a stack, or deletes them otherwise. Returns custom material of forge items in the end.
 /obj/structure/reagent_crafting_bench/proc/use_or_delete_recipe_requirements(list/things_to_use, datum/crafting_bench_recipe/recipe_to_follow)
 	var/list/materials_to_transfer = list()
 
 	for(var/obj/requirement_item as anything in things_to_use)
 		if(isstack(requirement_item))
+			var/stack_type
+			for(var/recipe_thing_to_reference as anything in recipe_to_follow.recipe_requirements)
+				if(!istype(requirement_item, recipe_thing_to_reference))
+					continue
+				stack_type = recipe_thing_to_reference
+				break
+
 			var/obj/item/stack/requirement_stack = requirement_item
 
-			if(requirement_stack.amount < recipe_to_follow.recipe_requirements[requirement_item])
-				recipe_to_follow.recipe_requirements[requirement_item] -= requirement_stack.amount
+			if(requirement_stack.amount < recipe_to_follow.recipe_requirements[stack_type])
+				recipe_to_follow.recipe_requirements[stack_type] -= requirement_stack.amount
 				requirement_stack.use(requirement_stack.amount)
 				continue
 
-			requirement_stack.use(recipe_to_follow.recipe_requirements)
+			requirement_stack.use(recipe_to_follow.recipe_requirements[stack_type])
+			message_admins("[requirement_stack] should have had [recipe_to_follow.recipe_requirements[stack_type]] taken from it")
 
 		else if(istype(requirement_item, /obj/item/forging/complete))
 			if(!requirement_item.custom_materials || !recipe_to_follow.transfers_materials)

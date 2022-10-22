@@ -14,6 +14,12 @@
 	/// How much experience in our relevant skill do we give upon completion?
 	var/relevant_skill_reward = 30
 
+/datum/crafting_bench_recipe/weapon_completion_recipe //Exists so I don't have to modify the code too much for weapon completion
+	recipe_name = "generic weapon completion recipe (should not be visible)"
+	recipe_requirements = list(
+		/obj/item/stack/sheet/mineral/wood = 2,
+	)
+
 /datum/crafting_bench_recipe/plate_helmet
 	recipe_name = "plate helmet"
 	recipe_requirements = list(
