@@ -522,11 +522,11 @@ export const feature_ipc_antenna: Feature<string> = {
   component: FeatureDropdownInput,
 };
 
-export const ipc_antenna_color: Feature<string> = {
+export const ipc_antenna_color: Feature<string[]> = {
   name: 'Synth Antenna Colors',
   description:
     'Want to have a fancy species name? Put it here, or leave it blank.',
-  component: FeatureColorInput,
+  component: FeatureTriColorInput,
 };
 
 export const ipc_antenna_emissive: Feature<boolean> = {
