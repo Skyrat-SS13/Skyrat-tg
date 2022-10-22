@@ -73,3 +73,7 @@
 
 /// To chambered round on gun's `process_fire()`: (list/iff_factions)
 #define COMSIG_CHAMBERED_BULLET_FIRE "chambered_bullet_fire"
+
+// Signal sent when the morgue tray throws its alarm
+#define COMSIG_MORGUE_ALARM "morgue_alarm"
+

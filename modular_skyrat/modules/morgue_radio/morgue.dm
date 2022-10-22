@@ -3,20 +3,20 @@
 	AddComponent(/datum/component/morgue_radio)
 
 /obj/structure/bodycontainer
-	var/obj/item/radio/radio
+	var/obj/item/radio/radio // The internal radio in the morgue trays.
 
 /datum/component/morgue_radio
-	var/obj/structure/bodycontainer/morgue/morgue
+	var/obj/structure/bodycontainer/morgue/morgue // Typecasted reference to the current tray.
 
 
 /datum/component/morgue_radio/RegisterWithParent()
 	morgue = parent
-	morgue.radio = new /obj/item/radio(morgue)
+	morgue.radio = new /obj/item/radio(morgue) // Initialize the radio in the morgue tray
 	morgue.radio.set_listening(FALSE)
 	RegisterSignal(morgue, COMSIG_MORGUE_ALARM, .proc/morgue_revivable)
 
 /datum/component/morgue_radio/UnregisterFromParent()
-	morgue.radio = null
+	QDEL_NULL(morgue.radio)
 	UnregisterSignal(morgue, COMSIG_MORGUE_ALARM)
 
 /datum/component/morgue_radio/proc/morgue_revivable(mob/living/cadaver)

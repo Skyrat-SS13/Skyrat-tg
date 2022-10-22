@@ -204,7 +204,7 @@ GLOBAL_LIST_EMPTY(bodycontainers) //Let them act as spawnpoints for revenants an
 			if(mob_occupant.stat == DEAD && beeper && COOLDOWN_FINISHED(src, next_beep))
 				playsound(src, 'sound/weapons/gun/general/empty_alarm.ogg', 50, FALSE) //Revive them you blind fucks
 				COOLDOWN_START(src, next_beep, beep_cooldown)
-				SEND_SIGNAL(src, "morgue_alarm", mob_occupant) // SKYRAT EDIT ADDITION: MORGUE RADIO - IM SORRY BUT THE DEFINE DOESNT WORK
+				SEND_SIGNAL(src, COMSIG_MORGUE_ALARM, mob_occupant) // SKYRAT EDIT ADDITION: MORGUE RADIO - IM SORRY BUT THE DEFINE DOESNT WORK
 			return ..()
 
 	icon_state = "morgue2" // Dead, brainded mob.
