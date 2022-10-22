@@ -490,14 +490,11 @@
 
 	var/src_turf = get_turf(src)
 	var/spawning_item = ore_item.refined_type
-	var/experience_amount = ore_item.mine_experience
 
 	for(var/spawn_ore in 1 to ore_to_sheet_amount)
 		new spawning_item(src_turf)
 
 	in_use = FALSE
-	user.mind.adjust_experience(/datum/skill/smithing, experience_amount) //useful smelting means you get some experience
-	user.mind.adjust_experience(/datum/skill/mining, experience_amount) //useful smelting means you get some experience
 	qdel(ore_item)
 	return
 
