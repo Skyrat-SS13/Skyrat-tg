@@ -12,5 +12,5 @@
 		/obj/item/reagent_containers/vapecart/cheese = 4,
 	)
 	skyrat_premium = list(
-		/obj/item/storage/fancy/cigarettes/khi = 5,
+		/obj/item/storage/fancy/cigarettes/khi = 3,
 	)
