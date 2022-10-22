@@ -312,7 +312,7 @@
 
 /obj/item/clothing/suit/hawaiianshirt
 	name = "hawaiian shirt"
-	desc = "Strangely en vouge with aviator wearing shibas."
+	desc = "Strangely en vogue with aviator wearing shibas."
 	icon_state = "hawaiianshirt"
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 	greyscale_config = /datum/greyscale_config/hawaiianshirt
