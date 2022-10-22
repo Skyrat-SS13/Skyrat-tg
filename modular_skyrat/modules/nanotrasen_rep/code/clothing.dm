@@ -7,7 +7,7 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/suits.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/suit.dmi'
 	icon_state = "bladerunner"
-	inhand_icon_state = "armoralt"
+	inhand_icon_state = "armor"
 	blood_overlay_type = "suit"
 	dog_fashion = null
 	body_parts_covered = CHEST|GROIN|ARMS

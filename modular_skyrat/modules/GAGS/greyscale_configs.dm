@@ -89,6 +89,26 @@
 	icon_file = 'modular_skyrat/modules/GAGS/icons/hats.dmi'
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/flowerpin/flowerpin_worn.json'
 
+// Hood
+
+/datum/greyscale_config/standalone_hood
+	name = "Hood"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/head/head.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/head/hood/hood.json'
+
+/datum/greyscale_config/standalone_hood/worn
+	name = "Hood (Worn)"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/head/hood/hood_worn.json'
+
+/datum/greyscale_config/standalone_hood/worn/teshari
+	icon_file = 'modular_skyrat/modules/GAGS/icons/head/head_teshari.dmi'
+
+/datum/greyscale_config/standalone_hood/worn/newvox
+	icon_file = 'modular_skyrat/modules/GAGS/icons/head/head_newvox.dmi'
+
+/datum/greyscale_config/standalone_hood/worn/oldvox
+	icon_file = 'modular_skyrat/modules/GAGS/icons/head/head_oldvox.dmi'
+
 /*
 *	MASKS
 */
@@ -212,6 +232,26 @@
 	name = "Shroud Worn"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/cloak/shroud_worn.json'
 
+// Mantle
+
+/datum/greyscale_config/mantle
+	name = "Mantle"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/neck/neck.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/neck/mantle/mantle.json'
+
+/datum/greyscale_config/mantle/worn
+	name = "Mantle (Worn)"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/neck/mantle/mantle_worn.json'
+
+/datum/greyscale_config/mantle/worn/teshari
+	icon_file = 'modular_skyrat/modules/GAGS/icons/neck/neck_teshari.dmi'
+
+/datum/greyscale_config/mantle/worn/newvox
+	icon_file = 'modular_skyrat/modules/GAGS/icons/neck/neck_newvox.dmi'
+
+/datum/greyscale_config/mantle/worn/oldvox
+	icon_file = 'modular_skyrat/modules/GAGS/icons/neck/neck_oldvox.dmi'
+
 // COLLARS
 
 /datum/greyscale_config/collar
@@ -296,6 +336,46 @@
 *	SUITS
 */
 
+// Apron
+
+/datum/greyscale_config/apron
+	name = "Apron"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/suit/suit.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/suits/apron/apron.json'
+
+/datum/greyscale_config/apron/worn
+	name = "Apron (Worn)"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/suits/apron/apron_worn.json'
+
+/datum/greyscale_config/apron/worn/teshari
+	icon_file = 'modular_skyrat/modules/GAGS/icons/suit/suit_teshari.dmi'
+
+/datum/greyscale_config/apron/worn/newvox
+	icon_file = 'modular_skyrat/modules/GAGS/icons/suit/suit_newvox.dmi'
+
+/datum/greyscale_config/apron/worn/oldvox
+	icon_file = 'modular_skyrat/modules/GAGS/icons/suit/suit_oldvox.dmi'
+
+// Bathrobes
+
+/datum/greyscale_config/bathrobe
+	name = "Bathrobe"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/suit/suit.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/suits/bathrobe/bathrobe.json'
+
+/datum/greyscale_config/bathrobe/worn
+	name = "Worn Bathrobe"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/suits/bathrobe/bathrobe_worn.json'
+
+/datum/greyscale_config/bathrobe/worn/teshari
+	icon_file = 'modular_skyrat/modules/GAGS/icons/suit/suit_teshari.dmi'
+
+/datum/greyscale_config/bathrobe/worn/newvox
+	icon_file = 'modular_skyrat/modules/GAGS/icons/suit/suit_newvox.dmi'
+
+/datum/greyscale_config/bathrobe/worn/oldvox
+	icon_file = 'modular_skyrat/modules/GAGS/icons/suit/suit_oldvox.dmi'
+
 // FANCY SUITS
 /datum/greyscale_config/fancy_suit
 	name = "Fancy Suit"
@@ -347,14 +427,16 @@
 
 // SWEATERS
 
-/datum/greyscale_config/sweater
-	name = "Sweater"
+/datum/greyscale_config/cableknit_sweater
+	name = "Cableknit Sweater"
 	icon_file = 'modular_skyrat/modules/GAGS/icons/sweaters.dmi'
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/sweater/sweater.json'
 
-/datum/greyscale_config/sweater/worn
-	name = "Sweater (Worn)"
+/datum/greyscale_config/cableknit_sweater/worn
+	name = "Cableknit Sweater (Worn)"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/sweater/sweater_worn.json'
+
+//Keyhole uses the same configs!
 
 // URBAN COAT
 
@@ -425,11 +507,11 @@
 
 /datum/greyscale_config/jumpsuit_worn/digi
 	name = "Worn Jumpsuit - Digitigrade"
-	icon_file = 'modular_skyrat/modules/GAGS/icons/jumpsuit_digi.dmi'
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/color_digi.dmi'
 
 /datum/greyscale_config/jumpsuit_prison_worn/digi
 	name = "Worn Prison Jumpsuit - Digitigrade"
-	icon_file = 'modular_skyrat/modules/GAGS/icons/jumpsuit_digi.dmi'
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/color_digi.dmi'
 
 /datum/greyscale_config/jumpsuit_worn/vox
 	name = "Worn Jumpsuit - Vox"
@@ -651,21 +733,6 @@
 	name = "Worn Yukata - Digitigrade"
 	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/costume_digi.dmi'
 
-// MISC UNDER
-
-/datum/greyscale_config/bathrobe
-	name = "Bathrobe"
-	icon_file = 'modular_skyrat/master_files/icons/obj/clothing/under/costume.dmi'
-	json_config = 'modular_skyrat/modules/GAGS/json_configs/costumes/misc.json'
-
-/datum/greyscale_config/bathrobe/worn
-	name = "Worn Bathrobe"
-	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/costume.dmi'
-
-/datum/greyscale_config/bathrobe/worn/digi
-	name = "Worn Bathrobe - Digitigrade"
-	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/costume_digi.dmi'
-
 /datum/greyscale_config/kilt
 	name = "Kilt"
 	icon_file = 'modular_skyrat/modules/GAGS/icons/kilt.dmi'
@@ -674,6 +741,14 @@
 /datum/greyscale_config/kilt/worn
 	name = "Kilt (Worn)"
 	json_config = 'modular_skyrat/modules/GAGS/json_configs/kilt/kilt_worn.json'
+
+/*
+TREK
+*/
+
+/datum/greyscale_config/trek/worn/digi
+	name = "Worn Trek Uniform - Digitigrade"
+	icon_file = 'modular_skyrat/master_files/icons/mob/clothing/under/trek_digi.dmi'
 
 /*
 *	SHOES
@@ -700,10 +775,79 @@
 /datum/greyscale_config/sneakers_worn/teshari
 	name = "Worn Sneakers - Teshari"
 	icon_file = 'modular_skyrat/modules/GAGS/icons/sneakers_teshari.dmi'
-
+digi
 /datum/greyscale_config/sneakers_orange_worn/teshari
 	name = "Worn Orange Sneakers - Teshari"
 	icon_file = 'modular_skyrat/modules/GAGS/icons/sneakers_teshari.dmi'
+
+// Boots
+
+/datum/greyscale_config/boots
+	name = "Colorable Boots"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/shoes/shoes.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/shoes/boots/boots.json'
+
+/datum/greyscale_config/boots/worn
+	name = "Colorable Boots (Worn)"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/shoes/boots/boots_worn.json'
+
+/datum/greyscale_config/boots/worn/digi
+	icon_file = 'modular_skyrat/modules/GAGS/icons/shoes/shoes_digi.dmi'
+
+/datum/greyscale_config/boots/worn/teshari
+	icon_file = 'modular_skyrat/modules/GAGS/icons/shoes/shoes_teshari.dmi'
+
+/datum/greyscale_config/boots/worn/newvox
+	icon_file = 'modular_skyrat/modules/GAGS/icons/shoes/shoes_newvox.dmi'
+
+/datum/greyscale_config/boots/worn/oldvox
+	icon_file = 'modular_skyrat/modules/GAGS/icons/shoes/shoes_oldvox.dmi'
+
+// Laceups
+
+/datum/greyscale_config/laceup
+	name = "Colorable Laceups"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/shoes/shoes.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/shoes/laceups/laceups.json'
+
+/datum/greyscale_config/laceup/worn
+	name = "Colorable Laceups (Worn)"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/shoes/laceups/laceups_worn.json'
+
+/datum/greyscale_config/laceup/worn/digi
+	icon_file = 'modular_skyrat/modules/GAGS/icons/shoes/shoes_digi.dmi'
+
+/datum/greyscale_config/laceup/worn/teshari
+	icon_file = 'modular_skyrat/modules/GAGS/icons/shoes/shoes_teshari.dmi'
+
+/datum/greyscale_config/laceup/worn/newvox
+	icon_file = 'modular_skyrat/modules/GAGS/icons/shoes/shoes_newvox.dmi'
+
+/datum/greyscale_config/laceup/worn/oldvox
+	icon_file = 'modular_skyrat/modules/GAGS/icons/shoes/shoes_oldvox.dmi'
+
+// Sandals
+
+/datum/greyscale_config/sandals
+	name = "Colorable Sandals"
+	icon_file = 'modular_skyrat/modules/GAGS/icons/shoes/shoes.dmi'
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/shoes/sandals/sandals.json'
+
+/datum/greyscale_config/sandals/worn
+	name = "Colorable Sandals (Worn)"
+	json_config = 'modular_skyrat/modules/GAGS/json_configs/shoes/sandals/sandals_worn.json'
+
+/datum/greyscale_config/sandals/worn/digi
+	icon_file = 'modular_skyrat/modules/GAGS/icons/shoes/shoes_digi.dmi'
+
+/datum/greyscale_config/sandals/worn/teshari
+	icon_file = 'modular_skyrat/modules/GAGS/icons/shoes/shoes_teshari.dmi'
+
+/datum/greyscale_config/sandals/worn/newvox
+	icon_file = 'modular_skyrat/modules/GAGS/icons/shoes/shoes_newvox.dmi'
+
+/datum/greyscale_config/sandals/worn/oldvox
+	icon_file = 'modular_skyrat/modules/GAGS/icons/shoes/shoes_oldvox.dmi'
 
 // WRAPS
 

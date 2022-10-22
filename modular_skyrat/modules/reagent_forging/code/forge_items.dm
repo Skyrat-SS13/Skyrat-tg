@@ -1,5 +1,7 @@
 /obj/item/forging
 	icon = 'modular_skyrat/modules/reagent_forging/icons/obj/forge_items.dmi'
+	lefthand_file = 'modular_skyrat/modules/reagent_forging/icons/mob/forge_weapon_l.dmi'
+	righthand_file = 'modular_skyrat/modules/reagent_forging/icons/mob/forge_weapon_r.dmi'
 	toolspeed = 1 SECONDS
 	///whether the item is in use or not
 	var/in_use = FALSE
@@ -24,9 +26,11 @@
 		return
 
 /obj/item/forging/hammer
-	name = "forging hammer"
-	desc = "A hammer specifically crafted for use in forging. Used to slowly shape metal; careful, you could break something with it!"
+	name = "forging mallet"
+	desc = "A mallet specifically crafted for use in forging. Used to slowly shape metal; careful, you could break something with it!"
 	icon_state = "hammer"
+	inhand_icon_state = "hammer"
+	worn_icon_state = "hammer_back"
 	tool_behaviour = TOOL_HAMMER
 	///the list of things that, if attacked, will set the attack speed to rapid
 	var/static/list/fast_attacks = list(
@@ -294,9 +298,18 @@
 	. = ..()
 	if(length(tool.contents) > 0)
 		user.balloon_alert(user, "tongs are full already!")
-		return
+		return FALSE
 	if(!material_type && !custom_materials)
-		user.balloon_alert(user, "unusable material!")
+		user.balloon_alert(user, "invalid material!")
 		return
 	forceMove(tool)
 	tool.icon_state = "tong_full"
+
+/obj/tong_act(mob/living/user, obj/item/tool)
+	. = ..()
+	if(length(tool.contents))
+		user.balloon_alert(user, "tongs are full already!")
+		return FALSE
+	if(skyrat_obj_flags & ANVIL_REPAIR)
+		forceMove(tool)
+		tool.icon_state = "tong_full"

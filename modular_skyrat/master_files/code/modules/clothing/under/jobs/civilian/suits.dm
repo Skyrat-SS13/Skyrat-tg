@@ -17,6 +17,7 @@
 	desc = "A clean white shirt with a tight-fitting black pencilskirt."
 	icon_state = "black_pencil"
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
+	gets_cropped_on_taurs = FALSE
 
 /obj/item/clothing/under/suit/skyrat/pencil/black_really
 	name = "executive pencilskirt"
@@ -62,16 +63,15 @@
 	name = "wide-collared executive suit"
 	desc = "A formal black suit with the collar worn wide, intended for the station's finest."
 	icon_state = "really_black_suit_collar"
-	inhand_icon_state = "really_black_suit"
 
 /obj/item/clothing/under/suit/skyrat/black_really_collared/skirt
 	name = "wide-collared executive suitskirt"
 	desc = "A formal black suit with the collar worn wide, intended for the station's finest."
 	icon_state = "really_black_suit_skirt_collar"
-	inhand_icon_state = "really_black_suit_skirt"
 	body_parts_covered = CHEST|GROIN|ARMS
 	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY|FEMALE_UNIFORM_NO_BREASTS
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+	gets_cropped_on_taurs = FALSE
 
 /obj/item/clothing/under/suit/skyrat/inferno
 	name = "inferno suit"

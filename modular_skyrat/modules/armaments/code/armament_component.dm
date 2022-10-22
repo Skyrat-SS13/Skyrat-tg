@@ -85,11 +85,11 @@
 		data["card_name"] = inserted_card.name
 
 	data["armaments_list"] = list()
-	for(var/armament_category as anything in GLOB.armament_entries)
+	for(var/armament_category as anything in SSarmaments.entries)
 		var/list/armament_subcategories = list()
-		for(var/subcategory as anything in GLOB.armament_entries[armament_category][CATEGORY_ENTRY])
+		for(var/subcategory as anything in SSarmaments.entries[armament_category][CATEGORY_ENTRY])
 			var/list/subcategory_items = list()
-			for(var/datum/armament_entry/armament_entry as anything in GLOB.armament_entries[armament_category][CATEGORY_ENTRY][subcategory])
+			for(var/datum/armament_entry/armament_entry as anything in SSarmaments.entries[armament_category][CATEGORY_ENTRY][subcategory])
 				if(products && !(armament_entry.type in products))
 					continue
 				subcategory_items += list(list(
@@ -115,7 +115,7 @@
 			continue
 		data["armaments_list"] += list(list(
 			"category" = armament_category,
-			"category_limit" = GLOB.armament_entries[armament_category][CATEGORY_LIMIT],
+			"category_limit" = SSarmaments.entries[armament_category][CATEGORY_LIMIT],
 			"category_uses" = used_categories[armament_category],
 			"subcategories" = armament_subcategories,
 		))
@@ -156,9 +156,9 @@
 
 /datum/component/armament/proc/check_item(reference)
 	var/datum/armament_entry/armament_entry
-	for(var/category in GLOB.armament_entries)
-		for(var/subcategory in GLOB.armament_entries[category][CATEGORY_ENTRY])
-			armament_entry = locate(reference) in GLOB.armament_entries[category][CATEGORY_ENTRY][subcategory]
+	for(var/category in SSarmaments.entries)
+		for(var/subcategory in SSarmaments.entries[category][CATEGORY_ENTRY])
+			armament_entry = locate(reference) in SSarmaments.entries[category][CATEGORY_ENTRY][subcategory]
 			if(armament_entry)
 				break
 		if(armament_entry)
@@ -183,7 +183,7 @@
 	if(!inserted_card)
 		to_chat(user, span_warning("No card inserted!"))
 		return
-	if(used_categories[armament_entry.category] >= GLOB.armament_entries[armament_entry.category][CATEGORY_LIMIT])
+	if(used_categories[armament_entry.category] >= SSarmaments.entries[armament_entry.category][CATEGORY_LIMIT])
 		to_chat(user, span_warning("Category limit reached!"))
 		return
 	if(purchased_items[armament_entry] >= armament_entry.max_purchase)
