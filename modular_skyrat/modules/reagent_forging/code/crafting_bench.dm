@@ -115,21 +115,16 @@
 		update_appearance()
 		return
 
-	var/chosen_recipe = show_radial_menu(
-		user,
-		src,
-		radial_choice_list,
-		radius = 38,
-		require_near = TRUE,
-		tooltips = TRUE,
-		)
+	var/chosen_recipe = show_radial_menu(user, src, radial_choice_list, radius = 38, require_near = TRUE, tooltips = TRUE)
 
 	if(isnull(chosen_recipe))
 		balloon_alert(user, "no recipe choice")
+		message_admins("recipe chosen was null!!!!!!!")
 		return
 
-	selected_recipe = recipe_names_to_path[chosen_recipe]
-	selected_recipe = new
+	message_admins("chose recipe: [chosen_recipe]")
+
+	selected_recipe = new(recipe_names_to_path[chosen_recipe])
 
 	balloon_alert(user, "recipe chosen")
 	update_appearance()
@@ -223,7 +218,7 @@
 /// Takes the given list of item requirements and checks the surroundings for them, returns TRUE unless return_ingredients_list is set, in which case a list of all the items to use is returned
 /obj/structure/reagent_crafting_bench/proc/can_we_craft_this(list/required_items, return_ingredients_list = FALSE)
 	if(!length(required_items))
-		log_admin("[src] just tried to check for ingredients nearby without having a list of items to check for!")
+		message_admins("[src] just tried to check for ingredients nearby without having a list of items to check for!")
 		return FALSE
 
 	var/list/surrounding_items = list()
@@ -259,11 +254,11 @@
 /obj/structure/reagent_crafting_bench/proc/create_thing_from_requirements(list/things_to_use, datum/crafting_bench_recipe/recipe_to_follow, mob/living/user, datum/skill/skill_to_grant, skill_amount, completing_a_weapon)
 
 	if(!recipe_to_follow && !completing_a_weapon)
-		log_admin("[src] just tried to complete a recipe without having a recipe, and without it being the completion of a forging weapon!")
+		message_admins("[src] just tried to complete a recipe without having a recipe, and without it being the completion of a forging weapon!")
 		return
 
 	if(completing_a_weapon && (!length(contents) || !istype(contents[1], /obj/item/forging/complete)))
-		log_admin("[src] just tried to complete a forge weapon without there being a weapon head inside it to complete!")
+		message_admins("[src] just tried to complete a forge weapon without there being a weapon head inside it to complete!")
 		return
 
 	var/list/materials_to_transfer = use_or_delete_recipe_requirements(things_to_use, recipe_to_follow)
@@ -282,7 +277,7 @@
 		newly_created_thing = new recipe_to_follow.resulting_item(src)
 
 	if(!newly_created_thing)
-		log_admin("[src] just failed to create something while crafting!")
+		message_admins("[src] just failed to create something while crafting!")
 		return
 
 	if(recipe_to_follow.transfers_materials)
