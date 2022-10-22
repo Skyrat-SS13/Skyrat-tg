@@ -182,6 +182,8 @@
 			return "[jobtitle] is restricted from your species."
 		if(JOB_UNAVAILABLE_FLAVOUR)
 			return "[jobtitle] requires you to have flavour text for your character."
+		if(JOB_UNAVAILABLE_COMMAND_AGE)
+			return "[jobtitle] requires your character to be at least [MIN_COMMAND_AGE] years old."
 		//SKYRAT EDIT END
 		if(JOB_UNAVAILABLE_ANTAG_INCOMPAT)
 			return "[jobtitle] is not compatible with some antagonist role assigned to you."

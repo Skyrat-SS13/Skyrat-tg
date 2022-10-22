@@ -29,3 +29,6 @@
 #define BODYPART_ICON_SYNTHMAMMAL 'modular_skyrat/modules/bodyparts/icons/synthmammal_parts_greyscale.dmi'
 #define BODYPART_ICON_IPC 'modular_skyrat/modules/bodyparts/icons/ipc_parts.dmi'
 #define BODYPART_ICON_SYNTHLIZARD 'modular_skyrat/modules/bodyparts/icons/synthliz_parts_greyscale.dmi'
+
+/// What's the minimum age to be command?
+#define MIN_COMMAND_AGE 25

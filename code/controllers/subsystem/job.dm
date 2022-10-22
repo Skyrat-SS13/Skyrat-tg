@@ -926,6 +926,10 @@ SUBSYSTEM_DEF(job)
 		JobDebug("[debug_prefix] Error: [get_job_unavailable_error_message(JOB_UNAVAILABLE_FLAVOUR)], Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")
 		return JOB_UNAVAILABLE_FLAVOUR
 
+	if((player.client.prefs.read_preference(/datum/preference/numeric/age) < MIN_COMMAND_AGE) && (possible_job.departments_bitflags & DEPARTMENT_BITFLAG_COMMAND))
+		JobDebug("[debug_prefix] Error: [get_job_unavailable_error_message(JOB_UNAVAILABLE_COMMAND_AGE)], Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")
+		return JOB_UNAVAILABLE_FLAVOUR
+
 
 	//SKYRAT EDIT END
 
