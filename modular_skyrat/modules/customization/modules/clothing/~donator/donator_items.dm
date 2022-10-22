@@ -1,5 +1,4 @@
-//Donator reward for Otome
-//give it to them in the loadout or something similar, if you ever remove these cigs from the vending machine
+//Donator reward for UltramariFox
 /obj/item/clothing/mask/cigarette/khi
 	name = "\improper Kitsuhana Singularity cigarette"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/masks.dmi'
