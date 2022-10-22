@@ -67,7 +67,8 @@
 			var/obj/item/forging/complete/contained_forge_item = contents[1]
 
 			. += span_notice("[src] has a [initial(contained_forge_item.name)] sitting on it, awaiting completion. <br>")
-			. += span_notice("With <b>[WEAPON_COMPLETION_WOOD_AMOUNT]</b> sheets of <b>wood</b> nearby, and some <b>hammering</b>, it could be completed into a [initial(contained_forge_item.spawn_item.name)].")
+			var/obj/item/completion_item = contained_forge_item.spawning_item
+			. += span_notice("With <b>[WEAPON_COMPLETION_WOOD_AMOUNT]</b> sheets of <b>wood</b> nearby, and some <b>hammering</b>, it could be completed into a [initial(completion_item.name)].")
 			return // We don't want to show any selected recipes if there's weapon head on the bench
 
 	if(!selected_recipe)
@@ -223,24 +224,32 @@
 	var/list/requirement_items = list()
 
 	for(var/obj/item/potential_requirement in get_environment())
+		message_admins("potential ingredient: [potential_requirement]")
 		surrounding_items += potential_requirement
 
 	for(var/obj/item/requirement_path as anything in required_items)
+		message_admins("checking for: [requirement_path]")
 		var/required_amount = required_items[requirement_path]
 
 		for(var/obj/item/nearby_item as anything in surrounding_items)
-			if(!ispath(nearby_item, requirement_path))
+			message_admins("potentially: [nearby_item]")
+			if(!istype(nearby_item, requirement_path))
+				message_admins("it was not: [nearby_item]")
 				continue
 
+			message_admins("it was: [nearby_item]")
 			if(isstack(nearby_item)) // If the item is a stack, check if that stack has enough material in it to fill out the amount
 				var/obj/item/stack/nearby_stack = nearby_item
 				required_amount -= nearby_stack.amount
+				message_admins("it was: [nearby_stack], stack amount is [nearby_stack.amount], required amount is now [required_amount]")
 			else // Otherwise, we still exist and should subtract one from the required number of items
 				required_amount -= 1
+				message_admins("it was: [nearby_item], required amount is now [required_amount]")
 
 			requirement_items += nearby_item
 
 		if(required_amount > 0)
+			message_admins("required amount was not zero or less: [required_amount]")
 			return FALSE
 
 	if(return_ingredients_list)
