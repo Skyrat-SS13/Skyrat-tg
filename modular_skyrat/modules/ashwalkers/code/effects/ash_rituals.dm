@@ -123,8 +123,15 @@
 		anti_endless++
 
 	new /obj/effect/particle_effect/sparks(spawn_turf)
-	sleep(3 SECONDS)
-	new megafauna_choice(spawn_turf)
+	addtimer(CALLBACK(src, .proc/spawn_megafauna, megafauna_choice, spawn_turf), 3 SECONDS)
+
+/**
+ * Called within an addtimer in the ritual success of "Incite Megafauna."
+ * ARG: chosen_megafauna is the megafauna that will be spawned
+ * ARG: spawning_turf is the turf that the megafauna will be spawned on
+ */
+/datum/ash_ritual/incite_megafauna/proc/spawn_megafauna(chosen_megafauna, turf/spawning_turf)
+	new chosen_megafauna(spawning_turf)
 
 /datum/ash_ritual/ash_ceremony
 	name = "Ashen Age Ceremony"
