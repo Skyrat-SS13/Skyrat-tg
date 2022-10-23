@@ -1151,3 +1151,76 @@
       juices when upgraded.
   nevimer:
   - code_imp: cleaned up true changeling code
+2022-10-23:
+  Ebin-Halcyon:
+  - imageadd: The Varsity jacket has been GAGSified
+  - imageadd: a new flavor of leather coat has been added to the loadout menu, check
+      there.
+  - imageadd: Thigh high and knee high stirrup socks have been resprited, and have
+      had digitigrade variants added.
+  Foxtrot (Funce):
+  - admin: '"Admin PM" verb can now be cancelled without an error message'
+  GoldenAlpharex, Tastyfish:
+  - bugfix: Fixes mentor-related messages not getting logged properly.
+  LT3:
+  - bugfix: Tramstation's tram doors now work properly.
+  - rscadd: The tram has a destination sign, and the call buttons have a status display
+      for where the tram is and if it's operational or not.
+  Melbert:
+  - bugfix: Fixes a minor runtime with Fleshmend clearing scars.
+  - bugfix: Fixes a runtime from non-cultists picking up cult daggers
+  - bugfix: Nutriments and Peptides will no longer heal robotic limbs.
+  - bugfix: Fixes a runtime with voting actions.
+  OrionTheFox:
+  - imageadd: Poly suit/suitskirt/kilt have been resprited and GAGSified proper! They
+      are now the Recolorable Formal Suit/Suitskirt, and Recolorable Kilt!
+  - imagedel: Poly Shorts, jumpsuit, panties, tank-tops etc are gone. Please use the
+      Recolorable Buttondown w/ Shorts for the Shorts, the Greyscale Jumpsuit for
+      the jumpsuit, and the others are already underwear types.
+  - rscadd: the Countess dress is once again available in the Formal uniform section
+      of the loadout!
+  Paxilmaniac:
+  - imageadd: The color contrasting on recolorable jackboots and recolorable laceups
+      has been improved
+  - bugfix: The standalone hoods (covers your hair) will now actually cover your hair
+  - bugfix: Large mortar examine text won't have a section that's all in bold text
+      anymore
+  - code_imp: Large mortar code has been spaced out a bit for your viewing pleasure
+  - rscadd: Dropping an anvil on someone from the z-level above may result in severe
+      injury or death.
+  - qol: Anvils will now tell you what's on them through examine, as well as the fact
+      you can unanchor anvils.
+  - code_imp: Many of the balloon alerts in anvils have been tweaked or made visible
+      to better fit with the standards for balloon alerts.
+  - imageadd: Primitive centrifuges have new icons, and can be made of different materials
+      now
+  - code_imp: Primitive centrifuge code has been spaced out a bit (golden loves me)
+  SkyratBot:
+  - bugfix: made regenerate_organs() apply to external organs as well as internal
+      ones
+  - bugfix: Clockwork's ruin should no longer have ungenerated turfs.
+  - refactor: removed prison_radio var
+  - rscadd: new popcorn flavors and two kinds of empty boxes after them
+  - bugfix: Fixed a minor error causing the H.O.N.K. to be impossible to construct.
+  Tastyfish:
+  - bugfix: Corrections officers are now supplied with outfits again, instead of purple
+      and black trash bags. NT apologizes for the logistic error.
+  san7890, with regards to FernandoJ8:
+  - config: A new TOML system has been introduced to modify different settings and
+      variables regarding jobs! You can edit the standard stuff, like roundstart positions
+      and overall positions of a job like usual (feature parse), but you can edit
+      two new things! You can change how long an account needs to be "aged" on a server
+      for to unlock a job, as well as the actual number of minutes a player must get
+      to unlock a specific job. Nifty, eh? Do remember, this is entire system won't
+      load without the overall LOAD_JOBS_FROM_TXT flag!
+  - server: Keep in mind that the jobconfig.toml is now the preferred system for updating
+      job-related config, while jobs.txt should be considered deprecated. Support
+      for loading it via jobs.txt will remain indefinitely, but expect to see a small
+      error every time we validate the config.
+  - server: 'FYI: To use jobconfig.toml, it is strongly advised that instead of downloading
+      the codebase default that you run the Generate Job Configuration verb (in Server
+      tab) in order to import all of your already set variables from jobs.txt. Please
+      check to ensure that all of your wanted settings are present in the new file.'
+  theOOZ:
+  - bugfix: The 'jitter' option for the feign impairment verb applies the correct
+      impairment
