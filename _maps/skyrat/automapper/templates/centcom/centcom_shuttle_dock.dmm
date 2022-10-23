@@ -78,8 +78,8 @@
 "ce" = (
 /obj/structure/table/reinforced,
 /obj/item/papercutter{
-	pixel_y = 4;
-	pixel_x = 3
+	pixel_x = 3;
+	pixel_y = 4
 	},
 /obj/item/paperslip,
 /turf/open/floor/iron/dark/textured_large,
@@ -223,6 +223,17 @@
 	},
 /turf/open/floor/iron,
 /area/centcom/central_command_areas/evacuation)
+"gl" = (
+/obj/machinery/cryopod{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/green{
+	dir = 1
+	},
+/turf/open/floor/iron/white/side{
+	dir = 5
+	},
+/area/centcom/central_command_areas/evacuation)
 "gv" = (
 /turf/open/floor/iron/showroomfloor,
 /area/centcom/central_command_areas/evacuation)
@@ -294,8 +305,8 @@
 /area/centcom/central_command_areas/supplypod)
 "iB" = (
 /obj/machinery/door/poddoor/shutters/window{
-	name = "Snack Counter Shutters";
-	id = "cc_snack"
+	id = "cc_snack";
+	name = "Snack Counter Shutters"
 	},
 /obj/structure/table/reinforced,
 /turf/open/floor/iron/dark/textured_large,
@@ -379,13 +390,6 @@
 /obj/structure/window/spawner/east,
 /turf/open/floor/grass,
 /area/centcom/central_command_areas/evacuation)
-"mL" = (
-/obj/effect/turf_decal/delivery/white,
-/obj/machinery/door/airlock/bathroom{
-	id_tag = "centrest1"
-	},
-/turf/open/floor/iron/dark/textured_large,
-/area/centcom/central_command_areas/evacuation)
 "ne" = (
 /obj/structure/deployable_barricade/guardrail{
 	dir = 1
@@ -393,6 +397,20 @@
 /turf/open/floor/iron/dark/side{
 	dir = 1
 	},
+/area/centcom/central_command_areas/evacuation)
+"nm" = (
+/obj/structure/toilet{
+	dir = 1
+	},
+/obj/machinery/button/door/directional/west{
+	id = "centrest1";
+	name = "Lock Control";
+	normaldoorcontrol = 1;
+	specialfunctions = 4
+	},
+/obj/effect/turf_decal/bot_red,
+/obj/machinery/light/cold/no_nightlight/directional/east,
+/turf/open/floor/iron/showroomfloor,
 /area/centcom/central_command_areas/evacuation)
 "nn" = (
 /obj/item/storage/briefcase{
@@ -454,25 +472,14 @@
 /obj/effect/turf_decal/bot,
 /turf/open/floor/iron/dark/textured_large,
 /area/centcom/central_command_areas/evacuation)
+"oX" = (
+/turf/open/floor/iron/white,
+/area/centcom/central_command_areas/evacuation)
 "pp" = (
 /obj/effect/turf_decal/arrows{
 	dir = 4
 	},
 /turf/open/floor/iron/smooth,
-/area/centcom/central_command_areas/evacuation)
-"pL" = (
-/obj/structure/toilet{
-	pixel_y = 9
-	},
-/obj/machinery/button/door/directional/west{
-	id = "centrest2";
-	name = "Lock Control";
-	normaldoorcontrol = 1;
-	specialfunctions = 4
-	},
-/obj/effect/turf_decal/bot_red,
-/obj/machinery/light/cold/no_nightlight/directional/east,
-/turf/open/floor/iron/showroomfloor,
 /area/centcom/central_command_areas/evacuation)
 "qB" = (
 /obj/structure/chair/sofa/bench/right{
@@ -568,20 +575,6 @@
 	},
 /turf/open/floor/iron/dark/textured_large,
 /area/centcom/central_command_areas/evacuation)
-"ud" = (
-/obj/structure/toilet{
-	pixel_y = 9
-	},
-/obj/machinery/button/door/directional/west{
-	id = "centrest1";
-	name = "Lock Control";
-	normaldoorcontrol = 1;
-	specialfunctions = 4
-	},
-/obj/effect/turf_decal/bot_red,
-/obj/machinery/light/cold/no_nightlight/directional/east,
-/turf/open/floor/iron/showroomfloor,
-/area/centcom/central_command_areas/evacuation)
 "ug" = (
 /turf/open/floor/iron/stairs{
 	dir = 8
@@ -653,6 +646,20 @@
 /area/space)
 "xi" = (
 /obj/effect/turf_decal/tile/dark_red/opposingcorners,
+/turf/open/floor/iron/showroomfloor,
+/area/centcom/central_command_areas/evacuation)
+"xN" = (
+/obj/structure/toilet{
+	dir = 1
+	},
+/obj/machinery/button/door/directional/west{
+	id = "centrest2";
+	name = "Lock Control";
+	normaldoorcontrol = 1;
+	specialfunctions = 4
+	},
+/obj/effect/turf_decal/bot_red,
+/obj/machinery/light/cold/no_nightlight/directional/east,
 /turf/open/floor/iron/showroomfloor,
 /area/centcom/central_command_areas/evacuation)
 "xP" = (
@@ -731,17 +738,6 @@
 "zO" = (
 /turf/open/floor/wood/large,
 /area/centcom/central_command_areas/evacuation)
-"zR" = (
-/obj/structure/urinal/directional/south,
-/obj/effect/turf_decal/bot_white,
-/turf/open/floor/iron/dark/textured_large,
-/area/centcom/central_command_areas/evacuation)
-"zW" = (
-/obj/machinery/dryer{
-	pixel_y = 17
-	},
-/turf/open/floor/iron/dark/textured_large,
-/area/centcom/central_command_areas/evacuation)
 "Aa" = (
 /obj/structure/table/reinforced,
 /obj/machinery/chem_dispenser/drinks/fullupgrade{
@@ -782,6 +778,12 @@
 "AM" = (
 /obj/structure/chair/sofa/bench/right,
 /turf/open/floor/iron/dark/textured_large,
+/area/centcom/central_command_areas/evacuation)
+"AO" = (
+/obj/machinery/door/airlock/bathroom{
+	id_tag = "centrest1"
+	},
+/turf/open/floor/iron/showroomfloor,
 /area/centcom/central_command_areas/evacuation)
 "Bl" = (
 /obj/structure/table/wood,
@@ -1090,6 +1092,10 @@
 /obj/structure/desk_bell/speed_demon,
 /turf/open/floor/iron/dark/textured_large,
 /area/centcom/central_command_areas/evacuation)
+"KG" = (
+/obj/machinery/door/airlock/public/glass,
+/turf/open/floor/iron/white,
+/area/centcom/central_command_areas/evacuation)
 "KI" = (
 /obj/machinery/door/airlock/centcom{
 	name = "CentCom Supplypod Loading"
@@ -1118,6 +1124,15 @@
 	},
 /turf/open/floor/iron/dark/textured_large,
 /area/centcom/central_command_areas/evacuation)
+"Mi" = (
+/obj/machinery/computer/cryopod{
+	pixel_y = -29
+	},
+/obj/machinery/light/cold/no_nightlight/directional/east{
+	dir = 2
+	},
+/turf/open/floor/iron/white,
+/area/centcom/central_command_areas/evacuation)
 "Mm" = (
 /obj/structure/bookcase/random,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
@@ -1128,9 +1143,9 @@
 	dir = 4;
 	dwidth = 25;
 	height = 50;
-	shuttle_id = "emergency_away";
 	json_key = "emergency";
 	name = "CentCom Emergency Shuttle Dock";
+	shuttle_id = "emergency_away";
 	width = 50
 	},
 /turf/open/space,
@@ -1260,6 +1275,13 @@
 	},
 /turf/open/floor/iron/dark/textured_large,
 /area/centcom/central_command_areas/evacuation)
+"Qg" = (
+/obj/machinery/dryer{
+	pixel_y = 17
+	},
+/obj/effect/turf_decal/bot_white,
+/turf/open/floor/iron/dark/textured_large,
+/area/centcom/central_command_areas/evacuation)
 "Qh" = (
 /obj/machinery/door/airlock/centcom{
 	name = "CentCom Prisoner Receiving "
@@ -1326,13 +1348,6 @@
 	dir = 8
 	},
 /area/centcom/central_command_areas/evacuation)
-"Ru" = (
-/obj/effect/turf_decal/delivery/white,
-/obj/machinery/door/airlock/bathroom{
-	id_tag = "centrest2"
-	},
-/turf/open/floor/iron/dark/textured_large,
-/area/centcom/central_command_areas/evacuation)
 "RI" = (
 /obj/structure/chair/sofa/bench/right,
 /obj/machinery/light/warm/no_nightlight/directional/north,
@@ -1358,6 +1373,17 @@
 /obj/structure/flora/bush/flowers_yw/style_random,
 /obj/structure/window/spawner/west,
 /turf/open/floor/grass,
+/area/centcom/central_command_areas/evacuation)
+"TQ" = (
+/obj/effect/turf_decal/tile/green{
+	dir = 4
+	},
+/obj/machinery/cryopod{
+	dir = 8
+	},
+/turf/open/floor/iron/white/side{
+	dir = 9
+	},
 /area/centcom/central_command_areas/evacuation)
 "TS" = (
 /turf/open/floor/iron/dark/side{
@@ -1470,6 +1496,12 @@
 	dir = 1
 	},
 /turf/open/floor/grass,
+/area/centcom/central_command_areas/evacuation)
+"Zr" = (
+/obj/machinery/door/airlock/bathroom{
+	id_tag = "centrest2"
+	},
+/turf/open/floor/iron/showroomfloor,
 /area/centcom/central_command_areas/evacuation)
 "Zt" = (
 /obj/machinery/vending/imported/mothic,
@@ -2130,11 +2162,11 @@ ji
 AI
 BF
 jX
-zW
+Qg
 PK
 PK
-PK
-ff
+AO
+nm
 jX
 "}
 (22,1,1) = {"
@@ -2163,8 +2195,8 @@ Ep
 gv
 gv
 gv
-gv
-gv
+jX
+jX
 jX
 "}
 (23,1,1) = {"
@@ -2190,11 +2222,11 @@ oS
 ne
 BF
 jX
-ho
-ff
+DK
+gv
 IJ
-gv
-gv
+Zr
+xN
 jX
 "}
 (24,1,1) = {"
@@ -2223,7 +2255,7 @@ jX
 jX
 jX
 jX
-gv
+jX
 jX
 jX
 "}
@@ -2250,11 +2282,11 @@ VE
 ed
 BF
 DK
-jX
-ud
-mL
-gv
-zR
+kj
+gl
+gl
+gl
+gl
 jX
 "}
 (26,1,1) = {"
@@ -2280,11 +2312,11 @@ Gw
 QH
 BF
 Nf
-jX
-jX
-jX
-gv
-zR
+KG
+oX
+oX
+oX
+Mi
 jX
 "}
 (27,1,1) = {"
@@ -2310,11 +2342,11 @@ XA
 eL
 bK
 tO
-jX
-pL
-Ru
-IJ
-zR
+kj
+TQ
+TQ
+TQ
+TQ
 jX
 "}
 (28,1,1) = {"
