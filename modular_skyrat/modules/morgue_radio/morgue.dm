@@ -3,15 +3,17 @@
 	AddComponent(/datum/component/morgue_radio)
 
 /obj/structure/bodycontainer
-	var/obj/item/radio/radio // The internal radio in the morgue trays.
+	/// reference to internal radio in the morgue trays.
+	var/obj/item/radio/headset/headset_med/radio
 
 /datum/component/morgue_radio
-	var/obj/structure/bodycontainer/morgue/morgue // Typecasted reference to the current tray.
+	/// Typecasted reference to the current tray.
+	var/obj/structure/bodycontainer/morgue/morgue
 
 
 /datum/component/morgue_radio/RegisterWithParent()
 	morgue = parent
-	morgue.radio = new /obj/item/radio(morgue) // Initialize the radio in the morgue tray
+	morgue.radio = new /obj/item/radio/headset/headset_med(morgue) // Initialize the radio in the morgue tray
 	morgue.radio.set_listening(FALSE)
 	RegisterSignal(morgue, COMSIG_MORGUE_ALARM, .proc/morgue_revivable)
 
@@ -20,6 +22,9 @@
 	UnregisterSignal(morgue, COMSIG_MORGUE_ALARM)
 
 /datum/component/morgue_radio/proc/morgue_revivable(mob/living/cadaver)
+	SIGNAL_HANDLER
+	if(!morgue?.radio) // Runtime prevention
+		return
 	morgue.radio.set_frequency(FREQ_MEDICAL)
 	morgue.radio.talk_into(
 		morgue,
