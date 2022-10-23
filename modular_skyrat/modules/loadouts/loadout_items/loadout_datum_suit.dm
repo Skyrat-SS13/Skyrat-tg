@@ -145,9 +145,13 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	name = "Leather Jacket"
 	item_path = /obj/item/clothing/suit/jacket/leather
 
-/datum/loadout_item/suit/leather_coat
-	name = "Leather Coat"
-	item_path = /obj/item/clothing/suit/jacket/leather/overcoat
+/datum/loadout_item/suit/leather_jacket/biker
+	name = "Biker Jacket"
+	item_path = /obj/item/clothing/suit/jacket/leather/biker
+
+/datum/loadout_item/suit/leather_jacket/hooded
+	name = "Leather Jacket with a Hoodie"
+	item_path = /obj/item/clothing/suit/hooded/leather
 
 /datum/loadout_item/suit/jacket_sweater
 	name = "Recolorable Sweater Jacket"
@@ -166,20 +170,12 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	item_path = /obj/item/clothing/suit/hooded/ethereal_raincoat
 
 /*
-*	LETTERMAN
+*	VARSITY JACKET
 */
 
-/datum/loadout_item/suit/brown_letterman
-	name = "Brown Letterman"
-	item_path = /obj/item/clothing/suit/jacket/letterman
-
-/datum/loadout_item/suit/red_letterman
-	name = "Red Letterman"
-	item_path = /obj/item/clothing/suit/jacket/letterman_red
-
-/datum/loadout_item/suit/blue_letterman
-	name = "Blue Letterman"
-	item_path = /obj/item/clothing/suit/jacket/letterman_nanotrasen
+/datum/loadout_item/suit/varsity
+	name = "Varsity Jacket"
+	item_path = /obj/item/clothing/suit/varsity
 
 /*
 *	COSTUMES
@@ -262,6 +258,10 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 /datum/loadout_item/suit/purple_apron
 	name = "Purple Apron"
 	item_path = /obj/item/clothing/suit/apron/purple_bartender
+
+/datum/loadout_item/suit/recolorable_apron
+	name = "Recolorable Apron"
+	item_path = /obj/item/clothing/suit/apron/chef/colorable_apron
 
 /datum/loadout_item/suit/denim_overalls
 	name = "Denim Overalls"
@@ -570,6 +570,10 @@ GLOBAL_LIST_INIT(loadout_exosuits, generate_loadout_items(/datum/loadout_item/su
 	name = "Peacekeeper Officer Coat"
 	item_path = /obj/item/clothing/suit/british_officer
 	restricted_roles = list(JOB_HEAD_OF_SECURITY, JOB_WARDEN, JOB_DETECTIVE)
+
+/datum/loadout_item/suit/offdep_jacket
+	name = "Off-Department Jacket"
+	item_path = /obj/item/clothing/suit/toggle/jacket/assistant
 
 /datum/loadout_item/suit/engi_jacket
 	name = "Engineering Jacket"

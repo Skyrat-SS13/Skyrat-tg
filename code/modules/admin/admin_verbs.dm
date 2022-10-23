@@ -163,7 +163,8 @@ GLOBAL_PROTECT(admin_verbs_server)
 	/client/proc/panicbunker,
 	/client/proc/toggle_interviews,
 	/client/proc/toggle_hub,
-	/client/proc/toggle_cdn
+	/client/proc/toggle_cdn,
+	/client/proc/generate_job_config,
 	)
 GLOBAL_LIST_INIT(admin_verbs_debug, world.AVerbsDebug())
 GLOBAL_PROTECT(admin_verbs_debug)
@@ -196,6 +197,7 @@ GLOBAL_PROTECT(admin_verbs_debug)
 	/client/proc/cmd_display_del_log,
 	/client/proc/outfit_manager,
 	/client/proc/open_colorblind_test,
+	/client/proc/debug_plane_masters,
 	/client/proc/generate_wikichem_list,
 	/client/proc/modify_goals,
 	/client/proc/debug_huds,

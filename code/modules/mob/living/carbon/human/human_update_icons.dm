@@ -428,7 +428,7 @@ There are several things that need to be remembered:
 		// SKYRAT EDIT END
 
 		if(!(icon_exists(icon_file, RESOLVE_ICON_STATE(worn_item))))
-			icon_file = 'icons/mob/clothing/head.dmi'
+			icon_file = 'icons/mob/clothing/head/default.dmi'
 
 		head_overlay = head.build_worn_icon(default_layer = HEAD_LAYER, default_icon_file = icon_file, override_file = mutant_override ? icon_file : null) // SKYRAT EDIT CHANGE
 
@@ -531,8 +531,8 @@ There are several things that need to be remembered:
 		var/atom/movable/screen/inventory/inv
 
 		inv = hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_LPOCKET) + 1]
+		inv.update_icon()
 		inv = hud_used.inv_slots[TOBITSHIFT(ITEM_SLOT_RPOCKET) + 1]
-
 		inv.update_icon()
 
 		if(l_store)

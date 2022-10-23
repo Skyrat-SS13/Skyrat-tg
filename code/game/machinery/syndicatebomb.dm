@@ -285,7 +285,7 @@
 	desc = "A powerful secondary explosive of syndicate design and unknown composition, it should be stable under normal conditions..."
 	icon = 'icons/obj/assemblies/assemblies.dmi'
 	icon_state = "bombcore"
-	inhand_icon_state = "eshield0"
+	inhand_icon_state = "eshield"
 	lefthand_file = 'icons/mob/inhands/equipment/shields_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/shields_righthand.dmi'
 	w_class = WEIGHT_CLASS_NORMAL
@@ -360,7 +360,7 @@
 		attempts++
 		defusals++
 		holder.loc.visible_message(span_notice("[icon2html(holder, viewers(holder))] Alert: Bomb has been defused. Your score is now [defusals] for [attempts]! Resetting wires in 5 seconds..."))
-		sleep(50) //Just in case someone is trying to remove the bomb core this gives them a little window to crowbar it out
+		sleep(5 SECONDS) //Just in case someone is trying to remove the bomb core this gives them a little window to crowbar it out
 		if(istype(holder))
 			reset()
 

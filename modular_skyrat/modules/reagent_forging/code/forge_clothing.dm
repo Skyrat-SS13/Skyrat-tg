@@ -1,93 +1,100 @@
-//armor
-/obj/item/clothing/suit/armor/reagent_clothing
-	name = "chain armor"
-	desc = "A piece of armor made out of chains, ready to be imbued with a chemical."
+// Vests
+/obj/item/clothing/suit/armor/forging_plate_armor
+	name = "reagent plate vest"
+	desc = "An armor vest made of hammered, interlocking plates."
 	icon = 'modular_skyrat/modules/reagent_forging/icons/obj/forge_clothing.dmi'
-	icon_state = "chain_armor"
-	worn_icon = 'modular_skyrat/modules/reagent_forging/icons/mob/forge_clothing.dmi'
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
-	worn_icon_digi = 'modular_skyrat/modules/reagent_forging/icons/mob/forge_clothing_digi.dmi'
+	worn_icon = 'modular_skyrat/modules/reagent_forging/icons/mob/clothing/forge_clothing.dmi'
+	worn_icon_better_vox = 'modular_skyrat/modules/reagent_forging/icons/mob/clothing/forge_clothing_newvox.dmi'
+	worn_icon_vox = 'modular_skyrat/modules/reagent_forging/icons/mob/clothing/forge_clothing_oldvox.dmi'
+	worn_icon_teshari = 'modular_skyrat/modules/reagent_forging/icons/mob/clothing/forge_clothing_teshari.dmi'
+	icon_state = "plate_vest"
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 	resistance_flags = FIRE_PROOF
+	skyrat_obj_flags = ANVIL_REPAIR
 	armor = list(MELEE = 40, BULLET = 40, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 0, WOUND = 30)
+	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR
 
-/obj/item/clothing/suit/armor/reagent_clothing/Initialize(mapload)
+/obj/item/clothing/suit/armor/forging_plate_armor/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/armor_plate, 4)
 	AddComponent(/datum/component/reagent_clothing, ITEM_SLOT_OCLOTHING)
 
-//gloves
-/obj/item/clothing/gloves/reagent_clothing
-	name = "chain gloves"
-	desc = "A set of gloves made out of chains, ready to be imbued with a chemical."
+// Gloves
+/obj/item/clothing/gloves/forging_plate_gloves
+	name = "reagent plate gloves"
+	desc = "A set of leather gloves with protective armor plates connected to the wrists."
 	icon = 'modular_skyrat/modules/reagent_forging/icons/obj/forge_clothing.dmi'
-	icon_state = "chain_glove"
-	worn_icon = 'modular_skyrat/modules/reagent_forging/icons/mob/forge_clothing.dmi'
+	worn_icon = 'modular_skyrat/modules/reagent_forging/icons/mob/clothing/forge_clothing.dmi'
+	worn_icon_better_vox = 'modular_skyrat/modules/reagent_forging/icons/mob/clothing/forge_clothing_newvox.dmi'
+	worn_icon_vox = 'modular_skyrat/modules/reagent_forging/icons/mob/clothing/forge_clothing_oldvox.dmi'
+	worn_icon_teshari = 'modular_skyrat/modules/reagent_forging/icons/mob/clothing/forge_clothing_teshari.dmi'
+	icon_state = "plate_gloves"
 	resistance_flags = FIRE_PROOF
+	skyrat_obj_flags = ANVIL_REPAIR
 	armor = list(MELEE = 40, BULLET = 40, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 0, WOUND = 30)
+	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR
 
-/obj/item/clothing/gloves/reagent_clothing/Initialize(mapload)
+/obj/item/clothing/gloves/forging_plate_gloves/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/armor_plate, 4)
 	AddComponent(/datum/component/reagent_clothing, ITEM_SLOT_GLOVES)
 
-/obj/item/clothing/head/helmet/reagent_clothing
-	name = "chain helmet"
-	desc = "A helmet made out of chains, ready to be imbued with a chemical."
+// Helmets
+/obj/item/clothing/head/helmet/forging_plate_helmet
+	name = "reagent plate helmet"
+	desc = "A helmet out of hammered plates with a leather neck guard and chin strap."
 	icon = 'modular_skyrat/modules/reagent_forging/icons/obj/forge_clothing.dmi'
-	icon_state = "chain_helmet"
-	worn_icon = 'modular_skyrat/modules/reagent_forging/icons/mob/forge_clothing.dmi'
+	worn_icon = 'modular_skyrat/modules/reagent_forging/icons/mob/clothing/forge_clothing.dmi'
+	worn_icon_better_vox = 'modular_skyrat/modules/reagent_forging/icons/mob/clothing/forge_clothing_newvox.dmi'
+	worn_icon_vox = 'modular_skyrat/modules/reagent_forging/icons/mob/clothing/forge_clothing_oldvox.dmi'
+	worn_icon_teshari = 'modular_skyrat/modules/reagent_forging/icons/mob/clothing/forge_clothing_teshari.dmi'
+	icon_state = "plate_helmet"
 	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
 	resistance_flags = FIRE_PROOF
+	flags_inv = null
+	skyrat_obj_flags = ANVIL_REPAIR
 	armor = list(MELEE = 40, BULLET = 40, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 50, ACID = 0, WOUND = 30)
+	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR
 
-/obj/item/clothing/head/helmet/reagent_clothing/Initialize(mapload)
+/obj/item/clothing/head/helmet/forging_plate_helmet/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/armor_plate, 4)
 	AddComponent(/datum/component/reagent_clothing, ITEM_SLOT_HEAD)
 
-/obj/item/clothing/shoes/chain_boots
-	name = "chain boots"
-	desc = "A pair of boots made out of chains, ready to be imbued with a chemical."
+// Boots
+/obj/item/clothing/shoes/forging_plate_boots
+	name = "reagent plate boots"
+	desc = "A pair of leather boots with protective armor plates over the shins and toes."
 	icon = 'modular_skyrat/modules/reagent_forging/icons/obj/forge_clothing.dmi'
-	icon_state = "chain_boot"
-	worn_icon = 'modular_skyrat/modules/reagent_forging/icons/mob/forge_clothing.dmi'
+	worn_icon = 'modular_skyrat/modules/reagent_forging/icons/mob/clothing/forge_clothing.dmi'
+	worn_icon_digi = 'modular_skyrat/modules/reagent_forging/icons/mob/clothing/forge_clothing_digi.dmi'
+	worn_icon_better_vox = 'modular_skyrat/modules/reagent_forging/icons/mob/clothing/forge_clothing_newvox.dmi'
+	worn_icon_vox = 'modular_skyrat/modules/reagent_forging/icons/mob/clothing/forge_clothing_oldvox.dmi'
+	worn_icon_teshari = 'modular_skyrat/modules/reagent_forging/icons/mob/clothing/forge_clothing_teshari.dmi'
+	icon_state = "plate_boots"
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
-	worn_icon_digi = 'modular_skyrat/modules/reagent_forging/icons/mob/forge_clothing_digi.dmi'
 	armor = list(MELEE = 20, BULLET = 20, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 0, ACID = 0)
+	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR
 	resistance_flags = FIRE_PROOF
+	skyrat_obj_flags = ANVIL_REPAIR
 	can_be_tied = FALSE
 
-/obj/item/clothing/shoes/chain_boots/Initialize(mapload)
-	. = ..()
-	AddComponent(/datum/component/armor_plate, 2)
-	AddComponent(/datum/component/reagent_clothing, ITEM_SLOT_FEET)
-
-/obj/item/clothing/shoes/plated_boots
-	name = "plated boots"
-	desc = "A pair of boots made out of plates, ready to be imbued with a chemical."
-	icon = 'modular_skyrat/modules/reagent_forging/icons/obj/forge_clothing.dmi'
-	icon_state = "plate_boot"
-	worn_icon = 'modular_skyrat/modules/reagent_forging/icons/mob/forge_clothing.dmi'
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION
-	worn_icon_digi = 'modular_skyrat/modules/reagent_forging/icons/mob/forge_clothing_digi.dmi'
-	armor = list(MELEE = 20, BULLET = 20, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 0, ACID = 0)
-	resistance_flags = FIRE_PROOF
-	can_be_tied = FALSE
-
-/obj/item/clothing/shoes/plated_boots/Initialize(mapload)
+/obj/item/clothing/shoes/forging_plate_boots/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/armor_plate, 2)
 	AddComponent(/datum/component/reagent_clothing, ITEM_SLOT_FEET)
 
 /obj/item/clothing/shoes/horseshoe
-	name = "horseshoe"
-	desc = "A pair of horseshoes made out of chains, ready to be imbued with a chemical."
+	name = "reagent horseshoe"
+	desc = "A pair of horseshoes made out of chains."
 	icon = 'modular_skyrat/modules/reagent_forging/icons/obj/forge_clothing.dmi'
+	worn_icon = 'modular_skyrat/modules/reagent_forging/icons/mob/clothing/forge_clothing.dmi'
 	icon_state = "horseshoe"
-	worn_icon = 'modular_skyrat/modules/reagent_forging/icons/mob/forge_clothing.dmi'
 	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
 	armor = list(MELEE = 20, BULLET = 20, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, FIRE = 0, ACID = 0)
+	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR
 	resistance_flags = FIRE_PROOF
+	skyrat_obj_flags = ANVIL_REPAIR
 	can_be_tied = FALSE
 
 /obj/item/clothing/shoes/horseshoe/Initialize(mapload)
@@ -95,38 +102,42 @@
 	AddComponent(/datum/component/armor_plate, 2)
 	AddComponent(/datum/component/reagent_clothing, ITEM_SLOT_FEET)
 
+// Misc
 /obj/item/clothing/gloves/ring/reagent_clothing
 	name = "reagent ring"
-	desc = "A tiny ring, sized to wrap around a finger. It is possible to imbue this ring."
+	desc = "A tiny ring, sized to wrap around a finger."
 	icon_state = "ringsilver"
-	inhand_icon_state = "sring"
 	worn_icon_state = "sring"
+	inhand_icon_state = null
+	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR
+	skyrat_obj_flags = ANVIL_REPAIR
 
 /obj/item/clothing/gloves/ring/reagent_clothing/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/reagent_clothing, ITEM_SLOT_GLOVES)
 
-/obj/item/clothing/neck/kink_collar/reagent_clothing
-	name = "reagent pet collar"
-	desc = "A pet collar that is ready to be imbued."
+/obj/item/clothing/neck/collar/reagent_clothing
+	name = "reagent collar"
+	desc = "A collar that is ready to be worn for certain individuals."
+	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_neck.dmi'
+	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_neck.dmi'
+	icon_state = "collar_cyan"
+	inhand_icon_state = null
+	body_parts_covered = NECK
+	slot_flags = ITEM_SLOT_NECK
+	w_class = WEIGHT_CLASS_SMALL
+	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR
+	skyrat_obj_flags = ANVIL_REPAIR
 
-/obj/item/clothing/neck/kink_collar/reagent_clothing/Initialize(mapload)
+/obj/item/clothing/neck/collar/reagent_clothing/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/reagent_clothing, ITEM_SLOT_NECK)
 
-/obj/item/clothing/neck/kink_collar/reagent_clothing/attack_self(mob/user)
-	tagname = sanitize_name(stripped_input(user, "Would you like to change the name on the tag?", "Name your new pet", "Spot", MAX_NAME_LEN))
-	name = initial(name)
-	for(var/datum/reagent/clothing_reagent in reagents.reagent_list)
-		if(clothing_reagent.volume < 200)
-			reagents.remove_all_type(clothing_reagent.type)
-			continue
-		name = "[clothing_reagent.name] [name]"
-	name = "[name] [tagname]"
-
 /obj/item/restraints/handcuffs/reagent_clothing
 	name = "reagent handcuffs"
-	desc = "A pair of handcuffs that are ready to be imbued."
+	desc = "A pair of handcuffs that are ready to keep someone captive."
+	material_flags = MATERIAL_EFFECTS | MATERIAL_ADD_PREFIX | MATERIAL_GREYSCALE | MATERIAL_COLOR
+	skyrat_obj_flags = ANVIL_REPAIR
 
 /obj/item/restraints/handcuffs/reagent_clothing/Initialize(mapload)
 	. = ..()

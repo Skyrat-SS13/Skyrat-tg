@@ -4,7 +4,7 @@
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_clothing/lewd_neck.dmi'
 	worn_icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_clothing/lewd_neck.dmi'
 	icon_state = "shockcollar"
-	inhand_icon_state = "shockcollar"
+	inhand_icon_state = null
 	body_parts_covered = NECK
 	slot_flags = ITEM_SLOT_NECK
 	w_class = WEIGHT_CLASS_SMALL
@@ -21,7 +21,7 @@
 	build_type = AUTOLATHE
 	build_path = /obj/item/electropack/shockcollar
 	materials = list(/datum/material/iron = 5000, /datum/material/glass =2000)
-	category = list(RND_CATEGORY_HACKED, RND_CATEGORY_MISC)
+	category = list(RND_CATEGORY_HACKED, RND_CATEGORY_EQUIPMENT + RND_SUBCATEGORY_EQUIPMENT_MISC)
 
 /obj/item/electropack/shockcollar/attack_hand(mob/user)
 	if(loc == user && user.get_item_by_slot(ITEM_SLOT_NECK))
@@ -49,7 +49,7 @@
 		created_sparks.start()
 
 		affected_mob.Paralyze(30)
-		affected_mob.adjustPain(10)
+		affected_mob.adjust_pain(10)
 		affected_mob.adjust_stutter(30 SECONDS)
 
 	if(master)

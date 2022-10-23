@@ -1,6 +1,6 @@
 /// SKYRAT MODULE SKYRAT_XENO_REDO
 
-/mob/living/carbon/alien/humanoid/skyrat
+/mob/living/carbon/alien/adult/skyrat
 	name = "rare bugged alien"
 	icon = 'modular_skyrat/modules/xenos_skyrat_redo/icons/big_xenos.dmi'
 	rotate_on_lying = FALSE
@@ -9,8 +9,6 @@
 	var/datum/action/small_sprite/skyrat_xeno/small_sprite
 	/// Holds the ability for quick resting without using the ic panel, and without editing xeno huds
 	var/datum/action/cooldown/alien/skyrat/sleepytime/rest_button
-	/// Holds the ability for allowing a xeno to devolve back into a larve if they so choose
-	var/datum/action/cooldown/alien/skyrat/devolve/devolve_ability
 	mob_size = MOB_SIZE_LARGE
 	layer = LARGE_MOB_LAYER //above most mobs, but below speechbubbles
 	plane = GAME_PLANE_UPPER_FOV_HIDDEN
@@ -35,16 +33,13 @@
 	var/on_fire_pixel_y = 16
 
 
-/mob/living/carbon/alien/humanoid/skyrat/Initialize(mapload)
+/mob/living/carbon/alien/adult/skyrat/Initialize(mapload)
 	. = ..()
 	small_sprite = new /datum/action/small_sprite/skyrat_xeno()
 	small_sprite.Grant(src)
 
 	rest_button = new /datum/action/cooldown/alien/skyrat/sleepytime()
 	rest_button.Grant(src)
-
-	devolve_ability = new /datum/action/cooldown/alien/skyrat/devolve()
-	devolve_ability.Grant(src)
 
 	if(next_evolution)
 		evolve_ability = new /datum/action/cooldown/alien/skyrat/generic_evolve()
@@ -55,23 +50,22 @@
 	ADD_TRAIT(src, TRAIT_XENO_HEAL_AURA, TRAIT_XENO_INNATE)
 	real_name = "alien [caste]"
 
-/mob/living/carbon/alien/humanoid/skyrat/Destroy()
+/mob/living/carbon/alien/adult/skyrat/Destroy()
 	QDEL_NULL(small_sprite)
 	QDEL_NULL(rest_button)
-	QDEL_NULL(devolve_ability)
 	if(evolve_ability)
 		QDEL_NULL(evolve_ability)
 	return ..()
 
 /// Called when a larva or xeno evolves, adds a configurable timer on evolving again to the xeno
-/mob/living/carbon/alien/humanoid/skyrat/proc/has_just_evolved()
+/mob/living/carbon/alien/adult/skyrat/proc/has_just_evolved()
 	if(has_evolved_recently)
 		return
 	has_evolved_recently = TRUE
 	addtimer(CALLBACK(src, .proc/can_evolve_once_again), evolution_cooldown_time)
 
 /// Allows xenos to evolve again if they are currently unable to
-/mob/living/carbon/alien/humanoid/skyrat/proc/can_evolve_once_again()
+/mob/living/carbon/alien/adult/skyrat/proc/can_evolve_once_again()
 	if(!has_evolved_recently)
 		return
 	has_evolved_recently = FALSE
@@ -85,7 +79,7 @@
 	. = ..()
 	if(!isalien(owner))
 		return FALSE
-	var/mob/living/carbon/alien/humanoid/skyrat/owner_alien = owner
+	var/mob/living/carbon/alien/adult/skyrat/owner_alien = owner
 	if(!can_be_used_always)
 		if(owner_alien.unable_to_use_abilities)
 			return FALSE
@@ -124,7 +118,7 @@
 	plasma_cost = target_alien.get_max_plasma() //This ability should always require that a xeno be at their max plasma capacity to use
 
 /datum/action/cooldown/alien/skyrat/generic_evolve/Activate()
-	var/mob/living/carbon/alien/humanoid/skyrat/evolver = owner
+	var/mob/living/carbon/alien/adult/skyrat/evolver = owner
 
 	if(!istype(evolver))
 		to_chat(owner, span_warning("You aren't an alien, you can't evolve!"))
@@ -159,22 +153,6 @@
 	evolver.alien_evolve(new_beno)
 	return TRUE
 
-/datum/action/cooldown/alien/skyrat/devolve
-	name = "Devolve"
-	desc = "We can gather our energy and shed our current form, reverting back to a simple larva from which we can evolve down a different path."
-	button_icon_state = "larba"
-
-/datum/action/cooldown/alien/skyrat/devolve/Activate()
-	var/mob/living/carbon/alien/devolve_target = owner
-	if(!isalien(devolve_target))
-		to_chat(devolve_target, span_bolddanger("Wait a minute... You're not an alien, why would you even think of that?! How did you even get to this point???"))
-		return FALSE
-	if(tgui_alert(devolve_target, "Do you REALLY want to devolve?", "Message", list("Yes", "No")) != "Yes")
-		return FALSE
-	var/new_larva = new /mob/living/carbon/alien/larva(devolve_target.loc)
-	devolve_target.alien_evolve(new_larva)
-	return TRUE
-
 /datum/movespeed_modifier/alien_quick
 	multiplicative_slowdown = -0.5
 
@@ -187,7 +165,7 @@
 /datum/movespeed_modifier/alien_big
 	multiplicative_slowdown = 2
 
-/mob/living/carbon/alien/humanoid/skyrat/update_held_items()
+/mob/living/carbon/alien/adult/skyrat/update_held_items()
 	..()
 	remove_overlay(HANDS_LAYER)
 	var/list/hands = list()
@@ -221,8 +199,8 @@
 		return -1
 	return vessel.max_plasma
 
-/mob/living/carbon/alien/humanoid/skyrat/alien_evolve(mob/living/carbon/alien/new_xeno, is_it_a_larva)
-	var/mob/living/carbon/alien/humanoid/skyrat/xeno_to_transfer_to = new_xeno
+/mob/living/carbon/alien/adult/skyrat/alien_evolve(mob/living/carbon/alien/new_xeno, is_it_a_larva)
+	var/mob/living/carbon/alien/adult/skyrat/xeno_to_transfer_to = new_xeno
 
 	xeno_to_transfer_to.setDir(dir)
 	if(!islarva(xeno_to_transfer_to))
@@ -232,7 +210,7 @@
 		mind.transfer_to(xeno_to_transfer_to)
 	qdel(src)
 
-/mob/living/carbon/alien/humanoid/skyrat/update_fire_overlay(stacks, on_fire, last_icon_state, suffix = "")
+/mob/living/carbon/alien/adult/skyrat/update_fire_overlay(stacks, on_fire, last_icon_state, suffix = "")
 	var/fire_icon = "generic_fire[suffix]"
 
 	if(!GLOB.fire_appearances[fire_icon])
@@ -257,10 +235,10 @@
 	apply_overlay(FIRE_LAYER)
 	return null
 
-/mob/living/carbon/alien/humanoid/skyrat/findQueen() //Yes we really do need to do this whole thing to let the queen finder work
+/mob/living/carbon/alien/adult/skyrat/findQueen() //Yes we really do need to do this whole thing to let the queen finder work
 	if(hud_used)
 		hud_used.alien_queen_finder.cut_overlays()
-		var/mob/queen = get_alien_type(/mob/living/carbon/alien/humanoid/skyrat/queen)
+		var/mob/queen = get_alien_type(/mob/living/carbon/alien/adult/skyrat/queen)
 		if(!queen)
 			return
 		var/turf/Q = get_turf(queen)

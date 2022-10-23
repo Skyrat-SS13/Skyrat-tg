@@ -12,6 +12,7 @@
 	exp_required_type = EXP_TYPE_CREW
 	exp_required_type_department = EXP_TYPE_COMMAND
 	exp_granted_type = EXP_TYPE_CREW
+	config_tag = "NANOTRASEN_CONSULTANT"
 
 	department_for_prefs = /datum/job_department/captain
 
@@ -82,7 +83,6 @@
 	name = "\proper the nanotrasen consultant's bowman headset"
 	desc = "An official Central Command headset. Protects ears from flashbangs."
 	icon_state = "cent_headset_alt"
-	inhand_icon_state = "cent_headset_alt"
 
 /obj/item/radio/headset/heads/nanotrasen_consultant/alt/Initialize(mapload)
 	. = ..()

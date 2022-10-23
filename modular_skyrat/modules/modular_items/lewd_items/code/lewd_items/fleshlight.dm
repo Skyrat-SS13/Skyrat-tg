@@ -2,7 +2,7 @@
 	name = "fleshlight"
 	desc = "What a strange flashlight."
 	icon_state = "fleshlight"
-	inhand_icon_state = "fleshlight"
+	inhand_icon_state = "fleshlight_pink"
 	icon = 'modular_skyrat/modules/modular_items/lewd_items/icons/obj/lewd_items/lewd_items.dmi'
 	lefthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_left.dmi'
 	righthand_file = 'modular_skyrat/modules/modular_items/lewd_items/icons/mob/lewd_inhands/lewd_inhand_right.dmi'
@@ -72,8 +72,8 @@
 			if(!(prob(40) && (target.stat != DEAD)))
 				return
 			target.try_lewd_autoemote(pick("twitch_s", "moan", "blush"))
-			target.adjustArousal(6)
-			target.adjustPleasure(9)
+			target.adjust_arousal(6)
+			target.adjust_pleasure(9)
 			user.visible_message(span_purple("[user] [message]!"))
 			playsound(loc, pick('modular_skyrat/modules/modular_items/lewd_items/sounds/bang1.ogg',
 								'modular_skyrat/modules/modular_items/lewd_items/sounds/bang2.ogg',

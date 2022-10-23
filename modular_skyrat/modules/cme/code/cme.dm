@@ -188,7 +188,6 @@
 	anchored = TRUE
 	opacity = FALSE
 	density = FALSE
-	plane = MASSIVE_OBJ_PLANE
 	plane = ABOVE_LIGHTING_PLANE
 	can_atmos_pass = ATMOS_PASS_DENSITY
 	var/timeleft = CME_MINIMAL_BUBBLE_BURST_TIME

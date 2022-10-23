@@ -291,6 +291,18 @@ GLOBAL_DATUM(everyone_a_traitor, /datum/everyone_is_a_traitor_controller)
 
 			summon_magic(holder, survivor_probability)
 
+		if("towerOfBabel")
+			if(!is_funmin)
+				return
+			if(tgui_alert(usr,"Would you like to randomize language for everyone?",,list("Yes","No")) == "Yes")
+				SSblackbox.record_feedback("nested tally", "admin_secrets_fun_used", 1, list("Tower of babel"))
+				holder.tower_of_babel()
+
+		if("cureTowerOfBabel")
+			if(!is_funmin)
+				return
+			holder.tower_of_babel_undo()
+
 		if("events")
 			if(!is_funmin)
 				return
@@ -395,9 +407,12 @@ GLOBAL_DATUM(everyone_a_traitor, /datum/everyone_is_a_traitor_controller)
 				if (prefs["announce_players"]["value"] == "Yes")
 					portalAnnounce(prefs["announcement"]["value"], (prefs["playlightning"]["value"] == "Yes" ? TRUE : FALSE))
 
-				var/mutable_appearance/storm = mutable_appearance('icons/obj/engine/energy_ball.dmi', "energy_ball_fast", FLY_LAYER)
-				storm.plane =  ABOVE_GAME_PLANE
-				storm.color = prefs["color"]["value"]
+				var/list/storm_appearances = list()
+				for(var/offset in 0 to SSmapping.max_plane_offset)
+					var/mutable_appearance/storm = mutable_appearance('icons/obj/engine/energy_ball.dmi', "energy_ball_fast", FLY_LAYER)
+					SET_PLANE_W_SCALAR(storm, ABOVE_GAME_PLANE, offset)
+					storm.color = prefs["color"]["value"]
+					storm_appearances += storm
 
 				message_admins("[key_name_admin(holder)] has created a customized portal storm that will spawn [prefs["portalnum"]["value"]] portals, each of them spawning [prefs["amount"]["value"]] of [pathToSpawn]")
 				log_admin("[key_name(holder)] has created a customized portal storm that will spawn [prefs["portalnum"]["value"]] portals, each of them spawning [prefs["amount"]["value"]] of [pathToSpawn]")
@@ -411,9 +426,9 @@ GLOBAL_DATUM(everyone_a_traitor, /datum/everyone_is_a_traitor_controller)
 						var/ghostcandidates = list()
 						for (var/j in 1 to min(prefs["amount"]["value"], length(candidates)))
 							ghostcandidates += pick_n_take(candidates)
-							addtimer(CALLBACK(GLOBAL_PROC, .proc/doPortalSpawn, get_random_station_turf(), pathToSpawn, length(ghostcandidates), storm, ghostcandidates, outfit), i*prefs["delay"]["value"])
+							addtimer(CALLBACK(GLOBAL_PROC, .proc/doPortalSpawn, get_random_station_turf(), pathToSpawn, length(ghostcandidates), storm_appearances, ghostcandidates, outfit), i*prefs["delay"]["value"])
 					else if (prefs["playersonly"]["value"] != "Yes")
-						addtimer(CALLBACK(GLOBAL_PROC, .proc/doPortalSpawn, get_random_station_turf(), pathToSpawn, prefs["amount"]["value"], storm, null, outfit), i*prefs["delay"]["value"])
+						addtimer(CALLBACK(GLOBAL_PROC, .proc/doPortalSpawn, get_random_station_turf(), pathToSpawn, prefs["amount"]["value"], storm_appearances, null, outfit), i*prefs["delay"]["value"])
 		if("changebombcap")
 			if(!is_funmin)
 				return
@@ -577,13 +592,15 @@ GLOBAL_DATUM(everyone_a_traitor, /datum/everyone_is_a_traitor_controller)
 	set waitfor = FALSE
 	if (playlightning)
 		sound_to_playing_players('sound/magic/lightning_chargeup.ogg')
-		sleep(80)
+		sleep(8 SECONDS)
 	priority_announce(replacetext(announcement, "%STATION%", station_name()))
 	if (playlightning)
-		sleep(20)
+		sleep(2 SECONDS)
 		sound_to_playing_players('sound/magic/lightningbolt.ogg')
 
-/proc/doPortalSpawn(turf/loc, mobtype, numtospawn, portal_appearance, players, humanoutfit)
+/// Spawns a portal storm that spawns in sentient/non sentient mobs
+/// portal_appearance is a list in the form (turf's plane offset + 1) -> appearance to use
+/proc/doPortalSpawn(turf/loc, mobtype, numtospawn, list/portal_appearance, players, humanoutfit)
 	for (var/i in 1 to numtospawn)
 		var/mob/spawnedMob = new mobtype(loc)
 		if (length(players))
@@ -596,7 +613,7 @@ GLOBAL_DATUM(everyone_a_traitor, /datum/everyone_is_a_traitor_controller)
 			var/mob/living/carbon/human/H = spawnedMob
 			H.equipOutfit(humanoutfit)
 	var/turf/T = get_step(loc, SOUTHWEST)
-	flick_overlay_static(portal_appearance, T, 15)
+	flick_overlay_static(portal_appearance[GET_TURF_PLANE_OFFSET(T) + 1], T, 15)
 	playsound(T, 'sound/magic/lightningbolt.ogg', rand(80, 100), TRUE)
 
 ///Makes sure latejoining crewmembers also become traitors.

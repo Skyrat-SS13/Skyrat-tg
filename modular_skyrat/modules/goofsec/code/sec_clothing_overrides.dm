@@ -292,8 +292,8 @@
 
 //Need to quickly redefine this so the icon doesnt break
 /obj/item/clothing/head/hos/syndicate
-	icon = 'icons/obj/clothing/hats.dmi'
-	worn_icon = 'icons/mob/clothing/head.dmi'
+	icon = 'icons/obj/clothing/head/hats.dmi'
+	worn_icon = 'icons/mob/clothing/head/hats.dmi'
 	icon_state = "hoscap"
 	current_skin = "hoscap" //Prevents reskinning
 
@@ -529,7 +529,6 @@
 	name = "security jackboots"
 	desc = "Lopland's Peacekeeper-issue Security combat boots for combat scenarios or combat situations. All combat, all the time."
 	icon_state = "security_boots"
-	inhand_icon_state = "security_boots"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/shoes.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/feet.dmi'
 	clothing_traits = list(TRAIT_SILENT_FOOTSTEPS) // We have other footsteps.
@@ -632,21 +631,21 @@
 */
 
 /obj/item/storage/backpack/security/redsec
-	icon = 'icons/obj/storage/storage.dmi'
-	worn_icon = 'icons/mob/clothing/back.dmi'
-	icon_state = "securitypack"
-	current_skin = "securitypack"	//prevents reskinning
+	icon = 'icons/obj/storage/backpack.dmi'
+	worn_icon = 'icons/mob/clothing/back/backpack.dmi'
+	icon_state = "backpack-security"
+	current_skin = "backpack-security" //prevents reskinning
 
 /obj/item/storage/backpack/satchel/sec/redsec
-	icon = 'icons/obj/storage/storage.dmi'
-	worn_icon = 'icons/mob/clothing/back.dmi'
-	icon_state = "satchel-sec"
+	icon = 'icons/obj/storage/backpack.dmi'
+	worn_icon = 'icons/mob/clothing/back/backpack.dmi'
+	icon_state = "satchel-security"
 
 /obj/item/storage/backpack/duffelbag/sec/redsec
-	icon = 'icons/obj/storage/storage.dmi'
-	worn_icon = 'icons/mob/clothing/back.dmi'
-	icon_state = "duffel-sec"
-	current_skin = "duffel-sec"	//prevents reskinning
+	icon = 'icons/obj/storage/backpack.dmi'
+	worn_icon = 'icons/mob/clothing/back/backpack.dmi'
+	icon_state = "duffel-security"
+	current_skin = "duffel-security" //prevents reskinning
 
 /*
 *	BELT
@@ -665,8 +664,8 @@
 */
 
 /obj/item/clothing/head/helmet/sec/redsec
-	icon = 'icons/obj/clothing/hats.dmi'
-	worn_icon = 'icons/mob/clothing/head.dmi'
+	icon = 'icons/obj/clothing/head/hats.dmi'
+	worn_icon = 'icons/mob/clothing/head/hats.dmi'
 	icon_state = "helmet"
 	actions_types = null
 	can_toggle = FALSE

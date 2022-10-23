@@ -14,6 +14,10 @@
 /*
 *	UNSORTED
 */
+/obj/item/clothing/under/costume/skyrat/cavalry
+	name = "cavalry uniform"
+	desc = "Dedicate yourself to something better. To loyalty, honour, for it only dies when everyone abandons it."
+	icon_state = "cavalry" //specifically an 1890s US Army Cavalry Uniform
 
 /obj/item/clothing/under/costume/deckers/alt //not even going to bother re-pathing this one because its such a unique case of 'TGs item has something but this alt doesnt'
 	name = "deckers maskless outfit"
@@ -27,12 +31,19 @@
 /obj/item/clothing/under/costume/skyrat/bathrobe
 	name = "bathrobe"
 	desc = "A warm fluffy bathrobe, perfect for relaxing after finally getting clean."
-	icon_state = "bathrobe"
-	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
-	greyscale_colors = "#434d7a" //THATS RIGHT, FUCK YOU! THE BATHROBE CAN BE RECOLORED!
+	icon = 'modular_skyrat/modules/GAGS/icons/suit/suit.dmi'
+	worn_icon = 'modular_skyrat/modules/GAGS/icons/suit/suit.dmi'
+	worn_icon_teshari = 'modular_skyrat/modules/GAGS/icons/suit/suit_teshari.dmi'
+	icon_state = "robes"
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+	greyscale_colors = "#ffffff"
 	greyscale_config = /datum/greyscale_config/bathrobe
 	greyscale_config_worn = /datum/greyscale_config/bathrobe/worn
-	greyscale_config_worn_digi = /datum/greyscale_config/bathrobe/worn/digi
+	greyscale_config_worn_teshari = /datum/greyscale_config/bathrobe/worn/teshari
+	greyscale_config_worn_better_vox = /datum/greyscale_config/bathrobe/worn/newvox
+	greyscale_config_worn_vox = /datum/greyscale_config/bathrobe/worn/oldvox
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
+	greyscale_colors = "#434d7a" //THATS RIGHT, FUCK YOU! THE BATHROBE CAN BE RECOLORED!
 	flags_1 = IS_PLAYER_COLORABLE_1
 
 /*
@@ -50,6 +61,7 @@
 	greyscale_config_worn = /datum/greyscale_config/qipao/worn
 	greyscale_config_worn_digi = /datum/greyscale_config/qipao/worn/digi
 	flags_1 = IS_PLAYER_COLORABLE_1
+	gets_cropped_on_taurs = FALSE
 
 /obj/item/clothing/under/costume/skyrat/cheongsam
 	name = "cheongsam"
@@ -62,6 +74,7 @@
 	greyscale_config_worn = /datum/greyscale_config/cheongsam/worn
 	greyscale_config_worn_digi = /datum/greyscale_config/cheongsam/worn/digi
 	flags_1 = IS_PLAYER_COLORABLE_1
+	gets_cropped_on_taurs = FALSE
 
 /obj/item/clothing/under/costume/skyrat/yukata
 	name = "yukata"
@@ -73,6 +86,7 @@
 	greyscale_config_worn = /datum/greyscale_config/yukata/worn
 	greyscale_config_worn_digi = /datum/greyscale_config/yukata/worn/digi
 	flags_1 = IS_PLAYER_COLORABLE_1
+	gets_cropped_on_taurs = FALSE
 
 /obj/item/clothing/under/costume/skyrat/kamishimo
 	name = "kamishimo"
