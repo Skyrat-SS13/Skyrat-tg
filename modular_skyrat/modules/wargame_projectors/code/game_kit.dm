@@ -242,6 +242,9 @@
 							<br>
 							When the game master determines these objectives to be complete, or that some kind of game
 							ending condition has been achieved, then they may end the game at will.
+
+						<br>
+						*Wargame: Blue Lizard is a copyright protected title under ownership of Nanotrasen
 				</body>
 				</html>
 			"}
