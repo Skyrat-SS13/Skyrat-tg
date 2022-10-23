@@ -33,6 +33,7 @@
 	/// How powerful is the supermatter surge going to be? Set in setup.
 	var/surge_power = SUPERMATTER_SURGE_BULLET_ENERGY_FACTOR_LOWER
 	var/starting_surge_power = 0
+	/// Typecasted reference to the supermatter chosen at the events start. Prevents the engine from going AWOL if it changes for some reason.
 	var/obj/machinery/power/supermatter_crystal/our_main_engine
 
 /datum/round_event/supermatter_surge/setup()
