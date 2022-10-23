@@ -63,7 +63,7 @@
 
 /obj/item/clothing/suit/armor/vest/blueshirt/skyrat/orderly
 	name = "armored orderly coat"
-	desc = "An armored coat, to keep you safe from unruly patients."
+	desc = "An armored coat, in a deep paramedic blue. It'll keep you padded while dealing with troublesome patients."
 	icon_state = "medical_coat"
 	worn_icon_state = "medical_coat"
 
@@ -73,9 +73,9 @@
 	icon_state = "engineering_coat"
 	worn_icon_state = "engineering_coat"
 
-/obj/item/clothing/suit/armor/vest/blueshirt/skyrat/customs_agent //NOT USED, NEEDS UPDATING. CURRENTLY CUSTOMS JUST USES THE NORMAL ARMOR VEST.
+/obj/item/clothing/suit/armor/vest/blueshirt/skyrat/customs_agent
 	name = "armored customs agent coat"
-	desc = "An armored coat, to keep you safe from unruly customers."
+	desc = "An armored coat, with intricately woven patterns and details. This should help keep you safe from unruly customers."
 	icon_state = "customs_coat"
 	worn_icon_state = "customs_coat"
 
@@ -398,7 +398,7 @@
 	shoes = /obj/item/clothing/shoes/sneakers/black
 	uniform = /obj/item/clothing/under/rank/security/officer/blueshirt/skyrat/customs_agent
 	head =  /obj/item/clothing/head/helmet/blueshirt/skyrat/guard
-	suit = /obj/item/clothing/suit/armor/vest
+	suit = /obj/item/clothing/suit/armor/vest/blueshirt/skyrat/customs_agent
 	glasses = /obj/item/clothing/glasses/hud/gun_permit
 
 	backpack = /obj/item/storage/backpack
