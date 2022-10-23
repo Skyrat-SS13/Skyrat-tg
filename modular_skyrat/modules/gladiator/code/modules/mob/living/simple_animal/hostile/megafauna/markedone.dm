@@ -382,16 +382,21 @@
 		for(var/turf/stomp_turf in all_turfs)
 			if(get_dist(origin, stomp_turf) > sound_range)
 				continue
+
 			new /obj/effect/temp_visual/small_smoke/halfsecond(stomp_turf)
 			for(var/mob/living/target in stomp_turf)
 				if(target == src || target.throwing)
 					continue
+
 				to_chat(target, span_userdanger("[src]'s ground slam shockwave sends you flying!"))
 				var/turf/thrownat = get_ranged_target_turf_direct(src, target, throw_range, rand(-10, 10))
 				target.throw_at(thrownat, 8, 2, null, TRUE, force = MOVE_FORCE_OVERPOWERING, gentle = TRUE)
 				target.apply_damage(20, BRUTE, wound_bonus=CANT_WOUND)
+
 				shake_camera(target, 2, 1)
+
 			all_turfs -= stomp_turf
+
 		sleep(delay)
 
 /mob/living/simple_animal/hostile/megafauna/gladiator/proc/swordslam() //large radius but slow-to-move radiating ground slam
