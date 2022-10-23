@@ -23,7 +23,7 @@
 /obj/item/book/manual/wargame_rules
 	name = "Wargame: Blue Lizard - Example Ruleset"
 	icon_state ="book"
-	starting_author = "Nanotrasen Naval Wargames Commission"
+	starting_author = "NanoTrasen Naval Wargames Commission"
 	starting_title = "Wargame: Blue Lizard - Example Ruleset"
 	starting_content = {"
 				<head>
@@ -35,7 +35,7 @@
 				</head>
 				<body>
 				<center>
-				<b style='font-size: 12px;'>Official publication of the Nanotrasen Naval Wargames Commission</b>
+				<b style='font-size: 12px;'>Official publication of the NanoTrasen Naval Wargames Commission</b>
 				<h1>Wargame: Blue Lizard</h1>
 				</center>
 				<h2>Introduction</h2>
@@ -45,9 +45,9 @@
 					if any of these items are missing.
 					<br>
 					<b>Kit items:</b>
-						1x of 'terrain' holoprojector
-						1-2x of 'unit' holoprojector
-						1x of standard dice set
+						1x of 'terrain' holoprojector <br>
+						1-2x of 'unit' holoprojector <br>
+						1x of standard dice set <br>
 					<br>
 					An example set of rules will be provided further on in this manual, though it
 					should be noted that it is not required to follow these rules by the letter, or at
@@ -78,14 +78,14 @@
 						game master, however some examples of ships can scenarios can be found in the
 						accompanying book in the standard wargaming set.
 					<br>
-					<b>Playing the Game</b>
+					<b>Playing the Game</b> <br>
 						Typically, the game goes in a turn by turn system. What this actually means is
 						again up to the game master. Some examples may be each player going one by one,
 						or every player on a team going at once. With each turn, each player's units
 						(typically ships) may move, and take another non-movement action <b>each ship,
 						each turn</b>.
 						<br>
-						<b>Commanding Units</b>
+						<b>Commanding Units</b> <br>
 							Units should move across the board, and interact with it, by the hands of
 							the game master. In order to get a unit to do something that a player commands,
 							<b>the player should address the game master as if the game master was the
@@ -95,13 +95,13 @@
 							An example of how this works would be:
 							<br>
 							Game Master: "We have spotted several enemy vessels, all ships are ready
-							for orders."
-							Player: "I see... Destroyer, charge the enemy vessels head on, guns blazing!"
+							for orders." <br>
+							Player: "I see... Destroyer, charge the enemy vessels head on, guns blazing!" <br>
 							-- The game master interprets this as moving the destroyer its maximum movement range
 							straight towards the enemy ships, before moving on to rolling dice for attacking any in
 							range (attacking will be covered later on in the rules)
 						<br>
-						<b>Unit Visibility</b>
+						<b>Unit Visibility</b> <br>
 							Unit visibility may sound complex at first, however should be fairly simple after
 							explaination. In a standard game, if there are two or more teams, they will play
 							on separate, but identical boards that have an opaque divider between them.
@@ -128,7 +128,7 @@
 							see the other ship again. They will, however, still be aware of the general area of the
 							enemy.
 						<br>
-						<b>Attacking and Damage</b>
+						<b>Attacking and Damage</b> <br>
 							Inevitably, ships will come into contact with one another, blows will be exchanged,
 							and damage will be sustained.
 							<br>
@@ -136,12 +136,12 @@
 							do be aware this list is not the end all be all of weapons, and game masters may
 							create their own.
 							<br>
-								-- Cannons --
+								-- Cannons -- <br>
 								Cannons are basic weapons firing projectiles of some kind towards the enemy.
 								The range of cannons varies, but typically one or two tile's lengths away
 								will be the range for accurate fire.
 								<br>
-								-- Missiles --
+								-- Missiles -- <br>
 								Missiles are weapons that are usually limited in the number that each ship
 								brings into the battle, in exchange for damaging the enemy significantly more
 								as well as having a longer range than cannons. Missiles are one of the two
@@ -150,7 +150,7 @@
 								board, and should take multiple turns to reach their target.
 								<br>
 								Missiles are also special in that many weapons fall under their category,
-								some of the basic types will be listed below.
+								some of the basic types will be listed below. <br>
 									Unguided rockets - These are the most basic type of missile, lacking any
 									guidance system at all. If these are fired at a target, and the target moves
 									somehow before they impact, the rockets will simply continue on in a straight
@@ -169,7 +169,7 @@
 									these lose tracking, they will fly in a straight line until impacting
 									something, or being lost to the void.
 								<br>
-								-- Stike Craft --
+								-- Stike Craft -- <br>
 								Strike craft are an example of a uniquely operating weapon. Typically carried
 								into combat by a larger ship of some kind, 'using' this weapon should result
 								in either a single, or wing of strike craft being placed alongside the vessel
@@ -219,12 +219,12 @@
 							player as to which.
 							<br>
 								<b>From a D20</b>
-								0 - 5, Only superficial damage was taken, nothing happens
-								6 - 7, The ship's engines are disabled, and it will be unable to move until repairs are done
-								8 - 10, The ship's weapons are disabled, and it will be unable to attack until repairs are done
-								11 - 12, The ship's main reactor fails, both weapons and movement will be disabled until repairs are done
-								13 - 16, The ship suffers a disabling breach, and it will be lost if this compounds with another problem
-								17 - 20, The ship suffers catastrophic structural damage, and it will be lost if this compounds with another problem
+								0 - 5, Only superficial damage was taken, nothing happens <br>
+								6 - 7, The ship's engines are disabled, and it will be unable to move until repairs are done <br>
+								8 - 10, The ship's weapons are disabled, and it will be unable to attack until repairs are done <br>
+								11 - 12, The ship's main reactor fails, both weapons and movement will be disabled until repairs are done <br>
+								13 - 16, The ship suffers a disabling breach, and it will be lost if this compounds with another problem <br>
+								17 - 20, The ship suffers catastrophic structural damage, and it will be lost if this compounds with another problem <br>
 							<br>
 							If a ship is lost in combat, then one of two things will happen. If the reactor was damaged
 							at the time of the vessel being lost, then it should catastrophically fail and cause
@@ -233,7 +233,7 @@
 							then the ship's color should be changed to a neutral grey, where it will remain as an empty
 							hulk that can be used for cover or concealment by other ships.
 						<br>
-						<b>Objectives and Victory</b>
+						<b>Objectives and Victory</b> <br>
 							At the start of the match, the game master should assign each team, or player, a specific objective
 							that they must complete in order to win. This objective can be something simple like complete
 							destruction of the enemy forces. However more complex objectives, like escorting a civilian
@@ -242,9 +242,8 @@
 							<br>
 							When the game master determines these objectives to be complete, or that some kind of game
 							ending condition has been achieved, then they may end the game at will.
-
 						<br>
-						*Wargame: Blue Lizard is a copyright protected title under ownership of Nanotrasen
+						*Wargame: Blue Lizard is a copyright protected title under ownership of NanoTrasen
 				</body>
 				</html>
 			"}
@@ -252,7 +251,7 @@
 /obj/item/book/manual/wargame_rules/examples
 	name = "Wargame: Blue Lizard - Example Ships and Scenarios"
 	icon_state ="book1"
-	starting_author = "Nanotrasen Naval Wargames Commission"
+	starting_author = "NanoTrasen Naval Wargames Commission"
 	starting_title = "Wargame: Blue Lizard - Example Ships and Scenarios"
 	starting_content = {"
 				<head>
@@ -267,7 +266,7 @@
 				</head>
 				<body>
 				<center>
-				<b style='font-size: 12px;'>Official publication of the Nanotrasen Naval Wargames Commission</b>
+				<b style='font-size: 12px;'>Official publication of the NanoTrasen Naval Wargames Commission</b>
 				<h1>Wargame: Blue Lizard</h1>
 				</center>
 				<h2>Introduction</h2>
@@ -277,103 +276,105 @@
 					ships in this book, and that making your own with your game master is encouraged.
 				<br>
 				<h2>Example Ships</h2>
-					<b>Nanotrasen</b>
-					Nanotrasen's fleet has historically been focused on fast response and devastating damage. Though
-					this has changed in modern times, ships in this section will be based off of Nanotrasen designs
-					from the past 30 years.
+					<b>NanoTrasen</b> <br>
+					NanoTrasen's fleet has historically been focused on quick response, especially due to the spread
+					of NanoTrasen assets across the galaxy. Their ships are often built to simply get to a location
+					fast, and hopefully scare off anything that's there. This isn't to say that modern vessels are
+					incapable of heavy combat, though the vessels in this list will be based upon older, decommissioned
+					ship types due to modern designs being classified.
 						<br>
-						-- Patrol Corvette --
+						-- Patrol Corvette -- <br>
 						A small vessel armed with little more than some cannons, lacking heavy armor and point defense,
-						though able to travel quickly due to its relatively small size and weight.
-						- Represented by a small ship marker
-						- Cannons
+						though able to travel quickly due to its relatively small size and weight. <br>
+						- Represented by a small ship marker <br>
+						- Cannons <br>
 						- ~1 tile's length of movement range
 						<br>
-						-- Torpedo Frigate --
+						-- Torpedo Frigate -- <br>
 						Built to handle threats that the patrol corvette couldn't, usually carries some anti ship torpedoes
 						into battle.
-						- Represented by a medium ship marker
-						- 2 Torpedoes
-						- Strong point defense
+						- Represented by a medium ship marker <br>
+						- 2 Torpedoes <br>
+						- Strong point defense <br>
 						- ~1 tile's length of movement range
 						<br>
-						-- Light Carrier --
+						-- Light Carrier -- <br>
 						Usually sent with patrols of smaller craft, used as a command and support vessel wherever task force
-						cohesion is needed, or just fighter support.
-						- Represented by a large ship marker
-						- 2 Wings of strike craft, armed with 3 seeking missiles each
-						- Strong point defense
+						cohesion is needed, or just fighter support. <br>
+						- Represented by a large ship marker <br>
+						- 2 Wings of strike craft, armed with 3 seeking missiles each <br>
+						- Strong point defense <br>
 						- ~1/2 a tile's length of movement range
 						<br>
-						-- Battlecruiser --
-						The largest commonly fielded ship in Nanotrasen's navy, a fast response vessel with enough guns and
-						armor to handle any large threat the fleet comes across, though these ships are a rare sight.
-						- Represented by an alternate large ship marker
-						- Cannons
-						- Heavy armor
-						- Strong point defense system
+						-- Battlecruiser -- <br>
+						The largest commonly fielded ship in NanoTrasen's navy, a fast response vessel with enough guns and
+						armor to handle any large threat the fleet comes across, though these ships are a rare sight. <br>
+						- Represented by an alternate large ship marker <br>
+						- Cannons <br>
+						- Heavy armor <br>
+						- Strong point defense system <br>
 						- ~1/2 a tile's length of movement range
 					<br>
-					<b>SolGov</b>
+					<b>SolGov</b> <br>
 					SolGov's navy is possibly the oldest and largest in the known universe, having more experience in
 					combat historically than most other navies combined. Nowadays, due to the expanse of SolGov space,
 					their patrols are thin stretched across the space they control, large groups of ships a rare sight.
-					A side effect of this is that they usually lack smaller combat vessels, favoring larger ships.
+					A side effect of this is that they usually lack smaller combat vessels, favoring larger ships. <br>
 						<br>
-						-- Flak Frigate --
+						-- Flak Frigate -- <br>
 						Built special purpoe to shoot down the vast numbers of strike craft that were often employed by SolGov's
-						enemies in large scale disputes, comes packed with enough point defense to make any carrier captain cry.
-						- Represented by a medium ship marker
-						- Cannons
-						- 4 Seeking missiles
-						- Strong point defense
+						enemies in large scale disputes, comes packed with enough point defense to make any carrier captain cry. <br>
+						- Represented by a medium ship marker <br>
+						- Cannons <br>
+						- 4 Seeking missiles <br>
+						- Strong point defense <br>
 						- ~1 tile's length of movement range
 						<br>
-						-- Light Cruiser --
+						-- Light Cruiser -- <br>
 						The mainstay ship of any SolGov fleet, with enough armor and firepower to cruise into the thick of
-						any battle and more than likely come out the other side still operational.
-						- Represented by a large ship marker
-						- Cannons
-						- Heavy armor
-						- Strong point defense
+						any battle and more than likely come out the other side still operational. <br>
+						- Represented by a large ship marker <br>
+						- Cannons <br>
+						- Heavy armor <br>
+						- Strong point defense <br>
 						- ~1/2 a tile's length of movement range
 						<br>
-						-- Heavy Carrier --
+						-- Heavy Carrier -- <br>
 						A prohibitively expensive carrier (not like this stops SolGov) that, while rarely fielded, can bring
-						more strike craft into battle than any ship known to mankind.
-						- Represented by an alternative large ship marker
-						- 4 Wings of strike craft, with 3 seeking missiles each
-						- Strong point defense
+						more strike craft into battle than any ship known to mankind. <br>
+						- Represented by an alternative large ship marker <br>
+						- 4 Wings of strike craft, with 3 seeking missiles each <br>
+						- Strong point defense <br>
 						- ~1/2 a tile's length of movement range
 					<br>
-					<b>NRI</b>
-					The NRI's navy has always been at least a contender to SolGov's and Nanotrasen's own, heavily focused on missiles
+					<b>NRI</b> <br>
+					The NRI's navy has always been at least a contender to SolGov's and NanoTrasen's own, heavily focused on missiles
 					with very few ships straying away from that doctrine.
 						<br>
 						-- Patrol Corvette --
 						A common sight in NRI controlled space, with many owned by not only the navy, but also the government's
 						police forces. Usually what that means is parking one near unruly stations and outposts, just to remind
-						them who owns the space they live in.
-						- Represented by a small ship marker
-						- Cannons
+						them who owns the space they live in. <br>
+						- Represented by a small ship marker <br>
+						- Cannons <br>
 						- ~1 tile's length of movement range
 						<br>
-						-- Defense Frigate --
+						-- Defense Frigate -- <br>
 						Built for the express purpose of ruining the day of any territorial invader, stacked up with the heaviest
-						armor of any frigate in the known universe, with weapons to deal back any damage thrown at it.
-						- Represented by a medium ship marker
-						- Cannons
-						- 4 Seeking missiles
-						- Heavy armor
+						armor of any frigate in the known universe, with weapons to deal back any damage thrown at it. <br>
+						- Represented by a medium ship marker <br>
+						- Cannons <br>
+						- 4 Seeking missiles <br>
+						- Heavy armor <br>
 						- ~1/2 a tile's length of movement range
 						<br>
-						-- Missile Destroyer --
+						-- Missile Destroyer -- <br>
 						Missiles? You like missiles don't you? I hope you do, because when NRI naval command demanded more missiles
 						on a vessel, their shipyards gave the answer in the form of what is essentially a cargo ship filled to
-						the brim with every guided missile they could find.
-						- Represented by a large ship marker
-						- <b>Bottomless</b> seeking missiles
-						- Heavy armor
+						the brim with every guided missile they could find. <br>
+						- Represented by a large ship marker <br>
+						- <b>Bottomless</b> seeking missiles <br>
+						- Heavy armor <br>
 						- ~1/2 a tile's length of movement range
 					<br>
 					<b>Mothic Raiders</b>
@@ -382,60 +383,60 @@
 					not malicious in nature, they would often come in skirmishes with patrol and escort forces on the outer
 					rim of SolGov territory, and may still rarely commit to raids against human ships even today.
 						<br>
-						-- Raider Corvette --
+						-- Raider Corvette -- <br>
 						The smallest and most common ship in mothic pirate bands, using the nomad fleet's prowess in ship
-						technology to scream across the stars faster than any vessel humanity could come up with.
-						- Represented by a small ship marker
-						- Cannons
-						- 1 Torpedo
+						technology to scream across the stars faster than any vessel humanity could come up with. <br>
+						- Represented by a small ship marker <br>
+						- Cannons <br>
+						- 1 Torpedo <br>
 						- ~1 and 1/2 a tile's a movement range
 						<br>
-						-- Mini Carrier --
+						-- Mini Carrier -- <br>
 						Often the core of mothic pirate bands, a small vessel usually kept on the backlines of raids,
-						capable of carrying a small compliment of strike craft to support raids.
-						- Represented by a medium ship marker
-						- 2 Wings of strike craft, with 3 seeking missiles each
-						- Strong point defense
+						capable of carrying a small compliment of strike craft to support raids. <br>
+						- Represented by a medium ship marker <br>
+						- 2 Wings of strike craft, with 3 seeking missiles each <br>
+						- Strong point defense <br>
 						- ~1 tile's movement range
 						<br>
-						-- Rocket Destroyer --
+						-- Rocket Destroyer -- <br>
 						The result of common incidents where a captain will choose to evacuate a cargo vessel before a
 						band of mothic raiders boards, leaving the ship fully to the control of the pirates. This will
-						often result in them crudely converting the vessel into a warship of some kind.
-						- Represented by a large ship marker
-						- <b>Bottomless</b> supply of unguided rockets, can be fired twice per turn
-						- Weak construction
+						often result in them crudely converting the vessel into a warship of some kind. <br>
+						- Represented by a large ship marker <br>
+						- <b>Bottomless</b> supply of unguided rockets, can be fired twice per turn <br>
+						- Weak construction <br>
 						- ~1 tile's movement range
 					<br>
 				<h2>Example Scenarios</h2>
-					-- Nanotrasen/NRI Station Skirmish --
-					A Nanotrasen sponsored station located in NRI border territories has violated several regulations
-					and laws, and an NRI patrol fleet has been sent to repossess the station. A force of Nanotrasen
-					ships jumps in just in time to intercept.
-					- Takes place with a Nanotrasen station surrounded by a large asteroid field of some kind between
-					where both teams start.
-					- Either side will win through complete destruction or surrender of the enemy.
+					-- NanoTrasen/NRI Station Skirmish -- <br>
+					A NanoTrasen sponsored station located in NRI border territories has violated several regulations
+					and laws, and an NRI patrol fleet has been sent to repossess the station. A force of NanoTrasen
+					ships jumps in just in time to intercept. <br>
+					- Takes place with a NanoTrasen station surrounded by a large asteroid field of some kind between
+					where both teams start. <br>
+					- Either side will win through complete destruction or surrender of the enemy. <br>
 					- The NRI should start with a few more ships, or stronger ships than the NT force, however
-					the NT station should have several defensive platforms surrounding it to suppliment.
+					the NT station should have several defensive platforms surrounding it to suppliment. <br>
 					<br>
-					-- NRI/SolGov Border Conflict --
+					-- NRI/SolGov Border Conflict -- <br>
 					Two sizeable fleets from both SolGov, and the NRI meet in disputed space. A battle ensues soon
-					after, this fight being only a small part of a larger battle.
+					after, this fight being only a small part of a larger battle. <br>
 					- Takes place in the rings of a nearby planet, large dust fields and asteroids making spotting
-					other ships difficult.
-					- Either side will win through complete destruction or surrender of the enemy.
+					other ships difficult. <br>
+					- Either side will win through complete destruction or surrender of the enemy. <br>
 					- Both the NRI and SolGov fleets should be about the same size and strength
 					<br>
-					-- SolGov/Mothic Raiders Convoy Raid --
-					A convoy of Nanotrasen cargo vessels, escorted by a small patrol force, come under attack by a sizeable
-					band of mothic raiders.
-					- Takes place in a dense asteroid field
-					- NT will win if they destroy the raiders completely
-					- The raiders will win if they destroy all of NT's cargo ships
+					-- SolGov/Mothic Raiders Convoy Raid -- <br>
+					A convoy of NanoTrasen cargo vessels, escorted by a small patrol force, come under attack by a sizeable
+					band of mothic raiders. <br>
+					- Takes place in a dense asteroid field <br>
+					- NT will win if they destroy the raiders completely <br>
+					- The raiders will win if they destroy all of NT's cargo ships <br>
 					- NT's fleet should be a small number of combat vessels, escorting 2-3 large cargo ships
-					with stats as follows:
-						- Weak construction
-						- ~1/2 a tile's length of movement range
+					with stats as follows: <br>
+						- Weak construction <br>
+						- ~1/2 a tile's length of movement range <br>
 					- The mothic raider fleet should be larger than NT's
 				</body>
 				</html>
