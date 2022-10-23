@@ -39,6 +39,8 @@
 
 		user.put_in_hands(new_disk)
 
+	qdel(nifsoft_to_remove)
+
 	return TRUE
 
 /obj/item/nifsoft_remover/syndie

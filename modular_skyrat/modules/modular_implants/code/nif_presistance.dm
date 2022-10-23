@@ -3,8 +3,8 @@
 
 ///Saves the NIF data for everyone inside of the server.
 /datum/controller/subsystem/persistence/proc/save_nifs()
-	for(var/i in GLOB.joined_player_list)
-		var/mob/living/carbon/human/ending_human = get_mob_by_ckey(i)
+	for(var/player in GLOB.joined_player_list)
+		var/mob/living/carbon/human/ending_human = get_mob_by_ckey(player)
 		if(!istype(ending_human) || !ending_human.mind?.original_character_slot_index)
 			continue
 
