@@ -118,6 +118,7 @@
 	supervisors = SUPERVISOR_CMO
 	selection_color = "#ffeeee"
 	exp_granted_type = EXP_TYPE_CREW
+	config_tag = "ORDERLY"
 
 	outfit = /datum/outfit/job/orderly
 	plasmaman_outfit = /datum/outfit/plasmaman/medical
@@ -165,6 +166,7 @@
 	assignment = "Orderly"
 	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
 	trim_state = "trim_orderly"
+	orbit_icon = "shield-heart"
 	sechud_icon_state = SECHUD_ORDERLY
 	extra_access = list(ACCESS_SECURITY, ACCESS_BRIG_ENTRANCE, ACCESS_MEDICAL, ACCESS_MORGUE, ACCESS_SURGERY, ACCESS_PHARMACY, ACCESS_PLUMBING, ACCESS_VIROLOGY, ACCESS_MECH_MEDICAL, ACCESS_MINERAL_STOREROOM, ACCESS_WEAPONS)
 	minimal_access = list(ACCESS_SECURITY, ACCESS_BRIG_ENTRANCE, ACCESS_MEDICAL, ACCESS_MORGUE, ACCESS_SURGERY, ACCESS_PHARMACY, ACCESS_PLUMBING, ACCESS_VIROLOGY, ACCESS_MECH_MEDICAL, ACCESS_MINERAL_STOREROOM, ACCESS_WEAPONS)
@@ -187,6 +189,7 @@
 	supervisors = SUPERVISOR_RD
 	selection_color = "#ffeeee"
 	exp_granted_type = EXP_TYPE_CREW
+	config_tag = "SCIENCE_GUARD"
 
 	outfit = /datum/outfit/job/science_guard
 	plasmaman_outfit = /datum/outfit/plasmaman/science
@@ -233,6 +236,7 @@
 	assignment = "Science Guard"
 	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
 	trim_state = "trim_calhoun"
+	orbit_icon = "shield-heart"
 	sechud_icon_state = SECHUD_SCIENCE_GUARD
 	extra_access = list(ACCESS_SECURITY, ACCESS_BRIG_ENTRANCE, ACCESS_ROBOTICS, ACCESS_SCIENCE, ACCESS_ORDNANCE, ACCESS_ORDNANCE_STORAGE, ACCESS_RESEARCH, ACCESS_XENOBIOLOGY,
 					ACCESS_MECH_SCIENCE, ACCESS_MINERAL_STOREROOM, ACCESS_TECH_STORAGE, ACCESS_GENETICS, ACCESS_AUX_BASE, ACCESS_WEAPONS)
@@ -256,6 +260,7 @@
 	supervisors = SUPERVISOR_HOP
 	selection_color = "#ffeeee"
 	exp_granted_type = EXP_TYPE_CREW
+	config_tag = "BOUNCER"
 
 	outfit = /datum/outfit/job/bouncer
 	plasmaman_outfit = /datum/outfit/plasmaman/party_bouncer
@@ -308,6 +313,7 @@
 	assignment = "Bouncer"
 	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
 	trim_state = "trim_bouncer"
+	orbit_icon = "shield-heart"
 	sechud_icon_state = SECHUD_BOUNCER
 	extra_access = list(ACCESS_SECURITY, ACCESS_BRIG_ENTRANCE, ACCESS_HYDROPONICS, ACCESS_BAR, ACCESS_KITCHEN, ACCESS_MORGUE, ACCESS_WEAPONS, ACCESS_MINERAL_STOREROOM, ACCESS_THEATRE, ACCESS_WEAPONS)
 	minimal_access = list(ACCESS_SECURITY, ACCESS_BRIG_ENTRANCE, ACCESS_HYDROPONICS, ACCESS_BAR, ACCESS_KITCHEN, ACCESS_MORGUE, ACCESS_WEAPONS, ACCESS_MINERAL_STOREROOM, ACCESS_THEATRE, ACCESS_SERVICE, ACCESS_WEAPONS)
@@ -329,6 +335,7 @@
 	supervisors = SUPERVISOR_QM
 	selection_color = "#ffeeee"
 	exp_granted_type = EXP_TYPE_CREW
+	config_tag = "CUSTOMS_AGENT"
 
 	outfit = /datum/outfit/job/customs_agent
 	plasmaman_outfit = /datum/outfit/plasmaman/cargo
@@ -375,6 +382,7 @@
 	assignment = "Customs Agent"
 	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
 	trim_state = "trim_customs"
+	orbit_icon = "shield-heart"
 	sechud_icon_state = SECHUD_CUSTOMS_AGENT
 	extra_access = list(ACCESS_SECURITY, ACCESS_BRIG_ENTRANCE, ACCESS_MAINT_TUNNELS, ACCESS_SHIPPING, ACCESS_CARGO, ACCESS_QM, ACCESS_MINING, ACCESS_MECH_MINING, ACCESS_MINING_STATION, ACCESS_MINERAL_STOREROOM, ACCESS_WEAPONS)
 	minimal_access = list(ACCESS_SECURITY, ACCESS_BRIG_ENTRANCE, ACCESS_MAINT_TUNNELS, ACCESS_SHIPPING, ACCESS_CARGO, ACCESS_QM, ACCESS_MINING, ACCESS_MECH_MINING, ACCESS_MINING_STATION, ACCESS_MINERAL_STOREROOM, ACCESS_WEAPONS)
@@ -396,6 +404,7 @@
 	supervisors = SUPERVISOR_CE
 	selection_color = "#ffeeee"
 	exp_granted_type = EXP_TYPE_CREW
+	config_tag = "ENGINEERING_GUARD"
 
 	outfit = /datum/outfit/job/engineering_guard
 	plasmaman_outfit = /datum/outfit/plasmaman/engineering
@@ -442,6 +451,7 @@
 	assignment = "Engineering Guard"
 	trim_icon = 'modular_skyrat/master_files/icons/obj/card.dmi'
 	trim_state = "trim_engiguard"
+	orbit_icon = "shield-heart"
 	sechud_icon_state = SECHUD_ENGINEERING_GUARD
 	extra_access = list(ACCESS_SECURITY, ACCESS_BRIG_ENTRANCE, ACCESS_ENGINEERING, ACCESS_ENGINE_EQUIP, ACCESS_TECH_STORAGE, ACCESS_MAINT_TUNNELS, ACCESS_MECH_ENGINE, ACCESS_AUX_BASE,
 					ACCESS_EXTERNAL_AIRLOCKS, ACCESS_CONSTRUCTION, ACCESS_ATMOSPHERICS, ACCESS_TCOMMS, ACCESS_MINERAL_STOREROOM, ACCESS_WEAPONS)

@@ -170,6 +170,7 @@
 #include "spawn_humans.dm"
 #include "spawn_mobs.dm"
 #include "species_change_clothing.dm"
+#include "species_change_organs.dm"
 #include "species_config_sanity.dm"
 #include "species_unique_id.dm"
 #include "species_whitelists.dm"
@@ -188,6 +189,7 @@
 #include "timer_sanity.dm"
 #include "traitor.dm"
 #include "unit_test.dm"
+#include "verify_config_tags.dm"
 #include "wizard_loadout.dm"
 #ifdef REFERENCE_TRACKING_DEBUG //Don't try and parse this file if ref tracking isn't turned on. IE: don't parse ref tracking please mr linter
 #include "find_reference_sanity.dm"

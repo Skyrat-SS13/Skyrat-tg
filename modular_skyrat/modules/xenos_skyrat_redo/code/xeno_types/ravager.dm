@@ -2,7 +2,7 @@
 
 #define RAVAGER_OUTLINE_EFFECT "ravager_endure_outline"
 
-/mob/living/carbon/alien/humanoid/skyrat/ravager
+/mob/living/carbon/alien/adult/skyrat/ravager
 	name = "alien ravager"
 	desc = "An alien with angry red chitin, with equally intimidating looking blade-like claws in place of normal hands. That sharp tail looks like it'd probably hurt."
 	caste = "ravager"
@@ -18,7 +18,7 @@
 	melee_damage_lower = 30
 	melee_damage_upper = 35
 
-/mob/living/carbon/alien/humanoid/skyrat/ravager/Initialize(mapload)
+/mob/living/carbon/alien/adult/skyrat/ravager/Initialize(mapload)
 	. = ..()
 	tailsweep_slice = new /datum/action/cooldown/spell/aoe/repulse/xeno/skyrat_tailsweep/slicing()
 	tailsweep_slice.Grant(src)
@@ -31,14 +31,14 @@
 
 	REMOVE_TRAIT(src, TRAIT_VENTCRAWLER_ALWAYS, INNATE_TRAIT)
 
-/mob/living/carbon/alien/humanoid/skyrat/ravager/Destroy()
+/mob/living/carbon/alien/adult/skyrat/ravager/Destroy()
 	//QDEL_NULL(triple_charge)
 	QDEL_NULL(tailsweep_slice)
 	QDEL_NULL(you_cant_hurt_me_jack)
 	QDEL_NULL(triple_charge)
 	return ..()
 
-/mob/living/carbon/alien/humanoid/skyrat/ravager/create_internal_organs()
+/mob/living/carbon/alien/adult/skyrat/ravager/create_internal_organs()
 	internal_organs += new /obj/item/organ/internal/alien/plasmavessel
 	..()
 

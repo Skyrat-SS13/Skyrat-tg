@@ -172,6 +172,10 @@ GLOBAL_LIST_INIT(loadout_helmets, generate_loadout_items(/datum/loadout_item/hea
 *	MISC
 */
 
+/datum/loadout_item/head/standalone_hood
+	name = "Recolorable Standalone Hood"
+	item_path = /obj/item/clothing/head/standalone_hood
+
 /datum/loadout_item/head/mail_cap
 	name = "Mail Cap"
 	item_path = /obj/item/clothing/head/mailman

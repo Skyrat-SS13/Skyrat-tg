@@ -377,3 +377,23 @@
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/hats.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/head.dmi'
 	icon_state = "christmashatg"
+
+/obj/item/clothing/head/standalone_hood
+	name = "hood"
+	desc = "A hood with a bit of support around the neck so it actually stays in place, for all those times you want a hood without the coat."
+	icon = 'modular_skyrat/modules/GAGS/icons/head/head.dmi'
+	worn_icon = 'modular_skyrat/modules/GAGS/icons/head/head.dmi'
+	worn_icon_teshari = 'modular_skyrat/modules/GAGS/icons/head/head_teshari.dmi'
+	icon_state = "hood"
+	body_parts_covered = HEAD
+	cold_protection = HEAD
+	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
+	flags_inv = HIDEEARS|HIDEHAIR
+	supports_variations_flags = CLOTHING_SNOUTED_VARIATION_NO_NEW_ICON
+	flags_1 = IS_PLAYER_COLORABLE_1
+	greyscale_colors = "#4e4a43#F1F1F1"
+	greyscale_config = /datum/greyscale_config/standalone_hood
+	greyscale_config_worn = /datum/greyscale_config/standalone_hood/worn
+	greyscale_config_worn_teshari = /datum/greyscale_config/standalone_hood/worn/teshari
+	greyscale_config_worn_better_vox = /datum/greyscale_config/standalone_hood/worn/newvox
+	greyscale_config_worn_vox = /datum/greyscale_config/standalone_hood/worn/oldvox
