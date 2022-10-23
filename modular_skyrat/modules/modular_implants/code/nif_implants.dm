@@ -23,7 +23,7 @@
 	nif_persistence = FALSE
 
 /obj/item/autosurgeon/organ/nif/disposable //Disposable, as in the fact that this only lasts for one shift
-	name = "NIF Model-ERP Autosurgeon"
+	name = "Econo-Deck Type Autosurgeon"
 	starting_organ = /obj/item/organ/internal/cyberimp/brain/nif/roleplay_model/cheap
 
 /obj/item/organ/internal/cyberimp/brain/nif/standard/ghost_role
@@ -31,5 +31,5 @@
 	is_calibrated = TRUE
 
 /obj/item/autosurgeon/organ/nif/ghost_role
-	name = "NIF Autosurgeon"
+	name = "Enhanced Standard Type NIF Autosurgeon"
 	starting_organ = /obj/item/organ/internal/cyberimp/brain/nif/standard/ghost_role
