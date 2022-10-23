@@ -31,14 +31,14 @@
 
 /obj/item/clothing/under/rank/security/officer/blueshirt/skyrat/customs_agent
 	name = "customs agent uniform"
-	desc = "Short-sleeves and cargo shorts, in an authoritative charcoal color. Only for the FTU's finest strong-hands."
+	desc = "A cargo-brown short-sleeve shirt, and cargo shorts in an authoritative charcoal color. Only for the FTU's finest strong-hands."
 	icon_state = "customs_uniform"
 	worn_icon_state = "customs_uniform"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/cargo.dmi'
 	worn_icon = 'modular_skyrat/master_files/icons/mob/clothing/under/cargo.dmi'
 	worn_icon_digi = 'modular_skyrat/master_files/icons/mob/clothing/under/cargo_digi.dmi'
 
-/obj/item/clothing/under/rank/security/officer/blueshirt/skyrat/bouncer //TG's doesn't have the same armor (and has bad sprites!)
+/obj/item/clothing/under/rank/security/officer/blueshirt/skyrat/bouncer
 	name = "bouncer uniform"
 	desc = "Short-sleeves and jeans, for that aura of cool that makes the drunk people listen."
 	icon_state = "bouncer"
@@ -151,7 +151,7 @@
 */
 /datum/job/science_guard
 	title = JOB_SCIENCE_GUARD
-	description = "Figure out why the emails aren't working, keep an eye on the eggheads, keep the station safe from their latest creation."
+	description = "Figure out why the emails aren't working, keep an eye on the eggheads, protect them from their latest mistakes."
 	department_head = list(JOB_RESEARCH_DIRECTOR)
 	faction = FACTION_STATION
 	total_positions = 2
