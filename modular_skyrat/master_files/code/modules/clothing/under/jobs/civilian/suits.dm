@@ -9,9 +9,34 @@
 //DO NOT ADD A /obj/item/clothing/under/rank/civilian/lawyer/skyrat. USE /obj/item/clothing/under/suit/skyrat FOR MODULAR SUITS
 
 /*
+*	RECOLORABLE
+*/
+/obj/item/clothing/under/suit/skyrat/recolorable
+	name = "recolorable suit"
+	desc = "A semi-formal suit, clean-cut with a matching vest and slacks."
+	icon_state = "recolorable_suit"
+	can_adjust = FALSE
+	greyscale_config = /datum/greyscale_config/recolorable_suit
+	greyscale_config_worn = /datum/greyscale_config/recolorable_suit/worn
+	greyscale_config_worn_digi = /datum/greyscale_config/recolorable_suit/worn/digi
+	greyscale_colors = "#a99780#ffffff#6e2727#ffc500"
+	flags_1 = IS_PLAYER_COLORABLE_1
+
+/obj/item/clothing/under/suit/skyrat/recolorable/skirt
+	name = "recolorable suitskirt"
+	desc = "A semi-formal suitskirt, clean-cut with a matching vest and skirt."
+	icon_state = "recolorable_suitskirt"
+	female_sprite_flags = FEMALE_UNIFORM_TOP_ONLY
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+	gets_cropped_on_taurs = FALSE
+	body_parts_covered = CHEST|GROIN|LEGS
+	greyscale_config = /datum/greyscale_config/recolorable_suitskirt
+	greyscale_config_worn = /datum/greyscale_config/recolorable_suitskirt/worn
+	greyscale_config_worn_digi = /datum/greyscale_config/recolorable_suitskirt/worn/digi
+
+/*
 *	SUITS
 */
-
 /obj/item/clothing/under/suit/skyrat/pencil
 	name = "black pencilskirt"
 	desc = "A clean white shirt with a tight-fitting black pencilskirt."
