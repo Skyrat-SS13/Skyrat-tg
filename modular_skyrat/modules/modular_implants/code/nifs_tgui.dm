@@ -85,7 +85,7 @@
 		if("change_examine_text")
 			var/text_to_use = html_encode(params["new_text"])
 			if(text_to_use == "")
-				text_to_use = FALSE
+				linked_mob.nif_examine_text = FALSE
 				return FALSE
 
 			linked_mob.nif_examine_text = span_purple("<b>[text_to_use]</b><br>")
