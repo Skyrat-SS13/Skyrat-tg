@@ -22,7 +22,7 @@
 
 /obj/item/clothing/under/rank/security/officer/blueshirt/skyrat/engineering_guard
 	name = "engineering guard uniform"
-	desc = "Effectively just padded coveralls, they do the trick both inside of, and while keeping people out of, a hardhat zone."
+	desc = "Effectively just padded hi-vis coveralls, they do the trick both inside of, and while keeping people out of, a hardhat zone."
 	icon_state = "engineering_guard_uniform"
 	worn_icon_state = "engineering_guard_uniform"
 	icon = 'modular_skyrat/master_files/icons/obj/clothing/under/engineering.dmi'
