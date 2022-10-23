@@ -320,7 +320,7 @@ SUBSYSTEM_DEF(ticker)
 
 		iter_human.increment_scar_slot()
 		iter_human.load_persistent_scars()
-		iter_human.load_nif_data()
+		iter_human.load_nif_data() // SKYRAT EDIT ADDITION - NIFs
 
 		if(!iter_human.hardcore_survival_score)
 			continue
